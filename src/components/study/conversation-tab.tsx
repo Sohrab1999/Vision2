@@ -12,7 +12,6 @@ export default function ConversationTab({ lesson }: { lesson: LessonData }) {
   const [playingIdx, setPlayingIdx] = useState<number | null>(null);
   const [playingAll, setPlayingAll] = useState(false);
   const cancelRef = useRef(false);
-  const stopRef = useRef<(() => void) | null>(null);
   const t = themeOf(lesson.color);
 
   const playAll = async () => {
@@ -29,13 +28,12 @@ export default function ConversationTab({ lesson }: { lesson: LessonData }) {
       if (cancelRef.current) break;
       setPlayingIdx(i);
       await new Promise<void>((resolve) => {
-        const stop = speak(
+        speak(
           lesson.conversation.lines[i].en,
           0.95,
           () => resolve(),
           () => resolve()
         );
-        stopRef.current = stop;
       });
       await new Promise((r) => setTimeout(r, 350));
     }

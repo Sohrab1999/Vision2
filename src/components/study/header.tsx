@@ -3,7 +3,7 @@
 import { BookOpen, Home, Library, ClipboardCheck, BookMarked, Sun, Moon, Flame, User, Download, Upload, ShieldCheck, History, RotateCcw, Keyboard } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useRef, useState } from "react";
-import { useStudy, AVATAR_COLORS } from "@/lib/study-store";
+import { useStudy, AVATAR_COLORS, type View } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
 import { exportProgress, parseBackup, applyBackup, backupSummary, readAutoBackup, restoreAutoBackup, autoBackupAgeFa } from "@/lib/backup";

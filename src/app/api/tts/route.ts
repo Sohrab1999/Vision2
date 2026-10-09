@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { rateLimit } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
 
@@ -32,6 +33,10 @@ export async function POST(req: NextRequest) {
     const key = `${speed}|${clean}`;
     const cached = CACHE.get(key);
     if (cached) return audioResponse(cached);
+
+    // rate-limit only the expensive path (cache misses cost a real TTS call)
+    const limit = rateLimit(req, "tts", 30, 60_000);
+    if (!limit.ok) return limit.response!;
 
     const ZAI = (await import("z-ai-web-dev-sdk")).default;
     const zai = await ZAI.create();

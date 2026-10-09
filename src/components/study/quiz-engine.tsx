@@ -264,7 +264,7 @@ export default function QuizEngine({
       const breakdown = groups.map((g) => `${g.label}: ${faNum(Math.round((g.correct / g.total) * 100))}٪`).join(" · ");
       const text = `🏆 نتیجهٔ من در وب‌کتاب «Vision Two»\n${title}\n⭐ ${faNum(percent)}٪ (${faNum(correctCount)} از ${faNum(total)})${breakdown ? `\n📊 ${breakdown}` : ""}`;
       try {
-        if (typeof navigator !== "undefined" && "share" in navigator) {
+        if (typeof navigator !== "undefined" && typeof navigator.share === "function") {
           await navigator.share({ title: "نتیجهٔ وب‌کتاب Vision Two", text });
           return;
         }

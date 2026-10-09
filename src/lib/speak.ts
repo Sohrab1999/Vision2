@@ -86,6 +86,6 @@ export function speakSpell(
   word: string,
   onEnd?: () => void,
   onError?: () => void
-): SpeakStop {
+): Promise<SpeakStop> {
   return speak(spellText(word), 0.8, onEnd, onError);
 }

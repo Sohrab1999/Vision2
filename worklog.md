@@ -350,3 +350,22 @@ Work Log:
 Stage Summary:
 - قضاوت کلی: محصول از نظر فیچر و پایداری runtime بالغ است (MVP++ )، ولی سه ستون لانچ پایدار ضعیف‌اند: (۱) ایمنی در برابر خطا (error boundary/tipo-check)، (۲) اعتماد دادهٔ چندکاربره (auth/ownership/rate limit)، (۳) تست خودکار برای رگرسیون
 - پیشنهاد اولویت اول: فعال‌سازی type-check + رفع ۶ خطای TS + error boundary + rate limit ساده — هر سه در یک راند قابل انجام‌اند
+
+---
+
+Task ID: 17
+Agent: main (Z.ai Code) — Phase 0 (Safety) + Phase 1 quick win
+Task: اجرای فاز ۰ ممیزی — رفع ۶ خطای TS، error boundary، rate limit، فعال‌سازی type-check + برچسب ناشناس فید
+
+Work Log:
+- [۶ خطای TS رفع شد — src از این به بعد ۰ خطا] study-store.ts (تایپ flashIntent: "none"|"smart")، header.tsx (import type View)، speak.ts (speakSpell → Promise<SpeakStop>)، conversation-tab.tsx (حذف stopRef مرده و assignment همگام)، quiz-engine.tsx (جایگزینی "share" in navigator با typeof navigator.share === "function" تا never-narrowing رفع شود)، report-card.tsx (useMemo<Set<string>> به‌جای fallback [] که union never[] می‌ساخت)
+- [type-check مجدداً فعال شد] next.config.ts: ignoreBuildErrors=false + tsconfig exclude برای examples/skills/mini-services (خطاهای scaffold نباید بیلد اپ را ببندند)
+- [error boundary] src/app/error.tsx (کارت بازیابی فارسی «این صفحهٔ کتاب باز نشد!» + تلاش دوباره + بازگشت به خانه + پیام اطمینان از سالم بودن داده) و src/app/global-error.tsx (نسخهٔ مستقل با inline style و html/body) — تست واقعی: throw کنترل‌شدهٔ موقت در HomeView با ?e2e-crash=1 → کنسول تأیید «handled by ErrorBoundaryHandler» و کارت بازیابی رندر شد با هدر سالم؛ کد تست بلافاصله revert شد (rg تأیید پاک‌بودن)
+- [rate limit] src/lib/rate-limit.ts — پنجرهٔ لغزان درون‌حافظه‌ای به‌کلید route+IP با cleanup خودکار؛ تست واحد: ۳۰ مجاز/۵ مسدود، ایزولهٔ IP و bucket تأیید. اتصال: tts (۳۰/min فقط روی cache-miss تا روخوانی تکراری جریمه نشود)، stats GET 240/POST 60، profile GET 240/POST 30، leaderboard و rush-leaderboard GET 240 — پاسخ 429 فارسی + Retry-After
+- [فید زنده] کاربران بی‌نام حالا «یادگیرندهٔ ناشناس —» با رنگ خنثی نشان داده می‌شوند (قبلاً بدون فاعل بود)
+- QA: tsc --noEmit → ۰ خطای src؛ lint ۰/۰؛ نشست تازهٔ مرورگر ۰ خطای کنسول؛ TTS از دکمهٔ واژهٔ روز ۲۰۰ و dev.log تمیز؛ رندر خانه/فید/نمودارها سالم
+
+Stage Summary:
+- فاز ۰ کامل شد: شبکهٔ ایمنی خطا (boundary + type-check) و محافظت هزینه/داده (rate limit) برقرار است
+- ماندهٔ فاز ۱: ownership سبک پروفایل (جلوگیری از بازنویسی نام دیگران)، اتصال نسخهٔ fallback global-error به تم برند
+- پیشنهاد راند بعد: فاز ۲ — ترجمهٔ فارسی فازبندی‌شدهٔ بانک ۳۶۰تایی (ابتدا ۱۰۰ تست)، smoke test های E2E پایه، سپس PWA/manifest و analytics سبک

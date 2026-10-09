@@ -1,5 +1,6 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db";
+import { rateLimit } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
 
@@ -15,7 +16,9 @@ export interface RushRow {
 }
 
 /** بهترین امتیازهای چالش برق‌آسا بین همهٔ یادگیرندگان (category = rush) */
-export async function GET() {
+export async function GET(req: NextRequest) {
+  const limit = rateLimit(req, "rush-lb-get", 240, 60_000);
+  if (!limit.ok) return limit.response!;
   try {
     const grouped = await db.quizAttempt.groupBy({
       by: ["userId"],

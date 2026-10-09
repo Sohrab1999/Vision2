@@ -1,11 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db";
+import { rateLimit } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
 
 const ALLOWED_COLORS = ["emerald", "amber", "rose", "violet", "sky"];
 
 export async function GET(req: NextRequest) {
+  const limit = rateLimit(req, "profile-get", 240, 60_000);
+  if (!limit.ok) return limit.response!;
   try {
     const userId = req.nextUrl.searchParams.get("userId") ?? "";
     if (!userId) {
@@ -23,6 +26,8 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
+  const limit = rateLimit(req, "profile-post", 30, 60_000);
+  if (!limit.ok) return limit.response!;
   try {
     const body = await req.json().catch(() => ({}));
     const userId = typeof body?.userId === "string" ? body.userId.slice(0, 80) : "";

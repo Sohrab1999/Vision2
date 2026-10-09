@@ -1,9 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db";
+import { rateLimit } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
 
-export async function GET() {
+export async function GET(req: NextRequest) {
+  const limit = rateLimit(req, "stats-get", 240, 60_000);
+  if (!limit.ok) return limit.response!;
   try {
     const since = new Date(Date.now() - 24 * 60 * 60 * 1000);
     const [total, avg, last24h, recent] = await Promise.all([
@@ -51,6 +54,8 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
+  const limit = rateLimit(req, "stats-post", 60, 60_000);
+  if (!limit.ok) return limit.response!;
   try {
     const body = await req.json().catch(() => ({}));
     const userId = typeof body?.userId === "string" ? body.userId.slice(0, 80) : "";

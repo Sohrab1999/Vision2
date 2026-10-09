@@ -82,7 +82,7 @@ export interface StudyState {
   trackDictation: () => void;
   markBadgesSeen: (ids: string[]) => void;
   goHome: () => void;
-  openLesson: (id: number, flashIntent?: "smart") => void;
+  openLesson: (id: number, flashIntent?: "none" | "smart") => void;
   openLessonTab: (id: number, tab: LessonTab) => void;
   setView: (v: View) => void;
   setLessonTab: (t: LessonTab) => void;

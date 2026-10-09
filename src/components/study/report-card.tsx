@@ -101,7 +101,10 @@ export default function ReportCard() {
         : null,
     [mounted, known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames]
   );
-  const unlocked = useMemo(() => (evalInput ? unlockedBadgeIds(evalInput) : []), [evalInput]);
+  const unlocked = useMemo<Set<string>>(
+    () => (evalInput ? unlockedBadgeIds(evalInput) : new Set<string>()),
+    [evalInput]
+  );
   const skills = useMemo(() => (mounted ? skillBreakdown(results) : []), [mounted, results]);
   const week = useMemo(() => (mounted ? lastNDays(7, history) : []), [mounted, history]);
   const month = useMemo(() => (mounted ? lastNDays(30, history) : []), [mounted, history]);

@@ -578,7 +578,11 @@ export default function HomeView() {
                           />
                         )}
                         <span className="min-w-0 flex-1 truncate text-[12px] font-bold text-stone-700">
-                          {a.name && <span className="text-emerald-700">{a.name} — </span>}
+                          {a.name ? (
+                            <span className="text-emerald-700">{a.name} — </span>
+                          ) : (
+                            <span className="text-stone-400">یادگیرندهٔ ناشناس — </span>
+                          )}
                           {label}
                         </span>
                         <span className="hidden h-1.5 w-16 overflow-hidden rounded-full bg-stone-100 sm:block">
