@@ -16,6 +16,7 @@ import ExamView from "./exam-view";
 import AppendixView from "./appendix-view";
 import RushView from "./rush-view";
 import ShortcutGuide from "./shortcut-guide";
+import ReportCard from "./report-card";
 
 export default function StudyApp() {
   const view = useStudy((s) => s.view);
@@ -97,6 +98,9 @@ export default function StudyApp() {
 
       {/* keyboard shortcuts guide + global shortcut engine ("?" opens it) */}
       <ShortcutGuide />
+
+      {/* letter-style progress report (opened from tool cards / skill panel) */}
+      <ReportCard />
 
       {/* back to top */}
       <AnimatePresence>

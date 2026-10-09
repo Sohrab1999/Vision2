@@ -18,10 +18,11 @@ model QuizAttempt {
   total     Int
   correct   Int
   percent   Float
+  score     Int? // only the 60s rush challenge stores its points here
   createdAt DateTime @default(now())
 
   @@index([userId])
-  @@index([createdAt])
+  @@index([category, createdAt])
 }
 
 model LearnerProfile {

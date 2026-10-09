@@ -24,6 +24,7 @@ import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
 import { useToast } from "@/hooks/use-toast";
 import { downloadResultImage } from "@/lib/result-image";
+import RushBoard from "./rush-board";
 
 // ------------------------------------------------------------------
 // چالش برق‌آسا — 60-second quick-fire quiz across all lessons.
@@ -90,6 +91,7 @@ export default function RushView() {
   const [timeLeft, setTimeLeft] = useState(ROUND_MS);
   const [isNewRecord, setIsNewRecord] = useState(false);
   const [imgBusy, setImgBusy] = useState(false);
+  const [boardNonce, setBoardNonce] = useState(0); // bumps after each finished round to refresh the class board
   const userIdRef = useRef<string>("");
   const finishedRef = useRef(false);
   const advanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -134,12 +136,13 @@ export default function RushView() {
         fetch("/api/stats", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ userId, lesson: 0, category: "rush", total: final.answered, correct: final.correct }),
+          body: JSON.stringify({ userId, lesson: 0, category: "rush", total: final.answered, correct: final.correct, score: final.score }),
         }).catch(() => {});
       } catch {
         /* ignore */
       }
       setPhase("done");
+      setBoardNonce((n) => n + 1); // RushBoard refetches so the new record shows on next setup
     },
     [toast]
   );
@@ -268,6 +271,7 @@ export default function RushView() {
   if (phase === "setup") {
     return (
       <div className="space-y-5">
+        <RushBoard refreshKey={boardNonce} />
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}

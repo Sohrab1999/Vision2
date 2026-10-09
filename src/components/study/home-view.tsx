@@ -35,6 +35,8 @@ import Leaderboard from "./leaderboard";
 import Badges from "./badges";
 import WordOfDay from "./word-of-day";
 import SrsPanel from "./srs-panel";
+import SkillPanel from "./skill-panel";
+import ReportCard from "./report-card";
 
 const spineColors: Record<string, string> = {
   emerald: "bg-gradient-to-b from-emerald-500 to-emerald-800",
@@ -362,8 +364,11 @@ export default function HomeView() {
         <VocabDonut />
       </div>
 
-      {/* ------------------------- SRS dashboard ------------------------- */}
-      <SrsPanel />
+      {/* ----------------- SRS dashboard + skill analysis ----------------- */}
+      <div className="grid items-start gap-6 lg:grid-cols-2">
+        <SrsPanel />
+        <SkillPanel />
+      </div>
 
       {/* ---------------------------- Bookshelf ---------------------------- */}
       <section aria-label="قفسهٔ کتاب">
@@ -466,7 +471,7 @@ export default function HomeView() {
             { icon: Ear, title: "آزمون دیکته", desc: "املای شنیداری با روخوانی هوش مصنوعی و ثبت در SRS", onClick: () => openLessonTab(reviewLesson ?? 1, "dictation"), color: "text-violet-600 bg-violet-50 border-violet-200" },
             { icon: Eraser, title: "بانک اشتباهات", desc: "سؤال‌هایی که اشتباه جواب دادی، برای مرور مجدد", onClick: () => openLessonTab(mistakeLesson?.id ?? 1, "tests"), color: "text-rose-600 bg-rose-50 border-rose-200", badge: totalMistakes },
             { icon: Library, title: "ضمیمهٔ کتاب", desc: "افعال بی‌قاعده، جدول تلفظ IPA و اجزای کلام", view: { type: "appendix" as const }, color: "text-amber-600 bg-amber-50 border-amber-200" },
-            { icon: Trophy, title: "پیشرفت من", desc: "امتیاز تست‌ها و واژگان آموخته‌شده", view: { type: "dictionary" as const }, color: "text-stone-600 bg-stone-50 border-stone-200", custom: true },
+            { icon: Trophy, title: "کارنامهٔ من", desc: "گزارش کامل پیشرفت: رکوردها، مهارت‌ها و فعالیت هفته", onClick: () => window.dispatchEvent(new CustomEvent("open-report")), color: "text-stone-600 bg-stone-50 border-stone-200", custom: true },
           ].map((tool) => (
             <button
               key={tool.title}

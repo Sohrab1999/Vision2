@@ -643,3 +643,84 @@ body {
 .dark .hover\:bg-sky-50:hover { background-color: rgba(8, 47, 60, 0.65); }
 .dark .hover\:bg-sky-100:hover { background-color: rgba(8, 47, 60, 0.7); }
 .dark .hover\:bg-violet-50:hover { background-color: rgba(59, 24, 84, 0.55); }
+
+/* ---------------- rush class board dark ---------------- */
+.dark .rush-board { background-color: #1c1917; border-color: rgb(154 52 18 / 0.5); }
+.dark .rush-board > div:first-child {
+  background-image: linear-gradient(to left, rgba(69, 40, 8, 0.55), rgba(58, 36, 12, 0.3), transparent);
+  border-color: rgb(124 58 8 / 0.55);
+}
+.dark .rush-board .text-stone-800 { color: #f5f5f4; }
+.dark .rush-board .text-stone-700 { color: #d6d3d1; }
+.dark .rush-board .text-stone-400 { color: #8a8580; }
+.dark .rush-board .text-stone-500 { color: #a8a29e; }
+.dark .rush-board .bg-orange-100\/80 { background-color: rgb(69 40 8 / 0.65); }
+.dark .rush-board .bg-orange-500 { background-color: #c2410c; }
+.dark .rush-board-podium { background-image: linear-gradient(to bottom, rgba(69, 40, 8, 0.3), transparent); }
+.dark .rush-board .bg-white { background-color: #292524; }
+.dark .rush-board .bg-white\/70 { background-color: rgb(28 25 23 / 0.8); }
+.dark .rush-board .border-stone-100 { border-color: rgb(63 55 49 / 0.8); }
+.dark .rush-board-me { background-color: rgb(69 40 8 / 0.4) !important; }
+.dark .rush-board .border-t { border-color: rgb(124 58 8 / 0.45); }
+.dark .rush-board .border-t {
+  background-image: linear-gradient(to left, rgb(69 40 8 / 0.5), transparent);
+}
+.dark .rush-board li { border-color: rgb(67 43 16 / 0.5); }
+.dark .rush-board .text-orange-600 { color: #fdba74; }
+.dark .rush-board .bg-orange-50 { background-color: rgba(69, 40, 8, 0.4); }
+.dark .rush-board .border-orange-100 { border-color: rgb(124 58 8 / 0.55); }
+.dark .rush-board .border-orange-200 { border-color: rgb(154 52 18 / 0.55); }
+.dark .rush-board .text-amber-700 { color: #fcd34d; }
+
+/* ---------------- skill panel dark ---------------- */
+.dark .skill-panel { background-color: #1c1917; border-color: rgb(106 44 112 / 0.5); }
+.dark .skill-panel .text-stone-800 { color: #f5f5f4; }
+.dark .skill-panel .text-stone-700 { color: #d6d3d1; }
+.dark .skill-panel .text-stone-500 { color: #a8a29e; }
+.dark .skill-panel .text-stone-400 { color: #8a8580; }
+.dark .skill-panel .skill-track { background-color: #292524; }
+.dark .skill-panel .bg-stone-50\/60 { background-color: rgb(28 25 23 / 0.6); }
+.dark .skill-panel .border-stone-200 { border-color: #44403c; }
+.dark .skill-panel .skill-weak-cta {
+  background-image: linear-gradient(to left, rgba(69, 48, 12, 0.5), rgba(58, 36, 12, 0.4));
+  border-color: rgb(146 64 14 / 0.6);
+}
+.dark .skill-panel .skill-weak-cta .text-stone-800 { color: #fde68a; }
+.dark .skill-panel .skill-weak-cta .text-stone-500 { color: #c9c2bb; }
+.dark .skill-panel .skill-weak-cta .bg-amber-100 { background-color: rgb(69 48 12 / 0.8); }
+.dark .skill-panel .skill-weak-cta .text-amber-700 { color: #fcd34d; }
+.dark .skill-panel .text-violet-600 { color: #d8b4fe; }
+.dark .skill-panel .hover\:text-violet-800:hover { color: #f5d0fe; }
+.dark .skill-panel .bg-emerald-100 { background-color: rgba(6, 55, 40, 0.6); }
+.dark .skill-panel .text-emerald-700 { color: #6ee7b7; }
+.dark .skill-panel .bg-teal-100 { background-color: rgba(4, 47, 46, 0.6); }
+.dark .skill-panel .text-teal-700 { color: #5eead4; }
+.dark .skill-panel .bg-amber-100 { background-color: rgba(69, 48, 12, 0.6); }
+.dark .skill-panel .bg-rose-100 { background-color: rgba(80, 10, 25, 0.5); }
+.dark .skill-panel .text-rose-600 { color: #fda4af; }
+
+/* ---------------- report card dialog dark ---------------- */
+.dark .report-dialog { background-color: #1c1917; border-color: #44403c; }
+.dark .report-paper { background-color: #1c1917; }
+.dark .report-band {
+  background-image: linear-gradient(to left, #065f46, #047857, #0d9488);
+}
+.dark .report-week { background-color: rgb(28 25 23 / 0.7); border-color: #44403c; }
+.dark .report-week .text-stone-700 { color: #d6d3d1; }
+.dark .report-week .text-stone-800 { color: #f5f5f4; }
+.dark .report-week .text-stone-500 { color: #a8a29e; }
+.dark .report-week .bg-stone-200 { background-color: #44403c; }
+.dark .report-skills .text-stone-700 { color: #d6d3d1; }
+.dark .report-track { background-color: #292524; }
+.dark .report-best li { background-color: #292524; border-color: #44403c; }
+.dark .report-paper .bg-orange-50 { background-color: rgba(69, 40, 8, 0.45); }
+.dark .report-paper .text-orange-600 { color: #fdba74; }
+.dark .report-paper .border-orange-200 { border-color: rgb(154 52 18 / 0.55); }
+.dark .report-best .text-stone-600 { color: #c9c2bb; }
+.dark .report-best .text-stone-400 { color: #8a8580; }
+.dark .report-best .text-emerald-700 { color: #6ee7b7; }
+.dark .report-foot {
+  background-color: rgba(6, 55, 40, 0.35);
+  border-color: rgb(6 95 70 / 0.6);
+}
+.dark .report-foot .text-emerald-800 { color: #a7f3d0; }
