@@ -49,7 +49,18 @@ export type HistoryMap = Record<string, { reviews: number; quizzes: number }>;
 export const AVATAR_COLORS = ["emerald", "amber", "rose", "violet", "sky"] as const;
 export type AvatarColor = (typeof AVATAR_COLORS)[number];
 
-const DAILY_GOAL = 10;
+// user-tunable preferences (settings hub) — fontScale multiplies root font-size,
+// ttsRate multiplies every speak() speed, reduceMotion kills heavy animations
+export interface StudySettings {
+  ttsRate: number; // 0.7 .. 1.3 (multiplier)
+  fontScale: number; // 0.94 | 1 | 1.1
+  reduceMotion: boolean;
+}
+
+export const DEFAULT_SETTINGS: StudySettings = { ttsRate: 1, fontScale: 1, reduceMotion: false };
+
+export const DAILY_GOAL_OPTIONS = [5, 10, 15] as const;
+const DEFAULT_DAILY_GOAL = 10;
 
 function todayStr(d = new Date()): string {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
@@ -76,8 +87,14 @@ export interface StudyState {
   rushBest: number; // best score (points) ever achieved in the 60s challenge
   rushBestCorrect: number; // best number of correct answers in one challenge
   rushGames: number; // total number of completed 60s challenge rounds
+  dailyGoal: number; // user-chosen daily activity target (5/10/15)
+  onboarded: boolean; // first-run welcome flow completed?
+  settings: StudySettings;
 
   setProfile: (name: string, color: string) => void;
+  setDailyGoal: (n: number) => void;
+  setOnboarded: () => void;
+  setSettings: (patch: Partial<StudySettings>) => void;
   setRushBest: (points: number, correct: number) => void;
   trackDictation: () => void;
   markBadgesSeen: (ids: string[]) => void;
@@ -134,7 +151,6 @@ export function firstLessonWithDue(srs: Record<string, SrsItem>): number | null 
   return null;
 }
 
-export const DAILY_TARGET = DAILY_GOAL;
 export { todayStr };
 
 export const wordKey = (lessonId: number, en: string) => `${lessonId}:${en.toLowerCase()}`;
@@ -163,8 +179,14 @@ export const useStudy = create<StudyState>()(
       rushBest: 0,
       rushBestCorrect: 0,
       rushGames: 0,
+      dailyGoal: DEFAULT_DAILY_GOAL,
+      onboarded: false,
+      settings: DEFAULT_SETTINGS,
 
       setProfile: (name, color) => set({ userName: name, avatarColor: color }),
+      setDailyGoal: (n) => set({ dailyGoal: Math.min(20, Math.max(5, Math.round(n))) }),
+      setOnboarded: () => set({ onboarded: true }),
+      setSettings: (patch) => set((s) => ({ settings: { ...s.settings, ...patch } })),
       // called exactly once per finished rush round → also counts completed games + daily quest
       setRushBest: (points, correct) =>
         set((s) => {
@@ -296,6 +318,9 @@ export const useStudy = create<StudyState>()(
         rushBest: s.rushBest,
         rushBestCorrect: s.rushBestCorrect,
         rushGames: s.rushGames,
+        dailyGoal: s.dailyGoal,
+        onboarded: s.onboarded,
+        settings: s.settings,
       }),
     }
   )

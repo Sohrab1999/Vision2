@@ -25,7 +25,7 @@ import {
   Zap,
 } from "lucide-react";
 import { lessons, examBank, totalVocabulary, totalQuestions } from "@/data";
-import { useStudy, knownCountOfLesson, summarize, srsDueTotal, firstLessonWithDue, DAILY_TARGET, todayStr, mistakesOfLesson } from "@/lib/study-store";
+import { useStudy, knownCountOfLesson, summarize, srsDueTotal, firstLessonWithDue, todayStr, mistakesOfLesson } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { themeOf, faNum, timeAgoFa } from "@/lib/study-theme";
 import ProgressRing from "./progress-ring";
@@ -95,12 +95,13 @@ export default function HomeView() {
   const bestStreak = useStudy((s) => s.bestStreak);
   const dayStat = useStudy((s) => s.dayStat);
   const rushBest = useStudy((s) => s.rushBest);
+  const dailyGoal = useStudy((s) => s.dailyGoal);
   const mounted = useMounted();
 
   const summary = mounted ? summarize(known, results) : { knownCount: 0, totalPercent: 0, doneCategories: 0, bestExam: null };
   const dueTotal = mounted ? srsDueTotal(srs) : 0;
   const todayActivities = mounted && dayStat.day === todayStr() ? dayStat.reviews + dayStat.quizzes : 0;
-  const goalPercent = Math.min(100, Math.round((todayActivities / DAILY_TARGET) * 100));
+  const goalPercent = Math.min(100, Math.round((todayActivities / dailyGoal) * 100));
   const reviewLesson = mounted ? firstLessonWithDue(srs) : null;
   const mistakeLesson = mounted
     ? ([1, 2, 3] as const)
@@ -274,10 +275,10 @@ export default function HomeView() {
             <div className="mb-1.5 flex items-center justify-between text-[12px] font-bold">
               <span className="flex items-center gap-1.5 text-stone-600">
                 <Target size={14} className="text-emerald-600" />
-                هدف امروز: {faNum(DAILY_TARGET)} فعالیت
+                هدف امروز: {faNum(dailyGoal)} فعالیت
               </span>
               <span className={goalPercent >= 100 ? "text-emerald-600" : "text-stone-500"}>
-                {goalPercent >= 100 ? "✓ انجام شد!" : `${faNum(todayActivities)} از ${faNum(DAILY_TARGET)}`}
+                {goalPercent >= 100 ? "✓ انجام شد!" : `${faNum(todayActivities)} از ${faNum(dailyGoal)}`}
               </span>
             </div>
             <div className="h-3 overflow-hidden rounded-full bg-stone-100">

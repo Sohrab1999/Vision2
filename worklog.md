@@ -389,3 +389,26 @@ Stage Summary:
 - قضاوت استراتژیک: محصول MVP++ بالغ است؛ رشد بعدی باید روی «ماندگاری» (حلقهٔ بازگشت) و «اعتماد داده» (کد یادگیرنده) متمرکز شود نه فیچر تزئینی
 - ترتیب توافق‌شدهٔ ۵ اسپرینت: ۱) آنبردینگ+تنظیمات ۲) کد یادگیرنده+ترجمهٔ ۱۰۰تست ۳) PWA+یخ زنجیره ۴) شنیداری+واژه‌های خطرناک ۵) AI Explain+smoke/analytics
 - ریسک مشاهده‌شدهٔ جدید: پولینگ مکرر /api/leaderboard در لاگ — کاندیدای adaptive interval در فاز بهینه‌سازی (اولویت پایین)
+
+---
+
+Task ID: 19
+Agent: main (Z.ai Code) — Sprint 1 (MVP-Activation) طبق نقشه راه فیچرها
+Task: F1 آنبردینگ ۳مرحله‌ای + F1b هدف روزانهٔ انتخابی + F2 مرکز تنظیمات
+
+Work Log:
+- [استور] study-store.ts: dailyGoal (default 10، clamp 5..20)، onboarded، settings {ttsRate، fontScale، reduceMotion} + اکشن‌های setDailyGoal/setOnboarded/setSettings؛ همه در partialize (سازگار با استورهای قبلی — merge پیش‌فرض زوستند). ثابت DAILY_TARGET حذف شد و مصرف‌کننده‌ها از استور می‌خوانند
+- [F1] src/components/study/onboarding.tsx — دیالوگ ۳گامی: (۱) خوش‌آمد + نام/رنگ اختیاری با مسیر «ناشناس می‌مانم» (ذخیره پروفایل + POST /api/profile مثل هدر) (۲) انتخاب هدف روزانه ۵/۱۰/۱۵ با کارت‌های سبک/متعادل(پیشنهادی)/جدی (۳) جمع‌بندی + CTA «شروع اولین تمرین» → openLesson(1,"smart") فلش‌کارت درس اول + «بعداً». ESC/کلیک بیرون = skip (onInteractOutside preventDefault). گیت نمایش: useSyncExternalStore روی persist.hasHydrated/onFinishHydration (بدون setState در effect — رفع خطای lint react-hooks/set-state-in-effect) + useMounted + !onboarded
+- [F2] src/components/study/settings-popover.tsx — پاپ‌آور ۵بخشی: اسلایدر سرعت روخوانی 0.7-1.3 (با دکمهٔ پخش نمونهٔ واقعی TTS و برچسب آرام/معمولی/سریع‌تر)، سگمنت اندازهٔ متن کوچک/معمولی/بزرگ (0.94/1/1.1)، سوییچ کاهش حرکت، سگمنت هدف روزانه ۵/۱۰/۱۵، دکمهٔ پرش به پروفایل/پشتیبان (open-profile). دکمهٔ Settings در هدر بین حالت شب و راهنمای کیبورد
+- [speak.ts] rateScale ماژول‌لول + setSpeakRateScale/getSpeakRateScale؛ سرعت مؤثر = round(speed*scale,2) روی کلید کش و body — همهٔ فراخوانی‌های TTS (دکمهٔ واژه/مکالمه/دیکته/املایی) بدون تغییر کد مشمول تنظیم کاربر می‌شوند
+- [اعمال تنظیمات] StudyApp: useEffect روی settings → html.style.fontSize = 16*fontScale، کلاس user-reduce-motion، setSpeakRateScale
+- [F1b] home-view.tsx و weekly-chart.tsx: DAILY_TARGET → dailyGoal از استور («هدف امروز»، درصد رینگ، خط هدف نمودار ۷/۳۰ روزه)
+- [CSS] globals.css: قواعد html.user-reduce-motion (انیمیشن/ترنزیشن/scroll-behavior + استثنای streak-flame)
+- QA کامل با agent-browser: (الف) مرورگر تازه (localStorage خالی) → آنبردینگ ظاهر شد؛ گام۱ نام «آرش» + رنگ بنفش → گام۲ انتخاب ۱۵ → گام۳ جمع‌بندی درست → CTA به درس اول پرید؛ persist: onboarded=true, goal=15, name=آرش؛ بعد از reload دیالوگ تکرار نشد (ب) هدف امروز در خانه = ۱۵ ✓ (ج) تنظیمات: فونت بزرگ → html fontSize=17.6px؛ reduce-motion → کلاس روی html؛ اسلایدر با کیبورد 1→1.15 و برچسب سریع‌تر؛ persist تنظیمات تأیید؛ بازگردانی به پیش‌فرض با همان UI (د) تغییر هدف از تنظیمات به ۱۰ → خانه زنده به‌روز شد (هـ) نشست تازهٔ مرورگر: کنسول فقط info (بدون خطا)؛ (و) دارک + موبایل ۳۹۰px: دکمهٔ تنظیمات در هدر جا گرفته، اسکرین‌شات‌ها /tmp/r19-mobile-home.png و /tmp/r19-settings-light.png (ز) bunx tsc --noEmit = ۰ خطا، bun run lint = ۰ خطا
+- [نکته] هشدار dev-only radix aria-controls در اورلی Next (مثل قبل، فقط بعد از HMRهای زیاد؛ نشست تازه پاک است)
+- [نقشه راه] چک‌باکس‌های F1، F1b، F2 و اسپرینت ۱ تیک خورد + Progress Log به‌روز شد
+
+Stage Summary:
+- اسپرینت ۱ نقشه راه (MVP-Activation) کامل شد: روز اولِ کاربر اکنون هدایت‌شده است (شخصی‌سازی + هدف + قدم اول) و کاربر کنترل دارد (TTS/فونت/حرکت/هدف)
+- تصمیم فنی: تنظیمات به‌صورت multiplier روی TTS اعمال می‌شود تا نسبت سرعت‌های آگاهانهٔ موجود (املایی 0.8، دیکته 0.85) حفظ شود؛ فونت با root font-size تا همهٔ اندازه‌های rem مقیاس شوند
+- مسیر بعدی طبق نقشه راه: اسپرینت ۲ — F3 «کد یادگیرنده» (همگام‌سازی/بازیابی پیشرفت بین دستگاه) + شروع F5 ترجمهٔ ۱۰۰ تست بانک ۳۶۰

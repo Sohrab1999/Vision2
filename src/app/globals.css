@@ -860,3 +860,19 @@ body {
   body.print-report.dark .report-paper .text-emerald-700,
   html.dark body.print-report .report-paper .text-emerald-700 { color: #047857 !important; }
 }
+
+/* ---------------------------------------------------------------
+   F2 — user preference: reduce motion (settings hub)
+   تریگر: کلاس user-reduce-motion روی <html> از StudyApp
+   --------------------------------------------------------------- */
+html.user-reduce-motion *,
+html.user-reduce-motion *::before,
+html.user-reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+html.user-reduce-motion .streak-flame {
+  animation: none !important;
+}

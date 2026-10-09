@@ -5,6 +5,18 @@
 const urlCache = new Map<string, string>();
 let current: HTMLAudioElement | null = null;
 
+// user preference (settings hub): multiplier applied to every speak() speed.
+// Kept as a module-level value so callers never need plumbing; effective speed
+// is rounded to 2 decimals so the URL cache key stays stable.
+let rateScale = 1;
+export function setSpeakRateScale(v: number): void {
+  const n = Number.isFinite(v) ? Math.min(1.4, Math.max(0.6, v)) : 1;
+  rateScale = Math.round(n * 100) / 100;
+}
+export function getSpeakRateScale(): number {
+  return rateScale;
+}
+
 export type SpeakStop = () => void;
 
 export async function speak(
@@ -14,7 +26,8 @@ export async function speak(
   onError?: () => void
 ): Promise<SpeakStop> {
   stopSpeaking();
-  const key = `${speed}|${text}`;
+  const eff = Math.round(speed * rateScale * 100) / 100;
+  const key = `${eff}|${text}`;
   let url = urlCache.get(key);
   try {
     if (!url) {
@@ -24,7 +37,7 @@ export async function speak(
         res = await fetch("/api/tts", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ text, speed }),
+          body: JSON.stringify({ text, speed: eff }),
         });
         if (res.ok) break;
         if (attempt === 0) await new Promise((r) => setTimeout(r, 700));

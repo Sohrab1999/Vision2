@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUp } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
-import { stopSpeaking } from "@/lib/speak";
+import { stopSpeaking, setSpeakRateScale } from "@/lib/speak";
 import { maybeAutoBackup } from "@/lib/backup";
 import Header from "./header";
 import Footer from "./footer";
@@ -17,9 +17,11 @@ import AppendixView from "./appendix-view";
 import RushView from "./rush-view";
 import ShortcutGuide from "./shortcut-guide";
 import ReportCard from "./report-card";
+import Onboarding from "./onboarding";
 
 export default function StudyApp() {
   const view = useStudy((s) => s.view);
+  const settings = useStudy((s) => s.settings);
   const hydrated = useMounted();
   const [showTop, setShowTop] = useState(false);
 
@@ -27,6 +29,14 @@ export default function StudyApp() {
   useEffect(() => {
     useStudy.persist.rehydrate();
   }, []);
+
+  // apply user settings to the document (F2): root font-size, motion, TTS rate
+  useEffect(() => {
+    const html = document.documentElement;
+    html.style.fontSize = `${Math.round(16 * settings.fontScale * 100) / 100}px`;
+    html.classList.toggle("user-reduce-motion", settings.reduceMotion);
+    setSpeakRateScale(settings.ttsRate);
+  }, [settings]);
 
   // silent auto-backup: snapshot progress into localStorage after changes
   // (debounced 4s; maybeAutoBackup only rewrites when data actually changed)
@@ -98,6 +108,9 @@ export default function StudyApp() {
 
       {/* keyboard shortcuts guide + global shortcut engine ("?" opens it) */}
       <ShortcutGuide />
+
+      {/* first-run welcome + personalization (F1) */}
+      <Onboarding />
 
       {/* letter-style progress report (opened from tool cards / skill panel) */}
       <ReportCard />

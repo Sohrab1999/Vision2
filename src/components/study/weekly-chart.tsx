@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { BarChart3, Flame, ListChecks, Grid3X3 } from "lucide-react";
-import { useStudy, lastNDays, DAILY_TARGET } from "@/lib/study-store";
+import { useStudy, lastNDays } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
 
@@ -12,6 +12,7 @@ import { faNum } from "@/lib/study-theme";
  */
 export default function WeeklyChart() {
   const history = useStudy((s) => s.history);
+  const dailyGoal = useStudy((s) => s.dailyGoal);
   const mounted = useMounted();
   const [range, setRange] = useState<"week" | "month">("week");
   const days = mounted ? lastNDays(7, history) : [];
@@ -19,8 +20,8 @@ export default function WeeklyChart() {
 
   const weekTotal = days.reduce((s, d) => s + d.total, 0);
   const activeDays = days.filter((d) => d.total > 0).length;
-  const maxVal = Math.max(DAILY_TARGET, ...days.map((d) => d.total), 1);
-  const goalPct = (DAILY_TARGET / maxVal) * 100;
+  const maxVal = Math.max(dailyGoal, ...days.map((d) => d.total), 1);
+  const goalPct = (dailyGoal / maxVal) * 100;
 
   const monthTotal = monthDays.reduce((s, d) => s + d.total, 0);
   const monthActive = monthDays.filter((d) => d.total > 0).length;
@@ -54,7 +55,7 @@ export default function WeeklyChart() {
               </h2>
               <p className="text-[11.5px] text-stone-500">
                 {range === "week"
-                  ? `${faNum(weekTotal)} فعالیت در ${faNum(activeDays)} روز — هدف روزانه: ${faNum(DAILY_TARGET)}`
+                  ? `${faNum(weekTotal)} فعالیت در ${faNum(activeDays)} روز — هدف روزانه: ${faNum(dailyGoal)}`
                   : `${faNum(monthTotal)} فعالیت در ${faNum(monthActive)} روزِ فعال از ۳۰ روز`}
               </p>
             </div>

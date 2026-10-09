@@ -9,6 +9,7 @@ import { faNum } from "@/lib/study-theme";
 import { exportProgress, parseBackup, applyBackup, backupSummary, readAutoBackup, restoreAutoBackup, autoBackupAgeFa } from "@/lib/backup";
 import { useToast } from "@/hooks/use-toast";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import SettingsPopover from "./settings-popover";
 
 const navItems: { key: string; label: string; icon: React.ElementType; view: View }[] = [
   { key: "home", label: "خانه", icon: Home, view: { type: "home" } },
@@ -176,6 +177,9 @@ export default function Header() {
           >
             {isDark ? <Sun size={16} /> : <Moon size={16} />}
           </button>
+
+          {/* settings hub (TTS speed / font size / motion / daily goal) */}
+          <SettingsPopover />
 
           {/* keyboard shortcuts guide */}
           <button
