@@ -328,3 +328,25 @@ Stage Summary:
 - آمار اپ: ۷ تب درس + ۴۹۰ تست + چالش رقابتی + ۲۱ نشان + اهداف روزانه + کارنامهٔ قابل‌چاپ + SRS + پشتیبان خودکار/دستی + دارک‌مود کامل + میان‌برهای کیبورد
 - ریسک‌ها: (۱) OOM سرور در کامپایل موازی (الگوی double-fork setsid)؛ (۲) سلکتورهای اسکیپ‌دار Tailwind و :has() در CSS دستی ممنوع (LightningCSS) — قانون [class*="..."] رعایت شد؛ (۳) هشدار هیدریشن رادیکس فقط بعد از HMRهای زیاد (نشست تازه ۰ خطا)؛ (۴) chunk کهنهٔ Turbopack بعد از ویرایش‌های سنگین — با تغییر جزئی فایل force-recompile شود
 - پیشنهاد بعدی: جایزهٔ امتیازی نشان برای صدر جدول چالش، ترجمهٔ فارسی تست‌های بانک ۳۶۰تایی (نیاز به منبع)، صفحهٔ هدفمندی «تمرین هوشمند» از پنل مهارت‌ها، تم سوم (کنتراست بالا)، تقویم ماهانهٔ اهداف (هر روز یک خانه با وضعیت ۵/۵)
+
+---
+
+Task ID: 16
+Agent: main (Z.ai Code) — Product Lead / Technical Architect / UX Strategist audit
+Task: ممیزی جامع محصول (ساختار، فنی، UX، داده، ریسک) + Completeness Matrix + Top 10 گلوگاه + Roadmap
+
+Work Log:
+- worklog کامل (Task 1-15) خوانده شد؛ کدبیس (استور، APIها، schema، globals.css، next.config) از نزدیک بررسی شد
+- QA عملی با agent-browser در نشست تازه: خانه/درس۱/۷ تب/فلش‌کارت (Space/K/←)/موتور آزمون کامل ۲۰ سوالی (۳۵٪، فیدبک فوری، بانک اشتباهات ۱۳تایی، رینگ، توست)/دیکشنری/آزمون جامع (۲ مود)/چالش + جدول DB-پشتیبان/پروفایل پاپ‌اور (نام/رنگ/پشتیبان/پشتیبان خودکار)/دارک/روشن/موبایل ۳۹۰px — همه سالم، کنسول ۰ خطا
+- تأیید زیرساختی: POST /api/stats در DB نوشته شد (vocab 20/7/35%)؛ POST با payload نامعتبر → 400؛ TTS → WAV معتبر ۱۱۷KB؛ GET /api/stats فید زنده با نام/رنگ؛ GET /api/leaderboard و /api/rush-leaderboard فعال
+- [یافتهٔ مهم ۱] next.config: typescript.ignoreBuildErrors=true و bunx tsc --noEmit → ۶ خطای TS واقعی در src: header.tsx (عدم import نوع View)، speak.ts/speakSpell (Promise<SpeakStop> به‌جای SpeakStop)، conversation-tab.tsx (cleanup همگام)، quiz-engine.tsx (clipboard روی never)، report-card.tsx (Set/never[] union — همان الگوی باگ راند ۱۳)، study-store.ts («none» به «smart»)
+- [یافتهٔ مهم ۲] بدون error boundary: error.tsx/global-error.tsx/not-found.tsx وجود ندارند — کرش کامپوننت (نمونهٔ راند ۱۲) = کل اپ می‌میرد
+- [یافتهٔ مهم ۳] امنیت: بدون auth — userId کلاینتی؛ هر کسی با POST /api/profile می‌تواند پروفایل دیگری را بازنویسی کند و با POST /api/stats جدول‌ها را آلوده کند؛ بدون rate limit روی /api/tts (هزینه) و /api/stats؛ بدون middleware
+- [یافتهٔ مهم ۴] بدون هیچ تست خودکار (unit/e2e) — همهٔ QA مانیوال agent-browser است
+- [یافتهٔ مهم ۵] محتوا: بانک ۳۶۰تایی بدون ترجمهٔ فارسی (تست‌های درس‌ها دارند) — ناسازگاری تجربه
+- [یافتهٔ جزئی] فید زنده برای کاربران بی‌نام هیچ برچسبی ندارد (name=null → فقط فعالیت بدون فاعل)؛ بدون manifest/PWA؛ reactStrictMode=false؛ ۳۶۰ خط override .dark دستی در globals.css (۳۸KB) — ۳ بار قبلاً باگ تولید کرده؛ کامپوننت‌های بزرگ (home-view ۳۳KB، dictation ۲۷KB، rush ۲۵KB، quiz-engine ۲۶KB)؛ دادهٔ کل کتاب در باندل کلاینت (تقریباً ۸۸KB transfer در dev، در prod کمتر)
+- گزارش ممیزی کامل (۷ بخش + ماتریس + Top 10 + نقشهٔ راه) به کاربر تحویل شد
+
+Stage Summary:
+- قضاوت کلی: محصول از نظر فیچر و پایداری runtime بالغ است (MVP++ )، ولی سه ستون لانچ پایدار ضعیف‌اند: (۱) ایمنی در برابر خطا (error boundary/tipo-check)، (۲) اعتماد دادهٔ چندکاربره (auth/ownership/rate limit)، (۳) تست خودکار برای رگرسیون
+- پیشنهاد اولویت اول: فعال‌سازی type-check + رفع ۶ خطای TS + error boundary + rate limit ساده — هر سه در یک راند قابل انجام‌اند
