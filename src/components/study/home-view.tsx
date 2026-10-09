@@ -17,6 +17,7 @@ import {
   Layers,
   Users,
   Flame,
+  Snowflake,
   Target,
   RefreshCcw,
   Ear,
@@ -25,7 +26,7 @@ import {
   Zap,
 } from "lucide-react";
 import { lessons, examBank, totalVocabulary, totalQuestions } from "@/data";
-import { useStudy, knownCountOfLesson, summarize, srsDueTotal, firstLessonWithDue, todayStr, mistakesOfLesson } from "@/lib/study-store";
+import { useStudy, knownCountOfLesson, summarize, srsDueTotal, firstLessonWithDue, todayStr, mistakesOfLesson, FREEZE_CAP } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { themeOf, faNum, timeAgoFa } from "@/lib/study-theme";
 import ProgressRing from "./progress-ring";
@@ -93,6 +94,8 @@ export default function HomeView() {
   const mistakes = useStudy((s) => s.mistakes);
   const streak = useStudy((s) => s.streak);
   const bestStreak = useStudy((s) => s.bestStreak);
+  const freezeCount = useStudy((s) => s.freezeCount);
+  const freezeSavedDay = useStudy((s) => s.freezeSavedDay);
   const dayStat = useStudy((s) => s.dayStat);
   const rushBest = useStudy((s) => s.rushBest);
   const dailyGoal = useStudy((s) => s.dailyGoal);
@@ -266,6 +269,18 @@ export default function HomeView() {
               </div>
               {bestStreak > 1 && (
                 <div className="text-[11px] text-stone-400">رکورد: {faNum(bestStreak)} روز</div>
+              )}
+              {mounted && freezeCount > 0 && (
+                <span
+                  title={`یخِ زنجیره: یک روز غیبت را خودکار پوشش می‌دهد (سقف ${faNum(FREEZE_CAP)} یخ)`}
+                  className="mt-1 inline-flex w-fit items-center gap-1 rounded-full border border-sky-200 bg-sky-50 px-2 py-0.5 text-[10.5px] font-black text-sky-600"
+                >
+                  <Snowflake size={11} />
+                  {faNum(freezeCount)} یخِ زنجیره
+                </span>
+              )}
+              {mounted && freezeSavedDay === todayStr() && (
+                <div className="mt-1 text-[10.5px] font-bold text-sky-500">امروز یخ، زنجیره را نجات داد!</div>
               )}
             </div>
           </div>

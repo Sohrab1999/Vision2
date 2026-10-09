@@ -33,6 +33,11 @@ export interface BackupPayload {
     rushBest: number;
     rushBestCorrect: number;
     rushGames: number;
+    // F9 streak freeze
+    freezeCount: number;
+    freezeEarnedDay: string;
+    freezeUsedDays: string[];
+    goalMetDays: string[];
   };
 }
 
@@ -65,6 +70,10 @@ export function collectData(): BackupPayload["data"] {
     rushBest: s.rushBest ?? 0,
     rushBestCorrect: s.rushBestCorrect ?? 0,
     rushGames: s.rushGames ?? 0,
+    freezeCount: s.freezeCount ?? 0,
+    freezeEarnedDay: s.freezeEarnedDay ?? "",
+    freezeUsedDays: s.freezeUsedDays ?? [],
+    goalMetDays: s.goalMetDays ?? [],
   };
 }
 
@@ -179,6 +188,14 @@ export function parseBackup(text: string): BackupPayload {
       rushBest: typeof data["rushBest"] === "number" ? data["rushBest"] : 0,
       rushBestCorrect: typeof data["rushBestCorrect"] === "number" ? data["rushBestCorrect"] : 0,
       rushGames: typeof data["rushGames"] === "number" ? data["rushGames"] : 0,
+      freezeCount: typeof data["freezeCount"] === "number" ? Math.min(2, Math.max(0, Math.round(data["freezeCount"]))) : 0,
+      freezeEarnedDay: typeof data["freezeEarnedDay"] === "string" ? data["freezeEarnedDay"] : "",
+      freezeUsedDays: Array.isArray(data["freezeUsedDays"])
+        ? data["freezeUsedDays"].filter((x): x is string => typeof x === "string").slice(-30)
+        : [],
+      goalMetDays: Array.isArray(data["goalMetDays"])
+        ? data["goalMetDays"].filter((x): x is string => typeof x === "string").slice(-14)
+        : [],
     },
   };
 }

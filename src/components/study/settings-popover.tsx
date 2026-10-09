@@ -3,8 +3,8 @@
 // F2 — مرکز تنظیمات (نقشهٔ راه فیچرها، اسپرینت ۱)
 // سرعت روخوانی TTS · اندازهٔ متن · کاهش حرکت · هدف روزانه · دسترسی سریع به پروفایل/پشتیبان
 
-import { useState } from "react";
-import { Settings, Volume2, Type, Waves, Target, UserCog, Check } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Settings, Volume2, Type, Waves, Target, UserCog, Check, Smartphone } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Switch } from "@/components/ui/switch";
 import { Slider } from "@/components/ui/slider";
@@ -33,6 +33,18 @@ export default function SettingsPopover() {
   const setDailyGoal = useStudy((s) => s.setDailyGoal);
   const [open, setOpen] = useState(false);
   const [previewing, setPreviewing] = useState(false);
+  const [showInstallRow, setShowInstallRow] = useState(false);
+
+  // install row: hidden once the app runs standalone (F4)
+  useEffect(() => {
+    const nav = navigator as Navigator & { standalone?: boolean };
+    const update = () =>
+      setShowInstallRow(!window.matchMedia("(display-mode: standalone)").matches && nav.standalone !== true);
+    update();
+    const mq = window.matchMedia("(display-mode: standalone)");
+    mq.addEventListener?.("change", update);
+    return () => mq.removeEventListener?.("change", update);
+  }, []);
 
   const changeRate = (v: number) => {
     setSettings({ ttsRate: v });
@@ -193,6 +205,20 @@ export default function SettingsPopover() {
             })}
           </div>
         </section>
+
+        {/* ---------- نصب روی دستگاه (F4) ---------- */}
+        {showInstallRow && (
+          <button
+            onClick={() => {
+              setOpen(false);
+              setTimeout(() => window.dispatchEvent(new CustomEvent("install-app")), 150);
+            }}
+            className="mb-2 flex w-full items-center justify-center gap-1.5 rounded-xl border border-emerald-200 bg-emerald-50/60 py-2.5 text-[12px] font-black text-emerald-700 transition-all hover:bg-emerald-100 active:scale-95"
+          >
+            <Smartphone size={14} />
+            نصب وب‌کتاب روی دستگاه
+          </button>
+        )}
 
         {/* ---------- پروفایل و پشتیبان ---------- */}
         <button

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Vazirmatn } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
@@ -9,6 +9,16 @@ const vazir = Vazirmatn({
   subsets: ["arabic"],
   weight: ["400", "500", "600", "700", "800"],
 });
+
+// F4 — PWA: mobile chrome + standalone iOS web-app
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#047857" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0f0d" },
+  ],
+};
 
 export const metadata: Metadata = {
   title: "ویژن ۲ | وب‌کتاب تعاملی زبان انگلیسی پایهٔ یازدهم",
@@ -23,6 +33,20 @@ export const metadata: Metadata = {
     "آموزش تعاملی",
   ],
   authors: [{ name: "بر اساس جزوهٔ جمال احمدی" }],
+  applicationName: "ویژن ۲",
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "ویژن ۲",
+  },
+  icons: {
+    icon: [
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: [{ url: "/icons/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
 };
 
 export default function RootLayout({

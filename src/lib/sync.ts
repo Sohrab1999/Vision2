@@ -134,6 +134,12 @@ export function mergeSyncData(local: SyncData, remote: SyncData): SyncData {
     rushBest: maxNum(local.rushBest, remote.rushBest),
     rushBestCorrect: maxNum(local.rushBestCorrect, remote.rushBestCorrect),
     rushGames: maxNum(local.rushGames, remote.rushGames),
+    // F9 — freeze is progress too: own-count takes the max, day sets are unioned,
+    // and the last earn-day (cooldown anchor) comes from whichever side is newer
+    freezeCount: Math.min(2, maxNum(local.freezeCount, remote.freezeCount)),
+    freezeEarnedDay: (local.freezeEarnedDay || "") >= (remote.freezeEarnedDay || "") ? local.freezeEarnedDay : remote.freezeEarnedDay,
+    freezeUsedDays: [...new Set([...(local.freezeUsedDays ?? []), ...(remote.freezeUsedDays ?? [])])].slice(-30),
+    goalMetDays: [...new Set([...(local.goalMetDays ?? []), ...(remote.goalMetDays ?? [])])].slice(-14),
   };
 }
 

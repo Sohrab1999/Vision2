@@ -62,8 +62,21 @@ export const DEFAULT_SETTINGS: StudySettings = { ttsRate: 1, fontScale: 1, reduc
 export const DAILY_GOAL_OPTIONS = [5, 10, 15] as const;
 const DEFAULT_DAILY_GOAL = 10;
 
+// ---------------- F9 — streak freeze (نگهبان زنجیره) ----------------
+
+export const FREEZE_CAP = 2; // حداکثر یخ‌های قابل نگهداری (ضد-آبُس)
+export const FREEZE_EARN_GOALS = 3; // ۳ هدفِ کامل در بازهٔ ۷روزه ← ۱ یخ
+export const FREEZE_WINDOW = 7; // بازهٔ شمارش، به روز
+
 function todayStr(d = new Date()): string {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+}
+
+/** ISO day-key of n days ago (string-comparable) */
+export function daysAgoKey(n: number): string {
+  const d = new Date();
+  d.setDate(d.getDate() - n);
+  return todayStr(d);
 }
 
 export interface StudyState {
@@ -91,6 +104,13 @@ export interface StudyState {
   onboarded: boolean; // first-run welcome flow completed?
   settings: StudySettings;
   syncCode: string; // F3 learner code — empty when cloud sync is off
+
+  // F9 — streak freeze
+  freezeCount: number; // owned freezes (0..FREEZE_CAP)
+  freezeEarnedDay: string; // day the last freeze was earned (earn cooldown)
+  freezeUsedDays: string[]; // days a freeze was auto-consumed (anti double-use)
+  goalMetDays: string[]; // days whose daily goal was reached (earn condition)
+  freezeSavedDay: string; // day the latest freeze actually saved the chain (device-only toast)
 
   setProfile: (name: string, color: string) => void;
   setDailyGoal: (n: number) => void;
@@ -185,6 +205,11 @@ export const useStudy = create<StudyState>()(
       onboarded: false,
       settings: DEFAULT_SETTINGS,
       syncCode: "",
+      freezeCount: 0,
+      freezeEarnedDay: "",
+      freezeUsedDays: [],
+      goalMetDays: [],
+      freezeSavedDay: "",
 
       setProfile: (name, color) => set({ userName: name, avatarColor: color }),
       setDailyGoal: (n) => set({ dailyGoal: Math.min(20, Math.max(5, Math.round(n))) }),
@@ -255,13 +280,15 @@ export const useStudy = create<StudyState>()(
         set((s) => {
           const today = todayStr();
           const stat = s.dayStat.day === today ? normDayStat(s.dayStat) : emptyDayStat(today);
-          return applyStreak(s, { ...stat, reviews: stat.reviews + 1 });
+          const base = applyStreak(s, { ...stat, reviews: stat.reviews + 1 });
+          return { ...base, ...goalAndFreezePatch(s, base.dayStat, base.freezeCount) };
         }),
       trackQuizDone: () =>
         set((s) => {
           const today = todayStr();
           const stat = s.dayStat.day === today ? normDayStat(s.dayStat) : emptyDayStat(today);
-          return applyStreak(s, { ...stat, quizzes: stat.quizzes + 1 });
+          const base = applyStreak(s, { ...stat, quizzes: stat.quizzes + 1 });
+          return { ...base, ...goalAndFreezePatch(s, base.dayStat, base.freezeCount) };
         }),
       trackDictation: () =>
         set((s) => {
@@ -326,6 +353,10 @@ export const useStudy = create<StudyState>()(
         onboarded: s.onboarded,
         settings: s.settings,
         syncCode: s.syncCode,
+        freezeCount: s.freezeCount,
+        freezeEarnedDay: s.freezeEarnedDay,
+        freezeUsedDays: s.freezeUsedDays,
+        goalMetDays: s.goalMetDays,
       }),
     }
   )
@@ -339,9 +370,15 @@ function applyStreak(
     bestStreak: number;
     lastActiveDay: string;
     history: HistoryMap;
+    freezeCount: number;
+    freezeUsedDays: string[];
+    freezeSavedDay: string;
   },
   dayStat: DayStat
-): Pick<StudyState, "streak" | "bestStreak" | "lastActiveDay" | "dayStat" | "history"> {
+): Pick<
+  StudyState,
+  "streak" | "bestStreak" | "lastActiveDay" | "dayStat" | "history" | "freezeCount" | "freezeUsedDays" | "freezeSavedDay"
+> {
   const today = todayStr();
   // keep last 30 days of weekly history
   const history: HistoryMap = { ...s.history, [dayStat.day]: { reviews: dayStat.reviews, quizzes: dayStat.quizzes } };
@@ -350,12 +387,69 @@ function applyStreak(
     delete history[k];
   }
   if (s.lastActiveDay === today) {
-    return { streak: s.streak, bestStreak: s.bestStreak, lastActiveDay: today, dayStat, history };
+    return {
+      streak: s.streak,
+      bestStreak: s.bestStreak,
+      lastActiveDay: today,
+      dayStat,
+      history,
+      freezeCount: s.freezeCount,
+      freezeUsedDays: s.freezeUsedDays,
+      freezeSavedDay: s.freezeSavedDay,
+    };
   }
-  const y = new Date();
-  y.setDate(y.getDate() - 1);
-  const streak = s.lastActiveDay === todayStr(y) ? s.streak + 1 : 1;
-  return { streak, bestStreak: Math.max(streak, s.bestStreak), lastActiveDay: today, dayStat, history };
+
+  // F9 — freeze bookkeeping (only mutated when a freeze actually repairs the chain)
+  const freeze = {
+    freezeCount: s.freezeCount,
+    freezeUsedDays: s.freezeUsedDays,
+    freezeSavedDay: s.freezeSavedDay,
+  };
+
+  const streak = (() => {
+    if (s.lastActiveDay === daysAgoKey(1)) return s.streak + 1; // natural continue
+    // exactly one missed day + a freeze available → the freeze saves the chain
+    if (
+      s.lastActiveDay === daysAgoKey(2) &&
+      s.freezeCount > 0 &&
+      !s.freezeUsedDays.includes(daysAgoKey(1))
+    ) {
+      freeze.freezeCount = s.freezeCount - 1;
+      freeze.freezeUsedDays = [...s.freezeUsedDays, daysAgoKey(1)].slice(-30);
+      freeze.freezeSavedDay = today;
+      return s.streak + 1;
+    }
+    return 1; // gap too long (or no freeze) → chain resets
+  })();
+
+  return { streak, bestStreak: Math.max(streak, s.bestStreak), lastActiveDay: today, dayStat, history, ...freeze };
+}
+
+/**
+ * F9 — record «هدفِ امروز کامل شد» and maybe grant a freeze.
+ * Grant rule: ≥۳ روزِ هدف‌دار در ۷ روز گذشته، بدون ساخت یخ در ۷ روز گذشته،
+ * زیر سقف. freezeCountNow از نتیجهٔ applyStreak می‌آید تا مصرفِ یخ در همان
+ * فراخوانی بازنویسی نشود.
+ */
+function goalAndFreezePatch(
+  s: { dailyGoal: number; goalMetDays: string[]; freezeEarnedDay: string },
+  dayStat: DayStat,
+  freezeCountNow: number
+): Pick<StudyState, "goalMetDays" | "freezeCount" | "freezeEarnedDay"> {
+  const windowStart = daysAgoKey(FREEZE_WINDOW - 1);
+  const today = todayStr();
+  const goalMetDays = s.goalMetDays.includes(today) ? s.goalMetDays : [...s.goalMetDays, today].slice(-14);
+
+  const met = dayStat.reviews + dayStat.quizzes >= s.dailyGoal;
+  const inWindow = goalMetDays.filter((d) => d >= windowStart).length;
+  const cooledDown = !s.freezeEarnedDay || s.freezeEarnedDay < windowStart;
+  const grant = met && inWindow >= FREEZE_EARN_GOALS && cooledDown && freezeCountNow < FREEZE_CAP;
+
+  return {
+    goalMetDays,
+    freezeCount: grant ? freezeCountNow + 1 : freezeCountNow,
+    freezeEarnedDay: grant ? today : s.freezeEarnedDay,
+  };
 }
 
 /** last N days (oldest → newest) with Persian weekday labels */

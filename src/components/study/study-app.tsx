@@ -19,6 +19,7 @@ import RushView from "./rush-view";
 import ShortcutGuide from "./shortcut-guide";
 import ReportCard from "./report-card";
 import Onboarding from "./onboarding";
+import PwaLayer from "./pwa-layer";
 
 export default function StudyApp() {
   const view = useStudy((s) => s.view);
@@ -146,6 +147,9 @@ export default function StudyApp() {
 
       {/* first-run welcome + personalization (F1) */}
       <Onboarding />
+
+      {/* F4+F9 — PWA install flow, due badge & streak-freeze toasts */}
+      <PwaLayer />
 
       {/* letter-style progress report (opened from tool cards / skill panel) */}
       <ReportCard />

@@ -439,3 +439,27 @@ Stage Summary:
 - تصمیم‌های فنی: کد ۸کاراکتری به‌جای auth کامل (طبق هشدار ⛔ نقشه راه)؛ merge دوطرفه به‌جای جایگزینی؛ تنظیمات/هدف هر دستگاهی، پیشرفتِ مشترک
 - باقی‌ماندهٔ F5: ۲۶۰ تست دیگر (فقط گسترش exam-fa.ts) — کاندیدای راندهای بعدی در کنار اسپرینت ۳
 - مسیر بعدی طبق نقشه راه: اسپرینت ۳ (Retention) — F4 PWA نصب‌پذیر + بدج سررسید مرور SRS + F9 نگهبان زنجیره
+
+---
+Task ID: 21
+Agent: main (Z.ai Code) — Sprint 3 (Retention) طبق نقشه راه فیچرها
+Task: F4 PWA نصب‌پذیر + بدج سررسید مرور + F9 نگهبان زنجیره (Streak Freeze)
+
+Work Log:
+- [F4 آیکون‌ها] آیکون اپ با AI تولید (کتاب + شعله + برند Vision 2 روی گرادیان زمردی) و با sharp در ۴ اندازه برش خورد: icon-192/512، icon-maskable-512 (safe-zone ۸۰٪ روی زمینهٔ emerald-700)، apple-touch-icon 180 + favicon-32
+- [F4 manifest] src/app/manifest.ts — نام/زبان fa/dir rtl، standalone، theme #047857، background stone-50، ۳ آیکون + دو shortcut (?goto=review / ?goto=exam)؛ layout.tsx: viewport با themeColor روشن/تاریک + appleWebApp + applicationName + icons
+- [F4 service worker] public/sw.js (vision2-sw-v1): precache `/` و لوگو/آیکون‌ها؛ navigations network-first با timeout 3.5s → کش → `/` → صفحهٔ آفلاین inline؛ /api/* همیشه network-only (rate-limit و sync زنده می‌مانند)؛ /_next/static و آیکون‌ها cache-first؛ بقیه network→cache؛ پیام SKIP_WAITING + پاک‌سازی کش‌های نسخهٔ قدیم در activate. Bump نسخه = invalidation کامل
+- [F4 UI] src/components/study/pwa-layer.tsx — ثبت SW؛ گرفتن beforeinstallprompt (ماژول‌لول) + کارت شناور «نصب رایگان/بعداً» با dismiss-cooldown ۷روزه (state مشتق‌شده، بدون setState-in-effect — خطای lint رفع شد)؛ رویداد install-app از تنظیمات → prompt() یا دیالوگ راهنما (iOS: اشتراک ← افزودن به صفحهٔ اصلی / دسکتاپ: منوی مرورگر)؛ toast نصب موفق (appinstalled)؛ hidden در display-mode standalone
+- [F4 بدج سررسید] subscribe به استور + visibilitychange → navigator.setAppBadge(min(due,99)) / clearAppBadge (گارد کامل) + توست یک‌باردرروز «N واژهٔ سررسید منتظر توست» با dedupe localStorage؛ میان‌برهای manifest (?goto=) با حذف پارامتر از URL
+- [F4 تنظیمات] ردیف «نصب وب‌کتاب روی دستگاه» در SettingsPopover (مخفی در standalone، سبک emerald)
+- [F9 استور] study-store.ts: FREEZE_CAP=2 / FREEZE_EARN_GOALS=3 / FREEZE_WINDOW=7 + فیلدهای freezeCount/freezeEarnedDay/freezeUsedDays/goalMetDays (persist) و freezeSavedDay (device-only) + daysAgoKey؛ applyStreak جدید: غیبت دقیقاً ۱روزه + یخ موجود و مصرف‌نشده → زنجیره ادامه (streak+1)، یخ -۱، روز غیبت در freezeUsedDays (slice -30)، freezeSavedDay=امروز؛ gap≥۲روز یا بدون یخ → ریست به ۱ (ضد-آبُس)؛ goalAndFreezePatch در trackReview/trackQuizDone: ثبت روزِ هدف‌دار (reviews+quizzes ≥ dailyGoal، cap ۱۴) و ساخت یخ با ۳ روزِ هدف‌دار در پنجرهٔ ۷روزه + cooldown ۷روزه + سقف ۲ — freezeCountNow از خروجی applyStreak می‌آید تا مصرف و ساخت در همان فراخوانی تداخل نکنند
+- [F9 سازگاری داده] backup.ts (payload + collectData + parseBackup sanitize: clamp 0..2، فیلتر آرایه‌ها) و sync.ts (merge: freezeCount=max با cap، freezeUsedDays/goalMetDays=union، freezeEarnedDay=جدیدترین) — نسخهٔ پشتیبان همان ۱ ماند (فیلدهای اختیاری با default)؛ curl roundtrip تأیید شد
+- [F9 UI] چیپ «N یخِ زنجیره» (سفید-یخی، Snowflake) زیر زنجیره در خانه + متن «امروز یخ، زنجیره را نجات داد!» در روزِ نجات؛ توست‌های سراسری: «❄️ یخِ تو نجاتت داد!» و «❄️ یک یخِ زنجیره ساختی!» (هر دو یک‌باردرروز) — نشان «هفتهٔ کامل» سیستم نشان‌های موجود هم با زنجیرهٔ ۷روزه خودکار صادر شد
+- [QA agent-browser] (۱) SW ثبت و active با scope /؛ (۲) آفلاین واقعی: set offline on → reload → خانه کامل از کش رندر شد؛ (۳) توست سررسید «۲ واژهٔ سررسید منتظر توست» + کارت نصب هم‌زمان (BIP در Chromium آمد = معیارهای نصب‌پذیری برقرار)؛ (۴) ساخت یخ: seed دو روز هدف‌دار + reviews=9/10 → یک «بلدم» → reviews=10، goalMetDays ۳روزه، freezeCount=1، freezeEarnedDay=امروز + توست + چیپ؛ (۵) نجات زنجیره: streak=6 با lastActiveDay=۲روز پیش + ۱ یخ → یک مرور → streak=7 (نه ریست)، freezeCount=0، freezeUsedDays=[دیروز]، توست نجات + پیام آبی خانه + نشان «هفتهٔ کامل»؛ (۶) ضد-آبُس: streak=5 با غیبت ۲روزه و بدون یخ → مرور → streak=1؛ (۷) ردیف تنظیمات → دیالوگ راهنمای نصب دسکتاپ؛ (۸) ?goto=exam → ورود مستقیم به آزمون + پاک‌شدن پارامتر؛ (۹) موبایل ۳۹۰px کارت نصب فول‌ویدث بالای محتوا؛ (۱۰) setAppBadge در Chromium موجود و بدون خطا؛ (۱۱) sync roundtrip فیلدهای یخ با curl؛ (۱۲) کنسول نشست تازه بدون خطا؛ tsc=۰ خطا، lint=۰ خطا؛ dev.log فقط 200
+- [نقشه راه] چک‌باکس‌های F4 (نصب‌پذیر + بدج)، F9 و اسپرینت ۳ تیک خورد + Progress Log به‌روز شد
+
+Stage Summary:
+- اسپرینت ۳ (Retention) کامل شد: حلقهٔ بازگشت برقرار است — اپ نصب‌پذیر شد (حضور روی گوشی)، آفلاین جواب می‌دهد، بدج آیکون تعداد سررسیدها را نشان می‌دهد و یک روز غیبت دیگر زنجیره را نمی‌سوزاند
+- تصمیم‌های فنی: یخ فقط غیبت ۱روزه را نجات می‌دهد (ضد-آبُس)؛ کسب با «هدف کامل» گره خورده تا حلقهٔ انگیزشی روزانه تقویت شود؛ تنظیمات/توصیه‌ها device-owned و یخ‌ها sync-owned مانند بقیهٔ پیشرفت
+- باقی‌ماندهٔ نقشه راه: اسپرینت ۴ (F6 تمرین شنیداری + F7 واژه‌های خطرناک) و اسپرینت ۵ (F8 AI Explain + F10 smoke/analytics) + F5 فازهای بعدی (۲۶۰ تست)
+- نکتهٔ کوچک مشاهده‌شده: رینگ «اهداف روزانه» در حالت صفر «۰٪» ریز را نشان می‌دهد که در فونت کنونی شبیه «-٪» دیده می‌شود (از قبل موجود، غیرمسدودکننده — کاندیدای پولیش بصری راند بعد)

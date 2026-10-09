@@ -1,0 +1,553 @@
+     1→"use client";
+     2→
+     3→import { BookOpen, Home, Library, ClipboardCheck, BookMarked, Sun, Moon, Flame, User, Download, Upload, ShieldCheck, History, RotateCcw, Keyboard, Laptop, CloudUpload, CloudDownload, Copy, Link2Off, RefreshCw } from "lucide-react";
+     4→import { useTheme } from "next-themes";
+     5→import { useEffect, useRef, useState } from "react";
+     6→import { useStudy, AVATAR_COLORS, type View } from "@/lib/study-store";
+     7→import { useMounted } from "@/lib/use-mounted";
+     8→import { faNum } from "@/lib/study-theme";
+     9→import { exportProgress, parseBackup, applyBackup, backupSummary, readAutoBackup, restoreAutoBackup, autoBackupAgeFa, collectData } from "@/lib/backup";
+    10→import { pushSync, fetchSync, mergeSyncData, applyMergedSnapshot, normalizeCode, looksLikeCode } from "@/lib/sync";
+    11→import { useToast } from "@/hooks/use-toast";
+    12→import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+    13→import SettingsPopover from "./settings-popover";
+    14→
+    15→const navItems: { key: string; label: string; icon: React.ElementType; view: View }[] = [
+    16→  { key: "home", label: "خانه", icon: Home, view: { type: "home" } },
+    17→  { key: "dictionary", label: "دیکشنری", icon: BookMarked, view: { type: "dictionary" } },
+    18→  { key: "exam", label: "آزمون جامع", icon: ClipboardCheck, view: { type: "exam" } },
+    19→  { key: "appendix", label: "ضمیمه", icon: Library, view: { type: "appendix" } },
+    20→];
+    21→
+    22→export const avatarClasses: Record<string, string> = {
+    23→  emerald: "bg-gradient-to-br from-emerald-400 to-emerald-700 shadow-emerald-700/30",
+    24→  amber: "bg-gradient-to-br from-amber-400 to-orange-600 shadow-orange-600/30",
+    25→  rose: "bg-gradient-to-br from-rose-400 to-rose-700 shadow-rose-700/30",
+    26→  violet: "bg-gradient-to-br from-violet-400 to-purple-700 shadow-purple-700/30",
+    27→  sky: "bg-gradient-to-br from-sky-400 to-cyan-700 shadow-cyan-700/30",
+    28→};
+    29→
+    30→export default function Header() {
+    31→  const view = useStudy((s) => s.view);
+    32→  const setView = useStudy((s) => s.setView);
+    33→  const goHome = useStudy((s) => s.goHome);
+    34→  const streak = useStudy((s) => s.streak);
+    35→  const userName = useStudy((s) => s.userName);
+    36→  const avatarColor = useStudy((s) => s.avatarColor);
+    37→  const setProfile = useStudy((s) => s.setProfile);
+    38→  const ensureUserId = useStudy((s) => s.ensureUserId);
+    39→  const syncCode = useStudy((s) => s.syncCode);
+    40→  const setSyncCode = useStudy((s) => s.setSyncCode);
+    41→  const mounted = useMounted();
+    42→  const { theme, setTheme } = useTheme();
+    43→  const isDark = mounted && theme === "dark";
+    44→  const { toast } = useToast();
+    45→  const fileRef = useRef<HTMLInputElement>(null);
+    46→
+    47→  const [nameDraft, setNameDraft] = useState("");
+    48→  const [colorDraft, setColorDraft] = useState(avatarColor);
+    49→  const [open, setOpen] = useState(false);
+    50→  const [saved, setSaved] = useState(false);
+    51→  const [importing, setImporting] = useState(false);
+    52→  const [autoSnap, setAutoSnap] = useState<ReturnType<typeof readAutoBackup>>(null);
+    53→  // F3 sync section state
+    54→  const [codeInput, setCodeInput] = useState("");
+    55→  const [syncing, setSyncing] = useState<"" | "push" | "pull" | "create" | "join">("");
+    56→  const [lastSyncAt, setLastSyncAt] = useState<string>(() => {
+    57→    try {
+    58→      return localStorage.getItem("vision2-sync-at") ?? "";
+    59→    } catch {
+    60→      return "";
+    61→    }
+    62→  });
+    63→
+    64→  const openPopover = (next: boolean) => {
+    65→    setOpen(next);
+    66→    if (next) {
+    67→      setNameDraft(userName);
+    68→      setColorDraft(avatarColor);
+    69→      setSaved(false);
+    70→      setAutoSnap(readAutoBackup());
+    71→      try {
+    72→        setLastSyncAt(localStorage.getItem("vision2-sync-at") ?? "");
+    73→      } catch {
+    74→        /* ignore */
+    75→      }
+    76→    }
+    77→  };
+    78→
+    79→  // open the profile popover from anywhere (e.g. leaderboard CTA)
+    80→  useEffect(() => {
+    81→    const handler = () => openPopover(true);
+    82→    window.addEventListener("open-profile", handler);
+    83→    return () => window.removeEventListener("open-profile", handler);
+    84→  }, [userName, avatarColor]);
+    85→
+    86→  const isActive = (item: { key: string }) => {
+    87→    if (item.key === "home") return view.type === "home" || view.type === "lesson";
+    88→    return view.type === item.key;
+    89→  };
+    90→
+    91→  const saveProfile = () => {
+    92→    const name = nameDraft.trim();
+    93→    if (name.length < 2) return;
+    94→    setProfile(name, colorDraft);
+    95→    const userId = ensureUserId();
+    96→    fetch("/api/profile", {
+    97→      method: "POST",
+    98→      headers: { "Content-Type": "application/json" },
+    99→      body: JSON.stringify({ userId, name, color: colorDraft }),
+   100→    }).catch(() => {});
+   101→    setSaved(true);
+   102→    setTimeout(() => setOpen(false), 900);
+   103→  };
+   104→
+   105→  const handleExport = () => {
+   106→    const ok = exportProgress();
+   107→    toast(
+   108→      ok
+   109→        ? { title: "✓ پشتیبان دانلود شد", description: "فایل JSON پیشرفت شما ذخیره شد — آن را جایی امن نگه دارید.", duration: 3500 }
+   110→        : { title: "خطا در پشتیبان‌گیری", description: "لطفاً دوباره تلاش کنید.", duration: 3000 }
+   111→    );
+   112→  };
+   113→
+   114→  const handleImportFile = async (file: File | undefined) => {
+   115→    if (!file) return;
+   116→    setImporting(true);
+   117→    try {
+   118→      const text = await file.text();
+   119→      const payload = parseBackup(text);
+   120→      const sum = backupSummary(payload);
+   121→      if (applyBackup(payload)) {
+   122→        toast({
+   123→          title: "✓ پشتیبان بازیابی شد",
+   124→          description: `${faNum(sum.known)} واژه، ${faNum(sum.results)} نتیجه و ${faNum(sum.srs)} واژهٔ SRS بازیابی می‌شود…`,
+   125→          duration: 2500,
+   126→        });
+   127→        setTimeout(() => window.location.reload(), 900);
+   128→      } else {
+   129→        throw new Error("اعمال پشتیبان روی حافظهٔ مرورگر ناموفق بود.");
+   130→      }
+   131→    } catch (err) {
+   132→      toast({
+   133→        title: "فایل پشتیبان نامعتبر",
+   134→        description: err instanceof Error ? err.message : "فایل انتخاب‌شده قابل خواندن نیست.",
+   135→        duration: 4000,
+   136→      });
+   137→    } finally {
+   138→      setImporting(false);
+   139→      if (fileRef.current) fileRef.current.value = "";
+   140→    }
+   141→  };
+   142→
+   143→  const handleAutoRestore = () => {
+   144→    if (!autoSnap) return;
+   145→    const sum = backupSummary({ app: "vision2-webbook", version: 1, exportedAt: autoSnap.savedAt, data: autoSnap.data });
+   146→    if (restoreAutoBackup()) {
+   147→      toast({
+   148→        title: "✓ پشتیبان خودکار بازیابی شد",
+   149→        description: `${faNum(sum.known)} واژه و ${faNum(sum.results)} نتیجه از پشتیبان ${autoBackupAgeFa(autoSnap.savedAt)} برمی‌گردد…`,
+   150→        duration: 2500,
+   151→      });
+   152→      setTimeout(() => window.location.reload(), 900);
+   153→    } else {
+   154→      toast({ title: "بازیابی ناموفق", description: "پشتیبان خودکار قابل خواندن نیست.", duration: 3000 });
+   155→    }
+   156→  };
+   157→
+   158→  // ------------------- F3 learner-code sync -------------------
+   159→
+   160→  const markSynced = (iso?: string) => {
+   161→    const at = iso ?? new Date().toISOString();
+   162→    try {
+   163→      localStorage.setItem("vision2-sync-at", at);
+   164→    } catch {
+   165→      /* ignore */
+   166→    }
+   167→    setLastSyncAt(at);
+   168→  };
+   169→
+   170→  const handleCreateCode = async () => {
+   171→    setSyncing("create");
+   172→    const res = await pushSync(null);
+   173→    setSyncing("");
+   174→    if (res.ok && res.code) {
+   175→      setSyncCode(res.code);
+   176→      markSynced(res.updatedAt);
+   177→      toast({
+   178→        title: "✓ کد یادگیرنده ساخته شد",
+   179→        description: `کد تو «${res.code}» است — روی هر دستگاهی که واردش کنی، پیشرفتت همان‌جا هم هست.`,
+   180→        duration: 5000,
+   181→      });
+   182→    } else {
+   183→      toast({ title: "همگام‌سازی ناموفق", description: res.error ?? "دوباره تلاش کن.", duration: 3500 });
+   184→    }
+   185→  };
+   186→
+   187→  const handlePushNow = async () => {
+   188→    if (!syncCode) return;
+   189→    setSyncing("push");
+   190→    const res = await pushSync(syncCode);
+   191→    setSyncing("");
+   192→    if (res.ok) {
+   193→      markSynced(res.updatedAt);
+   194→      toast({ title: "✓ روی ابر به‌روز شد", description: "آخرین وضعیت پیشرفت روی سرور ذخیره شد.", duration: 2500 });
+   195→    } else {
+   196→      toast({ title: "همگام‌سازی ناموفق", description: res.error ?? "دوباره تلاش کن.", duration: 3500 });
+   197→    }
+   198→  };
+   199→
+   200→  const handlePullMerge = async (codeForJoin?: string) => {
+   201→    const code = codeForJoin ?? syncCode;
+   202→    setSyncing(codeForJoin ? "join" : "pull");
+   203→    const res = await fetchSync(code);
+   204→    if (!res.ok || !res.data) {
+   205→      setSyncing("");
+   206→      toast({ title: "بازیابی ناموفق", description: res.error ?? "دوباره تلاش کن.", duration: 3500 });
+   207→      return;
+   208→    }
+   209→    const merged = mergeSyncData(collectData(), res.data);
+   210→    if (applyMergedSnapshot(merged)) {
+   211→      if (codeForJoin) setSyncCode(normalizeCode(codeForJoin));
+   212→      markSynced(res.updatedAt);
+   213→      toast({
+   214→        title: "✓ پیشرفت ادغام شد",
+   215→        description: "هیچ چیزی از دست نرفته — بهترین وضعیت هر واژه از هر دو دستگاه حفظ می‌شود…",
+   216→        duration: 3000,
+   217→      });
+   218→      setTimeout(() => window.location.reload(), 900);
+   219→    } else {
+   220→      setSyncing("");
+   221→      toast({ title: "ادغام ناموفق", description: "ذخیره روی حافظهٔ مرورگر انجام نشد.", duration: 3500 });
+   222→    }
+   223→  };
+   224→
+   225→  const handleCopyCode = async () => {
+   226→    try {
+   227→      await navigator.clipboard.writeText(syncCode);
+   228→      toast({ title: "✓ کد کپی شد", description: "آن را جایی امن نگه دار — کلید پیشرفتت است.", duration: 2500 });
+   229→    } catch {
+   230→      toast({ title: "کپی نشد", description: `کد را دستی یادداشت کن: ${syncCode}`, duration: 4000 });
+   231→    }
+   232→  };
+   233→
+   234→  const handleDisconnect = () => {
+   235→    setSyncCode("");
+   236→    toast({
+   237→      title: "همگام‌سازی قطع شد",
+   238→      description: "پیشرفتِ همین دستگاه حذف نشد؛ کد سرور هم باقی می‌ماند و می‌توانی دوباره واردش کنی.",
+   239→      duration: 3500,
+   240→    });
+   241→  };
+   242→
+   243→  return (
+   244→    <header className="sticky top-0 z-40 w-full border-b border-stone-200/80 bg-[#f7f6f2]/85 backdrop-blur-md">
+   245→      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4">
+   246→        <button
+   247→          onClick={goHome}
+   248→          className="flex items-center gap-2.5 text-right transition-opacity hover:opacity-80"
+   249→          aria-label="رفتن به صفحهٔ اصلی"
+   250→        >
+   251→          <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-800 text-white shadow-md shadow-emerald-900/20">
+   252→            <BookOpen size={20} />
+   253→          </span>
+   254→          <span className="hidden leading-tight min-[420px]:block">
+   255→            <span className="block text-[15px] font-extrabold text-stone-800">
+   256→              ویژن ۲ <span className="en-text text-emerald-700">Vision Two</span>
+   257→            </span>
+   258→            <span className="hidden text-[11px] text-stone-500 sm:block">
+   259→              وب‌کتاب تعاملی زبان یازدهم
+   260→            </span>
+   261→          </span>
+   262→        </button>
+   263→
+   264→        <div className="flex items-center gap-1">
+   265→          {/* streak flame */}
+   266→          {mounted && streak > 0 && (
+   267→            <span
+   268→              className="mr-1 hidden items-center gap-1 rounded-full border border-amber-200 bg-gradient-to-l from-amber-50 to-orange-50 px-2.5 py-1.5 text-[12px] font-black text-amber-700 sm:inline-flex"
+   269→              title={`زنجیرهٔ ${faNum(streak)} روزه مطالعه`}
+   270→            >
+   271→              <Flame size={14} className="streak-flame" />
+   272→              {faNum(streak)}
+   273→            </span>
+   274→          )}
+   275→          <button
+   276→            onClick={() => setTheme(isDark ? "light" : "dark")}
+   277→            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-stone-200 bg-white text-stone-500 transition-all hover:text-amber-500 hover:border-amber-200 active:scale-90"
+   278→            aria-label={isDark ? "حالت روشن" : "حالت شب"}
+   279→            title={isDark ? "حالت روشن" : "حالت شب"}
+   280→          >
+   281→            {isDark ? <Sun size={16} /> : <Moon size={16} />}
+   282→          </button>
+   283→
+   284→          {/* settings hub (TTS speed / font size / motion / daily goal) */}
+   285→          <SettingsPopover />
+   286→
+   287→          {/* keyboard shortcuts guide */}
+   288→          <button
+   289→            onClick={() => window.dispatchEvent(new CustomEvent("open-shortcuts"))}
+   290→            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-stone-200 bg-white text-stone-500 transition-all hover:text-emerald-600 hover:border-emerald-200 active:scale-90"
+   291→            aria-label="راهنمای میان‌برهای کیبورد"
+   292→            title="راهنمای میان‌برهای کیبورد (؟)"
+   293→          >
+   294→            <Keyboard size={16} />
+   295→          </button>
+   296→
+   297→          {/* profile avatar + popover */}
+   298→          <Popover open={open} onOpenChange={openPopover}>
+   299→            <PopoverTrigger asChild>
+   300→              <button
+   301→                className="ml-1 flex shrink-0 items-center gap-2 rounded-full border border-stone-200 bg-white py-1 pl-1 pr-2.5 transition-all hover:border-emerald-300 hover:shadow-sm active:scale-95"
+   302→                aria-label="پروفایل من"
+   303→                title="پروفایل من"
+   304→              >
+   305→                {mounted && userName ? (
+   306→                  <>
+   307→                    <span className="hidden max-w-[90px] truncate text-[12px] font-extrabold text-stone-700 sm:block">
+   308→                      {userName}
+   309→                    </span>
+   310→                    <span
+   311→                      className={`flex h-7 w-7 items-center justify-center rounded-full text-[12px] font-black text-white shadow-md ${avatarClasses[avatarColor] ?? avatarClasses.emerald}`}
+   312→                    >
+   313→                      {userName.trim().charAt(0)}
+   314→                    </span>
+   315→                  </>
+   316→                ) : (
+   317→                  <span
+   318→                    className={`flex h-7 w-7 items-center justify-center rounded-full border-2 border-dashed border-stone-300 text-stone-400`}
+   319→                  >
+   320→                    <User size={14} />
+   321→                  </span>
+   322→                )}
+   323→              </button>
+   324→            </PopoverTrigger>
+   325→            <PopoverContent align="end" className="w-72 rounded-2xl border-stone-200 p-4">
+   326→              <div className="mb-3">
+   327→                <h3 className="text-sm font-extrabold text-stone-800">پروفایل یادگیرنده</h3>
+   328→                <p className="mt-0.5 text-[11.5px] leading-5 text-stone-500">
+   329→                  نام خود را وارد کنید تا در جدول امتیازات کلاس و فید فعالیت دیده شوید.
+   330→                </p>
+   331→              </div>
+   332→              <input
+   333→                value={nameDraft}
+   334→                onChange={(e) => {
+   335→                  setNameDraft(e.target.value);
+   336→                  setSaved(false);
+   337→                }}
+   338→                onKeyDown={(e) => e.key === "Enter" && saveProfile()}
+   339→                placeholder="مثلاً: امیر محمد"
+   340→                maxLength={24}
+   341→                className="mb-3 w-full rounded-xl border border-stone-300 bg-white px-3 py-2.5 text-sm font-bold text-stone-800 outline-none transition-colors placeholder:font-normal placeholder:text-stone-400 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
+   342→              />
+   343→              <div className="mb-4">
+   344→                <div className="mb-2 text-[11.5px] font-bold text-stone-500">رنگ آواتار:</div>
+   345→                <div className="flex gap-2">
+   346→                  {AVATAR_COLORS.map((c) => (
+   347→                    <button
+   348→                      key={c}
+   349→                      onClick={() => {
+   350→                        setColorDraft(c);
+   351→                        setSaved(false);
+   352→                      }}
+   353→                      aria-label={`رنگ ${c}`}
+   354→                      className={`h-8 w-8 rounded-full shadow-md transition-all ${avatarClasses[c]} ${
+   355→                        colorDraft === c
+   356→                          ? "scale-110 ring-2 ring-stone-700 ring-offset-2"
+   357→                          : "opacity-70 hover:opacity-100"
+   358→                      }`}
+   359→                    />
+   360→                  ))}
+   361→                </div>
+   362→              </div>
+   363→              <button
+   364→                onClick={saveProfile}
+   365→                disabled={nameDraft.trim().length < 2}
+   366→                className="w-full rounded-xl bg-emerald-600 py-2.5 text-sm font-bold text-white transition-all hover:bg-emerald-700 active:scale-95 disabled:cursor-not-allowed disabled:opacity-40"
+   367→              >
+   368→                {saved ? "✓ ذخیره شد!" : "ذخیرهٔ پروفایل"}
+   369→              </button>
+   370→
+   371→              {/* ------------------- progress backup ------------------- */}
+   372→              <div className="mt-4 border-t border-stone-200 pt-3">
+   373→                <div className="mb-2 flex items-center gap-1.5 text-[11.5px] font-bold text-stone-500">
+   374→                  <ShieldCheck size={13} className="text-emerald-600" />
+   375→                  پشتیبان‌گیری پیشرفت
+   376→                </div>
+   377→                <div className="grid grid-cols-2 gap-2">
+   378→                  <button
+   379→                    onClick={handleExport}
+   380→                    className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-stone-200 bg-stone-50 px-2 py-2 text-[12px] font-bold text-stone-700 transition-all hover:border-emerald-300 hover:text-emerald-700 active:scale-95"
+   381→                  >
+   382→                    <Download size={14} />
+   383→                    دانلود پشتیبان
+   384→                  </button>
+   385→                  <button
+   386→                    onClick={() => fileRef.current?.click()}
+   387→                    disabled={importing}
+   388→                    className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-stone-200 bg-stone-50 px-2 py-2 text-[12px] font-bold text-stone-700 transition-all hover:border-amber-300 hover:text-amber-700 active:scale-95 disabled:opacity-50"
+   389→                  >
+   390→                    <Upload size={14} />
+   391→                    {importing ? "در حال خواندن…" : "بازیابی پشتیبان"}
+   392→                  </button>
+   393→                </div>
+   394→                <input
+   395→                  ref={fileRef}
+   396→                  type="file"
+   397→                  accept="application/json,.json"
+   398→                  className="hidden"
+   399→                  onChange={(e) => handleImportFile(e.target.files?.[0])}
+   400→                />
+   401→                {/* auto-backup snapshot status */}
+   402→                {autoSnap ? (
+   403→                  <div className="mt-2.5 flex items-center justify-between gap-2 rounded-xl border border-emerald-200 bg-emerald-50/70 px-2.5 py-2">
+   404→                    <div className="flex items-center gap-1.5 text-[11px] font-bold text-emerald-800">
+   405→                      <History size={13} className="shrink-0 text-emerald-600" />
+   406→                      <span>
+   407→                        پشتیبان خودکار: {autoBackupAgeFa(autoSnap.savedAt)}
+   408→                        <span className="mx-1 font-normal text-emerald-700/70">
+   409→                          ({faNum(Object.values(autoSnap.data.known).filter(Boolean).length)} واژه)
+   410→                        </span>
+   411→                      </span>
+   412→                    </div>
+   413→                    <button
+   414→                      onClick={handleAutoRestore}
+   415→                      className="inline-flex shrink-0 items-center gap-1 rounded-lg border border-emerald-300 bg-white px-2 py-1 text-[10.5px] font-black text-emerald-700 transition-all hover:bg-emerald-100 active:scale-95"
+   416→                      title="بازگرداندن آخرین پشتیبان خودکار مرورگر"
+   417→                    >
+   418→                      <RotateCcw size={11} />
+   419→                      بازیابی
+   420→                    </button>
+   421→                  </div>
+   422→                ) : (
+   423→                  <div className="mt-2.5 rounded-xl border border-dashed border-stone-200 bg-stone-50/60 px-2.5 py-2 text-[10.5px] leading-4 text-stone-400">
+   424→                    با اولین فعالیت شما، هر روز یک پشتیبان خودکار در همین مرورگر ذخیره می‌شود — حتی اگر داده‌ها پاک شوند قابل بازیابی است.
+   425→                  </div>
+   426→                )}
+   427→                <p className="mt-2 text-[10.5px] leading-4 text-stone-400">
+   428→                  پیشرفت شما (واژه‌ها، نتایج، مرورها) در یک فایل JSON ذخیره می‌شود؛ برای انتقال به دستگاه دیگر از «بازیابی» استفاده کنید.
+   429→                </p>
+   430→              </div>
+   431→
+   432→              {/* ------------------- F3 learner-code sync ------------------- */}
+   433→              <div className="mt-4 border-t border-stone-200 pt-3">
+   434→                <div className="mb-2 flex items-center gap-1.5 text-[11.5px] font-bold text-stone-500">
+   435→                  <Laptop size={13} className="text-emerald-600" />
+   436→                  همگام‌سازی بین دستگاه‌ها
+   437→                  <span className="mr-auto rounded-full bg-emerald-100 px-1.5 py-0.5 text-[9.5px] font-black text-emerald-700">جدید</span>
+   438→                </div>
+   439→
+   440→                {syncCode ? (
+   441→                  /* ---------- attached to a cloud code ---------- */
+   442→                  <div className="rounded-xl border border-emerald-200 bg-emerald-50/70 p-2.5">
+   443→                    <div className="flex items-center justify-between gap-2">
+   444→                      <span dir="ltr" className="font-mono text-[15px] font-black tracking-[0.12em] text-emerald-800">
+   445→                        {syncCode}
+   446→                      </span>
+   447→                      <button
+   448→                        onClick={handleCopyCode}
+   449→                        className="inline-flex shrink-0 items-center gap-1 rounded-lg border border-emerald-300 bg-white px-2 py-1 text-[10.5px] font-black text-emerald-700 transition-all hover:bg-emerald-100 active:scale-95"
+   450→                        title="کپی کد"
+   451→                      >
+   452→                        <Copy size={11} />
+   453→                        کپی
+   454→                      </button>
+   455→                    </div>
+   456→                    {lastSyncAt && (
+   457→                      <div className="mt-1 text-[10px] font-bold text-emerald-700/70">
+   458→                        آخرین همگام‌سازی: {autoBackupAgeFa(lastSyncAt)}
+   459→                      </div>
+   460→                    )}
+   461→                    <div className="mt-2 grid grid-cols-2 gap-2">
+   462→                      <button
+   463→                        onClick={handlePushNow}
+   464→                        disabled={syncing !== ""}
+   465→                        className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-emerald-300 bg-white px-2 py-2 text-[11px] font-black text-emerald-700 transition-all hover:bg-emerald-100 active:scale-95 disabled:opacity-50"
+   466→                      >
+   467→                        <CloudUpload size={13} />
+   468→                        {syncing === "push" ? "در حال ارسال…" : "به‌روزرسانی ابری"}
+   469→                      </button>
+   470→                      <button
+   471→                        onClick={() => handlePullMerge()}
+   472→                        disabled={syncing !== ""}
+   473→                        className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-emerald-300 bg-white px-2 py-2 text-[11px] font-black text-emerald-700 transition-all hover:bg-emerald-100 active:scale-95 disabled:opacity-50"
+   474→                      >
+   475→                        <CloudDownload size={13} />
+   476→                        {syncing === "pull" ? <RefreshCw size={12} className="animate-spin" /> : "بازیابی از ابر"}
+   477→                      </button>
+   478→                    </div>
+   479→                    <button
+   480→                      onClick={handleDisconnect}
+   481→                      className="mt-2 flex w-full items-center justify-center gap-1 text-[10px] font-bold text-stone-400 transition-colors hover:text-rose-500"
+   482→                    >
+   483→                      <Link2Off size={11} />
+   484→                      قطع همگام‌سازی این دستگاه
+   485→                    </button>
+   486→                  </div>
+   487→                ) : (
+   488→                  /* ---------- no code yet: create or join ---------- */
+   489→                  <div>
+   490→                    <p className="mb-2 text-[10.5px] leading-4 text-stone-400">
+   491→                      پیشرفتت را بین گوشی و رایانه یکی کن: یک کد بساز و روی هر دستگاهی واردش کن — بدون ثبت‌نام.
+   492→                    </p>
+   493→                    <button
+   494→                      onClick={handleCreateCode}
+   495→                      disabled={syncing !== ""}
+   496→                      className="flex w-full items-center justify-center gap-1.5 rounded-xl bg-emerald-600 py-2.5 text-[12px] font-black text-white transition-all hover:bg-emerald-700 active:scale-95 disabled:opacity-50"
+   497→                    >
+   498→                      <CloudUpload size={14} />
+   499→                      {syncing === "create" ? "در حال ساخت کد…" : "ساخت کد یادگیرنده"}
+   500→                    </button>
+   501→                    <div className="mt-2 flex gap-1.5">
+   502→                      <input
+   503→                        value={codeInput}
+   504→                        onChange={(e) => setCodeInput(e.target.value)}
+   505→                        onKeyDown={(e) => e.key === "Enter" && looksLikeCode(codeInput) && handlePullMerge(codeInput)}
+   506→                        placeholder="کد موجود، مثل K7QM-34XP"
+   507→                        dir="ltr"
+   508→                        maxLength={9}
+   509→                        className="min-w-0 flex-1 rounded-xl border border-stone-300 bg-white px-2.5 py-2 text-left font-mono text-[12px] font-black tracking-wider text-stone-800 outline-none transition-colors placeholder:font-sans placeholder:font-normal placeholder:tracking-normal placeholder:text-stone-400 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
+   510→                      />
+   511→                      <button
+   512→                        onClick={() => handlePullMerge(codeInput)}
+   513→                        disabled={!looksLikeCode(codeInput) || syncing !== ""}
+   514→                        className="shrink-0 rounded-xl border border-emerald-300 bg-white px-3 py-2 text-[11.5px] font-black text-emerald-700 transition-all hover:bg-emerald-50 active:scale-95 disabled:cursor-not-allowed disabled:opacity-40"
+   515→                      >
+   516→                        {syncing === "join" ? "…" : "ورود با کد"}
+   517→                      </button>
+   518→                    </div>
+   519→                    <p className="mt-1.5 text-[10px] leading-4 text-stone-400">
+   520→                      با «ورود با کد»، پیشرفتِ ابر و همین دستگاه با هم ادغام می‌شود — هیچ‌کدام از دست نمی‌رود.
+   521→                    </p>
+   522→                  </div>
+   523→                )}
+   524→              </div>
+   525→            </PopoverContent>
+   526→          </Popover>
+   527→
+   528→          <nav className="flex items-center gap-1 overflow-x-auto" aria-label="ناوبری اصلی">
+   529→            {navItems.map((item) => {
+   530→              const Icon = item.icon;
+   531→              const active = isActive(item);
+   532→              return (
+   533→                <button
+   534→                  key={item.key}
+   535→                  onClick={() => setView(item.view)}
+   536→                  className={`flex shrink-0 items-center gap-1.5 rounded-full px-3 py-2 text-[13px] font-semibold transition-all ${
+   537→                    active
+   538→                      ? "bg-emerald-600 text-white shadow-sm shadow-emerald-900/20"
+   539→                      : "text-stone-600 hover:bg-stone-200/70"
+   540→                  }`}
+   541→                >
+   542→                  <Icon size={15} />
+   543→                  <span className="hidden sm:inline">{item.label}</span>
+   544→                </button>
+   545→              );
+   546→            })}
+   547→          </nav>
+   548→        </div>
+   549→      </div>
+   550→    </header>
+   551→  );
+   552→}
+   553→
