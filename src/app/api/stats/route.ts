@@ -5,9 +5,11 @@ export const runtime = "nodejs";
 
 export async function GET() {
   try {
-    const [total, avg, recent] = await Promise.all([
+    const since = new Date(Date.now() - 24 * 60 * 60 * 1000);
+    const [total, avg, last24h, recent] = await Promise.all([
       db.quizAttempt.count(),
       db.quizAttempt.aggregate({ _avg: { percent: true } }),
+      db.quizAttempt.count({ where: { createdAt: { gte: since } } }),
       db.quizAttempt.findMany({
         orderBy: { createdAt: "desc" },
         take: 10,
@@ -24,10 +26,11 @@ export async function GET() {
     return NextResponse.json({
       total,
       avgPercent: Math.round(avg._avg.percent ?? 0),
+      last24h,
       recent,
     });
   } catch {
-    return NextResponse.json({ total: 0, avgPercent: 0, recent: [] });
+    return NextResponse.json({ total: 0, avgPercent: 0, last24h: 0, recent: [] });
   }
 }
 

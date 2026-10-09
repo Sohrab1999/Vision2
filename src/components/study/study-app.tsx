@@ -29,6 +29,11 @@ export default function StudyApp() {
     stopSpeaking();
   }, [view]);
 
+  // reset scroll on view change (book pages always start from the top)
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, [view]);
+
   // back-to-top visibility (subscribed scroll event, async state)
   useEffect(() => {
     const onScroll = () => setShowTop(window.scrollY > 500);

@@ -12,17 +12,20 @@ import SpeakButton from "./speak-button";
 export default function Flashcards({
   lesson,
   onExit,
+  startSmart = false,
 }: {
   lesson: LessonData;
   onExit: () => void;
+  startSmart?: boolean;
 }) {
-  const [smartMode, setSmartMode] = useState(false);
+  const [smartMode, setSmartMode] = useState(startSmart);
   const [index, setIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
   const known = useStudy((s) => s.known);
   const srs = useStudy((s) => s.srs);
   const toggleKnown = useStudy((s) => s.toggleKnown);
   const reviewWord = useStudy((s) => s.reviewWord);
+  const trackReview = useStudy((s) => s.trackReview);
   const mounted = useMounted();
 
   const t = themeOf(lesson.color);
@@ -59,6 +62,7 @@ export default function Flashcards({
   const answer = (knownIt: boolean) => {
     reviewWord(key, knownIt);
     if (knownIt && !isKnown) toggleKnown(key);
+    trackReview(); // daily streak + goal progress
     go(1);
   };
 

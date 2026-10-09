@@ -1,9 +1,10 @@
 "use client";
 
-import { BookOpen, Home, Library, ClipboardCheck, BookMarked, Sun, Moon } from "lucide-react";
+import { BookOpen, Home, Library, ClipboardCheck, BookMarked, Sun, Moon, Flame } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useStudy, type View } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
+import { faNum } from "@/lib/study-theme";
 
 const navItems: { key: string; label: string; icon: React.ElementType; view: View }[] = [
   { key: "home", label: "خانه", icon: Home, view: { type: "home" } },
@@ -16,6 +17,7 @@ export default function Header() {
   const view = useStudy((s) => s.view);
   const setView = useStudy((s) => s.setView);
   const goHome = useStudy((s) => s.goHome);
+  const streak = useStudy((s) => s.streak);
   const mounted = useMounted();
   const { theme, setTheme } = useTheme();
   const isDark = mounted && theme === "dark";
@@ -47,6 +49,16 @@ export default function Header() {
         </button>
 
         <div className="flex items-center gap-1">
+          {/* streak flame */}
+          {mounted && streak > 0 && (
+            <span
+              className="mr-1 hidden items-center gap-1 rounded-full border border-amber-200 bg-gradient-to-l from-amber-50 to-orange-50 px-2.5 py-1.5 text-[12px] font-black text-amber-700 sm:inline-flex"
+              title={`زنجیرهٔ ${faNum(streak)} روزه مطالعه`}
+            >
+              <Flame size={14} className="streak-flame" />
+              {faNum(streak)}
+            </span>
+          )}
           <button
             onClick={() => setTheme(isDark ? "light" : "dark")}
             className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-stone-200 bg-white text-stone-500 transition-all hover:text-amber-500 hover:border-amber-200 active:scale-90"

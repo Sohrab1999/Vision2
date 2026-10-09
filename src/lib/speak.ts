@@ -18,12 +18,18 @@ export async function speak(
   let url = urlCache.get(key);
   try {
     if (!url) {
-      const res = await fetch("/api/tts", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text, speed }),
-      });
-      if (!res.ok) {
+      // two attempts: the TTS backend occasionally hiccups on cold start
+      let res: Response | null = null;
+      for (let attempt = 0; attempt < 2; attempt++) {
+        res = await fetch("/api/tts", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ text, speed }),
+        });
+        if (res.ok) break;
+        if (attempt === 0) await new Promise((r) => setTimeout(r, 700));
+      }
+      if (!res || !res.ok) {
         onError?.();
         return () => {};
       }

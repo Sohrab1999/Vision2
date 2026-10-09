@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { Search, CheckCircle2, Circle, Layers, X } from "lucide-react";
 import type { LessonData } from "@/lib/study-types";
@@ -11,13 +11,25 @@ import Flashcards from "./flashcards";
 
 type Filter = "all" | "known" | "unknown";
 
-export default function VocabTab({ lesson }: { lesson: LessonData }) {
+export default function VocabTab({
+  lesson,
+  startSmart = false,
+}: {
+  lesson: LessonData;
+  startSmart?: boolean;
+}) {
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState<Filter>("all");
-  const [flashMode, setFlashMode] = useState(false);
+  const [flashMode, setFlashMode] = useState(startSmart);
   const known = useStudy((s) => s.known);
   const toggleKnown = useStudy((s) => s.toggleKnown);
+  const consumeFlashIntent = useStudy((s) => s.consumeFlashIntent);
   const mounted = useMounted();
+
+  // consume the "smart review" navigation intent once
+  useEffect(() => {
+    if (startSmart) consumeFlashIntent();
+  }, [startSmart, consumeFlashIntent]);
 
   const t = themeOf(lesson.color);
 
@@ -32,7 +44,7 @@ export default function VocabTab({ lesson }: { lesson: LessonData }) {
   }, [lesson, query, filter, known, mounted]);
 
   if (flashMode) {
-    return <Flashcards lesson={lesson} onExit={() => setFlashMode(false)} />;
+    return <Flashcards lesson={lesson} onExit={() => setFlashMode(false)} startSmart={startSmart} />;
   }
 
   const knownCount = lesson.vocabulary.filter((w) => mounted && known[wordKey(lesson.id, w.en)]).length;

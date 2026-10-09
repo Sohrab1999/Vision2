@@ -266,3 +266,38 @@ body {
 
 /* toast in dark */
 .dark [data-radix-popper-content-wrapper] { z-index: 60; }
+
+/* ---------------- streak flame ---------------- */
+.streak-flame {
+  animation: flame-flicker 1.6s ease-in-out infinite;
+  transform-origin: 50% 90%;
+  filter: drop-shadow(0 0 4px rgb(251 146 60 / 0.55));
+}
+@keyframes flame-flicker {
+  0%, 100% { transform: scale(1) rotate(-2deg); }
+  30% { transform: scale(1.12) rotate(2.5deg); }
+  60% { transform: scale(0.95) rotate(-1.5deg); }
+}
+
+/* dictation letter boxes: latin font + slight spacing */
+.dictation-box {
+  font-family: var(--font-lora), Georgia, serif;
+}
+
+/* dark-mode tuning for new dictation / today-plan elements */
+.dark .bg-violet-50 { background-color: rgba(59, 40, 92, 0.35); }
+.dark .border-violet-200 { border-color: rgba(110, 80, 170, 0.5); }
+.dark .border-violet-300 { border-color: rgba(130, 100, 190, 0.55); }
+.dark .text-violet-700 { color: #c4b5fd; }
+.dark .text-violet-600 { color: #a78bfa; }
+.dark .bg-fuchsia-500 { background-image: linear-gradient(to bottom left, #7c3aed, #a21caf); }
+.dark .from-violet-600 { --tw-gradient-from: #5b21b6; }
+.dark .to-fuchsia-600 { --tw-gradient-to: #86198f; }
+.dark .bg-amber-100 { background-color: rgba(87, 62, 14, 0.5); }
+.dark .text-amber-700 { color: #fbbf24; }
+.dark .bg-teal-50 { background-color: rgba(6, 55, 50, 0.35); }
+.dark .border-teal-500 { border-color: rgba(20, 130, 120, 0.6); }
+.dark .bg-orange-500 { background-image: linear-gradient(to bottom left, #c2410c, #9a3412); }
+.dark .from-amber-400 { --tw-gradient-from: #b45309; }
+.dark .to-orange-500 { --tw-gradient-to: #c2410c; }
+.dark .bg-white\/60 { background-color: rgba(28, 25, 23, 0.6); }

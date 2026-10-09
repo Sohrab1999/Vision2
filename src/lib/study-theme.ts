@@ -55,3 +55,22 @@ export const posLabel: Record<string, string> = {
   conj: "حرف ربط",
   pron: "ضمیر",
 };
+
+/** Convert latin digits to Persian digits */
+export function faNum(v: number | string): string {
+  const fa = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
+  return String(v).replace(/\d/g, (d) => fa[Number(d)]);
+}
+
+/** Persian relative time ("۳ دقیقه پیش") from an ISO date */
+export function timeAgoFa(iso: string): string {
+  const diff = Date.now() - new Date(iso).getTime();
+  const m = Math.floor(diff / 60_000);
+  if (m < 1) return "لحظاتی پیش";
+  if (m < 60) return `${faNum(m)} دقیقه پیش`;
+  const h = Math.floor(m / 60);
+  if (h < 24) return `${faNum(h)} ساعت پیش`;
+  const d = Math.floor(h / 24);
+  if (d < 30) return `${faNum(d)} روز پیش`;
+  return `${faNum(Math.floor(d / 30))} ماه پیش`;
+}

@@ -1,16 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, BookOpen, MessageSquareText, BookOpenText, GraduationCap, ListChecks, Layers, PenLine } from "lucide-react";
+import { ArrowRight, BookOpen, MessageSquareText, BookOpenText, GraduationCap, ListChecks, Layers, PenLine, Ear } from "lucide-react";
 import { findLesson } from "@/data";
 import { useStudy, knownCountOfLesson, type LessonTab } from "@/lib/study-store";
-import { themeOf } from "@/lib/study-theme";
+import { themeOf, faNum } from "@/lib/study-theme";
 import ProgressRing from "./progress-ring";
 import VocabTab from "./vocab-tab";
 import ConversationTab from "./conversation-tab";
 import ReadingTab from "./reading-tab";
 import GrammarTab from "./grammar-tab";
 import WritingTab from "./writing-tab";
+import DictationTab from "./dictation-tab";
 import LessonTestsTab from "./lesson-tests-tab";
 
 const tabs: { key: LessonTab; label: string; icon: React.ElementType }[] = [
@@ -19,6 +20,7 @@ const tabs: { key: LessonTab; label: string; icon: React.ElementType }[] = [
   { key: "reading", label: "ریدینگ", icon: BookOpenText },
   { key: "grammar", label: "گرامر", icon: GraduationCap },
   { key: "writing", label: "نگارش", icon: PenLine },
+  { key: "dictation", label: "دیکته", icon: Ear },
   { key: "tests", label: "تست‌ها", icon: ListChecks },
 ];
 
@@ -28,6 +30,7 @@ export default function LessonView({ id }: { id: number }) {
   const tab = useStudy((s) => s.lessonTab);
   const setTab = useStudy((s) => s.setLessonTab);
   const known = useStudy((s) => s.known);
+  const flashIntent = useStudy((s) => s.flashIntent);
 
   if (!lesson) {
     return <div className="p-10 text-center text-stone-500">درس یافت نشد.</div>;
@@ -70,14 +73,14 @@ export default function LessonView({ id }: { id: number }) {
           </div>
           <div className="flex items-center gap-3">
             <ProgressRing percent={knownPercent} size={62} stroke={6} color={t.text.includes("amber") ? "#d97706" : t.text.includes("rose") ? "#e11d48" : "#059669"}>
-              <span className="text-[11px] font-black text-stone-700">{knownPercent}٪</span>
+              <span className="text-[11px] font-black text-stone-700">{faNum(knownPercent)}٪</span>
             </ProgressRing>
             <div className="text-[12px] leading-6 text-stone-500">
               <div>
-                <b className="text-stone-700">{knownCount}</b> از {lesson.vocabulary.length} واژه
+                <b className="text-stone-700">{faNum(knownCount)}</b> از {faNum(lesson.vocabulary.length)} واژه
               </div>
               <div>
-                <Layers size={11} className="inline align-middle" /> {lesson.quizzes.length} تست
+                <Layers size={11} className="inline align-middle" /> {faNum(lesson.quizzes.length)} تست
               </div>
             </div>
           </div>
@@ -108,11 +111,12 @@ export default function LessonView({ id }: { id: number }) {
 
       {/* tab content */}
       <motion.div key={tab} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25 }}>
-        {tab === "vocab" && <VocabTab lesson={lesson} />}
+        {tab === "vocab" && <VocabTab lesson={lesson} startSmart={flashIntent === "smart"} />}
         {tab === "conversation" && <ConversationTab lesson={lesson} />}
         {tab === "reading" && <ReadingTab lesson={lesson} />}
         {tab === "grammar" && <GrammarTab lesson={lesson} />}
         {tab === "writing" && <WritingTab lesson={lesson} />}
+        {tab === "dictation" && <DictationTab lesson={lesson} />}
         {tab === "tests" && <LessonTestsTab lesson={lesson} />}
       </motion.div>
     </motion.div>

@@ -25,6 +25,7 @@ export default function WritingTab({ lesson }: { lesson: LessonData }) {
   const [correctCount, setCorrectCount] = useState(0);
   const [done, setDone] = useState(false);
   const addResult = useStudy((s) => s.addResult);
+  const trackQuizDone = useStudy((s) => s.trackQuizDone);
   const t = themeOf(lesson.color);
 
   const ex = lesson.writing[idx];
@@ -60,6 +61,7 @@ export default function WritingTab({ lesson }: { lesson: LessonData }) {
         percent,
         at: new Date().toISOString(),
       });
+      trackQuizDone();
       setDone(true);
     }
   };

@@ -61,6 +61,7 @@ export default function QuizEngine({
       percent,
       at: new Date().toISOString(),
     });
+    useStudy.getState().trackQuizDone();
     toast({
       title: percent >= 70 ? "🏆 نتیجهٔ عالی!" : percent >= 50 ? "👍 نتیجهٔ قابل قبول" : "💪 تمرین بیشتر!",
       description: `${title}: ${correct} از ${total} درست (${percent}٪)${
