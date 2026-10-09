@@ -26,7 +26,7 @@ export interface BackupPayload {
     streak: number;
     bestStreak: number;
     lastActiveDay: string;
-    dayStat: { day: string; reviews: number; quizzes: number };
+    dayStat: { day: string; reviews: number; quizzes: number; words: number; dictation: number; rush: number };
     history: HistoryMap;
     mistakes: MistakeMap;
     seenBadges: string[];
@@ -169,6 +169,9 @@ export function parseBackup(text: string): BackupPayload {
         day: typeof ds["day"] === "string" ? ds["day"] : "",
         reviews: typeof ds["reviews"] === "number" ? ds["reviews"] : 0,
         quizzes: typeof ds["quizzes"] === "number" ? ds["quizzes"] : 0,
+        words: typeof ds["words"] === "number" ? ds["words"] : 0,
+        dictation: typeof ds["dictation"] === "number" ? ds["dictation"] : 0,
+        rush: typeof ds["rush"] === "number" ? ds["rush"] : 0,
       },
       history,
       mistakes,

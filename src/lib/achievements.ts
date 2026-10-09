@@ -5,7 +5,8 @@
 // ------------------------------------------------------------------
 
 import type { StudyState } from "./study-store";
-import { todayStr } from "./study-store";
+import { normDayStat, todayStr } from "./study-store";
+import { completedQuestCount } from "./daily-quests";
 
 export type BadgeTier = "bronze" | "silver" | "gold";
 
@@ -39,6 +40,7 @@ export interface BadgeEvalInput {
   rushBest: number; // best points in the 60s challenge
   rushBestCorrect: number; // best correct answers in one challenge
   rushGames: number; // total completed 60s challenge rounds
+  questsDoneToday: number; // daily quests completed today (0..5)
 }
 
 function historyTotals(history: StudyState["history"]): { quizzes: number; reviews: number; days: number } {
@@ -74,7 +76,7 @@ export function buildEvalInput(s: {
   // include today's stats (history is written on activity too, but be safe)
   const hist = historyTotals(s.history);
   const today = todayStr();
-  const ds = s.dayStat.day === today ? s.dayStat : { day: today, reviews: 0, quizzes: 0 };
+  const ds = s.dayStat.day === today ? normDayStat(s.dayStat) : normDayStat(undefined);
   const todayInHist = s.history[today];
   const totalQuizzes = Math.max(
     hist.quizzes + (todayInHist ? 0 : ds.quizzes),
@@ -106,6 +108,7 @@ export function buildEvalInput(s: {
     rushBest: s.rushBest ?? 0,
     rushBestCorrect: s.rushBestCorrect ?? 0,
     rushGames: s.rushGames ?? 0,
+    questsDoneToday: completedQuestCount(ds),
   };
 }
 
@@ -282,6 +285,15 @@ export const BADGES: BadgeDef[] = [
     tier: "gold",
     progress: (s) => `بهترین: ${Math.min(s.rushBest, 100)} از ۱۰۰ امتیاز`,
     check: (s) => s.rushBest >= 100,
+  },
+  {
+    id: "quest-master",
+    title: "مأمور پنج‌گانه",
+    desc: "هر ۵ هدف روزانه را در یک روز کامل کن",
+    icon: "Crown",
+    tier: "gold",
+    progress: (s) => `${Math.min(s.questsDoneToday, 5)} از ۵ هدف امروز`,
+    check: (s) => s.questsDoneToday >= 5,
   },
 ];
 

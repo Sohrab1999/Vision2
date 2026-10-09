@@ -25,6 +25,7 @@ import {
   Trophy,
   Zap,
   Sparkles,
+  Crown,
 } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -60,6 +61,7 @@ const ICONS: Record<string, React.ElementType> = {
   Trophy,
   Zap,
   Sparkles,
+  Crown,
 };
 
 const tierFa: Record<string, string> = {

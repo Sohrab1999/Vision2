@@ -37,6 +37,7 @@ import WordOfDay from "./word-of-day";
 import SrsPanel from "./srs-panel";
 import SkillPanel from "./skill-panel";
 import ReportCard from "./report-card";
+import DailyQuests from "./daily-quests";
 
 const spineColors: Record<string, string> = {
   emerald: "bg-gradient-to-b from-emerald-500 to-emerald-800",
@@ -311,6 +312,9 @@ export default function HomeView() {
           </div>
         </div>
       </motion.section>
+
+      {/* ------------------------- Daily quests ------------------------- */}
+      <DailyQuests />
 
       {/* ------------------------- Word of the day ------------------------- */}
       <WordOfDay />

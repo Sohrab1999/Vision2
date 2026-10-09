@@ -55,7 +55,7 @@ export default function AppendixView() {
             افعال بی‌قاعده به‌جای گرفتن «ed» تغییر شکل می‌دهند و باید حفظ شوند.
           </p>
           <div className="max-h-[58vh] overflow-auto rounded-xl border border-stone-200 nice-scroll">
-            <table className="w-full text-sm">
+            <table className="verbs-table w-full text-sm">
               <thead className="sticky top-0 z-10">
                 <tr className="bg-violet-600 text-white">
                   <th className="px-3 py-2.5 text-right">معنی فارسی</th>

@@ -14,11 +14,31 @@ export type View =
 
 export type LessonTab = "vocab" | "conversation" | "reading" | "grammar" | "writing" | "dictation" | "tests";
 
-// daily activity for streak + daily goal
-interface DayStat {
+// daily activity for streak + daily goal + quests
+export interface DayStat {
   day: string; // "2026-10-09"
   reviews: number; // flashcard reviews
   quizzes: number; // finished quizzes/dictation/writing
+  words: number; // words marked known today (new learning)
+  dictation: number; // dictation rounds finished today
+  rush: number; // 60s challenge rounds finished today
+}
+
+/** normalize a (possibly legacy) DayStat so every counter exists */
+export function normDayStat(d: Partial<DayStat> | undefined): DayStat {
+  return {
+    day: d?.day ?? "",
+    reviews: d?.reviews ?? 0,
+    quizzes: d?.quizzes ?? 0,
+    words: d?.words ?? 0,
+    dictation: d?.dictation ?? 0,
+    rush: d?.rush ?? 0,
+  };
+}
+
+/** fresh zeroed DayStat for a given day key */
+export function emptyDayStat(day: string): DayStat {
+  return { day, reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0 };
 }
 
 // error bank: mistakes["1:l1-v3"] = number of wrong answers
@@ -59,6 +79,7 @@ export interface StudyState {
 
   setProfile: (name: string, color: string) => void;
   setRushBest: (points: number, correct: number) => void;
+  trackDictation: () => void;
   markBadgesSeen: (ids: string[]) => void;
   goHome: () => void;
   openLesson: (id: number, flashIntent?: "smart") => void;
@@ -133,7 +154,7 @@ export const useStudy = create<StudyState>()(
       streak: 0,
       bestStreak: 0,
       lastActiveDay: "",
-      dayStat: { day: "", reviews: 0, quizzes: 0 },
+      dayStat: emptyDayStat(""),
       history: {},
       mistakes: {},
       flashIntent: "none",
@@ -144,13 +165,18 @@ export const useStudy = create<StudyState>()(
       rushGames: 0,
 
       setProfile: (name, color) => set({ userName: name, avatarColor: color }),
-      // called exactly once per finished rush round → also counts completed games
+      // called exactly once per finished rush round → also counts completed games + daily quest
       setRushBest: (points, correct) =>
-        set((s) => ({
-          rushBest: Math.max(s.rushBest, points),
-          rushBestCorrect: Math.max(s.rushBestCorrect, correct),
-          rushGames: s.rushGames + 1,
-        })),
+        set((s) => {
+          const today = todayStr();
+          const stat = s.dayStat.day === today ? normDayStat(s.dayStat) : emptyDayStat(today);
+          return {
+            rushBest: Math.max(s.rushBest, points),
+            rushBestCorrect: Math.max(s.rushBestCorrect, correct),
+            rushGames: s.rushGames + 1,
+            dayStat: { ...stat, rush: stat.rush + 1 },
+          };
+        }),
       markBadgesSeen: (ids) => set((s) => ({ seenBadges: [...new Set([...s.seenBadges, ...ids])] })),
       goHome: () => set({ view: { type: "home" }, flashIntent: "none" }),
       openLesson: (id, flashIntent = "none") =>
@@ -158,13 +184,27 @@ export const useStudy = create<StudyState>()(
           view: { type: "lesson", id },
           flashIntent,
           flashNonce: flashIntent === "smart" ? s.flashNonce + 1 : s.flashNonce,
+          // smart review always lands on the flashcards, whatever tab was last open
+          lessonTab: flashIntent === "smart" ? "vocab" : s.lessonTab,
         })),
       openLessonTab: (id, tab) => set({ view: { type: "lesson", id }, lessonTab: tab }),
       setView: (v) => set({ view: v, flashIntent: "none" }),
       setLessonTab: (t) => set({ lessonTab: t }),
       consumeFlashIntent: () => set({ flashIntent: "none" }),
       toggleKnown: (key) =>
-        set((s) => ({ known: { ...s.known, [key]: !s.known[key] } })),
+        set((s) => {
+          const was = s.known[key];
+          // learning a brand-new word today → count it for the daily quest
+          if (!was) {
+            const today = todayStr();
+            const stat = s.dayStat.day === today ? normDayStat(s.dayStat) : emptyDayStat(today);
+            return {
+              known: { ...s.known, [key]: true },
+              dayStat: { ...stat, words: stat.words + 1 },
+            };
+          }
+          return { known: { ...s.known, [key]: false } };
+        }),
       addResult: (key, r) =>
         set((s) => {
           const prev = s.results[key];
@@ -188,14 +228,20 @@ export const useStudy = create<StudyState>()(
       trackReview: () =>
         set((s) => {
           const today = todayStr();
-          const stat = s.dayStat.day === today ? s.dayStat : { day: today, reviews: 0, quizzes: 0 };
+          const stat = s.dayStat.day === today ? normDayStat(s.dayStat) : emptyDayStat(today);
           return applyStreak(s, { ...stat, reviews: stat.reviews + 1 });
         }),
       trackQuizDone: () =>
         set((s) => {
           const today = todayStr();
-          const stat = s.dayStat.day === today ? s.dayStat : { day: today, reviews: 0, quizzes: 0 };
+          const stat = s.dayStat.day === today ? normDayStat(s.dayStat) : emptyDayStat(today);
           return applyStreak(s, { ...stat, quizzes: stat.quizzes + 1 });
+        }),
+      trackDictation: () =>
+        set((s) => {
+          const today = todayStr();
+          const stat = s.dayStat.day === today ? normDayStat(s.dayStat) : emptyDayStat(today);
+          return applyStreak(s, { ...stat, dictation: stat.dictation + 1 });
         }),
       addMistakes: (lessonId, ids) =>
         set((s) => {

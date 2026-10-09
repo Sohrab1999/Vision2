@@ -158,6 +158,7 @@ export default function DictationTab({ lesson }: { lesson: LessonData }) {
         at: new Date().toISOString(),
       });
       useStudy.getState().trackQuizDone();
+      useStudy.getState().trackDictation(); // daily quest: dictation round
       toast({
         title: percent >= 80 ? "🏆 دیکتهٔ فوق‌العاده!" : percent >= 50 ? "👍 خوب بود، ادامه بده!" : "💪 با تمرین بهتر می‌شود",
         description: `دیکتهٔ درس: ${faNum(correctForStats)} از ${faNum(total)} (${faNum(percent)}٪)`,

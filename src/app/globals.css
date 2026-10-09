@@ -745,3 +745,118 @@ body {
 .dark .report-month .bg-teal-50 { background-color: rgb(4 47 46 / 0.6); }
 .dark .report-month .text-teal-700 { color: #5eead4; }
 .dark .report-month [class*="bg-stone-200"] { background-color: rgb(55 49 43 / 0.7); }
+
+/* ------------------------------------------------------------------ */
+/* r15 — daily quests card + report print stylesheet                   */
+/* ------------------------------------------------------------------ */
+
+/* reward shimmer band on the quests card */
+@keyframes reward-shine {
+  0% { transform: translateX(-120%); }
+  100% { transform: translateX(120%); }
+}
+.reward-shimmer {
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%);
+  animation: reward-shine 2.4s ease-in-out infinite;
+}
+
+/* ---------------- dark mode — daily quests ---------------- */
+.dark .daily-quests {
+  background-color: #1c1917;
+  border-color: rgb(6 95 70 / 0.5);
+}
+.dark .daily-quests .border-dashed { border-color: #37312b; }
+.dark .daily-quests .text-stone-800 { color: #f5f5f4; }
+.dark .daily-quests .text-stone-700 { color: #d6d3d1; }
+.dark .daily-quests .text-stone-500 { color: #a8a29e; }
+.dark .daily-quests .text-stone-400 { color: #8a8580; }
+.dark .daily-quests .text-stone-300 { color: #57534e; }
+.dark .daily-quests .bg-stone-50\/60 { background-color: rgb(28 25 23 / 0.55); }
+.dark .daily-quests .bg-stone-50 { background-color: rgb(28 25 23 / 0.4); }
+.dark .daily-quests .bg-stone-200\/80 { background-color: #292524; }
+.dark .daily-quests .quest-row { background-color: rgb(28 25 23 / 0.55); border-color: #37312b; }
+.dark .daily-quests .quest-row:hover { border-color: rgb(6 95 70 / 0.7); background-color: rgb(6 44 34 / 0.45); }
+.dark .daily-quests .quest-row.border-emerald-300 {
+  background-color: rgb(6 44 34 / 0.5);
+  border-color: rgb(4 120 87 / 0.7);
+}
+.dark .daily-quests .bg-emerald-50\/70 { background-color: rgb(6 44 34 / 0.5); }
+.dark .daily-quests .bg-emerald-100 { background-color: rgb(6 55 40 / 0.6); }
+.dark .daily-quests .text-emerald-800 { color: #a7f3d0; }
+.dark .daily-quests .text-emerald-600 { color: #6ee7b7; }
+.dark .daily-quests .text-emerald-700 { color: #6ee7b7; }
+.dark .daily-quests .bg-violet-100 { background-color: rgb(59 7 100 / 0.5); }
+.dark .daily-quests .text-violet-700 { color: #d8b4fe; }
+.dark .daily-quests .bg-amber-100 { background-color: rgb(69 48 12 / 0.55); }
+.dark .daily-quests .text-amber-700 { color: #fcd34d; }
+.dark .daily-quests .bg-teal-100 { background-color: rgb(4 47 46 / 0.55); }
+.dark .daily-quests .text-teal-700 { color: #5eead4; }
+.dark .daily-quests .bg-orange-100 { background-color: rgb(69 40 8 / 0.5); }
+.dark .daily-quests .text-orange-700 { color: #fdba74; }
+
+/* report print button (dark) */
+.dark .report-print-btn { background-color: #1c1917; border-color: rgb(4 120 87 / 0.6); color: #6ee7b7; }
+.dark .report-print-btn:hover { background-color: rgb(6 44 34 / 0.6); }
+
+/* ---------------- appendix table — mobile horizontal scroll ---------------- */
+.verbs-table { min-width: 540px; }
+
+/* ---------------- print stylesheet for the report card ---------------- */
+@media print {
+  body.print-report * {
+    visibility: hidden !important;
+  }
+  body.print-report .report-paper,
+  body.print-report .report-paper * {
+    visibility: visible !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  body.print-report .report-paper {
+    position: fixed !important;
+    inset: 0 auto auto 0 !important;
+    width: 100% !important;
+    max-height: none !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+  body.print-report .report-dialog {
+    position: static !important;
+    max-width: none !important;
+    max-height: none !important;
+    overflow: visible !important;
+    transform: none !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  body.print-report .report-print-btn { display: none !important; }
+  /* keep light paper colors regardless of active theme */
+  body.print-report.dark .report-paper,
+  html.dark body.print-report .report-paper { background-color: #ffffff !important; }
+  body.print-report.dark .report-paper .text-stone-800,
+  html.dark body.print-report .report-paper .text-stone-800 { color: #1c1917 !important; }
+  body.print-report.dark .report-paper .text-stone-700,
+  html.dark body.print-report .report-paper .text-stone-700 { color: #44403c !important; }
+  body.print-report.dark .report-paper .text-stone-600,
+  html.dark body.print-report .report-paper .text-stone-600 { color: #57534e !important; }
+  body.print-report.dark .report-paper .text-stone-500,
+  html.dark body.print-report .report-paper .text-stone-500 { color: #78716c !important; }
+  body.print-report.dark .report-paper .text-stone-400,
+  html.dark body.print-report .report-paper .text-stone-400 { color: #a8a29e !important; }
+  body.print-report.dark .report-paper .report-week,
+  html.dark body.print-report .report-paper .report-week { background-color: #fafaf9 !important; border-color: #e7e5e4 !important; }
+  body.print-report.dark .report-paper .report-month,
+  html.dark body.print-report .report-paper .report-month { background-color: #fafaf9 !important; border-color: #e7e5e4 !important; }
+  body.print-report.dark .report-paper .report-track,
+  html.dark body.print-report .report-paper .report-track { background-color: #f5f5f4 !important; }
+  body.print-report.dark .report-paper .report-best li,
+  html.dark body.print-report .report-paper .report-best li { background-color: #ffffff !important; border-color: #e7e5e4 !important; }
+  body.print-report.dark .report-paper .report-foot,
+  html.dark body.print-report .report-paper .report-foot { background-color: #ecfdf5 !important; border-color: #6ee7b7 !important; }
+  body.print-report.dark .report-paper .text-emerald-800,
+  html.dark body.print-report .report-paper .text-emerald-800 { color: #065f46 !important; }
+  body.print-report.dark .report-paper .text-emerald-700,
+  html.dark body.print-report .report-paper .text-emerald-700 { color: #047857 !important; }
+}
