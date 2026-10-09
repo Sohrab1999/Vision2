@@ -62,6 +62,16 @@ export default function QuizEngine({
       at: new Date().toISOString(),
     });
     useStudy.getState().trackQuizDone();
+    // error bank: record wrong answers, clear ones now answered correctly
+    const wrongIds = questions
+      .filter((qq, i) => finalAnswers[i] !== qq.answer)
+      .map((qq) => qq.id);
+    const rightIds = questions
+      .filter((qq, i) => finalAnswers[i] === qq.answer)
+      .map((qq) => qq.id);
+    const storeNow = useStudy.getState();
+    if (wrongIds.length) storeNow.addMistakes(lessonId, wrongIds);
+    for (const id of rightIds) storeNow.clearMistake(lessonId, id);
     toast({
       title: percent >= 70 ? "🏆 نتیجهٔ عالی!" : percent >= 50 ? "👍 نتیجهٔ قابل قبول" : "💪 تمرین بیشتر!",
       description: `${title}: ${correct} از ${total} درست (${percent}٪)${
@@ -145,6 +155,7 @@ export default function QuizEngine({
   /* ------------------------------- finished ------------------------------- */
   if (finished) {
     const percent = Math.round((correctCount / total) * 100);
+    const wrongIds = questions.filter((qq, i) => answers[i] !== qq.answer).map((qq) => qq.id);
     const grade =
       percent >= 90
         ? { msg: "فوق‌العاده! تو یک قهرمان زبان انگلیسی‌ای! 🏆", cls: "text-emerald-600" }
@@ -172,6 +183,13 @@ export default function QuizEngine({
             <span className="text-stone-800">{title} — نتیجهٔ نهایی</span>
           </div>
           <p className={`mb-5 text-sm font-bold ${grade.cls}`}>{grade.msg}</p>
+          <div className="mb-4 flex flex-wrap items-center justify-center gap-2">
+            {wrongIds.length > 0 && (
+              <span className="rounded-full border border-rose-200 bg-rose-50 px-3 py-1 text-[12px] font-bold text-rose-600">
+                {wrongIds.length} سؤال به بانک مرور اشتباهات اضافه شد
+              </span>
+            )}
+          </div>
           <div className="flex flex-wrap justify-center gap-2.5">
             <button
               onClick={restart}

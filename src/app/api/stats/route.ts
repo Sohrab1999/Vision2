@@ -14,6 +14,7 @@ export async function GET() {
         orderBy: { createdAt: "desc" },
         take: 10,
         select: {
+          userId: true,
           lesson: true,
           category: true,
           total: true,
@@ -23,11 +24,26 @@ export async function GET() {
         },
       }),
     ]);
+
+    // join learner names for the live feed
+    const profiles = await db.learnerProfile.findMany({
+      where: { userId: { in: recent.map((r) => r.userId) } },
+    });
+    const nameMap = new Map(profiles.map((p) => [p.userId, p]));
+    const recentNamed = recent.map((r) => {
+      const p = nameMap.get(r.userId);
+      return {
+        ...r,
+        name: p?.name ?? null,
+        color: p?.color ?? null,
+      };
+    });
+
     return NextResponse.json({
       total,
       avgPercent: Math.round(avg._avg.percent ?? 0),
       last24h,
-      recent,
+      recent: recentNamed,
     });
   } catch {
     return NextResponse.json({ total: 0, avgPercent: 0, last24h: 0, recent: [] });

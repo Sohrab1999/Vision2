@@ -21,12 +21,15 @@ import {
   RefreshCcw,
   Ear,
   Radio,
+  Eraser,
 } from "lucide-react";
 import { lessons, examBank, totalVocabulary, totalQuestions } from "@/data";
-import { useStudy, knownCountOfLesson, summarize, srsDueTotal, firstLessonWithDue, DAILY_TARGET, todayStr } from "@/lib/study-store";
+import { useStudy, knownCountOfLesson, summarize, srsDueTotal, firstLessonWithDue, DAILY_TARGET, todayStr, mistakesOfLesson } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { themeOf, faNum, timeAgoFa } from "@/lib/study-theme";
 import ProgressRing from "./progress-ring";
+import WeeklyChart from "./weekly-chart";
+import Leaderboard from "./leaderboard";
 
 const spineColors: Record<string, string> = {
   emerald: "bg-gradient-to-b from-emerald-500 to-emerald-800",
@@ -41,6 +44,8 @@ const categoryLabel: Record<string, string> = {
   writing: "تمرین نگارش",
   dictation: "آزمون دیکته",
   exam: "آزمون جامع",
+  mixed: "تست ترکیبی درس",
+  mistakes: "مرور اشتباهات",
 };
 
 // compact labels for the live feed rows
@@ -51,6 +56,8 @@ const feedLabel: Record<string, string> = {
   writing: "نگارش",
   dictation: "دیکته",
   exam: "آزمون جامع",
+  mixed: "تست ترکیبی",
+  mistakes: "مرور اشتباهات",
 };
 
 interface RecentAttempt {
@@ -60,6 +67,8 @@ interface RecentAttempt {
   correct: number;
   percent: number;
   createdAt: string;
+  name?: string | null;
+  color?: string | null;
 }
 
 export default function HomeView() {
@@ -69,6 +78,7 @@ export default function HomeView() {
   const known = useStudy((s) => s.known);
   const results = useStudy((s) => s.results);
   const srs = useStudy((s) => s.srs);
+  const mistakes = useStudy((s) => s.mistakes);
   const streak = useStudy((s) => s.streak);
   const bestStreak = useStudy((s) => s.bestStreak);
   const dayStat = useStudy((s) => s.dayStat);
@@ -79,6 +89,12 @@ export default function HomeView() {
   const todayActivities = mounted && dayStat.day === todayStr() ? dayStat.reviews + dayStat.quizzes : 0;
   const goalPercent = Math.min(100, Math.round((todayActivities / DAILY_TARGET) * 100));
   const reviewLesson = mounted ? firstLessonWithDue(srs) : null;
+  const mistakeLesson = mounted
+    ? ([1, 2, 3] as const)
+        .map((id) => ({ id, n: mistakesOfLesson(mistakes, id) }))
+        .sort((a, b) => b.n - a.n)[0]
+    : { id: 1, n: 0 };
+  const totalMistakes = mounted ? mistakesOfLesson(mistakes, 1) + mistakesOfLesson(mistakes, 2) + mistakesOfLesson(mistakes, 3) : 0;
 
   const [globalStats, setGlobalStats] = useState<{
     total: number;
@@ -284,6 +300,9 @@ export default function HomeView() {
         </div>
       </motion.section>
 
+      {/* ------------------------- Weekly chart ------------------------- */}
+      <WeeklyChart />
+
       {/* ---------------------------- Bookshelf ---------------------------- */}
       <section aria-label="قفسهٔ کتاب">
         <div className="mb-4 flex items-end justify-between">
@@ -378,19 +397,25 @@ export default function HomeView() {
           <Sparkles size={19} className="text-amber-500" />
           ابزارهای ویژه
         </h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
           {[
             { icon: BookMarked, title: "دیکشنری جستجو", desc: `${faNum(totalVocabulary)} واژهٔ سه درس با جستجوی فارسی و انگلیسی`, view: { type: "dictionary" as const }, color: "text-sky-600 bg-sky-50 border-sky-200" },
             { icon: ClipboardCheck, title: "آزمون جامع", desc: `${faNum(examBank.length)} تست گردآوری از بانک ۳۶۰ تستی جزوه با تایمر`, view: { type: "exam" as const }, color: "text-emerald-600 bg-emerald-50 border-emerald-200" },
             { icon: Ear, title: "آزمون دیکته", desc: "املای شنیداری با روخوانی هوش مصنوعی و ثبت در SRS", onClick: () => openLessonTab(reviewLesson ?? 1, "dictation"), color: "text-violet-600 bg-violet-50 border-violet-200" },
-            { icon: Library, title: "ضمیمهٔ کتاب", desc: "افعال بی‌قاعده، جدول تلفظ IPA و اجزای کلام", view: { type: "appendix" as const }, color: "text-rose-600 bg-rose-50 border-rose-200" },
-            { icon: Trophy, title: "پیشرفت من", desc: "امتیاز تست‌ها و واژگان آموخته‌شده", view: { type: "dictionary" as const }, color: "text-amber-600 bg-amber-50 border-amber-200", custom: true },
+            { icon: Eraser, title: "بانک اشتباهات", desc: "سؤال‌هایی که اشتباه جواب دادی، برای مرور مجدد", onClick: () => openLessonTab(mistakeLesson?.id ?? 1, "tests"), color: "text-rose-600 bg-rose-50 border-rose-200", badge: totalMistakes },
+            { icon: Library, title: "ضمیمهٔ کتاب", desc: "افعال بی‌قاعده، جدول تلفظ IPA و اجزای کلام", view: { type: "appendix" as const }, color: "text-amber-600 bg-amber-50 border-amber-200" },
+            { icon: Trophy, title: "پیشرفت من", desc: "امتیاز تست‌ها و واژگان آموخته‌شده", view: { type: "dictionary" as const }, color: "text-stone-600 bg-stone-50 border-stone-200", custom: true },
           ].map((tool) => (
             <button
               key={tool.title}
               onClick={() => ("onClick" in tool && tool.onClick ? tool.onClick() : setView((tool as { view: { type: "dictionary" } }).view))}
-              className="rounded-2xl border border-stone-200 bg-white p-4 text-right shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md active:scale-[0.98]"
+              className="relative rounded-2xl border border-stone-200 bg-white p-4 text-right shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md active:scale-[0.98]"
             >
+              {"badge" in tool && typeof tool.badge === "number" && tool.badge > 0 && (
+                <span className="absolute left-3 top-3 flex h-6 min-w-6 items-center justify-center rounded-full bg-rose-500 px-1.5 text-[11px] font-black text-white shadow-md shadow-rose-500/30">
+                  {faNum(tool.badge)}
+                </span>
+              )}
               <span className={`mb-2.5 inline-flex h-10 w-10 items-center justify-center rounded-xl border ${tool.color}`}>
                 <tool.icon size={19} />
               </span>
@@ -405,6 +430,9 @@ export default function HomeView() {
           ))}
         </div>
       </section>
+
+      {/* --------------------------- Leaderboard --------------------------- */}
+      <Leaderboard />
 
       {/* ------------------------- Global stats + feed ------------------------- */}
       {globalStats && globalStats.total > 0 && (
@@ -467,7 +495,18 @@ export default function HomeView() {
                         className="flex items-center gap-2 rounded-lg bg-white px-2.5 py-1.5 shadow-sm"
                       >
                         <span className="shrink-0 text-[11px] font-bold text-stone-400">{timeAgoFa(a.createdAt)}</span>
-                        <span className="min-w-0 flex-1 truncate text-[12px] font-bold text-stone-700">{label}</span>
+                        {a.name && (
+                          <span
+                            className={`h-2 w-2 shrink-0 rounded-full ${
+                              a.color === "amber" ? "bg-amber-500" : a.color === "rose" ? "bg-rose-500" : a.color === "violet" ? "bg-violet-500" : a.color === "sky" ? "bg-sky-500" : "bg-emerald-500"
+                            }`}
+                            title={a.name}
+                          />
+                        )}
+                        <span className="min-w-0 flex-1 truncate text-[12px] font-bold text-stone-700">
+                          {a.name && <span className="text-emerald-700">{a.name} — </span>}
+                          {label}
+                        </span>
                         <span className="hidden h-1.5 w-16 overflow-hidden rounded-full bg-stone-100 sm:block">
                           <span className={`block h-full rounded-full ${barColor}`} style={{ width: `${a.percent}%` }} />
                         </span>

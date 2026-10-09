@@ -23,3 +23,11 @@ model QuizAttempt {
   @@index([userId])
   @@index([createdAt])
 }
+
+model LearnerProfile {
+  userId    String   @id
+  name      String
+  color     String   @default("emerald")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

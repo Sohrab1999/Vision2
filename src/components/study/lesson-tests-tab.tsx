@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { ListChecks, Shuffle, BookA, BookMarked, PenLine } from "lucide-react";
+import { ListChecks, Shuffle, BookA, BookMarked, PenLine, Eraser } from "lucide-react";
 import type { LessonData, QuizCategory, QuizQuestion } from "@/lib/study-types";
-import { useStudy, resultKey } from "@/lib/study-store";
+import { useStudy, resultKey, mistakesOfLesson } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
-import { themeOf } from "@/lib/study-theme";
+import { themeOf, faNum } from "@/lib/study-theme";
 import QuizEngine from "./quiz-engine";
 
 const categoryInfo: { key: QuizCategory; label: string; desc: string; icon: React.ElementType }[] = [
@@ -17,8 +17,10 @@ const categoryInfo: { key: QuizCategory; label: string; desc: string; icon: Reac
 export default function LessonTestsTab({ lesson }: { lesson: LessonData }) {
   const [session, setSession] = useState<{ title: string; questions: QuizQuestion[]; cat: string } | null>(null);
   const results = useStudy((s) => s.results);
+  const mistakes = useStudy((s) => s.mistakes);
   const mounted = useMounted();
   const t = themeOf(lesson.color);
+  const mistakeCount = mounted ? mistakesOfLesson(mistakes, lesson.id) : 0;
 
   if (session) {
     return (
@@ -44,6 +46,17 @@ export default function LessonTestsTab({ lesson }: { lesson: LessonData }) {
   const startMixed = () => {
     const questions = [...lesson.quizzes].sort(() => Math.random() - 0.5);
     setSession({ title: `تست ترکیبی درس — ${lesson.titleFa}`, questions, cat: "mixed" });
+  };
+
+  const startMistakeReview = () => {
+    const prefix = `${lesson.id}:`;
+    const questions = lesson.quizzes.filter((q) => (mistakes[`${prefix}${q.id}`] ?? 0) > 0);
+    if (questions.length === 0) return;
+    setSession({
+      title: `مرور اشتباهات — ${lesson.titleFa}`,
+      questions: [...questions].sort(() => Math.random() - 0.5),
+      cat: "mistakes",
+    });
   };
 
   return (
@@ -88,6 +101,28 @@ export default function LessonTestsTab({ lesson }: { lesson: LessonData }) {
         <Shuffle size={17} />
         تست ترکیبی — همهٔ {lesson.quizzes.length} تست این درس (بُر خورده)
       </button>
+
+      {mistakeCount > 0 && (
+        <button
+          onClick={startMistakeReview}
+          className="flex w-full items-center justify-between gap-3 rounded-2xl border border-rose-300 bg-gradient-to-l from-rose-50 to-red-50 p-4 text-right shadow-sm transition-all hover:shadow-md hover:shadow-rose-200/50 active:scale-[0.99]"
+        >
+          <span className="flex items-center gap-3">
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-rose-500 text-white shadow-md shadow-rose-500/30">
+              <Eraser size={20} />
+            </span>
+            <span>
+              <span className="block text-sm font-extrabold text-stone-800">مرور اشتباهات این درس</span>
+              <span className="block text-[12px] text-stone-500">
+                {faNum(mistakeCount)} سؤالی که قبلاً اشتباه جواب داده‌ای — با پاسخ درست از بانک حذف می‌شوند
+              </span>
+            </span>
+          </span>
+          <span className="shrink-0 rounded-xl bg-rose-600 px-4 py-2.5 text-[13px] font-bold text-white shadow-md shadow-rose-600/30">
+            شروع مرور
+          </span>
+        </button>
+      )}
     </div>
   );
 }

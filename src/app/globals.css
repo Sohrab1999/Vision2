@@ -301,3 +301,25 @@ body {
 .dark .from-amber-400 { --tw-gradient-from: #b45309; }
 .dark .to-orange-500 { --tw-gradient-to: #c2410c; }
 .dark .bg-white\/60 { background-color: rgba(28, 25, 23, 0.6); }
+
+/* ------------------ leaderboard + weekly chart dark-mode tuning ------------------ */
+.dark .bg-sky-50 { background-color: rgba(12, 50, 78, 0.35); }
+.dark .border-sky-200 { border-color: rgba(70, 120, 170, 0.5); }
+.dark .text-sky-700 { color: #7dd3fc; }
+.dark .text-sky-600 { color: #38bdf8; }
+.dark .from-sky-400 { --tw-gradient-from: #0284c7; }
+.dark .to-cyan-700 { --tw-gradient-to: #155e75; }
+.dark .bg-gradient-to-b.from-amber-50\/60 { background-image: linear-gradient(to bottom, rgba(87, 62, 14, 0.18), rgba(0, 0, 0, 0)); }
+.dark .border-amber-400 { border-color: rgba(180, 130, 20, 0.6); }
+.dark .ring-amber-400 { --tw-ring-color: rgba(217, 160, 30, 0.65); }
+.dark .from-amber-300 { --tw-gradient-from: #b45309; }
+.dark .to-amber-500 { --tw-gradient-to: #92400e; }
+.dark .from-stone-200 { --tw-gradient-from: #44403c; }
+.dark .to-stone-400 { --tw-gradient-to: #57534e; }
+.dark .from-orange-200 { --tw-gradient-from: #9a3412; }
+.dark .to-orange-400 { --tw-gradient-to: #7c2d12; }
+.dark .border-stone-300 { border-color: #44403c; }
+.dark .border-rose-300 { border-color: rgba(150, 50, 65, 0.55); }
+.dark .border-emerald-300 { border-color: rgba(16, 120, 90, 0.55); }
+.dark .divide-stone-100 > :not([hidden]) ~ :not([hidden]) { border-color: #28241f; }
+.dark .bg-stone-50\/60 { background-color: rgba(21, 19, 16, 0.6); }
