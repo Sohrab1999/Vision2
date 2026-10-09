@@ -31,10 +31,13 @@ export interface BadgeEvalInput {
   bestStreak: number;
   hasExam: boolean;
   hasFinal: boolean;
+  hasRush: boolean; // has completed at least one 60s challenge
   hasDictation: boolean;
   hasWriting: boolean;
   activeDays: number;
   mistakesTotal: number;
+  rushBest: number; // best points in the 60s challenge
+  rushBestCorrect: number; // best correct answers in one challenge
 }
 
 function historyTotals(history: StudyState["history"]): { quizzes: number; reviews: number; days: number } {
@@ -58,6 +61,8 @@ export function buildEvalInput(s: {
   streak: number;
   bestStreak: number;
   mistakes: StudyState["mistakes"];
+  rushBest?: number;
+  rushBestCorrect?: number;
 }): BadgeEvalInput {
   const knownCount = Object.values(s.known).filter(Boolean).length;
   const rs = Object.values(s.results);
@@ -91,10 +96,13 @@ export function buildEvalInput(s: {
     bestStreak: s.bestStreak,
     hasExam: "exam" in s.results,
     hasFinal: "final" in s.results,
+    hasRush: "rush" in s.results,
     hasDictation,
     hasWriting,
     activeDays: hist.days + (todayInHist ? 0 : ds.quizzes + ds.reviews > 0 ? 1 : 0),
     mistakesTotal,
+    rushBest: s.rushBest ?? 0,
+    rushBestCorrect: s.rushBestCorrect ?? 0,
   };
 }
 
@@ -236,6 +244,23 @@ export const BADGES: BadgeDef[] = [
     icon: "Eraser",
     tier: "silver",
     check: (s) => s.totalQuizzes >= 3 && s.mistakesTotal === 0,
+  },
+  {
+    id: "rush-first",
+    title: "برق‌آسا",
+    desc: "یک چالش برق‌آسای ۶۰ ثانیه‌ای را کامل کن",
+    icon: "Zap",
+    tier: "bronze",
+    check: (s) => s.hasRush,
+  },
+  {
+    id: "rush-combo",
+    title: "کمبوی آتشین",
+    desc: "در یک چالش برق‌آسا ۱۵ پاسخ درست یا بیشتر بگیر",
+    icon: "Sparkles",
+    tier: "silver",
+    progress: (s) => `بهترین: ${Math.min(s.rushBestCorrect, 15)} از ۱۵ پاسخ`,
+    check: (s) => s.rushBestCorrect >= 15,
   },
 ];
 

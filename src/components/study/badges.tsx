@@ -21,6 +21,8 @@ import {
   Eraser,
   Lock,
   Medal,
+  Zap,
+  Sparkles,
 } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -52,6 +54,8 @@ const ICONS: Record<string, React.ElementType> = {
   BookMarked,
   Award,
   Eraser,
+  Zap,
+  Sparkles,
 };
 
 const tierFa: Record<string, string> = {
@@ -72,6 +76,8 @@ export default function Badges() {
   const streak = useStudy((s) => s.streak);
   const bestStreak = useStudy((s) => s.bestStreak);
   const mistakes = useStudy((s) => s.mistakes);
+  const rushBest = useStudy((s) => s.rushBest);
+  const rushBestCorrect = useStudy((s) => s.rushBestCorrect);
   const seenBadges = useStudy((s) => s.seenBadges);
   const markBadgesSeen = useStudy((s) => s.markBadgesSeen);
   const mounted = useMounted();
@@ -88,8 +94,10 @@ export default function Badges() {
         streak,
         bestStreak,
         mistakes,
+        rushBest,
+        rushBestCorrect,
       }),
-    [known, results, history, dayStat, streak, bestStreak, mistakes]
+    [known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect]
   );
 
   const unlocked = useMemo(() => unlockedBadgeIds(input), [input]);
@@ -274,6 +282,8 @@ function badgeProgressPct(id: string, s: BadgeEvalInput): number {
       return clamp((s.bestPercent / 85) * 100);
     case "perfect":
       return clamp((s.bestPercent / 100) * 100);
+    case "rush-combo":
+      return clamp((s.rushBestCorrect / 15) * 100);
     default:
       return 0;
   }

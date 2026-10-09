@@ -13,12 +13,13 @@ import {
   Play,
   Sparkles,
   Trophy,
+  SpellCheck,
 } from "lucide-react";
 import type { LessonData, VocabWord } from "@/lib/study-types";
 import { useStudy, wordKey, resultKey } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum, posLabel, themeOf } from "@/lib/study-theme";
-import { speak, stopSpeaking } from "@/lib/speak";
+import { speak, speakSpell, stopSpeaking } from "@/lib/speak";
 import { useToast } from "@/hooks/use-toast";
 
 type Phase = "setup" | "play" | "done";
@@ -67,6 +68,7 @@ export default function DictationTab({ lesson }: { lesson: LessonData }) {
   const [state, setState] = useState<"typing" | "correct" | "wrong">("typing");
   const [score, setScore] = useState(0); // points (1 / 0.5 / 0)
   const [replaying, setReplaying] = useState(false);
+  const [spelling, setSpelling] = useState(false);
   const [audioErrorFor, setAudioErrorFor] = useState<number | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const advanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -89,6 +91,20 @@ export default function DictationTab({ lesson }: { lesson: LessonData }) {
     },
     []
   );
+
+  /** hear the word spelled letter-by-letter (counts as a hint → half credit) */
+  const playSpelled = useCallback((en: string, asHint: boolean) => {
+    if (asHint) {
+      // reveal all letters visually too, same as fully-used hint
+      setWords((ws) => ws.map((w, i) => (i === idx && !w.hintUsed ? { ...w, hint: en.length, hintUsed: true } : w)));
+    }
+    setSpelling(true);
+    speakSpell(
+      en,
+      () => setSpelling(false),
+      () => setSpelling(false)
+    );
+  }, [idx]);
 
   const startRound = () => {
     const base = lesson.vocabulary;
@@ -216,6 +232,7 @@ export default function DictationTab({ lesson }: { lesson: LessonData }) {
     setWords([]);
     setIdx(0);
     setScore(0);
+    setSpelling(false);
   };
 
   // ----------------------------- SETUP -----------------------------
@@ -352,13 +369,23 @@ export default function DictationTab({ lesson }: { lesson: LessonData }) {
                     <div className="truncate text-[12px] text-stone-500">{w.fa}</div>
                   </div>
                 </div>
-                <button
-                  onClick={() => playAudio(w.en)}
-                  className="ml-2 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-violet-200 bg-white text-violet-600 transition-all hover:bg-violet-50"
-                  aria-label={`روخوانی ${w.en}`}
-                >
-                  <Volume2 size={14} />
-                </button>
+                <div className="mr-2 flex shrink-0 items-center gap-1.5">
+                  <button
+                    onClick={() => playAudio(w.en)}
+                    className="flex h-8 w-8 items-center justify-center rounded-lg border border-violet-200 bg-white text-violet-600 transition-all hover:bg-violet-50"
+                    aria-label={`روخوانی ${w.en}`}
+                  >
+                    <Volume2 size={14} />
+                  </button>
+                  <button
+                    onClick={() => playSpelled(w.en, false)}
+                    className="flex h-8 w-8 items-center justify-center rounded-lg border border-sky-200 bg-white text-sky-600 transition-all hover:bg-sky-50"
+                    aria-label={`املای حرف‌به‌حرف ${w.en}`}
+                    title="املای حرف‌به‌حرف"
+                  >
+                    <SpellCheck size={14} />
+                  </button>
+                </div>
               </div>
             ))}
           </div>
@@ -483,6 +510,15 @@ export default function DictationTab({ lesson }: { lesson: LessonData }) {
                     راهنما
                   </button>
                   <button
+                    onClick={() => playSpelled(word.en, true)}
+                    disabled={spelling}
+                    title="شنیدن املای حرف‌به‌حرف (نیم‌امتیاز)"
+                    className="inline-flex items-center gap-1.5 rounded-xl border border-sky-200 bg-sky-50 px-4 py-2.5 text-[13px] font-bold text-sky-700 transition-all hover:bg-sky-100 active:scale-95 disabled:opacity-50"
+                  >
+                    <SpellCheck size={15} />
+                    حرف‌به‌حرف
+                  </button>
+                  <button
                     onClick={skip}
                     className="inline-flex items-center gap-1.5 rounded-xl border border-stone-200 bg-white px-4 py-2.5 text-[13px] font-bold text-stone-500 transition-all hover:bg-stone-50 active:scale-95"
                   >
@@ -543,6 +579,26 @@ export default function DictationTab({ lesson }: { lesson: LessonData }) {
                   <p className="mb-3 text-[12px] text-rose-500" dir="ltr">
                     you typed: <b>{input.trim()}</b>
                   </p>
+                )}
+
+                {!isCorrect && (
+                  <div className="mb-3 flex flex-wrap items-center justify-center gap-2">
+                    <button
+                      onClick={() => playSpelled(word.en, false)}
+                      disabled={spelling}
+                      className="inline-flex items-center gap-1.5 rounded-lg border border-sky-200 bg-white px-3 py-1.5 text-[12px] font-bold text-sky-700 transition-all hover:bg-sky-50 active:scale-95 disabled:opacity-50"
+                    >
+                      <SpellCheck size={13} />
+                      {spelling ? "در حال خواندن…" : "شنیدن حرف‌به‌حرف"}
+                    </button>
+                    <button
+                      onClick={() => playAudio(word.en)}
+                      className="inline-flex items-center gap-1.5 rounded-lg border border-violet-200 bg-white px-3 py-1.5 text-[12px] font-bold text-violet-700 transition-all hover:bg-violet-50 active:scale-95"
+                    >
+                      <Volume2 size={13} />
+                      تلفظ کلمه
+                    </button>
+                  </div>
                 )}
 
                 {!isCorrect && (

@@ -67,3 +67,25 @@ export function stopSpeaking() {
     current = null;
   }
 }
+
+/**
+ * Build a TTS-friendly "spelled out" version of a word: each latin letter
+ * separated by commas so the voice reads them one by one ("b, e, a, u…").
+ * Punctuation and spaces are skipped; apostrophes become a short pause.
+ */
+export function spellText(word: string): string {
+  return word
+    .split("")
+    .filter((ch) => /[a-zA-Z']/.test(ch))
+    .map((ch) => (ch === "'" ? "," : ch.toUpperCase()))
+    .join(", ");
+}
+
+/** Speak the spelling of a word, letter by letter (same pipeline as speak). */
+export function speakSpell(
+  word: string,
+  onEnd?: () => void,
+  onError?: () => void
+): SpeakStop {
+  return speak(spellText(word), 0.8, onEnd, onError);
+}

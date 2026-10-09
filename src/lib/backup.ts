@@ -30,6 +30,8 @@ export interface BackupPayload {
     history: HistoryMap;
     mistakes: MistakeMap;
     seenBadges: string[];
+    rushBest: number;
+    rushBestCorrect: number;
   };
 }
 
@@ -59,6 +61,8 @@ function collectData(): BackupPayload["data"] {
     history: s.history,
     mistakes: s.mistakes,
     seenBadges: s.seenBadges,
+    rushBest: s.rushBest ?? 0,
+    rushBestCorrect: s.rushBestCorrect ?? 0,
   };
 }
 
@@ -167,6 +171,8 @@ export function parseBackup(text: string): BackupPayload {
       history,
       mistakes,
       seenBadges: Array.isArray(data["seenBadges"]) ? data["seenBadges"].filter((x): x is string => typeof x === "string") : [],
+      rushBest: typeof data["rushBest"] === "number" ? data["rushBest"] : 0,
+      rushBestCorrect: typeof data["rushBestCorrect"] === "number" ? data["rushBestCorrect"] : 0,
     },
   };
 }

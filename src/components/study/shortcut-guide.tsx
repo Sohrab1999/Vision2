@@ -32,6 +32,7 @@ const GROUPS: { title: string; icon: React.ElementType; rows: Row[] }[] = [
       { keys: ["D"], desc: "دیکشنری واژگان" },
       { keys: ["E"], desc: "آزمون جامع" },
       { keys: ["A"], desc: "ضمیمهٔ کتاب" },
+      { keys: ["C"], desc: "چالش برق‌آسا (۶۰ ثانیه)" },
       { keys: ["T"], desc: "تغییر حالت شب / روز" },
       { keys: ["?"], desc: "باز و بسته کردن همین راهنما" },
     ],
@@ -102,9 +103,10 @@ export default function ShortcutGuide() {
     return () => window.removeEventListener("open-shortcuts", handler);
   }, []);
 
-  // inside an active test/exam the nav letters/numbers are disabled
+  // inside an active test/exam/challenge the nav letters/numbers are disabled
   // so they can't wipe an in-progress session (quiz uses 1-4 itself)
-  const quizContext = view.type === "exam" || (view.type === "lesson" && lessonTab === "tests");
+  const quizContext =
+    view.type === "exam" || view.type === "rush" || (view.type === "lesson" && lessonTab === "tests");
 
   // global shortcuts + "?" toggle
   useEffect(() => {
@@ -122,6 +124,7 @@ export default function ShortcutGuide() {
       else if (k === "d") setView({ type: "dictionary" });
       else if (k === "e") setView({ type: "exam" });
       else if (k === "a") setView({ type: "appendix" });
+      else if (k === "c") setView({ type: "rush" });
       else if (k === "t") setTheme(theme === "dark" ? "light" : "dark");
       else if (k === "f" && view.type === "lesson") openLesson(view.id, "smart");
       else if (k >= "1" && k <= "7" && view.type === "lesson") {

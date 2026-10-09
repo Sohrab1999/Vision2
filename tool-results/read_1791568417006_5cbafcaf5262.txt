@@ -1,0 +1,581 @@
+     1→"use client";
+     2→
+     3→import { useEffect, useState } from "react";
+     4→import { motion } from "framer-motion";
+     5→import {
+     6→  Sparkles,
+     7→  BookOpen,
+     8→  Languages,
+     9→  ListChecks,
+    10→  Volume2,
+    11→  BookMarked,
+    12→  ClipboardCheck,
+    13→  Library,
+    14→  ArrowLeft,
+    15→  RotateCcw,
+    16→  Trophy,
+    17→  Layers,
+    18→  Users,
+    19→  Flame,
+    20→  Target,
+    21→  RefreshCcw,
+    22→  Ear,
+    23→  Radio,
+    24→  Eraser,
+    25→} from "lucide-react";
+    26→import { lessons, examBank, totalVocabulary, totalQuestions } from "@/data";
+    27→import { useStudy, knownCountOfLesson, summarize, srsDueTotal, firstLessonWithDue, DAILY_TARGET, todayStr, mistakesOfLesson } from "@/lib/study-store";
+    28→import { useMounted } from "@/lib/use-mounted";
+    29→import { themeOf, faNum, timeAgoFa } from "@/lib/study-theme";
+    30→import ProgressRing from "./progress-ring";
+    31→import WeeklyChart from "./weekly-chart";
+    32→import VocabDonut from "./vocab-donut";
+    33→import Leaderboard from "./leaderboard";
+    34→import Badges from "./badges";
+    35→import WordOfDay from "./word-of-day";
+    36→
+    37→const spineColors: Record<string, string> = {
+    38→  emerald: "bg-gradient-to-b from-emerald-500 to-emerald-800",
+    39→  amber: "bg-gradient-to-b from-amber-400 to-amber-700",
+    40→  rose: "bg-gradient-to-b from-rose-500 to-rose-800",
+    41→};
+    42→
+    43→const categoryLabel: Record<string, string> = {
+    44→  vocab: "واژگان استاندارد",
+    45→  "vocab-konkuri": "واژگان کنکوری",
+    46→  grammar: "گرامر و نگارش",
+    47→  writing: "تمرین نگارش",
+    48→  dictation: "آزمون دیکته",
+    49→  exam: "آزمون جامع",
+    50→  final: "آزمون پایان ترم",
+    51→  mixed: "تست ترکیبی درس",
+    52→  mistakes: "مرور اشتباهات",
+    53→};
+    54→
+    55→// compact labels for the live feed rows
+    56→const feedLabel: Record<string, string> = {
+    57→  vocab: "واژگان",
+    58→  "vocab-konkuri": "واژگان کنکوری",
+    59→  grammar: "گرامر",
+    60→  writing: "نگارش",
+    61→  dictation: "دیکته",
+    62→  exam: "آزمون جامع",
+    63→  final: "آزمون پایان ترم",
+    64→  mixed: "تست ترکیبی",
+    65→  mistakes: "مرور اشتباهات",
+    66→};
+    67→
+    68→interface RecentAttempt {
+    69→  lesson: number;
+    70→  category: string;
+    71→  total: number;
+    72→  correct: number;
+    73→  percent: number;
+    74→  createdAt: string;
+    75→  name?: string | null;
+    76→  color?: string | null;
+    77→}
+    78→
+    79→export default function HomeView() {
+    80→  const openLesson = useStudy((s) => s.openLesson);
+    81→  const openLessonTab = useStudy((s) => s.openLessonTab);
+    82→  const setView = useStudy((s) => s.setView);
+    83→  const known = useStudy((s) => s.known);
+    84→  const results = useStudy((s) => s.results);
+    85→  const srs = useStudy((s) => s.srs);
+    86→  const mistakes = useStudy((s) => s.mistakes);
+    87→  const streak = useStudy((s) => s.streak);
+    88→  const bestStreak = useStudy((s) => s.bestStreak);
+    89→  const dayStat = useStudy((s) => s.dayStat);
+    90→  const mounted = useMounted();
+    91→
+    92→  const summary = mounted ? summarize(known, results) : { knownCount: 0, totalPercent: 0, doneCategories: 0, bestExam: null };
+    93→  const dueTotal = mounted ? srsDueTotal(srs) : 0;
+    94→  const todayActivities = mounted && dayStat.day === todayStr() ? dayStat.reviews + dayStat.quizzes : 0;
+    95→  const goalPercent = Math.min(100, Math.round((todayActivities / DAILY_TARGET) * 100));
+    96→  const reviewLesson = mounted ? firstLessonWithDue(srs) : null;
+    97→  const mistakeLesson = mounted
+    98→    ? ([1, 2, 3] as const)
+    99→        .map((id) => ({ id, n: mistakesOfLesson(mistakes, id) }))
+   100→        .sort((a, b) => b.n - a.n)[0]
+   101→    : { id: 1, n: 0 };
+   102→  const totalMistakes = mounted ? mistakesOfLesson(mistakes, 1) + mistakesOfLesson(mistakes, 2) + mistakesOfLesson(mistakes, 3) : 0;
+   103→
+   104→  const [globalStats, setGlobalStats] = useState<{
+   105→    total: number;
+   106→    avgPercent: number;
+   107→    last24h: number;
+   108→    recent: RecentAttempt[];
+   109→  } | null>(null);
+   110→  useEffect(() => {
+   111→    fetch("/api/stats")
+   112→      .then((r) => r.json())
+   113→      .then((d) =>
+   114→        setGlobalStats({
+   115→          total: d.total ?? 0,
+   116→          avgPercent: d.avgPercent ?? 0,
+   117→          last24h: d.last24h ?? 0,
+   118→          recent: Array.isArray(d.recent) ? d.recent : [],
+   119→        })
+   120→      )
+   121→      .catch(() => {});
+   122→  }, []);
+   123→  const recentResults = mounted
+   124→    ? Object.entries(results)
+   125→        .sort((a, b) => (b[1].at > a[1].at ? 1 : -1))
+   126→        .slice(0, 4)
+   127→    : [];
+   128→
+   129→  return (
+   130→    <div className="space-y-10">
+   131→      {/* ------------------------------ Hero ------------------------------ */}
+   132→      <section className="grid items-center gap-8 pt-6 md:grid-cols-2 md:pt-10">
+   133→        <motion.div
+   134→          initial={{ opacity: 0, y: 24 }}
+   135→          animate={{ opacity: 1, y: 0 }}
+   136→          transition={{ duration: 0.55 }}
+   137→          className="order-2 md:order-1"
+   138→        >
+   139→          <span className="mb-4 inline-flex items-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-700">
+   140→            <Sparkles size={13} />
+   141→            جزوهٔ کاغذی ⇠ تبدیل به وب‌کتاب تعاملی
+   142→          </span>
+   143→          <h1 className="mb-3 text-3xl font-black leading-[1.35] text-stone-800 sm:text-4xl">
+   144→            آموزش زبان انگلیسی پایهٔ یازدهم
+   145→            <span className="mt-1 block bg-gradient-to-l from-emerald-700 via-emerald-600 to-teal-500 bg-clip-text text-transparent">
+   146→              «Vision Two» تعاملی و شنیداری
+   147→            </span>
+   148→          </h1>
+   149→          <p className="mb-6 max-w-lg text-[15px] leading-8 text-stone-600">
+   150→            هر سه درس جزوه با واژگان کامل، مکالمه و ریدینگ با <b className="text-emerald-700">روخوانی هوش مصنوعی</b>،
+   151→            گرامر تشریحی، فلش‌کارت و بیش از {faNum(totalQuestions)} تست کنکوری — همه در یک کتاب دیجیتال زنده.
+   152→          </p>
+   153→          <div className="flex flex-wrap items-center gap-3">
+   154→            <button
+   155→              onClick={() => openLesson(1)}
+   156→              className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-emerald-900/25 transition-all hover:bg-emerald-700 hover:shadow-emerald-900/30 active:scale-95"
+   157→            >
+   158→              <BookOpen size={17} />
+   159→              شروع یادگیری — درس اول
+   160→              <ArrowLeft size={16} />
+   161→            </button>
+   162→            <button
+   163→              onClick={() => setView({ type: "exam" })}
+   164→              className="inline-flex items-center gap-2 rounded-xl border border-stone-300 bg-white px-5 py-3 text-sm font-bold text-stone-700 transition-all hover:border-emerald-300 hover:text-emerald-700 active:scale-95"
+   165→            >
+   166→              <ClipboardCheck size={17} />
+   167→              آزمون جامع
+   168→            </button>
+   169→          </div>
+   170→
+   171→          <div className="mt-7 grid max-w-md grid-cols-3 gap-3">
+   172→            {[
+   173→              { icon: Languages, label: "واژگان", value: `${faNum(totalVocabulary)}+` },
+   174→              { icon: ListChecks, label: "تست تعاملی", value: `${faNum(totalQuestions)}+` },
+   175→              { icon: Volume2, label: "روخوانی TTS", value: "کل متون" },
+   176→            ].map((s) => (
+   177→              <div
+   178→                key={s.label}
+   179→                className="rounded-2xl border border-stone-200 bg-white p-3 text-center shadow-sm"
+   180→              >
+   181→                <s.icon size={18} className="mx-auto mb-1.5 text-emerald-600" />
+   182→                <div className="text-lg font-black text-stone-800">{s.value}</div>
+   183→                <div className="text-[11px] text-stone-500">{s.label}</div>
+   184→              </div>
+   185→            ))}
+   186→          </div>
+   187→        </motion.div>
+   188→
+   189→        {/* Book cover (Papermorph-style) */}
+   190→        <motion.div
+   191→          initial={{ opacity: 0, scale: 0.9, rotate: 4 }}
+   192→          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+   193→          transition={{ duration: 0.6, delay: 0.1 }}
+   194→          className="order-1 flex justify-center md:order-2"
+   195→        >
+   196→          <motion.div
+   197→            animate={{ y: [0, -10, 0] }}
+   198→            transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
+   199→            className="relative"
+   200→          >
+   201→            <div className="absolute -inset-4 rounded-3xl bg-emerald-200/40 blur-2xl" aria-hidden />
+   202→            <button
+   203→              onClick={() => openLesson(1)}
+   204→              className="relative block w-64 overflow-hidden rounded-r-2xl rounded-l-md bg-gradient-to-br from-emerald-600 via-emerald-700 to-emerald-900 p-6 text-center text-white shadow-2xl shadow-emerald-900/40 sm:w-72"
+   205→              style={{ boxShadow: "14px 18px 34px -14px rgb(6 78 59 / 0.5), inset 6px 0 12px -6px rgb(0 0 0 / 0.45)" }}
+   206→              aria-label="باز کردن کتاب"
+   207→            >
+   208→              <div className="absolute inset-y-0 right-0 w-3 bg-black/25" aria-hidden />
+   209→              <div className="pt-4 text-[11px] font-bold tracking-widest text-emerald-200/90">
+   210→                ENGLISH FOR 11TH GRADE
+   211→              </div>
+   212→              <div className="en-text mt-6 text-5xl font-bold italic" dir="ltr">
+   213→                Vision
+   214→              </div>
+   215→              <div className="en-text text-6xl font-black italic text-amber-300" dir="ltr">
+   216→                Two
+   217→              </div>
+   218→              <div className="mx-auto my-5 h-px w-2/3 bg-emerald-400/50" />
+   219→              <div className="text-[13px] font-bold leading-7">
+   220→                وب‌کتاب تعاملی
+   221→                <br />
+   222→                واژگان · مکالمه · گرامر · تست
+   223→              </div>
+   224→              <div className="mt-5 inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-[11px] font-semibold">
+   225→                <Volume2 size={12} /> با روخوانی هوش مصنوعی
+   226→              </div>
+   227→            </button>
+   228→          </motion.div>
+   229→        </motion.div>
+   230→      </section>
+   231→
+   232→      {/* ------------------------- Today's plan ------------------------- */}
+   233→      <motion.section
+   234→        initial={{ opacity: 0, y: 16 }}
+   235→        animate={{ opacity: 1, y: 0 }}
+   236→        transition={{ delay: 0.15 }}
+   237→        aria-label="برنامهٔ امروز"
+   238→        className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm"
+   239→      >
+   240→        <div className="h-1.5 w-full bg-gradient-to-l from-emerald-500 via-teal-500 to-amber-400" />
+   241→        <div className="grid gap-5 p-5 sm:p-6 lg:grid-cols-[auto_1fr_auto] lg:items-center">
+   242→          {/* streak */}
+   243→          <div className="flex items-center gap-4">
+   244→            <div className={`relative flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl shadow-lg transition-all ${streak > 0 ? "bg-gradient-to-br from-amber-400 to-orange-500 shadow-orange-500/30" : "bg-stone-200 shadow-none"}`}>
+   245→              <Flame size={30} className={streak > 0 ? "streak-flame text-white" : "text-stone-400"} />
+   246→            </div>
+   247→            <div>
+   248→              <div className="text-[12px] font-bold text-stone-400">زنجیرهٔ یادگیری</div>
+   249→              <div className="text-2xl font-black leading-tight text-stone-800">
+   250→                {streak > 0 ? (
+   251→                  <>
+   252→                    {faNum(streak)} <span className="text-sm font-bold text-amber-600">روز پیوسته</span>
+   253→                  </>
+   254→                ) : (
+   255→                  <span className="text-base">امروز را شروع کن!</span>
+   256→                )}
+   257→              </div>
+   258→              {bestStreak > 1 && (
+   259→                <div className="text-[11px] text-stone-400">رکورد: {faNum(bestStreak)} روز</div>
+   260→              )}
+   261→            </div>
+   262→          </div>
+   263→
+   264→          {/* daily goal */}
+   265→          <div>
+   266→            <div className="mb-1.5 flex items-center justify-between text-[12px] font-bold">
+   267→              <span className="flex items-center gap-1.5 text-stone-600">
+   268→                <Target size={14} className="text-emerald-600" />
+   269→                هدف امروز: {faNum(DAILY_TARGET)} فعالیت
+   270→              </span>
+   271→              <span className={goalPercent >= 100 ? "text-emerald-600" : "text-stone-500"}>
+   272→                {goalPercent >= 100 ? "✓ انجام شد!" : `${faNum(todayActivities)} از ${faNum(DAILY_TARGET)}`}
+   273→              </span>
+   274→            </div>
+   275→            <div className="h-3 overflow-hidden rounded-full bg-stone-100">
+   276→              <motion.div
+   277→                className={`h-full rounded-full ${goalPercent >= 100 ? "bg-gradient-to-l from-emerald-500 to-teal-400" : "bg-gradient-to-l from-emerald-500 to-amber-400"}`}
+   278→                initial={{ width: 0 }}
+   279→                animate={{ width: `${goalPercent}%` }}
+   280→                transition={{ duration: 0.8, ease: "easeOut" }}
+   281→              />
+   282→            </div>
+   283→            <div className="mt-1.5 text-[11px] text-stone-400">
+   284→              مرور فلش‌کارت، تست، نگارش و دیکته همه در شمارش فعالیت امروز تأثیر دارند
+   285→            </div>
+   286→          </div>
+   287→
+   288→          {/* actions */}
+   289→          <div className="flex flex-col gap-2 sm:flex-row lg:flex-col">
+   290→            <button
+   291→              onClick={() => openLesson(reviewLesson ?? 1, "smart")}
+   292→              className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 px-4 py-2.5 text-[13px] font-bold text-white shadow-md shadow-emerald-900/20 transition-all hover:bg-emerald-700 active:scale-95"
+   293→            >
+   294→              <RefreshCcw size={15} />
+   295→              {dueTotal > 0 ? `مرور هوشمند (${faNum(dueTotal)} واژه سررسید)` : "مرور هوشمند"}
+   296→            </button>
+   297→            <button
+   298→              onClick={() => openLessonTab(reviewLesson ?? 1, "dictation")}
+   299→              className="inline-flex items-center justify-center gap-2 rounded-xl border border-violet-200 bg-violet-50 px-4 py-2.5 text-[13px] font-bold text-violet-700 transition-all hover:bg-violet-100 active:scale-95"
+   300→            >
+   301→              <Ear size={15} />
+   302→              دیکتهٔ امروز
+   303→            </button>
+   304→          </div>
+   305→        </div>
+   306→      </motion.section>
+   307→
+   308→      {/* ------------------------- Word of the day ------------------------- */}
+   309→      <WordOfDay />
+   310→
+   311→      {/* ----------------- Weekly chart + vocab donut ----------------- */}
+   312→      <div className="grid items-start gap-6 lg:grid-cols-2">
+   313→        <WeeklyChart />
+   314→        <VocabDonut />
+   315→      </div>
+   316→
+   317→      {/* ---------------------------- Bookshelf ---------------------------- */}
+   318→      <section aria-label="قفسهٔ کتاب">
+   319→        <div className="mb-4 flex items-end justify-between">
+   320→          <h2 className="flex items-center gap-2 text-lg font-extrabold text-stone-800">
+   321→            <Layers size={19} className="text-emerald-600" />
+   322→            قفسهٔ کتاب — سه درس
+   323→          </h2>
+   324→          <span className="text-xs text-stone-500">برای باز کردن هر درس کلیک کنید</span>
+   325→        </div>
+   326→
+   327→        {/* spines */}
+   328→        <div className="mb-6 flex items-end justify-center gap-2 rounded-t-2xl border border-b-0 border-stone-200 shelf-strip bg-gradient-to-b from-stone-100 to-stone-50 px-6 pt-6 sm:gap-3">
+   329→          {lessons.map((l, i) => (
+   330→            <motion.button
+   331→              key={l.id}
+   332→              initial={{ opacity: 0, y: 30 }}
+   333→              whileInView={{ opacity: 1, y: 0 }}
+   334→              viewport={{ once: true }}
+   335→              transition={{ delay: i * 0.08 }}
+   336→              onClick={() => openLesson(l.id)}
+   337→              className={`book-spine flex w-16 flex-col items-center justify-end rounded-t-lg pb-3 text-white shadow-lg sm:w-20 ${
+   338→                spineColors[l.color] ?? "bg-stone-600"
+   339→              }`}
+   340→              style={{ height: `${110 + i * 8}px` }}
+   341→            >
+   342→              <span className="en-text text-sm font-bold" dir="ltr">
+   343→                L{l.id}
+   344→              </span>
+   345→              <span className="mt-1 max-w-full truncate px-1 text-[10px] opacity-90">
+   346→                {l.titleFa}
+   347→              </span>
+   348→            </motion.button>
+   349→          ))}
+   350→          <div className="book-spine flex w-16 flex-col items-center justify-end rounded-t-lg bg-gradient-to-b from-stone-600 to-stone-800 pb-3 text-white shadow-lg sm:w-20" style={{ height: "140px" }}>
+   351→            <ClipboardCheck size={16} />
+   352→            <span className="mt-1 text-[10px]">آزمون</span>
+   353→          </div>
+   354→        </div>
+   355→        <div className="h-2.5 rounded-b-xl shelf-edge bg-gradient-to-b from-stone-300 to-stone-400 shadow-md" aria-hidden />
+   356→
+   357→        {/* lesson cards */}
+   358→        <div className="mt-6 grid gap-4 md:grid-cols-3">
+   359→          {lessons.map((l, i) => {
+   360→            const t = themeOf(l.color);
+   361→            const wordsKnown = mounted ? knownCountOfLesson(known, l.id) : 0;
+   362→            const knownPercent = Math.round((wordsKnown / l.vocabulary.length) * 100);
+   363→            return (
+   364→              <motion.div
+   365→                key={l.id}
+   366→                initial={{ opacity: 0, y: 20 }}
+   367→                whileInView={{ opacity: 1, y: 0 }}
+   368→                viewport={{ once: true }}
+   369→                transition={{ delay: i * 0.07 }}
+   370→                className="group flex flex-col rounded-2xl border border-stone-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-lg"
+   371→              >
+   372→                <div className="mb-3 flex items-start justify-between">
+   373→                  <div>
+   374→                    <span className={`mb-1 inline-block rounded-full px-2.5 py-0.5 text-[11px] font-bold ${t.chipBg}`}>
+   375→                      درس {l.id === 1 ? "اول" : l.id === 2 ? "دوم" : "سوم"}
+   376→                    </span>
+   377→                    <h3 className={`en-text text-xl font-bold ${t.text}`} dir="ltr">
+   378→                      {l.titleEn}
+   379→                    </h3>
+   380→                    <p className="text-sm font-bold text-stone-700">{l.titleFa}</p>
+   381→                  </div>
+   382→                  <ProgressRing percent={mounted ? knownPercent : 0} size={56} stroke={5} color={l.color === "amber" ? "#d97706" : l.color === "rose" ? "#e11d48" : "#059669"}>
+   383→                    <span className="text-[11px] font-black text-stone-700">{faNum(mounted ? knownPercent : 0)}٪</span>
+   384→                  </ProgressRing>
+   385→                </div>
+   386→                <p className="mb-4 flex-1 text-[13px] leading-7 text-stone-500">{l.tagline}</p>
+   387→                <div className="mb-4 flex gap-2 text-[11px] text-stone-500">
+   388→                  <span className="rounded-lg bg-stone-100 px-2 py-1">{faNum(l.vocabulary.length)} واژه</span>
+   389→                  <span className="rounded-lg bg-stone-100 px-2 py-1">{faNum(l.quizzes.length)} تست</span>
+   390→                  <span className="rounded-lg bg-stone-100 px-2 py-1">{faNum(l.grammar.length)} بخش گرامر</span>
+   391→                </div>
+   392→                <button
+   393→                  onClick={() => openLesson(l.id)}
+   394→                  className={`inline-flex w-full items-center justify-center gap-2 rounded-xl ${t.bg} py-2.5 text-sm font-bold text-white transition-all hover:opacity-90 active:scale-95`}
+   395→                >
+   396→                  ورود به درس
+   397→                  <ArrowLeft size={15} />
+   398→                </button>
+   399→              </motion.div>
+   400→            );
+   401→          })}
+   402→        </div>
+   403→      </section>
+   404→
+   405→      {/* ---------------------------- Tools ---------------------------- */}
+   406→      <section aria-label="ابزارهای یادگیری">
+   407→        <h2 className="mb-4 flex items-center gap-2 text-lg font-extrabold text-stone-800">
+   408→          <Sparkles size={19} className="text-amber-500" />
+   409→          ابزارهای ویژه
+   410→        </h2>
+   411→        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+   412→          {[
+   413→            { icon: BookMarked, title: "دیکشنری جستجو", desc: `${faNum(totalVocabulary)} واژهٔ سه درس با جستجوی فارسی و انگلیسی`, view: { type: "dictionary" as const }, color: "text-sky-600 bg-sky-50 border-sky-200" },
+   414→            { icon: ClipboardCheck, title: "آزمون جامع", desc: `${faNum(examBank.length)} تست گردآوری از بانک ۳۶۰ تستی جزوه با تایمر`, view: { type: "exam" as const }, color: "text-emerald-600 bg-emerald-50 border-emerald-200" },
+   415→            { icon: Ear, title: "آزمون دیکته", desc: "املای شنیداری با روخوانی هوش مصنوعی و ثبت در SRS", onClick: () => openLessonTab(reviewLesson ?? 1, "dictation"), color: "text-violet-600 bg-violet-50 border-violet-200" },
+   416→            { icon: Eraser, title: "بانک اشتباهات", desc: "سؤال‌هایی که اشتباه جواب دادی، برای مرور مجدد", onClick: () => openLessonTab(mistakeLesson?.id ?? 1, "tests"), color: "text-rose-600 bg-rose-50 border-rose-200", badge: totalMistakes },
+   417→            { icon: Library, title: "ضمیمهٔ کتاب", desc: "افعال بی‌قاعده، جدول تلفظ IPA و اجزای کلام", view: { type: "appendix" as const }, color: "text-amber-600 bg-amber-50 border-amber-200" },
+   418→            { icon: Trophy, title: "پیشرفت من", desc: "امتیاز تست‌ها و واژگان آموخته‌شده", view: { type: "dictionary" as const }, color: "text-stone-600 bg-stone-50 border-stone-200", custom: true },
+   419→          ].map((tool) => (
+   420→            <button
+   421→              key={tool.title}
+   422→              onClick={() => ("onClick" in tool && tool.onClick ? tool.onClick() : setView((tool as { view: { type: "dictionary" } }).view))}
+   423→              className="relative rounded-2xl border border-stone-200 bg-white p-4 text-right shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md active:scale-[0.98]"
+   424→            >
+   425→              {"badge" in tool && typeof tool.badge === "number" && tool.badge > 0 && (
+   426→                <span className="absolute left-3 top-3 flex h-6 min-w-6 items-center justify-center rounded-full bg-rose-500 px-1.5 text-[11px] font-black text-white shadow-md shadow-rose-500/30">
+   427→                  {faNum(tool.badge)}
+   428→                </span>
+   429→              )}
+   430→              <span className={`mb-2.5 inline-flex h-10 w-10 items-center justify-center rounded-xl border ${tool.color}`}>
+   431→                <tool.icon size={19} />
+   432→              </span>
+   433→              <h3 className="mb-1 text-sm font-extrabold text-stone-800">{tool.title}</h3>
+   434→              <p className="text-[12px] leading-6 text-stone-500">{tool.desc}</p>
+   435→              {tool.custom && (
+   436→                <p className="mt-2 text-[12px] font-bold text-emerald-700">
+   437→                  {faNum(summary.knownCount)} واژه بلدم · میانگین {faNum(summary.totalPercent)}٪
+   438→                </p>
+   439→              )}
+   440→            </button>
+   441→          ))}
+   442→        </div>
+   443→      </section>
+   444→
+   445→      {/* --------------------------- Badges --------------------------- */}
+   446→      <Badges />
+   447→
+   448→      {/* --------------------------- Leaderboard --------------------------- */}
+   449→      <Leaderboard />
+   450→
+   451→      {/* ------------------------- Global stats + feed ------------------------- */}
+   452→      {globalStats && globalStats.total > 0 && (
+   453→        <section className="stat-band rounded-2xl border border-emerald-200 bg-gradient-to-l from-emerald-50 to-teal-50 p-5">
+   454→          <div className="grid gap-5 lg:grid-cols-[auto_1fr]">
+   455→            <div>
+   456→              <div className="mb-4 flex items-center gap-3">
+   457→                <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-600 text-white shadow-md shadow-emerald-900/20">
+   458→                  <Users size={20} />
+   459→                </span>
+   460→                <div>
+   461→                  <h2 className="text-sm font-extrabold text-stone-800">فعالیت یادگیرندگان</h2>
+   462→                  <p className="text-[12px] text-stone-500">همهٔ آزمون‌های ثبت‌شده روی این کتاب</p>
+   463→                </div>
+   464→              </div>
+   465→              <div className="flex gap-6 text-center">
+   466→                <div>
+   467→                  <div className="text-2xl font-black text-emerald-700" dir="ltr">
+   468→                    {faNum(globalStats.total)}
+   469→                  </div>
+   470→                  <div className="text-[11px] text-stone-500">آزمون انجام‌شده</div>
+   471→                </div>
+   472→                <div>
+   473→                  <div className="text-2xl font-black text-emerald-700" dir="ltr">
+   474→                    {faNum(globalStats.avgPercent)}٪
+   475→                  </div>
+   476→                  <div className="text-[11px] text-stone-500">میانگین نمرات</div>
+   477→                </div>
+   478→                <div>
+   479→                  <div className="text-2xl font-black text-emerald-700" dir="ltr">
+   480→                    {faNum(globalStats.last24h)}
+   481→                  </div>
+   482→                  <div className="text-[11px] text-stone-500">۲۴ ساعت اخیر</div>
+   483→                </div>
+   484→              </div>
+   485→            </div>
+   486→
+   487→            {/* live feed */}
+   488→            {globalStats.recent.length > 0 && (
+   489→              <div className="rounded-xl border border-emerald-100 bg-white/70 p-3">
+   490→                <div className="mb-2 flex items-center gap-1.5 text-[11px] font-bold text-emerald-700">
+   491→                  <Radio size={12} className="animate-pulse" />
+   492→                  تازه‌ترین فعالیت‌ها
+   493→                </div>
+   494→                <ul className="max-h-44 space-y-1.5 overflow-y-auto nice-scroll pl-1">
+   495→                  {globalStats.recent.slice(0, 7).map((a, i) => {
+   496→                    const lesson = lessons.find((l) => l.id === a.lesson);
+   497→                    const cat = feedLabel[a.category] ?? a.category;
+   498→                    const label =
+   499→                      a.lesson === 0 || !lesson
+   500→                        ? cat
+   501→                        : `${cat} · درس ${lesson.id === 1 ? "۱" : lesson.id === 2 ? "۲" : "۳"}`;
+   502→                    const barColor = a.percent >= 70 ? "bg-emerald-500" : a.percent >= 50 ? "bg-amber-500" : "bg-rose-400";
+   503→                    return (
+   504→                      <motion.li
+   505→                        key={`${a.createdAt}-${i}`}
+   506→                        initial={{ opacity: 0, x: 10 }}
+   507→                        animate={{ opacity: 1, x: 0 }}
+   508→                        transition={{ delay: i * 0.05 }}
+   509→                        className="flex items-center gap-2 rounded-lg bg-white px-2.5 py-1.5 shadow-sm"
+   510→                      >
+   511→                        <span className="shrink-0 text-[11px] font-bold text-stone-400">{timeAgoFa(a.createdAt)}</span>
+   512→                        {a.name && (
+   513→                          <span
+   514→                            className={`h-2 w-2 shrink-0 rounded-full ${
+   515→                              a.color === "amber" ? "bg-amber-500" : a.color === "rose" ? "bg-rose-500" : a.color === "violet" ? "bg-violet-500" : a.color === "sky" ? "bg-sky-500" : "bg-emerald-500"
+   516→                            }`}
+   517→                            title={a.name}
+   518→                          />
+   519→                        )}
+   520→                        <span className="min-w-0 flex-1 truncate text-[12px] font-bold text-stone-700">
+   521→                          {a.name && <span className="text-emerald-700">{a.name} — </span>}
+   522→                          {label}
+   523→                        </span>
+   524→                        <span className="hidden h-1.5 w-16 overflow-hidden rounded-full bg-stone-100 sm:block">
+   525→                          <span className={`block h-full rounded-full ${barColor}`} style={{ width: `${a.percent}%` }} />
+   526→                        </span>
+   527→                        <span className="shrink-0 text-[12px] font-black text-stone-700">{faNum(a.percent)}٪</span>
+   528→                      </motion.li>
+   529→                    );
+   530→                  })}
+   531→                </ul>
+   532→              </div>
+   533→            )}
+   534→          </div>
+   535→        </section>
+   536→      )}
+   537→
+   538→      {/* ------------------------- Recent results ------------------------- */}
+   539→      {recentResults.length > 0 && (
+   540→        <section aria-label="آخرین نتایج تست‌ها">
+   541→          <h2 className="mb-4 flex items-center gap-2 text-lg font-extrabold text-stone-800">
+   542→            <RotateCcw size={19} className="text-stone-400" />
+   543→            آخرین نتایج شما
+   544→          </h2>
+   545→          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+   546→            {recentResults.map(([key, r]) => {
+   547→              const [lessonPart, cat] = key.split(":");
+   548→              const lesson = lessons.find((l) => String(l.id) === lessonPart);
+   549→              const t = themeOf(lesson?.color ?? "emerald");
+   550→              return (
+   551→                <div key={key} className={`rounded-xl border ${t.border} ${t.bgSoft} p-3`}>
+   552→                  <div className="mb-1 text-[11px] font-bold text-stone-500">
+   553→                    {lesson ? `درس ${lesson.id === 1 ? "اول" : lesson.id === 2 ? "دوم" : "سوم"} — ` : ""}
+   554→                    {categoryLabel[cat] ?? cat}
+   555→                  </div>
+   556→                  <div className="flex items-center justify-between">
+   557→                    <span className="text-xl font-black text-stone-800">{faNum(r.percent)}٪</span>
+   558→                    <span className="text-[12px] text-stone-500" dir="ltr">
+   559→                      {r.correct}/{r.total}
+   560→                    </span>
+   561→                  </div>
+   562→                </div>
+   563→              );
+   564→            })}
+   565→          </div>
+   566→        </section>
+   567→      )}
+   568→
+   569→      {/* ------------------------------ Quote ------------------------------ */}
+   570→      <section className="quote-band rounded-2xl border border-amber-200 bg-gradient-to-l from-amber-50 to-orange-50 p-6 text-center">
+   571→        <p className="en-text mb-2 text-lg font-semibold text-stone-700" dir="ltr">
+   572→          “Failure is a part of life. If you don&apos;t fail, you won&apos;t learn. If you don&apos;t learn, you will never succeed.”
+   573→        </p>
+   574→        <p className="text-[13px] font-bold text-amber-800">
+   575→          شکست بخشی از زندگیست. اگر شکست نخوری، یاد نمی‌گیری. اگر یاد نگیری، هرگز موفق نخواهی شد.
+   576→        </p>
+   577→      </section>
+   578→    </div>
+   579→  );
+   580→}
+   581→

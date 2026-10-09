@@ -22,6 +22,7 @@ import {
   Ear,
   Radio,
   Eraser,
+  Zap,
 } from "lucide-react";
 import { lessons, examBank, totalVocabulary, totalQuestions } from "@/data";
 import { useStudy, knownCountOfLesson, summarize, srsDueTotal, firstLessonWithDue, DAILY_TARGET, todayStr, mistakesOfLesson } from "@/lib/study-store";
@@ -33,6 +34,7 @@ import VocabDonut from "./vocab-donut";
 import Leaderboard from "./leaderboard";
 import Badges from "./badges";
 import WordOfDay from "./word-of-day";
+import SrsPanel from "./srs-panel";
 
 const spineColors: Record<string, string> = {
   emerald: "bg-gradient-to-b from-emerald-500 to-emerald-800",
@@ -50,6 +52,7 @@ const categoryLabel: Record<string, string> = {
   final: "آزمون پایان ترم",
   mixed: "تست ترکیبی درس",
   mistakes: "مرور اشتباهات",
+  rush: "چالش برق‌آسا",
 };
 
 // compact labels for the live feed rows
@@ -63,6 +66,7 @@ const feedLabel: Record<string, string> = {
   final: "آزمون پایان ترم",
   mixed: "تست ترکیبی",
   mistakes: "مرور اشتباهات",
+  rush: "چالش برق‌آسا",
 };
 
 interface RecentAttempt {
@@ -87,6 +91,7 @@ export default function HomeView() {
   const streak = useStudy((s) => s.streak);
   const bestStreak = useStudy((s) => s.bestStreak);
   const dayStat = useStudy((s) => s.dayStat);
+  const rushBest = useStudy((s) => s.rushBest);
   const mounted = useMounted();
 
   const summary = mounted ? summarize(known, results) : { knownCount: 0, totalPercent: 0, doneCategories: 0, bestExam: null };
@@ -308,11 +313,57 @@ export default function HomeView() {
       {/* ------------------------- Word of the day ------------------------- */}
       <WordOfDay />
 
+      {/* ------------------------- Rush challenge banner ------------------------- */}
+      <motion.section
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 }}
+        aria-label="چالش برق‌آسا"
+        className="rush-banner relative overflow-hidden rounded-2xl border border-orange-200 bg-gradient-to-l from-amber-100 via-orange-50 to-rose-50 shadow-sm"
+      >
+        <div className="rush-banner-bolt absolute -left-4 -top-6 text-orange-500 opacity-[0.08]" aria-hidden>
+          <Zap size={170} />
+        </div>
+        <div className="relative flex flex-col items-start gap-4 p-5 sm:flex-row sm:items-center sm:p-6">
+          <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-400 to-orange-600 text-white shadow-lg shadow-orange-500/30">
+            <Zap size={26} />
+          </span>
+          <div className="min-w-0 flex-1">
+            <div className="flex flex-wrap items-center gap-2">
+              <h2 className="text-base font-black text-stone-800">چالش برق‌آسا</h2>
+              <span className="rounded-full bg-orange-500 px-2 py-0.5 text-[10px] font-black text-white shadow-sm">
+                {faNum(60)} ثانیه
+              </span>
+            </div>
+            <p className="mt-1 text-[12.5px] leading-6 text-stone-600">
+              در یک دقیقه چه‌قدر تست می‌توانی جواب بدهی؟ کمبوی پاسخ‌های درست امتیازت را چند برابر می‌کند.
+            </p>
+          </div>
+          <div className="flex w-full items-center gap-3 sm:w-auto">
+            {mounted && rushBest > 0 && (
+              <span className="hidden shrink-0 rounded-xl border border-amber-200 bg-white/80 px-3 py-2 text-[12px] font-black text-amber-800 sm:block">
+                🏆 رکورد: {faNum(rushBest)}
+              </span>
+            )}
+            <button
+              onClick={() => setView({ type: "rush" })}
+              className="inline-flex flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-gradient-to-l from-amber-500 to-orange-600 px-5 py-3 text-[13px] font-black text-white shadow-lg shadow-orange-600/25 transition-all hover:opacity-95 active:scale-95 sm:flex-none"
+            >
+              <Zap size={16} />
+              شروع چالش
+            </button>
+          </div>
+        </div>
+      </motion.section>
+
       {/* ----------------- Weekly chart + vocab donut ----------------- */}
       <div className="grid items-start gap-6 lg:grid-cols-2">
         <WeeklyChart />
         <VocabDonut />
       </div>
+
+      {/* ------------------------- SRS dashboard ------------------------- */}
+      <SrsPanel />
 
       {/* ---------------------------- Bookshelf ---------------------------- */}
       <section aria-label="قفسهٔ کتاب">

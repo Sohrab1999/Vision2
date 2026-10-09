@@ -9,7 +9,8 @@ export type View =
   | { type: "lesson"; id: number }
   | { type: "dictionary" }
   | { type: "exam" }
-  | { type: "appendix" };
+  | { type: "appendix" }
+  | { type: "rush" };
 
 export type LessonTab = "vocab" | "conversation" | "reading" | "grammar" | "writing" | "dictation" | "tests";
 
@@ -52,8 +53,11 @@ export interface StudyState {
   flashIntent: "none" | "smart";
   flashNonce: number; // bumped on every "smart" intent so VocabTab remounts into flashcards
   seenBadges: string[];
+  rushBest: number; // best score (points) ever achieved in the 60s challenge
+  rushBestCorrect: number; // best number of correct answers in one challenge
 
   setProfile: (name: string, color: string) => void;
+  setRushBest: (points: number, correct: number) => void;
   markBadgesSeen: (ids: string[]) => void;
   goHome: () => void;
   openLesson: (id: number, flashIntent?: "smart") => void;
@@ -134,8 +138,15 @@ export const useStudy = create<StudyState>()(
       flashIntent: "none",
       flashNonce: 0,
       seenBadges: [],
+      rushBest: 0,
+      rushBestCorrect: 0,
 
       setProfile: (name, color) => set({ userName: name, avatarColor: color }),
+      setRushBest: (points, correct) =>
+        set((s) => ({
+          rushBest: Math.max(s.rushBest, points),
+          rushBestCorrect: Math.max(s.rushBestCorrect, correct),
+        })),
       markBadgesSeen: (ids) => set((s) => ({ seenBadges: [...new Set([...s.seenBadges, ...ids])] })),
       goHome: () => set({ view: { type: "home" }, flashIntent: "none" }),
       openLesson: (id, flashIntent = "none") =>
@@ -232,6 +243,8 @@ export const useStudy = create<StudyState>()(
         history: s.history,
         mistakes: s.mistakes,
         seenBadges: s.seenBadges,
+        rushBest: s.rushBest,
+        rushBestCorrect: s.rushBestCorrect,
       }),
     }
   )
@@ -289,6 +302,14 @@ export function lastNDays(n: number, history: HistoryMap): { day: string; weekda
 export function mistakesOfLesson(mistakes: MistakeMap, lessonId: number | string): number {
   const prefix = `${lessonId}:`;
   return Object.keys(mistakes).filter((k) => k.startsWith(prefix)).length;
+}
+
+/** source lesson bucket (1/2/3) or exam bank (0) of a quiz question, from its id prefix */
+export function questionSourceLesson(q: { id: string }): number {
+  if (q.id.startsWith("l1")) return 1;
+  if (q.id.startsWith("l2")) return 2;
+  if (q.id.startsWith("l3")) return 3;
+  return 0;
 }
 
 // ---------------- aggregate progress ----------------

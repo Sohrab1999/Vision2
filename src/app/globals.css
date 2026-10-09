@@ -519,3 +519,127 @@ body {
 .dark .vocab-donut circle[stroke="#e7e5e4"] { stroke: #37312b; }
 
 /* r11 polish v2 */
+
+/* ================= r12 — rush challenge + SRS dashboard + spell audio ================= */
+
+/* ---- confetti burst (rush new record) ---- */
+@keyframes confetti-fall {
+  0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateY(240px) rotate(540deg); opacity: 0; }
+}
+.confetti-piece { animation: confetti-fall 1.8s ease-in forwards; }
+
+/* ---- rush: low-time pulse on the countdown ring ---- */
+@keyframes rush-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.07); }
+}
+.rush-time-low { animation: rush-pulse 0.9s ease-in-out infinite; }
+
+/* ---- rush hero / banner ---- */
+.rush-hero-bolt, .rush-banner-bolt { pointer-events: none; }
+.rush-start { letter-spacing: 0.2px; }
+
+/* ---- SRS panel ---- */
+.srs-panel .border-white\/60 { border-color: rgb(255 255 255 / 0.6); }
+
+/* ---------------- rush dark ---------------- */
+.dark .rush-banner {
+  background-image: linear-gradient(to left, rgb(67 38 20 / 0.55), rgb(60 34 16 / 0.5), rgb(66 28 24 / 0.45));
+  border-color: rgb(154 52 18 / 0.5);
+}
+.dark .rush-banner .text-stone-800 { color: #f5f5f4; }
+.dark .rush-banner .text-stone-600 { color: #c9c2bb; }
+.dark .rush-banner .bg-white\/80 { background-color: rgb(41 37 36 / 0.85); }
+.dark .rush-banner .text-amber-800 { color: #fcd34d; }
+.dark .rush-banner .border-amber-200 { border-color: rgb(180 130 20 / 0.5); }
+.dark .rush-hero {
+  background-image: linear-gradient(to bottom left, rgb(69 40 16 / 0.5), rgb(64 30 18 / 0.55), rgb(62 24 26 / 0.5));
+  border-color: rgb(154 52 18 / 0.5);
+}
+.dark .rush-hero .text-stone-800 { color: #f5f5f4; }
+.dark .rush-hero .text-stone-600 { color: #c9c2bb; }
+.dark .rush-hero .text-stone-700 { color: #d6d3d1; }
+.dark .rush-hero .bg-white\/80, .dark .rush-hero .bg-white\/70 { background-color: rgb(41 37 36 / 0.85); }
+.dark .rush-hero .border-orange-100 { border-color: rgb(124 58 8 / 0.55); }
+.dark .rush-hero .bg-orange-100 { background-color: rgb(69 40 8 / 0.65); }
+.dark .rush-hero .text-orange-600 { color: #fdba74; }
+.dark .rush-hero .text-orange-700 { color: #fdba74; }
+.dark .rush-hero .border-orange-200 { border-color: rgb(154 52 18 / 0.55); }
+.dark .rush-hero kbd {
+  background-color: #292524;
+  border-color: #44403c;
+  color: #d6d3d1;
+}
+.dark .rush-hud { background-color: #1c1917; border-color: rgb(154 52 18 / 0.45); }
+.dark .rush-hud .text-stone-800 { color: #f5f5f4; }
+.dark .rush-hud .text-stone-400 { color: #78716c; }
+.dark .rush-hud .stroke-stone-100 { stroke: #292524; }
+.dark .rush-hud .bg-stone-100 { background-color: #292524; }
+.dark .rush-done {
+  background-image: linear-gradient(to bottom, rgb(64 34 16 / 0.55), rgb(58 36 12 / 0.5));
+  border-color: rgb(154 52 18 / 0.5);
+}
+.dark .rush-done .text-stone-800 { color: #f5f5f4; }
+.dark .rush-done .text-stone-500 { color: #a8a29e; }
+.dark .rush-done .bg-white { background-color: #292524; }
+.dark .rush-done .border-stone-200 { border-color: #44403c; }
+.dark .rush-done .border-stone-300 { border-color: #57534e; }
+.dark .rush-done .text-stone-600 { color: #c9c2bb; }
+.dark .rush-done .bg-emerald-50 { background-color: rgba(6, 55, 40, 0.5); }
+.dark .rush-done .text-emerald-700 { color: #6ee7b7; }
+.dark .rush-done .bg-rose-50 { background-color: rgba(80, 10, 25, 0.4); }
+.dark .rush-done .text-rose-600 { color: #fda4af; }
+.dark .rush-done .bg-sky-50 { background-color: rgba(8, 47, 60, 0.5); }
+.dark .rush-done .text-sky-700 { color: #7dd3fc; }
+.dark .rush-done .bg-amber-50 { background-color: rgba(69, 48, 12, 0.45); }
+.dark .rush-done .text-amber-700 { color: #fcd34d; }
+
+/* rush play card */
+.dark [data-rush-option] { color-scheme: dark; }
+.dark .rush-score-live { color: #fdba74; }
+.dark .rush-card { background-color: #1c1917; }
+.dark .rush-card.border-orange-200 { border-color: rgb(154 52 18 / 0.5); }
+.dark .rush-card .bg-white { background-color: #292524; }
+.dark .rush-card .border-stone-200 { border-color: #44403c; }
+.dark .rush-card .bg-stone-100 { background-color: #37312b; }
+.dark .rush-card .text-stone-800 { color: #f5f5f4; }
+.dark .rush-card .text-stone-400 { color: #8a8580; }
+.dark .rush-card .bg-orange-50 { background-color: rgba(69, 40, 8, 0.45); }
+.dark .rush-card .text-orange-700 { color: #fdba74; }
+.dark .rush-card .hover\:bg-orange-50\/50:hover { background-color: rgba(69, 40, 8, 0.35); }
+.dark .rush-card .bg-rose-50\/70 { background-color: rgba(80, 10, 25, 0.35); }
+.dark .rush-card .text-stone-600 { color: #c9c2bb; }
+
+/* ---------------- SRS panel dark ---------------- */
+.dark .srs-panel {
+  background-image: linear-gradient(to left, rgb(4 52 46 / 0.45), rgb(6 44 34 / 0.4));
+  border-color: rgb(13 100 88 / 0.55);
+}
+.dark .srs-panel .text-stone-800 { color: #f5f5f4; }
+.dark .srs-panel .text-stone-500 { color: #a8a29e; }
+.dark .srs-panel .text-stone-400 { color: #8a8580; }
+.dark .srs-panel .bg-rose-50 { background-color: rgba(80, 10, 25, 0.4); }
+.dark .srs-panel .text-rose-600 { color: #fda4af; }
+.dark .srs-panel .bg-amber-50 { background-color: rgba(69, 48, 12, 0.45); }
+.dark .srs-panel .text-amber-700 { color: #fcd34d; }
+.dark .srs-panel .bg-emerald-50 { background-color: rgba(6, 55, 40, 0.5); }
+.dark .srs-panel .text-emerald-700 { color: #6ee7b7; }
+.dark .srs-panel .bg-teal-50 { background-color: rgba(4, 47, 46, 0.5); }
+.dark .srs-panel .text-teal-700 { color: #5eead4; }
+.dark .srs-panel .border-teal-100 { border-color: rgb(19 78 74 / 0.6); }
+.dark .srs-panel .border-teal-200 { border-color: rgb(19 78 74 / 0.6); }
+.dark .srs-panel .bg-white\/70 { background-color: rgb(28 25 23 / 0.8); }
+.dark .srs-panel .bg-stone-200\/70 { background-color: rgb(41 37 36 / 0.7); }
+.dark .srs-panel .text-emerald-600 { color: #34d399; }
+.dark .srs-panel .bg-stone-200 { background-color: #292524; }
+
+/* ---------------- spell buttons (dictation) dark ---------------- */
+.dark .border-sky-200 { border-color: rgb(7 66 84 / 0.7); }
+.dark .bg-sky-50 { background-color: rgba(8, 47, 60, 0.45); }
+.dark .text-sky-700 { color: #7dd3fc; }
+.dark .text-sky-600 { color: #38bdf8; }
+.dark .hover\:bg-sky-50:hover { background-color: rgba(8, 47, 60, 0.65); }
+.dark .hover\:bg-sky-100:hover { background-color: rgba(8, 47, 60, 0.7); }
+.dark .hover\:bg-violet-50:hover { background-color: rgba(59, 24, 84, 0.55); }
