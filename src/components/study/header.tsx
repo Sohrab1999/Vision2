@@ -1,11 +1,13 @@
 "use client";
 
-import { BookOpen, Home, Library, ClipboardCheck, BookMarked, Sun, Moon, Flame, User } from "lucide-react";
+import { BookOpen, Home, Library, ClipboardCheck, BookMarked, Sun, Moon, Flame, User, Download, Upload, ShieldCheck } from "lucide-react";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useStudy, AVATAR_COLORS } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
+import { exportProgress, parseBackup, applyBackup, backupSummary } from "@/lib/backup";
+import { useToast } from "@/hooks/use-toast";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 const navItems: { key: string; label: string; icon: React.ElementType; view: View }[] = [
@@ -35,11 +37,14 @@ export default function Header() {
   const mounted = useMounted();
   const { theme, setTheme } = useTheme();
   const isDark = mounted && theme === "dark";
+  const { toast } = useToast();
+  const fileRef = useRef<HTMLInputElement>(null);
 
   const [nameDraft, setNameDraft] = useState("");
   const [colorDraft, setColorDraft] = useState(avatarColor);
   const [open, setOpen] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [importing, setImporting] = useState(false);
 
   const openPopover = (next: boolean) => {
     setOpen(next);
@@ -74,6 +79,44 @@ export default function Header() {
     }).catch(() => {});
     setSaved(true);
     setTimeout(() => setOpen(false), 900);
+  };
+
+  const handleExport = () => {
+    const ok = exportProgress();
+    toast(
+      ok
+        ? { title: "✓ پشتیبان دانلود شد", description: "فایل JSON پیشرفت شما ذخیره شد — آن را جایی امن نگه دارید.", duration: 3500 }
+        : { title: "خطا در پشتیبان‌گیری", description: "لطفاً دوباره تلاش کنید.", duration: 3000 }
+    );
+  };
+
+  const handleImportFile = async (file: File | undefined) => {
+    if (!file) return;
+    setImporting(true);
+    try {
+      const text = await file.text();
+      const payload = parseBackup(text);
+      const sum = backupSummary(payload);
+      if (applyBackup(payload)) {
+        toast({
+          title: "✓ پشتیبان بازیابی شد",
+          description: `${faNum(sum.known)} واژه، ${faNum(sum.results)} نتیجه و ${faNum(sum.srs)} واژهٔ SRS بازیابی می‌شود…`,
+          duration: 2500,
+        });
+        setTimeout(() => window.location.reload(), 900);
+      } else {
+        throw new Error("اعمال پشتیبان روی حافظهٔ مرورگر ناموفق بود.");
+      }
+    } catch (err) {
+      toast({
+        title: "فایل پشتیبان نامعتبر",
+        description: err instanceof Error ? err.message : "فایل انتخاب‌شده قابل خواندن نیست.",
+        duration: 4000,
+      });
+    } finally {
+      setImporting(false);
+      if (fileRef.current) fileRef.current.value = "";
+    }
   };
 
   return (
@@ -190,6 +233,41 @@ export default function Header() {
               >
                 {saved ? "✓ ذخیره شد!" : "ذخیرهٔ پروفایل"}
               </button>
+
+              {/* ------------------- progress backup ------------------- */}
+              <div className="mt-4 border-t border-stone-200 pt-3">
+                <div className="mb-2 flex items-center gap-1.5 text-[11.5px] font-bold text-stone-500">
+                  <ShieldCheck size={13} className="text-emerald-600" />
+                  پشتیبان‌گیری پیشرفت
+                </div>
+                <div className="grid grid-cols-2 gap-2">
+                  <button
+                    onClick={handleExport}
+                    className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-stone-200 bg-stone-50 px-2 py-2 text-[12px] font-bold text-stone-700 transition-all hover:border-emerald-300 hover:text-emerald-700 active:scale-95"
+                  >
+                    <Download size={14} />
+                    دانلود پشتیبان
+                  </button>
+                  <button
+                    onClick={() => fileRef.current?.click()}
+                    disabled={importing}
+                    className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-stone-200 bg-stone-50 px-2 py-2 text-[12px] font-bold text-stone-700 transition-all hover:border-amber-300 hover:text-amber-700 active:scale-95 disabled:opacity-50"
+                  >
+                    <Upload size={14} />
+                    {importing ? "در حال خواندن…" : "بازیابی پشتیبان"}
+                  </button>
+                </div>
+                <input
+                  ref={fileRef}
+                  type="file"
+                  accept="application/json,.json"
+                  className="hidden"
+                  onChange={(e) => handleImportFile(e.target.files?.[0])}
+                />
+                <p className="mt-2 text-[10.5px] leading-4 text-stone-400">
+                  پیشرفت شما (واژه‌ها، نتایج، مرورها) در یک فایل JSON ذخیره می‌شود؛ برای انتقال به دستگاه دیگر از «بازیابی» استفاده کنید.
+                </p>
+              </div>
             </PopoverContent>
           </Popover>
 

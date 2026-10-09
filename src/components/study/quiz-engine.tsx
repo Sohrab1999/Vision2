@@ -2,10 +2,11 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, X, ArrowLeft, RotateCcw, Trophy, Eye, Award, Share2, ScrollText } from "lucide-react";
+import { Check, X, ArrowLeft, RotateCcw, Trophy, Eye, Award, Share2, ScrollText, ImageDown } from "lucide-react";
 import type { QuizQuestion } from "@/lib/study-types";
 import { useStudy } from "@/lib/study-store";
 import { faNum } from "@/lib/study-theme";
+import { downloadResultImage } from "@/lib/result-image";
 import { useToast } from "@/hooks/use-toast";
 import ProgressRing from "./progress-ring";
 
@@ -52,6 +53,7 @@ export default function QuizEngine({
   const [timeLeft, setTimeLeft] = useState<number | null>(
     secondsPerQuestion ? secondsPerQuestion * questions.length : null
   );
+  const [imgBusy, setImgBusy] = useState(false);
   const userIdRef = useRef<string>("");
   const { toast } = useToast();
 
@@ -186,6 +188,34 @@ export default function QuizEngine({
     setTimeLeft(secondsPerQuestion ? secondsPerQuestion * questions.length : null);
   };
 
+  // keyboard shortcuts: 1-4 choose an option, Enter / ← advance
+  // (re-registered each render so closures are always fresh)
+  useEffect(() => {
+    if (finished) return;
+    const onKey = (e: KeyboardEvent) => {
+      const tag = (e.target as HTMLElement | null)?.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA") return;
+      const num = Number(e.key);
+      if (num >= 1 && num <= (questions[idx]?.options.length ?? 0)) {
+        choose(num - 1);
+        return;
+      }
+      if (e.key === "Enter" || e.key === "ArrowLeft") {
+        if (immediate && selected !== null) nextQuestion();
+        else if (!immediate) {
+          if (idx < total - 1) {
+            setIdx(idx + 1);
+            setSelected(null);
+          } else {
+            finish(answers);
+          }
+        }
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  });
+
   /* ------------------------------- finished ------------------------------- */
   if (finished) {
     const percent = Math.round((correctCount / total) * 100);
@@ -210,6 +240,25 @@ export default function QuizEngine({
             })
             .filter((g) => g.total > 0)
         : [];
+
+    const saveResultImage = async (premium: boolean) => {
+      if (imgBusy) return;
+      setImgBusy(true);
+      const ok = await downloadResultImage({
+        title,
+        percent,
+        correct: correctCount,
+        total,
+        userName: useStudy.getState().userName || undefined,
+        premium,
+      });
+      setImgBusy(false);
+      toast(
+        ok
+          ? { title: "🖼 تصویر نتیجه ذخیره شد", description: "حالا می‌توانی آن را در هر کجا به اشتراک بگذاری.", duration: 3000 }
+          : { title: "خطا در ساخت تصویر", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
+      );
+    };
 
     const shareResult = async () => {
       const breakdown = groups.map((g) => `${g.label}: ${faNum(Math.round((g.correct / g.total) * 100))}٪`).join(" · ");
@@ -289,6 +338,14 @@ export default function QuizEngine({
               اشتراک‌گذاری نتیجه
             </button>
             <button
+              onClick={() => saveResultImage(true)}
+              disabled={imgBusy}
+              className="inline-flex items-center gap-1.5 rounded-xl border border-amber-300 bg-amber-50 px-4 py-2.5 text-sm font-bold text-amber-800 transition-all hover:bg-amber-100 active:scale-95 disabled:opacity-50"
+            >
+              <ImageDown size={15} />
+              {imgBusy ? "در حال ساخت تصویر…" : "دانلود تصویر نتیجه"}
+            </button>
+            <button
               onClick={restart}
               className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-bold text-white transition-all hover:bg-emerald-700 active:scale-95"
             >
@@ -331,6 +388,14 @@ export default function QuizEngine({
           )}
         </div>
         <div className="flex flex-wrap justify-center gap-2.5">
+          <button
+            onClick={() => saveResultImage(false)}
+            disabled={imgBusy}
+            className="inline-flex items-center gap-1.5 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-2.5 text-sm font-bold text-emerald-800 transition-all hover:bg-emerald-100 active:scale-95 disabled:opacity-50"
+          >
+            <ImageDown size={15} />
+            {imgBusy ? "در حال ساخت تصویر…" : "دانلود تصویر نتیجه"}
+          </button>
           <button
             onClick={restart}
             className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-bold text-white transition-all hover:bg-emerald-700 active:scale-95"
@@ -526,6 +591,21 @@ export default function QuizEngine({
               </button>
             </div>
           )}
+
+          {/* keyboard hint (desktop) */}
+          <div className="mt-3 hidden items-center justify-center gap-1.5 border-t border-stone-100 pt-3 text-[11px] text-stone-400 min-[720px]:flex">
+            <span>میان‌برها:</span>
+            {["1", "2", "3", "4"].map((k) => (
+              <kbd key={k} className="rounded-md border border-stone-200 bg-stone-50 px-1.5 py-0.5 font-mono text-[10px] text-stone-500 shadow-sm" dir="ltr">
+                {k}
+              </kbd>
+            ))}
+            <span>برای انتخاب گزینه</span>
+            <kbd className="rounded-md border border-stone-200 bg-stone-50 px-1.5 py-0.5 font-mono text-[10px] text-stone-500 shadow-sm" dir="ltr">
+              Enter
+            </kbd>
+            <span>برای سؤال بعدی</span>
+          </div>
         </motion.div>
       </AnimatePresence>
     </div>

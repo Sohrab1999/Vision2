@@ -26,11 +26,13 @@ import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
 import { useToast } from "@/hooks/use-toast";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import {
   BADGES,
   TIER_STYLE,
   buildEvalInput,
   unlockedBadgeIds,
+  type BadgeEvalInput,
 } from "@/lib/achievements";
 
 const ICONS: Record<string, React.ElementType> = {
@@ -149,19 +151,17 @@ export default function Badges() {
           const isUnlocked = unlocked.has(b.id);
           const tier = TIER_STYLE[b.tier];
           const hint = !isUnlocked && b.progress ? b.progress(input) : undefined;
-          return (
+          const badgeCard = (
             <motion.div
-              key={b.id}
               initial={{ opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: Math.min(i * 0.03, 0.3) }}
-              className={`badge-card group relative flex flex-col items-center rounded-2xl border-2 p-3.5 text-center transition-all ${
+              className={`badge-card group relative flex h-full w-full flex-col items-center rounded-2xl border-2 p-3.5 text-center transition-all ${
                 isUnlocked
                   ? `border-transparent bg-gradient-to-b ${tier.grad} text-white shadow-lg ${tier.glow} badge-shine`
                   : "border-stone-200 bg-white text-stone-400"
               }`}
-              title={b.desc}
             >
               {!isUnlocked && (
                 <span className="absolute left-2.5 top-2.5 text-stone-300">
@@ -192,8 +192,89 @@ export default function Badges() {
               )}
             </motion.div>
           );
+          return (
+            <Popover key={b.id}>
+              <PopoverTrigger asChild>
+                <button
+                  type="button"
+                  aria-label={`جزئیات نشان ${b.title}`}
+                  className="cursor-pointer text-right transition-transform hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-2 rounded-2xl"
+                >
+                  {badgeCard}
+                </button>
+              </PopoverTrigger>
+              <PopoverContent className="badge-popover w-64 rounded-2xl border-stone-200 p-4" side="top">
+                <div className="mb-2 flex items-center gap-2.5">
+                  <span
+                    className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${
+                      isUnlocked ? `bg-gradient-to-b ${tier.grad} text-white shadow-md` : "bg-stone-100 text-stone-400"
+                    }`}
+                  >
+                    <Icon size={20} />
+                  </span>
+                  <div>
+                    <div className="text-[13px] font-black text-stone-800">{b.title}</div>
+                    <span className={`inline-block rounded-full px-2 py-0.5 text-[10px] font-bold ${isUnlocked ? tier.chip : "bg-stone-100 text-stone-400"}`}>
+                      {isUnlocked ? `کسب شد — نشان ${tierFa[b.tier]}` : `نشان ${tierFa[b.tier]} — قفل`}
+                    </span>
+                  </div>
+                </div>
+                <p className="mb-2 text-[12px] leading-6 text-stone-600">{b.desc}</p>
+                {isUnlocked ? (
+                  <div className="rounded-xl bg-emerald-50 px-3 py-2 text-[11.5px] font-bold text-emerald-700">
+                    ✓ آفرین! این نشان را باز کردی.
+                  </div>
+                ) : hint ? (
+                  <div>
+                    <div className="mb-1 text-[11px] font-bold text-stone-500">پیشرفت تو: {hint}</div>
+                    <div className="h-2 overflow-hidden rounded-full bg-stone-100">
+                      <motion.div
+                        className="h-full rounded-full bg-gradient-to-l from-amber-400 to-orange-500"
+                        initial={{ width: 0 }}
+                        animate={{ width: `${badgeProgressPct(b.id, input)}%` }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  <div className="rounded-xl bg-stone-50 px-3 py-2 text-[11.5px] font-bold text-stone-500">
+                    این نشان با انجام شرایطش به‌صورت خودکار باز می‌شود.
+                  </div>
+                )}
+              </PopoverContent>
+            </Popover>
+          );
         })}
       </div>
     </section>
   );
+}
+
+/** numeric 0..100 progress for known badge ids (for the popover bars) */
+function badgeProgressPct(id: string, s: BadgeEvalInput): number {
+  const clamp = (v: number) => Math.max(0, Math.min(100, Math.round(v)));
+  switch (id) {
+    case "word-starter":
+      return clamp((s.knownCount / 10) * 100);
+    case "word-scholar":
+      return clamp((s.knownCount / 50) * 100);
+    case "word-master":
+      return clamp((s.knownCount / 150) * 100);
+    case "quiz-5":
+      return clamp((s.totalQuizzes / 5) * 100);
+    case "quiz-20":
+      return clamp((s.totalQuizzes / 20) * 100);
+    case "review-50":
+      return clamp((s.totalReviews / 50) * 100);
+    case "streak-3":
+      return clamp((s.bestStreak / 3) * 100);
+    case "streak-7":
+      return clamp((s.bestStreak / 7) * 100);
+    case "high-scorer":
+      return clamp((s.bestPercent / 85) * 100);
+    case "perfect":
+      return clamp((s.bestPercent / 100) * 100);
+    default:
+      return 0;
+  }
 }

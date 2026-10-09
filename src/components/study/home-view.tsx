@@ -31,6 +31,7 @@ import ProgressRing from "./progress-ring";
 import WeeklyChart from "./weekly-chart";
 import Leaderboard from "./leaderboard";
 import Badges from "./badges";
+import WordOfDay from "./word-of-day";
 
 const spineColors: Record<string, string> = {
   emerald: "bg-gradient-to-b from-emerald-500 to-emerald-800",
@@ -302,6 +303,9 @@ export default function HomeView() {
           </div>
         </div>
       </motion.section>
+
+      {/* ------------------------- Word of the day ------------------------- */}
+      <WordOfDay />
 
       {/* ------------------------- Weekly chart ------------------------- */}
       <WeeklyChart />
