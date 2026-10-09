@@ -66,6 +66,32 @@ export default function Flashcards({
     go(1);
   };
 
+  // keyboard shortcuts: Space flip, ← next (RTL), → previous, K known, R repeat
+  // (re-registered each render so closures stay fresh)
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      const tag = (e.target as HTMLElement | null)?.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
+      if (e.ctrlKey || e.metaKey || e.altKey) return;
+      if (e.key === " " || e.code === "Space") {
+        e.preventDefault();
+        setFlipped((f) => !f);
+      } else if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        go(1);
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        go(-1);
+      } else if (e.key.toLowerCase() === "k") {
+        answer(true);
+      } else if (e.key.toLowerCase() === "r") {
+        answer(false);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  });
+
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-2">
@@ -184,6 +210,26 @@ export default function Flashcards({
           بعدی
           <ChevronLeft size={16} />
         </button>
+      </div>
+
+      {/* keyboard hints (desktop) */}
+      <div className="hidden items-center justify-center gap-3 text-[10.5px] text-stone-400 min-[720px]:flex">
+        <span className="flex items-center gap-1">
+          <kbd className="rounded-md border border-stone-200 bg-stone-50 px-1.5 py-0.5 font-mono text-[10px] text-stone-500 shadow-sm" dir="ltr">Space</kbd>
+          برگرداندن
+        </span>
+        <span className="flex items-center gap-1">
+          <kbd className="rounded-md border border-stone-200 bg-stone-50 px-1.5 py-0.5 font-mono text-[10px] text-stone-500 shadow-sm" dir="ltr">←</kbd>
+          بعدی
+        </span>
+        <span className="flex items-center gap-1">
+          <kbd className="rounded-md border border-stone-200 bg-stone-50 px-1.5 py-0.5 font-mono text-[10px] text-stone-500 shadow-sm" dir="ltr">K</kbd>
+          بلدم
+        </span>
+        <span className="flex items-center gap-1">
+          <kbd className="rounded-md border border-stone-200 bg-stone-50 px-1.5 py-0.5 font-mono text-[10px] text-stone-500 shadow-sm" dir="ltr">R</kbd>
+          تکرار
+        </span>
       </div>
 
       <AnimatePresence>

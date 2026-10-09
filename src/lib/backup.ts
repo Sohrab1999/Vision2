@@ -9,6 +9,7 @@
 import { useStudy } from "./study-store";
 import type { HistoryMap, MistakeMap, SrsItem } from "./study-store";
 import type { QuizResult } from "./study-types";
+import { faNum } from "./study-theme";
 
 export const BACKUP_VERSION = 1;
 
@@ -197,4 +198,100 @@ export function backupSummary(p: BackupPayload): { known: number; results: numbe
     srs: Object.keys(p.data.srs).length,
     mistakes: Object.keys(p.data.mistakes).length,
   };
+}
+
+// ------------------------------------------------------------------
+// Auto-backup — a silent snapshot of the learner's progress kept in
+// localStorage. Even if the browser data is cleared (or the user
+// wipes it by accident) the snapshot can restore recent progress.
+// Refreshed at most once per 24h AND only when the data changed.
+// ------------------------------------------------------------------
+
+const AUTO_KEY = "vision2-auto-backup";
+export const AUTO_BACKUP_INTERVAL = 24 * 60 * 60 * 1000; // 24h refresh cadence
+
+export interface AutoBackup {
+  savedAt: string; // ISO
+  counts: { known: number; results: number; srs: number; mistakes: number; history: number };
+  data: BackupPayload["data"];
+}
+
+/** count-based fingerprint so we only rewrite when something actually changed */
+function countsOf(data: BackupPayload["data"]): AutoBackup["counts"] {
+  return {
+    known: Object.values(data.known).filter(Boolean).length,
+    results: Object.keys(data.results).length,
+    srs: Object.keys(data.srs).length,
+    mistakes: Object.keys(data.mistakes).length,
+    history: Object.keys(data.history).length,
+  };
+}
+
+const sameCounts = (a: AutoBackup["counts"], b: AutoBackup["counts"]) =>
+  a.known === b.known && a.results === b.results && a.srs === b.srs && a.mistakes === b.mistakes && a.history === b.history;
+
+/**
+ * Write/refresh the automatic snapshot when needed.
+ * Writes when forced or when the data actually changed; otherwise skips.
+ * Returns "written" | "skipped" | "unchanged".
+ */
+export function maybeAutoBackup(force = false): "written" | "skipped" | "unchanged" {
+  try {
+    const data = collectData();
+    const counts = countsOf(data);
+    const hasProgress = counts.known > 0 || counts.results > 0 || counts.srs > 0;
+    const raw = localStorage.getItem(AUTO_KEY);
+
+    if (raw) {
+      const prev = JSON.parse(raw) as AutoBackup;
+      const changed = !sameCounts(counts, prev.counts ?? counts);
+      if (!changed && !force) return "unchanged";
+    } else if (!hasProgress && !force) {
+      return "skipped"; // nothing worth snapshotting yet
+    }
+
+    const payload: AutoBackup = { savedAt: new Date().toISOString(), counts, data };
+    localStorage.setItem(AUTO_KEY, JSON.stringify(payload));
+    return "written";
+  } catch {
+    return "skipped";
+  }
+}
+
+/** Read the automatic snapshot (null when absent/corrupt). */
+export function readAutoBackup(): AutoBackup | null {
+  try {
+    const raw = localStorage.getItem(AUTO_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as AutoBackup;
+    if (!parsed || typeof parsed.savedAt !== "string" || !parsed.data) return null;
+    return parsed;
+  } catch {
+    return null;
+  }
+}
+
+/** Restore the automatic snapshot into the live persisted state (then reload). */
+export function restoreAutoBackup(): boolean {
+  const snap = readAutoBackup();
+  if (!snap) return false;
+  return applyBackup({
+    app: "vision2-webbook",
+    version: BACKUP_VERSION,
+    exportedAt: snap.savedAt,
+    data: snap.data,
+  });
+}
+
+/** Persian relative label for the auto-backup age. */
+export function autoBackupAgeFa(iso: string): string {
+  const ms = Date.now() - new Date(iso).getTime();
+  if (!Number.isFinite(ms)) return "نامشخص";
+  const min = Math.floor(ms / 60_000);
+  if (min < 1) return "همین حالا";
+  if (min < 60) return `${faNum(min)} دقیقه پیش`;
+  const h = Math.floor(min / 60);
+  if (h < 24) return `${faNum(h)} ساعت پیش`;
+  const d = Math.floor(h / 24);
+  return `${faNum(d)} روز پیش`;
 }

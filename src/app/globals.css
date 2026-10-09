@@ -127,6 +127,19 @@
 
 body {
   background-color: #f7f6f2;
+  /* subtle paper grain — soft dots + warm wash */
+  background-image:
+    radial-gradient(circle at 1px 1px, rgb(120 113 108 / 0.055) 1px, transparent 0),
+    radial-gradient(1200px 500px at 85% -5%, rgb(16 185 129 / 0.05), transparent 60%),
+    radial-gradient(900px 420px at 5% 100%, rgb(217 119 6 / 0.04), transparent 60%);
+  background-size: 22px 22px, 100% 100%, 100% 100%;
+}
+
+/* keyboard focus — clear, brand-colored ring for keyboard users */
+:focus-visible {
+  outline: 2px solid rgb(5 150 105 / 0.65);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 /* English text: serif, always LTR, isolated from RTL flow */
@@ -277,6 +290,28 @@ body {
   0%, 100% { transform: scale(1) rotate(-2deg); }
   30% { transform: scale(1.12) rotate(2.5deg); }
   60% { transform: scale(0.95) rotate(-1.5deg); }
+}
+
+/* ---------------- footer band ---------------- */
+.footer-band {
+  background-image: linear-gradient(to bottom, rgb(255 255 255 / 0.9), rgb(247 246 242 / 0.95));
+}
+
+/* ---------------- quote band decorative mark ---------------- */
+.quote-band {
+  position: relative;
+  overflow: hidden;
+}
+.quote-band::before {
+  content: "\201C";
+  position: absolute;
+  top: -18px;
+  right: 22px;
+  font-family: Georgia, serif;
+  font-size: 110px;
+  line-height: 1;
+  color: rgb(217 119 6 / 0.14);
+  pointer-events: none;
 }
 
 /* dictation letter boxes: latin font + slight spacing */
@@ -435,3 +470,52 @@ body {
 .dark .border-amber-300 { border-color: rgba(180, 130, 20, 0.55); }
 .dark .bg-amber-50 { background-color: rgba(69, 48, 12, 0.35); }
 .dark .text-amber-800 { color: #fcd34d; }
+
+/* ---------------- dark body texture (calmer) ---------------- */
+.dark body {
+  background-image:
+    radial-gradient(circle at 1px 1px, rgb(231 229 228 / 0.045) 1px, transparent 0),
+    radial-gradient(1200px 500px at 85% -5%, rgb(16 185 129 / 0.07), transparent 60%),
+    radial-gradient(900px 420px at 5% 100%, rgb(217 119 6 / 0.05), transparent 60%);
+  background-size: 22px 22px, 100% 100%, 100% 100%;
+}
+.dark :focus-visible { outline-color: rgb(52 211 153 / 0.7); }
+
+/* ---------------- footer + quote dark ---------------- */
+.dark .footer-band {
+  background-image: linear-gradient(to bottom, rgb(28 25 23 / 0.92), rgb(12 10 9 / 0.96));
+}
+.dark .quote-band::before { color: rgb(251 191 36 / 0.12); }
+.dark .bg-emerald-50\/70 { background-color: rgba(6, 55, 40, 0.35); }
+.dark .border-emerald-300 { border-color: rgba(16, 120, 90, 0.55); }
+
+/* ---------------- shortcuts dialog dark ---------------- */
+.dark .shortcuts-dialog { background-color: #1c1917; border-color: #37312b; }
+.dark .shortcuts-dialog .bg-stone-50\/70 { background-color: rgba(40, 36, 31, 0.6); }
+.dark .shortcuts-dialog .bg-white { background-color: #292524; }
+.dark .shortcuts-dialog kbd {
+  background-color: #292524;
+  border-color: #44403c;
+  color: #d6d3d1;
+  box-shadow: 0 1px 0 0 #1c1917;
+}
+.dark .shortcuts-dialog .text-stone-800 { color: #f5f5f4; }
+.dark .shortcuts-dialog .text-stone-700 { color: #d6d3d1; }
+.dark .shortcuts-dialog .text-stone-600 { color: #a8a29e; }
+.dark .shortcuts-dialog .text-stone-500 { color: #8a8580; }
+.dark .shortcuts-dialog .text-stone-400 { color: #78716c; }
+
+/* ---------------- vocab donut dark ---------------- */
+.dark .vocab-donut { background-color: #1c1917; }
+.dark .vocab-donut .text-stone-800 { color: #f5f5f4; }
+.dark .vocab-donut .text-stone-700 { color: #d6d3d1; }
+.dark .vocab-donut .text-stone-500 { color: #a8a29e; }
+.dark .vocab-donut .text-stone-400 { color: #8a8580; }
+.dark .vocab-donut .bg-stone-50 { background-color: rgba(40, 36, 31, 0.55); }
+.dark .vocab-donut .bg-emerald-50 { background-color: rgba(6, 55, 40, 0.5); }
+.dark .vocab-donut .text-emerald-700 { color: #6ee7b7; }
+.dark .vocab-donut .ring-emerald-200 { --tw-ring-color: rgba(52, 211, 153, 0.45); }
+.dark .vocab-donut .bg-stone-100 { background-color: #292524; }
+.dark .vocab-donut circle[stroke="#e7e5e4"] { stroke: #37312b; }
+
+/* r11 polish v2 */

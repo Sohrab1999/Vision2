@@ -1,12 +1,12 @@
 "use client";
 
-import { BookOpen, Home, Library, ClipboardCheck, BookMarked, Sun, Moon, Flame, User, Download, Upload, ShieldCheck } from "lucide-react";
+import { BookOpen, Home, Library, ClipboardCheck, BookMarked, Sun, Moon, Flame, User, Download, Upload, ShieldCheck, History, RotateCcw, Keyboard } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useRef, useState } from "react";
 import { useStudy, AVATAR_COLORS } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
-import { exportProgress, parseBackup, applyBackup, backupSummary } from "@/lib/backup";
+import { exportProgress, parseBackup, applyBackup, backupSummary, readAutoBackup, restoreAutoBackup, autoBackupAgeFa } from "@/lib/backup";
 import { useToast } from "@/hooks/use-toast";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
@@ -45,6 +45,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const [saved, setSaved] = useState(false);
   const [importing, setImporting] = useState(false);
+  const [autoSnap, setAutoSnap] = useState<ReturnType<typeof readAutoBackup>>(null);
 
   const openPopover = (next: boolean) => {
     setOpen(next);
@@ -52,6 +53,7 @@ export default function Header() {
       setNameDraft(userName);
       setColorDraft(avatarColor);
       setSaved(false);
+      setAutoSnap(readAutoBackup());
     }
   };
 
@@ -119,6 +121,21 @@ export default function Header() {
     }
   };
 
+  const handleAutoRestore = () => {
+    if (!autoSnap) return;
+    const sum = backupSummary({ app: "vision2-webbook", version: 1, exportedAt: autoSnap.savedAt, data: autoSnap.data });
+    if (restoreAutoBackup()) {
+      toast({
+        title: "✓ پشتیبان خودکار بازیابی شد",
+        description: `${faNum(sum.known)} واژه و ${faNum(sum.results)} نتیجه از پشتیبان ${autoBackupAgeFa(autoSnap.savedAt)} برمی‌گردد…`,
+        duration: 2500,
+      });
+      setTimeout(() => window.location.reload(), 900);
+    } else {
+      toast({ title: "بازیابی ناموفق", description: "پشتیبان خودکار قابل خواندن نیست.", duration: 3000 });
+    }
+  };
+
   return (
     <header className="sticky top-0 z-40 w-full border-b border-stone-200/80 bg-[#f7f6f2]/85 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4">
@@ -158,6 +175,16 @@ export default function Header() {
             title={isDark ? "حالت روشن" : "حالت شب"}
           >
             {isDark ? <Sun size={16} /> : <Moon size={16} />}
+          </button>
+
+          {/* keyboard shortcuts guide */}
+          <button
+            onClick={() => window.dispatchEvent(new CustomEvent("open-shortcuts"))}
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-stone-200 bg-white text-stone-500 transition-all hover:text-emerald-600 hover:border-emerald-200 active:scale-90"
+            aria-label="راهنمای میان‌برهای کیبورد"
+            title="راهنمای میان‌برهای کیبورد (؟)"
+          >
+            <Keyboard size={16} />
           </button>
 
           {/* profile avatar + popover */}
@@ -264,6 +291,32 @@ export default function Header() {
                   className="hidden"
                   onChange={(e) => handleImportFile(e.target.files?.[0])}
                 />
+                {/* auto-backup snapshot status */}
+                {autoSnap ? (
+                  <div className="mt-2.5 flex items-center justify-between gap-2 rounded-xl border border-emerald-200 bg-emerald-50/70 px-2.5 py-2">
+                    <div className="flex items-center gap-1.5 text-[11px] font-bold text-emerald-800">
+                      <History size={13} className="shrink-0 text-emerald-600" />
+                      <span>
+                        پشتیبان خودکار: {autoBackupAgeFa(autoSnap.savedAt)}
+                        <span className="mx-1 font-normal text-emerald-700/70">
+                          ({faNum(Object.values(autoSnap.data.known).filter(Boolean).length)} واژه)
+                        </span>
+                      </span>
+                    </div>
+                    <button
+                      onClick={handleAutoRestore}
+                      className="inline-flex shrink-0 items-center gap-1 rounded-lg border border-emerald-300 bg-white px-2 py-1 text-[10.5px] font-black text-emerald-700 transition-all hover:bg-emerald-100 active:scale-95"
+                      title="بازگرداندن آخرین پشتیبان خودکار مرورگر"
+                    >
+                      <RotateCcw size={11} />
+                      بازیابی
+                    </button>
+                  </div>
+                ) : (
+                  <div className="mt-2.5 rounded-xl border border-dashed border-stone-200 bg-stone-50/60 px-2.5 py-2 text-[10.5px] leading-4 text-stone-400">
+                    با اولین فعالیت شما، هر روز یک پشتیبان خودکار در همین مرورگر ذخیره می‌شود — حتی اگر داده‌ها پاک شوند قابل بازیابی است.
+                  </div>
+                )}
                 <p className="mt-2 text-[10.5px] leading-4 text-stone-400">
                   پیشرفت شما (واژه‌ها، نتایج، مرورها) در یک فایل JSON ذخیره می‌شود؛ برای انتقال به دستگاه دیگر از «بازیابی» استفاده کنید.
                 </p>

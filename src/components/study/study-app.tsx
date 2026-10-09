@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUp } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { stopSpeaking } from "@/lib/speak";
+import { maybeAutoBackup } from "@/lib/backup";
 import Header from "./header";
 import Footer from "./footer";
 import HomeView from "./home-view";
@@ -13,6 +14,7 @@ import LessonView from "./lesson-view";
 import DictionaryView from "./dictionary-view";
 import ExamView from "./exam-view";
 import AppendixView from "./appendix-view";
+import ShortcutGuide from "./shortcut-guide";
 
 export default function StudyApp() {
   const view = useStudy((s) => s.view);
@@ -22,6 +24,23 @@ export default function StudyApp() {
   // rehydrate persisted progress from localStorage (zustand -> external system)
   useEffect(() => {
     useStudy.persist.rehydrate();
+  }, []);
+
+  // silent auto-backup: snapshot progress into localStorage after changes
+  // (debounced 4s; maybeAutoBackup only rewrites when data actually changed)
+  const backupTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(() => {
+    // initial snapshot right after rehydrate (e.g. progress brought from last session)
+    const t = setTimeout(() => maybeAutoBackup(), 2500);
+    const unsub = useStudy.subscribe(() => {
+      if (backupTimer.current) clearTimeout(backupTimer.current);
+      backupTimer.current = setTimeout(() => maybeAutoBackup(), 4000);
+    });
+    return () => {
+      clearTimeout(t);
+      if (backupTimer.current) clearTimeout(backupTimer.current);
+      unsub();
+    };
   }, []);
 
   // stop any playing audio when switching views
@@ -73,6 +92,9 @@ export default function StudyApp() {
           </div>
         )}
       </main>
+
+      {/* keyboard shortcuts guide + global shortcut engine ("?" opens it) */}
+      <ShortcutGuide />
 
       {/* back to top */}
       <AnimatePresence>

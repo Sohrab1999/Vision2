@@ -50,6 +50,7 @@ export interface StudyState {
   history: HistoryMap;
   mistakes: MistakeMap;
   flashIntent: "none" | "smart";
+  flashNonce: number; // bumped on every "smart" intent so VocabTab remounts into flashcards
   seenBadges: string[];
 
   setProfile: (name: string, color: string) => void;
@@ -131,12 +132,18 @@ export const useStudy = create<StudyState>()(
       history: {},
       mistakes: {},
       flashIntent: "none",
+      flashNonce: 0,
       seenBadges: [],
 
       setProfile: (name, color) => set({ userName: name, avatarColor: color }),
       markBadgesSeen: (ids) => set((s) => ({ seenBadges: [...new Set([...s.seenBadges, ...ids])] })),
       goHome: () => set({ view: { type: "home" }, flashIntent: "none" }),
-      openLesson: (id, flashIntent = "none") => set({ view: { type: "lesson", id }, flashIntent }),
+      openLesson: (id, flashIntent = "none") =>
+        set((s) => ({
+          view: { type: "lesson", id },
+          flashIntent,
+          flashNonce: flashIntent === "smart" ? s.flashNonce + 1 : s.flashNonce,
+        })),
       openLessonTab: (id, tab) => set({ view: { type: "lesson", id }, lessonTab: tab }),
       setView: (v) => set({ view: v, flashIntent: "none" }),
       setLessonTab: (t) => set({ lessonTab: t }),

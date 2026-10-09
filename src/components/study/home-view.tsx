@@ -29,6 +29,7 @@ import { useMounted } from "@/lib/use-mounted";
 import { themeOf, faNum, timeAgoFa } from "@/lib/study-theme";
 import ProgressRing from "./progress-ring";
 import WeeklyChart from "./weekly-chart";
+import VocabDonut from "./vocab-donut";
 import Leaderboard from "./leaderboard";
 import Badges from "./badges";
 import WordOfDay from "./word-of-day";
@@ -307,8 +308,11 @@ export default function HomeView() {
       {/* ------------------------- Word of the day ------------------------- */}
       <WordOfDay />
 
-      {/* ------------------------- Weekly chart ------------------------- */}
-      <WeeklyChart />
+      {/* ----------------- Weekly chart + vocab donut ----------------- */}
+      <div className="grid items-start gap-6 lg:grid-cols-2">
+        <WeeklyChart />
+        <VocabDonut />
+      </div>
 
       {/* ---------------------------- Bookshelf ---------------------------- */}
       <section aria-label="قفسهٔ کتاب">

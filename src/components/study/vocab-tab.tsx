@@ -26,7 +26,8 @@ export default function VocabTab({
   const consumeFlashIntent = useStudy((s) => s.consumeFlashIntent);
   const mounted = useMounted();
 
-  // consume the "smart review" navigation intent once
+  // consume the "smart review" navigation intent once (flashcards open via
+  // the flashNonce remount-key in LessonView, so no setState is needed here)
   useEffect(() => {
     if (startSmart) consumeFlashIntent();
   }, [startSmart, consumeFlashIntent]);

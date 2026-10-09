@@ -31,6 +31,7 @@ export default function LessonView({ id }: { id: number }) {
   const setTab = useStudy((s) => s.setLessonTab);
   const known = useStudy((s) => s.known);
   const flashIntent = useStudy((s) => s.flashIntent);
+  const flashNonce = useStudy((s) => s.flashNonce);
 
   if (!lesson) {
     return <div className="p-10 text-center text-stone-500">درس یافت نشد.</div>;
@@ -111,7 +112,13 @@ export default function LessonView({ id }: { id: number }) {
 
       {/* tab content */}
       <motion.div key={tab} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25 }}>
-        {tab === "vocab" && <VocabTab lesson={lesson} startSmart={flashIntent === "smart"} />}
+        {tab === "vocab" && (
+          <VocabTab
+            key={`vocab-${flashNonce}`}
+            lesson={lesson}
+            startSmart={flashIntent === "smart"}
+          />
+        )}
         {tab === "conversation" && <ConversationTab lesson={lesson} />}
         {tab === "reading" && <ReadingTab lesson={lesson} />}
         {tab === "grammar" && <GrammarTab lesson={lesson} />}
