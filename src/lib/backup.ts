@@ -37,7 +37,7 @@ export interface BackupPayload {
 }
 
 /** Collect the current persisted subset of the study store. */
-function collectData(): BackupPayload["data"] {
+export function collectData(): BackupPayload["data"] {
   const raw = localStorage.getItem("vision2-study-v1");
   if (raw) {
     try {
@@ -229,7 +229,7 @@ export interface AutoBackup {
 }
 
 /** count-based fingerprint so we only rewrite when something actually changed */
-function countsOf(data: BackupPayload["data"]): AutoBackup["counts"] {
+export function countsOf(data: BackupPayload["data"]): AutoBackup["counts"] {
   return {
     known: Object.values(data.known).filter(Boolean).length,
     results: Object.keys(data.results).length,

@@ -32,3 +32,16 @@ model LearnerProfile {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+// F3 «کد یادگیرنده» — cloud sync of learner progress across devices.
+// The 8-char code acts as a lightweight credential (no auth); lookups
+// are rate-limited on the API layer against brute force.
+model LearnerSync {
+  code      String   @id
+  userId    String
+  data      String // JSON snapshot (same shape as BackupPayload.data)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+}

@@ -6,7 +6,8 @@ import { ArrowUp } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { stopSpeaking, setSpeakRateScale } from "@/lib/speak";
-import { maybeAutoBackup } from "@/lib/backup";
+import { maybeAutoBackup, collectData, countsOf } from "@/lib/backup";
+import { pushSync } from "@/lib/sync";
 import Header from "./header";
 import Footer from "./footer";
 import HomeView from "./home-view";
@@ -54,6 +55,40 @@ export default function StudyApp() {
       unsub();
     };
   }, []);
+
+  // F3 cloud auto-push: while a learner code is attached, debounce-push the
+  // snapshot to /api/sync after activity (12s quiet window, fingerprint-guarded)
+  const syncCode = useStudy((s) => s.syncCode);
+  const pushTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const pushFp = useRef<string>("");
+  useEffect(() => {
+    if (!syncCode) return;
+    const unsub = useStudy.subscribe(() => {
+      if (pushTimer.current) clearTimeout(pushTimer.current);
+      pushTimer.current = setTimeout(async () => {
+        try {
+          const data = collectData();
+          const fp = JSON.stringify(countsOf(data));
+          if (fp === pushFp.current) return; // nothing changed since last push
+          pushFp.current = fp;
+          const res = await pushSync(syncCode);
+          if (res.ok) {
+            try {
+              localStorage.setItem("vision2-sync-at", new Date().toISOString());
+            } catch {
+              /* ignore */
+            }
+          }
+        } catch {
+          /* network hiccup — retried on next activity */
+        }
+      }, 12_000);
+    });
+    return () => {
+      if (pushTimer.current) clearTimeout(pushTimer.current);
+      unsub();
+    };
+  }, [syncCode]);
 
   // stop any playing audio when switching views
   useEffect(() => {

@@ -1,5 +1,6 @@
 import { Q } from "@/lib/study-types";
 import type { QuizQuestion } from "@/lib/study-types";
+import { applyExamTranslations } from "./exam-fa";
 
 // =====================================================================
 // آزمون جامع: بانک کامل «۳۶۰ تست واژگان درس ۱ تا ۳» جزوه (صفحهٔ ۱۱۸ تا ۱۳۵)
@@ -369,5 +370,8 @@ export const examBank: QuizQuestion[] = [
   Q("x-359", "vocab", "Dictionaries are produced with specific markets in mind, and their subjects --------------- accordingly.", ["exist", "vary", "erase", "grow"], 1),
   Q("x-360", "vocab", "E-mail has become an increasingly important -------------- of communication in the world of business.", ["range", "area", "means", "element"], 2),
 ];
+
+// F5 — ترجمهٔ فارسی فازبندی‌شدهٔ بانک (فعلاً ۱۰۰ تست اول — exam-fa.ts)
+applyExamTranslations(examBank);
 
 export default examBank;

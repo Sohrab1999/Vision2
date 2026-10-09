@@ -90,11 +90,13 @@ export interface StudyState {
   dailyGoal: number; // user-chosen daily activity target (5/10/15)
   onboarded: boolean; // first-run welcome flow completed?
   settings: StudySettings;
+  syncCode: string; // F3 learner code — empty when cloud sync is off
 
   setProfile: (name: string, color: string) => void;
   setDailyGoal: (n: number) => void;
   setOnboarded: () => void;
   setSettings: (patch: Partial<StudySettings>) => void;
+  setSyncCode: (code: string) => void;
   setRushBest: (points: number, correct: number) => void;
   trackDictation: () => void;
   markBadgesSeen: (ids: string[]) => void;
@@ -182,11 +184,13 @@ export const useStudy = create<StudyState>()(
       dailyGoal: DEFAULT_DAILY_GOAL,
       onboarded: false,
       settings: DEFAULT_SETTINGS,
+      syncCode: "",
 
       setProfile: (name, color) => set({ userName: name, avatarColor: color }),
       setDailyGoal: (n) => set({ dailyGoal: Math.min(20, Math.max(5, Math.round(n))) }),
       setOnboarded: () => set({ onboarded: true }),
       setSettings: (patch) => set((s) => ({ settings: { ...s.settings, ...patch } })),
+      setSyncCode: (code) => set({ syncCode: code }),
       // called exactly once per finished rush round → also counts completed games + daily quest
       setRushBest: (points, correct) =>
         set((s) => {
@@ -321,6 +325,7 @@ export const useStudy = create<StudyState>()(
         dailyGoal: s.dailyGoal,
         onboarded: s.onboarded,
         settings: s.settings,
+        syncCode: s.syncCode,
       }),
     }
   )

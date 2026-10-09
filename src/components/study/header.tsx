@@ -1,12 +1,13 @@
 "use client";
 
-import { BookOpen, Home, Library, ClipboardCheck, BookMarked, Sun, Moon, Flame, User, Download, Upload, ShieldCheck, History, RotateCcw, Keyboard } from "lucide-react";
+import { BookOpen, Home, Library, ClipboardCheck, BookMarked, Sun, Moon, Flame, User, Download, Upload, ShieldCheck, History, RotateCcw, Keyboard, Laptop, CloudUpload, CloudDownload, Copy, Link2Off, RefreshCw } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useRef, useState } from "react";
 import { useStudy, AVATAR_COLORS, type View } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
-import { exportProgress, parseBackup, applyBackup, backupSummary, readAutoBackup, restoreAutoBackup, autoBackupAgeFa } from "@/lib/backup";
+import { exportProgress, parseBackup, applyBackup, backupSummary, readAutoBackup, restoreAutoBackup, autoBackupAgeFa, collectData } from "@/lib/backup";
+import { pushSync, fetchSync, mergeSyncData, applyMergedSnapshot, normalizeCode, looksLikeCode } from "@/lib/sync";
 import { useToast } from "@/hooks/use-toast";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import SettingsPopover from "./settings-popover";
@@ -35,6 +36,8 @@ export default function Header() {
   const avatarColor = useStudy((s) => s.avatarColor);
   const setProfile = useStudy((s) => s.setProfile);
   const ensureUserId = useStudy((s) => s.ensureUserId);
+  const syncCode = useStudy((s) => s.syncCode);
+  const setSyncCode = useStudy((s) => s.setSyncCode);
   const mounted = useMounted();
   const { theme, setTheme } = useTheme();
   const isDark = mounted && theme === "dark";
@@ -47,6 +50,16 @@ export default function Header() {
   const [saved, setSaved] = useState(false);
   const [importing, setImporting] = useState(false);
   const [autoSnap, setAutoSnap] = useState<ReturnType<typeof readAutoBackup>>(null);
+  // F3 sync section state
+  const [codeInput, setCodeInput] = useState("");
+  const [syncing, setSyncing] = useState<"" | "push" | "pull" | "create" | "join">("");
+  const [lastSyncAt, setLastSyncAt] = useState<string>(() => {
+    try {
+      return localStorage.getItem("vision2-sync-at") ?? "";
+    } catch {
+      return "";
+    }
+  });
 
   const openPopover = (next: boolean) => {
     setOpen(next);
@@ -55,6 +68,11 @@ export default function Header() {
       setColorDraft(avatarColor);
       setSaved(false);
       setAutoSnap(readAutoBackup());
+      try {
+        setLastSyncAt(localStorage.getItem("vision2-sync-at") ?? "");
+      } catch {
+        /* ignore */
+      }
     }
   };
 
@@ -135,6 +153,91 @@ export default function Header() {
     } else {
       toast({ title: "بازیابی ناموفق", description: "پشتیبان خودکار قابل خواندن نیست.", duration: 3000 });
     }
+  };
+
+  // ------------------- F3 learner-code sync -------------------
+
+  const markSynced = (iso?: string) => {
+    const at = iso ?? new Date().toISOString();
+    try {
+      localStorage.setItem("vision2-sync-at", at);
+    } catch {
+      /* ignore */
+    }
+    setLastSyncAt(at);
+  };
+
+  const handleCreateCode = async () => {
+    setSyncing("create");
+    const res = await pushSync(null);
+    setSyncing("");
+    if (res.ok && res.code) {
+      setSyncCode(res.code);
+      markSynced(res.updatedAt);
+      toast({
+        title: "✓ کد یادگیرنده ساخته شد",
+        description: `کد تو «${res.code}» است — روی هر دستگاهی که واردش کنی، پیشرفتت همان‌جا هم هست.`,
+        duration: 5000,
+      });
+    } else {
+      toast({ title: "همگام‌سازی ناموفق", description: res.error ?? "دوباره تلاش کن.", duration: 3500 });
+    }
+  };
+
+  const handlePushNow = async () => {
+    if (!syncCode) return;
+    setSyncing("push");
+    const res = await pushSync(syncCode);
+    setSyncing("");
+    if (res.ok) {
+      markSynced(res.updatedAt);
+      toast({ title: "✓ روی ابر به‌روز شد", description: "آخرین وضعیت پیشرفت روی سرور ذخیره شد.", duration: 2500 });
+    } else {
+      toast({ title: "همگام‌سازی ناموفق", description: res.error ?? "دوباره تلاش کن.", duration: 3500 });
+    }
+  };
+
+  const handlePullMerge = async (codeForJoin?: string) => {
+    const code = codeForJoin ?? syncCode;
+    setSyncing(codeForJoin ? "join" : "pull");
+    const res = await fetchSync(code);
+    if (!res.ok || !res.data) {
+      setSyncing("");
+      toast({ title: "بازیابی ناموفق", description: res.error ?? "دوباره تلاش کن.", duration: 3500 });
+      return;
+    }
+    const merged = mergeSyncData(collectData(), res.data);
+    if (applyMergedSnapshot(merged)) {
+      if (codeForJoin) setSyncCode(normalizeCode(codeForJoin));
+      markSynced(res.updatedAt);
+      toast({
+        title: "✓ پیشرفت ادغام شد",
+        description: "هیچ چیزی از دست نرفته — بهترین وضعیت هر واژه از هر دو دستگاه حفظ می‌شود…",
+        duration: 3000,
+      });
+      setTimeout(() => window.location.reload(), 900);
+    } else {
+      setSyncing("");
+      toast({ title: "ادغام ناموفق", description: "ذخیره روی حافظهٔ مرورگر انجام نشد.", duration: 3500 });
+    }
+  };
+
+  const handleCopyCode = async () => {
+    try {
+      await navigator.clipboard.writeText(syncCode);
+      toast({ title: "✓ کد کپی شد", description: "آن را جایی امن نگه دار — کلید پیشرفتت است.", duration: 2500 });
+    } catch {
+      toast({ title: "کپی نشد", description: `کد را دستی یادداشت کن: ${syncCode}`, duration: 4000 });
+    }
+  };
+
+  const handleDisconnect = () => {
+    setSyncCode("");
+    toast({
+      title: "همگام‌سازی قطع شد",
+      description: "پیشرفتِ همین دستگاه حذف نشد؛ کد سرور هم باقی می‌ماند و می‌توانی دوباره واردش کنی.",
+      duration: 3500,
+    });
   };
 
   return (
@@ -324,6 +427,100 @@ export default function Header() {
                 <p className="mt-2 text-[10.5px] leading-4 text-stone-400">
                   پیشرفت شما (واژه‌ها، نتایج، مرورها) در یک فایل JSON ذخیره می‌شود؛ برای انتقال به دستگاه دیگر از «بازیابی» استفاده کنید.
                 </p>
+              </div>
+
+              {/* ------------------- F3 learner-code sync ------------------- */}
+              <div className="mt-4 border-t border-stone-200 pt-3">
+                <div className="mb-2 flex items-center gap-1.5 text-[11.5px] font-bold text-stone-500">
+                  <Laptop size={13} className="text-emerald-600" />
+                  همگام‌سازی بین دستگاه‌ها
+                  <span className="mr-auto rounded-full bg-emerald-100 px-1.5 py-0.5 text-[9.5px] font-black text-emerald-700">جدید</span>
+                </div>
+
+                {syncCode ? (
+                  /* ---------- attached to a cloud code ---------- */
+                  <div className="rounded-xl border border-emerald-200 bg-emerald-50/70 p-2.5">
+                    <div className="flex items-center justify-between gap-2">
+                      <span dir="ltr" className="font-mono text-[15px] font-black tracking-[0.12em] text-emerald-800">
+                        {syncCode}
+                      </span>
+                      <button
+                        onClick={handleCopyCode}
+                        className="inline-flex shrink-0 items-center gap-1 rounded-lg border border-emerald-300 bg-white px-2 py-1 text-[10.5px] font-black text-emerald-700 transition-all hover:bg-emerald-100 active:scale-95"
+                        title="کپی کد"
+                      >
+                        <Copy size={11} />
+                        کپی
+                      </button>
+                    </div>
+                    {lastSyncAt && (
+                      <div className="mt-1 text-[10px] font-bold text-emerald-700/70">
+                        آخرین همگام‌سازی: {autoBackupAgeFa(lastSyncAt)}
+                      </div>
+                    )}
+                    <div className="mt-2 grid grid-cols-2 gap-2">
+                      <button
+                        onClick={handlePushNow}
+                        disabled={syncing !== ""}
+                        className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-emerald-300 bg-white px-2 py-2 text-[11px] font-black text-emerald-700 transition-all hover:bg-emerald-100 active:scale-95 disabled:opacity-50"
+                      >
+                        <CloudUpload size={13} />
+                        {syncing === "push" ? "در حال ارسال…" : "به‌روزرسانی ابری"}
+                      </button>
+                      <button
+                        onClick={() => handlePullMerge()}
+                        disabled={syncing !== ""}
+                        className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-emerald-300 bg-white px-2 py-2 text-[11px] font-black text-emerald-700 transition-all hover:bg-emerald-100 active:scale-95 disabled:opacity-50"
+                      >
+                        <CloudDownload size={13} />
+                        {syncing === "pull" ? <RefreshCw size={12} className="animate-spin" /> : "بازیابی از ابر"}
+                      </button>
+                    </div>
+                    <button
+                      onClick={handleDisconnect}
+                      className="mt-2 flex w-full items-center justify-center gap-1 text-[10px] font-bold text-stone-400 transition-colors hover:text-rose-500"
+                    >
+                      <Link2Off size={11} />
+                      قطع همگام‌سازی این دستگاه
+                    </button>
+                  </div>
+                ) : (
+                  /* ---------- no code yet: create or join ---------- */
+                  <div>
+                    <p className="mb-2 text-[10.5px] leading-4 text-stone-400">
+                      پیشرفتت را بین گوشی و رایانه یکی کن: یک کد بساز و روی هر دستگاهی واردش کن — بدون ثبت‌نام.
+                    </p>
+                    <button
+                      onClick={handleCreateCode}
+                      disabled={syncing !== ""}
+                      className="flex w-full items-center justify-center gap-1.5 rounded-xl bg-emerald-600 py-2.5 text-[12px] font-black text-white transition-all hover:bg-emerald-700 active:scale-95 disabled:opacity-50"
+                    >
+                      <CloudUpload size={14} />
+                      {syncing === "create" ? "در حال ساخت کد…" : "ساخت کد یادگیرنده"}
+                    </button>
+                    <div className="mt-2 flex gap-1.5">
+                      <input
+                        value={codeInput}
+                        onChange={(e) => setCodeInput(e.target.value)}
+                        onKeyDown={(e) => e.key === "Enter" && looksLikeCode(codeInput) && handlePullMerge(codeInput)}
+                        placeholder="کد موجود، مثل K7QM-34XP"
+                        dir="ltr"
+                        maxLength={9}
+                        className="min-w-0 flex-1 rounded-xl border border-stone-300 bg-white px-2.5 py-2 text-left font-mono text-[12px] font-black tracking-wider text-stone-800 outline-none transition-colors placeholder:font-sans placeholder:font-normal placeholder:tracking-normal placeholder:text-stone-400 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
+                      />
+                      <button
+                        onClick={() => handlePullMerge(codeInput)}
+                        disabled={!looksLikeCode(codeInput) || syncing !== ""}
+                        className="shrink-0 rounded-xl border border-emerald-300 bg-white px-3 py-2 text-[11.5px] font-black text-emerald-700 transition-all hover:bg-emerald-50 active:scale-95 disabled:cursor-not-allowed disabled:opacity-40"
+                      >
+                        {syncing === "join" ? "…" : "ورود با کد"}
+                      </button>
+                    </div>
+                    <p className="mt-1.5 text-[10px] leading-4 text-stone-400">
+                      با «ورود با کد»، پیشرفتِ ابر و همین دستگاه با هم ادغام می‌شود — هیچ‌کدام از دست نمی‌رود.
+                    </p>
+                  </div>
+                )}
               </div>
             </PopoverContent>
           </Popover>
