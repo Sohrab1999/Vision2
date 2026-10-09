@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   Sparkles,
@@ -14,6 +15,7 @@ import {
   RotateCcw,
   Trophy,
   Layers,
+  Users,
 } from "lucide-react";
 import { lessons, examBank, totalVocabulary, totalQuestions } from "@/data";
 import { useStudy, knownCountOfLesson, summarize } from "@/lib/study-store";
@@ -42,6 +44,13 @@ export default function HomeView() {
   const mounted = useMounted();
 
   const summary = mounted ? summarize(known, results) : { knownCount: 0, totalPercent: 0, doneCategories: 0, bestExam: null };
+  const [globalStats, setGlobalStats] = useState<{ total: number; avgPercent: number } | null>(null);
+  useEffect(() => {
+    fetch("/api/stats")
+      .then((r) => r.json())
+      .then((d) => setGlobalStats({ total: d.total ?? 0, avgPercent: d.avgPercent ?? 0 }))
+      .catch(() => {});
+  }, []);
   const recentResults = mounted
     ? Object.entries(results)
         .sort((a, b) => (b[1].at > a[1].at ? 1 : -1))
@@ -162,7 +171,7 @@ export default function HomeView() {
         </div>
 
         {/* spines */}
-        <div className="mb-6 flex items-end justify-center gap-2 rounded-t-2xl border border-b-0 border-stone-200 bg-gradient-to-b from-stone-100 to-stone-50 px-6 pt-6 sm:gap-3">
+        <div className="mb-6 flex items-end justify-center gap-2 rounded-t-2xl border border-b-0 border-stone-200 shelf-strip bg-gradient-to-b from-stone-100 to-stone-50 px-6 pt-6 sm:gap-3">
           {lessons.map((l, i) => (
             <motion.button
               key={l.id}
@@ -189,7 +198,7 @@ export default function HomeView() {
             <span className="mt-1 text-[10px]">آزمون</span>
           </div>
         </div>
-        <div className="h-2.5 rounded-b-xl bg-gradient-to-b from-stone-300 to-stone-400 shadow-md" aria-hidden />
+        <div className="h-2.5 rounded-b-xl shelf-edge bg-gradient-to-b from-stone-300 to-stone-400 shadow-md" aria-hidden />
 
         {/* lesson cards */}
         <div className="mt-6 grid gap-4 md:grid-cols-3">
@@ -272,6 +281,37 @@ export default function HomeView() {
         </div>
       </section>
 
+      {/* ------------------------- Global stats ------------------------- */}
+      {globalStats && globalStats.total > 0 && (
+        <section className="stat-band rounded-2xl border border-emerald-200 bg-gradient-to-l from-emerald-50 to-teal-50 p-5">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-600 text-white shadow-md shadow-emerald-900/20">
+                <Users size={20} />
+              </span>
+              <div>
+                <h2 className="text-sm font-extrabold text-stone-800">فعالیت یادگیرندگان</h2>
+                <p className="text-[12px] text-stone-500">همهٔ آزمون‌های ثبت‌شده روی این کتاب</p>
+              </div>
+            </div>
+            <div className="flex gap-6 text-center">
+              <div>
+                <div className="text-2xl font-black text-emerald-700" dir="ltr">
+                  {globalStats.total}
+                </div>
+                <div className="text-[11px] text-stone-500">آزمون انجام‌شده</div>
+              </div>
+              <div>
+                <div className="text-2xl font-black text-emerald-700" dir="ltr">
+                  {globalStats.avgPercent}٪
+                </div>
+                <div className="text-[11px] text-stone-500">میانگین نمرات</div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ------------------------- Recent results ------------------------- */}
       {recentResults.length > 0 && (
         <section aria-label="آخرین نتایج تست‌ها">
@@ -304,7 +344,7 @@ export default function HomeView() {
       )}
 
       {/* ------------------------------ Quote ------------------------------ */}
-      <section className="rounded-2xl border border-amber-200 bg-gradient-to-l from-amber-50 to-orange-50 p-6 text-center">
+      <section className="quote-band rounded-2xl border border-amber-200 bg-gradient-to-l from-amber-50 to-orange-50 p-6 text-center">
         <p className="en-text mb-2 text-lg font-semibold text-stone-700" dir="ltr">
           “Failure is a part of life. If you don&apos;t fail, you won&apos;t learn. If you don&apos;t learn, you will never succeed.”
         </p>

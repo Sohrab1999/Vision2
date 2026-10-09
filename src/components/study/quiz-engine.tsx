@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Check, X, ArrowLeft, RotateCcw, Trophy, Eye } from "lucide-react";
 import type { QuizQuestion } from "@/lib/study-types";
 import { useStudy } from "@/lib/study-store";
+import { useToast } from "@/hooks/use-toast";
 import ProgressRing from "./progress-ring";
 
 export interface QuizEngineProps {
@@ -38,6 +39,7 @@ export default function QuizEngine({
     secondsPerQuestion ? secondsPerQuestion * questions.length : null
   );
   const userIdRef = useRef<string>("");
+  const { toast } = useToast();
 
   const correctCount = useMemo(
     () => answers.reduce((s, a, i) => (a === questions[i]?.answer ? s + 1 : s), 0),
@@ -58,6 +60,13 @@ export default function QuizEngine({
       total,
       percent,
       at: new Date().toISOString(),
+    });
+    toast({
+      title: percent >= 70 ? "🏆 نتیجهٔ عالی!" : percent >= 50 ? "👍 نتیجهٔ قابل قبول" : "💪 تمرین بیشتر!",
+      description: `${title}: ${correct} از ${total} درست (${percent}٪)${
+        percent >= 90 ? " — فوق‌العاده بود!" : ""
+      }`,
+      duration: 4000,
     });
     // fire-and-forget to backend
     try {

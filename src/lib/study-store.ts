@@ -11,13 +11,14 @@ export type View =
   | { type: "exam" }
   | { type: "appendix" };
 
-export type LessonTab = "vocab" | "conversation" | "reading" | "grammar" | "tests";
+export type LessonTab = "vocab" | "conversation" | "reading" | "grammar" | "writing" | "tests";
 
 interface StudyState {
   view: View;
   lessonTab: LessonTab;
   known: Record<string, boolean>;
   results: Record<string, QuizResult>;
+  srs: Record<string, SrsItem>;
   userId: string;
 
   goHome: () => void;
@@ -26,7 +27,32 @@ interface StudyState {
   setLessonTab: (t: LessonTab) => void;
   toggleKnown: (key: string) => void;
   addResult: (key: string, r: QuizResult) => void;
+  reviewWord: (key: string, known: boolean) => void;
   ensureUserId: () => string;
+}
+
+// ---------------- spaced repetition (SM-2 lite) ----------------
+
+export interface SrsItem {
+  level: number; // 0..5
+  dueAt: number; // epoch ms
+}
+
+export const SRS_INTERVALS = [
+  15 * 60_000, // 15 دقیقه
+  86_400_000, // ۱ روز
+  3 * 86_400_000, // ۳ روز
+  7 * 86_400_000, // ۱ هفته
+  14 * 86_400_000, // ۲ هفته
+  30 * 86_400_000, // ۱ ماه
+];
+
+export const SRS_LABELS = ["۱۵ دقیقه", "۱ روز", "۳ روز", "۱ هفته", "۲ هفته", "۱ ماه"];
+
+export function srsDueCount(srs: Record<string, SrsItem>, lessonId: number): number {
+  const now = Date.now();
+  const prefix = `${lessonId}:`;
+  return Object.entries(srs).filter(([k, v]) => k.startsWith(prefix) && v.dueAt <= now).length;
 }
 
 export const wordKey = (lessonId: number, en: string) => `${lessonId}:${en.toLowerCase()}`;
@@ -39,6 +65,7 @@ export const useStudy = create<StudyState>()(
       lessonTab: "vocab",
       known: {},
       results: {},
+      srs: {},
       userId: "",
 
       goHome: () => set({ view: { type: "home" } }),
@@ -53,6 +80,19 @@ export const useStudy = create<StudyState>()(
           // keep the best score
           if (prev && prev.percent >= r.percent) return s;
           return { results: { ...s.results, [key]: r } };
+        }),
+      reviewWord: (key, known) =>
+        set((s) => {
+          const prev = s.srs[key];
+          const level = known
+            ? Math.min((prev?.level ?? -1) + 1, SRS_INTERVALS.length - 1)
+            : 0;
+          return {
+            srs: {
+              ...s.srs,
+              [key]: { level, dueAt: Date.now() + SRS_INTERVALS[level] },
+            },
+          };
         }),
       ensureUserId: () => {
         const existing = get().userId;
@@ -72,6 +112,7 @@ export const useStudy = create<StudyState>()(
       partialize: (s) => ({
         known: s.known,
         results: s.results,
+        srs: s.srs,
         userId: s.userId,
       }),
     }

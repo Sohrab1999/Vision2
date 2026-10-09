@@ -64,7 +64,15 @@ export interface LessonData {
   grammar: GrammarSection[];
   synonyms: { en: string; syn: string; fa: string }[];
   antonyms?: { en: string; ant: string; fa: string }[];
+  writing: WritingExercise[];
   quizzes: QuizQuestion[];
+}
+
+export interface WritingExercise {
+  id: string;
+  fa: string; // Persian prompt (the meaning to express)
+  answer: string[]; // correct English word order
+  hint?: string;
 }
 
 export interface QuizResult {

@@ -1,4 +1,4 @@
-import type { LessonData, Reading, GrammarSection } from "@/lib/study-types";
+import type { LessonData, Reading, GrammarSection, WritingExercise } from "@/lib/study-types";
 import { W, Q, SYN, ANT, EN } from "@/lib/study-types";
 
 // =====================================================================
@@ -439,6 +439,17 @@ const grammar: GrammarSection[] = [
   },
 ];
 
+const writing: WritingExercise[] = [
+  { id: "l3-w1", fa: "اگر بیشتر مطالعه کنی، خیلی چیزها یاد خواهی گرفت.", answer: ["If", "you", "study", "more", ",", "you", "will", "learn", "a", "lot"], hint: "شرطی نوع اول: if + حال ساده، جواب = آیندهٔ ساده" },
+  { id: "l3-w2", fa: "اگر الان نروی، ممکن است قطار را از دست بدهی.", answer: ["If", "you", "don't", "go", "now", ",", "you", "may", "miss", "the", "train"], hint: "به‌جای will می‌توان از may/can/should استفاده کرد" },
+  { id: "l3-w3", fa: "اگر باران ببارد، ما در خانه خواهیم ماند.", answer: ["If", "it", "rains", ",", "we", "will", "stay", "home"], hint: "بعد از if هرگز will نیاورید!" },
+  { id: "l3-w4", fa: "او تصمیم گرفت که اسپانیایی را با دقت یاد بگیرد.", answer: ["She", "decided", "to", "learn", "Spanish", "carefully"], hint: "فعل دوم جمله با مصدر با to می‌آید" },
+  { id: "l3-w5", fa: "من نمی‌دانم کجا یک پیراهن خوب بخرم.", answer: ["I", "don't", "know", "where", "to", "buy", "a", "nice", "shirt"], hint: "بعد از کلمات Wh هم مصدر با to می‌آید" },
+  { id: "l3-w6", fa: "بچه‌ها هیجان‌زده هستند چون کارتون هیجان‌برانگیز است.", answer: ["The", "children", "are", "excited", "because", "the", "cartoon", "is", "exciting"], hint: "ed برای انسان (اثرپذیر) و ing برای غیرانسان (اثرگذار)" },
+  { id: "l3-w7", fa: "برای همه ضروری است که وعده‌های متعادل غذا بخورند.", answer: ["It", "is", "necessary", "for", "everyone", "to", "eat", "balanced", "meals"], hint: "ساختار It + صفت + for + مفعول + مصدر با to" },
+  { id: "l3-w8", fa: "او خیلی خوشحال بود که خانواده‌اش را ببیند.", answer: ["He", "was", "very", "happy", "to", "see", "his", "family"], hint: "بعد از صفات احساسی، مصدر با to می‌آید" },
+];
+
 const synonyms = [
   SYN("according to", "based on", "بر طبق، بر اساس"),
   SYN("actually", "really", "واقعاً"),
@@ -626,6 +637,7 @@ export const lesson3: LessonData = {
   grammar,
   synonyms,
   antonyms,
+  writing,
   quizzes,
 };
 

@@ -1,7 +1,9 @@
 "use client";
 
-import { BookOpen, Home, Library, ClipboardCheck, BookMarked } from "lucide-react";
+import { BookOpen, Home, Library, ClipboardCheck, BookMarked, Sun, Moon } from "lucide-react";
+import { useTheme } from "next-themes";
 import { useStudy, type View } from "@/lib/study-store";
+import { useMounted } from "@/lib/use-mounted";
 
 const navItems: { key: string; label: string; icon: React.ElementType; view: View }[] = [
   { key: "home", label: "خانه", icon: Home, view: { type: "home" } },
@@ -14,6 +16,9 @@ export default function Header() {
   const view = useStudy((s) => s.view);
   const setView = useStudy((s) => s.setView);
   const goHome = useStudy((s) => s.goHome);
+  const mounted = useMounted();
+  const { theme, setTheme } = useTheme();
+  const isDark = mounted && theme === "dark";
 
   const isActive = (item: { key: string }) => {
     if (item.key === "home") return view.type === "home" || view.type === "lesson";
@@ -41,26 +46,36 @@ export default function Header() {
           </span>
         </button>
 
-        <nav className="flex items-center gap-1 overflow-x-auto" aria-label="ناوبری اصلی">
-          {navItems.map((item) => {
-            const Icon = item.icon;
-            const active = isActive(item);
-            return (
-              <button
-                key={item.key}
-                onClick={() => setView(item.view)}
-                className={`flex shrink-0 items-center gap-1.5 rounded-full px-3 py-2 text-[13px] font-semibold transition-all ${
-                  active
-                    ? "bg-emerald-600 text-white shadow-sm shadow-emerald-900/20"
-                    : "text-stone-600 hover:bg-stone-200/70"
-                }`}
-              >
-                <Icon size={15} />
-                <span className="hidden sm:inline">{item.label}</span>
-              </button>
-            );
-          })}
-        </nav>
+        <div className="flex items-center gap-1">
+          <button
+            onClick={() => setTheme(isDark ? "light" : "dark")}
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-stone-200 bg-white text-stone-500 transition-all hover:text-amber-500 hover:border-amber-200 active:scale-90"
+            aria-label={isDark ? "حالت روشن" : "حالت شب"}
+            title={isDark ? "حالت روشن" : "حالت شب"}
+          >
+            {isDark ? <Sun size={16} /> : <Moon size={16} />}
+          </button>
+          <nav className="flex items-center gap-1 overflow-x-auto" aria-label="ناوبری اصلی">
+            {navItems.map((item) => {
+              const Icon = item.icon;
+              const active = isActive(item);
+              return (
+                <button
+                  key={item.key}
+                  onClick={() => setView(item.view)}
+                  className={`flex shrink-0 items-center gap-1.5 rounded-full px-3 py-2 text-[13px] font-semibold transition-all ${
+                    active
+                      ? "bg-emerald-600 text-white shadow-sm shadow-emerald-900/20"
+                      : "text-stone-600 hover:bg-stone-200/70"
+                  }`}
+                >
+                  <Icon size={15} />
+                  <span className="hidden sm:inline">{item.label}</span>
+                </button>
+              );
+            })}
+          </nav>
+        </div>
       </div>
     </header>
   );

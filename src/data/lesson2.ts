@@ -1,4 +1,4 @@
-import type { LessonData, Reading, GrammarSection } from "@/lib/study-types";
+import type { LessonData, Reading, GrammarSection, WritingExercise } from "@/lib/study-types";
 import { W, Q, SYN, EN } from "@/lib/study-types";
 
 // =====================================================================
@@ -526,6 +526,17 @@ const grammar: GrammarSection[] = [
   },
 ];
 
+const writing: WritingExercise[] = [
+  { id: "l2-w1", fa: "من از سال ۱۳۸۵ در بوکان زندگی کرده‌ام.", answer: ["I", "have", "lived", "in", "Boukan", "since", "1385"], hint: "حال کامل: have/has + p.p. — بعد از since جملهٔ گذشتهٔ ساده" },
+  { id: "l2-w2", fa: "مادرش تازه شام را پخته است.", answer: ["His", "mother", "has", "just", "cooked", "dinner"], hint: "just بین فعل کمکی و فعل اصلی" },
+  { id: "l2-w3", fa: "آیا تو تا به حال به انگلستان سفر کرده‌ای؟", answer: ["Have", "you", "ever", "traveled", "to", "England", "?"], hint: "سؤالی: فعل کمکی اول + ever" },
+  { id: "l2-w4", fa: "مادرم تا کنون دو نامه نوشته است.", answer: ["My", "mother", "has", "written", "two", "letters", "so", "far"] },
+  { id: "l2-w5", fa: "آنها هفتهٔ گذشته به یک آپارتمان جدید نقل مکان کردند.", answer: ["They", "moved", "to", "a", "new", "apartment", "last", "week"], hint: "قید زمان دقیق گذشته → گذشتهٔ ساده (نه حال کامل!)" },
+  { id: "l2-w6", fa: "او از خواندن کتاب‌های تاریخی لذت می‌برد.", answer: ["He", "enjoys", "reading", "history", "books"], hint: "بعد از enjoy فعل دوم اسم مصدر (ing) می‌گیرد" },
+  { id: "l2-w7", fa: "شنا کردن در این قسمت از رودخانه خیلی خطرناک است.", answer: ["Swimming", "in", "this", "part", "of", "the", "river", "is", "very", "dangerous"], hint: "اسم مصدر در نقش فاعل، فعل مفرد می‌گیرد" },
+  { id: "l2-w8", fa: "من اغلب از خرید کردن در آخرهفته‌ها خودداری می‌کنم.", answer: ["I", "often", "avoid", "going", "shopping", "on", "weekends"] },
+];
+
 const synonyms = [
   SYN("a bit", "a little", "یه‌خورده"),
   SYN("asleep", "sleeping", "خوابیده"),
@@ -651,6 +662,7 @@ export const lesson2: LessonData = {
   readings,
   grammar,
   synonyms,
+  writing,
   quizzes,
 };
 

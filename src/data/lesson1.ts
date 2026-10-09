@@ -1,4 +1,4 @@
-import type { LessonData, Reading, GrammarSection } from "@/lib/study-types";
+import type { LessonData, Reading, GrammarSection, WritingExercise } from "@/lib/study-types";
 import { W, Q, SYN, EN } from "@/lib/study-types";
 
 // =====================================================================
@@ -517,6 +517,17 @@ const grammar: GrammarSection[] = [
   },
 ];
 
+const writing: WritingExercise[] = [
+  { id: "l1-w1", fa: "بچه‌ها الان با خوشحالی در پارک در حال فوتبال بازی کردن هستند.", answer: ["The", "children", "are", "playing", "football", "happily", "at", "the", "park", "right", "now"], hint: "فاعل + فعل کمکی + فعل اصلی + مفعول + قید حالت + قید مکان + قید زمان" },
+  { id: "l1-w2", fa: "دوشنبهٔ گذشته در همین ساعت‌ها، یک هواپیما به آرامی در آسمان در حال پرواز بود.", answer: ["An", "airplane", "was", "slowly", "flying", "in", "the", "sky", "at", "this", "time", "last", "Monday"] },
+  { id: "l1-w3", fa: "پدر من معمولاً جمعه‌ها تنیس بازی می‌کند.", answer: ["My", "father", "usually", "plays", "tennis", "on", "Fridays"], hint: "قید تکرار قبل از فعل اصلی" },
+  { id: "l1-w4", fa: "من دیروز او را دیدم که به سرعت در حومهٔ شهر اسب‌سواری می‌کرد.", answer: ["Yesterday", "I", "saw", "him", "riding", "a", "horse", "fast", "in", "the", "countryside"], hint: "قید زمان می‌تواند اول جمله بیاید" },
+  { id: "l1-w5", fa: "او معمولاً با ماشین خودش به سر کار می‌رود.", answer: ["He", "usually", "goes", "to", "work", "by", "his", "car"] },
+  { id: "l1-w6", fa: "ماشین‌های خیلی زیادی دیروز در خیابان بودند و مردم مجبور بودند به آرامی رانندگی کنند.", answer: ["There", "were", "too", "many", "cars", "in", "the", "street", "yesterday", "and", "people", "had", "to", "drive", "slowly"] },
+  { id: "l1-w7", fa: "او اغلب شیر خیلی زیادی در صبح‌ها می‌نوشد.", answer: ["He", "often", "drinks", "a", "lot", "of", "milk", "in", "the", "morning"] },
+  { id: "l1-w8", fa: "ما هرگز به رادیو گوش نمی‌دهیم.", answer: ["We", "never", "listen", "to", "the", "radio"], hint: "قید never جمله را منفی می‌کند" },
+];
+
 const synonyms = [
   SYN("absolutely", "surely", "حتماً، قطعاً"),
   SYN("additional", "extra", "اضافی"),
@@ -627,6 +638,7 @@ export const lesson1: LessonData = {
   readings,
   grammar,
   synonyms,
+  writing,
   quizzes,
 };
 

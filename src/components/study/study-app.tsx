@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { ArrowUp } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { stopSpeaking } from "@/lib/speak";
@@ -16,6 +17,7 @@ import AppendixView from "./appendix-view";
 export default function StudyApp() {
   const view = useStudy((s) => s.view);
   const hydrated = useMounted();
+  const [showTop, setShowTop] = useState(false);
 
   // rehydrate persisted progress from localStorage (zustand -> external system)
   useEffect(() => {
@@ -26,6 +28,13 @@ export default function StudyApp() {
   useEffect(() => {
     stopSpeaking();
   }, [view]);
+
+  // back-to-top visibility (subscribed scroll event, async state)
+  useEffect(() => {
+    const onScroll = () => setShowTop(window.scrollY > 500);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const viewKey =
     view.type === "lesson" ? `lesson-${view.id}` : view.type;
@@ -59,6 +68,23 @@ export default function StudyApp() {
           </div>
         )}
       </main>
+
+      {/* back to top */}
+      <AnimatePresence>
+        {showTop && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="fixed bottom-5 left-5 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-emerald-600 text-white shadow-lg shadow-emerald-900/30 transition-transform hover:bg-emerald-700 active:scale-90"
+            aria-label="بازگشت به بالای صفحه"
+          >
+            <ArrowUp size={19} />
+          </motion.button>
+        )}
+      </AnimatePresence>
+
       <Footer />
     </div>
   );

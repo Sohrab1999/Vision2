@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, BookOpen, MessageSquareText, BookOpenText, GraduationCap, ListChecks, Layers } from "lucide-react";
+import { ArrowRight, BookOpen, MessageSquareText, BookOpenText, GraduationCap, ListChecks, Layers, PenLine } from "lucide-react";
 import { findLesson } from "@/data";
 import { useStudy, knownCountOfLesson, type LessonTab } from "@/lib/study-store";
 import { themeOf } from "@/lib/study-theme";
@@ -10,6 +10,7 @@ import VocabTab from "./vocab-tab";
 import ConversationTab from "./conversation-tab";
 import ReadingTab from "./reading-tab";
 import GrammarTab from "./grammar-tab";
+import WritingTab from "./writing-tab";
 import LessonTestsTab from "./lesson-tests-tab";
 
 const tabs: { key: LessonTab; label: string; icon: React.ElementType }[] = [
@@ -17,6 +18,7 @@ const tabs: { key: LessonTab; label: string; icon: React.ElementType }[] = [
   { key: "conversation", label: "مکالمه", icon: MessageSquareText },
   { key: "reading", label: "ریدینگ", icon: BookOpenText },
   { key: "grammar", label: "گرامر", icon: GraduationCap },
+  { key: "writing", label: "نگارش", icon: PenLine },
   { key: "tests", label: "تست‌ها", icon: ListChecks },
 ];
 
@@ -110,6 +112,7 @@ export default function LessonView({ id }: { id: number }) {
         {tab === "conversation" && <ConversationTab lesson={lesson} />}
         {tab === "reading" && <ReadingTab lesson={lesson} />}
         {tab === "grammar" && <GrammarTab lesson={lesson} />}
+        {tab === "writing" && <WritingTab lesson={lesson} />}
         {tab === "tests" && <LessonTestsTab lesson={lesson} />}
       </motion.div>
     </motion.div>
