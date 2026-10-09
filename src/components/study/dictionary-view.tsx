@@ -1,17 +1,22 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Search, X, BookMarked } from "lucide-react";
+import { Search, X, BookMarked, CheckCircle2, CircleDashed, AlarmClock, SearchX } from "lucide-react";
 import { lessons } from "@/data";
 import { useStudy, wordKey } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
-import { posLabel, themeOf } from "@/lib/study-theme";
+import { posLabel, themeOf, faNum } from "@/lib/study-theme";
 import SpeakButton from "./speak-button";
+
+// state filter values
+type StateFilter = "all" | "known" | "unknown" | "due";
 
 export default function DictionaryView() {
   const [query, setQuery] = useState("");
   const [lessonFilter, setLessonFilter] = useState<number | null>(null);
+  const [stateFilter, setStateFilter] = useState<StateFilter>("all");
   const known = useStudy((s) => s.known);
+  const srs = useStudy((s) => s.srs);
   const toggleKnown = useStudy((s) => s.toggleKnown);
   const mounted = useMounted();
 
@@ -23,14 +28,62 @@ export default function DictionaryView() {
     []
   );
 
+  // count of words due for SRS review right now
+  const dueCount = useMemo(() => {
+    if (!mounted) return 0;
+    const now = Date.now();
+    return allWords.filter((w) => {
+      const it = srs[wordKey(w.lessonId, w.en)];
+      return it && it.dueAt <= now;
+    }).length;
+  }, [allWords, srs, mounted]);
+
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
+    const now = Date.now();
     return allWords.filter((w) => {
       if (lessonFilter && w.lessonId !== lessonFilter) return false;
+      const isKnown = !!known[wordKey(w.lessonId, w.en)];
+      if (stateFilter === "known" && !isKnown) return false;
+      if (stateFilter === "unknown" && isKnown) return false;
+      if (stateFilter === "due") {
+        const it = srs[wordKey(w.lessonId, w.en)];
+        if (!it || it.dueAt > now) return false;
+      }
       if (!q) return true;
       return w.en.toLowerCase().includes(q) || w.fa.includes(query.trim());
     });
-  }, [allWords, query, lessonFilter]);
+  }, [allWords, query, lessonFilter, stateFilter, known, srs]);
+
+  const stateChips: { id: StateFilter; label: string; icon?: React.ElementType; cls: string; count: number }[] = [
+    {
+      id: "all",
+      label: "همه",
+      cls: "bg-stone-700",
+      count: allWords.length,
+    },
+    {
+      id: "known",
+      label: "بلدم",
+      icon: CheckCircle2,
+      cls: "bg-emerald-600",
+      count: mounted ? allWords.filter((w) => known[wordKey(w.lessonId, w.en)]).length : 0,
+    },
+    {
+      id: "unknown",
+      label: "بلد نیستم",
+      icon: CircleDashed,
+      cls: "bg-stone-500",
+      count: mounted ? allWords.filter((w) => !known[wordKey(w.lessonId, w.en)]).length : 0,
+    },
+    {
+      id: "due",
+      label: "سررسید مرور",
+      icon: AlarmClock,
+      cls: "bg-rose-500",
+      count: dueCount,
+    },
+  ];
 
   return (
     <div className="space-y-4">
@@ -88,9 +141,53 @@ export default function DictionaryView() {
             );
           })}
         </div>
+        <div className="mt-2.5 flex flex-wrap items-center gap-2 border-t border-dashed border-stone-200 pt-3">
+          <span className="text-[10.5px] font-black text-stone-400">وضعیت یادگیری:</span>
+          {stateChips.map((c) => (
+            <button
+              key={c.id}
+              onClick={() => setStateFilter(c.id)}
+              className={`dict-state-chip inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[11.5px] font-bold transition-all ${
+                stateFilter === c.id
+                  ? `${c.cls} text-white shadow-sm`
+                  : "bg-stone-100 text-stone-600 hover:bg-stone-200"
+              }`}
+            >
+              {c.icon && <c.icon size={12} />}
+              {c.label}
+              <span
+                className={`rounded-full px-1.5 text-[10px] font-black ${
+                  stateFilter === c.id ? "bg-white/25" : "bg-stone-200/80 text-stone-500"
+                }`}
+              >
+                {faNum(c.count)}
+              </span>
+            </button>
+          ))}
+        </div>
       </div>
 
       <p className="text-[12px] text-stone-500">{filtered.length} واژه یافت شد</p>
+
+      {mounted && filtered.length === 0 && (
+        <div className="dict-empty flex flex-col items-center gap-2 rounded-2xl border-2 border-dashed border-stone-200 bg-stone-50/60 px-4 py-10 text-center">
+          <SearchX size={26} className="text-stone-300" />
+          <p className="text-[13px] font-extrabold text-stone-500">واژه‌ای با این فیلترها یافت نشد</p>
+          <p className="text-[11.5px] font-bold text-stone-400">
+            {stateFilter === "due"
+              ? "الان واژهٔ سررسیدی نداری — همه‌چیز سر موعد است!"
+              : "فیلتر وضعیت یا جستجو را تغییر بده"}
+          </p>
+          {stateFilter !== "all" && (
+            <button
+              onClick={() => setStateFilter("all")}
+              className="mt-1 rounded-full bg-stone-700 px-3.5 py-1.5 text-[11px] font-bold text-white transition-all hover:bg-stone-600"
+            >
+              نمایش همهٔ واژه‌ها
+            </button>
+          )}
+        </div>
+      )}
 
       <div className="max-h-[58vh] grid gap-2.5 overflow-y-auto pl-1 nice-scroll sm:grid-cols-2 lg:grid-cols-3">
         {filtered.slice(0, 300).map((w) => {

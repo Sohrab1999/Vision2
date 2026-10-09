@@ -1,6 +1,8 @@
 "use client";
 
 import { BookOpen, Keyboard, Sparkles, ShieldCheck } from "lucide-react";
+import { totalVocabulary, totalQuestions } from "@/data";
+import { faNum } from "@/lib/study-theme";
 
 export default function Footer() {
   const openShortcuts = () => window.dispatchEvent(new CustomEvent("open-shortcuts"));
@@ -39,7 +41,7 @@ export default function Footer() {
           </span>
           <span className="inline-flex items-center gap-1.5 rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-[11.5px] font-bold text-amber-700">
             <Sparkles size={14} />
-            ۳ درس · ۶۳۳ واژه · ۱۷۰+ تست
+            ۳ درس · {faNum(totalVocabulary)} واژه · {faNum(totalQuestions)}+ تست
           </span>
         </div>
       </div>

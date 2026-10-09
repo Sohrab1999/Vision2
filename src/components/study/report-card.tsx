@@ -69,6 +69,7 @@ export default function ReportCard() {
   const mistakes = useStudy((s) => s.mistakes);
   const rushBest = useStudy((s) => s.rushBest);
   const rushBestCorrect = useStudy((s) => s.rushBestCorrect);
+  const rushGames = useStudy((s) => s.rushGames);
   const userName = useStudy((s) => s.userName);
 
   // global opener (from tool cards / skill panel)
@@ -81,18 +82,35 @@ export default function ReportCard() {
   const evalInput = useMemo(
     () =>
       mounted
-        ? buildEvalInput({ known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect })
+        ? buildEvalInput({ known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames })
         : null,
-    [mounted, known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect]
+    [mounted, known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames]
   );
   const unlocked = useMemo(() => (evalInput ? unlockedBadgeIds(evalInput) : []), [evalInput]);
   const skills = useMemo(() => (mounted ? skillBreakdown(results) : []), [mounted, results]);
   const week = useMemo(() => (mounted ? lastNDays(7, history) : []), [mounted, history]);
+  const month = useMemo(() => (mounted ? lastNDays(30, history) : []), [mounted, history]);
 
   const knownCount = evalInput?.knownCount ?? 0;
   const weekQuizzes = week.reduce((s, d) => s + d.quizzes, 0);
   const weekReviews = week.reduce((s, d) => s + d.reviews, 0);
   const weekActive = week.filter((d) => d.total > 0).length;
+
+  // 30-day activity grouped into 4 weekly buckets (oldest → newest)
+  const monthBuckets = useMemo(() => {
+    if (month.length === 0) return [];
+    const size = Math.ceil(month.length / 4);
+    const out: { total: number; active: number }[] = [];
+    for (let i = 0; i < month.length; i += size) {
+      const chunk = month.slice(i, i + size);
+      out.push({
+        total: chunk.reduce((s, d) => s + d.total, 0),
+        active: chunk.filter((d) => d.total > 0).length,
+      });
+    }
+    return out;
+  }, [month]);
+  const monthMax = Math.max(1, ...monthBuckets.map((b) => b.total));
   const avgPercent = useMemo(() => {
     const rs = Object.values(results);
     return rs.length ? Math.round(rs.reduce((s, r) => s + r.percent, 0) / rs.length) : 0;
@@ -190,6 +208,40 @@ export default function ReportCard() {
                   </div>
                 </div>
               </div>
+
+              {/* monthly band */}
+              {monthBuckets.length > 0 && (
+                <div className="report-month rounded-xl border border-stone-200 bg-stone-50/70 p-3.5">
+                  <div className="mb-2.5 flex items-center justify-between">
+                    <div className="flex items-center gap-1.5 text-[12px] font-extrabold text-stone-700">
+                      <TrendingUp size={13} className="text-teal-600" />
+                      فعالیت ۳۰ روز اخیر (به تفکیک هفته)
+                    </div>
+                    <span className="rounded-full bg-teal-50 px-2 py-0.5 text-[10px] font-black text-teal-700">
+                      جمع کل: {faNum(monthBuckets.reduce((s, b) => s + b.total, 0))}
+                    </span>
+                  </div>
+                  <div className="flex h-24 items-end gap-2.5" dir="ltr">
+                    {monthBuckets.map((b, i) => (
+                      <div key={i} className="flex flex-1 flex-col items-center gap-1">
+                        <span className="text-[10px] font-black text-stone-400">{b.total > 0 ? faNum(b.total) : ""}</span>
+                        <motion.div
+                          initial={{ height: 0 }}
+                          animate={{ height: `${Math.max(b.total > 0 ? 12 : 4, (b.total / monthMax) * 56)}px` }}
+                          transition={{ delay: i * 0.07, duration: 0.5, ease: "easeOut" }}
+                          className={`w-full rounded-t-md ${
+                            b.total > 0
+                              ? "bg-gradient-to-t from-teal-600 via-emerald-500 to-lime-400"
+                              : "bg-stone-200/70"
+                          }`}
+                          title={`${faNum(b.total)} فعالیت — ${faNum(b.active)} روز فعال`}
+                        />
+                        <span className="text-[9.5px] font-bold text-stone-400">هفتهٔ {faNum(i + 1)}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               {/* skills */}
               <div>

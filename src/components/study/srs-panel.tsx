@@ -10,10 +10,13 @@ import { faNum } from "@/lib/study-theme";
 // ------------------------------------------------------------------
 // داشبورد مرور هوشمند — health of the SRS queue:
 // due-now / learning / strong / mastered + 7-day forecast of what's
-// coming up, with a one-tap smart review entry.
+// coming up, with a one-tap smart review entry. A state donut shows
+// the composition of the queue at a glance.
 // ------------------------------------------------------------------
 
 const DAY_MS = 86_400_000;
+const DONUT_R = 40;
+const DONUT_C = 2 * Math.PI * DONUT_R;
 
 function dayLabel(offset: number): string {
   if (offset === 0) return "امروز";
@@ -61,6 +64,24 @@ export default function SrsPanel() {
     { icon: BookOpenCheck, label: "وارفته", value: stats?.mastered ?? 0, cls: "bg-teal-50 text-teal-700" },
   ];
 
+  // donut segments (value + color per SRS state)
+  const arcs = useMemo(() => {
+    if (!stats || stats.total === 0) return [];
+    const segs = [
+      { v: stats.due, c: "#f43f5e" },
+      { v: stats.learning, c: "#f59e0b" },
+      { v: stats.strong, c: "#10b981" },
+      { v: stats.mastered, c: "#14b8a6" },
+    ];
+    let acc = 0;
+    return segs.map((s) => {
+      const frac = s.v / stats.total;
+      const arc = { c: s.c, frac, off: acc };
+      acc += frac;
+      return arc;
+    });
+  }, [stats]);
+
   return (
     <section
       aria-label="داشبورد مرور هوشمند"
@@ -83,14 +104,44 @@ export default function SrsPanel() {
             </div>
           </div>
 
-          <div className="mb-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
-            {chips.map((c) => (
-              <div key={c.label} className={`rounded-xl border border-white/60 p-2.5 text-center shadow-sm ${c.cls}`}>
-                <c.icon size={15} className="mx-auto mb-1" />
-                <div className="text-lg font-black leading-none">{faNum(c.value)}</div>
-                <div className="mt-1 text-[10.5px] font-bold opacity-80">{c.label}</div>
+          <div className="mb-4 flex flex-col items-center gap-4 sm:flex-row">
+            {/* SRS state donut */}
+            <div
+              role="img"
+              aria-label="ترکیب وضعیت واژه‌ها در چرخهٔ مرور"
+              className="srs-donut relative h-28 w-28 shrink-0 rounded-full bg-white/50 p-1 shadow-sm"
+            >
+              <svg viewBox="0 0 100 100" className="h-full w-full -rotate-90">
+                <circle cx="50" cy="50" r={DONUT_R} fill="none" stroke="rgba(15,118,110,0.12)" strokeWidth="12" />
+                {arcs.map((a, i) => (
+                  <circle
+                    key={i}
+                    cx="50"
+                    cy="50"
+                    r={DONUT_R}
+                    fill="none"
+                    stroke={a.c}
+                    strokeWidth="12"
+                    strokeDasharray={`${Math.max(0, a.frac * DONUT_C - 1.5)} ${DONUT_C}`}
+                    strokeDashoffset={-a.off * DONUT_C}
+                  />
+                ))}
+              </svg>
+              <div className="absolute inset-0 flex flex-col items-center justify-center">
+                <span className="text-xl font-black leading-none text-stone-800">{faNum(stats?.total ?? 0)}</span>
+                <span className="mt-1 text-[9.5px] font-bold text-stone-500">واژه در چرخه</span>
               </div>
-            ))}
+            </div>
+
+            <div className="grid flex-1 grid-cols-2 gap-2">
+              {chips.map((c) => (
+                <div key={c.label} className={`rounded-xl border border-white/60 p-2.5 text-center shadow-sm ${c.cls}`}>
+                  <c.icon size={15} className="mx-auto mb-1" />
+                  <div className="text-lg font-black leading-none">{faNum(c.value)}</div>
+                  <div className="mt-1 text-[10.5px] font-bold opacity-80">{c.label}</div>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* 7-day forecast */}

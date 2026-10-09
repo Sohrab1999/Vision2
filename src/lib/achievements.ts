@@ -38,6 +38,7 @@ export interface BadgeEvalInput {
   mistakesTotal: number;
   rushBest: number; // best points in the 60s challenge
   rushBestCorrect: number; // best correct answers in one challenge
+  rushGames: number; // total completed 60s challenge rounds
 }
 
 function historyTotals(history: StudyState["history"]): { quizzes: number; reviews: number; days: number } {
@@ -63,6 +64,7 @@ export function buildEvalInput(s: {
   mistakes: StudyState["mistakes"];
   rushBest?: number;
   rushBestCorrect?: number;
+  rushGames?: number;
 }): BadgeEvalInput {
   const knownCount = Object.values(s.known).filter(Boolean).length;
   const rs = Object.values(s.results);
@@ -103,6 +105,7 @@ export function buildEvalInput(s: {
     mistakesTotal,
     rushBest: s.rushBest ?? 0,
     rushBestCorrect: s.rushBestCorrect ?? 0,
+    rushGames: s.rushGames ?? 0,
   };
 }
 
@@ -261,6 +264,24 @@ export const BADGES: BadgeDef[] = [
     tier: "silver",
     progress: (s) => `بهترین: ${Math.min(s.rushBestCorrect, 15)} از ۱۵ پاسخ`,
     check: (s) => s.rushBestCorrect >= 15,
+  },
+  {
+    id: "rush-5",
+    title: "چالش‌باز",
+    desc: "در ۵ چالش برق‌آسا شرکت کن",
+    icon: "Gamepad2",
+    tier: "silver",
+    progress: (s) => `${Math.min(s.rushGames, 5)} از ۵ چالش`,
+    check: (s) => s.rushGames >= 5,
+  },
+  {
+    id: "rush-champ",
+    title: "قهرمان برق‌آسا",
+    desc: "در یک دور چالش ۱۰۰ امتیاز یا بیشتر بگیر",
+    icon: "Trophy",
+    tier: "gold",
+    progress: (s) => `بهترین: ${Math.min(s.rushBest, 100)} از ۱۰۰ امتیاز`,
+    check: (s) => s.rushBest >= 100,
   },
 ];
 

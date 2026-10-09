@@ -724,3 +724,24 @@ body {
   border-color: rgb(6 95 70 / 0.6);
 }
 .dark .report-foot .text-emerald-800 { color: #a7f3d0; }
+
+/* ------------------------------------------------------------------ */
+/* r14 — SRS donut, dictionary state filter, monthly report band      */
+/* ------------------------------------------------------------------ */
+
+/* SRS state donut */
+.dark .srs-donut { background-color: rgba(6, 44, 34, 0.5); box-shadow: none; border: 1px solid rgb(13 100 88 / 0.4); }
+
+/* dictionary state filter chips */
+.dark .dict-state-chip.bg-stone-100 { background-color: #28241f; color: #c9c2bb; }
+.dark .dict-state-chip.bg-stone-100:hover { background-color: #37312b; }
+.dark .dict-state-chip [class*="bg-stone-200"] { background-color: rgb(60 55 49 / 0.95); color: #a8a29e; }
+.dark .dict-state-chip.bg-stone-700 { background-color: #57534e; }
+
+/* monthly report band */
+.dark .report-month { background-color: rgb(28 25 23 / 0.6); border-color: #37312b; }
+.dark .report-month .text-stone-700 { color: #d6d3cf; }
+.dark .report-month .text-stone-400 { color: #716b63; }
+.dark .report-month .bg-teal-50 { background-color: rgb(4 47 46 / 0.6); }
+.dark .report-month .text-teal-700 { color: #5eead4; }
+.dark .report-month [class*="bg-stone-200"] { background-color: rgb(55 49 43 / 0.7); }

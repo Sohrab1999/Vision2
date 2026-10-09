@@ -32,6 +32,7 @@ export interface BackupPayload {
     seenBadges: string[];
     rushBest: number;
     rushBestCorrect: number;
+    rushGames: number;
   };
 }
 
@@ -63,6 +64,7 @@ function collectData(): BackupPayload["data"] {
     seenBadges: s.seenBadges,
     rushBest: s.rushBest ?? 0,
     rushBestCorrect: s.rushBestCorrect ?? 0,
+    rushGames: s.rushGames ?? 0,
   };
 }
 
@@ -173,6 +175,7 @@ export function parseBackup(text: string): BackupPayload {
       seenBadges: Array.isArray(data["seenBadges"]) ? data["seenBadges"].filter((x): x is string => typeof x === "string") : [],
       rushBest: typeof data["rushBest"] === "number" ? data["rushBest"] : 0,
       rushBestCorrect: typeof data["rushBestCorrect"] === "number" ? data["rushBestCorrect"] : 0,
+      rushGames: typeof data["rushGames"] === "number" ? data["rushGames"] : 0,
     },
   };
 }

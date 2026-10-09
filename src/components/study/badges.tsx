@@ -21,6 +21,8 @@ import {
   Eraser,
   Lock,
   Medal,
+  Gamepad2,
+  Trophy,
   Zap,
   Sparkles,
 } from "lucide-react";
@@ -54,6 +56,8 @@ const ICONS: Record<string, React.ElementType> = {
   BookMarked,
   Award,
   Eraser,
+  Gamepad2,
+  Trophy,
   Zap,
   Sparkles,
 };
@@ -78,6 +82,7 @@ export default function Badges() {
   const mistakes = useStudy((s) => s.mistakes);
   const rushBest = useStudy((s) => s.rushBest);
   const rushBestCorrect = useStudy((s) => s.rushBestCorrect);
+  const rushGames = useStudy((s) => s.rushGames);
   const seenBadges = useStudy((s) => s.seenBadges);
   const markBadgesSeen = useStudy((s) => s.markBadgesSeen);
   const mounted = useMounted();
@@ -96,8 +101,9 @@ export default function Badges() {
         mistakes,
         rushBest,
         rushBestCorrect,
+        rushGames,
       }),
-    [known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect]
+    [known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames]
   );
 
   const unlocked = useMemo(() => unlockedBadgeIds(input), [input]);

@@ -55,6 +55,7 @@ export interface StudyState {
   seenBadges: string[];
   rushBest: number; // best score (points) ever achieved in the 60s challenge
   rushBestCorrect: number; // best number of correct answers in one challenge
+  rushGames: number; // total number of completed 60s challenge rounds
 
   setProfile: (name: string, color: string) => void;
   setRushBest: (points: number, correct: number) => void;
@@ -140,12 +141,15 @@ export const useStudy = create<StudyState>()(
       seenBadges: [],
       rushBest: 0,
       rushBestCorrect: 0,
+      rushGames: 0,
 
       setProfile: (name, color) => set({ userName: name, avatarColor: color }),
+      // called exactly once per finished rush round → also counts completed games
       setRushBest: (points, correct) =>
         set((s) => ({
           rushBest: Math.max(s.rushBest, points),
           rushBestCorrect: Math.max(s.rushBestCorrect, correct),
+          rushGames: s.rushGames + 1,
         })),
       markBadgesSeen: (ids) => set((s) => ({ seenBadges: [...new Set([...s.seenBadges, ...ids])] })),
       goHome: () => set({ view: { type: "home" }, flashIntent: "none" }),
@@ -245,6 +249,7 @@ export const useStudy = create<StudyState>()(
         seenBadges: s.seenBadges,
         rushBest: s.rushBest,
         rushBestCorrect: s.rushBestCorrect,
+        rushGames: s.rushGames,
       }),
     }
   )
