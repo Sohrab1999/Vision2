@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { ClipboardCheck, Timer, Zap, BookOpen } from "lucide-react";
+import { ClipboardCheck, Timer, Zap, BookOpen, GraduationCap, ScrollText, Eraser, Layers } from "lucide-react";
 import { examBank, lessons } from "@/data";
-import { useStudy } from "@/lib/study-store";
-import { themeOf } from "@/lib/study-theme";
+import type { QuizQuestion } from "@/lib/study-types";
+import { useStudy, mistakesOfLesson } from "@/lib/study-store";
+import { useMounted } from "@/lib/use-mounted";
+import { themeOf, faNum } from "@/lib/study-theme";
 import QuizEngine from "./quiz-engine";
 
 function shuffle<T>(arr: T[]): T[] {
@@ -16,99 +18,285 @@ function shuffle<T>(arr: T[]): T[] {
   return a;
 }
 
-export default function ExamView() {
-  const [config, setConfig] = useState<{ count: number; timed: boolean } | null>(null);
-  const bestExam = useStudy((s) => s.results["exam"]);
+/** source lesson of a question from its id prefix (l1-, l2-, l3-, x-) */
+function sourceOf(q: QuizQuestion): string {
+  if (q.id.startsWith("l1")) return "l1";
+  if (q.id.startsWith("l2")) return "l2";
+  if (q.id.startsWith("l3")) return "l3";
+  return "x";
+}
 
-  if (config) {
-    const questions = shuffle(examBank).slice(0, config.count);
+const GROUP_LABELS: Record<string, string> = {
+  l1: "درس اول — فهمیدن مردم",
+  l2: "درس دوم — یک سبک زندگی سالم",
+  l3: "درس سوم — هنر و فرهنگ",
+  x: "بانک ۳۶۰ تستی جزوه",
+};
+
+const MISTAKES_TARGET: Record<string, number | string> = { l1: 1, l2: 2, l3: 3, x: 0 };
+
+type Mode = "vocab" | "final";
+interface Session {
+  title: string;
+  questions: QuizQuestion[];
+  timed: boolean;
+  kind: "exam" | "final" | "exam-mistakes";
+}
+
+export default function ExamView() {
+  const [session, setSession] = useState<Session | null>(null);
+  const [mode, setMode] = useState<Mode>("vocab");
+  const [examCount, setExamCount] = useState(10);
+  const [examTimed, setExamTimed] = useState(true);
+  const [finalTimed, setFinalTimed] = useState(true);
+  const bestExam = useStudy((s) => s.results["exam"]);
+  const bestFinal = useStudy((s) => s.results["final"]);
+  const mistakes = useStudy((s) => s.mistakes);
+  const mounted = useMounted();
+
+  const examMistakeCount = mounted ? mistakesOfLesson(mistakes, 0) : 0;
+
+  /* ------------------------- active session -------------------------
+     Questions are generated ONCE at start and kept in session state —
+     regenerating on render would reshuffle mid-quiz when the store
+     changes (results/mistakes) and corrupt the final report.          */
+  if (session) {
     return (
       <QuizEngine
-        title={`آزمون جامع واژگان (${config.count} تست)`}
-        questions={questions}
-        resultKeyStr="exam"
+        title={session.title}
+        questions={session.questions}
+        resultKeyStr={session.kind === "final" ? "final" : session.kind === "exam" ? "exam" : "exam-mistakes"}
         lessonId={0}
-        category="exam"
-        immediate={false}
-        secondsPerQuestion={config.timed ? 45 : undefined}
-        onExit={() => setConfig(null)}
+        category={session.kind === "final" ? "final" : session.kind === "exam" ? "exam" : "mistakes"}
+        immediate={session.kind === "exam-mistakes"}
+        secondsPerQuestion={session.timed && session.kind !== "exam-mistakes" ? 45 : undefined}
+        certificate={session.kind === "final"}
+        groupOf={session.kind === "final" ? sourceOf : undefined}
+        groupLabels={session.kind === "final" ? GROUP_LABELS : undefined}
+        mistakesOf={session.kind === "final" ? (q) => MISTAKES_TARGET[sourceOf(q)] ?? 0 : undefined}
+        onExit={() => setSession(null)}
       />
     );
   }
 
+  const finalBestPct = bestFinal?.percent ?? 0;
+
   return (
     <div className="space-y-5">
-      <div className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm sm:p-6">
-        <div className="mb-4 flex items-center gap-3">
-          <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600">
-            <ClipboardCheck size={22} />
-          </span>
-          <div>
-            <h1 className="text-xl font-extrabold text-stone-800">آزمون جامع واژگان</h1>
-            <p className="text-[13px] text-stone-500">
-              {examBank.length} تست گردآوری از بانک «۳۶۰ تست جمع‌بندی واژگان درس اول تا سوم» جزوه
-            </p>
-          </div>
-        </div>
+      {/* --------------------------- mode switch --------------------------- */}
+      <div className="grid gap-3 sm:grid-cols-2">
+        <ModeCard
+          active={mode === "vocab"}
+          onClick={() => setMode("vocab")}
+          icon={ClipboardCheck}
+          title="آزمون جامع واژگان"
+          desc={`${faNum(examBank.length)} تست از بانک «۳۶۰ تست جمع‌بندی واژگان» جزوه`}
+          accent="emerald"
+          best={bestExam ? `بهترین نتیجه: ${faNum(bestExam.percent)}٪` : undefined}
+        />
+        <ModeCard
+          active={mode === "final"}
+          onClick={() => setMode("final")}
+          icon={GraduationCap}
+          title="آزمون جامع پایان ترم"
+          desc="۴۰ سؤال ترکیبی از هر سه درس + بانک تستی، با گواهی پایان ترم"
+          accent="amber"
+          badge="جدید"
+          best={bestFinal ? `بهترین نتیجه: ${faNum(bestFinal.percent)}٪` : undefined}
+        />
+      </div>
 
-        {bestExam && (
-          <div className="mb-5 rounded-xl border border-emerald-200 bg-emerald-50 p-3.5">
-            <p className="text-[13px] font-bold text-emerald-800">
-              🏆 بهترین نتیجهٔ شما در آزمون جامع: {bestExam.percent}٪ ({bestExam.correct} از {bestExam.total})
-            </p>
+      {/* --------------------------- vocab exam config --------------------------- */}
+      {mode === "vocab" && (
+        <div className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm sm:p-6">
+          <div className="mb-4 flex items-center gap-3">
+            <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600">
+              <ScrollText size={22} />
+            </span>
+            <div>
+              <h1 className="text-xl font-extrabold text-stone-800">آزمون جامع واژگان</h1>
+              <p className="text-[13px] text-stone-500">تست گردآوری از بانک ۳۶۰ تستی جزوه با تایمر اختیاری</p>
+            </div>
           </div>
-        )}
 
-        <p className="mb-2 text-[13px] font-bold text-stone-600">۱. تعداد سؤالات را انتخاب کنید:</p>
-        <div className="mb-5 flex flex-wrap gap-2">
-          {[10, 20, 30].map((n) => (
+          <p className="mb-2 text-[13px] font-bold text-stone-600">۱. تعداد سؤالات را انتخاب کنید:</p>
+          <div className="mb-5 flex flex-wrap gap-2">
+            {[10, 20, 30].map((n) => (
+              <button
+                key={n}
+                onClick={() => setExamCount(n)}
+                className={`rounded-xl border-2 px-5 py-2.5 text-sm font-black transition-all active:scale-95 ${
+                  examCount === n
+                    ? "border-emerald-500 bg-emerald-50 text-emerald-700"
+                    : "border-stone-200 bg-white text-stone-600 hover:border-emerald-300"
+                }`}
+              >
+                {faNum(n)} تست
+              </button>
+            ))}
+          </div>
+
+          <p className="mb-2 text-[13px] font-bold text-stone-600">۲. حالت آزمون:</p>
+          <div className="mb-6 flex flex-wrap gap-2">
             <button
-              key={n}
-              onClick={() => setConfig((c) => ({ count: n, timed: c?.timed ?? true }))}
-              className={`rounded-xl border-2 px-5 py-2.5 text-sm font-black transition-all active:scale-95 ${
-                config?.count === n
+              onClick={() => setExamTimed(true)}
+              className={`inline-flex items-center gap-1.5 rounded-xl border-2 px-4 py-2.5 text-[13px] font-bold transition-all active:scale-95 ${
+                examTimed
                   ? "border-emerald-500 bg-emerald-50 text-emerald-700"
                   : "border-stone-200 bg-white text-stone-600 hover:border-emerald-300"
               }`}
             >
-              {n} تست
+              <Timer size={16} />
+              با تایمر (۴۵ ثانیه برای هر تست)
             </button>
-          ))}
-        </div>
+            <button
+              onClick={() => setExamTimed(false)}
+              className={`inline-flex items-center gap-1.5 rounded-xl border-2 px-4 py-2.5 text-[13px] font-bold transition-all active:scale-95 ${
+                !examTimed
+                  ? "border-emerald-500 bg-emerald-50 text-emerald-700"
+                  : "border-stone-200 bg-white text-stone-600 hover:border-emerald-300"
+              }`}
+            >
+              <Zap size={16} />
+              بدون تایمر
+            </button>
+          </div>
 
-        <p className="mb-2 text-[13px] font-bold text-stone-600">۲. حالت آزمون:</p>
-        <div className="mb-6 flex flex-wrap gap-2">
           <button
-            onClick={() => setConfig((c) => ({ count: c?.count ?? 10, timed: true }))}
-            className={`inline-flex items-center gap-1.5 rounded-xl border-2 px-4 py-2.5 text-[13px] font-bold transition-all active:scale-95 ${
-              config?.timed !== false
-                ? "border-emerald-500 bg-emerald-50 text-emerald-700"
-                : "border-stone-200 bg-white text-stone-600 hover:border-emerald-300"
-            }`}
+            onClick={() =>
+              setSession({
+                title: `آزمون جامع واژگان (${examCount} تست)`,
+                questions: shuffle(examBank).slice(0, examCount),
+                timed: examTimed,
+                kind: "exam",
+              })
+            }
+            className="w-full rounded-xl bg-emerald-600 py-3.5 text-[15px] font-black text-white shadow-lg shadow-emerald-900/25 transition-all hover:bg-emerald-700 active:scale-[0.98]"
           >
-            <Timer size={16} />
-            با تایمر (۴۵ ثانیه برای هر تست)
+            شروع آزمون جامع
           </button>
-          <button
-            onClick={() => setConfig((c) => ({ count: c?.count ?? 10, timed: false }))}
-            className={`inline-flex items-center gap-1.5 rounded-xl border-2 px-4 py-2.5 text-[13px] font-bold transition-all active:scale-95 ${
-              config?.timed === false
-                ? "border-emerald-500 bg-emerald-50 text-emerald-700"
-                : "border-stone-200 bg-white text-stone-600 hover:border-emerald-300"
-            }`}
-          >
-            <Zap size={16} />
-            بدون تایمر
-          </button>
-        </div>
 
-        <button
-          onClick={() => setConfig((c) => ({ count: c?.count ?? 10, timed: c?.timed ?? true }))}
-          className="w-full rounded-xl bg-emerald-600 py-3.5 text-[15px] font-black text-white shadow-lg shadow-emerald-900/25 transition-all hover:bg-emerald-700 active:scale-[0.98]"
-        >
-          شروع آزمون جامع
-        </button>
-      </div>
+          {/* exam-bank mistakes review (bank 0) */}
+          {examMistakeCount > 0 && (
+            <button
+              onClick={() =>
+                setSession({
+                  title: "مرور اشتباهات آزمون جامع",
+                  questions: shuffle(examBank.filter((q) => (mistakes[`0:${q.id}`] ?? 0) > 0)),
+                  timed: false,
+                  kind: "exam-mistakes",
+                })
+              }
+              className="mt-4 flex w-full items-center justify-between gap-3 rounded-2xl border border-rose-300 bg-gradient-to-l from-rose-50 to-red-50 p-4 text-right shadow-sm transition-all hover:shadow-md active:scale-[0.99]"
+            >
+              <span className="flex items-center gap-3">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-rose-500 text-white shadow-md shadow-rose-500/30">
+                  <Eraser size={20} />
+                </span>
+                <span>
+                  <span className="block text-sm font-extrabold text-stone-800">مرور اشتباهات آزمون جامع</span>
+                  <span className="block text-[12px] text-stone-500">
+                    {faNum(examMistakeCount)} سؤال از بانک ۳۶۰ تستی که اشتباه جواب داده‌ای
+                  </span>
+                </span>
+              </span>
+              <span className="shrink-0 rounded-xl bg-rose-600 px-4 py-2.5 text-[13px] font-bold text-white shadow-md shadow-rose-600/30">
+                شروع مرور
+              </span>
+            </button>
+          )}
+        </div>
+      )}
+
+      {/* --------------------------- final exam config --------------------------- */}
+      {mode === "final" && (
+        <div className="final-exam-card overflow-hidden rounded-2xl border-2 border-amber-200 bg-white shadow-sm">
+          <div className="h-1.5 w-full bg-gradient-to-l from-amber-400 via-orange-500 to-rose-500" />
+          <div className="p-5 sm:p-6">
+            <div className="mb-4 flex items-center gap-3">
+              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-400 to-orange-600 text-white shadow-md shadow-amber-600/30">
+                <GraduationCap size={24} />
+              </span>
+              <div>
+                <h1 className="text-xl font-extrabold text-stone-800">آزمون جامع پایان ترم</h1>
+                <p className="text-[13px] text-stone-500">ارزیابی نهایی همهٔ آموخته‌ها — با گواهی و اشتراک‌گذاری نتیجه</p>
+              </div>
+            </div>
+
+            <div className="mb-5 grid gap-2.5 sm:grid-cols-4">
+              {[
+                { icon: Layers, label: "ترکیبی از ۴ منبع", desc: "واژگان + گرامر سه درس و بانک ۳۶۰ تستی" },
+                { icon: ClipboardCheck, label: "۴۰ سؤال", desc: "۱۰ سؤال از هر منبع، بُر خورده" },
+                { icon: Timer, label: "۳۰ دقیقه", desc: "۴۵ ثانیه برای هر سؤال (قابل خاموش کردن)" },
+                { icon: GraduationCap, label: "گواهی پایان ترم", desc: "کارنامهٔ تفکیکی + اشتراک‌گذاری" },
+              ].map((f) => (
+                <div key={f.label} className="rounded-xl border border-amber-100 bg-amber-50/60 p-3">
+                  <f.icon size={17} className="mb-1.5 text-amber-600" />
+                  <div className="text-[12.5px] font-extrabold text-stone-800">{f.label}</div>
+                  <div className="text-[11px] leading-5 text-stone-500">{f.desc}</div>
+                </div>
+              ))}
+            </div>
+
+            {bestFinal && (
+              <div className={`mb-5 rounded-xl border p-3.5 ${finalBestPct >= 70 ? "border-emerald-200 bg-emerald-50" : "border-amber-200 bg-amber-50"}`}>
+                <p className="text-[13px] font-bold text-stone-800">
+                  🎓 بهترین نتیجهٔ شما در آزمون پایان ترم: {faNum(bestFinal.percent)}٪ ({faNum(bestFinal.correct)} از {faNum(bestFinal.total)})
+                </p>
+                <p className="mt-1 text-[11.5px] text-stone-500">
+                  {finalBestPct >= 90
+                    ? "سطح شما عالی است — با تلاش مجدد می‌توانی رکورد بزنی!"
+                    : finalBestPct >= 70
+                      ? "خیلی خوب بود؛ برای نمرهٔ عالی دوباره تلاش کن."
+                      : "با مرور فلش‌کارت‌ها و تست‌های درس‌ها دوباره امتحان کن."}
+                </p>
+              </div>
+            )}
+
+            <p className="mb-2 text-[13px] font-bold text-stone-600">حالت آزمون:</p>
+            <div className="mb-6 flex flex-wrap gap-2">
+              <button
+                onClick={() => setFinalTimed(true)}
+                className={`inline-flex items-center gap-1.5 rounded-xl border-2 px-4 py-2.5 text-[13px] font-bold transition-all active:scale-95 ${
+                  finalTimed
+                    ? "border-amber-500 bg-amber-50 text-amber-700"
+                    : "border-stone-200 bg-white text-stone-600 hover:border-amber-300"
+                }`}
+              >
+                <Timer size={16} />
+                با تایمر (۳۰ دقیقه)
+              </button>
+              <button
+                onClick={() => setFinalTimed(false)}
+                className={`inline-flex items-center gap-1.5 rounded-xl border-2 px-4 py-2.5 text-[13px] font-bold transition-all active:scale-95 ${
+                  !finalTimed
+                    ? "border-amber-500 bg-amber-50 text-amber-700"
+                    : "border-stone-200 bg-white text-stone-600 hover:border-amber-300"
+                }`}
+              >
+                <Zap size={16} />
+                بدون تایمر
+              </button>
+            </div>
+
+            <button
+              onClick={() => {
+                // ۴۰ سؤال: ۱۰ سؤال از هر درس + ۱۰ سؤال از بانک ۳۶۰ تستی
+                const pool = [
+                  ...shuffle(lessons[0].quizzes).slice(0, 10),
+                  ...shuffle(lessons[1].quizzes).slice(0, 10),
+                  ...shuffle(lessons[2].quizzes).slice(0, 10),
+                  ...shuffle(examBank).slice(0, 10),
+                ];
+                setSession({ title: "آزمون جامع پایان ترم", questions: shuffle(pool), timed: finalTimed, kind: "final" });
+              }}
+              className="w-full rounded-xl bg-gradient-to-l from-amber-500 to-orange-600 py-3.5 text-[15px] font-black text-white shadow-lg shadow-amber-700/25 transition-all hover:opacity-95 active:scale-[0.98]"
+            >
+              🎓 شروع آزمون پایان ترم
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* quick lesson tests shortcut */}
       <div className="rounded-2xl border border-stone-200 bg-white p-5">
@@ -126,6 +314,56 @@ export default function ExamView() {
   );
 }
 
+function ModeCard({
+  active,
+  onClick,
+  icon: Icon,
+  title,
+  desc,
+  accent,
+  badge,
+  best,
+}: {
+  active: boolean;
+  onClick: () => void;
+  icon: React.ElementType;
+  title: string;
+  desc: string;
+  accent: "emerald" | "amber";
+  badge?: string;
+  best?: string;
+}) {
+  const activeCls =
+    accent === "amber"
+      ? "border-amber-500 bg-amber-50 shadow-amber-200/50"
+      : "border-emerald-500 bg-emerald-50 shadow-emerald-200/50";
+  const iconCls =
+    accent === "amber"
+      ? "bg-gradient-to-br from-amber-400 to-orange-600 text-white"
+      : "bg-emerald-50 text-emerald-600";
+  return (
+    <button
+      onClick={onClick}
+      aria-pressed={active}
+      className={`relative rounded-2xl border-2 p-4 text-right shadow-sm transition-all hover:shadow-md active:scale-[0.99] ${
+        active ? activeCls : "border-stone-200 bg-white"
+      }`}
+    >
+      {badge && (
+        <span className="absolute left-3 top-3 rounded-full bg-gradient-to-l from-amber-500 to-orange-600 px-2.5 py-0.5 text-[10px] font-black text-white shadow-md">
+          {badge}
+        </span>
+      )}
+      <span className={`mb-2.5 inline-flex h-11 w-11 items-center justify-center rounded-xl ${iconCls}`}>
+        <Icon size={21} />
+      </span>
+      <h3 className="text-[14.5px] font-extrabold text-stone-800">{title}</h3>
+      <p className="mt-0.5 text-[12px] leading-6 text-stone-500">{desc}</p>
+      {best && <p className="mt-1.5 text-[11.5px] font-bold text-emerald-700">{best}</p>}
+    </button>
+  );
+}
+
 function LessonShortcut({ id, title, color }: { id: number; title: string; color: string }) {
   const openLesson = useStudy((s) => s.openLesson);
   const t = themeOf(color);
@@ -134,7 +372,7 @@ function LessonShortcut({ id, title, color }: { id: number; title: string; color
       onClick={() => openLesson(id)}
       className={`rounded-xl border ${t.border} ${t.bgSoft} p-3.5 text-right transition-all hover:shadow-md active:scale-[0.98]`}
     >
-      <div className={`text-[13px] font-extrabold ${t.text}`}>درس {id}</div>
+      <div className={`text-[13px] font-extrabold ${t.text}`}>درس {id === 1 ? "اول" : id === 2 ? "دوم" : "سوم"}</div>
       <div className="text-[12px] font-bold text-stone-600">{title}</div>
     </button>
   );

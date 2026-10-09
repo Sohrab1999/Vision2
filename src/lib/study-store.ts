@@ -34,7 +34,7 @@ function todayStr(d = new Date()): string {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 }
 
-interface StudyState {
+export interface StudyState {
   view: View;
   lessonTab: LessonTab;
   known: Record<string, boolean>;
@@ -50,8 +50,10 @@ interface StudyState {
   history: HistoryMap;
   mistakes: MistakeMap;
   flashIntent: "none" | "smart";
+  seenBadges: string[];
 
   setProfile: (name: string, color: string) => void;
+  markBadgesSeen: (ids: string[]) => void;
   goHome: () => void;
   openLesson: (id: number, flashIntent?: "smart") => void;
   openLessonTab: (id: number, tab: LessonTab) => void;
@@ -129,8 +131,10 @@ export const useStudy = create<StudyState>()(
       history: {},
       mistakes: {},
       flashIntent: "none",
+      seenBadges: [],
 
       setProfile: (name, color) => set({ userName: name, avatarColor: color }),
+      markBadgesSeen: (ids) => set((s) => ({ seenBadges: [...new Set([...s.seenBadges, ...ids])] })),
       goHome: () => set({ view: { type: "home" }, flashIntent: "none" }),
       openLesson: (id, flashIntent = "none") => set({ view: { type: "lesson", id }, flashIntent }),
       openLessonTab: (id, tab) => set({ view: { type: "lesson", id }, lessonTab: tab }),
@@ -220,6 +224,7 @@ export const useStudy = create<StudyState>()(
         dayStat: s.dayStat,
         history: s.history,
         mistakes: s.mistakes,
+        seenBadges: s.seenBadges,
       }),
     }
   )

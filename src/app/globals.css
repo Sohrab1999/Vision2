@@ -323,3 +323,60 @@ body {
 .dark .border-emerald-300 { border-color: rgba(16, 120, 90, 0.55); }
 .dark .divide-stone-100 > :not([hidden]) ~ :not([hidden]) { border-color: #28241f; }
 .dark .bg-stone-50\/60 { background-color: rgba(21, 19, 16, 0.6); }
+
+/* ---------------- badges / achievements ---------------- */
+.badge-shine {
+  position: relative;
+  overflow: hidden;
+}
+.badge-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 30%, rgb(255 255 255 / 0.35) 48%, transparent 62%);
+  transform: translateX(-120%);
+  animation: badge-sheen 3.2s ease-in-out infinite;
+}
+@keyframes badge-sheen {
+  0%, 55% { transform: translateX(-120%); }
+  85%, 100% { transform: translateX(120%); }
+}
+
+/* ---------------- final-exam certificate ---------------- */
+.certificate-card {
+  background-image:
+    radial-gradient(circle at 12% 8%, rgb(251 191 36 / 0.14), transparent 34%),
+    radial-gradient(circle at 88% 92%, rgb(249 115 22 / 0.12), transparent 34%);
+}
+
+/* ---------------- 30-day heatmap ---------------- */
+.heat-cell {
+  min-height: 22px;
+}
+@media (max-width: 480px) {
+  .heatmap-grid { gap: 0.3rem; }
+}
+
+/* ---------------- badges + certificate + heatmap dark-mode tuning ---------------- */
+.dark .badge-card.border-stone-200 { background-color: #1c1917; }
+.dark .badge-card .bg-stone-100 { background-color: #28241f; }
+.dark .bg-amber-100 { background-color: rgba(87, 62, 14, 0.5); }
+.dark .text-amber-800 { color: #fcd34d; }
+.dark .certificate-card { background-color: #1c1917; }
+.dark .certificate-card .border-dashed { border-color: rgba(180, 130, 20, 0.55) !important; }
+.dark .certificate-card .bg-stone-50 { background-color: rgba(28, 25, 23, 0.7); }
+.dark .certificate-card .border-stone-100 { border-color: #28241f; }
+.dark .certificate-card .bg-stone-200 { background-color: #37312b; }
+.dark .final-exam-card { background-color: #1c1917; }
+.dark .border-amber-200 { border-color: rgba(120, 88, 30, 0.5); }
+.dark .border-amber-100 { border-color: rgba(120, 88, 30, 0.4); }
+.dark .bg-amber-50\/60 { background-color: rgba(69, 48, 12, 0.28); }
+.dark .bg-amber-50 { background-color: rgba(69, 48, 12, 0.35); }
+.dark .bg-sky-50 { background-color: rgba(12, 50, 78, 0.35); }
+.dark .heat-cell.bg-stone-100 { background-color: #28241f; }
+.dark .heat-cell.bg-emerald-200 { background-color: #14532d; }
+.dark .heat-cell.bg-emerald-400 { background-color: #15803d; }
+.dark .heat-cell.bg-emerald-600 { background-color: #16a34a; }
+.dark .heat-cell.bg-emerald-800 { background-color: #22c55e; }
+.dark .ring-offset-white { --tw-ring-offset-color: #1c1917; }
+.dark .bg-stone-100 { background-color: #28241f; }

@@ -30,6 +30,7 @@ import { themeOf, faNum, timeAgoFa } from "@/lib/study-theme";
 import ProgressRing from "./progress-ring";
 import WeeklyChart from "./weekly-chart";
 import Leaderboard from "./leaderboard";
+import Badges from "./badges";
 
 const spineColors: Record<string, string> = {
   emerald: "bg-gradient-to-b from-emerald-500 to-emerald-800",
@@ -44,6 +45,7 @@ const categoryLabel: Record<string, string> = {
   writing: "تمرین نگارش",
   dictation: "آزمون دیکته",
   exam: "آزمون جامع",
+  final: "آزمون پایان ترم",
   mixed: "تست ترکیبی درس",
   mistakes: "مرور اشتباهات",
 };
@@ -56,6 +58,7 @@ const feedLabel: Record<string, string> = {
   writing: "نگارش",
   dictation: "دیکته",
   exam: "آزمون جامع",
+  final: "آزمون پایان ترم",
   mixed: "تست ترکیبی",
   mistakes: "مرور اشتباهات",
 };
@@ -430,6 +433,9 @@ export default function HomeView() {
           ))}
         </div>
       </section>
+
+      {/* --------------------------- Badges --------------------------- */}
+      <Badges />
 
       {/* --------------------------- Leaderboard --------------------------- */}
       <Leaderboard />

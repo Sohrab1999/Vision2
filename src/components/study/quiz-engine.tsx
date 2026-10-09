@@ -2,9 +2,10 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, X, ArrowLeft, RotateCcw, Trophy, Eye } from "lucide-react";
+import { Check, X, ArrowLeft, RotateCcw, Trophy, Eye, Award, Share2, ScrollText } from "lucide-react";
 import type { QuizQuestion } from "@/lib/study-types";
 import { useStudy } from "@/lib/study-store";
+import { faNum } from "@/lib/study-theme";
 import { useToast } from "@/hooks/use-toast";
 import ProgressRing from "./progress-ring";
 
@@ -17,6 +18,14 @@ export interface QuizEngineProps {
   immediate?: boolean; // instant feedback per question
   secondsPerQuestion?: number; // optional timer
   onExit: () => void;
+  /** per-question group key for the result breakdown (e.g. source lesson) */
+  groupOf?: (q: QuizQuestion) => string;
+  /** display label per group key */
+  groupLabels?: Record<string, string>;
+  /** diploma-style result card with share button (final exam) */
+  certificate?: boolean;
+  /** override the lesson each question's mistakes are recorded to */
+  mistakesOf?: (q: QuizQuestion) => number | string;
 }
 
 const letters = ["a", "b", "c", "d"];
@@ -30,11 +39,16 @@ export default function QuizEngine({
   immediate = true,
   secondsPerQuestion,
   onExit,
+  groupOf,
+  groupLabels,
+  certificate = false,
+  mistakesOf,
 }: QuizEngineProps) {
   const [idx, setIdx] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
   const [answers, setAnswers] = useState<number[]>([]); // chosen per question (in order)
   const [finished, setFinished] = useState(false);
+  const finishedRef = useRef(false);
   const [timeLeft, setTimeLeft] = useState<number | null>(
     secondsPerQuestion ? secondsPerQuestion * questions.length : null
   );
@@ -50,6 +64,8 @@ export default function QuizEngine({
   const total = questions.length;
 
   const finish = (finalAnswers: number[]) => {
+    if (finishedRef.current) return;
+    finishedRef.current = true;
     const correct = finalAnswers.reduce(
       (s, a, i) => (a === questions[i]?.answer ? s + 1 : s),
       0
@@ -70,8 +86,21 @@ export default function QuizEngine({
       .filter((qq, i) => finalAnswers[i] === qq.answer)
       .map((qq) => qq.id);
     const storeNow = useStudy.getState();
-    if (wrongIds.length) storeNow.addMistakes(lessonId, wrongIds);
-    for (const id of rightIds) storeNow.clearMistake(lessonId, id);
+    if (mistakesOf) {
+      // bucket wrong/right ids per source lesson, then record each bucket
+      const wrongBy = new Map<string, string[]>();
+      const rightBy = new Map<string, string[]>();
+      for (const [i, qq] of questions.entries()) {
+        const target = String(mistakesOf(qq));
+        const bucket = finalAnswers[i] !== qq.answer ? wrongBy : rightBy;
+        bucket.set(target, [...(bucket.get(target) ?? []), qq.id]);
+      }
+      for (const [target, ids] of wrongBy) storeNow.addMistakes(target, ids);
+      for (const [target, ids] of rightBy) for (const id of ids) storeNow.clearMistake(target, id);
+    } else {
+      if (wrongIds.length) storeNow.addMistakes(lessonId, wrongIds);
+      for (const id of rightIds) storeNow.clearMistake(lessonId, id);
+    }
     toast({
       title: percent >= 70 ? "🏆 نتیجهٔ عالی!" : percent >= 50 ? "👍 نتیجهٔ قابل قبول" : "💪 تمرین بیشتر!",
       description: `${title}: ${correct} از ${total} درست (${percent}٪)${
@@ -98,6 +127,8 @@ export default function QuizEngine({
     } catch {
       /* ignore */
     }
+    // freeze the answers so late clicks during exit animations can't mutate the result
+    setAnswers(finalAnswers);
     setFinished(true);
   };
 
@@ -115,6 +146,7 @@ export default function QuizEngine({
   }, [timeLeft, finished]);
 
   const choose = (i: number) => {
+    if (finishedRef.current || finished) return;
     if (immediate) {
       if (selected !== null) return;
       const next = [...answers];
@@ -122,7 +154,8 @@ export default function QuizEngine({
       setAnswers(next);
       setSelected(i);
     } else {
-      // exam mode: record answer and auto advance
+      // exam mode: record answer and auto advance (one answer per question)
+      if (answers[idx] !== undefined) return;
       const next = [...answers];
       next[idx] = i;
       setAnswers(next);
@@ -145,6 +178,7 @@ export default function QuizEngine({
   };
 
   const restart = () => {
+    finishedRef.current = false;
     setIdx(0);
     setSelected(null);
     setAnswers([]);
@@ -165,32 +199,95 @@ export default function QuizEngine({
             ? { msg: "بد نیست! نکات گرامری و واژگان را دوباره مرور کن.", cls: "text-amber-600" }
             : { msg: "نیاز به تمرین بیشتر داری. فلش‌کارت‌ها را مرور کن!", cls: "text-rose-600" };
 
-    return (
-      <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="space-y-5">
-        <div className="rounded-2xl border border-stone-200 bg-white p-6 text-center shadow-sm">
+    // per-group accuracy (e.g. per source lesson in the final exam)
+    const groups =
+      groupOf && groupLabels
+        ? Object.keys(groupLabels)
+            .map((key) => {
+              const qs = questions.filter((qq) => groupOf(qq) === key);
+              const ok = qs.filter((qq, i) => answers[questions.indexOf(qq)] === qq.answer).length;
+              return { key, label: groupLabels[key], total: qs.length, correct: ok };
+            })
+            .filter((g) => g.total > 0)
+        : [];
+
+    const shareResult = async () => {
+      const breakdown = groups.map((g) => `${g.label}: ${faNum(Math.round((g.correct / g.total) * 100))}٪`).join(" · ");
+      const text = `🏆 نتیجهٔ من در وب‌کتاب «Vision Two»\n${title}\n⭐ ${faNum(percent)}٪ (${faNum(correctCount)} از ${faNum(total)})${breakdown ? `\n📊 ${breakdown}` : ""}`;
+      try {
+        if (typeof navigator !== "undefined" && "share" in navigator) {
+          await navigator.share({ title: "نتیجهٔ وب‌کتاب Vision Two", text });
+          return;
+        }
+        await navigator.clipboard.writeText(text);
+        toast({ title: "✓ نتیجه کپی شد", description: "می‌توانی آن را برای دوستانت بفرستی!", duration: 3000 });
+      } catch {
+        /* user cancelled share */
+      }
+    };
+
+    const certificateCard = (
+      <div className="certificate-card rounded-2xl bg-white p-1.5 shadow-xl">
+        <div className="rounded-xl border-2 border-dashed border-amber-300 p-5 text-center sm:p-6">
+          <div className="mb-3 flex items-center justify-center gap-2 text-[11px] font-black tracking-widest text-amber-600">
+            <ScrollText size={14} />
+            WEBBOOK CERTIFICATE · وب‌کتاب ویژن دو
+          </div>
           <div className="mb-4 flex justify-center">
-            <ProgressRing percent={percent} size={120} stroke={10}>
+            <ProgressRing percent={percent} size={116} stroke={10}>
               <div>
-                <div className="text-2xl font-black text-stone-800">{percent}٪</div>
+                <div className="text-2xl font-black text-stone-800">{faNum(percent)}٪</div>
                 <div className="text-[11px] text-stone-500" dir="ltr">
                   {correctCount}/{total}
                 </div>
               </div>
             </ProgressRing>
           </div>
-          <div className="mb-1 flex items-center justify-center gap-2 text-lg font-black">
-            <Trophy size={20} className="text-amber-500" />
-            <span className="text-stone-800">{title} — نتیجهٔ نهایی</span>
+          <div className="mx-auto mb-3 flex w-fit items-center gap-2 rounded-full bg-gradient-to-l from-amber-400 to-orange-500 px-4 py-1.5 text-[13px] font-black text-white shadow-lg shadow-amber-500/30">
+            <Award size={16} />
+            {title}
           </div>
-          <p className={`mb-5 text-sm font-bold ${grade.cls}`}>{grade.msg}</p>
-          <div className="mb-4 flex flex-wrap items-center justify-center gap-2">
-            {wrongIds.length > 0 && (
-              <span className="rounded-full border border-rose-200 bg-rose-50 px-3 py-1 text-[12px] font-bold text-rose-600">
-                {wrongIds.length} سؤال به بانک مرور اشتباهات اضافه شد
-              </span>
-            )}
-          </div>
+          <p className={`mb-1 text-sm font-bold ${grade.cls}`}>{grade.msg}</p>
+          <p className="mb-4 text-[11.5px] text-stone-400">
+            تاریخ اخذ: {new Date().toLocaleDateString("fa-IR")} · وب‌کتاب تعاملی زبان انگلیسی یازدهم
+          </p>
+
+          {/* per-source breakdown */}
+          {groups.length > 0 && (
+            <div className="mx-auto mb-4 grid max-w-md gap-2 text-right" dir="rtl">
+              {groups.map((g) => {
+                const pct = Math.round((g.correct / g.total) * 100);
+                const bar = pct >= 70 ? "from-emerald-400 to-emerald-600" : pct >= 50 ? "from-amber-400 to-orange-500" : "from-rose-400 to-rose-600";
+                return (
+                  <div key={g.key} className="rounded-xl border border-stone-100 bg-stone-50 px-3 py-2">
+                    <div className="mb-1 flex items-center justify-between text-[11.5px] font-bold">
+                      <span className="text-stone-600">{g.label}</span>
+                      <span className="text-stone-800">
+                        {faNum(g.correct)}/{faNum(g.total)} — {faNum(pct)}٪
+                      </span>
+                    </div>
+                    <div className="h-1.5 overflow-hidden rounded-full bg-stone-200">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        animate={{ width: `${pct}%` }}
+                        transition={{ duration: 0.7, ease: "easeOut" }}
+                        className={`h-full rounded-full bg-gradient-to-l ${bar}`}
+                      />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+
           <div className="flex flex-wrap justify-center gap-2.5">
+            <button
+              onClick={shareResult}
+              className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-l from-amber-500 to-orange-600 px-4 py-2.5 text-sm font-bold text-white shadow-md shadow-amber-600/25 transition-all hover:opacity-90 active:scale-95"
+            >
+              <Share2 size={15} />
+              اشتراک‌گذاری نتیجه
+            </button>
             <button
               onClick={restart}
               className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-bold text-white transition-all hover:bg-emerald-700 active:scale-95"
@@ -206,6 +303,54 @@ export default function QuizEngine({
             </button>
           </div>
         </div>
+      </div>
+    );
+
+    const standardCard = (
+      <div className="rounded-2xl border border-stone-200 bg-white p-6 text-center shadow-sm">
+        <div className="mb-4 flex justify-center">
+          <ProgressRing percent={percent} size={120} stroke={10}>
+            <div>
+              <div className="text-2xl font-black text-stone-800">{percent}٪</div>
+              <div className="text-[11px] text-stone-500" dir="ltr">
+                {correctCount}/{total}
+              </div>
+            </div>
+          </ProgressRing>
+        </div>
+        <div className="mb-1 flex items-center justify-center gap-2 text-lg font-black">
+          <Trophy size={20} className="text-amber-500" />
+          <span className="text-stone-800">{title} — نتیجهٔ نهایی</span>
+        </div>
+        <p className={`mb-5 text-sm font-bold ${grade.cls}`}>{grade.msg}</p>
+        <div className="mb-4 flex flex-wrap items-center justify-center gap-2">
+          {wrongIds.length > 0 && (
+            <span className="rounded-full border border-rose-200 bg-rose-50 px-3 py-1 text-[12px] font-bold text-rose-600">
+              {wrongIds.length} سؤال به بانک مرور اشتباهات اضافه شد
+            </span>
+          )}
+        </div>
+        <div className="flex flex-wrap justify-center gap-2.5">
+          <button
+            onClick={restart}
+            className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-bold text-white transition-all hover:bg-emerald-700 active:scale-95"
+          >
+            <RotateCcw size={15} />
+            تلاش مجدد
+          </button>
+          <button
+            onClick={onExit}
+            className="inline-flex items-center gap-1.5 rounded-xl border border-stone-300 bg-white px-4 py-2.5 text-sm font-bold text-stone-600 transition-all hover:bg-stone-50 active:scale-95"
+          >
+            بازگشت
+          </button>
+        </div>
+      </div>
+    );
+
+    return (
+      <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="space-y-5">
+        {certificate ? certificateCard : standardCard}
 
         {/* review */}
         <div className="max-h-[46vh] space-y-2.5 overflow-y-auto nice-scroll pl-1">
