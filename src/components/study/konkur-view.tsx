@@ -26,10 +26,11 @@ import {
   CircleDashed,
   PartyPopper,
   Ban,
+  AlarmClock,
 } from "lucide-react";
 import { examBank } from "@/data";
 import type { QuizQuestion } from "@/lib/study-types";
-import { useStudy } from "@/lib/study-store";
+import { useStudy, srsQuestionDueIds, srsQuestionDueTotal } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
 import { hardIdsOf } from "@/lib/konkur";
@@ -81,10 +82,18 @@ export default function KonkurView() {
   const konkurSeen = useStudy((s) => s.konkurSeen);
   const konkurWrong = useStudy((s) => s.konkurWrong);
   const mistakes = useStudy((s) => s.mistakes);
+  const srs = useStudy((s) => s.srs);
   const bestSim = useStudy((s) => s.results["0:konkur"]);
   const bestHard = useStudy((s) => s.results["0:konkur-hard"]);
   const bestCover = useStudy((s) => s.results["0:konkur-cover"]);
   const mounted = useMounted();
+
+  // F11 — exam-bank questions whose spaced-repetition review is due right now
+  const dueIds = useMemo(
+    () => new Set(mounted ? srsQuestionDueIds(srs) : []),
+    [mounted, srs]
+  );
+  const dueCount = mounted ? srsQuestionDueTotal(srs) : 0;
 
   // ---- derived stats (all guarded for hydration) ----
   const stats = useMemo(() => {
@@ -144,7 +153,12 @@ export default function KonkurView() {
   };
 
   const startHard = () => {
-    const pool = shuffle(examBank.filter((q) => stats.wrongSet.has(q.id))).slice(0, HARD_CAP);
+    const hard = examBank.filter((q) => stats.wrongSet.has(q.id));
+    // F11 — due-for-review questions first (spaced repetition priority),
+    // then the rest of the hard set
+    const dueFirst = shuffle(hard.filter((q) => dueIds.has(q.id)));
+    const rest = shuffle(hard.filter((q) => !dueIds.has(q.id)));
+    const pool = [...dueFirst, ...rest].slice(0, HARD_CAP);
     if (!pool.length) return;
     trackEvent("konkur_start");
     setSession({
@@ -188,10 +202,16 @@ export default function KonkurView() {
           </div>
         </div>
 
-        <div className="relative mt-5 grid grid-cols-2 gap-2.5 sm:grid-cols-4">
+        <div className="relative mt-5 grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-5">
           <HeroKpi icon={Layers} label="پوشش بانک" value={`${faNum(stats.seenCount)} از ${faNum(examBank.length)}`} hint={`${faNum(stats.coveragePct)}٪ دیده‌شده`} />
           <HeroKpi icon={Target} label="تسلط" value={`${faNum(stats.masteryPct)}٪`} hint="درست از دیده‌شده‌ها" />
           <HeroKpi icon={Eraser} label="خطای باز" value={faNum(stats.wrongCount)} hint="نیازمند مرور" />
+          <HeroKpi
+            icon={AlarmClock}
+            label="مرور سررسید"
+            value={faNum(dueCount)}
+            hint={dueCount > 0 ? "الان وقت مرور است!" : "زمان‌بندی SRS"}
+          />
           <HeroKpi icon={Trophy} label="رکورد شبیه‌ساز" value={bestSim ? `${faNum(bestSim.percent)}٪` : "—"} hint={bestSim ? `${faNum(bestSim.correct)} از ${faNum(bestSim.total)}` : "هنوز جلسه‌ای نداری"} />
         </div>
       </section>
@@ -369,6 +389,12 @@ export default function KonkurView() {
                   ? ` — هر جلسه ${faNum(HARD_CAP)}تای تصادفی از آن‌ها پرسیده می‌شود.`
                   : " — با پاسخ درست، هم از این‌جا و هم از بانک خطای آزمون جامع حذف می‌شوند."}
               </p>
+              {dueCount > 0 && (
+                <p className="mb-4 flex items-center gap-2 rounded-xl border border-amber-200 bg-amber-50 px-3.5 py-2.5 text-[12.5px] font-bold leading-6 text-amber-800">
+                  <AlarmClock size={16} className="shrink-0" />
+                  {faNum(dueCount)} تست سررسیدِ مرور دارد — زمان‌بندی SRS این‌ها را اول می‌آورد؛ پاسخ درست = یک پله بالاتر، غلط = برگشت به شروع.
+                </p>
+              )}
               <button
                 onClick={startHard}
                 className="w-full rounded-xl bg-rose-600 py-3.5 text-[15px] font-black text-white shadow-lg shadow-rose-600/25 transition-all hover:bg-rose-700 active:scale-[0.98]"

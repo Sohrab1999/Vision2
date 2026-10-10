@@ -177,9 +177,24 @@ export function srsDueCount(srs: Record<string, SrsItem>, lessonId: number): num
   return Object.entries(srs).filter(([k, v]) => k.startsWith(prefix) && v.dueAt <= now).length;
 }
 
+/** ids of exam-bank questions (key prefix "q:") whose review is due now */
+export function srsQuestionDueIds(srs: Record<string, SrsItem>): string[] {
+  const now = Date.now();
+  return Object.entries(srs)
+    .filter(([k, v]) => k.startsWith("q:") && v.dueAt <= now)
+    .map(([k]) => k.slice(2));
+}
+
+export function srsQuestionDueTotal(srs: Record<string, SrsItem>): number {
+  const now = Date.now();
+  return Object.entries(srs).filter(([k, v]) => k.startsWith("q:") && v.dueAt <= now).length;
+}
+
+/** all-time words-only due count (F11: exam-bank questions ride the same
+ *  store under "q:" keys but must not pollute the vocabulary widgets) */
 export function srsDueTotal(srs: Record<string, SrsItem>): number {
   const now = Date.now();
-  return Object.values(srs).filter((v) => v.dueAt <= now).length;
+  return Object.entries(srs).filter(([k, v]) => !k.startsWith("q:") && v.dueAt <= now).length;
 }
 
 export function firstLessonWithDue(srs: Record<string, SrsItem>): number | null {
@@ -340,19 +355,38 @@ export const useStudy = create<StudyState>()(
           return { mistakes: next };
         }),
       // گوشهٔ کنکور — bulk per-question result for the 360-question exam bank:
-      // marks coverage (seen) and tracks the wrong-now set (cleared when answered right)
+      // marks coverage (seen) and tracks the wrong-now set (cleared when answered right).
+      // F11 «SRS کنکور»: a wrong answer schedules the question on the shared SRS
+      // ladder (key "q:<id>", first rung = 15 دقیقه); a right answer promotes it one
+      // rung — but only when it was actually due, so drilling the hard set early
+      // never inflates levels. First-time-right never enters the queue.
       markKonkur: (entries) =>
         set((s) => {
           if (entries.length === 0) return s;
           const seen = { ...s.konkurSeen };
           const wrong = { ...s.konkurWrong };
+          let srs: Record<string, SrsItem> | null = null;
+          const now = Date.now();
           for (const { id, ok } of entries) {
             if (!id) continue;
             seen[id] = true;
             if (ok) delete wrong[id];
             else wrong[id] = true;
+
+            const qk = `q:${id}`;
+            if (!ok) {
+              (srs ??= { ...s.srs })[qk] = { level: 0, dueAt: now + SRS_INTERVALS[0] };
+            } else {
+              const cur = s.srs[qk];
+              if (cur && cur.dueAt <= now) {
+                const level = Math.min(cur.level + 1, SRS_INTERVALS.length - 1);
+                (srs ??= { ...s.srs })[qk] = { level, dueAt: now + SRS_INTERVALS[level] };
+              }
+            }
           }
-          return { konkurSeen: seen, konkurWrong: wrong };
+          return srs
+            ? { konkurSeen: seen, konkurWrong: wrong, srs }
+            : { konkurSeen: seen, konkurWrong: wrong };
         }),
       // F7 — accumulate word-level seen/mistake counters (quiz/dictation/listening)
       addWordResults: (entries) =>

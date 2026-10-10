@@ -3,8 +3,15 @@
 // The store runs in-memory under vitest (skipHydration + no localStorage).
 
 import { describe, it, expect, beforeEach } from "vitest";
-import { useStudy, SRS_INTERVALS, SRS_LABELS } from "@/lib/study-store";
-import { srsDueCount, srsDueTotal, firstLessonWithDue } from "@/lib/study-store";
+import {
+  useStudy,
+  SRS_INTERVALS,
+  SRS_LABELS,
+  srsDueTotal,
+  srsQuestionDueTotal,
+  srsQuestionDueIds,
+} from "@/lib/study-store";
+import { firstLessonWithDue, srsDueCount } from "@/lib/study-store";
 import { recordKonkurResults, hardIdsOf } from "@/lib/konkur";
 import type { QuizQuestion } from "@/lib/study-types";
 
@@ -123,5 +130,78 @@ describe("konkur bookkeeping", () => {
     expect(ids.has("l1-v3")).toBe(false); // lesson mistakes (bucket 1) stay out
     expect(ids.has("l2-v1")).toBe(false);
     expect(ids.size).toBe(2);
+  });
+});
+
+describe("F11 — konkur question SRS (q: keys on the shared ladder)", () => {
+  beforeEach(resetProgress);
+
+  it("a wrong answer schedules the question at level 0, due in 15 minutes", () => {
+    const before = Date.now();
+    state().markKonkur([{ id: "x-21", ok: false }]);
+    const item = state().srs["q:x-21"];
+    expect(item).toBeDefined();
+    expect(item.level).toBe(0);
+    expect(item.dueAt).toBeGreaterThanOrEqual(before + SRS_INTERVALS[0] - 50);
+  });
+
+  it("a first-time-right answer never enters the review queue", () => {
+    state().markKonkur([{ id: "x-26", ok: true }]);
+    expect(state().srs["q:x-26"]).toBeUndefined();
+  });
+
+  it("a right answer BEFORE due does not inflate the level (no drilling exploit)", () => {
+    state().markKonkur([{ id: "x-34", ok: false }]); // level 0, due in 15min
+    const before = { ...state().srs["q:x-34"] };
+    state().markKonkur([{ id: "x-34", ok: true }]); // right too early
+    expect(state().srs["q:x-34"]).toEqual(before);
+  });
+
+  it("a right answer exactly when due climbs one rung with the next interval", () => {
+    state().markKonkur([{ id: "x-34", ok: false }]); // level 0
+    // simulate the 15-minute wait by rewinding the due date
+    useStudy.setState({ srs: { "q:x-34": { level: 0, dueAt: Date.now() - 1000 } } });
+    const before = Date.now();
+    state().markKonkur([{ id: "x-34", ok: true }]);
+    const item = state().srs["q:x-34"];
+    expect(item.level).toBe(1);
+    expect(item.dueAt).toBeGreaterThanOrEqual(before + SRS_INTERVALS[1] - 50);
+  });
+
+  it("a wrong answer after promotion resets back to level 0", () => {
+    useStudy.setState({ srs: { "q:x-121": { level: 3, dueAt: Date.now() - 1000 } } });
+    state().markKonkur([{ id: "x-121", ok: true }]); // → level 4
+    expect(state().srs["q:x-121"].level).toBe(4);
+    state().markKonkur([{ id: "x-121", ok: false }]); // wrong again → reset
+    expect(state().srs["q:x-121"].level).toBe(0);
+  });
+
+  it("capped at the top rung like words", () => {
+    useStudy.setState({ srs: { "q:x-7": { level: 5, dueAt: Date.now() - 1000 } } });
+    state().markKonkur([{ id: "x-7", ok: true }]);
+    expect(state().srs["q:x-7"].level).toBe(5);
+  });
+
+  it("srsQuestionDueIds/Total expose only due q: ids (prefix stripped)", () => {
+    useStudy.setState({
+      srs: {
+        "q:x-1": { level: 0, dueAt: Date.now() - 100 }, // due
+        "q:x-2": { level: 2, dueAt: Date.now() + 60_000 }, // future
+        "1:l1-v3": { level: 0, dueAt: Date.now() - 100 }, // word, not a question
+      },
+    });
+    expect(srsQuestionDueIds(state().srs)).toEqual(["x-1"]);
+    expect(srsQuestionDueTotal(state().srs)).toBe(1);
+  });
+
+  it("srsDueTotal stays words-only (q: items do not pollute vocab widgets)", () => {
+    useStudy.setState({
+      srs: {
+        "q:x-1": { level: 0, dueAt: Date.now() - 100 },
+        "q:x-2": { level: 0, dueAt: Date.now() - 100 },
+        "1:word": { level: 0, dueAt: Date.now() - 100 },
+      },
+    });
+    expect(srsDueTotal(state().srs)).toBe(1);
   });
 });
