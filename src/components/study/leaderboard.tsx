@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Trophy, Medal, UserRound } from "lucide-react";
+import { Trophy, Medal, UserRound, ShieldCheck } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
@@ -68,12 +68,16 @@ export default function Leaderboard() {
 
   return (
     <section aria-label="جدول امتیازات کلاس" className="leaderboard">
-      <div className="mb-4 flex items-end justify-between">
+      <div className="mb-4 flex items-end justify-between gap-2">
         <h2 className="flex items-center gap-2 text-lg font-extrabold text-stone-800">
           <Trophy size={19} className="text-amber-500" />
           جدول امتیازات کلاس
         </h2>
-        <span className="text-xs text-stone-500">رتبه‌بندی بر اساس میانگین نمرات</span>
+        <span className="flex items-center gap-1.5 text-xs text-stone-500">
+          <ShieldCheck size={13} className="text-emerald-600" aria-hidden />
+          <span className="hidden sm:inline">نمرات تأییدشدهٔ سمت سرور</span>
+          <span className="sm:hidden">تأییدشده</span>
+        </span>
       </div>
 
       {rows.length === 0 ? (

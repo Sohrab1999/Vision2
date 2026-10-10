@@ -75,6 +75,24 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "invalid payload" }, { status: 400 });
     }
 
+    // Phase-0 «اعتماد»: attempts may only be written by the learner that
+    // /api/register issued a secret for — leaderboard entries are no longer
+    // forgeable by posting an arbitrary userId.
+    const profile = await db.learnerProfile.findUnique({
+      where: { userId },
+      select: { secret: true },
+    });
+    if (!profile) {
+      return NextResponse.json({ error: "این یادگیرنده ثبت‌نام نشده است." }, { status: 403 });
+    }
+    if (!profile.secret) {
+      return NextResponse.json({ error: "این شناسه هنوز امضا نگرفته است." }, { status: 403 });
+    }
+    const presented = typeof body?.secret === "string" ? body.secret.slice(0, 100) : "";
+    if (presented !== profile.secret) {
+      return NextResponse.json({ error: "امضای نامعتبر است." }, { status: 403 });
+    }
+
     const percent = Math.round((correct / total) * 100);
     const rawScore = Number(body?.score);
     const score = Number.isFinite(rawScore) && rawScore > 0 ? Math.min(Math.round(rawScore), 100_000) : null;

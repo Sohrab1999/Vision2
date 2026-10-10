@@ -94,6 +94,7 @@ export interface StudyState {
   results: Record<string, QuizResult>;
   srs: Record<string, SrsItem>;
   userId: string;
+  userSecret: string; // Phase-0 «اعتماد» — server-issued write secret (empty until registered)
   userName: string;
   avatarColor: string;
   streak: number;
@@ -149,6 +150,7 @@ export interface StudyState {
   addWordResults: (entries: { key: string; ok: boolean }[]) => void;
   lessonMistakeCount: (lessonId: number) => number;
   ensureUserId: () => string;
+  setIdentity: (userId: string, secret: string) => void;
 }
 
 // ---------------- spaced repetition (SM-2 lite) ----------------
@@ -201,6 +203,7 @@ export const useStudy = create<StudyState>()(
       results: {},
       srs: {},
       userId: "",
+      userSecret: "",
       userName: "",
       avatarColor: "emerald",
       streak: 0,
@@ -378,6 +381,7 @@ export const useStudy = create<StudyState>()(
         set({ userId: id });
         return id;
       },
+      setIdentity: (userId, secret) => set({ userId, userSecret: secret }),
     }),
     {
       name: "vision2-study-v1",
@@ -388,6 +392,7 @@ export const useStudy = create<StudyState>()(
         results: s.results,
         srs: s.srs,
         userId: s.userId,
+        userSecret: s.userSecret,
         userName: s.userName,
         avatarColor: s.avatarColor,
         streak: s.streak,

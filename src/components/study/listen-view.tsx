@@ -30,6 +30,7 @@ import { speak, stopSpeaking } from "@/lib/speak";
 import { faNum } from "@/lib/study-theme";
 import { useToast } from "@/hooks/use-toast";
 import { trackEvent } from "@/lib/analytics";
+import { sendStats } from "@/lib/identity";
 import ProgressRing from "./progress-ring";
 
 type Phase = "setup" | "play" | "done";
@@ -54,7 +55,6 @@ export default function ListenView() {
   const [answers, setAnswers] = useState<number[]>([]);
   const [playsLeft, setPlaysLeft] = useState(MAX_PLAYS);
   const [playing, setPlaying] = useState(false);
-  const userIdRef = useRef<string>("");
   const advanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const item = items[idx];
@@ -169,14 +169,8 @@ export default function ListenView() {
       duration: 4000,
     });
     try {
-      const store = useStudy.getState();
-      const userId = userIdRef.current || store.ensureUserId();
-      userIdRef.current = userId;
-      fetch("/api/stats", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userId, lesson: lessonFilter, category: "listening", total, correct }),
-      }).catch(() => {});
+      // signed fire-and-forget (Phase-0)
+      sendStats({ lesson: lessonFilter, category: "listening", total, correct }).catch(() => {});
     } catch {
       /* ignore */
     }

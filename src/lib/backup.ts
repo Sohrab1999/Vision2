@@ -44,6 +44,11 @@ export interface BackupPayload {
     // گوشهٔ کنکور coverage/mastery maps (optional for backward compatibility)
     konkurSeen?: Record<string, boolean>;
     konkurWrong?: Record<string, boolean>;
+    // Phase-0 «اعتماد» — learner identity pair (optional for backward compatibility).
+    // A backup file (or cloud snapshot) carrying the pair restores the SAME
+    // identity on the new device — the file/code itself is the credential.
+    userId?: string;
+    userSecret?: string;
   };
 }
 
@@ -84,6 +89,8 @@ export function collectData(): BackupPayload["data"] {
     wordSeen: s.wordSeen ?? {},
     konkurSeen: s.konkurSeen ?? {},
     konkurWrong: s.konkurWrong ?? {},
+    userId: s.userId || undefined,
+    userSecret: s.userSecret || undefined,
   };
 }
 
@@ -232,6 +239,14 @@ export function parseBackup(text: string): BackupPayload {
       wordSeen: sanitizeWordStat(data["wordSeen"]),
       konkurSeen: sanitizeFlagMap(data["konkurSeen"]),
       konkurWrong: sanitizeFlagMap(data["konkurWrong"]),
+      userId:
+        typeof data["userId"] === "string" && data["userId"].length >= 6 && data["userId"].length <= 80
+          ? data["userId"]
+          : undefined,
+      userSecret:
+        typeof data["userSecret"] === "string" && /^[0-9a-f]{24,100}$/.test(data["userSecret"])
+          ? data["userSecret"]
+          : undefined,
     },
   };
 }
@@ -241,11 +256,29 @@ export function applyBackup(payload: BackupPayload): boolean {
   try {
     const raw = localStorage.getItem("vision2-study-v1");
     const current = raw ? (JSON.parse(raw) as { state?: Record<string, unknown>; version?: number }) : {};
+    const cur = (current.state ?? {}) as Record<string, unknown>;
+    // Phase-0 fix: backups used to wipe device/identity fields (userId, secret,
+    // onboarding flag, settings, sync code) because payload.data does not carry
+    // them. Identity (userId+userSecret) is ADOPTED from the backup when present
+    // — restoring your own file restores YOUR identity; device preferences and
+    // the attached sync code are always kept from this device.
+    const identity: Record<string, unknown> = {};
+    if (payload.data.userId && payload.data.userSecret) {
+      identity.userId = payload.data.userId;
+      identity.userSecret = payload.data.userSecret;
+    } else {
+      if (typeof cur.userId === "string") identity.userId = cur.userId;
+      if (typeof cur.userSecret === "string") identity.userSecret = cur.userSecret;
+    }
+    const device: Record<string, unknown> = {};
+    for (const key of ["onboarded", "dailyGoal", "settings", "syncCode"] as const) {
+      if (key in cur) device[key] = cur[key];
+    }
     localStorage.setItem(
       "vision2-study-v1",
       JSON.stringify({
         ...current,
-        state: payload.data,
+        state: { ...payload.data, ...identity, ...device },
         version: 0, // force zustand to rehydrate/migrate normally
       })
     );

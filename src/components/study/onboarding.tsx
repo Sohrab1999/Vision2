@@ -10,6 +10,7 @@ import { useState, useSyncExternalStore } from "react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Sparkles, ChevronLeft, PartyPopper, User, Target, Play, EyeOff } from "lucide-react";
 import { useStudy, AVATAR_COLORS, DAILY_GOAL_OPTIONS } from "@/lib/study-store";
+import { sendProfile } from "@/lib/identity";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
 import { avatarClasses } from "./header";
@@ -46,7 +47,6 @@ export default function Onboarding() {
   const setOnboarded = useStudy((s) => s.setOnboarded);
   const setProfile = useStudy((s) => s.setProfile);
   const setDailyGoal = useStudy((s) => s.setDailyGoal);
-  const ensureUserId = useStudy((s) => s.ensureUserId);
   const openLesson = useStudy((s) => s.openLesson);
 
   const [step, setStep] = useState(0);
@@ -58,12 +58,8 @@ export default function Onboarding() {
 
   const saveProfileNow = (name: string, color: string) => {
     setProfile(name, color);
-    const userId = ensureUserId();
-    fetch("/api/profile", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId, name, color }),
-    }).catch(() => {});
+    // Phase-0: signed registration+profile (server issues userId/secret on first run)
+    sendProfile({ name, color }).catch(() => {});
   };
 
   const finish = () => setOnboarded();

@@ -143,7 +143,31 @@ export function mergeSyncData(local: SyncData, remote: SyncData): SyncData {
     // F7 — word-level risk counters take the max (same policy as mistakes)
     wordMistakes: mergeMistakes(local.wordMistakes ?? {}, remote.wordMistakes ?? {}),
     wordSeen: mergeMistakes(local.wordSeen ?? {}, remote.wordSeen ?? {}),
+    // گوشهٔ کنکور — conservative union (Phase-0 fix: these maps used to be
+    // dropped on merge, so coverage never reached a second device).
+    // seen=true wins from either side; wrong stays until BOTH devices clear it.
+    konkurSeen: flagUnion(local.konkurSeen, remote.konkurSeen),
+    konkurWrong: flagUnion(local.konkurWrong, remote.konkurWrong),
+    // Phase-0 «اعتماد» — identity moves as a PAIR: adopt the remote pair only
+    // when this device has none, so a linked second device writes stats as the
+    // same learner. Never overwrite a device that already owns an identity.
+    ...(local.userSecret || !remote.userSecret
+      ? {}
+      : { userId: remote.userId || local.userId, userSecret: remote.userSecret }),
   };
+}
+
+/** boolean-map union — `true` always wins from either side */
+function flagUnion(
+  local: Record<string, boolean> | undefined,
+  remote: Record<string, boolean> | undefined
+): Record<string, boolean> {
+  const out: Record<string, boolean> = { ...(local ?? {}) };
+  for (const [k, v] of Object.entries(remote ?? {})) {
+    if (v) out[k] = true;
+    else if (!(k in out)) out[k] = false;
+  }
+  return out;
 }
 
 /**

@@ -38,6 +38,27 @@ export default function StudyApp() {
     useStudy.persist.rehydrate();
   }, []);
 
+  // Phase-0 «اعتماد»: legacy migration — a persisted userId without a secret
+  // claims it once on the server (first-claim wins) so stats/profile writes
+  // stay signed. Fresh visitors register during onboarding instead.
+  useEffect(() => {
+    const unsub = useStudy.persist.onFinishHydration(() => {
+      const s = useStudy.getState();
+      if (s.userId && !s.userSecret) {
+        import("@/lib/identity").then(({ ensureIdentity }) => {
+          ensureIdentity().catch(() => {});
+        });
+      }
+    });
+    const s = useStudy.getState();
+    if (useStudy.persist.hasHydrated() && s.userId && !s.userSecret) {
+      import("@/lib/identity").then(({ ensureIdentity }) => {
+        ensureIdentity().catch(() => {});
+      });
+    }
+    return unsub;
+  }, []);
+
   // apply user settings to the document (F2): root font-size, motion, TTS rate
   useEffect(() => {
     const html = document.documentElement;

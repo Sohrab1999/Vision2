@@ -21,6 +21,7 @@ import { useMounted } from "@/lib/use-mounted";
 import { faNum, posLabel, themeOf } from "@/lib/study-theme";
 import { speak, speakSpell, stopSpeaking } from "@/lib/speak";
 import { useToast } from "@/hooks/use-toast";
+import { sendStats } from "@/lib/identity";
 
 type Phase = "setup" | "play" | "done";
 
@@ -57,7 +58,6 @@ export default function DictationTab({ lesson }: { lesson: LessonData }) {
   const known = useStudy((s) => s.known);
   const srs = useStudy((s) => s.srs);
   const reviewWord = useStudy((s) => s.reviewWord);
-  const userIdRef = useRef<string>("");
 
   const [phase, setPhase] = useState<Phase>("setup");
   const [count, setCount] = useState(10);
@@ -165,14 +165,8 @@ export default function DictationTab({ lesson }: { lesson: LessonData }) {
         duration: 4000,
       });
       try {
-        const store = useStudy.getState();
-        const userId = userIdRef.current || store.ensureUserId();
-        userIdRef.current = userId;
-        fetch("/api/stats", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ userId, lesson: lesson.id, category: "dictation", total, correct: correctForStats }),
-        }).catch(() => {});
+        // signed fire-and-forget (Phase-0)
+        sendStats({ lesson: lesson.id, category: "dictation", total, correct: correctForStats }).catch(() => {});
       } catch {
         /* ignore */
       }

@@ -25,6 +25,7 @@ import { faNum } from "@/lib/study-theme";
 import { useToast } from "@/hooks/use-toast";
 import { downloadResultImage } from "@/lib/result-image";
 import { trackEvent } from "@/lib/analytics";
+import { sendStats } from "@/lib/identity";
 import RushBoard from "./rush-board";
 
 // ------------------------------------------------------------------
@@ -93,7 +94,6 @@ export default function RushView() {
   const [isNewRecord, setIsNewRecord] = useState(false);
   const [imgBusy, setImgBusy] = useState(false);
   const [boardNonce, setBoardNonce] = useState(0); // bumps after each finished round to refresh the class board
-  const userIdRef = useRef<string>("");
   const finishedRef = useRef(false);
   const advanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -133,13 +133,10 @@ export default function RushView() {
         duration: 4500,
       });
       try {
-        const userId = userIdRef.current || store.ensureUserId();
-        userIdRef.current = userId;
-        fetch("/api/stats", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ userId, lesson: 0, category: "rush", total: final.answered, correct: final.correct, score: final.score }),
-        }).catch(() => {});
+        // signed fire-and-forget (Phase-0)
+        sendStats({ lesson: 0, category: "rush", total: final.answered, correct: final.correct, score: final.score }).catch(
+          () => {}
+        );
       } catch {
         /* ignore */
       }

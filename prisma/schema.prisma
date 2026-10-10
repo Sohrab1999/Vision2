@@ -29,6 +29,11 @@ model LearnerProfile {
   userId    String   @id
   name      String
   color     String   @default("emerald")
+  // Phase-0 «اعتماد»: server-issued write secret. Issued once via
+  // /api/register (first-claim wins); every stats/profile write must
+  // present it. Nullable only for legacy rows created before launch —
+  // they get claimed on the learner's next app load.
+  secret    String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

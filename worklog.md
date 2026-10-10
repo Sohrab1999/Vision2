@@ -688,3 +688,28 @@ Stage Summary:
 - حکم: محصول از نظر فیچر/UX فوق‌العاده بالغ (نقشهٔ راه اکتبر ۱۰۰٪ + گوشهٔ کنکور)؛ شکاف واقعی در «زیرساخت اعتماد»: هویت/صحت دادهٔ اجتماعی (لیدربرد جعل‌پذیر)، تست صفر، مشاهده‌پذیری صفر
 - Roadmap پیشنهادی: فاز۰ اعتماد (امضای HMAC سبک نتایج + چرخش کد سینک + پاک‌سازی دپ‌ها) → فاز۱ پایداری (vitest+Playwright شبکهٔ ایمن، مانیتورینگ، take/ایندکس، OG) → فاز۲ تجربه (خانهٔ تازه‌کار، scroll-margin، EventDay rotate) → فاز۳ رشد
 - اقدام فوری بعدی پیشنهادی: فاز ۰ (امضای سمت‌سرور نتایج) پیش از هر لانچ واقعی
+
+---
+Task ID: 31
+Agent: main (Z.ai Code) — «ادامه بده» (فاز ۰ نقشهٔ راه Task 30: اعتماد)
+Task: امضای سمت‌سرور نتایج (ضد جعل لیدربرد) + مهاجرت هویتی + سخت‌سازی بک‌آپ/سینک + پاک‌سازی بدهی فنی
+
+Work Log:
+- [Schema] LearnerProfile.secret (String?) + db:push ✓ (ری‌استارت تمیز سرور با الگوی (setsid &) در ساب‌شل — الگوی nohup+disown ساده بین سشن‌های Bash می‌میرد)
+- [/api/register جدید] صدور جفت (userId, secret ۴۸hex): تازه‌کار→۲۰۱، legacy بدون secret→ادعای اولین‌نفر (first-claim-wins)، بازگشتی با secret→idempotent ۲۰۰، متجاوز→۴۰۳؛ rate-limit 10/min
+- [اجرا] POST /api/stats: فقط یادگیرندهٔ ثبت‌نام‌شدهٔ دارای امضای معتبر (۴۰۳ برای ثبت‌نام‌نشده/بی‌امضا/امضای غلط)؛ POST /api/profile: همینطور + ادعای درجاِ ردیف legacy با بازگرداندن secret
+- [کلاینت] store: فیلد userSecret + اکشن setIdentity (persist+partialize)؛ lib جدید src/lib/identity.ts (ensureIdentity/sendStats/sendProfile)؛ ۴ نقطهٔ stats (quiz-engine/rush/listen/dictation) و ۲ نقطهٔ profile (onboarding/header) مهاجرت شدند؛ userIdRefهای بلااستفاده حذف
+- [مهاجرت خودکار] study-app: بعد از rehydrate اگر userId هست و secret نیست → ensureIdentity (ادعا)؛ کاربران قدیمی بی‌دردسر امضا می‌گیرند
+- [باگ رفع‌شده — applyBackup] بازیابی پشتیبان قبلاً userId/onboarded/settings/syncCode را پاک می‌کرد → حالا هویت (userId+userSecret) از پشتیبان «پذیرفته» می‌شود (فایل پشتیبان = credential) و فیلدهای دستگاهی محفوظ می‌مانند
+- [باگ رفع‌شده — mergeSyncData] نقشه‌های konkurSeen/konkurWrong در ادغام بین‌دستگاهی drop می‌شدند (فقط push داشتشان) → flagUnion محافظه‌کارانه + انتقال زوج هویتی به دستگاه دوم (فقط وقتی دستگاه هویت ندارد)؛ userId/userSecret به BackupPayload/parseBackup/collectData اضافه شدند (sanitize: hex 24-100)
+- [UI اعتماد] چیپ سپر «نمرات تأییدشدهٔ سمت سرور» در هدر لیدربرد + چیپ «امضاشده» در جدول چالش برق‌آسا (tooltip توضیح)
+- [پاک‌سازی] db.ts دیگر SQL را لاگ نمی‌کند (log:['error','warn'])؛ /api اسکلت Hello-world حذف؛ ۳۵ کامپوننت بلااستفادهٔ ui حذف (۱۴ باقی)؛ ۲۴ دپ مرده + ۱۷ پکیج رادیکس بلااستفاده از package.json حذف (bun install: 41 removed) — بستهٔ نصب به‌شدت سبک‌تر شد
+- [QA curl] register: ۲۰۱/۴۰۳/۲۰۰ سه‌حالته ✓؛ stats: امضای درست ۲۰۰، بی‌secret ۴۰۳، userId جعلی (حملهٔ اثبات‌شدهٔ Task 30) ۴۰۳، امضای غلط ۴۰۳ ✓؛ profile: امضادار ۲۰۰، ربایش بدون امضا ۴۰۳ ✓؛ مسیر legacy: ساخت ردیف بدون secret → claim ۲۰۰ → stats ۲۰۰ ✓؛ سینک roundtrip: userId+userSecret(48) در snapshot ابری ✓
+- [QA مرورگر] localStorage پاک → آنبردینگ → register 201 + profile 200 در لاگ و جفت هویت در localStorage ✓؛ آزمون جامع کیبوردی کامل → POST /api/stats 200 + ردیف exam با userId امضاشده در DB ✓؛ لیدربرد با چیپ سپر ✓؛ موبایل ۳۹۰ بدون سرریز (390=390) ✓؛ دارک‌مود سالم ✓؛ ردیف‌های QA از DB پاک شدند
+- tsc=۰ خطا، lint=۰ خطا؛ dev.log بدون خطای runtime و بدون لاگ SQL
+
+Stage Summary:
+- گلوگاه شمارهٔ ۱ و بخشی از ۳/۵/۷ فهرست Top-10 ارزیابی Task 30 بسته شد: لیدربرد دیگر جعل‌پذیر نیست (ثبت فقط با امضای سرور)، هویت بین دستگاه/پشتیبان/سینک منسجم و مهاجرت‌پذیر است، بدهی دپ‌ها و لاگ SQL پاک شد
+- مدل امنیتی جدید: «امضا = توان نوشتن» — userId هنوز UUID نامتناسب‌حدس است؛ فایل پشتیبان و کد سینک حامل امضایند (همان سطح اعتماد قبلی، بدون ارتقای ریسک)
+- یادگاری عملیاتی: راه‌اندازی سرور پایدار = (setsid bun run dev &) داخل ساب‌شل؛ بعد از db:push حتماً ری‌استارت
+- باقی‌مانده از Top-10: تست خودکار (فاز ۱)، مانیتورینگ، take/ایندکس rush-leaderboard، OG meta، خانهٔ تازه‌کار، EventDay rotate — پیشنهاد گام بعد: فاز ۱ «پایداری» (شبکهٔ ایمن تست + مانیتورینگ)

@@ -4,6 +4,7 @@ import { BookOpen, Home, Library, ClipboardCheck, BookMarked, Sun, Moon, Flame, 
 import { useTheme } from "next-themes";
 import { useEffect, useRef, useState } from "react";
 import { useStudy, AVATAR_COLORS, type View } from "@/lib/study-store";
+import { sendProfile } from "@/lib/identity";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
 import { exportProgress, parseBackup, applyBackup, backupSummary, readAutoBackup, restoreAutoBackup, autoBackupAgeFa, collectData } from "@/lib/backup";
@@ -36,7 +37,6 @@ export default function Header() {
   const userName = useStudy((s) => s.userName);
   const avatarColor = useStudy((s) => s.avatarColor);
   const setProfile = useStudy((s) => s.setProfile);
-  const ensureUserId = useStudy((s) => s.ensureUserId);
   const syncCode = useStudy((s) => s.syncCode);
   const setSyncCode = useStudy((s) => s.setSyncCode);
   const mounted = useMounted();
@@ -93,12 +93,8 @@ export default function Header() {
     const name = nameDraft.trim();
     if (name.length < 2) return;
     setProfile(name, colorDraft);
-    const userId = ensureUserId();
-    fetch("/api/profile", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId, name, color: colorDraft }),
-    }).catch(() => {});
+    // Phase-0: signed profile update (server-side claim for legacy rows too)
+    sendProfile({ name, color: colorDraft }).catch(() => {});
     setSaved(true);
     setTimeout(() => setOpen(false), 900);
   };

@@ -11,6 +11,7 @@ import { faNum } from "@/lib/study-theme";
 import { downloadResultImage } from "@/lib/result-image";
 import { useToast } from "@/hooks/use-toast";
 import { trackEvent } from "@/lib/analytics";
+import { sendStats } from "@/lib/identity";
 import ExplainBox from "./explain-box";
 import ProgressRing from "./progress-ring";
 
@@ -64,7 +65,6 @@ export default function QuizEngine({
     secondsPerQuestion ? secondsPerQuestion * questions.length : null
   );
   const [imgBusy, setImgBusy] = useState(false);
-  const userIdRef = useRef<string>("");
   const { toast } = useToast();
 
   const correctCount = useMemo(
@@ -136,22 +136,15 @@ export default function QuizEngine({
       }`,
       duration: 4000,
     });
-    // fire-and-forget to backend
+    // fire-and-forget to backend (signed — Phase-0)
     try {
-      const store = useStudy.getState();
-      const userId = userIdRef.current || store.ensureUserId();
-      userIdRef.current = userId;
-      fetch("/api/stats", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          userId,
-          lesson: typeof lessonId === "number" ? lessonId : 0,
-          category,
-          total,
-          correct,
-        }),
-      }).catch(() => {});
+      sendStats({
+        lesson: typeof lessonId === "number" ? lessonId : 0,
+        category,
+        total,
+        correct,
+      }).then((ok) => {
+      });
     } catch {
       /* ignore */
     }

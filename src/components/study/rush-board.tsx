@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Trophy, Zap, Flame, Medal, UserRound, RefreshCcw } from "lucide-react";
+import { Trophy, Zap, Flame, Medal, UserRound, RefreshCcw, ShieldCheck } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum, timeAgoFa } from "@/lib/study-theme";
@@ -79,8 +79,17 @@ export default function RushBoard({ refreshKey = 0 }: { refreshKey?: number }) {
           </span>
           بهترین‌های چالش برق‌آسا
         </h2>
-        <span className="rounded-full bg-orange-100/80 px-2.5 py-1 text-[10.5px] font-bold text-orange-700">
-          {faNum(totalPlayers)} بازیکن
+        <span className="flex items-center gap-2">
+          <span
+            className="hidden items-center gap-1 rounded-full bg-emerald-50 px-2 py-1 text-[10.5px] font-bold text-emerald-700 sm:flex"
+            title="ثبت نتایج با امضای سرور انجام می‌شود — قابل جعل نیست"
+          >
+            <ShieldCheck size={12} aria-hidden />
+            امضاشده
+          </span>
+          <span className="rounded-full bg-orange-100/80 px-2.5 py-1 text-[10.5px] font-bold text-orange-700">
+            {faNum(totalPlayers)} بازیکن
+          </span>
         </span>
       </div>
 
