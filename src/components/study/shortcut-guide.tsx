@@ -9,6 +9,8 @@ import { useStudy, type LessonTab } from "@/lib/study-store";
 /**
  * راهنمای میان‌برهای کیبورد + اجرای میان‌برهای سراسری.
  * کلید «؟» (Shift+/) یا کلیک روی دکمهٔ کیبورد (هدر/فوتر) پنجره را باز می‌کند.
+ * میان‌برها با e.code (کلید فیزیکی) تطبیق داده می‌شوند تا روی چیدمان
+ * فارسی (که حروف/ارقام فارسی تولید می‌کند) هم کار کنند.
  */
 
 function isTyping(e: KeyboardEvent): boolean {
@@ -108,27 +110,28 @@ export default function ShortcutGuide() {
   const quizContext =
     view.type === "exam" || view.type === "rush" || (view.type === "lesson" && lessonTab === "tests");
 
-  // global shortcuts + "?" toggle
+  // global shortcuts + «؟» toggle (layout-independent: matches e.code)
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.ctrlKey || e.metaKey || e.altKey) return;
       if (isTyping(e)) return;
-      if (e.key === "?") {
+      // «؟» = ASCII ? (EN layout) or U+061F (FA layout on the same physical key)
+      if (e.key === "?" || e.key === "؟") {
         e.preventDefault();
         setOpen((v) => !v);
         return;
       }
       if (open || quizContext) return; // dialog handles its own Escape
-      const k = e.key.toLowerCase();
-      if (k === "h") setView({ type: "home" });
-      else if (k === "d") setView({ type: "dictionary" });
-      else if (k === "e") setView({ type: "exam" });
-      else if (k === "a") setView({ type: "appendix" });
-      else if (k === "c") setView({ type: "rush" });
-      else if (k === "t") setTheme(theme === "dark" ? "light" : "dark");
-      else if (k === "f" && view.type === "lesson") openLesson(view.id, "smart");
-      else if (k >= "1" && k <= "7" && view.type === "lesson") {
-        const tab = LESSON_TABS[Number(k) - 1];
+      const code = e.code;
+      if (code === "KeyH") setView({ type: "home" });
+      else if (code === "KeyD") setView({ type: "dictionary" });
+      else if (code === "KeyE") setView({ type: "exam" });
+      else if (code === "KeyA") setView({ type: "appendix" });
+      else if (code === "KeyC") setView({ type: "rush" });
+      else if (code === "KeyT") setTheme(theme === "dark" ? "light" : "dark");
+      else if (code === "KeyF" && view.type === "lesson") openLesson(view.id, "smart");
+      else if (/^(Digit|Numpad)[1-7]$/.test(code) && view.type === "lesson") {
+        const tab = LESSON_TABS[Number(code.slice(-1)) - 1];
         if (tab) openLessonTab(view.id, tab.key);
       }
     };
@@ -182,6 +185,7 @@ export default function ShortcutGuide() {
               <Sun size={13} className="mt-0.5 shrink-0" />
               <span>
                 میان‌برهای حرفی هنگام تایپ در جعبه‌های متن و همچنین وسط آزمون غیرفعال می‌شوند تا نتیجه‌ات از دست نرود.
+                روی چیدمان کیبورد فارسی هم کار می‌کنند (کلیدهای فیزیکی).
                 <Moon size={11} className="mx-1 inline text-amber-600" />
               </span>
             </p>

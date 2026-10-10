@@ -274,6 +274,9 @@ body {
 .dark .review-hero { background-image: linear-gradient(to left, rgba(69, 48, 12, 0.55), rgba(24, 21, 18, 0.9)) !important; }
 .dark .text-sky-800 { color: #7dd3fc; }
 
+/* smart-practice hero */
+.dark .smart-hero { background-image: linear-gradient(to left, rgba(76, 29, 149, 0.45), rgba(24, 21, 18, 0.9)) !important; }
+
 /* scrollbar */
 .dark .nice-scroll { scrollbar-color: #3d372f transparent; }
 .dark .nice-scroll::-webkit-scrollbar-thumb { background: #3d372f; }

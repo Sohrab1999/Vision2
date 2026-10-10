@@ -16,6 +16,7 @@ import {
   Zap,
   ArrowLeft,
   TrendingUp,
+  Sparkles,
 } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -96,6 +97,13 @@ export default function SkillPanel() {
             <p className="mt-1 text-[11.5px] leading-5 text-stone-400">
               با حل اولین تست، نمودار مهارت‌هایت اینجا ساخته می‌شود.
             </p>
+            <button
+              onClick={() => setView({ type: "smart" })}
+              className="mt-4 inline-flex items-center gap-1.5 rounded-lg bg-violet-600 px-4 py-2 text-[11.5px] font-black text-white shadow-sm shadow-violet-500/25 transition-all hover:opacity-90 active:scale-95"
+            >
+              <Sparkles size={13} />
+              شروع با جلسهٔ سنجش هوشمند
+            </button>
           </div>
         ) : (
           <>
@@ -169,6 +177,27 @@ export default function SkillPanel() {
                 </span>
               </button>
             )}
+
+            <button
+              onClick={() => setView({ type: "smart" })}
+              className="mt-2 flex w-full items-center justify-between gap-3 rounded-xl border border-violet-200 bg-gradient-to-l from-violet-50 to-fuchsia-50 px-3.5 py-3 text-right transition-all hover:shadow-sm active:scale-[0.99]"
+            >
+              <span className="flex items-center gap-2.5">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-violet-100 text-violet-700">
+                  <Sparkles size={16} />
+                </span>
+                <span>
+                  <span className="block text-[12px] font-extrabold text-stone-800">جلسهٔ تمرین هوشمند</span>
+                  <span className="block text-[11px] text-stone-500">
+                    ترکیبی از همهٔ نقاط ضعف — ساخته‌شده از بانک خطا و مهارت‌ها
+                  </span>
+                </span>
+              </span>
+              <span className="flex shrink-0 items-center gap-1 rounded-lg bg-violet-600 px-3 py-1.5 text-[11.5px] font-black text-white shadow-sm">
+                شروع
+                <ArrowLeft size={13} />
+              </span>
+            </button>
 
             <button
               onClick={openReport}

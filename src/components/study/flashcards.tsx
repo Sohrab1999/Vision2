@@ -91,9 +91,9 @@ export default function Flashcards({
       } else if (e.key === "ArrowRight") {
         e.preventDefault();
         go(-1);
-      } else if (e.key.toLowerCase() === "k") {
+      } else if (e.code === "KeyK") {
         answer(true);
-      } else if (e.key.toLowerCase() === "r") {
+      } else if (e.code === "KeyR") {
         answer(false);
       }
     };

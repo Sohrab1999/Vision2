@@ -13,7 +13,8 @@ export type View =
   | { type: "appendix" }
   | { type: "rush" }
   | { type: "listen" }
-  | { type: "review" };
+  | { type: "review" }
+  | { type: "smart" };
 
 export type LessonTab = "vocab" | "conversation" | "reading" | "grammar" | "writing" | "dictation" | "tests";
 

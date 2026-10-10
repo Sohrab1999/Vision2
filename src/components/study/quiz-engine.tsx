@@ -214,7 +214,13 @@ export default function QuizEngine({
     const onKey = (e: KeyboardEvent) => {
       const tag = (e.target as HTMLElement | null)?.tagName;
       if (tag === "INPUT" || tag === "TEXTAREA") return;
-      const num = Number(e.key);
+      // option picking works on any keyboard layout: physical digit keys
+      // (e.code) and Persian digits (۰-۹) both count
+      const codeNum = /^(?:Digit|Numpad)([1-9])$/.exec(e.code)?.[1];
+      const faStr = /^[۰-۹]+$/.test(e.key)
+        ? e.key.replace(/[۰-۹]/g, (d) => String("۰۱۲۳۴۵۶۷۸۹".indexOf(d)))
+        : null;
+      const num = Number(codeNum ?? faStr ?? e.key);
       if (num >= 1 && num <= (questions[idx]?.options.length ?? 0)) {
         choose(num - 1);
         return;

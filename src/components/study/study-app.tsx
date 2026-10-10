@@ -19,6 +19,7 @@ import AppendixView from "./appendix-view";
 import RushView from "./rush-view";
 import ListenView from "./listen-view";
 import ReviewView from "./review-view";
+import SmartPracticeView from "./smart-practice-view";
 import ShortcutGuide from "./shortcut-guide";
 import ReportCard from "./report-card";
 import OfficialReport from "./official-report";
@@ -141,6 +142,7 @@ export default function StudyApp() {
               {view.type === "rush" && <RushView />}
               {view.type === "listen" && <ListenView />}
               {view.type === "review" && <ReviewView />}
+              {view.type === "smart" && <SmartPracticeView />}
             </motion.div>
           </AnimatePresence>
         ) : (
