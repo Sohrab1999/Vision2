@@ -21,6 +21,7 @@ import ListenView from "./listen-view";
 import ReviewView from "./review-view";
 import ShortcutGuide from "./shortcut-guide";
 import ReportCard from "./report-card";
+import OfficialReport from "./official-report";
 import Onboarding from "./onboarding";
 import PwaLayer from "./pwa-layer";
 
@@ -163,6 +164,9 @@ export default function StudyApp() {
 
       {/* letter-style progress report (opened from tool cards / skill panel) */}
       <ReportCard />
+
+      {/* A4 printable official progress report (teacher/parents) */}
+      <OfficialReport />
 
       {/* back to top */}
       <AnimatePresence>

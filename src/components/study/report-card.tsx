@@ -22,6 +22,7 @@ import {
   TrendingUp,
   Trophy,
   Printer,
+  FileText,
 } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { useStudy, lastNDays } from "@/lib/study-store";
@@ -332,19 +333,29 @@ export default function ReportCard() {
               )}
 
               {/* footer note */}
-              <div className="report-foot flex flex-col gap-2 rounded-xl border border-dashed border-emerald-300 bg-emerald-50/60 px-3 py-2.5 sm:flex-row sm:items-center sm:justify-between">
+              <div className="report-foot flex flex-col gap-2 rounded-xl border border-dashed border-emerald-300 bg-emerald-50/60 px-3 py-2.5">
                 <p className="flex items-center gap-1.5 text-[11px] font-bold leading-5 text-emerald-800">
                   <TrendingUp size={13} className="shrink-0" />
                   برای نمرهٔ بالاتر، هر روز ۱۰ دقیقه مرور هوشمند کن — کارنامهٔ هفتهٔ بعد تو اینجا بهتر دیده می‌شود.
                 </p>
-                <button
-                  onClick={printReport}
-                  className="report-print-btn inline-flex shrink-0 items-center justify-center gap-1.5 rounded-xl border border-emerald-300 bg-white px-3 py-1.5 text-[11px] font-black text-emerald-700 shadow-sm transition-all hover:bg-emerald-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 active:scale-95"
-                  aria-label="چاپ کارنامه"
-                >
-                  <Printer size={13} />
-                  چاپ کارنامه
-                </button>
+                <div className="flex flex-col gap-2 sm:flex-row">
+                  <button
+                    onClick={printReport}
+                    className="report-print-btn inline-flex flex-1 items-center justify-center gap-1.5 rounded-xl border border-emerald-300 bg-white px-3 py-1.5 text-[11px] font-black text-emerald-700 shadow-sm transition-all hover:bg-emerald-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 active:scale-95"
+                    aria-label="چاپ کارنامه"
+                  >
+                    <Printer size={13} />
+                    چاپ کارنامه
+                  </button>
+                  <button
+                    onClick={() => window.dispatchEvent(new CustomEvent("open-official-report"))}
+                    className="report-print-btn inline-flex flex-1 items-center justify-center gap-1.5 rounded-xl border border-emerald-300 bg-white px-3 py-1.5 text-[11px] font-black text-emerald-700 shadow-sm transition-all hover:bg-emerald-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 active:scale-95"
+                    aria-label="گزارش رسمی چاپی برای معلم"
+                  >
+                    <FileText size={13} />
+                    گزارش رسمی چاپی (PDF)
+                  </button>
+                </div>
               </div>
             </div>
           </div>

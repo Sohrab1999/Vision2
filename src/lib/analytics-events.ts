@@ -25,6 +25,7 @@ export const EVENT_NAMES = [
   "pwa_install",
   "quick_review_start",
   "anki_export",
+  "print_report", // official printable progress report
 ] as const;
 
 export type EventName = (typeof EVENT_NAMES)[number];
@@ -50,6 +51,7 @@ export const EVENT_LABELS_FA: Record<EventName, string> = {
   pwa_install: "نصب روی دستگاه",
   quick_review_start: "شروع مرور سریع",
   anki_export: "خروجی Anki",
+  print_report: "گزارش چاپی رسمی",
 };
 
 export function isEventName(v: unknown): v is EventName {
