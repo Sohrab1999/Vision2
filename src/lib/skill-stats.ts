@@ -19,6 +19,7 @@ export const SKILL_DEFS: SkillDef[] = [
   { id: "grammar", label: "گرامر", icon: "SpellCheck", color: "#7c3aed", match: (k) => k.endsWith(":grammar") },
   { id: "writing", label: "نگارش", icon: "Pencil", color: "#d97706", match: (k) => k.endsWith(":writing") },
   { id: "dictation", label: "دیکته", icon: "Ear", color: "#db2777", match: (k) => k.endsWith(":dictation") },
+  { id: "listening", label: "شنیداری", icon: "Headphones", color: "#0891b2", match: (k) => k.endsWith(":listening") },
   { id: "mixed", label: "تست ترکیبی", icon: "Layers", color: "#0d9488", match: (k) => k.endsWith(":mixed") },
   { id: "mistakes", label: "مرور اشتباهات", icon: "Eraser", color: "#e11d48", match: (k) => k.endsWith(":mistakes") },
   { id: "exam", label: "آزمون جامع", icon: "ClipboardCheck", color: "#4d7c0f", match: (k) => k === "exam" },

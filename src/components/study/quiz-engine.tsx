@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Check, X, ArrowLeft, RotateCcw, Trophy, Eye, Award, Share2, ScrollText, ImageDown } from "lucide-react";
 import type { QuizQuestion } from "@/lib/study-types";
 import { useStudy } from "@/lib/study-store";
+import { recordQuizWordResults } from "@/lib/word-risk";
 import { faNum } from "@/lib/study-theme";
 import { downloadResultImage } from "@/lib/result-image";
 import { useToast } from "@/hooks/use-toast";
@@ -27,6 +28,10 @@ export interface QuizEngineProps {
   certificate?: boolean;
   /** override the lesson each question's mistakes are recorded to */
   mistakesOf?: (q: QuizQuestion) => number | string;
+  /** when false, wrong answers stay out of the mistake bank (word-drills) */
+  trackMistakes?: boolean;
+  /** predicate: question's options are Persian → rendered RTL (word drills) */
+  faOptions?: (q: QuizQuestion) => boolean;
 }
 
 const letters = ["a", "b", "c", "d"];
@@ -44,6 +49,8 @@ export default function QuizEngine({
   groupLabels,
   certificate = false,
   mistakesOf,
+  trackMistakes = true,
+  faOptions,
 }: QuizEngineProps) {
   const [idx, setIdx] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
@@ -64,6 +71,7 @@ export default function QuizEngine({
 
   const q = questions[idx];
   const total = questions.length;
+  const faOpt = q ? (faOptions?.(q) ?? false) : false;
 
   const finish = (finalAnswers: number[]) => {
     if (finishedRef.current) return;
@@ -88,20 +96,28 @@ export default function QuizEngine({
       .filter((qq, i) => finalAnswers[i] === qq.answer)
       .map((qq) => qq.id);
     const storeNow = useStudy.getState();
-    if (mistakesOf) {
-      // bucket wrong/right ids per source lesson, then record each bucket
-      const wrongBy = new Map<string, string[]>();
-      const rightBy = new Map<string, string[]>();
-      for (const [i, qq] of questions.entries()) {
-        const target = String(mistakesOf(qq));
-        const bucket = finalAnswers[i] !== qq.answer ? wrongBy : rightBy;
-        bucket.set(target, [...(bucket.get(target) ?? []), qq.id]);
+    if (trackMistakes) {
+      if (mistakesOf) {
+        // bucket wrong/right ids per source lesson, then record each bucket
+        const wrongBy = new Map<string, string[]>();
+        const rightBy = new Map<string, string[]>();
+        for (const [i, qq] of questions.entries()) {
+          const target = String(mistakesOf(qq));
+          const bucket = finalAnswers[i] !== qq.answer ? wrongBy : rightBy;
+          bucket.set(target, [...(bucket.get(target) ?? []), qq.id]);
+        }
+        for (const [target, ids] of wrongBy) storeNow.addMistakes(target, ids);
+        for (const [target, ids] of rightBy) for (const id of ids) storeNow.clearMistake(target, id);
+      } else {
+        if (wrongIds.length) storeNow.addMistakes(lessonId, wrongIds);
+        for (const id of rightIds) storeNow.clearMistake(lessonId, id);
       }
-      for (const [target, ids] of wrongBy) storeNow.addMistakes(target, ids);
-      for (const [target, ids] of rightBy) for (const id of ids) storeNow.clearMistake(target, id);
-    } else {
-      if (wrongIds.length) storeNow.addMistakes(lessonId, wrongIds);
-      for (const id of rightIds) storeNow.clearMistake(lessonId, id);
+    }
+    // F7 — word-level risk tracking from every answered vocab question
+    try {
+      recordQuizWordResults(questions, finalAnswers);
+    } catch {
+      /* analysis is best-effort — never block the result */
     }
     toast({
       title: percent >= 70 ? "🏆 نتیجهٔ عالی!" : percent >= 50 ? "👍 نتیجهٔ قابل قبول" : "💪 تمرین بیشتر!",
@@ -215,6 +231,12 @@ export default function QuizEngine({
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   });
+
+  // scroll the feedback box into view when it appears (matters inside dialogs)
+  useEffect(() => {
+    if (selected === null || finished) return;
+    document.querySelector("[data-quiz-feedback]")?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }, [selected, finished]);
 
   /* ------------------------------- finished ------------------------------- */
   if (finished) {
@@ -381,9 +403,14 @@ export default function QuizEngine({
         </div>
         <p className={`mb-5 text-sm font-bold ${grade.cls}`}>{grade.msg}</p>
         <div className="mb-4 flex flex-wrap items-center justify-center gap-2">
-          {wrongIds.length > 0 && (
+          {trackMistakes && wrongIds.length > 0 && (
             <span className="rounded-full border border-rose-200 bg-rose-50 px-3 py-1 text-[12px] font-bold text-rose-600">
               {wrongIds.length} سؤال به بانک مرور اشتباهات اضافه شد
+            </span>
+          )}
+          {!trackMistakes && (
+            <span className="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-[12px] font-bold text-amber-700">
+              تمرین هدفمند انجام شد — واژه‌های خطرناک به‌روزرسانی شدند
             </span>
           )}
         </div>
@@ -443,11 +470,11 @@ export default function QuizEngine({
                   </p>
                 </div>
                 <p className="mr-7 text-[12.5px] text-stone-600">
-                  پاسخ شما: <span className="en-text font-bold" dir="ltr">{my !== undefined ? `${letters[my]}) ${qq.options[my]}` : "—"}</span>
+                  پاسخ شما: <span className={`${faOptions?.(qq) ? "" : "en-text "}font-bold`} dir={faOptions?.(qq) ? "rtl" : "ltr"}>{my !== undefined ? `${letters[my]}) ${qq.options[my]}` : "—"}</span>
                   {!ok && (
                     <>
                       {" "}· پاسخ درست:{" "}
-                      <span className="en-text font-bold text-emerald-700" dir="ltr">
+                      <span className={`${faOptions?.(qq) ? "" : "en-text "}font-bold text-emerald-700`} dir={faOptions?.(qq) ? "rtl" : "ltr"}>
                         {letters[qq.answer]}) {qq.options[qq.answer]}
                       </span>
                     </>
@@ -508,7 +535,7 @@ export default function QuizEngine({
           <p className="en-text mb-5 text-[16px] font-semibold leading-8 text-stone-800" dir="ltr">
             {q.question}
           </p>
-          <div className="space-y-2.5" dir="ltr">
+          <div className="space-y-2.5" dir={faOpt ? "rtl" : "ltr"}>
             {q.options.map((opt, i) => {
               const isCorrect = immediate && selected !== null && i === q.answer;
               const isWrong = immediate && selected === i && i !== q.answer;
@@ -540,7 +567,7 @@ export default function QuizEngine({
                   >
                     {isCorrect ? <Check size={14} /> : isWrong ? <X size={14} /> : letters[i]}
                   </span>
-                  <span className="en-text text-[14.5px] font-medium text-stone-800">{opt}</span>
+                  <span className={`${faOpt ? "" : "en-text "}text-[14.5px] font-medium text-stone-800`}>{opt}</span>
                 </button>
               );
             })}
@@ -551,6 +578,7 @@ export default function QuizEngine({
             <motion.div
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
+              data-quiz-feedback
               className="mt-4 rounded-xl border border-stone-200 bg-stone-50 p-3.5"
             >
               <p

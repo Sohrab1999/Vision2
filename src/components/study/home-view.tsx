@@ -21,6 +21,7 @@ import {
   Target,
   RefreshCcw,
   Ear,
+  Headphones,
   Radio,
   Eraser,
   Zap,
@@ -39,6 +40,7 @@ import SrsPanel from "./srs-panel";
 import SkillPanel from "./skill-panel";
 import ReportCard from "./report-card";
 import DailyQuests from "./daily-quests";
+import DangerWords from "./danger-words";
 
 const spineColors: Record<string, string> = {
   emerald: "bg-gradient-to-b from-emerald-500 to-emerald-800",
@@ -52,6 +54,8 @@ const categoryLabel: Record<string, string> = {
   grammar: "گرامر و نگارش",
   writing: "تمرین نگارش",
   dictation: "آزمون دیکته",
+  listening: "تمرین شنیداری",
+  danger: "واژه‌های خطرناک",
   exam: "آزمون جامع",
   final: "آزمون پایان ترم",
   mixed: "تست ترکیبی درس",
@@ -66,6 +70,8 @@ const feedLabel: Record<string, string> = {
   grammar: "گرامر",
   writing: "نگارش",
   dictation: "دیکته",
+  listening: "شنیداری",
+  danger: "واژه‌های خطرناک",
   exam: "آزمون جامع",
   final: "آزمون پایان ترم",
   mixed: "تست ترکیبی",
@@ -335,6 +341,40 @@ export default function HomeView() {
       {/* ------------------------- Word of the day ------------------------- */}
       <WordOfDay />
 
+      {/* ---------------------- Listening practice banner (F6) ---------------------- */}
+      <motion.section
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.18 }}
+        aria-label="تمرین شنیداری"
+        className="relative overflow-hidden rounded-2xl border border-cyan-200 bg-gradient-to-l from-cyan-50 via-teal-50 to-emerald-50 shadow-sm"
+      >
+        <div className="absolute -right-5 -top-8 text-teal-500 opacity-[0.07]" aria-hidden>
+          <Headphones size={170} />
+        </div>
+        <div className="relative flex flex-col items-start gap-4 p-5 sm:flex-row sm:items-center sm:p-6">
+          <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-500 to-teal-600 text-white shadow-lg shadow-teal-500/30">
+            <Headphones size={26} />
+          </span>
+          <div className="min-w-0 flex-1">
+            <div className="flex flex-wrap items-center gap-2">
+              <h2 className="text-base font-black text-stone-800">تمرین شنیداری — بشنو و انتخاب کن</h2>
+              <span className="rounded-full bg-teal-600 px-2 py-0.5 text-[10px] font-black text-white shadow-sm">جدید</span>
+            </div>
+            <p className="mt-1 text-[12.5px] leading-6 text-stone-600">
+              مثل امتحان واقعی Vision: جمله و واژه را می‌شنوی و گزینهٔ درست را انتخاب می‌کنی — با ۳ نوع تمرین (واژه، ترجمهٔ جمله، ادامهٔ مکالمه) و حداکثر ۲ بار پخش.
+            </p>
+          </div>
+          <button
+            onClick={() => setView({ type: "listen" })}
+            className="inline-flex w-full flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-gradient-to-l from-cyan-600 to-teal-600 px-5 py-3 text-[13px] font-black text-white shadow-lg shadow-teal-600/25 transition-all hover:opacity-95 active:scale-95 sm:w-auto sm:flex-none"
+          >
+            <Headphones size={16} />
+            شروع تمرین شنیداری
+          </button>
+        </div>
+      </motion.section>
+
       {/* ------------------------- Rush challenge banner ------------------------- */}
       <motion.section
         initial={{ opacity: 0, y: 16 }}
@@ -389,6 +429,9 @@ export default function HomeView() {
         <SrsPanel />
         <SkillPanel />
       </div>
+
+      {/* --------------- F7 word-level mistake analysis --------------- */}
+      <DangerWords />
 
       {/* ---------------------------- Bookshelf ---------------------------- */}
       <section aria-label="قفسهٔ کتاب">

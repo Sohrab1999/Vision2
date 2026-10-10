@@ -204,6 +204,13 @@ export default function DictationTab({ lesson }: { lesson: LessonData }) {
     setWords((ws) => ws.map((w, i) => (i === idx ? { ...w, result: ok ? (w.hintUsed ? "half" : "full") : "wrong" } : w)));
     // feed the SRS engine: spelling success advances the word's review schedule
     reviewWord(wordKey(lesson.id, word.en), ok && !word.hintUsed);
+    // F7 — dictation is a word sighting; a wrong spelling or a needed hint
+    // counts as a word-level mistake
+    try {
+      useStudy.getState().addWordResults([{ key: wordKey(lesson.id, word.en), ok: ok && !word.hintUsed }]);
+    } catch {
+      /* best-effort */
+    }
     if (ok) {
       advanceTimer.current = setTimeout(() => goNext(newScore), 1500);
     }
@@ -223,6 +230,11 @@ export default function DictationTab({ lesson }: { lesson: LessonData }) {
   const skip = () => {
     if (!word || state !== "typing") return;
     reviewWord(wordKey(lesson.id, word.en), false);
+    try {
+      useStudy.getState().addWordResults([{ key: wordKey(lesson.id, word.en), ok: false }]);
+    } catch {
+      /* best-effort */
+    }
     setWords((ws) => ws.map((w, i) => (i === idx ? { ...w, result: "wrong" } : w)));
     setState("wrong");
   };

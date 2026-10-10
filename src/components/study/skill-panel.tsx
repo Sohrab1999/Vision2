@@ -8,6 +8,7 @@ import {
   SpellCheck,
   Pencil,
   Ear,
+  Headphones,
   Layers,
   Eraser,
   ClipboardCheck,
@@ -32,6 +33,7 @@ const ICONS: Record<string, React.ElementType> = {
   SpellCheck,
   Pencil,
   Ear,
+  Headphones,
   Layers,
   Eraser,
   ClipboardCheck,
@@ -57,6 +59,7 @@ export default function SkillPanel() {
     const lessonId = s.weakest ? lessonIdOfKey(s.weakest.key) : null;
     if (s.def.id === "rush") return setView({ type: "rush" });
     if (s.def.id === "exam" || s.def.id === "final") return setView({ type: "exam" });
+    if (s.def.id === "listening") return setView({ type: "listen" });
     if (lessonId) {
       const tab = s.def.id === "dictation" ? "dictation" : s.def.id === "writing" ? "writing" : "tests";
       openLessonTab(lessonId, tab);

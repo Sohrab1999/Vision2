@@ -140,6 +140,9 @@ export function mergeSyncData(local: SyncData, remote: SyncData): SyncData {
     freezeEarnedDay: (local.freezeEarnedDay || "") >= (remote.freezeEarnedDay || "") ? local.freezeEarnedDay : remote.freezeEarnedDay,
     freezeUsedDays: [...new Set([...(local.freezeUsedDays ?? []), ...(remote.freezeUsedDays ?? [])])].slice(-30),
     goalMetDays: [...new Set([...(local.goalMetDays ?? []), ...(remote.goalMetDays ?? [])])].slice(-14),
+    // F7 — word-level risk counters take the max (same policy as mistakes)
+    wordMistakes: mergeMistakes(local.wordMistakes ?? {}, remote.wordMistakes ?? {}),
+    wordSeen: mergeMistakes(local.wordSeen ?? {}, remote.wordSeen ?? {}),
   };
 }
 

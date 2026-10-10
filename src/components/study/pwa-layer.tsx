@@ -229,7 +229,7 @@ export default function PwaLayer() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 26, scale: 0.96 }}
             transition={{ duration: 0.35, ease: "easeOut" }}
-            className="fixed inset-x-3 bottom-24 z-40 sm:inset-x-auto sm:bottom-5 sm:right-5 sm:w-[21rem]"
+            className="pointer-events-none fixed inset-x-3 bottom-24 z-40 sm:inset-x-auto sm:bottom-5 sm:right-5 sm:w-[21rem]"
             role="complementary"
             aria-label="پیشنهاد نصب وب‌کتاب"
           >
@@ -256,14 +256,14 @@ export default function PwaLayer() {
                           setShowGuide(true);
                         }
                       }}
-                      className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3 py-1.5 text-[12px] font-black text-white shadow-md shadow-emerald-900/20 transition-all hover:bg-emerald-700 active:scale-95"
+                      className="pointer-events-auto inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3 py-1.5 text-[12px] font-black text-white shadow-md shadow-emerald-900/20 transition-all hover:bg-emerald-700 active:scale-95"
                     >
                       <Download size={13} />
                       نصب رایگان
                     </button>
                     <button
                       onClick={dismissCard}
-                      className="rounded-lg px-2.5 py-1.5 text-[12px] font-bold text-stone-500 transition-colors hover:text-stone-700"
+                      className="pointer-events-auto rounded-lg px-2.5 py-1.5 text-[12px] font-bold text-stone-500 transition-colors hover:text-stone-700"
                     >
                       بعداً
                     </button>
@@ -271,7 +271,7 @@ export default function PwaLayer() {
                 </div>
                 <button
                   onClick={dismissCard}
-                  className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-stone-400 transition-colors hover:bg-stone-100 hover:text-stone-600"
+                  className="pointer-events-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-stone-400 transition-colors hover:bg-stone-100 hover:text-stone-600"
                   aria-label="بستن پیشنهاد نصب"
                 >
                   <X size={14} />

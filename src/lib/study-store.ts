@@ -10,7 +10,8 @@ export type View =
   | { type: "dictionary" }
   | { type: "exam" }
   | { type: "appendix" }
-  | { type: "rush" };
+  | { type: "rush" }
+  | { type: "listen" };
 
 export type LessonTab = "vocab" | "conversation" | "reading" | "grammar" | "writing" | "dictation" | "tests";
 
@@ -43,6 +44,9 @@ export function emptyDayStat(day: string): DayStat {
 
 // error bank: mistakes["1:l1-v3"] = number of wrong answers
 export type MistakeMap = Record<string, number>;
+// F7 word-level risk maps: wordMistakes["1:ability"] = wrong answers involving
+// that word (quiz option / dictation / listening) — paired with wordSeen counts
+export type WordStatMap = Record<string, number>;
 // weekly history: history["2026-10-09"] = { reviews, quizzes }
 export type HistoryMap = Record<string, { reviews: number; quizzes: number }>;
 
@@ -94,6 +98,8 @@ export interface StudyState {
   dayStat: DayStat;
   history: HistoryMap;
   mistakes: MistakeMap;
+  wordMistakes: WordStatMap; // F7 — wrong answers per word key
+  wordSeen: WordStatMap; // F7 — answered (seen) per word key
   flashIntent: "none" | "smart";
   flashNonce: number; // bumped on every "smart" intent so VocabTab remounts into flashcards
   seenBadges: string[];
@@ -133,6 +139,7 @@ export interface StudyState {
   trackQuizDone: () => void;
   addMistakes: (lessonId: number | string, ids: string[]) => void;
   clearMistake: (lessonId: number | string, id: string) => void;
+  addWordResults: (entries: { key: string; ok: boolean }[]) => void;
   lessonMistakeCount: (lessonId: number) => number;
   ensureUserId: () => string;
 }
@@ -195,6 +202,8 @@ export const useStudy = create<StudyState>()(
       dayStat: emptyDayStat(""),
       history: {},
       mistakes: {},
+      wordMistakes: {},
+      wordSeen: {},
       flashIntent: "none",
       flashNonce: 0,
       seenBadges: [],
@@ -313,6 +322,19 @@ export const useStudy = create<StudyState>()(
           delete next[k];
           return { mistakes: next };
         }),
+      // F7 — accumulate word-level seen/mistake counters (quiz/dictation/listening)
+      addWordResults: (entries) =>
+        set((s) => {
+          if (entries.length === 0) return s;
+          const seen = { ...s.wordSeen };
+          const wrong = { ...s.wordMistakes };
+          for (const { key, ok } of entries) {
+            if (!key) continue;
+            seen[key] = (seen[key] ?? 0) + 1;
+            if (!ok) wrong[key] = (wrong[key] ?? 0) + 1;
+          }
+          return { wordSeen: seen, wordMistakes: wrong };
+        }),
       lessonMistakeCount: (lessonId) => {
         const prefix = `${lessonId}:`;
         return Object.keys(get().mistakes).filter((k) => k.startsWith(prefix)).length;
@@ -345,6 +367,8 @@ export const useStudy = create<StudyState>()(
         dayStat: s.dayStat,
         history: s.history,
         mistakes: s.mistakes,
+        wordMistakes: s.wordMistakes,
+        wordSeen: s.wordSeen,
         seenBadges: s.seenBadges,
         rushBest: s.rushBest,
         rushBestCorrect: s.rushBestCorrect,

@@ -16,6 +16,7 @@ import DictionaryView from "./dictionary-view";
 import ExamView from "./exam-view";
 import AppendixView from "./appendix-view";
 import RushView from "./rush-view";
+import ListenView from "./listen-view";
 import ShortcutGuide from "./shortcut-guide";
 import ReportCard from "./report-card";
 import Onboarding from "./onboarding";
@@ -130,6 +131,7 @@ export default function StudyApp() {
               {view.type === "exam" && <ExamView />}
               {view.type === "appendix" && <AppendixView />}
               {view.type === "rush" && <RushView />}
+              {view.type === "listen" && <ListenView />}
             </motion.div>
           </AnimatePresence>
         ) : (

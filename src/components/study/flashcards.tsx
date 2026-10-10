@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronRight, ChevronLeft, Check, RefreshCw, Hand, Sparkles } from "lucide-react";
-import type { LessonData } from "@/lib/study-types";
+import type { LessonData, VocabWord } from "@/lib/study-types";
 import { useStudy, wordKey, srsDueCount, SRS_LABELS } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { posLabel, themeOf } from "@/lib/study-theme";
@@ -13,10 +13,13 @@ export default function Flashcards({
   lesson,
   onExit,
   startSmart = false,
+  words,
 }: {
   lesson: LessonData;
   onExit: () => void;
   startSmart?: boolean;
+  /** F7 — restrict the deck to a specific subset (e.g. dangerous words) */
+  words?: VocabWord[];
 }) {
   const [smartMode, setSmartMode] = useState(startSmart);
   const [index, setIndex] = useState(0);
@@ -30,23 +33,26 @@ export default function Flashcards({
 
   const t = themeOf(lesson.color);
 
+  // F7 word subsets: the deck works on the override list when provided
+  const base = words && words.length > 0 ? words : lesson.vocabulary;
+
   const dueWords = useMemo(() => {
-    if (!mounted) return lesson.vocabulary;
+    if (!mounted) return base;
     const now = Date.now();
-    const due = lesson.vocabulary.filter((w) => {
+    const due = base.filter((w) => {
       const item = srs[wordKey(lesson.id, w.en)];
       if (!item) return true; // never reviewed → due
       return item.dueAt <= now;
     });
-    return due.length > 0 ? due : lesson.vocabulary;
+    return due.length > 0 ? due : base;
   }, [smartMode, mounted, index]); // recompute as user advances
 
-  const cards = smartMode ? dueWords : lesson.vocabulary;
+  const cards = smartMode ? dueWords : base;
   const word = cards[Math.min(index, cards.length - 1)];
   const key = wordKey(lesson.id, word.en);
   const srsItem = mounted ? srs[key] : undefined;
   const isKnown = mounted && !!known[key];
-  const knownCount = lesson.vocabulary.filter((w) => mounted && known[wordKey(lesson.id, w.en)]).length;
+  const knownCount = base.filter((w) => mounted && known[wordKey(lesson.id, w.en)]).length;
   const dueCount = mounted ? srsDueCount(srs, lesson.id) : 0;
 
   useEffect(() => {

@@ -38,6 +38,9 @@ export interface BackupPayload {
     freezeEarnedDay: string;
     freezeUsedDays: string[];
     goalMetDays: string[];
+    // F7 word-level risk maps (optional for backward compatibility)
+    wordMistakes?: Record<string, number>;
+    wordSeen?: Record<string, number>;
   };
 }
 
@@ -74,6 +77,8 @@ export function collectData(): BackupPayload["data"] {
     freezeEarnedDay: s.freezeEarnedDay ?? "",
     freezeUsedDays: s.freezeUsedDays ?? [],
     goalMetDays: s.goalMetDays ?? [],
+    wordMistakes: s.wordMistakes ?? {},
+    wordSeen: s.wordSeen ?? {},
   };
 }
 
@@ -105,6 +110,18 @@ export function exportProgress(): boolean {
 
 const asRecord = (v: unknown): Record<string, unknown> =>
   v && typeof v === "object" && !Array.isArray(v) ? (v as Record<string, unknown>) : {};
+
+/** sanitize an F7 word-stat map: finite non-negative ints, hard cap on entries */
+function sanitizeWordStat(v: unknown): Record<string, number> {
+  const out: Record<string, number> = {};
+  for (const [k, n] of Object.entries(asRecord(v))) {
+    if (typeof n === "number" && Number.isFinite(n) && n >= 0) {
+      out[k.slice(0, 80)] = Math.min(9999, Math.round(n));
+    }
+    if (Object.keys(out).length >= 2000) break;
+  }
+  return out;
+}
 
 /**
  * Validate a backup file's JSON and return the sanitized payload.
@@ -196,6 +213,8 @@ export function parseBackup(text: string): BackupPayload {
       goalMetDays: Array.isArray(data["goalMetDays"])
         ? data["goalMetDays"].filter((x): x is string => typeof x === "string").slice(-14)
         : [],
+      wordMistakes: sanitizeWordStat(data["wordMistakes"]),
+      wordSeen: sanitizeWordStat(data["wordSeen"]),
     },
   };
 }

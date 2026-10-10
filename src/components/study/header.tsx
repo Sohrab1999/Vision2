@@ -261,7 +261,7 @@ export default function Header() {
           </span>
         </button>
 
-        <div className="flex items-center gap-1">
+        <div className="flex min-w-0 items-center gap-1">
           {/* streak flame */}
           {mounted && streak > 0 && (
             <span
@@ -525,7 +525,7 @@ export default function Header() {
             </PopoverContent>
           </Popover>
 
-          <nav className="flex items-center gap-1 overflow-x-auto" aria-label="ناوبری اصلی">
+          <nav className="flex min-w-0 items-center gap-1 overflow-x-auto nice-scroll" aria-label="ناوبری اصلی">
             {navItems.map((item) => {
               const Icon = item.icon;
               const active = isActive(item);
