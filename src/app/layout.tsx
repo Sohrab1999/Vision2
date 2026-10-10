@@ -21,6 +21,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000"),
   title: "ویژن ۲ | وب‌کتاب تعاملی زبان انگلیسی پایهٔ یازدهم",
   description:
     "تبدیل جزوهٔ جامع «Vision Two» به وب‌کتاب تعاملی: واژگان، فلش‌کارت، مکالمه با روخوانی، ریدینگ، گرامر، تست‌های کنکوری و آزمون جامع.",
@@ -46,6 +47,30 @@ export const metadata: Metadata = {
       { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
     ],
     apple: [{ url: "/icons/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
+  // Phase-1 «پایداری» — link previews (Telegram / WhatsApp / Twitter)
+  openGraph: {
+    type: "website",
+    locale: "fa_IR",
+    siteName: "ویژن ۲",
+    title: "ویژن ۲ | وب‌کتاب تعاملی زبان انگلیسی پایهٔ یازدهم",
+    description:
+      "واژگان، فلش‌کارت، مکالمه با روخوانی، گرامر، ۳۶۰ تست کنکوری و آزمون جامع — همه در یک وب‌کتاب تعاملی.",
+    images: [
+      {
+        url: "/icons/icon-512.png",
+        width: 512,
+        height: 512,
+        alt: "لوگوی وب‌کتاب ویژن ۲",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: "ویژن ۲ | وب‌کتاب تعاملی زبان انگلیسی پایهٔ یازدهم",
+    description:
+      "واژگان، فلش‌کارت، مکالمه با روخوانی، گرامر، ۳۶۰ تست کنکوری و آزمون جامع — همه در یک وب‌کتاب تعاملی.",
+    images: ["/icons/icon-512.png"],
   },
 };
 

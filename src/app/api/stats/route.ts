@@ -48,8 +48,11 @@ export async function GET(req: NextRequest) {
       last24h,
       recent: recentNamed,
     });
-  } catch {
-    return NextResponse.json({ total: 0, avgPercent: 0, last24h: 0, recent: [] });
+  } catch (error) {
+    // Phase-1 «پایداری»: DB failures must surface as 500 — the old
+    // empty-200 masked outages as "no activity yet".
+    console.error("Stats GET API error:", error);
+    return NextResponse.json({ error: "آمار موقتاً در دسترس نیست." }, { status: 500 });
   }
 }
 

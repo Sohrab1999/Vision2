@@ -20,8 +20,10 @@ export async function GET(req: NextRequest) {
         ? { userId: profile.userId, name: profile.name, color: profile.color }
         : null,
     });
-  } catch {
-    return NextResponse.json({ profile: null });
+  } catch (error) {
+    // Phase-1 «پایداری»: surface DB failures instead of a fake empty profile.
+    console.error("Profile GET API error:", error);
+    return NextResponse.json({ error: "پروفایل موقتاً در دسترس نیست." }, { status: 500 });
   }
 }
 

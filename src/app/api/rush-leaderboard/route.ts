@@ -20,11 +20,14 @@ export async function GET(req: NextRequest) {
   const limit = rateLimit(req, "rush-lb-get", 240, 60_000);
   if (!limit.ok) return limit.response!;
   try {
+    // Phase-1 «پایداری»: the per-user "last played" timestamp now comes from
+    // the same groupBy (_max.createdAt) — the old second findMany scanned
+    // every rush attempt without a take.
     const grouped = await db.quizAttempt.groupBy({
       by: ["userId"],
       where: { category: "rush" },
       _count: { _all: true },
-      _max: { score: true, percent: true, correct: true },
+      _max: { score: true, percent: true, correct: true, createdAt: true },
     });
 
     if (grouped.length === 0) {
@@ -32,18 +35,10 @@ export async function GET(req: NextRequest) {
     }
 
     const userIds = grouped.map((g) => g.userId);
-    const [profiles, lastGames] = await Promise.all([
-      db.learnerProfile.findMany({ where: { userId: { in: userIds } } }),
-      // last rush attempt per user (for "recently played" tiebreak)
-      db.quizAttempt.findMany({
-        where: { category: "rush", userId: { in: userIds } },
-        orderBy: { createdAt: "desc" },
-        select: { userId: true, createdAt: true },
-      }),
-    ]);
+    const profiles = await db.learnerProfile.findMany({
+      where: { userId: { in: userIds } },
+    });
     const profileMap = new Map(profiles.map((p) => [p.userId, p]));
-    const lastMap = new Map<string, Date>();
-    for (const g of lastGames) if (!lastMap.has(g.userId)) lastMap.set(g.userId, g.createdAt);
 
     const rows: RushRow[] = grouped
       // attempts from before the score column existed have score=null — skip them
@@ -58,7 +53,7 @@ export async function GET(req: NextRequest) {
           bestCorrect: Math.round(g._max.correct ?? 0),
           bestPercent: Math.round(g._max.percent ?? 0),
           games: g._count._all,
-          lastAt: lastMap.get(g.userId)?.toISOString() ?? null,
+          lastAt: g._max.createdAt?.toISOString() ?? null,
         };
       })
       // rank by best points; ties → more games first
@@ -67,7 +62,8 @@ export async function GET(req: NextRequest) {
 
     return NextResponse.json({ learners: rows, totalPlayers: rows.length });
   } catch (error) {
+    // Phase-1 «پایداری»: surface DB failures instead of a fake empty board.
     console.error("Rush leaderboard API error:", error);
-    return NextResponse.json({ learners: [], totalPlayers: 0 });
+    return NextResponse.json({ error: "جدول چالش موقتاً در دسترس نیست." }, { status: 500 });
   }
 }

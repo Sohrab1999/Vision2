@@ -52,7 +52,8 @@ export async function GET(req: NextRequest) {
 
     return NextResponse.json({ learners: rows, totalLearners: grouped.length });
   } catch (error) {
+    // Phase-1 «پایداری»: surface DB failures instead of a fake empty board.
     console.error("Leaderboard API error:", error);
-    return NextResponse.json({ learners: [], totalLearners: 0 });
+    return NextResponse.json({ error: "جدول امتیازات موقتاً در دسترس نیست." }, { status: 500 });
   }
 }
