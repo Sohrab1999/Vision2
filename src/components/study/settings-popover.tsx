@@ -4,7 +4,7 @@
 // سرعت روخوانی TTS · اندازهٔ متن · کاهش حرکت · هدف روزانه · دسترسی سریع به پروفایل/پشتیبان
 
 import { useState, useEffect } from "react";
-import { Settings, Volume2, Type, Waves, Target, UserCog, Check, Smartphone } from "lucide-react";
+import { Settings, Volume2, Type, Waves, Target, UserCog, Check, Smartphone, Activity, Loader2, RefreshCw } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Switch } from "@/components/ui/switch";
 import { Slider } from "@/components/ui/slider";
@@ -34,6 +34,33 @@ export default function SettingsPopover() {
   const [open, setOpen] = useState(false);
   const [previewing, setPreviewing] = useState(false);
   const [showInstallRow, setShowInstallRow] = useState(false);
+
+  // F10 — live product pulse: anonymous aggregate activity of the whole
+  // learning community (no PII — only whitelisted counters), fetched on open
+  const [pulse, setPulse] = useState<{ name: string; label: string; total: number; week: number }[] | null>(null);
+  const [pulseState, setPulseState] = useState<"idle" | "loading" | "ready" | "error">("idle");
+
+  const loadPulse = async () => {
+    setPulseState((prev) => (prev === "loading" ? prev : "loading"));
+    try {
+      const res = await fetch("/api/event", { cache: "no-store" });
+      if (!res.ok) throw new Error(String(res.status));
+      const data = (await res.json()) as { events?: { name: string; label: string; total: number; week: number }[] };
+      setPulse(data.events ?? []);
+      setPulseState("ready");
+    } catch {
+      setPulseState("error");
+    }
+  };
+
+  const toggleOpen = (next: boolean) => {
+    setOpen(next);
+    if (!next) {
+      stopSpeaking();
+      return;
+    }
+    if (pulseState === "idle") loadPulse();
+  };
 
   // install row: hidden once the app runs standalone (F4)
   useEffect(() => {
@@ -73,7 +100,7 @@ export default function SettingsPopover() {
   }
 
   return (
-    <Popover open={open} onOpenChange={(next) => { setOpen(next); if (!next) stopSpeaking(); }}>
+    <Popover open={open} onOpenChange={toggleOpen}>
       <PopoverTrigger asChild>
         <button
           className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-stone-200 bg-white text-stone-500 transition-all hover:text-emerald-600 hover:border-emerald-200 active:scale-90"
@@ -204,6 +231,55 @@ export default function SettingsPopover() {
               );
             })}
           </div>
+        </section>
+
+        {/* ---------- تپش وب‌کتاب (F10، زنده و بی‌نام) ---------- */}
+        <section className="mb-4 rounded-xl border border-stone-200 bg-stone-50/60 p-3">
+          <div className="mb-2 flex items-center justify-between">
+            <span className="flex items-center gap-1.5 text-[12px] font-bold text-stone-600">
+              <Activity size={13} className="text-emerald-600" />
+              تپش وب‌کتاب (زنده)
+            </span>
+            <button
+              onClick={loadPulse}
+              className="flex h-6 w-6 items-center justify-center rounded-full text-stone-400 transition-all hover:bg-stone-200/70 hover:text-emerald-600 active:scale-90"
+              aria-label="به‌روزرسانی آمار"
+              title="به‌روزرسانی"
+            >
+              {pulseState === "loading" ? <Loader2 size={12} className="animate-spin" /> : <RefreshCw size={12} />}
+            </button>
+          </div>
+          <p className="mb-2 text-[10px] leading-4 text-stone-400">
+            فعالیت بی‌نامِ همهٔ یادگیرندگان — بدون هیچ اطلاعات شخصی.
+          </p>
+          {pulseState === "ready" && pulse && pulse.length > 0 && (() => {
+            const top = pulse.slice(0, 6);
+            const max = Math.max(...top.map((e) => e.total), 1);
+            return (
+              <div className="max-h-40 space-y-1.5 overflow-y-auto nice-scroll pl-1" dir="rtl">
+                {top.map((e) => (
+                  <div key={e.name} className="flex items-center gap-2">
+                    <span className="w-[118px] shrink-0 truncate text-[10.5px] font-bold text-stone-500">{e.label}</span>
+                    <div className="h-2 flex-1 overflow-hidden rounded-full bg-stone-200/80">
+                      <div
+                        className="h-full rounded-full bg-gradient-to-l from-emerald-400 to-emerald-600"
+                        style={{ width: `${Math.max(4, Math.round((e.total / max) * 100))}%` }}
+                      />
+                    </div>
+                    <span className="w-10 shrink-0 text-left text-[10.5px] font-black text-emerald-700" dir="ltr">
+                      {faNum(e.total)}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            );
+          })()}
+          {pulseState === "ready" && pulse && pulse.length === 0 && (
+            <p className="py-2 text-center text-[11px] text-stone-400">هنوز فعالیتی ثبت نشده — اولین نفر باش!</p>
+          )}
+          {pulseState === "error" && (
+            <p className="py-2 text-center text-[11px] text-stone-400">آمار زنده در دسترس نیست.</p>
+          )}
         </section>
 
         {/* ---------- نصب روی دستگاه (F4) ---------- */}

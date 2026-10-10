@@ -1,0 +1,642 @@
+     1→"use client";
+     2→
+     3→import { useEffect, useMemo, useRef, useState } from "react";
+     4→import { motion, AnimatePresence } from "framer-motion";
+     5→import { Check, X, ArrowLeft, RotateCcw, Trophy, Eye, Award, Share2, ScrollText, ImageDown } from "lucide-react";
+     6→import type { QuizQuestion } from "@/lib/study-types";
+     7→import { useStudy } from "@/lib/study-store";
+     8→import { recordQuizWordResults } from "@/lib/word-risk";
+     9→import { faNum } from "@/lib/study-theme";
+    10→import { downloadResultImage } from "@/lib/result-image";
+    11→import { useToast } from "@/hooks/use-toast";
+    12→import ProgressRing from "./progress-ring";
+    13→
+    14→export interface QuizEngineProps {
+    15→  title: string;
+    16→  questions: QuizQuestion[];
+    17→  resultKeyStr: string; // e.g. "1:vocab" or "exam"
+    18→  lessonId: number | string;
+    19→  category: string;
+    20→  immediate?: boolean; // instant feedback per question
+    21→  secondsPerQuestion?: number; // optional timer
+    22→  onExit: () => void;
+    23→  /** per-question group key for the result breakdown (e.g. source lesson) */
+    24→  groupOf?: (q: QuizQuestion) => string;
+    25→  /** display label per group key */
+    26→  groupLabels?: Record<string, string>;
+    27→  /** diploma-style result card with share button (final exam) */
+    28→  certificate?: boolean;
+    29→  /** override the lesson each question's mistakes are recorded to */
+    30→  mistakesOf?: (q: QuizQuestion) => number | string;
+    31→  /** when false, wrong answers stay out of the mistake bank (word-drills) */
+    32→  trackMistakes?: boolean;
+    33→  /** predicate: question's options are Persian → rendered RTL (word drills) */
+    34→  faOptions?: (q: QuizQuestion) => boolean;
+    35→}
+    36→
+    37→const letters = ["a", "b", "c", "d"];
+    38→
+    39→export default function QuizEngine({
+    40→  title,
+    41→  questions,
+    42→  resultKeyStr,
+    43→  lessonId,
+    44→  category,
+    45→  immediate = true,
+    46→  secondsPerQuestion,
+    47→  onExit,
+    48→  groupOf,
+    49→  groupLabels,
+    50→  certificate = false,
+    51→  mistakesOf,
+    52→  trackMistakes = true,
+    53→  faOptions,
+    54→}: QuizEngineProps) {
+    55→  const [idx, setIdx] = useState(0);
+    56→  const [selected, setSelected] = useState<number | null>(null);
+    57→  const [answers, setAnswers] = useState<number[]>([]); // chosen per question (in order)
+    58→  const [finished, setFinished] = useState(false);
+    59→  const finishedRef = useRef(false);
+    60→  const [timeLeft, setTimeLeft] = useState<number | null>(
+    61→    secondsPerQuestion ? secondsPerQuestion * questions.length : null
+    62→  );
+    63→  const [imgBusy, setImgBusy] = useState(false);
+    64→  const userIdRef = useRef<string>("");
+    65→  const { toast } = useToast();
+    66→
+    67→  const correctCount = useMemo(
+    68→    () => answers.reduce((s, a, i) => (a === questions[i]?.answer ? s + 1 : s), 0),
+    69→    [answers, questions]
+    70→  );
+    71→
+    72→  const q = questions[idx];
+    73→  const total = questions.length;
+    74→  const faOpt = q ? (faOptions?.(q) ?? false) : false;
+    75→
+    76→  const finish = (finalAnswers: number[]) => {
+    77→    if (finishedRef.current) return;
+    78→    finishedRef.current = true;
+    79→    const correct = finalAnswers.reduce(
+    80→      (s, a, i) => (a === questions[i]?.answer ? s + 1 : s),
+    81→      0
+    82→    );
+    83→    const percent = Math.round((correct / total) * 100);
+    84→    useStudy.getState().addResult(resultKeyStr, {
+    85→      correct,
+    86→      total,
+    87→      percent,
+    88→      at: new Date().toISOString(),
+    89→    });
+    90→    useStudy.getState().trackQuizDone();
+    91→    // error bank: record wrong answers, clear ones now answered correctly
+    92→    const wrongIds = questions
+    93→      .filter((qq, i) => finalAnswers[i] !== qq.answer)
+    94→      .map((qq) => qq.id);
+    95→    const rightIds = questions
+    96→      .filter((qq, i) => finalAnswers[i] === qq.answer)
+    97→      .map((qq) => qq.id);
+    98→    const storeNow = useStudy.getState();
+    99→    if (trackMistakes) {
+   100→      if (mistakesOf) {
+   101→        // bucket wrong/right ids per source lesson, then record each bucket
+   102→        const wrongBy = new Map<string, string[]>();
+   103→        const rightBy = new Map<string, string[]>();
+   104→        for (const [i, qq] of questions.entries()) {
+   105→          const target = String(mistakesOf(qq));
+   106→          const bucket = finalAnswers[i] !== qq.answer ? wrongBy : rightBy;
+   107→          bucket.set(target, [...(bucket.get(target) ?? []), qq.id]);
+   108→        }
+   109→        for (const [target, ids] of wrongBy) storeNow.addMistakes(target, ids);
+   110→        for (const [target, ids] of rightBy) for (const id of ids) storeNow.clearMistake(target, id);
+   111→      } else {
+   112→        if (wrongIds.length) storeNow.addMistakes(lessonId, wrongIds);
+   113→        for (const id of rightIds) storeNow.clearMistake(lessonId, id);
+   114→      }
+   115→    }
+   116→    // F7 — word-level risk tracking from every answered vocab question
+   117→    try {
+   118→      recordQuizWordResults(questions, finalAnswers);
+   119→    } catch {
+   120→      /* analysis is best-effort — never block the result */
+   121→    }
+   122→    toast({
+   123→      title: percent >= 70 ? "🏆 نتیجهٔ عالی!" : percent >= 50 ? "👍 نتیجهٔ قابل قبول" : "💪 تمرین بیشتر!",
+   124→      description: `${title}: ${correct} از ${total} درست (${percent}٪)${
+   125→        percent >= 90 ? " — فوق‌العاده بود!" : ""
+   126→      }`,
+   127→      duration: 4000,
+   128→    });
+   129→    // fire-and-forget to backend
+   130→    try {
+   131→      const store = useStudy.getState();
+   132→      const userId = userIdRef.current || store.ensureUserId();
+   133→      userIdRef.current = userId;
+   134→      fetch("/api/stats", {
+   135→        method: "POST",
+   136→        headers: { "Content-Type": "application/json" },
+   137→        body: JSON.stringify({
+   138→          userId,
+   139→          lesson: typeof lessonId === "number" ? lessonId : 0,
+   140→          category,
+   141→          total,
+   142→          correct,
+   143→        }),
+   144→      }).catch(() => {});
+   145→    } catch {
+   146→      /* ignore */
+   147→    }
+   148→    // freeze the answers so late clicks during exit animations can't mutate the result
+   149→    setAnswers(finalAnswers);
+   150→    setFinished(true);
+   151→  };
+   152→
+   153→  // timer
+   154→  useEffect(() => {
+   155→    if (timeLeft === null || finished) return;
+   156→    const t = setTimeout(() => {
+   157→      const next = timeLeft - 1;
+   158→      setTimeLeft(next);
+   159→      if (next <= 0) {
+   160→        finish(answers);
+   161→      }
+   162→    }, 1000);
+   163→    return () => clearTimeout(t);
+   164→  }, [timeLeft, finished]);
+   165→
+   166→  const choose = (i: number) => {
+   167→    if (finishedRef.current || finished) return;
+   168→    if (immediate) {
+   169→      if (selected !== null) return;
+   170→      const next = [...answers];
+   171→      next[idx] = i;
+   172→      setAnswers(next);
+   173→      setSelected(i);
+   174→    } else {
+   175→      // exam mode: record answer and auto advance (one answer per question)
+   176→      if (answers[idx] !== undefined) return;
+   177→      const next = [...answers];
+   178→      next[idx] = i;
+   179→      setAnswers(next);
+   180→      if (idx < total - 1) {
+   181→        setIdx(idx + 1);
+   182→        setSelected(null);
+   183→      } else {
+   184→        finish(next);
+   185→      }
+   186→    }
+   187→  };
+   188→
+   189→  const nextQuestion = () => {
+   190→    if (idx < total - 1) {
+   191→      setIdx(idx + 1);
+   192→      setSelected(null);
+   193→    } else {
+   194→      finish(answers);
+   195→    }
+   196→  };
+   197→
+   198→  const restart = () => {
+   199→    finishedRef.current = false;
+   200→    setIdx(0);
+   201→    setSelected(null);
+   202→    setAnswers([]);
+   203→    setFinished(false);
+   204→    setTimeLeft(secondsPerQuestion ? secondsPerQuestion * questions.length : null);
+   205→  };
+   206→
+   207→  // keyboard shortcuts: 1-4 choose an option, Enter / ← advance
+   208→  // (re-registered each render so closures are always fresh)
+   209→  useEffect(() => {
+   210→    if (finished) return;
+   211→    const onKey = (e: KeyboardEvent) => {
+   212→      const tag = (e.target as HTMLElement | null)?.tagName;
+   213→      if (tag === "INPUT" || tag === "TEXTAREA") return;
+   214→      const num = Number(e.key);
+   215→      if (num >= 1 && num <= (questions[idx]?.options.length ?? 0)) {
+   216→        choose(num - 1);
+   217→        return;
+   218→      }
+   219→      if (e.key === "Enter" || e.key === "ArrowLeft") {
+   220→        if (immediate && selected !== null) nextQuestion();
+   221→        else if (!immediate) {
+   222→          if (idx < total - 1) {
+   223→            setIdx(idx + 1);
+   224→            setSelected(null);
+   225→          } else {
+   226→            finish(answers);
+   227→          }
+   228→        }
+   229→      }
+   230→    };
+   231→    window.addEventListener("keydown", onKey);
+   232→    return () => window.removeEventListener("keydown", onKey);
+   233→  });
+   234→
+   235→  // scroll the feedback box into view when it appears (matters inside dialogs)
+   236→  useEffect(() => {
+   237→    if (selected === null || finished) return;
+   238→    document.querySelector("[data-quiz-feedback]")?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+   239→  }, [selected, finished]);
+   240→
+   241→  /* ------------------------------- finished ------------------------------- */
+   242→  if (finished) {
+   243→    const percent = Math.round((correctCount / total) * 100);
+   244→    const wrongIds = questions.filter((qq, i) => answers[i] !== qq.answer).map((qq) => qq.id);
+   245→    const grade =
+   246→      percent >= 90
+   247→        ? { msg: "فوق‌العاده! تو یک قهرمان زبان انگلیسی‌ای! 🏆", cls: "text-emerald-600" }
+   248→        : percent >= 70
+   249→          ? { msg: "خیلی خوب! با کمی تمرین بیشتر به عالی می‌رسی.", cls: "text-emerald-600" }
+   250→          : percent >= 50
+   251→            ? { msg: "بد نیست! نکات گرامری و واژگان را دوباره مرور کن.", cls: "text-amber-600" }
+   252→            : { msg: "نیاز به تمرین بیشتر داری. فلش‌کارت‌ها را مرور کن!", cls: "text-rose-600" };
+   253→
+   254→    // per-group accuracy (e.g. per source lesson in the final exam)
+   255→    const groups =
+   256→      groupOf && groupLabels
+   257→        ? Object.keys(groupLabels)
+   258→            .map((key) => {
+   259→              const qs = questions.filter((qq) => groupOf(qq) === key);
+   260→              const ok = qs.filter((qq, i) => answers[questions.indexOf(qq)] === qq.answer).length;
+   261→              return { key, label: groupLabels[key], total: qs.length, correct: ok };
+   262→            })
+   263→            .filter((g) => g.total > 0)
+   264→        : [];
+   265→
+   266→    const saveResultImage = async (premium: boolean) => {
+   267→      if (imgBusy) return;
+   268→      setImgBusy(true);
+   269→      const ok = await downloadResultImage({
+   270→        title,
+   271→        percent,
+   272→        correct: correctCount,
+   273→        total,
+   274→        userName: useStudy.getState().userName || undefined,
+   275→        premium,
+   276→      });
+   277→      setImgBusy(false);
+   278→      toast(
+   279→        ok
+   280→          ? { title: "🖼 تصویر نتیجه ذخیره شد", description: "حالا می‌توانی آن را در هر کجا به اشتراک بگذاری.", duration: 3000 }
+   281→          : { title: "خطا در ساخت تصویر", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
+   282→      );
+   283→    };
+   284→
+   285→    const shareResult = async () => {
+   286→      const breakdown = groups.map((g) => `${g.label}: ${faNum(Math.round((g.correct / g.total) * 100))}٪`).join(" · ");
+   287→      const text = `🏆 نتیجهٔ من در وب‌کتاب «Vision Two»\n${title}\n⭐ ${faNum(percent)}٪ (${faNum(correctCount)} از ${faNum(total)})${breakdown ? `\n📊 ${breakdown}` : ""}`;
+   288→      try {
+   289→        if (typeof navigator !== "undefined" && typeof navigator.share === "function") {
+   290→          await navigator.share({ title: "نتیجهٔ وب‌کتاب Vision Two", text });
+   291→          return;
+   292→        }
+   293→        await navigator.clipboard.writeText(text);
+   294→        toast({ title: "✓ نتیجه کپی شد", description: "می‌توانی آن را برای دوستانت بفرستی!", duration: 3000 });
+   295→      } catch {
+   296→        /* user cancelled share */
+   297→      }
+   298→    };
+   299→
+   300→    const certificateCard = (
+   301→      <div className="certificate-card rounded-2xl bg-white p-1.5 shadow-xl">
+   302→        <div className="rounded-xl border-2 border-dashed border-amber-300 p-5 text-center sm:p-6">
+   303→          <div className="mb-3 flex items-center justify-center gap-2 text-[11px] font-black tracking-widest text-amber-600">
+   304→            <ScrollText size={14} />
+   305→            WEBBOOK CERTIFICATE · وب‌کتاب ویژن دو
+   306→          </div>
+   307→          <div className="mb-4 flex justify-center">
+   308→            <ProgressRing percent={percent} size={116} stroke={10}>
+   309→              <div>
+   310→                <div className="text-2xl font-black text-stone-800">{faNum(percent)}٪</div>
+   311→                <div className="text-[11px] text-stone-500" dir="ltr">
+   312→                  {correctCount}/{total}
+   313→                </div>
+   314→              </div>
+   315→            </ProgressRing>
+   316→          </div>
+   317→          <div className="mx-auto mb-3 flex w-fit items-center gap-2 rounded-full bg-gradient-to-l from-amber-400 to-orange-500 px-4 py-1.5 text-[13px] font-black text-white shadow-lg shadow-amber-500/30">
+   318→            <Award size={16} />
+   319→            {title}
+   320→          </div>
+   321→          <p className={`mb-1 text-sm font-bold ${grade.cls}`}>{grade.msg}</p>
+   322→          <p className="mb-4 text-[11.5px] text-stone-400">
+   323→            تاریخ اخذ: {new Date().toLocaleDateString("fa-IR")} · وب‌کتاب تعاملی زبان انگلیسی یازدهم
+   324→          </p>
+   325→
+   326→          {/* per-source breakdown */}
+   327→          {groups.length > 0 && (
+   328→            <div className="mx-auto mb-4 grid max-w-md gap-2 text-right" dir="rtl">
+   329→              {groups.map((g) => {
+   330→                const pct = Math.round((g.correct / g.total) * 100);
+   331→                const bar = pct >= 70 ? "from-emerald-400 to-emerald-600" : pct >= 50 ? "from-amber-400 to-orange-500" : "from-rose-400 to-rose-600";
+   332→                return (
+   333→                  <div key={g.key} className="rounded-xl border border-stone-100 bg-stone-50 px-3 py-2">
+   334→                    <div className="mb-1 flex items-center justify-between text-[11.5px] font-bold">
+   335→                      <span className="text-stone-600">{g.label}</span>
+   336→                      <span className="text-stone-800">
+   337→                        {faNum(g.correct)}/{faNum(g.total)} — {faNum(pct)}٪
+   338→                      </span>
+   339→                    </div>
+   340→                    <div className="h-1.5 overflow-hidden rounded-full bg-stone-200">
+   341→                      <motion.div
+   342→                        initial={{ width: 0 }}
+   343→                        animate={{ width: `${pct}%` }}
+   344→                        transition={{ duration: 0.7, ease: "easeOut" }}
+   345→                        className={`h-full rounded-full bg-gradient-to-l ${bar}`}
+   346→                      />
+   347→                    </div>
+   348→                  </div>
+   349→                );
+   350→              })}
+   351→            </div>
+   352→          )}
+   353→
+   354→          <div className="flex flex-wrap justify-center gap-2.5">
+   355→            <button
+   356→              onClick={shareResult}
+   357→              className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-l from-amber-500 to-orange-600 px-4 py-2.5 text-sm font-bold text-white shadow-md shadow-amber-600/25 transition-all hover:opacity-90 active:scale-95"
+   358→            >
+   359→              <Share2 size={15} />
+   360→              اشتراک‌گذاری نتیجه
+   361→            </button>
+   362→            <button
+   363→              onClick={() => saveResultImage(true)}
+   364→              disabled={imgBusy}
+   365→              className="inline-flex items-center gap-1.5 rounded-xl border border-amber-300 bg-amber-50 px-4 py-2.5 text-sm font-bold text-amber-800 transition-all hover:bg-amber-100 active:scale-95 disabled:opacity-50"
+   366→            >
+   367→              <ImageDown size={15} />
+   368→              {imgBusy ? "در حال ساخت تصویر…" : "دانلود تصویر نتیجه"}
+   369→            </button>
+   370→            <button
+   371→              onClick={restart}
+   372→              className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-bold text-white transition-all hover:bg-emerald-700 active:scale-95"
+   373→            >
+   374→              <RotateCcw size={15} />
+   375→              تلاش مجدد
+   376→            </button>
+   377→            <button
+   378→              onClick={onExit}
+   379→              className="inline-flex items-center gap-1.5 rounded-xl border border-stone-300 bg-white px-4 py-2.5 text-sm font-bold text-stone-600 transition-all hover:bg-stone-50 active:scale-95"
+   380→            >
+   381→              بازگشت
+   382→            </button>
+   383→          </div>
+   384→        </div>
+   385→      </div>
+   386→    );
+   387→
+   388→    const standardCard = (
+   389→      <div className="rounded-2xl border border-stone-200 bg-white p-6 text-center shadow-sm">
+   390→        <div className="mb-4 flex justify-center">
+   391→          <ProgressRing percent={percent} size={120} stroke={10}>
+   392→            <div>
+   393→              <div className="text-2xl font-black text-stone-800">{percent}٪</div>
+   394→              <div className="text-[11px] text-stone-500" dir="ltr">
+   395→                {correctCount}/{total}
+   396→              </div>
+   397→            </div>
+   398→          </ProgressRing>
+   399→        </div>
+   400→        <div className="mb-1 flex items-center justify-center gap-2 text-lg font-black">
+   401→          <Trophy size={20} className="text-amber-500" />
+   402→          <span className="text-stone-800">{title} — نتیجهٔ نهایی</span>
+   403→        </div>
+   404→        <p className={`mb-5 text-sm font-bold ${grade.cls}`}>{grade.msg}</p>
+   405→        <div className="mb-4 flex flex-wrap items-center justify-center gap-2">
+   406→          {trackMistakes && wrongIds.length > 0 && (
+   407→            <span className="rounded-full border border-rose-200 bg-rose-50 px-3 py-1 text-[12px] font-bold text-rose-600">
+   408→              {wrongIds.length} سؤال به بانک مرور اشتباهات اضافه شد
+   409→            </span>
+   410→          )}
+   411→          {!trackMistakes && (
+   412→            <span className="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-[12px] font-bold text-amber-700">
+   413→              تمرین هدفمند انجام شد — واژه‌های خطرناک به‌روزرسانی شدند
+   414→            </span>
+   415→          )}
+   416→        </div>
+   417→        <div className="flex flex-wrap justify-center gap-2.5">
+   418→          <button
+   419→            onClick={() => saveResultImage(false)}
+   420→            disabled={imgBusy}
+   421→            className="inline-flex items-center gap-1.5 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-2.5 text-sm font-bold text-emerald-800 transition-all hover:bg-emerald-100 active:scale-95 disabled:opacity-50"
+   422→          >
+   423→            <ImageDown size={15} />
+   424→            {imgBusy ? "در حال ساخت تصویر…" : "دانلود تصویر نتیجه"}
+   425→          </button>
+   426→          <button
+   427→            onClick={restart}
+   428→            className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-bold text-white transition-all hover:bg-emerald-700 active:scale-95"
+   429→          >
+   430→            <RotateCcw size={15} />
+   431→            تلاش مجدد
+   432→          </button>
+   433→          <button
+   434→            onClick={onExit}
+   435→            className="inline-flex items-center gap-1.5 rounded-xl border border-stone-300 bg-white px-4 py-2.5 text-sm font-bold text-stone-600 transition-all hover:bg-stone-50 active:scale-95"
+   436→          >
+   437→            بازگشت
+   438→          </button>
+   439→        </div>
+   440→      </div>
+   441→    );
+   442→
+   443→    return (
+   444→      <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="space-y-5">
+   445→        {certificate ? certificateCard : standardCard}
+   446→
+   447→        {/* review */}
+   448→        <div className="max-h-[46vh] space-y-2.5 overflow-y-auto nice-scroll pl-1">
+   449→          {questions.map((qq, i) => {
+   450→            const my = answers[i];
+   451→            const ok = my === qq.answer;
+   452→            return (
+   453→              <div
+   454→                key={qq.id}
+   455→                className={`rounded-xl border p-3.5 ${
+   456→                  ok ? "border-emerald-200 bg-emerald-50/60" : "border-rose-200 bg-rose-50/60"
+   457→                }`}
+   458→              >
+   459→                <div className="mb-1.5 flex items-start gap-2">
+   460→                  <span
+   461→                    className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-white ${
+   462→                      ok ? "bg-emerald-500" : "bg-rose-500"
+   463→                    }`}
+   464→                  >
+   465→                    {ok ? <Check size={12} /> : <X size={12} />}
+   466→                  </span>
+   467→                  <p className="en-text flex-1 text-[13.5px] leading-7 text-stone-800" dir="ltr">
+   468→                    <b className="mr-1 text-stone-400">{i + 1}.</b>
+   469→                    {qq.question}
+   470→                  </p>
+   471→                </div>
+   472→                <p className="mr-7 text-[12.5px] text-stone-600">
+   473→                  پاسخ شما: <span className={`${faOptions?.(qq) ? "" : "en-text "}font-bold`} dir={faOptions?.(qq) ? "rtl" : "ltr"}>{my !== undefined ? `${letters[my]}) ${qq.options[my]}` : "—"}</span>
+   474→                  {!ok && (
+   475→                    <>
+   476→                      {" "}· پاسخ درست:{" "}
+   477→                      <span className={`${faOptions?.(qq) ? "" : "en-text "}font-bold text-emerald-700`} dir={faOptions?.(qq) ? "rtl" : "ltr"}>
+   478→                        {letters[qq.answer]}) {qq.options[qq.answer]}
+   479→                      </span>
+   480→                    </>
+   481→                  )}
+   482→                </p>
+   483→                {qq.translation && (
+   484→                  <p className="mr-7 mt-1 text-[12px] leading-6 text-stone-500">{qq.translation}</p>
+   485→                )}
+   486→              </div>
+   487→            );
+   488→          })}
+   489→        </div>
+   490→      </motion.div>
+   491→    );
+   492→  }
+   493→
+   494→  /* -------------------------------- active -------------------------------- */
+   495→  return (
+   496→    <div className="space-y-4">
+   497→      {/* header */}
+   498→      <div className="rounded-2xl border border-stone-200 bg-white p-4">
+   499→        <div className="mb-2.5 flex items-center justify-between gap-2">
+   500→          <span className="text-sm font-extrabold text-stone-800">{title}</span>
+   501→          <div className="flex items-center gap-2">
+   502→            {timeLeft !== null && (
+   503→              <span
+   504→                className={`rounded-lg px-2.5 py-1 text-[12px] font-black ${
+   505→                  timeLeft < 60 ? "bg-rose-100 text-rose-700" : "bg-stone-100 text-stone-600"
+   506→                }`}
+   507→                dir="ltr"
+   508→              >
+   509→                {Math.floor(timeLeft / 60)}:{String(timeLeft % 60).padStart(2, "0")}
+   510→              </span>
+   511→            )}
+   512→            <span className="rounded-lg bg-emerald-50 px-2.5 py-1 text-[12px] font-black text-emerald-700">
+   513→              {idx + 1} / {total}
+   514→            </span>
+   515→          </div>
+   516→        </div>
+   517→        <div className="h-2 overflow-hidden rounded-full bg-stone-100">
+   518→          <div
+   519→            className="h-full rounded-full bg-gradient-to-l from-emerald-500 to-emerald-700 transition-all duration-300"
+   520→            style={{ width: `${((idx + (selected !== null ? 1 : 0)) / total) * 100}%` }}
+   521→          />
+   522→        </div>
+   523→      </div>
+   524→
+   525→      {/* question */}
+   526→      <AnimatePresence mode="wait">
+   527→        <motion.div
+   528→          key={q.id}
+   529→          initial={{ opacity: 0, x: -24 }}
+   530→          animate={{ opacity: 1, x: 0 }}
+   531→          exit={{ opacity: 0, x: 24 }}
+   532→          transition={{ duration: 0.22 }}
+   533→          className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm"
+   534→        >
+   535→          <p className="en-text mb-5 text-[16px] font-semibold leading-8 text-stone-800" dir="ltr">
+   536→            {q.question}
+   537→          </p>
+   538→          <div className="space-y-2.5" dir={faOpt ? "rtl" : "ltr"}>
+   539→            {q.options.map((opt, i) => {
+   540→              const isCorrect = immediate && selected !== null && i === q.answer;
+   541→              const isWrong = immediate && selected === i && i !== q.answer;
+   542→              const chosen = selected === i;
+   543→              return (
+   544→                <button
+   545→                  key={i}
+   546→                  onClick={() => choose(i)}
+   547→                  disabled={immediate && selected !== null}
+   548→                  data-quiz-option={i}
+   549→                  className={`flex w-full items-center gap-3 rounded-xl border-2 p-3 text-left transition-all ${
+   550→                    isCorrect
+   551→                      ? "border-emerald-500 bg-emerald-50"
+   552→                      : isWrong
+   553→                        ? "border-rose-400 bg-rose-50"
+   554→                        : chosen
+   555→                          ? "border-emerald-300 bg-emerald-50/50"
+   556→                          : "border-stone-200 bg-white hover:border-emerald-300 hover:bg-emerald-50/40 active:scale-[0.99]"
+   557→                  } ${immediate && selected !== null && !isCorrect && !isWrong ? "opacity-60" : ""}`}
+   558→                >
+   559→                  <span
+   560→                    className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-[13px] font-black ${
+   561→                      isCorrect
+   562→                        ? "bg-emerald-500 text-white"
+   563→                        : isWrong
+   564→                          ? "bg-rose-500 text-white"
+   565→                          : "bg-stone-100 text-stone-600"
+   566→                    }`}
+   567→                  >
+   568→                    {isCorrect ? <Check size={14} /> : isWrong ? <X size={14} /> : letters[i]}
+   569→                  </span>
+   570→                  <span className={`${faOpt ? "" : "en-text "}text-[14.5px] font-medium text-stone-800`}>{opt}</span>
+   571→                </button>
+   572→              );
+   573→            })}
+   574→          </div>
+   575→
+   576→          {/* feedback */}
+   577→          {immediate && selected !== null && (
+   578→            <motion.div
+   579→              initial={{ opacity: 0, y: 8 }}
+   580→              animate={{ opacity: 1, y: 0 }}
+   581→              data-quiz-feedback
+   582→              className="mt-4 rounded-xl border border-stone-200 bg-stone-50 p-3.5"
+   583→            >
+   584→              <p
+   585→                className={`mb-1 text-[13px] font-black ${
+   586→                  selected === q.answer ? "text-emerald-700" : "text-rose-600"
+   587→                }`}
+   588→              >
+   589→                {selected === q.answer ? "✓ پاسخ درست!" : `✗ پاسخ درست: ${letters[q.answer]}) ${q.options[q.answer]}`}
+   590→              </p>
+   591→              {q.translation && (
+   592→                <p className="text-[13px] leading-7 text-stone-600">{q.translation}</p>
+   593→              )}
+   594→              <button
+   595→                onClick={nextQuestion}
+   596→                data-quiz-next
+   597→                className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-[13px] font-bold text-white transition-all hover:bg-emerald-700 active:scale-95"
+   598→              >
+   599→                {idx < total - 1 ? "سؤال بعدی" : "دیدن نتیجه"}
+   600→                <ArrowLeft size={14} />
+   601→              </button>
+   602→            </motion.div>
+   603→          )}
+   604→
+   605→          {/* exam mode nav */}
+   606→          {!immediate && (
+   607→            <div className="mt-4 flex items-center justify-between">
+   608→              <span className="inline-flex items-center gap-1 text-[12px] text-stone-400">
+   609→                <Eye size={13} />
+   610→                پاسخ‌ها در پایان نمایش داده می‌شوند
+   611→              </span>
+   612→              <button
+   613→                onClick={() => (idx < total - 1 ? (setIdx(idx + 1), setSelected(null)) : finish(answers))}
+   614→                data-quiz-next
+   615→                className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-[13px] font-bold text-white transition-all hover:bg-emerald-700 active:scale-95"
+   616→              >
+   617→                {idx < total - 1 ? "بعدی" : "پایان و نتیجه"}
+   618→                <ArrowLeft size={14} />
+   619→              </button>
+   620→            </div>
+   621→          )}
+   622→
+   623→          {/* keyboard hint (desktop) */}
+   624→          <div className="mt-3 hidden items-center justify-center gap-1.5 border-t border-stone-100 pt-3 text-[11px] text-stone-400 min-[720px]:flex">
+   625→            <span>میان‌برها:</span>
+   626→            {["1", "2", "3", "4"].map((k) => (
+   627→              <kbd key={k} className="rounded-md border border-stone-200 bg-stone-50 px-1.5 py-0.5 font-mono text-[10px] text-stone-500 shadow-sm" dir="ltr">
+   628→                {k}
+   629→              </kbd>
+   630→            ))}
+   631→            <span>برای انتخاب گزینه</span>
+   632→            <kbd className="rounded-md border border-stone-200 bg-stone-50 px-1.5 py-0.5 font-mono text-[10px] text-stone-500 shadow-sm" dir="ltr">
+   633→              Enter
+   634→            </kbd>
+   635→            <span>برای سؤال بعدی</span>
+   636→          </div>
+   637→        </motion.div>
+   638→      </AnimatePresence>
+   639→    </div>
+   640→  );
+   641→}
+   642→

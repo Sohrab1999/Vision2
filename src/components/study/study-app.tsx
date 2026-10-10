@@ -8,6 +8,7 @@ import { useMounted } from "@/lib/use-mounted";
 import { stopSpeaking, setSpeakRateScale } from "@/lib/speak";
 import { maybeAutoBackup, collectData, countsOf } from "@/lib/backup";
 import { pushSync } from "@/lib/sync";
+import { trackEventOncePerSession } from "@/lib/analytics";
 import Header from "./header";
 import Footer from "./footer";
 import HomeView from "./home-view";
@@ -40,6 +41,11 @@ export default function StudyApp() {
     html.classList.toggle("user-reduce-motion", settings.reduceMotion);
     setSpeakRateScale(settings.ttsRate);
   }, [settings]);
+
+  // F10 analytics: one anonymous "app_open" per browser session
+  useEffect(() => {
+    trackEventOncePerSession("app_open");
+  }, []);
 
   // silent auto-backup: snapshot progress into localStorage after changes
   // (debounced 4s; maybeAutoBackup only rewrites when data actually changed)

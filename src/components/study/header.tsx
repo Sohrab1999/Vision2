@@ -7,6 +7,7 @@ import { useStudy, AVATAR_COLORS, type View } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
 import { exportProgress, parseBackup, applyBackup, backupSummary, readAutoBackup, restoreAutoBackup, autoBackupAgeFa, collectData } from "@/lib/backup";
+import { trackEvent } from "@/lib/analytics";
 import { pushSync, fetchSync, mergeSyncData, applyMergedSnapshot, normalizeCode, looksLikeCode } from "@/lib/sync";
 import { useToast } from "@/hooks/use-toast";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
@@ -104,6 +105,7 @@ export default function Header() {
 
   const handleExport = () => {
     const ok = exportProgress();
+    if (ok) trackEvent("backup_export");
     toast(
       ok
         ? { title: "✓ پشتیبان دانلود شد", description: "فایل JSON پیشرفت شما ذخیره شد — آن را جایی امن نگه دارید.", duration: 3500 }
@@ -174,6 +176,7 @@ export default function Header() {
     if (res.ok && res.code) {
       setSyncCode(res.code);
       markSynced(res.updatedAt);
+      trackEvent("sync_link");
       toast({
         title: "✓ کد یادگیرنده ساخته شد",
         description: `کد تو «${res.code}» است — روی هر دستگاهی که واردش کنی، پیشرفتت همان‌جا هم هست.`,
@@ -210,6 +213,7 @@ export default function Header() {
     if (applyMergedSnapshot(merged)) {
       if (codeForJoin) setSyncCode(normalizeCode(codeForJoin));
       markSynced(res.updatedAt);
+      trackEvent("sync_restore");
       toast({
         title: "✓ پیشرفت ادغام شد",
         description: "هیچ چیزی از دست نرفته — بهترین وضعیت هر واژه از هر دو دستگاه حفظ می‌شود…",

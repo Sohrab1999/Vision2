@@ -24,6 +24,7 @@ import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
 import { useToast } from "@/hooks/use-toast";
 import { downloadResultImage } from "@/lib/result-image";
+import { trackEvent } from "@/lib/analytics";
 import RushBoard from "./rush-board";
 
 // ------------------------------------------------------------------
@@ -117,6 +118,7 @@ export default function RushView() {
       setIsNewRecord(record);
       store.setRushBest(final.score, final.correct);
       store.trackQuizDone();
+      trackEvent("rush_done");
       if (final.answered > 0) {
         store.addResult("rush", {
           correct: final.correct,

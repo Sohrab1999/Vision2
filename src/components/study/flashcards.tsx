@@ -6,6 +6,7 @@ import { X, ChevronRight, ChevronLeft, Check, RefreshCw, Hand, Sparkles } from "
 import type { LessonData, VocabWord } from "@/lib/study-types";
 import { useStudy, wordKey, srsDueCount, SRS_LABELS } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
+import { trackEvent } from "@/lib/analytics";
 import { posLabel, themeOf } from "@/lib/study-theme";
 import SpeakButton from "./speak-button";
 
@@ -69,6 +70,8 @@ export default function Flashcards({
     reviewWord(key, knownIt);
     if (knownIt && !isKnown) toggleKnown(key);
     trackReview(); // daily streak + goal progress
+    // F10: one full pass of the deck = a finished flashcard round
+    if (index >= cards.length - 1) trackEvent("flashcard_done");
     go(1);
   };
 

@@ -3,6 +3,7 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import type { QuizResult } from "@/lib/study-types";
+import { trackEvent } from "./analytics";
 
 export type View =
   | { type: "home" }
@@ -240,13 +241,16 @@ export const useStudy = create<StudyState>()(
       markBadgesSeen: (ids) => set((s) => ({ seenBadges: [...new Set([...s.seenBadges, ...ids])] })),
       goHome: () => set({ view: { type: "home" }, flashIntent: "none" }),
       openLesson: (id, flashIntent = "none") =>
-        set((s) => ({
+        set((s) => {
+          trackEvent("lesson_open");
+          return {
           view: { type: "lesson", id },
           flashIntent,
           flashNonce: flashIntent === "smart" ? s.flashNonce + 1 : s.flashNonce,
           // smart review always lands on the flashcards, whatever tab was last open
           lessonTab: flashIntent === "smart" ? "vocab" : s.lessonTab,
-        })),
+          };
+        }),
       openLessonTab: (id, tab) => set({ view: { type: "lesson", id }, lessonTab: tab }),
       setView: (v) => set({ view: v, flashIntent: "none" }),
       setLessonTab: (t) => set({ lessonTab: t }),
@@ -294,6 +298,7 @@ export const useStudy = create<StudyState>()(
         }),
       trackQuizDone: () =>
         set((s) => {
+          trackEvent("quiz_done");
           const today = todayStr();
           const stat = s.dayStat.day === today ? normDayStat(s.dayStat) : emptyDayStat(today);
           const base = applyStreak(s, { ...stat, quizzes: stat.quizzes + 1 });
@@ -301,6 +306,7 @@ export const useStudy = create<StudyState>()(
         }),
       trackDictation: () =>
         set((s) => {
+          trackEvent("dictation_done");
           const today = todayStr();
           const stat = s.dayStat.day === today ? normDayStat(s.dayStat) : emptyDayStat(today);
           return applyStreak(s, { ...stat, dictation: stat.dictation + 1 });

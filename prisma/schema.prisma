@@ -45,3 +45,25 @@ model LearnerSync {
 
   @@index([userId])
 }
+
+// F8 «چرا غلط شد؟» — server-side cache of AI explanations, keyed by
+// question id. Every learner asking about the same question gets the
+// exact same controlled answer (one generation, many reads).
+model ExplainCache {
+  key         String   @id
+  explanation String
+  source      String   @default("ai") // "ai" | "fallback"
+  createdAt   DateTime @default(now())
+}
+
+// F10 lightweight product analytics — no PII, no user identifiers.
+// Only aggregate counters per UTC day per whitelisted event name.
+model EventDay {
+  id    String @id @default(cuid())
+  day   String // YYYY-MM-DD (UTC)
+  name  String
+  count Int    @default(0)
+
+  @@unique([day, name])
+  @@index([name])
+}

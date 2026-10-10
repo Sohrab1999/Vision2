@@ -18,6 +18,7 @@ import { useStudy, srsDueTotal, firstLessonWithDue, todayStr, FREEZE_CAP, FREEZE
 import { useToast } from "@/hooks/use-toast";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
+import { trackEvent } from "@/lib/analytics";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 const INSTALL_DISMISS_KEY = "vision2-install-dismissed";
@@ -115,6 +116,7 @@ export default function PwaLayer() {
       deferredInstall = null;
       setInstallable(false);
       setDismissedAt(Date.now());
+      trackEvent("pwa_install");
       toast({ title: "🎉 ویژن ۲ نصب شد!", description: "از این به بعد مثل یک اپ واقعی کنار اپ‌های توست." });
     };
     // fired by the settings popover row («نصب روی دستگاه»)

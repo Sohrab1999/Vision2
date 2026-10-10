@@ -16,6 +16,7 @@ import { useMounted } from "@/lib/use-mounted";
 import { dangerWords, buildDangerQuiz, type DangerWord } from "@/lib/word-risk";
 import { findLesson } from "@/data";
 import { faNum } from "@/lib/study-theme";
+import { trackEvent } from "@/lib/analytics";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import Flashcards from "./flashcards";
 import QuizEngine from "./quiz-engine";
@@ -45,6 +46,7 @@ export default function DangerWords() {
   const openFlashcards = () => {
     setFlashLesson(lessonsPresent[0] ?? list[0]?.lessonId ?? 1);
     setFlashOpen(true);
+    trackEvent("danger_flashcards");
   };
 
   const flashLessonId = flashLesson ?? lessonsPresent[0] ?? 1;
@@ -148,7 +150,7 @@ export default function DangerWords() {
                 فلش‌کارت همین‌ها
               </button>
               <button
-                onClick={() => setPracticeOpen(true)}
+                onClick={() => (setPracticeOpen(true), trackEvent("danger_practice"))}
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-l from-rose-500 to-orange-500 px-4 py-2.5 text-[13px] font-black text-white shadow-md shadow-rose-500/25 transition-all hover:opacity-95 active:scale-95"
               >
                 <Zap size={15} />

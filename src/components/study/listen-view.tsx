@@ -29,6 +29,7 @@ import { pickRound, listenBankStats, LISTEN_KIND_LABEL, type RoundItem, type Lis
 import { speak, stopSpeaking } from "@/lib/speak";
 import { faNum } from "@/lib/study-theme";
 import { useToast } from "@/hooks/use-toast";
+import { trackEvent } from "@/lib/analytics";
 import ProgressRing from "./progress-ring";
 
 type Phase = "setup" | "play" | "done";
@@ -161,6 +162,7 @@ export default function ListenView() {
     const key = resultKey(lessonFilter >= 1 ? lessonFilter : 0, "listening");
     useStudy.getState().addResult(key, { correct, total, percent, at: new Date().toISOString() });
     useStudy.getState().trackQuizDone();
+    trackEvent("listen_done");
     toast({
       title: percent >= 80 ? "🎧 گوش‌های تیز!" : percent >= 50 ? "👍 خوب بود، ادامه بده!" : "💪 با تمرین بیشتر شنیداری‌ات قوی می‌شود",
       description: `تمرین شنیداری: ${faNum(correct)} از ${faNum(total)} درست (${faNum(percent)}٪)`,

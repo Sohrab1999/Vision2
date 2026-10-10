@@ -9,6 +9,8 @@ import { recordQuizWordResults } from "@/lib/word-risk";
 import { faNum } from "@/lib/study-theme";
 import { downloadResultImage } from "@/lib/result-image";
 import { useToast } from "@/hooks/use-toast";
+import { trackEvent } from "@/lib/analytics";
+import ExplainBox from "./explain-box";
 import ProgressRing from "./progress-ring";
 
 export interface QuizEngineProps {
@@ -88,6 +90,7 @@ export default function QuizEngine({
       at: new Date().toISOString(),
     });
     useStudy.getState().trackQuizDone();
+    if (resultKeyStr === "exam" || resultKeyStr === "final") trackEvent("exam_done");
     // error bank: record wrong answers, clear ones now answered correctly
     const wrongIds = questions
       .filter((qq, i) => finalAnswers[i] !== qq.answer)
@@ -483,6 +486,11 @@ export default function QuizEngine({
                 {qq.translation && (
                   <p className="mr-7 mt-1 text-[12px] leading-6 text-stone-500">{qq.translation}</p>
                 )}
+                {!ok && (
+                  <div className="mr-7 mt-2">
+                    <ExplainBox questionId={qq.id} />
+                  </div>
+                )}
               </div>
             );
           })}
@@ -591,6 +599,7 @@ export default function QuizEngine({
               {q.translation && (
                 <p className="text-[13px] leading-7 text-stone-600">{q.translation}</p>
               )}
+              {selected !== q.answer && <ExplainBox questionId={q.id} />}
               <button
                 onClick={nextQuestion}
                 data-quiz-next
