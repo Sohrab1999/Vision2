@@ -25,6 +25,7 @@ export const EVENT_NAMES = [
   "pwa_install",
   "quick_review_start",
   "smart_practice_start",
+  "konkur_start", // konkur corner session (360-bank coverage/mastery)
   "anki_export",
   "print_report", // official printable progress report
 ] as const;
@@ -52,6 +53,7 @@ export const EVENT_LABELS_FA: Record<EventName, string> = {
   pwa_install: "نصب روی دستگاه",
   quick_review_start: "شروع مرور سریع",
   smart_practice_start: "شروع تمرین هوشمند",
+  konkur_start: "شروع جلسهٔ گوشهٔ کنکور",
   anki_export: "خروجی Anki",
   print_report: "گزارش چاپی رسمی",
 };

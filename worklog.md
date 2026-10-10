@@ -647,3 +647,25 @@ Stage Summary:
 - وضعیت: ۱ کامیت آمادهٔ push (ea5bfd2)؛ ریموت روی 51d8e67 (Task 27) مانده
 - اکشن لازم: کاربر توکن GitHub را دوباره ارائه کند ← بازیابی ~/.git-credentials (chmod 600) ← git push origin main
 - بدون تغییر branch و بدون force push (طبق سیاست تسک)
+
+---
+Task ID: 29
+Agent: main (Z.ai Code) — پس از احیای credential گیت‌هاب (توکن تازهٔ کاربر)
+Task: «گوشهٔ کنکور» — سامانهٔ پوشش و تسلط بانک ۳۶۰تایی (نقشهٔ پیشرفت + ۳ حالت جلسه)
+
+Work Log:
+- [عملیات عملیاتی اول جلسه] توکن fine-grained جدید کاربر دریافت و در ~/.git-credentials بازنویسی شد (chmod 600)؛ اعتبارسنجی GET /user (login: Sohrab1999) و git ls-remote ✓؛ سه کامیت معوق از حادثهٔ 28-b (Task 28 + مستندات + AUTO-BACKUP) با موفقیت push شد (51d8e67..1050d37)؛ cron مرور ۱۵دقیقه‌ای webDevReview بازسازی شد (ID 449016 — قبلی در ریست سندباکس از بین رفته بود)
+- [استور] konkurSeen/konkurWrong (Record<string,boolean>) برای پوشش و «غلطِ باز» سؤال‌های x- بانک؛ اکشن markKonkur(entries) — bulk: seen[id]=true، ok→delete wrong، !ok→wrong[id]=true؛ اضافه به partialize؛ View جدید {type:"konkur"}
+- [موتور] src/lib/konkur.ts — recordKonkurResults(questions, answers): فقط idهای x- را به markKonkur می‌فرستد؛ از QuizEngine.finish بعد از recordQuizWordResults صدا زده می‌شود → پوشش از هر سطحی (گوشهٔ کنکور، آزمون جامع، مرور سریع، تمرین هوشمند) خودکار ثبت می‌شود؛ hardIdsOf(mistakes, konkurWrong) = اجتماع بانک خطای ۰ و غلط‌های باز کنکور
+- [Backup/سینک] BackupPayload.data فیلدهای اختیاری konkurSeen/konkurWrong + sanitizeFlagMap (boolean map، cap 2000) در parseBackup + collectData fallback؛ countsOf/sameCounts شمارش konkur اضافه شد تا auto-backup با تغییر پوشش هم refresh شود؛ سینک ابری چون مستقیم localStorage می‌خواند خودکار پوشش داده شد
+- [ویو] src/components/study/konkur-view.tsx — هیروی konkur-hero (قرمز→نارنجی→کهربایی) با ۴ KPI (پوشش/تسلط/خطای باز/رکورد شبیه‌ساز)؛ نقشهٔ پیشرفت ۳۶۰خانه‌ای (grid-cols 10→15→20، aspect-square، hover scale، tooltip وضعیت؛ سبز=مسلط/رز=غلط اخیر/خاکستری=دیده‌نشده + لِجند شمارشی + نوار جشن پوشش کامل)؛ ۳ حالت: شبیه‌ساز کنکور (unseen-first پرشده از بقیهٔ بانک، شافل، ۱۰/۲۰/۳۰، تایمر اختیاری ۴۵ثانیه‌ای، immediate=false)، تست‌های سخت من (union بانک ۰ + konkurWrong، سقف ۲۰ در جلسه، immediate، بدون تایمر)، پوشش بانک (فقط دیده‌نشده به ترتیب بانک، ۱۰/۱۵/۲۰ با disabled خودکار)؛ سکشن «چطور کار می‌کند؟»؛ همهٔ جلسات = QuizEngine با mistakesOf=()=>0 → غلط‌ها به بانک ۰ می‌روند و با مرور آزمون جامع/مرور سریع هم‌سان می‌مانند؛ groupOf تفکیک نتیجه بر اساس درس مبدأ؛ trackEvent konkur_start
+- [اتصال‌ها] رندر در study-app؛ کارت «گوشهٔ کنکور» در ابزارهای خانه (بج = تعداد تست‌های سخت، واکنشی به konkurWrong)؛ categoryLabel/feedLabel برای konkur/konkur-hard/konkur-cover؛ میان‌بر G (e.code) + راهنما + افزودن konkur به quizContext (غیرفعال‌سازی حروف وسط جلسه)؛ رویداد konkur_start در whitelist + برچسب فارسی
+- [دارک‌مود] override .dark .konkur-hero (گرادیان قرمز-قهوه‌ای تیره) + سه قانون bg-orange-50/border-orange-200/text-orange-700/800 (چون فقط amber/rose/emerald override سراسری داشتند)
+- [QA مرورگری — agent-browser] (۱) کارت خانه (بج ۸ خطای قبلی بانک ۰) → ویو ✓ (۲) KPIها: پوشش ۰/۳۶۰، خطای باز ۸ (از دادهٔ موجود)، لِجند ۰/۸/۳۶۰ ✓ (۳) شبیه‌ساز ۱۰تایی بدون تایمر: auto-advance + نتیجه ۲/۱۰ با تفکیک منبع + دکمه‌های توضیح AI ✓ (۴) بعد از خروج: پوشش ۱۰، خطای باز ۱۶ (۸ قبلی+۸ جدید)، رکورد شبیه‌ساز ۲۰٪، «۳۵۰ باقی‌مانده» ✓ (۵) تست‌های سخت من: بج ۱۶ + پنل با پیام حذف دوطرفه ✓ (۶) جلسهٔ ۱۶تایی با اسکریپت خودکار (نگاشت سؤال→پاسخ از exam.ts با bun؛ تنها سؤال تکراری بانک x-304/x-357 گزینه/پاسخ یکسان دارد — تطبیق متنی امن) همه درست → نتیجه ۱۶/۱۶ ✓ (۷) پاک‌شدن دوطرفه: خطای باز ۰، تسلط ۱۰۰٪، پوشش ۱۸/۳۶۰ (۸ قدیمی حالا دیده‌شده)، بج کارت خانه صفر، بنر «مرور اشتباهات آزمون جامع» در ویو آزمون حذف شد ✓ (۸) دارک‌مود: هیرو/نقشه/چیپ‌ها کامل (اسکرین‌شات‌ها /tmp/r29-konkur-dark3.png، r29-konkur-dark-bottom.png) ✓ (۹) موبایل ۳۹۰px: بدون سرریز (sw=cw=390)، گرید ۱۰ستونه، KPI ۲×۲، فوتر چسبیده ✓ (۱۰) dev.log بدون خطای runtime و بدون non-200
+- tsc=۰ خطا، lint=۰ خطا
+
+Stage Summary:
+- گوشهٔ کنکور حلقهٔ «کنکور-محور» را بست: اپ حالا برای بانک ۳۶۰تایی پوشش (seen)، تسلط (mastered) و خطای باز (wrong-now) را جدا از درس‌ها رهگیری می‌کند و سه مسیر هدفمند (شبیه‌ساز/سخت/پوشش) می‌سازد
+- تصمیم فنی: ثبت پوشش در QuizEngine.finish (نه per-view) → هر سطحی که تستِ x- بپرسد به پوشش کمک می‌کند؛ نگه‌داری غلطِ باز در دو نقشه (بانک خطای کلاسیک ۰ + konkurWrong) به‌جای تغییر معنای بانک موجود — سازگاری کامل با مرور سریع/آزمون جامع
+- داده: پوشش/تسلط در بک‌آپ JSON، auto-backup و سینک ابری پشتیبانی می‌شود
+- پیشنهاد گام بعد: سررسید کنکوری (SRS روی سؤال‌های x-)، رتبه‌بندی پوشش بانک در لیدربرد، یا حالت مسابقهٔ دودنفره روی چالش برق‌آسا

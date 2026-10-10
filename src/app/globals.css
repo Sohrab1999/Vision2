@@ -277,6 +277,13 @@ body {
 /* smart-practice hero */
 .dark .smart-hero { background-image: linear-gradient(to left, rgba(76, 29, 149, 0.45), rgba(24, 21, 18, 0.9)) !important; }
 
+/* konkur corner hero + orange accents (no global orange-50 override exists) */
+.dark .konkur-hero { background-image: linear-gradient(to left, rgba(124, 45, 18, 0.62), rgba(24, 21, 18, 0.94)) !important; }
+.dark .bg-orange-50 { background-color: rgba(88, 44, 14, 0.4); }
+.dark .border-orange-200 { border-color: rgba(160, 95, 30, 0.5); }
+.dark .text-orange-700 { color: #fdba74; }
+.dark .text-orange-800 { color: #fdba74; }
+
 /* scrollbar */
 .dark .nice-scroll { scrollbar-color: #3d372f transparent; }
 .dark .nice-scroll::-webkit-scrollbar-thumb { background: #3d372f; }

@@ -25,9 +25,11 @@ import {
   Radio,
   Eraser,
   Zap,
+  GraduationCap,
 } from "lucide-react";
 import { lessons, examBank, totalVocabulary, totalQuestions } from "@/data";
 import { useStudy, knownCountOfLesson, summarize, srsDueTotal, firstLessonWithDue, todayStr, mistakesOfLesson, FREEZE_CAP } from "@/lib/study-store";
+import { hardIdsOf } from "@/lib/konkur";
 import { useMounted } from "@/lib/use-mounted";
 import { themeOf, faNum, timeAgoFa } from "@/lib/study-theme";
 import ProgressRing from "./progress-ring";
@@ -70,6 +72,9 @@ const categoryLabel: Record<string, string> = {
   mixed: "تست ترکیبی درس",
   mistakes: "مرور اشتباهات",
   rush: "چالش برق‌آسا",
+  konkur: "شبیه‌ساز کنکور",
+  "konkur-hard": "تست‌های سخت من",
+  "konkur-cover": "پوشش بانک ۳۶۰",
 };
 
 // compact labels for the live feed rows
@@ -86,6 +91,9 @@ const feedLabel: Record<string, string> = {
   mixed: "تست ترکیبی",
   mistakes: "مرور اشتباهات",
   rush: "چالش برق‌آسا",
+  konkur: "شبیه‌ساز کنکور",
+  "konkur-hard": "تست‌های سخت",
+  "konkur-cover": "پوشش بانک ۳۶۰",
 };
 
 interface RecentAttempt {
@@ -107,6 +115,7 @@ export default function HomeView() {
   const results = useStudy((s) => s.results);
   const srs = useStudy((s) => s.srs);
   const mistakes = useStudy((s) => s.mistakes);
+  const konkurWrong = useStudy((s) => s.konkurWrong);
   const streak = useStudy((s) => s.streak);
   const bestStreak = useStudy((s) => s.bestStreak);
   const freezeCount = useStudy((s) => s.freezeCount);
@@ -124,6 +133,7 @@ export default function HomeView() {
   const totalMistakes = mounted
     ? mistakesOfLesson(mistakes, 0) + mistakesOfLesson(mistakes, 1) + mistakesOfLesson(mistakes, 2) + mistakesOfLesson(mistakes, 3)
     : 0;
+  const konkurHardCount = mounted ? hardIdsOf(mistakes, konkurWrong).size : 0;
 
   const [globalStats, setGlobalStats] = useState<{
     total: number;
@@ -539,6 +549,7 @@ export default function HomeView() {
             { icon: Sparkles, title: "تمرین هوشمند", desc: "جلسه‌ای که خودش از روی بانک خطا و مهارت‌های ضعیف تو ساخته می‌شود", onClick: () => setView({ type: "smart" as const }), color: "text-violet-600 bg-violet-50 border-violet-200" },
             { icon: BookMarked, title: "دیکشنری جستجو", desc: `${faNum(totalVocabulary)} واژهٔ سه درس با جستجوی فارسی و انگلیسی`, view: { type: "dictionary" as const }, color: "text-sky-600 bg-sky-50 border-sky-200" },
             { icon: ClipboardCheck, title: "آزمون جامع", desc: `${faNum(examBank.length)} تست گردآوری از بانک ۳۶۰ تستی جزوه با تایمر`, view: { type: "exam" as const }, color: "text-emerald-600 bg-emerald-50 border-emerald-200" },
+            { icon: GraduationCap, title: "گوشهٔ کنکور", desc: "سامانهٔ پوشش و تسلط بانک ۳۶۰تایی: نقشهٔ پیشرفت، شبیه‌ساز و تست‌های سخت", view: { type: "konkur" as const }, color: "text-orange-600 bg-orange-50 border-orange-200", badge: konkurHardCount },
             { icon: Ear, title: "آزمون دیکته", desc: "املای شنیداری با روخوانی هوش مصنوعی و ثبت در SRS", onClick: () => openLessonTab(reviewLesson ?? 1, "dictation"), color: "text-violet-600 bg-violet-50 border-violet-200" },
             { icon: Eraser, title: "مرور سریع قبل امتحان", desc: "ترکیبی از غلط‌های اخیر ۳ درس و بانک ۳۶۰تا؛ پاسخ درست = حذف از بانک خطا", onClick: () => setView({ type: "review" as const }), color: "text-rose-600 bg-rose-50 border-rose-200", badge: totalMistakes },
             { icon: Library, title: "ضمیمهٔ کتاب", desc: "افعال بی‌قاعده، جدول تلفظ IPA و اجزای کلام", view: { type: "appendix" as const }, color: "text-amber-600 bg-amber-50 border-amber-200" },

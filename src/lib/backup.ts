@@ -41,6 +41,9 @@ export interface BackupPayload {
     // F7 word-level risk maps (optional for backward compatibility)
     wordMistakes?: Record<string, number>;
     wordSeen?: Record<string, number>;
+    // گوشهٔ کنکور coverage/mastery maps (optional for backward compatibility)
+    konkurSeen?: Record<string, boolean>;
+    konkurWrong?: Record<string, boolean>;
   };
 }
 
@@ -79,6 +82,8 @@ export function collectData(): BackupPayload["data"] {
     goalMetDays: s.goalMetDays ?? [],
     wordMistakes: s.wordMistakes ?? {},
     wordSeen: s.wordSeen ?? {},
+    konkurSeen: s.konkurSeen ?? {},
+    konkurWrong: s.konkurWrong ?? {},
   };
 }
 
@@ -110,6 +115,16 @@ export function exportProgress(): boolean {
 
 const asRecord = (v: unknown): Record<string, unknown> =>
   v && typeof v === "object" && !Array.isArray(v) ? (v as Record<string, unknown>) : {};
+
+/** sanitize a boolean flag map (konkur coverage): short keys, hard cap on entries */
+function sanitizeFlagMap(v: unknown): Record<string, boolean> {
+  const out: Record<string, boolean> = {};
+  for (const [k, b] of Object.entries(asRecord(v))) {
+    if (typeof b === "boolean" && b) out[k.slice(0, 80)] = true;
+    if (Object.keys(out).length >= 2000) break;
+  }
+  return out;
+}
 
 /** sanitize an F7 word-stat map: finite non-negative ints, hard cap on entries */
 function sanitizeWordStat(v: unknown): Record<string, number> {
@@ -215,6 +230,8 @@ export function parseBackup(text: string): BackupPayload {
         : [],
       wordMistakes: sanitizeWordStat(data["wordMistakes"]),
       wordSeen: sanitizeWordStat(data["wordSeen"]),
+      konkurSeen: sanitizeFlagMap(data["konkurSeen"]),
+      konkurWrong: sanitizeFlagMap(data["konkurWrong"]),
     },
   };
 }
@@ -260,7 +277,7 @@ export const AUTO_BACKUP_INTERVAL = 24 * 60 * 60 * 1000; // 24h refresh cadence
 
 export interface AutoBackup {
   savedAt: string; // ISO
-  counts: { known: number; results: number; srs: number; mistakes: number; history: number };
+  counts: { known: number; results: number; srs: number; mistakes: number; history: number; konkur: number };
   data: BackupPayload["data"];
 }
 
@@ -272,11 +289,12 @@ export function countsOf(data: BackupPayload["data"]): AutoBackup["counts"] {
     srs: Object.keys(data.srs).length,
     mistakes: Object.keys(data.mistakes).length,
     history: Object.keys(data.history).length,
+    konkur: Object.keys(data.konkurSeen ?? {}).length + Object.keys(data.konkurWrong ?? {}).length,
   };
 }
 
 const sameCounts = (a: AutoBackup["counts"], b: AutoBackup["counts"]) =>
-  a.known === b.known && a.results === b.results && a.srs === b.srs && a.mistakes === b.mistakes && a.history === b.history;
+  a.known === b.known && a.results === b.results && a.srs === b.srs && a.mistakes === b.mistakes && a.history === b.history && a.konkur === b.konkur;
 
 /**
  * Write/refresh the automatic snapshot when needed.

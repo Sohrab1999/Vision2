@@ -14,7 +14,8 @@ export type View =
   | { type: "rush" }
   | { type: "listen" }
   | { type: "review" }
-  | { type: "smart" };
+  | { type: "smart" }
+  | { type: "konkur" };
 
 export type LessonTab = "vocab" | "conversation" | "reading" | "grammar" | "writing" | "dictation" | "tests";
 
@@ -103,6 +104,8 @@ export interface StudyState {
   mistakes: MistakeMap;
   wordMistakes: WordStatMap; // F7 — wrong answers per word key
   wordSeen: WordStatMap; // F7 — answered (seen) per word key
+  konkurSeen: Record<string, boolean>; // گوشهٔ کنکور — exam-bank (x-) questions answered at least once
+  konkurWrong: Record<string, boolean>; // گوشهٔ کنکور — exam-bank questions answered wrong (cleared on a correct answer)
   flashIntent: "none" | "smart";
   flashNonce: number; // bumped on every "smart" intent so VocabTab remounts into flashcards
   seenBadges: string[];
@@ -142,6 +145,7 @@ export interface StudyState {
   trackQuizDone: () => void;
   addMistakes: (lessonId: number | string, ids: string[]) => void;
   clearMistake: (lessonId: number | string, id: string) => void;
+  markKonkur: (entries: { id: string; ok: boolean }[]) => void;
   addWordResults: (entries: { key: string; ok: boolean }[]) => void;
   lessonMistakeCount: (lessonId: number) => number;
   ensureUserId: () => string;
@@ -207,6 +211,8 @@ export const useStudy = create<StudyState>()(
       mistakes: {},
       wordMistakes: {},
       wordSeen: {},
+      konkurSeen: {},
+      konkurWrong: {},
       flashIntent: "none",
       flashNonce: 0,
       seenBadges: [],
@@ -330,6 +336,21 @@ export const useStudy = create<StudyState>()(
           delete next[k];
           return { mistakes: next };
         }),
+      // گوشهٔ کنکور — bulk per-question result for the 360-question exam bank:
+      // marks coverage (seen) and tracks the wrong-now set (cleared when answered right)
+      markKonkur: (entries) =>
+        set((s) => {
+          if (entries.length === 0) return s;
+          const seen = { ...s.konkurSeen };
+          const wrong = { ...s.konkurWrong };
+          for (const { id, ok } of entries) {
+            if (!id) continue;
+            seen[id] = true;
+            if (ok) delete wrong[id];
+            else wrong[id] = true;
+          }
+          return { konkurSeen: seen, konkurWrong: wrong };
+        }),
       // F7 — accumulate word-level seen/mistake counters (quiz/dictation/listening)
       addWordResults: (entries) =>
         set((s) => {
@@ -377,6 +398,8 @@ export const useStudy = create<StudyState>()(
         mistakes: s.mistakes,
         wordMistakes: s.wordMistakes,
         wordSeen: s.wordSeen,
+        konkurSeen: s.konkurSeen,
+        konkurWrong: s.konkurWrong,
         seenBadges: s.seenBadges,
         rushBest: s.rushBest,
         rushBestCorrect: s.rushBestCorrect,

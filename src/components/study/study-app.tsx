@@ -20,6 +20,7 @@ import RushView from "./rush-view";
 import ListenView from "./listen-view";
 import ReviewView from "./review-view";
 import SmartPracticeView from "./smart-practice-view";
+import KonkurView from "./konkur-view";
 import ShortcutGuide from "./shortcut-guide";
 import ReportCard from "./report-card";
 import OfficialReport from "./official-report";
@@ -143,6 +144,7 @@ export default function StudyApp() {
               {view.type === "listen" && <ListenView />}
               {view.type === "review" && <ReviewView />}
               {view.type === "smart" && <SmartPracticeView />}
+              {view.type === "konkur" && <KonkurView />}
             </motion.div>
           </AnimatePresence>
         ) : (

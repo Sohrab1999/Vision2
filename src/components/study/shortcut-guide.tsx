@@ -35,6 +35,7 @@ const GROUPS: { title: string; icon: React.ElementType; rows: Row[] }[] = [
       { keys: ["E"], desc: "آزمون جامع" },
       { keys: ["A"], desc: "ضمیمهٔ کتاب" },
       { keys: ["C"], desc: "چالش برق‌آسا (۶۰ ثانیه)" },
+      { keys: ["G"], desc: "گوشهٔ کنکور (بانک ۳۶۰ تستی)" },
       { keys: ["T"], desc: "تغییر حالت شب / روز" },
       { keys: ["?"], desc: "باز و بسته کردن همین راهنما" },
     ],
@@ -108,7 +109,7 @@ export default function ShortcutGuide() {
   // inside an active test/exam/challenge the nav letters/numbers are disabled
   // so they can't wipe an in-progress session (quiz uses 1-4 itself)
   const quizContext =
-    view.type === "exam" || view.type === "rush" || (view.type === "lesson" && lessonTab === "tests");
+    view.type === "exam" || view.type === "rush" || view.type === "konkur" || (view.type === "lesson" && lessonTab === "tests");
 
   // global shortcuts + «؟» toggle (layout-independent: matches e.code)
   useEffect(() => {
@@ -128,6 +129,7 @@ export default function ShortcutGuide() {
       else if (code === "KeyE") setView({ type: "exam" });
       else if (code === "KeyA") setView({ type: "appendix" });
       else if (code === "KeyC") setView({ type: "rush" });
+      else if (code === "KeyG") setView({ type: "konkur" });
       else if (code === "KeyT") setTheme(theme === "dark" ? "light" : "dark");
       else if (code === "KeyF" && view.type === "lesson") openLesson(view.id, "smart");
       else if (/^(Digit|Numpad)[1-7]$/.test(code) && view.type === "lesson") {

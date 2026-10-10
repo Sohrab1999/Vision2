@@ -6,6 +6,7 @@ import { Check, X, ArrowLeft, RotateCcw, Trophy, Eye, Award, Share2, ScrollText,
 import type { QuizQuestion } from "@/lib/study-types";
 import { useStudy } from "@/lib/study-store";
 import { recordQuizWordResults } from "@/lib/word-risk";
+import { recordKonkurResults } from "@/lib/konkur";
 import { faNum } from "@/lib/study-theme";
 import { downloadResultImage } from "@/lib/result-image";
 import { useToast } from "@/hooks/use-toast";
@@ -121,6 +122,12 @@ export default function QuizEngine({
       recordQuizWordResults(questions, finalAnswers);
     } catch {
       /* analysis is best-effort — never block the result */
+    }
+    // گوشهٔ کنکور — per-question coverage/mastery for exam-bank questions
+    try {
+      recordKonkurResults(questions, finalAnswers);
+    } catch {
+      /* best-effort — never block the result */
     }
     toast({
       title: percent >= 70 ? "🏆 نتیجهٔ عالی!" : percent >= 50 ? "👍 نتیجهٔ قابل قبول" : "💪 تمرین بیشتر!",
