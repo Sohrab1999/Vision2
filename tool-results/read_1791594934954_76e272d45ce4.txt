@@ -1,0 +1,214 @@
+   300→Stage Summary:
+   301→- وضعیت: پایدار — محتوایی مهم‌ترین ریسک پروژه برطرف شد: کل بانک ۳۶۰ تستی جزوه حالا در اپ است (۴۹۰ تست مجموع)؛ ۵ ویژگی/رفع‌باگ جدید E2E تست شد
+   302→- آمار اپ: ۷ تب درس + ۴۹۰ تست + چالش رقابتی + ۲۰ نشان + دونات SRS + فیلتر وضعیت دیکشنری + کارنامه با گزارش ماهانه + پشتیبان خودکار/دستی + دارک‌مود کامل
+   303→- ریسک‌ها: (۱) OOM سرور در کامپایل موازی (الگوی double-fork setsid در راند ۸)؛ (۲) سلکتورهای اسکیپ‌دار Tailwind در CSS دستی ممنوع — از [class*="..."] استفاده شود؛ (۳) پارسر PDF و خروجی TS در /home/z/tmp/ نگه‌داری شد (bank.txt/p204l.txt/parse_bank.py/bank_out.ts) برای بازتولید؛ (۴) هشدار هیدریشن رادیکس فقط بعد از HMRهای زیاد
+   304→- پیشنهاد بعدی: تفکیک سطح تست‌ها (استاندارد/کنکوری) در بانک اگر برچسب در PDF قابل استخراج است، ترجمهٔ فارسی برای تست‌های بانک ۳۶۰تایی (در PDF نیست — نیاز به منبع دیگر)، جایزهٔ امتیازی نشان برای صدر جدول چالش، صفحهٔ هدفمندی «تمرین هوشمند» از پنل مهارت‌ها، حالت چاپ کارنامه (print stylesheet)
+   305→
+   306→---
+   307→
+   308→Task ID: 15
+   309→Agent: cron-review agent (round 10)
+   310→Task: QA رگرسیون کامل + سیستم «اهداف روزانه» (Daily Quests) + چاپ کارنامه + نشان «مأمور پنج‌گانه» + رفع ۲ باگ + پولیش دارک‌مود و موبایل
+   311→
+   312→Work Log:
+   313→- QA رگرسیون قبل از تغییرات با agent-browser (دو نشست): خانه، درس ۱ (۷ تب)، موتور آزمون (پاسخ + فیدبک + نتیجه)، دیکشنری، آزمون جامع، چالش برق‌آسا با جدول، ضمیمه، دارک/روشن، موبایل ۳۹۰px — همه سالم؛ سرور ۲۰۰ و dev.log تمیز؛ lint ۰/۰
+   314→- [ویژگی ۱ — اهداف روزانه] lib جدید src/lib/daily-quests.ts با ۵ هدف خودکارِ ردیابی‌شونده: مرور فلش‌کارت (۱۰)، واژهٔ تازه (۵)، آزمون و تمرین (۳)، دیکتهٔ شنیداری (۱)، چالش برق‌آسا (۱)؛ کامپوننت جدید daily-quests.tsx در خانه (بعد از برنامهٔ امروز): هدر با رینگ درصد SVG، چیپ «N از ۵»، پیام وضعیت سه‌حالته، گرید ریسپانسیو ۱/۲/۳ ستونه از ردیف‌های قابل‌کلیک (پرش هوشمند: مرور→فلش‌کارت مرور هوشمندِ اولین درس سررسید، واژه→فلش‌کارت درس ۱، آزمون→ویو آزمون، دیکته→تب دیکتهٔ درس ۱، چالش→ویو چالش)، نوار پیشرفت انیمیشنی هر هدف، تیک سبز اتمام، بنر پاداش گرادیانی با shimmer هنگام اتمام همه + توست جشن (ref-guarded — فقط وقتی در همان نشست زنده کامل شود، نه هر لود صفحه)
+   315→- [زیرساخت ردیابی] DayStat توسعه یافت: فیلدهای words/dictation/rush + normDayStat/emptyDayStat برای مهاجرت امن stateهای قدیمی؛ شمارندهٔ words داخل toggleKnown (فقط unknown→known؛ همهٔ تماس‌گیرندگان یعنی واژهٔ روز/فلش‌کارت/لیست واژگان/دیکشنری را پوشش می‌دهد)، trackDictation جدید (صدا از finish دیکته)، rush داخل setRushBest؛ پشتیبان‌گیری JSON: فیلدهای جدید در parseBackup
+   316→- [ویژگی ۲ — چاپ کارنامه] دکمهٔ «چاپ کارنامه» در فوتر کارنامهٔ من (کنار یادداشت انگیزشی) + printReport (کلاس موقت print-report روی body + پاک‌سازی با afterprint + تایمر اطمینان ۲ثانیه‌ای)؛ استایل‌شیت چاپ: visibility approach (فقط report-paper چاپ می‌شود)، print-color-adjust: exact برای گرادیان‌ها، خنثی‌سازی اسکرول/سایه/بوردر دیالوگ، دکمهٔ چاپ مخفی، و ~۲۰ قانون بازگشت رنگ روشن برای حالت دارک (html.dark body.print-report) تا کاغذ چاپی همیشه سفید باشد؛ تست: کلیک بدون خطای کنسول + کلاس به‌درستی پاک شد
+   317→- [ویژگی ۳ — نشان جدید] نشان ۲۱م «مأمور پنج‌گانه» طلایی (Crown): هر ۵ هدف روزانه را در یک روز کامل کن؛ BadgeEvalInput.questsDoneToday از completedQuestCount در buildEvalInput (مصرف در badges و report-card خودکار)؛ آیکون Crown به نقشهٔ آیکون‌ها اضافه شد
+   318→- [باگ ۱ رفع‌شده] ReferenceError: today is not defined در DailyQuests — هنگام ریفکتور حذف useEffect اعلان const today حذف شده بود (کرش کل کامپوننت) → اعلان بازگردانده شد
+   319→- [باگ ۲ رفع‌شده] پرش «مرور فلش‌کارت» کارت اهداف به‌جای فلش‌کارت‌ها تب قبلی درس (مثلاً دیکته) را باز می‌کرد چون openLesson(id,"smart") فقط flashIntent ست می‌کرد و lessonTab دست‌نخورده می‌ماند → حالا openLesson هنگام intent=«smart» lessonTab را هم به vocab برمی‌گرداند (تست: با آخرین تب دیکته، پرش فلش‌کارت باز کرد)
+   320→- [بهبود موبایل] جدول افعال بی‌قاعدهٔ ضمیمه در ۳۹۰px ستون‌هایش له می‌شد → کلاس verbs-table با min-width: 540px داخل ظرف overflow-auto (اسکرول افقی واقعی؛ تست: scrollLeft منفی RTL ستون‌های شکل دوم/سوم را کامل نشان داد)
+   321→- [استایل] ~۳۵ خط override دارک برای کارت اهداف (بدنه/ردیف‌ها/چیپ‌های رنگی ۵مهارت/بنر پاداش) + دکمهٔ چاپ در دارک + انیمیشن reward-shimmer؛ موبایل: ردیف‌ها تک‌ستونه و بنر دوخطه — اسکرین‌شات و تأیید
+   322→- تست E2E کامل دور زندگی اهداف: واژهٔ روز «بلدم؟» → ۵→۴ باقیمانده؛ ۲ مرور فلش‌کارت → ۱۰→۸؛ آزمون ۱۰سوالی کیبوردی (۳۰٪، ۷ اشتباه به بانک) → ۳→۲؛ دیکتهٔ ۸تایی (skip/راهنما، ۰٪) → «کامل شد» + ردیف DB dictation؛ چالش ۶۰ثانیه‌ای کیبوردی (۱۸۲ امتیاز — رکورد جدید!) → «کامل شد» + ردیف DB با score؛ ۹ مرور فلش‌کارت → هر دو هدف باقی باقی‌مانده صفر؛ ۵/۵ + رینگ ۱۰۰٪ + بنر پاداش «۲۶ فعالیت امروز» + توست نشان «مأمور پنج‌گانه» + نشان طلایی باز در گرید (اول ردیف بازها)؛ توست «کمبوی آتشین» هم از دور چالش؛ dayStat نهایی: reviews=11, quizzes=3, words=12, dictation=1, rush=1؛ auto-backup فیلدهای جدید را دارد
+   323→- نکتهٔ ابزاری: find/click با متن فارسی به‌خاطر نیم‌فاصله (ZWNJ) ناموفق است — از aria-label prefix یا کلیک بومی JS استفاده شود؛ در RTL اسکرول افقی scrollLeft منفی است
+   324→- اسکرین‌شات‌ها: /tmp/r15-quests.png (حالت اولیهٔ روشن)، /tmp/r15-quests-done2.png (۳/۵)، /tmp/r15-quests-final.png (۵/۵ + بنر پاداش + توست نشان)، /tmp/r15-dark-quests.png (دارک)، /tmp/r15-mobile-quests.png (موبایل تک‌ستون)، /tmp/r15-report.png (دکمهٔ چاپ در کارنامه)، /tmp/r15-mobile-verbs3.png (جدول اسکرول‌شده)، /tmp/r15-badges.png (نشان طلایی جدید)
+   325→
+   326→Stage Summary:
+   327→- وضعیت: پایدار — سیستم گیمیفیکیشن روزانه اضافه شد که همهٔ بخش‌های اپ (مرور/واژه/آزمون/دیکته/چالش) را در یک حلقهٔ تعامل روزانه گره می‌زند؛ ۲ باگ رفع شد
+   328→- آمار اپ: ۷ تب درس + ۴۹۰ تست + چالش رقابتی + ۲۱ نشان + اهداف روزانه + کارنامهٔ قابل‌چاپ + SRS + پشتیبان خودکار/دستی + دارک‌مود کامل + میان‌برهای کیبورد
+   329→- ریسک‌ها: (۱) OOM سرور در کامپایل موازی (الگوی double-fork setsid)؛ (۲) سلکتورهای اسکیپ‌دار Tailwind و :has() در CSS دستی ممنوع (LightningCSS) — قانون [class*="..."] رعایت شد؛ (۳) هشدار هیدریشن رادیکس فقط بعد از HMRهای زیاد (نشست تازه ۰ خطا)؛ (۴) chunk کهنهٔ Turbopack بعد از ویرایش‌های سنگین — با تغییر جزئی فایل force-recompile شود
+   330→- پیشنهاد بعدی: جایزهٔ امتیازی نشان برای صدر جدول چالش، ترجمهٔ فارسی تست‌های بانک ۳۶۰تایی (نیاز به منبع)، صفحهٔ هدفمندی «تمرین هوشمند» از پنل مهارت‌ها، تم سوم (کنتراست بالا)، تقویم ماهانهٔ اهداف (هر روز یک خانه با وضعیت ۵/۵)
+   331→
+   332→---
+   333→
+   334→Task ID: 16
+   335→Agent: main (Z.ai Code) — Product Lead / Technical Architect / UX Strategist audit
+   336→Task: ممیزی جامع محصول (ساختار، فنی، UX، داده، ریسک) + Completeness Matrix + Top 10 گلوگاه + Roadmap
+   337→
+   338→Work Log:
+   339→- worklog کامل (Task 1-15) خوانده شد؛ کدبیس (استور، APIها، schema، globals.css، next.config) از نزدیک بررسی شد
+   340→- QA عملی با agent-browser در نشست تازه: خانه/درس۱/۷ تب/فلش‌کارت (Space/K/←)/موتور آزمون کامل ۲۰ سوالی (۳۵٪، فیدبک فوری، بانک اشتباهات ۱۳تایی، رینگ، توست)/دیکشنری/آزمون جامع (۲ مود)/چالش + جدول DB-پشتیبان/پروفایل پاپ‌اور (نام/رنگ/پشتیبان/پشتیبان خودکار)/دارک/روشن/موبایل ۳۹۰px — همه سالم، کنسول ۰ خطا
+   341→- تأیید زیرساختی: POST /api/stats در DB نوشته شد (vocab 20/7/35%)؛ POST با payload نامعتبر → 400؛ TTS → WAV معتبر ۱۱۷KB؛ GET /api/stats فید زنده با نام/رنگ؛ GET /api/leaderboard و /api/rush-leaderboard فعال
+   342→- [یافتهٔ مهم ۱] next.config: typescript.ignoreBuildErrors=true و bunx tsc --noEmit → ۶ خطای TS واقعی در src: header.tsx (عدم import نوع View)، speak.ts/speakSpell (Promise<SpeakStop> به‌جای SpeakStop)، conversation-tab.tsx (cleanup همگام)، quiz-engine.tsx (clipboard روی never)، report-card.tsx (Set/never[] union — همان الگوی باگ راند ۱۳)، study-store.ts («none» به «smart»)
+   343→- [یافتهٔ مهم ۲] بدون error boundary: error.tsx/global-error.tsx/not-found.tsx وجود ندارند — کرش کامپوننت (نمونهٔ راند ۱۲) = کل اپ می‌میرد
+   344→- [یافتهٔ مهم ۳] امنیت: بدون auth — userId کلاینتی؛ هر کسی با POST /api/profile می‌تواند پروفایل دیگری را بازنویسی کند و با POST /api/stats جدول‌ها را آلوده کند؛ بدون rate limit روی /api/tts (هزینه) و /api/stats؛ بدون middleware
+   345→- [یافتهٔ مهم ۴] بدون هیچ تست خودکار (unit/e2e) — همهٔ QA مانیوال agent-browser است
+   346→- [یافتهٔ مهم ۵] محتوا: بانک ۳۶۰تایی بدون ترجمهٔ فارسی (تست‌های درس‌ها دارند) — ناسازگاری تجربه
+   347→- [یافتهٔ جزئی] فید زنده برای کاربران بی‌نام هیچ برچسبی ندارد (name=null → فقط فعالیت بدون فاعل)؛ بدون manifest/PWA؛ reactStrictMode=false؛ ۳۶۰ خط override .dark دستی در globals.css (۳۸KB) — ۳ بار قبلاً باگ تولید کرده؛ کامپوننت‌های بزرگ (home-view ۳۳KB، dictation ۲۷KB، rush ۲۵KB، quiz-engine ۲۶KB)؛ دادهٔ کل کتاب در باندل کلاینت (تقریباً ۸۸KB transfer در dev، در prod کمتر)
+   348→- گزارش ممیزی کامل (۷ بخش + ماتریس + Top 10 + نقشهٔ راه) به کاربر تحویل شد
+   349→
+   350→Stage Summary:
+   351→- قضاوت کلی: محصول از نظر فیچر و پایداری runtime بالغ است (MVP++ )، ولی سه ستون لانچ پایدار ضعیف‌اند: (۱) ایمنی در برابر خطا (error boundary/tipo-check)، (۲) اعتماد دادهٔ چندکاربره (auth/ownership/rate limit)، (۳) تست خودکار برای رگرسیون
+   352→- پیشنهاد اولویت اول: فعال‌سازی type-check + رفع ۶ خطای TS + error boundary + rate limit ساده — هر سه در یک راند قابل انجام‌اند
+   353→
+   354→---
+   355→
+   356→Task ID: 17
+   357→Agent: main (Z.ai Code) — Phase 0 (Safety) + Phase 1 quick win
+   358→Task: اجرای فاز ۰ ممیزی — رفع ۶ خطای TS، error boundary، rate limit، فعال‌سازی type-check + برچسب ناشناس فید
+   359→
+   360→Work Log:
+   361→- [۶ خطای TS رفع شد — src از این به بعد ۰ خطا] study-store.ts (تایپ flashIntent: "none"|"smart")، header.tsx (import type View)، speak.ts (speakSpell → Promise<SpeakStop>)، conversation-tab.tsx (حذف stopRef مرده و assignment همگام)، quiz-engine.tsx (جایگزینی "share" in navigator با typeof navigator.share === "function" تا never-narrowing رفع شود)، report-card.tsx (useMemo<Set<string>> به‌جای fallback [] که union never[] می‌ساخت)
+   362→- [type-check مجدداً فعال شد] next.config.ts: ignoreBuildErrors=false + tsconfig exclude برای examples/skills/mini-services (خطاهای scaffold نباید بیلد اپ را ببندند)
+   363→- [error boundary] src/app/error.tsx (کارت بازیابی فارسی «این صفحهٔ کتاب باز نشد!» + تلاش دوباره + بازگشت به خانه + پیام اطمینان از سالم بودن داده) و src/app/global-error.tsx (نسخهٔ مستقل با inline style و html/body) — تست واقعی: throw کنترل‌شدهٔ موقت در HomeView با ?e2e-crash=1 → کنسول تأیید «handled by ErrorBoundaryHandler» و کارت بازیابی رندر شد با هدر سالم؛ کد تست بلافاصله revert شد (rg تأیید پاک‌بودن)
+   364→- [rate limit] src/lib/rate-limit.ts — پنجرهٔ لغزان درون‌حافظه‌ای به‌کلید route+IP با cleanup خودکار؛ تست واحد: ۳۰ مجاز/۵ مسدود، ایزولهٔ IP و bucket تأیید. اتصال: tts (۳۰/min فقط روی cache-miss تا روخوانی تکراری جریمه نشود)، stats GET 240/POST 60، profile GET 240/POST 30، leaderboard و rush-leaderboard GET 240 — پاسخ 429 فارسی + Retry-After
+   365→- [فید زنده] کاربران بی‌نام حالا «یادگیرندهٔ ناشناس —» با رنگ خنثی نشان داده می‌شوند (قبلاً بدون فاعل بود)
+   366→- QA: tsc --noEmit → ۰ خطای src؛ lint ۰/۰؛ نشست تازهٔ مرورگر ۰ خطای کنسول؛ TTS از دکمهٔ واژهٔ روز ۲۰۰ و dev.log تمیز؛ رندر خانه/فید/نمودارها سالم
+   367→
+   368→Stage Summary:
+   369→- فاز ۰ کامل شد: شبکهٔ ایمنی خطا (boundary + type-check) و محافظت هزینه/داده (rate limit) برقرار است
+   370→- ماندهٔ فاز ۱: ownership سبک پروفایل (جلوگیری از بازنویسی نام دیگران)، اتصال نسخهٔ fallback global-error به تم برند
+   371→- پیشنهاد راند بعد: فاز ۲ — ترجمهٔ فارسی فازبندی‌شدهٔ بانک ۳۶۰تایی (ابتدا ۱۰۰ تست)، smoke test های E2E پایه، سپس PWA/manifest و analytics سبک
+   372→
+   373→---
+   374→
+   375→Task ID: 18
+   376→Agent: main (Z.ai Code) — Product Strategist / UX Researcher / AI Product Analyst
+   377→Task: تحلیل جامع فرصت‌های فیچر + نقشهٔ راه استاندارد چک‌باکسی در پوشهٔ roadmaps
+   378→
+   379→Work Log:
+   380→- worklog (Task 1-17) مرور شد؛ QA زندهٔ خانه با agent-browser: هر ۱۷ ناحیه (اهداف روزانه/واژهٔ روز/چالش/نمودار ۷-۳۰روزه/دونات/SRS/مهارت‌ها/قفسه/ابزارها/نشان‌ها) سالم رندر شد؛ سرور ۲۰۰، dev.log پاک
+   381→- تحلیل محصول در ۷ محور انجام شد: بلوغ فیچرهای موجود (محتوا ۹۰٪، موتور تمرین ۸۵٪، گیمیفیکیشن ۸۵٪)، نقاط ضعف UX (نقطهٔ صفر بی‌هدف، پنل کنترل صفر، ناسازگاری ترجمهٔ بانک ۳۶۰)، رفتارهای دستی کاربر (انتقال JSON پشتیبان، ندیدن «چرا غلط شدم»، نبود تمرین شنیداری هم‌راستا با امتحان)
+   382→- ۹ شکاف محصول (G1-G9) مستند شد: حلقهٔ بازگشت و مالکیت داده دو شکاف بحرانی ماندگاری‌اند
+   383→- ۱۰ کارت فیچر (F1-F10) با مشکل/سناریو/ارزش/پیچیدگی/ریسک/فاز تدوین شد: آنبردینگ، تنظیمات، کد یادگیرنده (sync بین دستگاه)، PWA+بدج سررسید، ترجمهٔ بانک ۳۶۰، تمرین شنیداری «بشنو و انتخاب کن»، واژه‌های خطرناک من، AI Explain مقید، نگهبان زنجیره، smoke+analytics
+   384→- دسته‌بندی ۵گانه (ضروری لانچ/تجربه/ماندگاری/داده/⛔ نباید ساخته شود) + جدول ارزش-هزینه + Feature Opportunity Map + Top 10 با ترتیب ۵ اسپرینت
+   385→- ⛔ هشدارهای صریح: چت‌بات آزاد AI، auth کامل قبل از کد یادگیرنده، Teacher Mode فعلاً، UGC، اپ نیتیو، پرداخت، مهاجرت DB، محتوای بیشتر قبل از حل حلقهٔ بازگشت
+   386→- [خروجی ثبت شد] /home/z/my-project/roadmaps/2026-10-feature-roadmap.md — سند استاندارد چک‌باکسی با Progress Log (آیتم‌ها هنگام پیاده‌سازی تیک و Task ID می‌خورند)
+   387→
+   388→Stage Summary:
+   389→- قضاوت استراتژیک: محصول MVP++ بالغ است؛ رشد بعدی باید روی «ماندگاری» (حلقهٔ بازگشت) و «اعتماد داده» (کد یادگیرنده) متمرکز شود نه فیچر تزئینی
+   390→- ترتیب توافق‌شدهٔ ۵ اسپرینت: ۱) آنبردینگ+تنظیمات ۲) کد یادگیرنده+ترجمهٔ ۱۰۰تست ۳) PWA+یخ زنجیره ۴) شنیداری+واژه‌های خطرناک ۵) AI Explain+smoke/analytics
+   391→- ریسک مشاهده‌شدهٔ جدید: پولینگ مکرر /api/leaderboard در لاگ — کاندیدای adaptive interval در فاز بهینه‌سازی (اولویت پایین)
+   392→
+   393→---
+   394→
+   395→Task ID: 19
+   396→Agent: main (Z.ai Code) — Sprint 1 (MVP-Activation) طبق نقشه راه فیچرها
+   397→Task: F1 آنبردینگ ۳مرحله‌ای + F1b هدف روزانهٔ انتخابی + F2 مرکز تنظیمات
+   398→
+   399→Work Log:
+   400→- [استور] study-store.ts: dailyGoal (default 10، clamp 5..20)، onboarded، settings {ttsRate، fontScale، reduceMotion} + اکشن‌های setDailyGoal/setOnboarded/setSettings؛ همه در partialize (سازگار با استورهای قبلی — merge پیش‌فرض زوستند). ثابت DAILY_TARGET حذف شد و مصرف‌کننده‌ها از استور می‌خوانند
+   401→- [F1] src/components/study/onboarding.tsx — دیالوگ ۳گامی: (۱) خوش‌آمد + نام/رنگ اختیاری با مسیر «ناشناس می‌مانم» (ذخیره پروفایل + POST /api/profile مثل هدر) (۲) انتخاب هدف روزانه ۵/۱۰/۱۵ با کارت‌های سبک/متعادل(پیشنهادی)/جدی (۳) جمع‌بندی + CTA «شروع اولین تمرین» → openLesson(1,"smart") فلش‌کارت درس اول + «بعداً». ESC/کلیک بیرون = skip (onInteractOutside preventDefault). گیت نمایش: useSyncExternalStore روی persist.hasHydrated/onFinishHydration (بدون setState در effect — رفع خطای lint react-hooks/set-state-in-effect) + useMounted + !onboarded
+   402→- [F2] src/components/study/settings-popover.tsx — پاپ‌آور ۵بخشی: اسلایدر سرعت روخوانی 0.7-1.3 (با دکمهٔ پخش نمونهٔ واقعی TTS و برچسب آرام/معمولی/سریع‌تر)، سگمنت اندازهٔ متن کوچک/معمولی/بزرگ (0.94/1/1.1)، سوییچ کاهش حرکت، سگمنت هدف روزانه ۵/۱۰/۱۵، دکمهٔ پرش به پروفایل/پشتیبان (open-profile). دکمهٔ Settings در هدر بین حالت شب و راهنمای کیبورد
+   403→- [speak.ts] rateScale ماژول‌لول + setSpeakRateScale/getSpeakRateScale؛ سرعت مؤثر = round(speed*scale,2) روی کلید کش و body — همهٔ فراخوانی‌های TTS (دکمهٔ واژه/مکالمه/دیکته/املایی) بدون تغییر کد مشمول تنظیم کاربر می‌شوند
+   404→- [اعمال تنظیمات] StudyApp: useEffect روی settings → html.style.fontSize = 16*fontScale، کلاس user-reduce-motion، setSpeakRateScale
+   405→- [F1b] home-view.tsx و weekly-chart.tsx: DAILY_TARGET → dailyGoal از استور («هدف امروز»، درصد رینگ، خط هدف نمودار ۷/۳۰ روزه)
+   406→- [CSS] globals.css: قواعد html.user-reduce-motion (انیمیشن/ترنزیشن/scroll-behavior + استثنای streak-flame)
+   407→- QA کامل با agent-browser: (الف) مرورگر تازه (localStorage خالی) → آنبردینگ ظاهر شد؛ گام۱ نام «آرش» + رنگ بنفش → گام۲ انتخاب ۱۵ → گام۳ جمع‌بندی درست → CTA به درس اول پرید؛ persist: onboarded=true, goal=15, name=آرش؛ بعد از reload دیالوگ تکرار نشد (ب) هدف امروز در خانه = ۱۵ ✓ (ج) تنظیمات: فونت بزرگ → html fontSize=17.6px؛ reduce-motion → کلاس روی html؛ اسلایدر با کیبورد 1→1.15 و برچسب سریع‌تر؛ persist تنظیمات تأیید؛ بازگردانی به پیش‌فرض با همان UI (د) تغییر هدف از تنظیمات به ۱۰ → خانه زنده به‌روز شد (هـ) نشست تازهٔ مرورگر: کنسول فقط info (بدون خطا)؛ (و) دارک + موبایل ۳۹۰px: دکمهٔ تنظیمات در هدر جا گرفته، اسکرین‌شات‌ها /tmp/r19-mobile-home.png و /tmp/r19-settings-light.png (ز) bunx tsc --noEmit = ۰ خطا، bun run lint = ۰ خطا
+   408→- [نکته] هشدار dev-only radix aria-controls در اورلی Next (مثل قبل، فقط بعد از HMRهای زیاد؛ نشست تازه پاک است)
+   409→- [نقشه راه] چک‌باکس‌های F1، F1b، F2 و اسپرینت ۱ تیک خورد + Progress Log به‌روز شد
+   410→
+   411→Stage Summary:
+   412→- اسپرینت ۱ نقشه راه (MVP-Activation) کامل شد: روز اولِ کاربر اکنون هدایت‌شده است (شخصی‌سازی + هدف + قدم اول) و کاربر کنترل دارد (TTS/فونت/حرکت/هدف)
+   413→- تصمیم فنی: تنظیمات به‌صورت multiplier روی TTS اعمال می‌شود تا نسبت سرعت‌های آگاهانهٔ موجود (املایی 0.8، دیکته 0.85) حفظ شود؛ فونت با root font-size تا همهٔ اندازه‌های rem مقیاس شوند
+   414→- مسیر بعدی طبق نقشه راه: اسپرینت ۲ — F3 «کد یادگیرنده» (همگام‌سازی/بازیابی پیشرفت بین دستگاه) + شروع F5 ترجمهٔ ۱۰۰ تست بانک ۳۶۰
+   415→
+   416→---
+   417→
+   418→Task ID: 20
+   419→Agent: main (Z.ai Code) — Sprint 2 (MVP-Trust) طبق نقشه راه فیچرها
+   420→Task: F3 کد یادگیرنده (همگام‌سازی پیشرفت بین دستگاه‌ها) + F5 فاز ۱ (ترجمهٔ ۱۰۰ تست اول بانک ۳۶۰)
+   421→
+   422→Work Log:
+   423→- [F3 دیتابیس] prisma/schema.prisma: مدل LearnerSync (code @id، userId، data JSON، createdAt/updatedAt + index userId) + db:push موفق
+   424→- [F3 lib] src/lib/sync.ts — الفبا بدون حروف مبهم (بدون 0/O/1/I/L)، generateLearnerCode قالب XXXX-XXXX، normalizeCode (کد کثیف با فاصله/حروف کوچک را تمیز می‌کند)، mergeSyncData با قواعد «هیچ‌چیز از دست نمی‌رود»: known=union(true برنده)، results=بالاترین درصد، srs=سطح بالاتر/سررسید جدیدتر، history/mistakes=max، rushBest=max، dayStat=ادغام روز مشترک یا روز پرکارتر، نام/رنگ از هر طرفی که هست؛ applyMergedSnapshot از طریق useStudy.setState (اتمیک با persist)؛ pushSync/fetchSync با sanitize از parseBackup
+   425→- [F3 API] src/app/api/sync/route.ts — POST {code?, userId, data}: تولید کد یکتا (۵ تلاش ضدتصادم)، سقف ۶۰۰KB، چک شکل داده، userId اجباری (۶..۶۴)؛ GET ?code=: ۴۰۴ فارسی، rate-limit سخت ۱۲/min ضدحدس کد (32^8≈1.1e12 فضای کلید)؛ POST ۳۰/min
+   426→- [F3 استور] syncCode + setSyncCode در study-store (partialize) — تنظیمات/هدف/آنبردینگ صراحتاً device-owned مانده‌اند و sync نمی‌شوند
+   427→- [F3 UI] هدر > پاپ‌آور پروفایل > بخش «همگام‌سازی بین دستگاه‌ها» (با بج جدید): حالت بدون کد = دکمهٔ «ساخت کد یادگیرنده» + ورودی «ورود با کد» (Enter هم کار می‌کند، دکمه تا کد معتبر قفل)؛ حالت متصل = نمایش کد mono با کپی، «آخرین همگام‌سازی»، «به‌روزرسانی ابری»، «بازیابی از ابر»، «قطع همگام‌سازی» (دادهٔ محلی و ردیف سرور حفظ می‌شود)
+   428→- [F3 auto-push] StudyApp: وقتی کد متصل است، بعد از هر فعالیت با debounce ۱۲ثانیه + اثر انگشت countsOf (فقط وقتی واقعاً تغییر کرده push می‌شود)
+   429→- [باگ حین توسعه — رفع شد] نسخهٔ اول applyMergedSnapshot مستقیم در localStorage می‌نوشت و setSyncCodeِ بلافاصله بعدش کل استور را بازنویسی می‌کرد → دادهٔ merge گم می‌شد (در QA کشف شد: known فقط 3:art مانده بود) → راه‌حل: اعمال merge با useStudy.setState که persist middleware اتمیک می‌نویسد؛ تست مجدد: اتحاد ۳واژه + نام «تست» + نتیجهٔ ۸۰٪ همه ماند
+   430→- [نیاز به ری‌استارت] بعد از db:push، سرور در حال اجرا کلاینت قدیمی پرایما را داشت (db.learnerSync undefined → ۵۰۰) → ری‌استارت تمیز سرور (kill + setsid) → همهٔ مسیرها سبز
+   431→- [F5] src/data/exam-fa.ts — مپ EXAM_FA (id→ترجمه) برای x-1..x-100 + applyExamTranslations؛ exam.ts در پایان ماژول آن را روی examBank اعمال می‌کند؛ معماری فازبندی‌شده: فازهای بعدی فقط گسترش همین مپ است. تأیید با bun TS runner: total=360، translated=100، x-101 بدون ترجمه
+   432→- [QA F3 — مرورگر] ساخت کد از UI → BTC7-Q4VV با همهٔ کنترل‌ها؛ «ورود با کد» با ورودی کثیف «fbq6 yvdn» → normalize به FBQ6-YVDN و merge کامل (۳واژه/نام/نتیجه/حفظ تنظیمات محلی)؛ قطع و اتصال مجدد؛ curl: POST→کد، GET→200، کد نامعتبر→400، ناشناخته→404، ۱۳ درخواست سریع→429 (rate limit فعال)
+   433→- [QA F3 — auto-push] بعد از فعالیت، ۱۲ثانیه بعد اسنپ‌شات ابری FBQ6-YVDN با دادهٔ ادغام‌شده به‌روز شد (updatedAt تازه در GET)
+   434→- [QA F5 — مرورگر] آزمون جامع ۱۰تایی بدون تایمر کامل شد؛ در صفحهٔ مرور، سؤالات دارای ترجمه (x-92، x-22، x-99) ترجمهٔ فارسی زیر پاسخ درست دارند و سؤالات فاز بعدی ندارند (رفتار درست)
+   435→- اسکرین‌شات: /tmp/r20-sync.png؛ tsc=۰ خطا، lint=۰ خطا؛ سرور ۲۰۰
+   436→
+   437→Stage Summary:
+   438→- اسپرینت ۲ (MVP-Trust) کامل شد: سه ستون «ضروری لانچ» نقشه راه (F1، F2، F3) اکنون همه برقرارند؛ بزرگ‌ترین ریسک اعتماد («سوختن پیشرفت با پاک‌شدن مرورگر») از بین رفت
+   439→- تصمیم‌های فنی: کد ۸کاراکتری به‌جای auth کامل (طبق هشدار ⛔ نقشه راه)؛ merge دوطرفه به‌جای جایگزینی؛ تنظیمات/هدف هر دستگاهی، پیشرفتِ مشترک
+   440→- باقی‌ماندهٔ F5: ۲۶۰ تست دیگر (فقط گسترش exam-fa.ts) — کاندیدای راندهای بعدی در کنار اسپرینت ۳
+   441→- مسیر بعدی طبق نقشه راه: اسپرینت ۳ (Retention) — F4 PWA نصب‌پذیر + بدج سررسید مرور SRS + F9 نگهبان زنجیره
+   442→
+   443→---
+   444→Task ID: 21
+   445→Agent: main (Z.ai Code) — Sprint 3 (Retention) طبق نقشه راه فیچرها
+   446→Task: F4 PWA نصب‌پذیر + بدج سررسید مرور + F9 نگهبان زنجیره (Streak Freeze)
+   447→
+   448→Work Log:
+   449→- [F4 آیکون‌ها] آیکون اپ با AI تولید (کتاب + شعله + برند Vision 2 روی گرادیان زمردی) و با sharp در ۴ اندازه برش خورد: icon-192/512، icon-maskable-512 (safe-zone ۸۰٪ روی زمینهٔ emerald-700)، apple-touch-icon 180 + favicon-32
+   450→- [F4 manifest] src/app/manifest.ts — نام/زبان fa/dir rtl، standalone، theme #047857، background stone-50، ۳ آیکون + دو shortcut (?goto=review / ?goto=exam)؛ layout.tsx: viewport با themeColor روشن/تاریک + appleWebApp + applicationName + icons
+   451→- [F4 service worker] public/sw.js (vision2-sw-v1): precache `/` و لوگو/آیکون‌ها؛ navigations network-first با timeout 3.5s → کش → `/` → صفحهٔ آفلاین inline؛ /api/* همیشه network-only (rate-limit و sync زنده می‌مانند)؛ /_next/static و آیکون‌ها cache-first؛ بقیه network→cache؛ پیام SKIP_WAITING + پاک‌سازی کش‌های نسخهٔ قدیم در activate. Bump نسخه = invalidation کامل
+   452→- [F4 UI] src/components/study/pwa-layer.tsx — ثبت SW؛ گرفتن beforeinstallprompt (ماژول‌لول) + کارت شناور «نصب رایگان/بعداً» با dismiss-cooldown ۷روزه (state مشتق‌شده، بدون setState-in-effect — خطای lint رفع شد)؛ رویداد install-app از تنظیمات → prompt() یا دیالوگ راهنما (iOS: اشتراک ← افزودن به صفحهٔ اصلی / دسکتاپ: منوی مرورگر)؛ toast نصب موفق (appinstalled)؛ hidden در display-mode standalone
+   453→- [F4 بدج سررسید] subscribe به استور + visibilitychange → navigator.setAppBadge(min(due,99)) / clearAppBadge (گارد کامل) + توست یک‌باردرروز «N واژهٔ سررسید منتظر توست» با dedupe localStorage؛ میان‌برهای manifest (?goto=) با حذف پارامتر از URL
+   454→- [F4 تنظیمات] ردیف «نصب وب‌کتاب روی دستگاه» در SettingsPopover (مخفی در standalone، سبک emerald)
+   455→- [F9 استور] study-store.ts: FREEZE_CAP=2 / FREEZE_EARN_GOALS=3 / FREEZE_WINDOW=7 + فیلدهای freezeCount/freezeEarnedDay/freezeUsedDays/goalMetDays (persist) و freezeSavedDay (device-only) + daysAgoKey؛ applyStreak جدید: غیبت دقیقاً ۱روزه + یخ موجود و مصرف‌نشده → زنجیره ادامه (streak+1)، یخ -۱، روز غیبت در freezeUsedDays (slice -30)، freezeSavedDay=امروز؛ gap≥۲روز یا بدون یخ → ریست به ۱ (ضد-آبُس)؛ goalAndFreezePatch در trackReview/trackQuizDone: ثبت روزِ هدف‌دار (reviews+quizzes ≥ dailyGoal، cap ۱۴) و ساخت یخ با ۳ روزِ هدف‌دار در پنجرهٔ ۷روزه + cooldown ۷روزه + سقف ۲ — freezeCountNow از خروجی applyStreak می‌آید تا مصرف و ساخت در همان فراخوانی تداخل نکنند
+   456→- [F9 سازگاری داده] backup.ts (payload + collectData + parseBackup sanitize: clamp 0..2، فیلتر آرایه‌ها) و sync.ts (merge: freezeCount=max با cap، freezeUsedDays/goalMetDays=union، freezeEarnedDay=جدیدترین) — نسخهٔ پشتیبان همان ۱ ماند (فیلدهای اختیاری با default)؛ curl roundtrip تأیید شد
+   457→- [F9 UI] چیپ «N یخِ زنجیره» (سفید-یخی، Snowflake) زیر زنجیره در خانه + متن «امروز یخ، زنجیره را نجات داد!» در روزِ نجات؛ توست‌های سراسری: «❄️ یخِ تو نجاتت داد!» و «❄️ یک یخِ زنجیره ساختی!» (هر دو یک‌باردرروز) — نشان «هفتهٔ کامل» سیستم نشان‌های موجود هم با زنجیرهٔ ۷روزه خودکار صادر شد
+   458→- [QA agent-browser] (۱) SW ثبت و active با scope /؛ (۲) آفلاین واقعی: set offline on → reload → خانه کامل از کش رندر شد؛ (۳) توست سررسید «۲ واژهٔ سررسید منتظر توست» + کارت نصب هم‌زمان (BIP در Chromium آمد = معیارهای نصب‌پذیری برقرار)؛ (۴) ساخت یخ: seed دو روز هدف‌دار + reviews=9/10 → یک «بلدم» → reviews=10، goalMetDays ۳روزه، freezeCount=1، freezeEarnedDay=امروز + توست + چیپ؛ (۵) نجات زنجیره: streak=6 با lastActiveDay=۲روز پیش + ۱ یخ → یک مرور → streak=7 (نه ریست)، freezeCount=0، freezeUsedDays=[دیروز]، توست نجات + پیام آبی خانه + نشان «هفتهٔ کامل»؛ (۶) ضد-آبُس: streak=5 با غیبت ۲روزه و بدون یخ → مرور → streak=1؛ (۷) ردیف تنظیمات → دیالوگ راهنمای نصب دسکتاپ؛ (۸) ?goto=exam → ورود مستقیم به آزمون + پاک‌شدن پارامتر؛ (۹) موبایل ۳۹۰px کارت نصب فول‌ویدث بالای محتوا؛ (۱۰) setAppBadge در Chromium موجود و بدون خطا؛ (۱۱) sync roundtrip فیلدهای یخ با curl؛ (۱۲) کنسول نشست تازه بدون خطا؛ tsc=۰ خطا، lint=۰ خطا؛ dev.log فقط 200
+   459→- [نقشه راه] چک‌باکس‌های F4 (نصب‌پذیر + بدج)، F9 و اسپرینت ۳ تیک خورد + Progress Log به‌روز شد
+   460→
+   461→Stage Summary:
+   462→- اسپرینت ۳ (Retention) کامل شد: حلقهٔ بازگشت برقرار است — اپ نصب‌پذیر شد (حضور روی گوشی)، آفلاین جواب می‌دهد، بدج آیکون تعداد سررسیدها را نشان می‌دهد و یک روز غیبت دیگر زنجیره را نمی‌سوزاند
+   463→- تصمیم‌های فنی: یخ فقط غیبت ۱روزه را نجات می‌دهد (ضد-آبُس)؛ کسب با «هدف کامل» گره خورده تا حلقهٔ انگیزشی روزانه تقویت شود؛ تنظیمات/توصیه‌ها device-owned و یخ‌ها sync-owned مانند بقیهٔ پیشرفت
+   464→- باقی‌ماندهٔ نقشه راه: اسپرینت ۴ (F6 تمرین شنیداری + F7 واژه‌های خطرناک) و اسپرینت ۵ (F8 AI Explain + F10 smoke/analytics) + F5 فازهای بعدی (۲۶۰ تست)
+   465→- نکتهٔ کوچک مشاهده‌شده: رینگ «اهداف روزانه» در حالت صفر «۰٪» ریز را نشان می‌دهد که در فونت کنونی شبیه «-٪» دیده می‌شود (از قبل موجود، غیرمسدودکننده — کاندیدای پولیش بصری راند بعد)
+   466→
+   467→---
+   468→Task ID: 22
+   469→Agent: main (Z.ai Code) — Sprint 4 (Depth) طبق نقشه راه فیچرها
+   470→Task: F6 تمرین شنیداری «بشنو و انتخاب کن» + F7 «واژه‌های خطرناک من»
+   471→
+   472→Work Log:
+   473→- [F6 بانک] src/lib/listen-bank.ts — بانک شنیداری کامل از محتوای موجود (بدون محتوای بیرونی، طبق نقشه راه): سه نوع آیتم = word (واژگان سه درس → معنی)، meaning (خط‌های مکالمه با ترجمهٔ جمله‌به‌جمله → معنی درست؛ پاراگراف‌های ریدینگ عمداً کنار گذاشته شدند چون ترجمهٔ پاراگراف‌سطحی در سطح جمله دقیق نیست)، next (ادامهٔ خط مکالمه از خود دیالوگ). pickRound با توزیع متوازن (~۴۰٪ واژه / ۳۵٪ ترجمه / ۲۵٪ ادامه) + shuffle گزینه‌ها هر راند + listenBankStats برای راهنمای setup
+   474→- [F6 موتور] src/components/study/listen-view.tsx — setup (تعداد ۶/۸/۱۰/۱۲ + محدودهٔ درس هرسه/۱/۲/۳) → play (پخش خودکار هر آیتم، حداکثر ۲ پخش با نشانگر فرصت، دکمهٔ پخش بزرگ با حلقهٔ نبض، ۳ گزینه با جهت درست per-kind: next=LTR-en / بقیه RTL-fa، فیدبک فوری با reveal انگلیسی + ترجمهٔ فارسی، auto-advance ۲.۲s) → done (رینگ نتیجه + فهرست مرور per-item + «یک دور دیگر/تغییر تنظیمات»). سرعت TTS per-kind (واژه ۰.۸، جمله ۰.۹۲) × rateScale کاربر. keyboard 1-3/Enter. stale-closure با snapshot finalAnswers حل شد؛ word-items بلافاصله reviewWord + addWordResults (SRS + F7)
+   475→- [F6 اتصال] View type «listen» + مسیر در study-app؛ بنر شنیداری (cyan/teal + Headphones + بج «جدید») بین WordOfDay و چالش برق‌آسا در خانه؛ SKILL_DEFS «شنیداری» (Headphones، cyan #0891b2، match :listening) + آیکون/CTA در skill-panel (تمرین هدفمند → view listen)؛ categoryLabel/feedLabel «شنیداری/واژه‌های خطرناک»؛ نتیجهٔ راند → resultKey(lessonId|0,"listening") + trackQuizDone (هدف روزانه/زنجیره) + POST /api/stats category listening
+   476→- [F7 دیتا] study-store: wordMistakes/wordSeen (WordStatMap) + اکشن addWordResults(entries) — در partialize. feed از سه مسیر: quiz-engine.finish → recordQuizWordResults (واژهٔ گزینهٔ درست سؤال‌های vocab/vocab-konkوری درس‌محور؛ بانک x-N درس‌ندار رد می‌شود؛ بی‌پاسخ شمرده نمی‌شود)، dictation check/skip (hint = خطا)، listening word-items
+   477→- [F7 منطق] src/lib/word-risk.ts — ایندکس واژگان سه درس (lazy)، matchVocabWord (exact-match ضد false-positive صرفی)، dangerWords (شرط صلاحیت: mistakes≥1 و (seen≥2 یا mistakes≥2) — «یک شانس بد» برندسازی نمی‌کند؛ رتبه: mistakes↓ سپس نرخ خطا↓)، buildDangerQuiz (اولویت با سؤال واقعی بانک که پاسخ درستش همان واژه است؛ fallback سؤال سنتزی «معنی واژه» با ۳ حواس‌پرت هم‌درس + id risk-* که در faOptions برمی‌گردد)
+   478→- [F7 UI] src/components/study/danger-words.tsx — پنل خانه (بالای قفسه): ۱۰ واژهٔ برتر با رتبه، en/fa، چیپ درس، «N بار غلط»، نوار نرخ خطا (rose≥۵۰٪/amber) با max-h-96 scroll؛ CTAs: «فلش‌کارت همین‌ها» → دیالوگ با چیپ‌های درس + Flashcards (prop جدید words برای زیرمجموعه؛ base در dueWords/knownCount هم اعمال شد) و «تمرین همین‌ها» → دیالوگ QuizEngine با trackMistakes=false (آلوده‌نکردن بانک اشتباهات) + faOptions per-question RTL. حالت خالی راهنما دارد
+   479→- [سازگاری] backup.ts (payload + collectData + sanitizeWordStat cap 2000) و sync.ts (merge max مثل mistakes) — wordMistakes/wordSeen بین دستگاه‌ها همگام می‌شوند؛ curl roundtrip تأیید شد
+   480→- [باگ‌های کشف‌شده در QA مرورگری — همه رفع شد] (۱) کارت شناور نصب PWA (fixed bottom-right z-40) روی دکمهٔ «سؤال بعدی» کوییز می‌افتاد و کلیک را می‌بلعید → pointer-events-none روی wrapper + pointer-events-auto فقط روی ۳ دکمهٔ خودش (۲) دکمهٔ بعدی داخل دیالوگ‌ها زیر فولد بود → scrollIntoView(block:nearest) خودکار جعبهٔ فیدبک در quiz-engine و listen-view + data-quiz-feedback/data-listen-feedback (۳) سرریز افقی ۱۸px هدر در موبایل ۳۹۰px (از قبل موجود) → min-w-0 روی کانتینر و nav هدر؛ scrollWidth=clientWidth تأیید (۴) متن «N سؤال به بانک اشتباهات اضافه شد» در دریل هدفمند گمراه‌کننده بود → بج مجزا «تمرین هدفمند انجام شد…» وقتی trackMistakes=false
+   481→- [QA — agent-browser] آنبردینگ مرورگر تازه → رد؛ بنر و پنل جدید در خانه ✓؛ جریان کامل شنیداری ۸آیتمی: TTS 200 در لاگ، شمارش پخش (autoplay=۱ از ۲)، فیدبک، نتیجهٔ ۳/۸، توست، review list سه‌نوع، result 0:listening در استور، SRS واژه‌ها، wordSeen/wordMistakes ثبت شد؛ پنل مهارت «شنیداری ۳۸٪ + CTA تمرین هدفمند» ✓؛ seed واژه → پنل ۸ واژهٔ رتبه‌دار با نرخ ✓؛ فلش‌کارت دیالوگ (چیپ درس دوم → دک ۱تایی habit) ✓؛ تمرین هدفمند ۸سؤالی (سؤال واقعی بانک برای ability + سنتزی فارسی برای habit) → نتیجه 0:danger، mistakesKeys=0 (بدون آلودگی) ✓؛ کوییز واقعی ۲۰سؤالی درس ۱ → 1:vocab + ۱۳ ورودی بانک اشتباهات + رشد ردیابی واژه ✓؛ دارک‌مود و موبایل ۳۹۰ (setup/play بدون سرریز) اسکرین‌شات‌ها /tmp/r22-*.png؛ کنسول فقط هشدار dev-only radix؛ tsc=۰ خطا، lint=۰ خطا؛ sync roundtrip word-maps با curl ✓
+   482→- [نقشه راه] چک‌باکس‌های F6، F7 و اسپرینت ۴ تیک خورد + Progress Log به‌روز شد
+   483→
+   484→Stage Summary:
+   485→- اسپرینت ۴ (Depth) کامل شد: عمق یادگیری برقرار است — اپ حالا هم‌راستا با امتحان واقعی Vision مهارت شنیداری دارد (از محتوای خود کتاب، بدون محتوای بیرونی) و کاربر می‌بیند «کدام واژه‌ها من را می‌اندازند» و با دو کلیک همان‌ها را هدفمند تمرین می‌کند (فلش‌کارت/دریل) — حلقهٔ F7-SRS بسته شد
+   486→- تصمیم‌های فنی: ردیابی واژه فقط از موتورهایی که واژه را قطعاً می‌دانند (نه حدس ساختاری)؛ شرط صلاحیت ضد-نویز؛ دریل به‌جای بانک اشتباهات؛ گزینه‌های فارسی با faOptions per-question (نه per-engine) تا کوییز مختلط ممکن شود
+   487→- سه باگ فرا-اسپرینتی هم رفع شد که یکی از آن‌ها (کارت نصب PWA روی تعامل‌ها) رگرسیون Task 21 بود
+   488→- مسیر بعدی طبق نقشه راه: اسپرینت ۵ (Differentiation) — F8 AI Explain (MVP مقید با کش و rate-limit) → F10 smoke/analytics + ادامهٔ F5 (۲۶۰ تست باقی‌مانده، فقط گسترش exam-fa.ts)
+   489→
+   490→---
+   491→Task ID: 23
+   492→Agent: main (Z.ai Code) — Sprint 5 (Differentiation) طبق نقشه راه فیچرها
+   493→Task: F8 «چرا غلط شد؟» توضیح هوشمند خطا (AI Explain مقید) + F10 Analytics سبک + F5 فاز ۲ (ترجمهٔ ۱۰۰ تست بعدی)
+   494→
+   495→Work Log:
+   496→- [F8 دیتابیس] prisma/schema.prisma: مدل ExplainCache (key=question id @id، explanation، source "ai"|"fallback"، createdAt) + EventDay (day، name، count + @@unique(day,name)) → db:push موفق (ری‌استارت تمیز سرور برای کلاینت جدید پرایما)
+   497→- [F8 ایندکس سرور] src/lib/explain-source.ts — Map تنبلِ هر ۴۹۰ سؤال بانک (lesson1..3 + examBank که همگی TS خالص‌اند و سمت سرور ایمپورت‌پذیر) + findQuestion + categoryFa؛ سرور فقط «id» می‌پذیرد و متن/گزینه/کلید را خودش resolve می‌کند → هیچ محتوای دلخواهی نمی‌تواند به پرامپت تزریق شود
+   498→- [F8 API] src/app/api/explain/route.ts (POST فقط): (۱) id → 404 فارسی برای id ناشناخته (۲) کش DB اول — سروِ همه با پاسخ یکسانِ کنترل‌شده، مصرف صفر (۳) rate-limit سخت ۲۰ تولید/ساعت/کلاینت فقط قبلِ فراخوانی LLM (۴) پرامپت مقید: معلم مدرسهٔ ایرانی، فارسی ساده ≤۴۰۰ کاراکتر، فقط بر اساس سؤال/گزینه/کلید، ساختار الزامی «توضیح + خط دوم با «مثال: »» (۵) timeout ۲۵ثانیه با Promise.race (۶) sanitize خروجی (حذف مارک‌داون، برش ≤۴۲۰ روی نقطه/ویرگول) (۷) fallback محترمانه هنگام قطعی AI (بازگشت source:"fallback" و بج «حالت آفلاین» در UI) (۸) upsert کش best-effort + trackEventServer
+   499→- [F8 UI] src/components/study/explain-box.tsx — دکمهٔ بنفش «چرا این پاسخ درست است؟ توضیح با هوش مصنوعی» (Sparkles) با حالت‌های idle/loading/done/error؛ فقط برای idهای واقعی بانک (regex ^(l[123]-|x-) — سؤال‌های سنتزی risk-* دکمه ندارند)؛ پنل نتیجه با بج «آماده» (کش) یا «حالت آفلاین» (fallback) + جداکردن خط «مثال: » در جعبهٔ خودش؛ خطا → پیام محترمانه + «تلاش دوباره». نصب در quiz-engine در دو نقطه: فیدبک فوریِ پاسخ غلط (سناریوی اصلی نقشه راه) + فهرست مرور پایان آزمون برای هر پاسخ غلط (state مستقل per-question)
+   500→- [F10 دیتابیس+API] src/lib/analytics-events.ts — whitelist ۱۷ رویداد (app_open، lesson_open، quiz_done، exam_done، rush_done، listen_done، dictation_done، flashcard_done، danger_practice/flashcards، explain_open/served/generated، sync_link/restore، backup_export، pwa_install) + برچسب فارسی؛ src/lib/analytics-server.ts (upsert fire-and-forget برای رویدادهای خودِ API)؛ src/app/api/event/route.ts: POST {name} با whitelist + rate-limit ۱۲۰/min + upsert increment روی (UTC-day,name) — بدون هیچ PII یا شناسهٔ کاربر؛ GET خلاصهٔ تجمیعی (کل + ۷روز اخیر) برای داشبورد
+   501→- [F10 کلاینت] src/lib/analytics.ts — trackEvent (fetch keepalive fire-and-forget) + trackEventOncePerSession (dedupe با sessionStorage)؛ هوک‌ها: app_open در study-app (یک‌باردرنشست)، lesson_open/quiz_done/dictation_done در اکشن‌های استور، exam_done در QuizEngine.finish (resultKey exam|final)، rush_done/listen_done در finish موتورها، flashcard_done در اتمام یک دور کامل دک (آخرین کارت)، danger_practice/flashcards در CTAهای پنل، sync_link/sync_restore/backup_export در هدر، pwa_install در appinstalled، explain_open در ExplainBox
+   502→- [F10 داشبورد] بخش «تپش وب‌کتاب (زنده)» در SettingsPopover: fetch خودکار هنگام بازشدن (به‌علاوه دکمهٔ refresh)، ۶ رویداد برتر با نوار نسبت به max + شمار کل با faNum، حالت خالی/خطا، متن شفاف «فعالیت بی‌نام — بدون هیچ اطلاعات شخصی»، max-h-40 با اسکرول
+   503→- [F5 فاز ۲] exam-fa.ts: ۱۰۰ ترجمهٔ جدید x-101..x-200 (شامل الگوی «یعنی …» برای تعریف‌محورها)؛ x-109 در بازبینی اصلاح شد (the former = مورد اول/ماهی)؛ هدر فایل فازبندی به‌روز شد — تأیید اسکریپتی: total=360، translated=200، اولین فاقد ترجمه x-201
+   504→- [QA curl] POST رویداد معتبر→ok، نام بیرون whitelist→400، GET خلاصه→تجمیع درست با برچسب فارسی؛ explain: id ناشناخته→404، تولید x-105 در ۱.۴ثانیه (source:ai)، hit دوم ۲۶ms (cached:true)، سهمیه: ۱۹ تولید جدید + x-105 قبلی = دقیقاً ۲۰ → x-220/x-221 هر دو 429 (Retry-After)؛ کیفیت ۲۰ تولید همه ai (صفر fallback)
+   505→- [QA مرورگری — agent-browser] (۱) آزمون جامع ۱۰تایی همه غلط → ۱۰ دکمهٔ AI در فهرست مرور؛ کلیک → تولید و پنل «توضیح هوشمند» با مثال انگلیسی+ترجمه (۲) خطای محترمانه + «تلاش دوباره» در سهمیهٔ تمام‌شده تأیید شد و پس از ری‌استارت سرور (پاک‌شدن باکت) retry موفق (۳) دو سؤال مختلف = دو توضیح مستقل (state per-box درست) (۴) تست درس (فیدبک فوری): پاسخ غلط → دکمه زیر ترجمهٔ فارسی + سؤال بعدی؛ کلیک → توضیح inline عالی برای «according to» (۵) داشبورد تپش: ۶ ردیف زنده با اعداد واقعی (توضیح تازه ۲۳، درخواست ۳، آزمون جامع ۲، …) (۶) mobile 390px: scrollWidth=clientWidth=390 بدون سرریز؛ dark mode پنل بنفش خوانا (اسکرین‌شات‌ها /tmp/r23-explain-inline.png، /tmp/r23-explain.png، /tmp/r23-mobile-explain.png، /tmp/r23-dark.png) (۷) کنسول فقط هشدار dev-only aria-describedby radix؛ tsc=۰ خطا، lint=۰ خطا
+   506→- [نقشه راه] چک‌باکس‌های F8، F10، اسپرینت ۵ و فاز ۲ِ F5 تیک خوردند + Progress Log به‌روز شد
+   507→
+   508→Stage Summary:
+   509→- اسپرینت ۵ (Differentiation) کامل شد و همهٔ ۱۰ فیچر نقشه راه (F1..F10) اکنون برقرارند: اپ «معلم خصوصی» دارد — بعد از هر پاسخ غلط یک دکمهٔ واحد «چرا؟» که توضیح کنترل‌شدهٔ یکسان برای همه می‌دهد (یک بار هزینهٔ LLM، بعد فقط کش ۲۶ms) و محصول حالا سنجه‌های رفتاری بی‌نام دارد که تصمیم نسخهٔ بعد را داده‌محور می‌کند
+   510→- تصمیم‌های فنی: امنیت با resolve سمت سرور (فقط id از کلاینت)؛ سهمیه فقط روی تولید نه خواندنِ کش؛ fallback همیشه پاسخ می‌دهد تا تجربه هرگز نمی‌شکند؛ رویدادها whitelist-دار و روزانه‌تجمیعی تا جدول کوچک بماند
+   511→- باقی‌مانده: F5 فاز ۳ (۱۶۰ تست دیگر — فقط گسترش exam-fa.ts)، بهینه‌سازی adaptive polling فید/جدول (اولویت پایین)، میان‌بر «?» کیبورد فارسی (کم‌اهمیت)، پولیش رینگ ۰٪
+   512→- نکتهٔ عملیاتی: ری‌استارت سرور باقتِ in-memory تولید را پاک می‌کند (ذاتیِ rate-limit حافظه‌ای) — پذیرفته‌شده برای مقیاس مدرسه
+   513→

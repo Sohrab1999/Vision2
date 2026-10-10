@@ -135,8 +135,11 @@ export default function DailyQuests() {
               style={{ transition: "stroke-dashoffset 0.7s ease" }}
             />
           </svg>
-          <span className="absolute inset-0 flex items-center justify-center text-[11px] font-black text-stone-700">
-            {faNum(overallPct)}٪
+          <span className="absolute inset-0 flex items-center justify-center" aria-hidden>
+            <span className={`text-[13px] font-black leading-none ${overallPct === 0 ? "text-stone-400" : "text-stone-700"}`}>
+              {faNum(overallPct)}
+              <span className="text-[9px]">٪</span>
+            </span>
           </span>
         </div>
       </div>
