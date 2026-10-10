@@ -270,6 +270,10 @@ body {
 .dark .stat-band { background-image: linear-gradient(to left, rgba(6, 55, 40, 0.45), rgba(6, 44, 40, 0.3)) !important; }
 .dark .quote-band { background-image: linear-gradient(to left, rgba(69, 48, 12, 0.4), rgba(60, 34, 8, 0.3)) !important; }
 
+/* quick-review hero (review-view header + exam-view banner) */
+.dark .review-hero { background-image: linear-gradient(to left, rgba(69, 48, 12, 0.55), rgba(24, 21, 18, 0.9)) !important; }
+.dark .text-sky-800 { color: #7dd3fc; }
+
 /* scrollbar */
 .dark .nice-scroll { scrollbar-color: #3d372f transparent; }
 .dark .nice-scroll::-webkit-scrollbar-thumb { background: #3d372f; }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ClipboardCheck, Timer, Zap, BookOpen, GraduationCap, ScrollText, Eraser, Layers } from "lucide-react";
+import { ClipboardCheck, Timer, Zap, BookOpen, GraduationCap, ScrollText, Eraser, Layers, ArrowLeft } from "lucide-react";
 import { examBank, lessons } from "@/data";
 import type { QuizQuestion } from "@/lib/study-types";
 import { useStudy, mistakesOfLesson } from "@/lib/study-store";
@@ -52,9 +52,13 @@ export default function ExamView() {
   const bestExam = useStudy((s) => s.results["exam"]);
   const bestFinal = useStudy((s) => s.results["final"]);
   const mistakes = useStudy((s) => s.mistakes);
+  const setView = useStudy((s) => s.setView);
   const mounted = useMounted();
 
   const examMistakeCount = mounted ? mistakesOfLesson(mistakes, 0) : 0;
+  const totalMistakesAll = mounted
+    ? mistakesOfLesson(mistakes, 0) + mistakesOfLesson(mistakes, 1) + mistakesOfLesson(mistakes, 2) + mistakesOfLesson(mistakes, 3)
+    : 0;
 
   /* ------------------------- active session -------------------------
      Questions are generated ONCE at start and kept in session state —
@@ -83,6 +87,27 @@ export default function ExamView() {
 
   return (
     <div className="space-y-5">
+      {/* --------------------- cross-bank quick review banner --------------------- */}
+      {mounted && totalMistakesAll > 0 && (
+        <button
+          onClick={() => setView({ type: "review" })}
+          className="review-hero flex w-full items-center gap-3 rounded-2xl border border-amber-200 bg-gradient-to-l from-amber-50 to-white p-4 text-right shadow-sm transition-all hover:shadow-md active:scale-[0.99]"
+        >
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-100 text-amber-600">
+            <Zap size={19} />
+          </span>
+          <span className="flex-1">
+            <span className="block text-sm font-extrabold text-stone-800">
+              پیش از امتحان: {faNum(totalMistakesAll)} سؤالِ غلط در بانک خطا داری
+            </span>
+            <span className="block text-[12px] text-stone-500">
+              مرور سریعِ ترکیبی (۳ درس + بانک ۳۶۰تا) — پاسخِ درست یعنی حذفِ دائمی از بانک
+            </span>
+          </span>
+          <ArrowLeft size={17} className="shrink-0 text-amber-600" />
+        </button>
+      )}
+
       {/* --------------------------- mode switch --------------------------- */}
       <div className="grid gap-3 sm:grid-cols-2">
         <ModeCard

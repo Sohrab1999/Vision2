@@ -48,6 +48,15 @@ const spineColors: Record<string, string> = {
   rose: "bg-gradient-to-b from-rose-500 to-rose-800",
 };
 
+// motivational one-liner per lesson card, from the known-vocab percentage
+function lessonCheer(p: number): string {
+  if (p >= 90) return "🏆 درخشان! تقریباً همهٔ واژه‌ها را بلدی";
+  if (p >= 70) return "🌟 عالی پیش می‌روی — ادامه بده";
+  if (p >= 40) return "🌱 داری رشد می‌کنی — همین‌طور برو";
+  if (p > 0) return "🚀 شروع خوبی است — فلش‌کارت‌ها منتظرند";
+  return "✨ از فلش‌کارت‌ها شروع کن";
+}
+
 const categoryLabel: Record<string, string> = {
   vocab: "واژگان استاندارد",
   "vocab-konkuri": "واژگان کنکوری",
@@ -112,12 +121,9 @@ export default function HomeView() {
   const todayActivities = mounted && dayStat.day === todayStr() ? dayStat.reviews + dayStat.quizzes : 0;
   const goalPercent = Math.min(100, Math.round((todayActivities / dailyGoal) * 100));
   const reviewLesson = mounted ? firstLessonWithDue(srs) : null;
-  const mistakeLesson = mounted
-    ? ([1, 2, 3] as const)
-        .map((id) => ({ id, n: mistakesOfLesson(mistakes, id) }))
-        .sort((a, b) => b.n - a.n)[0]
-    : { id: 1, n: 0 };
-  const totalMistakes = mounted ? mistakesOfLesson(mistakes, 1) + mistakesOfLesson(mistakes, 2) + mistakesOfLesson(mistakes, 3) : 0;
+  const totalMistakes = mounted
+    ? mistakesOfLesson(mistakes, 0) + mistakesOfLesson(mistakes, 1) + mistakesOfLesson(mistakes, 2) + mistakesOfLesson(mistakes, 3)
+    : 0;
 
   const [globalStats, setGlobalStats] = useState<{
     total: number;
@@ -508,6 +514,7 @@ export default function HomeView() {
                   <span className="rounded-lg bg-stone-100 px-2 py-1">{faNum(l.quizzes.length)} تست</span>
                   <span className="rounded-lg bg-stone-100 px-2 py-1">{faNum(l.grammar.length)} بخش گرامر</span>
                 </div>
+                <p className="mb-3 text-[12px] font-bold text-stone-600">{lessonCheer(mounted ? knownPercent : 0)}</p>
                 <button
                   onClick={() => openLesson(l.id)}
                   className={`inline-flex w-full items-center justify-center gap-2 rounded-xl ${t.bg} py-2.5 text-sm font-bold text-white transition-all hover:opacity-90 active:scale-95`}
@@ -532,7 +539,7 @@ export default function HomeView() {
             { icon: BookMarked, title: "دیکشنری جستجو", desc: `${faNum(totalVocabulary)} واژهٔ سه درس با جستجوی فارسی و انگلیسی`, view: { type: "dictionary" as const }, color: "text-sky-600 bg-sky-50 border-sky-200" },
             { icon: ClipboardCheck, title: "آزمون جامع", desc: `${faNum(examBank.length)} تست گردآوری از بانک ۳۶۰ تستی جزوه با تایمر`, view: { type: "exam" as const }, color: "text-emerald-600 bg-emerald-50 border-emerald-200" },
             { icon: Ear, title: "آزمون دیکته", desc: "املای شنیداری با روخوانی هوش مصنوعی و ثبت در SRS", onClick: () => openLessonTab(reviewLesson ?? 1, "dictation"), color: "text-violet-600 bg-violet-50 border-violet-200" },
-            { icon: Eraser, title: "بانک اشتباهات", desc: "سؤال‌هایی که اشتباه جواب دادی، برای مرور مجدد", onClick: () => openLessonTab(mistakeLesson?.id ?? 1, "tests"), color: "text-rose-600 bg-rose-50 border-rose-200", badge: totalMistakes },
+            { icon: Eraser, title: "مرور سریع قبل امتحان", desc: "ترکیبی از غلط‌های اخیر ۳ درس و بانک ۳۶۰تا؛ پاسخ درست = حذف از بانک خطا", onClick: () => setView({ type: "review" as const }), color: "text-rose-600 bg-rose-50 border-rose-200", badge: totalMistakes },
             { icon: Library, title: "ضمیمهٔ کتاب", desc: "افعال بی‌قاعده، جدول تلفظ IPA و اجزای کلام", view: { type: "appendix" as const }, color: "text-amber-600 bg-amber-50 border-amber-200" },
             { icon: Trophy, title: "کارنامهٔ من", desc: "گزارش کامل پیشرفت: رکوردها، مهارت‌ها و فعالیت هفته", onClick: () => window.dispatchEvent(new CustomEvent("open-report")), color: "text-stone-600 bg-stone-50 border-stone-200", custom: true },
           ].map((tool) => (

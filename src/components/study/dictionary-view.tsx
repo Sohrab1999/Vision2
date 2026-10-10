@@ -1,11 +1,14 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Search, X, BookMarked, CheckCircle2, CircleDashed, AlarmClock, SearchX } from "lucide-react";
+import { Search, X, BookMarked, CheckCircle2, CircleDashed, AlarmClock, SearchX, Download } from "lucide-react";
 import { lessons } from "@/data";
 import { useStudy, wordKey } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { posLabel, themeOf, faNum } from "@/lib/study-theme";
+import { downloadAnkiTsv, buildAnkiTsv } from "@/lib/anki-export";
+import { trackEvent } from "@/lib/analytics";
+import { useToast } from "@/hooks/use-toast";
 import SpeakButton from "./speak-button";
 
 // state filter values
@@ -19,6 +22,9 @@ export default function DictionaryView() {
   const srs = useStudy((s) => s.srs);
   const toggleKnown = useStudy((s) => s.toggleKnown);
   const mounted = useMounted();
+  const { toast } = useToast();
+
+  const ankiCount = useMemo(() => buildAnkiTsv().count, []);
 
   const allWords = useMemo(
     () =>
@@ -88,7 +94,7 @@ export default function DictionaryView() {
   return (
     <div className="space-y-4">
       <div className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm">
-        <div className="mb-4 flex items-center gap-2">
+        <div className="mb-4 flex flex-wrap items-center gap-2">
           <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-50 text-sky-600">
             <BookMarked size={19} />
           </span>
@@ -98,6 +104,22 @@ export default function DictionaryView() {
               جستجو در {allWords.length} واژهٔ هر سه درس — با تلفظ صوتی
             </p>
           </div>
+          <button
+            onClick={() => {
+              const count = downloadAnkiTsv();
+              trackEvent("anki_export");
+              toast({
+                title: "🃏 خروجی Anki آماده شد",
+                description: `${faNum(count)} کارت در فایل vision2-anki.txt — در Anki از File ▸ Import واردش کن.`,
+                duration: 6000,
+              });
+            }}
+            className="ms-auto inline-flex items-center gap-1.5 rounded-xl border border-emerald-200 bg-emerald-50 px-3 py-2 text-[12px] font-bold text-emerald-700 transition-all hover:bg-emerald-100 active:scale-95"
+            aria-label={`صادرات ${ankiCount} واژه به صورت فایل Anki`}
+          >
+            <Download size={14} />
+            خروجی Anki ({faNum(ankiCount)} کارت)
+          </button>
         </div>
         <div className="relative mb-3">
           <Search size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400" />

@@ -23,6 +23,8 @@ export const EVENT_NAMES = [
   "sync_restore",
   "backup_export",
   "pwa_install",
+  "quick_review_start",
+  "anki_export",
 ] as const;
 
 export type EventName = (typeof EVENT_NAMES)[number];
@@ -46,6 +48,8 @@ export const EVENT_LABELS_FA: Record<EventName, string> = {
   sync_restore: "بازیابی از ابر",
   backup_export: "خروجی پشتیبان",
   pwa_install: "نصب روی دستگاه",
+  quick_review_start: "شروع مرور سریع",
+  anki_export: "خروجی Anki",
 };
 
 export function isEventName(v: unknown): v is EventName {
