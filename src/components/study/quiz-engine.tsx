@@ -593,7 +593,7 @@ export default function QuizEngine({
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               data-quiz-feedback
-              className="mt-4 rounded-xl border border-stone-200 bg-stone-50 p-3.5"
+              className="mt-4 scroll-mt-24 rounded-xl border border-stone-200 bg-stone-50 p-3.5"
             >
               <p
                 className={`mb-1 text-[13px] font-black ${

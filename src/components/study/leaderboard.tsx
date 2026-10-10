@@ -51,10 +51,20 @@ export default function Leaderboard() {
         })
         .catch(() => {});
     load();
-    const t = setInterval(load, 30_000); // refresh every 30s
+    // Phase-2 «تجربه» — adaptive polling: skip while the tab is hidden and
+    // refresh immediately when the learner comes back.
+    const t = setInterval(() => {
+      if (document.hidden) return;
+      load();
+    }, 30_000);
+    const onVisible = () => {
+      if (!document.hidden && alive) load();
+    };
+    document.addEventListener("visibilitychange", onVisible);
     return () => {
       alive = false;
       clearInterval(t);
+      document.removeEventListener("visibilitychange", onVisible);
     };
   }, []);
 

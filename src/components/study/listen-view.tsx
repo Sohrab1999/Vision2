@@ -492,7 +492,7 @@ export default function ListenView() {
           {/* feedback */}
           <AnimatePresence>
             {selected !== null && (
-              <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} data-listen-feedback className="mt-4 rounded-xl border border-stone-200 bg-stone-50 p-3.5">
+              <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} data-listen-feedback className="mt-4 scroll-mt-24 rounded-xl border border-stone-200 bg-stone-50 p-3.5">
                 <p className={`mb-1 text-[13px] font-black ${selected === item.answer ? "text-emerald-700" : "text-rose-600"}`}>
                   {selected === item.answer ? "✓ درست بود!" : "✗ پاسخ درست مشخص شد"}
                 </p>
