@@ -529,3 +529,23 @@ Stage Summary:
 - تصمیم فنی: کلیدهای تست «عیناً از پاسخنامه» بود، اما خطای انتقال ماشین‌خواندنی با sanity-check معنایی (وب‌سرچ منبع) اصلاح می‌شود؛ آینده: هر اصلاح کلید با تأیید دو منبع
 - باقی‌مانده (همه کم‌اولویت، خارج نقشه راه): بهینه‌سازی adaptive polling فید/جدول امتیازات، میان‌بر «?» کیبورد فارسی، رینگ صفرِ موتورهای نتیجه (quiz/listen از ProgressRing جدا هستند و مشکل ندارند)
 - ایده‌های نسل بعد (برای تصمیم کاربر): گزارش پیشرفت درسی PDF/چاپی، حالت «مرور سریع قبل امتحان» (کوییز فقط غلط‌های اخیر)، ایموجی/انگیزشی بر اساس نمرهٔ درس، صادرات کارت‌های واژه به Anki
+
+---
+Task ID: 25
+Agent: main (Z.ai Code) — به درخواست مستقیم کاربر «بک‌آپ روی گیت‌هاب»
+Task: راه‌اندازی بک‌آپ کامل پروژه روی GitHub (private repo Sohrab1999/Vision2)
+
+Work Log:
+- بازبینی وضعیت گیت: ریپوی لوکال موجود (branch main، ۲۱ auto-commit قبلی با نام UUID)، بدون remote و بدون credential
+- پاک‌سازی ریپو: فیکس باگ چسبیدن خطوط .gitignore (فاقد newline انتهایی بود → /skills/tool-results/ واحد شده بود)؛ افزودن tool-results/ و .zscripts/dev.pid به ignore و خروج از tracking؛ فعال‌کردن core.fileMode=false برای حذف نویز 644→755 سندباکس؛ snapshot دیتابیس مطالعه (db/custom.db)
+- ارزیابی حجم: کل ریپو 5.4MB (بزرگ‌ترین فایل: PDF جزوه 4.5MB) — خیلی زیر محدودیت گیت‌هاب
+- اعتبارسنجی توکن fine-grained کاربر (username: Sohrab1999) از طریق GET /user ✓
+- تلاش برای ساخت ریپو از طریق API: ممنوع (Resource not accessible — توکن fine-grained بدون پرمیژن Administration) → کاربر ریپو را دستی ساخت
+- push موفق به origin = https://github.com/Sohrab1999/Vision2.git (Private، branch main) — credential در ~/.git-credentials ذخیره شد (chmod 600) تا pushهای آینده بدون ورود مجدد کار کنند
+- تأیید نهایی از سمت گیت‌هاب: pushed_at ثبت شد و ۳ commit آخر (شامل auto-snapshotهای UUID) روی ریموت مشاهده شد
+
+Stage Summary:
+- بک‌آپ کامل پروژه (کد + دیتابیس + نقشه راه + worklog) روی https://github.com/Sohrab1999/Vision2 در دسترس است (private)
+- از این پس هر commit محلی با یک git push ساده به گیت‌هاب می‌رود (credential ذخیره‌شده)
+- گام بعدی پیشنهادی: بک‌آپ خودکار دوره‌ای (cron روزانه: auto-commit + push) در صورت تأیید کاربر
+- امنیت: توکن fine-grained فقط Contents:write دارد (ساخت ریپو ممنوع) — دامنهٔ حداقلی؛ کاربر می‌تواند پس از هر تغییر روی گیت‌هاب توکن را rotate کند
