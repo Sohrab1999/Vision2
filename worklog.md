@@ -631,3 +631,19 @@ Work Log:
 Stage Summary:
 - ریسک: فقط کامیت‌های آینده؛ تاریخچه و ریپوی ریموت سالم است (آخرین push موفق: 51d8e67 Task 27)
 - درس: در شروع هر جلسه، وجود ~/.git-credentials قبل از کارهای گیت چک شود
+
+---
+Task ID: AUTO-BACKUP-20261010
+Agent: cron daily-backup (Job 448959)
+Task: بک‌آپ خودکار روزانهٔ گیت‌هاب — ۲۰۲۶-۱۰-۱۰ ۱۷:۳۹ تهران
+
+Work Log:
+- git status: تغییرات Task 28 (تمرین هوشمند + کیبورد فارسی) یافت شد که توسط اجرای موازی قبلاً در commit ea5bfd2 کامیت شده بود (worklog + دیتابیس + ۱۱ فایل سورس داخل کامیت ✓)
+- push origin main: دو تلاش، هر دو شکست — «could not read Username for 'https://github.com'»
+- علت: ری‌استارت کانتینر ~/.git-credentials را پاک کرده؛ توکن نه در env، نه در تاریخچه، نه در فایل‌های پروژه موجود است (جستجوی کامل انجام شد)
+- اعتبارسنجی محلی قبل از گزارش: tsc=۰ خطا، lint=۰ خطا، working tree تمیز — commit ea5bfd2 سالم و آمادهٔ push
+
+Stage Summary:
+- وضعیت: ۱ کامیت آمادهٔ push (ea5bfd2)؛ ریموت روی 51d8e67 (Task 27) مانده
+- اکشن لازم: کاربر توکن GitHub را دوباره ارائه کند ← بازیابی ~/.git-credentials (chmod 600) ← git push origin main
+- بدون تغییر branch و بدون force push (طبق سیاست تسک)
