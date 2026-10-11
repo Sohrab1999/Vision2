@@ -37,6 +37,7 @@ const GROUPS: { title: string; icon: React.ElementType; rows: Row[] }[] = [
       { keys: ["C"], desc: "چالش برق‌آسا (۶۰ ثانیه)" },
       { keys: ["V"], desc: "نبرد دودنفره (زنده، دو نفره)" },
       { keys: ["G"], desc: "گوشهٔ کنکور (بانک ۳۶۰ تستی)" },
+      { keys: ["M"], desc: "متروی گرامر — نقشهٔ سفر گرامر کتاب" },
       { keys: ["T"], desc: "تغییر حالت شب / روز" },
       { keys: ["?"], desc: "باز و بسته کردن همین راهنما" },
     ],
@@ -132,6 +133,7 @@ export default function ShortcutGuide() {
       else if (code === "KeyC") setView({ type: "rush" });
       else if (code === "KeyV") setView({ type: "duel" });
       else if (code === "KeyG") setView({ type: "konkur" });
+      else if (code === "KeyM") setView({ type: "grammar" });
       else if (code === "KeyT") setTheme(theme === "dark" ? "light" : "dark");
       else if (code === "KeyF" && view.type === "lesson") openLesson(view.id, "smart");
       else if (/^(Digit|Numpad)[1-7]$/.test(code) && view.type === "lesson") {

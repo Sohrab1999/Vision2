@@ -1104,3 +1104,42 @@ html.user-reduce-motion .streak-flame {
 .dark .leaderboard.duel-mode .text-emerald-700 { color: #6ee7b7; }
 .dark .leaderboard.duel-mode .bg-rose-100 { background-color: rgb(76 5 25 / 0.6); }
 .dark .leaderboard.duel-mode .text-rose-700 { color: #fda4af; }
+
+/* ---------------- grammar metro map (Task-39 «متروی گرامر») ----------------
+   Scoped to .gmetro so every other view keeps its tuned palette. */
+.dark .gmetro-hero { background-image: linear-gradient(to bottom left, #0f766e, #115e59, #064e3b); }
+.dark .gmetro-step { background-color: rgb(255 255 255 / 0.08); }
+/* line cards — per-color deep washes */
+.dark .gmetro-line[class*="border-emerald-200"] { border-color: rgb(16 185 129 / 0.3); background-color: rgb(6 78 59 / 0.16); }
+.dark .gmetro-line[class*="border-amber-200"] { border-color: rgb(217 119 6 / 0.35); background-color: rgb(120 53 15 / 0.16); }
+.dark .gmetro-line[class*="border-teal-200"] { border-color: rgb(13 148 136 / 0.35); background-color: rgb(19 78 74 / 0.28); }
+.dark .gmetro-line[class*="border-rose-200"] { border-color: rgb(225 29 72 / 0.35); background-color: rgb(136 19 55 / 0.16); }
+.dark .gmetro-line[class*="border-violet-200"] { border-color: rgb(124 58 237 / 0.4); background-color: rgb(76 29 149 / 0.18); }
+.dark .gmetro-line[class*="border-orange-200"] { border-color: rgb(234 88 12 / 0.35); background-color: rgb(124 45 18 / 0.16); }
+.dark .gmetro-line .text-stone-500 { color: #a8a29e; }
+.dark .gmetro-line .text-stone-700 { color: #e7e5e4; }
+.dark .gmetro-line .border-stone-200 { border-color: rgb(87 83 78 / 0.45); }
+.dark .gmetro-line .bg-white { background-color: #292524; }
+.dark .gmetro-line .bg-stone-100 { background-color: rgb(68 64 60 / 0.7); }
+/* nodes — dark ring instead of white ring */
+.dark .gmetro-node-green { border-color: #1c1917; }
+.dark .gmetro-node-open { border-color: #1c1917; background-color: #292524; }
+.dark .gmetro-node-locked { background-color: rgb(68 64 60 / 0.8); border-color: rgb(87 83 78 / 0.4); }
+/* station dialog */
+.dark .gmetro-dialog { background-color: #1c1917; border-color: rgb(87 83 78 / 0.5); }
+.dark .gmetro-dialog .text-stone-800 { color: #f5f5f4; }
+.dark .gmetro-dialog .text-stone-500 { color: #a8a29e; }
+.dark .gmetro-dialog .text-stone-600 { color: #c9c2bb; }
+.dark .gmetro-dialog .text-stone-400 { color: #8a8580; }
+.dark .gmetro-dialog .bg-white { background-color: #292524; }
+.dark .gmetro-dialog .bg-stone-300 { background-color: rgb(87 83 78 / 0.6); }
+.dark .gmetro-dialog .border-stone-200 { border-color: rgb(87 83 78 / 0.45); }
+.dark .gmetro-tip { background-color: rgb(120 53 15 / 0.25); border-color: rgb(217 119 6 / 0.4); }
+.dark .gmetro-tip .text-amber-800 { color: #fcd34d; }
+.dark .gmetro-tip .text-amber-600 { color: #fbbf24; }
+/* book grammar section inside the dialog — keep inline accents readable */
+.dark .gmetro-lesson { background-color: #292524; border-color: rgb(87 83 78 / 0.45); color: #d6d3d1; }
+.dark .gmetro-lesson .text-emerald-700 { color: #6ee7b7; }
+.dark .gmetro-lesson .text-slate-500 { color: #a8a29e; }
+.dark .gmetro-lesson table td,
+.dark .gmetro-lesson table th { border-color: rgb(87 83 78 / 0.4); }

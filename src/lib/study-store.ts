@@ -16,7 +16,8 @@ export type View =
   | { type: "listen" }
   | { type: "review" }
   | { type: "smart" }
-  | { type: "konkur" };
+  | { type: "konkur" }
+  | { type: "grammar" }; // متروی گرامر — Task 39
 
 export type LessonTab = "vocab" | "conversation" | "reading" | "grammar" | "writing" | "dictation" | "tests";
 
