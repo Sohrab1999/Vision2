@@ -17,6 +17,7 @@ import DictionaryView from "./dictionary-view";
 import ExamView from "./exam-view";
 import AppendixView from "./appendix-view";
 import RushView from "./rush-view";
+import DuelView from "./duel-view";
 import ListenView from "./listen-view";
 import ReviewView from "./review-view";
 import SmartPracticeView from "./smart-practice-view";
@@ -162,6 +163,7 @@ export default function StudyApp() {
               {view.type === "exam" && <ExamView />}
               {view.type === "appendix" && <AppendixView />}
               {view.type === "rush" && <RushView />}
+              {view.type === "duel" && <DuelView />}
               {view.type === "listen" && <ListenView />}
               {view.type === "review" && <ReviewView />}
               {view.type === "smart" && <SmartPracticeView />}

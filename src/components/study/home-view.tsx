@@ -26,6 +26,7 @@ import {
   Eraser,
   Zap,
   GraduationCap,
+  Swords,
 } from "lucide-react";
 import { lessons, examBank, totalVocabulary, totalQuestions } from "@/data";
 import { useStudy, knownCountOfLesson, summarize, srsDueTotal, firstLessonWithDue, todayStr, mistakesOfLesson, FREEZE_CAP } from "@/lib/study-store";
@@ -72,6 +73,7 @@ const categoryLabel: Record<string, string> = {
   mixed: "تست ترکیبی درس",
   mistakes: "مرور اشتباهات",
   rush: "چالش برق‌آسا",
+  duel: "نبرد دودنفره",
   konkur: "شبیه‌ساز کنکور",
   "konkur-hard": "تست‌های سخت من",
   "konkur-cover": "پوشش بانک ۳۶۰",
@@ -91,6 +93,7 @@ const feedLabel: Record<string, string> = {
   mixed: "تست ترکیبی",
   mistakes: "مرور اشتباهات",
   rush: "چالش برق‌آسا",
+  duel: "نبرد دو‌نفره",
   konkur: "شبیه‌ساز کنکور",
   "konkur-hard": "تست‌های سخت",
   "konkur-cover": "پوشش بانک ۳۶۰",
@@ -630,6 +633,7 @@ export default function HomeView() {
             { icon: BookMarked, title: "دیکشنری جستجو", desc: `${faNum(totalVocabulary)} واژهٔ سه درس با جستجوی فارسی و انگلیسی`, view: { type: "dictionary" as const }, color: "text-sky-600 bg-sky-50 border-sky-200" },
             { icon: ClipboardCheck, title: "آزمون جامع", desc: `${faNum(examBank.length)} تست گردآوری از بانک ۳۶۰ تستی جزوه با تایمر`, view: { type: "exam" as const }, color: "text-emerald-600 bg-emerald-50 border-emerald-200" },
             { icon: GraduationCap, title: "گوشهٔ کنکور", desc: "سامانهٔ پوشش و تسلط بانک ۳۶۰تایی: نقشهٔ پیشرفت، شبیه‌ساز و تست‌های سخت", view: { type: "konkur" as const }, color: "text-orange-600 bg-orange-50 border-orange-200", badge: konkurHardCount },
+            { icon: Swords, title: "نبرد دودنفره", desc: "مصاف زندهٔ واژگانی با یادگیرندهٔ دیگر: ۱۰ سؤال، ۱۵ ثانیه، داوری روی سرور", onClick: () => setView({ type: "duel" as const }), color: "text-fuchsia-600 bg-fuchsia-50 border-fuchsia-200" },
             { icon: Ear, title: "آزمون دیکته", desc: "املای شنیداری با روخوانی هوش مصنوعی و ثبت در SRS", onClick: () => openLessonTab(reviewLesson ?? 1, "dictation"), color: "text-violet-600 bg-violet-50 border-violet-200" },
             { icon: Eraser, title: "مرور سریع قبل امتحان", desc: "ترکیبی از غلط‌های اخیر ۳ درس و بانک ۳۶۰تا؛ پاسخ درست = حذف از بانک خطا", onClick: () => setView({ type: "review" as const }), color: "text-rose-600 bg-rose-50 border-rose-200", badge: totalMistakes },
             { icon: Library, title: "ضمیمهٔ کتاب", desc: "افعال بی‌قاعده، جدول تلفظ IPA و اجزای کلام", view: { type: "appendix" as const }, color: "text-amber-600 bg-amber-50 border-amber-200" },

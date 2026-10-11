@@ -980,3 +980,86 @@ html.user-reduce-motion .streak-flame {
   body.print-official .or-section-block { break-inside: avoid; page-break-inside: avoid; }
   body.print-official .or-table { break-inside: auto; }
 }
+
+/* ==================== Duel (نبرد دودنفره) — dark mode ==================== */
+.dark .duel-hero {
+  background-image: linear-gradient(to bottom left, rgb(59 7 100 / 0.72), rgb(74 4 78 / 0.75), rgb(76 5 25 / 0.72)) !important;
+}
+.dark .duel-hero .bg-white\/15, .dark .duel-hero .bg-white\/10 { background-color: rgb(28 25 23 / 0.55); }
+.dark .duel-hero .border-white\/25 { border-color: rgb(120 113 108 / 0.45); }
+.dark .duel-hero .text-white\/85, .dark .duel-hero .text-white\/75 { color: #e7e5e4; }
+.dark .duel-hero .duel-cta {
+  background-color: #fafaf9;
+  color: #86198f;
+}
+.dark .duel-hero .duel-input {
+  background-color: rgb(231 229 228 / 0.94);
+  border-color: rgb(168 162 158 / 0.5);
+}
+.dark .duel-hero .duel-input:focus { border-color: #f5f5f4; }
+
+.dark .duel-card {
+  background-color: #292524;
+  border-color: rgb(120 113 108 / 0.35);
+}
+.dark .duel-card .text-stone-800 { color: #f5f5f4; }
+.dark .duel-card .text-stone-700 { color: #d6d3d1; }
+.dark .duel-card .text-stone-600 { color: #c9c2bb; }
+.dark .duel-card .text-stone-500 { color: #a8a29e; }
+.dark .duel-card .text-stone-400 { color: #8a8580; }
+.dark .duel-card .bg-stone-50\/70, .dark .duel-card .bg-stone-50 { background-color: rgb(41 37 36 / 0.6); }
+.dark .duel-card .bg-stone-100 { background-color: rgb(68 64 60 / 0.7); }
+.dark .duel-card .border-stone-100 { border-color: rgb(87 83 78 / 0.4); }
+.dark .duel-card .border-stone-200 { border-color: rgb(87 83 78 / 0.45); }
+.dark .duel-card .bg-fuchsia-100 { background-color: rgb(74 4 78 / 0.6); }
+.dark .duel-card .text-fuchsia-700 { color: #f0abfc; }
+.dark .duel-card .text-fuchsia-600 { color: #e879f9; }
+.dark .duel-card .bg-fuchsia-50 { background-color: rgb(74 4 78 / 0.35); }
+
+.dark .duel-code {
+  background-color: rgb(74 4 78 / 0.25);
+  border-color: rgb(162 28 175 / 0.5);
+}
+
+.dark .duel-hud {
+  background-color: #292524;
+  border-color: rgb(120 113 108 / 0.35);
+}
+.dark .duel-hud .border-fuchsia-200 { border-color: rgb(162 28 175 / 0.45); }
+.dark .duel-hud .bg-fuchsia-50\/60 { background-color: rgb(74 4 78 / 0.3); }
+.dark .duel-hud .bg-stone-50\/60 { background-color: rgb(41 37 36 / 0.6); }
+.dark .duel-hud .text-stone-700 { color: #d6d3d1; }
+.dark .duel-hud .text-stone-800 { color: #f5f5f4; }
+.dark .duel-hud .text-stone-400 { color: #8a8580; }
+.dark .duel-hud .bg-stone-200 { background-color: rgb(87 83 78 / 0.55); }
+.dark .duel-hud .stroke-stone-100 { stroke: rgb(87 83 78 / 0.4); }
+
+.dark .duel-card[class*="border-fuchsia-200"] { border-color: rgb(162 28 175 / 0.5); }
+.dark .duel-card[class*="border-emerald-400"] { border-color: rgb(16 185 129 / 0.7); }
+.dark .duel-card[class*="border-rose-400"] { border-color: rgb(251 113 133 / 0.6); }
+.dark .duel-card .bg-white { background-color: #292524; }
+.dark .duel-card .hover\:bg-fuchsia-50\/50:hover { background-color: rgb(74 4 78 / 0.3); }
+.dark .duel-card .hover\:border-fuchsia-300:hover { border-color: rgb(240 171 252 / 0.5); }
+
+.dark .duel-done[class*="border-emerald-300"] {
+  background-image: linear-gradient(to bottom left, rgb(2 44 34 / 0.65), rgb(4 47 46 / 0.65));
+  border-color: rgb(16 185 129 / 0.4);
+}
+.dark .duel-done[class*="border-amber-300"] {
+  background-image: linear-gradient(to bottom left, rgb(69 26 3 / 0.65), rgb(64 32 6 / 0.6));
+  border-color: rgb(217 119 6 / 0.45);
+}
+.dark .duel-done[class*="border-rose-300"] {
+  background-image: linear-gradient(to bottom left, rgb(76 5 25 / 0.65), rgb(64 24 18 / 0.6));
+  border-color: rgb(225 29 72 / 0.4);
+}
+.dark .duel-done .text-stone-800 { color: #f5f5f4; }
+.dark .duel-done .text-stone-600 { color: #c9c2bb; }
+.dark .duel-done .text-stone-400 { color: #8a8580; }
+.dark .duel-done .bg-emerald-50\/70 { background-color: rgb(2 44 34 / 0.5); }
+.dark .duel-done .border-emerald-300 { border-color: rgb(16 185 129 / 0.4); }
+.dark .duel-done .bg-stone-50\/70 { background-color: rgb(41 37 36 / 0.6); }
+.dark .duel-done .border-stone-200 { border-color: rgb(87 83 78 / 0.45); }
+.dark .duel-done .bg-stone-100 { background-color: rgb(68 64 60 / 0.7); }
+.dark .duel-done .bg-rose-100 { background-color: rgb(76 5 25 / 0.7); }
+.dark .duel-done .text-rose-600 { color: #fda4af; }

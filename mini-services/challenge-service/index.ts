@@ -1,0 +1,409 @@
+// ------------------------------------------------------------------
+// Vision 2 — سرویس داوری «نبرد دودنفره» (چالش زندهٔ واژگانی)
+// socket.io روی پورت ۳۰۰۳ — داوری متمرکز و ضد تقلب:
+//   • سرور خودش بانک ۴۹۰ سؤال را دارد و «درستیِ» هر پاسخ را خودش
+//     اعتبارسنجی می‌کند (هیچ اعتمادی به گزارش کلاینت نیست).
+//   • ترتیب سؤال‌ها و بُر خوردن گزینه‌ها (perm) سمت سرور تولید می‌شود
+//     تا هر دو بازیکن دقیقاً همان گزینه‌ها را با همان ترتیب ببینند.
+//   • کلاینت فقط id سؤال + perm را می‌گیرد و متن را از بانک استاتیک
+//     خودش رندر می‌کند → ترافیک کم و بدون نشتِ کلید پاسخ.
+// ------------------------------------------------------------------
+import { createServer } from "http";
+import { Server, type Socket } from "socket.io";
+
+import lesson1 from "../../src/data/lesson1";
+import lesson2 from "../../src/data/lesson2";
+import lesson3 from "../../src/data/lesson3";
+import examBank from "../../src/data/exam";
+import type { QuizQuestion } from "../../src/lib/study-types";
+
+// ----------------------------- تنظیمات مسابقه -----------------------------
+const PORT = 3003;
+const ROOM_SIZE = 2;
+const QUESTIONS_PER_DUEL = 10;
+const PER_Q_MS = 15_000; // سقف زمان هر سؤال (کلاینت هم به‌طور محلی تایمر می‌گذارد)
+const COUNTDOWN_MS = 5_000; // شمارش معکوس پس از کامل شدن اتاق
+const REMATCH_COUNTDOWN_MS = 3_000;
+const FORFEIT_GRACE_MS = 12_000; // مهلت بعد از قطع‌شدن حریف وسط مسابقه
+const STALL_GRACE_MS = PER_Q_MS + 4_000; // سگ‌منت ضد قفل‌شدن کلاینت
+const ROOM_TTL_MS = 30 * 60_000; // اتاق‌های خالی جمع‌شونده
+const CODE_ALPHABET = "ABCDEFGHJKMNPQRSTUVWXYZ23456789"; // بدون حروف مبهم
+
+// ----------------------------- بانک سؤال -----------------------------
+const BANK: QuizQuestion[] = [...lesson1.quizzes, ...lesson2.quizzes, ...lesson3.quizzes, ...examBank];
+const BANK_BY_ID = new Map<string, QuizQuestion>(BANK.map((q) => [q.id, q]));
+
+function shuffle<T>(arr: T[]): T[] {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+/** یک سؤال مسابقه: id + جایگشت گزینه‌ها + کلید واقعی (فقط سمت سرور) */
+function pickDuelQuestion() {
+  const q = BANK[Math.floor(Math.random() * BANK.length)];
+  const perm = shuffle([0, 1, 2, 3]);
+  return { id: q.id, perm, answerReal: perm.indexOf(q.answer) };
+}
+
+function makeRoomCode(): string {
+  let code = "";
+  for (let i = 0; i < 5; i++) code += CODE_ALPHABET[Math.floor(Math.random() * CODE_ALPHABET.length)];
+  return code;
+}
+
+// ----------------------------- مدل اتاق -----------------------------
+interface PlayerState {
+  sid: string;
+  name: string;
+  color: string;
+  qi: number; // سؤال بعدی که باید جواب بدهد (پیشروی مستقل)
+  score: number;
+  correct: number;
+  answered: number;
+  lastAnswerAt: number;
+  doneAt: number | null;
+  disconnected: boolean;
+}
+
+interface Room {
+  code: string;
+  players: Map<string, PlayerState>; // keyed by socket.id
+  status: "lobby" | "countdown" | "playing" | "done";
+  questions: { id: string; perm: number[]; answerReal: number }[];
+  startedAt: number | null;
+  countdownTimer: NodeJS.Timeout | null;
+  forfeitTimer: NodeJS.Timeout | null;
+  rematchVotes: Set<string>;
+  createdAt: number;
+  leftDuringPlay: boolean; // کسی وسط مسابقه رفته باشد → پایان با برچسب forfeit
+}
+
+const rooms = new Map<string, Room>();
+
+function publicPlayers(room: Room) {
+  return [...room.players.values()].map((p) => ({
+    sid: p.sid,
+    name: p.name,
+    color: p.color,
+    qi: p.qi,
+    score: p.score,
+    correct: p.correct,
+    answered: p.answered,
+    done: p.doneAt !== null,
+    disconnected: p.disconnected,
+  }));
+}
+
+function roomSummary(room: Room) {
+  return { code: room.code, status: room.status, players: publicPlayers(room) };
+}
+
+function broadcastState(room: Room) {
+  io.to(room.code).emit("duel:state", roomSummary(room));
+}
+
+function progressPayload(room: Room) {
+  return { code: room.code, status: room.status, players: publicPlayers(room) };
+}
+
+function endMatch(room: Room, reason: "finished" | "forfeit") {
+  if (room.status === "done") return;
+  const finalReason = room.leftDuringPlay ? "forfeit" : reason;
+  room.status = "done";
+  if (room.countdownTimer) clearTimeout(room.countdownTimer);
+  if (room.forfeitTimer) clearTimeout(room.forfeitTimer);
+  room.countdownTimer = null;
+  room.forfeitTimer = null;
+
+  const ps = [...room.players.values()];
+  const ranked = [...ps].sort((a, b) => b.score - a.score || b.correct - a.correct || (a.doneAt ?? Infinity) - (b.doneAt ?? Infinity));
+  const winner =
+    finalReason === "forfeit"
+      ? ps.find((p) => !p.disconnected)?.sid ?? null
+      : ranked.length === ROOM_SIZE && ranked[0].score === ranked[1].score && ranked[0].correct === ranked[1].correct
+        ? null
+        : ranked[0]?.sid ?? null;
+
+  io.to(room.code).emit("duel:end", {
+    reason: finalReason,
+    winner,
+    total: room.questions.length,
+    startedAt: room.startedAt,
+    players: publicPlayers(room),
+  });
+  room.rematchVotes.clear();
+}
+
+/** وقتی همه تمام کردند یا حریف قطع شد، مسابقه را می‌بندد */
+function maybeFinish(room: Room) {
+  if (room.status !== "playing") return;
+  const active = [...room.players.values()].filter((p) => !p.disconnected);
+  if (active.length > 0 && active.every((p) => p.doneAt !== null)) endMatch(room, "finished");
+}
+
+function startMatch(room: Room) {
+  room.status = "playing";
+  room.startedAt = Date.now();
+  room.rematchVotes.clear();
+  room.questions = Array.from({ length: QUESTIONS_PER_DUEL }, pickDuelQuestion);
+  for (const p of room.players.values()) {
+    p.qi = 0;
+    p.score = 0;
+    p.correct = 0;
+    p.answered = 0;
+    p.lastAnswerAt = Date.now();
+    p.doneAt = null;
+  }
+  io.to(room.code).emit("duel:start", {
+    perQMs: PER_Q_MS,
+    total: QUESTIONS_PER_DUEL,
+    startedAt: room.startedAt,
+    questions: room.questions.map((q) => ({ id: q.id, perm: q.perm })),
+  });
+  io.to(room.code).emit("duel:progress", progressPayload(room));
+}
+
+function scheduleCountdown(room: Room, ms: number) {
+  if (room.countdownTimer) clearTimeout(room.countdownTimer);
+  room.status = "countdown";
+  io.to(room.code).emit("duel:countdown", { ms });
+  room.countdownTimer = setTimeout(() => {
+    room.countdownTimer = null;
+    if (room.players.size === ROOM_SIZE && [...room.players.values()].every((p) => !p.disconnected)) startMatch(room);
+    else {
+      room.status = "lobby";
+      broadcastState(room);
+    }
+  }, ms);
+}
+
+function destroyRoomIfEmpty(room: Room) {
+  const allGone = [...room.players.values()].every((p) => p.disconnected);
+  if (allGone) {
+    if (room.countdownTimer) clearTimeout(room.countdownTimer);
+    if (room.forfeitTimer) clearTimeout(room.forfeitTimer);
+    rooms.delete(room.code);
+  }
+}
+
+// ----------------------------- سرور -----------------------------
+const httpServer = createServer();
+const io = new Server(httpServer, {
+  // DO NOT change the path, it is used by Caddy to forward the request to the correct port
+  path: "/",
+  cors: { origin: "*", methods: ["GET", "POST"] },
+  pingTimeout: 60_000,
+  pingInterval: 25_000,
+});
+
+interface Profile {
+  name?: unknown;
+  color?: unknown;
+}
+
+function readProfile(raw: Profile): { name: string; color: string } {
+  const name = typeof raw?.name === "string" ? raw.name.trim().slice(0, 24) : "";
+  const color = typeof raw?.color === "string" && /^#[0-9a-fA-F]{6}$/.test(raw.color) ? raw.color : "#a8a29e";
+  return { name: name || "یادگیرنده", color };
+}
+
+io.on("connection", (socket: Socket) => {
+  let room: Room | null = null;
+
+  const leaveCurrentRoom = () => {
+    if (!room) return;
+    const r = room;
+    room = null;
+    socket.leave(r.code);
+    const p = r.players.get(socket.id);
+    if (r.status === "lobby" || r.status === "countdown") {
+      // در لابی/شمارش معکوس حذف کامل طبیعی است (هنوز بازی شروع نشده)
+      r.players.delete(socket.id);
+    } else if (p) {
+      // وسط/پس از مسابقه: رکورد بازیکن با پرچم قطع‌شدن حفظ می‌شود
+      // تا نتیجهٔ نهایی آمار هر دو طرف را داشته باشد
+      p.disconnected = true;
+    }
+
+    if (r.status === "countdown") {
+      // شمارش معکوس با رفتن یکی لغو می‌شود
+      if (r.countdownTimer) clearTimeout(r.countdownTimer);
+      r.countdownTimer = null;
+      r.status = "lobby";
+      broadcastState(r);
+    } else if (r.status === "playing") {
+      const remaining = [...r.players.values()].filter((x) => !x.disconnected);
+      if (remaining.length === 0) {
+        endMatch(r, "finished"); // هر دو رفتند — نتیجه‌ای معنا ندارد
+      } else {
+        r.leftDuringPlay = true;
+        socket.to(r.code).emit("duel:opponent-left", { graceMs: FORFEIT_GRACE_MS });
+        if (!r.forfeitTimer) {
+          r.forfeitTimer = setTimeout(() => {
+            r.forfeitTimer = null;
+            endMatch(r, "forfeit");
+          }, FORFEIT_GRACE_MS);
+        }
+      }
+    }
+    broadcastState(r);
+    destroyRoomIfEmpty(r);
+  };
+
+  // ------------------------- ساخت اتاق -------------------------
+  socket.on("duel:create", (raw: Profile, ack?: (res: unknown) => void) => {
+    if (room) return ack?.({ ok: false, error: "قبلاً در اتاقی هستی." });
+    let code = makeRoomCode();
+    for (let tries = 0; rooms.has(code) && tries < 20; tries++) code = makeRoomCode();
+    const profile = readProfile(raw);
+    const r: Room = {
+      code,
+      players: new Map(),
+      status: "lobby",
+      questions: [],
+      startedAt: null,
+      countdownTimer: null,
+      forfeitTimer: null,
+      rematchVotes: new Set(),
+      createdAt: Date.now(),
+      leftDuringPlay: false,
+    };
+    r.players.set(socket.id, {
+      sid: socket.id,
+      ...profile,
+      qi: 0,
+      score: 0,
+      correct: 0,
+      answered: 0,
+      lastAnswerAt: Date.now(),
+      doneAt: null,
+      disconnected: false,
+    });
+    rooms.set(code, r);
+    socket.join(code);
+    room = r;
+    ack?.({ ok: true, code, state: roomSummary(r) });
+    broadcastState(r);
+  });
+
+  // ------------------------- پیوستن با کد -------------------------
+  socket.on("duel:join", (payload: { code?: unknown } & Profile, ack?: (res: unknown) => void) => {
+    if (room) return ack?.({ ok: false, error: "قبلاً در اتاقی هستی." });
+    const code = typeof payload?.code === "string" ? payload.code.trim().toUpperCase() : "";
+    const r = rooms.get(code);
+    if (!r) return ack?.({ ok: false, error: "اتاقی با این کد پیدا نشد." });
+    if (r.players.size >= ROOM_SIZE) return ack?.({ ok: false, error: "این اتاق کامل است." });
+    if (r.status !== "lobby") return ack?.({ ok: false, error: "مسابقه در جریان است؛ کمی بعد دوباره تلاش کن." });
+
+    const profile = readProfile(payload);
+    r.players.set(socket.id, {
+      sid: socket.id,
+      ...profile,
+      qi: 0,
+      score: 0,
+      correct: 0,
+      answered: 0,
+      lastAnswerAt: Date.now(),
+      doneAt: null,
+      disconnected: false,
+    });
+    socket.join(code);
+    room = r;
+    ack?.({ ok: true, code: r.code, state: roomSummary(r) });
+    broadcastState(r);
+    // اتاق کامل شد → شمارش معکوس تا شروع
+    if (r.players.size === ROOM_SIZE) scheduleCountdown(r, COUNTDOWN_MS);
+  });
+
+  // ------------------------- پاسخ به سؤال -------------------------
+  socket.on("duel:answer", (payload: { qi?: unknown; choice?: unknown; ms?: unknown }) => {
+    if (!room || room.status !== "playing") return;
+    const p = room.players.get(socket.id);
+    if (!p || p.doneAt !== null) return;
+    const qi = typeof payload?.qi === "number" ? Math.floor(payload.qi) : -1;
+    const choice = typeof payload?.choice === "number" ? Math.floor(payload.choice) : -2;
+    const ms = typeof payload?.ms === "number" ? Math.min(Math.max(payload.ms, 0), 30_000) : PER_Q_MS;
+    if (qi !== p.qi || qi < 0 || qi >= room.questions.length) return; // پاسخ دیرهنگام/تکراری نادیده گرفته می‌شود
+    if (choice < -1 || choice > 3) return;
+
+    const q = room.questions[qi];
+    const correct = choice >= 0 && q.perm[choice] === q.answerReal;
+    p.answered += 1;
+    p.lastAnswerAt = Date.now();
+    if (correct) {
+      p.correct += 1;
+      const bonus = Math.max(0, 100 - Math.floor(ms / 150)); // هر ۱۵۰ms یک امتیاز پاداش کم می‌شود
+      p.score += 100 + bonus;
+    }
+    p.qi += 1;
+    if (p.qi >= room.questions.length) p.doneAt = Date.now();
+
+    io.to(room.code).emit("duel:progress", progressPayload(room));
+    maybeFinish(room);
+  });
+
+  // ------------------------- نبرد دوباره -------------------------
+  socket.on("duel:rematch", () => {
+    if (!room || room.status !== "done") return;
+    if (!room.players.has(socket.id)) return;
+    room.rematchVotes.add(socket.id);
+    const ready = [...room.players.values()].filter((p) => !p.disconnected);
+    if (ready.length === ROOM_SIZE && ready.every((p) => room!.rematchVotes.has(p.sid))) {
+      scheduleCountdown(room, REMATCH_COUNTDOWN_MS);
+    } else {
+      socket.to(room.code).emit("duel:rematch-vote", { voted: room.rematchVotes.size });
+    }
+  });
+
+  socket.on("duel:leave", () => leaveCurrentRoom());
+  socket.on("disconnect", () => leaveCurrentRoom());
+});
+
+// ------------------------- سگ‌منت ضد قفل‌شدن + نظافت -------------------------
+setInterval(() => {
+  const now = Date.now();
+  for (const room of rooms.values()) {
+    if (room.status !== "playing") continue;
+    let changed = false;
+    for (const p of room.players.values()) {
+      if (p.doneAt !== null || p.disconnected) continue;
+      // کلاینت قفل شده و پاسخ -۱ خودکارش نرسیده → سرور خودش جلو می‌برد (غلط)
+      if (now - p.lastAnswerAt > STALL_GRACE_MS) {
+        p.answered += 1;
+        p.qi += 1;
+        if (p.qi >= room.questions.length) p.doneAt = now;
+        changed = true;
+      }
+    }
+    if (changed) {
+      io.to(room.code).emit("duel:progress", progressPayload(room));
+      maybeFinish(room);
+    }
+  }
+}, 2_000);
+
+setInterval(() => {
+  const now = Date.now();
+  for (const room of rooms.values()) {
+    if (room.players.size === 0 && now - room.createdAt > ROOM_TTL_MS) {
+      if (room.countdownTimer) clearTimeout(room.countdownTimer);
+      if (room.forfeitTimer) clearTimeout(room.forfeitTimer);
+      rooms.delete(room.code);
+    }
+  }
+}, 60_000);
+
+httpServer.listen(PORT, () => {
+  console.log(`⚔️  Vision 2 duel service — bank ${BANK.length} questions — listening on :${PORT}`);
+});
+
+const shutdown = () => {
+  httpServer.close(() => process.exit(0));
+  setTimeout(() => process.exit(0), 2_000);
+};
+process.on("SIGTERM", shutdown);
+process.on("SIGINT", shutdown);

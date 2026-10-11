@@ -11,6 +11,8 @@ export const EVENT_NAMES = [
   "quiz_done",
   "exam_done",
   "rush_done",
+  "duel_start", // 2-player live duel session started
+  "duel_done", // 2-player live duel finished (server-arbitrated)
   "listen_done",
   "dictation_done",
   "flashcard_done",
@@ -39,6 +41,8 @@ export const EVENT_LABELS_FA: Record<EventName, string> = {
   quiz_done: "آزمون کوتاه",
   exam_done: "آزمون جامع کامل",
   rush_done: "چالش برق‌آسا",
+  duel_start: "شروع نبرد دودنفره",
+  duel_done: "نبرد دودنفره",
   listen_done: "تمرین شنیداری",
   dictation_done: "دیکته",
   flashcard_done: "دور فلش‌کارت",
