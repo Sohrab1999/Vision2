@@ -6,7 +6,10 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: false,
   },
-  reactStrictMode: false,
+  /* audit 2026-10-12 (A-11): strict mode back on — it double-mounts effects in
+     dev so missing-cleanup bugs (like the duel countdown leak) surface instead
+     of hiding. All known effect leaks were fixed in the same pass. */
+  reactStrictMode: true,
 };
 
 export default nextConfig;

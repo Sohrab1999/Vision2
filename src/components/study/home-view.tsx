@@ -176,7 +176,10 @@ export default function HomeView() {
     recent: RecentAttempt[];
   } | null>(null);
   useEffect(() => {
-    fetch("/api/stats")
+    // audit 2026-10-12 (G-3): abort the in-flight fetch on unmount instead of
+    // calling setState on a dead component.
+    const ac = new AbortController();
+    fetch("/api/stats", { signal: ac.signal })
       .then((r) => r.json())
       .then((d) =>
         setGlobalStats({
@@ -187,6 +190,7 @@ export default function HomeView() {
         })
       )
       .catch(() => {});
+    return () => ac.abort();
   }, []);
   const recentResults = mounted
     ? Object.entries(results)

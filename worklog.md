@@ -962,3 +962,26 @@ Work Log:
 Stage Summary:
 - ممیزی کامل و مستند شد؛ هیچ ریفکتوری اجرا نشد (خروجی = سند + نقشهٔ راه). گام پیشنهادی بعدی برای کرون/دستیار: اجرای گام ۱ (تریاژ امنیتی — git rm --cached .env db/custom.db، هش‌کردن secretها، CSPRNG سینک، بایند 127.0.0.1) سپس گام ۲ (باگ‌ها) — طبق docs/codebase-audit.md §12
 - هشدار فعال: تا اجرای گام ۱، کرون بک‌آپ روزانه هر شب secretهای متن را به گیت‌هاب push می‌کند
+
+---
+Task ID: 43
+Agent: main (Z.ai Code) — «شروع کن» (اجرأ گام ۱ و ۲ نقشهٔ راه ریفاکتور docs/codebase-audit.md)
+Task: گام ۱ تریاژ امنیتی (SEC-1/2/4/S4 + D-8) + گام ۲ باگ‌های صحت (P-10، F-2.4، F-7.2، نشتی تایمر دودل، AbortController، reactStrictMode)
+
+Work Log:
+- [SEC-1 — خروج اعتبارنامه‌ها از گیت] `git rm --cached .env db/custom.db "upload/جزوه جامع یازدهم .pdf"` + `.gitignore` += `/db/` و `/upload/` — هر سه فایل روی دیسک سالم‌اند، فقط از ایندکس گیت خارج شدند؛ دیتابیس دیگر هر شب با کرون بک‌آپ به گیت‌هاب push نمی‌شود (کرون بک‌آپ هم به‌روز شد)
+- [S4 — سرویس امضا] ماژول جدید `src/lib/identity/secret.ts` (فقط سرور): `newSecret` (randomBytes ۲۴بایت)، `hashSecret` (SHA-256)، `secretMatches` (timingSafeEqual روی دایجست؛ شاخهٔ legacy برای secret متن قدیمی) — سه کپی واگرا در register/profile/stats حذف و همه به این ماژول رسیدند
+- [مهاجرت داده] یک‌بارِ اجرا: هر ۸ پروفایل بررسی شد؛ تنها secret متنِ ۴۸hex هش شد → post-check: صفر plaintext در DB (۷ ردیف legacy اصلاً secret ندارند)
+- [SEC-4/D-8 — کد سینک] ماژول مشترک `src/lib/sync-code.ts` (ایزومورفیک): ALPHABET/normalizeCode (قرارداد کلاینت: truncate)/strictNormalizeCode (قرارداد سرور: "")/looksLikeCode/newCode با crypto.getRandomValues (CSPRNG — جایگزین Math.random سرور؛ 256%32=0 بدون بایاس) — مسیر sync سرور از آن می‌خواند و sync.ts کلاینت re-export می‌کند (تست‌های موجود دست‌نخورده)؛ `generateLearnerCode` مرده حذف شد
+- [پاسخ‌های ثبت‌نام] re-issue مسیر register حالا `requestedSecret` را اکو می‌کند (plaintext فقط سمت کلاینت می‌ماند)؛ claim مسیر profile هم plaintext یک‌بار می‌دهد و digest ذخیره می‌کند
+- [SEC-2 — بایند لوکال‌هاست] package.json dev → `next dev -p 3000 -H 127.0.0.1`؛ challenge-service → `httpServer.listen(PORT, "127.0.0.1", …)` — تأیید با ss: فقط `127.0.0.1:3000` و `127.0.0.1:3003` گوش می‌دهند؛ تنها ingress، Caddy :81 است که XFF را با remote_host بازنویسی می‌کند → rate-limit دیگر با XFF جعلی دور زدنی نیست. (مارکر Caddyfile ممکن نشد: caddy با کانفیگ /app/Caddyfile خارج از دسترس اجرا می‌شود و reload هم نیست — بایند، ریشه‌ای‌تر همان را حل می‌کند)
+- [SEC-5 — گارد سرویس دودل] unhandledRejection/uncaughtException → لاگ و ادامهٔ کار (کرش کل کلاس ممکن نیست)
+- [گام ۲ — باگ‌ها] duel-view: نشتی interval شمارش معکوس (L247–251) با countdownTimer ref + پاک‌سازی در onStart و cleanup سوکت بسته شد؛ home-view: AbortController روی fetch /api/stats؛ rush-leaderboard: totalPlayers حالا قبل از برش سکو شمرده می‌شود (قبلاً همیشه ≤10)؛ backup.parseBackup: clamp-all — results (total∈[1,9999]، correct≤total، درصد بازمحاسبه‌ای ضدسم‌آلودی)، history/mistakes/dayStat/streak/rushBest سقف‌دار، srs.dueAt گارد finite≥0، userName/avatarColor برش ۲۴؛ study-store.applyStreak: trim سی‌روزهٔ history حالا کلیدها را sort می‌کند (قبلاً با ترتیب درج — بعد از merge ابری ممکن بود روزهای تازه حذف شوند) و O(n²) هم دیگر نیست؛ next.config: reactStrictMode=true (با رفع نشتی‌ها دیگر خطاهای دو-مونت نمی‌ماند)
+- [QA زندهٔ امنیتی با curl — ۱۱/۱۱] ثبت‌نام تازه → 201 + plaintext 48hex در پاسخ ولی DB فقط digest 64hex (plaintext leaked: false) ✓ stats با secret غلط → 403 ✓ با secret درست → ذخیره ✓ re-register غلط → 403 ✓ درست → 200 + اکو ✓ سینک: کد CSPRNG با قالب درست ساخت (UEZB-9263) ✓ کد غلط GET → 400 ✓ کد درست → 200 ✓ رکوردهای QA (پروفایل/تیلاش/سینک) پاک شدند — DB دست‌نخورده برگشت
+- [QA مرورگری تک‌سشن] :3000 → آنبردینگ/خانه/نقشهٔ گرامر M/دیالوگ خط ✓ دودل از :3000 «در حال اتصال» می‌ماند که طبیعی است (XTransformPort فقط در گیت‌وی است) → از :81: سوکت آنلاین + «ساخت اتاق» فعال ✓ دارک‌مود ✓ موبایل ۳90 بدون سرریز (390=390) ✓ کنسول صفر خطا ✓ dev.log فقط 200ها ✓ StrictMode بدون ثبت‌نام مضاعف (۸ پروفایل مثل قبل) ✓ اسکرین‌شات r43 در .zscripts
+- [کیفیت] tsc=۰، lint=تمیز، test=۱۲۶/۱۲۶ — بدون هیچ تست جدید (طبق قاعدهٔ پروژه؛ تست‌های sync-code/secret در گام تست-اینفرا نقشهٔ راه)
+
+Stage Summary:
+- گام ۱ و ۲ نقشهٔ راه ریفاکتور بسته شد: اعتبارنامه‌ها از گیت خارج و هش‌ شدند، rate-limit دیگر دورزدنی نیست (فقط Caddy ingress)، کد سینک CSPRNG، سه‌کپی امضا یکی شد، ۵ باگ صحت رفع شد و StrictMode برگشت
+- [هشدار برطرف شد] کرون بک‌آپ دیگر DB (حامل secret) را push نمی‌کند — بک‌آپ فقط کد/اسناد
+- گام پیشنهادی بعدی طبق roadmap §12: گام ۳ code-splitting (dynamic ×11 + دادهٔ امتحان به /public/content) یا گام ۴ پایداری schema-محور

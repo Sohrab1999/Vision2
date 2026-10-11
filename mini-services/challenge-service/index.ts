@@ -397,9 +397,17 @@ setInterval(() => {
   }
 }, 60_000);
 
-httpServer.listen(PORT, () => {
-  console.log(`⚔️  Vision 2 duel service — bank ${BANK.length} questions — listening on :${PORT}`);
+httpServer.listen(PORT, "127.0.0.1", () => {
+  // audit 2026-10-12 (SEC-2): loopback-only — the class gateway (Caddy :81) is
+  // the single ingress; direct hits from other machines can no longer reach the
+  // duel service (or spoof X-Forwarded-For into the API rate limiters).
+  console.log(`⚔️  Vision 2 duel service — bank ${BANK.length} questions — listening on 127.0.0.1:${PORT}`);
 });
+
+// audit SEC-5: a thrown error inside a socket handler must not take the
+// whole class session down — log and keep serving.
+process.on("unhandledRejection", (err) => console.error("[duel] unhandledRejection:", err));
+process.on("uncaughtException", (err) => console.error("[duel] uncaughtException:", err));
 
 const shutdown = () => {
   httpServer.close(() => process.exit(0));

@@ -55,3 +55,7 @@ server.log
 tool-results/
 .zscripts/dev.pid
 .zscripts/*.png
+
+# audit 2026-10-12: runtime data & large source assets never belong in git
+/db/
+/upload/

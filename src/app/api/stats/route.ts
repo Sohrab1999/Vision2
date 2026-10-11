@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { rateLimit } from "@/lib/rate-limit";
+import { presentSecret, secretMatches } from "@/lib/identity/secret";
 
 export const runtime = "nodejs";
 
@@ -91,8 +92,8 @@ export async function POST(req: NextRequest) {
     if (!profile.secret) {
       return NextResponse.json({ error: "این شناسه هنوز امضا نگرفته است." }, { status: 403 });
     }
-    const presented = typeof body?.secret === "string" ? body.secret.slice(0, 100) : "";
-    if (presented !== profile.secret) {
+    // audit S4: timing-safe compare against the hashed secret at rest
+    if (!secretMatches(presentSecret(body?.secret), profile.secret)) {
       return NextResponse.json({ error: "امضای نامعتبر است." }, { status: 403 });
     }
 

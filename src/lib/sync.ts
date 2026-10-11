@@ -14,35 +14,16 @@
 import { useStudy } from "./study-store";
 import type { BackupPayload } from "./backup";
 import { BACKUP_VERSION, collectData, parseBackup } from "./backup";
+import { looksLikeCode, normalizeCode } from "./sync-code";
 import type { DayHistoryMap, HistoryMap, MistakeMap, SrsItem } from "./study-store";
 import type { QuizResult } from "./study-types";
 
 export type SyncData = BackupPayload["data"];
 
-// unambiguous alphabet (no 0/O, 1/I/L) — codes are shown in a school context
-const ALPHABET = "23456789ABCDEFGHJKMNPQRSTUVWXYZ";
-
-/** Generate a human-friendly learner code like "K7QM-34XP". */
-export function generateLearnerCode(): string {
-  const pick = () =>
-    Array.from(crypto.getRandomValues(new Uint8Array(4)))
-      .map((n) => ALPHABET[n % ALPHABET.length])
-      .join("");
-  return `${pick()}-${pick()}`;
-}
-
-/** Normalize a user-typed code: uppercase, latin digits, re-hyphenated. */
-export function normalizeCode(input: string): string {
-  const clean = input
-    .toUpperCase()
-    .replace(/[^2-9A-Z]/g, "")
-    .slice(0, 8);
-  return clean.length === 8 ? `${clean.slice(0, 4)}-${clean.slice(4)}` : clean;
-}
-
-export function looksLikeCode(input: string): boolean {
-  return /^[2-9A-HJKMNP-Z]{4}-[2-9A-HJKMNP-Z]{4}$/.test(normalizeCode(input));
-}
+// audit 2026-10-12 (D-8): the code-format helpers were duplicated client and
+// server (and had already drifted). They now live in src/lib/sync-code.ts —
+// re-exported here so the header UI and existing tests keep their imports.
+export { looksLikeCode, normalizeCode };
 
 // ---------------- merge (never lose progress from either side) ----------------
 

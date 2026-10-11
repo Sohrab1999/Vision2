@@ -529,10 +529,13 @@ function applyStreak(
 > {
   const today = todayStr();
   // keep last 30 days of weekly history
+  // audit 2026-10-12 (F-2.4/D-10): the old loop deleted in INSERTION order —
+  // after a cloud merge (scrambled key order) it could delete the NEWEST days.
+  // Day keys sort lexicographically, so sorted keys + drop-smallest = honest cap.
   const history: HistoryMap = { ...s.history, [dayStat.day]: { reviews: dayStat.reviews, quizzes: dayStat.quizzes } };
-  for (const k of Object.keys(history)) {
-    if (Object.keys(history).length <= 30) break;
-    delete history[k];
+  const hKeys = Object.keys(history).sort();
+  while (hKeys.length > 30) {
+    delete history[hKeys.shift()!];
   }
   const dayHistory = pushDayHistory(s.dayHistory, dayStat);
   if (s.lastActiveDay === today) {

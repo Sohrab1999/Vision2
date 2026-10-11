@@ -136,6 +136,10 @@ export default function DuelView() {
   const qStartRef = useRef(0);
   const advanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const qTimer = useRef<ReturnType<typeof setInterval> | null>(null);
+  // audit 2026-10-12 (P-3/G-2): the countdown interval created inside the
+  // onCountdown socket callback leaked on unmount mid-countdown — it now
+  // lives in a ref and is cleared on start / socket cleanup.
+  const countdownTimer = useRef<ReturnType<typeof setInterval> | null>(null);
 
   // ----------------------------- پایان مسابقه -----------------------------
   const persistResult = useCallback(
@@ -244,15 +248,24 @@ export default function DuelView() {
       setCountdownLeft(p.ms);
       setPhase("countdown");
       const t0 = Date.now();
+      if (countdownTimer.current) clearInterval(countdownTimer.current);
       const iv = setInterval(() => {
         const left = p.ms - (Date.now() - t0);
         setCountdownLeft(Math.max(0, left));
-        if (left <= 0) clearInterval(iv);
+        if (left <= 0) {
+          clearInterval(iv);
+          if (countdownTimer.current === iv) countdownTimer.current = null;
+        }
       }, 100);
+      countdownTimer.current = iv;
     };
     const onStart = (p: { perQMs: number; total: number; startedAt: number; questions: DuelQ[] }) => {
       endedRef.current = false;
       persistedRef.current = false;
+      if (countdownTimer.current) {
+        clearInterval(countdownTimer.current);
+        countdownTimer.current = null;
+      }
       setQuestions(p.questions);
       setTotal(p.total);
       setQi(0);
@@ -291,6 +304,7 @@ export default function DuelView() {
       s.disconnect();
       if (advanceTimer.current) clearTimeout(advanceTimer.current);
       if (qTimer.current) clearInterval(qTimer.current);
+      if (countdownTimer.current) clearInterval(countdownTimer.current);
       socketRef.current = null;
     };
   }, [handleEnd]);

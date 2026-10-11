@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { rateLimit } from "@/lib/rate-limit";
+import { hashSecret, newSecret, presentSecret, secretMatches } from "@/lib/identity/secret";
 
 export const runtime = "nodejs";
 
@@ -17,12 +18,6 @@ export const runtime = "nodejs";
 // migration is transparent; new identities can also be fully server-issued.
 
 const ALLOWED_COLORS = ["emerald", "amber", "rose", "violet", "sky"];
-
-function newSecret(): string {
-  const bytes = new Uint8Array(24);
-  crypto.getRandomValues(bytes);
-  return Array.from(bytes, (b) => b.toString(16).padStart(2, "0")).join("");
-}
 
 function newUserId(): string {
   return `u-${Date.now().toString(36)}-${Array.from(crypto.getRandomValues(new Uint8Array(8)), (b) =>
@@ -47,7 +42,7 @@ export async function POST(req: NextRequest) {
     } | null;
 
     const requestedId = typeof body?.userId === "string" ? body.userId.trim().slice(0, 80) : "";
-    const requestedSecret = typeof body?.secret === "string" ? body.secret.slice(0, 100) : "";
+    const requestedSecret = presentSecret(body?.secret);
     const name = cleanName(body?.name);
     const color = ALLOWED_COLORS.includes(body?.color as string) ? (body?.color as string) : "emerald";
 
@@ -56,7 +51,8 @@ export async function POST(req: NextRequest) {
 
     if (existing?.secret) {
       // already claimed — only the holder of the secret may re-issue
-      if (!requestedSecret || requestedSecret !== existing.secret) {
+      // (audit S4: timing-safe compare against the hashed secret at rest)
+      if (!secretMatches(requestedSecret, existing.secret)) {
         return NextResponse.json(
           { error: "این شناسه قبلاً ثبت شده است؛ امضای معتبر لازم است." },
           { status: 403 }
@@ -66,12 +62,15 @@ export async function POST(req: NextRequest) {
         where: { userId },
         data: name.length >= 2 ? { name, color } : {},
       });
-      return NextResponse.json({ ok: true, userId, secret: existing.secret, name: updated.name, color: updated.color });
+      // echo the presented secret — the holder already has it, and with
+      // hashed storage the plaintext exists only on the client side.
+      return NextResponse.json({ ok: true, userId, secret: requestedSecret, name: updated.name, color: updated.color });
     }
 
     const secret = newSecret();
     // name is required by the schema — anonymous registrations get a neutral label
-    const data = { name: name.length >= 2 ? name : "یادگیرنده", color, secret };
+    // (audit SEC-1: only the SHA-256 digest is stored; plaintext ships once, below)
+    const data = { name: name.length >= 2 ? name : "یادگیرنده", color, secret: hashSecret(secret) };
     const profile = existing
       ? await db.learnerProfile.update({ where: { userId }, data })
       : await db.learnerProfile.create({ data: { userId, ...data } });

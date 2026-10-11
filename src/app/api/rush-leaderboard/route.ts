@@ -40,7 +40,7 @@ export async function GET(req: NextRequest) {
     });
     const profileMap = new Map(profiles.map((p) => [p.userId, p]));
 
-    const rows: RushRow[] = grouped
+    const ranked: RushRow[] = grouped
       // attempts from before the score column existed have score=null — skip them
       .filter((g) => (g._max.score ?? 0) > 0)
       .map((g) => {
@@ -57,10 +57,13 @@ export async function GET(req: NextRequest) {
         };
       })
       // rank by best points; ties → more games first
-      .sort((a, b) => b.bestScore - a.bestScore || b.games - a.games)
-      .slice(0, 10);
+      .sort((a, b) => b.bestScore - a.bestScore || b.games - a.games);
 
-    return NextResponse.json({ learners: rows, totalPlayers: rows.length });
+    // audit 2026-10-12 (P-10): totalPlayers must count the ranked field BEFORE
+    // the podium slice — it was always ≤10.
+    const rows = ranked.slice(0, 10);
+
+    return NextResponse.json({ learners: rows, totalPlayers: ranked.length });
   } catch (error) {
     // Phase-1 «پایداری»: surface DB failures instead of a fake empty board.
     console.error("Rush leaderboard API error:", error);

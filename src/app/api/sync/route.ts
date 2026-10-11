@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { rateLimit } from "@/lib/rate-limit";
+import { looksLikeCode, newCode, strictNormalizeCode } from "@/lib/sync-code";
 
 export const runtime = "nodejs";
 
@@ -12,24 +13,11 @@ export const runtime = "nodejs";
 // product stage — see roadmap §8). Brute-force resistance comes from
 // the unambiguous 32-char alphabet (32^8 ≈ 1.1e12) plus a tight GET
 // rate limit below.
+//
+// Audit 2026-10-12 (SEC-4/D-8): code format + CSPRNG generation now live in
+// the shared src/lib/sync-code.ts (the server copy had drifted to Math.random).
 
-const CODE_ALPHABET = "23456789ABCDEFGHJKMNPQRSTUVWXYZ";
 const MAX_DATA_BYTES = 600_000; // ~600KB snapshot ceiling
-
-function normalize(code: string): string {
-  const clean = code.toUpperCase().replace(/[^2-9A-Z]/g, "").slice(0, 8);
-  return clean.length === 8 ? `${clean.slice(0, 4)}-${clean.slice(4)}` : "";
-}
-
-function looksValid(code: string): boolean {
-  return /^[2-9A-HJKMNP-Z]{4}-[2-9A-HJKMNP-Z]{4}$/.test(code);
-}
-
-function newCode(): string {
-  const pick = (n: number) =>
-    Array.from({ length: n }, () => CODE_ALPHABET[Math.floor(Math.random() * CODE_ALPHABET.length)]).join("");
-  return `${pick(4)}-${pick(4)}`;
-}
 
 function dataToString(data: unknown): string | null {
   try {
@@ -56,8 +44,8 @@ export async function GET(req: NextRequest) {
   if (!limit.ok) return limit.response!;
   try {
     const raw = req.nextUrl.searchParams.get("code") ?? "";
-    const code = normalize(raw);
-    if (!looksValid(code)) {
+    const code = strictNormalizeCode(raw);
+    if (!code) {
       return NextResponse.json({ error: "قالب کد درست نیست." }, { status: 400 });
     }
     const row = await db.learnerSync.findUnique({ where: { code } });
@@ -88,8 +76,8 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "دادهٔ ارسالی نامعتبر یا بیش از حد بزرگ است." }, { status: 400 });
     }
 
-    const requested = typeof body.code === "string" ? normalize(body.code) : "";
-    if (body.code !== undefined && !looksValid(requested)) {
+    const requested = typeof body.code === "string" ? strictNormalizeCode(body.code) : "";
+    if (body.code !== undefined && !looksLikeCode(typeof body.code === "string" ? body.code : "")) {
       return NextResponse.json({ error: "قالب کد درست نیست." }, { status: 400 });
     }
 

@@ -168,23 +168,36 @@ export function parseBackup(text: string): BackupPayload {
     throw new Error("نسخهٔ فایل پشتیبان پشتیبانی نمی‌شود.");
   }
   const data = asRecord(rec["data"]);
+  // audit 2026-10-12 (F-7.2): every numeric field below is clamped now —
+  // previously a tampered/corrupt file could inject percent 9000 or negative
+  // counts that the max-merge in sync would happily keep as "best" forever.
+  const num = (v: unknown): number | null =>
+    typeof v === "number" && Number.isFinite(v) ? v : null;
+  const cnt = (v: unknown, max = 9999): number | null => {
+    const n = num(v);
+    return n === null ? null : Math.min(max, Math.max(0, Math.round(n)));
+  };
   const results: Record<string, QuizResult> = {};
   for (const [k, v] of Object.entries(asRecord(data["results"]))) {
     const r = asRecord(v);
-    if (typeof r["percent"] === "number" && typeof r["correct"] === "number" && typeof r["total"] === "number") {
-      results[k] = {
-        correct: r["correct"],
-        total: r["total"],
-        percent: r["percent"],
-        at: typeof r["at"] === "string" ? r["at"] : new Date().toISOString(),
-      };
-    }
+    const total = cnt(r["total"]);
+    const correct = cnt(r["correct"]);
+    if (total === null || total < 1 || correct === null || correct > total) continue;
+    // percent is always round(correct/total*100) on every write path —
+    // recomputing here keeps a tampered percent field from poisoning "best"
+    results[k] = {
+      correct,
+      total,
+      percent: Math.round((correct / total) * 100),
+      at: typeof r["at"] === "string" ? r["at"] : new Date().toISOString(),
+    };
   }
   const srs: Record<string, SrsItem> = {};
   for (const [k, v] of Object.entries(asRecord(data["srs"]))) {
     const it = asRecord(v);
-    if (typeof it["level"] === "number" && typeof it["dueAt"] === "number") {
-      srs[k] = { level: Math.max(0, Math.min(5, it["level"])), dueAt: it["dueAt"] };
+    const dueAt = num(it["dueAt"]);
+    if (typeof it["level"] === "number" && dueAt !== null && dueAt >= 0) {
+      srs[k] = { level: Math.max(0, Math.min(5, it["level"])), dueAt: Math.round(dueAt) };
     }
   }
   const known: Record<string, boolean> = {};
@@ -194,8 +207,10 @@ export function parseBackup(text: string): BackupPayload {
   const history: HistoryMap = {};
   for (const [k, v] of Object.entries(asRecord(data["history"]))) {
     const h = asRecord(v);
-    if (typeof h["reviews"] === "number" && typeof h["quizzes"] === "number") {
-      history[k] = { reviews: h["reviews"], quizzes: h["quizzes"] };
+    const reviews = cnt(h["reviews"]);
+    const quizzes = cnt(h["quizzes"]);
+    if (reviews !== null && quizzes !== null) {
+      history[k] = { reviews, quizzes };
     }
   }
   // Task-37 «هفته‌نامه» — sanitize the full-day window: valid day keys, clamped
@@ -223,9 +238,11 @@ export function parseBackup(text: string): BackupPayload {
   }
   const mistakes: MistakeMap = {};
   for (const [k, v] of Object.entries(asRecord(data["mistakes"]))) {
-    if (typeof v === "number") mistakes[k] = v;
+    const m = cnt(v, 999);
+    if (m !== null && m > 0) mistakes[k] = m;
   }
   const ds = asRecord(data["dayStat"]);
+  const clampStat = (v: unknown) => cnt(v) ?? 0;
   return {
     app: "vision2-webbook",
     version: BACKUP_VERSION,
@@ -234,26 +251,26 @@ export function parseBackup(text: string): BackupPayload {
       known,
       results,
       srs,
-      userName: typeof data["userName"] === "string" ? data["userName"] : "",
-      avatarColor: typeof data["avatarColor"] === "string" ? data["avatarColor"] : "emerald",
-      streak: typeof data["streak"] === "number" ? data["streak"] : 0,
-      bestStreak: typeof data["bestStreak"] === "number" ? data["bestStreak"] : 0,
+      userName: typeof data["userName"] === "string" ? data["userName"].slice(0, 24) : "",
+      avatarColor: typeof data["avatarColor"] === "string" ? data["avatarColor"].slice(0, 24) : "emerald",
+      streak: cnt(data["streak"]) ?? 0,
+      bestStreak: cnt(data["bestStreak"]) ?? 0,
       lastActiveDay: typeof data["lastActiveDay"] === "string" ? data["lastActiveDay"] : "",
       dayStat: {
         day: typeof ds["day"] === "string" ? ds["day"] : "",
-        reviews: typeof ds["reviews"] === "number" ? ds["reviews"] : 0,
-        quizzes: typeof ds["quizzes"] === "number" ? ds["quizzes"] : 0,
-        words: typeof ds["words"] === "number" ? ds["words"] : 0,
-        dictation: typeof ds["dictation"] === "number" ? ds["dictation"] : 0,
-        rush: typeof ds["rush"] === "number" ? ds["rush"] : 0,
+        reviews: clampStat(ds["reviews"]),
+        quizzes: clampStat(ds["quizzes"]),
+        words: clampStat(ds["words"]),
+        dictation: clampStat(ds["dictation"]),
+        rush: clampStat(ds["rush"]),
       },
       history,
       dayHistory,
       mistakes,
       seenBadges: Array.isArray(data["seenBadges"]) ? data["seenBadges"].filter((x): x is string => typeof x === "string") : [],
-      rushBest: typeof data["rushBest"] === "number" ? data["rushBest"] : 0,
-      rushBestCorrect: typeof data["rushBestCorrect"] === "number" ? data["rushBestCorrect"] : 0,
-      rushGames: typeof data["rushGames"] === "number" ? data["rushGames"] : 0,
+      rushBest: cnt(data["rushBest"], 1_000_000) ?? 0,
+      rushBestCorrect: cnt(data["rushBestCorrect"]) ?? 0,
+      rushGames: cnt(data["rushGames"], 99_999) ?? 0,
       freezeCount: typeof data["freezeCount"] === "number" ? Math.min(2, Math.max(0, Math.round(data["freezeCount"]))) : 0,
       freezeEarnedDay: typeof data["freezeEarnedDay"] === "string" ? data["freezeEarnedDay"] : "",
       freezeUsedDays: Array.isArray(data["freezeUsedDays"])

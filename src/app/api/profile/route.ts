@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { rateLimit } from "@/lib/rate-limit";
+import { hashSecret, newSecret, presentSecret, secretMatches } from "@/lib/identity/secret";
 
 export const runtime = "nodejs";
 
@@ -35,7 +36,7 @@ export async function POST(req: NextRequest) {
     const userId = typeof body?.userId === "string" ? body.userId.slice(0, 80) : "";
     const rawName = typeof body?.name === "string" ? body.name.trim().slice(0, 24) : "";
     const color = ALLOWED_COLORS.includes(body?.color) ? body.color : "emerald";
-    const presented = typeof body?.secret === "string" ? body.secret.slice(0, 100) : "";
+    const presented = presentSecret(body?.secret);
 
     if (!userId || rawName.length < 2) {
       return NextResponse.json(
@@ -51,24 +52,29 @@ export async function POST(req: NextRequest) {
     if (!existing) {
       return NextResponse.json({ error: "یادگیرنده ثبت‌نام نشده است." }, { status: 403 });
     }
-    let secret = existing.secret;
-    if (secret && presented !== secret) {
+    // audit S4: one timing-safe comparison against the (hashed) stored secret.
+    // Legacy claim path is unchanged: an unclaimed row gets its secret here.
+    const stored = existing.secret;
+    if (stored && !secretMatches(presented, stored)) {
       return NextResponse.json({ error: "امضای نامعتبر است." }, { status: 403 });
     }
-    if (!secret) {
-      const bytes = new Uint8Array(24);
-      crypto.getRandomValues(bytes);
-      secret = Array.from(bytes, (b) => b.toString(16).padStart(2, "0")).join("");
+    // plaintext to echo back (the client already holds it on the auth path)
+    // vs. the digest we persist — they only coincide on the claim path.
+    let outSecret = presented;
+    let dataSecret = stored;
+    if (!stored) {
+      outSecret = newSecret();
+      dataSecret = hashSecret(outSecret);
     }
 
     const profile = await db.learnerProfile.update({
       where: { userId },
-      data: { name: rawName, color, secret },
+      data: { name: rawName, color, secret: dataSecret },
     });
     return NextResponse.json({
       ok: true,
       profile: { userId: profile.userId, name: profile.name, color: profile.color },
-      secret,
+      secret: outSecret,
     });
   } catch (error) {
     console.error("Profile API error:", error);
