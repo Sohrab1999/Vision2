@@ -78,6 +78,7 @@ export default function GrammarView() {
 
   const withLessons = useMemo(() => stationIdsWithLesson(), []);
   const lessonLines = useMemo(() => new Set(lineIdsWithLessons()), []);
+  const allLinesHaveLessons = lessonLines.size === GRAMMAR_LINES.length;
 
   const summary = useMemo(() => mapSummary(results), [results]);
 
@@ -182,7 +183,7 @@ export default function GrammarView() {
             آستانهٔ سبز شدن: {faNum(GRAMMAR_GREEN)}٪
           </span>
           <span className="rounded-full bg-white/15 px-3 py-1.5 text-[12px] font-bold">
-            ✨ درس ۹۰ثانیه‌ای: {faNum(withLessons.size)} ایستگاه
+            ✨ درس ۹۰ثانیه‌ای: {faNum(withLessons.size)}/{faNum(summary.total)} ایستگاه
           </span>
         </div>
         <div className="relative mt-4 grid gap-2 text-[12px] font-bold text-teal-50 sm:grid-cols-3">
@@ -224,7 +225,10 @@ export default function GrammarView() {
               <span className="text-[12px] font-bold text-stone-500">
                 {faNum(stats.green)} از {faNum(stats.total)} سبز
               </span>
-              {lessonLines.has(line.id) && (
+              {/* نشان «همهٔ ایستگاه‌ها درس دارند» فقط وقتی معنا دارد که گسترش
+                  درس‌ها ناقص باشد — وقتی کل نقشه پوشیده شد، چیپ هیرو خودش
+                  پوشش کامل را اعلام می‌کند و تکرارِ هرخطی حذف می‌شود */}
+              {!allLinesHaveLessons && lessonLines.has(line.id) && (
                 <span className={`gmetro-lesson-badge inline-flex items-center gap-1 rounded-full border border-dashed px-2.5 py-1 text-[10.5px] font-black ${c.text} ${c.border} bg-white/60`}>
                   <Sparkles size={11} /> همهٔ ایستگاه‌ها درس ۹۰ثانیه‌ای دارند
                 </span>

@@ -17,14 +17,31 @@ import {
   ROLE_CLASSES,
 } from "@/lib/grammar-lesson";
 
-describe("data — درس‌های PPP خط‌های ۱ و ۲", () => {
+describe("data — درس‌های PPP تمام خط‌ها (Task 41: پوشش ۱۵/۱۵)", () => {
   const stationIds = GRAMMAR_LINES.flatMap((l) => l.stations.map((s) => s.id));
 
-  it("هر ایستگاه خط‌های ۱ و ۲ درس دارد؛ بقیه ندارند", () => {
-    const line12 = GRAMMAR_LINES.filter((l) => l.id <= 2).flatMap((l) => l.stations.map((s) => s.id));
-    for (const id of line12) expect(lessonFor(id), id).not.toBeNull();
-    const after = GRAMMAR_LINES.filter((l) => l.id > 2).flatMap((l) => l.stations.map((s) => s.id));
-    for (const id of after) expect(lessonFor(id), id).toBeNull();
+  it("هر ۱۵ ایستگاه نقشه درس دارد", () => {
+    for (const id of stationIds) expect(lessonFor(id), id).not.toBeNull();
+  });
+
+  it("درس‌های خط‌های ۳-۶ محتوای واقعی کتاب را پوشش می‌دهند (کاوش اِلِمانی)", () => {
+    // خط ۳: حال کامل — have/has + p.p. و سرنخ‌ها
+    const pp = lessonFor("g-present-perfect")!;
+    expect(pp.see.pieces.some((p) => p.text === "have")).toBe(true);
+    expect(pp.see.pieces.some((p) => p.text === "lived")).toBe(true);
+    expect(pp.see.timebar).toBeDefined();
+    expect(pp.try.some((q) => q.options.includes("has just cooked"))).toBe(true);
+    // خط ۴: فعل دوکلمه‌ای — ضمیر وسط در جدا شدنی، چسبیدگی در جدا نشدنی
+    const sep = lessonFor("g-phrasal-sep")!;
+    expect(sep.try.some((q) => q.options.includes("pick them up"))).toBe(true);
+    const insep = lessonFor("g-phrasal-insep")!;
+    expect(insep.see.pieces.some((p) => p.text === "looks after")).toBe(true);
+    // خط ۵: شرطی نوع اول — بعد از if حال ساده
+    const cond = lessonFor("g-cond1")!;
+    expect(cond.try.some((q) => q.options.includes("rains"))).toBe(true);
+    // خط ۶: پیشوند — impossible با im-
+    const prefix = lessonFor("g-prefix")!;
+    expect(prefix.try.some((q) => q.options.includes("impossible"))).toBe(true);
   });
 
   it("stationId هر درس به ایستگاه واقعی نقشه اشاره می‌کند", () => {
@@ -33,14 +50,10 @@ describe("data — درس‌های PPP خط‌های ۱ و ۲", () => {
     }
   });
 
-  it("یککتایی stationId و ترتیب درس‌ها با ترتیب ایستگاه‌های نقشه هم‌خوان است", () => {
+  it("یککتایی stationId و ترتیب درس‌ها با ترتیب کامل ایستگاه‌های نقشه هم‌خوان است", () => {
     const ids = GRAMMAR_MICRO_LESSONS.map((l) => l.stationId);
     expect(new Set(ids).size).toBe(ids.length);
-    // ایستگاه‌های خط ۱ و ۲ به ترتیب خودشان
-    const expected = GRAMMAR_LINES.filter((l) => l.id <= 2)
-      .flatMap((l) => l.stations.map((s) => s.id))
-      .filter((id) => ids.includes(id));
-    expect(ids).toEqual(expected);
+    expect(ids).toEqual(stationIds); // درس‌ها دقیقاً به ترتیب نقشه، بدون جا و اضافه
   });
 
   it("همهٔ درس‌ها ساختار کامل PPP دارند", () => {
@@ -65,8 +78,27 @@ describe("data — درس‌های PPP خط‌های ۱ و ۲", () => {
         expect(l.see.timebar.marker).toBeLessThanOrEqual(100);
       }
     }
-    // g-order گذشتهٔ ساده دارد → نوار زمان
+    // g-order گذشتهٔ ساده و g-present-perfect پل گذشته‌تاحالا → هر دو نوار زمان
     expect(lessonFor("g-order")?.see.timebar).toBeDefined();
+    expect(lessonFor("g-present-perfect")?.see.timebar).toBeDefined();
+    // درس‌های غیرزمانی نوار زمان ندارند
+    expect(lessonFor("g-cond1")?.see.timebar).toBeUndefined();
+    expect(lessonFor("g-prefix")?.see.timebar).toBeUndefined();
+  });
+
+  it("گزینهٔ درست هر سؤال «امتحان کن» از بقیه فرق دارد (تلهٔ گزینه‌های تکراری)", () => {
+    for (const l of GRAMMAR_MICRO_LESSONS) {
+      for (const [qi, q] of l.try.entries()) {
+        expect(new Set(q.options).size, `${l.stationId} سؤال ${qi + 1}`).toBe(q.options.length);
+      }
+    }
+  });
+
+  it("ایندکس‌های جواب در هر درس همه یک عدد نیستند (ضد حدس‌زدن الگو‌وار)", () => {
+    for (const l of GRAMMAR_MICRO_LESSONS) {
+      const answers = new Set(l.try.map((q) => q.answer));
+      expect(answers.size, l.stationId).toBeGreaterThan(1);
+    }
   });
 
   it("غلط کلاسیک هر آینه با درستِ آن فرق دارد", () => {
@@ -97,8 +129,8 @@ describe("قراردادهای خالص grammar-lesson", () => {
     expect(whyAnswer("water غیرقابل شمارش است")).toBe("چون water غیرقابل شمارش است");
   });
 
-  it("خط‌های کامل‌درس‌دار فقط خط ۱ و ۲ هستند", () => {
-    expect(lineIdsWithLessons()).toEqual([1, 2]);
+  it("خط‌های کامل‌درس‌دار حالا هر ۶ خط نقشه است", () => {
+    expect(lineIdsWithLessons()).toEqual([1, 2, 3, 4, 5, 6]);
   });
 
   it("stationIdsWithLesson دقیقاً ایستگاه‌های درس‌دار را برمی‌گرداند", () => {
@@ -106,7 +138,8 @@ describe("قراردادهای خالص grammar-lesson", () => {
     expect(set.size).toBe(GRAMMAR_MICRO_LESSONS.length);
     expect(set.has("g-order")).toBe(true);
     expect(set.has("g-numbers")).toBe(true);
-    expect(set.has("g-present-perfect")).toBe(false);
+    expect(set.has("g-present-perfect")).toBe(true);
+    expect(set.has("g-suffix")).toBe(true);
   });
 
   it("validateLesson خرابی‌ها را گزارش می‌کند نه اینکه کرش کند", () => {
