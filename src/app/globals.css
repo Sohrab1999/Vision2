@@ -1063,3 +1063,29 @@ html.user-reduce-motion .streak-flame {
 .dark .duel-done .bg-stone-100 { background-color: rgb(68 64 60 / 0.7); }
 .dark .duel-done .bg-rose-100 { background-color: rgb(76 5 25 / 0.7); }
 .dark .duel-done .text-rose-600 { color: #fda4af; }
+
+/* ---------------- leaderboard duel standings (Task-36 «جدول نبرد») ----------------
+   Scoped to .leaderboard.duel-mode so the exam podium keeps its tuned palette. */
+.dark .leaderboard.duel-mode .border-fuchsia-200 { border-color: rgb(162 28 175 / 0.45); }
+.dark .leaderboard.duel-mode .border-fuchsia-100 { border-color: rgb(74 4 78 / 0.6); }
+.dark .leaderboard.duel-mode .bg-gradient-to-b.from-fuchsia-50\/60 {
+  background-image: linear-gradient(to bottom, rgb(74 4 78 / 0.22), rgb(0 0 0 / 0));
+}
+.dark .leaderboard.duel-mode .bg-fuchsia-50\/40 { background-color: rgb(59 7 100 / 0.18); }
+.dark .leaderboard.duel-mode .bg-fuchsia-50\/50 { background-color: rgb(74 4 78 / 0.25); }
+.dark .leaderboard.duel-mode .bg-fuchsia-50 { background-color: rgb(59 7 100 / 0.4); }
+.dark .leaderboard.duel-mode .ring-fuchsia-200 { --tw-ring-color: rgb(162 28 175 / 0.5); }
+.dark .leaderboard.duel-mode .text-fuchsia-700 { color: #f0abfc; }
+.dark .leaderboard.duel-mode .text-fuchsia-600 { color: #e879f9; }
+.dark .leaderboard.duel-mode .text-fuchsia-300 { color: #d8b4fe; }
+/* duel podium — deeper arena purple, mirroring the exam podium tuning */
+.dark .leaderboard.duel-mode .from-fuchsia-300 { --tw-gradient-from: #86198f; }
+.dark .leaderboard.duel-mode .from-violet-200 { --tw-gradient-from: #6d28d9; }
+.dark .leaderboard.duel-mode .to-violet-500 { --tw-gradient-to: #5b21b6; }
+.dark .leaderboard.duel-mode .from-purple-200 { --tw-gradient-from: #7e22ce; }
+.dark .leaderboard.duel-mode .to-purple-400 { --tw-gradient-to: #9333ea; }
+/* W/L/T record badges */
+.dark .leaderboard.duel-mode .bg-emerald-100 { background-color: rgb(6 55 40 / 0.6); }
+.dark .leaderboard.duel-mode .text-emerald-700 { color: #6ee7b7; }
+.dark .leaderboard.duel-mode .bg-rose-100 { background-color: rgb(76 5 25 / 0.6); }
+.dark .leaderboard.duel-mode .text-rose-700 { color: #fda4af; }

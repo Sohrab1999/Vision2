@@ -159,9 +159,16 @@ export default function DuelView() {
         });
       }
       try {
-        sendStats({ lesson: 0, category: "duel", total: Math.max(mine.answered, end.total), correct: mine.correct, score: mine.score }).catch(
-          () => {}
-        );
+        // Task-36 «جدول نبرد» — the locally arbitrated outcome rides along with
+        // the signed attempt so the global leaderboard can rank duel records.
+        sendStats({
+          lesson: 0,
+          category: "duel",
+          total: Math.max(mine.answered, end.total),
+          correct: mine.correct,
+          score: mine.score,
+          outcome,
+        }).catch(() => {});
       } catch {
         /* ignore */
       }

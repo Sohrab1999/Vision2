@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { rateLimit } from "@/lib/rate-limit";
+import { aggregateDuelStandings, duelMatchCount } from "@/lib/duel-standings";
 
 export const runtime = "nodejs";
 
@@ -11,6 +12,19 @@ export interface LeaderRow {
   attempts: number;
   avgPercent: number;
   bestPercent: number;
+}
+
+export interface DuelerRow {
+  userId: string;
+  name: string;
+  color: string;
+  duels: number;
+  wins: number;
+  losses: number;
+  ties: number;
+  bestScore: number;
+  avgPercent: number;
+  winRate: number;
 }
 
 export async function GET(req: NextRequest) {
@@ -24,11 +38,20 @@ export async function GET(req: NextRequest) {
       _max: { percent: true },
     });
 
+    // Task-36 «جدول نبرد» — duel standings ride along in the same response so
+    // the leaderboard never needs a second request to switch dimensions.
+    const duelRows = await db.quizAttempt.findMany({
+      where: { category: "duel" },
+      select: { userId: true, outcome: true, score: true, percent: true },
+    });
+    const duelStandings = aggregateDuelStandings(duelRows);
+    const duelsTotal = duelMatchCount(duelRows);
+
     if (grouped.length === 0) {
-      return NextResponse.json({ learners: [], totalLearners: 0 });
+      return NextResponse.json({ learners: [], totalLearners: 0, duelers: [], duelsTotal });
     }
 
-    const userIds = grouped.map((g) => g.userId);
+    const userIds = [...new Set([...grouped.map((g) => g.userId), ...duelStandings.map((d) => d.userId)])];
     const profiles = await db.learnerProfile.findMany({
       where: { userId: { in: userIds } },
     });
@@ -50,7 +73,25 @@ export async function GET(req: NextRequest) {
       .sort((a, b) => b.avgPercent - a.avgPercent || b.attempts - a.attempts)
       .slice(0, 20);
 
-    return NextResponse.json({ learners: rows, totalLearners: grouped.length });
+    const duelers: DuelerRow[] = duelStandings
+      .map((d) => {
+        const p = profileMap.get(d.userId);
+        return {
+          userId: d.userId,
+          name: p?.name ?? "زبان‌آموز مهمان",
+          color: p?.color ?? "stone",
+          duels: d.duels,
+          wins: d.wins,
+          losses: d.losses,
+          ties: d.ties,
+          bestScore: d.bestScore,
+          avgPercent: d.avgPercent,
+          winRate: d.winRate,
+        };
+      })
+      .slice(0, 20);
+
+    return NextResponse.json({ learners: rows, totalLearners: grouped.length, duelers, duelsTotal });
   } catch (error) {
     // Phase-1 «پایداری»: surface DB failures instead of a fake empty board.
     console.error("Leaderboard API error:", error);

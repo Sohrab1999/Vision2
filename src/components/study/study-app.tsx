@@ -39,6 +39,14 @@ export default function StudyApp() {
     useStudy.persist.rehydrate();
   }, []);
 
+  // Task-36 «جدول نبرد»: global opener — the leaderboard's duel standings
+  // tab invites learners straight into the arena from anywhere in the app.
+  useEffect(() => {
+    const handler = () => useStudy.getState().setView({ type: "duel" });
+    window.addEventListener("open-duel", handler);
+    return () => window.removeEventListener("open-duel", handler);
+  }, []);
+
   // Phase-0 «اعتماد»: legacy migration — a persisted userId without a secret
   // claims it once on the server (first-claim wins) so stats/profile writes
   // stay signed. Fresh visitors register during onboarding instead.

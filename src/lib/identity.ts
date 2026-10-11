@@ -44,12 +44,16 @@ export async function ensureIdentity(): Promise<Identity | null> {
   }
 }
 
+export type DuelOutcome = "win" | "loss" | "tie";
+
 export interface StatsPayload {
   lesson: number;
   category: string;
   total: number;
   correct: number;
   score?: number;
+  /** Task-36 «جدول نبرد» — duel rows only; the server whitelists it to category "duel". */
+  outcome?: DuelOutcome;
 }
 
 /** Fire-and-forget signed stats POST. Resolves true when the server accepted it. */

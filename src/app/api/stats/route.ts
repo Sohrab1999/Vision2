@@ -99,8 +99,14 @@ export async function POST(req: NextRequest) {
     const percent = Math.round((correct / total) * 100);
     const rawScore = Number(body?.score);
     const score = Number.isFinite(rawScore) && rawScore > 0 ? Math.min(Math.round(rawScore), 100_000) : null;
+    // Task-36 «جدول نبرد» — the duel outcome rides along with signed duel
+    // attempts. Strictly whitelisted: any other category silently drops it.
+    const rawOutcome = typeof body?.outcome === "string" ? body.outcome : "";
+    const outcome = category === "duel" && (rawOutcome === "win" || rawOutcome === "loss" || rawOutcome === "tie")
+      ? rawOutcome
+      : null;
     const attempt = await db.quizAttempt.create({
-      data: { userId, lesson, category, total, correct, percent, score },
+      data: { userId, lesson, category, total, correct, percent, score, outcome },
     });
     return NextResponse.json({ ok: true, id: attempt.id });
   } catch (error) {

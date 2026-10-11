@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Trophy, Medal, UserRound, ShieldCheck } from "lucide-react";
+import { Trophy, Medal, UserRound, ShieldCheck, Swords, Flame } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
@@ -17,11 +17,30 @@ interface LeaderRow {
   bestPercent: number;
 }
 
+interface DuelerRow {
+  userId: string;
+  name: string;
+  color: string;
+  duels: number;
+  wins: number;
+  losses: number;
+  ties: number;
+  bestScore: number;
+  avgPercent: number;
+  winRate: number;
+}
+
 const podiumOrder = [1, 0, 2]; // second, first, third
 const podiumMeta = [
   { h: "h-20", medal: "🥇", ring: "ring-amber-400", grad: "from-amber-300 to-amber-500", label: "قهرمان" },
   { h: "h-14", medal: "🥈", ring: "ring-stone-300", grad: "from-stone-200 to-stone-400", label: "دوم" },
   { h: "h-11", medal: "🥉", ring: "ring-orange-300", grad: "from-orange-200 to-orange-400", label: "سوم" },
+];
+// Task-36 «جدول نبرد» — the duel podium wears the arena's purple brand.
+const duelPodiumMeta = [
+  { h: "h-20", medal: "⚔️", ring: "ring-fuchsia-400", grad: "from-fuchsia-300 to-fuchsia-600", label: "قهرمان نبرد" },
+  { h: "h-14", medal: "🗡️", ring: "ring-violet-300", grad: "from-violet-200 to-violet-500", label: "دوم" },
+  { h: "h-11", medal: "🛡️", ring: "ring-purple-300", grad: "from-purple-200 to-purple-400", label: "سوم" },
 ];
 
 function AvatarDot({ color, name, size = 36 }: { color: string; name: string; size?: number }) {
@@ -35,8 +54,13 @@ function AvatarDot({ color, name, size = 36 }: { color: string; name: string; si
   );
 }
 
+type Tab = "exams" | "duels";
+
 export default function Leaderboard() {
   const [rows, setRows] = useState<LeaderRow[] | null>(null);
+  const [duelers, setDuelers] = useState<DuelerRow[] | null>(null);
+  const [duelsTotal, setDuelsTotal] = useState(0);
+  const [tab, setTab] = useState<Tab>("exams");
   const userId = useStudy((s) => s.userId);
   const userName = useStudy((s) => s.userName);
   const mounted = useMounted();
@@ -47,7 +71,10 @@ export default function Leaderboard() {
       fetch("/api/leaderboard")
         .then((r) => r.json())
         .then((d) => {
-          if (alive && Array.isArray(d.learners)) setRows(d.learners);
+          if (!alive) return;
+          if (Array.isArray(d.learners)) setRows(d.learners);
+          if (Array.isArray(d.duelers)) setDuelers(d.duelers);
+          if (Number.isFinite(d.duelsTotal)) setDuelsTotal(d.duelsTotal);
         })
         .catch(() => {});
     load();
@@ -68,20 +95,60 @@ export default function Leaderboard() {
     };
   }, []);
 
-  if (!mounted || !rows) return null;
+  if (!mounted || !rows || !duelers) return null;
 
   const top3 = rows.slice(0, 3);
   const rest = rows.slice(3, 8);
   const meInTop = userId && top3.some((r) => r.userId === userId);
 
+  const duelTop3 = duelers.slice(0, 3);
+  const duelRest = duelers.slice(3, 8);
+  const meInDuelTop = userId && duelTop3.some((r) => r.userId === userId);
+  const meDueler = userId ? duelers.find((d) => d.userId === userId) : undefined;
+
   const openProfile = () => window.dispatchEvent(new CustomEvent("open-profile"));
+  const openDuel = () => window.dispatchEvent(new CustomEvent("open-duel"));
+
+  const tabBtn = (key: Tab, label: string, Icon: typeof Trophy, activeCls: string) => {
+    const active = tab === key;
+    return (
+      <button
+        role="tab"
+        aria-selected={active}
+        onClick={() => setTab(key)}
+        className={`flex flex-1 items-center justify-center gap-1.5 rounded-full px-3 py-2 text-[12.5px] font-extrabold transition-all ${
+          active ? `bg-white shadow-md ${activeCls}` : "text-stone-500 hover:text-stone-700"
+        }`}
+      >
+        <Icon size={15} aria-hidden />
+        {label}
+      </button>
+    );
+  };
+
+  const recordBadge = (d: DuelerRow) => (
+    <span className="flex shrink-0 items-center gap-1 font-mono text-[11.5px] font-bold" dir="ltr">
+      <span className="rounded-md bg-emerald-100 px-1.5 py-0.5 text-emerald-700">{faNum(d.wins)}W</span>
+      <span className="rounded-md bg-rose-100 px-1.5 py-0.5 text-rose-700">{faNum(d.losses)}L</span>
+      {d.ties > 0 && (
+        <span className="rounded-md bg-stone-100 px-1.5 py-0.5 text-stone-600">{faNum(d.ties)}T</span>
+      )}
+    </span>
+  );
 
   return (
-    <section aria-label="جدول امتیازات کلاس" className="leaderboard">
+    <section
+      aria-label="جدول امتیازات کلاس"
+      className={`leaderboard ${tab === "duels" ? "duel-mode" : ""}`}
+    >
       <div className="mb-4 flex items-end justify-between gap-2">
         <h2 className="flex items-center gap-2 text-lg font-extrabold text-stone-800">
-          <Trophy size={19} className="text-amber-500" />
-          جدول امتیازات کلاس
+          {tab === "exams" ? (
+            <Trophy size={19} className="text-amber-500" />
+          ) : (
+            <Swords size={19} className="text-fuchsia-600" />
+          )}
+          {tab === "exams" ? "جدول امتیازات کلاس" : "رتبه‌بندی نبردها"}
         </h2>
         <span className="flex items-center gap-1.5 text-xs text-stone-500">
           <ShieldCheck size={13} className="text-emerald-600" aria-hidden />
@@ -90,22 +157,129 @@ export default function Leaderboard() {
         </span>
       </div>
 
-      {rows.length === 0 ? (
-        <div className="rounded-2xl border-2 border-dashed border-stone-300 bg-white/60 p-8 text-center">
-          <Medal size={28} className="mx-auto mb-2 text-stone-300" />
-          <p className="text-sm font-bold text-stone-500">
-            هنوز کسی در جدول نیست — اولین نفر باش!
+      {/* Task-36 — dimension switcher */}
+      <div
+        role="tablist"
+        aria-label="انتخاب نوع جدول"
+        className="mb-4 flex w-full rounded-full border border-stone-200 bg-stone-100/80 p-1"
+      >
+        {tabBtn("exams", "نمرات آزمون", Trophy, "text-amber-600")}
+        {tabBtn("duels", "نبردهای دودنفره", Swords, "text-fuchsia-700")}
+      </div>
+
+      {tab === "exams" ? (
+        rows.length === 0 ? (
+          <div className="rounded-2xl border-2 border-dashed border-stone-300 bg-white/60 p-8 text-center">
+            <Medal size={28} className="mx-auto mb-2 text-stone-300" />
+            <p className="text-sm font-bold text-stone-500">
+              هنوز کسی در جدول نیست — اولین نفر باش!
+            </p>
+          </div>
+        ) : (
+          <div className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm">
+            {/* podium */}
+            <div className="border-b border-stone-100 bg-gradient-to-b from-amber-50/60 to-transparent px-4 pb-4 pt-6">
+              <div className="mx-auto flex max-w-md items-end justify-center gap-3 sm:gap-5">
+                {podiumOrder.map((rankIdx, i) => {
+                  const row = top3[rankIdx];
+                  if (!row) return <div key={i} className="flex-1" />;
+                  const meta = podiumMeta[rankIdx];
+                  const isMe = row.userId === userId;
+                  return (
+                    <motion.div
+                      key={row.userId}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.1 }}
+                      className="flex min-w-0 flex-1 flex-col items-center"
+                    >
+                      <div className="relative mb-2">
+                        {isMe && (
+                          <span className="absolute -top-2 left-1/2 z-10 -translate-x-1/2 rounded-full bg-emerald-600 px-1.5 py-0.5 text-[9px] font-black text-white shadow">
+                            شما
+                          </span>
+                        )}
+                        <span className={`rounded-full ring-2 ${meta.ring} ring-offset-2`}>
+                          <AvatarDot color={row.color} name={row.name} size={rankIdx === 0 ? 52 : 42} />
+                        </span>
+                        <span className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 text-base drop-shadow-sm">
+                          {meta.medal}
+                        </span>
+                      </div>
+                      <div className="mb-1 max-w-full truncate text-center text-[12.5px] font-extrabold text-stone-800">
+                        {row.name}
+                      </div>
+                      <div className="mb-2 text-[11px] font-bold text-emerald-700">
+                        {faNum(row.avgPercent)}٪ میانگین
+                      </div>
+                      <div
+                        className={`flex w-full items-start justify-center rounded-t-xl bg-gradient-to-b ${meta.grad} ${meta.h} pt-2 shadow-inner`}
+                      >
+                        <span className="text-lg font-black text-white/90">{faNum(rankIdx + 1)}</span>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* ranks 4+ */}
+            {rest.length > 0 && (
+              <ul className="divide-y divide-stone-100 px-2 py-1">
+                {rest.map((row, i) => {
+                  const isMe = row.userId === userId;
+                  return (
+                    <li
+                      key={row.userId}
+                      className={`flex items-center gap-3 rounded-xl px-2.5 py-2.5 ${isMe ? "bg-emerald-50 ring-1 ring-emerald-200" : ""}`}
+                    >
+                      <span className="w-6 shrink-0 text-center text-[13px] font-black text-stone-400">
+                        {faNum(i + 4)}
+                      </span>
+                      <AvatarDot color={row.color} name={row.name} size={30} />
+                      <span className="min-w-0 flex-1 truncate text-[13px] font-bold text-stone-700">
+                        {row.name}
+                        {isMe && <span className="mr-1.5 text-[10px] font-black text-emerald-600">(شما)</span>}
+                      </span>
+                      <span className="hidden text-[11px] text-stone-400 sm:block">
+                        {faNum(row.attempts)} آزمون
+                      </span>
+                      <span className="w-14 shrink-0 text-left text-[13px] font-black text-stone-800">
+                        {faNum(row.avgPercent)}٪
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+          </div>
+        )
+      ) : duelers.length === 0 ? (
+        /* ---------- duel empty state ---------- */
+        <div className="rounded-2xl border-2 border-dashed border-fuchsia-200 bg-fuchsia-50/40 p-8 text-center">
+          <Swords size={28} className="mx-auto mb-2 text-fuchsia-300" />
+          <p className="text-sm font-bold text-stone-600">هنوز نبردی ثبت نشده — تاریخ‌ساز باش!</p>
+          <p className="mt-1 text-[12px] leading-5 text-stone-500">
+            دو نفر با هم روی یک کتاب ۱۰ سؤال مسابقه می‌دهند؛ هر برد در همین جدول می‌درخشد.
           </p>
+          <button
+            onClick={openDuel}
+            className="mx-auto mt-4 flex items-center justify-center gap-2 rounded-xl bg-fuchsia-600 px-5 py-2.5 text-[13px] font-extrabold text-white shadow-md shadow-fuchsia-600/25 transition-all hover:bg-fuchsia-700 active:scale-[0.98]"
+          >
+            <Swords size={15} aria-hidden />
+            شروع اولین نبرد
+          </button>
         </div>
       ) : (
-        <div className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm">
-          {/* podium */}
-          <div className="border-b border-stone-100 bg-gradient-to-b from-amber-50/60 to-transparent px-4 pb-4 pt-6">
+        /* ---------- duel standings ---------- */
+        <div className="overflow-hidden rounded-2xl border border-fuchsia-200 bg-white shadow-sm">
+          <div className="border-b border-fuchsia-100 bg-gradient-to-b from-fuchsia-50/60 to-transparent px-4 pb-4 pt-6">
             <div className="mx-auto flex max-w-md items-end justify-center gap-3 sm:gap-5">
               {podiumOrder.map((rankIdx, i) => {
-                const row = top3[rankIdx];
+                const row = duelTop3[rankIdx];
                 if (!row) return <div key={i} className="flex-1" />;
-                const meta = podiumMeta[rankIdx];
+                const meta = duelPodiumMeta[rankIdx];
                 const isMe = row.userId === userId;
                 return (
                   <motion.div
@@ -118,7 +292,7 @@ export default function Leaderboard() {
                   >
                     <div className="relative mb-2">
                       {isMe && (
-                        <span className="absolute -top-2 left-1/2 z-10 -translate-x-1/2 rounded-full bg-emerald-600 px-1.5 py-0.5 text-[9px] font-black text-white shadow">
+                        <span className="absolute -top-2 left-1/2 z-10 -translate-x-1/2 rounded-full bg-fuchsia-600 px-1.5 py-0.5 text-[9px] font-black text-white shadow">
                           شما
                         </span>
                       )}
@@ -132,11 +306,11 @@ export default function Leaderboard() {
                     <div className="mb-1 max-w-full truncate text-center text-[12.5px] font-extrabold text-stone-800">
                       {row.name}
                     </div>
-                    <div className="mb-2 text-[11px] font-bold text-emerald-700">
-                      {faNum(row.avgPercent)}٪ میانگین
+                    <div className="mb-2 text-[11px] font-bold text-fuchsia-700">
+                      {faNum(row.wins)} برد از {faNum(row.duels)} نبرد
                     </div>
                     <div
-                      className={`w-full rounded-t-xl bg-gradient-to-b ${meta.grad} ${meta.h} flex items-start justify-center pt-2 shadow-inner`}
+                      className={`flex w-full items-start justify-center rounded-t-xl bg-gradient-to-b ${meta.grad} ${meta.h} pt-2 shadow-inner`}
                     >
                       <span className="text-lg font-black text-white/90">{faNum(rankIdx + 1)}</span>
                     </div>
@@ -144,17 +318,21 @@ export default function Leaderboard() {
                 );
               })}
             </div>
+            {duelsTotal > 0 && (
+              <p className="mt-3 text-center text-[11px] font-bold text-stone-400">
+                تاکنون {faNum(duelsTotal)} نبرد در کلاس برگزار شده
+              </p>
+            )}
           </div>
 
-          {/* ranks 4+ */}
-          {rest.length > 0 && (
+          {duelRest.length > 0 && (
             <ul className="divide-y divide-stone-100 px-2 py-1">
-              {rest.map((row, i) => {
+              {duelRest.map((row, i) => {
                 const isMe = row.userId === userId;
                 return (
                   <li
                     key={row.userId}
-                    className={`flex items-center gap-3 rounded-xl px-2.5 py-2.5 ${isMe ? "bg-emerald-50 ring-1 ring-emerald-200" : ""}`}
+                    className={`flex items-center gap-2.5 rounded-xl px-2.5 py-2.5 sm:gap-3 ${isMe ? "bg-fuchsia-50 ring-1 ring-fuchsia-200" : ""}`}
                   >
                     <span className="w-6 shrink-0 text-center text-[13px] font-black text-stone-400">
                       {faNum(i + 4)}
@@ -162,24 +340,32 @@ export default function Leaderboard() {
                     <AvatarDot color={row.color} name={row.name} size={30} />
                     <span className="min-w-0 flex-1 truncate text-[13px] font-bold text-stone-700">
                       {row.name}
-                      {isMe && <span className="mr-1.5 text-[10px] font-black text-emerald-600">(شما)</span>}
+                      {isMe && <span className="mr-1.5 text-[10px] font-black text-fuchsia-600">(شما)</span>}
                     </span>
-                    <span className="hidden text-[11px] text-stone-400 sm:block">
-                      {faNum(row.attempts)} آزمون
-                    </span>
-                    <span className="w-14 shrink-0 text-left text-[13px] font-black text-stone-800">
-                      {faNum(row.avgPercent)}٪
+                    {recordBadge(row)}
+                    <span className="w-12 shrink-0 text-left text-[12px] font-black text-stone-700">
+                      {faNum(row.winRate)}٪
                     </span>
                   </li>
                 );
               })}
             </ul>
           )}
+
+          {meDueler && (
+            <div className="flex items-center justify-center gap-2 border-t border-fuchsia-100 bg-fuchsia-50/50 px-4 py-3">
+              <Flame size={14} className="text-fuchsia-600" aria-hidden />
+              <p className="text-[12px] font-bold text-stone-600">
+                رکورد تو: {faNum(meDueler.wins)} برد · {faNum(meDueler.losses)} باخت
+                {meDueler.ties > 0 && <> · {faNum(meDueler.ties)} مساوی</>} — نرخ برد {faNum(meDueler.winRate)}٪
+              </p>
+            </div>
+          )}
         </div>
       )}
 
-      {/* CTA for unnamed users */}
-      {mounted && !userName && (
+      {/* CTA for unnamed users (exam standings only) */}
+      {tab === "exams" && mounted && !userName && (
         <button
           onClick={openProfile}
           className="mt-3 flex w-full items-center justify-between gap-3 rounded-2xl border border-emerald-300 bg-gradient-to-l from-emerald-50 to-teal-50 p-4 text-right shadow-sm transition-all hover:shadow-md active:scale-[0.99]"
@@ -202,9 +388,14 @@ export default function Leaderboard() {
           </span>
         </button>
       )}
-      {meInTop && mounted && (
+      {tab === "exams" && meInTop && mounted && (
         <p className="mt-3 text-center text-[12px] font-bold text-amber-700">
           🎉 تو جزو ۳ نفر برتر کلاس هستی — جایگاهت را حفظ کن!
+        </p>
+      )}
+      {tab === "duels" && meInDuelTop && mounted && (
+        <p className="mt-3 text-center text-[12px] font-bold text-fuchsia-700">
+          ⚔️ تو جزو شکارچیان سکوی نبردها هستی — شمشیرت را تیز نگه دار!
         </p>
       )}
     </section>
