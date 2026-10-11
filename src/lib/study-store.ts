@@ -54,6 +54,9 @@ export type MistakeMap = Record<string, number>;
 export type WordStatMap = Record<string, number>;
 // weekly history: history["2026-10-09"] = { reviews, quizzes }
 export type HistoryMap = Record<string, { reviews: number; quizzes: number }>;
+// Task-37 «هفته‌نامه» — full DayStat window (last 35 days) powering the weekly
+// progress digest. Superset of HistoryMap; legacy clients simply omit it.
+export type DayHistoryMap = Record<string, DayStat>;
 
 export const AVATAR_COLORS = ["emerald", "amber", "rose", "violet", "sky"] as const;
 export type AvatarColor = (typeof AVATAR_COLORS)[number];
@@ -103,6 +106,7 @@ export interface StudyState {
   lastActiveDay: string;
   dayStat: DayStat;
   history: HistoryMap;
+  dayHistory: DayHistoryMap; // Task-37 — full per-day stats window (35 days)
   mistakes: MistakeMap;
   wordMistakes: WordStatMap; // F7 — wrong answers per word key
   wordSeen: WordStatMap; // F7 — answered (seen) per word key
@@ -231,6 +235,7 @@ export const useStudy = create<StudyState>()(
       lastActiveDay: "",
       dayStat: emptyDayStat(""),
       history: {},
+      dayHistory: {},
       mistakes: {},
       wordMistakes: {},
       wordSeen: {},
@@ -265,11 +270,14 @@ export const useStudy = create<StudyState>()(
         set((s) => {
           const today = todayStr();
           const stat = s.dayStat.day === today ? normDayStat(s.dayStat) : emptyDayStat(today);
+          const next = { ...stat, rush: stat.rush + 1 };
           return {
             rushBest: Math.max(s.rushBest, points),
             rushBestCorrect: Math.max(s.rushBestCorrect, correct),
             rushGames: s.rushGames + 1,
-            dayStat: { ...stat, rush: stat.rush + 1 },
+            dayStat: next,
+            // Task-37 — rush bypasses applyStreak, keep the digest window fresh
+            dayHistory: pushDayHistory(s.dayHistory, next),
           };
         }),
       markBadgesSeen: (ids) => set((s) => ({ seenBadges: [...new Set([...s.seenBadges, ...ids])] })),
@@ -296,9 +304,12 @@ export const useStudy = create<StudyState>()(
           if (!was) {
             const today = todayStr();
             const stat = s.dayStat.day === today ? normDayStat(s.dayStat) : emptyDayStat(today);
+            const next = { ...stat, words: stat.words + 1 };
             return {
               known: { ...s.known, [key]: true },
-              dayStat: { ...stat, words: stat.words + 1 },
+              dayStat: next,
+              // Task-37 — words bypass applyStreak too
+              dayHistory: pushDayHistory(s.dayHistory, next),
             };
           }
           return { known: { ...s.known, [key]: false } };
@@ -448,6 +459,7 @@ export const useStudy = create<StudyState>()(
         lastActiveDay: s.lastActiveDay,
         dayStat: s.dayStat,
         history: s.history,
+        dayHistory: s.dayHistory,
         mistakes: s.mistakes,
         wordMistakes: s.wordMistakes,
         wordSeen: s.wordSeen,
@@ -475,12 +487,28 @@ export const useStudy = create<StudyState>()(
 
 // ---------------- streak helper ----------------
 
+/**
+ * Task-37 «هفته‌نامه» — merge today's full stat into the 35-day window.
+ * Day keys sort lexicographically, so dropping the smallest keys keeps the
+ * newest days (same policy as the legacy HistoryMap cap in applyStreak).
+ */
+export function pushDayHistory(dayHistory: DayHistoryMap, stat: DayStat): DayHistoryMap {
+  if (!stat.day) return dayHistory;
+  const out: DayHistoryMap = { ...dayHistory, [stat.day]: stat };
+  const keys = Object.keys(out).sort();
+  while (keys.length > 35) {
+    delete out[keys.shift()!];
+  }
+  return out;
+}
+
 function applyStreak(
   s: {
     streak: number;
     bestStreak: number;
     lastActiveDay: string;
     history: HistoryMap;
+    dayHistory: DayHistoryMap;
     freezeCount: number;
     freezeUsedDays: string[];
     freezeSavedDay: string;
@@ -488,7 +516,15 @@ function applyStreak(
   dayStat: DayStat
 ): Pick<
   StudyState,
-  "streak" | "bestStreak" | "lastActiveDay" | "dayStat" | "history" | "freezeCount" | "freezeUsedDays" | "freezeSavedDay"
+  | "streak"
+  | "bestStreak"
+  | "lastActiveDay"
+  | "dayStat"
+  | "history"
+  | "dayHistory"
+  | "freezeCount"
+  | "freezeUsedDays"
+  | "freezeSavedDay"
 > {
   const today = todayStr();
   // keep last 30 days of weekly history
@@ -497,6 +533,7 @@ function applyStreak(
     if (Object.keys(history).length <= 30) break;
     delete history[k];
   }
+  const dayHistory = pushDayHistory(s.dayHistory, dayStat);
   if (s.lastActiveDay === today) {
     return {
       streak: s.streak,
@@ -504,6 +541,7 @@ function applyStreak(
       lastActiveDay: today,
       dayStat,
       history,
+      dayHistory,
       freezeCount: s.freezeCount,
       freezeUsedDays: s.freezeUsedDays,
       freezeSavedDay: s.freezeSavedDay,
@@ -533,7 +571,7 @@ function applyStreak(
     return 1; // gap too long (or no freeze) → chain resets
   })();
 
-  return { streak, bestStreak: Math.max(streak, s.bestStreak), lastActiveDay: today, dayStat, history, ...freeze };
+  return { streak, bestStreak: Math.max(streak, s.bestStreak), lastActiveDay: today, dayStat, history, dayHistory, ...freeze };
 }
 
 /**

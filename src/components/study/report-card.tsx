@@ -30,6 +30,7 @@ import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
 import { BADGES, buildEvalInput, unlockedBadgeIds } from "@/lib/achievements";
 import { skillBreakdown, barColorFor, skillGradeFa } from "@/lib/skill-stats";
+import WeeklyReportSection from "./weekly-report";
 
 // ------------------------------------------------------------------
 // کارنامهٔ من — a letter-style progress report dialog.
@@ -227,6 +228,9 @@ export default function ReportCard() {
                   </div>
                 </div>
               </div>
+
+              {/* Task-37 — هفته‌نامهٔ پیشرفت: week-over-week digest */}
+              <WeeklyReportSection />
 
               {/* monthly band */}
               {monthBuckets.length > 0 && (

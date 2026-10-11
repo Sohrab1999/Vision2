@@ -7,7 +7,7 @@
 // ------------------------------------------------------------------
 
 import { useStudy } from "./study-store";
-import type { HistoryMap, MistakeMap, SrsItem } from "./study-store";
+import type { DayHistoryMap, HistoryMap, MistakeMap, SrsItem } from "./study-store";
 import type { QuizResult } from "./study-types";
 import { faNum } from "./study-theme";
 
@@ -28,6 +28,8 @@ export interface BackupPayload {
     lastActiveDay: string;
     dayStat: { day: string; reviews: number; quizzes: number; words: number; dictation: number; rush: number };
     history: HistoryMap;
+    // Task-37 «هفته‌نامه» — full DayStat window (optional for backward compatibility)
+    dayHistory?: DayHistoryMap;
     mistakes: MistakeMap;
     seenBadges: string[];
     rushBest: number;
@@ -76,6 +78,7 @@ export function collectData(): BackupPayload["data"] {
     lastActiveDay: s.lastActiveDay,
     dayStat: s.dayStat,
     history: s.history,
+    dayHistory: s.dayHistory ?? {},
     mistakes: s.mistakes,
     seenBadges: s.seenBadges,
     rushBest: s.rushBest ?? 0,
@@ -195,6 +198,29 @@ export function parseBackup(text: string): BackupPayload {
       history[k] = { reviews: h["reviews"], quizzes: h["quizzes"] };
     }
   }
+  // Task-37 «هفته‌نامه» — sanitize the full-day window: valid day keys, clamped
+  // counters, hard cap of 35 entries (the digest never needs more).
+  const dayHistory: DayHistoryMap = {};
+  {
+    const DAY_KEY = /^\d{4}-\d{2}-\d{2}$/;
+    const clamp = (v: unknown) =>
+      typeof v === "number" && Number.isFinite(v) ? Math.min(9999, Math.max(0, Math.round(v))) : 0;
+    const entries = Object.entries(asRecord(data["dayHistory"]))
+      .filter(([k]) => DAY_KEY.test(k))
+      .sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0));
+    for (const [k, v] of entries.slice(-35)) {
+      if (!v || typeof v !== "object" || Array.isArray(v)) continue; // garbage → drop, not zero-fill
+      const d = asRecord(v);
+      dayHistory[k] = {
+        day: k,
+        reviews: clamp(d["reviews"]),
+        quizzes: clamp(d["quizzes"]),
+        words: clamp(d["words"]),
+        dictation: clamp(d["dictation"]),
+        rush: clamp(d["rush"]),
+      };
+    }
+  }
   const mistakes: MistakeMap = {};
   for (const [k, v] of Object.entries(asRecord(data["mistakes"]))) {
     if (typeof v === "number") mistakes[k] = v;
@@ -222,6 +248,7 @@ export function parseBackup(text: string): BackupPayload {
         rush: typeof ds["rush"] === "number" ? ds["rush"] : 0,
       },
       history,
+      dayHistory,
       mistakes,
       seenBadges: Array.isArray(data["seenBadges"]) ? data["seenBadges"].filter((x): x is string => typeof x === "string") : [],
       rushBest: typeof data["rushBest"] === "number" ? data["rushBest"] : 0,
@@ -310,7 +337,7 @@ export const AUTO_BACKUP_INTERVAL = 24 * 60 * 60 * 1000; // 24h refresh cadence
 
 export interface AutoBackup {
   savedAt: string; // ISO
-  counts: { known: number; results: number; srs: number; mistakes: number; history: number; konkur: number };
+  counts: { known: number; results: number; srs: number; mistakes: number; history: number; dayHistory: number; konkur: number };
   data: BackupPayload["data"];
 }
 
@@ -322,12 +349,13 @@ export function countsOf(data: BackupPayload["data"]): AutoBackup["counts"] {
     srs: Object.keys(data.srs).length,
     mistakes: Object.keys(data.mistakes).length,
     history: Object.keys(data.history).length,
+    dayHistory: Object.keys(data.dayHistory ?? {}).length,
     konkur: Object.keys(data.konkurSeen ?? {}).length + Object.keys(data.konkurWrong ?? {}).length,
   };
 }
 
 const sameCounts = (a: AutoBackup["counts"], b: AutoBackup["counts"]) =>
-  a.known === b.known && a.results === b.results && a.srs === b.srs && a.mistakes === b.mistakes && a.history === b.history && a.konkur === b.konkur;
+  a.known === b.known && a.results === b.results && a.srs === b.srs && a.mistakes === b.mistakes && a.history === b.history && a.dayHistory === b.dayHistory && a.konkur === b.konkur;
 
 /**
  * Write/refresh the automatic snapshot when needed.

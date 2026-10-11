@@ -14,7 +14,7 @@
 import { useStudy } from "./study-store";
 import type { BackupPayload } from "./backup";
 import { BACKUP_VERSION, collectData, parseBackup } from "./backup";
-import type { HistoryMap, MistakeMap, SrsItem } from "./study-store";
+import type { DayHistoryMap, HistoryMap, MistakeMap, SrsItem } from "./study-store";
 import type { QuizResult } from "./study-types";
 
 export type SyncData = BackupPayload["data"];
@@ -77,6 +77,29 @@ function mergeHistory(local: HistoryMap, remote: HistoryMap): HistoryMap {
   return out;
 }
 
+/** Task-37 «هفته‌نامه» — per-day field-wise max, then keep the 35 newest days. */
+function mergeDayHistory(local: DayHistoryMap, remote: DayHistoryMap): DayHistoryMap {
+  const out: DayHistoryMap = { ...local };
+  for (const [k, d] of Object.entries(remote)) {
+    const cur = out[k];
+    out[k] = cur
+      ? {
+          day: cur.day || d.day,
+          reviews: maxNum(cur.reviews, d.reviews),
+          quizzes: maxNum(cur.quizzes, d.quizzes),
+          words: maxNum(cur.words, d.words),
+          dictation: maxNum(cur.dictation, d.dictation),
+          rush: maxNum(cur.rush, d.rush),
+        }
+      : d;
+  }
+  const keys = Object.keys(out).sort();
+  while (keys.length > 35) {
+    delete out[keys.shift()!];
+  }
+  return out;
+}
+
 function mergeMistakes(local: MistakeMap, remote: MistakeMap): MistakeMap {
   const out: MistakeMap = { ...local };
   for (const [k, v] of Object.entries(remote)) out[k] = maxNum(out[k] ?? 0, v);
@@ -129,6 +152,8 @@ export function mergeSyncData(local: SyncData, remote: SyncData): SyncData {
     lastActiveDay: (local.lastActiveDay || "") >= (remote.lastActiveDay || "") ? local.lastActiveDay : remote.lastActiveDay,
     dayStat,
     history: mergeHistory(local.history, remote.history),
+    // Task-37 «هفته‌نامه» — full DayStat window travels with the snapshot
+    dayHistory: mergeDayHistory(local.dayHistory ?? {}, remote.dayHistory ?? {}),
     mistakes: mergeMistakes(local.mistakes, remote.mistakes),
     seenBadges: [...new Set([...(local.seenBadges ?? []), ...(remote.seenBadges ?? [])])],
     rushBest: maxNum(local.rushBest, remote.rushBest),

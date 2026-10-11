@@ -134,6 +134,50 @@ describe("mergeSyncData — progress safety", () => {
     });
   });
 
+  it("dayHistory (Task-37) merges per-field max per day and keeps the 35 newest days", () => {
+    const local = {
+      ...base(),
+      dayHistory: {
+        "2026-10-09": { day: "2026-10-09", reviews: 5, quizzes: 0, words: 2, dictation: 0, rush: 0 },
+        "2026-10-01": { day: "2026-10-01", reviews: 1, quizzes: 1, words: 0, dictation: 0, rush: 0 },
+      },
+    };
+    const remote = {
+      ...base(),
+      dayHistory: {
+        "2026-10-09": { day: "2026-10-09", reviews: 2, quizzes: 3, words: 0, dictation: 1, rush: 1 },
+        "2026-10-05": { day: "2026-10-05", reviews: 0, quizzes: 2, words: 0, dictation: 0, rush: 0 },
+      },
+    };
+    const merged = mergeSyncData(local, remote);
+    expect(merged.dayHistory?.["2026-10-09"]).toEqual({
+      day: "2026-10-09",
+      reviews: 5,
+      quizzes: 3,
+      words: 2,
+      dictation: 1,
+      rush: 1,
+    });
+    // union of days from both sides
+    expect(Object.keys(merged.dayHistory ?? {}).sort()).toEqual(["2026-10-01", "2026-10-05", "2026-10-09"]);
+
+    // cap: 36 distinct days → oldest (smallest key) dropped
+    const many: Record<string, { day: string; reviews: number; quizzes: number; words: number; dictation: number; rush: number }> = {};
+    for (let i = 1; i <= 36; i += 1) {
+      const k = `2026-09-${String(i).padStart(2, "0")}`;
+      many[k] = { day: k, reviews: i, quizzes: 0, words: 0, dictation: 0, rush: 0 };
+    }
+    const capped = mergeSyncData({ ...base(), dayHistory: many }, base());
+    const keys = Object.keys(capped.dayHistory ?? {}).sort();
+    expect(keys).toHaveLength(35);
+    expect(keys[0]).toBe("2026-09-02"); // oldest dropped
+  });
+
+  it("merge survives when neither side has a dayHistory (legacy snapshots)", () => {
+    const merged = mergeSyncData(base(), base());
+    expect(merged.dayHistory).toEqual({});
+  });
+
   it("rush counters take the max; freeze count is capped at 2", () => {
     const local = { ...base(), rushBest: 120, rushBestCorrect: 9, rushGames: 4, freezeCount: 2 };
     const remote = { ...base(), rushBest: 200, rushBestCorrect: 7, rushGames: 3, freezeCount: 1 };

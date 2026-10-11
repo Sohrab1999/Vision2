@@ -1,0 +1,182 @@
+// Task-37 «هفته‌نامهٔ پیشرفت» — pure weekly digest computation.
+//
+// Compares the last 7 days against the 7 days before them and derives
+// deltas, activity shape and highlights. Pure input/output so the exact
+// contract is unit-tested and the UI stays a dumb renderer.
+//
+// Data sources: the store's dayHistory window (full DayStat, Task-37) with a
+// graceful fallback to the legacy HistoryMap (reviews/quizzes only) for days
+// that predate it — old learners keep an honest digest from day one.
+
+import type { DayHistoryMap, DayStat, HistoryMap } from "./study-store";
+import { faNum } from "./study-theme";
+
+export interface WeekTotals {
+  reviews: number;
+  quizzes: number;
+  words: number;
+  dictation: number;
+  rush: number;
+  activities: number; // sum of all counters
+  activeDays: number; // days with any activity
+  goalDays: number; // days whose daily goal was met
+}
+
+export interface Delta {
+  field: keyof Pick<WeekTotals, "reviews" | "quizzes" | "words" | "dictation" | "rush" | "activities">;
+  current: number;
+  previous: number;
+  diff: number; // current - previous
+  percent: number | null; // vs previous; null when previous is 0
+}
+
+export interface WeeklyDigest {
+  thisWeek: WeekTotals;
+  lastWeek: WeekTotals;
+  deltas: Delta[];
+  bestDay: { day: string; total: number } | null;
+  perDay: { day: string; stat: DayStat; inThisWeek: boolean }[]; // 14 days, oldest → today
+  highlights: string[]; // Persian one-liners for the UI
+  empty: boolean; // no activity in the full 14-day window
+}
+
+export interface DigestInput {
+  dayHistory?: DayHistoryMap;
+  history?: HistoryMap; // legacy fallback — reviews/quizzes per day
+  goalMetDays?: string[];
+}
+
+const WEEK = 7;
+
+/** zeroed DayStat for a day key */
+const zeroDay = (day: string): DayStat => ({ day, reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0 });
+
+/** ISO day key of `n` days before the given key (all math is key-string based). */
+export function dayKeyBefore(key: string, n: number): string {
+  const d = new Date(`${key}T00:00:00`);
+  d.setDate(d.getDate() - n);
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const dd = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${dd}`;
+}
+
+/** Resolve a day's full stat: dayHistory first, then legacy history, then zeros. */
+export function statOfDay(day: string, input: DigestInput): DayStat {
+  const dh = input.dayHistory?.[day];
+  if (dh) {
+    return {
+      day,
+      reviews: dh.reviews ?? 0,
+      quizzes: dh.quizzes ?? 0,
+      words: dh.words ?? 0,
+      dictation: dh.dictation ?? 0,
+      rush: dh.rush ?? 0,
+    };
+  }
+  const legacy = input.history?.[day];
+  if (legacy) return { ...zeroDay(day), reviews: legacy.reviews ?? 0, quizzes: legacy.quizzes ?? 0 };
+  return zeroDay(day);
+}
+
+const sumTotals = (days: DayStat[], goalSet: Set<string>): WeekTotals => {
+  const t: WeekTotals = { reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0, activities: 0, activeDays: 0, goalDays: 0 };
+  for (const d of days) {
+    t.reviews += d.reviews;
+    t.quizzes += d.quizzes;
+    t.words += d.words;
+    t.dictation += d.dictation;
+    t.rush += d.rush;
+    const total = d.reviews + d.quizzes + d.words + d.dictation + d.rush;
+    t.activities += total;
+    if (total > 0) t.activeDays += 1;
+    if (goalSet.has(d.day)) t.goalDays += 1;
+  }
+  return t;
+};
+
+const DELTA_FIELDS = ["reviews", "quizzes", "words", "dictation", "rush", "activities"] as const;
+
+function faPercent(n: number): string {
+  return `${faNum(n)}٪`;
+}
+
+/** Build the digest for the 7-day window ending at todayKey (inclusive). */
+export function computeWeeklyDigest(input: DigestInput, todayKey: string): WeeklyDigest {
+  const goalSet = new Set(input.goalMetDays ?? []);
+
+  const perDay: { day: string; stat: DayStat; inThisWeek: boolean }[] = [];
+  const thisDays: DayStat[] = [];
+  const lastDays: DayStat[] = [];
+  for (let i = 2 * WEEK - 1; i >= 0; i -= 1) {
+    const day = dayKeyBefore(todayKey, i);
+    const stat = statOfDay(day, input);
+    const inThisWeek = i < WEEK;
+    perDay.push({ day, stat, inThisWeek });
+    (inThisWeek ? thisDays : lastDays).push(stat);
+  }
+
+  const thisWeek = sumTotals(thisDays, goalSet);
+  const lastWeek = sumTotals(lastDays, goalSet);
+
+  const deltas: Delta[] = DELTA_FIELDS.map((field) => {
+    const current = thisWeek[field];
+    const previous = lastWeek[field];
+    return {
+      field,
+      current,
+      previous,
+      diff: current - previous,
+      percent: previous > 0 ? Math.round(((current - previous) / previous) * 100) : null,
+    };
+  });
+
+  let bestDay: WeeklyDigest["bestDay"] = null;
+  for (const d of thisDays) {
+    const total = d.reviews + d.quizzes + d.words + d.dictation + d.rush;
+    if (total > 0 && (!bestDay || total > bestDay.total)) bestDay = { day: d.day, total };
+  }
+
+  const highlights: string[] = [];
+  const isEmpty = thisWeek.activities === 0 && lastWeek.activities === 0;
+  if (!isEmpty) {
+    const act = deltas.find((d) => d.field === "activities")!;
+    if (act.previous === 0 && act.current > 0) {
+      highlights.push(`شروع پرانرژی — ${faNum(act.current)} فعالیت این هفته ثبت شد`);
+    } else if (act.diff > 0) {
+      highlights.push(`${faNum(act.diff)} فعالیت بیشتر از هفتهٔ پیش (${faPercent(act.percent ?? 0)} رشد)`);
+    } else if (act.diff < 0) {
+      highlights.push(`${faNum(Math.abs(act.diff))} فعالیت کمتر از هفتهٔ پیش — یک تمرین کوچک، فاصله را پر می‌کند`);
+    } else {
+      highlights.push(`هم‌قدم با هفتهٔ پیش — ${faNum(act.current)} فعالیت`);
+    }
+    if (thisWeek.goalDays > 0) {
+      highlights.push(`${faNum(thisWeek.goalDays)} روزِ هدفِ روزانه کامل شد`);
+    }
+    if (thisWeek.words > 0) {
+      highlights.push(`${faNum(thisWeek.words)} واژهٔ جدید به گنجینهٔ تو اضافه شد`);
+    }
+    if (thisWeek.rush > 0 && thisWeek.rush >= lastWeek.rush && lastWeek.rush > 0) {
+      highlights.push(`چالش برق‌آسا را رها نکردی — ${faNum(thisWeek.rush)} دور این هفته`);
+    }
+  }
+
+  return { thisWeek, lastWeek, deltas, bestDay, perDay, highlights, empty: isEmpty };
+}
+
+const FA_WEEKDAYS = ["یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنجشنبه", "جمعه", "شنبه"];
+
+/** Persian weekday label of an ISO day key. */
+export function faWeekday(key: string): string {
+  const d = new Date(`${key}T00:00:00`);
+  if (Number.isNaN(d.getTime())) return "";
+  return FA_WEEKDAYS[d.getDay()];
+}
+
+/** Short "M/D" style label with Persian digits. */
+export function faDayLabel(key: string): string {
+  const parts = key.split("-");
+  if (parts.length !== 3) return key;
+  const [, m, d] = parts;
+  return `${faNum(Number(d))}/${faNum(Number(m))}`;
+}

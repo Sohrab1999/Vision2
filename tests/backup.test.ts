@@ -96,6 +96,39 @@ describe("parseBackup — sanitization", () => {
     expect(payload.data.goalMetDays).toHaveLength(14);
   });
 
+  it("sanitizes dayHistory (Task-37): valid day keys only, clamped counters, 35-day cap", () => {
+    const payload = parseBackup(
+      validPayload({
+        dayHistory: {
+          "2026-10-09": { day: "2026-10-09", reviews: 5, quizzes: -3, words: 1.7, dictation: "x", rush: 99999 },
+          "20261010": { day: "20261010", reviews: 50 }, // invalid key → dropped
+          "2026-10-11": "garbage", // non-object → dropped
+        },
+      })
+    );
+    const dh = payload.data.dayHistory ?? {};
+    expect(Object.keys(dh).sort()).toEqual(["2026-10-09"]);
+    expect(dh["2026-10-09"]).toEqual({
+      day: "2026-10-09",
+      reviews: 5,
+      quizzes: 0, // negative clamped to 0
+      words: 2, // rounded
+      dictation: 0, // non-number clamped
+      rush: 9999, // clamped to 9999
+    });
+
+    // 40 valid days → only the 35 newest survive
+    const many: Record<string, unknown> = {};
+    for (let i = 1; i <= 40; i += 1) {
+      const k = `2026-09-${String(i).padStart(2, "0")}`;
+      many[k] = { day: k, reviews: i, quizzes: 0, words: 0, dictation: 0, rush: 0 };
+    }
+    const capped = parseBackup(validPayload({ dayHistory: many }));
+    const keys = Object.keys(capped.data.dayHistory ?? {}).sort();
+    expect(keys).toHaveLength(35);
+    expect(keys[0]).toBe("2026-09-06");
+  });
+
   it("sanitizes konkur maps: only true entries, keys trimmed to 80, capped at 2000", () => {
     const payload = parseBackup(
       validPayload({
@@ -151,6 +184,7 @@ describe("backupSummary & countsOf", () => {
       srs: 1,
       mistakes: 1,
       history: 0,
+      dayHistory: 0,
       konkur: 0,
     });
   });
