@@ -912,3 +912,16 @@ Work Log:
 Stage Summary:
 - محیط پایدار شد: :3000 و :3003 هر دو با PPID=1 اجرا می‌شوند و بین فراخوانی‌ها زنده می‌مانند؛ کرون webDevReview می‌تواند مستقیم curl/agent-browser بزند
 - اگر روزی سرور پاسخ نداد: اول ps -o pid,ppid -C bun بزن؛ اگر PPID≠1 است یعنی با الگوی غلط بالا آمده — با الگوی daemonize ری‌استارت کن؛ هیچ‌وقت برای «ری‌استارت کامل» PID 1 را نکش (repo.tar فقط هنگام pre-stop نوشته می‌شود)
+
+---
+Task ID: AUTO-BACKUP-2026-10-12
+Agent: main (Z.ai Code) — کرون بک‌آپ روزانه (Job 448959)
+Task: بک‌آپ خودکار روزانهٔ پروژهٔ ویژن ۲ روی گیت‌هاب
+
+Work Log:
+- git status: فقط db/custom.db تغییر کرده بود (دادهٔ پیشرفت کاربر از استفادهٔ ایستگاه‌های گرامر Task 39/40)؛ src/prisma/پیکربندی بدون تغییر
+- کامیت 9f7683a با پیام «chore: daily auto-backup — db/custom.db updated» + push موفق origin/main (2eef6f7..9f7683a)
+- تأیید ریموت با git log origin/main -1: همگام؛ working tree تمیز
+
+Stage Summary:
+- گیت‌هاب سینک است (HEAD ریموت = 9f7683a)؛ هیچ کامیت pushنشدهٔ دیگری وجود نداشت؛ force push نشد و branch تغییر نکرد
