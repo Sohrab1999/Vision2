@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { motion } from "framer-motion";
 import {
   Award,
@@ -73,8 +73,7 @@ function printReport() {
   }
 }
 
-export default function ReportCard() {
-  const [open, setOpen] = useState(false);
+export default function ReportCard({ open, onClose }: { open: boolean; onClose: () => void }) {
   const mounted = useMounted();
 
   const known = useStudy((s) => s.known);
@@ -89,13 +88,8 @@ export default function ReportCard() {
   const rushGames = useStudy((s) => s.rushGames);
   const userName = useStudy((s) => s.userName);
 
-  // global opener (from tool cards / skill panel)
-  useEffect(() => {
-    const handler = () => setOpen(true);
-    window.addEventListener("open-report", handler);
-    return () => window.removeEventListener("open-report", handler);
-  }, []);
-
+  // opener lives in study-app (Task 44: lazy-mount on first use) — this
+  // component is mounted only after the first "open-report" event.
   const evalInput = useMemo(
     () =>
       mounted
@@ -151,7 +145,7 @@ export default function ReportCard() {
         : { title: "شروع یک سفر تازه", msg: "این کارنامه با اولین فعالیت تو پر می‌شود — از یک مرور کوتاه شروع کن." };
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={open} onOpenChange={(o) => { if (!o) onClose(); }}>
       <DialogContent className="report-dialog max-h-[90vh] overflow-y-auto p-0 sm:max-w-lg nice-scroll">
         <DialogHeader className="sr-only">
           <DialogTitle>کارنامهٔ پیشرفت من</DialogTitle>

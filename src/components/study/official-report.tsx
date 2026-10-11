@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { createPortal } from "react-dom";
 import {
   Printer,
@@ -27,7 +27,7 @@ import {
 } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
-import { lessons, totalVocabulary } from "@/data";
+import { LESSONS_META, TOTAL_VOCABULARY } from "@/data/lesson-meta";
 import { BADGES, buildEvalInput, unlockedBadgeIds } from "@/lib/achievements";
 import { skillBreakdown, barColorFor, skillGradeFa } from "@/lib/skill-stats";
 import { trackEvent } from "@/lib/analytics";
@@ -77,8 +77,7 @@ function gradeChipCls(avg: number): string {
   return "or-chip-rose";
 }
 
-export default function OfficialReport() {
-  const [open, setOpen] = useState(false);
+export default function OfficialReport({ open, onClose }: { open: boolean; onClose: () => void }) {
   const mounted = useMounted();
   const closeRef = useRef<HTMLButtonElement | null>(null);
 
@@ -96,13 +95,8 @@ export default function OfficialReport() {
   const userName = useStudy((s) => s.userName);
   const userId = useStudy((s) => s.userId);
 
-  // global opener (from the report-card dialog)
-  useEffect(() => {
-    const handler = () => setOpen(true);
-    window.addEventListener("open-official-report", handler);
-    return () => window.removeEventListener("open-official-report", handler);
-  }, []);
-
+  // opener lives in study-app (Task 44: lazy-mount on first use) — this
+  // component is mounted only after the first "open-official-report" event.
   // lock background scroll while the paper is open
   useEffect(() => {
     if (!open) return;
@@ -118,7 +112,7 @@ export default function OfficialReport() {
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
+      if (e.key === "Escape") onClose();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -133,7 +127,7 @@ export default function OfficialReport() {
   const perLesson = useMemo(
     () =>
       mounted
-        ? lessons.map((l) => {
+        ? LESSONS_META.map((l) => {
             const prefix = `${l.id}:`;
             const entries = Object.entries(results).filter(([k]) => k.startsWith(prefix));
             const pcts = entries.map(([, r]) => r.percent);
@@ -142,7 +136,7 @@ export default function OfficialReport() {
               titleEn: l.titleEn,
               titleFa: l.titleFa,
               vocabKnown: knownCountOfLesson(known, l.id),
-              vocabTotal: l.vocabulary.length,
+              vocabTotal: l.vocabCount,
               attempts: entries.length,
               avg: pcts.length ? Math.round(pcts.reduce((s, p) => s + p, 0) / pcts.length) : null,
               best: pcts.length ? Math.max(...pcts) : null,
@@ -228,7 +222,7 @@ export default function OfficialReport() {
       <div
         className="official-overlay fixed inset-0 z-[80] overflow-y-auto p-4 nice-scroll sm:p-6"
         onClick={(e) => {
-          if (e.target === e.currentTarget) setOpen(false);
+          if (e.target === e.currentTarget) onClose();
         }}
       >
         {/* screen-only toolbar */}
@@ -247,7 +241,7 @@ export default function OfficialReport() {
             </button>
             <button
               ref={closeRef}
-              onClick={() => setOpen(false)}
+              onClick={onClose}
               className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-white/20 bg-white/10 px-3 py-2 text-[12px] font-black text-stone-100 transition-all hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 active:scale-95"
             >
               <X size={14} />
@@ -312,7 +306,7 @@ export default function OfficialReport() {
               <div className="or-kpi rounded-xl p-3 text-center">
                 <BookOpenCheck size={16} className="mx-auto mb-1 text-emerald-600" />
                 <div className="or-kpi-value text-[16px] font-black leading-5">
-                  {faNum(knownCount)} / {faNum(totalVocabulary)}
+                  {faNum(knownCount)} / {faNum(TOTAL_VOCABULARY)}
                 </div>
                 <div className="or-kpi-label text-[10px] font-bold">واژگان آموخته‌شده</div>
               </div>

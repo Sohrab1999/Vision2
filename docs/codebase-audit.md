@@ -327,6 +327,8 @@ src/data/grammar/{map.ts,micro-lessons.ts,appendix.ts,titles.ts}  # titles singl
 
 ## 12. Ranked Refactoring Roadmap (1–10)
 
+> **Progress (updated 2026-10-12):** ✅ Step 1 (security triage) + Step 2 (correctness bugs) — commit `398da33`. ✅ Step 3 (code splitting) — done: 11 views + 3 data-heavy home cards lazy, report modals prop-lifted & lazy-mounted on first open, `src/data/lesson-meta.ts` breaks the eager barrel pull; measured first-load JS **1,621 KB → 1,006 KB (−38%)** with exam bank / lesson content / socket.io all out of the initial chunks (verified via prod-build chunk grep + prerendered-HTML inspection). Next: **Step 4 (schema-driven persistence)** or Step 5 (API layer).
+
 | # | Initiative | Key files | Effort | Impact | Acceptance criteria |
 |---|---|---|---|---|---|
 | **1** | **Security triage**: untrack `.env`+`db/custom.db`, ignore `/db/`, rotate/re-hash secrets (SHA-256 + timingSafeEqual), CSPRNG sync codes, bind :3000/:3003 to 127.0.0.1, harden `clientIp()` | `api/register`, `api/profile`, `api/stats`, `api/sync`, `rate-limit.ts`, new `identity/secret.ts`, `sync-code.ts`, start.sh | S (½ day) | 🔴 risk↓↑↑ | `git ls-files` clean of secrets; direct :3000 hit gets a shared bucket; no plaintext secret in DB; tsc/lint/test zero |

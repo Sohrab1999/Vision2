@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import dynamic from "next/dynamic";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUp } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
@@ -12,22 +13,44 @@ import { trackEventOncePerSession } from "@/lib/analytics";
 import Header from "./header";
 import Footer from "./footer";
 import HomeView from "./home-view";
-import LessonView from "./lesson-view";
-import DictionaryView from "./dictionary-view";
-import ExamView from "./exam-view";
-import AppendixView from "./appendix-view";
-import RushView from "./rush-view";
-import DuelView from "./duel-view";
-import ListenView from "./listen-view";
-import ReviewView from "./review-view";
-import SmartPracticeView from "./smart-practice-view";
-import KonkurView from "./konkur-view";
-import GrammarView from "./grammar-view";
 import ShortcutGuide from "./shortcut-guide";
-import ReportCard from "./report-card";
-import OfficialReport from "./official-report";
 import Onboarding from "./onboarding";
 import PwaLayer from "./pwa-layer";
+
+// Task 44 (roadmap step 3 — code splitting): every non-home view is a lazy
+// chunk. duel-view pulls socket.io-client, exam/konkur pull the 360-question
+// bank, lesson/review/dictionary pull the full book content — none of that
+// belongs in the first paint of the home screen. HomeView stays eager (the
+// landing view); overlays render null when closed but keep only light logic
+// eager (report modals are lazy-mounted on first open below).
+const ViewFallback = (
+  <div className="flex min-h-[40vh] items-center justify-center">
+    <span className="h-9 w-9 animate-spin rounded-full border-[3px] border-emerald-200 border-t-emerald-600" />
+  </div>
+);
+
+const lazyView = <P extends object>(
+  loader: () => Promise<{ default: React.ComponentType<P> }>
+) => dynamic(loader, { ssr: false, loading: () => ViewFallback });
+
+const LessonView = lazyView(() => import("./lesson-view"));
+const DictionaryView = lazyView(() => import("./dictionary-view"));
+const ExamView = lazyView(() => import("./exam-view"));
+const AppendixView = lazyView(() => import("./appendix-view"));
+const RushView = lazyView(() => import("./rush-view"));
+const DuelView = lazyView(() => import("./duel-view"));
+const ListenView = lazyView(() => import("./listen-view"));
+const ReviewView = lazyView(() => import("./review-view"));
+const SmartPracticeView = lazyView(() => import("./smart-practice-view"));
+const KonkurView = lazyView(() => import("./konkur-view"));
+const GrammarView = lazyView(() => import("./grammar-view"));
+
+// Report modals: heavy (official-report pulls per-lesson stats) and computed
+// while closed (audit finding G-5). They mount only after the first "open"
+// event, then stay mounted; open/close flows through props so the closed
+// state costs nothing and the chunk never loads unless actually used.
+const ReportCard = dynamic(() => import("./report-card"), { ssr: false });
+const OfficialReport = dynamic(() => import("./official-report"), { ssr: false });
 
 export default function StudyApp() {
   const view = useStudy((s) => s.view);
@@ -153,6 +176,31 @@ export default function StudyApp() {
   const viewKey =
     view.type === "lesson" ? `lesson-${view.id}` : view.type;
 
+  // report modals: open state lives here (eager) so the heavy modal chunks
+  // only download on first use. The window events keep their names —
+  // dispatchers (leaderboard, skill panel, settings, report-card → official)
+  // are unchanged.
+  const [reportOpen, setReportOpen] = useState(false);
+  const [reportMounted, setReportMounted] = useState(false);
+  const [officialOpen, setOfficialOpen] = useState(false);
+  const [officialMounted, setOfficialMounted] = useState(false);
+  useEffect(() => {
+    const openReport = () => {
+      setReportOpen(true);
+      setReportMounted(true);
+    };
+    const openOfficial = () => {
+      setOfficialOpen(true);
+      setOfficialMounted(true);
+    };
+    window.addEventListener("open-report", openReport);
+    window.addEventListener("open-official-report", openOfficial);
+    return () => {
+      window.removeEventListener("open-report", openReport);
+      window.removeEventListener("open-official-report", openOfficial);
+    };
+  }, []);
+
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
@@ -200,10 +248,14 @@ export default function StudyApp() {
       <PwaLayer />
 
       {/* letter-style progress report (opened from tool cards / skill panel) */}
-      <ReportCard />
+      {reportMounted && (
+        <ReportCard open={reportOpen} onClose={() => setReportOpen(false)} />
+      )}
 
       {/* A4 printable official progress report (teacher/parents) */}
-      <OfficialReport />
+      {officialMounted && (
+        <OfficialReport open={officialOpen} onClose={() => setOfficialOpen(false)} />
+      )}
 
       {/* back to top */}
       <AnimatePresence>

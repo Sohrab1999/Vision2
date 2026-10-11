@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import {
   Sparkles,
@@ -29,22 +30,49 @@ import {
   Swords,
   TrainFront,
 } from "lucide-react";
-import { lessons, examBank, totalVocabulary, totalQuestions } from "@/data";
+import {
+  LESSONS_META,
+  TOTAL_VOCABULARY,
+  TOTAL_QUESTIONS,
+  EXAM_BANK_SIZE,
+  lessonMetaById,
+} from "@/data/lesson-meta";
 import { useStudy, knownCountOfLesson, summarize, srsDueTotal, firstLessonWithDue, todayStr, mistakesOfLesson, FREEZE_CAP } from "@/lib/study-store";
 import { hardIdsOf } from "@/lib/konkur";
 import { useMounted } from "@/lib/use-mounted";
 import { themeOf, faNum, timeAgoFa } from "@/lib/study-theme";
 import ProgressRing from "./progress-ring";
 import WeeklyChart from "./weekly-chart";
-import VocabDonut from "./vocab-donut";
 import Leaderboard from "./leaderboard";
 import Badges from "./badges";
-import WordOfDay from "./word-of-day";
 import SrsPanel from "./srs-panel";
 import SkillPanel from "./skill-panel";
-import ReportCard from "./report-card";
 import DailyQuests from "./daily-quests";
-import DangerWords from "./danger-words";
+
+// Task 44 (roadmap step 3): word-of-day + vocab-donut need the real vocabulary
+// content (@/data ≈ 371 KB). They render below the fold, so they load as async
+// chunks after first paint instead of blocking it — the content layer stays
+// out of the eager bundle while the cards fill in with a lightweight skeleton.
+const CardFallback = (
+  <div className="flex h-56 items-center justify-center rounded-2xl border border-stone-200 bg-white/60">
+    <span className="h-8 w-8 animate-spin rounded-full border-[3px] border-emerald-200 border-t-emerald-600" />
+  </div>
+);
+const WordOfDay = dynamic(() => import("./word-of-day"), {
+  ssr: false,
+  loading: () => CardFallback,
+});
+const VocabDonut = dynamic(() => import("./vocab-donut"), {
+  ssr: false,
+  loading: () => CardFallback,
+});
+// danger-words pulls quiz-engine → word-risk → the full data layer; it only
+// renders for learners with progress (below the fold) — keep it out of the
+// eager bundle for the same reason as word-of-day/vocab-donut.
+const DangerWords = dynamic(() => import("./danger-words"), {
+  ssr: false,
+  loading: () => CardFallback,
+});
 
 const spineColors: Record<string, string> = {
   emerald: "bg-gradient-to-b from-emerald-500 to-emerald-800",
@@ -220,7 +248,7 @@ export default function HomeView() {
           </h1>
           <p className="mb-6 max-w-lg text-[15px] leading-8 text-stone-600">
             هر سه درس جزوه با واژگان کامل، مکالمه و ریدینگ با <b className="text-emerald-700">روخوانی هوش مصنوعی</b>،
-            گرامر تشریحی، فلش‌کارت و بیش از {faNum(totalQuestions)} تست کنکوری — همه در یک کتاب دیجیتال زنده.
+            گرامر تشریحی، فلش‌کارت و بیش از {faNum(TOTAL_QUESTIONS)} تست کنکوری — همه در یک کتاب دیجیتال زنده.
           </p>
           <div className="flex flex-wrap items-center gap-3">
             <button
@@ -242,8 +270,8 @@ export default function HomeView() {
 
           <div className="mt-7 grid max-w-md grid-cols-3 gap-3">
             {[
-              { icon: Languages, label: "واژگان", value: `${faNum(totalVocabulary)}+` },
-              { icon: ListChecks, label: "تست تعاملی", value: `${faNum(totalQuestions)}+` },
+              { icon: Languages, label: "واژگان", value: `${faNum(TOTAL_VOCABULARY)}+` },
+              { icon: ListChecks, label: "تست تعاملی", value: `${faNum(TOTAL_QUESTIONS)}+` },
               { icon: Volume2, label: "روخوانی TTS", value: "کل متون" },
             ].map((s) => (
               <div
@@ -549,7 +577,7 @@ export default function HomeView() {
 
         {/* spines */}
         <div className="mb-6 flex items-end justify-center gap-2 rounded-t-2xl border border-b-0 border-stone-200 shelf-strip bg-gradient-to-b from-stone-100 to-stone-50 px-6 pt-6 sm:gap-3">
-          {lessons.map((l, i) => (
+          {LESSONS_META.map((l, i) => (
             <motion.button
               key={l.id}
               initial={{ opacity: 0, y: 30 }}
@@ -579,10 +607,10 @@ export default function HomeView() {
 
         {/* lesson cards */}
         <div className="mt-6 grid gap-4 md:grid-cols-3">
-          {lessons.map((l, i) => {
+          {LESSONS_META.map((l, i) => {
             const t = themeOf(l.color);
             const wordsKnown = mounted ? knownCountOfLesson(known, l.id) : 0;
-            const knownPercent = Math.round((wordsKnown / l.vocabulary.length) * 100);
+            const knownPercent = Math.round((wordsKnown / l.vocabCount) * 100);
             return (
               <motion.div
                 key={l.id}
@@ -608,9 +636,9 @@ export default function HomeView() {
                 </div>
                 <p className="mb-4 flex-1 text-[13px] leading-7 text-stone-500">{l.tagline}</p>
                 <div className="mb-4 flex gap-2 text-[11px] text-stone-500">
-                  <span className="rounded-lg bg-stone-100 px-2 py-1">{faNum(l.vocabulary.length)} واژه</span>
-                  <span className="rounded-lg bg-stone-100 px-2 py-1">{faNum(l.quizzes.length)} تست</span>
-                  <span className="rounded-lg bg-stone-100 px-2 py-1">{faNum(l.grammar.length)} بخش گرامر</span>
+                  <span className="rounded-lg bg-stone-100 px-2 py-1">{faNum(l.vocabCount)} واژه</span>
+                  <span className="rounded-lg bg-stone-100 px-2 py-1">{faNum(l.quizCount)} تست</span>
+                  <span className="rounded-lg bg-stone-100 px-2 py-1">{faNum(l.grammarCount)} بخش گرامر</span>
                 </div>
                 <p className="mb-3 text-[12px] font-bold text-stone-600">{lessonCheer(mounted ? knownPercent : 0)}</p>
                 <button
@@ -635,8 +663,8 @@ export default function HomeView() {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {[
             { icon: Sparkles, title: "تمرین هوشمند", desc: "جلسه‌ای که خودش از روی بانک خطا و مهارت‌های ضعیف تو ساخته می‌شود", onClick: () => setView({ type: "smart" as const }), color: "text-violet-600 bg-violet-50 border-violet-200" },
-            { icon: BookMarked, title: "دیکشنری جستجو", desc: `${faNum(totalVocabulary)} واژهٔ سه درس با جستجوی فارسی و انگلیسی`, view: { type: "dictionary" as const }, color: "text-sky-600 bg-sky-50 border-sky-200" },
-            { icon: ClipboardCheck, title: "آزمون جامع", desc: `${faNum(examBank.length)} تست گردآوری از بانک ۳۶۰ تستی جزوه با تایمر`, view: { type: "exam" as const }, color: "text-emerald-600 bg-emerald-50 border-emerald-200" },
+            { icon: BookMarked, title: "دیکشنری جستجو", desc: `${faNum(TOTAL_VOCABULARY)} واژهٔ سه درس با جستجوی فارسی و انگلیسی`, view: { type: "dictionary" as const }, color: "text-sky-600 bg-sky-50 border-sky-200" },
+            { icon: ClipboardCheck, title: "آزمون جامع", desc: `${faNum(EXAM_BANK_SIZE)} تست گردآوری از بانک ۳۶۰ تستی جزوه با تایمر`, view: { type: "exam" as const }, color: "text-emerald-600 bg-emerald-50 border-emerald-200" },
             { icon: GraduationCap, title: "گوشهٔ کنکور", desc: "سامانهٔ پوشش و تسلط بانک ۳۶۰تایی: نقشهٔ پیشرفت، شبیه‌ساز و تست‌های سخت", view: { type: "konkur" as const }, color: "text-orange-600 bg-orange-50 border-orange-200", badge: konkurHardCount },
             { icon: TrainFront, title: "متروی گرامر", desc: "نقشهٔ سفر گرامر کتاب: ۶ خط و ۱۵ ایستگاه واقعی؛ هر قاعده یک ایستگاه با درس، ترفند و آزمونک", onClick: () => setView({ type: "grammar" as const }), color: "text-teal-600 bg-teal-50 border-teal-200" },
             { icon: Swords, title: "نبرد دودنفره", desc: "مصاف زندهٔ واژگانی با یادگیرندهٔ دیگر: ۱۰ سؤال، ۱۵ ثانیه، داوری روی سرور", onClick: () => setView({ type: "duel" as const }), color: "text-fuchsia-600 bg-fuchsia-50 border-fuchsia-200" },
@@ -721,7 +749,7 @@ export default function HomeView() {
                 </div>
                 <ul className="max-h-44 space-y-1.5 overflow-y-auto nice-scroll pl-1">
                   {globalStats.recent.slice(0, 7).map((a, i) => {
-                    const lesson = lessons.find((l) => l.id === a.lesson);
+                    const lesson = lessonMetaById(a.lesson);
                     const cat = feedLabel[a.category] ?? a.category;
                     const label =
                       a.lesson === 0 || !lesson
@@ -777,7 +805,7 @@ export default function HomeView() {
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {recentResults.map(([key, r]) => {
               const [lessonPart, cat] = key.split(":");
-              const lesson = lessons.find((l) => String(l.id) === lessonPart);
+              const lesson = lessonMetaById(Number(lessonPart));
               const t = themeOf(lesson?.color ?? "emerald");
               return (
                 <div key={key} className={`rounded-xl border ${t.border} ${t.bgSoft} p-3`}>

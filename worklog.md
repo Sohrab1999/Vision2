@@ -985,3 +985,24 @@ Stage Summary:
 - گام ۱ و ۲ نقشهٔ راه ریفاکتور بسته شد: اعتبارنامه‌ها از گیت خارج و هش‌ شدند، rate-limit دیگر دورزدنی نیست (فقط Caddy ingress)، کد سینک CSPRNG، سه‌کپی امضا یکی شد، ۵ باگ صحت رفع شد و StrictMode برگشت
 - [هشدار برطرف شد] کرون بک‌آپ دیگر DB (حامل secret) را push نمی‌کند — بک‌آپ فقط کد/اسناد
 - گام پیشنهادی بعدی طبق roadmap §12: گام ۳ code-splitting (dynamic ×11 + دادهٔ امتحان به /public/content) یا گام ۴ پایداری schema-محور
+
+---
+Task ID: 44
+Agent: main (Z.ai Code) — «شروع کن» کاربر (ادامهٔ نقشهٔ راه ریفاکتور پس از Task 43) + تسک کرون بک‌آپ روزانه (Job 452349)
+Task: گام ۳ نقشهٔ راه ریفاکتور (docs/codebase-audit.md §12) — code-splitting: خروج دادهٔ ۳۷۱KB و socket.io از باند اولیه + رفع دو یافتهٔ جانبی ممیزی (G-5 محاسبه در مودال بسته، import مرده ReportCard)؛ + گزارش «بدون تغییر» بک‌آپ روزانه
+
+Work Log:
+- [کرون بک‌آپ] درخت گیت هنگام اجرای کرون تمیز بود (HEAD = 398da33 = origin/main) → «بدون تغییر»؛ کامیت این تسک جداگانه با پیام feat انجام شد
+- [رجیستری lazy] study-app.tsx: ۱۱ ویو (lesson/dictionary/exam/appendix/rush/duel/listen/review/smart/konkur/grammar) به next/dynamic با {ssr:false} + fallback اسپینر هم‌سبک اپ؛ helper generic نوع‌دار lazyView<P> که props را حفظ می‌کند (LessonView id دار)؛ HomeView/Onboarding/PwaLayer/ShortcutGuide eager ماندند
+- [کشف و بستن دو راه‌آب پنهان] ① home-view و footer کل لایهٔ داده را از barrel @/data می‌کشیدند → ماژول سبک جدید src/data/lesson-meta.ts (تايتل‌ها/رنگ‌ها/تعدادهای واقعی: ۶۳۳ واژه، ۱۳۰ تست درس + ۳۶۰ آزمون = ۴۹۰، بدون هیچ import محتوایی) + تست ضد-واگرایی tests/lesson-meta.test.ts (۵ تست: تطبیق فیلدبه‌فیلد با دادهٔ واقعی — ویرایش محتوا که اعداد را عوض کند تست را قرمز می‌کند نه عدد کهنه نمایش می‌دهد) ② زنجیرهٔ home-view → danger-words → quiz-engine → word-risk → @/data کل لایه را eager نگه داشته بود (چانک ۱MB مگا!) → DangerWords هم lazy شد؛ راستی‌آزمایی نهایی: همهٔ importکننده‌های @/data در src (۱۰ فایل) یا lazy هستند یا داخل ویوهای lazy
+- [ارتقای state مودال‌ها] report-card و official-report از state داخلی + listener به props {open, onClose} تبدیل شدند؛ study-app رویدادهای «open-report»/«open-official-report» را می‌شنود و کامپوننت را فقط در اولین بازشدن mount می‌کند (بعد می‌ماند) → چانک مودال + کل ۹ useMemo آن تا اولین استفاده اصلاً لود نمی‌شود (یافتهٔ G-5 ممیزی برای حالت هرگز-باز-نشده حل شد)؛ نام رویدادها دست نخورده → دیسپچرها (leaderboard/skill-panel/settings/داخل report-card) بدون تغییر
+- [پاک‌سازی ضمنی] import مرده ReportCard در home-view (یافتهٔ ممیزی) حذف شد؛ useState/useEffect بی‌استفاده در دو مودال بعد از ارتقا حذف شدند
+- [سنجش صادقانه قبل/بعد] baseline با git stash + build خالص: اولین بارگذاری JS = ۱۲ چانک / ۱۶۲۱KB (یک مگا-چانک ۱۰۲۴KB حاوی محتوای آزمون + درس‌ها + socket.io!) → بعد از تغییر: ۱۵ چانک / ۱۰۰۶KB یعنی −۶۱۵KB (−۳۸٪) و استخر async ۱۱۲۵KB؛ اثبات سطح چانک: rg «totally confused» (بانک آزمون) و «l1-v» (محتوای درس ۱) و «engine.io» (socket.io) فقط در چانک‌هایی که در HTML prerendered صفحهٔ خانه نیستند — نسخهٔ اول سنجش خطا داشت (چانک‌های build قبلی overwrite شده بودند و صفر شمرده می‌شدند) که با stash/build مجدد تصحیح شد
+- [کیفیت] tsc=۰، lint=۰، test=۱۳۱/۱۳۱ (+۵ تست lesson-meta)
+- [QA زندهٔ تک‌سشن] rm -rf .next (build مبنا را خورد) → dev با الگوی daemonize بالا آمد (127.0.0.1:3000، PPID=1) → خانه: title ✓ قفسه ۴ عصا (۳ درس + آزمون) از LESSONS_META ✓ چیپ ۶۳۳ واژه و ۴۹۰ تست ✓ صفر خطای کنسول ✓ M → نقشهٔ گرامر (lazy) ✓ کارت آزمون جامع → ویو آزمون با بانک async ✓ open-report → دیالوگ گزارش با [role=dialog] ✓ Esc بست ✓ open-official-report → گزارش رسمی با دکمهٔ چاپ ✓ Esc بست ✓ open-duel → UI نبرد + «در حال اتصال» (طبیعی از :3000 مستقیم) ✓ موبایل ۳۹۰: overflow=0 ✓ dev.log فقط 200ها ✓ اسکرین‌شات r44 در .zscripts؛ پروسه‌ها: :3003 سرویس چالش از سشن قبل با PPID=1 سالم، هر دو سرویس loopback
+- اسکریپت‌های موقت (extract-meta/qa44) حذف شدند؛ پیشرفت در docs/codebase-audit.md §12 ثبت شد
+
+Stage Summary:
+- گام ۳ نقشهٔ راه بسته شد: اولین paint اپ دیگر بانک ۳۶۰تایی، محتوای سه درس و socket.io را دانلود نمی‌کند (−۳۸٪ باند اولیه، اندازه‌گیری‌شده با build عملی + گرپ چانک، نه تخمین)؛ مودال‌های گزارش هم تا اولین استفاده هیچ هزینه‌ای ندارند
+- درس سنجش: مقایسهٔ قبل/بعد روی چانک‌های هش‌شده فقط بلافاصله بعد از هر build معتبر است — چانک‌های build قبلی بازنویسی می‌شوند؛ الگوی درست: stash → build → سنجش → pop
+- گام پیشنهادی بعدی: گام ۴ (پایداری schema-محور — جدول SyncField که partialize/collectData/parseBackup را تولید کند) یا گام ۵ (لایهٔ withApi + zod برای ۹ روت) — طبق §12 سند ممیزی
