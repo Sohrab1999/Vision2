@@ -16,6 +16,8 @@ import {
   Compass,
   BookOpen,
   Lightbulb,
+  PencilLine,
+  Sparkles,
   Swords,
 } from "lucide-react";
 import {
@@ -27,7 +29,7 @@ import {
 } from "@/components/ui/dialog";
 import { useStudy, todayStr } from "@/lib/study-store";
 import { lessons } from "@/data";
-import { GRAMMAR_LINES, type GrammarLine, type GrammarStation, type GrammarLineColor } from "@/data/grammar-map";
+import { GRAMMAR_LINES, type GrammarLine, type GrammarStation } from "@/data/grammar-map";
 import {
   GRAMMAR_GREEN,
   mapSummary,
@@ -40,57 +42,17 @@ import {
   bestPercent,
   probeRecommendation,
 } from "@/lib/grammar-progress";
+import {
+  lessonFor,
+  stationIdsWithLesson,
+  lineIdsWithLessons,
+} from "@/lib/grammar-lesson";
 import { faNum } from "@/lib/study-theme";
 import QuizEngine from "./quiz-engine";
 
-// پالت هر خط (روشن/تیره با کلاس‌های scoped در globals.css کامل می‌شود)
-const LINE_COLORS: Record<
-  GrammarLineColor,
-  { solid: string; rail: string; soft: string; text: string; border: string }
-> = {
-  emerald: {
-    solid: "bg-emerald-600",
-    rail: "bg-gradient-to-l from-emerald-300 via-emerald-500 to-emerald-700",
-    soft: "bg-emerald-50",
-    text: "text-emerald-700",
-    border: "border-emerald-200",
-  },
-  amber: {
-    solid: "bg-amber-500",
-    rail: "bg-gradient-to-l from-amber-300 via-amber-400 to-amber-600",
-    soft: "bg-amber-50",
-    text: "text-amber-700",
-    border: "border-amber-200",
-  },
-  teal: {
-    solid: "bg-teal-600",
-    rail: "bg-gradient-to-l from-teal-300 via-teal-500 to-teal-700",
-    soft: "bg-teal-50",
-    text: "text-teal-700",
-    border: "border-teal-200",
-  },
-  rose: {
-    solid: "bg-rose-500",
-    rail: "bg-gradient-to-l from-rose-300 via-rose-400 to-rose-600",
-    soft: "bg-rose-50",
-    text: "text-rose-700",
-    border: "border-rose-200",
-  },
-  violet: {
-    solid: "bg-violet-600",
-    rail: "bg-gradient-to-l from-violet-300 via-violet-500 to-violet-700",
-    soft: "bg-violet-50",
-    text: "text-violet-700",
-    border: "border-violet-200",
-  },
-  orange: {
-    solid: "bg-orange-500",
-    rail: "bg-gradient-to-l from-orange-300 via-orange-400 to-orange-600",
-    soft: "bg-orange-50",
-    text: "text-orange-700",
-    border: "border-orange-200",
-  },
-};
+// پالت هر خط — ماژول مشترک با جریان درس (lib/grammar-theme.ts)
+import { LINE_COLORS } from "@/lib/grammar-theme";
+import GrammarLessonFlow from "./grammar-lesson-flow";
 
 interface QuizSession {
   title: string;
@@ -109,6 +71,13 @@ export default function GrammarView() {
     line: GrammarLine;
     station: GrammarStation;
   } | null>(null);
+  const [lessonSession, setLessonSession] = useState<{
+    line: GrammarLine;
+    station: GrammarStation;
+  } | null>(null);
+
+  const withLessons = useMemo(() => stationIdsWithLesson(), []);
+  const lessonLines = useMemo(() => new Set(lineIdsWithLessons()), []);
 
   const summary = useMemo(() => mapSummary(results), [results]);
 
@@ -136,6 +105,27 @@ export default function GrammarView() {
       perQuestionLesson: true,
     });
   };
+
+  const startLesson = (line: GrammarLine, station: GrammarStation) => {
+    if (!lessonFor(station.id)) return;
+    setDialog(null);
+    setLessonSession({ line, station });
+  };
+
+  if (lessonSession) {
+    return (
+      <GrammarLessonFlow
+        line={lessonSession.line}
+        station={lessonSession.station}
+        onExit={() => setLessonSession(null)}
+        onGoQuiz={() => {
+          const { line, station } = lessonSession;
+          setLessonSession(null);
+          startStationQuiz(line, station);
+        }}
+      />
+    );
+  }
 
   if (quiz) {
     const lessonOf = (q: { id: string }) => {
@@ -191,10 +181,13 @@ export default function GrammarView() {
           <span className="rounded-full bg-white/15 px-3 py-1.5 text-[12px] font-bold">
             آستانهٔ سبز شدن: {faNum(GRAMMAR_GREEN)}٪
           </span>
+          <span className="rounded-full bg-white/15 px-3 py-1.5 text-[12px] font-bold">
+            ✨ درس ۹۰ثانیه‌ای: {faNum(withLessons.size)} ایستگاه
+          </span>
         </div>
         <div className="relative mt-4 grid gap-2 text-[12px] font-bold text-teal-50 sm:grid-cols-3">
           <span className="gmetro-step rounded-xl bg-white/10 px-3 py-2">
-            ۱. درس و ترفند ایستگاه را بخوان
+            ۱. درس ۹۰ثانیه‌ای را ببین و امتحان کن
           </span>
           <span className="gmetro-step rounded-xl bg-white/10 px-3 py-2">
             ۲. آزمونکش را بالای {faNum(GRAMMAR_GREEN)}٪ بزن
@@ -231,6 +224,11 @@ export default function GrammarView() {
               <span className="text-[12px] font-bold text-stone-500">
                 {faNum(stats.green)} از {faNum(stats.total)} سبز
               </span>
+              {lessonLines.has(line.id) && (
+                <span className={`gmetro-lesson-badge inline-flex items-center gap-1 rounded-full border border-dashed px-2.5 py-1 text-[10.5px] font-black ${c.text} ${c.border} bg-white/60`}>
+                  <Sparkles size={11} /> همهٔ ایستگاه‌ها درس ۹۰ثانیه‌ای دارند
+                </span>
+              )}
               <button
                 onClick={() => startProbe(line)}
                 className={`gmetro-probe-btn mr-auto inline-flex items-center gap-1.5 rounded-full border ${c.border} bg-white px-3 py-1.5 text-[12px] font-extrabold ${c.text} shadow-sm transition-all hover:-translate-y-px hover:shadow active:scale-95`}
@@ -308,13 +306,19 @@ export default function GrammarView() {
                                 : "bg-white text-stone-500 border border-stone-200"
                           }`}
                         >
-                          {status === "green"
-                            ? `${faNum(best ?? GRAMMAR_GREEN)}٪ سبز`
-                            : locked
-                              ? "قفل"
-                              : best !== null
-                                ? `${faNum(best)}٪`
-                                : "شروع کن"}
+                          {status === "green" ? (
+                            `${faNum(best ?? GRAMMAR_GREEN)}٪ سبز`
+                          ) : locked ? (
+                            "قفل"
+                          ) : best !== null ? (
+                            `${faNum(best)}٪`
+                          ) : withLessons.has(station.id) ? (
+                            <span className="inline-flex items-center gap-1">
+                              <PencilLine size={10} /> درس دارد
+                            </span>
+                          ) : (
+                            "شروع کن"
+                          )}
                         </span>
                       </button>
                     </li>
@@ -363,26 +367,44 @@ export default function GrammarView() {
                 {(() => {
                   const status = stationStatus(dialog.line, dialog.line.stations.indexOf(dialog.station), results);
                   const canQuiz = status !== "locked" && stationQuestions(dialog.station).length > 0;
+                  const hasLesson = lessonFor(dialog.station.id) !== null;
+                  const lessonDone =
+                    hasLesson &&
+                    bestPercent(results, `g:ls:${dialog.station.id}`) !== null;
+                  const c = LINE_COLORS[dialog.line.color];
                   return (
-                    <button
-                      onClick={() => canQuiz && startStationQuiz(dialog.line, dialog.station)}
-                      disabled={!canQuiz}
-                      className={`inline-flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-[13px] font-extrabold text-white shadow-md transition-all active:scale-95 ${
-                        canQuiz
-                          ? `${LINE_COLORS[dialog.line.color].solid} hover:brightness-110`
-                          : "cursor-not-allowed bg-stone-300 shadow-none"
-                      }`}
-                    >
-                      {status === "locked" ? (
-                        <>
-                          <Lock size={15} /> اول ایستگاه قبلی را سبز کن
-                        </>
-                      ) : (
-                        <>
-                          <Swords size={15} /> شروع آزمونک ایستگاه
-                        </>
+                    <>
+                      {hasLesson && status !== "locked" && (
+                        <button
+                          onClick={() => startLesson(dialog.line, dialog.station)}
+                          className={`inline-flex items-center gap-1.5 rounded-xl ${c.solid} px-4 py-2.5 text-[13px] font-extrabold text-white shadow-md transition-all hover:brightness-110 active:scale-95`}
+                        >
+                          <PencilLine size={15} />{" "}
+                          {lessonDone ? "مرور دوبارهٔ درس ✓" : "درس ۹۰ثانیه‌ای"}
+                        </button>
                       )}
-                    </button>
+                      <button
+                        onClick={() => canQuiz && startStationQuiz(dialog.line, dialog.station)}
+                        disabled={!canQuiz}
+                        className={`inline-flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-[13px] font-extrabold shadow-md transition-all active:scale-95 ${
+                          hasLesson && status !== "locked"
+                            ? `border-2 ${c.border} ${c.soft} ${c.text} hover:brightness-105` // ثانویه بعد از دکمهٔ درس
+                            : canQuiz
+                              ? `${c.solid} text-white hover:brightness-110`
+                              : "cursor-not-allowed bg-stone-300 text-white shadow-none"
+                        }`}
+                      >
+                        {status === "locked" ? (
+                          <>
+                            <Lock size={15} /> اول ایستگاه قبلی را سبز کن
+                          </>
+                        ) : (
+                          <>
+                            <Swords size={15} /> شروع آزمونک ایستگاه
+                          </>
+                        )}
+                      </button>
+                    </>
                   );
                 })()}
                 <button
