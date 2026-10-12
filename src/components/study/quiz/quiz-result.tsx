@@ -5,11 +5,12 @@
 // کارت استاندارد، اشتراک‌گذاری/دانلود تصویر و مرور سؤال‌به‌سؤال.
 // ظاهر پیکسل‌به‌پیکسل از quiz-engine قبلی حفظ شده است.
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { Check, X, RotateCcw, Trophy, Award, Share2, ScrollText, ImageDown } from "lucide-react";
+import { Check, X, RotateCcw, Trophy, Award, Share2, ScrollText, ImageDown, Star } from "lucide-react";
 import type { QuizQuestion } from "@/lib/study-types";
 import { useStudy } from "@/lib/study-store";
+import { starrableWord, type StarrableWord } from "@/lib/starred-from-quiz";
 import { percent as percentOf } from "@/lib/domain/percent";
 import { faNum } from "@/lib/study-theme";
 import { downloadResultImage } from "@/lib/result-image";
@@ -52,11 +53,25 @@ export default function QuizResult({
 }: QuizResultProps) {
   const [imgBusy, setImgBusy] = useState(false);
   const { toast } = useToast();
+  const starredWords = useStudy((s) => s.starredWords);
+  const toggleStarred = useStudy((s) => s.toggleStarred);
+  const starredSet = useMemo(() => new Set(starredWords), [starredWords]);
 
   const total = questions.length;
   const percent = percentOf(correctCount, total);
   const wrongIds = questions.filter((qq, i) => answers[i] !== qq.answer).map((qq) => qq.id);
   const grade = gradeFor(percent);
+
+  // «ستاره از نتیجهٔ آزمون» — wrong answers whose word can land in «واژه‌های من»
+  const starrableWrong = useMemo(() => {
+    const map = new Map<string, StarrableWord>();
+    for (const [i, qq] of questions.entries()) {
+      if (answers[i] === qq.answer) continue;
+      const w = starrableWord(qq);
+      if (w) map.set(qq.id, w);
+    }
+    return map;
+  }, [questions, answers]);
 
   // per-group accuracy (e.g. per source lesson in the final exam)
   const groups =
@@ -215,6 +230,11 @@ export default function QuizResult({
             {wrongIds.length} سؤال به بانک مرور اشتباهات اضافه شد
           </span>
         )}
+        {trackMistakes && starrableWrong.size > 0 && (
+          <span className="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-[12px] font-bold text-amber-700">
+            واژه‌های اشتباه را با ستاره به «واژه‌های من» بفرست
+          </span>
+        )}
         {!trackMistakes && (
           <span className="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-[12px] font-bold text-amber-700">
             تمرین هدفمند انجام شد — واژه‌های خطرناک به‌روزرسانی شدند
@@ -256,6 +276,8 @@ export default function QuizResult({
         {questions.map((qq, i) => {
           const my = answers[i];
           const ok = my === qq.answer;
+          const sw = ok ? undefined : starrableWrong.get(qq.id);
+          const isStarred = sw !== undefined && starredSet.has(sw.key);
           return (
             <div
               key={qq.id}
@@ -275,6 +297,18 @@ export default function QuizResult({
                   <b className="mr-1 text-stone-400">{i + 1}.</b>
                   {qq.question}
                 </p>
+                {sw && (
+                  <motion.button
+                    whileTap={{ scale: 0.75 }}
+                    onClick={() => toggleStarred(sw.key)}
+                    title={isStarred ? `حذف «${sw.en}» از واژه‌های من` : `افزودن «${sw.en}» به واژه‌های من`}
+                    aria-label={isStarred ? `حذف ${sw.en} از واژه‌های من` : `افزودن ${sw.en} به واژه‌های من`}
+                    aria-pressed={isStarred}
+                    className="shrink-0 rounded-md p-1 transition-all hover:scale-110 active:scale-90"
+                  >
+                    <Star size={15} className={isStarred ? "fill-amber-400 text-amber-400" : "text-rose-300 transition-colors hover:text-amber-400"} />
+                  </motion.button>
+                )}
               </div>
               <p className="mr-7 text-[12.5px] text-stone-600">
                 پاسخ شما: <span className={`${faOptions?.(qq) ? "" : "en-text "}font-bold`} dir={faOptions?.(qq) ? "rtl" : "ltr"}>{my !== undefined ? `${letters[my]}) ${qq.options[my]}` : "—"}</span>
