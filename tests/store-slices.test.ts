@@ -176,6 +176,29 @@ describe("activity policy matrix", () => {
     expect(s.freezeEarnedDay).toBe(todayStr());
   });
 
+  it("goalMetDays is honest: an active but below-goal day is NOT recorded (round-55 fix)", () => {
+    useStudy.setState({ dailyGoal: 10 });
+    state().trackReview(); // reviews=1 < 10 → active day, NOT a goal day
+    expect(state().goalMetDays).not.toContain(todayStr());
+    // crossing the threshold records it
+    useStudy.setState({ dailyGoal: 1 });
+    state().trackReview();
+    expect(state().goalMetDays).toContain(todayStr());
+  });
+
+  it("the freeze window counts only real goal-days (legacy inflation no longer mints freezes)", () => {
+    useStudy.setState({
+      dailyGoal: 1,
+      goalMetDays: [daysAgoKey(1)], // one honest goal-day in window
+      freezeEarnedDay: "",
+    });
+    state().trackReview(); // met today → 2 goal-days in window < 3 → no grant
+    const s = state();
+    expect(s.freezeCount).toBe(0);
+    expect(s.freezeEarnedDay).toBe("");
+    expect(s.goalMetDays).toContain(todayStr());
+  });
+
   it("day rollover: stale yesterday dayStat does not leak into today", () => {
     useStudy.setState({
       dayStat: { day: daysAgoKey(1), reviews: 9, quizzes: 9, words: 9, dictation: 9, rush: 9 },

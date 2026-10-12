@@ -2,7 +2,7 @@
 
 import { useMemo } from "react";
 import { motion } from "framer-motion";
-import { RefreshCcw, Sparkles, CalendarClock, CheckCircle2, TrendingUp, Sprout, BookOpenCheck, AlarmClock, ArrowLeft } from "lucide-react";
+import { RefreshCcw, Sparkles, CalendarClock, CheckCircle2, TrendingUp, Sprout, BookOpenCheck, AlarmClock, ArrowLeft, Star } from "lucide-react";
 import { useStudy, srsDueTotal, firstLessonWithDue, type SrsItem } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
@@ -32,7 +32,11 @@ function dayLabel(offset: number): string {
 export default function SrsPanel() {
   const srs = useStudy((s) => s.srs);
   const openLesson = useStudy((s) => s.openLesson);
+  const starredWords = useStudy((s) => s.starredWords);
+  const toggleStarred = useStudy((s) => s.toggleStarred);
   const mounted = useMounted();
+
+  const starredSet = useMemo(() => new Set(starredWords), [starredWords]);
 
   const stats = useMemo(() => {
     if (!mounted) return null;
@@ -177,21 +181,36 @@ export default function SrsPanel() {
                 </span>
               </div>
               <div className="flex flex-wrap gap-1.5">
-                {dueWords.map((w) => (
-                  <motion.button
-                    key={w.key}
-                    whileTap={{ scale: 0.92 }}
-                    onClick={startSmartReview}
-                    title={`${w.en} — سطح ${faNum(w.level + 1)} از ۶`}
-                    className="srs-due-chip group flex items-center gap-1.5 rounded-lg border border-rose-100 bg-white px-2 py-1 shadow-sm transition-all hover:-translate-y-0.5 hover:border-rose-300 hover:shadow active:scale-95"
-                  >
-                    <span className="en-text text-[12px] font-bold text-stone-800" dir="ltr">
-                      {w.en}
-                    </span>
-                    <span className="hidden text-[10px] text-stone-400 sm:inline">{w.fa}</span>
-                    <ArrowLeft size={11} className="text-rose-400 opacity-0 transition-opacity group-hover:opacity-100" />
-                  </motion.button>
-                ))}
+                {dueWords.map((w) => {
+                  const starred = starredSet.has(w.key);
+                  return (
+                    <div key={w.key} className="inline-flex items-center gap-0.5">
+                      {/* ستاره — هفتمین سطح ستاره‌گذاری: واژهٔ سررسید مستقیم به «واژه‌های من» */}
+                      <motion.button
+                        whileTap={{ scale: 0.75 }}
+                        onClick={() => toggleStarred(w.key)}
+                        aria-pressed={starred}
+                        aria-label={starred ? `حذف ${w.en} از واژه‌های من` : `افزودن ${w.en} به واژه‌های من`}
+                        title={starred ? `حذف ${w.en} از واژه‌های من` : `افزودن ${w.en} به واژه‌های من`}
+                        className="srs-due-star flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-md transition-colors hover:bg-amber-50"
+                      >
+                        <Star size={12} className={starred ? "fill-amber-400 text-amber-500" : "text-stone-300 transition-colors hover:text-amber-400"} />
+                      </motion.button>
+                      <motion.button
+                        whileTap={{ scale: 0.92 }}
+                        onClick={startSmartReview}
+                        title={`${w.en} — سطح ${faNum(w.level + 1)} از ۶`}
+                        className="srs-due-chip group flex items-center gap-1.5 rounded-lg border border-rose-100 bg-white px-2 py-1 shadow-sm transition-all hover:-translate-y-0.5 hover:border-rose-300 hover:shadow active:scale-95"
+                      >
+                        <span className="en-text text-[12px] font-bold text-stone-800" dir="ltr">
+                          {w.en}
+                        </span>
+                        <span className="hidden text-[10px] text-stone-400 sm:inline">{w.fa}</span>
+                        <ArrowLeft size={11} className="text-rose-400 opacity-0 transition-opacity group-hover:opacity-100" />
+                      </motion.button>
+                    </div>
+                  );
+                })}
                 {dueOverflow > 0 && (
                   <motion.button
                     whileTap={{ scale: 0.92 }}
@@ -201,6 +220,10 @@ export default function SrsPanel() {
                     +{faNum(dueOverflow)} واژهٔ دیگر
                   </motion.button>
                 )}
+              </div>
+              <div className="mt-2 flex items-center gap-1 border-t border-rose-100/70 pt-1.5 text-[10px] text-stone-400">
+                <Star size={10} className="text-amber-400" />
+                واژهٔ سررسید را با ستاره به «واژه‌های من» بفرست تا در آزمون و فلش‌کارت شخصی هم بیاید
               </div>
             </div>
           )}

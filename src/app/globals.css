@@ -691,6 +691,17 @@ body {
 }
 .dark .srs-panel .srs-due-chip .text-rose-500 { color: #fb7185; }
 .dark .srs-panel .srs-due-chip .text-rose-400 { color: #fb7185; }
+/* due-chip star (هفتمین سطح ستاره) — unstarred ghost → amber on hover; filled stays amber */
+.dark .srs-panel .srs-due-star {
+  color: #57534e;
+}
+.dark .srs-panel .srs-due-star:hover {
+  background-color: rgb(68 52 22 / 0.55);
+  color: #fbbf24;
+}
+.dark .srs-panel .srs-due-star .fill-amber-400 { color: #fbbf24; }
+.dark .srs-panel .srs-due-preview .border-rose-100\/70 { border-color: rgb(120 30 45 / 0.4); }
+.dark .srs-panel .srs-due-preview .text-stone-400 { color: #a8a29e; }
 
 /* ---------------- spell buttons (dictation) dark ---------------- */
 .dark .border-sky-200 { border-color: rgb(7 66 84 / 0.7); }

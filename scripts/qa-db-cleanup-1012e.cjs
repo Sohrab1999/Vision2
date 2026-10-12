@@ -17,6 +17,9 @@ const BASELINE = {
   star_word: 8,
   // dictation_done not in baseline → row deleted entirely
 };
+// round 55: same baseline reused — QA round only drifted app_open (+2 fresh
+// sessions incl. the Turbopack restart), my_words_open (+2), star_word (+1);
+// zero learner/attempt rows (star-only QA never registers).
 
 (async () => {
   // 1) find the QA learner: created within this round's window (last 45 min), anonymous

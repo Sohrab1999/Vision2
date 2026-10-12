@@ -141,6 +141,11 @@ export function applyStreak(
  * Grant rule: ≥۳ روزِ هدف‌دار در ۷ روز گذشته، بدون ساخت یخ در ۷ روز گذشته،
  * زیر سقف. freezeCountNow از نتیجهٔ applyStreak می‌آید تا مصرفِ یخ در همان
  * فراخوانی بازنویسی نشود.
+ *
+ * اصلاح ۲۰۲۶-۱۰-۱۲ (راند ۵۵): روزها فقط وقتی در goalMetDays ثبت می‌شوند که
+ * هدف واقعاً کامل شده باشد — قبلاً هر روزِ فعال (حتی کمتر از هدف) ثبت می‌شد و
+ * پنجرهٔ ۷روزه را inflated می‌کرد. دادهٔ legacy ممکن است روزهای بی‌هدف داشته
+ * باشد؛ با کهنه‌شدن از پنجره (۷ روز) خودبه‌خود اصلاح می‌شود.
  */
 export function goalAndFreezePatch(
   s: { dailyGoal: number; goalMetDays: string[]; freezeEarnedDay: string },
@@ -149,9 +154,9 @@ export function goalAndFreezePatch(
 ): Pick<StudyState, "goalMetDays" | "freezeCount" | "freezeEarnedDay"> {
   const windowStart = daysAgoKey(FREEZE_WINDOW - 1);
   const today = todayStr();
-  const goalMetDays = s.goalMetDays.includes(today) ? s.goalMetDays : [...s.goalMetDays, today].slice(-14);
-
   const met = dayStat.reviews + dayStat.quizzes >= s.dailyGoal;
+  const goalMetDays =
+    !met || s.goalMetDays.includes(today) ? s.goalMetDays : [...s.goalMetDays, today].slice(-14);
   const inWindow = goalMetDays.filter((d) => d >= windowStart).length;
   const cooledDown = !s.freezeEarnedDay || s.freezeEarnedDay < windowStart;
   const grant = met && inWindow >= FREEZE_EARN_GOALS && cooledDown && freezeCountNow < FREEZE_CAP;
