@@ -54,6 +54,10 @@ export interface BadgeEvalInput {
   dictationDays7: number; // چند روزِ پنجره دیکته داشتند (≠ جمع — رانِ روزانه، Task 85)
   quizDays7: number; // چند روزِ پنجره آزمون داشتند (≠ جمع — رانِ روزانه، Task 86)
   reviewsDays7: number; // چند روزِ پنجره مرور داشتند (≠ جمع — رانِ روزانه، Task 88)
+  // پنجرهٔ ۱۴روزه (Task 90) — سقفِ حافظه مجاز است: dayHistory ۳۵ روز نگه می‌دارد
+  dictationDays14: number; // چند روزِ پنجرهٔ ۱۴روزه دیکته داشتند
+  quizDays14: number; // چند روزِ پنجرهٔ ۱۴روزه آزمون داشتند
+  reviewsDays14: number; // چند روزِ پنجرهٔ ۱۴روزه مرور داشتند
 }
 
 function historyTotals(history: StudyState["history"]): { quizzes: number; reviews: number; days: number } {
@@ -158,50 +162,68 @@ export function buildEvalInput(s: {
     // (>= windowStart، بدون فیلترِ آینده). روزِ امروز اگر هنوز در dayHistory
     // ثبت نشده (الگوی totalQuizzes) از dayStat اضافه می‌شود؛ ورودی‌های خرابِ
     // هر خانه (غیرِ آبجکت) نادیده گرفته می‌شوند نه اینکه کل پنجره را بی‌اعتبار کنند.
-    ...windowCounters(s.dayHistory, windowStart, today, ds),
+    // (Task 90) همان تابعِ پنجره‌خنثی دوبار صدا زده می‌شود: ۷روزه (windowStart
+    // موتور) و ۱۴روزه (daysAgoKey(13)) — سقفِ حافظه مجاز است (dayHistory ۳۵ روز)؛
+    // و روزِ ۱۴ در پنجرهٔ ۷ نیست ولی روزِ ۷ در پنجرهٔ ۱۴ هست (زیرمجموعه).
+    ...(() => {
+      const win7 = windowCounters(s.dayHistory, windowStart, today, ds);
+      const win14 = windowCounters(s.dayHistory, daysAgoKey(13), today, ds);
+      return {
+        dictation7: win7.dictation7,
+        quizzes7: win7.quizzes7,
+        dictationDays7: win7.dictationDays,
+        quizDays7: win7.quizDays,
+        reviewsDays7: win7.reviewsDays,
+        dictationDays14: win14.dictationDays,
+        quizDays14: win14.quizDays,
+        reviewsDays14: win14.reviewsDays,
+      };
+    })(),
   };
 }
 
-/** جمعِ dictation/quizzes پنجرهٔ ۷روزه از dayHistory + fallbackِ روزِ امروز (Task 84)
- *  + dictationDays7 (Task 85): شمارِ روزهایِ دیکته‌دار ≠ جمعِ دیکته‌ها — رانِ روزانه
- *  یعنی هر روزِ پنجره حداقل یک دیکته؛ دو دیکته در یک روز هنوز یک روزِ دیکته‌دار است. */
+/** جمعِ dictation/quizzes پنجره از dayHistory + fallbackِ روزِ امروز (Task 84)
+ *  + شمارِ روزهایِ دیکته‌دار/آزمون‌دار/مرور‌دار ≠ جمع‌ها — رانِ روزانه (Task 85/86/88).
+ *  یعنی هر روزِ پنجره حداقل یک دیکته؛ دو دیکته در یک روز هنوز یک روزِ دیکته‌دار است.
+ *  (Task 90) پنجره‌خنثی شد: windowStart پارامتر است — همان تابع هم ۷روزه هم
+ *  ۱۴روزه را می‌سازد؛ کلیدهای برگشتی بدونِ پسوندِ ۷ تا caller نقشه بکشد. */
 function windowCounters(
   dayHistory: StudyState["dayHistory"] | undefined,
   windowStart: string,
   today: string,
   ds: ReturnType<typeof normDayStat>
-): Pick<BadgeEvalInput, "dictation7" | "quizzes7" | "reviewsDays7" | "dictationDays7" | "quizDays7"> {
+): { dictation7: number; quizzes7: number; reviewsDays: number; dictationDays: number; quizDays: number } {
   let dictation7 = 0;
   let quizzes7 = 0;
-  let reviewsDays7 = 0;
-  let dictationDays7 = 0;
-  let quizDays7 = 0;
+  let reviewsDays = 0;
+  let dictationDays = 0;
+  let quizDays = 0;
   if (dayHistory && typeof dayHistory === "object") {
     for (const [key, raw] of Object.entries(dayHistory)) {
       if (key < windowStart || !raw || typeof raw !== "object") continue;
       const st = normDayStat(raw as Partial<StudyState["dayStat"]>);
       const r = Number.isFinite(st.reviews) ? Math.max(0, st.reviews) : 0;
-      if (r > 0) reviewsDays7 += 1;
+      if (r > 0) reviewsDays += 1;
       const d = Number.isFinite(st.dictation) ? Math.max(0, st.dictation) : 0;
       dictation7 += d;
-      if (d > 0) dictationDays7 += 1;
+      if (d > 0) dictationDays += 1;
       const q = Number.isFinite(st.quizzes) ? Math.max(0, st.quizzes) : 0;
       quizzes7 += q;
-      if (q > 0) quizDays7 += 1;
+      if (q > 0) quizDays += 1;
     }
   }
   const todayInHistory = !!(dayHistory && typeof dayHistory === "object" && (dayHistory as Record<string, unknown>)[today]);
   if (!todayInHistory) {
     const r = Number.isFinite(ds.reviews) ? Math.max(0, ds.reviews) : 0;
-    if (r > 0) reviewsDays7 += 1;
+    if (r > 0) reviewsDays += 1;
     const d = Number.isFinite(ds.dictation) ? Math.max(0, ds.dictation) : 0;
     dictation7 += d;
-    if (d > 0) dictationDays7 += 1;
+    if (d > 0) dictationDays += 1;
     const q = Number.isFinite(ds.quizzes) ? Math.max(0, ds.quizzes) : 0;
     quizzes7 += q;
-    if (q > 0) quizDays7 += 1;
+    if (q > 0) quizDays += 1;
   }
-  return { dictation7, quizzes7, reviewsDays7, dictationDays7, quizDays7 };
+  return { dictation7, quizzes7, reviewsDays, dictationDays, quizDays };
 }
 
 /**
@@ -593,6 +615,24 @@ export const BADGES: BadgeDef[] = [
     progress: (s) =>
       `${faNum(Math.min(s.dictationDays7, s.quizDays7, s.reviewsDays7, 7))} از ۷ روزِ سه‌گانهٔ این هفته`,
     check: (s) => s.dictationDays7 >= 7 && s.quizDays7 >= 7 && s.reviewsDays7 >= 7,
+  },
+  // ماراتن (Task 90): پایانِ نردبانِ ران‌ها — چهارده روزِ پیوسته هر سه فعالیت.
+  // پنجرهٔ ۱۴روزه از dayHistory می‌آید (سقفِ حافظهٔ ۳۵ روزه مجازش است) و
+  // زیرمجموعه‌بودنِ پنجرهٔ ۷ تضمینِ ریاضیِ هم‌بازشدنِ پنج نشانِ پایینی است:
+  // هر روزِ پنجرهٔ ۷ (>= windowStart) در پنجرهٔ ۱۴ (>= daysAgoKey(13)) هم هست،
+  // پس days14 >= 14 ⇒ days7 >= 14 ≥ 7. هم‌پوشانیِ شش‌نفره قرارداد است نه باگ.
+  // تروفی = خطِ پایان؛ تنها نشانِ دوهفته‌ایِ خانوادهٔ ران (goal-fortnight
+  // هم‌سنجِ خانوادهٔ هدف است، این یکی سخت‌ترش است: پیوستگیِ هر سه فعالیت).
+  // گلوگاهِ صادق: minِ سه شمارنده — یک غیبت، ماراتن را می‌شکند.
+  {
+    id: "marathon-run",
+    title: "ماراتنِ دوهفته‌ای",
+    desc: "چهارده روزِ پیوسته دیکته، آزمون و مرور — بلندترین رانِ ممکن؛ دو هفته حتی یک غیبت نه",
+    icon: "Trophy",
+    tier: "gold",
+    progress: (s) =>
+      `${faNum(Math.min(s.dictationDays14, s.quizDays14, s.reviewsDays14, 14))} از ۱۴ روزِ ماراتن`,
+    check: (s) => s.dictationDays14 >= 14 && s.quizDays14 >= 14 && s.reviewsDays14 >= 14,
   },
 ];
 

@@ -267,7 +267,7 @@ export default function SettingsPopover() {
                 {top.map((e) => (
                   <div key={e.name} className="flex items-center gap-2">
                     <span className="w-[118px] shrink-0 truncate text-[10.5px] font-bold text-stone-500">{e.label}</span>
-                    <div className="h-2 flex-1 overflow-hidden rounded-full bg-stone-200/80">
+                    <div className="h-2 flex-1 overflow-hidden rounded-full c-track-80">
                       <div
                         className="h-full rounded-full bg-gradient-to-l from-emerald-400 to-emerald-600"
                         style={{ width: `${Math.max(4, percent(e.total, max))}%` }}

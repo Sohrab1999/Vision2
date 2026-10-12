@@ -170,7 +170,7 @@ export default function DailyQuests() {
                       {faNum(Math.min(q.value, q.def.target))}/{faNum(q.def.target)}
                     </span>
                   </span>
-                  <span className="mt-1.5 block h-1.5 overflow-hidden rounded-full bg-stone-200/80">
+                  <span className="mt-1.5 block h-1.5 overflow-hidden rounded-full c-track-80">
                     <motion.span
                       className={`daily-bar block h-full rounded-full bg-gradient-to-l ${q.def.bar}`}
                       initial={{ width: 0 }}

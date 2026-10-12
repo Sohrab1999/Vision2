@@ -302,7 +302,7 @@ export default function SrsPanel() {
                       initial={{ height: 0 }}
                       animate={{ height: `${Math.max(n > 0 ? 14 : 3, (n / stats.maxForecast) * 40)}px` }}
                       transition={{ delay: i * 0.04, duration: 0.5, ease: "easeOut" }}
-                      className={`srs-fx-bar w-full rounded-t-md transition-all ${n > 0 ? (openDay === i ? "bg-gradient-to-t from-teal-600 to-emerald-300 ring-2 ring-emerald-300/60" : "bg-gradient-to-t from-teal-500 to-emerald-400 hover:from-teal-600 hover:to-emerald-300") : "bg-stone-200/70"}`}
+                      className={`srs-fx-bar w-full rounded-t-md transition-all ${n > 0 ? (openDay === i ? "bg-gradient-to-t from-teal-600 to-emerald-300 ring-2 ring-emerald-300/60" : "bg-gradient-to-t from-teal-500 to-emerald-400 hover:from-teal-600 hover:to-emerald-300") : "c-track-70"}`}
                       title={`${dayLabel(i)}: ${faNum(n)} واژه`}
                     />
                     <span className={`text-[9.5px] font-bold ${openDay === i ? "text-emerald-700" : i === 0 ? "text-emerald-700" : "text-stone-400"}`}>

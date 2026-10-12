@@ -82,7 +82,7 @@ export default function HomeToday() {
                   {Array.from({ length: earn.needed }, (_, i) => (
                     <span
                       key={i}
-                      className={`h-1.5 w-4 rounded-full ${i < earn.inWindow ? "bg-sky-500" : "bg-stone-200/70"}`}
+                      className={`h-1.5 w-4 rounded-full ${i < earn.inWindow ? "bg-sky-500" : "c-track-70"}`}
                     />
                   ))}
                 </span>

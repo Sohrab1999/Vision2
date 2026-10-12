@@ -178,8 +178,11 @@ describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
     // (2 class defs + the duel-card exclusion extension) but NET-ZERO dark rules
     // — the kernel owns dark through the var, 30 raw sites consolidated into 2
     // semantic classes. Growth from here must consolidate, not add.
-    const sel = lines.filter((l) => /^\s*\.[a-z]/.test(l)).length;
+    // r90: doc-arrow contract lines (".dark .x → value" inside comment blocks)
+    // are NOT selectors — the counter skips them (was counting 8 phantoms)
+    const sel = lines.filter((l) => /^\s*\.[a-z]/.test(l) && !l.includes("→")).length;
     expect(sel).toBeLessThanOrEqual(505);
+    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(490);
   });
 });
 
@@ -252,7 +255,7 @@ describe("globals.css tone-band + elevated-surface consolidation (Step 9 tranche
       "srs-panel .bg-stone-200",
       "rush-board .bg-white",
       "report-digest .bg-white",
-      "daily-quests .bg-stone-200\\/80",
+      "daily-quests .c-track-80",
       "duel-card .bg-white",
       "gmetro-line .bg-white",
       "gmetro-dialog .bg-white",
@@ -728,13 +731,112 @@ describe("globals.css stone veil phase 6 (bg-stone-50/60|70 — Task 89)", () =>
   it("deviating painters retargeted in place + exclusion painters pinned", () => {
     expect(css89).toContain(".dark .shortcuts-dialog .c-stone-70 { background-color: rgba(40, 36, 31, 0.6); }");
     expect(css89).toContain(".dark .skill-panel .c-stone-60 { background-color: rgb(28 25 23 / 0.6); }");
-    // duel-card rule EXTENDED (raw /70 half stays for the excluded hover row)
-    expect(css89).toContain(".dark .duel-card .bg-stone-50\\/70,\n.dark .duel-card .c-stone-70,\n.dark .duel-card .bg-stone-50 { background-color: rgb(41 37 36 / 0.6); }");
+    // duel-card rule EXTENDED (raw /70 half stays for the excluded hover row);
+    // one-lined r90 — budget conservation (single-selector rule, oracle-safe)
+    expect(css89).toContain(".dark .duel-card .bg-stone-50\\/70,.dark .duel-card .c-stone-70,.dark .duel-card .bg-stone-50 { background-color: rgb(41 37 36 / 0.6); }");
     expect(css89).toContain(".dark .duel-hud .c-stone-60 { background-color: rgb(41 37 36 / 0.6); }");
     expect(css89).toContain(".dark .duel-done .c-stone-70 { background-color: rgb(41 37 36 / 0.6); }");
     // the daily-quests exclusion painter STAYS on the raw class
     expect(css89).toContain(".dark .daily-quests .bg-stone-50\\/60 { background-color: rgb(28 25 23 / 0.55); }");
     // kernel contract untouched — the dark default source of truth
     expect(css89).toContain("--color-stone-50: #151310;");
+  });
+});
+
+describe("globals.css track semantic layer (stone-200 alphas — Task 90)", () => {
+  const css90 = readFileSync(cssPath, "utf8");
+  const lines90 = css90.split("\n");
+
+  it("defines c-track-60/70/80 via plain author rules with verbatim utility bodies — kernel owns dark, token unpinned", () => {
+    for (const [name, light] of [
+      ["c-track-60", "color-mix(in oklab, var(--color-stone-200) 60%, transparent)"],
+      ["c-track-70", "color-mix(in oklab, var(--color-stone-200) 70%, transparent)"],
+      ["c-track-80", "color-mix(in oklab, var(--color-stone-200) 80%, transparent)"],
+    ] as const) {
+      expect(lines90.filter((l) => l.trim() === `.${name} {`).length, `exactly one light .${name}`).toBe(1);
+      expect(lines90.filter((l) => l.trim() === `@utility ${name} {`).length, "@utility form forbidden — loses byte parity (r87 probed)").toBe(0);
+      const li = lines90.findIndex((l) => l.trim() === `.${name} {`);
+      expect(lines90.slice(li, li + 3).join("\n")).toContain(`background-color: ${light}`);
+      expect(lines90.filter((l) => l.trim() === `.dark .${name} {`).length, `.dark .${name} must NOT exist — kernel owns dark`).toBe(0);
+    }
+    // the r89 no-pin lesson, pinned for the stone-200 token too
+    const themeStart = css90.indexOf("@theme inline {");
+    const themeEnd = css90.indexOf("\n}", themeStart);
+    expect(css90.slice(themeStart, themeEnd), "--color-stone-200 must NOT be pinned in @theme").not.toContain("--color-stone-200:");
+  });
+
+  it("exclusion matrix pinned — raw /60 gone from src; /70 survives ONLY in header-hover + palette-state; /80 ONLY in the two filter pills", () => {
+    const raw60: string[] = [];
+    const raw70: string[] = [];
+    const raw80: string[] = [];
+    const walk = (d: string): void => {
+      for (const name of readdirSync(d)) {
+        const p = join(d, name);
+        try {
+          if (readdirSync(p)) walk(p);
+        } catch {
+          if (p.endsWith(".tsx")) {
+            readFileSync(p, "utf8").split("\n").forEach((l) => {
+              if (/bg-stone-200\/60\b/.test(l)) raw60.push(p);
+              if (/bg-stone-200\/70\b/.test(l)) raw70.push(p);
+              if (/bg-stone-200\/80\b/.test(l)) raw80.push(p);
+            });
+          }
+        }
+      }
+    };
+    walk(resolve(process.cwd(), "src"));
+    expect(raw60, "bg-stone-200/60 fully migrated to c-track-60").toEqual([]);
+    expect(new Set(raw70), "raw /70 = same-element hovers (header + settings icon) + state ink (palette) only").toEqual(
+      new Set([
+        resolve(process.cwd(), "src/components/study/header.tsx"),
+        resolve(process.cwd(), "src/components/study/settings-popover.tsx"),
+        resolve(process.cwd(), "src/components/study/command-palette.tsx"),
+      ])
+    );
+    expect(new Set(raw80), "raw /80 = inactive filter pills (dictionary + my-words) only").toEqual(
+      new Set([
+        resolve(process.cwd(), "src/components/study/dictionary-view.tsx"),
+        resolve(process.cwd(), "src/components/study/my-words.tsx"),
+      ])
+    );
+  });
+
+  it("consumer matrix pinned — 8 tracks in exact grade split (1× /60 + 5× /70 + 2× /80), comments excluded", () => {
+    let n60 = 0;
+    let n70 = 0;
+    let n80 = 0;
+    const walk = (d: string): void => {
+      for (const name of readdirSync(d)) {
+        const p = join(d, name);
+        try {
+          if (readdirSync(p)) walk(p);
+        } catch {
+          if (p.endsWith(".tsx")) {
+            readFileSync(p, "utf8").split("\n").forEach((raw) => {
+              const l = raw.trim();
+              if (l.startsWith("//")) return; // doc comments don't count
+              if (/\bc-track-60\b/.test(l)) n60++;
+              if (/\bc-track-70\b/.test(l)) n70++;
+              if (/\bc-track-80\b/.test(l)) n80++;
+            });
+          }
+        }
+      }
+    };
+    walk(resolve(process.cwd(), "src"));
+    expect(n60, "c-track-60 consumers").toBe(1);
+    expect(n70, "c-track-70 consumers").toBe(5);
+    expect(n80, "c-track-80 consumers").toBe(2);
+  });
+
+  it("deviating painters retargeted in place (byte-identical elevated tones + opaque band)", () => {
+    expect(css90).toContain(".dark .report-digest .c-track-60 { background-color: rgb(68 64 60 / 0.6); }");
+    expect(css90).toContain(".dark .srs-panel .c-track-70 { background-color: rgb(41 37 36 / 0.7); }");
+    // the quest track band lives INSIDE the canonical #292524 elevated group
+    expect(css90).toContain(".dark .daily-quests .c-track-80,.dark .duel-card .bg-white,.dark .gmetro-line .bg-white,.dark .gmetro-dialog .bg-white { background-color: #292524; }");
+    // the analyzer-safety lesson: the duel retargets stay TWO single-selector rules
+    expect(css90).toContain(".dark .duel-hud .c-stone-60 { background-color: rgb(41 37 36 / 0.6); }");
+    expect(css90).toContain(".dark .duel-done .c-stone-70 { background-color: rgb(41 37 36 / 0.6); }");
   });
 });

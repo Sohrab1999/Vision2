@@ -122,7 +122,7 @@ export default function WeeklyReportSection() {
                     : "bg-emerald-200/60"
                   : total > 0
                     ? "bg-stone-300"
-                    : "bg-stone-200/60"
+                    : "c-track-60"
               } ${
                 isToday
                   ? "ring-2 ring-emerald-500/60 ring-offset-1"
@@ -221,7 +221,7 @@ export default function WeeklyReportSection() {
                 {Array.from({ length: ledger.earn.needed }, (_, i) => (
                   <span
                     key={i}
-                    className={`h-1.5 w-4 rounded-full ${i < ledger.earn.inWindow ? "bg-sky-500" : "bg-stone-200/70"}`}
+                    className={`h-1.5 w-4 rounded-full ${i < ledger.earn.inWindow ? "bg-sky-500" : "c-track-70"}`}
                   />
                 ))}
               </span>

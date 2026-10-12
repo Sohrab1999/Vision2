@@ -249,7 +249,7 @@ export default function ReportCard({ open, onClose }: { open: boolean; onClose: 
                           className={`w-full rounded-t-md ${
                             b.total > 0
                               ? "bg-gradient-to-t from-teal-600 via-emerald-500 to-lime-400"
-                              : "bg-stone-200/70"
+                              : "c-track-70"
                           }`}
                           title={`${faNum(b.total)} فعالیت — ${faNum(b.active)} روز فعال`}
                         />

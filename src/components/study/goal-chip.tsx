@@ -24,7 +24,7 @@ import { trackEvent } from "@/lib/analytics";
 // استایل: کلاسِ معنایی c-chip-goal (ترانش ۴ فاز ۱) — سطحِ دو-تمِ چیپ
 // یک‌جا تعریف شده (light + dark هم‌جا)؛ met-state توپر در شاخهٔ جدا است
 // و باندهای سراسری برای سایر مصرف‌کننده‌ها سرِ جایشان مانده‌اند
-// آیتم فعال ناوبری، در دارک هم بی‌نیاز؛ میکرونوار روی bg-stone-200/70
+// آیتم فعال ناوبری، در دارک هم بی‌نیاز؛ میکرونوار روی c-track-70
 // (توکن v4 خودش در دارک فلیپ می‌شود) و fill زمردی توپر.
 // هیدراسیون: useMounted کل دروازه است — سرور و کلاینت هر دو «هیچ».
 // ------------------------------------------------------------------
@@ -80,7 +80,7 @@ export default function GoalChip() {
         {meta.fraction}
       </span>
       {/* میکرونوار پیشرفت — جزئیات زنده زیر متن */}
-      <span className="absolute inset-x-0 bottom-0 h-[3px] bg-stone-200/70" aria-hidden>
+      <span className="absolute inset-x-0 bottom-0 h-[3px] c-track-70" aria-hidden>
         <span
           className={`block h-full transition-all duration-500 ${
             meta.done ? "bg-white/90" : "bg-emerald-600"
