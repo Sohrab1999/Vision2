@@ -262,6 +262,13 @@ body {
 .dark .bg-white\/80 { background-color: rgba(28, 25, 23, 0.8); }
 .dark .bg-\[\#f7f6f2\]\/85 { background-color: rgba(12, 10, 9, 0.82); }
 
+/* elevated card surfaces — tranche-3b part 2 canonical group: light surfaces
+   (bg-white / bg-stone-100 / bg-stone-200) inside tinted panels converge on
+   stone-800 #292524 in dark (was 12 scattered per-context rules) */
+.dark .shortcuts-dialog .bg-white,.dark .vocab-donut .bg-stone-100,.dark .rush-hud .bg-stone-100,.dark .rush-done .bg-white,
+.dark .rush-card .bg-white,.dark .srs-panel .bg-stone-200,.dark .rush-board .bg-white,.dark .report-digest .bg-white,
+.dark .daily-quests .bg-stone-200\/80,.dark .duel-card .bg-white,.dark .gmetro-line .bg-white,.dark .gmetro-dialog .bg-white { background-color: #292524; }
+
 /* borders */
 
 /* text */
@@ -297,6 +304,9 @@ body {
 .dark .text-rose-700 { color: #fda4af; }
 .dark .text-amber-600 { color: #fcd34d; }
 .dark .text-emerald-700 { color: #6ee7b7; }
+/* teal-700/800 ink joins the tone band (tranche-3b part 2 — was 5 per-panel
+   copies at #5eead4, incl. word-day's dead teal-800 copy) */
+.dark .text-teal-700,.dark .text-teal-800 { color: #5eead4; }
 
 /* bookshelf strip + shelf edge custom gradients */
 .dark .shelf-strip { background-image: linear-gradient(to bottom, #1c1917, #0f0d0c) !important; }
@@ -478,9 +488,7 @@ body {
 }
 .dark .word-day .bg-lime-50,
 .dark .word-day .bg-teal-100 { background-color: rgba(19, 78, 74, 0.45); }
-.dark .word-day .text-teal-800 { color: #5eead4; }
 .dark .word-day .bg-emerald-100 { background-color: rgba(6, 55, 40, 0.55); }
-.dark .word-day .text-emerald-800 { color: #6ee7b7; }
 .dark .word-day .text-emerald-700 { color: #34d399; }
 .dark .word-day .border-emerald-300 { border-color: rgba(52, 211, 153, 0.45); }
 .dark .word-day .bg-white { background-color: rgba(28, 25, 23, 0.75); }
@@ -544,7 +552,6 @@ body {
 
 /* ---------------- shortcuts dialog dark ---------------- */
 .dark .shortcuts-dialog .bg-stone-50\/70 { background-color: rgba(40, 36, 31, 0.6); }
-.dark .shortcuts-dialog .bg-white { background-color: #292524; }
 /* ink tone text-stone-700 → #d6d3d1 — canonical group (Step 9 tranche-2; was 11 drifted per-panel copies) */
 .dark .shortcuts-dialog .text-stone-700,.dark .vocab-donut .text-stone-700,.dark .rush-hero .text-stone-700,
 .dark .rush-board .text-stone-700,.dark .skill-panel .text-stone-700,.dark .report-week .text-stone-700,
@@ -565,9 +572,7 @@ body {
 .dark .duel-done .text-stone-400,.dark .gmetro-dialog .text-stone-400 { color: #8a8580; }
 .dark .vocab-donut .bg-stone-50 { background-color: rgba(40, 36, 31, 0.55); }
 .dark .vocab-donut .bg-emerald-50 { background-color: rgba(6, 55, 40, 0.5); }
-.dark .vocab-donut .text-emerald-700 { color: #6ee7b7; }
 .dark .vocab-donut .ring-emerald-200 { --tw-ring-color: rgba(52, 211, 153, 0.45); }
-.dark .vocab-donut .bg-stone-100 { background-color: #292524; }
 .dark .vocab-donut circle[stroke="#e7e5e4"] { stroke: #37312b; }
 
 /* r11 polish v2 */
@@ -613,7 +618,7 @@ body {
 }
 .dark .rush-hero .border-orange-100 { border-color: rgb(124 58 8 / 0.55); }
 .dark .rush-hero .bg-orange-100,.dark .rush-board .bg-orange-100\/80 { background-color: rgb(69 40 8 / 0.65); }
-.dark .rush-hero .text-orange-600 { color: #fdba74; }
+.dark .rush-hero .text-orange-600,.dark .rush-score-live,.dark .rush-board .text-orange-600,.dark .report-paper .text-orange-600 { color: #fdba74; }
 .dark .rush-hero .border-orange-200,.dark .rush-board .border-orange-200,.dark .report-paper .border-orange-200 { border-color: rgb(154 52 18 / 0.55); }
 .dark .rush-hero kbd {
   background-color: #292524;
@@ -622,25 +627,20 @@ body {
 }
 .dark .rush-hud { background-color: #1c1917; border-color: rgb(154 52 18 / 0.45); }
 .dark .rush-hud .stroke-stone-100 { stroke: #292524; }
-.dark .rush-hud .bg-stone-100 { background-color: #292524; }
 .dark .rush-done {
   background-image: linear-gradient(to bottom, rgb(64 34 16 / 0.55), rgb(58 36 12 / 0.5));
   border-color: rgb(154 52 18 / 0.5);
 }
-.dark .rush-done .bg-white { background-color: #292524; }
 .dark .rush-done .border-stone-200 { border-color: #44403c; }
 .dark .rush-done .border-stone-300 { border-color: #57534e; }
 .dark .rush-done .bg-emerald-50 { background-color: rgba(6, 55, 40, 0.5); }
-.dark .rush-done .text-emerald-700 { color: #6ee7b7; }
 .dark .rush-done .bg-rose-50 { background-color: rgba(80, 10, 25, 0.4); }
-.dark .rush-done .text-rose-600 { color: #fda4af; }
 .dark .rush-done .bg-sky-50 { background-color: rgba(8, 47, 60, 0.5); }
 .dark .rush-done .bg-amber-50 { background-color: rgba(69, 48, 12, 0.45); }
 .dark .rush-done .text-amber-700 { color: #fcd34d; }
 
 /* rush play card */
 .dark [data-rush-option] { color-scheme: dark; }
-.dark .rush-score-live { color: #fdba74; }
 .dark .rush-card { background-color: #1c1917; }
 .dark .rush-card.border-orange-200 { border-color: rgb(154 52 18 / 0.5); }
 /* spelling sprint (دیکتهٔ برق‌آسا) — sky accents on the shared arcade shells;
@@ -656,7 +656,6 @@ body {
   border-color: #38bdf8;
   box-shadow: 0 0 0 4px rgb(7 66 84 / 0.55);
 }
-.dark .rush-card .bg-white { background-color: #292524; }
 .dark .rush-card .border-stone-200 { border-color: #44403c; }
 .dark .rush-card .bg-stone-100 { background-color: #37312b; }
 .dark .rush-card .bg-orange-50 { background-color: rgba(69, 40, 8, 0.45); }
@@ -669,18 +668,14 @@ body {
   border-color: rgb(13 100 88 / 0.55);
 }
 .dark .srs-panel .bg-rose-50 { background-color: rgba(80, 10, 25, 0.4); }
-.dark .srs-panel .text-rose-600 { color: #fda4af; }
 .dark .srs-panel .bg-amber-50 { background-color: rgba(69, 48, 12, 0.45); }
 .dark .srs-panel .text-amber-700 { color: #fcd34d; }
 .dark .srs-panel .bg-emerald-50 { background-color: rgba(6, 55, 40, 0.5); }
-.dark .srs-panel .text-emerald-700 { color: #6ee7b7; }
 .dark .srs-panel .bg-teal-50 { background-color: rgba(4, 47, 46, 0.5); }
-.dark .srs-panel .text-teal-700 { color: #5eead4; }
 .dark .srs-panel .border-teal-100,.dark .srs-panel .border-teal-200 { border-color: rgb(19 78 74 / 0.6); }
 .dark .srs-panel .bg-white\/70,.dark .rush-board .bg-white\/70 { background-color: rgb(28 25 23 / 0.8); }
 .dark .srs-panel .bg-stone-200\/70,.dark .srs-panel .srs-fx-bar.bg-stone-200\/70 { background-color: rgb(41 37 36 / 0.7); }
 .dark .srs-panel .text-emerald-600 { color: #34d399; }
-.dark .srs-panel .bg-stone-200 { background-color: #292524; }
 
 /* due-words preview (سررسید الآن) inside the SRS panel */
 .dark .srs-panel .srs-due-preview {
@@ -727,7 +722,6 @@ body {
   border-color: rgb(13 84 89 / 0.55);
 }
 .dark .srs-panel .srs-fx-expand .text-emerald-600 { color: #34d399; }
-.dark .srs-panel .srs-fx-expand .text-emerald-700 { color: #6ee7b7; }
 
 /* ---------------- spell buttons (dictation) dark ---------------- */
 .dark .border-sky-200 { border-color: rgb(7 66 84 / 0.7); }
@@ -744,7 +738,6 @@ body {
 }
 .dark .rush-board .bg-orange-500 { background-color: #c2410c; }
 .dark .rush-board-podium { background-image: linear-gradient(to bottom, rgba(69, 40, 8, 0.3), transparent); }
-.dark .rush-board .bg-white { background-color: #292524; }
 .dark .rush-board .border-stone-100 { border-color: rgb(63 55 49 / 0.8); }
 .dark .rush-board-me { background-color: rgb(69 40 8 / 0.4) !important; }
 .dark .rush-board .border-t { border-color: rgb(124 58 8 / 0.45); }
@@ -752,7 +745,6 @@ body {
   background-image: linear-gradient(to left, rgb(69 40 8 / 0.5), transparent);
 }
 .dark .rush-board li { border-color: rgb(67 43 16 / 0.5); }
-.dark .rush-board .text-orange-600 { color: #fdba74; }
 .dark .rush-board .bg-orange-50 { background-color: rgba(69, 40, 8, 0.4); }
 .dark .rush-board .border-orange-100 { border-color: rgb(124 58 8 / 0.55); }
 .dark .rush-board .text-amber-700 { color: #fcd34d; }
@@ -772,12 +764,9 @@ body {
 .dark .skill-panel .skill-weak-cta .text-amber-700 { color: #fcd34d; }
 .dark .skill-panel .text-violet-600 { color: #d8b4fe; }
 .dark .skill-panel .bg-emerald-100 { background-color: rgba(6, 55, 40, 0.6); }
-.dark .skill-panel .text-emerald-700 { color: #6ee7b7; }
 .dark .skill-panel .bg-teal-100 { background-color: rgba(4, 47, 46, 0.6); }
-.dark .skill-panel .text-teal-700 { color: #5eead4; }
 .dark .skill-panel .bg-amber-100 { background-color: rgba(69, 48, 12, 0.6); }
 .dark .skill-panel .bg-rose-100 { background-color: rgba(80, 10, 25, 0.5); }
-.dark .skill-panel .text-rose-600 { color: #fda4af; }
 
 /* ---------------- report card dialog dark ---------------- */
 .dark .report-dialog { background-color: #1c1917; border-color: #44403c; }
@@ -794,14 +783,11 @@ body {
 .dark .report-digest .bg-stone-200\/60 { background-color: rgb(68 64 60 / 0.6); }
 .dark .report-digest .bg-stone-300 { background-color: #57534e; }
 .dark .report-digest .bg-emerald-200\/60 { background-color: rgb(6 78 59 / 0.5); }
-.dark .report-digest .bg-white { background-color: #292524; }
 .dark .report-digest .border-emerald-600 { border-color: #10b981; }
 .dark .report-digest .border-stone-300 { border-color: #57534e; }
 .dark .report-track { background-color: #292524; }
 .dark .report-best li { background-color: #292524; border-color: #44403c; }
 .dark .report-paper .bg-orange-50 { background-color: rgba(69, 40, 8, 0.45); }
-.dark .report-paper .text-orange-600 { color: #fdba74; }
-.dark .report-best .text-emerald-700 { color: #6ee7b7; }
 .dark .report-foot {
   background-color: rgba(6, 55, 40, 0.35);
   border-color: rgb(6 95 70 / 0.6);
@@ -826,7 +812,6 @@ body {
 .dark .report-month .text-stone-700 { color: #d6d3cf; }
 .dark .report-month .text-stone-400 { color: #716b63; }
 .dark .report-month .bg-teal-50 { background-color: rgb(4 47 46 / 0.6); }
-.dark .report-month .text-teal-700 { color: #5eead4; }
 .dark .report-month [class*="bg-stone-200"] { background-color: rgb(55 49 43 / 0.7); }
 
 /* ------------------------------------------------------------------ */
@@ -852,7 +837,6 @@ body {
 .dark .daily-quests .text-stone-300 { color: #57534e; }
 .dark .daily-quests .bg-stone-50\/60 { background-color: rgb(28 25 23 / 0.55); }
 .dark .daily-quests .bg-stone-50 { background-color: rgb(28 25 23 / 0.4); }
-.dark .daily-quests .bg-stone-200\/80 { background-color: #292524; }
 .dark .daily-quests .quest-row { background-color: rgb(28 25 23 / 0.55); border-color: #37312b; }
 .dark .daily-quests .quest-row:hover { border-color: rgb(6 95 70 / 0.7); background-color: rgb(6 44 34 / 0.45); }
 .dark .daily-quests .quest-row.border-emerald-300 {
@@ -863,13 +847,11 @@ body {
 .dark .daily-quests .bg-emerald-100 { background-color: rgb(6 55 40 / 0.6); }
 .dark .daily-quests .text-emerald-800 { color: #a7f3d0; }
 .dark .daily-quests .text-emerald-600 { color: #6ee7b7; }
-.dark .daily-quests .text-emerald-700 { color: #6ee7b7; }
 .dark .daily-quests .bg-violet-100 { background-color: rgb(59 7 100 / 0.5); }
 .dark .daily-quests .text-violet-700 { color: #d8b4fe; }
 .dark .daily-quests .bg-amber-100 { background-color: rgb(69 48 12 / 0.55); }
 .dark .daily-quests .text-amber-700 { color: #fcd34d; }
 .dark .daily-quests .bg-teal-100 { background-color: rgb(4 47 46 / 0.55); }
-.dark .daily-quests .text-teal-700 { color: #5eead4; }
 .dark .daily-quests .bg-orange-100 { background-color: rgb(69 40 8 / 0.5); }
 
 /* report print button (dark) */
@@ -1088,7 +1070,7 @@ html.user-reduce-motion .streak-flame {
 .dark .duel-card .border-stone-200 { border-color: rgb(87 83 78 / 0.45); }
 .dark .duel-card .bg-fuchsia-100 { background-color: rgb(74 4 78 / 0.6); }
 .dark .duel-card .text-fuchsia-700,.dark .leaderboard.duel-mode .text-fuchsia-700 { color: #f0abfc; }
-.dark .duel-card .text-fuchsia-600 { color: #e879f9; }
+.dark .duel-card .text-fuchsia-600,.dark .leaderboard.duel-mode .text-fuchsia-600 { color: #e879f9; }
 .dark .duel-card .bg-fuchsia-50 { background-color: rgb(74 4 78 / 0.35); }
 
 .dark .duel-code {
@@ -1109,7 +1091,6 @@ html.user-reduce-motion .streak-flame {
 .dark .duel-card[class*="border-fuchsia-200"] { border-color: rgb(162 28 175 / 0.5); }
 .dark .duel-card[class*="border-emerald-400"] { border-color: rgb(16 185 129 / 0.7); }
 .dark .duel-card[class*="border-rose-400"] { border-color: rgb(251 113 133 / 0.6); }
-.dark .duel-card .bg-white { background-color: #292524; }
 .dark .duel-card .hover\:bg-fuchsia-50\/50:hover { background-color: rgb(74 4 78 / 0.3); }
 .dark .duel-card .hover\:border-fuchsia-300:hover { border-color: rgb(240 171 252 / 0.5); }
 
@@ -1131,7 +1112,6 @@ html.user-reduce-motion .streak-flame {
 .dark .duel-done .border-stone-200 { border-color: rgb(87 83 78 / 0.45); }
 .dark .duel-done .bg-stone-100 { background-color: rgb(68 64 60 / 0.7); }
 .dark .duel-done .bg-rose-100 { background-color: rgb(76 5 25 / 0.7); }
-.dark .duel-done .text-rose-600 { color: #fda4af; }
 
 /* ---------------- leaderboard duel standings (Task-36 «جدول نبرد») ----------------
    Scoped to .leaderboard.duel-mode so the exam podium keeps its tuned palette. */
@@ -1144,7 +1124,6 @@ html.user-reduce-motion .streak-flame {
 .dark .leaderboard.duel-mode .bg-fuchsia-50\/50 { background-color: rgb(74 4 78 / 0.25); }
 .dark .leaderboard.duel-mode .bg-fuchsia-50 { background-color: rgb(59 7 100 / 0.4); }
 .dark .leaderboard.duel-mode .ring-fuchsia-200 { --tw-ring-color: rgb(162 28 175 / 0.5); }
-.dark .leaderboard.duel-mode .text-fuchsia-600 { color: #e879f9; }
 .dark .leaderboard.duel-mode .text-fuchsia-300 { color: #d8b4fe; }
 /* duel podium — deeper arena purple, mirroring the exam podium tuning */
 .dark .leaderboard.duel-mode .from-fuchsia-300 { --tw-gradient-from: #86198f; }
@@ -1154,7 +1133,6 @@ html.user-reduce-motion .streak-flame {
 .dark .leaderboard.duel-mode .to-purple-400 { --tw-gradient-to: #9333ea; }
 /* W/L/T record badges — rose ink served by the global .dark .text-rose-700 */
 .dark .leaderboard.duel-mode .bg-emerald-100 { background-color: rgb(6 55 40 / 0.6); }
-.dark .leaderboard.duel-mode .text-emerald-700 { color: #6ee7b7; }
 .dark .leaderboard.duel-mode .bg-rose-100 { background-color: rgb(76 5 25 / 0.6); }
 
 /* ---------------- grammar metro map (Task-39 «متروی گرامر») ----------------
@@ -1178,7 +1156,6 @@ html.user-reduce-motion .streak-flame {
 .dark .gmetro-line[class*="border-orange-200"] { border-color: rgb(234 88 12 / 0.35); background-color: rgb(124 45 18 / 0.16); }
 .dark .gmetro-line .text-stone-700 { color: #e7e5e4; }
 .dark .gmetro-line .border-stone-200 { border-color: rgb(87 83 78 / 0.45); }
-.dark .gmetro-line .bg-white { background-color: #292524; }
 .dark .gmetro-line .bg-stone-100 { background-color: rgb(68 64 60 / 0.7); }
 /* nodes — dark ring instead of white ring */
 .dark .gmetro-node-green { border-color: #1c1917; }
@@ -1186,14 +1163,12 @@ html.user-reduce-motion .streak-flame {
 .dark .gmetro-node-locked { background-color: rgb(68 64 60 / 0.8); border-color: rgb(87 83 78 / 0.4); }
 /* station dialog */
 .dark .gmetro-dialog { background-color: #1c1917; border-color: rgb(87 83 78 / 0.5); }
-.dark .gmetro-dialog .bg-white { background-color: #292524; }
 .dark .gmetro-dialog .bg-stone-300 { background-color: rgb(87 83 78 / 0.6); }
 .dark .gmetro-dialog .border-stone-200 { border-color: rgb(87 83 78 / 0.45); }
 .dark .gmetro-tip { background-color: rgb(120 53 15 / 0.25); border-color: rgb(217 119 6 / 0.4); }
 .dark .gmetro-tip .text-amber-600 { color: #fbbf24; }
 /* book grammar section inside the dialog — keep inline accents readable */
 .dark .gmetro-lesson { background-color: #292524; border-color: rgb(87 83 78 / 0.45); color: #d6d3d1; }
-.dark .gmetro-lesson .text-emerald-700 { color: #6ee7b7; }
 .dark .gmetro-lesson table td,
 .dark .gmetro-lesson table th { border-color: rgb(87 83 78 / 0.4); }
 

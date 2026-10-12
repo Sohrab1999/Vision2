@@ -171,10 +171,99 @@ describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
     }
   });
 
-  it("keeps the selector budget honest (tranche-3b: ≤ 535 — was 535 pre-flip)", () => {
-    // soft ceiling: the file may not regrow past its pre-tranche-3b selector
-    // count; each new feature should consolidate or consume the kernel
+  it("keeps the selector budget honest (tranche-3b part 2: ≤ 500 — roadmap §12 target reached)", () => {
+    // soft ceiling: the file may not regrow past the ≤500 roadmap goal locked
+    // by part 2 (was 535 pre-kernel, 519 pre-part-2); each new feature should
+    // consolidate or consume the bands/kernel
     const sel = lines.filter((l) => /^\s*\.[a-z]/.test(l)).length;
-    expect(sel).toBeLessThanOrEqual(535);
+    expect(sel).toBeLessThanOrEqual(500);
+  });
+});
+
+describe("globals.css tone-band + elevated-surface consolidation (Step 9 tranche-3b part 2)", () => {
+  const css = readFileSync(cssPath, "utf8");
+  const lines = css.split("\n");
+
+  // logical rule blocks (selector lines may span multiple physical lines —
+  // canonical groups do): a block ends at the first line containing "}"
+  const blocks: string[] = [];
+  let cur = "";
+  for (const l of lines) {
+    cur += " " + l;
+    if (l.includes("}")) {
+      blocks.push(cur);
+      cur = "";
+    }
+  }
+
+  // part 2 — باند سراسری جوهر موفقیت/خطر/فیروزه‌ای + گروه کانونی سطح بالاآمده
+  const BAND: Record<string, string> = {
+    "emerald-700": "#6ee7b7",
+    "rose-600": "#fda4af",
+    "teal-700": "#5eead4",
+    "teal-800": "#5eead4",
+  };
+
+  it("anchors each band shade with exactly ONE global .dark rule", () => {
+    for (const shade of Object.keys(BAND)) {
+      // anchor = the shade as a TOP-LEVEL band selector: line-start or after a
+      // comma inside a grouped band rule (teal-700/800 share one rule)
+      const anchorRe = new RegExp(`\\.dark \\.text-${shade}[,{ ]`);
+      const anchors = blocks.filter((b) => anchorRe.test(b));
+      expect(anchors, `band anchor for text-${shade} must exist exactly once: ${anchors.join(" | ")}`).toHaveLength(1);
+    }
+  });
+
+  it("never re-grows same-value scoped copies of the band shades", () => {
+    // a .dark rule asserting the band value on text-<shade> outside the
+    // canonical anchor is dead weight (deviations with a DIFFERENT value —
+    // like word-day's emerald-700 #34d399 — stay legitimate)
+    for (const [shade, val] of Object.entries(BAND)) {
+      const anchorRe = new RegExp(`\\.dark \\.text-${shade}[,{ ]`);
+      const bad = blocks.filter((b) => {
+        const t = b.trim();
+        if (!t.includes(".dark ") || !t.includes(`.text-${shade}`)) return false;
+        if (anchorRe.test(t)) return false;
+        return new RegExp(`color:\\s*${val}\\b`).test(t);
+      });
+      expect(bad, `same-value copies of text-${shade} returned: ${bad.join(" | ")}`).toEqual([]);
+    }
+  });
+
+  it("keeps word-day's emerald-700 drift as the documented deviation", () => {
+    const drift = lines.filter((l) => l.includes(".word-day .text-emerald-700") && l.includes("#34d399"));
+    expect(drift, "word-day emerald-700 #34d399 deviation must stay").toHaveLength(1);
+  });
+
+  it("keeps the elevated card surfaces in ONE canonical group", () => {
+    // 12 light-surface rules (bg-white/bg-stone-100/bg-stone-200 inside tinted
+    // panels) converged on #292524 — a single group block; scoped pure copies
+    // must not return (compound rules like kbd/spell-input stay legitimate)
+    const group = blocks.filter((b) => b.includes(".rush-card .bg-white") && b.includes("background-color: #292524"));
+    expect(group, `elevated-surface canonical group must exist exactly once: ${group.join(" | ")}`).toHaveLength(1);
+    for (const member of [
+      "shortcuts-dialog .bg-white",
+      "vocab-donut .bg-stone-100",
+      "rush-hud .bg-stone-100",
+      "rush-done .bg-white",
+      "srs-panel .bg-stone-200",
+      "rush-board .bg-white",
+      "report-digest .bg-white",
+      "daily-quests .bg-stone-200\\/80",
+      "duel-card .bg-white",
+      "gmetro-line .bg-white",
+      "gmetro-dialog .bg-white",
+    ]) {
+      expect(group[0], `group lost member .dark .${member}`).toContain(`.${member}`);
+    }
+    const copies = blocks.filter((b) => {
+      const sel = b.slice(0, b.lastIndexOf("{"));
+      return (
+        !sel.includes(",") &&
+        /\.dark\s+\.[a-z][a-z0-9_-]*\s+\.(bg-white|bg-stone-100|bg-stone-200)(\\\/\d+)?\s*$/.test(sel.trim()) &&
+        /background-color:\s*#292524/.test(b)
+      );
+    });
+    expect(copies, `scoped pure elevated-surface copies returned: ${copies.join(" | ")}`).toEqual([]);
   });
 });
