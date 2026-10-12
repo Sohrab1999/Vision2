@@ -107,7 +107,6 @@ export function useDuelSocket(): DuelMachine {
   }, [feedback]);
   const endedRef = useRef(false);
   const persistedRef = useRef(false);
-  const qStartRef = useRef(0);
   const advanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // شمارش معکوس لابی تا شروع مسابقه — رویدادسوختگی سوکت با restartKey (گام ۶)
@@ -341,8 +340,8 @@ export function useDuelSocket(): DuelMachine {
       const ok = i >= 0 && qq ? q.perm[i] === qq.answer : false;
       setPicked(i);
       setFeedback(ok ? "right" : "wrong");
-      const ms = Date.now() - qStartRef.current;
-      s.emit("duel:answer", { qi: qiRef.current, choice: i, ms });
+      // SEC: ms گزارشی حذف شد — پاداش سرعت از تایمینگ مرجع-سرور می‌آید (scoring.ts)
+      s.emit("duel:answer", { qi: qiRef.current, choice: i });
       if (advanceTimer.current) clearTimeout(advanceTimer.current);
       advanceTimer.current = setTimeout(() => {
         if (endedRef.current) return;
@@ -366,11 +365,6 @@ export function useDuelSocket(): DuelMachine {
     tickMs: 100,
     onEnd: () => answer(-1),
   });
-
-  // آینهٔ شروع سؤال برای سنجش تأخیر پاسخ (answer ms) — هم‌زمان با ری‌استارت تایمر
-  useEffect(() => {
-    if (phase === "play" && feedback === "none" && !myDone) qStartRef.current = Date.now();
-  }, [phase, qi, feedback, myDone]);
 
   const rematch = useCallback(() => {
     const s = socketRef.current;

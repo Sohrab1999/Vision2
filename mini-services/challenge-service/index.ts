@@ -3,6 +3,8 @@
 // socket.io روی پورت ۳۰۰۳ — داوری متمرکز و ضد تقلب:
 //   • سرور خودش بانک ۴۹۰ سؤال را دارد و «درستیِ» هر پاسخ را خودش
 //     اعتبارسنجی می‌کند (هیچ اعتمادی به گزارش کلاینت نیست).
+//   • امتیاز سرعت هم مرجع-سرور است (scoring.ts) — گزارش ms کلاینت
+//     خوانده نمی‌شود؛ ساعت هر سؤال روی خودِ سرور تیک می‌خورد.
 //   • ترتیب سؤال‌ها و بُر خوردن گزینه‌ها (perm) سمت سرور تولید می‌شود
 //     تا هر دو بازیکن دقیقاً همان گزینه‌ها را با همان ترتیب ببینند.
 //   • کلاینت فقط id سؤال + perm را می‌گیرد و متن را از بانک استاتیک
@@ -16,6 +18,7 @@ import lesson2 from "../../src/data/lesson2";
 import lesson3 from "../../src/data/lesson3";
 import examBank from "../../src/data/exam";
 import type { QuizQuestion } from "../../src/lib/study-types";
+import { BASE_POINTS, speedBonus } from "./scoring";
 
 // ----------------------------- تنظیمات مسابقه -----------------------------
 const PORT = 3003;
@@ -65,6 +68,7 @@ interface PlayerState {
   correct: number;
   answered: number;
   lastAnswerAt: number;
+  qStartAt: number; // ساعتِ سؤالِ جاری روی سرور — مبنای پاداش سرعت (SEC)
   doneAt: number | null;
   disconnected: boolean;
 }
@@ -156,6 +160,7 @@ function startMatch(room: Room) {
     p.correct = 0;
     p.answered = 0;
     p.lastAnswerAt = Date.now();
+    p.qStartAt = Date.now();
     p.doneAt = null;
   }
   io.to(room.code).emit("duel:start", {
@@ -280,6 +285,7 @@ io.on("connection", (socket: Socket) => {
       correct: 0,
       answered: 0,
       lastAnswerAt: Date.now(),
+      qStartAt: Date.now(),
       doneAt: null,
       disconnected: false,
     });
@@ -308,6 +314,7 @@ io.on("connection", (socket: Socket) => {
       correct: 0,
       answered: 0,
       lastAnswerAt: Date.now(),
+      qStartAt: Date.now(),
       doneAt: null,
       disconnected: false,
     });
@@ -320,26 +327,28 @@ io.on("connection", (socket: Socket) => {
   });
 
   // ------------------------- پاسخ به سؤال -------------------------
+  // SEC: فیلد ms گزارشیِ کلاینت عمداً نادیده گرفته می‌شود (قرارداد سیمی
+  // برای سازگاری رو به جلو حفظ شده) — امتیاز از qStartAt خود سرور می‌آید.
   socket.on("duel:answer", (payload: { qi?: unknown; choice?: unknown; ms?: unknown }) => {
     if (!room || room.status !== "playing") return;
     const p = room.players.get(socket.id);
     if (!p || p.doneAt !== null) return;
     const qi = typeof payload?.qi === "number" ? Math.floor(payload.qi) : -1;
     const choice = typeof payload?.choice === "number" ? Math.floor(payload.choice) : -2;
-    const ms = typeof payload?.ms === "number" ? Math.min(Math.max(payload.ms, 0), 30_000) : PER_Q_MS;
     if (qi !== p.qi || qi < 0 || qi >= room.questions.length) return; // پاسخ دیرهنگام/تکراری نادیده گرفته می‌شود
     if (choice < -1 || choice > 3) return;
 
     const q = room.questions[qi];
     const correct = choice >= 0 && q.perm[choice] === q.answerReal;
+    const serverElapsedMs = Date.now() - p.qStartAt; // زمان‌سنجی مرجع-سرور
     p.answered += 1;
     p.lastAnswerAt = Date.now();
     if (correct) {
       p.correct += 1;
-      const bonus = Math.max(0, 100 - Math.floor(ms / 150)); // هر ۱۵۰ms یک امتیاز پاداش کم می‌شود
-      p.score += 100 + bonus;
+      p.score += BASE_POINTS + speedBonus(serverElapsedMs);
     }
     p.qi += 1;
+    p.qStartAt = Date.now(); // ساعت سؤال بعدی با همین پاسخ روشن می‌شود (هم‌گام با پیشروی کلاینت)
     if (p.qi >= room.questions.length) p.doneAt = Date.now();
 
     io.to(room.code).emit("duel:progress", progressPayload(room));
