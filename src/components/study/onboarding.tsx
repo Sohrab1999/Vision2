@@ -13,7 +13,7 @@ import { useStudy, AVATAR_COLORS, DAILY_GOAL_OPTIONS } from "@/lib/study-store";
 import { sendProfile } from "@/lib/identity";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
-import { avatarClasses } from "./header";
+import { avatarClasses } from "@/lib/study-theme";
 
 const GOAL_META: Record<number, { title: string; desc: string; icon: string; tone: string }> = {
   5: { title: "سبک و روزانه", desc: "۵ فعالیت در روز — برای شروع بدون فشار", icon: "🌱", tone: "amber" },

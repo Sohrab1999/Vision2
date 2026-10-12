@@ -74,3 +74,13 @@ export function timeAgoFa(iso: string): string {
   if (d < 30) return `${faNum(d)} روز پیش`;
   return `${faNum(Math.floor(d / 30))} ماه پیش`;
 }
+
+// گرادیان آواتار per رنگ — قبلاً در header.tsx زندگی می‌کرد؛ اکنون ثابت مشترک
+// است (header، onboarding، rush-board، avatar-dot) — گام ۷.۲-ج §12
+export const avatarClasses: Record<string, string> = {
+  emerald: "bg-gradient-to-br from-emerald-400 to-emerald-700 shadow-emerald-700/30",
+  amber: "bg-gradient-to-br from-amber-400 to-orange-600 shadow-orange-600/30",
+  rose: "bg-gradient-to-br from-rose-400 to-rose-700 shadow-rose-700/30",
+  violet: "bg-gradient-to-br from-violet-400 to-purple-700 shadow-purple-700/30",
+  sky: "bg-gradient-to-br from-sky-400 to-cyan-700 shadow-cyan-700/30",
+};

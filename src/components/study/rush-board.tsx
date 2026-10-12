@@ -8,7 +8,7 @@ import { useMounted } from "@/lib/use-mounted";
 import { usePolling } from "@/hooks/use-polling";
 import Podium from "./shared/podium";
 import { faNum, timeAgoFa } from "@/lib/study-theme";
-import { avatarClasses } from "./header";
+import { avatarClasses } from "@/lib/study-theme";
 
 // ------------------------------------------------------------------
 // RushBoard — class leaderboard for the 60s rush challenge.

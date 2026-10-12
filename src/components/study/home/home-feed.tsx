@@ -16,7 +16,7 @@ export default function HomeFeed() {
 
   return (
     <section className="stat-band rounded-2xl border border-emerald-200 bg-gradient-to-l from-emerald-50 to-teal-50 p-5">
-      <div className="grid gap-5 lg:grid-cols-[auto_1fr]">
+      <div className="grid grid-cols-1 gap-5 lg:grid-cols-[auto_1fr]">
         <div>
           <div className="mb-4 flex items-center gap-3">
             <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-600 text-white shadow-md shadow-emerald-900/20">
@@ -51,7 +51,7 @@ export default function HomeFeed() {
 
         {/* live feed */}
         {globalStats.recent.length > 0 && (
-          <div className="rounded-xl border border-emerald-100 bg-white/70 p-3">
+          <div className="min-w-0 rounded-xl border border-emerald-100 bg-white/70 p-3">
             <div className="mb-2 flex items-center gap-1.5 text-[11px] font-bold text-emerald-700">
               <Radio size={12} className="animate-pulse" />
               تازه‌ترین فعالیت‌ها

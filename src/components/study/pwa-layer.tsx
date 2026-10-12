@@ -86,6 +86,12 @@ export default function PwaLayer() {
 
   // ---------------- service worker ----------------
   useEffect(() => {
+    // ریشه‌یابی 2026-10-12: در dev، چانک‌های توربوپک هم از مسیر
+    // /_next/static/ سرو می‌شوند و استراتژی cache-first سرویس‌ورکر کد
+    // کهنه را برای کل سشن کش می‌کرد (حادثه‌های «motion is not defined»
+    // و «OptionButton is not defined» دقیقاً از همین جا بودند). سرویس‌ورکر
+    // فقط در بیلد پروداکشن معنا دارد — در dev هرگز ثبت نمی‌شود.
+    if (process.env.NODE_ENV !== "production") return;
     if (!("serviceWorker" in navigator)) return;
     const register = () => {
       navigator.serviceWorker.register("/sw.js").catch(() => {

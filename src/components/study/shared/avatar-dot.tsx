@@ -1,7 +1,7 @@
 "use client";
 
 import { UserRound } from "lucide-react";
-import { avatarClasses } from "../header";
+import { avatarClasses } from "@/lib/study-theme";
 
 /**
  * AvatarDot — the colored initial-letter avatar used by every ranking
