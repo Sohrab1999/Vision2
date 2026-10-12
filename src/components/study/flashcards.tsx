@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronRight, ChevronLeft, Check, RefreshCw, Hand, Sparkles } from "lucide-react";
+import { X, ChevronRight, ChevronLeft, Check, RefreshCw, Hand, Sparkles, Star } from "lucide-react";
 import type { LessonData, VocabWord } from "@/lib/study-types";
 import { useStudy, wordKey, srsDueCount, SRS_LABELS } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -29,6 +29,8 @@ export default function Flashcards({
   const known = useStudy((s) => s.known);
   const srs = useStudy((s) => s.srs);
   const toggleKnown = useStudy((s) => s.toggleKnown);
+  const toggleStarred = useStudy((s) => s.toggleStarred);
+  const starredWords = useStudy((s) => s.starredWords);
   const reviewWord = useStudy((s) => s.reviewWord);
   const trackReview = useStudy((s) => s.trackReview);
   const mounted = useMounted();
@@ -54,6 +56,7 @@ export default function Flashcards({
   const key = wordKey(lesson.id, word.en);
   const srsItem = mounted ? srs[key] : undefined;
   const isKnown = mounted && !!known[key];
+  const isStarred = mounted && starredWords.includes(key);
   const knownCount = base.filter((w) => mounted && known[wordKey(lesson.id, w.en)]).length;
   const dueCount = mounted ? srsDueCount(srs, lesson.id) : 0;
 
@@ -161,6 +164,21 @@ export default function Flashcards({
                 ))}
               </div>
             )}
+            {/* واژه‌های من — star toggle (top corner, mirrors the SRS dots) */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                toggleStarred(key);
+              }}
+              title={isStarred ? "حذف از واژه‌های من" : "افزودن به واژه‌های من"}
+              aria-label={isStarred ? "حذف از واژه‌های من" : "افزودن به واژه‌های من"}
+              aria-pressed={isStarred}
+              className={`absolute right-4 top-4 rounded-lg p-1 transition-all hover:scale-110 active:scale-90 ${
+                isStarred ? "text-amber-400" : "text-stone-300 hover:text-amber-400"
+              }`}
+            >
+              <Star size={17} className={isStarred ? "fill-amber-400" : ""} />
+            </button>
             <span className={`rounded-full ${t.chipBg} px-3 py-1 text-[11px] font-bold`}>
               {word.pos ? posLabel[word.pos] ?? word.pos : "واژه"}
             </span>

@@ -73,6 +73,8 @@ export interface SyncData {
   /** گوشهٔ کنکور coverage maps — legacy payloads may omit them */
   konkurSeen?: Record<string, boolean>;
   konkurWrong?: Record<string, boolean>;
+  /** «واژه‌های من» — starred word keys; legacy payloads may omit them */
+  starredWords?: string[];
   /** Phase-0 «اعتماد» — identity moves as a pair, only to
    *  identity-less devices (special-cased in mergeAll). */
   userId?: string;
@@ -397,6 +399,8 @@ export const SYNC_FIELDS: SyncFieldMap = {
   wordSeen: { sanitize: sanitizeWordStat, merge: mergeMaxMap },
   konkurSeen: { sanitize: sanitizeFlagMap, merge: flagUnion },
   konkurWrong: { sanitize: sanitizeFlagMap, merge: flagUnion },
+  // starred word keys — union keeps both devices' stars, cap 2000 (newest survive)
+  starredWords: { sanitize: stringList(2000), merge: unionCapped(2000) },
   userId: { sanitize: sanitizeUserId },
   userSecret: { sanitize: sanitizeUserSecret },
 };

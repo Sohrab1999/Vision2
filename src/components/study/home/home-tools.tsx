@@ -1,6 +1,6 @@
 "use client";
 
-import { Sparkles, BookMarked, ClipboardCheck, GraduationCap, TrainFront, Swords, Ear, Eraser, Library, Trophy } from "lucide-react";
+import { Sparkles, BookMarked, ClipboardCheck, GraduationCap, TrainFront, Swords, Ear, Eraser, Library, Trophy, Star } from "lucide-react";
 import { TOTAL_VOCABULARY, EXAM_BANK_SIZE } from "@/data/lesson-meta";
 import { useStudy, summarize, srsDueTotal, firstLessonWithDue, mistakesOfLesson } from "@/lib/study-store";
 import { hardIdsOf } from "@/lib/konkur";
@@ -17,6 +17,7 @@ export default function HomeTools() {
   const srs = useStudy((s) => s.srs);
   const mistakes = useStudy((s) => s.mistakes);
   const konkurWrong = useStudy((s) => s.konkurWrong);
+  const starredCount = useStudy((s) => s.starredWords.length);
   const mounted = useMounted();
 
   const summary = mounted ? summarize(known, results) : { knownCount: 0, totalPercent: 0, doneCategories: 0, bestExam: null };
@@ -36,6 +37,7 @@ export default function HomeTools() {
         {[
           { icon: Sparkles, title: "تمرین هوشمند", desc: "جلسه‌ای که خودش از روی بانک خطا و مهارت‌های ضعیف تو ساخته می‌شود", onClick: () => setView({ type: "smart" as const }), color: "text-violet-600 bg-violet-50 border-violet-200" },
           { icon: BookMarked, title: "دیکشنری جستجو", desc: `${faNum(TOTAL_VOCABULARY)} واژهٔ سه درس با جستجوی فارسی و انگلیسی`, view: { type: "dictionary" as const }, color: "text-sky-600 bg-sky-50 border-sky-200" },
+          { icon: Star, title: "واژه‌های من", desc: "واژه‌نامهٔ شخصی: ستاره‌هایت را مرور کن، تلفظ بشنو و بلدها را علامت بزن", view: { type: "my-words" as const }, color: "text-amber-600 bg-amber-50 border-amber-200", badge: starredCount },
           { icon: ClipboardCheck, title: "آزمون جامع", desc: `${faNum(EXAM_BANK_SIZE)} تست گردآوری از بانک ۳۶۰ تستی جزوه با تایمر`, view: { type: "exam" as const }, color: "text-emerald-600 bg-emerald-50 border-emerald-200" },
           { icon: GraduationCap, title: "گوشهٔ کنکور", desc: "سامانهٔ پوشش و تسلط بانک ۳۶۰تایی: نقشهٔ پیشرفت، شبیه‌ساز و تست‌های سخت", view: { type: "konkur" as const }, color: "text-orange-600 bg-orange-50 border-orange-200", badge: konkurHardCount },
           { icon: TrainFront, title: "متروی گرامر", desc: "نقشهٔ سفر گرامر کتاب: ۶ خط و ۱۵ ایستگاه واقعی؛ هر قاعده یک ایستگاه با درس، ترفند و آزمونک", onClick: () => setView({ type: "grammar" as const }), color: "text-teal-600 bg-teal-50 border-teal-200" },

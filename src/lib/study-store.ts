@@ -18,7 +18,8 @@ export type View =
   | { type: "review" }
   | { type: "smart" }
   | { type: "konkur" }
-  | { type: "grammar" }; // متروی گرامر — Task 39
+  | { type: "grammar" } // متروی گرامر — Task 39
+  | { type: "my-words" }; // واژه‌های نشان‌شده — واژه‌نامهٔ شخصی
 
 export type LessonTab = "vocab" | "conversation" | "reading" | "grammar" | "writing" | "dictation" | "tests";
 
@@ -114,6 +115,7 @@ export interface StudyState {
   wordSeen: WordStatMap; // F7 — answered (seen) per word key
   konkurSeen: Record<string, boolean>; // گوشهٔ کنکور — exam-bank (x-) questions answered at least once
   konkurWrong: Record<string, boolean>; // گوشهٔ کنکور — exam-bank questions answered wrong (cleared on a correct answer)
+  starredWords: string[]; // واژه‌های من — wordKeys ("1:ability") the learner starred, oldest → newest
   flashIntent: "none" | "smart";
   flashNonce: number; // bumped on every "smart" intent so VocabTab remounts into flashcards
   seenBadges: string[];
@@ -159,6 +161,8 @@ export interface StudyState {
   clearMistake: (lessonId: number | string, id: string) => void;
   markKonkur: (entries: { id: string; ok: boolean }[]) => void;
   addWordResults: (entries: { key: string; ok: boolean }[]) => void;
+  toggleStarred: (key: string) => void;
+  clearStarred: () => void;
   lessonMistakeCount: (lessonId: number) => number;
   ensureUserId: () => string;
   setIdentity: (userId: string, secret: string) => void;
@@ -243,6 +247,7 @@ export const useStudy = create<StudyState>()(
       wordSeen: {},
       konkurSeen: {},
       konkurWrong: {},
+      starredWords: [],
       flashIntent: "none",
       flashNonce: 0,
       seenBadges: [],
@@ -428,6 +433,19 @@ export const useStudy = create<StudyState>()(
           }
           return { wordSeen: seen, wordMistakes: wrong };
         }),
+      // واژه‌های من — star/unstar a word key; new stars go to the tail so the
+      // my-words list can show newest-first by reversing. Fires the star_word
+      // funnel event only when a star is ADDED (removals are not learning signal).
+      toggleStarred: (key) =>
+        set((s) => {
+          if (!key) return s;
+          if (s.starredWords.includes(key)) {
+            return { starredWords: s.starredWords.filter((k) => k !== key) };
+          }
+          trackEvent("star_word");
+          return { starredWords: [...s.starredWords, key].slice(-2000) };
+        }),
+      clearStarred: () => set({ starredWords: [] }),
       lessonMistakeCount: (lessonId) => {
         const prefix = `${lessonId}:`;
         return Object.keys(get().mistakes).filter((k) => k.startsWith(prefix)).length;

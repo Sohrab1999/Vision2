@@ -29,6 +29,8 @@ export const EVENT_NAMES = [
   "smart_practice_start",
   "konkur_start", // konkur corner session (360-bank coverage/mastery)
   "anki_export",
+  "star_word", // a word starred into «واژه‌های من»
+  "my_words_open", // opened the personal word-book view
   "print_report", // official printable progress report
 ] as const;
 
@@ -59,6 +61,8 @@ export const EVENT_LABELS_FA: Record<EventName, string> = {
   smart_practice_start: "شروع تمرین هوشمند",
   konkur_start: "شروع جلسهٔ گوشهٔ کنکور",
   anki_export: "خروجی Anki",
+  star_word: "نشان‌کردن واژه",
+  my_words_open: "بازکردن واژه‌های من",
   print_report: "گزارش چاپی رسمی",
 };
 

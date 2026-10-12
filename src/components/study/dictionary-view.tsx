@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Search, X, BookMarked, CheckCircle2, CircleDashed, AlarmClock, SearchX, Download } from "lucide-react";
+import { Search, X, BookMarked, CheckCircle2, CircleDashed, AlarmClock, SearchX, Download, Star } from "lucide-react";
 import { lessons } from "@/data";
 import { useStudy, wordKey } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -21,6 +21,9 @@ export default function DictionaryView() {
   const known = useStudy((s) => s.known);
   const srs = useStudy((s) => s.srs);
   const toggleKnown = useStudy((s) => s.toggleKnown);
+  const toggleStarred = useStudy((s) => s.toggleStarred);
+  const starredWords = useStudy((s) => s.starredWords);
+  const setView = useStudy((s) => s.setView);
   const mounted = useMounted();
   const { toast } = useToast();
 
@@ -105,6 +108,14 @@ export default function DictionaryView() {
             </p>
           </div>
           <button
+            onClick={() => setView({ type: "my-words" })}
+            className="ms-auto inline-flex items-center gap-1.5 rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-[12px] font-bold text-amber-700 transition-all hover:bg-amber-100 active:scale-95"
+            aria-label="رفتن به واژه‌های من"
+          >
+            <Star size={14} className="fill-amber-400 text-amber-400" />
+            واژه‌های من{mounted && starredWords.length > 0 && ` (${faNum(starredWords.length)})`}
+          </button>
+          <button
             onClick={() => {
               const count = downloadAnkiTsv();
               trackEvent("anki_export");
@@ -114,7 +125,7 @@ export default function DictionaryView() {
                 duration: 6000,
               });
             }}
-            className="ms-auto inline-flex items-center gap-1.5 rounded-xl border border-emerald-200 bg-emerald-50 px-3 py-2 text-[12px] font-bold text-emerald-700 transition-all hover:bg-emerald-100 active:scale-95"
+            className="inline-flex items-center gap-1.5 rounded-xl border border-emerald-200 bg-emerald-50 px-3 py-2 text-[12px] font-bold text-emerald-700 transition-all hover:bg-emerald-100 active:scale-95"
             aria-label={`صادرات ${ankiCount} واژه به صورت فایل Anki`}
           >
             <Download size={14} />
@@ -214,6 +225,7 @@ export default function DictionaryView() {
       <div className="max-h-[58vh] grid gap-2.5 overflow-y-auto pl-1 nice-scroll sm:grid-cols-2 lg:grid-cols-3">
         {filtered.slice(0, 300).map((w) => {
           const isKnown = mounted && !!known[wordKey(w.lessonId, w.en)];
+          const isStarred = mounted && starredWords.includes(wordKey(w.lessonId, w.en));
           const t = themeOf(w.lessonColor);
           return (
             <div
@@ -230,6 +242,17 @@ export default function DictionaryView() {
                       {posLabel[w.pos] ?? w.pos}
                     </span>
                   )}
+                  <button
+                    onClick={() => toggleStarred(wordKey(w.lessonId, w.en))}
+                    title={isStarred ? "حذف از واژه‌های من" : "افزودن به واژه‌های من"}
+                    aria-label={isStarred ? `حذف ${w.en} از واژه‌های من` : `افزودن ${w.en} به واژه‌های من`}
+                    aria-pressed={isStarred}
+                    className={`rounded-md p-0.5 transition-all hover:scale-110 active:scale-90 ${
+                      isStarred ? "fill-amber-400 text-amber-400" : "text-stone-300 hover:text-amber-400"
+                    }`}
+                  >
+                    <Star size={14} className={isStarred ? "fill-amber-400 text-amber-400" : ""} />
+                  </button>
                 </div>
                 <div className="mt-0.5 text-[13px] text-stone-600">{w.fa}</div>
                 <span className={`mt-1 inline-block rounded-full px-2 py-0.5 text-[10px] font-bold ${t.chipBg}`}>

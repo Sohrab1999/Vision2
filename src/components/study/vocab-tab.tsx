@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { Search, CheckCircle2, Circle, Layers, X } from "lucide-react";
+import { Search, CheckCircle2, Circle, Layers, X, Star } from "lucide-react";
 import type { LessonData } from "@/lib/study-types";
 import { useStudy, wordKey } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -23,6 +23,8 @@ export default function VocabTab({
   const [flashMode, setFlashMode] = useState(startSmart);
   const known = useStudy((s) => s.known);
   const toggleKnown = useStudy((s) => s.toggleKnown);
+  const toggleStarred = useStudy((s) => s.toggleStarred);
+  const starredWords = useStudy((s) => s.starredWords);
   const consumeFlashIntent = useStudy((s) => s.consumeFlashIntent);
   const mounted = useMounted();
 
@@ -107,13 +109,24 @@ export default function VocabTab({
       <div className="grid max-h-[62vh] gap-2.5 overflow-y-auto pl-1 nice-scroll sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map((w, i) => {
           const isKnown = mounted && !!known[wordKey(lesson.id, w.en)];
+          const wKey = wordKey(lesson.id, w.en);
+          const isStarred = mounted && starredWords.includes(wKey);
           return (
-            <motion.button
+            <motion.div
               key={w.en}
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: Math.min(i * 0.012, 0.3) }}
-              onClick={() => toggleKnown(wordKey(lesson.id, w.en))}
+              role="button"
+              tabIndex={0}
+              aria-pressed={isKnown}
+              onClick={() => toggleKnown(wKey)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  toggleKnown(wKey);
+                }
+              }}
               className={`group flex items-start justify-between gap-2 rounded-xl border p-3 text-right transition-all active:scale-[0.98] ${
                 isKnown
                   ? `${t.border} ${t.bgSoft}`
@@ -131,6 +144,20 @@ export default function VocabTab({
                       {posLabel[w.pos] ?? w.pos}
                     </span>
                   )}
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggleStarred(wKey);
+                    }}
+                    title={isStarred ? "حذف از واژه‌های من" : "افزودن به واژه‌های من"}
+                    aria-label={isStarred ? `حذف ${w.en} از واژه‌های من` : `افزودن ${w.en} به واژه‌های من`}
+                    aria-pressed={isStarred}
+                    className={`rounded-md p-0.5 transition-all hover:scale-110 active:scale-90 ${
+                      isStarred ? "text-amber-400" : "text-stone-300 hover:text-amber-400"
+                    }`}
+                  >
+                    <Star size={14} className={isStarred ? "fill-amber-400" : ""} />
+                  </button>
                 </div>
                 <div className="mt-1 text-[13px] leading-6 text-stone-600">{w.fa}</div>
               </div>
@@ -139,7 +166,7 @@ export default function VocabTab({
               ) : (
                 <Circle size={17} className="shrink-0 text-stone-300 group-hover:text-stone-400" />
               )}
-            </motion.button>
+            </motion.div>
           );
         })}
         {filtered.length === 0 && (

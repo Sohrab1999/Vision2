@@ -51,6 +51,7 @@ const CANONICAL_SYNC_KEYS = [
   "wordSeen",
   "konkurSeen",
   "konkurWrong",
+  "starredWords",
   "userId",
   "userSecret",
 ] as const;
@@ -115,6 +116,7 @@ describe("sanitizeAll — defaults and idempotence", () => {
     expect(d.freezeCount).toBe(0);
     expect(d.wordMistakes).toEqual({});
     expect(d.konkurSeen).toEqual({});
+    expect(d.starredWords).toEqual([]);
     expect(d.userId).toBeUndefined();
     expect(d.userSecret).toBeUndefined();
   });
@@ -138,6 +140,7 @@ describe("sanitizeAll — defaults and idempotence", () => {
       freezeUsedDays: "not-a-list",
       wordMistakes: { "1:ability": -5, "2:word": 3.9 },
       konkurSeen: { "x-21": true, "x-26": false, "x-34": 1 },
+      starredWords: [42, "1:ability", null, "2:zone"],
       userId: "abc",
       userSecret: "not-hex-at-all",
     };
@@ -158,6 +161,7 @@ describe("sanitizeAll — defaults and idempotence", () => {
     expect(once.seenBadges).toEqual(["first-quiz"]);
     expect(once.wordMistakes?.["2:word"]).toBe(4);
     expect(once.konkurSeen).toEqual({ "x-21": true });
+    expect(once.starredWords).toEqual(["1:ability", "2:zone"]); // non-strings dropped, order kept
     expect(once.userId).toBeUndefined();
     expect(once.userSecret).toBeUndefined();
   });
@@ -193,6 +197,7 @@ describe("backup ↔ restore ↔ cloud-merge round-trip", () => {
       wordSeen: { "1:ability": 9 },
       konkurSeen: { "x-21": true },
       konkurWrong: { "x-26": true },
+      starredWords: ["1:ability", "2:zone"],
       userId: "learner-12345",
       userSecret: "ab".repeat(24),
     });
@@ -230,6 +235,18 @@ describe("backup ↔ restore ↔ cloud-merge round-trip", () => {
     expect(merged.duelWins).toBe(5);
     expect(merged.duelLosses).toBe(4);
     expect(merged.duelTies).toBe(1);
+  });
+
+  it("starred words: sanitize drops junk and caps at 2000 newest; merge unions both devices", () => {
+    // cap — the newest (tail) stars survive
+    const flood = Array.from({ length: 2001 }, (_, i) => `1:w${i}`);
+    expect(sanitizeAll({ starredWords: flood }).starredWords).toHaveLength(2000);
+    expect(sanitizeAll({ starredWords: flood }).starredWords?.[0]).toBe("1:w1"); // oldest dropped
+    // union merge — stars made on two devices both survive, deduped
+    const local = { ...trusted(), starredWords: ["1:ability", "2:zone"] };
+    const remote = { ...trusted(), starredWords: ["2:zone", "3:paint"] };
+    const merged = mergeAll(local, remote);
+    expect(merged.starredWords).toEqual(["1:ability", "2:zone", "3:paint"]);
   });
 
   it("merge output covers every synced field (no silently dropped domain)", () => {
