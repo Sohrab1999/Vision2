@@ -58,6 +58,9 @@ export interface SyncData {
   rushBest: number;
   rushBestCorrect: number;
   rushGames: number;
+  /** «دیکتهٔ برق‌آسا» — spelling-sprint records (Task 61) */
+  spellRushBest: number;
+  spellRushBestCorrect: number;
   /** R-1 drift fix — the duel record used to be persisted-only and
    *  silently vanished from backups and cloud sync; now it travels. */
   duelWins: number;
@@ -385,6 +388,8 @@ export const SYNC_FIELDS: SyncFieldMap = {
   rushBest: { sanitize: (v) => cnt(v, 1_000_000) ?? 0, merge: maxNum },
   rushBestCorrect: { sanitize: (v) => cnt(v) ?? 0, merge: maxNum },
   rushGames: { sanitize: (v) => cnt(v, 99_999) ?? 0, merge: maxNum },
+  spellRushBest: { sanitize: (v) => cnt(v, 1_000_000) ?? 0, merge: maxNum },
+  spellRushBestCorrect: { sanitize: (v) => cnt(v) ?? 0, merge: maxNum },
   duelWins: { sanitize: (v) => cnt(v, 99_999) ?? 0, merge: maxNum },
   duelLosses: { sanitize: (v) => cnt(v, 99_999) ?? 0, merge: maxNum },
   duelTies: { sanitize: (v) => cnt(v, 99_999) ?? 0, merge: maxNum },

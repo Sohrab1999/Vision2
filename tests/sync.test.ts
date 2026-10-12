@@ -27,6 +27,8 @@ const base = (): SyncData => ({
   rushBest: 0,
   rushBestCorrect: 0,
   rushGames: 0,
+  spellRushBest: 0,
+  spellRushBestCorrect: 0,
   duelWins: 0,
   duelLosses: 0,
   duelTies: 0,
@@ -182,8 +184,8 @@ describe("mergeSyncData — progress safety", () => {
   });
 
   it("rush counters take the max; freeze count is capped at 2", () => {
-    const local = { ...base(), rushBest: 120, rushBestCorrect: 9, rushGames: 4, freezeCount: 2 };
-    const remote = { ...base(), rushBest: 200, rushBestCorrect: 7, rushGames: 3, freezeCount: 1 };
+    const local = { ...base(), rushBest: 120, rushBestCorrect: 9, rushGames: 4, spellRushBest: 30, spellRushBestCorrect: 2, freezeCount: 2 };
+    const remote = { ...base(), rushBest: 200, rushBestCorrect: 7, rushGames: 3, spellRushBest: 55, spellRushBestCorrect: 4, freezeCount: 1 };
     const merged = mergeSyncData(local, remote);
     expect(merged.rushBest).toBe(200);
     expect(merged.rushBestCorrect).toBe(9);

@@ -616,6 +616,19 @@ body {
 .dark .rush-score-live { color: #fdba74; }
 .dark .rush-card { background-color: #1c1917; }
 .dark .rush-card.border-orange-200 { border-color: rgb(154 52 18 / 0.5); }
+/* spelling sprint (دیکتهٔ برق‌آسا) — sky accents on the shared arcade shells;
+   sky-50/sky-200/text-sky-* and the rush-* tones are already dark-served */
+.dark .rush-card.border-sky-200 { border-color: rgb(7 66 84 / 0.7); }
+.dark .spell-input {
+  background-color: #292524;
+  border-color: rgb(7 66 84 / 0.9);
+  color: #f5f5f4;
+}
+.dark .spell-input::placeholder { color: #57534e; }
+.dark .spell-input:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 4px rgb(7 66 84 / 0.55);
+}
 .dark .rush-card .bg-white { background-color: #292524; }
 .dark .rush-card .border-stone-200 { border-color: #44403c; }
 .dark .rush-card .bg-stone-100 { background-color: #37312b; }

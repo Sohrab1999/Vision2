@@ -11,6 +11,7 @@ export const EVENT_NAMES = [
   "quiz_done",
   "exam_done",
   "rush_done",
+  "spell_rush_done", // 60s spelling sprint finished
   "duel_start", // 2-player live duel session started
   "duel_done", // 2-player live duel finished (server-arbitrated)
   "listen_done",
@@ -49,6 +50,7 @@ export const EVENT_LABELS_FA: Record<EventName, string> = {
   quiz_done: "آزمون کوتاه",
   exam_done: "آزمون جامع کامل",
   rush_done: "چالش برق‌آسا",
+  spell_rush_done: "چالش دیکتهٔ برق‌آسا",
   duel_start: "شروع نبرد دودنفره",
   duel_done: "نبرد دودنفره",
   listen_done: "تمرین شنیداری",

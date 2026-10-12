@@ -10,11 +10,14 @@ export interface ArcadeSlice {
   rushBest: number; // best score (points) ever achieved in the 60s challenge
   rushBestCorrect: number; // best number of correct answers in one challenge
   rushGames: number; // total number of completed 60s challenge rounds
+  spellRushBest: number; // best score (points) ever achieved in the spelling sprint
+  spellRushBestCorrect: number; // best number of full-correct spellings in one sprint
   duelWins: number; // 2-player live duel victories
   duelLosses: number; // 2-player live duel defeats
   duelTies: number; // 2-player live duel ties
 
   setRushBest: (points: number, correct: number) => void;
+  setSpellRushBest: (points: number, correct: number) => void;
   recordDuelOutcome: (outcome: "win" | "loss" | "tie") => void;
 }
 
@@ -22,6 +25,8 @@ export const createArcadeSlice: StateCreator<StudyStore, [], [], ArcadeSlice> = 
   rushBest: 0,
   rushBestCorrect: 0,
   rushGames: 0,
+  spellRushBest: 0,
+  spellRushBestCorrect: 0,
   duelWins: 0,
   duelLosses: 0,
   duelTies: 0,
@@ -33,6 +38,13 @@ export const createArcadeSlice: StateCreator<StudyStore, [], [], ArcadeSlice> = 
       rushBestCorrect: Math.max(s.rushBestCorrect, correct),
       rushGames: s.rushGames + 1,
       ...activityPatch(s, "rush"),
+    })),
+  // spelling sprint: best-keep only — the round's study credit rides the
+  // trackQuizDone call in the view's finish (same as the quiz rush)
+  setSpellRushBest: (points, correct) =>
+    set((s) => ({
+      spellRushBest: Math.max(s.spellRushBest, points),
+      spellRushBestCorrect: Math.max(s.spellRushBestCorrect, correct),
     })),
   recordDuelOutcome: (outcome) =>
     set((s) => ({

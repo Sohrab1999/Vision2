@@ -45,6 +45,8 @@ const resetAll = () =>
     rushBest: 0,
     rushBestCorrect: 0,
     rushGames: 0,
+    spellRushBest: 0,
+    spellRushBestCorrect: 0,
     duelWins: 0,
     duelLosses: 0,
     duelTies: 0,
@@ -73,6 +75,7 @@ describe("StudyState drift guard (12 slices → one contract)", () => {
       "konkurSeen", "konkurWrong",
       "starredWords", "flashIntent", "flashNonce", "seenBadges",
       "rushBest", "rushBestCorrect", "rushGames",
+      "spellRushBest", "spellRushBestCorrect",
       "duelWins", "duelLosses", "duelTies",
       "dailyGoal", "onboarded", "settings",
       "freezeCount", "freezeEarnedDay", "freezeUsedDays", "goalMetDays", "freezeSavedDay",
@@ -84,7 +87,7 @@ describe("StudyState drift guard (12 slices → one contract)", () => {
     const s = state() as unknown as Record<string, unknown>;
     const actions = [
       "setProfile", "setDailyGoal", "setOnboarded", "setSettings", "setSyncCode",
-      "setRushBest", "recordDuelOutcome", "trackDictation", "markBadgesSeen",
+      "setRushBest", "setSpellRushBest", "recordDuelOutcome", "trackDictation", "markBadgesSeen",
       "goHome", "openLesson", "openLessonTab", "setView", "setLessonTab",
       "consumeFlashIntent", "toggleKnown", "addResult", "reviewWord",
       "trackReview", "trackQuizDone", "addMistakes", "clearMistake",

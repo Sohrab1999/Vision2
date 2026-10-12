@@ -29,6 +29,7 @@ import { downloadResultImage } from "@/lib/result-image";
 import { trackEvent } from "@/lib/analytics";
 import { sendStats } from "@/lib/identity";
 import RushBoard from "./rush-board";
+import SpellRushView, { RushModeTabs } from "./spell-rush-view";
 import Confetti from "./shared/confetti";
 import OptionButton from "./shared/option-button";
 
@@ -72,6 +73,10 @@ export default function RushView() {
   const setView = useStudy((s) => s.setView);
   const rushBest = useStudy((s) => s.rushBest);
   const rushBestCorrect = useStudy((s) => s.rushBestCorrect);
+
+  // arcade mode: the classic 4-option quiz or the spelling sprint — the
+  // spell view is a full sibling (its own setup/play/done), not a variant
+  const [mode, setMode] = useState<"quiz" | "spell">("quiz");
 
   const [phase, setPhase] = useState<Phase>("setup");
   const [deck, setDeck] = useState<RushQ[]>([]);
@@ -246,9 +251,14 @@ export default function RushView() {
   };
 
   // ----------------------------- SETUP -----------------------------
+  if (mode === "spell") {
+    return <SpellRushView onExit={() => setMode("quiz")} />;
+  }
+
   if (phase === "setup") {
     return (
       <div className="space-y-5">
+        <RushModeTabs mode="quiz" onChange={setMode} />
         <RushBoard refreshKey={boardNonce} />
         <motion.div
           initial={{ opacity: 0, y: 14 }}
