@@ -272,7 +272,7 @@ export default function RushView() {
             <span className="rush-icon mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-amber-400 to-orange-600 text-white shadow-xl shadow-orange-500/30">
               <Zap size={38} />
             </span>
-            <span className="mb-3 inline-flex items-center gap-1.5 rounded-full border border-orange-200 bg-white/70 px-3 py-1 text-xs font-bold text-orange-700">
+            <span className="mb-3 inline-flex items-center gap-1.5 rounded-full border border-orange-200 c-veil-70 px-3 py-1 text-xs font-bold text-orange-700">
               <Sparkles size={13} />
               حالت بازی جدید — برای واژگان سریع
             </span>

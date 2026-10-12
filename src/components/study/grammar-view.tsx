@@ -229,7 +229,7 @@ export default function GrammarView() {
                   درس‌ها ناقص باشد — وقتی کل نقشه پوشیده شد، چیپ هیرو خودش
                   پوشش کامل را اعلام می‌کند و تکرارِ هرخطی حذف می‌شود */}
               {!allLinesHaveLessons && lessonLines.has(line.id) && (
-                <span className={`gmetro-lesson-badge inline-flex items-center gap-1 rounded-full border border-dashed px-2.5 py-1 text-[10.5px] font-black ${c.text} ${c.border} bg-white/60`}>
+                <span className={`gmetro-lesson-badge inline-flex items-center gap-1 rounded-full border border-dashed px-2.5 py-1 text-[10.5px] font-black ${c.text} ${c.border} c-veil-60`}>
                   <Sparkles size={11} /> همهٔ ایستگاه‌ها درس ۹۰ثانیه‌ای دارند
                 </span>
               )}
@@ -243,7 +243,7 @@ export default function GrammarView() {
             </div>
 
             {probeRes !== null && (
-              <p className={`gmetro-probe-note mb-3 rounded-xl border ${c.border} bg-white/70 px-3 py-2 text-[12px] font-bold leading-6 ${c.text}`}>
+              <p className={`gmetro-probe-note mb-3 rounded-xl border ${c.border} c-veil-70 px-3 py-2 text-[12px] font-bold leading-6 ${c.text}`}>
                 <Compass size={13} className="mb-0.5 inline-block" />{" "}
                 {probeRecommendation(line, probeRes, results)}
               </p>

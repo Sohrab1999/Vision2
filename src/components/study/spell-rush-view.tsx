@@ -322,7 +322,7 @@ export default function SpellRushView({ onExit }: { onExit?: () => void }) {
             <span className="rush-icon mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-sky-500 to-cyan-600 text-white shadow-xl shadow-sky-500/30">
               <Ear size={38} />
             </span>
-            <span className="spell-chip mb-3 inline-flex items-center gap-1.5 rounded-full border border-sky-200 bg-white/70 px-3 py-1 text-xs font-bold text-sky-700">
+            <span className="spell-chip mb-3 inline-flex items-center gap-1.5 rounded-full border border-sky-200 c-veil-70 px-3 py-1 text-xs font-bold text-sky-700">
               <Sparkles size={13} />
               حالت شنیداری — املا زیر آتش
             </span>

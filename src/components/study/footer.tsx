@@ -8,7 +8,7 @@ export default function Footer() {
   const openShortcuts = () => window.dispatchEvent(new CustomEvent("open-shortcuts"));
 
   return (
-    <footer className="footer-band mt-auto border-t border-stone-200 bg-white/60">
+    <footer className="footer-band mt-auto border-t border-stone-200 c-veil-60">
       {/* thin brand gradient strip on top of the footer */}
       <div className="h-[3px] w-full bg-gradient-to-l from-emerald-600 via-teal-500 to-amber-400 opacity-80" aria-hidden />
       <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-5 sm:flex-row sm:items-center sm:justify-between">

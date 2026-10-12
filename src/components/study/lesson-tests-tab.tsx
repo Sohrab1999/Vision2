@@ -96,7 +96,7 @@ export default function LessonTestsTab({ lesson }: { lesson: LessonData }) {
 
       <button
         onClick={startMixed}
-        className="flex w-full items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-stone-300 bg-white/60 py-4 text-sm font-bold text-stone-600 transition-all hover:border-emerald-400 hover:text-emerald-700 active:scale-[0.99]"
+        className="flex w-full items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-stone-300 c-veil-60 py-4 text-sm font-bold text-stone-600 transition-all hover:border-emerald-400 hover:text-emerald-700 active:scale-[0.99]"
       >
         <Shuffle size={17} />
         تست ترکیبی — همهٔ {lesson.quizzes.length} تست این درس (بُر خورده)

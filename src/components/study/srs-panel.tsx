@@ -203,7 +203,7 @@ export default function SrsPanel() {
 
           {/* due-now word chips — the concrete "which words" layer */}
           {dueWords.length > 0 && (
-            <div className="srs-due-preview mb-4 rounded-xl border border-rose-100 bg-white/70 p-3 shadow-sm">
+            <div className="srs-due-preview mb-4 rounded-xl border border-rose-100 c-veil-70 p-3 shadow-sm">
               <div className="mb-2 flex items-center gap-1.5">
                 <span className="relative flex h-2 w-2">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-rose-400 opacity-75" />
@@ -313,7 +313,7 @@ export default function SrsPanel() {
               </div>
               {/* expansion — واژه‌های روزِ انتخاب‌شده، زودترین اول، با ستارهٔ هفتم */}
               {openDay !== null && forecastInfo && (
-                <div className="srs-fx-expand mt-2 rounded-xl border border-teal-100 bg-white/70 p-3">
+                <div className="srs-fx-expand mt-2 rounded-xl border border-teal-100 c-veil-70 p-3">
                   {forecastInfo.words.length > 0 ? (
                     <>
                       <div className="mb-2 flex items-center gap-1.5 text-[11px] font-bold text-stone-500">
@@ -376,7 +376,7 @@ export default function SrsPanel() {
             {dueTotal > 0 ? `مرور ${faNum(dueTotal)} واژهٔ سررسید` : "شروع مرور هوشمند"}
           </button>
           {stats && stats.total > 0 && (
-            <div className="rounded-xl border border-teal-100 bg-white/70 px-3 py-2 text-center text-[11px] font-bold leading-5 text-stone-500">
+            <div className="rounded-xl border border-teal-100 c-veil-70 px-3 py-2 text-center text-[11px] font-bold leading-5 text-stone-500">
               {dueTotal > 0 ? (
                 <span className="text-rose-600">{faNum(dueTotal)} واژه منتظر مرور است — الان بهترین وقت است!</span>
               ) : (

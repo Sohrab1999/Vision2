@@ -27,7 +27,7 @@ function DeltaChip({ d, label, cls }: { d: Delta; label: string; cls: string }) 
   const Icon = d.diff > 0 ? TrendingUp : d.diff < 0 ? TrendingDown : Minus;
   const tone = d.diff > 0 ? "text-emerald-700" : d.diff < 0 ? "text-rose-700" : "text-stone-500";
   return (
-    <div className="flex-1 rounded-xl border border-stone-200 bg-white/70 px-2 py-2 text-center">
+    <div className="flex-1 rounded-xl border border-stone-200 c-veil-70 px-2 py-2 text-center">
       <div className={`flex items-center justify-center gap-1 text-[15px] font-black ${cls}`}>
         {faNum(d.current)}
       </div>
@@ -142,7 +142,7 @@ export default function WeeklyReportSection() {
       </div>
 
       {/* goal dots — one per day of this week */}
-      <div className="mb-3 flex items-center justify-between gap-2 rounded-lg bg-white/60 px-2.5 py-2">
+      <div className="mb-3 flex items-center justify-between gap-2 rounded-lg c-veil-60 px-2.5 py-2">
         <div className="flex items-center gap-1.5 text-[10.5px] font-extrabold text-stone-600">
           <CalendarHeart size={12} className="text-emerald-600" aria-hidden />
           هدف روزانه ({faNum(dailyGoal)})
@@ -178,7 +178,7 @@ export default function WeeklyReportSection() {
 
       {/* دفتر یخ (Task 78) — هم‌خانوادهٔ ردیف نقطه‌های هدف؛ باند آسمانیِ همان چیپ هدر */}
       <div
-        className="freeze-ledger mb-3 rounded-lg bg-white/60 px-2.5 py-2"
+        className="freeze-ledger mb-3 rounded-lg c-veil-60 px-2.5 py-2"
         title={ledger.title}
         aria-label={ledger.title}
       >
@@ -235,7 +235,7 @@ export default function WeeklyReportSection() {
           می‌شود؛ نمونه‌ها دقیقاً همان کلاس‌های خود نقطه‌ها هستند تا رنگِ
           افسانه و رنگِ داده هرگز واگرا نشوند */}
       <div
-        className="report-legend mb-3 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-lg bg-white/60 px-2.5 py-2"
+        className="report-legend mb-3 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-lg c-veil-60 px-2.5 py-2"
         title="دستور رنگ‌های گزارش"
         aria-label="دستور رنگ‌های گزارش"
       >

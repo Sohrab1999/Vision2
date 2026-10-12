@@ -51,7 +51,7 @@ export default function HomeFeed() {
 
         {/* live feed */}
         {globalStats.recent.length > 0 && (
-          <div className="min-w-0 rounded-xl border border-emerald-100 bg-white/70 p-3">
+          <div className="min-w-0 rounded-xl border border-emerald-100 c-veil-70 p-3">
             <div className="mb-2 flex items-center gap-1.5 text-[11px] font-bold text-emerald-700">
               <Radio size={12} className="animate-pulse" />
               تازه‌ترین فعالیت‌ها

@@ -31,7 +31,7 @@ import SkillPanel from "./skill-panel";
 // ------------------------------------------------------------------
 
 const CardFallback = (
-  <div className="flex h-56 items-center justify-center rounded-2xl border border-stone-200 bg-white/60">
+  <div className="flex h-56 items-center justify-center rounded-2xl border border-stone-200 c-veil-60">
     <span className="h-8 w-8 animate-spin rounded-full border-[3px] border-emerald-200 border-t-emerald-600" />
   </div>
 );

@@ -38,6 +38,7 @@ import {
   Feather,
   Repeat,
   SpellCheck2,
+  Layers,
 } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -93,6 +94,8 @@ export const BADGE_ICONS: Record<string, React.ElementType> = {
   Repeat,
   // رانِ ترکیبی (Task 85)
   SpellCheck2,
+  // رانِ دوتایی (Task 87) — دو ران روی‌هم
+  Layers,
 };
 
 const tierFa: Record<string, string> = {

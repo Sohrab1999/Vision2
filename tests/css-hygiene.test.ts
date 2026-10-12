@@ -483,3 +483,98 @@ describe("globals.css elevated shell layer (Step 9 tranche 4 phase 3 — Task 86
     expect(offenders, "elevated shells paint via c-card-elevated, never raw bg-white").toEqual([]);
   });
 });
+
+describe("globals.css translucent veil layer (Step 9 tranche 4 phase 4 — Task 87)", () => {
+  const css87 = readFileSync(cssPath, "utf8");
+  const lines87 = css87.split("\n");
+
+  it("defines c-veil-60/70 ONLY via plain author rules (c-chip mechanism), BG-ONLY, byte-exact bodies", () => {
+    for (const [name, light, dark] of [
+      ["c-veil-60", "color-mix(in oklab, var(--color-white) 60%, transparent)", "rgba(28, 25, 23, 0.6)"],
+      ["c-veil-70", "color-mix(in oklab, var(--color-white) 70%, transparent)", "rgba(28, 25, 23, 0.7)"],
+    ] as const) {
+      // pairing invariant (phase-1 pattern): exactly one light rule + one .dark rule, never @utility
+      expect(lines87.filter((l) => l.trim() === `.${name} {`).length, `exactly one light .${name}`).toBe(1);
+      expect(lines87.filter((l) => l.trim() === `.dark .${name} {`).length, `exactly one dark .${name}`).toBe(1);
+      expect(lines87.filter((l) => l.trim() === `@utility ${name} {`).length, "@utility form is forbidden — it loses byte parity (r87 probed: lab conversion)").toBe(0);
+      const li = lines87.findIndex((l) => l.trim() === `.${name} {`);
+      const lightBody = lines87.slice(li, li + 3).join("\n");
+      // light = the retired utility's EXACT engine declaration (r87: the ONLY form whose computed
+      // value stays oklab — var-free / var-fallback / declared-oklab all re-serialize to lab, probed);
+      // --color-white is pinned in @theme so the no-fallback var can never silently invalidate
+      expect(lightBody).toContain(`background-color: ${light}`);
+      expect(lightBody).not.toContain("var(--color-white,");
+      expect(lightBody).not.toContain("border-color");
+      const di = lines87.findIndex((l) => l.trim() === `.dark .${name} {`);
+      const darkBody = lines87.slice(di, di + 3).join("\n");
+      expect(darkBody).toContain(`background-color: ${dark}`);
+      expect(darkBody).not.toContain("border-color");
+    }
+    // the token pin itself is guarded ([^}] crosses newlines without the /s flag)
+    expect(css87).toMatch(/@theme inline \{[^}]*--color-white: #fff;/);
+  });
+
+  it("retired raw dark selectors never return as rules (comments may mention them; rules may not)", () => {
+    // string literals: source \\/ = css text .bg-white\/60 (backslash-escaped slash)
+    const retired = (sel: string) =>
+      lines87.filter((l) => l.trim().startsWith(sel) && l.includes("{")).length;
+    expect(retired(".dark .bg-white\\/60")).toBe(0);
+    expect(retired(".dark .bg-white\\/70")).toBe(0);
+    // the certificate half of the split surfaces-rule STAYS (never a c-veil consumer)
+    expect(css87).toContain(".dark .certificate-card .bg-stone-50 { background-color: rgba(28, 25, 23, 0.7); }");
+  });
+
+  it("deviating dark painters retargeted + pinned (byte-identical dark for scoped groups)", () => {
+    expect(css87).toContain(".dark .srs-panel .c-veil-70 { background-color: rgb(28 25 23 / 0.8); }");
+    expect(css87).toContain(".dark .rush-hero .c-veil-70 { background-color: rgb(41 37 36 / 0.85); }");
+    expect(css87).toContain(".dark .report-digest .c-veil-60,\n.dark .report-digest .c-veil-70 { background-color: rgb(41 37 36 / 0.6); }");
+    // dormant gmetro badge keeps its own-class painter (never referenced bg-white alphas)
+    expect(css87).toContain(".dark .gmetro-lesson-badge { background-color: rgb(41 37 36 / 0.6); }");
+    // the /80 hero painter stays untouched (out of phase-4 scope)
+    expect(css87).toContain(".dark .rush-banner .bg-white\\/80,.dark .rush-hero .bg-white\\/80");
+  });
+
+  it("raw bg-white/60|70 never reappears in src — new translucent surfaces take c-veil (recursive walk)", () => {
+    const offenders: string[] = [];
+    const walk = (d: string): void => {
+      for (const name of readdirSync(d)) {
+        const p = join(d, name);
+        try {
+          if (readdirSync(p)) walk(p);
+        } catch {
+          if (p.endsWith(".tsx")) {
+            readFileSync(p, "utf8").split("\n").forEach((l, i) => {
+              if (/bg-white\/(60|70)\b/.test(l)) offenders.push(`${p}:${i + 1}`);
+            });
+          }
+        }
+      }
+    };
+    walk(resolve(process.cwd(), "src"));
+    expect(offenders, "translucent surfaces paint via c-veil-60/70, never raw bg-white alphas").toEqual([]);
+  });
+
+  it("c-veil consumers exist exactly where the r87 matrix said (18 across 12 files)", () => {
+    const files = [
+      "src/components/study/home/home-feed.tsx",
+      "src/components/study/leaderboard.tsx",
+      "src/components/study/writing-tab.tsx",
+      "src/components/study/srs-panel.tsx",
+      "src/components/study/spell-rush-view.tsx",
+      "src/components/study/rush-view.tsx",
+      "src/components/study/footer.tsx",
+      "src/components/study/home-view.tsx",
+      "src/components/study/lesson-tests-tab.tsx",
+      "src/components/study/weekly-report.tsx",
+      "src/components/study/explain-box.tsx",
+      "src/components/study/grammar-view.tsx",
+    ];
+    let total = 0;
+    for (const f of files) {
+      const n = (readFileSync(resolve(process.cwd(), f), "utf8").match(/c-veil-(60|70)\b/g) ?? []).length;
+      total += n;
+      expect(n, `${f} has at least one c-veil consumer`).toBeGreaterThan(0);
+    }
+    expect(total).toBe(18);
+  });
+});

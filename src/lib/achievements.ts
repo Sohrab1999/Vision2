@@ -540,6 +540,23 @@ export const BADGES: BadgeDef[] = [
     progress: (s) => `${faNum(Math.min(s.quizDays7, 7))} از ۷ روزِ این هفته`,
     check: (s) => s.quizDays7 >= 7,
   },
+  // رانِ دوتایی (Task 87): ترکیبِ هر دو رانِ روزانه در همان هفته — هر روزِ
+  // پنجره هم دیکته داشته و هم آزمون. از دلِ شمارنده‌های موجود (dictationDays7
+  // و quizDays7) خوانده می‌شود — هیچ ورودی تازه‌ای نمی‌خواهد. گلوگاهِ پیشرفتِ
+  // قفل‌شده minِ دو شمارنده است (کمترینِ دیکته‌روز و آزمون‌روز) — سرنخِ زیرِ
+  // قفل فقط بُعدِ روز را نشان می‌دهد (قراردادِ cage-free، r83). نتیجهٔ
+  // ناخواسته ندارد: بازشدنِ این نشان یعنی #۳۳ و #۳۴ هم همان هفته باز شده‌اند
+  // (زیرمجموعه‌اند) — این هم‌پوشانی عمدی است و در تست مستند می‌شود.
+  {
+    id: "double-run",
+    title: "هفتهٔ دوبل",
+    desc: "هفت روزِ پیوسته هم دیکته گرفته‌ای و هم آزمون داده‌ای — دو رانِ هم‌زمان در یک هفته",
+    icon: "Layers",
+    tier: "gold",
+    progress: (s) =>
+      `${faNum(Math.min(s.dictationDays7, s.quizDays7, 7))} از ۷ روزِ دوبلِ این هفته`,
+    check: (s) => s.dictationDays7 >= 7 && s.quizDays7 >= 7,
+  },
 ];
 
 export const TIER_STYLE: Record<BadgeTier, { ring: string; grad: string; chip: string; glow: string }> = {

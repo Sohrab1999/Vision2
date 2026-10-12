@@ -449,11 +449,11 @@ describe("رانِ ترکیبی — هفتهٔ دیکتهٔ پیوسته (Task 8
   const dictWeek = () =>
     Object.fromEntries([0, 1, 2, 3, 4, 5, 6].map((n) => [w(n), dh({ day: w(n), dictation: 1 })]));
 
-  it("wording و تیر و آیکن — طلایی با SpellCheck2؛ رجیستری ۳۴ شد", () => {
+  it("wording و تیر و آیکن — طلایی با SpellCheck2؛ رجیستری ۳۵ شد", () => {
     expect(byId("dictation-run").title).toBe("هفتهٔ دیکتهٔ پیوسته");
     expect(byId("dictation-run").tier).toBe("gold");
     expect(byId("dictation-run").icon).toBe("SpellCheck2");
-    expect(BADGES.length).toBe(34);
+    expect(BADGES.length).toBe(35);
   });
 
   it("قراردادِ شمارِ روز ≠ جمع: دو دیکته در یک روز هنوز یک روزِ دیکته‌دار است", () => {
@@ -620,6 +620,113 @@ describe("رانِ ترکیبی دوم — هفتهٔ آزمون‌دار (Task 
     expect(absent.quizDays7).toBe(0);
     expect(absent.quizzes7).toBe(0);
     expect(ids(absent)).not.toContain("exam-run");
+  });
+});
+
+describe("رانِ دوتایی — هفتهٔ دوبل (Task 87)", () => {
+  const w = (n: number) => daysAgoKey(n);
+  const dh = (over: Record<string, unknown>) => ({
+    day: "",
+    reviews: 0,
+    quizzes: 0,
+    words: 0,
+    dictation: 0,
+    rush: 0,
+    ...over,
+  });
+  const doubleWeek = (dictPerDay = 1, quizPerDay = 1) =>
+    Object.fromEntries(
+      [0, 1, 2, 3, 4, 5, 6].map((n) => [
+        w(n),
+        dh({ day: w(n), dictation: dictPerDay, quizzes: quizPerDay }),
+      ])
+    );
+
+  it("wording و تیر و آیکن — طلایی با Layers؛ از شمارنده‌های موجود می‌خواند (ورودی تازه ندارد)", () => {
+    expect(byId("double-run").title).toBe("هفتهٔ دوبل");
+    expect(byId("double-run").tier).toBe("gold");
+    expect(byId("double-run").icon).toBe("Layers");
+    const one = base({ dayHistory: { [w(2)]: dh({ day: w(2), dictation: 1, quizzes: 1 }) } });
+    expect(byId("double-run").progress!(one)).toBe("۱ از ۷ روزِ دوبلِ این هفته");
+  });
+
+  it("هفتهٔ دوبل کامل باز می‌شود — و بازشدنش یعنی هر دو رانِ تکی هم همان هفته بازند (هم‌پوشانیِ مستند)", () => {
+    const run = base({ dayHistory: doubleWeek() });
+    expect(run.dictationDays7).toBe(7);
+    expect(run.quizDays7).toBe(7);
+    expect(ids(run)).toContain("double-run");
+    // زیرمجموعه بودن عمدی است: هر روز دوبل، روزِ دیکته‌دار و آزمون‌دار هم هست
+    expect(ids(run)).toContain("dictation-run");
+    expect(ids(run)).toContain("exam-run");
+  });
+
+  it("گلوگاه = minِ دو شمارنده: دیکتهٔ کامل + آزمونِ ۳روزه → قفل با پیشرفتِ صادقِ ۳", () => {
+    // روزهای هم‌پوشان MERGE می‌شوند — Object.fromEntriesِ با کلیدِ تکراری "آخری" را نگه می‌دارد و خانه را می‌بُرد
+    const bottleneck = base({
+      dayHistory: Object.fromEntries(
+        [0, 1, 2, 3, 4, 5, 6].map((n) => [
+          w(n),
+          dh({ day: w(n), dictation: 1, quizzes: [2, 4, 6].includes(n) ? 1 : 0 }),
+        ])
+      ),
+    });
+    expect(bottleneck.dictationDays7).toBe(7);
+    expect(bottleneck.quizDays7).toBe(3);
+    expect(ids(bottleneck)).not.toContain("double-run");
+    expect(byId("double-run").progress!(bottleneck)).toBe("۳ از ۷ روزِ دوبلِ این هفته");
+    // قرینه: آزمونِ کامل + دیکتهٔ ۶روزه → قفل با ۶ — و رانِ آزمون باز می‌ماند
+    const mirror = base({
+      dayHistory: Object.fromEntries(
+        [0, 1, 2, 3, 4, 5, 6].map((n) => [
+          w(n),
+          dh({ day: w(n), quizzes: 1, dictation: n === 0 ? 0 : 1 }),
+        ])
+      ),
+    });
+    expect(mirror.dictationDays7).toBe(6);
+    expect(mirror.quizDays7).toBe(7);
+    expect(ids(mirror)).not.toContain("double-run");
+    expect(ids(mirror)).toContain("exam-run");
+    expect(byId("double-run").progress!(mirror)).toBe("۶ از ۷ روزِ دوبلِ این هفته");
+  });
+
+  it("قراردادِ شمارِ روز ≠ جمع: دو دیکته + دو آزمون در یک روز هنوز یک روزِ دوبل است", () => {
+    const one = base({ dayHistory: { [w(2)]: dh({ day: w(2), dictation: 2, quizzes: 2 }) } });
+    expect(one.dictationDays7).toBe(1);
+    expect(one.quizDays7).toBe(1);
+    expect(ids(one)).not.toContain("double-run");
+    expect(byId("double-run").progress!(one)).toBe("۱ از ۷ روزِ دوبلِ این هفته");
+  });
+
+  it("مرز پنجره: روزِ دوبلِ w(7) بیرون است — نه روزی اضافه می‌شود نه رانی شکل می‌گیرد", () => {
+    const inside = base({ dayHistory: { ...doubleWeek(), [w(7)]: dh({ day: w(7), dictation: 1, quizzes: 1 }) } });
+    expect(inside.dictationDays7).toBe(7);
+    expect(inside.quizDays7).toBe(7);
+    expect(ids(inside)).toContain("double-run");
+    const onlyOld = base({
+      dayHistory: Object.fromEntries([7, 8, 9, 10, 11, 12, 13].map((n) => [w(n), dh({ day: w(n), dictation: 1, quizzes: 1 })])),
+    });
+    expect(onlyOld.dictationDays7).toBe(0);
+    expect(ids(onlyOld)).not.toContain("double-run");
+  });
+
+  it("گاردِ ورودی خراب: خانه‌های junk/neg/NaN روزِ دوبل نمی‌شوند؛ امروزِ غایب → صفرِ امن", () => {
+    const corrupt = buildEvalInput(
+      baseRaw({
+        dayHistory: {
+          [w(1)]: dh({ day: w(1), dictation: 1, quizzes: -1 }),
+          [w(2)]: "junk",
+          [w(3)]: dh({ day: w(3), dictation: Number.NaN, quizzes: 1 }),
+          [w(4)]: dh({ day: w(4), dictation: 1, quizzes: 1 }),
+        },
+      }) as unknown as BuildArgs
+    );
+    // w(1): دیکتهٔ سالم + آزمونِ منفی (حذف) → روزِ دیکته؛ w(3): دیکتهٔ NaN + آزمونِ سالم → روزِ آزمون؛ w(4): دوتایی
+    expect(corrupt.dictationDays7).toBe(2);
+    expect(corrupt.quizDays7).toBe(2);
+    expect(ids(corrupt)).not.toContain("double-run");
+    const absent = base({});
+    expect(ids(absent)).not.toContain("double-run");
   });
 });
 

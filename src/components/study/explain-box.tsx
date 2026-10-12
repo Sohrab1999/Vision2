@@ -70,7 +70,7 @@ export default function ExplainBox({ questionId }: { questionId: string }) {
         </div>
         <p className="text-[13px] leading-7 text-stone-700">{first}</p>
         {rest.length > 0 && rest.join(" ").trim() !== "" && (
-          <p className="mt-1.5 rounded-lg bg-white/70 px-2.5 py-1.5 text-[12.5px] leading-6 text-stone-600">
+          <p className="mt-1.5 rounded-lg c-veil-70 px-2.5 py-1.5 text-[12.5px] leading-6 text-stone-600">
             {rest.join(" ").trim()}
           </p>
         )}

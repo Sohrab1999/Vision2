@@ -140,7 +140,7 @@ export default function Leaderboard() {
 
       {tab === "exams" ? (
         rows.length === 0 ? (
-          <div className="rounded-2xl border-2 border-dashed border-stone-300 bg-white/60 p-8 text-center">
+          <div className="rounded-2xl border-2 border-dashed border-stone-300 c-veil-60 p-8 text-center">
             <Medal size={28} className="mx-auto mb-2 text-stone-300" />
             <p className="text-sm font-bold text-stone-500">
               هنوز کسی در جدول نیست — اولین نفر باش!

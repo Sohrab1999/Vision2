@@ -127,7 +127,7 @@ export default function WritingTab({ lesson }: { lesson: LessonData }) {
               <motion.p
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
-                className="mt-2 rounded-lg bg-white/70 p-2.5 text-[12.5px] leading-6 text-amber-700"
+                className="mt-2 rounded-lg c-veil-70 p-2.5 text-[12.5px] leading-6 text-amber-700"
               >
                 💡 {ex.hint}
               </motion.p>

@@ -4,6 +4,10 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  /* r87: pinned explicitly — the c-veil utilities' no-fallback color-mix needs
+     var(--color-white) to ALWAYS resolve (Chrome's resolved-var-mix computed
+     serialization depends on it; see the c-veil contract below) */
+  --color-white: #fff;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-vazir), "Vazirmatn", ui-sans-serif, system-ui, "Segoe UI", Tahoma, sans-serif;
@@ -285,7 +289,9 @@ body {
 
 /* surfaces */
 .dark .bg-white { background-color: #1c1917; }
-.dark .bg-white\/70,.dark .certificate-card .bg-stone-50 { background-color: rgba(28, 25, 23, 0.7); }
+/* r87: the .bg-white\/70 half retired — every /70 consumer migrated to c-veil-70
+   (tranche 4 phase 4); the utility carries the same dark value nested. */
+.dark .certificate-card .bg-stone-50 { background-color: rgba(28, 25, 23, 0.7); }
 .dark .bg-white\/80 { background-color: rgba(28, 25, 23, 0.8); }
 .dark .bg-\[\#f7f6f2\]\/85 { background-color: rgba(12, 10, 9, 0.82); }
 
@@ -432,7 +438,8 @@ body {
 .dark .bg-orange-500 { background-image: linear-gradient(to bottom left, #c2410c, #9a3412); }
 .dark .from-amber-400,.dark .from-amber-300 { --tw-gradient-from: #b45309; }
 .dark .to-orange-500 { --tw-gradient-to: #c2410c; }
-.dark .bg-white\/60 { background-color: rgba(28, 25, 23, 0.6); }
+/* r87: the .bg-white\/60 dark default retired — every /60 consumer migrated to
+   c-veil-60 (tranche 4 phase 4); the utility carries the same dark value. */
 
 /* ------------------ leaderboard + weekly chart dark-mode tuning ------------------ */
 .dark .from-sky-400 { --tw-gradient-from: #0284c7; }
@@ -626,7 +633,9 @@ body {
 .dark .rush-banner .text-stone-600,.dark .rush-hero .text-stone-600,.dark .rush-done .text-stone-600,
 .dark .rush-card .text-stone-600,.dark .report-best .text-stone-600,.dark .duel-card .text-stone-600,
 .dark .duel-done .text-stone-600,.dark .gmetro-dialog .text-stone-600 { color: #c9c2bb; }
-.dark .rush-banner .bg-white\/80,.dark .rush-hero .bg-white\/80,.dark .rush-hero .bg-white\/70 { background-color: rgb(41 37 36 / 0.85); }
+/* r87 retarget: the two hero chips (rush-view + spell-rush-view) migrated onto
+   c-veil-70 — the deviating 0.85 painter follows the class, byte-identical. */
+.dark .rush-banner .bg-white\/80,.dark .rush-hero .bg-white\/80,.dark .rush-hero .c-veil-70 { background-color: rgb(41 37 36 / 0.85); }
 .dark .rush-banner .border-amber-200 { border-color: rgb(180 130 20 / 0.5); }
 .dark .rush-hero {
   background-image: linear-gradient(to bottom left, rgb(69 40 16 / 0.5), rgb(64 30 18 / 0.55), rgb(62 24 26 / 0.5));
@@ -688,7 +697,11 @@ body {
 .dark .srs-panel .bg-emerald-50 { background-color: rgba(6, 55, 40, 0.5); }
 .dark .srs-panel .bg-teal-50 { background-color: rgba(4, 47, 46, 0.5); }
 .dark .srs-panel .border-teal-100,.dark .srs-panel .border-teal-200 { border-color: rgb(19 78 74 / 0.6); }
-.dark .srs-panel .bg-white\/70,.dark .rush-board .bg-white\/70 { background-color: rgb(28 25 23 / 0.8); }
+/* r87 retarget: all three srs-panel /70 surfaces migrated onto c-veil-70; the
+   deviating 0.8 painter follows the class (the .rush-board half had zero
+   consumers — retired). srs-due-preview/.srs-fx-expand own rules keep painting
+   the same 0.8 over it. */
+.dark .srs-panel .c-veil-70 { background-color: rgb(28 25 23 / 0.8); }
 .dark .srs-panel .bg-stone-200\/70,.dark .srs-panel .srs-fx-bar.bg-stone-200\/70 { background-color: rgb(41 37 36 / 0.7); }
 .dark .srs-panel .text-emerald-600 { color: #34d399; }
 
@@ -789,9 +802,11 @@ body {
 }
 .dark .report-week,.dark .report-digest { background-color: rgb(28 25 23 / 0.7); border-color: #44403c; }
 .dark .report-week .bg-stone-200 { background-color: #44403c; }
-/* Task-37 «هفته‌نامه» — digest band mirrors the weekly band tuning */
-.dark .report-digest .bg-white\/60,
-.dark .report-digest .bg-white\/70 { background-color: rgb(41 37 36 / 0.6); }
+/* Task-37 «هفته‌نامه» — digest band mirrors the weekly band tuning;
+   r87 retarget: the four digest strips migrated onto c-veil-60/70 — the
+   deviating stone-800/0.6 painter follows the classes, byte-identical. */
+.dark .report-digest .c-veil-60,
+.dark .report-digest .c-veil-70 { background-color: rgb(41 37 36 / 0.6); }
 .dark .report-digest .border-stone-200 { border-color: #44403c; }
 .dark .report-digest .bg-stone-200\/60 { background-color: rgb(68 64 60 / 0.6); }
 .dark .report-digest .bg-stone-300 { background-color: #57534e; }
@@ -1312,7 +1327,8 @@ html.user-reduce-motion .streak-flame {
    migrate these onto c-card (consumer matrix r85): .word-day descendants,
    .rush-card/.rush-done/.rush-hud descendants, .skill-panel, .report-digest,
    .duel-card, .gmetro-line/.gmetro-dialog, .vocab-donut, .badge-card, and
-   the alpha variants bg-white/60|70 (their own dark alphas). */
+   the alpha variants bg-white/60|70 (r87: these now own the c-veil family
+   below — still never c-card consumers). */
 @utility c-card {
   background-color: rgb(255, 255, 255);
   border-color: lab(91.055 0.663072 0.865579); /* stone-200 light (probe) */
@@ -1349,4 +1365,46 @@ html.user-reduce-motion .streak-flame {
   &:is(.dark *) {
     background-color: rgb(41, 37, 36);
   }
+}
+
+/* ── Task 87 — tranche 4 phase 4: the TRANSLUCENT VEIL semantic classes ────
+   The last raw surface family: bg-white/60|70 — translucent panels (ledger
+   rows, legend strips, empty-state dashed panels, hero chips, footer band).
+   18 consumers in 12 files (r87 consumer matrix: 8× /60 + 10× /70).
+   ① BG-ONLY classes — zero order risk with any border/hover utility; no
+     consumer carries a conflicting bg state utility (walk-guarded).
+   ② PLAIN AUTHOR RULES (the phase-1 c-chip mechanism), NOT @utility — probed
+     r87: the 4.1.18 @utility pipeline converts color-mix declarations into
+     lab() (var-free AND var-carrying forms — the generated bg-white/60 keeps
+     its verbatim color-mix only because it lives in the modifier-generated
+     path), and Chrome re-serializes stylesheet-declared oklab as lab too.
+     The ONLY byte-parity-preserving form is the original declaration emitted
+     verbatim as an unlayered author rule — Chrome computes it to the exact
+     retired value oklab(0.999994 0.0000455677 0.0000200868 / α) (BEFORE
+     probe). Family caveat (same as c-chip): unlayered author rules beat
+     utilities — never combine with a conflicting color utility on one
+     element; the deviating dark painters below are intentionally MORE
+     specific (same layer, they win).
+   ③ Dark defaults = the retired global rules' exact values (r87 BEFORE
+     probe): /60 → rgba(28,25,23,0.6), /70 → rgba(28,25,23,0.7).
+   ④ DEVIATING dark painters — each group stays byte-identical, zero extra
+     work:
+     .dark .srs-panel .c-veil-70 → rgb(28 25 23 / 0.8) (retargeted r87),
+     .dark .rush-hero .c-veil-70 → rgb(41 37 36 / 0.85) (retargeted r87),
+     .dark .report-digest .c-veil-60|.c-veil-70 → rgb(41 37 36 / 0.6) (retargeted),
+     .dark .gmetro-lesson-badge → rgb(41 37 36 / 0.6) (own-class rule, untouched;
+     surface currently dormant — dataset covers all lines).
+   ⑤ Raw bg-white/60|70 must NEVER reappear in src — new translucent surfaces
+     take these classes (css-hygiene guard locks this). */
+.c-veil-60 {
+  background-color: color-mix(in oklab, var(--color-white) 60%, transparent);
+}
+.dark .c-veil-60 {
+  background-color: rgba(28, 25, 23, 0.6);
+}
+.c-veil-70 {
+  background-color: color-mix(in oklab, var(--color-white) 70%, transparent);
+}
+.dark .c-veil-70 {
+  background-color: rgba(28, 25, 23, 0.7);
 }
