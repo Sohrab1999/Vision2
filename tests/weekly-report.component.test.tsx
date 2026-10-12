@@ -95,4 +95,50 @@ describe("دفتر یخ در هفته‌نامه — کامپوننت (Task 78)"
     // و دفتر یخ جدا و بعدش
     expect(screen.getByLabelText(/دفتر یخ/)).toBeInTheDocument();
   });
+
+  // ---- نشانِ روزهای یخ‌خورده (Task 79) — نوار ۱۴روزه + نقطه‌های هدف ----
+
+  it("نوار نجات‌خورده: روزِ غیبتِ ثبت‌شده حلقهٔ آسمانی + عنوانِ نجات می‌گیرد", () => {
+    useStudy.setState({ freezeCount: 1, freezeUsedDays: [daysAgoKey(3)] });
+    const { container } = render(<WeeklyReportSection />);
+    const bar = container.querySelector(".ring-sky-500\\/60");
+    expect(bar).not.toBeNull();
+    expect(bar?.getAttribute("title")).toContain("روزِ غیبت — با یخ نجات شد");
+    // نجاتِ ۳ روز پیش = داخل هفتهٔ جاری → نوارِ خالیِ این هفته (emerald-200/60) با حلقهٔ آسمانی
+    expect(bar?.className).not.toContain("ring-emerald");
+  });
+
+  it("امروز: حلقهٔ زمردی اولویت دارد — هیچ‌گاه حلقهٔ آسمانی نمی‌گیرد", () => {
+    useStudy.setState({ freezeCount: 1, freezeUsedDays: [daysAgoKey(1)], freezeSavedDay: todayStr() });
+    const { container } = render(<WeeklyReportSection />);
+    const todayBar = container.querySelector(".ring-emerald-500\\/60");
+    expect(todayBar).not.toBeNull();
+    expect(todayBar?.className).not.toContain("ring-sky");
+    // نجاتِ دیروز دیده می‌شود؛ «امروز» فقط زمردی
+    expect(container.querySelector(".ring-sky-500\\/60")).not.toBeNull();
+    expect(todayBar?.getAttribute("title")).toContain("فعالیت");
+  });
+
+  it("نقطهٔ نجات: dot با border-sky-500 + عنوانِ نجات — بین «هدف کامل» و «فعال»", () => {
+    useStudy.setState({ freezeUsedDays: [daysAgoKey(4)] });
+    const { container } = render(<WeeklyReportSection />);
+    const dot = container.querySelector(".border-sky-500");
+    expect(dot).not.toBeNull();
+    expect(dot?.getAttribute("title")).toContain("روزِ غیبت — با یخ نجات شد");
+  });
+
+  it("اولویت: نقطهٔ هدفِ کامل زمردی می‌ماند حتی اگر روزِ دیگری نجات خورده باشد", () => {
+    useStudy.setState({ goalMetDays: [todayStr()], freezeUsedDays: [daysAgoKey(2)] });
+    const { container } = render(<WeeklyReportSection />);
+    const metDot = container.querySelector(".border-emerald-600");
+    expect(metDot).not.toBeNull();
+    expect(metDot?.getAttribute("title")).toContain("هدف کامل شد");
+    expect(container.querySelectorAll(".border-sky-500").length).toBe(1);
+  });
+
+  it("تازه‌وارد: هیچ نشانِ آسمانی در نوار و نقطه‌ها نیست (خموشیِ کامل)", () => {
+    const { container } = render(<WeeklyReportSection />);
+    expect(container.querySelector(".ring-sky-500")).toBeNull();
+    expect(container.querySelector(".border-sky-500")).toBeNull();
+  });
 });

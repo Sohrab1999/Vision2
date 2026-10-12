@@ -8,7 +8,7 @@
 // ------------------------------------------------------------------
 
 import { describe, it, expect } from "vitest";
-import { freezeBadgeMeta, freezeEarnMeta, freezeLedgerMeta } from "@/lib/freeze-badge";
+import { freezeBadgeMeta, freezeDayMark, freezeEarnMeta, freezeLedgerMeta } from "@/lib/freeze-badge";
 
 const T = "2026-10-13"; // سه‌شنبه — کلید ثابت برای همهٔ مرزها
 const dAgo = (n: number): string => {
@@ -204,5 +204,48 @@ describe("freezeLedgerMeta — دفتر یخِ کارنامه (Task 78)", () => 
     expect(corrupt.rescueLabel).toBeNull();
     const live = freezeLedgerMeta({ ...base, today: "" });
     expect(live.stockLabel).toBe("۲ یخ در انبار");
+  });
+});
+
+describe("freezeDayMark — نشانِ روزهای یخ‌خوردهٔ کارنامه (Task 79)", () => {
+  it("روزِ داخل آرایه → saved + عنوانِ دقیق «روزِ غیبت — با یخ نجات شد»", () => {
+    const m = freezeDayMark(dAgo(3), [dAgo(3), dAgo(10)]);
+    expect(m.saved).toBe(true);
+    expect(m.title).toBe("روزِ غیبت — با یخ نجات شد");
+  });
+
+  it("روزِ بیرون آرایه → خموشی (saved:false + عنوان خالی)", () => {
+    const m = freezeDayMark(dAgo(2), [dAgo(3)]);
+    expect(m.saved).toBe(false);
+    expect(m.title).toBe("");
+  });
+
+  it("آرایهٔ خالی → هیچ روزی نشان ندارد", () => {
+    const m = freezeDayMark(dAgo(3), []);
+    expect(m.saved).toBe(false);
+    expect(m.title).toBe("");
+  });
+
+  it("آرایهٔ خراب (null/عدد/آبجکت) → گارد، نه استثنا", () => {
+    const corrupt = [null, 5, { day: dAgo(3) }, dAgo(3)] as unknown as string[];
+    const m = freezeDayMark(dAgo(3), corrupt);
+    expect(m.saved).toBe(true); // عضو رشته‌ای سالم دیده می‌شود
+    expect(freezeDayMark(dAgo(2), corrupt).saved).toBe(false);
+  });
+
+  it("ورودی روزِ خراب (خالی/غیررشته‌ای) → خموشی امن", () => {
+    expect(freezeDayMark("", [dAgo(3)]).saved).toBe(false);
+    expect(freezeDayMark(undefined as unknown as string, [dAgo(3)]).saved).toBe(false);
+  });
+
+  it("تکرارِ همان روز در آرایه → همان یک نشان (بولی، نه شمارش)", () => {
+    const m = freezeDayMark(dAgo(3), [dAgo(3), dAgo(3), dAgo(3)]);
+    expect(m.saved).toBe(true);
+  });
+
+  it("امروز هم می‌تواند نجاتِ ثبت‌شده باشد (گزارش، صحنهٔ کامل — قید نمایشی در UI است نه دیتا)", () => {
+    // قرارداد موتور: ثبتِ یخ همیشه «دیروز» است؛ ولی خالصِ نشان، دیتا را
+    // صادقانه نشان می‌دهد — اولویتِ حلقهٔ امروز در سطح کامپوننت قفل می‌شود
+    expect(freezeDayMark(T, [T]).saved).toBe(true);
   });
 });

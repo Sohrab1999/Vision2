@@ -14,7 +14,7 @@ import { Sparkles, TrendingDown, TrendingUp, Minus, CalendarHeart, Check, Snowfl
 import { useStudy, daysAgoKey } from "@/lib/study-store";
 import { faNum } from "@/lib/study-theme";
 import { computeWeeklyDigest, faWeekday, faDayLabel, type Delta } from "@/lib/weekly-digest";
-import { freezeLedgerMeta } from "@/lib/freeze-badge";
+import { freezeDayMark, freezeLedgerMeta } from "@/lib/freeze-badge";
 
 const DELTA_META: { field: Delta["field"]; label: string; cls: string }[] = [
   { field: "reviews", label: "مرور", cls: "text-amber-600" },
@@ -106,6 +106,9 @@ export default function WeeklyReportSection() {
         {digest.perDay.map((p, i) => {
           const total = p.stat.reviews + p.stat.quizzes + p.stat.words + p.stat.dictation + p.stat.rush;
           const isToday = p.day === today;
+          // نشانِ یخ (Task 79) — روزِ غیبتِ نجات‌خورده حلقهٔ آسمانی می‌گیرد؛
+          // ثبت‌ها همیشه پیش از امروز‌اند پس با حلقهٔ زمردیِ امروز برخورد نمی‌کند
+          const mark = freezeDayMark(p.day, freezeUsedDays);
           return (
             <motion.div
               key={p.day}
@@ -120,8 +123,14 @@ export default function WeeklyReportSection() {
                   : total > 0
                     ? "bg-stone-300"
                     : "bg-stone-200/60"
-              } ${isToday ? "ring-2 ring-emerald-500/60 ring-offset-1" : ""}`}
-              title={`${faDayLabel(p.day)} — ${faNum(total)} فعالیت`}
+              } ${
+                isToday
+                  ? "ring-2 ring-emerald-500/60 ring-offset-1"
+                  : mark.saved
+                    ? "ring-2 ring-sky-500/60 ring-offset-1"
+                    : ""
+              }`}
+              title={`${faDayLabel(p.day)} — ${mark.saved ? mark.title : `${faNum(total)} فعالیت`}`}
             />
           );
         })}
@@ -143,17 +152,23 @@ export default function WeeklyReportSection() {
             .filter((p) => p.inThisWeek)
             .map((p) => {
               const met = goalMetDays.includes(p.day);
+              // نشانِ یخ (Task 79) — اولویت: هدف کامل → نجاتِ یخ → فعال → خالی؛
+              // روزِ نجات‌خورده ذاتاً بی‌فعالیت است — حلقهٔ آسمانی می‌گوید
+              // «این روزِ خالی زنجیره را نشکست» (bg-sky-50 قاعدهٔ دارک دارد)
+              const mark = freezeDayMark(p.day, freezeUsedDays);
               const active = p.stat.reviews + p.stat.quizzes + p.stat.words + p.stat.dictation + p.stat.rush > 0;
               return (
                 <span
                   key={p.day}
-                  title={`${faWeekday(p.day)} — ${met ? "هدف کامل شد" : active ? "فعال ولی ناقص" : "بی‌فعالیت"}`}
+                  title={`${faWeekday(p.day)} — ${met ? "هدف کامل شد" : mark.saved ? mark.title : active ? "فعال ولی ناقص" : "بی‌فعالیت"}`}
                   className={`h-3.5 w-3.5 rounded-full border ${
                     met
                       ? "border-emerald-600 bg-emerald-500"
-                      : active
-                        ? "border-amber-400 bg-amber-200"
-                        : "border-stone-300 bg-white"
+                      : mark.saved
+                        ? "border-sky-500 bg-sky-50"
+                        : active
+                          ? "border-amber-400 bg-amber-200"
+                          : "border-stone-300 bg-white"
                   }`}
                 />
               );

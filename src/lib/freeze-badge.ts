@@ -194,6 +194,31 @@ export function freezeLedgerMeta(input: {
   return { stockLabel, savedToday, rescueLabel, earn, title };
 }
 
+// ---------------- ④ نشانِ روزهای یخ‌خورده در کارنامه (Task 79) ----------------
+
+export interface FreezeDayMark {
+  /** این روز، روزِ غیبتی است که یخ زنجیره را نجات داد */
+  saved: boolean;
+  /** برچسب یک‌جای tooltip نوار/نقطه — بی‌یخ → رشتهٔ خالی */
+  title: string;
+}
+
+/**
+ * نشانِ یخ برای یک روز مشخص روی نوار ۱۴روزه و نقطه‌های هدف کارنامه.
+ * freezeUsedDays روزهای «غیبت» را ثبت می‌کند (applyStreak هنگام بازگشت،
+ * روزِ قبل را ثبت می‌کند) — یعنی هر عضو آن روزی است که فعالیتی نداشت
+ * ولی یخ زنجیره را زنده نگه داشت؛ پاسخِ بصریِ «چرا زنجیره‌ام نشکست؟».
+ * ثبت‌ها همیشه پیش از «امروز»اند، پس تداخل حلقهٔ آسمانی با حلقهٔ
+ * زمردیِ امروزِ نوار ممکن نیست (گزارش، صحنهٔ کامل).
+ */
+export function freezeDayMark(day: string, freezeUsedDays: string[]): FreezeDayMark {
+  const used = Array.isArray(freezeUsedDays)
+    ? freezeUsedDays.filter((d): d is string => typeof d === "string")
+    : [];
+  const saved = typeof day === "string" && day.length > 0 && used.includes(day);
+  return { saved, title: saved ? "روزِ غیبت — با یخ نجات شد" : "" };
+}
+
 /** کلید روزِ محلی — فقط نگهبان مسیر today خالی */
 function todayStr0(): string {
   const d = new Date();
