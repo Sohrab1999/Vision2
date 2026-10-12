@@ -432,3 +432,138 @@ describe("nav-prefill — پل sessionStorage", () => {
     expect(readCountPrefill("t-key3", [10, 20, 30])).toBeNull(); // کلید غایب
   });
 });
+
+// ------------------------------------------------------------------
+// Task 71 — صفت زمان: «آزمون ۲۰ بدون زمان» / «کنکور ۳۰ با زمان»
+// ------------------------------------------------------------------
+import { parseQueryTiming, parseParamCommandId, TIMING_LABEL } from "@/lib/command-palette";
+import { readFlagPrefill, writeFlagPrefill, clearFlagPrefill } from "@/lib/nav-prefill";
+
+describe("parseQueryTiming", () => {
+  it("«بدون زمان» فاصله‌دار را می‌گیرد", () => {
+    expect(parseQueryTiming("آزمون ۲۰ بدون زمان")).toBe("untimed");
+  });
+
+  it("شکل چسبیده (حذف نیم‌فاصله) را هم می‌گیرد", () => {
+    expect(parseQueryTiming("آزمون ۲۰ بی‌زمان")).toBe("untimed");
+    expect(parseQueryTiming("کنکور ۱۰ بی‌تایم")).toBe("untimed");
+    expect(parseQueryTiming("آزمون ۱۰ بدون‌تایمر")).toBe("untimed");
+  });
+
+  it("«بدون تایمر» و ماشه‌های لاتین", () => {
+    expect(parseQueryTiming("آزمون ۱۰ بدون تایمر")).toBe("untimed");
+    expect(parseQueryTiming("exam 20 untimed")).toBe("untimed");
+    expect(parseQueryTiming("exam 20 no timer")).toBe("untimed");
+  });
+
+  it("ماشه‌های با-زمان", () => {
+    expect(parseQueryTiming("کنکور ۳۰ با زمان")).toBe("timed");
+    expect(parseQueryTiming("آزمون ۱۰ تایم‌دار")).toBe("timed");
+    expect(parseQueryTiming("konkur 20 timed")).toBe("timed");
+  });
+
+  it("بدون صفت → null", () => {
+    expect(parseQueryTiming("آزمون ۲۰")).toBeNull();
+    expect(parseQueryTiming("هدف روزانه ۱۵")).toBeNull();
+    expect(parseQueryTiming("")).toBeNull();
+  });
+
+  it("مرزواژه: «بدون زماندار» به «بدون زمان» نمی‌خوابد", () => {
+    expect(parseQueryTiming("آزمون بدون زماندار")).toBeNull();
+  });
+});
+
+describe("expandParameterized — صفت زمان", () => {
+  it("«آزمون ۲۰ بدون زمان» فقط یک فرمان بی‌زمان می‌دهد", () => {
+    const out = expandParameterized("آزمون ۲۰ بدون زمان");
+    expect(out).toHaveLength(1);
+    expect(out[0]!.id).toBe("exam-count-20-untimed");
+    expect(out[0]!.label).toBe("آزمون جامع ۲۰ سؤالی، بدون زمان");
+    expect(out[0]!.hint).toContain("تایمر خاموش");
+  });
+
+  it("«کنکور ۳۰ با زمان» صفت timed می‌دهد", () => {
+    const out = expandParameterized("کنکور ۳۰ با زمان");
+    expect(out).toHaveLength(1);
+    expect(out[0]!.id).toBe("konkur-count-30-timed");
+    expect(out[0]!.hint).toContain("تایمر روشن");
+  });
+
+  it("«آزمون ۲۰» بدون صفت، بدون پسوند سر جایش (رفت‌برگشت Task 69)", () => {
+    expect(expandParameterized("آزمون ۲۰")[0]!.id).toBe("exam-count-20");
+    expect(expandParameterized("شبیه‌ساز 10")[0]!.id).toBe("konkur-count-10");
+    expect(expandParameterized("هدف 12")[0]!.id).toBe("daily-goal-10");
+  });
+
+  it("صفت برای خانوادهٔ بی‌زمان نادیده گرفته می‌شود (هدف فوری می‌ماند)", () => {
+    const out = expandParameterized("هدف روزانه ۱۵ بدون زمان");
+    expect(out).toHaveLength(1);
+    expect(out[0]!.id).toBe("daily-goal-15");
+  });
+
+  it("صفت بدون عدد → پیش‌فرض کوچک‌ترین مقدار مجاز", () => {
+    expect(expandParameterized("آزمون بدون زمان")[0]!.id).toBe("exam-count-10-untimed");
+    expect(expandParameterized("کنکور تایم‌دار")[0]!.id).toBe("konkur-count-10-timed");
+    // خانوادهٔ بی‌زمان بدون عدد همچنان هیچ — «هدف بدون زمان» بی‌معناست
+    expect(expandParameterized("هدف بدون زمان")).toEqual([]);
+  });
+
+  it("عدد خارج از مقادیر با صفت هم می‌چسبد", () => {
+    expect(expandParameterized("آزمون ۲۰۰ بدون زمان")[0]!.id).toBe("exam-count-30-untimed");
+  });
+
+  it("خروجی صفت‌دار با امتیازدهی استاندارد هم پیدا و صدرنشین است", () => {
+    const out = expandParameterized("آزمون ۲۰ بدون زمان");
+    expect(scoreCommand("آزمون ۲۰ بدون زمان", out[0]!)).toBeGreaterThan(0);
+    const filtered = filterCommands(
+      [...out, { id: "exam-count-20", label: "آزمون جامع ۲۰ سؤالی", group: "تمرین و چالش" }],
+      "آزمون ۲۰ بدون زمان",
+      5
+    );
+    expect(filtered[0]!.id).toBe("exam-count-20-untimed");
+  });
+});
+
+describe("parseParamCommandId", () => {
+  it("شناسهٔ خالی و صفت‌دار را می‌پارسد", () => {
+    expect(parseParamCommandId("exam-count-20")!.timing).toBeNull();
+    expect(parseParamCommandId("exam-count-20")!.n).toBe(20);
+    expect(parseParamCommandId("exam-count-20-untimed")!.timing).toBe("untimed");
+    expect(parseParamCommandId("konkur-count-30-timed")!.timing).toBe("timed");
+    expect(parseParamCommandId("exam-count-20-untimed")!.spec.key).toBe("exam-count");
+  });
+
+  it("پسوند ناشناخته و صفت روی خانوادهٔ بی‌زمان → null", () => {
+    expect(parseParamCommandId("exam-count-20-bogus")).toBeNull();
+    expect(parseParamCommandId("daily-goal-15-untimed")).toBeNull();
+    expect(parseParamCommandId("exam-count-77-untimed")).toBeNull();
+  });
+
+  it("بازسازی «اخیر» برچسب صفت‌دار را زنده می‌کند", () => {
+    expect(commandFromParamId("exam-count-20-untimed")!.label).toBe("آزمون جامع ۲۰ سؤالی، بدون زمان");
+    expect(commandFromParamId("konkur-count-30-timed")!.label).toBe("شبیه‌ساز کنکور ۳۰ تستی، با زمان");
+    expect(commandFromParamId("exam-count-20")!.label).toBe("آزمون جامع ۲۰ سؤالی");
+    expect(commandFromParamId("exam-count-20-x")).toBeNull();
+  });
+
+  it("نگهبان: فقط آزمون و کنکور صفت زمان دارند و برچسب‌ها قراردادی‌اند", () => {
+    for (const s of PARAM_SPECS) {
+      if (s.supportsTiming) expect(["exam-count", "konkur-count"]).toContain(s.key);
+      else expect(s.key).toBe("daily-goal");
+    }
+    expect(TIMING_LABEL.untimed).toBe("بدون زمان");
+    expect(TIMING_LABEL.timed).toBe("با زمان");
+  });
+});
+
+describe("nav-prefill — پرچم زمان (Task 71)", () => {
+  it("بولی می‌نویسد و می‌خواند؛ پاک‌کردن → null", () => {
+    writeFlagPrefill("t-flag", false);
+    expect(readFlagPrefill("t-flag")).toBe(false);
+    writeFlagPrefill("t-flag", true);
+    expect(readFlagPrefill("t-flag")).toBe(true);
+    clearFlagPrefill("t-flag");
+    expect(readFlagPrefill("t-flag")).toBeNull();
+    expect(readFlagPrefill("t-flag-missing")).toBeNull();
+  });
+});

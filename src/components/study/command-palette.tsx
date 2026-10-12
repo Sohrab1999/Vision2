@@ -47,9 +47,15 @@ import {
   lessonTabCommands,
   mergeRecent,
   parseLessonTabId,
+  parseParamCommandId,
   type CommandDef,
 } from "@/lib/command-palette";
-import { writeCountPrefill } from "@/lib/nav-prefill";
+import {
+  EXAM_TIMED_KEY,
+  KONKUR_TIMED_KEY,
+  writeCountPrefill,
+  writeFlagPrefill,
+} from "@/lib/nav-prefill";
 import { Kbd } from "./shortcut-guide";
 
 // ------------------------------------------------------------------
@@ -326,20 +332,30 @@ export default function CommandPalette() {
         // آزمون جامع N سؤالی: prefill در sessionStorage می‌نشیند (نمای lazy
         // رویداد را از دست می‌دهد) + رویداد برای وقتی که نما همین حالا باز است
         if (cmd.id.startsWith("exam-count-")) {
-          const n = Number(cmd.id.slice("exam-count-".length));
-          if ([10, 20, 30].includes(n)) {
-            writeCountPrefill("vision2-exam-prefill", n);
+          const p = parseParamCommandId(cmd.id);
+          if (p) {
+            writeCountPrefill("vision2-exam-prefill", p.n);
+            if (p.timing !== null) writeFlagPrefill(EXAM_TIMED_KEY, p.timing === "timed");
             setView({ type: "exam" });
-            window.dispatchEvent(new CustomEvent("open-exam-with", { detail: { count: n } }));
+            window.dispatchEvent(
+              new CustomEvent("open-exam-with", {
+                detail: p.timing ? { count: p.n, timed: p.timing === "timed" } : { count: p.n },
+              })
+            );
           }
           break;
         }
         if (cmd.id.startsWith("konkur-count-")) {
-          const n = Number(cmd.id.slice("konkur-count-".length));
-          if ([10, 20, 30].includes(n)) {
-            writeCountPrefill("vision2-konkur-prefill", n);
+          const p = parseParamCommandId(cmd.id);
+          if (p) {
+            writeCountPrefill("vision2-konkur-prefill", p.n);
+            if (p.timing !== null) writeFlagPrefill(KONKUR_TIMED_KEY, p.timing === "timed");
             setView({ type: "konkur" });
-            window.dispatchEvent(new CustomEvent("open-konkur-with", { detail: { count: n } }));
+            window.dispatchEvent(
+              new CustomEvent("open-konkur-with", {
+                detail: p.timing ? { count: p.n, timed: p.timing === "timed" } : { count: p.n },
+              })
+            );
           }
           break;
         }
@@ -418,7 +434,7 @@ export default function CommandPalette() {
             aria-controls="command-palette-list"
             aria-activedescendant={filtered[sel] ? `cp-opt-${sel}` : undefined}
             aria-label="جست‌وجوی فرمان‌ها"
-            placeholder="برو به… (آزمون ۲۰، هدف ۱۰، دیکتهٔ درس ۳، شب)"
+            placeholder="برو به… (آزمون ۲۰، آزمون ۱۰ بدون زمان، هدف ۱۰، شب)"
             className="min-w-0 flex-1 bg-transparent text-[15px] font-bold text-stone-800 outline-none"
             autoComplete="off"
             spellCheck={false}
@@ -441,7 +457,7 @@ export default function CommandPalette() {
               </span>
               <p className="text-[13.5px] font-extrabold text-stone-800">فرمانی یافت نشد</p>
               <p className="text-[11.5px] font-bold text-stone-500">
-                «آزمون ۲۰»، «واژگان درس ۲» یا «دیکشنری» را امتحان کن
+                «آزمون ۲۰ بدون زمان»، «واژگان درس ۲» یا «دیکشنری» را امتحان کن
               </p>
             </div>
           ) : (

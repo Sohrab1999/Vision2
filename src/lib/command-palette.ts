@@ -208,7 +208,7 @@ export function filterCommands(cmds: CommandDef[], query: string, cap = 12): Com
 // ------------------------------------------------------------------
 
 export interface ParamSpec {
-  /** کلید قراردادی شناسه — «<key>-<n>» */
+  /** کلید قراردادی شناسه — «<key>-<n>» و با صفت زمان «<key>-<n>-<timed|untimed>» */
   key: string;
   /** واژه‌های ماشه (نرمال‌شده) که باید در پرس‌وجو بیایند */
   triggers: string[];
@@ -218,6 +218,8 @@ export interface ParamSpec {
   hint: (n: number) => string;
   group: string;
   keywords?: string[];
+  /** صفت زمان («آزمون ۲۰ بدون زمان») برای این خانواده معنا دارد؟ (Task 71) */
+  supportsTiming?: boolean;
 }
 
 /** سه خانوادهٔ پارامتری: طول آزمون جامع، طول شبیه‌ساز کنکور، هدف روزانه */
@@ -230,6 +232,7 @@ export const PARAM_SPECS: ParamSpec[] = [
     hint: (n) => `شروع سریع — ${faDigits(n)} سؤال از قبل انتخاب شده`,
     group: "تمرین و چالش",
     keywords: ["exam", "final test", "سؤال", "طول آزمون"],
+    supportsTiming: true,
   },
   {
     key: "konkur-count",
@@ -239,6 +242,7 @@ export const PARAM_SPECS: ParamSpec[] = [
     hint: (n) => `ورود به شبیه‌ساز با ${faDigits(n)} تست`,
     group: "تمرین و چالش",
     keywords: ["konkur", "simulator", "تست"],
+    supportsTiming: true,
   },
   {
     key: "daily-goal",
@@ -271,15 +275,97 @@ export function snapToValues(n: number, values: readonly number[]): number {
   return best;
 }
 
+// ------------------------------------------------------------------
+// صفت زمان (Task 71) — «آزمون ۲۰ بدون زمان» / «کنکور ۳۰ با زمان».
+// ماشه‌ها به شکل انسانی نوشته می‌شوند و هر دو سمت نرمال می‌شوند؛
+// نیم‌فاصله در normalizeFa حذف می‌شود (نه فاصله‌سازی) پس شکل چسبیده و
+// فاصله‌دار هر دو فهرست شده‌اند («بی‌زمان»→«بیزمان»، «بی تایم» فاصله‌دار).
+// تطبیق با مرزواژهٔ فاصله‌ای است («بدون زماندار» به «بدون زمان» نمی‌خوابد).
+// ------------------------------------------------------------------
+
+export type QueryTiming = "timed" | "untimed";
+
+/** برچسب اشتراکی برچسب/کلیدواژه‌ها */
+export const TIMING_LABEL: Record<QueryTiming, string> = { timed: "با زمان", untimed: "بدون زمان" };
+
+const TIMING_UNTIMED_TRIGGERS = [
+  "بدون زمان",
+  "بیزمان",
+  "بی تایم",
+  "بیتایم",
+  "بدون تایمر",
+  "بدونتایمر",
+  "بدون زمانسنج",
+  "بدون محدودیت",
+  "untimed",
+  "no timer",
+];
+const TIMING_TIMED_TRIGGERS = ["با زمان", "بازمان", "با تایمر", "باتایمر", "تایم دار", "تایمدار", "با زمانسنج", "timed"];
+
+/** صفت زمان پرس‌وجو؛ هیچ ماشه‌ای نیامد → null (هر دو سمت نرمال می‌شوند) */
+export function parseQueryTiming(query: string): QueryTiming | null {
+  const q = normalizeFa(query);
+  const padded = ` ${q} `;
+  const hit = (list: string[]) =>
+    list.some((tr) => {
+      const ntr = normalizeFa(tr);
+      return padded.includes(` ${ntr} `);
+    });
+  if (hit(TIMING_UNTIMED_TRIGGERS)) return "untimed";
+  if (hit(TIMING_TIMED_TRIGGERS)) return "timed";
+  return null;
+}
+
+/** چکیدهٔ شناسهٔ پارامتریِ پارس‌شده — منبع یگانهٔ حقیقتِ دیسپچ و «اخیر» */
+export interface ParsedParamId {
+  spec: ParamSpec;
+  n: number;
+  timing: QueryTiming | null;
+}
+
 /**
- * گسترش پرس‌وجو به فرمان‌های پارامتریِ متناظر: عدد لازم است و حداقل یک
- * ماشه باید در توکن‌ها بیاید (ماشهٔ چندتوکنی با زیررشتهٔ پرس‌وجوی کامل).
- * عدد خارج از مقادیر مجاز به نزدیک‌ترین می‌چسبد — کاربر همیشه نتیجه می‌گیرد.
+ * پارس قرارداد شناسه «<key>-<n>» یا «<key>-<n>-<timed|untimed>>».
+ * پسوند ناشناخته/عدد خارج از مقادیر/صفت زمان برای خانوادهٔ بی‌زمان → null.
+ */
+export function parseParamCommandId(id: string): ParsedParamId | null {
+  for (const spec of PARAM_SPECS) {
+    if (!id.startsWith(`${spec.key}-`)) continue;
+    const rest = id.slice(spec.key.length + 1);
+    const m = rest.match(/^(\d+)(?:-(timed|untimed))?$/);
+    if (!m) return null;
+    const n = Number(m[1]);
+    if (!spec.values.includes(n)) return null;
+    const timing = (m[2] as QueryTiming | undefined) ?? null;
+    if (timing && !spec.supportsTiming) return null;
+    return { spec, n, timing };
+  }
+  return null;
+}
+
+/** ساخت CommandDef پارامتری — برچسب/راهنما با صفت زمان تزئین می‌شوند */
+function paramCommand(spec: ParamSpec, n: number, timing: QueryTiming | null): CommandDef {
+  return {
+    id: timing ? `${spec.key}-${n}-${timing}` : `${spec.key}-${n}`,
+    label: timing ? `${spec.label(n)}، ${TIMING_LABEL[timing]}` : spec.label(n),
+    hint: timing ? `${spec.hint(n)} — تایمر ${timing === "untimed" ? "خاموش" : "روشن"}` : spec.hint(n),
+    group: spec.group,
+    keywords: timing ? [...(spec.keywords ?? []), TIMING_LABEL[timing]] : spec.keywords,
+  };
+}
+
+/**
+ * گسترش پرس‌وجو به فرمان‌های پارامتریِ متناظر: عدد و/یا صفت زمان لازم است
+ * و حداقل یک ماشه باید در توکن‌ها بیاید (ماشهٔ چندتوکنی با زیررشتهٔ
+ * پرس‌وجوی کامل). عدد خارج از مقادیر مجاز به نزدیک‌ترین می‌چسبد — کاربر
+ * همیشه نتیجه می‌گیرد. صفت زمان فقط برای خانواده‌های supportsTiming
+ * اعمال می‌شود («هدف ۱۵ بدون زمان» همان هدف را می‌دهد)؛ با صفتِ بدون عدد،
+ * پیش‌فرض کوچک‌ترین مقدار مجاز («آزمون بدون زمان» → ۱۰ سؤالی بی‌زمان).
  */
 export function expandParameterized(query: string): CommandDef[] {
   const q = normalizeFa(query);
   const n = parseQueryNumber(q);
-  if (!n) return [];
+  const timing = parseQueryTiming(q);
+  if (!n && !timing) return [];
   const tokens = q.split(" ").filter(Boolean);
   const out: CommandDef[] = [];
   for (const spec of PARAM_SPECS) {
@@ -290,32 +376,16 @@ export function expandParameterized(query: string): CommandDef[] {
       return ntr.includes(" ") ? q.includes(ntr) : tokens.some((t) => t === ntr || t.includes(ntr));
     });
     if (!hit) continue;
-    const snapped = snapToValues(n, spec.values);
-    out.push({
-      id: `${spec.key}-${snapped}`,
-      label: spec.label(snapped),
-      hint: spec.hint(snapped),
-      group: spec.group,
-      keywords: spec.keywords,
-    });
+    const useTiming = timing && spec.supportsTiming ? timing : null;
+    if (!n && !useTiming) continue; // ماشه بدون عدد و بدون صفت قابل‌اعمال — صرف‌نظر
+    const snapped = n ? snapToValues(n, spec.values) : spec.values[0];
+    out.push(paramCommand(spec, snapped, useTiming));
   }
   return out;
 }
 
 /** بازسازی فرمان پارامتری از شناسه‌اش (گروه «اخیر»)؛ ناشناخته → null */
 export function commandFromParamId(id: string): CommandDef | null {
-  for (const spec of PARAM_SPECS) {
-    if (!id.startsWith(`${spec.key}-`)) continue;
-    const n = Number(id.slice(spec.key.length + 1));
-    if (spec.values.includes(n)) {
-      return {
-        id,
-        label: spec.label(n),
-        hint: spec.hint(n),
-        group: spec.group,
-        keywords: spec.keywords,
-      };
-    }
-  }
-  return null;
+  const p = parseParamCommandId(id);
+  return p ? paramCommand(p.spec, p.n, p.timing) : null;
 }

@@ -9,7 +9,13 @@ import { useMounted } from "@/lib/use-mounted";
 import { themeOf, faNum } from "@/lib/study-theme";
 import { trackEvent } from "@/lib/analytics";
 import { buildExamDictation, DICTATION_MIN_EXAM } from "@/lib/exam-dictation";
-import { clearCountPrefill, readCountPrefill } from "@/lib/nav-prefill";
+import {
+  clearCountPrefill,
+  clearFlagPrefill,
+  EXAM_TIMED_KEY,
+  readCountPrefill,
+  readFlagPrefill,
+} from "@/lib/nav-prefill";
 import QuizEngine from "./quiz-engine";
 import DictationTab from "./dictation-tab";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -49,8 +55,9 @@ export default function ExamView() {
   const [mode, setMode] = useState<Mode>("vocab");
   // Task 69: فرمان پارامتری پالت («آزمون ۲۰») مقدار را در sessionStorage
   // می‌گذارد — initializer غیرمخرب می‌خواند (نما lazy است و رویدادش گم می‌شود)
+  // Task 71: صفت زمان هم راه می‌آید («آزمون ۲۰ بدون زمان») — هم‌الگوی تعداد
   const [examCount, setExamCount] = useState(() => readCountPrefill(EXAM_PREFILL_KEY, EXAM_COUNTS) ?? 10);
-  const [examTimed, setExamTimed] = useState(true);
+  const [examTimed, setExamTimed] = useState(() => readFlagPrefill(EXAM_TIMED_KEY) ?? true);
   const [finalTimed, setFinalTimed] = useState(true);
   const [dictOpen, setDictOpen] = useState(false);
   const bestExam = useStudy((s) => s.results["exam"]);
@@ -65,11 +72,16 @@ export default function ExamView() {
   // مقدار کهنه را می‌خواند — prefill باید در هر دو مسیر یک‌بارمصرف باشد.
   useEffect(() => {
     clearCountPrefill(EXAM_PREFILL_KEY);
+    clearFlagPrefill(EXAM_TIMED_KEY);
     const handler = (e: Event) => {
-      const n = (e as CustomEvent<{ count?: number }>).detail?.count;
-      if (typeof n === "number" && (EXAM_COUNTS as readonly number[]).includes(n)) {
-        setExamCount(n);
+      const d = (e as CustomEvent<{ count?: number; timed?: boolean }>).detail;
+      if (typeof d?.count === "number" && (EXAM_COUNTS as readonly number[]).includes(d.count)) {
+        setExamCount(d.count);
         clearCountPrefill(EXAM_PREFILL_KEY);
+      }
+      if (typeof d?.timed === "boolean") {
+        setExamTimed(d.timed);
+        clearFlagPrefill(EXAM_TIMED_KEY);
       }
     };
     window.addEventListener("open-exam-with", handler);

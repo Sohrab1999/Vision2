@@ -35,7 +35,13 @@ import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
 import { hardIdsOf } from "@/lib/konkur";
 import { trackEvent } from "@/lib/analytics";
-import { clearCountPrefill, readCountPrefill } from "@/lib/nav-prefill";
+import {
+  clearCountPrefill,
+  clearFlagPrefill,
+  KONKUR_TIMED_KEY,
+  readCountPrefill,
+  readFlagPrefill,
+} from "@/lib/nav-prefill";
 import QuizEngine from "./quiz-engine";
 import { shuffle } from "@/lib/domain/shuffle";
 import { percent } from "@/lib/domain/percent";
@@ -76,7 +82,8 @@ export default function KonkurView() {
   // Task 69: فرمان پارامتری پالت («کنکور ۳۰») مقدار را در sessionStorage
   // می‌گذارد — initializer غیرمخرب می‌خواند (نما lazy است و رویدادش گم می‌شود)
   const [simCount, setSimCount] = useState(() => readCountPrefill(KONKUR_PREFILL_KEY, SIM_COUNTS) ?? 10);
-  const [simTimed, setSimTimed] = useState(true);
+  // Task 71: صفت زمان پالت («کنکور ۳۰ با/بدون زمان») — هم‌الگوی prefill تعداد
+  const [simTimed, setSimTimed] = useState(() => readFlagPrefill(KONKUR_TIMED_KEY) ?? true);
   const [coverCount, setCoverCount] = useState(10);
 
   // مصرفِ یک‌بارهٔ prefill (بدون setState — پاک‌سازی خارجی) + رویداد
@@ -85,11 +92,16 @@ export default function KonkurView() {
   // مقدار کهنه را می‌خواند — prefill باید در هر دو مسیر یک‌بارمصرف باشد.
   useEffect(() => {
     clearCountPrefill(KONKUR_PREFILL_KEY);
+    clearFlagPrefill(KONKUR_TIMED_KEY);
     const handler = (e: Event) => {
-      const n = (e as CustomEvent<{ count?: number }>).detail?.count;
-      if (typeof n === "number" && (SIM_COUNTS as readonly number[]).includes(n)) {
-        setSimCount(n);
+      const d = (e as CustomEvent<{ count?: number; timed?: boolean }>).detail;
+      if (typeof d?.count === "number" && (SIM_COUNTS as readonly number[]).includes(d.count)) {
+        setSimCount(d.count);
         clearCountPrefill(KONKUR_PREFILL_KEY);
+      }
+      if (typeof d?.timed === "boolean") {
+        setSimTimed(d.timed);
+        clearFlagPrefill(KONKUR_TIMED_KEY);
       }
     };
     window.addEventListener("open-konkur-with", handler);
