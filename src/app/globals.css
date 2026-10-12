@@ -111,6 +111,18 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+
+  /* Step 9 tranche-2 — dark SURFACE tokens: Tailwind v4 utilities compile to
+     var(--color-*) and /NN variants derive via color-mix(), so redefining the
+     three neutral surface shades here turns every bg/border/divide/stroke
+     stone-50|100|200 utility (and its hover:/opacity variants) dark
+     automatically — the per-utility override band for these shades is retired.
+     Ink shades (stone-300..800) stay on the explicit band/tone-groups because
+     bg-stone-600..800 are deliberately-dark buttons that must keep their
+     light-scale values. */
+  --color-stone-50: #151310;
+  --color-stone-100: #28241f;
+  --color-stone-200: #37312b;
 }
 
 @layer base {
@@ -233,16 +245,8 @@ body {
 .dark .bg-white\/70 { background-color: rgba(28, 25, 23, 0.7); }
 .dark .bg-white\/80 { background-color: rgba(28, 25, 23, 0.8); }
 .dark .bg-\[\#f7f6f2\]\/85 { background-color: rgba(12, 10, 9, 0.82); }
-.dark .bg-stone-50 { background-color: #151310; }
-.dark .bg-stone-50\/70 { background-color: rgba(21, 19, 16, 0.7); }
-.dark .bg-stone-200 { background-color: #37312b; }
-.dark .bg-stone-200\/70 { background-color: rgba(55, 49, 43, 0.7); }
 
 /* borders */
-.dark .border-stone-100 { border-color: #28241f; }
-.dark .border-stone-200 { border-color: #37312b; }
-.dark .border-stone-200\/80 { border-color: rgba(55, 49, 43, 0.8); }
-.dark .border-stone-300 { border-color: #453e36; }
 
 /* text */
 .dark .text-stone-800 { color: #eceae6; }
@@ -268,7 +272,6 @@ body {
 .dark .bg-emerald-50\/40 { background-color: rgba(6, 55, 40, 0.3); }
 .dark .bg-emerald-50\/50 { background-color: rgba(6, 55, 40, 0.38); }
 .dark .bg-emerald-50\/60 { background-color: rgba(6, 55, 40, 0.42); }
-.dark .bg-emerald-50\/70 { background-color: rgba(6, 55, 40, 0.5); }
 .dark .bg-orange-50\/50 { background-color: rgba(88, 44, 14, 0.45); }
 .dark .bg-teal-50\/40 { background-color: rgba(5, 55, 50, 0.35); }
 .dark .bg-teal-50\/50 { background-color: rgba(5, 55, 50, 0.42); }
@@ -280,7 +283,6 @@ body {
 /* tinted text accents that sit on those tints (review rows, result badges) */
 .dark .text-rose-600 { color: #fda4af; }
 .dark .text-amber-600 { color: #fcd34d; }
-.dark .text-amber-700 { color: #fcd34d; }
 .dark .text-emerald-700 { color: #6ee7b7; }
 
 /* bookshelf strip + shelf edge custom gradients */
@@ -376,7 +378,6 @@ body {
 .dark .bg-white\/60 { background-color: rgba(28, 25, 23, 0.6); }
 
 /* ------------------ leaderboard + weekly chart dark-mode tuning ------------------ */
-.dark .border-sky-200 { border-color: rgba(70, 120, 170, 0.5); }
 .dark .from-sky-400 { --tw-gradient-from: #0284c7; }
 .dark .to-cyan-700 { --tw-gradient-to: #155e75; }
 .dark .bg-gradient-to-b.from-amber-50\/60 { background-image: linear-gradient(to bottom, rgba(87, 62, 14, 0.18), rgba(0, 0, 0, 0)); }
@@ -390,8 +391,6 @@ body {
 .dark .to-orange-400 { --tw-gradient-to: #7c2d12; }
 .dark .border-stone-300 { border-color: #44403c; }
 .dark .border-rose-300 { border-color: rgba(150, 50, 65, 0.55); }
-.dark .divide-stone-100 > :not([hidden]) ~ :not([hidden]) { border-color: #28241f; }
-.dark .bg-stone-50\/60 { background-color: rgba(21, 19, 16, 0.6); }
 
 /* ---------------- badges / achievements ---------------- */
 .badge-shine {
@@ -428,25 +427,19 @@ body {
 
 /* ---------------- badges + certificate + heatmap dark-mode tuning ---------------- */
 .dark .badge-card.border-stone-200 { background-color: #1c1917; }
-.dark .badge-card .bg-stone-100 { background-color: #28241f; }
 .dark .bg-amber-100 { background-color: rgba(87, 62, 14, 0.5); }
 .dark .certificate-card { background-color: #1c1917; }
 .dark .certificate-card .border-dashed { border-color: rgba(180, 130, 20, 0.55) !important; }
 .dark .certificate-card .bg-stone-50 { background-color: rgba(28, 25, 23, 0.7); }
-.dark .certificate-card .border-stone-100 { border-color: #28241f; }
-.dark .certificate-card .bg-stone-200 { background-color: #37312b; }
 .dark .final-exam-card { background-color: #1c1917; }
 .dark .border-amber-200 { border-color: rgba(120, 88, 30, 0.5); }
 .dark .border-amber-100 { border-color: rgba(120, 88, 30, 0.4); }
 .dark .bg-amber-50\/60 { background-color: rgba(69, 48, 12, 0.28); }
-.dark .bg-sky-50 { background-color: rgba(12, 50, 78, 0.35); }
-.dark .heat-cell.bg-stone-100 { background-color: #28241f; }
 .dark .heat-cell.bg-emerald-200 { background-color: #14532d; }
 .dark .heat-cell.bg-emerald-400 { background-color: #15803d; }
 .dark .heat-cell.bg-emerald-600 { background-color: #16a34a; }
 .dark .heat-cell.bg-emerald-800 { background-color: #22c55e; }
 .dark .ring-offset-white { --tw-ring-offset-color: #1c1917; }
-.dark .bg-stone-100 { background-color: #28241f; }
 
 /* ---------------- word of the day ---------------- */
 .word-day {
@@ -465,28 +458,39 @@ body {
 .dark .word-day .border-emerald-300 { border-color: rgba(52, 211, 153, 0.45); }
 .dark .word-day .bg-white { background-color: rgba(28, 25, 23, 0.75); }
 .dark .word-day .border-stone-200 { border-color: #44403c; }
-.dark .word-day .text-stone-600 { color: #a8a29e; }
-.dark .word-day .text-stone-800 { color: #f5f5f4; }
+/* ink tone text-stone-600 → #a8a29e — canonical group (Step 9 tranche-2; was 4 drifted per-panel copies) */
+.dark .word-day .text-stone-600,.dark .badge-popover .text-stone-600,.dark .shortcuts-dialog .text-stone-600,
+.dark .report-digest .text-stone-600 { color: #a8a29e; }
+/* ink tone text-stone-800 → #f5f5f4 — canonical group (Step 9 tranche-2; was 19 drifted per-panel copies) */
+.dark .word-day .text-stone-800,.dark .badge-popover .text-stone-800,.dark .shortcuts-dialog .text-stone-800,
+.dark .vocab-donut .text-stone-800,.dark .rush-banner .text-stone-800,.dark .rush-hero .text-stone-800,
+.dark .rush-hud .text-stone-800,.dark .rush-done .text-stone-800,.dark .rush-card .text-stone-800,
+.dark .srs-panel .text-stone-800,.dark .rush-board .text-stone-800,.dark .skill-panel .text-stone-800,
+.dark .report-week .text-stone-800,.dark .daily-quests .text-stone-800,.dark .duel-card .text-stone-800,
+.dark .duel-hud .text-stone-800,.dark .duel-done .text-stone-800,.dark .gmetro-dialog .text-stone-800,
+.dark .glesson-head .text-stone-800 { color: #f5f5f4; }
 .dark .word-day .border-emerald-600 { border-color: #059669; }
 .dark .word-day .bg-emerald-600 { background-color: #047857; }
-.dark .word-day .text-stone-500 { color: #8a8580; }
-.dark .word-day .text-stone-400 { color: #78716c; }
+/* ink tone text-stone-500 → #8a8580 — canonical group (Step 9 tranche-2; was 3 drifted per-panel copies) */
+.dark .word-day .text-stone-500,.dark .badge-popover .text-stone-500,.dark .shortcuts-dialog .text-stone-500 { color: #8a8580; }
+/* ink tone text-stone-400 → #78716c — canonical group (Step 9 tranche-2; was 4 drifted per-panel copies) */
+.dark .word-day .text-stone-400,.dark .shortcuts-dialog .text-stone-400,.dark .rush-hud .text-stone-400,
+.dark .report-digest .text-stone-400 { color: #78716c; }
 
 /* ---------------- badge popover (details) ---------------- */
 .dark .badge-popover { background-color: #1c1917; border-color: #37312b; }
-.dark .badge-popover .text-stone-800 { color: #f5f5f4; }
-.dark .badge-popover .text-stone-600 { color: #a8a29e; }
-.dark .badge-popover .text-stone-500 { color: #8a8580; }
 .dark .badge-popover .bg-stone-50 { background-color: rgba(40, 36, 31, 0.7); }
 .dark .badge-popover .bg-emerald-50 { background-color: rgba(6, 55, 40, 0.4); }
-.dark .badge-popover .bg-stone-100 { background-color: #28241f; }
 .badge-popover { animation: pop-fade 0.18s ease-out; }
 @keyframes pop-fade {
   from { opacity: 0; transform: translateY(6px) scale(0.97); }
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* ---------------- keyboard hint chips ---------------- */
+/* ---------------- keyboard hint chips ----------------
+   (the .dark .border-stone-100 rule below is the canonical KEEP for the
+   border family: border-stone-100 is tuned #292524 — one step brighter than
+   the bg token #28241f; do NOT fold it into the surface tokens) */
 .dark kbd {
   background-color: #292524;
   border-color: #44403c;
@@ -495,7 +499,10 @@ body {
 }
 .dark .border-stone-100 { border-color: #292524; }
 
-/* ---------------- profile backup section ---------------- */
+/* ---------------- profile backup section ----------------
+   (also the canonical KEEP for plain .dark .bg-stone-50: the surface-token
+   base is #151310, but plain bg-stone-50 surfaces render this translucent
+   wash — pre-existing tuned look, kept verbatim in tranche-2) */
 .dark .bg-stone-50 { background-color: rgba(40, 36, 31, 0.55); }
 .dark .text-emerald-800 { color: #6ee7b7; }
 .dark .border-amber-300 { border-color: rgba(180, 130, 20, 0.55); }
@@ -523,18 +530,24 @@ body {
   color: #d6d3d1;
   box-shadow: 0 1px 0 0 #1c1917;
 }
-.dark .shortcuts-dialog .text-stone-800 { color: #f5f5f4; }
-.dark .shortcuts-dialog .text-stone-700 { color: #d6d3d1; }
-.dark .shortcuts-dialog .text-stone-600 { color: #a8a29e; }
-.dark .shortcuts-dialog .text-stone-500 { color: #8a8580; }
-.dark .shortcuts-dialog .text-stone-400 { color: #78716c; }
+/* ink tone text-stone-700 → #d6d3d1 — canonical group (Step 9 tranche-2; was 11 drifted per-panel copies) */
+.dark .shortcuts-dialog .text-stone-700,.dark .vocab-donut .text-stone-700,.dark .rush-hero .text-stone-700,
+.dark .rush-board .text-stone-700,.dark .skill-panel .text-stone-700,.dark .report-week .text-stone-700,
+.dark .report-digest .text-stone-700,.dark .report-skills .text-stone-700,.dark .daily-quests .text-stone-700,
+.dark .duel-card .text-stone-700,.dark .duel-hud .text-stone-700 { color: #d6d3d1; }
 
 /* ---------------- vocab donut dark ---------------- */
 .dark .vocab-donut { background-color: #1c1917; }
-.dark .vocab-donut .text-stone-800 { color: #f5f5f4; }
-.dark .vocab-donut .text-stone-700 { color: #d6d3d1; }
-.dark .vocab-donut .text-stone-500 { color: #a8a29e; }
-.dark .vocab-donut .text-stone-400 { color: #8a8580; }
+/* ink tone text-stone-500 → #a8a29e — canonical group (Step 9 tranche-2; was 12 drifted per-panel copies) */
+.dark .vocab-donut .text-stone-500,.dark .rush-done .text-stone-500,.dark .srs-panel .text-stone-500,
+.dark .rush-board .text-stone-500,.dark .skill-panel .text-stone-500,.dark .report-week .text-stone-500,
+.dark .report-digest .text-stone-500,.dark .daily-quests .text-stone-500,.dark .duel-card .text-stone-500,
+.dark .gmetro-line .text-stone-500,.dark .gmetro-dialog .text-stone-500,.dark .glesson-head .text-stone-500 { color: #a8a29e; }
+/* ink tone text-stone-400 → #8a8580 — canonical group (Step 9 tranche-2; was 11 drifted per-panel copies) */
+.dark .vocab-donut .text-stone-400,.dark .rush-card .text-stone-400,.dark .srs-panel .text-stone-400,
+.dark .rush-board .text-stone-400,.dark .skill-panel .text-stone-400,.dark .report-best .text-stone-400,
+.dark .daily-quests .text-stone-400,.dark .duel-card .text-stone-400,.dark .duel-hud .text-stone-400,
+.dark .duel-done .text-stone-400,.dark .gmetro-dialog .text-stone-400 { color: #8a8580; }
 .dark .vocab-donut .bg-stone-50 { background-color: rgba(40, 36, 31, 0.55); }
 .dark .vocab-donut .bg-emerald-50 { background-color: rgba(6, 55, 40, 0.5); }
 .dark .vocab-donut .text-emerald-700 { color: #6ee7b7; }
@@ -573,8 +586,10 @@ body {
   background-image: linear-gradient(to left, rgb(67 38 20 / 0.55), rgb(60 34 16 / 0.5), rgb(66 28 24 / 0.45));
   border-color: rgb(154 52 18 / 0.5);
 }
-.dark .rush-banner .text-stone-800 { color: #f5f5f4; }
-.dark .rush-banner .text-stone-600 { color: #c9c2bb; }
+/* ink tone text-stone-600 → #c9c2bb — canonical group (Step 9 tranche-2; was 8 drifted per-panel copies) */
+.dark .rush-banner .text-stone-600,.dark .rush-hero .text-stone-600,.dark .rush-done .text-stone-600,
+.dark .rush-card .text-stone-600,.dark .report-best .text-stone-600,.dark .duel-card .text-stone-600,
+.dark .duel-done .text-stone-600,.dark .gmetro-dialog .text-stone-600 { color: #c9c2bb; }
 .dark .rush-banner .bg-white\/80 { background-color: rgb(41 37 36 / 0.85); }
 .dark .rush-banner .text-amber-800 { color: #fcd34d; }
 .dark .rush-banner .border-amber-200 { border-color: rgb(180 130 20 / 0.5); }
@@ -582,9 +597,6 @@ body {
   background-image: linear-gradient(to bottom left, rgb(69 40 16 / 0.5), rgb(64 30 18 / 0.55), rgb(62 24 26 / 0.5));
   border-color: rgb(154 52 18 / 0.5);
 }
-.dark .rush-hero .text-stone-800 { color: #f5f5f4; }
-.dark .rush-hero .text-stone-600 { color: #c9c2bb; }
-.dark .rush-hero .text-stone-700 { color: #d6d3d1; }
 .dark .rush-hero .bg-white\/80, .dark .rush-hero .bg-white\/70 { background-color: rgb(41 37 36 / 0.85); }
 .dark .rush-hero .border-orange-100 { border-color: rgb(124 58 8 / 0.55); }
 .dark .rush-hero .bg-orange-100 { background-color: rgb(69 40 8 / 0.65); }
@@ -597,20 +609,15 @@ body {
   color: #d6d3d1;
 }
 .dark .rush-hud { background-color: #1c1917; border-color: rgb(154 52 18 / 0.45); }
-.dark .rush-hud .text-stone-800 { color: #f5f5f4; }
-.dark .rush-hud .text-stone-400 { color: #78716c; }
 .dark .rush-hud .stroke-stone-100 { stroke: #292524; }
 .dark .rush-hud .bg-stone-100 { background-color: #292524; }
 .dark .rush-done {
   background-image: linear-gradient(to bottom, rgb(64 34 16 / 0.55), rgb(58 36 12 / 0.5));
   border-color: rgb(154 52 18 / 0.5);
 }
-.dark .rush-done .text-stone-800 { color: #f5f5f4; }
-.dark .rush-done .text-stone-500 { color: #a8a29e; }
 .dark .rush-done .bg-white { background-color: #292524; }
 .dark .rush-done .border-stone-200 { border-color: #44403c; }
 .dark .rush-done .border-stone-300 { border-color: #57534e; }
-.dark .rush-done .text-stone-600 { color: #c9c2bb; }
 .dark .rush-done .bg-emerald-50 { background-color: rgba(6, 55, 40, 0.5); }
 .dark .rush-done .text-emerald-700 { color: #6ee7b7; }
 .dark .rush-done .bg-rose-50 { background-color: rgba(80, 10, 25, 0.4); }
@@ -628,22 +635,16 @@ body {
 .dark .rush-card .bg-white { background-color: #292524; }
 .dark .rush-card .border-stone-200 { border-color: #44403c; }
 .dark .rush-card .bg-stone-100 { background-color: #37312b; }
-.dark .rush-card .text-stone-800 { color: #f5f5f4; }
-.dark .rush-card .text-stone-400 { color: #8a8580; }
 .dark .rush-card .bg-orange-50 { background-color: rgba(69, 40, 8, 0.45); }
 .dark .rush-card .text-orange-700 { color: #fdba74; }
 .dark .rush-card .hover\:bg-orange-50\/50:hover { background-color: rgba(69, 40, 8, 0.35); }
 .dark .rush-card .bg-rose-50\/70 { background-color: rgba(80, 10, 25, 0.35); }
-.dark .rush-card .text-stone-600 { color: #c9c2bb; }
 
 /* ---------------- SRS panel dark ---------------- */
 .dark .srs-panel {
   background-image: linear-gradient(to left, rgb(4 52 46 / 0.45), rgb(6 44 34 / 0.4));
   border-color: rgb(13 100 88 / 0.55);
 }
-.dark .srs-panel .text-stone-800 { color: #f5f5f4; }
-.dark .srs-panel .text-stone-500 { color: #a8a29e; }
-.dark .srs-panel .text-stone-400 { color: #8a8580; }
 .dark .srs-panel .bg-rose-50 { background-color: rgba(80, 10, 25, 0.4); }
 .dark .srs-panel .text-rose-600 { color: #fda4af; }
 .dark .srs-panel .bg-amber-50 { background-color: rgba(69, 48, 12, 0.45); }
@@ -713,10 +714,6 @@ body {
   background-image: linear-gradient(to left, rgba(69, 40, 8, 0.55), rgba(58, 36, 12, 0.3), transparent);
   border-color: rgb(124 58 8 / 0.55);
 }
-.dark .rush-board .text-stone-800 { color: #f5f5f4; }
-.dark .rush-board .text-stone-700 { color: #d6d3d1; }
-.dark .rush-board .text-stone-400 { color: #8a8580; }
-.dark .rush-board .text-stone-500 { color: #a8a29e; }
 .dark .rush-board .bg-orange-100\/80 { background-color: rgb(69 40 8 / 0.65); }
 .dark .rush-board .bg-orange-500 { background-color: #c2410c; }
 .dark .rush-board-podium { background-image: linear-gradient(to bottom, rgba(69, 40, 8, 0.3), transparent); }
@@ -737,10 +734,6 @@ body {
 
 /* ---------------- skill panel dark ---------------- */
 .dark .skill-panel { background-color: #1c1917; border-color: rgb(106 44 112 / 0.5); }
-.dark .skill-panel .text-stone-800 { color: #f5f5f4; }
-.dark .skill-panel .text-stone-700 { color: #d6d3d1; }
-.dark .skill-panel .text-stone-500 { color: #a8a29e; }
-.dark .skill-panel .text-stone-400 { color: #8a8580; }
 .dark .skill-panel .skill-track { background-color: #292524; }
 .dark .skill-panel .bg-stone-50\/60 { background-color: rgb(28 25 23 / 0.6); }
 .dark .skill-panel .border-stone-200 { border-color: #44403c; }
@@ -769,16 +762,9 @@ body {
   background-image: linear-gradient(to left, #065f46, #047857, #0d9488);
 }
 .dark .report-week { background-color: rgb(28 25 23 / 0.7); border-color: #44403c; }
-.dark .report-week .text-stone-700 { color: #d6d3d1; }
-.dark .report-week .text-stone-800 { color: #f5f5f4; }
-.dark .report-week .text-stone-500 { color: #a8a29e; }
 .dark .report-week .bg-stone-200 { background-color: #44403c; }
 /* Task-37 «هفته‌نامه» — digest band mirrors the weekly band tuning */
 .dark .report-digest { background-color: rgb(28 25 23 / 0.7); border-color: #44403c; }
-.dark .report-digest .text-stone-700 { color: #d6d3d1; }
-.dark .report-digest .text-stone-600 { color: #a8a29e; }
-.dark .report-digest .text-stone-500 { color: #a8a29e; }
-.dark .report-digest .text-stone-400 { color: #78716c; }
 .dark .report-digest .bg-white\/60,
 .dark .report-digest .bg-white\/70 { background-color: rgb(41 37 36 / 0.6); }
 .dark .report-digest .border-stone-200 { border-color: #44403c; }
@@ -788,14 +774,11 @@ body {
 .dark .report-digest .bg-white { background-color: #292524; }
 .dark .report-digest .border-emerald-600 { border-color: #10b981; }
 .dark .report-digest .border-stone-300 { border-color: #57534e; }
-.dark .report-skills .text-stone-700 { color: #d6d3d1; }
 .dark .report-track { background-color: #292524; }
 .dark .report-best li { background-color: #292524; border-color: #44403c; }
 .dark .report-paper .bg-orange-50 { background-color: rgba(69, 40, 8, 0.45); }
 .dark .report-paper .text-orange-600 { color: #fdba74; }
 .dark .report-paper .border-orange-200 { border-color: rgb(154 52 18 / 0.55); }
-.dark .report-best .text-stone-600 { color: #c9c2bb; }
-.dark .report-best .text-stone-400 { color: #8a8580; }
 .dark .report-best .text-emerald-700 { color: #6ee7b7; }
 .dark .report-foot {
   background-color: rgba(6, 55, 40, 0.35);
@@ -811,7 +794,7 @@ body {
 .dark .srs-donut { background-color: rgba(6, 44, 34, 0.5); box-shadow: none; border: 1px solid rgb(13 100 88 / 0.4); }
 
 /* dictionary state filter chips */
-.dark .dict-state-chip.bg-stone-100 { background-color: #28241f; color: #c9c2bb; }
+.dark .dict-state-chip.bg-stone-100 { color: #c9c2bb; }
 .dark .dict-state-chip.bg-stone-100:hover { background-color: #37312b; }
 .dark .dict-state-chip [class*="bg-stone-200"] { background-color: rgb(60 55 49 / 0.95); color: #a8a29e; }
 .dark .dict-state-chip.bg-stone-700 { background-color: #57534e; }
@@ -844,10 +827,6 @@ body {
   border-color: rgb(6 95 70 / 0.5);
 }
 .dark .daily-quests .border-dashed { border-color: #37312b; }
-.dark .daily-quests .text-stone-800 { color: #f5f5f4; }
-.dark .daily-quests .text-stone-700 { color: #d6d3d1; }
-.dark .daily-quests .text-stone-500 { color: #a8a29e; }
-.dark .daily-quests .text-stone-400 { color: #8a8580; }
 .dark .daily-quests .text-stone-300 { color: #57534e; }
 .dark .daily-quests .bg-stone-50\/60 { background-color: rgb(28 25 23 / 0.55); }
 .dark .daily-quests .bg-stone-50 { background-color: rgb(28 25 23 / 0.4); }
@@ -910,19 +889,20 @@ body {
     box-shadow: none !important;
   }
   body.print-report .report-print-btn { display: none !important; }
-  /* keep light paper colors regardless of active theme */
+  /* keep light paper colors regardless of active theme — Step 9 tranche-2:
+     patch the ink TOKENS on the paper root once instead of re-asserting each
+     text-stone utility; every stone/emerald utility inside resolves light */
   body.print-report.dark .report-paper,
-  html.dark body.print-report .report-paper { background-color: #ffffff !important; }
-  body.print-report.dark .report-paper .text-stone-800,
-  html.dark body.print-report .report-paper .text-stone-800 { color: #1c1917 !important; }
-  body.print-report.dark .report-paper .text-stone-700,
-  html.dark body.print-report .report-paper .text-stone-700 { color: #44403c !important; }
-  body.print-report.dark .report-paper .text-stone-600,
-  html.dark body.print-report .report-paper .text-stone-600 { color: #57534e !important; }
-  body.print-report.dark .report-paper .text-stone-500,
-  html.dark body.print-report .report-paper .text-stone-500 { color: #78716c !important; }
-  body.print-report.dark .report-paper .text-stone-400,
-  html.dark body.print-report .report-paper .text-stone-400 { color: #a8a29e !important; }
+  html.dark body.print-report .report-paper {
+    background-color: #ffffff !important;
+    --color-stone-800: #1c1917;
+    --color-stone-700: #44403c;
+    --color-stone-600: #57534e;
+    --color-stone-500: #78716c;
+    --color-stone-400: #a8a29e;
+    --color-emerald-800: #065f46;
+    --color-emerald-700: #047857;
+  }
   body.print-report.dark .report-paper .report-week,
   html.dark body.print-report .report-paper .report-week { background-color: #fafaf9 !important; border-color: #e7e5e4 !important; }
   body.print-report.dark .report-paper .report-month,
@@ -933,10 +913,6 @@ body {
   html.dark body.print-report .report-paper .report-best li { background-color: #ffffff !important; border-color: #e7e5e4 !important; }
   body.print-report.dark .report-paper .report-foot,
   html.dark body.print-report .report-paper .report-foot { background-color: #ecfdf5 !important; border-color: #6ee7b7 !important; }
-  body.print-report.dark .report-paper .text-emerald-800,
-  html.dark body.print-report .report-paper .text-emerald-800 { color: #065f46 !important; }
-  body.print-report.dark .report-paper .text-emerald-700,
-  html.dark body.print-report .report-paper .text-emerald-700 { color: #047857 !important; }
 }
 
 /* ---------------------------------------------------------------
@@ -963,6 +939,22 @@ html.user-reduce-motion .streak-flame {
 
 .official-overlay { background-color: rgb(12 10 9 / 0.68); }
 .official-report { background-color: #ffffff; color: #292524; }
+
+/* Step 9 tranche-2 — the official report is ALWAYS-light paper: patch the
+   surface tokens on its root so the raw stone utilities in its markup
+   (bg-stone-50, border-stone-100, text-stone-100/200) keep their light values
+   even under html.dark — previously these washed dark (band leakage bug). */
+.dark .official-report {
+  --color-stone-50: #fafaf9;
+  --color-stone-100: #f5f5f4;
+  --color-stone-200: #e7e5e4;
+}
+/* the screen-only toolbar sits OUTSIDE the paper on its own dark band — its
+   stone-100/200 text must stay light (print-official hides this chrome) */
+.dark .official-chrome {
+  --color-stone-100: #f5f5f4;
+  --color-stone-200: #e7e5e4;
+}
 
 /* letterhead band + stamp */
 .or-band { background-image: linear-gradient(115deg, #064e3b 0%, #047857 55%, #0d9488 100%); color: #ffffff; }
@@ -1065,12 +1057,10 @@ html.user-reduce-motion .streak-flame {
 .dark .duel-card {
   background-color: #292524;
   border-color: rgb(120 113 108 / 0.35);
+  /* tranche-2: keep the countdown ring track light (stone-100 token is dark app-wide now;
+     bg/border stone-100 inside the card stay governed by their scoped rules below) */
+  --color-stone-100: #f5f5f4;
 }
-.dark .duel-card .text-stone-800 { color: #f5f5f4; }
-.dark .duel-card .text-stone-700 { color: #d6d3d1; }
-.dark .duel-card .text-stone-600 { color: #c9c2bb; }
-.dark .duel-card .text-stone-500 { color: #a8a29e; }
-.dark .duel-card .text-stone-400 { color: #8a8580; }
 .dark .duel-card .bg-stone-50\/70, .dark .duel-card .bg-stone-50 { background-color: rgb(41 37 36 / 0.6); }
 .dark .duel-card .bg-stone-100 { background-color: rgb(68 64 60 / 0.7); }
 .dark .duel-card .border-stone-100 { border-color: rgb(87 83 78 / 0.4); }
@@ -1092,9 +1082,6 @@ html.user-reduce-motion .streak-flame {
 .dark .duel-hud .border-fuchsia-200 { border-color: rgb(162 28 175 / 0.45); }
 .dark .duel-hud .bg-fuchsia-50\/60 { background-color: rgb(74 4 78 / 0.3); }
 .dark .duel-hud .bg-stone-50\/60 { background-color: rgb(41 37 36 / 0.6); }
-.dark .duel-hud .text-stone-700 { color: #d6d3d1; }
-.dark .duel-hud .text-stone-800 { color: #f5f5f4; }
-.dark .duel-hud .text-stone-400 { color: #8a8580; }
 .dark .duel-hud .bg-stone-200 { background-color: rgb(87 83 78 / 0.55); }
 .dark .duel-hud .stroke-stone-100 { stroke: rgb(87 83 78 / 0.4); }
 
@@ -1117,9 +1104,6 @@ html.user-reduce-motion .streak-flame {
   background-image: linear-gradient(to bottom left, rgb(76 5 25 / 0.65), rgb(64 24 18 / 0.6));
   border-color: rgb(225 29 72 / 0.4);
 }
-.dark .duel-done .text-stone-800 { color: #f5f5f4; }
-.dark .duel-done .text-stone-600 { color: #c9c2bb; }
-.dark .duel-done .text-stone-400 { color: #8a8580; }
 .dark .duel-done .bg-emerald-50\/70 { background-color: rgb(2 44 34 / 0.5); }
 .dark .duel-done .border-emerald-300 { border-color: rgb(16 185 129 / 0.4); }
 .dark .duel-done .bg-stone-50\/70 { background-color: rgb(41 37 36 / 0.6); }
@@ -1173,7 +1157,6 @@ html.user-reduce-motion .streak-flame {
 .dark .gmetro-line[class*="border-rose-200"] { border-color: rgb(225 29 72 / 0.35); background-color: rgb(136 19 55 / 0.16); }
 .dark .gmetro-line[class*="border-violet-200"] { border-color: rgb(124 58 237 / 0.4); background-color: rgb(76 29 149 / 0.18); }
 .dark .gmetro-line[class*="border-orange-200"] { border-color: rgb(234 88 12 / 0.35); background-color: rgb(124 45 18 / 0.16); }
-.dark .gmetro-line .text-stone-500 { color: #a8a29e; }
 .dark .gmetro-line .text-stone-700 { color: #e7e5e4; }
 .dark .gmetro-line .border-stone-200 { border-color: rgb(87 83 78 / 0.45); }
 .dark .gmetro-line .bg-white { background-color: #292524; }
@@ -1184,10 +1167,6 @@ html.user-reduce-motion .streak-flame {
 .dark .gmetro-node-locked { background-color: rgb(68 64 60 / 0.8); border-color: rgb(87 83 78 / 0.4); }
 /* station dialog */
 .dark .gmetro-dialog { background-color: #1c1917; border-color: rgb(87 83 78 / 0.5); }
-.dark .gmetro-dialog .text-stone-800 { color: #f5f5f4; }
-.dark .gmetro-dialog .text-stone-500 { color: #a8a29e; }
-.dark .gmetro-dialog .text-stone-600 { color: #c9c2bb; }
-.dark .gmetro-dialog .text-stone-400 { color: #8a8580; }
 .dark .gmetro-dialog .bg-white { background-color: #292524; }
 .dark .gmetro-dialog .bg-stone-300 { background-color: rgb(87 83 78 / 0.6); }
 .dark .gmetro-dialog .border-stone-200 { border-color: rgb(87 83 78 / 0.45); }
@@ -1210,8 +1189,6 @@ html.user-reduce-motion .streak-flame {
 .dark .glesson-head[class*="border-rose-200"] { border-color: rgb(225 29 72 / 0.4); background-color: rgb(136 19 55 / 0.18); }
 .dark .glesson-head[class*="border-violet-200"] { border-color: rgb(124 58 237 / 0.45); background-color: rgb(76 29 149 / 0.2); }
 .dark .glesson-head[class*="border-orange-200"] { border-color: rgb(234 88 12 / 0.4); background-color: rgb(124 45 18 / 0.18); }
-.dark .glesson-head .text-stone-800 { color: #f5f5f4; }
-.dark .glesson-head .text-stone-500 { color: #a8a29e; }
 .dark .glesson-head .glesson-close { background-color: #292524; border-color: rgb(87 83 78 / 0.5); color: #a8a29e; }
 .dark .glesson-head .glesson-close:hover { color: #e7e5e4; }
 .dark .glesson-step-idle { background-color: rgb(41 37 36 / 0.6); border-color: rgb(87 83 78 / 0.45); color: #8a8580; }
