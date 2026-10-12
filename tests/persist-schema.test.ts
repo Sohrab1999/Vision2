@@ -45,6 +45,7 @@ const CANONICAL_SYNC_KEYS = [
   "duelWins",
   "duelLosses",
   "duelTies",
+  "duelHistory",
   "freezeCount",
   "freezeEarnedDay",
   "freezeUsedDays",

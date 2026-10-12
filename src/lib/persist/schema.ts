@@ -22,6 +22,7 @@
 
 import type { QuizResult } from "@/lib/study-types";
 import { percent } from "@/lib/domain/percent";
+import { sanitizeDuelHistory, mergeDuelHistory, type DuelRecord } from "@/lib/duel-history";
 import type {
   DayHistoryMap,
   DayStat,
@@ -66,6 +67,8 @@ export interface SyncData {
   duelWins: number;
   duelLosses: number;
   duelTies: number;
+  /** Task 65 «تاریخچهٔ نبردها» — duel log travels like the counters */
+  duelHistory?: DuelRecord[];
   freezeCount: number;
   freezeEarnedDay: string;
   freezeUsedDays: string[];
@@ -393,6 +396,7 @@ export const SYNC_FIELDS: SyncFieldMap = {
   duelWins: { sanitize: (v) => cnt(v, 99_999) ?? 0, merge: maxNum },
   duelLosses: { sanitize: (v) => cnt(v, 99_999) ?? 0, merge: maxNum },
   duelTies: { sanitize: (v) => cnt(v, 99_999) ?? 0, merge: maxNum },
+  duelHistory: { sanitize: sanitizeDuelHistory, merge: mergeDuelHistory },
   freezeCount: {
     sanitize: (v) => (typeof v === "number" && Number.isFinite(v) ? Math.min(2, Math.max(0, Math.round(v))) : 0),
     merge: (l, r) => Math.min(2, maxNum(l, r)),

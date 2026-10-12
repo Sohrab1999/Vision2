@@ -1,10 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Sparkles, Swords, Users, Timer, Zap, Wifi, WifiOff, Loader2, Target, ShieldCheck } from "lucide-react";
+import { Sparkles, Swords, Users, Timer, Zap, Wifi, WifiOff, Loader2, Target, ShieldCheck, History, Flame, Percent } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
-import { faNum } from "@/lib/study-theme";
+import { faNum, timeAgoFa, avatarClasses } from "@/lib/study-theme";
+import { percent } from "@/lib/domain/percent";
+import {
+  duelWinStreak,
+  duelBestScore,
+  duelForm,
+  type DuelOutcome,
+} from "@/lib/duel-history";
 import type { Conn } from "./duel-types";
 
 // فاز SETUP — قهرمان نبرد: آمار بردها، ساخت اتاق و پیوستن با کد
@@ -21,6 +28,18 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
   const duelWins = useStudy((s) => s.duelWins);
   const duelLosses = useStudy((s) => s.duelLosses);
   const duelTies = useStudy((s) => s.duelTies);
+  const duelHistory = useStudy((s) => s.duelHistory);
+
+  const winRate = percent(duelWins, duelWins + duelLosses + duelTies);
+  const streak = duelWinStreak(duelHistory);
+  const best = duelBestScore(duelHistory);
+  const form = duelForm(duelHistory, 5);
+  const outcomeChip: Record<DuelOutcome, string> = {
+    win: "bg-emerald-500",
+    loss: "bg-rose-500",
+    tie: "bg-amber-500",
+  };
+  const outcomeLabel: Record<DuelOutcome, string> = { win: "برد", loss: "باخت", tie: "مساوی" };
 
   return (
     <div className="space-y-5">
@@ -107,6 +126,81 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
           </div>
         </div>
       </motion.div>
+
+      {/* Task 65 — تاریخچهٔ نبردها: خلاصه + فرم + ۵ رکورد آخر */}
+      {mounted && duelHistory.length > 0 && (
+        <section className="duel-card rounded-2xl border border-stone-200 bg-white p-5 shadow-sm" aria-label="تاریخچهٔ نبردها">
+          <div className="mb-4 flex items-center justify-between">
+            <h2 className="flex items-center gap-2 text-[14px] font-extrabold text-stone-700">
+              <History size={17} className="text-fuchsia-600" />
+              آخرین نبردها
+            </h2>
+            <div className="flex items-center gap-1.5" role="img" aria-label="فرم پنج نبرد آخر">
+              {form.map((o, i) => (
+                <span
+                  key={`${form.length - i}-${i}`}
+                  title={outcomeLabel[o]}
+                  className={`h-2.5 w-2.5 rounded-full ${outcomeChip[o]} ${i === 0 ? "ring-2 ring-stone-200 ring-offset-1" : ""}`}
+                />
+              ))}
+            </div>
+          </div>
+
+          <div className="mb-4 grid grid-cols-3 gap-2">
+            {[
+              { icon: Percent, label: "نرخ برد", value: `${faNum(winRate)}٪` },
+              { icon: Flame, label: "برد متوالی", value: faNum(streak) },
+              { icon: Zap, label: "بهترین امتیاز", value: faNum(best) },
+            ].map((m) => (
+              <div key={m.label} className="rounded-xl border border-stone-100 bg-stone-50/70 p-2.5 text-center">
+                <m.icon size={14} className="mx-auto mb-1 text-fuchsia-600" aria-hidden />
+                <div className="text-[15px] font-black text-stone-800">{m.value}</div>
+                <div className="text-[10.5px] font-bold text-stone-400">{m.label}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className="space-y-2">
+            {duelHistory.slice(0, 5).map((r) => (
+              <div
+                key={r.id}
+                className="flex items-center gap-3 rounded-xl border border-stone-100 bg-stone-50/70 p-3 transition-colors hover:bg-stone-100/70"
+              >
+                <span className={`shrink-0 rounded-lg px-2 py-1 text-[10.5px] font-black text-white ${outcomeChip[r.outcome]}`}>
+                  {outcomeLabel[r.outcome]}
+                </span>
+                <span
+                  className={`h-2.5 w-2.5 shrink-0 rounded-full ${avatarClasses[r.opponentColor] ?? "bg-stone-400"}`}
+                  aria-hidden
+                />
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center gap-1.5">
+                    <span className="truncate text-[12.5px] font-extrabold text-stone-800">{r.opponent}</span>
+                    {r.reason === "forfeit" && (
+                      <span className="shrink-0 rounded-md bg-stone-200 px-1.5 py-0.5 text-[9.5px] font-black text-stone-600">ضربهٔ فنی</span>
+                    )}
+                  </div>
+                  <div className="mt-0.5 text-[11px] font-bold text-stone-400">
+                    {faNum(r.myCorrect)} از {faNum(Math.max(r.answered, r.total))} درست · {faNum(r.durationSec)} ثانیه
+                  </div>
+                </div>
+                <div className="shrink-0 text-left">
+                  <div className="text-[13.5px] font-black text-stone-800" dir="ltr">
+                    {faNum(r.myScore)}–{faNum(r.oppScore)}
+                  </div>
+                  <div className="text-[10.5px] font-bold text-stone-400">{timeAgoFa(r.day)}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {duelHistory.length > 5 && (
+            <p className="mt-3 text-center text-[11.5px] font-bold text-stone-400">
+              و {faNum(duelHistory.length - 5)} نبرد قدیمی‌تر در همین دستگاه ذخیره شده است
+            </p>
+          )}
+        </section>
+      )}
 
       {/* چطور کار می‌کند؟ */}
       <section className="duel-card rounded-2xl border border-stone-200 bg-white p-5 shadow-sm">

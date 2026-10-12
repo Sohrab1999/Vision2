@@ -1,0 +1,179 @@
+// ------------------------------------------------------------------
+// «تاریخچهٔ نبردها» (Task 65) — موتور خالص دفترچهٔ دودل.
+//
+// تا امروز از یک نبرد فقط سه شمارندهٔ W/L/T روی جا می‌ماند؛ نام حریف،
+// امتیازها، تاریخ و فرمِ بردها برای همیشه گم می‌شدند. این ماژول رکورد
+// استاندارد یک نبرد تمام‌شده را از EndPayload سوکت می‌سازد، نگه‌داری
+// جدیدترین‌اول با سقف دارد و خلاصه‌های آماری (برد متوالی/بهترین امتیاز/فرم)
+// را برای پنل «آخرین نبردها» حساب می‌کند.
+//
+// خالص است — هیچ import از store/React؛ اسلایس arcade و تست‌ها مصرفش می‌کنند.
+// ------------------------------------------------------------------
+
+export type DuelOutcome = "win" | "loss" | "tie";
+export type DuelEndReason = "finished" | "forfeit";
+
+/** یک نبرد تمام‌شدهٔ ثبت‌شده — id ترتیبِ ساخت را حمل می‌کند (`d${epochMs}`) */
+export interface DuelRecord {
+  id: string;
+  /** ISO day key (YYYY-MM-DD) برای نمایش تاریخ */
+  day: string;
+  outcome: DuelOutcome;
+  reason: DuelEndReason;
+  /** نام نمایشی حریف (فالبک: «حریف») */
+  opponent: string;
+  /** رنگ آواتار حریف (واژهٔ رنگ) */
+  opponentColor: string;
+  myScore: number;
+  oppScore: number;
+  myCorrect: number;
+  oppCorrect: number;
+  /** تعداد پاسخ‌های من */
+  answered: number;
+  /** تعداد سؤال‌های نبرد */
+  total: number;
+  /** ثانیه‌های من تا پایان (myFinishAt−startedAt؛ فورفیت/تایم‌اوت → ساعتِ پایان) */
+  durationSec: number;
+}
+
+/** سقف دفترچه — جدیدترین‌ها می‌مانند (هم‌سقف goalMetDays سبکِ union) */
+export const DUEL_HISTORY_CAP = 15;
+
+const OUTCOMES: readonly DuelOutcome[] = ["win", "loss", "tie"];
+
+const clampInt = (v: unknown, max: number): number => {
+  const n = typeof v === "number" && Number.isFinite(v) ? Math.round(v) : 0;
+  return Math.min(max, Math.max(0, n));
+};
+
+export const duelDayKey = (d = new Date()): string =>
+  `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+
+/**
+ * رکورد یک نبرد تمام‌شده را از payload پایان سرور بساز.
+ * اگر بازیکنِ خودی بین players نبود null برمی‌گرداند (رکورد ساختنی نیست).
+ * `now` و `myFinishAt` (epoch ms) از بیرون می‌آیند تا تابع در تست‌ها قطعی بماند؛
+ * myFinishAt=0 یعنی خودم تمام نکرده بودم (فورفیت/تایم‌اوت) → ساعتِ همان لحظه.
+ */
+export function buildDuelRecord(
+  end: {
+    reason: DuelEndReason;
+    winner: string | null;
+    total: number;
+    startedAt: number | null;
+    players: { sid: string; name: string; color: string; score: number; correct: number; answered: number }[];
+  },
+  sid: string,
+  now: number,
+  myFinishAt = 0
+): DuelRecord | null {
+  const mine = end.players.find((p) => p.sid === sid);
+  if (!mine) return null;
+  const opp = end.players.find((p) => p.sid !== sid);
+  const outcome: DuelOutcome = end.winner === null ? "tie" : end.winner === sid ? "win" : "loss";
+  const durationSec =
+    end.startedAt && end.startedAt > 0
+      ? clampInt((Math.max(myFinishAt > 0 ? myFinishAt : now) - end.startedAt) / 1000, 7200)
+      : 0;
+  return {
+    id: `d${now}`,
+    day: duelDayKey(new Date(now)),
+    outcome,
+    reason: end.reason === "forfeit" ? "forfeit" : "finished",
+    opponent: (opp?.name || "").trim().slice(0, 40) || "حریف",
+    opponentColor: (opp?.color || "stone").slice(0, 24),
+    myScore: clampInt(mine.score, 1_000_000),
+    oppScore: clampInt(opp?.score ?? 0, 1_000_000),
+    myCorrect: clampInt(mine.correct, 999),
+    oppCorrect: clampInt(opp?.correct ?? 0, 999),
+    answered: clampInt(mine.answered, 999),
+    total: clampInt(end.total, 999),
+    durationSec,
+  };
+}
+
+/** درج newest-first با حذف تکراریِ هم‌id و سقف DUEL_HISTORY_CAP */
+export function pushDuelRecord(records: DuelRecord[], rec: DuelRecord): DuelRecord[] {
+  return [rec, ...records.filter((r) => r.id !== rec.id)].slice(0, DUEL_HISTORY_CAP);
+}
+
+/** بردِ متوالیِ انتهای دفترچه — از جدیدترین رکورد؛ مساوی/باخت زنجیره را می‌شکند */
+export function duelWinStreak(records: DuelRecord[]): number {
+  let n = 0;
+  for (const r of records) {
+    if (r.outcome !== "win") break;
+    n++;
+  }
+  return n;
+}
+
+/** بهترین امتیاز شخصی در دفترچه (۰ اگر خالی) */
+export function duelBestScore(records: DuelRecord[]): number {
+  return records.reduce((m, r) => Math.max(m, r.myScore), 0);
+}
+
+/** فرم آخرین n نبرد (جدید→قدیم) برای نشان‌های رنگی */
+export function duelForm(records: DuelRecord[], n = 5): DuelOutcome[] {
+  return records.slice(0, n).map((r) => r.outcome);
+}
+
+// ---------------- پایداری (sanitize/merge برای جدول SyncField) ----------------
+
+const DAY_RE = /^\d{4}-\d{2}-\d{2}$/;
+
+/** اعتبارسنجی یک رکورد نامطمئن — رکورد خراب کلاً می‌افتد، نه اینکه نصفه بماند */
+export function sanitizeDuelRecord(v: unknown): DuelRecord | null {
+  if (!v || typeof v !== "object" || Array.isArray(v)) return null;
+  const r = v as Record<string, unknown>;
+  const id = typeof r.id === "string" && r.id.length > 0 && r.id.length <= 40 ? r.id : null;
+  const day = typeof r.day === "string" && DAY_RE.test(r.day) ? r.day : null;
+  const outcome = OUTCOMES.includes(r.outcome as DuelOutcome) ? (r.outcome as DuelOutcome) : null;
+  if (!id || !day || !outcome) return null;
+  const reason: DuelEndReason = r.reason === "forfeit" ? "forfeit" : "finished";
+  const opponent = typeof r.opponent === "string" ? r.opponent.trim().slice(0, 40) : "";
+  const opponentColor = typeof r.opponentColor === "string" ? r.opponentColor.slice(0, 24) : "stone";
+  return {
+    id,
+    day,
+    outcome,
+    reason,
+    opponent: opponent || "حریف",
+    opponentColor: opponentColor || "stone",
+    myScore: clampInt(r.myScore, 1_000_000),
+    oppScore: clampInt(r.oppScore, 1_000_000),
+    myCorrect: clampInt(r.myCorrect, 999),
+    oppCorrect: clampInt(r.oppCorrect, 999),
+    answered: clampInt(r.answered, 999),
+    total: clampInt(r.total, 999),
+    durationSec: clampInt(r.durationSec, 7200),
+  };
+}
+
+/** آرایهٔ دفترچه از ورودی نامطمئن: فقط رکوردهای سالم، بدون تکرارِ id، با سقف */
+export function sanitizeDuelHistory(v: unknown): DuelRecord[] {
+  if (!Array.isArray(v)) return [];
+  const out: DuelRecord[] = [];
+  const seen = new Set<string>();
+  for (const item of v) {
+    const rec = sanitizeDuelRecord(item);
+    if (!rec || seen.has(rec.id)) continue;
+    seen.add(rec.id);
+    out.push(rec);
+    if (out.length >= DUEL_HISTORY_CAP) break;
+  }
+  return out;
+}
+
+/**
+ * merge ابری: اتحاد بر اساس id (دفترچهٔ لاگ است، نه شمارنده — هر دو دستگاه ارزش
+ * دارند)، مرتب بر اساس id نزولی (id حامل epoch ms است) و سقف‌خورده.
+ * هر دو طرف optional هستند (فیلد در snapshotهای قدیمی غایب است).
+ */
+export function mergeDuelHistory(
+  l: DuelRecord[] | undefined,
+  r: DuelRecord[] | undefined
+): DuelRecord[] {
+  const map = new Map<string, DuelRecord>();
+  for (const rec of [...(l ?? []), ...(r ?? [])]) if (!map.has(rec.id)) map.set(rec.id, rec);
+  return [...map.values()].sort((a, b) => (a.id < b.id ? 1 : -1)).slice(0, DUEL_HISTORY_CAP);
+}

@@ -1,9 +1,11 @@
 // گام ۸ §12 — اسلایس بازی‌های سریع: رکوردهای چالش ۶۰ثانیه‌ای + برد/باخت دودل.
 // پایان هر راند rush ← شمارندهٔ rush روزانه (بای‌پس زنجیره — سیاست rush در
-// effects/activityPatch).
+// effects/activityPatch). دودل علاوه بر W/L/T، دفترچهٔ «تاریخچهٔ نبردها» را
+// هم نگه می‌دارد (Task 65 — موتور خالص در lib/duel-history.ts).
 
 import type { StateCreator } from "zustand";
 import { activityPatch } from "../effects";
+import { pushDuelRecord, type DuelRecord } from "@/lib/duel-history";
 import type { StudyStore } from "../types";
 
 export interface ArcadeSlice {
@@ -15,10 +17,13 @@ export interface ArcadeSlice {
   duelWins: number; // 2-player live duel victories
   duelLosses: number; // 2-player live duel defeats
   duelTies: number; // 2-player live duel ties
+  /** Task 65 «تاریخچهٔ نبردها» — newest-first, cap 15 */
+  duelHistory: DuelRecord[];
 
   setRushBest: (points: number, correct: number) => void;
   setSpellRushBest: (points: number, correct: number) => void;
-  recordDuelOutcome: (outcome: "win" | "loss" | "tie") => void;
+  /** record اختیاری است تا فراخوانی‌های قدیمی فقط-شمارنده‌ای سالم بمانند */
+  recordDuelOutcome: (outcome: "win" | "loss" | "tie", record?: DuelRecord) => void;
 }
 
 export const createArcadeSlice: StateCreator<StudyStore, [], [], ArcadeSlice> = (set) => ({
@@ -30,6 +35,7 @@ export const createArcadeSlice: StateCreator<StudyStore, [], [], ArcadeSlice> = 
   duelWins: 0,
   duelLosses: 0,
   duelTies: 0,
+  duelHistory: [],
 
   // called exactly once per finished rush round → also counts completed games + daily quest
   setRushBest: (points, correct) =>
@@ -46,10 +52,12 @@ export const createArcadeSlice: StateCreator<StudyStore, [], [], ArcadeSlice> = 
       spellRushBest: Math.max(s.spellRushBest, points),
       spellRushBestCorrect: Math.max(s.spellRushBestCorrect, correct),
     })),
-  recordDuelOutcome: (outcome) =>
+  // شمارنده‌ها همیشه؛ دفترچه فقط وقتی رکورد ساخته‌شده همراه بیاید
+  recordDuelOutcome: (outcome, record) =>
     set((s) => ({
       duelWins: s.duelWins + (outcome === "win" ? 1 : 0),
       duelLosses: s.duelLosses + (outcome === "loss" ? 1 : 0),
       duelTies: s.duelTies + (outcome === "tie" ? 1 : 0),
+      duelHistory: record ? pushDuelRecord(s.duelHistory, record) : s.duelHistory,
     })),
 });

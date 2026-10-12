@@ -9,6 +9,7 @@ import { useCountdown } from "@/hooks/use-countdown";
 import { useToast } from "@/hooks/use-toast";
 import { trackEvent } from "@/lib/analytics";
 import { sendStats } from "@/lib/identity";
+import { buildDuelRecord } from "@/lib/duel-history";
 import {
   buildDuelBank,
   type Conn,
@@ -107,6 +108,10 @@ export function useDuelSocket(): DuelMachine {
   }, [feedback]);
   const endedRef = useRef(false);
   const persistedRef = useRef(false);
+  const myFinishAtRef = useRef(myFinishAt);
+  useEffect(() => {
+    myFinishAtRef.current = myFinishAt;
+  }, [myFinishAt]);
   const advanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // شمارش معکوس لابی تا شروع مسابقه — رویدادسوختگی سوکت با restartKey (گام ۶)
@@ -126,7 +131,9 @@ export function useDuelSocket(): DuelMachine {
       if (!mine) return;
       const store = useStudy.getState();
       const outcome: "win" | "loss" | "tie" = end.winner === null ? "tie" : end.winner === sid ? "win" : "loss";
-      store.recordDuelOutcome(outcome);
+      // Task 65 — علاوه بر شمارنده‌ها، رکورد کامل نبرد به دفترچهٔ «تاریخچهٔ نبردها» می‌رود
+      const record = buildDuelRecord(end, sid, Date.now(), myFinishAtRef.current);
+      store.recordDuelOutcome(outcome, record ?? undefined);
       store.trackQuizDone();
       trackEvent("duel_done");
       const percent = percentOf(mine.correct, end.total);

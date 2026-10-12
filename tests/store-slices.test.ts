@@ -76,7 +76,7 @@ describe("StudyState drift guard (12 slices → one contract)", () => {
       "starredWords", "flashIntent", "flashNonce", "seenBadges",
       "rushBest", "rushBestCorrect", "rushGames",
       "spellRushBest", "spellRushBestCorrect",
-      "duelWins", "duelLosses", "duelTies",
+      "duelWins", "duelLosses", "duelTies", "duelHistory",
       "dailyGoal", "onboarded", "settings",
       "freezeCount", "freezeEarnedDay", "freezeUsedDays", "goalMetDays", "freezeSavedDay",
     ];
