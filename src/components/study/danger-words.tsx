@@ -252,7 +252,7 @@ export default function DangerWords() {
               دیکتهٔ واژه‌های خطرناک
             </DialogTitle>
           </DialogHeader>
-          {dictSource && <DictationTab source={dictSource} onExit={() => setDictOpen(false)} />}
+          {dictSource && <DictationTab source={dictSource} onExit={() => setDictOpen(false)} exitLabel="بازگشت به واژه‌های خطرناک" />}
         </DialogContent>
       </Dialog>
 

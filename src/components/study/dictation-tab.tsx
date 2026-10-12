@@ -47,6 +47,7 @@ export default function DictationTab({
   lesson,
   source,
   onExit,
+  exitLabel = "بازگشت به واژه‌های من",
 }: {
   /** the classic per-lesson pool — omit when `source` is given */
   lesson?: LessonData;
@@ -54,6 +55,9 @@ export default function DictationTab({
   source?: DictationSource;
   /** optional way out for non-tab embeds (my-words launcher) */
   onExit?: () => void;
+  /** done-screen exit button label — the default serves the my-words flow;
+   *  virtual-source dialogs pass their own («بازگشت به واژه‌های خطرناک», …) */
+  exitLabel?: string;
 }) {
   const { toast } = useToast();
   const mounted = useMounted();
@@ -381,7 +385,7 @@ export default function DictationTab({
                 onClick={onExit}
                 className="inline-flex items-center gap-2 rounded-xl border border-violet-200 bg-violet-50 px-5 py-2.5 text-sm font-bold text-violet-700 transition-all hover:bg-violet-100 active:scale-95"
               >
-                بازگشت به واژه‌های من
+                {exitLabel}
               </button>
             )}
           </div>

@@ -2,12 +2,16 @@
 
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { RefreshCcw, Sparkles, CalendarClock, CheckCircle2, TrendingUp, Sprout, BookOpenCheck, AlarmClock, ArrowLeft, Star, ChevronDown } from "lucide-react";
+import { RefreshCcw, Sparkles, CalendarClock, CheckCircle2, TrendingUp, Sprout, BookOpenCheck, AlarmClock, ArrowLeft, Star, ChevronDown, Ear } from "lucide-react";
 import { useStudy, srsDueTotal, firstLessonWithDue, type SrsItem } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
 import { srsDueSummary, srsForecastWords } from "@/lib/srs-due";
+import { buildDueDictation, DICTATION_MIN_DUE } from "@/lib/due-dictation";
+import type { DictationSource } from "@/lib/study-types";
 import { trackEvent } from "@/lib/analytics";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import DictationTab from "./dictation-tab";
 
 // ------------------------------------------------------------------
 // داشبورد مرور هوشمند — health of the SRS queue:
@@ -71,6 +75,24 @@ export default function SrsPanel() {
   );
   const dueWords = dueInfo.words;
   const dueOverflow = Math.max(0, dueInfo.dueTotal - dueWords.length);
+
+  // «دیکتهٔ سررسیدها» — املای شنیداری از فهرست کامل سررسید (نه فقط ۵ چیپ).
+  // جلسه SNAPSHOT است (درس task 50): منبع در لحظهٔ باز شدن منجمد می‌شود —
+  // وگرنه مرورِ آخرین واژهٔ سررسید وسط راند، dueTotal را صفر و dictSource را
+  // null می‌کند و DictationTab وسط کار آنمانت می‌شود (finish هرگز نمی‌رسد).
+  const [dictOpen, setDictOpen] = useState(false);
+  const [dictSession, setDictSession] = useState<DictationSource | null>(null);
+  const openDueDictation = () => {
+    const words = srsDueSummary(srs, Date.now(), dueInfo.dueTotal).words;
+    if (words.length === 0) return;
+    setDictSession(buildDueDictation(words));
+    setDictOpen(true);
+    trackEvent("srs_due_dictation_start");
+  };
+  const closeDueDictation = () => {
+    setDictOpen(false);
+    setDictSession(null);
+  };
 
   const startSmartReview = () => {
     trackEvent("srs_due_review");
@@ -194,6 +216,19 @@ export default function SrsPanel() {
                 <span className="mr-auto rounded-full bg-rose-50 px-2 py-0.5 text-[10px] font-black text-rose-600">
                   {faNum(dueInfo.dueTotal)} واژه
                 </span>
+                <button
+                  onClick={openDueDictation}
+                  disabled={dueInfo.dueTotal < DICTATION_MIN_DUE}
+                  title={
+                    dueInfo.dueTotal < DICTATION_MIN_DUE
+                      ? `حداقل ${faNum(DICTATION_MIN_DUE)} واژهٔ سررسید لازم است`
+                      : "املای شنیداری از همهٔ واژه‌های سررسید — املا درست یعنی مرور واقعی"
+                  }
+                  className="srs-due-dict-btn inline-flex items-center gap-1 rounded-lg border border-rose-200 bg-white px-2 py-1 text-[11px] font-bold text-rose-700 shadow-sm transition-all enabled:hover:border-rose-300 enabled:hover:bg-rose-50 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  <Ear size={12} />
+                  دیکته
+                </button>
               </div>
               <div className="flex flex-wrap gap-1.5">
                 {dueWords.map((w) => {
@@ -238,7 +273,7 @@ export default function SrsPanel() {
               </div>
               <div className="mt-2 flex items-center gap-1 border-t border-rose-100/70 pt-1.5 text-[10px] text-stone-400">
                 <Star size={10} className="text-amber-400" />
-                واژهٔ سررسید را با ستاره به «واژه‌های من» بفرست تا در آزمون و فلش‌کارت شخصی هم بیاید
+                واژهٔ سررسید را با ستاره به «واژه‌های من» بفرست — یا با دیکته، املایش را محک بزن
               </div>
             </div>
           )}
@@ -354,6 +389,27 @@ export default function SrsPanel() {
           )}
         </div>
       </div>
+
+      {/* targeted dictation dialog — spell the due words by ear; a correct
+          spelling on a due word is a REAL SRS upgrade via reviewWord.
+          Session is a SNAPSHOT — frozen at open, immune to live dueTotal decay. */}
+      <Dialog
+        open={dictOpen}
+        onOpenChange={(o) => {
+          if (o) openDueDictation();
+          else closeDueDictation();
+        }}
+      >
+        <DialogContent className="max-h-[92vh] max-w-2xl overflow-y-auto nice-scroll">
+          <DialogHeader className="text-right">
+            <DialogTitle className="flex items-center gap-2 text-base">
+              <Ear size={16} className="text-rose-600" />
+              دیکتهٔ واژه‌های سررسید
+            </DialogTitle>
+          </DialogHeader>
+          {dictSession && <DictationTab source={dictSession} onExit={closeDueDictation} exitLabel="بازگشت به داشبورد مرور" />}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }

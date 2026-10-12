@@ -667,6 +667,16 @@ body {
 .dark .srs-panel .srs-due-star .fill-amber-400 { color: #fbbf24; }
 .dark .srs-panel .srs-due-preview .border-rose-100\/70 { border-color: rgb(120 30 45 / 0.4); }
 .dark .srs-panel .srs-due-preview .text-stone-400 { color: #a8a29e; }
+/* due-dictation CTA (دیکتهٔ سررسیدها) — rose outline on dark paper */
+.dark .srs-panel .srs-due-dict-btn {
+  background-color: #1c1917;
+  border-color: rgb(120 30 45 / 0.55);
+  color: #fb7185;
+}
+.dark .srs-panel .srs-due-dict-btn:enabled:hover {
+  background-color: rgb(120 30 45 / 0.18);
+  border-color: rgb(190 40 60 / 0.8);
+}
 /* tap-to-expand forecast rows (پیش‌بینی تپ‌پذیر) — teal future theme */
 .dark .srs-panel .srs-fx-expand {
   background-color: rgb(28 25 23 / 0.8);
