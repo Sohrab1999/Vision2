@@ -14,6 +14,7 @@ import {
   BADGES,
   TIER_STYLE,
   buildEvalInput,
+  newBadgeIds,
   unlockedBadgeIds,
   type BadgeDef,
 } from "@/lib/achievements";
@@ -43,6 +44,10 @@ describe("رجیستری نشان‌ها — سلامت ساختاری", () => {
   it("شناسه‌ها یکتا هستند و هر نشان متن/تیر معتبر دارد", () => {
     const set = new Set(BADGES.map((b) => b.id));
     expect(set.size).toBe(BADGES.length);
+    // عنوان‌ها هم باید یکتا باشند — Task 82: «هفتهٔ کامل» دو بار ثبت شد و
+    // getByText در تستِ کامپوننت آن را لو داد (دو کاشیِ هم‌نام = ابهامِ UX)
+    const titles = new Set(BADGES.map((b) => b.title));
+    expect(titles.size).toBe(BADGES.length);
     for (const b of BADGES) {
       expect(b.title.length, `title of ${b.id}`).toBeGreaterThan(0);
       expect(b.desc.length, `desc of ${b.id}`).toBeGreaterThan(0);
@@ -158,6 +163,108 @@ describe("نشان‌های هسته‌ای — نمونه‌های مرزی", (
     expect(ids(big)).toContain("perfect");
     const small = buildEvalInput(baseRaw({ results: { "1:quiz": { correct: 4, total: 4, percent: 100 } } }));
     expect(ids(small)).not.toContain("perfect");
+  });
+});
+
+// ------------------------------------------------------------------
+// Task 82 — خانوادهٔ هدف: قراردادِ دادهٔ گزارش‌محور (goalMetDays).
+// نکتهٔ قراردادی: goalMetDays فقط روزِ واقعاً هدف‌دار را ثبت می‌کند
+// (goalAndFreezePatch) و سقف حافظه‌اش ۱۴ است — پس نشانِ ۱۴روزه بعد از
+// رسیدن، برای همیشه باز می‌ماند (slice(-14) طول را زیرِ ۱۴ نگه می‌دارد).
+// ------------------------------------------------------------------
+
+describe("خانوادهٔ هدف — دقیقاً دادهٔ goalMetDays", () => {
+  it("wording و تیر و آیکنِ ۴ نشان قفل است", () => {
+    expect(byId("goal-first").title).toBe("اولین هدف");
+    expect(byId("goal-first").tier).toBe("bronze");
+    expect(byId("goal-first").icon).toBe("Flag");
+    expect(byId("goal-five").tier).toBe("silver");
+    expect(byId("goal-five").icon).toBe("CalendarDays");
+    expect(byId("goal-week").title).toBe("هفتهٔ هدف‌دار");
+    expect(byId("goal-week").tier).toBe("gold");
+    expect(byId("goal-week").icon).toBe("CalendarRange");
+    expect(byId("goal-fortnight").title).toBe("دو هفتهٔ درخشان");
+    expect(byId("goal-fortnight").icon).toBe("Sun");
+  });
+
+  it("تازه‌وارد: هیچ‌کدام از ۴ نشان هدف باز نیست", () => {
+    const u = ids(base());
+    expect(u).not.toContain("goal-first");
+    expect(u).not.toContain("goal-five");
+    expect(u).not.toContain("goal-week");
+    expect(u).not.toContain("goal-fortnight");
+  });
+
+  it("نردبان: ۱ روز → اولین هدف؛ ۴ → هنوز پنج‌روزه نه؛ ۵ → پنج‌روزه", () => {
+    expect(ids(base({ goalMetDays: ["2026-10-12"] }))).toContain("goal-first");
+    const four = base({ goalMetDays: ["2026-10-12", "2026-10-11", "2026-10-10", "2026-10-09"] });
+    expect(ids(four)).toContain("goal-first");
+    expect(ids(four)).not.toContain("goal-five");
+    const five = base({ goalMetDays: [...new Array(5)].map((_, i) => `2026-10-${String(12 - i).padStart(2, "0")}`) });
+    expect(ids(five)).toContain("goal-five");
+    expect(ids(five)).not.toContain("goal-week");
+  });
+
+  it("مرز هفته: ۶ روز هنوز نه، ۷ روز «هفتهٔ کامل» — پیشرفتِ فارسی زیرِ قفل", () => {
+    const six = base({ goalMetDays: ["2026-10-12", "2026-10-11", "2026-10-10", "2026-10-09", "2026-10-08", "2026-10-07"] });
+    expect(ids(six)).not.toContain("goal-week");
+    expect(byId("goal-week").progress!(six)).toBe("۶ از ۷ روزِ هدف‌دار");
+    const seven = base({ goalMetDays: ["2026-10-06", "2026-10-07", "2026-10-08", "2026-10-09", "2026-10-10", "2026-10-11", "2026-10-12"] });
+    expect(ids(seven)).toContain("goal-week");
+  });
+
+  it("سقف حافظه = سقف نشان: ۱۴ روز باز می‌کند و ۱۵ روز (slice) هم باز می‌ماند", () => {
+    const fourteen = base({ goalMetDays: Array.from({ length: 14 }, (_, i) => `2026-09-${String(30 - i).padStart(2, "0")}`) });
+    expect(ids(fourteen)).toContain("goal-fortnight");
+    // بعد از سقفِ ۱۴، آرایه در engine با slice(-14) طولش ثابت می‌ماند — نشان پس گرفته نمی‌شود
+    expect(byId("goal-fortnight").check({ ...fourteen, goalDays: 14 })).toBe(true);
+    expect(byId("goal-fortnight").progress!(fourteen)).toBe("۱۴ از ۱۴ روزِ هدف‌دار");
+  });
+
+  it("استقلال سطل‌ها: روزِ هدف‌دار با streak و یخ فرقی نمی‌کند", () => {
+    const u = ids(base({ goalMetDays: ["2026-10-12", "2026-10-11", "2026-10-10", "2026-10-09", "2026-10-08", "2026-10-07", "2026-10-06"] }));
+    expect(u).toContain("goal-week");
+    expect(u).not.toContain("streak-3");
+    expect(u).not.toContain("ice-maker");
+  });
+
+  it("گارد ورودی خراب: آرایهٔ ناهم‌نوع → فقط رشته‌ها؛ نبودِ فیلد → صفر امن", () => {
+    const corrupt = buildEvalInput(baseRaw({ goalMetDays: [null, 5, { day: "x" }, "2026-10-12"] }));
+    expect(corrupt.goalDays).toBe(1);
+    expect(ids(corrupt)).toContain("goal-first");
+    const absent = buildEvalInput({
+      known: {},
+      results: {},
+      history: {},
+      dayStat: { day: "", reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0 },
+      streak: 0,
+      bestStreak: 0,
+      mistakes: {},
+    });
+    expect(absent.goalDays).toBe(0);
+  });
+});
+
+describe("newBadgeIds — قرارداد واحدِ «تازه» (Task 82)", () => {
+  const seven = base({ goalMetDays: ["2026-10-12", "2026-10-11", "2026-10-10", "2026-10-09", "2026-10-08", "2026-10-07", "2026-10-06"] });
+
+  it("بازهای دیده‌نشده به ترتیب رجیستری برمی‌گردند", () => {
+    const fresh = newBadgeIds(seven, []);
+    // این seed فقط روزِ هدف‌دار دارد (history خالی) — اولین قدم باز نمی‌شود
+    expect(fresh).not.toContain("first-step");
+    expect(fresh).toContain("goal-first");
+    expect(fresh.indexOf("goal-first")).toBeLessThan(fresh.indexOf("goal-five"));
+    expect(fresh.indexOf("goal-five")).toBeLessThan(fresh.indexOf("goal-week"));
+  });
+
+  it("دیده‌شده‌ها فیلتر می‌شوند — فقط نام‌دیده‌ها برمی‌گردند", () => {
+    const fresh = newBadgeIds(seven, ["goal-first", "goal-five"]);
+    expect(fresh).toEqual(["goal-week"]);
+  });
+
+  it("seen خراب → فقط رشته‌ها معتبر؛ ورودیِ تازه‌وارد → خالی", () => {
+    expect(newBadgeIds(seven, [null, 3, "goal-week"] as unknown as string[])).toEqual(["goal-first", "goal-five"]);
+    expect(newBadgeIds(base(), [])).toEqual([]);
   });
 });
 

@@ -45,6 +45,7 @@ export interface BadgeEvalInput {
   freezeCount: number; // یخِ فعلیِ مخزن (سقف ۲ — F9)
   freezeRescues: number; // چند بار یخ زنجیره را نجات داده (freezeUsedDays)
   hasFreezeEver: boolean; // حداقل یک یخ ساخته شده (freezeEarnedDay ثبت است)
+  goalDays: number; // چند روز هدفِ روزانه کامل شده (goalMetDays — سقف حافظه ۱۴، Task 82)
 }
 
 function historyTotals(history: StudyState["history"]): { quizzes: number; reviews: number; days: number } {
@@ -74,6 +75,7 @@ export function buildEvalInput(s: {
   freezeCount?: number;
   freezeUsedDays?: string[];
   freezeEarnedDay?: string;
+  goalMetDays?: string[];
 }): BadgeEvalInput {
   const knownCount = Object.values(s.known).filter(Boolean).length;
   const rs = Object.values(s.results);
@@ -125,7 +127,27 @@ export function buildEvalInput(s: {
       ? s.freezeUsedDays.filter((d): d is string => typeof d === "string").length
       : 0,
     hasFreezeEver: typeof s.freezeEarnedDay === "string" && s.freezeEarnedDay.length > 0,
+    // خانوادهٔ هدف (Task 82) — گاردِ ورودی خراب: آرایهٔ نامعتبر → فقط رشته‌ها
+    // (قرارداد از goalAndFreezePatch می‌آید: فقط روزِ واقعاً هدف‌دار ثبت می‌شود)
+    goalDays: Array.isArray(s.goalMetDays)
+      ? s.goalMetDays.filter((d): d is string => typeof d === "string").length
+      : 0,
   };
+}
+
+/**
+ * نشان‌های تازه = بازِ فعلی − دیده‌شده‌ها (Task 82 — تک‌منبعِ تعریفِ «تازه»).
+ * قبل از این‌جا همین منطق درون badges.tsx تکرار می‌شد؛ حالا هم توستِ بخش
+ * نشان‌ها و هم حلقهٔ طلاییِ آواتارِ هدر از یک قرارداد می‌خوانند.
+ * ترتیب خروجی = ترتیب رجیستری؛ ورودیِ seen خراب → فقط رشته‌ها.
+ */
+export function newBadgeIds(input: BadgeEvalInput, seen: string[]): string[] {
+  const seenSet = new Set(Array.isArray(seen) ? seen.filter((d): d is string => typeof d === "string") : []);
+  const out: string[] = [];
+  for (const b of BADGES) {
+    if (b.check(input) && !seenSet.has(b.id)) out.push(b.id);
+  }
+  return out;
 }
 
 export const BADGES: BadgeDef[] = [
@@ -346,6 +368,46 @@ export const BADGES: BadgeDef[] = [
     tier: "gold",
     progress: (s) => `${faNum(Math.min(s.freezeRescues, 3))} از ۳ نجات`,
     check: (s) => s.freezeRescues >= 3,
+  },
+  // ---- خانوادهٔ هدف (Task 82) — داستانِ «قولِ روزانه» در سطح دستاورد؛
+  // هم‌پیوند با چیپ هدف هدر (۷۶) و دفتر کارنامه (۷۸-۷۹): روزهایِ
+  // هدف‌دار از goalMetDays می‌آیند (فقط روزِ واقعاً کامل‌شده ثبت است)،
+  // سقف حافظه ۱۴ = سقفِ نشانِ آخر هم هست (بعد از آن همیشه باز می‌ماند).
+  {
+    id: "goal-first",
+    title: "اولین هدف",
+    desc: "اولین روزی که هدفِ روزانه‌ات را کامل کن",
+    icon: "Flag",
+    tier: "bronze",
+    check: (s) => s.goalDays >= 1,
+  },
+  {
+    id: "goal-five",
+    title: "پنج‌روزهٔ هدف‌دار",
+    desc: "در ۵ روز هدفِ روزانه‌ات را کامل کن — پیوسته یا با فاصله",
+    icon: "CalendarDays",
+    tier: "silver",
+    progress: (s) => `${faNum(Math.min(s.goalDays, 5))} از ۵ روزِ هدف‌دار`,
+    check: (s) => s.goalDays >= 5,
+  },
+  {
+    id: "goal-week",
+    // عنوانِ یکتا — «هفتهٔ کامل» قبلاً برای streak-7 (فعالیتِ پیوسته) گرفته شده
+    title: "هفتهٔ هدف‌دار",
+    desc: "۷ روزِ هدف‌دار جمع کن — یک هفتهٔ تمام به قول‌ات وفادار بمان",
+    icon: "CalendarRange",
+    tier: "gold",
+    progress: (s) => `${faNum(Math.min(s.goalDays, 7))} از ۷ روزِ هدف‌دار`,
+    check: (s) => s.goalDays >= 7,
+  },
+  {
+    id: "goal-fortnight",
+    title: "دو هفتهٔ درخشان",
+    desc: "۱۴ روزِ هدف‌دار — سقفِ دفترِ کارنامه؛ دو هفتهٔ تمام تعهد",
+    icon: "Sun",
+    tier: "gold",
+    progress: (s) => `${faNum(Math.min(s.goalDays, 14))} از ۱۴ روزِ هدف‌دار`,
+    check: (s) => s.goalDays >= 14,
   },
 ];
 

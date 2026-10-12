@@ -7,6 +7,8 @@ import { avatarClasses } from "@/lib/study-theme";
 import { sendProfile } from "@/lib/identity";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
+import { useFreshBadges } from "@/hooks/use-fresh-badges";
+import NewBadgeDot from "./new-badge-dot";
 import { exportProgress, parseBackup, applyBackup, backupSummary, readAutoBackup, restoreAutoBackup, autoBackupAgeFa, collectData } from "@/lib/backup";
 import { trackEvent } from "@/lib/analytics";
 import { pushSync, fetchSync, mergeSyncData, applyMergedSnapshot, normalizeCode, looksLikeCode } from "@/lib/sync";
@@ -30,6 +32,9 @@ export default function ProfilePopover() {
   const mounted = useMounted();
   const { toast } = useToast();
   const fileRef = useRef<HTMLInputElement>(null);
+  // قهرمان‌سازیِ دستاورد (Task 82) — نشان‌های تازه → حلقهٔ طلایی + نقطهٔ شمارنده
+  const freshBadges = useFreshBadges();
+  const hasFresh = freshBadges.length > 0;
 
   const [nameDraft, setNameDraft] = useState("");
   const [colorDraft, setColorDraft] = useState(avatarColor);
@@ -234,17 +239,31 @@ export default function ProfilePopover() {
               <span className="hidden max-w-[90px] truncate text-[12px] font-extrabold text-stone-700 sm:block">
                 {userName}
               </span>
-              <span
-                className={`flex h-7 w-7 items-center justify-center rounded-full text-[12px] font-black text-white shadow-md ${avatarClasses[avatarColor] ?? avatarClasses.emerald}`}
-              >
-                {userName.trim().charAt(0)}
+              <span className="relative">
+                <span
+                  className={`flex h-7 w-7 items-center justify-center rounded-full text-[12px] font-black text-white shadow-md ${avatarClasses[avatarColor] ?? avatarClasses.emerald}${
+                    hasFresh
+                      ? " new-badge-ring ring-2 ring-amber-400 ring-offset-2 ring-offset-transparent"
+                      : ""
+                  }`}
+                >
+                  {userName.trim().charAt(0)}
+                </span>
+                <NewBadgeDot />
               </span>
             </>
           ) : (
-            <span
-              className={`flex h-7 w-7 items-center justify-center rounded-full border-2 border-dashed border-stone-300 text-stone-400`}
-            >
-              <User size={14} />
+            <span className="relative">
+              <span
+                className={`flex h-7 w-7 items-center justify-center rounded-full border-2 border-dashed border-stone-300 text-stone-400${
+                  hasFresh
+                    ? " new-badge-ring ring-2 ring-amber-400 ring-offset-2 ring-offset-transparent"
+                    : ""
+                }`}
+              >
+                <User size={14} />
+              </span>
+              <NewBadgeDot />
             </span>
           )}
         </button>

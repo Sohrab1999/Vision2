@@ -30,6 +30,10 @@ import {
   ShieldCheck,
   Shield,
   Package,
+  Flag,
+  CalendarDays,
+  CalendarRange,
+  Sun,
 } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -40,6 +44,7 @@ import {
   BADGES,
   TIER_STYLE,
   buildEvalInput,
+  newBadgeIds,
   unlockedBadgeIds,
   type BadgeEvalInput,
 } from "@/lib/achievements";
@@ -72,6 +77,11 @@ export const BADGE_ICONS: Record<string, React.ElementType> = {
   ShieldCheck,
   Shield,
   Package,
+  // خانوادهٔ هدف (Task 82)
+  Flag,
+  CalendarDays,
+  CalendarRange,
+  Sun,
 };
 
 const tierFa: Record<string, string> = {
@@ -98,6 +108,7 @@ export default function Badges() {
   const freezeCount = useStudy((s) => s.freezeCount);
   const freezeUsedDays = useStudy((s) => s.freezeUsedDays);
   const freezeEarnedDay = useStudy((s) => s.freezeEarnedDay);
+  const goalMetDays = useStudy((s) => s.goalMetDays);
   const seenBadges = useStudy((s) => s.seenBadges);
   const markBadgesSeen = useStudy((s) => s.markBadgesSeen);
   const mounted = useMounted();
@@ -120,17 +131,19 @@ export default function Badges() {
         freezeCount,
         freezeUsedDays,
         freezeEarnedDay,
+        goalMetDays,
       }),
-    [known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, freezeCount, freezeUsedDays, freezeEarnedDay]
+    [known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, freezeCount, freezeUsedDays, freezeEarnedDay, goalMetDays]
   );
 
   const unlocked = useMemo(() => unlockedBadgeIds(input), [input]);
   const unlockedCount = unlocked.size;
 
   // detect newly earned badges → toast once per badge
+  // (تعریفِ «تازه» از قراردادِ مشترک newBadgeIds — هم‌منبع با حلقهٔ آواتار)
   useEffect(() => {
     if (!mounted || markingRef.current) return;
-    const fresh = [...unlocked].filter((id) => !seenBadges.includes(id));
+    const fresh = newBadgeIds(input, seenBadges);
     if (fresh.length === 0) return;
     markingRef.current = true;
     markBadgesSeen(fresh);
@@ -308,6 +321,13 @@ function badgeProgressPct(id: string, s: BadgeEvalInput): number {
       return clamp((s.bestPercent / 100) * 100);
     case "rush-combo":
       return clamp((s.rushBestCorrect / 15) * 100);
+    // خانوادهٔ هدف (Task 82)
+    case "goal-five":
+      return clamp((s.goalDays / 5) * 100);
+    case "goal-week":
+      return clamp((s.goalDays / 7) * 100);
+    case "goal-fortnight":
+      return clamp((s.goalDays / 14) * 100);
     default:
       return 0;
   }

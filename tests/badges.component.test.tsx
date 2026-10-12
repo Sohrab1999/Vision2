@@ -3,7 +3,7 @@
 // Task 81 — ششمین سوژهٔ زیرساخت تست کامپوننت (بازشده در Task 75):
 // بخش «نشان‌ها و دستاوردها» — ۲۵ نشان با خانوادهٔ تازهٔ یخ.
 // قراردادهایی که قفل می‌شوند:
-//   ① تازه‌وارد: شمار «۰ از ۲۵» + همهٔ کاشی‌ها قفل (بدون badge-shine)
+//   ① تازه‌وارد: شمار «۰ از ۲۹» + همهٔ کاشی‌ها قفل (بدون badge-shine)
 //   ② یادگیرندهٔ یخی: کاشی‌های یخ باز و «اول» مرتب‌شده‌اند (sort قرارداد)
 //     + پیشرفتِ زیرِ قفل با رقم فارسی
 //   ③ گارد نقشهٔ آیکن: هر iconِ رجیستری در BADGE_ICONS کلید دارد —
@@ -31,6 +31,16 @@ const seedIce = () =>
     freezeEarnedDay: "2026-10-05",
     seenBadges: [],
   });
+
+/** Task 82 — هفت روزِ هدف‌دار + یک streak؛ خانوادهٔ هدف تا «هفتهٔ هدف‌دار» باز است */
+const seedGoal = () => {
+  const days = [1, 2, 3, 4, 5, 6, 7].map((n) => {
+    const d = new Date();
+    d.setDate(d.getDate() - n);
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+  });
+  useStudy.setState({ goalMetDays: days, streak: 3, seenBadges: [] });
+};
 
 describe("نشان‌ها و دستاوردها — کامپوننت (Task 81)", () => {
   beforeAll(() => {
@@ -77,21 +87,25 @@ describe("نشان‌ها و دستاوردها — کامپوننت (Task 81)",
     expect(BADGE_ICONS.Package).toBeTruthy();
   });
 
-  it("تازه‌وارد: «۰ از ۲۵» + کاشی یخ قفل با پیشرفتِ فارسی زیرِ قفل", () => {
+  it("تازه‌وارد: «۰ از ۲۹» + کاشی یخ قفل با پیشرفتِ فارسی زیرِ قفل", () => {
     render(<Badges />);
     // شمار در JSX دو تکه رندر می‌شود — تطبیق با textContentِ نرمال‌شده
-    const chip = screen.getByText((_, el) => el?.tagName === "SPAN" && /۰\s*از\s*۲۵/.test(el.textContent ?? ""));
+    const chip = screen.getByText((_, el) => el?.tagName === "SPAN" && /۰\s*از\s*۲۹/.test(el.textContent ?? ""));
     expect(chip).toBeInTheDocument();
     const tile = screen.getByText("انبار یخ").closest(".badge-card");
     expect(tile).not.toBeNull();
     expect(tile?.className).not.toContain("badge-shine");
     expect(tile).toHaveTextContent("۰ از ۲ یخ در انبار");
+    // (Task 82) کاشی هدف هم قفل است — روزهای هدف‌دار صفر
+    const goalTile = screen.getByText("هفتهٔ هدف‌دار").closest(".badge-card");
+    expect(goalTile?.className).not.toContain("badge-shine");
+    expect(goalTile).toHaveTextContent("۰ از ۷ روزِ هدف‌دار");
   });
 
-  it("یادگیرندهٔ یخی: «۴ از ۲۵» + کاشی‌های یخ باز (badge-shine) و اولِ لیست", () => {
+  it("یادگیرندهٔ یخی: «۴ از ۲۹» + کاشی‌های یخ باز (badge-shine) و اولِ لیست", () => {
     seedIce();
     const { container } = render(<Badges />);
-    expect(screen.getByText((_, el) => el?.tagName === "SPAN" && /۴\s*از\s*۲۵/.test(el.textContent ?? ""))).toBeInTheDocument();
+    expect(screen.getByText((_, el) => el?.tagName === "SPAN" && /۴\s*از\s*۲۹/.test(el.textContent ?? ""))).toBeInTheDocument();
     for (const title of ["یخ‌ساز", "نجات‌گر", "انبار یخ", "سپر یخی"]) {
       const tile = screen.getByText(title).closest(".badge-card");
       expect(tile?.className, `${title} must be unlocked`).toContain("badge-shine");
@@ -101,6 +115,24 @@ describe("نشان‌ها و دستاوردها — کامپوننت (Task 81)",
     const titles = tiles.map((t) => t.textContent ?? "");
     expect(titles.join("|")).toContain("یخ‌ساز");
     expect(titles.join("|")).toContain("سپر یخی");
+  });
+
+  it("(Task 82) یادگیرندهٔ هدف‌مند: «۳ از ۲۹» + هفتهٔ هدف‌دار باز + قفلِ آخر با پیشرفتِ فارسی", () => {
+    seedGoal();
+    const { container } = render(<Badges />);
+    expect(screen.getByText((_, el) => el?.tagName === "SPAN" && /۳\s*از\s*۲۹/.test(el.textContent ?? ""))).toBeInTheDocument();
+    for (const title of ["اولین هدف", "پنج‌روزهٔ هدف‌دار", "هفتهٔ هدف‌دار"]) {
+      const tile = screen.getByText(title).closest(".badge-card");
+      expect(tile?.className, `${title} must be unlocked`).toContain("badge-shine");
+    }
+    // قفلِ آخر: دو هفتهٔ درخشان — پیشرفتِ هفت‌از-چهارده با رقم فارسی
+    const fort = screen.getByText("دو هفتهٔ درخشان").closest(".badge-card");
+    expect(fort?.className).not.toContain("badge-shine");
+    expect(fort).toHaveTextContent("۷ از ۱۴ روزِ هدف‌دار");
+    // سطل‌ها مستقل: نشان یخ برای این seed باز نشده
+    const ice = screen.getByText("یخ‌ساز").closest(".badge-card");
+    expect(ice?.className).not.toContain("badge-shine");
+    void container;
   });
 
   it("توستِ تازه: فقط نشانِ دیده‌نشده → یک توست «یخ‌ساز» + store واقعی seen می‌شود", () => {
