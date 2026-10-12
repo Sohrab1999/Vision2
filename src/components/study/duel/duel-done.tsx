@@ -28,10 +28,10 @@ export default function DuelDone({ endData, mySid, myFinishAt, oppConnected, rem
         animate={{ opacity: 1, scale: 1 }}
         className={`duel-done relative overflow-hidden rounded-2xl border-2 p-6 text-center shadow-sm sm:p-8 ${
           outcome === "win"
-            ? "border-emerald-300 bg-gradient-to-bl from-emerald-50 to-teal-50"
+            ? "dd-win border-emerald-300 bg-gradient-to-bl from-emerald-50 to-teal-50"
             : outcome === "tie"
-              ? "border-amber-300 bg-gradient-to-bl from-amber-50 to-orange-50"
-              : "border-rose-300 bg-gradient-to-bl from-rose-50 to-orange-50"
+              ? "dd-tie border-amber-300 bg-gradient-to-bl from-amber-50 to-orange-50"
+              : "dd-lose border-rose-300 bg-gradient-to-bl from-rose-50 to-orange-50"
         }`}
       >
         <div className="relative">

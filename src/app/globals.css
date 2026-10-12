@@ -297,7 +297,7 @@ body {
 /* my-words review launcher (my-words-review.tsx hero card) */
 .dark .mywords-hero { background-image: linear-gradient(to left, rgba(69, 48, 12, 0.45), rgba(24, 21, 18, 0.95)) !important; }
 /* my-words flashcard launcher (my-words-flashcards.tsx card) */
-.dark .mywords-cards { background-image: linear-gradient(to left, rgba(59, 32, 96, 0.45), rgba(24, 21, 18, 0.95)) !important; }
+.dark .mywords-cards, .dark .mywords-dictation { background-image: linear-gradient(to left, rgba(59, 32, 96, 0.45), rgba(24, 21, 18, 0.95)) !important; }
 .dark .text-sky-800 { color: #7dd3fc; }
 
 /* smart-practice hero */
@@ -310,10 +310,24 @@ body {
 .dark .text-orange-700 { color: #fdba74; }
 .dark .text-orange-800 { color: #fdba74; }
 
-/* exam-view gradient CTAs (mistakes review rose / dictation emerald) —
+/* exam-view + lesson-tests gradient CTAs (mistakes review rose / dictation emerald) —
    tinted gradient stops are outside the tone kernel, same as the heroes */
-.dark .exam-mistakes-cta { background-image: linear-gradient(to left, rgba(88, 18, 30, 0.5), rgba(24, 21, 18, 0.92)) !important; }
+.dark .mistakes-cta { background-image: linear-gradient(to left, rgba(88, 18, 30, 0.5), rgba(24, 21, 18, 0.92)) !important; }
 .dark .exam-dict-cta { background-image: linear-gradient(to left, rgba(6, 55, 40, 0.5), rgba(24, 21, 18, 0.92)) !important; }
+
+/* task-64 sweep — every remaining tinted gradient surface, one patch each
+   (direction mirrors the utility: to-l / to-b / to-bl) */
+.dark .listen-hero { background-image: linear-gradient(to left, rgba(8, 51, 68, 0.5), rgba(19, 78, 74, 0.4), rgba(24, 21, 18, 0.92)) !important; }
+.dark .name-cta { background-image: linear-gradient(to left, rgba(6, 55, 40, 0.5), rgba(19, 78, 74, 0.4)) !important; }
+.dark .onboard-paper { background-image: linear-gradient(to left, rgba(6, 55, 40, 0.4), rgba(24, 21, 18, 0.92), rgba(24, 21, 18, 0.92)) !important; }
+.dark .dict-setup { background-image: linear-gradient(to bottom, rgba(59, 32, 96, 0.4), transparent) !important; }
+.dark .rush-hero { background-image: linear-gradient(to bottom left, rgba(69, 48, 12, 0.5), rgba(88, 44, 14, 0.4), rgba(24, 21, 18, 0.92)) !important; }
+.dark .rush-done { background-image: linear-gradient(to bottom, rgba(88, 44, 14, 0.45), rgba(69, 48, 12, 0.4)) !important; }
+.dark .rush-board-strip { background-image: linear-gradient(to left, rgba(88, 44, 14, 0.4), rgba(69, 48, 12, 0.3), transparent) !important; }
+.dark .rush-board-hint { background-image: linear-gradient(to left, rgba(88, 44, 14, 0.3), transparent) !important; }
+.dark .dd-win { background-image: linear-gradient(to bottom left, rgba(6, 55, 40, 0.55), rgba(19, 78, 74, 0.4)) !important; }
+.dark .dd-tie { background-image: linear-gradient(to bottom left, rgba(69, 48, 12, 0.55), rgba(88, 44, 14, 0.4)) !important; }
+.dark .dd-lose { background-image: linear-gradient(to bottom left, rgba(88, 18, 30, 0.55), rgba(124, 45, 18, 0.4)) !important; }
 
 /* scrollbar */
 .dark .nice-scroll { scrollbar-color: #3d372f transparent; }

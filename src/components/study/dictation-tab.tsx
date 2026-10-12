@@ -488,7 +488,7 @@ export default function DictationTab({
           }`}
         >
           {/* audio area */}
-          <div className="flex flex-col items-center gap-3 bg-gradient-to-b from-violet-50/70 to-transparent p-6 pb-4">
+          <div className="dict-setup flex flex-col items-center gap-3 bg-gradient-to-b from-violet-50/70 to-transparent p-6 pb-4">
             <motion.button
               onClick={() => playAudio(word.en, 0.85, idx)}
               whileTap={{ scale: 0.9 }}

@@ -75,7 +75,7 @@ export default function RushBoard({ refreshKey = 0 }: { refreshKey?: number }) {
       className="rush-board overflow-hidden rounded-2xl border border-orange-200 bg-white shadow-sm"
     >
       {/* header */}
-      <div className="flex items-center justify-between gap-2 border-b border-orange-100 bg-gradient-to-l from-orange-50 via-amber-50 to-transparent px-4 py-3">
+      <div className="rush-board-strip flex items-center justify-between gap-2 border-b border-orange-100 bg-gradient-to-l from-orange-50 via-amber-50 to-transparent px-4 py-3">
         <h2 className="flex items-center gap-2 text-[15px] font-black text-stone-800">
           <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-amber-400 to-orange-600 text-white shadow-md shadow-orange-500/30">
             <Trophy size={15} />
@@ -153,7 +153,7 @@ export default function RushBoard({ refreshKey = 0 }: { refreshKey?: number }) {
 
       {/* my rank hint */}
       {mounted && (
-        <div className="border-t border-orange-100 bg-gradient-to-l from-orange-50/60 to-transparent px-4 py-2.5 text-center text-[11.5px] font-bold text-stone-500">
+        <div className="rush-board-hint border-t border-orange-100 bg-gradient-to-l from-orange-50/60 to-transparent px-4 py-2.5 text-center text-[11.5px] font-bold text-stone-500">
           {meRow ? (
             meRank === 1 ? (
               <span className="text-amber-700">🏆 تو قهرمان چالش کلاس هستی — رکوردت را حفظ کن!</span>

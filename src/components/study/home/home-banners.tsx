@@ -16,7 +16,7 @@ export function ListenBanner() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.18 }}
       aria-label="تمرین شنیداری"
-      className="relative overflow-hidden rounded-2xl border border-cyan-200 bg-gradient-to-l from-cyan-50 via-teal-50 to-emerald-50 shadow-sm"
+      className="listen-hero relative overflow-hidden rounded-2xl border border-cyan-200 bg-gradient-to-l from-cyan-50 via-teal-50 to-emerald-50 shadow-sm"
     >
       <div className="absolute -right-5 -top-8 text-teal-500 opacity-[0.07]" aria-hidden>
         <Headphones size={170} />

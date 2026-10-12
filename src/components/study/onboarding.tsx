@@ -111,7 +111,7 @@ export default function Onboarding() {
         }}
         onInteractOutside={(e) => e.preventDefault()}
       >
-        <div className="bg-gradient-to-l from-emerald-50 via-white to-white px-6 pt-6 pb-4">
+        <div className="onboard-paper bg-gradient-to-l from-emerald-50 via-white to-white px-6 pt-6 pb-4">
           <div className="mb-3 flex justify-center">{stepDots}</div>
           {step === 0 && (
             <>
