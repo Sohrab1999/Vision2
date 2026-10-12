@@ -91,7 +91,7 @@ export default function SkillPanel() {
         </div>
 
         {stats.length === 0 ? (
-          <div className="rounded-xl border-2 border-dashed border-stone-200 bg-stone-50/60 px-4 py-7 text-center">
+          <div className="rounded-xl border-2 border-dashed border-stone-200 c-stone-60 px-4 py-7 text-center">
             <TrendingUp size={22} className="mx-auto mb-2 text-stone-300" />
             <p className="text-[12.5px] font-bold text-stone-500">هنوز نتیجه‌ای ثبت نشده</p>
             <p className="mt-1 text-[11.5px] leading-5 text-stone-400">

@@ -80,7 +80,7 @@ export default function DuelDone({ endData, mySid, myFinishAt, oppConnected, rem
                 <div
                   key={p.sid}
                   className={`flex items-center gap-3 rounded-xl border p-3 ${
-                    highlight ? "border-emerald-300 bg-emerald-50/70" : "border-stone-200 bg-stone-50/70"
+                    highlight ? "border-emerald-300 bg-emerald-50/70" : "border-stone-200 c-stone-70"
                   }`}
                 >
                   <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-white" style={{ backgroundColor: p.color }}>

@@ -93,7 +93,7 @@ export default function DangerWords() {
         </div>
 
         {list.length === 0 ? (
-          <div className="rounded-xl border-2 border-dashed border-stone-200 bg-stone-50/60 px-4 py-7 text-center">
+          <div className="rounded-xl border-2 border-dashed border-stone-200 c-stone-60 px-4 py-7 text-center">
             <TrendingDown size={22} className="mx-auto mb-2 text-stone-300" />
             <p className="text-[12.5px] font-bold text-stone-500">هنوز واژهٔ خطری ثبت نشده</p>
             <p className="mx-auto mt-1 max-w-md text-[11.5px] leading-5 text-stone-400">
@@ -112,7 +112,7 @@ export default function DangerWords() {
                     initial={{ opacity: 0, x: 12 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.04 }}
-                    className="flex items-center gap-3 rounded-xl border border-stone-100 bg-stone-50/70 px-3 py-2.5"
+                    className="flex items-center gap-3 rounded-xl border border-stone-100 c-stone-70 px-3 py-2.5"
                   >
                     <span
                       className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-[11.5px] font-black text-white ${

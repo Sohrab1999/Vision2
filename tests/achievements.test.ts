@@ -449,11 +449,11 @@ describe("رانِ ترکیبی — هفتهٔ دیکتهٔ پیوسته (Task 8
   const dictWeek = () =>
     Object.fromEntries([0, 1, 2, 3, 4, 5, 6].map((n) => [w(n), dh({ day: w(n), dictation: 1 })]));
 
-  it("wording و تیر و آیکن — طلایی با SpellCheck2؛ رجیستری ۳۶ شد", () => {
+  it("wording و تیر و آیکن — طلایی با SpellCheck2؛ رجیستری ۳۷ شد", () => {
     expect(byId("dictation-run").title).toBe("هفتهٔ دیکتهٔ پیوسته");
     expect(byId("dictation-run").tier).toBe("gold");
     expect(byId("dictation-run").icon).toBe("SpellCheck2");
-    expect(BADGES.length).toBe(36);
+    expect(BADGES.length).toBe(37);
   });
 
   it("قراردادِ شمارِ روز ≠ جمع: دو دیکته در یک روز هنوز یک روزِ دیکته‌دار است", () => {
@@ -744,11 +744,11 @@ describe("رانِ مرور — هفتهٔ مرور (Task 88)", () => {
   const reviewWeek = (perDay = 1) =>
     Object.fromEntries([0, 1, 2, 3, 4, 5, 6].map((n) => [w(n), dh({ day: w(n), reviews: perDay })]));
 
-  it("wording و تیر و آیکن — نقره‌ای با History؛ قراردادِ پیشرفتِ روزشماری؛ رجیستری ۳۶ شد", () => {
+  it("wording و تیر و آیکن — نقره‌ای با History؛ قراردادِ پیشرفتِ روزشماری؛ رجیستری ۳۷ شد", () => {
     expect(byId("review-run").title).toBe("هفتهٔ مرور");
     expect(byId("review-run").tier).toBe("silver");
     expect(byId("review-run").icon).toBe("History");
-    expect(BADGES.length).toBe(36);
+    expect(BADGES.length).toBe(37);
     const one = base({ dayHistory: { [w(2)]: dh({ day: w(2), reviews: 1 }) } });
     expect(byId("review-run").progress!(one)).toBe("۱ از ۷ روزِ این هفته");
   });
@@ -816,6 +816,105 @@ describe("رانِ مرور — هفتهٔ مرور (Task 88)", () => {
     const absent = base({});
     expect(absent.reviewsDays7).toBe(0);
     expect(ids(absent)).not.toContain("review-run");
+  });
+});
+
+describe("رانِ سه‌گانه — هفتهٔ سه‌گانه (Task 89)", () => {
+  const w = (n: number) => daysAgoKey(n);
+  const dh = (over: Record<string, unknown>) => ({
+    day: "",
+    reviews: 0,
+    quizzes: 0,
+    words: 0,
+    dictation: 0,
+    rush: 0,
+    ...over,
+  });
+  const tripleWeek = (perDay = 1) =>
+    Object.fromEntries(
+      [0, 1, 2, 3, 4, 5, 6].map((n) => [w(n), dh({ day: w(n), reviews: perDay, quizzes: perDay, dictation: perDay })])
+    );
+
+  it("wording و تیر و آیکن — طلایی با Crown؛ گلوگاهِ minِ سه‌گانه؛ رجیستری ۳۷ شد", () => {
+    expect(byId("triple-run").title).toBe("هفتهٔ سه‌گانه");
+    expect(byId("triple-run").tier).toBe("gold");
+    expect(byId("triple-run").icon).toBe("Crown");
+    expect(BADGES.length).toBe(37);
+    const mixed = base({ dayHistory: { ...tripleWeek(), [w(3)]: dh({ day: w(3), reviews: 1, quizzes: 1, dictation: 0 }) } });
+    // دیکته ۶ روز / آزمون ۷ / مرور ۷ — ضعیف‌ترین حلقه پیشرفت را می‌گوید
+    expect(byId("triple-run").progress!(mixed)).toBe("۶ از ۷ روزِ سه‌گانهٔ این هفته");
+  });
+
+  it("قراردادِ شمارِ روز ≠ جمع: سه فعالیت در یک روز هنوز یک روزِ سه‌گانه است", () => {
+    const one = base({ dayHistory: { [w(2)]: dh({ day: w(2), reviews: 3, quizzes: 2, dictation: 2 }) } });
+    expect(one.dictationDays7).toBe(1);
+    expect(one.quizDays7).toBe(1);
+    expect(one.reviewsDays7).toBe(1);
+    expect(ids(one)).not.toContain("triple-run");
+  });
+
+  it("هم‌پوشانیِ چهارنفره — قرارداد: سه‌گانهٔ باز یعنی هر سهٔ تکی و دوبل هم همان هفته بازند", () => {
+    const run = base({ dayHistory: tripleWeek() });
+    expect(ids(run)).toContain("triple-run");
+    expect(ids(run)).toContain("dictation-run");
+    expect(ids(run)).toContain("exam-run");
+    expect(ids(run)).toContain("double-run");
+    expect(ids(run)).toContain("review-run");
+    // و برعکس: دوبلِ باز (دیکته+آزمون بدون مرور) سه‌گانه را باز نمی‌کند
+    const doubleOnly = base({ dayHistory: Object.fromEntries([0, 1, 2, 3, 4, 5, 6].map((n) => [w(n), dh({ day: w(n), dictation: 1, quizzes: 1 })])) });
+    expect(ids(doubleOnly)).toContain("double-run");
+    expect(ids(doubleOnly)).not.toContain("triple-run");
+  });
+
+  it("مرز پنجره: روزِ سه‌گانهٔ w(7) بیرون است — ۶ روز = قفل با پیشرفتِ صادق", () => {
+    const six = base({ dayHistory: Object.fromEntries([1, 2, 3, 4, 5, 6].map((n) => [w(n), dh({ day: w(n), reviews: 1, quizzes: 1, dictation: 1 })])) });
+    expect(six.dictationDays7).toBe(6);
+    expect(six.quizDays7).toBe(6);
+    expect(six.reviewsDays7).toBe(6);
+    expect(ids(six)).not.toContain("triple-run");
+    expect(byId("triple-run").progress!(six)).toBe("۶ از ۷ روزِ سه‌گانهٔ این هفته");
+    const sevenWithOld = base({
+      dayHistory: { ...tripleWeek(), [w(7)]: dh({ day: w(7), reviews: 5, quizzes: 5, dictation: 5 }) },
+    });
+    // w(7) بیرونِ پنجره — هیچ شمارنده‌ای بالا نمی‌رود
+    expect(sevenWithOld.dictationDays7).toBe(7);
+    expect(ids(sevenWithOld)).toContain("triple-run");
+  });
+
+  it("fallbackِ امروز: امروزِ غایب از dayStat می‌آید (روزِ هفتم هر سه)، حاضر دوبار شمرده نمی‌شود", () => {
+    const sixDays = Object.fromEntries([1, 2, 3, 4, 5, 6].map((n) => [w(n), dh({ day: w(n), reviews: 1, quizzes: 1, dictation: 1 })]));
+    const viaStat = base({
+      dayHistory: sixDays,
+      dayStat: { day: w(0), reviews: 1, quizzes: 1, dictation: 1, words: 0, rush: 0 },
+    });
+    expect(viaStat.dictationDays7).toBe(7);
+    expect(ids(viaStat)).toContain("triple-run");
+    const viaHistory = base({
+      dayHistory: { ...sixDays, [w(0)]: dh({ day: w(0), reviews: 1, quizzes: 1, dictation: 1 }) },
+      dayStat: { day: w(0), reviews: 9, quizzes: 9, dictation: 9, words: 0, rush: 0 },
+    });
+    expect(viaHistory.reviewsDays7).toBe(7);
+    expect(ids(viaHistory)).toContain("triple-run");
+  });
+
+  it("گاردِ ورودی خراب: خانه‌های junk/neg/NaN هیچ روزِ سه‌گانه‌ای نمی‌شوند؛ امروزِ غایب → صفرِ امن", () => {
+    const corrupt = buildEvalInput(
+      baseRaw({
+        dayHistory: {
+          [w(1)]: dh({ day: w(1), reviews: -1, quizzes: 1, dictation: 1 }),
+          [w(2)]: "junk",
+          [w(3)]: dh({ day: w(3), reviews: Number.NaN, quizzes: Number.NaN, dictation: 1 }),
+          [w(4)]: dh({ day: w(4), reviews: 1, quizzes: 1, dictation: 1 }),
+        },
+      }) as unknown as BuildArgs
+    );
+    // w(1): مرورِ منفی حذف → فقط دوبل؛ w(3): فقط دیکته؛ w(4): سه‌گانهٔ کامل — هیچ روزی هر سه را ندارد
+    expect(corrupt.dictationDays7).toBe(3);
+    expect(corrupt.quizDays7).toBe(2);
+    expect(corrupt.reviewsDays7).toBe(1);
+    expect(ids(corrupt)).not.toContain("triple-run");
+    const absent = base({});
+    expect(ids(absent)).not.toContain("triple-run");
   });
 });
 

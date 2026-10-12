@@ -189,7 +189,7 @@ export default function ReportCard({ open, onClose }: { open: boolean; onClose: 
               </div>
 
               {/* weekly band */}
-              <div className="report-week rounded-xl border border-stone-200 bg-stone-50/70 p-3.5">
+              <div className="report-week rounded-xl border border-stone-200 c-stone-70 p-3.5">
                 <div className="mb-2 flex items-center gap-1.5 text-[12px] font-extrabold text-stone-700">
                   <CalendarDays size={13} className="text-emerald-600" />
                   فعالیت هفت روز اخیر
@@ -228,7 +228,7 @@ export default function ReportCard({ open, onClose }: { open: boolean; onClose: 
 
               {/* monthly band */}
               {monthBuckets.length > 0 && (
-                <div className="report-month rounded-xl border border-stone-200 bg-stone-50/70 p-3.5">
+                <div className="report-month rounded-xl border border-stone-200 c-stone-70 p-3.5">
                   <div className="mb-2.5 flex items-center justify-between">
                     <div className="flex items-center gap-1.5 text-[12px] font-extrabold text-stone-700">
                       <TrendingUp size={13} className="text-teal-600" />
@@ -267,7 +267,7 @@ export default function ReportCard({ open, onClose }: { open: boolean; onClose: 
                   میانگین مهارت‌ها
                 </div>
                 {skills.length === 0 ? (
-                  <div className="rounded-xl border-2 border-dashed border-stone-200 bg-stone-50/60 px-3 py-5 text-center text-[11.5px] font-bold text-stone-400">
+                  <div className="rounded-xl border-2 border-dashed border-stone-200 c-stone-60 px-3 py-5 text-center text-[11.5px] font-bold text-stone-400">
                     هنوز نتیجه‌ای ثبت نشده — با اولین تست این بخش پر می‌شود
                   </div>
                 ) : (

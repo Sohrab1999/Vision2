@@ -152,7 +152,7 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
               { icon: Flame, label: "برد متوالی", value: faNum(streak) },
               { icon: Zap, label: "بهترین امتیاز", value: faNum(best) },
             ].map((m) => (
-              <div key={m.label} className="rounded-xl border border-stone-100 bg-stone-50/70 p-2.5 text-center">
+              <div key={m.label} className="rounded-xl border border-stone-100 c-stone-70 p-2.5 text-center">
                 <m.icon size={14} className="mx-auto mb-1 text-fuchsia-600" aria-hidden />
                 <div className="text-[15px] font-black text-stone-800">{m.value}</div>
                 <div className="text-[10.5px] font-bold text-stone-400">{m.label}</div>
@@ -226,7 +226,7 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
               desc: "هر پاسخ درست ۱۰۰ امتیاز + پاداش سرعت (تا ۱۰۰). نتیجه را سرور اعلام می‌کند؛ غلط‌ها به بانک مرور می‌روند.",
             },
           ].map((r) => (
-            <div key={r.title} className="rounded-xl border border-stone-100 bg-stone-50/70 p-3.5">
+            <div key={r.title} className="rounded-xl border border-stone-100 c-stone-70 p-3.5">
               <div className="mb-1.5 flex items-center gap-2">
                 <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-fuchsia-100 text-fuchsia-700">
                   <r.icon size={14} />

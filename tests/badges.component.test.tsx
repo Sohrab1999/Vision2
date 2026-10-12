@@ -3,7 +3,7 @@
 // Task 81 — ششمین سوژهٔ زیرساخت تست کامپوننت (بازشده در Task 75):
 // بخش «نشان‌ها و دستاوردها» — ۲۵ نشان با خانوادهٔ تازهٔ یخ.
 // قراردادهایی که قفل می‌شوند:
-//   ① تازه‌وارد: شمار «۰ از ۳۶» + همهٔ کاشی‌ها قفل (بدون badge-shine)
+//   ① تازه‌وارد: شمار «۰ از ۳۷» + همهٔ کاشی‌ها قفل (بدون badge-shine)
 //   ② یادگیرندهٔ یخی: کاشی‌های یخ باز و «اول» مرتب‌شده‌اند (sort قرارداد)
 //     + پیشرفتِ زیرِ قفل با رقم فارسی
 //   ③ گارد نقشهٔ آیکن: هر iconِ رجیستری در BADGE_ICONS کلید دارد —
@@ -114,6 +114,19 @@ const seedReviewRun = () => {
   useStudy.setState({ dayHistory, seenBadges: [] });
 };
 
+const seedTripleRun = () => {
+  const key = (n: number) => {
+    const d = new Date();
+    d.setDate(d.getDate() - n);
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+  };
+  const dayHistory: Record<string, { day: string; reviews: number; quizzes: number; words: number; dictation: number; rush: number }> = {};
+  for (let n = 0; n <= 6; n++) {
+    dayHistory[key(n)] = { day: key(n), reviews: 1, quizzes: 1, words: 0, dictation: 1, rush: 0 };
+  }
+  useStudy.setState({ dayHistory, seenBadges: [] });
+};
+
 describe("نشان‌ها و دستاوردها — کامپوننت (Task 81)", () => {
   beforeAll(() => {
     // jsdom IntersectionObserver ندارد — ویژگی whileInView فریمرموشن امن شود
@@ -159,10 +172,10 @@ describe("نشان‌ها و دستاوردها — کامپوننت (Task 81)",
     expect(BADGE_ICONS.Package).toBeTruthy();
   });
 
-  it("تازه‌وارد: «۰ از ۳۶» + کاشی یخ قفل با پیشرفتِ فارسی زیرِ قفل", () => {
+  it("تازه‌وارد: «۰ از ۳۷» + کاشی یخ قفل با پیشرفتِ فارسی زیرِ قفل", () => {
     render(<Badges />);
     // شمار در JSX دو تکه رندر می‌شود — تطبیق با textContentِ نرمال‌شده
-    const chip = screen.getByText((_, el) => el?.tagName === "SPAN" && /۰\s*از\s*۳۶/.test(el.textContent ?? ""));
+    const chip = screen.getByText((_, el) => el?.tagName === "SPAN" && /۰\s*از\s*۳۷/.test(el.textContent ?? ""));
     expect(chip).toBeInTheDocument();
     const tile = screen.getByText("انبار یخ").closest(".badge-card");
     expect(tile).not.toBeNull();
@@ -174,10 +187,10 @@ describe("نشان‌ها و دستاوردها — کامپوننت (Task 81)",
     expect(goalTile).toHaveTextContent("۰ از ۷ روزِ هدف‌دار");
   });
 
-  it("یادگیرندهٔ یخی: «۴ از ۳۶» + کاشی‌های یخ باز (badge-shine) و اولِ لیست", () => {
+  it("یادگیرندهٔ یخی: «۴ از ۳۷» + کاشی‌های یخ باز (badge-shine) و اولِ لیست", () => {
     seedIce();
     const { container } = render(<Badges />);
-    expect(screen.getByText((_, el) => el?.tagName === "SPAN" && /۴\s*از\s*۳۶/.test(el.textContent ?? ""))).toBeInTheDocument();
+    expect(screen.getByText((_, el) => el?.tagName === "SPAN" && /۴\s*از\s*۳۷/.test(el.textContent ?? ""))).toBeInTheDocument();
     for (const title of ["یخ‌ساز", "نجات‌گر", "انبار یخ", "سپر یخی"]) {
       const tile = screen.getByText(title).closest(".badge-card");
       expect(tile?.className, `${title} must be unlocked`).toContain("badge-shine");
@@ -189,10 +202,10 @@ describe("نشان‌ها و دستاوردها — کامپوننت (Task 81)",
     expect(titles.join("|")).toContain("سپر یخی");
   });
 
-  it("(Task 82) یادگیرندهٔ هدف‌مند: «۳ از ۳۶» + هفتهٔ هدف‌دار باز + قفلِ آخر با پیشرفتِ فارسی", () => {
+  it("(Task 82) یادگیرندهٔ هدف‌مند: «۳ از ۳۷» + هفتهٔ هدف‌دار باز + قفلِ آخر با پیشرفتِ فارسی", () => {
     seedGoal();
     const { container } = render(<Badges />);
-    expect(screen.getByText((_, el) => el?.tagName === "SPAN" && /۳\s*از\s*۳۶/.test(el.textContent ?? ""))).toBeInTheDocument();
+    expect(screen.getByText((_, el) => el?.tagName === "SPAN" && /۳\s*از\s*۳۷/.test(el.textContent ?? ""))).toBeInTheDocument();
     for (const title of ["اولین هدف", "پنج‌روزهٔ هدف‌دار", "هفتهٔ هدف‌دار"]) {
       const tile = screen.getByText(title).closest(".badge-card");
       expect(tile?.className, `${title} must be unlocked`).toContain("badge-shine");
@@ -264,6 +277,20 @@ describe("نشان‌ها و دستاوردها — کامپوننت (Task 81)",
     expect(tile, "review-run tile must exist").not.toBeNull();
     expect(tile?.className, "review-run must be unlocked with tiny daily reviews").toContain("badge-shine");
     expect(tile?.querySelector("svg"), "History SVG renders (icon-map guard: never silent Medal)").not.toBeNull();
+  });
+
+  it("(Task 89) رانِ سه‌گانه: هفت روزِ هر سه فعالیت → «هفتهٔ سه‌گانه» باز و هر چهار رانِ زیرمجموعه هم‌بازند", () => {
+    seedTripleRun();
+    render(<Badges />);
+    const tile = screen.getByText("هفتهٔ سه‌گانه").closest(".badge-card");
+    expect(tile, "triple-run tile must exist").not.toBeNull();
+    expect(tile?.className, "triple-run must be unlocked").toContain("badge-shine");
+    expect(tile?.querySelector("svg"), "Crown SVG renders (icon-map guard: never silent Medal)").not.toBeNull();
+    // هم‌پوشانیِ چهارنفره — زنده روی سطوح کاشی: همهٔ ران‌های زیرمجموعه می‌درخشند
+    for (const t of ["هفتهٔ دیکتهٔ پیوسته", "هفتهٔ آزمون‌دار", "هفتهٔ دوبل", "هفتهٔ مرور"]) {
+      const sub = screen.getByText(t).closest(".badge-card");
+      expect(sub?.className, `${t} co-unlocks with triple`).toContain("badge-shine");
+    }
   });
 
   it("توستِ تازه: فقط نشانِ دیده‌نشده → یک توست «یخ‌ساز» + store واقعی seen می‌شود", () => {

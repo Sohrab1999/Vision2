@@ -82,7 +82,7 @@ export default function WeeklyReportSection() {
   const today = daysAgoKey(0);
 
   return (
-    <div className="report-digest rounded-xl border border-stone-200 bg-stone-50/70 p-3.5">
+    <div className="report-digest rounded-xl border border-stone-200 c-stone-70 p-3.5">
       <div className="mb-2.5 flex items-center justify-between">
         <div className="flex items-center gap-1.5 text-[12px] font-extrabold text-stone-700">
           <Sparkles size={13} className="text-teal-600" />

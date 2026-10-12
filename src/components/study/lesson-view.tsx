@@ -89,7 +89,7 @@ export default function LessonView({ id }: { id: number }) {
         </div>
 
         {/* tab bar */}
-        <nav className="flex gap-1 overflow-x-auto border-t border-stone-100 bg-stone-50/70 px-3 py-2" aria-label="بخش‌های درس">
+        <nav className="flex gap-1 overflow-x-auto border-t border-stone-100 c-stone-70 px-3 py-2" aria-label="بخش‌های درس">
           {tabs.map((item) => {
             const Icon = item.icon;
             const active = tab === item.key;

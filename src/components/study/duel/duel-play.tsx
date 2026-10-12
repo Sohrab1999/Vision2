@@ -68,7 +68,7 @@ export default function DuelPlay({ me, opp, total, cur, curQ, correctIdx, qi, pi
           ].map(
             ({ p, label, isMe }) =>
               p && (
-                <div key={p.sid} className={`rounded-xl border p-2.5 ${isMe ? "border-fuchsia-200 bg-fuchsia-50/60" : "border-stone-200 bg-stone-50/60"}`}>
+                <div key={p.sid} className={`rounded-xl border p-2.5 ${isMe ? "border-fuchsia-200 bg-fuchsia-50/60" : "border-stone-200 c-stone-60"}`}>
                   <div className="flex items-center gap-2">
                     <span className="h-2.5 w-2.5 shrink-0 rounded-full" style={{ backgroundColor: p.color }} />
                     <span className="min-w-0 flex-1 truncate text-[12px] font-extrabold text-stone-700">

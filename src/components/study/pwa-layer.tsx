@@ -307,27 +307,27 @@ export default function PwaLayer() {
           <ol className="space-y-3">
             {isIos() ? (
               <>
-                <li className="flex items-start gap-2.5 rounded-xl border border-stone-200 bg-stone-50/60 p-3 text-[12.5px] leading-6 text-stone-700">
+                <li className="flex items-start gap-2.5 rounded-xl border border-stone-200 c-stone-60 p-3 text-[12.5px] leading-6 text-stone-700">
                   <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-600 text-[11px] font-black text-white">۱</span>
                   <span className="flex flex-1 items-center justify-between gap-2">
                     در سافاری دکمهٔ اشتراک را بزن
                     <Share2 size={16} className="shrink-0 text-emerald-600" />
                   </span>
                 </li>
-                <li className="flex items-start gap-2.5 rounded-xl border border-stone-200 bg-stone-50/60 p-3 text-[12.5px] leading-6 text-stone-700">
+                <li className="flex items-start gap-2.5 rounded-xl border border-stone-200 c-stone-60 p-3 text-[12.5px] leading-6 text-stone-700">
                   <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-600 text-[11px] font-black text-white">۲</span>
                   <span className="flex flex-1 items-center justify-between gap-2">
                     «افزودن به صفحهٔ اصلی» را انتخاب کن
                     <PlusSquare size={16} className="shrink-0 text-emerald-600" />
                   </span>
                 </li>
-                <li className="flex items-start gap-2.5 rounded-xl border border-stone-200 bg-stone-50/60 p-3 text-[12.5px] leading-6 text-stone-700">
+                <li className="flex items-start gap-2.5 rounded-xl border border-stone-200 c-stone-60 p-3 text-[12.5px] leading-6 text-stone-700">
                   <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-600 text-[11px] font-black text-white">۳</span>
                   <span>«افزودن» را بزن — آیکون ویژن ۲ کنار بقیهٔ اپ‌ها می‌نشیند.</span>
                 </li>
               </>
             ) : (
-              <li className="rounded-xl border border-stone-200 bg-stone-50/60 p-3 text-[12.5px] leading-6 text-stone-700">
+              <li className="rounded-xl border border-stone-200 c-stone-60 p-3 text-[12.5px] leading-6 text-stone-700">
                 در کروم یا اج: منوی مرورگر (⋮) ← <b>«نصب Vision Two»</b> یا <b>«افزودن به صفحهٔ اصلی»</b> را بزن.
                 در سافاری مک: منوی <b>File ← Add to Dock</b>.
               </li>

@@ -129,7 +129,7 @@ export default function SettingsPopover() {
         </div>
 
         {/* ---------- سرعت روخوانی ---------- */}
-        <section className="mb-4 rounded-xl border border-stone-200 bg-stone-50/60 p-3">
+        <section className="mb-4 rounded-xl border border-stone-200 c-stone-60 p-3">
           <div className="mb-2 flex items-center justify-between">
             <span className="flex items-center gap-1.5 text-[12px] font-bold text-stone-600">
               <Volume2 size={13} className="text-emerald-600" />
@@ -167,7 +167,7 @@ export default function SettingsPopover() {
         </section>
 
         {/* ---------- اندازهٔ متن ---------- */}
-        <section className="mb-4 rounded-xl border border-stone-200 bg-stone-50/60 p-3">
+        <section className="mb-4 rounded-xl border border-stone-200 c-stone-60 p-3">
           <div className="mb-2 flex items-center gap-1.5 text-[12px] font-bold text-stone-600">
             <Type size={13} className="text-emerald-600" />
             اندازهٔ متن
@@ -196,7 +196,7 @@ export default function SettingsPopover() {
         </section>
 
         {/* ---------- کاهش حرکت ---------- */}
-        <section className="mb-4 flex items-center justify-between rounded-xl border border-stone-200 bg-stone-50/60 p-3">
+        <section className="mb-4 flex items-center justify-between rounded-xl border border-stone-200 c-stone-60 p-3">
           <div className="flex items-center gap-1.5">
             <Waves size={13} className="text-emerald-600" />
             <div>
@@ -212,7 +212,7 @@ export default function SettingsPopover() {
         </section>
 
         {/* ---------- هدف روزانه ---------- */}
-        <section className="mb-4 rounded-xl border border-stone-200 bg-stone-50/60 p-3">
+        <section className="mb-4 rounded-xl border border-stone-200 c-stone-60 p-3">
           <div className="mb-2 flex items-center gap-1.5 text-[12px] font-bold text-stone-600">
             <Target size={13} className="text-emerald-600" />
             هدف روزانهٔ فعالیت
@@ -241,7 +241,7 @@ export default function SettingsPopover() {
         </section>
 
         {/* ---------- تپش وب‌کتاب (F10، زنده و بی‌نام) ---------- */}
-        <section className="mb-4 rounded-xl border border-stone-200 bg-stone-50/60 p-3">
+        <section className="mb-4 rounded-xl border border-stone-200 c-stone-60 p-3">
           <div className="mb-2 flex items-center justify-between">
             <span className="flex items-center gap-1.5 text-[12px] font-bold text-stone-600">
               <Activity size={13} className="text-emerald-600" />

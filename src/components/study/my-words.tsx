@@ -243,7 +243,7 @@ export default function MyWordsView() {
       )}
 
       {mounted && stars.length > 0 && filtered.length === 0 && (
-        <div className="dict-empty flex flex-col items-center gap-2 rounded-2xl border-2 border-dashed border-stone-200 bg-stone-50/60 px-4 py-10 text-center">
+        <div className="dict-empty flex flex-col items-center gap-2 rounded-2xl border-2 border-dashed border-stone-200 c-stone-60 px-4 py-10 text-center">
           <SearchX size={26} className="text-stone-300" />
           <p className="text-[13px] font-extrabold text-stone-500">با این فیلترها واژه‌ای یافت نشد</p>
           <p className="text-[11.5px] font-bold text-stone-400">جستجو یا فیلتر درس را تغییر بده</p>

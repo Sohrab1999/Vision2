@@ -152,7 +152,7 @@ export default function Onboarding() {
           {/* ---------------- گام ۱: نام و رنگ ---------------- */}
           {step === 0 && (
             <div>
-              <div className="mb-4 rounded-2xl border border-stone-200 bg-stone-50/60 p-4">
+              <div className="mb-4 rounded-2xl border border-stone-200 c-stone-60 p-4">
                 <label htmlFor="onb-name" className="mb-2 flex items-center gap-1.5 text-[12px] font-bold text-stone-600">
                   <User size={13} className="text-emerald-600" />
                   اسمت را بنویس (اختیاری)

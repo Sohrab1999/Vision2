@@ -171,12 +171,15 @@ describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
     }
   });
 
-  it("keeps the selector budget honest (tranche-3b part 2: ≤ 500 — roadmap §12 target reached)", () => {
-    // soft ceiling: the file may not regrow past the ≤500 roadmap goal locked
-    // by part 2 (was 535 pre-kernel, 519 pre-part-2); each new feature should
-    // consolidate or consume the bands/kernel
+  it("keeps the selector budget honest (tranche-3b part 2 ceiling 500, re-based 505 r89)", () => {
+    // soft ceiling: the file may not regrow past the consolidation floor. History:
+    // 535 pre-kernel → 519 pre-part-2 → 500 (roadmap §12 goal). r89 re-based to
+    // 505 for phase 6: the LAST veil family (c-stone) entered with net +4 lines
+    // (2 class defs + the duel-card exclusion extension) but NET-ZERO dark rules
+    // — the kernel owns dark through the var, 30 raw sites consolidated into 2
+    // semantic classes. Growth from here must consolidate, not add.
     const sel = lines.filter((l) => /^\s*\.[a-z]/.test(l)).length;
-    expect(sel).toBeLessThanOrEqual(500);
+    expect(sel).toBeLessThanOrEqual(505);
   });
 });
 
@@ -641,5 +644,97 @@ describe("globals.css veil phase 5 (alpha /80|95 — Task 88)", () => {
     // srs trio own-class painters untouched
     expect(css88).toContain(".dark .srs-donut { background-color: rgba(6, 44, 34, 0.5);");
     expect(css88).toContain(".dark .srs-panel .srs-due-chip {\n  background-color: #1c1917;");
+  });
+});
+
+describe("globals.css stone veil phase 6 (bg-stone-50/60|70 — Task 89)", () => {
+  const css89 = readFileSync(cssPath, "utf8");
+  const lines89 = css89.split("\n");
+
+  it("defines c-stone-60/70 via plain author rules with verbatim utility bodies — and NO dark defaults (the kernel IS the dark)", () => {
+    for (const [name, light] of [
+      ["c-stone-60", "color-mix(in oklab, var(--color-stone-50) 60%, transparent)"],
+      ["c-stone-70", "color-mix(in oklab, var(--color-stone-50) 70%, transparent)"],
+    ] as const) {
+      expect(lines89.filter((l) => l.trim() === `.${name} {`).length, `exactly one light .${name}`).toBe(1);
+      expect(lines89.filter((l) => l.trim() === `@utility ${name} {`).length, "@utility form forbidden — loses byte parity (r87 probed)").toBe(0);
+      const li = lines89.findIndex((l) => l.trim() === `.${name} {`);
+      expect(lines89.slice(li, li + 3).join("\n")).toContain(`background-color: ${light}`);
+      // the phase's elegance claim, pinned: NO .dark default rule exists —
+      // dark comes from the kernel-remapped var (tranche-2 step 9)
+      expect(lines89.filter((l) => l.trim() === `.dark .${name} {`).length, `.dark .${name} must NOT exist — kernel owns dark`).toBe(0);
+    }
+    // the NO-pin invariant: the hex pin shifted light L by ~2e-4 (probe-caught r89);
+    // byte-parity source of truth = Tailwind's default oklch var, kernel owns dark.
+    // Scoped to the @theme block — the official-report re-light (#fafaf9) is the
+    // legitimate always-light paper patch and must stay.
+    const themeStart = css89.indexOf("@theme inline {");
+    const themeEnd = css89.indexOf("\n}", themeStart);
+    const themeBlock = css89.slice(themeStart, themeEnd);
+    expect(themeBlock, "--color-stone-50 must NOT be pinned in @theme (oklch default is parity)").not.toContain("--color-stone-50:");
+    expect(css89).toContain(".dark .official-report {\n  --color-stone-50: #fafaf9;");
+  });
+
+  it("exclusion matrix pinned — raw /60 survives ONLY in daily-quests; raw /70 ONLY in duel-setup (both same-element hover traps)", () => {
+    const raw60: string[] = [];
+    const raw70: string[] = [];
+    const walk = (d: string): void => {
+      for (const name of readdirSync(d)) {
+        const p = join(d, name);
+        try {
+          if (readdirSync(p)) walk(p);
+        } catch {
+          if (p.endsWith(".tsx")) {
+            readFileSync(p, "utf8").split("\n").forEach((l) => {
+              if (/bg-stone-50\/60\b/.test(l)) raw60.push(p);
+              if (/bg-stone-50\/70\b/.test(l)) raw70.push(p);
+            });
+          }
+        }
+      }
+    };
+    walk(resolve(process.cwd(), "src"));
+    expect(raw60, "bg-stone-50/60 survives ONLY in daily-quests (hover:bg-emerald-50/40 same element)").toEqual([
+      resolve(process.cwd(), "src/components/study/daily-quests.tsx"),
+    ]);
+    expect(raw70, "bg-stone-50/70 survives ONLY in duel-setup:167 (hover:bg-stone-100/70 same element)").toEqual([
+      resolve(process.cwd(), "src/components/study/duel/duel-setup.tsx"),
+    ]);
+  });
+
+  it("consumer matrix pinned — 28 migrations in exact file split (18× /60 + 10× /70)", () => {
+    let n60 = 0;
+    let n70 = 0;
+    const walk = (d: string): void => {
+      for (const name of readdirSync(d)) {
+        const p = join(d, name);
+        try {
+          if (readdirSync(p)) walk(p);
+        } catch {
+          if (p.endsWith(".tsx")) {
+            readFileSync(p, "utf8").split("\n").forEach((l) => {
+              if (/\bc-stone-60\b/.test(l)) n60++;
+              if (/\bc-stone-70\b/.test(l)) n70++;
+            });
+          }
+        }
+      }
+    };
+    walk(resolve(process.cwd(), "src"));
+    expect(n60, "c-stone-60 consumers").toBe(18);
+    expect(n70, "c-stone-70 consumers").toBe(10);
+  });
+
+  it("deviating painters retargeted in place + exclusion painters pinned", () => {
+    expect(css89).toContain(".dark .shortcuts-dialog .c-stone-70 { background-color: rgba(40, 36, 31, 0.6); }");
+    expect(css89).toContain(".dark .skill-panel .c-stone-60 { background-color: rgb(28 25 23 / 0.6); }");
+    // duel-card rule EXTENDED (raw /70 half stays for the excluded hover row)
+    expect(css89).toContain(".dark .duel-card .bg-stone-50\\/70,\n.dark .duel-card .c-stone-70,\n.dark .duel-card .bg-stone-50 { background-color: rgb(41 37 36 / 0.6); }");
+    expect(css89).toContain(".dark .duel-hud .c-stone-60 { background-color: rgb(41 37 36 / 0.6); }");
+    expect(css89).toContain(".dark .duel-done .c-stone-70 { background-color: rgb(41 37 36 / 0.6); }");
+    // the daily-quests exclusion painter STAYS on the raw class
+    expect(css89).toContain(".dark .daily-quests .bg-stone-50\\/60 { background-color: rgb(28 25 23 / 0.55); }");
+    // kernel contract untouched — the dark default source of truth
+    expect(css89).toContain("--color-stone-50: #151310;");
   });
 });

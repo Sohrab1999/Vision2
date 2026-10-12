@@ -203,7 +203,7 @@ export default function DictionaryView() {
       <p className="text-[12px] text-stone-500">{filtered.length} واژه یافت شد</p>
 
       {mounted && filtered.length === 0 && (
-        <div className="dict-empty flex flex-col items-center gap-2 rounded-2xl border-2 border-dashed border-stone-200 bg-stone-50/60 px-4 py-10 text-center">
+        <div className="dict-empty flex flex-col items-center gap-2 rounded-2xl border-2 border-dashed border-stone-200 c-stone-60 px-4 py-10 text-center">
           <SearchX size={26} className="text-stone-300" />
           <p className="text-[13px] font-extrabold text-stone-500">واژه‌ای با این فیلترها یافت نشد</p>
           <p className="text-[11.5px] font-bold text-stone-400">

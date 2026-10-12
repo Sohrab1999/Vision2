@@ -578,6 +578,22 @@ export const BADGES: BadgeDef[] = [
     progress: (s) => `${faNum(Math.min(s.reviewsDays7, 7))} از ۷ روزِ این هفته`,
     check: (s) => s.reviewsDays7 >= 7,
   },
+  // رانِ سه‌گانه (Task 89): تاجِ نردبانِ ران‌های هفتگی — هر روزِ پنجره هر سهٔ
+  // دیکته + آزمون + مرور. شرطش یعنی سه رانِ تکی (دیکته/آزمون/مرور) و رانِ
+  // دوبل هم‌زمان بازند — هم‌پوشانیِ چهارنفره، قرارداد است نه باگ: سه‌گانه
+  // زیرمجموعهٔ همهٔ ران‌های هفتگی است. تاج طلا + آیکنِ Crown — تنها نشانِ
+  // هفتگی که «همهٔ فعالیت‌ها با هم» را می‌خواهد. گلوگاهِ صادق: minِ سه
+  // شمارنده — ضعیف‌ترین حلقهٔ زنجیره پیشرفت را تعیین می‌کند.
+  {
+    id: "triple-run",
+    title: "هفتهٔ سه‌گانه",
+    desc: "هفت روزِ پیوسته دیکته گرفته‌ای، آزمون داده‌ای و مرور کرده‌ای — هر سهٔ ران در یک هفته",
+    icon: "Crown",
+    tier: "gold",
+    progress: (s) =>
+      `${faNum(Math.min(s.dictationDays7, s.quizDays7, s.reviewsDays7, 7))} از ۷ روزِ سه‌گانهٔ این هفته`,
+    check: (s) => s.dictationDays7 >= 7 && s.quizDays7 >= 7 && s.reviewsDays7 >= 7,
+  },
 ];
 
 export const TIER_STYLE: Record<BadgeTier, { ring: string; grad: string; chip: string; glow: string }> = {

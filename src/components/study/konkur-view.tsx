@@ -499,7 +499,7 @@ export default function KonkurView() {
             { icon: Timer, title: "۲. تمرین زمان‌دار", desc: "شبیه‌ساز، دیده‌نشده‌ها را اول می‌آورد و با تایمر، سرعتِ تصمیم‌گیریِ کنکوری می‌سازد." },
             { icon: Eraser, title: "۳. اشکال‌زدایی", desc: "غلط‌ها در «تست‌های سخت من» می‌مانند تا با پاسخ درست برای همیشه پاک شوند." },
           ].map((s) => (
-            <div key={s.title} className="rounded-xl border border-stone-100 bg-stone-50/70 p-3.5">
+            <div key={s.title} className="rounded-xl border border-stone-100 c-stone-70 p-3.5">
               <s.icon size={17} className="mb-1.5 text-orange-600" />
               <div className="text-[12.5px] font-extrabold text-stone-800">{s.title}</div>
               <div className="mt-0.5 text-[11.5px] leading-6 text-stone-500">{s.desc}</div>

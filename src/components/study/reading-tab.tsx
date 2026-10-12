@@ -49,7 +49,7 @@ export default function ReadingTab({ lesson }: { lesson: LessonData }) {
             </header>
             <div className="space-y-4">
               {reading.paragraphs.map((p, i) => (
-                <div key={i} className="rounded-xl border border-stone-100 bg-stone-50/60 p-3.5">
+                <div key={i} className="rounded-xl border border-stone-100 c-stone-60 p-3.5">
                   <div className="mb-2 flex items-start justify-between gap-3">
                     <p className="en-text flex-1 text-[14.5px] leading-8 text-stone-800" dir="ltr">
                       {p.en}

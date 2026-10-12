@@ -366,7 +366,7 @@ export default function ProfilePopover() {
               </button>
             </div>
           ) : (
-            <div className="mt-2.5 rounded-xl border border-dashed border-stone-200 bg-stone-50/60 px-2.5 py-2 text-[10.5px] leading-4 text-stone-400">
+            <div className="mt-2.5 rounded-xl border border-dashed border-stone-200 c-stone-60 px-2.5 py-2 text-[10.5px] leading-4 text-stone-400">
               با اولین فعالیت شما، هر روز یک پشتیبان خودکار در همین مرورگر ذخیره می‌شود — حتی اگر داده‌ها پاک شوند قابل بازیابی است.
             </div>
           )}

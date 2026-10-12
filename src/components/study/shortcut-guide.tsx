@@ -160,7 +160,7 @@ export default function ShortcutGuide() {
 
           <div className="space-y-4">
             {GROUPS.map((g) => (
-              <section key={g.title} className="rounded-xl border border-stone-200 bg-stone-50/70 p-3">
+              <section key={g.title} className="rounded-xl border border-stone-200 c-stone-70 p-3">
                 <h3 className="mb-2 flex items-center gap-1.5 text-[12.5px] font-extrabold text-stone-700">
                   <g.icon size={14} className="text-emerald-600" />
                   {g.title}
