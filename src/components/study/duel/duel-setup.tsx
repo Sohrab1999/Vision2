@@ -129,7 +129,7 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
 
       {/* Task 65 — تاریخچهٔ نبردها: خلاصه + فرم + ۵ رکورد آخر */}
       {mounted && duelHistory.length > 0 && (
-        <section className="duel-card rounded-2xl border border-stone-200 bg-white p-5 shadow-sm" aria-label="تاریخچهٔ نبردها">
+        <section className="duel-card rounded-2xl border border-stone-200 c-card-elevated p-5 shadow-sm" aria-label="تاریخچهٔ نبردها">
           <div className="mb-4 flex items-center justify-between">
             <h2 className="flex items-center gap-2 text-[14px] font-extrabold text-stone-700">
               <History size={17} className="text-fuchsia-600" />
@@ -203,7 +203,7 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
       )}
 
       {/* چطور کار می‌کند؟ */}
-      <section className="duel-card rounded-2xl border border-stone-200 bg-white p-5 shadow-sm">
+      <section className="duel-card rounded-2xl border border-stone-200 c-card-elevated p-5 shadow-sm">
         <h2 className="mb-4 flex items-center gap-2 text-[14px] font-extrabold text-stone-700">
           <ShieldCheck size={17} className="text-fuchsia-600" />
           چطور کار می‌کند؟

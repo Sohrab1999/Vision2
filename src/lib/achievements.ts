@@ -52,6 +52,7 @@ export interface BadgeEvalInput {
   dictation7: number; // جمعِ دیکته‌های پنجرهٔ ۷روزه از dayHistory (Task 84)
   quizzes7: number; // جمعِ آزمون‌های پنجرهٔ ۷روزه از dayHistory (Task 84)
   dictationDays7: number; // چند روزِ پنجره دیکته داشتند (≠ جمع — رانِ روزانه، Task 85)
+  quizDays7: number; // چند روزِ پنجره آزمون داشتند (≠ جمع — رانِ روزانه، Task 86)
 }
 
 function historyTotals(history: StudyState["history"]): { quizzes: number; reviews: number; days: number } {
@@ -168,10 +169,11 @@ function windowCounters(
   windowStart: string,
   today: string,
   ds: ReturnType<typeof normDayStat>
-): Pick<BadgeEvalInput, "dictation7" | "quizzes7" | "dictationDays7"> {
+): Pick<BadgeEvalInput, "dictation7" | "quizzes7" | "dictationDays7" | "quizDays7"> {
   let dictation7 = 0;
   let quizzes7 = 0;
   let dictationDays7 = 0;
+  let quizDays7 = 0;
   if (dayHistory && typeof dayHistory === "object") {
     for (const [key, raw] of Object.entries(dayHistory)) {
       if (key < windowStart || !raw || typeof raw !== "object") continue;
@@ -179,7 +181,9 @@ function windowCounters(
       const d = Number.isFinite(st.dictation) ? Math.max(0, st.dictation) : 0;
       dictation7 += d;
       if (d > 0) dictationDays7 += 1;
-      quizzes7 += Number.isFinite(st.quizzes) ? Math.max(0, st.quizzes) : 0;
+      const q = Number.isFinite(st.quizzes) ? Math.max(0, st.quizzes) : 0;
+      quizzes7 += q;
+      if (q > 0) quizDays7 += 1;
     }
   }
   const todayInHistory = !!(dayHistory && typeof dayHistory === "object" && (dayHistory as Record<string, unknown>)[today]);
@@ -187,9 +191,11 @@ function windowCounters(
     const d = Number.isFinite(ds.dictation) ? Math.max(0, ds.dictation) : 0;
     dictation7 += d;
     if (d > 0) dictationDays7 += 1;
-    quizzes7 += Number.isFinite(ds.quizzes) ? Math.max(0, ds.quizzes) : 0;
+    const q = Number.isFinite(ds.quizzes) ? Math.max(0, ds.quizzes) : 0;
+    quizzes7 += q;
+    if (q > 0) quizDays7 += 1;
   }
-  return { dictation7, quizzes7, dictationDays7 };
+  return { dictation7, quizzes7, dictationDays7, quizDays7 };
 }
 
 /**
@@ -518,6 +524,21 @@ export const BADGES: BadgeDef[] = [
     tier: "gold",
     progress: (s) => `${faNum(Math.min(s.dictationDays7, 7))} از ۷ روزِ این هفته`,
     check: (s) => s.dictationDays7 >= 7,
+  },
+  // رانِ ترکیبی دوم (Task 86): آزمون برخلاف دیکته در قراردادِ goal-chip به هدف
+  // کمک می‌کند (met = reviews+quizzes >= dailyGoal) — ولی شرطِ این نشان
+  // پیوستگی است نه هدف: یک آزمونِ کوچکِ روزانه (زیرِ سقفِ هدف) هم روزِ
+  // آزمون‌دار است، پس ران می‌تواند در هفته‌ای بدونِ حتی یک روزِ هدف‌دار باز
+  // شود. قرینهٔ متضادِ «هفتهٔ بی‌آزمون» — ۷ روزِ آزمون‌دار یعنی quizzes7 > 0،
+  // پس این دو هرگز هم‌زمان باز نمی‌شوند (تستِ قفل شده).
+  {
+    id: "exam-run",
+    title: "هفتهٔ آزمون‌دار",
+    desc: "هفت روزِ پیوسته آزمون داده شده — رانِ روزانهٔ آزمون، بدون حتی یک روزِ غیبت",
+    icon: "ClipboardCheck",
+    tier: "gold",
+    progress: (s) => `${faNum(Math.min(s.quizDays7, 7))} از ۷ روزِ این هفته`,
+    check: (s) => s.quizDays7 >= 7,
   },
 ];
 

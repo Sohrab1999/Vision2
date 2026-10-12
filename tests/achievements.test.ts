@@ -449,11 +449,11 @@ describe("رانِ ترکیبی — هفتهٔ دیکتهٔ پیوسته (Task 8
   const dictWeek = () =>
     Object.fromEntries([0, 1, 2, 3, 4, 5, 6].map((n) => [w(n), dh({ day: w(n), dictation: 1 })]));
 
-  it("wording و تیر و آیکن — طلایی با SpellCheck2؛ رجیستری ۳۳ شد", () => {
+  it("wording و تیر و آیکن — طلایی با SpellCheck2؛ رجیستری ۳۴ شد", () => {
     expect(byId("dictation-run").title).toBe("هفتهٔ دیکتهٔ پیوسته");
     expect(byId("dictation-run").tier).toBe("gold");
     expect(byId("dictation-run").icon).toBe("SpellCheck2");
-    expect(BADGES.length).toBe(33);
+    expect(BADGES.length).toBe(34);
   });
 
   it("قراردادِ شمارِ روز ≠ جمع: دو دیکته در یک روز هنوز یک روزِ دیکته‌دار است", () => {
@@ -522,6 +522,104 @@ describe("رانِ ترکیبی — هفتهٔ دیکتهٔ پیوسته (Task 8
     const absent = base({});
     expect(absent.dictationDays7).toBe(0);
     expect(ids(absent)).not.toContain("dictation-run");
+  });
+});
+
+describe("رانِ ترکیبی دوم — هفتهٔ آزمون‌دار (Task 86)", () => {
+  const w = (n: number) => daysAgoKey(n);
+  const dh = (over: Record<string, unknown>) => ({
+    day: "",
+    reviews: 0,
+    quizzes: 0,
+    words: 0,
+    dictation: 0,
+    rush: 0,
+    ...over,
+  });
+  const quizWeek = (perDay = 1) =>
+    Object.fromEntries([0, 1, 2, 3, 4, 5, 6].map((n) => [w(n), dh({ day: w(n), quizzes: perDay })]));
+
+  it("wording و تیر و آیکن — طلایی با ClipboardCheck؛ قراردادِ پیشرفتِ روزشماری", () => {
+    expect(byId("exam-run").title).toBe("هفتهٔ آزمون‌دار");
+    expect(byId("exam-run").tier).toBe("gold");
+    expect(byId("exam-run").icon).toBe("ClipboardCheck");
+    const one = base({ dayHistory: { [w(2)]: dh({ day: w(2), quizzes: 1 }) } });
+    expect(byId("exam-run").progress!(one)).toBe("۱ از ۷ روزِ این هفته");
+  });
+
+  it("قراردادِ شمارِ روز ≠ جمع: دو آزمون در یک روز هنوز یک روزِ آزمون‌دار است", () => {
+    const one = base({ dayHistory: { [w(2)]: dh({ day: w(2), quizzes: 2 }) } });
+    expect(one.quizzes7).toBe(2);
+    expect(one.quizDays7).toBe(1);
+    expect(ids(one)).not.toContain("exam-run");
+  });
+
+  it("ران با آزمونِ کوچکِ روزانه باز می‌شود در حالی که هیچ هدفی کامل نشده — شرط پیوستگی است نه هدف (استقلالِ زنده از سوی دیگر)", () => {
+    // قرارداد goal-chip: met = reviews+quizzes >= dailyGoal (۱۰) — یک آزمون در
+    // روز به هدف نمی‌رسد ولی ران را نگه می‌دارد؛ برخلاف رانِ دیکته، آزمون به
+    // هدف کمک می‌کند ولی نشان به «کامل‌شدنِ» هدف نیست به «پیوستگی» می‌نگرد.
+    const run = base({ dayHistory: quizWeek(1) });
+    expect(run.quizDays7).toBe(7);
+    expect(run.quizzes7).toBe(7);
+    expect(run.goalDays7).toBe(0);
+    expect(ids(run)).toContain("exam-run");
+    expect(ids(run)).not.toContain("week-no-dictation");
+    expect(ids(run)).not.toContain("cage-free-week");
+    // قرینهٔ متضاد: ۷ روزِ آزمون‌دار یعنی quizzes7 > 0 → بی‌آزمون هرگز هم‌زمان باز نیست
+    expect(ids(run)).not.toContain("week-no-exam");
+  });
+
+  it("مرز پنجره: w(6) داخل، w(7) بیرون؛ ۶ روز = قفل با پیشرفتِ صادق", () => {
+    const six = base({ dayHistory: Object.fromEntries([1, 2, 3, 4, 5, 6].map((n) => [w(n), dh({ day: w(n), quizzes: 1 })])) });
+    expect(six.quizDays7).toBe(6);
+    expect(ids(six)).not.toContain("exam-run");
+    expect(byId("exam-run").progress!(six)).toBe("۶ از ۷ روزِ این هفته");
+    const sevenWithOld = base({
+      dayHistory: { ...quizWeek(), [w(7)]: dh({ day: w(7), quizzes: 4 }) },
+    });
+    // w(7) بیرونِ پنجره — نه جمع (۷) بالا می‌رود نه روزی اضافه می‌شود
+    expect(sevenWithOld.quizzes7).toBe(7);
+    expect(sevenWithOld.quizDays7).toBe(7);
+    expect(ids(sevenWithOld)).toContain("exam-run");
+  });
+
+  it("fallbackِ امروز: امروزِ غایب از dayStat می‌آید (روزِ هفتم)، حاضر دوبار و از dayStat شمرده نمی‌شود", () => {
+    const sixDays = Object.fromEntries([1, 2, 3, 4, 5, 6].map((n) => [w(n), dh({ day: w(n), quizzes: 1 })]));
+    const viaStat = base({
+      dayHistory: sixDays,
+      dayStat: { day: w(0), reviews: 0, quizzes: 1, words: 0, dictation: 0, rush: 0 },
+    });
+    expect(viaStat.quizDays7).toBe(7);
+    expect(ids(viaStat)).toContain("exam-run");
+    const viaHistory = base({
+      dayHistory: { ...sixDays, [w(0)]: dh({ day: w(0), quizzes: 1 }) },
+      dayStat: { day: w(0), reviews: 0, quizzes: 9, words: 0, dictation: 0, rush: 0 },
+    });
+    // امروز در dayHistory هست → dayStat (۹ آزمون) نادیده گرفته می‌شود: ۷ روز، جمع ۷
+    expect(viaHistory.quizDays7).toBe(7);
+    expect(viaHistory.quizzes7).toBe(7);
+    expect(ids(viaHistory)).toContain("exam-run");
+  });
+
+  it("گاردِ ورودی خراب: خانهٔ منفی/NaN روز نمی‌شود، خانه‌های سالم می‌مانند، غایب → صفرِ امن", () => {
+    const corrupt = buildEvalInput(
+      baseRaw({
+        dayHistory: {
+          [w(1)]: dh({ day: w(1), quizzes: -2 }),
+          [w(2)]: "junk",
+          [w(3)]: null,
+          [w(4)]: dh({ day: w(4), quizzes: Number.NaN }),
+          [w(5)]: dh({ day: w(5), quizzes: 1 }),
+        },
+      }) as unknown as BuildArgs
+    );
+    expect(corrupt.quizDays7).toBe(1);
+    expect(corrupt.quizzes7).toBe(1);
+    expect(ids(corrupt)).not.toContain("exam-run");
+    const absent = base({});
+    expect(absent.quizDays7).toBe(0);
+    expect(absent.quizzes7).toBe(0);
+    expect(ids(absent)).not.toContain("exam-run");
   });
 });
 

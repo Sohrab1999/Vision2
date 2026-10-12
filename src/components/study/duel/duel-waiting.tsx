@@ -14,7 +14,7 @@ export default function DuelWaiting({ roomCode, players, mySid, copyCode, leaveR
   leaveRoom: () => void;
 }) {
   return (
-    <div className="duel-card mx-auto max-w-lg space-y-4 rounded-2xl border border-stone-200 bg-white p-6 text-center shadow-sm sm:p-8">
+    <div className="duel-card mx-auto max-w-lg space-y-4 rounded-2xl border border-stone-200 c-card-elevated p-6 text-center shadow-sm sm:p-8">
       <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-fuchsia-100 text-fuchsia-700">
         <Users size={30} />
       </span>

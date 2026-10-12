@@ -1075,7 +1075,8 @@ html.user-reduce-motion .streak-flame {
 .dark .duel-hero .duel-input:focus { border-color: #f5f5f4; }
 
 .dark .duel-card {
-  background-color: #292524;
+  /* bg folded into @utility c-card-elevated (r86 phase 3) — same #292524,
+     single paint source now; border + stone-100 kernel stay scoped */
   border-color: rgb(120 113 108 / 0.35);
   /* tranche-2: keep the countdown ring track light (stone-100 token is dark app-wide now;
      bg/border stone-100 inside the card stay governed by their scoped rules below) */
@@ -1318,5 +1319,34 @@ html.user-reduce-motion .streak-flame {
   &:is(.dark *) {
     background-color: rgb(28, 25, 23);
     border-color: rgb(55, 49, 43);
+  }
+}
+
+/* ── Task 86 — tranche 4 phase 3: the ELEVATED SHELL semantic class ────────
+   duel-card / rush-card / skill-panel roots (8 shells) — surfaces that sit on
+   an already-painted board and need to read as RAISED. Design decisions, all
+   probe/audit-driven:
+   ① BG-ONLY utility — borders stay explicit raw utilities on the roots
+     (border-stone-200 base, state branches border-fuchsia-200/emerald/rose/
+     sky/orange). Reason: inside the utilities layer both the custom class and
+     a state border-color are (0,1,0), so the winner would be source ORDER in
+     the compiled chunk — fragile across Tailwind upgrades. A bg-only class has
+     zero order risk with any border utility.
+   ② Dark = rgb(41,37,36) (#292524, stone-800) — the duel-card root's exact
+     value (r86 BEFORE probe): one step above the rgb(28,25,23) page/cards, the
+     app's real "raised" tone. The `.dark .duel-card` root rule FOLDS its
+     background-color into this utility (border-color + --color-stone-100
+     kernel stay scoped there).
+   ③ .rush-card / .skill-panel keep their own unlayered `.dark` painters
+     (#1c1917 + themed border) — unlayered author rules beat utilities, so
+     their look is byte-identical; the scoped rules are their documented dark
+     painters, this utility only owns their LIGHT bg. A future shell without a
+     scoped painter still lands on a sane elevated dark (#292524).
+   ④ Plain c-card must NEVER merge into these scoped contexts (r85 exclusion
+     guard) — c-card-elevated is the sanctioned class for exactly these roots. */
+@utility c-card-elevated {
+  background-color: rgb(255, 255, 255);
+  &:is(.dark *) {
+    background-color: rgb(41, 37, 36);
   }
 }

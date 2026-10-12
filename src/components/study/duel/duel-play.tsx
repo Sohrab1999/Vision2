@@ -103,7 +103,7 @@ export default function DuelPlay({ me, opp, total, cur, curQ, correctIdx, qi, pi
 
       {/* انتظار برای حریف پس از اتمام من */}
       {myDone ? (
-        <div className="duel-card rounded-2xl border border-stone-200 bg-white p-8 text-center shadow-sm">
+        <div className="duel-card rounded-2xl border border-stone-200 c-card-elevated p-8 text-center shadow-sm">
           <Loader2 size={34} className="mx-auto mb-3 animate-spin text-fuchsia-500" />
           <h2 className="mb-1 text-lg font-black text-stone-800">همهٔ سؤال‌هایت تمام شد!</h2>
           <p className="text-[13px] text-stone-500">منتظر حریف می‌مانیم تا مسابقه تمام شود…</p>
@@ -118,7 +118,7 @@ export default function DuelPlay({ me, opp, total, cur, curQ, correctIdx, qi, pi
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 28 }}
               transition={{ duration: 0.18 }}
-              className={`duel-card rounded-2xl border-2 bg-white p-5 shadow-md sm:p-6 ${
+              className={`duel-card rounded-2xl border-2 c-card-elevated p-5 shadow-md sm:p-6 ${
                 feedback === "right" ? "border-emerald-400" : feedback === "wrong" ? "border-rose-400" : "border-fuchsia-200"
               }`}
             >

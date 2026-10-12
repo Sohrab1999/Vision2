@@ -510,7 +510,7 @@ export default function SpellRushView({ onExit }: { onExit?: () => void }) {
       </div>
 
       {/* word card — hear & spell */}
-      <div className="rush-card relative overflow-hidden rounded-2xl border-2 border-sky-200 bg-white p-5 shadow-md sm:p-6">
+      <div className="rush-card relative overflow-hidden rounded-2xl border-2 border-sky-200 c-card-elevated p-5 shadow-md sm:p-6">
         <AnimatePresence mode="wait">
           <motion.div
             key={qi}

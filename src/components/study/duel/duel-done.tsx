@@ -65,7 +65,7 @@ export default function DuelDone({ endData, mySid, myFinishAt, oppConnected, rem
       </motion.div>
 
       {/* کارت مقایسه */}
-      <div className="duel-card rounded-2xl border border-stone-200 bg-white p-5 shadow-sm">
+      <div className="duel-card rounded-2xl border border-stone-200 c-card-elevated p-5 shadow-sm">
         <h2 className="mb-3 flex items-center gap-2 text-[14px] font-extrabold text-stone-700">
           <Crown size={16} className="text-amber-600" />
           کارنامهٔ نبرد

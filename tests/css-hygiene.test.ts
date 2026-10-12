@@ -393,7 +393,7 @@ describe("globals.css semantic card layer (Step 9 tranche 4 phase 2 — Task 85)
     expect(body).toContain("border-color: rgb(55, 49, 43)");
   });
 
-  it("exclusion contract — a scoped deviating wrapper line never carries c-card (consumer matrix r85)", () => {
+  it("exclusion contract — a scoped deviating wrapper line never carries PLAIN c-card (consumer matrix r85; r86: c-card-elevated is the sanctioned shell class)", () => {
     const scoped = /duel-card|word-day|skill-panel|vocab-donut|rush-done|rush-card|rush-hud|gmetro-line|gmetro-dialog|report-digest/;
     const offenders: string[] = [];
     const walk = (d: string): void => {
@@ -404,7 +404,9 @@ describe("globals.css semantic card layer (Step 9 tranche 4 phase 2 — Task 85)
         } catch {
           if (p.endsWith(".tsx")) {
             readFileSync(p, "utf8").split("\n").forEach((l, i) => {
-              if (scoped.test(l) && l.includes("c-card")) offenders.push(`${p}:${i + 1}`);
+              // c-card NOT followed by [\w-] => the plain class only;
+              // c-card-elevated must not false-positive (PCRE2 lesson r85)
+              if (scoped.test(l) && /c-card(?![\w-])/.test(l)) offenders.push(`${p}:${i + 1}`);
             });
           }
         }
@@ -412,5 +414,72 @@ describe("globals.css semantic card layer (Step 9 tranche 4 phase 2 — Task 85)
     };
     walk(resolve(process.cwd(), "src"));
     expect(offenders, "c-card must never merge into a deviating scoped dark context").toEqual([]);
+  });
+});
+
+describe("globals.css elevated shell layer (Step 9 tranche 4 phase 3 — Task 86)", () => {
+  const css86 = readFileSync(cssPath, "utf8");
+  const lines86 = css86.split("\n");
+
+  it("defines c-card-elevated ONLY via @utility, BG-ONLY (no border-color — zero order-risk with state border utilities)", () => {
+    expect(lines86.filter((l) => l.trim() === "@utility c-card-elevated {").length, "exactly one @utility c-card-elevated").toBe(1);
+    expect(lines86.filter((l) => l.trim() === ".c-card-elevated {").length).toBe(0);
+    expect(lines86.filter((l) => l.trim() === ".dark .c-card-elevated {").length).toBe(0);
+    const start = lines86.findIndex((l) => l.trim() === "@utility c-card-elevated {");
+    let depth = 0;
+    let body = "";
+    for (let i = start; i < lines86.length; i++) {
+      body += lines86[i] + "\n";
+      depth += (lines86[i].match(/{/g) ?? []).length;
+      depth -= (lines86[i].match(/}/g) ?? []).length;
+      if (depth <= 0) break;
+    }
+    // byte-exact probe values (r86 BEFORE probe: duel root dark = #292524)
+    expect(body).toContain("background-color: rgb(255, 255, 255)");
+    expect(body).toContain("&:is(.dark *)");
+    expect(body).toContain("background-color: rgb(41, 37, 36)");
+    expect(body).not.toContain("border-color");
+  });
+
+  it(".dark .duel-card root rule stays FOLDED — no background-color (paint lives in the utility), kernel + border stay scoped", () => {
+    const start = lines86.findIndex((l) => l.trim() === ".dark .duel-card {");
+    expect(start).toBeGreaterThanOrEqual(0);
+    let depth = 0;
+    let body = "";
+    for (let i = start; i < lines86.length; i++) {
+      body += lines86[i] + "\n";
+      depth += (lines86[i].match(/{/g) ?? []).length;
+      depth -= (lines86[i].match(/}/g) ?? []).length;
+      if (depth <= 0) break;
+    }
+    expect(body).not.toContain("background-color");
+    expect(body).toContain("--color-stone-100: #f5f5f4");
+    expect(body).toContain("border-color: rgb(120 113 108 / 0.35)");
+  });
+
+  it("rush-card / skill-panel scoped dark painters STAY — the documented overrides of the elevated dark (r86 contract ③)", () => {
+    expect(css86).toContain(".dark .rush-card { background-color: #1c1917; }");
+    expect(css86).toContain(".dark .skill-panel { background-color: #1c1917; border-color: rgb(106 44 112 / 0.5); }");
+  });
+
+  it("shell root lines never regress to raw bg-white (recursive src walk)", () => {
+    const shell = /duel-card|rush-card|skill-panel/;
+    const offenders: string[] = [];
+    const walk = (d: string): void => {
+      for (const name of readdirSync(d)) {
+        const p = join(d, name);
+        try {
+          if (readdirSync(p)) walk(p);
+        } catch {
+          if (p.endsWith(".tsx")) {
+            readFileSync(p, "utf8").split("\n").forEach((l, i) => {
+              if (shell.test(l) && l.includes("bg-white")) offenders.push(`${p}:${i + 1}`);
+            });
+          }
+        }
+      }
+    };
+    walk(resolve(process.cwd(), "src"));
+    expect(offenders, "elevated shells paint via c-card-elevated, never raw bg-white").toEqual([]);
   });
 });

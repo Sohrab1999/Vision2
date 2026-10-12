@@ -480,7 +480,7 @@ export default function RushView() {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 28 }}
           transition={{ duration: 0.18 }}
-          className={`rush-card rounded-2xl border-2 bg-white p-5 shadow-md sm:p-6 ${
+          className={`rush-card rounded-2xl border-2 c-card-elevated p-5 shadow-md sm:p-6 ${
             feedback === "right"
               ? "border-emerald-400"
               : feedback === "wrong"

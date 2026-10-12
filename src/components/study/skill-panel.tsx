@@ -72,7 +72,7 @@ export default function SkillPanel() {
   return (
     <section
       aria-label="تحلیل مهارت‌ها"
-      className="skill-panel overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm"
+      className="skill-panel overflow-hidden rounded-2xl border border-stone-200 c-card-elevated shadow-sm"
     >
       <div className="h-1.5 w-full bg-gradient-to-l from-violet-500 via-fuchsia-500 to-amber-400" />
       <div className="p-5 sm:p-6">
