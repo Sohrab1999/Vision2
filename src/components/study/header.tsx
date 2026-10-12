@@ -9,6 +9,7 @@ import SettingsPopover from "./settings-popover";
 import ProfilePopover from "./profile/profile-popover";
 import DuePill from "./due-pill";
 import GoalChip from "./goal-chip";
+import FreezeBadge from "./freeze-badge";
 
 // ------------------------------------------------------------------
 // هدر چسبان — گام ۷.۲-ج §12: این فایل فقط «میلهٔ هدر» است؛ پاپ‌اُور
@@ -73,6 +74,8 @@ export default function Header() {
           <DuePill />
           {/* چیپ هدف امروز — پیشرفت زندهٔ reviews+quizzes تا امن‌شدن زنجیره (Task 76) */}
           <GoalChip />
+          {/* نشانگر یخِ زنجیره — مخزن یخ/نجات امروز، کنار شعله (Task 77) */}
+          <FreezeBadge />
           <button
             onClick={() => setTheme(isDark ? "light" : "dark")}
             className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-stone-200 bg-white text-stone-500 transition-all hover:text-amber-500 hover:border-amber-200 active:scale-90"

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Flame, Snowflake, Target, RefreshCcw, Ear } from "lucide-react";
 import { useStudy, srsDueTotal, firstLessonWithDue, todayStr, FREEZE_CAP } from "@/lib/study-store";
+import { freezeEarnMeta } from "@/lib/freeze-badge";
 import { percent } from "@/lib/domain/percent";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
@@ -16,15 +17,23 @@ export default function HomeToday() {
   const bestStreak = useStudy((s) => s.bestStreak);
   const freezeCount = useStudy((s) => s.freezeCount);
   const freezeSavedDay = useStudy((s) => s.freezeSavedDay);
+  const goalMetDays = useStudy((s) => s.goalMetDays);
+  const freezeEarnedDay = useStudy((s) => s.freezeEarnedDay);
   const dayStat = useStudy((s) => s.dayStat);
   const dailyGoal = useStudy((s) => s.dailyGoal);
   const srs = useStudy((s) => s.srs);
   const mounted = useMounted();
 
   const dueTotal = mounted ? srsDueTotal(srs) : 0;
-  const todayActivities = mounted && dayStat.day === todayStr() ? dayStat.reviews + dayStat.quizzes : 0;
+  const today = todayStr();
+  const todayActivities = mounted && dayStat.day === today ? dayStat.reviews + dayStat.quizzes : 0;
   const goalPercent = percent(todayActivities, dailyGoal);
   const reviewLesson = mounted ? firstLessonWithDue(srs) : null;
+  // پیشرفتِ ساختن یخ بعدی — دقیقاً قرارداد goalAndFreezePatch؛ زیرِ سقف خط دارد
+  const earn =
+    mounted && freezeCount < FREEZE_CAP
+      ? freezeEarnMeta({ goalMetDays, freezeEarnedDay, freezeCount, today })
+      : null;
 
   return (
     <motion.section
@@ -66,6 +75,19 @@ export default function HomeToday() {
             )}
             {mounted && freezeSavedDay === todayStr() && (
               <div className="mt-1 text-[10.5px] font-bold text-sky-500">امروز یخ، زنجیره را نجات داد!</div>
+            )}
+            {earn && (
+              <div className="freeze-earn mt-1 flex items-center gap-1.5" title={earn.title}>
+                <span className="flex gap-0.5" aria-hidden>
+                  {Array.from({ length: earn.needed }, (_, i) => (
+                    <span
+                      key={i}
+                      className={`h-1.5 w-4 rounded-full ${i < earn.inWindow ? "bg-sky-500" : "bg-stone-200/70"}`}
+                    />
+                  ))}
+                </span>
+                <span className="text-[10.5px] font-bold text-sky-600">{earn.label}</span>
+              </div>
             )}
           </div>
         </div>
