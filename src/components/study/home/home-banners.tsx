@@ -79,7 +79,7 @@ export function RushBanner() {
         </div>
         <div className="flex w-full items-center gap-3 sm:w-auto">
           {mounted && rushBest > 0 && (
-            <span className="hidden shrink-0 rounded-xl border border-amber-200 bg-white/80 px-3 py-2 text-[12px] font-black text-amber-800 sm:block">
+            <span className="hidden shrink-0 rounded-xl border border-amber-200 c-veil-80 px-3 py-2 text-[12px] font-black text-amber-800 sm:block">
               🏆 رکورد: {faNum(rushBest)}
             </span>
           )}

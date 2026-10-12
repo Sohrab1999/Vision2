@@ -53,6 +53,7 @@ export interface BadgeEvalInput {
   quizzes7: number; // جمعِ آزمون‌های پنجرهٔ ۷روزه از dayHistory (Task 84)
   dictationDays7: number; // چند روزِ پنجره دیکته داشتند (≠ جمع — رانِ روزانه، Task 85)
   quizDays7: number; // چند روزِ پنجره آزمون داشتند (≠ جمع — رانِ روزانه، Task 86)
+  reviewsDays7: number; // چند روزِ پنجره مرور داشتند (≠ جمع — رانِ روزانه، Task 88)
 }
 
 function historyTotals(history: StudyState["history"]): { quizzes: number; reviews: number; days: number } {
@@ -169,15 +170,18 @@ function windowCounters(
   windowStart: string,
   today: string,
   ds: ReturnType<typeof normDayStat>
-): Pick<BadgeEvalInput, "dictation7" | "quizzes7" | "dictationDays7" | "quizDays7"> {
+): Pick<BadgeEvalInput, "dictation7" | "quizzes7" | "reviewsDays7" | "dictationDays7" | "quizDays7"> {
   let dictation7 = 0;
   let quizzes7 = 0;
+  let reviewsDays7 = 0;
   let dictationDays7 = 0;
   let quizDays7 = 0;
   if (dayHistory && typeof dayHistory === "object") {
     for (const [key, raw] of Object.entries(dayHistory)) {
       if (key < windowStart || !raw || typeof raw !== "object") continue;
       const st = normDayStat(raw as Partial<StudyState["dayStat"]>);
+      const r = Number.isFinite(st.reviews) ? Math.max(0, st.reviews) : 0;
+      if (r > 0) reviewsDays7 += 1;
       const d = Number.isFinite(st.dictation) ? Math.max(0, st.dictation) : 0;
       dictation7 += d;
       if (d > 0) dictationDays7 += 1;
@@ -188,6 +192,8 @@ function windowCounters(
   }
   const todayInHistory = !!(dayHistory && typeof dayHistory === "object" && (dayHistory as Record<string, unknown>)[today]);
   if (!todayInHistory) {
+    const r = Number.isFinite(ds.reviews) ? Math.max(0, ds.reviews) : 0;
+    if (r > 0) reviewsDays7 += 1;
     const d = Number.isFinite(ds.dictation) ? Math.max(0, ds.dictation) : 0;
     dictation7 += d;
     if (d > 0) dictationDays7 += 1;
@@ -195,7 +201,7 @@ function windowCounters(
     quizzes7 += q;
     if (q > 0) quizDays7 += 1;
   }
-  return { dictation7, quizzes7, dictationDays7, quizDays7 };
+  return { dictation7, quizzes7, reviewsDays7, dictationDays7, quizDays7 };
 }
 
 /**
@@ -556,6 +562,21 @@ export const BADGES: BadgeDef[] = [
     progress: (s) =>
       `${faNum(Math.min(s.dictationDays7, s.quizDays7, 7))} از ۷ روزِ دوبلِ این هفته`,
     check: (s) => s.dictationDays7 >= 7 && s.quizDays7 >= 7,
+  },
+  // رانِ مرور (Task 88): هر روزِ پنجره حداقل یک مرور. تحلیلِ همان آزمون‌دار:
+  // مرور به هدف کمک می‌کند (met = reviews+quizzes >= dailyGoal) ولی شرطِ این
+  // نشان پیوستگی است نه هدف — یک مرورِ کوچکِ روزانه (زیرِ سقفِ هدف) هم روزِ
+  // مرور‌دار است، پس ران می‌تواند در هفته‌ای بدونِ حتی یک روزِ هدف‌دار باز شود.
+  // نقره‌ای — مرورِ رایج‌ترین فعالیت است و رانش از ران‌های دیکته/آزمون آسان‌تر؛
+  // نقره جایگاهِ درستش در نردبان است.
+  {
+    id: "review-run",
+    title: "هفتهٔ مرور",
+    desc: "هفت روزِ پیوسته مرور کرده‌ای — رانِ روزانهٔ مرور، بدون حتی یک روزِ غیبت",
+    icon: "History",
+    tier: "silver",
+    progress: (s) => `${faNum(Math.min(s.reviewsDays7, 7))} از ۷ روزِ این هفته`,
+    check: (s) => s.reviewsDays7 >= 7,
   },
 ];
 

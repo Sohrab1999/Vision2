@@ -340,7 +340,7 @@ export default function SpellRushView({ onExit }: { onExit?: () => void }) {
                 { icon: Lightbulb, text: `راهنما حرف بعدی را نشان می‌دهد؛ پاسخِ با راهنما ${faNum(SPELL_HINT_POINTS)} امتیاز ثابت و بدون کمبو` },
                 { icon: Timer, text: "غلط یا رد کردن کمبو را صفر می‌کند؛ پایان زمان = ثبت رکورد" },
               ].map((r, i) => (
-                <div key={i} className="flex items-center gap-2.5 rounded-xl border border-orange-100 bg-white/80 px-3.5 py-2.5">
+                <div key={i} className="flex items-center gap-2.5 rounded-xl border border-orange-100 c-veil-80 px-3.5 py-2.5">
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-sky-100 text-sky-600">
                     <r.icon size={16} />
                   </span>

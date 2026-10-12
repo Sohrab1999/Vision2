@@ -292,6 +292,11 @@ body {
 /* r87: the .bg-white\/70 half retired — every /70 consumer migrated to c-veil-70
    (tranche 4 phase 4); the utility carries the same dark value nested. */
 .dark .certificate-card .bg-stone-50 { background-color: rgba(28, 25, 23, 0.7); }
+/* r88: the .bg-white\/80 half of this default retires for MIGRATED consumers
+   (c-veil-80 carries the same dark value) — the rule STAYS as the documented
+   painter of the speak-button exclusion (hover:bg-emerald-50 on the same
+   element would die under an unlayered class rule — the r80 «نجات امروز»
+   lesson; its dark hover was already dead under this rule, byte-preserved). */
 .dark .bg-white\/80 { background-color: rgba(28, 25, 23, 0.8); }
 .dark .bg-\[\#f7f6f2\]\/85 { background-color: rgba(12, 10, 9, 0.82); }
 
@@ -635,7 +640,10 @@ body {
 .dark .duel-done .text-stone-600,.dark .gmetro-dialog .text-stone-600 { color: #c9c2bb; }
 /* r87 retarget: the two hero chips (rush-view + spell-rush-view) migrated onto
    c-veil-70 — the deviating 0.85 painter follows the class, byte-identical. */
-.dark .rush-banner .bg-white\/80,.dark .rush-hero .bg-white\/80,.dark .rush-hero .c-veil-70 { background-color: rgb(41 37 36 / 0.85); }
+/* r88 retarget: the /80 hero/banner surfaces (instruction rows ×2 + record
+   chip) migrated onto c-veil-80 — the deviating 0.85 painter follows the
+   class, byte-identical. */
+.dark .rush-banner .c-veil-80,.dark .rush-hero .c-veil-80,.dark .rush-hero .c-veil-70 { background-color: rgb(41 37 36 / 0.85); }
 .dark .rush-banner .border-amber-200 { border-color: rgb(180 130 20 / 0.5); }
 .dark .rush-hero {
   background-image: linear-gradient(to bottom left, rgb(69 40 16 / 0.5), rgb(64 30 18 / 0.55), rgb(62 24 26 / 0.5));
@@ -1395,7 +1403,22 @@ html.user-reduce-motion .streak-flame {
      .dark .gmetro-lesson-badge → rgb(41 37 36 / 0.6) (own-class rule, untouched;
      surface currently dormant — dataset covers all lines).
    ⑤ Raw bg-white/60|70 must NEVER reappear in src — new translucent surfaces
-     take these classes (css-hygiene guard locks this). */
+     take these classes (css-hygiene guard locks this).
+   ⑥ PHASE 5 (Task 88) extends the family: c-veil-80 (default dark = the
+     surfaces-section rule's rgba(28,25,23,0.8), which STAYS for the
+     speak-button exclusion) + c-veil-95 (the pwa install card — the round's
+     ONE deliberate dark FIX: no dark rule ever existed and the card glared
+     raw-white in dark; dark = the elevated tone rgb(41 37 36 / 0.95) per the
+     phase-3 «برجستگی» contract, alpha kept for the backdrop-blur).
+     EXCLUSIONS (consumer matrix r88, all documented):
+     • .srs-panel /50 trio (donut/due-chip/fx-chip) — every one carries an
+       own-class dark painter and the donut's is (0,2,0): same specificity as
+       a hypothetical .dark .c-veil-50 default → source order would break it
+       (LATER rule wins). Zero dark value gained; excluded whole.
+     • goal-chip bg-white/90 done-dot (white tick in dark = current state
+       indicator, not a surface) + duel-input bg-white/90 (own 0.94 painter).
+     • bg-white/10|15|20|25 — intentional white-on-dark inks (report paper,
+       gmetro steps, hero overlays), already dark-correct. */
 .c-veil-60 {
   background-color: color-mix(in oklab, var(--color-white) 60%, transparent);
 }
@@ -1407,4 +1430,16 @@ html.user-reduce-motion .streak-flame {
 }
 .dark .c-veil-70 {
   background-color: rgba(28, 25, 23, 0.7);
+}
+.c-veil-80 {
+  background-color: color-mix(in oklab, var(--color-white) 80%, transparent);
+}
+.dark .c-veil-80 {
+  background-color: rgba(28, 25, 23, 0.8);
+}
+.c-veil-95 {
+  background-color: color-mix(in oklab, var(--color-white) 95%, transparent);
+}
+.dark .c-veil-95 {
+  background-color: rgb(41 37 36 / 0.95);
 }

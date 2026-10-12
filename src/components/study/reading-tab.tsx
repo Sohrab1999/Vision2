@@ -43,7 +43,7 @@ export default function ReadingTab({ lesson }: { lesson: LessonData }) {
                 “{reading.titleEn}”
               </h3>
               <p className="mt-0.5 text-sm font-bold text-stone-700">{reading.titleFa}</p>
-              <span className="mt-1.5 inline-block rounded-full bg-white/80 px-2.5 py-0.5 text-[10.5px] text-stone-500" dir="ltr">
+              <span className="mt-1.5 inline-block rounded-full c-veil-80 px-2.5 py-0.5 text-[10.5px] text-stone-500" dir="ltr">
                 {reading.source}
               </span>
             </header>

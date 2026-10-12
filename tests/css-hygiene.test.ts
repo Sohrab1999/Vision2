@@ -530,8 +530,8 @@ describe("globals.css translucent veil layer (Step 9 tranche 4 phase 4 — Task 
     expect(css87).toContain(".dark .report-digest .c-veil-60,\n.dark .report-digest .c-veil-70 { background-color: rgb(41 37 36 / 0.6); }");
     // dormant gmetro badge keeps its own-class painter (never referenced bg-white alphas)
     expect(css87).toContain(".dark .gmetro-lesson-badge { background-color: rgb(41 37 36 / 0.6); }");
-    // the /80 hero painter stays untouched (out of phase-4 scope)
-    expect(css87).toContain(".dark .rush-banner .bg-white\\/80,.dark .rush-hero .bg-white\\/80");
+    // the /80 hero painter retargeted r88 (c-veil-80); /80 raw selector parts retired
+    expect(css87).toContain(".dark .rush-banner .c-veil-80,.dark .rush-hero .c-veil-80,.dark .rush-hero .c-veil-70 { background-color: rgb(41 37 36 / 0.85); }");
   });
 
   it("raw bg-white/60|70 never reappears in src — new translucent surfaces take c-veil (recursive walk)", () => {
@@ -576,5 +576,70 @@ describe("globals.css translucent veil layer (Step 9 tranche 4 phase 4 — Task 
       expect(n, `${f} has at least one c-veil consumer`).toBeGreaterThan(0);
     }
     expect(total).toBe(18);
+  });
+});
+
+describe("globals.css veil phase 5 (alpha /80|95 — Task 88)", () => {
+  const css88 = readFileSync(cssPath, "utf8");
+  const lines88 = css88.split("\n");
+
+  it("defines c-veil-80/95 via plain author rules, pairing invariant, byte-exact bodies", () => {
+    for (const [name, light, dark] of [
+      ["c-veil-80", "color-mix(in oklab, var(--color-white) 80%, transparent)", "rgba(28, 25, 23, 0.8)"],
+      ["c-veil-95", "color-mix(in oklab, var(--color-white) 95%, transparent)", "rgb(41 37 36 / 0.95)"],
+    ] as const) {
+      expect(lines88.filter((l) => l.trim() === `.${name} {`).length, `exactly one light .${name}`).toBe(1);
+      expect(lines88.filter((l) => l.trim() === `.dark .${name} {`).length, `exactly one dark .${name}`).toBe(1);
+      expect(lines88.filter((l) => l.trim() === `@utility ${name} {`).length, "@utility form forbidden — loses byte parity (r87 probed)").toBe(0);
+      const li = lines88.findIndex((l) => l.trim() === `.${name} {`);
+      expect(lines88.slice(li, li + 3).join("\n")).toContain(`background-color: ${light}`);
+      const di = lines88.findIndex((l) => l.trim() === `.dark .${name} {`);
+      expect(lines88.slice(di, di + 3).join("\n")).toContain(`background-color: ${dark}`);
+    }
+  });
+
+  it("exclusion matrix pinned — speak-button is the ONLY raw /80; srs trio the ONLY /50 sites; /95 fully migrated", () => {
+    const tsxOf = (p: string) => readFileSync(resolve(process.cwd(), p), "utf8");
+    // speak-button: hover:bg-emerald-50 would die under an unlayered class rule (r80 lesson)
+    expect(tsxOf("src/components/study/speak-button.tsx")).toContain("bg-white/80");
+    const raw80: string[] = [];
+    const raw50: string[] = [];
+    const raw95: string[] = [];
+    const walk = (d: string): void => {
+      for (const name of readdirSync(d)) {
+        const p = join(d, name);
+        try {
+          if (readdirSync(p)) walk(p);
+        } catch {
+          if (p.endsWith(".tsx")) {
+            readFileSync(p, "utf8").split("\n").forEach((l) => {
+              if (/bg-white\/80\b/.test(l)) raw80.push(p);
+              if (/bg-white\/50\b/.test(l)) raw50.push(p);
+              if (/bg-white\/95\b/.test(l)) raw95.push(p);
+            });
+          }
+        }
+      }
+    };
+    walk(resolve(process.cwd(), "src"));
+    expect(raw80, "bg-white/80 survives ONLY in speak-button (documented exclusion)").toEqual([
+      resolve(process.cwd(), "src/components/study/speak-button.tsx"),
+    ]);
+    expect(raw95, "bg-white/95 fully migrated to c-veil-95 (pwa dark FIX)").toEqual([]);
+    expect(new Set(raw50), "/50 stays raw ONLY in the srs trio (donut (0,2,0) order trap)").toEqual(
+      new Set([
+        resolve(process.cwd(), "src/components/study/srs-panel.tsx"),
+      ])
+    );
+  });
+
+  it("deviating painters retargeted + exclusion painter pinned", () => {
+    // hero/banner 0.85 painter now follows BOTH veil grades
+    expect(css88).toContain(".dark .rush-banner .c-veil-80,.dark .rush-hero .c-veil-80,.dark .rush-hero .c-veil-70 { background-color: rgb(41 37 36 / 0.85); }");
+    // rule 295 STAYS — the speak-button exclusion's dark painter (hover-death contract)
+    expect(css88).toContain(".dark .bg-white\\/80 { background-color: rgba(28, 25, 23, 0.8); }");
+    // srs trio own-class painters untouched
+    expect(css88).toContain(".dark .srs-donut { background-color: rgba(6, 44, 34, 0.5);");
+    expect(css88).toContain(".dark .srs-panel .srs-due-chip {\n  background-color: #1c1917;");
   });
 });
