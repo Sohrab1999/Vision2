@@ -494,7 +494,8 @@ body {
 .dark .report-digest .text-stone-400 { color: #78716c; }
 
 /* ---------------- badge popover (details) ---------------- */
-.dark .badge-popover,.dark .shortcuts-dialog { background-color: #1c1917; border-color: #37312b; }
+.dark .badge-popover,.dark .shortcuts-dialog,.dark .command-palette { background-color: #1c1917; border-color: #37312b; }
+.dark .command-palette input::placeholder { color: #8a8580; }
 .dark .badge-popover .bg-stone-50 { background-color: rgba(40, 36, 31, 0.7); }
 .dark .badge-popover .bg-emerald-50 { background-color: rgba(6, 55, 40, 0.4); }
 .badge-popover { animation: pop-fade 0.18s ease-out; }

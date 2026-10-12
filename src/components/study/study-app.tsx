@@ -13,6 +13,7 @@ import { trackEventOncePerSession } from "@/lib/analytics";
 import Header from "./header";
 import Footer from "./footer";
 import HomeView from "./home-view";
+import CommandPalette from "./command-palette";
 import ShortcutGuide from "./shortcut-guide";
 import Onboarding from "./onboarding";
 import PwaLayer from "./pwa-layer";
@@ -242,6 +243,9 @@ export default function StudyApp() {
 
       {/* keyboard shortcuts guide + global shortcut engine ("?" opens it) */}
       <ShortcutGuide />
+
+      {/* فرمان‌یاب — جست‌وجوی همه‌جا (Ctrl+K / دکمهٔ هدر) */}
+      <CommandPalette />
 
       {/* first-run welcome + personalization (F1) */}
       <Onboarding />

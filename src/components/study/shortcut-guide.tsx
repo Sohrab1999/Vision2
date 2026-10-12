@@ -38,6 +38,7 @@ const GROUPS: { title: string; icon: React.ElementType; rows: Row[] }[] = [
       { keys: ["M"], desc: "متروی گرامر — نقشهٔ سفر گرامر کتاب" },
       { keys: ["T"], desc: "تغییر حالت شب / روز" },
       { keys: ["?"], desc: "باز و بسته کردن همین راهنما" },
+      { keys: ["Ctrl", "K"], desc: "فرمان‌یاب — جست‌وجوی همه‌جا و اجرای سریع فرمان‌ها" },
     ],
   },
   {
@@ -79,7 +80,8 @@ const LESSON_TABS: { key: LessonTab; label: string }[] = [
   { key: "tests", label: "تست‌ها" },
 ];
 
-function Kbd({ children }: { children: React.ReactNode }) {
+// صادرشده برای فرمان‌یاب (task 66) — همان چیپ کلید همه‌جا
+export function Kbd({ children }: { children: React.ReactNode }) {
   return (
     <kbd
       dir="ltr"

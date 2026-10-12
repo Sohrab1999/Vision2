@@ -1,6 +1,6 @@
 "use client";
 
-import { BookOpen, Home, Library, ClipboardCheck, BookMarked, Sun, Moon, Flame, Keyboard } from "lucide-react";
+import { BookOpen, Home, Library, ClipboardCheck, BookMarked, Sun, Moon, Flame, Keyboard, Search } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useStudy, type View } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -78,6 +78,16 @@ export default function Header() {
 
           {/* settings hub (TTS speed / font size / motion / daily goal) */}
           <SettingsPopover />
+
+          {/* command palette — جست‌وجوی همه‌جا (Ctrl+K) */}
+          <button
+            onClick={() => window.dispatchEvent(new CustomEvent("open-command-palette"))}
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-stone-200 bg-white text-stone-500 transition-all hover:text-teal-600 hover:border-teal-200 active:scale-90"
+            aria-label="فرمان‌یاب — جست‌وجوی همه‌جا"
+            title="فرمان‌یاب (Ctrl+K)"
+          >
+            <Search size={16} />
+          </button>
 
           {/* keyboard shortcuts guide */}
           <button
