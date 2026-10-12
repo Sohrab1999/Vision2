@@ -26,6 +26,10 @@ import {
   Zap,
   Sparkles,
   Crown,
+  Snowflake,
+  ShieldCheck,
+  Shield,
+  Package,
 } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -40,7 +44,9 @@ import {
   type BadgeEvalInput,
 } from "@/lib/achievements";
 
-const ICONS: Record<string, React.ElementType> = {
+// Task 81 — صادرشده برای گاردِ تست: هر iconِ رجیستری باید این‌جا کلید باشد
+// (وگرنه کاشی به Medal برمی‌گردد — سکوتِ بصری که تست نمی‌بیند)
+export const BADGE_ICONS: Record<string, React.ElementType> = {
   Footprints,
   BookA,
   BookOpenCheck,
@@ -62,6 +68,10 @@ const ICONS: Record<string, React.ElementType> = {
   Zap,
   Sparkles,
   Crown,
+  Snowflake,
+  ShieldCheck,
+  Shield,
+  Package,
 };
 
 const tierFa: Record<string, string> = {
@@ -85,6 +95,9 @@ export default function Badges() {
   const rushBest = useStudy((s) => s.rushBest);
   const rushBestCorrect = useStudy((s) => s.rushBestCorrect);
   const rushGames = useStudy((s) => s.rushGames);
+  const freezeCount = useStudy((s) => s.freezeCount);
+  const freezeUsedDays = useStudy((s) => s.freezeUsedDays);
+  const freezeEarnedDay = useStudy((s) => s.freezeEarnedDay);
   const seenBadges = useStudy((s) => s.seenBadges);
   const markBadgesSeen = useStudy((s) => s.markBadgesSeen);
   const mounted = useMounted();
@@ -104,8 +117,11 @@ export default function Badges() {
         rushBest,
         rushBestCorrect,
         rushGames,
+        freezeCount,
+        freezeUsedDays,
+        freezeEarnedDay,
       }),
-    [known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames]
+    [known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, freezeCount, freezeUsedDays, freezeEarnedDay]
   );
 
   const unlocked = useMemo(() => unlockedBadgeIds(input), [input]);
@@ -163,7 +179,7 @@ export default function Badges() {
 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
         {ordered.map((b, i) => {
-          const Icon = ICONS[b.icon] ?? Medal;
+          const Icon = BADGE_ICONS[b.icon] ?? Medal;
           const isUnlocked = unlocked.has(b.id);
           const tier = TIER_STYLE[b.tier];
           const hint = !isUnlocked && b.progress ? b.progress(input) : undefined;

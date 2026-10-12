@@ -6,6 +6,7 @@
 
 import type { StudyState } from "./study-store";
 import { normDayStat, todayStr } from "./study-store";
+import { faNum } from "./study-theme";
 import { completedQuestCount } from "./daily-quests";
 
 export type BadgeTier = "bronze" | "silver" | "gold";
@@ -41,6 +42,9 @@ export interface BadgeEvalInput {
   rushBestCorrect: number; // best correct answers in one challenge
   rushGames: number; // total completed 60s challenge rounds
   questsDoneToday: number; // daily quests completed today (0..5)
+  freezeCount: number; // یخِ فعلیِ مخزن (سقف ۲ — F9)
+  freezeRescues: number; // چند بار یخ زنجیره را نجات داده (freezeUsedDays)
+  hasFreezeEver: boolean; // حداقل یک یخ ساخته شده (freezeEarnedDay ثبت است)
 }
 
 function historyTotals(history: StudyState["history"]): { quizzes: number; reviews: number; days: number } {
@@ -67,6 +71,9 @@ export function buildEvalInput(s: {
   rushBest?: number;
   rushBestCorrect?: number;
   rushGames?: number;
+  freezeCount?: number;
+  freezeUsedDays?: string[];
+  freezeEarnedDay?: string;
 }): BadgeEvalInput {
   const knownCount = Object.values(s.known).filter(Boolean).length;
   const rs = Object.values(s.results);
@@ -109,6 +116,15 @@ export function buildEvalInput(s: {
     rushBestCorrect: s.rushBestCorrect ?? 0,
     rushGames: s.rushGames ?? 0,
     questsDoneToday: completedQuestCount(ds),
+    // خانوادهٔ یخ (Task 81) — گاردِ ورودی خراب: مخزن منفی/NaN → صفر، آرایهٔ خراب → فقط رشته‌ها
+    freezeCount:
+      typeof s.freezeCount === "number" && Number.isFinite(s.freezeCount)
+        ? Math.max(0, Math.floor(s.freezeCount))
+        : 0,
+    freezeRescues: Array.isArray(s.freezeUsedDays)
+      ? s.freezeUsedDays.filter((d): d is string => typeof d === "string").length
+      : 0,
+    hasFreezeEver: typeof s.freezeEarnedDay === "string" && s.freezeEarnedDay.length > 0,
   };
 }
 
@@ -127,7 +143,7 @@ export const BADGES: BadgeDef[] = [
     desc: "۱۰ واژه را در فلش‌کارت‌ها «بلدم» علامت بزن",
     icon: "BookA",
     tier: "bronze",
-    progress: (s) => `${Math.min(s.knownCount, 10)} از ۱۰ واژه`,
+    progress: (s) => `${faNum(Math.min(s.knownCount, 10))} از ۱۰ واژه`,
     check: (s) => s.knownCount >= 10,
   },
   {
@@ -136,7 +152,7 @@ export const BADGES: BadgeDef[] = [
     desc: "۵۰ واژه را یاد بگیر",
     icon: "BookOpenCheck",
     tier: "silver",
-    progress: (s) => `${Math.min(s.knownCount, 50)} از ۵۰ واژه`,
+    progress: (s) => `${faNum(Math.min(s.knownCount, 50))} از ۵۰ واژه`,
     check: (s) => s.knownCount >= 50,
   },
   {
@@ -145,7 +161,7 @@ export const BADGES: BadgeDef[] = [
     desc: "۱۵۰ واژه را یاد بگیر",
     icon: "GraduationCap",
     tier: "gold",
-    progress: (s) => `${Math.min(s.knownCount, 150)} از ۱۵۰ واژه`,
+    progress: (s) => `${faNum(Math.min(s.knownCount, 150))} از ۱۵۰ واژه`,
     check: (s) => s.knownCount >= 150,
   },
   {
@@ -154,7 +170,7 @@ export const BADGES: BadgeDef[] = [
     desc: "۵ آزمون یا تمرین کامل کن",
     icon: "ListChecks",
     tier: "bronze",
-    progress: (s) => `${Math.min(s.totalQuizzes, 5)} از ۵ آزمون`,
+    progress: (s) => `${faNum(Math.min(s.totalQuizzes, 5))} از ۵ آزمون`,
     check: (s) => s.totalQuizzes >= 5,
   },
   {
@@ -163,7 +179,7 @@ export const BADGES: BadgeDef[] = [
     desc: "۲۰ آزمون یا تمرین کامل کن",
     icon: "ClipboardCheck",
     tier: "silver",
-    progress: (s) => `${Math.min(s.totalQuizzes, 20)} از ۲۰ آزمون`,
+    progress: (s) => `${faNum(Math.min(s.totalQuizzes, 20))} از ۲۰ آزمون`,
     check: (s) => s.totalQuizzes >= 20,
   },
   {
@@ -172,7 +188,7 @@ export const BADGES: BadgeDef[] = [
     desc: "۵۰ بار با فلش‌کارت‌ها مرور کن",
     icon: "RefreshCcw",
     tier: "bronze",
-    progress: (s) => `${Math.min(s.totalReviews, 50)} از ۵۰ مرور`,
+    progress: (s) => `${faNum(Math.min(s.totalReviews, 50))} از ۵۰ مرور`,
     check: (s) => s.totalReviews >= 50,
   },
   {
@@ -181,7 +197,7 @@ export const BADGES: BadgeDef[] = [
     desc: "۳ روز پشت‌سرهم فعالیت کن",
     icon: "Flame",
     tier: "bronze",
-    progress: (s) => `رکورد: ${Math.min(s.bestStreak, 3)} از ۳ روز`,
+    progress: (s) => `رکورد: ${faNum(Math.min(s.bestStreak, 3))} از ۳ روز`,
     check: (s) => s.bestStreak >= 3,
   },
   {
@@ -190,7 +206,7 @@ export const BADGES: BadgeDef[] = [
     desc: "۷ روز پشت‌سرهم فعالیت کن",
     icon: "CalendarCheck",
     tier: "gold",
-    progress: (s) => `رکورد: ${Math.min(s.bestStreak, 7)} از ۷ روز`,
+    progress: (s) => `رکورد: ${faNum(Math.min(s.bestStreak, 7))} از ۷ روز`,
     check: (s) => s.bestStreak >= 7,
   },
   {
@@ -215,7 +231,7 @@ export const BADGES: BadgeDef[] = [
     desc: "در یک آزمون ۸۵٪ یا بالاتر بگیر",
     icon: "Star",
     tier: "silver",
-    progress: (s) => `بهترین: ${Math.min(s.bestPercent, 85)}٪`,
+    progress: (s) => `بهترین: ${faNum(Math.min(s.bestPercent, 85))}٪`,
     check: (s) => s.bestPercent >= 85,
   },
   {
@@ -224,7 +240,7 @@ export const BADGES: BadgeDef[] = [
     desc: "در یک آزمون ۱۰۰٪ بگیر",
     icon: "Target",
     tier: "gold",
-    progress: (s) => `بهترین: ${Math.min(s.bestPercent, 100)}٪`,
+    progress: (s) => `بهترین: ${faNum(Math.min(s.bestPercent, 100))}٪`,
     check: (s) => s.hasPerfect,
   },
   {
@@ -265,7 +281,7 @@ export const BADGES: BadgeDef[] = [
     desc: "در یک چالش برق‌آسا ۱۵ پاسخ درست یا بیشتر بگیر",
     icon: "Sparkles",
     tier: "silver",
-    progress: (s) => `بهترین: ${Math.min(s.rushBestCorrect, 15)} از ۱۵ پاسخ`,
+    progress: (s) => `بهترین: ${faNum(Math.min(s.rushBestCorrect, 15))} از ۱۵ پاسخ`,
     check: (s) => s.rushBestCorrect >= 15,
   },
   {
@@ -274,7 +290,7 @@ export const BADGES: BadgeDef[] = [
     desc: "در ۵ چالش برق‌آسا شرکت کن",
     icon: "Gamepad2",
     tier: "silver",
-    progress: (s) => `${Math.min(s.rushGames, 5)} از ۵ چالش`,
+    progress: (s) => `${faNum(Math.min(s.rushGames, 5))} از ۵ چالش`,
     check: (s) => s.rushGames >= 5,
   },
   {
@@ -283,7 +299,7 @@ export const BADGES: BadgeDef[] = [
     desc: "در یک دور چالش ۱۰۰ امتیاز یا بیشتر بگیر",
     icon: "Trophy",
     tier: "gold",
-    progress: (s) => `بهترین: ${Math.min(s.rushBest, 100)} از ۱۰۰ امتیاز`,
+    progress: (s) => `بهترین: ${faNum(Math.min(s.rushBest, 100))} از ۱۰۰ امتیاز`,
     check: (s) => s.rushBest >= 100,
   },
   {
@@ -292,8 +308,44 @@ export const BADGES: BadgeDef[] = [
     desc: "هر ۵ هدف روزانه را در یک روز کامل کن",
     icon: "Crown",
     tier: "gold",
-    progress: (s) => `${Math.min(s.questsDoneToday, 5)} از ۵ هدف امروز`,
+    progress: (s) => `${faNum(Math.min(s.questsDoneToday, 5))} از ۵ هدف امروز`,
     check: (s) => s.questsDoneToday >= 5,
+  },
+  // ---- خانوادهٔ یخ (Task 81) — داستان F9 در سطح دستاورد؛ هم‌پیوند با
+  // چیپ هدر/دفتر کارنامه: یخ بساز، بگذار نجات دهد، مخزن را پر کن، سپر شو
+  {
+    id: "ice-maker",
+    title: "یخ‌ساز",
+    desc: "با ۳ روزِ هدف‌دار در ۷ روز، اولین یخ زنجیره‌ات را بساز",
+    icon: "Snowflake",
+    tier: "bronze",
+    check: (s) => s.hasFreezeEver,
+  },
+  {
+    id: "chain-rescuer",
+    title: "نجات‌گر",
+    desc: "یک روز غایب شو و بگذار یخ، زنجیره را نجات دهد",
+    icon: "ShieldCheck",
+    tier: "silver",
+    check: (s) => s.freezeRescues >= 1,
+  },
+  {
+    id: "ice-stockpile",
+    title: "انبار یخ",
+    desc: "هر دو یخِ مخزن را هم‌زمان داشته باش — سقف یخ‌ها",
+    icon: "Package",
+    tier: "silver",
+    progress: (s) => `${faNum(Math.min(s.freezeCount, 2))} از ۲ یخ در انبار`,
+    check: (s) => s.freezeCount >= 2,
+  },
+  {
+    id: "ice-shield",
+    title: "سپر یخی",
+    desc: "۳ بار یخ زنجیره‌ات را نجات دهد — محافظ همیشگی زنجیره",
+    icon: "Shield",
+    tier: "gold",
+    progress: (s) => `${faNum(Math.min(s.freezeRescues, 3))} از ۳ نجات`,
+    check: (s) => s.freezeRescues >= 3,
   },
 ];
 
