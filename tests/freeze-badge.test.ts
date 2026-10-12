@@ -8,7 +8,7 @@
 // ------------------------------------------------------------------
 
 import { describe, it, expect } from "vitest";
-import { freezeBadgeMeta, freezeEarnMeta } from "@/lib/freeze-badge";
+import { freezeBadgeMeta, freezeEarnMeta, freezeLedgerMeta } from "@/lib/freeze-badge";
 
 const T = "2026-10-13"; // سه‌شنبه — کلید ثابت برای همهٔ مرزها
 const dAgo = (n: number): string => {
@@ -131,5 +131,78 @@ describe("freezeEarnMeta — پیشرفتِ ساختن یخ، آینهٔ goalAnd
     expect(m.inWindow).toBe(0);
     expect(m.state).toBe("progress");
     expect(m.label).toBe("۰ از ۳ روزِ هدف‌دار");
+  });
+});
+
+describe("freezeLedgerMeta — دفتر یخِ کارنامه (Task 78)", () => {
+  const base = {
+    freezeCount: 2,
+    freezeSavedDay: "",
+    freezeUsedDays: [] as string[],
+    goalMetDays: [dAgo(1), dAgo(2)] as string[],
+    freezeEarnedDay: "",
+    today: T,
+  };
+
+  it("مخزن پُر: «۲ یخ در انبار» + بدون نجات/نجات امروز", () => {
+    const m = freezeLedgerMeta(base);
+    expect(m.stockLabel).toBe("۲ یخ در انبار");
+    expect(m.rescueLabel).toBeNull();
+    expect(m.savedToday).toBe(false);
+  });
+
+  it("مخزن خالی: «بی‌یخ» — گزارش کامل صفرها را هم نشان می‌دهد", () => {
+    const m = freezeLedgerMeta({ ...base, freezeCount: 0 });
+    expect(m.stockLabel).toBe("بی‌یخ");
+  });
+
+  it("نجات داخل پنجره شمرده می‌شود: یک مصرف در ۳ روز پیش → «۱ نجات…»", () => {
+    const m = freezeLedgerMeta({ ...base, freezeCount: 1, freezeUsedDays: [dAgo(3)] });
+    expect(m.rescueLabel).toBe("۱ نجاتِ زنجیره در ۷ روزِ گذشته");
+  });
+
+  it("نجات بیرون پنجره (۸ روز پیش) شمرده نمی‌شود → null", () => {
+    const m = freezeLedgerMeta({ ...base, freezeUsedDays: [dAgo(8)] });
+    expect(m.rescueLabel).toBeNull();
+  });
+
+  it("دو نجات: رقم فارسی «۲ نجات…»", () => {
+    const m = freezeLedgerMeta({ ...base, freezeCount: 0, freezeUsedDays: [dAgo(2), dAgo(5)] });
+    expect(m.rescueLabel).toBe("۲ نجاتِ زنجیره در ۷ روزِ گذشته");
+  });
+
+  it("نجاتِ امروز: savedToday پرچم + در عنوان می‌نشیند", () => {
+    const m = freezeLedgerMeta({ ...base, freezeSavedDay: T });
+    expect(m.savedToday).toBe(true);
+    expect(m.title).toContain("امروز یخ، زنجیره را نجات داد");
+  });
+
+  it("earn هم‌قرارداد با freezeEarnMeta: ۲ روزِ هدف‌دار → progress «۲ از ۳»", () => {
+    const m = freezeLedgerMeta({ ...base, freezeCount: 1 }); // زیرِ سقف
+    expect(m.earn.state).toBe("progress");
+    expect(m.earn.label).toBe("۲ از ۳ روزِ هدف‌دار");
+  });
+
+  it("earn سقف: ۲ یخ → state cap (و همان «سقف یخ‌ها پر است»)", () => {
+    const m = freezeLedgerMeta(base); // freezeCount: 2 = سقف
+    expect(m.earn.state).toBe("cap");
+  });
+
+  it("عنوان کامل: اجزا با «؛» کنار هم — یک‌جا بودن wording", () => {
+    const m = freezeLedgerMeta({ ...base, freezeUsedDays: [dAgo(3)], freezeSavedDay: T });
+    expect(m.title).toMatch(/^دفتر یخ — /);
+    expect(m.title).toContain("۲ یخ در انبار");
+    expect(m.title).toContain("۱ نجاتِ زنجیره");
+    expect(m.title).toContain("؛");
+  });
+
+  it("گارد ورودی: freezeUsedDays خراب → صفرِ امن؛ امروز خالی → ساعت واقعی", () => {
+    const corrupt = freezeLedgerMeta({
+      ...base,
+      freezeUsedDays: "bad" as unknown as string[],
+    });
+    expect(corrupt.rescueLabel).toBeNull();
+    const live = freezeLedgerMeta({ ...base, today: "" });
+    expect(live.stockLabel).toBe("۲ یخ در انبار");
   });
 });

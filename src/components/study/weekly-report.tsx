@@ -10,10 +10,11 @@
 
 import { useMemo } from "react";
 import { motion } from "framer-motion";
-import { Sparkles, TrendingDown, TrendingUp, Minus, CalendarHeart } from "lucide-react";
+import { Sparkles, TrendingDown, TrendingUp, Minus, CalendarHeart, Check, Snowflake } from "lucide-react";
 import { useStudy, daysAgoKey } from "@/lib/study-store";
 import { faNum } from "@/lib/study-theme";
 import { computeWeeklyDigest, faWeekday, faDayLabel, type Delta } from "@/lib/weekly-digest";
+import { freezeLedgerMeta } from "@/lib/freeze-badge";
 
 const DELTA_META: { field: Delta["field"]; label: string; cls: string }[] = [
   { field: "reviews", label: "مرور", cls: "text-amber-600" },
@@ -49,6 +50,10 @@ export default function WeeklyReportSection() {
   const goalMetDays = useStudy((s) => s.goalMetDays);
   const dailyGoal = useStudy((s) => s.dailyGoal);
   const streak = useStudy((s) => s.streak);
+  const freezeCount = useStudy((s) => s.freezeCount);
+  const freezeSavedDay = useStudy((s) => s.freezeSavedDay);
+  const freezeUsedDays = useStudy((s) => s.freezeUsedDays);
+  const freezeEarnedDay = useStudy((s) => s.freezeEarnedDay);
 
   const digest = useMemo(
     // the digest window ends "today"; daysAgoKey(0) is the exported wall-clock
@@ -56,6 +61,21 @@ export default function WeeklyReportSection() {
     // when the digest must.
     () => computeWeeklyDigest({ dayHistory, history, goalMetDays }, daysAgoKey(0)),
     [dayHistory, history, goalMetDays]
+  );
+
+  // دفتر یخ (Task 78) — مخزن + نجات‌های این هفته + مسیر یخِ بعدی؛ هم‌قرارداد
+  // goalAndFreezePatch (فقط روزهای واقعیِ یخ و هدف) — هم‌پنجرهٔ ۷روزهٔ دایجست
+  const ledger = useMemo(
+    () =>
+      freezeLedgerMeta({
+        freezeCount,
+        freezeSavedDay,
+        freezeUsedDays,
+        goalMetDays,
+        freezeEarnedDay,
+        today: daysAgoKey(0),
+      }),
+    [freezeCount, freezeSavedDay, freezeUsedDays, goalMetDays, freezeEarnedDay]
   );
 
   const maxTotal = Math.max(1, ...digest.perDay.map((p) => p.stat.reviews + p.stat.quizzes + p.stat.words + p.stat.dictation + p.stat.rush));
@@ -138,6 +158,54 @@ export default function WeeklyReportSection() {
                 />
               );
             })}
+        </div>
+      </div>
+
+      {/* دفتر یخ (Task 78) — هم‌خانوادهٔ ردیف نقطه‌های هدف؛ باند آسمانیِ همان چیپ هدر */}
+      <div
+        className="freeze-ledger mb-3 rounded-lg bg-white/60 px-2.5 py-2"
+        title={ledger.title}
+        aria-label={ledger.title}
+      >
+        <div className="flex flex-wrap items-center justify-between gap-1.5">
+          <div className="flex items-center gap-1.5 text-[10.5px] font-extrabold text-stone-600">
+            <Snowflake size={12} className="text-sky-600" aria-hidden />
+            دفتر یخ
+          </div>
+          <div className="flex items-center gap-1">
+            <span className="inline-flex items-center gap-0.5 rounded-full border border-sky-200 bg-sky-50 px-1.5 py-0.5 text-[9.5px] font-black text-sky-600">
+              {ledger.stockLabel}
+            </span>
+            {ledger.rescueLabel && (
+              <span className="inline-flex items-center gap-0.5 rounded-full border border-sky-200 bg-sky-50 px-1.5 py-0.5 text-[9.5px] font-black text-sky-600">
+                <Check size={9} aria-hidden />
+                {ledger.rescueLabel}
+              </span>
+            )}
+            {ledger.savedToday && (
+              <span className="inline-flex items-center gap-0.5 rounded-full border border-sky-200 bg-sky-50 px-1.5 py-0.5 text-[9.5px] font-black text-sky-700">
+                <Check size={9} aria-hidden />
+                نجات امروز
+              </span>
+            )}
+          </div>
+        </div>
+        {/* مسیر یخِ بعدی — هم‌زبان خطّ خانه؛ سقفِ پُر فقط متن */}
+        <div className="mt-1.5 flex items-center justify-between gap-2">
+          <span className="text-[9.5px] font-bold text-stone-400">مسیر یخِ بعدی</span>
+          <div className="flex items-center gap-1.5">
+            {ledger.earn.state !== "cap" && (
+              <span className="flex gap-0.5" aria-hidden>
+                {Array.from({ length: ledger.earn.needed }, (_, i) => (
+                  <span
+                    key={i}
+                    className={`h-1.5 w-4 rounded-full ${i < ledger.earn.inWindow ? "bg-sky-500" : "bg-stone-200/70"}`}
+                  />
+                ))}
+              </span>
+            )}
+            <span className="text-[9.5px] font-bold text-sky-600">{ledger.earn.label}</span>
+          </div>
         </div>
       </div>
 

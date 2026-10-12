@@ -143,6 +143,57 @@ export function freezeEarnMeta(input: {
   };
 }
 
+// ---------------- ③ دفتر یخ در کارنامه (Task 78) ----------------
+
+export interface FreezeLedgerMeta {
+  /** «۲ یخ در انبار» / «۱ یخ در انبار» / «بی‌یخ» */
+  stockLabel: string;
+  /** یخِ امروز زنجیره را نجات داد؟ (freezeSavedDay === today) */
+  savedToday: boolean;
+  /** چند نجات (یخِ مصرف‌شده) در پنجرهٔ ۷روزه — صفر → null */
+  rescueLabel: string | null;
+  /** مسیر یخِ بعدی — همان freezeEarnMeta */
+  earn: FreezeEarnMeta;
+  /** عنوان کامل ردیف — tooltip و دسترس‌پذیری */
+  title: string;
+}
+
+/** ردیف «دفتر یخ» هفته‌نامه: مخزن + نجات‌های این هفته + مسیر یخ بعدی */
+export function freezeLedgerMeta(input: {
+  freezeCount: number;
+  freezeSavedDay: string;
+  freezeUsedDays: string[];
+  goalMetDays: string[];
+  freezeEarnedDay: string;
+  today: string;
+}): FreezeLedgerMeta {
+  const n = Number.isFinite(input.freezeCount) ? Math.max(0, Math.floor(input.freezeCount)) : 0;
+  const used = Array.isArray(input.freezeUsedDays)
+    ? input.freezeUsedDays.filter((d): d is string => typeof d === "string")
+    : [];
+  const today = typeof input.today === "string" && input.today ? input.today : todayStr0();
+  const windowStart = dayKeyAgo(today, FREEZE_WINDOW - 1);
+
+  const stockLabel = n > 0 ? `${faNum(n)} یخ در انبار` : "بی‌یخ";
+  const savedToday = input.freezeSavedDay === today;
+  const rescues = used.filter((d) => d >= windowStart).length;
+  const rescueLabel =
+    rescues > 0 ? `${faNum(rescues)} نجاتِ زنجیره در ${faNum(FREEZE_WINDOW)} روزِ گذشته` : null;
+  const earn = freezeEarnMeta({
+    goalMetDays: input.goalMetDays,
+    freezeEarnedDay: input.freezeEarnedDay,
+    freezeCount: n,
+    today,
+  });
+
+  const parts = [stockLabel, rescueLabel, savedToday ? "امروز یخ، زنجیره را نجات داد" : null].filter(
+    (p): p is string => p !== null
+  );
+  const title = `دفتر یخ — ${parts.join("؛ ")}؛ ${earn.title}`;
+
+  return { stockLabel, savedToday, rescueLabel, earn, title };
+}
+
 /** کلید روزِ محلی — فقط نگهبان مسیر today خالی */
 function todayStr0(): string {
   const d = new Date();
