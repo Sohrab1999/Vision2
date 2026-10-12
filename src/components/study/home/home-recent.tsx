@@ -6,7 +6,7 @@ import { lessonMetaById } from "@/data/lesson-meta";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { themeOf, faNum } from "@/lib/study-theme";
-import { categoryLabel } from "./home-constants";
+import { categoryLabel, globalResultLabel, globalResultTheme } from "./home-constants";
 
 // «آخرین نتایج شما» — چهار رکورد اخیر با رنگ تم درس
 
@@ -32,13 +32,14 @@ export default function HomeRecent() {
         {recentResults.map(([key, r]) => {
           const [lessonPart, cat] = key.split(":");
           const lesson = lessonMetaById(Number(lessonPart));
-          const t = themeOf(lesson?.color ?? "emerald");
+          const themeName = lesson?.color ?? globalResultTheme[key] ?? "emerald";
+          const t = themeOf(themeName);
+          const label = lesson
+            ? `درس ${lesson.id === 1 ? "اول" : lesson.id === 2 ? "دوم" : "سوم"} — `
+            : globalResultLabel[key] ?? (cat ? categoryLabel[cat] ?? cat : null);
           return (
             <div key={key} className={`rounded-xl border ${t.border} ${t.bgSoft} p-3`}>
-              <div className="mb-1 text-[11px] font-bold text-stone-500">
-                {lesson ? `درس ${lesson.id === 1 ? "اول" : lesson.id === 2 ? "دوم" : "سوم"} — ` : ""}
-                {categoryLabel[cat] ?? cat}
-              </div>
+              <div className="mb-1 text-[11px] font-bold text-stone-500">{label ?? "تمرین"}</div>
               <div className="flex items-center justify-between">
                 <span className="text-xl font-black text-stone-800">{faNum(r.percent)}٪</span>
                 <span className="text-[12px] text-stone-500" dir="ltr">

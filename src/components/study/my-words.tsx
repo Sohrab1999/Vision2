@@ -16,31 +16,9 @@ import { useMounted } from "@/lib/use-mounted";
 import { posLabel, themeOf, faNum } from "@/lib/study-theme";
 import { trackEvent } from "@/lib/analytics";
 import SpeakButton from "./speak-button";
+import { resolveStar, type ResolvedStar } from "./my-words-resolve";
+import MyWordsReview from "./my-words-review";
 type SortMode = "new" | "old" | "az";
-
-interface ResolvedStar {
-  key: string;
-  lessonId: number;
-  en: string;
-  fa: string;
-  pos?: string;
-  color: "emerald" | "amber" | "rose";
-  titleFa: string;
-}
-
-const LESSON_BY_ID = new Map(lessons.map((l) => [l.id, l]));
-
-/** resolve a starred wordKey against the book content (null when dangling) */
-function resolveStar(key: string): ResolvedStar | null {
-  const sep = key.indexOf(":");
-  if (sep < 1) return null;
-  const lessonId = Number(key.slice(0, sep));
-  const en = key.slice(sep + 1);
-  const lesson = LESSON_BY_ID.get(lessonId);
-  const word = lesson?.vocabulary.find((v) => v.en.toLowerCase() === en);
-  if (!lesson || !word) return null;
-  return { key, lessonId, en: word.en, fa: word.fa, pos: word.pos, color: lesson.color, titleFa: lesson.titleFa };
-}
 
 export default function MyWordsView() {
   const starredWords = useStudy((s) => s.starredWords);
@@ -152,6 +130,11 @@ export default function MyWordsView() {
             </div>
           </div>
         )}
+
+        {/* review launcher — quiz from the currently filtered stars */}
+        <div className="mb-4">
+          <MyWordsReview stars={filtered} />
+        </div>
 
         {/* search */}
         <div className="relative mb-3">

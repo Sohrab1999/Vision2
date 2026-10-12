@@ -36,6 +36,25 @@ export const categoryLabel: Record<string, string> = {
   "konkur-cover": "پوشش بانک ۳۶۰",
 };
 
+// friendly titles for lesson-LESS result keys ("exam", "review", "my-words"…)
+// — previously these cards rendered with an empty label on the home feed
+export const globalResultLabel: Record<string, string> = {
+  exam: "آزمون جامع",
+  final: "آزمون پایان ترم",
+  review: "مرور سریع قبل امتحان",
+  rush: "چالش برق‌آسا",
+  "my-words": "مرور واژه‌های نشان‌شده",
+};
+
+// and their card theme (lesson cards take their own lesson color instead)
+export const globalResultTheme: Record<string, "emerald" | "amber" | "rose"> = {
+  exam: "emerald",
+  final: "emerald",
+  review: "amber",
+  "my-words": "amber",
+  rush: "rose",
+};
+
 // compact labels for the live feed rows
 export const feedLabel: Record<string, string> = {
   vocab: "واژگان",
