@@ -278,6 +278,9 @@ body {
 .dark .bg-fuchsia-50\/50,.dark .hover\:bg-fuchsia-50\/50:hover { background-color: rgba(70, 20, 60, 0.42); }
 /* tinted text accents that sit on those tints (review rows, result badges) */
 .dark .text-rose-600 { color: #fda4af; }
+/* rose-700 ink rides the same light-rose rule — every consumer sits on a
+   darkened rose tint (danger CTA, wrong-count chips, timer chip, duel L badge) */
+.dark .text-rose-700 { color: #fda4af; }
 .dark .text-amber-600 { color: #fcd34d; }
 .dark .text-emerald-700 { color: #6ee7b7; }
 
@@ -1104,11 +1107,10 @@ html.user-reduce-motion .streak-flame {
 .dark .leaderboard.duel-mode .to-violet-500 { --tw-gradient-to: #5b21b6; }
 .dark .leaderboard.duel-mode .from-purple-200 { --tw-gradient-from: #7e22ce; }
 .dark .leaderboard.duel-mode .to-purple-400 { --tw-gradient-to: #9333ea; }
-/* W/L/T record badges */
+/* W/L/T record badges — rose ink served by the global .dark .text-rose-700 */
 .dark .leaderboard.duel-mode .bg-emerald-100 { background-color: rgb(6 55 40 / 0.6); }
 .dark .leaderboard.duel-mode .text-emerald-700 { color: #6ee7b7; }
 .dark .leaderboard.duel-mode .bg-rose-100 { background-color: rgb(76 5 25 / 0.6); }
-.dark .leaderboard.duel-mode .text-rose-700 { color: #fda4af; }
 
 /* ---------------- grammar metro map (Task-39 «متروی گرامر») ----------------
    Scoped to .gmetro so every other view keeps its tuned palette. */

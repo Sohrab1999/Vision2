@@ -18,6 +18,7 @@ export const EVENT_NAMES = [
   "flashcard_done",
   "danger_practice",
   "danger_flashcards",
+  "danger_dictation_start", // started a spelling round from dangerous words
   "explain_open",
   "explain_served", // server-side: cache hit in /api/explain
   "explain_generated", // server-side: new LLM generation in /api/explain
@@ -54,6 +55,7 @@ export const EVENT_LABELS_FA: Record<EventName, string> = {
   flashcard_done: "دور فلش‌کارت",
   danger_practice: "تمرین واژه‌های خطرناک",
   danger_flashcards: "فلش‌کارت واژه‌های خطرناک",
+  danger_dictation_start: "شروع دیکتهٔ واژه‌های خطرناک",
   explain_open: "درخواست توضیح هوشمند",
   explain_served: "توضیح هوشمند (از کش)",
   explain_generated: "توضیح هوشمند (تازه)",

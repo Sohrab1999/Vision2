@@ -10,16 +10,18 @@
 
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { AlertTriangle, Sparkles, Zap, TrendingDown, Star } from "lucide-react";
+import { AlertTriangle, Sparkles, Zap, TrendingDown, Star, Ear } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { dangerWords, buildDangerQuiz, type DangerWord } from "@/lib/word-risk";
+import { buildDangerDictation, DICTATION_MIN_DANGER } from "@/lib/danger-dictation";
 import { findLesson } from "@/data";
 import { faNum } from "@/lib/study-theme";
 import { trackEvent } from "@/lib/analytics";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import Flashcards from "./flashcards";
 import QuizEngine from "./quiz-engine";
+import DictationTab from "./dictation-tab";
 
 const lessonFa = (id: number) => (id === 1 ? "درس اول" : id === 2 ? "درس دوم" : "درس سوم");
 
@@ -35,6 +37,7 @@ export default function DangerWords() {
 
   const [flashOpen, setFlashOpen] = useState(false);
   const [practiceOpen, setPracticeOpen] = useState(false);
+  const [dictOpen, setDictOpen] = useState(false);
   const [flashLesson, setFlashLesson] = useState<number | null>(null);
 
   const list = useMemo<DangerWord[]>(
@@ -46,6 +49,11 @@ export default function DangerWords() {
   const totalMistakes = useMemo(() => list.reduce((s, d) => s + d.mistakes, 0), [list]);
 
   const practice = useMemo(() => (practiceOpen ? buildDangerQuiz(list, 10) : null), [practiceOpen, list]);
+
+  const dictSource = useMemo(
+    () => (dictOpen && list.length > 0 ? buildDangerDictation(list) : null),
+    [dictOpen, list]
+  );
 
   const openFlashcards = () => {
     setFlashLesson(lessonsPresent[0] ?? list[0]?.lessonId ?? 1);
@@ -167,7 +175,7 @@ export default function DangerWords() {
               })}
             </ul>
 
-            <div className="mt-4 grid gap-2.5 sm:grid-cols-2">
+            <div className="mt-4 grid gap-2.5 sm:grid-cols-3">
               <button
                 onClick={openFlashcards}
                 className="inline-flex items-center justify-center gap-2 rounded-xl border border-violet-200 bg-violet-50 px-4 py-2.5 text-[13px] font-bold text-violet-700 transition-all hover:bg-violet-100 active:scale-95"
@@ -181,6 +189,19 @@ export default function DangerWords() {
               >
                 <Zap size={15} />
                 تمرین همین‌ها
+              </button>
+              <button
+                onClick={() => (setDictOpen(true), trackEvent("danger_dictation_start"))}
+                disabled={list.length < DICTATION_MIN_DANGER}
+                title={
+                  list.length < DICTATION_MIN_DANGER
+                    ? `حداقل ${faNum(DICTATION_MIN_DANGER)} واژهٔ خطرناک لازم است`
+                    : undefined
+                }
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-rose-200 bg-rose-50 px-4 py-2.5 text-[13px] font-bold text-rose-700 transition-all enabled:hover:bg-rose-100 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                <Ear size={15} />
+                دیکتهٔ همین‌ها
               </button>
             </div>
             <p className="mt-2.5 text-center text-[10.5px] leading-5 text-stone-400">
@@ -219,6 +240,19 @@ export default function DangerWords() {
           {flashLessonData && flashWords.length > 0 && (
             <Flashcards lesson={flashLessonData} words={flashWords} onExit={() => setFlashOpen(false)} />
           )}
+        </DialogContent>
+      </Dialog>
+
+      {/* targeted dictation dialog — spell the ranked mistakes by ear */}
+      <Dialog open={dictOpen} onOpenChange={setDictOpen}>
+        <DialogContent className="max-h-[92vh] max-w-2xl overflow-y-auto nice-scroll">
+          <DialogHeader className="text-right">
+            <DialogTitle className="flex items-center gap-2 text-base">
+              <Ear size={16} className="text-rose-600" />
+              دیکتهٔ واژه‌های خطرناک
+            </DialogTitle>
+          </DialogHeader>
+          {dictSource && <DictationTab source={dictSource} onExit={() => setDictOpen(false)} />}
         </DialogContent>
       </Dialog>
 

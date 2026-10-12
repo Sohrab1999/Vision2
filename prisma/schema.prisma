@@ -27,6 +27,9 @@ model QuizAttempt {
 
   @@index([userId])
   @@index([category, createdAt])
+  // live recent-attempts feed (orderBy createdAt desc, take 10) + 24h count
+  // range in /api/stats — both scan/sort the whole table without this index
+  @@index([createdAt])
 }
 
 model LearnerProfile {
