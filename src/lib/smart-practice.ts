@@ -14,6 +14,7 @@ import { skillBreakdown, lessonIdOfKey } from "@/lib/skill-stats";
 import type { QuizQuestion, QuizResult } from "@/lib/study-types";
 import type { MistakeMap } from "@/lib/study-store";
 import { faNum } from "@/lib/study-theme";
+import { shuffle } from "@/lib/domain/shuffle";
 
 export interface SmartMixChip {
   label: string;
@@ -30,15 +31,6 @@ export interface SmartPlan {
 
 const WEAK_THRESHOLD = 70;
 const QUIZ_SKILLS = ["vocab", "grammar"] as const;
-
-function shuffle<T>(arr: T[]): T[] {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
 
 const sourceLesson = (q: QuizQuestion) =>
   q.id.startsWith("l1") ? 1 : q.id.startsWith("l2") ? 2 : q.id.startsWith("l3") ? 3 : 0;

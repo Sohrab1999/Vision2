@@ -14,6 +14,7 @@ import {
   ChevronLeft,
 } from "lucide-react";
 import { useStudy, firstLessonWithDue, todayStr, type DayStat } from "@/lib/study-store";
+import { percent } from "@/lib/domain/percent";
 import { questProgress } from "@/lib/daily-quests";
 import { faNum } from "@/lib/study-theme";
 import { useMounted } from "@/lib/use-mounted";
@@ -45,7 +46,7 @@ export default function DailyQuests() {
   const quests = useMemo(() => questProgress(dayStat), [dayStat]);
   const doneCount = quests.filter((q) => q.done).length;
   const allDone = doneCount === quests.length;
-  const overallPct = Math.round((doneCount / quests.length) * 100);
+  const overallPct = percent(doneCount, quests.length);
 
   // celebrate when the fifth quest completes *live in this session*
   // (ref-guarded: no toast on mere page loads with a finished day)

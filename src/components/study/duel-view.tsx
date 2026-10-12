@@ -26,7 +26,11 @@ import { io, type Socket } from "socket.io-client";
 import { lessons, examBank } from "@/data";
 import type { QuizQuestion } from "@/lib/study-types";
 import { useStudy, questionSourceLesson } from "@/lib/study-store";
+import { percent as percentOf } from "@/lib/domain/percent";
 import { useMounted } from "@/lib/use-mounted";
+import { useCountdown } from "@/hooks/use-countdown";
+import { isTypingTarget, readDigit, useKeydown } from "@/hooks/use-keyboard";
+import OptionButton from "./shared/option-button";
 import { faNum } from "@/lib/study-theme";
 import { useToast } from "@/hooks/use-toast";
 import { trackEvent } from "@/lib/analytics";
@@ -92,7 +96,8 @@ export default function DuelView() {
   const [mySid, setMySid] = useState<string | null>(null);
   const [joinInput, setJoinInput] = useState("");
   const [joinBusy, setJoinBusy] = useState(false);
-  const [countdownLeft, setCountdownLeft] = useState(0);
+  const [countdownMs, setCountdownMs] = useState(0);
+  const [countdownSeq, setCountdownSeq] = useState(0);
   const [rematchVotes, setRematchVotes] = useState(0);
   const [oppLeft, setOppLeft] = useState(false);
   const [endData, setEndData] = useState<EndPayload | null>(null);
@@ -104,7 +109,6 @@ export default function DuelView() {
   const [qi, setQi] = useState(0);
   const [picked, setPicked] = useState(-1);
   const [feedback, setFeedback] = useState<Feedback>("none");
-  const [timeLeft, setTimeLeft] = useState(PER_Q_MS);
   const [myDone, setMyDone] = useState(false);
 
   const bank = useMemo(() => {
@@ -135,11 +139,14 @@ export default function DuelView() {
   const persistedRef = useRef(false);
   const qStartRef = useRef(0);
   const advanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const qTimer = useRef<ReturnType<typeof setInterval> | null>(null);
-  // audit 2026-10-12 (P-3/G-2): the countdown interval created inside the
-  // onCountdown socket callback leaked on unmount mid-countdown — it now
-  // lives in a ref and is cleared on start / socket cleanup.
-  const countdownTimer = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  // شمارش معکوس لابی تا شروع مسابقه — رویدادسوختگی سوکت با restartKey (گام ۶)
+  const countdownLeft = useCountdown({
+    duration: countdownMs,
+    active: phase === "countdown",
+    tickMs: 100,
+    restartKey: countdownSeq,
+  });
 
   // ----------------------------- پایان مسابقه -----------------------------
   const persistResult = useCallback(
@@ -153,7 +160,7 @@ export default function DuelView() {
       store.recordDuelOutcome(outcome);
       store.trackQuizDone();
       trackEvent("duel_done");
-      const percent = end.total > 0 ? Math.round((mine.correct / end.total) * 100) : 0;
+      const percent = percentOf(mine.correct, end.total);
       if (mine.answered > 0) {
         store.addResult("duel", {
           correct: mine.correct,
@@ -183,7 +190,6 @@ export default function DuelView() {
   const handleEnd = useCallback(
     (end: EndPayload, sid: string) => {
       if (advanceTimer.current) clearTimeout(advanceTimer.current);
-      if (qTimer.current) clearInterval(qTimer.current);
       endedRef.current = true;
       setEndData(end);
       setPlayers(end.players);
@@ -245,34 +251,19 @@ export default function DuelView() {
     const onCountdown = (p: { ms: number }) => {
       setOppLeft(false);
       setRematchVotes(0);
-      setCountdownLeft(p.ms);
+      setCountdownMs(p.ms);
+      setCountdownSeq((s) => s + 1);
       setPhase("countdown");
-      const t0 = Date.now();
-      if (countdownTimer.current) clearInterval(countdownTimer.current);
-      const iv = setInterval(() => {
-        const left = p.ms - (Date.now() - t0);
-        setCountdownLeft(Math.max(0, left));
-        if (left <= 0) {
-          clearInterval(iv);
-          if (countdownTimer.current === iv) countdownTimer.current = null;
-        }
-      }, 100);
-      countdownTimer.current = iv;
     };
     const onStart = (p: { perQMs: number; total: number; startedAt: number; questions: DuelQ[] }) => {
       endedRef.current = false;
       persistedRef.current = false;
-      if (countdownTimer.current) {
-        clearInterval(countdownTimer.current);
-        countdownTimer.current = null;
-      }
       setQuestions(p.questions);
       setTotal(p.total);
       setQi(0);
       setPicked(-1);
       setFeedback("none");
       setMyDone(false);
-      setTimeLeft(p.perQMs);
       setEndData(null);
       setOppLeft(false);
       trackEvent("duel_start");
@@ -303,8 +294,6 @@ export default function DuelView() {
       }
       s.disconnect();
       if (advanceTimer.current) clearTimeout(advanceTimer.current);
-      if (qTimer.current) clearInterval(qTimer.current);
-      if (countdownTimer.current) clearInterval(countdownTimer.current);
       socketRef.current = null;
     };
   }, [handleEnd]);
@@ -391,7 +380,6 @@ export default function DuelView() {
         setPicked(-1);
         const next = qiRef.current + 1;
         setQi(next);
-        setTimeLeft(PER_Q_MS);
         if (next >= total) {
           setMyDone(true);
           setMyFinishAt(Date.now());
@@ -401,37 +389,31 @@ export default function DuelView() {
     [questions, total, bank]
   );
 
-  // تایمر هر سؤال: ۱۵ ثانیه؛ صفر شد = پاسخ خودکار غلط (-۱)
+  // تایمر هر سؤال: ۱۵ ثانیه؛ صفر شد = پاسخ خودکار غلط (-۱) — useCountdown گام ۶
+  const timeLeft = useCountdown({
+    duration: PER_Q_MS,
+    active: phase === "play" && feedback === "none" && !myDone,
+    tickMs: 100,
+    onEnd: () => answer(-1),
+  });
+
+  // آینهٔ شروع سؤال برای سنجش تأخیر پاسخ (answer ms) — هم‌زمان با ری‌استارت تایمر
   useEffect(() => {
-    if (phase !== "play" || feedback !== "none" || myDone) return;
-    qStartRef.current = Date.now();
-    const iv = setInterval(() => {
-      const left = PER_Q_MS - (Date.now() - qStartRef.current);
-      setTimeLeft(Math.max(0, left));
-      if (left <= 0) {
-        clearInterval(iv);
-        answer(-1);
-      }
-    }, 100);
-    qTimer.current = iv;
-    return () => clearInterval(iv);
+    if (phase === "play" && feedback === "none" && !myDone) qStartRef.current = Date.now();
   }, [phase, qi, feedback, myDone]);
 
-  // کیبورد ۱–۴ حین مسابقه
-  useEffect(() => {
-    if (phase !== "play") return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.ctrlKey || e.metaKey || e.altKey) return;
-      const el = e.target as HTMLElement | null;
-      if (el && (el.tagName === "INPUT" || el.tagName === "TEXTAREA")) return;
-      if (e.key >= "1" && e.key <= "4") {
+  // کیبورد ۱–۴ حین مسابقه (layout-proof: ارقام لاتین + فارسی + کد فیزیکی — گام ۶)
+  useKeydown(
+    (e) => {
+      if (isTypingTarget(e)) return;
+      const n = readDigit(e);
+      if (n !== null && n >= 1 && n <= 4) {
         e.preventDefault();
-        answer(Number(e.key) - 1);
+        answer(n - 1);
       }
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [phase, answer]);
+    },
+    phase === "play",
+  );
 
   const rematch = useCallback(() => {
     const s = socketRef.current;
@@ -901,28 +883,20 @@ export default function DuelView() {
                   const isCorrect = feedback !== "none" && i === correctIdx;
                   const isWrong = feedback === "wrong" && picked === i;
                   return (
-                    <button
+                    <OptionButton
                       key={i}
-                      onClick={() => answer(i)}
+                      index={i}
+                      label={LETTERS[i]}
+                      text={curQ.options[origIdx]}
+                      state={isCorrect ? "correct" : isWrong ? "wrong" : "idle"}
+                      dim={feedback !== "none" && !isCorrect && !isWrong}
+                      dimOpacity="50"
                       disabled={feedback !== "none"}
-                      data-duel-option={i}
-                      className={`flex w-full items-center gap-3 rounded-xl border-2 p-3 text-left transition-all active:scale-[0.99] ${
-                        isCorrect
-                          ? "border-emerald-500 bg-emerald-50"
-                          : isWrong
-                            ? "border-rose-400 bg-rose-50"
-                            : "border-stone-200 bg-white hover:border-fuchsia-300 hover:bg-fuchsia-50/50"
-                      } ${feedback !== "none" && !isCorrect && !isWrong ? "opacity-50" : ""}`}
-                    >
-                      <span
-                        className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-[13px] font-black ${
-                          isCorrect ? "bg-emerald-500 text-white" : isWrong ? "bg-rose-500 text-white" : "bg-stone-100 text-stone-600"
-                        }`}
-                      >
-                        {isCorrect ? <CheckCircle2 size={14} /> : isWrong ? <XCircle size={14} /> : LETTERS[i]}
-                      </span>
-                      <span className="en-text text-[14.5px] font-medium text-stone-800">{curQ.options[origIdx]}</span>
-                    </button>
+                      onClick={() => answer(i)}
+                      accent="fuchsia"
+                      icon="circle"
+                      dataAttr="duel"
+                    />
                   );
                 })}
               </div>

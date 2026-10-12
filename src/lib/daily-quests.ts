@@ -7,6 +7,7 @@
 
 import type { DayStat, LessonTab } from "./study-store";
 import { emptyDayStat, todayStr } from "./study-store";
+import { percent } from "@/lib/domain/percent";
 
 export interface QuestDef {
   id: string;
@@ -100,7 +101,7 @@ export function questProgress(
   return QUESTS.map((def) => {
     const value = def.value(stat);
     const done = value >= def.target;
-    return { def, value, done, pct: Math.min(100, Math.round((value / def.target) * 100)) };
+    return { def, value, done, pct: percent(value, def.target) };
   });
 }
 

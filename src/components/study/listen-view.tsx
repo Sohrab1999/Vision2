@@ -25,6 +25,10 @@ import {
   Languages,
 } from "lucide-react";
 import { useStudy, resultKey, wordKey } from "@/lib/study-store";
+import { isTypingTarget, readDigit, useKeydown } from "@/hooks/use-keyboard";
+import OptionButton from "./shared/option-button";
+import { gradeFor } from "@/lib/domain/grade";
+import { percent as percentOf } from "@/lib/domain/percent";
 import { pickRound, listenBankStats, LISTEN_KIND_LABEL, type RoundItem, type ListenKind } from "@/lib/listen-bank";
 import { speak, stopSpeaking } from "@/lib/speak";
 import { faNum } from "@/lib/study-theme";
@@ -158,7 +162,7 @@ export default function ListenView() {
     stopSpeaking();
     if (advanceTimer.current) clearTimeout(advanceTimer.current);
     const correct = final.reduce((s, a, i) => (a === items[i]?.answer ? s + 1 : s), 0);
-    const percent = Math.round((correct / total) * 100);
+    const percent = percentOf(correct, total);
     const key = resultKey(lessonFilter >= 1 ? lessonFilter : 0, "listening");
     useStudy.getState().addResult(key, { correct, total, percent, at: new Date().toISOString() });
     useStudy.getState().trackQuizDone();
@@ -193,24 +197,20 @@ export default function ListenView() {
     document.querySelector("[data-listen-feedback]")?.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }, [selected, phase]);
 
-  // keyboard: 1-3 choose, Enter advance
-  useEffect(() => {
+  // keyboard: 1-3 choose, Enter advance (layout-proof digits — useKeydown گام ۶)
+  useKeydown((e) => {
     if (phase !== "play") return;
-    const onKey = (e: KeyboardEvent) => {
-      const tag = (e.target as HTMLElement | null)?.tagName;
-      if (tag === "INPUT" || tag === "TEXTAREA") return;
-      const num = Number(e.key);
-      if (num >= 1 && num <= (item?.options.length ?? 0)) {
-        choose(num - 1);
-        return;
-      }
-      if (e.key === "Enter" && selected !== null) {
-        if (idx < total - 1) advanceTo(idx + 1);
-        else finishRound(answers);
-      }
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    if (isTypingTarget(e)) return;
+    const num = readDigit(e);
+    if (num !== null && num >= 1 && num <= (item?.options.length ?? 0)) {
+      e.preventDefault();
+      choose(num - 1);
+      return;
+    }
+    if (e.key === "Enter" && selected !== null) {
+      if (idx < total - 1) advanceTo(idx + 1);
+      else finishRound(answers);
+    }
   });
 
   // ------------------------------ SETUP ------------------------------
@@ -307,15 +307,13 @@ export default function ListenView() {
   // ------------------------------- DONE -------------------------------
   if (phase === "done") {
     const correct = answers.reduce((s, a, i) => (a === items[i]?.answer ? s + 1 : s), 0);
-    const percent = Math.round((correct / total) * 100);
-    const grade =
-      percent >= 90
-        ? { msg: "شنیداری‌ت فوق‌العاده است! آمادهٔ امتحان واقعی 🎧", cls: "text-emerald-600" }
-        : percent >= 70
-          ? { msg: "خوب بود! با تمرین بیشتر کاملاً مسلط می‌شوی.", cls: "text-emerald-600" }
-          : percent >= 50
-            ? { msg: "بد نیست — سرعت پخش را در تنظیمات کمتر کن و دوباره تمرین کن.", cls: "text-amber-600" }
-            : { msg: "نیاز به تمرین بیشتر داری. اول فلش‌کارت‌ها را مرور کن!", cls: "text-rose-600" };
+    const percent = percentOf(correct, total);
+    const grade = gradeFor(percent, {
+      elite: "شنیداری‌ت فوق‌العاده است! آمادهٔ امتحان واقعی 🎧",
+      good: "خوب بود! با تمرین بیشتر کاملاً مسلط می‌شوی.",
+      ok: "بد نیست — سرعت پخش را در تنظیمات کمتر کن و دوباره تمرین کن.",
+      weak: "نیاز به تمرین بیشتر داری. اول فلش‌کارت‌ها را مرور کن!",
+    });
     return (
       <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="space-y-5">
         <div className="rounded-2xl border border-stone-200 bg-white p-6 text-center shadow-sm">
@@ -461,30 +459,25 @@ export default function ListenView() {
               const isWrong = selected === i && i !== item.answer;
               const chosen = selected === i;
               return (
-                <button
+                <OptionButton
                   key={i}
-                  onClick={() => choose(i)}
+                  index={i}
+                  label={faNum(i + 1)}
+                  text={opt}
+                  textFa={!en}
+                  state={isCorrect ? "correct" : isWrong ? "wrong" : chosen ? "chosen" : "idle"}
+                  dim={selected !== null && !isCorrect && !isWrong}
+                  dimOpacity="60"
                   disabled={selected !== null}
-                  data-listen-option={i}
-                  className={`flex w-full items-center gap-3 rounded-xl border-2 p-3.5 text-right transition-all ${
-                    isCorrect
-                      ? "border-emerald-500 bg-emerald-50"
-                      : isWrong
-                        ? "border-rose-400 bg-rose-50"
-                        : chosen
-                          ? "border-teal-300 bg-teal-50/50"
-                          : "border-stone-200 bg-white hover:border-teal-300 hover:bg-teal-50/40 active:scale-[0.99]"
-                  } ${selected !== null && !isCorrect && !isWrong ? "opacity-60" : ""}`}
-                >
-                  <span
-                    className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-[13px] font-black ${
-                      isCorrect ? "bg-emerald-500 text-white" : isWrong ? "bg-rose-500 text-white" : "bg-stone-100 text-stone-600"
-                    }`}
-                  >
-                    {isCorrect ? <Check size={14} /> : isWrong ? <X size={14} /> : faNum(i + 1)}
-                  </span>
-                  <span className={`${en ? "en-text " : ""}text-[14px] font-medium leading-7 text-stone-800`}>{opt}</span>
-                </button>
+                  onClick={() => choose(i)}
+                  accent="teal"
+                  icon="check"
+                  align="right"
+                  roomy
+                  textSize="text-[14px]"
+                  leading="leading-7"
+                  dataAttr="listen"
+                />
               );
             })}
           </div>

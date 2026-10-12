@@ -11,6 +11,7 @@
 import type { GrammarMicroLesson, SentenceRole } from "@/data/grammar-lessons";
 import { GRAMMAR_MICRO_LESSONS } from "@/data/grammar-lessons";
 import { GRAMMAR_LINES } from "@/data/grammar-map";
+import { percent } from "@/lib/domain/percent";
 
 /** تعداد سؤال‌های «امتحان کن» هر درس — قالب ثابت نقشهٔ راه */
 export const LESSON_TRY_COUNT = 3;
@@ -39,7 +40,7 @@ export function lineIdsWithLessons(): number[] {
 /** درصد نمرهٔ «امتحان کن» از تعداد درست */
 export function tryPercent(correct: number, total: number): number {
   if (total <= 0) return 0;
-  return Math.round((correct / total) * 100);
+  return percent(correct, total);
 }
 
 /** رنگ نقش‌های جمله — ثابت در همهٔ درس‌ها (بدون آبی/نیلی طبق سلیقهٔ پروژه) */

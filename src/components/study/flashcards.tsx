@@ -6,6 +6,7 @@ import { X, ChevronRight, ChevronLeft, Check, RefreshCw, Hand, Sparkles } from "
 import type { LessonData, VocabWord } from "@/lib/study-types";
 import { useStudy, wordKey, srsDueCount, SRS_LABELS } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
+import { isTypingTarget, useKeydown } from "@/hooks/use-keyboard";
 import { trackEvent } from "@/lib/analytics";
 import { posLabel, themeOf } from "@/lib/study-theme";
 import SpeakButton from "./speak-button";
@@ -77,28 +78,22 @@ export default function Flashcards({
 
   // keyboard shortcuts: Space flip, ← next (RTL), → previous, K known, R repeat
   // (re-registered each render so closures stay fresh)
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      const tag = (e.target as HTMLElement | null)?.tagName;
-      if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
-      if (e.ctrlKey || e.metaKey || e.altKey) return;
-      if (e.key === " " || e.code === "Space") {
-        e.preventDefault();
-        setFlipped((f) => !f);
-      } else if (e.key === "ArrowLeft") {
-        e.preventDefault();
-        go(1);
-      } else if (e.key === "ArrowRight") {
-        e.preventDefault();
-        go(-1);
-      } else if (e.code === "KeyK") {
-        answer(true);
-      } else if (e.code === "KeyR") {
-        answer(false);
-      }
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+  useKeydown((e) => {
+    if (isTypingTarget(e)) return;
+    if (e.key === " " || e.code === "Space") {
+      e.preventDefault();
+      setFlipped((f) => !f);
+    } else if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      go(1);
+    } else if (e.key === "ArrowRight") {
+      e.preventDefault();
+      go(-1);
+    } else if (e.code === "KeyK") {
+      answer(true);
+    } else if (e.code === "KeyR") {
+      answer(false);
+    }
   });
 
   return (

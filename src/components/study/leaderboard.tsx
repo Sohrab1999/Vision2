@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Trophy, Medal, UserRound, ShieldCheck, Swords, Flame } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
+import { usePolling } from "@/hooks/use-polling";
+import Podium from "./shared/podium";
+import AvatarDot from "./shared/avatar-dot";
 import { faNum } from "@/lib/study-theme";
-import { avatarClasses } from "./header";
 
 interface LeaderRow {
   userId: string;
@@ -30,30 +31,6 @@ interface DuelerRow {
   winRate: number;
 }
 
-const podiumOrder = [1, 0, 2]; // second, first, third
-const podiumMeta = [
-  { h: "h-20", medal: "🥇", ring: "ring-amber-400", grad: "from-amber-300 to-amber-500", label: "قهرمان" },
-  { h: "h-14", medal: "🥈", ring: "ring-stone-300", grad: "from-stone-200 to-stone-400", label: "دوم" },
-  { h: "h-11", medal: "🥉", ring: "ring-orange-300", grad: "from-orange-200 to-orange-400", label: "سوم" },
-];
-// Task-36 «جدول نبرد» — the duel podium wears the arena's purple brand.
-const duelPodiumMeta = [
-  { h: "h-20", medal: "⚔️", ring: "ring-fuchsia-400", grad: "from-fuchsia-300 to-fuchsia-600", label: "قهرمان نبرد" },
-  { h: "h-14", medal: "🗡️", ring: "ring-violet-300", grad: "from-violet-200 to-violet-500", label: "دوم" },
-  { h: "h-11", medal: "🛡️", ring: "ring-purple-300", grad: "from-purple-200 to-purple-400", label: "سوم" },
-];
-
-function AvatarDot({ color, name, size = 36 }: { color: string; name: string; size?: number }) {
-  return (
-    <span
-      className={`flex shrink-0 items-center justify-center rounded-full font-black text-white shadow-md ${avatarClasses[color] ?? "bg-gradient-to-br from-stone-400 to-stone-600 shadow-stone-500/30"}`}
-      style={{ width: size, height: size, fontSize: size * 0.38 }}
-    >
-      {name ? name.trim().charAt(0) : <UserRound size={size * 0.5} />}
-    </span>
-  );
-}
-
 type Tab = "exams" | "duels";
 
 export default function Leaderboard() {
@@ -64,36 +41,30 @@ export default function Leaderboard() {
   const userId = useStudy((s) => s.userId);
   const userName = useStudy((s) => s.userName);
   const mounted = useMounted();
-
+  // alive-guard: a response that lands after unmount must not setState
+  const aliveRef = useRef(true);
   useEffect(() => {
-    let alive = true;
-    const load = () =>
-      fetch("/api/leaderboard")
-        .then((r) => r.json())
-        .then((d) => {
-          if (!alive) return;
-          if (Array.isArray(d.learners)) setRows(d.learners);
-          if (Array.isArray(d.duelers)) setDuelers(d.duelers);
-          if (Number.isFinite(d.duelsTotal)) setDuelsTotal(d.duelsTotal);
-        })
-        .catch(() => {});
-    load();
-    // Phase-2 «تجربه» — adaptive polling: skip while the tab is hidden and
-    // refresh immediately when the learner comes back.
-    const t = setInterval(() => {
-      if (document.hidden) return;
-      load();
-    }, 30_000);
-    const onVisible = () => {
-      if (!document.hidden && alive) load();
-    };
-    document.addEventListener("visibilitychange", onVisible);
+    aliveRef.current = true;
     return () => {
-      alive = false;
-      clearInterval(t);
-      document.removeEventListener("visibilitychange", onVisible);
+      aliveRef.current = false;
     };
   }, []);
+
+  const load = useCallback(() => {
+    fetch("/api/leaderboard")
+      .then((r) => r.json())
+      .then((d) => {
+        if (!aliveRef.current) return;
+        if (Array.isArray(d.learners)) setRows(d.learners);
+        if (Array.isArray(d.duelers)) setDuelers(d.duelers);
+        if (Number.isFinite(d.duelsTotal)) setDuelsTotal(d.duelsTotal);
+      })
+      .catch(() => {});
+  }, []);
+
+  // Phase-2 «تجربه» — adaptive polling: skip while the tab is hidden and
+  // refresh immediately when the learner comes back (usePolling گام ۶)
+  usePolling(load, 30_000);
 
   if (!mounted || !rows || !duelers) return null;
 
@@ -177,52 +148,17 @@ export default function Leaderboard() {
           </div>
         ) : (
           <div className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm">
-            {/* podium */}
-            <div className="border-b border-stone-100 bg-gradient-to-b from-amber-50/60 to-transparent px-4 pb-4 pt-6">
-              <div className="mx-auto flex max-w-md items-end justify-center gap-3 sm:gap-5">
-                {podiumOrder.map((rankIdx, i) => {
-                  const row = top3[rankIdx];
-                  if (!row) return <div key={i} className="flex-1" />;
-                  const meta = podiumMeta[rankIdx];
-                  const isMe = row.userId === userId;
-                  return (
-                    <motion.div
-                      key={row.userId}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.1 }}
-                      className="flex min-w-0 flex-1 flex-col items-center"
-                    >
-                      <div className="relative mb-2">
-                        {isMe && (
-                          <span className="absolute -top-2 left-1/2 z-10 -translate-x-1/2 rounded-full bg-emerald-600 px-1.5 py-0.5 text-[9px] font-black text-white shadow">
-                            شما
-                          </span>
-                        )}
-                        <span className={`rounded-full ring-2 ${meta.ring} ring-offset-2`}>
-                          <AvatarDot color={row.color} name={row.name} size={rankIdx === 0 ? 52 : 42} />
-                        </span>
-                        <span className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 text-base drop-shadow-sm">
-                          {meta.medal}
-                        </span>
-                      </div>
-                      <div className="mb-1 max-w-full truncate text-center text-[12.5px] font-extrabold text-stone-800">
-                        {row.name}
-                      </div>
-                      <div className="mb-2 text-[11px] font-bold text-emerald-700">
-                        {faNum(row.avgPercent)}٪ میانگین
-                      </div>
-                      <div
-                        className={`flex w-full items-start justify-center rounded-t-xl bg-gradient-to-b ${meta.grad} ${meta.h} pt-2 shadow-inner`}
-                      >
-                        <span className="text-lg font-black text-white/90">{faNum(rankIdx + 1)}</span>
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </div>
+            {/* podium — shared component (variant: amber) */}
+            <Podium
+              rows={top3}
+              meId={userId}
+              variant="amber"
+              metric={(row) => (
+                <>
+                  {faNum(row.avgPercent)}٪ میانگین
+                </>
+              )}
+            />
 
             {/* ranks 4+ */}
             {rest.length > 0 && (
@@ -274,56 +210,22 @@ export default function Leaderboard() {
       ) : (
         /* ---------- duel standings ---------- */
         <div className="overflow-hidden rounded-2xl border border-fuchsia-200 bg-white shadow-sm">
-          <div className="border-b border-fuchsia-100 bg-gradient-to-b from-fuchsia-50/60 to-transparent px-4 pb-4 pt-6">
-            <div className="mx-auto flex max-w-md items-end justify-center gap-3 sm:gap-5">
-              {podiumOrder.map((rankIdx, i) => {
-                const row = duelTop3[rankIdx];
-                if (!row) return <div key={i} className="flex-1" />;
-                const meta = duelPodiumMeta[rankIdx];
-                const isMe = row.userId === userId;
-                return (
-                  <motion.div
-                    key={row.userId}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
-                    className="flex min-w-0 flex-1 flex-col items-center"
-                  >
-                    <div className="relative mb-2">
-                      {isMe && (
-                        <span className="absolute -top-2 left-1/2 z-10 -translate-x-1/2 rounded-full bg-fuchsia-600 px-1.5 py-0.5 text-[9px] font-black text-white shadow">
-                          شما
-                        </span>
-                      )}
-                      <span className={`rounded-full ring-2 ${meta.ring} ring-offset-2`}>
-                        <AvatarDot color={row.color} name={row.name} size={rankIdx === 0 ? 52 : 42} />
-                      </span>
-                      <span className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 text-base drop-shadow-sm">
-                        {meta.medal}
-                      </span>
-                    </div>
-                    <div className="mb-1 max-w-full truncate text-center text-[12.5px] font-extrabold text-stone-800">
-                      {row.name}
-                    </div>
-                    <div className="mb-2 text-[11px] font-bold text-fuchsia-700">
-                      {faNum(row.wins)} برد از {faNum(row.duels)} نبرد
-                    </div>
-                    <div
-                      className={`flex w-full items-start justify-center rounded-t-xl bg-gradient-to-b ${meta.grad} ${meta.h} pt-2 shadow-inner`}
-                    >
-                      <span className="text-lg font-black text-white/90">{faNum(rankIdx + 1)}</span>
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </div>
-            {duelsTotal > 0 && (
-              <p className="mt-3 text-center text-[11px] font-bold text-stone-400">
-                تاکنون {faNum(duelsTotal)} نبرد در کلاس برگزار شده
-              </p>
+          {/* podium — shared component (variant: fuchsia) */}
+          <Podium
+            rows={duelTop3}
+            meId={userId}
+            variant="fuchsia"
+            metric={(row) => (
+              <>
+                {faNum(row.wins)} برد از {faNum(row.duels)} نبرد
+              </>
             )}
-          </div>
+          />
+          {duelsTotal > 0 && (
+            <p className="mt-3 text-center text-[11px] font-bold text-stone-400">
+              تاکنون {faNum(duelsTotal)} نبرد در کلاس برگزار شده
+            </p>
+          )}
 
           {duelRest.length > 0 && (
             <ul className="divide-y divide-stone-100 px-2 py-1">

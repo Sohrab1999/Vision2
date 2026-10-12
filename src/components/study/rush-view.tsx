@@ -9,8 +9,6 @@ import {
   Play,
   RotateCcw,
   Home,
-  CheckCircle2,
-  XCircle,
   Sparkles,
   Target,
   Timer,
@@ -23,10 +21,16 @@ import { useStudy, questionSourceLesson } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
 import { useToast } from "@/hooks/use-toast";
+import { useCountdown } from "@/hooks/use-countdown";
+import { isTypingTarget, readDigit, useKeydown } from "@/hooks/use-keyboard";
+import { percent } from "@/lib/domain/percent";
+import { shuffle, shuffleWithOptions } from "@/lib/domain/shuffle";
 import { downloadResultImage } from "@/lib/result-image";
 import { trackEvent } from "@/lib/analytics";
 import { sendStats } from "@/lib/identity";
 import RushBoard from "./rush-board";
+import Confetti from "./shared/confetti";
+import OptionButton from "./shared/option-button";
 
 // ------------------------------------------------------------------
 // چالش برق‌آسا — 60-second quick-fire quiz across all lessons.
@@ -47,22 +51,12 @@ interface RushQ {
 const ROUND_MS = 60_000;
 const letters = ["a", "b", "c", "d"];
 
-function shuffle<T>(arr: T[]): T[] {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
-
 /** one full shuffled deck of every question in the book */
 function buildDeck(): RushQ[] {
   const all: QuizQuestion[] = [...lessons.flatMap((l) => l.quizzes), ...examBank];
   return shuffle(all).map((q) => {
-    const idx = shuffle(q.options.map((_, i) => i));
-    const options = idx.map((i) => q.options[i]);
-    return { q, options, answer: idx.indexOf(q.answer), src: questionSourceLesson(q) };
+    const { options, answer } = shuffleWithOptions(q.options, q.answer);
+    return { q, options, answer, src: questionSourceLesson(q) };
   });
 }
 
@@ -90,7 +84,6 @@ export default function RushView() {
   const [lastPoints, setLastPoints] = useState(0);
   const [feedback, setFeedback] = useState<Feedback>("none");
   const [picked, setPicked] = useState(-1);
-  const [timeLeft, setTimeLeft] = useState(ROUND_MS);
   const [isNewRecord, setIsNewRecord] = useState(false);
   const [imgBusy, setImgBusy] = useState(false);
   const [boardNonce, setBoardNonce] = useState(0); // bumps after each finished round to refresh the class board
@@ -113,7 +106,7 @@ export default function RushView() {
       if (finishedRef.current) return;
       finishedRef.current = true;
       const store = useStudy.getState();
-      const accuracy = final.answered > 0 ? Math.round((final.correct / final.answered) * 100) : 0;
+      const accuracy = percent(final.correct, final.answered);
       const record = final.score > 0 && final.score > store.rushBest;
       setIsNewRecord(record);
       store.setRushBest(final.score, final.correct);
@@ -152,25 +145,19 @@ export default function RushView() {
   }, [finish]);
 
   // ----------------------------- countdown -----------------------------
-  // live mirrors so the interval callback never reads stale state
+  // live mirrors so the countdown's end callback never reads stale state
   const liveScore = useRef(0);
   const liveCorrect = useRef(0);
   const liveAnswered = useRef(0);
 
-  useEffect(() => {
-    if (phase !== "play") return;
-    const deadline = Date.now() + ROUND_MS;
-    const tick = setInterval(() => {
-      const left = Math.max(0, deadline - Date.now());
-      setTimeLeft(left);
-      if (left <= 0) {
-        clearInterval(tick);
-        const s = { score: liveScore.current, correct: liveCorrect.current, answered: liveAnswered.current };
-        finishRef.current(s);
-      }
-    }, 200);
-    return () => clearInterval(tick);
-  }, [phase]);
+  // شمارش معکوس راند از ضرب‌الاجل — نه جمعِ تیک‌ها (useCountdown گام ۶)
+  const timeLeft = useCountdown({
+    duration: ROUND_MS,
+    active: phase === "play",
+    tickMs: 200,
+    onEnd: () =>
+      finishRef.current({ score: liveScore.current, correct: liveCorrect.current, answered: liveAnswered.current }),
+  });
 
   useEffect(() => {
     liveScore.current = score;
@@ -214,22 +201,18 @@ export default function RushView() {
     [current, feedback, combo, advance]
   );
 
-  // keyboard 1-4 during play
-  useEffect(() => {
-    if (phase !== "play") return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.ctrlKey || e.metaKey || e.altKey) return;
-      const el = e.target as HTMLElement | null;
-      if (el && (el.tagName === "INPUT" || el.tagName === "TEXTAREA")) return;
-      const k = e.key;
-      if (k >= "1" && k <= "4") {
+  // keyboard 1-4 during play (layout-proof: latin + Persian digits + physical codes)
+  useKeydown(
+    (e) => {
+      if (isTypingTarget(e)) return;
+      const n = readDigit(e);
+      if (n !== null && n >= 1 && n <= 4) {
         e.preventDefault();
-        answer(Number(k) - 1);
+        answer(n - 1);
       }
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [phase, answer]);
+    },
+    phase === "play",
+  );
 
   const start = () => {
     finishedRef.current = false;
@@ -244,14 +227,10 @@ export default function RushView() {
     setFeedback("none");
     setPicked(-1);
     setIsNewRecord(false);
-    setTimeLeft(ROUND_MS);
     setPhase("play");
   };
 
-  const accuracy = useMemo(
-    () => (answered > 0 ? Math.round((correct / answered) * 100) : 0),
-    [answered, correct]
-  );
+  const accuracy = useMemo(() => percent(correct, answered), [answered, correct]);
 
   const saveImage = async () => {
     setImgBusy(true);
@@ -513,32 +492,20 @@ export default function RushView() {
               const isCorrect = feedback !== "none" && i === current.answer;
               const isWrong = feedback === "wrong" && picked === i;
               return (
-                <button
+                <OptionButton
                   key={i}
-                  onClick={() => answer(i)}
+                  index={i}
+                  label={letters[i]}
+                  text={opt}
+                  state={isCorrect ? "correct" : isWrong ? "wrong" : "idle"}
+                  dim={feedback !== "none" && !isCorrect && !isWrong}
+                  dimOpacity="50"
                   disabled={feedback !== "none"}
-                  data-rush-option={i}
-                  className={`flex w-full items-center gap-3 rounded-xl border-2 p-3 text-left transition-all active:scale-[0.99] ${
-                    isCorrect
-                      ? "border-emerald-500 bg-emerald-50"
-                      : isWrong
-                        ? "border-rose-400 bg-rose-50"
-                        : "border-stone-200 bg-white hover:border-orange-300 hover:bg-orange-50/50"
-                  } ${feedback !== "none" && !isCorrect && !isWrong ? "opacity-50" : ""}`}
-                >
-                  <span
-                    className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-[13px] font-black ${
-                      isCorrect
-                        ? "bg-emerald-500 text-white"
-                        : isWrong
-                          ? "bg-rose-500 text-white"
-                          : "bg-stone-100 text-stone-600"
-                    }`}
-                  >
-                    {isCorrect ? <CheckCircle2 size={14} /> : isWrong ? <XCircle size={14} /> : letters[i]}
-                  </span>
-                  <span className="en-text text-[14.5px] font-medium text-stone-800">{opt}</span>
-                </button>
+                  onClick={() => answer(i)}
+                  accent="orange"
+                  icon="circle"
+                  dataAttr="rush"
+                />
               );
             })}
           </div>
@@ -550,39 +517,6 @@ export default function RushView() {
           )}
         </motion.div>
       </AnimatePresence>
-    </div>
-  );
-}
-
-/** lightweight CSS confetti burst for new records */
-function Confetti() {
-  const pieces = useMemo(
-    () =>
-      Array.from({ length: 18 }, (_, i) => ({
-        left: 6 + ((i * 37) % 88),
-        delay: (i % 6) * 0.12,
-        dur: 1.6 + ((i * 7) % 10) / 10,
-        color: ["#f59e0b", "#f97316", "#ef4444", "#10b981", "#fbbf24"][i % 5],
-        size: 6 + (i % 3) * 3,
-      })),
-    []
-  );
-  return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
-      {pieces.map((p, i) => (
-        <span
-          key={i}
-          className="confetti-piece absolute top-0 block rounded-[2px]"
-          style={{
-            left: `${p.left}%`,
-            width: p.size,
-            height: p.size * 1.4,
-            background: p.color,
-            animationDelay: `${p.delay}s`,
-            animationDuration: `${p.dur}s`,
-          }}
-        />
-      ))}
     </div>
   );
 }

@@ -18,6 +18,8 @@ import {
 import type { LessonData, VocabWord } from "@/lib/study-types";
 import { useStudy, wordKey, resultKey } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
+import { shuffle } from "@/lib/domain/shuffle";
+import { percent as percentOf } from "@/lib/domain/percent";
 import { faNum, posLabel, themeOf } from "@/lib/study-theme";
 import { speak, speakSpell, stopSpeaking } from "@/lib/speak";
 import { useToast } from "@/hooks/use-toast";
@@ -39,15 +41,6 @@ function norm(s: string): string {
     .replace(/[.,!?;:]+$/g, "")
     .replace(/\s+/g, " ")
     .trim();
-}
-
-function shuffle<T>(arr: T[]): T[] {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
 }
 
 export default function DictationTab({ lesson }: { lesson: LessonData }) {
@@ -149,7 +142,7 @@ export default function DictationTab({ lesson }: { lesson: LessonData }) {
 
   const finish = useCallback(
     (finalScore: number) => {
-      const percent = Math.round((finalScore / total) * 100);
+      const percent = percentOf(finalScore, total);
       const correctForStats = Math.round(finalScore);
       useStudy.getState().addResult(resultKey(lesson.id, "dictation"), {
         correct: correctForStats,
@@ -309,7 +302,7 @@ export default function DictationTab({ lesson }: { lesson: LessonData }) {
 
   // ----------------------------- DONE -----------------------------
   if (phase === "done") {
-    const percent = Math.round((score / total) * 100);
+    const percent = percentOf(score, total);
     const noHint = words.filter((w) => w.result === "full").length;
     const half = words.filter((w) => w.result === "half").length;
     const wrong = words.filter((w) => w.result === "wrong").length;

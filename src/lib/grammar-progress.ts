@@ -10,6 +10,7 @@
 
 import type { QuizQuestion } from "@/lib/study-types";
 import { lessons } from "@/data";
+import { percent } from "@/lib/domain/percent";
 import { GRAMMAR_LINES, type GrammarLine, type GrammarStation } from "@/data/grammar-map";
 
 /** آستانهٔ تسلط — ایستگاه سبز می‌شود (قابل تنظیم در فازهای بعد) */
@@ -63,7 +64,7 @@ export function lineStats(
     (s) => (bestPercent(results, stationKey(s.id)) ?? 0) >= GRAMMAR_GREEN
   ).length;
   const total = line.stations.length;
-  return { green, total, percent: Math.round((green / total) * 100) };
+  return { green, total, percent: percent(green, total) };
 }
 
 /** جمع کل نقشه (همهٔ خط‌ها) */
@@ -79,7 +80,7 @@ export function mapSummary(results: PercentMap): {
     green += s.green;
     total += s.total;
   }
-  return { green, total, percent: total ? Math.round((green / total) * 100) : 0 };
+  return { green, total, percent: percent(green, total) };
 }
 
 // ---------------- استخر سؤال‌ها ----------------

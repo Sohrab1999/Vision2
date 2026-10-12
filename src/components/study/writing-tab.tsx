@@ -7,15 +7,8 @@ import type { LessonData } from "@/lib/study-types";
 import { useStudy, resultKey } from "@/lib/study-store";
 import { themeOf } from "@/lib/study-theme";
 import SpeakButton from "./speak-button";
-
-function shuffleWords<T>(arr: T[]): T[] {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
+import { shuffle } from "@/lib/domain/shuffle";
+import { percent as percentOf } from "@/lib/domain/percent";
 
 export default function WritingTab({ lesson }: { lesson: LessonData }) {
   const [idx, setIdx] = useState(0);
@@ -31,9 +24,9 @@ export default function WritingTab({ lesson }: { lesson: LessonData }) {
   const ex = lesson.writing[idx];
   const pool = useMemo(() => {
     // shuffle tokens, retry a few times so the pool isn't already solved
-    let tokens = shuffleWords(ex.answer);
+    let tokens = shuffle(ex.answer);
     for (let tries = 0; tries < 5 && tokens.join(" ") === ex.answer.join(" "); tries++) {
-      tokens = shuffleWords(ex.answer);
+      tokens = shuffle(ex.answer);
     }
     return tokens.map((w, i) => ({ w, i }));
   }, [ex]);
@@ -54,7 +47,7 @@ export default function WritingTab({ lesson }: { lesson: LessonData }) {
       setChecked(null);
       setShowHint(false);
     } else {
-      const percent = Math.round((correctCount / lesson.writing.length) * 100);
+      const percent = percentOf(correctCount, lesson.writing.length);
       addResult(resultKey(lesson.id, "writing"), {
         correct: correctCount,
         total: lesson.writing.length,
@@ -76,7 +69,7 @@ export default function WritingTab({ lesson }: { lesson: LessonData }) {
   };
 
   if (done) {
-    const percent = Math.round((correctCount / lesson.writing.length) * 100);
+    const percent = percentOf(correctCount, lesson.writing.length);
     return (
       <motion.div
         initial={{ opacity: 0, y: 12 }}

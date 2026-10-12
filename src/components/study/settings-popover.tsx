@@ -11,6 +11,7 @@ import { Slider } from "@/components/ui/slider";
 import { useStudy, DAILY_GOAL_OPTIONS } from "@/lib/study-store";
 import { speak, stopSpeaking, setSpeakRateScale } from "@/lib/speak";
 import { useMounted } from "@/lib/use-mounted";
+import { percent } from "@/lib/domain/percent";
 import { faNum } from "@/lib/study-theme";
 
 const FONT_OPTIONS: { scale: number; label: string; cls: string }[] = [
@@ -263,7 +264,7 @@ export default function SettingsPopover() {
                     <div className="h-2 flex-1 overflow-hidden rounded-full bg-stone-200/80">
                       <div
                         className="h-full rounded-full bg-gradient-to-l from-emerald-400 to-emerald-600"
-                        style={{ width: `${Math.max(4, Math.round((e.total / max) * 100))}%` }}
+                        style={{ width: `${Math.max(4, percent(e.total, max))}%` }}
                       />
                     </div>
                     <span className="w-10 shrink-0 text-left text-[10.5px] font-black text-emerald-700" dir="ltr">

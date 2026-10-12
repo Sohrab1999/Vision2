@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { PieChart, BookA, ArrowLeft } from "lucide-react";
 import { lessons, totalVocabulary } from "@/data";
 import { useStudy, knownCountOfLesson } from "@/lib/study-store";
+import { percent as percentOf } from "@/lib/domain/percent";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
 
@@ -33,7 +34,7 @@ export default function VocabDonut() {
   });
 
   const knownTotal = perLesson.reduce((s, x) => s + x.count, 0);
-  const percent = Math.round((knownTotal / totalVocabulary) * 100);
+  const percent = percentOf(knownTotal, totalVocabulary);
 
   // donut arc offsets (start from top, clockwise) — computed immutably
   const arcs = perLesson.map((x, i) => {
@@ -136,7 +137,7 @@ export default function VocabDonut() {
                       <motion.span
                         className={`block h-full rounded-full ${a.bar}`}
                         initial={{ width: 0 }}
-                        animate={{ width: `${a.total ? Math.round((a.count / a.total) * 100) : 0}%` }}
+                        animate={{ width: `${percentOf(a.count, a.total)}%` }}
                         transition={{ duration: 0.7, delay: 0.2 + i * 0.08, ease: "easeOut" }}
                       />
                     </span>

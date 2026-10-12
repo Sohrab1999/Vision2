@@ -1,10 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Trophy, Zap, Flame, Medal, UserRound, RefreshCcw, ShieldCheck } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
+import { usePolling } from "@/hooks/use-polling";
+import Podium from "./shared/podium";
 import { faNum, timeAgoFa } from "@/lib/study-theme";
 import { avatarClasses } from "./header";
 
@@ -24,47 +26,38 @@ interface RushRow {
   lastAt: string | null;
 }
 
-const podiumOrder = [1, 0, 2]; // second, first, third
-const podiumMeta = [
-  { h: "h-16", grad: "from-amber-400 to-orange-500", medal: "🏆", ring: "ring-amber-400", label: "قهرمان چالش" },
-  { h: "h-11", grad: "from-stone-300 to-stone-400", medal: "🥈", ring: "ring-stone-300", label: "دوم" },
-  { h: "h-9", grad: "from-orange-200 to-orange-400", medal: "🥉", ring: "ring-orange-300", label: "سوم" },
-];
-
 export default function RushBoard({ refreshKey = 0 }: { refreshKey?: number }) {
   const [rows, setRows] = useState<RushRow[] | null>(null);
   const [totalPlayers, setTotalPlayers] = useState(0);
   const userId = useStudy((s) => s.userId);
   const mounted = useMounted();
-
+  // alive-guard: a response that lands after unmount/refresh must not setState
+  const aliveRef = useRef(true);
   useEffect(() => {
-    let alive = true;
-    const load = () =>
-      fetch("/api/rush-leaderboard")
-        .then((r) => r.json())
-        .then((d) => {
-          if (!alive) return;
-          setRows(Array.isArray(d.learners) ? d.learners : []);
-          setTotalPlayers(d.totalPlayers ?? 0);
-        })
-        .catch(() => {});
-    load();
-    // Phase-2 «تجربه» — adaptive polling: skip while the tab is hidden and
-    // refresh immediately when the learner comes back.
-    const t = setInterval(() => {
-      if (document.hidden) return;
-      load();
-    }, 30_000);
-    const onVisible = () => {
-      if (!document.hidden && alive) load();
-    };
-    document.addEventListener("visibilitychange", onVisible);
+    aliveRef.current = true;
     return () => {
-      alive = false;
-      clearInterval(t);
-      document.removeEventListener("visibilitychange", onVisible);
+      aliveRef.current = false;
     };
-  }, [refreshKey]);
+  }, []);
+
+  const load = useCallback(() => {
+    fetch("/api/rush-leaderboard")
+      .then((r) => r.json())
+      .then((d) => {
+        if (!aliveRef.current) return;
+        setRows(Array.isArray(d.learners) ? d.learners : []);
+        setTotalPlayers(d.totalPlayers ?? 0);
+      })
+      .catch(() => {});
+  }, []);
+
+  // Phase-2 «تجربه» — adaptive polling: skip while the tab is hidden and
+  // refresh immediately when the learner comes back (usePolling گام ۶)
+  usePolling(load, 30_000);
+  // immediate refresh when a rush round ends (refreshKey bump)
+  useEffect(() => {
+    load();
+  }, [refreshKey, load]);
 
   if (!mounted || !rows) return null;
   if (rows.length === 0) return null; // keep the setup screen clean until someone plays
@@ -103,59 +96,19 @@ export default function RushBoard({ refreshKey = 0 }: { refreshKey?: number }) {
         </span>
       </div>
 
-      {/* podium */}
-      <div className="rush-board-podium bg-gradient-to-b from-orange-50/50 to-transparent px-4 pb-3 pt-5">
-        <div className="mx-auto flex max-w-sm items-end justify-center gap-3">
-          {podiumOrder.map((rankIdx, i) => {
-            const row = top3[rankIdx];
-            if (!row) return <div key={i} className="flex-1" />;
-            const meta = podiumMeta[rankIdx];
-            const isMe = row.userId === userId;
-            return (
-              <motion.div
-                key={row.userId}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.09 }}
-                className="flex min-w-0 flex-1 flex-col items-center"
-              >
-                <div className="relative mb-1.5">
-                  {isMe && (
-                    <span className="absolute -top-2 left-1/2 z-10 -translate-x-1/2 rounded-full bg-emerald-600 px-1.5 py-0.5 text-[9px] font-black text-white shadow">
-                      شما
-                    </span>
-                  )}
-                  <span className={`rounded-full ring-2 ${meta.ring} ring-offset-2`}>
-                    <span
-                      className={`flex items-center justify-center rounded-full font-black text-white shadow-md ${avatarClasses[row.color] ?? "bg-gradient-to-br from-stone-400 to-stone-600 shadow-stone-500/30"}`}
-                      style={{ width: rankIdx === 0 ? 46 : 38, height: rankIdx === 0 ? 46 : 38, fontSize: rankIdx === 0 ? 17 : 14 }}
-                    >
-                      {row.name ? row.name.trim().charAt(0) : <UserRound size={18} />}
-                    </span>
-                  </span>
-                  <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 text-sm drop-shadow-sm">
-                    {meta.medal}
-                  </span>
-                </div>
-                <div className="mt-2.5 max-w-full truncate text-center text-[12px] font-extrabold text-stone-800">
-                  {row.name}
-                </div>
-                <div className="flex items-center gap-1 text-[12px] font-black text-orange-600" title="بهترین امتیاز">
-                  <Zap size={12} />
-                  {faNum(row.bestScore)}
-                </div>
-                <div className="mb-1.5 text-[10px] font-bold text-stone-400">{meta.label}</div>
-                <div
-                  className={`w-full rounded-t-xl bg-gradient-to-b ${meta.grad} ${meta.h} flex items-start justify-center pt-1.5 shadow-inner`}
-                >
-                  <span className="text-base font-black text-white/90">{faNum(rankIdx + 1)}</span>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-      </div>
+      {/* podium — shared component (variant: orange, rush shows the rank label) */}
+      <Podium
+        rows={top3}
+        meId={userId}
+        variant="orange"
+        showLabel
+        metric={(row) => (
+          <span title="بهترین امتیاز">
+            <Zap size={12} />
+            {faNum(row.bestScore)}
+          </span>
+        )}
+      />
 
       {/* ranks 4+ */}
       {rest.length > 0 && (

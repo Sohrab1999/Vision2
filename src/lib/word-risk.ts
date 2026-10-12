@@ -14,6 +14,7 @@
 import type { QuizQuestion, VocabWord } from "@/lib/study-types";
 import { lessons } from "@/data";
 import { questionSourceLesson, wordKey, useStudy, type WordStatMap } from "@/lib/study-store";
+import { shuffle } from "@/lib/domain/shuffle";
 
 export interface DangerWord {
   key: string; // "1:ability"
@@ -134,15 +135,6 @@ export function dangerWords(
 }
 
 // ---- targeted practice quiz ----
-
-function shuffle<T>(arr: T[]): T[] {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
 
 export interface DangerQuiz {
   questions: QuizQuestion[];

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, BookOpen, MessageSquareText, BookOpenText, GraduationCap, ListChecks, Layers, PenLine, Ear } from "lucide-react";
 import { findLesson } from "@/data";
 import { useStudy, knownCountOfLesson, type LessonTab } from "@/lib/study-store";
+import { percent } from "@/lib/domain/percent";
 import { themeOf, faNum } from "@/lib/study-theme";
 import ProgressRing from "./progress-ring";
 import VocabTab from "./vocab-tab";
@@ -39,7 +40,7 @@ export default function LessonView({ id }: { id: number }) {
 
   const t = themeOf(lesson.color);
   const knownCount = knownCountOfLesson(known, lesson.id);
-  const knownPercent = Math.round((knownCount / lesson.vocabulary.length) * 100);
+  const knownPercent = percent(knownCount, lesson.vocabulary.length);
 
   return (
     <motion.div

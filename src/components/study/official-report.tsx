@@ -26,6 +26,7 @@ import {
   knownCountOfLesson,
 } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
+import { useEscape } from "@/hooks/use-keyboard";
 import { faNum } from "@/lib/study-theme";
 import { LESSONS_META, TOTAL_VOCABULARY } from "@/data/lesson-meta";
 import { BADGES, buildEvalInput, unlockedBadgeIds } from "@/lib/achievements";
@@ -108,15 +109,8 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
     };
   }, [open]);
 
-  // Esc closes the paper
-  useEffect(() => {
-    if (!open) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [open]);
+  // Esc closes the paper (shared modal dismiss contract — useEscape گام ۶)
+  useEscape(onClose, open);
 
   const knownCount = useMemo(
     () => (mounted ? Object.values(known).filter(Boolean).length : 0),

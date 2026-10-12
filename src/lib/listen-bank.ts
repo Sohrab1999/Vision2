@@ -12,6 +12,7 @@
 
 import { lessons } from "@/data";
 import type { LessonData } from "@/lib/study-types";
+import { shuffle } from "@/lib/domain/shuffle";
 
 export type ListenKind = "meaning" | "next" | "word";
 
@@ -46,15 +47,6 @@ const PROMPTS: Record<ListenKind, string> = {
 };
 
 const wordCount = (s: string) => s.trim().split(/\s+/).length;
-
-function shuffle<T>(arr: T[]): T[] {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
 
 function pick2<T>(arr: T[], not: (x: T) => boolean): T[] {
   return shuffle(arr.filter(not)).slice(0, 2);

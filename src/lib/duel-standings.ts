@@ -9,6 +9,8 @@
 // learners, but the outcome itself is player-reported — identical trust
 // level to `correct`/`score` on every other attempt category.
 
+import { percent } from "@/lib/domain/percent";
+
 export interface DuelAttemptLike {
   userId: string;
   /** Player-reported outcome; null = legacy row or unset (never counts). */
@@ -62,7 +64,7 @@ export function aggregateDuelStandings(rows: DuelAttemptLike[]): DuelStanding[] 
       ties: c.ties,
       bestScore: c.bestScore,
       avgPercent: c.percentN > 0 ? Math.round(c.percentSum / c.percentN) : 0,
-      winRate: c.wins + c.losses > 0 ? Math.round((c.wins / (c.wins + c.losses)) * 100) : 0,
+      winRate: percent(c.wins, c.wins + c.losses),
     }))
     // Ranking contract: wins first, then win rate, then best single score.
     .sort((a, b) => b.wins - a.wins || b.winRate - a.winRate || b.bestScore - a.bestScore || b.duels - a.duels);

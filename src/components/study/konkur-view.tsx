@@ -36,15 +36,8 @@ import { faNum } from "@/lib/study-theme";
 import { hardIdsOf } from "@/lib/konkur";
 import { trackEvent } from "@/lib/analytics";
 import QuizEngine from "./quiz-engine";
-
-function shuffle<T>(arr: T[]): T[] {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
+import { shuffle } from "@/lib/domain/shuffle";
+import { percent } from "@/lib/domain/percent";
 
 /** source bucket of a question from its id prefix (l1-, l2-, l3-, x-) */
 function sourceOf(q: QuizQuestion): string {
@@ -112,8 +105,8 @@ export default function KonkurView() {
       seenCount,
       wrongCount: wrongSet.size,
       masteredCount,
-      coveragePct: Math.round((seenCount / examBank.length) * 100),
-      masteryPct: seenCount ? Math.round((masteredCount / seenCount) * 100) : 0,
+      coveragePct: percent(seenCount, examBank.length),
+      masteryPct: percent(masteredCount, seenCount),
     };
   }, [mounted, konkurSeen, konkurWrong, mistakes]);
 

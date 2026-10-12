@@ -5,6 +5,7 @@ import { Keyboard, BookMarked, ClipboardCheck, Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useStudy, type LessonTab } from "@/lib/study-store";
+import { isTypingTarget, useKeydown } from "@/hooks/use-keyboard";
 
 /**
  * راهنمای میان‌برهای کیبورد + اجرای میان‌برهای سراسری.
@@ -14,10 +15,7 @@ import { useStudy, type LessonTab } from "@/lib/study-store";
  */
 
 function isTyping(e: KeyboardEvent): boolean {
-  const el = e.target as HTMLElement | null;
-  const tag = el?.tagName;
-  if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return true;
-  return !!el && (el.isContentEditable || el.getAttribute("role") === "textbox");
+  return isTypingTarget(e);
 }
 
 interface Row {
@@ -114,36 +112,32 @@ export default function ShortcutGuide() {
     view.type === "exam" || view.type === "rush" || view.type === "duel" || view.type === "konkur" || (view.type === "lesson" && lessonTab === "tests");
 
   // global shortcuts + «؟» toggle (layout-independent: matches e.code)
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.ctrlKey || e.metaKey || e.altKey) return;
-      if (isTyping(e)) return;
-      // «؟» = ASCII ? (EN layout) or U+061F (FA layout on the same physical key)
-      if (e.key === "?" || e.key === "؟") {
-        e.preventDefault();
-        setOpen((v) => !v);
-        return;
-      }
-      if (open || quizContext) return; // dialog handles its own Escape
-      const code = e.code;
-      if (code === "KeyH") setView({ type: "home" });
-      else if (code === "KeyD") setView({ type: "dictionary" });
-      else if (code === "KeyE") setView({ type: "exam" });
-      else if (code === "KeyA") setView({ type: "appendix" });
-      else if (code === "KeyC") setView({ type: "rush" });
-      else if (code === "KeyV") setView({ type: "duel" });
-      else if (code === "KeyG") setView({ type: "konkur" });
-      else if (code === "KeyM") setView({ type: "grammar" });
-      else if (code === "KeyT") setTheme(theme === "dark" ? "light" : "dark");
-      else if (code === "KeyF" && view.type === "lesson") openLesson(view.id, "smart");
-      else if (/^(Digit|Numpad)[1-7]$/.test(code) && view.type === "lesson") {
-        const tab = LESSON_TABS[Number(code.slice(-1)) - 1];
-        if (tab) openLessonTab(view.id, tab.key);
-      }
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [open, quizContext, theme, view, lessonTab, setView, openLesson, openLessonTab, setTheme]);
+  useKeydown((e) => {
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    if (isTyping(e)) return;
+    // «؟» = ASCII ? (EN layout) or U+061F (FA layout on the same physical key)
+    if (e.key === "?" || e.key === "؟") {
+      e.preventDefault();
+      setOpen((v) => !v);
+      return;
+    }
+    if (open || quizContext) return; // dialog handles its own Escape
+    const code = e.code;
+    if (code === "KeyH") setView({ type: "home" });
+    else if (code === "KeyD") setView({ type: "dictionary" });
+    else if (code === "KeyE") setView({ type: "exam" });
+    else if (code === "KeyA") setView({ type: "appendix" });
+    else if (code === "KeyC") setView({ type: "rush" });
+    else if (code === "KeyV") setView({ type: "duel" });
+    else if (code === "KeyG") setView({ type: "konkur" });
+    else if (code === "KeyM") setView({ type: "grammar" });
+    else if (code === "KeyT") setTheme(theme === "dark" ? "light" : "dark");
+    else if (code === "KeyF" && view.type === "lesson") openLesson(view.id, "smart");
+    else if (/^(Digit|Numpad)[1-7]$/.test(code) && view.type === "lesson") {
+      const tab = LESSON_TABS[Number(code.slice(-1)) - 1];
+      if (tab) openLessonTab(view.id, tab.key);
+    }
+  });
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>

@@ -38,6 +38,7 @@ import {
   lessonMetaById,
 } from "@/data/lesson-meta";
 import { useStudy, knownCountOfLesson, summarize, srsDueTotal, firstLessonWithDue, todayStr, mistakesOfLesson, FREEZE_CAP } from "@/lib/study-store";
+import { percent } from "@/lib/domain/percent";
 import { hardIdsOf } from "@/lib/konkur";
 import { useMounted } from "@/lib/use-mounted";
 import { themeOf, faNum, timeAgoFa } from "@/lib/study-theme";
@@ -160,7 +161,7 @@ export default function HomeView() {
   const summary = mounted ? summarize(known, results) : { knownCount: 0, totalPercent: 0, doneCategories: 0, bestExam: null };
   const dueTotal = mounted ? srsDueTotal(srs) : 0;
   const todayActivities = mounted && dayStat.day === todayStr() ? dayStat.reviews + dayStat.quizzes : 0;
-  const goalPercent = Math.min(100, Math.round((todayActivities / dailyGoal) * 100));
+  const goalPercent = percent(todayActivities, dailyGoal);
   const reviewLesson = mounted ? firstLessonWithDue(srs) : null;
   const totalMistakes = mounted
     ? mistakesOfLesson(mistakes, 0) + mistakesOfLesson(mistakes, 1) + mistakesOfLesson(mistakes, 2) + mistakesOfLesson(mistakes, 3)
@@ -610,7 +611,7 @@ export default function HomeView() {
           {LESSONS_META.map((l, i) => {
             const t = themeOf(l.color);
             const wordsKnown = mounted ? knownCountOfLesson(known, l.id) : 0;
-            const knownPercent = Math.round((wordsKnown / l.vocabCount) * 100);
+            const knownPercent = percent(wordsKnown, l.vocabCount);
             return (
               <motion.div
                 key={l.id}
