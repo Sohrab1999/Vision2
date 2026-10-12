@@ -40,7 +40,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-stone-200/80 bg-[#f7f6f2]/85 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-2 px-3 sm:gap-3 sm:px-4">
         <button
           onClick={goHome}
           className="flex items-center gap-2.5 text-right transition-opacity hover:opacity-80"
@@ -98,10 +98,11 @@ export default function Header() {
             <Search size={16} />
           </button>
 
-          {/* keyboard shortcuts guide */}
+          {/* keyboard shortcuts guide — موبایل مخفی (بودجهٔ هدر: Task 80؛
+              راهنمای کیبورد لمسی نیست و از پالت هم reachable است) */}
           <button
             onClick={() => window.dispatchEvent(new CustomEvent("open-shortcuts"))}
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-stone-200 bg-white text-stone-500 transition-all hover:text-emerald-600 hover:border-emerald-200 active:scale-90"
+            className="hidden h-9 w-9 shrink-0 items-center justify-center rounded-full border border-stone-200 bg-white text-stone-500 transition-all hover:text-emerald-600 hover:border-emerald-200 active:scale-90 sm:flex"
             aria-label="راهنمای میان‌برهای کیبورد"
             title="راهنمای میان‌برهای کیبورد (؟)"
           >

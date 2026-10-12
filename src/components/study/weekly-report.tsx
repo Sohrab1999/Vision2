@@ -224,6 +224,29 @@ export default function WeeklyReportSection() {
         </div>
       </div>
 
+      {/* دستور رنگ‌ها (Task 80) — زبان بصری نقطه‌ها/نوارها یک‌جا آموزش داده
+          می‌شود؛ نمونه‌ها دقیقاً همان کلاس‌های خود نقطه‌ها هستند تا رنگِ
+          افسانه و رنگِ داده هرگز واگرا نشوند */}
+      <div
+        className="report-legend mb-3 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-lg bg-white/60 px-2.5 py-2"
+        title="دستور رنگ‌های گزارش"
+        aria-label="دستور رنگ‌های گزارش"
+      >
+        <span className="text-[9.5px] font-extrabold text-stone-400">دستور رنگ‌ها:</span>
+        <span className="flex items-center gap-1 text-[9.5px] font-bold text-stone-500">
+          <span className="h-2.5 w-2.5 rounded-full border border-emerald-600 bg-emerald-500" aria-hidden />
+          هدف کامل
+        </span>
+        <span className="flex items-center gap-1 text-[9.5px] font-bold text-stone-500">
+          <span className="h-2.5 w-2.5 rounded-full border border-amber-400 bg-amber-200" aria-hidden />
+          فعال ولی ناقص
+        </span>
+        <span className="flex items-center gap-1 text-[9.5px] font-bold text-stone-500">
+          <span className="h-2.5 w-2.5 rounded-full border border-sky-500 bg-sky-50" aria-hidden />
+          نجات با یخ
+        </span>
+      </div>
+
       {/* highlights */}
       {digest.highlights.length > 0 ? (
         <ul className="space-y-1">

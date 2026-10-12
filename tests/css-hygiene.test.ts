@@ -63,7 +63,7 @@ describe("globals.css surface-token kernel (Step 9 tranche-2)", () => {
     // the band rules these tokens replaced may not come back; the three surviving
     // global keeps are intentional: plain bg-stone-50 translucent wash, the
     // border-stone-100 #292524 tune, and the border-stone-300 #44403c tune
-    const bgBand = lines.filter((l) => /^\.dark \.bg-stone-(50|100|200)(\\\/\d+)? \{/.test(l.trim()));
+    const bgBand = lines.filter((l) => /^\.dark \.bg-stone-(50|100|200)(\\\/\d+)?[,{ ]/.test(l.trim()));
     expect(bgBand, `bg-stone band must stay retired (only the bg-stone-50 wash keep survives): ${bgBand.join(" | ")}`).toHaveLength(1);
     const borderBand = lines.filter((l) => /^\.dark \.border-stone-(100|200|300)(\\\/\d+)? \{/.test(l.trim()));
     expect(borderBand, `border-stone keeps drifted: ${borderBand.join(" | ")}`).toHaveLength(2);
@@ -265,5 +265,58 @@ describe("globals.css tone-band + elevated-surface consolidation (Step 9 tranche
       );
     });
     expect(copies, `scoped pure elevated-surface copies returned: ${copies.join(" | ")}`).toEqual([]);
+  });
+});
+
+describe("globals.css surface-tint kernel (Step 9 tranche 3b — Task 80)", () => {
+  const css80 = readFileSync(cssPath, "utf8");
+  const lines80 = css80.split("\n");
+
+  it("defines each dark tint-surface token exactly once inside the canonical .dark block", () => {
+    const start = lines80.findIndex((l) => /^\.dark \{/.test(l));
+    expect(start, ".dark block not found").toBeGreaterThanOrEqual(0);
+    let depth = 0;
+    let body = "";
+    for (let i = start; i < lines80.length; i++) {
+      body += lines80[i] + "\n";
+      depth += (lines80[i].match(/{/g) ?? []).length;
+      depth -= (lines80[i].match(/}/g) ?? []).length;
+      if (depth <= 0 && i > start) break;
+    }
+    for (const tok of [
+      "--color-amber-50:", "--color-emerald-50:", "--color-orange-50:", "--color-orange-200:",
+      "--color-rose-50:", "--color-rose-200:", "--color-sky-50:", "--color-sky-200:",
+      "--color-teal-50:", "--color-violet-50:", "--color-violet-200:", "--color-violet-300:",
+    ]) {
+      const n = (body.match(new RegExp(tok.replace(":", "\\:"), "g")) ?? []).length;
+      expect(n, `${tok} must be defined exactly once in .dark`).toBe(1);
+      const total = (css80.match(new RegExp(tok.replace(":", "\\:"), "g")) ?? []).length;
+      expect(total, `${tok} must not leak outside .dark (official-report re-light excepted)`).toBeLessThanOrEqual(2);
+    }
+  });
+
+  it("never re-grows the retired tinted-surface override band", () => {
+    // these 13 band rules were retired in favor of the tokens; the paper's
+    // re-light patch and deviating scoped keeps are the only survivors
+    const retired = [
+      "bg-rose-50", "border-rose-200", "bg-emerald-50", "bg-orange-50", "border-orange-200",
+      "bg-violet-50", "border-violet-200", "border-violet-300", "bg-teal-50", "bg-amber-50",
+      "border-sky-200", "bg-sky-50",
+    ];
+    for (const sel of retired) {
+      const back = lines80.filter((l) => l.trim().startsWith(`.dark .${sel} {`));
+      expect(back, `retired band rule .dark .${sel} must not return`).toEqual([]);
+    }
+    // the shadowed-deat scoped twin stays dead too
+    expect(lines80.filter((l) => l.includes(".rush-card.border-sky-200"))).toEqual([]);
+  });
+
+  it("keeps the deliberate skips on explicit rules (intentional light values)", () => {
+    // emerald-200/300, amber-100/200/300, rose-300, teal-500 keep their band
+    // rules — the consumer matrix proved intentional light consumers there
+    for (const sel of ["border-emerald-200", "border-emerald-300", "bg-amber-100", "border-amber-100", "border-amber-200", "border-amber-300", "border-rose-300", "border-teal-500"]) {
+      const kept = lines80.filter((l) => l.trim().startsWith(`.dark .${sel} {`));
+      expect(kept.length, `.dark .${sel} keep must survive`).toBeGreaterThanOrEqual(1);
+    }
   });
 });

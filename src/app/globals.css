@@ -139,6 +139,33 @@
   --color-orange-800: #fdba74;
   --color-violet-800: #f5d0fe;
   --color-slate-500: #a8a29e;
+
+  /* Step 9 tranche 3b (Task 80) — dark SURFACE-TINT tokens (mechanism = stone
+     kernel above): bg/border tints whose dark value is uniform across every
+     bare rule — proven by scripts/css-tint-inventory.cjs + the TSX consumer
+     matrix. Bare band rules for these shades are retired (css-hygiene guard);
+     every utility at these shades — incl. hover: variants and gradient
+     from/via/to stops that were never enumerated — now goes dark for free.
+     Deliberate SKIPS (intentional light values live there): emerald-200
+     (home-hero glow + weekly-chart scale), emerald-300 (srs forecast bars),
+     amber-100 (focus/hover rings + border value conflict), amber-200 (the
+     active goal dot), amber-300 + rose-300 (text-ink consumers disagree),
+     teal-500 (solid bg consumers); ink shades 500-800 stay explicit because
+     solid bg-<fam>-600/700 buttons must keep light-scale values. Deviating
+     scoped rules (srs-panel/rush-done/vocab-donut/badge-popover tints,
+     hover:bg-sky-50, rush-hero borders) stay and win by specificity. */
+  --color-amber-50: rgba(69, 48, 12, 0.35);
+  --color-emerald-50: rgba(6, 55, 40, 0.35);
+  --color-orange-50: rgba(88, 44, 14, 0.4);
+  --color-orange-200: rgba(160, 95, 30, 0.5);
+  --color-rose-50: rgba(80, 18, 28, 0.35);
+  --color-rose-200: rgba(140, 40, 55, 0.5);
+  --color-sky-50: rgba(8, 47, 60, 0.45);
+  --color-sky-200: rgb(7 66 84 / 0.7);
+  --color-teal-50: rgba(6, 55, 50, 0.35);
+  --color-violet-50: rgba(59, 40, 92, 0.35);
+  --color-violet-200: rgba(110, 80, 170, 0.5);
+  --color-violet-300: rgba(130, 100, 190, 0.55);
 }
 
 @layer base {
@@ -280,9 +307,6 @@ body {
 .dark .text-stone-300 { color: #57534c; }
 
 /* callout boxes keep their tint but calmer */
-.dark .bg-rose-50 { background-color: rgba(80, 18, 28, 0.35); }
-.dark .border-rose-200 { border-color: rgba(140, 40, 55, 0.5); }
-.dark .bg-emerald-50 { background-color: rgba(6, 55, 40, 0.35); }
 .dark .border-emerald-200 { border-color: rgba(30, 110, 80, 0.5); }
 .dark .text-emerald-900 { color: #6ee7b7; }
 
@@ -328,8 +352,6 @@ body {
 
 /* konkur corner hero + orange accents (no global orange-50 override exists) */
 .dark .konkur-hero { background-image: linear-gradient(to left, rgba(124, 45, 18, 0.62), rgba(24, 21, 18, 0.94)) !important; }
-.dark .bg-orange-50 { background-color: rgba(88, 44, 14, 0.4); }
-.dark .border-orange-200 { border-color: rgba(160, 95, 30, 0.5); }
 
 /* exam-view + lesson-tests gradient CTAs (mistakes review rose / dictation emerald) —
    tinted gradient stops are outside the tone kernel, same as the heroes */
@@ -400,16 +422,12 @@ body {
 }
 
 /* dark-mode tuning for new dictation / today-plan elements */
-.dark .bg-violet-50 { background-color: rgba(59, 40, 92, 0.35); }
-.dark .border-violet-200 { border-color: rgba(110, 80, 170, 0.5); }
-.dark .border-violet-300 { border-color: rgba(130, 100, 190, 0.55); }
 .dark .text-violet-700 { color: #c4b5fd; }
 .dark .text-violet-600 { color: #a78bfa; }
 .dark .bg-fuchsia-500 { background-image: linear-gradient(to bottom left, #7c3aed, #a21caf); }
 .dark .from-violet-600 { --tw-gradient-from: #5b21b6; }
 .dark .to-fuchsia-600 { --tw-gradient-to: #86198f; }
 .dark .text-amber-700 { color: #fbbf24; }
-.dark .bg-teal-50 { background-color: rgba(6, 55, 50, 0.35); }
 .dark .border-teal-500 { border-color: rgba(20, 130, 120, 0.6); }
 .dark .bg-orange-500 { background-image: linear-gradient(to bottom left, #c2410c, #9a3412); }
 .dark .from-amber-400,.dark .from-amber-300 { --tw-gradient-from: #b45309; }
@@ -534,10 +552,9 @@ body {
    (also the canonical KEEP for plain .dark .bg-stone-50: the surface-token
    base is #151310, but plain bg-stone-50 surfaces render this translucent
    wash — pre-existing tuned look, kept verbatim in tranche-2) */
-.dark .bg-stone-50 { background-color: rgba(40, 36, 31, 0.55); }
+.dark .bg-stone-50,.dark .vocab-donut .bg-stone-50 { background-color: rgba(40, 36, 31, 0.55); }
 .dark .text-emerald-800 { color: #6ee7b7; }
 .dark .border-amber-300 { border-color: rgba(180, 130, 20, 0.55); }
-.dark .bg-amber-50 { background-color: rgba(69, 48, 12, 0.35); }
 
 /* ---------------- dark body texture (calmer) — merged into .dark body above ---------------- */
 .dark :focus-visible { outline-color: rgb(52 211 153 / 0.7); }
@@ -570,7 +587,6 @@ body {
 .dark .rush-board .text-stone-400,.dark .skill-panel .text-stone-400,.dark .report-best .text-stone-400,
 .dark .daily-quests .text-stone-400,.dark .duel-card .text-stone-400,.dark .duel-hud .text-stone-400,
 .dark .duel-done .text-stone-400,.dark .gmetro-dialog .text-stone-400 { color: #8a8580; }
-.dark .vocab-donut .bg-stone-50 { background-color: rgba(40, 36, 31, 0.55); }
 .dark .vocab-donut .bg-emerald-50 { background-color: rgba(6, 55, 40, 0.5); }
 .dark .vocab-donut .ring-emerald-200 { --tw-ring-color: rgba(52, 211, 153, 0.45); }
 .dark .vocab-donut circle[stroke="#e7e5e4"] { stroke: #37312b; }
@@ -645,7 +661,6 @@ body {
 .dark .rush-card.border-orange-200 { border-color: rgb(154 52 18 / 0.5); }
 /* spelling sprint (دیکتهٔ برق‌آسا) — sky accents on the shared arcade shells;
    sky-50/sky-200/text-sky-* and the rush-* tones are already dark-served */
-.dark .rush-card.border-sky-200 { border-color: rgb(7 66 84 / 0.7); }
 .dark .spell-input {
   background-color: #292524;
   border-color: rgb(7 66 84 / 0.9);
@@ -724,8 +739,6 @@ body {
 .dark .srs-panel .srs-fx-expand .text-emerald-600 { color: #34d399; }
 
 /* ---------------- spell buttons (dictation) dark ---------------- */
-.dark .border-sky-200 { border-color: rgb(7 66 84 / 0.7); }
-.dark .bg-sky-50 { background-color: rgba(8, 47, 60, 0.45); }
 .dark .hover\:bg-sky-50:hover { background-color: rgba(8, 47, 60, 0.65); }
 .dark .hover\:bg-sky-100:hover { background-color: rgba(8, 47, 60, 0.7); }
 .dark .hover\:bg-violet-50:hover { background-color: rgba(59, 24, 84, 0.55); }
@@ -951,6 +964,10 @@ html.user-reduce-motion .streak-flame {
   --color-stone-50: #fafaf9;
   --color-stone-100: #f5f5f4;
   --color-stone-200: #e7e5e4;
+  /* tranche 3b (Task 80): re-light the tinted tokens the paper consumes */
+  --color-emerald-50: #ecfdf5;
+  --color-amber-50: #fffbeb;
+  --color-rose-50: #fff1f2;
 }
 /* the screen-only toolbar sits OUTSIDE the paper on its own dark band — its
    stone-100/200 text must stay light (print-official hides this chrome) */

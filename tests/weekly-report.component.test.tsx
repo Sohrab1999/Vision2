@@ -133,12 +133,28 @@ describe("دفتر یخ در هفته‌نامه — کامپوننت (Task 78)"
     const metDot = container.querySelector(".border-emerald-600");
     expect(metDot).not.toBeNull();
     expect(metDot?.getAttribute("title")).toContain("هدف کامل شد");
-    expect(container.querySelectorAll(".border-sky-500").length).toBe(1);
+    // legend dot samples live inside .report-legend — only DATA dots count
+    expect([...container.querySelectorAll(".border-sky-500")].filter((el) => !el.closest(".report-legend")).length).toBe(1);
   });
 
   it("تازه‌وارد: هیچ نشانِ آسمانی در نوار و نقطه‌ها نیست (خموشیِ کامل)", () => {
     const { container } = render(<WeeklyReportSection />);
     expect(container.querySelector(".ring-sky-500")).toBeNull();
-    expect(container.querySelector(".border-sky-500")).toBeNull();
+    // legend samples are allowed — no DATA dot carries the sky language
+    expect([...container.querySelectorAll(".border-sky-500")].filter((el) => !el.closest(".report-legend"))).toEqual([]);
+  });
+
+  it("دستور رنگ‌ها (Task 80): افسانه با سه نمونهٔ هم‌کلاسِ نقطه‌ها حاضر است", () => {
+    const { container } = render(<WeeklyReportSection />);
+    const legend = container.querySelector(".report-legend");
+    expect(legend).not.toBeNull();
+    expect(legend?.getAttribute("aria-label")).toBe("دستور رنگ‌های گزارش");
+    expect(legend?.getAttribute("title")).toBe("دستور رنگ‌های گزارش");
+    expect(legend?.querySelector(".border-emerald-600")).not.toBeNull();
+    expect(legend?.querySelector(".border-amber-400")).not.toBeNull();
+    expect(legend?.querySelector(".border-sky-500")).not.toBeNull();
+    expect(legend).toHaveTextContent("هدف کامل");
+    expect(legend).toHaveTextContent("فعال ولی ناقص");
+    expect(legend).toHaveTextContent("نجات با یخ");
   });
 });
