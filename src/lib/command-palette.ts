@@ -342,14 +342,29 @@ export function parseParamCommandId(id: string): ParsedParamId | null {
   return null;
 }
 
-/** ساخت CommandDef پارامتری — برچسب/راهنما با صفت زمان تزئین می‌شوند */
-function paramCommand(spec: ParamSpec, n: number, timing: QueryTiming | null): CommandDef {
+/**
+ * ساخت CommandDef پارامتری — برچسب/راهنما با صفت زمان تزئین می‌شوند.
+ * rawN = عددِ تایپ‌شدهٔ کاربر (پیش از snap)؛ وقتی با مقدار اسنپ‌شده فرق دارد
+ * به کلیدواژه‌ها می‌چسبد — وگرنه فیلتر ANDِ توکنی (که همهٔ توکن‌ها باید در
+ * متن/کلیدواژه بخوابند) فرمانِ اسنپ‌شده را حذف می‌کرد: «آزمون ۱۵» → برچسب
+ * «آزمون جامع ۱۰ سؤالی» توکنِ «۱۵» را ندارد (باگ راند ۷۲). کلیدواژه فقط
+ * برای رتبه‌بندی است — شناسهٔ دیسپچ canonical می‌ماند («<key>-<n اسنپ‌شده>»).
+ */
+function paramCommand(
+  spec: ParamSpec,
+  n: number,
+  timing: QueryTiming | null,
+  rawN: number | null = null,
+): CommandDef {
+  const baseKeywords = timing ? [...(spec.keywords ?? []), TIMING_LABEL[timing]] : spec.keywords;
+  const keywords =
+    rawN != null && rawN !== n ? [...(baseKeywords ?? []), String(rawN)] : baseKeywords;
   return {
     id: timing ? `${spec.key}-${n}-${timing}` : `${spec.key}-${n}`,
     label: timing ? `${spec.label(n)}، ${TIMING_LABEL[timing]}` : spec.label(n),
     hint: timing ? `${spec.hint(n)} — تایمر ${timing === "untimed" ? "خاموش" : "روشن"}` : spec.hint(n),
     group: spec.group,
-    keywords: timing ? [...(spec.keywords ?? []), TIMING_LABEL[timing]] : spec.keywords,
+    keywords,
   };
 }
 
@@ -379,7 +394,7 @@ export function expandParameterized(query: string): CommandDef[] {
     const useTiming = timing && spec.supportsTiming ? timing : null;
     if (!n && !useTiming) continue; // ماشه بدون عدد و بدون صفت قابل‌اعمال — صرف‌نظر
     const snapped = n ? snapToValues(n, spec.values) : spec.values[0];
-    out.push(paramCommand(spec, snapped, useTiming));
+    out.push(paramCommand(spec, snapped, useTiming, n));
   }
   return out;
 }

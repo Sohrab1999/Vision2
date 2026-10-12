@@ -567,3 +567,57 @@ describe("nav-prefill — پرچم زمان (Task 71)", () => {
     expect(readFlagPrefill("t-flag-missing")).toBeNull();
   });
 });
+
+// ------------------------------------------------------------------
+// Task 72 — باگ snap در فیلتر استاندارد: گسترشِ اسنپ‌شده («آزمون ۱۵»
+// → برچسب «۱۰ سؤالی») توکن «۱۵» را در متن نداشت و فیلتر AND حذفش می‌کرد.
+// این describe ترکیبِ گسترش+فیلتر را قفل می‌کند — چاه نابینای تستِ راند ۶۹/۷۱.
+// ------------------------------------------------------------------
+describe("snap در فیلتر استاندارد — ترکیب گسترش+فیلتر (باگ راند ۷۲)", () => {
+  it("«آزمون ۱۵» پس از snap به ۱۰ در فیلتر AND دیده می‌شود (رتبهٔ ۱)", () => {
+    const expanded = expandParameterized("آزمون ۱۵");
+    expect(expanded).toHaveLength(1);
+    expect(expanded[0]!.id).toBe("exam-count-10");
+    const hits = filterCommands(expanded, "آزمون ۱۵");
+    expect(hits).toHaveLength(1);
+    expect(hits[0]!.id).toBe("exam-count-10");
+  });
+
+  it("«هدف ۱۲» snap به ۱۰ و قابل‌یافتن در فیلتر", () => {
+    const expanded = expandParameterized("هدف ۱۲");
+    expect(expanded[0]!.id).toBe("daily-goal-10");
+    expect(filterCommands(expanded, "هدف ۱۲")[0]!.id).toBe("daily-goal-10");
+  });
+
+  it("«کنکور ۲۵ بدون زمان» — snap (تساوی ۲۵→۲۰) + صفت هم‌زمان", () => {
+    const expanded = expandParameterized("کنکور ۲۵ بدون زمان");
+    expect(expanded[0]!.id).toBe("konkur-count-20-untimed");
+    expect(filterCommands(expanded, "کنکور ۲۵ بدون زمان")[0]!.id).toBe("konkur-count-20-untimed");
+  });
+
+  it("نوار اعداد پراکنده — «کاربر همیشه نتیجه می‌گیرد» در فیلتر واقعی", () => {
+    for (const n of [3, 7, 12, 15, 18, 25, 50, 99, 200]) {
+      const q = `آزمون ${faDigits(n)}`;
+      const expanded = expandParameterized(q);
+      expect(expanded).toHaveLength(1);
+      const hits = filterCommands(expanded, q);
+      expect(hits[0]?.id).toBe(expanded[0]!.id);
+      expect(hits[0]!.id).toMatch(/^exam-count-(10|20|30)$/);
+    }
+  });
+
+  it("کلیدواژهٔ عدد خام به شناسهٔ دیسپچ نمی‌چسبد — قرارداد شناسه دست‌نخورده", () => {
+    const expanded = expandParameterized("آزمون ۱۵");
+    expect(expanded[0]!.id).toBe("exam-count-10");
+    expect(expanded[0]!.keywords).toContain("15");
+    expect(parseParamCommandId(expanded[0]!.id)?.n).toBe(10);
+    // احیای «اخیر» با همان شناسهٔ canonical بدون کلیدواژهٔ خام کار می‌کند
+    expect(commandFromParamId(expanded[0]!.id)?.label).toContain(faDigits(10));
+  });
+
+  it("مقدار دقیق بدون کلیدواژهٔ اضافه — کلیدواژه‌ها همان قرارداد قبلی", () => {
+    const expanded = expandParameterized("آزمون ۲۰");
+    expect(expanded[0]!.keywords).not.toContain("20"); // rawN === n → اضافه نمی‌شود
+    expect(filterCommands(expanded, "آزمون ۲۰")[0]!.id).toBe("exam-count-20");
+  });
+});
