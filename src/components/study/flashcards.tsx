@@ -2,26 +2,36 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronRight, ChevronLeft, Check, RefreshCw, Hand, Sparkles, Star } from "lucide-react";
+import { X, ChevronRight, ChevronLeft, Check, RefreshCw, Hand, Sparkles, Star, Layers } from "lucide-react";
 import type { LessonData, VocabWord } from "@/lib/study-types";
-import { useStudy, wordKey, srsDueCount, SRS_LABELS } from "@/lib/study-store";
+import { useStudy, wordKey, SRS_LABELS } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { isTypingTarget, useKeydown } from "@/hooks/use-keyboard";
 import { trackEvent } from "@/lib/analytics";
 import { posLabel, themeOf } from "@/lib/study-theme";
 import SpeakButton from "./speak-button";
 
+export interface FlashcardDeckCard {
+  key: string; // "1:ability" — absolute store key (may span lessons)
+  lessonId: number;
+  word: VocabWord;
+}
+
 export default function Flashcards({
   lesson,
   onExit,
   startSmart = false,
   words,
+  /** «واژه‌های من» — a resolved multi-lesson deck; overrides lesson/words entirely */
+  deck,
 }: {
   lesson: LessonData;
   onExit: () => void;
   startSmart?: boolean;
   /** F7 — restrict the deck to a specific subset (e.g. dangerous words) */
   words?: VocabWord[];
+  /** multi-lesson personal deck (lib/my-words-deck buildMyWordsDeck) */
+  deck?: { color: string; cards: FlashcardDeckCard[] };
 }) {
   const [smartMode, setSmartMode] = useState(startSmart);
   const [index, setIndex] = useState(0);
@@ -35,30 +45,46 @@ export default function Flashcards({
   const trackReview = useStudy((s) => s.trackReview);
   const mounted = useMounted();
 
-  const t = themeOf(lesson.color);
+  const t = themeOf(deck?.color ?? lesson.color);
 
-  // F7 word subsets: the deck works on the override list when provided
-  const base = words && words.length > 0 ? words : lesson.vocabulary;
+  // one internal card model for all three deck sources:
+  // lesson tab (whole lesson) → F7 subset (danger words of one lesson) →
+  // «واژه‌های من» deck (multi-lesson, absolute keys precomputed)
+  const base: FlashcardDeckCard[] = deck
+    ? deck.cards
+    : (words && words.length > 0 ? words : lesson.vocabulary).map((w) => ({
+        key: wordKey(lesson.id, w.en),
+        lessonId: lesson.id,
+        word: w,
+      }));
+  const keyOf = (c: FlashcardDeckCard) => c.key;
 
-  const dueWords = useMemo(() => {
+  const dueCards = useMemo(() => {
     if (!mounted) return base;
     const now = Date.now();
-    const due = base.filter((w) => {
-      const item = srs[wordKey(lesson.id, w.en)];
+    const due = base.filter((c) => {
+      const item = srs[keyOf(c)];
       if (!item) return true; // never reviewed → due
       return item.dueAt <= now;
     });
     return due.length > 0 ? due : base;
   }, [smartMode, mounted, index]); // recompute as user advances
 
-  const cards = smartMode ? dueWords : base;
-  const word = cards[Math.min(index, cards.length - 1)];
-  const key = wordKey(lesson.id, word.en);
+  const cards = smartMode ? dueCards : base;
+  const card = cards[Math.min(index, cards.length - 1)];
+  const word = card?.word;
+  const key = card ? keyOf(card) : "";
   const srsItem = mounted ? srs[key] : undefined;
   const isKnown = mounted && !!known[key];
   const isStarred = mounted && starredWords.includes(key);
-  const knownCount = base.filter((w) => mounted && known[wordKey(lesson.id, w.en)]).length;
-  const dueCount = mounted ? srsDueCount(srs, lesson.id) : 0;
+  const knownCount = base.filter((c) => mounted && known[keyOf(c)]).length;
+  // deck-scoped due count (fixes the F7 subset badge that used the whole lesson)
+  const dueCount = mounted
+    ? base.filter((c) => {
+        const item = srs[keyOf(c)];
+        return !item || item.dueAt <= Date.now();
+      }).length
+    : 0;
 
   useEffect(() => {
     setIndex(0);
@@ -98,6 +124,23 @@ export default function Flashcards({
       answer(false);
     }
   });
+
+  // empty-deck guard (defensive: a dangling snapshot or an empty lesson subset
+  // must render a friendly state, never crash on card.word) — after all hooks
+  if (!card || !word) {
+    return (
+      <div className="rounded-2xl border border-dashed border-stone-300 bg-white p-8 text-center">
+        <Layers className="mx-auto mb-2 text-stone-300" size={28} />
+        <p className="text-sm font-bold text-stone-600">کارتی برای مرور نیست</p>
+        <button
+          onClick={onExit}
+          className="mt-3 rounded-lg border border-stone-200 px-4 py-2 text-[12.5px] font-bold text-stone-600 hover:bg-stone-50"
+        >
+          بازگشت
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-4">

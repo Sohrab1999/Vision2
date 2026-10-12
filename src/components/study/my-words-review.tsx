@@ -13,7 +13,7 @@ import { buildStarredQuiz } from "@/lib/starred-quiz";
 import { faNum } from "@/lib/study-theme";
 import { trackEvent } from "@/lib/analytics";
 import type { QuizQuestion } from "@/lib/study-types";
-import type { ResolvedStar } from "./my-words-resolve";
+import type { ResolvedStar } from "@/lib/my-words-resolve";
 import QuizEngine from "./quiz-engine";
 
 const MIN_STARS = 4; // below this a session feels hollow (1-3 words)

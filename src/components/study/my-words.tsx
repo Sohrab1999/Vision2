@@ -16,8 +16,9 @@ import { useMounted } from "@/lib/use-mounted";
 import { posLabel, themeOf, faNum } from "@/lib/study-theme";
 import { trackEvent } from "@/lib/analytics";
 import SpeakButton from "./speak-button";
-import { resolveStar, type ResolvedStar } from "./my-words-resolve";
+import { resolveStar, type ResolvedStar } from "@/lib/my-words-resolve";
 import MyWordsReview from "./my-words-review";
+import MyWordsFlashcards from "./my-words-flashcards";
 type SortMode = "new" | "old" | "az";
 
 export default function MyWordsView() {
@@ -132,8 +133,13 @@ export default function MyWordsView() {
         )}
 
         {/* review launcher — quiz from the currently filtered stars */}
-        <div className="mb-4">
+        <div className="mb-3">
           <MyWordsReview stars={filtered} />
+        </div>
+
+        {/* flashcard launcher — quick no-score pass over the same filtered stars */}
+        <div className="mb-4">
+          <MyWordsFlashcards stars={filtered} />
         </div>
 
         {/* search */}

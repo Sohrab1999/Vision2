@@ -1,7 +1,9 @@
-// shared star-resolution for the «واژه‌های من» feature — used by both the
-// word-book list (my-words.tsx) and the review-quiz launcher (my-words-review.tsx)
+// shared star-resolution for the «واژه‌های من» feature — used by the word-book
+// list (my-words.tsx), the review-quiz launcher (my-words-review.tsx) and the
+// flashcard deck builder (my-words-deck.ts)
 
 import { lessons } from "@/data";
+import type { VocabWord } from "@/lib/study-types";
 
 export interface ResolvedStar {
   key: string;
@@ -9,6 +11,8 @@ export interface ResolvedStar {
   en: string;
   fa: string;
   pos?: string;
+  /** full vocabulary entry — lets decks/engines work on real word objects */
+  word: VocabWord;
   color: "emerald" | "amber" | "rose";
   titleFa: string;
 }
@@ -24,5 +28,14 @@ export function resolveStar(key: string): ResolvedStar | null {
   const lesson = LESSON_BY_ID.get(lessonId);
   const word = lesson?.vocabulary.find((v) => v.en.toLowerCase() === en);
   if (!lesson || !word) return null;
-  return { key, lessonId, en: word.en, fa: word.fa, pos: word.pos, color: lesson.color, titleFa: lesson.titleFa };
+  return {
+    key,
+    lessonId,
+    en: word.en,
+    fa: word.fa,
+    pos: word.pos,
+    word,
+    color: lesson.color,
+    titleFa: lesson.titleFa,
+  };
 }

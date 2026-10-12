@@ -4,7 +4,7 @@ import { describe, it, expect } from "vitest";
 import { lessons } from "@/data";
 import { starrableWord } from "@/lib/starred-from-quiz";
 import { wordKey } from "@/lib/study-store";
-import { resolveStar } from "@/components/study/my-words-resolve";
+import { resolveStar } from "@/lib/my-words-resolve";
 import type { QuizQuestion } from "@/lib/study-types";
 
 /** pick real lesson-bank vocab questions (the FA→EN kind with English options) */

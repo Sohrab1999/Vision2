@@ -32,6 +32,7 @@ export const EVENT_NAMES = [
   "star_word", // a word starred into «واژه‌های من»
   "my_words_open", // opened the personal word-book view
   "my_words_review_start", // started a review quiz from starred words
+  "my_words_flashcards_start", // started a flashcard pass from starred words
   "print_report", // official printable progress report
 ] as const;
 
@@ -65,6 +66,7 @@ export const EVENT_LABELS_FA: Record<EventName, string> = {
   star_word: "نشان‌کردن واژه",
   my_words_open: "بازکردن واژه‌های من",
   my_words_review_start: "شروع مرور نشان‌شده‌ها",
+  my_words_flashcards_start: "شروع فلش‌کارت واژه‌های من",
   print_report: "گزارش چاپی رسمی",
 };
 
