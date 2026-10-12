@@ -1328,3 +1328,32 @@ Stage Summary:
 - خط پرتاس §12 اکنون: گام ۹ (بازآرایی معنایی CSS: ۵ کلاس معنایی/تم، حذف نوار override و ۱۸ سلکتور تکراری، ۱۲۰۹→≤۵۰۰ خط) یا گام ۱۰ (ساختار/ops: regroup پوشه‌ها، حذف tailwind.config.ts/animate/sharp، prune ui kit، receipt دودل، @@index)
 - فیچر پیشنهادی راند بعد (کنار گام ۹): رفع عادت goalMetDays (جداسازی «روزِ فعال» از «روزِ هدف‌تحقق‌یافته» در اعطای یخ) یا ویدگت «مرور امروز» در خانه
 - [یادداشت عملیاتی] سرویس دودل این راند زنده ماند (PID 26902 از راند قبل هنوز پابرجا) — الگوی بازراه‌اندازی دقیق next-only جواب داده
+
+---
+Task ID: 55 (job 453171)
+Agent: main (Z.ai Code)
+Task: گام ۱۰ §12 (بخش ۱ — بهداشت/ops) + اصلاح درستی goalMetDays + هفتمین سطح ستاره (چیپ‌های سررسید SRS)
+
+Work Log:
+- [وضعیت‌سنجی] task 54 سر جایش (e4e48a3 + کامیت کرون 923169f فقط worklog)، گیت‌ها سبز (۲۴۹/۲۴۹)، هر دو سرویس زنده، اسموک جلسهٔ تازه کنسول-صفر → راند پایدار؛ سه کار انتخاب شد: بهداشت Step 10 + اصلاح F9 + فیچر ستاره
+- [Step 10 بخش ۱ — بهداشت] همه با اثبات grep قبل از حذف:
+  • tailwind.config.ts حذف شد — کانفیگ v3-سبز بود (import tailwindcss-animate) در حالی که اپ Tailwind v4 CSS-first است (@import "tailwindcss" + tw-animate-css در globals.css)؛ هیچ مرجعی نداشت
+  • وابستگی‌های مرده از package.json/bun.lock: tailwindcss-animate (جایگزین v4 آن نصب است) + sharp (هیچ next/image در کل src/ نیست)
+  • shadcn/ui از ۱۴ به ۶: حذف button/input/label/separator/sheet/skeleton/toggle/tooltip — همگی صفر مصرف‌کننده (حتی import درون-ui نداشتند)؛ dialog/popover/slider/switch/toast/toaster ماندند (toaster با use-toast@hooks زنده است)
+  • ۳ اسکریپت runtime رهاشده در tests/ به scripts/ منتقل شد (database-runtime-build.sh، python-runtime-build.sh، python-runtime-container.sh)
+  • زبالهٔ ریپو: examples/websocket/* و آرتیافت‌های کهنهٔ download/ (README + png QA) untrack و حذف شدند
+- [اصلاح درستی F9 — goalMetDays صادق شد] goalAndFreezePatch حالا روز را فقط وقتی ثبت می‌کند که هدفِ امروز واقعاً کامل شده (reviews+quizzes ≥ dailyGoal)؛ رفتار قبلی هر روزِ فعال را ثبت می‌کرد و پنجرهٔ ۷روزهٔ اعطای یخ را inflated می‌کرد؛ دادهٔ legacy (روزهای بی‌هدف) با کهنه‌شدن از پنجره خودبه‌خود اصلاح می‌شود — بدون مهاجرت؛ +۲ تست: روزِ زیرِ هدف ثبت نمی‌شود + پنجره فقط روزهای واقعی را می‌شمارد (legacy دیگر یخ ضرب نمی‌کند)
+- [فیچر — هفتمین سطح ستاره] چیپ‌های «سررسید الآن» در پنل SRS حالا ستارهٔ کهربایی دارند: گروه HTML معتبر (دکمهٔ ستارهٔ مستقل ۲۲×۲۲ + دکمهٔ چیپ کنار هم — نه button تودرتو)، whileTap 0.75 (هم‌الگوی ستارهٔ پنل خطرناک)، ghost stone-300 → fill-amber-400، aria-pressed + title/aria-label دوزبانهٔ پویا (افزودن/حذف {en} به واژه‌های من)، toggleStarred مستقیم (چیپ‌ها از srsDueSummary می‌آیند — تضمیناً resolvable، بدون نیاز به resolveStar)، خط سرنخ جدید داخل پیش‌نمایش («واژهٔ سررسید را با ستاره به واژه‌های من بفرست…»)؛ رویداد star_word موجود از داخل toggleStarred می‌آید — رویداد تازه لازم نبود
+- [دارک‌مود پیش‌دستانه] قاعده‌های .dark کلاس‌نام‌دار: srs-due-star (ghost #57534e، hover پس‌زمینهٔ کهربایی تیره + #fbbf24، حالت fill روشن)، جداکنندهٔ border-rose-100/70 و متن stone-400 داخل پیش‌نمایش
+- [چرخهٔ Turbopack رعایت شد] globals.css دست خورده بود → pkill دقیق (فقط next) + rm -rf .next + ری‌استارت daemonize؛ دام مفید: «dev»: "next dev ... | tee dev.log" باعث شده dev.log توسط خود پروسه بازنویسی شود — اولین تلاش با ریدایرکت خالی ماند و پروسه مُرد؛ الگوی کارا: (setsid nohup bun run dev >> dev.log < /dev/null &) + تأیید pgrep؛ سرویس دودل در هر دو تلاش زنده ماند
+- [QA زندهٔ تک‌سشن با seed واقعی] seed فقط-localStorage (۳ واژهٔ سررسید + ۱ آینده) → بج «۳ واژه سررسید» + ۳ چیپ + ستاره‌ها ✓؛ ستارهٔ ability → aria-pressed=true + عنوان «حذف …» + fill lab(80,16,99) و starredWords=["1:ability"] ✓؛ واژه‌های من ability را نشان داد ✓؛ بازگشت و unstar → [] و حالت خالی ✓؛ غول stone-300 روی ستارهٔ ستاره‌نشده lab(84.8,0.9,1.6) ✓؛ دارک با توگل خود اپ: previewBg=rgba(28,25,23,0.8) + glyph #57534c + متن سرنخ #a8a29e ✓؛ موبایل ۳۹۰ سرریز ۰ ✓؛ کنسول/خطا صفر ✓
+- [دام QA ثبت شد] agent-browser set media dark روی تم کلاس‌محور اپ اثر ندارد (فقط prefers-color-scheme را عوض می‌کند) — تأیید دارک فقط با دکمهٔ «حالت شب» خود اپ؛ خوانش‌های lab قبلی زیر همین دام بودند
+- [بهداشت DB] QA فقط ستاره زد (هرگز register نمی‌شود) → صفر لرنر/attempt تازه؛ فقط EventDay لغزید (app_open +۲ جلسهٔ تازه، my_words_open +۲، star_word +۱) → با اسکریپت reuse-شده به baseline برگشت: ۶ لرنر واقعی / ۱۰ attempt، شمارنده‌ها دقیق
+- [گیت‌های نهایی] tsc=۰، lint=۰، تست ۲۵۱/۲۵۱ (+۲)؛ کامیت محلی 6cbbc67 — ۲۱ کامیت جلوی origin (push همچنان تا رسیدن توکن fine-grained مسدود)
+
+Stage Summary:
+- قدم اول Step 10 کامل شد: وزن مردهٔ ریپو (کانفیگ v3، دو وابستگی، ۸ کامپوننت ui، ۳ اسکریپت جابجا، زبالهٔ examples/download) با اثبات بی‌مصرفبودن حذف شد — درخت سبک‌تر و صادق‌تر
+- مکانیک یخ F9 حالا بر پایهٔ روزهای واقعاً هدف‌دار است؛ inflate تاریخی پنجره بسته شد
+- حلقهٔ ستاره هفتمین و کامل‌ترین شکل خود را گرفت: از «چیپ سررسید» تا «واژه‌های من» با یک ضربه — همهٔ سطوح ستاره: دیکشنری/فلش‌کارت/واژگان درس/نتیجهٔ آزمون/واژه‌های من/خطرناک/سررسیدِ SRS
+- باقی‌ماندهٔ Step 10 (بخش ۲): regroup پوشه‌ها (§11.2)، لایهٔ query/@index لیدربورد، receipt دودل، زیرساخت تست کامپوننت/روت؛ گام ۹ (CSS معنایی) هم سر جایش
+- [پروتکل QA به‌روز شد] تأیید دارک = توگل خود اپ (کلاس .dark)، نه set media dark؛ تأیید فرایند پس از ری‌استارت = pgrep + curl دو سرویس
