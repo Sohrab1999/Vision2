@@ -549,7 +549,8 @@ describe("parseParamCommandId", () => {
   it("نگهبان: فقط آزمون و کنکور صفت زمان دارند و برچسب‌ها قراردادی‌اند", () => {
     for (const s of PARAM_SPECS) {
       if (s.supportsTiming) expect(["exam-count", "konkur-count"]).toContain(s.key);
-      else expect(s.key).toBe("daily-goal");
+      // خانواده‌های بی‌زمان: هدفِ فوری + تمرین هوشمند (ذاتاً بی‌تایمر — Task 74)
+      else expect(["daily-goal", "smart-count"]).toContain(s.key);
     }
     expect(TIMING_LABEL.untimed).toBe("بدون زمان");
     expect(TIMING_LABEL.timed).toBe("با زمان");
@@ -619,5 +620,88 @@ describe("snap در فیلتر استاندارد — ترکیب گسترش+فی
     const expanded = expandParameterized("آزمون ۲۰");
     expect(expanded[0]!.keywords).not.toContain("20"); // rawN === n → اضافه نمی‌شود
     expect(filterCommands(expanded, "آزمون ۲۰")[0]!.id).toBe("exam-count-20");
+  });
+});
+
+// ------------------------------------------------------------------
+// Task 74 — خانوادهٔ چهارم «تمرین هوشمند N» + فیکس صفتِ نادیده‌شده:
+// صفتِ زمان روی خانوادهٔ بی‌زمان («هدف ۱۵ بدون زمان») گسترش می‌شد اما
+ // توکن‌های «بدون/زمان» در فیلتر AND جایی نمی‌خوابیدند و نتیجهٔ فوری
+// حذف می‌شد — هم‌الگوی باگ راند ۷۲ (این‌بار برای صفت، نه عدد).
+// ------------------------------------------------------------------
+describe("تمرین هوشمند پارامتری + صفت نادیده‌شده (Task 74)", () => {
+  it("«تمرین هوشمند ۱۵» دقیقاً یک فرمان می‌دهد و در فیلتر واقعی صدرنشین است", () => {
+    const expanded = expandParameterized("تمرین هوشمند ۱۵");
+    expect(expanded).toHaveLength(1);
+    expect(expanded[0]!.id).toBe("smart-count-15");
+    expect(expanded[0]!.label).toBe("تمرین هوشمند ۱۵ سؤالی");
+    expect(expanded[0]!.group).toBe("تمرین و چالش");
+    expect(filterCommands([...cmds, ...expanded], "تمرین هوشمند ۱۵", 5)[0]!.id).toBe("smart-count-15");
+  });
+
+  it("snap با مقادیر [۱۰/۱۵/۲۰] نما هم‌خوان است و در فیلتر پیدا می‌شود", () => {
+    // ۱۲ → ۱۰ (فاصلهٔ ۲ در برابر ۳)؛ ۱۷ → ۱۵؛ ۱۸ → ۲۰
+    for (const [typed, expected] of [
+      ["۱۲", 10],
+      ["۱۷", 15],
+      ["۱۸", 20],
+    ] as const) {
+      const q = `تمرین هوشمند ${typed}`;
+      const expanded = expandParameterized(q);
+      expect(expanded[0]!.id).toBe(`smart-count-${expected}`);
+      expect(filterCommands(expanded, q)[0]!.id).toBe(`smart-count-${expected}`);
+    }
+  });
+
+  it("ماشهٔ تنک («تمرین ۲۰») و لاتین («smart 20») هم کار می‌کند", () => {
+    expect(expandParameterized("تمرین ۲۰")[0]!.id).toBe("smart-count-20");
+    expect(expandParameterized("smart 20")[0]!.id).toBe("smart-count-20");
+    // مقدار دقیق → کلیدواژهٔ عدد خام اضافه نمی‌شود
+    expect(expandParameterized("تمرین ۲۰")[0]!.keywords).not.toContain("20");
+  });
+
+  it("ماشهٔ بدون عدد خالی است — nav-smart مستقل سر جایش", () => {
+    expect(expandParameterized("تمرین هوشمند")).toEqual([]);
+    expect(expandParameterized("تمرین")).toEqual([]);
+    expect(expandParameterized("هوشمند")).toEqual([]);
+  });
+
+  it("قرارداد شناسه: بدون پسوند صفت؛ پارسر و احیای «اخیر» سالم", () => {
+    const p = parseParamCommandId("smart-count-15");
+    expect(p!.n).toBe(15);
+    expect(p!.timing).toBeNull();
+    expect(p!.spec.key).toBe("smart-count");
+    expect(parseParamCommandId("smart-count-15-untimed")).toBeNull(); // بی‌تایمر ذاتی
+    expect(parseParamCommandId("smart-count-77")).toBeNull();
+    expect(commandFromParamId("smart-count-15")!.label).toBe("تمرین هوشمند ۱۵ سؤالی");
+    expect(commandFromParamId("smart-count-20")!.hint).toContain("بدون تایمر");
+  });
+
+  it("فیکس صفت نادیده‌شده: «هدف ۱۵ بدون زمان» در فیلتر واقعی حذف نمی‌شود", () => {
+    const expanded = expandParameterized("هدف ۱۵ بدون زمان");
+    expect(expanded).toHaveLength(1);
+    expect(expanded[0]!.id).toBe("daily-goal-15"); // بدون پسوند — خانوادهٔ بی‌زمان
+    expect(expanded[0]!.keywords).toContain("بدون زمان"); // صفت فقط کلیدواژه
+    expect(filterCommands(expanded, "هدف ۱۵ بدون زمان")).toHaveLength(1);
+    expect(filterCommands(expanded, "هدف ۱۵ بدون زمان")[0]!.id).toBe("daily-goal-15");
+  });
+
+  it("فیکس صفت نادیده‌شده: «تمرین هوشمند ۱۵ بدون تایمر» و «۱۲ با زمان» هر دو می‌آیند", () => {
+    const untimed = expandParameterized("تمرین هوشمند ۱۵ بدون تایمر");
+    expect(untimed[0]!.id).toBe("smart-count-15");
+    expect(untimed[0]!.keywords).toContain("بدون زمان");
+    expect(filterCommands(untimed, "تمرین هوشمند ۱۵ بدون تایمر")[0]!.id).toBe("smart-count-15");
+
+    const timed = expandParameterized("تمرین هوشمند ۱۲ با زمان");
+    expect(timed[0]!.id).toBe("smart-count-10"); // snap + صفت نادیده
+    expect(timed[0]!.keywords).toContain("با زمان");
+    expect(filterCommands(timed, "تمرین هوشمند ۱۲ با زمان")[0]!.id).toBe("smart-count-10");
+  });
+
+  it("جدا‌سازی: «تمرین دیکته ۵» گسترش ماشه‌ای دارد اما در فیلتر AND حذف می‌شود", () => {
+    // نیت کاربر دیکته است نه تمرین هوشمند — نتیجهٔ کاذب پارامتری ممنوع
+    const expanded = expandParameterized("تمرین دیکته ۵");
+    expect(expanded[0]!.id).toBe("smart-count-10"); // گسترش ماشه‌محور است
+    expect(filterCommands(expanded, "تمرین دیکته ۵")).toHaveLength(0);
   });
 });

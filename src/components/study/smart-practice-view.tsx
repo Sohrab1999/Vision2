@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Sparkles, Brain, ArrowLeft, Info, CheckCircle2, Layers, Ear, Pencil, BookOpenCheck } from "lucide-react";
 import { useStudy, questionSourceLesson, firstLessonWithDue, srsDueTotal } from "@/lib/study-store";
@@ -8,6 +8,7 @@ import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
 import { skillBreakdown, lessonIdOfKey, type SkillStat } from "@/lib/skill-stats";
 import { buildSmartPlan } from "@/lib/smart-practice";
+import { readCountPrefill, clearCountPrefill } from "@/lib/nav-prefill";
 import { trackEvent } from "@/lib/analytics";
 import type { QuizQuestion } from "@/lib/study-types";
 import QuizEngine from "./quiz-engine";
@@ -26,6 +27,9 @@ const TONE_CLASS: Record<string, string> = {
 };
 
 const SIZE_OPTIONS = [10, 15, 20] as const;
+
+/** کلید prefill پالت — هم‌رشته با dispatch پالت (Task 74: «تمرین هوشمند ۱۵») */
+const SMART_PREFILL_KEY = "vision2-smart-prefill";
 
 /** weak non-quiz skills → supplementary practice pointers (dictation/listening/writing) */
 function extraFor(s: SkillStat): { label: string; onClick: () => void } | null {
@@ -54,7 +58,26 @@ export default function SmartPracticeView() {
   const openLesson = useStudy((s) => s.openLesson);
   const mounted = useMounted();
   const [session, setSession] = useState<QuizQuestion[] | null>(null);
-  const [size, setSize] = useState<number>(10);
+  // Task 74 — prefill پالت: initializer غیرمخرب می‌خواند (هم‌الگوی exam/konkur؛
+  // مقاوم به دوبار-فراخوانی StrictMode) و مصرفِ یک‌بارمصرف در هر دو مسیر
+  // (mount + رویداد open-smart-with) انجام می‌شود — prefill کهنه نباید در
+  // mount بعدی زنده بماند (درس راند ۶۹).
+  const [size, setSize] = useState<number>(
+    () => readCountPrefill(SMART_PREFILL_KEY, SIZE_OPTIONS) ?? 10,
+  );
+
+  useEffect(() => {
+    clearCountPrefill(SMART_PREFILL_KEY);
+    const handler = (e: Event) => {
+      const d = (e as CustomEvent<{ count?: number }>).detail;
+      if (typeof d?.count === "number" && (SIZE_OPTIONS as readonly number[]).includes(d.count)) {
+        setSize(d.count);
+        clearCountPrefill(SMART_PREFILL_KEY);
+      }
+    };
+    window.addEventListener("open-smart-with", handler);
+    return () => window.removeEventListener("open-smart-with", handler);
+  }, []);
 
   const plan = useMemo(
     () => (mounted ? buildSmartPlan({ results, mistakes, target: size }) : null),

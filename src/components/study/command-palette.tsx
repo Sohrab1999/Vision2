@@ -367,6 +367,18 @@ export default function CommandPalette() {
           if ([5, 10, 15].includes(n)) useStudy.getState().setDailyGoal(n); // فوری — بدون جابه‌جایی
           break;
         }
+        if (cmd.id.startsWith("smart-count-")) {
+          // تمرین هوشمند N سؤالی (Task 74) — هم‌الگوی آزمون/کنکور: prefill برای
+          // نمای lazy + رویداد برای نمای همین‌حالا-باز؛ تمرین هوشمند بی‌تایمر
+          // است پس صفت زمان ندارد (پارسر چنین شناسه‌ای را null می‌دهد).
+          const p = parseParamCommandId(cmd.id);
+          if (p) {
+            writeCountPrefill("vision2-smart-prefill", p.n);
+            setView({ type: "smart" });
+            window.dispatchEvent(new CustomEvent("open-smart-with", { detail: { count: p.n } }));
+          }
+          break;
+        }
         if (cmd.id.startsWith("lesson-smart-")) {
           // فلش‌کارت هوشمند درس — مثل فرمان خودِ درس، رویداد lesson_open می‌سازد
           const id = Number(cmd.id.slice("lesson-smart-".length));
@@ -437,7 +449,7 @@ export default function CommandPalette() {
             aria-controls="command-palette-list"
             aria-activedescendant={filtered[sel] ? `cp-opt-${sel}` : undefined}
             aria-label="جست‌وجوی فرمان‌ها"
-            placeholder="برو به… (آزمون ۲۰، آزمون ۱۰ بدون زمان، هدف ۱۰، شب)"
+            placeholder="برو به… (آزمون ۲۰، تمرین هوشمند ۱۵، هدف ۱۰، شب)"
             className="min-w-0 flex-1 bg-transparent text-[15px] font-bold text-stone-800 outline-none"
             autoComplete="off"
             spellCheck={false}

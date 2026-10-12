@@ -222,7 +222,13 @@ export interface ParamSpec {
   supportsTiming?: boolean;
 }
 
-/** سه خانوادهٔ پارامتری: طول آزمون جامع، طول شبیه‌ساز کنکور، هدف روزانه */
+/**
+ * چهار خانوادهٔ پارامتری: طول آزمون جامع، طول شبیه‌ساز کنکور، هدف روزانه،
+ * و طول «تمرین هوشمند» (Task 74 — هم‌مقادیر با SIZE_OPTIONS نما).
+ * تمرین هوشمند ذاتاً بی‌تایمر است — صفت زمان برایش معنا ندارد
+ * (supportsTiming=false) و صفتِ تایپ‌شده فقط کلیدواژه می‌شود تا فیلتر AND
+ * نتیجه را نکشد (فیکس راند ۷۴).
+ */
 export const PARAM_SPECS: ParamSpec[] = [
   {
     key: "exam-count",
@@ -252,6 +258,15 @@ export const PARAM_SPECS: ParamSpec[] = [
     hint: (n) => `تنظیم فوری هدف روی ${faDigits(n)} — بدون جابه‌جایی`,
     group: "ابزارها",
     keywords: ["daily goal", "تنظیم هدف", "هدف فعالیت"],
+  },
+  {
+    key: "smart-count",
+    triggers: ["تمرین", "هوشمند", "smart"],
+    values: [10, 15, 20],
+    label: (n) => `تمرین هوشمند ${faDigits(n)} سؤالی`,
+    hint: (n) => `جلسهٔ ترکیبی از ضعف‌های تو — ${faDigits(n)} سؤال، بدون تایمر`,
+    group: "تمرین و چالش",
+    keywords: ["smart practice", "mixed", "بدون تایمر", "فیدبک فوری"],
   },
 ];
 
@@ -347,18 +362,25 @@ export function parseParamCommandId(id: string): ParsedParamId | null {
  * rawN = عددِ تایپ‌شدهٔ کاربر (پیش از snap)؛ وقتی با مقدار اسنپ‌شده فرق دارد
  * به کلیدواژه‌ها می‌چسبد — وگرنه فیلتر ANDِ توکنی (که همهٔ توکن‌ها باید در
  * متن/کلیدواژه بخوابند) فرمانِ اسنپ‌شده را حذف می‌کرد: «آزمون ۱۵» → برچسب
- * «آزمون جامع ۱۰ سؤالی» توکنِ «۱۵» را ندارد (باگ راند ۷۲). کلیدواژه فقط
- * برای رتبه‌بندی است — شناسهٔ دیسپچ canonical می‌ماند («<key>-<n اسنپ‌شده>»).
+ * «آزمون جامع ۱۰ سؤالی» توکنِ «۱۵» را ندارد (باگ راند ۷۲).
+ * ignoredTiming = صفتِ تایپ‌شده‌ای که خانواده نادیده می‌گیرد (Task 74) —
+ * فقط کلیدواژه می‌شود («هدف ۱۵ بدون زمان» → توکن‌های «بدون/زمان» باید
+ * جایی بخوابند وگرنه فیلتر AND نتیجهٔ فوری هدف را حذف می‌کرد — همان
+ * الگوی ترکیبِ راند ۷۲ برای صفت). کلیدواژه فقط برای رتبه‌بندی است —
+ * شناسهٔ دیسپچ canonical می‌ماند («<key>-<n اسنپ‌شده>»، بدون پسوند صفت
+ * برای خانواده‌های بی‌زمان تا parseParamCommandId سالم بماند).
  */
 function paramCommand(
   spec: ParamSpec,
   n: number,
   timing: QueryTiming | null,
   rawN: number | null = null,
+  ignoredTiming: QueryTiming | null = null,
 ): CommandDef {
-  const baseKeywords = timing ? [...(spec.keywords ?? []), TIMING_LABEL[timing]] : spec.keywords;
-  const keywords =
-    rawN != null && rawN !== n ? [...(baseKeywords ?? []), String(rawN)] : baseKeywords;
+  const keywords = [...(spec.keywords ?? [])];
+  if (timing) keywords.push(TIMING_LABEL[timing]);
+  if (ignoredTiming) keywords.push(TIMING_LABEL[ignoredTiming]);
+  if (rawN != null && rawN !== n) keywords.push(String(rawN));
   return {
     id: timing ? `${spec.key}-${n}-${timing}` : `${spec.key}-${n}`,
     label: timing ? `${spec.label(n)}، ${TIMING_LABEL[timing]}` : spec.label(n),
@@ -369,12 +391,13 @@ function paramCommand(
 }
 
 /**
- * گسترش پرس‌وجو به فرمان‌های پارامتریِ متناظر: عدد و/یا صفت زمان لازم است
- * و حداقل یک ماشه باید در توکن‌ها بیاید (ماشهٔ چندتوکنی با زیررشتهٔ
- * پرس‌وجوی کامل). عدد خارج از مقادیر مجاز به نزدیک‌ترین می‌چسبد — کاربر
- * همیشه نتیجه می‌گیرد. صفت زمان فقط برای خانواده‌های supportsTiming
- * اعمال می‌شود («هدف ۱۵ بدون زمان» همان هدف را می‌دهد)؛ با صفتِ بدون عدد،
- * پیش‌فرض کوچک‌ترین مقدار مجاز («آزمون بدون زمان» → ۱۰ سؤالی بی‌زمان).
+ * گسترش پرس‌وجو به فرمان‌های پارامتریِ متناظر: حداقل یک ماشه در توکن‌ها +
+ * (عدد یا صفتِ قابل‌اعمال). عدد خارج از مقادیر مجاز به نزدیک‌ترین می‌چسبد —
+ * کاربر همیشه نتیجه می‌گیرد. صفت زمان فقط برای خانواده‌های supportsTiming
+ * به شناسه/برچسب می‌چسبد («آزمون بدون زمان» → ۱۰ سؤالی بی‌زمان؛ صفت بدون
+ * عدد → کوچک‌ترین مقدار)؛ برای خانوادهٔ بی‌زمان صفت «نادیده» می‌شود اما
+ * فرمان می‌آید و صفت فقط کلیدواژه است («هدف ۱۵ بدون زمان» → همان هدفِ
+ * فوری — قابل‌یافت در فیلتر AND، فیکس راند ۷۴).
  */
 export function expandParameterized(query: string): CommandDef[] {
   const q = normalizeFa(query);
@@ -393,8 +416,9 @@ export function expandParameterized(query: string): CommandDef[] {
     if (!hit) continue;
     const useTiming = timing && spec.supportsTiming ? timing : null;
     if (!n && !useTiming) continue; // ماشه بدون عدد و بدون صفت قابل‌اعمال — صرف‌نظر
+    const ignoredTiming = timing && !spec.supportsTiming ? timing : null;
     const snapped = n ? snapToValues(n, spec.values) : spec.values[0];
-    out.push(paramCommand(spec, snapped, useTiming, n));
+    out.push(paramCommand(spec, snapped, useTiming, n, ignoredTiming));
   }
   return out;
 }
