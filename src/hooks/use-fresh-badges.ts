@@ -27,6 +27,7 @@ export function useFreshBadges(): string[] {
   const freezeUsedDays = useStudy((s) => s.freezeUsedDays);
   const freezeEarnedDay = useStudy((s) => s.freezeEarnedDay);
   const goalMetDays = useStudy((s) => s.goalMetDays);
+  const dayHistory = useStudy((s) => s.dayHistory);
   const seenBadges = useStudy((s) => s.seenBadges);
   const mounted = useMounted();
 
@@ -47,7 +48,8 @@ export function useFreshBadges(): string[] {
       freezeUsedDays,
       freezeEarnedDay,
       goalMetDays,
+      dayHistory,
     });
     return newBadgeIds(input, seenBadges);
-  }, [mounted, known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, freezeCount, freezeUsedDays, freezeEarnedDay, goalMetDays, seenBadges]);
+  }, [mounted, known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, freezeCount, freezeUsedDays, freezeEarnedDay, goalMetDays, dayHistory, seenBadges]);
 }

@@ -35,6 +35,8 @@ import {
   CalendarRange,
   Sun,
   Bird,
+  Feather,
+  Repeat,
 } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -85,6 +87,9 @@ export const BADGE_ICONS: Record<string, React.ElementType> = {
   Sun,
   // هفتهٔ بی‌قفسه (Task 83)
   Bird,
+  // نشان‌های رویدادیِ هفته (Task 84)
+  Feather,
+  Repeat,
 };
 
 const tierFa: Record<string, string> = {
@@ -112,6 +117,7 @@ export default function Badges() {
   const freezeUsedDays = useStudy((s) => s.freezeUsedDays);
   const freezeEarnedDay = useStudy((s) => s.freezeEarnedDay);
   const goalMetDays = useStudy((s) => s.goalMetDays);
+  const dayHistory = useStudy((s) => s.dayHistory);
   const seenBadges = useStudy((s) => s.seenBadges);
   const markBadgesSeen = useStudy((s) => s.markBadgesSeen);
   const mounted = useMounted();
@@ -135,8 +141,9 @@ export default function Badges() {
         freezeUsedDays,
         freezeEarnedDay,
         goalMetDays,
+        dayHistory,
       }),
-    [known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, freezeCount, freezeUsedDays, freezeEarnedDay, goalMetDays]
+    [known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, freezeCount, freezeUsedDays, freezeEarnedDay, goalMetDays, dayHistory]
   );
 
   const unlocked = useMemo(() => unlockedBadgeIds(input), [input]);

@@ -49,6 +49,8 @@ export interface BadgeEvalInput {
   goalDays: number; // چند روز هدفِ روزانه کامل شده (goalMetDays — سقف حافظه ۱۴، Task 82)
   goalDays7: number; // روزهای هدف‌دار در پنجرهٔ ۷روزه (Task 83 — همان پنجرهٔ موتور)
   rescues7: number; // نجات‌های یخ در پنجرهٔ ۷روزه (Task 83)
+  dictation7: number; // جمعِ دیکته‌های پنجرهٔ ۷روزه از dayHistory (Task 84)
+  quizzes7: number; // جمعِ آزمون‌های پنجرهٔ ۷روزه از dayHistory (Task 84)
 }
 
 function historyTotals(history: StudyState["history"]): { quizzes: number; reviews: number; days: number } {
@@ -79,6 +81,7 @@ export function buildEvalInput(s: {
   freezeUsedDays?: string[];
   freezeEarnedDay?: string;
   goalMetDays?: string[];
+  dayHistory?: StudyState["dayHistory"];
 }): BadgeEvalInput {
   const knownCount = Object.values(s.known).filter(Boolean).length;
   const rs = Object.values(s.results);
@@ -148,7 +151,37 @@ export function buildEvalInput(s: {
     // پنجره از ساعتِ واقعی می‌آید (eval روی snapshot)؛ تست‌ها با کلیدِ نسبی می‌کارند.
     goalDays7: goalList.filter((d) => d >= windowStart).length,
     rescues7: usedList.filter((d) => d >= windowStart).length,
+    // پنجرهٔ ۷روزه از dayHistory (Task 84) — همان مقایسهٔ رشته‌ایِ موتور
+    // (>= windowStart، بدون فیلترِ آینده). روزِ امروز اگر هنوز در dayHistory
+    // ثبت نشده (الگوی totalQuizzes) از dayStat اضافه می‌شود؛ ورودی‌های خرابِ
+    // هر خانه (غیرِ آبجکت) نادیده گرفته می‌شوند نه اینکه کل پنجره را بی‌اعتبار کنند.
+    ...windowCounters(s.dayHistory, windowStart, today, ds),
   };
+}
+
+/** جمعِ dictation/quizzes پنجرهٔ ۷روزه از dayHistory + fallbackِ روزِ امروز (Task 84) */
+function windowCounters(
+  dayHistory: StudyState["dayHistory"] | undefined,
+  windowStart: string,
+  today: string,
+  ds: ReturnType<typeof normDayStat>
+): Pick<BadgeEvalInput, "dictation7" | "quizzes7"> {
+  let dictation7 = 0;
+  let quizzes7 = 0;
+  if (dayHistory && typeof dayHistory === "object") {
+    for (const [key, raw] of Object.entries(dayHistory)) {
+      if (key < windowStart || !raw || typeof raw !== "object") continue;
+      const st = normDayStat(raw as Partial<StudyState["dayStat"]>);
+      dictation7 += Number.isFinite(st.dictation) ? Math.max(0, st.dictation) : 0;
+      quizzes7 += Number.isFinite(st.quizzes) ? Math.max(0, st.quizzes) : 0;
+    }
+  }
+  const todayInHistory = !!(dayHistory && typeof dayHistory === "object" && (dayHistory as Record<string, unknown>)[today]);
+  if (!todayInHistory) {
+    dictation7 += Number.isFinite(ds.dictation) ? Math.max(0, ds.dictation) : 0;
+    quizzes7 += Number.isFinite(ds.quizzes) ? Math.max(0, ds.quizzes) : 0;
+  }
+  return { dictation7, quizzes7 };
 }
 
 /**
@@ -439,6 +472,31 @@ export const BADGES: BadgeDef[] = [
     tier: "gold",
     progress: (s) => `${faNum(Math.min(s.goalDays7, 7))} از ۷ روزِ این هفته`,
     check: (s) => s.goalDays7 >= 7 && s.rescues7 === 0,
+  },
+  // ---- نشان‌های رویدادیِ هفته (Task 84) — از dayHistory، همان پنجرهٔ موتور.
+  // هدف فقط با reviews/quizzes کامل می‌شود (dictation/words/rush بای‌پسِ هدف‌اند
+  // — جدول سیاستِ effects.ts)؛ پس «بی‌دیکته» یعنی هفتهٔ هدف‌دار که تنوعِ مهارت
+  // داشت و دیکته‌ای در کار نبود، و «بی‌آزمون» یعنی هفته‌ای که فقط با مرور پر شد.
+  // دو شمارنده مستقل‌اند (trackDictation فقط dictation را بالا می‌برد) — هیچ‌کدام
+  // دیگری را نمی‌پوشاند. پیشرفتِ زیرِ قفل فقط بُعدِ روز را نشان می‌دهد — الگوی
+  // cage-free: اگر ۷/۷ ولی شرطِ صفر برقرار نیست، desc توضیح می‌دهد نه حدس.
+  {
+    id: "week-no-dictation",
+    title: "هفتهٔ بی‌دیکته",
+    desc: "یک هفتهٔ کامل هدف‌دار بدون حتی یک دیکته — با مهارت‌های دیگر هم هفته پر می‌شود",
+    icon: "Feather",
+    tier: "silver",
+    progress: (s) => `${faNum(Math.min(s.goalDays7, 7))} از ۷ روزِ این هفته`,
+    check: (s) => s.goalDays7 >= 7 && s.dictation7 === 0,
+  },
+  {
+    id: "week-no-exam",
+    title: "هفتهٔ بی‌آزمون",
+    desc: "هفت روزِ هدف‌دار بدون حتی یک آزمون — این هفته را فقط مرور و تکرار پر کرده",
+    icon: "Repeat",
+    tier: "silver",
+    progress: (s) => `${faNum(Math.min(s.goalDays7, 7))} از ۷ روزِ این هفته`,
+    check: (s) => s.goalDays7 >= 7 && s.quizzes7 === 0,
   },
 ];
 

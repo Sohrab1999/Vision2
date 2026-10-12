@@ -67,7 +67,7 @@ export default function HomeToday() {
             {mounted && freezeCount > 0 && (
               <span
                 title={`یخِ زنجیره: یک روز غیبت را خودکار پوشش می‌دهد (سقف ${faNum(FREEZE_CAP)} یخ)`}
-                className="mt-1 inline-flex w-fit items-center gap-1 rounded-full border border-sky-200 bg-sky-50 px-2 py-0.5 text-[10.5px] font-black text-sky-600"
+                className="mt-1 inline-flex w-fit items-center gap-1 rounded-full border c-chip-freeze px-2 py-0.5 text-[10.5px] font-black"
               >
                 <Snowflake size={11} />
                 {faNum(freezeCount)} یخِ زنجیره

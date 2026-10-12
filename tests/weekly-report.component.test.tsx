@@ -157,4 +157,19 @@ describe("دفتر یخ در هفته‌نامه — کامپوننت (Task 78)"
     expect(legend).toHaveTextContent("فعال ولی ناقص");
     expect(legend).toHaveTextContent("نجات با یخ");
   });
+
+  it("دستور رنگ‌ها (Task 84): زبانِ نوار ۱۴روزه هم با نمونهٔ هم‌کلاس آموزش داده می‌شود", () => {
+    const { container } = render(<WeeklyReportSection />);
+    const legend = container.querySelector(".report-legend");
+    expect(legend).not.toBeNull();
+    // نمونهٔ فعالیت = عین گرادیانِ نوارِ فعالِ این هفته
+    expect(legend?.querySelector(".from-teal-600.via-emerald-500.to-lime-400")).not.toBeNull();
+    // نمونهٔ هفتهٔ پیش = عین نوارِ سنگیِ فعالِ هفتهٔ پیش
+    expect(legend?.querySelector(".bg-stone-300")).not.toBeNull();
+    // نمونهٔ امروز = حلقهٔ زمردیِ امروز (همان ring روی نوار)
+    expect(legend?.querySelector(".ring-emerald-500\\/60")).not.toBeNull();
+    expect(legend).toHaveTextContent("فعالیت");
+    expect(legend).toHaveTextContent("هفتهٔ پیش");
+    expect(legend).toHaveTextContent("امروز");
+  });
 });

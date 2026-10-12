@@ -315,8 +315,129 @@ describe("هفتهٔ بی‌قفسه — پنجرهٔ موتور (Task 83)", () 
   });
 });
 
+describe("نشان‌های رویدادیِ هفته — dayHistory پنجرهٔ موتور (Task 84)", () => {
+  const w = (n: number) => daysAgoKey(n);
+  const fullWeek = () => [w(0), w(1), w(2), w(3), w(4), w(5), w(6)];
+  /** خانهٔ استاندارد dayHistory */
+  const dh = (over: Record<string, unknown>) => ({
+    day: "",
+    reviews: 0,
+    quizzes: 0,
+    words: 0,
+    dictation: 0,
+    rush: 0,
+    ...over,
+  });
+
+  it("wording و تیر و آیکن قفل است — هر دو نقره‌ای (Feather/Repeat)", () => {
+    expect(byId("week-no-dictation").title).toBe("هفتهٔ بی‌دیکته");
+    expect(byId("week-no-dictation").tier).toBe("silver");
+    expect(byId("week-no-dictation").icon).toBe("Feather");
+    expect(byId("week-no-exam").title).toBe("هفتهٔ بی‌آزمون");
+    expect(byId("week-no-exam").tier).toBe("silver");
+    expect(byId("week-no-exam").icon).toBe("Repeat");
+  });
+
+  it("تازه‌وارد: قفل؛ هفتهٔ کامل با dayHistoryِ بی‌دیکته/بی‌آزمون: هر دو باز", () => {
+    expect(ids(base())).not.toContain("week-no-dictation");
+    expect(ids(base())).not.toContain("week-no-exam");
+    // هفتهٔ کامل هدف‌دار + پنجره فقط مرور (reviews) → هر دو رویداد با هم
+    const pure = base({
+      goalMetDays: fullWeek(),
+      dayHistory: { [w(1)]: dh({ day: w(1), reviews: 6 }), [w(3)]: dh({ day: w(3), reviews: 5 }) },
+    });
+    expect(ids(pure)).toContain("week-no-dictation");
+    expect(ids(pure)).toContain("week-no-exam");
+    expect(pure.dictation7).toBe(0);
+    expect(pure.quizzes7).toBe(0);
+  });
+
+  it("دیکتهٔ درون‌پنجره‌ای «بی‌دیکته» را قفل می‌کند ولی «بی‌آزمون» نه — استقلالِ شمارنده‌ها", () => {
+    // قراردادِ effects.ts: trackDictation فقط dictation را بالا می‌برد (نه quizzes)
+    const withDictation = base({
+      goalMetDays: fullWeek(),
+      dayHistory: { [w(3)]: dh({ day: w(3), dictation: 2 }) },
+    });
+    expect(withDictation.dictation7).toBe(2);
+    expect(withDictation.quizzes7).toBe(0);
+    expect(ids(withDictation)).not.toContain("week-no-dictation");
+    expect(ids(withDictation)).toContain("week-no-exam");
+    // ۷/۷ ولی قفل — پیشرفت فریب نمی‌دهد (الگوی cage-free)
+    expect(byId("week-no-dictation").progress!(withDictation)).toBe("۷ از ۷ روزِ این هفته");
+  });
+
+  it("آزمونِ درون‌پنجره‌ای «بی‌آزمون» را قفل می‌کند ولی «بی‌دیکته» نه — جهتِ مقابل", () => {
+    const withQuiz = base({
+      goalMetDays: fullWeek(),
+      dayHistory: { [w(2)]: dh({ day: w(2), quizzes: 3 }) },
+    });
+    expect(withQuiz.quizzes7).toBe(3);
+    expect(ids(withQuiz)).not.toContain("week-no-exam");
+    expect(ids(withQuiz)).toContain("week-no-dictation");
+  });
+
+  it("مرز پنجره: دیکتهٔ w(7) بیرون می‌شمارد، w(6) (windowStart) داخل", () => {
+    const outside = base({
+      goalMetDays: fullWeek(),
+      dayHistory: { [w(7)]: dh({ day: w(7), dictation: 1, quizzes: 1 }) },
+    });
+    expect(outside.dictation7).toBe(0);
+    expect(ids(outside)).toContain("week-no-dictation");
+    const inside = base({
+      goalMetDays: fullWeek(),
+      dayHistory: { [w(6)]: dh({ day: w(6), dictation: 1 }) },
+    });
+    expect(inside.dictation7).toBe(1);
+    expect(ids(inside)).not.toContain("week-no-dictation");
+  });
+
+  it("جمعِ چندروزه + fallbackِ امروز: امروزِ غایب در dayHistory از dayStat می‌آید، حاضر دوبار شمرده نمی‌شود", () => {
+    // امروز در dayHistory نیست → دیکتهٔ امروز از dayStat اضافه می‌شود
+    const todayFallback = base({
+      goalMetDays: fullWeek(),
+      dayHistory: { [w(2)]: dh({ day: w(2), dictation: 1 }) },
+      dayStat: { day: w(0), reviews: 0, quizzes: 0, words: 0, dictation: 2, rush: 0 },
+    });
+    expect(todayFallback.dictation7).toBe(3);
+    expect(ids(todayFallback)).not.toContain("week-no-dictation");
+    // امروز در dayHistory هست → dayStat نادیده (بدون دوبرابرشدن)
+    const todayPresent = base({
+      goalMetDays: fullWeek(),
+      dayHistory: { [w(0)]: dh({ day: w(0), dictation: 1 }) },
+      dayStat: { day: w(0), reviews: 0, quizzes: 0, words: 0, dictation: 5, rush: 0 },
+    });
+    expect(todayPresent.dictation7).toBe(1);
+  });
+
+  it("گاردِ ورودی خراب: خانهٔ غیرِ آبجکت نادیده، منفی/NaN کلمپ، dayHistoryِ غایب → صفر", () => {
+    const corrupt = buildEvalInput(
+      baseRaw({
+        goalMetDays: fullWeek(),
+        dayHistory: {
+          [w(1)]: null,
+          [w(2)]: "junk",
+          [w(3)]: dh({ day: w(3), dictation: -2, quizzes: Number.NaN }),
+          [w(4)]: dh({ day: w(4), dictation: 1 }),
+        },
+      }) as unknown as BuildArgs
+    );
+    // خانه‌های خراب رد می‌شوند؛ w(3) کلمپ به صفر؛ w(4)=۱ → دیکته قفل، آزمون باز
+    expect(corrupt.dictation7).toBe(1);
+    expect(corrupt.quizzes7).toBe(0);
+    expect(ids(corrupt)).not.toContain("week-no-dictation");
+    expect(ids(corrupt)).toContain("week-no-exam");
+    const absent = base({ goalMetDays: fullWeek() });
+    expect(absent.dictation7).toBe(0);
+    expect(absent.quizzes7).toBe(0);
+    // dayHistory غایب + هفتهٔ کامل → هر دو رویداد باز (سقوطِ امن به صفر)
+    expect(ids(absent)).toContain("week-no-dictation");
+    expect(ids(absent)).toContain("week-no-exam");
+  });
+});
+
 describe("newBadgeIds — قرارداد واحدِ «تازه» (Task 82)", () => {
-  const seven = base({ goalMetDays: ["2026-10-12", "2026-10-11", "2026-10-10", "2026-10-09", "2026-10-08", "2026-10-07", "2026-10-06"] });
+  // (درسِ ۸۳) کلیدهای نسبی — seed مطلق بمبِ ساعتیِ منطقهٔ زمانی است
+  const seven = base({ goalMetDays: [0, 1, 2, 3, 4, 5, 6].map((n) => daysAgoKey(n)) });
 
   it("بازهای دیده‌نشده به ترتیب رجیستری برمی‌گردند", () => {
     const fresh = newBadgeIds(seven, []);
@@ -329,9 +450,10 @@ describe("newBadgeIds — قرارداد واحدِ «تازه» (Task 82)", () 
 
   it("دیده‌شده‌ها فیلتر می‌شوند — فقط نام‌دیده‌ها برمی‌گردند", () => {
     const fresh = newBadgeIds(seven, ["goal-first", "goal-five"]);
-    // (Task 83) هفت روزِ پشت‌سرهمِ بی‌نجات = هفتهٔ بی‌قفسه هم باز است —
-    // seed با تاریخِ مطلق است و امروزِ دستگاه UTC است؛ cage-free همراهش می‌آید
-    expect(fresh).toEqual(["goal-week", "cage-free"]);
+    // (Task 83) هفت روزِ پشت‌سرهمِ بی‌نجات = هفتهٔ بی‌قفسه هم باز است
+    // (Task 84) dayHistoryِ غایب → جمعِ دیکته/آزمونِ پنجره صفر —
+    // هر دو نشانِ رویدادی هم با هر هفتهٔ کاملِ هدف‌دار همراه می‌آیند
+    expect(fresh).toEqual(["goal-week", "cage-free", "week-no-dictation", "week-no-exam"]);
   });
 
   it("seen خراب → فقط رشته‌ها معتبر؛ ورودیِ تازه‌وارد → خالی", () => {
@@ -339,6 +461,8 @@ describe("newBadgeIds — قرارداد واحدِ «تازه» (Task 82)", () 
       "goal-first",
       "goal-five",
       "cage-free",
+      "week-no-dictation",
+      "week-no-exam",
     ]);
     expect(newBadgeIds(base(), [])).toEqual([]);
   });

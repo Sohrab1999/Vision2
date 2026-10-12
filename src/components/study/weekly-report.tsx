@@ -188,15 +188,22 @@ export default function WeeklyReportSection() {
             دفتر یخ
           </div>
           <div className="flex items-center gap-1">
-            <span className="inline-flex items-center gap-0.5 rounded-full border border-sky-200 bg-sky-50 px-1.5 py-0.5 text-[9.5px] font-black text-sky-600">
+            {/* چیپ‌های مخزن/نجات (Task 84) — مهاجرت به کلاسِ معناییِ c-chip-freeze
+                (ترانش ۴ فاز ۱٫۵): ارزش‌ها عین همین بردار بودند — صفرِ انحراف.
+                چیپِ «نجات امروز» پایین‌تر عامدانه خارج ماند: text-sky-700 و قاعدهٔ
+                unlayered بر utilities برتری دارد — ترکیب می‌شکست. */}
+            <span className="inline-flex items-center gap-0.5 rounded-full border c-chip-freeze px-1.5 py-0.5 text-[9.5px] font-black">
               {ledger.stockLabel}
             </span>
             {ledger.rescueLabel && (
-              <span className="inline-flex items-center gap-0.5 rounded-full border border-sky-200 bg-sky-50 px-1.5 py-0.5 text-[9.5px] font-black text-sky-600">
+              <span className="inline-flex items-center gap-0.5 rounded-full border c-chip-freeze px-1.5 py-0.5 text-[9.5px] font-black">
                 <Check size={9} aria-hidden />
                 {ledger.rescueLabel}
               </span>
             )}
+            {/* تعمد (Task 84): «نجات امروز» بیرونِ مهاجرت ماند — text-sky-700
+                قوی‌تر از sky-600ِ خانواده است و قاعدهٔ unlayered بر utilities
+                برتری دارد؛ ترکیبِ c-chip-freeze + text-sky-700 می‌شکست */}
             {ledger.savedToday && (
               <span className="inline-flex items-center gap-0.5 rounded-full border border-sky-200 bg-sky-50 px-1.5 py-0.5 text-[9.5px] font-black text-sky-700">
                 <Check size={9} aria-hidden />
@@ -244,6 +251,19 @@ export default function WeeklyReportSection() {
         <span className="flex items-center gap-1 text-[9.5px] font-bold text-stone-500">
           <span className="h-2.5 w-2.5 rounded-full border border-sky-500 bg-sky-50" aria-hidden />
           نجات با یخ
+        </span>
+        {/* زبانِ نوار ۱۴روزه (Task 84) — نمونه‌ها دقیقاً همان کلاس‌های خودِ نوارها */}
+        <span className="flex items-center gap-1 text-[9.5px] font-bold text-stone-500">
+          <span className="h-2.5 w-2.5 rounded-[3px] bg-gradient-to-t from-teal-600 via-emerald-500 to-lime-400" aria-hidden />
+          فعالیت
+        </span>
+        <span className="flex items-center gap-1 text-[9.5px] font-bold text-stone-500">
+          <span className="h-2.5 w-2.5 rounded-[3px] bg-stone-300" aria-hidden />
+          هفتهٔ پیش
+        </span>
+        <span className="flex items-center gap-1 text-[9.5px] font-bold text-stone-500">
+          <span className="h-2.5 w-2.5 rounded-[3px] bg-white ring-2 ring-emerald-500/60 ring-offset-1" aria-hidden />
+          امروز
         </span>
       </div>
 
