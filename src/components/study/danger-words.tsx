@@ -10,7 +10,7 @@
 
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { AlertTriangle, Sparkles, Zap, TrendingDown } from "lucide-react";
+import { AlertTriangle, Sparkles, Zap, TrendingDown, Star } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { dangerWords, buildDangerQuiz, type DangerWord } from "@/lib/word-risk";
@@ -26,8 +26,12 @@ const lessonFa = (id: number) => (id === 1 ? "درس اول" : id === 2 ? "در�
 export default function DangerWords() {
   const wordMistakes = useStudy((s) => s.wordMistakes);
   const wordSeen = useStudy((s) => s.wordSeen);
+  const starredWords = useStudy((s) => s.starredWords);
+  const toggleStarred = useStudy((s) => s.toggleStarred);
   const setView = useStudy((s) => s.setView);
   const mounted = useMounted();
+
+  const starredSet = useMemo(() => new Set(starredWords), [starredWords]);
 
   const [flashOpen, setFlashOpen] = useState(false);
   const [practiceOpen, setPracticeOpen] = useState(false);
@@ -136,6 +140,28 @@ export default function DangerWords() {
                         </span>
                       </div>
                     </div>
+                    {(() => {
+                      const isStarred = starredSet.has(d.key);
+                      return (
+                        <motion.button
+                          whileTap={{ scale: 0.75 }}
+                          onClick={() => toggleStarred(d.key)}
+                          title={isStarred ? `حذف «${d.en}» از واژه‌های من` : `افزودن «${d.en}» به واژه‌های من`}
+                          aria-label={isStarred ? `حذف «${d.en}» از واژه‌های من` : `افزودن «${d.en}» به واژه‌های من`}
+                          aria-pressed={isStarred}
+                          className="shrink-0 self-start rounded-md p-1 transition-all hover:scale-110 active:scale-90"
+                        >
+                          <Star
+                            size={15}
+                            className={
+                              isStarred
+                                ? "fill-amber-400 text-amber-400"
+                                : "text-stone-300 transition-colors hover:text-amber-400"
+                            }
+                          />
+                        </motion.button>
+                      );
+                    })()}
                   </motion.li>
                 );
               })}
@@ -159,6 +185,8 @@ export default function DangerWords() {
             </div>
             <p className="mt-2.5 text-center text-[10.5px] leading-5 text-stone-400">
               این تحلیل از تست‌های واژگان، دیکته و تمرین شنیداریِ خودت ساخته می‌شود — هرچه بیشتر تمرین کنی دقیق‌تر می‌شود.
+              <br />
+              واژه‌های خطرناک را با <Star size={10} className="inline fill-amber-400 text-amber-400" /> ستاره به «واژه‌های من» بفرست تا در آزمون و فلش‌کارت شخصی مرور شوند.
             </p>
           </>
         )}

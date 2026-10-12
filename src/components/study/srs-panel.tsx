@@ -2,10 +2,12 @@
 
 import { useMemo } from "react";
 import { motion } from "framer-motion";
-import { RefreshCcw, Sparkles, CalendarClock, CheckCircle2, TrendingUp, Sprout, BookOpenCheck } from "lucide-react";
+import { RefreshCcw, Sparkles, CalendarClock, CheckCircle2, TrendingUp, Sprout, BookOpenCheck, AlarmClock, ArrowLeft } from "lucide-react";
 import { useStudy, srsDueTotal, firstLessonWithDue, type SrsItem } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
+import { srsDueSummary } from "@/lib/srs-due";
+import { trackEvent } from "@/lib/analytics";
 
 // ------------------------------------------------------------------
 // داشبورد مرور هوشمند — health of the SRS queue:
@@ -56,6 +58,20 @@ export default function SrsPanel() {
 
   const reviewLesson = mounted ? firstLessonWithDue(srs) : null;
   const dueTotal = mounted ? srsDueTotal(srs) : 0;
+
+  // «سررسید الآن» — WHICH words are due (oldest first), not just how many;
+  // every count here is resolvable-only so the block is self-consistent
+  const dueInfo = useMemo(
+    () => (mounted ? srsDueSummary(srs, Date.now(), 5) : { words: [], dueTotal: 0 }),
+    [srs, mounted]
+  );
+  const dueWords = dueInfo.words;
+  const dueOverflow = Math.max(0, dueInfo.dueTotal - dueWords.length);
+
+  const startSmartReview = () => {
+    trackEvent("srs_due_review");
+    openLesson(reviewLesson ?? 1, "smart");
+  };
 
   const chips = [
     { icon: CalendarClock, label: "سررسید الآن", value: stats?.due ?? 0, cls: "bg-rose-50 text-rose-600" },
@@ -144,6 +160,51 @@ export default function SrsPanel() {
             </div>
           </div>
 
+          {/* due-now word chips — the concrete "which words" layer */}
+          {dueWords.length > 0 && (
+            <div className="srs-due-preview mb-4 rounded-xl border border-rose-100 bg-white/70 p-3 shadow-sm">
+              <div className="mb-2 flex items-center gap-1.5">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-rose-400 opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-rose-500" />
+                </span>
+                <span className="flex items-center gap-1 text-[11px] font-bold text-stone-500">
+                  <AlarmClock size={12} className="text-rose-500" />
+                  سررسید الآن — با یک ضربه مرور کن:
+                </span>
+                <span className="mr-auto rounded-full bg-rose-50 px-2 py-0.5 text-[10px] font-black text-rose-600">
+                  {faNum(dueInfo.dueTotal)} واژه
+                </span>
+              </div>
+              <div className="flex flex-wrap gap-1.5">
+                {dueWords.map((w) => (
+                  <motion.button
+                    key={w.key}
+                    whileTap={{ scale: 0.92 }}
+                    onClick={startSmartReview}
+                    title={`${w.en} — سطح ${faNum(w.level + 1)} از ۶`}
+                    className="srs-due-chip group flex items-center gap-1.5 rounded-lg border border-rose-100 bg-white px-2 py-1 shadow-sm transition-all hover:-translate-y-0.5 hover:border-rose-300 hover:shadow active:scale-95"
+                  >
+                    <span className="en-text text-[12px] font-bold text-stone-800" dir="ltr">
+                      {w.en}
+                    </span>
+                    <span className="hidden text-[10px] text-stone-400 sm:inline">{w.fa}</span>
+                    <ArrowLeft size={11} className="text-rose-400 opacity-0 transition-opacity group-hover:opacity-100" />
+                  </motion.button>
+                ))}
+                {dueOverflow > 0 && (
+                  <motion.button
+                    whileTap={{ scale: 0.92 }}
+                    onClick={startSmartReview}
+                    className="srs-due-chip rounded-lg border border-dashed border-rose-200 bg-white/50 px-2 py-1 text-[11px] font-bold text-rose-500 transition-all hover:border-rose-400 active:scale-95"
+                  >
+                    +{faNum(dueOverflow)} واژهٔ دیگر
+                  </motion.button>
+                )}
+              </div>
+            </div>
+          )}
+
           {/* 7-day forecast */}
           {stats && stats.total > 0 && (
             <div>
@@ -175,7 +236,7 @@ export default function SrsPanel() {
         {/* CTA */}
         <div className="flex flex-col items-stretch gap-2.5 lg:w-52">
           <button
-            onClick={() => openLesson(reviewLesson ?? 1, "smart")}
+            onClick={startSmartReview}
             className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-l from-teal-600 to-emerald-600 px-5 py-3 text-[13px] font-black text-white shadow-lg shadow-emerald-900/20 transition-all hover:opacity-95 active:scale-95"
           >
             <Sparkles size={16} />

@@ -677,6 +677,21 @@ body {
 .dark .srs-panel .text-emerald-600 { color: #34d399; }
 .dark .srs-panel .bg-stone-200 { background-color: #292524; }
 
+/* due-words preview (سررسید الآن) inside the SRS panel */
+.dark .srs-panel .srs-due-preview {
+  background-color: rgb(28 25 23 / 0.8);
+  border-color: rgb(120 30 45 / 0.5);
+}
+.dark .srs-panel .srs-due-chip {
+  background-color: #1c1917;
+  border-color: rgb(120 30 45 / 0.55);
+}
+.dark .srs-panel .srs-due-chip:hover {
+  border-color: rgb(190 40 60 / 0.8);
+}
+.dark .srs-panel .srs-due-chip .text-rose-500 { color: #fb7185; }
+.dark .srs-panel .srs-due-chip .text-rose-400 { color: #fb7185; }
+
 /* ---------------- spell buttons (dictation) dark ---------------- */
 .dark .border-sky-200 { border-color: rgb(7 66 84 / 0.7); }
 .dark .bg-sky-50 { background-color: rgba(8, 47, 60, 0.45); }
