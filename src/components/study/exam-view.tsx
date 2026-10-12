@@ -1,13 +1,17 @@
 "use client";
 
-import { useState } from "react";
-import { ClipboardCheck, Timer, Zap, BookOpen, GraduationCap, ScrollText, Eraser, Layers, ArrowLeft } from "lucide-react";
+import { useState, useMemo } from "react";
+import { ClipboardCheck, Timer, Zap, BookOpen, GraduationCap, ScrollText, Eraser, Layers, ArrowLeft, Ear } from "lucide-react";
 import { examBank, lessons } from "@/data";
 import type { QuizQuestion } from "@/lib/study-types";
 import { useStudy, mistakesOfLesson } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { themeOf, faNum } from "@/lib/study-theme";
+import { trackEvent } from "@/lib/analytics";
+import { buildExamDictation, DICTATION_MIN_EXAM } from "@/lib/exam-dictation";
 import QuizEngine from "./quiz-engine";
+import DictationTab from "./dictation-tab";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { shuffle } from "@/lib/domain/shuffle";
 
 /** source lesson of a question from its id prefix (l1-, l2-, l3-, x-) */
@@ -41,11 +45,19 @@ export default function ExamView() {
   const [examCount, setExamCount] = useState(10);
   const [examTimed, setExamTimed] = useState(true);
   const [finalTimed, setFinalTimed] = useState(true);
+  const [dictOpen, setDictOpen] = useState(false);
   const bestExam = useStudy((s) => s.results["exam"]);
   const bestFinal = useStudy((s) => s.results["final"]);
   const mistakes = useStudy((s) => s.mistakes);
   const setView = useStudy((s) => s.setView);
   const mounted = useMounted();
+
+  /* The exam pool is STATIC (pure function of examBank) — build once on
+     mount and reuse the same object as the dialog's source, so the round
+     is a stable snapshot and the CTA always knows its size. */
+  const examDictPool = useMemo(() => buildExamDictation(), []);
+  const examDictSource = dictOpen ? examDictPool : null;
+  const examDictCount = examDictPool.words.length;
 
   const examMistakeCount = mounted ? mistakesOfLesson(mistakes, 0) : 0;
   const totalMistakesAll = mounted
@@ -204,7 +216,7 @@ export default function ExamView() {
                   kind: "exam-mistakes",
                 })
               }
-              className="mt-4 flex w-full items-center justify-between gap-3 rounded-2xl border border-rose-300 bg-gradient-to-l from-rose-50 to-red-50 p-4 text-right shadow-sm transition-all hover:shadow-md active:scale-[0.99]"
+              className="exam-mistakes-cta mt-4 flex w-full items-center justify-between gap-3 rounded-2xl border border-rose-300 bg-gradient-to-l from-rose-50 to-red-50 p-4 text-right shadow-sm transition-all hover:shadow-md active:scale-[0.99]"
             >
               <span className="flex items-center gap-3">
                 <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-rose-500 text-white shadow-md shadow-rose-500/30">
@@ -222,6 +234,48 @@ export default function ExamView() {
               </span>
             </button>
           )}
+
+          {/* exam-bank vocabulary dictation — spell what the 360 bank tests, by ear */}
+          <button
+            onClick={() => (setDictOpen(true), trackEvent("exam_dictation_start"))}
+            disabled={examDictCount < DICTATION_MIN_EXAM}
+            title={
+              examDictCount < DICTATION_MIN_EXAM
+                ? `حداقل ${faNum(DICTATION_MIN_EXAM)} واژهٔ کنکوری لازم است`
+                : `${faNum(examDictCount)} واژه‌ای که بانک ${faNum(examBank.length)} تستی واقعاً آزمون می‌کند`
+            }
+            className="exam-dict-cta mt-4 flex w-full items-center justify-between gap-3 rounded-2xl border border-emerald-200 bg-gradient-to-l from-emerald-50 to-white p-4 text-right shadow-sm transition-all hover:shadow-md active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            <span className="flex items-center gap-3">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-500 text-white shadow-md shadow-emerald-500/30">
+                <Ear size={20} />
+              </span>
+              <span>
+                <span className="block text-sm font-extrabold text-stone-800">دیکتهٔ واژگان کنکور</span>
+                <span className="block text-[12px] text-stone-500">
+                  املای شنیداری {faNum(examDictCount)} واژه‌ای که بانک تستی جزوه واقعاً می‌پرسد — هجیِ درست یعنی ارتقای واقعی مرور
+                </span>
+              </span>
+            </span>
+            <span className="shrink-0 rounded-xl bg-emerald-600 px-4 py-2.5 text-[13px] font-bold text-white shadow-md shadow-emerald-600/30">
+              شروع دیکته
+            </span>
+          </button>
+
+          {/* exam dictation dialog — 5th DictationSource (360-bank vocabulary) */}
+          <Dialog open={dictOpen} onOpenChange={setDictOpen}>
+            <DialogContent className="max-h-[92vh] max-w-2xl overflow-y-auto nice-scroll">
+              <DialogHeader className="text-right">
+                <DialogTitle className="flex items-center gap-2 text-base">
+                  <Ear size={16} className="text-emerald-600" />
+                  دیکتهٔ واژگان بانک آزمون
+                </DialogTitle>
+              </DialogHeader>
+              {examDictSource && (
+                <DictationTab source={examDictSource} onExit={() => setDictOpen(false)} exitLabel="بازگشت به آزمون جامع" />
+              )}
+            </DialogContent>
+          </Dialog>
         </div>
       )}
 

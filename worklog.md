@@ -1527,3 +1527,28 @@ Stage Summary:
 - سطح ۲ (fallback بین‌درسی) فقط در wordByKey است (کلیدهای تاریخی/یتیم)، نه در matchVocabWord (منشأ سؤال مقدس است)
 - باقی‌مانده: گام ۹ ترانش ۳ب/۴ (کلاس‌های معنایی R-7 برای هدف ≤۵۰۰)، گام ۱۰ بخش ۲ (regroup، receipt دودل، زیرساخت تست کامپوننت)؛ فیچرهای باز: دیکتهٔ بانک آزمون (پنجمین DictationSource)، ریزولور دو-سطحی حالا مهاجرت سازنده‌ها را هم ممکن کرده (اختیاری)
 - [یادداشت عملیاتی] چرخهٔ Turbopack این راند لازم نشد (فقط ts/tsx تغییر کرد — HMR سبز)؛ دودل هفتمین ری‌استارتِ next را زنده گذراند
+
+---
+Task ID: 63 (job 453171)
+Agent: main (Z.ai Code)
+Task: فیچر «دیکتهٔ واژگان کنکور» — پنجمین DictationSource (۱۴۹ واژه‌ای که بانک ۳۶۰ تستی واقعاً می‌پرسد) + باگ دارک گرادیان‌های tinted در exam-view
+
+Work Log:
+- [وضعیت‌سنجی] task 62 سر جایش (b405d4d)، گیت‌ها سبز (۳۰۸/۳۰۸)، هر دو سرویس زنده، اسموک کنسول-صفر و موبایل ۳۹۰ سرریز ۰ → راند فیچرمحور؛ طبق معماری باز DictationSource (task 58) پنجمین منبع: بانک آزمون — همان پایِ بازِ ثبت‌شده در Stage Summary های ۵۸-۶۲
+- [کشف داده‌ای] examBank کامل ۳۶۰ سؤال است (exam-view ۱۰/۲۰/۳۰ تا بُر می‌زند)؛ اسکن: گزینهٔ درستِ سؤال‌ها → **۱۴۹ واژهٔ متمایزِ قابل‌حل** به واژگان کتاب (interview/measure/native/tongue…)؛ عبارت‌های غیرواژگانی («referring to»، «meet the needs of»، «belongs to») و واژه‌هایی که کتاب درس نداده (explain/carpets/population) رد می‌شوند — دستهٔ دیکته فقط واژه‌های قابل‌حل را می‌دهد
+- [رزولور تازه vocabByText] در word-risk.ts: اولین-رخدادِ متنِ بدون منشأ درس (گزینهٔ درست بانک آزمون درس صفر است) — case/punct-insensitive با همان clean()؛ سازنده با قرارداد first-occurrence اسپرینت (task 61) کلید canonical می‌سازد
+- [سازندهٔ خالص src/lib/exam-dictation.ts] buildExamDictation() → DictationSource (id "exam"، رنگ emerald — لهجهٔ سطح آزمون، statsLesson 0، category "exam-dictation") با storeKey روی کلیدهای canonical؛ سطل نتیجه "exam:dictation" متمایز از سطل آزمونِ "exam" و چهار منبع قبلی؛ dedupe با رشتهٔ en (بانک واژه‌های پرس‌پسند را چندبار می‌پرسد — native در x-7 و x-18)؛ کف اهلیت DICTATION_MIN_EXAM=4 هم‌پار سه لانچر دیگر؛ رویداد قیفی exam_dictation_start در رجیستری + برچسب فارسی
+- [CTA در exam-view] بنر گرادیانی emerald زیر مرور اشتباهات در باکس پیکربندی آزمون واژگان: Ear icon + «دیکتهٔ واژگان کنکور» + زیرنویس «۱۴۹ واژه‌ای که بانک ۳۶۰تستی واقعاً می‌پرسد» + tooltip؛ استخر استاتیک → useMemo یک‌بار در mount (هم منبع دیالوگ هم شمارندهٔ CTA — رفع میانهٔ توسعه: نسخهٔ اول count را از منبعِ open-gated می‌گرفت و «۰ واژه» نشان می‌داد)؛ دیالوگ با DictationTab مشترک + exitLabel «بازگشت به آزمون جامع»
+- [باگ دارک یافتهٔ پروب] توقف گرادیانی tinted (from-*/to-*) بیرون از کرنل تُن است — قاعدهٔ دامنه‌ای لازم دارد (الگوی .review-hero)؛ CTA تازهٔ من در دارک روشن می‌ماند (stop اول lab(97.8)!) و **دکمهٔ مرور اشتباهات آزمون هم از راند ۵۰ چیزی همان‌طور**؛ فیکس: کلاس‌های معنایی exam-dict-cta/exam-mistakes-cta + دو قاعدهٔ .dark گرادیانی (rgba سرمه‌ای تیره → شب‌فام، هم‌خانوادهٔ heroها) — روشن دست‌نخورده
+- [تست +۹ → ۳۱۷/۳۱۷] tests/exam-dictation.test.ts: vocabByText (حروف بزرگ/علائم/garbage)، استخر ≥۱۰۰ از بانک ۳۶۰تایی، قرارداد id/label/color/statsLesson/category، تمایز سطل از "exam"، همهٔ کلیدها قابل‌حل + fa/en با کتاب، سنجاق first-occurrence + عدم تکرار، «فقط واژه‌هایی که بانک می‌پرسد» + عدم لو رفتن عبارت‌های غیرواژگانی، هم‌کف بودن سه کف، هم‌شکلی با خروجی buildDangerDictation (شکل مشترک DictationSource)
+- [QA زندهٔ تک‌سشن] seed known → ناوبری به آزمون → CTA (۱۴۹ ✓ disabled=false ✓) → دیالوگ (عنوان + ۴ دکمهٔ تعداد + بازگشت) → نقشهٔ fa→en کامل ۱۴۸تایی درون صفحه (base64+TextDecoder — ۱ برخورد fa بی‌اهمیت) → دور ۸تایی (۵ درست تایپی + ۱ رد + ۱ غلط عمدی) → ۷۵٪ → سطل {8,75} + **۸ ورودی SRS روی کلیدهای اولین-رخداد** (3:achieve، 1:interview، 2:attend…) + dayStat دیکته + استریک ۱ → خروج با «بازگشت به آزمون جامع» دقیق ✓
+- [چرخهٔ Turbopack + دام] پس از تغییر globals.css ری‌استارت لازم شد؛ کشف: باینری next روی PATH نیست (exec: next not found) — باید node_modules/.bin/next یا bun run dev؛ الگوی برنده: (setsid nohup node_modules/.bin/next dev … &) داخل زیرپوسته؛ دودل زنده ماند (PID 26902، هشتمین راند)
+- [بهداشت DB] یک دور دیکتهٔ QA خودثبت شد (لرنر u-mv5bwyy1 + ۱ attempt exam-dictation) → حذف؛ EventDay: app_open 8→2، quiz_done 2→1، ردیف‌های QA-only exam_dictation_start(1) و dictation_done(1) حذف → نهایی: ۶ لرنر واقعی / ۱۰ attempt؛ اسکریپت‌های qa-exam-dictation.sh و qa-db-cleanup-1012l.cjs و /tmp/examdict-b64.txt (تولید با یک bun -e) ماندند
+- [گیت‌های نهایی] tsc=۰، lint=۰، تست ۳۱۷/۳۱۷ (+۹، شامل نگهبان‌های CSS)؛ کامیت محلی — ۳۳ کامیت جلوی origin (push همچنان تا رسیدن توکن fine-grained مسدود)
+
+Stage Summary:
+- معماری DictationSource به پنج منبع رسید: درس‌ها / my-words / danger / srs-due / exam — «واژگانی که آزمون رسمی می‌پرسد» حالا با گوش تمرین می‌شود و هر املأ درست ارتقای واقعی SRS است
+- vocabByText حلقهٔ متن→کلید را برای هر متنی بدون منشأ درس بست (بانک آزمون امروز؛ هر سازندهٔ آینده از گزینهٔ درست سؤال فقط یک lookup دور است)
+- درس دارک: هر گرادیان tinted تازه باید patch دامنه‌ای بگیرد — کرنل تُن فقط utilities تخت (bg/border/text) را می‌بیند؛ دو دکمهٔ exam-view (تازه + کهن) یک‌جا بسته شد
+- باقی‌مانده: گام ۹ ترانش ۳ب/۴ (کلاس‌های معنایی R-7 برای هدف ≤۵۰۰)، گام ۱۰ بخش ۲ (regroup، receipt دودل، زیرساخت تست کامپوننت)
+- [یادداشت عملیاتی] ری‌استارت next این بار دو میله خورد (PATH و مرگ پس‌زمینهٔ اول) — الگوی نهایی در Work Log ثبت شد؛ .next از نو ساخته شد و هر دو پروب تازه سبز بودند

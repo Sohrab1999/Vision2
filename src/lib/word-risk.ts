@@ -91,6 +91,17 @@ export function wordByKey(key: string): { lessonId: number; word: VocabWord } | 
   return idx.byLessonEn.get(`${lessonId}:${enLower}`) ?? idx.firstByEn.get(enLower) ?? null;
 }
 
+/**
+ * First-occurrence vocabulary entry whose en matches the text exactly
+ * (case/punctuation-insensitive). The resolver for texts that carry no
+ * lesson provenance — exam-bank correct options ("Interview", "take care
+ * of"…) — so builders can pin canonical store keys with the SAME
+ * first-occurrence convention the spell sprint uses.
+ */
+export function vocabByText(text: string): { lessonId: number; word: VocabWord } | null {
+  return getVocabIndex().firstByEn.get(clean(text)) ?? null;
+}
+
 // ---- feed from engines ----
 
 /**

@@ -310,6 +310,11 @@ body {
 .dark .text-orange-700 { color: #fdba74; }
 .dark .text-orange-800 { color: #fdba74; }
 
+/* exam-view gradient CTAs (mistakes review rose / dictation emerald) —
+   tinted gradient stops are outside the tone kernel, same as the heroes */
+.dark .exam-mistakes-cta { background-image: linear-gradient(to left, rgba(88, 18, 30, 0.5), rgba(24, 21, 18, 0.92)) !important; }
+.dark .exam-dict-cta { background-image: linear-gradient(to left, rgba(6, 55, 40, 0.5), rgba(24, 21, 18, 0.92)) !important; }
+
 /* scrollbar */
 .dark .nice-scroll { scrollbar-color: #3d372f transparent; }
 .dark .nice-scroll::-webkit-scrollbar-thumb { background: #3d372f; }
