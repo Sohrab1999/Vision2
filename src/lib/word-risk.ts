@@ -27,50 +27,68 @@ export interface DangerWord {
 }
 
 // ---- lesson vocabulary lookup (lazy, module-level cache) ----
+//
+// TWO-LEVEL resolver (task 62). 34 words appear in TWO lessons with
+// different senses ("take", "happen", "create"…) — the old index kept only
+// the FIRST occurrence, so every lesson-2/3 signal on those words (quiz
+// mistakes, starring from results) was silently dropped and "2:take" keys
+// were unresolvable for the danger feed. The index is now per-lesson
+// (same semantics as resolveStar / flashcards / lesson dictation, which
+// always wrote per-lesson keys), and wordByKey gains a cross-lesson
+// fallback so keys orphaned by content churn still resolve somewhere.
 
 interface LessonVocabIndex {
-  byEn: Map<string, { lessonId: number; word: VocabWord }>; // lowercase en → word
-  words: { lessonId: number; word: VocabWord }[];
+  /** "lessonId:lowercase-en" → entry — EVERY occurrence of every word */
+  byLessonEn: Map<string, { lessonId: number; word: VocabWord }>;
+  /** lowercase en → first-occurrence entry — level-2 fallback for stale keys */
+  firstByEn: Map<string, { lessonId: number; word: VocabWord }>;
 }
 
 let vocabIndex: LessonVocabIndex | null = null;
 
 function getVocabIndex(): LessonVocabIndex {
   if (vocabIndex) return vocabIndex;
-  const byEn = new Map<string, { lessonId: number; word: VocabWord }>();
-  const words: { lessonId: number; word: VocabWord }[] = [];
+  const byLessonEn = new Map<string, { lessonId: number; word: VocabWord }>();
+  const firstByEn = new Map<string, { lessonId: number; word: VocabWord }>();
   for (const lesson of lessons) {
     for (const w of lesson.vocabulary) {
       const k = w.en.toLowerCase();
-      if (!byEn.has(k)) {
-        byEn.set(k, { lessonId: lesson.id, word: w });
-        words.push({ lessonId: lesson.id, word: w });
-      }
+      const entry = { lessonId: lesson.id, word: w };
+      byLessonEn.set(`${lesson.id}:${k}`, entry);
+      if (!firstByEn.has(k)) firstByEn.set(k, entry);
     }
   }
-  vocabIndex = { byEn, words };
+  vocabIndex = { byLessonEn, firstByEn };
   return vocabIndex;
 }
 
 const clean = (s: string) => s.trim().toLowerCase().replace(/[.,!?;:]+$/, "");
 
-/** Resolve the vocabulary word a quiz option text refers to (exact match). */
+/**
+ * Resolve the vocabulary word a quiz option text refers to (exact match)
+ * WITHIN the question's source lesson — second occurrences resolve to
+ * their own sense, not the first lesson's.
+ */
 export function matchVocabWord(lessonId: number, optionText: string): VocabWord | null {
   if (lessonId < 1) return null;
   const idx = getVocabIndex();
-  const hit = idx.byEn.get(clean(optionText));
-  return hit && hit.lessonId === lessonId ? hit.word : null;
+  return idx.byLessonEn.get(`${lessonId}:${clean(optionText)}`)?.word ?? null;
 }
 
-/** Resolve a word by its store key ("1:ability"). */
+/**
+ * Resolve a word by its store key ("1:ability", "2:take").
+ * Level 1: the exact per-lesson occurrence. Level 2: if the lesson has no
+ * such word (key orphaned by content churn), fall back to the word's first
+ * occurrence in book order — a stale key still points at the same string.
+ */
 export function wordByKey(key: string): { lessonId: number; word: VocabWord } | null {
   const [head, ...rest] = key.split(":");
   const lessonId = Number(head);
   const en = rest.join(":");
   if (!Number.isInteger(lessonId) || lessonId < 1 || !en) return null;
   const idx = getVocabIndex();
-  const hit = idx.byEn.get(en.toLowerCase());
-  return hit && hit.lessonId === lessonId ? hit : null;
+  const enLower = en.toLowerCase();
+  return idx.byLessonEn.get(`${lessonId}:${enLower}`) ?? idx.firstByEn.get(enLower) ?? null;
 }
 
 // ---- feed from engines ----

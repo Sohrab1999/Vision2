@@ -32,11 +32,11 @@ export interface SpellItem {
 /**
  * One full shuffled deck of the book's DISTINCT vocabulary (by en).
  * Several words appear in two lessons with different meanings ("take",
- * "power", "create"…) — the book's resolver convention is first-
- * occurrence-wins, so per-lesson keys of the later occurrences are
- * unresolvable by design (wordByKey). A sprint therefore keeps ONLY the
- * first occurrence: every dealt word resolves on its canonical key and
- * no word is heard twice with two different meanings in one round.
+ * "power", "create"…) — every per-lesson key resolves since the two-level
+ * resolver (task 62), but a sprint still keeps ONLY the first occurrence:
+ * hearing the same string twice with two different meanings in one round
+ * would feel like a deck bug, and each dealt word keeps its own canonical
+ * key either way.
  */
 export function buildSpellDeck(): SpellItem[] {
   const seen = new Set<string>();
