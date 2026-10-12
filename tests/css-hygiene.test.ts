@@ -122,3 +122,59 @@ describe("globals.css dark tone-group consolidation (Step 9 tranche-3a)", () => 
     expect(Array.isArray(a.conflicts)).toBe(true);
   });
 });
+
+describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
+  const css = readFileSync(cssPath, "utf8");
+  const lines = css.split("\n");
+
+  // گام ۹-۳ب — توکن‌های جوهرِ رنگین: هر سایه فقط یک‌بار داخل بلوک .dark
+  // کانونی تعریف می‌شود؛ قواعد per-context بازنشسته هرگز برنمی‌گردند.
+  const KERNEL: Record<string, string> = {
+    "amber-800": "#fcd34d",
+    "amber-900": "#fcd34d",
+    "rose-900": "#fda4af",
+    "sky-600": "#38bdf8",
+    "sky-700": "#7dd3fc",
+    "sky-800": "#7dd3fc",
+    "orange-700": "#fdba74",
+    "orange-800": "#fdba74",
+    "violet-800": "#f5d0fe",
+    "slate-500": "#a8a29e",
+  };
+
+  it("defines each tinted-ink token exactly once, inside the canonical .dark block", () => {
+    const darkStart = lines.findIndex((l) => /^\.dark \{/.test(l));
+    const darkEnd = lines.indexOf("}", darkStart);
+    expect(darkStart).toBeGreaterThanOrEqual(0);
+    for (const [shade, val] of Object.entries(KERNEL)) {
+      const decls = lines.filter((l) => l.includes(`--color-${shade}:`));
+      expect(decls, `--color-${shade} defined more than once`).toHaveLength(1);
+      expect(decls[0]).toContain(val);
+      const idx = lines.findIndex((l) => l.includes(`--color-${shade}:`));
+      expect(idx, `--color-${shade} must live inside .dark block`).toBeGreaterThan(darkStart);
+      expect(idx).toBeLessThan(darkEnd);
+    }
+  });
+
+  it("never re-grows the retired per-context tinted-ink override band", () => {
+    // the token serves these shades — a .dark rule that re-asserts the SAME
+    // color on a text-<shade> utility is dead weight and must not return
+    // (rules with a DIFFERENT value remain legitimate scoped deviations)
+    for (const [shade, val] of Object.entries(KERNEL)) {
+      const bad = lines.filter((l) => {
+        const t = l.trim();
+        if (!t.startsWith(".dark ")) return false;
+        if (!t.includes(`text-${shade}`) && !t.includes(`hover\\:text-${shade}`)) return false;
+        return new RegExp(`color:\\s*${val.replace("#", "#")}`).test(t);
+      });
+      expect(bad, `retired rules for text-${shade} returned: ${bad.join(" | ")}`).toEqual([]);
+    }
+  });
+
+  it("keeps the selector budget honest (tranche-3b: ≤ 535 — was 535 pre-flip)", () => {
+    // soft ceiling: the file may not regrow past its pre-tranche-3b selector
+    // count; each new feature should consolidate or consume the kernel
+    const sel = lines.filter((l) => /^\s*\.[a-z]/.test(l)).length;
+    expect(sel).toBeLessThanOrEqual(535);
+  });
+});

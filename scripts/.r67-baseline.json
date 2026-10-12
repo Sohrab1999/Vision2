@@ -1,22 +1,16 @@
 {
   "rows": [
     {
-      "id": "cmv4x1cdp0006m1ccuighl7zv",
+      "id": "cmv4ukis30000m1u60rkmzben",
       "day": "2026-10-12",
-      "name": "star_word",
-      "count": 8
+      "name": "app_open",
+      "count": 2
     },
     {
-      "id": "cmv4xxdzk000pm1ccjgj17hzt",
+      "id": "cmv4ukv2j0001m1u6dwe99357",
       "day": "2026-10-12",
-      "name": "quiz_done",
-      "count": 1
-    },
-    {
-      "id": "cmv4xv90w000om1ccb82ovy4p",
-      "day": "2026-10-12",
-      "name": "my_words_review_start",
-      "count": 1
+      "name": "lesson_open",
+      "count": 9
     },
     {
       "id": "cmv4x0qkt0004m1ccxbbgd0c6",
@@ -25,10 +19,136 @@
       "count": 16
     },
     {
-      "id": "cmv4ukv2j0001m1u6dwe99357",
+      "id": "cmv4xv90w000om1ccb82ovy4p",
       "day": "2026-10-12",
+      "name": "my_words_review_start",
+      "count": 1
+    },
+    {
+      "id": "cmv4xxdzk000pm1ccjgj17hzt",
+      "day": "2026-10-12",
+      "name": "quiz_done",
+      "count": 1
+    },
+    {
+      "id": "cmv4x1cdp0006m1ccuighl7zv",
+      "day": "2026-10-12",
+      "name": "star_word",
+      "count": 8
+    },
+    {
+      "id": "cmv3b2y610000klu1vls1hood",
+      "day": "2026-10-11",
+      "name": "app_open",
+      "count": 24
+    },
+    {
+      "id": "cmv3c8ume0007klu1ds7d6qnm",
+      "day": "2026-10-11",
+      "name": "duel_done",
+      "count": 3
+    },
+    {
+      "id": "cmv3c7pc60003klu1j37myt3x",
+      "day": "2026-10-11",
+      "name": "duel_start",
+      "count": 6
+    },
+    {
+      "id": "cmv43bzjp0001kepkkrgcndsr",
+      "day": "2026-10-11",
+      "name": "explain_generated",
+      "count": 1
+    },
+    {
+      "id": "cmv43bypn0000kepk3yewp9qp",
+      "day": "2026-10-11",
+      "name": "explain_open",
+      "count": 2
+    },
+    {
+      "id": "cmv43cd900005kepkk9aavzan",
+      "day": "2026-10-11",
+      "name": "explain_served",
+      "count": 1
+    },
+    {
+      "id": "cmv3fvubk000jklu1kpvcsrya",
+      "day": "2026-10-11",
       "name": "lesson_open",
-      "count": 9
+      "count": 2
+    },
+    {
+      "id": "cmv3c8uk90005klu1pveul0zf",
+      "day": "2026-10-11",
+      "name": "quiz_done",
+      "count": 7
+    },
+    {
+      "id": "cmv1znbfe0005q2tti81x176p",
+      "day": "2026-10-10",
+      "name": "anki_export",
+      "count": 1
+    },
+    {
+      "id": "cmv1oo8wq0000mgx88kn62hfs",
+      "day": "2026-10-10",
+      "name": "app_open",
+      "count": 16
+    },
+    {
+      "id": "cmv1oserp000nmgx8p18hpv02",
+      "day": "2026-10-10",
+      "name": "exam_done",
+      "count": 5
+    },
+    {
+      "id": "cmv1oofid0001mgx8m7o82ihg",
+      "day": "2026-10-10",
+      "name": "explain_generated",
+      "count": 26
+    },
+    {
+      "id": "cmv1ossjr000pmgx82p7nt0x7",
+      "day": "2026-10-10",
+      "name": "explain_open",
+      "count": 6
+    },
+    {
+      "id": "cmv1oofj40002mgx8tflsimyl",
+      "day": "2026-10-10",
+      "name": "explain_served",
+      "count": 1
+    },
+    {
+      "id": "cmv28sgy90007lztt31uen096",
+      "day": "2026-10-10",
+      "name": "konkur_start",
+      "count": 6
+    },
+    {
+      "id": "cmv1oy14e0008mgvd0o1r9u54",
+      "day": "2026-10-10",
+      "name": "lesson_open",
+      "count": 8
+    },
+    {
+      "id": "cmv1zkwdy0001q2tt4ee2ihgv",
+      "day": "2026-10-10",
+      "name": "quick_review_start",
+      "count": 2
+    },
+    {
+      "id": "cmv1oser5000mmgx81ai31sxj",
+      "day": "2026-10-10",
+      "name": "quiz_done",
+      "count": 17
+    },
+    {
+      "id": "cmv26y2uf0001lzttn6hd8is6",
+      "day": "2026-10-10",
+      "name": "smart_practice_start",
+      "count": 1
     }
   ],
   "learners": 6,

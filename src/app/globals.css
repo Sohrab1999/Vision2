@@ -123,6 +123,22 @@
   --color-stone-50: #151310;
   --color-stone-100: #28241f;
   --color-stone-200: #37312b;
+
+  /* Step 9 tranche-3b — dark TINTED-INK tokens (mechanism = stone kernel above):
+     text-only shades whose dark value is uniform everywhere — proven by
+     scripts/css-tint-plan.cjs (no bg/border/gradient consumers, no drift).
+     Retired per-context rules never come back (css-hygiene guard); deviating
+     scoped rules (emerald-700 → #34d399 etc.) stay and win by specificity. */
+  --color-amber-800: #fcd34d;
+  --color-amber-900: #fcd34d;
+  --color-rose-900: #fda4af;
+  --color-sky-600: #38bdf8;
+  --color-sky-700: #7dd3fc;
+  --color-sky-800: #7dd3fc;
+  --color-orange-700: #fdba74;
+  --color-orange-800: #fdba74;
+  --color-violet-800: #f5d0fe;
+  --color-slate-500: #a8a29e;
 }
 
 @layer base {
@@ -257,10 +273,8 @@ body {
 .dark .text-stone-300 { color: #57534c; }
 
 /* callout boxes keep their tint but calmer */
-.dark .text-amber-900 { color: #fcd34d; }
 .dark .bg-rose-50 { background-color: rgba(80, 18, 28, 0.35); }
 .dark .border-rose-200 { border-color: rgba(140, 40, 55, 0.5); }
-.dark .text-rose-900 { color: #fda4af; }
 .dark .bg-emerald-50 { background-color: rgba(6, 55, 40, 0.35); }
 .dark .border-emerald-200 { border-color: rgba(30, 110, 80, 0.5); }
 .dark .text-emerald-900 { color: #6ee7b7; }
@@ -298,7 +312,6 @@ body {
 .dark .mywords-hero { background-image: linear-gradient(to left, rgba(69, 48, 12, 0.45), rgba(24, 21, 18, 0.95)) !important; }
 /* my-words flashcard launcher (my-words-flashcards.tsx card) */
 .dark .mywords-cards, .dark .mywords-dictation { background-image: linear-gradient(to left, rgba(59, 32, 96, 0.45), rgba(24, 21, 18, 0.95)) !important; }
-.dark .text-sky-800 { color: #7dd3fc; }
 
 /* smart-practice hero */
 .dark .smart-hero { background-image: linear-gradient(to left, rgba(76, 29, 149, 0.45), rgba(24, 21, 18, 0.9)) !important; }
@@ -307,8 +320,6 @@ body {
 .dark .konkur-hero { background-image: linear-gradient(to left, rgba(124, 45, 18, 0.62), rgba(24, 21, 18, 0.94)) !important; }
 .dark .bg-orange-50 { background-color: rgba(88, 44, 14, 0.4); }
 .dark .border-orange-200 { border-color: rgba(160, 95, 30, 0.5); }
-.dark .text-orange-700 { color: #fdba74; }
-.dark .text-orange-800 { color: #fdba74; }
 
 /* exam-view + lesson-tests gradient CTAs (mistakes review rose / dictation emerald) —
    tinted gradient stops are outside the tone kernel, same as the heroes */
@@ -519,7 +530,6 @@ body {
 .dark .text-emerald-800 { color: #6ee7b7; }
 .dark .border-amber-300 { border-color: rgba(180, 130, 20, 0.55); }
 .dark .bg-amber-50 { background-color: rgba(69, 48, 12, 0.35); }
-.dark .text-amber-800 { color: #fcd34d; }
 
 /* ---------------- dark body texture (calmer) — merged into .dark body above ---------------- */
 .dark :focus-visible { outline-color: rgb(52 211 153 / 0.7); }
@@ -596,7 +606,6 @@ body {
 .dark .rush-card .text-stone-600,.dark .report-best .text-stone-600,.dark .duel-card .text-stone-600,
 .dark .duel-done .text-stone-600,.dark .gmetro-dialog .text-stone-600 { color: #c9c2bb; }
 .dark .rush-banner .bg-white\/80,.dark .rush-hero .bg-white\/80,.dark .rush-hero .bg-white\/70 { background-color: rgb(41 37 36 / 0.85); }
-.dark .rush-banner .text-amber-800 { color: #fcd34d; }
 .dark .rush-banner .border-amber-200 { border-color: rgb(180 130 20 / 0.5); }
 .dark .rush-hero {
   background-image: linear-gradient(to bottom left, rgb(69 40 16 / 0.5), rgb(64 30 18 / 0.55), rgb(62 24 26 / 0.5));
@@ -605,7 +614,6 @@ body {
 .dark .rush-hero .border-orange-100 { border-color: rgb(124 58 8 / 0.55); }
 .dark .rush-hero .bg-orange-100,.dark .rush-board .bg-orange-100\/80 { background-color: rgb(69 40 8 / 0.65); }
 .dark .rush-hero .text-orange-600 { color: #fdba74; }
-.dark .rush-hero .text-orange-700 { color: #fdba74; }
 .dark .rush-hero .border-orange-200,.dark .rush-board .border-orange-200,.dark .report-paper .border-orange-200 { border-color: rgb(154 52 18 / 0.55); }
 .dark .rush-hero kbd {
   background-color: #292524;
@@ -627,7 +635,6 @@ body {
 .dark .rush-done .bg-rose-50 { background-color: rgba(80, 10, 25, 0.4); }
 .dark .rush-done .text-rose-600 { color: #fda4af; }
 .dark .rush-done .bg-sky-50 { background-color: rgba(8, 47, 60, 0.5); }
-.dark .rush-done .text-sky-700 { color: #7dd3fc; }
 .dark .rush-done .bg-amber-50 { background-color: rgba(69, 48, 12, 0.45); }
 .dark .rush-done .text-amber-700 { color: #fcd34d; }
 
@@ -653,7 +660,6 @@ body {
 .dark .rush-card .border-stone-200 { border-color: #44403c; }
 .dark .rush-card .bg-stone-100 { background-color: #37312b; }
 .dark .rush-card .bg-orange-50 { background-color: rgba(69, 40, 8, 0.45); }
-.dark .rush-card .text-orange-700 { color: #fdba74; }
 .dark .rush-card .hover\:bg-orange-50\/50:hover { background-color: rgba(69, 40, 8, 0.35); }
 .dark .rush-card .bg-rose-50\/70 { background-color: rgba(80, 10, 25, 0.35); }
 
@@ -726,8 +732,6 @@ body {
 /* ---------------- spell buttons (dictation) dark ---------------- */
 .dark .border-sky-200 { border-color: rgb(7 66 84 / 0.7); }
 .dark .bg-sky-50 { background-color: rgba(8, 47, 60, 0.45); }
-.dark .text-sky-700 { color: #7dd3fc; }
-.dark .text-sky-600 { color: #38bdf8; }
 .dark .hover\:bg-sky-50:hover { background-color: rgba(8, 47, 60, 0.65); }
 .dark .hover\:bg-sky-100:hover { background-color: rgba(8, 47, 60, 0.7); }
 .dark .hover\:bg-violet-50:hover { background-color: rgba(59, 24, 84, 0.55); }
@@ -767,7 +771,6 @@ body {
 .dark .skill-panel .skill-weak-cta .bg-amber-100 { background-color: rgb(69 48 12 / 0.8); }
 .dark .skill-panel .skill-weak-cta .text-amber-700 { color: #fcd34d; }
 .dark .skill-panel .text-violet-600 { color: #d8b4fe; }
-.dark .skill-panel .hover\:text-violet-800:hover { color: #f5d0fe; }
 .dark .skill-panel .bg-emerald-100 { background-color: rgba(6, 55, 40, 0.6); }
 .dark .skill-panel .text-emerald-700 { color: #6ee7b7; }
 .dark .skill-panel .bg-teal-100 { background-color: rgba(4, 47, 46, 0.6); }
@@ -868,7 +871,6 @@ body {
 .dark .daily-quests .bg-teal-100 { background-color: rgb(4 47 46 / 0.55); }
 .dark .daily-quests .text-teal-700 { color: #5eead4; }
 .dark .daily-quests .bg-orange-100 { background-color: rgb(69 40 8 / 0.5); }
-.dark .daily-quests .text-orange-700 { color: #fdba74; }
 
 /* report print button (dark) */
 .dark .report-print-btn { background-color: #1c1917; border-color: rgb(4 120 87 / 0.6); color: #6ee7b7; }
@@ -1188,12 +1190,10 @@ html.user-reduce-motion .streak-flame {
 .dark .gmetro-dialog .bg-stone-300 { background-color: rgb(87 83 78 / 0.6); }
 .dark .gmetro-dialog .border-stone-200 { border-color: rgb(87 83 78 / 0.45); }
 .dark .gmetro-tip { background-color: rgb(120 53 15 / 0.25); border-color: rgb(217 119 6 / 0.4); }
-.dark .gmetro-tip .text-amber-800 { color: #fcd34d; }
 .dark .gmetro-tip .text-amber-600 { color: #fbbf24; }
 /* book grammar section inside the dialog — keep inline accents readable */
 .dark .gmetro-lesson { background-color: #292524; border-color: rgb(87 83 78 / 0.45); color: #d6d3d1; }
 .dark .gmetro-lesson .text-emerald-700 { color: #6ee7b7; }
-.dark .gmetro-lesson .text-slate-500 { color: #a8a29e; }
 .dark .gmetro-lesson table td,
 .dark .gmetro-lesson table th { border-color: rgb(87 83 78 / 0.4); }
 
