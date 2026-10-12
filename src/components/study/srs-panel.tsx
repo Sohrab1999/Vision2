@@ -1,12 +1,12 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { RefreshCcw, Sparkles, CalendarClock, CheckCircle2, TrendingUp, Sprout, BookOpenCheck, AlarmClock, ArrowLeft, Star } from "lucide-react";
+import { RefreshCcw, Sparkles, CalendarClock, CheckCircle2, TrendingUp, Sprout, BookOpenCheck, AlarmClock, ArrowLeft, Star, ChevronDown } from "lucide-react";
 import { useStudy, srsDueTotal, firstLessonWithDue, type SrsItem } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
-import { srsDueSummary } from "@/lib/srs-due";
+import { srsDueSummary, srsForecastWords } from "@/lib/srs-due";
 import { trackEvent } from "@/lib/analytics";
 
 // ------------------------------------------------------------------
@@ -75,6 +75,21 @@ export default function SrsPanel() {
   const startSmartReview = () => {
     trackEvent("srs_due_review");
     openLesson(reviewLesson ?? 1, "smart");
+  };
+
+  // «پیش‌بینی تپ‌پذیر» — هر ستونِ پیش‌بینی بازشدنی است تا نشان بدهد کدام واژه‌ها
+  // در آن روز سر می‌رسند (همان قرارداد خودسازگار srsDueSummary، اما برای آینده);
+  // یک ردیف در هر لحظه باز است، کلیک دوباره می‌بندد.
+  const [openDay, setOpenDay] = useState<number | null>(null);
+  const forecastInfo = useMemo(
+    () => (mounted && openDay !== null ? srsForecastWords(srs, Date.now(), openDay, 8) : null),
+    [srs, mounted, openDay]
+  );
+  const faTime = (ts: number) => {
+    const d = new Date(ts);
+    const two = (n: number) => String(n).padStart(2, "0");
+    const fa = (s: string) => [...s].map((c) => faNum(Number(c))).join("");
+    return `${fa(two(d.getHours()))}:${fa(two(d.getMinutes()))}`;
   };
 
   const chips = [
@@ -228,30 +243,90 @@ export default function SrsPanel() {
             </div>
           )}
 
-          {/* 7-day forecast */}
+          {/* 7-day forecast — تپ‌پذیر: کلیک روی ستون، واژه‌های همان روز را باز می‌کند */}
           {stats && stats.total > 0 && (
             <div>
               <div className="mb-1.5 flex items-center gap-1.5 text-[11px] font-bold text-stone-500">
                 <CalendarClock size={12} />
                 پیش‌بینی مرور ۷ روز آینده
+                {stats.forecast.some((n) => n > 0) && (
+                  <span className="mr-auto text-[9.5px] font-bold text-stone-400">روی ستون‌ها بزن تا واژه‌ها را ببینی</span>
+                )}
               </div>
               <div className="flex h-16 items-end gap-1.5" dir="ltr">
                 {stats.forecast.map((n, i) => (
                   <div key={i} className="flex flex-1 flex-col items-center gap-1">
                     <span className="text-[10px] font-black text-stone-400">{n > 0 ? faNum(n) : ""}</span>
-                    <motion.div
+                    <motion.button
+                      type="button"
+                      aria-expanded={openDay === i}
+                      aria-label={`${dayLabel(i)}: ${faNum(n)} واژه${n > 0 ? " — دیدن واژه‌ها" : ""}`}
+                      disabled={n === 0}
+                      onClick={() => setOpenDay((cur) => (cur === i ? null : i))}
+                      whileTap={n > 0 ? { scale: 0.9 } : undefined}
                       initial={{ height: 0 }}
                       animate={{ height: `${Math.max(n > 0 ? 14 : 3, (n / stats.maxForecast) * 40)}px` }}
                       transition={{ delay: i * 0.04, duration: 0.5, ease: "easeOut" }}
-                      className={`w-full rounded-t-md ${n > 0 ? "bg-gradient-to-t from-teal-500 to-emerald-400" : "bg-stone-200/70"}`}
+                      className={`srs-fx-bar w-full rounded-t-md transition-all ${n > 0 ? (openDay === i ? "bg-gradient-to-t from-teal-600 to-emerald-300 ring-2 ring-emerald-300/60" : "bg-gradient-to-t from-teal-500 to-emerald-400 hover:from-teal-600 hover:to-emerald-300") : "bg-stone-200/70"}`}
                       title={`${dayLabel(i)}: ${faNum(n)} واژه`}
                     />
-                    <span className={`text-[9.5px] font-bold ${i === 0 ? "text-emerald-700" : "text-stone-400"}`}>
+                    <span className={`text-[9.5px] font-bold ${openDay === i ? "text-emerald-700" : i === 0 ? "text-emerald-700" : "text-stone-400"}`}>
                       {dayLabel(i)}
                     </span>
                   </div>
                 ))}
               </div>
+              {/* expansion — واژه‌های روزِ انتخاب‌شده، زودترین اول، با ستارهٔ هفتم */}
+              {openDay !== null && forecastInfo && (
+                <div className="srs-fx-expand mt-2 rounded-xl border border-teal-100 bg-white/70 p-3">
+                  {forecastInfo.words.length > 0 ? (
+                    <>
+                      <div className="mb-2 flex items-center gap-1.5 text-[11px] font-bold text-stone-500">
+                        <ChevronDown size={12} className="text-emerald-600" />
+                        {dayLabel(openDay)} — {faNum(forecastInfo.total)} واژه سر می‌رسد
+                      </div>
+                      <div className="flex flex-wrap gap-1.5">
+                        {forecastInfo.words.map((w) => {
+                          const starred = starredSet.has(w.key);
+                          return (
+                            <div key={w.key} className="inline-flex items-center gap-0.5">
+                              <motion.button
+                                whileTap={{ scale: 0.75 }}
+                                onClick={() => toggleStarred(w.key)}
+                                aria-pressed={starred}
+                                aria-label={starred ? `حذف ${w.en} از واژه‌های من` : `افزودن ${w.en} به واژه‌های من`}
+                                title={starred ? `حذف ${w.en} از واژه‌های من` : `افزودن ${w.en} به واژه‌های من`}
+                                className="srs-due-star flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-md transition-colors hover:bg-amber-50"
+                              >
+                                <Star size={12} className={starred ? "fill-amber-400 text-amber-500" : "text-stone-300 transition-colors hover:text-amber-400"} />
+                              </motion.button>
+                              <span
+                                title={`${w.en} — سطح ${faNum(w.level + 1)} از ۶`}
+                                className="srs-fx-chip inline-flex items-center gap-1.5 rounded-lg border border-dashed border-teal-200 bg-white px-2 py-1 text-[11px] shadow-sm"
+                              >
+                                <span className="en-text text-[12px] font-bold text-stone-800" dir="ltr">{w.en}</span>
+                                <span className="hidden text-[10px] text-stone-400 sm:inline">{w.fa}</span>
+                                <span className="text-[9.5px] font-black text-emerald-600">{faTime(w.dueAt)}</span>
+                              </span>
+                            </div>
+                          );
+                        })}
+                        {forecastInfo.total > forecastInfo.words.length && (
+                          <span className="srs-fx-chip inline-flex items-center rounded-lg border border-dashed border-teal-200 bg-white/50 px-2 py-1 text-[11px] font-bold text-emerald-700">
+                            +{faNum(forecastInfo.total - forecastInfo.words.length)} واژهٔ دیگر
+                          </span>
+                        )}
+                      </div>
+                      <div className="mt-2 flex items-center gap-1 border-t border-teal-100/70 pt-1.5 text-[10px] text-stone-400">
+                        <Star size={10} className="text-amber-400" />
+                        واژه‌ای که قرار است بیاید را با ستاره به «واژه‌های من» بفرست تا از قلم نیفتد
+                      </div>
+                    </>
+                  ) : (
+                    <div className="py-1 text-center text-[11px] font-bold text-stone-400">واژه‌ای در این روز نیست</div>
+                  )}
+                </div>
+              )}
             </div>
           )}
         </div>

@@ -10,7 +10,6 @@ import { Switch } from "@/components/ui/switch";
 import { Slider } from "@/components/ui/slider";
 import { useStudy, DAILY_GOAL_OPTIONS } from "@/lib/study-store";
 import { speak, stopSpeaking, setSpeakRateScale } from "@/lib/speak";
-import { useMounted } from "@/lib/use-mounted";
 import { percent } from "@/lib/domain/percent";
 import { faNum } from "@/lib/study-theme";
 
@@ -27,7 +26,14 @@ function rateLabel(v: number): string {
 }
 
 export default function SettingsPopover() {
-  const mounted = useMounted();
+  // NOTE (hydration fix 2026-10-12): this component used to early-return a plain
+  // placeholder button while !mounted. useMounted flips to true during the
+  // client's FIRST (hydration) render (useSyncExternalStore client snapshot),
+  // so the server rendered a bare button while the client rendered the Radix
+  // Popover — a tree-shape/useId mismatch that logged a hydration error on
+  // every load of a returning learner. The trigger itself reads no store
+  // state and the (store-reading) content only mounts when opened, so the
+  // SAME tree is now rendered unconditionally on both sides.
   const settings = useStudy((s) => s.settings);
   const setSettings = useStudy((s) => s.setSettings);
   const dailyGoal = useStudy((s) => s.dailyGoal);
@@ -88,17 +94,6 @@ export default function SettingsPopover() {
     setPreviewing(true);
     await speak("Hello! Welcome to Vision Two, your interactive English book.", 0.95, () => setPreviewing(false), () => setPreviewing(false));
   };
-
-  if (!mounted) {
-    return (
-      <button
-        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-stone-200 bg-white text-stone-500"
-        aria-label="تنظیمات"
-      >
-        <Settings size={16} />
-      </button>
-    );
-  }
 
   return (
     <Popover open={open} onOpenChange={toggleOpen}>

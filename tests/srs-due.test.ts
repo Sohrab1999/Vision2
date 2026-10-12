@@ -4,7 +4,7 @@
 // dueTotal stays uncapped and resolvable-only (self-consistent block).
 
 import { describe, it, expect } from "vitest";
-import { srsDueSummary, type SrsDueWord } from "@/lib/srs-due";
+import { srsDueSummary, srsForecastWords, type SrsDueWord } from "@/lib/srs-due";
 import type { SrsItem } from "@/lib/study-store";
 import { lessons } from "@/data";
 
@@ -104,5 +104,60 @@ describe("srsDueSummary", () => {
     const out = srsDueSummary(srs, NOW);
     expect(out.words.map((w) => w.key)).toEqual([keyOf(1, 1)]);
     expect(out.dueTotal).toBe(1);
+  });
+});
+
+// ---------------- «پیش‌بینی تپ‌پذیر» — srsForecastWords ----------------
+
+describe("srsForecastWords (tap-to-expand forecast)", () => {
+  const DAY = 86_400_000;
+
+  it("buckets strictly by [NOW+offset*DAY, NOW+(offset+1)*DAY) — overdue never leaks in", () => {
+    const srs = {
+      [keyOf(1, 0)]: item(1000, 0), // overdue → belongs to srsDueSummary, never a forecast window
+      [keyOf(1, 1)]: future(2 * 3600_000, 1), // +2h → offset 0
+      [keyOf(1, 2)]: future(26 * 3600_000, 2), // +26h → offset 1
+      [keyOf(1, 3)]: future(DAY, 3), // exactly +24h → offset 1 (window end is exclusive)
+      [keyOf(1, 4)]: future(9 * DAY, 4), // beyond the 7d panel range → offset 9
+    };
+    const d0 = srsForecastWords(srs, NOW, 0);
+    expect(enOf(d0.words)).toEqual([wordAt(1, 1).en]);
+    expect(d0.total).toBe(1);
+    const d1 = srsForecastWords(srs, NOW, 1);
+    // the exact +24h edge starts offset 1; sorted soonest-first
+    expect(enOf(d1.words)).toEqual([wordAt(1, 3).en, wordAt(1, 2).en]);
+  });
+
+  it("drops exam-bank keys and dangling keys, same self-consistency contract", () => {
+    const srs = {
+      "q:x-9": future(3600_000, 0), // exam-bank → never a word
+      "9:zombie": future(3600_000, 0), // dangling → resolveStar drops
+      [keyOf(1, 0)]: future(7200_000, 0),
+    };
+    const d0 = srsForecastWords(srs, NOW, 0);
+    expect(d0.words).toHaveLength(1);
+    expect(d0.words[0].key).toBe(keyOf(1, 0));
+    expect(d0.total).toBe(1);
+  });
+
+  it("caps chips with limit but reports the uncapped total, soonest-first", () => {
+    const srs: Record<string, SrsItem> = {};
+    for (let i = 0; i < 11; i++) {
+      srs[keyOf(1, i)] = future((i + 1) * 10 * MIN, 0); // 10..110min → all offset 0
+    }
+    const d0 = srsForecastWords(srs, NOW, 0, 8);
+    expect(d0.words).toHaveLength(8);
+    expect(d0.total).toBe(11);
+    expect(d0.words[0].dueAt).toBeLessThan(d0.words[1].dueAt);
+  });
+
+  it("survives NaN dueAt and negative offsets without crashing", () => {
+    const srs: Record<string, SrsItem> = {
+      [keyOf(1, 0)]: { level: 0, dueAt: Number.NaN },
+      [keyOf(1, 1)]: future(3600_000, 0),
+    };
+    expect(() => srsForecastWords(srs, NOW, 0)).not.toThrow();
+    expect(srsForecastWords(srs, NOW, 0).total).toBe(1);
+    expect(srsForecastWords(srs, NOW, -1).total).toBe(0); // past window — empty, not overdue dump
   });
 });

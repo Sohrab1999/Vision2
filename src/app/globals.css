@@ -79,6 +79,7 @@
 }
 
 .dark {
+  color-scheme: dark;
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
@@ -216,24 +217,24 @@ body {
 /* Dark mode (class strategy via next-themes)                          */
 /* ------------------------------------------------------------------ */
 
-.dark {
-  color-scheme: dark;
-}
 .dark body {
   background-color: #0c0a09;
   color: #e7e5e4;
+  /* calmer texture (merged from the former second .dark body block) */
+  background-image:
+    radial-gradient(circle at 1px 1px, rgb(231 229 228 / 0.045) 1px, transparent 0),
+    radial-gradient(1200px 500px at 85% -5%, rgb(16 185 129 / 0.07), transparent 60%),
+    radial-gradient(900px 420px at 5% 100%, rgb(217 119 6 / 0.05), transparent 60%);
+  background-size: 22px 22px, 100% 100%, 100% 100%;
 }
 
 /* surfaces */
 .dark .bg-white { background-color: #1c1917; }
-.dark .bg-white\/60 { background-color: rgba(28, 25, 23, 0.6); }
 .dark .bg-white\/70 { background-color: rgba(28, 25, 23, 0.7); }
 .dark .bg-white\/80 { background-color: rgba(28, 25, 23, 0.8); }
 .dark .bg-\[\#f7f6f2\]\/85 { background-color: rgba(12, 10, 9, 0.82); }
 .dark .bg-stone-50 { background-color: #151310; }
-.dark .bg-stone-50\/60 { background-color: rgba(21, 19, 16, 0.6); }
 .dark .bg-stone-50\/70 { background-color: rgba(21, 19, 16, 0.7); }
-.dark .bg-stone-100 { background-color: #28241f; }
 .dark .bg-stone-200 { background-color: #37312b; }
 .dark .bg-stone-200\/70 { background-color: rgba(55, 49, 43, 0.7); }
 
@@ -252,8 +253,6 @@ body {
 .dark .text-stone-300 { color: #57534c; }
 
 /* callout boxes keep their tint but calmer */
-.dark .bg-amber-50 { background-color: rgba(69, 48, 12, 0.35); }
-.dark .border-amber-200 { border-color: rgba(120, 88, 30, 0.5); }
 .dark .text-amber-900 { color: #fcd34d; }
 .dark .bg-rose-50 { background-color: rgba(80, 18, 28, 0.35); }
 .dark .border-rose-200 { border-color: rgba(140, 40, 55, 0.5); }
@@ -282,9 +281,7 @@ body {
 .dark .text-rose-600 { color: #fda4af; }
 .dark .text-amber-600 { color: #fcd34d; }
 .dark .text-amber-700 { color: #fcd34d; }
-.dark .text-amber-800 { color: #fcd34d; }
 .dark .text-emerald-700 { color: #6ee7b7; }
-.dark .text-emerald-800 { color: #6ee7b7; }
 
 /* bookshelf strip + shelf edge custom gradients */
 .dark .shelf-strip { background-image: linear-gradient(to bottom, #1c1917, #0f0d0c) !important; }
@@ -370,7 +367,6 @@ body {
 .dark .bg-fuchsia-500 { background-image: linear-gradient(to bottom left, #7c3aed, #a21caf); }
 .dark .from-violet-600 { --tw-gradient-from: #5b21b6; }
 .dark .to-fuchsia-600 { --tw-gradient-to: #86198f; }
-.dark .bg-amber-100 { background-color: rgba(87, 62, 14, 0.5); }
 .dark .text-amber-700 { color: #fbbf24; }
 .dark .bg-teal-50 { background-color: rgba(6, 55, 50, 0.35); }
 .dark .border-teal-500 { border-color: rgba(20, 130, 120, 0.6); }
@@ -380,10 +376,7 @@ body {
 .dark .bg-white\/60 { background-color: rgba(28, 25, 23, 0.6); }
 
 /* ------------------ leaderboard + weekly chart dark-mode tuning ------------------ */
-.dark .bg-sky-50 { background-color: rgba(12, 50, 78, 0.35); }
 .dark .border-sky-200 { border-color: rgba(70, 120, 170, 0.5); }
-.dark .text-sky-700 { color: #7dd3fc; }
-.dark .text-sky-600 { color: #38bdf8; }
 .dark .from-sky-400 { --tw-gradient-from: #0284c7; }
 .dark .to-cyan-700 { --tw-gradient-to: #155e75; }
 .dark .bg-gradient-to-b.from-amber-50\/60 { background-image: linear-gradient(to bottom, rgba(87, 62, 14, 0.18), rgba(0, 0, 0, 0)); }
@@ -397,7 +390,6 @@ body {
 .dark .to-orange-400 { --tw-gradient-to: #7c2d12; }
 .dark .border-stone-300 { border-color: #44403c; }
 .dark .border-rose-300 { border-color: rgba(150, 50, 65, 0.55); }
-.dark .border-emerald-300 { border-color: rgba(16, 120, 90, 0.55); }
 .dark .divide-stone-100 > :not([hidden]) ~ :not([hidden]) { border-color: #28241f; }
 .dark .bg-stone-50\/60 { background-color: rgba(21, 19, 16, 0.6); }
 
@@ -438,7 +430,6 @@ body {
 .dark .badge-card.border-stone-200 { background-color: #1c1917; }
 .dark .badge-card .bg-stone-100 { background-color: #28241f; }
 .dark .bg-amber-100 { background-color: rgba(87, 62, 14, 0.5); }
-.dark .text-amber-800 { color: #fcd34d; }
 .dark .certificate-card { background-color: #1c1917; }
 .dark .certificate-card .border-dashed { border-color: rgba(180, 130, 20, 0.55) !important; }
 .dark .certificate-card .bg-stone-50 { background-color: rgba(28, 25, 23, 0.7); }
@@ -448,7 +439,6 @@ body {
 .dark .border-amber-200 { border-color: rgba(120, 88, 30, 0.5); }
 .dark .border-amber-100 { border-color: rgba(120, 88, 30, 0.4); }
 .dark .bg-amber-50\/60 { background-color: rgba(69, 48, 12, 0.28); }
-.dark .bg-amber-50 { background-color: rgba(69, 48, 12, 0.35); }
 .dark .bg-sky-50 { background-color: rgba(12, 50, 78, 0.35); }
 .dark .heat-cell.bg-stone-100 { background-color: #28241f; }
 .dark .heat-cell.bg-emerald-200 { background-color: #14532d; }
@@ -487,7 +477,6 @@ body {
 .dark .badge-popover .text-stone-800 { color: #f5f5f4; }
 .dark .badge-popover .text-stone-600 { color: #a8a29e; }
 .dark .badge-popover .text-stone-500 { color: #8a8580; }
-.dark .badge-popover .bg-stone-100 { background-color: #28241f; }
 .dark .badge-popover .bg-stone-50 { background-color: rgba(40, 36, 31, 0.7); }
 .dark .badge-popover .bg-emerald-50 { background-color: rgba(6, 55, 40, 0.4); }
 .dark .badge-popover .bg-stone-100 { background-color: #28241f; }
@@ -513,14 +502,7 @@ body {
 .dark .bg-amber-50 { background-color: rgba(69, 48, 12, 0.35); }
 .dark .text-amber-800 { color: #fcd34d; }
 
-/* ---------------- dark body texture (calmer) ---------------- */
-.dark body {
-  background-image:
-    radial-gradient(circle at 1px 1px, rgb(231 229 228 / 0.045) 1px, transparent 0),
-    radial-gradient(1200px 500px at 85% -5%, rgb(16 185 129 / 0.07), transparent 60%),
-    radial-gradient(900px 420px at 5% 100%, rgb(217 119 6 / 0.05), transparent 60%);
-  background-size: 22px 22px, 100% 100%, 100% 100%;
-}
+/* ---------------- dark body texture (calmer) — merged into .dark body above ---------------- */
 .dark :focus-visible { outline-color: rgb(52 211 153 / 0.7); }
 
 /* ---------------- footer + quote dark ---------------- */
@@ -702,6 +684,19 @@ body {
 .dark .srs-panel .srs-due-star .fill-amber-400 { color: #fbbf24; }
 .dark .srs-panel .srs-due-preview .border-rose-100\/70 { border-color: rgb(120 30 45 / 0.4); }
 .dark .srs-panel .srs-due-preview .text-stone-400 { color: #a8a29e; }
+/* tap-to-expand forecast rows (پیش‌بینی تپ‌پذیر) — teal future theme */
+.dark .srs-panel .srs-fx-expand {
+  background-color: rgb(28 25 23 / 0.8);
+  border-color: rgb(13 84 89 / 0.5);
+}
+.dark .srs-panel .srs-fx-expand .border-teal-100\/70 { border-color: rgb(13 84 89 / 0.4); }
+.dark .srs-panel .srs-fx-chip {
+  background-color: #1c1917;
+  border-color: rgb(13 84 89 / 0.55);
+}
+.dark .srs-panel .srs-fx-expand .text-emerald-600 { color: #34d399; }
+.dark .srs-panel .srs-fx-expand .text-emerald-700 { color: #6ee7b7; }
+.dark .srs-panel .srs-fx-bar.bg-stone-200\/70 { background-color: rgb(41 37 36 / 0.7); }
 
 /* ---------------- spell buttons (dictation) dark ---------------- */
 .dark .border-sky-200 { border-color: rgb(7 66 84 / 0.7); }
