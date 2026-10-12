@@ -19,7 +19,7 @@ import { trackEvent } from "@/lib/analytics";
 //
 // استایل: رزِ یک‌رنگ (بدون گرادیان — توقف‌های گرادیان v4 در دارک فلیپ
 // نمی‌شوند) تا هر سه قطعه از باندهای سراسری سرو بگیرد:
-// bg-rose-50 / border-rose-200 / text-rose-700 همگی قاعدهٔ دارک دارند.
+// کلاسِ معنایی c-chip-due (ترانش ۴ فاز ۱) — سطحِ دو-تمِ چیپ یک‌جا تعریف شده.
 // hover با جابه‌جایی ظریف (translate) نه تغییر رنگ — در دارک امن.
 // هیدراسیون: useMounted کل دروازه است — سرور و کلاینت هر دو «هیچ»
 // می‌کشند تا پس از mount (شکاف‌ها از persist خوانده شد) تصمیم بگیرد.
@@ -49,7 +49,7 @@ export default function DuePill() {
           exit={{ opacity: 0, scale: 0.85, y: -4 }}
           transition={{ type: "spring", stiffness: 380, damping: 26 }}
           onClick={open}
-          className="due-pill mr-1 inline-flex shrink-0 items-center gap-1.5 rounded-full border border-rose-200 bg-rose-50 px-2.5 py-1.5 text-[12px] font-black text-rose-700 transition-transform hover:-translate-y-px active:scale-95"
+          className="due-pill mr-1 inline-flex shrink-0 items-center gap-1.5 rounded-full border c-chip-due px-2.5 py-1.5 text-[12px] font-black transition-transform hover:-translate-y-px active:scale-95"
           aria-label={meta.title}
           title={meta.title}
         >

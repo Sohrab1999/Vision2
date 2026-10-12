@@ -1239,3 +1239,55 @@ html.user-reduce-motion .streak-flame {
 .dark .glesson-done .glesson-done-title { color: #f5f5f4; }
 .dark .glesson-done .glesson-done-sub { color: #a8a29e; }
 .dark .gmetro-lesson-badge { background-color: rgb(41 37 36 / 0.6); }
+
+/* ------------------------------------------------------------------
+   ترانش ۴ فاز ۱ (R-7، Task 83) — کلاس‌های معناییِ سطحِ چیپ هدر.
+   هر چیپ = یک کلاسِ معنایی با هر دو تم هم‌جا؛ مصرف‌کننده فقط اسمِ
+   نقش را می‌برد و «مالیات دارک» داخل همین تعریف حل است.
+   ارزش‌ها = مقادیر مؤثرِ دقیقِ پیش از مهاجرت (پروبِ computed-style،
+   scripts/r83-chip-baseline.json) — هیچ‌چیز اختراع نشده.
+   هشدارِ لایه: این قواعد لایه‌بندی‌نشده‌اند (author layer) و بر
+   utilities برتری دارند — روی همین عنصر با utility رنگیِ متضاد
+   ترکیب نشوند (حالت‌های وضعیتی مثل met-chip شاخهٔ class جدا دارند).
+   گرادیانِ شعله عمداً در دارک همان روشن می‌ماند (رفتارِ موجود،
+   پروب: bgImg در دو تم یکسان) — پس .dark آن را بازتعریف نمی‌کند.
+   ------------------------------------------------------------------ */
+.c-chip-goal {
+  border-color: lab(90.2247 -31.039 9.47084); /* emerald-200 */
+  background-color: lab(97.8462 -6.94966 1.85487); /* emerald-50 */
+  color: lab(44.4871 -41.0396 11.0361); /* emerald-700 */
+}
+.dark .c-chip-goal {
+  border-color: rgba(30, 110, 80, 0.5);
+  background-color: rgba(6, 55, 40, 0.35);
+  color: rgb(110, 231, 183);
+}
+.c-chip-freeze {
+  border-color: lab(88.6983 -11.3978 -16.8488); /* sky-200 */
+  background-color: lab(97.3623 -2.33802 -4.13098); /* sky-50 */
+  color: lab(51.7754 -11.4712 -49.8349); /* sky-600 */
+}
+.dark .c-chip-freeze {
+  border-color: rgba(7, 66, 84, 0.7);
+  background-color: rgba(8, 47, 60, 0.45);
+  color: rgb(56, 189, 248);
+}
+.c-chip-due {
+  border-color: lab(86.806 19.1909 4.07754); /* rose-200 */
+  background-color: lab(96.2369 4.94155 1.28011); /* rose-50 */
+  color: lab(41.1651 71.6251 30.3087); /* rose-700 */
+}
+.dark .c-chip-due {
+  border-color: rgba(140, 40, 55, 0.5);
+  background-color: rgba(80, 18, 28, 0.35);
+  color: rgb(253, 164, 175);
+}
+.c-chip-flame {
+  border-color: lab(91.7203 -0.505269 49.9084); /* amber-200 */
+  background-image: linear-gradient(to left, lab(98.6252 -0.635922 8.42309), lab(97.7008 1.53735 5.90649)); /* amber-50 → orange-50 */
+  color: lab(47.2709 42.9082 69.2966); /* amber-700 */
+}
+.dark .c-chip-flame {
+  border-color: rgba(120, 88, 30, 0.5);
+  color: rgb(251, 191, 36);
+}

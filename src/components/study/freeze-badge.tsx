@@ -17,8 +17,8 @@ import { trackEvent } from "@/lib/analytics";
 // امروز زنجیره را نجات داده. هم‌الگوی حبهٔ مرور و چیپ هدف: یک ضربه
 // برمی‌گرداند خانه، جایی که خطّ کامل یخ (مخزن + پیشرفتِ ساختن) است.
 //
-// استایل: هم‌باند دقیق چیپ یخِ خانه (border-sky-200 / bg-sky-50 /
-// text-sky-600) — هر سه قاعدهٔ دارک سراسری دارند (globals ۷۲۷-۷۲۹ +
+// استایل: کلاسِ معنایی c-chip-freeze (ترانش ۴ فاز ۱) — سطحِ دو-تمِ
+// چیپ یخ یک‌جا تعریف شده؛ ارزش‌ها = همان باندهای قبلی (پروب-اثبات)،
 // توکن v4)، صفر قاعدهٔ دارک تازه؛ hover با -translate-y-px نه رنگ
 // (امن در دارک)؛ بریک‌پوینت هم‌شعله (hidden sm:inline-flex) — موبایل
 // بودجهٔ هدر را برای حبهٔ مرور/هدف نگه می‌دارد و خانه سطح کامل دارد.
@@ -52,7 +52,7 @@ export default function FreezeBadge() {
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ type: "spring", stiffness: 380, damping: 26 }}
       onClick={open}
-      className="freeze-badge mr-1 hidden items-center gap-1 rounded-full border border-sky-200 bg-sky-50 px-2.5 py-1.5 text-[12px] font-black text-sky-600 transition-transform hover:-translate-y-px active:scale-95 sm:inline-flex"
+      className="freeze-badge mr-1 hidden items-center gap-1 rounded-full border c-chip-freeze px-2.5 py-1.5 text-[12px] font-black transition-transform hover:-translate-y-px active:scale-95 sm:inline-flex"
       aria-label={meta.title}
       title={meta.title}
     >

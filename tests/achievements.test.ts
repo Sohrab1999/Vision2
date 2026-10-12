@@ -18,6 +18,7 @@ import {
   unlockedBadgeIds,
   type BadgeDef,
 } from "@/lib/achievements";
+import { daysAgoKey } from "@/lib/study-store";
 
 const T = "2026-10-13";
 
@@ -245,6 +246,75 @@ describe("خانوادهٔ هدف — دقیقاً دادهٔ goalMetDays", () =
   });
 });
 
+// ------------------------------------------------------------------
+// Task 83 — هفتهٔ بی‌قفسه: پنجرهٔ ۷روزهٔ موتور (daysAgoKey(6)) با
+// مقایسهٔ رشته‌ای >= — کلیدهای نسبی می‌کاریم تا تست به ساعتِ واقعی
+// مقاوم باشد؛ مرزها همان مقایسهٔ رشته‌ای‌اند.
+// ------------------------------------------------------------------
+
+describe("هفتهٔ بی‌قفسه — پنجرهٔ موتور (Task 83)", () => {
+  const w = (n: number) => daysAgoKey(n);
+  const fullWeek = () => [w(0), w(1), w(2), w(3), w(4), w(5), w(6)];
+
+  it("wording و تیر و آیکن قفل است — Bird طلایی", () => {
+    expect(byId("cage-free").title).toBe("هفتهٔ بی‌قفسه");
+    expect(byId("cage-free").tier).toBe("gold");
+    expect(byId("cage-free").icon).toBe("Bird");
+  });
+
+  it("تازه‌وارد: قفل؛ هفتهٔ کاملِ بی‌نجات: باز", () => {
+    expect(ids(base())).not.toContain("cage-free");
+    const pure = base({ goalMetDays: fullWeek() });
+    expect(ids(pure)).toContain("cage-free");
+    expect(pure.goalDays7).toBe(7);
+    expect(pure.rescues7).toBe(0);
+  });
+
+  it("مرز پنجره: روزِ ششم-پیش (windowStart) می‌شمارد، هفتم-پیش نه", () => {
+    // هفت روزِ هدف‌دار ولی قدیمی‌ترین‌ش دقیقاً بیرون پنجره → goalDays7=۶ → قفل
+    const shifted = base({ goalMetDays: [w(1), w(2), w(3), w(4), w(5), w(6), w(7)] });
+    expect(shifted.goalDays7).toBe(6);
+    expect(ids(shifted)).not.toContain("cage-free");
+    expect(byId("cage-free").progress!(shifted)).toBe("۶ از ۷ روزِ این هفته");
+    // همان روزِ مرزِ داخل: w(6) در پنجره است (مقایسهٔ >=)
+    const inside = base({ goalMetDays: fullWeek() });
+    expect(inside.goalDays7).toBe(7);
+  });
+
+  it("نجاتِ درون‌پنجره‌ای قفل می‌کند؛ نجاتِ بیرونِ پنجره نه", () => {
+    const rescuedInside = base({ goalMetDays: fullWeek(), freezeUsedDays: [w(3)] });
+    expect(rescuedInside.rescues7).toBe(1);
+    expect(ids(rescuedInside)).not.toContain("cage-free");
+    // هفت‌از-هفت ولی قفل — پیشرفت فریب نمی‌دهد، desc توضیح می‌دهد
+    expect(byId("cage-free").progress!(rescuedInside)).toBe("۷ از ۷ روزِ این هفته");
+    const rescuedOutside = base({ goalMetDays: fullWeek(), freezeUsedDays: [w(7), w(10)] });
+    expect(rescuedOutside.rescues7).toBe(0);
+    expect(ids(rescuedOutside)).toContain("cage-free");
+    // هم‌زمانیِ نشان‌ها: نجات‌گر با همان seed باز است — استقلالِ سطل‌ها
+    expect(ids(rescuedOutside)).toContain("chain-rescuer");
+  });
+
+  it("گارد ورودی خراب: آرایه‌های ناهم‌نوع → فقط رشته‌ها؛ نبودِ فیلد → صفر", () => {
+    const corrupt = buildEvalInput(baseRaw({
+      goalMetDays: [null, 5, w(0), w(1)],
+      freezeUsedDays: [null, { day: "x" }, w(2)],
+    }));
+    expect(corrupt.goalDays7).toBe(2);
+    expect(corrupt.rescues7).toBe(1);
+    const absent = buildEvalInput({
+      known: {},
+      results: {},
+      history: {},
+      dayStat: { day: "", reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0 },
+      streak: 0,
+      bestStreak: 0,
+      mistakes: {},
+    });
+    expect(absent.goalDays7).toBe(0);
+    expect(absent.rescues7).toBe(0);
+  });
+});
+
 describe("newBadgeIds — قرارداد واحدِ «تازه» (Task 82)", () => {
   const seven = base({ goalMetDays: ["2026-10-12", "2026-10-11", "2026-10-10", "2026-10-09", "2026-10-08", "2026-10-07", "2026-10-06"] });
 
@@ -259,11 +329,17 @@ describe("newBadgeIds — قرارداد واحدِ «تازه» (Task 82)", () 
 
   it("دیده‌شده‌ها فیلتر می‌شوند — فقط نام‌دیده‌ها برمی‌گردند", () => {
     const fresh = newBadgeIds(seven, ["goal-first", "goal-five"]);
-    expect(fresh).toEqual(["goal-week"]);
+    // (Task 83) هفت روزِ پشت‌سرهمِ بی‌نجات = هفتهٔ بی‌قفسه هم باز است —
+    // seed با تاریخِ مطلق است و امروزِ دستگاه UTC است؛ cage-free همراهش می‌آید
+    expect(fresh).toEqual(["goal-week", "cage-free"]);
   });
 
   it("seen خراب → فقط رشته‌ها معتبر؛ ورودیِ تازه‌وارد → خالی", () => {
-    expect(newBadgeIds(seven, [null, 3, "goal-week"] as unknown as string[])).toEqual(["goal-first", "goal-five"]);
+    expect(newBadgeIds(seven, [null, 3, "goal-week"] as unknown as string[])).toEqual([
+      "goal-first",
+      "goal-five",
+      "cage-free",
+    ]);
     expect(newBadgeIds(base(), [])).toEqual([]);
   });
 });

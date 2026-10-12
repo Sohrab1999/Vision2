@@ -21,9 +21,9 @@ import { trackEvent } from "@/lib/analytics";
 // دیکته/برق‌آسا وارد نمی‌شوند؛ چیپ هرگز بیش از امنیت زنجیره ادعا
 // نمی‌کند. روز کهنه (dayStat.day != امروز) صفر می‌بیند.
 //
-// استایل: زمرد از باندهای سراسری موجود سرو می‌گیرد (bg-emerald-50 /
-// border-emerald-200 / text-emerald-700 همگی قاعدهٔ دارک دارند —
-// صفر قاعدهٔ دارک تازه)؛ حالت برآورده bg-emerald-600 توپر = هم‌کلاس
+// استایل: کلاسِ معنایی c-chip-goal (ترانش ۴ فاز ۱) — سطحِ دو-تمِ چیپ
+// یک‌جا تعریف شده (light + dark هم‌جا)؛ met-state توپر در شاخهٔ جدا است
+// و باندهای سراسری برای سایر مصرف‌کننده‌ها سرِ جایشان مانده‌اند
 // آیتم فعال ناوبری، در دارک هم بی‌نیاز؛ میکرونوار روی bg-stone-200/70
 // (توکن v4 خودش در دارک فلیپ می‌شود) و fill زمردی توپر.
 // هیدراسیون: useMounted کل دروازه است — سرور و کلاینت هر دو «هیچ».
@@ -67,7 +67,7 @@ export default function GoalChip() {
       className={`goal-chip relative mr-1 inline-flex shrink-0 items-center gap-1.5 overflow-hidden rounded-full border px-2.5 py-1.5 text-[12px] font-black transition-transform hover:-translate-y-px active:scale-95 ${
         meta.done
           ? "border-emerald-600 bg-emerald-600 text-white shadow-sm shadow-emerald-900/20"
-          : "border-emerald-200 bg-emerald-50 text-emerald-700"
+          : "border c-chip-goal"
       }`}
       aria-label={meta.title}
       title={meta.title}

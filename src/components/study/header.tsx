@@ -63,7 +63,7 @@ export default function Header() {
           {/* streak flame */}
           {mounted && streak > 0 && (
             <span
-              className="mr-1 hidden items-center gap-1 rounded-full border border-amber-200 bg-gradient-to-l from-amber-50 to-orange-50 px-2.5 py-1.5 text-[12px] font-black text-amber-700 sm:inline-flex"
+              className="mr-1 hidden items-center gap-1 rounded-full border c-chip-flame px-2.5 py-1.5 text-[12px] font-black sm:inline-flex"
               title={`زنجیرهٔ ${faNum(streak)} روزه مطالعه`}
             >
               <Flame size={14} className="streak-flame" />

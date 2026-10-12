@@ -34,6 +34,7 @@ import {
   CalendarDays,
   CalendarRange,
   Sun,
+  Bird,
 } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -82,6 +83,8 @@ export const BADGE_ICONS: Record<string, React.ElementType> = {
   CalendarDays,
   CalendarRange,
   Sun,
+  // هفتهٔ بی‌قفسه (Task 83)
+  Bird,
 };
 
 const tierFa: Record<string, string> = {

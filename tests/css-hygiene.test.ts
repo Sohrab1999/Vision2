@@ -320,3 +320,45 @@ describe("globals.css surface-tint kernel (Step 9 tranche 3b — Task 80)", () =
     }
   });
 });
+
+describe("globals.css semantic chip layer (Step 9 tranche 4 phase 1 — Task 83)", () => {
+  const css83 = readFileSync(cssPath, "utf8");
+  const lines83 = css83.split("\n");
+
+  it("defines the four c-chip surfaces with a .dark counterpart each (pairing invariant)", () => {
+    const chips = ["goal", "freeze", "due", "flame"];
+    for (const c of chips) {
+      const light = lines83.filter((l) => l.trim() === `.c-chip-${c} {`);
+      const dark = lines83.filter((l) => l.trim() === `.dark .c-chip-${c} {`);
+      expect(light.length, `.c-chip-${c} light rule`).toBe(1);
+      expect(dark.length, `.c-chip-${c} must have exactly one .dark counterpart`).toBe(1);
+    }
+  });
+
+  it("no half-defined c-chip classes may appear (every light class has its dark twin)", () => {
+    const lightClasses = [...css83.matchAll(/^\.c-chip-([a-z-]+) \{/gm)].map((m) => m[1]);
+    const darkClasses = [...css83.matchAll(/^\.dark \.c-chip-([a-z-]+) \{/gm)].map((m) => m[1]);
+    expect(lightClasses.length, "at least the four pilot chips").toBeGreaterThanOrEqual(4);
+    for (const c of lightClasses) {
+      expect(darkClasses, `light .c-chip-${c} must have a .dark twin`).toContain(c);
+    }
+    for (const c of darkClasses) {
+      expect(lightClasses, `dark .c-chip-${c} must have a light twin`).toContain(c);
+    }
+  });
+
+  it("flame gradient stays UNFLIPPED in dark (probe-proven existing behavior, not a regression)", () => {
+    // .dark .c-chip-flame = border + ink only; background-image must NOT be redefined
+    const start = lines83.findIndex((l) => l.trim() === ".dark .c-chip-flame {");
+    expect(start).toBeGreaterThanOrEqual(0);
+    let depth = 0;
+    let body = "";
+    for (let i = start; i < lines83.length; i++) {
+      body += lines83[i] + "\n";
+      depth += (lines83[i].match(/{/g) ?? []).length;
+      depth -= (lines83[i].match(/}/g) ?? []).length;
+      if (depth <= 0) break;
+    }
+    expect(body).not.toContain("background-image");
+  });
+});

@@ -5,9 +5,10 @@
 // ------------------------------------------------------------------
 
 import type { StudyState } from "./study-store";
-import { normDayStat, todayStr } from "./study-store";
+import { daysAgoKey, normDayStat, todayStr } from "./study-store";
 import { faNum } from "./study-theme";
 import { completedQuestCount } from "./daily-quests";
+import { FREEZE_WINDOW } from "@/state/types";
 
 export type BadgeTier = "bronze" | "silver" | "gold";
 
@@ -46,6 +47,8 @@ export interface BadgeEvalInput {
   freezeRescues: number; // چند بار یخ زنجیره را نجات داده (freezeUsedDays)
   hasFreezeEver: boolean; // حداقل یک یخ ساخته شده (freezeEarnedDay ثبت است)
   goalDays: number; // چند روز هدفِ روزانه کامل شده (goalMetDays — سقف حافظه ۱۴، Task 82)
+  goalDays7: number; // روزهای هدف‌دار در پنجرهٔ ۷روزه (Task 83 — همان پنجرهٔ موتور)
+  rescues7: number; // نجات‌های یخ در پنجرهٔ ۷روزه (Task 83)
 }
 
 function historyTotals(history: StudyState["history"]): { quizzes: number; reviews: number; days: number } {
@@ -98,6 +101,14 @@ export function buildEvalInput(s: {
   const hasDictation = Object.keys(s.results).some((k) => k.endsWith(":dictation"));
   const hasWriting = Object.keys(s.results).some((k) => k.endsWith(":writing"));
   const mistakesTotal = Object.keys(s.mistakes).length;
+  // پنجرهٔ ۷روزه — همان قرارداد موتور: کلیدِ رشته‌ای محلی، مقایسهٔ >=
+  const windowStart = daysAgoKey(FREEZE_WINDOW - 1);
+  const goalList = Array.isArray(s.goalMetDays)
+    ? s.goalMetDays.filter((d): d is string => typeof d === "string")
+    : [];
+  const usedList = Array.isArray(s.freezeUsedDays)
+    ? s.freezeUsedDays.filter((d): d is string => typeof d === "string")
+    : [];
   return {
     knownCount,
     resultsCount,
@@ -132,6 +143,11 @@ export function buildEvalInput(s: {
     goalDays: Array.isArray(s.goalMetDays)
       ? s.goalMetDays.filter((d): d is string => typeof d === "string").length
       : 0,
+    // پنجرهٔ ۷روزه (Task 83) — دقیقاً همان مقایسهٔ رشته‌ایِ موتور
+    // (goalAndFreezePatch / freezeEarnMeta): >= windowStart، بدون فیلترِ آینده.
+    // پنجره از ساعتِ واقعی می‌آید (eval روی snapshot)؛ تست‌ها با کلیدِ نسبی می‌کارند.
+    goalDays7: goalList.filter((d) => d >= windowStart).length,
+    rescues7: usedList.filter((d) => d >= windowStart).length,
   };
 }
 
@@ -408,6 +424,21 @@ export const BADGES: BadgeDef[] = [
     tier: "gold",
     progress: (s) => `${faNum(Math.min(s.goalDays, 14))} از ۱۴ روزِ هدف‌دار`,
     check: (s) => s.goalDays >= 14,
+  },
+  // ---- هفتهٔ بی‌قفسه (Task 83) — نشانِ نابِ هدف‌داری: کلِ پنجرهٔ ۷روزه
+  // هدف‌دار و صفر نجات در همان پنجره (همان پنجرهٔ موتور). فرقش با
+  // «هفتهٔ هدف‌دار»: آن‌جا ۷ روزِ هدف‌دار با فاصله هم کافی است و نجاتِ
+  // زنجیره اشکالی ندارد؛ این‌جا هفتهٔ یک‌تکه و خود‌اتکاست — یخ دست‌نخورده.
+  // پیشرفتِ زیرِ قفل فقط بُعدِ روز را نشان می‌دهد؛ اگر نجاتِ درون‌پنجره‌ای
+  // باشد، ۷/۷ هم قفل می‌ماند و توضیحش در desc است (قراردادِ بر حدس مقدم).
+  {
+    id: "cage-free",
+    title: "هفتهٔ بی‌قفسه",
+    desc: "هر ۷ روزِ این هفته هدفِ روزانه‌ات را کامل کن — بدون آن‌که یخ مجبور به نجات شود",
+    icon: "Bird",
+    tier: "gold",
+    progress: (s) => `${faNum(Math.min(s.goalDays7, 7))} از ۷ روزِ این هفته`,
+    check: (s) => s.goalDays7 >= 7 && s.rescues7 === 0,
   },
 ];
 
