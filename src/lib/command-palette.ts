@@ -199,3 +199,123 @@ export function filterCommands(cmds: CommandDef[], query: string, cap = 12): Com
     .slice(0, cap)
     .map((x) => x.cmd);
 }
+
+// ------------------------------------------------------------------
+// فرمان‌های پارامتری (Task 69) — قالب‌هایی که با «عدد در پرس‌وجو»
+// نمونهٔ عینی می‌سازند: «آزمون ۲۰» → «آزمون جامع ۲۰ سؤالی».
+// شناسه‌ها قراردادی‌اند: «<key>-<عدد اسنپ‌شده>» و با commandFromParamId
+// برای گروه «اخیر» از شناسه بازسازی می‌شوند (هم‌الگوی parseLessonTabId).
+// ------------------------------------------------------------------
+
+export interface ParamSpec {
+  /** کلید قراردادی شناسه — «<key>-<n>» */
+  key: string;
+  /** واژه‌های ماشه (نرمال‌شده) که باید در پرس‌وجو بیایند */
+  triggers: string[];
+  /** مقادیر مجازِ صعودی — عدد پرس‌وجو به نزدیک‌ترینِ این‌ها می‌چسبد */
+  values: readonly number[];
+  label: (n: number) => string;
+  hint: (n: number) => string;
+  group: string;
+  keywords?: string[];
+}
+
+/** سه خانوادهٔ پارامتری: طول آزمون جامع، طول شبیه‌ساز کنکور، هدف روزانه */
+export const PARAM_SPECS: ParamSpec[] = [
+  {
+    key: "exam-count",
+    triggers: ["آزمون", "exam"],
+    values: [10, 20, 30],
+    label: (n) => `آزمون جامع ${faDigits(n)} سؤالی`,
+    hint: (n) => `شروع سریع — ${faDigits(n)} سؤال از قبل انتخاب شده`,
+    group: "تمرین و چالش",
+    keywords: ["exam", "final test", "سؤال", "طول آزمون"],
+  },
+  {
+    key: "konkur-count",
+    triggers: ["کنکور", "شبیه‌ساز", "konkur"],
+    values: [10, 20, 30],
+    label: (n) => `شبیه‌ساز کنکور ${faDigits(n)} تستی`,
+    hint: (n) => `ورود به شبیه‌ساز با ${faDigits(n)} تست`,
+    group: "تمرین و چالش",
+    keywords: ["konkur", "simulator", "تست"],
+  },
+  {
+    key: "daily-goal",
+    triggers: ["هدف", "goal"],
+    values: [5, 10, 15],
+    label: (n) => `هدف روزانه: ${faDigits(n)} فعالیت`,
+    hint: (n) => `تنظیم فوری هدف روی ${faDigits(n)} — بدون جابه‌جایی`,
+    group: "ابزارها",
+    keywords: ["daily goal", "تنظیم هدف", "هدف فعالیت"],
+  },
+];
+
+/** نخستین عدد پرس‌وجو (ارقام لاتین پس از normalizeFa)؛ بدون عدد → null */
+export function parseQueryNumber(query: string): number | null {
+  const m = normalizeFa(query).match(/\d+/);
+  if (!m) return null;
+  const n = Number(m[0]);
+  return Number.isFinite(n) && n > 0 ? n : null;
+}
+
+/**
+ * چسباندن عدد به نزدیک‌ترین مقدار مجاز (لیست صعودی).
+ * تساوی فاصله → مقدار پایین‌تر (مقایسهٔ اکید «کوچک‌تر» جایگزین نمی‌کند).
+ */
+export function snapToValues(n: number, values: readonly number[]): number {
+  let best = values[0];
+  for (const v of values) {
+    if (Math.abs(v - n) < Math.abs(best - n)) best = v;
+  }
+  return best;
+}
+
+/**
+ * گسترش پرس‌وجو به فرمان‌های پارامتریِ متناظر: عدد لازم است و حداقل یک
+ * ماشه باید در توکن‌ها بیاید (ماشهٔ چندتوکنی با زیررشتهٔ پرس‌وجوی کامل).
+ * عدد خارج از مقادیر مجاز به نزدیک‌ترین می‌چسبد — کاربر همیشه نتیجه می‌گیرد.
+ */
+export function expandParameterized(query: string): CommandDef[] {
+  const q = normalizeFa(query);
+  const n = parseQueryNumber(q);
+  if (!n) return [];
+  const tokens = q.split(" ").filter(Boolean);
+  const out: CommandDef[] = [];
+  for (const spec of PARAM_SPECS) {
+    const hit = spec.triggers.some((tr) => {
+      // ماشه هم نرمال می‌شود — «شبیه‌ساز» با نیم‌فاصله باید به «شبیهسازِ»
+      // نرمال‌شدهٔ پرس‌وجو بخوابد (هر دو سمتِ مقایسه همین تابع را می‌گیرند)
+      const ntr = normalizeFa(tr);
+      return ntr.includes(" ") ? q.includes(ntr) : tokens.some((t) => t === ntr || t.includes(ntr));
+    });
+    if (!hit) continue;
+    const snapped = snapToValues(n, spec.values);
+    out.push({
+      id: `${spec.key}-${snapped}`,
+      label: spec.label(snapped),
+      hint: spec.hint(snapped),
+      group: spec.group,
+      keywords: spec.keywords,
+    });
+  }
+  return out;
+}
+
+/** بازسازی فرمان پارامتری از شناسه‌اش (گروه «اخیر»)؛ ناشناخته → null */
+export function commandFromParamId(id: string): CommandDef | null {
+  for (const spec of PARAM_SPECS) {
+    if (!id.startsWith(`${spec.key}-`)) continue;
+    const n = Number(id.slice(spec.key.length + 1));
+    if (spec.values.includes(n)) {
+      return {
+        id,
+        label: spec.label(n),
+        hint: spec.hint(n),
+        group: spec.group,
+        keywords: spec.keywords,
+      };
+    }
+  }
+  return null;
+}

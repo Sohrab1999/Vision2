@@ -23,10 +23,14 @@ import {
   Route,
   Search,
   SearchX,
+  Settings,
+  Smartphone,
   Sparkles,
   Star,
   Sun,
   Swords,
+  Target,
+  UserCog,
   Zap,
   BarChart3,
 } from "lucide-react";
@@ -36,6 +40,8 @@ import { LESSONS_META } from "@/data/lesson-meta";
 import { faNum } from "@/lib/study-theme";
 import {
   COMMAND_GROUPS,
+  commandFromParamId,
+  expandParameterized,
   faDigits,
   filterCommands,
   lessonTabCommands,
@@ -43,6 +49,7 @@ import {
   parseLessonTabId,
   type CommandDef,
 } from "@/lib/command-palette";
+import { writeCountPrefill } from "@/lib/nav-prefill";
 import { Kbd } from "./shortcut-guide";
 
 // ------------------------------------------------------------------
@@ -79,6 +86,10 @@ const ICONS: Record<string, React.ElementType> = {
   Keyboard,
   Sun,
   Moon,
+  Target,
+  Settings,
+  UserCog,
+  Smartphone,
 };
 
 // ------------------------------------------------------------------
@@ -199,21 +210,27 @@ export default function CommandPalette() {
         keywords: ["dark", "light", "theme", "night", "پوسته"],
       },
       { id: "tool-shortcuts", label: "راهنمای میان‌برهای کیبورد", group: "ابزارها", hint: "همهٔ کلیدهای میان‌بر", keywords: ["shortcuts", "keyboard", "hotkeys"] },
+      // ── میان‌برهای زیرپنل (Task 69) ──
+      { id: "tool-settings", label: "تنظیمات وب‌کتاب", group: "ابزارها", hint: "سرعت روخوانی، اندازهٔ متن، کاهش حرکت", keywords: ["settings", "تنظیمات"] },
+      { id: "tool-profile", label: "پروفایل و پشتیبان", group: "ابزارها", hint: "نام، رنگ، پشتیبان‌گیری و سینک ابری", keywords: ["profile", "backup", "sync", "پروفایل", "ذخیره"] },
+      { id: "tool-install", label: "نصب روی دستگاه", group: "ابزارها", hint: "وب‌کتاب مثل اپ — آفلاین و تمام‌صفحه", keywords: ["install", "pwa", "نصب", "اپلیکیشن"] },
     ],
     [isDark],
   );
 
   // کلیدواژهٔ ناوبری برای همهٔ فرمان‌ها (جست‌وجو) + نگاشت شناسه برای «اخیر»
+  // + فرمان‌های پارامتریِ متناظر با پرس‌وجو («آزمون ۲۰» → آزمون جامع ۲۰ سؤالی)
   const commands: CommandDef[] = useMemo(
-    () => [...baseCommands, ...DEEP_COMMANDS],
-    [baseCommands],
+    () => [...baseCommands, ...DEEP_COMMANDS, ...expandParameterized(query)],
+    [baseCommands, query],
   );
 
   const recentCmds: CommandDef[] = useMemo(() => {
     if (!recentIds.length) return [];
     const byId = new Map(commands.map((c) => [c.id, c] as const));
+    // فرمان پارامتری در نمای خالی در لیست نیست — از شناسه‌اش بازسازی می‌شود
     return recentIds
-      .map((id) => byId.get(id))
+      .map((id) => byId.get(id) ?? commandFromParamId(id))
       .filter((c): c is CommandDef => Boolean(c));
   }, [recentIds, commands]);
 
@@ -295,7 +312,42 @@ export default function CommandPalette() {
       case "tool-shortcuts":
         window.dispatchEvent(new CustomEvent("open-shortcuts"));
         break;
+      case "tool-settings":
+        window.dispatchEvent(new CustomEvent("open-settings"));
+        break;
+      case "tool-profile":
+        window.dispatchEvent(new CustomEvent("open-profile"));
+        break;
+      case "tool-install":
+        window.dispatchEvent(new CustomEvent("install-app"));
+        break;
       default: {
+        // ── فرمان‌های پارامتری (Task 69) ──
+        // آزمون جامع N سؤالی: prefill در sessionStorage می‌نشیند (نمای lazy
+        // رویداد را از دست می‌دهد) + رویداد برای وقتی که نما همین حالا باز است
+        if (cmd.id.startsWith("exam-count-")) {
+          const n = Number(cmd.id.slice("exam-count-".length));
+          if ([10, 20, 30].includes(n)) {
+            writeCountPrefill("vision2-exam-prefill", n);
+            setView({ type: "exam" });
+            window.dispatchEvent(new CustomEvent("open-exam-with", { detail: { count: n } }));
+          }
+          break;
+        }
+        if (cmd.id.startsWith("konkur-count-")) {
+          const n = Number(cmd.id.slice("konkur-count-".length));
+          if ([10, 20, 30].includes(n)) {
+            writeCountPrefill("vision2-konkur-prefill", n);
+            setView({ type: "konkur" });
+            window.dispatchEvent(new CustomEvent("open-konkur-with", { detail: { count: n } }));
+          }
+          break;
+        }
+        if (cmd.id.startsWith("daily-goal-")) {
+          const n = Number(cmd.id.slice("daily-goal-".length));
+          if ([5, 10, 15].includes(n)) useStudy.getState().setDailyGoal(n); // فوری — بدون جابه‌جایی
+          break;
+        }
         if (cmd.id.startsWith("lesson-smart-")) {
           // فلش‌کارت هوشمند درس — مثل فرمان خودِ درس، رویداد lesson_open می‌سازد
           const id = Number(cmd.id.slice("lesson-smart-".length));
@@ -366,7 +418,7 @@ export default function CommandPalette() {
             aria-controls="command-palette-list"
             aria-activedescendant={filtered[sel] ? `cp-opt-${sel}` : undefined}
             aria-label="جست‌وجوی فرمان‌ها"
-            placeholder="برو به… (واژگان درس ۲، دیکتهٔ درس ۳، شب)"
+            placeholder="برو به… (آزمون ۲۰، هدف ۱۰، دیکتهٔ درس ۳، شب)"
             className="min-w-0 flex-1 bg-transparent text-[15px] font-bold text-stone-800 outline-none"
             autoComplete="off"
             spellCheck={false}
@@ -389,7 +441,7 @@ export default function CommandPalette() {
               </span>
               <p className="text-[13.5px] font-extrabold text-stone-800">فرمانی یافت نشد</p>
               <p className="text-[11.5px] font-bold text-stone-500">
-                «واژگان درس ۲»، «دیکشنری» یا «کنکور» را امتحان کن
+                «آزمون ۲۰»، «واژگان درس ۲» یا «دیکشنری» را امتحان کن
               </p>
             </div>
           ) : (
@@ -502,7 +554,17 @@ function cmdIconKey(id: string, isDark: boolean): string {
       return isDark ? "Sun" : "Moon";
     case "tool-shortcuts":
       return "Keyboard";
+    case "tool-settings":
+      return "Settings";
+    case "tool-profile":
+      return "UserCog";
+    case "tool-install":
+      return "Smartphone";
     default: {
+      // فرمان‌های پارامتری (Task 69): آیکونِ مقصدِ هر خانواده
+      if (id.startsWith("exam-count-")) return "ClipboardCheck";
+      if (id.startsWith("konkur-count-")) return "GraduationCap";
+      if (id.startsWith("daily-goal-")) return "Target";
       // فرمان‌های عمق‌دار درس: آیکون هر تب، مثل خودِ درس‌نما
       const lt = parseLessonTabId(id);
       if (lt) {

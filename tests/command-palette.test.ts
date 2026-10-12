@@ -268,3 +268,167 @@ describe("mergeRecent", () => {
     expect(mergeRecent([], "x")).toEqual(["x"]);
   });
 });
+
+// ------------------------------------------------------------------
+// Task 69 — فرمان‌های پارامتری: «آزمون ۲۰» → آزمون جامع ۲۰ سؤالی
+// ------------------------------------------------------------------
+import {
+  PARAM_SPECS,
+  parseQueryNumber,
+  snapToValues,
+  expandParameterized,
+  commandFromParamId,
+} from "@/lib/command-palette";
+import { readCountPrefill, writeCountPrefill, clearCountPrefill } from "@/lib/nav-prefill";
+
+describe("parseQueryNumber", () => {
+  it("ارقام لاتین را می‌خواند", () => {
+    expect(parseQueryNumber("آزمون 20")).toBe(20);
+  });
+
+  it("ارقام فارسی و عربی را هم می‌خواند", () => {
+    expect(parseQueryNumber("آزمون ۲۰")).toBe(20);
+    expect(parseQueryNumber("كنكور ٢٠")).toBe(20);
+  });
+
+  it("عدد چسبیده به واژه را هم می‌گیرد", () => {
+    expect(parseQueryNumber("آزمون20")).toBe(20);
+  });
+
+  it("نخستین عدد چندعددی را برمی‌دارد", () => {
+    expect(parseQueryNumber("هدف ۵ از ۱۰")).toBe(5);
+  });
+
+  it("بدون عدد → null", () => {
+    expect(parseQueryNumber("آزمون جامع")).toBeNull();
+    expect(parseQueryNumber("")).toBeNull();
+  });
+});
+
+describe("snapToValues", () => {
+  const V = [10, 20, 30] as const;
+
+  it("مقدار دقیق سر جایش می‌ماند", () => {
+    expect(snapToValues(20, V)).toBe(20);
+  });
+
+  it("به نزدیک‌ترین می‌چسبد", () => {
+    expect(snapToValues(5, V)).toBe(10);
+    expect(snapToValues(24, V)).toBe(20);
+    expect(snapToValues(28, V)).toBe(30);
+  });
+
+  it("تساوی فاصله → پایین‌تر", () => {
+    expect(snapToValues(15, V)).toBe(10);
+    expect(snapToValues(25, V)).toBe(20);
+  });
+
+  it("خارج از بازه هم می‌چسبد (کاربر همیشه نتیجه می‌گیرد)", () => {
+    expect(snapToValues(200, V)).toBe(30);
+    expect(snapToValues(1, V)).toBe(10);
+  });
+});
+
+describe("expandParameterized", () => {
+  it("«آزمون ۲۰» دقیقاً یک فرمان آزمون می‌سازد", () => {
+    const out = expandParameterized("آزمون ۲۰");
+    expect(out).toHaveLength(1);
+    expect(out[0]!.id).toBe("exam-count-20");
+    expect(out[0]!.label).toBe("آزمون جامع ۲۰ سؤالی");
+    expect(out[0]!.group).toBe("تمرین و چالش");
+  });
+
+  it("«کنکور ۳۰» و «شبیه‌ساز ۱۰» هر دو شبیه‌ساز می‌دهند", () => {
+    expect(expandParameterized("کنکور ۳۰")[0]!.id).toBe("konkur-count-30");
+    expect(expandParameterized("شبیه‌ساز 10")[0]!.id).toBe("konkur-count-10");
+  });
+
+  it("«هدف روزانه ۱۵» فرمان فوری هدف می‌دهد", () => {
+    const out = expandParameterized("هدف روزانه ۱۵");
+    expect(out).toHaveLength(1);
+    expect(out[0]!.id).toBe("daily-goal-15");
+    expect(out[0]!.group).toBe("ابزارها");
+  });
+
+  it("بدون عدد یا بدون ماشه خالی است", () => {
+    expect(expandParameterized("آزمون جامع")).toEqual([]);
+    expect(expandParameterized("درس ۲")).toEqual([]); // «درس» ماشه نیست
+    expect(expandParameterized("۲۰")).toEqual([]); // عدد تنها، بدون ماشه
+    expect(expandParameterized("")).toEqual([]);
+  });
+
+  it("عدد خارج از مقادیر به نزدیک‌ترین می‌چسبد", () => {
+    expect(expandParameterized("آزمون 25")[0]!.id).toBe("exam-count-20");
+    expect(expandParameterized("آزمون ۲۰۰")[0]!.id).toBe("exam-count-30");
+    expect(expandParameterized("هدف 12")[0]!.id).toBe("daily-goal-10");
+  });
+
+  it("ماشهٔ لاتین هم کار می‌کند", () => {
+    expect(expandParameterized("exam 20")[0]!.id).toBe("exam-count-20");
+    expect(expandParameterized("goal 5")[0]!.id).toBe("daily-goal-5");
+  });
+
+  it("خروجی برای همان پرس‌وجو با امتیازدهی استاندارد پیدا می‌شود", () => {
+    const out = expandParameterized("آزمون ۲۰");
+    expect(scoreCommand("آزمون ۲۰", out[0]!)).toBeGreaterThan(0);
+    // در فیلتر استاندارد روی نمونهٔ پایه هم بالا می‌آید
+    const filtered = filterCommands([...cmds, ...out], "آزمون ۲۰", 5);
+    expect(filtered[0]!.id).toBe("exam-count-20");
+  });
+
+  it("حافظهٔ ماشه‌ها سالم است: هر spec مقادیر صعودی و کلید یکتا دارد", () => {
+    const keys = new Set(PARAM_SPECS.map((s) => s.key));
+    expect(keys.size).toBe(PARAM_SPECS.length);
+    for (const s of PARAM_SPECS) {
+      expect(s.values.length).toBeGreaterThan(0);
+      expect([...s.values]).toEqual([...s.values].sort((a, b) => a - b));
+      expect(s.triggers.length).toBeGreaterThan(0);
+    }
+  });
+});
+
+describe("commandFromParamId — احیای «اخیر»", () => {
+  it("شناسهٔ معتبر را به فرمان کامل بازمی‌گرداند (گردش کامل با گسترش)", () => {
+    const built = expandParameterized("آزمون ۲۰")[0]!;
+    const revived = commandFromParamId(built.id);
+    expect(revived).not.toBeNull();
+    expect(revived!.id).toBe("exam-count-20");
+    expect(revived!.label).toBe(built.label);
+    expect(revived!.group).toBe(built.group);
+    expect(commandFromParamId("konkur-count-10")!.label).toBe("شبیه‌ساز کنکور ۱۰ تستی");
+    expect(commandFromParamId("daily-goal-15")!.label).toBe("هدف روزانه: ۱۵ فعالیت");
+  });
+
+  it("شناسهٔ ناشناخته/نامعتبر → null", () => {
+    expect(commandFromParamId("exam-count-77")).toBeNull(); // عدد خارج از مقادیر
+    expect(commandFromParamId("exam-count")).toBeNull(); // بدون عدد
+    expect(commandFromParamId("nav-home")).toBeNull(); // فرمان عادی
+    expect(commandFromParamId("ltab-1-vocab")).toBeNull(); // قلمروِ تجزیه‌گر دیگر
+    expect(commandFromParamId("")).toBeNull();
+  });
+});
+
+describe("nav-prefill — پل sessionStorage", () => {
+  // محیط node است — window ساختگی با sessionStorage درون‌حافظه‌ای
+  const mem = new Map<string, string>();
+  (globalThis as { window?: unknown }).window = {
+    sessionStorage: {
+      getItem: (k: string) => (mem.has(k) ? mem.get(k)! : null),
+      setItem: (k: string, v: string) => void mem.set(k, String(v)),
+      removeItem: (k: string) => void mem.delete(k),
+    },
+  };
+
+  it("می‌نویسد و می‌خواند؛ بعد از پاک‌کردن null می‌دهد", () => {
+    writeCountPrefill("t-key", 20);
+    expect(readCountPrefill("t-key", [10, 20, 30])).toBe(20);
+    clearCountPrefill("t-key");
+    expect(readCountPrefill("t-key", [10, 20, 30])).toBeNull();
+  });
+
+  it("مقدار خارج از مقادیر مجاز را رد می‌کند (دفاعی)", () => {
+    writeCountPrefill("t-key2", 77);
+    expect(readCountPrefill("t-key2", [10, 20, 30])).toBeNull();
+    expect(readCountPrefill("t-key3", [10, 20, 30])).toBeNull(); // کلید غایب
+  });
+});

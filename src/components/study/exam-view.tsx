@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { ClipboardCheck, Timer, Zap, BookOpen, GraduationCap, ScrollText, Eraser, Layers, ArrowLeft, Ear } from "lucide-react";
 import { examBank, lessons } from "@/data";
 import type { QuizQuestion } from "@/lib/study-types";
@@ -9,6 +9,7 @@ import { useMounted } from "@/lib/use-mounted";
 import { themeOf, faNum } from "@/lib/study-theme";
 import { trackEvent } from "@/lib/analytics";
 import { buildExamDictation, DICTATION_MIN_EXAM } from "@/lib/exam-dictation";
+import { clearCountPrefill, readCountPrefill } from "@/lib/nav-prefill";
 import QuizEngine from "./quiz-engine";
 import DictationTab from "./dictation-tab";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -39,10 +40,16 @@ interface Session {
   kind: "exam" | "final" | "exam-mistakes";
 }
 
+/** طول‌های مجاز آزمون جامع — فرمان پارامتری پالت هم همین‌ها را پیش‌انتخاب می‌کند */
+const EXAM_COUNTS = [10, 20, 30] as const;
+const EXAM_PREFILL_KEY = "vision2-exam-prefill";
+
 export default function ExamView() {
   const [session, setSession] = useState<Session | null>(null);
   const [mode, setMode] = useState<Mode>("vocab");
-  const [examCount, setExamCount] = useState(10);
+  // Task 69: فرمان پارامتری پالت («آزمون ۲۰») مقدار را در sessionStorage
+  // می‌گذارد — initializer غیرمخرب می‌خواند (نما lazy است و رویدادش گم می‌شود)
+  const [examCount, setExamCount] = useState(() => readCountPrefill(EXAM_PREFILL_KEY, EXAM_COUNTS) ?? 10);
   const [examTimed, setExamTimed] = useState(true);
   const [finalTimed, setFinalTimed] = useState(true);
   const [dictOpen, setDictOpen] = useState(false);
@@ -51,6 +58,23 @@ export default function ExamView() {
   const mistakes = useStudy((s) => s.mistakes);
   const setView = useStudy((s) => s.setView);
   const mounted = useMounted();
+
+  // مصرفِ یک‌بارهٔ prefill (بدون setState — پاک‌سازی خارجی) + رویداد
+  // «open-exam-with» برای وقتی که نما همین حالا باز است (Task 69).
+  // دام QA: مسیر رویداد هم باید کلید را مصرف کند وگرنه mount بعدیِ تازه
+  // مقدار کهنه را می‌خواند — prefill باید در هر دو مسیر یک‌بارمصرف باشد.
+  useEffect(() => {
+    clearCountPrefill(EXAM_PREFILL_KEY);
+    const handler = (e: Event) => {
+      const n = (e as CustomEvent<{ count?: number }>).detail?.count;
+      if (typeof n === "number" && (EXAM_COUNTS as readonly number[]).includes(n)) {
+        setExamCount(n);
+        clearCountPrefill(EXAM_PREFILL_KEY);
+      }
+    };
+    window.addEventListener("open-exam-with", handler);
+    return () => window.removeEventListener("open-exam-with", handler);
+  }, []);
 
   /* The exam pool is STATIC (pure function of examBank) — build once on
      mount and reuse the same object as the dialog's source, so the round
@@ -150,7 +174,7 @@ export default function ExamView() {
 
           <p className="mb-2 text-[13px] font-bold text-stone-600">۱. تعداد سؤالات را انتخاب کنید:</p>
           <div className="mb-5 flex flex-wrap gap-2">
-            {[10, 20, 30].map((n) => (
+            {EXAM_COUNTS.map((n) => (
               <button
                 key={n}
                 onClick={() => setExamCount(n)}

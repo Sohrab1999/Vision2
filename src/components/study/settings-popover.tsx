@@ -80,6 +80,17 @@ export default function SettingsPopover() {
     return () => mq.removeEventListener?.("change", update);
   }, []);
 
+  // Task 69 — باز شدن از فرمان‌یاب (فرمان «تنظیمات وب‌کتاب»): رویداد پنجره‌ای،
+  // هم‌الگوی open-profile پروفایل. تپشِ زنده هم در هر باز شدن تازه می‌شود.
+  useEffect(() => {
+    const handler = () => {
+      setOpen(true);
+      loadPulse();
+    };
+    window.addEventListener("open-settings", handler);
+    return () => window.removeEventListener("open-settings", handler);
+  }, []);
+
   const changeRate = (v: number) => {
     setSettings({ ttsRate: v });
     setSpeakRateScale(v); // immediate — next speak() uses it

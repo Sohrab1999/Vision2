@@ -12,7 +12,7 @@
 // sync, and per-question results feed the coverage map automatically.
 // ------------------------------------------------------------------
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   GraduationCap,
   Timer,
@@ -35,6 +35,7 @@ import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
 import { hardIdsOf } from "@/lib/konkur";
 import { trackEvent } from "@/lib/analytics";
+import { clearCountPrefill, readCountPrefill } from "@/lib/nav-prefill";
 import QuizEngine from "./quiz-engine";
 import { shuffle } from "@/lib/domain/shuffle";
 import { percent } from "@/lib/domain/percent";
@@ -65,12 +66,35 @@ interface Session {
 
 const HARD_CAP = 20; // per-session cap for the hard drill
 
+/** طول‌های مجاز شبیه‌ساز — فرمان پارامتری پالت هم همین‌ها را پیش‌انتخاب می‌کند */
+const SIM_COUNTS = [10, 20, 30] as const;
+const KONKUR_PREFILL_KEY = "vision2-konkur-prefill";
+
 export default function KonkurView() {
   const [session, setSession] = useState<Session | null>(null);
   const [mode, setMode] = useState<Mode>("sim");
-  const [simCount, setSimCount] = useState(10);
+  // Task 69: فرمان پارامتری پالت («کنکور ۳۰») مقدار را در sessionStorage
+  // می‌گذارد — initializer غیرمخرب می‌خواند (نما lazy است و رویدادش گم می‌شود)
+  const [simCount, setSimCount] = useState(() => readCountPrefill(KONKUR_PREFILL_KEY, SIM_COUNTS) ?? 10);
   const [simTimed, setSimTimed] = useState(true);
   const [coverCount, setCoverCount] = useState(10);
+
+  // مصرفِ یک‌بارهٔ prefill (بدون setState — پاک‌سازی خارجی) + رویداد
+  // «open-konkur-with» برای وقتی که نما همین حالا باز است (Task 69).
+  // دام QA: مسیر رویداد هم باید کلید را مصرف کند وگرنه mount بعدیِ تازه
+  // مقدار کهنه را می‌خواند — prefill باید در هر دو مسیر یک‌بارمصرف باشد.
+  useEffect(() => {
+    clearCountPrefill(KONKUR_PREFILL_KEY);
+    const handler = (e: Event) => {
+      const n = (e as CustomEvent<{ count?: number }>).detail?.count;
+      if (typeof n === "number" && (SIM_COUNTS as readonly number[]).includes(n)) {
+        setSimCount(n);
+        clearCountPrefill(KONKUR_PREFILL_KEY);
+      }
+    };
+    window.addEventListener("open-konkur-with", handler);
+    return () => window.removeEventListener("open-konkur-with", handler);
+  }, []);
 
   const konkurSeen = useStudy((s) => s.konkurSeen);
   const konkurWrong = useStudy((s) => s.konkurWrong);
@@ -306,7 +330,7 @@ export default function KonkurView() {
           </h2>
           <p className="mb-2 text-[13px] font-bold text-stone-600">تعداد تست:</p>
           <div className="mb-5 flex flex-wrap gap-2">
-            {[10, 20, 30].map((n) => (
+            {SIM_COUNTS.map((n) => (
               <button
                 key={n}
                 onClick={() => setSimCount(n)}
