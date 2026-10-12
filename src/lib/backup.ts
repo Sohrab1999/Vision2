@@ -7,94 +7,39 @@
 // ------------------------------------------------------------------
 
 import { useStudy } from "./study-store";
-import type { DayHistoryMap, HistoryMap, MistakeMap, SrsItem } from "./study-store";
-import type { QuizResult } from "./study-types";
+import { DEVICE_KEYS, sanitizeAll, asRecord } from "@/lib/persist/schema";
+import type { SyncData } from "@/lib/persist/schema";
 import { faNum } from "./study-theme";
 
+// R-1 «پایداری schema-محور»: the payload shape, its sanitization and
+// its defaults all live in the SyncField table (src/lib/persist/schema.ts).
+export type { SyncData };
 export const BACKUP_VERSION = 1;
 
 export interface BackupPayload {
   app: "vision2-webbook";
   version: number;
   exportedAt: string;
-  data: {
-    known: Record<string, boolean>;
-    results: Record<string, QuizResult>;
-    srs: Record<string, SrsItem>;
-    userName: string;
-    avatarColor: string;
-    streak: number;
-    bestStreak: number;
-    lastActiveDay: string;
-    dayStat: { day: string; reviews: number; quizzes: number; words: number; dictation: number; rush: number };
-    history: HistoryMap;
-    // Task-37 «هفته‌نامه» — full DayStat window (optional for backward compatibility)
-    dayHistory?: DayHistoryMap;
-    mistakes: MistakeMap;
-    seenBadges: string[];
-    rushBest: number;
-    rushBestCorrect: number;
-    rushGames: number;
-    // F9 streak freeze
-    freezeCount: number;
-    freezeEarnedDay: string;
-    freezeUsedDays: string[];
-    goalMetDays: string[];
-    // F7 word-level risk maps (optional for backward compatibility)
-    wordMistakes?: Record<string, number>;
-    wordSeen?: Record<string, number>;
-    // گوشهٔ کنکور coverage/mastery maps (optional for backward compatibility)
-    konkurSeen?: Record<string, boolean>;
-    konkurWrong?: Record<string, boolean>;
-    // Phase-0 «اعتماد» — learner identity pair (optional for backward compatibility).
-    // A backup file (or cloud snapshot) carrying the pair restores the SAME
-    // identity on the new device — the file/code itself is the credential.
-    userId?: string;
-    userSecret?: string;
-  };
+  data: SyncData;
 }
 
-/** Collect the current persisted subset of the study store. */
-export function collectData(): BackupPayload["data"] {
+/**
+ * Collect the current persisted subset of the study store, through the
+ * SyncField table — so every export/cloud-push is validated and clamped
+ * exactly like an import (self-healing against legacy junk in localStorage).
+ */
+export function collectData(): SyncData {
   const raw = localStorage.getItem("vision2-study-v1");
   if (raw) {
     try {
-      const parsed = JSON.parse(raw) as { state?: BackupPayload["data"] };
-      if (parsed.state) return parsed.state;
+      const parsed = JSON.parse(raw) as { state?: unknown };
+      if (parsed.state && typeof parsed.state === "object") return sanitizeAll(parsed.state);
     } catch {
       /* fall through to store */
     }
   }
   // fallback: read from the store directly
-  const s = useStudy.getState();
-  return {
-    known: s.known,
-    results: s.results,
-    srs: s.srs,
-    userName: s.userName,
-    avatarColor: s.avatarColor,
-    streak: s.streak,
-    bestStreak: s.bestStreak,
-    lastActiveDay: s.lastActiveDay,
-    dayStat: s.dayStat,
-    history: s.history,
-    dayHistory: s.dayHistory ?? {},
-    mistakes: s.mistakes,
-    seenBadges: s.seenBadges,
-    rushBest: s.rushBest ?? 0,
-    rushBestCorrect: s.rushBestCorrect ?? 0,
-    rushGames: s.rushGames ?? 0,
-    freezeCount: s.freezeCount ?? 0,
-    freezeEarnedDay: s.freezeEarnedDay ?? "",
-    freezeUsedDays: s.freezeUsedDays ?? [],
-    goalMetDays: s.goalMetDays ?? [],
-    wordMistakes: s.wordMistakes ?? {},
-    wordSeen: s.wordSeen ?? {},
-    konkurSeen: s.konkurSeen ?? {},
-    konkurWrong: s.konkurWrong ?? {},
-    userId: s.userId || undefined,
-    userSecret: s.userSecret || undefined,
-  };
+  return sanitizeAll(useStudy.getState());
 }
 
 /** Serialize + download the learner's progress as a pretty JSON file. */
@@ -123,34 +68,11 @@ export function exportProgress(): boolean {
   }
 }
 
-const asRecord = (v: unknown): Record<string, unknown> =>
-  v && typeof v === "object" && !Array.isArray(v) ? (v as Record<string, unknown>) : {};
-
-/** sanitize a boolean flag map (konkur coverage): short keys, hard cap on entries */
-function sanitizeFlagMap(v: unknown): Record<string, boolean> {
-  const out: Record<string, boolean> = {};
-  for (const [k, b] of Object.entries(asRecord(v))) {
-    if (typeof b === "boolean" && b) out[k.slice(0, 80)] = true;
-    if (Object.keys(out).length >= 2000) break;
-  }
-  return out;
-}
-
-/** sanitize an F7 word-stat map: finite non-negative ints, hard cap on entries */
-function sanitizeWordStat(v: unknown): Record<string, number> {
-  const out: Record<string, number> = {};
-  for (const [k, n] of Object.entries(asRecord(v))) {
-    if (typeof n === "number" && Number.isFinite(n) && n >= 0) {
-      out[k.slice(0, 80)] = Math.min(9999, Math.round(n));
-    }
-    if (Object.keys(out).length >= 2000) break;
-  }
-  return out;
-}
-
 /**
  * Validate a backup file's JSON and return the sanitized payload.
  * Throws with a Persian message when the file is not a valid backup.
+ * The per-field validation/clamping is the SyncField table's sanitize
+ * column (R-1) — one shared policy for file import AND cloud snapshots.
  */
 export function parseBackup(text: string): BackupPayload {
   let obj: unknown;
@@ -167,131 +89,11 @@ export function parseBackup(text: string): BackupPayload {
   if (version < 1 || version > BACKUP_VERSION) {
     throw new Error("نسخهٔ فایل پشتیبان پشتیبانی نمی‌شود.");
   }
-  const data = asRecord(rec["data"]);
-  // audit 2026-10-12 (F-7.2): every numeric field below is clamped now —
-  // previously a tampered/corrupt file could inject percent 9000 or negative
-  // counts that the max-merge in sync would happily keep as "best" forever.
-  const num = (v: unknown): number | null =>
-    typeof v === "number" && Number.isFinite(v) ? v : null;
-  const cnt = (v: unknown, max = 9999): number | null => {
-    const n = num(v);
-    return n === null ? null : Math.min(max, Math.max(0, Math.round(n)));
-  };
-  const results: Record<string, QuizResult> = {};
-  for (const [k, v] of Object.entries(asRecord(data["results"]))) {
-    const r = asRecord(v);
-    const total = cnt(r["total"]);
-    const correct = cnt(r["correct"]);
-    if (total === null || total < 1 || correct === null || correct > total) continue;
-    // percent is always round(correct/total*100) on every write path —
-    // recomputing here keeps a tampered percent field from poisoning "best"
-    results[k] = {
-      correct,
-      total,
-      percent: Math.round((correct / total) * 100),
-      at: typeof r["at"] === "string" ? r["at"] : new Date().toISOString(),
-    };
-  }
-  const srs: Record<string, SrsItem> = {};
-  for (const [k, v] of Object.entries(asRecord(data["srs"]))) {
-    const it = asRecord(v);
-    const dueAt = num(it["dueAt"]);
-    if (typeof it["level"] === "number" && dueAt !== null && dueAt >= 0) {
-      srs[k] = { level: Math.max(0, Math.min(5, it["level"])), dueAt: Math.round(dueAt) };
-    }
-  }
-  const known: Record<string, boolean> = {};
-  for (const [k, v] of Object.entries(asRecord(data["known"]))) {
-    if (typeof v === "boolean") known[k] = v;
-  }
-  const history: HistoryMap = {};
-  for (const [k, v] of Object.entries(asRecord(data["history"]))) {
-    const h = asRecord(v);
-    const reviews = cnt(h["reviews"]);
-    const quizzes = cnt(h["quizzes"]);
-    if (reviews !== null && quizzes !== null) {
-      history[k] = { reviews, quizzes };
-    }
-  }
-  // Task-37 «هفته‌نامه» — sanitize the full-day window: valid day keys, clamped
-  // counters, hard cap of 35 entries (the digest never needs more).
-  const dayHistory: DayHistoryMap = {};
-  {
-    const DAY_KEY = /^\d{4}-\d{2}-\d{2}$/;
-    const clamp = (v: unknown) =>
-      typeof v === "number" && Number.isFinite(v) ? Math.min(9999, Math.max(0, Math.round(v))) : 0;
-    const entries = Object.entries(asRecord(data["dayHistory"]))
-      .filter(([k]) => DAY_KEY.test(k))
-      .sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0));
-    for (const [k, v] of entries.slice(-35)) {
-      if (!v || typeof v !== "object" || Array.isArray(v)) continue; // garbage → drop, not zero-fill
-      const d = asRecord(v);
-      dayHistory[k] = {
-        day: k,
-        reviews: clamp(d["reviews"]),
-        quizzes: clamp(d["quizzes"]),
-        words: clamp(d["words"]),
-        dictation: clamp(d["dictation"]),
-        rush: clamp(d["rush"]),
-      };
-    }
-  }
-  const mistakes: MistakeMap = {};
-  for (const [k, v] of Object.entries(asRecord(data["mistakes"]))) {
-    const m = cnt(v, 999);
-    if (m !== null && m > 0) mistakes[k] = m;
-  }
-  const ds = asRecord(data["dayStat"]);
-  const clampStat = (v: unknown) => cnt(v) ?? 0;
   return {
     app: "vision2-webbook",
     version: BACKUP_VERSION,
     exportedAt: typeof rec["exportedAt"] === "string" ? rec["exportedAt"] : new Date().toISOString(),
-    data: {
-      known,
-      results,
-      srs,
-      userName: typeof data["userName"] === "string" ? data["userName"].slice(0, 24) : "",
-      avatarColor: typeof data["avatarColor"] === "string" ? data["avatarColor"].slice(0, 24) : "emerald",
-      streak: cnt(data["streak"]) ?? 0,
-      bestStreak: cnt(data["bestStreak"]) ?? 0,
-      lastActiveDay: typeof data["lastActiveDay"] === "string" ? data["lastActiveDay"] : "",
-      dayStat: {
-        day: typeof ds["day"] === "string" ? ds["day"] : "",
-        reviews: clampStat(ds["reviews"]),
-        quizzes: clampStat(ds["quizzes"]),
-        words: clampStat(ds["words"]),
-        dictation: clampStat(ds["dictation"]),
-        rush: clampStat(ds["rush"]),
-      },
-      history,
-      dayHistory,
-      mistakes,
-      seenBadges: Array.isArray(data["seenBadges"]) ? data["seenBadges"].filter((x): x is string => typeof x === "string") : [],
-      rushBest: cnt(data["rushBest"], 1_000_000) ?? 0,
-      rushBestCorrect: cnt(data["rushBestCorrect"]) ?? 0,
-      rushGames: cnt(data["rushGames"], 99_999) ?? 0,
-      freezeCount: typeof data["freezeCount"] === "number" ? Math.min(2, Math.max(0, Math.round(data["freezeCount"]))) : 0,
-      freezeEarnedDay: typeof data["freezeEarnedDay"] === "string" ? data["freezeEarnedDay"] : "",
-      freezeUsedDays: Array.isArray(data["freezeUsedDays"])
-        ? data["freezeUsedDays"].filter((x): x is string => typeof x === "string").slice(-30)
-        : [],
-      goalMetDays: Array.isArray(data["goalMetDays"])
-        ? data["goalMetDays"].filter((x): x is string => typeof x === "string").slice(-14)
-        : [],
-      wordMistakes: sanitizeWordStat(data["wordMistakes"]),
-      wordSeen: sanitizeWordStat(data["wordSeen"]),
-      konkurSeen: sanitizeFlagMap(data["konkurSeen"]),
-      konkurWrong: sanitizeFlagMap(data["konkurWrong"]),
-      userId:
-        typeof data["userId"] === "string" && data["userId"].length >= 6 && data["userId"].length <= 80
-          ? data["userId"]
-          : undefined,
-      userSecret:
-        typeof data["userSecret"] === "string" && /^[0-9a-f]{24,100}$/.test(data["userSecret"])
-          ? data["userSecret"]
-          : undefined,
-    },
+    data: sanitizeAll(rec["data"]),
   };
 }
 
@@ -315,7 +117,7 @@ export function applyBackup(payload: BackupPayload): boolean {
       if (typeof cur.userSecret === "string") identity.userSecret = cur.userSecret;
     }
     const device: Record<string, unknown> = {};
-    for (const key of ["onboarded", "dailyGoal", "settings", "syncCode"] as const) {
+    for (const key of DEVICE_KEYS) {
       if (key in cur) device[key] = cur[key];
     }
     localStorage.setItem(
@@ -354,7 +156,7 @@ export const AUTO_BACKUP_INTERVAL = 24 * 60 * 60 * 1000; // 24h refresh cadence
 
 export interface AutoBackup {
   savedAt: string; // ISO
-  counts: { known: number; results: number; srs: number; mistakes: number; history: number; dayHistory: number; konkur: number };
+  counts: { known: number; results: number; srs: number; mistakes: number; history: number; dayHistory: number; konkur: number; duel: number };
   data: BackupPayload["data"];
 }
 
@@ -368,11 +170,12 @@ export function countsOf(data: BackupPayload["data"]): AutoBackup["counts"] {
     history: Object.keys(data.history).length,
     dayHistory: Object.keys(data.dayHistory ?? {}).length,
     konkur: Object.keys(data.konkurSeen ?? {}).length + Object.keys(data.konkurWrong ?? {}).length,
+    duel: data.duelWins + data.duelLosses + data.duelTies,
   };
 }
 
 const sameCounts = (a: AutoBackup["counts"], b: AutoBackup["counts"]) =>
-  a.known === b.known && a.results === b.results && a.srs === b.srs && a.mistakes === b.mistakes && a.history === b.history && a.dayHistory === b.dayHistory && a.konkur === b.konkur;
+  a.known === b.known && a.results === b.results && a.srs === b.srs && a.mistakes === b.mistakes && a.history === b.history && a.dayHistory === b.dayHistory && a.konkur === b.konkur && a.duel === b.duel;
 
 /**
  * Write/refresh the automatic snapshot when needed.

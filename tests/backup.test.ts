@@ -186,6 +186,7 @@ describe("backupSummary & countsOf", () => {
       history: 0,
       dayHistory: 0,
       konkur: 0,
+      duel: 0,
     });
   });
 

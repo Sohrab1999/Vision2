@@ -3,6 +3,7 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import type { QuizResult } from "@/lib/study-types";
+import { pickPersisted } from "@/lib/persist/schema";
 import { trackEvent } from "./analytics";
 
 export type View =
@@ -447,41 +448,10 @@ export const useStudy = create<StudyState>()(
       name: "vision2-study-v1",
       storage: createJSONStorage(() => localStorage),
       skipHydration: true,
-      partialize: (s) => ({
-        known: s.known,
-        results: s.results,
-        srs: s.srs,
-        userId: s.userId,
-        userSecret: s.userSecret,
-        userName: s.userName,
-        avatarColor: s.avatarColor,
-        streak: s.streak,
-        bestStreak: s.bestStreak,
-        lastActiveDay: s.lastActiveDay,
-        dayStat: s.dayStat,
-        history: s.history,
-        dayHistory: s.dayHistory,
-        mistakes: s.mistakes,
-        wordMistakes: s.wordMistakes,
-        wordSeen: s.wordSeen,
-        konkurSeen: s.konkurSeen,
-        konkurWrong: s.konkurWrong,
-        seenBadges: s.seenBadges,
-        rushBest: s.rushBest,
-        rushBestCorrect: s.rushBestCorrect,
-        rushGames: s.rushGames,
-        duelWins: s.duelWins,
-        duelLosses: s.duelLosses,
-        duelTies: s.duelTies,
-        dailyGoal: s.dailyGoal,
-        onboarded: s.onboarded,
-        settings: s.settings,
-        syncCode: s.syncCode,
-        freezeCount: s.freezeCount,
-        freezeEarnedDay: s.freezeEarnedDay,
-        freezeUsedDays: s.freezeUsedDays,
-        goalMetDays: s.goalMetDays,
-      }),
+      // R-1 «پایداری schema-محور» — the persisted key list is generated
+      // from the SyncField table + DEVICE_KEYS (src/lib/persist/schema.ts);
+      // adding a field there is the whole change.
+      partialize: (s) => pickPersisted(s),
     }
   )
 );
