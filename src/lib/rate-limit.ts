@@ -1,21 +1,20 @@
-import type { NextRequest } from "next/server";
-import { NextResponse } from "next/server";
+import type { NextRequest, NextResponse } from "next/server";
+import { apiErrorResponse, ApiError } from "@/lib/api/errors";
+import { clientIp } from "@/lib/api/client-ip";
 
 // Phase-0 safety: tiny in-memory sliding-window rate limiter.
 // Protects the paid TTS backend and the shared class database from
 // runaway loops / abuse, without any external dependency.
+//
+// Roadmap Step 5: the client-IP extractor and the 429 wire shape now
+// live in src/lib/api/* — this module keeps only the bucket logic.
+// The 429 body is the one error shape: { ok:false, code:"rate_limited", error }.
 
 interface Bucket {
   stamps: number[];
 }
 
 const buckets = new Map<string, Bucket>();
-
-function clientIp(req: NextRequest): string {
-  const fwd = req.headers.get("x-forwarded-for") ?? "";
-  const first = fwd.split(",")[0]?.trim();
-  return first || req.headers.get("x-real-ip")?.trim() || "local";
-}
 
 export interface RateVerdict {
   ok: boolean;
@@ -44,9 +43,8 @@ export function rateLimit(
     buckets.set(id, bucket);
     return {
       ok: false,
-      response: NextResponse.json(
-        { error: `درخواست‌های خیلی زیاد — لطفاً ${retryAfter} ثانیه صبر کن` },
-        { status: 429, headers: { "Retry-After": String(retryAfter) } }
+      response: apiErrorResponse(
+        ApiError.rateLimited(`درخواست‌های خیلی زیاد — لطفاً ${retryAfter} ثانیه صبر کن`, retryAfter)
       ),
     };
   }

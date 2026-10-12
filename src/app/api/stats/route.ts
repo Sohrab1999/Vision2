@@ -1,117 +1,98 @@
-import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db";
-import { rateLimit } from "@/lib/rate-limit";
+import { withApi } from "@/lib/api/handler";
+import { ApiError } from "@/lib/api/errors";
+import { BODY_CAPS, statsSchema } from "@/lib/api/validate";
 import { presentSecret, secretMatches } from "@/lib/identity/secret";
 
 export const runtime = "nodejs";
 
-export async function GET(req: NextRequest) {
-  const limit = rateLimit(req, "stats-get", 240, 60_000);
-  if (!limit.ok) return limit.response!;
-  try {
-    const since = new Date(Date.now() - 24 * 60 * 60 * 1000);
-    const [total, avg, last24h, recent] = await Promise.all([
-      db.quizAttempt.count(),
-      db.quizAttempt.aggregate({ _avg: { percent: true } }),
-      db.quizAttempt.count({ where: { createdAt: { gte: since } } }),
-      db.quizAttempt.findMany({
-        orderBy: { createdAt: "desc" },
-        take: 10,
-        select: {
-          userId: true,
-          lesson: true,
-          category: true,
-          total: true,
-          correct: true,
-          percent: true,
-          createdAt: true,
-        },
-      }),
-    ]);
+// Roadmap Step 5: validation (int bounds, correct ≤ total) + rate limit +
+// error shape moved to withApi — negative/float lesson and non-integer
+// totals are now rejected by the schema instead of diluting the averages.
 
-    // join learner names for the live feed
-    const profiles = await db.learnerProfile.findMany({
-      where: { userId: { in: recent.map((r) => r.userId) } },
-    });
-    const nameMap = new Map(profiles.map((p) => [p.userId, p]));
-    const recentNamed = recent.map((r) => {
-      const p = nameMap.get(r.userId);
-      return {
-        ...r,
-        name: p?.name ?? null,
-        color: p?.color ?? null,
-      };
-    });
+export const GET = withApi({ key: "stats-get", limit: { max: 240 } }, async ({ json }) => {
+  const since = new Date(Date.now() - 24 * 60 * 60 * 1000);
+  const [total, avg, last24h, recent] = await Promise.all([
+    db.quizAttempt.count(),
+    db.quizAttempt.aggregate({ _avg: { percent: true } }),
+    db.quizAttempt.count({ where: { createdAt: { gte: since } } }),
+    db.quizAttempt.findMany({
+      orderBy: { createdAt: "desc" },
+      take: 10,
+      select: {
+        userId: true,
+        lesson: true,
+        category: true,
+        total: true,
+        correct: true,
+        percent: true,
+        createdAt: true,
+      },
+    }),
+  ]);
 
-    return NextResponse.json({
-      total,
-      avgPercent: Math.round(avg._avg.percent ?? 0),
-      last24h,
-      recent: recentNamed,
-    });
-  } catch (error) {
-    // Phase-1 «پایداری»: DB failures must surface as 500 — the old
-    // empty-200 masked outages as "no activity yet".
-    console.error("Stats GET API error:", error);
-    return NextResponse.json({ error: "آمار موقتاً در دسترس نیست." }, { status: 500 });
-  }
-}
+  // join learner names for the live feed (select projection — no secret hash)
+  const profiles = await db.learnerProfile.findMany({
+    where: { userId: { in: recent.map((r) => r.userId) } },
+    select: { userId: true, name: true, color: true },
+  });
+  const nameMap = new Map(profiles.map((p) => [p.userId, p]));
+  const recentNamed = recent.map((r) => {
+    const p = nameMap.get(r.userId);
+    return {
+      ...r,
+      name: p?.name ?? null,
+      color: p?.color ?? null,
+    };
+  });
 
-export async function POST(req: NextRequest) {
-  const limit = rateLimit(req, "stats-post", 60, 60_000);
-  if (!limit.ok) return limit.response!;
-  try {
-    const body = await req.json().catch(() => ({}));
-    const userId = typeof body?.userId === "string" ? body.userId.slice(0, 80) : "";
-    const lesson = Number(body?.lesson);
-    const category = typeof body?.category === "string" ? body.category.slice(0, 40) : "";
-    const total = Number(body?.total);
-    const correct = Number(body?.correct);
+  return json({
+    total,
+    avgPercent: Math.round(avg._avg.percent ?? 0),
+    last24h,
+    recent: recentNamed,
+  });
+});
 
-    if (
-      !userId ||
-      !Number.isFinite(lesson) ||
-      !category ||
-      !Number.isFinite(total) ||
-      !Number.isFinite(correct) ||
-      total <= 0
-    ) {
-      return NextResponse.json({ error: "invalid payload" }, { status: 400 });
-    }
-
+export const POST = withApi(
+  { key: "stats-post", limit: { max: 60 }, bodyCap: BODY_CAPS.stats, schema: statsSchema },
+  async ({ parsed: body, json }) => {
     // Phase-0 «اعتماد»: attempts may only be written by the learner that
     // /api/register issued a secret for — leaderboard entries are no longer
     // forgeable by posting an arbitrary userId.
     const profile = await db.learnerProfile.findUnique({
-      where: { userId },
+      where: { userId: body.userId },
       select: { secret: true },
     });
     if (!profile) {
-      return NextResponse.json({ error: "این یادگیرنده ثبت‌نام نشده است." }, { status: 403 });
+      throw ApiError.unauthorized("این یادگیرنده ثبت‌نام نشده است.");
     }
     if (!profile.secret) {
-      return NextResponse.json({ error: "این شناسه هنوز امضا نگرفته است." }, { status: 403 });
+      throw ApiError.unauthorized("این شناسه هنوز امضا نگرفته است.");
     }
     // audit S4: timing-safe compare against the hashed secret at rest
-    if (!secretMatches(presentSecret(body?.secret), profile.secret)) {
-      return NextResponse.json({ error: "امضای نامعتبر است." }, { status: 403 });
+    if (!secretMatches(presentSecret(body.secret), profile.secret)) {
+      throw ApiError.unauthorized();
     }
 
-    const percent = Math.round((correct / total) * 100);
-    const rawScore = Number(body?.score);
-    const score = Number.isFinite(rawScore) && rawScore > 0 ? Math.min(Math.round(rawScore), 100_000) : null;
+    const percent = Math.round((body.correct / body.total) * 100);
+    // schema bounds score to [0, 1e6]; the persisted cap stays 100 000
+    const score = body.score !== undefined && body.score > 0 ? Math.min(Math.round(body.score), 100_000) : null;
     // Task-36 «جدول نبرد» — the duel outcome rides along with signed duel
     // attempts. Strictly whitelisted: any other category silently drops it.
-    const rawOutcome = typeof body?.outcome === "string" ? body.outcome : "";
-    const outcome = category === "duel" && (rawOutcome === "win" || rawOutcome === "loss" || rawOutcome === "tie")
-      ? rawOutcome
-      : null;
+    const outcome = body.category === "duel" && body.outcome ? body.outcome : null;
     const attempt = await db.quizAttempt.create({
-      data: { userId, lesson, category, total, correct, percent, score, outcome },
+      data: {
+        userId: body.userId,
+        lesson: body.lesson,
+        category: body.category,
+        total: body.total,
+        correct: body.correct,
+        percent,
+        score,
+        outcome,
+      },
     });
-    return NextResponse.json({ ok: true, id: attempt.id });
-  } catch (error) {
-    console.error("Stats API error:", error);
-    return NextResponse.json({ error: "failed to save attempt" }, { status: 500 });
+    return json({ ok: true, id: attempt.id });
   }
-}
+);

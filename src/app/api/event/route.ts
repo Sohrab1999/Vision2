@@ -1,7 +1,7 @@
-import type { NextRequest } from "next/server";
-import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
-import { rateLimit } from "@/lib/rate-limit";
+import { withApi } from "@/lib/api/handler";
+import { ApiError } from "@/lib/api/errors";
+import { BODY_CAPS, eventSchema } from "@/lib/api/validate";
 import { isEventName, EVENT_LABELS_FA } from "@/lib/analytics-events";
 
 // ------------------------------------------------------------------
@@ -9,6 +9,7 @@ import { isEventName, EVENT_LABELS_FA } from "@/lib/analytics-events";
 //   POST { name } → increment the (day, name) counter (whitelist only)
 //   GET           → aggregate summary for the internal live dashboard
 // Privacy: no PII, no user ids — only anonymous counters per UTC day.
+// Roadmap Step 5: validation + rate limit + error shape moved to withApi.
 // ------------------------------------------------------------------
 
 const utcDay = () => new Date().toISOString().slice(0, 10);
@@ -47,38 +48,26 @@ async function rotateArchive(): Promise<void> {
   }
 }
 
-export async function POST(req: NextRequest) {
-  const verdict = rateLimit(req, "event-post", 120, 60_000);
-  if (!verdict.ok) return verdict.response!;
-
-  let body: unknown;
-  try {
-    body = await req.json();
-  } catch {
-    return NextResponse.json({ error: "درخواست نامعتبر است." }, { status: 400 });
+export const POST = withApi(
+  { key: "event-post", limit: { max: 120 }, bodyCap: BODY_CAPS.event, schema: eventSchema },
+  async ({ parsed, json }) => {
+    if (!isEventName(parsed.name)) {
+      throw ApiError.bad("رویداد ناشناخته است.");
+    }
+    try {
+      await db.eventDay.upsert({
+        where: { day_name: { day: utcDay(), name: parsed.name } },
+        update: { count: { increment: 1 } },
+        create: { day: utcDay(), name: parsed.name, count: 1 },
+      });
+    } catch {
+      throw ApiError.server("ثبت رویداد ناموفق بود.");
+    }
+    return json({ ok: true });
   }
-  const rec = body && typeof body === "object" ? (body as Record<string, unknown>) : {};
-  const name = rec["name"];
-  if (!isEventName(name)) {
-    return NextResponse.json({ error: "رویداد ناشناخته است." }, { status: 400 });
-  }
+);
 
-  try {
-    await db.eventDay.upsert({
-      where: { day_name: { day: utcDay(), name } },
-      update: { count: { increment: 1 } },
-      create: { day: utcDay(), name, count: 1 },
-    });
-  } catch {
-    return NextResponse.json({ error: "ثبت رویداد ناموفق بود." }, { status: 500 });
-  }
-  return NextResponse.json({ ok: true });
-}
-
-export async function GET(req: NextRequest) {
-  const verdict = rateLimit(req, "event-get", 30, 60_000);
-  if (!verdict.ok) return verdict.response!;
-
+export const GET = withApi({ key: "event-get", limit: { max: 30 } }, async ({ json }) => {
   // housekeeping — throttled internally, never throws
   void rotateArchive();
 
@@ -104,8 +93,8 @@ export async function GET(req: NextRequest) {
         week: weekMap.get(r.name) ?? 0,
       }))
       .sort((a, b) => b.total - a.total);
-    return NextResponse.json({ events, updatedAt: new Date().toISOString() });
+    return json({ events, updatedAt: new Date().toISOString() });
   } catch {
-    return NextResponse.json({ error: "خلاصهٔ آمار در دسترس نیست." }, { status: 500 });
+    throw ApiError.server("خلاصهٔ آمار در دسترس نیست.");
   }
-}
+});

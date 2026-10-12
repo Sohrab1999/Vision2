@@ -1,6 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db";
-import { rateLimit } from "@/lib/rate-limit";
+import { withApi } from "@/lib/api/handler";
+import { ApiError } from "@/lib/api/errors";
+import { BODY_CAPS, registerSchema } from "@/lib/api/validate";
 import { hashSecret, newSecret, presentSecret, secretMatches } from "@/lib/identity/secret";
 
 export const runtime = "nodejs";
@@ -16,8 +17,8 @@ export const runtime = "nodejs";
 //
 // userIds stay client-generated (crypto.randomUUID — unguessable) so the
 // migration is transparent; new identities can also be fully server-issued.
-
-const ALLOWED_COLORS = ["emerald", "amber", "rose", "violet", "sky"];
+//
+// Roadmap Step 5: validation + rate limit + error shape moved to withApi.
 
 function newUserId(): string {
   return `u-${Date.now().toString(36)}-${Array.from(crypto.getRandomValues(new Uint8Array(8)), (b) =>
@@ -25,38 +26,22 @@ function newUserId(): string {
   ).join("")}`;
 }
 
-function cleanName(v: unknown): string {
-  return typeof v === "string" ? v.trim().slice(0, 24) : "";
-}
+export const POST = withApi(
+  { key: "register", limit: { max: 10 }, bodyCap: BODY_CAPS.register, schema: registerSchema },
+  async ({ parsed: body, json }) => {
+    // registration is a once-per-learner call; keep the bucket tight (above)
+    const requestedSecret = presentSecret(body.secret);
+    const name = typeof body.name === "string" ? body.name.trim().slice(0, 24) : "";
+    const color = body.color ?? "emerald";
 
-export async function POST(req: NextRequest) {
-  // registration is a once-per-learner call; keep the bucket tight
-  const limit = rateLimit(req, "register", 10, 60_000);
-  if (!limit.ok) return limit.response!;
-  try {
-    const body = (await req.json().catch(() => ({}))) as {
-      userId?: unknown;
-      secret?: unknown;
-      name?: unknown;
-      color?: unknown;
-    } | null;
-
-    const requestedId = typeof body?.userId === "string" ? body.userId.trim().slice(0, 80) : "";
-    const requestedSecret = presentSecret(body?.secret);
-    const name = cleanName(body?.name);
-    const color = ALLOWED_COLORS.includes(body?.color as string) ? (body?.color as string) : "emerald";
-
-    const userId = requestedId || newUserId();
+    const userId = body.userId || newUserId();
     const existing = await db.learnerProfile.findUnique({ where: { userId } });
 
     if (existing?.secret) {
       // already claimed — only the holder of the secret may re-issue
       // (audit S4: timing-safe compare against the hashed secret at rest)
       if (!secretMatches(requestedSecret, existing.secret)) {
-        return NextResponse.json(
-          { error: "این شناسه قبلاً ثبت شده است؛ امضای معتبر لازم است." },
-          { status: 403 }
-        );
+        throw ApiError.unauthorized("این شناسه قبلاً ثبت شده است؛ امضای معتبر لازم است.");
       }
       const updated = await db.learnerProfile.update({
         where: { userId },
@@ -64,7 +49,7 @@ export async function POST(req: NextRequest) {
       });
       // echo the presented secret — the holder already has it, and with
       // hashed storage the plaintext exists only on the client side.
-      return NextResponse.json({ ok: true, userId, secret: requestedSecret, name: updated.name, color: updated.color });
+      return json({ ok: true, userId, secret: requestedSecret, name: updated.name, color: updated.color });
     }
 
     const secret = newSecret();
@@ -75,12 +60,9 @@ export async function POST(req: NextRequest) {
       ? await db.learnerProfile.update({ where: { userId }, data })
       : await db.learnerProfile.create({ data: { userId, ...data } });
 
-    return NextResponse.json(
+    return json(
       { ok: true, userId: profile.userId, secret, name: profile.name, color: profile.color },
       { status: existing ? 200 : 201 }
     );
-  } catch (error) {
-    console.error("Register API error:", error);
-    return NextResponse.json({ error: "خطای سرور در ثبت‌نام." }, { status: 500 });
   }
-}
+);

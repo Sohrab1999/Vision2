@@ -1,6 +1,7 @@
-import type { NextRequest } from "next/server";
-import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
+import { withApi } from "@/lib/api/handler";
+import { ApiError } from "@/lib/api/errors";
+import { BODY_CAPS, explainSchema } from "@/lib/api/validate";
 import { rateLimit } from "@/lib/rate-limit";
 import { findQuestion, categoryFa } from "@/lib/explain-source";
 import { trackEventServer } from "@/lib/analytics-server";
@@ -14,6 +15,11 @@ import { trackEventServer } from "@/lib/analytics-server";
 //     controlled answer (one paid generation, many reads)
 //   • hard rate-limit (20 generations / hour / IP) BEFORE calling the LLM
 //   • graceful fallback text when the AI is unavailable
+//
+// Roadmap Step 5: withApi handles validation + error shape; the rate
+// limit stays INSIDE the handler on purpose — cached reads must remain
+// free (a whole classroom shares one NAT IP), only paid generations
+// consume the quota.
 // ------------------------------------------------------------------
 
 const QUOTA = 20;
@@ -76,62 +82,57 @@ function fallbackText(correctOption: string): string {
   );
 }
 
-export async function POST(req: NextRequest) {
-  let body: unknown;
-  try {
-    body = await req.json();
-  } catch {
-    return NextResponse.json({ error: "درخواست نامعتبر است." }, { status: 400 });
-  }
-  const rec = body && typeof body === "object" ? (body as Record<string, unknown>) : {};
-  const id = typeof rec["id"] === "string" ? rec["id"].trim().slice(0, 40) : "";
-  if (!id) return NextResponse.json({ error: "شناسهٔ سؤال الزامی است." }, { status: 400 });
+export const POST = withApi(
+  { key: "explain", bodyCap: BODY_CAPS.explain, schema: explainSchema },
+  async ({ parsed, req, json }) => {
+    const id = parsed.id;
 
-  // 1) resolve the question server-side — unknown ids are rejected
-  const q = findQuestion(id);
-  if (!q) {
-    return NextResponse.json({ error: "سؤالی با این شناسه در بانک وب‌کتاب نیست." }, { status: 404 });
-  }
-
-  // 2) cached? same controlled answer for everyone
-  try {
-    const hit = await db.explainCache.findUnique({ where: { key: id } });
-    if (hit) {
-      trackEventServer("explain_served");
-      return NextResponse.json({ id, explanation: hit.explanation, cached: true, source: hit.source });
+    // 1) resolve the question server-side — unknown ids are rejected
+    const q = findQuestion(id);
+    if (!q) {
+      throw ApiError.notFound("سؤالی با این شناسه در بانک وب‌کتاب نیست.");
     }
-  } catch {
-    /* cache read failure is non-fatal — continue to generation */
+
+    // 2) cached? same controlled answer for everyone
+    try {
+      const hit = await db.explainCache.findUnique({ where: { key: id } });
+      if (hit) {
+        trackEventServer("explain_served");
+        return json({ id, explanation: hit.explanation, cached: true, source: hit.source });
+      }
+    } catch {
+      /* cache read failure is non-fatal — continue to generation */
+    }
+
+    // 3) hard quota BEFORE any paid call (cached reads above stay free)
+    const verdict = rateLimit(req, "explain-gen", QUOTA, QUOTA_WINDOW);
+    if (!verdict.ok) return verdict.response!;
+
+    const correct = q.options[q.answer] ?? "";
+    const prompt =
+      `یک دانش‌آموز در سؤال چهارگزینه‌ای زیر پاسخ اشتباه داده و می‌خواهد بداند چرا گزینهٔ درست، درست است.\n\n` +
+      `مهارت سؤال: ${categoryFa(q)}\n` +
+      `متن سؤال: ${q.question}\n` +
+      `گزینه‌ها:\n${q.options.map((o, i) => `${"abcd"[i]}) ${o}${i === q.answer ? "  ← کلید درست" : ""}`).join("\n")}\n` +
+      `کلید: گزینهٔ ${"abcd"[q.answer]}) ${correct}\n\n` +
+      `طبق قواعد سیستم توضیح بده که چرا فقط همین گزینه با جمله سازگار است (و نکتهٔ اصلی تفاوتش با گزینه‌های نزدیک چیست).`;
+
+    const raw = await askModel(prompt);
+    const explanation = raw ? sanitize(raw) : fallbackText(correct);
+    const source = raw ? "ai" : "fallback";
+
+    // 4) store once, serve forever (best-effort — races are fine)
+    try {
+      await db.explainCache.upsert({
+        where: { key: id },
+        update: {},
+        create: { key: id, explanation, source },
+      });
+    } catch {
+      /* concurrent write conflict is harmless */
+    }
+
+    trackEventServer("explain_generated");
+    return json({ id, explanation, cached: false, source });
   }
-
-  // 3) hard quota BEFORE any paid call (cached reads above stay free)
-  const verdict = rateLimit(req, "explain-gen", QUOTA, QUOTA_WINDOW);
-  if (!verdict.ok) return verdict.response!;
-
-  const correct = q.options[q.answer] ?? "";
-  const prompt =
-    `یک دانش‌آموز در سؤال چهارگزینه‌ای زیر پاسخ اشتباه داده و می‌خواهد بداند چرا گزینهٔ درست، درست است.\n\n` +
-    `مهارت سؤال: ${categoryFa(q)}\n` +
-    `متن سؤال: ${q.question}\n` +
-    `گزینه‌ها:\n${q.options.map((o, i) => `${"abcd"[i]}) ${o}${i === q.answer ? "  ← کلید درست" : ""}`).join("\n")}\n` +
-    `کلید: گزینهٔ ${"abcd"[q.answer]}) ${correct}\n\n` +
-    `طبق قواعد سیستم توضیح بده که چرا فقط همین گزینه با جمله سازگار است (و نکتهٔ اصلی تفاوتش با گزینه‌های نزدیک چیست).`;
-
-  const raw = await askModel(prompt);
-  const explanation = raw ? sanitize(raw) : fallbackText(correct);
-  const source = raw ? "ai" : "fallback";
-
-  // 4) store once, serve forever (best-effort — races are fine)
-  try {
-    await db.explainCache.upsert({
-      where: { key: id },
-      update: {},
-      create: { key: id, explanation, source },
-    });
-  } catch {
-    /* concurrent write conflict is harmless */
-  }
-
-  trackEventServer("explain_generated");
-  return NextResponse.json({ id, explanation, cached: false, source });
-}
+);
