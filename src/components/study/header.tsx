@@ -7,6 +7,7 @@ import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
 import SettingsPopover from "./settings-popover";
 import ProfilePopover from "./profile/profile-popover";
+import DuePill from "./due-pill";
 
 // ------------------------------------------------------------------
 // هدر چسبان — گام ۷.۲-ج §12: این فایل فقط «میلهٔ هدر» است؛ پاپ‌اُور
@@ -67,6 +68,8 @@ export default function Header() {
               {faNum(streak)}
             </span>
           )}
+          {/* SRS due pill — شمارش زندهٔ کارت‌های سررسیده، یک ضربه تا مرور (Task 73) */}
+          <DuePill />
           <button
             onClick={() => setTheme(isDark ? "light" : "dark")}
             className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-stone-200 bg-white text-stone-500 transition-all hover:text-amber-500 hover:border-amber-200 active:scale-90"

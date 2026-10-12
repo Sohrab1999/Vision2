@@ -189,7 +189,10 @@ export default function CommandPalette() {
       { id: "nav-appendix", label: "ضمیمهٔ کتاب", group: "ناوبری", hint: "افعال بی‌قاعده و آواها", keywords: ["appendix", "irregular verbs", "ipa"] },
       { id: "nav-grammar", label: "متروی گرامر", group: "ناوبری", hint: "نقشهٔ سفر گرامر کتاب", keywords: ["grammar", "metro", "map"] },
       { id: "nav-konkur", label: "گوشهٔ کنکور", group: "ناوبری", hint: "بانک ۳۶۰ تستی با پاسخ تشریحی", keywords: ["konkur", "question bank", "entrance"] },
-      { id: "nav-review", label: "داشبورد مرور", group: "ناوبری", hint: "برنامهٔ مرور هوشمند (SRS)", keywords: ["review", "srs", "dashboard"] },
+      // Task 73: برچسب صادقانه — مقصد این فرمان نمای «مرور سریع قبل امتحان» است
+      // (بانک غلط‌ها)، نه داشبورد SRS (که بخشی از خانه است)؛ واژه‌نامهٔ SRS به
+      // فرمان‌های lesson-smart-<n> و nav-smart منتقل شد.
+      { id: "nav-review", label: "مرور سریع خطاها", group: "ناوبری", hint: "بانک غلط‌های اخیر — مرور قبل امتحان", keywords: ["review", "mistakes", "مرور خطا"] },
       { id: "nav-my-words", label: "واژه‌های من", group: "ناوبری", hint: "نشان‌شده‌ها و وضعیت یادگیری", keywords: ["my words", "starred", "favorites"] },
       { id: "nav-smart", label: "تمرین هوشمند", group: "ناوبری", hint: "دور ترکیبی متناسب با تو", keywords: ["smart practice", "mixed"] },
       { id: "nav-listen", label: "آموخته‌های شنیداری", group: "ناوبری", hint: "تمرین گوش و روخوانی", keywords: ["listen", "audio", "ear"] },
