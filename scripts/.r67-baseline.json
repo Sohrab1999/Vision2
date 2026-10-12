@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "id": "cmv4x1cdp0006m1ccuighl7zv",
+      "day": "2026-10-12",
+      "name": "star_word",
+      "count": 8
+    },
+    {
+      "id": "cmv4xxdzk000pm1ccjgj17hzt",
+      "day": "2026-10-12",
+      "name": "quiz_done",
+      "count": 1
+    },
+    {
+      "id": "cmv4xv90w000om1ccb82ovy4p",
+      "day": "2026-10-12",
+      "name": "my_words_review_start",
+      "count": 1
+    },
+    {
+      "id": "cmv4x0qkt0004m1ccxbbgd0c6",
+      "day": "2026-10-12",
+      "name": "my_words_open",
+      "count": 16
+    },
+    {
+      "id": "cmv4ukv2j0001m1u6dwe99357",
+      "day": "2026-10-12",
+      "name": "lesson_open",
+      "count": 9
+    }
+  ],
+  "learners": 6,
+  "attempts": 10
+}

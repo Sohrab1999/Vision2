@@ -18,12 +18,93 @@ export interface CommandDef {
 export const COMMAND_GROUPS = [
   "ناوبری",
   "درس‌ها",
+  "بخش‌های درس",
   "تمرین و چالش",
   "گزارش‌ها",
   "ابزارها",
 ] as const;
 
+// ------------------------------------------------------------------
+// فرمان‌های عمق‌دار درس (Task 67) — پرش مستقیم به تبِ مشخص یک درس.
+// شناسه‌ها قراردادی‌اند: «ltab-<درس>-<تب>» برای تب‌ها و
+// «lesson-smart-<درس>» برای فلش‌کارت هوشمند SRS همان درس.
+// ------------------------------------------------------------------
+
+export interface LessonTabSeed {
+  id: number;
+  titleEn: string;
+  titleFa: string;
+}
+
+export interface PaletteTabSeed {
+  key: string;
+  label: string;
+  keywords: string[];
+}
+
+/** هفت تبِ درس به ترتیب خودِ درس‌نما + کلیدواژه‌های مترادف (برچسب با کسرهٔ اضافه مثل خودِ تب) */
+export const PALETTE_TABS: PaletteTabSeed[] = [
+  { key: "vocab", label: "واژگان", keywords: ["vocab", "words", "لغت", "واژه", "فلش‌کارت", "flashcard"] },
+  { key: "conversation", label: "مکالمهٔ", keywords: ["conversation", "dialog", "گفتگو", "دیالوگ"] },
+  { key: "reading", label: "ریدینگ", keywords: ["reading", "passage", "متن", "خواندن"] },
+  { key: "grammar", label: "گرامر", keywords: ["grammar", "قواعد", "دستور زبان"] },
+  { key: "writing", label: "نگارش", keywords: ["writing", "sentence", "جمله‌سازی", "نوشتن"] },
+  { key: "dictation", label: "دیکتهٔ", keywords: ["dictation", "spelling", "املا", "املاء"] },
+  { key: "tests", label: "تست‌های", keywords: ["quiz", "کوییز", "آزمون درس"] },
+];
+
+/**
+ * برای هر درس: هفت فرمان تب + یک فرمان «فلش‌کارت هوشمند» (نیت SRS).
+ * ۳ درس × ۸ = ۲۴ فرمان در گروه «بخش‌های درس».
+ */
+export function lessonTabCommands(lessons: LessonTabSeed[]): CommandDef[] {
+  const out: CommandDef[] = [];
+  for (const l of lessons) {
+    for (const t of PALETTE_TABS) {
+      out.push({
+        id: `ltab-${l.id}-${t.key}`,
+        label: `${t.label} درس ${faDigits(l.id)}`,
+        group: "بخش‌های درس",
+        hint: `${l.titleFa} · ${l.titleEn}`,
+        keywords: [...t.keywords, l.titleEn.toLowerCase(), `lesson ${l.id}`],
+      });
+    }
+    out.push({
+      id: `lesson-smart-${l.id}`,
+      label: `فلش‌کارت هوشمند درس ${faDigits(l.id)}`,
+      group: "بخش‌های درس",
+      hint: `مرور SRS واژگان · ${l.titleFa}`,
+      keywords: ["srs", "flashcard", "مرور هوشمند", l.titleEn.toLowerCase(), `lesson ${l.id}`],
+    });
+  }
+  return out;
+}
+
+/** تجزیهٔ شناسهٔ قراردادی تب درس؛ نامعتبر → null */
+export function parseLessonTabId(id: string): { lesson: number; tab: string } | null {
+  if (!id.startsWith("ltab-")) return null;
+  const rest = id.slice("ltab-".length);
+  const dash = rest.indexOf("-");
+  if (dash <= 0) return null;
+  const lesson = Number(rest.slice(0, dash));
+  const tab = rest.slice(dash + 1);
+  if (!Number.isInteger(lesson) || lesson <= 0 || !tab) return null;
+  return { lesson, tab };
+}
+
+/** ادغام «آخرین فرمان‌ها»: جلوبری + حذف تکرار + سقف (پیش‌فرض ۵) */
+export function mergeRecent(prev: string[], id: string, cap = 5): string[] {
+  return [id, ...prev.filter((x) => x !== id)].slice(0, Math.max(1, cap));
+}
+
 const INVISIBLE = /[\u200c\u200b\u200e\u200f\uFEFF]/g;
+const HAMZA_MARKS = /[\u0653\u0654\u0655]/g; // نشانه‌های ترکیبیِ همزهٔ بالای حرف
+const FA_DIGITS = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
+
+/** نمایش عدد با ارقام فارسی (برای برچسب‌ها) */
+export function faDigits(n: number | string): string {
+  return String(n).replace(/\d/g, (d) => FA_DIGITS[Number(d)]);
+}
 
 /**
  * یکسان‌سازی متن برای مقایسه: حذف نیم‌فاصله و کاراکترهای نامرئی،
@@ -34,6 +115,7 @@ const INVISIBLE = /[\u200c\u200b\u200e\u200f\uFEFF]/g;
 export function normalizeFa(s: string): string {
   return s
     .replace(INVISIBLE, "")
+    .replace(HAMZA_MARKS, "")
     .replace(/[٠-٩]/g, (d) => String("٠١٢٣٤٥٦٧٨٩".indexOf(d)))
     .replace(/[۰-۹]/g, (d) => String("۰۱۲۳۴۵۶۷۸۹".indexOf(d)))
     .replace(/ي/g, "ی")
@@ -106,6 +188,7 @@ export function scoreCommand(rawQuery: string, cmd: CommandDef): number {
 /**
  * پالایش فرمان‌ها: پرس‌وجوی خالی → همان ترتیب ورودی (تا سقف)،
  * وگرنه نزولی امتیاز با ترتیب پایدار برای تساوی‌ها، بریده تا سقف.
+ * (گروه «اخیر» سمت UI ساخته می‌شود — این تابع فرمان‌های تخت می‌گیرد.)
  */
 export function filterCommands(cmds: CommandDef[], query: string, cap = 12): CommandDef[] {
   if (!normalizeFa(query)) return cmds.slice(0, cap);

@@ -6,7 +6,9 @@ import { motion } from "framer-motion";
 import {
   BookMarked,
   BookOpen,
+  BookOpenText,
   ClipboardCheck,
+  Ear,
   FileBadge,
   GraduationCap,
   Headphones,
@@ -14,7 +16,10 @@ import {
   Home,
   Keyboard,
   Library,
+  ListChecks,
+  MessageSquareText,
   Moon,
+  PenLine,
   Route,
   Search,
   SearchX,
@@ -26,11 +31,16 @@ import {
   BarChart3,
 } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
-import { useStudy } from "@/lib/study-store";
+import { useStudy, type LessonTab } from "@/lib/study-store";
 import { LESSONS_META } from "@/data/lesson-meta";
+import { faNum } from "@/lib/study-theme";
 import {
   COMMAND_GROUPS,
+  faDigits,
   filterCommands,
+  lessonTabCommands,
+  mergeRecent,
+  parseLessonTabId,
   type CommandDef,
 } from "@/lib/command-palette";
 import { Kbd } from "./shortcut-guide";
@@ -57,6 +67,11 @@ const ICONS: Record<string, React.ElementType> = {
   Sparkles,
   Headphones,
   BookOpen,
+  BookOpenText,
+  MessageSquareText,
+  PenLine,
+  Ear,
+  ListChecks,
   Zap,
   Swords,
   BarChart3,
@@ -65,6 +80,26 @@ const ICONS: Record<string, React.ElementType> = {
   Sun,
   Moon,
 };
+
+// ------------------------------------------------------------------
+// فرمان‌های عمق‌دار (Task 67) — ثابت‌اند؛ بیرون از کامپوننت ساخته
+// می‌شوند تا در هر رندر دوباره نسازند. ۳ درس × ۸ = ۲۴ فرمان.
+// ------------------------------------------------------------------
+const DEEP_COMMANDS: CommandDef[] = lessonTabCommands(LESSONS_META);
+
+const RECENTS_KEY = "vision2-cmd-recent";
+const RECENTS_CAP = 5;
+
+function loadRecents(): string[] {
+  if (typeof window === "undefined") return [];
+  try {
+    const raw = window.localStorage.getItem(RECENTS_KEY);
+    const arr: unknown = raw ? JSON.parse(raw) : [];
+    return Array.isArray(arr) ? arr.filter((x): x is string => typeof x === "string") : [];
+  } catch {
+    return [];
+  }
+}
 
 export default function CommandPalette() {
   const [open, setOpen] = useState(false);
@@ -76,8 +111,21 @@ export default function CommandPalette() {
   const setView = useStudy((s) => s.setView);
   const goHome = useStudy((s) => s.goHome);
   const openLesson = useStudy((s) => s.openLesson);
+  const openLessonTab = useStudy((s) => s.openLessonTab);
   const { theme, setTheme } = useTheme();
   const isDark = theme === "dark";
+
+  // «آخرین فرمان‌ها» — فقط در رویدادهای اجرا به‌روز می‌شود (نه در اثر)
+  const [recentIds, setRecentIds] = useState<string[]>(loadRecents);
+  const rememberRecent = (id: string) => {
+    const next = mergeRecent(loadRecents(), id, RECENTS_CAP);
+    try {
+      window.localStorage.setItem(RECENTS_KEY, JSON.stringify(next));
+    } catch {
+      /* حالت خصوصی مرورگر — نادیده */
+    }
+    setRecentIds(next);
+  };
 
   // Ctrl/Cmd+K — چرخه‌ایِ باز/بسته؛ با e.code تا روی چیدمان فارسی هم کار کند
   // (ریست پرس‌وجو/انتخاب همین‌جا در رویداد — نه داخل اثر)
@@ -115,7 +163,7 @@ export default function CommandPalette() {
     return () => clearTimeout(t);
   }, [open]);
 
-  const commands: CommandDef[] = useMemo(
+  const baseCommands: CommandDef[] = useMemo(
     () => [
       // ── ناوبری ──
       { id: "nav-home", label: "خانه", group: "ناوبری", hint: "برگشت به جلد کتاب", keywords: ["home", "bookshelf"] },
@@ -131,7 +179,7 @@ export default function CommandPalette() {
       // ── درس‌ها ──
       ...LESSONS_META.map((l) => ({
         id: `lesson-${l.id}`,
-        label: `درس ${l.id} — ${l.titleFa}`,
+        label: `درس ${faDigits(l.id)} — ${l.titleFa}`,
         group: "درس‌ها",
         hint: `${l.vocabCount} واژه · ${l.quizCount} تست`,
         keywords: [l.titleEn.toLowerCase(), `lesson ${l.id}`],
@@ -155,12 +203,30 @@ export default function CommandPalette() {
     [isDark],
   );
 
-  const filtered = useMemo(
-    () => filterCommands(commands, query, query.trim() ? 12 : commands.length),
-    [commands, query],
+  // کلیدواژهٔ ناوبری برای همهٔ فرمان‌ها (جست‌وجو) + نگاشت شناسه برای «اخیر»
+  const commands: CommandDef[] = useMemo(
+    () => [...baseCommands, ...DEEP_COMMANDS],
+    [baseCommands],
   );
 
-  // گروه‌بندی نتیجه‌ها با ترتیب ثابت گروه‌ها
+  const recentCmds: CommandDef[] = useMemo(() => {
+    if (!recentIds.length) return [];
+    const byId = new Map(commands.map((c) => [c.id, c] as const));
+    return recentIds
+      .map((id) => byId.get(id))
+      .filter((c): c is CommandDef => Boolean(c));
+  }, [recentIds, commands]);
+
+  const filtered = useMemo(() => {
+    if (!query.trim()) {
+      // نمای خالی: «اخیر» + فرمان‌های سطح‌بالا (فرمان‌های عمق‌دار با جست‌وجو می‌آیند)
+      const rest = baseCommands.filter((c) => !recentIds.includes(c.id));
+      return recentCmds.length ? [...recentCmds.map((c) => ({ ...c, group: "اخیر" })), ...rest] : rest;
+    }
+    return filterCommands(commands, query, 12);
+  }, [baseCommands, commands, recentCmds, recentIds, query]);
+
+  // گروه‌بندی نتیجه‌ها با ترتیب ثابت گروه‌ها؛ «اخیر» همیشه اول
   const grouped = useMemo(() => {
     const buckets = new Map<string, CommandDef[]>();
     for (const cmd of filtered) {
@@ -170,12 +236,16 @@ export default function CommandPalette() {
     }
     const known = COMMAND_GROUPS.filter((g) => buckets.has(g));
     const rest = [...buckets.keys()].filter((g) => !COMMAND_GROUPS.includes(g as never));
-    return [...known, ...rest].map((g) => ({ group: g, items: buckets.get(g)! }));
+    const out = [...known, ...rest].map((g) => ({ group: g, items: buckets.get(g)! }));
+    const ri = out.findIndex((g) => g.group === "اخیر");
+    if (ri > 0) out.unshift(...out.splice(ri, 1));
+    return out;
   }, [filtered]);
 
   const run = (cmd: CommandDef | undefined) => {
     if (!cmd) return;
     setOpen(false);
+    rememberRecent(cmd.id);
     switch (cmd.id) {
       case "nav-home":
         goHome();
@@ -225,11 +295,19 @@ export default function CommandPalette() {
       case "tool-shortcuts":
         window.dispatchEvent(new CustomEvent("open-shortcuts"));
         break;
-      default:
-        if (cmd.id.startsWith("lesson-")) {
-          const id = Number(cmd.id.slice("lesson-".length));
-          if (LESSONS_META.some((l) => l.id === id)) openLesson(id);
+      default: {
+        if (cmd.id.startsWith("lesson-smart-")) {
+          // فلش‌کارت هوشمند درس — مثل فرمان خودِ درس، رویداد lesson_open می‌سازد
+          const id = Number(cmd.id.slice("lesson-smart-".length));
+          if (LESSONS_META.some((l) => l.id === id)) openLesson(id, "smart");
+          break;
         }
+        // فرمان عمق‌دار تب درس — بدون رویداد قیفی، مثل ناوبری ارزان
+        const lt = parseLessonTabId(cmd.id);
+        if (lt && LESSONS_META.some((l) => l.id === lt.lesson)) {
+          openLessonTab(lt.lesson, lt.tab as LessonTab);
+        }
+      }
     }
   };
 
@@ -288,7 +366,7 @@ export default function CommandPalette() {
             aria-controls="command-palette-list"
             aria-activedescendant={filtered[sel] ? `cp-opt-${sel}` : undefined}
             aria-label="جست‌وجوی فرمان‌ها"
-            placeholder="برو به… (دیکشنری، درس ۲، شب، کنکور)"
+            placeholder="برو به… (واژگان درس ۲، دیکتهٔ درس ۳، شب)"
             className="min-w-0 flex-1 bg-transparent text-[15px] font-bold text-stone-800 outline-none"
             autoComplete="off"
             spellCheck={false}
@@ -311,14 +389,17 @@ export default function CommandPalette() {
               </span>
               <p className="text-[13.5px] font-extrabold text-stone-800">فرمانی یافت نشد</p>
               <p className="text-[11.5px] font-bold text-stone-500">
-                «دیکشنری»، «درس»، «شب» یا «کنکور» را امتحان کن
+                «واژگان درس ۲»، «دیکشنری» یا «کنکور» را امتحان کن
               </p>
             </div>
           ) : (
             grouped.map((g, gi) => (
               <div key={g.group} role="group" aria-label={g.group}>
-                <div className="px-2 pb-1 pt-2.5 text-[10.5px] font-black tracking-wide text-stone-400">
-                  {g.group}
+                <div className="flex items-center gap-1.5 px-2 pb-1 pt-2.5 text-[10.5px] font-black tracking-wide text-stone-400">
+                  <span>{g.group}</span>
+                  <span className="rounded-full bg-stone-100 px-1.5 text-[9.5px] font-bold text-stone-400">
+                    {faNum(g.items.length)}
+                  </span>
                 </div>
                 {g.items.map((cmd, ii) => {
                   const idx = flatIdxOf(gi, ii);
@@ -421,7 +502,31 @@ function cmdIconKey(id: string, isDark: boolean): string {
       return isDark ? "Sun" : "Moon";
     case "tool-shortcuts":
       return "Keyboard";
-    default:
+    default: {
+      // فرمان‌های عمق‌دار درس: آیکون هر تب، مثل خودِ درس‌نما
+      const lt = parseLessonTabId(id);
+      if (lt) {
+        switch (lt.tab) {
+          case "vocab":
+            return "BookOpen";
+          case "conversation":
+            return "MessageSquareText";
+          case "reading":
+            return "BookOpenText";
+          case "grammar":
+            return "GraduationCap";
+          case "writing":
+            return "PenLine";
+          case "dictation":
+            return "Ear";
+          case "tests":
+            return "ListChecks";
+          default:
+            return "BookOpen";
+        }
+      }
+      if (id.startsWith("lesson-smart-")) return "Sparkles"; // فلش‌کارت هوشمند
       return "BookOpen"; // درس‌ها
+    }
   }
 }

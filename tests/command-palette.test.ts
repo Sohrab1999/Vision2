@@ -1,10 +1,16 @@
 // Task 66 «فرمان‌یاب» — قرارداد موتور خالص جست‌وجوی پالت فرمان.
+// Task 67 — فرمان‌های عمق‌دار درس (lessonTabCommands) + تجزیهٔ شناسه + «اخیر».
 import { describe, it, expect } from "vitest";
 import {
   normalizeFa,
   scoreCommand,
   filterCommands,
   COMMAND_GROUPS,
+  PALETTE_TABS,
+  faDigits,
+  lessonTabCommands,
+  parseLessonTabId,
+  mergeRecent,
   type CommandDef,
 } from "@/lib/command-palette";
 
@@ -32,6 +38,11 @@ describe("normalizeFa", () => {
 
   it("نیم‌فاصله و کاراکترهای نامرئی را حذف می‌کند", () => {
     expect(normalizeFa("واژه‌های\u200bمن")).toBe("واژههایمن");
+  });
+
+  it("همزهٔ ترکیبی (کسرهٔ اضافه) را حذف می‌کند — تسک ۶۷", () => {
+    expect(normalizeFa("دیکتهٔ")).toBe("دیکته");
+    expect(normalizeFa("مکالمهٔ درس ۲")).toBe(normalizeFa("مکالمه درس ۲"));
   });
 
   it("حروف بزرگ لاتین را کوچک و فاصله‌ها را می‌فشارد", () => {
@@ -150,11 +161,110 @@ describe("filterCommands", () => {
     const out = filterCommands(cmds, "درس‌ها");
     expect(out.map((c) => c.id)).toEqual(["lesson-1", "lesson-2", "lesson-3"]);
   });
+
+  it("جست‌وجوی گروهی فرمان‌های عمق‌دار — «بخش» همه را می‌آورد و ناوبری را می‌اندازد (AND)", () => {
+    const all = [...cmds, ...lessonTabCommands(lessonMeta)];
+    const out = filterCommands(all, "بخش", 24);
+    expect(out).toHaveLength(24);
+    expect(out.every((c) => c.group === "بخش‌های درس")).toBe(true);
+  });
 });
 
 describe("COMMAND_GROUPS", () => {
   it("ترتیب ثابت گروه‌ها بدون تکرار", () => {
     expect(new Set(COMMAND_GROUPS).size).toBe(COMMAND_GROUPS.length);
     expect(COMMAND_GROUPS[0]).toBe("ناوبری");
+  });
+
+  it("گروه «بخش‌های درس» (تسک ۶۷) بلافاصله بعد از «درس‌ها» می‌آید", () => {
+    expect(COMMAND_GROUPS).toContain("بخش‌های درس");
+    expect(COMMAND_GROUPS.indexOf("بخش‌های درس")).toBe(COMMAND_GROUPS.indexOf("درس‌ها") + 1);
+  });
+});
+
+// ─── تسک ۶۷: فرمان‌های عمق‌دار درس ───
+
+const lessonMeta = [
+  { id: 1, titleEn: "Understanding People", titleFa: "فهمیدن مردم" },
+  { id: 2, titleEn: "A Healthy Lifestyle", titleFa: "یک شیوهٔ زندگی سالم" },
+  { id: 3, titleEn: "Art and Culture", titleFa: "هنر و فرهنگ" },
+];
+
+describe("lessonTabCommands", () => {
+  it("۳ درس × (۷ تب + فلش‌کارت هوشمند) = ۲۴ فرمان با شناسهٔ یکتا", () => {
+    const out = lessonTabCommands(lessonMeta);
+    expect(PALETTE_TABS).toHaveLength(7);
+    expect(out).toHaveLength(24);
+    expect(new Set(out.map((c) => c.id)).size).toBe(24);
+  });
+
+  it("همه در گروه «بخش‌های درس» هستند و برچسب «درس N» با رقم فارسی دارند", () => {
+    const out = lessonTabCommands(lessonMeta);
+    expect(out.every((c) => c.group === "بخش‌های درس")).toBe(true);
+    expect(out.every((c) => /درس [۱۲۳]/.test(c.label))).toBe(true);
+    expect(out.find((c) => c.id === "ltab-2-dictation")?.label).toBe("دیکتهٔ درس ۲");
+  });
+
+  it("کلیدواژهٔ لاتین عنوان درس — «culture» هر ۸ فرمان درس ۳ را می‌آورد", () => {
+    const out = filterCommands(lessonTabCommands(lessonMeta), "culture", 24);
+    expect(out).toHaveLength(8);
+    expect(out.every((c) => c.id.startsWith("ltab-3-") || c.id === "lesson-smart-3")).toBe(true);
+  });
+});
+
+describe("جست‌وجوی عمق‌دار — پرش به تب درس", () => {
+  const deep = lessonTabCommands(lessonMeta);
+
+  it("«دیکتهٔ درس ۲» فقط دیکتهٔ درس ۲ را برمی‌گرداند", () => {
+    const out = filterCommands(deep, "دیکتهٔ درس ۲", 12);
+    expect(out.map((c) => c.id)).toEqual(["ltab-2-dictation"]);
+  });
+
+  it("«واژگان درس ۱» واژگان همان درس را بالای لیست می‌گذارد", () => {
+    const out = filterCommands(deep, "واژگان درس ۱", 12);
+    expect(out[0]?.id).toBe("ltab-1-vocab");
+  });
+
+  it("«هوشمند درس ۳» فرمان نیت SRS را می‌یابد", () => {
+    const out = filterCommands(deep, "هوشمند درس ۳", 12);
+    expect(out).toContainEqual(expect.objectContaining({ id: "lesson-smart-3" }));
+  });
+});
+
+describe("parseLessonTabId", () => {
+  it("شناسهٔ معتبر را تجزیه می‌کند", () => {
+    expect(parseLessonTabId("ltab-2-dictation")).toEqual({ lesson: 2, tab: "dictation" });
+    expect(parseLessonTabId("ltab-10-vocab")).toEqual({ lesson: 10, tab: "vocab" });
+  });
+
+  it("شناسهٔ نامعتبر → null", () => {
+    expect(parseLessonTabId("nav-home")).toBeNull();
+    expect(parseLessonTabId("lesson-smart-2")).toBeNull();
+    expect(parseLessonTabId("ltab--")).toBeNull();
+    expect(parseLessonTabId("ltab-x-vocab")).toBeNull();
+    expect(parseLessonTabId("ltab-0-vocab")).toBeNull();
+    expect(parseLessonTabId("ltab-3-")).toBeNull();
+  });
+});
+
+describe("faDigits", () => {
+  it("اعداد را با ارقام فارسی نشان می‌دهد", () => {
+    expect(faDigits(2)).toBe("۲");
+    expect(faDigits("12")).toBe("۱۲");
+  });
+});
+
+describe("mergeRecent", () => {
+  it("جلو می‌برد و تکرار را حذف می‌کند", () => {
+    expect(mergeRecent(["a", "b", "c"], "b")).toEqual(["b", "a", "c"]);
+  });
+
+  it("به سقف (پیش‌فرض ۵) بریده می‌شود", () => {
+    expect(mergeRecent(["a", "b", "c", "d", "e"], "f")).toEqual(["f", "a", "b", "c", "d"]);
+    expect(mergeRecent(["a", "b", "c", "d", "e"], "f", 3)).toEqual(["f", "a", "b"]);
+  });
+
+  it("پیش‌فرض خالی هم امن است", () => {
+    expect(mergeRecent([], "x")).toEqual(["x"]);
   });
 });
