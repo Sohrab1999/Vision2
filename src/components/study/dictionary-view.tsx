@@ -96,7 +96,7 @@ export default function DictionaryView() {
 
   return (
     <div className="space-y-4">
-      <div className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm">
+      <div className="rounded-2xl border c-card p-5 shadow-sm">
         <div className="mb-4 flex flex-wrap items-center gap-2">
           <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-50 text-sky-600">
             <BookMarked size={19} />
@@ -230,7 +230,7 @@ export default function DictionaryView() {
           return (
             <div
               key={`${w.lessonId}-${w.en}`}
-              className="flex items-start justify-between gap-2 rounded-xl border border-stone-200 bg-white p-3 transition-shadow hover:shadow-sm"
+              className="flex items-start justify-between gap-2 rounded-xl border c-card p-3 transition-shadow hover:shadow-sm"
             >
               <div className="min-w-0">
                 <div className="flex flex-wrap items-baseline gap-1.5">

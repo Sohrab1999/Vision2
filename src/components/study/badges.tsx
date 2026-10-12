@@ -37,6 +37,7 @@ import {
   Bird,
   Feather,
   Repeat,
+  SpellCheck2,
 } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -90,6 +91,8 @@ export const BADGE_ICONS: Record<string, React.ElementType> = {
   // نشان‌های رویدادیِ هفته (Task 84)
   Feather,
   Repeat,
+  // رانِ ترکیبی (Task 85)
+  SpellCheck2,
 };
 
 const tierFa: Record<string, string> = {

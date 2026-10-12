@@ -60,7 +60,7 @@ export default function HomeHero() {
           ].map((s) => (
             <div
               key={s.label}
-              className="rounded-2xl border border-stone-200 bg-white p-3 text-center shadow-sm"
+              className="rounded-2xl border c-card p-3 text-center shadow-sm"
             >
               <s.icon size={18} className="mx-auto mb-1.5 text-emerald-600" />
               <div className="text-lg font-black text-stone-800">{s.value}</div>

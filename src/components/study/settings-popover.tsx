@@ -110,7 +110,7 @@ export default function SettingsPopover() {
     <Popover open={open} onOpenChange={toggleOpen}>
       <PopoverTrigger asChild>
         <button
-          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-stone-200 bg-white text-stone-500 transition-all hover:text-emerald-600 hover:border-emerald-200 active:scale-90"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border c-card text-stone-500 transition-all hover:text-emerald-600 hover:border-emerald-200 active:scale-90"
           aria-label="تنظیمات"
           title="تنظیمات"
         >
@@ -309,7 +309,7 @@ export default function SettingsPopover() {
             setOpen(false);
             setTimeout(() => window.dispatchEvent(new CustomEvent("open-profile")), 150);
           }}
-          className="flex w-full items-center justify-center gap-1.5 rounded-xl border border-stone-200 bg-white py-2.5 text-[12px] font-bold text-stone-600 transition-all hover:border-emerald-300 hover:text-emerald-700 active:scale-95"
+          className="flex w-full items-center justify-center gap-1.5 rounded-xl border c-card py-2.5 text-[12px] font-bold text-stone-600 transition-all hover:border-emerald-300 hover:text-emerald-700 active:scale-95"
         >
           <UserCog size={14} />
           نام، رنگ و پشتیبان‌گیری پیشرفت

@@ -246,7 +246,7 @@ export default function KonkurView() {
       </section>
 
       {/* ------------------------- coverage grid ------------------------- */}
-      <section className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm sm:p-6" aria-label="نقشهٔ پیشرفت بانک کنکور">
+      <section className="rounded-2xl border c-card p-5 shadow-sm sm:p-6" aria-label="نقشهٔ پیشرفت بانک کنکور">
         <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
           <h2 className="flex items-center gap-2 text-[15px] font-extrabold text-stone-800">
             <Target size={17} className="text-orange-600" />
@@ -335,7 +335,7 @@ export default function KonkurView() {
 
       {/* --------------------------- mode panel --------------------------- */}
       {mode === "sim" && (
-        <div className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm sm:p-6">
+        <div className="rounded-2xl border c-card p-5 shadow-sm sm:p-6">
           <h2 className="mb-4 flex items-center gap-2 text-[15px] font-extrabold text-stone-800">
             <Zap size={17} className="text-amber-600" />
             شبیه‌ساز کنکور
@@ -397,7 +397,7 @@ export default function KonkurView() {
       )}
 
       {mode === "hard" && (
-        <div className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm sm:p-6">
+        <div className="rounded-2xl border c-card p-5 shadow-sm sm:p-6">
           <h2 className="mb-4 flex items-center gap-2 text-[15px] font-extrabold text-stone-800">
             <Eraser size={17} className="text-rose-600" />
             تست‌های سخت من
@@ -436,7 +436,7 @@ export default function KonkurView() {
       )}
 
       {mode === "cover" && (
-        <div className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm sm:p-6">
+        <div className="rounded-2xl border c-card p-5 shadow-sm sm:p-6">
           <h2 className="mb-4 flex items-center gap-2 text-[15px] font-extrabold text-stone-800">
             <CheckCircle2 size={17} className="text-emerald-600" />
             پوشش بانک — فقط دیده‌نشده‌ها
@@ -488,7 +488,7 @@ export default function KonkurView() {
       )}
 
       {/* ------------------------- how it works ------------------------- */}
-      <section className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm">
+      <section className="rounded-2xl border c-card p-5 shadow-sm">
         <h2 className="mb-3 flex items-center gap-2 text-[14px] font-extrabold text-stone-700">
           <GraduationCap size={16} className="text-orange-600" />
           گوشهٔ کنکور چطور کار می‌کند؟

@@ -4,8 +4,8 @@
 // همین تست قبل از کامیت زنگ می‌زند — مالیات دارک دیگر بی‌صدا رشد نمی‌کند.
 
 import { createRequire } from "module";
-import { readFileSync } from "fs";
-import { resolve } from "path";
+import { readFileSync, readdirSync } from "fs";
+import { resolve, join } from "path";
 import { describe, it, expect } from "vitest";
 
 const require = createRequire(import.meta.url);
@@ -360,5 +360,57 @@ describe("globals.css semantic chip layer (Step 9 tranche 4 phase 1 — Task 83)
       if (depth <= 0) break;
     }
     expect(body).not.toContain("background-image");
+  });
+});
+
+describe("globals.css semantic card layer (Step 9 tranche 4 phase 2 — Task 85)", () => {
+  const css85 = readFileSync(cssPath, "utf8");
+  const lines85 = css85.split("\n");
+
+  it("defines c-card ONLY via @utility — custom @layer components content is stripped by the v4 compiler (probe-proven)", () => {
+    expect(lines85.filter((l) => l.trim() === "@utility c-card {").length, "exactly one @utility c-card").toBe(1);
+    expect(css85.includes("@layer components {"), "no custom @layer components block may return").toBe(false);
+    // the unlayered raw forms must never come back either — they would kill hover/branches
+    expect(lines85.filter((l) => l.trim() === ".c-card {").length).toBe(0);
+    expect(lines85.filter((l) => l.trim() === ".dark .c-card {").length).toBe(0);
+  });
+
+  it("c-card keeps the probe values byte-exact (light + dark nest, pairing inside the @utility)", () => {
+    const start = lines85.findIndex((l) => l.trim() === "@utility c-card {");
+    expect(start).toBeGreaterThanOrEqual(0);
+    let depth = 0;
+    let body = "";
+    for (let i = start; i < lines85.length; i++) {
+      body += lines85[i] + "\n";
+      depth += (lines85[i].match(/{/g) ?? []).length;
+      depth -= (lines85[i].match(/}/g) ?? []).length;
+      if (depth <= 0) break;
+    }
+    expect(body).toContain("background-color: rgb(255, 255, 255)");
+    expect(body).toContain("border-color: lab(91.055 0.663072 0.865579)");
+    expect(body).toContain("&:is(.dark *)");
+    expect(body).toContain("background-color: rgb(28, 25, 23)");
+    expect(body).toContain("border-color: rgb(55, 49, 43)");
+  });
+
+  it("exclusion contract — a scoped deviating wrapper line never carries c-card (consumer matrix r85)", () => {
+    const scoped = /duel-card|word-day|skill-panel|vocab-donut|rush-done|rush-card|rush-hud|gmetro-line|gmetro-dialog|report-digest/;
+    const offenders: string[] = [];
+    const walk = (d: string): void => {
+      for (const name of readdirSync(d)) {
+        const p = join(d, name);
+        try {
+          if (readdirSync(p)) walk(p);
+        } catch {
+          if (p.endsWith(".tsx")) {
+            readFileSync(p, "utf8").split("\n").forEach((l, i) => {
+              if (scoped.test(l) && l.includes("c-card")) offenders.push(`${p}:${i + 1}`);
+            });
+          }
+        }
+      }
+    };
+    walk(resolve(process.cwd(), "src"));
+    expect(offenders, "c-card must never merge into a deviating scoped dark context").toEqual([]);
   });
 });

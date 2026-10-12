@@ -208,7 +208,7 @@ export default function QuizResult({
   );
 
   const standardCard = (
-    <div className="rounded-2xl border border-stone-200 bg-white p-6 text-center shadow-sm">
+    <div className="rounded-2xl border c-card p-6 text-center shadow-sm">
       <div className="mb-4 flex justify-center">
         <ProgressRing percent={percent} size={120} stroke={10}>
           <div>

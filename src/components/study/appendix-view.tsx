@@ -18,7 +18,7 @@ export default function AppendixView() {
 
   return (
     <div className="space-y-4">
-      <div className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm">
+      <div className="rounded-2xl border c-card p-5 shadow-sm">
         <div className="mb-4 flex items-center gap-3">
           <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-violet-50 text-violet-600">
             <Library size={22} />
@@ -49,7 +49,7 @@ export default function AppendixView() {
       </div>
 
       {tab === "verbs" && (
-        <div className="rounded-2xl border border-stone-200 bg-white p-4">
+        <div className="rounded-2xl border c-card p-4">
           <p className="mb-3 text-[13px] leading-7 text-stone-500">
             افعال در زبان انگلیسی سه شکل دارند: ۱) شکل ساده ۲) شکل دوم یا گذشته ۳) شکل سوم (اسم مفعول - p.p.).
             افعال بی‌قاعده به‌جای گرفتن «ed» تغییر شکل می‌دهند و باید حفظ شوند.
@@ -85,7 +85,7 @@ export default function AppendixView() {
             { title: "حروف صدادار (Vowels)", data: vowelPhonemes, color: "bg-emerald-600" },
             { title: "حروف بی‌صدا (Consonants)", data: consonantPhonemes, color: "bg-rose-600" },
           ].map((group) => (
-            <div key={group.title} className="rounded-2xl border border-stone-200 bg-white p-4">
+            <div key={group.title} className="rounded-2xl border c-card p-4">
               <h3 className="mb-3 text-[15px] font-extrabold text-stone-800">{group.title}</h3>
               <div className="grid max-h-[38vh] gap-2 overflow-y-auto nice-scroll sm:grid-cols-2 lg:grid-cols-4">
                 {group.data.map((p) => (
@@ -112,7 +112,7 @@ export default function AppendixView() {
       {tab === "pos" && (
         <div className="grid gap-3 sm:grid-cols-2">
           {partsOfSpeech.map((p, i) => (
-            <div key={p.name} className="rounded-2xl border border-stone-200 bg-white p-4">
+            <div key={p.name} className="rounded-2xl border c-card p-4">
               <h3 className="mb-1 flex items-center gap-2 text-[14px] font-extrabold text-violet-700">
                 <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-violet-100 text-[12px] font-black">
                   {i + 1}
@@ -126,7 +126,7 @@ export default function AppendixView() {
       )}
 
       {tab === "abbrev" && (
-        <div className="rounded-2xl border border-stone-200 bg-white p-4">
+        <div className="rounded-2xl border c-card p-4">
           <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
             {abbreviations.map((a) => (
               <div key={a.sym} className="flex items-center gap-3 rounded-xl border border-stone-100 bg-stone-50 p-3">

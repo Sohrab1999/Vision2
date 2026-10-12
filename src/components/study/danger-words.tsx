@@ -68,7 +68,7 @@ export default function DangerWords() {
     .map((d) => ({ en: d.en, fa: d.fa }));
 
   return (
-    <section aria-label="واژه‌های خطرناک من" className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm">
+    <section aria-label="واژه‌های خطرناک من" className="overflow-hidden rounded-2xl border c-card shadow-sm">
       <div className="h-1.5 w-full bg-gradient-to-l from-rose-500 via-orange-400 to-amber-400" />
       <div className="p-5 sm:p-6">
         <div className="mb-4 flex flex-wrap items-center gap-3">
@@ -229,7 +229,7 @@ export default function DangerWords() {
                   key={lid}
                   onClick={() => setFlashLesson(lid)}
                   className={`rounded-lg px-3 py-1.5 text-[12px] font-bold transition-all active:scale-95 ${
-                    flashLessonId === lid ? "bg-violet-600 text-white shadow-md" : "border border-stone-200 bg-white text-stone-600 hover:border-violet-300"
+                    flashLessonId === lid ? "bg-violet-600 text-white shadow-md" : "border c-card text-stone-600 hover:border-violet-300"
                   }`}
                 >
                   {lessonFa(lid)}

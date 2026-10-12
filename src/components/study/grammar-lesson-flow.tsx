@@ -109,7 +109,7 @@ export default function GrammarLessonFlow({ line, station, onExit, onGoQuiz }: P
           <button
             onClick={onExit}
             aria-label="بستن درس"
-            className="glesson-close mr-auto flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-stone-200 bg-white text-stone-400 shadow-sm transition hover:text-stone-700 active:scale-90"
+            className="glesson-close mr-auto flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border c-card text-stone-400 shadow-sm transition hover:text-stone-700 active:scale-90"
           >
             <X size={16} />
           </button>
@@ -199,7 +199,7 @@ function SeeStep({
   return (
     <div className="space-y-4">
       {/* جملهٔ رنگی */}
-      <div className="glesson-see rounded-2xl border border-stone-200 bg-white p-4">
+      <div className="glesson-see rounded-2xl border c-card p-4">
         <p className="mb-2 flex items-center gap-1.5 text-[12px] font-black text-stone-400">
           <Eye size={14} /> قاعده را با چشم بخوان — فاعل، فعل، مفعول هرکدام رنگ خودشان
         </p>
@@ -276,7 +276,7 @@ function MirrorStep({ lesson }: { lesson: GrammarMicroLesson }) {
             <div className="flex items-center justify-center">
               <MirrorIcon size={16} className="text-stone-300" />
             </div>
-            <div className="glesson-mirror-en rounded-xl border border-stone-200 bg-white p-3 text-center" dir="ltr">
+            <div className="glesson-mirror-en rounded-xl border c-card p-3 text-center" dir="ltr">
               <p className="mb-1 text-[10px] font-black text-stone-400">English</p>
               <p className="font-mono text-[12.5px] font-bold leading-6 text-stone-800">{m.en}</p>
             </div>
@@ -341,7 +341,7 @@ function TryStep({
         const answered = myPick !== null;
         const isRight = myPick === q.answer;
         return (
-          <div key={qi} className="glesson-q rounded-2xl border border-stone-200 bg-white p-4">
+          <div key={qi} className="glesson-q rounded-2xl border c-card p-4">
             <p className="mb-2.5 flex items-baseline gap-1.5">
               <span className="text-[11px] font-black text-stone-400">{faNum(qi + 1)}.</span>
               <span dir="ltr" className="glesson-q-prompt font-mono text-[13.5px] font-bold leading-6 text-stone-800">
@@ -352,7 +352,7 @@ function TryStep({
               {q.options.map((opt, oi) => {
                 const chosen = myPick === oi;
                 const realAnswer = oi === q.answer;
-                let cls = "glesson-opt border border-stone-200 bg-white text-stone-700 hover:border-stone-400";
+                let cls = "glesson-opt border c-card text-stone-700 hover:border-stone-400";
                 if (answered && realAnswer) cls = "glesson-opt glesson-opt-correct border border-emerald-400 bg-emerald-50 text-emerald-800";
                 else if (answered && chosen && !realAnswer) cls = "glesson-opt glesson-opt-wrong border border-rose-400 bg-rose-50 text-rose-700";
                 else if (answered) cls = "glesson-opt glesson-opt-muted border border-stone-100 bg-stone-50 text-stone-400";
@@ -424,7 +424,7 @@ function TryStep({
             </button>
             <button
               onClick={onRestart}
-              className="glesson-restart inline-flex items-center gap-1.5 rounded-xl border border-stone-200 bg-white px-4 py-2.5 text-[13px] font-extrabold text-stone-600 shadow-sm transition-all hover:bg-stone-50 active:scale-95"
+              className="glesson-restart inline-flex items-center gap-1.5 rounded-xl border c-card px-4 py-2.5 text-[13px] font-extrabold text-stone-600 shadow-sm transition-all hover:bg-stone-50 active:scale-95"
             >
               مرور دوبارهٔ درس
             </button>

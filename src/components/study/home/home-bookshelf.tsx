@@ -70,7 +70,7 @@ export default function HomeBookshelf() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.07 }}
-              className="group flex flex-col rounded-2xl border border-stone-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-lg"
+              className="group flex flex-col rounded-2xl border c-card p-5 shadow-sm transition-shadow hover:shadow-lg"
             >
               <div className="mb-3 flex items-start justify-between">
                 <div>

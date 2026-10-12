@@ -51,6 +51,7 @@ export interface BadgeEvalInput {
   rescues7: number; // نجات‌های یخ در پنجرهٔ ۷روزه (Task 83)
   dictation7: number; // جمعِ دیکته‌های پنجرهٔ ۷روزه از dayHistory (Task 84)
   quizzes7: number; // جمعِ آزمون‌های پنجرهٔ ۷روزه از dayHistory (Task 84)
+  dictationDays7: number; // چند روزِ پنجره دیکته داشتند (≠ جمع — رانِ روزانه، Task 85)
 }
 
 function historyTotals(history: StudyState["history"]): { quizzes: number; reviews: number; days: number } {
@@ -159,29 +160,36 @@ export function buildEvalInput(s: {
   };
 }
 
-/** جمعِ dictation/quizzes پنجرهٔ ۷روزه از dayHistory + fallbackِ روزِ امروز (Task 84) */
+/** جمعِ dictation/quizzes پنجرهٔ ۷روزه از dayHistory + fallbackِ روزِ امروز (Task 84)
+ *  + dictationDays7 (Task 85): شمارِ روزهایِ دیکته‌دار ≠ جمعِ دیکته‌ها — رانِ روزانه
+ *  یعنی هر روزِ پنجره حداقل یک دیکته؛ دو دیکته در یک روز هنوز یک روزِ دیکته‌دار است. */
 function windowCounters(
   dayHistory: StudyState["dayHistory"] | undefined,
   windowStart: string,
   today: string,
   ds: ReturnType<typeof normDayStat>
-): Pick<BadgeEvalInput, "dictation7" | "quizzes7"> {
+): Pick<BadgeEvalInput, "dictation7" | "quizzes7" | "dictationDays7"> {
   let dictation7 = 0;
   let quizzes7 = 0;
+  let dictationDays7 = 0;
   if (dayHistory && typeof dayHistory === "object") {
     for (const [key, raw] of Object.entries(dayHistory)) {
       if (key < windowStart || !raw || typeof raw !== "object") continue;
       const st = normDayStat(raw as Partial<StudyState["dayStat"]>);
-      dictation7 += Number.isFinite(st.dictation) ? Math.max(0, st.dictation) : 0;
+      const d = Number.isFinite(st.dictation) ? Math.max(0, st.dictation) : 0;
+      dictation7 += d;
+      if (d > 0) dictationDays7 += 1;
       quizzes7 += Number.isFinite(st.quizzes) ? Math.max(0, st.quizzes) : 0;
     }
   }
   const todayInHistory = !!(dayHistory && typeof dayHistory === "object" && (dayHistory as Record<string, unknown>)[today]);
   if (!todayInHistory) {
-    dictation7 += Number.isFinite(ds.dictation) ? Math.max(0, ds.dictation) : 0;
+    const d = Number.isFinite(ds.dictation) ? Math.max(0, ds.dictation) : 0;
+    dictation7 += d;
+    if (d > 0) dictationDays7 += 1;
     quizzes7 += Number.isFinite(ds.quizzes) ? Math.max(0, ds.quizzes) : 0;
   }
-  return { dictation7, quizzes7 };
+  return { dictation7, quizzes7, dictationDays7 };
 }
 
 /**
@@ -497,6 +505,19 @@ export const BADGES: BadgeDef[] = [
     tier: "silver",
     progress: (s) => `${faNum(Math.min(s.goalDays7, 7))} از ۷ روزِ این هفته`,
     check: (s) => s.goalDays7 >= 7 && s.quizzes7 === 0,
+  },
+  // رانِ ترکیبی (Task 85): دیکته در جدول سیاستِ effects.ts هیچ‌گاه goal را بالا
+  // نمی‌برد — پس رانِ دیکته از هدف کاملاً مستقل است و برخلاف بی‌دیکته/بی‌آزمون
+  // شرطِ goalDays7 ندارد؛ شرطش فقط پیوستگی است: هر روزِ پنجره حداقل یک دیکته.
+  // طلایی — هفت روزِ پیوسته املاء، سخت‌تر از یک هفتهٔ هدف‌دارِ معمولی.
+  {
+    id: "dictation-run",
+    title: "هفتهٔ دیکتهٔ پیوسته",
+    desc: "هفت روزِ پیوسته دیکته تمرین شده — رانِ روزانهٔ املاء، بدون حتی یک روزِ غیبت",
+    icon: "SpellCheck2",
+    tier: "gold",
+    progress: (s) => `${faNum(Math.min(s.dictationDays7, 7))} از ۷ روزِ این هفته`,
+    check: (s) => s.dictationDays7 >= 7,
   },
 ];
 

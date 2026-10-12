@@ -112,7 +112,7 @@ export default function QuizEngine({
   return (
     <div className="space-y-4">
       {/* header */}
-      <div className="rounded-2xl border border-stone-200 bg-white p-4">
+      <div className="rounded-2xl border c-card p-4">
         <div className="mb-2.5 flex items-center justify-between gap-2">
           <span className="text-sm font-extrabold text-stone-800">{title}</span>
           <div className="flex items-center gap-2">
@@ -147,7 +147,7 @@ export default function QuizEngine({
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 24 }}
           transition={{ duration: 0.22 }}
-          className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm"
+          className="rounded-2xl border c-card p-5 shadow-sm"
         >
           <p className="en-text mb-5 text-[16px] font-semibold leading-8 text-stone-800" dir="ltr">
             {q.question}

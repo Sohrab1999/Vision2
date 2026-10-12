@@ -1,0 +1,11 @@
+{
+  "task": 85,
+  "surface": "plain card family .border-stone-200.bg-white (pre-migration)",
+  "method": "agent-browser eval, transitions disabled before theme flip (transition-all mid-transition values lie — r85 lesson)",
+  "light": { "bg": "rgb(255, 255, 255)", "border": "lab(91.055 0.663072 0.865579)" },
+  "dark": { "bg": "rgb(28, 25, 23)", "border": "rgb(55, 49, 43)" },
+  "homeFamilyCount": 59,
+  "darkGroups": { "plain": 58, "wordDayDeviating": 1 },
+  "wordDayDeviation": { "bg": "rgba(28, 25, 23, 0.75)", "border": "rgb(68, 64, 60)" },
+  "excludedContexts": ["word-day", "rush-card", "rush-done", "rush-hud", "skill-panel", "report-digest", "duel-card", "gmetro-line", "gmetro-dialog", "vocab-donut", "badge-card", "bg-white/60", "bg-white/70"]
+}

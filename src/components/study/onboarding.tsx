@@ -248,7 +248,7 @@ export default function Onboarding() {
               <div className="mt-4 flex gap-2">
                 <button
                   onClick={() => setStep(0)}
-                  className="rounded-xl border border-stone-200 bg-white px-4 py-3 text-[13px] font-bold text-stone-500 transition-all hover:bg-stone-50 active:scale-95"
+                  className="rounded-xl border c-card px-4 py-3 text-[13px] font-bold text-stone-500 transition-all hover:bg-stone-50 active:scale-95"
                 >
                   بازگشت
                 </button>

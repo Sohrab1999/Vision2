@@ -295,7 +295,7 @@ export default function DictationTab({
                   className={`rounded-xl px-4 py-2 text-sm font-bold transition-all active:scale-95 ${
                     count === n
                       ? "bg-violet-600 text-white shadow-md shadow-violet-500/25"
-                      : "border border-stone-200 bg-white text-stone-600 hover:border-violet-300 hover:text-violet-600"
+                      : "border c-card text-stone-600 hover:border-violet-300 hover:text-violet-600"
                   }`}
                 >
                   {faNum(n)}
@@ -333,7 +333,7 @@ export default function DictationTab({
                   stopSpeaking();
                   onExit();
                 }}
-                className="inline-flex items-center gap-1.5 rounded-xl border border-stone-200 bg-white px-4 py-2.5 text-[13px] font-bold text-stone-500 transition-all hover:bg-stone-50 active:scale-95"
+                className="inline-flex items-center gap-1.5 rounded-xl border c-card px-4 py-2.5 text-[13px] font-bold text-stone-500 transition-all hover:bg-stone-50 active:scale-95"
               >
                 بازگشت
               </button>
@@ -352,7 +352,7 @@ export default function DictationTab({
     const wrong = words.filter((w) => w.result === "wrong").length;
     return (
       <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="space-y-4">
-        <div className="overflow-hidden rounded-2xl border border-stone-200 bg-white p-8 text-center shadow-sm">
+        <div className="overflow-hidden rounded-2xl border c-card p-8 text-center shadow-sm">
           <span className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-500 text-white shadow-lg shadow-violet-500/30">
             <Trophy size={28} />
           </span>
@@ -376,7 +376,7 @@ export default function DictationTab({
             </button>
             <button
               onClick={restart}
-              className="inline-flex items-center gap-2 rounded-xl border border-stone-200 bg-white px-5 py-2.5 text-sm font-bold text-stone-600 transition-all hover:bg-stone-50 active:scale-95"
+              className="inline-flex items-center gap-2 rounded-xl border c-card px-5 py-2.5 text-sm font-bold text-stone-600 transition-all hover:bg-stone-50 active:scale-95"
             >
               بازگشت به تنظیمات
             </button>
@@ -392,7 +392,7 @@ export default function DictationTab({
         </div>
 
         {/* review of all asked words */}
-        <div className="rounded-2xl border border-stone-200 bg-white p-4 shadow-sm">
+        <div className="rounded-2xl border c-card p-4 shadow-sm">
           <h4 className="mb-3 text-sm font-extrabold text-stone-700">واژه‌های این دور</h4>
           <div className="grid max-h-72 gap-2 overflow-y-auto nice-scroll sm:grid-cols-2">
             {words.map((w) => (
@@ -572,7 +572,7 @@ export default function DictationTab({
                   </button>
                   <button
                     onClick={skip}
-                    className="inline-flex items-center gap-1.5 rounded-xl border border-stone-200 bg-white px-4 py-2.5 text-[13px] font-bold text-stone-500 transition-all hover:bg-stone-50 active:scale-95"
+                    className="inline-flex items-center gap-1.5 rounded-xl border c-card px-4 py-2.5 text-[13px] font-bold text-stone-500 transition-all hover:bg-stone-50 active:scale-95"
                   >
                     رد کردن
                     <ChevronLeft size={14} />

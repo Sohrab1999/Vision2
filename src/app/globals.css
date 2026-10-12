@@ -1291,3 +1291,32 @@ html.user-reduce-motion .streak-flame {
   border-color: rgba(120, 88, 30, 0.5);
   color: rgb(251, 191, 36);
 }
+
+/* ── Task 85 — tranche 4 phase 2: the CARD semantic class ─────────────────
+   Defined via @utility (Tailwind v4's only blessed way — the compiler strips
+   custom content from @layer components, probe-proven this round). Inside the
+   utilities layer a card is a SURFACE DEFAULT that state utilities beat:
+   hover:bg-stone-50 / conditional bg-branches win in BOTH themes (specificity
+   + variant order), so the whole family migrates safely — incl. hover buttons
+   that used to have a DEAD hover in dark (unlayered .dark .bg-white beat the
+   utility; layered-in-utilities .c-card loses to it instead — deliberate,
+   documented revival).
+   Dark nests via &:is(.dark *) — same shape as @custom-variant dark — so
+   `.c-card:is(.dark *)` (0,2,0) beats the light base (0,1,0) within the layer.
+   Values = the r85 BEFORE probe's exact computed values (nothing invented):
+   light bg rgb(255,255,255) + stone-200 border lab(91.055 0.663072 0.865579);
+   dark bg rgb(28,25,23) (= the global .dark .bg-white value) + border
+   rgb(55,49,43) (= the stone-200 dark token value, tranche-2 kernel).
+   EXCLUDED — deviating scoped dark contexts keep their own rules, never
+   migrate these onto c-card (consumer matrix r85): .word-day descendants,
+   .rush-card/.rush-done/.rush-hud descendants, .skill-panel, .report-digest,
+   .duel-card, .gmetro-line/.gmetro-dialog, .vocab-donut, .badge-card, and
+   the alpha variants bg-white/60|70 (their own dark alphas). */
+@utility c-card {
+  background-color: rgb(255, 255, 255);
+  border-color: lab(91.055 0.663072 0.865579); /* stone-200 light (probe) */
+  &:is(.dark *) {
+    background-color: rgb(28, 25, 23);
+    border-color: rgb(55, 49, 43);
+  }
+}

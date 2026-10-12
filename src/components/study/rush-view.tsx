@@ -304,7 +304,7 @@ export default function RushView() {
                 🏆 رکورد تو: {faNum(mounted ? rushBest : 0)} امتیاز
               </span>
               {mounted && rushBestCorrect > 0 && (
-                <span className="rounded-xl border border-stone-200 bg-white px-4 py-2 text-[13px] font-black text-stone-600">
+                <span className="rounded-xl border c-card px-4 py-2 text-[13px] font-black text-stone-600">
                   بیشترین پاسخ درست: {faNum(rushBestCorrect)}
                 </span>
               )}
@@ -322,7 +322,7 @@ export default function RushView() {
               <Keyboard size={13} />
               <span>میان‌بر:</span>
               {["1", "2", "3", "4"].map((k) => (
-                <kbd key={k} className="rounded-md border border-stone-200 bg-white px-1.5 py-0.5 font-mono text-[10px] font-bold text-stone-500 shadow-sm" dir="ltr">
+                <kbd key={k} className="rounded-md border c-card px-1.5 py-0.5 font-mono text-[10px] font-bold text-stone-500 shadow-sm" dir="ltr">
                   {k}
                 </kbd>
               ))}

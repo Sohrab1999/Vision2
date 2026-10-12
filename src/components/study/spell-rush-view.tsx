@@ -68,7 +68,7 @@ export function RushModeTabs({ mode, onChange }: { mode: "quiz" | "spell"; onCha
   ];
   return (
     <div className="flex justify-center" role="tablist" aria-label="حالت چالش برق‌آسا">
-      <div className="inline-flex rounded-2xl border border-stone-200 bg-white p-1 shadow-sm">
+      <div className="inline-flex rounded-2xl border c-card p-1 shadow-sm">
         {tabs.map((t) => (
           <button
             key={t.id}
@@ -354,7 +354,7 @@ export default function SpellRushView({ onExit }: { onExit?: () => void }) {
                 🏆 رکورد تو: {faNum(mounted ? spellRushBest : 0)} امتیاز
               </span>
               {mounted && spellRushBestCorrect > 0 && (
-                <span className="rounded-xl border border-stone-200 bg-white px-4 py-2 text-[13px] font-black text-stone-600">
+                <span className="rounded-xl border c-card px-4 py-2 text-[13px] font-black text-stone-600">
                   بیشترین املأ درست: {faNum(spellRushBestCorrect)}
                 </span>
               )}
@@ -371,7 +371,7 @@ export default function SpellRushView({ onExit }: { onExit?: () => void }) {
             <div className="mt-4 flex items-center justify-center gap-1.5 text-[11px] text-stone-400">
               <Keyboard size={13} />
               <span>میان‌بر:</span>
-              <kbd className="rounded-md border border-stone-200 bg-white px-1.5 py-0.5 font-mono text-[10px] font-bold text-stone-500 shadow-sm" dir="ltr">
+              <kbd className="rounded-md border c-card px-1.5 py-0.5 font-mono text-[10px] font-bold text-stone-500 shadow-sm" dir="ltr">
                 Enter
               </kbd>
               <span>برای ثبت املا</span>
@@ -628,7 +628,7 @@ export default function SpellRushView({ onExit }: { onExit?: () => void }) {
 
       <p className="text-center text-[11px] text-stone-400">
         <Keyboard size={12} className="ml-1 inline" />
-        <kbd className="rounded-md border border-stone-200 bg-white px-1.5 py-0.5 font-mono text-[10px] font-bold text-stone-500 shadow-sm" dir="ltr">Enter</kbd> ثبت املا — واژه‌های غلط همان‌جا در SRS و بانک خطا می‌روند
+        <kbd className="rounded-md border c-card px-1.5 py-0.5 font-mono text-[10px] font-bold text-stone-500 shadow-sm" dir="ltr">Enter</kbd> ثبت املا — واژه‌های غلط همان‌جا در SRS و بانک خطا می‌روند
       </p>
     </div>
   );

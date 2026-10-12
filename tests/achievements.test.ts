@@ -435,6 +435,96 @@ describe("نشان‌های رویدادیِ هفته — dayHistory پنجره�
   });
 });
 
+describe("رانِ ترکیبی — هفتهٔ دیکتهٔ پیوسته (Task 85)", () => {
+  const w = (n: number) => daysAgoKey(n);
+  const dh = (over: Record<string, unknown>) => ({
+    day: "",
+    reviews: 0,
+    quizzes: 0,
+    words: 0,
+    dictation: 0,
+    rush: 0,
+    ...over,
+  });
+  const dictWeek = () =>
+    Object.fromEntries([0, 1, 2, 3, 4, 5, 6].map((n) => [w(n), dh({ day: w(n), dictation: 1 })]));
+
+  it("wording و تیر و آیکن — طلایی با SpellCheck2؛ رجیستری ۳۳ شد", () => {
+    expect(byId("dictation-run").title).toBe("هفتهٔ دیکتهٔ پیوسته");
+    expect(byId("dictation-run").tier).toBe("gold");
+    expect(byId("dictation-run").icon).toBe("SpellCheck2");
+    expect(BADGES.length).toBe(33);
+  });
+
+  it("قراردادِ شمارِ روز ≠ جمع: دو دیکته در یک روز هنوز یک روزِ دیکته‌دار است", () => {
+    const one = base({ dayHistory: { [w(2)]: dh({ day: w(2), dictation: 2 }) } });
+    expect(one.dictation7).toBe(2);
+    expect(one.dictationDays7).toBe(1);
+    expect(ids(one)).not.toContain("dictation-run");
+    expect(byId("dictation-run").progress!(one)).toBe("۱ از ۷ روزِ این هفته");
+  });
+
+  it("رانِ کامل بدونِ هیچ هدفی باز می‌شود — دیکته در جدول سیاست goal را بالا نمی‌برد (استقلالِ واقعی)", () => {
+    const run = base({ dayHistory: dictWeek() });
+    expect(run.dictationDays7).toBe(7);
+    expect(run.goalDays7).toBe(0);
+    // بی‌دیکته/بی‌آزمون/بی‌قفسه همه به goalDays7 نیاز دارند — این‌جا هیچ‌کدام باز نیست
+    expect(ids(run)).toContain("dictation-run");
+    expect(ids(run)).not.toContain("week-no-dictation");
+    expect(ids(run)).not.toContain("week-no-exam");
+    expect(ids(run)).not.toContain("cage-free-week");
+  });
+
+  it("مرز پنجره: روزِ w(6) داخل، w(7) بیرون؛ ۶ روز = قفل با پیشرفتِ صادق", () => {
+    const six = base({ dayHistory: Object.fromEntries([1, 2, 3, 4, 5, 6].map((n) => [w(n), dh({ day: w(n), dictation: 1 })])) });
+    expect(six.dictationDays7).toBe(6);
+    expect(ids(six)).not.toContain("dictation-run");
+    expect(byId("dictation-run").progress!(six)).toBe("۶ از ۷ روزِ این هفته");
+    const sevenWithOld = base({
+      dayHistory: { ...dictWeek(), [w(7)]: dh({ day: w(7), dictation: 3 }) },
+    });
+    // w(7) بیرونِ پنجره است — نه جمع بالا می‌رود نه روزی اضافه می‌شود
+    expect(sevenWithOld.dictation7).toBe(7);
+    expect(sevenWithOld.dictationDays7).toBe(7);
+    expect(ids(sevenWithOld)).toContain("dictation-run");
+  });
+
+  it("fallbackِ امروز: امروزِ غایب از dayStat می‌آید (روزِ هفتم)، حاضر دوبار شمرده نمی‌شود", () => {
+    const sixDays = Object.fromEntries([1, 2, 3, 4, 5, 6].map((n) => [w(n), dh({ day: w(n), dictation: 1 })]));
+    const viaStat = base({
+      dayHistory: sixDays,
+      dayStat: { day: w(0), reviews: 0, quizzes: 0, words: 0, dictation: 1, rush: 0 },
+    });
+    expect(viaStat.dictationDays7).toBe(7);
+    expect(ids(viaStat)).toContain("dictation-run");
+    const viaHistory = base({
+      dayHistory: { ...sixDays, [w(0)]: dh({ day: w(0), dictation: 1 }) },
+      dayStat: { day: w(0), reviews: 0, quizzes: 0, words: 0, dictation: 9, rush: 0 },
+    });
+    expect(viaHistory.dictationDays7).toBe(7);
+    expect(ids(viaHistory)).toContain("dictation-run");
+  });
+
+  it("گاردِ ورودی خراب: خانهٔ منفی/NaN روز نمی‌شود، خانه‌های سالم می‌مانند، غایب → صفرِ امن", () => {
+    const corrupt = buildEvalInput(
+      baseRaw({
+        dayHistory: {
+          [w(1)]: dh({ day: w(1), dictation: -3 }),
+          [w(2)]: "junk",
+          [w(3)]: null,
+          [w(4)]: dh({ day: w(4), dictation: Number.NaN }),
+          [w(5)]: dh({ day: w(5), dictation: 1 }),
+        },
+      }) as unknown as BuildArgs
+    );
+    expect(corrupt.dictationDays7).toBe(1);
+    expect(ids(corrupt)).not.toContain("dictation-run");
+    const absent = base({});
+    expect(absent.dictationDays7).toBe(0);
+    expect(ids(absent)).not.toContain("dictation-run");
+  });
+});
+
 describe("newBadgeIds — قرارداد واحدِ «تازه» (Task 82)", () => {
   // (درسِ ۸۳) کلیدهای نسبی — seed مطلق بمبِ ساعتیِ منطقهٔ زمانی است
   const seven = base({ goalMetDays: [0, 1, 2, 3, 4, 5, 6].map((n) => daysAgoKey(n)) });

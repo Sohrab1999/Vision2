@@ -40,7 +40,7 @@ export default function WeeklyChart() {
   return (
     <section
       aria-label="فعالیت هفتگی"
-      className="week-chart overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm"
+      className="week-chart overflow-hidden rounded-2xl border c-card shadow-sm"
     >
       <div className="h-1.5 w-full bg-gradient-to-l from-sky-400 via-cyan-500 to-emerald-500" />
       <div className="p-5">

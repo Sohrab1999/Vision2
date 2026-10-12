@@ -66,7 +66,7 @@ export default function LessonTestsTab({ lesson }: { lesson: LessonData }) {
           const count = lesson.quizzes.filter((q) => q.category === c.key).length;
           const best = mounted ? results[resultKey(lesson.id, c.key)] : null;
           return (
-            <div key={c.key} className="flex flex-col rounded-2xl border border-stone-200 bg-white p-4 shadow-sm">
+            <div key={c.key} className="flex flex-col rounded-2xl border c-card p-4 shadow-sm">
               <div className="mb-2 flex items-center justify-between">
                 <span className={`flex h-10 w-10 items-center justify-center rounded-xl ${t.bgSoft} ${t.text}`}>
                   <c.icon size={19} />

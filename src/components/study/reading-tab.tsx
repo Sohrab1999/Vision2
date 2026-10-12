@@ -12,7 +12,7 @@ export default function ReadingTab({ lesson }: { lesson: LessonData }) {
 
   return (
     <div className="space-y-5">
-      <div className="flex items-center justify-between rounded-xl border border-stone-200 bg-white px-4 py-3">
+      <div className="flex items-center justify-between rounded-xl border c-card px-4 py-3">
         <span className="flex items-center gap-2 text-[13px] font-bold text-stone-600">
           <FileText size={15} className="text-stone-400" />
           متن هر پاراگراف را با دکمهٔ صوتی بشنوید
@@ -37,7 +37,7 @@ export default function ReadingTab({ lesson }: { lesson: LessonData }) {
 
       <div className="max-h-[62vh] space-y-5 overflow-y-auto pl-1 nice-scroll">
         {lesson.readings.map((reading) => (
-          <article key={reading.titleEn} className="rounded-2xl border border-stone-200 bg-white p-4 sm:p-5">
+          <article key={reading.titleEn} className="rounded-2xl border c-card p-4 sm:p-5">
             <header className={`mb-4 rounded-xl border ${t.border} ${t.bgSoft} p-3.5 text-center`}>
               <h3 className={`en-text text-lg font-bold ${t.text}`} dir="ltr">
                 “{reading.titleEn}”

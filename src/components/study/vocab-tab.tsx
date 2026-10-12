@@ -74,7 +74,7 @@ export default function VocabTab({
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="جستجو در واژگان (فارسی یا انگلیسی)..."
-            className="w-full rounded-xl border border-stone-200 bg-white py-2.5 pl-9 pr-9 text-sm outline-none transition-colors focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100"
+            className="w-full rounded-xl border c-card py-2.5 pl-9 pr-9 text-sm outline-none transition-colors focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100"
           />
           {query && (
             <button

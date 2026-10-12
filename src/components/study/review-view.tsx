@@ -138,7 +138,7 @@ export default function ReviewView() {
         <>
           {/* ---------------------------- stats + cheer ---------------------------- */}
           <div className="grid gap-4 sm:grid-cols-[1fr_auto]">
-            <div className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm">
+            <div className="rounded-2xl border c-card p-5 shadow-sm">
               <div className="mb-3 flex items-center gap-2">
                 <Eraser size={17} className="text-rose-500" />
                 <h2 className="text-sm font-extrabold text-stone-800">بانک خطای تو</h2>
@@ -185,7 +185,7 @@ export default function ReviewView() {
           </div>
 
           {/* ------------------------------ session config ------------------------------ */}
-          <div className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm sm:p-6">
+          <div className="rounded-2xl border c-card p-5 shadow-sm sm:p-6">
             <p className="mb-2 text-[13px] font-bold text-stone-600">۱. طول جلسهٔ مرور:</p>
             <div className="mb-5 flex flex-wrap gap-2">
               {SIZE_OPTIONS.map((n) => (

@@ -9,7 +9,7 @@ export default function GrammarTab({ lesson }: { lesson: LessonData }) {
   return (
     <div className="max-h-[64vh] space-y-4 overflow-y-auto pl-1 nice-scroll">
       {lesson.grammar.map((section, i) => (
-        <section key={i} className="overflow-hidden rounded-2xl border border-stone-200 bg-white">
+        <section key={i} className="overflow-hidden rounded-2xl border c-card">
           <header className={`flex items-center gap-2 border-b ${t.border} ${t.bgSoft} px-4 py-3`}>
             <span className={`flex h-7 w-7 items-center justify-center rounded-lg ${t.bg} text-white`}>
               {i % 2 === 0 ? <GraduationCap size={15} /> : <Lightbulb size={15} />}

@@ -147,7 +147,7 @@ export default function Leaderboard() {
             </p>
           </div>
         ) : (
-          <div className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm">
+          <div className="overflow-hidden rounded-2xl border c-card shadow-sm">
             {/* podium — shared component (variant: amber) */}
             <Podium
               rows={top3}

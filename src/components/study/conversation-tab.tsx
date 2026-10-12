@@ -44,7 +44,7 @@ export default function ConversationTab({ lesson }: { lesson: LessonData }) {
   return (
     <div className="space-y-4">
       {/* intro */}
-      <div className="rounded-xl border border-stone-200 bg-white p-4">
+      <div className="rounded-xl border c-card p-4">
         <p className="en-text mb-2 text-[14px] leading-7 text-stone-700" dir="ltr">
           {lesson.conversation.introEn}
         </p>
@@ -52,7 +52,7 @@ export default function ConversationTab({ lesson }: { lesson: LessonData }) {
       </div>
 
       {/* controls */}
-      <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-stone-200 bg-white px-4 py-3">
+      <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border c-card px-4 py-3">
         <button
           onClick={playAll}
           className={`inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-bold text-white shadow-sm transition-all active:scale-95 ${

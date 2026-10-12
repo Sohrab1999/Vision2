@@ -173,7 +173,7 @@ export default function ExamView() {
 
       {/* --------------------------- vocab exam config --------------------------- */}
       {mode === "vocab" && (
-        <div className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm sm:p-6">
+        <div className="rounded-2xl border c-card p-5 shadow-sm sm:p-6">
           <div className="mb-4 flex items-center gap-3">
             <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600">
               <ScrollText size={22} />
@@ -406,7 +406,7 @@ export default function ExamView() {
       )}
 
       {/* quick lesson tests shortcut */}
-      <div className="rounded-2xl border border-stone-200 bg-white p-5">
+      <div className="rounded-2xl border c-card p-5">
         <h2 className="mb-3 flex items-center gap-2 text-sm font-extrabold text-stone-700">
           <BookOpen size={16} className="text-stone-400" />
           یا مستقیم وارد تست‌های هر درس شوید:

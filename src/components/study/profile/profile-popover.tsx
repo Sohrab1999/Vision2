@@ -230,7 +230,7 @@ export default function ProfilePopover() {
     <Popover open={open} onOpenChange={openPopover}>
       <PopoverTrigger asChild>
         <button
-          className="ml-1 flex shrink-0 items-center gap-2 rounded-full border border-stone-200 bg-white py-1 pl-1 pr-2.5 transition-all hover:border-emerald-300 hover:shadow-sm active:scale-95"
+          className="ml-1 flex shrink-0 items-center gap-2 rounded-full border c-card py-1 pl-1 pr-2.5 transition-all hover:border-emerald-300 hover:shadow-sm active:scale-95"
           aria-label="پروفایل من"
           title="پروفایل من"
         >

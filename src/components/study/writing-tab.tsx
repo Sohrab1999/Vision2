@@ -74,7 +74,7 @@ export default function WritingTab({ lesson }: { lesson: LessonData }) {
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
-        className="rounded-2xl border border-stone-200 bg-white p-8 text-center shadow-sm"
+        className="rounded-2xl border c-card p-8 text-center shadow-sm"
       >
         <span className={`mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl ${t.chipBg}`}>
           <PenLine size={28} />
@@ -98,7 +98,7 @@ export default function WritingTab({ lesson }: { lesson: LessonData }) {
   return (
     <div className="space-y-4">
       {/* header */}
-      <div className="flex items-center justify-between rounded-xl border border-stone-200 bg-white px-4 py-3">
+      <div className="flex items-center justify-between rounded-xl border c-card px-4 py-3">
         <span className="flex items-center gap-2 text-[13px] font-extrabold text-stone-700">
           <PenLine size={15} className={t.text} />
           جمله‌سازی — ترتیب کلمات را بساز
@@ -187,7 +187,7 @@ export default function WritingTab({ lesson }: { lesson: LessonData }) {
           </div>
 
           {/* word pool */}
-          <div className="flex flex-wrap gap-1.5 rounded-2xl border border-stone-200 bg-white p-3" dir="ltr">
+          <div className="flex flex-wrap gap-1.5 rounded-2xl border c-card p-3" dir="ltr">
             {pool.map((item, i) =>
               placed.includes(i) ? null : (
                 <motion.button
@@ -221,7 +221,7 @@ export default function WritingTab({ lesson }: { lesson: LessonData }) {
               </button>
               <button
                 onClick={() => { setPlaced([]); setChecked(null); }}
-                className="inline-flex items-center gap-1.5 rounded-xl border border-stone-200 bg-white px-4 py-2.5 text-sm font-bold text-stone-600 transition-all hover:bg-stone-50 active:scale-95"
+                className="inline-flex items-center gap-1.5 rounded-xl border c-card px-4 py-2.5 text-sm font-bold text-stone-600 transition-all hover:bg-stone-50 active:scale-95"
               >
                 <Eraser size={15} />
                 پاک کردن

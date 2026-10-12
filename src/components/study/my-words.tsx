@@ -89,7 +89,7 @@ export default function MyWordsView() {
   return (
     <div className="space-y-4">
       {/* header */}
-      <div className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm">
+      <div className="rounded-2xl border c-card p-5 shadow-sm">
         <div className="mb-4 flex flex-wrap items-center gap-2">
           <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-50 text-amber-500">
             <Star size={19} className="fill-amber-400" />

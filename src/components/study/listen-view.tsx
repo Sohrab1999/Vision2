@@ -260,7 +260,7 @@ export default function ListenView() {
                   className={`rounded-xl px-4 py-2 text-sm font-bold transition-all active:scale-95 ${
                     count === n
                       ? "bg-teal-600 text-white shadow-md shadow-teal-500/25"
-                      : "border border-stone-200 bg-white text-stone-600 hover:border-teal-300 hover:text-teal-600"
+                      : "border c-card text-stone-600 hover:border-teal-300 hover:text-teal-600"
                   }`}
                 >
                   {faNum(n)}
@@ -279,7 +279,7 @@ export default function ListenView() {
                   className={`rounded-xl px-3.5 py-2 text-[12.5px] font-bold transition-all active:scale-95 ${
                     lessonFilter === o.id
                       ? "bg-stone-800 text-white shadow-md"
-                      : "border border-stone-200 bg-white text-stone-600 hover:border-stone-400"
+                      : "border c-card text-stone-600 hover:border-stone-400"
                   }`}
                 >
                   {o.label}
@@ -316,7 +316,7 @@ export default function ListenView() {
     });
     return (
       <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="space-y-5">
-        <div className="rounded-2xl border border-stone-200 bg-white p-6 text-center shadow-sm">
+        <div className="rounded-2xl border c-card p-6 text-center shadow-sm">
           <div className="mb-4 flex justify-center">
             <ProgressRing percent={percent} size={120} stroke={10}>
               <div>
@@ -389,7 +389,7 @@ export default function ListenView() {
   return (
     <div className="space-y-4">
       {/* header */}
-      <div className="rounded-2xl border border-stone-200 bg-white p-4">
+      <div className="rounded-2xl border c-card p-4">
         <div className="mb-2.5 flex items-center justify-between gap-2">
           <span className="flex items-center gap-2 text-sm font-extrabold text-stone-800">
             <Headphones size={16} className="text-teal-600" />
@@ -411,7 +411,7 @@ export default function ListenView() {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 24 }}
           transition={{ duration: 0.22 }}
-          className="rounded-2xl border border-stone-200 bg-white p-5 shadow-sm sm:p-6"
+          className="rounded-2xl border c-card p-5 shadow-sm sm:p-6"
         >
           {/* kind + prompt */}
           <div className="mb-5 flex items-center justify-center gap-2">

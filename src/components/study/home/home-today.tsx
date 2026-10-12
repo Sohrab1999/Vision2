@@ -41,7 +41,7 @@ export default function HomeToday() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.15 }}
       aria-label="برنامهٔ امروز"
-      className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm"
+      className="overflow-hidden rounded-2xl border c-card shadow-sm"
     >
       <div className="h-1.5 w-full bg-gradient-to-l from-emerald-500 via-teal-500 to-amber-400" />
       <div className="grid gap-5 p-5 sm:p-6 lg:grid-cols-[auto_1fr_auto] lg:items-center">

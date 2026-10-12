@@ -171,7 +171,7 @@ export default function Flashcards({
           </button>
           <button
             onClick={onExit}
-            className="inline-flex items-center gap-1.5 rounded-lg border border-stone-200 bg-white px-3 py-1.5 text-[13px] font-bold text-stone-600 hover:bg-stone-50"
+            className="inline-flex items-center gap-1.5 rounded-lg border c-card px-3 py-1.5 text-[13px] font-bold text-stone-600 hover:bg-stone-50"
           >
             <X size={14} />
             خروج
@@ -249,7 +249,7 @@ export default function Flashcards({
       <div className="mx-auto flex max-w-xl flex-wrap items-center justify-center gap-2.5">
         <button
           onClick={() => go(-1)}
-          className="inline-flex items-center gap-1 rounded-xl border border-stone-200 bg-white px-4 py-2.5 text-sm font-bold text-stone-600 transition-all hover:bg-stone-50 active:scale-95"
+          className="inline-flex items-center gap-1 rounded-xl border c-card px-4 py-2.5 text-sm font-bold text-stone-600 transition-all hover:bg-stone-50 active:scale-95"
         >
           <ChevronRight size={16} />
           قبلی
@@ -270,7 +270,7 @@ export default function Flashcards({
         </button>
         <button
           onClick={() => go(1)}
-          className="inline-flex items-center gap-1 rounded-xl border border-stone-200 bg-white px-4 py-2.5 text-sm font-bold text-stone-600 transition-all hover:bg-stone-50 active:scale-95"
+          className="inline-flex items-center gap-1 rounded-xl border c-card px-4 py-2.5 text-sm font-bold text-stone-600 transition-all hover:bg-stone-50 active:scale-95"
         >
           بعدی
           <ChevronLeft size={16} />

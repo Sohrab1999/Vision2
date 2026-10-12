@@ -29,7 +29,7 @@ export default function Footer() {
         <div className="flex flex-wrap items-center gap-2">
           <button
             onClick={openShortcuts}
-            className="inline-flex items-center gap-1.5 rounded-xl border border-stone-200 bg-white px-3 py-2 text-[11.5px] font-bold text-stone-600 shadow-sm transition-all hover:border-emerald-300 hover:text-emerald-700 active:scale-95"
+            className="inline-flex items-center gap-1.5 rounded-xl border c-card px-3 py-2 text-[11.5px] font-bold text-stone-600 shadow-sm transition-all hover:border-emerald-300 hover:text-emerald-700 active:scale-95"
             title="راهنمای میان‌برهای کیبورد (کلید ؟)"
           >
             <Keyboard size={14} />
