@@ -15,7 +15,7 @@ import {
   Trophy,
   SpellCheck,
 } from "lucide-react";
-import type { LessonData, VocabWord } from "@/lib/study-types";
+import type { DictationSource, DictationSourceWord, LessonData, VocabWord } from "@/lib/study-types";
 import { useStudy, wordKey, resultKey } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { shuffle } from "@/lib/domain/shuffle";
@@ -27,7 +27,7 @@ import { sendStats } from "@/lib/identity";
 
 type Phase = "setup" | "play" | "done";
 
-interface PickedWord extends VocabWord {
+interface PickedWord extends DictationSourceWord {
   hint: number; // letters revealed
   hintUsed: boolean;
   result?: "full" | "half" | "wrong";
@@ -43,10 +43,20 @@ function norm(s: string): string {
     .trim();
 }
 
-export default function DictationTab({ lesson }: { lesson: LessonData }) {
+export default function DictationTab({
+  lesson,
+  source,
+  onExit,
+}: {
+  /** the classic per-lesson pool — omit when `source` is given */
+  lesson?: LessonData;
+  /** virtual pool (personal word-book, custom sets) — omit when `lesson` is given */
+  source?: DictationSource;
+  /** optional way out for non-tab embeds (my-words launcher) */
+  onExit?: () => void;
+}) {
   const { toast } = useToast();
   const mounted = useMounted();
-  const t = themeOf(lesson.color);
 
   const known = useStudy((s) => s.known);
   const srs = useStudy((s) => s.srs);
@@ -65,6 +75,20 @@ export default function DictationTab({ lesson }: { lesson: LessonData }) {
   const [audioErrorFor, setAudioErrorFor] = useState<number | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const advanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // effective pool: the virtual source wins; the lesson flow degrades to a
+  // synthetic source so every downstream read has ONE shape
+  const src: DictationSource | undefined =
+    source ??
+    (lesson
+      ? { id: lesson.id, label: "درس", color: lesson.color, statsLesson: lesson.id, words: lesson.vocabulary }
+      : undefined);
+  /** store key for a word — the star key when pinned, else the lesson key */
+  const keyOf = useCallback(
+    (w: DictationSourceWord) => w.storeKey ?? wordKey((src?.id ?? 0) as number, w.en),
+    [src?.id]
+  );
+  const t = themeOf(src?.color ?? "emerald");
 
   const word = words[idx];
   const total = words.length;
@@ -100,13 +124,14 @@ export default function DictationTab({ lesson }: { lesson: LessonData }) {
   }, [idx]);
 
   const startRound = () => {
-    const base = lesson.vocabulary;
+    if (!src || src.words.length === 0) return;
+    const base = src.words;
     let picked = shuffle(base);
     if (smartOrder && mounted) {
       const now = Date.now();
       picked = picked.sort((a, b) => {
         const pri = (w: VocabWord) => {
-          const k = wordKey(lesson.id, w.en);
+          const k = keyOf(w);
           if (!known[k]) return 0; // unknown first
           const item = srs[k];
           if (item && item.dueAt <= now) return 1; // known but due
@@ -142,9 +167,10 @@ export default function DictationTab({ lesson }: { lesson: LessonData }) {
 
   const finish = useCallback(
     (finalScore: number) => {
+      if (!src) return;
       const percent = percentOf(finalScore, total);
       const correctForStats = Math.round(finalScore);
-      useStudy.getState().addResult(resultKey(lesson.id, "dictation"), {
+      useStudy.getState().addResult(resultKey(src.id, "dictation"), {
         correct: correctForStats,
         total,
         percent,
@@ -154,18 +180,18 @@ export default function DictationTab({ lesson }: { lesson: LessonData }) {
       useStudy.getState().trackDictation(); // daily quest: dictation round
       toast({
         title: percent >= 80 ? "🏆 دیکتهٔ فوق‌العاده!" : percent >= 50 ? "👍 خوب بود، ادامه بده!" : "💪 با تمرین بهتر می‌شود",
-        description: `دیکتهٔ درس: ${faNum(correctForStats)} از ${faNum(total)} (${faNum(percent)}٪)`,
+        description: `دیکتهٔ ${src.label}: ${faNum(correctForStats)} از ${faNum(total)} (${faNum(percent)}٪)`,
         duration: 4000,
       });
       try {
-        // signed fire-and-forget (Phase-0)
-        sendStats({ lesson: lesson.id, category: "dictation", total, correct: correctForStats }).catch(() => {});
+        // signed fire-and-forget (Phase-0); non-lesson sources send lesson 0
+        sendStats({ lesson: src.statsLesson, category: src.category ?? "dictation", total, correct: correctForStats }).catch(() => {});
       } catch {
         /* ignore */
       }
       setPhase("done");
     },
-    [lesson.id, total, toast]
+    [src, total, toast]
   );
 
   const goNext = useCallback(
@@ -190,11 +216,11 @@ export default function DictationTab({ lesson }: { lesson: LessonData }) {
     setState(ok ? "correct" : "wrong");
     setWords((ws) => ws.map((w, i) => (i === idx ? { ...w, result: ok ? (w.hintUsed ? "half" : "full") : "wrong" } : w)));
     // feed the SRS engine: spelling success advances the word's review schedule
-    reviewWord(wordKey(lesson.id, word.en), ok && !word.hintUsed);
+    reviewWord(keyOf(word), ok && !word.hintUsed);
     // F7 — dictation is a word sighting; a wrong spelling or a needed hint
     // counts as a word-level mistake
     try {
-      useStudy.getState().addWordResults([{ key: wordKey(lesson.id, word.en), ok: ok && !word.hintUsed }]);
+      useStudy.getState().addWordResults([{ key: keyOf(word), ok: ok && !word.hintUsed }]);
     } catch {
       /* best-effort */
     }
@@ -216,9 +242,9 @@ export default function DictationTab({ lesson }: { lesson: LessonData }) {
 
   const skip = () => {
     if (!word || state !== "typing") return;
-    reviewWord(wordKey(lesson.id, word.en), false);
+    reviewWord(keyOf(word), false);
     try {
-      useStudy.getState().addWordResults([{ key: wordKey(lesson.id, word.en), ok: false }]);
+      useStudy.getState().addWordResults([{ key: keyOf(word), ok: false }]);
     } catch {
       /* best-effort */
     }
@@ -237,6 +263,7 @@ export default function DictationTab({ lesson }: { lesson: LessonData }) {
 
   // ----------------------------- SETUP -----------------------------
   if (phase === "setup") {
+    if (!src) return null;
     return (
       <motion.div
         initial={{ opacity: 0, y: 12 }}
@@ -288,13 +315,26 @@ export default function DictationTab({ lesson }: { lesson: LessonData }) {
             </span>
           </button>
 
-          <button
-            onClick={startRound}
-            className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-l from-violet-600 to-fuchsia-600 px-7 py-3 text-sm font-bold text-white shadow-lg shadow-violet-600/30 transition-all hover:opacity-90 active:scale-95"
-          >
-            <Play size={16} />
-            شروع دیکته
-          </button>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <button
+              onClick={startRound}
+              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-l from-violet-600 to-fuchsia-600 px-7 py-3 text-sm font-bold text-white shadow-lg shadow-violet-600/30 transition-all hover:opacity-90 active:scale-95"
+            >
+              <Play size={16} />
+              شروع دیکته
+            </button>
+            {onExit && (
+              <button
+                onClick={() => {
+                  stopSpeaking();
+                  onExit();
+                }}
+                className="inline-flex items-center gap-1.5 rounded-xl border border-stone-200 bg-white px-4 py-2.5 text-[13px] font-bold text-stone-500 transition-all hover:bg-stone-50 active:scale-95"
+              >
+                بازگشت
+              </button>
+            )}
+          </div>
         </div>
       </motion.div>
     );
@@ -336,6 +376,14 @@ export default function DictationTab({ lesson }: { lesson: LessonData }) {
             >
               بازگشت به تنظیمات
             </button>
+            {onExit && (
+              <button
+                onClick={onExit}
+                className="inline-flex items-center gap-2 rounded-xl border border-violet-200 bg-violet-50 px-5 py-2.5 text-sm font-bold text-violet-700 transition-all hover:bg-violet-100 active:scale-95"
+              >
+                بازگشت به واژه‌های من
+              </button>
+            )}
           </div>
         </div>
 

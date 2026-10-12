@@ -242,7 +242,7 @@ body {
 
 /* surfaces */
 .dark .bg-white { background-color: #1c1917; }
-.dark .bg-white\/70 { background-color: rgba(28, 25, 23, 0.7); }
+.dark .bg-white\/70,.dark .certificate-card .bg-stone-50 { background-color: rgba(28, 25, 23, 0.7); }
 .dark .bg-white\/80 { background-color: rgba(28, 25, 23, 0.8); }
 .dark .bg-\[\#f7f6f2\]\/85 { background-color: rgba(12, 10, 9, 0.82); }
 
@@ -269,17 +269,13 @@ body {
    states, report cards, writing badges (the base rules above miss the /NN variants) */
 .dark .bg-rose-50\/60 { background-color: rgba(80, 18, 28, 0.4); }
 .dark .bg-rose-50\/70 { background-color: rgba(80, 18, 28, 0.45); }
-.dark .bg-emerald-50\/40 { background-color: rgba(6, 55, 40, 0.3); }
+.dark .bg-emerald-50\/40,.dark .hover\:bg-emerald-50\/40:hover { background-color: rgba(6, 55, 40, 0.3); }
 .dark .bg-emerald-50\/50 { background-color: rgba(6, 55, 40, 0.38); }
 .dark .bg-emerald-50\/60 { background-color: rgba(6, 55, 40, 0.42); }
-.dark .bg-orange-50\/50 { background-color: rgba(88, 44, 14, 0.45); }
-.dark .bg-teal-50\/40 { background-color: rgba(5, 55, 50, 0.35); }
+.dark .bg-orange-50\/50,.dark .hover\:bg-orange-50\/50:hover { background-color: rgba(88, 44, 14, 0.45); }
+.dark .bg-teal-50\/40,.dark .hover\:bg-teal-50\/40:hover { background-color: rgba(5, 55, 50, 0.35); }
 .dark .bg-teal-50\/50 { background-color: rgba(5, 55, 50, 0.42); }
-.dark .bg-fuchsia-50\/50 { background-color: rgba(70, 20, 60, 0.42); }
-.dark .hover\:bg-emerald-50\/40:hover { background-color: rgba(6, 55, 40, 0.3); }
-.dark .hover\:bg-teal-50\/40:hover { background-color: rgba(5, 55, 50, 0.35); }
-.dark .hover\:bg-orange-50\/50:hover { background-color: rgba(88, 44, 14, 0.45); }
-.dark .hover\:bg-fuchsia-50\/50:hover { background-color: rgba(70, 20, 60, 0.42); }
+.dark .bg-fuchsia-50\/50,.dark .hover\:bg-fuchsia-50\/50:hover { background-color: rgba(70, 20, 60, 0.42); }
 /* tinted text accents that sit on those tints (review rows, result badges) */
 .dark .text-rose-600 { color: #fda4af; }
 .dark .text-amber-600 { color: #fcd34d; }
@@ -373,7 +369,7 @@ body {
 .dark .bg-teal-50 { background-color: rgba(6, 55, 50, 0.35); }
 .dark .border-teal-500 { border-color: rgba(20, 130, 120, 0.6); }
 .dark .bg-orange-500 { background-image: linear-gradient(to bottom left, #c2410c, #9a3412); }
-.dark .from-amber-400 { --tw-gradient-from: #b45309; }
+.dark .from-amber-400,.dark .from-amber-300 { --tw-gradient-from: #b45309; }
 .dark .to-orange-500 { --tw-gradient-to: #c2410c; }
 .dark .bg-white\/60 { background-color: rgba(28, 25, 23, 0.6); }
 
@@ -383,7 +379,6 @@ body {
 .dark .bg-gradient-to-b.from-amber-50\/60 { background-image: linear-gradient(to bottom, rgba(87, 62, 14, 0.18), rgba(0, 0, 0, 0)); }
 .dark .border-amber-400 { border-color: rgba(180, 130, 20, 0.6); }
 .dark .ring-amber-400 { --tw-ring-color: rgba(217, 160, 30, 0.65); }
-.dark .from-amber-300 { --tw-gradient-from: #b45309; }
 .dark .to-amber-500 { --tw-gradient-to: #92400e; }
 .dark .from-stone-200 { --tw-gradient-from: #44403c; }
 .dark .to-stone-400 { --tw-gradient-to: #57534e; }
@@ -430,7 +425,6 @@ body {
 .dark .bg-amber-100 { background-color: rgba(87, 62, 14, 0.5); }
 .dark .certificate-card { background-color: #1c1917; }
 .dark .certificate-card .border-dashed { border-color: rgba(180, 130, 20, 0.55) !important; }
-.dark .certificate-card .bg-stone-50 { background-color: rgba(28, 25, 23, 0.7); }
 .dark .final-exam-card { background-color: #1c1917; }
 .dark .border-amber-200 { border-color: rgba(120, 88, 30, 0.5); }
 .dark .border-amber-100 { border-color: rgba(120, 88, 30, 0.4); }
@@ -478,7 +472,7 @@ body {
 .dark .report-digest .text-stone-400 { color: #78716c; }
 
 /* ---------------- badge popover (details) ---------------- */
-.dark .badge-popover { background-color: #1c1917; border-color: #37312b; }
+.dark .badge-popover,.dark .shortcuts-dialog { background-color: #1c1917; border-color: #37312b; }
 .dark .badge-popover .bg-stone-50 { background-color: rgba(40, 36, 31, 0.7); }
 .dark .badge-popover .bg-emerald-50 { background-color: rgba(6, 55, 40, 0.4); }
 .badge-popover { animation: pop-fade 0.18s ease-out; }
@@ -491,12 +485,7 @@ body {
    (the .dark .border-stone-100 rule below is the canonical KEEP for the
    border family: border-stone-100 is tuned #292524 — one step brighter than
    the bg token #28241f; do NOT fold it into the surface tokens) */
-.dark kbd {
-  background-color: #292524;
-  border-color: #44403c;
-  color: #d6d3d1;
-  box-shadow: 0 1px 0 0 #1c1917;
-}
+.dark kbd,.dark .shortcuts-dialog kbd { background-color: #292524; border-color: #44403c; color: #d6d3d1; box-shadow: 0 1px 0 0 #1c1917; }
 .dark .border-stone-100 { border-color: #292524; }
 
 /* ---------------- profile backup section ----------------
@@ -521,15 +510,8 @@ body {
 .dark .border-emerald-300 { border-color: rgba(16, 120, 90, 0.55); }
 
 /* ---------------- shortcuts dialog dark ---------------- */
-.dark .shortcuts-dialog { background-color: #1c1917; border-color: #37312b; }
 .dark .shortcuts-dialog .bg-stone-50\/70 { background-color: rgba(40, 36, 31, 0.6); }
 .dark .shortcuts-dialog .bg-white { background-color: #292524; }
-.dark .shortcuts-dialog kbd {
-  background-color: #292524;
-  border-color: #44403c;
-  color: #d6d3d1;
-  box-shadow: 0 1px 0 0 #1c1917;
-}
 /* ink tone text-stone-700 → #d6d3d1 — canonical group (Step 9 tranche-2; was 11 drifted per-panel copies) */
 .dark .shortcuts-dialog .text-stone-700,.dark .vocab-donut .text-stone-700,.dark .rush-hero .text-stone-700,
 .dark .rush-board .text-stone-700,.dark .skill-panel .text-stone-700,.dark .report-week .text-stone-700,
@@ -590,19 +572,18 @@ body {
 .dark .rush-banner .text-stone-600,.dark .rush-hero .text-stone-600,.dark .rush-done .text-stone-600,
 .dark .rush-card .text-stone-600,.dark .report-best .text-stone-600,.dark .duel-card .text-stone-600,
 .dark .duel-done .text-stone-600,.dark .gmetro-dialog .text-stone-600 { color: #c9c2bb; }
-.dark .rush-banner .bg-white\/80 { background-color: rgb(41 37 36 / 0.85); }
+.dark .rush-banner .bg-white\/80,.dark .rush-hero .bg-white\/80,.dark .rush-hero .bg-white\/70 { background-color: rgb(41 37 36 / 0.85); }
 .dark .rush-banner .text-amber-800 { color: #fcd34d; }
 .dark .rush-banner .border-amber-200 { border-color: rgb(180 130 20 / 0.5); }
 .dark .rush-hero {
   background-image: linear-gradient(to bottom left, rgb(69 40 16 / 0.5), rgb(64 30 18 / 0.55), rgb(62 24 26 / 0.5));
   border-color: rgb(154 52 18 / 0.5);
 }
-.dark .rush-hero .bg-white\/80, .dark .rush-hero .bg-white\/70 { background-color: rgb(41 37 36 / 0.85); }
 .dark .rush-hero .border-orange-100 { border-color: rgb(124 58 8 / 0.55); }
-.dark .rush-hero .bg-orange-100 { background-color: rgb(69 40 8 / 0.65); }
+.dark .rush-hero .bg-orange-100,.dark .rush-board .bg-orange-100\/80 { background-color: rgb(69 40 8 / 0.65); }
 .dark .rush-hero .text-orange-600 { color: #fdba74; }
 .dark .rush-hero .text-orange-700 { color: #fdba74; }
-.dark .rush-hero .border-orange-200 { border-color: rgb(154 52 18 / 0.55); }
+.dark .rush-hero .border-orange-200,.dark .rush-board .border-orange-200,.dark .report-paper .border-orange-200 { border-color: rgb(154 52 18 / 0.55); }
 .dark .rush-hero kbd {
   background-color: #292524;
   border-color: #44403c;
@@ -653,10 +634,9 @@ body {
 .dark .srs-panel .text-emerald-700 { color: #6ee7b7; }
 .dark .srs-panel .bg-teal-50 { background-color: rgba(4, 47, 46, 0.5); }
 .dark .srs-panel .text-teal-700 { color: #5eead4; }
-.dark .srs-panel .border-teal-100 { border-color: rgb(19 78 74 / 0.6); }
-.dark .srs-panel .border-teal-200 { border-color: rgb(19 78 74 / 0.6); }
-.dark .srs-panel .bg-white\/70 { background-color: rgb(28 25 23 / 0.8); }
-.dark .srs-panel .bg-stone-200\/70 { background-color: rgb(41 37 36 / 0.7); }
+.dark .srs-panel .border-teal-100,.dark .srs-panel .border-teal-200 { border-color: rgb(19 78 74 / 0.6); }
+.dark .srs-panel .bg-white\/70,.dark .rush-board .bg-white\/70 { background-color: rgb(28 25 23 / 0.8); }
+.dark .srs-panel .bg-stone-200\/70,.dark .srs-panel .srs-fx-bar.bg-stone-200\/70 { background-color: rgb(41 37 36 / 0.7); }
 .dark .srs-panel .text-emerald-600 { color: #34d399; }
 .dark .srs-panel .bg-stone-200 { background-color: #292524; }
 
@@ -672,8 +652,7 @@ body {
 .dark .srs-panel .srs-due-chip:hover {
   border-color: rgb(190 40 60 / 0.8);
 }
-.dark .srs-panel .srs-due-chip .text-rose-500 { color: #fb7185; }
-.dark .srs-panel .srs-due-chip .text-rose-400 { color: #fb7185; }
+.dark .srs-panel .srs-due-chip .text-rose-500,.dark .srs-panel .srs-due-chip .text-rose-400 { color: #fb7185; }
 /* due-chip star (هفتمین سطح ستاره) — unstarred ghost → amber on hover; filled stays amber */
 .dark .srs-panel .srs-due-star {
   color: #57534e;
@@ -697,7 +676,6 @@ body {
 }
 .dark .srs-panel .srs-fx-expand .text-emerald-600 { color: #34d399; }
 .dark .srs-panel .srs-fx-expand .text-emerald-700 { color: #6ee7b7; }
-.dark .srs-panel .srs-fx-bar.bg-stone-200\/70 { background-color: rgb(41 37 36 / 0.7); }
 
 /* ---------------- spell buttons (dictation) dark ---------------- */
 .dark .border-sky-200 { border-color: rgb(7 66 84 / 0.7); }
@@ -714,11 +692,9 @@ body {
   background-image: linear-gradient(to left, rgba(69, 40, 8, 0.55), rgba(58, 36, 12, 0.3), transparent);
   border-color: rgb(124 58 8 / 0.55);
 }
-.dark .rush-board .bg-orange-100\/80 { background-color: rgb(69 40 8 / 0.65); }
 .dark .rush-board .bg-orange-500 { background-color: #c2410c; }
 .dark .rush-board-podium { background-image: linear-gradient(to bottom, rgba(69, 40, 8, 0.3), transparent); }
 .dark .rush-board .bg-white { background-color: #292524; }
-.dark .rush-board .bg-white\/70 { background-color: rgb(28 25 23 / 0.8); }
 .dark .rush-board .border-stone-100 { border-color: rgb(63 55 49 / 0.8); }
 .dark .rush-board-me { background-color: rgb(69 40 8 / 0.4) !important; }
 .dark .rush-board .border-t { border-color: rgb(124 58 8 / 0.45); }
@@ -729,7 +705,6 @@ body {
 .dark .rush-board .text-orange-600 { color: #fdba74; }
 .dark .rush-board .bg-orange-50 { background-color: rgba(69, 40, 8, 0.4); }
 .dark .rush-board .border-orange-100 { border-color: rgb(124 58 8 / 0.55); }
-.dark .rush-board .border-orange-200 { border-color: rgb(154 52 18 / 0.55); }
 .dark .rush-board .text-amber-700 { color: #fcd34d; }
 
 /* ---------------- skill panel dark ---------------- */
@@ -761,10 +736,9 @@ body {
 .dark .report-band {
   background-image: linear-gradient(to left, #065f46, #047857, #0d9488);
 }
-.dark .report-week { background-color: rgb(28 25 23 / 0.7); border-color: #44403c; }
+.dark .report-week,.dark .report-digest { background-color: rgb(28 25 23 / 0.7); border-color: #44403c; }
 .dark .report-week .bg-stone-200 { background-color: #44403c; }
 /* Task-37 «هفته‌نامه» — digest band mirrors the weekly band tuning */
-.dark .report-digest { background-color: rgb(28 25 23 / 0.7); border-color: #44403c; }
 .dark .report-digest .bg-white\/60,
 .dark .report-digest .bg-white\/70 { background-color: rgb(41 37 36 / 0.6); }
 .dark .report-digest .border-stone-200 { border-color: #44403c; }
@@ -778,7 +752,6 @@ body {
 .dark .report-best li { background-color: #292524; border-color: #44403c; }
 .dark .report-paper .bg-orange-50 { background-color: rgba(69, 40, 8, 0.45); }
 .dark .report-paper .text-orange-600 { color: #fdba74; }
-.dark .report-paper .border-orange-200 { border-color: rgb(154 52 18 / 0.55); }
 .dark .report-best .text-emerald-700 { color: #6ee7b7; }
 .dark .report-foot {
   background-color: rgba(6, 55, 40, 0.35);
@@ -1066,7 +1039,7 @@ html.user-reduce-motion .streak-flame {
 .dark .duel-card .border-stone-100 { border-color: rgb(87 83 78 / 0.4); }
 .dark .duel-card .border-stone-200 { border-color: rgb(87 83 78 / 0.45); }
 .dark .duel-card .bg-fuchsia-100 { background-color: rgb(74 4 78 / 0.6); }
-.dark .duel-card .text-fuchsia-700 { color: #f0abfc; }
+.dark .duel-card .text-fuchsia-700,.dark .leaderboard.duel-mode .text-fuchsia-700 { color: #f0abfc; }
 .dark .duel-card .text-fuchsia-600 { color: #e879f9; }
 .dark .duel-card .bg-fuchsia-50 { background-color: rgb(74 4 78 / 0.35); }
 
@@ -1123,7 +1096,6 @@ html.user-reduce-motion .streak-flame {
 .dark .leaderboard.duel-mode .bg-fuchsia-50\/50 { background-color: rgb(74 4 78 / 0.25); }
 .dark .leaderboard.duel-mode .bg-fuchsia-50 { background-color: rgb(59 7 100 / 0.4); }
 .dark .leaderboard.duel-mode .ring-fuchsia-200 { --tw-ring-color: rgb(162 28 175 / 0.5); }
-.dark .leaderboard.duel-mode .text-fuchsia-700 { color: #f0abfc; }
 .dark .leaderboard.duel-mode .text-fuchsia-600 { color: #e879f9; }
 .dark .leaderboard.duel-mode .text-fuchsia-300 { color: #d8b4fe; }
 /* duel podium — deeper arena purple, mirroring the exam podium tuning */
@@ -1192,8 +1164,8 @@ html.user-reduce-motion .streak-flame {
 .dark .glesson-head .glesson-close { background-color: #292524; border-color: rgb(87 83 78 / 0.5); color: #a8a29e; }
 .dark .glesson-head .glesson-close:hover { color: #e7e5e4; }
 .dark .glesson-step-idle { background-color: rgb(41 37 36 / 0.6); border-color: rgb(87 83 78 / 0.45); color: #8a8580; }
-.dark .glesson-step-done { background-color: #292524; border-color: rgb(87 83 78 / 0.5); color: #c9c2bb; }
-.dark .glesson-see { background-color: #292524; border-color: rgb(87 83 78 / 0.45); }
+.dark .glesson-step-done,.dark .glesson-done .glesson-restart { background-color: #292524; border-color: rgb(87 83 78 / 0.5); color: #c9c2bb; }
+.dark .glesson-see,.dark .glesson-mirror .glesson-mirror-en,.dark .glesson-q { background-color: #292524; border-color: rgb(87 83 78 / 0.45); }
 .dark .glesson-see > p { color: #8a8580; }
 .dark .glesson-piece.glesson-role-subject { background-color: rgb(6 78 59 / 0.35); border-color: rgb(16 185 129 / 0.4); color: #6ee7b7; }
 .dark .glesson-piece.glesson-role-verb { background-color: rgb(136 19 55 / 0.35); border-color: rgb(244 63 94 / 0.4); color: #fda4af; }
@@ -1206,7 +1178,6 @@ html.user-reduce-motion .streak-flame {
 .dark .glesson-mirror .glesson-mirror-fa { background-color: rgb(6 78 59 / 0.2); border-color: rgb(16 185 129 / 0.3); }
 .dark .glesson-mirror .glesson-mirror-fa p:first-child { color: #34d399; }
 .dark .glesson-mirror .glesson-mirror-fa p:last-child { color: #d1fae5; }
-.dark .glesson-mirror .glesson-mirror-en { background-color: #292524; border-color: rgb(87 83 78 / 0.45); }
 .dark .glesson-mirror .glesson-mirror-en p:last-child { color: #f5f5f4; }
 .dark .glesson-mirror .glesson-adds { background-color: rgb(68 64 60 / 0.45); color: #c9c2bb; }
 .dark .glesson-mirror .glesson-adds .text-stone-400 { color: #8a8580; }
@@ -1215,7 +1186,6 @@ html.user-reduce-motion .streak-flame {
 .dark .glesson-mistake .glesson-wrong { color: #fda4af; }
 .dark .glesson-mistake .glesson-right { color: #6ee7b7; }
 .dark .glesson-mistake .glesson-mistake-why { color: #fecdd3; border-color: rgb(225 29 72 / 0.3); }
-.dark .glesson-q { background-color: #292524; border-color: rgb(87 83 78 / 0.45); }
 .dark .glesson-q .glesson-q-prompt { color: #f5f5f4; }
 .dark .glesson-opt { background-color: #292524; border-color: rgb(87 83 78 / 0.5); color: #e7e5e4; }
 .dark .glesson-opt:hover:not(:disabled) { border-color: rgb(168 162 158 / 0.7); }
@@ -1231,5 +1201,4 @@ html.user-reduce-motion .streak-flame {
 .dark .glesson-done.glesson-done-ok { background-color: rgb(68 64 60 / 0.4); border-color: rgb(87 83 78 / 0.55); }
 .dark .glesson-done .glesson-done-title { color: #f5f5f4; }
 .dark .glesson-done .glesson-done-sub { color: #a8a29e; }
-.dark .glesson-done .glesson-restart { background-color: #292524; border-color: rgb(87 83 78 / 0.5); color: #c9c2bb; }
 .dark .gmetro-lesson-badge { background-color: rgb(41 37 36 / 0.6); }

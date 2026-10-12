@@ -68,6 +68,30 @@ export interface LessonData {
   quizzes: QuizQuestion[];
 }
 
+/** A dictation word with an optional store-key override — sources outside a
+ *  single lesson (e.g. the personal word-book) pin their own keys so SRS /
+ *  known / mistake bookkeeping stays on the canonical star key "1:ability". */
+export interface DictationSourceWord extends VocabWord {
+  storeKey?: string;
+}
+
+/** Non-lesson dictation pool: a virtual lesson for the shared DictationTab
+ *  (personal word-book today, custom sets later). */
+export interface DictationSource {
+  /** resultKey scope, e.g. "my-words" (resultKey accepts string ids) */
+  id: number | string;
+  /** Persian display noun for toasts — «درس» for the lesson flow */
+  label: string;
+  /** theme key consumed by themeOf() */
+  color: string;
+  /** lesson number for /api/stats — 0 marks a non-lesson row (same
+   *  contract as the my-words quiz: `lesson: typeof id === "number" ? id : 0`) */
+  statsLesson: number;
+  /** stats category override (defaults to "dictation") */
+  category?: string;
+  words: DictationSourceWord[];
+}
+
 export interface WritingExercise {
   id: string;
   fa: string; // Persian prompt (the meaning to express)

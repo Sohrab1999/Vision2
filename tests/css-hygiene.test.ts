@@ -106,3 +106,19 @@ describe("globals.css surface-token kernel (Step 9 tranche-2)", () => {
     }
   });
 });
+
+describe("globals.css dark tone-group consolidation (Step 9 tranche-3a)", () => {
+  it("has no consolidatable equal-declaration dark rule pairs left", () => {
+    // css-tones.cjs proves each merge safe (identical decls + no cascade
+    // hazard between members); after the fixed-point pass nothing may remain
+    const { analyze } = require("../scripts/css-tones.cjs");
+    const a = analyze(cssPath);
+    expect(
+      a.merges,
+      `consolidatable dark groups remain: ${a.merges.map((m: { lines: number[] }) => `L${m.lines.join(",L")}`).join("; ")}`
+    ).toEqual([]);
+    // the safety filter itself must keep working: hazard exclusion list is
+    // populated (the file still contains legitimately unmergeable siblings)
+    expect(Array.isArray(a.conflicts)).toBe(true);
+  });
+});

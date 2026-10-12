@@ -19,6 +19,7 @@ import SpeakButton from "./speak-button";
 import { resolveStar, type ResolvedStar } from "@/lib/my-words-resolve";
 import MyWordsReview from "./my-words-review";
 import MyWordsFlashcards from "./my-words-flashcards";
+import MyWordsDictation from "./my-words-dictation";
 type SortMode = "new" | "old" | "az";
 
 export default function MyWordsView() {
@@ -138,8 +139,13 @@ export default function MyWordsView() {
         </div>
 
         {/* flashcard launcher — quick no-score pass over the same filtered stars */}
-        <div className="mb-4">
+        <div className="mb-3">
           <MyWordsFlashcards stars={filtered} />
+        </div>
+
+        {/* dictation launcher — spell the filtered stars by ear */}
+        <div className="mb-4">
+          <MyWordsDictation stars={filtered} />
         </div>
 
         {/* search */}
