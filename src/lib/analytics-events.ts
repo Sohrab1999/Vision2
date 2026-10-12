@@ -40,6 +40,7 @@ export const EVENT_NAMES = [
   "my_words_dictation_start", // started a spelling round from starred words
   "srs_due_review", // jumped into smart review from the due-words preview
   "srs_due_pill", // jumped into smart review from the header due pill (Task 73)
+  "goal_chip", // tapped the daily-goal progress chip in the header (Task 76)
   "print_report", // official printable progress report
 ] as const;
 
@@ -81,6 +82,7 @@ export const EVENT_LABELS_FA: Record<EventName, string> = {
   my_words_dictation_start: "شروع دیکتهٔ واژه‌های من",
   srs_due_review: "مرور سررسیدها از داشبورد",
   srs_due_pill: "مرور سررسیدها از هدر",
+  goal_chip: "پیگیری هدف روزانه از هدر",
   print_report: "گزارش چاپی رسمی",
 };
 
