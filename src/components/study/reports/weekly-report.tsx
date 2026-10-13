@@ -14,6 +14,8 @@ import { Sparkles, TrendingDown, TrendingUp, Minus, CalendarHeart, Check, Snowfl
 import { useStudy, daysAgoKey } from "@/lib/study-store";
 import { faNum, secFa } from "@/lib/study-theme";
 import { computeWeeklyDigest, faWeekday, faDayLabel, DUEL_QUICK_WEEK, type Delta, type QuickWeekProfile } from "@/lib/weekly-digest";
+import { weekTeacherStats } from "@/lib/week-teacher";
+import WeekTeacher from "@/components/study/reports/week-teacher";
 import { freezeDayMark, freezeLedgerMeta } from "@/lib/freeze-badge";
 import { downloadWeeklyImage } from "@/lib/result-image";
 import { useToast } from "@/hooks/use-toast";
@@ -109,6 +111,10 @@ export default function WeeklyReportSection() {
 
   const maxTotal = Math.max(1, ...digest.perDay.map((p) => p.stat.reviews + p.stat.quizzes + p.stat.words + p.stat.dictation + p.stat.rush));
   const today = daysAgoKey(0);
+
+  // Task 119 — «معلمِ هفته»: کاهشِ دایجست + زنجیره به بستهٔ تجمیعیِ کوچک؛
+  // فقط همین شکلِ اعتبارسنجی‌شده سفر می‌کند — هرگز dayHistoryِ خام
+  const weekStats = useMemo(() => weekTeacherStats(digest, streak), [digest, streak]);
 
   // Task 104 — عکسِ هفته‌نامه: همان دایجستِ روی صفحه به یک کارتِ PNGِ خانوادهٔ
   // سبز تبدیل می‌شود — ورودیِ کاهش‌یافته فقط از اعدادِ واقعیِ همین دایجست پر می‌شود
@@ -436,6 +442,10 @@ export default function WeeklyReportSection() {
           {streak > 0 ? " زنجیره‌ات همین حالا روشن است!" : ""}
         </p>
       )}
+
+      {/* Task 119 — «معلمِ هفته» در پایانِ باند: داوریِ همان اعدادِ بالای سرش؛
+          هفتهٔ خالی با همان گیتِ مسیر، هیچ‌چیز رندر نمی‌کند (صداقتِ ۱۱۷) */}
+      <WeekTeacher stats={weekStats} />
     </div>
   );
 }

@@ -99,6 +99,19 @@ model ReviewCache {
   createdAt DateTime @default(now())
 }
 
+// Task 119 «معلمِ هفته» — server-side cache of AI weekly reviews, keyed by
+// the fixed-field week fingerprint (every stat change is a different week;
+// the same week shape reads the same controlled verdict). Same economy as
+// ReviewCache / StoryCache / ExplainCache — one generation, many reads.
+model WeekReviewCache {
+  key      String   @id
+  intro    String
+  strength String
+  advice   String
+  source   String   @default("ai") // "ai" | "fallback"
+  createdAt DateTime @default(now())
+}
+
 // F10 lightweight product analytics — no PII, no user identifiers.
 // Only aggregate counters per UTC day per whitelisted event name.
 model EventDay {

@@ -171,6 +171,45 @@ export const reviewSchema = z
     message: "تعداد پاسخ‌ها با سؤال‌ها هم‌خوان نیست.",
   });
 
+/** /api/week-review POST (Task 119) — the weekly report band's OWN aggregate
+ *  numbers (never the raw dayHistory, never question/word content). The week
+ *  lives in the learner's localStorage so there is no server bank to recompute
+ *  from; instead the route enforces INTERNAL consistency (activities = the sum
+ *  of the five counters, duelWins ≤ duels) and rebuilds every derived number
+ *  (trend diff, strongest/weakest) from this one validated shape. */
+const weekCount = (label: string, max: number) =>
+  z
+    .number({ message: `${label} نامعتبر است.` })
+    .int(`${label} نامعتبر است.`)
+    .min(0, `${label} نامعتبر است.`)
+    .max(max, `${label} نامعتبر است.`);
+
+export const weekReviewSchema = z
+  .object({
+    activities: weekCount("مجموع فعالیت", 2000),
+    reviews: weekCount("شمار مرور", 2000),
+    quizzes: weekCount("شمار آزمون", 2000),
+    words: weekCount("شمار واژهٔ نو", 2000),
+    dictation: weekCount("شمار دیکته", 2000),
+    rush: weekCount("شمار چالش", 2000),
+    activeDays: weekCount("روزهای فعال", 7),
+    goalDays: weekCount("روزهای هدف", 7),
+    prevActivities: weekCount("فعالیت هفتهٔ پیش", 2000),
+    bestDay: weekCount("پرجمع‌ترین روز", 2000).nullable(),
+    duels: weekCount("شمار نبرد", 500).nullable(),
+    duelWins: weekCount("شمار برد", 500),
+    duelBest: weekCount("بهترین امتیاز", 1_000_000),
+    thinkAvgMs: weekCount("میانگین فکر", 600_000).nullable(),
+    quickWeek: z.boolean({ message: "پرچمِ هفتهٔ چابک نامعتبر است." }),
+    streak: weekCount("زنجیرهٔ روزها", 3650),
+  })
+  .refine((v) => v.activities === v.reviews + v.quizzes + v.words + v.dictation + v.rush, {
+    message: "مجموع فعالیت با شمارنده‌ها هم‌خوان نیست.",
+  })
+  .refine((v) => v.duels == null || v.duelWins <= v.duels, {
+    message: "شمار برد نمی‌تواند از شمار نبرد بیشتر باشد.",
+  });
+
 /** /api/tts POST — text is trimmed to 950 chars in the route */
 export const ttsSchema = z.object({
   text: z.string().max(4_000, "متن روخوانی نامعتبر است."),
@@ -195,6 +234,7 @@ export const BODY_CAPS = {
   explain: 2 * 1024,
   story: 1 * 1024, // 20 keys × ~42B + envelope — tiny
   examReview: 4 * 1024, // 40 ids × ~45B + 40 numbers + envelope
+  weekReview: 2 * 1024, // 16 small numbers + envelope — tiny
   tts: 8 * 1024,
   sync: 700 * 1024, // 600 KB snapshot ceiling + envelope slack
   duelTicket: 1 * 1024, // { userId, secret } — tiny

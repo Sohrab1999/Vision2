@@ -46,6 +46,10 @@ export const EVENT_NAMES = [
   "exam_review_served", // server-side: cache hit in /api/exam-review
   "exam_review_generated", // server-side: new LLM generation in /api/exam-review
   "exam_review_fallback", // server-side: /api/exam-review served the honest fallback
+  "week_review_start", // asked the AI teacher to review the whole week (Task 119)
+  "week_review_served", // server-side: cache hit in /api/week-review
+  "week_review_generated", // server-side: new LLM generation in /api/week-review
+  "week_review_fallback", // server-side: /api/week-review served the honest fallback
   "srs_due_review", // jumped into smart review from the due-words preview
   "srs_due_pill", // jumped into smart review from the header due pill (Task 73)
   "goal_chip", // tapped the daily-goal progress chip in the header (Task 76)
@@ -97,6 +101,10 @@ export const EVENT_LABELS_FA: Record<EventName, string> = {
   exam_review_served: "معلمِ کارنامه (از کش)",
   exam_review_generated: "معلمِ کارنامه (تازه)",
   exam_review_fallback: "معلمِ کارنامه (آفلاین)",
+  week_review_start: "درخواست معلمِ هفته",
+  week_review_served: "معلمِ هفته (از کش)",
+  week_review_generated: "معلمِ هفته (تازه)",
+  week_review_fallback: "معلمِ هفته (آفلاین)",
   srs_due_review: "مرور سررسیدها از داشبورد",
   srs_due_pill: "مرور سررسیدها از هدر",
   goal_chip: "پیگیری هدف روزانه از هدر",

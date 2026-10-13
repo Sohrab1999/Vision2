@@ -17,11 +17,11 @@
 //     counts — the strongest dimension is praised, the weakest gets a
 //     concrete exercise, an empty week is never fabricated
 //
-// UI-free: depends only on the domain percent helper, the static faNum
-// digit map, the WeeklyDigest type, and the plain shapes below.
+// UI-free: depends only on the static faNum digit map, the WeeklyDigest
+// type, and the plain shapes below (TeacherReview re-used from the
+// exam-teacher contract — same three-section shape, one review language).
 // ------------------------------------------------------------------
 
-import { percent } from "@/lib/domain/percent";
 import { faNum } from "@/lib/study-theme";
 import type { WeeklyDigest } from "@/lib/weekly-digest";
 
@@ -160,7 +160,7 @@ const PRACTICE: Record<string, string> = {
   "مرور لغت": "چند مرورِ کوتاهِ فلش‌کارت‌ها به روزهایت اضافه کن — حتی روزی پنج‌تا",
   آزمون: "یک آزمونِ کوتاه از درس‌های این هفته بزن تا یادگیری‌ات سنجیده شود",
   "واژهٔ نو": "از متنِ درس‌ها چند واژهٔ تازه پیدا کن و به «واژه‌های من» ستاره بزن",
-  دیکته: "یک دیکتهٔ کوتاه گوش کن — گوشِ زبان با تمرینِ کم‌但ِ پیوسته تیز می‌شود",
+  دیکته: "یک دیکتهٔ کوتاه گوش کن — گوشِ زبان با تمرینِ کم‌حجمِ پیوسته تیز می‌شود",
   "چالشِ برق‌آسا": "یک دورِ چالشِ برق‌آسا امتحان کن — سرعتِ تصمیم هم تمرین می‌خواهد",
   "نبردهای واژگانی": "یک نبرد واژگانی را تجربه کن — رقابتِ دو‌نفره واژه‌ها را ماندگار می‌کند",
 };
