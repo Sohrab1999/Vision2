@@ -18,6 +18,7 @@ import { useToast } from "@/hooks/use-toast";
 import { gradeFor } from "@/lib/domain/grade";
 import ExplainBox from "../shared/explain-box";
 import ProgressRing from "../practice/progress-ring";
+import QuizTeacher from "./quiz-teacher";
 import { letters } from "./quiz-constants";
 
 export interface QuizResultProps {
@@ -270,6 +271,13 @@ export default function QuizResult({
   return (
     <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="space-y-5">
       {certificate ? certificateCard : standardCard}
+
+      {/* «معلمِ کارنامه» — the AI teacher's honest session review (Task 117);
+          ids + raw chosen indices only, correctness recomputed server-side */}
+      <QuizTeacher
+        ids={questions.map((qq) => qq.id)}
+        answers={questions.map((_, i) => answers[i])}
+      />
 
       {/* review */}
       <div className="max-h-[46vh] space-y-2.5 overflow-y-auto nice-scroll pl-1">

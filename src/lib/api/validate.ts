@@ -141,6 +141,36 @@ export const storySchema = z.object({
     .max(20, "بیشتر از ۲۰ واژه در یک داستان جا نمی‌شود."),
 });
 
+/** /api/exam-review POST (Task 117) — session ids + raw chosen indices;
+ *  correctness is recomputed server-side (the client cannot flatter the
+ *  teacher). Ceiling matches the app's biggest run: the 40-item mixed exam. */
+export const reviewSchema = z
+  .object({
+    ids: z
+      .array(
+        z
+          .string({ message: "شناسهٔ سؤال نامعتبر است." })
+          .trim()
+          .min(1, "شناسهٔ سؤال نامعتبر است.")
+          .max(40, "شناسهٔ سؤال نامعتبر است.")
+      )
+      .min(1, "جلسه‌ای برای داوری نیست.")
+      .max(40, "جلسهٔ بلندتر از سقفِ داوری است."),
+    answers: z
+      .array(
+        z
+          .number({ message: "پاسخ ارسالی نامعتبر است." })
+          .int("پاسخ ارسالی نامعتبر است.")
+          .min(0, "پاسخ ارسالی نامعتبر است.")
+          .max(5, "پاسخ ارسالی نامعتبر است.")
+          .nullable()
+      )
+      .max(40, "جلسهٔ بلندتر از سقفِ داوری است."),
+  })
+  .refine((v) => v.answers.length === v.ids.length, {
+    message: "تعداد پاسخ‌ها با سؤال‌ها هم‌خوان نیست.",
+  });
+
 /** /api/tts POST — text is trimmed to 950 chars in the route */
 export const ttsSchema = z.object({
   text: z.string().max(4_000, "متن روخوانی نامعتبر است."),
@@ -164,6 +194,7 @@ export const BODY_CAPS = {
   event: 1 * 1024,
   explain: 2 * 1024,
   story: 1 * 1024, // 20 keys × ~42B + envelope — tiny
+  examReview: 4 * 1024, // 40 ids × ~45B + 40 numbers + envelope
   tts: 8 * 1024,
   sync: 700 * 1024, // 600 KB snapshot ceiling + envelope slack
   duelTicket: 1 * 1024, // { userId, secret } — tiny

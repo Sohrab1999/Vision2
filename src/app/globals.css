@@ -398,6 +398,8 @@ body {
 .dark .mywords-cards, .dark .mywords-dictation { background-image: linear-gradient(to left, rgba(59, 32, 96, 0.45), rgba(24, 21, 18, 0.95)) !important; }
 /* my-words story launcher (my-words-story.tsx card, task 116) — sky family base (8,47,60) per the r115 kernel */
 .dark .mywords-story { background-image: linear-gradient(to left, rgba(8, 47, 60, 0.45), rgba(24, 21, 18, 0.95)) !important; }
+/* exam-review teacher launcher (quiz-teacher.tsx card, task 117) — violet family base (59,7,100) per the r115 kernel */
+.dark .quiz-teacher { background-image: linear-gradient(to left, rgba(59, 7, 100, 0.45), rgba(24, 21, 18, 0.95)) !important; }
 
 /* smart-practice hero */
 .dark .smart-hero { background-image: linear-gradient(to left, rgba(76, 29, 149, 0.45), rgba(24, 21, 18, 0.9)) !important; }

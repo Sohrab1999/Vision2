@@ -85,6 +85,20 @@ model StoryCache {
   createdAt DateTime @default(now())
 }
 
+// Task 117 «معلمِ کارنامه» — server-side cache of AI session reviews,
+// keyed by the sorted id:answer fingerprint (order-insensitive, answer-
+// sensitive). Every learner finishing the same session pattern gets the
+// exact same controlled teacher review (one generation, many reads) —
+// same economy as StoryCache / ExplainCache.
+model ReviewCache {
+  key      String   @id
+  intro    String
+  strength String
+  advice   String
+  source   String   @default("ai") // "ai" | "fallback"
+  createdAt DateTime @default(now())
+}
+
 // F10 lightweight product analytics — no PII, no user identifiers.
 // Only aggregate counters per UTC day per whitelisted event name.
 model EventDay {
