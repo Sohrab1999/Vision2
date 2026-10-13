@@ -425,10 +425,9 @@ body {
 .dark .name-cta { background-image: linear-gradient(to left, rgba(6, 55, 40, 0.5), rgba(19, 78, 74, 0.4)) !important; }
 .dark .onboard-paper { background-image: linear-gradient(to left, rgba(6, 55, 40, 0.4), rgba(24, 21, 18, 0.92), rgba(24, 21, 18, 0.92)) !important; }
 .dark .dict-setup { background-image: linear-gradient(to bottom, rgba(59, 32, 96, 0.4), transparent) !important; }
-.dark .rush-hero { background-image: linear-gradient(to bottom left, rgba(69, 48, 12, 0.5), rgba(88, 44, 14, 0.4), rgba(24, 21, 18, 0.92)) !important; }
-.dark .rush-done { background-image: linear-gradient(to bottom, rgba(88, 44, 14, 0.45), rgba(69, 48, 12, 0.4)) !important; }
-.dark .rush-board-strip { background-image: linear-gradient(to left, rgba(88, 44, 14, 0.4), rgba(69, 48, 12, 0.3), transparent) !important; }
-.dark .rush-board-hint { background-image: linear-gradient(to left, rgba(88, 44, 14, 0.3), transparent) !important; }
+/* wave 7 (task 145): the four rush dark gradients (hero/done/board-strip/
+   board-hint) moved to duel/rush.css beside their owner — the hero/done
+   merge also retired the masked wave-1 stops there (one painter per head). */
 .dark .dd-win { background-image: linear-gradient(to bottom left, rgba(6, 55, 40, 0.55), rgba(19, 78, 74, 0.4)) !important; }
 .dark .dd-tie { background-image: linear-gradient(to bottom left, rgba(69, 48, 12, 0.55), rgba(88, 44, 14, 0.4)) !important; }
 .dark .dd-lose { background-image: linear-gradient(to bottom left, rgba(88, 18, 30, 0.55), rgba(124, 45, 18, 0.4)) !important; }
