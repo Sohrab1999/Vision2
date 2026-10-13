@@ -11,6 +11,8 @@
 //     خودش رندر می‌کند → ترافیک کم و بدون نشتِ کلید پاسخ.
 // ------------------------------------------------------------------
 import { createServer } from "http";
+import { existsSync } from "fs";
+import { join } from "path";
 import { Server, type Socket } from "socket.io";
 
 import lesson1 from "../../src/data/lesson1";
@@ -22,9 +24,22 @@ import { loadOrCreateReceiptSecret, signDuelEnd } from "../../src/lib/duel-recei
 import { clientIpOf, createJoinThrottle, entryThrottleError } from "../../src/lib/join-throttle";
 import { BASE_POINTS, speedBonus } from "./scoring";
 
+// Task 104 — رازِ رسید نسبت به «ریشهٔ پروژه» حل می‌شود نه cwdِ launch.
+// قراردادِ duel-receipt-server: cwdِ سرویس و Next هر دو ریشهٔ پروژه است؛ ولی
+// اگر سرویس از پوشهٔ خودش بالا بیاید (bun --hot index.ts داخلِ همین پوشه)،
+// راز در مسیرِ تودرتوی mini-services/challenge-service/mini-services/…
+// ساخته می‌شود و Next (cwd=ریشه) هرگز پیدایش نمی‌کند → کلِ زنجیرهٔ رسیدِ
+// تسکِ ۹۴ سمتِ API با bad_sig می‌میرد (باگِ واقعیِ نوبتِ ۱۳۳۰ — اثباتِ
+// قبل/بعد در scripts/qa-receipt-e2e-r104.ts). ریشه از «محلِ خودِ فایل»
+// ساخته می‌شود تا هر cwdِ launch نتیجهٔ یکسان بدهد.
+const REPO_ROOT = join(import.meta.dir, "..", "..");
+if (!existsSync(join(REPO_ROOT, "package.json"))) {
+  throw new Error("[boot] ریشهٔ پروژه از محلِ فایل ساخته نشد — index.ts را از جایش جابه‌جا نکنید.");
+}
+
 // Task 94 «رسیدِ امضاشدهٔ داوری» — هر پایانِ مسابقه با HMAC امضا می‌شود تا
 // ثبتِ نتیجه در /api/stats فقط با رسیدِ معتبر داور ممکن باشد (ضد جعلِ خوداظهاری).
-const RECEIPT_SECRET = loadOrCreateReceiptSecret();
+const RECEIPT_SECRET = loadOrCreateReceiptSecret(REPO_ROOT);
 
 // Task 97 «گلوگاهِ ورود» (SEC-5) — سقفِ duel:create/duel:join بر IP؛ ضدِ
 // کاویدنِ کدِ اتاق و سیلابِ ساختِ اتاق. مسیرهای API از گام ۵ لیمیت دارند،
