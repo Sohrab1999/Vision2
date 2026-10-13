@@ -31,12 +31,15 @@ export default function DuelView() {
         joinInput={d.joinInput}
         setJoinInput={d.setJoinInput}
         joinBusy={d.joinBusy}
+        paceChoices={d.paceChoices}
+        chosenPace={d.chosenPace}
+        choosePace={d.choosePace}
       />
     );
   }
 
   if (d.phase === "waiting") {
-    return <DuelWaiting roomCode={d.roomCode} players={d.players} mySid={d.mySid} copyCode={d.copyCode} leaveRoom={d.leaveRoom} />;
+    return <DuelWaiting roomCode={d.roomCode} players={d.players} mySid={d.mySid} paceMs={d.paceMs} copyCode={d.copyCode} leaveRoom={d.leaveRoom} />;
   }
 
   if (d.phase === "countdown") {
@@ -73,6 +76,7 @@ export default function DuelView() {
       oppLeft={d.oppLeft}
       answer={d.answer}
       timeLeft={d.timeLeft}
+      paceMs={d.paceMs}
     />
   );
 }

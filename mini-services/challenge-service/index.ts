@@ -22,6 +22,7 @@ import examBank from "../../src/data/exam";
 import type { QuizQuestion } from "../../src/lib/study-types";
 import { loadOrCreateReceiptSecret, signDuelEnd } from "../../src/lib/duel-receipt-server";
 import { recordThinkSample, padThinkSamples } from "../../src/lib/duel-think";
+import { clampPaceMs, STALL_EXTRA_MS } from "../../src/lib/duel-pace";
 import { clientIpOf, createJoinThrottle, entryThrottleError } from "../../src/lib/join-throttle";
 import { BASE_POINTS, speedBonus } from "./scoring";
 
@@ -57,11 +58,13 @@ setInterval(() => ENTRY_GATE.sweep(), 60_000).unref();
 const PORT = 3003;
 const ROOM_SIZE = 2;
 const QUESTIONS_PER_DUEL = 10;
-const PER_Q_MS = 15_000; // سقف زمان هر سؤال (کلاینت هم به‌طور محلی تایمر می‌گذارد)
+// Task 107 «ریتمِ نبرد» — سقفِ زمانِ هر سؤال دیگر ثابتِ جوش‌خورده نیست؛
+// سازندهٔ اتاق یکی از سه ریتمِ بستهٔ duel-pace را برمی‌گزیند و عددش با
+// clampPaceMs گِرِفت می‌شود. کلاینت تایمرش را از duel:start می‌خواند —
+// هیچ سرِ سیمی دیگر عددِ محلیِ خودش را ملاک نمی‌گیرد.
 const COUNTDOWN_MS = 5_000; // شمارش معکوس پس از کامل شدن اتاق
 const REMATCH_COUNTDOWN_MS = 3_000;
 const FORFEIT_GRACE_MS = 12_000; // مهلت بعد از قطع‌شدن حریف وسط مسابقه
-const STALL_GRACE_MS = PER_Q_MS + 4_000; // سگ‌منت ضد قفل‌شدن کلاینت
 const ROOM_TTL_MS = 30 * 60_000; // اتاق‌های خالی جمع‌شونده
 const CODE_ALPHABET = "ABCDEFGHJKMNPQRSTUVWXYZ23456789"; // بدون حروف مبهم
 
@@ -123,6 +126,8 @@ interface Room {
   rematchVotes: Set<string>;
   createdAt: number;
   leftDuringPlay: boolean; // کسی وسط مسابقه رفته باشد → پایان با برچسب forfeit
+  /** Task 107 — ریتمِ برگزیدهٔ سازندهٔ اتاق (گرِفت‌شده با clampPaceMs) */
+  paceMs: number;
 }
 
 const rooms = new Map<string, Room>();
@@ -142,7 +147,9 @@ function publicPlayers(room: Room) {
 }
 
 function roomSummary(room: Room) {
-  return { code: room.code, status: room.status, players: publicPlayers(room) };
+  // Task 107 — perQMs در خلاصهٔ اتاق تا لابیِ هر دو طرف (سازنده و پیوسته)
+  // ریتمِ برگزیده را پیش از شروع ببیند؛ duel:start هم همان عدد را می‌فرستد.
+  return { code: room.code, status: room.status, perQMs: room.paceMs, players: publicPlayers(room) };
 }
 
 function broadcastState(room: Room) {
@@ -150,7 +157,7 @@ function broadcastState(room: Room) {
 }
 
 function progressPayload(room: Room) {
-  return { code: room.code, status: room.status, players: publicPlayers(room) };
+  return { code: room.code, status: room.status, perQMs: room.paceMs, players: publicPlayers(room) };
 }
 
 function endMatch(room: Room, reason: "finished" | "forfeit") {
@@ -225,7 +232,7 @@ function startMatch(room: Room) {
     p.doneAt = null;
   }
   io.to(room.code).emit("duel:start", {
-    perQMs: PER_Q_MS,
+    perQMs: room.paceMs, // Task 107 — ریتمِ خودِ اتاق، نه ثابتِ سراسری
     total: QUESTIONS_PER_DUEL,
     startedAt: room.startedAt,
     questions: room.questions.map((q) => ({ id: q.id, perm: q.perm })),
@@ -321,7 +328,9 @@ io.on("connection", (socket: Socket) => {
   };
 
   // ------------------------- ساخت اتاق -------------------------
-  socket.on("duel:create", (raw: Profile, ack?: (res: unknown) => void) => {
+  // Task 107 — سازندهٔ اتاق ریتم را هم برمی‌گزیند (perQMs اختیاری؛
+  // سرویسِ قدیمی/کلاینتِ بی‌انتخاب → پیش‌فرضِ ۱۵ثانیه با clampPaceMs)
+  socket.on("duel:create", (raw: Profile & { perQMs?: unknown }, ack?: (res: unknown) => void) => {
     if (room) return ack?.({ ok: false, error: "قبلاً در اتاقی هستی." });
     const createGate = ENTRY_GATE.attempt(clientIpOf(socket.handshake), "create");
     if (!createGate.ok) return ack?.({ ok: false, error: entryThrottleError("create", createGate.retryAfterMs) });
@@ -339,6 +348,7 @@ io.on("connection", (socket: Socket) => {
       rematchVotes: new Set(),
       createdAt: Date.now(),
       leftDuringPlay: false,
+      paceMs: clampPaceMs(raw?.perQMs),
     };
     r.players.set(socket.id, {
       sid: socket.id,
@@ -471,7 +481,8 @@ setInterval(() => {
     for (const p of room.players.values()) {
       if (p.doneAt !== null || p.disconnected) continue;
       // کلاینت قفل شده و پاسخ -۱ خودکارش نرسیده → سرور خودش جلو می‌برد (غلط)
-      if (now - p.lastAnswerAt > STALL_GRACE_MS) {
+      // Task 107 — مهلتِ سگ‌منت بر پایهٔ ریتمِ خودِ اتاق است نه ثابتِ سراسری
+      if (now - p.lastAnswerAt > room.paceMs + STALL_EXTRA_MS) {
         p.answered += 1;
         p.qi += 1;
         p.seenAt = null; // Task 106 — بدونِ پاسخ، نمونهٔ فکر هم ندارد؛ سؤالِ بعد دیدنِ تازه می‌خواهد

@@ -19,8 +19,8 @@ import {
   type Feedback,
   type Phase,
   type PublicPlayer,
-  PER_Q_MS,
 } from "./duel-types";
+import { DEFAULT_PACE_MS, DUEL_PACES } from "@/lib/duel-pace";
 
 // ------------------------------------------------------------------
 // ماشین حالت کامل «نبرد دودنفره»: چرخهٔ سوکت، لابی، گیم‌پلی و ثبت نتیجه.
@@ -36,6 +36,12 @@ export interface DuelMachine {
   joinInput: string;
   setJoinInput: (v: string) => void;
   joinBusy: boolean;
+  /** Task 107 — ریتمِ برگزیدهٔ لابی (فقط در فازِ setup قابلِ تغییر) */
+  chosenPace: number;
+  paceChoices: typeof DUEL_PACES;
+  choosePace: (ms: number) => void;
+  /** ریتمِ مؤثر — داور در duel:state/duel:start می‌فرستد؛ تایمرِ play ملاکِ همین است */
+  paceMs: number;
   createRoom: () => void;
   joinRoom: () => void;
   leaveRoom: () => void;
@@ -73,6 +79,13 @@ export function useDuelSocket(): DuelMachine {
   const [mySid, setMySid] = useState<string | null>(null);
   const [joinInput, setJoinInput] = useState("");
   const [joinBusy, setJoinBusy] = useState(false);
+  // Task 107 «ریتمِ نبرد» — دو عددِ جداشده، دو نقشِ جداشده:
+  //  • chosenPace: انتخابِ کاربر در لابی (به duel:create سفر می‌کند)
+  //  • paceMs: ریتمِ مؤثر — فقط داور آن را تعیین می‌کند (duel:state در لابی
+  //    و duel:start در شروع). کلاینتِ بی‌انتخاب هم پیش‌فرضِ ۱۵ثانیه را می‌فرستد
+  //    و سرویسِ قدیمیِ بی‌فیلد هم همین پیش‌فرض را می‌ماند — نه صفر، نه NaN.
+  const [chosenPace, setChosenPace] = useState(DEFAULT_PACE_MS);
+  const [paceMs, setPaceMs] = useState(DEFAULT_PACE_MS);
   const [countdownMs, setCountdownMs] = useState(0);
   const [countdownSeq, setCountdownSeq] = useState(0);
   const [rematchVotes, setRematchVotes] = useState(0);
@@ -230,9 +243,11 @@ export function useDuelSocket(): DuelMachine {
         resetToSetup();
       }
     };
-    const onState = (st: { code: string; status: string; players: PublicPlayer[] }) => {
+    const onState = (st: { code: string; status: string; perQMs?: number; players: PublicPlayer[] }) => {
       setPlayers(st.players);
       setRoomCode(st.code);
+      // Task 107 — ریتمِ اتاق از داور می‌آید؛ سرویسِ قدیمیِ بی‌فیلد نادیده (پیش‌فرض می‌ماند)
+      if (typeof st.perQMs === "number") setPaceMs(st.perQMs);
       // اگر حریف حین شمارش معکوس رفت، سرور اتاق را به لابی برمی‌گرداند
       if (phaseRef.current === "countdown" && st.status === "lobby") {
         setPhase("waiting");
@@ -251,6 +266,8 @@ export function useDuelSocket(): DuelMachine {
       persistedRef.current = false;
       setQuestions(p.questions);
       setTotal(p.total);
+      // Task 107 — تایمرِ سؤال فقط حرفِ داور را می‌شنود؛ سرویسِ قدیمیِ بی‌فیلد → پیش‌فرض
+      setPaceMs(typeof p.perQMs === "number" ? p.perQMs : DEFAULT_PACE_MS);
       setQi(0);
       setPicked(-1);
       setFeedback("none");
@@ -290,11 +307,21 @@ export function useDuelSocket(): DuelMachine {
   }, [handleEnd]);
 
   // ----------------------------- اقدامات لابی -----------------------------
+  // Task 107 — انتخابِ ریتم فقط در setup؛ پس از آن عددِ داور مرجع است
+  const choosePace = useCallback(
+    (ms: number) => {
+      if (phaseRef.current !== "setup") return;
+      setChosenPace(ms);
+      setPaceMs(ms); // پیش‌نمایشِ همان انتخاب در لابیِ خودم
+    },
+    []
+  );
+
   const createRoom = useCallback(() => {
     const s = socketRef.current;
     if (!s || conn !== "online") return;
     const store = useStudy.getState();
-    s.emit("duel:create", { name: store.userName || "یادگیرنده", color: store.avatarColor }, (res: { ok: boolean; code?: string; state?: { players: PublicPlayer[] }; error?: string }) => {
+    s.emit("duel:create", { name: store.userName || "یادگیرنده", color: store.avatarColor, perQMs: chosenPace }, (res: { ok: boolean; code?: string; state?: { players: PublicPlayer[] }; error?: string }) => {
       if (!res.ok) {
         toast({ title: "ساخت اتاق ناموفق بود", description: res.error, duration: 4000 });
         return;
@@ -304,7 +331,7 @@ export function useDuelSocket(): DuelMachine {
       setPlayers(res.state?.players ?? []);
       setPhase("waiting");
     });
-  }, [conn, toast]);
+  }, [conn, toast, chosenPace]);
 
   const joinRoom = useCallback(() => {
     const s = socketRef.current;
@@ -380,9 +407,9 @@ export function useDuelSocket(): DuelMachine {
     [questions, total, bank]
   );
 
-  // تایمر هر سؤال: ۱۵ ثانیه؛ صفر شد = پاسخ خودکار غلط (-۱) — useCountdown گام ۶
+  // تایمر هر سؤال: ریتمِ مؤثرِ اتاق از داور (Task 107)؛ صفر شد = پاسخ خودکار غلط (-۱) — useCountdown گام ۶
   const timeLeft = useCountdown({
-    duration: PER_Q_MS,
+    duration: paceMs,
     active: phase === "play" && feedback === "none" && !myDone,
     tickMs: 100,
     onEnd: () => answer(-1),
@@ -420,6 +447,10 @@ export function useDuelSocket(): DuelMachine {
     joinInput,
     setJoinInput,
     joinBusy,
+    chosenPace,
+    paceChoices: DUEL_PACES,
+    choosePace,
+    paceMs,
     createRoom,
     joinRoom,
     leaveRoom,

@@ -11,6 +11,7 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import "@testing-library/jest-dom/vitest";
 import { cleanup, render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { DUEL_PACES, DEFAULT_PACE_MS } from "@/lib/duel-pace";
 
 const { toastSpy, canShareSpy, shareSpy, buildBlob, ledgerImage } = vi.hoisted(() => ({
   toastSpy: vi.fn(),
@@ -68,6 +69,9 @@ const renderSetup = () =>
       joinInput=""
       setJoinInput={() => {}}
       joinBusy={false}
+      paceChoices={DUEL_PACES}
+      chosenPace={DEFAULT_PACE_MS}
+      choosePace={() => {}}
     />
   );
 

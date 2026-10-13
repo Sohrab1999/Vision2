@@ -1,15 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Users, Copy, LogOut, Loader2 } from "lucide-react";
+import { Users, Copy, LogOut, Loader2, Timer } from "lucide-react";
 import type { PublicPlayer } from "./duel-types";
+import { paceSecondsLabel } from "@/lib/duel-pace";
 
 // فاز WAITING — اتاق ساخته شده و منتظر حریفیم
 
-export default function DuelWaiting({ roomCode, players, mySid, copyCode, leaveRoom }: {
+export default function DuelWaiting({ roomCode, players, mySid, paceMs, copyCode, leaveRoom }: {
   roomCode: string | null;
   players: PublicPlayer[];
   mySid: string | null;
+  /** Task 107 — ریتمِ مؤثرِ اتاق از داور (duel:state)؛ هر دو طرف همان را می‌بینند */
+  paceMs: number;
   copyCode: () => void;
   leaveRoom: () => void;
 }) {
@@ -31,6 +34,13 @@ export default function DuelWaiting({ roomCode, players, mySid, copyCode, leaveR
         </span>
         <Copy size={18} className="text-fuchsia-500 transition-transform group-hover:scale-110" />
       </button>
+
+      {/* Task 107 — ریتمِ اتاق: عددی که داور در duel:state فرستاده؛ هر دو
+          بازیکن پیش از شروع همان را می‌بینند — نه حدسِ محلیِ هر کلاینت */}
+      <div className="mx-auto flex w-fit items-center gap-1.5 rounded-full border border-stone-200 bg-stone-50 px-3 py-1.5 text-[11.5px] font-black text-stone-600">
+        <Timer size={13} className="text-fuchsia-600" aria-hidden />
+        سرعت هر سؤال: {paceSecondsLabel(paceMs)}
+      </div>
 
       {/* بازیکنان */}
       <div className="flex items-center justify-center gap-3">
