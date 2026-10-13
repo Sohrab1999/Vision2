@@ -34,6 +34,18 @@ export default function SettingsPopover() {
   // every load of a returning learner. The trigger itself reads no store
   // state and the (store-reading) content only mounts when opened, so the
   // SAME tree is now rendered unconditionally on both sides.
+  //
+  // NOTE (hydration fix 2026-10-13): a SECOND, rarer mismatch remained —
+  // `aria-controls="radix-…"` on this trigger (Radix emits it unconditionally
+  // from the root's useId) diverged between the server HTML and the client's
+  // hydration pass in ~50% of multi-navigation dev sessions: the server id is
+  // byte-stable across curls, the client's React useId positional encoding
+  // drifted non-deterministically (React: «This won't be patched up»). Zero
+  // functional harm — the id self-heals the moment the popover opens — but it
+  // polluted the console-0 QA bar. suppressHydrationWarning on THIS button
+  // silences exactly that attribute noise (server id stays until first
+  // re-render, then Radix writes the live id); any REAL tree-shape regression
+  // here still surfaces. Same marker on profile-popover's trigger.
   const settings = useStudy((s) => s.settings);
   const setSettings = useStudy((s) => s.setSettings);
   const dailyGoal = useStudy((s) => s.dailyGoal);
@@ -110,6 +122,7 @@ export default function SettingsPopover() {
     <Popover open={open} onOpenChange={toggleOpen}>
       <PopoverTrigger asChild>
         <button
+          suppressHydrationWarning
           className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border c-card text-stone-500 transition-all hover:text-emerald-600 hover:border-emerald-200 active:scale-90"
           aria-label="تنظیمات"
           title="تنظیمات"

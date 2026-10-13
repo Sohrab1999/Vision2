@@ -95,3 +95,41 @@ export function duelThinkStats(samples: ThinkSamples): DuelThinkStats {
     total,
   };
 }
+
+// ------------------------------------------------------------------
+// Task 108 «ماندگاریِ آمارِ فکر» — فیلدِ نمایشیِ ۱۰۶ حالا سفرِ ماندگار
+// هم می‌کند: در لحظهٔ ثبتِ نتیجه، آمارِ فکرِ خودی به رکوردِ دفترچه
+// می‌نشیند (ThinkStats — سریال‌پذیر و کوچک) تا دفترچه و نشان‌های
+// «چابکیِ ذهن» از آن بخوانند. نمونه‌های خام ذخیره نمی‌شوند — فقط
+// خلاصهٔ آماری؛ زیرمجموعهٔ صادق: بی‌نمونه → فیلد اصلاً ثبت نمی‌شود
+// (رکوردهای قدیمی و نبردهای سرویسِ قدیمی بدونِ think می‌مانند).
+// ------------------------------------------------------------------
+
+/** خلاصهٔ آماریِ قابلِ ذخیره‌سازی — avgMs همیشه عدد است (بی‌نمونه → خودِ فیلد غایب) */
+export interface ThinkStats {
+  avgMs: number;
+  minMs: number;
+  maxMs: number;
+  /** چند سؤال نمونه داشتند — گیتِ نازک‌بودنِ نمونه (نشان ≥۳ می‌خواهد) */
+  seen: number;
+  /** طولِ کلِ نبردِ همان روز */
+  total: number;
+}
+
+/**
+ * آمارِ ذخیره‌کردنی از نمونه‌ها — null یعنی «چیزی برای ماندگاری نیست»:
+ * ورودیِ غیرآرایه/بی‌نمونه/همه‌null → null (فیلدِ think روی رکورد ثبت
+ * نمی‌شود). میانگین به ms گرد می‌شود تا سریال‌سازی پایدار بماند.
+ */
+export function thinkStatsFromSamples(samples: ThinkSamples): ThinkStats | null {
+  if (!Array.isArray(samples)) return null;
+  const st = duelThinkStats(samples);
+  if (st.seen === 0 || st.avgMs === null || st.minMs === null || st.maxMs === null) return null;
+  return {
+    avgMs: Math.round(st.avgMs),
+    minMs: Math.round(st.minMs),
+    maxMs: Math.round(st.maxMs),
+    seen: st.seen,
+    total: st.total,
+  };
+}

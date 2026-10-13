@@ -89,6 +89,10 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
   };
   const outcomeLabel: Record<DuelOutcome, string> = { win: "برد", loss: "باخت", tie: "مساوی" };
 
+  // Task 108 — ثانیه با یک اعشار و ممیزِ فارسی (هم‌قراردادِ secFa در duel-done)
+  const secThinkFa = (ms: number) =>
+    faNum((Math.round(ms / 100) / 10).toFixed(1)).replace(".", "٫");
+
   // Task 101 — عکسِ کارنامهٔ دفترچه: تجمیعِ صادقِ duelLedgerStats روی کلِ
   // دفترچه (نه یافته‌های فیلترشده — کارت، کارنامهٔ career است) و رندرِ کانواس
   const saveLedgerImage = async () => {
@@ -447,6 +451,22 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
                     className="flex shrink-0 items-center rounded-md border border-emerald-200 bg-emerald-50/60 px-1 py-0.5 text-emerald-700"
                   >
                     <ShieldCheck size={11} aria-hidden />
+                  </span>
+                )}
+                {/* Task 108 — چیپِ «ماندگاریِ آمارِ فکر»: میانگینِ فکرِ همین نبرد،
+                    فقط وقتی رکورد think دارد (رکوردِ قدیمی/بی‌نمونه → غایبِ صادق).
+                    همان الگوی سپرِ داورگواه — استون‌کلاس‌های سراسری، صفر CSS تازه. */}
+                {r.think && (
+                  <span
+                    role="img"
+                    aria-label={`فکرِ میانگین ${secThinkFa(r.think.avgMs)} ثانیه`}
+                    title={`فکرِ میانگین ${secThinkFa(r.think.avgMs)} ثانیه از ${faNum(r.think.seen)} سؤالِ ثبت‌شده`}
+                    className="flex shrink-0 items-center gap-0.5 rounded-md border border-stone-200 bg-stone-100 px-1 py-0.5 text-stone-600"
+                  >
+                    <Timer size={11} aria-hidden />
+                    <span className="text-[9.5px] font-black" dir="rtl">
+                      {secThinkFa(r.think.avgMs)}
+                    </span>
                   </span>
                 )}
                 <span

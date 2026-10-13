@@ -45,6 +45,8 @@ import {
   Puzzle,
   Swords,
   Rocket,
+  Eye,
+  BrainCircuit,
 } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -111,6 +113,8 @@ export const BADGE_ICONS: Record<string, React.ElementType> = {
   Puzzle,
   Swords, // خانوادهٔ نبرد (Task 99)
   Rocket, // خانوادهٔ سرعت (Task 100)
+  Eye, // خانوادهٔ چابکیِ ذهن (Task 108)
+  BrainCircuit,
 };
 
 const tierFa: Record<string, string> = {

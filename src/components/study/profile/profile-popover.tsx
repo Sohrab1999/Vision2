@@ -228,8 +228,15 @@ export default function ProfilePopover() {
 
   return (
     <Popover open={open} onOpenChange={openPopover}>
+      {/* suppressHydrationWarning: Radix emits aria-controls={useId()} on the
+          trigger unconditionally; under dev hydration the client's useId
+          positional encoding can drift from the byte-stable server id
+          (~50% of multi-navigation sessions) — harmless, self-heals on
+          open, but pollutes the console-0 QA bar. See the long NOTE in
+          settings-popover.tsx (2026-10-13) for the full forensics. */}
       <PopoverTrigger asChild>
         <button
+          suppressHydrationWarning
           className="ml-1 flex shrink-0 items-center gap-2 rounded-full border c-card py-1 pl-1 pr-2.5 transition-all hover:border-emerald-300 hover:shadow-sm active:scale-95"
           aria-label="پروفایل من"
           title="پروفایل من"

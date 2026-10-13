@@ -1,9 +1,9 @@
 // @vitest-environment jsdom
 // ------------------------------------------------------------------
 // Task 105 — نشان‌های خانوادهٔ «اعتماد» روی پنلِ نشان‌ها:
-//   ① تازه‌وارد: «۰ از ۴۸» — دو کاشیِ تازه قفل با پیشرفتِ شمارشیِ صادق
-//   ② سه بردِ گواه‌دار → «گواه‌گرفته» باز (نقره/ShieldCheck) + «۱ از ۴۸»
-//   ③ هفت بردِ گواه‌دار → «سندِ زنده» هم باز (زیرمجموعهٔ ۷⇒۳) + «۲ از ۴۸»
+//   ① تازه‌وارد: «۰ از ۵۰» — دو کاشیِ تازه قفل با پیشرفتِ شمارشیِ صادق
+//   ② سه بردِ گواه‌دار → «گواه‌گرفته» باز (نقره/ShieldCheck) + «۱ از ۵۰»
+//   ③ هفت بردِ گواه‌دار → «سندِ زنده» هم باز (زیرمجموعهٔ ۷⇒۳) + «۲ از ۵۰»
 //   ④ بردِ پراکندهٔ بی‌رسید هرگز باز نمی‌کند — صفرِ صادقِ قدیمی‌ها
 // الگوی seed هم‌الگوی rival-badges.component.test (beforeEach ضدآلودگی — درسِ ۹۲).
 // ------------------------------------------------------------------
@@ -38,7 +38,7 @@ const rec = (over: Partial<DuelRecord>): DuelRecord => ({
 });
 
 const chipText = () =>
-  screen.getAllByText((_c, el) => !!el?.textContent && /از ۴۸$/.test(el.textContent.trim()))[0]
+  screen.getAllByText((_c, el) => !!el?.textContent && /از ۵۰$/.test(el.textContent.trim()))[0]
     ?.textContent?.replace(/\s+/g, " ")
     .trim();
 
@@ -83,10 +83,10 @@ describe("خانوادهٔ اعتماد — گواه‌گرفته / سندِ ز�
     expect(oath!.className).not.toContain("badge-shine");
     expect(trust!.textContent).toContain("۰ از ۳ بردِ گواه‌دار");
     expect(oath!.textContent).toContain("۰ از ۷ بردِ گواه‌دار");
-    expect(chipText()).toContain("۰ از ۴۸");
+    expect(chipText()).toContain("۰ از ۵۰");
   });
 
-  it("سه بردِ گواه‌دار → گواه‌گرفته باز + «۱ از ۴۸» — سندِ زنده هنوز قفل با «۳ از ۷»", () => {
+  it("سه بردِ گواه‌دار → گواه‌گرفته باز + «۱ از ۵۰» — سندِ زنده هنوز قفل با «۳ از ۷»", () => {
     useStudy.setState({
       duelHistory: [
         rec({ id: "v1", receiptSig: SIG, opponent: "حریفِ یکم" }),
@@ -103,10 +103,10 @@ describe("خانوادهٔ اعتماد — گواه‌گرفته / سندِ ز�
     expect(oath.className).not.toContain("badge-shine");
     expect(oath.textContent).toContain("۳ از ۷ بردِ گواه‌دار");
     // خانوادهٔ رقیب با حریف‌های متمایز قفل می‌ماند — تنها گواه‌گرفته باز است
-    expect(chipText()).toContain("۱ از ۴۸");
+    expect(chipText()).toContain("۱ از ۵۰");
   });
 
-  it("هفت بردِ گواه‌دار → زیرمجموعهٔ ۷⇒۳ در هر دو جهت: هر دو باز + «۲ از ۴۸»", () => {
+  it("هفت بردِ گواه‌دار → زیرمجموعهٔ ۷⇒۳ در هر دو جهت: هر دو باز + «۲ از ۵۰»", () => {
     useStudy.setState({
       duelHistory: [
         rec({ id: "w1", receiptSig: SIG, opponent: "حریفِ یکم" }),
@@ -126,7 +126,7 @@ describe("خانوادهٔ اعتماد — گواه‌گرفته / سندِ ز�
     expect(trust.className).toContain("badge-shine");
     expect(oath.className).toContain("badge-shine");
     // کاشیِ باز خطِ پیشرفت ندارد (مخصوصِ قفل است) — شمارش روی چیپِ سربرگ سالم است
-    expect(chipText()).toContain("۲ از ۴۸");
+    expect(chipText()).toContain("۲ از ۵۰");
   });
 
   it("بردِ پراکندهٔ بی‌رسید هرگز باز نمی‌کند — صفرِ صادق برای دفترچهٔ قدیمی (درسِ ۱۰۴: زنجیره تا دیروز می‌مرد)", () => {
@@ -148,6 +148,6 @@ describe("خانوادهٔ اعتماد — گواه‌گرفته / سندِ ز�
     expect(oath.className).not.toContain("badge-shine");
     expect(trust.textContent).toContain("۰ از ۳ بردِ گواه‌دار");
     expect(oath.textContent).toContain("۰ از ۷ بردِ گواه‌دار");
-    expect(chipText()).toContain("۰ از ۴۸");
+    expect(chipText()).toContain("۰ از ۵۰");
   });
 });

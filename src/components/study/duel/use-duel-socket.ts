@@ -147,7 +147,8 @@ export function useDuelSocket(): DuelMachine {
       const outcome: "win" | "loss" | "tie" = end.winner === null ? "tie" : end.winner === sid ? "win" : "loss";
       // Task 65 — علاوه بر شمارنده‌ها، رکورد کامل نبرد به دفترچهٔ «تاریخچهٔ نبردها» می‌رود
       // Task 96 — sig رسیدِ داور هم داخلِ رکورد می‌نشیند تا دفترچه هم «داورگواه» را نشان دهد
-      const record = buildDuelRecord(end, sid, Date.now(), myFinishAtRef.current, end.receipt?.sig);
+      // Task 108 — آمارِ فکرِ خودی (end.think[sid]) هم ماندگار می‌شود — بی‌نمونه → فیلدِ غایب
+      const record = buildDuelRecord(end, sid, Date.now(), myFinishAtRef.current, end.receipt?.sig, end.think?.[sid]);
       store.recordDuelOutcome(outcome, record ?? undefined);
       store.trackQuizDone();
       trackEvent("duel_done");

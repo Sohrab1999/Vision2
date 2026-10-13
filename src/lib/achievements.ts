@@ -8,7 +8,7 @@ import type { StudyState } from "./study-store";
 import { daysAgoKey, normDayStat, todayStr } from "./study-store";
 import { faNum } from "./study-theme";
 import { completedQuestCount } from "./daily-quests";
-import { duelTopRival, duelSpeedStats, duelVerifiedWins } from "./duel-history";
+import { duelTopRival, duelSpeedStats, duelVerifiedWins, duelQuickThinkers } from "./duel-history";
 import { FREEZE_WINDOW } from "@/state/types";
 
 export type BadgeTier = "bronze" | "silver" | "gold";
@@ -64,6 +64,7 @@ export interface BadgeEvalInput {
   rushDays7: number; // چند روزِ پنجرهٔ ۷روزه برق‌آسا داشتند (≠ جمع — Task 93)
   duelTopRivalWins: number; // بیشترین برد مقابلِ یک حریفِ واحد در دفترچه (Task 99)
   duelVerifiedWins: number; // بردهای رسیددارِ دفترچه — امضای داور روی برد (Task 105)
+  duelQuickThinkers: number; // رکوردهای «فکرِ کم + درستِ زیاد» — نهمین خانواده (Task 108)
   duelTopRivalName: string; // نامِ نمایشیِ همان رقیب (برای پیشرفتِ صادق)
   duelSpeedAvg: number; // میانگینِ پاداشِ سرعت بر پاسخِ درست (۰..۱۰۰ — Task 100)
   duelSpeedCorrect: number; // جمعِ پاسخ‌های درستِ دفترچه — نمونهٔ آماریِ سرعت
@@ -125,6 +126,9 @@ export function buildEvalInput(s: {
   const ledger = Array.isArray(s.duelHistory) ? s.duelHistory : [];
   const topRival = duelTopRival(ledger);
   const verifiedWins = duelVerifiedWins(ledger);
+  // خانوادهٔ چابکیِ ذهن (Task 108) — رکوردهای «فکرِ کم + درستِ زیاد» از همان دفترچه؛
+  // زیرمجموعهٔ صادق: رکوردِ بی‌think (قدیمی/بی‌نمونه) هرگز نمی‌شمارد
+  const quickThinkers = duelQuickThinkers(ledger);
   // خانوادهٔ سرعت (Task 100) — میانگینِ پاداشِ سرعت از همان دفترچه (قراردادِ داور، Task 99)
   const speed = duelSpeedStats(ledger);
   // پنجرهٔ ۷روزه — همان قرارداد موتور: کلیدِ رشته‌ای محلی، مقایسهٔ >=
@@ -205,6 +209,7 @@ export function buildEvalInput(s: {
     duelTopRivalWins: topRival?.wins ?? 0,
     duelTopRivalName: topRival?.opponent ?? "",
     duelVerifiedWins: verifiedWins,
+    duelQuickThinkers: quickThinkers,
     duelSpeedAvg: speed.avgBonus,
     duelSpeedCorrect: speed.totalCorrect,
   };
@@ -822,6 +827,32 @@ export const BADGES: BadgeDef[] = [
     tier: "gold",
     progress: (s) => `${faNum(Math.min(s.duelVerifiedWins, 7))} از ۷ بردِ گواه‌دار`,
     check: (s) => s.duelVerifiedWins >= 7,
+  },
+  // ---- نیم‌نگاه (Task 108) — نهمین خانواده: «چابکیِ ذهن» — «فکرِ کم +
+  // درستِ زیاد». زمانِ فکر (Task 106/108) حالا در دفترچه ماندگار است؛ رکوردِ
+  // چابک = میانگینِ فکر ≤ ۱٫۵ثانیه + نرخِ درستیِ ≥ ۸۰٪ روی ≥ ۵ پاسخ با ≥ ۳
+  // نمونهٔ فکر. گیتِ دومرحله‌ایِ صادق: رکوردِ بی‌think (قدیمی/بی‌نمونه/سرویسِ
+  // قدیمی) هرگز نمی‌شمارد — زیرمجموعهٔ زیرمجموعه (بردها هم لازم نیست،
+  // درستیِ خودِ پاسخ‌ها معیار است). دو پله: ۳ رکورد نقره/Eye، ۷ رکورد
+  // طلا/BrainCircuit — زیرمجموعهٔ ریاضیِ ۷⇒۳ (تست-قفل در هر دو جهت،
+  // هم‌قراردادِ خانواده‌های حضور/ران/نبرد/سرعت/اعتماد). پیشرفتِ شمارشیِ تک‌گایتی.
+  {
+    id: "quick-think",
+    title: "نیم‌نگاه",
+    desc: "سه نبرد با فکرِ میانگین زیر ۱٫۵ ثانیه و ۸۰٪ درستی — جواب پیش از آنکه فکر کنی آماده بود",
+    icon: "Eye",
+    tier: "silver",
+    progress: (s) => `${faNum(Math.min(s.duelQuickThinkers, 3))} از ۳ نبردِ چابک`,
+    check: (s) => s.duelQuickThinkers >= 3,
+  },
+  {
+    id: "flash-mind",
+    title: "برقِ فکر",
+    desc: "هفت نبردِ چابک — ذهنی که پیش از پرسش، پاسخ را می‌داند",
+    icon: "BrainCircuit",
+    tier: "gold",
+    progress: (s) => `${faNum(Math.min(s.duelQuickThinkers, 7))} از ۷ نبردِ چابک`,
+    check: (s) => s.duelQuickThinkers >= 7,
   },
 ];
 
