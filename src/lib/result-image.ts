@@ -11,6 +11,7 @@ import type { DuelLedgerStats } from "./duel-history";
 import type { TeacherReview } from "./exam-teacher";
 import type { StorySegment, StoryWord } from "./story-forge";
 import { storySegments } from "./story-forge";
+import type { WeekTeacherStats } from "./week-teacher";
 
 export interface ResultImageOpts {
   title: string;
@@ -1337,9 +1338,187 @@ export async function downloadStoryCardImage(opts: StoryCardImageOpts): Promise<
   return downloadCanvasBlob(c, "vision2-story.png");
 }
 
-/** Task 120 — همان کارت به‌صورتِ blob برای هم‌رسانیِ بومی — بدونِ دانلود */
+/** Task 121 — همان کارت به‌صورتِ blob برای هم‌رسانیِ بومی — بدونِ دانلود */
 export async function buildStoryCardBlob(opts: StoryCardImageOpts): Promise<Blob | null> {
   const c = await storyCardCanvas(opts);
+  if (!c) return null;
+  return canvasToBlob(c);
+}
+
+// ---------------- کارتِ معلمِ هفته (Task 121 — هم‌گراییِ ۱۱۹ × ۱۰۲/۱۱۸) ----------------
+// داوریِ معلم روی کلِ هفته به‌صورتِ PNGِ قابلِ ذخیره/هم‌رسانی. همان پوستهٔ
+// بنفشِ خانوادهٔ معلم (battleShellِ ۱۱۸)، ولی حلقهٔ هفته: «روزهای هدف» —
+// تنها عددی که یک هفتهٔ واقعی را خلاصه می‌کند؛ نوارِ پیشرفتِ هدفِ روزانه.
+// صداقتِ منبعِ ۱۱۷/۱۱۸ ادامه دارد: fallback هرگز «هوشمند» جعل نمی‌شود.
+
+/** درصدِ حلقهٔ کارتِ هفته — گیرِ صادق در ۰..۱۰۰؛ ورودیِ کج هم نمی‌سوزد */
+export function weekCardPercent(goalDays: number): number {
+  const n = Number.isFinite(goalDays) ? Math.round(goalDays) : 0;
+  return Math.max(0, Math.min(100, Math.round((Math.max(0, Math.min(7, n)) / 7) * 100)));
+}
+
+/** شعارِ انگلیسیِ فوتر — از اعدادِ واقعیِ هفته، نه حالِ هوایِ معلم */
+export function weekCardMotto(goalDays: number, activeDays: number): string {
+  if (goalDays >= 5) return "FULL WEEK ★";
+  if (activeDays >= 3) return "STRONG WEEK";
+  return "KEEP GOING!";
+}
+
+export interface WeekCardImageOpts {
+  review: TeacherReview;
+  stats: WeekTeacherStats;
+  userName?: string;
+  /** صداقتِ منبع — fallback هرگز «هوشمند» جعل نمی‌شود */
+  source?: "ai" | "fallback";
+}
+
+/** رسمِ کارتِ معلمِ هفته — الگویِ ۱۱۸: از دانلود جدا تا blob هم ساخته شود */
+async function weekCardCanvas(opts: WeekCardImageOpts): Promise<HTMLCanvasElement | null> {
+  try {
+    if (typeof document === "undefined") return null;
+    if (document.fonts?.ready) {
+      await document.fonts.ready;
+    }
+    const family = getComputedStyle(document.body).fontFamily || "sans-serif";
+    const ctx = await openBattleCard(family);
+    if (!ctx) return null;
+    const W = 1080;
+    const H = 640;
+
+    // ---------- title ----------
+    ctx.direction = "rtl";
+    ctx.textAlign = "right";
+    ctx.textBaseline = "middle";
+    ctx.fillStyle = "#1c1917";
+    ctx.font = `800 34px ${family}`;
+    ctx.fillText("معلمِ هفته", W - 90, 192);
+
+    // ---------- learner column (چپ) ----------
+    ctx.direction = "rtl";
+    ctx.textAlign = "right";
+    if (opts.userName) {
+      ctx.fillStyle = "#1c1917";
+      ctx.font = `800 30px ${family}`;
+      ctx.fillText(truncate(ctx, opts.userName, 280), 390, 196);
+    } else {
+      ctx.fillStyle = "#a8a29e";
+      ctx.font = `700 20px ${family}`;
+      ctx.fillText("یادگیرندهٔ وب‌کتاب", 390, 196);
+    }
+    ctx.font = `700 18px ${family}`;
+    if (opts.source === "fallback") {
+      ctx.fillStyle = "#a8a29e";
+      ctx.fillText("خلاصهٔ خودکارِ آفلاین", 390, 230);
+    } else {
+      ctx.fillStyle = "#7c3aed"; // violet-600 — خانوادهٔ خودِ کارتِ معلم
+      ctx.fillText("معلمِ هوشمندِ هفته", 390, 230);
+    }
+
+    // ---------- goal ring (راست) — روزهایِ هدفِ واقعیِ هفته ----------
+    const cx = W - 90 - 105;
+    const cy = 350;
+    const r = 105;
+    ctx.lineWidth = 20;
+    ctx.lineCap = "round";
+    ctx.strokeStyle = "#f5f5f4";
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.stroke();
+    const pct = weekCardPercent(opts.stats.goalDays) / 100;
+    const ring = ctx.createLinearGradient(cx - r, cy - r, cx + r, cy + r);
+    ring.addColorStop(0, "#8b5cf6"); // violet-500
+    ring.addColorStop(1, "#d946ef"); // fuchsia-500
+    ctx.strokeStyle = ring;
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, Math.PI / 2, Math.PI / 2 + Math.PI * 2 * pct);
+    ctx.stroke();
+    ctx.textAlign = "center";
+    ctx.fillStyle = "#1c1917";
+    ctx.font = `900 52px ${family}`;
+    ctx.fillText(`${faNum(weekCardPercent(opts.stats.goalDays))}٪`, cx, cy - 14);
+    ctx.fillStyle = "#78716c";
+    ctx.font = `700 21px ${family}`;
+    ctx.fillText(`هدفِ ${faNum(opts.stats.goalDays)} از ۷ روز`, cx, cy + 34);
+
+    // ---------- three sections (ستونِ متن، چپِ حلقه — همان سه‌بخشِ ۱۱۷/۱۱۸) ----------
+    const textR = 740;
+    const width = textR - 90;
+    ctx.direction = "rtl";
+    ctx.textAlign = "right";
+    let y = 252;
+
+    ctx.fillStyle = "#1c1917";
+    ctx.font = `400 19px ${family}`;
+    for (const line of wrapCanvasLines(opts.review.intro, width, (s) => ctx.measureText(s).width, 3)) {
+      ctx.fillText(line, textR, y);
+      y += 30;
+    }
+
+    y += 12;
+    ctx.fillStyle = "#10b981";
+    ctx.beginPath();
+    ctx.arc(textR - 5, y, 4.5, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = "#047857";
+    ctx.font = `900 18px ${family}`;
+    ctx.fillText("نقطهٔ قوت", textR - 18, y);
+    y += 28;
+    ctx.fillStyle = "#57534e";
+    ctx.font = `400 17px ${family}`;
+    for (const line of wrapCanvasLines(opts.review.strength, width - 18, (s) => ctx.measureText(s).width, 2)) {
+      ctx.fillText(line, textR, y);
+      y += 26;
+    }
+
+    y += 10;
+    ctx.fillStyle = "#f59e0b";
+    ctx.beginPath();
+    ctx.arc(textR - 5, y, 4.5, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = "#b45309";
+    ctx.font = `900 18px ${family}`;
+    ctx.fillText("تمرینِ پیشنهادی", textR - 18, y);
+    y += 28;
+    ctx.fillStyle = "#57534e";
+    ctx.font = `400 17px ${family}`;
+    for (const line of wrapCanvasLines(opts.review.advice, width - 18, (s) => ctx.measureText(s).width, 2)) {
+      ctx.fillText(line, textR, y);
+      y += 26;
+    }
+
+    // ---------- footer ----------
+    ctx.strokeStyle = "#e7e5e4";
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(90, H - 108);
+    ctx.lineTo(W - 90, H - 108);
+    ctx.stroke();
+    ctx.direction = "rtl";
+    ctx.textAlign = "right";
+    ctx.fillStyle = "#a8a29e";
+    ctx.font = `700 19px ${family}`;
+    ctx.fillText(`معلمِ هفته · ${faDate()}`, W - 90, H - 74);
+    ctx.textAlign = "left";
+    ctx.direction = "ltr";
+    ctx.fillStyle = "#7c3aed";
+    ctx.font = `900 20px ${family}`;
+    ctx.fillText(weekCardMotto(opts.stats.goalDays, opts.stats.activeDays), 90, H - 74);
+
+    return ctx.canvas;
+  } catch {
+    return null;
+  }
+}
+
+export async function downloadWeekCardImage(opts: WeekCardImageOpts): Promise<boolean> {
+  const c = await weekCardCanvas(opts);
+  if (!c) return false;
+  return downloadCanvasBlob(c, "vision2-week-teacher.png");
+}
+
+/** Task 121 — همان کارت به‌صورتِ blob برای هم‌رسانیِ بومی — بدونِ دانلود */
+export async function buildWeekCardBlob(opts: WeekCardImageOpts): Promise<Blob | null> {
+  const c = await weekCardCanvas(opts);
   if (!c) return null;
   return canvasToBlob(c);
 }

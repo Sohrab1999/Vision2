@@ -16,10 +16,14 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { GraduationCap, Loader2, Sparkles, RotateCcw } from "lucide-react";
+import { GraduationCap, Loader2, Sparkles, RotateCcw, ImageDown, Share2 } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 import type { TeacherReview } from "@/lib/exam-teacher";
 import { hasWeekVerdict, type WeekTeacherStats } from "@/lib/week-teacher";
+import { useStudy } from "@/lib/study-store";
+import { faNum } from "@/lib/study-theme";
+import { downloadWeekCardImage, buildWeekCardBlob } from "@/lib/result-image";
+import { canShareImageFiles, blobToFile, shareImageFile, type ShareOutcome } from "@/lib/share-card";
 import { useToast } from "@/hooks/use-toast";
 
 interface WeekTeacherState {
@@ -34,9 +38,57 @@ interface WeekTeacherState {
 export default function WeekTeacher({ stats }: { stats: WeekTeacherStats }) {
   const [state, setState] = useState<WeekTeacherState>({ status: "idle" });
   const { toast } = useToast();
+  const userName = useStudy((s) => s.userName);
+  // Task 121 — کارتِ PNGِ داوریِ هفته: ذخیره همیشه، هم‌رسانیِ بومی فقط با
+  // پشتیبانیِ واقعیِ canShare({files}) (الگویِ صداقتِ ۱۰۲/۱۱۸/۱۲۰)
+  const [imgBusy, setImgBusy] = useState(false);
+  const [shareBusy, setShareBusy] = useState(false);
 
   // the one verdict gate — same evaluator the route re-runs (never two faces)
   if (!hasWeekVerdict(stats)) return null;
+
+  const saveCard = async () => {
+    if (imgBusy || shareBusy || !state.review) return;
+    setImgBusy(true);
+    const ok = await downloadWeekCardImage({
+      review: state.review,
+      stats,
+      userName,
+      source: state.source,
+    });
+    setImgBusy(false);
+    toast(
+      ok
+        ? { title: "🗓 کارتِ معلمِ هفته ذخیره شد", description: "داوریِ این هفته حالا یک عکسِ قابلِ فرستادن است.", duration: 3000 }
+        : { title: "خطا در ساخت تصویر", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
+    );
+  };
+
+  const shareCard = async () => {
+    if (shareBusy || imgBusy || !state.review) return;
+    setShareBusy(true);
+    const blob = await buildWeekCardBlob({
+      review: state.review,
+      stats,
+      userName,
+      source: state.source,
+    });
+    let outcome: ShareOutcome = "failed";
+    if (blob) {
+      outcome = await shareImageFile({
+        file: blobToFile(blob, "vision2-week-teacher.png"),
+        title: "معلمِ هفته — وب‌کتاب ویژن ۲",
+        text: `🗓 داوریِ معلم برای این هفته: ${faNum(stats.goalDays)} از ۷ روزِ هدف کامل`,
+      });
+    }
+    setShareBusy(false);
+    if (outcome === "shared") {
+      toast({ title: "📨 کارتِ معلمِ هفته هم‌رسانی شد", description: "عکس با شیتِ خودِ سیستم فرستاده شد.", duration: 3000 });
+    } else if (outcome === "failed") {
+      toast({ title: "هم‌رسانی ممکن نشد", description: "می‌توانی عکس را ذخیره کنی و خودت بفرستی.", duration: 3000 });
+    }
+    // cancelled → سکوتِ کامل (لغوِ کاربر اتفاق نیست)
+  };
 
   const ask = async () => {
     if (state.status === "loading") return;
@@ -149,6 +201,31 @@ export default function WeekTeacher({ stats }: { stats: WeekTeacherStats }) {
                 {state.review.advice}
               </p>
             </div>
+          </div>
+
+          {/* Task 121 — کارتِ PNGِ همین داوری: ذخیره همیشه، هم‌رسانیِ بومی
+              فقط وقتی مرورگر واقعاً فایل می‌پذیرد (الگویِ صداقتِ ۱۰۲/۱۱۸) */}
+          <div className="mt-2 flex flex-wrap items-center gap-2">
+            <button
+              onClick={saveCard}
+              disabled={imgBusy || shareBusy}
+              className="inline-flex items-center gap-1.5 rounded-xl border border-violet-200 bg-white px-3 py-1.5 text-[11.5px] font-black text-violet-700 transition-all hover:border-violet-300 hover:bg-violet-50/60 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
+              aria-label="ذخیرهٔ عکس نظر معلم هفته"
+            >
+              {imgBusy ? <Loader2 size={12} className="animate-spin" aria-hidden /> : <ImageDown size={12} aria-hidden />}
+              ذخیرهٔ کارتِ هفته
+            </button>
+            {canShareImageFiles() && (
+              <button
+                onClick={shareCard}
+                disabled={imgBusy || shareBusy}
+                className="inline-flex items-center gap-1.5 rounded-xl border border-violet-200 bg-white px-3 py-1.5 text-[11.5px] font-black text-violet-700 transition-all hover:border-violet-300 hover:bg-violet-50/60 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
+                aria-label="هم‌رسانی عکس نظر معلم هفته"
+              >
+                {shareBusy ? <Loader2 size={12} className="animate-spin" aria-hidden /> : <Share2 size={12} aria-hidden />}
+                هم‌رسانی
+              </button>
+            )}
           </div>
         </motion.div>
       )}
