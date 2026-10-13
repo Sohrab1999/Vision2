@@ -1,0 +1,121 @@
+/* Duel (نبرد دودنفره) — dark-mode family — extracted from src/app/globals.css
+   (§8.3 per-feature extraction, wave 4 — task 139): the .dark .duel-* tuning
+   (hero/card/code/hud/done/think) and the .dark .leaderboard.duel-mode
+   standings/podium (Task-36), verbatim.
+   Owner: src/components/study/duel/ — duel-setup.tsx, duel-play.tsx,
+   duel-countdown.tsx, leaderboard.tsx (the leaderboard lives IN the duel
+   folder; its duel-mode scope is duel presentation).
+   Always loaded via the src/app/features.css manifest; cascade isolation by
+   construction — the wave-4 scan found zero equal-specificity competitors
+   for the moved heads outside the band. Cross-family focal layers stay in
+   globals: the ink-tone canonical groups (518-617), the r90 bg-white focal
+   group (347), and the r115 .bg-stone-100 trio (first member's position —
+   its gmetro-line member is another family). The .dark .duel-week rule
+   (1046) stays: its owner is reports/weekly-report.tsx, not this family.
+   Print band wins via !important; @utility defs lose to unlayered author
+   rules regardless of position. The dark palette rides the .dark kernel
+   tokens (r114/r115 contracts — duel washes paint the token bases). */
+
+/* ==================== Duel (نبرد دودنفره) — dark mode ==================== */
+.dark .duel-hero {
+  background-image: linear-gradient(to bottom left, rgb(59 7 100 / 0.72), rgb(74 4 78 / 0.75), rgb(76 5 25 / 0.72)) !important;
+}
+.dark .duel-hero .bg-white\/15, .dark .duel-hero .bg-white\/10 { background-color: rgb(28 25 23 / 0.55); }
+.dark .duel-hero .border-white\/25 { border-color: rgb(120 113 108 / 0.45); }
+.dark .duel-hero .text-white\/85, .dark .duel-hero .text-white\/75 { color: #e7e5e4; }
+.dark .duel-hero .duel-cta {
+  background-color: #fafaf9;
+  color: #86198f;
+}
+.dark .duel-hero .duel-input {
+  background-color: rgb(231 229 228 / 0.94);
+  border-color: rgb(168 162 158 / 0.5);
+}
+.dark .duel-hero .duel-input:focus { border-color: #f5f5f4; }
+
+.dark .duel-card {
+  /* bg folded into @utility c-card-elevated (r86 phase 3) — same #292524,
+     single paint source now; border + stone-100 kernel stay scoped */
+  border-color: rgb(120 113 108 / 0.35);
+  /* tranche-2: keep the countdown ring track light (stone-100 token is dark app-wide now;
+     bg/border stone-100 inside the card stay governed by their scoped rules below) */
+  --color-stone-100: #f5f5f4;
+}
+/* r89 retarget: setup metric/award boxes migrated onto c-stone-70; the RAW /70
+   half STAYS for the excluded hover row (bg-stone-50/70 + hover:bg-stone-100/70).
+   One-lined r90 — selector-budget conservation for the c-track entry. */
+.dark .duel-card .bg-stone-50\/70,.dark .duel-card .c-stone-70,.dark .duel-card .bg-stone-50 { background-color: rgb(41 37 36 / 0.6); }
+.dark .duel-card .border-stone-100 { border-color: rgb(87 83 78 / 0.4); }
+.dark .duel-card .border-stone-200 { border-color: rgb(87 83 78 / 0.45); }
+/* r115: bg-fuchsia-100 rides the kernel token (byte-equal 74,4,78 @ 0.6) */
+.dark .duel-card .text-fuchsia-700,.dark .leaderboard.duel-mode .text-fuchsia-700 { color: #f0abfc; }
+.dark .duel-card .text-fuchsia-600,.dark .leaderboard.duel-mode .text-fuchsia-600 { color: #e879f9; }
+.dark .duel-card .bg-fuchsia-50 { background-color: rgb(74 4 78 / 0.35); }
+
+.dark .duel-code {
+  background-color: rgb(74 4 78 / 0.25);
+  border-color: rgb(162 28 175 / 0.5);
+}
+
+.dark .duel-hud {
+  background-color: #292524;
+  border-color: rgb(120 113 108 / 0.35);
+}
+.dark .duel-hud .border-fuchsia-200 { border-color: rgb(162 28 175 / 0.45); }
+.dark .duel-hud .bg-fuchsia-50\/60 { background-color: rgb(74 4 78 / 0.3); }
+/* r89 retarget: player rows migrated onto c-stone-60; result rows onto c-stone-70 —
+   painters byte-identical. DELIBERATELY two rules, NOT one multi-selector line:
+   a multi-selector intermediate defuses css-tones' pairwise hazard oracle
+   (finalTokensOf concatenates across selectors → the duel-play template
+   co-occurrence goes unseen → a fuchsia merge would be proposed unproven).
+   r90 lesson: consolidation must not blind the safety analyzer. */
+.dark .duel-hud .c-stone-60 { background-color: rgb(41 37 36 / 0.6); }
+.dark .duel-done .c-stone-70 { background-color: rgb(41 37 36 / 0.6); }
+.dark .duel-hud .bg-stone-200,.dark .duel-think .bg-stone-200 { background-color: rgb(87 83 78 / 0.55); }
+.dark .duel-hud .stroke-stone-100 { stroke: rgb(87 83 78 / 0.4); }
+
+.dark .duel-card[class*="border-fuchsia-200"] { border-color: rgb(162 28 175 / 0.5); }
+.dark .duel-card[class*="border-emerald-400"] { border-color: rgb(16 185 129 / 0.7); }
+.dark .duel-card[class*="border-rose-400"] { border-color: rgb(251 113 133 / 0.6); }
+.dark .duel-card .hover\:bg-fuchsia-50\/50:hover { background-color: rgb(74 4 78 / 0.3); }
+.dark .duel-card .hover\:border-fuchsia-300:hover { border-color: rgb(240 171 252 / 0.5); }
+
+.dark .duel-done[class*="border-emerald-300"] {
+  background-image: linear-gradient(to bottom left, rgb(2 44 34 / 0.65), rgb(4 47 46 / 0.65));
+  border-color: rgb(16 185 129 / 0.4);
+}
+.dark .duel-done[class*="border-amber-300"] {
+  background-image: linear-gradient(to bottom left, rgb(69 26 3 / 0.65), rgb(64 32 6 / 0.6));
+  border-color: rgb(217 119 6 / 0.45);
+}
+.dark .duel-done[class*="border-rose-300"] {
+  background-image: linear-gradient(to bottom left, rgb(76 5 25 / 0.65), rgb(64 24 18 / 0.6));
+  border-color: rgb(225 29 72 / 0.4);
+}
+/* r114: .duel-done .bg-emerald-50/70 retired — canonical band serves it
+   (drifted base 2,44,34 gone) */
+.dark .duel-done .border-emerald-300 { border-color: rgb(16 185 129 / 0.4); }
+/* r89 retarget: result rows migrated onto c-stone-70 — painter byte-identical (rule one-lined into the duel-hud line above, r90) */
+.dark .duel-done .border-stone-200 { border-color: rgb(87 83 78 / 0.45); }
+/* r115 merge: duel-done's bg-stone-100 half joined the consolidated trio above */
+/* r115: bg-rose-100 rides the kernel token (0.7→0.6 converged) */
+
+/* ---------------- leaderboard duel standings (Task-36 «جدول نبرد») ----------------
+   Scoped to .leaderboard.duel-mode so the exam podium keeps its tuned palette. */
+.dark .leaderboard.duel-mode .border-fuchsia-200 { border-color: rgb(162 28 175 / 0.45); }
+/* r115: the duel-mode -100 washes byte-equal the kernel tokens — the scoped
+   copies retire (border/bg-fuchsia-100, bg-emerald-100, bg-rose-100) */
+.dark .leaderboard.duel-mode .bg-gradient-to-b.from-fuchsia-50\/60 {
+  background-image: linear-gradient(to bottom, rgb(74 4 78 / 0.22), rgb(0 0 0 / 0));
+}
+.dark .leaderboard.duel-mode .bg-fuchsia-50\/40 { background-color: rgb(59 7 100 / 0.18); }
+.dark .leaderboard.duel-mode .bg-fuchsia-50\/50 { background-color: rgb(74 4 78 / 0.25); }
+.dark .leaderboard.duel-mode .bg-fuchsia-50 { background-color: rgb(59 7 100 / 0.4); }
+.dark .leaderboard.duel-mode .ring-fuchsia-200 { --tw-ring-color: rgb(162 28 175 / 0.5); }
+/* duel podium — deeper arena purple, mirroring the exam podium tuning */
+.dark .leaderboard.duel-mode .from-fuchsia-300 { --tw-gradient-from: #86198f; }
+.dark .leaderboard.duel-mode .from-violet-200 { --tw-gradient-from: #6d28d9; }
+.dark .leaderboard.duel-mode .to-violet-500 { --tw-gradient-to: #5b21b6; }
+.dark .leaderboard.duel-mode .from-purple-200 { --tw-gradient-from: #7e22ce; }
+.dark .leaderboard.duel-mode .to-purple-400 { --tw-gradient-to: #9333ea; }
+/* W/L/T record badges — rose ink served by the global .dark .text-rose-700 */

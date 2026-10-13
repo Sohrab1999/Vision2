@@ -35,6 +35,8 @@ const featureCssPaths = [
   "src/components/study/lesson/word-of-day.css",
   // wave 3 (task 137): the official-report A4 paper family
   "src/components/study/reports/official-report.css",
+  // wave 4 (task 139): the duel dark-mode family (duel-* + leaderboard duel-mode)
+  "src/components/study/duel/duel-dark.css",
 ];
 const readEffectiveCss = (): string =>
   readFileSync(cssPath, "utf8") +
@@ -239,9 +241,21 @@ describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
     // (body.print-official, !important) stayed global per the wave-1
     // protocol. Cross-family canonical groups, the surface clusters and
     // utility overrides stayed. Growth from here must consolidate, not add.
+    // task 139 (§8.3 wave 4): re-based 330 → 286 — the duel dark band (the
+    // .dark .duel-* tuning + the leaderboard duel-mode standings/podium,
+    // 43 selector lines → duel/duel-dark.css) moved beside its owners; the
+    // r115 .bg-stone-100 consolidated trio (duel-card/duel-done/gmetro-line)
+    // stays as the cross-family focal layer at the first member's position,
+    // the ink-tone canonical groups stay, and the .dark .duel-week rule
+    // stays (owner reports/weekly-report.tsx, not the duel family). The
+    // wave-4 removal ALSO unmasked one genuinely mergeable pair (the duel
+    // member was the hazard-blocker): gmetro-line + gmetro-dialog
+    // .border-stone-200 consolidated at the first member's position (−1,
+    // css-tones --apply, 3a checkpoint). Growth from here must consolidate,
+    // not add.
     const sel = lines.filter((l) => /^\s*\.[a-z]/.test(l) && !l.includes("→")).length;
     expect(sel).toBeLessThanOrEqual(505);
-    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(330);
+    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(286);
   });
 });
 
@@ -919,7 +933,9 @@ describe("globals.css track semantic layer (stone-200 alphas — Task 90)", () =
    نسخه‌های scopedِ منسوخ‌شده هرگز برنمی‌گردند.
    ================================================================ */
 describe("globals.css wash alpha-drift convergence (r114)", () => {
-  const css114 = readFileSync(cssPath, "utf8");
+  // effective css (task 139): the duel wash rules live in duel/duel-dark.css
+  // now — the token-base contract must still see them
+  const css114 = readEffectiveCss();
   const lines114 = css114.split("\n");
 
   // single source of truth: parse the token BASES straight out of the .dark kernel
@@ -1336,6 +1352,8 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
     "src/components/study/reports/report-card.css": [".dark .report-dialog {", ".dark .report-foot {", ".dark .report-month { background-color: rgb(28 25 23 / 0.6); border-color: #37312b; }"],
     // wave 3 (task 137) — the A4 paper family; the print band stays global
     "src/components/study/reports/official-report.css": [".official-overlay { background-color: rgb(12 10 9 / 0.68); }", ".dark .official-report {\n  --color-stone-50: #fafaf9;", ".or-table th { background-color: #f5f5f4;", ".or-teacher { background-color: #faf5ff;", ".or-chip-fresh {"],
+    // wave 4 (task 139)
+    "src/components/study/duel/duel-dark.css": [".dark .duel-hero {", ".dark .duel-card {", ".dark .duel-code {", ".dark .duel-hud {", '.dark .duel-done[class*="border-emerald-300"]', ".dark .leaderboard.duel-mode .ring-fuchsia-200", ".dark .leaderboard.duel-mode .from-fuchsia-300 {"],
     // wave 2 (task 135)
     "src/components/study/shared/streak-flame.css": [".streak-flame {", "@keyframes flame-flicker {"],
     "src/components/study/shell/footer.css": [".footer-band {", ".dark .footer-band {"],
@@ -1393,6 +1411,15 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
       "\n.or-teacher {",
       "\n.or-chip-fresh {",
       "\n.dark .report-month {",
+      // wave 4 (task 139) — \n-prefixed where substring risk exists (the ink
+      // canonical groups and the stayed r115 trio reference duel members)
+      "\n.dark .duel-hero {",
+      "\n.dark .duel-code {",
+      "\n.dark .duel-hud {",
+      "\n.dark .duel-card .border-stone-100",
+      "\n.dark .duel-done[class*=\"border-emerald-300\"]",
+      "\n.dark .leaderboard.duel-mode .ring-fuchsia-200",
+      "\n.dark .leaderboard.duel-mode .to-purple-400",
       "--color-emerald-100: #d0fae5",
     ]) {
       expect(css, `globals.css still carries a moved rule: ${gone}`).not.toContain(gone);
@@ -1411,7 +1438,7 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
     expect(css).toContain(".dark .hover\\:bg-violet-50:hover");
   });
 
-  it("features.css manifest imports all fifteen files; layout.tsx loads it right after globals.css", () => {
+  it("features.css manifest imports all sixteen files; layout.tsx loads it right after globals.css", () => {
     const manifest = readFileSync(resolve(process.cwd(), "src/app/features.css"), "utf8");
     for (const p of featureCssPaths) {
       expect(manifest, `manifest line missing for ${p}`).toContain(`@import "${p.replace("src/", "../")}";`);
