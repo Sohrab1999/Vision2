@@ -13,6 +13,7 @@ import { describe, it, expect } from "vitest";
 import {
   BADGES,
   TIER_STYLE,
+  badgeProgressPct,
   buildEvalInput,
   newBadgeIds,
   unlockedBadgeIds,
@@ -454,7 +455,7 @@ describe("رانِ ترکیبی — هفتهٔ دیکتهٔ پیوسته (Task 8
     expect(byId("dictation-run").title).toBe("هفتهٔ دیکتهٔ پیوسته");
     expect(byId("dictation-run").tier).toBe("gold");
     expect(byId("dictation-run").icon).toBe("SpellCheck2");
-    expect(BADGES.length).toBe(52);
+    expect(BADGES.length).toBe(55);
   });
 
   it("قراردادِ شمارِ روز ≠ جمع: دو دیکته در یک روز هنوز یک روزِ دیکته‌دار است", () => {
@@ -749,7 +750,7 @@ describe("رانِ مرور — هفتهٔ مرور (Task 88)", () => {
     expect(byId("review-run").title).toBe("هفتهٔ مرور");
     expect(byId("review-run").tier).toBe("silver");
     expect(byId("review-run").icon).toBe("History");
-    expect(BADGES.length).toBe(52);
+    expect(BADGES.length).toBe(55);
     const one = base({ dayHistory: { [w(2)]: dh({ day: w(2), reviews: 1 }) } });
     expect(byId("review-run").progress!(one)).toBe("۱ از ۷ روزِ این هفته");
   });
@@ -840,7 +841,7 @@ describe("رانِ سه‌گانه — هفتهٔ سه‌گانه (Task 89)", ()
     expect(byId("triple-run").title).toBe("هفتهٔ سه‌گانه");
     expect(byId("triple-run").tier).toBe("gold");
     expect(byId("triple-run").icon).toBe("Crown");
-    expect(BADGES.length).toBe(52);
+    expect(BADGES.length).toBe(55);
     const mixed = base({ dayHistory: { ...tripleWeek(), [w(3)]: dh({ day: w(3), reviews: 1, quizzes: 1, dictation: 0 }) } });
     // دیکته ۶ روز / آزمون ۷ / مرور ۷ — ضعیف‌ترین حلقه پیشرفت را می‌گوید
     expect(byId("triple-run").progress!(mixed)).toBe("۶ از ۷ روزِ سه‌گانهٔ این هفته");
@@ -938,7 +939,7 @@ describe("ماراتن — رانِ دوهفته‌ای (Task 90)", () => {
     expect(byId("marathon-run").title).toBe("ماراتنِ دوهفته‌ای");
     expect(byId("marathon-run").tier).toBe("gold");
     expect(byId("marathon-run").icon).toBe("Trophy");
-    expect(BADGES.length).toBe(52);
+    expect(BADGES.length).toBe(55);
     // دیکته ۱۳ روز / آزمون ۱۴ / مرور ۱۴ — ضعیف‌ترین حلقه پیشرفت را می‌گوید
     const thirteen = base({
       dayHistory: {
@@ -1053,7 +1054,7 @@ describe("خانوادهٔ حضور — ماهِ حاضر و ماهِ درخشا
     expect(byId("presence-month-full").title).toBe("ماهِ درخشان");
     expect(byId("presence-month-full").tier).toBe("gold");
     expect(byId("presence-month-full").icon).toBe("Sparkles");
-    expect(BADGES.length).toBe(52);
+    expect(BADGES.length).toBe(55);
     const twentyFour = base({ dayHistory: presenceDays([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]) });
     expect(twentyFour.activeDays35).toBe(25);
     expect(byId("presence-month").progress!(twentyFour)).toBe("۲۵ از ۲۵ روزِ فعال");
@@ -1147,7 +1148,7 @@ describe("ماهِ بی‌وقفه — پلهٔ نهاییِ خانوادهٔ ح
     expect(byId("presence-month-perfect").title).toBe("ماهِ بی‌وقفه");
     expect(byId("presence-month-perfect").tier).toBe("gold");
     expect(byId("presence-month-perfect").icon).toBe("Gem");
-    expect(BADGES.length).toBe(52);
+    expect(BADGES.length).toBe(55);
     const thirtyFour = base({ dayHistory: presenceDays([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33]) });
     expect(thirtyFour.activeDays35).toBe(34);
     expect(byId("presence-month-perfect").progress!(thirtyFour)).toBe("۳۴ از ۳۵ روزِ فعال");
@@ -1219,7 +1220,7 @@ describe("هفتهٔ پنج‌گانه — خانوادهٔ تنوع (Task 93)",
     expect(byId("five-skill-week").title).toBe("هفتهٔ پنج‌گانه");
     expect(byId("five-skill-week").tier).toBe("gold");
     expect(byId("five-skill-week").icon).toBe("Puzzle");
-    expect(BADGES.length).toBe(52);
+    expect(BADGES.length).toBe(55);
     // سه مهارت حاضر → «۳ از ۵ مهارت»
     const three = base({
       dayHistory: {
@@ -1350,7 +1351,7 @@ describe("خانوادهٔ سرعت — صاعقه و سرعتِ صوت (Task 10
     expect(byId("speed-sound").title).toBe("سرعتِ صوت");
     expect(byId("speed-sound").tier).toBe("gold");
     expect(byId("speed-sound").icon).toBe("Rocket");
-    expect(BADGES.length).toBe(52);
+    expect(BADGES.length).toBe(55);
   });
 
   it("دو گیتِ صادق: نمونهٔ کم با میانگینِ بالا باز نمی‌کند و پیشرفت روی گیتِ نمونه می‌ماند", () => {
@@ -1440,7 +1441,7 @@ describe("خانوادهٔ اعتماد — گواه‌گرفته و سندِ ز
     expect(byId("receipt-oath").title).toBe("سندِ زنده");
     expect(byId("receipt-oath").tier).toBe("gold");
     expect(byId("receipt-oath").icon).toBe("Stamp");
-    expect(BADGES.length).toBe(52);
+    expect(BADGES.length).toBe(55);
   });
 
   it("سیم‌کشیِ buildEvalInput: فقط بردِ رسیددار می‌شمارد — باختِ رسیددار و بردِ بی‌رسید نه", () => {
@@ -1535,3 +1536,71 @@ describe("newBadgeIds — قرارداد واحدِ «تازه» (Task 82)", () 
 function baseRaw(over: Record<string, unknown>): BuildArgs {
   return { ...BASE_DEFAULTS, ...over } as BuildArgs;
 }
+
+// ------------------------------------------------------------------
+// Task 126 — خانوادهٔ ترکیبی «آتش و یخ»: داستانِ «دو سیستم، یک دستاورد».
+// سه لایه: ① گیتِ دومطبقی — هیچ پله‌ای با یک سیستم تنها باز نمی‌شود
+// ② نوار/راهنمای «محدودهٔ مقید» — همیشه بُعدِ عقب‌مانده نام می‌برد و
+// نوار = minِ دو کسر ③ سلامتِ سه‌گانه (id یکتا/متن/تیر) توسطِ گاردهای
+// سراسریِ همین فایل پوشش داده می‌شود؛ این‌جا قراردادِ رفتاری بسته می‌شود.
+// ------------------------------------------------------------------
+describe("hybrid family — fire & ice (Task 126)", () => {
+  it("ice-fire (برنز): فقط با «یخِ ساخته‌شده AND چالش کامل‌شده» باز می‌شود — هیچ‌کدام به‌تنهایی کافی نیست", () => {
+    expect(ids(base({ freezeEarnedDay: T }))).not.toContain("ice-fire");
+    expect(ids(base({ results: { rush: { correct: 3, total: 5, percent: 60, at: new Date().toISOString() } } }))).not.toContain("ice-fire");
+    expect(
+      ids(
+        base({
+          freezeEarnedDay: T,
+          results: { rush: { correct: 3, total: 5, percent: 60, at: new Date().toISOString() } },
+        })
+      )
+    ).toContain("ice-fire");
+  });
+
+  it("speedy-chain (نقره): زنجیرهٔ ۷روزه AND پنج چالش — هر بُعد به‌تنهایی قفل می‌ماند", () => {
+    expect(ids(base({ bestStreak: 7 }))).not.toContain("speedy-chain");
+    expect(ids(base({ rushGames: 5 }))).not.toContain("speedy-chain");
+    expect(ids(base({ bestStreak: 7, rushGames: 5 }))).toContain("speedy-chain");
+    // مرزها: ۶ روز + ۵ چالش باز نمی‌شود؛ ۷ روز + ۴ چالش هم
+    expect(ids(base({ bestStreak: 6, rushGames: 5 }))).not.toContain("speedy-chain");
+    expect(ids(base({ bestStreak: 7, rushGames: 4 }))).not.toContain("speedy-chain");
+  });
+
+  it("shield-bolt (طلا): سه نجات AND صد امتیاز — دو قهرمانیِ هم‌زمان", () => {
+    expect(ids(base({ freezeUsedDays: ["a", "b", "c"] }))).not.toContain("shield-bolt");
+    expect(ids(base({ rushBest: 100 }))).not.toContain("shield-bolt");
+    expect(ids(base({ freezeUsedDays: ["a", "b", "c"], rushBest: 100 }))).toContain("shield-bolt");
+  });
+
+  it("نوارِ پیشرفت = محدودهٔ مقید — minِ دو کسر، نه میانگین و نه بیشینه", () => {
+    // زنجیره ۳٫۵/۷=۵۰٪ در برابر ۲/۵ چالش=۴۰٪ → نوار باید ۴۰ باشد
+    expect(badgeProgressPct("speedy-chain", base({ bestStreak: 3, rushGames: 2 }))).toBe(40);
+    // زنجیره کامل، چالش‌ها ۳/۵=۶۰٪ → نوار ۶۰
+    expect(badgeProgressPct("speedy-chain", base({ bestStreak: 9, rushGames: 3 }))).toBe(60);
+    // نجات ۱/۳≈۳۳٪ در برابر امتیاز ۹۰/۱۰۰=۹۰٪ → نوار ۳۳
+    expect(badgeProgressPct("shield-bolt", base({ freezeUsedDays: ["a"], rushBest: 90 }))).toBe(33);
+    // صفر مطلق → صفر
+    expect(badgeProgressPct("speedy-chain", base())).toBe(0);
+    expect(badgeProgressPct("shield-bolt", base())).toBe(0);
+  });
+
+  it("راهنمای قفل بُعدِ عقب‌مانده را نام می‌برد — هم‌قرارداد با نوار", () => {
+    const d = Object.fromEntries(BADGES.map((b) => [b.id, b]));
+    // زنجیره عقب است (۲/۷≈۰٫۲۹ < ۳/۵=۰٫۶) → «از ۷ روز»
+    expect(d["speedy-chain"].progress?.(base({ bestStreak: 2, rushGames: 3 }))).toContain("از ۷ روز");
+    // چالش عقب است (۶/۷ > ۳/۵) → «از ۵ چالش»
+    expect(d["speedy-chain"].progress?.(base({ bestStreak: 6, rushGames: 3 }))).toContain("از ۵ چالش");
+    // مرزِ تساویِ کسرها: ۷/۷ == ۵/۵ → رشتهٔ زنجیره (<=) — صادق است، هر دو کامل‌اند
+    expect(d["speedy-chain"].progress?.(base({ bestStreak: 7, rushGames: 5 }))).toContain("از ۷ روز");
+    // طلا: نجات عقب (۱/۳ < ۹۰/۱۰۰) → «از ۳ نجات»؛ امتیاز عقب → «از ۱۰۰ امتیاز»
+    expect(d["shield-bolt"].progress?.(base({ freezeUsedDays: ["a"], rushBest: 90 }))).toContain("از ۳ نجات");
+    expect(d["shield-bolt"].progress?.(base({ freezeUsedDays: ["a", "b", "c"], rushBest: 50 }))).toContain("از ۱۰۰ امتیاز");
+  });
+
+  it("برنزِ دومطبقِ یک‌باره بی‌نوار می‌ماند — هم‌قراردادِ ice-maker/rush-first", () => {
+    expect(byId("ice-fire").progress).toBeUndefined();
+    expect(byId("speedy-chain").progress).toBeDefined();
+    expect(byId("shield-bolt").progress).toBeDefined();
+  });
+});

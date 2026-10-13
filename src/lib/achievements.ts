@@ -897,6 +897,53 @@ export const BADGES: BadgeDef[] = [
       s.duelQuickWeek.qualifying !== null &&
       s.duelQuickWeek.qualifying.avgMs <= DUEL_QUICK_WEEK.goldMs,
   },
+  // ---- خانوادهٔ ترکیبی «آتش و یخ» (Task 126) — یازدهمین خانواده: داستانِ
+  // «دو سیستم، یک دستاورد». هر پله هم‌زمان از دو دنیا تغذیه می‌کند — یخِ
+  // زنجیره (ساختن/نجات) و برق‌آسا (تجربه/تداوم/قهرمانی) — و هیچ پله‌ای با
+  // یک سیستم تنها باز نمی‌شود. نوارِ پیشرفتِ پله‌هایِ دومطبقی (نقره/طلا)
+  // «محدودهٔ مقید» است: کم‌نرخ‌ترین بعدِ دو بعد (minِ دو کسر) — نوار
+  // هرگز جلوتر از خوانِ واقعیِ هیچ بُعدی نمی‌رود و فقط وقتی ۱۰۰٪ می‌شود
+  // که هر دو بعد کامل باشند؛ رشتهٔ راهنما هم همان بُعدِ عقب‌مانده را
+  // نام می‌برد (همان کسری که نوار را نگه داشته) — نوار و متن هم‌قراردادند.
+  {
+    id: "ice-fire",
+    title: "آتش و یخ",
+    desc: "اولین یخِ زنجیره را بساز و یک چالش برق‌آسا هم کامل کن — دو دنیای آرامش و سرعت را هم‌زمان تجربه کن",
+    icon: "Blend",
+    tier: "bronze",
+    check: (s) => s.hasFreezeEver && s.hasRush,
+  },
+  {
+    id: "speedy-chain",
+    title: "زنجیرهٔ برق‌آسا",
+    desc: "هم‌زمان به زنجیرهٔ ۷ روزه برس و در ۵ چالش برق‌آسا شرکت کن — تداوم در دو میدان",
+    icon: "Waypoints",
+    tier: "silver",
+    progress: (s) => {
+      const chain = Math.min(s.bestStreak, 7);
+      const games = Math.min(s.rushGames, 5);
+      // بُعدِ عقب‌مانده را نام ببر (همان minِ کسرها که نوار را نگه می‌دارد)
+      return chain / 7 <= games / 5
+        ? `رکورد: ${faNum(chain)} از ۷ روز`
+        : `${faNum(games)} از ۵ چالش`;
+    },
+    check: (s) => s.bestStreak >= 7 && s.rushGames >= 5,
+  },
+  {
+    id: "shield-bolt",
+    title: "سپر و صاعقه",
+    desc: "۳ بار یخ زنجیره را نجات بده و در یک چالش ۱۰۰ امتیاز بگیر — اوجِ محافظت و قهرمانیِ سرعت با هم",
+    icon: "FlameKindling",
+    tier: "gold",
+    progress: (s) => {
+      const rescues = Math.min(s.freezeRescues, 3);
+      const points = Math.min(s.rushBest, 100);
+      return rescues / 3 <= points / 100
+        ? `${faNum(rescues)} از ۳ نجات`
+        : `بهترین: ${faNum(points)} از ۱۰۰ امتیاز`;
+    },
+    check: (s) => s.freezeRescues >= 3 && s.rushBest >= 100,
+  },
 ];
 
 export const TIER_STYLE: Record<BadgeTier, { ring: string; grad: string; chip: string; glow: string }> = {
@@ -925,4 +972,70 @@ export function unlockedBadgeIds(s: BadgeEvalInput): Set<string> {
   const out = new Set<string>();
   for (const b of BADGES) if (b.check(s)) out.add(b.id);
   return out;
+}
+
+/**
+ * numeric 0..100 progress for known badge ids (popover bars) — UI-free
+ * contract (Task 126: moved here from the component so the pure suite can
+ * lock it). Two-dimensional hybrid badges (fire & ice family) reduce to the
+ * BINDING CONSTRAINT: the min of the two fractions — the bar never runs
+ * ahead of either dimension's real reading, and hits 100 only when both do.
+ */
+export function badgeProgressPct(id: string, s: BadgeEvalInput): number {
+  const clamp = (v: number) => Math.max(0, Math.min(100, Math.round(v)));
+  switch (id) {
+    case "word-starter":
+      return clamp((s.knownCount / 10) * 100);
+    case "word-scholar":
+      return clamp((s.knownCount / 50) * 100);
+    case "word-master":
+      return clamp((s.knownCount / 150) * 100);
+    case "quiz-5":
+      return clamp((s.totalQuizzes / 5) * 100);
+    case "quiz-20":
+      return clamp((s.totalQuizzes / 20) * 100);
+    case "review-50":
+      return clamp((s.totalReviews / 50) * 100);
+    case "streak-3":
+      return clamp((s.bestStreak / 3) * 100);
+    case "streak-7":
+      return clamp((s.bestStreak / 7) * 100);
+    case "high-scorer":
+      return clamp((s.bestPercent / 85) * 100);
+    case "perfect":
+      return clamp((s.bestPercent / 100) * 100);
+    case "rush-combo":
+      return clamp((s.rushBestCorrect / 15) * 100);
+    // خانوادهٔ هدف (Task 82)
+    case "goal-five":
+      return clamp((s.goalDays / 5) * 100);
+    case "goal-week":
+      return clamp((s.goalDays / 7) * 100);
+    case "goal-fortnight":
+      return clamp((s.goalDays / 14) * 100);
+    // خانوادهٔ چابکیِ ذهن (Task 108) — شمارشی؛ پیش‌تر بی‌مورد بود و نوارِ صفر
+    // می‌ساخت (شکافِ بصری) — از تسک ۱۱۰ هم‌قراردادِ بقیهٔ شمارشی‌ها شد
+    case "quick-think":
+      return clamp((s.duelQuickThinkers / 3) * 100);
+    case "flash-mind":
+      return clamp((s.duelQuickThinkers / 7) * 100);
+    // خانوادهٔ هفتهٔ چابک (Task 110): نقره شمارشی (نبردهای فکردارِ یک پنجره)،
+    // طلا بر میانگینِ بهترین هفته — گیتِ کمتر-بهتر: فقط وقتی هفته‌ای واجد شد،
+    // نوارِ طلا بر نسبتِ ۱ثانیه/میانگین پر می‌شود (هفتهٔ نیم‌ثانیه‌ای = ۱۰۰٪)
+    case "quick-week":
+      return clamp((s.duelQuickWeek.maxThinkful / 3) * 100);
+    case "lightning-week":
+      return s.duelQuickWeek.qualifying && s.duelQuickWeek.bestAvgMs
+        ? clamp((1000 / s.duelQuickWeek.bestAvgMs) * 100)
+        : 0;
+    // خانوادهٔ ترکیبی «آتش و یخ» (Task 126) — نوار = محدودهٔ مقید
+    // (minِ دو کسر) — هرگز جلوتر از خوانِ هیچ بعدی نمی‌رود؛ برنزِ
+    // ice-fire دومطبقِ یک‌باره است و مثل ice-maker بی‌نوار می‌ماند.
+    case "speedy-chain":
+      return clamp(Math.min((s.bestStreak / 7) * 100, (s.rushGames / 5) * 100));
+    case "shield-bolt":
+      return clamp(Math.min((s.freezeRescues / 3) * 100, (s.rushBest / 100) * 100));
+    default:
+      return 0;
+  }
 }

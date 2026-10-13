@@ -49,6 +49,9 @@ import {
   BrainCircuit,
   CalendarClock,
   Gauge,
+  Blend,
+  Waypoints,
+  FlameKindling,
 } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -58,6 +61,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import {
   BADGES,
   TIER_STYLE,
+  badgeProgressPct,
   buildEvalInput,
   newBadgeIds,
   unlockedBadgeIds,
@@ -120,6 +124,10 @@ export const BADGE_ICONS: Record<string, React.ElementType> = {
   // خانوادهٔ هفتهٔ چابک (Task 110) — گیتِ ترکیبیِ هفتگی
   CalendarClock,
   Gauge,
+  // خانوادهٔ ترکیبی «آتش و یخ» (Task 126) — دوسیستمه‌ها
+  Blend,
+  Waypoints,
+  FlameKindling,
 };
 
 const tierFa: Record<string, string> = {
@@ -335,57 +343,4 @@ export default function Badges() {
       </div>
     </section>
   );
-}
-
-/** numeric 0..100 progress for known badge ids (for the popover bars) */
-function badgeProgressPct(id: string, s: BadgeEvalInput): number {
-  const clamp = (v: number) => Math.max(0, Math.min(100, Math.round(v)));
-  switch (id) {
-    case "word-starter":
-      return clamp((s.knownCount / 10) * 100);
-    case "word-scholar":
-      return clamp((s.knownCount / 50) * 100);
-    case "word-master":
-      return clamp((s.knownCount / 150) * 100);
-    case "quiz-5":
-      return clamp((s.totalQuizzes / 5) * 100);
-    case "quiz-20":
-      return clamp((s.totalQuizzes / 20) * 100);
-    case "review-50":
-      return clamp((s.totalReviews / 50) * 100);
-    case "streak-3":
-      return clamp((s.bestStreak / 3) * 100);
-    case "streak-7":
-      return clamp((s.bestStreak / 7) * 100);
-    case "high-scorer":
-      return clamp((s.bestPercent / 85) * 100);
-    case "perfect":
-      return clamp((s.bestPercent / 100) * 100);
-    case "rush-combo":
-      return clamp((s.rushBestCorrect / 15) * 100);
-    // خانوادهٔ هدف (Task 82)
-    case "goal-five":
-      return clamp((s.goalDays / 5) * 100);
-    case "goal-week":
-      return clamp((s.goalDays / 7) * 100);
-    case "goal-fortnight":
-      return clamp((s.goalDays / 14) * 100);
-    // خانوادهٔ چابکیِ ذهن (Task 108) — شمارشی؛ پیش‌تر بی‌مورد بود و نوارِ صفر
-    // می‌ساخت (شکافِ بصری) — از تسک ۱۱۰ هم‌قراردادِ بقیهٔ شمارشی‌ها شد
-    case "quick-think":
-      return clamp((s.duelQuickThinkers / 3) * 100);
-    case "flash-mind":
-      return clamp((s.duelQuickThinkers / 7) * 100);
-    // خانوادهٔ هفتهٔ چابک (Task 110): نقره شمارشی (نبردهای فکردارِ یک پنجره)،
-    // طلا بر میانگینِ بهترین هفته — گیتِ کمتر-بهتر: فقط وقتی هفته‌ای واجد شد،
-    // نوارِ طلا بر نسبتِ ۱ثانیه/میانگین پر می‌شود (هفتهٔ نیم‌ثانیه‌ای = ۱۰۰٪)
-    case "quick-week":
-      return clamp((s.duelQuickWeek.maxThinkful / 3) * 100);
-    case "lightning-week":
-      return s.duelQuickWeek.qualifying && s.duelQuickWeek.bestAvgMs
-        ? clamp((1000 / s.duelQuickWeek.bestAvgMs) * 100)
-        : 0;
-    default:
-      return 0;
-  }
 }
