@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Vazirmatn } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
-import { ThemeProvider } from "@/components/study/theme-provider";
+import { ThemeProvider } from "@/components/study/shell/theme-provider";
 
 const vazir = Vazirmatn({
   variable: "--font-vazir",

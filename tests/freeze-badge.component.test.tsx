@@ -17,7 +17,7 @@ import { describe, it, expect, beforeEach, vi } from "vitest";
 import "@testing-library/jest-dom/vitest";
 import { cleanup, render, screen, fireEvent } from "@testing-library/react";
 import { useStudy, todayStr } from "@/lib/study-store";
-import FreezeBadge from "@/components/study/freeze-badge";
+import FreezeBadge from "@/components/study/practice/freeze-badge";
 import { trackEvent } from "@/lib/analytics";
 
 vi.mock("@/lib/analytics", () => ({ trackEvent: vi.fn() }));

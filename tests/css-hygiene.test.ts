@@ -563,17 +563,17 @@ describe("globals.css translucent veil layer (Step 9 tranche 4 phase 4 — Task 
   it("c-veil consumers exist exactly where the r87 matrix said (18 across 12 files)", () => {
     const files = [
       "src/components/study/home/home-feed.tsx",
-      "src/components/study/leaderboard.tsx",
-      "src/components/study/writing-tab.tsx",
-      "src/components/study/srs-panel.tsx",
-      "src/components/study/spell-rush-view.tsx",
-      "src/components/study/rush-view.tsx",
-      "src/components/study/footer.tsx",
-      "src/components/study/home-view.tsx",
-      "src/components/study/lesson-tests-tab.tsx",
-      "src/components/study/weekly-report.tsx",
-      "src/components/study/explain-box.tsx",
-      "src/components/study/grammar-view.tsx",
+      "src/components/study/duel/leaderboard.tsx",
+      "src/components/study/lesson/writing-tab.tsx",
+      "src/components/study/practice/srs-panel.tsx",
+      "src/components/study/duel/spell-rush-view.tsx",
+      "src/components/study/duel/rush-view.tsx",
+      "src/components/study/shell/footer.tsx",
+      "src/components/study/home/home-view.tsx",
+      "src/components/study/lesson/lesson-tests-tab.tsx",
+      "src/components/study/reports/weekly-report.tsx",
+      "src/components/study/shared/explain-box.tsx",
+      "src/components/study/grammar/grammar-view.tsx",
     ];
     let total = 0;
     for (const f of files) {
@@ -607,7 +607,7 @@ describe("globals.css veil phase 5 (alpha /80|95 — Task 88)", () => {
   it("exclusion matrix pinned — speak-button is the ONLY raw /80; srs trio the ONLY /50 sites; /95 fully migrated", () => {
     const tsxOf = (p: string) => readFileSync(resolve(process.cwd(), p), "utf8");
     // speak-button: hover:bg-emerald-50 would die under an unlayered class rule (r80 lesson)
-    expect(tsxOf("src/components/study/speak-button.tsx")).toContain("bg-white/80");
+    expect(tsxOf("src/components/study/shared/speak-button.tsx")).toContain("bg-white/80");
     const raw80: string[] = [];
     const raw50: string[] = [];
     const raw95: string[] = [];
@@ -629,12 +629,12 @@ describe("globals.css veil phase 5 (alpha /80|95 — Task 88)", () => {
     };
     walk(resolve(process.cwd(), "src"));
     expect(raw80, "bg-white/80 survives ONLY in speak-button (documented exclusion)").toEqual([
-      resolve(process.cwd(), "src/components/study/speak-button.tsx"),
+      resolve(process.cwd(), "src/components/study/shared/speak-button.tsx"),
     ]);
     expect(raw95, "bg-white/95 fully migrated to c-veil-95 (pwa dark FIX)").toEqual([]);
     expect(new Set(raw50), "/50 stays raw ONLY in the srs trio (donut (0,2,0) order trap)").toEqual(
       new Set([
-        resolve(process.cwd(), "src/components/study/srs-panel.tsx"),
+        resolve(process.cwd(), "src/components/study/practice/srs-panel.tsx"),
       ])
     );
   });
@@ -698,7 +698,7 @@ describe("globals.css stone veil phase 6 (bg-stone-50/60|70 — Task 89)", () =>
     };
     walk(resolve(process.cwd(), "src"));
     expect(raw60, "bg-stone-50/60 survives ONLY in daily-quests (hover:bg-emerald-50/40 same element)").toEqual([
-      resolve(process.cwd(), "src/components/study/daily-quests.tsx"),
+      resolve(process.cwd(), "src/components/study/practice/daily-quests.tsx"),
     ]);
     expect(raw70, "bg-stone-50/70 survives ONLY in duel-setup:167 (hover:bg-stone-100/70 same element)").toEqual([
       resolve(process.cwd(), "src/components/study/duel/duel-setup.tsx"),
@@ -789,15 +789,15 @@ describe("globals.css track semantic layer (stone-200 alphas — Task 90)", () =
     expect(raw60, "bg-stone-200/60 fully migrated to c-track-60").toEqual([]);
     expect(new Set(raw70), "raw /70 = same-element hovers (header + settings icon) + state ink (palette) only").toEqual(
       new Set([
-        resolve(process.cwd(), "src/components/study/header.tsx"),
-        resolve(process.cwd(), "src/components/study/settings-popover.tsx"),
-        resolve(process.cwd(), "src/components/study/command-palette.tsx"),
+        resolve(process.cwd(), "src/components/study/shell/header.tsx"),
+        resolve(process.cwd(), "src/components/study/shared/settings-popover.tsx"),
+        resolve(process.cwd(), "src/components/study/shell/command-palette.tsx"),
       ])
     );
     expect(new Set(raw80), "raw /80 = inactive filter pills (dictionary + my-words) only").toEqual(
       new Set([
-        resolve(process.cwd(), "src/components/study/dictionary-view.tsx"),
-        resolve(process.cwd(), "src/components/study/my-words.tsx"),
+        resolve(process.cwd(), "src/components/study/lesson/dictionary-view.tsx"),
+        resolve(process.cwd(), "src/components/study/practice/my-words.tsx"),
       ])
     );
   });

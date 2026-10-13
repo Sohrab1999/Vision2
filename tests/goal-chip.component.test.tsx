@@ -16,7 +16,7 @@ import { describe, it, expect, beforeEach, vi } from "vitest";
 import "@testing-library/jest-dom/vitest";
 import { cleanup, render, screen, fireEvent } from "@testing-library/react";
 import { useStudy, todayStr, daysAgoKey } from "@/lib/study-store";
-import GoalChip from "@/components/study/goal-chip";
+import GoalChip from "@/components/study/practice/goal-chip";
 import { trackEvent } from "@/lib/analytics";
 
 vi.mock("@/lib/analytics", () => ({ trackEvent: vi.fn() }));

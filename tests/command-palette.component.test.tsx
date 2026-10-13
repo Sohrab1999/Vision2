@@ -21,7 +21,7 @@ import { describe, it, expect, beforeEach, beforeAll, vi } from "vitest";
 import "@testing-library/jest-dom/vitest";
 import { cleanup, render, screen, fireEvent } from "@testing-library/react";
 import { useStudy } from "@/lib/study-store";
-import CommandPalette from "@/components/study/command-palette";
+import CommandPalette from "@/components/study/shell/command-palette";
 
 vi.mock("@/lib/analytics", () => ({ trackEvent: vi.fn() }));
 vi.mock("next-themes", () => ({ useTheme: () => ({ theme: "light", setTheme: vi.fn() }) }));

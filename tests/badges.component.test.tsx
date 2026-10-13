@@ -18,7 +18,7 @@ import "@testing-library/jest-dom/vitest";
 import { cleanup, render, screen } from "@testing-library/react";
 import { useStudy } from "@/lib/study-store";
 import { BADGES } from "@/lib/achievements";
-import Badges, { BADGE_ICONS } from "@/components/study/badges";
+import Badges, { BADGE_ICONS } from "@/components/study/practice/badges";
 
 vi.mock("@/lib/analytics", () => ({ trackEvent: vi.fn() }));
 const toastSpy = vi.fn();

@@ -22,7 +22,7 @@ import { describe, it, expect, beforeEach, vi } from "vitest";
 import "@testing-library/jest-dom/vitest";
 import { cleanup, render, screen, fireEvent } from "@testing-library/react";
 import type { SrsItem } from "@/state/types";
-import DuePill from "@/components/study/due-pill";
+import DuePill from "@/components/study/practice/due-pill";
 import { useStudy } from "@/lib/study-store";
 import { trackEvent } from "@/lib/analytics";
 

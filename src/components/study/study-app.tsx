@@ -10,13 +10,13 @@ import { stopSpeaking, setSpeakRateScale } from "@/lib/speak";
 import { maybeAutoBackup, collectData, countsOf } from "@/lib/backup";
 import { pushSync } from "@/lib/sync";
 import { trackEventOncePerSession } from "@/lib/analytics";
-import Header from "./header";
-import Footer from "./footer";
-import HomeView from "./home-view";
-import CommandPalette from "./command-palette";
-import ShortcutGuide from "./shortcut-guide";
-import Onboarding from "./onboarding";
-import PwaLayer from "./pwa-layer";
+import Header from "./shell/header";
+import Footer from "./shell/footer";
+import HomeView from "./home/home-view";
+import CommandPalette from "./shell/command-palette";
+import ShortcutGuide from "./shell/shortcut-guide";
+import Onboarding from "./shell/onboarding";
+import PwaLayer from "./shell/pwa-layer";
 
 // Task 44 (roadmap step 3 — code splitting): every non-home view is a lazy
 // chunk. duel-view pulls socket.io-client, exam/konkur pull the 360-question
@@ -34,25 +34,25 @@ const lazyView = <P extends object>(
   loader: () => Promise<{ default: React.ComponentType<P> }>
 ) => dynamic(loader, { ssr: false, loading: () => ViewFallback });
 
-const LessonView = lazyView(() => import("./lesson-view"));
-const DictionaryView = lazyView(() => import("./dictionary-view"));
-const ExamView = lazyView(() => import("./exam-view"));
-const AppendixView = lazyView(() => import("./appendix-view"));
-const RushView = lazyView(() => import("./rush-view"));
-const DuelView = lazyView(() => import("./duel-view"));
-const ListenView = lazyView(() => import("./listen-view"));
-const ReviewView = lazyView(() => import("./review-view"));
-const SmartPracticeView = lazyView(() => import("./smart-practice-view"));
-const KonkurView = lazyView(() => import("./konkur-view"));
-const GrammarView = lazyView(() => import("./grammar-view"));
-const MyWordsView = lazyView(() => import("./my-words"));
+const LessonView = lazyView(() => import("./lesson/lesson-view"));
+const DictionaryView = lazyView(() => import("./lesson/dictionary-view"));
+const ExamView = lazyView(() => import("./exam/exam-view"));
+const AppendixView = lazyView(() => import("./lesson/appendix-view"));
+const RushView = lazyView(() => import("./duel/rush-view"));
+const DuelView = lazyView(() => import("./duel/duel-view"));
+const ListenView = lazyView(() => import("./practice/listen-view"));
+const ReviewView = lazyView(() => import("./practice/review-view"));
+const SmartPracticeView = lazyView(() => import("./practice/smart-practice-view"));
+const KonkurView = lazyView(() => import("./exam/konkur-view"));
+const GrammarView = lazyView(() => import("./grammar/grammar-view"));
+const MyWordsView = lazyView(() => import("./practice/my-words"));
 
 // Report modals: heavy (official-report pulls per-lesson stats) and computed
 // while closed (audit finding G-5). They mount only after the first "open"
 // event, then stay mounted; open/close flows through props so the closed
 // state costs nothing and the chunk never loads unless actually used.
-const ReportCard = dynamic(() => import("./report-card"), { ssr: false });
-const OfficialReport = dynamic(() => import("./official-report"), { ssr: false });
+const ReportCard = dynamic(() => import("./reports/report-card"), { ssr: false });
+const OfficialReport = dynamic(() => import("./reports/official-report"), { ssr: false });
 
 export default function StudyApp() {
   const view = useStudy((s) => s.view);

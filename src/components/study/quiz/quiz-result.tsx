@@ -16,8 +16,8 @@ import { faNum } from "@/lib/study-theme";
 import { downloadResultImage } from "@/lib/result-image";
 import { useToast } from "@/hooks/use-toast";
 import { gradeFor } from "@/lib/domain/grade";
-import ExplainBox from "../explain-box";
-import ProgressRing from "../progress-ring";
+import ExplainBox from "../shared/explain-box";
+import ProgressRing from "../practice/progress-ring";
 import { letters } from "./quiz-constants";
 
 export interface QuizResultProps {

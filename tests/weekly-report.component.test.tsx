@@ -15,7 +15,7 @@ import { describe, it, expect, beforeEach, vi } from "vitest";
 import "@testing-library/jest-dom/vitest";
 import { cleanup, render, screen } from "@testing-library/react";
 import { useStudy, todayStr, daysAgoKey } from "@/lib/study-store";
-import WeeklyReportSection from "@/components/study/weekly-report";
+import WeeklyReportSection from "@/components/study/reports/weekly-report";
 
 // analytics در این ردیف مصرف نمی‌شود — ولی استور با آلودگیِ ناوبری امن است
 vi.mock("@/lib/analytics", () => ({ trackEvent: vi.fn() }));

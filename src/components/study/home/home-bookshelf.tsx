@@ -7,7 +7,7 @@ import { useStudy, knownCountOfLesson } from "@/lib/study-store";
 import { percent } from "@/lib/domain/percent";
 import { useMounted } from "@/lib/use-mounted";
 import { themeOf, faNum } from "@/lib/study-theme";
-import ProgressRing from "../progress-ring";
+import ProgressRing from "../practice/progress-ring";
 import { spineColors, lessonCheer } from "./home-constants";
 
 // قفسهٔ کتاب — عine‌های کتاب + کارت سه درس با حلقهٔ پیشرفت واژگان

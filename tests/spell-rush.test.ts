@@ -122,7 +122,7 @@ describe("funnel event", () => {
 describe("normSpelling", () => {
   it("matches the dictation-tab semantics (case, apostrophes, trailing punct, spaces)", () => {
     // import lazily to keep the module graph of this file light
-    return import("@/components/study/spell-rush-view").then(({ normSpelling }) => {
+    return import("@/components/study/duel/spell-rush-view").then(({ normSpelling }) => {
       expect(normSpelling("Ability")).toBe("ability");
       expect(normSpelling("isn't")).toBe("isn't");
       expect(normSpelling("isn’t")).toBe("isn't");
