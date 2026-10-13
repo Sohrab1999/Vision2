@@ -11,6 +11,8 @@
 //     خودش رندر می‌کند → ترافیک کم و بدون نشتِ کلید پاسخ.
 // ------------------------------------------------------------------
 import { createServer } from "http";
+import { existsSync } from "fs";
+import { join } from "path";
 import { Server, type Socket } from "socket.io";
 
 import lesson1 from "../../src/data/lesson1";
@@ -19,12 +21,29 @@ import lesson3 from "../../src/data/lesson3";
 import examBank from "../../src/data/exam";
 import type { QuizQuestion } from "../../src/lib/study-types";
 import { loadOrCreateReceiptSecret, signDuelEnd } from "../../src/lib/duel-receipt-server";
+import { recordThinkSample, padThinkSamples } from "../../src/lib/duel-think";
+import { clampPaceMs, STALL_EXTRA_MS } from "../../src/lib/duel-pace";
 import { clientIpOf, createJoinThrottle, entryThrottleError } from "../../src/lib/join-throttle";
+import { loadOrCreateTicketSecret, verifyTicket } from "../../src/lib/duel-ticket-server";
+import { createTicketVault, ticketRejectMessage } from "../../src/lib/duel-ticket";
 import { BASE_POINTS, speedBonus } from "./scoring";
+
+// Task 104 — رازِ رسید نسبت به «ریشهٔ پروژه» حل می‌شود نه cwdِ launch.
+// قراردادِ duel-receipt-server: cwdِ سرویس و Next هر دو ریشهٔ پروژه است؛ ولی
+// اگر سرویس از پوشهٔ خودش بالا بیاید (bun --hot index.ts داخلِ همین پوشه)،
+// راز در مسیرِ تودرتوی mini-services/challenge-service/mini-services/…
+// ساخته می‌شود و Next (cwd=ریشه) هرگز پیدایش نمی‌کند → کلِ زنجیرهٔ رسیدِ
+// تسکِ ۹۴ سمتِ API با bad_sig می‌میرد (باگِ واقعیِ نوبتِ ۱۳۳۰ — اثباتِ
+// قبل/بعد در scripts/qa-receipt-e2e-r104.ts). ریشه از «محلِ خودِ فایل»
+// ساخته می‌شود تا هر cwdِ launch نتیجهٔ یکسان بدهد.
+const REPO_ROOT = join(import.meta.dir, "..", "..");
+if (!existsSync(join(REPO_ROOT, "package.json"))) {
+  throw new Error("[boot] ریشهٔ پروژه از محلِ فایل ساخته نشد — index.ts را از جایش جابه‌جا نکنید.");
+}
 
 // Task 94 «رسیدِ امضاشدهٔ داوری» — هر پایانِ مسابقه با HMAC امضا می‌شود تا
 // ثبتِ نتیجه در /api/stats فقط با رسیدِ معتبر داور ممکن باشد (ضد جعلِ خوداظهاری).
-const RECEIPT_SECRET = loadOrCreateReceiptSecret();
+const RECEIPT_SECRET = loadOrCreateReceiptSecret(REPO_ROOT);
 
 // Task 97 «گلوگاهِ ورود» (SEC-5) — سقفِ duel:create/duel:join بر IP؛ ضدِ
 // کاویدنِ کدِ اتاق و سیلابِ ساختِ اتاق. مسیرهای API از گام ۵ لیمیت دارند،
@@ -37,15 +56,44 @@ const ENTRY_GATE = createJoinThrottle({
 });
 setInterval(() => ENTRY_GATE.sweep(), 60_000).unref();
 
+// Task 112 «بلیتِ ورود» (SEC-5 — آخرین دهانهٔ باز) — duel:create/duel:join
+// فقط با بلیتی که Next با شناسهٔ احرازشدهٔ یادگیرنده ضرب کرده است.
+// راز از همان الگوی رسیدِ تسک ۹۴: فایل ۰۶۰۰، داور هنگام بوت می‌سازد.
+// گنبدِ nonce یک‌بارمصرف را نگه می‌دارد؛ sweep هر دقیقه — unref تا سرویس
+// تنها مانعِ خروج نباشد. ردِ بلیت قبل از گلوگاهِ نرخ می‌آید تا کوبیدنِ
+// بی‌بلیت، بودجهٔ IPِ کاربرانِ واقعی را نسوزاند و حافظه هم بی‌اثر بماند.
+const TICKET_SECRET = loadOrCreateTicketSecret(REPO_ROOT);
+const TICKET_VAULT = createTicketVault();
+setInterval(() => TICKET_VAULT.sweep(), 60_000).unref();
+
+/**
+ * گیتِ بلیت برای duel:create/duel:join — رشتهٔ خطا یا null.
+ * ترتیب بازبینی: ساختار → امضا → پنجره → یک‌بارمصرف. nonce فقط هنگام
+ * بلیتِ درستِ از-نظر-امضا سوزانده می‌شود تا دست‌کاریِ امضا، nonceِ کسی
+ * را نسوزاند. خروجی همیشه پرچمِ ticketError دارد تا کلاینت بداند
+ * گرفتاریِ خودِ بلیت است (نه اتاق/گلوگاه) و یک‌بارِ تازه ضرب کند.
+ */
+function entryTicketGuard(raw: unknown): { error: string; ticketError: true } | null {
+  const ticket = (raw as { ticket?: unknown } | null)?.ticket;
+  const verdict = verifyTicket(ticket, TICKET_SECRET);
+  if (!verdict.ok) return { error: ticketRejectMessage(verdict.reason), ticketError: true };
+  if (!TICKET_VAULT.consume(verdict.n)) {
+    return { error: ticketRejectMessage("replayed"), ticketError: true };
+  }
+  return null;
+}
+
 // ----------------------------- تنظیمات مسابقه -----------------------------
 const PORT = 3003;
 const ROOM_SIZE = 2;
 const QUESTIONS_PER_DUEL = 10;
-const PER_Q_MS = 15_000; // سقف زمان هر سؤال (کلاینت هم به‌طور محلی تایمر می‌گذارد)
+// Task 107 «ریتمِ نبرد» — سقفِ زمانِ هر سؤال دیگر ثابتِ جوش‌خورده نیست؛
+// سازندهٔ اتاق یکی از سه ریتمِ بستهٔ duel-pace را برمی‌گزیند و عددش با
+// clampPaceMs گِرِفت می‌شود. کلاینت تایمرش را از duel:start می‌خواند —
+// هیچ سرِ سیمی دیگر عددِ محلیِ خودش را ملاک نمی‌گیرد.
 const COUNTDOWN_MS = 5_000; // شمارش معکوس پس از کامل شدن اتاق
 const REMATCH_COUNTDOWN_MS = 3_000;
 const FORFEIT_GRACE_MS = 12_000; // مهلت بعد از قطع‌شدن حریف وسط مسابقه
-const STALL_GRACE_MS = PER_Q_MS + 4_000; // سگ‌منت ضد قفل‌شدن کلاینت
 const ROOM_TTL_MS = 30 * 60_000; // اتاق‌های خالی جمع‌شونده
 const CODE_ALPHABET = "ABCDEFGHJKMNPQRSTUVWXYZ23456789"; // بدون حروف مبهم
 
@@ -86,6 +134,12 @@ interface PlayerState {
   answered: number;
   lastAnswerAt: number;
   qStartAt: number; // ساعتِ سؤالِ جاری روی سرور — مبنای پاداش سرعت (SEC)
+  // Task 106 «زمانِ فکر» — ساعتِ «دیدنِ» سؤالِ جاری (duel:seen؛ سرور-ساعت).
+  // امتیاز همچنان فقط از qStartAt می‌آید؛ seen فقط گزارشِ دیدن→پاسخ را
+  // ممکن می‌کند و هیچ راهی به امتیاز/رسید ندارد.
+  seenAt: number | null;
+  /** نمونهٔ فکرِ هر سؤال (ms) — null = دیده/ثبت نشده؛ نمایشی، بیرونِ رسید */
+  thinkSamples: (number | null)[];
   doneAt: number | null;
   disconnected: boolean;
 }
@@ -101,6 +155,8 @@ interface Room {
   rematchVotes: Set<string>;
   createdAt: number;
   leftDuringPlay: boolean; // کسی وسط مسابقه رفته باشد → پایان با برچسب forfeit
+  /** Task 107 — ریتمِ برگزیدهٔ سازندهٔ اتاق (گرِفت‌شده با clampPaceMs) */
+  paceMs: number;
 }
 
 const rooms = new Map<string, Room>();
@@ -120,7 +176,9 @@ function publicPlayers(room: Room) {
 }
 
 function roomSummary(room: Room) {
-  return { code: room.code, status: room.status, players: publicPlayers(room) };
+  // Task 107 — perQMs در خلاصهٔ اتاق تا لابیِ هر دو طرف (سازنده و پیوسته)
+  // ریتمِ برگزیده را پیش از شروع ببیند؛ duel:start هم همان عدد را می‌فرستد.
+  return { code: room.code, status: room.status, perQMs: room.paceMs, players: publicPlayers(room) };
 }
 
 function broadcastState(room: Room) {
@@ -128,7 +186,7 @@ function broadcastState(room: Room) {
 }
 
 function progressPayload(room: Room) {
-  return { code: room.code, status: room.status, players: publicPlayers(room) };
+  return { code: room.code, status: room.status, perQMs: room.paceMs, players: publicPlayers(room) };
 }
 
 function endMatch(room: Room, reason: "finished" | "forfeit") {
@@ -169,6 +227,11 @@ function endMatch(room: Room, reason: "finished" | "forfeit") {
     total: room.questions.length,
     startedAt: room.startedAt,
     players: publicPlayers(room),
+    // Task 106 — نمونه‌های زمانِ فکرِ هر بازیکن (نمایشی؛ بیرونِ رسیدِ امضاشده؛
+    // جاهای بی‌نمونه nullِ صادق می‌مانند — نه صفرِ ساختگی)
+    think: Object.fromEntries(
+      ps.map((p) => [p.sid, padThinkSamples(p.thinkSamples, room.questions.length)])
+    ),
     receipt,
   });
   room.rematchVotes.clear();
@@ -193,10 +256,12 @@ function startMatch(room: Room) {
     p.answered = 0;
     p.lastAnswerAt = Date.now();
     p.qStartAt = Date.now();
+    p.seenAt = null;
+    p.thinkSamples = [];
     p.doneAt = null;
   }
   io.to(room.code).emit("duel:start", {
-    perQMs: PER_Q_MS,
+    perQMs: room.paceMs, // Task 107 — ریتمِ خودِ اتاق، نه ثابتِ سراسری
     total: QUESTIONS_PER_DUEL,
     startedAt: room.startedAt,
     questions: room.questions.map((q) => ({ id: q.id, perm: q.perm })),
@@ -292,8 +357,14 @@ io.on("connection", (socket: Socket) => {
   };
 
   // ------------------------- ساخت اتاق -------------------------
-  socket.on("duel:create", (raw: Profile, ack?: (res: unknown) => void) => {
+  // Task 107 — سازندهٔ اتاق ریتم را هم برمی‌گزیند (perQMs اختیاری؛
+  // سرویسِ قدیمی/کلاینتِ بی‌انتخاب → پیش‌فرضِ ۱۵ثانیه با clampPaceMs)
+  socket.on("duel:create", (raw: Profile & { perQMs?: unknown; ticket?: unknown }, ack?: (res: unknown) => void) => {
     if (room) return ack?.({ ok: false, error: "قبلاً در اتاقی هستی." });
+    // Task 112 — بلیت پیشِ همه: سوکتِ بی‌بلیت/تقلبی نه اتاق می‌سازد، نه
+    // بودجهٔ IPِ گلوگاه را می‌سوزاند (ردِ آن بی‌هزینه و بی‌حافظه است)
+    const createTicket = entryTicketGuard(raw);
+    if (createTicket) return ack?.({ ok: false, ...createTicket });
     const createGate = ENTRY_GATE.attempt(clientIpOf(socket.handshake), "create");
     if (!createGate.ok) return ack?.({ ok: false, error: entryThrottleError("create", createGate.retryAfterMs) });
     let code = makeRoomCode();
@@ -310,6 +381,7 @@ io.on("connection", (socket: Socket) => {
       rematchVotes: new Set(),
       createdAt: Date.now(),
       leftDuringPlay: false,
+      paceMs: clampPaceMs(raw?.perQMs),
     };
     r.players.set(socket.id, {
       sid: socket.id,
@@ -320,6 +392,8 @@ io.on("connection", (socket: Socket) => {
       answered: 0,
       lastAnswerAt: Date.now(),
       qStartAt: Date.now(),
+      seenAt: null,
+      thinkSamples: [],
       doneAt: null,
       disconnected: false,
     });
@@ -331,8 +405,11 @@ io.on("connection", (socket: Socket) => {
   });
 
   // ------------------------- پیوستن با کد -------------------------
-  socket.on("duel:join", (payload: { code?: unknown } & Profile, ack?: (res: unknown) => void) => {
+  socket.on("duel:join", (payload: { code?: unknown; ticket?: unknown } & Profile, ack?: (res: unknown) => void) => {
     if (room) return ack?.({ ok: false, error: "قبلاً در اتاقی هستی." });
+    // Task 112 — بلیت پیشِ گلوگاه: کاودنِ کد بدونِ بلیت حتی شمارنده را نمی‌بیند
+    const joinTicket = entryTicketGuard(payload);
+    if (joinTicket) return ack?.({ ok: false, ...joinTicket });
     // گلوگاهِ ورود پیشِ جست‌وجوی اتاق — هر تلاش حتی کدِ ناموجود می‌شمارد (ضدِ کاودنِ کد)
     const joinGate = ENTRY_GATE.attempt(clientIpOf(socket.handshake), "join");
     if (!joinGate.ok) return ack?.({ ok: false, error: entryThrottleError("join", joinGate.retryAfterMs) });
@@ -352,6 +429,8 @@ io.on("connection", (socket: Socket) => {
       answered: 0,
       lastAnswerAt: Date.now(),
       qStartAt: Date.now(),
+      seenAt: null,
+      thinkSamples: [],
       doneAt: null,
       disconnected: false,
     });
@@ -377,19 +456,39 @@ io.on("connection", (socket: Socket) => {
 
     const q = room.questions[qi];
     const correct = choice >= 0 && q.perm[choice] === q.answerReal;
-    const serverElapsedMs = Date.now() - p.qStartAt; // زمان‌سنجی مرجع-سرور
+    const now = Date.now();
+    const serverElapsedMs = now - p.qStartAt; // زمان‌سنجی مرجع-سرور
     p.answered += 1;
-    p.lastAnswerAt = Date.now();
+    p.lastAnswerAt = now;
+    // Task 106 — نمونهٔ زمانِ فکر: پاسخ منهای دیدن (هر دو ساعتِ خودِ سرور).
+    // قبل از جابه‌جاییِ qStartAt ثبت می‌شود چون پنجره به همین سؤال تعلق دارد.
+    p.thinkSamples = recordThinkSample(p.thinkSamples, qi, p.seenAt, now, p.qStartAt);
+    p.seenAt = null; // سؤالِ بعدی دیدنِ تازه می‌خواهد
     if (correct) {
       p.correct += 1;
       p.score += BASE_POINTS + speedBonus(serverElapsedMs);
     }
     p.qi += 1;
-    p.qStartAt = Date.now(); // ساعت سؤال بعدی با همین پاسخ روشن می‌شود (هم‌گام با پیشروی کلاینت)
-    if (p.qi >= room.questions.length) p.doneAt = Date.now();
+    p.qStartAt = now; // ساعت سؤال بعدی با همین پاسخ روشن می‌شود (هم‌گام با پیشروی کلاینت)
+    if (p.qi >= room.questions.length) p.doneAt = now;
 
     io.to(room.code).emit("duel:progress", progressPayload(room));
     maybeFinish(room);
+  });
+
+  // ------------------------- «دیدنِ» سؤال (Task 106) -------------------------
+  // کلاینت وقتی سؤال واقعاً رندر شد duel:seen می‌فرستد؛ ساعتش را خودِ سرور
+  // می‌زند. فقط اولینِ دیدنِ هر سؤال ثبت می‌شود (دوباره‌فرستادی → نادیده) و
+  // فقط برای همان سؤالی که نوبتش است (qi ناهم‌سو → نادیده). امتیاز همچنان
+  // فقط از qStartAt می‌آید — seen فقط گزارشِ زمانِ فکر را ممکن می‌کند.
+  socket.on("duel:seen", (payload: { qi?: unknown }) => {
+    if (!room || room.status !== "playing") return;
+    const p = room.players.get(socket.id);
+    if (!p || p.doneAt !== null) return;
+    if (p.seenAt !== null) return; // اولینِ دیدن ملاک است
+    const qi = typeof payload?.qi === "number" ? Math.floor(payload.qi) : -1;
+    if (qi !== p.qi) return;
+    p.seenAt = Date.now();
   });
 
   // ------------------------- نبرد دوباره -------------------------
@@ -418,9 +517,11 @@ setInterval(() => {
     for (const p of room.players.values()) {
       if (p.doneAt !== null || p.disconnected) continue;
       // کلاینت قفل شده و پاسخ -۱ خودکارش نرسیده → سرور خودش جلو می‌برد (غلط)
-      if (now - p.lastAnswerAt > STALL_GRACE_MS) {
+      // Task 107 — مهلتِ سگ‌منت بر پایهٔ ریتمِ خودِ اتاق است نه ثابتِ سراسری
+      if (now - p.lastAnswerAt > room.paceMs + STALL_EXTRA_MS) {
         p.answered += 1;
         p.qi += 1;
+        p.seenAt = null; // Task 106 — بدونِ پاسخ، نمونهٔ فکر هم ندارد؛ سؤالِ بعد دیدنِ تازه می‌خواهد
         if (p.qi >= room.questions.length) p.doneAt = now;
         changed = true;
       }

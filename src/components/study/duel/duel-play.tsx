@@ -7,12 +7,12 @@ import { isTypingTarget, readDigit, useKeydown } from "@/hooks/use-keyboard";
 import OptionButton from "../shared/option-button";
 import { faNum } from "@/lib/study-theme";
 import type { Feedback, PublicPlayer, QuizQuestion, DuelQ } from "./duel-types";
-import { PER_Q_MS, LETTERS } from "./duel-types";
+import { LETTERS } from "./duel-types";
 
-// فاز PLAY — سؤال زنده با حلقهٔ زمان ۱۵ثانیه‌ای، HUD دو نفره و کیبورد ۱–۴
+// فاز PLAY — سؤال زنده با حلقهٔ زمانِ ریتمِ اتاق (Task 107)، HUD دو نفره و کیبورد ۱–۴
 // (کیبورد همه‌چیدمان: ارقام لاتین/فارسی + کد فیزیکی — گام ۶)
 
-export default function DuelPlay({ me, opp, total, cur, curQ, correctIdx, qi, picked, feedback, myDone, oppLeft, answer, timeLeft }: {
+export default function DuelPlay({ me, opp, total, cur, curQ, correctIdx, qi, picked, feedback, myDone, oppLeft, answer, timeLeft, paceMs }: {
   me: PublicPlayer | null;
   opp: PublicPlayer | null;
   total: number;
@@ -26,6 +26,8 @@ export default function DuelPlay({ me, opp, total, cur, curQ, correctIdx, qi, pi
   oppLeft: boolean;
   answer: (i: number) => void;
   timeLeft: number;
+  /** Task 107 — ریتمِ مؤثرِ اتاق از داور؛ مبنای حلقهٔ پیشرفتِ زمان */
+  paceMs: number;
 }) {
   // کیبورد ۱–۴ حین مسابقه — این نما فقط در فاز play روی صفحه است
   useKeydown(
@@ -42,7 +44,7 @@ export default function DuelPlay({ me, opp, total, cur, curQ, correctIdx, qi, pi
 
   const totalSecs = Math.ceil(timeLeft / 1000);
   const ring = 2 * Math.PI * 26;
-  const qProgress = timeLeft / PER_Q_MS;
+  const qProgress = timeLeft / paceMs; // Task 107 — کسر بر پایهٔ ریتمِ خودِ اتاق
   const myAnswered = me?.answered ?? 0;
   const myCorrect = me?.correct ?? 0;
 

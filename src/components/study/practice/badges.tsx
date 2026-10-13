@@ -30,6 +30,7 @@ import {
   Gem,
   ShieldCheck,
   Shield,
+  Stamp,
   Package,
   Flag,
   CalendarDays,
@@ -44,6 +45,10 @@ import {
   Puzzle,
   Swords,
   Rocket,
+  Eye,
+  BrainCircuit,
+  CalendarClock,
+  Gauge,
 } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -87,6 +92,8 @@ export const BADGE_ICONS: Record<string, React.ElementType> = {
   Gem,
   ShieldCheck,
   Shield,
+  // خانوادهٔ اعتماد (Task 105)
+  Stamp,
   Package,
   // خانوادهٔ هدف (Task 82)
   Flag,
@@ -108,6 +115,11 @@ export const BADGE_ICONS: Record<string, React.ElementType> = {
   Puzzle,
   Swords, // خانوادهٔ نبرد (Task 99)
   Rocket, // خانوادهٔ سرعت (Task 100)
+  Eye, // خانوادهٔ چابکیِ ذهن (Task 108)
+  BrainCircuit,
+  // خانوادهٔ هفتهٔ چابک (Task 110) — گیتِ ترکیبیِ هفتگی
+  CalendarClock,
+  Gauge,
 };
 
 const tierFa: Record<string, string> = {
@@ -358,6 +370,21 @@ function badgeProgressPct(id: string, s: BadgeEvalInput): number {
       return clamp((s.goalDays / 7) * 100);
     case "goal-fortnight":
       return clamp((s.goalDays / 14) * 100);
+    // خانوادهٔ چابکیِ ذهن (Task 108) — شمارشی؛ پیش‌تر بی‌مورد بود و نوارِ صفر
+    // می‌ساخت (شکافِ بصری) — از تسک ۱۱۰ هم‌قراردادِ بقیهٔ شمارشی‌ها شد
+    case "quick-think":
+      return clamp((s.duelQuickThinkers / 3) * 100);
+    case "flash-mind":
+      return clamp((s.duelQuickThinkers / 7) * 100);
+    // خانوادهٔ هفتهٔ چابک (Task 110): نقره شمارشی (نبردهای فکردارِ یک پنجره)،
+    // طلا بر میانگینِ بهترین هفته — گیتِ کمتر-بهتر: فقط وقتی هفته‌ای واجد شد،
+    // نوارِ طلا بر نسبتِ ۱ثانیه/میانگین پر می‌شود (هفتهٔ نیم‌ثانیه‌ای = ۱۰۰٪)
+    case "quick-week":
+      return clamp((s.duelQuickWeek.maxThinkful / 3) * 100);
+    case "lightning-week":
+      return s.duelQuickWeek.qualifying && s.duelQuickWeek.bestAvgMs
+        ? clamp((1000 / s.duelQuickWeek.bestAvgMs) * 100)
+        : 0;
     default:
       return 0;
   }

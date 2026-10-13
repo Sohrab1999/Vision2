@@ -62,6 +62,18 @@ export function faNum(v: number | string): string {
   return String(v).replace(/\d/g, (d) => fa[Number(d)]);
 }
 
+/**
+ * Task 109 — ثانیه با یک اعشار و ممیزِ فارسی (٫)؛ null → «—».
+ * پیش‌تر دو نسخهٔ محلیِ یکسان در duel-done (secFa) و duel-setup (secThinkFa)
+ * زندگی می‌کردند؛ از امروز یک قراردادِ مشترک است — کارنامهٔ نبرد، چیپِ
+ * دفترچه و خطِ «فکرِ هفته» در هفته‌نامه هر سه همین را می‌خوانند.
+ * گردکردنِ مرزی: ۶۴۹ms → «۰٫۶» و ۶۵۰ms → «۰٫۷».
+ */
+export function secFa(ms: number | null): string {
+  if (ms === null) return "—";
+  return faNum((Math.round(ms / 100) / 10).toFixed(1)).replace(".", "٫");
+}
+
 /** Persian relative time ("۳ دقیقه پیش") from an ISO date */
 export function timeAgoFa(iso: string): string {
   const diff = Date.now() - new Date(iso).getTime();

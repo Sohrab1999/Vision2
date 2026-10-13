@@ -290,7 +290,7 @@ describe("globals.css surface-tint kernel (Step 9 tranche 3b — Task 80)", () =
       if (depth <= 0 && i > start) break;
     }
     for (const tok of [
-      "--color-amber-50:", "--color-emerald-50:", "--color-orange-50:", "--color-orange-200:",
+      "--color-amber-50:", "--color-emerald-50:", "--color-fuchsia-50:", "--color-orange-50:", "--color-orange-200:",
       "--color-rose-50:", "--color-rose-200:", "--color-sky-50:", "--color-sky-200:",
       "--color-teal-50:", "--color-violet-50:", "--color-violet-200:", "--color-violet-300:",
     ]) {
@@ -840,5 +840,102 @@ describe("globals.css track semantic layer (stone-200 alphas — Task 90)", () =
     // the analyzer-safety lesson: the duel retargets stay TWO single-selector rules
     expect(css90).toContain(".dark .duel-hud .c-stone-60 { background-color: rgb(41 37 36 / 0.6); }");
     expect(css90).toContain(".dark .duel-done .c-stone-70 { background-color: rgb(41 37 36 / 0.6); }");
+  });
+});
+
+/* ================================================================
+   r114 — wash alpha-drift convergence (Step 9 tranche 3b continuation)
+   قرارداد: هر قاعدهٔ شستِ -50 (band و scoped) باید از BASEِ tokenِ خانوادهٔ
+   خودش استفاده کند (یک پایه به‌ازای هر خانواده)؛ آلفای /NN دست‌تنظیم می‌ماند
+   ولی در band سراسری باید در NN یکنوا باشد (باگِ 0.35<0.42 دیگر ممکن نیست)؛
+   نسخه‌های scopedِ منسوخ‌شده هرگز برنمی‌گردند.
+   ================================================================ */
+describe("globals.css wash alpha-drift convergence (r114)", () => {
+  const css114 = readFileSync(cssPath, "utf8");
+  const lines114 = css114.split("\n");
+
+  // single source of truth: parse the token BASES straight out of the .dark kernel
+  const tokenBase: Record<string, [number, number, number]> = {};
+  for (const fam of ["emerald", "rose", "amber", "teal", "orange", "sky", "violet", "fuchsia"]) {
+    const m = css114.match(new RegExp(`--color-${fam}-50:\\s*(?:rgba?)\\(\\s*([\\d.]+)[ ,]+([\\d.]+)[ ,]+([\\d.]+)`));
+    expect(m, `kernel token --color-${fam}-50 must exist`).not.toBeNull();
+    tokenBase[fam] = [Number(m![1]), Number(m![2]), Number(m![3])];
+  }
+
+  // documented duel-leaderboard violet identity — the ONLY base deviation allowed
+  // (the whole .leaderboard.duel-mode scope owns its own fuchsia palette)
+  const KEEPS = ["leaderboard.duel-mode"];
+
+  const normRgb = (v: string): [number, number, number] | null => {
+    const m = v.match(/(?:rgba?)\(\s*([\d.]+)[ ,]+([\d.]+)[ ,]+([\d.]+)/);
+    return m ? [Number(m[1]), Number(m[2]), Number(m[3])] : null;
+  };
+
+  it("every wash rule (band + scoped) paints with its family's token BASE", () => {
+    const ruleRe = /^\.dark\s+([^{]*?)\{\s*background-color:\s*([^;}]+)/;
+    const checked: string[] = [];
+    for (const line of lines114) {
+      const m = line.match(ruleRe);
+      if (!m) continue;
+      const sel = m[1];
+      const famMatch = sel.match(/bg-(emerald|rose|amber|teal|orange|sky|violet|fuchsia)-50(?![\d])/);
+      if (!famMatch) continue;
+      if (KEEPS.some((k) => sel.includes(k.replace("\\\\", "\\")))) continue;
+      const rgb = normRgb(m[2]);
+      expect(rgb, `rule must paint an rgb() value: ${line.trim().slice(0, 90)}`).not.toBeNull();
+      expect(rgb!, `base drift forbidden (token=${tokenBase[famMatch[1]]}): ${line.trim().slice(0, 90)}`)
+        .toEqual(tokenBase[famMatch[1]]);
+      checked.push(sel.trim());
+    }
+    expect(checked.length, "the guard must actually see the wash band").toBeGreaterThanOrEqual(12);
+  });
+
+  it("global band /NN alphas stay monotone in the modifier (the 0.35<0.42 bug is dead)", () => {
+    // band rule = selector is EXACTLY .dark .bg-<fam>-50/NN (no extra scope classes)
+    const bandRe = /^\.dark \.bg-([a-z]+)-50\\\/(\d+)\s*\{\s*background-color:\s*(?:rgba?)\(\s*[\d.]+[ ,]+[\d.]+[ ,]+[\d.]+[ ,]+([\d.]+)/;
+    const alpha: Record<string, Map<number, number>> = {};
+    for (const line of lines114) {
+      const m = line.match(bandRe);
+      if (!m) continue;
+      (alpha[m[1]] ??= new Map()).set(Number(m[2]), Number(m[3]));
+    }
+    for (const [fam, byMod] of Object.entries(alpha)) {
+      const mods = [...byMod.keys()].sort((a, b) => a - b);
+      expect(mods.length, `band must carry ${fam} modifiers`).toBeGreaterThan(0);
+      for (let i = 1; i < mods.length; i++) {
+        expect(byMod.get(mods[i])!, `${fam}-50/${mods[i]} alpha must be >= /${mods[i - 1]}`)
+          .toBeGreaterThanOrEqual(byMod.get(mods[i - 1])!);
+      }
+    }
+    // and emerald specifically keeps the converged 0.5 for /70
+    expect(alpha.emerald?.get(70), "emerald-50/70 canonical alpha").toBe(0.5);
+  });
+
+  it("emerald-50/70 is defined exactly once, at the canonical band value", () => {
+    const defs = lines114.filter((l) => l.includes(".bg-emerald-50\\/70") && l.includes("background-color"));
+    expect(defs.length, "exactly one emerald-50/70 wash rule").toBe(1);
+    expect(defs[0].trim()).toBe(".dark .bg-emerald-50\\/70 { background-color: rgba(6, 55, 40, 0.5); }");
+  });
+
+  it("retired drifted scoped variants never come back", () => {
+    const retired = [
+      ".rush-card .hover\\:bg-orange-50\\/50:hover",
+      ".rush-card .bg-rose-50\\/70",
+      ".daily-quests .bg-emerald-50\\/70",
+      ".duel-done .bg-emerald-50\\/70",
+      ".word-day .bg-lime-50",
+    ];
+    for (const sel of retired) {
+      expect(lines114.filter((l) => l.includes(sel)), `retired scoped rule must stay dead: ${sel}`).toEqual([]);
+    }
+  });
+
+  it("fuchsia-50 solid consumers are kernel-served (no per-utility solid rule outside duel scopes)", () => {
+    // the two live-proven light leaks (duel-code box, home-tools chip) must ride
+    // the token — a bare .dark .bg-fuchsia-50 band rule would shadow it again
+    expect(lines114.filter((l) => l.trim().startsWith(".dark .bg-fuchsia-50 {"))).toEqual([]);
+    // the scoped duel surfaces keep their explicit rules (they win by specificity)
+    expect(lines114.filter((l) => l.includes(".duel-card .bg-fuchsia-50 {")).length).toBe(1);
+    expect(lines114.filter((l) => l.includes(".leaderboard.duel-mode .bg-fuchsia-50 {")).length).toBe(1);
   });
 });

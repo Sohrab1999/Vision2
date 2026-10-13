@@ -132,6 +132,15 @@ export const ttsSchema = z.object({
   speed: z.number().min(0.5, "سرعت روخوانی نامعتبر است.").max(1.6, "سرعت روخوانی نامعتبر است.").default(0.95),
 });
 
+/** /api/duel-ticket POST (Task 112) — learner credentials; ticket comes back */
+export const duelTicketSchema = z.object({
+  userId: userIdSchema,
+  secret: z
+    .string({ message: "امضای ارسالی نامعتبر است." })
+    .min(1, "امضای ارسالی نامعتبر است.")
+    .max(100, "امضای ارسالی نامعتبر است."),
+});
+
 /** per-route body caps in bytes (POST only; GET routes need none) */
 export const BODY_CAPS = {
   register: 4 * 1024,
@@ -141,4 +150,5 @@ export const BODY_CAPS = {
   explain: 2 * 1024,
   tts: 8 * 1024,
   sync: 700 * 1024, // 600 KB snapshot ceiling + envelope slack
+  duelTicket: 1 * 1024, // { userId, secret } — tiny
 } as const;

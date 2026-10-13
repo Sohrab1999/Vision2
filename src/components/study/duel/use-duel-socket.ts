@@ -8,7 +8,7 @@ import { percent as percentOf } from "@/lib/domain/percent";
 import { useCountdown } from "@/hooks/use-countdown";
 import { useToast } from "@/hooks/use-toast";
 import { trackEvent } from "@/lib/analytics";
-import { sendStats } from "@/lib/identity";
+import { mintDuelTicket, sendStats } from "@/lib/identity";
 import { duelDisplayName } from "@/lib/duel-receipt";
 import { buildDuelRecord } from "@/lib/duel-history";
 import {
@@ -19,13 +19,52 @@ import {
   type Feedback,
   type Phase,
   type PublicPlayer,
-  PER_Q_MS,
 } from "./duel-types";
+import { DEFAULT_PACE_MS, DUEL_PACES } from "@/lib/duel-pace";
 
 // ------------------------------------------------------------------
 // ماشین حالت کامل «نبرد دودنفره»: چرخهٔ سوکت، لابی، گیم‌پلی و ثبت نتیجه.
 // تمام سطح دستوری (emit/timer/ref) اینجاست؛ نمای‌های فاز صرفاً رندرند.
 // ------------------------------------------------------------------
+
+type EntryAck = { ok: boolean; error?: string; ticketError?: boolean };
+
+/**
+ * Task 112 «بلیتِ ورود» (SEC-5) — هر ورود به اتاق دوبل-گامی شد:
+ * ① با هویتِ ثبت‌شده بلیتِ یک‌بارمصرف ضرب می‌کنیم ② duel:create/join را
+ * با بلیت می‌فرستیم. اگر داور «خودِ بلیت» را رد کند (منقضی/تکراری —
+ * پرچمِ ticketError)، یک‌بار بلیتِ تازه ضرب و همان emit تکرار می‌شود؛
+ * ردِ دوم یعنی گرفتاریِ جدی‌تر — پیامِ صادقِ داور با toast می‌رسد.
+ * بلیت فقط حافظه است: هیچ ذخیره‌ای ندارد و هر ورود تازه ضرب می‌شود.
+ * ماژول-سطح است تا بازگشتِ retry legal بماند (قاعدهٔ hookها) و تست‌پذیر.
+ */
+function emitEntryWithTicket(
+  s: Socket,
+  event: "duel:create" | "duel:join",
+  base: Record<string, unknown>,
+  onDone: (res: EntryAck) => void,
+  toast: (t: { title: string; description?: string; duration?: number }) => void,
+  attempt = 0
+): void {
+  void mintDuelTicket().then((ticket) => {
+    if (!ticket) {
+      toast({
+        title: "ورود به نبرد ممکن نشد",
+        description: "اتصال را بررسی کن و دوباره تلاش کن.",
+        duration: 4000,
+      });
+      onDone({ ok: false });
+      return;
+    }
+    s.emit(event, { ...base, ticket }, (res: EntryAck) => {
+      if (!res.ok && res.ticketError && attempt === 0) {
+        emitEntryWithTicket(s, event, base, onDone, toast, 1); // یک‌بارِ تازه‌ضرب — همان رویداد
+        return;
+      }
+      onDone(res);
+    });
+  });
+}
 
 export interface DuelMachine {
   conn: Conn;
@@ -36,6 +75,14 @@ export interface DuelMachine {
   joinInput: string;
   setJoinInput: (v: string) => void;
   joinBusy: boolean;
+  /** Task 112 — ساختِ اتاق حینِ ضربِ بلیت/انتظارِ ack داور مشغول است */
+  createBusy: boolean;
+  /** Task 107 — ریتمِ برگزیدهٔ لابی (فقط در فازِ setup قابلِ تغییر) */
+  chosenPace: number;
+  paceChoices: typeof DUEL_PACES;
+  choosePace: (ms: number) => void;
+  /** ریتمِ مؤثر — داور در duel:state/duel:start می‌فرستد؛ تایمرِ play ملاکِ همین است */
+  paceMs: number;
   createRoom: () => void;
   joinRoom: () => void;
   leaveRoom: () => void;
@@ -73,6 +120,15 @@ export function useDuelSocket(): DuelMachine {
   const [mySid, setMySid] = useState<string | null>(null);
   const [joinInput, setJoinInput] = useState("");
   const [joinBusy, setJoinBusy] = useState(false);
+  // Task 112 «بلیتِ ورود» — create هم حالا دو-گامی است (ضربِ بلیت → emit)
+  const [createBusy, setCreateBusy] = useState(false);
+  // Task 107 «ریتمِ نبرد» — دو عددِ جداشده، دو نقشِ جداشده:
+  //  • chosenPace: انتخابِ کاربر در لابی (به duel:create سفر می‌کند)
+  //  • paceMs: ریتمِ مؤثر — فقط داور آن را تعیین می‌کند (duel:state در لابی
+  //    و duel:start در شروع). کلاینتِ بی‌انتخاب هم پیش‌فرضِ ۱۵ثانیه را می‌فرستد
+  //    و سرویسِ قدیمیِ بی‌فیلد هم همین پیش‌فرض را می‌ماند — نه صفر، نه NaN.
+  const [chosenPace, setChosenPace] = useState(DEFAULT_PACE_MS);
+  const [paceMs, setPaceMs] = useState(DEFAULT_PACE_MS);
   const [countdownMs, setCountdownMs] = useState(0);
   const [countdownSeq, setCountdownSeq] = useState(0);
   const [rematchVotes, setRematchVotes] = useState(0);
@@ -134,7 +190,8 @@ export function useDuelSocket(): DuelMachine {
       const outcome: "win" | "loss" | "tie" = end.winner === null ? "tie" : end.winner === sid ? "win" : "loss";
       // Task 65 — علاوه بر شمارنده‌ها، رکورد کامل نبرد به دفترچهٔ «تاریخچهٔ نبردها» می‌رود
       // Task 96 — sig رسیدِ داور هم داخلِ رکورد می‌نشیند تا دفترچه هم «داورگواه» را نشان دهد
-      const record = buildDuelRecord(end, sid, Date.now(), myFinishAtRef.current, end.receipt?.sig);
+      // Task 108 — آمارِ فکرِ خودی (end.think[sid]) هم ماندگار می‌شود — بی‌نمونه → فیلدِ غایب
+      const record = buildDuelRecord(end, sid, Date.now(), myFinishAtRef.current, end.receipt?.sig, end.think?.[sid]);
       store.recordDuelOutcome(outcome, record ?? undefined);
       store.trackQuizDone();
       trackEvent("duel_done");
@@ -203,8 +260,16 @@ export function useDuelSocket(): DuelMachine {
   useEffect(() => {
     // Never use PORT in the URL, always use XTransformPort
     // DO NOT change the path, it is used by Caddy to forward to the mini-service
+    // Task 105 — polling-first (socket.io's own default order): the ws handshake
+    // must never gate the connection. In the dev sandbox the local rewrite
+    // (next.config.ts) bridges /socket.io but hangs the ws UPGRADE — a hanging
+    // upgrade stalls a websocket-first client for its full 10s timeout, while
+    // polling connects instantly and the ws upgrade is then a graceful
+    // best-effort probe (fail → stay on polling, session unaffected).
+    // Production gateway routes both transports identically, so this order is
+    // safe there too.
     const s = io("/?XTransformPort=3003", {
-      transports: ["websocket", "polling"],
+      transports: ["polling", "websocket"],
       forceNew: true,
       reconnection: true,
       reconnectionAttempts: 5,
@@ -222,9 +287,11 @@ export function useDuelSocket(): DuelMachine {
         resetToSetup();
       }
     };
-    const onState = (st: { code: string; status: string; players: PublicPlayer[] }) => {
+    const onState = (st: { code: string; status: string; perQMs?: number; players: PublicPlayer[] }) => {
       setPlayers(st.players);
       setRoomCode(st.code);
+      // Task 107 — ریتمِ اتاق از داور می‌آید؛ سرویسِ قدیمیِ بی‌فیلد نادیده (پیش‌فرض می‌ماند)
+      if (typeof st.perQMs === "number") setPaceMs(st.perQMs);
       // اگر حریف حین شمارش معکوس رفت، سرور اتاق را به لابی برمی‌گرداند
       if (phaseRef.current === "countdown" && st.status === "lobby") {
         setPhase("waiting");
@@ -243,6 +310,8 @@ export function useDuelSocket(): DuelMachine {
       persistedRef.current = false;
       setQuestions(p.questions);
       setTotal(p.total);
+      // Task 107 — تایمرِ سؤال فقط حرفِ داور را می‌شنود؛ سرویسِ قدیمیِ بی‌فیلد → پیش‌فرض
+      setPaceMs(typeof p.perQMs === "number" ? p.perQMs : DEFAULT_PACE_MS);
       setQi(0);
       setPicked(-1);
       setFeedback("none");
@@ -282,25 +351,44 @@ export function useDuelSocket(): DuelMachine {
   }, [handleEnd]);
 
   // ----------------------------- اقدامات لابی -----------------------------
+  // Task 107 — انتخابِ ریتم فقط در setup؛ پس از آن عددِ داور مرجع است
+  const choosePace = useCallback(
+    (ms: number) => {
+      if (phaseRef.current !== "setup") return;
+      setChosenPace(ms);
+      setPaceMs(ms); // پیش‌نمایشِ همان انتخاب در لابیِ خودم
+    },
+    []
+  );
+
   const createRoom = useCallback(() => {
+    if (createBusy) return;
     const s = socketRef.current;
     if (!s || conn !== "online") return;
+    setCreateBusy(true);
     const store = useStudy.getState();
-    s.emit("duel:create", { name: store.userName || "یادگیرنده", color: store.avatarColor }, (res: { ok: boolean; code?: string; state?: { players: PublicPlayer[] }; error?: string }) => {
-      if (!res.ok) {
-        toast({ title: "ساخت اتاق ناموفق بود", description: res.error, duration: 4000 });
-        return;
-      }
-      setMySid(s.id ?? null);
-      setRoomCode(res.code ?? null);
-      setPlayers(res.state?.players ?? []);
-      setPhase("waiting");
-    });
-  }, [conn, toast]);
+    emitEntryWithTicket(
+      s,
+      "duel:create",
+      { name: store.userName || "یادگیرنده", color: store.avatarColor, perQMs: chosenPace },
+      (res: EntryAck & { code?: string; state?: { players: PublicPlayer[] } }) => {
+        setCreateBusy(false);
+        if (!res.ok) {
+          if (res.error) toast({ title: "ساخت اتاق ناموفق بود", description: res.error, duration: 4000 });
+          return;
+        }
+        setMySid(s.id ?? null);
+        setRoomCode(res.code ?? null);
+        setPlayers(res.state?.players ?? []);
+        setPhase("waiting");
+      },
+      toast
+    );
+  }, [conn, toast, chosenPace, createBusy]);
 
   const joinRoom = useCallback(() => {
     const s = socketRef.current;
-    if (!s || conn !== "online") return;
+    if (!s || conn !== "online" || joinBusy) return;
     const code = joinInput.trim().toUpperCase();
     if (code.length < 4) {
       toast({ title: "کد اتاق را کامل وارد کن", duration: 3000 });
@@ -308,17 +396,23 @@ export function useDuelSocket(): DuelMachine {
     }
     setJoinBusy(true);
     const store = useStudy.getState();
-    s.emit("duel:join", { code, name: store.userName || "یادگیرنده", color: store.avatarColor }, (res: { ok: boolean; error?: string }) => {
-      setJoinBusy(false);
-      if (!res.ok) {
-        toast({ title: "پیوستن ناموفق بود", description: res.error, duration: 4000 });
-        return;
-      }
-      setMySid(s.id ?? null);
-      setRoomCode(code);
-      setPhase("waiting");
-    });
-  }, [conn, joinInput, toast]);
+    emitEntryWithTicket(
+      s,
+      "duel:join",
+      { code, name: store.userName || "یادگیرنده", color: store.avatarColor },
+      (res: EntryAck) => {
+        setJoinBusy(false);
+        if (!res.ok) {
+          if (res.error) toast({ title: "پیوستن ناموفق بود", description: res.error, duration: 4000 });
+          return;
+        }
+        setMySid(s.id ?? null);
+        setRoomCode(code);
+        setPhase("waiting");
+      },
+      toast
+    );
+  }, [conn, joinInput, toast, joinBusy]);
 
   const leaveRoom = useCallback(() => {
     const s = socketRef.current;
@@ -372,13 +466,28 @@ export function useDuelSocket(): DuelMachine {
     [questions, total, bank]
   );
 
-  // تایمر هر سؤال: ۱۵ ثانیه؛ صفر شد = پاسخ خودکار غلط (-۱) — useCountdown گام ۶
+  // تایمر هر سؤال: ریتمِ مؤثرِ اتاق از داور (Task 107)؛ صفر شد = پاسخ خودکار غلط (-۱) — useCountdown گام ۶
   const timeLeft = useCountdown({
-    duration: PER_Q_MS,
+    duration: paceMs,
     active: phase === "play" && feedback === "none" && !myDone,
     tickMs: 100,
     onEnd: () => answer(-1),
   });
+
+  // Task 106 «زمانِ فکر» — وقتی سؤال واقعاً رندر شد (ورود به play و هر
+  // پیشرویِ qi) یک‌بار duel:seen می‌فرستیم؛ داور ساعتش را خودش می‌زند تا
+  // پنجرهٔ دیدن→پاسخ گزارشِ صادقِ سرور باشد. امتیاز همچنان فقط از
+  // qStartAtِ سرور محاسبه می‌شود — seen هیچ راهی به امتیاز ندارد.
+  // qi پس از پاک‌کردن بازخورد جلو می‌رود؛ یعنی seen دقیقاً وقتی سؤالِ
+  // بعدی نمایان شد شلیک می‌شود نه حینِ نمایشِ درست/غلط.
+  useEffect(() => {
+    if (phase !== "play") return;
+    try {
+      socketRef.current?.emit("duel:seen", { qi });
+    } catch {
+      /* ignore */
+    }
+  }, [phase, qi]);
 
   const rematch = useCallback(() => {
     const s = socketRef.current;
@@ -397,6 +506,11 @@ export function useDuelSocket(): DuelMachine {
     joinInput,
     setJoinInput,
     joinBusy,
+    createBusy,
+    chosenPace,
+    paceChoices: DUEL_PACES,
+    choosePace,
+    paceMs,
     createRoom,
     joinRoom,
     leaveRoom,

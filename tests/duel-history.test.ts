@@ -9,6 +9,7 @@ import {
   duelWinStreak,
   duelBestScore,
   duelVerifiedCount,
+  duelVerifiedWins,
   duelForm,
   sanitizeDuelHistory,
   mergeDuelHistory,
@@ -247,6 +248,51 @@ describe("sanitize + verifiedCount + merge upgrade (Task 96)", () => {
     expect(duelVerifiedCount([])).toBe(0);
     expect(duelVerifiedCount([rec(), rec()])).toBe(0);
     expect(duelVerifiedCount([rec({ receiptSig: SIG }), rec(), rec({ receiptSig: SIG2 })])).toBe(2);
+  });
+
+  // ---- duelVerifiedWins (Task 105) — زیرمجموعهٔ صادقِ زیرمجموعه: هم برد هم رسید
+  it("duelVerifiedWins: فقط «بردِ» رسیددار می‌شمارد — باخت/مساویِ رسیددار و بردِ بی‌رسید هیچ‌کدام", () => {
+    expect(duelVerifiedWins([])).toBe(0);
+    expect(duelVerifiedWins([rec(), rec({ outcome: "loss" })])).toBe(0); // بردِ بی‌sig
+    // باختِ رسیددار: verified هست، verifiedWin نه
+    expect(duelVerifiedWins([rec({ outcome: "loss", receiptSig: SIG })])).toBe(0);
+    // مساویِ رسیددار: همین‌طور
+    expect(duelVerifiedWins([rec({ outcome: "tie", receiptSig: SIG })])).toBe(0);
+    // بردِ رسیددار: می‌شمارد
+    expect(duelVerifiedWins([rec({ receiptSig: SIG }), rec({ receiptSig: SIG2 })])).toBe(2);
+    // ترکیبی: از ۵ رکورد فقط دو بردِ رسیددار
+    const mixed = [
+      rec({ receiptSig: SIG }),
+      rec({ outcome: "loss", receiptSig: SIG2 }),
+      rec(),
+      rec({ receiptSig: SIG }),
+      rec({ outcome: "tie" }),
+    ];
+    expect(duelVerifiedWins(mixed)).toBe(2);
+  });
+
+  it("duelVerifiedWins: زیرمجموعهٔ duelVerifiedCount و زیرمجموعهٔ بردها — در هر ترکیبی", () => {
+    const pool = [
+      rec({ receiptSig: SIG }),
+      rec({ outcome: "loss", receiptSig: SIG }),
+      rec({ outcome: "tie", receiptSig: SIG }),
+      rec(),
+      rec({ outcome: "loss" }),
+    ];
+    const wins = pool.filter((r) => r.outcome === "win").length;
+    expect(duelVerifiedWins(pool)).toBeLessThanOrEqual(duelVerifiedCount(pool));
+    expect(duelVerifiedWins(pool)).toBeLessThanOrEqual(wins);
+    expect(duelVerifiedWins(pool)).toBe(1);
+  });
+
+  it("duelVerifiedWins: خلوص و قطعیت — همان ورودی همان خروجی، ورودی را تغییر نمی‌دهد", () => {
+    const pool = [rec({ receiptSig: SIG }), rec({ outcome: "loss", receiptSig: SIG2 })];
+    const snapshot = JSON.stringify(pool);
+    const a = duelVerifiedWins(pool);
+    const b = duelVerifiedWins(pool);
+    expect(a).toBe(b);
+    expect(a).toBe(1);
+    expect(JSON.stringify(pool)).toBe(snapshot);
   });
 
   it("sanitizeAll فیلدِ تازه را از snapshot منتقل می‌کند", () => {

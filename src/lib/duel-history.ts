@@ -8,10 +8,11 @@
 // را برای پنل «آخرین نبردها» حساب می‌کند.
 //
 // خالص است — هیچ import از store/React؛ اسلایس arcade و تست‌ها مصرفش می‌کنند.
-// تنها import: قراردادِ درصدِ دامنه (pure→pure — طبقهٔ پایینِ معماری).
+// تنها importها: قراردادهایِ خالصِ پایینِ معماری (درصدِ دامنه + آمارِ فکر — pure→pure).
 // ------------------------------------------------------------------
 
 import { percent } from "./domain/percent";
+import { thinkStatsFromSamples, type ThinkStats } from "./duel-think";
 
 export type DuelOutcome = "win" | "loss" | "tie";
 export type DuelEndReason = "finished" | "forfeit";
@@ -43,6 +44,12 @@ export interface DuelRecord {
    * را ندارند — نمایشِ «داورگواه» باید زیرمجموعهٔ صادق باشد، نه وضعیتِ دودویی.
    */
   receiptSig?: string;
+  /**
+   * Task 108 «ماندگاریِ آمارِ فکر» — خلاصهٔ آماریِ زمانِ فکرِ خودی (duel-think)،
+   * فقط وقتی دست‌کم یک نمونهٔ سالم داشت. رکوردهای قدیمی/سرویسِ قدیمی/بی‌نمونه
+   * این فیلد را ندارند — هر خواننده (چیپِ دفترچه، نشانِ چابکی) زیرمجموعهٔ صادق است.
+   */
+  think?: ThinkStats;
 }
 
 /** سقف دفترچه — جدیدترین‌ها می‌مانند (هم‌سقف goalMetDays سبکِ union) */
@@ -83,7 +90,9 @@ export function buildDuelRecord(
   now: number,
   myFinishAt = 0,
   /** Task 96 — sig رسیدِ داور از EndPayload؛ نامشکل یا غایب → فیلد ثبت نمی‌شود */
-  receiptSig?: string | null
+  receiptSig?: string | null,
+  /** Task 108 — نمونه‌های فکرِ خودی (end.think?.[sid])؛ بی‌نمونه → فیلد ثبت نمی‌شود */
+  thinkSamples?: (number | null)[]
 ): DuelRecord | null {
   const mine = end.players.find((p) => p.sid === sid);
   if (!mine) return null;
@@ -93,6 +102,9 @@ export function buildDuelRecord(
     end.startedAt && end.startedAt > 0
       ? clampInt((Math.max(myFinishAt > 0 ? myFinishAt : now) - end.startedAt) / 1000, 7200)
       : 0;
+  // Task 108 — آمارِ فکرِ ذخیره‌کردنی؛ بی‌نمونه → خودِ فیلد غایب (صداقتِ زیرمجموعه).
+  // فیلدِ تودرتو — نه پخشِ تخت (پخشِ تخت avgMs را بیرون می‌ریزد و totalِ رکورد را خراب می‌کند)
+  const think = thinkStatsFromSamples(thinkSamples ?? []);
   return {
     id: `d${now}`,
     day: duelDayKey(new Date(now)),
@@ -108,7 +120,48 @@ export function buildDuelRecord(
     total: clampInt(end.total, 999),
     durationSec,
     receiptSig: sigOk(receiptSig),
+    ...(think ? { think } : {}),
   };
+}
+
+// ------------------------------------------------------------------
+// Task 108 — نهمین خانوادهٔ نشان: «چابکیِ ذهن» (فکرِ کم + درستِ زیاد).
+// زمانِ فکرِ میانگین زیر THINK_QUICK_MS با نرخِ درستیِ بالا روی نمونهٔ
+// معنادار یعنی پاسخ پیش از فکرکردن آماده بود — پروفایلِ «نیم‌نگاه».
+// گیت‌های صادق:
+//  • think باید موجود باشد (رکوردِ قدیمی/بی‌نمونه هرگز نمی‌شمارد)
+//  • seen ≥ ۳ — میانگینِ تک‌نمونه‌ای آمار نیست
+//  • answered ≥ ۵ — نرخِ درستی روی نمونهٔ کوتاه بی‌معناست
+//  • myCorrect/answered ≥ ۰٫۸ — «درستِ زیاد»
+//  • avgMs ≤ THINK_QUICK_MS — «فکرِ کم» (با ≤ نه < — مرزِ دقیق تست-قفل)
+// ------------------------------------------------------------------
+
+/** آستانه‌های نشانِ چابکی — فروزن؛ تست‌ها روی مرزِ دقیق قفل می‌شوند */
+export const DUEL_QUICK_THINK = {
+  quickMs: 1500,
+  minSeen: 3,
+  minAnswered: 5,
+  correctRate: 0.8,
+} as const;
+
+/** آیا این رکورد «چابک» است؟ — هرگز throw نمی‌کند؛ ورودیِ خراب → false */
+export function isQuickThinkRecord(rec: DuelRecord): boolean {
+  const t = rec.think;
+  if (!t || typeof t !== "object") return false;
+  const { quickMs, minSeen, minAnswered, correctRate } = DUEL_QUICK_THINK;
+  if (typeof t.avgMs !== "number" || !Number.isFinite(t.avgMs) || t.avgMs < 0) return false;
+  if (typeof t.seen !== "number" || !Number.isInteger(t.seen) || t.seen < minSeen) return false;
+  const answered = typeof rec.answered === "number" && Number.isFinite(rec.answered) ? rec.answered : 0;
+  const correct = typeof rec.myCorrect === "number" && Number.isFinite(rec.myCorrect) ? rec.myCorrect : 0;
+  if (answered < minAnswered) return false;
+  if (correct / answered < correctRate) return false;
+  return t.avgMs <= quickMs;
+}
+
+/** شمارِ رکوردهای چابکِ دفترچه — ورودیِ خراب بی‌صدا نادیده (الگوی duelVerifiedWins) */
+export function duelQuickThinkers(records: DuelRecord[]): number {
+  if (!Array.isArray(records)) return 0;
+  return records.reduce((n, r) => (r && isQuickThinkRecord(r) ? n + 1 : n), 0);
 }
 
 /** درج newest-first با حذف تکراریِ هم‌id و سقف DUEL_HISTORY_CAP */
@@ -138,6 +191,16 @@ export function duelBestScore(records: DuelRecord[]): number {
  */
 export function duelVerifiedCount(records: DuelRecord[]): number {
   return records.reduce((n, r) => (r.receiptSig ? n + 1 : n), 0);
+}
+
+/**
+ * Task 105 — چند «بردِ» دفترچه رسیدِ امضاشدهٔ داور دارد (زیرمجموعهٔ صادقِ
+ * زیرمجموعه: هم برد است هم رسید). خانوادهٔ هشتمِ نشان «اعتماد» روی همین
+ * می‌نشیند — پاداشِ اعتماد به داوریِ متمرکز (Task 94) نه به خوداظهاری؛
+ * رکوردِ بدونِ sig (قدیمی یا دستی) هرگز نمی‌شمارد.
+ */
+export function duelVerifiedWins(records: DuelRecord[]): number {
+  return records.reduce((n, r) => (r.outcome === "win" && r.receiptSig ? n + 1 : n), 0);
 }
 
 /** فرم آخرین n نبرد (جدید→قدیم) برای نشان‌های رنگی */
@@ -334,6 +397,28 @@ export function duelLedgerStats(records: DuelRecord[]): DuelLedgerStats {
 
 const DAY_RE = /^\d{4}-\d{2}-\d{2}$/;
 
+/**
+ * Task 109 — اعتبارسنجِ مشترکِ فیلدِ think: اعدادِ متناهیِ نامنفی،
+ * seen صحیحِ ۱..total≤۹۹۹، min≤avg≤max؛ خراب → null (فیلد می‌افتد،
+ * نه صفرِ ساختگی). هم sanitizeDuelRecord و هم duelWeeklyStatsِ هفته‌نامه
+ * از همین یک قاعده می‌خوانند تا «شکلِ سالمِ think» هرگز دووجهی نشود.
+ */
+export function saneThink(t: unknown): ThinkStats | null {
+  if (!t || typeof t !== "object" || Array.isArray(t)) return null;
+  if (typeof (t as Record<string, unknown>).avgMs !== "number") return null;
+  const s = t as ThinkStats;
+  const numsOk = [s.avgMs, s.minMs, s.maxMs].every(
+    (x) => typeof x === "number" && Number.isFinite(x) && x >= 0
+  );
+  const countsOk =
+    typeof s.seen === "number" && Number.isInteger(s.seen) && s.seen >= 1 &&
+    typeof s.total === "number" && Number.isInteger(s.total) && s.total >= s.seen && s.total <= 999;
+  if (numsOk && countsOk && s.minMs <= s.avgMs && s.avgMs <= s.maxMs) {
+    return { avgMs: s.avgMs, minMs: s.minMs, maxMs: s.maxMs, seen: s.seen, total: s.total };
+  }
+  return null;
+}
+
 /** اعتبارسنجی یک رکورد نامطمئن — رکورد خراب کلاً می‌افتد، نه اینکه نصفه بماند */
 export function sanitizeDuelRecord(v: unknown): DuelRecord | null {
   if (!v || typeof v !== "object" || Array.isArray(v)) return null;
@@ -345,7 +430,7 @@ export function sanitizeDuelRecord(v: unknown): DuelRecord | null {
   const reason: DuelEndReason = r.reason === "forfeit" ? "forfeit" : "finished";
   const opponent = typeof r.opponent === "string" ? r.opponent.trim().slice(0, 40) : "";
   const opponentColor = typeof r.opponentColor === "string" ? r.opponentColor.slice(0, 24) : "stone";
-  return {
+  const out: DuelRecord = {
     id,
     day,
     outcome,
@@ -362,6 +447,10 @@ export function sanitizeDuelRecord(v: unknown): DuelRecord | null {
     // Task 96 — sig خراب/جعلی می‌افتد؛ رکوردِ بدونِ sig (قدیمی) سرِ پا می‌ماند
     receiptSig: sigOk(r.receiptSig),
   };
+  // Task 108 — think فقط با شکلِ سالم می‌ماند (اعتبارسنجِ مشترکِ ۱۰۹)
+  const t = saneThink(r.think);
+  if (t) out.think = t;
+  return out;
 }
 
 /** آرایهٔ دفترچه از ورودی نامطمئن: فقط رکوردهای سالم، بدون تکرارِ id، با سقف */

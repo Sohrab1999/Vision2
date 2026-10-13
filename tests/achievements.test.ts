@@ -454,7 +454,7 @@ describe("رانِ ترکیبی — هفتهٔ دیکتهٔ پیوسته (Task 8
     expect(byId("dictation-run").title).toBe("هفتهٔ دیکتهٔ پیوسته");
     expect(byId("dictation-run").tier).toBe("gold");
     expect(byId("dictation-run").icon).toBe("SpellCheck2");
-    expect(BADGES.length).toBe(46);
+    expect(BADGES.length).toBe(52);
   });
 
   it("قراردادِ شمارِ روز ≠ جمع: دو دیکته در یک روز هنوز یک روزِ دیکته‌دار است", () => {
@@ -749,7 +749,7 @@ describe("رانِ مرور — هفتهٔ مرور (Task 88)", () => {
     expect(byId("review-run").title).toBe("هفتهٔ مرور");
     expect(byId("review-run").tier).toBe("silver");
     expect(byId("review-run").icon).toBe("History");
-    expect(BADGES.length).toBe(46);
+    expect(BADGES.length).toBe(52);
     const one = base({ dayHistory: { [w(2)]: dh({ day: w(2), reviews: 1 }) } });
     expect(byId("review-run").progress!(one)).toBe("۱ از ۷ روزِ این هفته");
   });
@@ -840,7 +840,7 @@ describe("رانِ سه‌گانه — هفتهٔ سه‌گانه (Task 89)", ()
     expect(byId("triple-run").title).toBe("هفتهٔ سه‌گانه");
     expect(byId("triple-run").tier).toBe("gold");
     expect(byId("triple-run").icon).toBe("Crown");
-    expect(BADGES.length).toBe(46);
+    expect(BADGES.length).toBe(52);
     const mixed = base({ dayHistory: { ...tripleWeek(), [w(3)]: dh({ day: w(3), reviews: 1, quizzes: 1, dictation: 0 }) } });
     // دیکته ۶ روز / آزمون ۷ / مرور ۷ — ضعیف‌ترین حلقه پیشرفت را می‌گوید
     expect(byId("triple-run").progress!(mixed)).toBe("۶ از ۷ روزِ سه‌گانهٔ این هفته");
@@ -938,7 +938,7 @@ describe("ماراتن — رانِ دوهفته‌ای (Task 90)", () => {
     expect(byId("marathon-run").title).toBe("ماراتنِ دوهفته‌ای");
     expect(byId("marathon-run").tier).toBe("gold");
     expect(byId("marathon-run").icon).toBe("Trophy");
-    expect(BADGES.length).toBe(46);
+    expect(BADGES.length).toBe(52);
     // دیکته ۱۳ روز / آزمون ۱۴ / مرور ۱۴ — ضعیف‌ترین حلقه پیشرفت را می‌گوید
     const thirteen = base({
       dayHistory: {
@@ -1053,7 +1053,7 @@ describe("خانوادهٔ حضور — ماهِ حاضر و ماهِ درخشا
     expect(byId("presence-month-full").title).toBe("ماهِ درخشان");
     expect(byId("presence-month-full").tier).toBe("gold");
     expect(byId("presence-month-full").icon).toBe("Sparkles");
-    expect(BADGES.length).toBe(46);
+    expect(BADGES.length).toBe(52);
     const twentyFour = base({ dayHistory: presenceDays([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]) });
     expect(twentyFour.activeDays35).toBe(25);
     expect(byId("presence-month").progress!(twentyFour)).toBe("۲۵ از ۲۵ روزِ فعال");
@@ -1147,7 +1147,7 @@ describe("ماهِ بی‌وقفه — پلهٔ نهاییِ خانوادهٔ ح
     expect(byId("presence-month-perfect").title).toBe("ماهِ بی‌وقفه");
     expect(byId("presence-month-perfect").tier).toBe("gold");
     expect(byId("presence-month-perfect").icon).toBe("Gem");
-    expect(BADGES.length).toBe(46);
+    expect(BADGES.length).toBe(52);
     const thirtyFour = base({ dayHistory: presenceDays([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33]) });
     expect(thirtyFour.activeDays35).toBe(34);
     expect(byId("presence-month-perfect").progress!(thirtyFour)).toBe("۳۴ از ۳۵ روزِ فعال");
@@ -1219,7 +1219,7 @@ describe("هفتهٔ پنج‌گانه — خانوادهٔ تنوع (Task 93)",
     expect(byId("five-skill-week").title).toBe("هفتهٔ پنج‌گانه");
     expect(byId("five-skill-week").tier).toBe("gold");
     expect(byId("five-skill-week").icon).toBe("Puzzle");
-    expect(BADGES.length).toBe(46);
+    expect(BADGES.length).toBe(52);
     // سه مهارت حاضر → «۳ از ۵ مهارت»
     const three = base({
       dayHistory: {
@@ -1343,14 +1343,14 @@ describe("خانوادهٔ سرعت — صاعقه و سرعتِ صوت (Task 10
     ...over,
   });
 
-  it("wording و تیر و آیکن: صاعقه نقره/Zap، سرعتِ صوت طلا/Rocket؛ رجیستری ۴۶", () => {
+  it("wording و تیر و آیکن: صاعقه نقره/Zap، سرعتِ صوت طلا/Rocket؛ رجیستری ۵۲", () => {
     expect(byId("speed-bolt").title).toBe("صاعقه");
     expect(byId("speed-bolt").tier).toBe("silver");
     expect(byId("speed-bolt").icon).toBe("Zap");
     expect(byId("speed-sound").title).toBe("سرعتِ صوت");
     expect(byId("speed-sound").tier).toBe("gold");
     expect(byId("speed-sound").icon).toBe("Rocket");
-    expect(BADGES.length).toBe(46);
+    expect(BADGES.length).toBe(52);
   });
 
   it("دو گیتِ صادق: نمونهٔ کم با میانگینِ بالا باز نمی‌کند و پیشرفت روی گیتِ نمونه می‌ماند", () => {
@@ -1397,6 +1397,103 @@ describe("خانوادهٔ سرعت — صاعقه و سرعتِ صوت (Task 10
     expect(corrupt.duelSpeedCorrect).toBe(0);
     expect(ids(corrupt)).not.toContain("speed-bolt");
     expect(ids(corrupt)).not.toContain("speed-sound");
+  });
+});
+
+// ---------------------------------------------------------------
+// Task 105 — هشتمین خانواده: «اعتماد» — بردهای رسیددار (امضای داور).
+// قرارداد: فقط win + receiptSig می‌شمارد؛ مرزها ۳/۷ دقیق؛ زیرمجموعهٔ
+// ریاضیِ ۷⇒۳ در هر دو جهت؛ ledgerِ خراب → صفرِ صادق؛ پیشرفتِ شمارشیِ
+// همیشه ≤ سقفِ همان پله.
+// ---------------------------------------------------------------
+describe("خانوادهٔ اعتماد — گواه‌گرفته و سندِ زنده (Task 105)", () => {
+  const SIG1 = "a".repeat(64);
+  const SIG2 = "b".repeat(64);
+  const drec = (over: Partial<DuelRecord> = {}): DuelRecord => ({
+    id: "d" + Math.random().toString(36).slice(2, 8),
+    day: "2026-10-13",
+    outcome: "win",
+    reason: "finished",
+    opponent: "سینا",
+    opponentColor: "rose",
+    myScore: 950,
+    oppScore: 500,
+    myCorrect: 5,
+    oppCorrect: 3,
+    answered: 10,
+    total: 10,
+    durationSec: 80,
+    ...over,
+  });
+  /** N بردِ رسیددار + M بردِ بی‌رسید — راهِ هم‌قراردادِ خانواده‌ها: از duelHistory واقعی */
+  const ledgerWith = (verifiedWins: number, plainWins = 0): Partial<BuildArgs> => ({
+    duelHistory: [
+      ...Array.from({ length: verifiedWins }, (_, i) => drec({ id: "v" + i, receiptSig: i % 2 ? SIG2 : SIG1 })),
+      ...Array.from({ length: plainWins }, (_, i) => drec({ id: "p" + i })),
+    ],
+  });
+
+  it("wording و تیر و آیکن: گواه‌گرفته نقره/ShieldCheck، سندِ زنده طلا/Stamp؛ رجیستری ۵۲", () => {
+    expect(byId("receipt-trust").title).toBe("گواه‌گرفته");
+    expect(byId("receipt-trust").tier).toBe("silver");
+    expect(byId("receipt-trust").icon).toBe("ShieldCheck");
+    expect(byId("receipt-oath").title).toBe("سندِ زنده");
+    expect(byId("receipt-oath").tier).toBe("gold");
+    expect(byId("receipt-oath").icon).toBe("Stamp");
+    expect(BADGES.length).toBe(52);
+  });
+
+  it("سیم‌کشیِ buildEvalInput: فقط بردِ رسیددار می‌شمارد — باختِ رسیددار و بردِ بی‌رسید نه", () => {
+    const input = base({
+      duelHistory: [
+        drec({ receiptSig: SIG1 }),
+        drec({ outcome: "loss", receiptSig: SIG2 }),
+        drec(),
+        drec({ receiptSig: SIG1 }),
+        drec({ outcome: "tie", receiptSig: SIG2 }),
+      ],
+    });
+    expect(input.duelVerifiedWins).toBe(2);
+  });
+
+  it("مرزِ دقیقِ نقره: ۲ قفل، ۳ باز — و پیشرفتِ شمارشیِ صادق", () => {
+    const two = base(ledgerWith(0, 2));
+    expect(two.duelVerifiedWins).toBe(0);
+    expect(ids(two)).not.toContain("receipt-trust");
+    expect(byId("receipt-trust").progress!(two)).toBe("۰ از ۳ بردِ گواه‌دار");
+    const three = base(ledgerWith(3));
+    expect(three.duelVerifiedWins).toBe(3);
+    expect(ids(three)).toContain("receipt-trust");
+    expect(byId("receipt-trust").progress!(three)).toBe("۳ از ۳ بردِ گواه‌دار");
+  });
+
+  it("مرزِ دقیقِ طلا: ۶ قفل با پیشرفتِ سقف‌خورده، ۷ باز — زیرمجموعهٔ ۷⇒۳ در هر دو جهت", () => {
+    const six = base(ledgerWith(6));
+    expect(ids(six)).not.toContain("receipt-oath");
+    expect(ids(six)).toContain("receipt-trust"); // نقره با ۶ باز است
+    expect(byId("receipt-oath").progress!(six)).toBe("۶ از ۷ بردِ گواه‌دار");
+    const seven = base(ledgerWith(7));
+    expect(ids(seven)).toContain("receipt-oath");
+    expect(ids(seven)).toContain("receipt-trust"); // طلا ⇒ نقره
+    const three = base(ledgerWith(3));
+    expect(ids(three)).toContain("receipt-trust");
+    expect(ids(three)).not.toContain("receipt-oath"); // نقره‌تنها ⇒ قفلِ طلا
+    const mid = base(ledgerWith(5));
+    expect(ids(mid).includes("receipt-oath")).toBe(false);
+    // سقفِ پیشرفت: هیچ‌وقت «۹ از ۷» دیده نمی‌شود (۹ بردِ رسیددار + ۲ ساده)
+    const nine = base(ledgerWith(9, 2));
+    expect(byId("receipt-oath").progress!(nine)).toBe("۷ از ۷ بردِ گواه‌دار");
+    expect(byId("receipt-trust").progress!(nine)).toBe("۳ از ۳ بردِ گواه‌دار");
+  });
+
+  it("دفترچهٔ قدیمیِ بی‌sig و ledgerِ خراب: صفرِ صادق — هیچ‌کدام باز نمی‌شوند", () => {
+    const legacy = base({ duelHistory: [drec()] });
+    expect(legacy.duelVerifiedWins).toBe(0);
+    expect(ids(legacy)).not.toContain("receipt-trust");
+    expect(ids(legacy)).not.toContain("receipt-oath");
+    const corrupt = buildEvalInput(baseRaw({ duelHistory: 42 }) as unknown as BuildArgs);
+    expect(corrupt.duelVerifiedWins).toBe(0);
+    expect(ids(corrupt)).not.toContain("receipt-trust");
   });
 });
 

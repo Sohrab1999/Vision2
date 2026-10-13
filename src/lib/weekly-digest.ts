@@ -11,7 +11,7 @@
 import type { DayHistoryMap, DayStat, HistoryMap } from "./study-store";
 import { faNum } from "./study-theme";
 import { percent } from "./domain/percent";
-import { DUEL_HISTORY_CAP, type DuelRecord } from "./duel-history";
+import { DUEL_HISTORY_CAP, DUEL_QUICK_THINK, saneThink, type DuelRecord } from "./duel-history";
 
 export interface WeekTotals {
   reviews: number;
@@ -194,6 +194,31 @@ export interface WeeklyDuels {
   winRate: number; // percent(win, thisWeek) — ۰ بی‌نبرد
   best: number; // بهترین امتیازِ شخصیِ همین هفته — ۰ بی‌نبرد
   truncated: boolean; // پنجره پرِ سقفِ دفترچه است — شمارش حداقلی
+  /**
+   * Task 109 «فکرِ هفته» — تلفیقِ وزن‌دارِ آمارِ فکرِ نبردهای همینِ هفته؛
+   * null یعنی هیچ رکوردِ فکرِ سالمی در پنجره نیست (خطِ UI پنهان — نه صفرِ ساختگی).
+   * رکوردهای بی‌think (قدیمی/سرویسِ قدیمی/بی‌نمونه) در شمارش نمی‌آیند —
+   * زیرمجموعهٔ صادق، هم‌الگوی چیپِ دفترچه و نشانِ چابکیِ ذهن (۱۰۸).
+   */
+  think: WeeklyThink | null;
+  /**
+   * Task 113 «هفتهٔ چابک در هفته‌نامه» — پروفایلِ همینِ پنجرهٔ ۷روزهٔ دایجست
+   * [today−6..today] وقتی از گیت‌های هفتهٔ چابک (۱۱۰) بگذرد؛ در غیرِ این صورت
+   * null (خطِ UI غایب — نه صفرِ ساختگی). ارزیاب و آستانه‌ها همانِ نشانِ
+   * خانوادهٔ دهم‌اند (evalQuickWindow + DUEL_QUICK_WEEK) — هرگز دووجهی نمی‌شود.
+   */
+  quickWeek: QuickWeekProfile | null;
+}
+
+export interface WeeklyThink {
+  /** میانگینِ وزن‌دار بر اساسِ seen هر نبرد (Σ avgMs·seen ÷ Σ seen)، گِرد به ms */
+  avgMs: number;
+  /** سریع‌ترین لحظهٔ فکرِ هفته — کمینهٔ minMsها */
+  fastestMs: number;
+  /** جمعِ نمونه‌های سالمِ همهٔ نبردهای فکردار */
+  seen: number;
+  /** جمعِ طولِ نبردهای فکردار — برای «N از M سؤالِ فکردار» */
+  total: number;
 }
 
 /**
@@ -213,6 +238,11 @@ export function duelWeeklyStats(records: DuelRecord[] | undefined, todayKey: str
   let loss = 0;
   let tie = 0;
   let best = 0;
+  // Task 109 — تجمیعِ وزن‌دارِ فکر؛ فقط رکوردهای همینِ هفته با thinkِ سالم
+  let thinkSumMs = 0; // Σ avgMs·seen — میانگینِ میانگین‌ها وزن‌دار بر نمونه‌ها
+  let thinkSeen = 0;
+  let thinkTotal = 0;
+  let thinkFastest = Number.POSITIVE_INFINITY;
   for (const r of records) {
     if (!r || typeof r.day !== "string") continue;
     const outcome = r.outcome === "win" || r.outcome === "loss" || r.outcome === "tie" ? r.outcome : null;
@@ -223,6 +253,13 @@ export function duelWeeklyStats(records: DuelRecord[] | undefined, todayKey: str
       else if (outcome === "loss") loss += 1;
       else tie += 1;
       if (Number.isFinite(r.myScore) && r.myScore > best) best = r.myScore;
+      const t = saneThink(r.think);
+      if (t) {
+        thinkSumMs += t.avgMs * t.seen;
+        thinkSeen += t.seen;
+        thinkTotal += t.total;
+        if (t.minMs < thinkFastest) thinkFastest = t.minMs;
+      }
     } else if (lastDays.has(r.day)) {
       lastWeek += 1;
     }
@@ -236,6 +273,18 @@ export function duelWeeklyStats(records: DuelRecord[] | undefined, todayKey: str
     winRate: percent(win, thisWeek),
     best,
     truncated: thisWeek >= DUEL_HISTORY_CAP,
+    think:
+      thinkSeen > 0
+        ? {
+            avgMs: Math.round(thinkSumMs / thinkSeen),
+            fastestMs: thinkFastest,
+            seen: thinkSeen,
+            total: thinkTotal,
+          }
+        : null,
+    // Task 113 — پروفایلِ هفتهٔ چابکِ همینِ پنجره؛ بدونِ گذرِ گیت null می‌آید
+    // (خطِ هفته‌نامه غایب، نه صفرِ ساختگی) — هم‌ارزیابِ نشانِ ۱۱۰
+    quickWeek: duelWeekQuickProfile(records, todayKey),
   };
 }
 
@@ -253,4 +302,183 @@ export function faDayLabel(key: string): string {
   if (parts.length !== 3) return key;
   const [, m, d] = parts;
   return `${faNum(Number(d))}/${faNum(Number(m))}`;
+}
+
+// ------------------------------------------------------------------
+// Task 110 — «هفتهٔ چابک» — دهمین خانوادهٔ نشان: گیتِ ترکیبیِ «فکرِ کم +
+// درستِ زیاد» در مقیاسِ هفته. خانوادهٔ چابکیِ ذهن (۱۰۸) تک‌رکوردی است —
+// سه نبردِ چابک حتی در سه فصلِ جدا هم می‌شمارد؛ این‌جا معیار «پیوستگی» است:
+// یک پنجرهٔ ۷روزه که در کلِ آن، میانگینِ وزن‌دارِ فکر کم و نرخِ درستیِ
+// بالاست — نه سه شانسِ پراکنده. آستانه‌ها از DUEL_QUICK_THINK می‌آیند
+// (یک قرارداد، هرگز دووجهی نشود) و میانگین، هم‌وزنِ «فکرِ هفته» (۱۰۹):
+// Σ avgMs·seen ÷ Σ seen — نبردِ پرنمونه سنگین‌تر.
+// ------------------------------------------------------------------
+
+/** گیت‌های هفتهٔ چابک — فروزن؛ مرزهای دقیق تست-قفل می‌شوند */
+export const DUEL_QUICK_WEEK = {
+  /** طولِ پنجرهٔ لغزان (روزِ لنگر تا ۶ روزِ پیش‌تر) */
+  windowDays: 7,
+  /** دست‌کم این تعداد نبردِ فکردارِ سالم در پنجره — «هفته» تک‌نمونه نیست */
+  minThinkful: 3,
+  /** دست‌کم این جمعِ نمونه‌های فکر — میانگینِ وزن‌دار باید معنا داشته باشد */
+  minSeen: 9,
+  /** دست‌کم این جمعِ پاسخ‌ها — نرخِ درستی روی هفتهٔ کوتاه بی‌معناست */
+  minAnswered: 15,
+  /** نرخِ درستیِ حداقل — همان قراردادِ تک‌رکوردی (۱۳۰۸) */
+  correctRate: DUEL_QUICK_THINK.correctRate,
+  /** سقفِ میانگینِ فکرِ هفته برای نشانِ نقره — همان آستانهٔ تک‌رکوردی */
+  silverMs: DUEL_QUICK_THINK.quickMs,
+  /** سقفِ نشانِ طلا — زیرِ یک ثانیه در کلِ هفته */
+  goldMs: 1000,
+} as const;
+
+/** پروفایلِ یک پنجرهٔ ۷روزه — همان چیزی که گیت می‌خواند و تست قفل می‌کند */
+export interface QuickWeekProfile {
+  /** آغازِ پنجره (لنگر − ۶ روز) */
+  startDay: string;
+  /** روزِ لنگر — همیشه روزِ یک رکوردِ واقعی */
+  endDay: string;
+  /** همهٔ رکوردهای سالمِ پنجره (فکردار و بی‌فکر) */
+  duels: number;
+  /** رکوردهای فکردارِ سالمِ پنجره */
+  thinkful: number;
+  /** میانگینِ وزن‌دارِ فکر بر seen — فقط رکوردهای فکردار (زیرمجموعهٔ صادق) */
+  avgMs: number;
+  /** جمعِ نمونه‌های فکرِ پنجره */
+  seen: number;
+  /** جمعِ پاسخ‌های رکوردهای دارای پاسخ (فورفیتِ بی‌پاسخ حساب نمی‌شود) */
+  answered: number;
+  /** جمعِ درست‌های همان رکوردها */
+  correct: number;
+  /** correct/answered — با سقفِ ۱ (درستیِ بیش‌ازصد وجود ندارد) */
+  rate: number;
+}
+
+export interface QuickWeekReport {
+  /**
+   * نخستین پنجرهٔ واجدِ گیتِ نقره در پیمایشِ جدید→قدیم — null یعنی هیچ
+   * هفته‌ای در دفترچه گیت را نگذرانده (نشانِ قفلِ صادق، نه صفرِ ساختگی).
+   */
+  qualifying: QuickWeekProfile | null;
+  /**
+   * کمینهٔ میانگینِ وزن‌دارِ پنجره‌هایِ حداقلِ minThinkful فکردار — بی‌توجهِ
+   * نرخ/پاسخ/سقف؛ فقط برای خطِ پیشرفتِ نشانِ طلا («سریع‌ترین هفتهٔ تو»).
+   */
+  bestAvgMs: number | null;
+  /** بیشترین نبردِ فکردارِ یک پنجرهٔ ۷روزه — پیشرفتِ شمارشیِ نشانِ نقره */
+  maxThinkful: number;
+}
+
+/**
+ * ارزیابِ یک پنجرهٔ ۷روزه — تک‌قراردادِ گیت‌های هفتهٔ چابک؛ هم duelQuickWeekReport
+ * (پنجره‌های لغزانِ نشان) و هم duelWeekQuickProfile (پنجرهٔ خودِ دایجست) همین را
+ * می‌خوانند تا آستانه‌ها هرگز دووجهی نشوند (درسِ «یک اعتبارسنج، دو مصرف‌کننده» — ۱۰۹).
+ * ورودی باید از پیش به همان پنجره فیلتر شده باشد؛ startDay/endDay فقط برای پروفایل‌اند.
+ */
+interface QuickWindowEval {
+  /** پروفایلِ کاملِ پنجره؛ avgMs وقتی seen>0 گِردشده وگرنه ۰ (فقط با qualifies معنا دارد) */
+  profile: QuickWeekProfile;
+  /** شرطِ خطِ bestAvgMs (پیش از گیت‌ها) — دقیقاً همان قراردادِ قبلیِ ۱۱۰ */
+  hasBestAvg: boolean;
+  /** گذر از همهٔ گیت‌های نقره — ترتیبِ گیت‌ها در نتیجهٔ نهایی بی‌اثر است */
+  qualifies: boolean;
+}
+
+function evalQuickWindow(inWin: DuelRecord[], startDay: string, endDay: string): QuickWindowEval {
+  // فکر: فقط رکوردهای فکردارِ سالم (زیرمجموعهٔ صادق — هم‌الگوی ۱۰۸/۱۰۹)
+  let sumMs = 0;
+  let seen = 0;
+  let thinkful = 0;
+  for (const r of inWin) {
+    const t = saneThink(r.think);
+    if (t) {
+      sumMs += t.avgMs * t.seen;
+      seen += t.seen;
+      thinkful += 1;
+    }
+  }
+  // پاسخ‌ها: همهٔ رکوردهای دارای پاسخ — فورفیتِ بی‌پاسخ نه کمکی دارد نه زیانی
+  let answered = 0;
+  let correct = 0;
+  for (const r of inWin) {
+    const a = Number.isFinite(r.answered) ? Math.floor(r.answered) : 0;
+    if (a > 0) {
+      answered += a;
+      correct += Number.isFinite(r.myCorrect) ? Math.floor(r.myCorrect) : 0;
+    }
+  }
+  const rate = correct > 0 ? Math.min(1, correct / answered) : 0;
+  const avgMs = seen > 0 ? Math.round(sumMs / seen) : 0;
+  const qualifies =
+    thinkful >= DUEL_QUICK_WEEK.minThinkful &&
+    seen >= DUEL_QUICK_WEEK.minSeen &&
+    answered >= DUEL_QUICK_WEEK.minAnswered &&
+    rate >= DUEL_QUICK_WEEK.correctRate &&
+    avgMs <= DUEL_QUICK_WEEK.silverMs;
+  return {
+    profile: { startDay, endDay, duels: inWin.length, thinkful, avgMs, seen, answered, correct, rate },
+    hasBestAvg: thinkful >= DUEL_QUICK_WEEK.minThinkful && seen > 0,
+    qualifies,
+  };
+}
+
+/**
+ * پروفایلِ «هفتهٔ چابک» برای پنجرهٔ خودِ دایجست [todayKey−۶..todayKey] — همان
+ * پنجره‌ای که duelWeeklyStats با آن شمارش می‌کند (پنجره‌سازیِ نشان با پنجره‌سازیِ
+ * هفته‌نامه قاطی نمی‌شود). فقط وقتی همهٔ گیت‌ها بگذرد پروفایل می‌دهد؛ در غیرِ این
+ * صورت null — خطِ هفته‌نامه غایب است، نه صفرِ ساختگی. هرگز throw نمی‌کند.
+ */
+export function duelWeekQuickProfile(records: DuelRecord[] | undefined, todayKey: string): QuickWeekProfile | null {
+  if (!Array.isArray(records)) return null;
+  const startDay = dayKeyBefore(todayKey, DUEL_QUICK_WEEK.windowDays - 1);
+  const inWin = records.filter(
+    (r) =>
+      r &&
+      typeof r.day === "string" &&
+      (r.outcome === "win" || r.outcome === "loss" || r.outcome === "tie") &&
+      r.day >= startDay &&
+      r.day <= todayKey
+  );
+  if (inWin.length === 0) return null;
+  const ev = evalQuickWindow(inWin, startDay, todayKey);
+  return ev.qualifies ? ev.profile : null;
+}
+
+/**
+ * بهترین «هفتهٔ چابک» دفترچه — پنجره‌های لغزانِ لنگربر-روزِ رکورد.
+ * هر روزِ متمایزِ دفترچه یک لنگر است (پنجره = [لنگر−۶ .. لنگر])؛ اسکن
+ * جدید→قدیم تا نخستین پنجرهٔ واجد، «گزارش» قطعی بماند. رکوردِ خراب
+ * (روزِ نامعتبر/نتیجهٔ ناشناخته) بی‌صدا کنار می‌رود — هم‌نگهبانِ
+ * duelWeeklyStats. هرگز throw نمی‌کند.
+ */
+export function duelQuickWeekReport(records: DuelRecord[] | undefined): QuickWeekReport {
+  const empty: QuickWeekReport = { qualifying: null, bestAvgMs: null, maxThinkful: 0 };
+  if (!Array.isArray(records)) return empty;
+  const valid = records.filter(
+    (r) =>
+      r &&
+      typeof r.day === "string" &&
+      (r.outcome === "win" || r.outcome === "loss" || r.outcome === "tie")
+  );
+  if (valid.length === 0) return empty;
+  const days = [...new Set(valid.map((r) => r.day))].sort((a, b) => (a < b ? 1 : a > b ? -1 : 0));
+
+  let qualifying: QuickWeekProfile | null = null;
+  let bestAvgMs: number | null = null;
+  let maxThinkful = 0;
+
+  for (const endDay of days) {
+    const startDay = dayKeyBefore(endDay, DUEL_QUICK_WEEK.windowDays - 1);
+    const inWin = valid.filter((r) => r.day >= startDay && r.day <= endDay);
+    if (inWin.length === 0) continue;
+    const ev = evalQuickWindow(inWin, startDay, endDay);
+    if (ev.profile.thinkful > maxThinkful) maxThinkful = ev.profile.thinkful;
+    // بهترین میانگینِ قابل‌نمایش — پیش از گیت‌ها، برای خطِ پیشرفتِ طلا
+    if (ev.hasBestAvg && (bestAvgMs === null || ev.profile.avgMs < bestAvgMs)) {
+      bestAvgMs = ev.profile.avgMs;
+    }
+    // گیت‌ها — نخستین پنجرهٔ واجد می‌ماند (جدید→قدیم، قطعی)
+    if (!qualifying && ev.qualifies) qualifying = ev.profile;
+  }
+  return { qualifying, bestAvgMs, maxThinkful };
 }

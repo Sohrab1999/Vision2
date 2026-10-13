@@ -11,6 +11,7 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import "@testing-library/jest-dom/vitest";
 import { cleanup, render, screen } from "@testing-library/react";
+import { DUEL_PACES, DEFAULT_PACE_MS } from "@/lib/duel-pace";
 import DuelSetup from "@/components/study/duel/duel-setup";
 import { useStudy } from "@/lib/study-store";
 import { sanitizeDuelHistory, type DuelRecord } from "@/lib/duel-history";
@@ -44,6 +45,10 @@ const renderSetup = () =>
       joinInput=""
       setJoinInput={() => {}}
       joinBusy={false}
+      createBusy={false}
+      paceChoices={DUEL_PACES}
+      chosenPace={DEFAULT_PACE_MS}
+      choosePace={() => {}}
     />
   );
 

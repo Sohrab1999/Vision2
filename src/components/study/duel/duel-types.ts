@@ -9,11 +9,13 @@ export type { QuizQuestion };
 // و پنج نمای فاز (setup/waiting/countdown/play/done) دست‌به‌دست می‌شود.
 // ------------------------------------------------------------------
 
+// Task 107 «ریتمِ نبرد» — سقفِ زمانِ هر سؤال دیگر ثابتِ این فایل نیست؛
+// داور در duel:start/duel:state عددِ ریتمِ خودِ اتاق را می‌فرستد و
+// ماشینِ سوکت آن را به تایمرِ play و چیپِ لابی می‌رساند (use-duel-socket).
 export type Phase = "setup" | "waiting" | "countdown" | "play" | "done";
 export type Feedback = "none" | "right" | "wrong";
 export type Conn = "connecting" | "online" | "offline";
 
-export const PER_Q_MS = 15_000;
 export const LETTERS = ["A", "B", "C", "D"];
 
 /** همان شکلی که سرویس ۳۰۰۳ می‌فرستد */
@@ -42,6 +44,12 @@ export interface EndPayload {
   players: PublicPlayer[];
   /** Task 94 — رسیدِ امضاشدهٔ داور (۳۰۰۳)؛ کلاینت آن را عیناً به /api/stats می‌رساند */
   receipt?: DuelReceipt;
+  /**
+   * Task 106 «زمانِ فکر» — نمونه‌های دیدن→پاسخ هر بازیکن بر سید (ms؛ ساعتِ
+   * خودِ سرور). نمایشی و بیرونِ رسیدِ امضاشده؛ سرویسِ قدیمی این فیلد را
+   * نمی‌فرستد → undefined (بلوکِ کارنامه غایب — صداقتِ زیرمجموعه).
+   */
+  think?: Record<string, (number | null)[]>;
 }
 
 /**

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Sparkles, Swords, Users, Timer, Zap, Wifi, WifiOff, Loader2, Target, ShieldCheck, History, Flame, Percent, Search, X, ChevronDown, ChevronUp, ImageDown, Share2 } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
-import { faNum, timeAgoFa, avatarClasses } from "@/lib/study-theme";
+import { faNum, timeAgoFa, avatarClasses, secFa } from "@/lib/study-theme";
 import { percent } from "@/lib/domain/percent";
 import { useToast } from "@/hooks/use-toast";
 import { downloadDuelLedgerImage, buildDuelLedgerBlob } from "@/lib/result-image";
@@ -25,16 +25,23 @@ import {
   type DuelLedgerSortKey,
 } from "@/lib/duel-history";
 import type { Conn } from "./duel-types";
+import { paceSecondsLabel, type DuelPace } from "@/lib/duel-pace";
 
 // فاز SETUP — قهرمان نبرد: آمار بردها، ساخت اتاق و پیوستن با کد
 
-export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJoinInput, joinBusy }: {
+export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJoinInput, joinBusy, createBusy, paceChoices, chosenPace, choosePace }: {
   conn: Conn;
   createRoom: () => void;
   joinRoom: () => void;
   joinInput: string;
   setJoinInput: (v: string) => void;
   joinBusy: boolean;
+  /** Task 112 «بلیتِ ورود» — حینِ ضربِ بلیت/انتظارِ داور مشغول */
+  createBusy: boolean;
+  /** Task 107 — سه ریتمِ بستهٔ duel-pace؛ سرعتِ هر سؤال را سازندهٔ اتاق برمی‌گزیند */
+  paceChoices: readonly DuelPace[];
+  chosenPace: number;
+  choosePace: (ms: number) => void;
 }) {
   const mounted = useMounted();
   const { toast } = useToast();
@@ -83,6 +90,9 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
     tie: "bg-amber-500",
   };
   const outcomeLabel: Record<DuelOutcome, string> = { win: "برد", loss: "باخت", tie: "مساوی" };
+
+  // Task 108 → ۱۰۹ — ثانیهٔ فارسی حالا از secFaِ مشترکِ study-theme می‌آید
+  // (هم‌نسخهٔ duel-done و خطِ «فکرِ هفته» در هفته‌نامه)
 
   // Task 101 — عکسِ کارنامهٔ دفترچه: تجمیعِ صادقِ duelLedgerStats روی کلِ
   // دفترچه (نه یافته‌های فیلترشده — کارت، کارنامهٔ career است) و رندرِ کانواس
@@ -171,13 +181,46 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
               اتاق جدید بساز
             </div>
             <p className="mb-3 text-[12px] leading-6 text-white/80">یک کد ۵حرفی می‌گیریم؛ به دوستت بده تا بپیوندد.</p>
+            {/* Task 107 «ریتمِ نبرد» — سازنده سرعتِ هر سؤال را برمی‌گزیند؛ عددِ
+                برگزیده با duel:create می‌رود و داور گِرِفتش می‌کند. هر دو
+                بازیکن در لابی و شروع، ریتمِ نهایی را از خودِ داور می‌بینند */}
+            <div className="mb-3" role="group" aria-label="انتخاب سرعت هر سؤال">
+              <div className="mb-1.5 flex items-center justify-center gap-1.5 text-[11px] font-bold text-white/75">
+                <Timer size={12} aria-hidden />
+                سرعت هر سؤال
+              </div>
+              <div className="grid grid-cols-3 gap-1.5">
+                {paceChoices.map((p) => {
+                  const active = chosenPace === p.ms;
+                  return (
+                    <button
+                      key={p.key}
+                      onClick={() => choosePace(p.ms)}
+                      aria-pressed={active}
+                      title={`هر سؤال ${paceSecondsLabel(p.ms)} وقت دارد`}
+                      className={`rounded-xl px-2 py-2 text-center transition-all active:scale-95 ${
+                        active
+                          ? "bg-white text-fuchsia-700 shadow-lg"
+                          : "border border-white/25 bg-white/10 text-white/85 hover:bg-white/20"
+                      }`}
+                    >
+                      <span className="block text-[12px] font-black">{p.label}</span>
+                      <span className={`block text-[10px] font-bold ${active ? "text-fuchsia-500" : "text-white/60"}`}>
+                        {paceSecondsLabel(p.ms)}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
             <button
               onClick={createRoom}
-              disabled={conn !== "online"}
+              disabled={conn !== "online" || createBusy}
+              aria-busy={createBusy}
               className="duel-cta inline-flex w-full items-center justify-center gap-2.5 rounded-2xl bg-white px-8 py-3.5 text-[15px] font-black text-fuchsia-700 shadow-xl transition-all hover:opacity-95 active:scale-95 disabled:opacity-50"
             >
-              <Swords size={18} />
-              ساخت اتاق نبرد
+              {createBusy ? <Loader2 size={18} className="animate-spin" /> : <Swords size={18} />}
+              {createBusy ? "در حالِ گرفتنِ بلیت…" : "ساخت اتاق نبرد"}
             </button>
           </div>
 
@@ -412,6 +455,22 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
                     <ShieldCheck size={11} aria-hidden />
                   </span>
                 )}
+                {/* Task 108 — چیپِ «ماندگاریِ آمارِ فکر»: میانگینِ فکرِ همین نبرد،
+                    فقط وقتی رکورد think دارد (رکوردِ قدیمی/بی‌نمونه → غایبِ صادق).
+                    همان الگوی سپرِ داورگواه — استون‌کلاس‌های سراسری، صفر CSS تازه. */}
+                {r.think && (
+                  <span
+                    role="img"
+                    aria-label={`فکرِ میانگین ${secFa(r.think.avgMs)} ثانیه`}
+                    title={`فکرِ میانگین ${secFa(r.think.avgMs)} ثانیه از ${faNum(r.think.seen)} سؤالِ ثبت‌شده`}
+                    className="flex shrink-0 items-center gap-0.5 rounded-md border border-stone-200 bg-stone-100 px-1 py-0.5 text-stone-600"
+                  >
+                    <Timer size={11} aria-hidden />
+                    <span className="text-[9.5px] font-black" dir="rtl">
+                      {secFa(r.think.avgMs)}
+                    </span>
+                  </span>
+                )}
                 <span
                   className={`h-2.5 w-2.5 shrink-0 rounded-full ${avatarClasses[r.opponentColor] ?? "bg-stone-400"}`}
                   aria-hidden
@@ -494,8 +553,8 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
             },
             {
               icon: Timer,
-              title: "۲. ده سؤال، پانزده ثانیه",
-              desc: "هر دو همان سؤال‌ها را با همان ترتیب گزینه‌ها می‌بینند؛ اگر تا ۱۵ ثانیه جواب ندهی، آن سؤال غلط حساب می‌شود.",
+              title: "۲. ده سؤال، سه ریتم",
+              desc: "سازندهٔ اتاق سرعت را برمی‌گزیند — ۸، ۱۵ یا ۲۵ ثانیه برای هر سؤال؛ اگر تا پایانِ وقت جواب ندهی، آن سؤال غلط حساب می‌شود.",
             },
             {
               icon: Zap,

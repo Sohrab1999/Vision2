@@ -307,3 +307,290 @@ describe("خطِ هایلایتِ نبرد در computeWeeklyDigest (Task 103)",
     expect(d.highlights.some((h) => h.includes("۱ نبرد واژگانی این هفته"))).toBe(true);
   });
 });
+
+// ------------------------------------------------------------------
+// Task 109 — «فکرِ هفته» — تجمیعِ وزن‌دارِ آمارِ فکرِ نبردهای همین هفته.
+// قفل‌ها: ① بی‌رکوردِ فکردار → null (نه صفرِ ساختگی) ② میانگینِ وزن‌دار
+// بر seen ③ سریع‌ترین = کمینهٔ minMs ④ فکرِ هفتهٔ پیش هرگز نمی‌شمارد
+// ⑤ thinkِ خرابِ هر شکل نادیده اما رکورد در شمارشِ نبرد می‌ماند
+// ⑥ پوششِ ناقص (seen<total) جمع می‌شود ⑦ خلوص/قطعیت
+// ------------------------------------------------------------------
+import { saneThink } from "@/lib/duel-history";
+import type { ThinkStats } from "@/lib/duel-think";
+
+const think = (over: Partial<ThinkStats>): ThinkStats => ({
+  avgMs: 800,
+  minMs: 200,
+  maxMs: 1500,
+  seen: 4,
+  total: 10,
+  ...over,
+});
+
+describe("saneThink — اعتبارسنجِ مشترکِ فیلدِ think (Task 109)", () => {
+  it("شکلِ سالم رد می‌شود و کپیِ فشرده می‌دهد — نه همان شیء", () => {
+    const t = think({});
+    const out = saneThink(t);
+    expect(out).toEqual(t);
+    expect(out).not.toBe(t);
+  });
+
+  it("خرابِ هر شکل → null: شیءِ خالی، آرایه، NaN، منفی، seen=۰، seen>total، min>avg، total>۹۹۹", () => {
+    expect(saneThink(undefined)).toBeNull();
+    expect(saneThink(null)).toBeNull();
+    expect(saneThink({})).toBeNull();
+    expect(saneThink([think({})])).toBeNull();
+    expect(saneThink(think({ avgMs: Number.NaN }))).toBeNull();
+    expect(saneThink(think({ minMs: -1 }))).toBeNull();
+    expect(saneThink(think({ avgMs: Number.POSITIVE_INFINITY }))).toBeNull();
+    expect(saneThink(think({ seen: 0 }))).toBeNull();
+    expect(saneThink(think({ seen: 4.5 }))).toBeNull();
+    expect(saneThink(think({ seen: 11 }))).toBeNull(); // seen > total
+    expect(saneThink(think({ minMs: 900 }))).toBeNull(); // min > avg
+    expect(saneThink(think({ maxMs: 700 }))).toBeNull(); // avg > max
+    expect(saneThink(think({ total: 1000 }))).toBeNull();
+    expect(saneThink(think({ total: 10.5 }))).toBeNull();
+  });
+
+  it("مرزهایِ دقیق: seen=۱ و total=seen و total=۹۹۹ سالم‌اند؛ min=avg=max هم", () => {
+    expect(saneThink(think({ seen: 1, total: 1 }))).not.toBeNull();
+    expect(saneThink(think({ total: 999, seen: 999 }))).not.toBeNull();
+    expect(saneThink(think({ minMs: 800, maxMs: 800 }))).not.toBeNull();
+  });
+});
+
+describe("duelWeeklyStats — فکرِ هفته (Task 109)", () => {
+  it("بی‌رکوردِ فکردار → thinkِ null ولی شمارشِ نبردها سرِ پا", () => {
+    const d = duelWeeklyStats(
+      [rec({ id: "a", day: dayKeyBefore(T, 0) }), rec({ id: "b", day: dayKeyBefore(T, 1) })],
+      T
+    )!;
+    expect(d.thisWeek).toBe(2);
+    expect(d.think).toBeNull();
+  });
+
+  it("تلفیقِ وزن‌دار: (۸۰۰·۴ + ۱۲۰۰·۲) ÷ ۶ = ۹۳۳ · سریع‌ترین = کمینهٔ minMs · seen/total جمعی", () => {
+    const d = duelWeeklyStats(
+      [
+        rec({ id: "a", day: dayKeyBefore(T, 0), think: think({ avgMs: 800, minMs: 200, seen: 4, total: 10 }) }),
+        rec({ id: "b", day: dayKeyBefore(T, 2), think: think({ avgMs: 1200, minMs: 300, seen: 2, total: 10 }) }),
+      ],
+      T
+    )!;
+    expect(d.think).toEqual({ avgMs: 933, fastestMs: 200, seen: 6, total: 20 });
+  });
+
+  it("فکرِ هفتهٔ پیش (روزِ هفتم و دهم) هرگز نمی‌شمارد", () => {
+    const d = duelWeeklyStats(
+      [
+        rec({ id: "old7", day: dayKeyBefore(T, 7), think: think({ avgMs: 100, minMs: 50, seen: 10, total: 10 }) }),
+        rec({ id: "old10", day: dayKeyBefore(T, 10), think: think({ avgMs: 100, minMs: 50, seen: 10, total: 10 }) }),
+      ],
+      T
+    )!;
+    expect(d.lastWeek).toBe(2);
+    expect(d.thisWeek).toBe(0);
+    expect(d.think).toBeNull();
+  });
+
+  it("thinkِ خرابِ هر شکل نادیده می‌آید ولی رکورد در شمارشِ نبرد می‌ماند", () => {
+    const d = duelWeeklyStats(
+      [
+        rec({ id: "a", day: dayKeyBefore(T, 0), think: think({ avgMs: Number.NaN }) }),
+        rec({ id: "b", day: dayKeyBefore(T, 1), think: { avgMs: 800 } as unknown as ThinkStats }), // ناقص
+        rec({ id: "c", day: dayKeyBefore(T, 2), think: think({ seen: 0 }) }),
+        rec({ id: "ok", day: dayKeyBefore(T, 3), think: think({ avgMs: 500, minMs: 100, seen: 3, total: 10 }) }),
+      ],
+      T
+    )!;
+    expect(d.thisWeek).toBe(4);
+    expect(d.think).toEqual({ avgMs: 500, fastestMs: 100, seen: 3, total: 10 });
+  });
+
+  it("پوششِ ناقصِ یک نبرد: seen<total جمع می‌شود تا چیپِ «N از M» صادق بماند", () => {
+    const d = duelWeeklyStats(
+      [rec({ id: "a", day: dayKeyBefore(T, 0), think: think({ seen: 4, total: 10 }) })],
+      T
+    )!;
+    expect(d.think!.seen).toBe(4);
+    expect(d.think!.total).toBe(10);
+  });
+
+  it("خلوص و قطعیت: ورودی دست‌نخورده، دو بارِ پشت‌هم برابر", () => {
+    const rs = [
+      rec({ id: "a", day: dayKeyBefore(T, 0), think: think({}) }),
+      rec({ id: "b", day: dayKeyBefore(T, 1), outcome: "loss" as const, think: think({ avgMs: 1100, minMs: 400, maxMs: 2000, seen: 2, total: 5 }) }),
+    ];
+    const snapshot = JSON.stringify(rs);
+    const first = duelWeeklyStats(rs, T)!;
+    const second = duelWeeklyStats(rs, T)!;
+    expect(JSON.stringify(rs)).toBe(snapshot);
+    expect(first).toEqual(second);
+  });
+
+  it("computeWeeklyDigest تلفیق را به بلوکِ duels می‌رساند (سیم‌کشیِ کامل)", () => {
+    const d = computeWeeklyDigest(
+      input({
+        duelHistory: [rec({ id: "a", day: dayKeyBefore(T, 0), think: think({ avgMs: 649, minMs: 100, seen: 5, total: 5 }) })],
+      }),
+      T
+    );
+    expect(d.duels!.think).toEqual({ avgMs: 649, fastestMs: 100, seen: 5, total: 5 });
+  });
+});
+
+// ------------------------------------------------------------------
+// Task 113 — «هفتهٔ چابک در هفته‌نامه» — پروفایلِ پنجرهٔ خودِ دایجست.
+// قفل‌ها: ① بی‌رکورد در پنجره → null (نه صفرِ ساختگی) ② پروفایلِ کامل با
+// پنجرهٔ [T−6..T] ③ مرزهای دقیقِ همان گیت‌های ۱۱۰ (≤۱۵۰۰ms، ≥۰٫۸، ≥۳فکردار،
+// ≥۹seen، ≥۱۵پاسخ) ④ پنجره‌سازی: کیفیتِ هفتهٔ پیش هرگز نمی‌شمارد — ششمین
+// روز داخل و هفتمین بیرون ⑤ فورفیتِ بی‌پاسخ در duels هست ولی در answered نه
+// ⑥ thinkِ خراب فکردار نمی‌شود ⑦ خلوص/قطعیت ⑧ سیم‌کشیِ duelWeeklyStats +
+// computeWeeklyDigest
+// ------------------------------------------------------------------
+import { duelWeekQuickProfile, DUEL_QUICK_WEEK } from "@/lib/weekly-digest";
+
+describe("duelWeekQuickProfile — هفتهٔ چابکِ دایجست (Task 113)", () => {
+  // هفتهٔ واجدِ مرجع: Σ avgMs·seen = ۸۰۰·۵+۱۰۰۰·۳+۱۲۰۰·۲ = ۹۴۰۰ بر ۱۰ → ۹۴۰ms
+  const qualifying = () => [
+    rec({ id: "a", day: dayKeyBefore(T, 0), think: think({ avgMs: 800, minMs: 200, maxMs: 1500, seen: 5, total: 10 }) }),
+    rec({ id: "b", day: dayKeyBefore(T, 1), think: think({ avgMs: 1000, minMs: 400, maxMs: 2000, seen: 3, total: 10 }) }),
+    rec({ id: "c", day: dayKeyBefore(T, 2), think: think({ avgMs: 1200, minMs: 500, maxMs: 2500, seen: 2, total: 10 }) }),
+  ];
+
+  it("بی‌دفترچه/آرایهٔ خالی → null (بلوکِ UI غایب، نه صفرِ ساختگی)", () => {
+    expect(duelWeekQuickProfile(undefined, T)).toBeNull();
+    expect(duelWeekQuickProfile([], T)).toBeNull();
+  });
+
+  it("هفتهٔ واجد → پروفایلِ کامل با پنجرهٔ [T−6..T] و تلفیقِ وزن‌دارِ ۹۴۰ms", () => {
+    const p = duelWeekQuickProfile(qualifying(), T)!;
+    expect(p).not.toBeNull();
+    expect(p).toMatchObject({
+      startDay: dayKeyBefore(T, 6),
+      endDay: T,
+      duels: 3,
+      thinkful: 3,
+      avgMs: 940,
+      seen: 10,
+      answered: 30,
+      correct: 27,
+      rate: 0.9,
+    });
+  });
+
+  it("مرزِ میانگین با DUEL_QUICK_WEEK.silverMs: دقیقاً ۱۵۰۰ گذر، ۱۵۰۱ رد", () => {
+    const at = (avg: number) =>
+      [5, 3, 2].map((seen, i) =>
+        rec({
+          id: "r" + i,
+          day: dayKeyBefore(T, i),
+          think: think({ avgMs: avg, minMs: avg, maxMs: avg, seen, total: 10 }),
+        })
+      );
+    expect(duelWeekQuickProfile(at(DUEL_QUICK_WEEK.silverMs), T)).not.toBeNull();
+    expect(duelWeekQuickProfile(at(DUEL_QUICK_WEEK.silverMs + 1), T)).toBeNull();
+  });
+
+  it("مرزِ نرخ: دقیقاً ۰٫۸ (۲۴ از ۳۰) گذر، ۰٫۷ رد", () => {
+    // ۲۴/۳۰ = ۰٫۸ — سه رکوردِ ۸درست
+    expect(
+      duelWeekQuickProfile(
+        qualifying().map((r, i) => rec({ ...r, id: "e" + i, myCorrect: 8 })),
+        T
+      )
+    ).not.toBeNull();
+    expect(
+      duelWeekQuickProfile(
+        qualifying().map((r, i) => rec({ ...r, id: "f" + i, myCorrect: 7 })),
+        T
+      )
+    ).toBeNull();
+  });
+
+  it("کف‌ها: ۲فکردار رد (با seen=۹ کامل) · ۳فکردارِ seen=۸ رد · answered=۱۴ رد", () => {
+    // minThinkful: دو فکردار با جمعِ seen=۹ — فقط شمارِ فکردار کم است
+    expect(
+      duelWeekQuickProfile([
+        rec({ id: "a", day: dayKeyBefore(T, 0), think: think({ avgMs: 800, minMs: 200, maxMs: 1500, seen: 6, total: 10 }) }),
+        rec({ id: "b", day: dayKeyBefore(T, 1), think: think({ avgMs: 1000, minMs: 400, maxMs: 2000, seen: 3, total: 10 }) }),
+        rec({ id: "c", day: dayKeyBefore(T, 2) }), // بی‌think ولی پُرپاسخ
+      ], T)
+    ).toBeNull();
+    // minSeen: سه فکردار با جمعِ seen=۸
+    expect(
+      duelWeekQuickProfile([
+        rec({ id: "a", day: dayKeyBefore(T, 0), think: think({ avgMs: 800, minMs: 200, maxMs: 1500, seen: 4, total: 10 }) }),
+        rec({ id: "b", day: dayKeyBefore(T, 1), think: think({ avgMs: 800, minMs: 200, maxMs: 1500, seen: 2, total: 10 }) }),
+        rec({ id: "c", day: dayKeyBefore(T, 2), think: think({ avgMs: 1200, minMs: 500, maxMs: 2500, seen: 2, total: 10 }) }),
+      ], T)
+    ).toBeNull();
+    // minAnswered: فورفیتِ بی‌پاسخ جمعِ answered را به ۱۴ می‌رساند
+    expect(
+      duelWeekQuickProfile([
+        rec({ id: "a", day: dayKeyBefore(T, 0), answered: 10, think: think({ avgMs: 800, minMs: 200, maxMs: 1500, seen: 5, total: 10 }) }),
+        rec({ id: "b", day: dayKeyBefore(T, 1), answered: 4, myCorrect: 4, think: think({ avgMs: 1000, minMs: 400, maxMs: 2000, seen: 3, total: 10 }) }),
+        rec({ id: "c", day: dayKeyBefore(T, 2), answered: 0, myCorrect: 0, think: think({ avgMs: 1200, minMs: 500, maxMs: 2500, seen: 2, total: 10 }) }),
+      ], T)
+    ).toBeNull();
+  });
+
+  it("پنجره‌سازی: کیفیتِ واجد در روزهای ۷/۸/۹ هرگز برای این هفته نمی‌شمارد — ششمین روز داخل است", () => {
+    const at = (ago: number) =>
+      qualifying().map((r, i) => rec({ ...r, id: "w" + i + ago, day: dayKeyBefore(T, ago + i) }));
+    // هفتهٔ پیشِ کاملِ واجد → null
+    expect(duelWeekQuickProfile(at(7), T)).toBeNull();
+    // ششم/پنجم/چهارم — همه داخلِ [T−6..T] → واجد
+    expect(duelWeekQuickProfile(at(4), T)).not.toBeNull();
+  });
+
+  it("فورفیتِ بی‌پاسخ در duels می‌شمارد ولی در answered/correct نه", () => {
+    const p = duelWeekQuickProfile([
+      ...qualifying(),
+      rec({ id: "ff", day: dayKeyBefore(T, 3), answered: 0, myCorrect: 0 }),
+    ], T)!;
+    expect(p.duels).toBe(4);
+    expect(p.answered).toBe(30);
+    expect(p.correct).toBe(27);
+  });
+
+  it("thinkِ خراب فکردار نمی‌شود — رکورد در duels می‌ماند ولی گیتِ ۳فکردار رد می‌شود", () => {
+    const p = duelWeekQuickProfile([
+      rec({ id: "a", day: dayKeyBefore(T, 0), think: think({ avgMs: 800, minMs: 200, maxMs: 1500, seen: 5, total: 10 }) }),
+      rec({ id: "b", day: dayKeyBefore(T, 1), think: think({ avgMs: 1000, minMs: 400, maxMs: 2000, seen: 3, total: 10 }) }),
+      rec({ id: "c", day: dayKeyBefore(T, 2), think: think({ seen: 0 }) }), // ناسالم
+    ], T);
+    expect(p).toBeNull();
+  });
+
+  it("خلوص و قطعیت: ورودی دست‌نخورده، دو بارِ پشت‌هم برابر", () => {
+    const rs = qualifying();
+    const snapshot = JSON.stringify(rs);
+    const first = duelWeekQuickProfile(rs, T);
+    const second = duelWeekQuickProfile(rs, T);
+    expect(JSON.stringify(rs)).toBe(snapshot);
+    expect(first).toEqual(second);
+  });
+
+  it("سیم‌کشی: duelWeeklyStats.quickWeek هم‌قراردادِ duelWeekQuickProfile است و با think هم‌زمان زنده", () => {
+    const rs = qualifying();
+    const d = duelWeeklyStats(rs, T)!;
+    expect(d.quickWeek).toEqual(duelWeekQuickProfile(rs, T));
+    expect(d.quickWeek!.avgMs).toBe(940);
+    expect(d.think).not.toBeNull();
+    // و از راهِ computeWeeklyDigest به بلوکِ duels می‌رسد
+    const digest = computeWeeklyDigest(input({ duelHistory: rs }), T);
+    expect(digest.duels!.quickWeek!.avgMs).toBe(940);
+  });
+
+  it("بی‌نبردِ این هفته ولی هفتهٔ واجد در گذشته → quickWeek null (پنجره‌سازیِ سخت‌گیر)", () => {
+    const d = duelWeeklyStats([
+      rec({ id: "a", day: dayKeyBefore(T, 8), think: think({ avgMs: 800, minMs: 200, maxMs: 1500, seen: 9, total: 10 }) }),
+      rec({ id: "b", day: dayKeyBefore(T, 9), think: think({ avgMs: 800, minMs: 200, maxMs: 1500, seen: 9, total: 10 }) }),
+      rec({ id: "c", day: dayKeyBefore(T, 10), think: think({ avgMs: 800, minMs: 200, maxMs: 1500, seen: 9, total: 10 }) }),
+    ], T)!;
+    expect(d.thisWeek).toBe(0);
+    expect(d.lastWeek).toBe(3);
+    expect(d.quickWeek).toBeNull();
+  });
+});
