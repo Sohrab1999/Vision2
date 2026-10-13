@@ -1123,6 +1123,21 @@ html.user-reduce-motion .streak-flame {
 .or-weekbar { background-image: linear-gradient(to top, #047857, #34d399); }
 .or-weekbar-empty { background-color: #e7e5e4; }
 
+/* Task 124 — داوریِ معلمِ هفته روی کاغذ A4 — رنگ‌های روشنِ اختصاصی
+   (هم‌الگوی بقیهٔ or-*: مصون از حالتِ شب تا کاغذ چاپی همیشه روشن بماند) */
+.or-teacher { background-color: #faf5ff; border: 1px solid #ddd6fe; }
+.or-teacher-title { color: #5b21b6; }
+.or-teacher-row { background-color: #ffffff; border: 1px solid #ede9fe; }
+.or-teacher-body { color: #44403c; }
+.or-teacher-strong { color: #047857; }
+.or-teacher-advice { color: #b45309; }
+.or-teacher-muted { color: #78716c; }
+.or-teacher-dot-strong { background-color: #10b981; }
+.or-teacher-dot-advice { background-color: #f59e0b; }
+.or-chip-fresh { background-color: #dcfce7; border: 1px solid #86efac; color: #166534; }
+.or-chip-ready { background-color: #f3e8ff; border: 1px solid #d8b4fe; color: #6b21a8; }
+.or-chip-offline { background-color: #f5f5f4; border: 1px solid #d6d3d1; color: #57534e; }
+
 /* ---------------- print stylesheet for the official report ---------------- */
 @media print {
   /* A4 paper for every print flow of the webbook */

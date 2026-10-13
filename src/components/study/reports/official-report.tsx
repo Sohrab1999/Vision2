@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import {
   Printer,
@@ -24,6 +24,7 @@ import {
   mistakesOfLesson,
   srsDueCount,
   knownCountOfLesson,
+  daysAgoKey,
 } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { useEscape } from "@/hooks/use-keyboard";
@@ -33,6 +34,10 @@ import { BADGES, buildEvalInput, unlockedBadgeIds } from "@/lib/achievements";
 import { skillBreakdown, barColorFor, skillGradeFa } from "@/lib/skill-stats";
 import { trackEvent } from "@/lib/analytics";
 import type { BadgeTier } from "@/lib/achievements";
+import { computeWeeklyDigest } from "@/lib/weekly-digest";
+import { weekTeacherStats, hasWeekVerdict, fallbackWeekReview } from "@/lib/week-teacher";
+import { requestWeekVerdict } from "@/lib/week-verdict-client";
+import type { TeacherReview } from "@/lib/exam-teacher";
 
 // ------------------------------------------------------------------
 // گزارش رسمی چاپی (PDF) — A4 paper for the teacher / parents.
@@ -95,6 +100,12 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
   const dayStat = useStudy((s) => s.dayStat);
   const userName = useStudy((s) => s.userName);
   const userId = useStudy((s) => s.userId);
+  // Task 124 — the week teacher reads the SAME aggregate window the
+  // weekly band renders: digest inputs straight from the store, never
+  // a second face of the week.
+  const dayHistory = useStudy((s) => s.dayHistory);
+  const goalMetDays = useStudy((s) => s.goalMetDays);
+  const duelHistory = useStudy((s) => s.duelHistory);
 
   // opener lives in study-app (Task 44: lazy-mount on first use) — this
   // component is mounted only after the first "open-official-report" event.
@@ -183,6 +194,68 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
     const rs = Object.values(results);
     return rs.length ? Math.round(rs.reduce((s, r) => s + r.percent, 0) / rs.length) : 0;
   }, [results]);
+
+  // Task 124 — داوریِ معلمِ هفته: همان شکلِ اعتبارسنجی‌شدهٔ هفته‌نامه،
+  // با همان گیتِ واحد (hasWeekVerdict) — هفتهٔ خالی هرگز داوری نمی‌شود.
+  const weekStats = useMemo(
+    () =>
+      mounted
+        ? weekTeacherStats(
+            computeWeeklyDigest({ dayHistory, history, goalMetDays, duelHistory }, daysAgoKey(0)),
+            streak
+          )
+        : null,
+    [mounted, dayHistory, history, goalMetDays, duelHistory, streak]
+  );
+  const weekGate = weekStats ? hasWeekVerdict(weekStats) : false;
+
+  // verdict state machine — the skeleton is DERIVED (phase !== "done"),
+  // so no synchronous setState ever runs inside the effect (lint rule);
+  // the phase flip happens across the microtask boundary. Failure lands
+  // on the honest offline review composed from the REAL counts, never a
+  // fabricated AI voice. weekStats flows through a ref (effect-synced)
+  // so a store change mid-view never retriggers the request.
+  const [verdictState, setVerdictState] = useState<
+    | { phase: "idle" }
+    | { phase: "loading" }
+    | { phase: "done"; review: TeacherReview; source: "ai" | "fallback"; cached: boolean }
+  >({ phase: "idle" });
+  const weekStatsRef = useRef(weekStats);
+  // ref writes are effect-only (react-hooks/refs) — declared BEFORE the
+  // fetch effect so every commit syncs the week shape first
+  useEffect(() => {
+    weekStatsRef.current = weekStats;
+  }, [weekStats]);
+
+  useEffect(() => {
+    if (!open || !weekGate) return;
+    let alive = true;
+    void Promise.resolve().then(() => {
+      if (alive) setVerdictState({ phase: "loading" });
+    });
+    requestWeekVerdict(weekStatsRef.current!).then((r) => {
+      if (!alive) return;
+      if (r) {
+        setVerdictState({
+          phase: "done",
+          review: r.review,
+          source: r.source,
+          cached: r.cached,
+        });
+      } else {
+        // شبکه/سرور نبود — داوریِ آفلاینِ صادق از اعدادِ واقعیِ همین هفته
+        setVerdictState({
+          phase: "done",
+          review: fallbackWeekReview(weekStatsRef.current!),
+          source: "fallback",
+          cached: false,
+        });
+      }
+    });
+    return () => {
+      alive = false;
+    };
+  }, [open, weekGate]);
 
   // one-line teacher-facing recommendation
   const advice = useMemo(() => {
@@ -499,6 +572,68 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
               </div>
             )}
           </section>
+
+          {/* Task 124 — داوریِ معلمِ هفته روی کاغذ رسمی؛ هفتهٔ خالی هرگز
+              داوری نمی‌شود (همان گیتِ واحد) و شکستِ شبکه هرگز صدای ساختگی
+              نمی‌شود — بازگشتِ آفلاینِ صادق با چیپِ مخصوص */}
+          {weekGate && verdictState.phase !== "done" && (
+            <div
+              role="status"
+              aria-label="در حال خواندن داوری معلم هفته"
+              className="official-chrome or-teacher mb-5 flex items-center gap-2 rounded-xl px-4 py-3 text-[12px] font-bold"
+            >
+              <GraduationCap size={15} className="shrink-0 animate-pulse" />
+              معلمِ هفته در حال خواندنِ هفته‌نامه…
+            </div>
+          )}
+          {weekGate && verdictState.phase === "done" && (
+            <section className="or-section-block mb-5" aria-label="داوری معلم هفته">
+              <h3 className="or-section or-teacher-title mb-2.5 flex items-center gap-1.5 text-[13.5px] font-black">
+                <GraduationCap size={14} />
+                داوریِ معلمِ هفته
+                <span
+                  data-provenance="teacher-verdict"
+                  className={`or-chip rounded-full px-2 py-0.5 text-[10px] font-black ${
+                    verdictState.source === "fallback"
+                      ? "or-chip-offline"
+                      : verdictState.cached
+                        ? "or-chip-ready"
+                        : "or-chip-fresh"
+                  }`}
+                >
+                  {verdictState.source === "fallback" ? "حالت آفلاین" : verdictState.cached ? "آماده" : "تازه"}
+                </span>
+              </h3>
+              <div className="or-teacher rounded-xl p-3.5">
+                <p className="or-teacher-body mb-2 text-[12px] font-bold leading-6">{verdictState.review.intro}</p>
+                <div className="grid gap-1.5">
+                  <div className="or-teacher-row flex items-start gap-2 rounded-lg px-2.5 py-1.5">
+                    <span className="or-teacher-dot-strong mt-[7px] h-2 w-2 shrink-0 rounded-full" aria-hidden />
+                    <p className="or-teacher-body text-[11.5px] leading-6">
+                      <b className="or-teacher-strong">نقطهٔ قوت: </b>
+                      {verdictState.review.strength}
+                    </p>
+                  </div>
+                  <div className="or-teacher-row flex items-start gap-2 rounded-lg px-2.5 py-1.5">
+                    <span className="or-teacher-dot-advice mt-[7px] h-2 w-2 shrink-0 rounded-full" aria-hidden />
+                    <p className="or-teacher-body text-[11.5px] leading-6">
+                      <b className="or-teacher-advice">تمرینِ پیشنهادی: </b>
+                      {verdictState.review.advice}
+                    </p>
+                  </div>
+                </div>
+                <p className="or-teacher-muted mt-2 text-[9.5px] font-bold leading-4">
+                  داوری بر اساسِ اعدادِ واقعیِ هفته‌نامه ({faNum(weekStats?.goalDays ?? 0)} از ۷ روزِ هدف کامل){" "}
+                  —{" "}
+                  {verdictState.source === "fallback"
+                    ? "بدونِ اتصال، از همین اعداد ساخته شد"
+                    : verdictState.cached
+                      ? "خوانده از دفترِ داوری‌های هفته"
+                      : "همین حالا روی اعدادِ این هفته نوشته شد"}
+                </p>
+              </div>
+            </section>
+          )}
 
           {/* advice */}
           {advice && (
