@@ -7,7 +7,7 @@
 // ------------------------------------------------------------------
 
 import { faNum } from "./study-theme";
-import { weekGoalMeta } from "./week-goal";
+import { WEEK_GOAL_DAYS, weekGoalMeta } from "./week-goal";
 import type { DuelLedgerStats } from "./duel-history";
 import type { TeacherReview } from "./exam-teacher";
 import type { StorySegment, StoryWord } from "./story-forge";
@@ -1445,6 +1445,10 @@ async function weekCardCanvas(opts: WeekCardImageOpts): Promise<HTMLCanvasElemen
     }
 
     // ---------- goal ring (راست) — روزهایِ هدفِ واقعیِ هفته ----------
+    // Task 136 — درصد/برچسب از قراردادِ weekGoalMeta (چهارمین لایهٔ مصرفیِ
+    // badge — هم‌الگویِ ۱۳۴ رویِ کارتِ هفته‌نامه): برچسبِ قبلی
+    // faNum(opts.stats.goalDays) خام بود — آخرین بازماندهٔ ادعایِ clamp‌نشده
+    // (ورودیِ کج «هدفِ ۱۰ از ۷ روز» می‌گفت)؛ حالا WEEK_GOAL_DAYS − remaining.
     const cx = W - 90 - 105;
     const cy = 350;
     const r = 105;
@@ -1454,7 +1458,8 @@ async function weekCardCanvas(opts: WeekCardImageOpts): Promise<HTMLCanvasElemen
     ctx.beginPath();
     ctx.arc(cx, cy, r, 0, Math.PI * 2);
     ctx.stroke();
-    const pct = weekCardPercent(opts.stats.goalDays) / 100;
+    const meta = weekGoalMeta(opts.stats.goalDays);
+    const pct = meta.pct / 100;
     const ring = ctx.createLinearGradient(cx - r, cy - r, cx + r, cy + r);
     ring.addColorStop(0, "#8b5cf6"); // violet-500
     ring.addColorStop(1, "#d946ef"); // fuchsia-500
@@ -1465,10 +1470,31 @@ async function weekCardCanvas(opts: WeekCardImageOpts): Promise<HTMLCanvasElemen
     ctx.textAlign = "center";
     ctx.fillStyle = "#1c1917";
     ctx.font = `900 52px ${family}`;
-    ctx.fillText(`${faNum(weekCardPercent(opts.stats.goalDays))}٪`, cx, cy - 14);
+    ctx.fillText(`${faNum(meta.pct)}٪`, cx, cy - 14);
     ctx.fillStyle = "#78716c";
     ctx.font = `700 21px ${family}`;
-    ctx.fillText(`هدفِ ${faNum(opts.stats.goalDays)} از ۷ روز`, cx, cy + 34);
+    ctx.fillText(`هدفِ ${faNum(WEEK_GOAL_DAYS - meta.remaining)} از ۷ روز`, cx, cy + 34);
+    if (meta.badge) {
+      // نشانِ «هفتهٔ کامل» (قراردادِ ۱۳۲ → چهارمین لایه — Task 136): همان مهرِ
+      // ۱۳۴ رویِ لبهٔ بالاییِ حلقه + ادعای نام‌دار زیرِ برچسب — هندسهِ یکسانِ
+      // کارتِ هفته‌نامه (cx/cy/r مشترک) پس جعبه‌هایِ پیکسلیِ QA هم همان‌اند.
+      const sealY = cy - r - 10; // لبهٔ بیرونیِ track (lineWidth/2 = 10)
+      ctx.fillStyle = "#059669"; // emerald-600 — همان توکنِ نشانِ UI
+      ctx.beginPath();
+      ctx.arc(cx, sealY, 17, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = "#ffffff";
+      ctx.lineWidth = 3.2;
+      ctx.lineJoin = "round";
+      ctx.beginPath();
+      ctx.moveTo(cx - 7, sealY + 0.4);
+      ctx.lineTo(cx - 2, sealY + 5.4);
+      ctx.lineTo(cx + 7, sealY - 4.4);
+      ctx.stroke();
+      ctx.fillStyle = "#059669";
+      ctx.font = `900 20px ${family}`;
+      ctx.fillText(meta.badge, cx, cy + 70);
+    }
 
     // ---------- three sections (ستونِ متن، چپِ حلقه — همان سه‌بخشِ ۱۱۷/۱۱۸) ----------
     const textR = 740;

@@ -39,3 +39,27 @@ describe("week-card PNG source contract — meta is the single source (Task 134)
     expect(report).toContain('d="M2.5 6.2 5 8.7 9.5 3.8"');
   });
 });
+
+// ------------------------------------------------------------------
+// Task 136 — نگهبانِ منبعِ کارتِ معلمِ هفته: چهارمین لایهٔ مصرفیِ badgeِ
+// ۱۳۲. درصد/برچسب از weekGoalMeta می‌آیند؛ برچسبِ خامِ قبلی
+// (faNum(opts.stats.goalDays) از ۷ روز) آخرین بازماندهٔ ادعایِ
+// clamp‌نشده بود — همین‌جا قفل شد. مهر و ادعای نام‌دار فقط زیرِ
+// if (meta.badge) — و ادعا دقیقاً در هر دو کارتِ هفته رسم می‌شود.
+// ------------------------------------------------------------------
+describe("week-teacher PNG source contract — the 4th badge layer (Task 136)", () => {
+  const src = readFileSync(resolve(process.cwd(), "src/lib/result-image.ts"), "utf8");
+
+  it("weekCardCanvas computes the ring from weekGoalMeta(opts.stats.goalDays)", () => {
+    expect(src).toContain("const meta = weekGoalMeta(opts.stats.goalDays);");
+  });
+
+  it("the teacher label is clamped — the last raw claim is gone", () => {
+    expect(src).toContain("هدفِ ${faNum(WEEK_GOAL_DAYS - meta.remaining)} از ۷ روز");
+    expect(src).not.toContain("${faNum(opts.stats.goalDays)} از ۷ روز");
+  });
+
+  it("the named claim renders in BOTH week PNGs (weekly + teacher)", () => {
+    expect(src.split("ctx.fillText(meta.badge, cx, cy + 70);").length - 1).toBe(2);
+  });
+});
