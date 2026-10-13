@@ -38,6 +38,10 @@ export const EVENT_NAMES = [
   "my_words_review_start", // started a review quiz from starred words
   "my_words_flashcards_start", // started a flashcard pass from starred words
   "my_words_dictation_start", // started a spelling round from starred words
+  "my_words_story_start", // asked for an AI mini-story from starred words (Task 116)
+  "story_served", // server-side: cache hit in /api/story
+  "story_generated", // server-side: new LLM generation in /api/story
+  "story_fallback", // server-side: /api/story served the offline exercise
   "srs_due_review", // jumped into smart review from the due-words preview
   "srs_due_pill", // jumped into smart review from the header due pill (Task 73)
   "goal_chip", // tapped the daily-goal progress chip in the header (Task 76)
@@ -81,6 +85,10 @@ export const EVENT_LABELS_FA: Record<EventName, string> = {
   my_words_review_start: "شروع مرور نشان‌شده‌ها",
   my_words_flashcards_start: "شروع فلش‌کارت واژه‌های من",
   my_words_dictation_start: "شروع دیکتهٔ واژه‌های من",
+  my_words_story_start: "درخواست داستان واژه‌های من",
+  story_served: "داستان واژه‌ها (از کش)",
+  story_generated: "داستان واژه‌ها (تازه)",
+  story_fallback: "داستان واژه‌ها (آفلاین)",
   srs_due_review: "مرور سررسیدها از داشبورد",
   srs_due_pill: "مرور سررسیدها از هدر",
   goal_chip: "پیگیری هدف روزانه از هدر",

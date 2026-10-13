@@ -126,6 +126,21 @@ export const explainSchema = z.object({
   id: z.string().trim().min(1, "شناسهٔ سؤال نامعتبر است.").max(40, "شناسهٔ سؤال نامعتبر است."),
 });
 
+/** /api/story POST (Task 116) — starred wordKeys only; words resolve server-side.
+ * 4..20 keys: fewer can't feed a tale, more is capped by the launcher anyway. */
+export const storySchema = z.object({
+  keys: z
+    .array(
+      z
+        .string({ message: "شناسهٔ واژه نامعتبر است." })
+        .trim()
+        .min(1, "شناسهٔ واژه نامعتبر است.")
+        .max(40, "شناسهٔ واژه نامعتبر است.")
+    )
+    .min(4, "برای ساخت داستان دست‌کم ۴ واژه نشان کن.")
+    .max(20, "بیشتر از ۲۰ واژه در یک داستان جا نمی‌شود."),
+});
+
 /** /api/tts POST — text is trimmed to 950 chars in the route */
 export const ttsSchema = z.object({
   text: z.string().max(4_000, "متن روخوانی نامعتبر است."),
@@ -148,6 +163,7 @@ export const BODY_CAPS = {
   stats: 4 * 1024,
   event: 1 * 1024,
   explain: 2 * 1024,
+  story: 1 * 1024, // 20 keys × ~42B + envelope — tiny
   tts: 8 * 1024,
   sync: 700 * 1024, // 600 KB snapshot ceiling + envelope slack
   duelTicket: 1 * 1024, // { userId, secret } — tiny

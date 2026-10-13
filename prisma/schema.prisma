@@ -73,6 +73,18 @@ model ExplainCache {
   createdAt   DateTime @default(now())
 }
 
+// Task 116 «داستانِ واژه‌های من» — server-side cache of AI mini-stories,
+// keyed by the sorted-joined wordKey fingerprint (order-insensitive). Every
+// learner starring the same word set gets the exact same controlled story
+// (one generation, many reads) — same economy as ExplainCache.
+model StoryCache {
+  key    String   @id
+  story  String
+  summary String
+  source String   @default("ai") // "ai" | "fallback"
+  createdAt DateTime @default(now())
+}
+
 // F10 lightweight product analytics — no PII, no user identifiers.
 // Only aggregate counters per UTC day per whitelisted event name.
 model EventDay {
