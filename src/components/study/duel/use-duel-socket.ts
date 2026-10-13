@@ -9,6 +9,7 @@ import { useCountdown } from "@/hooks/use-countdown";
 import { useToast } from "@/hooks/use-toast";
 import { trackEvent } from "@/lib/analytics";
 import { sendStats } from "@/lib/identity";
+import { duelDisplayName } from "@/lib/duel-receipt";
 import { buildDuelRecord } from "@/lib/duel-history";
 import {
   buildDuelBank,
@@ -148,6 +149,9 @@ export function useDuelSocket(): DuelMachine {
       try {
         // Task-36 «جدول نبرد» — the locally arbitrated outcome rides along with
         // the signed attempt so the global leaderboard can rank duel records.
+        // Task 94 «رسیدِ داوری» — outcome without the judge's HMAC receipt is
+        // rejected server-side; duelName lets the API find THIS player inside
+        // the receipt (mirrors the service's readProfile slicing exactly).
         sendStats({
           lesson: 0,
           category: "duel",
@@ -155,6 +159,8 @@ export function useDuelSocket(): DuelMachine {
           correct: mine.correct,
           score: mine.score,
           outcome,
+          receipt: end.receipt,
+          duelName: duelDisplayName(useStudy.getState().userName),
         }).catch(() => {});
       } catch {
         /* ignore */

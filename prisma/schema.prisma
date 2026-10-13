@@ -23,6 +23,11 @@ model QuizAttempt {
   // by each signed player ("win" | "loss" | "tie"). Null for every other
   // category (and legacy duel rows from before this field existed).
   outcome   String?
+  // Task 94 «رسیدِ امضاشدهٔ داوری»: HMAC sig hex from the :3003 judge — the
+  // only way a NEW duel row enters /api/stats. Null for every other category
+  // and for legacy duel rows. Uniqueness per (userId, sig) is enforced in the
+  // route (replay check) — one receipt, one row per player, never farmable.
+  receiptSig String?
   createdAt DateTime @default(now())
 
   @@index([userId])

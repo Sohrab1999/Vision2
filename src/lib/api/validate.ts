@@ -56,6 +56,34 @@ export const profileSchema = z.object({
 });
 
 /** /api/stats POST — signed attempt; lesson 0 = exam/rush/duel rows */
+
+/** Task 94 «رسیدِ داوری» — the judge's signed end-of-match receipt (3003) */
+const duelReceiptSchema = z.object(
+  {
+    v: z.literal(1, { message: "نسخهٔ رسیدِ داوری نامعتبر است." }),
+    code: z
+      .string({ message: "کد اتاقِ رسید نامعتبر است." })
+      .min(4, "کد اتاقِ رسید نامعتبر است.")
+      .max(8, "کد اتاقِ رسید نامعتبر است."),
+    startedAt: z.number({ message: "زمانِ شروعِ رسید نامعتبر است." }).int().min(0),
+    endedAt: z.number({ message: "زمانِ پایانِ رسید نامعتبر است." }).int().min(0),
+    reason: z.enum(["finished", "forfeit"], { message: "دلیلِ پایانِ رسید نامعتبر است." }),
+    winner: z.string().max(64, "شناسهٔ برندهٔ رسید نامعتبر است.").nullable(),
+    players: z
+      .array(
+        z.object({
+          sid: z.string().min(1).max(64),
+          name: z.string().min(1).max(40),
+          score: z.number().int().min(0).max(1_000_000),
+          correct: z.number().int().min(0).max(999),
+        })
+      )
+      .length(2, "رسیدِ داوری باید دقیقاً دو بازیکن داشته باشد."),
+    sig: z.string({ message: "امضای رسید نامعتبر است." }).regex(/^[0-9a-f]{64}$/, "امضای رسید نامعتبر است."),
+  },
+  { message: "رسیدِ داوری نامعتبر است." }
+);
+
 export const statsSchema = z
   .object({
     userId: userIdSchema,
@@ -66,6 +94,9 @@ export const statsSchema = z
     correct: z.number().int().min(0, "تعداد پاسخ درست نامعتبر است.").max(500, "تعداد پاسخ درست نامعتبر است."),
     score: z.number().min(0, "امتیاز نامعتبر است.").max(1_000_000, "امتیاز نامعتبر است.").optional(),
     outcome: z.enum(["win", "loss", "tie"], { message: "نتیجهٔ نبرد نامعتبر است." }).optional(),
+    /** Task 94 — duel only; rejected server-side without a valid judge receipt */
+    duelName: z.string().trim().min(1, "نام داخل نبرد نامعتبر است.").max(40, "نام داخل نبرد نامعتبر است.").optional(),
+    receipt: duelReceiptSchema.optional(),
   })
   .refine((v) => v.correct <= v.total, { message: "تعداد پاسخ درست نمی‌تواند از کل سؤال‌ها بیشتر باشد" });
 

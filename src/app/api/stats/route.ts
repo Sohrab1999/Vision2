@@ -3,6 +3,7 @@ import { withApi } from "@/lib/api/handler";
 import { ApiError } from "@/lib/api/errors";
 import { BODY_CAPS, statsSchema } from "@/lib/api/validate";
 import { presentSecret, secretMatches } from "@/lib/identity/secret";
+import { readReceiptSecret, verifyDuelSubmission } from "@/lib/duel-receipt-server";
 
 export const runtime = "nodejs";
 
@@ -81,6 +82,41 @@ export const POST = withApi(
     // Task-36 «جدول نبرد» — the duel outcome rides along with signed duel
     // attempts. Strictly whitelisted: any other category silently drops it.
     const outcome = body.category === "duel" && body.outcome ? body.outcome : null;
+
+    // Task 94 «رسیدِ امضاشدهٔ داوری» — a duel row exists only when the :3003
+    // judge itself signed the end of that match. The HMAC receipt proves the
+    // result was arbitrated; the candidate check (duelName + score + correct)
+    // proves THIS claim matches the player inside the receipt; the 24h window
+    // plus the per-(user, sig) replay check close receipt farming.
+    let receiptSig: string | null = null;
+    if (body.category === "duel") {
+      if (!body.receipt || !body.duelName) {
+        throw ApiError.unauthorized("نتیجهٔ نبرد بدون رسیدِ امضاشدهٔ داوری ثبت نمی‌شود.");
+      }
+      const secret = readReceiptSecret();
+      const replayed = body.receipt.sig
+        ? (await db.quizAttempt.findFirst({ where: { userId: body.userId, receiptSig: body.receipt.sig }, select: { id: true } })) !== null
+        : false;
+      const verdict = verifyDuelSubmission(
+        body.receipt,
+        { name: body.duelName, score: body.score ?? 0, correct: body.correct, outcome: body.outcome ?? null },
+        secret,
+        { now: Date.now(), replayed }
+      );
+      if (!verdict.ok) {
+        const fa: Record<string, string> = {
+          malformed: "رسیدِ داوری ناقص یا خراب است.",
+          bad_sig: "امضای داور روی این رسید معتبر نیست.",
+          stale: "رسیدِ داوری کهنه یا از آینده است.",
+          no_candidate: "نتیجهٔ اعلام‌شده با بازیکن‌های رسیدِ داوری هم‌خوان نیست.",
+          outcome_mismatch: "نتیجهٔ اعلام‌شده با داوریِ سرور هم‌خوان نیست.",
+          replayed: "این رسید قبلاً ثبت شده است.",
+        };
+        throw ApiError.unauthorized(fa[verdict.reason] ?? "رسیدِ داوری پذیرفته نشد.");
+      }
+      receiptSig = body.receipt.sig;
+    }
+
     const attempt = await db.quizAttempt.create({
       data: {
         userId: body.userId,
@@ -91,6 +127,7 @@ export const POST = withApi(
         percent,
         score,
         outcome,
+        receiptSig,
       },
     });
     return json({ ok: true, id: attempt.id });

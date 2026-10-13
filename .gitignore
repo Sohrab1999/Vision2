@@ -59,3 +59,7 @@ tool-results/
 # audit 2026-10-12: runtime data & large source assets never belong in git
 /db/
 /upload/
+
+# Task 94: judge HMAC secret for duel receipts — the duel service (3003) and
+# the stats API share it; leaking it would let anyone forge match receipts
+mini-services/challenge-service/.receipt-secret

@@ -16,19 +16,32 @@ vi.mock("@/lib/db", () => ({
     learnerSync: { findUnique: vi.fn(), create: vi.fn(), update: vi.fn() },
     explainCache: { findUnique: vi.fn(), upsert: vi.fn() },
     learnerProfile: { findUnique: vi.fn() },
+    quizAttempt: { findFirst: vi.fn(), create: vi.fn() },
   },
 }));
 vi.mock("@/lib/analytics-server", () => ({ trackEventServer: vi.fn() }));
+
+// Task 94 — the route reads the judge secret from disk; pin it to a test
+// secret while keeping signDuelEnd/verifyDuelSubmission REAL so the route
+// test exercises the actual HMAC path end-to-end.
+const JUDGE_SECRET = "9".repeat(64);
+vi.mock("@/lib/duel-receipt-server", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@/lib/duel-receipt-server")>()),
+  readReceiptSecret: () => JUDGE_SECRET,
+}));
 
 import { db } from "@/lib/db";
 import { GET as syncGet, POST as syncPost } from "@/app/api/sync/route";
 import { POST as explainPost } from "@/app/api/explain/route";
 import { POST as statsPost } from "@/app/api/stats/route";
+import { hashSecret } from "@/lib/identity/secret";
+import { signDuelEnd } from "@/lib/duel-receipt-server";
 
 interface MockedDb {
   learnerSync: { findUnique: Mock; create: Mock; update: Mock };
   explainCache: { findUnique: Mock; upsert: Mock };
   learnerProfile: { findUnique: Mock };
+  quizAttempt: { findFirst: Mock; create: Mock };
 }
 const mockDb = db as unknown as MockedDb;
 
@@ -279,5 +292,100 @@ describe("/api/stats route", () => {
     expect(res.status).toBe(400);
     expect((await jsonOf(res)).code).toBe("validation_failed");
     expect(mockDb.learnerProfile.findUnique).not.toHaveBeenCalled();
+  });
+});
+
+// ------------------------------------------------------------------
+// Task 94 «رسیدِ امضاشدهٔ داوری» — a duel row exists only with the :3003
+// judge's HMAC receipt. Route-level: identity passes (mocked profile),
+// then the receipt gate decides. HMAC path is REAL (only the disk secret
+// is pinned) — tampering one byte must fail here.
+// ------------------------------------------------------------------
+describe("/api/stats duel receipt gate", () => {
+  const PLAIN = "f".repeat(48);
+
+  const receipt = signDuelEnd(
+    {
+      code: "Q7W2K",
+      startedAt: Date.now() - 90_000,
+      endedAt: Date.now() - 5_000,
+      reason: "finished",
+      winner: "sid-a",
+      players: [
+        { sid: "sid-a", name: "آرش", score: 194, correct: 9 },
+        { sid: "sid-b", name: "سارا", score: 190, correct: 8 },
+      ],
+    },
+    JUDGE_SECRET
+  );
+
+  const duelBody = (over: Record<string, unknown> = {}) => ({
+    userId: "u-duel",
+    secret: PLAIN,
+    lesson: 0,
+    category: "duel",
+    total: 10,
+    correct: 9,
+    score: 194,
+    outcome: "win",
+    duelName: "آرش",
+    receipt,
+    ...over,
+  });
+
+  it("duel without a receipt → 403, no row written", async () => {
+    mockDb.learnerProfile.findUnique.mockResolvedValue({ secret: hashSecret(PLAIN) });
+    const { receipt: _drop, ...bodyWithout } = duelBody();
+    const res = await statsPost(postReq(bodyWithout));
+    expect(res.status).toBe(403);
+    expect((await jsonOf(res)).error).toContain("رسید");
+    expect(mockDb.quizAttempt.create).not.toHaveBeenCalled();
+  });
+
+  it("duel with a valid judge receipt → 200 + row carrying receiptSig", async () => {
+    mockDb.learnerProfile.findUnique.mockResolvedValue({ secret: hashSecret(PLAIN) });
+    mockDb.quizAttempt.findFirst.mockResolvedValue(null);
+    mockDb.quizAttempt.create.mockResolvedValue({ id: "row1" });
+    const res = await statsPost(postReq(duelBody()));
+    expect(res.status).toBe(200);
+    expect(await jsonOf(res)).toEqual({ ok: true, id: "row1" });
+    expect(mockDb.quizAttempt.create).toHaveBeenCalledTimes(1);
+    const arg = mockDb.quizAttempt.create.mock.calls[0][0] as { data: Record<string, unknown> };
+    expect(arg.data.receiptSig).toBe(receipt.sig);
+    expect(arg.data.outcome).toBe("win");
+    expect(arg.data.percent).toBe(90);
+  });
+
+  it("tampered receipt (one score byte flipped) → 403 امضای داور", async () => {
+    mockDb.learnerProfile.findUnique.mockResolvedValue({ secret: hashSecret(PLAIN) });
+    mockDb.quizAttempt.findFirst.mockResolvedValue(null);
+    const bad = {
+      ...receipt,
+      players: [receipt.players[0], { ...receipt.players[1], score: 191 }],
+    } as typeof receipt;
+    const res = await statsPost(postReq(duelBody({ receipt: bad })));
+    expect(res.status).toBe(403);
+    expect((await jsonOf(res)).error).toContain("امضای داور");
+    expect(mockDb.quizAttempt.create).not.toHaveBeenCalled();
+  });
+
+  it("replayed receipt (same user+sig already stored) → 403 قبلاً ثبت", async () => {
+    mockDb.learnerProfile.findUnique.mockResolvedValue({ secret: hashSecret(PLAIN) });
+    mockDb.quizAttempt.findFirst.mockResolvedValue({ id: "old-row" });
+    const res = await statsPost(postReq(duelBody()));
+    expect(res.status).toBe(403);
+    expect((await jsonOf(res)).error).toContain("قبلاً ثبت");
+    expect(mockDb.quizAttempt.create).not.toHaveBeenCalled();
+  });
+
+  it("receipt outcome contradicting the judge (loser claims win) → 403 هم‌خوان", async () => {
+    mockDb.learnerProfile.findUnique.mockResolvedValue({ secret: hashSecret(PLAIN) });
+    mockDb.quizAttempt.findFirst.mockResolvedValue(null);
+    const res = await statsPost(
+      postReq(duelBody({ duelName: "سارا", correct: 8, score: 190, outcome: "win" }))
+    );
+    expect(res.status).toBe(403);
+    expect((await jsonOf(res)).error).toContain("هم‌خوان");
+    expect(mockDb.quizAttempt.create).not.toHaveBeenCalled();
   });
 });

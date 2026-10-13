@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Trophy, Swords, Users, RotateCcw, Crown, Handshake, Loader2 } from "lucide-react";
+import { Trophy, Swords, Users, RotateCcw, Crown, Handshake, Loader2, ShieldCheck } from "lucide-react";
 import { faNum } from "@/lib/study-theme";
 import type { EndPayload } from "./duel-types";
 
@@ -66,10 +66,21 @@ export default function DuelDone({ endData, mySid, myFinishAt, oppConnected, rem
 
       {/* کارت مقایسه */}
       <div className="duel-card rounded-2xl border border-stone-200 c-card-elevated p-5 shadow-sm">
-        <h2 className="mb-3 flex items-center gap-2 text-[14px] font-extrabold text-stone-700">
-          <Crown size={16} className="text-amber-600" />
-          کارنامهٔ نبرد
-        </h2>
+        <div className="mb-3 flex items-center justify-between gap-2">
+          <h2 className="flex items-center gap-2 text-[14px] font-extrabold text-stone-700">
+            <Crown size={16} className="text-amber-600" />
+            کارنامهٔ نبرد
+          </h2>
+          {endData.receipt && (
+            <span
+              title="نتیجهٔ این نبرد با امضای داورِ سرور تأیید شد"
+              className="flex shrink-0 items-center gap-1 rounded-full border border-emerald-200 bg-emerald-50/60 px-2 py-0.5 text-[10.5px] font-black text-emerald-700"
+            >
+              <ShieldCheck size={11} aria-hidden />
+              رسیدِ امضاشدهٔ داوری
+            </span>
+          )}
+        </div>
         <div className="space-y-2.5">
           {[
             { p: mine, label: "تو", highlight: outcome === "win" },
@@ -105,7 +116,9 @@ export default function DuelDone({ endData, mySid, myFinishAt, oppConnected, rem
           )}
         </div>
         <p className="mt-3 text-center text-[11.5px] leading-6 text-stone-400">
-          نتیجهٔ این نبرد با امضای هویتی‌ات در آمار سرور ثبت شد — غلط‌هایت در کارت «بانک اشتباهات» خانه منتظرت هستند.
+          {endData.receipt
+            ? "نتیجهٔ این نبرد با رسیدِ امضاشدهٔ داور در آمار سرور ثبت شد — غلط‌هایت در کارت «بانک اشتباهات» خانه منتظرت هستند."
+            : "نتیجهٔ این نبرد با امضای هویتی‌ات در آمار سرور ثبت شد — غلط‌هایت در کارت «بانک اشتباهات» خانه منتظرت هستند."}
         </p>
       </div>
 

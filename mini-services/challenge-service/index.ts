@@ -18,7 +18,12 @@ import lesson2 from "../../src/data/lesson2";
 import lesson3 from "../../src/data/lesson3";
 import examBank from "../../src/data/exam";
 import type { QuizQuestion } from "../../src/lib/study-types";
+import { loadOrCreateReceiptSecret, signDuelEnd } from "../../src/lib/duel-receipt-server";
 import { BASE_POINTS, speedBonus } from "./scoring";
+
+// Task 94 «رسیدِ امضاشدهٔ داوری» — هر پایانِ مسابقه با HMAC امضا می‌شود تا
+// ثبتِ نتیجه در /api/stats فقط با رسیدِ معتبر داور ممکن باشد (ضد جعلِ خوداظهاری).
+const RECEIPT_SECRET = loadOrCreateReceiptSecret();
 
 // ----------------------------- تنظیمات مسابقه -----------------------------
 const PORT = 3003;
@@ -132,12 +137,27 @@ function endMatch(room: Room, reason: "finished" | "forfeit") {
         ? null
         : ranked[0]?.sid ?? null;
 
+  const endedAt = Date.now();
+  // Task 94 — رسیدِ امضاشده: هر دو بازیکن همین رسید را کنار نتیجه به
+  // /api/stats می‌فرستند؛ امضای داور تنها راهِ ورودِ ردیفِ نبرد به آمار است.
+  const receipt = signDuelEnd(
+    {
+      code: room.code,
+      startedAt: room.startedAt ?? endedAt,
+      endedAt,
+      reason: finalReason,
+      winner,
+      players: ps.map((p) => ({ sid: p.sid, name: p.name, score: p.score, correct: p.correct })),
+    },
+    RECEIPT_SECRET
+  );
   io.to(room.code).emit("duel:end", {
     reason: finalReason,
     winner,
     total: room.questions.length,
     startedAt: room.startedAt,
     players: publicPlayers(room),
+    receipt,
   });
   room.rematchVotes.clear();
 }

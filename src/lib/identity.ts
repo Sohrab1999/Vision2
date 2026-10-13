@@ -54,6 +54,10 @@ export interface StatsPayload {
   score?: number;
   /** Task-36 «جدول نبرد» — duel rows only; the server whitelists it to category "duel". */
   outcome?: DuelOutcome;
+  /** Task 94 «رسیدِ داوری» — duel rows only; the judge's HMAC receipt (3003). Required by the server for duels. */
+  receipt?: import("@/lib/duel-receipt").DuelReceipt;
+  /** Task 94 — the display name THIS player used in the room; lets the API locate the claimant inside the receipt. */
+  duelName?: string;
 }
 
 /** Fire-and-forget signed stats POST. Resolves true when the server accepted it. */

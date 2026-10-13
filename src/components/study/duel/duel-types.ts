@@ -1,5 +1,6 @@
 import { lessons, examBank } from "@/data";
 import type { QuizQuestion } from "@/lib/study-types";
+import type { DuelReceipt } from "@/lib/duel-receipt";
 
 export type { QuizQuestion };
 
@@ -39,6 +40,8 @@ export interface EndPayload {
   total: number;
   startedAt: number | null;
   players: PublicPlayer[];
+  /** Task 94 — رسیدِ امضاشدهٔ داور (۳۰۰۳)؛ کلاینت آن را عیناً به /api/stats می‌رساند */
+  receipt?: DuelReceipt;
 }
 
 /**
