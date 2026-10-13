@@ -142,6 +142,51 @@ export function duelForm(records: DuelRecord[], n = 5): DuelOutcome[] {
   return records.slice(0, n).map((r) => r.outcome);
 }
 
+// ---------------- جست‌وجو و فیلترِ دفترچه (Task 98 — «دفترچهٔ قابلِ کاویدن») ----------------
+// دفترچه تا ۱۵ رکورد نگه می‌دارد و رابط فقط ۵ تای آخر را نشان می‌داد؛ بقیه پشتِ
+// یک جملهٔ ثابت قفل بود. این قراردادها دفترچه را قابلِ کاویدن می‌کنند: جست‌وجوی
+// نامِ حریف + فیلترِ نتیجه + فقطِ داورگواه — همه AND و حفظِ ترتیبِ جدید→قدیم.
+
+export type DuelLedgerOutcomeFilter = DuelOutcome | "all";
+
+export interface DuelLedgerFilter {
+  /** زیررشتهٔ نامِ حریف — خالی/فقطِ فاصله یعنی بی‌قید */
+  query?: string;
+  outcome?: DuelLedgerOutcomeFilter;
+  /** فقط رکوردهای دارای رسیدِ امضاشدهٔ داور */
+  verifiedOnly?: boolean;
+}
+
+/**
+ * یکسان‌سازیِ عبارتِ جست‌وجو برای «خواندنِ» نامِ فارسی: فاصله و نیم‌فاصلهٔ
+ * (U+200C) کلاً حذف و lowercase می‌شود — «امیر محمد»، «امیرمحمد» و
+ * «امیر‌محمد» هر سه یکی می‌شوند. ابهامِ فاصله/نیم‌فاصله دردِ کلاسیکِ متنِ
+ * فارسی است و روی دفترچهٔ ۱۵تایی، تطبیقِ بی‌فاصله همیشه کمتر سخت‌گیر است.
+ */
+export function normalizeDuelQuery(q: string): string {
+  return (q ?? "")
+    .toLowerCase()
+    .replace(/[\u200c\s]+/g, "");
+}
+
+/** فیلترِ ترکیبیِ AND با حفظِ ترتیب — فیلترِ خالی همان دفترچه را می‌دهد */
+export function filterDuelLedger(records: DuelRecord[], f: DuelLedgerFilter = {}): DuelRecord[] {
+  const q = normalizeDuelQuery(f.query ?? "");
+  return records.filter((r) => {
+    if (f.outcome && f.outcome !== "all" && r.outcome !== f.outcome) return false;
+    if (f.verifiedOnly && !r.receiptSig) return false;
+    if (q && !normalizeDuelQuery(r.opponent).includes(q)) return false;
+    return true;
+  });
+}
+
+/** خلاصهٔ برد/باخت/مساویِ یک مجموعه (برای خطِ نتیجهٔ فیلتر) */
+export function duelLedgerDigest(records: DuelRecord[]): { win: number; loss: number; tie: number } {
+  const d = { win: 0, loss: 0, tie: 0 };
+  for (const r of records) d[r.outcome]++;
+  return d;
+}
+
 // ---------------- پایداری (sanitize/merge برای جدول SyncField) ----------------
 
 const DAY_RE = /^\d{4}-\d{2}-\d{2}$/;

@@ -1,7 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Sparkles, Swords, Users, Timer, Zap, Wifi, WifiOff, Loader2, Target, ShieldCheck, History, Flame, Percent } from "lucide-react";
+import { Sparkles, Swords, Users, Timer, Zap, Wifi, WifiOff, Loader2, Target, ShieldCheck, History, Flame, Percent, Search, X, ChevronDown, ChevronUp } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum, timeAgoFa, avatarClasses } from "@/lib/study-theme";
@@ -11,7 +12,11 @@ import {
   duelBestScore,
   duelForm,
   duelVerifiedCount,
+  filterDuelLedger,
+  duelLedgerDigest,
+  normalizeDuelQuery,
   type DuelOutcome,
+  type DuelLedgerOutcomeFilter,
 } from "@/lib/duel-history";
 import type { Conn } from "./duel-types";
 
@@ -37,6 +42,21 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
   const form = duelForm(duelHistory, 5);
   // Task 96 — زیرمجموعهٔ صادق: چند نبردِ دفترچه رسیدِ امضاشدهٔ داور دارند
   const verified = duelVerifiedCount(duelHistory);
+  // Task 98 — دفترچهٔ قابلِ کاویدن: جست‌وجوی حریف + فیلترِ نتیجه + فقطِ داورگواه؛
+  // بدونِ فیلتر همان نمایشِ ۵تای آخر با دکمهٔ بازکردنِ همه
+  const [query, setQuery] = useState("");
+  const [outcome, setOutcome] = useState<DuelLedgerOutcomeFilter>("all");
+  const [verifiedOnly, setVerifiedOnly] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+  const filtered = filterDuelLedger(duelHistory, { query, outcome, verifiedOnly });
+  const isFiltering = normalizeDuelQuery(query) !== "" || outcome !== "all" || verifiedOnly;
+  const rows = isFiltering ? filtered : expanded ? duelHistory : duelHistory.slice(0, 5);
+  const digest = duelLedgerDigest(rows);
+  const clearFilters = () => {
+    setQuery("");
+    setOutcome("all");
+    setVerifiedOnly(false);
+  };
   const outcomeChip: Record<DuelOutcome, string> = {
     win: "bg-emerald-500",
     loss: "bg-rose-500",
@@ -137,6 +157,9 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
             <h2 className="flex items-center gap-2 text-[14px] font-extrabold text-stone-700">
               <History size={17} className="text-fuchsia-600" />
               آخرین نبردها
+              <span className="rounded-md bg-stone-100 px-1.5 py-0.5 text-[10px] font-black text-stone-400">
+                {faNum(duelHistory.length)} نبرد
+              </span>
             </h2>
             <div className="flex items-center gap-1.5" role="img" aria-label="فرم پنج نبرد آخر">
               {form.map((o, i) => (
@@ -163,8 +186,82 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
             ))}
           </div>
 
+          {/* Task 98 — نوارِ کاویدن: جست‌وجوی نامِ حریف + چیپ‌های نتیجه + فقطِ داورگواه */}
+          <div className="mb-3 space-y-2.5">
+            <div className="relative">
+              <Search size={14} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-stone-400" aria-hidden />
+              <input
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="جست‌وجوی نام حریف…"
+                aria-label="جست‌وجو در تاریخچهٔ نبردها"
+                className="w-full rounded-xl border border-stone-200 bg-white py-2 pl-9 pr-9 text-[12.5px] font-bold text-stone-800 outline-none transition-colors placeholder:text-stone-400 focus:border-fuchsia-400"
+              />
+              {query && (
+                <button
+                  onClick={() => setQuery("")}
+                  aria-label="پاک‌کردن جست‌وجو"
+                  className="absolute left-2 top-1/2 -translate-y-1/2 rounded-md p-1 text-stone-400 transition-colors hover:bg-stone-100 hover:text-stone-600"
+                >
+                  <X size={13} aria-hidden />
+                </button>
+              )}
+            </div>
+            <div className="flex flex-wrap items-center gap-1.5">
+              {(
+                [
+                  ["all", "همه"],
+                  ["win", "برد"],
+                  ["loss", "باخت"],
+                  ["tie", "مساوی"],
+                ] as const
+              ).map(([k, label]) => (
+                <button
+                  key={k}
+                  onClick={() => setOutcome(k)}
+                  aria-pressed={outcome === k}
+                  className={`rounded-lg px-2.5 py-1 text-[11px] font-black transition-colors ${
+                    outcome === k
+                      ? "bg-fuchsia-600 text-white"
+                      : "border border-stone-200 bg-stone-50 text-stone-500 hover:bg-stone-100"
+                  }`}
+                >
+                  {label}
+                </button>
+              ))}
+              <span className="mx-0.5 h-4 w-px bg-stone-200" aria-hidden />
+              <button
+                onClick={() => setVerifiedOnly((v) => !v)}
+                aria-pressed={verifiedOnly}
+                title="فقط نبردهایی که رسیدِ امضاشدهٔ داور دارند"
+                className={`inline-flex items-center gap-1 rounded-lg px-2.5 py-1 text-[11px] font-black transition-colors ${
+                  verifiedOnly
+                    ? "border border-emerald-200 bg-emerald-50/60 text-emerald-700"
+                    : "border border-stone-200 bg-stone-50 text-stone-500 hover:bg-stone-100"
+                }`}
+              >
+                <ShieldCheck size={12} aria-hidden />
+                فقط داورگواه
+              </button>
+              {isFiltering && (
+                <button
+                  onClick={clearFilters}
+                  className="ms-auto inline-flex items-center gap-1 rounded-lg px-2 py-1 text-[11px] font-black text-fuchsia-600 transition-colors hover:bg-stone-100"
+                >
+                  <X size={12} aria-hidden />
+                  پاک‌کردن فیلترها
+                </button>
+              )}
+            </div>
+            {isFiltering && (
+              <p className="text-[11px] font-bold text-stone-400" role="status">
+                {faNum(rows.length)} نبرد یافت شد · {faNum(digest.win)} برد، {faNum(digest.loss)} باخت، {faNum(digest.tie)} مساوی
+              </p>
+            )}
+          </div>
+
           <div className="space-y-2">
-            {duelHistory.slice(0, 5).map((r) => (
+            {rows.map((r) => (
               <div
                 key={r.id}
                 className="flex items-center gap-3 rounded-xl border border-stone-100 bg-stone-50/70 p-3 transition-colors hover:bg-stone-100/70"
@@ -210,6 +307,20 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
             ))}
           </div>
 
+          {/* Task 98 — حالتِ خالیِ فیلتر: پیامِ صادق + خروجِ یک‌ضربه‌ای */}
+          {isFiltering && rows.length === 0 && (
+            <div className="mt-3 rounded-xl border border-dashed border-stone-300 py-6 text-center">
+              <Search size={18} className="mx-auto mb-2 text-stone-300" aria-hidden />
+              <p className="mb-2.5 text-[12px] font-bold text-stone-400">نبردی با این مشخصات پیدا نشد.</p>
+              <button
+                onClick={clearFilters}
+                className="rounded-lg bg-stone-100 px-3 py-1.5 text-[11px] font-black text-stone-600 transition-colors hover:bg-stone-200"
+              >
+                پاک‌کردن فیلترها
+              </button>
+            </div>
+          )}
+
           {/* Task 96 — پانوشتِ زیرمجموعهٔ صادق (الگوی تسک ۹۵): نیمی‌داورگواه
               باید نیمی دیده شود؛ فقط وقتی دست‌کم یک رسید هست رندر می‌شود */}
           {verified > 0 && (
@@ -222,10 +333,17 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
             </p>
           )}
 
-          {duelHistory.length > 5 && (
-            <p className="mt-3 text-center text-[11.5px] font-bold text-stone-400">
-              و {faNum(duelHistory.length - 5)} نبرد قدیمی‌تر در همین دستگاه ذخیره شده است
-            </p>
+          {/* Task 98 — بازکردنِ دفترچه: جملهٔ ثابتِ «قدیمی‌تر» حالا دکمه است؛
+              با فیلترِ فعال همهٔ یافته‌ها خودکار نشان داده می‌شوند */}
+          {!isFiltering && duelHistory.length > 5 && (
+            <button
+              onClick={() => setExpanded((v) => !v)}
+              aria-expanded={expanded}
+              className="mt-3 flex w-full items-center justify-center gap-1.5 rounded-xl border border-dashed border-stone-300 py-2 text-[11.5px] font-black text-stone-400 transition-colors hover:bg-stone-50 hover:text-stone-600"
+            >
+              {expanded ? <ChevronUp size={13} aria-hidden /> : <ChevronDown size={13} aria-hidden />}
+              {expanded ? "نمایش کمتر" : `نمایش همهٔ ${faNum(duelHistory.length)} نبرد`}
+            </button>
           )}
         </section>
       )}
