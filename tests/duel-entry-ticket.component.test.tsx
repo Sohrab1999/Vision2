@@ -28,6 +28,8 @@ const renderSetup = (over: { createBusy?: boolean; joinBusy?: boolean } = {}) =>
       setJoinInput={() => {}}
       joinBusy={over.joinBusy ?? false}
       createBusy={over.createBusy ?? false}
+      nameDraft=""
+      setNameDraft={() => {}}
       paceChoices={DUEL_PACES}
       chosenPace={DEFAULT_PACE_MS}
       choosePace={() => {}}

@@ -9,7 +9,7 @@ import { useCountdown } from "@/hooks/use-countdown";
 import { useToast } from "@/hooks/use-toast";
 import { trackEvent } from "@/lib/analytics";
 import { mintDuelTicket, sendStats } from "@/lib/identity";
-import { duelDisplayName } from "@/lib/duel-receipt";
+import { duelDisplayName, resolveDuelName } from "@/lib/duel-receipt";
 import { buildDuelRecord } from "@/lib/duel-history";
 import {
   buildDuelBank,
@@ -77,6 +77,9 @@ export interface DuelMachine {
   joinBusy: boolean;
   /** Task 112 — ساختِ اتاق حینِ ضربِ بلیت/انتظارِ ack داور مشغول است */
   createBusy: boolean;
+  /** Task 131 «نامِ نمایشیِ نبرد» — پیش‌نویسِ لابی؛ خالی = نامِ پروفایل (فالبک «یادگیرنده») */
+  nameDraft: string;
+  setNameDraft: (v: string) => void;
   /** Task 107 — ریتمِ برگزیدهٔ لابی (فقط در فازِ setup قابلِ تغییر) */
   chosenPace: number;
   paceChoices: typeof DUEL_PACES;
@@ -135,6 +138,11 @@ export function useDuelSocket(): DuelMachine {
   const [oppLeft, setOppLeft] = useState(false);
   const [endData, setEndData] = useState<EndPayload | null>(null);
   const [myFinishAt, setMyFinishAt] = useState(0);
+  // Task 131 «نامِ نمایشیِ نبرد» — SEC-5: خوداظهارِ فقطِ نمایشی. پیش‌نویسِ فیلدِ
+  // لابی (هم‌الگوی joinInput) + نامِ resolveشده‌ای که با ورودِ موفق به اتاق قفل
+  // می‌شود — جست‌وجوی رسیدِ آمار باید «همان نامی» را ادعا کند که داور ثبت کرده.
+  const [nameDraft, setNameDraft] = useState("");
+  const myDuelNameRef = useRef("");
 
   // ----------------------------- مسابقه -----------------------------
   const [questions, setQuestions] = useState<DuelQ[]>([]);
@@ -218,7 +226,7 @@ export function useDuelSocket(): DuelMachine {
           score: mine.score,
           outcome,
           receipt: end.receipt,
-          duelName: duelDisplayName(useStudy.getState().userName),
+          duelName: myDuelNameRef.current || duelDisplayName(useStudy.getState().userName),
         }).catch(() => {});
       } catch {
         /* ignore */
@@ -367,10 +375,12 @@ export function useDuelSocket(): DuelMachine {
     if (!s || conn !== "online") return;
     setCreateBusy(true);
     const store = useStudy.getState();
+    const duelName = resolveDuelName(nameDraft, store.userName);
+    myDuelNameRef.current = duelName;
     emitEntryWithTicket(
       s,
       "duel:create",
-      { name: store.userName || "یادگیرنده", color: store.avatarColor, perQMs: chosenPace },
+      { name: duelName, color: store.avatarColor, perQMs: chosenPace },
       (res: EntryAck & { code?: string; state?: { players: PublicPlayer[] } }) => {
         setCreateBusy(false);
         if (!res.ok) {
@@ -384,7 +394,7 @@ export function useDuelSocket(): DuelMachine {
       },
       toast
     );
-  }, [conn, toast, chosenPace, createBusy]);
+  }, [conn, toast, chosenPace, createBusy, nameDraft]);
 
   const joinRoom = useCallback(() => {
     const s = socketRef.current;
@@ -396,10 +406,12 @@ export function useDuelSocket(): DuelMachine {
     }
     setJoinBusy(true);
     const store = useStudy.getState();
+    const duelName = resolveDuelName(nameDraft, store.userName);
+    myDuelNameRef.current = duelName;
     emitEntryWithTicket(
       s,
       "duel:join",
-      { code, name: store.userName || "یادگیرنده", color: store.avatarColor },
+      { code, name: duelName, color: store.avatarColor },
       (res: EntryAck) => {
         setJoinBusy(false);
         if (!res.ok) {
@@ -412,7 +424,7 @@ export function useDuelSocket(): DuelMachine {
       },
       toast
     );
-  }, [conn, joinInput, toast, joinBusy]);
+  }, [conn, joinInput, toast, joinBusy, nameDraft]);
 
   const leaveRoom = useCallback(() => {
     const s = socketRef.current;
@@ -507,6 +519,8 @@ export function useDuelSocket(): DuelMachine {
     setJoinInput,
     joinBusy,
     createBusy,
+    nameDraft,
+    setNameDraft,
     chosenPace,
     paceChoices: DUEL_PACES,
     choosePace,

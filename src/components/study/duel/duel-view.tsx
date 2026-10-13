@@ -32,6 +32,8 @@ export default function DuelView() {
         setJoinInput={d.setJoinInput}
         joinBusy={d.joinBusy}
         createBusy={d.createBusy}
+        nameDraft={d.nameDraft}
+        setNameDraft={d.setNameDraft}
         paceChoices={d.paceChoices}
         chosenPace={d.chosenPace}
         choosePace={d.choosePace}

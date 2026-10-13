@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Sparkles, Swords, Users, Timer, Zap, Wifi, WifiOff, Loader2, Target, ShieldCheck, History, Flame, Percent, Search, X, ChevronDown, ChevronUp, ImageDown, Share2 } from "lucide-react";
+import { Sparkles, Swords, Users, Timer, Zap, Wifi, WifiOff, Loader2, Target, ShieldCheck, History, Flame, Percent, Search, X, ChevronDown, ChevronUp, ImageDown, Share2, UserRound } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum, timeAgoFa, avatarClasses, secFa } from "@/lib/study-theme";
@@ -10,6 +10,7 @@ import { percent } from "@/lib/domain/percent";
 import { useToast } from "@/hooks/use-toast";
 import { downloadDuelLedgerImage, buildDuelLedgerBlob } from "@/lib/result-image";
 import { canShareImageFiles, blobToFile, shareImageFile, type ShareOutcome } from "@/lib/share-card";
+import { duelDisplayName } from "@/lib/duel-receipt";
 import {
   duelWinStreak,
   duelBestScore,
@@ -29,7 +30,7 @@ import { paceSecondsLabel, type DuelPace } from "@/lib/duel-pace";
 
 // فاز SETUP — قهرمان نبرد: آمار بردها، ساخت اتاق و پیوستن با کد
 
-export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJoinInput, joinBusy, createBusy, paceChoices, chosenPace, choosePace }: {
+export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJoinInput, joinBusy, createBusy, nameDraft, setNameDraft, paceChoices, chosenPace, choosePace }: {
   conn: Conn;
   createRoom: () => void;
   joinRoom: () => void;
@@ -38,6 +39,9 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
   joinBusy: boolean;
   /** Task 112 «بلیتِ ورود» — حینِ ضربِ بلیت/انتظارِ داور مشغول */
   createBusy: boolean;
+  /** Task 131 «نامِ نمایشیِ نبرد» — پیش‌نویسِ لابی؛ خالی = نامِ پروفایل */
+  nameDraft: string;
+  setNameDraft: (v: string) => void;
   /** Task 107 — سه ریتمِ بستهٔ duel-pace؛ سرعتِ هر سؤال را سازندهٔ اتاق برمی‌گزیند */
   paceChoices: readonly DuelPace[];
   chosenPace: number;
@@ -49,6 +53,7 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
   const duelLosses = useStudy((s) => s.duelLosses);
   const duelTies = useStudy((s) => s.duelTies);
   const duelHistory = useStudy((s) => s.duelHistory);
+  const userName = useStudy((s) => s.userName);
   const [imgBusy, setImgBusy] = useState(false);
   const [shareBusy, setShareBusy] = useState(false);
 
@@ -172,6 +177,30 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
             <span className="rounded-xl border border-white/25 bg-white/15 px-4 py-2 text-[13px] font-black backdrop-blur-sm">
               🤝 مساوی: {faNum(mounted ? duelTies : 0)}
             </span>
+          </div>
+
+          {/* Task 131 «نامِ نمایشیِ نبرد» — SEC-5: خوداظهارِ فقطِ نمایشی؛
+              هرگز پروفایل را نمی‌نویسد. خالی = نامِ پروفایل (فالبکِ خودِ داور
+              «یادگیرنده»). همان نامِ resolveشده در duel:create/duel:join
+              می‌رود و در جست‌وجوی رسیدِ آمار هم ادعا می‌شود — کلاینت باید
+              همان نامی را بگوید که داور در رسید ثبت کرده. */}
+          <div className="mx-auto mb-4 max-w-md rounded-2xl border border-white/25 bg-white/10 p-4 backdrop-blur-sm">
+            <div className="mb-2 flex items-center justify-center gap-1.5 text-[13px] font-black">
+              <UserRound size={14} aria-hidden />
+              نامِ نمایشی در این نبرد
+            </div>
+            <input
+              value={nameDraft}
+              onChange={(e) => setNameDraft(e.target.value.slice(0, 24))}
+              placeholder={`پیش‌فرض: ${duelDisplayName(userName)}`}
+              aria-label="نام نمایشی در این نبرد"
+              maxLength={24}
+              className="duel-input w-full rounded-xl border-2 border-white/30 bg-white/90 px-3 py-2.5 text-center text-sm font-black text-stone-800 outline-none placeholder:font-normal placeholder:text-stone-400 focus:border-white"
+              dir="auto"
+            />
+            <p className="mt-1.5 text-center text-[10.5px] leading-4 text-white/70">
+              فقط برای همین نبرد نشان داده می‌شود — پروفایل و رنگِ تو تغییر نمی‌کند.
+            </p>
           </div>
 
           {/* ساخت اتاق */}

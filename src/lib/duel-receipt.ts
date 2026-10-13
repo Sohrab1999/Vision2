@@ -77,6 +77,20 @@ export function duelDisplayName(raw: string): string {
   return name || "یادگیرنده";
 }
 
+/**
+ * SEC-5 «نامِ نمایشیِ خوداظهار (فقط نمایشی)» (Task 131) — نامِ علی که بازیکن
+ * در «این نبرد» برای حریف نشان می‌دهد. پیش‌نویسِ خالی/فاصله → نامِ پروفایل؛
+ * خودِ آن هم فالبکِ «یادگیرنده» را از duelDisplayName می‌گیرد. هرگز پروفایل
+ * را نمی‌نویسد — نمایشی است، نه هویت؛ و داور فقط همین رشتهٔ نمایشی را در
+ * رسید ثبت می‌کند (پاریتیِ readProfile با duelDisplayName حفظ می‌شود —
+ * کلاینت باید همان نامی را ادعا کند که در duel:create/join فرستاده).
+ */
+export function resolveDuelName(draft: string, profileName: string): string {
+  const d = typeof draft === "string" ? draft.trim() : "";
+  const p = typeof profileName === "string" ? profileName : "";
+  return duelDisplayName(d || p);
+}
+
 const HEX64 = /^[0-9a-f]{64}$/;
 
 /** پیش‌ازمانیِ ساختاری — قبل از هر HMAC تا canonical روی دادهٔ سالم ساخته شود */

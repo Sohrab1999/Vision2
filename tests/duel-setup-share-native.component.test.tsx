@@ -70,6 +70,8 @@ const renderSetup = () =>
       setJoinInput={() => {}}
       joinBusy={false}
       createBusy={false}
+        nameDraft=""
+        setNameDraft={() => {}}
       paceChoices={DUEL_PACES}
       chosenPace={DEFAULT_PACE_MS}
       choosePace={() => {}}
