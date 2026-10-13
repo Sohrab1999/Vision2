@@ -12,10 +12,12 @@ import {
   Trophy,
   Check,
   ChevronLeft,
+  Flame,
 } from "lucide-react";
 import { useStudy, firstLessonWithDue, todayStr, type DayStat } from "@/lib/study-store";
 import { percent } from "@/lib/domain/percent";
 import { questProgress } from "@/lib/daily-quests";
+import { questStreakMeta } from "@/lib/quest-streak";
 import { faNum } from "@/lib/study-theme";
 import { useMounted } from "@/lib/use-mounted";
 import { useToast } from "@/hooks/use-toast";
@@ -38,6 +40,7 @@ export default function DailyQuests() {
   const mounted = useMounted();
   const { toast } = useToast();
   const dayStat = useStudy((s) => s.dayStat);
+  const dayHistory = useStudy((s) => s.dayHistory);
   const srs = useStudy((s) => s.srs);
   const openLesson = useStudy((s) => s.openLesson);
   const openLessonTab = useStudy((s) => s.openLessonTab);
@@ -47,6 +50,15 @@ export default function DailyQuests() {
   const doneCount = quests.filter((q) => q.done).length;
   const allDone = doneCount === quests.length;
   const overallPct = percent(doneCount, quests.length);
+
+  // Task 140 — دفترِ زنجیرهٔ مأموریت‌ها: چیپ فقط از streak>=۲ ظاهر
+  // می‌شود (honest absence)؛ تاریخِ کامل از dayHistory می‌آید نه
+  // فقط امروزِ dayStat.
+  const todayKey = mounted ? todayStr() : "";
+  const streakMeta = useMemo(
+    () => questStreakMeta(mounted ? dayHistory : {}, todayKey),
+    [mounted, dayHistory, todayKey]
+  );
 
   // celebrate when the fifth quest completes *live in this session*
   // (ref-guarded: no toast on mere page loads with a finished day)
@@ -116,6 +128,16 @@ export default function DailyQuests() {
               <span className={`rounded-full px-2 py-0.5 text-[10px] font-black ${allDone ? "bg-emerald-600 text-white" : "bg-emerald-100 text-emerald-800"}`}>
                 {faNum(doneCount)} از {faNum(quests.length)}
               </span>
+              {streakMeta.label && (
+                <span
+                  className="quest-streak-chip inline-flex items-center gap-1 rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-black text-amber-800"
+                  title={streakMeta.title}
+                  aria-label={streakMeta.title}
+                >
+                  <Flame size={11} aria-hidden />
+                  {streakMeta.label}
+                </span>
+              )}
             </div>
             <p className="mt-0.5 text-[11.5px] font-bold text-stone-500">{title}</p>
           </div>
@@ -199,7 +221,10 @@ export default function DailyQuests() {
           <div className="reward-shimmer absolute inset-0" aria-hidden />
           <p className="relative flex items-center justify-center gap-2 text-[12.5px] font-black text-white">
             <Trophy size={15} />
-            پاداش روزانه گرفتی — {faNum(stat.reviews + stat.quizzes + stat.words)} فعالیت امروز ثبت شد. زنجیره‌ات امن است!
+            پاداش روزانه گرفتی — {faNum(stat.reviews + stat.quizzes + stat.words)} فعالیت امروز ثبت شد.
+            {streakMeta.streak >= 2 && streakMeta.includesToday
+              ? ` زنجیرهٔ مأموریت‌ها به ${faNum(streakMeta.streak)} روز رسید!`
+              : " زنجیره‌ات امن است!"}
           </p>
         </motion.div>
       )}
