@@ -19,11 +19,23 @@ import lesson3 from "../../src/data/lesson3";
 import examBank from "../../src/data/exam";
 import type { QuizQuestion } from "../../src/lib/study-types";
 import { loadOrCreateReceiptSecret, signDuelEnd } from "../../src/lib/duel-receipt-server";
+import { clientIpOf, createJoinThrottle, entryThrottleError } from "../../src/lib/join-throttle";
 import { BASE_POINTS, speedBonus } from "./scoring";
 
 // Task 94 «رسیدِ امضاشدهٔ داوری» — هر پایانِ مسابقه با HMAC امضا می‌شود تا
 // ثبتِ نتیجه در /api/stats فقط با رسیدِ معتبر داور ممکن باشد (ضد جعلِ خوداظهاری).
 const RECEIPT_SECRET = loadOrCreateReceiptSecret();
+
+// Task 97 «گلوگاهِ ورود» (SEC-5) — سقفِ duel:create/duel:join بر IP؛ ضدِ
+// کاویدنِ کدِ اتاق و سیلابِ ساختِ اتاق. مسیرهای API از گام ۵ لیمیت دارند،
+// سوکت بیرونِ آن لایه بود — IP از X-Real-IPِ Caddy می‌آید (گیت‌وی می‌نویسد
+// و بازنویسی؛ اتصالِ مستقیم فقط loopback است). نخستین ردِ هر سطل در هر
+// پنجره یک خط لاگ — بدونِ سیلابِ لاگ.
+const ENTRY_GATE = createJoinThrottle({
+  onLimit: ({ ip, kind, hits }) =>
+    console.warn(`[entry-gate] ${ip} ${kind} — ${hits} تلاش در پنجرهٔ ۶۰ثانیه‌ای`),
+});
+setInterval(() => ENTRY_GATE.sweep(), 60_000).unref();
 
 // ----------------------------- تنظیمات مسابقه -----------------------------
 const PORT = 3003;
@@ -282,6 +294,8 @@ io.on("connection", (socket: Socket) => {
   // ------------------------- ساخت اتاق -------------------------
   socket.on("duel:create", (raw: Profile, ack?: (res: unknown) => void) => {
     if (room) return ack?.({ ok: false, error: "قبلاً در اتاقی هستی." });
+    const createGate = ENTRY_GATE.attempt(clientIpOf(socket.handshake), "create");
+    if (!createGate.ok) return ack?.({ ok: false, error: entryThrottleError("create", createGate.retryAfterMs) });
     let code = makeRoomCode();
     for (let tries = 0; rooms.has(code) && tries < 20; tries++) code = makeRoomCode();
     const profile = readProfile(raw);
@@ -319,6 +333,9 @@ io.on("connection", (socket: Socket) => {
   // ------------------------- پیوستن با کد -------------------------
   socket.on("duel:join", (payload: { code?: unknown } & Profile, ack?: (res: unknown) => void) => {
     if (room) return ack?.({ ok: false, error: "قبلاً در اتاقی هستی." });
+    // گلوگاهِ ورود پیشِ جست‌وجوی اتاق — هر تلاش حتی کدِ ناموجود می‌شمارد (ضدِ کاودنِ کد)
+    const joinGate = ENTRY_GATE.attempt(clientIpOf(socket.handshake), "join");
+    if (!joinGate.ok) return ack?.({ ok: false, error: entryThrottleError("join", joinGate.retryAfterMs) });
     const code = typeof payload?.code === "string" ? payload.code.trim().toUpperCase() : "";
     const r = rooms.get(code);
     if (!r) return ack?.({ ok: false, error: "اتاقی با این کد پیدا نشد." });
