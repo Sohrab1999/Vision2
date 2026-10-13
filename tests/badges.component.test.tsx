@@ -3,7 +3,7 @@
 // Task 81 — ششمین سوژهٔ زیرساخت تست کامپوننت (بازشده در Task 75):
 // بخش «نشان‌ها و دستاوردها» — ۲۵ نشان با خانوادهٔ تازهٔ یخ.
 // قراردادهایی که قفل می‌شوند:
-//   ① تازه‌وارد: شمار «۰ از ۳۸» + همهٔ کاشی‌ها قفل (بدون badge-shine)
+//   ① تازه‌وارد: شمار «۰ از ۴۰» + همهٔ کاشی‌ها قفل (بدون badge-shine)
 //   ② یادگیرندهٔ یخی: کاشی‌های یخ باز و «اول» مرتب‌شده‌اند (sort قرارداد)
 //     + پیشرفتِ زیرِ قفل با رقم فارسی
 //   ③ گارد نقشهٔ آیکن: هر iconِ رجیستری در BADGE_ICONS کلید دارد —
@@ -141,6 +141,23 @@ const seedMarathon = () => {
   useStudy.setState({ dayHistory, seenBadges: [] });
 };
 
+// (Task 92) ۲۵ روزِ «فقط‌واژه‌ای» — گسترده‌ترین شرطِ حضور را روی کاشی اثبات می‌کند:
+// هیچ ران/هدف/زنجیره‌ای باز نمی‌شود ولی ماهِ حاضر می‌درخشد.
+// درسِ آلودگی: beforeEach يومتحن goalMetDays را ریست نمی‌کند — seedِ هدفِ تست‌های
+// قبلی می‌ماند و چیپِ «۱ از ۴۰» را «۲ از ۴۰» می‌کرد؛ این seed خودش پاکش می‌کند.
+const seedPresence = () => {
+  const key = (n: number) => {
+    const d = new Date();
+    d.setDate(d.getDate() - n);
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+  };
+  const dayHistory: Record<string, { day: string; reviews: number; quizzes: number; words: number; dictation: number; rush: number }> = {};
+  for (let n = 0; n <= 24; n++) {
+    dayHistory[key(n)] = { day: key(n), reviews: 0, quizzes: 0, words: 1, dictation: 0, rush: 0 };
+  }
+  useStudy.setState({ dayHistory, goalMetDays: [], seenBadges: [] });
+};
+
 describe("نشان‌ها و دستاوردها — کامپوننت (Task 81)", () => {
   beforeAll(() => {
     // jsdom IntersectionObserver ندارد — ویژگی whileInView فریمرموشن امن شود
@@ -186,10 +203,10 @@ describe("نشان‌ها و دستاوردها — کامپوننت (Task 81)",
     expect(BADGE_ICONS.Package).toBeTruthy();
   });
 
-  it("تازه‌وارد: «۰ از ۳۸» + کاشی یخ قفل با پیشرفتِ فارسی زیرِ قفل", () => {
+  it("تازه‌وارد: «۰ از ۴۰» + کاشی یخ قفل با پیشرفتِ فارسی زیرِ قفل", () => {
     render(<Badges />);
     // شمار در JSX دو تکه رندر می‌شود — تطبیق با textContentِ نرمال‌شده
-    const chip = screen.getByText((_, el) => el?.tagName === "SPAN" && /۰\s*از\s*۳۸/.test(el.textContent ?? ""));
+    const chip = screen.getByText((_, el) => el?.tagName === "SPAN" && /۰\s*از\s*۴۰/.test(el.textContent ?? ""));
     expect(chip).toBeInTheDocument();
     const tile = screen.getByText("انبار یخ").closest(".badge-card");
     expect(tile).not.toBeNull();
@@ -201,10 +218,10 @@ describe("نشان‌ها و دستاوردها — کامپوننت (Task 81)",
     expect(goalTile).toHaveTextContent("۰ از ۷ روزِ هدف‌دار");
   });
 
-  it("یادگیرندهٔ یخی: «۴ از ۳۸» + کاشی‌های یخ باز (badge-shine) و اولِ لیست", () => {
+  it("یادگیرندهٔ یخی: «۴ از ۴۰» + کاشی‌های یخ باز (badge-shine) و اولِ لیست", () => {
     seedIce();
     const { container } = render(<Badges />);
-    expect(screen.getByText((_, el) => el?.tagName === "SPAN" && /۴\s*از\s*۳۸/.test(el.textContent ?? ""))).toBeInTheDocument();
+    expect(screen.getByText((_, el) => el?.tagName === "SPAN" && /۴\s*از\s*۴۰/.test(el.textContent ?? ""))).toBeInTheDocument();
     for (const title of ["یخ‌ساز", "نجات‌گر", "انبار یخ", "سپر یخی"]) {
       const tile = screen.getByText(title).closest(".badge-card");
       expect(tile?.className, `${title} must be unlocked`).toContain("badge-shine");
@@ -216,10 +233,10 @@ describe("نشان‌ها و دستاوردها — کامپوننت (Task 81)",
     expect(titles.join("|")).toContain("سپر یخی");
   });
 
-  it("(Task 82) یادگیرندهٔ هدف‌مند: «۳ از ۳۸» + هفتهٔ هدف‌دار باز + قفلِ آخر با پیشرفتِ فارسی", () => {
+  it("(Task 82) یادگیرندهٔ هدف‌مند: «۳ از ۴۰» + هفتهٔ هدف‌دار باز + قفلِ آخر با پیشرفتِ فارسی", () => {
     seedGoal();
     const { container } = render(<Badges />);
-    expect(screen.getByText((_, el) => el?.tagName === "SPAN" && /۳\s*از\s*۳۸/.test(el.textContent ?? ""))).toBeInTheDocument();
+    expect(screen.getByText((_, el) => el?.tagName === "SPAN" && /۳\s*از\s*۴۰/.test(el.textContent ?? ""))).toBeInTheDocument();
     for (const title of ["اولین هدف", "پنج‌روزهٔ هدف‌دار", "هفتهٔ هدف‌دار"]) {
       const tile = screen.getByText(title).closest(".badge-card");
       expect(tile?.className, `${title} must be unlocked`).toContain("badge-shine");
@@ -319,6 +336,22 @@ describe("نشان‌ها و دستاوردها — کامپوننت (Task 81)",
       const sub = screen.getByText(t).closest(".badge-card");
       expect(sub?.className, `${t} co-unlocks with marathon`).toContain("badge-shine");
     }
+  });
+
+  it("(Task 92) حضور: بیست‌وپنج روزِ فقط‌واژه‌ای → «ماهِ حاضر» باز، «ماهِ درخشان» قفل با پیشرفتِ صادق؛ رجیستری ۴۰", () => {
+    seedPresence();
+    render(<Badges />);
+    const tile = screen.getByText("ماهِ حاضر").closest(".badge-card");
+    expect(tile, "presence-month tile must exist").not.toBeNull();
+    expect(tile?.className, "presence-month must be unlocked (words-only days count)").toContain("badge-shine");
+    expect(tile?.querySelector("svg"), "CalendarCheck SVG renders (icon-map guard: never silent Medal)").not.toBeNull();
+    // پلهٔ طلا هنوز قفل است — ۲۵ < ۳۰ — و پیشرفتِ زیرِ قفل صادق است
+    const full = screen.getByText("ماهِ درخشان").closest(".badge-card");
+    expect(full?.className, "presence-month-full locked at 25 days").not.toContain("badge-shine");
+    expect(full).toHaveTextContent("۲۵ از ۳۰ روزِ فعال");
+    // شمارِ رجیستری روی چیپ = ۴۰
+    const chip = screen.getByText((_, el) => el?.tagName === "SPAN" && /۱\s*از\s*۴۰/.test(el.textContent ?? ""));
+    expect(chip).toBeInTheDocument();
   });
 
   it("توستِ تازه: فقط نشانِ دیده‌نشده → یک توست «یخ‌ساز» + store واقعی seen می‌شود", () => {

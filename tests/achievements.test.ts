@@ -453,7 +453,7 @@ describe("رانِ ترکیبی — هفتهٔ دیکتهٔ پیوسته (Task 8
     expect(byId("dictation-run").title).toBe("هفتهٔ دیکتهٔ پیوسته");
     expect(byId("dictation-run").tier).toBe("gold");
     expect(byId("dictation-run").icon).toBe("SpellCheck2");
-    expect(BADGES.length).toBe(38);
+    expect(BADGES.length).toBe(40);
   });
 
   it("قراردادِ شمارِ روز ≠ جمع: دو دیکته در یک روز هنوز یک روزِ دیکته‌دار است", () => {
@@ -748,7 +748,7 @@ describe("رانِ مرور — هفتهٔ مرور (Task 88)", () => {
     expect(byId("review-run").title).toBe("هفتهٔ مرور");
     expect(byId("review-run").tier).toBe("silver");
     expect(byId("review-run").icon).toBe("History");
-    expect(BADGES.length).toBe(38);
+    expect(BADGES.length).toBe(40);
     const one = base({ dayHistory: { [w(2)]: dh({ day: w(2), reviews: 1 }) } });
     expect(byId("review-run").progress!(one)).toBe("۱ از ۷ روزِ این هفته");
   });
@@ -839,7 +839,7 @@ describe("رانِ سه‌گانه — هفتهٔ سه‌گانه (Task 89)", ()
     expect(byId("triple-run").title).toBe("هفتهٔ سه‌گانه");
     expect(byId("triple-run").tier).toBe("gold");
     expect(byId("triple-run").icon).toBe("Crown");
-    expect(BADGES.length).toBe(38);
+    expect(BADGES.length).toBe(40);
     const mixed = base({ dayHistory: { ...tripleWeek(), [w(3)]: dh({ day: w(3), reviews: 1, quizzes: 1, dictation: 0 }) } });
     // دیکته ۶ روز / آزمون ۷ / مرور ۷ — ضعیف‌ترین حلقه پیشرفت را می‌گوید
     expect(byId("triple-run").progress!(mixed)).toBe("۶ از ۷ روزِ سه‌گانهٔ این هفته");
@@ -937,7 +937,7 @@ describe("ماراتن — رانِ دوهفته‌ای (Task 90)", () => {
     expect(byId("marathon-run").title).toBe("ماراتنِ دوهفته‌ای");
     expect(byId("marathon-run").tier).toBe("gold");
     expect(byId("marathon-run").icon).toBe("Trophy");
-    expect(BADGES.length).toBe(38);
+    expect(BADGES.length).toBe(40);
     // دیکته ۱۳ روز / آزمون ۱۴ / مرور ۱۴ — ضعیف‌ترین حلقه پیشرفت را می‌گوید
     const thirteen = base({
       dayHistory: {
@@ -1028,6 +1028,102 @@ describe("ماراتن — رانِ دوهفته‌ای (Task 90)", () => {
     expect(ids(corrupt)).not.toContain("marathon-run");
     const absent = base({});
     expect(ids(absent)).not.toContain("marathon-run");
+  });
+});
+
+describe("خانوادهٔ حضور — ماهِ حاضر و ماهِ درخشان (Task 92)", () => {
+  const w = (n: number) => daysAgoKey(n);
+  const dh = (over: Record<string, unknown>) => ({
+    day: "",
+    reviews: 0,
+    quizzes: 0,
+    words: 0,
+    dictation: 0,
+    rush: 0,
+    ...over,
+  });
+  const presenceDays = (ns: number[], fill: Record<string, unknown> = {}) =>
+    Object.fromEntries(ns.map((n) => [w(n), dh({ day: w(n), words: 1, ...fill })]));
+
+  it("wording و تیر و آیکن — نقره/CalendarCheck و طلا/Sparkles؛ رجیستری ۴۰ شد؛ پیشرفتِ سقف‌خورده", () => {
+    expect(byId("presence-month").title).toBe("ماهِ حاضر");
+    expect(byId("presence-month").tier).toBe("silver");
+    expect(byId("presence-month").icon).toBe("CalendarCheck");
+    expect(byId("presence-month-full").title).toBe("ماهِ درخشان");
+    expect(byId("presence-month-full").tier).toBe("gold");
+    expect(byId("presence-month-full").icon).toBe("Sparkles");
+    expect(BADGES.length).toBe(40);
+    const twentyFour = base({ dayHistory: presenceDays([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]) });
+    expect(twentyFour.activeDays35).toBe(25);
+    expect(byId("presence-month").progress!(twentyFour)).toBe("۲۵ از ۲۵ روزِ فعال");
+    expect(byId("presence-month-full").progress!(twentyFour)).toBe("۲۵ از ۳۰ روزِ فعال");
+  });
+
+  it("قراردادِ روز ≠ جمع: پنج فعالیت در یک روز هنوز یک روزِ حاضره — و شرطِ گسترده با ران‌ها قاطی نیست", () => {
+    const one = base({ dayHistory: { [w(2)]: dh({ day: w(2), reviews: 4, quizzes: 3, words: 2, dictation: 2, rush: 1 }) } });
+    expect(one.activeDays35).toBe(1);
+    expect(ids(one)).not.toContain("presence-month");
+    // شرطِ گسترده: فقط واژه → روزِ حاضره ولی هیچ رانی باز نمی‌شود
+    const wordsOnly = base({ dayHistory: presenceDays([0, 1, 2]) });
+    expect(wordsOnly.activeDays35).toBe(3);
+    expect(ids(wordsOnly)).not.toContain("dictation-run");
+    expect(ids(wordsOnly)).not.toContain("exam-run");
+    expect(ids(wordsOnly)).not.toContain("review-run");
+    // برق‌آسا هم روز را ثبت می‌کند (پنجمین شمارندهٔ DayStat)
+    const rushOnly = base({ dayHistory: { [w(1)]: dh({ day: w(1), rush: 2 }) } });
+    expect(rushOnly.activeDays35).toBe(1);
+  });
+
+  it("مرزِ حافظه: w(34) آخرین روزِ پنجره است و w(35) بیرون — سقفِ dayHistory همان ۳۵ روز", () => {
+    const atEdge = base({ dayHistory: { [w(34)]: dh({ day: w(34), words: 1 }) } });
+    expect(atEdge.activeDays35).toBe(1);
+    const beyond = base({ dayHistory: { [w(35)]: dh({ day: w(35), words: 1 }) } });
+    expect(beyond.activeDays35).toBe(0);
+  });
+
+  it("زیرمجموعهٔ نردبان: ۳۰ روز هر دو نشان را باز می‌کند؛ ۲۴ روز هیچ‌کدام را", () => {
+    const thirty = base({ dayHistory: presenceDays(Array.from({ length: 30 }, (_, i) => i)) });
+    expect(thirty.activeDays35).toBe(30);
+    expect(ids(thirty)).toContain("presence-month");
+    expect(ids(thirty)).toContain("presence-month-full");
+    const twentyFour = base({ dayHistory: presenceDays(Array.from({ length: 24 }, (_, i) => i)) });
+    expect(twentyFour.activeDays35).toBe(24);
+    expect(ids(twentyFour)).not.toContain("presence-month");
+    expect(ids(twentyFour)).not.toContain("presence-month-full");
+  });
+
+  it("fallbackِ امروز: ۲۴ روزِ تاریخ + امروزِ dayStatِ فقط‌واژه‌ای = روزِ بیست‌وپنجم؛ حاضرِ تاریخ دوبار شمرده نمی‌شود", () => {
+    const twentyFour = presenceDays([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]);
+    const viaStat = base({
+      dayHistory: twentyFour,
+      dayStat: { day: w(0), reviews: 0, quizzes: 0, words: 3, dictation: 0, rush: 0 },
+    });
+    expect(viaStat.activeDays35).toBe(25);
+    expect(ids(viaStat)).toContain("presence-month");
+    const viaHistory = base({
+      dayHistory: { ...twentyFour, [w(0)]: dh({ day: w(0), words: 1 }) },
+      dayStat: { day: w(0), reviews: 9, quizzes: 9, words: 9, dictation: 9, rush: 9 },
+    });
+    expect(viaHistory.activeDays35).toBe(25);
+  });
+
+  it("گاردِ ورودی خراب: خانه‌های junk/neg/NaN روزِ حاضر نمی‌شوند؛ غایبِ کامل → صفرِ امن", () => {
+    const corrupt = buildEvalInput(
+      baseRaw({
+        dayHistory: {
+          [w(1)]: dh({ day: w(1), words: -1, reviews: 0 }),
+          [w(2)]: "junk",
+          [w(3)]: dh({ day: w(3), words: Number.NaN, rush: Number.NaN }),
+          [w(4)]: dh({ day: w(4), quizzes: 1 }),
+        },
+      }) as unknown as BuildArgs
+    );
+    expect(corrupt.activeDays35).toBe(1);
+    expect(ids(corrupt)).not.toContain("presence-month");
+    const absent = base({});
+    expect(absent.activeDays35).toBe(0);
+    expect(ids(absent)).not.toContain("presence-month");
+    expect(ids(absent)).not.toContain("presence-month-full");
   });
 });
 

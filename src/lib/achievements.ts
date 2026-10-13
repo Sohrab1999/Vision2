@@ -58,6 +58,7 @@ export interface BadgeEvalInput {
   dictationDays14: number; // چند روزِ پنجرهٔ ۱۴روزه دیکته داشتند
   quizDays14: number; // چند روزِ پنجرهٔ ۱۴روزه آزمون داشتند
   reviewsDays14: number; // چند روزِ پنجرهٔ ۱۴روزه مرور داشتند
+  activeDays35: number; // چند روزِ پنجرهٔ ۳۵روزه هر فعالیتی داشتند (خانوادهٔ حضور، Task 92)
 }
 
 function historyTotals(history: StudyState["history"]): { quizzes: number; reviews: number; days: number } {
@@ -165,9 +166,12 @@ export function buildEvalInput(s: {
     // (Task 90) همان تابعِ پنجره‌خنثی دوبار صدا زده می‌شود: ۷روزه (windowStart
     // موتور) و ۱۴روزه (daysAgoKey(13)) — سقفِ حافظه مجاز است (dayHistory ۳۵ روز)؛
     // و روزِ ۱۴ در پنجرهٔ ۷ نیست ولی روزِ ۷ در پنجرهٔ ۱۴ هست (زیرمجموعه).
+    // (Task 92) پنجرهٔ سوم = کلِ حافظهٔ ۳۵روزه (daysAgoKey(34)) — شمارِ روزهایِ
+    // «هر فعالیتی» برای خانوادهٔ حضور؛ با هیچ‌کدام از شمارنده‌های تک‌فعالیت کاری ندارد.
     ...(() => {
       const win7 = windowCounters(s.dayHistory, windowStart, today, ds);
       const win14 = windowCounters(s.dayHistory, daysAgoKey(13), today, ds);
+      const win35 = windowCounters(s.dayHistory, daysAgoKey(34), today, ds);
       return {
         dictation7: win7.dictation7,
         quizzes7: win7.quizzes7,
@@ -177,6 +181,7 @@ export function buildEvalInput(s: {
         dictationDays14: win14.dictationDays,
         quizDays14: win14.quizDays,
         reviewsDays14: win14.reviewsDays,
+        activeDays35: win35.activeDays,
       };
     })(),
   };
@@ -192,12 +197,13 @@ function windowCounters(
   windowStart: string,
   today: string,
   ds: ReturnType<typeof normDayStat>
-): { dictation7: number; quizzes7: number; reviewsDays: number; dictationDays: number; quizDays: number } {
+): { dictation7: number; quizzes7: number; reviewsDays: number; dictationDays: number; quizDays: number; activeDays: number } {
   let dictation7 = 0;
   let quizzes7 = 0;
   let reviewsDays = 0;
   let dictationDays = 0;
   let quizDays = 0;
+  let activeDays = 0; // (Task 92) هر فعالیتی روز را ثبت می‌کند — مرور/آزمون/دیکته/واژه/برق
   if (dayHistory && typeof dayHistory === "object") {
     for (const [key, raw] of Object.entries(dayHistory)) {
       if (key < windowStart || !raw || typeof raw !== "object") continue;
@@ -210,6 +216,9 @@ function windowCounters(
       const q = Number.isFinite(st.quizzes) ? Math.max(0, st.quizzes) : 0;
       quizzes7 += q;
       if (q > 0) quizDays += 1;
+      const w = Number.isFinite(st.words) ? Math.max(0, st.words) : 0;
+      const sh = Number.isFinite(st.rush) ? Math.max(0, st.rush) : 0;
+      if (r + d + q + w + sh > 0) activeDays += 1;
     }
   }
   const todayInHistory = !!(dayHistory && typeof dayHistory === "object" && (dayHistory as Record<string, unknown>)[today]);
@@ -222,8 +231,11 @@ function windowCounters(
     const q = Number.isFinite(ds.quizzes) ? Math.max(0, ds.quizzes) : 0;
     quizzes7 += q;
     if (q > 0) quizDays += 1;
+    const w = Number.isFinite(ds.words) ? Math.max(0, ds.words) : 0;
+    const sh = Number.isFinite(ds.rush) ? Math.max(0, ds.rush) : 0;
+    if (r + d + q + w + sh > 0) activeDays += 1;
   }
-  return { dictation7, quizzes7, reviewsDays, dictationDays, quizDays };
+  return { dictation7, quizzes7, reviewsDays, dictationDays, quizDays, activeDays };
 }
 
 /**
@@ -633,6 +645,33 @@ export const BADGES: BadgeDef[] = [
     progress: (s) =>
       `${faNum(Math.min(s.dictationDays14, s.quizDays14, s.reviewsDays14, 14))} از ۱۴ روزِ ماراتن`,
     check: (s) => s.dictationDays14 >= 14 && s.quizDays14 >= 14 && s.reviewsDays14 >= 14,
+  },
+  // ---- خانوادهٔ حضور (Task 92) — بُعدِ چهارمِ ثبات: زنجیره «پیوستگی» را می‌سنجد
+  // (یک غیبت می‌شکند)، هدف «وفاداری به قولِ روزانه» را، ران‌ها «پیوستگیِ یک
+  // فعالیتِ خاص» را — حضور فقط می‌پرسد «این ماه چند روز اصلاً آمده‌ای؟» با
+  // گسترده‌ترین شرطِ ممکن: هر فعالیتی روز را ثبت می‌کند (مرور/آزمون/دیکته/واژهٔ
+  // تازه/برق‌آسا — همان پنج شمارندهٔ DayStat)؛ پس یادگیرنده‌ای که فقط واژه
+  // بلدم‌می‌کند هم مسیرِ همین نشان را می‌رود. پنجره = کلِ حافظهٔ ۳۵روزهٔ
+  // dayHistory (همان سقفِ Task 90)؛ روز≠جمع (قراردادِ ران‌ها): پنج فعالیت در
+  // یک روز هنوز یک روزِ حاضره. دو پله: ۲۵ روز (نقره — حدود ۷۰٪ ماه) و ۳۰ روز
+  // (طلا — تقریباً روزانه). زیرمجموعهٔ ریاضی: ۳۰ روز ⇒ ۲۵ روز هم هست.
+  {
+    id: "presence-month",
+    title: "ماهِ حاضر",
+    desc: "بیست‌وپنج روزِ فعال در ۳۵ روزِ اخیر — هر فعالیتی می‌شود؛ مهم این است که هر روز آمده باشی",
+    icon: "CalendarCheck",
+    tier: "silver",
+    progress: (s) => `${faNum(Math.min(s.activeDays35, 25))} از ۲۵ روزِ فعال`,
+    check: (s) => s.activeDays35 >= 25,
+  },
+  {
+    id: "presence-month-full",
+    title: "ماهِ درخشان",
+    desc: "سی روزِ فعال در ۳۵ روزِ اخیر — تقریباً هر روزِ ماه حضور داشته‌ای و جا نمانده‌ای",
+    icon: "Sparkles",
+    tier: "gold",
+    progress: (s) => `${faNum(Math.min(s.activeDays35, 30))} از ۳۰ روزِ فعال`,
+    check: (s) => s.activeDays35 >= 30,
   },
 ];
 
