@@ -30,6 +30,7 @@ import {
   Gem,
   ShieldCheck,
   Shield,
+  Stamp,
   Package,
   Flag,
   CalendarDays,
@@ -87,6 +88,8 @@ export const BADGE_ICONS: Record<string, React.ElementType> = {
   Gem,
   ShieldCheck,
   Shield,
+  // خانوادهٔ اعتماد (Task 105)
+  Stamp,
   Package,
   // خانوادهٔ هدف (Task 82)
   Flag,

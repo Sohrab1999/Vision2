@@ -1,10 +1,10 @@
 // @vitest-environment jsdom
 // ------------------------------------------------------------------
 // Task 100 — نشان‌های خانوادهٔ «سرعت» روی پنلِ نشان‌ها:
-//   ① تازه‌وارد: «۰ از ۴۶» — دو کاشیِ تازه قفل با پیشرفتِ صادقِ گیتِ نمونه
+//   ① تازه‌وارد: «۰ از ۴۸» — دو کاشیِ تازه قفل با پیشرفتِ صادقِ گیتِ نمونه
 //   ② نمونهٔ کم با میانگینِ بالا → هنوز قفل؛ پیشرفت روی نمونه می‌ماند
 //     (هیچ‌وقت «۹۰ از ۶۰» زیرِ قفل دیده نمی‌شود — پیشرفتِ صادق)
-//   ③ نمونهٔ کافی و سریع → هر دو باز (زیرمجموعه) + «۲ از ۴۶»
+//   ③ نمونهٔ کافی و سریع → هر دو باز (زیرمجموعه) + «۲ از ۴۸»
 //   ۴ نمونهٔ کافی و کند → قفل با پیشرفتِ گیتِ میانگین («میانگینِ سرعت: ۰ از ۶۰»)
 // الگوی seed هم‌الگوی rival-badges (beforeEach ضدآلودگی — درسِ ۹۲).
 // ------------------------------------------------------------------
@@ -37,7 +37,7 @@ const rec = (over: Partial<DuelRecord>): DuelRecord => ({
 });
 
 const chipText = () =>
-  screen.getAllByText((_c, el) => !!el?.textContent && /از ۴۶$/.test(el.textContent.trim()))[0]
+  screen.getAllByText((_c, el) => !!el?.textContent && /از ۴۸$/.test(el.textContent.trim()))[0]
     ?.textContent?.replace(/\s+/g, " ")
     .trim();
 
@@ -83,7 +83,7 @@ describe("خانوادهٔ سرعت — صاعقه / سرعتِ صوت (Task 100
     expect(sound!.className).not.toContain("badge-shine");
     expect(bolt!.textContent).toContain("۰ از ۱۰ پاسخِ درست");
     expect(sound!.textContent).toContain("۰ از ۱۵ پاسخِ درست");
-    expect(chipText()).toContain("۰ از ۴۶");
+    expect(chipText()).toContain("۰ از ۴۸");
   });
 
   it("نمونهٔ کم با میانگینِ بالا (۹۰) → قفل می‌ماند و پیشرفت روی نمونه است — نه ادعای میانگین", () => {
@@ -97,10 +97,10 @@ describe("خانوادهٔ سرعت — صاعقه / سرعتِ صوت (Task 100
     expect(bolt.textContent).toContain("۲ از ۱۰ پاسخِ درست");
     expect(sound.textContent).toContain("۲ از ۱۵ پاسخِ درست");
     expect(bolt.textContent).not.toContain("از ۶۰");
-    expect(chipText()).toContain("۰ از ۴۶");
+    expect(chipText()).toContain("۰ از ۴۸");
   });
 
-  it("سه نبردِ سریع (۱۵ پاسخِ درست، میانگینِ ۹۰) → هر دو باز + «۲ از ۴۶»", () => {
+  it("سه نبردِ سریع (۱۵ پاسخِ درست، میانگینِ ۹۰) → هر دو باز + «۲ از ۴۸»", () => {
     useStudy.setState({
       duelHistory: [
         rec({ id: "d3", opponent: "سینا" }),
@@ -113,7 +113,7 @@ describe("خانوادهٔ سرعت — صاعقه / سرعتِ صوت (Task 100
 
     expect(screen.getByText("صاعقه").closest(".badge-card")!.className).toContain("badge-shine");
     expect(screen.getByText("سرعتِ صوت").closest(".badge-card")!.className).toContain("badge-shine");
-    expect(chipText()).toContain("۲ از ۴۶");
+    expect(chipText()).toContain("۲ از ۴۸");
   });
 
   it("نمونهٔ کافی ولی کند (پاداشِ صفر) → قفل با پیشرفتِ گیتِ میانگین: «میانگینِ سرعت: ۰ از ۶۰»", () => {
@@ -132,6 +132,6 @@ describe("خانوادهٔ سرعت — صاعقه / سرعتِ صوت (Task 100
     expect(sound.className).not.toContain("badge-shine");
     expect(bolt.textContent).toContain("میانگینِ سرعت: ۰ از ۶۰");
     expect(sound.textContent).toContain("۱۰ از ۱۵ پاسخِ درست");
-    expect(chipText()).toContain("۰ از ۴۶");
+    expect(chipText()).toContain("۰ از ۴۸");
   });
 });

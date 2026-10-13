@@ -1,8 +1,8 @@
 // @vitest-environment jsdom
 // ------------------------------------------------------------------
 // Task 99 — نشان‌های خانوادهٔ «نبرد» روی پنلِ نشان‌ها:
-//   ① تازه‌وارد: «۰ از ۴۶» — دو کاشیِ تازه قفل با پیشرفتِ صادق
-//   ② دو برد مقابلِ یک حریف → «شکارچیِ رقیب» باز (نقره/Swords) + «۱ از ۴۶»
+//   ① تازه‌وارد: «۰ از ۴۸» — دو کاشیِ تازه قفل با پیشرفتِ صادق
+//   ② دو برد مقابلِ یک حریف → «شکارچیِ رقیب» باز (نقره/Swords) + «۱ از ۴۸»
 //   ③ سه برد → «کابوسِ رقیب» هم باز (زیرمجموعهٔ ۳⇒۲ — هم‌قراردادِ حضور/ران)
 //   ④ بردِ پراکنده میانِ حریف‌های مختلف هرگز باز نمی‌کند (گروه‌بندیِ واحد)
 // الگوی seed هم‌الگوی badges.component.test (beforeEach ضدآلودگی — درسِ ۹۲).
@@ -36,7 +36,7 @@ const rec = (over: Partial<DuelRecord>): DuelRecord => ({
 });
 
 const chipText = () =>
-  screen.getAllByText((_c, el) => !!el?.textContent && /از ۴۶$/.test(el.textContent.trim()))[0]
+  screen.getAllByText((_c, el) => !!el?.textContent && /از ۴۸$/.test(el.textContent.trim()))[0]
     ?.textContent?.replace(/\s+/g, " ")
     .trim();
 
@@ -82,10 +82,10 @@ describe("خانوادهٔ نبرد — شکارچیِ رقیب / کابوسِ �
     expect(nightmare!.className).not.toContain("badge-shine");
     expect(hunter!.textContent).toContain("۰ از ۲ برد مقابلِ یک حریف");
     expect(nightmare!.textContent).toContain("۰ از ۳ برد مقابلِ یک حریف");
-    expect(chipText()).toContain("۰ از ۴۶");
+    expect(chipText()).toContain("۰ از ۴۸");
   });
 
-  it("دو برد مقابلِ یک حریف → شکارچیِ رقیب باز + «۱ از ۴۶» — کابوس هنوز قفل با «۲ از ۳»", () => {
+  it("دو برد مقابلِ یک حریف → شکارچیِ رقیب باز + «۱ از ۴۸» — کابوس هنوز قفل با «۲ از ۳»", () => {
     useStudy.setState({
       duelHistory: [
         rec({ id: "d2", opponent: "امیرمحمد", outcome: "win" }),
@@ -100,10 +100,10 @@ describe("خانوادهٔ نبرد — شکارچیِ رقیب / کابوسِ �
     expect(hunter.className).toContain("badge-shine");
     expect(nightmare.className).not.toContain("badge-shine");
     expect(nightmare.textContent).toContain("۲ از ۳ برد مقابلِ یک حریف");
-    expect(chipText()).toContain("۱ از ۴۶");
+    expect(chipText()).toContain("۱ از ۴۸");
   });
 
-  it("سه برد → زیرمجموعهٔ ۳⇒۲ در هر دو جهت: هر دو باز + «۲ از ۴۶»", () => {
+  it("سه برد → زیرمجموعهٔ ۳⇒۲ در هر دو جهت: هر دو باز + «۲ از ۴۸»", () => {
     useStudy.setState({
       duelHistory: [
         rec({ id: "d3", outcome: "win" }),
@@ -116,7 +116,7 @@ describe("خانوادهٔ نبرد — شکارچیِ رقیب / کابوسِ �
 
     expect(screen.getByText("شکارچیِ رقیب").closest(".badge-card")!.className).toContain("badge-shine");
     expect(screen.getByText("کابوسِ رقیب").closest(".badge-card")!.className).toContain("badge-shine");
-    expect(chipText()).toContain("۲ از ۴۶");
+    expect(chipText()).toContain("۲ از ۴۸");
   });
 
   it("دو بردِ پراکنده میانِ حریف‌های مختلف هرگز باز نمی‌کند — شرط «واحد» صادق است", () => {
@@ -133,6 +133,6 @@ describe("خانوادهٔ نبرد — شکارچیِ رقیب / کابوسِ �
     expect(screen.getByText("شکارچیِ رقیب").closest(".badge-card")!.className).not.toContain("badge-shine");
     expect(screen.getByText("کابوسِ رقیب").closest(".badge-card")!.className).not.toContain("badge-shine");
     expect(screen.getByText("شکارچیِ رقیب").closest(".badge-card")!.textContent).toContain("۱ از ۲ برد");
-    expect(chipText()).toContain("۰ از ۴۶");
+    expect(chipText()).toContain("۰ از ۴۸");
   });
 });

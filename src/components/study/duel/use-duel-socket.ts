@@ -203,8 +203,16 @@ export function useDuelSocket(): DuelMachine {
   useEffect(() => {
     // Never use PORT in the URL, always use XTransformPort
     // DO NOT change the path, it is used by Caddy to forward to the mini-service
+    // Task 105 — polling-first (socket.io's own default order): the ws handshake
+    // must never gate the connection. In the dev sandbox the local rewrite
+    // (next.config.ts) bridges /socket.io but hangs the ws UPGRADE — a hanging
+    // upgrade stalls a websocket-first client for its full 10s timeout, while
+    // polling connects instantly and the ws upgrade is then a graceful
+    // best-effort probe (fail → stay on polling, session unaffected).
+    // Production gateway routes both transports identically, so this order is
+    // safe there too.
     const s = io("/?XTransformPort=3003", {
-      transports: ["websocket", "polling"],
+      transports: ["polling", "websocket"],
       forceNew: true,
       reconnection: true,
       reconnectionAttempts: 5,

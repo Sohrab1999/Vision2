@@ -8,7 +8,7 @@ import type { StudyState } from "./study-store";
 import { daysAgoKey, normDayStat, todayStr } from "./study-store";
 import { faNum } from "./study-theme";
 import { completedQuestCount } from "./daily-quests";
-import { duelTopRival, duelSpeedStats } from "./duel-history";
+import { duelTopRival, duelSpeedStats, duelVerifiedWins } from "./duel-history";
 import { FREEZE_WINDOW } from "@/state/types";
 
 export type BadgeTier = "bronze" | "silver" | "gold";
@@ -63,6 +63,7 @@ export interface BadgeEvalInput {
   wordsDays7: number; // چند روزِ پنجرهٔ ۷روزه واژهٔ تازه داشتند (≠ جمع — Task 93)
   rushDays7: number; // چند روزِ پنجرهٔ ۷روزه برق‌آسا داشتند (≠ جمع — Task 93)
   duelTopRivalWins: number; // بیشترین برد مقابلِ یک حریفِ واحد در دفترچه (Task 99)
+  duelVerifiedWins: number; // بردهای رسیددارِ دفترچه — امضای داور روی برد (Task 105)
   duelTopRivalName: string; // نامِ نمایشیِ همان رقیب (برای پیشرفتِ صادق)
   duelSpeedAvg: number; // میانگینِ پاداشِ سرعت بر پاسخِ درست (۰..۱۰۰ — Task 100)
   duelSpeedCorrect: number; // جمعِ پاسخ‌های درستِ دفترچه — نمونهٔ آماریِ سرعت
@@ -123,6 +124,7 @@ export function buildEvalInput(s: {
   // خانوادهٔ نبرد (Task 99) — رقیبِ نخستِ دفترچه؛ گاردِ خراب: غیرآرایه → صفر/خالی
   const ledger = Array.isArray(s.duelHistory) ? s.duelHistory : [];
   const topRival = duelTopRival(ledger);
+  const verifiedWins = duelVerifiedWins(ledger);
   // خانوادهٔ سرعت (Task 100) — میانگینِ پاداشِ سرعت از همان دفترچه (قراردادِ داور، Task 99)
   const speed = duelSpeedStats(ledger);
   // پنجرهٔ ۷روزه — همان قرارداد موتور: کلیدِ رشته‌ای محلی، مقایسهٔ >=
@@ -202,6 +204,7 @@ export function buildEvalInput(s: {
     })(),
     duelTopRivalWins: topRival?.wins ?? 0,
     duelTopRivalName: topRival?.opponent ?? "",
+    duelVerifiedWins: verifiedWins,
     duelSpeedAvg: speed.avgBonus,
     duelSpeedCorrect: speed.totalCorrect,
   };
@@ -793,6 +796,32 @@ export const BADGES: BadgeDef[] = [
         ? `${faNum(Math.min(s.duelSpeedCorrect, 15))} از ۱۵ پاسخِ درست`
         : `میانگینِ سرعت: ${faNum(Math.min(Math.floor(s.duelSpeedAvg), 75))} از ۷۵`,
     check: (s) => s.duelSpeedCorrect >= 15 && s.duelSpeedAvg >= 75,
+  },
+  // ---- گواه‌گرفته (Task 105) — هشتمین خانواده: «اعتماد». بردِ رسیددار یعنی
+  // نتیجه از راهِ داوریِ متمرکز گذشته (Task 94): امضای HMAC داور روی آن است و
+  // سمتِ API راستی‌آزمایی شده — درست پس از تعمیرِ زنجیرهٔ رسید (Task 104) این
+  // خانواده پاداشِ اعتمادِ به‌جای‌ماندنی است نه خوداظهاری: رکوردِ بی‌sig
+  // (قدیمی یا دستی) هرگز نمی‌شمارد. منبع: همان دفترچهٔ ۱۵تایی (duelHistory،
+  // بدونِ فیلدِ persist تازه). دو پله: ۳ بردِ گواه‌دار نقره/ShieldCheck،
+  // ۷ برد طلا/Stamp — زیرمجموعهٔ ریاضیِ ۷⇒۳ (تست-قفل در هر دو جهت،
+  // هم‌قراردادِ خانواده‌های حضور/ران/نبرد/سرعت). پیشرفتِ شمارشیِ تک‌گایتی.
+  {
+    id: "receipt-trust",
+    title: "گواه‌گرفته",
+    desc: "سه برد با رسیدِ امضاشدهٔ داور در دفترچهٔ نبردها — داور پشتِ نتیجه‌ات ایستاده",
+    icon: "ShieldCheck",
+    tier: "silver",
+    progress: (s) => `${faNum(Math.min(s.duelVerifiedWins, 3))} از ۳ بردِ گواه‌دار`,
+    check: (s) => s.duelVerifiedWins >= 3,
+  },
+  {
+    id: "receipt-oath",
+    title: "سندِ زنده",
+    desc: "هفت بردِ رسیددار — دفترچه‌ات سندِ زندهٔ داوریِ متمرکز است",
+    icon: "Stamp",
+    tier: "gold",
+    progress: (s) => `${faNum(Math.min(s.duelVerifiedWins, 7))} از ۷ بردِ گواه‌دار`,
+    check: (s) => s.duelVerifiedWins >= 7,
   },
 ];
 

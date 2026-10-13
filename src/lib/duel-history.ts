@@ -140,6 +140,16 @@ export function duelVerifiedCount(records: DuelRecord[]): number {
   return records.reduce((n, r) => (r.receiptSig ? n + 1 : n), 0);
 }
 
+/**
+ * Task 105 — چند «بردِ» دفترچه رسیدِ امضاشدهٔ داور دارد (زیرمجموعهٔ صادقِ
+ * زیرمجموعه: هم برد است هم رسید). خانوادهٔ هشتمِ نشان «اعتماد» روی همین
+ * می‌نشیند — پاداشِ اعتماد به داوریِ متمرکز (Task 94) نه به خوداظهاری؛
+ * رکوردِ بدونِ sig (قدیمی یا دستی) هرگز نمی‌شمارد.
+ */
+export function duelVerifiedWins(records: DuelRecord[]): number {
+  return records.reduce((n, r) => (r.outcome === "win" && r.receiptSig ? n + 1 : n), 0);
+}
+
 /** فرم آخرین n نبرد (جدید→قدیم) برای نشان‌های رنگی */
 export function duelForm(records: DuelRecord[], n = 5): DuelOutcome[] {
   return records.slice(0, n).map((r) => r.outcome);
