@@ -88,8 +88,12 @@ describe("رسید داوری — امضا و کانونی‌کال", () => {
       players: [receipt.players[0], { ...receipt.players[1], score: 999 }],
     };
     expect(verifyDuelSubmission(tampered, probeA, SECRET)).toEqual({ ok: false, reason: "bad_sig" });
-    // خودِ sig دست‌کاری‌شده
-    const flipSig: DuelReceipt = { ...receipt, sig: receipt.sig.replace(/^./, "0") };
+    // خودِ sig دست‌کاری‌شده — اولین رقم به نویسه‌ای «قطعاً متفاوت» فلیپ می‌شود
+    // (درسِ ۱۱۱: اگر اولین رقمِ sig اصلی «0» باشد — با شانسِ ~۱/۱۶ در هر اجرا،
+    // چون T0=Date.now امضا را جابه‌جا می‌کند — جایگزینیِ کور با «0» هیچ دست‌کاری
+    // نمی‌کرد و تستِ خودش را فِلِیک می‌داد)
+    const flipped = receipt.sig[0] === "0" ? "1" : "0";
+    const flipSig: DuelReceipt = { ...receipt, sig: flipped + receipt.sig.slice(1) };
     expect(verifyDuelSubmission(flipSig, probeA, SECRET)).toEqual({ ok: false, reason: "bad_sig" });
     // راز متفاوت
     expect(verifyDuelSubmission(receipt, probeA, "b".repeat(64))).toEqual({ ok: false, reason: "bad_sig" });

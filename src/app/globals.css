@@ -467,6 +467,28 @@ body {
 .dark .border-stone-300 { border-color: #44403c; }
 .dark .border-rose-300 { border-color: rgba(150, 50, 65, 0.55); }
 
+/* ---------------- hero book (task 111 «کتابِ زنده») ----------------
+   درخشِ دوره‌ایِ لبهٔ جلد — هم‌خانوادهٔ badge-shine؛ از تم بی‌نیاز است
+   (جلد در هر دو تم تیرهٔ زمردی است)؛ kill-switchِ سراسریِ user-reduce-motion
+   آن را هم می‌گیرد (animation-duration 0.01ms) */
+.hero-book {
+  position: relative;
+  overflow: hidden;
+}
+.hero-book::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 32%, rgb(255 255 255 / 0.16) 48%, transparent 64%);
+  transform: translateX(-130%);
+  animation: hero-sheen 6s ease-in-out 2.5s infinite;
+  pointer-events: none;
+}
+@keyframes hero-sheen {
+  0%, 62% { transform: translateX(-130%); }
+  88%, 100% { transform: translateX(130%); }
+}
+
 /* ---------------- badges / achievements ---------------- */
 .badge-shine {
   position: relative;
