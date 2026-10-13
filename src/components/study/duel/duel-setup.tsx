@@ -2,16 +2,19 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Sparkles, Swords, Users, Timer, Zap, Wifi, WifiOff, Loader2, Target, ShieldCheck, History, Flame, Percent, Search, X, ChevronDown, ChevronUp } from "lucide-react";
+import { Sparkles, Swords, Users, Timer, Zap, Wifi, WifiOff, Loader2, Target, ShieldCheck, History, Flame, Percent, Search, X, ChevronDown, ChevronUp, ImageDown } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum, timeAgoFa, avatarClasses } from "@/lib/study-theme";
 import { percent } from "@/lib/domain/percent";
+import { useToast } from "@/hooks/use-toast";
+import { downloadDuelLedgerImage } from "@/lib/result-image";
 import {
   duelWinStreak,
   duelBestScore,
   duelForm,
   duelVerifiedCount,
+  duelLedgerStats,
   filterDuelLedger,
   duelLedgerDigest,
   normalizeDuelQuery,
@@ -33,10 +36,12 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
   joinBusy: boolean;
 }) {
   const mounted = useMounted();
+  const { toast } = useToast();
   const duelWins = useStudy((s) => s.duelWins);
   const duelLosses = useStudy((s) => s.duelLosses);
   const duelTies = useStudy((s) => s.duelTies);
   const duelHistory = useStudy((s) => s.duelHistory);
+  const [imgBusy, setImgBusy] = useState(false);
 
   const winRate = percent(duelWins, duelWins + duelLosses + duelTies);
   const streak = duelWinStreak(duelHistory);
@@ -76,6 +81,23 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
     tie: "bg-amber-500",
   };
   const outcomeLabel: Record<DuelOutcome, string> = { win: "برد", loss: "باخت", tie: "مساوی" };
+
+  // Task 101 — عکسِ کارنامهٔ دفترچه: تجمیعِ صادقِ duelLedgerStats روی کلِ
+  // دفترچه (نه یافته‌های فیلترشده — کارت، کارنامهٔ career است) و رندرِ کانواس
+  const saveLedgerImage = async () => {
+    if (imgBusy) return;
+    setImgBusy(true);
+    const ok = await downloadDuelLedgerImage({
+      stats: duelLedgerStats(duelHistory),
+      userName: useStudy.getState().userName || undefined,
+    });
+    setImgBusy(false);
+    toast(
+      ok
+        ? { title: "🖼 عکسِ کارنامهٔ نبردها ذخیره شد", description: "حالا می‌توانی آن را برای دوستانت بفرستی.", duration: 3000 }
+        : { title: "خطا در ساخت تصویر", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
+    );
+  };
 
   return (
     <div className="space-y-5">
@@ -174,14 +196,27 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
                 {faNum(duelHistory.length)} نبرد
               </span>
             </h2>
-            <div className="flex items-center gap-1.5" role="img" aria-label="فرم پنج نبرد آخر">
-              {form.map((o, i) => (
-                <span
-                  key={`${form.length - i}-${i}`}
-                  title={outcomeLabel[o]}
-                  className={`h-2.5 w-2.5 rounded-full ${outcomeChip[o]} ${i === 0 ? "ring-2 ring-stone-200 ring-offset-1" : ""}`}
-                />
-              ))}
+            {/* Task 101 — عکسِ کارنامهٔ دفترچه: کنارِ فرمِ پنج‌تایی؛ role=img فقط
+                روی خودِ نقطه‌ها می‌ماند تا دکمه از دسترس‌پذیریِ تصویر بیرون باشد */}
+            <div className="flex items-center gap-2">
+              <button
+                onClick={saveLedgerImage}
+                disabled={imgBusy}
+                aria-label="گرفتن عکس کارنامهٔ نبردها"
+                title="عکسِ کارنامهٔ نبردها — یک کارت PNG برای هم‌رسانی"
+                className="rounded-lg p-1.5 text-stone-400 transition-colors hover:bg-stone-100 hover:text-fuchsia-600 disabled:opacity-50"
+              >
+                {imgBusy ? <Loader2 size={15} className="animate-spin" aria-hidden /> : <ImageDown size={15} aria-hidden />}
+              </button>
+              <div className="flex items-center gap-1.5" role="img" aria-label="فرم پنج نبرد آخر">
+                {form.map((o, i) => (
+                  <span
+                    key={`${form.length - i}-${i}`}
+                    title={outcomeLabel[o]}
+                    className={`h-2.5 w-2.5 rounded-full ${outcomeChip[o]} ${i === 0 ? "ring-2 ring-stone-200 ring-offset-1" : ""}`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
 

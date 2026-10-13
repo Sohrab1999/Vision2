@@ -1,9 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Trophy, Swords, Users, RotateCcw, Crown, Handshake, Loader2, ShieldCheck } from "lucide-react";
+import { Trophy, Swords, Users, RotateCcw, Crown, Handshake, Loader2, ShieldCheck, ImageDown } from "lucide-react";
 import { faNum } from "@/lib/study-theme";
 import { decomposeDuelScore } from "@/lib/duel-history";
+import { downloadDuelDoneImage } from "@/lib/result-image";
+import { useToast } from "@/hooks/use-toast";
 import type { EndPayload } from "./duel-types";
 
 // فاز DONE — کارنامهٔ نبرد، مقایسهٔ دو بازیکن و دکمه‌های پس از نبرد
@@ -21,6 +24,41 @@ export default function DuelDone({ endData, mySid, myFinishAt, oppConnected, rem
   const other = endData.players.find((p) => p.sid !== mySid);
   const outcome: "win" | "loss" | "tie" = endData.winner === null ? "tie" : endData.winner === mySid ? "win" : "loss";
   const forfeit = endData.reason === "forfeit";
+  const [imgBusy, setImgBusy] = useState(false);
+  const { toast } = useToast();
+
+  // Task 101 — عکسِ این نبرد: همان کارتِ نبرد با دادهٔ EndPayload؛ تفکیکِ
+  // پایه/سرعت از همان decomposeDuelScoreِ کارنامه (قراردادِ ۹۹)؛ ثانیه‌ها
+  // فقط وقتی خودی تمام کرده (myFinishAt>0) — همان قراردادِ نمایشِ کارنامه
+  const saveDuelImage = async () => {
+    if (imgBusy || !mine) return;
+    setImgBusy(true);
+    const d = decomposeDuelScore(mine.score, mine.correct);
+    const ok = await downloadDuelDoneImage({
+      outcome,
+      forfeit,
+      myName: mine.name || "تو",
+      oppName: other?.name || "حریف",
+      myScore: mine.score,
+      oppScore: other?.score ?? 0,
+      myCorrect: mine.correct,
+      oppCorrect: other?.correct ?? 0,
+      total: endData.total,
+      durationSec:
+        myFinishAt > 0 && endData.startedAt
+          ? Math.max(1, Math.round((myFinishAt - endData.startedAt) / 1000))
+          : null,
+      base: d.base,
+      bonus: d.bonus,
+      receipt: !!endData.receipt,
+    });
+    setImgBusy(false);
+    toast(
+      ok
+        ? { title: "🖼 عکسِ این نبرد ذخیره شد", description: "حالا می‌توانی نتیجه‌ات را برای دوستانت بفرستی.", duration: 3000 }
+        : { title: "خطا در ساخت تصویر", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
+    );
+  };
 
   return (
     <div className="space-y-4">
@@ -152,6 +190,15 @@ export default function DuelDone({ endData, mySid, myFinishAt, oppConnected, rem
             نبرد دوباره
           </button>
         ) : null}
+        {/* Task 101 — عکسِ این نبرد: هم‌ردیفِ اکشن‌ها، سلسله‌مراتبِ ثانویه */}
+        <button
+          onClick={saveDuelImage}
+          disabled={imgBusy || !mine}
+          className="inline-flex items-center gap-2 rounded-2xl border-2 border-stone-200 bg-white px-6 py-3 text-[14px] font-black text-stone-600 transition-all hover:border-fuchsia-300 hover:text-fuchsia-700 active:scale-95 disabled:opacity-50"
+        >
+          {imgBusy ? <Loader2 size={16} className="animate-spin" aria-hidden /> : <ImageDown size={16} aria-hidden />}
+          عکسِ این نبرد
+        </button>
         <button
           onClick={leaveRoom}
           className="inline-flex items-center gap-2 rounded-2xl border-2 border-stone-200 bg-white px-6 py-3 text-[14px] font-black text-stone-600 transition-all hover:border-stone-300 active:scale-95"

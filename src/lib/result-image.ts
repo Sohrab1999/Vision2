@@ -7,6 +7,7 @@
 // ------------------------------------------------------------------
 
 import { faNum } from "./study-theme";
+import type { DuelLedgerStats } from "./duel-history";
 
 export interface ResultImageOpts {
   title: string;
@@ -242,6 +243,328 @@ export async function downloadResultImage(opts: ResultImageOpts): Promise<boolea
     a.remove();
     setTimeout(() => URL.revokeObjectURL(url), 3000);
     return true;
+  } catch {
+    return false;
+  }
+}
+
+// ------------------------------------------------------------------
+// Task 101 — کارت‌های «نبرد» (کارنامهٔ دفترچه + نبردِ تکی) — همان شکلِ
+// کارتِ نتیجه با پالتِ هیروِ دودل (violet-600 → fuchsia-600 → rose-500).
+// هر دو روی یک پوستهٔ مشترک می‌نشینند؛ downloadResultImage دست‌نخورده
+// می‌ماند (ظاهرِ پیکسل‌به‌پیکسلِ کارتِ سبز حفظ است).
+// ------------------------------------------------------------------
+
+/** پوستهٔ مشترک کارت نبرد: پس‌زمینه + دایره‌های تزئینی + کارت سفید + سربرگ + خط جداکننده */
+function battleShell(ctx: CanvasRenderingContext2D, W: number, H: number, family: string): void {
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, "#7c3aed"); // violet-600
+  bg.addColorStop(0.55, "#c026d3"); // fuchsia-600
+  bg.addColorStop(1, "#f43f5e"); // rose-500
+  ctx.fillStyle = bg;
+  ctx.fillRect(0, 0, W, H);
+
+  ctx.globalAlpha = 0.12;
+  ctx.fillStyle = "#ffffff";
+  for (const [cx, cy, r] of [
+    [W - 90, 80, 150],
+    [90, H - 70, 120],
+    [W / 2, H + 60, 200],
+  ] as const) {
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  ctx.globalAlpha = 1;
+
+  ctx.fillStyle = "#ffffff";
+  roundRect(ctx, 36, 36, W - 72, H - 72, 28);
+  ctx.fill();
+  ctx.strokeStyle = "rgba(192, 38, 211, 0.3)";
+  ctx.lineWidth = 2;
+  roundRect(ctx, 48, 48, W - 96, H - 96, 20);
+  ctx.stroke();
+
+  ctx.direction = "rtl";
+  ctx.textBaseline = "middle";
+  ctx.textAlign = "right";
+  ctx.fillStyle = "#a21caf"; // fuchsia-700
+  ctx.font = `900 26px ${family}`;
+  ctx.fillText("وب‌کتاب تعاملی «ویژن ۲»", W - 90, 106);
+  ctx.textAlign = "left";
+  ctx.direction = "ltr";
+  ctx.fillStyle = "#a8a29e";
+  ctx.font = `700 20px ${family}`;
+  ctx.fillText("ENGLISH WEBBOOK · VISION TWO", 90, 106);
+
+  ctx.strokeStyle = "#e7e5e4";
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.moveTo(90, 138);
+  ctx.lineTo(W - 90, 138);
+  ctx.stroke();
+}
+
+async function downloadCanvasBlob(canvas: HTMLCanvasElement, name: string): Promise<boolean> {
+  const blob = await new Promise<Blob | null>((res) => canvas.toBlob((b) => res(b), "image/png"));
+  if (!blob) return false;
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = name;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 3000);
+  return true;
+}
+
+/** آماده‌سازی فونت + کانواسِ ۱۰۸۰×۶۴۰ با پوستهٔ نبرد — null در محیطِ بی‌کانواس */
+async function openBattleCard(family: string): Promise<CanvasRenderingContext2D | null> {
+  if (typeof document === "undefined") return null;
+  const canvas = document.createElement("canvas");
+  canvas.width = 1080;
+  canvas.height = 640;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return null;
+  battleShell(ctx, 1080, 640, family);
+  return ctx;
+}
+
+// ---------------- کارنامهٔ دفترچه (Task 101 — عکسِ قابلِ هم‌رسانی) ----------------
+
+export interface DuelLedgerImageOpts {
+  stats: DuelLedgerStats;
+  userName?: string;
+}
+
+export async function downloadDuelLedgerImage(opts: DuelLedgerImageOpts): Promise<boolean> {
+  try {
+    if (typeof document !== "undefined" && document.fonts?.ready) {
+      await document.fonts.ready;
+    }
+    const family =
+      typeof document !== "undefined"
+        ? getComputedStyle(document.body).fontFamily || "sans-serif"
+        : "sans-serif";
+    const ctx = await openBattleCard(family);
+    if (!ctx) return false;
+    const W = 1080;
+    const H = 640;
+    const s = opts.stats;
+
+    // ---------- win-rate ring (right side) — اول کشیده می‌شود تا نام/رقیب روی آن بنشیند ----------
+    const cx = W - 90 - 105;
+    const cy = 350;
+    const r = 105;
+    ctx.direction = "rtl";
+    ctx.textAlign = "right";
+    ctx.textBaseline = "middle";
+    ctx.lineWidth = 20;
+    ctx.lineCap = "round";
+    ctx.strokeStyle = "#f5f5f4";
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.stroke();
+    const pct = Math.max(0, Math.min(100, s.winRate)) / 100;
+    const ring = ctx.createLinearGradient(cx - r, cy - r, cx + r, cy + r);
+    ring.addColorStop(0, "#8b5cf6"); // violet-500
+    ring.addColorStop(1, "#d946ef"); // fuchsia-500
+    ctx.strokeStyle = ring;
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, Math.PI / 2, Math.PI / 2 + Math.PI * 2 * pct);
+    ctx.stroke();
+    ctx.textAlign = "center";
+    ctx.fillStyle = "#1c1917";
+    ctx.font = `900 52px ${family}`;
+    ctx.fillText(`${faNum(s.winRate)}٪`, cx, cy - 14);
+    ctx.fillStyle = "#78716c";
+    ctx.font = `700 21px ${family}`;
+    ctx.fillText(`${faNum(s.win)} برد از ${faNum(s.total)} نبرد`, cx, cy + 34);
+
+    // ---------- title (راست، بالای حلقه) ----------
+    ctx.direction = "rtl";
+    ctx.textAlign = "right";
+    ctx.fillStyle = "#1c1917";
+    ctx.font = `800 34px ${family}`;
+    ctx.fillText("کارنامهٔ نبردها", W - 90, 192);
+
+    // ---------- learner column (چپ، بالای چیپ‌ها — هم‌لبه با ستونِ چیپ‌ها؛
+    // هیچ تداخلی با حلقهٔ سمتِ راست: کارتِ اصلی نام را روی حلقه می‌کشد،
+    // این‌جا ستونِ مستقل تمیزتر است) ----------
+    ctx.direction = "rtl";
+    ctx.textAlign = "right";
+    ctx.fillStyle = "#1c1917";
+    ctx.font = `800 32px ${family}`;
+    ctx.fillText(opts.userName ? truncate(ctx, opts.userName, 280) : "یادگیرندهٔ وب‌کتاب", 390, 200);
+    ctx.font = `700 18px ${family}`;
+    if (s.topRival) {
+      // رقیبِ همیشگی — فقط وقتی هست (صداقت: دفترچهٔ بی‌برد، این خط را ندارد)
+      ctx.fillStyle = "#a21caf";
+      ctx.fillText(`رقیبِ همیشگی: ${truncate(ctx, s.topRival.opponent, 150)} (${faNum(s.topRival.wins)} برد)`, 390, 232);
+    } else {
+      ctx.fillStyle = "#a8a29e";
+      ctx.fillText("یادگیرنده", 390, 232);
+    }
+
+    // ---------- stat chips (left column) ----------
+    const chips: { label: string; value: string }[] = [
+      { label: "برد", value: `${faNum(s.win)} نبرد` },
+      { label: "باخت", value: `${faNum(s.loss)} نبرد` },
+      { label: "مساوی", value: `${faNum(s.tie)} نبرد` },
+      { label: "بهترین امتیاز", value: faNum(s.best) },
+      { label: "بردِ متوالی", value: faNum(s.streak) },
+    ];
+    let chy = 250;
+    for (const c of chips) {
+      ctx.fillStyle = "#fdf4ff"; // fuchsia-50
+      roundRect(ctx, 90, chy, 300, 48, 12);
+      ctx.fill();
+      ctx.fillStyle = "#78716c";
+      ctx.font = `700 17px ${family}`;
+      ctx.textAlign = "right";
+      ctx.fillText(c.label, 376, chy + 24);
+      ctx.fillStyle = "#a21caf";
+      ctx.font = `900 21px ${family}`;
+      ctx.textAlign = "left";
+      ctx.fillText(c.value, 104, chy + 24);
+      chy += 58;
+    }
+
+    // ---------- footer ----------
+    ctx.strokeStyle = "#e7e5e4";
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(90, H - 108);
+    ctx.lineTo(W - 90, H - 108);
+    ctx.stroke();
+    ctx.direction = "rtl";
+    ctx.textAlign = "right";
+    ctx.fillStyle = "#a8a29e";
+    ctx.font = `700 19px ${family}`;
+    ctx.fillText(`دفترچهٔ نبردها · ${faDate()}`, W - 90, H - 74);
+    ctx.textAlign = "left";
+    ctx.direction = "ltr";
+    ctx.fillStyle = "#c026d3";
+    ctx.font = `900 20px ${family}`;
+    ctx.fillText(s.winRate >= 70 ? "BATTLE STATS ★" : "KEEP FIGHTING!", 90, H - 74);
+
+    return downloadCanvasBlob(ctx.canvas, "vision2-duels.png");
+  } catch {
+    return false;
+  }
+}
+
+// ---------------- عکسِ نبردِ تکی (Task 101 — صفحهٔ پایان نبرد) ----------------
+
+export interface DuelDoneImageOpts {
+  outcome: "win" | "loss" | "tie";
+  /** ضربهٔ فنی (حریف وسط راه قطع شد / خودی تمام نکرد) */
+  forfeit: boolean;
+  myName: string;
+  oppName: string;
+  myScore: number;
+  oppScore: number;
+  myCorrect: number;
+  oppCorrect: number;
+  total: number;
+  /** ثانیه‌های من تا پایان — null یعنی ثبت نشد (فورفیت/تایم‌اوت) */
+  durationSec: number | null;
+  /** تفکیکِ امتیازِ من (قراردادِ داور — Task 99) */
+  base: number;
+  bonus: number;
+  /** رسیدِ امضاشدهٔ داور (Task 94) */
+  receipt: boolean;
+}
+
+export async function downloadDuelDoneImage(opts: DuelDoneImageOpts): Promise<boolean> {
+  try {
+    if (typeof document !== "undefined" && document.fonts?.ready) {
+      await document.fonts.ready;
+    }
+    const family =
+      typeof document !== "undefined"
+        ? getComputedStyle(document.body).fontFamily || "sans-serif"
+        : "sans-serif";
+    const ctx = await openBattleCard(family);
+    if (!ctx) return false;
+    const W = 1080;
+    const H = 640;
+    const win = opts.outcome === "win";
+    const tie = opts.outcome === "tie";
+    const accent = win ? "#059669" : tie ? "#d97706" : "#e11d48";
+
+    // ---------- names over each score ----------
+    ctx.direction = "rtl";
+    ctx.textBaseline = "middle";
+    ctx.fillStyle = "#78716c";
+    ctx.font = `700 17px ${family}`;
+    ctx.textAlign = "center";
+    ctx.fillText(win ? "پیروزی" : tie ? "مساوی" : "شکست", W / 2, 190);
+
+    ctx.fillStyle = "#1c1917";
+    ctx.font = `800 30px ${family}`;
+    ctx.fillText(truncate(ctx, opts.myName, 330), W - 130, 235);
+    ctx.fillText(truncate(ctx, opts.oppName, 330), 130, 235);
+    ctx.fillStyle = "#a8a29e";
+    ctx.font = `700 16px ${family}`;
+    ctx.fillText("تو", W - 130, 268);
+    ctx.fillText("حریف", 130, 268);
+
+    // ---------- big score row ----------
+    ctx.font = `900 72px ${family}`;
+    ctx.fillStyle = accent;
+    ctx.fillText(faNum(opts.myScore), W - 130, 330);
+    ctx.fillStyle = "#1c1917";
+    ctx.fillText(faNum(opts.oppScore), 130, 330);
+    ctx.fillStyle = "#d6d3d1";
+    ctx.font = `900 40px ${family}`;
+    ctx.fillText("–", W / 2, 330);
+
+    // ---------- correct counts ----------
+    ctx.fillStyle = "#78716c";
+    ctx.font = `700 20px ${family}`;
+    ctx.fillText(`${faNum(opts.myCorrect)} درست از ${faNum(opts.total)}`, W - 130, 380);
+    ctx.fillText(`${faNum(opts.oppCorrect)} درست از ${faNum(opts.total)}`, 130, 380);
+
+    // ---------- outcome ribbon ----------
+    const ribbon = win ? (opts.forfeit ? "برد با ضربهٔ فنی!" : "پیروزی در نبرد!") : tie ? "مساوی — رقابت نزدیک" : opts.forfeit ? "حریف خارج شد" : "این دور را باختی";
+    ctx.font = `900 26px ${family}`;
+    const tw = ctx.measureText(ribbon).width;
+    ctx.fillStyle = accent;
+    roundRect(ctx, W / 2 - tw / 2 - 26, 420, tw + 52, 52, 26);
+    ctx.fill();
+    ctx.fillStyle = "#ffffff";
+    ctx.fillText(ribbon, W / 2, 447);
+
+    // ---------- detail line ----------
+    const details: string[] = [`${faNum(opts.base)} پایه + ${faNum(opts.bonus)} سرعت`];
+    if (opts.durationSec !== null && opts.durationSec > 0) details.push(`${faNum(opts.durationSec)} ثانیه`);
+    if (opts.forfeit && opts.durationSec === null) details.push("ضربهٔ فنی");
+    if (opts.receipt) details.push("رسیدِ امضاشدهٔ داور");
+    ctx.fillStyle = "#78716c";
+    ctx.font = `700 20px ${family}`;
+    ctx.fillText(details.join(" · "), W / 2, 505);
+
+    // ---------- footer ----------
+    ctx.strokeStyle = "#e7e5e4";
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(90, H - 108);
+    ctx.lineTo(W - 90, H - 108);
+    ctx.stroke();
+    ctx.direction = "rtl";
+    ctx.textAlign = "right";
+    ctx.fillStyle = "#a8a29e";
+    ctx.font = `700 19px ${family}`;
+    ctx.fillText(`نبرد واژگان · ${faDate()}`, W - 90, H - 74);
+    ctx.textAlign = "left";
+    ctx.direction = "ltr";
+    ctx.fillStyle = "#c026d3";
+    ctx.font = `900 20px ${family}`;
+    ctx.fillText(win ? "VICTORY ★" : tie ? "GOOD DUEL" : "REMATCH?", 90, H - 74);
+
+    return downloadCanvasBlob(ctx.canvas, `vision2-duel-${opts.outcome}.png`);
   } catch {
     return false;
   }

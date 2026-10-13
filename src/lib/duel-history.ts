@@ -8,7 +8,10 @@
 // را برای پنل «آخرین نبردها» حساب می‌کند.
 //
 // خالص است — هیچ import از store/React؛ اسلایس arcade و تست‌ها مصرفش می‌کنند.
+// تنها import: قراردادِ درصدِ دامنه (pure→pure — طبقهٔ پایینِ معماری).
 // ------------------------------------------------------------------
+
+import { percent } from "./domain/percent";
 
 export type DuelOutcome = "win" | "loss" | "tie";
 export type DuelEndReason = "finished" | "forfeit";
@@ -282,6 +285,49 @@ export function sortDuelLedger(records: DuelRecord[], key: DuelLedgerSortKey = "
     arr.sort((a, b) => b.myScore - b.oppScore - (a.myScore - a.oppScore) || byIdDesc(a, b));
   else arr.sort(byIdDesc);
   return arr;
+}
+
+// ---------------- کارنامهٔ دفترچه (Task 101 — عکسِ قابلِ هم‌رسانی) ----------------
+// تجمیعِ صادقِ کل دفترچه در یک شیء برای کارتِ PNG: هیچ عددِ تازه‌ای محاسبه
+// نمی‌شود — هر فیلد همان قراردادِ قبلی است (digest/streak/best/topRival/
+// verified) که یک‌جا جمع شده تا کانواس و آینده‌ها (گزارشِ هفتگی؟) رقم‌های
+// همسان داشته باشند. winRate با همان percentِ دامنه (گاردِ صفر و سقفِ ۱۰۰).
+// totalPoints از myScoreهای نامعین می‌گذرد (دفاعِ همان‌خطی — رکوردِ سالمِ
+// store همیشه محدود است؛ ورودیِ خامِ خراب حقِ واردشدن به مجموع را ندارد).
+
+export interface DuelLedgerStats {
+  total: number;
+  win: number;
+  loss: number;
+  tie: number;
+  /** درصدِ برد ۰..۱۰۰ — دفترچهٔ خالی → ۰ (percentِ دامنه) */
+  winRate: number;
+  /** بهترین امتیازِ شخصی (duelBestScore) */
+  best: number;
+  /** بردِ متوالیِ انتهای دفترچه (duelWinStreak) */
+  streak: number;
+  /** مجموعِ امتیازهای شخصیِ ثبت‌شده — myScoreِ نامعین حساب نمی‌شود */
+  totalPoints: number;
+  /** رقیبِ همیشگی (duelTopRival) — null در دفترچهٔ بی‌برد */
+  topRival: { opponent: string; wins: number } | null;
+  /** چند نبرد رسیدِ امضاشدهٔ داور دارند (duelVerifiedCount — زیرمجموعهٔ صادق) */
+  verified: number;
+}
+
+export function duelLedgerStats(records: DuelRecord[]): DuelLedgerStats {
+  const d = duelLedgerDigest(records);
+  return {
+    total: records.length,
+    win: d.win,
+    loss: d.loss,
+    tie: d.tie,
+    winRate: percent(d.win, records.length),
+    best: duelBestScore(records),
+    streak: duelWinStreak(records),
+    totalPoints: records.reduce((n, r) => n + (Number.isFinite(r.myScore) ? r.myScore : 0), 0),
+    topRival: duelTopRival(records),
+    verified: duelVerifiedCount(records),
+  };
 }
 
 // ---------------- پایداری (sanitize/merge برای جدول SyncField) ----------------
