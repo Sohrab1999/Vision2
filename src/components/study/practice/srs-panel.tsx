@@ -116,7 +116,7 @@ export default function SrsPanel() {
 
   const chips = [
     { icon: CalendarClock, label: "سررسید الآن", value: stats?.due ?? 0, cls: "c-wash-rose text-rose-600" },
-    { icon: Sprout, label: "در حال یادگیری", value: stats?.learning ?? 0, cls: "c-wash-amber text-amber-700" },
+    { icon: Sprout, label: "در حال یادگیری", value: stats?.learning ?? 0, cls: "c-wash-amber c-ink-amber" },
     { icon: TrendingUp, label: "مستحکم‌شده", value: stats?.strong ?? 0, cls: "c-wash-emerald text-emerald-700" },
     { icon: BookOpenCheck, label: "وارفته", value: stats?.mastered ?? 0, cls: "c-wash-teal text-teal-700" },
   ];

@@ -1128,3 +1128,61 @@ describe("globals.css semantic wash layer (Step 9 tranche 4 phase 8 — Task 125
     }
   });
 });
+
+describe("globals.css semantic ink layer (Step 9 tranche 4 phase 9 — Task 127)", () => {
+  const css127 = readFileSync(cssPath, "utf8");
+  const lines127 = css127.split("\n");
+
+  it("defines c-ink-amber exactly once, light var() + dark panel-grade literal", () => {
+    expect(lines127.filter((l) => l.trim() === ".c-ink-amber {"), "light base once").toHaveLength(1);
+    expect(lines127.filter((l) => l.trim() === ".dark .c-ink-amber {"), "dark twin once").toHaveLength(1);
+    const li = lines127.findIndex((l) => l.trim() === ".c-ink-amber {");
+    expect(lines127[li + 1].trim(), "light declaration byte-exact (the utility's own token)").toBe(
+      "color: var(--color-amber-700);"
+    );
+    const di = lines127.findIndex((l) => l.trim() === ".dark .c-ink-amber {");
+    expect(lines127[di + 1].trim(), "dark declaration byte-exact (retired scoped literal)").toBe("color: #fcd34d;");
+  });
+
+  it("never re-grows the retired panel-grade ink retargets (5 scopes, incl. the dead daily-quests rule)", () => {
+    const retired = [
+      ".rush-done .text-amber-700",
+      ".srs-panel .text-amber-700",
+      ".rush-board .text-amber-700",
+      ".skill-weak-cta .text-amber-700",
+      ".daily-quests .text-amber-700",
+    ];
+    for (const sel of retired) {
+      expect(lines127.filter((l) => l.includes(sel)), `retired ink retarget must stay dead: ${sel}`).toEqual([]);
+    }
+  });
+
+  it("keeps the global dark amber band #fbbf24 for the plain consumers (untouched)", () => {
+    expect(
+      lines127.filter((l) => l.trim() === ".dark .text-amber-700 { color: #fbbf24; }"),
+      "the plain-ink band survives exactly once"
+    ).toHaveLength(1);
+  });
+
+  it("keeps the migrated files on the semantic ink class (raw ink matrix, r127 consumer walk)", () => {
+    const rawInk = (text: string) => text.split("text-amber-700").length - 1;
+    const carry = (text: string) => text.split("c-ink-amber").length - 1;
+    // single-consumer files: fully migrated, zero raw ink left
+    const zeros = [
+      "src/components/study/practice/srs-panel.tsx",
+      "src/components/study/duel/rush-view.tsx",
+      "src/components/study/duel/rush-board.tsx",
+      "src/components/study/practice/skill-panel.tsx",
+    ];
+    for (const f of zeros) {
+      const text = readFileSync(resolve(process.cwd(), f), "utf8");
+      expect(carry(text), `${f} carries c-ink-amber`).toBe(1);
+      expect(rawInk(text), `${f} dropped raw text-amber-700`).toBe(0);
+    }
+    // spell-rush-view: the rush-done combo chip migrated + exactly ONE documented
+    // plain consumer stays (the word-bank spell-chip, global band #fbbf24)
+    const spell = readFileSync(resolve(process.cwd(), "src/components/study/duel/spell-rush-view.tsx"), "utf8");
+    expect(carry(spell), "spell-rush carries c-ink-amber").toBe(1);
+    expect(rawInk(spell), "spell-rush keeps only the spell-chip plain consumer").toBe(1);
+  });
+});

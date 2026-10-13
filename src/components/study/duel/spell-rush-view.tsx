@@ -404,7 +404,7 @@ export default function SpellRushView({ onExit }: { onExit?: () => void }) {
             <span className="rounded-full c-wash-emerald px-3 py-1 text-emerald-700">بی‌راهنما: {faNum(correct)}</span>
             <span className="rounded-full bg-sky-50 px-3 py-1 text-sky-700">با راهنما: {faNum(hintCorrect)}</span>
             <span className="rounded-full c-wash-rose px-3 py-1 text-rose-600">غلط/رد: {faNum(answered - correct - hintCorrect)}</span>
-            <span className="rounded-full c-wash-amber px-3 py-1 text-amber-700">بیشترین کمبو: {faNum(maxCombo)}×</span>
+            <span className="rounded-full c-wash-amber c-ink-amber px-3 py-1">بیشترین کمبو: {faNum(maxCombo)}×</span>
             <span className="rounded-full border border-stone-200 bg-white px-3 py-1 text-stone-600">رکورد: {faNum(spellRushBest)}</span>
           </div>
 

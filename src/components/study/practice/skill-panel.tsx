@@ -157,7 +157,7 @@ export default function SkillPanel() {
                 className="skill-weak-cta mt-4 flex w-full items-center justify-between gap-3 rounded-xl border border-amber-200 bg-gradient-to-l from-amber-50 to-orange-50 px-3.5 py-3 text-right transition-all hover:shadow-sm active:scale-[0.99]"
               >
                 <span className="flex items-center gap-2.5">
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-amber-100 text-amber-700">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-amber-100 c-ink-amber">
                     <TrendingUp size={16} />
                   </span>
                   <span>

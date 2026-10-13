@@ -165,10 +165,11 @@
      solid bg-<fam>-600/700 buttons must keep light-scale values. Deviating
      scoped rules stay and win by specificity — as of tranche-4 phase 8 the
      srs-panel/rush-done/vocab-donut WASH deviants (the panel-grade alpha
-     step) retired onto the c-wash-* classes; the remaining documented
-     deviants are badge-popover emerald-50 (0.4), report-month teal-50 (0.6),
-     rush-done sky-50 (0.5) and the ink rules (text-amber-700 #fcd34d band,
-     text-emerald-600 per-family). */
+     step) retired onto the c-wash-* classes; as of phase 9 the amber ink
+     band (text-amber-700 #fcd34d) retired onto c-ink-amber; the remaining
+     documented deviants are badge-popover emerald-50 (0.4), report-month
+     teal-50 (0.6), rush-done sky-50 (0.5) and the ink rules
+     (text-emerald-600 per-family). */
   --color-amber-50: rgba(69, 48, 12, 0.35);
   --color-emerald-50: rgba(6, 55, 40, 0.35);
   /* r114: fuchsia-50 joins the kernel — its solid consumers (duel-code waiting
@@ -748,9 +749,8 @@ body {
 /* tranche-4 phase 8: the emerald/rose/amber washes retired onto c-wash-*
    (same values, painted by the class now); the sky-50 deviant (0.5 vs kernel
    0.45) keeps its scoped rule — single consumer, not worth a family slot.
-   Ink (text-amber-700) is a different property family — stays. */
+   The panel ink (text-amber-700 #fcd34d) retired onto c-ink-amber (phase 9). */
 .dark .rush-done .bg-sky-50 { background-color: rgba(8, 47, 60, 0.5); }
-.dark .rush-done .text-amber-700 { color: #fcd34d; }
 
 /* rush play card */
 .dark [data-rush-option] { color-scheme: dark; }
@@ -788,9 +788,8 @@ body {
 }
 /* tranche-4 phase 8: the four chip washes (rose/amber/emerald/teal) retired
    onto c-wash-* — same panel-grade alpha step (0.4/0.45/0.5/0.5), painted by
-   the class now. Ink (text-amber-700) stays: #fcd34d deviates from the global
-   band's #fbbf24 and is a DIFFERENT property family. */
-.dark .srs-panel .text-amber-700 { color: #fcd34d; }
+   the class now. The panel ink (text-amber-700 #fcd34d) retired onto
+   c-ink-amber (phase 9). */
 /* r87 retarget: all three srs-panel /70 surfaces migrated onto c-veil-70; the
    deviating 0.8 painter follows the class (the .rush-board half had zero
    consumers — retired). srs-due-preview/.srs-fx-expand own rules keep painting
@@ -871,7 +870,7 @@ body {
 .dark .rush-board li { border-color: rgb(67 43 16 / 0.5); }
 .dark .rush-board .bg-orange-50 { background-color: rgba(88, 44, 14, 0.4); }
 .dark .rush-board .border-orange-100 { border-color: rgb(124 58 8 / 0.55); }
-.dark .rush-board .text-amber-700 { color: #fcd34d; }
+/* the panel ink rule retired onto c-ink-amber (tranche 4 phase 9, task 127) */
 
 /* ---------------- skill panel dark ---------------- */
 .dark .skill-panel { background-color: #1c1917; border-color: rgb(106 44 112 / 0.5); }
@@ -886,7 +885,7 @@ body {
 .dark .skill-panel .skill-weak-cta .text-stone-800 { color: #fde68a; }
 .dark .skill-panel .skill-weak-cta .text-stone-500 { color: #c9c2bb; }
 .dark .skill-panel .skill-weak-cta .bg-amber-100 { background-color: rgb(69 48 12 / 0.8); }
-.dark .skill-panel .skill-weak-cta .text-amber-700 { color: #fcd34d; }
+/* the CTA's ink rule retired onto c-ink-amber (tranche 4 phase 9, task 127) */
 .dark .skill-panel .text-violet-600 { color: #d8b4fe; }
 /* r115: the panel's -100 stat washes ride the kernel tokens (bases converged:
    teal 4,47,46→19,78,74 · rose 80,10,25→76,5,25); the CTA's deliberate 0.8
@@ -978,7 +977,8 @@ body {
 .dark .daily-quests .text-emerald-800 { color: #a7f3d0; }
 .dark .daily-quests .text-emerald-600 { color: #6ee7b7; }
 .dark .daily-quests .text-violet-700 { color: #d8b4fe; }
-.dark .daily-quests .text-amber-700 { color: #fcd34d; }
+/* the daily-quests text-amber-700 rule retired DEAD in phase 9 (task 127):
+   the component never rendered a text-amber-700 consumer — no migration. */
 
 /* report print button (dark) */
 .dark .report-print-btn { background-color: #1c1917; border-color: rgb(4 120 87 / 0.6); color: #6ee7b7; }
@@ -1715,4 +1715,44 @@ html.user-reduce-motion .streak-flame {
 }
 .dark .c-wash-teal {
   background-color: rgb(6 55 50 / 0.5);
+}
+
+/* ── Task 127 — tranche 4 phase 9: the PANEL-GRADE INK semantic class ──────
+   The ink twin of the c-wash family: the amber ink band #fcd34d that five
+   scoped .dark .text-amber-700 rules used to paint (rush-done, srs-panel,
+   rush-board, skill-weak-cta + one DEAD daily-quests rule with no consumer
+   ever). #fcd34d deliberately deviates from the global dark amber band's
+   #fbbf24 (.dark .text-amber-700, which STAYS for its ~25 plain consumers):
+   these inks sit ON washed amber surfaces (c-wash-amber / bg-amber-100) and
+   need the brighter amber-300 tone to hold contrast — the same value the
+   dark token kernel already gives amber-800/900. The token route itself is
+   BLOCKED for amber-700 (its dark value is non-uniform by design — exactly
+   why the deviation became a class, not a kernel entry).
+   Mechanism = c-wash verbatim: light declaration IS the utility's own
+   (var(--color-amber-700), byte-parity by construction), the .dark twin
+   keeps the retired scoped literal. Unlayered author rule — walk-verified
+   zero state text utilities on every migrated site.
+   CONSUMER MATRIX (walk-verified, r127):
+     c-ink-amber — srs chip «در حال یادگیری», rush-done «بیشترین کمبو» (both
+                   duel screens: rush + spell), rush-board champion line «🏆»,
+                   skill-weak-cta icon holder
+                   (was .dark {rush-done,srs-panel,rush-board,skill-weak-cta}
+                   .text-amber-700 — the daily-quests sibling dies as dead).
+   EXCLUSIONS (all documented, stay raw):
+     • global .dark .text-amber-700 { #fbbf24 } — the plain-ink band.
+     • gmetro-tip .text-amber-600 { #fbbf24 } — amber-600 family, opposite
+       direction deviation, out of scope.
+     • hover:text-amber-700 state utilities — never matched by the scoped
+       rules, keep the utility's own value.
+     • spell-rush-view's word-bank tile (spell-chip, line ~605) — a PLAIN
+       global-band consumer (#fbbf24) that lives outside every retired
+       container; stays raw (the per-file matrix documents it).
+   Raw text-amber-700 must NEVER reappear on the four single-consumer
+   migrated files and must stay at exactly ONE (the spell-chip) in
+   spell-rush-view (css-hygiene guard locks the matrix). */
+.c-ink-amber {
+  color: var(--color-amber-700);
+}
+.dark .c-ink-amber {
+  color: #fcd34d;
 }

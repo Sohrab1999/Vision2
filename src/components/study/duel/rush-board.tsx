@@ -156,7 +156,7 @@ export default function RushBoard({ refreshKey = 0 }: { refreshKey?: number }) {
         <div className="rush-board-hint border-t border-orange-100 bg-gradient-to-l from-orange-50/60 to-transparent px-4 py-2.5 text-center text-[11.5px] font-bold text-stone-500">
           {meRow ? (
             meRank === 1 ? (
-              <span className="text-amber-700">🏆 تو قهرمان چالش کلاس هستی — رکوردت را حفظ کن!</span>
+              <span className="c-ink-amber">🏆 تو قهرمان چالش کلاس هستی — رکوردت را حفظ کن!</span>
             ) : meRank <= 3 ? (
               <span>
                 تو روی سکو هستی (رتبهٔ {faNum(meRank)}) — {faNum(rows[0].bestScore - meRow.bestScore)} امتیاز تا قهرمانی
