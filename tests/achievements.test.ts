@@ -19,6 +19,7 @@ import {
   type BadgeDef,
 } from "@/lib/achievements";
 import { daysAgoKey } from "@/lib/study-store";
+import type { DuelRecord } from "@/lib/duel-history";
 
 const T = "2026-10-13";
 
@@ -453,7 +454,7 @@ describe("رانِ ترکیبی — هفتهٔ دیکتهٔ پیوسته (Task 8
     expect(byId("dictation-run").title).toBe("هفتهٔ دیکتهٔ پیوسته");
     expect(byId("dictation-run").tier).toBe("gold");
     expect(byId("dictation-run").icon).toBe("SpellCheck2");
-    expect(BADGES.length).toBe(44);
+    expect(BADGES.length).toBe(46);
   });
 
   it("قراردادِ شمارِ روز ≠ جمع: دو دیکته در یک روز هنوز یک روزِ دیکته‌دار است", () => {
@@ -748,7 +749,7 @@ describe("رانِ مرور — هفتهٔ مرور (Task 88)", () => {
     expect(byId("review-run").title).toBe("هفتهٔ مرور");
     expect(byId("review-run").tier).toBe("silver");
     expect(byId("review-run").icon).toBe("History");
-    expect(BADGES.length).toBe(44);
+    expect(BADGES.length).toBe(46);
     const one = base({ dayHistory: { [w(2)]: dh({ day: w(2), reviews: 1 }) } });
     expect(byId("review-run").progress!(one)).toBe("۱ از ۷ روزِ این هفته");
   });
@@ -839,7 +840,7 @@ describe("رانِ سه‌گانه — هفتهٔ سه‌گانه (Task 89)", ()
     expect(byId("triple-run").title).toBe("هفتهٔ سه‌گانه");
     expect(byId("triple-run").tier).toBe("gold");
     expect(byId("triple-run").icon).toBe("Crown");
-    expect(BADGES.length).toBe(44);
+    expect(BADGES.length).toBe(46);
     const mixed = base({ dayHistory: { ...tripleWeek(), [w(3)]: dh({ day: w(3), reviews: 1, quizzes: 1, dictation: 0 }) } });
     // دیکته ۶ روز / آزمون ۷ / مرور ۷ — ضعیف‌ترین حلقه پیشرفت را می‌گوید
     expect(byId("triple-run").progress!(mixed)).toBe("۶ از ۷ روزِ سه‌گانهٔ این هفته");
@@ -937,7 +938,7 @@ describe("ماراتن — رانِ دوهفته‌ای (Task 90)", () => {
     expect(byId("marathon-run").title).toBe("ماراتنِ دوهفته‌ای");
     expect(byId("marathon-run").tier).toBe("gold");
     expect(byId("marathon-run").icon).toBe("Trophy");
-    expect(BADGES.length).toBe(44);
+    expect(BADGES.length).toBe(46);
     // دیکته ۱۳ روز / آزمون ۱۴ / مرور ۱۴ — ضعیف‌ترین حلقه پیشرفت را می‌گوید
     const thirteen = base({
       dayHistory: {
@@ -1052,7 +1053,7 @@ describe("خانوادهٔ حضور — ماهِ حاضر و ماهِ درخشا
     expect(byId("presence-month-full").title).toBe("ماهِ درخشان");
     expect(byId("presence-month-full").tier).toBe("gold");
     expect(byId("presence-month-full").icon).toBe("Sparkles");
-    expect(BADGES.length).toBe(44);
+    expect(BADGES.length).toBe(46);
     const twentyFour = base({ dayHistory: presenceDays([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]) });
     expect(twentyFour.activeDays35).toBe(25);
     expect(byId("presence-month").progress!(twentyFour)).toBe("۲۵ از ۲۵ روزِ فعال");
@@ -1146,7 +1147,7 @@ describe("ماهِ بی‌وقفه — پلهٔ نهاییِ خانوادهٔ ح
     expect(byId("presence-month-perfect").title).toBe("ماهِ بی‌وقفه");
     expect(byId("presence-month-perfect").tier).toBe("gold");
     expect(byId("presence-month-perfect").icon).toBe("Gem");
-    expect(BADGES.length).toBe(44);
+    expect(BADGES.length).toBe(46);
     const thirtyFour = base({ dayHistory: presenceDays([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33]) });
     expect(thirtyFour.activeDays35).toBe(34);
     expect(byId("presence-month-perfect").progress!(thirtyFour)).toBe("۳۴ از ۳۵ روزِ فعال");
@@ -1218,7 +1219,7 @@ describe("هفتهٔ پنج‌گانه — خانوادهٔ تنوع (Task 93)",
     expect(byId("five-skill-week").title).toBe("هفتهٔ پنج‌گانه");
     expect(byId("five-skill-week").tier).toBe("gold");
     expect(byId("five-skill-week").icon).toBe("Puzzle");
-    expect(BADGES.length).toBe(44);
+    expect(BADGES.length).toBe(46);
     // سه مهارت حاضر → «۳ از ۵ مهارت»
     const three = base({
       dayHistory: {
@@ -1321,6 +1322,81 @@ describe("هفتهٔ پنج‌گانه — خانوادهٔ تنوع (Task 93)",
     expect(corrupt.rushDays7).toBe(0);
     expect(corrupt.wordsDays7).toBe(1);
     expect(ids(corrupt)).not.toContain("five-skill-week");
+  });
+});
+
+describe("خانوادهٔ سرعت — صاعقه و سرعتِ صوت (Task 100)", () => {
+  const drec = (over: Record<string, unknown>): DuelRecord => ({
+    id: "d" + Math.random().toString(36).slice(2, 8),
+    day: "2026-10-13",
+    outcome: "win",
+    reason: "finished",
+    opponent: "سینا",
+    opponentColor: "rose",
+    myScore: 950, // ۵ درست × ۱۰۰ + پاداشِ ۴۵۰ → میانگینِ سرعتِ ۹۰
+    oppScore: 500,
+    myCorrect: 5,
+    oppCorrect: 3,
+    answered: 10,
+    total: 10,
+    durationSec: 80,
+    ...over,
+  });
+
+  it("wording و تیر و آیکن: صاعقه نقره/Zap، سرعتِ صوت طلا/Rocket؛ رجیستری ۴۶", () => {
+    expect(byId("speed-bolt").title).toBe("صاعقه");
+    expect(byId("speed-bolt").tier).toBe("silver");
+    expect(byId("speed-bolt").icon).toBe("Zap");
+    expect(byId("speed-sound").title).toBe("سرعتِ صوت");
+    expect(byId("speed-sound").tier).toBe("gold");
+    expect(byId("speed-sound").icon).toBe("Rocket");
+    expect(BADGES.length).toBe(46);
+  });
+
+  it("دو گیتِ صادق: نمونهٔ کم با میانگینِ بالا باز نمی‌کند و پیشرفت روی گیتِ نمونه می‌ماند", () => {
+    const small = base({ duelHistory: [drec({ myCorrect: 2, myScore: 380 })] }); // میانگینِ ۹۰
+    expect(small.duelSpeedAvg).toBe(90);
+    expect(small.duelSpeedCorrect).toBe(2);
+    expect(ids(small)).not.toContain("speed-bolt");
+    expect(ids(small)).not.toContain("speed-sound");
+    // «۹۰ از ۶۰» زیرِ قفل دیده نمی‌شود — پیشرفتِ صادق روی نمونه است
+    expect(byId("speed-bolt").progress!(small)).toBe("۲ از ۱۰ پاسخِ درست");
+    expect(byId("speed-sound").progress!(small)).toBe("۲ از ۱۵ پاسخِ درست");
+  });
+
+  it("نمونهٔ کافی و سریع → هر دو باز — زیرمجموعهٔ (۱۵،۷۵)⇒(۱۰،۶۰) در هر دو جهت", () => {
+    const fast = base({ duelHistory: [1, 2, 3].map((i) => drec({ id: "d" + i })) });
+    expect(fast.duelSpeedCorrect).toBe(15);
+    expect(fast.duelSpeedAvg).toBe(90);
+    expect(ids(fast)).toContain("speed-bolt");
+    expect(ids(fast)).toContain("speed-sound");
+  });
+
+  it("مرزِ آستانه: میانگینِ دقیقِ ۶۰ باز می‌کند، ۵۹٫۹ نه — پیشرفتِ گیتِ میانگین هم صادق", () => {
+    // ۱۰ درست، پاداشِ کلِ ۶۰۰ (میانگینِ دقیقاً ۶۰)
+    const at = base({ duelHistory: [drec({ myCorrect: 10, myScore: 1600 })] });
+    expect(at.duelSpeedAvg).toBe(60);
+    expect(ids(at)).toContain("speed-bolt");
+    expect(ids(at)).not.toContain("speed-sound"); // ۱۰ < ۱۵ — نمونهٔ طلایی نه
+    // یک امتیاز کمتر: میانگینِ ۵۹٫۹
+    const under = base({ duelHistory: [drec({ myCorrect: 10, myScore: 1599 })] });
+    expect(ids(under)).not.toContain("speed-bolt");
+    expect(byId("speed-bolt").progress!(under)).toBe("میانگینِ سرعت: ۵۹ از ۶۰");
+  });
+
+  it("گیتِ نمونهٔ طلایی: میانگینِ ۹۰ با ۱۰ پاسخ برای «سرعتِ صوت» کافی نیست", () => {
+    const ten = base({ duelHistory: [drec({ myCorrect: 10, myScore: 1900 })] });
+    expect(ten.duelSpeedAvg).toBe(90);
+    expect(ids(ten)).not.toContain("speed-sound");
+    expect(byId("speed-sound").progress!(ten)).toBe("۱۰ از ۱۵ پاسخِ درست");
+  });
+
+  it("دفترچهٔ غایب/خراب: غیرآرایه → صفرِ صادق، هرگز باز نمی‌شود (گاردِ ۹۹)", () => {
+    const corrupt = buildEvalInput(baseRaw({ duelHistory: "junk" }) as unknown as BuildArgs);
+    expect(corrupt.duelSpeedAvg).toBe(0);
+    expect(corrupt.duelSpeedCorrect).toBe(0);
+    expect(ids(corrupt)).not.toContain("speed-bolt");
+    expect(ids(corrupt)).not.toContain("speed-sound");
   });
 });
 

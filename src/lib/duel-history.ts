@@ -229,6 +229,61 @@ export function duelTopRival(records: DuelRecord[]): { opponent: string; wins: n
   return top;
 }
 
+// ---------------- آمارِ سرعتِ دفترچه (Task 100 — هفتمین خانوادهٔ نشان: «سرعت») ----------------
+// قراردادِ داور (Task 99): امتیاز = درست×۱۰۰ + پاداشِ سرعتِ ۰..۱۰۰ بر پاسخ.
+// پس پاداشِ سرعتِ هر نبرد از همان decomposeDuelScore درمی‌آید — صفر ورودیِ
+// تازه، صفر ری‌استارتِ داور. میانگینِ پاداش بر «پاسخِ درست» معنادار است:
+// رکوردِ بی‌درست (myCorrect=0) هیچ اطلاعاتِ سرعتی ندارد و کلاً کنار گذاشته
+// می‌شود — نه اینکه امتیازِ دروغینش واردِ میانگین شود.
+// سقفِ قراردادی: پاداشِ هر نبرد ≤ درست×۱۰۰ (هر پاسخ حداکثر ۱۰۰) — امتیازِ
+// جعلیِ فراتر از سقف فقط تا همین سقف حساب می‌شود؛ دروغ‌تر دیده نمی‌شود.
+
+export function duelSpeedStats(records: DuelRecord[]): {
+  totalBonus: number;
+  totalCorrect: number;
+  /** میانگینِ پاداشِ سرعت بر پاسخِ درست (۰..۱۰۰) — دفترچهٔ بی‌درست → ۰ نه NaN */
+  avgBonus: number;
+} {
+  let totalBonus = 0;
+  let totalCorrect = 0;
+  for (const r of records) {
+    const c = Number.isFinite(r.myCorrect) ? Math.floor(r.myCorrect) : 0;
+    if (c <= 0) continue; // پاسخِ درستی در کار نیست — سرعتی برای سنجش نیست
+    const { bonus } = decomposeDuelScore(r.myScore, c);
+    totalBonus += Math.min(bonus, c * DUEL_BASE_POINTS);
+    totalCorrect += c;
+  }
+  return { totalBonus, totalCorrect, avgBonus: totalCorrect > 0 ? totalBonus / totalCorrect : 0 };
+}
+
+// ---------------- مرتب‌سازیِ دفترچه (Task 100 — «دفترچهٔ مرتب») ----------------
+// دفترچه همیشه جدید→قدیم ذخیره می‌شود (id حامل epoch ms است)؛ اما «کاویدنِ»
+// کامل (Task 98) مرتب‌سازی را هم می‌خواهد: «سنگین‌ترین بردم کدام بود؟» یا
+// «بهترین امتیازم توی دفترچه کجاست؟». سه کلید: جدیدترین (پیش‌فرض)، بیشترین
+// امتیازِ خودی، بیشترین اختلافِ امتیاز (myScore−oppScore — هم بردهای سنگین
+// را می‌آورد بالا هم باخت‌های سنگین را می‌فرستد پایین؛ یک طیفِ صادق است).
+
+export type DuelLedgerSortKey = "newest" | "myScore" | "margin";
+
+/** ترتیبِ ثبت‌شدهٔ کلیدها — UI همین را رندر می‌کند */
+export const DUEL_LEDGER_SORTS: readonly DuelLedgerSortKey[] = ["newest", "myScore", "margin"];
+
+/**
+ * مرتب‌سازیِ قطعی: تساویِ امتیاز/اختلاف با idِ نزولی می‌شکند (تازه‌تر اول).
+ * "newest" هم آگاهانه بر اساس id نزول می‌کند — دفترچه‌ای که از ورودیِ نامطمئن
+ * آمده (sanitize/merge) ممکن است ترتیبِ خامش درهم باشد؛ تکیه بر قراردادِ id
+ * همیشه درست‌تر از تکیه بر ترتیبِ آرایه است.
+ */
+export function sortDuelLedger(records: DuelRecord[], key: DuelLedgerSortKey = "newest"): DuelRecord[] {
+  const byIdDesc = (a: DuelRecord, b: DuelRecord) => (a.id < b.id ? 1 : a.id > b.id ? -1 : 0);
+  const arr = [...records];
+  if (key === "myScore") arr.sort((a, b) => b.myScore - a.myScore || byIdDesc(a, b));
+  else if (key === "margin")
+    arr.sort((a, b) => b.myScore - b.oppScore - (a.myScore - a.oppScore) || byIdDesc(a, b));
+  else arr.sort(byIdDesc);
+  return arr;
+}
+
 // ---------------- پایداری (sanitize/merge برای جدول SyncField) ----------------
 
 const DAY_RE = /^\d{4}-\d{2}-\d{2}$/;

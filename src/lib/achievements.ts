@@ -8,7 +8,7 @@ import type { StudyState } from "./study-store";
 import { daysAgoKey, normDayStat, todayStr } from "./study-store";
 import { faNum } from "./study-theme";
 import { completedQuestCount } from "./daily-quests";
-import { duelTopRival } from "./duel-history";
+import { duelTopRival, duelSpeedStats } from "./duel-history";
 import { FREEZE_WINDOW } from "@/state/types";
 
 export type BadgeTier = "bronze" | "silver" | "gold";
@@ -64,6 +64,8 @@ export interface BadgeEvalInput {
   rushDays7: number; // چند روزِ پنجرهٔ ۷روزه برق‌آسا داشتند (≠ جمع — Task 93)
   duelTopRivalWins: number; // بیشترین برد مقابلِ یک حریفِ واحد در دفترچه (Task 99)
   duelTopRivalName: string; // نامِ نمایشیِ همان رقیب (برای پیشرفتِ صادق)
+  duelSpeedAvg: number; // میانگینِ پاداشِ سرعت بر پاسخِ درست (۰..۱۰۰ — Task 100)
+  duelSpeedCorrect: number; // جمعِ پاسخ‌های درستِ دفترچه — نمونهٔ آماریِ سرعت
 }
 
 function historyTotals(history: StudyState["history"]): { quizzes: number; reviews: number; days: number } {
@@ -119,7 +121,10 @@ export function buildEvalInput(s: {
   const hasWriting = Object.keys(s.results).some((k) => k.endsWith(":writing"));
   const mistakesTotal = Object.keys(s.mistakes).length;
   // خانوادهٔ نبرد (Task 99) — رقیبِ نخستِ دفترچه؛ گاردِ خراب: غیرآرایه → صفر/خالی
-  const topRival = duelTopRival(Array.isArray(s.duelHistory) ? s.duelHistory : []);
+  const ledger = Array.isArray(s.duelHistory) ? s.duelHistory : [];
+  const topRival = duelTopRival(ledger);
+  // خانوادهٔ سرعت (Task 100) — میانگینِ پاداشِ سرعت از همان دفترچه (قراردادِ داور، Task 99)
+  const speed = duelSpeedStats(ledger);
   // پنجرهٔ ۷روزه — همان قرارداد موتور: کلیدِ رشته‌ای محلی، مقایسهٔ >=
   const windowStart = daysAgoKey(FREEZE_WINDOW - 1);
   const goalList = Array.isArray(s.goalMetDays)
@@ -197,6 +202,8 @@ export function buildEvalInput(s: {
     })(),
     duelTopRivalWins: topRival?.wins ?? 0,
     duelTopRivalName: topRival?.opponent ?? "",
+    duelSpeedAvg: speed.avgBonus,
+    duelSpeedCorrect: speed.totalCorrect,
   };
 }
 
@@ -751,6 +758,41 @@ export const BADGES: BadgeDef[] = [
     tier: "gold",
     progress: (s) => `${faNum(Math.min(s.duelTopRivalWins, 3))} از ۳ برد مقابلِ یک حریف`,
     check: (s) => s.duelTopRivalWins >= 3,
+  },
+  // ---- صاعقه (Task 100) — هفتمین خانواده: «سرعت». امتیازِ نبرد از داور
+  // می‌آید: درست×۱۰۰ + پاداشِ سرعتِ ۰..۱۰۰ بر پاسخ (ساعتِ سرور، Task 99) —
+  // پس میانگینِ پاداش، میانگینِ سرعتِ واقعیِ پاسخ‌دادن است نه خوداظهاری.
+  // دو گیتِ صادق: نمونهٔ آماری (۱۰ پاسخِ درست — دو نبردِ معمول) و آستانهٔ
+  // میانگین (۶۰ ≈ پاسخِ ~۶.۷ثانیه‌ای بر قراردادِ BONUS_STEP_MS=۱۵۰). پیشرفت
+  // همیشه روی «گیتِ مقیدِ» فعلی نامیده می‌شود: نمونه کم است → شمارِ نمونه،
+  // نمونه کافی است ولی میانگین نه → خودِ میانگین. هیچ‌وقت «۷۵ از ۷۵» زیرِ
+  // قفلِ نمونه‌کم دیده نمی‌شود — همان پیشرفتِ صادقِ خانواده‌های ۹۲-۹۹.
+  {
+    id: "speed-bolt",
+    title: "صاعقه",
+    desc: "میانگینِ پاداشِ سرعتِ ۶۰ از ۱۰۰ روی دست‌کم ۱۰ پاسخِ درست در دفترچهٔ نبردها — دکمه را پیش از فکرکردنِ حریف می‌زنی",
+    icon: "Zap",
+    tier: "silver",
+    progress: (s) =>
+      s.duelSpeedCorrect < 10
+        ? `${faNum(Math.min(s.duelSpeedCorrect, 10))} از ۱۰ پاسخِ درست`
+        : `میانگینِ سرعت: ${faNum(Math.min(Math.floor(s.duelSpeedAvg), 60))} از ۶۰`,
+    check: (s) => s.duelSpeedCorrect >= 10 && s.duelSpeedAvg >= 60,
+  },
+  // ---- سرعتِ صوت (Task 100) — پلهٔ طلاییِ همان خانواده: ۷۵ ≈ پاسخِ ~۴.۵ثانیه‌ای
+  // با نمونهٔ بزرگ‌تر (۱۵ پاسخ). زیرمجموعهٔ ریاضیِ ۷۵⇒۶۰ و ۱۵⇒۱۰ در هر دو بُعد
+  // (تست-قفل در هر دو جهت، هم‌قراردادِ خانواده‌های حضور/ران/نبرد).
+  {
+    id: "speed-sound",
+    title: "سرعتِ صوت",
+    desc: "میانگینِ پاداشِ سرعتِ ۷۵ از ۱۰۰ روی دست‌کم ۱۵ پاسخِ درست — از صدای رسیدنِ سؤال هم تندتر جواب می‌دهی",
+    icon: "Rocket",
+    tier: "gold",
+    progress: (s) =>
+      s.duelSpeedCorrect < 15
+        ? `${faNum(Math.min(s.duelSpeedCorrect, 15))} از ۱۵ پاسخِ درست`
+        : `میانگینِ سرعت: ${faNum(Math.min(Math.floor(s.duelSpeedAvg), 75))} از ۷۵`,
+    check: (s) => s.duelSpeedCorrect >= 15 && s.duelSpeedAvg >= 75,
   },
 ];
 

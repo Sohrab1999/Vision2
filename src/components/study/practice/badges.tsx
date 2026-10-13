@@ -43,6 +43,7 @@ import {
   History,
   Puzzle,
   Swords,
+  Rocket,
 } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -106,6 +107,7 @@ export const BADGE_ICONS: Record<string, React.ElementType> = {
   // تنوع (Task 93) — هفتهٔ پنج‌گانه
   Puzzle,
   Swords, // خانوادهٔ نبرد (Task 99)
+  Rocket, // خانوادهٔ سرعت (Task 100)
 };
 
 const tierFa: Record<string, string> = {

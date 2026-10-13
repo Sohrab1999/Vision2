@@ -15,8 +15,10 @@ import {
   filterDuelLedger,
   duelLedgerDigest,
   normalizeDuelQuery,
+  sortDuelLedger,
   type DuelOutcome,
   type DuelLedgerOutcomeFilter,
+  type DuelLedgerSortKey,
 } from "@/lib/duel-history";
 import type { Conn } from "./duel-types";
 
@@ -43,19 +45,30 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
   // Task 96 — زیرمجموعهٔ صادق: چند نبردِ دفترچه رسیدِ امضاشدهٔ داور دارند
   const verified = duelVerifiedCount(duelHistory);
   // Task 98 — دفترچهٔ قابلِ کاویدن: جست‌وجوی حریف + فیلترِ نتیجه + فقطِ داورگواه؛
-  // بدونِ فیلتر همان نمایشِ ۵تای آخر با دکمهٔ بازکردنِ همه
+  // Task 100 — «دفترچهٔ مرتب»: سه کلیدِ مرتب‌سازی روی نتیجهٔ فیلتر (ANDِ ابزارها)
   const [query, setQuery] = useState("");
   const [outcome, setOutcome] = useState<DuelLedgerOutcomeFilter>("all");
   const [verifiedOnly, setVerifiedOnly] = useState(false);
+  const [sortKey, setSortKey] = useState<DuelLedgerSortKey>("newest");
   const [expanded, setExpanded] = useState(false);
   const filtered = filterDuelLedger(duelHistory, { query, outcome, verifiedOnly });
-  const isFiltering = normalizeDuelQuery(query) !== "" || outcome !== "all" || verifiedOnly;
-  const rows = isFiltering ? filtered : expanded ? duelHistory : duelHistory.slice(0, 5);
+  // جست‌وجو/فیلتر = «کدام‌ها»؛ مرتب‌سازی = «با چه ترتیبی» — دو ابزارِ مستقل که
+  // ترکیب می‌شوند. هرکدام فعال باشد، نمایش به «همهٔ یافته‌ها» باز می‌شود
+  // (قراردادِ ۹۸): مرتب‌کردنِ پنج‌تایِ بریده بی‌معناست.
+  const isSearching = normalizeDuelQuery(query) !== "" || outcome !== "all" || verifiedOnly;
+  const isSorting = sortKey !== "newest";
+  const isCaving = isSearching || isSorting;
+  const rows = isCaving
+    ? sortDuelLedger(filtered, sortKey)
+    : expanded
+      ? duelHistory
+      : duelHistory.slice(0, 5);
   const digest = duelLedgerDigest(rows);
   const clearFilters = () => {
     setQuery("");
     setOutcome("all");
     setVerifiedOnly(false);
+    setSortKey("newest");
   };
   const outcomeChip: Record<DuelOutcome, string> = {
     win: "bg-emerald-500",
@@ -243,7 +256,7 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
                 <ShieldCheck size={12} aria-hidden />
                 فقط داورگواه
               </button>
-              {isFiltering && (
+              {isSearching && (
                 <button
                   onClick={clearFilters}
                   className="ms-auto inline-flex items-center gap-1 rounded-lg px-2 py-1 text-[11px] font-black text-fuchsia-600 transition-colors hover:bg-stone-100"
@@ -253,7 +266,48 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
                 </button>
               )}
             </div>
-            {isFiltering && (
+            {/* Task 100 — مرتب‌سازیِ دفترچه: سه کلید با همان دستورِ چیپ‌های نتیجه؛
+                مرتب‌سازی روی نتیجهٔ فیلتر اعمال می‌شود (ترکیبِ ابزارها) */}
+            <div className="flex flex-wrap items-center gap-1.5" role="group" aria-label="مرتب‌سازی نبردها">
+              <span className="text-[10.5px] font-black text-stone-400">ترتیب:</span>
+              {(
+                [
+                  ["newest", "جدیدترین"],
+                  ["myScore", "بیشترین امتیاز"],
+                  ["margin", "بیشترین اختلاف"],
+                ] as const
+              ).map(([k, label]) => (
+                <button
+                  key={k}
+                  onClick={() => setSortKey(k)}
+                  aria-pressed={sortKey === k}
+                  title={
+                    k === "newest"
+                      ? "ترتیبِ همیشگی: تازه‌ترین نبرد بالا"
+                      : k === "myScore"
+                        ? "نبردهایی که بیشترین امتیازِ شخصی را گرفتی"
+                        : "نبردها بر اساس اختلافِ امتیاز با حریف — سنگین‌ترین‌ها بالا"
+                  }
+                  className={`rounded-lg px-2.5 py-1 text-[11px] font-black transition-colors ${
+                    sortKey === k
+                      ? "bg-fuchsia-600 text-white"
+                      : "border border-stone-200 bg-stone-50 text-stone-500 hover:bg-stone-100"
+                  }`}
+                >
+                  {label}
+                </button>
+              ))}
+              {isSorting && !isSearching && (
+                <button
+                  onClick={clearFilters}
+                  className="ms-auto inline-flex items-center gap-1 rounded-lg px-2 py-1 text-[11px] font-black text-fuchsia-600 transition-colors hover:bg-stone-100"
+                >
+                  <X size={12} aria-hidden />
+                  پاک‌کردن فیلترها
+                </button>
+              )}
+            </div>
+            {isSearching && (
               <p className="text-[11px] font-bold text-stone-400" role="status">
                 {faNum(rows.length)} نبرد یافت شد · {faNum(digest.win)} برد، {faNum(digest.loss)} باخت، {faNum(digest.tie)} مساوی
               </p>
@@ -307,8 +361,9 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
             ))}
           </div>
 
-          {/* Task 98 — حالتِ خالیِ فیلتر: پیامِ صادق + خروجِ یک‌ضربه‌ای */}
-          {isFiltering && rows.length === 0 && (
+          {/* Task 98 — حالتِ خالیِ فیلتر: پیامِ صادق + خروجِ یک‌ضربه‌ای؛
+              مرتب‌سازیِ تنها هیچ‌وقت خالی نمی‌شود (دیتا همان است، ترتیب عوض می‌شود) */}
+          {isSearching && rows.length === 0 && (
             <div className="mt-3 rounded-xl border border-dashed border-stone-300 py-6 text-center">
               <Search size={18} className="mx-auto mb-2 text-stone-300" aria-hidden />
               <p className="mb-2.5 text-[12px] font-bold text-stone-400">نبردی با این مشخصات پیدا نشد.</p>
@@ -334,8 +389,8 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
           )}
 
           {/* Task 98 — بازکردنِ دفترچه: جملهٔ ثابتِ «قدیمی‌تر» حالا دکمه است؛
-              با فیلترِ فعال همهٔ یافته‌ها خودکار نشان داده می‌شوند */}
-          {!isFiltering && duelHistory.length > 5 && (
+              با کاویدنِ فعال (فیلتر یا مرتب‌سازی) همهٔ یافته‌ها خودکار رندر می‌شوند */}
+          {!isCaving && duelHistory.length > 5 && (
             <button
               onClick={() => setExpanded((v) => !v)}
               aria-expanded={expanded}
