@@ -14,6 +14,7 @@ import { Sparkles, TrendingDown, TrendingUp, Minus, CalendarHeart, Check, Snowfl
 import { useStudy, daysAgoKey } from "@/lib/study-store";
 import { faNum, secFa } from "@/lib/study-theme";
 import { computeWeeklyDigest, faWeekday, faDayLabel, DUEL_QUICK_WEEK, type Delta, type QuickWeekProfile } from "@/lib/weekly-digest";
+import { weekGoalMeta } from "@/lib/week-goal";
 import { weekTeacherStats } from "@/lib/week-teacher";
 import WeekTeacher from "@/components/study/reports/week-teacher";
 import { freezeDayMark, freezeLedgerMeta } from "@/lib/freeze-badge";
@@ -93,6 +94,10 @@ export default function WeeklyReportSection() {
     () => computeWeeklyDigest({ dayHistory, history, goalMetDays, duelHistory }, daysAgoKey(0)),
     [dayHistory, history, goalMetDays, duelHistory]
   );
+
+  // هدفِ هفتگی (Task 128) — همان قراردادِ حلقهٔ PNGِ کارتِ هفته و پانوشتِ A4،
+  // این‌بار زنده رویِ هفته‌نامه: از thisWeek.goalDays دایجست می‌خوانَد.
+  const weekGoal = useMemo(() => weekGoalMeta(digest.thisWeek.goalDays), [digest.thisWeek.goalDays]);
 
   // دفتر یخ (Task 78) — مخزن + نجات‌های این هفته + مسیر یخِ بعدی؛ هم‌قرارداد
   // goalAndFreezePatch (فقط روزهای واقعیِ یخ و هدف) — هم‌پنجرهٔ ۷روزهٔ دایجست
@@ -218,13 +223,57 @@ export default function WeeklyReportSection() {
         <span>امروز</span>
       </div>
 
-      {/* goal dots — one per day of this week */}
-      <div className="mb-3 flex items-center justify-between gap-2 rounded-lg c-veil-60 px-2.5 py-2">
+      {/* goal row — daily label | weekly-goal ring (Task 128) + per-day dots */}
+      <div className="mb-3 flex flex-wrap items-center justify-between gap-2 rounded-lg c-veil-60 px-2.5 py-2">
         <div className="flex items-center gap-1.5 text-[10.5px] font-extrabold text-stone-600">
           <CalendarHeart size={12} className="text-emerald-600" aria-hidden />
           هدف روزانه ({faNum(dailyGoal)})
         </div>
-        <div className="flex items-center gap-1" dir="ltr">
+        <div className="flex items-center gap-2.5">
+          {/* حلقهٔ هدفِ هفتگی — دوقلویِ زندهٔ حلقهٔ PNG/A4 (همان زبانِ «از ۷»):
+              track = tokenِ سنگی (در دارک خودش تیره می‌شود)، arc = همان گرادیانِ
+              PNG (#10b981→#0d9488)؛ صفرِ واقعی هیچِ arc نمی‌کشد (نقطهٔ کاذب ممنوع) */}
+          <div className="flex items-center gap-1.5">
+            <div role="img" aria-label={weekGoal.title} title={weekGoal.title} className="relative h-10 w-10 shrink-0">
+              <svg viewBox="0 0 40 40" className="h-full w-full -rotate-90" aria-hidden>
+                <defs>
+                  <linearGradient id="week-goal-arc" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="#10b981" />
+                    <stop offset="100%" stopColor="#0d9488" />
+                  </linearGradient>
+                </defs>
+                <circle cx="20" cy="20" r="16" fill="none" stroke="var(--color-stone-200)" strokeWidth="4" />
+                {weekGoal.pct > 0 && (
+                  <circle
+                    cx="20"
+                    cy="20"
+                    r="16"
+                    fill="none"
+                    stroke="url(#week-goal-arc)"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                    pathLength={100}
+                    strokeDasharray={`${weekGoal.pct} ${100 - weekGoal.pct}`}
+                  />
+                )}
+              </svg>
+              <span
+                className={`absolute inset-0 flex items-center justify-center text-[9px] font-black ${
+                  weekGoal.done ? "text-emerald-700" : "text-stone-700"
+                }`}
+              >
+                {faNum(weekGoal.pct)}٪
+              </span>
+            </div>
+            <span
+              className={`hidden text-[10px] font-extrabold sm:inline ${
+                weekGoal.done ? "text-emerald-700" : "text-stone-600"
+              }`}
+            >
+              {weekGoal.label}
+            </span>
+          </div>
+          <div className="flex items-center gap-1" dir="ltr">
           {digest.perDay
             .filter((p) => p.inThisWeek)
             .map((p) => {
@@ -250,6 +299,7 @@ export default function WeeklyReportSection() {
                 />
               );
             })}
+          </div>
         </div>
       </div>
 

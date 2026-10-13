@@ -7,6 +7,7 @@
 // ------------------------------------------------------------------
 
 import { faNum } from "./study-theme";
+import { weekGoalMeta } from "./week-goal";
 import type { DuelLedgerStats } from "./duel-history";
 import type { TeacherReview } from "./exam-teacher";
 import type { StorySegment, StoryWord } from "./story-forge";
@@ -1351,10 +1352,12 @@ export async function buildStoryCardBlob(opts: StoryCardImageOpts): Promise<Blob
 // تنها عددی که یک هفتهٔ واقعی را خلاصه می‌کند؛ نوارِ پیشرفتِ هدفِ روزانه.
 // صداقتِ منبعِ ۱۱۷/۱۱۸ ادامه دارد: fallback هرگز «هوشمند» جعل نمی‌شود.
 
-/** درصدِ حلقهٔ کارتِ هفته — گیرِ صادق در ۰..۱۰۰؛ ورودیِ کج هم نمی‌سوزد */
+/** درصدِ حلقهٔ کارتِ هفته — گیرِ صادق در ۰..۱۰۰؛ ورودیِ کج هم نمی‌سوزد.
+ * Task 128: ریاضی به قراردادِ مشترکِ week-goal.ts منتقل شد (تک‌مالکِ
+ * هدفِ هفتگی — همان زبانِ حلقهٔ زندهٔ هفته‌نامه)؛ این‌جا فقط delegate
+ * می‌ماند تا امضایِ عمومیِ کارتِ هفته دست‌نخورده بماند. */
 export function weekCardPercent(goalDays: number): number {
-  const n = Number.isFinite(goalDays) ? Math.round(goalDays) : 0;
-  return Math.max(0, Math.min(100, Math.round((Math.max(0, Math.min(7, n)) / 7) * 100)));
+  return weekGoalMeta(goalDays).pct;
 }
 
 /** شعارِ انگلیسیِ فوتر — از اعدادِ واقعیِ هفته، نه حالِ هوایِ معلم */
