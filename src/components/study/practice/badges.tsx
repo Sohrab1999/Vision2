@@ -42,6 +42,7 @@ import {
   Layers,
   History,
   Puzzle,
+  Swords,
 } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -104,6 +105,7 @@ export const BADGE_ICONS: Record<string, React.ElementType> = {
   History,
   // تنوع (Task 93) — هفتهٔ پنج‌گانه
   Puzzle,
+  Swords, // خانوادهٔ نبرد (Task 99)
 };
 
 const tierFa: Record<string, string> = {
@@ -132,6 +134,7 @@ export default function Badges() {
   const freezeEarnedDay = useStudy((s) => s.freezeEarnedDay);
   const goalMetDays = useStudy((s) => s.goalMetDays);
   const dayHistory = useStudy((s) => s.dayHistory);
+  const duelHistory = useStudy((s) => s.duelHistory);
   const seenBadges = useStudy((s) => s.seenBadges);
   const markBadgesSeen = useStudy((s) => s.markBadgesSeen);
   const mounted = useMounted();
@@ -156,8 +159,9 @@ export default function Badges() {
         freezeEarnedDay,
         goalMetDays,
         dayHistory,
+        duelHistory,
       }),
-    [known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, freezeCount, freezeUsedDays, freezeEarnedDay, goalMetDays, dayHistory]
+    [known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, freezeCount, freezeUsedDays, freezeEarnedDay, goalMetDays, dayHistory, duelHistory]
   );
 
   const unlocked = useMemo(() => unlockedBadgeIds(input), [input]);

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Trophy, Swords, Users, RotateCcw, Crown, Handshake, Loader2, ShieldCheck } from "lucide-react";
 import { faNum } from "@/lib/study-theme";
+import { decomposeDuelScore } from "@/lib/duel-history";
 import type { EndPayload } from "./duel-types";
 
 // فاز DONE — کارنامهٔ نبرد، مقایسهٔ دو بازیکن و دکمه‌های پس از نبرد
@@ -86,8 +87,13 @@ export default function DuelDone({ endData, mySid, myFinishAt, oppConnected, rem
             { p: mine, label: "تو", highlight: outcome === "win" },
             { p: other, label: "حریف", highlight: outcome === "loss" },
           ].map(
-            ({ p, label, highlight }) =>
-              p && (
+            ({ p, label, highlight }) => {
+              if (!p) return null;
+              // Task 99 — تفکیکِ امتیاز: پایه (درست×۱۰۰) + پاداشِ سرعت (قراردادِ
+              // داور در scoring.ts؛ نمایشِ کلاینت — اعتبار با رسیدِ ۹۴ است).
+              const d = decomposeDuelScore(p.score, p.correct);
+              const basePct = p.score > 0 ? Math.max(0, Math.min(100, Math.round((d.base / p.score) * 100))) : 0;
+              return (
                 <div
                   key={p.sid}
                   className={`flex items-center gap-3 rounded-xl border p-3 ${
@@ -110,9 +116,23 @@ export default function DuelDone({ endData, mySid, myFinishAt, oppConnected, rem
                         : ""}
                     </div>
                   </div>
-                  <span className="shrink-0 text-xl font-black text-stone-800">{faNum(p.score)}</span>
+                  <div className="shrink-0 text-left">
+                    <span className="text-xl font-black text-stone-800">{faNum(p.score)}</span>
+                    {p.score > 0 && (
+                      <>
+                        <div className="mt-1 flex h-1.5 w-20 overflow-hidden rounded-full bg-stone-100" aria-hidden>
+                          <span className="bg-emerald-500" style={{ width: `${basePct}%` }} />
+                          <span className="flex-1 bg-amber-400" />
+                        </div>
+                        <div className="mt-0.5 text-[10px] font-bold text-stone-400">
+                          {faNum(d.base)} پایه + {faNum(d.bonus)} سرعت
+                        </div>
+                      </>
+                    )}
+                  </div>
                 </div>
-              )
+              );
+            }
           )}
         </div>
         <p className="mt-3 text-center text-[11.5px] leading-6 text-stone-400">

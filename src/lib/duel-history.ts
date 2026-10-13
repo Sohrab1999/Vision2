@@ -187,6 +187,48 @@ export function duelLedgerDigest(records: DuelRecord[]): { win: number; loss: nu
   return d;
 }
 
+// ---------------- امتیازِ نبرد — تفکیکِ پایه/سرعت (Task 99) ----------------
+// قراردادِ داور (mini-services/challenge-service/scoring.ts): هر پاسخِ درست
+// ۱۰۰ امتیازِ پایه + پاداشِ سرعتِ ۰..۱۰۰ (ساعتِ سرور؛ msِ کلاینت خوانده
+// نمی‌شود). تفکیکِ سمتِ کلاینت صرفاً «نمایش» است — اعتبارِ نتیجه کارِ
+// رسیدِ امضاشدهٔ تسک ۹۴ است؛ scoreِ جعلی این‌جا فقط دروغ‌تر دیده می‌شود.
+
+export const DUEL_BASE_POINTS = 100;
+
+/** امتیازِ یک بازیکن را به پایه (درست×۱۰۰) و پاداشِ سرعت می‌شکند */
+export function decomposeDuelScore(score: number, correct: number): { base: number; bonus: number } {
+  const c = Number.isFinite(correct) && correct > 0 ? Math.floor(correct) : 0;
+  const base = c * DUEL_BASE_POINTS;
+  const raw = Number.isFinite(score) ? Math.floor(score) : 0;
+  return { base, bonus: Math.max(0, raw - base) };
+}
+
+// ---------------- رقیبِ نخست (Task 99 — خانوادهٔ نبردِ نشان‌ها) ----------------
+/**
+ * بیشترین بردِ مقابلِ یک حریفِ واحد در دفترچه — گروه‌بندی با نامِ نرمال‌شده
+ * (بی‌فاصله/بی‌نیم‌فاصله) تا «امیر محمد» و «امیرمحمد» یک رقیب باشند. نامِ
+ * نمایشیِ خوداظهار است (SEC-5) — دو «سینا»ی واقعی یکی دیده می‌شوند؛ صادقانه
+ * روی همان نمایش. تساویِ شمار: رقیبی که بردِ Nامش تازه‌تر است (پیمایش
+ * جدید→قدیم، اولینِ رسیده به سقف می‌ماند) — قطعی و معنادار.
+ */
+export function duelTopRival(records: DuelRecord[]): { opponent: string; wins: number } | null {
+  const winsBy = new Map<string, { opponent: string; wins: number }>();
+  let top: { opponent: string; wins: number } | null = null;
+  for (const r of records) {
+    if (r.outcome !== "win") continue;
+    const key = normalizeDuelQuery(r.opponent) || r.opponent.trim();
+    const cur = winsBy.get(key);
+    if (cur) {
+      cur.wins++;
+    } else {
+      winsBy.set(key, { opponent: r.opponent, wins: 1 });
+    }
+    const now = winsBy.get(key)!;
+    if (!top || now.wins > top.wins) top = now;
+  }
+  return top;
+}
+
 // ---------------- پایداری (sanitize/merge برای جدول SyncField) ----------------
 
 const DAY_RE = /^\d{4}-\d{2}-\d{2}$/;

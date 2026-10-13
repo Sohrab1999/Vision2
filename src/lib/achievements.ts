@@ -8,6 +8,7 @@ import type { StudyState } from "./study-store";
 import { daysAgoKey, normDayStat, todayStr } from "./study-store";
 import { faNum } from "./study-theme";
 import { completedQuestCount } from "./daily-quests";
+import { duelTopRival } from "./duel-history";
 import { FREEZE_WINDOW } from "@/state/types";
 
 export type BadgeTier = "bronze" | "silver" | "gold";
@@ -61,6 +62,8 @@ export interface BadgeEvalInput {
   activeDays35: number; // چند روزِ پنجرهٔ ۳۵روزه هر فعالیتی داشتند (خانوادهٔ حضور، Task 92)
   wordsDays7: number; // چند روزِ پنجرهٔ ۷روزه واژهٔ تازه داشتند (≠ جمع — Task 93)
   rushDays7: number; // چند روزِ پنجرهٔ ۷روزه برق‌آسا داشتند (≠ جمع — Task 93)
+  duelTopRivalWins: number; // بیشترین برد مقابلِ یک حریفِ واحد در دفترچه (Task 99)
+  duelTopRivalName: string; // نامِ نمایشیِ همان رقیب (برای پیشرفتِ صادق)
 }
 
 function historyTotals(history: StudyState["history"]): { quizzes: number; reviews: number; days: number } {
@@ -92,6 +95,7 @@ export function buildEvalInput(s: {
   freezeEarnedDay?: string;
   goalMetDays?: string[];
   dayHistory?: StudyState["dayHistory"];
+  duelHistory?: StudyState["duelHistory"]; // خانوادهٔ نبرد (Task 99) — دفترچهٔ ۱۵تایی
 }): BadgeEvalInput {
   const knownCount = Object.values(s.known).filter(Boolean).length;
   const rs = Object.values(s.results);
@@ -114,6 +118,8 @@ export function buildEvalInput(s: {
   const hasDictation = Object.keys(s.results).some((k) => k.endsWith(":dictation"));
   const hasWriting = Object.keys(s.results).some((k) => k.endsWith(":writing"));
   const mistakesTotal = Object.keys(s.mistakes).length;
+  // خانوادهٔ نبرد (Task 99) — رقیبِ نخستِ دفترچه؛ گاردِ خراب: غیرآرایه → صفر/خالی
+  const topRival = duelTopRival(Array.isArray(s.duelHistory) ? s.duelHistory : []);
   // پنجرهٔ ۷روزه — همان قرارداد موتور: کلیدِ رشته‌ای محلی، مقایسهٔ >=
   const windowStart = daysAgoKey(FREEZE_WINDOW - 1);
   const goalList = Array.isArray(s.goalMetDays)
@@ -189,6 +195,8 @@ export function buildEvalInput(s: {
         rushDays7: win7.rushDays,
       };
     })(),
+    duelTopRivalWins: topRival?.wins ?? 0,
+    duelTopRivalName: topRival?.opponent ?? "",
   };
 }
 
@@ -719,6 +727,30 @@ export const BADGES: BadgeDef[] = [
       `${faNum([s.reviewsDays7, s.quizDays7, s.dictationDays7, s.wordsDays7, s.rushDays7].filter((x) => x >= 1).length)} از ۵ مهارت`,
     check: (s) =>
       s.reviewsDays7 >= 1 && s.quizDays7 >= 1 && s.dictationDays7 >= 1 && s.wordsDays7 >= 1 && s.rushDays7 >= 1,
+  },
+  // ---- شکارچیِ رقیب (Task 99) — ششمین خانواده: «نبرد». پاداشِ پایداریِ مقابلِ
+  // یک حریفِ واحد؛ منبعِ داده دفترچهٔ ۱۵تاییِ دستگاه است (duelHistory — بدونِ
+  // فیلدِ persist تازه). گروه‌بندی با نامِ نرمال‌شده (بی‌فاصله/بی‌نیم‌فاصله)؛
+  // نامِ نمایشیِ خوداظهار است (SEC-5) و گروه‌بندی صادقانه روی همان نمایش.
+  // دو پله: ۲ برد نقره/Swords، ۳ برد طلا/Crown — زیرمجموعهٔ ریاضیِ ۳⇒۲
+  // (تست-قفل در هر دو جهت، هم‌قراردادِ خانواده‌های حضور/ران).
+  {
+    id: "rival-hunter",
+    title: "شکارچیِ رقیب",
+    desc: "دو برد مقابلِ یک حریفِ واحد در دفترچهٔ نبردها",
+    icon: "Swords",
+    tier: "silver",
+    progress: (s) => `${faNum(Math.min(s.duelTopRivalWins, 2))} از ۲ برد مقابلِ یک حریف`,
+    check: (s) => s.duelTopRivalWins >= 2,
+  },
+  {
+    id: "rival-nightmare",
+    title: "کابوسِ رقیب",
+    desc: "سه برد مقابلِ یک حریفِ واحد — کابوسِ او تویی",
+    icon: "Crown",
+    tier: "gold",
+    progress: (s) => `${faNum(Math.min(s.duelTopRivalWins, 3))} از ۳ برد مقابلِ یک حریف`,
+    check: (s) => s.duelTopRivalWins >= 3,
   },
 ];
 
