@@ -305,9 +305,11 @@ function battleShell(ctx: CanvasRenderingContext2D, W: number, H: number, family
   ctx.stroke();
 }
 
-async function downloadCanvasBlob(canvas: HTMLCanvasElement, name: string): Promise<boolean> {
-  const blob = await new Promise<Blob | null>((res) => canvas.toBlob((b) => res(b), "image/png"));
-  if (!blob) return false;
+function canvasToBlob(canvas: HTMLCanvasElement): Promise<Blob | null> {
+  return new Promise((res) => canvas.toBlob((b) => res(b), "image/png"));
+}
+
+async function downloadBlob(blob: Blob, name: string): Promise<boolean> {
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
@@ -317,6 +319,12 @@ async function downloadCanvasBlob(canvas: HTMLCanvasElement, name: string): Prom
   a.remove();
   setTimeout(() => URL.revokeObjectURL(url), 3000);
   return true;
+}
+
+async function downloadCanvasBlob(canvas: HTMLCanvasElement, name: string): Promise<boolean> {
+  const blob = await canvasToBlob(canvas);
+  if (!blob) return false;
+  return downloadBlob(blob, name);
 }
 
 /** آماده‌سازی فونت + کانواسِ ۱۰۸۰×۶۴۰ با پوستهٔ نبرد — null در محیطِ بی‌کانواس */
@@ -338,7 +346,8 @@ export interface DuelLedgerImageOpts {
   userName?: string;
 }
 
-export async function downloadDuelLedgerImage(opts: DuelLedgerImageOpts): Promise<boolean> {
+/** رسمِ کارتِ کارنامه — Task 102: از دانلود جدا شد تا blob هم ساخته شود */
+async function duelLedgerCanvas(opts: DuelLedgerImageOpts): Promise<HTMLCanvasElement | null> {
   try {
     if (typeof document !== "undefined" && document.fonts?.ready) {
       await document.fonts.ready;
@@ -348,7 +357,7 @@ export async function downloadDuelLedgerImage(opts: DuelLedgerImageOpts): Promis
         ? getComputedStyle(document.body).fontFamily || "sans-serif"
         : "sans-serif";
     const ctx = await openBattleCard(family);
-    if (!ctx) return false;
+    if (!ctx) return null;
     const W = 1080;
     const H = 640;
     const s = opts.stats;
@@ -449,10 +458,23 @@ export async function downloadDuelLedgerImage(opts: DuelLedgerImageOpts): Promis
     ctx.font = `900 20px ${family}`;
     ctx.fillText(s.winRate >= 70 ? "BATTLE STATS ★" : "KEEP FIGHTING!", 90, H - 74);
 
-    return downloadCanvasBlob(ctx.canvas, "vision2-duels.png");
+    return ctx.canvas;
   } catch {
-    return false;
+    return null;
   }
+}
+
+export async function downloadDuelLedgerImage(opts: DuelLedgerImageOpts): Promise<boolean> {
+  const c = await duelLedgerCanvas(opts);
+  if (!c) return false;
+  return downloadCanvasBlob(c, "vision2-duels.png");
+}
+
+/** Task 102 — همان کارت به‌صورت blob برای هم‌رسانیِ بومی — بدونِ دانلود */
+export async function buildDuelLedgerBlob(opts: DuelLedgerImageOpts): Promise<Blob | null> {
+  const c = await duelLedgerCanvas(opts);
+  if (!c) return null;
+  return canvasToBlob(c);
 }
 
 // ---------------- عکسِ نبردِ تکی (Task 101 — صفحهٔ پایان نبرد) ----------------
@@ -477,7 +499,8 @@ export interface DuelDoneImageOpts {
   receipt: boolean;
 }
 
-export async function downloadDuelDoneImage(opts: DuelDoneImageOpts): Promise<boolean> {
+/** رسمِ کارتِ نبردِ تکی — Task 102: از دانلود جدا شد تا blob هم ساخته شود */
+async function duelDoneCanvas(opts: DuelDoneImageOpts): Promise<HTMLCanvasElement | null> {
   try {
     if (typeof document !== "undefined" && document.fonts?.ready) {
       await document.fonts.ready;
@@ -487,7 +510,7 @@ export async function downloadDuelDoneImage(opts: DuelDoneImageOpts): Promise<bo
         ? getComputedStyle(document.body).fontFamily || "sans-serif"
         : "sans-serif";
     const ctx = await openBattleCard(family);
-    if (!ctx) return false;
+    if (!ctx) return null;
     const W = 1080;
     const H = 640;
     const win = opts.outcome === "win";
@@ -564,8 +587,21 @@ export async function downloadDuelDoneImage(opts: DuelDoneImageOpts): Promise<bo
     ctx.font = `900 20px ${family}`;
     ctx.fillText(win ? "VICTORY ★" : tie ? "GOOD DUEL" : "REMATCH?", 90, H - 74);
 
-    return downloadCanvasBlob(ctx.canvas, `vision2-duel-${opts.outcome}.png`);
+    return ctx.canvas;
   } catch {
-    return false;
+    return null;
   }
+}
+
+export async function downloadDuelDoneImage(opts: DuelDoneImageOpts): Promise<boolean> {
+  const c = await duelDoneCanvas(opts);
+  if (!c) return false;
+  return downloadCanvasBlob(c, `vision2-duel-${opts.outcome}.png`);
+}
+
+/** Task 102 — همان کارت به‌صورت blob برای هم‌رسانیِ بومی — بدونِ دانلود */
+export async function buildDuelDoneBlob(opts: DuelDoneImageOpts): Promise<Blob | null> {
+  const c = await duelDoneCanvas(opts);
+  if (!c) return null;
+  return canvasToBlob(c);
 }

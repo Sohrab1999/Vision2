@@ -2,13 +2,14 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Sparkles, Swords, Users, Timer, Zap, Wifi, WifiOff, Loader2, Target, ShieldCheck, History, Flame, Percent, Search, X, ChevronDown, ChevronUp, ImageDown } from "lucide-react";
+import { Sparkles, Swords, Users, Timer, Zap, Wifi, WifiOff, Loader2, Target, ShieldCheck, History, Flame, Percent, Search, X, ChevronDown, ChevronUp, ImageDown, Share2 } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum, timeAgoFa, avatarClasses } from "@/lib/study-theme";
 import { percent } from "@/lib/domain/percent";
 import { useToast } from "@/hooks/use-toast";
-import { downloadDuelLedgerImage } from "@/lib/result-image";
+import { downloadDuelLedgerImage, buildDuelLedgerBlob } from "@/lib/result-image";
+import { canShareImageFiles, blobToFile, shareImageFile, type ShareOutcome } from "@/lib/share-card";
 import {
   duelWinStreak,
   duelBestScore,
@@ -42,6 +43,7 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
   const duelTies = useStudy((s) => s.duelTies);
   const duelHistory = useStudy((s) => s.duelHistory);
   const [imgBusy, setImgBusy] = useState(false);
+  const [shareBusy, setShareBusy] = useState(false);
 
   const winRate = percent(duelWins, duelWins + duelLosses + duelTies);
   const streak = duelWinStreak(duelHistory);
@@ -97,6 +99,33 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
         ? { title: "🖼 عکسِ کارنامهٔ نبردها ذخیره شد", description: "حالا می‌توانی آن را برای دوستانت بفرستی.", duration: 3000 }
         : { title: "خطا در ساخت تصویر", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
     );
+  };
+
+  // Task 102 — هم‌رسانیِ بومیِ همان کارت (Web Share L2): فقط با پشتیبانیِ واقعی
+  // canShare({files}) رندر می‌شود؛ متنِ هم‌رسانی از همان آمارِ صادقِ دفترچه
+  // ساخته می‌شود؛ لغوِ کاربر (cancelled) بی‌سرو‌صداست — خطای کاربر نیست
+  const shareLedgerImage = async () => {
+    if (shareBusy || imgBusy) return;
+    setShareBusy(true);
+    const stats = duelLedgerStats(duelHistory);
+    const blob = await buildDuelLedgerBlob({
+      stats,
+      userName: useStudy.getState().userName || undefined,
+    });
+    let outcome: ShareOutcome = "failed";
+    if (blob) {
+      outcome = await shareImageFile({
+        file: blobToFile(blob, "vision2-duels.png"),
+        title: "کارنامهٔ نبردها — وب‌کتاب ویژن ۲",
+        text: `${faNum(stats.win)} برد از ${faNum(stats.total)} نبرد · نرخِ برد ${faNum(stats.winRate)}٪`,
+      });
+    }
+    setShareBusy(false);
+    if (outcome === "shared") {
+      toast({ title: "📨 کارنامه هم‌رسانی شد", description: "کارتِ نبردهایت با شیتِ خودِ سیستم فرستاده شد.", duration: 3000 });
+    } else if (outcome === "failed") {
+      toast({ title: "هم‌رسانی ممکن نشد", description: "می‌توانی عکس را ذخیره کنی و خودت بفرستی.", duration: 3000 });
+    }
   };
 
   return (
@@ -199,6 +228,18 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
             {/* Task 101 — عکسِ کارنامهٔ دفترچه: کنارِ فرمِ پنج‌تایی؛ role=img فقط
                 روی خودِ نقطه‌ها می‌ماند تا دکمه از دسترس‌پذیریِ تصویر بیرون باشد */}
             <div className="flex items-center gap-2">
+              {/* Task 102 — هم‌رسانیِ بومی فقط وقتی مرورگر واقعاً فایل می‌پذیرد */}
+              {canShareImageFiles() && (
+                <button
+                  onClick={shareLedgerImage}
+                  disabled={shareBusy || imgBusy}
+                  aria-label="هم‌رسانی کارنامهٔ نبردها"
+                  title="هم‌رسانیِ کارنامهٔ نبردها — با شیتِ خودِ سیستم"
+                  className="rounded-lg p-1.5 text-stone-400 transition-colors hover:bg-stone-100 hover:text-fuchsia-600 disabled:opacity-50"
+                >
+                  {shareBusy ? <Loader2 size={15} className="animate-spin" aria-hidden /> : <Share2 size={15} aria-hidden />}
+                </button>
+              )}
               <button
                 onClick={saveLedgerImage}
                 disabled={imgBusy}

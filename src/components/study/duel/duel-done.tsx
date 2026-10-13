@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Trophy, Swords, Users, RotateCcw, Crown, Handshake, Loader2, ShieldCheck, ImageDown } from "lucide-react";
+import { Trophy, Swords, Users, RotateCcw, Crown, Handshake, Loader2, ShieldCheck, ImageDown, Share2 } from "lucide-react";
 import { faNum } from "@/lib/study-theme";
 import { decomposeDuelScore } from "@/lib/duel-history";
-import { downloadDuelDoneImage } from "@/lib/result-image";
+import { downloadDuelDoneImage, buildDuelDoneBlob } from "@/lib/result-image";
+import { canShareImageFiles, blobToFile, shareImageFile, type ShareOutcome } from "@/lib/share-card";
 import { useToast } from "@/hooks/use-toast";
 import type { EndPayload } from "./duel-types";
 
@@ -25,6 +26,7 @@ export default function DuelDone({ endData, mySid, myFinishAt, oppConnected, rem
   const outcome: "win" | "loss" | "tie" = endData.winner === null ? "tie" : endData.winner === mySid ? "win" : "loss";
   const forfeit = endData.reason === "forfeit";
   const [imgBusy, setImgBusy] = useState(false);
+  const [shareBusy, setShareBusy] = useState(false);
   const { toast } = useToast();
 
   // Task 101 — عکسِ این نبرد: همان کارتِ نبرد با دادهٔ EndPayload؛ تفکیکِ
@@ -58,6 +60,56 @@ export default function DuelDone({ endData, mySid, myFinishAt, oppConnected, rem
         ? { title: "🖼 عکسِ این نبرد ذخیره شد", description: "حالا می‌توانی نتیجه‌ات را برای دوستانت بفرستی.", duration: 3000 }
         : { title: "خطا در ساخت تصویر", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
     );
+  };
+
+  // Task 102 — هم‌رسانیِ بومیِ همان کارت: داده‌ها از همان EndPayloadِ صادق؛
+  // متن، همان ریبونِ نتیجه است که روی کارت کشیده می‌شود (یک حقیقت، دو بستر)
+  const shareDuelImage = async () => {
+    if (shareBusy || imgBusy || !mine) return;
+    setShareBusy(true);
+    const d = decomposeDuelScore(mine.score, mine.correct);
+    const blob = await buildDuelDoneBlob({
+      outcome,
+      forfeit,
+      myName: mine.name || "تو",
+      oppName: other?.name || "حریف",
+      myScore: mine.score,
+      oppScore: other?.score ?? 0,
+      myCorrect: mine.correct,
+      oppCorrect: other?.correct ?? 0,
+      total: endData.total,
+      durationSec:
+        myFinishAt > 0 && endData.startedAt
+          ? Math.max(1, Math.round((myFinishAt - endData.startedAt) / 1000))
+          : null,
+      base: d.base,
+      bonus: d.bonus,
+      receipt: !!endData.receipt,
+    });
+    let outcome2: ShareOutcome = "failed";
+    if (blob) {
+      const ribbon =
+        outcome === "win"
+          ? forfeit
+            ? "برد با ضربهٔ فنی!"
+            : "پیروزی در نبرد!"
+          : outcome === "tie"
+            ? "مساوی — رقابت نزدیک"
+            : forfeit
+              ? "حریف خارج شد"
+              : "این دور را باختی";
+      outcome2 = await shareImageFile({
+        file: blobToFile(blob, `vision2-duel-${outcome}.png`),
+        title: "نبرد واژگان — وب‌کتاب ویژن ۲",
+        text: `${ribbon} ${faNum(mine.score)} به ${faNum(other?.score ?? 0)}`,
+      });
+    }
+    setShareBusy(false);
+    if (outcome2 === "shared") {
+      toast({ title: "📨 نبرد هم‌رسانی شد", description: "کارتِ این نبرد با شیتِ خودِ سیستم فرستاده شد.", duration: 3000 });
+    } else if (outcome2 === "failed") {
+      toast({ title: "هم‌رسانی ممکن نشد", description: "می‌توانی عکس را ذخیره کنی و خودت بفرستی.", duration: 3000 });
+    }
   };
 
   return (
@@ -199,6 +251,17 @@ export default function DuelDone({ endData, mySid, myFinishAt, oppConnected, rem
           {imgBusy ? <Loader2 size={16} className="animate-spin" aria-hidden /> : <ImageDown size={16} aria-hidden />}
           عکسِ این نبرد
         </button>
+        {/* Task 102 — هم‌رسانیِ بومی فقط وقتی مرورگر واقعاً فایل می‌پذیرد */}
+        {canShareImageFiles() && (
+          <button
+            onClick={shareDuelImage}
+            disabled={shareBusy || imgBusy || !mine}
+            className="inline-flex items-center gap-2 rounded-2xl border-2 border-stone-200 bg-white px-6 py-3 text-[14px] font-black text-stone-600 transition-all hover:border-fuchsia-300 hover:text-fuchsia-700 active:scale-95 disabled:opacity-50"
+          >
+            {shareBusy ? <Loader2 size={16} className="animate-spin" aria-hidden /> : <Share2 size={16} aria-hidden />}
+            هم‌رسانی
+          </button>
+        )}
         <button
           onClick={leaveRoom}
           className="inline-flex items-center gap-2 rounded-2xl border-2 border-stone-200 bg-white px-6 py-3 text-[14px] font-black text-stone-600 transition-all hover:border-stone-300 active:scale-95"
