@@ -10,10 +10,10 @@
 
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { Sparkles, TrendingDown, TrendingUp, Minus, CalendarHeart, Check, Snowflake, Swords, Timer, ImageDown, Loader2 } from "lucide-react";
+import { Sparkles, TrendingDown, TrendingUp, Minus, CalendarHeart, Check, Snowflake, Swords, Timer, ImageDown, Loader2, CalendarClock, Gauge } from "lucide-react";
 import { useStudy, daysAgoKey } from "@/lib/study-store";
 import { faNum, secFa } from "@/lib/study-theme";
-import { computeWeeklyDigest, faWeekday, faDayLabel, type Delta } from "@/lib/weekly-digest";
+import { computeWeeklyDigest, faWeekday, faDayLabel, DUEL_QUICK_WEEK, type Delta, type QuickWeekProfile } from "@/lib/weekly-digest";
 import { freezeDayMark, freezeLedgerMeta } from "@/lib/freeze-badge";
 import { downloadWeeklyImage } from "@/lib/result-image";
 import { useToast } from "@/hooks/use-toast";
@@ -42,6 +42,30 @@ function DeltaChip({ d, label, cls }: { d: Delta; label: string; cls: string }) 
           <span>هفتهٔ پیش: —</span>
         )}
       </div>
+    </div>
+  );
+}
+
+// Task 113 — خطِ «هفتهٔ چابک» در هفته‌نامه: وقتی همین پنجرهٔ ۷روزه از گیت‌های
+// خانوادهٔ دهم بگذرد، هفته‌نامه هم روایتش می‌کند — نقره «هفتهٔ چابک»، طلا
+// «هفتهٔ برق» (هم‌آیکنِ همان نشان در کاشی — زبانِ بصریِ یکی). آستانه‌ها از
+// DUEL_QUICK_WEEK می‌آیند تا هیچ‌وقت دووجهی نشوند؛ گیتِ نگذرانده یعنی خطِ
+// غایب — نه تشویقِ ساختگی.
+function QuickWeekLine({ qw }: { qw: QuickWeekProfile }) {
+  const gold = qw.avgMs <= DUEL_QUICK_WEEK.goldMs;
+  return (
+    <div
+      className="mt-1 flex flex-wrap items-center gap-1 text-[9.5px] font-black"
+      title={`گیتِ هفته: میانگینِ فکر ≤ ${secFa(DUEL_QUICK_WEEK.silverMs)} ثانیه و نرخِ درستی ≥ ${faNum(Math.round(DUEL_QUICK_WEEK.correctRate * 100))}٪ در پنجرهٔ ۷روزه · ${faNum(qw.thinkful)} نبردِ فکردار، ${faNum(qw.answered)} پاسخ`}
+    >
+      {gold ? (
+        <Gauge size={11} className="text-amber-600" aria-hidden />
+      ) : (
+        <CalendarClock size={11} className="text-emerald-700" aria-hidden />
+      )}
+      <span className={gold ? "text-amber-600" : "text-emerald-700"}>
+        {`${gold ? "هفتهٔ برق!" : "هفتهٔ چابک!"} — میانگینِ فکر ${secFa(qw.avgMs)} ثانیه با نرخِ درستی ${faNum(Math.round(qw.rate * 100))}٪`}
+      </span>
     </div>
   );
 }
@@ -344,6 +368,9 @@ export default function WeeklyReportSection() {
               )}
             </div>
           )}
+          {/* Task 113 — تاییدِ هفته‌نامه برای هفتهٔ چابک؛ زیرِ خطِ فکر، پیش از
+              بهترینِ امتیاز — روایتِ همان خانواده‌ای که نشانش در کاشی‌هاست */}
+          {digest.duels.quickWeek && <QuickWeekLine qw={digest.duels.quickWeek} />}
           {digest.duels.best > 0 && (
             <div className="mt-1 text-[9.5px] font-bold text-stone-400">
               {`بهترین امتیازِ همین هفته: ${faNum(digest.duels.best)}`}

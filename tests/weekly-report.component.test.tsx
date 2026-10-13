@@ -368,3 +368,111 @@ describe("خطِ فکرِ هفته در بلوکِ نبردها (Task 109)", () 
     expect(duelBlock()!).toHaveTextContent("فکرِ میانگین ۰٫۷ ثانیه · سریع‌ترین ۰٫۷ ثانیه");
   });
 });
+
+// ------------------------------------------------------------------
+// Task 113 — خطِ «هفتهٔ چابک» در بلوکِ نبردها: وقتی همین پنجرهٔ ۷روزه از
+// گیت‌های خانوادهٔ دهم (۱۱۰) بگذرد، هفته‌نامه روایتش می‌کند — نقره
+// «هفتهٔ چابک» با CalendarClock زمردی، طلا «هفتهٔ برق» با Gauge کهربایی
+// (هم‌آیکنِ کاشیِ نشان). گیتِ نگذرانده یا بی‌نبردِ این هفته → خطِ غایب.
+// ------------------------------------------------------------------
+describe("خطِ هفتهٔ چابک در بلوکِ نبردها (Task 113)", () => {
+  beforeEach(() => {
+    cleanup();
+    useStudy.setState({
+      dayHistory: {},
+      history: {},
+      goalMetDays: [],
+      dailyGoal: 10,
+      streak: 0,
+      freezeCount: 0,
+      freezeSavedDay: "",
+      freezeUsedDays: [],
+      freezeEarnedDay: "",
+      duelHistory: [],
+    });
+  });
+
+  // هفتهٔ واجدِ نقره: Σ avgMs·seen = ۹۰۰·۵+۱۲۰۰·۳+۱۴۰۰·۲ = ۱۰۹۰۰ بر ۱۰ → ۱۰۹۰ms
+  // (زیرِ ۱۵۰۰ نقره، بالای ۱۰۰۰ طلا — آگاهانه بینِ دو آستانه) · نرخ ۲۷/۳۰ = ۹۰٪
+  const silverWeek = () => [
+    duelRec({ id: "a", day: daysAgoKey(0), think: wkThink({ avgMs: 900, minMs: 200, maxMs: 1500, seen: 5, total: 10 }) }),
+    duelRec({ id: "b", day: daysAgoKey(1), think: wkThink({ avgMs: 1200, minMs: 400, maxMs: 2000, seen: 3, total: 10 }) }),
+    duelRec({ id: "c", day: daysAgoKey(2), think: wkThink({ avgMs: 1400, minMs: 500, maxMs: 2500, seen: 2, total: 10 }) }),
+  ];
+
+  it("هفتهٔ واجدِ نقره: «هفتهٔ چابک!» + آیکنِ CalendarClock زمردی — نه Gauge کهربایی", () => {
+    useStudy.setState({ duelHistory: silverWeek() });
+    const { container } = render(<WeeklyReportSection />);
+    const line = screen.getByText(/هفتهٔ چابک!/);
+    expect(line).toHaveTextContent("میانگینِ فکر ۱٫۱ ثانیه با نرخِ درستی ۹۰٪");
+    const wrap = line.closest("div")!;
+    expect(wrap.querySelector("svg.text-emerald-700")).not.toBeNull();
+    expect(wrap.querySelector("svg.text-amber-600")).toBeNull();
+    expect(container).toBeTruthy();
+  });
+
+  it("هفتهٔ برق (میانگینِ ۷۰۰ms زیرِ یک ثانیه): «هفتهٔ برق!» + آیکنِ Gauge کهربایی", () => {
+    useStudy.setState({
+      duelHistory: [
+        duelRec({ id: "a", day: daysAgoKey(0), think: wkThink({ avgMs: 700, minMs: 200, maxMs: 1500, seen: 5, total: 10 }) }),
+        duelRec({ id: "b", day: daysAgoKey(1), think: wkThink({ avgMs: 700, minMs: 200, maxMs: 1500, seen: 3, total: 10 }) }),
+        duelRec({ id: "c", day: daysAgoKey(2), think: wkThink({ avgMs: 700, minMs: 200, maxMs: 1500, seen: 2, total: 10 }) }),
+      ],
+    });
+    render(<WeeklyReportSection />);
+    const line = screen.getByText(/هفتهٔ برق!/);
+    expect(line).toHaveTextContent("میانگینِ فکر ۰٫۷ ثانیه با نرخِ درستی ۹۰٪");
+    const wrap = line.closest("div")!;
+    expect(wrap.querySelector("svg.text-amber-600")).not.toBeNull();
+    expect(wrap.querySelector("svg.text-emerald-700")).toBeNull();
+  });
+
+  it("گیتِ نگذرانده (کندِ ۱۶۰۰ms): خطِ هفتهٔ چابک غایب ولی خطِ فکر و بلوک حاضر", () => {
+    useStudy.setState({
+      duelHistory: [
+        duelRec({ id: "a", day: daysAgoKey(0), think: wkThink({ avgMs: 1600, minMs: 600, maxMs: 2000, seen: 5, total: 10 }) }),
+        duelRec({ id: "b", day: daysAgoKey(1), think: wkThink({ avgMs: 1600, minMs: 600, maxMs: 2000, seen: 3, total: 10 }) }),
+        duelRec({ id: "c", day: daysAgoKey(2), think: wkThink({ avgMs: 1600, minMs: 600, maxMs: 2000, seen: 2, total: 10 }) }),
+      ],
+    });
+    render(<WeeklyReportSection />);
+    const block = duelBlock()!;
+    expect(block).toBeInTheDocument();
+    expect(block).toHaveTextContent("فکرِ میانگین ۱٫۶ ثانیه");
+    expect(block.textContent).not.toContain("هفتهٔ چابک!");
+    expect(block.textContent).not.toContain("هفتهٔ برق!");
+  });
+
+  it("هفتهٔ واجدِ گذشته + امروزِ بی‌فکر → خطِ غایب (پنجره‌سازیِ سخت‌گیر)", () => {
+    useStudy.setState({
+      duelHistory: [
+        duelRec({ id: "o1", day: daysAgoKey(7), think: wkThink({ avgMs: 700, minMs: 200, maxMs: 1500, seen: 9, total: 10 }) }),
+        duelRec({ id: "o2", day: daysAgoKey(8), think: wkThink({ avgMs: 700, minMs: 200, maxMs: 1500, seen: 9, total: 10 }) }),
+        duelRec({ id: "o3", day: daysAgoKey(9), think: wkThink({ avgMs: 700, minMs: 200, maxMs: 1500, seen: 9, total: 10 }) }),
+        duelRec({ id: "now", day: daysAgoKey(0) }),
+      ],
+    });
+    render(<WeeklyReportSection />);
+    expect(screen.queryByText(/هفتهٔ چابک!/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/هفتهٔ برق!/)).not.toBeInTheDocument();
+  });
+
+  it("titleِ خط: گیت + شمارشِ «۳ نبردِ فکردار، ۳۰ پاسخ» — هم‌زبانِ خانه", () => {
+    useStudy.setState({ duelHistory: silverWeek() });
+    render(<WeeklyReportSection />);
+    const wrap = screen.getByText(/هفتهٔ چابک!/).closest("div")!;
+    const title = wrap.getAttribute("title") ?? "";
+    expect(title).toContain("گیتِ هفته");
+    expect(title).toContain("۳ نبردِ فکردار");
+    expect(title).toContain("۳۰ پاسخ");
+    expect(title).toContain("۱٫۵ ثانیه");
+    expect(title).toContain("۸۰٪");
+  });
+
+  it("بی‌دفترچه: نه بلوک، نه خط — صفرِ ساختگی ممنوع", () => {
+    render(<WeeklyReportSection />);
+    expect(duelBlock()).not.toBeInTheDocument();
+    expect(screen.queryByText(/هفتهٔ چابک!/)).not.toBeInTheDocument();
+    expect(screen.queryByText(/هفتهٔ برق!/)).not.toBeInTheDocument();
+  });
+});

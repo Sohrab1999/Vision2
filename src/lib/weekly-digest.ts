@@ -201,6 +201,13 @@ export interface WeeklyDuels {
    * زیرمجموعهٔ صادق، هم‌الگوی چیپِ دفترچه و نشانِ چابکیِ ذهن (۱۰۸).
    */
   think: WeeklyThink | null;
+  /**
+   * Task 113 «هفتهٔ چابک در هفته‌نامه» — پروفایلِ همینِ پنجرهٔ ۷روزهٔ دایجست
+   * [today−6..today] وقتی از گیت‌های هفتهٔ چابک (۱۱۰) بگذرد؛ در غیرِ این صورت
+   * null (خطِ UI غایب — نه صفرِ ساختگی). ارزیاب و آستانه‌ها همانِ نشانِ
+   * خانوادهٔ دهم‌اند (evalQuickWindow + DUEL_QUICK_WEEK) — هرگز دووجهی نمی‌شود.
+   */
+  quickWeek: QuickWeekProfile | null;
 }
 
 export interface WeeklyThink {
@@ -275,6 +282,9 @@ export function duelWeeklyStats(records: DuelRecord[] | undefined, todayKey: str
             total: thinkTotal,
           }
         : null,
+    // Task 113 — پروفایلِ هفتهٔ چابکِ همینِ پنجره؛ بدونِ گذرِ گیت null می‌آید
+    // (خطِ هفته‌نامه غایب، نه صفرِ ساختگی) — هم‌ارزیابِ نشانِ ۱۱۰
+    quickWeek: duelWeekQuickProfile(records, todayKey),
   };
 }
 
@@ -360,6 +370,81 @@ export interface QuickWeekReport {
 }
 
 /**
+ * ارزیابِ یک پنجرهٔ ۷روزه — تک‌قراردادِ گیت‌های هفتهٔ چابک؛ هم duelQuickWeekReport
+ * (پنجره‌های لغزانِ نشان) و هم duelWeekQuickProfile (پنجرهٔ خودِ دایجست) همین را
+ * می‌خوانند تا آستانه‌ها هرگز دووجهی نشوند (درسِ «یک اعتبارسنج، دو مصرف‌کننده» — ۱۰۹).
+ * ورودی باید از پیش به همان پنجره فیلتر شده باشد؛ startDay/endDay فقط برای پروفایل‌اند.
+ */
+interface QuickWindowEval {
+  /** پروفایلِ کاملِ پنجره؛ avgMs وقتی seen>0 گِردشده وگرنه ۰ (فقط با qualifies معنا دارد) */
+  profile: QuickWeekProfile;
+  /** شرطِ خطِ bestAvgMs (پیش از گیت‌ها) — دقیقاً همان قراردادِ قبلیِ ۱۱۰ */
+  hasBestAvg: boolean;
+  /** گذر از همهٔ گیت‌های نقره — ترتیبِ گیت‌ها در نتیجهٔ نهایی بی‌اثر است */
+  qualifies: boolean;
+}
+
+function evalQuickWindow(inWin: DuelRecord[], startDay: string, endDay: string): QuickWindowEval {
+  // فکر: فقط رکوردهای فکردارِ سالم (زیرمجموعهٔ صادق — هم‌الگوی ۱۰۸/۱۰۹)
+  let sumMs = 0;
+  let seen = 0;
+  let thinkful = 0;
+  for (const r of inWin) {
+    const t = saneThink(r.think);
+    if (t) {
+      sumMs += t.avgMs * t.seen;
+      seen += t.seen;
+      thinkful += 1;
+    }
+  }
+  // پاسخ‌ها: همهٔ رکوردهای دارای پاسخ — فورفیتِ بی‌پاسخ نه کمکی دارد نه زیانی
+  let answered = 0;
+  let correct = 0;
+  for (const r of inWin) {
+    const a = Number.isFinite(r.answered) ? Math.floor(r.answered) : 0;
+    if (a > 0) {
+      answered += a;
+      correct += Number.isFinite(r.myCorrect) ? Math.floor(r.myCorrect) : 0;
+    }
+  }
+  const rate = correct > 0 ? Math.min(1, correct / answered) : 0;
+  const avgMs = seen > 0 ? Math.round(sumMs / seen) : 0;
+  const qualifies =
+    thinkful >= DUEL_QUICK_WEEK.minThinkful &&
+    seen >= DUEL_QUICK_WEEK.minSeen &&
+    answered >= DUEL_QUICK_WEEK.minAnswered &&
+    rate >= DUEL_QUICK_WEEK.correctRate &&
+    avgMs <= DUEL_QUICK_WEEK.silverMs;
+  return {
+    profile: { startDay, endDay, duels: inWin.length, thinkful, avgMs, seen, answered, correct, rate },
+    hasBestAvg: thinkful >= DUEL_QUICK_WEEK.minThinkful && seen > 0,
+    qualifies,
+  };
+}
+
+/**
+ * پروفایلِ «هفتهٔ چابک» برای پنجرهٔ خودِ دایجست [todayKey−۶..todayKey] — همان
+ * پنجره‌ای که duelWeeklyStats با آن شمارش می‌کند (پنجره‌سازیِ نشان با پنجره‌سازیِ
+ * هفته‌نامه قاطی نمی‌شود). فقط وقتی همهٔ گیت‌ها بگذرد پروفایل می‌دهد؛ در غیرِ این
+ * صورت null — خطِ هفته‌نامه غایب است، نه صفرِ ساختگی. هرگز throw نمی‌کند.
+ */
+export function duelWeekQuickProfile(records: DuelRecord[] | undefined, todayKey: string): QuickWeekProfile | null {
+  if (!Array.isArray(records)) return null;
+  const startDay = dayKeyBefore(todayKey, DUEL_QUICK_WEEK.windowDays - 1);
+  const inWin = records.filter(
+    (r) =>
+      r &&
+      typeof r.day === "string" &&
+      (r.outcome === "win" || r.outcome === "loss" || r.outcome === "tie") &&
+      r.day >= startDay &&
+      r.day <= todayKey
+  );
+  if (inWin.length === 0) return null;
+  const ev = evalQuickWindow(inWin, startDay, todayKey);
+  return ev.qualifies ? ev.profile : null;
+}
+
+/**
  * بهترین «هفتهٔ چابک» دفترچه — پنجره‌های لغزانِ لنگربر-روزِ رکورد.
  * هر روزِ متمایزِ دفترچه یک لنگر است (پنجره = [لنگر−۶ .. لنگر])؛ اسکن
  * جدید→قدیم تا نخستین پنجرهٔ واجد، «گزارش» قطعی بماند. رکوردِ خراب
@@ -386,58 +471,14 @@ export function duelQuickWeekReport(records: DuelRecord[] | undefined): QuickWee
     const startDay = dayKeyBefore(endDay, DUEL_QUICK_WEEK.windowDays - 1);
     const inWin = valid.filter((r) => r.day >= startDay && r.day <= endDay);
     if (inWin.length === 0) continue;
-
-    // فکر: فقط رکوردهای فکردارِ سالم (زیرمجموعهٔ صادق — هم‌الگوی ۱۰۸/۱۰۹)
-    let sumMs = 0;
-    let seen = 0;
-    let thinkful = 0;
-    for (const r of inWin) {
-      const t = saneThink(r.think);
-      if (t) {
-        sumMs += t.avgMs * t.seen;
-        seen += t.seen;
-        thinkful += 1;
-      }
-    }
-    if (thinkful > maxThinkful) maxThinkful = thinkful;
-
-    // پاسخ‌ها: همهٔ رکوردهای دارای پاسخ — فورفیتِ بی‌پاسخ نه کمکی دارد نه زیانی
-    let answered = 0;
-    let correct = 0;
-    for (const r of inWin) {
-      const a = Number.isFinite(r.answered) ? Math.floor(r.answered) : 0;
-      if (a > 0) {
-        answered += a;
-        correct += Number.isFinite(r.myCorrect) ? Math.floor(r.myCorrect) : 0;
-      }
-    }
-
+    const ev = evalQuickWindow(inWin, startDay, endDay);
+    if (ev.profile.thinkful > maxThinkful) maxThinkful = ev.profile.thinkful;
     // بهترین میانگینِ قابل‌نمایش — پیش از گیت‌ها، برای خطِ پیشرفتِ طلا
-    if (thinkful >= DUEL_QUICK_WEEK.minThinkful && seen > 0) {
-      const avg = Math.round(sumMs / seen);
-      if (bestAvgMs === null || avg < bestAvgMs) bestAvgMs = avg;
+    if (ev.hasBestAvg && (bestAvgMs === null || ev.profile.avgMs < bestAvgMs)) {
+      bestAvgMs = ev.profile.avgMs;
     }
-
     // گیت‌ها — نخستین پنجرهٔ واجد می‌ماند (جدید→قدیم، قطعی)
-    if (qualifying) continue;
-    if (thinkful < DUEL_QUICK_WEEK.minThinkful) continue;
-    if (seen < DUEL_QUICK_WEEK.minSeen) continue;
-    if (answered < DUEL_QUICK_WEEK.minAnswered) continue;
-    const rate = correct > 0 ? Math.min(1, correct / answered) : 0;
-    if (rate < DUEL_QUICK_WEEK.correctRate) continue;
-    const avgMs = Math.round(sumMs / seen);
-    if (avgMs > DUEL_QUICK_WEEK.silverMs) continue;
-    qualifying = {
-      startDay,
-      endDay,
-      duels: inWin.length,
-      thinkful,
-      avgMs,
-      seen,
-      answered,
-      correct,
-      rate,
-    };
+    if (!qualifying && ev.qualifies) qualifying = ev.profile;
   }
   return { qualifying, bestAvgMs, maxThinkful };
 }
