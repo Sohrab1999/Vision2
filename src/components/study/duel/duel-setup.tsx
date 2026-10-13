@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Sparkles, Swords, Users, Timer, Zap, Wifi, WifiOff, Loader2, Target, ShieldCheck, History, Flame, Percent, Search, X, ChevronDown, ChevronUp, ImageDown, Share2 } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
-import { faNum, timeAgoFa, avatarClasses } from "@/lib/study-theme";
+import { faNum, timeAgoFa, avatarClasses, secFa } from "@/lib/study-theme";
 import { percent } from "@/lib/domain/percent";
 import { useToast } from "@/hooks/use-toast";
 import { downloadDuelLedgerImage, buildDuelLedgerBlob } from "@/lib/result-image";
@@ -89,9 +89,8 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
   };
   const outcomeLabel: Record<DuelOutcome, string> = { win: "برد", loss: "باخت", tie: "مساوی" };
 
-  // Task 108 — ثانیه با یک اعشار و ممیزِ فارسی (هم‌قراردادِ secFa در duel-done)
-  const secThinkFa = (ms: number) =>
-    faNum((Math.round(ms / 100) / 10).toFixed(1)).replace(".", "٫");
+  // Task 108 → ۱۰۹ — ثانیهٔ فارسی حالا از secFaِ مشترکِ study-theme می‌آید
+  // (هم‌نسخهٔ duel-done و خطِ «فکرِ هفته» در هفته‌نامه)
 
   // Task 101 — عکسِ کارنامهٔ دفترچه: تجمیعِ صادقِ duelLedgerStats روی کلِ
   // دفترچه (نه یافته‌های فیلترشده — کارت، کارنامهٔ career است) و رندرِ کانواس
@@ -459,13 +458,13 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
                 {r.think && (
                   <span
                     role="img"
-                    aria-label={`فکرِ میانگین ${secThinkFa(r.think.avgMs)} ثانیه`}
-                    title={`فکرِ میانگین ${secThinkFa(r.think.avgMs)} ثانیه از ${faNum(r.think.seen)} سؤالِ ثبت‌شده`}
+                    aria-label={`فکرِ میانگین ${secFa(r.think.avgMs)} ثانیه`}
+                    title={`فکرِ میانگین ${secFa(r.think.avgMs)} ثانیه از ${faNum(r.think.seen)} سؤالِ ثبت‌شده`}
                     className="flex shrink-0 items-center gap-0.5 rounded-md border border-stone-200 bg-stone-100 px-1 py-0.5 text-stone-600"
                   >
                     <Timer size={11} aria-hidden />
                     <span className="text-[9.5px] font-black" dir="rtl">
-                      {secThinkFa(r.think.avgMs)}
+                      {secFa(r.think.avgMs)}
                     </span>
                   </span>
                 )}

@@ -307,3 +307,134 @@ describe("خطِ هایلایتِ نبرد در computeWeeklyDigest (Task 103)",
     expect(d.highlights.some((h) => h.includes("۱ نبرد واژگانی این هفته"))).toBe(true);
   });
 });
+
+// ------------------------------------------------------------------
+// Task 109 — «فکرِ هفته» — تجمیعِ وزن‌دارِ آمارِ فکرِ نبردهای همین هفته.
+// قفل‌ها: ① بی‌رکوردِ فکردار → null (نه صفرِ ساختگی) ② میانگینِ وزن‌دار
+// بر seen ③ سریع‌ترین = کمینهٔ minMs ④ فکرِ هفتهٔ پیش هرگز نمی‌شمارد
+// ⑤ thinkِ خرابِ هر شکل نادیده اما رکورد در شمارشِ نبرد می‌ماند
+// ⑥ پوششِ ناقص (seen<total) جمع می‌شود ⑦ خلوص/قطعیت
+// ------------------------------------------------------------------
+import { saneThink } from "@/lib/duel-history";
+import type { ThinkStats } from "@/lib/duel-think";
+
+const think = (over: Partial<ThinkStats>): ThinkStats => ({
+  avgMs: 800,
+  minMs: 200,
+  maxMs: 1500,
+  seen: 4,
+  total: 10,
+  ...over,
+});
+
+describe("saneThink — اعتبارسنجِ مشترکِ فیلدِ think (Task 109)", () => {
+  it("شکلِ سالم رد می‌شود و کپیِ فشرده می‌دهد — نه همان شیء", () => {
+    const t = think({});
+    const out = saneThink(t);
+    expect(out).toEqual(t);
+    expect(out).not.toBe(t);
+  });
+
+  it("خرابِ هر شکل → null: شیءِ خالی، آرایه، NaN، منفی، seen=۰، seen>total، min>avg، total>۹۹۹", () => {
+    expect(saneThink(undefined)).toBeNull();
+    expect(saneThink(null)).toBeNull();
+    expect(saneThink({})).toBeNull();
+    expect(saneThink([think({})])).toBeNull();
+    expect(saneThink(think({ avgMs: Number.NaN }))).toBeNull();
+    expect(saneThink(think({ minMs: -1 }))).toBeNull();
+    expect(saneThink(think({ avgMs: Number.POSITIVE_INFINITY }))).toBeNull();
+    expect(saneThink(think({ seen: 0 }))).toBeNull();
+    expect(saneThink(think({ seen: 4.5 }))).toBeNull();
+    expect(saneThink(think({ seen: 11 }))).toBeNull(); // seen > total
+    expect(saneThink(think({ minMs: 900 }))).toBeNull(); // min > avg
+    expect(saneThink(think({ maxMs: 700 }))).toBeNull(); // avg > max
+    expect(saneThink(think({ total: 1000 }))).toBeNull();
+    expect(saneThink(think({ total: 10.5 }))).toBeNull();
+  });
+
+  it("مرزهایِ دقیق: seen=۱ و total=seen و total=۹۹۹ سالم‌اند؛ min=avg=max هم", () => {
+    expect(saneThink(think({ seen: 1, total: 1 }))).not.toBeNull();
+    expect(saneThink(think({ total: 999, seen: 999 }))).not.toBeNull();
+    expect(saneThink(think({ minMs: 800, maxMs: 800 }))).not.toBeNull();
+  });
+});
+
+describe("duelWeeklyStats — فکرِ هفته (Task 109)", () => {
+  it("بی‌رکوردِ فکردار → thinkِ null ولی شمارشِ نبردها سرِ پا", () => {
+    const d = duelWeeklyStats(
+      [rec({ id: "a", day: dayKeyBefore(T, 0) }), rec({ id: "b", day: dayKeyBefore(T, 1) })],
+      T
+    )!;
+    expect(d.thisWeek).toBe(2);
+    expect(d.think).toBeNull();
+  });
+
+  it("تلفیقِ وزن‌دار: (۸۰۰·۴ + ۱۲۰۰·۲) ÷ ۶ = ۹۳۳ · سریع‌ترین = کمینهٔ minMs · seen/total جمعی", () => {
+    const d = duelWeeklyStats(
+      [
+        rec({ id: "a", day: dayKeyBefore(T, 0), think: think({ avgMs: 800, minMs: 200, seen: 4, total: 10 }) }),
+        rec({ id: "b", day: dayKeyBefore(T, 2), think: think({ avgMs: 1200, minMs: 300, seen: 2, total: 10 }) }),
+      ],
+      T
+    )!;
+    expect(d.think).toEqual({ avgMs: 933, fastestMs: 200, seen: 6, total: 20 });
+  });
+
+  it("فکرِ هفتهٔ پیش (روزِ هفتم و دهم) هرگز نمی‌شمارد", () => {
+    const d = duelWeeklyStats(
+      [
+        rec({ id: "old7", day: dayKeyBefore(T, 7), think: think({ avgMs: 100, minMs: 50, seen: 10, total: 10 }) }),
+        rec({ id: "old10", day: dayKeyBefore(T, 10), think: think({ avgMs: 100, minMs: 50, seen: 10, total: 10 }) }),
+      ],
+      T
+    )!;
+    expect(d.lastWeek).toBe(2);
+    expect(d.thisWeek).toBe(0);
+    expect(d.think).toBeNull();
+  });
+
+  it("thinkِ خرابِ هر شکل نادیده می‌آید ولی رکورد در شمارشِ نبرد می‌ماند", () => {
+    const d = duelWeeklyStats(
+      [
+        rec({ id: "a", day: dayKeyBefore(T, 0), think: think({ avgMs: Number.NaN }) }),
+        rec({ id: "b", day: dayKeyBefore(T, 1), think: { avgMs: 800 } as unknown as ThinkStats }), // ناقص
+        rec({ id: "c", day: dayKeyBefore(T, 2), think: think({ seen: 0 }) }),
+        rec({ id: "ok", day: dayKeyBefore(T, 3), think: think({ avgMs: 500, minMs: 100, seen: 3, total: 10 }) }),
+      ],
+      T
+    )!;
+    expect(d.thisWeek).toBe(4);
+    expect(d.think).toEqual({ avgMs: 500, fastestMs: 100, seen: 3, total: 10 });
+  });
+
+  it("پوششِ ناقصِ یک نبرد: seen<total جمع می‌شود تا چیپِ «N از M» صادق بماند", () => {
+    const d = duelWeeklyStats(
+      [rec({ id: "a", day: dayKeyBefore(T, 0), think: think({ seen: 4, total: 10 }) })],
+      T
+    )!;
+    expect(d.think!.seen).toBe(4);
+    expect(d.think!.total).toBe(10);
+  });
+
+  it("خلوص و قطعیت: ورودی دست‌نخورده، دو بارِ پشت‌هم برابر", () => {
+    const rs = [
+      rec({ id: "a", day: dayKeyBefore(T, 0), think: think({}) }),
+      rec({ id: "b", day: dayKeyBefore(T, 1), outcome: "loss" as const, think: think({ avgMs: 1100, minMs: 400, maxMs: 2000, seen: 2, total: 5 }) }),
+    ];
+    const snapshot = JSON.stringify(rs);
+    const first = duelWeeklyStats(rs, T)!;
+    const second = duelWeeklyStats(rs, T)!;
+    expect(JSON.stringify(rs)).toBe(snapshot);
+    expect(first).toEqual(second);
+  });
+
+  it("computeWeeklyDigest تلفیق را به بلوکِ duels می‌رساند (سیم‌کشیِ کامل)", () => {
+    const d = computeWeeklyDigest(
+      input({
+        duelHistory: [rec({ id: "a", day: dayKeyBefore(T, 0), think: think({ avgMs: 649, minMs: 100, seen: 5, total: 5 }) })],
+      }),
+      T
+    );
+    expect(d.duels!.think).toEqual({ avgMs: 649, fastestMs: 100, seen: 5, total: 5 });
+  });
+});

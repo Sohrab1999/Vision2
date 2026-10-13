@@ -397,6 +397,28 @@ export function duelLedgerStats(records: DuelRecord[]): DuelLedgerStats {
 
 const DAY_RE = /^\d{4}-\d{2}-\d{2}$/;
 
+/**
+ * Task 109 — اعتبارسنجِ مشترکِ فیلدِ think: اعدادِ متناهیِ نامنفی،
+ * seen صحیحِ ۱..total≤۹۹۹، min≤avg≤max؛ خراب → null (فیلد می‌افتد،
+ * نه صفرِ ساختگی). هم sanitizeDuelRecord و هم duelWeeklyStatsِ هفته‌نامه
+ * از همین یک قاعده می‌خوانند تا «شکلِ سالمِ think» هرگز دووجهی نشود.
+ */
+export function saneThink(t: unknown): ThinkStats | null {
+  if (!t || typeof t !== "object" || Array.isArray(t)) return null;
+  if (typeof (t as Record<string, unknown>).avgMs !== "number") return null;
+  const s = t as ThinkStats;
+  const numsOk = [s.avgMs, s.minMs, s.maxMs].every(
+    (x) => typeof x === "number" && Number.isFinite(x) && x >= 0
+  );
+  const countsOk =
+    typeof s.seen === "number" && Number.isInteger(s.seen) && s.seen >= 1 &&
+    typeof s.total === "number" && Number.isInteger(s.total) && s.total >= s.seen && s.total <= 999;
+  if (numsOk && countsOk && s.minMs <= s.avgMs && s.avgMs <= s.maxMs) {
+    return { avgMs: s.avgMs, minMs: s.minMs, maxMs: s.maxMs, seen: s.seen, total: s.total };
+  }
+  return null;
+}
+
 /** اعتبارسنجی یک رکورد نامطمئن — رکورد خراب کلاً می‌افتد، نه اینکه نصفه بماند */
 export function sanitizeDuelRecord(v: unknown): DuelRecord | null {
   if (!v || typeof v !== "object" || Array.isArray(v)) return null;
@@ -425,28 +447,9 @@ export function sanitizeDuelRecord(v: unknown): DuelRecord | null {
     // Task 96 — sig خراب/جعلی می‌افتد؛ رکوردِ بدونِ sig (قدیمی) سرِ پا می‌ماند
     receiptSig: sigOk(r.receiptSig),
   };
-  // Task 108 — think فقط با شکلِ سالم می‌ماند: اعدادِ متناهیِ نامنفی،
-  // seen صحیحِ ۱..total، min≤avg≤max؛ وگرنه فیلد می‌افتد (نه صفرِ ساختگی)
-  const t = r.think;
-  if (
-    t && typeof t === "object" && !Array.isArray(t) &&
-    typeof (t as Record<string, unknown>).avgMs === "number"
-  ) {
-    const avg = (t as ThinkStats).avgMs;
-    const min = (t as ThinkStats).minMs;
-    const max = (t as ThinkStats).maxMs;
-    const seen = (t as ThinkStats).seen;
-    const total = (t as ThinkStats).total;
-    const numsOk = [avg, min, max].every(
-      (x) => typeof x === "number" && Number.isFinite(x) && x >= 0
-    );
-    const countsOk =
-      typeof seen === "number" && Number.isInteger(seen) && seen >= 1 &&
-      typeof total === "number" && Number.isInteger(total) && total >= seen && total <= 999;
-    if (numsOk && countsOk && min <= avg && avg <= max) {
-      out.think = { avgMs: avg, minMs: min, maxMs: max, seen, total };
-    }
-  }
+  // Task 108 — think فقط با شکلِ سالم می‌ماند (اعتبارسنجِ مشترکِ ۱۰۹)
+  const t = saneThink(r.think);
+  if (t) out.think = t;
   return out;
 }
 

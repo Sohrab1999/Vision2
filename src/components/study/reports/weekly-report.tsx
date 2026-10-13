@@ -10,9 +10,9 @@
 
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { Sparkles, TrendingDown, TrendingUp, Minus, CalendarHeart, Check, Snowflake, Swords, ImageDown, Loader2 } from "lucide-react";
+import { Sparkles, TrendingDown, TrendingUp, Minus, CalendarHeart, Check, Snowflake, Swords, Timer, ImageDown, Loader2 } from "lucide-react";
 import { useStudy, daysAgoKey } from "@/lib/study-store";
-import { faNum } from "@/lib/study-theme";
+import { faNum, secFa } from "@/lib/study-theme";
 import { computeWeeklyDigest, faWeekday, faDayLabel, type Delta } from "@/lib/weekly-digest";
 import { freezeDayMark, freezeLedgerMeta } from "@/lib/freeze-badge";
 import { downloadWeeklyImage } from "@/lib/result-image";
@@ -325,6 +325,25 @@ export default function WeeklyReportSection() {
             </div>
             <span className="text-[9.5px] font-bold text-fuchsia-600">{`نرخِ برد ${faNum(digest.duels.winRate)}٪`}</span>
           </div>
+          {/* Task 109 — «فکرِ هفته»: میانگینِ وزن‌دار + سریع‌ترین لحظه از
+              نبردهای فکردارِ همین هفته؛ بدونِ رکوردِ فکردار خط غایب است
+              (زیرمجموعهٔ صادق — هم‌زبان چیپِ دفترچه و نشانِ چابکیِ ذهن) */}
+          {digest.duels.think && (
+            <div className="mt-1 flex flex-wrap items-center justify-between gap-1.5">
+              <span
+                className="flex items-center gap-1 text-[9.5px] font-bold text-stone-500"
+                title={`میانگینِ فکر از ${faNum(digest.duels.think.seen)} سؤالِ ثبت‌شده در نبردهای فکردارِ این هفته`}
+              >
+                <Timer size={11} className="text-stone-400" aria-hidden />
+                {`فکرِ میانگین ${secFa(digest.duels.think.avgMs)} ثانیه · سریع‌ترین ${secFa(digest.duels.think.fastestMs)} ثانیه`}
+              </span>
+              {digest.duels.think.seen < digest.duels.think.total && (
+                <span className="text-[9.5px] font-bold text-stone-400">
+                  {`ثبت برای ${faNum(digest.duels.think.seen)} از ${faNum(digest.duels.think.total)} سؤال`}
+                </span>
+              )}
+            </div>
+          )}
           {digest.duels.best > 0 && (
             <div className="mt-1 text-[9.5px] font-bold text-stone-400">
               {`بهترین امتیازِ همین هفته: ${faNum(digest.duels.best)}`}

@@ -278,3 +278,93 @@ describe("بلوکِ نبردهای واژگانی در هفته‌نامه (Tas
     expect(screen.getByLabelText("نبردهای واژگانی — ۱ نبرد این هفته")).toBeInTheDocument();
   });
 });
+
+// Task 109 — خطِ «فکرِ هفته» در بلوکِ نبردها: میانگینِ وزن‌دار + سریع‌ترین
+// با ممیزِ فارسی؛ چیپِ «N از M» فقط با پوششِ ناقص؛ بی‌رکوردِ فکردار → خطِ
+// غایب (زیرمجموعهٔ صادق — بلوکِ نبرد خودش حاضر می‌ماند).
+import type { ThinkStats } from "@/lib/duel-think";
+
+const wkThink = (over: Partial<ThinkStats>): ThinkStats => ({
+  avgMs: 800,
+  minMs: 200,
+  maxMs: 1500,
+  seen: 4,
+  total: 10,
+  ...over,
+});
+
+describe("خطِ فکرِ هفته در بلوکِ نبردها (Task 109)", () => {
+  beforeEach(() => {
+    cleanup();
+    useStudy.setState({
+      dayHistory: {},
+      history: {},
+      goalMetDays: [],
+      dailyGoal: 10,
+      streak: 0,
+      freezeCount: 0,
+      freezeSavedDay: "",
+      freezeUsedDays: [],
+      freezeEarnedDay: "",
+      duelHistory: [],
+    });
+  });
+
+  it("دو نبردِ فکردار: «فکرِ میانگین ۰٫۹ ثانیه · سریع‌ترین ۰٫۲ ثانیه» + «ثبت برای ۶ از ۲۰ سؤال»", () => {
+    useStudy.setState({
+      duelHistory: [
+        duelRec({ id: "a", day: daysAgoKey(0), think: wkThink({ avgMs: 800, minMs: 200, seen: 4, total: 10 }) }),
+        duelRec({ id: "b", day: daysAgoKey(2), think: wkThink({ avgMs: 1200, minMs: 300, seen: 2, total: 10 }) }),
+      ],
+    });
+    render(<WeeklyReportSection />);
+    const block = duelBlock()!;
+    expect(block).toHaveTextContent("فکرِ میانگین ۰٫۹ ثانیه · سریع‌ترین ۰٫۲ ثانیه");
+    expect(block).toHaveTextContent("ثبت برای ۶ از ۲۰ سؤال");
+  });
+
+  it("پوششِ کامل (seen==total) → بدونِ چیپِ «ثبت برای»", () => {
+    useStudy.setState({
+      duelHistory: [duelRec({ id: "a", day: daysAgoKey(1), think: wkThink({ seen: 10, total: 10 }) })],
+    });
+    render(<WeeklyReportSection />);
+    const block = duelBlock()!;
+    expect(block).toHaveTextContent("فکرِ میانگین");
+    expect(block.textContent).not.toContain("ثبت برای");
+  });
+
+  it("بی‌رکوردِ فکردار → خطِ فکر غایب ولی بلوکِ نبرد حاضر (زیرمجموعهٔ صادق)", () => {
+    useStudy.setState({ duelHistory: [duelRec({ id: "a", day: daysAgoKey(0) })] });
+    render(<WeeklyReportSection />);
+    const block = duelBlock()!;
+    expect(block).toBeInTheDocument();
+    expect(block.textContent).not.toContain("فکرِ میانگین");
+  });
+
+  it("فکردارِ هفتهٔ پیش → خطِ فکر غایب (فقطِ هفتهٔ جاری می‌شمارد)", () => {
+    useStudy.setState({
+      duelHistory: [
+        duelRec({ id: "old", day: daysAgoKey(9), think: wkThink({ avgMs: 100, minMs: 50, seen: 9, total: 9 }) }),
+        duelRec({ id: "now", day: daysAgoKey(0) }),
+      ],
+    });
+    render(<WeeklyReportSection />);
+    expect(duelBlock()!.textContent).not.toContain("فکرِ میانگین");
+  });
+
+  it("گِردکردنِ مرزیِ secFa مشترک: ۶۴۹ms → «۰٫۶» (هم‌قراردادِ سه نما)", () => {
+    useStudy.setState({
+      duelHistory: [duelRec({ id: "a", day: daysAgoKey(0), think: wkThink({ avgMs: 649, minMs: 649, seen: 2, total: 5 }) })],
+    });
+    render(<WeeklyReportSection />);
+    expect(duelBlock()!).toHaveTextContent("فکرِ میانگین ۰٫۶ ثانیه · سریع‌ترین ۰٫۶ ثانیه");
+  });
+
+  it("گِردکردنِ مرزیِ secFa مشترک: ۶۵۰ms → «۰٫۷» (هم‌قراردادِ سه نما)", () => {
+    useStudy.setState({
+      duelHistory: [duelRec({ id: "a", day: daysAgoKey(0), think: wkThink({ avgMs: 650, minMs: 650, seen: 2, total: 5 }) })],
+    });
+    render(<WeeklyReportSection />);
+    expect(duelBlock()!).toHaveTextContent("فکرِ میانگین ۰٫۷ ثانیه · سریع‌ترین ۰٫۷ ثانیه");
+  });
+});

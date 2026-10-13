@@ -11,7 +11,7 @@
 import type { DayHistoryMap, DayStat, HistoryMap } from "./study-store";
 import { faNum } from "./study-theme";
 import { percent } from "./domain/percent";
-import { DUEL_HISTORY_CAP, type DuelRecord } from "./duel-history";
+import { DUEL_HISTORY_CAP, saneThink, type DuelRecord } from "./duel-history";
 
 export interface WeekTotals {
   reviews: number;
@@ -194,6 +194,24 @@ export interface WeeklyDuels {
   winRate: number; // percent(win, thisWeek) — ۰ بی‌نبرد
   best: number; // بهترین امتیازِ شخصیِ همین هفته — ۰ بی‌نبرد
   truncated: boolean; // پنجره پرِ سقفِ دفترچه است — شمارش حداقلی
+  /**
+   * Task 109 «فکرِ هفته» — تلفیقِ وزن‌دارِ آمارِ فکرِ نبردهای همینِ هفته؛
+   * null یعنی هیچ رکوردِ فکرِ سالمی در پنجره نیست (خطِ UI پنهان — نه صفرِ ساختگی).
+   * رکوردهای بی‌think (قدیمی/سرویسِ قدیمی/بی‌نمونه) در شمارش نمی‌آیند —
+   * زیرمجموعهٔ صادق، هم‌الگوی چیپِ دفترچه و نشانِ چابکیِ ذهن (۱۰۸).
+   */
+  think: WeeklyThink | null;
+}
+
+export interface WeeklyThink {
+  /** میانگینِ وزن‌دار بر اساسِ seen هر نبرد (Σ avgMs·seen ÷ Σ seen)، گِرد به ms */
+  avgMs: number;
+  /** سریع‌ترین لحظهٔ فکرِ هفته — کمینهٔ minMsها */
+  fastestMs: number;
+  /** جمعِ نمونه‌های سالمِ همهٔ نبردهای فکردار */
+  seen: number;
+  /** جمعِ طولِ نبردهای فکردار — برای «N از M سؤالِ فکردار» */
+  total: number;
 }
 
 /**
@@ -213,6 +231,11 @@ export function duelWeeklyStats(records: DuelRecord[] | undefined, todayKey: str
   let loss = 0;
   let tie = 0;
   let best = 0;
+  // Task 109 — تجمیعِ وزن‌دارِ فکر؛ فقط رکوردهای همینِ هفته با thinkِ سالم
+  let thinkSumMs = 0; // Σ avgMs·seen — میانگینِ میانگین‌ها وزن‌دار بر نمونه‌ها
+  let thinkSeen = 0;
+  let thinkTotal = 0;
+  let thinkFastest = Number.POSITIVE_INFINITY;
   for (const r of records) {
     if (!r || typeof r.day !== "string") continue;
     const outcome = r.outcome === "win" || r.outcome === "loss" || r.outcome === "tie" ? r.outcome : null;
@@ -223,6 +246,13 @@ export function duelWeeklyStats(records: DuelRecord[] | undefined, todayKey: str
       else if (outcome === "loss") loss += 1;
       else tie += 1;
       if (Number.isFinite(r.myScore) && r.myScore > best) best = r.myScore;
+      const t = saneThink(r.think);
+      if (t) {
+        thinkSumMs += t.avgMs * t.seen;
+        thinkSeen += t.seen;
+        thinkTotal += t.total;
+        if (t.minMs < thinkFastest) thinkFastest = t.minMs;
+      }
     } else if (lastDays.has(r.day)) {
       lastWeek += 1;
     }
@@ -236,6 +266,15 @@ export function duelWeeklyStats(records: DuelRecord[] | undefined, todayKey: str
     winRate: percent(win, thisWeek),
     best,
     truncated: thisWeek >= DUEL_HISTORY_CAP,
+    think:
+      thinkSeen > 0
+        ? {
+            avgMs: Math.round(thinkSumMs / thinkSeen),
+            fastestMs: thinkFastest,
+            seen: thinkSeen,
+            total: thinkTotal,
+          }
+        : null,
   };
 }
 

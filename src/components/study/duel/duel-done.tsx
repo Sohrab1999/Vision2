@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Trophy, Swords, Users, RotateCcw, Crown, Handshake, Loader2, ShieldCheck, ImageDown, Share2, Timer } from "lucide-react";
-import { faNum } from "@/lib/study-theme";
+import { faNum, secFa } from "@/lib/study-theme";
 import { decomposeDuelScore } from "@/lib/duel-history";
 import { duelThinkStats } from "@/lib/duel-think";
 import { downloadDuelDoneImage, buildDuelDoneBlob } from "@/lib/result-image";
@@ -30,9 +30,8 @@ export default function DuelDone({ endData, mySid, myFinishAt, oppConnected, rem
   const [shareBusy, setShareBusy] = useState(false);
   const { toast } = useToast();
 
-  // Task 106 — ثانیه با یک اعشار و ممیزِ فارسی؛ نمونه‌ای نیست → خطِ تیره
-  const secFa = (ms: number | null) =>
-    ms === null ? "—" : faNum((Math.round(ms / 100) / 10).toFixed(1)).replace(".", "٫");
+  // Task 106 → ۱۰۹ — secFa به study-theme مهاجرت کرد (یک قراردادِ مشترک؛
+  // هفته‌نامه هم از امروز همین را می‌خواند). null → «—» همان‌جا حل شده.
 
   // Task 101 — عکسِ این نبرد: همان کارتِ نبرد با دادهٔ EndPayload؛ تفکیکِ
   // پایه/سرعت از همان decomposeDuelScoreِ کارنامه (قراردادِ ۹۹)؛ ثانیه‌ها
