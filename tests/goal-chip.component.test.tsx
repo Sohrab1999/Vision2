@@ -83,4 +83,15 @@ describe("چیپ هدف امروز — کامپوننت (Task 76)", () => {
     expect(vi.mocked(trackEvent)).toHaveBeenCalledWith("goal_chip");
     expect(useStudy.getState().view).toEqual({ type: "home" });
   });
+
+  // Task 123 — زیرِ ۳۲۰px بودجهٔ هدر سرریز می‌شد (OV=19px زنده اندازه‌گیری
+  // شد): چیپِ هدف با hidden min-[320px]:inline-flex از ۲۸۰px حذف می‌شود؛
+  // jsdom چیدمان ندارد — قرارداد = کلاس (همان سنّتِ هیروی ۱۲۳)
+  it("بودجهٔ هدر: زیرِ ۳۲۰px پنهان، از ۳۲۰px inline-flex (کلاسِ ضد-سرریز)", () => {
+    render(<GoalChip />);
+    const chip = screen.getByRole("button");
+    expect(chip.className).toContain("hidden");
+    expect(chip.className).toContain("min-[320px]:inline-flex");
+    expect(chip.className).not.toMatch(/(^|\s)inline-flex(\s|$)/); // پایهٔ همیشه‌نمایانِ کهنه ممنوع
+  });
 });

@@ -115,4 +115,77 @@ describe("هیرو — کتابِ زنده (Task 111)", () => {
       window.matchMedia = orig;
     }
   });
+
+});
+
+// ------------------------------------------------------------------
+// Task 123 «هیروی زیرِ ۴۰۰px» — قراردادِ ضد-سرریز و ریتمِ موبایل:
+//   ① سقفِ ضد-سرریز: در ۲۸۰px (گلکسی فولد) جلدِ w-64 با هالهٔ -inset-4
+//      از ویوپورت بیرون می‌زد (OV=19px زنده اندازه‌گیری شد)؛ حالا
+//      max-w-full روی زنجیرهٔ جلد + هالهٔ -inset-3 در موبایل
+//   ② تیترِ ۲۶px در موبایل (۳۲۰px ⇒ پنج‌خطِ ۲۰۷px به ریتمِ بهتر) و ۴xl از sm
+//   ③ دکمه‌های CTA زیرِ sm ستونیِ تمام‌عرض — شکستنِ دوخطیِ ناهماهنگِ قدیمی
+//   ④ مقدارِ آمار text-base در موبایل — سلولِ ۷۷px دیگر دوخطیِ ۱۳۹px نمی‌شود
+// jsdom چیدمان ندارد؛ قرارداد = کلاس‌ها (همان سنّتِ «ساختارِ زنده» بالا)
+// ------------------------------------------------------------------
+describe("هیرو — ضد-سرریزِ زیرِ ۴۰۰px (Task 123)", () => {
+  beforeEach(() => {
+    cleanup();
+    window.localStorage.clear();
+    useStudy.setState({ known: {}, settings: { ttsRate: 1, fontScale: 1, reduceMotion: false } });
+  });
+
+  it("زنجیرهٔ جلد سقفِ max-w-full دارد — خودِ جلد، والدِ perspective و ستون‌هایِ grid", () => {
+    render(<HomeHero />);
+    const cover = screen.getByRole("button", { name: "باز کردن کتاب" });
+    expect(cover.className).toContain("max-w-full");
+    expect(cover.className).toContain("w-64");
+    expect(cover.className).toContain("sm:w-72"); // دسکتاپ دست‌نخورده
+    const wrapper = cover.parentElement as HTMLElement;
+    expect(wrapper.className).toContain("max-w-full");
+    // Task 123 — گزیدِ grid با min-width:auto محتوایِ بی‌شکننده را می‌پهند
+    // و max-w-full هرگز جمع نمی‌شود — هر دو ستون min-w-0 می‌خواهند
+    const column = wrapper.parentElement as HTMLElement;
+    expect(column.className).toContain("min-w-0");
+    const textColumn = screen.getByText("آموزش زبان انگلیسی پایهٔ یازدهم").closest("h1")!.parentElement as HTMLElement;
+    expect(textColumn.className).toContain("min-w-0");
+  });
+
+  it("هالهٔ پس‌زمینه در موبایل باریک‌تر است — -inset-3 و از sm همان -inset-4", () => {
+    render(<HomeHero />);
+    const cover = screen.getByRole("button", { name: "باز کردن کتاب" });
+    const wrapper = cover.parentElement as HTMLElement;
+    const glow = wrapper.querySelector(":scope > div[aria-hidden]") as HTMLElement | null;
+    expect(glow).not.toBeNull();
+    expect(glow!.className).toContain("-inset-3");
+    expect(glow!.className).toContain("sm:-inset-4");
+  });
+
+  it("تیترِ هیرو در موبایل ۲۶px است و از sm چهار — ریتمِ پنج‌خطِ ۲۰۷px حل شده", () => {
+    render(<HomeHero />);
+    const h1 = screen.getByText("آموزش زبان انگلیسی پایهٔ یازدهم").closest("h1") as HTMLElement;
+    expect(h1.className).toContain("text-[26px]");
+    expect(h1.className).toContain("sm:text-4xl");
+  });
+
+  it("CTA زیرِ sm ستونیِ تمام‌عرض — هر دو دکمه w-full و از sm خودکار", () => {
+    render(<HomeHero />);
+    const start = screen.getByRole("button", { name: /شروع یادگیری/ });
+    const exam = screen.getByRole("button", { name: /آزمون جامع/ });
+    for (const btn of [start, exam]) {
+      expect(btn.className).toContain("w-full");
+      expect(btn.className).toContain("justify-center");
+      expect(btn.className).toContain("sm:w-auto");
+    }
+    const row = start.parentElement as HTMLElement;
+    expect(row.className).toContain("flex-col");
+    expect(row.className).toContain("sm:flex-row");
+  });
+
+  it("مقدارِ آمار در موبایل text-base — کارتِ ۷۷px دیگر ۱۳۹px کش نمی‌آید", () => {
+    render(<HomeHero />);
+    const vocab = screen.getByText("۶۳۳+");
+    expect(vocab.className).toContain("text-base");
+    expect(vocab.className).toContain("sm:text-lg");
+  });
 });

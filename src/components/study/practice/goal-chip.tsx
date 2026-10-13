@@ -58,13 +58,17 @@ export default function GoalChip() {
 
   if (!mounted) return null;
 
+  // Task 123 — زیرِ ۳۲۰px (گلکسی فولد) بودجهٔ هدر نمی‌گنجد و چیپِ هدفِ
+  // shrink-0 گروهِ میانی را ۱۹px از ویوپورت بیرون می‌برد (OV=19px زنده
+  // اندازه‌گیری شد)؛ پیشرفتِ هدف در همان عرض‌ها روی کارتِ «امروز» خانه
+  // دیده می‌شود — از ۳۲۰px به بالا مثل قبل.
   return (
     <motion.button
       initial={{ opacity: 0, scale: 0.8, y: -4 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ type: "spring", stiffness: 380, damping: 26 }}
       onClick={open}
-      className={`goal-chip relative mr-1 inline-flex shrink-0 items-center gap-1.5 overflow-hidden rounded-full border px-2.5 py-1.5 text-[12px] font-black transition-transform hover:-translate-y-px active:scale-95 ${
+      className={`goal-chip relative mr-1 hidden shrink-0 min-[320px]:inline-flex items-center gap-1.5 overflow-hidden rounded-full border px-2.5 py-1.5 text-[12px] font-black transition-transform hover:-translate-y-px active:scale-95 ${
         meta.done
           ? "border-emerald-600 bg-emerald-600 text-white shadow-sm shadow-emerald-900/20"
           : "border c-chip-goal"

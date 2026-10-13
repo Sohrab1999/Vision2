@@ -40,11 +40,13 @@ export default function HomeHero() {
 
   return (
     <section className="grid items-center gap-8 pt-6 md:grid-cols-2 md:pt-10">
+      {/* Task 123 — min-w-0: گزیدِ grid با min-width:auto به‌خاطرِ محتوایِ
+          بی‌شکننده پهن می‌شود و max-w-full زنجیرهٔ جلد هرگز جمع نمی‌شد */}
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.55 }}
-        className="order-2 md:order-1"
+        className="order-2 min-w-0 md:order-1"
       >
         <motion.span
           {...rise(0, reduceMotion)}
@@ -53,7 +55,10 @@ export default function HomeHero() {
           <Sparkles size={13} />
           جزوهٔ کاغذی ⇠ تبدیل به وب‌کتاب تعاملی
         </motion.span>
-        <motion.h1 {...rise(0.07, reduceMotion)} className="mb-3 text-3xl font-black leading-[1.35] text-stone-800 sm:text-4xl">
+        {/* Task 123 «هیروی زیرِ ۴۰۰px» — تیترِ درشت در موبایلِ تنگ پنج خط
+            می‌شود (۳۲۰px ⇒ ۲۰۷px ارتفاع)؛ ۲۶px همان شکوه را دارد با دو خط
+            کمتر، و دسکتاپ دست‌نخورده sm:text-4xl */}
+        <motion.h1 {...rise(0.07, reduceMotion)} className="mb-3 text-[26px] font-black leading-[1.4] text-stone-800 sm:text-4xl sm:leading-[1.35]">
           آموزش زبان انگلیسی پایهٔ یازدهم
           <span className="mt-1 block bg-gradient-to-l from-emerald-700 via-emerald-600 to-teal-500 bg-clip-text text-transparent">
             «Vision Two» تعاملی و شنیداری
@@ -63,10 +68,12 @@ export default function HomeHero() {
           هر سه درس جزوه با واژگان کامل، مکالمه و ریدینگ با <b className="text-emerald-700">روخوانی هوش مصنوعی</b>،
           گرامر تشریحی، فلش‌کارت و بیش از {faNum(TOTAL_QUESTIONS)} تست کنکوری — همه در یک کتاب دیجیتال زنده.
         </motion.p>
-        <motion.div {...rise(0.21, reduceMotion)} className="flex flex-wrap items-center gap-3">
+        {/* Task 123 — دکمه‌ها در زیرِ ۴۰۰px همیشه دوتایی شکسته می‌شدند
+            (۲۷۷+۱۴۸ در ۲۸۸px)؛ حالا تمام‌عرضِ منظمِ ستونی، و از sm ردیفی */}
+        <motion.div {...rise(0.21, reduceMotion)} className="flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center">
           <button
             onClick={() => openLesson(1)}
-            className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-emerald-900/25 transition-all hover:bg-emerald-700 hover:shadow-emerald-900/30 active:scale-95"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-600 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-emerald-900/25 transition-all hover:bg-emerald-700 hover:shadow-emerald-900/30 active:scale-95 sm:w-auto"
           >
             <BookOpen size={17} />
             شروع یادگیری — درس اول
@@ -74,7 +81,7 @@ export default function HomeHero() {
           </button>
           <button
             onClick={() => setView({ type: "exam" })}
-            className="inline-flex items-center gap-2 rounded-xl border border-stone-300 bg-white px-5 py-3 text-sm font-bold text-stone-700 transition-all hover:border-emerald-300 hover:text-emerald-700 active:scale-95"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-stone-300 bg-white px-5 py-3 text-sm font-bold text-stone-700 transition-all hover:border-emerald-300 hover:text-emerald-700 active:scale-95 sm:w-auto"
           >
             <ClipboardCheck size={17} />
             آزمون جامع
@@ -92,7 +99,9 @@ export default function HomeHero() {
               className="rounded-2xl border c-card p-3 text-center shadow-sm"
             >
               <s.icon size={18} className="mx-auto mb-1.5 text-emerald-600" />
-              <div className="text-lg font-black text-stone-800">{s.value}</div>
+              {/* Task 123 — مقدارِ text-lg در سلولِ ۷۷px (عرضِ ۲۸۰) دو خطی
+                  می‌شد و کارت را ۱۳۹px کش می‌داد؛ text-base در موبایل تک‌خطی */}
+              <div className="text-base font-black text-stone-800 sm:text-lg">{s.value}</div>
               <div className="text-[11px] text-stone-500">{s.label}</div>
             </div>
           ))}
@@ -104,15 +113,19 @@ export default function HomeHero() {
         initial={{ opacity: 0, scale: 0.9, rotate: 4 }}
         animate={{ opacity: 1, scale: 1, rotate: 0 }}
         transition={{ duration: 0.6, delay: 0.1 }}
-        className="order-1 flex justify-center md:order-2"
+        className="order-1 flex min-w-0 justify-center md:order-2"
       >
+        {/* Task 123 — سقفِ ضد-سرریز: در ۲۸۰px (گلکسی فولد) جلدِ w-64 با
+            p-4ِ صفحه جور درنمی‌آید و هالهٔ -inset-4 بدترش می‌کند
+            (OV=19px اندازه‌گیری شد)؛ max-w-full روی زنجیره + هالهٔ باریک‌تر
+            در موبایل ⇒ هیچ عرضی از ویوپورت بیرون نمی‌زند */}
         <motion.div
           animate={reduceMotion ? undefined : { y: [0, -10, 0] }}
           transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
-          className="relative"
+          className="relative max-w-full"
           style={{ perspective: 900 }}
         >
-          <div className="absolute -inset-4 rounded-3xl bg-emerald-200/40 blur-2xl" aria-hidden />
+          <div className="absolute -inset-3 rounded-3xl bg-emerald-200/40 blur-2xl sm:-inset-4" aria-hidden />
           <motion.button
             onClick={() => openLesson(1)}
             onPointerMove={(e) => {
@@ -132,7 +145,7 @@ export default function HomeHero() {
               transformStyle: "preserve-3d",
               boxShadow: "14px 18px 34px -14px rgb(6 78 59 / 0.5), inset 6px 0 12px -6px rgb(0 0 0 / 0.45)",
             }}
-            className="hero-book relative block w-64 overflow-hidden rounded-r-2xl rounded-l-md bg-gradient-to-br from-emerald-600 via-emerald-700 to-emerald-900 p-6 text-center text-white shadow-2xl shadow-emerald-900/40 sm:w-72"
+            className="hero-book relative block w-64 max-w-full overflow-hidden rounded-r-2xl rounded-l-md bg-gradient-to-br from-emerald-600 via-emerald-700 to-emerald-900 p-6 text-center text-white shadow-2xl shadow-emerald-900/40 sm:w-72"
             aria-label="باز کردن کتاب"
           >
             <div className="absolute inset-y-0 right-0 w-3 bg-black/25" aria-hidden />
