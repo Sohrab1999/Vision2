@@ -10,12 +10,16 @@
 
 import { useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { BookOpenText, Wand2, Loader2, Volume2, Square, Sparkles, RotateCcw } from "lucide-react";
+import { BookOpenText, Wand2, Loader2, Volume2, Square, Sparkles, RotateCcw, ImageDown, Share2 } from "lucide-react";
 import { faNum } from "@/lib/study-theme";
 import { trackEvent } from "@/lib/analytics";
 import { speak, stopSpeaking, type SpeakStop } from "@/lib/speak";
+import { useStudy } from "@/lib/study-store";
 import type { ResolvedStar } from "@/lib/my-words-resolve";
 import { STORY_MIN_WORDS, STORY_MAX_WORDS, storySegments, type StoryWord } from "@/lib/story-forge";
+import { downloadStoryCardImage, buildStoryCardBlob } from "@/lib/result-image";
+import { canShareImageFiles, blobToFile, shareImageFile, type ShareOutcome } from "@/lib/share-card";
+import { useToast } from "@/hooks/use-toast";
 
 interface StoryState {
   status: "idle" | "loading" | "done" | "error";
@@ -30,6 +34,12 @@ export default function MyWordsStory({ stars }: { stars: ResolvedStar[] }) {
   const [state, setState] = useState<StoryState>({ status: "idle" });
   const [speaking, setSpeaking] = useState(false);
   const stopRef = useRef<SpeakStop | null>(null);
+  const userName = useStudy((s) => s.userName);
+  const { toast } = useToast();
+  // Task 120 — کارتِ PNGِ داستان: ذخیره همیشه، هم‌رسانیِ بومی فقط با
+  // پشتیبانیِ واقعیِ canShare({files}) (الگویِ صداقتِ ۱۰۲/۱۱۸)
+  const [imgBusy, setImgBusy] = useState(false);
+  const [shareBusy, setShareBusy] = useState(false);
 
   const eligible = stars.length >= STORY_MIN_WORDS;
   // the filter's own order (newest first by default) — the cap keeps the
@@ -40,6 +50,54 @@ export default function MyWordsStory({ stars }: { stars: ResolvedStar[] }) {
     () => (state.story && state.words ? storySegments(state.story, state.words) : []),
     [state.story, state.words]
   );
+
+  /** تعدادِ جایِ نشان‌شدهٔ واقعی — عددِ روی کارت و متنِ share، نه ادعا */
+  const hitCount = useMemo(() => segments.reduce((n, s) => n + (s.hit ? 1 : 0), 0), [segments]);
+
+  const saveCard = async () => {
+    if (imgBusy || shareBusy || !state.story || !state.summary) return;
+    setImgBusy(true);
+    const ok = await downloadStoryCardImage({
+      story: state.story,
+      summary: state.summary,
+      words: state.words ?? [],
+      userName,
+      source: state.source,
+    });
+    setImgBusy(false);
+    toast(
+      ok
+        ? { title: "📖 کارتِ داستان ذخیره شد", description: "داستانت با واژه‌های برجسته حالا یک عکسِ قابلِ فرستادن است.", duration: 3000 }
+        : { title: "خطا در ساخت تصویر", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
+    );
+  };
+
+  const shareCard = async () => {
+    if (shareBusy || imgBusy || !state.story || !state.summary) return;
+    setShareBusy(true);
+    const blob = await buildStoryCardBlob({
+      story: state.story,
+      summary: state.summary,
+      words: state.words ?? [],
+      userName,
+      source: state.source,
+    });
+    let outcome: ShareOutcome = "failed";
+    if (blob) {
+      outcome = await shareImageFile({
+        file: blobToFile(blob, "vision2-story.png"),
+        title: "داستانِ واژه‌های من — وب‌کتاب ویژن ۲",
+        text: `📖 داستانی با واژه‌های خودم — ${faNum(hitCount)} واژهٔ برجسته`,
+      });
+    }
+    setShareBusy(false);
+    if (outcome === "shared") {
+      toast({ title: "📨 کارتِ داستان هم‌رسانی شد", description: "عکس با شیتِ خودِ سیستم فرستاده شد.", duration: 3000 });
+    } else if (outcome === "failed") {
+      toast({ title: "هم‌رسانی ممکن نشد", description: "می‌توانی عکس را ذخیره کنی و خودت بفرستی.", duration: 3000 });
+    }
+    // cancelled → سکوتِ کامل (لغوِ کاربر اتفاق نیست)
+  };
 
   const forge = async () => {
     if (!eligible || state.status === "loading") return;
@@ -193,6 +251,31 @@ export default function MyWordsStory({ stars }: { stars: ResolvedStar[] }) {
             <b className="text-sky-700">خلاصه: </b>
             {state.summary}
           </p>
+
+          {/* Task 120 — کارتِ PNGِ همین داستان: ذخیره همیشه، هم‌رسانیِ بومی
+              فقط وقتی مرورگر واقعاً فایل می‌پذیرد (الگویِ صداقتِ ۱۰۲/۱۱۸) */}
+          <div className="mt-3 flex flex-wrap items-center gap-2">
+            <button
+              onClick={saveCard}
+              disabled={imgBusy || shareBusy}
+              className="inline-flex items-center gap-1.5 rounded-xl border border-sky-200 bg-white px-3 py-1.5 text-[12px] font-black text-sky-700 transition-all hover:border-sky-300 hover:bg-sky-50/60 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
+              aria-label="ذخیرهٔ عکس داستان"
+            >
+              {imgBusy ? <Loader2 size={13} className="animate-spin" aria-hidden /> : <ImageDown size={13} aria-hidden />}
+              ذخیرهٔ کارتِ داستان
+            </button>
+            {canShareImageFiles() && (
+              <button
+                onClick={shareCard}
+                disabled={imgBusy || shareBusy}
+                className="inline-flex items-center gap-1.5 rounded-xl border border-sky-200 bg-white px-3 py-1.5 text-[12px] font-black text-sky-700 transition-all hover:border-sky-300 hover:bg-sky-50/60 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
+                aria-label="هم‌رسانی عکس داستان"
+              >
+                {shareBusy ? <Loader2 size={13} className="animate-spin" aria-hidden /> : <Share2 size={13} aria-hidden />}
+                هم‌رسانی
+              </button>
+            )}
+          </div>
         </motion.div>
       )}
 

@@ -9,6 +9,8 @@
 import { faNum } from "./study-theme";
 import type { DuelLedgerStats } from "./duel-history";
 import type { TeacherReview } from "./exam-teacher";
+import type { StorySegment, StoryWord } from "./story-forge";
+import { storySegments } from "./story-forge";
 
 export interface ResultImageOpts {
   title: string;
@@ -1025,6 +1027,319 @@ export async function downloadTeacherCardImage(opts: TeacherCardImageOpts): Prom
 /** Task 118 — همان کارت به‌صورت blob برای هم‌رسانیِ بومی — بدونِ دانلود */
 export async function buildTeacherCardBlob(opts: TeacherCardImageOpts): Promise<Blob | null> {
   const c = await teacherCardCanvas(opts);
+  if (!c) return null;
+  return canvasToBlob(c);
+}
+
+// ---------------- کارتِ داستان (Task 120 — هم‌گراییِ ۱۱۶ × ۱۰۲) ----------------
+// داستانِ «واژه‌های من» به‌صورتِ PNGِ قابلِ ذخیره/هم‌رسانی. پوستهٔ sky
+// (خانوادهٔ خودِ پنلِ داستان)، متنِ انگلیسیِ LTR با نشانِ کهرباییِ واژه‌های
+// هدف (هم‌زبانِ markهای UI)، خلاصهٔ فارسیِ RTL، صداقتِ منبعِ ۱۱۷/۱۱۸:
+// fallback هرگز «هوشمند» جعل نمی‌شود؛ داستانِ بلندتر از کارت با «…» صادق
+// بسته می‌شود — متنِ کامل در خودِ اپ هست.
+
+export interface StoryCardWord {
+  text: string;
+  hit: boolean;
+}
+
+/** واژه‌های کارت از سگمنت‌هایِ ۱۱۶ — هر واژه نشانِ سگمنتِ خودش را به‌ارث می‌برد */
+export function storyCardWords(segments: StorySegment[]): StoryCardWord[] {
+  const out: StoryCardWord[] = [];
+  for (const seg of Array.isArray(segments) ? segments : []) {
+    if (!seg || typeof seg.text !== "string") continue;
+    const hit = typeof seg.hit === "string" && seg.hit.length > 0;
+    for (const w of seg.text.split(/\s+/)) {
+      if (w) out.push({ text: w, hit });
+    }
+  }
+  return out;
+}
+
+/**
+ * شکستنِ حریصانهٔ واژه‌های داستان (LTR) به خط‌های کانواس — خالص و تست‌پذیر
+ * (الگویِ wrapCanvasLinesِ ۱۱۸، ولی توکن‌محور چون هر واژه رنگِ خودش را دارد).
+ * فاصلهٔ بین واژه‌ها در اندازه‌گیری شرکت می‌کند؛ واژهٔ تنهايِ عریض‌تر از سطر
+ * hard-chop کاراکتری می‌شود (نشانِ hit با تکه‌ها می‌ماند)؛ عبور از maxLines
+ * یعنی dropped=true — نقاش «…» را روی خطِ آخر می‌گذارد.
+ */
+export function wrapStoryWords(
+  words: StoryCardWord[],
+  maxW: number,
+  measure: (s: string) => number,
+  maxLines: number
+): { lines: StoryCardWord[][]; dropped: boolean } {
+  const tokens = (Array.isArray(words) ? words : []).filter(
+    (w) => !!w && typeof w.text === "string" && w.text.length > 0
+  );
+  if (tokens.length === 0) return { lines: [], dropped: false };
+  if (maxLines < 1 || maxW <= 0) return { lines: [], dropped: true };
+
+  const lines: StoryCardWord[][] = [];
+  let cur: StoryCardWord[] = [];
+  let curW = 0;
+  let dropped = false;
+  const spaceW = measure(" ");
+
+  const flush = () => {
+    if (cur.length === 0) return;
+    if (lines.length >= maxLines) {
+      dropped = true;
+    } else {
+      lines.push(cur);
+    }
+    cur = [];
+    curW = 0;
+  };
+
+  /** واژهٔ عریض‌تر از سطر → برشِ کاراکتری؛ نشانِ hit با تکه‌ها می‌ماند */
+  const hardChop = (w: StoryCardWord): StoryCardWord[] => {
+    const out: StoryCardWord[] = [];
+    let piece = "";
+    for (const ch of w.text) {
+      const cand = piece + ch;
+      if (piece && measure(cand) > maxW) {
+        out.push({ text: piece, hit: w.hit });
+        piece = ch;
+      } else {
+        piece = cand;
+      }
+    }
+    if (piece) out.push({ text: piece, hit: w.hit });
+    return out;
+  };
+
+  for (const w of tokens) {
+    const ww = measure(w.text);
+    if (ww > maxW) {
+      flush();
+      for (const chunk of hardChop(w)) {
+        if (lines.length >= maxLines) {
+          dropped = true;
+          cur = [];
+          break;
+        }
+        lines.push([chunk]);
+      }
+      if (dropped) break;
+      continue;
+    }
+    if (cur.length === 0) {
+      cur = [w];
+      curW = ww;
+    } else if (curW + spaceW + ww <= maxW) {
+      cur.push(w);
+      curW += spaceW + ww;
+    } else {
+      flush();
+      if (dropped) break;
+      cur = [w];
+      curW = ww;
+    }
+  }
+  flush();
+
+  return { lines, dropped };
+}
+
+export interface StoryCardImageOpts {
+  story: string;
+  summary: string;
+  words: StoryWord[];
+  userName?: string;
+  /** صداقتِ منبع — fallback هرگز «هوشمند» جعل نمی‌شود */
+  source?: "ai" | "fallback";
+}
+
+/** پوستهٔ sky — خانوادهٔ خودِ پنلِ داستان (from-sky-500 to-cyan-600 در UI) */
+function storyShell(ctx: CanvasRenderingContext2D, W: number, H: number, family: string): void {
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, "#0284c7"); // sky-600
+  bg.addColorStop(1, "#0e7490"); // cyan-700
+  ctx.fillStyle = bg;
+  ctx.fillRect(0, 0, W, H);
+
+  ctx.globalAlpha = 0.12;
+  ctx.fillStyle = "#ffffff";
+  for (const [cx, cy, r] of [
+    [W - 90, 80, 150],
+    [90, H - 70, 120],
+    [W / 2, H + 60, 200],
+  ] as const) {
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  ctx.globalAlpha = 1;
+
+  ctx.fillStyle = "#ffffff";
+  roundRect(ctx, 36, 36, W - 72, H - 72, 28);
+  ctx.fill();
+  ctx.strokeStyle = "rgba(2, 132, 199, 0.3)";
+  ctx.lineWidth = 2;
+  roundRect(ctx, 48, 48, W - 96, H - 96, 20);
+  ctx.stroke();
+
+  ctx.direction = "rtl";
+  ctx.textBaseline = "middle";
+  ctx.textAlign = "right";
+  ctx.fillStyle = "#0369a1"; // sky-700
+  ctx.font = `900 26px ${family}`;
+  ctx.fillText("وب‌کتاب تعاملی «ویژن ۲»", W - 90, 106);
+  ctx.textAlign = "left";
+  ctx.direction = "ltr";
+  ctx.fillStyle = "#a8a29e";
+  ctx.font = `700 20px ${family}`;
+  ctx.fillText("ENGLISH WEBBOOK · VISION TWO", 90, 106);
+
+  ctx.strokeStyle = "#e7e5e4";
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.moveTo(90, 138);
+  ctx.lineTo(W - 90, 138);
+  ctx.stroke();
+}
+
+/** رسمِ کارتِ داستان — الگویِ ۱۰۲/۱۱۸: از دانلود جدا تا blob هم ساخته شود */
+async function storyCardCanvas(opts: StoryCardImageOpts): Promise<HTMLCanvasElement | null> {
+  try {
+    if (typeof document === "undefined") return null;
+    if (document.fonts?.ready) {
+      await document.fonts.ready;
+    }
+    const family = getComputedStyle(document.body).fontFamily || "sans-serif";
+    const canvas = document.createElement("canvas");
+    canvas.width = 1080;
+    canvas.height = 640;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return null;
+    const W = 1080;
+    const H = 640;
+    storyShell(ctx, W, H, family);
+
+    const segments = storySegments(opts.story, opts.words);
+    const tokens = storyCardWords(segments);
+    const hitCount = tokens.filter((t) => t.hit).length;
+
+    // ---------- title (راست) ----------
+    ctx.direction = "rtl";
+    ctx.textAlign = "right";
+    ctx.textBaseline = "middle";
+    ctx.fillStyle = "#1c1917";
+    ctx.font = `800 34px ${family}`;
+    ctx.fillText("داستانِ واژه‌های من", W - 90, 192);
+
+    // ---------- learner column (چپ) ----------
+    ctx.direction = "rtl";
+    ctx.textAlign = "right";
+    if (opts.userName) {
+      ctx.fillStyle = "#1c1917";
+      ctx.font = `800 30px ${family}`;
+      ctx.fillText(truncate(ctx, opts.userName, 280), 390, 196);
+    } else {
+      ctx.fillStyle = "#a8a29e";
+      ctx.font = `700 20px ${family}`;
+      ctx.fillText("یادگیرندهٔ وب‌کتاب", 390, 196);
+    }
+    ctx.font = `700 18px ${family}`;
+    if (opts.source === "fallback") {
+      ctx.fillStyle = "#a8a29e";
+      ctx.fillText("تمرینِ آفلاین — با واژه‌های خودت جمله بساز", 390, 230);
+    } else {
+      ctx.fillStyle = "#0284c7"; // sky-600 — خانوادهٔ خودِ کارت
+      ctx.fillText(`داستانِ هوشمند · ${faNum(hitCount)} واژهٔ برجسته`, 390, 230);
+    }
+
+    // ---------- story body (LTR، تمام‌عرض) ----------
+    ctx.textAlign = "left";
+    ctx.direction = "ltr";
+    ctx.textBaseline = "middle";
+    const storyFont = 18;
+    const lineH = 28;
+    const left = 90;
+    const maxW = W - 180;
+    ctx.font = `400 ${storyFont}px ${family}`;
+    const wrapped = wrapStoryWords(tokens, maxW, (s) => ctx.measureText(s).width, 6);
+
+    let y = 262;
+    let lastX = left;
+    for (const line of wrapped.lines) {
+      let x = left;
+      for (const w of line) {
+        const ww = ctx.measureText(w.text).width;
+        if (w.hit) {
+          ctx.fillStyle = "#fef3c7"; // amber-100 — همان نشانِ UI
+          roundRect(ctx, x - 4, y - 13, ww + 8, 26, 6);
+          ctx.fill();
+          ctx.fillStyle = "#b45309"; // amber-700
+          ctx.font = `700 ${storyFont}px ${family}`;
+        } else {
+          ctx.fillStyle = "#1c1917";
+          ctx.font = `400 ${storyFont}px ${family}`;
+        }
+        ctx.fillText(w.text, x, y);
+        x += ww + ctx.measureText(" ").width;
+      }
+      lastX = x;
+      y += lineH;
+    }
+    if (wrapped.dropped && wrapped.lines.length > 0) {
+      // «…» صداقت — داستانِ کامل در خودِ اپ هست
+      ctx.fillStyle = "#78716c";
+      ctx.font = `700 ${storyFont}px ${family}`;
+      ctx.fillText("…", Math.min(lastX + 2, left + maxW - 12), y - lineH);
+    }
+
+    // ---------- summary (RTL، جعبهٔ sky-50 — هم‌زبانِ UI) ----------
+    ctx.fillStyle = "#f0f9ff"; // sky-50
+    roundRect(ctx, 74, 436, W - 148, 88, 14);
+    ctx.fill();
+    ctx.direction = "rtl";
+    ctx.textAlign = "right";
+    ctx.fillStyle = "#0369a1"; // sky-700
+    ctx.font = `900 17px ${family}`;
+    ctx.fillText("خلاصه:", W - 100, 460);
+    ctx.fillStyle = "#57534e";
+    ctx.font = `400 17px ${family}`;
+    let sy = 484;
+    for (const line of wrapCanvasLines(opts.summary, W - 200, (s) => ctx.measureText(s).width, 2)) {
+      ctx.fillText(line, W - 100, sy);
+      sy += 24;
+    }
+
+    // ---------- footer ----------
+    ctx.strokeStyle = "#e7e5e4";
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(90, H - 108);
+    ctx.lineTo(W - 90, H - 108);
+    ctx.stroke();
+    ctx.direction = "rtl";
+    ctx.textAlign = "right";
+    ctx.fillStyle = "#a8a29e";
+    ctx.font = `700 19px ${family}`;
+    ctx.fillText(`داستانِ واژه‌های من · ${faDate()}`, W - 90, H - 74);
+    ctx.textAlign = "left";
+    ctx.direction = "ltr";
+    ctx.fillStyle = "#0284c7";
+    ctx.font = `900 20px ${family}`;
+    ctx.fillText("YOUR WORDS · YOUR STORY", 90, H - 74);
+
+    return ctx.canvas;
+  } catch {
+    return null;
+  }
+}
+
+export async function downloadStoryCardImage(opts: StoryCardImageOpts): Promise<boolean> {
+  const c = await storyCardCanvas(opts);
+  if (!c) return false;
+  return downloadCanvasBlob(c, "vision2-story.png");
+}
+
+/** Task 120 — همان کارت به‌صورتِ blob برای هم‌رسانیِ بومی — بدونِ دانلود */
+export async function buildStoryCardBlob(opts: StoryCardImageOpts): Promise<Blob | null> {
+  const c = await storyCardCanvas(opts);
   if (!c) return null;
   return canvasToBlob(c);
 }
