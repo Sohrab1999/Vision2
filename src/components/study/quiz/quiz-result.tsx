@@ -273,10 +273,14 @@ export default function QuizResult({
       {certificate ? certificateCard : standardCard}
 
       {/* «معلمِ کارنامه» — the AI teacher's honest session review (Task 117);
-          ids + raw chosen indices only, correctness recomputed server-side */}
+          ids + raw chosen indices only, correctness recomputed server-side.
+          Task 118: the real session outcome feeds the shareable teacher card */}
       <QuizTeacher
         ids={questions.map((qq) => qq.id)}
         answers={questions.map((_, i) => answers[i])}
+        correct={correctCount}
+        total={total}
+        userName={useStudy.getState().userName || undefined}
       />
 
       {/* review */}

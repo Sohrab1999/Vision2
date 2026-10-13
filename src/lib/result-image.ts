@@ -8,6 +8,7 @@
 
 import { faNum } from "./study-theme";
 import type { DuelLedgerStats } from "./duel-history";
+import type { TeacherReview } from "./exam-teacher";
 
 export interface ResultImageOpts {
   title: string;
@@ -775,4 +776,255 @@ export async function downloadWeeklyImage(opts: WeeklyImageOpts): Promise<boolea
   } catch {
     return false;
   }
+}
+
+// ---------------- کارتِ «معلمِ کارنامه» (Task 118 — نظرِ معلم به‌صورتِ عکس) ----------------
+//
+// خطِ AI (۱۱۶ داستان، ۱۱۷ معلم) از امروز واردِ خطِ اشتراکِ ۱۰۲ می‌شود: داوریِ
+// جلسه روی همان پوستهٔ نبرد (violet→fuchsia — خانوادهٔ خودِ کارتِ معلم در UI)
+// به PNG تبدیل می‌شود تا بتوان ذخیره‌اش کرد یا با شیتِ بومیِ سیستم فرستاد.
+// صداقتِ منبعِ ۱۱۷ روی کارت هم می‌نشیند: fallback → «خلاصهٔ خودکارِ آفلاین».
+
+/**
+ * شکستنِ متنِ فارسی/انگلیسی به خط‌های کانواس — خالص و تست‌پذیر (Task 118).
+ * حریصانه کلمه‌به‌کلمه پر می‌کند؛ واژهٔ تنهايِ عریض‌تر از سطر hard-chop
+ * کاراکتری می‌شود؛ عبور از maxLines یعنی خطِ آخر با «…» بسته می‌شود.
+ * (مسئلهٔ shaping و bidi خودِ کانواس حل می‌کند — این‌جا فقط پهناست.)
+ */
+export function wrapCanvasLines(
+  text: string,
+  maxW: number,
+  measure: (s: string) => number,
+  maxLines: number
+): string[] {
+  if (maxLines < 1 || maxW <= 0) return [];
+  const words = text.trim().split(/\s+/).filter(Boolean);
+  if (words.length === 0) return [];
+
+  const lines: string[] = [];
+  let cur = "";
+  let dropped = false;
+
+  /** واژه‌ای که به‌تنهایی از کل سطر عریض‌تر است → برشِ کاراکتری */
+  const hardChop = (w: string): string[] => {
+    const out: string[] = [];
+    let piece = "";
+    for (const ch of w) {
+      const cand = piece + ch;
+      if (piece && measure(cand) > maxW) {
+        out.push(piece);
+        piece = ch;
+      } else {
+        piece = cand;
+      }
+    }
+    if (piece) out.push(piece);
+    return out;
+  };
+
+  for (let wi = 0; wi < words.length; wi++) {
+    const w = words[wi];
+    if (measure(w) > maxW) {
+      if (cur) {
+        lines.push(cur);
+        cur = "";
+      }
+      for (const chunk of hardChop(w)) {
+        if (lines.length >= maxLines) {
+          dropped = true;
+          break;
+        }
+        lines.push(chunk);
+      }
+    } else if (!cur || measure(cur + " " + w) <= maxW) {
+      cur = cur ? cur + " " + w : w;
+    } else {
+      lines.push(cur);
+      cur = w;
+    }
+    if (dropped || lines.length >= maxLines) {
+      if (lines.length >= maxLines && (cur || wi < words.length - 1)) dropped = true;
+      break;
+    }
+  }
+  if (!dropped && cur) {
+    if (lines.length < maxLines) lines.push(cur);
+    else dropped = true;
+  }
+
+  const out = lines.slice(0, maxLines);
+  if (dropped && out.length > 0 && !out[out.length - 1].endsWith("…")) {
+    out[out.length - 1] += "…";
+  }
+  return out;
+}
+
+export interface TeacherCardImageOpts {
+  review: TeacherReview;
+  correct: number;
+  total: number;
+  percent: number;
+  userName?: string;
+  /** صداقتِ منبع — fallback هرگز «هوشمند» جعل نمی‌شود */
+  source?: "ai" | "fallback";
+}
+
+/** رسمِ کارتِ معلم — Task 118: از دانلود جدا شد تا blob هم ساخته شود (الگوی ۱۰۲) */
+async function teacherCardCanvas(opts: TeacherCardImageOpts): Promise<HTMLCanvasElement | null> {
+  try {
+    if (typeof document !== "undefined" && document.fonts?.ready) {
+      await document.fonts.ready;
+    }
+    const family =
+      typeof document !== "undefined"
+        ? getComputedStyle(document.body).fontFamily || "sans-serif"
+        : "sans-serif";
+    const ctx = await openBattleCard(family);
+    if (!ctx) return null;
+    const W = 1080;
+    const H = 640;
+
+    // ---------- title ----------
+    ctx.direction = "rtl";
+    ctx.textAlign = "right";
+    ctx.textBaseline = "middle";
+    ctx.fillStyle = "#1c1917";
+    ctx.font = `800 34px ${family}`;
+    ctx.fillText("نظرِ معلم", W - 90, 192);
+
+    // ---------- learner column (چپ، هم‌لبهٔ کارت‌های دیگر) ----------
+    ctx.direction = "rtl";
+    ctx.textAlign = "right";
+    if (opts.userName) {
+      ctx.fillStyle = "#1c1917";
+      ctx.font = `800 30px ${family}`;
+      ctx.fillText(truncate(ctx, opts.userName, 280), 390, 196);
+    } else {
+      ctx.fillStyle = "#a8a29e";
+      ctx.font = `700 20px ${family}`;
+      ctx.fillText("یادگیرندهٔ وب‌کتاب", 390, 196);
+    }
+    ctx.font = `700 18px ${family}`;
+    if (opts.source === "fallback") {
+      ctx.fillStyle = "#a8a29e";
+      ctx.fillText("خلاصهٔ خودکارِ آفلاین", 390, 230);
+    } else {
+      ctx.fillStyle = "#7c3aed"; // violet-600 — خانوادهٔ خودِ کارتِ معلم
+      ctx.fillText("نظرِ معلمِ هوشمند", 390, 230);
+    }
+
+    // ---------- percent ring (راست) ----------
+    const cx = W - 90 - 105;
+    const cy = 350;
+    const r = 105;
+    ctx.lineWidth = 20;
+    ctx.lineCap = "round";
+    ctx.strokeStyle = "#f5f5f4";
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.stroke();
+    const pct = Math.max(0, Math.min(100, opts.percent)) / 100;
+    const ring = ctx.createLinearGradient(cx - r, cy - r, cx + r, cy + r);
+    ring.addColorStop(0, "#8b5cf6"); // violet-500
+    ring.addColorStop(1, "#d946ef"); // fuchsia-500
+    ctx.strokeStyle = ring;
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, Math.PI / 2, Math.PI / 2 + Math.PI * 2 * pct);
+    ctx.stroke();
+    ctx.textAlign = "center";
+    ctx.fillStyle = "#1c1917";
+    ctx.font = `900 52px ${family}`;
+    ctx.fillText(`${faNum(Math.round(opts.percent))}٪`, cx, cy - 14);
+    ctx.fillStyle = "#78716c";
+    ctx.font = `700 21px ${family}`;
+    ctx.fillText(`${faNum(opts.correct)} از ${faNum(opts.total)}`, cx, cy + 34);
+
+    // ---------- three sections (ستونِ متن، چپِ حلقه) ----------
+    const textR = 740;
+    const width = textR - 90;
+    ctx.direction = "rtl";
+    ctx.textAlign = "right";
+    let y = 252;
+
+    // intro — حداکثر ۳ خط؛ عبورش یعنی «…» (متنِ کامل در خودِ صفحه هست)
+    ctx.fillStyle = "#1c1917";
+    ctx.font = `400 19px ${family}`;
+    for (const line of wrapCanvasLines(opts.review.intro, width, (s) => ctx.measureText(s).width, 3)) {
+      ctx.fillText(line, textR, y);
+      y += 30;
+    }
+
+    // نقطهٔ قوت — هدرِ سبز + حداکثر ۲ خط
+    y += 12;
+    ctx.fillStyle = "#10b981";
+    ctx.beginPath();
+    ctx.arc(textR - 5, y, 4.5, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = "#047857";
+    ctx.font = `900 18px ${family}`;
+    ctx.fillText("نقطهٔ قوت", textR - 18, y);
+    y += 28;
+    ctx.fillStyle = "#57534e";
+    ctx.font = `400 17px ${family}`;
+    for (const line of wrapCanvasLines(opts.review.strength, width - 18, (s) => ctx.measureText(s).width, 2)) {
+      ctx.fillText(line, textR, y);
+      y += 26;
+    }
+
+    // تمرینِ پیشنهادی — هدرِ کهربایی + حداکثر ۲ خط
+    y += 10;
+    ctx.fillStyle = "#f59e0b";
+    ctx.beginPath();
+    ctx.arc(textR - 5, y, 4.5, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = "#b45309";
+    ctx.font = `900 18px ${family}`;
+    ctx.fillText("تمرینِ پیشنهادی", textR - 18, y);
+    y += 28;
+    ctx.fillStyle = "#57534e";
+    ctx.font = `400 17px ${family}`;
+    for (const line of wrapCanvasLines(opts.review.advice, width - 18, (s) => ctx.measureText(s).width, 2)) {
+      ctx.fillText(line, textR, y);
+      y += 26;
+    }
+
+    // ---------- footer ----------
+    ctx.strokeStyle = "#e7e5e4";
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(90, H - 108);
+    ctx.lineTo(W - 90, H - 108);
+    ctx.stroke();
+    ctx.direction = "rtl";
+    ctx.textAlign = "right";
+    ctx.fillStyle = "#a8a29e";
+    ctx.font = `700 19px ${family}`;
+    ctx.fillText(`معلمِ کارنامه · ${faDate()}`, W - 90, H - 74);
+    ctx.textAlign = "left";
+    ctx.direction = "ltr";
+    ctx.fillStyle = "#7c3aed";
+    ctx.font = `900 20px ${family}`;
+    ctx.fillText(
+      opts.percent >= 80 ? "GREAT WORK ★" : opts.percent >= 50 ? "WELL DONE" : "KEEP PRACTICING!",
+      90,
+      H - 74
+    );
+
+    return ctx.canvas;
+  } catch {
+    return null;
+  }
+}
+
+export async function downloadTeacherCardImage(opts: TeacherCardImageOpts): Promise<boolean> {
+  const c = await teacherCardCanvas(opts);
+  if (!c) return false;
+  return downloadCanvasBlob(c, "vision2-teacher.png");
+}
+
+/** Task 118 — همان کارت به‌صورت blob برای هم‌رسانیِ بومی — بدونِ دانلود */
+export async function buildTeacherCardBlob(opts: TeacherCardImageOpts): Promise<Blob | null> {
+  const c = await teacherCardCanvas(opts);
+  if (!c) return null;
+  return canvasToBlob(c);
 }

@@ -10,9 +10,14 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { GraduationCap, Loader2, Sparkles, RotateCcw } from "lucide-react";
+import { GraduationCap, Loader2, Sparkles, RotateCcw, ImageDown, Share2 } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 import type { TeacherReview } from "@/lib/exam-teacher";
+import { percent as percentOf } from "@/lib/domain/percent";
+import { faNum } from "@/lib/study-theme";
+import { downloadTeacherCardImage, buildTeacherCardBlob } from "@/lib/result-image";
+import { canShareImageFiles, blobToFile, shareImageFile, type ShareOutcome } from "@/lib/share-card";
+import { useToast } from "@/hooks/use-toast";
 
 interface TeacherState {
   status: "idle" | "loading" | "done" | "error";
@@ -26,11 +31,71 @@ interface TeacherState {
 export default function QuizTeacher({
   ids,
   answers,
+  correct = 0,
+  total = 0,
+  userName,
 }: {
   ids: string[];
   answers: (number | undefined)[];
+  /** نتیجهٔ واقعیِ همین جلسه — برای کارتِ PNG (تسک ۱۱۸) */
+  correct?: number;
+  total?: number;
+  userName?: string;
 }) {
   const [state, setState] = useState<TeacherState>({ status: "idle" });
+  const [imgBusy, setImgBusy] = useState(false);
+  const [shareBusy, setShareBusy] = useState(false);
+  const { toast } = useToast();
+  const percent = percentOf(correct, total);
+
+  // Task 118 — کارتِ نظرِ معلم: همان سه‌بخشِ صادقِ همین پنل به PNG؛
+  // ذخیره همیشه هست، هم‌رسانیِ بومی فقط با پشتیبانیِ واقعیِ canShare({files})
+  const saveCard = async () => {
+    if (imgBusy || shareBusy || !state.review) return;
+    setImgBusy(true);
+    const ok = await downloadTeacherCardImage({
+      review: state.review,
+      correct,
+      total,
+      percent,
+      userName,
+      source: state.source,
+    });
+    setImgBusy(false);
+    toast(
+      ok
+        ? { title: "🖼 کارتِ معلم ذخیره شد", description: "داوریِ همین جلسه حالا یک عکسِ قابلِ فرستادن است.", duration: 3000 }
+        : { title: "خطا در ساخت تصویر", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
+    );
+  };
+
+  const shareCard = async () => {
+    if (shareBusy || imgBusy || !state.review) return;
+    setShareBusy(true);
+    const blob = await buildTeacherCardBlob({
+      review: state.review,
+      correct,
+      total,
+      percent,
+      userName,
+      source: state.source,
+    });
+    let outcome: ShareOutcome = "failed";
+    if (blob) {
+      outcome = await shareImageFile({
+        file: blobToFile(blob, "vision2-teacher.png"),
+        title: "معلمِ کارنامه — وب‌کتاب ویژن ۲",
+        text: `🎓 نظرِ معلم دربارهٔ کارنامه‌ام: ${faNum(percent)}٪ (${faNum(correct)} از ${faNum(total)})`,
+      });
+    }
+    setShareBusy(false);
+    if (outcome === "shared") {
+      toast({ title: "📨 نظرِ معلم هم‌رسانی شد", description: "کارت با شیتِ خودِ سیستم فرستاده شد.", duration: 3000 });
+    } else if (outcome === "failed") {
+      toast({ title: "هم‌رسانی ممکن نشد", description: "می‌توانی عکس را ذخیره کنی و خودت بفرستی.", duration: 3000 });
+    }
+    // cancelled → سکوتِ کامل (لغوِ کاربر اتفاق نیست)
+  };
 
   const ask = async () => {
     if (state.status === "loading" || ids.length === 0) return;
@@ -143,6 +208,31 @@ export default function QuizTeacher({
                 {state.review.advice}
               </p>
             </div>
+          </div>
+
+          {/* Task 118 — کارتِ PNGِ همین داوری: ذخیره همیشه، هم‌رسانیِ بومی فقط
+              وقتی مرورگر واقعاً فایل می‌پذیرد (الگویِ صداقتِ ۱۰۲) */}
+          <div className="mt-3 flex flex-wrap items-center gap-2">
+            <button
+              onClick={saveCard}
+              disabled={imgBusy || shareBusy}
+              className="inline-flex items-center gap-1.5 rounded-xl border border-violet-200 bg-white px-3 py-1.5 text-[12px] font-black text-violet-700 transition-all hover:border-violet-300 hover:bg-violet-50/60 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
+              aria-label="ذخیرهٔ عکس نظر معلم"
+            >
+              {imgBusy ? <Loader2 size={13} className="animate-spin" aria-hidden /> : <ImageDown size={13} aria-hidden />}
+              ذخیرهٔ کارتِ معلم
+            </button>
+            {canShareImageFiles() && (
+              <button
+                onClick={shareCard}
+                disabled={imgBusy || shareBusy}
+                className="inline-flex items-center gap-1.5 rounded-xl border border-violet-200 bg-white px-3 py-1.5 text-[12px] font-black text-violet-700 transition-all hover:border-violet-300 hover:bg-violet-50/60 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
+                aria-label="هم‌رسانی عکس نظر معلم"
+              >
+                {shareBusy ? <Loader2 size={13} className="animate-spin" aria-hidden /> : <Share2 size={13} aria-hidden />}
+                هم‌رسانی
+              </button>
+            )}
           </div>
         </motion.div>
       )}
