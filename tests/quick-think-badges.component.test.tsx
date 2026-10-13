@@ -1,9 +1,9 @@
 // @vitest-environment jsdom
 // ------------------------------------------------------------------
 // Task 108 — نشان‌های نهمین خانوادهٔ «چابکیِ ذهن» روی پنلِ نشان‌ها:
-//   ① تازه‌وارد: «۰ از ۵۰» — دو کاشیِ تازه قفل با پیشرفتِ شمارشیِ صادق
-//   ② سه نبردِ چابک → «نیم‌نگاه» باز (نقره/Eye) + «۱ از ۵۰» — برقِ فکر قفل
-//   ③ هفت نبردِ چابک → «برقِ فکر» هم باز (زیرمجموعهٔ ۷⇒۳) + «۲ از ۵۰»
+//   ① تازه‌وارد: «۰ از ۵۲» — دو کاشیِ تازه قفل با پیشرفتِ شمارشیِ صادق
+//   ② سه نبردِ چابک → «نیم‌نگاه» باز (نقره/Eye) + «۱ از ۵۲» — برقِ فکر قفل
+//   ③ هفت نبردِ چابک → «برقِ فکر» هم باز (زیرمجموعهٔ ۷⇒۳) + «۲ از ۵۲»
 //   ④ دفترچهٔ پرِ بردِ عادیِ بی‌think هرگز باز نمی‌کند — صفرِ صادقِ قدیمی‌ها
 //   ⑤ نبردِ چابکِ کم‌درست (فکرِ کم ولی درستیِ زیرِ گیت) باز نمی‌کند —
 //     گیتِ دومرحله‌ای واقعی است، نه شمارشِ سرعتِ خلوت
@@ -43,7 +43,7 @@ const quick = (over: Partial<DuelRecord> = {}, thinkOver: Partial<DuelRecord["th
   rec({ think: { ...THINK, ...thinkOver }, ...over });
 
 const chipText = () =>
-  screen.getAllByText((_c, el) => !!el?.textContent && /از ۵۰$/.test(el.textContent.trim()))[0]
+  screen.getAllByText((_c, el) => !!el?.textContent && /از ۵۲$/.test(el.textContent.trim()))[0]
     ?.textContent?.replace(/\s+/g, " ")
     .trim();
 
@@ -88,10 +88,10 @@ describe("خانوادهٔ چابکیِ ذهن — نیم‌نگاه / برقِ 
     expect(flash!.className).not.toContain("badge-shine");
     expect(glance!.textContent).toContain("۰ از ۳ نبردِ چابک");
     expect(flash!.textContent).toContain("۰ از ۷ نبردِ چابک");
-    expect(chipText()).toContain("۰ از ۵۰");
+    expect(chipText()).toContain("۰ از ۵۲");
   });
 
-  it("سه نبردِ چابک → نیم‌نگاه باز + «۱ از ۵۰» — برقِ فکر هنوز قفل با «۳ از ۷»", () => {
+  it("سه نبردِ چابک → هفتهٔ ۰٫۸ثانیه‌ای هر دو پلهٔ ۱۱۰ + نیم‌نگاه (۱۰۸) را روشن می‌کند + «۳ از ۵۲» — برقِ فکر هنوز قفل با «۳ از ۷»", () => {
     useStudy.setState({
       duelHistory: [
         quick({ id: "q1", opponent: "حریفِ یکم" }),
@@ -107,10 +107,10 @@ describe("خانوادهٔ چابکیِ ذهن — نیم‌نگاه / برقِ 
     expect(glance.className).toContain("badge-shine");
     expect(flash.className).not.toContain("badge-shine");
     expect(flash.textContent).toContain("۳ از ۷ نبردِ چابک");
-    expect(chipText()).toContain("۱ از ۵۰");
+    expect(chipText()).toContain("۳ از ۵۲");
   });
 
-  it("هفت نبردِ چابک → زیرمجموعهٔ ۷⇒۳ در هر دو جهت: هر دو باز + «۲ از ۵۰»", () => {
+  it("هفت نبردِ چابک → زیرمجموعهٔ ۷⇒۳ در هر دو جهت: چهار کاشیِ دو خانواده باز + «۴ از ۵۲»", () => {
     useStudy.setState({
       duelHistory: [
         quick({ id: "q1", opponent: "حریفِ یکم" }),
@@ -128,7 +128,7 @@ describe("خانوادهٔ چابکیِ ذهن — نیم‌نگاه / برقِ 
     expect(screen.getByText("نیم‌نگاه").closest(".badge-card")!.className).toContain("badge-shine");
     expect(screen.getByText("برقِ فکر").closest(".badge-card")!.className).toContain("badge-shine");
     // حریف‌های متمایز — خانوادهٔ رقیب را روشن نمی‌کنند (درسِ ۱۰۵)؛ فقط دو کاشیِ این خانواده
-    expect(chipText()).toContain("۲ از ۵۰");
+    expect(chipText()).toContain("۴ از ۵۲");
   });
 
   it("پانزده بردِ عادیِ بی‌think → هر دو قفل — صفرِ صادقِ دفترچهٔ قدیمی", () => {
@@ -146,7 +146,7 @@ describe("خانوادهٔ چابکیِ ذهن — نیم‌نگاه / برقِ 
     expect(flash.className).not.toContain("badge-shine");
     expect(glance.textContent).toContain("۰ از ۳ نبردِ چابک");
     expect(flash.textContent).toContain("۰ از ۷ نبردِ چابک");
-    expect(chipText()).toContain("۰ از ۵۰");
+    expect(chipText()).toContain("۰ از ۵۲");
   });
 
   it("گیتِ دومرحله‌ای واقعی: فکرِ کم ولی درستیِ کم (۳ از ۱۰) → قفل؛ فکرِ زیاد ولی درستِ بالا → قفل", () => {

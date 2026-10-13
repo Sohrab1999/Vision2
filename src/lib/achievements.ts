@@ -6,9 +6,10 @@
 
 import type { StudyState } from "./study-store";
 import { daysAgoKey, normDayStat, todayStr } from "./study-store";
-import { faNum } from "./study-theme";
+import { faNum, secFa } from "./study-theme";
 import { completedQuestCount } from "./daily-quests";
 import { duelTopRival, duelSpeedStats, duelVerifiedWins, duelQuickThinkers } from "./duel-history";
+import { duelQuickWeekReport, DUEL_QUICK_WEEK, type QuickWeekReport } from "./weekly-digest";
 import { FREEZE_WINDOW } from "@/state/types";
 
 export type BadgeTier = "bronze" | "silver" | "gold";
@@ -65,6 +66,7 @@ export interface BadgeEvalInput {
   duelTopRivalWins: number; // بیشترین برد مقابلِ یک حریفِ واحد در دفترچه (Task 99)
   duelVerifiedWins: number; // بردهای رسیددارِ دفترچه — امضای داور روی برد (Task 105)
   duelQuickThinkers: number; // رکوردهای «فکرِ کم + درستِ زیاد» — نهمین خانواده (Task 108)
+  duelQuickWeek: QuickWeekReport; // گیتِ ترکیبیِ هفتگی — دهمین خانواده (Task 110)
   duelTopRivalName: string; // نامِ نمایشیِ همان رقیب (برای پیشرفتِ صادق)
   duelSpeedAvg: number; // میانگینِ پاداشِ سرعت بر پاسخِ درست (۰..۱۰۰ — Task 100)
   duelSpeedCorrect: number; // جمعِ پاسخ‌های درستِ دفترچه — نمونهٔ آماریِ سرعت
@@ -129,6 +131,9 @@ export function buildEvalInput(s: {
   // خانوادهٔ چابکیِ ذهن (Task 108) — رکوردهای «فکرِ کم + درستِ زیاد» از همان دفترچه؛
   // زیرمجموعهٔ صادق: رکوردِ بی‌think (قدیمی/بی‌نمونه) هرگز نمی‌شمارد
   const quickThinkers = duelQuickThinkers(ledger);
+  // خانوادهٔ هفتهٔ چابک (Task 110) — همان گیت در مقیاسِ پنجرهٔ ۷روزه؛
+  // پیوستگی به‌جای پراکندگی — سه شانسِ جدا در سه فصل این‌جا شمرده نمی‌شود
+  const quickWeek = duelQuickWeekReport(ledger);
   // خانوادهٔ سرعت (Task 100) — میانگینِ پاداشِ سرعت از همان دفترچه (قراردادِ داور، Task 99)
   const speed = duelSpeedStats(ledger);
   // پنجرهٔ ۷روزه — همان قرارداد موتور: کلیدِ رشته‌ای محلی، مقایسهٔ >=
@@ -210,6 +215,7 @@ export function buildEvalInput(s: {
     duelTopRivalName: topRival?.opponent ?? "",
     duelVerifiedWins: verifiedWins,
     duelQuickThinkers: quickThinkers,
+    duelQuickWeek: quickWeek,
     duelSpeedAvg: speed.avgBonus,
     duelSpeedCorrect: speed.totalCorrect,
   };
@@ -853,6 +859,43 @@ export const BADGES: BadgeDef[] = [
     tier: "gold",
     progress: (s) => `${faNum(Math.min(s.duelQuickThinkers, 7))} از ۷ نبردِ چابک`,
     check: (s) => s.duelQuickThinkers >= 7,
+  },
+  // ---- هفتهٔ چابک (Task 110) — دهمین خانواده: «پیوستگیِ چابکی» — گیتِ
+  // ترکیبیِ «فکرِ کم + درستِ زیاد» در مقیاسِ یک پنجرهٔ ۷روزه. تفاوتِ ماهوی
+  // با چابکیِ ذهن (۱۰۸): آن‌جا سه رکوردِ چابک حتی پراکنده در سه فصل
+  // می‌شمارد؛ این‌جا یک هفتهٔ یک‌پارچه می‌خواهد — میانگینِ وزن‌دارِ فکرِ
+  // کلِ پنجره (هم‌وزنِ فکرِ هفتهٔ ۱۰۹) زیرِ آستانه، نرخِ درستیِ کلِ
+  // پاسخ‌ها بالای ۸۰٪، روی نمونهٔ معنادار (≥۳ نبردِ فکردار، ≥۹ نمونهٔ
+  // فکر، ≥۱۵ پاسخ). دو پله بر سقفِ میانگین: نقره ≤۱٫۵ثانیه (همان
+  // آستانهٔ تک‌رکوردی — یک قرارداد) و طلا ≤۱ثانیه — زیرمجموعهٔ ریاضیِ
+  // طلا⇒نقره (تست-قفل در هر دو جهت). پنجره‌ها لغزان‌اند و لنگرشان روزِ
+  // رکورد — هفتهٔ درخشانِ هر جای دفترچه می‌شمارد، نه فقط هفتهٔ جاری.
+  // رکوردِ بی‌think (قدیمی/بی‌نمونه) در میانگین و شمارِ فکردار هرگز
+  // نمی‌آید؛ نرخِ درستی اما از همهٔ پاسخ‌های پنجره می‌خواند — هفتهٔ
+  // سریعِ بی‌دقت، گیت را نمی‌گذراند.
+  {
+    id: "quick-week",
+    title: "هفتهٔ چابک",
+    desc: "یک هفتهٔ یک‌پارچه با میانگینِ فکر زیر ۱٫۵ ثانیه و ۸۰٪ درستی — چابکیِ پیوسته، نه شانسِ روز",
+    icon: "CalendarClock",
+    tier: "silver",
+    progress: (s) =>
+      `${faNum(Math.min(s.duelQuickWeek.maxThinkful, DUEL_QUICK_WEEK.minThinkful))} از ${faNum(DUEL_QUICK_WEEK.minThinkful)} نبردِ فکردار در یک هفته`,
+    check: (s) => s.duelQuickWeek.qualifying !== null,
+  },
+  {
+    id: "lightning-week",
+    title: "هفتهٔ برق",
+    desc: "هفته‌ای که میانگینِ فکرت زیر یک ثانیه بود — سریع‌ترین هفتهٔ عمرِ نبردت",
+    icon: "Gauge",
+    tier: "gold",
+    progress: (s) =>
+      s.duelQuickWeek.qualifying && s.duelQuickWeek.bestAvgMs !== null
+        ? `${secFa(s.duelQuickWeek.bestAvgMs)} از ۱ ثانیه`
+        : undefined,
+    check: (s) =>
+      s.duelQuickWeek.qualifying !== null &&
+      s.duelQuickWeek.qualifying.avgMs <= DUEL_QUICK_WEEK.goldMs,
   },
 ];
 
