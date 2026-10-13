@@ -115,10 +115,10 @@ export default function SrsPanel() {
   };
 
   const chips = [
-    { icon: CalendarClock, label: "سررسید الآن", value: stats?.due ?? 0, cls: "bg-rose-50 text-rose-600" },
-    { icon: Sprout, label: "در حال یادگیری", value: stats?.learning ?? 0, cls: "bg-amber-50 text-amber-700" },
-    { icon: TrendingUp, label: "مستحکم‌شده", value: stats?.strong ?? 0, cls: "bg-emerald-50 text-emerald-700" },
-    { icon: BookOpenCheck, label: "وارفته", value: stats?.mastered ?? 0, cls: "bg-teal-50 text-teal-700" },
+    { icon: CalendarClock, label: "سررسید الآن", value: stats?.due ?? 0, cls: "c-wash-rose text-rose-600" },
+    { icon: Sprout, label: "در حال یادگیری", value: stats?.learning ?? 0, cls: "c-wash-amber text-amber-700" },
+    { icon: TrendingUp, label: "مستحکم‌شده", value: stats?.strong ?? 0, cls: "c-wash-emerald text-emerald-700" },
+    { icon: BookOpenCheck, label: "وارفته", value: stats?.mastered ?? 0, cls: "c-wash-teal text-teal-700" },
   ];
 
   // donut segments (value + color per SRS state)
@@ -213,7 +213,7 @@ export default function SrsPanel() {
                   <AlarmClock size={12} className="text-rose-500" />
                   سررسید الآن — با یک ضربه مرور کن:
                 </span>
-                <span className="mr-auto rounded-full bg-rose-50 px-2 py-0.5 text-[10px] font-black text-rose-600">
+                <span className="mr-auto rounded-full c-wash-rose px-2 py-0.5 text-[10px] font-black text-rose-600">
                   {faNum(dueInfo.dueTotal)} واژه
                 </span>
                 <button

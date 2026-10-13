@@ -1048,3 +1048,83 @@ describe("globals.css -100 wash kernel (r115)", () => {
     }
   });
 });
+
+describe("globals.css semantic wash layer (Step 9 tranche 4 phase 8 — Task 125)", () => {
+  const css125 = readFileSync(cssPath, "utf8");
+  const lines125 = css125.split("\n");
+
+  it("defines the four c-wash washes exactly once, light var() + dark panel-grade literal", () => {
+    const defs: Record<string, [string, string]> = {
+      "c-wash-rose": ["background-color: var(--color-rose-50);", "background-color: rgba(80, 18, 28, 0.4);"],
+      "c-wash-amber": ["background-color: var(--color-amber-50);", "background-color: rgba(69, 48, 12, 0.45);"],
+      "c-wash-emerald": ["background-color: var(--color-emerald-50);", "background-color: rgba(6, 55, 40, 0.5);"],
+      "c-wash-teal": ["background-color: var(--color-teal-50);", "background-color: rgb(6 55 50 / 0.5);"],
+    };
+    for (const [cls, [light, dark]] of Object.entries(defs)) {
+      expect(lines125.filter((l) => l.trim() === `.${cls} {`), `${cls} light base once`).toHaveLength(1);
+      expect(lines125.filter((l) => l.trim() === `.dark .${cls} {`), `${cls} dark twin once`).toHaveLength(1);
+      const li = lines125.findIndex((l) => l.trim() === `.${cls} {`);
+      expect(lines125[li + 1].trim(), `${cls} light declaration byte-exact`).toBe(light);
+      const di = lines125.findIndex((l) => l.trim() === `.dark .${cls} {`);
+      expect(lines125[di + 1].trim(), `${cls} dark declaration byte-exact (retired scoped literal)`).toBe(dark);
+    }
+  });
+
+  it("never re-grows the retired panel-grade wash retargets (srs-panel/rush-done/vocab-donut)", () => {
+    const retired = [
+      ".srs-panel .bg-rose-50",
+      ".srs-panel .bg-amber-50",
+      ".srs-panel .bg-emerald-50",
+      ".srs-panel .bg-teal-50",
+      ".srs-panel .border-teal-200",
+      ".rush-done .bg-rose-50",
+      ".rush-done .bg-amber-50",
+      ".rush-done .bg-emerald-50",
+      ".vocab-donut .bg-emerald-50",
+      ".srs-panel .srs-fx-expand .text-emerald-600",
+    ];
+    for (const sel of retired) {
+      expect(lines125.filter((l) => l.includes(sel)), `retired wash retarget must stay dead: ${sel}`).toEqual([]);
+    }
+  });
+
+  it("folds the root border winner into .dark .srs-panel (the scoped (0,3,0) rule used to win)", () => {
+    const start = lines125.findIndex((l) => l.trim() === ".dark .srs-panel {");
+    expect(start).toBeGreaterThanOrEqual(0);
+    let depth = 0;
+    let body = "";
+    for (let i = start; i < lines125.length; i++) {
+      body += lines125[i] + "\n";
+      depth += (lines125[i].match(/{/g) ?? []).length;
+      depth -= (lines125[i].match(/}/g) ?? []).length;
+      if (depth <= 0 && i > start) break;
+    }
+    expect(body).toContain("border-color: rgb(19 78 74 / 0.6);");
+    expect(body).not.toContain("rgb(13 100 88 / 0.55)");
+  });
+
+  it("keeps the migrated files on the semantic classes (raw wash matrix, r125 consumer walk)", () => {
+    const plainWash = (text: string) =>
+      text.split("\n").filter((l) => /(^|[^:\-a-z])bg-(rose|amber|emerald|teal)-50(?![0-9/])/.test(l));
+    // srs-panel: all four washes migrated; hover:bg-rose-50/amber-50 stay (kernel consumers)
+    const srs = readFileSync(resolve(process.cwd(), "src/components/study/practice/srs-panel.tsx"), "utf8");
+    expect(plainWash(srs).length, "srs-panel keeps only hover: variants").toBe(0);
+    // vocab-donut: pill migrated; dead soft/track data deleted
+    const donut = readFileSync(resolve(process.cwd(), "src/components/study/practice/vocab-donut.tsx"), "utf8");
+    expect(plainWash(donut).length, "vocab-donut fully migrated").toBe(0);
+    expect(donut).not.toContain("soft:");
+    expect(donut).not.toContain("track:");
+    // rush-view: exactly ONE documented kernel consumer (start-screen record chip)
+    const rush = readFileSync(resolve(process.cwd(), "src/components/study/duel/rush-view.tsx"), "utf8");
+    expect(plainWash(rush).length, "rush-view keeps the start-chip kernel consumer only").toBe(1);
+    // spell-rush: exactly TWO documented kernel consumers (feedback pills in .rush-card)
+    const spell = readFileSync(resolve(process.cwd(), "src/components/study/duel/spell-rush-view.tsx"), "utf8");
+    expect(plainWash(spell).length, "spell-rush keeps the feedback pills kernel consumers only").toBe(2);
+  });
+
+  it("keeps the documented deviant wash rules alive (0.4/0.5/0.6 value deviations)", () => {
+    for (const sel of [".badge-popover .bg-emerald-50", ".report-month .bg-teal-50", ".rush-done .bg-sky-50"]) {
+      expect(lines125.filter((l) => l.includes(sel)), `documented deviant must survive: ${sel}`).toHaveLength(1);
+    }
+  });
+});

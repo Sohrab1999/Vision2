@@ -163,8 +163,12 @@
      active goal dot), amber-300 + rose-300 (text-ink consumers disagree),
      teal-500 (solid bg consumers); ink shades 500-800 stay explicit because
      solid bg-<fam>-600/700 buttons must keep light-scale values. Deviating
-     scoped rules (srs-panel/rush-done/vocab-donut/badge-popover tints,
-     hover:bg-sky-50, rush-hero borders) stay and win by specificity. */
+     scoped rules stay and win by specificity — as of tranche-4 phase 8 the
+     srs-panel/rush-done/vocab-donut WASH deviants (the panel-grade alpha
+     step) retired onto the c-wash-* classes; the remaining documented
+     deviants are badge-popover emerald-50 (0.4), report-month teal-50 (0.6),
+     rush-done sky-50 (0.5) and the ink rules (text-amber-700 #fcd34d band,
+     text-emerald-600 per-family). */
   --color-amber-50: rgba(69, 48, 12, 0.35);
   --color-emerald-50: rgba(6, 55, 40, 0.35);
   /* r114: fuchsia-50 joins the kernel — its solid consumers (duel-code waiting
@@ -661,6 +665,9 @@ body {
 
 /* ---------------- vocab donut dark ---------------- */
 .dark .vocab-donut { background-color: #1c1917; }
+/* tranche-4 phase 8: the percent pill's emerald wash retired onto c-wash-emerald
+   (same value) — the scoped retarget below is gone, the pill carries the class.
+   NOTE: the badge-popover emerald-50 deviant (0.4) still keeps its own rule. */
 /* ink tone text-stone-500 → #a8a29e — canonical group (Step 9 tranche-2; was 12 drifted per-panel copies) */
 .dark .vocab-donut .text-stone-500,.dark .rush-done .text-stone-500,.dark .srs-panel .text-stone-500,
 .dark .rush-board .text-stone-500,.dark .skill-panel .text-stone-500,.dark .report-week .text-stone-500,
@@ -672,7 +679,6 @@ body {
 .dark .rush-board .text-stone-400,.dark .skill-panel .text-stone-400,.dark .report-best .text-stone-400,
 .dark .daily-quests .text-stone-400,.dark .duel-card .text-stone-400,.dark .duel-hud .text-stone-400,
 .dark .duel-done .text-stone-400,.dark .gmetro-dialog .text-stone-400 { color: #8a8580; }
-.dark .vocab-donut .bg-emerald-50 { background-color: rgba(6, 55, 40, 0.5); }
 .dark .vocab-donut .ring-emerald-200 { --tw-ring-color: rgba(52, 211, 153, 0.45); }
 .dark .vocab-donut circle[stroke="#e7e5e4"] { stroke: #37312b; }
 
@@ -739,10 +745,11 @@ body {
 }
 .dark .rush-done .border-stone-200 { border-color: #44403c; }
 .dark .rush-done .border-stone-300 { border-color: #57534e; }
-.dark .rush-done .bg-emerald-50 { background-color: rgba(6, 55, 40, 0.5); }
-.dark .rush-done .bg-rose-50 { background-color: rgba(80, 18, 28, 0.4); }
+/* tranche-4 phase 8: the emerald/rose/amber washes retired onto c-wash-*
+   (same values, painted by the class now); the sky-50 deviant (0.5 vs kernel
+   0.45) keeps its scoped rule — single consumer, not worth a family slot.
+   Ink (text-amber-700) is a different property family — stays. */
 .dark .rush-done .bg-sky-50 { background-color: rgba(8, 47, 60, 0.5); }
-.dark .rush-done .bg-amber-50 { background-color: rgba(69, 48, 12, 0.45); }
 .dark .rush-done .text-amber-700 { color: #fcd34d; }
 
 /* rush play card */
@@ -769,18 +776,21 @@ body {
 .dark .rush-card .bg-orange-50 { background-color: rgba(88, 44, 14, 0.45); }
 
 /* ---------------- SRS panel dark ---------------- */
+/* tranche-4 phase 8 border fold: the root itself carries border-teal-200, and
+   the retired scoped .border-teal-200 rule (0,3,0) used to WIN over this root
+   rule (0,2,0) — the root's effective dark border was ALWAYS rgb(19 78 74 /
+   0.6), never this rule's 0.55 value. The winning value is folded in here and
+   the scoped rule retires; the fx-chips never consumed it either (their
+   .srs-fx-chip painter tied at (0,3,0) and won by source order — unchanged). */
 .dark .srs-panel {
   background-image: linear-gradient(to left, rgb(4 52 46 / 0.45), rgb(6 44 34 / 0.4));
-  border-color: rgb(13 100 88 / 0.55);
+  border-color: rgb(19 78 74 / 0.6);
 }
-.dark .srs-panel .bg-rose-50 { background-color: rgba(80, 18, 28, 0.4); }
-.dark .srs-panel .bg-amber-50 { background-color: rgba(69, 48, 12, 0.45); }
+/* tranche-4 phase 8: the four chip washes (rose/amber/emerald/teal) retired
+   onto c-wash-* — same panel-grade alpha step (0.4/0.45/0.5/0.5), painted by
+   the class now. Ink (text-amber-700) stays: #fcd34d deviates from the global
+   band's #fbbf24 and is a DIFFERENT property family. */
 .dark .srs-panel .text-amber-700 { color: #fcd34d; }
-.dark .srs-panel .bg-emerald-50 { background-color: rgba(6, 55, 40, 0.5); }
-.dark .srs-panel .bg-teal-50 { background-color: rgba(6, 55, 50, 0.5); }
-/* r115: border-teal-100 rides the kernel token (19,78,74 @ 0.5); the pair
-   rule keeps only its still-unkernelized teal-200 half */
-.dark .srs-panel .border-teal-200 { border-color: rgb(19 78 74 / 0.6); }
 /* r87 retarget: all three srs-panel /70 surfaces migrated onto c-veil-70; the
    deviating 0.8 painter follows the class (the .rush-board half had zero
    consumers — retired). srs-due-preview/.srs-fx-expand own rules keep painting
@@ -830,12 +840,14 @@ body {
   background-color: rgb(28 25 23 / 0.8);
   border-color: rgb(13 84 89 / 0.5);
 }
-/* r115: border-teal-100/70 rides the kernel token (19,78,74 @ 0.35 derived) */
+/* r115: border-teal-100/70 rides the kernel token (19,78,74 @ 0.35 derived);
+   the .text-emerald-600 half that used to live here was byte-identical to the
+   panel-wide rule above (subset scope, same value) — pure dedup, retired
+   tranche-4 phase 8. */
 .dark .srs-panel .srs-fx-chip {
   background-color: #1c1917;
   border-color: rgb(13 84 89 / 0.55);
 }
-.dark .srs-panel .srs-fx-expand .text-emerald-600 { color: #34d399; }
 
 /* ---------------- spell buttons (dictation) dark ---------------- */
 .dark .hover\:bg-sky-50:hover { background-color: rgba(8, 47, 60, 0.65); }
@@ -1640,4 +1652,67 @@ html.user-reduce-motion .streak-flame {
 }
 .c-track-80 {
   background-color: color-mix(in oklab, var(--color-stone-200) 80%, transparent);
+}
+
+/* ── Task 125 — tranche 4 phase 8: the TINTED WASH semantic classes ────────
+   R-7's «.c-tip» role for this codebase: the solid tinted washes (stat chips,
+   count/percent pills, done-screen pills) that used to carry the raw utility
+   in light and a SCOPED panel-grade retarget in dark. The kernel already
+   paints every raw bg-*-50 utility at the family base alpha (0.35) in dark;
+   these classes encode the ONE step above it — the "panel-grade wash" (more
+   contrast against tinted panel gradients) — at the exact retired scoped
+   values, byte-identical per family.
+   Mechanism = the c-veil contract (plain author rules, NOT @utility — the
+   4.1.18 pipeline mangles color-carrying declarations): the light declaration
+   IS the compiled utility's own (verbatim var(--color-<fam>-50), chunk-proven
+   r89/r90 shape), so light parity is byte-identical by construction; the
+   .dark twin keeps the retired scoped rule's literal.
+   Family caveat (c-chip/c-veil lesson): unlayered author rules BEAT layered
+   state utilities on the same element — never combine with a conflicting
+   bg state utility; every migrated site is walk-verified plain (no hover:bg-*
+   on the same element; the hover washes keep the raw kernel-driven utility).
+   CONSUMER MATRIX (walk-verified, r125):
+     c-wash-rose    — srs chip «سررسید», srs count pill, rush-done «کل پاسخ‌ها»,
+                      spell-done «غلط/رد»   (was .dark {srs-panel,rush-done} rules)
+     c-wash-amber   — srs chip «در حال یادگیری», rush-done «بیشترین کمبو»,
+                      spell-done «بیشترین کمبو», spell combo chip
+                      (was .dark {srs-panel,rush-done} rules)
+     c-wash-emerald — srs chip «مستحکم‌شده», rush-done «درست», spell-done
+                      «بی‌راهنما», vocab-donut percent pill
+                      (was .dark {srs-panel,rush-done,vocab-donut} rules)
+     c-wash-teal    — srs chip «وارفته»       (was .dark .srs-panel rule)
+   EXCLUSIONS (consumer matrix r125, all documented):
+     • badge-popover emerald-50 (0.4 deviant) + report-month teal-50 (0.6) +
+       rush-done sky-50 (0.5) — deviating values keep their scoped rules.
+     • rush-view start-screen record chip (bg-amber-50) + spell-rush feedback
+       pills (bg-emerald-50/rose-50 inside .rush-card) — KERNEL consumers
+       (family base 0.35, no scoped rule ever existed); they must stay raw.
+     • hover:bg-<fam>-50 variants everywhere — kernel-driven, stay raw.
+   Raw bg-{rose,amber,emerald,teal}-50 must NEVER reappear in the four
+   migrated files beyond the documented kernel consumers (css-hygiene guard
+   locks the matrix). Next phases: ink families (c-ink-*), the remaining
+   deviant consolidation, per-feature CSS extraction (§8.3). */
+.c-wash-rose {
+  background-color: var(--color-rose-50);
+}
+.dark .c-wash-rose {
+  background-color: rgba(80, 18, 28, 0.4);
+}
+.c-wash-amber {
+  background-color: var(--color-amber-50);
+}
+.dark .c-wash-amber {
+  background-color: rgba(69, 48, 12, 0.45);
+}
+.c-wash-emerald {
+  background-color: var(--color-emerald-50);
+}
+.dark .c-wash-emerald {
+  background-color: rgba(6, 55, 40, 0.5);
+}
+.c-wash-teal {
+  background-color: var(--color-teal-50);
+}
+.dark .c-wash-teal {
+  background-color: rgb(6 55 50 / 0.5);
 }

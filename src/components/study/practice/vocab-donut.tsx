@@ -17,9 +17,9 @@ const R = 52;
 const CIRC = 2 * Math.PI * R;
 
 const SEGMENTS = [
-  { id: 1, color: "#059669", track: "text-emerald-600", soft: "bg-emerald-50", bar: "bg-emerald-500" },
-  { id: 2, color: "#d97706", track: "text-amber-600", soft: "bg-amber-50", bar: "bg-amber-500" },
-  { id: 3, color: "#e11d48", track: "text-rose-600", soft: "bg-rose-50", bar: "bg-rose-500" },
+  { id: 1, color: "#059669", bar: "bg-emerald-500" },
+  { id: 2, color: "#d97706", bar: "bg-amber-500" },
+  { id: 3, color: "#e11d48", bar: "bg-rose-500" },
 ] as const;
 
 export default function VocabDonut() {
@@ -105,7 +105,7 @@ export default function VocabDonut() {
                 {faNum(knownTotal)}
               </motion.span>
               <span className="mt-0.5 text-[10.5px] font-bold text-stone-400">از {faNum(totalVocabulary)} واژه</span>
-              <span className="mt-1 rounded-full bg-emerald-50 px-2 py-0.5 text-[10.5px] font-black text-emerald-700 ring-1 ring-emerald-200">
+              <span className="mt-1 rounded-full c-wash-emerald px-2 py-0.5 text-[10.5px] font-black text-emerald-700 ring-1 ring-emerald-200">
                 {faNum(percent)}٪
               </span>
             </div>

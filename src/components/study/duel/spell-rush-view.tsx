@@ -401,10 +401,10 @@ export default function SpellRushView({ onExit }: { onExit?: () => void }) {
           <p className="mb-5 text-sm font-bold text-stone-500">امتیاز کل</p>
 
           <div className="mb-6 flex flex-wrap justify-center gap-2 text-[12px] font-bold">
-            <span className="rounded-full bg-emerald-50 px-3 py-1 text-emerald-700">بی‌راهنما: {faNum(correct)}</span>
+            <span className="rounded-full c-wash-emerald px-3 py-1 text-emerald-700">بی‌راهنما: {faNum(correct)}</span>
             <span className="rounded-full bg-sky-50 px-3 py-1 text-sky-700">با راهنما: {faNum(hintCorrect)}</span>
-            <span className="rounded-full bg-rose-50 px-3 py-1 text-rose-600">غلط/رد: {faNum(answered - correct - hintCorrect)}</span>
-            <span className="rounded-full bg-amber-50 px-3 py-1 text-amber-700">بیشترین کمبو: {faNum(maxCombo)}×</span>
+            <span className="rounded-full c-wash-rose px-3 py-1 text-rose-600">غلط/رد: {faNum(answered - correct - hintCorrect)}</span>
+            <span className="rounded-full c-wash-amber px-3 py-1 text-amber-700">بیشترین کمبو: {faNum(maxCombo)}×</span>
             <span className="rounded-full border border-stone-200 bg-white px-3 py-1 text-stone-600">رکورد: {faNum(spellRushBest)}</span>
           </div>
 
@@ -502,7 +502,7 @@ export default function SpellRushView({ onExit }: { onExit?: () => void }) {
               </span>
             </div>
           </div>
-          <div className={`flex items-center gap-1 rounded-xl px-2.5 py-1.5 ${combo >= 2 ? "bg-amber-50" : "bg-stone-50"}`}>
+          <div className={`flex items-center gap-1 rounded-xl px-2.5 py-1.5 ${combo >= 2 ? "c-wash-amber" : "bg-stone-50"}`}>
             <Flame size={15} className={combo >= 2 ? "text-orange-500" : "text-stone-300"} />
             <span className={`text-lg font-black ${combo >= 2 ? "text-orange-600" : "text-stone-300"}`}>{faNum(combo)}×</span>
           </div>
