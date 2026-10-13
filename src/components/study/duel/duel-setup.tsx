@@ -10,6 +10,7 @@ import {
   duelWinStreak,
   duelBestScore,
   duelForm,
+  duelVerifiedCount,
   type DuelOutcome,
 } from "@/lib/duel-history";
 import type { Conn } from "./duel-types";
@@ -34,6 +35,8 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
   const streak = duelWinStreak(duelHistory);
   const best = duelBestScore(duelHistory);
   const form = duelForm(duelHistory, 5);
+  // Task 96 — زیرمجموعهٔ صادق: چند نبردِ دفترچه رسیدِ امضاشدهٔ داور دارند
+  const verified = duelVerifiedCount(duelHistory);
   const outcomeChip: Record<DuelOutcome, string> = {
     win: "bg-emerald-500",
     loss: "bg-rose-500",
@@ -169,6 +172,19 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
                 <span className={`shrink-0 rounded-lg px-2 py-1 text-[10.5px] font-black text-white ${outcomeChip[r.outcome]}`}>
                   {outcomeLabel[r.outcome]}
                 </span>
+                {/* Task 96 — سپرِ داورگواه روی ردیف‌های دفترچه (خانوادهٔ ۹۴/۹۵:
+                    bg-emerald-50/60 + text-emerald-700 + border-emerald-200 —
+                    هر دو کلاس قانونِ تاریکِ سراسری دارند، صفر CSS تازه) */}
+                {r.receiptSig && (
+                  <span
+                    role="img"
+                    aria-label="داورگواه"
+                    title="رسیدِ امضاشدهٔ داور — این نبرد با امضای سرور تأیید شد"
+                    className="flex shrink-0 items-center rounded-md border border-emerald-200 bg-emerald-50/60 px-1 py-0.5 text-emerald-700"
+                  >
+                    <ShieldCheck size={11} aria-hidden />
+                  </span>
+                )}
                 <span
                   className={`h-2.5 w-2.5 shrink-0 rounded-full ${avatarClasses[r.opponentColor] ?? "bg-stone-400"}`}
                   aria-hidden
@@ -193,6 +209,18 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
               </div>
             ))}
           </div>
+
+          {/* Task 96 — پانوشتِ زیرمجموعهٔ صادق (الگوی تسک ۹۵): نیمی‌داورگواه
+              باید نیمی دیده شود؛ فقط وقتی دست‌کم یک رسید هست رندر می‌شود */}
+          {verified > 0 && (
+            <p className="mt-3 flex items-center justify-center gap-1.5 text-[11.5px] font-bold text-stone-400">
+              {/* 700 نه ۶۰۰ — قاعدهٔ تاریکِ سراسریِ 700 را می‌گیرد (قاعدهٔ 600 اسکوپ‌دار است) */}
+              <ShieldCheck size={12} className="text-emerald-700" aria-hidden />
+              <span>
+                {faNum(verified)} از {faNum(duelHistory.length)} نبردِ دفترچه با رسیدِ امضاشدهٔ داور تأیید می‌شود
+              </span>
+            </p>
+          )}
 
           {duelHistory.length > 5 && (
             <p className="mt-3 text-center text-[11.5px] font-bold text-stone-400">

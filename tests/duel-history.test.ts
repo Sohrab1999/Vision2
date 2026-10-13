@@ -8,6 +8,7 @@ import {
   pushDuelRecord,
   duelWinStreak,
   duelBestScore,
+  duelVerifiedCount,
   duelForm,
   sanitizeDuelHistory,
   mergeDuelHistory,
@@ -203,6 +204,68 @@ describe("sanitizeDuelHistory + mergeDuelHistory", () => {
     const far = Array.from({ length: 20 }, (_, i) => rec({ id: `d${100 + i}` }));
     expect(mergeDuelHistory([], far)).toHaveLength(DUEL_HISTORY_CAP);
     expect(mergeDuelHistory([], far)[0].id).toBe("d119"); // بزرگ‌ترین id جلو
+  });
+});
+
+// ---------------- تسک ۹۶ — رسیدِ داور روی رکوردهای دفترچه ----------------
+
+const SIG = "a".repeat(64);
+const SIG2 = "f".repeat(64);
+
+describe("buildDuelRecord — receiptSig (Task 96)", () => {
+  it("sig سالم ذخیره می‌شود؛ نامشکل/غایب فیلد ثبت نمی‌کند", () => {
+    const withSig = buildDuelRecord(endPayload(), "me", NOW, STARTED + 90_000, SIG)!;
+    expect(withSig.receiptSig).toBe(SIG);
+    // نامشکل: رشتهٔ کوتاه/غیرهگز — هیچ
+    expect(buildDuelRecord(endPayload(), "me", NOW, 0, "zz")!.receiptSig).toBeUndefined();
+    expect(buildDuelRecord(endPayload(), "me", NOW, 0, "g".repeat(64))!.receiptSig).toBeUndefined();
+    expect(buildDuelRecord(endPayload(), "me", NOW, 0, SIG + "0")!.receiptSig).toBeUndefined(); // ۶۵ نویسه
+    // غایب/null → فیلدِ رکوردهای قدیمی
+    expect(buildDuelRecord(endPayload(), "me", NOW)!.receiptSig).toBeUndefined();
+    expect(buildDuelRecord(endPayload(), "me", NOW, 0, null)!.receiptSig).toBeUndefined();
+  });
+
+  it("باخت/مساوی هم رسید دارند — رسید برای دو طرف است، نه فقط برنده", () => {
+    expect(buildDuelRecord(endPayload({ winner: "opp" }), "me", NOW, 0, SIG2)!.receiptSig).toBe(SIG2);
+    expect(buildDuelRecord(endPayload({ winner: null }), "me", NOW, 0, SIG2)!.receiptSig).toBe(SIG2);
+  });
+});
+
+describe("sanitize + verifiedCount + merge upgrade (Task 96)", () => {
+  it("sanitizeDuelRecord: sig سالم می‌ماند، sig خراب می‌افتد، رکوردِ بی‌sig (قدیمی) سرِ پا می‌ماند", () => {
+    expect(sanitizeDuelRecord(rec({ receiptSig: SIG }))!.receiptSig).toBe(SIG);
+    expect(sanitizeDuelRecord(rec({ receiptSig: "Q".repeat(64) }))!.receiptSig).toBeUndefined();
+    expect(sanitizeDuelRecord(rec({ receiptSig: 12345 as unknown as string }))!.receiptSig).toBeUndefined();
+    const legacy = sanitizeDuelRecord(rec());
+    expect(legacy).not.toBeNull();
+    expect(legacy!.receiptSig).toBeUndefined();
+    // idempotent: خروجیِ sanitize دوباره sanitize شده همان می‌ماند
+    expect(sanitizeDuelRecord(legacy!)).toEqual(legacy);
+  });
+
+  it("duelVerifiedCount: زیرمجموعهٔ صادق — صفر روی دفترچهٔ قدیمی", () => {
+    expect(duelVerifiedCount([])).toBe(0);
+    expect(duelVerifiedCount([rec(), rec()])).toBe(0);
+    expect(duelVerifiedCount([rec({ receiptSig: SIG }), rec(), rec({ receiptSig: SIG2 })])).toBe(2);
+  });
+
+  it("sanitizeAll فیلدِ تازه را از snapshot منتقل می‌کند", () => {
+    const d = sanitizeAll({ duelHistory: [rec({ id: "d9", receiptSig: SIG })] });
+    expect(d.duelHistory![0].receiptSig).toBe(SIG);
+  });
+
+  it("merge هم‌id: رکوردِ رسیددار کامل‌تر است — ارتقا بله، تنزل هرگز", () => {
+    // محلیِ بی‌sig + دوریِ sigدار → ارتقا
+    const up = mergeDuelHistory([rec({ id: "d1" })], [rec({ id: "d1", receiptSig: SIG })]);
+    expect(up.find((x) => x.id === "d1")!.receiptSig).toBe(SIG);
+    // محلیِ sigدار + دوریِ بی‌sig → محلی می‌ماند (تنزل نه)
+    const keep = mergeDuelHistory([rec({ id: "d1", receiptSig: SIG, myScore: 777 })], [rec({ id: "d1", myScore: 42 })]);
+    const k = keep.find((x) => x.id === "d1")!;
+    expect(k.receiptSig).toBe(SIG);
+    expect(k.myScore).toBe(777);
+    // هر دو بی‌sig → رفتارِ قدیمی: محلی می‌ماند
+    const legacy = mergeDuelHistory([rec({ id: "d2", myScore: 1200 })], [rec({ id: "d2", myScore: 7 })]);
+    expect(legacy.find((x) => x.id === "d2")!.myScore).toBe(1200);
   });
 });
 

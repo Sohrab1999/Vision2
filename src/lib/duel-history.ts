@@ -34,6 +34,12 @@ export interface DuelRecord {
   total: number;
   /** ثانیه‌های من تا پایان (myFinishAt−startedAt؛ فورفیت/تایم‌اوت → ساعتِ پایان) */
   durationSec: number;
+  /**
+   * Task 96 — رسیدِ امضاشدهٔ داور (۳۰۰۳) برای همین نبرد، فقط وقتی رسیدِ سالم
+   * به دست رسید (Task 94). رکوردهای قدیمی‌تر و نبردهایِ سرورِ قدیمی این فیلد
+   * را ندارند — نمایشِ «داورگواه» باید زیرمجموعهٔ صادق باشد، نه وضعیتِ دودویی.
+   */
+  receiptSig?: string;
 }
 
 /** سقف دفترچه — جدیدترین‌ها می‌مانند (هم‌سقف goalMetDays سبکِ union) */
@@ -45,6 +51,13 @@ const clampInt = (v: unknown, max: number): number => {
   const n = typeof v === "number" && Number.isFinite(v) ? Math.round(v) : 0;
   return Math.min(max, Math.max(0, n));
 };
+
+// امضای رسید = hex ۶۴نویسه‌ایِ HMAC-SHA256ِ داور (Task 94). اینجا فقط شکل
+// سنجیده می‌شود — درستیِ امضا کارِ سرور است؛ دفترچه فقط حاملِ سند است.
+const SIG_RE = /^[0-9a-f]{64}$/;
+
+const sigOk = (v: unknown): string | undefined =>
+  typeof v === "string" && SIG_RE.test(v) ? v : undefined;
 
 export const duelDayKey = (d = new Date()): string =>
   `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
@@ -65,7 +78,9 @@ export function buildDuelRecord(
   },
   sid: string,
   now: number,
-  myFinishAt = 0
+  myFinishAt = 0,
+  /** Task 96 — sig رسیدِ داور از EndPayload؛ نامشکل یا غایب → فیلد ثبت نمی‌شود */
+  receiptSig?: string | null
 ): DuelRecord | null {
   const mine = end.players.find((p) => p.sid === sid);
   if (!mine) return null;
@@ -89,6 +104,7 @@ export function buildDuelRecord(
     answered: clampInt(mine.answered, 999),
     total: clampInt(end.total, 999),
     durationSec,
+    receiptSig: sigOk(receiptSig),
   };
 }
 
@@ -110,6 +126,15 @@ export function duelWinStreak(records: DuelRecord[]): number {
 /** بهترین امتیاز شخصی در دفترچه (۰ اگر خالی) */
 export function duelBestScore(records: DuelRecord[]): number {
   return records.reduce((m, r) => Math.max(m, r.myScore), 0);
+}
+
+/**
+ * Task 96 — چند رکوردِ دفترچه رسیدِ داور دارند (زیرمجموعهٔ صادق).
+ * الگوی تسک ۹۵: شمارندهٔ زیرمجموعه بهتر از وضعیتِ دودویی است — نیمی‌داورگواه
+ * باید نیمی دیده شود.
+ */
+export function duelVerifiedCount(records: DuelRecord[]): number {
+  return records.reduce((n, r) => (r.receiptSig ? n + 1 : n), 0);
 }
 
 /** فرم آخرین n نبرد (جدید→قدیم) برای نشان‌های رنگی */
@@ -146,6 +171,8 @@ export function sanitizeDuelRecord(v: unknown): DuelRecord | null {
     answered: clampInt(r.answered, 999),
     total: clampInt(r.total, 999),
     durationSec: clampInt(r.durationSec, 7200),
+    // Task 96 — sig خراب/جعلی می‌افتد؛ رکوردِ بدونِ sig (قدیمی) سرِ پا می‌ماند
+    receiptSig: sigOk(r.receiptSig),
   };
 }
 
@@ -174,6 +201,15 @@ export function mergeDuelHistory(
   r: DuelRecord[] | undefined
 ): DuelRecord[] {
   const map = new Map<string, DuelRecord>();
-  for (const rec of [...(l ?? []), ...(r ?? [])]) if (!map.has(rec.id)) map.set(rec.id, rec);
+  for (const rec of [...(l ?? []), ...(r ?? [])]) {
+    const prev = map.get(rec.id);
+    if (!prev) {
+      map.set(rec.id, rec);
+      continue;
+    }
+    // Task 96 — هم‌id: رکوردِ رسیددار کامل‌تر است (رسید فقط روی دستگاهی که
+    // بعد از تسک ۹۴ persist کرده می‌نشیند)؛ ارتقا بیدردسر، هرگز تنزل نه.
+    if (!prev.receiptSig && rec.receiptSig) map.set(rec.id, rec);
+  }
   return [...map.values()].sort((a, b) => (a.id < b.id ? 1 : -1)).slice(0, DUEL_HISTORY_CAP);
 }
