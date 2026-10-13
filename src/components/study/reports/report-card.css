@@ -46,3 +46,13 @@
    task 130) — 0.6, one step DEEPER than the panel grade (0.5): it sits on
    the month block's own translucent surface. */
 .dark .report-month [class*="bg-stone-200"] { background-color: rgb(55 49 43 / 0.7); }
+
+/* ---------------- report print button (dark) ---------------- */
+/* §8.3 wave 6 (task 143): the last single-owner report residue in globals
+   moved verbatim beside its owner. Emerald-border button tuned for the dark
+   dialog: stone-900 surface + emerald-800 border (0.6) + emerald-300 ink;
+   hover one step lighter (emerald-950 at 0.6). The body.print-report print
+   band stays in globals.css per the wave-1 protocol (print wins wherever
+   it lives). */
+.dark .report-print-btn { background-color: #1c1917; border-color: rgb(4 120 87 / 0.6); color: #6ee7b7; }
+.dark .report-print-btn:hover { background-color: rgb(6 44 34 / 0.6); }

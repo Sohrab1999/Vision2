@@ -263,9 +263,16 @@ describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
     // elevated-surface canonical group (twelve families). Every moved rule
     // was single-member — the removal unmasked NO new mergeable pair (3a
     // checkpoint re-run clean). Growth from here must consolidate, not add.
+    // task 143 (§8.3 wave 6): re-based 275 → 273 — the last single-owner
+    // report residue (the .dark .report-print-btn pair, 2 selector lines →
+    // reports/report-card.css, appended to the wave-1 file) moved beside its
+    // owner; the body.print-report print band stays per the wave-1 protocol
+    // and the report members of the ink canonical groups + orange painters
+    // stay (multi-family). Removal was 2 single-member rules — 3a checkpoint
+    // re-run clean. Growth from here must consolidate, not add.
     const sel = lines.filter((l) => /^\s*\.[a-z]/.test(l) && !l.includes("→")).length;
     expect(sel).toBeLessThanOrEqual(505);
-    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(275);
+    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(273);
   });
 });
 
@@ -1359,7 +1366,7 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
     "src/components/study/duel/spell-input.css": [".dark .spell-input {", ".dark .spell-input:focus {"],
     "src/components/study/practice/srs-panel.css": [".srs-panel .border-white\\/60", ".dark .srs-panel {", ".dark .srs-panel .srs-due-chip {"],
     "src/components/study/practice/skill-panel.css": [".dark .skill-panel { background-color: #1c1917; border-color: rgb(106 44 112 / 0.5); }", ".skill-weak-cta"],
-    "src/components/study/reports/report-card.css": [".dark .report-dialog {", ".dark .report-foot {", ".dark .report-month { background-color: rgb(28 25 23 / 0.6); border-color: #37312b; }"],
+    "src/components/study/reports/report-card.css": [".dark .report-dialog {", ".dark .report-foot {", ".dark .report-month { background-color: rgb(28 25 23 / 0.6); border-color: #37312b; }", ".dark .report-print-btn { background-color: #1c1917; border-color: rgb(4 120 87 / 0.6); color: #6ee7b7; }", ".dark .report-print-btn:hover { background-color: rgb(6 44 34 / 0.6); }"],
     // wave 3 (task 137) — the A4 paper family; the print band stays global
     "src/components/study/reports/official-report.css": [".official-overlay { background-color: rgb(12 10 9 / 0.68); }", ".dark .official-report {\n  --color-stone-50: #fafaf9;", ".or-table th { background-color: #f5f5f4;", ".or-teacher { background-color: #faf5ff;", ".or-chip-fresh {"],
     // wave 4 (task 139)
@@ -1447,6 +1454,12 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
       "\n.dark .daily-quests .quest-row.border-emerald-300",
       "\n.dark .daily-quests .text-emerald-800",
       "\n.dark .daily-quests .text-emerald-600",
+      // wave 6 (task 143) — \n-prefixed: the stayed print band carries
+      // body.print-report .report-print-btn (descendant) — a bare substring
+      // would false-positive (wave-3 script lesson); :hover is suffixed with
+      // " {" to stay distinct from the plain head
+      "\n.dark .report-print-btn {",
+      "\n.dark .report-print-btn:hover {",
     ]) {
       expect(css, `globals.css still carries a moved rule: ${gone}`).not.toContain(gone);
     }

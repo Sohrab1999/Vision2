@@ -1,6 +1,7 @@
 /* Per-feature stylesheets — §8.3 extraction (wave 1: task 133, wave 2: task
-   135, wave 3: task 137, wave 4: task 139, wave 5: task 141 — seventeen
-   files).
+   135, wave 3: task 137, wave 4: task 139, wave 5: task 141, wave 6: task 143
+   — seventeen files; wave 6 appended the .dark .report-print-btn pair to the
+   existing reports/report-card.css, no new file).
    Each file lives BESIDE its owning component and is imported here so the
    rules are ALWAYS part of the initial CSS — the same guarantee globals.css
    had before the extraction (lazy views keep zero first-paint risk), and the

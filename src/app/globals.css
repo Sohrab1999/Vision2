@@ -631,6 +631,9 @@ body {
 
 /* ------------------------------------------------------------------ */
 /* r15 — report print stylesheet + daily-quests residual residents     */
+/* (task 143, wave 6: the last single-owner report residue — the .dark
+   .report-print-btn pair — also left for reports/report-card.css; what
+   remains report-adjacent here is the print band + canonical groups) */
 /* ------------------------------------------------------------------ */
 
 /* §8.3 wave 5 (task 141): the daily-quests family — the reward-shimmer
@@ -644,9 +647,10 @@ body {
 /* the daily-quests text-amber-700 rule retired DEAD in phase 9 (task 127):
    the component never rendered a text-amber-700 consumer — no migration. */
 
-/* report print button (dark) */
-.dark .report-print-btn { background-color: #1c1917; border-color: rgb(4 120 87 / 0.6); color: #6ee7b7; }
-.dark .report-print-btn:hover { background-color: rgb(6 44 34 / 0.6); }
+/* report print button (dark) — §8.3 wave 6 (task 143): moved verbatim
+   beside its owner (reports/report-card.css). The body.print-report print
+   band below stays global per the wave-1 protocol (print wins wherever
+   it lives). */
 
 /* ---------------- appendix table — mobile horizontal scroll ---------------- */
 .verbs-table { min-width: 540px; }
