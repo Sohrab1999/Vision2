@@ -1,4 +1,5 @@
-/* Per-feature stylesheets — §8.3 extraction (wave 1: task 133).
+/* Per-feature stylesheets — §8.3 extraction (wave 1: task 133, wave 2: task
+   135, wave 3: task 137 — fifteen files).
    Each file lives BESIDE its owning component and is imported here so the
    rules are ALWAYS part of the initial CSS — the same guarantee globals.css
    had before the extraction (lazy views keep zero first-paint risk), and the
@@ -14,6 +15,7 @@
 @import "../components/study/practice/srs-panel.css";
 @import "../components/study/practice/skill-panel.css";
 @import "../components/study/reports/report-card.css";
+@import "../components/study/reports/official-report.css";
 @import "../components/study/shared/streak-flame.css";
 @import "../components/study/shell/footer.css";
 @import "../components/study/home/quote-band.css";

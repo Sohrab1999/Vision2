@@ -33,6 +33,8 @@ const featureCssPaths = [
   "src/components/study/quiz/quiz-result.css",
   "src/components/study/practice/weekly-chart.css",
   "src/components/study/lesson/word-of-day.css",
+  // wave 3 (task 137): the official-report A4 paper family
+  "src/components/study/reports/official-report.css",
 ];
 const readEffectiveCss = (): string =>
   readFileSync(cssPath, "utf8") +
@@ -106,7 +108,11 @@ describe("globals.css surface-token kernel (Step 9 tranche-2)", () => {
 
   it("keeps per-panel ink tones canonical (no drifted copies of a tone value)", () => {
     // every 2-hop scoped dark rule `.dark .Panel .text-stone-N` must use one of
-    // the frozen canonical values per shade — new one-off drifts fail here
+    // the frozen canonical values per shade — new one-off drifts fail here.
+    // Scans the EFFECTIVE css (globals + the per-feature files): moved panels
+    // keep their tone contracts beside their owners (wave 3: report-month's
+    // #716b63 now lives in reports/report-card.css) — a drift anywhere fails.
+    const effLines = readEffectiveCss().split("\n");
     const CANON: Record<string, string[]> = {
       "300": ["#57534e"],
       "400": ["#716b63", "#78716c", "#8a8580", "#a8a29e"],
@@ -117,7 +123,10 @@ describe("globals.css surface-token kernel (Step 9 tranche-2)", () => {
     };
     const re = /^\.dark \.[A-Za-z0-9_\\/.-]+ \.text-stone-(\d+)\s*[,{]/;
     const seen = new Map<string, Set<string>>();
-    for (const raw of lines) {
+    // scans the EFFECTIVE css (globals + the per-feature files): moved panels
+    // keep their tone contracts beside their owners (wave 3: report-month's
+    // #716b63 now lives in reports/report-card.css) — a drift anywhere fails
+    for (const raw of readEffectiveCss().split("\n")) {
       const l = raw.trim();
       const m = l.match(re);
       if (!m) continue;
@@ -223,9 +232,16 @@ describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
     // rule (zero TSX consumers) was buried. Cross-family canonical groups,
     // the surface clusters and utility overrides stayed. Growth from here
     // must consolidate, not add.
+    // task 137 (§8.3 wave 3): re-based 378 → 330 — the A4 paper family (the
+    // r27 or-* band + the task-124 teacher-judgment colors, 89 lines →
+    // reports/official-report.css) and the r14 report-month cluster (→
+    // reports/report-card.css) moved beside their owners; the print band
+    // (body.print-official, !important) stayed global per the wave-1
+    // protocol. Cross-family canonical groups, the surface clusters and
+    // utility overrides stayed. Growth from here must consolidate, not add.
     const sel = lines.filter((l) => /^\s*\.[a-z]/.test(l) && !l.includes("→")).length;
     expect(sel).toBeLessThanOrEqual(505);
-    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(378);
+    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(330);
   });
 });
 
@@ -1305,7 +1321,7 @@ describe("globals.css semantic ink layer (Step 9 tranche 4 phase 9 — Task 127)
   });
 });
 
-describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task 135)", () => {
+describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task 135, wave 3 — task 137)", () => {
   // the r12 band's single-family rules now live beside their owners; the
   // manifest (src/app/features.css) keeps them always-loaded and at cascade
   // end — the wave-1 isolation scan proved no equal-specificity competition
@@ -1317,7 +1333,9 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
     "src/components/study/duel/spell-input.css": [".dark .spell-input {", ".dark .spell-input:focus {"],
     "src/components/study/practice/srs-panel.css": [".srs-panel .border-white\\/60", ".dark .srs-panel {", ".dark .srs-panel .srs-due-chip {"],
     "src/components/study/practice/skill-panel.css": [".dark .skill-panel { background-color: #1c1917; border-color: rgb(106 44 112 / 0.5); }", ".skill-weak-cta"],
-    "src/components/study/reports/report-card.css": [".dark .report-dialog {", ".dark .report-foot {"],
+    "src/components/study/reports/report-card.css": [".dark .report-dialog {", ".dark .report-foot {", ".dark .report-month { background-color: rgb(28 25 23 / 0.6); border-color: #37312b; }"],
+    // wave 3 (task 137) — the A4 paper family; the print band stays global
+    "src/components/study/reports/official-report.css": [".official-overlay { background-color: rgb(12 10 9 / 0.68); }", ".dark .official-report {\n  --color-stone-50: #fafaf9;", ".or-table th { background-color: #f5f5f4;", ".or-teacher { background-color: #faf5ff;", ".or-chip-fresh {"],
     // wave 2 (task 135)
     "src/components/study/shared/streak-flame.css": [".streak-flame {", "@keyframes flame-flicker {"],
     "src/components/study/shell/footer.css": [".footer-band {", ".dark .footer-band {"],
@@ -1366,6 +1384,16 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
       ".dark .word-day .bg-emerald-600",
       ".badge-popover { animation: pop-fade",
       ".dictation-box {",
+      // wave 3 (task 137) — \n-prefixed: the surviving print band references
+      // some selectors as body.print-official descendants, so bare substrings
+      // would false-positive (wave-3 script lesson)
+      "\n.official-overlay {",
+      "\n.or-band {",
+      "\n.or-table th {",
+      "\n.or-teacher {",
+      "\n.or-chip-fresh {",
+      "\n.dark .report-month {",
+      "--color-emerald-100: #d0fae5",
     ]) {
       expect(css, `globals.css still carries a moved rule: ${gone}`).not.toContain(gone);
     }
@@ -1383,7 +1411,7 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
     expect(css).toContain(".dark .hover\\:bg-violet-50:hover");
   });
 
-  it("features.css manifest imports all fourteen files; layout.tsx loads it right after globals.css", () => {
+  it("features.css manifest imports all fifteen files; layout.tsx loads it right after globals.css", () => {
     const manifest = readFileSync(resolve(process.cwd(), "src/app/features.css"), "utf8");
     for (const p of featureCssPaths) {
       expect(manifest, `manifest line missing for ${p}`).toContain(`@import "${p.replace("src/", "../")}";`);

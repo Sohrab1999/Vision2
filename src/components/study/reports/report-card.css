@@ -34,3 +34,15 @@
   border-color: rgb(6 95 70 / 0.6);
 }
 .dark .report-foot .text-emerald-800 { color: #a7f3d0; }
+
+/* ---------------- monthly report band (§8.3 wave 3 — task 137) ----------------
+   Verbatim from the r14 band of globals.css — owner: reports/report-card.tsx
+   (the monthly block renders inside the report dialog). */
+/* monthly report band */
+.dark .report-month { background-color: rgb(28 25 23 / 0.6); border-color: #37312b; }
+.dark .report-month .text-stone-700 { color: #d6d3cf; }
+.dark .report-month .text-stone-400 { color: #716b63; }
+/* the «جمع کل» teal chip retired onto c-wash-teal-deep (tranche 4 phase 10,
+   task 130) — 0.6, one step DEEPER than the panel grade (0.5): it sits on
+   the month block's own translucent surface. */
+.dark .report-month [class*="bg-stone-200"] { background-color: rgb(55 49 43 / 0.7); }
