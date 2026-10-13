@@ -453,7 +453,7 @@ describe("رانِ ترکیبی — هفتهٔ دیکتهٔ پیوسته (Task 8
     expect(byId("dictation-run").title).toBe("هفتهٔ دیکتهٔ پیوسته");
     expect(byId("dictation-run").tier).toBe("gold");
     expect(byId("dictation-run").icon).toBe("SpellCheck2");
-    expect(BADGES.length).toBe(40);
+    expect(BADGES.length).toBe(41);
   });
 
   it("قراردادِ شمارِ روز ≠ جمع: دو دیکته در یک روز هنوز یک روزِ دیکته‌دار است", () => {
@@ -748,7 +748,7 @@ describe("رانِ مرور — هفتهٔ مرور (Task 88)", () => {
     expect(byId("review-run").title).toBe("هفتهٔ مرور");
     expect(byId("review-run").tier).toBe("silver");
     expect(byId("review-run").icon).toBe("History");
-    expect(BADGES.length).toBe(40);
+    expect(BADGES.length).toBe(41);
     const one = base({ dayHistory: { [w(2)]: dh({ day: w(2), reviews: 1 }) } });
     expect(byId("review-run").progress!(one)).toBe("۱ از ۷ روزِ این هفته");
   });
@@ -839,7 +839,7 @@ describe("رانِ سه‌گانه — هفتهٔ سه‌گانه (Task 89)", ()
     expect(byId("triple-run").title).toBe("هفتهٔ سه‌گانه");
     expect(byId("triple-run").tier).toBe("gold");
     expect(byId("triple-run").icon).toBe("Crown");
-    expect(BADGES.length).toBe(40);
+    expect(BADGES.length).toBe(41);
     const mixed = base({ dayHistory: { ...tripleWeek(), [w(3)]: dh({ day: w(3), reviews: 1, quizzes: 1, dictation: 0 }) } });
     // دیکته ۶ روز / آزمون ۷ / مرور ۷ — ضعیف‌ترین حلقه پیشرفت را می‌گوید
     expect(byId("triple-run").progress!(mixed)).toBe("۶ از ۷ روزِ سه‌گانهٔ این هفته");
@@ -937,7 +937,7 @@ describe("ماراتن — رانِ دوهفته‌ای (Task 90)", () => {
     expect(byId("marathon-run").title).toBe("ماراتنِ دوهفته‌ای");
     expect(byId("marathon-run").tier).toBe("gold");
     expect(byId("marathon-run").icon).toBe("Trophy");
-    expect(BADGES.length).toBe(40);
+    expect(BADGES.length).toBe(41);
     // دیکته ۱۳ روز / آزمون ۱۴ / مرور ۱۴ — ضعیف‌ترین حلقه پیشرفت را می‌گوید
     const thirteen = base({
       dayHistory: {
@@ -1052,7 +1052,7 @@ describe("خانوادهٔ حضور — ماهِ حاضر و ماهِ درخشا
     expect(byId("presence-month-full").title).toBe("ماهِ درخشان");
     expect(byId("presence-month-full").tier).toBe("gold");
     expect(byId("presence-month-full").icon).toBe("Sparkles");
-    expect(BADGES.length).toBe(40);
+    expect(BADGES.length).toBe(41);
     const twentyFour = base({ dayHistory: presenceDays([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]) });
     expect(twentyFour.activeDays35).toBe(25);
     expect(byId("presence-month").progress!(twentyFour)).toBe("۲۵ از ۲۵ روزِ فعال");
@@ -1124,6 +1124,128 @@ describe("خانوادهٔ حضور — ماهِ حاضر و ماهِ درخشا
     expect(absent.activeDays35).toBe(0);
     expect(ids(absent)).not.toContain("presence-month");
     expect(ids(absent)).not.toContain("presence-month-full");
+  });
+});
+
+describe("هفتهٔ پنج‌گانه — خانوادهٔ تنوع (Task 93)", () => {
+  const w = (n: number) => daysAgoKey(n);
+  const dh = (over: Record<string, unknown>) => ({
+    day: "",
+    reviews: 0,
+    quizzes: 0,
+    words: 0,
+    dictation: 0,
+    rush: 0,
+    ...over,
+  });
+
+  it("wording و تیر و آیکن — طلایی با Puzzle؛ رجیستری ۴۱ شد؛ پیشرفتِ شمارِ مهارت‌ها", () => {
+    expect(byId("five-skill-week").title).toBe("هفتهٔ پنج‌گانه");
+    expect(byId("five-skill-week").tier).toBe("gold");
+    expect(byId("five-skill-week").icon).toBe("Puzzle");
+    expect(BADGES.length).toBe(41);
+    // سه مهارت حاضر → «۳ از ۵ مهارت»
+    const three = base({
+      dayHistory: {
+        [w(1)]: dh({ day: w(1), reviews: 2 }),
+        [w(2)]: dh({ day: w(2), quizzes: 1 }),
+        [w(3)]: dh({ day: w(3), dictation: 1 }),
+      },
+    });
+    expect(three.wordsDays7).toBe(0);
+    expect(three.rushDays7).toBe(0);
+    expect(byId("five-skill-week").progress!(three)).toBe("۳ از ۵ مهارت");
+    expect(ids(three)).not.toContain("five-skill-week");
+  });
+
+  it("قراردادِ تنوع-در-پنجره: حتی یک روزِ پنج‌فعالیه شرط را برآورده می‌کند — معیار حضورِ هر پنج مهارت در پنجره است نه پراکندگی", () => {
+    const mega = base({ dayHistory: { [w(3)]: dh({ day: w(3), reviews: 1, quizzes: 1, dictation: 1, words: 1, rush: 1 }) } });
+    expect(mega.reviewsDays7).toBe(1);
+    expect(mega.quizDays7).toBe(1);
+    expect(mega.dictationDays7).toBe(1);
+    expect(mega.wordsDays7).toBe(1);
+    expect(mega.rushDays7).toBe(1);
+    expect(byId("five-skill-week").progress!(mega)).toBe("۵ از ۵ مهارت");
+    expect(ids(mega)).toContain("five-skill-week");
+    // پخش‌شده روی پنج روز هم دقیقاً همین‌قدر باز می‌کند
+    const spread = base({
+      dayHistory: {
+        [w(0)]: dh({ day: w(0), reviews: 1 }),
+        [w(1)]: dh({ day: w(1), quizzes: 1 }),
+        [w(2)]: dh({ day: w(2), dictation: 1 }),
+        [w(4)]: dh({ day: w(4), words: 1 }),
+        [w(6)]: dh({ day: w(6), rush: 1 }),
+      },
+    });
+    expect(ids(spread)).toContain("five-skill-week");
+  });
+
+  it("قفلِ متقابل: پنج‌گانهٔ باز یعنی dictation7>0 و quizzes7>0 — بی‌دیکته و بی‌آزمون هرگز هم‌باز نمی‌شوند", () => {
+    const five = base({
+      dayHistory: {
+        [w(0)]: dh({ day: w(0), reviews: 1 }),
+        [w(1)]: dh({ day: w(1), quizzes: 1 }),
+        [w(2)]: dh({ day: w(2), dictation: 1 }),
+        [w(4)]: dh({ day: w(4), words: 1 }),
+        [w(6)]: dh({ day: w(6), rush: 1 }),
+      },
+    });
+    expect(ids(five)).toContain("five-skill-week");
+    expect(ids(five)).not.toContain("week-no-dictation");
+    expect(ids(five)).not.toContain("week-no-exam");
+  });
+
+  it("استقلال: تنوع ران نیست — پنج مهارتِ یک‌باره هیچ رانِ ۷روزه‌ای را باز نمی‌کند و به هدف هم کاری ندارد", () => {
+    const five = base({
+      dayHistory: {
+        [w(0)]: dh({ day: w(0), reviews: 1 }),
+        [w(1)]: dh({ day: w(1), quizzes: 1 }),
+        [w(2)]: dh({ day: w(2), dictation: 1 }),
+        [w(4)]: dh({ day: w(4), words: 1 }),
+        [w(6)]: dh({ day: w(6), rush: 1 }),
+      },
+    });
+    expect(ids(five)).toContain("five-skill-week");
+    expect(ids(five)).not.toContain("dictation-run");
+    expect(ids(five)).not.toContain("exam-run");
+    expect(ids(five)).not.toContain("review-run");
+    expect(ids(five)).not.toContain("cage-free");
+    expect(ids(five)).not.toContain("goal-week");
+  });
+
+  it("مرزِ پنجره و fallbackِ امروز: مهارتِ w(6) آخرین روزِ پنجره است و w(7) بیرون؛ امروزِ dayStatِ برق‌آسا مهارتِ پنجم را کامل می‌کند", () => {
+    const withEdge = base({
+      dayHistory: {
+        [w(6)]: dh({ day: w(6), reviews: 1 }),
+        [w(1)]: dh({ day: w(1), quizzes: 1 }),
+        [w(2)]: dh({ day: w(2), dictation: 1 }),
+        [w(4)]: dh({ day: w(4), words: 1 }),
+      },
+      dayStat: { day: w(0), reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 2 },
+    });
+    expect(withEdge.reviewsDays7).toBe(1);
+    expect(withEdge.rushDays7).toBe(1);
+    expect(ids(withEdge)).toContain("five-skill-week");
+    const beyond = base({
+      dayHistory: {
+        [w(7)]: dh({ day: w(7), rush: 1 }),
+        [w(1)]: dh({ day: w(1), reviews: 1, quizzes: 1, dictation: 1, words: 1 }),
+      },
+    });
+    expect(beyond.rushDays7).toBe(0);
+    expect(ids(beyond)).not.toContain("five-skill-week");
+    const corrupt = buildEvalInput(
+      baseRaw({
+        dayHistory: {
+          [w(1)]: dh({ day: w(1), reviews: 1, quizzes: 1, dictation: 1, words: 1 }),
+          [w(2)]: "junk",
+          [w(3)]: dh({ day: w(3), rush: Number.NaN }),
+        },
+      }) as unknown as BuildArgs
+    );
+    expect(corrupt.rushDays7).toBe(0);
+    expect(corrupt.wordsDays7).toBe(1);
+    expect(ids(corrupt)).not.toContain("five-skill-week");
   });
 });
 

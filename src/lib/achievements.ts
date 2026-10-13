@@ -59,6 +59,8 @@ export interface BadgeEvalInput {
   quizDays14: number; // چند روزِ پنجرهٔ ۱۴روزه آزمون داشتند
   reviewsDays14: number; // چند روزِ پنجرهٔ ۱۴روزه مرور داشتند
   activeDays35: number; // چند روزِ پنجرهٔ ۳۵روزه هر فعالیتی داشتند (خانوادهٔ حضور، Task 92)
+  wordsDays7: number; // چند روزِ پنجرهٔ ۷روزه واژهٔ تازه داشتند (≠ جمع — Task 93)
+  rushDays7: number; // چند روزِ پنجرهٔ ۷روزه برق‌آسا داشتند (≠ جمع — Task 93)
 }
 
 function historyTotals(history: StudyState["history"]): { quizzes: number; reviews: number; days: number } {
@@ -168,6 +170,7 @@ export function buildEvalInput(s: {
     // و روزِ ۱۴ در پنجرهٔ ۷ نیست ولی روزِ ۷ در پنجرهٔ ۱۴ هست (زیرمجموعه).
     // (Task 92) پنجرهٔ سوم = کلِ حافظهٔ ۳۵روزه (daysAgoKey(34)) — شمارِ روزهایِ
     // «هر فعالیتی» برای خانوادهٔ حضور؛ با هیچ‌کدام از شمارنده‌های تک‌فعالیت کاری ندارد.
+    // (Task 93) presence-dayهای واژه/برق هم از win7 می‌آیند — خانوادهٔ تنوع (پنج‌گانه).
     ...(() => {
       const win7 = windowCounters(s.dayHistory, windowStart, today, ds);
       const win14 = windowCounters(s.dayHistory, daysAgoKey(13), today, ds);
@@ -182,6 +185,8 @@ export function buildEvalInput(s: {
         quizDays14: win14.quizDays,
         reviewsDays14: win14.reviewsDays,
         activeDays35: win35.activeDays,
+        wordsDays7: win7.wordsDays,
+        rushDays7: win7.rushDays,
       };
     })(),
   };
@@ -197,13 +202,15 @@ function windowCounters(
   windowStart: string,
   today: string,
   ds: ReturnType<typeof normDayStat>
-): { dictation7: number; quizzes7: number; reviewsDays: number; dictationDays: number; quizDays: number; activeDays: number } {
+): { dictation7: number; quizzes7: number; reviewsDays: number; dictationDays: number; quizDays: number; activeDays: number; wordsDays: number; rushDays: number } {
   let dictation7 = 0;
   let quizzes7 = 0;
   let reviewsDays = 0;
   let dictationDays = 0;
   let quizDays = 0;
   let activeDays = 0; // (Task 92) هر فعالیتی روز را ثبت می‌کند — مرور/آزمون/دیکته/واژه/برق
+  let wordsDays = 0; // (Task 93) روزهایِ واژه‌دار — بُعدِ تنوع
+  let rushDays = 0; // (Task 93) روزهایِ برق‌آسا — بُعدِ تنوع
   if (dayHistory && typeof dayHistory === "object") {
     for (const [key, raw] of Object.entries(dayHistory)) {
       if (key < windowStart || !raw || typeof raw !== "object") continue;
@@ -217,7 +224,9 @@ function windowCounters(
       quizzes7 += q;
       if (q > 0) quizDays += 1;
       const w = Number.isFinite(st.words) ? Math.max(0, st.words) : 0;
+      if (w > 0) wordsDays += 1;
       const sh = Number.isFinite(st.rush) ? Math.max(0, st.rush) : 0;
+      if (sh > 0) rushDays += 1;
       if (r + d + q + w + sh > 0) activeDays += 1;
     }
   }
@@ -232,10 +241,12 @@ function windowCounters(
     quizzes7 += q;
     if (q > 0) quizDays += 1;
     const w = Number.isFinite(ds.words) ? Math.max(0, ds.words) : 0;
+    if (w > 0) wordsDays += 1;
     const sh = Number.isFinite(ds.rush) ? Math.max(0, ds.rush) : 0;
+    if (sh > 0) rushDays += 1;
     if (r + d + q + w + sh > 0) activeDays += 1;
   }
-  return { dictation7, quizzes7, reviewsDays, dictationDays, quizDays, activeDays };
+  return { dictation7, quizzes7, reviewsDays, dictationDays, quizDays, activeDays, wordsDays, rushDays };
 }
 
 /**
@@ -672,6 +683,26 @@ export const BADGES: BadgeDef[] = [
     tier: "gold",
     progress: (s) => `${faNum(Math.min(s.activeDays35, 30))} از ۳۰ روزِ فعال`,
     check: (s) => s.activeDays35 >= 30,
+  },
+  // ---- هفتهٔ پنج‌گانه (Task 93) — خانوادهٔ تنوع: ران‌ها «تکرارِ یک فعالیت» را
+  // جایزه می‌دهند؛ هیچ نشانِ تنوع نبود. شرط: در پنجرهٔ ۷روزهٔ موتور هر پنج
+  // مهارتِ DayStat دست‌کم یک روز حضور داشته باشند (مرور/آزمون/دیکته/واژهٔ
+  // تازه/برق‌آسا). قراردادِ تنوع-در-پنجره (تست-قفل‌شده): حتی یک روزِ
+  // پنج‌فعالیه شرط را برآورده می‌کند — معیار «حضورِ هر پنج مهارت در پنجره»
+  // است نه پراکندگیِ روزها. پیشرفت = شمارِ مهارت‌های حاضر («۳ از ۵ مهارت») —
+  // صادقانه می‌گوید کدام بُعد کم است. استثنای قراردادی: بازشدنش یعنی
+  // dictation7>0 و quizzes7>0 — پس «هفتهٔ بی‌دیکته» و «هفتهٔ بی‌آزمون» هرگز
+  // هم‌زمان باز نمی‌شوند (قفلِ متقابل).
+  {
+    id: "five-skill-week",
+    title: "هفتهٔ پنج‌گانه",
+    desc: "در یک هفته هر پنج مهارت را دست‌کم یک بار تجربه کن: مرور، آزمون، دیکته، واژهٔ تازه و برق‌آسا",
+    icon: "Puzzle",
+    tier: "gold",
+    progress: (s) =>
+      `${faNum([s.reviewsDays7, s.quizDays7, s.dictationDays7, s.wordsDays7, s.rushDays7].filter((x) => x >= 1).length)} از ۵ مهارت`,
+    check: (s) =>
+      s.reviewsDays7 >= 1 && s.quizDays7 >= 1 && s.dictationDays7 >= 1 && s.wordsDays7 >= 1 && s.rushDays7 >= 1,
   },
 ];
 

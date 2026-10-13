@@ -40,6 +40,7 @@ import {
   SpellCheck2,
   Layers,
   History,
+  Puzzle,
 } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -99,6 +100,8 @@ export const BADGE_ICONS: Record<string, React.ElementType> = {
   Layers,
   // رانِ مرور (Task 88) — بازگشت به روزهای گذشته
   History,
+  // تنوع (Task 93) — هفتهٔ پنج‌گانه
+  Puzzle,
 };
 
 const tierFa: Record<string, string> = {

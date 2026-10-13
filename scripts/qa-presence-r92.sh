@@ -24,11 +24,11 @@ agent-browser eval '(() => {
 agent-browser open http://127.0.0.1:3000 >/dev/null 2>&1
 sleep 5
 
-echo "--- B. badge section: «۱ از ۴۰» + ماهِ حاضر shine + ماهِ درخشان locked hint"
+echo "--- B. badge section: «۱ از ۴۱» + ماهِ حاضر shine + ماهِ درخشان locked hint"
 agent-browser eval '(() => {
   const sec = document.querySelector(".badge-section");
   if (!sec) return JSON.stringify({ secFound: false });
-  const chip = [...sec.querySelectorAll("span")].map(s=>s.textContent).find(t=>/از\s*۴۰/.test(t||""));
+  const chip = [...sec.querySelectorAll("span")].map(s=>s.textContent).find(t=>/از\s*۴۱/.test(t||""));
   const present = [...sec.querySelectorAll(".badge-card")].find(c=>/ماهِ حاضر/.test(c.textContent||""));
   const full = [...sec.querySelectorAll(".badge-card")].find(c=>/ماهِ درخشان/.test(c.textContent||""));
   return JSON.stringify({
@@ -40,12 +40,12 @@ agent-browser eval '(() => {
   });
 })()' 2>/dev/null
 
-echo "--- C. report digest reflects 40-registry (official report shows X از ۴۰)"
+echo "--- C. report digest reflects 40-registry (official report shows X از ۴۱)"
 agent-browser eval '(() => { window.dispatchEvent(new CustomEvent("open-report")); return "opened"; })()' 2>/dev/null
 sleep 3
 agent-browser eval '(() => {
   const t = document.body.textContent || "";
-  return JSON.stringify({ digest40: /از\s*۴۰/.test(t) });
+  return JSON.stringify({ digest40: /از\s*۴۱/.test(t) });
 })()' 2>/dev/null
 
 echo "--- D. mobile 390 overflow"

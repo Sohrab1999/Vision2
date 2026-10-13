@@ -14,11 +14,11 @@ agent-browser eval '(() => {
   return JSON.stringify({ hasHeader: !!header, sample: txt?.replace(/\s+/g, " ").slice(0, 80) });
 })()' 2>/dev/null
 
-echo "--- B. badges section: «۰ از ۴۰» on fresh learner + 32 tiles"
+echo "--- B. badges section: «۰ از ۴۱» on fresh learner + 32 tiles"
 agent-browser eval '(() => {
   const sec = document.querySelector(".badge-section");
   if (!sec) return JSON.stringify({ secFound: false });
-  const count = [...sec.querySelectorAll("span")].map(s => s.textContent).find(t => t?.includes("از ۴۰"));
+  const count = [...sec.querySelectorAll("span")].map(s => s.textContent).find(t => t?.includes("از ۴۱"));
   const tiles = sec.querySelectorAll(".badge-card").length;
   return JSON.stringify({ secFound: true, count, tiles });
 })()' 2>/dev/null
