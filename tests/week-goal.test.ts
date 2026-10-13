@@ -125,4 +125,21 @@ describe("weekWindowGoalDays — شمارندهٔ پنجرهٔ چیپِ هفته
     expect(meta.label).toBe("۳ از ۷ روزِ هدف");
     expect(meta.title).toBe("۳ از ۷ روزِ هدف — این هفته: ۴ روزِ هدفِ دیگر تا حلقهٔ کامل");
   });
+
+  it("نشانِ «هفتهٔ کامل» (۱۳۲): فقطِ ۷/۷ برچسب دارد — هر حالتِ دیگر null (صادقِ دعوی، نه تزئینِ جدا)", () => {
+    // حالتِ کامل — برچسبِ نام‌دار، هم‌زبانِ متنِ جشنِ title
+    const full = weekGoalMeta(7, "این هفته");
+    expect(full.badge).toBe("هفتهٔ کامل");
+    expect(full.done).toBe(true);
+    expect(full.title).toContain("کامل شد");
+    // هر پلهٔ ناقص — null (۶/۷ هم که فقط یک روز مانده، نشان ممنوع)
+    expect(weekGoalMeta(6, "این هفته").badge).toBeNull();
+    expect(weekGoalMeta(3, "این هفته").badge).toBeNull();
+    expect(weekGoalMeta(1, "این هفته").badge).toBeNull();
+    expect(weekGoalMeta(0, "این هفته").badge).toBeNull();
+    // نگهبانِ ورودی هم با null صادق می‌ماند — NaN هرگز نشان نمی‌گیرد
+    expect(weekGoalMeta(Number.NaN, "این هفته").badge).toBeNull();
+    // بیش از ۷ هم clamp می‌شود به همان نشانِ واحد — دعوی بزرگ‌تر ممنوع
+    expect(weekGoalMeta(9, "این هفته").badge).toBe("هفتهٔ کامل");
+  });
 });

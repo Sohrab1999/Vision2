@@ -102,4 +102,35 @@ describe("چیپ هفته — کامپوننت (Task 129)", () => {
     const track = screen.getByRole("button").querySelector("circle[stroke=\"var(--color-stone-200)\"]");
     expect(track).not.toBeNull(); // همان توکنِ حلقهٔ هفته‌نامه (۱۲۸) — دارکِ مجانی
   });
+
+  it("نشانِ ۷/۷ (۱۳۲): گوشهٔ زمردیِ تیک‌دار — aria-hidden، دکمه relative، بدونِ تغییرِ عنوان", () => {
+    const gm = [0, 1, 2, 3, 4, 5, 6].map((n) => daysAgoKey(n));
+    useStudy.setState({ goalMetDays: gm });
+    render(<WeekChip />);
+    const chip = screen.getByRole("button");
+    // دکمه relative — مادرِ نشانِ absolute (پیش‌نیازِ هندسه)
+    expect(chip.className).toContain("relative");
+    // نشان حاضر: زمردیِ توکن + تیکِ سفید + aria-hidden کامل
+    const badge = chip.querySelector("span.absolute");
+    expect(badge).not.toBeNull();
+    expect(badge!.className).toContain("bg-emerald-600");
+    expect(badge!.getAttribute("aria-hidden")).toBe("true");
+    const tick = badge!.querySelector("path[d=\"M2.5 6.2 5 8.7 9.5 3.8\"]");
+    expect(tick).not.toBeNull();
+    // عنوانِ دکمه همان متنِ جشنِ ۱۲۹ است — نشان تکرارِ دعوی نیست، لایهٔ بصری است
+    expect(chip.getAttribute("aria-label")).toContain("کامل شد");
+    // حلقه هم «100 0» — نشان و arc با هم، نه یکی به‌جای دیگری
+    const arc = chip.querySelector("circle[pathLength=\"100\"]");
+    expect(arc!.getAttribute("stroke-dasharray")).toBe("100 0");
+  });
+
+  it("نشانِ ناقص‌ممنوع: ۳/۷ و ۰/۷ هیچ spanِ گوشه‌ای ندارند (null در عمل)", () => {
+    useStudy.setState({ goalMetDays: [daysAgoKey(0), daysAgoKey(1), daysAgoKey(2)] });
+    const { unmount } = render(<WeekChip />);
+    expect(screen.getByRole("button").querySelector("span.absolute")).toBeNull();
+    unmount();
+    useStudy.setState({ goalMetDays: [] });
+    render(<WeekChip />);
+    expect(screen.getByRole("button").querySelector("span.absolute")).toBeNull();
+  });
 });

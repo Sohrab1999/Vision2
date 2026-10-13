@@ -26,6 +26,16 @@ import { trackEvent } from "@/lib/analytics";
 // (رویدادِ open-report — همان درِ «کارنامهٔ من»). هیچ ناوبری‌ای عوض
 // نمی‌شود؛ هفته‌نامه رویِ همان نما باز می‌شود.
 //
+// Task 132 «نشانِ هفتهٔ کامل» — ۷/۷ حالا یک نشانِ گوشه‌ای هم دارد:
+// دایرهٔ ۱۴px زمردی با تیکِ سفید در گوشهٔ بالا-راستِ حلقه (absolute —
+// پس دکمه relative گرفت)، springِ کوچکِ تأخیردار (حلقه اول پر می‌شود،
+// بعد نشان می‌آید — ترتیبِ روایت)، aria-hidden کامل (عنوانِ دکمه از
+// قبلِ ۱۲۹ متنِ جشنِ done را دارد — نشان تکرارِ دعوی نیست، لایهٔ
+// بصریِ آن است). صفرِ قاعدهٔ نو: زمردیِ توکنِ tailwind، سایهٔ خودش؛
+// بدونِ ringِ وابسته به پس‌زمینهٔ هدر — همِ لایت همِ دارک مجانی؛
+// هندسه با h-3.5/w-3.5 (کلاسِ حاضرِ chunk — درسِ رکودِ ۱۳۰)، تیکِ
+// سفید h-2/w-2 با attributeِ stroke — نه کلاسِ stroke-white.
+//
 // بودجهٔ هدر: زیرِ sm پنهان (هم‌خانوادهٔ شعلهٔ زنجیره — درسِ ۱۲۳ که
 // بودجهٔ هدرِ موبایل را با اندازه‌گیریِ زنده بست). در موبایل، حلقهٔ
 // هفته سرِ جایش در هفته‌نامه است (کارنامهٔ من → گزارش هفتگی).
@@ -57,7 +67,7 @@ export default function WeekChip() {
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ type: "spring", stiffness: 380, damping: 26 }}
       onClick={open}
-      className={`week-chip hidden sm:inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border p-0 transition-all hover:-translate-y-px active:scale-90 ${
+      className={`week-chip relative hidden sm:inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border p-0 transition-all hover:-translate-y-px active:scale-90 ${
         meta.done
           ? "border-emerald-600/70 shadow-sm shadow-emerald-900/10"
           : "border c-card"
@@ -87,6 +97,28 @@ export default function WeekChip() {
           />
         )}
       </svg>
+      {meta.badge && (
+        <motion.span
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ type: "spring", stiffness: 500, damping: 18, delay: 0.15 }}
+          className="absolute -top-0.5 -right-0.5 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-emerald-600 shadow-sm shadow-emerald-900/25"
+          aria-hidden
+        >
+          <svg
+            viewBox="0 0 12 12"
+            className="h-2 w-2"
+            fill="none"
+            stroke="white"
+            strokeWidth="2.4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden
+          >
+            <path d="M2.5 6.2 5 8.7 9.5 3.8" />
+          </svg>
+        </motion.span>
+      )}
     </motion.button>
   );
 }

@@ -11,6 +11,10 @@
 // هدر (week-chip.tsx) همان weekGoalMeta را می‌خوانَد و goalDays را
 // با weekWindowGoalDays از همان پنجرهٔ دایجست می‌شمارد — چیپِ امروز
 // (GoalChip، Task 76) و حلقهٔ هفته حالا همسایه‌اند: یک روایت.
+// Task 132 «نشانِ هفتهٔ کامل» — done حالا یک نشانِ نام‌دار دارد:
+// meta.badge فقط در ۷/۷ «هفتهٔ کامل» است و در هر حالتِ دیگر null —
+// زبانِ نشان هم از همین قرارداد می‌آید تا لایه‌هایِ بعدیِ هر مصرفی
+// که بیاید، همان برچسب را ببیند (نشان = صادقِ دعوی، نه تزئینِ جدا).
 // صداقت: هدفِ هفته یعنی «تعدادِ روزها»، نه جمعِ فعالیت‌ها — هیچ‌وقت
 // از goalDays بزرگ‌تر ادعا نمی‌کند (سقفِ ۷، کفِ ۰، NaN → ۰).
 // ------------------------------------------------------------------
@@ -33,6 +37,8 @@ export interface WeekGoalMeta {
   title: string;
   /** چند روزِ هدف تا پُرشدنِ حلقه مانده (برآورده → ۰) */
   remaining: number;
+  /** نشانِ «هفتهٔ کامل» — فقطِ ۷/۷؛ هر حالتِ دیگر null (قراردادِ ۱۳۲) */
+  badge: string | null;
 }
 
 export function weekGoalMeta(goalDays: number, todayLabel = "این هفته"): WeekGoalMeta {
@@ -47,7 +53,7 @@ export function weekGoalMeta(goalDays: number, todayLabel = "این هفته"): 
   const title = done
     ? `${label} — ${todayLabel} کامل شد! هفت‌روزهٔ تمام، آفرین`
     : `${label} — ${todayLabel}: ${faNum(remaining)} روزِ هدفِ دیگر تا حلقهٔ کامل`;
-  return { pct, done, fraction, label, title, remaining };
+  return { pct, done, fraction, label, title, remaining, badge: done ? "هفتهٔ کامل" : null };
 }
 
 /**
