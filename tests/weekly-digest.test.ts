@@ -682,3 +682,92 @@ describe("computeWeeklyDigest — زنجیرهٔ مأموریت‌ها در ها
     expect(d.highlights.every((h) => !h.includes("زنجیرهٔ مأموریت‌ها"))).toBe(true);
   });
 });
+
+// ------------------------------------------------------------------
+// Task 144 — «روزهایِ هدف در هفته‌نامه» — خطِ هدف دلتایِ صادق می‌گیرد.
+// lastWeek.goalDays از همان sumTotals می‌آید (هم‌پنجرهٔ خودِ دایجست) و
+// تا امروز محاسبه می‌شد ولی هیچ‌جا گفته نمی‌شد. قفل‌ها: ①سه شکلِ
+// مقایسه (بیشتر/کمتر/هم‌قدم) فقط با پایهٔ حقیقی ②هفتهٔ پیشِ صفر
+// «بی‌پایه» است نه «افت» — گویشِ لختِ پیشین می‌ماند ③هفتهٔ جاریِ صفر
+// هیچ خطِ هدفی ندارد ④جایگاهِ خطِ هدف در بودجهٔ highlights ثابت است.
+// ------------------------------------------------------------------
+describe("computeWeeklyDigest — روزهایِ هدف در های‌لایت‌ها (Task 144)", () => {
+  const act = { reviews: 10, quizzes: 3 };
+  const goalLine = (n: number) => `${faNum(n)} روزِ هدفِ روزانه کامل شد`;
+
+  it("۳ این هفته / ۱ هفتهٔ پیش → «— ۲ روز بیشتر از هفتهٔ پیش»", () => {
+    const inp = input({
+      dayHistory: {
+        [dayKeyBefore(T, 0)]: day(dayKeyBefore(T, 0), act),
+        [dayKeyBefore(T, 7)]: day(dayKeyBefore(T, 7), act),
+      },
+      goalMetDays: [dayKeyBefore(T, 0), dayKeyBefore(T, 1), dayKeyBefore(T, 2), dayKeyBefore(T, 7)],
+    });
+    const d = computeWeeklyDigest(inp, T);
+    expect(d.highlights).toContain(`${goalLine(3)} — ${faNum(2)} روز بیشتر از هفتهٔ پیش`);
+  });
+
+  it("۱ این هفته / ۳ هفتهٔ پیش → «— ۲ روز کمتر از هفتهٔ پیش»", () => {
+    const inp = input({
+      dayHistory: {
+        [dayKeyBefore(T, 0)]: day(dayKeyBefore(T, 0), act),
+        [dayKeyBefore(T, 7)]: day(dayKeyBefore(T, 7), act),
+      },
+      goalMetDays: [dayKeyBefore(T, 0), dayKeyBefore(T, 7), dayKeyBefore(T, 8), dayKeyBefore(T, 9)],
+    });
+    const d = computeWeeklyDigest(inp, T);
+    expect(d.highlights).toContain(`${goalLine(1)} — ${faNum(2)} روز کمتر از هفتهٔ پیش`);
+  });
+
+  it("۲/۲ → «— هم‌قدم با هفتهٔ پیش» (هم‌زبانیِ خطِ فعالیت)", () => {
+    const inp = input({
+      dayHistory: {
+        [dayKeyBefore(T, 0)]: day(dayKeyBefore(T, 0), act),
+        [dayKeyBefore(T, 7)]: day(dayKeyBefore(T, 7), act),
+      },
+      goalMetDays: [dayKeyBefore(T, 0), dayKeyBefore(T, 1), dayKeyBefore(T, 7), dayKeyBefore(T, 8)],
+    });
+    const d = computeWeeklyDigest(inp, T);
+    expect(d.highlights).toContain(`${goalLine(2)} — هم‌قدم با هفتهٔ پیش`);
+  });
+
+  it("هفتهٔ پیشِ صفر → گویشِ لخت — «بی‌پایه» است نه «افت» (هیچ پسوندِ مقایسه)", () => {
+    const inp = input({
+      dayHistory: { [dayKeyBefore(T, 0)]: day(dayKeyBefore(T, 0), act) },
+      goalMetDays: [dayKeyBefore(T, 0), dayKeyBefore(T, 1), dayKeyBefore(T, 2)],
+    });
+    const d = computeWeeklyDigest(inp, T);
+    expect(d.highlights).toContain(goalLine(3));
+    expect(
+      d.highlights.every(
+        (h) => !h.includes("بیشتر از هفتهٔ پیش") && !h.includes("کمتر از هفتهٔ پیش") && !h.includes("هم‌قدم با هفتهٔ پیش —")
+      )
+    ).toBe(true);
+  });
+
+  it("هفتهٔ جاریِ صفر (هر ۴ روزِ هدف در هفتهٔ پیش) → هیچ خطِ هدفی نیست", () => {
+    const inp = input({
+      dayHistory: { [dayKeyBefore(T, 7)]: day(dayKeyBefore(T, 7), act) },
+      goalMetDays: [dayKeyBefore(T, 7), dayKeyBefore(T, 8), dayKeyBefore(T, 9), dayKeyBefore(T, 10)],
+    });
+    const d = computeWeeklyDigest(inp, T);
+    expect(d.highlights.every((h) => !h.includes("روزِ هدفِ روزانه"))).toBe(true);
+  });
+
+  it("جایگاه: [فعالیت، زنجیره، هدفِ مقایسه‌دار، واژه] — سطرِ هدف سرِ جایش", () => {
+    const perfect = { reviews: 10, words: 5, quizzes: 3, dictation: 1, rush: 1 };
+    const inp = input({
+      dayHistory: {
+        [dayKeyBefore(T, 0)]: day(dayKeyBefore(T, 0), perfect),
+        [dayKeyBefore(T, 1)]: day(dayKeyBefore(T, 1), perfect),
+        [dayKeyBefore(T, 7)]: day(dayKeyBefore(T, 7), act),
+      },
+      goalMetDays: [dayKeyBefore(T, 0), dayKeyBefore(T, 1), dayKeyBefore(T, 2), dayKeyBefore(T, 7)],
+    });
+    const d = computeWeeklyDigest(inp, T);
+    expect(d.highlights[0]).toContain("فعالیت");
+    expect(d.highlights[1]).toContain("زنجیرهٔ مأموریت‌ها");
+    expect(d.highlights[2]).toBe(`${goalLine(3)} — ${faNum(2)} روز بیشتر از هفتهٔ پیش`);
+    expect(d.highlights[3]).toContain("واژهٔ جدید");
+  });
+});

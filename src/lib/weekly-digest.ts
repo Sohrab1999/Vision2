@@ -169,8 +169,24 @@ export function computeWeeklyDigest(input: DigestInput, todayKey: string): Weekl
         `زنجیرهٔ مأموریت‌ها به ${faNum(questStreak.streak)} روز رسید — ${faNum(questStreak.weekPerfect)} حلقه در همین هفته`
       );
     }
+    // Task 144 — «روزهایِ هدف در هفته‌نامه» — خطِ هدف دلتایِ صادق می‌گیرد.
+    // lastWeek.goalDays از همان sumTotals می‌آید (هم‌پنجرهٔ خودِ دایجست) و
+    // تا امروز محاسبه می‌شد ولی هیچ‌جا گفته نمی‌شد — مقایسهٔ هفته‌به‌هفته
+    // بدونِ هیچ حسابِ موازی. صداقتِ داده: سقفِ goalMetDays در استور
+    // slice(-14) است — دقیقاً هم‌پنجرهٔ ۱۴روزهٔ دایجست؛ پس lastWeek حفرهٔ
+    // سنی ندارد. هفتهٔ پیشِ صفر «بی‌پایه» است نه «افت» — همان گویشِ لختِ
+    // پیشین می‌ماند (مقایسه فقط با پایهٔ حقیقی؛ هم‌الگویِ گیتِ خطِ زنجیره).
     if (thisWeek.goalDays > 0) {
-      highlights.push(`${faNum(thisWeek.goalDays)} روزِ هدفِ روزانه کامل شد`);
+      const gd = thisWeek.goalDays - lastWeek.goalDays;
+      if (lastWeek.goalDays > 0 && gd > 0) {
+        highlights.push(`${faNum(thisWeek.goalDays)} روزِ هدفِ روزانه کامل شد — ${faNum(gd)} روز بیشتر از هفتهٔ پیش`);
+      } else if (lastWeek.goalDays > 0 && gd < 0) {
+        highlights.push(`${faNum(thisWeek.goalDays)} روزِ هدفِ روزانه کامل شد — ${faNum(Math.abs(gd))} روز کمتر از هفتهٔ پیش`);
+      } else if (lastWeek.goalDays > 0) {
+        highlights.push(`${faNum(thisWeek.goalDays)} روزِ هدفِ روزانه کامل شد — هم‌قدم با هفتهٔ پیش`);
+      } else {
+        highlights.push(`${faNum(thisWeek.goalDays)} روزِ هدفِ روزانه کامل شد`);
+      }
     }
     if (thisWeek.words > 0) {
       highlights.push(`${faNum(thisWeek.words)} واژهٔ جدید به گنجینهٔ تو اضافه شد`);

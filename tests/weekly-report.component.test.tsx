@@ -521,3 +521,62 @@ describe("زنجیرهٔ مأموریت‌ها در هفته‌نامه — کا
     expect(screen.getByText(/زنجیرهٔ مأموریت‌ها به ۹ روز رسید — ۷ حلقه در همین هفته/)).toBeTruthy();
   });
 });
+
+// ------------------------------------------------------------------
+// Task 144 — «روزهایِ هدف در هفته‌نامه» — گاردِ باندِ زنده: خطِ هدفِ
+// مقایسه‌دار فقط با پایهٔ حقیقی می‌آید (هفتهٔ پیشِ صفر = گویشِ لخت)،
+// و جایگاهش در بودجهٔ ۳تاییِ slice(0,3) ثابت می‌ماند. درسِ ۱۴۲: هر
+// describeِ نو زیرساختِ cleanup خودش را دارد.
+// ------------------------------------------------------------------
+describe("روزهایِ هدف در هفته‌نامه — کامپوننت (Task 144)", () => {
+  beforeEach(() => {
+    cleanup();
+    useStudy.setState({ dayHistory: {}, history: {}, goalMetDays: [], streak: 0 });
+  });
+
+  const act = { reviews: 10, quizzes: 3, words: 0, dictation: 0, rush: 0 };
+  /** فعالیتِ حداقلی: روزِ اولِ این هفته و روزِ ۷ِ هفتهٔ پیش — تا دایجست خالی نماند */
+  const seedGoalWeeks = (thisDays: number[], lastDays: number[]) => {
+    const dayHistory: Record<string, { day: string; reviews: number; quizzes: number; words: number; dictation: number; rush: number }> = {};
+    const put = (n: number) => {
+      const k = daysAgoKey(n);
+      dayHistory[k] = { ...act, day: k };
+    };
+    if (thisDays.length > 0) put(thisDays[0]);
+    if (lastDays.length > 0) put(7);
+    useStudy.setState({
+      dayHistory,
+      goalMetDays: [...thisDays, ...lastDays].map((n) => daysAgoKey(n)),
+    });
+  };
+
+  it("۳ این هفته / ۲ هفتهٔ پیش: «۳ روزِ هدفِ روزانه کامل شد — ۱ روز بیشتر از هفتهٔ پیش» در باند", () => {
+    seedGoalWeeks([0, 1, 2], [7, 8]);
+    render(<WeeklyReportSection />);
+    expect(screen.getByText(/۳ روزِ هدفِ روزانه کامل شد — ۱ روز بیشتر از هفتهٔ پیش/)).toBeTruthy();
+  });
+
+  it("هفتهٔ پیشِ صفر: گویشِ لخت — هیچ پسوندِ مقایسه‌ای در باند نیست", () => {
+    seedGoalWeeks([0, 1], []);
+    render(<WeeklyReportSection />);
+    expect(screen.getByText(/۲ روزِ هدفِ روزانه کامل شد$/)).toBeTruthy();
+    expect(screen.queryByText(/بیشتر از هفتهٔ پیش/)).toBeNull();
+    expect(screen.queryByText(/کمتر از هفتهٔ پیش/)).toBeNull();
+  });
+
+  it("جایگاه: با زنجیرهٔ زنده، سطرِ هدف سومین سطرِ ul است (داخلِ بودجهٔ ۳تایی)", () => {
+    const perfect = { day: "", reviews: 10, quizzes: 3, words: 5, dictation: 1, rush: 1 };
+    const dayHistory: Record<string, typeof perfect> = {};
+    for (const n of [0, 1]) {
+      const k = daysAgoKey(n);
+      dayHistory[k] = { ...perfect, day: k };
+    }
+    useStudy.setState({
+      dayHistory,
+      goalMetDays: [daysAgoKey(0), daysAgoKey(1), daysAgoKey(2), daysAgoKey(7)],
+    });
+    render(<WeeklyReportSection />);
+    const goalLi = screen.getByText(/۳ روزِ هدفِ روزانه کامل شد — ۲ روز بیشتر از هفتهٔ پیش/).closest("li")!;
+    expect(goalLi.parentElement!.children[2]).toBe(goalLi);
+  });
+});
