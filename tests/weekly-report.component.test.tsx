@@ -173,3 +173,108 @@ describe("دفتر یخ در هفته‌نامه — کامپوننت (Task 78)"
     expect(legend).toHaveTextContent("امروز");
   });
 });
+// ------------------------------------------------------------------
+// Task 103 — بلوکِ «نبردهای واژگانی» در هفته‌نامه:
+//   ① بدونِ دفترچه بلوک نیست (صفرِ ساختگی ممنوع)
+//   ② با دفترچه: چیپِ شمارش + سهِ چیپِ نتیجه با نقطهٔ رنگی + هفتهٔ پیش
+//   ③ سقفِ ۱۵تاییِ هم‌هفته → «+» و پانوشتِ «حداقلی»
+//   ④ نرخِ برد + بهترین امتیازِ هفته با ارقامِ فارسی
+//   ⑤ بی‌نبردِ این هفته (دفترچهٔ قدیمی) → بلوکِ صفرِ صادق بدونِ «+» و بدونِ خطِ «بهترین»
+// ------------------------------------------------------------------
+import type { DuelRecord } from "@/lib/duel-history";
+
+const duelRec = (over: Partial<DuelRecord>): DuelRecord => ({
+  id: "d" + Math.random().toString(36).slice(2, 8),
+  day: daysAgoKey(0),
+  outcome: "win",
+  reason: "finished",
+  opponent: "سینا",
+  opponentColor: "rose",
+  myScore: 1000,
+  oppScore: 800,
+  myCorrect: 9,
+  oppCorrect: 7,
+  answered: 10,
+  total: 10,
+  durationSec: 80,
+  ...over,
+});
+
+const duelBlock = () => screen.queryByLabelText(/نبردهای واژگانی —/);
+
+describe("بلوکِ نبردهای واژگانی در هفته‌نامه (Task 103)", () => {
+  beforeEach(() => {
+    cleanup();
+    useStudy.setState({
+      dayHistory: {},
+      history: {},
+      goalMetDays: [],
+      dailyGoal: 10,
+      streak: 0,
+      freezeCount: 0,
+      freezeSavedDay: "",
+      freezeUsedDays: [],
+      freezeEarnedDay: "",
+      duelHistory: [],
+    });
+  });
+
+  it("بدونِ دفترچه → بلوک رندر نمی‌شود", () => {
+    render(<WeeklyReportSection />);
+    expect(duelBlock()).not.toBeInTheDocument();
+  });
+
+  it("با دفترچهٔ ۲ برد/۱ باخت: چیپ «۳ نبرد این هفته» + نقطه‌های رنگی + «هفتهٔ پیش: ۱»", () => {
+    useStudy.setState({
+      duelHistory: [
+        duelRec({ id: "a", day: daysAgoKey(0), outcome: "win", myScore: 1100 }),
+        duelRec({ id: "b", day: daysAgoKey(1), outcome: "win", myScore: 900 }),
+        duelRec({ id: "c", day: daysAgoKey(2), outcome: "loss", myScore: 500 }),
+        duelRec({ id: "e", day: daysAgoKey(9), outcome: "tie" }),
+      ],
+    });
+    render(<WeeklyReportSection />);
+    const block = duelBlock()!;
+    expect(block).toBeInTheDocument();
+    expect(block).toHaveTextContent("۳ نبرد این هفته");
+    expect(block).toHaveTextContent("۲ برد");
+    expect(block).toHaveTextContent("۱ باخت");
+    expect(block).toHaveTextContent("۰ مساوی");
+    expect(block).toHaveTextContent("هفتهٔ پیش: ۱");
+    // بهترین امتیازِ هفته + نرخِ برد با ارقامِ فارسی
+    expect(block).toHaveTextContent("بهترین امتیازِ همین هفته: ۱۱۰۰");
+    expect(block).toHaveTextContent("نرخِ برد ۶۷٪");
+    // نقطه‌های رنگی نتیجه‌ها داخلِ چیپ‌ها (aria-hidden)
+    expect(block.querySelectorAll("span[aria-hidden]").length).toBeGreaterThanOrEqual(3);
+    // بدونِ «+» و بدونِ پانوشتِ حداقلی
+    expect(block.textContent).not.toContain("+");
+    expect(block.textContent).not.toContain("حداقلی");
+  });
+
+  it("سقفِ ۱۵تاییِ هم‌هفته → «۱۵+ نبرد» + پانوشتِ «حداقلی»", () => {
+    useStudy.setState({
+      duelHistory: Array.from({ length: 15 }, (_, i) =>
+        duelRec({ id: "x" + i, day: daysAgoKey(i % 7), outcome: i % 3 === 0 ? "loss" : "win" })
+      ),
+    });
+    render(<WeeklyReportSection />);
+    const block = duelBlock()!;
+    expect(block).toHaveTextContent("۱۵+ نبرد این هفته");
+    expect(block).toHaveTextContent("این شمارش حداقلی است");
+  });
+
+  it("دفترچهٔ فقطِ قدیمی (۱۰ روز پیش) → بلوکِ صفرِ صادق: «۰ نبرد»، بدونِ خطِ بهترین", () => {
+    useStudy.setState({ duelHistory: [duelRec({ id: "old", day: daysAgoKey(10) })] });
+    render(<WeeklyReportSection />);
+    const block = duelBlock()!;
+    expect(block).toHaveTextContent("۰ نبرد این هفته");
+    expect(block).toHaveTextContent("هفتهٔ پیش: ۱");
+    expect(block.textContent).not.toContain("بهترین امتیازِ همین هفته");
+  });
+
+  it("ارهم: aria-label روی خودِ بلوک هم‌قرارداد چیپ هدر خوانده می‌شود", () => {
+    useStudy.setState({ duelHistory: [duelRec({ id: "a" })] });
+    render(<WeeklyReportSection />);
+    expect(screen.getByLabelText("نبردهای واژگانی — ۱ نبرد این هفته")).toBeInTheDocument();
+  });
+});

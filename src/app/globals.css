@@ -1328,6 +1328,22 @@ html.user-reduce-motion .streak-flame {
   background-color: rgba(80, 18, 28, 0.35);
   color: rgb(253, 164, 175);
 }
+/* Task 103 — چیپِ خانوادهٔ دودل (هفته‌نامهٔ پیشرفت، بلوکِ نبردها) — ارزش‌های
+   دارک عین قواعدِ تثبیت‌شدهٔ .duel-card (۱۱۲۸/۱۱۴۱/۱۱۴۲) تا برندِ نبرد یک‌دست بماند */
+.c-chip-duel {
+  border-color: lab(87.7108 19.9958 -18.2054); /* fuchsia-200 */
+  background-color: lab(97.1083 4.46233 -4.09334); /* fuchsia-50 */
+  color: lab(39.787 72.2653 -53.1244); /* fuchsia-700 */
+}
+.dark .c-chip-duel {
+  border-color: rgb(162 28 175 / 0.45);
+  background-color: rgb(74 4 78 / 0.3);
+  color: #f0abfc;
+}
+/* برچسبِ نرخِ برد در بلوکِ نبردهای هفته‌نامه — همان ارزشِ تثبیت‌شدهٔ .duel-card (۱۱۲۹) */
+.dark .duel-week .text-fuchsia-600 {
+  color: #e879f9;
+}
 .c-chip-flame {
   border-color: lab(91.7203 -0.505269 49.9084); /* amber-200 */
   background-image: linear-gradient(to left, lab(98.6252 -0.635922 8.42309), lab(97.7008 1.53735 5.90649)); /* amber-50 → orange-50 */

@@ -8,13 +8,15 @@
 // Renders inside .report-paper so the print stylesheet covers it too.
 // ------------------------------------------------------------------
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { Sparkles, TrendingDown, TrendingUp, Minus, CalendarHeart, Check, Snowflake } from "lucide-react";
+import { Sparkles, TrendingDown, TrendingUp, Minus, CalendarHeart, Check, Snowflake, Swords, ImageDown, Loader2 } from "lucide-react";
 import { useStudy, daysAgoKey } from "@/lib/study-store";
 import { faNum } from "@/lib/study-theme";
 import { computeWeeklyDigest, faWeekday, faDayLabel, type Delta } from "@/lib/weekly-digest";
 import { freezeDayMark, freezeLedgerMeta } from "@/lib/freeze-badge";
+import { downloadWeeklyImage } from "@/lib/result-image";
+import { useToast } from "@/hooks/use-toast";
 
 const DELTA_META: { field: Delta["field"]; label: string; cls: string }[] = [
   { field: "reviews", label: "مرور", cls: "text-amber-600" },
@@ -54,13 +56,16 @@ export default function WeeklyReportSection() {
   const freezeSavedDay = useStudy((s) => s.freezeSavedDay);
   const freezeUsedDays = useStudy((s) => s.freezeUsedDays);
   const freezeEarnedDay = useStudy((s) => s.freezeEarnedDay);
+  const duelHistory = useStudy((s) => s.duelHistory);
+  const [imgBusy, setImgBusy] = useState(false);
+  const { toast } = useToast();
 
   const digest = useMemo(
     // the digest window ends "today"; daysAgoKey(0) is the exported wall-clock
     // day key. The memo re-runs when the store's dayHistory changes — exactly
     // when the digest must.
-    () => computeWeeklyDigest({ dayHistory, history, goalMetDays }, daysAgoKey(0)),
-    [dayHistory, history, goalMetDays]
+    () => computeWeeklyDigest({ dayHistory, history, goalMetDays, duelHistory }, daysAgoKey(0)),
+    [dayHistory, history, goalMetDays, duelHistory]
   );
 
   // دفتر یخ (Task 78) — مخزن + نجات‌های این هفته + مسیر یخِ بعدی؛ هم‌قرارداد
@@ -81,6 +86,36 @@ export default function WeeklyReportSection() {
   const maxTotal = Math.max(1, ...digest.perDay.map((p) => p.stat.reviews + p.stat.quizzes + p.stat.words + p.stat.dictation + p.stat.rush));
   const today = daysAgoKey(0);
 
+  // Task 104 — عکسِ هفته‌نامه: همان دایجستِ روی صفحه به یک کارتِ PNGِ خانوادهٔ
+  // سبز تبدیل می‌شود — ورودیِ کاهش‌یافته فقط از اعدادِ واقعیِ همین دایجست پر می‌شود
+  const saveWeeklyImage = async () => {
+    if (imgBusy) return;
+    setImgBusy(true);
+    const d = digest.duels;
+    const ok = await downloadWeeklyImage({
+      userName: useStudy.getState().userName || undefined,
+      activities: digest.thisWeek.activities,
+      reviews: digest.thisWeek.reviews,
+      quizzes: digest.thisWeek.quizzes,
+      words: digest.thisWeek.words,
+      dictation: digest.thisWeek.dictation,
+      rush: digest.thisWeek.rush,
+      goalDays: digest.thisWeek.goalDays,
+      streak,
+      bestDay: digest.bestDay ? { label: faDayLabel(digest.bestDay.day), total: digest.bestDay.total } : null,
+      duelLine:
+        d && d.thisWeek > 0
+          ? `${faNum(d.thisWeek)}${d.truncated ? "+" : ""} نبرد واژگانی این هفته — ${faNum(d.win)} برد، ${faNum(d.loss)} باخت${d.tie > 0 ? `، ${faNum(d.tie)} مساوی` : ""}`
+          : undefined,
+    });
+    setImgBusy(false);
+    toast(
+      ok
+        ? { title: "🖼 عکسِ هفته‌نامه ذخیره شد", description: "کارتِ هفتگیت آمادهٔ فرستادن است.", duration: 3000 }
+        : { title: "خطا در ساخت تصویر", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
+    );
+  };
+
   return (
     <div className="report-digest rounded-xl border border-stone-200 c-stone-70 p-3.5">
       <div className="mb-2.5 flex items-center justify-between">
@@ -88,9 +123,21 @@ export default function WeeklyReportSection() {
           <Sparkles size={13} className="text-teal-600" />
           هفته‌نامهٔ پیشرفت
         </div>
-        <span className="rounded-full bg-teal-50 px-2 py-0.5 text-[10px] font-black text-teal-700">
-          {faNum(digest.thisWeek.activities)} فعالیت این هفته
-        </span>
+        <div className="flex items-center gap-2">
+          <span className="rounded-full bg-teal-50 px-2 py-0.5 text-[10px] font-black text-teal-700">
+            {faNum(digest.thisWeek.activities)} فعالیت این هفته
+          </span>
+          {/* Task 104 — عکسِ هفته‌نامه: آیکنِ خانوادهٔ خروجی‌ها (هم‌الگوی دفترچهٔ نبرد) */}
+          <button
+            onClick={saveWeeklyImage}
+            disabled={imgBusy}
+            aria-label="گرفتن عکس هفته‌نامهٔ پیشرفت"
+            title="عکسِ هفته‌نامه — یک کارت PNG برای هم‌رسانی"
+            className="rounded-lg p-1.5 text-stone-400 transition-colors hover:bg-stone-100 hover:text-teal-600 disabled:opacity-50"
+          >
+            {imgBusy ? <Loader2 size={15} className="animate-spin" aria-hidden /> : <ImageDown size={15} aria-hidden />}
+          </button>
+        </div>
       </div>
 
       {/* delta chips — this week vs the one before */}
@@ -230,6 +277,66 @@ export default function WeeklyReportSection() {
           </div>
         </div>
       </div>
+
+      {/* Task 103 — نبردهای واژگانی: خلاصهٔ صادقِ پنجرهٔ ۷روزه از دفترچه؛
+          بدونِ دفترچه بلوک رندر نمی‌شود (صفرِ ساختگی ممنوع)؛ «+» یعنی شمارشِ
+          حداقلی چون پنجره پرِ سقفِ ۱۵تاییِ دفترچه است */}
+      {digest.duels && (
+        <div
+          className="duel-week mb-3 rounded-lg c-veil-60 px-2.5 py-2"
+          aria-label={`نبردهای واژگانی — ${faNum(digest.duels.thisWeek)} نبرد این هفته`}
+        >
+          <div className="flex flex-wrap items-center justify-between gap-1.5">
+            <div className="flex items-center gap-1.5 text-[10.5px] font-extrabold text-stone-600">
+              <Swords size={12} className="text-fuchsia-600" aria-hidden />
+              نبردهای واژگانی
+            </div>
+            <span className="c-chip-duel inline-flex items-center gap-0.5 rounded-full border px-1.5 py-0.5 text-[9.5px] font-black">
+              {`${faNum(digest.duels.thisWeek)}${digest.duels.truncated ? "+" : ""} نبرد این هفته`}
+            </span>
+          </div>
+          <div className="mt-1.5 flex flex-wrap items-center justify-between gap-1.5">
+            <div className="flex items-center gap-1">
+              {([
+                ["برد", digest.duels.win, "bg-emerald-500"],
+                ["باخت", digest.duels.loss, "bg-rose-500"],
+                ["مساوی", digest.duels.tie, "bg-amber-500"],
+              ] as const).map(([label, n, dot]) => (
+                <span
+                  key={label}
+                  className="c-chip-duel inline-flex items-center gap-1 rounded-full border px-1.5 py-0.5 text-[9.5px] font-black"
+                >
+                  <span className={`h-1.5 w-1.5 rounded-full ${dot}`} aria-hidden />
+                  {`${faNum(n)} ${label}`}
+                </span>
+              ))}
+            </div>
+            <span className="text-[9.5px] font-bold text-stone-400" title="نبردهای ۸ تا ۱۴ روز پیش">
+              {`هفتهٔ پیش: ${faNum(digest.duels.lastWeek)}`}
+            </span>
+          </div>
+          {/* نوارِ نرخِ برد — مسیرِ هم‌خانوادهٔ ردیف‌های دیگر + پرِ برندِ نبرد */}
+          <div className="mt-1.5 flex items-center gap-2">
+            <div className="h-1.5 flex-1 overflow-hidden rounded-full c-track-60" aria-hidden>
+              <div
+                className="h-full rounded-full bg-gradient-to-l from-violet-600 to-fuchsia-600 transition-all"
+                style={{ width: `${Math.max(0, Math.min(100, digest.duels.winRate))}%` }}
+              />
+            </div>
+            <span className="text-[9.5px] font-bold text-fuchsia-600">{`نرخِ برد ${faNum(digest.duels.winRate)}٪`}</span>
+          </div>
+          {digest.duels.best > 0 && (
+            <div className="mt-1 text-[9.5px] font-bold text-stone-400">
+              {`بهترین امتیازِ همین هفته: ${faNum(digest.duels.best)}`}
+            </div>
+          )}
+          {digest.duels.truncated && (
+            <p className="mt-1 text-[9px] font-bold leading-4 text-stone-400">
+              دفترچه فقط ۱۵ نبردِ آخر را نگه می‌دارد — این شمارش حداقلی است.
+            </p>
+          )}
+        </div>
+      )}
 
       {/* دستور رنگ‌ها (Task 80) — زبان بصری نقطه‌ها/نوارها یک‌جا آموزش داده
           می‌شود؛ نمونه‌ها دقیقاً همان کلاس‌های خود نقطه‌ها هستند تا رنگِ

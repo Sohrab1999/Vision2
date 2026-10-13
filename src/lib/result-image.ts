@@ -77,63 +77,8 @@ export async function downloadResultImage(opts: ResultImageOpts): Promise<boolea
 
     const dark = opts.premium ?? false;
 
-    // ---------- background gradient ----------
-    const bg = ctx.createLinearGradient(0, 0, W, H);
-    if (dark) {
-      bg.addColorStop(0, "#78350f");
-      bg.addColorStop(0.55, "#b45309");
-      bg.addColorStop(1, "#92400e");
-    } else {
-      bg.addColorStop(0, "#064e3b");
-      bg.addColorStop(0.55, "#047857");
-      bg.addColorStop(1, "#0d9488");
-    }
-    ctx.fillStyle = bg;
-    ctx.fillRect(0, 0, W, H);
-
-    // decorative circles
-    ctx.globalAlpha = 0.12;
-    ctx.fillStyle = "#ffffff";
-    for (const [cx, cy, r] of [
-      [W - 90, 80, 150],
-      [90, H - 70, 120],
-      [W / 2, H + 60, 200],
-    ] as const) {
-      ctx.beginPath();
-      ctx.arc(cx, cy, r, 0, Math.PI * 2);
-      ctx.fill();
-    }
-    ctx.globalAlpha = 1;
-
-    // ---------- inner card ----------
-    ctx.fillStyle = "#ffffff";
-    roundRect(ctx, 36, 36, W - 72, H - 72, 28);
-    ctx.fill();
-    ctx.strokeStyle = dark ? "rgba(180, 83, 9, 0.35)" : "rgba(6, 95, 70, 0.25)";
-    ctx.lineWidth = 2;
-    roundRect(ctx, 48, 48, W - 96, H - 96, 20);
-    ctx.stroke();
-
-    // ---------- header row ----------
-    ctx.direction = "rtl";
-    ctx.textBaseline = "middle";
-    ctx.textAlign = "right";
-    ctx.fillStyle = dark ? "#92400e" : "#047857";
-    ctx.font = `900 26px ${family}`;
-    ctx.fillText("وب‌کتاب تعاملی «ویژن ۲»", W - 90, 106);
-    ctx.textAlign = "left";
-    ctx.direction = "ltr";
-    ctx.fillStyle = "#a8a29e";
-    ctx.font = `700 20px ${family}`;
-    ctx.fillText("ENGLISH WEBBOOK · VISION TWO", 90, 106);
-
-    // divider
-    ctx.strokeStyle = "#e7e5e4";
-    ctx.lineWidth = 1.5;
-    ctx.beginPath();
-    ctx.moveTo(90, 138);
-    ctx.lineTo(W - 90, 138);
-    ctx.stroke();
+    // ---------- shell (Task 104: استخراجِ دست‌نخورده برای خانوادهٔ سبز) ----------
+    studyShell(ctx, W, H, family, dark);
 
     // ---------- title ----------
     ctx.direction = "rtl";
@@ -246,6 +191,70 @@ export async function downloadResultImage(opts: ResultImageOpts): Promise<boolea
   } catch {
     return false;
   }
+}
+
+// ------------------------------------------------------------------
+// Task 104 — پوستهٔ خانوادهٔ سبز (استخراجِ دست‌نخورده از downloadResultImage
+// تا کارتِ هفته‌نامه هم‌خانواده بماند و کارتِ نتیجه پیکسل‌به‌پیکسل ثابت بماند).
+// ------------------------------------------------------------------
+function studyShell(ctx: CanvasRenderingContext2D, W: number, H: number, family: string, dark: boolean): void {
+  // ---------- background gradient ----------
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  if (dark) {
+    bg.addColorStop(0, "#78350f");
+    bg.addColorStop(0.55, "#b45309");
+    bg.addColorStop(1, "#92400e");
+  } else {
+    bg.addColorStop(0, "#064e3b");
+    bg.addColorStop(0.55, "#047857");
+    bg.addColorStop(1, "#0d9488");
+  }
+  ctx.fillStyle = bg;
+  ctx.fillRect(0, 0, W, H);
+
+  // decorative circles
+  ctx.globalAlpha = 0.12;
+  ctx.fillStyle = "#ffffff";
+  for (const [cx, cy, r] of [
+    [W - 90, 80, 150],
+    [90, H - 70, 120],
+    [W / 2, H + 60, 200],
+  ] as const) {
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  ctx.globalAlpha = 1;
+
+  // ---------- inner card ----------
+  ctx.fillStyle = "#ffffff";
+  roundRect(ctx, 36, 36, W - 72, H - 72, 28);
+  ctx.fill();
+  ctx.strokeStyle = dark ? "rgba(180, 83, 9, 0.35)" : "rgba(6, 95, 70, 0.25)";
+  ctx.lineWidth = 2;
+  roundRect(ctx, 48, 48, W - 96, H - 96, 20);
+  ctx.stroke();
+
+  // ---------- header row ----------
+  ctx.direction = "rtl";
+  ctx.textBaseline = "middle";
+  ctx.textAlign = "right";
+  ctx.fillStyle = dark ? "#92400e" : "#047857";
+  ctx.font = `900 26px ${family}`;
+  ctx.fillText("وب‌کتاب تعاملی «ویژن ۲»", W - 90, 106);
+  ctx.textAlign = "left";
+  ctx.direction = "ltr";
+  ctx.fillStyle = "#a8a29e";
+  ctx.font = `700 20px ${family}`;
+  ctx.fillText("ENGLISH WEBBOOK · VISION TWO", 90, 106);
+
+  // divider
+  ctx.strokeStyle = "#e7e5e4";
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.moveTo(90, 138);
+  ctx.lineTo(W - 90, 138);
+  ctx.stroke();
 }
 
 // ------------------------------------------------------------------
@@ -604,4 +613,166 @@ export async function buildDuelDoneBlob(opts: DuelDoneImageOpts): Promise<Blob |
   const c = await duelDoneCanvas(opts);
   if (!c) return null;
   return canvasToBlob(c);
+}
+
+// ---------------- کارتِ هفته‌نامهٔ پیشرفت (Task 104 — عکسِ هفته‌نامه) ----------------
+
+export interface WeeklyImageOpts {
+  userName?: string;
+  /** جمعِ فعالیتِ هفته (همان thisWeek.activities دایجست) */
+  activities: number;
+  /** برشِ واقعیِ خانواده‌های فعالیتِ همین هفته — هیچ عددِ ساختگی */
+  reviews: number;
+  quizzes: number;
+  words: number;
+  dictation: number;
+  rush: number;
+  /** روزهای هدفِ کامل‌شدهٔ همین هفته (۰..۷) — حلقه بر همین درصد می‌نشیند */
+  goalDays: number;
+  /** زنجیرهٔ فعلی — فقط با عددِ مثبت نمایش می‌آید */
+  streak: number;
+  /** پرجانب‌ترین روزِ هفته — برچسبِ کوتاهِ فارسیِ آماده */
+  bestDay?: { label: string; total: number } | null;
+  /** خطِ نبردها — متنِ فارسیِ آماده از بلوکِ هفته‌نامه (ارقامِ فارسی) */
+  duelLine?: string;
+}
+
+export async function downloadWeeklyImage(opts: WeeklyImageOpts): Promise<boolean> {
+  try {
+    if (typeof document !== "undefined" && document.fonts?.ready) {
+      await document.fonts.ready;
+    }
+    const family =
+      typeof document !== "undefined"
+        ? getComputedStyle(document.body).fontFamily || "sans-serif"
+        : "sans-serif";
+    if (typeof document === "undefined") return false;
+    const canvas = document.createElement("canvas");
+    canvas.width = 1080;
+    canvas.height = 640;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return false;
+    const W = 1080;
+    const H = 640;
+    studyShell(ctx, W, H, family, false);
+
+    // ---------- title ----------
+    ctx.direction = "rtl";
+    ctx.textBaseline = "middle";
+    ctx.textAlign = "right";
+    ctx.fillStyle = "#1c1917";
+    ctx.font = `800 34px ${family}`;
+    ctx.fillText("هفته‌نامهٔ پیشرفت", W - 90, 192);
+
+    // ---------- learner + streak ----------
+    if (opts.userName) {
+      ctx.fillStyle = "#1c1917";
+      ctx.font = `800 32px ${family}`;
+      ctx.fillText(truncate(ctx, opts.userName, 280), W - 90, 275);
+      ctx.fillStyle = "#a8a29e";
+      ctx.font = `700 18px ${family}`;
+      ctx.fillText("یادگیرندهٔ وب‌کتاب", W - 90, 310);
+    } else {
+      ctx.fillStyle = "#a8a29e";
+      ctx.font = `700 20px ${family}`;
+      ctx.fillText("یادگیرندهٔ وب‌کتاب", W - 90, 275);
+    }
+    if (opts.streak > 0) {
+      ctx.fillStyle = "#059669";
+      ctx.font = `900 22px ${family}`;
+      ctx.fillText(`زنجیرهٔ ${faNum(opts.streak)} روزه`, W - 90, 350);
+    }
+
+    // ---------- goal ring (روزهای هدف از ۷) ----------
+    const cx = W - 90 - 105;
+    const cy = 350;
+    const r = 105;
+    ctx.lineWidth = 20;
+    ctx.lineCap = "round";
+    ctx.strokeStyle = "#f5f5f4";
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.stroke();
+    const pct = Math.max(0, Math.min(7, opts.goalDays)) / 7;
+    const ring = ctx.createLinearGradient(cx - r, cy - r, cx + r, cy + r);
+    ring.addColorStop(0, "#10b981");
+    ring.addColorStop(1, "#0d9488");
+    ctx.strokeStyle = ring;
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, Math.PI / 2, Math.PI / 2 + Math.PI * 2 * pct);
+    ctx.stroke();
+    ctx.textAlign = "center";
+    ctx.fillStyle = "#1c1917";
+    ctx.font = `900 52px ${family}`;
+    ctx.fillText(`${faNum(Math.round(pct * 100))}٪`, cx, cy - 10);
+    ctx.fillStyle = "#78716c";
+    ctx.font = `700 21px ${family}`;
+    ctx.fillText(`${faNum(opts.goalDays)} از ${faNum(7)} روزِ هدف`, cx, cy + 38);
+
+    // ---------- activity chips (خانواده‌های واقعیِ DayStat) ----------
+    const chips: { label: string; value: number }[] = [
+      { label: "مرور", value: opts.reviews },
+      { label: "آزمون", value: opts.quizzes },
+      { label: "واژهٔ نو", value: opts.words },
+      { label: "دیکته", value: opts.dictation },
+      { label: "برق‌آسا", value: opts.rush },
+    ];
+    let chy = 246;
+    for (const c of chips) {
+      ctx.fillStyle = "#f0fdf4";
+      roundRect(ctx, 90, chy, 300, 46, 12);
+      ctx.fill();
+      ctx.fillStyle = "#78716c";
+      ctx.font = `700 17px ${family}`;
+      ctx.textAlign = "right";
+      ctx.fillText(c.label, 376, chy + 23);
+      ctx.fillStyle = "#047857";
+      ctx.font = `900 21px ${family}`;
+      ctx.textAlign = "left";
+      ctx.fillText(faNum(c.value), 104, chy + 23);
+      chy += 54;
+    }
+
+    // ---------- center line: نبردها یا پرجانب‌ترین روز — فقط وقتی واقعی ----------
+    ctx.textAlign = "center";
+    ctx.direction = "rtl";
+    ctx.font = `700 20px ${family}`;
+    if (opts.duelLine) {
+      ctx.fillStyle = "#a21caf";
+      ctx.fillText(truncate(ctx, opts.duelLine, 640), W / 2, 508);
+    } else if (opts.bestDay && opts.bestDay.total > 0) {
+      ctx.fillStyle = "#78716c";
+      ctx.fillText(
+        `پرجانب‌ترین روز: ${opts.bestDay.label} — ${faNum(opts.bestDay.total)} فعالیت`,
+        W / 2,
+        508
+      );
+    }
+
+    // ---------- footer ----------
+    ctx.strokeStyle = "#e7e5e4";
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(90, H - 108);
+    ctx.lineTo(W - 90, H - 108);
+    ctx.stroke();
+    ctx.direction = "rtl";
+    ctx.textAlign = "right";
+    ctx.fillStyle = "#a8a29e";
+    ctx.font = `700 19px ${family}`;
+    ctx.fillText(`هفته‌نامهٔ پیشرفت · ${faDate()}`, W - 90, H - 74);
+    ctx.textAlign = "left";
+    ctx.direction = "ltr";
+    ctx.fillStyle = "#059669";
+    ctx.font = `900 20px ${family}`;
+    ctx.fillText(
+      opts.activities >= 20 ? "STRONG WEEK ★" : opts.activities >= 8 ? "GOOD PACE" : "KEEP GOING!",
+      90,
+      H - 74
+    );
+
+    return downloadCanvasBlob(ctx.canvas, "vision2-weekly.png");
+  } catch {
+    return false;
+  }
 }

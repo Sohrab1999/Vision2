@@ -560,7 +560,7 @@ describe("globals.css translucent veil layer (Step 9 tranche 4 phase 4 — Task 
     expect(offenders, "translucent surfaces paint via c-veil-60/70, never raw bg-white alphas").toEqual([]);
   });
 
-  it("c-veil consumers exist exactly where the r87 matrix said (18 across 12 files)", () => {
+  it("c-veil consumers exist exactly where the r87 matrix said (19 across 12 files)", () => {
     const files = [
       "src/components/study/home/home-feed.tsx",
       "src/components/study/duel/leaderboard.tsx",
@@ -581,7 +581,8 @@ describe("globals.css translucent veil layer (Step 9 tranche 4 phase 4 — Task 
       total += n;
       expect(n, `${f} has at least one c-veil consumer`).toBeGreaterThan(0);
     }
-    expect(total).toBe(18);
+    // Task 103: weekly-report +۱ — بلوکِ «نبردهای واژگانی» هم‌خانوادهٔ ردیف‌های گزارش
+    expect(total).toBe(19);
   });
 });
 
@@ -825,7 +826,8 @@ describe("globals.css track semantic layer (stone-200 alphas — Task 90)", () =
       }
     };
     walk(resolve(process.cwd(), "src"));
-    expect(n60, "c-track-60 consumers").toBe(1);
+    // Task 103: weekly-report +۱ — مسیرِ نوارِ نرخِ بردِ نبردها (زیرِ همان retargetِ report-digest)
+    expect(n60, "c-track-60 consumers").toBe(2);
     expect(n70, "c-track-70 consumers").toBe(5);
     expect(n80, "c-track-80 consumers").toBe(2);
   });

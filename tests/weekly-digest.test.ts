@@ -160,3 +160,150 @@ describe("computeWeeklyDigest — highlights", () => {
     expect(computeWeeklyDigest(inp, T).highlights.some((h) => h.includes("شروع پرانرژی"))).toBe(true);
   });
 });
+
+// ------------------------------------------------------------------
+// Task 103 — «نبردهای هفته» — duelWeeklyStats + خطِ هایلایتِ نبرد
+// ------------------------------------------------------------------
+import { duelWeeklyStats } from "@/lib/weekly-digest";
+import { DUEL_HISTORY_CAP, type DuelRecord } from "@/lib/duel-history";
+
+const rec = (over: Partial<DuelRecord>): DuelRecord => ({
+  id: "d" + Math.random().toString(36).slice(2, 8),
+  day: dayKeyBefore(T, 0),
+  outcome: "win",
+  reason: "finished",
+  opponent: "سینا",
+  opponentColor: "rose",
+  myScore: 1000,
+  oppScore: 800,
+  myCorrect: 9,
+  oppCorrect: 7,
+  answered: 10,
+  total: 10,
+  durationSec: 80,
+  ...over,
+});
+
+describe("duelWeeklyStats — پنجرهٔ ۷روزه (Task 103)", () => {
+  it("بدونِ دفترچه/خالی → null — نه صفرِ ساختگی", () => {
+    expect(duelWeeklyStats(undefined, T)).toBeNull();
+    expect(duelWeeklyStats([], T)).toBeNull();
+  });
+
+  it("مرزِ پنجره: امروز و روزِ ششم داخل؛ هفتم «هفتهٔ پیش»؛ چهاردهمِ دور هم پیش", () => {
+    const d = duelWeeklyStats(
+      [
+        rec({ id: "a", day: dayKeyBefore(T, 0) }),
+        rec({ id: "b", day: dayKeyBefore(T, 6), outcome: "loss" }),
+        rec({ id: "c", day: dayKeyBefore(T, 7), outcome: "tie" }),
+        rec({ id: "e", day: dayKeyBefore(T, 13), outcome: "win" }),
+        rec({ id: "f", day: dayKeyBefore(T, 20) }), // بیرونِ پنجرهٔ ۱۴روزه — نادیده
+      ],
+      T
+    )!;
+    expect(d.thisWeek).toBe(2);
+    expect(d.lastWeek).toBe(2);
+    expect(d.win).toBe(1);
+    expect(d.loss).toBe(1);
+    expect(d.tie).toBe(0);
+    expect(d.winRate).toBe(50);
+  });
+
+  it("بهترین امتیازِ فقطِ همین هفته — NaN حساب نمی‌شود", () => {
+    const d = duelWeeklyStats(
+      [
+        rec({ id: "a", day: dayKeyBefore(T, 0), myScore: 1200 }),
+        rec({ id: "b", day: dayKeyBefore(T, 1), myScore: 900 }),
+        rec({ id: "c", day: dayKeyBefore(T, 8), myScore: 9999 }), // هفتهٔ پیش
+        rec({ id: "d", day: dayKeyBefore(T, 2), myScore: Number.NaN }),
+      ],
+      T
+    )!;
+    expect(d.best).toBe(1200);
+  });
+
+  it("پر شدنِ سقفِ دفترچه با نبردهای همین هفته → truncated (شمارشِ حداقلی)", () => {
+    const full = Array.from({ length: DUEL_HISTORY_CAP }, (_, i) =>
+      rec({ id: "x" + i, day: dayKeyBefore(T, i % 7) })
+    );
+    const d = duelWeeklyStats(full, T)!;
+    expect(d.thisWeek).toBe(DUEL_HISTORY_CAP);
+    expect(d.truncated).toBe(true);
+    // همان تعداد ولی پخش‌شده در دو هفته → قطعی، نه حداقلی
+    const split = Array.from({ length: DUEL_HISTORY_CAP }, (_, i) =>
+      rec({ id: "y" + i, day: dayKeyBefore(T, i < 10 ? 0 : 10) })
+    );
+    expect(duelWeeklyStats(split, T)!.truncated).toBe(false);
+  });
+
+  it("رکوردِ خراب (روزِ نامعتبر یا نتیجهٔ ناشناخته) کلاً کنار می‌رود", () => {
+    const d = duelWeeklyStats(
+      [
+        rec({ id: "a", day: "not-a-day" }),
+        rec({ id: "b", outcome: "bogus" as unknown as DuelRecord["outcome"] }),
+        rec({ id: "c", day: dayKeyBefore(T, 0), myScore: 700 }),
+      ],
+      T
+    )!;
+    expect(d.thisWeek).toBe(1);
+    expect(d.win).toBe(1);
+  });
+
+  it("خلوص: ورودی را تغییر نمی‌دهد و قطعی است", () => {
+    const rs = [rec({ id: "a" }), rec({ id: "b", outcome: "loss" as const })];
+    const snapshot = JSON.stringify(rs);
+    const first = duelWeeklyStats(rs, T)!;
+    const second = duelWeeklyStats(rs, T)!;
+    expect(JSON.stringify(rs)).toBe(snapshot);
+    expect(first).toEqual(second);
+  });
+
+  it("بی‌نبردِ این هفته ولی دفترچهٔ پُر → این هفته صفرِ صادق با truncated=false", () => {
+    const d = duelWeeklyStats([rec({ id: "a", day: dayKeyBefore(T, 10) })], T)!;
+    expect(d.thisWeek).toBe(0);
+    expect(d.lastWeek).toBe(1);
+    expect(d.winRate).toBe(0);
+    expect(d.best).toBe(0);
+    expect(d.truncated).toBe(false);
+  });
+});
+
+describe("خطِ هایلایتِ نبرد در computeWeeklyDigest (Task 103)", () => {
+  it("با نبردِ این هفته، خطِ فارسی با ارقامِ فارسی و برشِ نتیجه‌ها می‌آید", () => {
+    const d = computeWeeklyDigest(
+      input({
+        dayHistory: { [T]: { day: T, reviews: 3, quizzes: 0, words: 0, dictation: 0, rush: 0 } },
+        duelHistory: [
+          rec({ id: "a", day: dayKeyBefore(T, 0), outcome: "win" }),
+          rec({ id: "b", day: dayKeyBefore(T, 1), outcome: "win" }),
+          rec({ id: "c", day: dayKeyBefore(T, 2), outcome: "loss" }),
+          rec({ id: "e", day: dayKeyBefore(T, 3), outcome: "tie" }),
+        ],
+      }),
+      T
+    );
+    expect(d.duels).toMatchObject({ thisWeek: 4, win: 2, loss: 1, tie: 1, winRate: 50 });
+    expect(d.highlights.some((h) => h.includes("۴ نبرد واژگانی این هفته — ۲ برد، ۱ باخت، ۱ مساوی"))).toBe(true);
+  });
+
+  it("بدونِ دفترچه یا بی‌نبردِ این هفته → بدونِ خطِ نبرد", () => {
+    const d0 = computeWeeklyDigest(input(), T);
+    expect(d0.duels).toBeNull();
+    expect(d0.highlights.every((h) => !h.includes("نبرد"))).toBe(true);
+    const d1 = computeWeeklyDigest(
+      input({ duelHistory: [rec({ id: "a", day: dayKeyBefore(T, 10) })] }),
+      T
+    );
+    expect(d1.duels!.thisWeek).toBe(0);
+    expect(d1.highlights.every((h) => !h.includes("نبرد واژگانی"))).toBe(true);
+  });
+
+  it("دودل‌بازِ بی‌مرور هم خط می‌گیرد — نبرد مستقل از فعالیتِ مطالعاتی است", () => {
+    const d = computeWeeklyDigest(
+      input({ duelHistory: [rec({ id: "a", day: dayKeyBefore(T, 0) })] }),
+      T
+    );
+    expect(d.empty).toBe(true); // فعالیتِ مطالعاتیِ ۱۴روزه صفر
+    expect(d.highlights.some((h) => h.includes("۱ نبرد واژگانی این هفته"))).toBe(true);
+  });
+});

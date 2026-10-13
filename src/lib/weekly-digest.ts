@@ -10,6 +10,8 @@
 
 import type { DayHistoryMap, DayStat, HistoryMap } from "./study-store";
 import { faNum } from "./study-theme";
+import { percent } from "./domain/percent";
+import { DUEL_HISTORY_CAP, type DuelRecord } from "./duel-history";
 
 export interface WeekTotals {
   reviews: number;
@@ -38,12 +40,15 @@ export interface WeeklyDigest {
   perDay: { day: string; stat: DayStat; inThisWeek: boolean }[]; // 14 days, oldest → today
   highlights: string[]; // Persian one-liners for the UI
   empty: boolean; // no activity in the full 14-day window
+  /** Task 103 — خلاصهٔ نبردها؛ null یعنی دفترچه‌ای در کار نیست (بلوکِ UI پنهان) */
+  duels: WeeklyDuels | null;
 }
 
 export interface DigestInput {
   dayHistory?: DayHistoryMap;
   history?: HistoryMap; // legacy fallback — reviews/quizzes per day
   goalMetDays?: string[];
+  duelHistory?: DuelRecord[]; // Task 103 — خلاصهٔ نبردهای پنجرهٔ ۷روزه
 }
 
 const WEEK = 7;
@@ -161,11 +166,80 @@ export function computeWeeklyDigest(input: DigestInput, todayKey: string): Weekl
     }
   }
 
-  return { thisWeek, lastWeek, deltas, bestDay, perDay, highlights, empty: isEmpty };
+  const duels = duelWeeklyStats(input.duelHistory, todayKey);
+  // Task 103 — خطِ نبردها مستقل از فعالیتِ مطالعاتی است: دودل‌بازِ بی‌مرور هم
+  // حق دارد هفته‌نامه از او حرف بزند؛ «+» یعنی شمارشِ حداقلی (سقفِ دفترچه)
+  if (duels !== null && duels.thisWeek > 0) {
+    highlights.push(
+      `${faNum(duels.thisWeek)}${duels.truncated ? "+" : ""} نبرد واژگانی این هفته — ${faNum(duels.win)} برد، ${faNum(duels.loss)} باخت${duels.tie > 0 ? `، ${faNum(duels.tie)} مساوی` : ""}`
+    );
+  }
+
+  return { thisWeek, lastWeek, deltas, bestDay, perDay, highlights, empty: isEmpty, duels };
+}
+
+// ------------------------------------------------------------------
+// Task 103 — «نبردهای هفته» — خلاصهٔ صادقِ دفترچهٔ نبرد در پنجرهٔ ۷روزه.
+// دفترچه فقط DUEL_HISTORY_CAP رکورد آخر را نگه می‌دارد؛ اگر تمامِ پنجره
+// پرِ آن رکوردها باشد، شمارشِ هفته «حداقل» است نه قطعی — truncated این
+// صداقت را حمل می‌کند تا UI هرگز عددِ مشکوک را قطعی نشان ندهد.
+// ------------------------------------------------------------------
+
+export interface WeeklyDuels {
+  thisWeek: number; // نبردهای پنجرهٔ ۷روزه (از دفترچه — با سقفِ حافظه)
+  lastWeek: number; // نبردهای ۸..۱۴ روزِ پیش
+  win: number;
+  loss: number;
+  tie: number;
+  winRate: number; // percent(win, thisWeek) — ۰ بی‌نبرد
+  best: number; // بهترین امتیازِ شخصیِ همین هفته — ۰ بی‌نبرد
+  truncated: boolean; // پنجره پرِ سقفِ دفترچه است — شمارش حداقلی
+}
+
+/**
+ * خلاصهٔ نبردهای پنجره — بدونِ دفترچه null (بلوکِ UI پنهان، نه صفرِ ساختگی).
+ * رکوردِ خراب (روزِ نامعتبر یا نتیجهٔ ناشناخته) کلاً کنار می‌رود، نه نصفه.
+ */
+export function duelWeeklyStats(records: DuelRecord[] | undefined, todayKey: string): WeeklyDuels | null {
+  if (!Array.isArray(records) || records.length === 0) return null;
+  const thisDays = new Set<string>();
+  const lastDays = new Set<string>();
+  for (let i = 0; i < WEEK; i += 1) thisDays.add(dayKeyBefore(todayKey, i));
+  for (let i = WEEK; i < 2 * WEEK; i += 1) lastDays.add(dayKeyBefore(todayKey, i));
+
+  let thisWeek = 0;
+  let lastWeek = 0;
+  let win = 0;
+  let loss = 0;
+  let tie = 0;
+  let best = 0;
+  for (const r of records) {
+    if (!r || typeof r.day !== "string") continue;
+    const outcome = r.outcome === "win" || r.outcome === "loss" || r.outcome === "tie" ? r.outcome : null;
+    if (!outcome) continue;
+    if (thisDays.has(r.day)) {
+      thisWeek += 1;
+      if (outcome === "win") win += 1;
+      else if (outcome === "loss") loss += 1;
+      else tie += 1;
+      if (Number.isFinite(r.myScore) && r.myScore > best) best = r.myScore;
+    } else if (lastDays.has(r.day)) {
+      lastWeek += 1;
+    }
+  }
+  return {
+    thisWeek,
+    lastWeek,
+    win,
+    loss,
+    tie,
+    winRate: percent(win, thisWeek),
+    best,
+    truncated: thisWeek >= DUEL_HISTORY_CAP,
+  };
 }
 
 const FA_WEEKDAYS = ["یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنجشنبه", "جمعه", "شنبه"];
-
 /** Persian weekday label of an ISO day key. */
 export function faWeekday(key: string): string {
   const d = new Date(`${key}T00:00:00`);
