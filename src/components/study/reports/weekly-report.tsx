@@ -264,6 +264,29 @@ export default function WeeklyReportSection() {
               >
                 {faNum(weekGoal.pct)}٪
               </span>
+              {/* نشانِ «هفتهٔ کامل» (Task 134 — قراردادِ ۱۳۲ لایهٔ سوم می‌گیرد):
+                  همان مهرِ ۱۴px زمردیِ تیک‌دارِ چیپِ هدر — فقطِ ۷/۷ (badge≠null)،
+                  aria-hidden (title از قبلِ ۱۲۸ متنِ جشن را دارد — نشان لایهٔ
+                  بصریِ همان دعوی است)؛ زمردیِ توکن — دارکِ مجانی، صفرِ قاعدهٔ نو */}
+              {weekGoal.badge && (
+                <span
+                  className="absolute -top-0.5 -right-0.5 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-emerald-600 shadow-sm shadow-emerald-900/25"
+                  aria-hidden
+                >
+                  <svg
+                    viewBox="0 0 12 12"
+                    className="h-2 w-2"
+                    fill="none"
+                    stroke="white"
+                    strokeWidth="2.4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden
+                  >
+                    <path d="M2.5 6.2 5 8.7 9.5 3.8" />
+                  </svg>
+                </span>
+              )}
             </div>
             <span
               className={`hidden text-[10px] font-extrabold sm:inline ${

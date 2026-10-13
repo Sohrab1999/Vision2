@@ -89,3 +89,56 @@ describe("حلقهٔ هدفِ هفتگی در هفته‌نامه — کامپو
     expect(dotsRow?.querySelectorAll("span.rounded-full").length).toBe(7);
   });
 });
+
+// ------------------------------------------------------------------
+// Task 134 «نشانِ هفتهٔ کامل رویِ حلقهٔ زنده» — قراردادِ ۱۳۲ لایهٔ سوم
+// می‌گیرد: مهرِ زمردیِ تیک‌دار فقطِ ۷/۷؛ هر حالتِ دیگر هیچ مهرِ
+// زمردی‌ای داخلِ حلقه ندارد (صداقتِ دعوی). مهر aria-hidden است —
+// title از قبلِ ۱۲۸ متنِ جشن را دارد؛ نشان تکرارِ دعوی نیست.
+// ------------------------------------------------------------------
+describe("نشانِ هفتهٔ کامل رویِ حلقهٔ زندهٔ هفته‌نامه — Task 134", () => {
+  beforeEach(() => {
+    cleanup();
+    useStudy.setState({
+      dayHistory: {},
+      history: {},
+      goalMetDays: [],
+      dailyGoal: 10,
+      streak: 0,
+      freezeCount: 0,
+      freezeSavedDay: "",
+      freezeUsedDays: [],
+      freezeEarnedDay: "",
+    });
+  });
+
+  it("۷/۷: مهرِ زمردیِ تیک‌دار داخلِ حلقه — bg-emerald-600 + pathِ تیکِ نشانِ ۱۳۲ + aria-hidden", () => {
+    useStudy.setState({
+      goalMetDays: [0, 1, 2, 3, 4, 5, 6].map((d) => daysAgoKey(d)),
+    });
+    render(<WeeklyReportSection />);
+    const ring = screen.getByRole("img", { name: /۷ از ۷ روزِ هدف/ });
+    const seal = ring.querySelector("span.bg-emerald-600");
+    expect(seal, "the emerald seal renders inside the ring at 7/7").not.toBeNull();
+    expect(seal?.getAttribute("aria-hidden")).toBe("true");
+    expect(seal?.className).toContain("rounded-full");
+    const tick = seal?.querySelector('svg path[d="M2.5 6.2 5 8.7 9.5 3.8"]');
+    expect(tick, "the check path is the same 132 badge language").not.toBeNull();
+    // مرکز و arc دست‌نخورده (رگرسیونِ ۱۲۸) — نشان لایهٔ افزودنی است
+    expect(ring.textContent).toContain("۱۰۰٪");
+    expect(ring.querySelector('circle[pathLength="100"]')?.getAttribute("stroke-dasharray")).toBe("100 0");
+  });
+
+  it("۳/۷: هیچ مهرِ زمردی‌ای داخلِ حلقه نیست (صفرِ مطلقِ دعویِ ناقص)", () => {
+    useStudy.setState({ goalMetDays: [daysAgoKey(0), daysAgoKey(1), daysAgoKey(2)] });
+    render(<WeeklyReportSection />);
+    const ring = screen.getByRole("img", { name: /۳ از ۷ روزِ هدف/ });
+    expect(ring.querySelector("span.bg-emerald-600")).toBeNull();
+  });
+
+  it("هفتهٔ خالی (۰/۷): هم مهر ندارد — NaNِ محافظت‌شده هم به این در نمی‌رسد", () => {
+    render(<WeeklyReportSection />);
+    const ring = screen.getByRole("img", { name: /۰ از ۷ روزِ هدف/ });
+    expect(ring.querySelector("span.bg-emerald-600")).toBeNull();
+  });
+});

@@ -689,6 +689,10 @@ export async function downloadWeeklyImage(opts: WeeklyImageOpts): Promise<boolea
     }
 
     // ---------- goal ring (روزهای هدف از ۷) ----------
+    // Task 134 — حلقه، درصد و برچسب از قراردادِ weekGoalMeta می‌آیند (تک‌مالکِ
+    // هدفِ هفتگی — هم‌الگویِ weekCardPercentِ ۱۲۸): برچسبِ قبلی faNum(opts.goalDays)
+    // خام بود و ورودیِ >۷ «۱۰ از ۷ روزِ هدف» ادعا می‌کرد — تنها لایه‌ای که
+    // قراردادِ صداقتِ ۱۳۲ را نقض می‌کرد؛ حالا clampِ همگانی است.
     const cx = W - 90 - 105;
     const cy = 350;
     const r = 105;
@@ -698,7 +702,8 @@ export async function downloadWeeklyImage(opts: WeeklyImageOpts): Promise<boolea
     ctx.beginPath();
     ctx.arc(cx, cy, r, 0, Math.PI * 2);
     ctx.stroke();
-    const pct = Math.max(0, Math.min(7, opts.goalDays)) / 7;
+    const meta = weekGoalMeta(opts.goalDays);
+    const pct = meta.pct / 100;
     const ring = ctx.createLinearGradient(cx - r, cy - r, cx + r, cy + r);
     ring.addColorStop(0, "#10b981");
     ring.addColorStop(1, "#0d9488");
@@ -709,10 +714,32 @@ export async function downloadWeeklyImage(opts: WeeklyImageOpts): Promise<boolea
     ctx.textAlign = "center";
     ctx.fillStyle = "#1c1917";
     ctx.font = `900 52px ${family}`;
-    ctx.fillText(`${faNum(Math.round(pct * 100))}٪`, cx, cy - 10);
+    ctx.fillText(`${faNum(meta.pct)}٪`, cx, cy - 10);
     ctx.fillStyle = "#78716c";
     ctx.font = `700 21px ${family}`;
-    ctx.fillText(`${faNum(opts.goalDays)} از ${faNum(7)} روزِ هدف`, cx, cy + 38);
+    ctx.fillText(meta.label, cx, cy + 38);
+    if (meta.badge) {
+      // نشانِ «هفتهٔ کامل» (قراردادِ ۱۳۲ → لایهٔ PNG — Task 134): مهرِ زمردیِ
+      // تیک‌دار رویِ لبهٔ بالاییِ حلقه — دوقلویِ بصریِ مهرِ چیپ/هفته‌نامه —
+      // به‌همراهِ ادعای نام‌دار زیرِ برچسب (کانواس aria ندارد؛ مهرِ بی‌نام
+      // دعوی را کامل نمی‌گوید). فقطِ ۷/۷ — meta.badge خودش نگهبان است.
+      const sealY = cy - r - 10; // لبهٔ بیرونیِ track (lineWidth/2 = 10)
+      ctx.fillStyle = "#059669"; // emerald-600 — همان توکنِ نشانِ UI
+      ctx.beginPath();
+      ctx.arc(cx, sealY, 17, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = "#ffffff";
+      ctx.lineWidth = 3.2;
+      ctx.lineJoin = "round";
+      ctx.beginPath();
+      ctx.moveTo(cx - 7, sealY + 0.4);
+      ctx.lineTo(cx - 2, sealY + 5.4);
+      ctx.lineTo(cx + 7, sealY - 4.4);
+      ctx.stroke();
+      ctx.fillStyle = "#059669";
+      ctx.font = `900 20px ${family}`;
+      ctx.fillText(meta.badge, cx, cy + 70);
+    }
 
     // ---------- activity chips (خانواده‌های واقعیِ DayStat) ----------
     const chips: { label: string; value: number }[] = [
