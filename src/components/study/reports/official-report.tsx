@@ -35,6 +35,7 @@ import { skillBreakdown, barColorFor, skillGradeFa } from "@/lib/skill-stats";
 import { trackEvent } from "@/lib/analytics";
 import type { BadgeTier } from "@/lib/achievements";
 import { computeWeeklyDigest } from "@/lib/weekly-digest";
+import { weekGoalMeta } from "@/lib/week-goal";
 import { weekTeacherStats, hasWeekVerdict, fallbackWeekReview } from "@/lib/week-teacher";
 import { requestWeekVerdict } from "@/lib/week-verdict-client";
 import type { TeacherReview } from "@/lib/exam-teacher";
@@ -208,6 +209,12 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
     [mounted, dayHistory, history, goalMetDays, duelHistory, streak]
   );
   const weekGate = weekStats ? hasWeekVerdict(weekStats) : false;
+  // Task 138 — پنجمین لایهٔ مصرفیِ قراردادِ هدفِ هفته (۱۳۲): عددِ «X از ۷
+  // روزِ هدف کامل» و نشانِ «هفتهٔ کامل» هر دو از weekGoalMeta می‌آیند —
+  // کاغذِ A4 هم دیگر عددِ خام را بازگویی نمی‌کند (آخرین بازمانده با
+  // week-teacher.tsx در همین نوبت صفر شد). گویشِ «کامل» پسوندِ همین
+  // کاغذ می‌ماند — فقطِ عدد از قرارداد است (byte-identical برایِ ورودیِ واقعی).
+  const weekGoal = useMemo(() => weekGoalMeta(weekStats?.goalDays ?? 0), [weekStats]);
 
   // verdict state machine — the skeleton is DERIVED (phase !== "done"),
   // so no synchronous setState ever runs inside the effect (lint rule);
@@ -623,7 +630,15 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
                   </div>
                 </div>
                 <p className="or-teacher-muted mt-2 text-[9.5px] font-bold leading-4">
-                  داوری بر اساسِ اعدادِ واقعیِ هفته‌نامه ({faNum(weekStats?.goalDays ?? 0)} از ۷ روزِ هدف کامل){" "}
+                  داوری بر اساسِ اعدادِ واقعیِ هفته‌نامه ({weekGoal.label} کامل){" "}
+                  {weekGoal.badge && (
+                    <span className="or-goal-seal mr-1 inline-flex items-center gap-1 rounded-full px-2 py-0.5 align-middle text-[9px] font-black">
+                      <svg viewBox="0 0 12 12" className="h-2 w-2" fill="none" stroke="white" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                        <path d="M2.5 6.2 5 8.7 9.5 3.8" />
+                      </svg>
+                      {weekGoal.badge}
+                    </span>
+                  )}
                   —{" "}
                   {verdictState.source === "fallback"
                     ? "بدونِ اتصال، از همین اعداد ساخته شد"

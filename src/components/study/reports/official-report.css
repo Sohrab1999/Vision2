@@ -96,6 +96,11 @@
 .or-teacher-muted { color: #78716c; }
 .or-teacher-dot-strong { background-color: #10b981; }
 .or-teacher-dot-advice { background-color: #f59e0b; }
+/* Task 138 — نشانِ «هفتهٔ کامل» رویِ کاغذ (پنجمین لایهٔ قراردادِ ۱۳۲).
+   #059669 = emerald-600 — همان توکنِ نشانِ چهار لایهٔ قبلی (چیپِ هدر ۱۳۲،
+   حلقهٔ زندهٔ ۱۳۴، دو کارتِ PNG ۱۳۴/۱۳۶)؛ کلاسِ or-* طبقِ رسومِ کاغذ تا
+   دارک هرگز به کاغذ نرسد. چاپ: print-color-adjust: exact در باندِ چاپ. */
+.or-goal-seal { background-color: #059669; color: #ffffff; }
 .or-chip-fresh { background-color: #dcfce7; border: 1px solid #86efac; color: #166534; }
 .or-chip-ready { background-color: #f3e8ff; border: 1px solid #d8b4fe; color: #6b21a8; }
 .or-chip-offline { background-color: #f5f5f4; border: 1px solid #d6d3d1; color: #57534e; }

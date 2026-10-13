@@ -20,8 +20,8 @@ import { GraduationCap, Loader2, Sparkles, RotateCcw, ImageDown, Share2 } from "
 import { trackEvent } from "@/lib/analytics";
 import type { TeacherReview } from "@/lib/exam-teacher";
 import { hasWeekVerdict, type WeekTeacherStats } from "@/lib/week-teacher";
+import { weekGoalMeta } from "@/lib/week-goal";
 import { useStudy } from "@/lib/study-store";
-import { faNum } from "@/lib/study-theme";
 import { downloadWeekCardImage, buildWeekCardBlob } from "@/lib/result-image";
 import { canShareImageFiles, blobToFile, shareImageFile, type ShareOutcome } from "@/lib/share-card";
 import { useToast } from "@/hooks/use-toast";
@@ -75,10 +75,13 @@ export default function WeekTeacher({ stats }: { stats: WeekTeacherStats }) {
     });
     let outcome: ShareOutcome = "failed";
     if (blob) {
+      // Task 138 — متنِ هم‌رسانی هم از قرارداد می‌خواند (آخرین برچسبِ خامِ
+      // مخزن): عددِ clamp‌شده از meta.label؛ پسوندِ «کامل» گویشِ همین متن است.
+      const shareGoal = weekGoalMeta(stats.goalDays);
       outcome = await shareImageFile({
         file: blobToFile(blob, "vision2-week-teacher.png"),
         title: "معلمِ هفته — وب‌کتاب ویژن ۲",
-        text: `🗓 داوریِ معلم برای این هفته: ${faNum(stats.goalDays)} از ۷ روزِ هدف کامل`,
+        text: `🗓 داوریِ معلم برای این هفته: ${shareGoal.label} کامل`,
       });
     }
     setShareBusy(false);
