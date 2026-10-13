@@ -37,6 +37,8 @@ const featureCssPaths = [
   "src/components/study/reports/official-report.css",
   // wave 4 (task 139): the duel dark-mode family (duel-* + leaderboard duel-mode)
   "src/components/study/duel/duel-dark.css",
+  // wave 5 (task 141): the daily-quests family (reward shimmer + dark tuning)
+  "src/components/study/practice/daily-quests.css",
 ];
 const readEffectiveCss = (): string =>
   readFileSync(cssPath, "utf8") +
@@ -253,9 +255,17 @@ describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
     // .border-stone-200 consolidated at the first member's position (−1,
     // css-tones --apply, 3a checkpoint). Growth from here must consolidate,
     // not add.
+    // task 141 (§8.3 wave 5): re-based 286 → 275 — the daily-quests family
+    // (the reward-shimmer band + the .dark .daily-quests tuning, 11 selector
+    // lines → practice/daily-quests.css) moved beside its owner; the r115
+    // ink trio (daily-quests + leaderboard.duel-mode) stays at the first
+    // member's position and the .c-track-80 member stays inside the
+    // elevated-surface canonical group (twelve families). Every moved rule
+    // was single-member — the removal unmasked NO new mergeable pair (3a
+    // checkpoint re-run clean). Growth from here must consolidate, not add.
     const sel = lines.filter((l) => /^\s*\.[a-z]/.test(l) && !l.includes("→")).length;
     expect(sel).toBeLessThanOrEqual(505);
-    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(286);
+    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(275);
   });
 });
 
@@ -1354,6 +1364,8 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
     "src/components/study/reports/official-report.css": [".official-overlay { background-color: rgb(12 10 9 / 0.68); }", ".dark .official-report {\n  --color-stone-50: #fafaf9;", ".or-table th { background-color: #f5f5f4;", ".or-teacher { background-color: #faf5ff;", ".or-chip-fresh {"],
     // wave 4 (task 139)
     "src/components/study/duel/duel-dark.css": [".dark .duel-hero {", ".dark .duel-card {", ".dark .duel-code {", ".dark .duel-hud {", '.dark .duel-done[class*="border-emerald-300"]', ".dark .leaderboard.duel-mode .ring-fuchsia-200", ".dark .leaderboard.duel-mode .from-fuchsia-300 {"],
+    // wave 5 (task 141)
+    "src/components/study/practice/daily-quests.css": ["@keyframes reward-shine", ".reward-shimmer {", ".dark .daily-quests {", ".dark .daily-quests .bg-stone-50\\/60", ".dark .daily-quests .quest-row:hover", ".dark .daily-quests .quest-row.border-emerald-300 {", ".dark .daily-quests .text-emerald-800 { color: #a7f3d0; }"],
     // wave 2 (task 135)
     "src/components/study/shared/streak-flame.css": [".streak-flame {", "@keyframes flame-flicker {"],
     "src/components/study/shell/footer.css": [".footer-band {", ".dark .footer-band {"],
@@ -1421,6 +1433,20 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
       "\n.dark .leaderboard.duel-mode .ring-fuchsia-200",
       "\n.dark .leaderboard.duel-mode .to-purple-400",
       "--color-emerald-100: #d0fae5",
+      // wave 5 (task 141) — \n-prefixed where the stayed residents share the
+      // .daily-quests prefix (the r115 trio + the c-track-80 group member)
+      "@keyframes reward-shine {",
+      "\n.reward-shimmer {",
+      "\n.dark .daily-quests {",
+      "\n.dark .daily-quests .border-dashed",
+      "\n.dark .daily-quests .text-stone-300",
+      "\n.dark .daily-quests .bg-stone-50\\/60",
+      "\n.dark .daily-quests .bg-stone-50 {",
+      "\n.dark .daily-quests .quest-row {",
+      "\n.dark .daily-quests .quest-row:hover",
+      "\n.dark .daily-quests .quest-row.border-emerald-300",
+      "\n.dark .daily-quests .text-emerald-800",
+      "\n.dark .daily-quests .text-emerald-600",
     ]) {
       expect(css, `globals.css still carries a moved rule: ${gone}`).not.toContain(gone);
     }
@@ -1436,9 +1462,12 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
     // the hover utilities are consumed across teacher/my-words panels — global band stays
     expect(css).toContain(".dark .hover\\:bg-sky-50:hover");
     expect(css).toContain(".dark .hover\\:bg-violet-50:hover");
+    // wave 5 (task 141): the r115 daily-quests ink trio stays at the first
+    // member's position (its leaderboard.duel-mode member is the duel family)
+    expect(css).toContain(".dark .daily-quests .text-violet-700,.dark .leaderboard.duel-mode .text-fuchsia-300");
   });
 
-  it("features.css manifest imports all sixteen files; layout.tsx loads it right after globals.css", () => {
+  it("features.css manifest imports all seventeen files; layout.tsx loads it right after globals.css", () => {
     const manifest = readFileSync(resolve(process.cwd(), "src/app/features.css"), "utf8");
     for (const p of featureCssPaths) {
       expect(manifest, `manifest line missing for ${p}`).toContain(`@import "${p.replace("src/", "../")}";`);

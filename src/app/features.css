@@ -1,5 +1,6 @@
 /* Per-feature stylesheets — §8.3 extraction (wave 1: task 133, wave 2: task
-   135, wave 3: task 137, wave 4: task 139 — sixteen files).
+   135, wave 3: task 137, wave 4: task 139, wave 5: task 141 — seventeen
+   files).
    Each file lives BESIDE its owning component and is imported here so the
    rules are ALWAYS part of the initial CSS — the same guarantee globals.css
    had before the extraction (lazy views keep zero first-paint risk), and the
@@ -25,3 +26,5 @@
 @import "../components/study/quiz/quiz-result.css";
 @import "../components/study/practice/weekly-chart.css";
 @import "../components/study/lesson/word-of-day.css";
+/* wave 5 (task 141): the daily-quests family (reward shimmer + dark tuning) */
+@import "../components/study/practice/daily-quests.css";
