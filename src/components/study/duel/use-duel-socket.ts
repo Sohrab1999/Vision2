@@ -8,7 +8,7 @@ import { percent as percentOf } from "@/lib/domain/percent";
 import { useCountdown } from "@/hooks/use-countdown";
 import { useToast } from "@/hooks/use-toast";
 import { trackEvent } from "@/lib/analytics";
-import { sendStats } from "@/lib/identity";
+import { mintDuelTicket, sendStats } from "@/lib/identity";
 import { duelDisplayName } from "@/lib/duel-receipt";
 import { buildDuelRecord } from "@/lib/duel-history";
 import {
@@ -27,6 +27,45 @@ import { DEFAULT_PACE_MS, DUEL_PACES } from "@/lib/duel-pace";
 // تمام سطح دستوری (emit/timer/ref) اینجاست؛ نمای‌های فاز صرفاً رندرند.
 // ------------------------------------------------------------------
 
+type EntryAck = { ok: boolean; error?: string; ticketError?: boolean };
+
+/**
+ * Task 112 «بلیتِ ورود» (SEC-5) — هر ورود به اتاق دوبل-گامی شد:
+ * ① با هویتِ ثبت‌شده بلیتِ یک‌بارمصرف ضرب می‌کنیم ② duel:create/join را
+ * با بلیت می‌فرستیم. اگر داور «خودِ بلیت» را رد کند (منقضی/تکراری —
+ * پرچمِ ticketError)، یک‌بار بلیتِ تازه ضرب و همان emit تکرار می‌شود؛
+ * ردِ دوم یعنی گرفتاریِ جدی‌تر — پیامِ صادقِ داور با toast می‌رسد.
+ * بلیت فقط حافظه است: هیچ ذخیره‌ای ندارد و هر ورود تازه ضرب می‌شود.
+ * ماژول-سطح است تا بازگشتِ retry legal بماند (قاعدهٔ hookها) و تست‌پذیر.
+ */
+function emitEntryWithTicket(
+  s: Socket,
+  event: "duel:create" | "duel:join",
+  base: Record<string, unknown>,
+  onDone: (res: EntryAck) => void,
+  toast: (t: { title: string; description?: string; duration?: number }) => void,
+  attempt = 0
+): void {
+  void mintDuelTicket().then((ticket) => {
+    if (!ticket) {
+      toast({
+        title: "ورود به نبرد ممکن نشد",
+        description: "اتصال را بررسی کن و دوباره تلاش کن.",
+        duration: 4000,
+      });
+      onDone({ ok: false });
+      return;
+    }
+    s.emit(event, { ...base, ticket }, (res: EntryAck) => {
+      if (!res.ok && res.ticketError && attempt === 0) {
+        emitEntryWithTicket(s, event, base, onDone, toast, 1); // یک‌بارِ تازه‌ضرب — همان رویداد
+        return;
+      }
+      onDone(res);
+    });
+  });
+}
+
 export interface DuelMachine {
   conn: Conn;
   phase: Phase;
@@ -36,6 +75,8 @@ export interface DuelMachine {
   joinInput: string;
   setJoinInput: (v: string) => void;
   joinBusy: boolean;
+  /** Task 112 — ساختِ اتاق حینِ ضربِ بلیت/انتظارِ ack داور مشغول است */
+  createBusy: boolean;
   /** Task 107 — ریتمِ برگزیدهٔ لابی (فقط در فازِ setup قابلِ تغییر) */
   chosenPace: number;
   paceChoices: typeof DUEL_PACES;
@@ -79,6 +120,8 @@ export function useDuelSocket(): DuelMachine {
   const [mySid, setMySid] = useState<string | null>(null);
   const [joinInput, setJoinInput] = useState("");
   const [joinBusy, setJoinBusy] = useState(false);
+  // Task 112 «بلیتِ ورود» — create هم حالا دو-گامی است (ضربِ بلیت → emit)
+  const [createBusy, setCreateBusy] = useState(false);
   // Task 107 «ریتمِ نبرد» — دو عددِ جداشده، دو نقشِ جداشده:
   //  • chosenPace: انتخابِ کاربر در لابی (به duel:create سفر می‌کند)
   //  • paceMs: ریتمِ مؤثر — فقط داور آن را تعیین می‌کند (duel:state در لابی
@@ -319,24 +362,33 @@ export function useDuelSocket(): DuelMachine {
   );
 
   const createRoom = useCallback(() => {
+    if (createBusy) return;
     const s = socketRef.current;
     if (!s || conn !== "online") return;
+    setCreateBusy(true);
     const store = useStudy.getState();
-    s.emit("duel:create", { name: store.userName || "یادگیرنده", color: store.avatarColor, perQMs: chosenPace }, (res: { ok: boolean; code?: string; state?: { players: PublicPlayer[] }; error?: string }) => {
-      if (!res.ok) {
-        toast({ title: "ساخت اتاق ناموفق بود", description: res.error, duration: 4000 });
-        return;
-      }
-      setMySid(s.id ?? null);
-      setRoomCode(res.code ?? null);
-      setPlayers(res.state?.players ?? []);
-      setPhase("waiting");
-    });
-  }, [conn, toast, chosenPace]);
+    emitEntryWithTicket(
+      s,
+      "duel:create",
+      { name: store.userName || "یادگیرنده", color: store.avatarColor, perQMs: chosenPace },
+      (res: EntryAck & { code?: string; state?: { players: PublicPlayer[] } }) => {
+        setCreateBusy(false);
+        if (!res.ok) {
+          if (res.error) toast({ title: "ساخت اتاق ناموفق بود", description: res.error, duration: 4000 });
+          return;
+        }
+        setMySid(s.id ?? null);
+        setRoomCode(res.code ?? null);
+        setPlayers(res.state?.players ?? []);
+        setPhase("waiting");
+      },
+      toast
+    );
+  }, [conn, toast, chosenPace, createBusy]);
 
   const joinRoom = useCallback(() => {
     const s = socketRef.current;
-    if (!s || conn !== "online") return;
+    if (!s || conn !== "online" || joinBusy) return;
     const code = joinInput.trim().toUpperCase();
     if (code.length < 4) {
       toast({ title: "کد اتاق را کامل وارد کن", duration: 3000 });
@@ -344,17 +396,23 @@ export function useDuelSocket(): DuelMachine {
     }
     setJoinBusy(true);
     const store = useStudy.getState();
-    s.emit("duel:join", { code, name: store.userName || "یادگیرنده", color: store.avatarColor }, (res: { ok: boolean; error?: string }) => {
-      setJoinBusy(false);
-      if (!res.ok) {
-        toast({ title: "پیوستن ناموفق بود", description: res.error, duration: 4000 });
-        return;
-      }
-      setMySid(s.id ?? null);
-      setRoomCode(code);
-      setPhase("waiting");
-    });
-  }, [conn, joinInput, toast]);
+    emitEntryWithTicket(
+      s,
+      "duel:join",
+      { code, name: store.userName || "یادگیرنده", color: store.avatarColor },
+      (res: EntryAck) => {
+        setJoinBusy(false);
+        if (!res.ok) {
+          if (res.error) toast({ title: "پیوستن ناموفق بود", description: res.error, duration: 4000 });
+          return;
+        }
+        setMySid(s.id ?? null);
+        setRoomCode(code);
+        setPhase("waiting");
+      },
+      toast
+    );
+  }, [conn, joinInput, toast, joinBusy]);
 
   const leaveRoom = useCallback(() => {
     const s = socketRef.current;
@@ -448,6 +506,7 @@ export function useDuelSocket(): DuelMachine {
     joinInput,
     setJoinInput,
     joinBusy,
+    createBusy,
     chosenPace,
     paceChoices: DUEL_PACES,
     choosePace,

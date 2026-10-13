@@ -63,3 +63,4 @@ tool-results/
 # Task 94: judge HMAC secret for duel receipts — the duel service (3003) and
 # the stats API share it; leaking it would let anyone forge match receipts
 mini-services/challenge-service/.receipt-secret
+mini-services/challenge-service/.ticket-secret

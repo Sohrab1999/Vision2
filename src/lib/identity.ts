@@ -81,6 +81,28 @@ export interface ProfilePayload {
   color: string;
 }
 
+/**
+ * Task 112 «بلیتِ ورود» — ضربِ بلیتِ یک‌بارمصرف برای duel:create/join.
+ * با همان شناسهٔ احرازشدهٔ یادگیرنده از /api/duel-ticket بلیت می‌گیرد؛
+ * هر شکست (بی‌هویتی/شبکه/ردِ سرور) → null و تصمیمِ toast با صداکننده.
+ * رشتهٔ بلیت فقط همین‌جا در حافظه می‌ماند — هیچ‌جا ذخیره نمی‌شود.
+ */
+export async function mintDuelTicket(): Promise<string | null> {
+  try {
+    const ident = await ensureIdentity();
+    if (!ident) return null;
+    const res = await fetch("/api/duel-ticket", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: ident.userId, secret: ident.secret }),
+    });
+    const json = (await res.json().catch(() => ({}))) as { ticket?: unknown };
+    return res.ok && typeof json.ticket === "string" && json.ticket.length > 0 ? json.ticket : null;
+  } catch {
+    return null;
+  }
+}
+
 /** Signed profile update. Resolves the server profile when accepted. */
 export async function sendProfile(
   payload: ProfilePayload

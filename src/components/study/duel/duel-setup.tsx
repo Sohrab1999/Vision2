@@ -29,13 +29,15 @@ import { paceSecondsLabel, type DuelPace } from "@/lib/duel-pace";
 
 // فاز SETUP — قهرمان نبرد: آمار بردها، ساخت اتاق و پیوستن با کد
 
-export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJoinInput, joinBusy, paceChoices, chosenPace, choosePace }: {
+export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJoinInput, joinBusy, createBusy, paceChoices, chosenPace, choosePace }: {
   conn: Conn;
   createRoom: () => void;
   joinRoom: () => void;
   joinInput: string;
   setJoinInput: (v: string) => void;
   joinBusy: boolean;
+  /** Task 112 «بلیتِ ورود» — حینِ ضربِ بلیت/انتظارِ داور مشغول */
+  createBusy: boolean;
   /** Task 107 — سه ریتمِ بستهٔ duel-pace؛ سرعتِ هر سؤال را سازندهٔ اتاق برمی‌گزیند */
   paceChoices: readonly DuelPace[];
   chosenPace: number;
@@ -213,11 +215,12 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
             </div>
             <button
               onClick={createRoom}
-              disabled={conn !== "online"}
+              disabled={conn !== "online" || createBusy}
+              aria-busy={createBusy}
               className="duel-cta inline-flex w-full items-center justify-center gap-2.5 rounded-2xl bg-white px-8 py-3.5 text-[15px] font-black text-fuchsia-700 shadow-xl transition-all hover:opacity-95 active:scale-95 disabled:opacity-50"
             >
-              <Swords size={18} />
-              ساخت اتاق نبرد
+              {createBusy ? <Loader2 size={18} className="animate-spin" /> : <Swords size={18} />}
+              {createBusy ? "در حالِ گرفتنِ بلیت…" : "ساخت اتاق نبرد"}
             </button>
           </div>
 

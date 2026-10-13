@@ -29,6 +29,7 @@ const baseProps = () => ({
   joinInput: "",
   setJoinInput: vi.fn(),
   joinBusy: false,
+  createBusy: false,
   paceChoices: DUEL_PACES,
   chosenPace: DEFAULT_PACE_MS,
   choosePace: vi.fn(),

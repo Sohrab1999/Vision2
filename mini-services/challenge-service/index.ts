@@ -24,6 +24,8 @@ import { loadOrCreateReceiptSecret, signDuelEnd } from "../../src/lib/duel-recei
 import { recordThinkSample, padThinkSamples } from "../../src/lib/duel-think";
 import { clampPaceMs, STALL_EXTRA_MS } from "../../src/lib/duel-pace";
 import { clientIpOf, createJoinThrottle, entryThrottleError } from "../../src/lib/join-throttle";
+import { loadOrCreateTicketSecret, verifyTicket } from "../../src/lib/duel-ticket-server";
+import { createTicketVault, ticketRejectMessage } from "../../src/lib/duel-ticket";
 import { BASE_POINTS, speedBonus } from "./scoring";
 
 // Task 104 — رازِ رسید نسبت به «ریشهٔ پروژه» حل می‌شود نه cwdِ launch.
@@ -53,6 +55,33 @@ const ENTRY_GATE = createJoinThrottle({
     console.warn(`[entry-gate] ${ip} ${kind} — ${hits} تلاش در پنجرهٔ ۶۰ثانیه‌ای`),
 });
 setInterval(() => ENTRY_GATE.sweep(), 60_000).unref();
+
+// Task 112 «بلیتِ ورود» (SEC-5 — آخرین دهانهٔ باز) — duel:create/duel:join
+// فقط با بلیتی که Next با شناسهٔ احرازشدهٔ یادگیرنده ضرب کرده است.
+// راز از همان الگوی رسیدِ تسک ۹۴: فایل ۰۶۰۰، داور هنگام بوت می‌سازد.
+// گنبدِ nonce یک‌بارمصرف را نگه می‌دارد؛ sweep هر دقیقه — unref تا سرویس
+// تنها مانعِ خروج نباشد. ردِ بلیت قبل از گلوگاهِ نرخ می‌آید تا کوبیدنِ
+// بی‌بلیت، بودجهٔ IPِ کاربرانِ واقعی را نسوزاند و حافظه هم بی‌اثر بماند.
+const TICKET_SECRET = loadOrCreateTicketSecret(REPO_ROOT);
+const TICKET_VAULT = createTicketVault();
+setInterval(() => TICKET_VAULT.sweep(), 60_000).unref();
+
+/**
+ * گیتِ بلیت برای duel:create/duel:join — رشتهٔ خطا یا null.
+ * ترتیب بازبینی: ساختار → امضا → پنجره → یک‌بارمصرف. nonce فقط هنگام
+ * بلیتِ درستِ از-نظر-امضا سوزانده می‌شود تا دست‌کاریِ امضا، nonceِ کسی
+ * را نسوزاند. خروجی همیشه پرچمِ ticketError دارد تا کلاینت بداند
+ * گرفتاریِ خودِ بلیت است (نه اتاق/گلوگاه) و یک‌بارِ تازه ضرب کند.
+ */
+function entryTicketGuard(raw: unknown): { error: string; ticketError: true } | null {
+  const ticket = (raw as { ticket?: unknown } | null)?.ticket;
+  const verdict = verifyTicket(ticket, TICKET_SECRET);
+  if (!verdict.ok) return { error: ticketRejectMessage(verdict.reason), ticketError: true };
+  if (!TICKET_VAULT.consume(verdict.n)) {
+    return { error: ticketRejectMessage("replayed"), ticketError: true };
+  }
+  return null;
+}
 
 // ----------------------------- تنظیمات مسابقه -----------------------------
 const PORT = 3003;
@@ -330,8 +359,12 @@ io.on("connection", (socket: Socket) => {
   // ------------------------- ساخت اتاق -------------------------
   // Task 107 — سازندهٔ اتاق ریتم را هم برمی‌گزیند (perQMs اختیاری؛
   // سرویسِ قدیمی/کلاینتِ بی‌انتخاب → پیش‌فرضِ ۱۵ثانیه با clampPaceMs)
-  socket.on("duel:create", (raw: Profile & { perQMs?: unknown }, ack?: (res: unknown) => void) => {
+  socket.on("duel:create", (raw: Profile & { perQMs?: unknown; ticket?: unknown }, ack?: (res: unknown) => void) => {
     if (room) return ack?.({ ok: false, error: "قبلاً در اتاقی هستی." });
+    // Task 112 — بلیت پیشِ همه: سوکتِ بی‌بلیت/تقلبی نه اتاق می‌سازد، نه
+    // بودجهٔ IPِ گلوگاه را می‌سوزاند (ردِ آن بی‌هزینه و بی‌حافظه است)
+    const createTicket = entryTicketGuard(raw);
+    if (createTicket) return ack?.({ ok: false, ...createTicket });
     const createGate = ENTRY_GATE.attempt(clientIpOf(socket.handshake), "create");
     if (!createGate.ok) return ack?.({ ok: false, error: entryThrottleError("create", createGate.retryAfterMs) });
     let code = makeRoomCode();
@@ -372,8 +405,11 @@ io.on("connection", (socket: Socket) => {
   });
 
   // ------------------------- پیوستن با کد -------------------------
-  socket.on("duel:join", (payload: { code?: unknown } & Profile, ack?: (res: unknown) => void) => {
+  socket.on("duel:join", (payload: { code?: unknown; ticket?: unknown } & Profile, ack?: (res: unknown) => void) => {
     if (room) return ack?.({ ok: false, error: "قبلاً در اتاقی هستی." });
+    // Task 112 — بلیت پیشِ گلوگاه: کاودنِ کد بدونِ بلیت حتی شمارنده را نمی‌بیند
+    const joinTicket = entryTicketGuard(payload);
+    if (joinTicket) return ack?.({ ok: false, ...joinTicket });
     // گلوگاهِ ورود پیشِ جست‌وجوی اتاق — هر تلاش حتی کدِ ناموجود می‌شمارد (ضدِ کاودنِ کد)
     const joinGate = ENTRY_GATE.attempt(clientIpOf(socket.handshake), "join");
     if (!joinGate.ok) return ack?.({ ok: false, error: entryThrottleError("join", joinGate.retryAfterMs) });

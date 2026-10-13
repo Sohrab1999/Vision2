@@ -45,6 +45,7 @@ const renderSetup = () =>
       joinInput=""
       setJoinInput={() => {}}
       joinBusy={false}
+      createBusy={false}
       paceChoices={DUEL_PACES}
       chosenPace={DEFAULT_PACE_MS}
       choosePace={() => {}}
