@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Vazirmatn } from "next/font/google";
 import "./globals.css";
+import "./features.css";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/study/shell/theme-provider";
 

@@ -12,6 +12,24 @@ const require = createRequire(import.meta.url);
 
 const cssPath = resolve(process.cwd(), "src/app/globals.css");
 
+// §8.3 per-feature extraction (wave 1 — task 133): the feature CSS files that
+// left globals.css. The EFFECTIVE stylesheet = globals + these — they always
+// load together via the src/app/features.css manifest (layout.tsx, right
+// after globals.css), so presence contracts read the effective text while
+// absence/budget contracts keep reading globals.css ONLY.
+const featureCssPaths = [
+  "src/components/study/shared/confetti.css",
+  "src/components/study/duel/rush.css",
+  "src/components/study/duel/spell-input.css",
+  "src/components/study/practice/srs-panel.css",
+  "src/components/study/practice/skill-panel.css",
+  "src/components/study/reports/report-card.css",
+];
+const readEffectiveCss = (): string =>
+  readFileSync(cssPath, "utf8") +
+  "\n" +
+  featureCssPaths.map((p) => readFileSync(resolve(process.cwd(), p), "utf8")).join("\n");
+
 describe("globals.css anti-duplication guard (Step 9 tranche-1)", () => {
   it("has no exactly-duplicated rule blocks (same selector + context + declarations)", () => {
     const { analyze: analyzeLocal } = require("../scripts/css-dupes.cjs");
@@ -183,9 +201,15 @@ describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
     // r115: re-based 490 → 466 — the -100 kernel retired 18 scoped/band rules
     // and added ZERO raw selectors (tokens only); the trio merge (stone-100
     // ×3 → 1) took two more. Growth from here must consolidate, not add.
+    // task 133 (§8.3 wave 1): re-based 466 → 404 — the r12 band's single-family
+    // rules (80 selector lines) moved beside their components (duel/rush.css,
+    // practice/srs-panel.css, practice/skill-panel.css, reports/report-card.css,
+    // duel/spell-input.css, shared/confetti.css) — always loaded via the
+    // features.css manifest; cross-family canonical groups + the hover-utility
+    // overrides stayed. Growth from here must consolidate, not add.
     const sel = lines.filter((l) => /^\s*\.[a-z]/.test(l) && !l.includes("→")).length;
     expect(sel).toBeLessThanOrEqual(505);
-    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(466);
+    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(404);
   });
 });
 
@@ -429,7 +453,7 @@ describe("globals.css semantic card layer (Step 9 tranche 4 phase 2 — Task 85)
 });
 
 describe("globals.css elevated shell layer (Step 9 tranche 4 phase 3 — Task 86)", () => {
-  const css86 = readFileSync(cssPath, "utf8");
+  const css86 = readEffectiveCss(); // presence contracts — the rush-card painter lives in duel/rush.css now (task 133)
   const lines86 = css86.split("\n");
 
   it("defines c-card-elevated ONLY via @utility, BG-ONLY (no border-color — zero order-risk with state border utilities)", () => {
@@ -496,7 +520,7 @@ describe("globals.css elevated shell layer (Step 9 tranche 4 phase 3 — Task 86
 });
 
 describe("globals.css translucent veil layer (Step 9 tranche 4 phase 4 — Task 87)", () => {
-  const css87 = readFileSync(cssPath, "utf8");
+  const css87 = readEffectiveCss(); // presence contracts — the retargeted painters moved beside their features (task 133)
   const lines87 = css87.split("\n");
 
   it("defines c-veil-60/70 ONLY via plain author rules (c-chip mechanism), BG-ONLY, byte-exact bodies", () => {
@@ -592,7 +616,7 @@ describe("globals.css translucent veil layer (Step 9 tranche 4 phase 4 — Task 
 });
 
 describe("globals.css veil phase 5 (alpha /80|95 — Task 88)", () => {
-  const css88 = readFileSync(cssPath, "utf8");
+  const css88 = readEffectiveCss(); // presence contracts — the merged hero/banner painter lives in duel/rush.css now (task 133)
   const lines88 = css88.split("\n");
 
   it("defines c-veil-80/95 via plain author rules, pairing invariant, byte-exact bodies", () => {
@@ -657,7 +681,7 @@ describe("globals.css veil phase 5 (alpha /80|95 — Task 88)", () => {
 });
 
 describe("globals.css stone veil phase 6 (bg-stone-50/60|70 — Task 89)", () => {
-  const css89 = readFileSync(cssPath, "utf8");
+  const css89 = readEffectiveCss(); // presence contracts — the skill-panel c-stone-60 painter lives beside the panel now (task 133)
   const lines89 = css89.split("\n");
 
   it("defines c-stone-60/70 via plain author rules with verbatim utility bodies — and NO dark defaults (the kernel IS the dark)", () => {
@@ -750,7 +774,7 @@ describe("globals.css stone veil phase 6 (bg-stone-50/60|70 — Task 89)", () =>
 });
 
 describe("globals.css track semantic layer (stone-200 alphas — Task 90)", () => {
-  const css90 = readFileSync(cssPath, "utf8");
+  const css90 = readEffectiveCss(); // presence contracts — the srs/report painters live beside their features now (task 133)
   const lines90 = css90.split("\n");
 
   it("defines c-track-60/70/80 via plain author rules with verbatim utility bodies — kernel owns dark, token unpinned", () => {
@@ -954,7 +978,10 @@ describe("globals.css wash alpha-drift convergence (r114)", () => {
    تاریک می‌شود.
    ================================================================ */
 describe("globals.css -100 wash kernel (r115)", () => {
-  const css115 = readFileSync(cssPath, "utf8");
+  // effective text — the documented keeps (skill-weak-cta strength, rush
+  // hero/board orange borders) moved beside their features in task 133; the
+  // keeps-contract follows the rule wherever it lives
+  const css115 = readEffectiveCss();
   const lines115 = css115.split("\n");
 
   const tokenBase: Record<string, [number, number, number]> = {};
@@ -1052,7 +1079,10 @@ describe("globals.css -100 wash kernel (r115)", () => {
 describe("globals.css semantic wash layer (Step 9 tranche 4 phase 8 — Task 125)", () => {
   // comment-stripped: guards read CODE, never docs (phase-10 doc names the
   // retired selectors as history — that must not look like a live rule)
-  const lines125 = readFileSync(cssPath, "utf8").replace(/\/\*[\s\S]*?\*\//g, "").split("\n");
+  // effective text, comments stripped — the retired-selector checks must stay
+  // dead EVERYWHERE (globals + feature files), and the .dark .srs-panel root
+  // block lives in practice/srs-panel.css since the §8.3 extraction (task 133)
+  const lines125 = readEffectiveCss().replace(/\/\*[\s\S]*?\*\//g, "").split("\n");
 
   it("defines the four c-wash washes exactly once, light var() + dark panel-grade literal", () => {
     const defs: Record<string, [string, string]> = {
@@ -1249,5 +1279,84 @@ describe("globals.css semantic ink layer (Step 9 tranche 4 phase 9 — Task 127)
     const spell = readFileSync(resolve(process.cwd(), "src/components/study/duel/spell-rush-view.tsx"), "utf8");
     expect(carry(spell), "spell-rush carries c-ink-amber").toBe(1);
     expect(rawInk(spell), "spell-rush keeps only the spell-chip plain consumer").toBe(1);
+  });
+});
+
+describe("per-feature CSS extraction (§8.3 wave 1 — task 133)", () => {
+  // the r12 band's single-family rules now live beside their owners; the
+  // manifest (src/app/features.css) keeps them always-loaded and at cascade
+  // end — the wave-1 isolation scan proved no equal-specificity competition
+  // outside the band (print band wins via !important; @utility defs lose to
+  // unlayered author rules regardless of position).
+  const KEY_SELECTORS: Record<string, string[]> = {
+    "src/components/study/shared/confetti.css": ["@keyframes confetti-fall", ".confetti-piece { animation: confetti-fall 1.8s ease-in forwards; }"],
+    "src/components/study/duel/rush.css": [".rush-time-low { animation: rush-pulse 0.9s ease-in-out infinite; }", ".dark .rush-hero {", ".dark .rush-card { background-color: #1c1917; }", ".dark .rush-board { background-color: #1c1917; border-color: rgb(154 52 18 / 0.5); }"],
+    "src/components/study/duel/spell-input.css": [".dark .spell-input {", ".dark .spell-input:focus {"],
+    "src/components/study/practice/srs-panel.css": [".srs-panel .border-white\\/60", ".dark .srs-panel {", ".dark .srs-panel .srs-due-chip {"],
+    "src/components/study/practice/skill-panel.css": [".dark .skill-panel { background-color: #1c1917; border-color: rgb(106 44 112 / 0.5); }", ".skill-weak-cta"],
+    "src/components/study/reports/report-card.css": [".dark .report-dialog {", ".dark .report-foot {"],
+  };
+
+  it("keeps every extracted feature file present with its key selectors", () => {
+    for (const [p, keys] of Object.entries(KEY_SELECTORS)) {
+      const css = readFileSync(resolve(process.cwd(), p), "utf8");
+      for (const k of keys) expect(css, `${p} lost key selector: ${k}`).toContain(k);
+    }
+  });
+
+  it("globals.css no longer carries the single-family rules that moved", () => {
+    const css = readFileSync(cssPath, "utf8");
+    for (const gone of [
+      "@keyframes confetti-fall",
+      "@keyframes rush-pulse",
+      "rgb(62 24 26 / 0.5)", // the moved .dark .rush-hero gradient's last stop (the r84 !important override uses rgba(..., 0.92))
+      ".dark .rush-banner .c-veil-80",
+      ".dark .rush-card { background-color: #1c1917; }",
+      ".dark .rush-board { background-color: #1c1917;",
+      ".dark .spell-input {",
+      ".dark .srs-panel {",
+      ".dark .skill-panel { background-color: #1c1917;",
+      ".dark .report-dialog {",
+      ".dark .report-week,",
+    ]) {
+      expect(css, `globals.css still carries a moved rule: ${gone}`).not.toContain(gone);
+    }
+  });
+
+  it("keeps the cross-family canonical groups + utility overrides in globals.css", () => {
+    const css = readFileSync(cssPath, "utf8");
+    // the stone-600 ink canonical group (spanning rush/report/duel/gmetro)
+    expect(css).toContain(".dark .rush-banner .text-stone-600,.dark .rush-hero .text-stone-600,.dark .rush-done .text-stone-600,");
+    // the shared orange painters (rush family + report-paper)
+    expect(css).toContain(".dark .rush-hero .text-orange-600,.dark .rush-score-live,.dark .rush-board .text-orange-600,.dark .report-paper .text-orange-600");
+    expect(css).toContain(".dark .rush-hero .border-orange-200,.dark .rush-board .border-orange-200,.dark .report-paper .border-orange-200");
+    // the hover utilities are consumed across teacher/my-words panels — global band stays
+    expect(css).toContain(".dark .hover\\:bg-sky-50:hover");
+    expect(css).toContain(".dark .hover\\:bg-violet-50:hover");
+  });
+
+  it("features.css manifest imports all six files; layout.tsx loads it right after globals.css", () => {
+    const manifest = readFileSync(resolve(process.cwd(), "src/app/features.css"), "utf8");
+    for (const p of featureCssPaths) {
+      expect(manifest, `manifest line missing for ${p}`).toContain(`@import "${p.replace("src/", "../")}";`);
+    }
+    const layout = readFileSync(resolve(process.cwd(), "src/app/layout.tsx"), "utf8");
+    const gi = layout.indexOf('"./globals.css"');
+    const fi = layout.indexOf('"./features.css"');
+    expect(gi, "layout imports globals.css").toBeGreaterThanOrEqual(0);
+    expect(fi, "layout imports features.css").toBeGreaterThanOrEqual(0);
+    expect(fi, "features.css must load right after globals.css").toBeGreaterThan(gi);
+  });
+
+  it("feature files carry no internally duplicated rule blocks (css-dupes per file)", () => {
+    const { analyze } = require("../scripts/css-dupes.cjs");
+    for (const p of featureCssPaths) {
+      const a = analyze(resolve(process.cwd(), p));
+      const dupes: string[] = [];
+      for (const [, bs] of a.groups as Map<string, { start: number }[]>) {
+        if (bs.length > 1) dupes.push(`${bs.length}x at L${bs.map((b: { start: number }) => b.start).join(",L")}`);
+      }
+      expect(dupes, `${p}: duplicate rule blocks: ${dupes.join("; ")}`).toEqual([]);
+    }
   });
 });

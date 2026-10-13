@@ -2,7 +2,7 @@ const fs = require("fs");
 
 function analyze(file = "src/app/globals.css") {
   const fs = require("fs");
-  const src = fs.readFileSync("src/app/globals.css", "utf8");
+  const src = fs.readFileSync(file, "utf8");
   const lines = src.split("\n");
 
   const blocks = [];

@@ -1,0 +1,16 @@
+/* Per-feature stylesheets — §8.3 extraction (wave 1: task 133).
+   Each file lives BESIDE its owning component and is imported here so the
+   rules are ALWAYS part of the initial CSS — the same guarantee globals.css
+   had before the extraction (lazy views keep zero first-paint risk), and the
+   rules sit at cascade end exactly where the wave-1 isolation scan proved
+   safety (no equal-specificity competition outside the moved band; print band
+   wins via !important; @utility definitions lose to unlayered author rules).
+   Extraction protocol: verbatim rule move + one manifest line + the
+   css-hygiene guard (tests/css-hygiene.test.ts, "per-feature CSS extraction"). */
+
+@import "../components/study/shared/confetti.css";
+@import "../components/study/duel/rush.css";
+@import "../components/study/duel/spell-input.css";
+@import "../components/study/practice/srs-panel.css";
+@import "../components/study/practice/skill-panel.css";
+@import "../components/study/reports/report-card.css";

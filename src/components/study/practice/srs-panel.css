@@ -1,0 +1,81 @@
+/* SRS panel (داشبورد مرور هوشمند) — extracted from the r12 band of
+   src/app/globals.css (§8.3 per-feature extraction, wave 1 — task 133).
+   Always loaded via the src/app/features.css manifest; cascade-isolation
+   proven by the wave-1 scan. Owner: practice/srs-panel.tsx (the srs-due-*
+   sub-tree renders inside the panel root). */
+
+/* ---- SRS panel ---- */
+.srs-panel .border-white\/60 { border-color: rgb(255 255 255 / 0.6); }
+
+/* ---------------- SRS panel dark ---------------- */
+/* tranche-4 phase 8 border fold: the root itself carries border-teal-200, and
+   the retired scoped .border-teal-200 rule (0,3,0) used to WIN over this root
+   rule (0,2,0) — the root's effective dark border was ALWAYS rgb(19 78 74 /
+   0.6), never this rule's 0.55 value. The winning value is folded in here and
+   the scoped rule retires; the fx-chips never consumed it either (their
+   .srs-fx-chip painter tied at (0,3,0) and won by source order — unchanged). */
+.dark .srs-panel {
+  background-image: linear-gradient(to left, rgb(4 52 46 / 0.45), rgb(6 44 34 / 0.4));
+  border-color: rgb(19 78 74 / 0.6);
+}
+/* tranche-4 phase 8: the four chip washes (rose/amber/emerald/teal) retired
+   onto c-wash-* — same panel-grade alpha step (0.4/0.45/0.5/0.5), painted by
+   the class now. The panel ink (text-amber-700 #fcd34d) retired onto
+   c-ink-amber (phase 9). */
+/* r87 retarget: all three srs-panel /70 surfaces migrated onto c-veil-70; the
+   deviating 0.8 painter follows the class (the .rush-board half had zero
+   consumers — retired). srs-due-preview/.srs-fx-expand own rules keep painting
+   the same 0.8 over it. */
+.dark .srs-panel .c-veil-70 { background-color: rgb(28 25 23 / 0.8); }
+/* r90 retarget: the forecast bars migrated onto c-track-70 — painter byte-identical
+   (the doubled .srs-fx-bar selector collapses: the class now carries the painter) */
+.dark .srs-panel .c-track-70 { background-color: rgb(41 37 36 / 0.7); }
+.dark .srs-panel .text-emerald-600 { color: #34d399; }
+
+/* due-words preview (سررسید الآن) inside the SRS panel */
+.dark .srs-panel .srs-due-preview {
+  background-color: rgb(28 25 23 / 0.8);
+  border-color: rgb(120 30 45 / 0.5);
+}
+.dark .srs-panel .srs-due-chip {
+  background-color: #1c1917;
+  border-color: rgb(120 30 45 / 0.55);
+}
+.dark .srs-panel .srs-due-chip:hover {
+  border-color: rgb(190 40 60 / 0.8);
+}
+.dark .srs-panel .srs-due-chip .text-rose-500,.dark .srs-panel .srs-due-chip .text-rose-400 { color: #fb7185; }
+/* due-chip star (هفتمین سطح ستاره) — unstarred ghost → amber on hover; filled stays amber */
+.dark .srs-panel .srs-due-star {
+  color: #57534e;
+}
+.dark .srs-panel .srs-due-star:hover {
+  background-color: rgb(68 52 22 / 0.55);
+  color: #fbbf24;
+}
+.dark .srs-panel .srs-due-star .fill-amber-400 { color: #fbbf24; }
+/* r115: border-rose-100/70 rides the kernel token (76,5,25 @ 0.42 derived) */
+.dark .srs-panel .srs-due-preview .text-stone-400 { color: #a8a29e; }
+/* due-dictation CTA (دیکتهٔ سررسیدها) — rose outline on dark paper */
+.dark .srs-panel .srs-due-dict-btn {
+  background-color: #1c1917;
+  border-color: rgb(120 30 45 / 0.55);
+  color: #fb7185;
+}
+.dark .srs-panel .srs-due-dict-btn:enabled:hover {
+  background-color: rgb(120 30 45 / 0.18);
+  border-color: rgb(190 40 60 / 0.8);
+}
+/* tap-to-expand forecast rows (پیش‌بینی تپ‌پذیر) — teal future theme */
+.dark .srs-panel .srs-fx-expand {
+  background-color: rgb(28 25 23 / 0.8);
+  border-color: rgb(13 84 89 / 0.5);
+}
+/* r115: border-teal-100/70 rides the kernel token (19,78,74 @ 0.35 derived);
+   the .text-emerald-600 half that used to live here was byte-identical to the
+   panel-wide rule above (subset scope, same value) — pure dedup, retired
+   tranche-4 phase 8. */
+.dark .srs-panel .srs-fx-chip {
+  background-color: #1c1917;
+  border-color: rgb(13 84 89 / 0.55);
+}

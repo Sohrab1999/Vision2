@@ -165,6 +165,19 @@ function run(apply) {
 
   for (const [key, bs] of groups) {
     if (bs.length < 2) continue;
+    // structural keep (task 133): the semantic layer's canonical DEFINITIONS
+    // (.dark .c-veil-* / .c-stone-* / .c-track-* / .c-chip-* / .c-wash-* /
+    // .c-card / .c-ink) must keep their standalone `.dark .c-x {` shape —
+    // the byte-parity pairing guards (css-hygiene r87/r88/r89/r90/125) assert
+    // exactly one trimmed ".dark .c-x {" line each, and the r87 probe proved
+    // the byte-parity of that form. Merging a raw /NN override INTO a family
+    // def would erase the shape. Contextual CONSUMERS (.dark .srs-panel
+    // .c-veil-70) are NOT definitions and stay mergeable.
+    const defRe = /^\.dark \.c-(veil|stone|track|chip|wash|card|ink)[a-z0-9-]*\s*\{?$/;
+    if (bs.some((b) => b.sel.split(",").some((s) => defRe.test(s.trim())))) {
+      conflicts.push({ bs, hazard: { why: "structural keep: semantic family definition (pairing-guard shape)", r: bs.find((b) => defRe.test(b.sel.trim())), ms: "(definition)" }, mid: [] });
+      continue;
+    }
     bs.sort((a, b) => a.start - b.start);
     const declProps = bs[0].decls.map((d) => d.split(":")[0].trim());
     const propSet = new Set(declProps);
@@ -290,6 +303,14 @@ function analyze(file = FILE) {
   const conflicts = [];
   for (const [, bs] of groups) {
     if (bs.length < 2) continue;
+    // structural keep (task 133) — mirrors run(): the semantic layer's
+    // canonical DEFINITIONS keep their standalone `.dark .c-x {` shape
+    // (pairing-guarded byte parity); contextual consumers stay mergeable.
+    const defRe = /^\.dark \.c-(veil|stone|track|chip|wash|card|ink)[a-z0-9-]*\s*\{?$/;
+    if (bs.some((b) => b.sel.split(",").some((s) => defRe.test(s.trim())))) {
+      conflicts.push({ lines: bs.map((b) => b.start + 1), hazard: { r: "(definition)", ms: "(definition)", why: "structural keep: semantic family definition (pairing-guard shape)" } });
+      continue;
+    }
     bs.sort((a, b) => a.start - b.start);
     const declProps = bs[0].decls.map((d) => d.split(":")[0].trim());
     const propSet = new Set(declProps);

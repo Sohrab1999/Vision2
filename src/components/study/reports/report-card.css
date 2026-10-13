@@ -1,0 +1,36 @@
+/* report card dialog (کارنامه) — extracted from the r12 band of
+   src/app/globals.css (§8.3 per-feature extraction, wave 1 — task 133).
+   Always loaded via the src/app/features.css manifest; cascade-isolation
+   proven by the wave-1 scan. Owner: reports/report-card.tsx (weekly-report
+   renders INSIDE .report-paper, so these cover it too). The PRINT band
+   (body.print-report … !important) stays in globals.css and wins regardless
+   of order. */
+
+/* ---------------- report card dialog dark ---------------- */
+.dark .report-dialog { background-color: #1c1917; border-color: #44403c; }
+.dark .report-paper { background-color: #1c1917; }
+.dark .report-band {
+  background-image: linear-gradient(to left, #065f46, #047857, #0d9488);
+}
+.dark .report-week,.dark .report-digest { background-color: rgb(28 25 23 / 0.7); border-color: #44403c; }
+.dark .report-week .bg-stone-200 { background-color: #44403c; }
+/* Task-37 «هفته‌نامه» — digest band mirrors the weekly band tuning;
+   r87 retarget: the four digest strips migrated onto c-veil-60/70 — the
+   deviating stone-800/0.6 painter follows the classes, byte-identical. */
+.dark .report-digest .c-veil-60,
+.dark .report-digest .c-veil-70 { background-color: rgb(41 37 36 / 0.6); }
+.dark .report-digest .border-stone-200 { border-color: #44403c; }
+/* r90 retarget: the report day dot migrated onto c-track-60 — painter byte-identical */
+.dark .report-digest .c-track-60 { background-color: rgb(68 64 60 / 0.6); }
+.dark .report-digest .bg-stone-300 { background-color: #57534e; }
+.dark .report-digest .bg-emerald-200\/60 { background-color: rgb(6 78 59 / 0.5); }
+.dark .report-digest .border-emerald-600 { border-color: #10b981; }
+.dark .report-digest .border-stone-300 { border-color: #57534e; }
+.dark .report-track { background-color: #292524; }
+.dark .report-best li { background-color: #292524; border-color: #44403c; }
+.dark .report-paper .bg-orange-50 { background-color: rgba(88, 44, 14, 0.45); }
+.dark .report-foot {
+  background-color: rgba(6, 55, 40, 0.35);
+  border-color: rgb(6 95 70 / 0.6);
+}
+.dark .report-foot .text-emerald-800 { color: #a7f3d0; }

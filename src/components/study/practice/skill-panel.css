@@ -1,0 +1,23 @@
+/* skill panel (پنل مهارت‌ها) — extracted from the r12 band of
+   src/app/globals.css (§8.3 per-feature extraction, wave 1 — task 133).
+   Always loaded via the src/app/features.css manifest; cascade-isolation
+   proven by the wave-1 scan. Owner: practice/skill-panel.tsx. */
+
+/* ---------------- skill panel dark ---------------- */
+.dark .skill-panel { background-color: #1c1917; border-color: rgb(106 44 112 / 0.5); }
+.dark .skill-panel .skill-track { background-color: #292524; }
+/* r89 retarget: the empty box migrated onto c-stone-60 — painter byte-identical */
+.dark .skill-panel .c-stone-60 { background-color: rgb(28 25 23 / 0.6); }
+.dark .skill-panel .border-stone-200 { border-color: #44403c; }
+.dark .skill-panel .skill-weak-cta {
+  background-image: linear-gradient(to left, rgba(69, 48, 12, 0.5), rgba(58, 36, 12, 0.4));
+  border-color: rgb(146 64 14 / 0.6);
+}
+.dark .skill-panel .skill-weak-cta .text-stone-800 { color: #fde68a; }
+.dark .skill-panel .skill-weak-cta .text-stone-500 { color: #c9c2bb; }
+.dark .skill-panel .skill-weak-cta .bg-amber-100 { background-color: rgb(69 48 12 / 0.8); }
+/* the CTA's ink rule retired onto c-ink-amber (tranche 4 phase 9, task 127) */
+.dark .skill-panel .text-violet-600 { color: #d8b4fe; }
+/* r115: the panel's -100 stat washes ride the kernel tokens (bases converged:
+   teal 4,47,46→19,78,74 · rose 80,10,25→76,5,25); the CTA's deliberate 0.8
+   strength keep stays explicit above */
