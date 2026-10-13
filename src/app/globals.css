@@ -182,6 +182,26 @@
   --color-violet-50: rgba(59, 40, 92, 0.35);
   --color-violet-200: rgba(110, 80, 170, 0.5);
   --color-violet-300: rgba(130, 100, 190, 0.55);
+
+  /* r115 (tranche 3c) — the -100 wash layer joins the kernel, same mechanism:
+     one translucent dark value per family. Structurally fixes the systematic
+     light-leak class the inventory exposed: ~35 hover:bg-*-100 / border-*-100
+     / ring-*-100 sites rendered LIGHT under html.dark (hover flashes,
+     hairline borders, focus rings). Focus-ring precedent: .spell-input:focus
+     already wears a translucent dark ring (rgb(7 66 84 / 0.55)) and the
+     bright -400 focus borders still carry the indicator. The task-80
+     amber-100 skip is resolved: its ring consumers are search-input focus
+     halos paired with bright amber-400 borders, and its bg/border conflict
+     collapses onto the amber family base (69,48,12). official-report
+     re-lights emerald-100 for the always-light paper's print button. */
+  --color-emerald-100: rgba(6, 55, 40, 0.6);
+  --color-rose-100: rgba(76, 5, 25, 0.6);
+  --color-amber-100: rgba(69, 48, 12, 0.55);
+  --color-teal-100: rgba(19, 78, 74, 0.5);
+  --color-orange-100: rgba(69, 40, 8, 0.55);
+  --color-sky-100: rgba(8, 47, 60, 0.6);
+  --color-violet-100: rgba(59, 7, 100, 0.5);
+  --color-fuchsia-100: rgba(74, 4, 78, 0.6);
 }
 
 @layer base {
@@ -536,12 +556,14 @@ body {
 
 /* ---------------- badges + certificate + heatmap dark-mode tuning ---------------- */
 .dark .badge-card.border-stone-200 { background-color: #1c1917; }
-.dark .bg-amber-100 { background-color: rgba(87, 62, 14, 0.5); }
+/* r115: the -100 band retired onto the kernel tokens — bg/border-amber-100
+   now derive from --color-amber-100 (the old 87,62,14 bg vs 120,88,30 border
+   pair collapsed onto the amber family base 69,48,12) */
 .dark .certificate-card { background-color: #1c1917; }
 .dark .certificate-card .border-dashed { border-color: rgba(180, 130, 20, 0.55) !important; }
 .dark .final-exam-card { background-color: #1c1917; }
 .dark .border-amber-200 { border-color: rgba(120, 88, 30, 0.5); }
-.dark .border-amber-100 { border-color: rgba(120, 88, 30, 0.4); }
+/* r115: border-amber-100 rides the kernel token now */
 .dark .bg-amber-50\/60 { background-color: rgba(69, 48, 12, 0.28); }
 .dark .heat-cell.bg-emerald-200 { background-color: #14532d; }
 .dark .heat-cell.bg-emerald-400 { background-color: #15803d; }
@@ -561,8 +583,8 @@ body {
    via the to-lime-50 gradient stop (covered by the named rule above); the
    .bg-lime-50 utility has ZERO TSX consumers, so a lime-50 kernel token is
    an honest skip, same as cyan-50 */
-.dark .word-day .bg-teal-100 { background-color: rgba(19, 78, 74, 0.45); }
-.dark .word-day .bg-emerald-100 { background-color: rgba(6, 55, 40, 0.55); }
+/* r115: word-day's -100 washes ride the kernel tokens (0.45→0.5 teal,
+   0.55→0.6 emerald — the scoped copies are gone) */
 .dark .word-day .text-emerald-700 { color: #34d399; }
 .dark .word-day .border-emerald-300 { border-color: rgba(52, 211, 153, 0.45); }
 .dark .word-day .bg-white { background-color: rgba(28, 25, 23, 0.75); }
@@ -752,7 +774,9 @@ body {
 .dark .srs-panel .text-amber-700 { color: #fcd34d; }
 .dark .srs-panel .bg-emerald-50 { background-color: rgba(6, 55, 40, 0.5); }
 .dark .srs-panel .bg-teal-50 { background-color: rgba(6, 55, 50, 0.5); }
-.dark .srs-panel .border-teal-100,.dark .srs-panel .border-teal-200 { border-color: rgb(19 78 74 / 0.6); }
+/* r115: border-teal-100 rides the kernel token (19,78,74 @ 0.5); the pair
+   rule keeps only its still-unkernelized teal-200 half */
+.dark .srs-panel .border-teal-200 { border-color: rgb(19 78 74 / 0.6); }
 /* r87 retarget: all three srs-panel /70 surfaces migrated onto c-veil-70; the
    deviating 0.8 painter follows the class (the .rush-board half had zero
    consumers — retired). srs-due-preview/.srs-fx-expand own rules keep painting
@@ -785,7 +809,7 @@ body {
   color: #fbbf24;
 }
 .dark .srs-panel .srs-due-star .fill-amber-400 { color: #fbbf24; }
-.dark .srs-panel .srs-due-preview .border-rose-100\/70 { border-color: rgb(120 30 45 / 0.4); }
+/* r115: border-rose-100/70 rides the kernel token (76,5,25 @ 0.42 derived) */
 .dark .srs-panel .srs-due-preview .text-stone-400 { color: #a8a29e; }
 /* due-dictation CTA (دیکتهٔ سررسیدها) — rose outline on dark paper */
 .dark .srs-panel .srs-due-dict-btn {
@@ -802,7 +826,7 @@ body {
   background-color: rgb(28 25 23 / 0.8);
   border-color: rgb(13 84 89 / 0.5);
 }
-.dark .srs-panel .srs-fx-expand .border-teal-100\/70 { border-color: rgb(13 84 89 / 0.4); }
+/* r115: border-teal-100/70 rides the kernel token (19,78,74 @ 0.35 derived) */
 .dark .srs-panel .srs-fx-chip {
   background-color: #1c1917;
   border-color: rgb(13 84 89 / 0.55);
@@ -848,10 +872,9 @@ body {
 .dark .skill-panel .skill-weak-cta .bg-amber-100 { background-color: rgb(69 48 12 / 0.8); }
 .dark .skill-panel .skill-weak-cta .text-amber-700 { color: #fcd34d; }
 .dark .skill-panel .text-violet-600 { color: #d8b4fe; }
-.dark .skill-panel .bg-emerald-100 { background-color: rgba(6, 55, 40, 0.6); }
-.dark .skill-panel .bg-teal-100 { background-color: rgba(4, 47, 46, 0.6); }
-.dark .skill-panel .bg-amber-100 { background-color: rgba(69, 48, 12, 0.6); }
-.dark .skill-panel .bg-rose-100 { background-color: rgba(80, 10, 25, 0.5); }
+/* r115: the panel's -100 stat washes ride the kernel tokens (bases converged:
+   teal 4,47,46→19,78,74 · rose 80,10,25→76,5,25); the CTA's deliberate 0.8
+   strength keep stays explicit above */
 
 /* ---------------- report card dialog dark ---------------- */
 .dark .report-dialog { background-color: #1c1917; border-color: #44403c; }
@@ -934,15 +957,12 @@ body {
 /* r114: .daily-quests .bg-emerald-50/70 retired — serves the canonical band
    rgba(6,55,40,0.5) now (its drifted base 6,44,34 was the last emerald
    straggler) */
-.dark .daily-quests .bg-emerald-100 { background-color: rgb(6 55 40 / 0.6); }
+/* r115: the quest -100 washes ride the kernel tokens (emerald/violet/amber
+   byte-equal; teal 4,47,46→19,78,74 and orange 0.5→0.55 converged) */
 .dark .daily-quests .text-emerald-800 { color: #a7f3d0; }
 .dark .daily-quests .text-emerald-600 { color: #6ee7b7; }
-.dark .daily-quests .bg-violet-100 { background-color: rgb(59 7 100 / 0.5); }
 .dark .daily-quests .text-violet-700 { color: #d8b4fe; }
-.dark .daily-quests .bg-amber-100 { background-color: rgb(69 48 12 / 0.55); }
 .dark .daily-quests .text-amber-700 { color: #fcd34d; }
-.dark .daily-quests .bg-teal-100 { background-color: rgb(4 47 46 / 0.55); }
-.dark .daily-quests .bg-orange-100 { background-color: rgb(69 40 8 / 0.5); }
 
 /* report print button (dark) */
 .dark .report-print-btn { background-color: #1c1917; border-color: rgb(4 120 87 / 0.6); color: #6ee7b7; }
@@ -1045,6 +1065,8 @@ html.user-reduce-motion .streak-flame {
   --color-emerald-50: #ecfdf5;
   --color-amber-50: #fffbeb;
   --color-rose-50: #fff1f2;
+  /* r115 (tranche 3c): the paper's print button hovers bg-emerald-100 */
+  --color-emerald-100: #d0fae5;
 }
 /* the screen-only toolbar sits OUTSIDE the paper on its own dark band — its
    stone-100/200 text must stay light (print-official hides this chrome) */
@@ -1163,10 +1185,13 @@ html.user-reduce-motion .streak-flame {
    half STAYS for the excluded hover row (bg-stone-50/70 + hover:bg-stone-100/70).
    One-lined r90 — selector-budget conservation for the c-track entry. */
 .dark .duel-card .bg-stone-50\/70,.dark .duel-card .c-stone-70,.dark .duel-card .bg-stone-50 { background-color: rgb(41 37 36 / 0.6); }
-.dark .duel-card .bg-stone-100 { background-color: rgb(68 64 60 / 0.7); }
+/* r115 merge: the three equal-decl .bg-stone-100 painters consolidated into
+   one rule at the first member's position (tranche-3a contract — the -100
+   retirements made them consolidatable) */
+.dark .duel-card .bg-stone-100,.dark .duel-done .bg-stone-100,.dark .gmetro-line .bg-stone-100 { background-color: rgb(68 64 60 / 0.7); }
 .dark .duel-card .border-stone-100 { border-color: rgb(87 83 78 / 0.4); }
 .dark .duel-card .border-stone-200 { border-color: rgb(87 83 78 / 0.45); }
-.dark .duel-card .bg-fuchsia-100 { background-color: rgb(74 4 78 / 0.6); }
+/* r115: bg-fuchsia-100 rides the kernel token (byte-equal 74,4,78 @ 0.6) */
 .dark .duel-card .text-fuchsia-700,.dark .leaderboard.duel-mode .text-fuchsia-700 { color: #f0abfc; }
 .dark .duel-card .text-fuchsia-600,.dark .leaderboard.duel-mode .text-fuchsia-600 { color: #e879f9; }
 .dark .duel-card .bg-fuchsia-50 { background-color: rgb(74 4 78 / 0.35); }
@@ -1216,13 +1241,14 @@ html.user-reduce-motion .streak-flame {
 .dark .duel-done .border-emerald-300 { border-color: rgb(16 185 129 / 0.4); }
 /* r89 retarget: result rows migrated onto c-stone-70 — painter byte-identical (rule one-lined into the duel-hud line above, r90) */
 .dark .duel-done .border-stone-200 { border-color: rgb(87 83 78 / 0.45); }
-.dark .duel-done .bg-stone-100 { background-color: rgb(68 64 60 / 0.7); }
-.dark .duel-done .bg-rose-100 { background-color: rgb(76 5 25 / 0.7); }
+/* r115 merge: duel-done's bg-stone-100 half joined the consolidated trio above */
+/* r115: bg-rose-100 rides the kernel token (0.7→0.6 converged) */
 
 /* ---------------- leaderboard duel standings (Task-36 «جدول نبرد») ----------------
    Scoped to .leaderboard.duel-mode so the exam podium keeps its tuned palette. */
 .dark .leaderboard.duel-mode .border-fuchsia-200 { border-color: rgb(162 28 175 / 0.45); }
-.dark .leaderboard.duel-mode .border-fuchsia-100 { border-color: rgb(74 4 78 / 0.6); }
+/* r115: the duel-mode -100 washes byte-equal the kernel tokens — the scoped
+   copies retire (border/bg-fuchsia-100, bg-emerald-100, bg-rose-100) */
 .dark .leaderboard.duel-mode .bg-gradient-to-b.from-fuchsia-50\/60 {
   background-image: linear-gradient(to bottom, rgb(74 4 78 / 0.22), rgb(0 0 0 / 0));
 }
@@ -1238,8 +1264,6 @@ html.user-reduce-motion .streak-flame {
 .dark .leaderboard.duel-mode .from-purple-200 { --tw-gradient-from: #7e22ce; }
 .dark .leaderboard.duel-mode .to-purple-400 { --tw-gradient-to: #9333ea; }
 /* W/L/T record badges — rose ink served by the global .dark .text-rose-700 */
-.dark .leaderboard.duel-mode .bg-emerald-100 { background-color: rgb(6 55 40 / 0.6); }
-.dark .leaderboard.duel-mode .bg-rose-100 { background-color: rgb(76 5 25 / 0.6); }
 
 /* ---------------- grammar metro map (Task-39 «متروی گرامر») ----------------
    Scoped to .gmetro so every other view keeps its tuned palette. */
@@ -1262,7 +1286,7 @@ html.user-reduce-motion .streak-flame {
 .dark .gmetro-line[class*="border-orange-200"] { border-color: rgb(234 88 12 / 0.35); background-color: rgb(124 45 18 / 0.16); }
 .dark .gmetro-line .text-stone-700 { color: #e7e5e4; }
 .dark .gmetro-line .border-stone-200 { border-color: rgb(87 83 78 / 0.45); }
-.dark .gmetro-line .bg-stone-100 { background-color: rgb(68 64 60 / 0.7); }
+/* r115 merge: gmetro's bg-stone-100 half joined the consolidated trio above */
 /* nodes — dark ring instead of white ring */
 .dark .gmetro-node-green { border-color: #1c1917; }
 .dark .gmetro-node-open { border-color: #1c1917; background-color: #292524; }

@@ -180,9 +180,12 @@ describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
     // semantic classes. Growth from here must consolidate, not add.
     // r90: doc-arrow contract lines (".dark .x → value" inside comment blocks)
     // are NOT selectors — the counter skips them (was counting 8 phantoms)
+    // r115: re-based 490 → 466 — the -100 kernel retired 18 scoped/band rules
+    // and added ZERO raw selectors (tokens only); the trio merge (stone-100
+    // ×3 → 1) took two more. Growth from here must consolidate, not add.
     const sel = lines.filter((l) => /^\s*\.[a-z]/.test(l) && !l.includes("→")).length;
     expect(sel).toBeLessThanOrEqual(505);
-    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(490);
+    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(466);
   });
 });
 
@@ -318,9 +321,11 @@ describe("globals.css surface-tint kernel (Step 9 tranche 3b — Task 80)", () =
   });
 
   it("keeps the deliberate skips on explicit rules (intentional light values)", () => {
-    // emerald-200/300, amber-100/200/300, rose-300, teal-500 keep their band
-    // rules — the consumer matrix proved intentional light consumers there
-    for (const sel of ["border-emerald-200", "border-emerald-300", "bg-amber-100", "border-amber-100", "border-amber-200", "border-amber-300", "border-rose-300", "border-teal-500"]) {
+    // emerald-200/300, amber-200/300, rose-300, teal-500 keep their band
+    // rules — the consumer matrix proved intentional light consumers there.
+    // r115: bg/border-amber-100 LEFT this list — the -100 layer is kernelized
+    // now (the old bg/border value conflict collapsed onto the family base).
+    for (const sel of ["border-emerald-200", "border-emerald-300", "border-amber-200", "border-amber-300", "border-rose-300", "border-teal-500"]) {
       const kept = lines80.filter((l) => l.trim().startsWith(`.dark .${sel} {`));
       expect(kept.length, `.dark .${sel} keep must survive`).toBeGreaterThanOrEqual(1);
     }
@@ -937,5 +942,109 @@ describe("globals.css wash alpha-drift convergence (r114)", () => {
     // the scoped duel surfaces keep their explicit rules (they win by specificity)
     expect(lines114.filter((l) => l.includes(".duel-card .bg-fuchsia-50 {")).length).toBe(1);
     expect(lines114.filter((l) => l.includes(".leaderboard.duel-mode .bg-fuchsia-50 {")).length).toBe(1);
+  });
+});
+
+/* ================================================================
+   r115 — the -100 wash layer joins the kernel (Step 9 tranche 3c)
+   همان قراردادِ -50: یک ارزشِ تاریکِ نیمه‌شفاف به‌ازای هر خانواده،
+   token = تک‌منبعِ حقیقت؛ قاعده‌ای که هم‌ارزِ token نیست یا whitelist
+   نشده = قرمز. کلاسِ نشتیِ نور (hover:bg-*-100 / border-*-100 /
+   ring-*-100 بدونِ قاعده) ساختاراً مرده — هر مصرف‌کنندهٔ تازه رایگانِ
+   تاریک می‌شود.
+   ================================================================ */
+describe("globals.css -100 wash kernel (r115)", () => {
+  const css115 = readFileSync(cssPath, "utf8");
+  const lines115 = css115.split("\n");
+
+  const tokenBase: Record<string, [number, number, number]> = {};
+  for (const fam of ["emerald", "rose", "amber", "teal", "orange", "sky", "violet", "fuchsia"]) {
+    const m = css115.match(new RegExp(`--color-${fam}-100:\\s*(?:rgba?)\\(\\s*([\\d.]+)[ ,]+([\\d.]+)[ ,]+([\\d.]+)`));
+    expect(m, `kernel token --color-${fam}-100 must exist`).not.toBeNull();
+    tokenBase[fam] = [Number(m![1]), Number(m![2]), Number(m![3])];
+  }
+
+  // documented keeps: the CTA's deliberate strength wash + the rush orange
+  // border identity (task-80 "rush-hero borders" precedent continued)
+  const KEEPS = ["skill-weak-cta .bg-amber-100", "rush-hero .border-orange-100", "rush-board .border-orange-100", "rush-hero .bg-orange-100", "hover\\:bg-sky-100:hover"];
+
+  const normRgb = (v: string): [number, number, number] | null => {
+    const m = v.match(/(?:rgba?)\(\s*([\d.]+)[ ,]+([\d.]+)[ ,]+([\d.]+)/);
+    return m ? [Number(m[1]), Number(m[2]), Number(m[3])] : null;
+  };
+
+  it("every -100 wash rule (bg or border) paints with its family's token BASE", () => {
+    const ruleRe = /^\.dark\s+([^{]*?)\{\s*(background|border)-color:\s*([^;}]+)/;
+    const checked: string[] = [];
+    for (const line of lines115) {
+      const m = line.match(ruleRe);
+      if (!m) continue;
+      const sel = m[1];
+      const famMatch = sel.match(/(?:bg|border)-(emerald|rose|amber|teal|orange|sky|violet|fuchsia)-100(?![\d])/);
+      if (!famMatch) continue;
+      if (KEEPS.some((k) => sel.includes(k))) continue;
+      const rgb = normRgb(m[3]);
+      expect(rgb, `rule must paint an rgb() value: ${line.trim().slice(0, 90)}`).not.toBeNull();
+      expect(rgb!, `-100 base drift forbidden (token=${tokenBase[famMatch[1]]}): ${line.trim().slice(0, 90)}`)
+        .toEqual(tokenBase[famMatch[1]]);
+      checked.push(sel.trim());
+    }
+    // the retired scoped copies are gone, so what remains = the keeps only…
+    // every converged site must have LEFT; nothing new may drift in
+    expect(checked.length, "no non-keep -100 rules may remain").toBe(0);
+  });
+
+  it("the -100 band rules never return (bg/border-amber-100 retired with the rest)", () => {
+    for (const sel of ["bg-emerald-100", "bg-rose-100", "bg-amber-100", "bg-teal-100", "bg-orange-100", "bg-violet-100", "bg-fuchsia-100", "border-amber-100"]) {
+      const back = lines115.filter((l) => l.trim().startsWith(`.dark .${sel} {`));
+      expect(back, `retired -100 band rule .dark .${sel} must not return`).toEqual([]);
+    }
+  });
+
+  it("documented keeps survive (strength + identity)", () => {
+    expect(lines115.filter((l) => l.includes(".skill-weak-cta .bg-amber-100") && l.includes("0.8")).length).toBe(1);
+    expect(lines115.filter((l) => l.includes("rush-hero .border-orange-100")).length).toBe(1);
+    expect(lines115.filter((l) => l.includes("rush-board .border-orange-100")).length).toBe(1);
+    expect(lines115.filter((l) => l.includes("hover\\:bg-sky-100:hover")).length).toBe(1);
+  });
+
+  it("official-report re-lights emerald-100 for the always-light paper's print button", () => {
+    const start = lines115.findIndex((l) => l.trim() === ".dark .official-report {");
+    expect(start).toBeGreaterThanOrEqual(0);
+    let depth = 0;
+    let body = "";
+    for (let i = start; i < lines115.length; i++) {
+      body += lines115[i] + "\n";
+      depth += (lines115[i].match(/{/g) ?? []).length;
+      depth -= (lines115[i].match(/}/g) ?? []).length;
+      if (depth <= 0 && i > start) break;
+    }
+    expect(body).toContain("--color-emerald-100: #d0fae5");
+  });
+
+  it("word-day's -100 copies and the srs /70 border variants stay retired", () => {
+    const retired = [
+      ".word-day .bg-teal-100",
+      ".word-day .bg-emerald-100",
+      "srs-due-preview .border-rose-100\\/70",
+      "srs-fx-expand .border-teal-100\\/70",
+      ".skill-panel .bg-emerald-100",
+      ".skill-panel .bg-teal-100",
+      ".skill-panel .bg-amber-100",
+      ".skill-panel .bg-rose-100",
+      ".daily-quests .bg-emerald-100",
+      ".daily-quests .bg-violet-100",
+      ".daily-quests .bg-amber-100",
+      ".daily-quests .bg-teal-100",
+      ".daily-quests .bg-orange-100",
+      ".duel-card .bg-fuchsia-100",
+      ".duel-done .bg-rose-100",
+      "leaderboard.duel-mode .border-fuchsia-100",
+      "leaderboard.duel-mode .bg-emerald-100",
+      "leaderboard.duel-mode .bg-rose-100",
+    ];
+    for (const sel of retired) {
+      expect(lines115.filter((l) => l.includes(sel)), `retired -100 rule must stay dead: ${sel}`).toEqual([]);
+    }
   });
 });
