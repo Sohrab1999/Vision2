@@ -1,0 +1,28 @@
+/* Task 135 — §8.3 wave 2: the badge shine sweep (badge-sheen) and the
+   details-popover entrance (pop-fade), verbatim from globals.css (owner:
+   badges.tsx). The popover's dark surface rules (the cross-family trio and
+   the scoped bg-stone-50) stay in globals — surfaces cluster. */
+
+/* ---------------- badges / achievements ---------------- */
+.badge-shine {
+  position: relative;
+  overflow: hidden;
+}
+.badge-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 30%, rgb(255 255 255 / 0.35) 48%, transparent 62%);
+  transform: translateX(-120%);
+  animation: badge-sheen 3.2s ease-in-out infinite;
+}
+@keyframes badge-sheen {
+  0%, 55% { transform: translateX(-120%); }
+  85%, 100% { transform: translateX(120%); }
+}
+
+.badge-popover { animation: pop-fade 0.18s ease-out; }
+@keyframes pop-fade {
+  from { opacity: 0; transform: translateY(6px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}

@@ -1,0 +1,23 @@
+/* Task 135 — §8.3 wave 2: the word-of-day band, base light+dark + the
+   word-day-scoped dark descendants (emerald text/borders, bg-white,
+   border-stone-200), verbatim from globals.css (owner: word-of-day.tsx).
+   The cross-family ink canonical groups (word-day × badge-popover ×
+   shortcuts-dialog …) stay in globals. Scoped descendants keep winning
+   over plain utilities by specificity — order-free. */
+
+/* ---------------- word of the day ---------------- */
+.word-day {
+  background-image: linear-gradient(to left, rgba(13, 148, 136, 0.10), rgba(16, 185, 129, 0.08), rgba(163, 230, 53, 0.08));
+}
+.dark .word-day {
+  background-image: linear-gradient(to left, rgba(19, 78, 74, 0.5), rgba(6, 55, 40, 0.45), rgba(63, 98, 18, 0.28)) !important;
+  border-color: rgba(45, 130, 115, 0.5);
+}
+
+.dark .word-day .text-emerald-700 { color: #34d399; }
+.dark .word-day .border-emerald-300 { border-color: rgba(52, 211, 153, 0.45); }
+.dark .word-day .bg-white { background-color: rgba(28, 25, 23, 0.75); }
+.dark .word-day .border-stone-200 { border-color: #44403c; }
+
+.dark .word-day .border-emerald-600 { border-color: #059669; }
+.dark .word-day .bg-emerald-600 { background-color: #047857; }

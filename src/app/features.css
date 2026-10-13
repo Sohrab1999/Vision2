@@ -14,3 +14,11 @@
 @import "../components/study/practice/srs-panel.css";
 @import "../components/study/practice/skill-panel.css";
 @import "../components/study/reports/report-card.css";
+@import "../components/study/shared/streak-flame.css";
+@import "../components/study/shell/footer.css";
+@import "../components/study/home/quote-band.css";
+@import "../components/study/home/home-hero.css";
+@import "../components/study/practice/badges.css";
+@import "../components/study/quiz/quiz-result.css";
+@import "../components/study/practice/weekly-chart.css";
+@import "../components/study/lesson/word-of-day.css";

@@ -443,44 +443,13 @@ body {
 /* toast in dark */
 .dark [data-radix-popper-content-wrapper] { z-index: 60; }
 
-/* ---------------- streak flame ---------------- */
-.streak-flame {
-  animation: flame-flicker 1.6s ease-in-out infinite;
-  transform-origin: 50% 90%;
-  filter: drop-shadow(0 0 4px rgb(251 146 60 / 0.55));
-}
-@keyframes flame-flicker {
-  0%, 100% { transform: scale(1) rotate(-2deg); }
-  30% { transform: scale(1.12) rotate(2.5deg); }
-  60% { transform: scale(0.95) rotate(-1.5deg); }
-}
+/* task 135 (§8.3 wave 2): this band moved verbatim beside its owner via src/app/features.css — streak flame -> shared/streak-flame.css */
 
-/* ---------------- footer band ---------------- */
-.footer-band {
-  background-image: linear-gradient(to bottom, rgb(255 255 255 / 0.9), rgb(247 246 242 / 0.95));
-}
+/* task 135 (§8.3 wave 2): this band moved verbatim beside its owner via src/app/features.css — footer band light -> shell/footer.css */
 
-/* ---------------- quote band decorative mark ---------------- */
-.quote-band {
-  position: relative;
-  overflow: hidden;
-}
-.quote-band::before {
-  content: "\201C";
-  position: absolute;
-  top: -18px;
-  right: 22px;
-  font-family: Georgia, serif;
-  font-size: 110px;
-  line-height: 1;
-  color: rgb(217 119 6 / 0.14);
-  pointer-events: none;
-}
+/* task 135 (§8.3 wave 2): this band moved verbatim beside its owner via src/app/features.css — quote band mark -> home/quote-band.css */
 
-/* dictation letter boxes: latin font + slight spacing */
-.dictation-box {
-  font-family: var(--font-lora), Georgia, serif;
-}
+/* task 135 (§8.3 wave 2): dictation-box — DEAD rule, zero TSX consumers — retired — no extraction, just an honest burial */
 
 /* dark-mode tuning for new dictation / today-plan elements */
 .dark .text-violet-700 { color: #c4b5fd; }
@@ -510,93 +479,33 @@ body {
 .dark .border-stone-300 { border-color: #44403c; }
 .dark .border-rose-300 { border-color: rgba(150, 50, 65, 0.55); }
 
-/* ---------------- hero book (task 111 «کتابِ زنده») ----------------
-   درخشِ دوره‌ایِ لبهٔ جلد — هم‌خانوادهٔ badge-shine؛ از تم بی‌نیاز است
-   (جلد در هر دو تم تیرهٔ زمردی است)؛ kill-switchِ سراسریِ user-reduce-motion
-   آن را هم می‌گیرد (animation-duration 0.01ms) */
-.hero-book {
-  position: relative;
-  overflow: hidden;
-}
-.hero-book::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(115deg, transparent 32%, rgb(255 255 255 / 0.16) 48%, transparent 64%);
-  transform: translateX(-130%);
-  animation: hero-sheen 6s ease-in-out 2.5s infinite;
-  pointer-events: none;
-}
-@keyframes hero-sheen {
-  0%, 62% { transform: translateX(-130%); }
-  88%, 100% { transform: translateX(130%); }
-}
+/* task 135 (§8.3 wave 2): this band moved verbatim beside its owner via src/app/features.css — hero book sheen -> home/home-hero.css */
 
-/* ---------------- badges / achievements ---------------- */
-.badge-shine {
-  position: relative;
-  overflow: hidden;
-}
-.badge-shine::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(115deg, transparent 30%, rgb(255 255 255 / 0.35) 48%, transparent 62%);
-  transform: translateX(-120%);
-  animation: badge-sheen 3.2s ease-in-out infinite;
-}
-@keyframes badge-sheen {
-  0%, 55% { transform: translateX(-120%); }
-  85%, 100% { transform: translateX(120%); }
-}
+/* task 135 (§8.3 wave 2): this band moved verbatim beside its owner via src/app/features.css — badge shine -> practice/badges.css */
 
-/* ---------------- final-exam certificate ---------------- */
-.certificate-card {
-  background-image:
-    radial-gradient(circle at 12% 8%, rgb(251 191 36 / 0.14), transparent 34%),
-    radial-gradient(circle at 88% 92%, rgb(249 115 22 / 0.12), transparent 34%);
-}
+/* task 135 (§8.3 wave 2): this band moved verbatim beside its owner via src/app/features.css — certificate light -> quiz/quiz-result.css */
 
-/* ---------------- 30-day heatmap ---------------- */
-.heat-cell {
-  min-height: 22px;
-}
-@media (max-width: 480px) {
-  .heatmap-grid { gap: 0.3rem; }
-}
+/* task 135 (§8.3 wave 2): this band moved verbatim beside its owner via src/app/features.css — heatmap light -> practice/weekly-chart.css */
 
 /* ---------------- badges + certificate + heatmap dark-mode tuning ---------------- */
 /* r115: the -100 band retired onto the kernel tokens — bg/border-amber-100
    now derive from --color-amber-100 (the old 87,62,14 bg vs 120,88,30 border
    pair collapsed onto the amber family base 69,48,12) */
-.dark .certificate-card .border-dashed { border-color: rgba(180, 130, 20, 0.55) !important; }
+/* task 135 (§8.3 wave 2): this band moved verbatim beside its owner via src/app/features.css — certificate dark dashed -> quiz/quiz-result.css */
 .dark .border-amber-200 { border-color: rgba(120, 88, 30, 0.5); }
 /* r115: border-amber-100 rides the kernel token now */
 .dark .bg-amber-50\/60 { background-color: rgba(69, 48, 12, 0.28); }
-.dark .heat-cell.bg-emerald-200 { background-color: #14532d; }
-.dark .heat-cell.bg-emerald-400 { background-color: #15803d; }
-.dark .heat-cell.bg-emerald-600 { background-color: #16a34a; }
-.dark .heat-cell.bg-emerald-800 { background-color: #22c55e; }
+/* task 135 (§8.3 wave 2): this band moved verbatim beside its owner via src/app/features.css — heatmap dark ramp -> practice/weekly-chart.css */
 .dark .ring-offset-white { --tw-ring-offset-color: #1c1917; }
 
-/* ---------------- word of the day ---------------- */
-.word-day {
-  background-image: linear-gradient(to left, rgba(13, 148, 136, 0.10), rgba(16, 185, 129, 0.08), rgba(163, 230, 53, 0.08));
-}
-.dark .word-day {
-  background-image: linear-gradient(to left, rgba(19, 78, 74, 0.5), rgba(6, 55, 40, 0.45), rgba(63, 98, 18, 0.28)) !important;
-  border-color: rgba(45, 130, 115, 0.5);
-}
+/* task 135 (§8.3 wave 2): this band moved verbatim beside its owner via src/app/features.css — word-day base -> lesson/word-of-day.css */
 /* r114: dead .bg-lime-50 selector half retired — word-day consumes lime only
    via the to-lime-50 gradient stop (covered by the named rule above); the
    .bg-lime-50 utility has ZERO TSX consumers, so a lime-50 kernel token is
    an honest skip, same as cyan-50 */
 /* r115: word-day's -100 washes ride the kernel tokens (0.45→0.5 teal,
    0.55→0.6 emerald — the scoped copies are gone) */
-.dark .word-day .text-emerald-700 { color: #34d399; }
-.dark .word-day .border-emerald-300 { border-color: rgba(52, 211, 153, 0.45); }
-.dark .word-day .bg-white { background-color: rgba(28, 25, 23, 0.75); }
-.dark .word-day .border-stone-200 { border-color: #44403c; }
+/* task 135 (§8.3 wave 2): this band moved verbatim beside its owner via src/app/features.css — word-day dark descendants -> lesson/word-of-day.css */
 /* ink tone text-stone-600 → #a8a29e — canonical group (Step 9 tranche-2; was 4 drifted per-panel copies) */
 .dark .word-day .text-stone-600,.dark .badge-popover .text-stone-600,.dark .shortcuts-dialog .text-stone-600,
 .dark .report-digest .text-stone-600 { color: #a8a29e; }
@@ -608,8 +517,7 @@ body {
 .dark .report-week .text-stone-800,.dark .daily-quests .text-stone-800,.dark .duel-card .text-stone-800,
 .dark .duel-hud .text-stone-800,.dark .duel-done .text-stone-800,.dark .gmetro-dialog .text-stone-800,
 .dark .glesson-head .text-stone-800 { color: #f5f5f4; }
-.dark .word-day .border-emerald-600 { border-color: #059669; }
-.dark .word-day .bg-emerald-600 { background-color: #047857; }
+/* task 135 (§8.3 wave 2): this band moved verbatim beside its owner via src/app/features.css — word-day dark emerald -> lesson/word-of-day.css */
 /* ink tone text-stone-500 → #8a8580 — canonical group (Step 9 tranche-2; was 3 drifted per-panel copies) */
 .dark .word-day .text-stone-500,.dark .badge-popover .text-stone-500,.dark .shortcuts-dialog .text-stone-500 { color: #8a8580; }
 /* ink tone text-stone-400 → #78716c — canonical group (Step 9 tranche-2; was 4 drifted per-panel copies) */
@@ -623,11 +531,7 @@ body {
 /* the congrats-box emerald rule retired onto c-wash-emerald-soft (tranche 4
    phase 10, task 130) — softer than the panel grade (0.4 vs 0.5): it sits on
    the popover's own opaque dark surface, one step above the kernel 0.35. */
-.badge-popover { animation: pop-fade 0.18s ease-out; }
-@keyframes pop-fade {
-  from { opacity: 0; transform: translateY(6px) scale(0.97); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
+/* task 135 (§8.3 wave 2): this band moved verbatim beside its owner via src/app/features.css — badge popover pop-fade -> practice/badges.css */
 
 /* ---------------- keyboard hint chips ----------------
    (the .dark .border-stone-100 rule below is the canonical KEEP for the
@@ -647,11 +551,7 @@ body {
 /* ---------------- dark body texture (calmer) — merged into .dark body above ---------------- */
 .dark :focus-visible { outline-color: rgb(52 211 153 / 0.7); }
 
-/* ---------------- footer + quote dark ---------------- */
-.dark .footer-band {
-  background-image: linear-gradient(to bottom, rgb(28 25 23 / 0.92), rgb(12 10 9 / 0.96));
-}
-.dark .quote-band::before { color: rgb(251 191 36 / 0.12); }
+/* task 135 (§8.3 wave 2): the footer-band and quote-band dark twins that lived here moved beside their owners (shell/footer.css, home/quote-band.css) via the features.css manifest — the rules below are unrelated and stay */
 /* r114: emerald-50/70 moved into the variant band (monotone 0.5) — the copy
    here served the weaker pre-convergence value and fought the band */
 .dark .border-emerald-300 { border-color: rgba(16, 120, 90, 0.55); }

@@ -1,0 +1,16 @@
+/* Task 135 — §8.3 wave 2: the streak flame (header + home-today) and its
+   flame-flicker keyframes, verbatim from globals.css. The global a11y
+   kill-switch (html.user-reduce-motion .streak-flame, globals) still wins
+   via !important regardless of position. */
+
+/* ---------------- streak flame ---------------- */
+.streak-flame {
+  animation: flame-flicker 1.6s ease-in-out infinite;
+  transform-origin: 50% 90%;
+  filter: drop-shadow(0 0 4px rgb(251 146 60 / 0.55));
+}
+@keyframes flame-flicker {
+  0%, 100% { transform: scale(1) rotate(-2deg); }
+  30% { transform: scale(1.12) rotate(2.5deg); }
+  60% { transform: scale(0.95) rotate(-1.5deg); }
+}

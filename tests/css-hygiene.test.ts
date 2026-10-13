@@ -24,6 +24,15 @@ const featureCssPaths = [
   "src/components/study/practice/srs-panel.css",
   "src/components/study/practice/skill-panel.css",
   "src/components/study/reports/report-card.css",
+  // wave 2 (task 135): the small single-family bands
+  "src/components/study/shared/streak-flame.css",
+  "src/components/study/shell/footer.css",
+  "src/components/study/home/quote-band.css",
+  "src/components/study/home/home-hero.css",
+  "src/components/study/practice/badges.css",
+  "src/components/study/quiz/quiz-result.css",
+  "src/components/study/practice/weekly-chart.css",
+  "src/components/study/lesson/word-of-day.css",
 ];
 const readEffectiveCss = (): string =>
   readFileSync(cssPath, "utf8") +
@@ -207,9 +216,16 @@ describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
     // duel/spell-input.css, shared/confetti.css) — always loaded via the
     // features.css manifest; cross-family canonical groups + the hover-utility
     // overrides stayed. Growth from here must consolidate, not add.
+    // task 135 (§8.3 wave 2): re-based 404 → 378 — the small single-family
+    // bands (streak flame, footer, quote mark, hero-book sheen, badge shine,
+    // pop-fade, certificate, heatmap, word-day base+descendants) moved beside
+    // their owners (8 files, 26 selector lines) and the DEAD .dictation-box
+    // rule (zero TSX consumers) was buried. Cross-family canonical groups,
+    // the surface clusters and utility overrides stayed. Growth from here
+    // must consolidate, not add.
     const sel = lines.filter((l) => /^\s*\.[a-z]/.test(l) && !l.includes("→")).length;
     expect(sel).toBeLessThanOrEqual(505);
-    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(404);
+    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(378);
   });
 });
 
@@ -264,8 +280,15 @@ describe("globals.css tone-band + elevated-surface consolidation (Step 9 tranche
   });
 
   it("keeps word-day's emerald-700 drift as the documented deviation", () => {
-    const drift = lines.filter((l) => l.includes(".word-day .text-emerald-700") && l.includes("#34d399"));
-    expect(drift, "word-day emerald-700 #34d399 deviation must stay").toHaveLength(1);
+    // task 135 (§8.3 wave 2): the rule moved verbatim beside its owner
+    // (lesson/word-of-day.css) — the deviation survives, now feature-file hosted
+    const wod = readFileSync(resolve(process.cwd(), "src/components/study/lesson/word-of-day.css"), "utf8");
+    const drift = wod.split("\n").filter((l) => l.includes(".word-day .text-emerald-700") && l.includes("#34d399"));
+    expect(drift, "word-day emerald-700 #34d399 deviation must stay (beside its owner)").toHaveLength(1);
+    // the scoped rule itself left globals — other #34d399 uses (or-weekbar,
+    // glosson-mirror) are unrelated and stay
+    const gLines = readFileSync(cssPath, "utf8").split("\n");
+    expect(gLines.filter((l) => l.includes(".word-day .text-emerald-700")), "scoped rule must leave globals").toEqual([]);
   });
 
   it("keeps the elevated card surfaces in ONE canonical group", () => {
@@ -1282,7 +1305,7 @@ describe("globals.css semantic ink layer (Step 9 tranche 4 phase 9 — Task 127)
   });
 });
 
-describe("per-feature CSS extraction (§8.3 wave 1 — task 133)", () => {
+describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task 135)", () => {
   // the r12 band's single-family rules now live beside their owners; the
   // manifest (src/app/features.css) keeps them always-loaded and at cascade
   // end — the wave-1 isolation scan proved no equal-specificity competition
@@ -1295,6 +1318,15 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133)", () => {
     "src/components/study/practice/srs-panel.css": [".srs-panel .border-white\\/60", ".dark .srs-panel {", ".dark .srs-panel .srs-due-chip {"],
     "src/components/study/practice/skill-panel.css": [".dark .skill-panel { background-color: #1c1917; border-color: rgb(106 44 112 / 0.5); }", ".skill-weak-cta"],
     "src/components/study/reports/report-card.css": [".dark .report-dialog {", ".dark .report-foot {"],
+    // wave 2 (task 135)
+    "src/components/study/shared/streak-flame.css": [".streak-flame {", "@keyframes flame-flicker {"],
+    "src/components/study/shell/footer.css": [".footer-band {", ".dark .footer-band {"],
+    "src/components/study/home/quote-band.css": [".quote-band::before {", ".dark .quote-band::before"],
+    "src/components/study/home/home-hero.css": [".hero-book::after {", "@keyframes hero-sheen {"],
+    "src/components/study/practice/badges.css": [".badge-shine::after {", "@keyframes badge-sheen {", ".badge-popover { animation: pop-fade 0.18s ease-out; }", "@keyframes pop-fade {"],
+    "src/components/study/quiz/quiz-result.css": [".certificate-card {", ".dark .certificate-card .border-dashed"],
+    "src/components/study/practice/weekly-chart.css": [".heat-cell {", "@media (max-width: 480px) {", ".dark .heat-cell.bg-emerald-200"],
+    "src/components/study/lesson/word-of-day.css": [".word-day {", ".dark .word-day {", ".dark .word-day .text-emerald-700", ".dark .word-day .bg-emerald-600"],
   };
 
   it("keeps every extracted feature file present with its key selectors", () => {
@@ -1318,6 +1350,22 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133)", () => {
       ".dark .skill-panel { background-color: #1c1917;",
       ".dark .report-dialog {",
       ".dark .report-week,",
+      // wave 2 (task 135) — full moved rule heads; the tombstones are written
+      // selector-pattern-free so these stay honest
+      "@keyframes flame-flicker {",
+      ".dark .footer-band {",
+      ".quote-band::before {",
+      "@keyframes hero-sheen {",
+      ".badge-shine::after {",
+      "@keyframes badge-sheen {",
+      ".certificate-card {",
+      ".heat-cell {",
+      ".dark .heat-cell.bg-emerald-200",
+      ".dark .word-day {",
+      ".dark .word-day .text-emerald-700",
+      ".dark .word-day .bg-emerald-600",
+      ".badge-popover { animation: pop-fade",
+      ".dictation-box {",
     ]) {
       expect(css, `globals.css still carries a moved rule: ${gone}`).not.toContain(gone);
     }
@@ -1335,7 +1383,7 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133)", () => {
     expect(css).toContain(".dark .hover\\:bg-violet-50:hover");
   });
 
-  it("features.css manifest imports all six files; layout.tsx loads it right after globals.css", () => {
+  it("features.css manifest imports all fourteen files; layout.tsx loads it right after globals.css", () => {
     const manifest = readFileSync(resolve(process.cwd(), "src/app/features.css"), "utf8");
     for (const p of featureCssPaths) {
       expect(manifest, `manifest line missing for ${p}`).toContain(`@import "${p.replace("src/", "../")}";`);

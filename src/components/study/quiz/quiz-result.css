@@ -1,0 +1,14 @@
+/* Task 135 — §8.3 wave 2: the final-exam certificate card, light washes +
+   the dark dashed-border retune, verbatim from globals.css (owner:
+   quiz-result.tsx). The elevated-dark surface quintet (which names
+   .certificate-card among five families) stays in globals — different
+   property (background-color), canonical cluster. */
+
+/* ---------------- final-exam certificate ---------------- */
+.certificate-card {
+  background-image:
+    radial-gradient(circle at 12% 8%, rgb(251 191 36 / 0.14), transparent 34%),
+    radial-gradient(circle at 88% 92%, rgb(249 115 22 / 0.12), transparent 34%);
+}
+
+.dark .certificate-card .border-dashed { border-color: rgba(180, 130, 20, 0.55) !important; }
