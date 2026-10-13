@@ -10,6 +10,7 @@
 
 import type { DayHistoryMap, DayStat, HistoryMap } from "./study-store";
 import { faNum } from "./study-theme";
+import { questStreakMeta } from "./quest-streak";
 import { percent } from "./domain/percent";
 import { DUEL_HISTORY_CAP, DUEL_QUICK_THINK, saneThink, type DuelRecord } from "./duel-history";
 
@@ -154,6 +155,19 @@ export function computeWeeklyDigest(input: DigestInput, todayKey: string): Weekl
       highlights.push(`${faNum(Math.abs(act.diff))} فعالیت کمتر از هفتهٔ پیش — یک تمرین کوچک، فاصله را پر می‌کند`);
     } else {
       highlights.push(`هم‌قدم با هفتهٔ پیش — ${faNum(act.current)} فعالیت`);
+    }
+    // Task 142 — «زنجیرهٔ مأموریت‌ها در هفته‌نامه» — ادعایِ پایداری با عددِ
+    // واقعی، تک‌منبعِ questStreakMeta (همان قراردادِ چیپِ پنلِ مأموریت‌ها —
+    // ۱۴۰). خط فقط از streak>=۲ می‌آید: «زنجیره» یعنی حداقلِ دو حلقه و
+    // تک‌روزِ کامل را خودِ نوارِ پاداش جشن می‌گیرد. دلتایِ هفته = weekPerfect
+    // (حلقه‌هایِ بسته‌شده در همینِ پنجرهٔ ۷روزه — هم‌پنجرهٔ خودِ دایجست)؛
+    // وقتی خط هست ناگزیر ≥۱ است چون نخستین حلقهٔ زنجیره (امروز یا دیروز)
+    // داخلِ پنجره است — نگهبانِ شرط سندِ همین ناگزانسی است.
+    const questStreak = questStreakMeta(input.dayHistory ?? {}, todayKey);
+    if (questStreak.streak >= 2 && questStreak.weekPerfect > 0) {
+      highlights.push(
+        `زنجیرهٔ مأموریت‌ها به ${faNum(questStreak.streak)} روز رسید — ${faNum(questStreak.weekPerfect)} حلقه در همین هفته`
+      );
     }
     if (thisWeek.goalDays > 0) {
       highlights.push(`${faNum(thisWeek.goalDays)} روزِ هدفِ روزانه کامل شد`);

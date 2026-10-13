@@ -476,3 +476,48 @@ describe("خطِ هفتهٔ چابک در بلوکِ نبردها (Task 113)", (
     expect(screen.queryByText(/هفتهٔ برق!/)).not.toBeInTheDocument();
   });
 });
+
+// ------------------------------------------------------------------
+// Task 142 — «زنجیرهٔ مأموریت‌ها در هفته‌نامه» — گاردِ جایگاه در خودِ
+// باند: خطِ زنجیره دومین سطرِ های‌لایت‌هاست و داخلِ بودجهٔ ۳تاییِ
+// slice(0,3) می‌ماند؛ تک‌روزِ کامل هیچ خطی نمی‌سازد (حضورِ صادقانه —
+// تک‌منبعِ قرارداد questStreakMeta است و کامپوننت فقط رندر می‌کند).
+// ------------------------------------------------------------------
+describe("زنجیرهٔ مأموریت‌ها در هفته‌نامه — کامپوننت (Task 142)", () => {
+  beforeEach(() => {
+    cleanup();
+    useStudy.setState({ dayHistory: {}, history: {}, goalMetDays: [], streak: 0 });
+  });
+
+  const perfect = { reviews: 10, quizzes: 3, words: 5, dictation: 1, rush: 1 };
+  const seedPerfectDays = (n: number) => {
+    const dayHistory: Record<string, { day: string; reviews: number; quizzes: number; words: number; dictation: number; rush: number }> = {};
+    for (let i = 0; i < n; i += 1) {
+      const key = daysAgoKey(i);
+      dayHistory[key] = { day: key, ...perfect };
+    }
+    useStudy.setState({ dayHistory });
+  };
+
+  it("زنجیرهٔ ۳روزه: خطِ زنجیره دومین سطرِ های‌لایت‌هاست (داخلِ بودجهٔ ۳تایی)", () => {
+    seedPerfectDays(3);
+    render(<WeeklyReportSection />);
+    const line = screen.getByText(/زنجیرهٔ مأموریت‌ها به ۳ روز رسید — ۳ حلقه در همین هفته/);
+    const li = line.closest("li")!;
+    const ul = li.parentElement!;
+    expect(ul.children[1]).toBe(li); // دومین سطر — پس از خطِ فعالیت
+    expect(ul.children.length).toBeGreaterThanOrEqual(2);
+  });
+
+  it("تک‌روزِ کامل: هیچ خطِ زنجیره‌ای در باند نیست (حضورِ صادقانه)", () => {
+    seedPerfectDays(1);
+    render(<WeeklyReportSection />);
+    expect(screen.queryByText(/زنجیرهٔ مأموریت‌ها به/)).toBeNull();
+  });
+
+  it("زنجیرهٔ بلندتر از هفته: دلتا «۷ حلقه» می‌گوید نه ۹ (عددِ پنجره، نه کلِ زنجیره)", () => {
+    seedPerfectDays(9);
+    render(<WeeklyReportSection />);
+    expect(screen.getByText(/زنجیرهٔ مأموریت‌ها به ۹ روز رسید — ۷ حلقه در همین هفته/)).toBeTruthy();
+  });
+});

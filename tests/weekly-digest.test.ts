@@ -8,6 +8,7 @@ import {
   faDayLabel,
   DigestInput,
 } from "@/lib/weekly-digest";
+import { faNum } from "@/lib/study-theme";
 
 const T = "2026-10-14"; // a Wednesday — fixed "today" for deterministic tests
 
@@ -592,5 +593,92 @@ describe("duelWeekQuickProfile — هفتهٔ چابکِ دایجست (Task 113)
     expect(d.thisWeek).toBe(0);
     expect(d.lastWeek).toBe(3);
     expect(d.quickWeek).toBeNull();
+  });
+});
+
+// ------------------------------------------------------------------
+// Task 142 — «زنجیرهٔ مأموریت‌ها در هفته‌نامه» — خطِ پایداری با عددِ
+// واقعی. تک‌منبع: questStreakMeta (همان قراردادِ چیپِ پنلِ مأموریت‌ها —
+// ۱۴۰). قفل‌ها: ①عددِ زنجیره و دلتایِ هفته از قرارداد می‌آید ②خطِ دوم
+// است (پس از فعالیت، پیش از هدف/واژه) ③تک‌روز و فعالیتِ غیرِ ۵/۵ هیچ
+// خطی نمی‌سازند (حضورِ صادقانه) ④فقطِ historyِ قدیمی هم زنجیره ندارد.
+// ------------------------------------------------------------------
+describe("computeWeeklyDigest — زنجیرهٔ مأموریت‌ها در های‌لایت‌ها (Task 142)", () => {
+  const perfect = { reviews: 10, words: 5, quizzes: 3, dictation: 1, rush: 1 };
+  const streakLine = (streak: number, links: number) =>
+    `زنجیرهٔ مأموریت‌ها به ${faNum(streak)} روز رسید — ${faNum(links)} حلقه در همین هفته`;
+
+  it("زنجیرهٔ ۳روزه با عضویتِ امروز → خط با عددِ واقعی و دلتایِ کامل", () => {
+    const inp = input({
+      dayHistory: {
+        [dayKeyBefore(T, 0)]: day(dayKeyBefore(T, 0), perfect),
+        [dayKeyBefore(T, 1)]: day(dayKeyBefore(T, 1), perfect),
+        [dayKeyBefore(T, 2)]: day(dayKeyBefore(T, 2), perfect),
+      },
+    });
+    const d = computeWeeklyDigest(inp, T);
+    expect(d.highlights).toContain(streakLine(3, 3));
+  });
+
+  it("خطِ دوم است — پس از خطِ فعالیت، پیش از هدف و واژه (تصمیمِ جایگاه)", () => {
+    const inp = input({
+      dayHistory: {
+        [dayKeyBefore(T, 0)]: day(dayKeyBefore(T, 0), perfect),
+        [dayKeyBefore(T, 1)]: day(dayKeyBefore(T, 1), perfect),
+      },
+      goalMetDays: [dayKeyBefore(T, 0)],
+    });
+    const d = computeWeeklyDigest(inp, T);
+    expect(d.highlights[0]).toContain("فعالیت");
+    expect(d.highlights[1]).toBe(streakLine(2, 2));
+    expect(d.highlights[2]).toContain("روزِ هدفِ روزانه کامل شد");
+    expect(d.highlights[3]).toContain("واژهٔ جدید");
+  });
+
+  it("زنجیرهٔ بلندتر از هفته → دلتا کمتر از طولِ زنجیره (۹ روزه، ۷ حلقه)", () => {
+    const dh: DigestInput["dayHistory"] = {};
+    for (let i = 0; i <= 8; i += 1) {
+      const key = dayKeyBefore(T, i);
+      dh[key] = day(key, perfect);
+    }
+    const d = computeWeeklyDigest(input({ dayHistory: dh }), T);
+    expect(d.highlights).toContain(streakLine(9, 7));
+  });
+
+  it("امروزِ ناقص با زنجیرهٔ زنده از دیروز → خط برقرار است (۲ حلقه)", () => {
+    const inp = input({
+      dayHistory: {
+        [dayKeyBefore(T, 0)]: day(dayKeyBefore(T, 0), { reviews: 3 }), // ناقص — زنجیره را نمی‌شکند
+        [dayKeyBefore(T, 1)]: day(dayKeyBefore(T, 1), perfect),
+        [dayKeyBefore(T, 2)]: day(dayKeyBefore(T, 2), perfect),
+      },
+    });
+    const d = computeWeeklyDigest(inp, T);
+    expect(d.highlights).toContain(streakLine(2, 2));
+  });
+
+  it("تک‌روزِ کامل → هیچ خطِ زنجیره‌ای نیست (جشنِ تک‌روز با نوارِ پاداش است)", () => {
+    const inp = input({ dayHistory: { [dayKeyBefore(T, 0)]: day(dayKeyBefore(T, 0), perfect) } });
+    const d = computeWeeklyDigest(inp, T);
+    expect(d.highlights.every((h) => !h.includes("زنجیرهٔ مأموریت‌ها"))).toBe(true);
+  });
+
+  it("فعالیتِ لختِ غیرِ ۵/۵ → هیچ خطِ زنجیره‌ای نیست (فقطِ پنج‌گانه عضو می‌شود)", () => {
+    const inp = input({
+      dayHistory: {
+        [dayKeyBefore(T, 0)]: day(dayKeyBefore(T, 0), { reviews: 50, quizzes: 9, words: 9 }),
+        [dayKeyBefore(T, 1)]: day(dayKeyBefore(T, 1), { reviews: 50, quizzes: 9, words: 9 }),
+      },
+    });
+    const d = computeWeeklyDigest(inp, T);
+    expect(d.highlights.every((h) => !h.includes("زنجیرهٔ مأموریت‌ها"))).toBe(true);
+  });
+
+  it("فقطِ historyِ قدیمی (بدونِ dayHistory) → خطِ زنجیره غایب، فعالیت حاضر", () => {
+    const legacyDay = dayKeyBefore(T, 0);
+    const inp = input({ dayHistory: {}, history: { [legacyDay]: { reviews: 5, quizzes: 2 } } });
+    const d = computeWeeklyDigest(inp, T);
+    expect(d.highlights.length).toBeGreaterThan(0);
+    expect(d.highlights.every((h) => !h.includes("زنجیرهٔ مأموریت‌ها"))).toBe(true);
   });
 });
