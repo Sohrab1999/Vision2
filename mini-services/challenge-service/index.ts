@@ -11,10 +11,12 @@
 //     خودش رندر می‌کند → ترافیک کم و بدون نشتِ کلید پاسخ.
 //
 // Task 122 — منطقِ اتاق و پروتکل به room-manager.ts کوچ کرد (گام ۱۰:
-// زیرساختِ تستِ روتِ ۳۰۰۳)؛ این فایل فقط سیم‌کشی است: رازها، بانکِ سؤال،
-// گیتِ بلیت/گلوگاه، سوکت‌ایو، فاصله‌سنج‌ها و چرخهٔ فرایند. رفتارِ سیمی
-// حرف‌به‌حرف همان است — تستِ هرمتیکِ پروتکل در tests/duel-room-service.test.ts
-// (۲۸ آزمونِ هرمتیک با ساعتِ مجازی و تزریقِ قطعی؛ بدونِ سوکت و شبکه).
+// زیرساختِ تستِ روتِ ۳۰۰۳)؛ Task 146 — آخرین سه تصمیمِ سیم (گیتِ بلیت،
+// انتخابِ سؤال، تاسِ کد) هم به wiring.ts کوچید («زیرساختِ دومین تستِ
+// ۳۰۰۳») — این فایل واقعاً فقط سیم است: رازها، بانکِ سؤال، سوکت‌ایو،
+// فاصله‌سنج‌ها و چرخهٔ فرایند. رفتارِ سیمی حرف‌به‌حرف همان است —
+// تستِ هرمتیک: tests/duel-room-service.test.ts (پروتکل) و
+// tests/duel-service-wiring.test.ts (قطعاتِ تصمیم).
 // ------------------------------------------------------------------
 import { createServer } from "http";
 import { existsSync } from "fs";
@@ -26,12 +28,16 @@ import lesson2 from "../../src/data/lesson2";
 import lesson3 from "../../src/data/lesson3";
 import examBank from "../../src/data/exam";
 import type { QuizQuestion } from "../../src/lib/study-types";
-import { shuffle } from "../../src/lib/domain/shuffle";
 import { loadOrCreateReceiptSecret, signDuelEnd } from "../../src/lib/duel-receipt-server";
 import { createJoinThrottle } from "../../src/lib/join-throttle";
-import { loadOrCreateTicketSecret, verifyTicket } from "../../src/lib/duel-ticket-server";
-import { createTicketVault, ticketRejectMessage } from "../../src/lib/duel-ticket";
+import { loadOrCreateTicketSecret } from "../../src/lib/duel-ticket-server";
+import { createTicketVault } from "../../src/lib/duel-ticket";
 import { createDuelRoomService } from "./room-manager";
+import {
+  createEntryTicketGuard,
+  createQuestionPicker,
+  createRoomCodeMaker,
+} from "./wiring";
 
 // Task 104 — رازِ رسید نسبت به «ریشهٔ پروژه» حل می‌شود نه cwdِ launch.
 // قراردادِ duel-receipt-server: cwdِ سرویس و Next هر دو ریشهٔ پروژه است؛ ولی
@@ -71,42 +77,18 @@ const TICKET_SECRET = loadOrCreateTicketSecret(REPO_ROOT);
 const TICKET_VAULT = createTicketVault();
 setInterval(() => TICKET_VAULT.sweep(), 60_000).unref();
 
-/**
- * گیتِ بلیت برای duel:create/duel:join — رشتهٔ خطا یا null.
- * ترتیب بازبینی: ساختار → امضا → پنجره → یک‌بارمصرف. nonce فقط هنگام
- * بلیتِ درستِ از-نظر-امضا سوزانده می‌شود تا دست‌کاریِ امضا، nonceِ کسی
- * را نسوزاند. خروجی همیشه پرچمِ ticketError دارد تا کلاینت بداند
- * گرفتاریِ خودِ بلیت است (نه اتاق/گلوگاه) و یک‌بارِ تازه ضرب کند.
- */
-function entryTicketGuard(raw: unknown): { error: string; ticketError: true } | null {
-  const ticket = (raw as { ticket?: unknown } | null)?.ticket;
-  const verdict = verifyTicket(ticket, TICKET_SECRET);
-  if (!verdict.ok) return { error: ticketRejectMessage(verdict.reason), ticketError: true };
-  if (!TICKET_VAULT.consume(verdict.n)) {
-    return { error: ticketRejectMessage("replayed"), ticketError: true };
-  }
-  return null;
-}
+// Task 146 — قطعاتِ تصمیم به wiring.ts کوچیدند؛ اینجا فقط نمونه‌سازی با
+// راز/گنبدِ واقعی و تاسِ Math.random — رفتارِ سیمی حرف‌به‌حرف همانِ قدیم.
+const entryTicketGuard = createEntryTicketGuard({ secret: TICKET_SECRET, vault: TICKET_VAULT });
 
 // ----------------------------- تنظیمات مسابقه -----------------------------
 const PORT = 3003;
-const CODE_ALPHABET = "ABCDEFGHJKMNPQRSTUVWXYZ23456789"; // بدون حروف مبهم
 
 // ----------------------------- بانک سؤال -----------------------------
 const BANK: QuizQuestion[] = [...lesson1.quizzes, ...lesson2.quizzes, ...lesson3.quizzes, ...examBank];
 
-/** یک سؤال مسابقه: id + جایگشت گزینه‌ها + کلید واقعی (فقط سمت سرور) */
-function pickDuelQuestion() {
-  const q = BANK[Math.floor(Math.random() * BANK.length)];
-  const perm = shuffle([0, 1, 2, 3]); // task 122 — همان Fisher–Yatesِ یکتای دامنه (کپیِ نهم حذف شد)
-  return { id: q.id, perm, answerReal: perm.indexOf(q.answer) };
-}
-
-function makeRoomCode(): string {
-  let code = "";
-  for (let i = 0; i < 5; i++) code += CODE_ALPHABET[Math.floor(Math.random() * CODE_ALPHABET.length)];
-  return code;
-}
+const pickDuelQuestion = createQuestionPicker({ bank: BANK, rng: Math.random });
+const makeRoomCode = createRoomCodeMaker({ rng: Math.random });
 
 // ----------------------------- سرویسِ اتاق -----------------------------
 const service = createDuelRoomService({
