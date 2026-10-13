@@ -21,6 +21,7 @@ import lesson3 from "../../src/data/lesson3";
 import examBank from "../../src/data/exam";
 import type { QuizQuestion } from "../../src/lib/study-types";
 import { loadOrCreateReceiptSecret, signDuelEnd } from "../../src/lib/duel-receipt-server";
+import { recordThinkSample, padThinkSamples } from "../../src/lib/duel-think";
 import { clientIpOf, createJoinThrottle, entryThrottleError } from "../../src/lib/join-throttle";
 import { BASE_POINTS, speedBonus } from "./scoring";
 
@@ -101,6 +102,12 @@ interface PlayerState {
   answered: number;
   lastAnswerAt: number;
   qStartAt: number; // ساعتِ سؤالِ جاری روی سرور — مبنای پاداش سرعت (SEC)
+  // Task 106 «زمانِ فکر» — ساعتِ «دیدنِ» سؤالِ جاری (duel:seen؛ سرور-ساعت).
+  // امتیاز همچنان فقط از qStartAt می‌آید؛ seen فقط گزارشِ دیدن→پاسخ را
+  // ممکن می‌کند و هیچ راهی به امتیاز/رسید ندارد.
+  seenAt: number | null;
+  /** نمونهٔ فکرِ هر سؤال (ms) — null = دیده/ثبت نشده؛ نمایشی، بیرونِ رسید */
+  thinkSamples: (number | null)[];
   doneAt: number | null;
   disconnected: boolean;
 }
@@ -184,6 +191,11 @@ function endMatch(room: Room, reason: "finished" | "forfeit") {
     total: room.questions.length,
     startedAt: room.startedAt,
     players: publicPlayers(room),
+    // Task 106 — نمونه‌های زمانِ فکرِ هر بازیکن (نمایشی؛ بیرونِ رسیدِ امضاشده؛
+    // جاهای بی‌نمونه nullِ صادق می‌مانند — نه صفرِ ساختگی)
+    think: Object.fromEntries(
+      ps.map((p) => [p.sid, padThinkSamples(p.thinkSamples, room.questions.length)])
+    ),
     receipt,
   });
   room.rematchVotes.clear();
@@ -208,6 +220,8 @@ function startMatch(room: Room) {
     p.answered = 0;
     p.lastAnswerAt = Date.now();
     p.qStartAt = Date.now();
+    p.seenAt = null;
+    p.thinkSamples = [];
     p.doneAt = null;
   }
   io.to(room.code).emit("duel:start", {
@@ -335,6 +349,8 @@ io.on("connection", (socket: Socket) => {
       answered: 0,
       lastAnswerAt: Date.now(),
       qStartAt: Date.now(),
+      seenAt: null,
+      thinkSamples: [],
       doneAt: null,
       disconnected: false,
     });
@@ -367,6 +383,8 @@ io.on("connection", (socket: Socket) => {
       answered: 0,
       lastAnswerAt: Date.now(),
       qStartAt: Date.now(),
+      seenAt: null,
+      thinkSamples: [],
       doneAt: null,
       disconnected: false,
     });
@@ -392,19 +410,39 @@ io.on("connection", (socket: Socket) => {
 
     const q = room.questions[qi];
     const correct = choice >= 0 && q.perm[choice] === q.answerReal;
-    const serverElapsedMs = Date.now() - p.qStartAt; // زمان‌سنجی مرجع-سرور
+    const now = Date.now();
+    const serverElapsedMs = now - p.qStartAt; // زمان‌سنجی مرجع-سرور
     p.answered += 1;
-    p.lastAnswerAt = Date.now();
+    p.lastAnswerAt = now;
+    // Task 106 — نمونهٔ زمانِ فکر: پاسخ منهای دیدن (هر دو ساعتِ خودِ سرور).
+    // قبل از جابه‌جاییِ qStartAt ثبت می‌شود چون پنجره به همین سؤال تعلق دارد.
+    p.thinkSamples = recordThinkSample(p.thinkSamples, qi, p.seenAt, now, p.qStartAt);
+    p.seenAt = null; // سؤالِ بعدی دیدنِ تازه می‌خواهد
     if (correct) {
       p.correct += 1;
       p.score += BASE_POINTS + speedBonus(serverElapsedMs);
     }
     p.qi += 1;
-    p.qStartAt = Date.now(); // ساعت سؤال بعدی با همین پاسخ روشن می‌شود (هم‌گام با پیشروی کلاینت)
-    if (p.qi >= room.questions.length) p.doneAt = Date.now();
+    p.qStartAt = now; // ساعت سؤال بعدی با همین پاسخ روشن می‌شود (هم‌گام با پیشروی کلاینت)
+    if (p.qi >= room.questions.length) p.doneAt = now;
 
     io.to(room.code).emit("duel:progress", progressPayload(room));
     maybeFinish(room);
+  });
+
+  // ------------------------- «دیدنِ» سؤال (Task 106) -------------------------
+  // کلاینت وقتی سؤال واقعاً رندر شد duel:seen می‌فرستد؛ ساعتش را خودِ سرور
+  // می‌زند. فقط اولینِ دیدنِ هر سؤال ثبت می‌شود (دوباره‌فرستادی → نادیده) و
+  // فقط برای همان سؤالی که نوبتش است (qi ناهم‌سو → نادیده). امتیاز همچنان
+  // فقط از qStartAt می‌آید — seen فقط گزارشِ زمانِ فکر را ممکن می‌کند.
+  socket.on("duel:seen", (payload: { qi?: unknown }) => {
+    if (!room || room.status !== "playing") return;
+    const p = room.players.get(socket.id);
+    if (!p || p.doneAt !== null) return;
+    if (p.seenAt !== null) return; // اولینِ دیدن ملاک است
+    const qi = typeof payload?.qi === "number" ? Math.floor(payload.qi) : -1;
+    if (qi !== p.qi) return;
+    p.seenAt = Date.now();
   });
 
   // ------------------------- نبرد دوباره -------------------------
@@ -436,6 +474,7 @@ setInterval(() => {
       if (now - p.lastAnswerAt > STALL_GRACE_MS) {
         p.answered += 1;
         p.qi += 1;
+        p.seenAt = null; // Task 106 — بدونِ پاسخ، نمونهٔ فکر هم ندارد؛ سؤالِ بعد دیدنِ تازه می‌خواهد
         if (p.qi >= room.questions.length) p.doneAt = now;
         changed = true;
       }

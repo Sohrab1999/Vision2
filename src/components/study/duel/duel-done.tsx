@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Trophy, Swords, Users, RotateCcw, Crown, Handshake, Loader2, ShieldCheck, ImageDown, Share2 } from "lucide-react";
+import { Trophy, Swords, Users, RotateCcw, Crown, Handshake, Loader2, ShieldCheck, ImageDown, Share2, Timer } from "lucide-react";
 import { faNum } from "@/lib/study-theme";
 import { decomposeDuelScore } from "@/lib/duel-history";
+import { duelThinkStats } from "@/lib/duel-think";
 import { downloadDuelDoneImage, buildDuelDoneBlob } from "@/lib/result-image";
 import { canShareImageFiles, blobToFile, shareImageFile, type ShareOutcome } from "@/lib/share-card";
 import { useToast } from "@/hooks/use-toast";
@@ -28,6 +29,10 @@ export default function DuelDone({ endData, mySid, myFinishAt, oppConnected, rem
   const [imgBusy, setImgBusy] = useState(false);
   const [shareBusy, setShareBusy] = useState(false);
   const { toast } = useToast();
+
+  // Task 106 — ثانیه با یک اعشار و ممیزِ فارسی؛ نمونه‌ای نیست → خطِ تیره
+  const secFa = (ms: number | null) =>
+    ms === null ? "—" : faNum((Math.round(ms / 100) / 10).toFixed(1)).replace(".", "٫");
 
   // Task 101 — عکسِ این نبرد: همان کارتِ نبرد با دادهٔ EndPayload؛ تفکیکِ
   // پایه/سرعت از همان decomposeDuelScoreِ کارنامه (قراردادِ ۹۹)؛ ثانیه‌ها
@@ -231,6 +236,55 @@ export default function DuelDone({ endData, mySid, myFinishAt, oppConnected, rem
             : "نتیجهٔ این نبرد با امضای هویتی‌ات در آمار سرور ثبت شد — غلط‌هایت در کارت «بانک اشتباهات» خانه منتظرت هستند."}
         </p>
       </div>
+
+      {/* Task 106 — «زمانِ فکر»: ریتمِ دیدن→پاسخِ خودی از ساعتِ خودِ داور
+          (duel:seen؛ امتیاز همچنان از qStartAt است). بی‌نمونه (سرویسِ قدیمی/
+          ندیدنِ سؤال) کلِ بلوک صادقانه غایب است — نه صفرِ ساختگی */}
+      {(() => {
+        const samples = mySid ? endData.think?.[mySid] : undefined;
+        if (!samples) return null;
+        const st = duelThinkStats(samples);
+        if (st.seen === 0) return null;
+        const span = Math.max(st.maxMs ?? 1, 1);
+        return (
+          <div
+            className="duel-think rounded-2xl border border-stone-200 c-card-elevated p-5 shadow-sm"
+            aria-label="زمانِ فکرِ من در این نبرد"
+          >
+            <div className="mb-3 flex items-center justify-between gap-2">
+              <h2 className="flex items-center gap-2 text-[14px] font-extrabold text-stone-700">
+                <Timer size={16} className="text-violet-600" aria-hidden />
+                زمانِ فکرِ تو
+              </h2>
+              <span className="shrink-0 rounded-full border border-violet-200 bg-violet-50/60 px-2 py-0.5 text-[10.5px] font-black text-violet-700">
+                ثبت برای {faNum(st.seen)} از {faNum(st.total)} سؤال
+              </span>
+            </div>
+            <div className="mb-2 flex h-12 items-end gap-1" aria-hidden>
+              {samples.map((ms, i) =>
+                ms === null ? (
+                  <span
+                    key={i}
+                    title={`سؤال ${faNum(i + 1)}: ثبت نشده`}
+                    className="h-1 flex-1 rounded-full bg-stone-200"
+                  />
+                ) : (
+                  <span
+                    key={i}
+                    title={`سؤال ${faNum(i + 1)}: ${secFa(ms)} ثانیه`}
+                    className="flex-1 rounded-full bg-gradient-to-t from-violet-500 to-fuchsia-400"
+                    style={{ height: `${Math.max(6, Math.round((ms / span) * 44))}px` }}
+                  />
+                )
+              )}
+            </div>
+            <p className="text-center text-[11.5px] font-bold leading-6 text-stone-500">
+              میانگینِ فکر {secFa(st.avgMs)} ثانیه · سریع‌ترین {secFa(st.minMs)} ثانیه
+              {st.seen < st.total ? ` · ${faNum(st.total - st.seen)} سؤال بدونِ ثبت` : ""}
+            </p>
+          </div>
+        );
+      })()}
 
       <div className="flex flex-wrap items-center justify-center gap-3">
         {oppConnected ? (

@@ -593,7 +593,7 @@ body {
 .dark .shortcuts-dialog .text-stone-700,.dark .vocab-donut .text-stone-700,.dark .rush-hero .text-stone-700,
 .dark .rush-board .text-stone-700,.dark .skill-panel .text-stone-700,.dark .report-week .text-stone-700,
 .dark .report-digest .text-stone-700,.dark .report-skills .text-stone-700,.dark .daily-quests .text-stone-700,
-.dark .duel-card .text-stone-700,.dark .duel-hud .text-stone-700 { color: #d6d3d1; }
+.dark .duel-card .text-stone-700,.dark .duel-hud .text-stone-700,.dark .duel-think .text-stone-700 { color: #d6d3d1; }
 
 /* ---------------- vocab donut dark ---------------- */
 .dark .vocab-donut { background-color: #1c1917; }
@@ -601,7 +601,8 @@ body {
 .dark .vocab-donut .text-stone-500,.dark .rush-done .text-stone-500,.dark .srs-panel .text-stone-500,
 .dark .rush-board .text-stone-500,.dark .skill-panel .text-stone-500,.dark .report-week .text-stone-500,
 .dark .report-digest .text-stone-500,.dark .daily-quests .text-stone-500,.dark .duel-card .text-stone-500,
-.dark .gmetro-line .text-stone-500,.dark .gmetro-dialog .text-stone-500,.dark .glesson-head .text-stone-500 { color: #a8a29e; }
+.dark .gmetro-line .text-stone-500,.dark .gmetro-dialog .text-stone-500,.dark .glesson-head .text-stone-500,
+.dark .duel-think .text-stone-500 { color: #a8a29e; }
 /* ink tone text-stone-400 → #8a8580 — canonical group (Step 9 tranche-2; was 11 drifted per-panel copies) */
 .dark .vocab-donut .text-stone-400,.dark .rush-card .text-stone-400,.dark .srs-panel .text-stone-400,
 .dark .rush-board .text-stone-400,.dark .skill-panel .text-stone-400,.dark .report-best .text-stone-400,
@@ -1148,7 +1149,7 @@ html.user-reduce-motion .streak-flame {
    r90 lesson: consolidation must not blind the safety analyzer. */
 .dark .duel-hud .c-stone-60 { background-color: rgb(41 37 36 / 0.6); }
 .dark .duel-done .c-stone-70 { background-color: rgb(41 37 36 / 0.6); }
-.dark .duel-hud .bg-stone-200 { background-color: rgb(87 83 78 / 0.55); }
+.dark .duel-hud .bg-stone-200,.dark .duel-think .bg-stone-200 { background-color: rgb(87 83 78 / 0.55); }
 .dark .duel-hud .stroke-stone-100 { stroke: rgb(87 83 78 / 0.4); }
 
 .dark .duel-card[class*="border-fuchsia-200"] { border-color: rgb(162 28 175 / 0.5); }

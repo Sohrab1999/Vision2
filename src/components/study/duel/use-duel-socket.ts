@@ -388,6 +388,21 @@ export function useDuelSocket(): DuelMachine {
     onEnd: () => answer(-1),
   });
 
+  // Task 106 «زمانِ فکر» — وقتی سؤال واقعاً رندر شد (ورود به play و هر
+  // پیشرویِ qi) یک‌بار duel:seen می‌فرستیم؛ داور ساعتش را خودش می‌زند تا
+  // پنجرهٔ دیدن→پاسخ گزارشِ صادقِ سرور باشد. امتیاز همچنان فقط از
+  // qStartAtِ سرور محاسبه می‌شود — seen هیچ راهی به امتیاز ندارد.
+  // qi پس از پاک‌کردن بازخورد جلو می‌رود؛ یعنی seen دقیقاً وقتی سؤالِ
+  // بعدی نمایان شد شلیک می‌شود نه حینِ نمایشِ درست/غلط.
+  useEffect(() => {
+    if (phase !== "play") return;
+    try {
+      socketRef.current?.emit("duel:seen", { qi });
+    } catch {
+      /* ignore */
+    }
+  }, [phase, qi]);
+
   const rematch = useCallback(() => {
     const s = socketRef.current;
     if (!s || !oppConnected) return;

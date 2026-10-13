@@ -42,6 +42,12 @@ export interface EndPayload {
   players: PublicPlayer[];
   /** Task 94 — رسیدِ امضاشدهٔ داور (۳۰۰۳)؛ کلاینت آن را عیناً به /api/stats می‌رساند */
   receipt?: DuelReceipt;
+  /**
+   * Task 106 «زمانِ فکر» — نمونه‌های دیدن→پاسخ هر بازیکن بر سید (ms؛ ساعتِ
+   * خودِ سرور). نمایشی و بیرونِ رسیدِ امضاشده؛ سرویسِ قدیمی این فیلد را
+   * نمی‌فرستد → undefined (بلوکِ کارنامه غایب — صداقتِ زیرمجموعه).
+   */
+  think?: Record<string, (number | null)[]>;
 }
 
 /**
