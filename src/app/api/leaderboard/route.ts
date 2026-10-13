@@ -23,6 +23,8 @@ export interface DuelerRow {
   wins: number;
   losses: number;
   ties: number;
+  /** Task 95 — wins carrying the judge's HMAC receipt (subset of wins). */
+  verifiedWins: number;
   bestScore: number;
   avgPercent: number;
   winRate: number;
@@ -40,7 +42,7 @@ export const GET = withApi({ key: "lb-get", limit: { max: 240 } }, async ({ json
   // the leaderboard never needs a second request to switch dimensions.
   const duelRows = await db.quizAttempt.findMany({
     where: { category: "duel" },
-    select: { userId: true, outcome: true, score: true, percent: true },
+    select: { userId: true, outcome: true, score: true, percent: true, receiptSig: true },
   });
   const duelStandings = aggregateDuelStandings(duelRows);
   const duelsTotal = duelMatchCount(duelRows);
@@ -84,6 +86,7 @@ export const GET = withApi({ key: "lb-get", limit: { max: 240 } }, async ({ json
         wins: d.wins,
         losses: d.losses,
         ties: d.ties,
+        verifiedWins: d.verifiedWins,
         bestScore: d.bestScore,
         avgPercent: d.avgPercent,
         winRate: d.winRate,

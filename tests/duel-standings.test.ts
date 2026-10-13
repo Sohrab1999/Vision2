@@ -139,3 +139,39 @@ describe("duelMatchCount", () => {
     expect(duelMatchCount([])).toBe(0);
   });
 });
+
+// ------------------------------------------------------------------
+// Task 95 «داورگواه» — verifiedWins: the judge-attested subset of wins.
+// A win counts as verified ONLY when the row carries the :3003 receipt sig
+// (Task 94). Legacy rows (pre-Task-94, receiptSig null) stay unverified;
+// losses/ties never contribute regardless of a sig.
+// ------------------------------------------------------------------
+describe("verifiedWins — داورگواه (Task 95)", () => {
+  it("counts only wins with a non-empty receiptSig; subset ≤ wins", () => {
+    const s = aggregateDuelStandings([
+      row({ userId: "a", outcome: "win", receiptSig: "aa".repeat(32) }),
+      row({ userId: "a", outcome: "win", receiptSig: "bb".repeat(32) }),
+      row({ userId: "a", outcome: "win" }), // legacy — unverified win
+      row({ userId: "a", outcome: "loss", receiptSig: "cc".repeat(32) }), // losses never verify
+      row({ userId: "a", outcome: "tie", receiptSig: "dd".repeat(32) }), // ties never verify
+    ]);
+    const a = s.find((x) => x.userId === "a")!;
+    expect(a.wins).toBe(3);
+    expect(a.verifiedWins).toBe(2);
+  });
+
+  it("empty-string sig is not verification; all-legacy user stays at zero", () => {
+    const s = aggregateDuelStandings([
+      row({ userId: "b", outcome: "win", receiptSig: "" }),
+      row({ userId: "b", outcome: "win", receiptSig: null }),
+      row({ userId: "b", outcome: "win" }),
+    ]);
+    expect(s[0].wins).toBe(3);
+    expect(s[0].verifiedWins).toBe(0);
+  });
+
+  it("verifiedWins is always present (zero) even when no sig field is sent", () => {
+    const s = aggregateDuelStandings([row({ userId: "c", outcome: "win" })]);
+    expect(s[0].verifiedWins).toBe(0);
+  });
+});

@@ -26,6 +26,8 @@ interface DuelerRow {
   wins: number;
   losses: number;
   ties: number;
+  /** Task 95 — wins carrying the judge's HMAC receipt (subset of wins). */
+  verifiedWins: number;
   bestScore: number;
   avgPercent: number;
   winRate: number;
@@ -100,6 +102,17 @@ export default function Leaderboard() {
   const recordBadge = (d: DuelerRow) => (
     <span className="flex shrink-0 items-center gap-1 font-mono text-[11.5px] font-bold" dir="ltr">
       <span className="rounded-md bg-emerald-100 px-1.5 py-0.5 text-emerald-700">{faNum(d.wins)}W</span>
+      {/* Task 95 — judge-attested wins (Task 94 receipts); honest subset display:
+          shows HOW MANY of the wins carry the :3003 judge's HMAC receipt. */}
+      {d.verifiedWins > 0 && (
+        <span
+          title={`${faNum(d.verifiedWins)} بردِ داورگواه — با رسیدِ امضاشدهٔ سرور`}
+          className="flex items-center gap-0.5 rounded-md border border-emerald-200 bg-emerald-50/60 px-1 py-0.5 text-emerald-700"
+        >
+          <ShieldCheck size={11} aria-hidden />
+          <span className="text-[10.5px] font-black">{faNum(d.verifiedWins)}</span>
+        </span>
+      )}
       <span className="rounded-md bg-rose-100 px-1.5 py-0.5 text-rose-700">{faNum(d.losses)}L</span>
       {d.ties > 0 && (
         <span className="rounded-md bg-stone-100 px-1.5 py-0.5 text-stone-600">{faNum(d.ties)}T</span>
@@ -123,8 +136,17 @@ export default function Leaderboard() {
         </h2>
         <span className="flex items-center gap-1.5 text-xs text-stone-500">
           <ShieldCheck size={13} className="text-emerald-600" aria-hidden />
-          <span className="hidden sm:inline">نمرات تأییدشدهٔ سمت سرور</span>
-          <span className="sm:hidden">تأییدشده</span>
+          {tab === "duels" ? (
+            <>
+              <span className="hidden sm:inline">بردها با رسیدِ امضاشدهٔ داور تأیید می‌شوند</span>
+              <span className="sm:hidden">داورگواه</span>
+            </>
+          ) : (
+            <>
+              <span className="hidden sm:inline">نمرات تأییدشدهٔ سمت سرور</span>
+              <span className="sm:hidden">تأییدشده</span>
+            </>
+          )}
         </span>
       </div>
 
@@ -218,6 +240,15 @@ export default function Leaderboard() {
             metric={(row) => (
               <>
                 {faNum(row.wins)} برد از {faNum(row.duels)} نبرد
+                {row.verifiedWins > 0 && (
+                  <ShieldCheck
+                    size={12}
+                    aria-label="داورگواه"
+                    // 700 نه ۶۰۰ — قاعدهٔ تاریکِ سراسریِ 700 (#6ee7b7) را می‌گیرد و
+                    // با جوهرِ چیپ‌های ردیف هم‌خانواده می‌شود (قاعدهٔ 600 اسکوپ‌دار است)
+                    className="mr-1 inline text-emerald-700"
+                  />
+                )}
               </>
             )}
           />

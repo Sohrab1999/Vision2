@@ -453,7 +453,7 @@ describe("رانِ ترکیبی — هفتهٔ دیکتهٔ پیوسته (Task 8
     expect(byId("dictation-run").title).toBe("هفتهٔ دیکتهٔ پیوسته");
     expect(byId("dictation-run").tier).toBe("gold");
     expect(byId("dictation-run").icon).toBe("SpellCheck2");
-    expect(BADGES.length).toBe(41);
+    expect(BADGES.length).toBe(42);
   });
 
   it("قراردادِ شمارِ روز ≠ جمع: دو دیکته در یک روز هنوز یک روزِ دیکته‌دار است", () => {
@@ -748,7 +748,7 @@ describe("رانِ مرور — هفتهٔ مرور (Task 88)", () => {
     expect(byId("review-run").title).toBe("هفتهٔ مرور");
     expect(byId("review-run").tier).toBe("silver");
     expect(byId("review-run").icon).toBe("History");
-    expect(BADGES.length).toBe(41);
+    expect(BADGES.length).toBe(42);
     const one = base({ dayHistory: { [w(2)]: dh({ day: w(2), reviews: 1 }) } });
     expect(byId("review-run").progress!(one)).toBe("۱ از ۷ روزِ این هفته");
   });
@@ -839,7 +839,7 @@ describe("رانِ سه‌گانه — هفتهٔ سه‌گانه (Task 89)", ()
     expect(byId("triple-run").title).toBe("هفتهٔ سه‌گانه");
     expect(byId("triple-run").tier).toBe("gold");
     expect(byId("triple-run").icon).toBe("Crown");
-    expect(BADGES.length).toBe(41);
+    expect(BADGES.length).toBe(42);
     const mixed = base({ dayHistory: { ...tripleWeek(), [w(3)]: dh({ day: w(3), reviews: 1, quizzes: 1, dictation: 0 }) } });
     // دیکته ۶ روز / آزمون ۷ / مرور ۷ — ضعیف‌ترین حلقه پیشرفت را می‌گوید
     expect(byId("triple-run").progress!(mixed)).toBe("۶ از ۷ روزِ سه‌گانهٔ این هفته");
@@ -937,7 +937,7 @@ describe("ماراتن — رانِ دوهفته‌ای (Task 90)", () => {
     expect(byId("marathon-run").title).toBe("ماراتنِ دوهفته‌ای");
     expect(byId("marathon-run").tier).toBe("gold");
     expect(byId("marathon-run").icon).toBe("Trophy");
-    expect(BADGES.length).toBe(41);
+    expect(BADGES.length).toBe(42);
     // دیکته ۱۳ روز / آزمون ۱۴ / مرور ۱۴ — ضعیف‌ترین حلقه پیشرفت را می‌گوید
     const thirteen = base({
       dayHistory: {
@@ -1052,7 +1052,7 @@ describe("خانوادهٔ حضور — ماهِ حاضر و ماهِ درخشا
     expect(byId("presence-month-full").title).toBe("ماهِ درخشان");
     expect(byId("presence-month-full").tier).toBe("gold");
     expect(byId("presence-month-full").icon).toBe("Sparkles");
-    expect(BADGES.length).toBe(41);
+    expect(BADGES.length).toBe(42);
     const twentyFour = base({ dayHistory: presenceDays([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]) });
     expect(twentyFour.activeDays35).toBe(25);
     expect(byId("presence-month").progress!(twentyFour)).toBe("۲۵ از ۲۵ روزِ فعال");
@@ -1127,6 +1127,81 @@ describe("خانوادهٔ حضور — ماهِ حاضر و ماهِ درخشا
   });
 });
 
+describe("ماهِ بی‌وقفه — پلهٔ نهاییِ خانوادهٔ حضور (Task 95)", () => {
+  const w = (n: number) => daysAgoKey(n);
+  const dh = (over: Record<string, unknown>) => ({
+    day: "",
+    reviews: 0,
+    quizzes: 0,
+    words: 0,
+    dictation: 0,
+    rush: 0,
+    ...over,
+  });
+  const presenceDays = (ns: number[]) =>
+    Object.fromEntries(ns.map((n) => [w(n), dh({ day: w(n), words: 1 })]));
+  const all35 = base({ dayHistory: presenceDays([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34]) });
+
+  it("wording و تیر و آیکن — طلایی/Gem؛ رجیستری ۴۲ شد؛ پیشرفتِ سقف‌خورده", () => {
+    expect(byId("presence-month-perfect").title).toBe("ماهِ بی‌وقفه");
+    expect(byId("presence-month-perfect").tier).toBe("gold");
+    expect(byId("presence-month-perfect").icon).toBe("Gem");
+    expect(BADGES.length).toBe(42);
+    const thirtyFour = base({ dayHistory: presenceDays([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33]) });
+    expect(thirtyFour.activeDays35).toBe(34);
+    expect(byId("presence-month-perfect").progress!(thirtyFour)).toBe("۳۴ از ۳۵ روزِ فعال");
+  });
+
+  it("نردبانِ زیرمجموعه: ۳۵ روز ⇒ هر سه پلهٔ حضور بازند (۳۵⇒۳۰⇒۲۵)", () => {
+    expect(all35.activeDays35).toBe(35);
+    expect(ids(all35)).toContain("presence-month-perfect");
+    expect(ids(all35)).toContain("presence-month-full");
+    expect(ids(all35)).toContain("presence-month");
+  });
+
+  it("یک غیبت حتی در روزِ دورِ حافظه پله را می‌شکند (مرزِ w(34)/w(35))", () => {
+    // ۳۴ روزِ حاضر + یک سلولِ بیرونِ حافظه (w(35)) که نباید شمرده شود
+    const withOutside = base({
+      dayHistory: {
+        ...presenceDays([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34]),
+        [w(35)]: dh({ day: w(35), words: 1 }),
+      },
+    });
+    expect(withOutside.activeDays35).toBe(34);
+    expect(ids(withOutside)).not.toContain("presence-month-perfect");
+    // یک غیبتِ داخل پنجره (روزِ 20 غایب)
+    const gap = base({ dayHistory: presenceDays([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34]) });
+    expect(gap.activeDays35).toBe(34);
+    expect(ids(gap)).not.toContain("presence-month-perfect");
+    expect(ids(gap)).toContain("presence-month"); // ۲۵ِ پایین‌تر دست‌نخورده
+  });
+
+  it("fallbackِ امروز + روز≠جمع + گاردِ خراب برای پلهٔ ۳۵ هم برقرار است", () => {
+    // امروز در dayHistory نیست ولی buildEvalInput آن از dayStat fallback می‌کند (قرارداد ۹۲)
+    const todayFallback = base({
+      dayHistory: presenceDays([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34]),
+      dayStat: { day: w(0), reviews: 0, quizzes: 0, words: 3, dictation: 0, rush: 0 },
+    });
+    expect(todayFallback.activeDays35).toBe(35);
+    expect(ids(todayFallback)).toContain("presence-month-perfect");
+    // پنج فعالیت در یک روز = یک روزِ حضور (نه پنج)
+    const mega = base({ dayHistory: { [w(0)]: dh({ day: w(0), reviews: 4, quizzes: 3, words: 2, dictation: 2, rush: 1 }) } });
+    expect(mega.activeDays35).toBe(1);
+    expect(ids(mega)).not.toContain("presence-month-perfect");
+    // سلولِ خراب هیچ‌گاه روز نمی‌شود
+    const corrupt = buildEvalInput(
+      baseRaw({
+        dayHistory: {
+          [w(1)]: "junk",
+          [w(2)]: dh({ day: w(2), reviews: Number.NaN, words: Number.NaN }),
+        },
+      }) as unknown as BuildArgs
+    );
+    expect(corrupt.activeDays35).toBe(0);
+    expect(ids(corrupt)).not.toContain("presence-month-perfect");
+  });
+});
+
 describe("هفتهٔ پنج‌گانه — خانوادهٔ تنوع (Task 93)", () => {
   const w = (n: number) => daysAgoKey(n);
   const dh = (over: Record<string, unknown>) => ({
@@ -1139,11 +1214,11 @@ describe("هفتهٔ پنج‌گانه — خانوادهٔ تنوع (Task 93)",
     ...over,
   });
 
-  it("wording و تیر و آیکن — طلایی با Puzzle؛ رجیستری ۴۱ شد؛ پیشرفتِ شمارِ مهارت‌ها", () => {
+  it("wording و تیر و آیکن — طلایی با Puzzle؛ رجیستری ۴۲ شد؛ پیشرفتِ شمارِ مهارت‌ها", () => {
     expect(byId("five-skill-week").title).toBe("هفتهٔ پنج‌گانه");
     expect(byId("five-skill-week").tier).toBe("gold");
     expect(byId("five-skill-week").icon).toBe("Puzzle");
-    expect(BADGES.length).toBe(41);
+    expect(BADGES.length).toBe(42);
     // سه مهارت حاضر → «۳ از ۵ مهارت»
     const three = base({
       dayHistory: {
