@@ -355,7 +355,7 @@ export default function RushView() {
           <div className="mb-6 flex flex-wrap justify-center gap-2 text-[12px] font-bold">
             <span className="rounded-full c-wash-emerald px-3 py-1 text-emerald-700">درست: {faNum(correct)}</span>
             <span className="rounded-full c-wash-rose px-3 py-1 text-rose-600">کل پاسخ‌ها: {faNum(answered)}</span>
-            <span className="rounded-full bg-sky-50 px-3 py-1 text-sky-700">دقت: {faNum(accuracy)}٪</span>
+            <span className="rounded-full c-wash-sky px-3 py-1 text-sky-700">دقت: {faNum(accuracy)}٪</span>
             <span className="rounded-full c-wash-amber c-ink-amber px-3 py-1">بیشترین کمبو: {faNum(maxCombo)}×</span>
             <span className="rounded-full border border-stone-200 bg-white px-3 py-1 text-stone-600">رکورد: {faNum(rushBest)}</span>
           </div>

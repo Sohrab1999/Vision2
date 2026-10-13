@@ -166,10 +166,12 @@
      scoped rules stay and win by specificity — as of tranche-4 phase 8 the
      srs-panel/rush-done/vocab-donut WASH deviants (the panel-grade alpha
      step) retired onto the c-wash-* classes; as of phase 9 the amber ink
-     band (text-amber-700 #fcd34d) retired onto c-ink-amber; the remaining
-     documented deviants are badge-popover emerald-50 (0.4), report-month
-     teal-50 (0.6), rush-done sky-50 (0.5) and the ink rules
-     (text-emerald-600 per-family). */
+     band (text-amber-700 #fcd34d) retired onto c-ink-amber; as of phase 10
+     the last three plain bg-fam-50 deviants retired too (badge-popover
+     emerald-50 → c-wash-emerald-soft 0.4, report-month teal-50 →
+     c-wash-teal-deep 0.6, rush-done sky-50 → c-wash-sky 0.5) — zero plain
+     bg-<fam>-50 scoped rules remain; the surviving ink deviants are the
+     per-family text-emerald-600 rules. */
   --color-amber-50: rgba(69, 48, 12, 0.35);
   --color-emerald-50: rgba(6, 55, 40, 0.35);
   /* r114: fuchsia-50 joins the kernel — its solid consumers (duel-code waiting
@@ -621,7 +623,9 @@ body {
 .dark .badge-popover,.dark .shortcuts-dialog,.dark .command-palette { background-color: #1c1917; border-color: #37312b; }
 .dark .command-palette input::placeholder { color: #8a8580; }
 .dark .badge-popover .bg-stone-50 { background-color: rgba(40, 36, 31, 0.7); }
-.dark .badge-popover .bg-emerald-50 { background-color: rgba(6, 55, 40, 0.4); }
+/* the congrats-box emerald rule retired onto c-wash-emerald-soft (tranche 4
+   phase 10, task 130) — softer than the panel grade (0.4 vs 0.5): it sits on
+   the popover's own opaque dark surface, one step above the kernel 0.35. */
 .badge-popover { animation: pop-fade 0.18s ease-out; }
 @keyframes pop-fade {
   from { opacity: 0; transform: translateY(6px) scale(0.97); }
@@ -747,10 +751,10 @@ body {
 .dark .rush-done .border-stone-200 { border-color: #44403c; }
 .dark .rush-done .border-stone-300 { border-color: #57534e; }
 /* tranche-4 phase 8: the emerald/rose/amber washes retired onto c-wash-*
-   (same values, painted by the class now); the sky-50 deviant (0.5 vs kernel
-   0.45) keeps its scoped rule — single consumer, not worth a family slot.
-   The panel ink (text-amber-700 #fcd34d) retired onto c-ink-amber (phase 9). */
-.dark .rush-done .bg-sky-50 { background-color: rgba(8, 47, 60, 0.5); }
+   (same values, painted by the class now); the panel ink (text-amber-700
+   #fcd34d) retired onto c-ink-amber (phase 9); the sky-50 accuracy/hint
+   pills retired onto c-wash-sky in phase 10 (task 130) — the family slot
+   r125 declined exists now that the last plain deviant joined. */
 
 /* rush play card */
 .dark [data-rush-option] { color-scheme: dark; }
@@ -937,7 +941,9 @@ body {
 .dark .report-month { background-color: rgb(28 25 23 / 0.6); border-color: #37312b; }
 .dark .report-month .text-stone-700 { color: #d6d3cf; }
 .dark .report-month .text-stone-400 { color: #716b63; }
-.dark .report-month .bg-teal-50 { background-color: rgb(6 55 50 / 0.6); }
+/* the «جمع کل» teal chip retired onto c-wash-teal-deep (tranche 4 phase 10,
+   task 130) — 0.6, one step DEEPER than the panel grade (0.5): it sits on
+   the month block's own translucent surface. */
 .dark .report-month [class*="bg-stone-200"] { background-color: rgb(55 49 43 / 0.7); }
 
 /* ------------------------------------------------------------------ */
@@ -1690,8 +1696,9 @@ html.user-reduce-motion .streak-flame {
      • hover:bg-<fam>-50 variants everywhere — kernel-driven, stay raw.
    Raw bg-{rose,amber,emerald,teal}-50 must NEVER reappear in the four
    migrated files beyond the documented kernel consumers (css-hygiene guard
-   locks the matrix). Next phases: ink families (c-ink-*), the remaining
-   deviant consolidation, per-feature CSS extraction (§8.3). */
+   locks the matrix). Next phases: ink families (c-ink-*) — closed in
+   phase 9 (task 127); the remaining deviant consolidation — closed in
+   phase 10 (task 130); per-feature CSS extraction (§8.3) stays open. */
 .c-wash-rose {
   background-color: var(--color-rose-50);
 }
@@ -1756,3 +1763,60 @@ html.user-reduce-motion .streak-flame {
 .dark .c-ink-amber {
   color: #fcd34d;
 }
+
+/* ── Task 130 — tranche 4 phase 10: the DEVIANT CONSOLIDATION ─────────────
+   The last three plain scoped bg-fam-50 rules retire onto wash classes, each
+   keeping its byte-exact dark literal — after this phase the codebase has
+   ZERO plain bg-<fam>-50 dark retargets: every dark tinted wash is either
+   the kernel token (family base alpha), a c-wash-* panel-grade class, or
+   one of these three named value-tiers. Mechanism = c-wash verbatim (r125):
+   the light declaration IS the compiled utility's own (verbatim
+   var(--color-<fam>-50), light parity byte-identical by construction); the
+   .dark twin keeps the retired scoped rule's literal. Unlayered author
+   rules — walk-verified zero state utilities on every migrated site.
+   CONSUMER MATRIX (walk-verified, r130):
+     c-wash-emerald-soft — badges.tsx «✓ آفرین! این نشان را باز کردی»
+                   congrats box, the ONLY bg-emerald-50 inside .badge-popover
+                   (was .dark .badge-popover .bg-emerald-50, 0.4 — sits on
+                   the popover's own opaque #1c1917 surface, one step above
+                   the kernel 0.35, one below the panel grade 0.5)
+     c-wash-sky    — rush-view.tsx «دقت» pill + spell-rush-view.tsx
+                   «با راهنما» pill, both inside .rush-done (was
+                   .dark .rush-done .bg-sky-50, 0.5 — the family slot r125
+                   declined: kernel sky is 0.45, this is its panel grade)
+     c-wash-teal-deep — report-card.tsx «جمع کل» pill inside .report-month
+                   (was .dark .report-month .bg-teal-50, 0.6 — one step
+                   DEEPER than the panel grade 0.5: it sits on the month
+                   block's own translucent surface)
+   EXCLUSIONS (all documented, stay raw):
+     • spell-rush-view start-screen record chip (bg-sky-50, r125 kernel
+       consumer) + in-question hint chip (bg-sky-50 inside the play card) —
+       the scoped rule never matched them (outside .rush-done); kernel 0.45.
+     • hover:bg-sky-50 state utilities (dictation buttons) — never matched
+       by a plain rule; keep the utility's own value.
+     • badge-popover .bg-stone-50 (0.7 opaque) — stone family, not a wash.
+     • print: the paper block patches stone/emerald TOKENS only; none of the
+       three retired rules had a print override — byte-identical behavior.
+   Raw bg-{emerald,sky,teal}-50 must NEVER reappear on badges.tsx /
+   report-card.tsx (teal sites), rush-view.tsx (sky sites) and must stay at
+   exactly TWO (start chip + hint chip) in spell-rush-view (css-hygiene
+   guard locks the matrix). */
+.c-wash-emerald-soft {
+  background-color: var(--color-emerald-50);
+}
+.dark .c-wash-emerald-soft {
+  background-color: rgba(6, 55, 40, 0.4);
+}
+.c-wash-sky {
+  background-color: var(--color-sky-50);
+}
+.dark .c-wash-sky {
+  background-color: rgba(8, 47, 60, 0.5);
+}
+.c-wash-teal-deep {
+  background-color: var(--color-teal-50);
+}
+.dark .c-wash-teal-deep {
+  background-color: rgb(6 55 50 / 0.6);
+}
+

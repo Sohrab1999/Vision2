@@ -1050,8 +1050,9 @@ describe("globals.css -100 wash kernel (r115)", () => {
 });
 
 describe("globals.css semantic wash layer (Step 9 tranche 4 phase 8 — Task 125)", () => {
-  const css125 = readFileSync(cssPath, "utf8");
-  const lines125 = css125.split("\n");
+  // comment-stripped: guards read CODE, never docs (phase-10 doc names the
+  // retired selectors as history — that must not look like a live rule)
+  const lines125 = readFileSync(cssPath, "utf8").replace(/\/\*[\s\S]*?\*\//g, "").split("\n");
 
   it("defines the four c-wash washes exactly once, light var() + dark panel-grade literal", () => {
     const defs: Record<string, [string, string]> = {
@@ -1122,10 +1123,74 @@ describe("globals.css semantic wash layer (Step 9 tranche 4 phase 8 — Task 125
     expect(plainWash(spell).length, "spell-rush keeps the feedback pills kernel consumers only").toBe(2);
   });
 
-  it("keeps the documented deviant wash rules alive (0.4/0.5/0.6 value deviations)", () => {
+  it("retires the three plain deviant wash rules (phase 10 — task 130 moved them onto classes)", () => {
     for (const sel of [".badge-popover .bg-emerald-50", ".report-month .bg-teal-50", ".rush-done .bg-sky-50"]) {
-      expect(lines125.filter((l) => l.includes(sel)), `documented deviant must survive: ${sel}`).toHaveLength(1);
+      expect(lines125.filter((l) => l.includes(sel)), `plain deviant must stay retired: ${sel}`).toEqual([]);
     }
+  });
+});
+
+describe("globals.css deviant consolidation (Step 9 tranche 4 phase 10 — Task 130)", () => {
+  // comment-stripped like the phase-8 band: the doc block names the retired
+  // selectors and starts continuation lines with `.dark` — history is not law
+  const lines130 = readFileSync(cssPath, "utf8").replace(/\/\*[\s\S]*?\*\//g, "").split("\n");
+
+  it("defines the three deviant washes exactly once, light var() + retired dark literal", () => {
+    const defs: Record<string, [string, string]> = {
+      "c-wash-emerald-soft": ["background-color: var(--color-emerald-50);", "background-color: rgba(6, 55, 40, 0.4);"],
+      "c-wash-sky": ["background-color: var(--color-sky-50);", "background-color: rgba(8, 47, 60, 0.5);"],
+      "c-wash-teal-deep": ["background-color: var(--color-teal-50);", "background-color: rgb(6 55 50 / 0.6);"],
+    };
+    for (const [cls, [light, dark]] of Object.entries(defs)) {
+      expect(lines130.filter((l) => l.trim() === `.${cls} {`), `${cls} light base once`).toHaveLength(1);
+      expect(lines130.filter((l) => l.trim() === `.dark .${cls} {`), `${cls} dark twin once`).toHaveLength(1);
+      const li = lines130.findIndex((l) => l.trim() === `.${cls} {`);
+      expect(lines130[li + 1].trim(), `${cls} light declaration byte-exact`).toBe(light);
+      const di = lines130.findIndex((l) => l.trim() === `.dark .${cls} {`);
+      expect(lines130[di + 1].trim(), `${cls} dark declaration byte-exact (retired scoped literal)`).toBe(dark);
+    }
+  });
+
+  it("leaves the phase-8 panel-grade washes untouched (emerald stays 0.5, teal stays 0.5)", () => {
+    expect(lines130.filter((l) => l.trim() === ".dark .c-wash-emerald {"), "panel-grade emerald once").toHaveLength(1);
+    const ei = lines130.findIndex((l) => l.trim() === ".dark .c-wash-emerald {");
+    expect(lines130[ei + 1].trim()).toBe("background-color: rgba(6, 55, 40, 0.5);");
+    expect(lines130.filter((l) => l.trim() === ".dark .c-wash-teal {"), "panel-grade teal once").toHaveLength(1);
+    const ti = lines130.findIndex((l) => l.trim() === ".dark .c-wash-teal {");
+    expect(lines130[ti + 1].trim()).toBe("background-color: rgb(6 55 50 / 0.5);");
+  });
+
+  it("zero plain bg-fam-50 dark retargets remain in the whole stylesheet", () => {
+    // plain = a `.bg-<fam>-50` class selector in a .dark rule; alpha variants
+    // (bg-emerald-50\/40) excluded by the escape lookahead, hover state
+    // utilities (hover\:bg-sky-50) never carry a `.bg-` prefix at all.
+    const plainRetargets = lines130.filter(
+      (l) => l.trim().startsWith(".dark") && /\.bg-(emerald|sky|teal|rose|amber)-50(?![0-9/\\])/.test(l)
+    );
+    expect(plainRetargets, "no plain bg-<fam>-50 scoped rule may reappear").toEqual([]);
+  });
+
+  it("keeps the migrated files on the semantic classes (raw deviant matrix, r130 consumer walk)", () => {
+    const plain = (text: string, fam: string) =>
+      text.split("\n").filter((l) => new RegExp(`(^|[^:\\-a-z])bg-${fam}-50(?![0-9/])`).test(l));
+    const carry = (text: string, cls: string) => text.split(cls).length - 1;
+    // badges.tsx: the congrats box was the ONLY bg-emerald-50; fully migrated
+    const badges = readFileSync(resolve(process.cwd(), "src/components/study/practice/badges.tsx"), "utf8");
+    expect(plain(badges, "emerald").length, "badges drops raw bg-emerald-50").toBe(0);
+    expect(carry(badges, "c-wash-emerald-soft"), "badges carries c-wash-emerald-soft").toBe(1);
+    // rush-view: the accuracy pill was the only plain bg-sky-50; start chip is amber (phase-8 matrix)
+    const rush = readFileSync(resolve(process.cwd(), "src/components/study/duel/rush-view.tsx"), "utf8");
+    expect(plain(rush, "sky").length, "rush-view drops raw bg-sky-50").toBe(0);
+    expect(carry(rush, "c-wash-sky"), "rush-view carries c-wash-sky").toBe(1);
+    // spell-rush: done pill migrated; exactly TWO documented kernel consumers stay raw
+    //   (start-screen record chip + in-question hint chip — outside .rush-done)
+    const spell = readFileSync(resolve(process.cwd(), "src/components/study/duel/spell-rush-view.tsx"), "utf8");
+    expect(plain(spell, "sky").length, "spell-rush keeps start+hint kernel consumers only").toBe(2);
+    expect(carry(spell, "c-wash-sky"), "spell-rush carries c-wash-sky").toBe(1);
+    // report-card: the «جمع کل» pill was the only plain bg-teal-50; fully migrated
+    const report = readFileSync(resolve(process.cwd(), "src/components/study/reports/report-card.tsx"), "utf8");
+    expect(plain(report, "teal").length, "report-card drops raw bg-teal-50").toBe(0);
+    expect(carry(report, "c-wash-teal-deep"), "report-card carries c-wash-teal-deep").toBe(1);
   });
 });
 

@@ -234,7 +234,7 @@ export default function ReportCard({ open, onClose }: { open: boolean; onClose: 
                       <TrendingUp size={13} className="text-teal-600" />
                       فعالیت ۳۰ روز اخیر (به تفکیک هفته)
                     </div>
-                    <span className="rounded-full bg-teal-50 px-2 py-0.5 text-[10px] font-black text-teal-700">
+                    <span className="rounded-full c-wash-teal-deep px-2 py-0.5 text-[10px] font-black text-teal-700">
                       جمع کل: {faNum(monthBuckets.reduce((s, b) => s + b.total, 0))}
                     </span>
                   </div>

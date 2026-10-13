@@ -316,7 +316,7 @@ export default function Badges() {
                 </div>
                 <p className="mb-2 text-[12px] leading-6 text-stone-600">{b.desc}</p>
                 {isUnlocked ? (
-                  <div className="rounded-xl bg-emerald-50 px-3 py-2 text-[11.5px] font-bold text-emerald-700">
+                  <div className="rounded-xl c-wash-emerald-soft px-3 py-2 text-[11.5px] font-bold text-emerald-700">
                     ✓ آفرین! این نشان را باز کردی.
                   </div>
                 ) : hint ? (
