@@ -63,3 +63,66 @@ describe("weekGoalMeta — قراردادِ حلقهٔ هدفِ هفتگی (Task
     expect(WEEK_GOAL_DAYS).toBe(7);
   });
 });
+
+// ------------------------------------------------------------------
+// Task 129 «چیپِ هفته در هدر» — قراردادِ خالصِ weekWindowGoalDays.
+// قفل‌ها:
+//   ⑤ توافقِ شبکه‌ای با computeWeeklyDigest().thisWeek.goalDays — چیپِ
+//      هدر و حلقهٔ هفته‌نامه هرگز از هم دور نمی‌شوند (همان الگویِ
+//      توافقِ ۱۲۸ بین PNG و زنده، این‌بار بین هدر و دایجست)
+//   ⑥ مرزِ پنجره: امروز−۶ شمرده می‌شود، امروز−۷ نه، آینده هرگز
+//   ⑦ گیرِ صادق: آرایهٔ نبود/کج → ۰، عضوِ غیررشته نادیده
+// ------------------------------------------------------------------
+
+import { weekWindowGoalDays } from "@/lib/week-goal";
+import { computeWeeklyDigest, dayKeyBefore } from "@/lib/weekly-digest";
+
+describe("weekWindowGoalDays — شمارندهٔ پنجرهٔ چیپِ هفته (Task 129)", () => {
+  const T = "2026-10-14";
+
+  it("توافقِ شبکه‌ای با thisWeek.goalDays دایجست — هدر و هفته‌نامه یک خوان دارند", () => {
+    // شبکه‌ای از پراکندگی‌هایِ واقعی: مرزها، بیرونِ پنجره، آینده، آلودهٔ کج
+    const grids: (string[] | undefined)[] = [
+      undefined,
+      [],
+      [T],
+      [dayKeyBefore(T, 6)],
+      [dayKeyBefore(T, 7)],
+      [dayKeyBefore(T, 3), dayKeyBefore(T, 5)],
+      [dayKeyBefore(T, 6), dayKeyBefore(T, 5), dayKeyBefore(T, 4), dayKeyBefore(T, 3), dayKeyBefore(T, 2), dayKeyBefore(T, 1), T],
+      [dayKeyBefore(T, 8), dayKeyBefore(T, 9), T], // بیرونِ پنجره + امروز
+      [T, dayKeyBefore(T, -2)], // آیندهٔ کج
+      [dayKeyBefore(T, 13), dayKeyBefore(T, 10)], // هفتهٔ پیشِ کامل
+      [T, T, T, dayKeyBefore(T, 1)], // دوباره‌ها — دایجست با Set می‌شمارد
+      ["garbage", "2026-13-99"], // اعضایِ کج
+    ];
+    for (const gm of grids) {
+      const digest = computeWeeklyDigest({ goalMetDays: gm }, T);
+      expect(weekWindowGoalDays(gm, T), `grid ${JSON.stringify(gm)}`).toBe(digest.thisWeek.goalDays);
+    }
+  });
+
+  it("مرزِ پنجره: امروز−۶ داخل، امروز−۷ بیرون، آینده هرگز", () => {
+    expect(weekWindowGoalDays([dayKeyBefore(T, 6)], T)).toBe(1);
+    expect(weekWindowGoalDays([dayKeyBefore(T, 7)], T)).toBe(0);
+    expect(weekWindowGoalDays([dayKeyBefore(T, 6), dayKeyBefore(T, 7)], T)).toBe(1);
+    expect(weekWindowGoalDays([dayKeyBefore(T, -1)], T)).toBe(0); // فردا
+    expect(weekWindowGoalDays([T], T)).toBe(1); // خودِ امروز
+  });
+
+  it("گیرِ صادق: undefined/کج → ۰؛ عضوِ غیررشته نادیده؛ دوباره‌ها یک‌بار (Set — هم‌قراردادِ دایجست)", () => {
+    expect(weekWindowGoalDays(undefined, T)).toBe(0);
+    expect(weekWindowGoalDays([], T)).toBe(0);
+    expect(weekWindowGoalDays([T, T, dayKeyBefore(T, 1)], T)).toBe(2); // دوباره‌ها یک‌بار
+    const mixed = [T, 123, null, undefined, {}, dayKeyBefore(T, 1)] as unknown as string[];
+    expect(weekWindowGoalDays(mixed, T)).toBe(2); // فقط دو رشتهٔ معتبر
+  });
+
+  it("ترکیبِ واقعی: خوانِ چیپ → weekGoalMeta، عنوانِ همان زبانِ حلقهٔ هفته‌نامه", () => {
+    const gm = [dayKeyBefore(T, 1), dayKeyBefore(T, 3), dayKeyBefore(T, 6)];
+    const meta = weekGoalMeta(weekWindowGoalDays(gm, T), "این هفته");
+    expect(meta.pct).toBe(43);
+    expect(meta.label).toBe("۳ از ۷ روزِ هدف");
+    expect(meta.title).toBe("۳ از ۷ روزِ هدف — این هفته: ۴ روزِ هدفِ دیگر تا حلقهٔ کامل");
+  });
+});

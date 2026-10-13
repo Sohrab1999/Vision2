@@ -53,6 +53,7 @@ export const EVENT_NAMES = [
   "srs_due_review", // jumped into smart review from the due-words preview
   "srs_due_pill", // jumped into smart review from the header due pill (Task 73)
   "goal_chip", // tapped the daily-goal progress chip in the header (Task 76)
+  "week_chip", // tapped the weekly-goal ring chip in the header (Task 129)
   "freeze_badge", // tapped the streak-freeze badge in the header (Task 77)
   "print_report", // official printable progress report
 ] as const;
@@ -108,6 +109,7 @@ export const EVENT_LABELS_FA: Record<EventName, string> = {
   srs_due_review: "مرور سررسیدها از داشبورد",
   srs_due_pill: "مرور سررسیدها از هدر",
   goal_chip: "پیگیری هدف روزانه از هدر",
+  week_chip: "پیگیری هدف هفتگی از هدر",
   freeze_badge: "پیگیری یخِ زنجیره از هدر",
   print_report: "گزارش چاپی رسمی",
 };

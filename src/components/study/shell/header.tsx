@@ -9,6 +9,7 @@ import SettingsPopover from "../shared/settings-popover";
 import ProfilePopover from "../profile/profile-popover";
 import DuePill from "../practice/due-pill";
 import GoalChip from "../practice/goal-chip";
+import WeekChip from "../practice/week-chip";
 import FreezeBadge from "../practice/freeze-badge";
 
 // ------------------------------------------------------------------
@@ -74,6 +75,8 @@ export default function Header() {
           <DuePill />
           {/* چیپ هدف امروز — پیشرفت زندهٔ reviews+quizzes تا امن‌شدن زنجیره (Task 76) */}
           <GoalChip />
+          {/* مینی‌حلقهٔ هدفِ هفتگی — همسایهٔ چیپِ امروز: یک ضربه تا هفته‌نامه (Task 129) */}
+          <WeekChip />
           {/* نشانگر یخِ زنجیره — مخزن یخ/نجات امروز، کنار شعله (Task 77) */}
           <FreezeBadge />
           <button
