@@ -58,6 +58,7 @@ import {
   BookCheck,
   RotateCcw,
   Sprout,
+  TrainFront,
 } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -153,6 +154,9 @@ export const BADGE_ICONS: Record<string, React.ElementType> = {
   // برابرِ بازیابیِ تند (Zap/Sparkles/Gauge/Rocket اشغال‌اند؛ Sprout
   // آزاد ماند — داوری با node -e رویِ نسخهٔ نصب‌شده، درسِ ۱۶۰)
   Sprout,
+  // پلهٔ دهم (Task 165) — گرامر×واژه: خودِ قطارِ مترو — هم‌آیکنِ
+  // کارتِ ابزارهایِ خانه («متروی گرامر») — یکتا در رجیستری
+  TrainFront,
 };
 
 const tierFa: Record<string, string> = {

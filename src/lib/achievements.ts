@@ -62,6 +62,7 @@ export interface BadgeEvalInput {
   reviewsDays14: number; // چند روزِ پنجرهٔ ۱۴روزه مرور داشتند
   wordsDays14: number; // چند روزِ پنجرهٔ ۱۴روزه واژهٔ تازه داشتند (Task 162 — بُعدِ هفتم)
   rushDays14: number; // چند روزِ پنجرهٔ ۱۴روزه برق‌آسا داشتند (Task 162 — بُعدِ هشتم)
+  grammarDays14: number; // چند روزِ پنجرهٔ ۱۴روزه گرامردار داشتند (Task 165 — بُعدِ نهم — از resultsِ کلیدهایِ g:* استخراج می‌شود؛ dayHistory گرامر را جدا ثبت نمی‌کند)
   activeDays35: number; // چند روزِ پنجرهٔ ۳۵روزه هر فعالیتی داشتند (خانوادهٔ حضور، Task 92)
   wordsDays7: number; // چند روزِ پنجرهٔ ۷روزه واژهٔ تازه داشتند (≠ جمع — Task 93)
   rushDays7: number; // چند روزِ پنجرهٔ ۷روزه برق‌آسا داشتند (≠ جمع — Task 93)
@@ -214,6 +215,20 @@ export function buildEvalInput(s: {
         wordsDays7: win7.wordsDays,
         rushDays7: win7.rushDays,
       };
+    })(),
+    // (Task 165) بُعدِ نهم — روزهایِ گرامردارِ پنجرهٔ ۱۴روزه. متروِ گرامر
+    // نتایجش را با کلیدهایِ g:* ثبت می‌کند (ایستگاه g:<id>، کاوش
+    // g:probe:l<n>، درس g:ls:<id>) و هر نتیجه تاریخِ at دارد؛ dayHistory
+    // گرامر را جدا نگه نمی‌دارد (سهمش در quizzes عمومی می‌رود) — پس
+    // استخراج از results است، تاریخ‌پایه: شمارِ تاریخ‌هایِ متمایزِ
+    // درونِ پنجره (≠ جمعِ تلاش‌ها — رانِ روزانه، هم‌قراردادِ بقیهٔ ابعاد).
+    ...(() => {
+      const start = daysAgoKey(13);
+      const days = new Set<string>();
+      for (const [k, r] of Object.entries(s.results)) {
+        if (k.startsWith("g:") && r && typeof r.at === "string" && r.at >= start) days.add(r.at);
+      }
+      return { grammarDays14: days.size };
     })(),
     duelTopRivalWins: topRival?.wins ?? 0,
     duelTopRivalName: topRival?.opponent ?? "",
@@ -1128,6 +1143,41 @@ export const BADGES: BadgeDef[] = [
     },
     check: (s) => s.wordsDays14 >= 14 && s.rushDays14 >= 14,
   },
+  // Task 165 — دهمین دوسیستمه: گرامر×واژه — نخستین جفت با بُعدِ نهم.
+  // داوریِ گزینه‌ها: ①سه‌گانهٔ مرور×دیکته×آزمون مرده بود — marathon-run
+  // (Task 90) دقیقاً همان گیتِ سه‌بعدی است و سه‌گانهٔ ترکیبی زیرمجموعه‌اش
+  // می‌شد ②هر جفتِ درونِ هشت بُعد حاضر، یک بُعدِ ×۲ را ×۳ می‌کرد —
+  // ممنوعِ عمومیِ ۱۶۰ ③سری (bestStreak) با هر پنجرهٔ ۱۴تاییِ کامل جفتِ
+  // جعلی می‌سازد (پنجرهٔ کاملِ هر مهارتی ⇒ ۱۴ روزِ فعالِ پیوسته ⇒
+  // bestStreak ≥ ۱۴ — یک بُعدِ تنها باز می‌شود). پس متروِ گرامر —
+  // تنها سیستمِ مطالعاتیِ بی-بُعدِ اپ — بُعدِ نهم می‌شود و با واژه
+  // جفت می‌شود: جمله = قاعده × واژه — دو بالِ کسب؛ خطِ اولِ مترو هم
+  // «جملهٔ درست» است. واژه ×۱→×۲ می‌رود (مجاز — مثلِ حضور در ۱۵۶)،
+  // برقِ پنجره‌ای تنها ×۱ می‌ماند (معلق به جفتِ آینده با بُعدِ دهم).
+  // استخراجِ بُعد از results است نه dayHistory (نخستینِ این‌چنینی —
+  // dayHistory گرامر را جدا ثبت نمی‌کند) — شمارِ تاریخ‌هایِ متمایزِ
+  // کلیدهایِ g:* درونِ پنجره. پیوندِ صادق: ۱۴ روزِ گرامردار ⇒
+  // quizDays14 ≥ ۱۴ (آزمونکِ ایستگاه سهمِ quizzes عمومی است) ⇒
+  // exam-run — مستند و طبیعی؛ ولی واژه را نمی‌سازد و برعکس.
+  // شکافِ صادقِ ششم: دوقلوی گرامر-واژه، ماراتن و پنج‌مهارتی و
+  // واژه‌برق و کلِ خانوادهٔ قدیم را روشن نمی‌کند. آیکن: TrainFront —
+  // خودِ مترو (هم‌آیکنِ کارتِ ابزارهایِ خانه — یکتا در رجیستری؛
+  // داوری با node -e رویِ نسخهٔ نصب‌شده — درسِ ۱۶۰).
+  {
+    id: "grammar-words",
+    title: "گرامر و واژه",
+    desc: "۱۴ روزِ گرامردار و ۱۴ روزِ واژه‌دار — سوارِ متروی قاعده و کاشندهٔ واژه، با هم",
+    icon: "TrainFront",
+    tier: "gold",
+    progress: (s) => {
+      const g = Math.min(s.grammarDays14, 14);
+      const w = Math.min(s.wordsDays14, 14);
+      return g / 14 <= w / 14
+        ? `${faNum(g)} از ۱۴ روزِ گرامر`
+        : `${faNum(w)} از ۱۴ روزِ واژه`;
+    },
+    check: (s) => s.grammarDays14 >= 14 && s.wordsDays14 >= 14,
+  },
 ];
 
 export const TIER_STYLE: Record<BadgeTier, { ring: string; grad: string; chip: string; glow: string }> = {
@@ -1237,6 +1287,9 @@ export function badgeProgressPct(id: string, s: BadgeEvalInput): number {
     // Task 162 — نهمین دوسیستمه: واژه×برق (دو بُعدِ تازه، دو ۱۴تاییِ هم‌عدد)
     case "words-rush":
       return clamp(Math.min((s.wordsDays14 / 14) * 100, (s.rushDays14 / 14) * 100));
+    // Task 165 — دهمین دوسیستمه: گرامر×واژه (بُعدِ نهم × واژه، دو ۱۴تاییِ هم‌عدد)
+    case "grammar-words":
+      return clamp(Math.min((s.grammarDays14 / 14) * 100, (s.wordsDays14 / 14) * 100));
     default:
       return 0;
   }

@@ -339,7 +339,7 @@ const base = (over: Partial<BuildArgs> = {}) => buildEvalInput({ ...BASE_DEFAULT
 
 describe("سیم‌کشیِ خانوادهٔ هفتهٔ چابک — رجیستریِ ۶۱تایی", () => {
   it("دو نشانِ جدید با آیکن/تیر/قراردادِ پیشرفت — رجیستری ۵۲→۵۵", () => {
-    expect(BADGES.length).toBe(61);
+    expect(BADGES.length).toBe(62);
     const ids = new Set(BADGES.map((b) => b.id));
     expect(ids.has("quick-week")).toBe(true);
     expect(ids.has("lightning-week")).toBe(true);

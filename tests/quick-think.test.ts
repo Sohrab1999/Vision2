@@ -312,7 +312,7 @@ describe("نشان‌های چابکیِ ذهن — سیم‌کشی و زیرم�
   });
 
   it("wording و تیر و آیکن: نیم‌نگاه نقره/Eye، برقِ فکر طلا/BrainCircuit؛ رجیستری ۶۱", () => {
-    expect(BADGES.length).toBe(61);
+    expect(BADGES.length).toBe(62);
     expect(byId("quick-think").tier).toBe("silver");
     expect(byId("quick-think").icon).toBe("Eye");
     expect(byId("flash-mind").tier).toBe("gold");
