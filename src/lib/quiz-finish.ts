@@ -76,7 +76,7 @@ export function completeQuizRun({
     at: new Date().toISOString(),
   });
   storeNow.trackQuizDone();
-  if (resultKeyStr === "exam" || resultKeyStr === "final") trackEvent("exam_done");
+  if (resultKeyStr === "exam" || resultKeyStr === "final" || resultKeyStr.startsWith("final-")) trackEvent("exam_done");
 
   // error bank: record wrong answers, clear ones now answered correctly
   const wrongIds = questions

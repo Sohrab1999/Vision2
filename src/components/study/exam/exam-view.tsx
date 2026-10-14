@@ -7,7 +7,18 @@ import type { QuizQuestion } from "@/lib/study-types";
 import { useStudy, mistakesOfLesson } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { themeOf, faNum } from "@/lib/study-theme";
-import { lessonNameFa } from "@/data/lesson-meta";
+import { LESSONS_META, lessonNameFa } from "@/data/lesson-meta";
+import {
+  FINAL_GRADES,
+  buildFinalPool,
+  examGroupLabels,
+  finalGradeOf,
+  finalQuestionsCount,
+  finalTimerMinutes,
+  mistakesTargetOf,
+  questionGroup,
+} from "@/lib/domain/final-exam";
+import type { FinalGradeId } from "@/lib/domain/final-exam";
 import { trackEvent } from "@/lib/analytics";
 import { buildExamDictation, DICTATION_MIN_EXAM } from "@/lib/exam-dictation";
 import {
@@ -22,22 +33,8 @@ import DictationTab from "../lesson/dictation-tab";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { shuffle } from "@/lib/domain/shuffle";
 
-/** source lesson of a question from its id prefix (l1-, l2-, l3-, x-) */
-function sourceOf(q: QuizQuestion): string {
-  if (q.id.startsWith("l1")) return "l1";
-  if (q.id.startsWith("l2")) return "l2";
-  if (q.id.startsWith("l3")) return "l3";
-  return "x";
-}
-
-const GROUP_LABELS: Record<string, string> = {
-  l1: "درس اول — فهمیدن مردم",
-  l2: "درس دوم — یک سبک زندگی سالم",
-  l3: "درس سوم — هنر و فرهنگ",
-  x: "بانک ۳۶۰ تستی جزوه",
-};
-
-const MISTAKES_TARGET: Record<string, number | string> = { l1: 1, l2: 2, l3: 3, x: 0 };
+/* full nine-lesson group map — quiz-result filters absent groups out */
+const EXAM_GROUP_LABELS = examGroupLabels();
 
 type Mode = "vocab" | "final";
 interface Session {
@@ -45,6 +42,9 @@ interface Session {
   questions: QuizQuestion[];
   timed: boolean;
   kind: "exam" | "final" | "exam-mistakes";
+  /* result key + DB category — per-grade finals write final-10/final-12 */
+  resultKey: string;
+  category: string;
 }
 
 /** طول‌های مجاز آزمون جامع — فرمان پارامتری پالت هم همین‌ها را پیش‌انتخاب می‌کند */
@@ -61,8 +61,13 @@ export default function ExamView() {
   const [examTimed, setExamTimed] = useState(() => readFlagPrefill(EXAM_TIMED_KEY) ?? true);
   const [finalTimed, setFinalTimed] = useState(true);
   const [dictOpen, setDictOpen] = useState(false);
+  /* grade-aware final («آزمون پایان‌ترم سه‌پایه») — default یازدهم keeps
+     backward compat with the stored "final" result */
+  const [finalGradeId, setFinalGradeId] = useState<FinalGradeId>("g11");
+  const finalDef = finalGradeOf(finalGradeId);
   const bestExam = useStudy((s) => s.results["exam"]);
-  const bestFinal = useStudy((s) => s.results["final"]);
+  const results = useStudy((s) => s.results);
+  const bestFinal = results[finalDef.resultKey];
   const mistakes = useStudy((s) => s.mistakes);
   const setView = useStudy((s) => s.setView);
   const mounted = useMounted();
@@ -98,7 +103,7 @@ export default function ExamView() {
 
   const examMistakeCount = mounted ? mistakesOfLesson(mistakes, 0) : 0;
   const totalMistakesAll = mounted
-    ? mistakesOfLesson(mistakes, 0) + mistakesOfLesson(mistakes, 1) + mistakesOfLesson(mistakes, 2) + mistakesOfLesson(mistakes, 3)
+    ? mistakesOfLesson(mistakes, 0) + LESSONS_META.reduce((sum, l) => sum + mistakesOfLesson(mistakes, l.id), 0)
     : 0;
 
   /* ------------------------- active session -------------------------
@@ -110,15 +115,15 @@ export default function ExamView() {
       <QuizEngine
         title={session.title}
         questions={session.questions}
-        resultKeyStr={session.kind === "final" ? "final" : session.kind === "exam" ? "exam" : "exam-mistakes"}
+        resultKeyStr={session.resultKey}
         lessonId={0}
-        category={session.kind === "final" ? "final" : session.kind === "exam" ? "exam" : "mistakes"}
+        category={session.category}
         immediate={session.kind === "exam-mistakes"}
         secondsPerQuestion={session.timed && session.kind !== "exam-mistakes" ? 45 : undefined}
         certificate={session.kind === "final"}
-        groupOf={session.kind === "final" ? sourceOf : undefined}
-        groupLabels={session.kind === "final" ? GROUP_LABELS : undefined}
-        mistakesOf={session.kind === "final" ? (q) => MISTAKES_TARGET[sourceOf(q)] ?? 0 : undefined}
+        groupOf={session.kind === "final" ? questionGroup : undefined}
+        groupLabels={session.kind === "final" ? EXAM_GROUP_LABELS : undefined}
+        mistakesOf={session.kind === "final" ? (q) => mistakesTargetOf(questionGroup(q)) : undefined}
         onExit={() => setSession(null)}
       />
     );
@@ -142,7 +147,7 @@ export default function ExamView() {
               پیش از امتحان: {faNum(totalMistakesAll)} سؤالِ غلط در بانک خطا داری
             </span>
             <span className="block text-[12px] text-stone-500">
-              مرور سریعِ ترکیبی (۳ درس + بانک ۳۶۰تا) — پاسخِ درست یعنی حذفِ دائمی از بانک
+              مرور سریعِ ترکیبی ({faNum(LESSONS_META.length)} درس + بانک ۳۶۰تا) — پاسخِ درست یعنی حذفِ دائمی از بانک
             </span>
           </span>
           <ArrowLeft size={17} className="shrink-0 text-amber-600" />
@@ -165,9 +170,8 @@ export default function ExamView() {
           onClick={() => setMode("final")}
           icon={GraduationCap}
           title="آزمون جامع پایان ترم"
-          desc="۴۰ سؤال ترکیبی از هر سه درس + بانک تستی، با گواهی پایان ترم"
+          desc="به‌انتخابِ پایه: دهم، یازدهم، دوازدهم — با گواهی پایان ترم"
           accent="amber"
-          badge="جدید"
           best={bestFinal ? `بهترین نتیجه: ${faNum(bestFinal.percent)}٪` : undefined}
         />
       </div>
@@ -235,6 +239,8 @@ export default function ExamView() {
                 questions: shuffle(examBank).slice(0, examCount),
                 timed: examTimed,
                 kind: "exam",
+                resultKey: "exam",
+                category: "exam",
               })
             }
             className="w-full rounded-xl bg-emerald-700 py-3.5 text-[15px] font-black text-white shadow-lg shadow-emerald-900/25 transition-[background-color,color,border-color,box-shadow,transform] hover:bg-emerald-700 active:scale-[0.96]"
@@ -251,6 +257,8 @@ export default function ExamView() {
                   questions: shuffle(examBank.filter((q) => (mistakes[`0:${q.id}`] ?? 0) > 0)),
                   timed: false,
                   kind: "exam-mistakes",
+                  resultKey: "exam-mistakes",
+                  category: "mistakes",
                 })
               }
               className="mistakes-cta mt-4 flex w-full items-center justify-between gap-3 rounded-2xl border border-rose-300 bg-gradient-to-l from-rose-50 to-red-50 p-4 text-right shadow-sm transition-[background-color,color,border-color,box-shadow,transform] hover:shadow-md active:scale-[0.96]"
@@ -327,15 +335,53 @@ export default function ExamView() {
               </span>
               <div>
                 <h1 className="text-xl font-extrabold text-stone-800">آزمون جامع پایان ترم</h1>
-                <p className="text-[13px] text-stone-500">ارزیابی نهایی همهٔ آموخته‌ها — با گواهی و اشتراک‌گذاری نتیجه</p>
+                <p className="text-[13px] text-stone-500">ارزیابی نهاییِ هر پایه — با گواهی و اشتراک‌گذاری نتیجه</p>
               </div>
+            </div>
+
+            {/* grade selector — the pool is per-grade (task 195) */}
+            <p className="mb-2 text-[13px] font-bold text-stone-600">۱. پایهٔ آزمون را انتخاب کنید:</p>
+            <div className="mb-5 grid gap-2.5 sm:grid-cols-3">
+              {FINAL_GRADES.map((g) => {
+                const best = results[g.resultKey];
+                return (
+                  <button
+                    key={g.id}
+                    onClick={() => setFinalGradeId(g.id)}
+                    aria-pressed={finalGradeId === g.id}
+                    className={`rounded-2xl border-2 p-3.5 text-right transition-[background-color,color,border-color,box-shadow,transform] active:scale-[0.96] ${
+                      finalGradeId === g.id
+                        ? "border-amber-500 bg-amber-50 shadow-amber-200/50"
+                        : "border-stone-200 bg-white hover:border-amber-300"
+                    }`}
+                  >
+                    <span className="mb-1 flex items-center justify-between gap-2">
+                      <GraduationCap size={16} className="shrink-0 text-amber-600" />
+                      <span className="text-[13.5px] font-extrabold text-stone-800">{g.label}</span>
+                    </span>
+                    <span className="block text-[11px] leading-5 text-stone-500">
+                      {faNum(finalQuestionsCount(g))} سؤال · درس‌های {g.lessons.map((id) => faNum(id)).join("، ")}
+                      {g.withBank ? " + بانک ۳۶۰" : ""}
+                    </span>
+                    {best && (
+                      <span className="mt-1 block text-[10.5px] font-bold text-emerald-700">
+                        بهترین: {faNum(best.percent)}٪
+                      </span>
+                    )}
+                  </button>
+                );
+              })}
             </div>
 
             <div className="mb-5 grid gap-2.5 sm:grid-cols-4">
               {[
-                { icon: Layers, label: "ترکیبی از ۴ منبع", desc: "واژگان + گرامر سه درس و بانک ۳۶۰ تستی" },
-                { icon: ClipboardCheck, label: "۴۰ سؤال", desc: "۱۰ سؤال از هر منبع، بُر خورده" },
-                { icon: Timer, label: "۳۰ دقیقه", desc: "۴۵ ثانیه برای هر سؤال (قابل خاموش کردن)" },
+                {
+                  icon: Layers,
+                  label: `ترکیبی از ${faNum(finalDef.withBank ? 4 : 3)} منبع`,
+                  desc: finalDef.withBank ? "واژگان + گرامر سه درس و بانک ۳۶۰ تستی" : "واژگان + گرامر درس‌های همین پایه",
+                },
+                { icon: ClipboardCheck, label: `${faNum(finalQuestionsCount(finalDef))} سؤال`, desc: "۱۰ سؤال از هر منبع، بُر خورده" },
+                { icon: Timer, label: `${faNum(finalTimerMinutes(finalDef))} دقیقه`, desc: "۴۵ ثانیه برای هر سؤال (قابل خاموش کردن)" },
                 { icon: GraduationCap, label: "گواهی پایان ترم", desc: "کارنامهٔ تفکیکی + اشتراک‌گذاری" },
               ].map((f) => (
                 <div key={f.label} className="rounded-xl border border-amber-100 bg-amber-50/60 p-3">
@@ -372,7 +418,7 @@ export default function ExamView() {
                 }`}
               >
                 <Timer size={16} />
-                با تایمر (۳۰ دقیقه)
+                با تایمر ({faNum(finalTimerMinutes(finalDef))} دقیقه)
               </button>
               <button
                 onClick={() => setFinalTimed(false)}
@@ -389,18 +435,19 @@ export default function ExamView() {
 
             <button
               onClick={() => {
-                // ۴۰ سؤال: ۱۰ سؤال از هر درس + ۱۰ سؤال از بانک ۳۶۰ تستی
-                const pool = [
-                  ...shuffle(lessons[0].quizzes).slice(0, 10),
-                  ...shuffle(lessons[1].quizzes).slice(0, 10),
-                  ...shuffle(lessons[2].quizzes).slice(0, 10),
-                  ...shuffle(examBank).slice(0, 10),
-                ];
-                setSession({ title: "آزمون جامع پایان ترم", questions: shuffle(pool), timed: finalTimed, kind: "final" });
+                // per-grade pool: ۱۰ سؤال از هر درسِ پایه (+ ۱۰ از بانک ۳۶۰ در یازدهم)
+                setSession({
+                  title: `آزمون پایان‌ترم ${finalDef.label}`,
+                  questions: buildFinalPool(finalDef, lessons, examBank),
+                  timed: finalTimed,
+                  kind: "final",
+                  resultKey: finalDef.resultKey,
+                  category: finalDef.category,
+                });
               }}
               className="w-full rounded-xl bg-gradient-to-l from-amber-700 to-orange-700 py-3.5 text-[15px] font-black text-white shadow-lg shadow-amber-700/25 transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-95 active:scale-[0.96]"
             >
-              🎓 شروع آزمون پایان ترم
+              🎓 شروع آزمون پایان‌ترم {finalDef.label}
             </button>
           </div>
         </div>

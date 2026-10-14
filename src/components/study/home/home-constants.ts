@@ -2,6 +2,15 @@
 // ثابت‌ها و برچسب‌های صفحهٔ خانه — بین نمای‌های home/ مشترک است.
 // ------------------------------------------------------------------
 
+// راند ۱۹۵ — برچسب‌های آزمون پایان‌ترمِ سه‌پایه از یک منبعِ واحد می‌آیند
+// (lib/domain/final-exam) تا کلیدهای final-10/final-12 روی فید خانه
+// هرگز با برچسبِ خالی یا کلیدِ خام رندر نشوند.
+import { FINAL_GRADES } from "@/lib/domain/final-exam";
+
+const finalGradeLabels: Record<string, string> = Object.fromEntries(
+  FINAL_GRADES.filter((g) => g.resultKey !== "final").map((g) => [g.resultKey, `آزمون پایان‌ترم ${g.label}`]),
+);
+
 export const spineColors: Record<string, string> = {
   emerald: "bg-gradient-to-b from-emerald-500 to-emerald-800",
   amber: "bg-gradient-to-b from-amber-400 to-amber-700",
@@ -34,6 +43,7 @@ export const categoryLabel: Record<string, string> = {
   danger: "واژه‌های خطرناک",
   exam: "آزمون جامع",
   final: "آزمون پایان ترم",
+  ...finalGradeLabels,
   mixed: "تست ترکیبی درس",
   mistakes: "مرور اشتباهات",
   rush: "چالش برق‌آسا",
@@ -48,6 +58,7 @@ export const categoryLabel: Record<string, string> = {
 export const globalResultLabel: Record<string, string> = {
   exam: "آزمون جامع",
   final: "آزمون پایان ترم",
+  ...finalGradeLabels,
   review: "مرور سریع قبل امتحان",
   rush: "چالش برق‌آسا",
   "my-words": "مرور واژه‌های نشان‌شده",
@@ -57,6 +68,7 @@ export const globalResultLabel: Record<string, string> = {
 export const globalResultTheme: Record<string, "emerald" | "amber" | "rose"> = {
   exam: "emerald",
   final: "emerald",
+  ...Object.fromEntries(FINAL_GRADES.filter((g) => g.resultKey !== "final").map((g) => [g.resultKey, "emerald" as const])),
   review: "amber",
   "my-words": "amber",
   rush: "rose",
@@ -73,6 +85,7 @@ export const feedLabel: Record<string, string> = {
   danger: "واژه‌های خطرناک",
   exam: "آزمون جامع",
   final: "آزمون پایان ترم",
+  ...finalGradeLabels,
   mixed: "تست ترکیبی",
   mistakes: "مرور اشتباهات",
   rush: "چالش برق‌آسا",

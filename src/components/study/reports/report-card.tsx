@@ -2,6 +2,7 @@
 
 import { useMemo } from "react";
 import { motion } from "framer-motion";
+import { finalKeyLabel } from "@/lib/domain/final-exam";
 import {
   Award,
   BookOpenCheck,
@@ -318,7 +319,12 @@ export default function ReportCard({ open, onClose }: { open: boolean; onClose: 
                       .sort((a, b) => b[1].percent - a[1].percent)
                       .slice(0, 3)
                       .map(([key, r]) => {
-                        const label = key === "rush" ? "چالش برق‌آسا" : key === "exam" ? "آزمون جامع" : key === "final" ? "آزمون پایان ترم" : key.split(":").slice(1).join(":");
+                        const label =
+                          key === "rush"
+                            ? "چالش برق‌آسا"
+                            : key === "exam"
+                              ? "آزمون جامع"
+                              : (finalKeyLabel(key) ?? key.split(":").slice(1).join(":"));
                         return (
                           <li key={key} className="flex items-center justify-between rounded-lg border border-stone-100 bg-white px-2.5 py-1.5">
                             <span className="text-[11.5px] font-bold text-stone-600">{label}</span>
