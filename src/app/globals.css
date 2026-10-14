@@ -431,14 +431,15 @@ body {
 
 /* task 135 (§8.3 wave 2): dictation-box — DEAD rule, zero TSX consumers — retired — no extraction, just an honest burial */
 
-/* dark-mode tuning for new dictation / today-plan elements */
+/* dark-mode tuning for new dictation / today-plan elements — task 166
+   (reverse-hygiene): two zero-consumer members buried honestly here —
+   the fuchsia-500 background and teal-500 border dark overrides had no
+   TSX consumer left; every band neighbor lives */
 .dark .text-violet-700 { color: #c4b5fd; }
 .dark .text-violet-600 { color: #a78bfa; }
-.dark .bg-fuchsia-500 { background-image: linear-gradient(to bottom left, #7c3aed, #a21caf); }
 .dark .from-violet-600 { --tw-gradient-from: #5b21b6; }
 .dark .to-fuchsia-600 { --tw-gradient-to: #86198f; }
 .dark .text-amber-700 { color: #fbbf24; }
-.dark .border-teal-500 { border-color: rgba(20, 130, 120, 0.6); }
 .dark .bg-orange-500 { background-image: linear-gradient(to bottom left, #c2410c, #9a3412); }
 .dark .from-amber-400,.dark .from-amber-300 { --tw-gradient-from: #b45309; }
 .dark .to-orange-500 { --tw-gradient-to: #c2410c; }

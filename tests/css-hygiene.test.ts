@@ -397,9 +397,14 @@ describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
     // — merged into one canonical rule (−1 line, the 3a fixed-point
     // demand). 3a checkpoints re-ran clean. Growth from here must
     // consolidate, not add.
+    // task 166 (reverse-hygiene): re-based 168 → 166 — no extraction this
+    // time; the whole-estate consumer audit found two zero-consumer dark
+    // overrides (fuchsia-500 bg, teal-500 border) and they were buried
+    // honestly (see the band header in globals). Growth from here must
+    // consolidate, not add.
     const sel = lines.filter((l) => /^\s*\.[a-z]/.test(l) && !l.includes("→")).length;
     expect(sel).toBeLessThanOrEqual(505);
-    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(168);
+    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(166);
   });
 });
 
@@ -542,11 +547,14 @@ describe("globals.css surface-tint kernel (Step 9 tranche 3b — Task 80)", () =
   });
 
   it("keeps the deliberate skips on explicit rules (intentional light values)", () => {
-    // emerald-200/300, amber-200/300, rose-300, teal-500 keep their band
+    // emerald-200/300, amber-200/300, rose-300 keep their band
     // rules — the consumer matrix proved intentional light consumers there.
     // r115: bg/border-amber-100 LEFT this list — the -100 layer is kernelized
     // now (the old bg/border value conflict collapsed onto the family base).
-    for (const sel of ["border-emerald-200", "border-emerald-300", "border-amber-200", "border-amber-300", "border-rose-300", "border-teal-500"]) {
+    // task 166: border-teal-500 LEFT too — the reverse-hygiene audit found
+    // its last consumer had gone (0 TSX hits, no dynamic construction);
+    // buried honestly in globals, see the consumer-existence contract below.
+    for (const sel of ["border-emerald-200", "border-emerald-300", "border-amber-200", "border-amber-300", "border-rose-300"]) {
       const kept = lines80.filter((l) => l.trim().startsWith(`.dark .${sel} {`));
       expect(kept.length, `.dark .${sel} keep must survive`).toBeGreaterThanOrEqual(1);
     }
@@ -1768,5 +1776,91 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
       }
       expect(dupes, `${p}: duplicate rule blocks: ${dupes.join("; ")}`).toEqual([]);
     }
+  });
+});
+
+describe("css consumer-existence contract (task 166 reverse-hygiene)", () => {
+  // The guard above proves rules EXIST where they must; nothing proved their
+  // OWNERS still do. Over 165 tasks components get renamed/removed and rules
+  // rot silently. Contract: every class token in globals.css + the feature
+  // files must have a live consumer in src/**/*.{ts,tsx} — a dash-boundary
+  // literal hit, a dynamic template-literal prefix hit, or an explicit
+  // allowlist entry (add with documented rationale only).
+  const walk = (dir: string, out: string[] = []): string[] => {
+    for (const e of readdirSync(dir)) {
+      const p = join(dir, e);
+      const st = require("fs").statSync(p);
+      if (st.isDirectory()) walk(p, out);
+      else if (/\.(ts|tsx)$/.test(e)) out.push(p);
+    }
+    return out;
+  };
+  const srcBlob = walk(resolve(process.cwd(), "src")).map((f) => readFileSync(f, "utf8")).join("\n");
+  // `glesson-role-${piece.role}` (grammar-lesson-flow.tsx) — the class family
+  // is built dynamically from the SentenceRole enum; a literal search can
+  // never see subject/verb/object/aux/rest. Honored via prefix detection.
+  const dynPrefixes = [...new Set([...srcBlob.matchAll(/([A-Za-z][A-Za-z0-9_-]*)-\$\{/g)].map((m) => `${m[1]}-`))];
+  // explicit exemptions — EMPTY by contract; a new entry needs a written
+  // rationale here and (ideally) a comment at the rule site.
+  const ALLOWED: string[] = [];
+
+  const classesIn = (css: string): string[] => {
+    const noComments = css.replace(/\/\*[\s\S]*?\*\//g, "");
+    const heads: string[] = [];
+    let depth = 0, start = 0;
+    for (let i = 0; i < noComments.length; i++) {
+      const ch = noComments[i];
+      if (ch === "{") { if (depth === 0) heads.push(noComments.slice(start, i)); depth++; }
+      else if (ch === "}") { depth--; if (depth === 0) start = i + 1; }
+    }
+    const out = new Set<string>();
+    for (const h of heads) {
+      for (const m of h.matchAll(/\.([A-Za-z][A-Za-z0-9_-]*)/g)) out.add(m[1]);
+    }
+    return [...out];
+  };
+
+  it("every selector class across globals + feature files has a live consumer", () => {
+    const estates: [string, string][] = [
+      ["globals.css", readFileSync(cssPath, "utf8")],
+      ...featureCssPaths.map((p) => [p, readFileSync(resolve(process.cwd(), p), "utf8")] as [string, string]),
+    ];
+    const missing: string[] = [];
+    for (const [name, css] of estates) {
+      for (const cls of classesIn(css)) {
+        const re = new RegExp(`(?<![A-Za-z0-9_-])${cls}(?![A-Za-z0-9_-])`);
+        if (re.test(srcBlob)) continue;
+        if (dynPrefixes.some((pre) => cls.startsWith(pre))) continue;
+        if (ALLOWED.includes(cls)) continue;
+        missing.push(`${name}: .${cls}`);
+      }
+    }
+    expect(missing, "zero-consumer CSS classes found — remove the rule or document an allowlist entry").toEqual([]);
+  });
+
+  it("dynamic exemptions stay pinned to the known glesson-role family", () => {
+    // awareness checkpoint: if a new dynamic class family appears (or this
+    // one dies), this assertion forces a conscious update of the contract.
+    // Scans the FULL estate (globals + feature files — the glesson-role
+    // painters have lived in grammar/grammar-metro.css since wave 17).
+    const estates: [string, string][] = [
+      ["globals.css", readFileSync(cssPath, "utf8")],
+      ...featureCssPaths.map((p) => [p, readFileSync(resolve(process.cwd(), p), "utf8")] as [string, string]),
+    ];
+    const exempt = new Set<string>();
+    for (const [, css] of estates) {
+      for (const cls of classesIn(css)) {
+        if (dynPrefixes.some((pre) => cls.startsWith(pre)) && !new RegExp(`(?<![A-Za-z0-9_-])${cls}(?![A-Za-z0-9_-])`).test(srcBlob)) {
+          exempt.add(cls);
+        }
+      }
+    }
+    expect([...exempt].sort()).toEqual(["glesson-role-aux", "glesson-role-object", "glesson-role-rest", "glesson-role-subject", "glesson-role-verb"]);
+  });
+
+  it("the two zero-consumer dark overrides stay buried (honest retirement)", () => {
+    const g = readFileSync(cssPath, "utf8");
+    expect(g.includes(".dark .bg-fuchsia-500 {")).toBe(false);
+    expect(g.includes(".dark .border-teal-500 {")).toBe(false);
   });
 });
