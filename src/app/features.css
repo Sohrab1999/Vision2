@@ -21,7 +21,10 @@
    story card; wave 14 split the three remaining single-consumer
    launcher painters of the hero block each beside its owner (three
    mutually exclusive views, one file each): practice/smart-hero.css,
-   exam/konkur-hero.css, exam/exam-dict-cta.css.
+   exam/konkur-hero.css, exam/exam-dict-cta.css; wave 15 dissolved the
+   task-64 sweep band — its four remaining tinted gradient painters each
+   beside its single owner in four feature areas: home/listen-hero.css,
+   duel/name-cta.css, shell/onboard-paper.css, lesson/dict-setup.css.
    Each file lives BESIDE its owning component and is imported here so the
    rules are ALWAYS part of the initial CSS — the same guarantee globals.css
    had before the extraction (lazy views keep zero first-paint risk), and the
@@ -66,3 +69,9 @@
 @import "../components/study/practice/smart-hero.css";
 @import "../components/study/exam/konkur-hero.css";
 @import "../components/study/exam/exam-dict-cta.css";
+/* wave 15 (task 161): the task-64 sweep band dissolved — four single-
+   consumer painters, four feature areas (home/duel/shell/lesson) */
+@import "../components/study/home/listen-hero.css";
+@import "../components/study/duel/name-cta.css";
+@import "../components/study/shell/onboard-paper.css";
+@import "../components/study/lesson/dict-setup.css";

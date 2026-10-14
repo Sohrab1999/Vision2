@@ -1,0 +1,6 @@
+/* dictation-tab setup card — dark painter (§8.3 wave 15, task 161)
+   Owner: lesson/dictation-tab.tsx (line 491 — the only .dict-setup consumer).
+   The light gradient is the element's own utility (from-violet-50/70
+   to-transparent); dark repaints through this migrated !important painter —
+   position-independent (features.css loads right after globals.css). */
+.dark .dict-setup { background-image: linear-gradient(to bottom, rgba(59, 32, 96, 0.4), transparent) !important; }

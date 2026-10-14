@@ -416,12 +416,12 @@ body {
    gradient stops are outside the tone kernel, same as the heroes */
 .dark .mistakes-cta { background-image: linear-gradient(to left, rgba(88, 18, 30, 0.5), rgba(24, 21, 18, 0.92)) !important; }
 
-/* task-64 sweep — every remaining tinted gradient surface, one patch each
-   (direction mirrors the utility: to-l / to-b / to-bl) */
-.dark .listen-hero { background-image: linear-gradient(to left, rgba(8, 51, 68, 0.5), rgba(19, 78, 74, 0.4), rgba(24, 21, 18, 0.92)) !important; }
-.dark .name-cta { background-image: linear-gradient(to left, rgba(6, 55, 40, 0.5), rgba(19, 78, 74, 0.4)) !important; }
-.dark .onboard-paper { background-image: linear-gradient(to left, rgba(6, 55, 40, 0.4), rgba(24, 21, 18, 0.92), rgba(24, 21, 18, 0.92)) !important; }
-.dark .dict-setup { background-image: linear-gradient(to bottom, rgba(59, 32, 96, 0.4), transparent) !important; }
+/* wave 15 (task 161): the task-64 sweep band dissolved — its four remaining
+   tinted gradient painters (4 selector lines) moved beside their single
+   owners: home/listen-hero.css beside home-banners.tsx, duel/name-cta.css
+   beside leaderboard.tsx, shell/onboard-paper.css beside onboarding.tsx and
+   lesson/dict-setup.css beside dictation-tab.tsx — four owners in four
+   feature areas, one file each. */
 /* wave 7 (task 145): the four rush dark gradients (hero/done/board-strip/
    board-hint) moved to duel/rush.css beside their owner — the hero/done
    merge also retired the masked wave-1 stops there (one painter per head). */

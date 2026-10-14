@@ -60,6 +60,13 @@ const featureCssPaths = [
   "src/components/study/practice/smart-hero.css",
   "src/components/study/exam/konkur-hero.css",
   "src/components/study/exam/exam-dict-cta.css",
+  // wave 15 (task 161): the task-64 sweep band dissolved — four single-
+  // consumer painters, four feature areas (home/duel/shell/lesson),
+  // one file each beside its owner
+  "src/components/study/home/listen-hero.css",
+  "src/components/study/duel/name-cta.css",
+  "src/components/study/shell/onboard-paper.css",
+  "src/components/study/lesson/dict-setup.css",
 ];
 const readEffectiveCss = (): string =>
   readFileSync(cssPath, "utf8") +
@@ -354,9 +361,16 @@ describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
     // quiz-teacher/week-teacher and mistakes-cta (exam-view +
     // lesson-tests-tab). 3a checkpoints re-ran clean. Growth from here
     // must consolidate, not add.
+    // task 161 (§8.3 wave 15): re-based 251 → 247 — the task-64 sweep band
+    // dissolved: its four remaining tinted gradient painters (4 selector
+    // lines) each beside its single owner: home/listen-hero.css,
+    // duel/name-cta.css, shell/onboard-paper.css, lesson/dict-setup.css
+    // (NEW files — four feature areas, no co-render family). 3a
+    // checkpoints re-ran clean. Growth from here must consolidate, not
+    // add.
     const sel = lines.filter((l) => /^\s*\.[a-z]/.test(l) && !l.includes("→")).length;
     expect(sel).toBeLessThanOrEqual(505);
-    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(251);
+    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(247);
   });
 });
 
@@ -1489,6 +1503,12 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
     "src/components/study/practice/smart-hero.css": [".dark .smart-hero { background-image: linear-gradient(to left, rgba(76, 29, 149, 0.45), rgba(24, 21, 18, 0.9)) !important; }"],
     "src/components/study/exam/konkur-hero.css": [".dark .konkur-hero { background-image: linear-gradient(to left, rgba(124, 45, 18, 0.62), rgba(24, 21, 18, 0.94)) !important; }"],
     "src/components/study/exam/exam-dict-cta.css": [".dark .exam-dict-cta { background-image: linear-gradient(to left, rgba(6, 55, 40, 0.5), rgba(24, 21, 18, 0.92)) !important; }"],
+    // wave 15 (task 161) — the task-64 sweep band dissolved, verbatim
+    // single lines (listen-hero/name-cta/onboard-paper/dict-setup)
+    "src/components/study/home/listen-hero.css": [".dark .listen-hero { background-image: linear-gradient(to left, rgba(8, 51, 68, 0.5), rgba(19, 78, 74, 0.4), rgba(24, 21, 18, 0.92)) !important; }"],
+    "src/components/study/duel/name-cta.css": [".dark .name-cta { background-image: linear-gradient(to left, rgba(6, 55, 40, 0.5), rgba(19, 78, 74, 0.4)) !important; }"],
+    "src/components/study/shell/onboard-paper.css": [".dark .onboard-paper { background-image: linear-gradient(to left, rgba(6, 55, 40, 0.4), rgba(24, 21, 18, 0.92), rgba(24, 21, 18, 0.92)) !important; }"],
+    "src/components/study/lesson/dict-setup.css": [".dark .dict-setup { background-image: linear-gradient(to bottom, rgba(59, 32, 96, 0.4), transparent) !important; }"],
   };
 
   it("keeps every extracted feature file present with its key selectors", () => {
@@ -1619,6 +1639,12 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
       "\n.dark .smart-hero {",
       "\n.dark .konkur-hero {",
       "\n.dark .exam-dict-cta {",
+      // wave 15 (task 161) — \n-prefixed with " {" suffix per the standing
+      // lesson; the tombstone mentions only file paths (selector-pattern-free)
+      "\n.dark .listen-hero {",
+      "\n.dark .name-cta {",
+      "\n.dark .onboard-paper {",
+      "\n.dark .dict-setup {",
     ]) {
       expect(css, `globals.css still carries a moved rule: ${gone}`).not.toContain(gone);
     }
@@ -1641,7 +1667,7 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
     expect(css).toContain(".dark .daily-quests .text-violet-700,.dark .leaderboard.duel-mode .text-fuchsia-300");
   });
 
-  it("features.css manifest imports all twenty-five files; layout.tsx loads it right after globals.css", () => {
+  it("features.css manifest imports all twenty-nine files; layout.tsx loads it right after globals.css", () => {
     const manifest = readFileSync(resolve(process.cwd(), "src/app/features.css"), "utf8");
     for (const p of featureCssPaths) {
       expect(manifest, `manifest line missing for ${p}`).toContain(`@import "${p.replace("src/", "../")}";`);

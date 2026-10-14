@@ -1,0 +1,6 @@
+/* leaderboard duel-mode CTA — dark painter (§8.3 wave 15, task 161)
+   Owner: duel/leaderboard.tsx (line 304 — the only .name-cta consumer).
+   The light gradient is the element's own utility (from-emerald-50
+   to-teal-50); dark repaints through this migrated !important painter —
+   position-independent (features.css loads right after globals.css). */
+.dark .name-cta { background-image: linear-gradient(to left, rgba(6, 55, 40, 0.5), rgba(19, 78, 74, 0.4)) !important; }
