@@ -428,9 +428,11 @@ body {
 /* wave 7 (task 145): the four rush dark gradients (hero/done/board-strip/
    board-hint) moved to duel/rush.css beside their owner — the hero/done
    merge also retired the masked wave-1 stops there (one painter per head). */
-.dark .dd-win { background-image: linear-gradient(to bottom left, rgba(6, 55, 40, 0.55), rgba(19, 78, 74, 0.4)) !important; }
-.dark .dd-tie { background-image: linear-gradient(to bottom left, rgba(69, 48, 12, 0.55), rgba(88, 44, 14, 0.4)) !important; }
-.dark .dd-lose { background-image: linear-gradient(to bottom left, rgba(88, 18, 30, 0.55), rgba(124, 45, 18, 0.4)) !important; }
+/* wave 8 (task 147): the three dd-* outcome gradients (win/tie/lose) moved
+   to duel/duel-dark.css beside the duel-done dark family — the attribute-
+   variant background-images there had been permanently masked by these
+   !important painters and retired in the same move (one background painter
+   per outcome head). */
 
 /* scrollbar */
 .dark .nice-scroll { scrollbar-color: #3d372f transparent; }

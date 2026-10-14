@@ -280,9 +280,19 @@ describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
     // the dd-* trio stays this wave (duel-done family residue — wave-8
     // candidate). 3a checkpoint re-run clean. Growth from here must
     // consolidate, not add.
+    // task 147 (§8.3 wave 8): re-based 269 → 266 — the three dd-* outcome
+    // gradients (win/tie/lose, 3 selector lines → duel/duel-dark.css) joined
+    // the duel-done dark family beside their owner; the attribute-variant
+    // background-images there had been PERMANENTLY MASKED by these
+    // !important painters (every duel-done card carries exactly one dd-*
+    // head beside its border-*-300 class) and retired in the same move —
+    // one background painter per outcome head (the wave-7 service, now
+    // performed for duel-done). Tombstone selector-pattern-free; the
+    // 3a checkpoints re-ran clean. Growth from here must consolidate,
+    // not add.
     const sel = lines.filter((l) => /^\s*\.[a-z]/.test(l) && !l.includes("→")).length;
     expect(sel).toBeLessThanOrEqual(505);
-    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(269);
+    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(266);
   });
 });
 
@@ -1380,7 +1390,11 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
     // wave 3 (task 137) — the A4 paper family; the print band stays global
     "src/components/study/reports/official-report.css": [".official-overlay { background-color: rgb(12 10 9 / 0.68); }", ".dark .official-report {\n  --color-stone-50: #fafaf9;", ".or-table th { background-color: #f5f5f4;", ".or-teacher { background-color: #faf5ff;", ".or-chip-fresh {"],
     // wave 4 (task 139)
-    "src/components/study/duel/duel-dark.css": [".dark .duel-hero {", ".dark .duel-card {", ".dark .duel-code {", ".dark .duel-hud {", '.dark .duel-done[class*="border-emerald-300"]', ".dark .leaderboard.duel-mode .ring-fuchsia-200", ".dark .leaderboard.duel-mode .from-fuchsia-300 {"],
+    "src/components/study/duel/duel-dark.css": [".dark .duel-hero {", ".dark .duel-card {", ".dark .duel-code {", ".dark .duel-hud {", '.dark .duel-done[class*="border-emerald-300"]', ".dark .leaderboard.duel-mode .ring-fuchsia-200", ".dark .leaderboard.duel-mode .from-fuchsia-300 {",
+      // wave 8 (task 147): the dd-* outcome gradients, verbatim single lines
+      ".dark .dd-win { background-image: linear-gradient(to bottom left, rgba(6, 55, 40, 0.55), rgba(19, 78, 74, 0.4)) !important; }",
+      ".dark .dd-tie { background-image: linear-gradient(to bottom left, rgba(69, 48, 12, 0.55), rgba(88, 44, 14, 0.4)) !important; }",
+      ".dark .dd-lose { background-image: linear-gradient(to bottom left, rgba(88, 18, 30, 0.55), rgba(124, 45, 18, 0.4)) !important; }"],
     // wave 5 (task 141)
     "src/components/study/practice/daily-quests.css": ["@keyframes reward-shine", ".reward-shimmer {", ".dark .daily-quests {", ".dark .daily-quests .bg-stone-50\\/60", ".dark .daily-quests .quest-row:hover", ".dark .daily-quests .quest-row.border-emerald-300 {", ".dark .daily-quests .text-emerald-800 { color: #a7f3d0; }"],
     // wave 2 (task 135)
@@ -1478,6 +1492,11 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
       "\n.dark .rush-done {",
       "\n.dark .rush-board-strip {",
       "\n.dark .rush-board-hint {",
+      // wave 8 (task 147) — \n-prefixed with " {" suffix per the standing
+      // lesson; the tombstone is written selector-pattern-free
+      "\n.dark .dd-win {",
+      "\n.dark .dd-tie {",
+      "\n.dark .dd-lose {",
     ]) {
       expect(css, `globals.css still carries a moved rule: ${gone}`).not.toContain(gone);
     }

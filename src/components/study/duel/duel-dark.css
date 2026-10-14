@@ -3,8 +3,12 @@
    (hero/card/code/hud/done/think) and the .dark .leaderboard.duel-mode
    standings/podium (Task-36), verbatim.
    Owner: src/components/study/duel/ — duel-setup.tsx, duel-play.tsx,
-   duel-countdown.tsx, leaderboard.tsx (the leaderboard lives IN the duel
-   folder; its duel-mode scope is duel presentation).
+   duel-countdown.tsx, duel-done.tsx, leaderboard.tsx (the leaderboard lives
+   IN the duel folder; its duel-mode scope is duel presentation).
+   Wave 8 (task 147) appended the dd-* win/tie/lose outcome gradients from
+   globals.css and retired the attribute-rule background-images those
+   !important painters had been silently masking — one background painter
+   per outcome head.
    Always loaded via the src/app/features.css manifest; cascade isolation by
    construction — the wave-4 scan found zero equal-specificity competitors
    for the moved heads outside the band. Cross-family focal layers stay in
@@ -80,16 +84,27 @@
 .dark .duel-card .hover\:bg-fuchsia-50\/50:hover { background-color: rgb(74 4 78 / 0.3); }
 .dark .duel-card .hover\:border-fuchsia-300:hover { border-color: rgb(240 171 252 / 0.5); }
 
+/* wave 8 (task 147) — the dd-* outcome gradients moved here from globals
+   verbatim (still the !important winners). They had been silently masking
+   the background-images of the attribute rules below — every duel-done card
+   carries exactly one dd-* head beside its border-*-300 class — so those
+   masked stops retire in the same move; the attribute rules keep only their
+   live border-color. One background painter per outcome head. */
+.dark .dd-win { background-image: linear-gradient(to bottom left, rgba(6, 55, 40, 0.55), rgba(19, 78, 74, 0.4)) !important; }
+.dark .dd-tie { background-image: linear-gradient(to bottom left, rgba(69, 48, 12, 0.55), rgba(88, 44, 14, 0.4)) !important; }
+.dark .dd-lose { background-image: linear-gradient(to bottom left, rgba(88, 18, 30, 0.55), rgba(124, 45, 18, 0.4)) !important; }
+
 .dark .duel-done[class*="border-emerald-300"] {
-  background-image: linear-gradient(to bottom left, rgb(2 44 34 / 0.65), rgb(4 47 46 / 0.65));
+  /* wave 8: bg-image retired — permanently masked by the dd-win gradient
+     above; the border-color stays the live painter */
   border-color: rgb(16 185 129 / 0.4);
 }
 .dark .duel-done[class*="border-amber-300"] {
-  background-image: linear-gradient(to bottom left, rgb(69 26 3 / 0.65), rgb(64 32 6 / 0.6));
+  /* wave 8: bg-image retired — permanently masked by the dd-tie gradient */
   border-color: rgb(217 119 6 / 0.45);
 }
 .dark .duel-done[class*="border-rose-300"] {
-  background-image: linear-gradient(to bottom left, rgb(76 5 25 / 0.65), rgb(64 24 18 / 0.6));
+  /* wave 8: bg-image retired — permanently masked by the dd-lose gradient */
   border-color: rgb(225 29 72 / 0.4);
 }
 /* r114: .duel-done .bg-emerald-50/70 retired — canonical band serves it
