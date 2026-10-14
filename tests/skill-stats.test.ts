@@ -13,11 +13,13 @@ import type { QuizResult } from "@/lib/study-types";
 const r = (percent: number): QuizResult => ({ correct: 1, total: 2, percent, at: "2026-10-01" });
 
 describe("lessonIdOfKey", () => {
-  it("parses lesson keys 1..3 and rejects global/unknown keys", () => {
+  it("parses lesson keys 1..6 and rejects global/unknown keys", () => {
     expect(lessonIdOfKey("1:vocab")).toBe(1);
     expect(lessonIdOfKey("3:grammar")).toBe(3);
+    expect(lessonIdOfKey("4:vocab")).toBe(4); // جزوهٔ تکمیلی دوازدهم (راند ۱۹۱)
+    expect(lessonIdOfKey("6:dictation")).toBe(6);
     expect(lessonIdOfKey("0:x-21")).toBeNull(); // bucket 0 (mistake bank) is not a lesson
-    expect(lessonIdOfKey("4:vocab")).toBeNull(); // no lesson 4 in this book
+    expect(lessonIdOfKey("99:vocab")).toBeNull(); // beyond the shelf
     expect(lessonIdOfKey("exam")).toBeNull();
     expect(lessonIdOfKey("rush")).toBeNull();
   });

@@ -6,6 +6,9 @@ export const spineColors: Record<string, string> = {
   emerald: "bg-gradient-to-b from-emerald-500 to-emerald-800",
   amber: "bg-gradient-to-b from-amber-400 to-amber-700",
   rose: "bg-gradient-to-b from-rose-500 to-rose-800",
+  violet: "bg-gradient-to-b from-violet-500 to-violet-800",
+  sky: "bg-gradient-to-b from-sky-500 to-sky-800",
+  teal: "bg-gradient-to-b from-teal-500 to-teal-800",
 };
 
 // motivational one-liner per lesson card, from the known-vocab percentage

@@ -1,0 +1,397 @@
+import type { LessonData, Reading, GrammarSection, WritingExercise } from "@/lib/study-types";
+import { W, Q, SYN, ANT, EN } from "@/lib/study-types";
+
+// =====================================================================
+// Lesson Five: "Look to the Future"  |  نگاه به آینده
+// Vision 3 (Grade 12) — Lesson Two · انطباقِ تعاملیِ جزوهٔ ویژن ۳
+// Grammar focus: Future passive + Passive with modal verbs
+// =====================================================================
+
+const vocabulary = [
+  W("achieve", "به دست آوردن، محقق کردن", "v"),
+  W("ahead", "جلوتر، پیش‌رو", "adv"),
+  W("artificial", "مصنوعی، ساختگی", "adj"),
+  W("artificial intelligence", "هوش مصنوعی", "phr"),
+  W("certain", "مطمئن، قطعی", "adj"),
+  W("certainly", "قطعاً، حتماً، بدون‌شک", "adv"),
+  W("challenge", "چالش، دشواری، به‌چالش کشیدن", "n"),
+  W("change", "تغییر دادن؛ تغییر", "v"),
+  W("come true", "تحقق یافتن، برآورده شدن (رؤیا)", "phr"),
+  W("communicate", "ارتباط برقرار کردن، گفت‌وگو کردن", "v"),
+  W("communication", "ارتباطات، مخابره", "n"),
+  W("computer", "رایانه، کامپیوتر", "n"),
+  W("crowded", "شلوغ، پرجمعیت", "adj"),
+  W("cure", "درمان کردن؛ علاج، درمان", "v"),
+  W("decrease", "کاهش یافتن، کاهش دادن", "v"),
+  W("definitely", "قطعاً، مسلماً", "adv"),
+  W("demand", "تقاضا، مطالبه؛ تقاضا داشتن", "n"),
+  W("develop", "توسعه دادن، پیشرفت کردن", "v"),
+  W("development", "توسعه، پیشرفت، آبادانی", "n"),
+  W("device", "دستگاه، وسیله", "n"),
+  W("digital", "دیجیتال، رقمی", "adj"),
+  W("discover", "کشف کردن، یافتن", "v"),
+  W("discovery", "کشف", "n"),
+  W("disease", "بیماری، مرض", "n"),
+  W("dream", "رؤیا، آرزو؛ رؤیا دیدن", "n"),
+  W("effect", "اثر، تأثیر، نتیجه", "n"),
+  W("environment", "محیط زیست؛ محیط", "n"),
+  W("expect", "انتظار داشتن، توقع داشتن", "v"),
+  W("explore", "کاوش کردن، بررسی کردن", "v"),
+  W("field", "حوزه، رشته؛ مزرعه", "n"),
+  W("forecast", "پیش‌بینی کردن؛ پیش‌بینی (هوا)", "v"),
+  W("future", "آینده، زمانِ آینده", "n"),
+  W("gadget", "وسیله، ابزار کوچک، دستگاه جادویی", "n"),
+  W("global", "جهانی، جهان‌شمول", "adj"),
+  W("goal", "هدف، مقصود", "n"),
+  W("grow", "رشد کردن، بزرگ شدن؛ کاشتن", "v"),
+  W("hope", "امید داشتن؛ امید", "v"),
+  W("imagine", "تصور کردن، خیال کردن", "v"),
+  W("improve", "بهبود بخشیدن، بهتر کردن", "v"),
+  W("in the near future", "در آیندهٔ نزدیک", "phr"),
+  W("increase", "افزایش یافتن؛ افزایش", "v"),
+  W("industry", "صنعت، صنعتی", "n"),
+  W("influence", "تأثیر گذاشتن؛ نفوذ، تأثیر", "v"),
+  W("information", "اطلاعات، خبر، داده", "n"),
+  W("intelligent", "باهوش، زیرک", "adj"),
+  W("internet", "اینترنت، شبکهٔ جهانی", "n"),
+  W("invention", "اختراع، ساختهٔ نو", "n"),
+  W("invent", "اختراع کردن، نوآوری کردن", "v"),
+  W("inventor", "مخترع", "n"),
+  W("likely", "محتمل، بااحتمال", "adj"),
+  W("machine", "ماشین، دستگاه", "n"),
+  W("maybe", "شاید، شاید هم", "adv"),
+  W("medical", "پزشکی، طبی", "adj"),
+  W("medicine", "پزشکی؛ دارو", "n"),
+  W("mission", "مأموریت، مأموریت (فضایی)", "n"),
+  W("perhaps", "شاید، چه‌بسا", "adv"),
+  W("planet", "سیاره، کرهٔ آسمانی", "n"),
+  W("population", "جمعیت، تعداد نفوس", "n"),
+  W("possible", "ممکن، امکان‌پذیر", "adj"),
+  W("predict", "پیش‌بینی کردن، پیشگویی کردن", "v"),
+  W("prediction", "پیش‌بینی، پیشگویی", "n"),
+  W("probably", "احتمالاً", "adv"),
+  W("progress", "پیشرفت کردن؛ پیشرفت", "v"),
+  W("realistic", "واقع‌بینانه، واقع‌گرایانه", "adj"),
+  W("research", "تحقیق، پژوهش", "n"),
+  W("robot", "ربات، ماشین آدم‌نما", "n"),
+  W("science", "علم", "n"),
+  W("science fiction", "علمی‌تخیلی (داستان/فیلم)", "phr"),
+  W("scientific", "علمی", "adj"),
+  W("scientist", "دانشمند", "n"),
+  W("screen", "صفحه‌نمایش، پرده", "n"),
+  W("solar system", "منظومهٔ شمسی", "phr"),
+  W("smart", "هوشمند، باهوش؛ خوش‌پوش", "adj"),
+  W("smartphone", "تلفن هوشمند، گوشی همراه", "n"),
+  W("solve", "حل کردن، حل‌وفصل کردن", "v"),
+  W("solution", "راه‌حل، محلول", "n"),
+  W("space", "فضا، فضا (کیهان)؛ جا", "n"),
+  W("space station", "ایستگاه فضایی", "phr"),
+  W("spacecraft", "فضاپیما، سفینهٔ فضایی", "n"),
+  W("technology", "فناوری، تکنولوژی", "n"),
+  W("transportation", "حمل‌ونقل، ترابری", "n"),
+  W("virtual", "مجازی، شبیه‌سازی‌شده", "adj"),
+  W("virtual reality", "واقعیت مجازی", "phr"),
+  W("wonder", "شگفتی، عجیب؛ تعجب کردن", "n"),
+];
+
+const conversation = {
+  introEn: "Listen to the conversation between Nima and Maryam, two high school students, about life in the future.",
+  introFa: "به مکالمهٔ نیما و مریم، دو دانش‌آموز دبیرستانی، دربارهٔ زندگی در آینده توجه کنید.",
+  lines: [
+    {
+      speaker: "Nima",
+      speakerFa: "نیما",
+      en: "Maryam, our teacher asked us to predict life in the year 2050. What do you think our world will be like?",
+      fa: "مریم، معلم‌مان از ما خواست زندگی در سال ۲۰۵۰ را پیش‌بینی کنیم. به نظرت دنیایمان چه شکلی خواهد بود؟",
+    },
+    {
+      speaker: "Maryam",
+      speakerFa: "مریم",
+      en: "That's a hard question, Nima. Scientists say many diseases will be cured in the future, and people will live longer.",
+      fa: "سؤال سختی است، نیما. دانشمندان می‌گویند در آینده بسیاری از بیماری‌ها درمان خواهند شد و مردم عمر طولانی‌تری خواهند داشت.",
+    },
+    {
+      speaker: "Nima",
+      speakerFa: "نیما",
+      en: "I agree. Medical research is growing fast. Maybe smart robots will be used in hospitals to help doctors.",
+      fa: "قبول دارم. تحقیقات پزشکی سریع رشد می‌کند. شاید ربات‌های هوشمند در بیمارستان‌ها برای کمک به دکترها به‌کار گرفته شوند.",
+    },
+    {
+      speaker: "Maryam",
+      speakerFa: "مریم",
+      en: "Definitely! Robots will probably be part of our daily life, like smartphones today.",
+      fa: "حتماً! ربات‌ها احتمالاً بخشی از زندگی روزمرهٔ ما خواهند بود، مثل گوشی‌های هوشمند امروز.",
+    },
+    {
+      speaker: "Nima",
+      speakerFa: "نیما",
+      en: "How about transportation? Do you really believe that flying cars will be made one day?",
+      fa: "حمل‌ونقل چطور؟ واقعاً باور داری که یک روز ماشین‌های پرنده ساخته شوند؟",
+    },
+    {
+      speaker: "Maryam",
+      speakerFa: "مریم",
+      en: "Why not? Spacecraft are already being sent to other planets. Nothing is impossible for human beings.",
+      fa: "چرا که نه؟ همین حالا فضاپیماها به سیاره‌های دیگر فرستاده می‌شوند. برای انسان هیچ‌چیز ناممکن نیست.",
+    },
+    {
+      speaker: "Nima",
+      speakerFa: "نیما",
+      en: "You're right. They say the first space hotels will be built in the next twenty years!",
+      fa: "حق با توست. می‌گویند اولین هتل‌های فضایی در بیست سال آینده ساخته خواهند شد!",
+    },
+    {
+      speaker: "Maryam",
+      speakerFa: "مریم",
+      en: "Wow! But I hope the environment will be protected, too. Clean energy must be used more and more.",
+      fa: "وای! اما امیدوارم محیط زیست هم محافظت شود. باید از انرژی پاک بیشتر و بیشتر استفاده شود.",
+    },
+    {
+      speaker: "Nima",
+      speakerFa: "نیما",
+      en: "Absolutely. In the future, most of our electricity will probably be produced by the sun and the wind.",
+      fa: "کاملاً. در آینده، بیشتر برق‌مان احتمالاً توسط خورشید و باد تولید خواهد شد.",
+    },
+    {
+      speaker: "Maryam",
+      speakerFa: "مریم",
+      en: "That sounds wonderful. But some things never change — like friendship and doing homework together!",
+      fa: "چه عالی به نظر می‌رسد. اما بعضی چیزها هرگز تغییر نمی‌کنند — مثل دوستی و با هم درس خواندن!",
+    },
+    {
+      speaker: "Nima",
+      speakerFa: "نیما",
+      en: "You said it! Let's finish our science project first; the future can wait until tomorrow.",
+      fa: "درست گفتی! بگذار اول پروژهٔ علوم‌مان را تمام کنیم؛ آینده می‌تواند تا فردا صبر کند.",
+    },
+  ],
+};
+
+const readings: Reading[] = [
+  {
+    titleEn: "Looking to the Future",
+    titleFa: "نگاهی به آینده",
+    source: "Vision 3 — Student Book: Lesson Two",
+    paragraphs: [
+      {
+        en: "What will our world be like in the year 2050? This question is asked by almost everybody, but it can only be answered by predictions. Scientists study today's world carefully, and by looking at the changes around us, they try to forecast what the future will bring.",
+        fa: "دنیای ما در سال ۲۰۵۰ چه شکلی خواهد بود؟ تقریباً همه این سؤال را می‌پرسند، اما فقط با پیش‌بینی‌ها می‌توان به آن جواب داد. دانشمندان دنیای امروز را با دقت مطالعه می‌کنند و با نگاه به تغییراتِ اطراف‌مان، تلاش می‌کنند پیش‌بینی کنند آینده چه خواهد آورد.",
+      },
+      {
+        en: "Technology will certainly play the biggest role in our future life. Smart robots will be used in factories, hospitals, and even homes. Artificial intelligence will help doctors find better cures for diseases, and medical robots will probably be able to do very difficult operations.",
+        fa: "فناوری قطعاً بزرگ‌ترین نقش را در زندگیِ آیندهٔ ما بازی خواهد کرد. ربات‌های هوشمند در کارخانه‌ها، بیمارستان‌ها و حتی خانه‌ها به‌کار گرفته خواهند شد. هوش مصنوعی به دکترها کمک خواهد کرد درمان‌های بهتری برای بیماری‌ها پیدا کنند و ربات‌های پزشکی احتمالاً می‌توانند عمل‌های خیلی سخت را انجام دهند.",
+      },
+      {
+        en: "Transportation will also change completely. Clean electric cars are being developed right now, and in the near future they may be driven on our streets. Some experts even believe that flying taxis will be built for crowded cities, so that people can move around more quickly.",
+        fa: "حمل‌ونقل هم کاملاً تغییر خواهد کرد. همین حالا ماشین‌های برقی پاک در حال توسعه‌اند و در آیندهٔ نزدیک شاید در خیابان‌های ما رانندگی شوند. بعضی از کارشناسان حتی باور دارند که تاکسی‌های پرنده برای شهرهای شلوغ ساخته خواهند شد تا مردم سریع‌تر جابه‌جا شوند.",
+      },
+      {
+        en: "Space will not be far away, either. Spacecraft are already being sent to explore other planets, and the first space stations for tourists will probably be completed in the next twenty years. Maybe one day, ordinary people will spend their holidays in space!",
+        fa: "فضا هم دور نخواهد بود. همین حالا فضاپیماها برای کاوش در سیاره‌های دیگر فرستاده می‌شوند و اولین ایستگاه‌های فضایی برای گردشگران احتمالاً در بیست سال آینده تکمیل خواهند شد. شاید یک روز، مردمِ عادی تعطیلات‌شان را در فضا بگذرانند!",
+      },
+      {
+        en: "However, the future is not only about machines. The most important challenges of tomorrow — climate change, hunger, and diseases — must be solved by human wisdom, kindness, and cooperation. If science and humanity walk together, the future will definitely be brighter than today.",
+        fa: "با این حال، آینده فقط دربارهٔ ماشین‌ها نیست. مهم‌ترین چالش‌های فردا — تغییر اقلیم، گرسنگی و بیماری‌ها — باید با خرد، مهربانی و همکاریِ انسانی حل شوند. اگر علم و انسانیت با هم قدم بردارند، آینده قطعاً روشن‌تر از امروز خواهد بود.",
+      },
+    ],
+  },
+  {
+    titleEn: "Life in the Year 2050",
+    titleFa: "زندگی در سال ۲۰۵۰",
+    source: "Vision 3 — Workbook: Lesson Two",
+    paragraphs: [
+      {
+        en: "Every year, thousands of science fiction movies and books try to imagine our future. Some of these predictions seem impossible, but history has shown that many dreams finally come true. The cell phone, for example, was only a dream one hundred years ago, but today it can be found in almost every pocket in the world.",
+        fa: "هر سال هزاران فیلم و کتاب علمی‌تخیلی تلاش می‌کنند آیندهٔ ما را تصور کنند. بعضی از این پیش‌بینی‌ها ناممکن به نظر می‌رسند، اما تاریخ نشان داده است که بسیاری از رؤیاها سرانجام تحقق می‌یابند. برای مثال، تلفن همراه صد سال پیش فقط یک رؤیا بود، اما امروز تقریباً در هر جیبی از دنیا پیدا می‌شود.",
+      },
+      {
+        en: "Education will be one of the fields that change the most. In the future, lessons will probably be taught by smart screens and virtual reality, so students can visit ancient cities or walk inside the human body without leaving their classroom. Homework may be checked and corrected by intelligent programs in a few seconds.",
+        fa: "آموزش یکی از حوزه‌هایی خواهد بود که بیشترین تغییر را می‌کند. در آینده، درس‌ها احتمالاً توسط صفحه‌های هوشمند و واقعیت مجازی تدریس خواهند شد، تا دانش‌آموزان بدون ترک کلاس‌شان بتوانند شهرهای باستانی را ببینند یا درون بدن انسان قدم بزنند. شاید تکالیف در چند ثانیه توسط برنامه‌های هوشمند بررسی و تصحیح شوند.",
+      },
+      {
+        en: "The world's population is growing fast, so crowded cities must be planned better. In the cities of tomorrow, more trees will be planted, and buildings will be covered with solar panels. Clean water and clean air will be protected by strict laws, because a healthy environment cannot be replaced by any technology.",
+        fa: "جمعیتِ دنیا سریع رشد می‌کند، پس باید شهرهای شلوغ بهتر برنامه‌ریزی شوند. در شهرهای فردا، درخت‌های بیشتری کاشته خواهد شد و ساختمان‌ها با پنل‌های خورشیدی پوشانده خواهند شد. آب پاک و هوای پاک با قوانین سخت‌گیرانه محافظت خواهند شد، چون هیچ فناوری‌ای جایگزینِ یک محیط زیست سالم نمی‌شود.",
+      },
+      {
+        en: "Work will also look different. Many jobs that are done by people today will be done by machines in the future, but new jobs will be created at the same time. Experts say that creativity, teamwork, and problem-solving will be more important than ever, because these skills cannot be replaced by robots.",
+        fa: "کار هم شکل دیگری خواهد داشت. بسیاری از شغل‌هایی که امروز توسط انسان‌ها انجام می‌شوند، در آینده توسط ماشین‌ها انجام خواهند شد، اما هم‌زمان شغل‌های جدیدی ساخته خواهند شد. کارشناسان می‌گویند خلاقیت، کار گروهی و حل مسئله بیشتر از همیشه مهم خواهند بود، چون این مهارت‌ها با ربات جایگزین نمی‌شوند.",
+      },
+      {
+        en: "Nobody can predict the future with one hundred percent accuracy, and that is the beauty of it. The future is being built today — in our schools, laboratories, and minds. So, dear students, study well, dream big, and remember: the world of 2050 will be made by the decisions you make now.",
+        fa: "هیچ‌کس نمی‌تواند آینده را با صد در صد دقت پیش‌بینی کند، و زیباییِ آینده همین است. آینده امروز ساخته می‌شود — در مدرسه‌ها، آزمایشگاه‌ها و ذهن‌های ما. پس، دانش‌آموزان عزیز، خوب درس بخوانید، بزرگ رؤیا ببینید و یادتان باشد: دنیای ۲۰۵۰ با تصمیم‌هایی که الان می‌گیرید ساخته خواهد شد.",
+      },
+    ],
+  },
+];
+
+const grammar: GrammarSection[] = [
+  {
+    title: "آیندهٔ مجهول (Future Passive)",
+    html: `
+      <p class="text-[15px] leading-8 text-slate-700 mb-3">وقتی کاری در آینده «بر روی» فاعل انجام می‌شود، از ساختار ${EN(
+        "will be + شکل سوم فعل (p.p.)"
+      )} استفاده می‌کنیم: ${EN("The results <b>will be announced</b> soon.")} «نتایج به‌زودی اعلام خواهند شد.»</p>
+      <div class="overflow-x-auto"><table class="w-full text-sm mb-3 border border-stone-200 rounded-lg overflow-hidden"><thead><tr class="bg-sky-700 text-white"><th class="px-3 py-2">فعال</th><th class="px-3 py-2">مجهول</th><th class="px-3 py-2">معنی</th></tr></thead><tbody>
+      <tr class="odd:bg-stone-50"><td class="px-3 py-2 border-t border-stone-100" dir="ltr">They will build <b>a new hospital</b>.</td><td class="px-3 py-2 border-t border-stone-100" dir="ltr"><b>A new hospital</b> will be built.</td><td class="px-3 py-2 border-t border-stone-100">یک بیمارستان جدید ساخته خواهد شد.</td></tr>
+      <tr class="odd:bg-stone-50"><td class="px-3 py-2 border-t border-stone-100" dir="ltr">They will announce <b>the results</b>.</td><td class="px-3 py-2 border-t border-stone-100" dir="ltr"><b>The results</b> will be announced.</td><td class="px-3 py-2 border-t border-stone-100">نتایج اعلام خواهند شد.</td></tr>
+      <tr class="odd:bg-stone-50"><td class="px-3 py-2 border-t border-stone-100" dir="ltr">They won't allow <b>smoking</b> here.</td><td class="px-3 py-2 border-t border-stone-100" dir="ltr"><b>Smoking</b> won't be allowed here.</td><td class="px-3 py-2 border-t border-stone-100">اینجا سیگار کشیدن اجازه داده نخواهد شد.</td></tr>
+      <tr class="odd:bg-stone-50"><td class="px-3 py-2 border-t border-stone-100" dir="ltr">Will they invite <b>us</b>?</td><td class="px-3 py-2 border-t border-stone-100" dir="ltr">Will <b>we</b> be invited?</td><td class="px-3 py-2 border-t border-stone-100">آیا ما دعوت خواهیم شد؟</td></tr>
+      </tbody></table></div>
+      <div class="bg-sky-50 border border-sky-200 rounded-lg p-3 text-sm leading-7 text-sky-900 mb-3">💡 <b>نکتهٔ کنکوری:</b> بعد از ${EN(
+        "will"
+      )} همیشه ${EN(
+        "be"
+      )} می‌آید، هرگز is/was نمی‌آید: ${EN(
+        "The work <b>will be done</b> tomorrow. (NOT: will done / will is done)"
+      )} — منفی: ${EN("won't be + p.p.")} و سؤالی: ${EN("Will + فاعل + be + p.p.")}</div>`,
+  },
+  {
+    title: "مجهول با افعال ناقص (Passive with Modal Verbs)",
+    html: `
+      <p class="text-[15px] leading-8 text-slate-700 mb-3">ساختار: ${EN(
+        "can / could / may / might / must / should + be + شکل سوم فعل (p.p.)"
+      )}. فعلِ ناقص نشان‌دهندهٔ توانایی، اجبار یا احتمال است و «be» پُلِ ورود به مجهول می‌شود.</p>
+      <div class="overflow-x-auto"><table class="w-full text-sm mb-3 border border-stone-200 rounded-lg overflow-hidden"><thead><tr class="bg-sky-700 text-white"><th class="px-3 py-2">فعل ناقص</th><th class="px-3 py-2">مثال</th><th class="px-3 py-2">معنی</th></tr></thead><tbody>
+      <tr class="odd:bg-stone-50"><td class="px-3 py-2 border-t border-stone-100" dir="ltr">can</td><td class="px-3 py-2 border-t border-stone-100" dir="ltr">The keys can be found in the drawer.</td><td class="px-3 py-2 border-t border-stone-100">کلیدها می‌توانند در کشو پیدا شوند.</td></tr>
+      <tr class="odd:bg-stone-50"><td class="px-3 py-2 border-t border-stone-100" dir="ltr">must</td><td class="px-3 py-2 border-t border-stone-100" dir="ltr">The environment must be protected.</td><td class="px-3 py-2 border-t border-stone-100">باید از محیط زیست محافظت شود.</td></tr>
+      <tr class="odd:bg-stone-50"><td class="px-3 py-2 border-t border-stone-100" dir="ltr">should</td><td class="px-3 py-2 border-t border-stone-100" dir="ltr">More trees should be planted in cities.</td><td class="px-3 py-2 border-t border-stone-100">باید درخت‌های بیشتری در شهرها کاشته شود.</td></tr>
+      <tr class="odd:bg-stone-50"><td class="px-3 py-2 border-t border-stone-100" dir="ltr">may / might</td><td class="px-3 py-2 border-t border-stone-100" dir="ltr">This disease may be cured in the future.</td><td class="px-3 py-2 border-t border-stone-100">شاید این بیماری در آینده درمان شود.</td></tr>
+      <tr class="odd:bg-stone-50"><td class="px-3 py-2 border-t border-stone-100" dir="ltr">cannot</td><td class="px-3 py-2 border-t border-stone-100" dir="ltr">This problem cannot be solved easily.</td><td class="px-3 py-2 border-t border-stone-100">این مسئله نمی‌تواند به‌سادگی حل شود.</td></tr>
+      </tbody></table></div>
+      <div class="bg-amber-50 border border-amber-200 rounded-lg p-3 text-sm leading-7 text-amber-900">💡 <b>نکات کنکوری:</b><br>• بعد از مدال فقط <b>be</b> می‌آید: ${EN(
+        "The letter <b>must be sent</b>. (NOT: must sent / must be send)"
+      )}<br>• منفی‌سازی روی مدال می‌افتد، نه روی be: ${EN(
+        "The door <b>cannot be opened</b>."
+      )}<br>• ${EN(
+        "have to / be going to"
+      )} هم مجهول می‌شوند: ${EN("The work <b>has to be finished</b> today. — The city <b>is going to be changed</b>.")}</div>`,
+  },
+  {
+    title: "تشخیصِ مجهول در تست‌های کنکور",
+    html: `
+      <p class="text-[15px] leading-8 text-slate-700 mb-3">در بیشتر تست‌ها، باید از «قرینه» بفهمی که جمله مجهول است و بعد ساختار درست را بسازی. سه قرینهٔ اصلی:</p>
+      <div class="overflow-x-auto"><table class="w-full text-sm mb-3 border border-stone-200 rounded-lg overflow-hidden"><thead><tr class="bg-sky-700 text-white"><th class="px-3 py-2">قرینه</th><th class="px-3 py-2">نشانه</th><th class="px-3 py-2">مثال</th></tr></thead><tbody>
+      <tr class="odd:bg-stone-50"><td class="px-3 py-2 border-t border-stone-100">حرف اضافهٔ by</td><td class="px-3 py-2 border-t border-stone-100">...by + کنندهٔ کار</td><td class="px-3 py-2 border-t border-stone-100" dir="ltr">The poem was written <b>by Hafez</b>.</td></tr>
+      <tr class="odd:bg-stone-50"><td class="px-3 py-2 border-t border-stone-100">فاعلِ بی‌کنش</td><td class="px-3 py-2 border-t border-stone-100">فاعل نمی‌تواند کار را انجام دهد</td><td class="px-3 py-2 border-t border-stone-100" dir="ltr">The window <b>was broken</b>.</td></tr>
+      <tr class="odd:bg-stone-50"><td class="px-3 py-2 border-t border-stone-100">زمان + معنی</td><td class="px-3 py-2 border-t border-stone-100">tomorrow/ago + کارِ بر روی فاعل</td><td class="px-3 py-2 border-t border-stone-100" dir="ltr">A new school <b>will be opened</b> here.</td></tr>
+      </tbody></table></div>
+      <div class="bg-sky-50 border border-sky-200 rounded-lg p-3 text-sm leading-7 text-sky-900">💡 <b>جمع‌بندیِ طلایی:</b> مجهول در هر زمانی = فاعلِ جدید + فعلِ be به همان زمان + p.p. پس:
+      <br>• حال ساده → ${EN("is/are + p.p.")} · گذشتهٔ ساده → ${EN("was/were + p.p.")} · آینده → ${EN(
+        "will be + p.p."
+      )} · مدال‌دار → ${EN("مدال + be + p.p.")}
+      <br>• اگر هر چهار گزینه شکل سومِ فعل (p.p.) بودند، فقط «فعلِ be یا مدال» را با قرینهٔ زمانی چک کن.
+      <br>• ${EN("be made of / be made from / be covered with / be interested in / be worried about")} عبارت‌های مجهولِ پرتکرارِ کنکورند.</div>`,
+  },
+];
+
+const writing: WritingExercise[] = [
+  { id: "l5-w1", fa: "مسئله‌ها باید فوراً حل شوند.", answer: ["Problems", "must", "be", "solved", "immediately"], hint: "مجهول با مدال: must + be + p.p." },
+  { id: "l5-w2", fa: "کلیدها می‌توانند در کشو پیدا شوند.", answer: ["The", "keys", "can", "be", "found", "in", "the", "drawer"], hint: "بعد از can همیشه be + شکل سوم فعل" },
+  { id: "l5-w3", fa: "این ساختمان سال آینده تکمیل خواهد شد.", answer: ["This", "building", "will", "be", "completed", "next", "year"], hint: "آیندهٔ مجهول: will be + p.p." },
+  { id: "l5-w4", fa: "کارها باید امروز انجام شوند.", answer: ["The", "jobs", "must", "be", "done", "today"], hint: "must + be + p.p." },
+  { id: "l5-w5", fa: "نامهٔ شما به‌زودی فرستاده خواهد شد.", answer: ["Your", "letter", "will", "be", "sent", "soon"], hint: "قرینهٔ «به‌زودی» → آیندهٔ مجهول" },
+  { id: "l5-w6", fa: "باید درخت‌های بیشتری در شهرها کاشته شود.", answer: ["More", "trees", "should", "be", "planted", "in", "cities"], hint: "should + be + p.p." },
+  { id: "l5-w7", fa: "شاید این بیماری در آینده درمان شود.", answer: ["This", "disease", "may", "be", "cured", "in", "the", "future"], hint: "may برای احتمال + be + p.p." },
+  { id: "l5-w8", fa: "این مسئله نمی‌تواند به‌سادگی حل شود.", answer: ["This", "problem", "cannot", "be", "solved", "easily"], hint: "منفی‌سازی روی مدال می‌افتد: cannot be + p.p." },
+];
+
+const synonyms = [
+  SYN("predict", "forecast", "پیش‌بینی کردن ↔ پیش‌بینی هواشناسی"),
+  SYN("definitely", "certainly", "قطعاً ↔ حتماً"),
+  SYN("perhaps", "maybe", "شاید ↔ شاید هم"),
+  SYN("likely", "probable", "محتمل ↔ بااحتمال"),
+  SYN("gadget", "device", "وسیله ↔ دستگاه"),
+  SYN("smart", "intelligent", "هوشمند ↔ باهوش"),
+  SYN("global", "worldwide", "جهانی ↔ سراسری"),
+  SYN("disease", "illness", "بیماری ↔ مرض"),
+  SYN("solve", "resolve", "حل کردن ↔ رفع کردن"),
+  SYN("improve", "develop", "بهبود بخشیدن ↔ توسعه دادن"),
+  SYN("discover", "find", "کشف کردن ↔ پیدا کردن"),
+  SYN("influence", "affect", "تأثیر گذاشتن ↔ اثر گذاشتن"),
+  SYN("hope", "wish", "امید ↔ آرزو"),
+  SYN("explore", "examine", "کاوش کردن ↔ بررسی کردن"),
+  SYN("crowded", "busy", "شلوغ ↔ پررفت‌وآمد"),
+  SYN("progress", "advance", "پیشرفت ↔ پیشروی"),
+  SYN("cure", "heal", "درمان کردن ↔ شفا دادن"),
+  SYN("effect", "impact", "اثر ↔ ضربه/تأثیر"),
+];
+
+const antonyms = [
+  ANT("increase", "decrease", "افزایش ↔ کاهش"),
+  ANT("possible", "impossible", "ممکن ↔ ناممکن"),
+  ANT("certain", "uncertain", "قطعی ↔ نامطمئن"),
+  ANT("future", "past", "آینده ↔ گذشته"),
+  ANT("likely", "unlikely", "محتمل ↔ بعید"),
+  ANT("realistic", "unrealistic", "واقع‌بینانه ↔ غیرواقع‌بینانه"),
+  ANT("intelligent", "stupid", "باهوش ↔ کم‌هوش"),
+  ANT("virtual", "real", "مجازی ↔ واقعی"),
+  ANT("global", "local", "جهانی ↔ محلی"),
+  ANT("improve", "worsen", "بهبود بخشیدن ↔ بدتر کردن"),
+  ANT("remember", "forget", "به یاد آوردن ↔ فراموش کردن"),
+  ANT("appear", "disappear", "ظاهر شدن ↔ ناپدید شدن"),
+];
+
+const quizzes = [
+  // ---------------- واژگان استاندارد (۱۵ تست) ----------------
+  Q("l5-v1", "vocab", "Scientists ---------------- that robots will do most of our jobs in the future.", ["predict", "cure", "invite", "decorate"], 0, "دانشمندان پیش‌بینی می‌کنند که ربات‌ها در آینده بیشتر کارهای ما را انجام خواهند داد."),
+  Q("l5-v2", "vocab", "The first space hotels will probably be built in the ---------------- twenty years.", ["next", "last", "past", "far"], 0, "اولین هتل‌های فضایی احتمالاً در بیست سال آینده ساخته خواهند شد."),
+  Q("l5-v3", "vocab", "Medical research is growing fast, and many diseases may soon be ----------------.", ["cured", "created", "covered", "crowded"], 0, "تحقیقات پزشکی سریع رشد می‌کند و شاید به‌زودی بسیاری از بیماری‌ها درمان شوند."),
+  Q("l5-v4", "vocab", "Life in the future will be ---------------- different from today.", ["completely", "usually", "exactly", "carefully"], 0, "زندگی در آینده کاملاً با امروز متفاوت خواهد بود."),
+  Q("l5-v5", "vocab", "Artificial ---------------- will help doctors find better cures for patients.", ["intelligence", "fiction", "reality", "population"], 0, "هوش مصنوعی به دکترها کمک خواهد کرد درمان‌های بهتری برای بیماران پیدا کنند."),
+  Q("l5-v6", "vocab", "The streets of big cities are always ---------------- during rush hours.", ["crowded", "realistic", "virtual", "digital"], 0, "خیابان‌های شهرهای بزرگ در ساعت‌های شلوغی همیشه پرجمعیت‌اند."),
+  Q("l5-v7", "vocab", "I hope my dream of becoming an astronaut will ---------------- one day.", ["come true", "grow up", "look forward", "take place"], 0, "امیدوارم رؤیای فضانورد شدنم یک روز تحقق یابد."),
+  Q("l5-v8", "vocab", "The scientist spent years of ---------------- on this new invention.", ["research", "screen", "machine", "field"], 0, "دانشمند سال‌ها تحقیق روی این اختراع جدید صرف کرد."),
+  Q("l5-v9", "vocab", "In science ---------------- movies, people travel to other planets easily.", ["fiction", "station", "mission", "transportation"], 0, "در فیلم‌های علمی‌تخیلی، مردم به‌سادگی به سیاره‌های دیگر سفر می‌کنند."),
+  Q("l5-v10", "vocab", "Teachers cannot be ---------------- by robots because they understand human feelings.", ["replaced", "predicted", "explored", "improved"], 0, "معلم‌ها نمی‌توانند با ربات‌ها جایگزین شوند چون احساسات انسانی را می‌فهمند."),
+  Q("l5-v11", "vocab", "The ---------------- of the world is growing fast, so we need more food and energy.", ["population", "invention", "transportation", "communication"], 0, "جمعیت دنیا سریع رشد می‌کند، پس به غذا و انرژی بیشتری نیاز داریم."),
+  Q("l5-v12", "vocab", "Weather satellites help scientists ---------------- the weather for the next few days.", ["forecast", "invent", "cure", "achieve"], 0, "ماهواره‌های هواشناسی به دانشمندان کمک می‌کنند هوای چند روز آینده را پیش‌بینی کنند."),
+  Q("l5-v13", "vocab", "With virtual ----------------, students can visit ancient cities without leaving the classroom.", ["reality", "system", "fiction", "development"], 0, "با واقعیت مجازی، دانش‌آموزان بدون ترک کلاس می‌توانند شهرهای باستانی را ببینند."),
+  Q("l5-v14", "vocab", "Technology develops fast, but some problems ---------------- very difficult to solve.", ["remain", "replace", "predict", "protect"], 0, "فناوری سریع توسعه می‌یابد، اما بعضی مسئله‌ها حل‌کردنیِ خیلی دشوار باقی می‌مانند."),
+  Q("l5-v15", "vocab", "The ---------------- of the internet has changed communication all over the world.", ["invention", "population", "mission", "medicine"], 0, "اختراعِ اینترنت ارتباطات سراسر جهان را تغییر داده است."),
+  // ---------------- واژگان کنکوری (۱۰ تست) ----------------
+  Q("l5-k1", "vocab-konkuri", "It is ---------------- that it will rain tomorrow; the sky is full of dark clouds.", ["likely", "invented", "cured", "crowded"], 0, "محتمل است که فردا باران ببارد؛ آسمان پر از ابرهای تیره است."),
+  Q("l5-k2", "vocab-konkuri", "The ---------------- of the solar system takes about 365 days for the Earth.", ["journey", "influence", "mission", "screen"], 0, "گردشِ منظومهٔ شمسی برای زمین حدوداً ۳۶۵ روز طول می‌کشد."),
+  Q("l5-k3", "vocab-konkuri", "Smart gadgets have made a great ---------------- on our daily life.", ["influence", "population", "challenge", "transportation"], 0, "ابزارهای هوشمند تأثیر بزرگی بر زندگی روزمرهٔ ما گذاشته‌اند."),
+  Q("l5-k4", "vocab-konkuri", "The spacecraft will be ---------------- into space next month for its new mission.", ["launched", "cured", "solved", "grown"], 0, "فضاپیما ماه آینده برای مأموریت جدیدش به فضا پرتاب خواهد شد."),
+  Q("l5-k5", "vocab-konkuri", "Scientists are trying to find a ---------------- for this dangerous disease.", ["cure", "dream", "screen", "machine"], 0, "دانشمندان تلاش می‌کنند برای این بیماری خطرناک درمانی پیدا کنند."),
+  Q("l5-k6", "vocab-konkuri", "Computers can keep a lot of ---------------- without forgetting any of it.", ["information", "transportation", "population", "communication"], 0, "رایانه‌ها می‌توانند اطلاعات زیادی را بدون فراموش کردن ذخیره کنند."),
+  Q("l5-k7", "vocab-konkuri", "In the future, most of our electricity will be ---------------- by the sun and the wind.", ["produced", "protected", "predicted", "explored"], 0, "در آینده، بیشتر برق‌مان توسط خورشید و باد تولید خواهد شد."),
+  Q("l5-k8", "vocab-konkuri", "The smart robots will be ---------------- to help doctors during difficult operations.", ["used", "kept", "spent", "taken"], 0, "ربات‌های هوشمند برای کمک به دکترها در طول عمل‌های سخت به‌کار گرفته خواهند شد."),
+  Q("l5-k9", "vocab-konkuri", "Some science fiction stories of the past have ---------------- come true today.", ["certainly", "probably", "possibly", "hopefully"], 0, "بعضی از داستان‌های علمی‌تخیلیِ گذشته امروز قطعاً تحقق یافته‌اند."),
+  Q("l5-k10", "vocab-konkuri", "Future cities must be ---------------- better to give people cleaner air and green parks.", ["planned", "predicted", "pressed", "praised"], 0, "شهرهای آینده باید بهتر برنامه‌ریزی شوند تا به مردم هوای پاک‌تر و پارک‌های سبز بدهند."),
+  // ---------------- گرامر و نگارش (۱۵ تست) ----------------
+  Q("l5-g1", "grammar", "The results of the competition ---------------- next week.", ["will announce", "will be announced", "are announced", "were announced"], 1, "نتایج مسابقه هفتهٔ آینده اعلام خواهند شد. (next week → آیندهٔ مجهول)"),
+  Q("l5-g2", "grammar", "This problem ---------------- easily; it needs a lot of research.", ["cannot solve", "cannot be solved", "can be solved", "must solve"], 1, "این مسئله به‌سادگی حل نمی‌شود؛ به تحقیق زیادی نیاز دارد."),
+  Q("l5-g3", "grammar", "A new subway ---------------- in this city in the near future.", ["will build", "builds", "will be built", "was built"], 2, "در آیندهٔ نزدیک یک متروی جدید در این شهر ساخته خواهد شد."),
+  Q("l5-g4", "grammar", "The environment ---------------- by all of us; it is our duty.", ["must protect", "must be protected", "should protect", "protects"], 1, "باید توسط همهٔ ما از محیط زیست محافظت شود؛ وظیفهٔ ماست."),
+  Q("l5-g5", "grammar", "The letters ---------------- as soon as the post office opens.", ["will send", "will be sent", "are sending", "sent"], 1, "نامه‌ها به‌محض باز شدنِ ادارهٔ پست فرستاده خواهند شد."),
+  Q("l5-g6", "grammar", "The keys ---------------- in the drawer yesterday; did you check there?", ["can be found", "could be found", "must be found", "should be found"], 1, "کلیدها می‌توانستند دیروز در کشو باشند؛ آنجا را چک کردی؟ (yesterday → گذشته)"),
+  Q("l5-g7", "grammar", "More trees ---------------- in our neighborhood to keep the air clean.", ["should plant", "should be planted", "must planting", "should planted"], 1, "باید درخت‌های بیشتری در محلهٔ ما کاشته شود تا هوا تمیز بماند."),
+  Q("l5-g8", "grammar", "Will the new museum ---------------- next year?", ["open", "be opened", "opened", "opening"], 1, "موزهٔ جدید سال آینده بازگشایی خواهد شد؟"),
+  Q("l5-g9", "grammar", "This disease ---------------- by a simple medicine in the future, scientists say.", ["may cure", "may be cured", "must cured", "may be cure"], 1, "دانشمندان می‌گویند شاید این بیماری در آینده با یک داروی ساده درمان شود."),
+  Q("l5-g10", "grammar", "Smoking ---------------- in public places; it is against the law.", ["must not allow", "must not be allowed", "cannot allowed", "must not allowing"], 1, "در مکان‌های عمومی نباید سیگار کشیدن اجازه داده شود؛ خلاف قانون است."),
+  Q("l5-g11", "grammar", "The homework ---------------- by intelligent programs in a few seconds tomorrow.", ["will check", "will be checked", "checked", "checks"], 1, "تکالیف فردا در چند ثانیه توسط برنامه‌های هوشمند بررسی خواهند شد."),
+  Q("l5-g12", "grammar", "Flying taxis ---------------- for crowded cities in the next ten years.", ["will build", "are building", "will be built", "built"], 2, "تاکسی‌های پرنده در ده سال آینده برای شهرهای شلوغ ساخته خواهند شد."),
+  Q("l5-g13", "grammar", "The spacecraft ---------------- into orbit tonight, and the whole world is watching.", ["will send", "will be sent", "is sent", "sends"], 1, "فضاپیما امشب به مدار فرستاده خواهد شد و تمام دنیا تماشا می‌کند."),
+  Q("l5-g14", "grammar", "Clean energy ---------------- more and more in the coming decades.", ["must use", "must be used", "must using", "must be use"], 1, "باید در دهه‌های آینده از انرژی پاک بیشتر و بیشتر استفاده شود."),
+  Q("l5-g15", "grammar", "Nobody knows exactly what ---------------- in the future.", ["will happen", "will be happened", "happened", "is happening"], 0, "هیچ‌کس دقیقاً نمی‌داند در آینده چه اتفاقی خواهد افتاد. (happen مجهول نمی‌شود)"),
+];
+
+export const lesson5: LessonData = {
+  id: 5,
+  titleEn: "Look to the Future",
+  titleFa: "نگاه به آینده",
+  tagline: "آینده، فناوری و مجهولِ آینده و مدال‌دار",
+  color: "sky",
+  grade: "دوازدهم",
+  vocabulary,
+  conversation,
+  readings,
+  grammar,
+  synonyms,
+  antonyms,
+  writing,
+  quizzes,
+};
+
+export default lesson5;

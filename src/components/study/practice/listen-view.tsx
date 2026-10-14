@@ -11,6 +11,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { LESSONS_META, lessonOrdinalFa } from "@/data/lesson-meta";
 import {
   Headphones,
   Volume2,
@@ -216,10 +217,8 @@ export default function ListenView() {
   // ------------------------------ SETUP ------------------------------
   if (phase === "setup") {
     const lessonOptions = [
-      { id: 0, label: "هر سه درس" },
-      { id: 1, label: "درس اول" },
-      { id: 2, label: "درس دوم" },
-      { id: 3, label: "درس سوم" },
+      { id: 0, label: "همهٔ درس‌ها" },
+      ...LESSONS_META.map((l) => ({ id: l.id, label: `درس ${lessonOrdinalFa(l.id)}` })),
     ];
     return (
       <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="overflow-hidden rounded-2xl border border-cyan-200 bg-white shadow-sm">

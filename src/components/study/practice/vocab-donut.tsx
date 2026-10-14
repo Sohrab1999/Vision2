@@ -62,7 +62,7 @@ export default function VocabDonut() {
           <div>
             <h2 className="text-sm font-extrabold text-stone-800">پیشرفت واژگان کتاب</h2>
             <p className="text-[11.5px] text-stone-500">
-              سهم واژه‌های «بلدم» از {faNum(totalVocabulary)} واژهٔ سه درس
+              سهم واژه‌های «بلدم» از {faNum(totalVocabulary)} واژهٔ کتاب
             </p>
           </div>
         </div>

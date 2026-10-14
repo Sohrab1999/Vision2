@@ -52,12 +52,18 @@ export interface QuizQuestion {
   note?: string;
 }
 
+export type LessonColor = "emerald" | "amber" | "rose" | "violet" | "sky" | "teal";
+
+export type LessonGrade = "یازدهم" | "دوازدهم";
+
 export interface LessonData {
   id: number;
   titleEn: string;
   titleFa: string;
   tagline: string;
-  color: "emerald" | "amber" | "rose";
+  color: LessonColor;
+  /** پایهٔ تحصیلی — درس‌های ۱-۳ یازدهم (جزوهٔ اصلی) و ۴-۶ دوازدهم (تکمیلی) */
+  grade: LessonGrade;
   vocabulary: VocabWord[];
   conversation: { introEn: string; introFa: string; lines: DialogueLine[] };
   readings: Reading[];

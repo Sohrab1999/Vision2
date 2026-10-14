@@ -16,12 +16,12 @@ describe("نقشهٔ پوشش — کامپوننت (Task 174)", () => {
     useStudy.setState({ results: {}, known: {} });
   });
 
-  it("تازه‌کار: سه درس، هر شش چیپِ خط‌چینِ «—»، شکافِ درس ۱ «تست واژگان»، چیپِ جمع صفر", () => {
+  it("تازه‌کار: شش درس، هر سی‌وشش چیپِ خط‌چینِ «—»، شکافِ درس ۱ «تست واژگان»، چیپِ جمع صفر", () => {
     render(<CoverageMapSection />);
     expect(screen.getByLabelText("نقشهٔ پوشش مهارت‌ها")).toBeInTheDocument();
-    expect(screen.getAllByText("تست واژگان —").length).toBeGreaterThanOrEqual(3);
-    expect(screen.getAllByText(/گامِ بعدی: تست واژگان/).length).toBe(3);
-    expect(screen.getByText(/۰ از ۱۸ تلاش‌شده/)).toBeInTheDocument();
+    expect(screen.getAllByText("تست واژگان —").length).toBeGreaterThanOrEqual(6);
+    expect(screen.getAllByText(/گامِ بعدی: تست واژگان/).length).toBe(6);
+    expect(screen.getByText(/۰ از ۳۶ تلاش‌شده/)).toBeInTheDocument();
   });
 
   it("بهترینِ ثبت‌شده: چیپِ زمردیِ «۸۵٪» در درس ۱ و شکافِ جابه‌جا شده به «دیکته»", () => {
@@ -30,9 +30,9 @@ describe("نقشهٔ پوشش — کامپوننت (Task 174)", () => {
     });
     render(<CoverageMapSection />);
     expect(screen.getByText("تست واژگان ۸۵٪")).toBeInTheDocument();
-    expect(screen.getAllByText(/گامِ بعدی: تست واژگان/).length).toBe(2); // فقط درس‌های ۲ و ۳
+    expect(screen.getAllByText(/گامِ بعدی: تست واژگان/).length).toBe(5); // درس‌های ۲ تا ۶
     expect(screen.getByText(/گامِ بعدی: دیکته این درس/)).toBeInTheDocument();
-    expect(screen.getByText(/۱ از ۱۸ تلاش‌شده/)).toBeInTheDocument();
+    expect(screen.getByText(/۱ از ۳۶ تلاش‌شده/)).toBeInTheDocument();
   });
 
   it("همه‌پوشیده: شش ستونِ پر درس ۱ → «همهٔ مهارت‌های این درس تلاش شده»", () => {
@@ -43,7 +43,7 @@ describe("نقشهٔ پوشش — کامپوننت (Task 174)", () => {
     useStudy.setState({ results });
     render(<CoverageMapSection />);
     expect(screen.getByText(/همهٔ مهارت‌های این درس تلاش شده/)).toBeInTheDocument();
-    expect(screen.getByText(/۶ از ۱۸ تلاش‌شده/)).toBeInTheDocument();
+    expect(screen.getByText(/۶ از ۳۶ تلاش‌شده/)).toBeInTheDocument();
   });
 
   it("مونتاژ در کارنامه: ReportCard بخشِ نقشه را داخلِ دیالوگ نشان می‌دهد", () => {

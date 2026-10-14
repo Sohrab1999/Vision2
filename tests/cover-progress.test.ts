@@ -12,18 +12,18 @@ describe("coverProgress — حلقهٔ گنجینهٔ جلد", () => {
   it("رکوردِ عادی: شمارِ مقادیرِ درست → درصدِ گِرد + ارقامِ فارسی", () => {
     const cp = coverProgress({ "1:ability": true, "1:access": true, "1:accept": false, "1:achieve": true }, TOTAL_VOCABULARY);
     expect(cp.count).toBe(3);
-    expect(cp.percent).toBe(0); // ۳ از ۶۳۳ → ۰٫۴٪ → گِرد به ۰
+    expect(cp.percent).toBe(0); // ۳ از ۸۹۳ → ۰٫۳٪ → گِرد به ۰
     expect(cp.fa).toBe("۰");
     expect(cp.countFa).toBe("۳");
   });
 
-  it("درصدِ معنادار: ۱۲۶ از ۶۳۳ → ۲۰٪ با رقمِ فارسی", () => {
+  it("درصدِ معنادار: ۱۲۶ از ۸۹۳ → ۱۴٪ با رقمِ فارسی", () => {
     const known = Object.fromEntries(
       Array.from({ length: 126 }, (_, i) => [`w${i}`, true])
     );
     const cp = coverProgress(known, TOTAL_VOCABULARY);
-    expect(cp.percent).toBe(20);
-    expect(cp.fa).toBe("۲۰");
+    expect(cp.percent).toBe(14);
+    expect(cp.fa).toBe("۱۴");
     expect(cp.countFa).toBe("۱۲۶");
   });
 
@@ -34,7 +34,7 @@ describe("coverProgress — حلقهٔ گنجینهٔ جلد", () => {
     expect(cp.fa).toBe("۰");
   });
 
-  it("بیش‌ازصد: ۹۰۰ «بلدم» از ۶۳۳ → سقفِ ۱۰۰ (percentِ دامنه)", () => {
+  it("بیش‌ازصد: ۹۰۰ «بلدم» از ۸۹۳ → سقفِ ۱۰۰ (percentِ دامنه)", () => {
     const known = Object.fromEntries(
       Array.from({ length: 900 }, (_, i) => [`w${i}`, true])
     );

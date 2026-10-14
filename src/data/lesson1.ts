@@ -633,6 +633,7 @@ export const lesson1: LessonData = {
   titleFa: "فهمیدن مردم",
   tagline: "زبان‌های دنیا، ارتباطات و مهارت‌های یادگیری زبان",
   color: "emerald",
+  grade: "یازدهم",
   vocabulary,
   conversation,
   readings,

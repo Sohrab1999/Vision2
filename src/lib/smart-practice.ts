@@ -6,7 +6,7 @@
 //      biased toward the lesson of the weakest recorded result
 //   3. a diagnostic fill (balanced random pick) when the above are short
 //      — also the whole plan for brand-new learners
-// Pure client-side module; reads only the bundled 490-question index.
+// Pure client-side module; reads only the bundled 610-question index.
 // ------------------------------------------------------------------
 
 import { questionIndex, findQuestion } from "@/lib/explain-source";
@@ -14,6 +14,7 @@ import { skillBreakdown, lessonIdOfKey } from "@/lib/skill-stats";
 import type { QuizQuestion, QuizResult } from "@/lib/study-types";
 import type { MistakeMap } from "@/lib/study-store";
 import { faNum } from "@/lib/study-theme";
+import { TOTAL_QUESTIONS } from "@/data/lesson-meta";
 import { shuffle } from "@/lib/domain/shuffle";
 
 export interface SmartMixChip {
@@ -133,12 +134,12 @@ export function buildSmartPlan(input: {
   }
   if (diagCount > 0) {
     parts.push(
-      diagnostic ? `${faNum(diagCount)} سؤال سنجش از سه درس` : `${faNum(diagCount)} سؤال تثبیتی از سه درس`
+      diagnostic ? `${faNum(diagCount)} سؤال سنجش از همهٔ درس‌ها` : `${faNum(diagCount)} سؤال تثبیتی از همهٔ درس‌ها`
     );
   }
   reasoning = diagnostic
     ? "تازه شروع کرده‌ای؛ یک جلسهٔ سنجشِ ترکیبی می‌سازم تا نقاط قوت و ضعفت شناخته شود."
-    : `دستور این جلسه: ${parts.join(" + ")} — چیده‌شده از بانک ۴۹۰ سوالیِ جزوه.`;
+    : `دستور این جلسه: ${parts.join(" + ")} — چیده‌شده از بانک ${faNum(TOTAL_QUESTIONS)} سوالیِ کتاب.`;
 
   return {
     pool: shuffle([...picked.values()]).map((p) => p.q),

@@ -16,6 +16,7 @@ import { useMounted } from "@/lib/use-mounted";
 import { dangerWords, buildDangerQuiz, type DangerWord } from "@/lib/word-risk";
 import { buildDangerDictation, DICTATION_MIN_DANGER } from "@/lib/danger-dictation";
 import { findLesson } from "@/data";
+import { lessonNameFa } from "@/data/lesson-meta";
 import { faNum } from "@/lib/study-theme";
 import { trackEvent } from "@/lib/analytics";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -23,7 +24,7 @@ import Flashcards from "../lesson/flashcards";
 import QuizEngine from "../quiz/quiz-engine";
 import DictationTab from "../lesson/dictation-tab";
 
-const lessonFa = (id: number) => (id === 1 ? "درس اول" : id === 2 ? "درس دوم" : "درس سوم");
+const lessonFa = lessonNameFa;
 
 export default function DangerWords() {
   const wordMistakes = useStudy((s) => s.wordMistakes);

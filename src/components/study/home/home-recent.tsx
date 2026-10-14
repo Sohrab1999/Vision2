@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { RotateCcw } from "lucide-react";
-import { lessonMetaById } from "@/data/lesson-meta";
+import { lessonMetaById, lessonNameFa } from "@/data/lesson-meta";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { themeOf, faNum } from "@/lib/study-theme";
@@ -35,7 +35,7 @@ export default function HomeRecent() {
           const themeName = lesson?.color ?? globalResultTheme[key] ?? "emerald";
           const t = themeOf(themeName);
           const label = lesson
-            ? `درس ${lesson.id === 1 ? "اول" : lesson.id === 2 ? "دوم" : "سوم"} — `
+            ? `${lessonNameFa(lesson.id)} — `
             : globalResultLabel[key] ?? (cat ? categoryLabel[cat] ?? cat : null);
           return (
             <div key={key} className={`rounded-xl border ${t.border} ${t.bgSoft} p-3`}>

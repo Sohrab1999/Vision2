@@ -631,6 +631,7 @@ export const lesson3: LessonData = {
   titleFa: "هنر و فرهنگ",
   tagline: "فرهنگ ایران، صنایع دستی و جملات شرطی",
   color: "rose",
+  grade: "یازدهم",
   vocabulary,
   conversation,
   readings,

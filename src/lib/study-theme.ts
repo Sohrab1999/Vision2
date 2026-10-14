@@ -38,6 +38,33 @@ export const lessonTheme: Record<string, LessonTheme> = {
     softText: "text-rose-600",
     chipBg: "bg-rose-100 text-rose-800",
   },
+  violet: {
+    text: "text-violet-700",
+    bg: "bg-violet-700",
+    bgSoft: "bg-violet-50",
+    border: "border-violet-200",
+    gradient: "from-violet-500 to-violet-800",
+    softText: "text-violet-600",
+    chipBg: "bg-violet-100 text-violet-800",
+  },
+  sky: {
+    text: "text-sky-700",
+    bg: "bg-sky-700",
+    bgSoft: "bg-sky-50",
+    border: "border-sky-200",
+    gradient: "from-sky-500 to-sky-800",
+    softText: "text-sky-600",
+    chipBg: "bg-sky-100 text-sky-800",
+  },
+  teal: {
+    text: "text-teal-700",
+    bg: "bg-teal-700",
+    bgSoft: "bg-teal-50",
+    border: "border-teal-200",
+    gradient: "from-teal-500 to-teal-800",
+    softText: "text-teal-600",
+    chipBg: "bg-teal-100 text-teal-800",
+  },
 };
 
 export function themeOf(color: string): LessonTheme {

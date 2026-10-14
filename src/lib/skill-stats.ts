@@ -5,6 +5,7 @@
 // ------------------------------------------------------------------
 
 import type { QuizResult } from "@/lib/study-types";
+import { LESSONS_META } from "@/data/lesson-meta";
 import { uiColors } from "./ui-colors";
 
 export interface SkillDef {
@@ -41,7 +42,7 @@ export interface SkillStat {
 export function lessonIdOfKey(key: string): number | null {
   const head = key.split(":")[0];
   const n = Number(head);
-  return Number.isInteger(n) && n >= 1 && n <= 3 ? n : null;
+  return Number.isInteger(n) && n >= 1 && n <= LESSONS_META.length ? n : null;
 }
 
 export function skillBreakdown(results: Record<string, QuizResult>): SkillStat[] {

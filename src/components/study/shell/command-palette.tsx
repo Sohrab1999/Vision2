@@ -36,7 +36,7 @@ import {
 } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { useStudy, type LessonTab } from "@/lib/study-store";
-import { LESSONS_META } from "@/data/lesson-meta";
+import { LESSONS_META, TOTAL_VOCABULARY } from "@/data/lesson-meta";
 import { faNum } from "@/lib/study-theme";
 import {
   COMMAND_GROUPS,
@@ -184,7 +184,7 @@ export default function CommandPalette() {
     () => [
       // ── ناوبری ──
       { id: "nav-home", label: "خانه", group: "ناوبری", hint: "برگشت به جلد کتاب", keywords: ["home", "bookshelf"] },
-      { id: "nav-dictionary", label: "دیکشنری واژگان", group: "ناوبری", hint: "جست‌وجوی ۶۳۳+ واژه", keywords: ["dictionary", "vocab", "لغت", "culture"] },
+      { id: "nav-dictionary", label: "دیکشنری واژگان", group: "ناوبری", hint: `جست‌وجوی ${faNum(TOTAL_VOCABULARY)}+ واژه`, keywords: ["dictionary", "vocab", "لغت", "culture"] },
       { id: "nav-exam", label: "آزمون جامع", group: "ناوبری", hint: "ارزیابی پایانی کتاب", keywords: ["exam", "final test"] },
       { id: "nav-appendix", label: "ضمیمهٔ کتاب", group: "ناوبری", hint: "افعال بی‌قاعده و آواها", keywords: ["appendix", "irregular verbs", "ipa"] },
       { id: "nav-grammar", label: "متروی گرامر", group: "ناوبری", hint: "نقشهٔ سفر گرامر کتاب", keywords: ["grammar", "metro", "map"] },

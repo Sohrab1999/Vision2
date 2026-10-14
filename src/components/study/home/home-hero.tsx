@@ -54,13 +54,13 @@ export default function HomeHero() {
           جزوهٔ کاغذی ⇠ تبدیل به وب‌کتاب تعاملی
         </motion.span>
         <motion.h1 {...rise(0.07, reduceMotion)} className="mb-3 text-3xl font-black leading-[1.35] text-stone-800 sm:text-4xl">
-          آموزش زبان انگلیسی پایهٔ یازدهم
+          آموزش زبان انگلیسی دبیرستان
           <span className="mt-1 block bg-gradient-to-l from-emerald-700 via-emerald-700 to-teal-700 bg-clip-text text-transparent">
             «Vision Two» تعاملی و شنیداری
           </span>
         </motion.h1>
         <motion.p {...rise(0.14, reduceMotion)} className="mb-6 max-w-lg text-[15px] leading-8 text-stone-600">
-          هر سه درس جزوه با واژگان کامل، مکالمه و ریدینگ با <b className="text-emerald-700">روخوانی هوش مصنوعی</b>،
+          شش درس در {faNum(2)} پایه: جزوهٔ کامل یازدهم + جزوه‌های تکمیلی دوازدهم — واژگان کامل، مکالمه و ریدینگ با <b className="text-emerald-700">روخوانی هوش مصنوعی</b>،
           گرامر تشریحی، فلش‌کارت و بیش از {faNum(TOTAL_QUESTIONS)} تست کنکوری — همه در یک کتاب دیجیتال زنده.
         </motion.p>
         <motion.div {...rise(0.21, reduceMotion)} className="flex flex-wrap items-center gap-3">

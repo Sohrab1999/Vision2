@@ -57,7 +57,7 @@ export default function WordOfDay() {
               <Sparkles size={12} />
               واژهٔ امروز
             </div>
-            <div className="text-[11px] text-stone-500">هر روز یک واژهٔ تازه از سه درس</div>
+            <div className="text-[11px] text-stone-500">هر روز یک واژهٔ تازه از همهٔ درس‌ها</div>
           </div>
         </div>
 

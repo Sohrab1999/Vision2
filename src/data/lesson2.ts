@@ -657,6 +657,7 @@ export const lesson2: LessonData = {
   titleFa: "یک شیوهٔ زندگی سالم",
   tagline: "سلامتی، تکنولوژی و زمان حال کامل",
   color: "amber",
+  grade: "یازدهم",
   vocabulary,
   conversation,
   readings,

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Layers, ClipboardCheck, ArrowLeft } from "lucide-react";
-import { LESSONS_META } from "@/data/lesson-meta";
+import { LESSONS_META, lessonOrdinalFa } from "@/data/lesson-meta";
 import { useStudy, knownCountOfLesson } from "@/lib/study-store";
 import { percent } from "@/lib/domain/percent";
 import { useMounted } from "@/lib/use-mounted";
@@ -11,7 +11,8 @@ import ProgressRing from "../practice/progress-ring";
 import { spineColors, lessonCheer } from "./home-constants";
 import { uiColors } from "@/lib/ui-colors";
 
-// قفسهٔ کتاب — عine‌های کتاب + کارت سه درس با حلقهٔ پیشرفت واژگان
+// قفسهٔ کتاب — عine‌های کتاب + کارت درس‌ها با حلقهٔ پیشرفت واژگان
+// (راند ۱۹۱: شش درس — سه جزوهٔ یازدهم + سه جزوهٔ تکمیلی دوازدهم)
 
 export default function HomeBookshelf() {
   const openLesson = useStudy((s) => s.openLesson);
@@ -23,13 +24,13 @@ export default function HomeBookshelf() {
       <div className="mb-4 flex items-end justify-between">
         <h2 className="flex items-center gap-2 text-lg font-extrabold text-stone-800">
           <Layers size={19} className="text-emerald-600" />
-          قفسهٔ کتاب — سه درس
+          قفسهٔ کتاب — {faNum(LESSONS_META.length)} درس
         </h2>
-        <span className="text-xs text-stone-500">برای باز کردن هر درس کلیک کنید</span>
+        <span className="text-xs text-stone-500">یازدهم + دوازدهم · برای باز کردن هر درس کلیک کنید</span>
       </div>
 
-      {/* spines */}
-      <div className="mb-6 flex items-end justify-center gap-2 rounded-t-2xl border border-b-0 border-stone-200 shelf-strip bg-gradient-to-b from-stone-100 to-stone-50 px-6 pt-6 sm:gap-3">
+      {/* spines — راند ۱۹۳: هفت عine دیگر در ۳۹۰px جا نمی‌شود؛ نوارِ اسکرول‌پذیرِ چپ‌راست */}
+      <div className="shelf-strip nice-scroll mb-6 flex items-end justify-start gap-2 overflow-x-auto rounded-t-2xl border border-b-0 border-stone-200 bg-gradient-to-b from-stone-100 to-stone-50 px-6 pt-6 sm:justify-center sm:gap-3">
         {LESSONS_META.map((l, i) => (
           <motion.button
             key={l.id}
@@ -51,7 +52,7 @@ export default function HomeBookshelf() {
             </span>
           </motion.button>
         ))}
-        <div className="book-spine flex w-16 flex-col items-center justify-end rounded-t-lg bg-gradient-to-b from-stone-600 to-stone-800 pb-3 text-white shadow-lg sm:w-20" style={{ height: "140px" }}>
+        <div className="book-spine flex w-16 flex-col items-center justify-end rounded-t-lg bg-gradient-to-b from-stone-600 to-stone-800 pb-3 text-white shadow-lg sm:w-20" style={{ height: `${110 + LESSONS_META.length * 8}px` }}>
           <ClipboardCheck size={16} />
           <span className="mt-1 text-[10px]">آزمون</span>
         </div>
@@ -76,7 +77,7 @@ export default function HomeBookshelf() {
               <div className="mb-3 flex items-start justify-between">
                 <div>
                   <span className={`mb-1 inline-block rounded-full px-2.5 py-0.5 text-[11px] font-bold ${t.chipBg}`}>
-                    درس {l.id === 1 ? "اول" : l.id === 2 ? "دوم" : "سوم"}
+                    درس {lessonOrdinalFa(l.id)} · پایهٔ {l.grade}
                   </span>
                   <h3 className={`en-text text-xl font-bold ${t.text}`} dir="ltr">
                     {l.titleEn}

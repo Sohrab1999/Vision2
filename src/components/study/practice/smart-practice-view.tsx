@@ -150,7 +150,7 @@ export default function SmartPracticeView() {
           {plan && plan.diagnostic ? (
             <div className="mb-3 rounded-xl border border-sky-200 bg-sky-50 px-3.5 py-3">
               <p className="text-[12.5px] font-bold leading-6 text-sky-800">
-                🌱 هنوز نتیجه‌ای ثبت نشده — یک جلسهٔ سنجشِ ترکیبی از سه درس می‌سازم
+                🌱 هنوز نتیجه‌ای ثبت نشده — یک جلسهٔ سنجشِ ترکیبی از همهٔ درس‌ها می‌سازم
                 تا مهارت‌هایت اندازه‌گیری شود.
               </p>
             </div>

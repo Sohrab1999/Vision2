@@ -29,18 +29,18 @@ describe("هیرو — کتابِ زنده (Task 111)", () => {
     );
     useStudy.setState({ known });
     render(<HomeHero />);
-    expect(screen.getByRole("img", { name: "گنجینهٔ واژگانِ تو: ۲۰٪" })).toBeInTheDocument();
-    expect(screen.getByText("۱۲۶ از ۶۳۳ واژه")).toBeInTheDocument();
+    expect(screen.getByRole("img", { name: "گنجینهٔ واژگانِ تو: ۱۴٪" })).toBeInTheDocument();
+    expect(screen.getByText("۱۲۶ از ۸۹۳ واژه")).toBeInTheDocument();
     expect(screen.getByText("گنجینهٔ واژگانِ تو")).toBeInTheDocument();
   });
 
-  it("تازه‌وارد: «۰٪» و «۰ از ۶۳۳ واژه» — حلقه بدونِ کمانِ پیشرفت رندر می‌شود", () => {
+  it("تازه‌وارد: «۰٪» و «۰ از ۸۹۳ واژه» — حلقه بدونِ کمانِ پیشرفت رندر می‌شود", () => {
     render(<HomeHero />);
     const ring = screen.getByRole("img", { name: "گنجینهٔ واژگانِ تو: ۰٪" });
     expect(ring).toBeInTheDocument();
     // بدونِ کمان: فقط دو circle (زمینه + متن) — کمانِ کهربایی اصلاً نمی‌آید
     expect(ring.querySelectorAll("circle").length).toBe(1);
-    expect(screen.getByText("۰ از ۶۳۳ واژه")).toBeInTheDocument();
+    expect(screen.getByText("۰ از ۸۹۳ واژه")).toBeInTheDocument();
   });
 
   it("ساختارِ زنده: جلد کلاسِ hero-book دارد و لبهٔ صفحات aria-hidden است", () => {
@@ -63,7 +63,7 @@ describe("هیرو — کتابِ زنده (Task 111)", () => {
     useStudy.setState({ known: { a: true, b: true } });
     render(<HomeHero />);
     expect(screen.getByRole("img", { name: "گنجینهٔ واژگانِ تو: ۰٪" })).toBeInTheDocument();
-    expect(screen.getByText("آموزش زبان انگلیسی پایهٔ یازدهم")).toBeInTheDocument();
+    expect(screen.getByText("آموزش زبان انگلیسی دبیرستان")).toBeInTheDocument();
   });
 
   it("تیلتِ مسیرِ فعال: با pointer:fineِ شبیه‌سازی‌شده، pointermove چرخش می‌سازد و leave برمی‌گرداند", async () => {

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Users, Radio } from "lucide-react";
-import { lessonMetaById } from "@/data/lesson-meta";
+import { lessonMetaById, lessonNumFa } from "@/data/lesson-meta";
 import { faNum, timeAgoFa } from "@/lib/study-theme";
 import { useGlobalStats } from "./use-global-stats";
 import { feedLabel } from "./home-constants";
@@ -63,7 +63,7 @@ export default function HomeFeed() {
                 const label =
                   a.lesson === 0 || !lesson
                     ? cat
-                    : `${cat} · درس ${lesson.id === 1 ? "۱" : lesson.id === 2 ? "۲" : "۳"}`;
+                    : `${cat} · درس ${lessonNumFa(lesson.id)}`;
                 const barColor = a.percent >= 70 ? "bg-emerald-500" : a.percent >= 50 ? "bg-amber-500" : "bg-rose-400";
                 return (
                   <motion.li

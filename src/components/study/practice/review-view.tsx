@@ -6,6 +6,7 @@ import { Zap, Eraser, ArrowLeft, PartyPopper, CheckCircle2, Info, ClipboardCheck
 import { useStudy, questionSourceLesson } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
+import { lessonNameFa } from "@/data/lesson-meta";
 import { findQuestion } from "@/lib/explain-source";
 import { trackEvent } from "@/lib/analytics";
 import type { QuizQuestion } from "@/lib/study-types";
@@ -13,22 +14,19 @@ import QuizEngine from "../quiz/quiz-engine";
 
 /**
  * «مرور سریع قبل امتحان» — a mixed quiz built ONLY from the learner's own
- * mistake bank (lessons 1-3 + the 360-item exam bank). Answering a question
+ * mistake bank (all lessons + the 360-item exam bank). Answering a question
  * correctly removes it from the bank (QuizEngine does that via mistakesOf).
  */
 
 interface ResolvedMistake {
   q: QuizQuestion;
   count: number; // times answered wrong
-  bucket: string; // "0" exam bank | "1".."3" lessons
+  bucket: string; // "0" exam bank | "1".."6" lessons
 }
 
-const BUCKET_LABELS: Record<string, string> = {
-  "0": "بانک ۳۶۰ تستی",
-  "1": "درس اول",
-  "2": "درس دوم",
-  "3": "درس سوم",
-};
+/** برچسب باکت خطا — «۰» بانک ۳۶۰ و بقیه «درس اول..ششم» با کمکیِ مشترک */
+const bucketLabel = (bucket: string): string =>
+  bucket === "0" ? "بانک ۳۶۰ تستی" : lessonNameFa(Number(bucket));
 
 /** resolve mistake-bank keys ("bucket:questionId") back to bundled questions */
 function resolveMistakes(mistakes: Record<string, number>): ResolvedMistake[] {
@@ -152,7 +150,7 @@ export default function ReviewView() {
                     key={bucket}
                     className="rounded-lg bg-stone-100 px-2.5 py-1 text-[12px] font-bold text-stone-600"
                   >
-                    {BUCKET_LABELS[bucket] ?? "بخش دیگر"}: {faNum(count)}
+                    {bucketLabel(bucket)}: {faNum(count)}
                   </span>
                 ))}
               </div>

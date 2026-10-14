@@ -7,6 +7,7 @@ import type { QuizQuestion } from "@/lib/study-types";
 import { useStudy, mistakesOfLesson } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { themeOf, faNum } from "@/lib/study-theme";
+import { lessonNameFa } from "@/data/lesson-meta";
 import { trackEvent } from "@/lib/analytics";
 import { buildExamDictation, DICTATION_MIN_EXAM } from "@/lib/exam-dictation";
 import {
@@ -479,7 +480,7 @@ function LessonShortcut({ id, title, color }: { id: number; title: string; color
       onClick={() => openLesson(id)}
       className={`rounded-xl border ${t.border} ${t.bgSoft} p-3.5 text-right transition-[background-color,color,border-color,box-shadow,transform] hover:shadow-md active:scale-[0.96]`}
     >
-      <div className={`text-[13px] font-extrabold ${t.text}`}>درس {id === 1 ? "اول" : id === 2 ? "دوم" : "سوم"}</div>
+      <div className={`text-[13px] font-extrabold ${t.text}`}>{lessonNameFa(id)}</div>
       <div className="text-[12px] font-bold text-stone-600">{title}</div>
     </button>
   );

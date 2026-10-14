@@ -9,6 +9,9 @@ import { examBank } from "@/data/exam";
 import lesson1 from "@/data/lesson1";
 import lesson2 from "@/data/lesson2";
 import lesson3 from "@/data/lesson3";
+import lesson4 from "@/data/lesson4";
+import lesson5 from "@/data/lesson5";
+import lesson6 from "@/data/lesson6";
 import type { QuizQuestion } from "./study-types";
 
 let index: Map<string, QuizQuestion> | null = null;
@@ -18,12 +21,12 @@ function buildIndex(): Map<string, QuizQuestion> {
   const push = (q: QuizQuestion) => {
     if (!map.has(q.id)) map.set(q.id, q);
   };
-  for (const lesson of [lesson1, lesson2, lesson3]) for (const q of lesson.quizzes) push(q);
+  for (const lesson of [lesson1, lesson2, lesson3, lesson4, lesson5, lesson6]) for (const q of lesson.quizzes) push(q);
   for (const q of examBank) push(q);
   return map;
 }
 
-/** All 490 bundled questions (lesson quizzes + the 360-item exam bank). */
+/** All bundled questions (lesson quizzes 1-6 + the 360-item exam bank). */
 export function questionIndex(): Map<string, QuizQuestion> {
   if (!index) index = buildIndex();
   return index;

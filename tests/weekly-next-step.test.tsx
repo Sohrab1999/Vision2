@@ -83,7 +83,7 @@ describe("گامِ بعدی در هفته‌نامه — کامپوننت (Task 
     expect(chipText()).toBe("درس ۲ · تست واژگان");
   });
 
-  it("هر ۱۸ گام پوشیده → «همهٔ گام‌ها پوشیده» با تیک — عنوانِ ادامهٔ مسیر", () => {
+  it("هر ۳۶ گام پوشیده → «همهٔ گام‌ها پوشیده» با تیک — عنوانِ ادامهٔ مسیر", () => {
     seedResults({
       "1:vocab": { percent: 80, at: "2026-10-14" },
       "1:dictation": { percent: 80, at: "2026-10-14" },
@@ -103,6 +103,24 @@ describe("گامِ بعدی در هفته‌نامه — کامپوننت (Task 
       "3:writing": { percent: 80, at: "2026-10-14" },
       "3:vocab-konkuri": { percent: 80, at: "2026-10-14" },
       "3:grammar": { percent: 80, at: "2026-10-14" },
+      "4:vocab": { percent: 80, at: "2026-10-14" },
+      "4:dictation": { percent: 80, at: "2026-10-14" },
+      "4:listening": { percent: 80, at: "2026-10-14" },
+      "4:writing": { percent: 80, at: "2026-10-14" },
+      "4:vocab-konkuri": { percent: 80, at: "2026-10-14" },
+      "4:grammar": { percent: 80, at: "2026-10-14" },
+      "5:vocab": { percent: 80, at: "2026-10-14" },
+      "5:dictation": { percent: 80, at: "2026-10-14" },
+      "5:listening": { percent: 80, at: "2026-10-14" },
+      "5:writing": { percent: 80, at: "2026-10-14" },
+      "5:vocab-konkuri": { percent: 80, at: "2026-10-14" },
+      "5:grammar": { percent: 80, at: "2026-10-14" },
+      "6:vocab": { percent: 80, at: "2026-10-14" },
+      "6:dictation": { percent: 80, at: "2026-10-14" },
+      "6:listening": { percent: 80, at: "2026-10-14" },
+      "6:writing": { percent: 80, at: "2026-10-14" },
+      "6:vocab-konkuri": { percent: 80, at: "2026-10-14" },
+      "6:grammar": { percent: 80, at: "2026-10-14" },
     });
     render(<WeeklyReportSection />);
     const band = nextStepBand();

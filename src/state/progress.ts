@@ -44,10 +44,9 @@ export function mistakesOfLesson(mistakes: MistakeMap, lessonId: number | string
   return Object.keys(mistakes).filter((k) => k.startsWith(prefix)).length;
 }
 
-/** source lesson bucket (1/2/3) or exam bank (0) of a quiz question, from its id prefix */
+/** source lesson bucket (1..N lesson id) or exam bank (0) of a quiz question,
+ *  from its id prefix — generische نسخهٔ راند ۱۹۱: هر «l<عدد>» همان درس است */
 export function questionSourceLesson(q: { id: string }): number {
-  if (q.id.startsWith("l1")) return 1;
-  if (q.id.startsWith("l2")) return 2;
-  if (q.id.startsWith("l3")) return 3;
-  return 0;
+  const m = /^l(\d+)/.exec(q.id);
+  return m ? Number(m[1]) : 0;
 }

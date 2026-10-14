@@ -3,7 +3,7 @@
 // flashcard deck builder (my-words-deck.ts)
 
 import { lessons } from "@/data";
-import type { VocabWord } from "@/lib/study-types";
+import type { LessonColor, VocabWord } from "@/lib/study-types";
 
 export interface ResolvedStar {
   key: string;
@@ -13,7 +13,7 @@ export interface ResolvedStar {
   pos?: string;
   /** full vocabulary entry — lets decks/engines work on real word objects */
   word: VocabWord;
-  color: "emerald" | "amber" | "rose";
+  color: LessonColor;
   titleFa: string;
 }
 

@@ -11,6 +11,7 @@ import { GraduationCap, Play, RotateCcw } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { buildStarredQuiz } from "@/lib/starred-quiz";
 import { faNum } from "@/lib/study-theme";
+import { LESSONS_META, lessonNameFa } from "@/data/lesson-meta";
 import { trackEvent } from "@/lib/analytics";
 import type { QuizQuestion } from "@/lib/study-types";
 import type { ResolvedStar } from "@/lib/my-words-resolve";
@@ -19,11 +20,9 @@ import QuizEngine from "../quiz/quiz-engine";
 const MIN_STARS = 4; // below this a session feels hollow (1-3 words)
 const SIZE_OPTIONS = [8, 15] as const;
 
-const LESSON_LABELS: Record<string, string> = {
-  "1": "درس اول",
-  "2": "درس دوم",
-  "3": "درس سوم",
-};
+const LESSON_LABELS: Record<string, string> = Object.fromEntries(
+  LESSONS_META.map((l) => [String(l.id), lessonNameFa(l.id)])
+);
 
 export default function MyWordsReview({ stars }: { stars: ResolvedStar[] }) {
   const setView = useStudy((s) => s.setView);

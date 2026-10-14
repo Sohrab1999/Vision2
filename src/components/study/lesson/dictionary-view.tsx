@@ -104,7 +104,7 @@ export default function DictionaryView() {
           <div>
             <h1 className="text-lg font-extrabold text-stone-800">دیکشنری واژگان</h1>
             <p className="text-[12px] text-stone-500">
-              جستجو در {allWords.length} واژهٔ هر سه درس — با تلفظ صوتی
+              جستجو در {allWords.length} واژهٔ همهٔ درس‌ها — با تلفظ صوتی
             </p>
           </div>
           <button

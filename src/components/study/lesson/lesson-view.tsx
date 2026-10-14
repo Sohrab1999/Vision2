@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, BookOpen, MessageSquareText, BookOpenText, GraduationCap, ListChecks, Layers, PenLine, Ear } from "lucide-react";
 import { findLesson } from "@/data";
+import { lessonNameFa } from "@/data/lesson-meta";
 import { useStudy, knownCountOfLesson, type LessonTab } from "@/lib/study-store";
 import { percent } from "@/lib/domain/percent";
 import { themeOf, faNum } from "@/lib/study-theme";
@@ -64,7 +65,7 @@ export default function LessonView({ id }: { id: number }) {
             </button>
             <div>
               <span className={`mb-1 inline-block rounded-full px-2.5 py-0.5 text-[11px] font-bold ${t.chipBg}`}>
-                درس {lesson.id === 1 ? "اول" : lesson.id === 2 ? "دوم" : "سوم"} — پایهٔ یازدهم
+                {lessonNameFa(lesson.id)} — پایهٔ {lesson.grade}
               </span>
               <h1 className={`en-text text-2xl font-bold leading-tight ${t.text}`} dir="ltr">
                 “{lesson.titleEn}”

@@ -170,7 +170,7 @@ export async function downloadResultImage(opts: ResultImageOpts): Promise<boolea
     ctx.textAlign = "right";
     ctx.fillStyle = uiColors.stone[400];
     ctx.font = `700 19px ${family}`;
-    ctx.fillText("وب‌کتاب تعاملی زبان انگلیسی پایهٔ یازدهم · تبدیل‌شده از جزوهٔ کاغذی", W - 90, H - 74);
+    ctx.fillText("وب‌کتاب تعاملی زبان انگلیسی دبیرستان · یازدهم + دوازدهم", W - 90, H - 74);
     ctx.textAlign = "left";
     ctx.direction = "ltr";
     ctx.fillStyle = dark ? uiColors.amber[600] : uiColors.emerald[600];
