@@ -17,6 +17,7 @@ import {
   Sparkles,
   Lightbulb,
   User,
+  Target,
 } from "lucide-react";
 import {
   useStudy,
@@ -31,6 +32,8 @@ import { faNum } from "@/lib/study-theme";
 import { LESSONS_META, TOTAL_VOCABULARY } from "@/data/lesson-meta";
 import { BADGES, buildEvalInput, unlockedBadgeIds } from "@/lib/achievements";
 import { skillBreakdown, barColorFor, skillGradeFa } from "@/lib/skill-stats";
+import { buildCoverageMap, COVERAGE_SKILLS } from "@/lib/coverage-map";
+import { COVERAGE_SKILL_SHORT, heatSummary } from "@/lib/coverage-heat";
 import { trackEvent } from "@/lib/analytics";
 import type { BadgeTier } from "@/lib/achievements";
 
@@ -144,6 +147,22 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
   );
 
   const skills = useMemo(() => (mounted ? skillBreakdown(results) : []), [mounted, results]);
+
+  // skill coverage (task 176) — the task-174 lib reused on paper: which
+  // lesson x skill cell was never attempted is exactly what a teacher needs
+  // to see. Honest “—” for untried cells, no fabricated zeros.
+  const coverage = useMemo(
+    () =>
+      mounted
+        ? buildCoverageMap(
+            results,
+            known,
+            LESSONS_META.map((l) => ({ id: l.id, title: l.titleFa, words: l.vocabCount }))
+          )
+        : null,
+    [mounted, results, known]
+  );
+  const coverageHeat = useMemo(() => (coverage ? heatSummary(coverage.lessons) : null), [coverage]);
 
   const evalInput = useMemo(
     () =>
@@ -441,6 +460,84 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
               </div>
             )}
           </section>
+
+          {/* skill coverage (task 176) — teacher view: which skill was never attempted */}
+          {coverage && coverageHeat && (
+            <section className="or-section-block or-coverage mb-5">
+              <h3 className="or-section mb-2.5 flex items-center gap-1.5 text-[13.5px] font-black">
+                <Target size={14} className="text-emerald-600" />
+                پوشش مهارت‌ها
+                <span className="or-chip rounded-full px-2 py-0.5 text-[10px] font-black">
+                  {faNum(coverageHeat.attemptedCells)} از {faNum(coverageHeat.totalCells)} تلاش‌شده
+                </span>
+              </h3>
+              {coverage.attemptedSkills === 0 ? (
+                <div className="or-kpi-neutral rounded-xl px-3 py-4 text-center text-[11.5px] font-bold">
+                  هنوز هیچ مهارتی تلاش نشده — با اولین تست، این جدول پر می‌شود.
+                </div>
+              ) : (
+                <>
+                  <div className="overflow-x-auto nice-scroll">
+                    <table className="or-table w-full min-w-[540px] text-[11.5px]">
+                      <thead>
+                        <tr className="text-right">
+                          <th className="px-2 py-1.5 font-black">درس</th>
+                          {COVERAGE_SKILLS.map((sk) => (
+                            <th
+                              key={sk.key}
+                              title={sk.label}
+                              className="px-2 py-1.5 text-center font-black"
+                            >
+                              {COVERAGE_SKILL_SHORT[sk.key] ?? sk.label}
+                            </th>
+                          ))}
+                          <th className="px-2 py-1.5 font-black">گام بعدی</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {coverage.lessons.map((L) => (
+                          <tr key={L.id}>
+                            <td className="px-2 py-1.5 font-black">درس {faNum(L.id)}</td>
+                            {L.cells.map((c) =>
+                              c.best === null ? (
+                                <td
+                                  key={c.key}
+                                  title={`${c.label} — هنوز تلاش نشده`}
+                                  className="px-2 py-1.5 text-center font-bold text-stone-500"
+                                >
+                                  —
+                                </td>
+                              ) : (
+                                <td
+                                  key={c.key}
+                                  title={`${c.label} — بهترینِ ثبت‌شده ${faNum(c.best)}٪`}
+                                  className={`px-2 py-1.5 text-center font-black ${c.best < 50 ? "or-bad" : ""}`}
+                                >
+                                  {faNum(c.best)}٪
+                                </td>
+                              )
+                            )}
+                            <td
+                              className={`px-2 py-1.5 text-[10.5px] font-black ${
+                                L.covered ? "text-emerald-700" : "text-stone-500"
+                              }`}
+                            >
+                              {L.covered ? "کامل" : L.gap?.label ?? "—"}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                  <p className="or-foot mt-1.5 text-[10px] font-bold leading-4">
+                    «—» یعنی این مهارت هنوز تلاش نشده است.
+                    {coverageHeat.avgBest !== null &&
+                      ` میانگینِ بهترینِ نمراتِ تلاش‌شده: ${faNum(coverageHeat.avgBest)}٪.`}
+                  </p>
+                </>
+              )}
+            </section>
+          )}
 
           {/* monthly activity */}
           <section className="or-section-block mb-5">
