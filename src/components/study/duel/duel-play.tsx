@@ -108,7 +108,47 @@ export default function DuelPlay({ me, opp, total, cur, curQ, correctIdx, qi, pi
         <div className="duel-card rounded-2xl border border-stone-200 c-card-elevated p-8 text-center shadow-sm">
           <Loader2 size={34} className="mx-auto mb-3 animate-spin text-fuchsia-500" />
           <h2 className="mb-1 text-lg font-black text-stone-800">همهٔ سؤال‌هایت تمام شد!</h2>
-          <p className="text-[13px] text-stone-500">منتظر حریف می‌مانیم تا مسابقه تمام شود…</p>
+          {/* Task 192 — نبضِ زندهٔ حریف در لحظهٔ انتظار: همان زبانِ سلول‌های HUD
+              (emerald/rose/pulse) در ماژولِ کانونیِ انتظار؛ حالتِ «حریف هم تمام
+              کرد» و «حریف غایب» هر یک جملهٔ صادقِ خودش را دارد. */}
+          {opp && !opp.done && !opp.disconnected ? (
+            <>
+              <p className="text-[13px] text-stone-500">منتظر حریف می‌مانیم تا مسابقه تمام شود…</p>
+              <div
+                className="mx-auto mt-4 max-w-[280px] rounded-xl border border-stone-200 c-stone-60 p-3 text-right"
+                aria-label={`پیشرفت زندهٔ ${opp.name}`}
+              >
+                <div className="mb-2 flex items-center justify-between gap-2">
+                  <span className="flex min-w-0 items-center gap-1.5 text-[12px] font-extrabold text-stone-700">
+                    <span className="h-2 w-2 shrink-0 rounded-full" style={{ backgroundColor: opp.color }} />
+                    <span className="truncate">{opp.name}</span>
+                  </span>
+                  <span className="shrink-0 text-[14px] font-black text-stone-800">{faNum(opp.score)}</span>
+                </div>
+                <div className="flex gap-1" dir="ltr" aria-hidden>
+                  {Array.from({ length: total }).map((_, k) => {
+                    const wrongCount = Math.max(0, opp.answered - opp.correct);
+                    const cls =
+                      k < opp.correct
+                        ? "bg-emerald-500"
+                        : k < opp.correct + wrongCount
+                          ? "bg-rose-400"
+                          : k === opp.qi
+                            ? "animate-pulse bg-fuchsia-400"
+                            : "bg-stone-200";
+                    return <span key={k} className={`h-1.5 flex-1 rounded-full ${cls}`} />;
+                  })}
+                </div>
+                <div className="mt-1.5 text-[10.5px] font-bold text-stone-500">
+                  سؤال {faNum(Math.min(opp.qi + 1, total))} از {faNum(total)} · {faNum(opp.correct)} درست
+                </div>
+              </div>
+            </>
+          ) : opp?.done ? (
+            <p className="text-[13px] text-stone-500">حریف هم تمام کرد — منتظر جمع‌بندی داور…</p>
+          ) : (
+            <p className="text-[13px] text-stone-500">منتظر حریف می‌مانیم تا مسابقه تمام شود…</p>
+          )}
         </div>
       ) : (
         cur &&

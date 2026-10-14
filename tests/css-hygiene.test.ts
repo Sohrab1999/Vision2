@@ -726,7 +726,9 @@ describe("globals.css stone veil phase 6 (bg-stone-50/60|70 — Task 89)", () =>
       }
     };
     walk(resolve(process.cwd(), "src"));
-    expect(n60, "c-stone-60 consumers").toBe(18);
+    // task 192: +1 c-stone-60 — the duel-play waiting-card live-progress module
+    // joined the family (sanctioned growth, same primitive as the HUD cells)
+    expect(n60, "c-stone-60 consumers").toBe(19);
     expect(n70, "c-stone-70 consumers").toBe(10);
   });
 
