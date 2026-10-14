@@ -12,7 +12,7 @@ import type { DayHistoryMap, DayStat, HistoryMap } from "./study-store";
 import { faNum } from "./study-theme";
 import { questStreakMeta } from "./quest-streak";
 import { percent } from "./domain/percent";
-import { DUEL_HISTORY_CAP, DUEL_QUICK_THINK, saneThink, type DuelRecord } from "./duel-history";
+import { DUEL_HISTORY_CAP, DUEL_QUICK_THINK, duelLedgerStats, saneThink, type DuelRecord } from "./duel-history";
 
 export interface WeekTotals {
   reviews: number;
@@ -238,6 +238,14 @@ export interface WeeklyDuels {
    * خانوادهٔ دهم‌اند (evalQuickWindow + DUEL_QUICK_WEEK) — هرگز دووجهی نمی‌شود.
    */
   quickWeek: QuickWeekProfile | null;
+  /**
+   * Task 148 «امضایِ دفترچه» — آمارِ کلِ دفترچهٔ نگه‌داشته‌شده (سقفِ ۱۵) از
+   * همان duelLedgerStatsِ پنلِ نبرد و کارتِ career (تک‌منبع — صفرِ حسابِ
+   * موازی؛ هم‌زبانِ چیپِ هم‌رسانیِ «X برد از Y نبرد»). همیشه حاضر وقتی duels
+   * حاضر است — دفترچهٔ غیرخالی تنها راهِ رندرِ این بلوک است. داورگواه
+   * زیرمجموعهٔ صادقِ ۹۶ است؛ صفرش در UI ساکت می‌ماند نه اینکه ادعا کند.
+   */
+  ledger: { total: number; win: number; best: number; verified: number };
 }
 
 export interface WeeklyThink {
@@ -315,6 +323,12 @@ export function duelWeeklyStats(records: DuelRecord[] | undefined, todayKey: str
     // Task 113 — پروفایلِ هفتهٔ چابکِ همینِ پنجره؛ بدونِ گذرِ گیت null می‌آید
     // (خطِ هفته‌نامه غایب، نه صفرِ ساختگی) — هم‌ارزیابِ نشانِ ۱۱۰
     quickWeek: duelWeekQuickProfile(records, todayKey),
+    // Task 148 — امضایِ دفترچه از همان قراردادِ پنل (تک‌منبع)؛ فقط چهار
+    // عضوی که هفته‌نامه حرف می‌زند — بقیهٔ آمارِ کارتِ career مالِ پنل است
+    ledger: (() => {
+      const s = duelLedgerStats(records);
+      return { total: s.total, win: s.win, best: s.best, verified: s.verified };
+    })(),
   };
 }
 

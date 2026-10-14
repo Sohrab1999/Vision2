@@ -580,3 +580,56 @@ describe("روزهایِ هدف در هفته‌نامه — کامپوننت (T
     expect(goalLi.parentElement!.children[2]).toBe(goalLi);
   });
 });
+
+// Task 148 — «امضایِ دفترچه» در بلوکِ نبردها: آمارِ کلِ دفترچه از همان
+// duelLedgerStatsِ پنل (تک‌منبع)؛ داورگواه فقط با زیرمجموعهٔ غیرخالی.
+describe("امضایِ دفترچه در بلوکِ نبردها (Task 148)", () => {
+  beforeEach(() => {
+    cleanup();
+    useStudy.setState({
+      dayHistory: {},
+      history: {},
+      goalMetDays: [],
+      dailyGoal: 10,
+      streak: 0,
+      freezeCount: 0,
+      freezeSavedDay: "",
+      freezeUsedDays: [],
+      freezeEarnedDay: "",
+      duelHistory: [],
+    });
+  });
+
+  it("۱. خطِ امضا با چهار عضو + داورگواهِ غیرخالی", () => {
+    useStudy.setState({
+      duelHistory: [
+        duelRec({ id: "a", day: daysAgoKey(0), outcome: "win", myScore: 1100 }),
+        duelRec({ id: "b", day: daysAgoKey(1), outcome: "win", myScore: 900 }),
+        duelRec({ id: "c", day: daysAgoKey(2), outcome: "loss", myScore: 500 }),
+        duelRec({ id: "d", day: daysAgoKey(9), outcome: "tie", receiptSig: "c".repeat(64) }),
+      ],
+    });
+    render(<WeeklyReportSection />);
+    const block = duelBlock()!;
+    expect(block).toHaveTextContent("دفترچه: ۲ برد از ۴ نبرد — بهترین: ۱۱۰۰ — ۱ داورگواه");
+  });
+
+  it("۲. داورگواهِ صفر ساکت است — نه ادعای غیرواقعی، نه صفرِ ساختگی", () => {
+    useStudy.setState({
+      duelHistory: [
+        duelRec({ id: "a", outcome: "win", myScore: 700 }),
+        duelRec({ id: "b", outcome: "loss", myScore: 300 }),
+      ],
+    });
+    render(<WeeklyReportSection />);
+    const block = duelBlock()!;
+    expect(block).toHaveTextContent("دفترچه: ۱ برد از ۲ نبرد — بهترین: ۷۰۰");
+    expect(block.textContent).not.toContain("داورگواه");
+  });
+
+  it("۳. دفترچهٔ خالی: نه بلوک، نه امضا — غیبتِ صادق", () => {
+    render(<WeeklyReportSection />);
+    expect(duelBlock()).not.toBeInTheDocument();
+    expect(screen.queryByText(/دفترچه: /)).not.toBeInTheDocument();
+  });
+});

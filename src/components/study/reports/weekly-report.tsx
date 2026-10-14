@@ -455,6 +455,14 @@ export default function WeeklyReportSection() {
               {`بهترین امتیازِ همین هفته: ${faNum(digest.duels.best)}`}
             </div>
           )}
+          {/* Task 148 — «امضایِ دفترچه»: آمارِ کلِ دفترچهٔ نگه‌داشته از همان
+              duelLedgerStatsِ پنلِ نبرد (تک‌منبع — هم‌زبانِ چیپِ هم‌رسانیِ
+              «X برد از Y نبرد»)؛ داورگواه فقط وقتی زیرمجموعهٔ صادقِ ۹۶
+              غیرخالی باشد حرف می‌زند — صفرش ساکت است، نه ادعا */}
+          <div className="mt-1 text-[9.5px] font-bold text-stone-400">
+            {`دفترچه: ${faNum(digest.duels.ledger.win)} برد از ${faNum(digest.duels.ledger.total)} نبرد — بهترین: ${faNum(digest.duels.ledger.best)}`}
+            {digest.duels.ledger.verified > 0 ? ` — ${faNum(digest.duels.ledger.verified)} داورگواه` : ""}
+          </div>
           {digest.duels.truncated && (
             <p className="mt-1 text-[9px] font-bold leading-4 text-stone-400">
               دفترچه فقط ۱۵ نبردِ آخر را نگه می‌دارد — این شمارش حداقلی است.

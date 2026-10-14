@@ -771,3 +771,56 @@ describe("computeWeeklyDigest — روزهایِ هدف در های‌لایت�
     expect(d.highlights[3]).toContain("واژهٔ جدید");
   });
 });
+
+// Task 148 — «امضایِ دفترچه» — آمارِ کلِ دفترچهٔ نگه‌داشته (سقفِ ۱۵) از همان
+// duelLedgerStatsِ پنلِ نبرد (تک‌منبع — صفرِ حسابِ موازی)؛ هفته‌نامه بالاخره
+// دربارهٔ «کارنامه» هم حرف می‌زند نه فقط پنجرهٔ ۷روزه. داورگواه زیرمجموعهٔ
+// صادقِ ۹۶ است؛ صفرش در UI ساکت می‌ماند.
+describe("duelWeeklyStats — امضایِ دفترچه (Task 148)", () => {
+  it("۱. چهار عضوِ امضا از کلِ دفترچه: total/win/best/verified — نه فقط پنجره", () => {
+    const sig = "a".repeat(64);
+    const d = duelWeeklyStats(
+      [
+        rec({ id: "a", day: dayKeyBefore(T, 0), outcome: "win", myScore: 1200 }),
+        rec({ id: "b", day: dayKeyBefore(T, 1), outcome: "win", myScore: 900 }),
+        rec({ id: "c", day: dayKeyBefore(T, 2), outcome: "loss", myScore: 500 }),
+        rec({ id: "d", day: dayKeyBefore(T, 9), outcome: "tie", receiptSig: sig }),
+      ],
+      T,
+    )!;
+    expect(d.ledger).toEqual({ total: 4, win: 2, best: 1200, verified: 1 });
+    // پنجره جدا می‌ماند: امروز/دیروز/پریروز در هفته؛ day-9 در پنجرهٔ هفتهٔ پیش (۸..۱۴)
+    expect(d.thisWeek).toBe(3);
+    expect(d.lastWeek).toBe(1);
+  });
+
+  it("۲. باختِ خالص: بردِ صفر و بهترینِ صفر — صادق، نه پنهان", () => {
+    const d = duelWeeklyStats(
+      [rec({ id: "x", day: dayKeyBefore(T, 0), outcome: "loss", myScore: 0 })],
+      T,
+    )!;
+    expect(d.ledger).toEqual({ total: 1, win: 0, best: 0, verified: 0 });
+  });
+
+  it("۳. هفتهٔ آرام با دفترچهٔ قدیمی: بلوک حاضر می‌ماند و امضای دفترچه حرف می‌زند", () => {
+    const d = duelWeeklyStats(
+      [rec({ id: "old", day: dayKeyBefore(T, 10), outcome: "win", myScore: 640 })],
+      T,
+    )!;
+    expect(d.thisWeek).toBe(0);
+    expect(d.ledger).toEqual({ total: 1, win: 1, best: 640, verified: 0 });
+  });
+
+  it("۴. داورگواه زیرمجموعهٔ صادق: فقط رسیدِ همدار می‌شمارد (شکل‌سنجی مالِ sanitize است)", () => {
+    const d = duelWeeklyStats(
+      [
+        rec({ id: "a", receiptSig: "b".repeat(64) }),
+        rec({ id: "b" }),
+        rec({ id: "c" }),
+      ],
+      T,
+    )!;
+    expect(d.ledger.total).toBe(3);
+    expect(d.ledger.verified).toBe(1);
+  });
+});
