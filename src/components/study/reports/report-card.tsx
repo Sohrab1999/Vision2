@@ -169,7 +169,7 @@ export default function ReportCard({ open, onClose }: { open: boolean; onClose: 
                     {userName ? `${userName} عزیز، ` : ""}{grade.msg}
                   </p>
                 </div>
-                <span className="report-stamp flex h-16 w-16 shrink-0 rotate-6 flex-col items-center justify-center rounded-full border-2 border-dashed border-white/60 text-center text-[8px] font-black leading-3 opacity-100">
+                <span className="report-stamp flex h-16 w-16 shrink-0 rotate-6 flex-col items-center justify-center rounded-full border-2 border-dashed border-white/60 text-center text-[9px] font-black leading-3 opacity-100">
                   <Stamp size={16} className="mb-0.5" />
                   مهر
                   <br />

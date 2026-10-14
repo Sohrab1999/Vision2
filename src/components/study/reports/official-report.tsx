@@ -320,7 +320,7 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
               </p>
             </div>
             <div className="flex shrink-0 flex-col items-center gap-2">
-              <span className="or-stamp flex h-16 w-16 rotate-6 flex-col items-center justify-center rounded-full text-center text-[8px] font-black leading-3">
+              <span className="or-stamp flex h-16 w-16 rotate-6 flex-col items-center justify-center rounded-full text-center text-[9px] font-black leading-3">
                 <Stamp size={15} className="mb-0.5" />
                 مهر
                 <br />
