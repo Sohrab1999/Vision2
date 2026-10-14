@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import { ArrowUp } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -203,83 +203,92 @@ export default function StudyApp() {
     };
   }, []);
 
+  // F2 dual-channel for framer-motion (task 168, the CSS side lives in
+  // globals F2b): manual toggle → "always" (every motion component skips
+  // transform/layout animation), otherwise "user" — the OS
+  // prefers-reduced-motion preference is honored automatically, so an
+  // OS-reduced visitor no longer needs to find this app's setting.
+  const reduceMotion = settings.reduceMotion;
+
   return (
-    <div className="flex min-h-screen flex-col">
-      <Header />
-      <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-6">
-        {hydrated ? (
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={viewKey}
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.28, ease: "easeOut" }}
-            >
-              {view.type === "home" && <HomeView />}
-              {view.type === "lesson" && <LessonView id={view.id} />}
-              {view.type === "dictionary" && <DictionaryView />}
-              {view.type === "exam" && <ExamView />}
-              {view.type === "appendix" && <AppendixView />}
-              {view.type === "rush" && <RushView />}
-              {view.type === "duel" && <DuelView />}
-              {view.type === "listen" && <ListenView />}
-              {view.type === "review" && <ReviewView />}
-              {view.type === "smart" && <SmartPracticeView />}
-              {view.type === "konkur" && <KonkurView />}
-              {view.type === "grammar" && <GrammarView />}
-              {view.type === "my-words" && <MyWordsView />}
-            </motion.div>
-          </AnimatePresence>
-        ) : (
-          <div className="flex min-h-[50vh] items-center justify-center">
-            <div className="flex flex-col items-center gap-3 text-stone-400">
-              <span className="h-9 w-9 animate-spin rounded-full border-[3px] border-emerald-200 border-t-emerald-600" />
-              <span className="text-sm font-bold">در حال باز کردن کتاب...</span>
+    <MotionConfig reducedMotion={reduceMotion ? "always" : "user"}>
+      <div className="flex min-h-screen flex-col">
+        <Header />
+        <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-6">
+          {hydrated ? (
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={viewKey}
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.28, ease: "easeOut" }}
+              >
+                {view.type === "home" && <HomeView />}
+                {view.type === "lesson" && <LessonView id={view.id} />}
+                {view.type === "dictionary" && <DictionaryView />}
+                {view.type === "exam" && <ExamView />}
+                {view.type === "appendix" && <AppendixView />}
+                {view.type === "rush" && <RushView />}
+                {view.type === "duel" && <DuelView />}
+                {view.type === "listen" && <ListenView />}
+                {view.type === "review" && <ReviewView />}
+                {view.type === "smart" && <SmartPracticeView />}
+                {view.type === "konkur" && <KonkurView />}
+                {view.type === "grammar" && <GrammarView />}
+                {view.type === "my-words" && <MyWordsView />}
+              </motion.div>
+            </AnimatePresence>
+          ) : (
+            <div className="flex min-h-[50vh] items-center justify-center">
+              <div className="flex flex-col items-center gap-3 text-stone-400">
+                <span className="h-9 w-9 animate-spin rounded-full border-[3px] border-emerald-200 border-t-emerald-600" />
+                <span className="text-sm font-bold">در حال باز کردن کتاب...</span>
+              </div>
             </div>
-          </div>
+          )}
+        </main>
+
+        {/* keyboard shortcuts guide + global shortcut engine ("?" opens it) */}
+        <ShortcutGuide />
+
+        {/* فرمان‌یاب — جست‌وجوی همه‌جا (Ctrl+K / دکمهٔ هدر) */}
+        <CommandPalette />
+
+        {/* first-run welcome + personalization (F1) */}
+        <Onboarding />
+
+        {/* F4+F9 — PWA install flow, due badge & streak-freeze toasts */}
+        <PwaLayer />
+
+        {/* letter-style progress report (opened from tool cards / skill panel) */}
+        {reportMounted && (
+          <ReportCard open={reportOpen} onClose={() => setReportOpen(false)} />
         )}
-      </main>
 
-      {/* keyboard shortcuts guide + global shortcut engine ("?" opens it) */}
-      <ShortcutGuide />
-
-      {/* فرمان‌یاب — جست‌وجوی همه‌جا (Ctrl+K / دکمهٔ هدر) */}
-      <CommandPalette />
-
-      {/* first-run welcome + personalization (F1) */}
-      <Onboarding />
-
-      {/* F4+F9 — PWA install flow, due badge & streak-freeze toasts */}
-      <PwaLayer />
-
-      {/* letter-style progress report (opened from tool cards / skill panel) */}
-      {reportMounted && (
-        <ReportCard open={reportOpen} onClose={() => setReportOpen(false)} />
-      )}
-
-      {/* A4 printable official progress report (teacher/parents) */}
-      {officialMounted && (
-        <OfficialReport open={officialOpen} onClose={() => setOfficialOpen(false)} />
-      )}
-
-      {/* back to top */}
-      <AnimatePresence>
-        {showTop && (
-          <motion.button
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="fixed bottom-5 left-5 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-emerald-600 text-white shadow-lg shadow-emerald-900/30 transition-transform hover:bg-emerald-700 active:scale-90"
-            aria-label="بازگشت به بالای صفحه"
-          >
-            <ArrowUp size={19} />
-          </motion.button>
+        {/* A4 printable official progress report (teacher/parents) */}
+        {officialMounted && (
+          <OfficialReport open={officialOpen} onClose={() => setOfficialOpen(false)} />
         )}
-      </AnimatePresence>
 
-      <Footer />
-    </div>
+        {/* back to top */}
+        <AnimatePresence>
+          {showTop && (
+            <motion.button
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="fixed bottom-5 left-5 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-emerald-600 text-white shadow-lg shadow-emerald-900/30 transition-transform hover:bg-emerald-700 active:scale-90"
+              aria-label="بازگشت به بالای صفحه"
+            >
+              <ArrowUp size={19} />
+            </motion.button>
+          )}
+        </AnimatePresence>
+
+        <Footer />
+      </div>
+    </MotionConfig>
   );
 }

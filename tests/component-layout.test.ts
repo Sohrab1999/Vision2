@@ -98,4 +98,22 @@ describe("component layout §11.2 receipt (Step 10 part 2 — Task 91)", () => {
       expect(existsSync(resolve(STUDY, `${name}.ts`))).toBe(false);
     }
   });
+
+  it("study-app keeps the framer-motion dual-channel reduce-motion wiring (task 168)", () => {
+    // the CSS half of the contract is the F2b media band (css-hygiene);
+    // this quoted-string guard pins the framer-motion half: the manual
+    // toggle maps to "always", otherwise "user" so the OS-level
+    // prefers-reduced-motion preference is honored automatically. If the
+    // wrapper moves or the mapping changes, update this pin consciously.
+    const src = readFileSync(resolve(STUDY, "study-app.tsx"), "utf8");
+    expect(src).toContain("MotionConfig");
+    expect(src).toContain('reducedMotion={reduceMotion ? "always" : "user"}');
+    // the config must wrap the whole app (Header..Footer inside), not a subtree
+    const openAt = src.indexOf("<MotionConfig");
+    const divAt = src.indexOf('<div className="flex min-h-screen flex-col">');
+    const closeAt = src.lastIndexOf("</MotionConfig>");
+    expect(openAt, "MotionConfig must appear before the app shell div").toBeGreaterThanOrEqual(0);
+    expect(divAt).toBeGreaterThan(openAt);
+    expect(closeAt).toBeGreaterThan(divAt);
+  });
 });

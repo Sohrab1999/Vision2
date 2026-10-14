@@ -700,6 +700,31 @@ html.user-reduce-motion .streak-flame {
   animation: none !important;
 }
 
+/* ---------------------------------------------------------------
+   F2b — the SAME policy, automatic: the OS-level channel (task 168).
+   تا امروز فقط کلیدِ دستیِ تنظیمات به حرکتِ اضافی پایان می‌داد؛
+   کاربری که «کاهش حرکت» را در دستگاهش فعال کرده بود باید آن را
+   اینجا هم دستی روشن می‌کرد — نادیده‌گرفتنِ ترجیحِ سیستم‌عامل.
+   این بند همان چهار قانونِ F2 را زیرِ media query آینه می‌کند، پس
+   هر دو مجرا (دستی + سیستمی) یک رفتار واحد دارند؛ hard-stopِ
+   شعله هم در هر دو مجرا هست (فریمِ پایانیِ flicker چرخشِ -2deg
+   دارد — همان دلیلِ F2). جفتِ framer-motion این بند، MotionConfig
+   در StudyApp است (always=کلیدِ دستی، user=سیستم‌عامل).
+   --------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .streak-flame {
+    animation: none !important;
+  }
+}
+
 /* §8.3 wave 3 (task 137): the A4 paper family — the r27 band and the
    task-124 teacher-judgment colors — moved verbatim beside its owner:
    src/components/study/reports/official-report.css (manifest:

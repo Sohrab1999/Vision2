@@ -402,9 +402,69 @@ describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
     // overrides (fuchsia-500 bg, teal-500 border) and they were buried
     // honestly (see the band header in globals). Growth from here must
     // consolidate, not add.
+    // task 168 (a11y): re-based 166 → 167 — the FIRST ADDITIVE re-base in
+    // a long time, and it buys accessibility: the F2b band mirrors the
+    // manual reduce-motion policy under @media (prefers-reduced-motion:
+    // reduce). Only the media-scoped `.streak-flame {` hard-stop counts
+    // (+1) — `*`/`*::before`/`*::after` heads start with a star, and the
+    // manual band's flame line starts with `html.`. Growth from here must
+    // consolidate, not add.
     const sel = lines.filter((l) => /^\s*\.[a-z]/.test(l) && !l.includes("→")).length;
     expect(sel).toBeLessThanOrEqual(505);
-    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(166);
+    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(167);
+  });
+});
+
+describe("reduce-motion dual-channel contract (task 168)", () => {
+  // F2 (manual: settings hub → html.user-reduce-motion) and F2b (OS:
+  // @media prefers-reduced-motion) are the SAME policy on two channels.
+  // Before 168 only the manual channel existed — a visitor whose device
+  // already asks for less motion had to find this app's setting first.
+  // The mirror must stay a mirror: the four declarations equal on both
+  // channels, the flame hard-stop rides both (the flicker's final frame
+  // carries a -2deg rotation — the same reason F2 needed its hard-stop).
+  // The framer-motion half of the contract lives in study-app.tsx
+  // (MotionConfig "always"|"user") — pinned in component-layout.test.ts.
+  it("the manual F2 band stays intact (three universal heads + flame hard-stop)", () => {
+    const css = readFileSync(cssPath, "utf8");
+    expect(css).toContain("html.user-reduce-motion *,");
+    expect(css).toContain("html.user-reduce-motion *::before,");
+    expect(css).toContain("html.user-reduce-motion *::after {");
+    expect(css).toContain("html.user-reduce-motion .streak-flame {");
+  });
+
+  it("the OS channel mirrors F2 inside @media (prefers-reduced-motion: reduce)", () => {
+    const css = readFileSync(cssPath, "utf8");
+    const head = css.indexOf("@media (prefers-reduced-motion: reduce)");
+    expect(head, "the automatic channel is missing — OS-reduced visitors get full motion").toBeGreaterThanOrEqual(0);
+    // slice from the media header to the close of the media-scoped flame
+    // hard-stop, so the assertions prove the declarations live INSIDE the
+    // media block, not merely somewhere in the file
+    const band = css.slice(head, css.indexOf("}", css.indexOf(".streak-flame", head)) + 1);
+    expect(band).toContain("animation-duration: 0.01ms !important;");
+    expect(band).toContain("animation-iteration-count: 1 !important;");
+    expect(band).toContain("transition-duration: 0.01ms !important;");
+    expect(band).toContain("scroll-behavior: auto !important;");
+    expect(band).toContain(".streak-flame {");
+    expect(band).toContain("animation: none !important;");
+  });
+
+  it("both channels stay equal in their four declarations (mirror drift guard)", () => {
+    const css = readFileSync(cssPath, "utf8");
+    // manual: the first rule after the F2 head (its close is the first `}`)
+    const manualFrom = css.indexOf("html.user-reduce-motion *,");
+    const manualBand = css.slice(manualFrom, css.indexOf("}", manualFrom) + 1);
+    // OS: the first rule inside the media block (the universal trio)
+    const mediaHead = css.indexOf("@media (prefers-reduced-motion: reduce)");
+    const mediaPart = css.slice(mediaHead);
+    const mediaFrom = mediaPart.indexOf("*,");
+    const mediaBand = mediaPart.slice(mediaFrom, mediaPart.indexOf("}", mediaFrom) + 1);
+    const decls = (s: string) =>
+      ["animation-duration", "animation-iteration-count", "transition-duration", "scroll-behavior"].map((d) => {
+        const m = s.match(new RegExp(d + "\\s*:\\s*([^;]+)"));
+        return d + ": " + (m ? m[1].trim() : "MISSING");
+      });
+    expect(decls(mediaBand)).toEqual(decls(manualBand));
   });
 });
 

@@ -215,6 +215,10 @@ export default function SettingsPopover() {
             <div>
               <div className="text-[12px] font-bold text-stone-700">کاهش حرکت و انیمیشن</div>
               <div className="text-[10px] leading-4 text-stone-400">برای تمرکز بیشتر یا حساسیت به حرکت</div>
+              {/* task 168: the OS channel (globals F2b + MotionConfig) is automatic — honesty hint */}
+              <div className="mt-0.5 text-[10px] leading-4 text-stone-400">
+                اگر دستگاه شما «کاهش حرکت» را فعال کرده باشد، انیمیشن‌ها خودکار هم آرام می‌شوند
+              </div>
             </div>
           </div>
           <Switch
