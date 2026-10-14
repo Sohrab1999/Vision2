@@ -52,6 +52,7 @@ import {
   Blend,
   Waypoints,
   FlameKindling,
+  Handshake,
 } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -128,6 +129,8 @@ export const BADGE_ICONS: Record<string, React.ElementType> = {
   Blend,
   Waypoints,
   FlameKindling,
+  // پلهٔ چهارم (Task 152) — حضور×هدف
+  Handshake,
 };
 
 const tierFa: Record<string, string> = {

@@ -1,8 +1,8 @@
 // @vitest-environment jsdom
 // ------------------------------------------------------------------
 // Task 110 — نشان‌های دهمین خانوادهٔ «هفتهٔ چابک» روی پنلِ نشان‌ها:
-//   ① تازه‌وارد: «۰ از ۵۵» — دو کاشیِ تازه قفل با پیشرفتِ شمارشیِ صادق
-//   ② هفتهٔ واجدِ ۰٫۸ثانیه‌ای → هر دو باز (زیرمجموعهٔ طلا⇒نقره) + «۳ از ۵۵»
+//   ① تازه‌وارد: «۰ از ۵۶» — دو کاشیِ تازه قفل با پیشرفتِ شمارشیِ صادق
+//   ② هفتهٔ واجدِ ۰٫۸ثانیه‌ای → هر دو باز (زیرمجموعهٔ طلا⇒نقره) + «۳ از ۵۶»
 //     (نیم‌نگاهِ ۱۰۸ با همان seed روشن می‌شود — سه رکوردِ چابک، درسِ شمارش)
 //   ③ هفتهٔ ۱٫۲ثانیه‌ای → نقره باز، طلا قفل با پیشرفتِ «۱٫۲ از ۱ ثانیه»
 //   ④ دفترچهٔ قدیمیِ بی‌think → هر دو قفل — صفرِ صادق
@@ -51,7 +51,7 @@ const weekAt = (avgMs: number): DuelRecord[] => [
 ];
 
 const chipText = () =>
-  screen.getAllByText((_c, el) => !!el?.textContent && /از ۵۵$/.test(el.textContent.trim()))[0]
+  screen.getAllByText((_c, el) => !!el?.textContent && /از ۵۶$/.test(el.textContent.trim()))[0]
     ?.textContent?.replace(/\s+/g, " ")
     .trim();
 
@@ -86,7 +86,7 @@ describe("خانوادهٔ هفتهٔ چابک — هفتهٔ چابک / هفت�
     });
   });
 
-  it("تازه‌وارد: هر دو کاشی قفل با پیشرفتِ صادقِ «۰ از ۳ نبردِ فکردار در یک هفته» + «۰ از ۵۵»", () => {
+  it("تازه‌وارد: هر دو کاشی قفل با پیشرفتِ صادقِ «۰ از ۳ نبردِ فکردار در یک هفته» + «۰ از ۵۶»", () => {
     render(<Badges />);
     const week = screen.getByText("هفتهٔ چابک").closest(".badge-card");
     const bolt = screen.getByText("هفتهٔ برق").closest(".badge-card");
@@ -96,10 +96,10 @@ describe("خانوادهٔ هفتهٔ چابک — هفتهٔ چابک / هفت�
     expect(bolt!.className).not.toContain("badge-shine");
     expect(week!.textContent).toContain("۰ از ۳ نبردِ فکردار در یک هفته");
     expect(bolt!.textContent).not.toContain("از ۱ ثانیه"); // طلا بی‌هفتهٔ واجد، بی‌متنِ پیشرفت
-    expect(chipText()).toContain("۰ از ۵۵");
+    expect(chipText()).toContain("۰ از ۵۶");
   });
 
-  it("هفتهٔ ۰٫۸ثانیه‌ای → هر دو باز + نیم‌نگاهِ ۱۰۸ هم روشن — «۳ از ۵۵»", () => {
+  it("هفتهٔ ۰٫۸ثانیه‌ای → هر دو باز + نیم‌نگاهِ ۱۰۸ هم روشن — «۳ از ۵۶»", () => {
     useStudy.setState({ duelHistory: weekAt(800), duelWins: 3 });
     render(<Badges />);
 
@@ -108,7 +108,7 @@ describe("خانوادهٔ هفتهٔ چابک — هفتهٔ چابک / هفت�
     expect(week.className).toContain("badge-shine");
     expect(bolt.className).toContain("badge-shine");
     // سه رکوردِ چابک، خانوادهٔ تک‌رکوردی (۱۰۸) را هم روشن می‌کند — شمارِ چیپِ ۳تایی
-    expect(chipText()).toContain("۳ از ۵۵");
+    expect(chipText()).toContain("۳ از ۵۶");
   });
 
   it("هفتهٔ ۱٫۲ثانیه‌ای → نقره باز، طلا قفل با پیشرفتِ «۱٫۲ از ۱ ثانیه» — زیرمجموعه در هر دو جهت", () => {
@@ -120,7 +120,7 @@ describe("خانوادهٔ هفتهٔ چابک — هفتهٔ چابک / هفت�
     expect(week.className).toContain("badge-shine");
     expect(bolt.className).not.toContain("badge-shine");
     expect(bolt.textContent).toContain("۱٫۲ از ۱ ثانیه");
-    expect(chipText()).toContain("۲ از ۵۵");
+    expect(chipText()).toContain("۲ از ۵۶");
   });
 
   it("پانزده نبردِ عادیِ بی‌think → هر دو قفل — صفرِ صادقِ دفترچهٔ قدیمی", () => {
@@ -138,7 +138,7 @@ describe("خانوادهٔ هفتهٔ چابک — هفتهٔ چابک / هفت�
     expect(bolt.className).not.toContain("badge-shine");
     expect(week.textContent).toContain("۰ از ۳ نبردِ فکردار در یک هفته");
     expect(bolt.textContent).not.toContain("از ۱ ثانیه");
-    expect(chipText()).toContain("۰ از ۵۵");
+    expect(chipText()).toContain("۰ از ۵۶");
   });
 
   it("گیتِ ترکیبیِ واقعی: هفتهٔ سریعِ بی‌دقت (نرخِ ۰٫۷) → هر دو قفل؛ شمارِ نقره ۳از۳ ولی طلا بی‌متن", () => {
@@ -161,7 +161,7 @@ describe("خانوادهٔ هفتهٔ چابک — هفتهٔ چابک / هفت�
     expect(week.textContent).toContain("۳ از ۳ نبردِ فکردار در یک هفته");
     // طلا بی‌هفتهٔ واجد → بی‌متنِ «ثانیه» — میانگینِ نمایشی هرگز دروغِ واجدی نمی‌گوید
     expect(bolt.textContent).not.toContain("از ۱ ثانیه");
-    // فقط نیم‌نگاهِ ۱۰۸ روشن شده — «۱ از ۵۵»
-    expect(chipText()).toContain("۱ از ۵۵");
+    // فقط نیم‌نگاهِ ۱۰۸ روشن شده — «۱ از ۵۶»
+    expect(chipText()).toContain("۱ از ۵۶");
   });
 });
