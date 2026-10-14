@@ -155,19 +155,19 @@ export default function ReportCard({ open, onClose }: { open: boolean; onClose: 
         {mounted && (
           <div className="report-paper relative overflow-hidden">
             {/* letterhead band */}
-            <div className="report-band relative bg-gradient-to-l from-emerald-700 via-emerald-600 to-teal-500 px-5 pb-5 pt-5 text-white">
+            <div className="report-band relative bg-gradient-to-l from-emerald-800 via-emerald-700 to-teal-700 px-5 pb-5 pt-5 text-white">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <div className="flex items-center gap-1.5 text-[10.5px] font-bold opacity-80">
+                  <div className="flex items-center gap-1.5 text-[10.5px] font-bold opacity-95">
                     <CalendarDays size={11} />
                     {todayFa()}
                   </div>
                   <h3 className="mt-1 text-lg font-black">{grade.title}</h3>
-                  <p className="mt-0.5 text-[12px] leading-5 opacity-90">
+                  <p className="mt-0.5 text-[12px] leading-5 opacity-95">
                     {userName ? `${userName} عزیز، ` : ""}{grade.msg}
                   </p>
                 </div>
-                <span className="report-stamp flex h-16 w-16 shrink-0 rotate-6 flex-col items-center justify-center rounded-full border-2 border-dashed border-white/50 text-center text-[8px] font-black leading-3 opacity-80">
+                <span className="report-stamp flex h-16 w-16 shrink-0 rotate-6 flex-col items-center justify-center rounded-full border-2 border-dashed border-white/60 text-center text-[8px] font-black leading-3 opacity-100">
                   <Stamp size={16} className="mb-0.5" />
                   مهر
                   <br />
@@ -241,7 +241,7 @@ export default function ReportCard({ open, onClose }: { open: boolean; onClose: 
                   <div className="flex h-24 items-end gap-2.5" dir="ltr">
                     {monthBuckets.map((b, i) => (
                       <div key={i} className="flex flex-1 flex-col items-center gap-1">
-                        <span className="text-[10px] font-black text-stone-400">{b.total > 0 ? faNum(b.total) : ""}</span>
+                        <span className="text-[10px] font-black text-stone-500">{b.total > 0 ? faNum(b.total) : ""}</span>
                         <motion.div
                           initial={{ height: 0 }}
                           animate={{ height: `${Math.max(b.total > 0 ? 12 : 4, (b.total / monthMax) * 56)}px` }}
@@ -253,7 +253,7 @@ export default function ReportCard({ open, onClose }: { open: boolean; onClose: 
                           }`}
                           title={`${faNum(b.total)} فعالیت — ${faNum(b.active)} روز فعال`}
                         />
-                        <span className="text-[9.5px] font-bold text-stone-400">هفتهٔ {faNum(i + 1)}</span>
+                        <span className="text-[9.5px] font-bold text-stone-500">هفتهٔ {faNum(i + 1)}</span>
                       </div>
                     ))}
                   </div>
@@ -267,7 +267,7 @@ export default function ReportCard({ open, onClose }: { open: boolean; onClose: 
                   میانگین مهارت‌ها
                 </div>
                 {skills.length === 0 ? (
-                  <div className="rounded-xl border-2 border-dashed border-stone-200 c-stone-60 px-3 py-5 text-center text-[11.5px] font-bold text-stone-400">
+                  <div className="rounded-xl border-2 border-dashed border-stone-200 c-stone-60 px-3 py-5 text-center text-[11.5px] font-bold text-stone-500">
                     هنوز نتیجه‌ای ثبت نشده — با اولین تست این بخش پر می‌شود
                   </div>
                 ) : (
@@ -321,7 +321,7 @@ export default function ReportCard({ open, onClose }: { open: boolean; onClose: 
                           <li key={key} className="flex items-center justify-between rounded-lg border border-stone-100 bg-white px-2.5 py-1.5">
                             <span className="text-[11.5px] font-bold text-stone-600">{label}</span>
                             <span className="text-[12px] font-black text-emerald-700" dir="ltr">
-                              {faNum(r.percent)}٪ <span className="text-[10px] font-normal text-stone-400">({r.correct}/{r.total})</span>
+                              {faNum(r.percent)}٪ <span className="text-[10px] font-normal text-stone-500">({r.correct}/{r.total})</span>
                             </span>
                           </li>
                         );

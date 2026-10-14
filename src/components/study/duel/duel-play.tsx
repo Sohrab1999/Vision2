@@ -94,7 +94,7 @@ export default function DuelPlay({ me, opp, total, cur, curQ, correctIdx, qi, pi
                       return <span key={k} className={`h-1.5 flex-1 rounded-full ${cls} ${k === p.qi && !p.done && !p.disconnected ? "animate-pulse bg-fuchsia-400" : ""}`} />;
                     })}
                   </div>
-                  <div className="mt-1 text-[10.5px] font-bold text-stone-400">
+                  <div className="mt-1 text-[10.5px] font-bold text-stone-500">
                     {faNum(p.correct)} درست · سؤال {faNum(Math.min(p.qi + 1, total))} از {faNum(total)}
                   </div>
                 </div>
@@ -185,7 +185,7 @@ export default function DuelPlay({ me, opp, total, cur, curQ, correctIdx, qi, pi
         )
       )}
 
-      <p className="text-center text-[11px] font-bold text-stone-400" suppressHydrationWarning>
+      <p className="text-center text-[11px] font-bold text-stone-500" suppressHydrationWarning>
         امتیاز زنده: تو {faNum(myCorrect)} درست از {faNum(myAnswered)} — داوری روی سرور انجام می‌شود؛ تقلب ممکن نیست ⚔️
       </p>
     </div>

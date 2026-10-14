@@ -69,7 +69,7 @@ export function RushBanner() {
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
             <h2 className="text-base font-black text-stone-800">چالش برق‌آسا</h2>
-            <span className="rounded-full bg-orange-500 px-2 py-0.5 text-[10px] font-black text-white shadow-sm">
+            <span className="rounded-full bg-orange-500 px-2 py-0.5 text-[10px] font-black text-stone-900 shadow-sm">
               {faNum(60)} ثانیه
             </span>
           </div>

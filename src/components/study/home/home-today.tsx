@@ -48,10 +48,10 @@ export default function HomeToday() {
         {/* streak */}
         <div className="flex items-center gap-4">
           <div className={`relative flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl shadow-lg transition-all ${streak > 0 ? "bg-gradient-to-br from-amber-400 to-orange-500 shadow-orange-500/30" : "bg-stone-200 shadow-none"}`}>
-            <Flame size={30} className={streak > 0 ? "streak-flame text-white" : "text-stone-400"} />
+            <Flame size={30} className={streak > 0 ? "streak-flame text-white" : "text-stone-500"} />
           </div>
           <div>
-            <div className="text-[12px] font-bold text-stone-400">زنجیرهٔ یادگیری</div>
+            <div className="text-[12px] font-bold text-stone-500">زنجیرهٔ یادگیری</div>
             <div className="text-2xl font-black leading-tight text-stone-800">
               {streak > 0 ? (
                 <>
@@ -62,7 +62,7 @@ export default function HomeToday() {
               )}
             </div>
             {bestStreak > 1 && (
-              <div className="text-[11px] text-stone-400">رکورد: {faNum(bestStreak)} روز</div>
+              <div className="text-[11px] text-stone-500">رکورد: {faNum(bestStreak)} روز</div>
             )}
             {mounted && freezeCount > 0 && (
               <span
@@ -111,7 +111,7 @@ export default function HomeToday() {
               transition={{ duration: 0.8, ease: "easeOut" }}
             />
           </div>
-          <div className="mt-1.5 text-[11px] text-stone-400">
+          <div className="mt-1.5 text-[11px] text-stone-500">
             مرور فلش‌کارت، تست، نگارش و دیکته همه در شمارش فعالیت امروز تأثیر دارند
           </div>
         </div>

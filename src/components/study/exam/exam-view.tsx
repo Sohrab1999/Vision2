@@ -236,7 +236,7 @@ export default function ExamView() {
                 kind: "exam",
               })
             }
-            className="w-full rounded-xl bg-emerald-600 py-3.5 text-[15px] font-black text-white shadow-lg shadow-emerald-900/25 transition-all hover:bg-emerald-700 active:scale-[0.98]"
+            className="w-full rounded-xl bg-emerald-700 py-3.5 text-[15px] font-black text-white shadow-lg shadow-emerald-900/25 transition-all hover:bg-emerald-700 active:scale-[0.98]"
           >
             شروع آزمون جامع
           </button>
@@ -293,7 +293,7 @@ export default function ExamView() {
                 </span>
               </span>
             </span>
-            <span className="shrink-0 rounded-xl bg-emerald-600 px-4 py-2.5 text-[13px] font-bold text-white shadow-md shadow-emerald-600/30">
+            <span className="shrink-0 rounded-xl bg-emerald-700 px-4 py-2.5 text-[13px] font-bold text-white shadow-md shadow-emerald-600/30">
               شروع دیکته
             </span>
           </button>
@@ -397,7 +397,7 @@ export default function ExamView() {
                 ];
                 setSession({ title: "آزمون جامع پایان ترم", questions: shuffle(pool), timed: finalTimed, kind: "final" });
               }}
-              className="w-full rounded-xl bg-gradient-to-l from-amber-500 to-orange-600 py-3.5 text-[15px] font-black text-white shadow-lg shadow-amber-700/25 transition-all hover:opacity-95 active:scale-[0.98]"
+              className="w-full rounded-xl bg-gradient-to-l from-amber-700 to-orange-700 py-3.5 text-[15px] font-black text-white shadow-lg shadow-amber-700/25 transition-all hover:opacity-95 active:scale-[0.98]"
             >
               🎓 شروع آزمون پایان ترم
             </button>
@@ -408,7 +408,7 @@ export default function ExamView() {
       {/* quick lesson tests shortcut */}
       <div className="rounded-2xl border c-card p-5">
         <h2 className="mb-3 flex items-center gap-2 text-sm font-extrabold text-stone-700">
-          <BookOpen size={16} className="text-stone-400" />
+          <BookOpen size={16} className="text-stone-500" />
           یا مستقیم وارد تست‌های هر درس شوید:
         </h2>
         <div className="grid gap-2.5 sm:grid-cols-3">
@@ -457,7 +457,7 @@ function ModeCard({
       }`}
     >
       {badge && (
-        <span className="absolute left-3 top-3 rounded-full bg-gradient-to-l from-amber-500 to-orange-600 px-2.5 py-0.5 text-[10px] font-black text-white shadow-md">
+        <span className="absolute left-3 top-3 rounded-full bg-gradient-to-l from-amber-700 to-orange-700 px-2.5 py-0.5 text-[10px] font-black text-white shadow-md">
           {badge}
         </span>
       )}

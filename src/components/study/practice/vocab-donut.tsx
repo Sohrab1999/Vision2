@@ -104,7 +104,7 @@ export default function VocabDonut() {
               >
                 {faNum(knownTotal)}
               </motion.span>
-              <span className="mt-0.5 text-[10.5px] font-bold text-stone-400">از {faNum(totalVocabulary)} واژه</span>
+              <span className="mt-0.5 text-[10.5px] font-bold text-stone-500">از {faNum(totalVocabulary)} واژه</span>
               <span className="mt-1 rounded-full bg-emerald-50 px-2 py-0.5 text-[10.5px] font-black text-emerald-700 ring-1 ring-emerald-200">
                 {faNum(percent)}٪
               </span>

@@ -153,7 +153,7 @@ export default function WritingTab({ lesson }: { lesson: LessonData }) {
             dir="ltr"
           >
             {placed.length === 0 ? (
-              <p className="flex h-[52px] items-center justify-center text-[13px] text-stone-400">
+              <p className="flex h-[52px] items-center justify-center text-[13px] text-stone-500">
                 روی کلمه‌ها به ترتیب درست کلیک کن...
               </p>
             ) : (

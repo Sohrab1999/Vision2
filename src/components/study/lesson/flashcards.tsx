@@ -229,7 +229,7 @@ export default function Flashcards({
               {word.en}
             </div>
             <SpeakButton text={word.en} label="روخوانی" />
-            <span className="mt-2 inline-flex items-center gap-1 text-[11px] text-stone-400">
+            <span className="mt-2 inline-flex items-center gap-1 text-[11px] text-stone-500">
               <Hand size={12} /> برای دیدن معنی کلیک کنید
             </span>
           </div>
@@ -278,7 +278,7 @@ export default function Flashcards({
       </div>
 
       {/* keyboard hints (desktop) */}
-      <div className="hidden items-center justify-center gap-3 text-[10.5px] text-stone-400 min-[720px]:flex">
+      <div className="hidden items-center justify-center gap-3 text-[10.5px] text-stone-500 min-[720px]:flex">
         <span className="flex items-center gap-1">
           <kbd className="rounded-md border border-stone-200 bg-stone-50 px-1.5 py-0.5 font-mono text-[10px] text-stone-500 shadow-sm" dir="ltr">Space</kbd>
           برگرداندن
@@ -304,7 +304,7 @@ export default function Flashcards({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="text-center text-[12px] text-stone-400"
+            className="text-center text-[12px] text-stone-500"
           >
             {isKnown && <span className="text-emerald-600">✓ بلدم · </span>}
             مرور بعدی: <b className="text-violet-600">{SRS_LABELS[srsItem.level]} دیگر</b> (سطح {srsItem.level + 1} از ۶)

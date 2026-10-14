@@ -15,28 +15,28 @@ export interface LinePalette {
 
 export const LINE_COLORS: Record<GrammarLineColor, LinePalette> = {
   emerald: {
-    solid: "bg-emerald-600",
+    solid: "bg-emerald-700",
     rail: "bg-gradient-to-l from-emerald-300 via-emerald-500 to-emerald-700",
     soft: "bg-emerald-50",
     text: "text-emerald-700",
     border: "border-emerald-200",
   },
   amber: {
-    solid: "bg-amber-500",
+    solid: "bg-amber-700",
     rail: "bg-gradient-to-l from-amber-300 via-amber-400 to-amber-600",
     soft: "bg-amber-50",
     text: "text-amber-700",
     border: "border-amber-200",
   },
   teal: {
-    solid: "bg-teal-600",
+    solid: "bg-teal-700",
     rail: "bg-gradient-to-l from-teal-300 via-teal-500 to-teal-700",
     soft: "bg-teal-50",
     text: "text-teal-700",
     border: "border-teal-200",
   },
   rose: {
-    solid: "bg-rose-500",
+    solid: "bg-rose-600",
     rail: "bg-gradient-to-l from-rose-300 via-rose-400 to-rose-600",
     soft: "bg-rose-50",
     text: "text-rose-700",
@@ -50,7 +50,7 @@ export const LINE_COLORS: Record<GrammarLineColor, LinePalette> = {
     border: "border-violet-200",
   },
   orange: {
-    solid: "bg-orange-500",
+    solid: "bg-orange-700",
     rail: "bg-gradient-to-l from-orange-300 via-orange-400 to-orange-600",
     soft: "bg-orange-50",
     text: "text-orange-700",

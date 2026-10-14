@@ -203,7 +203,7 @@ export default function DuelDone({ endData, mySid, myFinishAt, oppConnected, rem
                       <span className="rounded-md bg-stone-100 px-1.5 py-0.5 text-[10px] font-bold text-stone-500">{label}</span>
                       {p.disconnected && <span className="rounded-md bg-rose-100 px-1.5 py-0.5 text-[10px] font-bold text-rose-600">خارج شد</span>}
                     </div>
-                    <div className="mt-0.5 text-[11.5px] font-bold text-stone-400">
+                    <div className="mt-0.5 text-[11.5px] font-bold text-stone-500">
                       {faNum(p.correct)} درست از {faNum(Math.max(p.answered, endData.total))} · پیشروی {faNum(p.qi)}/{faNum(endData.total)}
                       {p.sid === mySid && myFinishAt > 0 && endData.startedAt
                         ? ` · زمان تو ${faNum(Math.max(1, Math.round((myFinishAt - endData.startedAt) / 1000)))} ثانیه`
@@ -218,7 +218,7 @@ export default function DuelDone({ endData, mySid, myFinishAt, oppConnected, rem
                           <span className="bg-emerald-500" style={{ width: `${basePct}%` }} />
                           <span className="flex-1 bg-amber-400" />
                         </div>
-                        <div className="mt-0.5 text-[10px] font-bold text-stone-400">
+                        <div className="mt-0.5 text-[10px] font-bold text-stone-500">
                           {faNum(d.base)} پایه + {faNum(d.bonus)} سرعت
                         </div>
                       </>
@@ -229,7 +229,7 @@ export default function DuelDone({ endData, mySid, myFinishAt, oppConnected, rem
             }
           )}
         </div>
-        <p className="mt-3 text-center text-[11.5px] leading-6 text-stone-400">
+        <p className="mt-3 text-center text-[11.5px] leading-6 text-stone-500">
           {endData.receipt
             ? "نتیجهٔ این نبرد با رسیدِ امضاشدهٔ داور در آمار سرور ثبت شد — غلط‌هایت در کارت «بانک اشتباهات» خانه منتظرت هستند."
             : "نتیجهٔ این نبرد با امضای هویتی‌ات در آمار سرور ثبت شد — غلط‌هایت در کارت «بانک اشتباهات» خانه منتظرت هستند."}

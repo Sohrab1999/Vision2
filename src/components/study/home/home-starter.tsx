@@ -76,7 +76,7 @@ export default function HomeStarter() {
           </li>
         ))}
       </ol>
-      <p className="mt-3 text-center text-[11px] font-bold text-stone-400">
+      <p className="mt-3 text-center text-[11px] font-bold text-stone-500">
         آزمون جامع و چالش برق‌آسا هم در همین صفحه بالاتر منتظرت هستند 🎯
       </p>
     </motion.section>

@@ -233,7 +233,7 @@ export default function StudyApp() {
           </AnimatePresence>
         ) : (
           <div className="flex min-h-[50vh] items-center justify-center">
-            <div className="flex flex-col items-center gap-3 text-stone-400">
+            <div className="flex flex-col items-center gap-3 text-stone-500">
               <span className="h-9 w-9 animate-spin rounded-full border-[3px] border-emerald-200 border-t-emerald-600" />
               <span className="text-sm font-bold">در حال باز کردن کتاب...</span>
             </div>

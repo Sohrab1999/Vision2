@@ -69,7 +69,7 @@ export default function VocabTab({
       {/* controls */}
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
         <div className="relative flex-1">
-          <Search size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400" />
+          <Search size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-500" />
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
@@ -79,7 +79,7 @@ export default function VocabTab({
           {query && (
             <button
               onClick={() => setQuery("")}
-              className="absolute left-2.5 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-600"
+              className="absolute left-2.5 top-1/2 -translate-y-1/2 text-stone-500 hover:text-stone-600"
               aria-label="پاک کردن جستجو"
             >
               <X size={15} />
@@ -100,7 +100,7 @@ export default function VocabTab({
         {filterBtn("all", "همه", lesson.vocabulary.length, filter === "all")}
         {filterBtn("known", "بلدم", knownCount, filter === "known")}
         {filterBtn("unknown", "یاد نگرفته", lesson.vocabulary.length - knownCount, filter === "unknown")}
-        <span className="mr-auto hidden text-[11px] text-stone-400 sm:block">
+        <span className="mr-auto hidden text-[11px] text-stone-500 sm:block">
           روی هر واژه کلیک کنید تا «بلدم» علامت بخورد
         </span>
       </div>
@@ -164,13 +164,13 @@ export default function VocabTab({
               {isKnown ? (
                 <CheckCircle2 size={17} className={`shrink-0 ${t.text}`} />
               ) : (
-                <Circle size={17} className="shrink-0 text-stone-300 group-hover:text-stone-400" />
+                <Circle size={17} className="shrink-0 text-stone-300 group-hover:text-stone-500" />
               )}
             </motion.div>
           );
         })}
         {filtered.length === 0 && (
-          <div className="col-span-full rounded-xl border border-dashed border-stone-300 p-8 text-center text-sm text-stone-400">
+          <div className="col-span-full rounded-xl border border-dashed border-stone-300 p-8 text-center text-sm text-stone-500">
             واژه‌ای یافت نشد
           </div>
         )}

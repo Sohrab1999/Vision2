@@ -150,7 +150,7 @@ export default function MyWordsView() {
 
         {/* search */}
         <div className="relative mb-3">
-          <Search size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400" />
+          <Search size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-500" />
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
@@ -160,7 +160,7 @@ export default function MyWordsView() {
           {query && (
             <button
               onClick={() => setQuery("")}
-              className="absolute left-2.5 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-600"
+              className="absolute left-2.5 top-1/2 -translate-y-1/2 text-stone-500 hover:text-stone-600"
               aria-label="پاک کردن جستجو"
             >
               <X size={15} />
@@ -208,7 +208,7 @@ export default function MyWordsView() {
                 key={m.id}
                 onClick={() => setSort(m.id)}
                 className={`inline-flex items-center gap-1 px-2.5 py-1.5 text-[11.5px] font-bold transition-colors ${
-                  sort === m.id ? "bg-amber-500 text-white" : "bg-white text-stone-500 hover:bg-stone-50"
+                  sort === m.id ? "bg-amber-500 text-stone-900" : "bg-white text-stone-500 hover:bg-stone-50"
                 }`}
                 aria-pressed={sort === m.id}
               >
@@ -227,7 +227,7 @@ export default function MyWordsView() {
             <Star size={26} className="text-amber-300" />
           </span>
           <p className="text-[14px] font-extrabold text-stone-600">هنوز واژه‌ای نشان نکرده‌ای</p>
-          <p className="max-w-sm text-[12px] leading-6 text-stone-400">
+          <p className="max-w-sm text-[12px] leading-6 text-stone-500">
             در دیکشنری، فهرست واژگان درس‌ها یا فلش‌کارت‌ها روی
             <Star size={11} className="mx-1 inline fill-amber-400 text-amber-400" />
             بزن تا واژه‌های مهم‌ات اینجا برای مرور سریع جمع شوند.
@@ -246,7 +246,7 @@ export default function MyWordsView() {
         <div className="dict-empty flex flex-col items-center gap-2 rounded-2xl border-2 border-dashed border-stone-200 c-stone-60 px-4 py-10 text-center">
           <SearchX size={26} className="text-stone-300" />
           <p className="text-[13px] font-extrabold text-stone-500">با این فیلترها واژه‌ای یافت نشد</p>
-          <p className="text-[11.5px] font-bold text-stone-400">جستجو یا فیلتر درس را تغییر بده</p>
+          <p className="text-[11.5px] font-bold text-stone-500">جستجو یا فیلتر درس را تغییر بده</p>
           <button
             onClick={() => {
               setQuery("");
@@ -312,7 +312,7 @@ export default function MyWordsView() {
                       className={`h-8 rounded-full border px-2 text-[10px] font-bold transition-all ${
                         isKnown
                           ? "border-emerald-300 bg-emerald-50 text-emerald-700"
-                          : "border-stone-200 bg-white text-stone-400 hover:text-stone-600"
+                          : "border-stone-200 bg-white text-stone-500 hover:text-stone-600"
                       }`}
                     >
                       {isKnown ? <CheckCircle2 size={14} className="inline" /> : <Circle size={14} className="inline" />}

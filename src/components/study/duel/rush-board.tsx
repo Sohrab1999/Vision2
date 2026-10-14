@@ -120,7 +120,7 @@ export default function RushBoard({ refreshKey = 0 }: { refreshKey?: number }) {
                 key={row.userId}
                 className={`flex items-center gap-2.5 rounded-xl px-2.5 py-2 ${isMe ? "rush-board-me bg-orange-50 ring-1 ring-orange-200" : ""}`}
               >
-                <span className="w-6 shrink-0 text-center text-[12.5px] font-black text-stone-400">
+                <span className="w-6 shrink-0 text-center text-[12.5px] font-black text-stone-500">
                   {faNum(i + 4)}
                 </span>
                 <span
@@ -132,12 +132,12 @@ export default function RushBoard({ refreshKey = 0 }: { refreshKey?: number }) {
                   {row.name}
                   {isMe && <span className="mr-1.5 text-[10px] font-black text-emerald-600">(شما)</span>}
                   {row.lastAt && (
-                    <span className="mr-1.5 hidden text-[10px] font-normal text-stone-400 sm:inline">
+                    <span className="mr-1.5 hidden text-[10px] font-normal text-stone-500 sm:inline">
                       · {timeAgoFa(row.lastAt)}
                     </span>
                   )}
                 </span>
-                <span className="hidden items-center gap-1 text-[10.5px] text-stone-400 sm:flex" title="تعداد چالش‌ها">
+                <span className="hidden items-center gap-1 text-[10.5px] text-stone-500 sm:flex" title="تعداد چالش‌ها">
                   <Flame size={11} />
                   {faNum(row.games)}
                 </span>

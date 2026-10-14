@@ -73,7 +73,7 @@ export default function HomeFeed() {
                     transition={{ delay: i * 0.05 }}
                     className="flex items-center gap-2 rounded-lg bg-white px-2.5 py-1.5 shadow-sm"
                   >
-                    <span className="shrink-0 text-[11px] font-bold text-stone-400">{timeAgoFa(a.createdAt)}</span>
+                    <span className="shrink-0 text-[11px] font-bold text-stone-500">{timeAgoFa(a.createdAt)}</span>
                     {a.name && (
                       <span
                         className={`h-2 w-2 shrink-0 rounded-full ${
@@ -86,7 +86,7 @@ export default function HomeFeed() {
                       {a.name ? (
                         <span className="text-emerald-700">{a.name} — </span>
                       ) : (
-                        <span className="text-stone-400">یادگیرندهٔ ناشناس — </span>
+                        <span className="text-stone-500">یادگیرندهٔ ناشناس — </span>
                       )}
                       {label}
                     </span>

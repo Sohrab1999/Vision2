@@ -133,7 +133,7 @@ export default function DictionaryView() {
           </button>
         </div>
         <div className="relative mb-3">
-          <Search size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400" />
+          <Search size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-500" />
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
@@ -143,7 +143,7 @@ export default function DictionaryView() {
           {query && (
             <button
               onClick={() => setQuery("")}
-              className="absolute left-2.5 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-600"
+              className="absolute left-2.5 top-1/2 -translate-y-1/2 text-stone-500 hover:text-stone-600"
               aria-label="پاک کردن"
             >
               <X size={15} />
@@ -175,7 +175,7 @@ export default function DictionaryView() {
           })}
         </div>
         <div className="mt-2.5 flex flex-wrap items-center gap-2 border-t border-dashed border-stone-200 pt-3">
-          <span className="text-[10.5px] font-black text-stone-400">وضعیت یادگیری:</span>
+          <span className="text-[10.5px] font-black text-stone-500">وضعیت یادگیری:</span>
           {stateChips.map((c) => (
             <button
               key={c.id}
@@ -190,7 +190,7 @@ export default function DictionaryView() {
               {c.label}
               <span
                 className={`rounded-full px-1.5 text-[10px] font-black ${
-                  stateFilter === c.id ? "bg-white/25" : "bg-stone-200/80 text-stone-500"
+                  stateFilter === c.id ? "bg-black/25" : "bg-stone-200/80 text-stone-600"
                 }`}
               >
                 {faNum(c.count)}
@@ -206,7 +206,7 @@ export default function DictionaryView() {
         <div className="dict-empty flex flex-col items-center gap-2 rounded-2xl border-2 border-dashed border-stone-200 c-stone-60 px-4 py-10 text-center">
           <SearchX size={26} className="text-stone-300" />
           <p className="text-[13px] font-extrabold text-stone-500">واژه‌ای با این فیلترها یافت نشد</p>
-          <p className="text-[11.5px] font-bold text-stone-400">
+          <p className="text-[11.5px] font-bold text-stone-500">
             {stateFilter === "due"
               ? "الان واژهٔ سررسیدی نداری — همه‌چیز سر موعد است!"
               : "فیلتر وضعیت یا جستجو را تغییر بده"}
@@ -267,7 +267,7 @@ export default function DictionaryView() {
                   className={`h-8 rounded-full border px-2 text-[10px] font-bold transition-all ${
                     isKnown
                       ? "border-emerald-300 bg-emerald-50 text-emerald-700"
-                      : "border-stone-200 bg-white text-stone-400 hover:text-stone-600"
+                      : "border-stone-200 bg-white text-stone-500 hover:text-stone-600"
                   }`}
                 >
                   بلدم

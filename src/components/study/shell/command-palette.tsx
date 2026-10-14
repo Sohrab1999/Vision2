@@ -467,7 +467,7 @@ export default function CommandPalette() {
         >
           {filtered.length === 0 ? (
             <div className="flex flex-col items-center gap-2 px-4 py-10 text-center">
-              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-stone-100 text-stone-400">
+              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-stone-100 text-stone-500">
                 <SearchX size={22} />
               </span>
               <p className="text-[13.5px] font-extrabold text-stone-800">فرمانی یافت نشد</p>
@@ -478,9 +478,9 @@ export default function CommandPalette() {
           ) : (
             grouped.map((g, gi) => (
               <div key={g.group} role="group" aria-label={g.group}>
-                <div className="flex items-center gap-1.5 px-2 pb-1 pt-2.5 text-[10.5px] font-black tracking-wide text-stone-400">
+                <div className="flex items-center gap-1.5 px-2 pb-1 pt-2.5 text-[10.5px] font-black tracking-wide text-stone-500">
                   <span>{g.group}</span>
-                  <span className="rounded-full bg-stone-100 px-1.5 text-[9.5px] font-bold text-stone-400">
+                  <span className="rounded-full bg-stone-100 px-1.5 text-[9.5px] font-bold text-stone-500">
                     {faNum(g.items.length)}
                   </span>
                 </div>
@@ -534,7 +534,7 @@ export default function CommandPalette() {
         </div>
 
         {/* راهنمای کلیدها */}
-        <div className="flex items-center justify-between border-t border-stone-200/70 px-4 py-2 text-[10.5px] font-bold text-stone-400">
+        <div className="flex items-center justify-between border-t border-stone-200/70 px-4 py-2 text-[10.5px] font-bold text-stone-500">
           <span className="flex items-center gap-1.5">
             <Kbd>↑</Kbd>
             <Kbd>↓</Kbd> حرکت

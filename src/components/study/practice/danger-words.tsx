@@ -96,7 +96,7 @@ export default function DangerWords() {
           <div className="rounded-xl border-2 border-dashed border-stone-200 c-stone-60 px-4 py-7 text-center">
             <TrendingDown size={22} className="mx-auto mb-2 text-stone-300" />
             <p className="text-[12.5px] font-bold text-stone-500">هنوز واژهٔ خطری ثبت نشده</p>
-            <p className="mx-auto mt-1 max-w-md text-[11.5px] leading-5 text-stone-400">
+            <p className="mx-auto mt-1 max-w-md text-[11.5px] leading-5 text-stone-500">
               با حل تست‌های واژگان، دیکته و تمرین شنیداری، واژه‌هایی که بیشترین اشتباه را می‌گیری اینجا شناسایی می‌شوند.
             </p>
           </div>
@@ -204,7 +204,7 @@ export default function DangerWords() {
                 دیکتهٔ همین‌ها
               </button>
             </div>
-            <p className="mt-2.5 text-center text-[10.5px] leading-5 text-stone-400">
+            <p className="mt-2.5 text-center text-[10.5px] leading-5 text-stone-500">
               این تحلیل از تست‌های واژگان، دیکته و تمرین شنیداریِ خودت ساخته می‌شود — هرچه بیشتر تمرین کنی دقیق‌تر می‌شود.
               <br />
               واژه‌های خطرناک را با <Star size={10} className="inline fill-amber-400 text-amber-400" /> ستاره به «واژه‌های من» بفرست تا در آزمون و فلش‌کارت شخصی مرور شوند.

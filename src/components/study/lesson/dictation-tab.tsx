@@ -501,7 +501,7 @@ export default function DictationTab({
               <span className="absolute inset-0 animate-ping rounded-full bg-violet-400/40" aria-hidden />
               <Volume2 size={34} />
             </motion.button>
-            <div className="flex items-center gap-2 text-[12px] text-stone-400">
+            <div className="flex items-center gap-2 text-[12px] text-stone-500">
               <Ear size={13} />
               گوش کنید و املای کلمه را بنویسید
             </div>
@@ -672,7 +672,7 @@ export default function DictationTab({
       </AnimatePresence>
 
       {/* SRS note */}
-      <p className="text-center text-[11px] text-stone-400">
+      <p className="text-center text-[11px] text-stone-500">
         نتیجهٔ هر واژه در برنامهٔ مرور با فاصله (SRS) ثبت می‌شود — واژه‌های غلط زودتر دوباره مرور می‌شوند
       </p>
     </div>

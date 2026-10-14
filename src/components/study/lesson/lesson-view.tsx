@@ -69,7 +69,7 @@ export default function LessonView({ id }: { id: number }) {
                 “{lesson.titleEn}”
               </h1>
               <p className="text-sm font-bold text-stone-600">
-                {lesson.titleFa} — <span className="font-normal text-stone-400">{lesson.tagline}</span>
+                {lesson.titleFa} — <span className="font-normal text-stone-500">{lesson.tagline}</span>
               </p>
             </div>
           </div>

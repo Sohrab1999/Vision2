@@ -215,7 +215,7 @@ export default function KonkurView() {
   return (
     <div className="space-y-5">
       {/* ------------------------------ hero ------------------------------ */}
-      <section className="konkur-hero relative overflow-hidden rounded-2xl bg-gradient-to-l from-red-600 via-orange-500 to-amber-500 p-5 text-white shadow-lg shadow-orange-600/20 sm:p-6">
+      <section className="konkur-hero relative overflow-hidden rounded-2xl bg-gradient-to-l from-red-700 via-orange-700 to-amber-700 p-5 text-white shadow-lg shadow-orange-600/20 sm:p-6">
         <div className="absolute -left-4 -top-7 opacity-10" aria-hidden>
           <GraduationCap size={160} />
         </div>
@@ -297,7 +297,7 @@ export default function KonkurView() {
             <span className="h-3 w-3 rounded-[3px] bg-stone-200" aria-hidden />
             دیده‌نشده ({faNum(examBank.length - stats.seenCount)})
           </span>
-          <span className="text-stone-400">— هر خانه یک تست از بانک ۳۶۰تایی است</span>
+          <span className="text-stone-500">— هر خانه یک تست از بانک ۳۶۰تایی است</span>
         </div>
       </section>
 
@@ -388,7 +388,7 @@ export default function KonkurView() {
           )}
           <button
             onClick={startSim}
-            className="w-full rounded-xl bg-gradient-to-l from-amber-500 to-orange-600 py-3.5 text-[15px] font-black text-white shadow-lg shadow-orange-600/25 transition-all hover:opacity-95 active:scale-[0.98]"
+            className="w-full rounded-xl bg-gradient-to-l from-amber-700 to-orange-700 py-3.5 text-[15px] font-black text-white shadow-lg shadow-orange-600/25 transition-all hover:opacity-95 active:scale-[0.98]"
           >
             شروع شبیه‌ساز کنکور
             <ArrowLeft size={17} className="mr-2 inline" />
@@ -406,7 +406,7 @@ export default function KonkurView() {
             <div className="flex flex-col items-center gap-2 py-6 text-center">
               <CircleDashed size={34} className="text-stone-300" />
               <p className="text-[13.5px] font-bold text-stone-600">هنوز تستِ سختی نداری!</p>
-              <p className="max-w-md text-[12px] leading-6 text-stone-400">
+              <p className="max-w-md text-[12px] leading-6 text-stone-500">
                 هر تستِ غلط از شبیه‌ساز، آزمون جامع، مرور سریع یا تمرین هوشمند این‌جا جمع می‌شود تا با هدف جواب بدهی — پاسخِ درست یعنی حذفِ دائمی.
               </p>
             </div>
@@ -445,7 +445,7 @@ export default function KonkurView() {
             <div className="flex flex-col items-center gap-2 py-6 text-center">
               <PartyPopper size={34} className="text-emerald-500" />
               <p className="text-[13.5px] font-bold text-stone-600">کل بانک را پوشش دادی!</p>
-              <p className="max-w-md text-[12px] leading-6 text-stone-400">
+              <p className="max-w-md text-[12px] leading-6 text-stone-500">
                 هیچ تست دیده‌نشده‌ای نمانده — برای تقویت، سراغ «شبیه‌ساز کنکور» یا «تست‌های سخت من» برو.
               </p>
             </div>
@@ -506,7 +506,7 @@ export default function KonkurView() {
             </div>
           ))}
         </div>
-        <p className="mt-3 text-[11.5px] font-bold leading-6 text-stone-400">
+        <p className="mt-3 text-[11.5px] font-bold leading-6 text-stone-500">
           نکته: نتایج این‌جا با بقیهٔ کتاب هم‌سان است — غلط‌های بانک ۳۶۰تایی در «مرور سریع قبل امتحان» و «مرور اشتباهات آزمون جامع» هم دیده می‌شوند.
         </p>
       </section>
@@ -526,13 +526,13 @@ function HeroKpi({
   hint: string;
 }) {
   return (
-    <div className="rounded-xl bg-white/15 px-3 py-2.5 backdrop-blur-sm">
-      <div className="mb-1 flex items-center gap-1.5 text-[11px] font-black text-white/85">
+    <div className="rounded-xl bg-black/25 px-3 py-2.5 backdrop-blur-sm">
+      <div className="mb-1 flex items-center gap-1.5 text-[11px] font-black text-white/95">
         <Icon size={13} />
         {label}
       </div>
       <div className="text-lg font-black leading-tight">{value}</div>
-      <div className="text-[10.5px] font-bold text-white/70">{hint}</div>
+      <div className="text-[10.5px] font-bold text-white/90">{hint}</div>
     </div>
   );
 }
