@@ -39,6 +39,14 @@ const featureCssPaths = [
   "src/components/study/duel/duel-dark.css",
   // wave 5 (task 141): the daily-quests family (reward shimmer + dark tuning)
   "src/components/study/practice/daily-quests.css",
+  // wave 9 (task 149): the dictionary state-filter chips (dark trio) — path
+  // repaired into this list in wave 10 (it was only in KEY_SELECTORS before,
+  // so the manifest + per-file-dupes sweeps silently skipped it)
+  "src/components/study/lesson/dictionary-view.css",
+  // task 150: the combined streak badge (ice guest ink duo) — same repair
+  "src/components/study/practice/streak-badge.css",
+  // wave 10 (task 151): the bookshelf family (spine hover + dark shelf gradients)
+  "src/components/study/home/home-bookshelf.css",
 ];
 const readEffectiveCss = (): string =>
   readFileSync(cssPath, "utf8") +
@@ -297,9 +305,18 @@ describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
     // of the text-stone-600 canonical group stays (multi-family, nine
     // families — asserted). 3a checkpoints re-ran clean. Growth from here
     // must consolidate, not add.
+    // task 151 (§8.3 wave 10): re-based 263 → 260 — the bookshelf family
+    // (two theme-free .book-spine rules + two .dark .shelf-* gradients, 4
+    // selector lines → home/home-bookshelf.css, a NEW file beside its owner)
+    // moved beside their single consumer; the neighbouring .dark .stat-band
+    // / .dark .quote-band painters stay (different owners: home-feed /
+    // home-view via the quote band). MEASURED note: the true pre-wave count
+    // was 264, not the recorded 263 — a +1 drift in the wave-9 bookkeeping;
+    // this re-base anchors to the measured reality (260 = 264 − 4). 3a
+    // checkpoints re-ran clean. Growth from here must consolidate, not add.
     const sel = lines.filter((l) => /^\s*\.[a-z]/.test(l) && !l.includes("→")).length;
     expect(sel).toBeLessThanOrEqual(505);
-    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(263);
+    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(260);
   });
 });
 
@@ -1417,6 +1434,9 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
     "src/components/study/lesson/dictionary-view.css": [".dark .dict-state-chip.bg-stone-100:hover {", '.dark .dict-state-chip [class*="bg-stone-200"] {', ".dark .dict-state-chip.bg-stone-700 {"],
     // task 150 — the combined streak badge: born extracted beside its owner (ice guest ink duo)
     "src/components/study/practice/streak-badge.css": [".streak-ice {", ".dark .streak-ice {"],
+    // wave 10 (task 151) — the bookshelf family: two theme-free spine rules
+    // + two dark shelf gradients, all single-owner (home-bookshelf.tsx)
+    "src/components/study/home/home-bookshelf.css": [".book-spine {", ".book-spine:hover {", ".dark .shelf-strip { background-image: linear-gradient(to bottom, #1c1917, #0f0d0c) !important; }", ".dark .shelf-edge { background-image: linear-gradient(to bottom, #3d372f, #26221d) !important; }"],
   };
 
   it("keeps every extracted feature file present with its key selectors", () => {
@@ -1516,6 +1536,14 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
       "\n.dark .dict-state-chip.bg-stone-100:hover {",
       '\n.dark .dict-state-chip [class*="bg-stone-200"] {',
       "\n.dark .dict-state-chip.bg-stone-700 {",
+      // wave 10 (task 151) — \n-prefixed with " {" suffix per the standing
+      // lesson; tombstones are selector-pattern-free. The shelf heads must
+      // stay distinct from the stayed .dark .stat-band / .dark .quote-band
+      // band-neighbours (none share the prefix, but the discipline holds)
+      "\n.book-spine {",
+      "\n.book-spine:hover {",
+      "\n.dark .shelf-strip {",
+      "\n.dark .shelf-edge {",
     ]) {
       expect(css, `globals.css still carries a moved rule: ${gone}`).not.toContain(gone);
     }
@@ -1538,7 +1566,7 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
     expect(css).toContain(".dark .daily-quests .text-violet-700,.dark .leaderboard.duel-mode .text-fuchsia-300");
   });
 
-  it("features.css manifest imports all seventeen files; layout.tsx loads it right after globals.css", () => {
+  it("features.css manifest imports all twenty files; layout.tsx loads it right after globals.css", () => {
     const manifest = readFileSync(resolve(process.cwd(), "src/app/features.css"), "utf8");
     for (const p of featureCssPaths) {
       expect(manifest, `manifest line missing for ${p}`).toContain(`@import "${p.replace("src/", "../")}";`);

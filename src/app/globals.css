@@ -290,14 +290,9 @@ body {
   transform: rotateY(180deg);
 }
 
-/* Book spine hover */
-.book-spine {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-.book-spine:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 18px 32px -12px rgb(0 0 0 / 0.25);
-}
+/* book spine hover moved beside its owner (§8.3 wave 10, task 151):
+   home/home-bookshelf.css — both spine rules (theme-free) went with the
+   dark shelf gradients of the same family */
 
 /* underline for grammar HTML tables inside rtl container */
 .g-html table {
@@ -389,9 +384,10 @@ body {
    copies at #5eead4, incl. word-day's dead teal-800 copy) */
 .dark .text-teal-700,.dark .text-teal-800 { color: #5eead4; }
 
-/* bookshelf strip + shelf edge custom gradients */
-.dark .shelf-strip { background-image: linear-gradient(to bottom, #1c1917, #0f0d0c) !important; }
-.dark .shelf-edge { background-image: linear-gradient(to bottom, #3d372f, #26221d) !important; }
+/* bookshelf strip + shelf edge dark gradients moved beside their owner
+   (§8.3 wave 10, task 151): home/home-bookshelf.css — together with the
+   theme-free book-spine pair; the light utility gradients stay on the
+   elements and dark repaints through the migrated !important painters */
 
 /* home stat + quote bands */
 .dark .stat-band { background-image: linear-gradient(to left, rgba(6, 55, 40, 0.45), rgba(6, 44, 40, 0.3)) !important; }
