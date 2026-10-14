@@ -616,16 +616,17 @@ body {
 .dark .hover\:bg-violet-50:hover { background-color: rgba(59, 40, 92, 0.55); }
 
 /* ------------------------------------------------------------------ */
-/* r14 — SRS donut + dictionary state filter (report-month: wave 3)  */
+/* r14 — SRS donut (report-month: wave 3; the dictionary state filter
+   chips left in §8.3 wave 9, task 149 → lesson/dictionary-view.css)  */
 /* ------------------------------------------------------------------ */
 
 /* SRS state donut */
 .dark .srs-donut { background-color: rgba(6, 44, 34, 0.5); box-shadow: none; border: 1px solid rgb(13 100 88 / 0.4); }
 
-/* dictionary state filter chips */
-.dark .dict-state-chip.bg-stone-100:hover { background-color: #37312b; }
-.dark .dict-state-chip [class*="bg-stone-200"] { background-color: rgb(60 55 49 / 0.95); color: #a8a29e; }
-.dark .dict-state-chip.bg-stone-700 { background-color: #57534e; }
+/* dictionary state filter chips moved beside their owner (§8.3 wave 9,
+   task 149): lesson/dictionary-view.css — the bg-stone-100 ink member
+   above stays: it belongs to the cross-family canonical group, not to
+   this family alone */
 
 /* report-month moved beside its owner (§8.3 wave 3, task 137):
    reports/report-card.css */

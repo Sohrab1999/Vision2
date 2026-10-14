@@ -1,10 +1,12 @@
 /* Per-feature stylesheets — §8.3 extraction (wave 1: task 133, wave 2: task
    135, wave 3: task 137, wave 4: task 139, wave 5: task 141, wave 6: task 143,
-   wave 7: task 145, wave 8: task 147 — seventeen files; waves 6/7/8 appended
-   to existing files, no new file — wave 7 moved the four rush dark gradients
-   into duel/rush.css and merged the masked wave-1 hero/done stops there;
-   wave 8 moved the dd-* outcome gradients into duel/duel-dark.css and retired
-   the masked attribute-rule stops there).
+   wave 7: task 145, wave 8: task 147, wave 9: task 149 — eighteen files;
+   waves 6/7/8 appended to existing files, no new file — wave 7 moved the four
+   rush dark gradients into duel/rush.css and merged the masked wave-1
+   hero/done stops there; wave 8 moved the dd-* outcome gradients into
+   duel/duel-dark.css and retired the masked attribute-rule stops there;
+   wave 9 created lesson/dictionary-view.css beside its owner — the first new
+   file since wave 5 — for the dict-state-chip dark trio).
    Each file lives BESIDE its owning component and is imported here so the
    rules are ALWAYS part of the initial CSS — the same guarantee globals.css
    had before the extraction (lazy views keep zero first-paint risk), and the
@@ -30,5 +32,7 @@
 @import "../components/study/quiz/quiz-result.css";
 @import "../components/study/practice/weekly-chart.css";
 @import "../components/study/lesson/word-of-day.css";
+/* wave 9 (task 149): the dictionary state-filter chips (dark trio) */
+@import "../components/study/lesson/dictionary-view.css";
 /* wave 5 (task 141): the daily-quests family (reward shimmer + dark tuning) */
 @import "../components/study/practice/daily-quests.css";

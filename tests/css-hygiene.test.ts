@@ -290,9 +290,16 @@ describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
     // performed for duel-done). Tombstone selector-pattern-free; the
     // 3a checkpoints re-ran clean. Growth from here must consolidate,
     // not add.
+    // task 149 (§8.3 wave 9): re-based 266 → 263 — the dictionary state
+    // filter chips (hover/descendant-badge/bg-stone-700, 3 selector lines →
+    // lesson/dictionary-view.css, a NEW file beside its owner — first since
+    // wave 5) moved beside their single consumer; the .bg-stone-100 member
+    // of the text-stone-600 canonical group stays (multi-family, nine
+    // families — asserted). 3a checkpoints re-ran clean. Growth from here
+    // must consolidate, not add.
     const sel = lines.filter((l) => /^\s*\.[a-z]/.test(l) && !l.includes("→")).length;
     expect(sel).toBeLessThanOrEqual(505);
-    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(266);
+    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(263);
   });
 });
 
@@ -1406,6 +1413,8 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
     "src/components/study/quiz/quiz-result.css": [".certificate-card {", ".dark .certificate-card .border-dashed"],
     "src/components/study/practice/weekly-chart.css": [".heat-cell {", "@media (max-width: 480px) {", ".dark .heat-cell.bg-emerald-200"],
     "src/components/study/lesson/word-of-day.css": [".word-day {", ".dark .word-day {", ".dark .word-day .text-emerald-700", ".dark .word-day .bg-emerald-600"],
+    // wave 9 (task 149) — the dictionary state-filter chips, verbatim single lines
+    "src/components/study/lesson/dictionary-view.css": [".dark .dict-state-chip.bg-stone-100:hover {", '.dark .dict-state-chip [class*="bg-stone-200"] {', ".dark .dict-state-chip.bg-stone-700 {"],
   };
 
   it("keeps every extracted feature file present with its key selectors", () => {
@@ -1497,6 +1506,14 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
       "\n.dark .dd-win {",
       "\n.dark .dd-tie {",
       "\n.dark .dd-lose {",
+      // wave 9 (task 149) — \n-prefixed with " {" suffix per the standing
+      // lesson; the tombstone is selector-pattern-free, and the \n prefix
+      // keeps the stayed canonical-group member (line ~604: no :hover, and
+      // the chip head there sits mid-line, not at line start) from
+      // false-positiving
+      "\n.dark .dict-state-chip.bg-stone-100:hover {",
+      '\n.dark .dict-state-chip [class*="bg-stone-200"] {',
+      "\n.dark .dict-state-chip.bg-stone-700 {",
     ]) {
       expect(css, `globals.css still carries a moved rule: ${gone}`).not.toContain(gone);
     }
@@ -1511,6 +1528,8 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
     expect(css).toContain(".dark .rush-hero .border-orange-200,.dark .rush-board .border-orange-200,.dark .report-paper .border-orange-200");
     // the hover utilities are consumed across teacher/my-words panels — global band stays
     expect(css).toContain(".dark .hover\\:bg-sky-50:hover");
+    // wave 9 (task 149): the dict-state-chip ink member of the canonical group stays (multi-family)
+    expect(css).toContain(".dark .gmetro-dialog .text-stone-600,.dark .dict-state-chip.bg-stone-100 { color: #c9c2bb; }");
     expect(css).toContain(".dark .hover\\:bg-violet-50:hover");
     // wave 5 (task 141): the r115 daily-quests ink trio stays at the first
     // member's position (its leaderboard.duel-mode member is the duel family)
