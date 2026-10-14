@@ -72,6 +72,11 @@ const featureCssPaths = [
   // two lesson owners
   "src/components/study/lesson/flashcards.css",
   "src/components/study/lesson/appendix-view.css",
+  // wave 17 (task 164): the grammar metro family — .gmetro map + .glesson
+  // 90s flow co-render in grammar-view; one view family, one file (the
+  // wave-13 precedent) — the biggest single extraction so far (72
+  // selector lines)
+  "src/components/study/grammar/grammar-metro.css",
 ];
 const readEffectiveCss = (): string =>
   readFileSync(cssPath, "utf8") +
@@ -377,14 +382,24 @@ describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
     // family (5 structural rules) moved beside its single owner
     // (lesson/flashcards.css — one view family, one file) and the
     // appendix table's scroll rule (1 line) beside its owner
-    // (lesson/appendix-view.css). The grammar-metro family (.gmetro/
-    // .glesson ~65 rules, co-rendered in grammar-view) is the next big
-    // candidate; print bands stay global per the wave-1 protocol; c-*
-    // tone-kernel singles stay (kernel contract). 3a checkpoints re-ran
-    // clean. Growth from here must consolidate, not add.
+    // (lesson/appendix-view.css). Print bands stay global per the wave-1
+    // protocol; c-* tone-kernel singles stay (kernel contract). 3a
+    // checkpoints re-ran clean. Growth from here must consolidate, not
+    // add.
+    // task 164 (§8.3 wave 17): re-based 241 → 168 — the grammar-metro
+    // family (.gmetro map + .glesson 90s flow — 72 selector lines,
+    // co-rendered in grammar-view) moved beside its owners
+    // (grammar/grammar-metro.css — one view family, one file, the
+    // biggest single extraction so far); multi-family canonical groups
+    // carrying gmetro/glesson members stay. The band retirement ALSO
+    // made .dark .text-rose-600/.text-rose-700 consolidatable (the
+    // glesson #fda4af members had been the hazard blocking the merge)
+    // — merged into one canonical rule (−1 line, the 3a fixed-point
+    // demand). 3a checkpoints re-ran clean. Growth from here must
+    // consolidate, not add.
     const sel = lines.filter((l) => /^\s*\.[a-z]/.test(l) && !l.includes("→")).length;
     expect(sel).toBeLessThanOrEqual(505);
-    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(241);
+    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(168);
   });
 });
 
@@ -1528,6 +1543,21 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
     // and the appendix scroll rule
     "src/components/study/lesson/flashcards.css": [".flip-scene {\n  perspective: 1400px;", ".flip-card {\n  transform-style: preserve-3d;", ".flip-card.flipped {\n  transform: rotateY(180deg);", ".flip-face {\n  position: absolute;", ".flip-face.back {\n  transform: rotateY(180deg);"],
     "src/components/study/lesson/appendix-view.css": [".verbs-table { min-width: 540px; }"],
+    // wave 17 (task 164) — the grammar metro family, verbatim single
+    // lines + one multi-line table rule (selector + first-declaration
+    // signature per the wave-16 multi-line convention)
+    "src/components/study/grammar/grammar-metro.css": [
+      ".glesson-piece.glesson-role-subject { background-color: #d1fae5; border-color: #6ee7b7; color: #065f46; }",
+      ".dark .gmetro-hero { background-image: linear-gradient(to bottom left, #0f766e, #115e59, #064e3b); }",
+      ".dark .gmetro-node-open { border-color: #1c1917; background-color: #292524; }",
+      ".dark .gmetro-dialog { background-color: #1c1917; border-color: rgb(87 83 78 / 0.5); }",
+      ".dark .gmetro-lesson table td,\n.dark .gmetro-lesson table th { border-color: rgb(87 83 78 / 0.4); }",
+      ".dark .glesson-head[class*=\"border-emerald-200\"]",
+      ".dark .glesson-opt.glesson-opt-correct",
+      ".dark .glesson-mirror .glesson-mirror-fa",
+      ".dark .glesson-done.glesson-done-perfect { background-color: rgb(6 78 59 / 0.25); border-color: rgb(52 211 153 / 0.45); }",
+      ".dark .gmetro-lesson-badge { background-color: rgb(41 37 36 / 0.6); }",
+    ],
   };
 
   it("keeps every extracted feature file present with its key selectors", () => {
@@ -1672,6 +1702,27 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
       "\n.flip-face {",
       "\n.flip-face.back {",
       "\n.verbs-table {",
+      // wave 17 (task 164) — \n-prefixed with " {" suffix per the standing
+      // lesson; the tombstone mentions only file paths (selector-pattern-
+      // free). The stayed multi-family canonical groups carry .dark
+      // .gmetro-line/.dark .gmetro-dialog/.dark .glesson-head members
+      // mid-line (bg-white, stone inks, bg-stone-100) — the \n prefix
+      // keeps them from false-positiving
+      "\n.glesson-piece.glesson-role-subject {",
+      "\n.dark .gmetro-hero {",
+      "\n.dark .gmetro-step {",
+      '\n.dark .gmetro-line[class*="border-emerald-200"] {',
+      "\n.dark .gmetro-line .text-stone-700 {",
+      "\n.dark .gmetro-node-open {",
+      "\n.dark .gmetro-dialog {",
+      "\n.dark .gmetro-lesson table td,",
+      "\n.dark .gmetro-tip {",
+      '\n.dark .glesson-head[class*="border-emerald-200"] {',
+      "\n.dark .glesson-timebar {",
+      "\n.dark .glesson-opt.glesson-opt-correct {",
+      "\n.dark .glesson-mirror .glesson-mirror-fa {",
+      "\n.dark .glesson-done.glesson-done-perfect {",
+      "\n.dark .gmetro-lesson-badge {",
     ]) {
       expect(css, `globals.css still carries a moved rule: ${gone}`).not.toContain(gone);
     }
@@ -1694,7 +1745,7 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
     expect(css).toContain(".dark .daily-quests .text-violet-700,.dark .leaderboard.duel-mode .text-fuchsia-300");
   });
 
-  it("features.css manifest imports all thirty-one files; layout.tsx loads it right after globals.css", () => {
+  it("features.css manifest imports all thirty-two files; layout.tsx loads it right after globals.css", () => {
     const manifest = readFileSync(resolve(process.cwd(), "src/app/features.css"), "utf8");
     for (const p of featureCssPaths) {
       expect(manifest, `manifest line missing for ${p}`).toContain(`@import "${p.replace("src/", "../")}";`);
