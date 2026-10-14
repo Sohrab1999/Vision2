@@ -17,6 +17,11 @@ const p = new PrismaClient();
   if (process.argv.includes("--clean")) {
     // QA round touched no quiz/profile rows (duel panel + badges only, localStorage seed);
     // restore passive app_open baseline and drop QA-only event rows if any appeared.
+    // r189: rounds that run a REAL quiz flow (e.g. the result-card painter QA)
+    // also leave quizAttempt rows + exam_done/quiz_done counters behind —
+    // attempts are dropped ONLY inside the 60m QA window (real learners'
+    // older attempts stay untouched); the two counters are daily aggregates
+    // whose only source in this loopback QA env is the QA run itself.
     for (const e of ev) {
       if (e.name === "app_open") {
         await p.eventDay.update({ where: { day_name: { day: e.day, name: e.name } }, data: { count: 2 } });
@@ -24,11 +29,15 @@ const p = new PrismaClient();
       } else if (["duel_start", "duel_done", "lesson_open",
         // task 185: the my-words flashcards QA path (dictionary star -> deck
         // -> flip) leaves these funnel rows behind — all QA-only by construction
-        "my_words_open", "my_words_flashcards_start", "star_word"].includes(e.name)) {
+        "my_words_open", "my_words_flashcards_start", "star_word",
+        // task 189: the result-card painter QA completes a real 10-question exam
+        "exam_done", "quiz_done"].includes(e.name)) {
         await p.eventDay.delete({ where: { day_name: { day: e.day, name: e.name } } });
         console.log("QA event row removed:", e.name, "=", e.count);
       }
     }
+    const gone = await p.quizAttempt.deleteMany({ where: { createdAt: { gte: since } } });
+    if (gone.count > 0) console.log("QA-window attempts removed:", gone.count);
     console.log("CLEAN-OK");
   }
   await p.$disconnect();
