@@ -8,7 +8,7 @@
 | # | Plan | Finding | Touches | Status |
 |---|---|---|---|---|
 | 1 | P1 reduced-motion — **executed via superior route**: existing `html.user-reduce-motion` kill-switch discovered in recon; OS preference ORed into the same channel (new `usePrefersReducedMotion` hook) + `MotionConfig` on the app root (third leg: framer JS animations ignore CSS 0.01ms). Draft's parallel `@media` block correctly NOT added (US-004). | F1 (G-9, red) | hook + study-app root | **DONE @ d429ca9** (task 183) |
-| 2 | P6 motion budget (flip 0.42s / bars 0.3s / confetti ease-out) | F6 (G-5+G-1) | globals.css ×2, weekly-chart.tsx | OPEN · `TOUCHES-DS` |
+| 2 | P6 motion budget (flip 0.42s / bars 0.3s / confetti ease-out) — **executed**: three value edits + 4 static contract tests; live-verified on a REAL flip (computed 0.42s); scope bound pinned: home-hero 0.45s entrance untouched | F6 (G-5+G-1) | globals.css ×2, weekly-chart.tsx | **DONE @ 5087aef** (task 185) |
 | 3 | P9 44 px hit areas (header + 29-site census) | F9 (KR-3 hard) | globals.css +1 utility, header/settings/others | OPEN · `TOUCHES-DS` |
 | 4 | P5 thin double-encoded edges (6 sites) | F5 (DEC-2/DEC-4/KR-5) | error/official/pwa/bookshelf/duel-done + `.book-spine` | OPEN · `TOUCHES-DS` |
 | 5 | P10 press scale → exactly 0.96 (172 sites) | F11 (KR-10 hard) | src-wide class sweep | OPEN |
