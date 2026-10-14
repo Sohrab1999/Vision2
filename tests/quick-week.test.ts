@@ -337,9 +337,9 @@ const BASE_DEFAULTS = {
 } as unknown as BuildArgs;
 const base = (over: Partial<BuildArgs> = {}) => buildEvalInput({ ...BASE_DEFAULTS, ...over });
 
-describe("سیم‌کشیِ خانوادهٔ هفتهٔ چابک — رجیستریِ ۵۶تایی", () => {
+describe("سیم‌کشیِ خانوادهٔ هفتهٔ چابک — رجیستریِ ۵۷تایی", () => {
   it("دو نشانِ جدید با آیکن/تیر/قراردادِ پیشرفت — رجیستری ۵۲→۵۵", () => {
-    expect(BADGES.length).toBe(56);
+    expect(BADGES.length).toBe(57);
     const ids = new Set(BADGES.map((b) => b.id));
     expect(ids.has("quick-week")).toBe(true);
     expect(ids.has("lightning-week")).toBe(true);

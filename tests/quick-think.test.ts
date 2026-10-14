@@ -311,8 +311,8 @@ describe("نشان‌های چابکیِ ذهن — سیم‌کشی و زیرم�
     expect(unlocked).not.toContain("flash-mind");
   });
 
-  it("wording و تیر و آیکن: نیم‌نگاه نقره/Eye، برقِ فکر طلا/BrainCircuit؛ رجیستری ۵۶", () => {
-    expect(BADGES.length).toBe(56);
+  it("wording و تیر و آیکن: نیم‌نگاه نقره/Eye، برقِ فکر طلا/BrainCircuit؛ رجیستری ۵۷", () => {
+    expect(BADGES.length).toBe(57);
     expect(byId("quick-think").tier).toBe("silver");
     expect(byId("quick-think").icon).toBe("Eye");
     expect(byId("flash-mind").tier).toBe("gold");

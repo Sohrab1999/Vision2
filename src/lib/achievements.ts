@@ -974,6 +974,33 @@ export const BADGES: BadgeDef[] = [
     },
     check: (s) => s.activeDays35 >= 30 && s.goalDays >= 14,
   },
+  // پلهٔ پنجم (Task 154) — دومینِ جفتِ «دوسیستمِ متفاوت»: دیکته×هدف.
+  // دیکته برای نخستین‌بار واردِ خانوادهٔ ترکیبی می‌شود (چهار عضوِ پیشین از
+  // یخ/برق‌آسا/حضور/هدف تغذیه می‌شدند). سطحِ دو بُعد عمداً هم‌عدد است:
+  // ۱۴ روزِ دیکته‌دارِ پنجرهٔ ۱۴روزه (هر روزِ دو هفته حداقل یک دیکته —
+  // همان سطحِ تک-مهارتِ ماراتن، تنگاتنگِ dictation-run ولی دوبرابر) ×
+  // ۱۴ روزِ هدف‌دار (هم‌سطحِ goal-fortnight). نوارِ «محدودهٔ مقید» و
+  // راهنمایِ بُعدِ عقب‌مانده همان قراردادِ خانواده؛ تساویِ کسرها → رشتهٔ
+  // دیکته (<=، بعدِ اول). زیرمجموعه‌یابیِ صادق: پنجرهٔ ۷ ⊂ پنجرهٔ ۱۴ است
+  // (Task 90) پس ۱۴ روزِ دیکته‌دار ⇒ dictation-run؛ و ۱۴ هدف ⇒
+  // goal-fortnight — ولی هیچ‌کدام از دو بُعد، دیگری را نمی‌سازد (پیمان
+  // همه‌عمرِ سقف-۱۴ است نه پنجره‌ای؛ دیکته هم پیمانی نمی‌سازد) — تست‌قفل
+  // در هر دو جهت.
+  {
+    id: "dictation-pledge",
+    title: "دیکته و پیمان",
+    desc: "۱۴ روزِ پیوسته دیکته و ۱۴ روزِ هدف‌دار — اوجِ دیکته و اوجِ وفاداری به قولِ روزانه، با هم",
+    icon: "NotebookPen",
+    tier: "gold",
+    progress: (s) => {
+      const dict = Math.min(s.dictationDays14, 14);
+      const pledge = Math.min(s.goalDays, 14);
+      return dict / 14 <= pledge / 14
+        ? `${faNum(dict)} از ۱۴ روزِ دیکته`
+        : `${faNum(pledge)} از ۱۴ روزِ هدف‌دار`;
+    },
+    check: (s) => s.dictationDays14 >= 14 && s.goalDays >= 14,
+  },
 ];
 
 export const TIER_STYLE: Record<BadgeTier, { ring: string; grad: string; chip: string; glow: string }> = {
@@ -1068,6 +1095,9 @@ export function badgeProgressPct(id: string, s: BadgeEvalInput): number {
     // Task 152 — چهارمین دوسیستمه: حضور×هدف (capstone×capstone)
     case "presence-pledge":
       return clamp(Math.min((s.activeDays35 / 30) * 100, (s.goalDays / 14) * 100));
+    // Task 154 — پنجمین دوسیستمه: دیکته×هدف (دو ۱۴تاییِ هم‌عدد)
+    case "dictation-pledge":
+      return clamp(Math.min((s.dictationDays14 / 14) * 100, (s.goalDays / 14) * 100));
     default:
       return 0;
   }

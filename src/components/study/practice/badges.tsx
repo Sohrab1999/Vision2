@@ -53,6 +53,7 @@ import {
   Waypoints,
   FlameKindling,
   Handshake,
+  NotebookPen,
 } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -131,6 +132,8 @@ export const BADGE_ICONS: Record<string, React.ElementType> = {
   FlameKindling,
   // پلهٔ چهارم (Task 152) — حضور×هدف
   Handshake,
+  // پلهٔ پنجم (Task 154) — دیکته×هدف
+  NotebookPen,
 };
 
 const tierFa: Record<string, string> = {
