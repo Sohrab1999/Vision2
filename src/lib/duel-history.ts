@@ -295,6 +295,49 @@ export function duelTopRival(records: DuelRecord[]): { opponent: string; wins: n
   return top;
 }
 
+// ---------------- کارنامهٔ مقابلِ حریف (Task 191 — head-to-head) ----------------
+/**
+ * صفحهٔ پایانِ نبرد به دفترچه وصل می‌شود: برد/باخت/مساویِ «مقابلِ همین حریف»
+ * از رکوردهای دفترچه، با همان تطبیقِ نرمال‌شدهٔ Task 98 (بی‌فاصله/بی‌نیم‌فاصله —
+ * «امیر محمد» و «امیرمحمد» یک رقیب‌اند).
+ *
+ * صداقتِ قرارداد:
+ *  • فقط رکوردهای واقعیِ دفترچه شمرده می‌شود (سقفِ DUEL_HISTORY_CAP) —
+ *    زیرمجموعهٔ صادق، نه تاریخِ کل؛ برچسبِ UI همین را می‌گوید.
+ *  • نامِ فالبکِ «حریف» هرگز کلیدِ تطبیق نیست — رکوردهای ناشناسِ (نام‌نرسیدهٔ)
+ *    گذشته می‌توانند آدم‌های متفاوتی باشند و یک رقیبِ ساختگی نمی‌سازند؛
+ *    نبردِ مقابلِ حریفی که واقعاً «حریف» نامش است هم طبقِ SEC-5 روی همان
+ *    نمایشِ خوداظهار حساب می‌شود اما رکوردهای فالبکِ قدیمی به او چسپانده
+ *    نمی‌شوند (همین گاردِ صریح، duelTopRival سخت‌گیرتر شده).
+ *  • نامِ غایب/خالی یا دفترچهٔ بی‌رکوردِ مقابلِ او → null (بلوک غایب —
+ *    نه صفرِ ساختگی).
+ *
+ * نبردِ جاری عمداً شامل است: persistResult رکورد را پیش از رندرِ فازِ done
+ * در دفترچه می‌گذارد (use-duel-socket)، پس شمارشِ «تا همین لحظه» خودکار
+ * درست است و UI آن را شفاف می‌گوید.
+ */
+export const DUEL_ANON_OPPONENT = "حریف";
+
+export function duelHeadToHead(
+  records: DuelRecord[],
+  opponent: string | undefined | null
+): { win: number; loss: number; tie: number } | null {
+  if (!Array.isArray(records)) return null;
+  const name = typeof opponent === "string" ? opponent.trim() : "";
+  if (!name || name === DUEL_ANON_OPPONENT) return null;
+  const key = normalizeDuelQuery(name);
+  if (!key) return null;
+  const digest = { win: 0, loss: 0, tie: 0 };
+  let matched = 0;
+  for (const r of records) {
+    if (!r || r.opponent === DUEL_ANON_OPPONENT) continue;
+    if (normalizeDuelQuery(r.opponent) !== key) continue;
+    digest[r.outcome]++;
+    matched++;
+  }
+  return matched > 0 ? digest : null;
+}
+
 // ---------------- آمارِ سرعتِ دفترچه (Task 100 — هفتمین خانوادهٔ نشان: «سرعت») ----------------
 // قراردادِ داور (Task 99): امتیاز = درست×۱۰۰ + پاداشِ سرعتِ ۰..۱۰۰ بر پاسخ.
 // پس پاداشِ سرعتِ هر نبرد از همان decomposeDuelScore درمی‌آید — صفر ورودیِ

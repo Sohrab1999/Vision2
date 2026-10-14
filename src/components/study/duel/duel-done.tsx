@@ -4,7 +4,8 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Trophy, Swords, Users, RotateCcw, Crown, Handshake, Loader2, ShieldCheck, ImageDown, Share2, Timer } from "lucide-react";
 import { faNum, secFa } from "@/lib/study-theme";
-import { decomposeDuelScore } from "@/lib/duel-history";
+import { decomposeDuelScore, duelHeadToHead } from "@/lib/duel-history";
+import { useStudy } from "@/lib/study-store";
 import { duelThinkStats } from "@/lib/duel-think";
 import { downloadDuelDoneImage, buildDuelDoneBlob } from "@/lib/result-image";
 import { canShareImageFiles, blobToFile, shareImageFile, type ShareOutcome } from "@/lib/share-card";
@@ -29,6 +30,14 @@ export default function DuelDone({ endData, mySid, myFinishAt, oppConnected, rem
   const [imgBusy, setImgBusy] = useState(false);
   const [shareBusy, setShareBusy] = useState(false);
   const { toast } = useToast();
+
+  // Task 191 — «کارنامهٔ مقابلِ این حریف»: دفترچه به کارتِ مقایسه وصل می‌شود.
+  // duelHeadToHead با نامِ نرمال‌شدهٔ ۹۸ می‌شمارد؛ نامِ فالبکِ «حریف» و
+  // دفترچهٔ بی‌سابقهٔ مقابلِ او → null (بلوک غایب). رکوردِ همین نبرد چون
+  // persistResult پیش از رندرِ done در دفترچه نشسته، داخلِ شمارش است —
+  // برچسبِ «با همین نبرد» همین را شفاف می‌گوید.
+  const duelHistory = useStudy((s) => s.duelHistory);
+  const h2h = duelHeadToHead(duelHistory, other?.name);
 
   // Task 106 → ۱۰۹ — secFa به study-theme مهاجرت کرد (یک قراردادِ مشترک؛
   // هفته‌نامه هم از امروز همین را می‌خواند). null → «—» همان‌جا حل شده.
@@ -229,6 +238,19 @@ export default function DuelDone({ endData, mySid, myFinishAt, oppConnected, rem
             }
           )}
         </div>
+        {/* Task 191 — سرشماریِ مقابلِ همین حریف از دفترچه (شاملِ نبردِ جاری) */}
+        {h2h && other && (
+          <p className="mt-3 flex flex-wrap items-center justify-center gap-x-1.5 text-center text-[11.5px] font-bold leading-6 text-stone-500">
+            <Swords size={12} className="shrink-0 text-fuchsia-500" aria-hidden />
+            <span>
+              کارنامهٔ مقابلِ {other.name} در دفترچه (با همین نبرد):{" "}
+              <span className="font-black text-stone-600">
+                {faNum(h2h.win)} برد · {faNum(h2h.loss)} باخت
+                {h2h.tie > 0 ? ` · ${faNum(h2h.tie)} مساوی` : ""}
+              </span>
+            </span>
+          </p>
+        )}
         <p className="mt-3 text-center text-[11.5px] leading-6 text-stone-500">
           {endData.receipt
             ? "نتیجهٔ این نبرد با رسیدِ امضاشدهٔ داور در آمار سرور ثبت شد — غلط‌هایت در کارت «بانک اشتباهات» خانه منتظرت هستند."
