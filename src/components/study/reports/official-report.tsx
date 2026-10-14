@@ -18,6 +18,7 @@ import {
   Lightbulb,
   User,
   Target,
+  FileSpreadsheet,
 } from "lucide-react";
 import {
   useStudy,
@@ -25,6 +26,7 @@ import {
   mistakesOfLesson,
   srsDueCount,
   knownCountOfLesson,
+  daysAgoKey,
 } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { useEscape } from "@/hooks/use-keyboard";
@@ -34,6 +36,8 @@ import { BADGES, buildEvalInput, unlockedBadgeIds } from "@/lib/achievements";
 import { skillBreakdown, barColorFor, skillGradeFa } from "@/lib/skill-stats";
 import { buildCoverageMap, COVERAGE_SKILLS } from "@/lib/coverage-map";
 import { COVERAGE_SKILL_SHORT, heatSummary } from "@/lib/coverage-heat";
+import { downloadCoverageCsv } from "@/lib/coverage-csv";
+import { useToast } from "@/hooks/use-toast";
 import { trackEvent } from "@/lib/analytics";
 import type { BadgeTier } from "@/lib/achievements";
 
@@ -164,6 +168,21 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
   );
   const coverageHeat = useMemo(() => (coverage ? heatSummary(coverage.lessons) : null), [coverage]);
 
+  // task 180 — coverage CSV export: third consumer of the 174/176 line and
+  // sibling of the 169/178 CSV family (same BOM/CRLF/ASCII dialect), but a
+  // tidy long table (one row per lesson x skill) so the teacher can
+  // filter/pivot in Excel — the time-series files stay separate.
+  const { toast } = useToast();
+  const saveCoverageCsv = () => {
+    const ok = coverage ? downloadCoverageCsv(coverage, daysAgoKey(0)) : false;
+    trackEvent("coverage_csv");
+    toast(
+      ok
+        ? { title: "🧭 CSV پوشش ذخیره شد", description: "هر سطر = یک مهارتِ یک درس — آمادهٔ فیلتر در اکسل.", duration: 3000 }
+        : { title: "گزارش پوشش هنوز آماده نیست", description: "اول کمی تمرین کن تا نقشهٔ پوشش ساخته شود.", duration: 3000 }
+    );
+  };
+
   const evalInput = useMemo(
     () =>
       mounted
@@ -245,6 +264,14 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
             برای گرفتن PDF، در پنجرهٔ چاپ مقصد را «Save as PDF» انتخاب کنید.
           </div>
           <div className="flex shrink-0 items-center gap-2">
+            <button
+              onClick={saveCoverageCsv}
+              aria-label="دانلود CSV پوشش مهارت‌ها"
+              className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-white/20 bg-white/10 px-3 py-2 text-[12px] font-black text-stone-100 transition-all hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 active:scale-95"
+            >
+              <FileSpreadsheet size={14} />
+              CSV پوشش
+            </button>
             <button
               onClick={printOfficial}
               className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-emerald-600 px-4 py-2 text-[12px] font-black text-white shadow-sm transition-all hover:bg-emerald-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 active:scale-95"
