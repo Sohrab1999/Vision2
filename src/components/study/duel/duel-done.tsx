@@ -271,7 +271,7 @@ export default function DuelDone({ endData, mySid, myFinishAt, oppConnected, rem
                   <span
                     key={i}
                     title={`سؤال ${faNum(i + 1)}: ${secFa(ms)} ثانیه`}
-                    className="flex-1 rounded-full bg-gradient-to-t from-violet-500 to-fuchsia-400"
+                    className="flex-1 rounded-full bg-gradient-to-t from-arcade-from-soft to-fuchsia-400"
                     style={{ height: `${Math.max(6, Math.round((ms / span) * 44))}px` }}
                   />
                 )
@@ -289,7 +289,7 @@ export default function DuelDone({ endData, mySid, myFinishAt, oppConnected, rem
         {oppConnected ? (
           <button
             onClick={rematch}
-            className="duel-cta inline-flex items-center gap-2.5 rounded-2xl bg-gradient-to-l from-violet-600 to-fuchsia-600 px-8 py-3.5 text-[15px] font-black text-white shadow-xl shadow-fuchsia-600/25 transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-95 active:scale-[0.96]"
+            className="duel-cta inline-flex items-center gap-2.5 rounded-2xl bg-gradient-to-l from-arcade-from to-arcade-to px-8 py-3.5 text-[15px] font-black text-white shadow-xl shadow-fuchsia-600/25 transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-95 active:scale-[0.96]"
           >
             <RotateCcw size={18} />
             نبرد دوباره

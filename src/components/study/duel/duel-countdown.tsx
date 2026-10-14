@@ -12,7 +12,7 @@ export default function DuelCountdown({ countdownLeft, players }: {
 }) {
   const secs = Math.ceil(countdownLeft / 1000);
   return (
-    <div className="duel-hero flex min-h-[55vh] flex-col items-center justify-center rounded-2xl bg-gradient-to-bl from-violet-600 via-fuchsia-600 to-rose-500 p-8 text-center text-white shadow-lg">
+    <div className="duel-hero arcade-hero flex min-h-[55vh] flex-col items-center justify-center rounded-2xl p-8 text-center text-white shadow-lg">
       <div className="mb-4 flex items-center gap-3">
         {[0, 1].map((i) => {
           const p = players[i];

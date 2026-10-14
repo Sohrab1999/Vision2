@@ -98,7 +98,7 @@ export default function ExplainBox({ questionId }: { questionId: string }) {
       <button
         onClick={ask}
         disabled={state.status === "loading"}
-        className="inline-flex items-center gap-1.5 rounded-lg border border-violet-300 bg-gradient-to-l from-violet-50 to-fuchsia-50 px-3 py-2 text-[12px] font-black text-violet-700 shadow-sm transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:from-violet-100 hover:to-fuchsia-100 active:scale-[0.96] disabled:opacity-60"
+        className="inline-flex items-center gap-1.5 rounded-lg border border-violet-300 bg-gradient-to-l from-arcade-tint to-arcade-tint-to px-3 py-2 text-[12px] font-black text-violet-700 shadow-sm transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:from-violet-100 hover:to-fuchsia-100 active:scale-[0.96] disabled:opacity-60"
       >
         {state.status === "loading" ? (
           <>

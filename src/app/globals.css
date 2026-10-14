@@ -6,6 +6,17 @@
 /* press feedback: active:scale-[0.96] everywhere — the one canonical squeeze
    value (unslop KR-10, task 187 P10); pinned by tests/press-scale.test.ts */
 
+/* type scale idiom (plan P8 route b, task 190 — documented, NOT tokenized):
+   Persian UI typesets with a stable px-literal family; the estate census IS
+   the scale — 12×181 · 13×130 · 11×120 · 10×102 · 11.5×72 · 10.5×63 · 15×53 ·
+   12.5×53 · 9.5×44 · 13.5×24 · 14×20 · 9×9 (px×count). New UI picks the
+   nearest table size; 9px survives only in print micro-labels (rendered
+   values pinned by tests/print-pagination-contract.test.ts). Tokenization
+   was evaluated and declined for now (≈900-site mechanical diff, zero visual
+   delta); a future re-skin may promote this table to --text-* tokens 1:1.
+   Pinned by tests/type-scale-idiom.test.ts (comment presence only — the code
+   stays free per the fork's route b). */
+
 @theme inline {
   /* r87: pinned explicitly — the c-veil utilities' no-fallback color-mix needs
      var(--color-white) to ALWAYS resolve (Chrome's resolved-var-mix computed
@@ -24,6 +35,22 @@
      :root, the .dark kernel remaps it, official-report re-lights it — and the
      two raw exclusion sites keep the compiler emitting it. Byte-parity source
      of truth = the unpinned var. */
+  /* r190: arcade dialect — the duel family's documented second brand (plan P3
+     Route A, task 190). The house brand (paper/print/report) is
+     stone+emerald/teal; the battle modes deliberately speak violet→fuchsia
+     for adrenaline contrast. The tokens live in the NON-INLINE @theme block
+     below — deliberately: inline would bake the literal hex into the
+     from-/to-/via- utilities and the .dark kernel remap could not flow
+     (live-probed task 190: inline probeFrom stayed rgb(124,58,237) in dark).
+     Every arcade gradient stop must name them (guard:
+     tests/arcade-dialect.test.ts bans raw from-violet-* to-fuchsia-* pairs
+     estate-wide). Values mirror the stock Tailwind shades the dialect grew
+     from, so rendering is unchanged. Sibling mode moods stay stock classes
+     on purpose: rush = amber/orange (fire), spell-rush = sky/cyan (frost);
+     podium rank gradients keep their dark-tuned literals
+     (leaderboard.duel-mode block); the paper masthead gradient is documented
+     print design and home-hero stays on-brand. */
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-vazir), "Vazirmatn", ui-sans-serif, system-ui, "Segoe UI", Tahoma, sans-serif;
@@ -61,6 +88,20 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* r190: arcade dialect tokens — NON-INLINE @theme on purpose (see the r190
+   comment inside the inline block above): non-inline utilities emit
+   var(--color-arcade-*) so the .dark kernel remap below flows, the same
+   mechanism the stock violet-50 kernel pin uses. */
+@theme {
+  --color-arcade-from: #7c3aed; /* violet-600 — deep start: CTAs + hero */
+  --color-arcade-to: #c026d3; /* fuchsia-600 — deep end: CTAs + hero via */
+  --color-arcade-from-soft: #8b5cf6; /* violet-500 — soft start: tiles/bars */
+  --color-arcade-to-soft: #d946ef; /* fuchsia-500 — soft end: tiles/bars */
+  --color-arcade-tint: #f5f3ff; /* violet-50 — chip/wash start */
+  --color-arcade-tint-to: #fdf4ff; /* fuchsia-50 — chip end */
+  --color-arcade-end: #e11d48; /* rose-600 — hero bridge into the house range */
 }
 
 :root {
@@ -193,6 +234,16 @@
   --color-violet-50: rgba(59, 40, 92, 0.35);
   --color-violet-200: rgba(110, 80, 170, 0.5);
   --color-violet-300: rgba(130, 100, 190, 0.55);
+  /* r190: arcade dialect dark remaps — ported from the retired
+     .dark .from-violet-600 / .to-fuchsia-600 class rules (their consumers
+     were swept to the tokens; gradient stops resolve var(--color-arcade-*)
+     so the kernel flows). Tints mirror the violet-50/fuchsia-50 kernel pins
+     above exactly. The SOFT pair is deliberately NOT remapped: the soft
+     tiles/bars always rendered stock shades in dark. */
+  --color-arcade-from: #5b21b6;
+  --color-arcade-to: #86198f;
+  --color-arcade-tint: rgba(59, 40, 92, 0.35);
+  --color-arcade-tint-to: rgba(74, 4, 78, 0.35);
 }
 
 @layer base {
@@ -472,8 +523,8 @@ body {
 .dark .text-violet-700 { color: #c4b5fd; }
 .dark .text-violet-600 { color: #a78bfa; }
 .dark .bg-fuchsia-500 { background-image: linear-gradient(to bottom left, #7c3aed, #a21caf); }
-.dark .from-violet-600 { --tw-gradient-from: #5b21b6; }
-.dark .to-fuchsia-600 { --tw-gradient-to: #86198f; }
+/* r190: the .from-violet-600/.to-fuchsia-600 dark stops moved to the token
+   kernel (.dark --color-arcade-from/to) — consumers were swept to tokens. */
 .dark .text-amber-700 { color: #fbbf24; }
 .dark .border-teal-500 { border-color: rgba(20, 130, 120, 0.6); }
 .dark .bg-orange-500 { background-image: linear-gradient(to bottom left, #c2410c, #9a3412); }
@@ -1174,6 +1225,20 @@ html.user-reduce-motion .streak-flame {
 }
 
 /* ==================== Duel (نبرد دودنفره) — dark mode ==================== */
+/* r190: arcade-hero recipe (plan P3 Route A) — the duel family's battle hero
+   band, light side. Dark side is owned by .dark .duel-hero right below (the
+   deeper wash gradient, !important). duel-setup + duel-countdown consume
+   this class instead of raw gradient utilities; arcade-end (rose-600) bridges
+   into the house range. duel-countdown previously drifted to rose-500 —
+   normalized to the recipe's rose-600 here. */
+.arcade-hero {
+  background-image: linear-gradient(
+    to bottom left,
+    var(--color-arcade-from),
+    var(--color-arcade-to),
+    var(--color-arcade-end)
+  );
+}
 .dark .duel-hero {
   background-image: linear-gradient(to bottom left, rgb(59 7 100 / 0.72), rgb(74 4 78 / 0.75), rgb(76 5 25 / 0.72)) !important;
 }
@@ -1633,3 +1698,4 @@ html.user-reduce-motion .streak-flame {
 .c-track-80 {
   background-color: color-mix(in oklab, var(--color-stone-200) 80%, transparent);
 }
+

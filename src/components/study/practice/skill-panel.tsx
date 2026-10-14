@@ -74,10 +74,10 @@ export default function SkillPanel() {
       aria-label="تحلیل مهارت‌ها"
       className="skill-panel overflow-hidden rounded-2xl border border-stone-200 c-card-elevated shadow-sm"
     >
-      <div className="h-1.5 w-full bg-gradient-to-l from-violet-500 via-fuchsia-500 to-amber-400" />
+      <div className="h-1.5 w-full bg-gradient-to-l from-arcade-from-soft via-arcade-to-soft to-amber-400" />
       <div className="p-5 sm:p-6">
         <div className="mb-4 flex items-center gap-3">
-          <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-600 text-white shadow-md shadow-fuchsia-900/20">
+          <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-arcade-from-soft to-arcade-to text-white shadow-md shadow-fuchsia-900/20">
             <Activity size={20} />
           </span>
           <div>
@@ -180,7 +180,7 @@ export default function SkillPanel() {
 
             <button
               onClick={() => setView({ type: "smart" })}
-              className="mt-2 flex w-full items-center justify-between gap-3 rounded-xl border border-violet-200 bg-gradient-to-l from-violet-50 to-fuchsia-50 px-3.5 py-3 text-right transition-[background-color,color,border-color,box-shadow,transform] hover:shadow-sm active:scale-[0.96]"
+              className="mt-2 flex w-full items-center justify-between gap-3 rounded-xl border border-violet-200 bg-gradient-to-l from-arcade-tint to-arcade-tint-to px-3.5 py-3 text-right transition-[background-color,color,border-color,box-shadow,transform] hover:shadow-sm active:scale-[0.96]"
             >
               <span className="flex items-center gap-2.5">
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-violet-100 text-violet-700">

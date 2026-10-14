@@ -46,10 +46,10 @@ export default function MyWordsFlashcards({ stars }: { stars: ResolvedStar[] }) 
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       aria-label="فلش‌کارت واژه‌های من"
-      className="mywords-cards overflow-hidden rounded-2xl border border-violet-200 bg-gradient-to-l from-violet-50/90 to-white shadow-sm"
+      className="mywords-cards overflow-hidden rounded-2xl border border-violet-200 bg-gradient-to-l from-arcade-tint/90 to-white shadow-sm"
     >
       <div className="flex flex-wrap items-center gap-3 p-4 sm:p-5">
-        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-purple-600 text-white shadow-md shadow-violet-900/20">
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-arcade-from-soft to-arcade-to-soft text-white shadow-md shadow-violet-900/20">
           <Layers size={20} />
         </span>
         <div className="min-w-0 flex-1">
@@ -92,7 +92,7 @@ export default function MyWordsFlashcards({ stars }: { stars: ResolvedStar[] }) 
               trackEvent("my_words_flashcards_start");
               setSession({ color: deckColor, cards: deck });
             }}
-            className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-l from-violet-500 to-purple-600 px-4 py-2.5 text-[13px] font-black text-white shadow-md shadow-violet-500/25 transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-95 active:scale-[0.96]"
+            className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-l from-arcade-from-soft to-arcade-to-soft px-4 py-2.5 text-[13px] font-black text-white shadow-md shadow-violet-500/25 transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-95 active:scale-[0.96]"
           >
             <Play size={14} />
             شروع فلش‌کارت ({faNum(deck.length)} کارت)

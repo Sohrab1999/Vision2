@@ -121,7 +121,7 @@ export default function SmartPracticeView() {
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        className="smart-hero rounded-2xl border border-violet-200 bg-gradient-to-l from-violet-50 to-white p-5 shadow-sm sm:p-6"
+        className="smart-hero rounded-2xl border border-violet-200 bg-gradient-to-l from-arcade-tint to-white p-5 shadow-sm sm:p-6"
       >
         <div className="flex items-center gap-3">
           <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-violet-100 text-violet-600">
@@ -261,7 +261,7 @@ export default function SmartPracticeView() {
             setSession(plan.pool);
           }}
           disabled={!plan || plan.pool.length === 0}
-          className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-l from-violet-500 to-fuchsia-600 py-3 text-sm font-black text-white shadow-lg shadow-violet-500/25 transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-95 active:scale-[0.96] disabled:opacity-40 sm:w-auto sm:px-10"
+          className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-l from-arcade-from-soft to-arcade-to py-3 text-sm font-black text-white shadow-lg shadow-violet-500/25 transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-95 active:scale-[0.96] disabled:opacity-40 sm:w-auto sm:px-10"
         >
           <Sparkles size={17} />
           شروع تمرین هوشمند ({faNum(plan?.pool.length ?? 0)} سؤال)

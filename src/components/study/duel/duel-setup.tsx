@@ -143,13 +143,13 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
       <motion.div
         initial={{ opacity: 0, y: 14 }}
         animate={{ opacity: 1, y: 0 }}
-        className="duel-hero relative overflow-hidden rounded-2xl bg-gradient-to-bl from-violet-600 via-fuchsia-600 to-rose-600 p-6 text-center text-white shadow-lg shadow-fuchsia-600/20 sm:p-10"
+        className="duel-hero arcade-hero relative overflow-hidden rounded-2xl p-6 text-center text-white shadow-lg shadow-fuchsia-600/20 sm:p-10"
       >
         <div className="absolute -left-6 -top-8 opacity-[0.08]" aria-hidden>
           <Swords size={230} />
         </div>
         <div className="relative">
-          <span className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-violet-500 to-fuchsia-700 text-white shadow-xl shadow-fuchsia-900/30">
+          <span className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-arcade-from-soft to-fuchsia-700 text-white shadow-xl shadow-fuchsia-900/30">
             <Swords size={38} />
           </span>
           <span className="mb-3 inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-black/25 px-3 py-1 text-xs font-bold backdrop-blur-sm">

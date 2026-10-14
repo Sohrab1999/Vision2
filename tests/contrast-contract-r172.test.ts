@@ -53,8 +53,14 @@ describe("قراردادِ کنتراست (r172) — پین‌هایِ هیرو 
   });
 
   it("هیروی duel: انتهایِ rose-600 + چیپ‌هایِ اسکریمِ تیره + کفِ متنِ /۹۰+", () => {
+    // r190: the raw gradient utilities became the .arcade-hero recipe (plan
+    // P3 Route A) — the rose-600 END is now pinned at token level
+    // (--color-arcade-end: #e11d48) by tests/arcade-dialect.test.ts; this
+    // test keeps the r172 intent: the hero consumes the recipe, keeps the
+    // dark scrim chips, and never regresses to rose-500 or white scrims.
     const s = read("src/components/study/duel/duel-setup.tsx");
-    expect(s).toContain("from-violet-600 via-fuchsia-600 to-rose-600");
+    expect(s).toContain("duel-hero arcade-hero");
+    expect(s).not.toContain("bg-gradient-to-bl");
     expect(s).toContain("bg-black/25");
     expect(s).not.toContain("to-rose-500");
     expect(s).not.toMatch(/bg-white\/1[05]\b/);

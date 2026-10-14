@@ -274,9 +274,9 @@ export default function DictationTab({
         animate={{ opacity: 1, y: 0 }}
         className="overflow-hidden rounded-2xl border border-violet-200 bg-white shadow-sm"
       >
-        <div className="h-1.5 w-full bg-gradient-to-l from-violet-500 to-fuchsia-500" />
+        <div className="h-1.5 w-full bg-gradient-to-l from-arcade-from-soft to-arcade-to-soft" />
         <div className="p-6 text-center sm:p-8">
-          <span className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-500 text-white shadow-lg shadow-violet-500/30">
+          <span className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-arcade-from-soft to-arcade-to-soft text-white shadow-lg shadow-violet-500/30">
             <Ear size={30} />
           </span>
           <h3 className="mb-2 text-xl font-black text-stone-800">آزمون دیکته — املای شنیداری</h3>
@@ -322,7 +322,7 @@ export default function DictationTab({
           <div className="flex flex-wrap items-center justify-center gap-3">
             <button
               onClick={startRound}
-              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-l from-violet-600 to-fuchsia-600 px-7 py-3 text-sm font-bold text-white shadow-lg shadow-violet-600/30 transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-90 active:scale-[0.96]"
+              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-l from-arcade-from to-arcade-to px-7 py-3 text-sm font-bold text-white shadow-lg shadow-violet-600/30 transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-90 active:scale-[0.96]"
             >
               <Play size={16} />
               شروع دیکته
@@ -353,7 +353,7 @@ export default function DictationTab({
     return (
       <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="space-y-4">
         <div className="overflow-hidden rounded-2xl border c-card p-8 text-center shadow-sm">
-          <span className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-500 text-white shadow-lg shadow-violet-500/30">
+          <span className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-arcade-from-soft to-arcade-to-soft text-white shadow-lg shadow-violet-500/30">
             <Trophy size={28} />
           </span>
           <h3 className="mb-2 text-xl font-black text-stone-800">دیکته تمام شد!</h3>
@@ -460,7 +460,7 @@ export default function DictationTab({
       <div className="flex items-center gap-3">
         <div className="h-2 flex-1 overflow-hidden rounded-full bg-stone-200">
           <div
-            className="h-full bg-gradient-to-l from-violet-500 to-fuchsia-500 transition-[background-color,color,border-color,box-shadow,transform] duration-300"
+            className="h-full bg-gradient-to-l from-arcade-from-soft to-arcade-to-soft transition-[background-color,color,border-color,box-shadow,transform] duration-300"
             style={{ width: `${((idx + (state === "typing" ? 0 : 1)) / total) * 100}%` }}
           />
         </div>
@@ -488,13 +488,13 @@ export default function DictationTab({
           }`}
         >
           {/* audio area */}
-          <div className="dict-setup flex flex-col items-center gap-3 bg-gradient-to-b from-violet-50/70 to-transparent p-6 pb-4">
+          <div className="dict-setup flex flex-col items-center gap-3 bg-gradient-to-b from-arcade-tint/70 to-transparent p-6 pb-4">
             <motion.button
               onClick={() => playAudio(word.en, 0.85, idx)}
               whileTap={{ scale: 0.9 }}
               animate={replaying ? { scale: [1, 1.08, 1] } : {}}
               transition={replaying ? { repeat: Infinity, duration: 1 } : {}}
-              className="relative flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-500 text-white shadow-xl shadow-violet-500/35 transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-90"
+              className="relative flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-arcade-from-soft to-arcade-to-soft text-white shadow-xl shadow-violet-500/35 transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-90"
               aria-label="پخش دوبارهٔ کلمه"
             >
               {/* sound waves */}
