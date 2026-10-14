@@ -4,6 +4,7 @@ import "./globals.css";
 import "./features.css";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/study/shell/theme-provider";
+import LiveAnnouncer from "@/components/study/shell/live-announcer";
 
 const vazir = Vazirmatn({
   variable: "--font-vazir",
@@ -84,6 +85,10 @@ export default function RootLayout({
     <html lang="fa" dir="rtl" suppressHydrationWarning>
       <body className={`${vazir.variable} antialiased bg-background text-foreground`}>
         <ThemeProvider>{children}</ThemeProvider>
+        {/* Task 171 — the screen-reader announcement layer: two sr-only live
+            regions (polite + assertive) fed by lib/announcer via the toaster.
+            Must sit beside <Toaster /> and live for the app's whole lifetime. */}
+        <LiveAnnouncer />
         <Toaster />
       </body>
     </html>
