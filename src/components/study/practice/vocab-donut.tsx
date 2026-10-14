@@ -6,22 +6,27 @@ import { lessons, totalVocabulary } from "@/data";
 import { useStudy, knownCountOfLesson } from "@/lib/study-store";
 import { percent as percentOf } from "@/lib/domain/percent";
 import { useMounted } from "@/lib/use-mounted";
-import { faNum } from "@/lib/study-theme";
-import { uiColors } from "@/lib/ui-colors";
+import { faNum, themeOf } from "@/lib/study-theme";
+import { uiColors, ring600 } from "@/lib/ui-colors";
+import { LESSONS_META } from "@/data/lesson-meta";
 
 /**
- * دونات پیشرفت واژگان — سهم واژه‌های «بلدم» هر درس از کل ۶۳۳ واژهٔ کتاب.
- * سه کمان رنگی (زمرد/کهربا/سرخابی) + شمارندهٔ مرکزی + لِجند تفصیلی.
+ * دونات پیشرفت واژگان — سهم واژه‌های «بلدم» هر درس از کل واژه‌های کتاب.
+ * (راند ۱۹۴: از سه کمانِ درس‌های ۱-۳ به کلِ قفسهٔ نه‌درسی رسید — پیش‌تر
+ * فقط سه درسِ اول شمرده می‌شد اما مخرجِ درصد کلِ کتاب بود: کم‌گزارشیِ
+ * ناصادقانه که با هر جزوهٔ تازه بدتر می‌شد.)
  */
 
 const R = 52;
 const CIRC = 2 * Math.PI * R;
 
-const SEGMENTS = [
-  { id: 1, color: uiColors.emerald[600], track: "text-emerald-600", soft: "bg-emerald-50", bar: "bg-emerald-500" },
-  { id: 2, color: uiColors.amber[600], track: "text-amber-600", soft: "bg-amber-50", bar: "bg-amber-500" },
-  { id: 3, color: uiColors.rose[600], track: "text-rose-600", soft: "bg-rose-50", bar: "bg-rose-500" },
-] as const;
+// از نقشهٔ استاتیکِ خانواده‌ها ساخته می‌شود (کلاس‌های literal برای تیلویند) —
+// رنگِ بوم از ring600 و نوارِ لِجند از lessonTheme.bar می‌آید؛ پویا با قفسه.
+const SEGMENTS = LESSONS_META.map((l) => ({
+  id: l.id,
+  color: ring600(l.color),
+  bar: themeOf(l.color).bar,
+}));
 
 export default function VocabDonut() {
   const known = useStudy((s) => s.known);
@@ -112,8 +117,8 @@ export default function VocabDonut() {
             </div>
           </div>
 
-          {/* ---------------- legend ---------------- */}
-          <ul className="w-full flex-1 space-y-2.5">
+          {/* ---------------- legend (۹ درسی — دوستونه در sm+) ---------------- */}
+          <ul className="grid w-full flex-1 grid-cols-1 gap-x-5 gap-y-2 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
             {arcs.map((a, i) => (
               <motion.li
                 key={a.id}

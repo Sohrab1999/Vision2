@@ -18,6 +18,7 @@ import "@testing-library/jest-dom/vitest";
 import { cleanup, render, screen } from "@testing-library/react";
 import { useStudy } from "@/lib/study-store";
 import WeeklyReportSection from "@/components/study/reports/weekly-report";
+import { LESSONS_META } from "@/data/lesson-meta";
 
 vi.mock("@/lib/analytics", () => ({ trackEvent: vi.fn() }));
 
@@ -83,45 +84,16 @@ describe("گامِ بعدی در هفته‌نامه — کامپوننت (Task 
     expect(chipText()).toBe("درس ۲ · تست واژگان");
   });
 
-  it("هر ۳۶ گام پوشیده → «همهٔ گام‌ها پوشیده» با تیک — عنوانِ ادامهٔ مسیر", () => {
-    seedResults({
-      "1:vocab": { percent: 80, at: "2026-10-14" },
-      "1:dictation": { percent: 80, at: "2026-10-14" },
-      "1:listening": { percent: 80, at: "2026-10-14" },
-      "1:writing": { percent: 80, at: "2026-10-14" },
-      "1:vocab-konkuri": { percent: 80, at: "2026-10-14" },
-      "1:grammar": { percent: 80, at: "2026-10-14" },
-      "2:vocab": { percent: 80, at: "2026-10-14" },
-      "2:dictation": { percent: 80, at: "2026-10-14" },
-      "2:listening": { percent: 80, at: "2026-10-14" },
-      "2:writing": { percent: 80, at: "2026-10-14" },
-      "2:vocab-konkuri": { percent: 80, at: "2026-10-14" },
-      "2:grammar": { percent: 80, at: "2026-10-14" },
-      "3:vocab": { percent: 80, at: "2026-10-14" },
-      "3:dictation": { percent: 80, at: "2026-10-14" },
-      "3:listening": { percent: 80, at: "2026-10-14" },
-      "3:writing": { percent: 80, at: "2026-10-14" },
-      "3:vocab-konkuri": { percent: 80, at: "2026-10-14" },
-      "3:grammar": { percent: 80, at: "2026-10-14" },
-      "4:vocab": { percent: 80, at: "2026-10-14" },
-      "4:dictation": { percent: 80, at: "2026-10-14" },
-      "4:listening": { percent: 80, at: "2026-10-14" },
-      "4:writing": { percent: 80, at: "2026-10-14" },
-      "4:vocab-konkuri": { percent: 80, at: "2026-10-14" },
-      "4:grammar": { percent: 80, at: "2026-10-14" },
-      "5:vocab": { percent: 80, at: "2026-10-14" },
-      "5:dictation": { percent: 80, at: "2026-10-14" },
-      "5:listening": { percent: 80, at: "2026-10-14" },
-      "5:writing": { percent: 80, at: "2026-10-14" },
-      "5:vocab-konkuri": { percent: 80, at: "2026-10-14" },
-      "5:grammar": { percent: 80, at: "2026-10-14" },
-      "6:vocab": { percent: 80, at: "2026-10-14" },
-      "6:dictation": { percent: 80, at: "2026-10-14" },
-      "6:listening": { percent: 80, at: "2026-10-14" },
-      "6:writing": { percent: 80, at: "2026-10-14" },
-      "6:vocab-konkuri": { percent: 80, at: "2026-10-14" },
-      "6:grammar": { percent: 80, at: "2026-10-14" },
-    });
+  it("هر ۵۴ گامِ قفسهٔ نه‌درسی پوشیده → «همهٔ گام‌ها پوشیده» با تیک — عنوانِ ادامهٔ مسیر", () => {
+    // برنامه‌ای روی کلِ قفسه (راند ۱۹۴) — با جزوهٔ تازه دیگر نمی‌شکند
+    const SKILLS = ["vocab", "dictation", "listening", "writing", "vocab-konkuri", "grammar"];
+    const seeded: Record<string, { percent: number; at: string }> = {};
+    for (let id = 1; id <= LESSONS_META.length; id++) {
+      for (const skill of SKILLS) {
+        seeded[`${id}:${skill}`] = { percent: 80, at: "2026-10-14" };
+      }
+    }
+    seedResults(seeded);
     render(<WeeklyReportSection />);
     const band = nextStepBand();
     expect(chipText()).toBe("همهٔ گام‌ها پوشیده");

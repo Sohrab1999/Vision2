@@ -104,7 +104,7 @@ export default function DictionaryView() {
           <div>
             <h1 className="text-lg font-extrabold text-stone-800">دیکشنری واژگان</h1>
             <p className="text-[12px] text-stone-500">
-              جستجو در {allWords.length} واژهٔ همهٔ درس‌ها — با تلفظ صوتی
+              جستجو در {faNum(allWords.length)} واژهٔ همهٔ درس‌ها — با تلفظ صوتی
             </p>
           </div>
           <button
@@ -169,7 +169,7 @@ export default function DictionaryView() {
                   lessonFilter === l.id ? `${t.bg} text-white` : "bg-stone-100 text-stone-600 hover:bg-stone-200"
                 }`}
               >
-                درس {l.id}: {l.titleFa}
+                درس {faNum(l.id)}: {l.titleFa}
               </button>
             );
           })}
@@ -256,7 +256,7 @@ export default function DictionaryView() {
                 </div>
                 <div className="mt-0.5 text-[13px] text-stone-600">{w.fa}</div>
                 <span className={`mt-1 inline-block rounded-full px-2 py-0.5 text-[10px] font-bold ${t.chipBg}`}>
-                  درس {w.lessonId}
+                  درس {faNum(w.lessonId)}
                 </span>
               </div>
               <div className="flex shrink-0 flex-col items-center gap-1.5">

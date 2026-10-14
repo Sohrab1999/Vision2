@@ -9,6 +9,10 @@ export const spineColors: Record<string, string> = {
   violet: "bg-gradient-to-b from-violet-500 to-violet-800",
   sky: "bg-gradient-to-b from-sky-500 to-sky-800",
   teal: "bg-gradient-to-b from-teal-500 to-teal-800",
+  // راند ۱۹۴ — عصب‌های جزوه‌های دهم
+  orange: "bg-gradient-to-b from-orange-500 to-orange-800",
+  indigo: "bg-gradient-to-b from-indigo-500 to-indigo-800",
+  fuchsia: "bg-gradient-to-b from-fuchsia-500 to-fuchsia-800",
 };
 
 // motivational one-liner per lesson card, from the known-vocab percentage

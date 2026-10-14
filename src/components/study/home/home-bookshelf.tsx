@@ -9,10 +9,10 @@ import { useMounted } from "@/lib/use-mounted";
 import { themeOf, faNum } from "@/lib/study-theme";
 import ProgressRing from "../practice/progress-ring";
 import { spineColors, lessonCheer } from "./home-constants";
-import { uiColors } from "@/lib/ui-colors";
+import { ring600 } from "@/lib/ui-colors";
 
 // قفسهٔ کتاب — عine‌های کتاب + کارت درس‌ها با حلقهٔ پیشرفت واژگان
-// (راند ۱۹۱: شش درس — سه جزوهٔ یازدهم + سه جزوهٔ تکمیلی دوازدهم)
+// (راند ۱۹۴: نه درس — جزوه‌های دهم + یازدهم + دوازدهم در سه پایهٔ کامل)
 
 export default function HomeBookshelf() {
   const openLesson = useStudy((s) => s.openLesson);
@@ -84,7 +84,7 @@ export default function HomeBookshelf() {
                   </h3>
                   <p className="text-sm font-bold text-stone-700">{l.titleFa}</p>
                 </div>
-                <ProgressRing percent={mounted ? knownPercent : 0} size={56} stroke={5} color={l.color === "amber" ? uiColors.amber[600] : l.color === "rose" ? uiColors.rose[600] : uiColors.emerald[600]}>
+                <ProgressRing percent={mounted ? knownPercent : 0} size={56} stroke={5} color={ring600(l.color)}>
                   <span className="text-[11px] font-black text-stone-700">{faNum(mounted ? knownPercent : 0)}٪</span>
                 </ProgressRing>
               </div>

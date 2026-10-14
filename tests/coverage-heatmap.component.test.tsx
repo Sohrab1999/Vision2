@@ -17,14 +17,14 @@ describe("نمایِ حرارتیِ پوشش — کامپوننت (Task 175)", (
     useStudy.setState({ results: {}, known: {} });
   });
 
-  it("تازه‌کار: ۳۶ سلولِ سردِ «—» (شش درس × شش مهارت)، ۷ سرستون (درس + ۶ مهارتِ کوتاه)، لِجند و میانگینِ «—»", () => {
+  it("تازه‌کار: ۵۴ سلولِ سردِ «—» (نُه درس × شش مهارت)، ۷ سرستون (درس + ۶ مهارتِ کوتاه)، لِجند و میانگینِ «—»", () => {
     render(<CoverageHeatmapSection />);
     expect(screen.getByLabelText("نمایِ حرارتیِ پوشش مهارت‌ها")).toBeInTheDocument();
     expect(screen.getAllByRole("columnheader")).toHaveLength(7);
     expect(screen.getByRole("columnheader", { name: "درس" })).toBeInTheDocument();
     expect(screen.getByRole("columnheader", { name: "کنکوری" })).toBeInTheDocument();
     const cells = screen.getAllByRole("cell");
-    expect(cells).toHaveLength(36);
+    expect(cells).toHaveLength(54);
     expect(cells.every((c) => c.textContent === "—")).toBe(true);
     expect(screen.getByText("تلاش نشده")).toBeInTheDocument(); // لِجندِ سرد
     expect(screen.getByText("عالی")).toBeInTheDocument(); // لِجندِ داغ
@@ -42,7 +42,7 @@ describe("نمایِ حرارتیِ پوشش — کامپوننت (Task 175)", (
     expect(hot!.className).toContain("bg-teal-50");
     expect(hot!.className).not.toContain("bg-emerald-600");
     expect(screen.getByText(/میانگینِ بهترین‌ها: ۸۵٪/)).toBeInTheDocument();
-    expect(cells.filter((c) => c.textContent === "—")).toHaveLength(35);
+    expect(cells.filter((c) => c.textContent === "—")).toHaveLength(53);
   });
 
   it("۹۵٪ → نوارِ elite (زمردِ توپُر) و میانگینِ (۸۵+۹۵)/۲ = ۹۰٪", () => {

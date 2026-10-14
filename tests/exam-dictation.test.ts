@@ -81,7 +81,9 @@ describe("buildExamDictation", () => {
       expect(bankWords.has(en), `dealt word not tested by the bank: ${en}`).toBe(true);
     }
     // known non-vocabulary phrases of the bank must NOT leak into the deck
-    for (const phrase of ["referring to", "meet the needs of", "belongs to", "explain"]) {
+    // (راند ۱۹۴: «explain» از این فهرست حذف شد — درس ۹ «ارزش دانش» آن را
+    // رسماً واژهٔ کتاب کرد و اکنون حقِ ورود به استخرِ دیکته را دارد)
+    for (const phrase of ["referring to", "meet the needs of", "belongs to"]) {
       expect(dealt).not.toContain(phrase);
     }
   });

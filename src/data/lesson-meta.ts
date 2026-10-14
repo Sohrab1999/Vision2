@@ -1,7 +1,7 @@
 // Task 44 (roadmap step 3 — code splitting): lightweight lesson metadata for
 // the EAGER shell (home bookshelf, footer, official-report, hero chips).
 //
-// Why this file exists: `@/data` (the barrel) pulls lesson1..6+exam ≈ 500 KB
+// Why this file exists: `@/data` (the barrel) pulls lesson1..9+exam ≈ 700 KB
 // of source content. Eager components only need titles/colors/counts — not the
 // vocabulary, quizzes, or grammar HTML. Importing THIS module keeps the whole
 // content layer out of the first-load bundle; the real content loads lazily
@@ -13,6 +13,8 @@
 //
 // Round 191 («جزوه‌های بیشتر»): lessons 4-6 joined the shelf — the
 // complementary 12th-grade booklets (Vision 3): قدردانی، آینده، انرژی.
+// Round 194 («قفسهٔ کامل»): lessons 7-9 join — the 10th-grade booklets
+// (Vision 1): حفاظت از طبیعت، شگفتی‌های آفرینش، ارزش دانش.
 // Every derived count below is pinned by tests/lesson-meta.test.ts.
 
 import type { LessonColor, LessonGrade } from "@/lib/study-types";
@@ -99,12 +101,45 @@ export const LESSONS_META: LessonMeta[] = [
     quizCount: 40,
     grammarCount: 3,
   },
+  {
+    id: 7,
+    titleEn: "Saving Nature",
+    titleFa: "حفاظت از طبیعت",
+    tagline: "طبیعت، بازیافت و مرورِ حال ساده/استمراری با حروف ربط",
+    color: "orange",
+    grade: "دهم",
+    vocabCount: 80,
+    quizCount: 40,
+    grammarCount: 3,
+  },
+  {
+    id: 8,
+    titleEn: "Wonders of Creation",
+    titleFa: "شگفتی‌های آفرینش",
+    tagline: "حیوانات شگفت‌انگیز، مهاجرت و گذشتهٔ ساده با تفضیلی/عالی",
+    color: "indigo",
+    grade: "دهم",
+    vocabCount: 72,
+    quizCount: 40,
+    grammarCount: 3,
+  },
+  {
+    id: 9,
+    titleEn: "The Value of Knowledge",
+    titleFa: "ارزش دانش",
+    tagline: "کتاب‌خوانی، دانشگاه و آینده با will و be going to",
+    color: "fuchsia",
+    grade: "دهم",
+    vocabCount: 70,
+    quizCount: 40,
+    grammarCount: 3,
+  },
 ];
 
-export const TOTAL_VOCABULARY = 893;
-export const LESSON_QUIZ_COUNT = 250;
+export const TOTAL_VOCABULARY = 1115;
+export const LESSON_QUIZ_COUNT = 370;
 export const EXAM_BANK_SIZE = 360;
-export const TOTAL_QUESTIONS = LESSON_QUIZ_COUNT + EXAM_BANK_SIZE; // 610
+export const TOTAL_QUESTIONS = LESSON_QUIZ_COUNT + EXAM_BANK_SIZE; // 730
 
 /** درس‌های جزوهٔ اصلی (یازدهم) — بانک ۳۶۰ تستی و آزمون پایان ترم همین سه درس‌اند */
 export const CORE_LESSON_IDS = [1, 2, 3] as const;
@@ -138,5 +173,7 @@ export function lessonNumFa(id: number): string {
 
 /** پایهٔ تحصیلی درس از روی شناسه — مستقل از بارگذاری دادهٔ سنگین */
 export function lessonGradeFa(id: number): LessonGrade {
-  return id <= 3 ? "یازدهم" : "دوازدهم";
+  if (id <= 3) return "یازدهم";
+  if (id <= 6) return "دوازدهم";
+  return "دهم";
 }

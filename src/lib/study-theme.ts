@@ -8,6 +8,8 @@ export interface LessonTheme {
   gradient: string;
   softText: string;
   chipBg: string;
+  /** نوارِ لِجند/پیشرفتِ توپرِ همان خانواده — راند ۱۹۴ (دوناتِ نه‌درسی) */
+  bar: string;
 }
 
 export const lessonTheme: Record<string, LessonTheme> = {
@@ -19,6 +21,7 @@ export const lessonTheme: Record<string, LessonTheme> = {
     gradient: "from-emerald-500 to-emerald-800",
     softText: "text-emerald-600",
     chipBg: "bg-emerald-100 text-emerald-800",
+    bar: "bg-emerald-500",
   },
   amber: {
     text: "text-amber-700",
@@ -28,6 +31,7 @@ export const lessonTheme: Record<string, LessonTheme> = {
     gradient: "from-amber-400 to-amber-700",
     softText: "text-amber-600",
     chipBg: "bg-amber-100 text-amber-800",
+    bar: "bg-amber-500",
   },
   rose: {
     text: "text-rose-700",
@@ -37,6 +41,7 @@ export const lessonTheme: Record<string, LessonTheme> = {
     gradient: "from-rose-500 to-rose-800",
     softText: "text-rose-600",
     chipBg: "bg-rose-100 text-rose-800",
+    bar: "bg-rose-500",
   },
   violet: {
     text: "text-violet-700",
@@ -46,6 +51,7 @@ export const lessonTheme: Record<string, LessonTheme> = {
     gradient: "from-violet-500 to-violet-800",
     softText: "text-violet-600",
     chipBg: "bg-violet-100 text-violet-800",
+    bar: "bg-violet-500",
   },
   sky: {
     text: "text-sky-700",
@@ -55,6 +61,7 @@ export const lessonTheme: Record<string, LessonTheme> = {
     gradient: "from-sky-500 to-sky-800",
     softText: "text-sky-600",
     chipBg: "bg-sky-100 text-sky-800",
+    bar: "bg-sky-500",
   },
   teal: {
     text: "text-teal-700",
@@ -64,6 +71,38 @@ export const lessonTheme: Record<string, LessonTheme> = {
     gradient: "from-teal-500 to-teal-800",
     softText: "text-teal-600",
     chipBg: "bg-teal-100 text-teal-800",
+    bar: "bg-teal-500",
+  },
+  // راند ۱۹۴ — سه خانوادهٔ جزوه‌های دهم (Vision 1)
+  orange: {
+    text: "text-orange-700",
+    bg: "bg-orange-700",
+    bgSoft: "bg-orange-50",
+    border: "border-orange-200",
+    gradient: "from-orange-500 to-orange-800",
+    softText: "text-orange-600",
+    chipBg: "bg-orange-100 text-orange-800",
+    bar: "bg-orange-500",
+  },
+  indigo: {
+    text: "text-indigo-700",
+    bg: "bg-indigo-700",
+    bgSoft: "bg-indigo-50",
+    border: "border-indigo-200",
+    gradient: "from-indigo-500 to-indigo-800",
+    softText: "text-indigo-600",
+    chipBg: "bg-indigo-100 text-indigo-800",
+    bar: "bg-indigo-500",
+  },
+  fuchsia: {
+    text: "text-fuchsia-700",
+    bg: "bg-fuchsia-700",
+    bgSoft: "bg-fuchsia-50",
+    border: "border-fuchsia-200",
+    gradient: "from-fuchsia-500 to-fuchsia-800",
+    softText: "text-fuchsia-600",
+    chipBg: "bg-fuchsia-100 text-fuchsia-800",
+    bar: "bg-fuchsia-500",
   },
 };
 
@@ -122,4 +161,7 @@ export const avatarClasses: Record<string, string> = {
   rose: "bg-gradient-to-br from-rose-400 to-rose-700 shadow-rose-700/30",
   violet: "bg-gradient-to-br from-violet-400 to-purple-700 shadow-purple-700/30",
   sky: "bg-gradient-to-br from-sky-400 to-cyan-700 shadow-cyan-700/30",
+  orange: "bg-gradient-to-br from-orange-400 to-orange-700 shadow-orange-700/30",
+  indigo: "bg-gradient-to-br from-indigo-400 to-indigo-700 shadow-indigo-700/30",
+  fuchsia: "bg-gradient-to-br from-fuchsia-400 to-fuchsia-700 shadow-fuchsia-700/30",
 };

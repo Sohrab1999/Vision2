@@ -4,13 +4,28 @@ import lesson3 from "./lesson3";
 import lesson4 from "./lesson4";
 import lesson5 from "./lesson5";
 import lesson6 from "./lesson6";
+import lesson7 from "./lesson7";
+import lesson8 from "./lesson8";
+import lesson9 from "./lesson9";
 import examBank from "./exam";
 import type { LessonData } from "@/lib/study-types";
 
 // درس‌های ۱-۳: جزوهٔ اصلی «Vision Two» پایهٔ یازدهم (جمال احمدی)
 // درس‌های ۴-۶: جزوه‌های تکمیلی پایهٔ دوازدهم — Sense of Appreciation / Look
 // to the Future / Renewable Energy (راند ۱۹۱ — «جزوه‌های بیشتر»)
-export const lessons: LessonData[] = [lesson1, lesson2, lesson3, lesson4, lesson5, lesson6];
+// درس‌های ۷-۹: جزوه‌های پایهٔ دهم — Saving Nature / Wonders of Creation /
+// The Value of Knowledge (راند ۱۹۴ — «قفسهٔ کامل»)
+export const lessons: LessonData[] = [
+  lesson1,
+  lesson2,
+  lesson3,
+  lesson4,
+  lesson5,
+  lesson6,
+  lesson7,
+  lesson8,
+  lesson9,
+];
 export { examBank };
 export * from "./appendix";
 

@@ -48,6 +48,9 @@ export const uiColors = {
     500: "#f43f5e",
     600: "#e11d48",
   },
+  sky: {
+    600: "#0284c7",
+  },
   red: {
     500: "#ef4444",
   },
@@ -69,6 +72,10 @@ export const uiColors = {
     500: "#14b8a6",
     600: "#0d9488",
   },
+  indigo: {
+    500: "#6366f1",
+    600: "#4f46e5",
+  },
   pink: {
     600: "#db2777",
   },
@@ -81,3 +88,19 @@ export const uiColors = {
 } as const;
 
 export type UiColors = typeof uiColors;
+
+/**
+ * راند ۱۹۴ — رنگِ ۶۰۰یِ هر خانوادهٔ درسی برای پینترهای بوم (حلقهٔ پیشرفت،
+ * دوناتِ واژگان). پیش‌تر lesson-view و home-bookshelf هر واژهٔ ناشناخته را
+ * به زمردی می‌انداختند (violet/sky/teal lessons حلقهٔ زمردی می‌گرفتند —
+ * تقریبِ ناصادقانه)؛ اکنون هر خانواده رنگِ خودش را می‌خواند.
+ *
+ * پیاده‌سازیِ آگاهانه بدونِ هیچ رشتهٔ غیر-hex: برگِ ۶۰۰ همان خانواده مستقیم
+ * از درختِ uiColors خوانده می‌شود — قراردادِ تستِ ui-colors («هر string داخلِ
+ * ماژول باید hex باشد») دست‌نخورده می‌ماند. تازه‌واردِ ناشناخته → زمردی
+ * (پیش‌فرضِ تاریخی، همان رفتارِ themeOf).
+ */
+export function ring600(color: string): string {
+  const fam = (uiColors as Record<string, Record<number, string | undefined> | undefined>)[color];
+  return fam?.[600] ?? uiColors.emerald[600];
+}

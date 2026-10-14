@@ -99,7 +99,7 @@ export default function LessonTestsTab({ lesson }: { lesson: LessonData }) {
         className="flex w-full items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-stone-300 c-veil-60 py-4 text-sm font-bold text-stone-600 transition-[background-color,color,border-color,transform] hover:border-emerald-400 hover:text-emerald-700 active:scale-[0.96]"
       >
         <Shuffle size={17} />
-        تست ترکیبی — همهٔ {lesson.quizzes.length} تست این درس (بُر خورده)
+        تست ترکیبی — همهٔ {faNum(lesson.quizzes.length)} تست این درس (بُر خورده)
       </button>
 
       {mistakeCount > 0 && (

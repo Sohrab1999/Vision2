@@ -41,25 +41,25 @@ describe("پوشش مهارت‌ها رویِ کاغذِ رسمی — کامپو
     });
   });
 
-  it("تازه‌وارد: بخش حاضر است — حالتِ خالیِ صادقانه + چیپِ «۰ از ۳۶»", () => {
+  it("تازه‌وارد: بخش حاضر است — حالتِ خالیِ صادقانه + چیپِ «۰ از ۵۴»", () => {
     render(<OfficialReport open onClose={() => {}} />);
     const section = document.querySelector("section.or-coverage");
     expect(section).not.toBeNull();
     expect(section).toHaveTextContent("پوشش مهارت‌ها");
-    expect(section).toHaveTextContent("۰ از ۳۶ تلاش‌شده");
+    expect(section).toHaveTextContent("۰ از ۵۴ تلاش‌شده");
     expect(section).toHaveTextContent("هنوز هیچ مهارتی تلاش نشده — با اولین تست، این جدول پر می‌شود.");
     // جدول در حالتِ خالی رندر نمی‌شود — دروغِ ساختگی ممنوع
     expect(section!.querySelector("table")).toBeNull();
   });
 
-  it("seed ۱:vocab=۸۵ + ۱:dictation=۹۵: سلول‌ها، چیپِ «۲ از ۳۶»، گامِ بعدیِ درس ۱ = شنیداری، پانویسِ ۹۰٪", () => {
+  it("seed ۱:vocab=۸۵ + ۱:dictation=۹۵: سلول‌ها، چیپِ «۲ از ۵۴»، گامِ بعدیِ درس ۱ = شنیداری، پانویسِ ۹۰٪", () => {
     seedResults({
       "1:vocab": { percent: 85, at: "2026-10-10" },
       "1:dictation": { percent: 95, at: "2026-10-11" },
     });
     render(<OfficialReport open onClose={() => {}} />);
     const section = document.querySelector("section.or-coverage")! as HTMLElement;
-    expect(section).toHaveTextContent("۲ از ۳۶ تلاش‌شده");
+    expect(section).toHaveTextContent("۲ از ۵۴ تلاش‌شده");
     // سلول‌هایِ تلاش‌شده با بهترینِ واقعی — startsWith چون سلول‌هایِ عالی/ضعیف
     // (راندِ ۱۸۱) برچسبِ وضعیت را هم داخلِ td دارند
     const cells85 = [...section.querySelectorAll("td")].filter((td) => td.textContent?.startsWith("۸۵٪"));

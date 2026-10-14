@@ -7,6 +7,9 @@
 // Round 191 («جزوه‌های بیشتر»): the shelf grew to SIX lessons — the Vision 2
 // core (1-3) plus the complementary 12th-grade booklets (4-6). The pin below
 // keeps the eager meta honest against the real data layer.
+//
+// Round 194 («قفسهٔ کامل»): the shelf is now NINE lessons — the Vision 1
+// 10th-grade booklets (7-9) complete all three grades: دهم/یازدهم/دوازدهم.
 
 import { describe, it, expect } from "vitest";
 import {
@@ -23,9 +26,9 @@ import {
 import { lessons, examBank } from "@/data";
 
 describe("lesson-meta drift guard", () => {
-  it("covers exactly the 6 book lessons, in order", () => {
-    expect(LESSONS_META.map((m) => m.id)).toEqual([1, 2, 3, 4, 5, 6]);
-    expect(lessons.map((l) => l.id)).toEqual([1, 2, 3, 4, 5, 6]);
+  it("covers exactly the 9 book lessons, in order", () => {
+    expect(LESSONS_META.map((m) => m.id)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+    expect(lessons.map((l) => l.id)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9]);
   });
 
   it("matches every real lesson's identity fields (incl. grade)", () => {
@@ -49,13 +52,16 @@ describe("lesson-meta drift guard", () => {
     }
   });
 
-  it("grades are pinned: 1-3 = یازدهم (core booklet), 4-6 = دوازدهم (complementary)", () => {
+  it("grades are pinned: 1-3 = یازدهم (core), 4-6 = دوازدهم (complementary), 7-9 = دهم (Vision 1)", () => {
     for (const id of [1, 2, 3]) expect(lessons.find((l) => l.id === id)!.grade).toBe("یازدهم");
     for (const id of [4, 5, 6]) expect(lessons.find((l) => l.id === id)!.grade).toBe("دوازدهم");
+    for (const id of [7, 8, 9]) expect(lessons.find((l) => l.id === id)!.grade).toBe("دهم");
     expect(lessonGradeFa(1)).toBe("یازدهم");
     expect(lessonGradeFa(3)).toBe("یازدهم");
     expect(lessonGradeFa(4)).toBe("دوازدهم");
     expect(lessonGradeFa(6)).toBe("دوازدهم");
+    expect(lessonGradeFa(7)).toBe("دهم");
+    expect(lessonGradeFa(9)).toBe("دهم");
   });
 
   it("aggregates match the real data layer", () => {
@@ -65,22 +71,31 @@ describe("lesson-meta drift guard", () => {
     expect(TOTAL_QUESTIONS).toBe(LESSON_QUIZ_COUNT + EXAM_BANK_SIZE);
   });
 
-  it("lessonMetaById resolves 1..6 and rejects the rest", () => {
+  it("lessonMetaById resolves 1..9 and rejects the rest", () => {
     expect(lessonMetaById(1)?.titleFa).toBe("فهمیدن مردم");
     expect(lessonMetaById(2)?.color).toBe("amber");
     expect(lessonMetaById(3)?.color).toBe("rose");
     expect(lessonMetaById(4)?.titleEn).toBe("Sense of Appreciation");
     expect(lessonMetaById(5)?.titleEn).toBe("Look to the Future");
     expect(lessonMetaById(6)?.titleEn).toBe("Renewable Energy");
+    expect(lessonMetaById(7)?.titleEn).toBe("Saving Nature");
+    expect(lessonMetaById(7)?.color).toBe("orange");
+    expect(lessonMetaById(8)?.titleEn).toBe("Wonders of Creation");
+    expect(lessonMetaById(8)?.color).toBe("indigo");
+    expect(lessonMetaById(9)?.titleEn).toBe("The Value of Knowledge");
+    expect(lessonMetaById(9)?.color).toBe("fuchsia");
     expect(lessonMetaById(0)).toBeUndefined();
-    expect(lessonMetaById(7)).toBeUndefined();
+    expect(lessonMetaById(10)).toBeUndefined();
   });
 
-  it("Persian ordinal helpers cover all six lessons safely", () => {
+  it("Persian ordinal helpers cover all nine lessons safely", () => {
     expect(lessonOrdinalFa(1)).toBe("اول");
     expect(lessonOrdinalFa(4)).toBe("چهارم");
     expect(lessonOrdinalFa(6)).toBe("ششم");
+    expect(lessonOrdinalFa(7)).toBe("هفتم");
+    expect(lessonOrdinalFa(9)).toBe("نهم");
     expect(lessonOrdinalFa(99)).toBe("۹۹"); // graceful fallback
     expect(lessonNameFa(4)).toBe("درس چهارم");
+    expect(lessonNameFa(9)).toBe("درس نهم");
   });
 });
