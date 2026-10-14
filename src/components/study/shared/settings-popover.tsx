@@ -123,7 +123,7 @@ export default function SettingsPopover() {
       <PopoverTrigger asChild>
         <button
           suppressHydrationWarning
-          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border c-card text-stone-500 transition-all hover:text-emerald-600 hover:border-emerald-200 active:scale-90"
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border c-card text-stone-500 transition-all hover:text-emerald-600 hover:border-emerald-200 active:scale-90"
           aria-label="تنظیمات"
           title="تنظیمات"
         >
@@ -162,7 +162,7 @@ export default function SettingsPopover() {
             />
             <button
               onClick={preview}
-              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-600 text-white shadow-sm transition-all hover:bg-emerald-700 active:scale-90"
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-emerald-600 text-white shadow-sm transition-all hover:bg-emerald-700 active:scale-90"
               aria-label={previewing ? "توقف پخش نمونه" : "پخش نمونهٔ روخوانی"}
               title={previewing ? "توقف" : "بشنو"}
             >

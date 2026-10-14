@@ -43,7 +43,7 @@ export default function Header() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-2 px-3 sm:gap-3 sm:px-4">
         <button
           onClick={goHome}
-          className="flex items-center gap-2.5 text-right transition-opacity hover:opacity-80"
+          className="flex min-h-11 min-w-11 items-center gap-2.5 text-right transition-opacity hover:opacity-80"
           aria-label="رفتن به صفحهٔ اصلی"
         >
           <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-800 text-white shadow-md shadow-emerald-900/20">
@@ -78,7 +78,7 @@ export default function Header() {
           <FreezeBadge />
           <button
             onClick={() => setTheme(isDark ? "light" : "dark")}
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border c-card text-stone-500 transition-all hover:text-amber-500 hover:border-amber-200 active:scale-90"
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border c-card text-stone-500 transition-all hover:text-amber-500 hover:border-amber-200 active:scale-90"
             aria-label={isDark ? "حالت روشن" : "حالت شب"}
             title={isDark ? "حالت روشن" : "حالت شب"}
           >
@@ -91,7 +91,7 @@ export default function Header() {
           {/* command palette — جست‌وجوی همه‌جا (Ctrl+K) */}
           <button
             onClick={() => window.dispatchEvent(new CustomEvent("open-command-palette"))}
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border c-card text-stone-500 transition-all hover:text-teal-600 hover:border-teal-200 active:scale-90"
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border c-card text-stone-500 transition-all hover:text-teal-600 hover:border-teal-200 active:scale-90"
             aria-label="فرمان‌یاب — جست‌وجوی همه‌جا"
             title="فرمان‌یاب (Ctrl+K)"
           >
@@ -102,7 +102,7 @@ export default function Header() {
               راهنمای کیبورد لمسی نیست و از پالت هم reachable است) */}
           <button
             onClick={() => window.dispatchEvent(new CustomEvent("open-shortcuts"))}
-            className="hidden h-9 w-9 shrink-0 items-center justify-center rounded-full border c-card text-stone-500 transition-all hover:text-emerald-600 hover:border-emerald-200 active:scale-90 sm:flex"
+            className="hidden h-11 w-11 shrink-0 items-center justify-center rounded-full border c-card text-stone-500 transition-all hover:text-emerald-600 hover:border-emerald-200 active:scale-90 sm:flex"
             aria-label="راهنمای میان‌برهای کیبورد"
             title="راهنمای میان‌برهای کیبورد (؟)"
           >
@@ -120,7 +120,7 @@ export default function Header() {
                 <button
                   key={item.key}
                   onClick={() => setView(item.view)}
-                  className={`flex shrink-0 items-center gap-1.5 rounded-full px-3 py-2 text-[13px] font-semibold transition-all ${
+                  className={`flex h-11 min-w-11 shrink-0 items-center justify-center gap-1.5 rounded-full px-3 text-[13px] font-semibold transition-all ${
                     active
                       ? "bg-emerald-600 text-white shadow-sm shadow-emerald-900/20"
                       : "text-stone-600 hover:bg-stone-200/70"

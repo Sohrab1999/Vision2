@@ -49,7 +49,7 @@ export default function DuePill() {
           exit={{ opacity: 0, scale: 0.85, y: -4 }}
           transition={{ type: "spring", stiffness: 380, damping: 26 }}
           onClick={open}
-          className="due-pill mr-1 inline-flex shrink-0 items-center gap-1.5 rounded-full border c-chip-due px-2.5 py-1.5 text-[12px] font-black transition-transform hover:-translate-y-px active:scale-95"
+          className="due-pill mr-1 inline-flex min-h-11 shrink-0 items-center gap-1.5 rounded-full border c-chip-due px-2.5 py-1.5 text-[12px] font-black transition-transform hover:-translate-y-px active:scale-95"
           aria-label={meta.title}
           title={meta.title}
         >

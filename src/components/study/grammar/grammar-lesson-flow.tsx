@@ -109,7 +109,7 @@ export default function GrammarLessonFlow({ line, station, onExit, onGoQuiz }: P
           <button
             onClick={onExit}
             aria-label="بستن درس"
-            className="glesson-close mr-auto flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border c-card text-stone-500 shadow-sm transition hover:text-stone-700 active:scale-90"
+            className="glesson-close mr-auto flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border c-card text-stone-500 shadow-sm transition hover:text-stone-700 active:scale-90"
           >
             <X size={16} />
           </button>

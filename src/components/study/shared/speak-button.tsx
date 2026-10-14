@@ -52,8 +52,8 @@ export default function SpeakButton({
   const iconSize = size === "md" ? 18 : 14;
   const cls =
     size === "icon"
-      ? "h-10 w-10 rounded-full"
-      : "h-8 rounded-full gap-1.5 px-2.5";
+      ? "h-11 w-11 rounded-full"
+      : "h-11 rounded-full gap-1.5 px-2.5";
 
   return (
     <button

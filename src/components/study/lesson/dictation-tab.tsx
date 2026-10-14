@@ -424,14 +424,14 @@ export default function DictationTab({
                 <div className="mr-2 flex shrink-0 items-center gap-1.5">
                   <button
                     onClick={() => playAudio(w.en)}
-                    className="flex h-8 w-8 items-center justify-center rounded-lg border border-violet-200 bg-white text-violet-600 transition-all hover:bg-violet-50"
+                    className="flex h-11 w-11 items-center justify-center rounded-lg border border-violet-200 bg-white text-violet-600 transition-all hover:bg-violet-50"
                     aria-label={`روخوانی ${w.en}`}
                   >
                     <Volume2 size={14} />
                   </button>
                   <button
                     onClick={() => playSpelled(w.en, false)}
-                    className="flex h-8 w-8 items-center justify-center rounded-lg border border-sky-200 bg-white text-sky-600 transition-all hover:bg-sky-50"
+                    className="flex h-11 w-11 items-center justify-center rounded-lg border border-sky-200 bg-white text-sky-600 transition-all hover:bg-sky-50"
                     aria-label={`املای حرف‌به‌حرف ${w.en}`}
                     title="املای حرف‌به‌حرف"
                   >
