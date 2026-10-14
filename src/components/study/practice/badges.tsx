@@ -59,6 +59,7 @@ import {
   RotateCcw,
   Sprout,
   TrainFront,
+  TrainTrack,
 } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -157,6 +158,10 @@ export const BADGE_ICONS: Record<string, React.ElementType> = {
   // پلهٔ دهم (Task 165) — گرامر×واژه: خودِ قطارِ مترو — هم‌آیکنِ
   // کارتِ ابزارهایِ خانه («متروی گرامر») — یکتا در رجیستری
   TrainFront,
+  // پلهٔ یازدهم (Task 167) — گرامر×برق: ریلِ مترو — قاعدهٔ ثابت و
+  // حرکتِ تند رویِ آن — متمایز از TrainFrontِ گرامر-واژه؛ یکتا در
+  // رجیستری (Zap/Gauge/Rocket اشغال‌اند — خانوادهٔ سرعت)
+  TrainTrack,
 };
 
 const tierFa: Record<string, string> = {
