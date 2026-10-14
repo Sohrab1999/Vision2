@@ -541,6 +541,16 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
                                   className={`px-2 py-1.5 text-center font-black ${c.best < 50 ? "or-bad" : ""}`}
                                 >
                                   {faNum(c.best)}٪
+                                  {/* task 181 — status ladder on paper: the r180 CSV
+                                     tiers (ضعیف/عالی) duplicated as TEXT so the signal
+                                     survives a mono photocopy where or-bad red dies. Mid
+                                     band (50..84) stays bare — labels there would be noise. */}
+                                  {c.best < 50 && (
+                                    <span className="or-bad block text-[9px] font-black leading-3">ضعیف</span>
+                                  )}
+                                  {c.best >= 85 && (
+                                    <span className="block text-[9px] font-black leading-3 text-emerald-700">عالی</span>
+                                  )}
                                 </td>
                               )
                             )}

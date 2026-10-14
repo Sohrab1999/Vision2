@@ -60,9 +60,12 @@ describe("پوشش مهارت‌ها رویِ کاغذِ رسمی — کامپو
     render(<OfficialReport open onClose={() => {}} />);
     const section = document.querySelector("section.or-coverage")! as HTMLElement;
     expect(section).toHaveTextContent("۲ از ۱۸ تلاش‌شده");
-    // سلول‌هایِ تلاش‌شده با بهترینِ واقعی
-    expect(within(section).getAllByText("۸۵٪").length).toBeGreaterThanOrEqual(1);
-    expect(within(section).getAllByText("۹۵٪").length).toBeGreaterThanOrEqual(1);
+    // سلول‌هایِ تلاش‌شده با بهترینِ واقعی — startsWith چون سلول‌هایِ عالی/ضعیف
+    // (راندِ ۱۸۱) برچسبِ وضعیت را هم داخلِ td دارند
+    const cells85 = [...section.querySelectorAll("td")].filter((td) => td.textContent?.startsWith("۸۵٪"));
+    expect(cells85.length).toBeGreaterThanOrEqual(1);
+    const cells95 = [...section.querySelectorAll("td")].filter((td) => td.textContent?.startsWith("۹۵٪"));
+    expect(cells95.length).toBeGreaterThanOrEqual(1);
     // سرستون‌هایِ کوتاه از قراردادِ دوطرفه
     expect(within(section).getByText("واژگان")).toBeInTheDocument();
     expect(within(section).getByText("کنکوری")).toBeInTheDocument();
@@ -90,6 +93,32 @@ describe("پوشش مهارت‌ها رویِ کاغذِ رسمی — کامپو
     const row3 = within(section).getByText("درس ۳").closest("tr")!;
     expect(row3.querySelector("td.or-bad")).toBeNull();
     expect(row3).toHaveTextContent("۸۸٪");
+  });
+
+  it("نردبانِ وضعیت رویِ کاغذ (راندِ ۱۸۱): ۳۰=ضعیف، ۹۵=عالی، ۷۰ بی‌برچسب — متنِ جانشینِ رنگ برایِ کپیِ سیاه‌وسفید", () => {
+    seedResults({
+      "1:vocab": { percent: 30, at: "2026-10-10" },
+      "1:dictation": { percent: 95, at: "2026-10-11" },
+      "2:vocab": { percent: 70, at: "2026-10-12" },
+    });
+    render(<OfficialReport open onClose={() => {}} />);
+    const section = document.querySelector("section.or-coverage")! as HTMLElement;
+    const row1 = within(section).getByText("درس ۱").closest("tr")!;
+    // ضعیف: همان سلولِ or-bad — متن زیرِ عدد، رنگ نمی‌میرد در فتوکپی
+    const bad = row1.querySelector("td.or-bad")!;
+    expect(bad).toHaveTextContent("ضعیف");
+    expect(bad.textContent).toContain("۳۰٪");
+    // عالی: سلولِ ۹۵ — برچسبِ زمردی
+    const ex = [...row1.querySelectorAll("td")].find((td) => td.textContent?.includes("عالی"));
+    expect(ex).toBeTruthy();
+    expect(ex!.querySelector("span.text-emerald-700")).not.toBeNull();
+    // ۸۵ مرزِ عالی است — بازدیدکننده‌ی ۸۵ هم برچسب می‌گیرد (باندِ >= ۸۵)
+    // میانه (۷۰): بی‌برچسب — نویزِ ممنوع
+    const row2 = within(section).getByText("درس ۲").closest("tr")!;
+    const midLabeled = [...row2.querySelectorAll("td")].filter(
+      (td) => td.textContent?.includes("ضعیف") || td.textContent?.includes("عالی")
+    );
+    expect(midLabeled).toHaveLength(0);
   });
 
   it("هر شش ستونِ یک درس پوشیده → «کامل» زمردی", () => {
