@@ -55,6 +55,7 @@ export const EVENT_NAMES = [
   "goal_chip", // tapped the daily-goal progress chip in the header (Task 76)
   "week_chip", // tapped the weekly-goal ring chip in the header (Task 129)
   "freeze_badge", // tapped the streak-freeze badge in the header (Task 77)
+  "streak_badge", // tapped the combined streak badge's flame segment (Task 150)
   "print_report", // official printable progress report
 ] as const;
 
@@ -111,6 +112,7 @@ export const EVENT_LABELS_FA: Record<EventName, string> = {
   goal_chip: "پیگیری هدف روزانه از هدر",
   week_chip: "پیگیری هدف هفتگی از هدر",
   freeze_badge: "پیگیری یخِ زنجیره از هدر",
+  streak_badge: "پیگیری زنجیره از نشانِ ترکیبی",
   print_report: "گزارش چاپی رسمی",
 };
 

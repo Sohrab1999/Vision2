@@ -23,11 +23,12 @@ const PLACEMENT: Record<string, string> = {
   "vocab-tab": "lesson", "word-of-day": "lesson", "writing-tab": "lesson",
   // practice/ — review/practice surfaces, status chips, targeted practice
   "badges": "practice", "daily-quests": "practice", "danger-words": "practice",
-  "due-pill": "practice", "freeze-badge": "practice", "goal-chip": "practice",
+  "due-pill": "practice", "goal-chip": "practice",
   "listen-view": "practice", "my-words": "practice", "my-words-dictation": "practice",
   "my-words-flashcards": "practice", "my-words-review": "practice",
   "progress-ring": "practice", "review-view": "practice", "skill-panel": "practice",
-  "smart-practice-view": "practice", "srs-panel": "practice", "vocab-donut": "practice",
+  "smart-practice-view": "practice", "srs-panel": "practice", "streak-badge": "practice",
+  "vocab-donut": "practice",
   "weekly-chart": "practice",
   // exam/ — timed exam surfaces
   "exam-view": "exam", "konkur-view": "exam",

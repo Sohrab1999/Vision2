@@ -1415,6 +1415,8 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
     "src/components/study/lesson/word-of-day.css": [".word-day {", ".dark .word-day {", ".dark .word-day .text-emerald-700", ".dark .word-day .bg-emerald-600"],
     // wave 9 (task 149) — the dictionary state-filter chips, verbatim single lines
     "src/components/study/lesson/dictionary-view.css": [".dark .dict-state-chip.bg-stone-100:hover {", '.dark .dict-state-chip [class*="bg-stone-200"] {', ".dark .dict-state-chip.bg-stone-700 {"],
+    // task 150 — the combined streak badge: born extracted beside its owner (ice guest ink duo)
+    "src/components/study/practice/streak-badge.css": [".streak-ice {", ".dark .streak-ice {"],
   };
 
   it("keeps every extracted feature file present with its key selectors", () => {

@@ -1,16 +1,15 @@
 "use client";
 
-import { BookOpen, Home, Library, ClipboardCheck, BookMarked, Sun, Moon, Flame, Keyboard, Search } from "lucide-react";
+import { BookOpen, Home, Library, ClipboardCheck, BookMarked, Sun, Moon, Keyboard, Search } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useStudy, type View } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
-import { faNum } from "@/lib/study-theme";
 import SettingsPopover from "../shared/settings-popover";
 import ProfilePopover from "../profile/profile-popover";
 import DuePill from "../practice/due-pill";
 import GoalChip from "../practice/goal-chip";
 import WeekChip from "../practice/week-chip";
-import FreezeBadge from "../practice/freeze-badge";
+import StreakBadge from "../practice/streak-badge";
 
 // ------------------------------------------------------------------
 // هدر چسبان — گام ۷.۲-ج §12: این فایل فقط «میلهٔ هدر» است؛ پاپ‌اُور
@@ -29,7 +28,6 @@ export default function Header() {
   const view = useStudy((s) => s.view);
   const setView = useStudy((s) => s.setView);
   const goHome = useStudy((s) => s.goHome);
-  const streak = useStudy((s) => s.streak);
   const mounted = useMounted();
   const { theme, setTheme } = useTheme();
   const isDark = mounted && theme === "dark";
@@ -61,24 +59,15 @@ export default function Header() {
         </button>
 
         <div className="flex min-w-0 items-center gap-1">
-          {/* streak flame */}
-          {mounted && streak > 0 && (
-            <span
-              className="mr-1 hidden items-center gap-1 rounded-full border c-chip-flame px-2.5 py-1.5 text-[12px] font-black sm:inline-flex"
-              title={`زنجیرهٔ ${faNum(streak)} روزه مطالعه`}
-            >
-              <Flame size={14} className="streak-flame" />
-              {faNum(streak)}
-            </span>
-          )}
+          {/* نشانِ ترکیبی زنجیره — شعله×یخ در یک چیپ (Task 150؛ جای اسپنِ شعلهٔ
+              غیرکلیک‌پذیر + FreezeBadgeِ جدا — یک جای بودجهٔ هدر، قصهٔ کامل) */}
+          <StreakBadge />
           {/* SRS due pill — شمارش زندهٔ کارت‌های سررسیده، یک ضربه تا مرور (Task 73) */}
           <DuePill />
           {/* چیپ هدف امروز — پیشرفت زندهٔ reviews+quizzes تا امن‌شدن زنجیره (Task 76) */}
           <GoalChip />
           {/* مینی‌حلقهٔ هدفِ هفتگی — همسایهٔ چیپِ امروز: یک ضربه تا هفته‌نامه (Task 129) */}
           <WeekChip />
-          {/* نشانگر یخِ زنجیره — مخزن یخ/نجات امروز، کنار شعله (Task 77) */}
-          <FreezeBadge />
           <button
             onClick={() => setTheme(isDark ? "light" : "dark")}
             className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border c-card text-stone-500 transition-all hover:text-amber-500 hover:border-amber-200 active:scale-90"
