@@ -37,6 +37,10 @@ export interface QuizEngineProps {
   groupLabels?: Record<string, string>;
   /** diploma-style result card with share button (final exam) */
   certificate?: boolean;
+  /** certificate family color (راند ۱۹۷ — نشانِ رنگِ خانوادهٔ پایه، فقط با certificate) */
+  accentFamily?: string;
+  /** grade label for the certificate footer + canvas seal («پایهٔ دهم») */
+  gradeLabel?: string;
   /** override the lesson each question's mistakes are recorded to */
   mistakesOf?: (q: QuizQuestion) => number | string;
   /** when false, wrong answers stay out of the mistake bank (word-drills) */
@@ -57,6 +61,8 @@ export default function QuizEngine({
   groupOf,
   groupLabels,
   certificate = false,
+  accentFamily,
+  gradeLabel,
   mistakesOf,
   trackMistakes = true,
   faOptions,
@@ -97,6 +103,8 @@ export default function QuizEngine({
         correctCount={run.correctCount}
         trackMistakes={trackMistakes}
         certificate={certificate}
+        accentFamily={accentFamily}
+        gradeLabel={gradeLabel}
         faOptions={faOptions}
         groupOf={groupOf}
         groupLabels={groupLabels}

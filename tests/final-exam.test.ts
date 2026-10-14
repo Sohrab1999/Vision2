@@ -15,6 +15,7 @@ import {
   FINAL_GRADES,
   buildFinalPool,
   examGroupLabels,
+  finalAccentOf,
   finalGradeOf,
   finalKeyLabel,
   finalQuestionsCount,
@@ -26,6 +27,7 @@ import { examBank, lessons } from "@/data";
 import { LESSONS_META, lessonOrdinalFa } from "@/data/lesson-meta";
 import { lessonIdOfKey, skillBreakdown } from "@/lib/skill-stats";
 import { categoryLabel, feedLabel, globalResultLabel, globalResultTheme } from "@/components/study/home/home-constants";
+import { ring600 } from "@/lib/ui-colors";
 
 const identity = <T,>(a: T[]): T[] => [...a];
 const r = (p: number) => ({ correct: 1, total: 2, percent: p, at: "2026-01-01T00:00:00.000Z" });
@@ -194,5 +196,30 @@ describe("final-family keys across consumers", () => {
     // legacy key untouched
     expect(globalResultLabel.final).toBe("آزمون پایان ترم");
     expect(globalResultTheme.final).toBe("emerald");
+  });
+});
+
+describe("certificate accent — نشانِ رنگِ خانواده (راند ۱۹۷)", () => {
+  it("each grade leads with its first lesson's family color", () => {
+    for (const g of FINAL_GRADES) {
+      const lead = LESSONS_META.find((l) => l.id === g.lessons[0])!;
+      expect(g.accent, `grade ${g.id} must lead with its first lesson's family`).toBe(lead.color);
+    }
+    expect(FINAL_GRADES.map((g) => g.accent)).toEqual(["orange", "emerald", "violet"]);
+  });
+
+  it("finalAccentOf maps the family keys and lands emerald for strangers", () => {
+    expect(finalAccentOf("final-10")).toBe("orange");
+    expect(finalAccentOf("final")).toBe("emerald");
+    expect(finalAccentOf("final-12")).toBe("violet");
+    expect(finalAccentOf("1:vocab")).toBe("emerald");
+    expect(finalAccentOf("exam")).toBe("emerald");
+  });
+
+  it("every accent owns its true 600 leaf — the canvas seal never approximates", () => {
+    // ring600 must resolve the family's OWN 600, not the emerald fallback
+    expect(ring600("orange")).toBe("#ea580c");
+    expect(ring600("emerald")).toBe("#059669");
+    expect(ring600("violet")).toBe("#7c3aed");
   });
 });

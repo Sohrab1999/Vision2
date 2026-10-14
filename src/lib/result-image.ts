@@ -17,6 +17,23 @@ export interface ResultImageOpts {
   total: number;
   userName?: string;
   premium?: boolean; // certificate-style (final exam)
+  /** راند ۱۹۷ — خانوادهٔ رنگیِ گواهی (emerald/orange/violet) — نشانِ خانواده روی بوم */
+  accentFamily?: string;
+  /** برچسبِ پایه («پایهٔ دهم») زیرِ مهرِ خانواده */
+  gradeLabel?: string;
+}
+
+/**
+ * راند ۱۹۷ — زوجِ ۵۰۰/۶۰۰یِ خانواده از ui-colors، با فرودِ زمردی برای
+ * خانوادهٔ ناشناخته (هم‌قرارداد با ring600). بوم کلاسِ تیلویند ندارد؛
+ * hexها تک‌منبعی از پالتِ مشترکِ پینترها می‌آیند.
+ */
+function accentPair(family?: string): { c500: string; c600: string } {
+  const fam = (uiColors as Record<string, Record<number, string | undefined> | undefined>)[family ?? ""];
+  return {
+    c500: fam?.[500] ?? uiColors.emerald[500],
+    c600: fam?.[600] ?? uiColors.emerald[600],
+  };
 }
 
 function faDate(): string {
@@ -77,6 +94,7 @@ export async function downloadResultImage(opts: ResultImageOpts): Promise<boolea
     if (!ctx) return false;
 
     const dark = opts.premium ?? false;
+    const accent = accentPair(opts.accentFamily);
 
     // ---------- shell (Task 104: استخراجِ دست‌نخورده برای خانوادهٔ سبز) ----------
     studyShell(ctx, W, H, family, dark);
@@ -101,7 +119,11 @@ export async function downloadResultImage(opts: ResultImageOpts): Promise<boolea
     ctx.stroke();
     const pct = Math.max(0, Math.min(100, opts.percent)) / 100;
     const ring = ctx.createLinearGradient(cx - r, cy - r, cx + r, cy + r);
-    if (dark) {
+    if (opts.accentFamily) {
+      // راند ۱۹۷ — حلقهٔ گواهی با رنگِ خانوادهٔ پایه
+      ring.addColorStop(0, accent.c500);
+      ring.addColorStop(1, accent.c600);
+    } else if (dark) {
       ring.addColorStop(0, uiColors.amber[500]);
       ring.addColorStop(1, uiColors.orange[600]);
     } else {
@@ -160,6 +182,19 @@ export async function downloadResultImage(opts: ResultImageOpts): Promise<boolea
       chy += 72;
     }
 
+    // ---------- family seal (راند ۱۹۷ — نشانِ خانواده روی گواهی) ----------
+    if (opts.accentFamily) {
+      drawFamilySeal(ctx, {
+        cx: 565,
+        cy: 355,
+        r: 44,
+        c500: accent.c500,
+        c600: accent.c600,
+        gradeLabel: opts.gradeLabel,
+        family,
+      });
+    }
+
     // ---------- footer ----------
     ctx.strokeStyle = uiColors.stone[200];
     ctx.beginPath();
@@ -170,7 +205,7 @@ export async function downloadResultImage(opts: ResultImageOpts): Promise<boolea
     ctx.textAlign = "right";
     ctx.fillStyle = uiColors.stone[400];
     ctx.font = `700 19px ${family}`;
-    ctx.fillText("وب‌کتاب تعاملی زبان انگلیسی دبیرستان · یازدهم + دوازدهم", W - 90, H - 74);
+    ctx.fillText("وب‌کتاب تعاملی زبان انگلیسی دبیرستان · دهم + یازدهم + دوازدهم", W - 90, H - 74);
     ctx.textAlign = "left";
     ctx.direction = "ltr";
     ctx.fillStyle = dark ? uiColors.amber[600] : uiColors.emerald[600];
@@ -256,6 +291,82 @@ function studyShell(ctx: CanvasRenderingContext2D, W: number, H: number, family:
   ctx.moveTo(90, 138);
   ctx.lineTo(W - 90, 138);
   ctx.stroke();
+}
+
+// ------------------------------------------------------------------
+// راند ۱۹۷ — نشانِ خانواده روی گواهیِ بوم: روبانِ دولب + دیسکِ ۶۰۰یِ
+// خانواده + حلقهٔ سفید + ستارهٔ پنج‌پر + رینگِ ظریفِ ۵۰۰ی + برچسبِ
+// «گواهی رسمی» و پایه. خالص و صادرات‌شده تا با ctx قلابی تست شود.
+// ------------------------------------------------------------------
+export interface FamilySealOpts {
+  cx: number;
+  cy: number;
+  r: number;
+  c500: string;
+  c600: string;
+  gradeLabel?: string;
+  family: string;
+}
+
+export function drawFamilySeal(ctx: CanvasRenderingContext2D, o: FamilySealOpts): void {
+  // ribbon tails (dip under the disc)
+  ctx.save();
+  ctx.translate(o.cx, o.cy);
+  for (const s of [-1, 1]) {
+    ctx.save();
+    ctx.rotate((s * 20 * Math.PI) / 180);
+    ctx.fillStyle = o.c600;
+    ctx.fillRect(-9, o.r - 8, 18, 44);
+    ctx.restore();
+  }
+  ctx.restore();
+
+  // outer disc — family 600
+  ctx.beginPath();
+  ctx.arc(o.cx, o.cy, o.r, 0, Math.PI * 2);
+  ctx.fillStyle = o.c600;
+  ctx.fill();
+
+  // micro rim — family 500 halo
+  ctx.beginPath();
+  ctx.arc(o.cx, o.cy, o.r + 4, 0, Math.PI * 2);
+  ctx.strokeStyle = o.c500;
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  // inner white ring
+  ctx.beginPath();
+  ctx.arc(o.cx, o.cy, o.r - 7, 0, Math.PI * 2);
+  ctx.strokeStyle = uiColors.white;
+  ctx.lineWidth = 3;
+  ctx.stroke();
+
+  // five-point white star
+  ctx.beginPath();
+  const R = o.r - 16;
+  for (let i = 0; i < 10; i++) {
+    const rad = i % 2 === 0 ? R : R * 0.42;
+    const a = -Math.PI / 2 + (i * Math.PI) / 5;
+    const x = o.cx + rad * Math.cos(a);
+    const y = o.cy + rad * Math.sin(a);
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  }
+  ctx.closePath();
+  ctx.fillStyle = uiColors.white;
+  ctx.fill();
+
+  // labels under the seal
+  ctx.direction = "rtl";
+  ctx.textAlign = "center";
+  ctx.fillStyle = uiColors.stone[900];
+  ctx.font = `800 17px ${o.family}`;
+  ctx.fillText("گواهی رسمی", o.cx, o.cy + o.r + 26);
+  if (o.gradeLabel) {
+    ctx.fillStyle = uiColors.stone[500];
+    ctx.font = `700 15px ${o.family}`;
+    ctx.fillText(o.gradeLabel, o.cx, o.cy + o.r + 50);
+  }
 }
 
 // ------------------------------------------------------------------

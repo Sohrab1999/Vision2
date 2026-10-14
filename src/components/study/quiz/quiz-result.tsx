@@ -28,6 +28,10 @@ export interface QuizResultProps {
   correctCount: number;
   trackMistakes?: boolean;
   certificate?: boolean;
+  /** certificate family color (راند ۱۹۷ — نشانِ رنگِ خانوادهٔ پایه) */
+  accentFamily?: string;
+  /** grade label for the certificate footer + canvas seal («پایهٔ دهم») */
+  gradeLabel?: string;
   /** predicate: question's options are Persian → rendered RTL (word drills) */
   faOptions?: (q: QuizQuestion) => boolean;
   /** per-question group key for the result breakdown (e.g. source lesson) */
@@ -38,6 +42,66 @@ export interface QuizResultProps {
   onExit: () => void;
 }
 
+// راند ۱۹۷ — گواهیِ پایان‌ترم با نشانِ رنگِ خانوادهٔ پایه. سه پایه،
+// سه خانواده (یازدهم زمردی / دهم نارنجی / دوازدهم بنفش) + کهربایِ طلاییِ
+// پیش‌فرض. همهٔ رشته‌های کلاس لفظی‌اند (JIT تیلویند از template های داینامیک
+// نمی‌سازد)؛ درخششِ شعاعی و حاشیهٔ خط‌چینِ تاریک با متغیرِ CSS (--cert-*)
+// به kernel سرریز می‌شود تا بودجهٔ سلکتور بی‌تغییر بماند.
+const CERT_ACCENTS: Record<
+  string,
+  {
+    glowA: string;
+    glowB: string;
+    borderDark: string;
+    border: string;
+    head: string;
+    pill: string;
+    pillShadow: string;
+    name: string;
+  }
+> = {
+  amber: {
+    glowA: "rgb(251 191 36 / 0.14)",
+    glowB: "rgb(249 115 22 / 0.12)",
+    borderDark: "rgba(180, 130, 20, 0.55)",
+    border: "border-amber-300",
+    head: "text-amber-600",
+    pill: "from-amber-400 to-orange-500",
+    pillShadow: "shadow-amber-500/30",
+    name: "text-amber-800",
+  },
+  emerald: {
+    glowA: "rgb(16 185 129 / 0.14)",
+    glowB: "rgb(13 148 136 / 0.12)",
+    borderDark: "rgba(4, 120, 87, 0.5)",
+    border: "border-emerald-300",
+    head: "text-emerald-600",
+    pill: "from-emerald-400 to-emerald-600",
+    pillShadow: "shadow-emerald-500/30",
+    name: "text-emerald-800",
+  },
+  orange: {
+    glowA: "rgb(249 115 22 / 0.15)",
+    glowB: "rgb(234 88 12 / 0.13)",
+    borderDark: "rgba(154, 52, 18, 0.5)",
+    border: "border-orange-300",
+    head: "text-orange-600",
+    pill: "from-orange-400 to-orange-600",
+    pillShadow: "shadow-orange-500/30",
+    name: "text-orange-800",
+  },
+  violet: {
+    glowA: "rgb(139 92 246 / 0.14)",
+    glowB: "rgb(124 58 237 / 0.12)",
+    borderDark: "rgba(91, 33, 182, 0.5)",
+    border: "border-violet-300",
+    head: "text-violet-600",
+    pill: "from-violet-500 to-violet-600",
+    pillShadow: "shadow-violet-500/30",
+    name: "text-violet-800",
+  },
+};
+
 export default function QuizResult({
   title,
   questions,
@@ -45,6 +109,8 @@ export default function QuizResult({
   correctCount,
   trackMistakes = true,
   certificate = false,
+  accentFamily,
+  gradeLabel,
   faOptions,
   groupOf,
   groupLabels,
@@ -55,7 +121,9 @@ export default function QuizResult({
   const { toast } = useToast();
   const starredWords = useStudy((s) => s.starredWords);
   const toggleStarred = useStudy((s) => s.toggleStarred);
+  const userName = useStudy((s) => s.userName);
   const starredSet = useMemo(() => new Set(starredWords), [starredWords]);
+  const cert = CERT_ACCENTS[accentFamily ?? "amber"] ?? CERT_ACCENTS.amber;
 
   const total = questions.length;
   const percent = percentOf(correctCount, total);
@@ -95,6 +163,8 @@ export default function QuizResult({
       total,
       userName: useStudy.getState().userName || undefined,
       premium,
+      accentFamily: certificate ? accentFamily : undefined,
+      gradeLabel: certificate ? gradeLabel : undefined,
     });
     setImgBusy(false);
     toast(
@@ -120,11 +190,29 @@ export default function QuizResult({
   };
 
   const certificateCard = (
-    <div className="certificate-card rounded-2xl bg-white p-1.5 shadow-xl">
-      <div className="rounded-xl border-2 border-dashed border-amber-300 p-5 text-center sm:p-6">
-        <div className="mb-3 flex items-center justify-center gap-2 text-[11px] font-black tracking-widest text-amber-600">
+    <div
+      className="certificate-card relative rounded-2xl bg-white p-1.5 shadow-xl"
+      style={{
+        "--cert-glow-a": cert.glowA,
+        "--cert-glow-b": cert.glowB,
+        "--cert-border-dark": cert.borderDark,
+      } as React.CSSProperties}
+    >
+      <div className={`relative rounded-xl border-2 border-dashed ${cert.border} p-5 text-center sm:p-6`}>
+        {/* مُهرِ خانواده — راند ۱۹۷ */}
+        <div
+          data-testid="cert-seal"
+          aria-hidden="true"
+          className={`absolute -top-4 left-6 flex h-14 w-14 rotate-6 items-center justify-center rounded-full bg-gradient-to-br ${cert.pill} shadow-lg ${cert.pillShadow} ring-4 ring-white`}
+        >
+          <Award size={22} className="text-white" />
+        </div>
+        <div className={`mb-3 flex items-center justify-center gap-2 text-[11px] font-black tracking-widest ${cert.head}`}>
           <ScrollText size={14} />
           WEBBOOK CERTIFICATE · وب‌کتاب ویژن دو
+        </div>
+        <div data-testid="cert-name" className={`mb-4 text-base font-black ${cert.name}`}>
+          {userName ? `گواهیِ عملکردِ ${userName}` : "گواهیِ عملکردِ یادگیرندهٔ کوشا"}
         </div>
         <div className="mb-4 flex justify-center">
           <ProgressRing percent={percent} size={116} stroke={10}>
@@ -136,13 +224,13 @@ export default function QuizResult({
             </div>
           </ProgressRing>
         </div>
-        <div className="mx-auto mb-3 flex w-fit items-center gap-2 rounded-full bg-gradient-to-l from-amber-400 to-orange-500 px-4 py-1.5 text-[13px] font-black text-white shadow-lg shadow-amber-500/30">
+        <div className={`mx-auto mb-3 flex w-fit items-center gap-2 rounded-full bg-gradient-to-l ${cert.pill} px-4 py-1.5 text-[13px] font-black text-white shadow-lg ${cert.pillShadow}`}>
           <Award size={16} />
           {title}
         </div>
         <p className={`mb-1 text-sm font-bold ${grade.cls}`}>{grade.msg}</p>
         <p className="mb-4 text-[11.5px] text-stone-500">
-          تاریخ اخذ: {new Date().toLocaleDateString("fa-IR")} · وب‌کتاب تعاملی زبان انگلیسی یازدهم
+          تاریخ اخذ: {new Date().toLocaleDateString("fa-IR")} · وب‌کتاب تعاملی زبان انگلیسی دبیرستان{gradeLabel ? ` · ${gradeLabel}` : ""}
         </p>
 
         {/* per-source breakdown */}

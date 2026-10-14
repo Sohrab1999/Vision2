@@ -13,7 +13,7 @@
 // heavy content barrel is pulled by the consumer views, not here.
 // ------------------------------------------------------------------
 
-import type { QuizQuestion } from "@/lib/study-types";
+import type { LessonColor, QuizQuestion } from "@/lib/study-types";
 import { LESSONS_META, lessonOrdinalFa } from "@/data/lesson-meta";
 import { shuffle } from "./shuffle";
 
@@ -33,6 +33,9 @@ export interface FinalGradeDef {
   resultKey: string;
   /** DB category for /api/stats */
   category: string;
+  /** certificate family color — the first lesson of the grade leads the accent
+   *  (round 197: گواهیِ پایان‌ترم با نشانِ رنگِ خانواده) */
+  accent: LessonColor;
 }
 
 export const FINAL_GRADES: FinalGradeDef[] = [
@@ -44,6 +47,7 @@ export const FINAL_GRADES: FinalGradeDef[] = [
     perLesson: 10,
     resultKey: "final-10",
     category: "final-10",
+    accent: "orange",
   },
   {
     id: "g11",
@@ -53,6 +57,7 @@ export const FINAL_GRADES: FinalGradeDef[] = [
     perLesson: 10,
     resultKey: "final",
     category: "final",
+    accent: "emerald",
   },
   {
     id: "g12",
@@ -62,6 +67,7 @@ export const FINAL_GRADES: FinalGradeDef[] = [
     perLesson: 10,
     resultKey: "final-12",
     category: "final-12",
+    accent: "violet",
   },
 ];
 
@@ -123,4 +129,14 @@ export function finalKeyLabel(key: string): string | null {
   if (key === "final") return "آزمون پایان ترم";
   const grade = FINAL_GRADES.find((g) => g.resultKey === key);
   return grade ? `آزمون پایان‌ترم ${grade.label}` : null;
+}
+
+/**
+ * راند ۱۹۷ — خانوادهٔ رنگیِ گواهیِ یک کلیدِ نتیجهٔ پایان‌ترم.
+ * "final" (کلیدِ تاریخیِ یازدهم) هم امردی می‌گیرد؛ کلیدِ ناشناخته →
+ * زمردی (پیش‌فرضِ تاریخی، هم‌راستا با ring600).
+ */
+export function finalAccentOf(key: string): LessonColor {
+  const grade = FINAL_GRADES.find((g) => g.resultKey === key);
+  return grade?.accent ?? "emerald";
 }

@@ -12,6 +12,7 @@ import {
   FINAL_GRADES,
   buildFinalPool,
   examGroupLabels,
+  finalAccentOf,
   finalGradeOf,
   finalQuestionsCount,
   finalTimerMinutes,
@@ -121,6 +122,8 @@ export default function ExamView() {
         immediate={session.kind === "exam-mistakes"}
         secondsPerQuestion={session.timed && session.kind !== "exam-mistakes" ? 45 : undefined}
         certificate={session.kind === "final"}
+        accentFamily={session.kind === "final" ? finalAccentOf(session.resultKey) : undefined}
+        gradeLabel={session.kind === "final" ? finalGradeOf(finalGradeId).label : undefined}
         groupOf={session.kind === "final" ? questionGroup : undefined}
         groupLabels={session.kind === "final" ? EXAM_GROUP_LABELS : undefined}
         mistakesOf={session.kind === "final" ? (q) => mistakesTargetOf(questionGroup(q)) : undefined}

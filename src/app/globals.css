@@ -594,11 +594,14 @@ body {
   85%, 100% { transform: translateX(120%); }
 }
 
-/* ---------------- final-exam certificate ---------------- */
+/* ---------------- final-exam certificate ----------------
+   راند ۱۹۷ — درخششِ شعاعی با متغیرِ خانواده (--cert-glow-*) پارامتری شد
+   تا گواهیِ هر پایه با رنگِ خودش بدرخشد؛ فرودِ کهربایِ طلایی، ظاهرِ
+   پیشینِ گواهیِ جامع را عیناً نگه می‌دارد. */
 .certificate-card {
   background-image:
-    radial-gradient(circle at 12% 8%, rgb(251 191 36 / 0.14), transparent 34%),
-    radial-gradient(circle at 88% 92%, rgb(249 115 22 / 0.12), transparent 34%);
+    radial-gradient(circle at 12% 8%, var(--cert-glow-a, rgb(251 191 36 / 0.14)), transparent 34%),
+    radial-gradient(circle at 88% 92%, var(--cert-glow-b, rgb(249 115 22 / 0.12)), transparent 34%);
 }
 
 /* ---------------- 30-day heatmap ---------------- */
@@ -613,7 +616,7 @@ body {
 .dark .badge-card.border-stone-200 { background-color: #1c1917; }
 .dark .bg-amber-100 { background-color: rgba(87, 62, 14, 0.5); }
 .dark .certificate-card { background-color: #1c1917; }
-.dark .certificate-card .border-dashed { border-color: rgba(180, 130, 20, 0.55) !important; }
+.dark .certificate-card .border-dashed { border-color: var(--cert-border-dark, rgba(180, 130, 20, 0.55)) !important; }
 .dark .final-exam-card { background-color: #1c1917; }
 .dark .border-amber-200 { border-color: rgba(120, 88, 30, 0.5); }
 .dark .border-amber-100 { border-color: rgba(120, 88, 30, 0.4); }
