@@ -86,7 +86,7 @@ export default function AppendixView() {
             { title: "حروف بی‌صدا (Consonants)", data: consonantPhonemes, color: "bg-rose-600" },
           ].map((group) => (
             <div key={group.title} className="rounded-2xl border c-card p-4">
-              <h3 className="mb-3 text-[15px] font-extrabold text-stone-800">{group.title}</h3>
+              <h2 className="mb-3 text-[15px] font-extrabold text-stone-800">{group.title}</h2>
               <div className="grid max-h-[38vh] gap-2 overflow-y-auto nice-scroll sm:grid-cols-2 lg:grid-cols-4">
                 {group.data.map((p) => (
                   <div key={p.symbol + p.example} className="rounded-xl border border-stone-100 bg-stone-50 p-3">
@@ -113,12 +113,12 @@ export default function AppendixView() {
         <div className="grid gap-3 sm:grid-cols-2">
           {partsOfSpeech.map((p, i) => (
             <div key={p.name} className="rounded-2xl border c-card p-4">
-              <h3 className="mb-1 flex items-center gap-2 text-[14px] font-extrabold text-violet-700">
+              <h2 className="mb-1 flex items-center gap-2 text-[14px] font-extrabold text-violet-700">
                 <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-violet-100 text-[12px] font-black">
                   {i + 1}
                 </span>
                 {p.name}
-              </h3>
+              </h2>
               <p className="text-[13px] leading-7 text-stone-600">{p.desc}</p>
             </div>
           ))}

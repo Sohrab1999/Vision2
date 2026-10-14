@@ -2,10 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import { ArrowUp } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { stopSpeaking, setSpeakRateScale } from "@/lib/speak";
 import { maybeAutoBackup, collectData, countsOf } from "@/lib/backup";
 import { pushSync } from "@/lib/sync";
@@ -59,6 +60,9 @@ export default function StudyApp() {
   const settings = useStudy((s) => s.settings);
   const hydrated = useMounted();
   const [showTop, setShowTop] = useState(false);
+  // unslop audit F1 (G-9): manual toggle OR OS preference — one kill-switch
+  const osReduceMotion = usePrefersReducedMotion();
+  const reduceMotion = settings.reduceMotion || osReduceMotion;
 
   // rehydrate persisted progress from localStorage (zustand -> external system)
   useEffect(() => {
@@ -98,9 +102,9 @@ export default function StudyApp() {
   useEffect(() => {
     const html = document.documentElement;
     html.style.fontSize = `${Math.round(16 * settings.fontScale * 100) / 100}px`;
-    html.classList.toggle("user-reduce-motion", settings.reduceMotion);
+    html.classList.toggle("user-reduce-motion", reduceMotion);
     setSpeakRateScale(settings.ttsRate);
-  }, [settings]);
+  }, [settings, reduceMotion]);
 
   // F10 analytics: one anonymous "app_open" per browser session
   useEffect(() => {
@@ -204,6 +208,7 @@ export default function StudyApp() {
   }, []);
 
   return (
+    <MotionConfig reducedMotion={reduceMotion ? "always" : "user"}>
     <div className="flex min-h-screen flex-col">
       <Header />
       <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-6">
@@ -281,5 +286,6 @@ export default function StudyApp() {
 
       <Footer />
     </div>
+    </MotionConfig>
   );
 }

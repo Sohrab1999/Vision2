@@ -391,7 +391,7 @@ export default function SpellRushView({ onExit }: { onExit?: () => void }) {
           <span className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-500 to-cyan-600 text-white shadow-lg shadow-sky-500/30">
             <Trophy size={28} />
           </span>
-          <h3 className="mb-1 text-xl font-black text-stone-800">دیکتهٔ برق‌آسا تمام شد!</h3>
+          <h2 className="mb-1 text-xl font-black text-stone-800">دیکتهٔ برق‌آسا تمام شد!</h2>
           {isNewRecord && (
             <span className="spell-chip mb-2 inline-block rounded-full bg-gradient-to-l from-sky-500 to-cyan-600 px-3.5 py-1 text-[12px] font-black text-white shadow-md shadow-sky-500/30">
               ⚡ رکورد جدید!

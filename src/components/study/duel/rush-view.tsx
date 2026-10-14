@@ -343,7 +343,7 @@ export default function RushView() {
           <span className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-400 to-orange-600 text-white shadow-lg shadow-orange-500/30">
             <Trophy size={28} />
           </span>
-          <h3 className="mb-1 text-xl font-black text-stone-800">چالش تمام شد!</h3>
+          <h2 className="mb-1 text-xl font-black text-stone-800">چالش تمام شد!</h2>
           {isNewRecord && (
             <span className="mb-2 inline-block rounded-full bg-gradient-to-l from-amber-500 to-orange-600 px-3.5 py-1 text-[12px] font-black text-white shadow-md shadow-orange-500/30">
               ⚡ رکورد جدید!

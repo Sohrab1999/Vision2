@@ -192,7 +192,19 @@ export default function Flashcards({
         <div
           className={`flip-card ${flipped ? "flipped" : ""} h-64 cursor-pointer select-none sm:h-72`}
           onClick={() => setFlipped((f) => !f)}
+          onKeyDown={(e) => {
+            // Space is owned by the page-level useKeydown flip below (one
+            // toggle per press); the focused control answers Enter — the
+            // B-8a escape hatch MINUS the Space branch, which would
+            // double-toggle (element handler + window handler both fire).
+            if (e.key === "Enter") {
+              e.preventDefault();
+              setFlipped((f) => !f);
+            }
+          }}
           role="button"
+          tabIndex={0}
+          aria-pressed={flipped}
           aria-label="برگرداندن کارت"
         >
           {/* front: English */}
