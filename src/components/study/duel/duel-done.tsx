@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Trophy, Swords, Users, RotateCcw, Crown, Handshake, Loader2, ShieldCheck, ImageDown, Share2, Timer } from "lucide-react";
+import { Trophy, Swords, Users, RotateCcw, Crown, Handshake, Loader2, ShieldCheck, ImageDown, Share2, Timer, Flame } from "lucide-react";
 import { faNum, secFa } from "@/lib/study-theme";
-import { decomposeDuelScore, duelHeadToHead } from "@/lib/duel-history";
+import { decomposeDuelScore, duelHeadToHead, duelWinStreak } from "@/lib/duel-history";
 import { useStudy } from "@/lib/study-store";
 import { duelThinkStats } from "@/lib/duel-think";
 import { downloadDuelDoneImage, buildDuelDoneBlob } from "@/lib/result-image";
@@ -38,6 +38,11 @@ export default function DuelDone({ endData, mySid, myFinishAt, oppConnected, rem
   // برچسبِ «با همین نبرد» همین را شفاف می‌گوید.
   const duelHistory = useStudy((s) => s.duelHistory);
   const h2h = duelHeadToHead(duelHistory, other?.name);
+
+  // Task 192 — زنجیرهٔ بردهای متوالی از دفترچه (رکوردِ همین بردِ تازه‌وارد
+  // داخلِ شمارش است — persist پیش از رندر push می‌کند). چیپ فقط از دومین
+  // بردِ متوالی رو می‌شود — یک بردِ واحد «زنجیره» نیست.
+  const winStreak = duelWinStreak(duelHistory);
 
   // Task 106 → ۱۰۹ — secFa به study-theme مهاجرت کرد (یک قراردادِ مشترک؛
   // هفته‌نامه هم از امروز همین را می‌خواند). null → «—» همان‌جا حل شده.
@@ -165,6 +170,12 @@ export default function DuelDone({ endData, mySid, myFinishAt, oppConnected, rem
                 ? "امتیازها برابر شد؛ دوباره مبارزه کن تا برنده مشخص شود."
                 : "ناراحت نباش — غلط‌های این نبرد به بانک مرور رفت‌اند تا دفعهٔ بعد قوی‌تر برگردی."}
           </p>
+          {outcome === "win" && winStreak >= 2 && (
+            <div className="c-veil-80 mt-3 inline-flex items-center gap-1.5 rounded-full border border-emerald-200 px-3 py-1 text-[11.5px] font-black text-emerald-700 shadow-sm">
+              <Flame size={13} aria-hidden />
+              زنجیرهٔ {faNum(winStreak)} بردِ متوالی
+            </div>
+          )}
         </div>
       </motion.div>
 
