@@ -60,6 +60,8 @@ export interface BadgeEvalInput {
   dictationDays14: number; // چند روزِ پنجرهٔ ۱۴روزه دیکته داشتند
   quizDays14: number; // چند روزِ پنجرهٔ ۱۴روزه آزمون داشتند
   reviewsDays14: number; // چند روزِ پنجرهٔ ۱۴روزه مرور داشتند
+  wordsDays14: number; // چند روزِ پنجرهٔ ۱۴روزه واژهٔ تازه داشتند (Task 162 — بُعدِ هفتم)
+  rushDays14: number; // چند روزِ پنجرهٔ ۱۴روزه برق‌آسا داشتند (Task 162 — بُعدِ هشتم)
   activeDays35: number; // چند روزِ پنجرهٔ ۳۵روزه هر فعالیتی داشتند (خانوادهٔ حضور، Task 92)
   wordsDays7: number; // چند روزِ پنجرهٔ ۷روزه واژهٔ تازه داشتند (≠ جمع — Task 93)
   rushDays7: number; // چند روزِ پنجرهٔ ۷روزه برق‌آسا داشتند (≠ جمع — Task 93)
@@ -206,6 +208,8 @@ export function buildEvalInput(s: {
         dictationDays14: win14.dictationDays,
         quizDays14: win14.quizDays,
         reviewsDays14: win14.reviewsDays,
+        wordsDays14: win14.wordsDays,
+        rushDays14: win14.rushDays,
         activeDays35: win35.activeDays,
         wordsDays7: win7.wordsDays,
         rushDays7: win7.rushDays,
@@ -1097,6 +1101,33 @@ export const BADGES: BadgeDef[] = [
     },
     check: (s) => s.reviewsDays14 >= 14 && s.quizDays14 >= 14,
   },
+  // Task 162 — نهمین دوسیستمه: واژه×برق — نخستین جفتِ «دو بُعدِ تازه».
+  // تعادلِ شش‌بُعدیِ ۱۶۰ یعنی هر جفتِ درونِ شش بُعد دو بُعد را ×۳ می‌کرد
+  // (ممنوعِ عمومی) — پس بُعدِ هفتم و هشتم (واژه/برقِ روزشمارِ Task 93)
+  // با هم وارد خانواده می‌شوند و هیچ بُعدِ قبلی جلو نمی‌زند. روایت:
+  // سبز کردنِ آرامِ واژه × به یاد آوردنِ تند — دو سیستمِ متقابلِ کسب و
+  // بازیابی. سطح‌ها دوقلویِ هم‌عدد: ۱۴ روزِ واژه‌دارِ پنجرهٔ ۱۴روزه ×
+  // ۱۴ روزِ برق‌آسا — win14 از همان windowCountersِ عمومی می‌آید
+  // (واژه/برق از ابتدا در هر پنجره حساب می‌شدند؛ فقط استخراجِ win14
+  // تازه است). آیکن: Sprout — نهالِ واژهٔ تازه (Zap/Sparkles/Gauge/
+  // Rocket اشغال‌اند؛ داوری با node -e رویِ نسخهٔ نصب‌شده — درسِ ۱۶۰).
+  // شکافِ صادقِ پنجم: دوقلویِ واژه‌برقِ کامل، ماراتنِ دوهفته‌ای و
+  // هفتهٔ پنج‌مهارتی را نمی‌سازد — سه بُعدِ آن‌ها غریب می‌مانند.
+  {
+    id: "words-rush",
+    title: "واژه و برق",
+    desc: "۱۴ روزِ واژه‌دار و ۱۴ روزِ برق‌آسا — سبز کردنِ آرام و به یاد آوردنِ تند، با هم",
+    icon: "Sprout",
+    tier: "gold",
+    progress: (s) => {
+      const w = Math.min(s.wordsDays14, 14);
+      const sh = Math.min(s.rushDays14, 14);
+      return w / 14 <= sh / 14
+        ? `${faNum(w)} از ۱۴ روزِ واژه`
+        : `${faNum(sh)} از ۱۴ روزِ برق`;
+    },
+    check: (s) => s.wordsDays14 >= 14 && s.rushDays14 >= 14,
+  },
 ];
 
 export const TIER_STYLE: Record<BadgeTier, { ring: string; grad: string; chip: string; glow: string }> = {
@@ -1203,6 +1234,9 @@ export function badgeProgressPct(id: string, s: BadgeEvalInput): number {
     // Task 160 — هشتمین دوسیستمه: مرور×آزمون (دو ۱۴تاییِ هم‌عدد)
     case "review-quiz":
       return clamp(Math.min((s.reviewsDays14 / 14) * 100, (s.quizDays14 / 14) * 100));
+    // Task 162 — نهمین دوسیستمه: واژه×برق (دو بُعدِ تازه، دو ۱۴تاییِ هم‌عدد)
+    case "words-rush":
+      return clamp(Math.min((s.wordsDays14 / 14) * 100, (s.rushDays14 / 14) * 100));
     default:
       return 0;
   }

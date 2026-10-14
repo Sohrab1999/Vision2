@@ -57,6 +57,7 @@ import {
   FileCheck2,
   BookCheck,
   RotateCcw,
+  Sprout,
 } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -148,6 +149,10 @@ export const BADGE_ICONS: Record<string, React.ElementType> = {
   // پلهٔ هشتم (Task 160) — مرور×آزمون: پیکانِ بازخوانی — دوباره‌کاریِ
   // آگاهانه (Crown ×۳ پیشینهٔ یکتا-نبودنِ آیکن‌هاست)
   RotateCcw,
+  // پلهٔ نهم (Task 162) — واژه×برق: نهالِ واژهٔ تازه — کسبِ آرام در
+  // برابرِ بازیابیِ تند (Zap/Sparkles/Gauge/Rocket اشغال‌اند؛ Sprout
+  // آزاد ماند — داوری با node -e رویِ نسخهٔ نصب‌شده، درسِ ۱۶۰)
+  Sprout,
 };
 
 const tierFa: Record<string, string> = {
