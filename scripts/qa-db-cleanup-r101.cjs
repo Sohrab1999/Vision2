@@ -21,7 +21,10 @@ const p = new PrismaClient();
       if (e.name === "app_open") {
         await p.eventDay.update({ where: { day_name: { day: e.day, name: e.name } }, data: { count: 2 } });
         console.log("app_open restored to 2 (was", e.count + ")");
-      } else if (["duel_start", "duel_done", "lesson_open"].includes(e.name)) {
+      } else if (["duel_start", "duel_done", "lesson_open",
+        // task 185: the my-words flashcards QA path (dictionary star -> deck
+        // -> flip) leaves these funnel rows behind — all QA-only by construction
+        "my_words_open", "my_words_flashcards_start", "star_word"].includes(e.name)) {
         await p.eventDay.delete({ where: { day_name: { day: e.day, name: e.name } } });
         console.log("QA event row removed:", e.name, "=", e.count);
       }

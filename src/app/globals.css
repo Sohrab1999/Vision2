@@ -255,7 +255,10 @@ body {
 }
 .flip-card {
   transform-style: preserve-3d;
-  transition: transform 0.55s cubic-bezier(0.4, 0.1, 0.2, 1);
+  /* task 185 (P6): ۰٫۵۵ -> 0.42s — canon KR-16/G-5 outlier band: a direct
+     interaction must not sit above ~0.5s; keeps the deliberate 3D card-flip
+     feel (judgement call documented in plans/unslop.md F6). */
+  transition: transform 0.42s cubic-bezier(0.4, 0.1, 0.2, 1);
   position: relative;
 }
 .flip-card.flipped {
@@ -668,7 +671,10 @@ body {
   80% { opacity: 1; }
   100% { transform: translateY(240px) rotate(540deg); opacity: 0; }
 }
-.confetti-piece { animation: confetti-fall 1.8s ease-in forwards; }
+/* task 185 (P6): ease-in -> ease-out — canon G-1: entering/decorative motion
+   eases OUT; ease-in is the exiting-motion tell. The gravity argument is
+   noted and overruled by canon — falling confetti is decoration, not physics. */
+.confetti-piece { animation: confetti-fall 1.8s ease-out forwards; }
 
 /* ---- rush: low-time pulse on the countdown ring ---- */
 @keyframes rush-pulse {

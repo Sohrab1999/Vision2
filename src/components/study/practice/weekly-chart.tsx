@@ -116,14 +116,14 @@ export default function WeeklyChart() {
                         <motion.div
                           initial={{ height: 0 }}
                           animate={{ height: Math.max(quizH, 0) }}
-                          transition={{ delay: i * 0.05, duration: 0.45, ease: "easeOut" }}
+                          transition={{ delay: i * 0.05, duration: 0.3, ease: "easeOut" }}
                           className={`w-full rounded-t-md bg-gradient-to-b from-emerald-400 to-emerald-700 ${d.total === 0 ? "hidden" : ""}`}
                           title={`${faNum(d.quizzes)} آزمون`}
                         />
                         <motion.div
                           initial={{ height: 0 }}
                           animate={{ height: Math.max(reviewH, 0) }}
-                          transition={{ delay: i * 0.05 + 0.06, duration: 0.45, ease: "easeOut" }}
+                          transition={{ delay: i * 0.05 + 0.06, duration: 0.3, ease: "easeOut" }}
                           className={`w-full bg-gradient-to-b from-amber-400 to-orange-500 ${d.total === 0 ? "hidden" : ""} ${quizH === 0 ? "rounded-t-md" : ""}`}
                           title={`${faNum(d.reviews)} مرور`}
                         />
