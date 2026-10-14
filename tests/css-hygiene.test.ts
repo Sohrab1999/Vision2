@@ -50,6 +50,9 @@ const featureCssPaths = [
   // wave 12 (task 155): the home band dark painters (stat-band new file;
   // quote-band's painter appended to the wave-2 file)
   "src/components/study/home/stat-band.css",
+  // wave 13 (task 157): the my-words dark launcher family — one view
+  // family, one file (the duel-dark.css precedent)
+  "src/components/study/practice/my-words-dark.css",
 ];
 const readEffectiveCss = (): string =>
   readFileSync(cssPath, "utf8") +
@@ -329,9 +332,16 @@ describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
     // .quote-band appended to the wave-2 home/quote-band.css. Anchored to
     // the field-measured 259 (exact guard regex, node re-count). 3a
     // checkpoints re-ran clean. Growth from here must consolidate, not add.
+    // task 157 (§8.3 wave 13): re-based 257 → 254 — the my-words dark
+    // launcher family (3 selector lines, 4 heads) moved beside its owners:
+    // practice/my-words-dark.css (NEW file — one view family, one file,
+    // the duel-dark.css precedent). The multi-consumer neighbours stay:
+    // review-hero (exam-view + review-view) and quiz-teacher/week-teacher
+    // (quiz-teacher + week-teacher). 3a checkpoints re-ran clean. Growth
+    // from here must consolidate, not add.
     const sel = lines.filter((l) => /^\s*\.[a-z]/.test(l) && !l.includes("→")).length;
     expect(sel).toBeLessThanOrEqual(505);
-    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(257);
+    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(254);
   });
 });
 
@@ -1456,6 +1466,9 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
     // (home-feed.tsx); the quote band's painter key lives on the wave-2
     // quote-band.css entry above
     "src/components/study/home/stat-band.css": [".dark .stat-band { background-image: linear-gradient(to left, rgba(6, 55, 40, 0.45), rgba(6, 44, 40, 0.3)) !important; }"],
+    // wave 13 (task 157) — the my-words dark launcher family, verbatim
+    // single lines (hero + cards/dictation pair + story)
+    "src/components/study/practice/my-words-dark.css": [".dark .mywords-hero { background-image: linear-gradient(to left, rgba(69, 48, 12, 0.45), rgba(24, 21, 18, 0.95)) !important; }", ".dark .mywords-cards, .dark .mywords-dictation { background-image: linear-gradient(to left, rgba(59, 32, 96, 0.45), rgba(24, 21, 18, 0.95)) !important; }", ".dark .mywords-story { background-image: linear-gradient(to left, rgba(8, 47, 60, 0.45), rgba(24, 21, 18, 0.95)) !important; }"],
   };
 
   it("keeps every extracted feature file present with its key selectors", () => {
@@ -1574,6 +1587,13 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
       // prose mention from false-positiving)
       "\n.dark .stat-band {",
       "\n.dark .quote-band {",
+      // wave 13 (task 157) — \n-prefixed with " {" suffix per the standing
+      // lesson; tombstone selector-pattern-free. The cards pair keeps its
+      // full two-selector head — the \n prefix keeps it distinct from any
+      // mid-line mention
+      "\n.dark .mywords-hero {",
+      "\n.dark .mywords-cards, .dark .mywords-dictation {",
+      "\n.dark .mywords-story {",
     ]) {
       expect(css, `globals.css still carries a moved rule: ${gone}`).not.toContain(gone);
     }
@@ -1596,7 +1616,7 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
     expect(css).toContain(".dark .daily-quests .text-violet-700,.dark .leaderboard.duel-mode .text-fuchsia-300");
   });
 
-  it("features.css manifest imports all twenty-one files; layout.tsx loads it right after globals.css", () => {
+  it("features.css manifest imports all twenty-two files; layout.tsx loads it right after globals.css", () => {
     const manifest = readFileSync(resolve(process.cwd(), "src/app/features.css"), "utf8");
     for (const p of featureCssPaths) {
       expect(manifest, `manifest line missing for ${p}`).toContain(`@import "${p.replace("src/", "../")}";`);

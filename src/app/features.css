@@ -15,7 +15,10 @@
    srs-panel.css (the r14 band's last resident — the band frame retired);
    wave 12 split the home band dark painters: the stat band's into a NEW
    home/stat-band.css beside home-feed.tsx, the quote band's appended to
-   the wave-2 home/quote-band.css.
+   the wave-2 home/quote-band.css; wave 13 created practice/
+   my-words-dark.css beside the my-words family — one view family, one
+   file (the duel-dark.css precedent), hero + cards/dictation pair +
+   story card.
    Each file lives BESIDE its owning component and is imported here so the
    rules are ALWAYS part of the initial CSS — the same guarantee globals.css
    had before the extraction (lazy views keep zero first-paint risk), and the
@@ -52,3 +55,6 @@
 /* wave 12 (task 155): the home band dark painters — stat-band is a new
    file beside home-feed.tsx; quote-band's painter joined the wave-2 file */
 @import "../components/study/home/stat-band.css";
+/* wave 13 (task 157): the my-words dark launcher family — one view
+   family, one file (the duel-dark.css precedent) */
+@import "../components/study/practice/my-words-dark.css";

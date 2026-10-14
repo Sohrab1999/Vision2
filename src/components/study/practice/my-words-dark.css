@@ -1,0 +1,17 @@
+/* Task 157 — §8.3 wave 13: the my-words dark launcher family, verbatim
+   from globals.css. One view family, one file (the duel-dark.css
+   precedent): four launcher cards rendered together by my-words.tsx, each
+   rule beside its owner — mywords-hero (my-words-review.tsx), the cards
+   pair (my-words-flashcards.tsx + my-words-dictation.tsx), the story card
+   (my-words-story.tsx, task 116). The cards' light gradients are the
+   elements' own bg-gradient-to-l utilities; dark repaints through these
+   !important painters — position-free, the same guarantee globals.css had
+   before the extraction. The violet (59,32,96) and sky (8,47,60) bases
+   are the r115 kernel family colors. */
+
+/* ---------------- my-words review launcher (hero card) ---------------- */
+.dark .mywords-hero { background-image: linear-gradient(to left, rgba(69, 48, 12, 0.45), rgba(24, 21, 18, 0.95)) !important; }
+/* ---------------- flashcard + dictation launchers (violet family base) ---------------- */
+.dark .mywords-cards, .dark .mywords-dictation { background-image: linear-gradient(to left, rgba(59, 32, 96, 0.45), rgba(24, 21, 18, 0.95)) !important; }
+/* ---------------- story launcher (sky family base, task 116) ---------------- */
+.dark .mywords-story { background-image: linear-gradient(to left, rgba(8, 47, 60, 0.45), rgba(24, 21, 18, 0.95)) !important; }

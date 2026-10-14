@@ -398,12 +398,11 @@ body {
 
 /* quick-review hero (review-view header + exam-view banner) */
 .dark .review-hero { background-image: linear-gradient(to left, rgba(69, 48, 12, 0.55), rgba(24, 21, 18, 0.9)) !important; }
-/* my-words review launcher (my-words-review.tsx hero card) */
-.dark .mywords-hero { background-image: linear-gradient(to left, rgba(69, 48, 12, 0.45), rgba(24, 21, 18, 0.95)) !important; }
-/* my-words flashcard launcher (my-words-flashcards.tsx card) */
-.dark .mywords-cards, .dark .mywords-dictation { background-image: linear-gradient(to left, rgba(59, 32, 96, 0.45), rgba(24, 21, 18, 0.95)) !important; }
-/* my-words story launcher (my-words-story.tsx card, task 116) — sky family base (8,47,60) per the r115 kernel */
-.dark .mywords-story { background-image: linear-gradient(to left, rgba(8, 47, 60, 0.45), rgba(24, 21, 18, 0.95)) !important; }
+/* the my-words dark launcher family moved beside its owners (§8.3 wave 13,
+   task 157): practice/my-words-dark.css — one view family, one file (the
+   duel-dark.css precedent); hero + cards/dictation pair + story card.
+   The light utility gradients stay on the elements and dark repaints
+   through the migrated !important painters */
 /* exam-review teacher launcher (quiz-teacher.tsx card, task 117) + week-review teacher panel (week-teacher.tsx, task 119) — violet family base (59,7,100) per the r115 kernel; the verdicts share one gradient */
 .dark .quiz-teacher, .dark .week-teacher { background-image: linear-gradient(to left, rgba(59, 7, 100, 0.45), rgba(24, 21, 18, 0.95)) !important; }
 
