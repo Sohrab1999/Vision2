@@ -611,21 +611,11 @@ body {
 .dark .hover\:bg-sky-100:hover { background-color: rgba(8, 47, 60, 0.7); }
 .dark .hover\:bg-violet-50:hover { background-color: rgba(59, 40, 92, 0.55); }
 
-/* ------------------------------------------------------------------ */
-/* r14 — SRS donut (report-month: wave 3; the dictionary state filter
-   chips left in §8.3 wave 9, task 149 → lesson/dictionary-view.css)  */
-/* ------------------------------------------------------------------ */
-
-/* SRS state donut */
-.dark .srs-donut { background-color: rgba(6, 44, 34, 0.5); box-shadow: none; border: 1px solid rgb(13 100 88 / 0.4); }
-
-/* dictionary state filter chips moved beside their owner (§8.3 wave 9,
-   task 149): lesson/dictionary-view.css — the bg-stone-100 ink member
-   above stays: it belongs to the cross-family canonical group, not to
-   this family alone */
-
-/* report-month moved beside its owner (§8.3 wave 3, task 137):
-   reports/report-card.css */
+/* r14 band retired (§8.3 wave 11, task 153): the SRS state donut — its last
+   resident — moved beside its owner in practice/srs-panel.css (appended to
+   the wave-1 file, no new file). report-month left in wave 3, the dictionary
+   state chips in wave 9; the bg-stone-100 ink member of the cross-family
+   canonical group above stays (multi-family, per contract). */
 
 /* ------------------------------------------------------------------ */
 /* r15 — report print stylesheet + daily-quests residual residents     */

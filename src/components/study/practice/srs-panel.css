@@ -79,3 +79,9 @@
   background-color: #1c1917;
   border-color: rgb(13 84 89 / 0.55);
 }
+
+/* ---------------- SRS state donut (wave 11 — task 153) ----------------
+   verbatim from globals.css (r14 band's LAST resident — the band frame
+   retires with it: report-month left in wave 3, the dictionary chips in
+   wave 9). Owner: the .srs-donut ring on the panel's summary (line ~169). */
+.dark .srs-donut { background-color: rgba(6, 44, 34, 0.5); box-shadow: none; border: 1px solid rgb(13 100 88 / 0.4); }

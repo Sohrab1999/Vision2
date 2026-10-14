@@ -314,9 +314,15 @@ describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
     // was 264, not the recorded 263 — a +1 drift in the wave-9 bookkeeping;
     // this re-base anchors to the measured reality (260 = 264 − 4). 3a
     // checkpoints re-ran clean. Growth from here must consolidate, not add.
+    // task 153 (§8.3 wave 11): re-based 260 → 259 — the SRS state donut (1
+    // selector line → practice/srs-panel.css, APPENDED to the wave-1 file —
+    // no new file) moved beside its single consumer; the r14 band frame
+    // retired with its last resident (report-month wave 3, dict chips wave
+    // 9, donut now). 3a checkpoints re-ran clean. Growth from here must
+    // consolidate, not add.
     const sel = lines.filter((l) => /^\s*\.[a-z]/.test(l) && !l.includes("→")).length;
     expect(sel).toBeLessThanOrEqual(505);
-    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(260);
+    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(259);
   });
 });
 
@@ -1408,7 +1414,7 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
     "src/components/study/shared/confetti.css": ["@keyframes confetti-fall", ".confetti-piece { animation: confetti-fall 1.8s ease-in forwards; }"],
     "src/components/study/duel/rush.css": [".rush-time-low { animation: rush-pulse 0.9s ease-in-out infinite; }", ".dark .rush-hero {\n  background-image: linear-gradient(to bottom left, rgba(69, 48, 12, 0.5), rgba(88, 44, 14, 0.4), rgba(24, 21, 18, 0.92)) !important;\n  border-color: rgb(154 52 18 / 0.5);\n}", ".dark .rush-done {\n  background-image: linear-gradient(to bottom, rgba(88, 44, 14, 0.45), rgba(69, 48, 12, 0.4)) !important;\n  border-color: rgb(154 52 18 / 0.5);\n}", ".dark .rush-card { background-color: #1c1917; }", ".dark .rush-board { background-color: #1c1917; border-color: rgb(154 52 18 / 0.5); }", ".dark .rush-board-strip { background-image: linear-gradient(to left, rgba(88, 44, 14, 0.4), rgba(69, 48, 12, 0.3), transparent) !important; }", ".dark .rush-board-hint { background-image: linear-gradient(to left, rgba(88, 44, 14, 0.3), transparent) !important; }"],
     "src/components/study/duel/spell-input.css": [".dark .spell-input {", ".dark .spell-input:focus {"],
-    "src/components/study/practice/srs-panel.css": [".srs-panel .border-white\\/60", ".dark .srs-panel {", ".dark .srs-panel .srs-due-chip {"],
+    "src/components/study/practice/srs-panel.css": [".srs-panel .border-white\\/60", ".dark .srs-panel {", ".dark .srs-panel .srs-due-chip {", ".dark .srs-donut { background-color: rgba(6, 44, 34, 0.5); box-shadow: none; border: 1px solid rgb(13 100 88 / 0.4); }"],
     "src/components/study/practice/skill-panel.css": [".dark .skill-panel { background-color: #1c1917; border-color: rgb(106 44 112 / 0.5); }", ".skill-weak-cta"],
     "src/components/study/reports/report-card.css": [".dark .report-dialog {", ".dark .report-foot {", ".dark .report-month { background-color: rgb(28 25 23 / 0.6); border-color: #37312b; }", ".dark .report-print-btn { background-color: #1c1917; border-color: rgb(4 120 87 / 0.6); color: #6ee7b7; }", ".dark .report-print-btn:hover { background-color: rgb(6 44 34 / 0.6); }"],
     // wave 3 (task 137) — the A4 paper family; the print band stays global
@@ -1544,6 +1550,10 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
       "\n.book-spine:hover {",
       "\n.dark .shelf-strip {",
       "\n.dark .shelf-edge {",
+      // wave 11 (task 153) — \n-prefixed with " {" suffix per the standing
+      // lesson; tombstone selector-pattern-free (the r14 band frame retired
+      // with its last resident)
+      "\n.dark .srs-donut {",
     ]) {
       expect(css, `globals.css still carries a moved rule: ${gone}`).not.toContain(gone);
     }

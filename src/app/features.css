@@ -10,7 +10,9 @@
    wave 9 created lesson/dictionary-view.css beside its owner — the first new
    file since wave 5 — for the dict-state-chip dark trio; wave 10 created
    home/home-bookshelf.css beside its owner — the bookshelf family is
-   single-source now (two theme-free spine rules + two dark shelf gradients).
+   single-source now (two theme-free spine rules + two dark shelf gradients);
+   wave 11 appended the SRS state donut to the existing practice/
+   srs-panel.css (the r14 band's last resident — the band frame retired).
    Each file lives BESIDE its owning component and is imported here so the
    rules are ALWAYS part of the initial CSS — the same guarantee globals.css
    had before the extraction (lazy views keep zero first-paint risk), and the
