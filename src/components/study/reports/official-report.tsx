@@ -36,7 +36,7 @@ import { BADGES, buildEvalInput, unlockedBadgeIds } from "@/lib/achievements";
 import { skillBreakdown, barColorFor, skillGradeFa } from "@/lib/skill-stats";
 import { buildCoverageMap, COVERAGE_SKILLS } from "@/lib/coverage-map";
 import { COVERAGE_SKILL_SHORT, heatSummary } from "@/lib/coverage-heat";
-import { downloadCoverageCsv } from "@/lib/coverage-csv";
+import { downloadCoverageCsv, coverageStatus } from "@/lib/coverage-csv";
 import { useToast } from "@/hooks/use-toast";
 import { trackEvent } from "@/lib/analytics";
 import type { BadgeTier } from "@/lib/achievements";
@@ -56,6 +56,21 @@ function todayFa(): string {
   } catch {
     return faNum(new Date().toLocaleDateString("en-GB"));
   }
+}
+
+// task 184 — «وضعیت» cell of the per-lesson table: the 180/181 ladder
+// (تلاش‌نشده/ضعیف/خوب/عالی) read off the lesson AVERAGE. Thresholds come
+// from the ONE canonical source — coverageStatus in coverage-csv.ts, the
+// same function the r180 CSV exports — so a teacher sees identical tiers
+// on paper and in Excel. Photocopy-safe like r181: the TEXT carries the
+// signal (or-bad red / emerald die in a mono copy), and the untried row
+// keeps the honest "—" instead of a fabricated zero.
+function lessonStatusNode(avg: number | null) {
+  if (avg === null) return <span className="font-bold text-stone-500">—</span>;
+  const st = coverageStatus(avg);
+  if (st === "عالی") return <span className="font-black text-emerald-700">عالی</span>;
+  if (st === "ضعیف") return <span className="or-bad font-black">ضعیف</span>;
+  return <span className="font-black">خوب</span>;
 }
 
 function printOfficial() {
@@ -375,13 +390,15 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
               عملکرد درس‌به‌درس
             </h3>
             <div className="overflow-x-auto nice-scroll">
-              <table className="or-table w-full min-w-[460px] text-[11.5px]">
+              <table className="or-table w-full min-w-[520px] text-[11.5px]">
                 <thead>
                   <tr className="text-right">
                     <th className="px-2 py-1.5 font-black">درس</th>
                     <th className="px-2 py-1.5 text-center font-black">واژگان</th>
                     <th className="px-2 py-1.5 text-center font-black">آزمون‌ها</th>
                     <th className="px-2 py-1.5 text-center font-black">میانگین</th>
+                    {/* task 184 — status ladder column, right beside its source (میانگین) */}
+                    <th className="px-2 py-1.5 text-center font-black">وضعیت</th>
                     <th className="px-2 py-1.5 text-center font-black">بهترین</th>
                     <th className="px-2 py-1.5 text-center font-black">خطای باز</th>
                     <th className="px-2 py-1.5 text-center font-black">مرور هوشمند</th>
@@ -403,6 +420,7 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
                     <td className="px-2 py-1.5 text-center font-black">
                       {r.avg === null ? "—" : `${faNum(r.avg)}٪`}
                     </td>
+                    <td className="px-2 py-1.5 text-center">{lessonStatusNode(r.avg)}</td>
                     <td className="px-2 py-1.5 text-center">
                       {r.best === null ? "—" : `${faNum(r.best)}٪`}
                     </td>
@@ -430,6 +448,7 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
             </div>
             <p className="or-foot mt-1.5 text-[10px] font-bold leading-4">
               «خطای باز» یعنی سؤال‌هایی که آخرین بار غلط پاسخ داده شده‌اند و هنوز دوباره تمرین نشده‌اند.
+              وضعیتِ هر درس از میانگینِ همان درس خوانده می‌شود: زیرِ ۵۰ «ضعیف»، ۵۰ تا ۸۴ «خوب»، ۸۵ به بالا «عالی».
             </p>
           </section>
 
