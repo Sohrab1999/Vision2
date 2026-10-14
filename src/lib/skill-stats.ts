@@ -5,6 +5,7 @@
 // ------------------------------------------------------------------
 
 import type { QuizResult } from "@/lib/study-types";
+import { uiColors } from "./ui-colors";
 
 export interface SkillDef {
   id: string;
@@ -15,16 +16,16 @@ export interface SkillDef {
 }
 
 export const SKILL_DEFS: SkillDef[] = [
-  { id: "vocab", label: "واژگان", icon: "BookOpenCheck", color: "#059669", match: (k) => k.endsWith(":vocab") || k.endsWith(":vocab-konkuri") },
-  { id: "grammar", label: "گرامر", icon: "SpellCheck", color: "#7c3aed", match: (k) => k.endsWith(":grammar") },
-  { id: "writing", label: "نگارش", icon: "Pencil", color: "#d97706", match: (k) => k.endsWith(":writing") },
-  { id: "dictation", label: "دیکته", icon: "Ear", color: "#db2777", match: (k) => k.endsWith(":dictation") },
-  { id: "listening", label: "شنیداری", icon: "Headphones", color: "#0891b2", match: (k) => k.endsWith(":listening") },
-  { id: "mixed", label: "تست ترکیبی", icon: "Layers", color: "#0d9488", match: (k) => k.endsWith(":mixed") },
-  { id: "mistakes", label: "مرور اشتباهات", icon: "Eraser", color: "#e11d48", match: (k) => k.endsWith(":mistakes") },
-  { id: "exam", label: "آزمون جامع", icon: "ClipboardCheck", color: "#4d7c0f", match: (k) => k === "exam" },
-  { id: "final", label: "پایان ترم", icon: "GraduationCap", color: "#b45309", match: (k) => k === "final" },
-  { id: "rush", label: "چالش برق‌آسا", icon: "Zap", color: "#ea580c", match: (k) => k === "rush" },
+  { id: "vocab", label: "واژگان", icon: "BookOpenCheck", color: uiColors.emerald[600], match: (k) => k.endsWith(":vocab") || k.endsWith(":vocab-konkuri") },
+  { id: "grammar", label: "گرامر", icon: "SpellCheck", color: uiColors.violet[600], match: (k) => k.endsWith(":grammar") },
+  { id: "writing", label: "نگارش", icon: "Pencil", color: uiColors.amber[600], match: (k) => k.endsWith(":writing") },
+  { id: "dictation", label: "دیکته", icon: "Ear", color: uiColors.pink[600], match: (k) => k.endsWith(":dictation") },
+  { id: "listening", label: "شنیداری", icon: "Headphones", color: uiColors.cyan[600], match: (k) => k.endsWith(":listening") },
+  { id: "mixed", label: "تست ترکیبی", icon: "Layers", color: uiColors.teal[600], match: (k) => k.endsWith(":mixed") },
+  { id: "mistakes", label: "مرور اشتباهات", icon: "Eraser", color: uiColors.rose[600], match: (k) => k.endsWith(":mistakes") },
+  { id: "exam", label: "آزمون جامع", icon: "ClipboardCheck", color: uiColors.lime[700], match: (k) => k === "exam" },
+  { id: "final", label: "پایان ترم", icon: "GraduationCap", color: uiColors.amber[700], match: (k) => k === "final" },
+  { id: "rush", label: "چالش برق‌آسا", icon: "Zap", color: uiColors.orange[600], match: (k) => k === "rush" },
 ];
 
 export interface SkillStat {
@@ -63,7 +64,7 @@ export function skillBreakdown(results: Record<string, QuizResult>): SkillStat[]
 }
 
 export function barColorFor(percent: number): string {
-  return percent >= 70 ? "#059669" : percent >= 50 ? "#d97706" : "#e11d48";
+  return percent >= 70 ? uiColors.emerald[600] : percent >= 50 ? uiColors.amber[600] : uiColors.rose[600];
 }
 
 export function skillGradeFa(avg: number): { label: string; cls: string } {

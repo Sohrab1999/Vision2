@@ -12,6 +12,7 @@ import type { DictationSource } from "@/lib/study-types";
 import { trackEvent } from "@/lib/analytics";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import DictationTab from "../lesson/dictation-tab";
+import { uiColors } from "@/lib/ui-colors";
 
 // ------------------------------------------------------------------
 // داشبورد مرور هوشمند — health of the SRS queue:
@@ -125,10 +126,10 @@ export default function SrsPanel() {
   const arcs = useMemo(() => {
     if (!stats || stats.total === 0) return [];
     const segs = [
-      { v: stats.due, c: "#f43f5e" },
-      { v: stats.learning, c: "#f59e0b" },
-      { v: stats.strong, c: "#10b981" },
-      { v: stats.mastered, c: "#14b8a6" },
+      { v: stats.due, c: uiColors.rose[500] },
+      { v: stats.learning, c: uiColors.amber[500] },
+      { v: stats.strong, c: uiColors.emerald[500] },
+      { v: stats.mastered, c: uiColors.teal[500] },
     ];
     let acc = 0;
     return segs.map((s) => {

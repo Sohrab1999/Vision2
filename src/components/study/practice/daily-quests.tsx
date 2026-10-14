@@ -19,6 +19,7 @@ import { questProgress } from "@/lib/daily-quests";
 import { faNum } from "@/lib/study-theme";
 import { useMounted } from "@/lib/use-mounted";
 import { useToast } from "@/hooks/use-toast";
+import { uiColors } from "@/lib/ui-colors";
 
 // ------------------------------------------------------------------
 // اهداف روزانه — five auto-tracked daily missions. Each row jumps to
@@ -122,13 +123,13 @@ export default function DailyQuests() {
         </div>
         <div className="relative shrink-0" aria-hidden>
           <svg width="52" height="52" viewBox="0 0 52 52" className="-rotate-90">
-            <circle cx="26" cy="26" r="22" fill="none" stroke="#e7e5e4" strokeWidth="5" />
+            <circle cx="26" cy="26" r="22" fill="none" stroke={uiColors.stone[200]} strokeWidth="5" />
             <circle
               cx="26"
               cy="26"
               r="22"
               fill="none"
-              stroke={allDone ? "#059669" : "#10b981"}
+              stroke={allDone ? uiColors.emerald[600] : uiColors.emerald[500]}
               strokeWidth="5"
               strokeLinecap="round"
               strokeDasharray={2 * Math.PI * 22}

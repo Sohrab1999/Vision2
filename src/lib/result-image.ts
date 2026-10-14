@@ -8,6 +8,7 @@
 
 import { faNum } from "./study-theme";
 import type { DuelLedgerStats } from "./duel-history";
+import { uiColors } from "./ui-colors";
 
 export interface ResultImageOpts {
   title: string;
@@ -83,7 +84,7 @@ export async function downloadResultImage(opts: ResultImageOpts): Promise<boolea
     // ---------- title ----------
     ctx.direction = "rtl";
     ctx.textAlign = "right";
-    ctx.fillStyle = "#1c1917";
+    ctx.fillStyle = uiColors.stone[900];
     ctx.font = `800 34px ${family}`;
     const title = truncate(ctx, opts.title, W - 620);
     ctx.fillText(title, W - 90, 192);
@@ -94,18 +95,18 @@ export async function downloadResultImage(opts: ResultImageOpts): Promise<boolea
     const r = 105;
     ctx.lineWidth = 20;
     ctx.lineCap = "round";
-    ctx.strokeStyle = "#f5f5f4";
+    ctx.strokeStyle = uiColors.stone[100];
     ctx.beginPath();
     ctx.arc(cx, cy, r, 0, Math.PI * 2);
     ctx.stroke();
     const pct = Math.max(0, Math.min(100, opts.percent)) / 100;
     const ring = ctx.createLinearGradient(cx - r, cy - r, cx + r, cy + r);
     if (dark) {
-      ring.addColorStop(0, "#f59e0b");
-      ring.addColorStop(1, "#ea580c");
+      ring.addColorStop(0, uiColors.amber[500]);
+      ring.addColorStop(1, uiColors.orange[600]);
     } else {
-      ring.addColorStop(0, "#10b981");
-      ring.addColorStop(1, "#0d9488");
+      ring.addColorStop(0, uiColors.emerald[500]);
+      ring.addColorStop(1, uiColors.teal[600]);
     }
     ctx.strokeStyle = ring;
     ctx.beginPath();
@@ -114,10 +115,10 @@ export async function downloadResultImage(opts: ResultImageOpts): Promise<boolea
 
     // percent text inside ring
     ctx.textAlign = "center";
-    ctx.fillStyle = "#1c1917";
+    ctx.fillStyle = uiColors.stone[900];
     ctx.font = `900 52px ${family}`;
     ctx.fillText(`${faNum(opts.percent)}٪`, cx, cy - 10);
-    ctx.fillStyle = "#78716c";
+    ctx.fillStyle = uiColors.stone[500];
     ctx.font = `700 22px ${family}`;
     ctx.fillText(`${faNum(opts.correct)} از ${faNum(opts.total)}`, cx, cy + 38);
 
@@ -125,14 +126,14 @@ export async function downloadResultImage(opts: ResultImageOpts): Promise<boolea
     ctx.textAlign = "right";
     ctx.direction = "rtl";
     if (opts.userName) {
-      ctx.fillStyle = "#1c1917";
+      ctx.fillStyle = uiColors.stone[900];
       ctx.font = `800 32px ${family}`;
       ctx.fillText(opts.userName, W - 90, 275);
-      ctx.fillStyle = "#a8a29e";
+      ctx.fillStyle = uiColors.stone[400];
       ctx.font = `700 18px ${family}`;
       ctx.fillText("یادگیرنده", W - 90, 310);
     } else {
-      ctx.fillStyle = "#a8a29e";
+      ctx.fillStyle = uiColors.stone[400];
       ctx.font = `700 20px ${family}`;
       ctx.fillText("یادگیرندهٔ وب‌کتاب", W - 90, 275);
     }
@@ -145,14 +146,14 @@ export async function downloadResultImage(opts: ResultImageOpts): Promise<boolea
     ];
     let chy = 250;
     for (const c of chips) {
-      ctx.fillStyle = dark ? "#fffbeb" : "#f0fdf4";
+      ctx.fillStyle = dark ? uiColors.amber[50] : uiColors.green[50];
       roundRect(ctx, 90, chy, 300, 58, 14);
       ctx.fill();
-      ctx.fillStyle = "#78716c";
+      ctx.fillStyle = uiColors.stone[500];
       ctx.font = `700 17px ${family}`;
       ctx.textAlign = "right";
       ctx.fillText(c.label, 376, chy + 29);
-      ctx.fillStyle = dark ? "#92400e" : "#047857";
+      ctx.fillStyle = dark ? uiColors.amber[800] : uiColors.emerald[700];
       ctx.font = `900 22px ${family}`;
       ctx.textAlign = "left";
       ctx.fillText(c.value, 104, chy + 29);
@@ -160,19 +161,19 @@ export async function downloadResultImage(opts: ResultImageOpts): Promise<boolea
     }
 
     // ---------- footer ----------
-    ctx.strokeStyle = "#e7e5e4";
+    ctx.strokeStyle = uiColors.stone[200];
     ctx.beginPath();
     ctx.moveTo(90, H - 108);
     ctx.lineTo(W - 90, H - 108);
     ctx.stroke();
     ctx.direction = "rtl";
     ctx.textAlign = "right";
-    ctx.fillStyle = "#a8a29e";
+    ctx.fillStyle = uiColors.stone[400];
     ctx.font = `700 19px ${family}`;
     ctx.fillText("وب‌کتاب تعاملی زبان انگلیسی پایهٔ یازدهم · تبدیل‌شده از جزوهٔ کاغذی", W - 90, H - 74);
     ctx.textAlign = "left";
     ctx.direction = "ltr";
-    ctx.fillStyle = dark ? "#d97706" : "#059669";
+    ctx.fillStyle = dark ? uiColors.amber[600] : uiColors.emerald[600];
     ctx.font = `900 20px ${family}`;
     ctx.fillText(opts.percent >= 90 ? "EXCELLENT ★" : opts.percent >= 70 ? "GREAT JOB" : "KEEP GOING!", 90, H - 74);
 
@@ -201,20 +202,20 @@ function studyShell(ctx: CanvasRenderingContext2D, W: number, H: number, family:
   // ---------- background gradient ----------
   const bg = ctx.createLinearGradient(0, 0, W, H);
   if (dark) {
-    bg.addColorStop(0, "#78350f");
-    bg.addColorStop(0.55, "#b45309");
-    bg.addColorStop(1, "#92400e");
+    bg.addColorStop(0, uiColors.amber[900]);
+    bg.addColorStop(0.55, uiColors.amber[700]);
+    bg.addColorStop(1, uiColors.amber[800]);
   } else {
-    bg.addColorStop(0, "#064e3b");
-    bg.addColorStop(0.55, "#047857");
-    bg.addColorStop(1, "#0d9488");
+    bg.addColorStop(0, uiColors.emerald[900]);
+    bg.addColorStop(0.55, uiColors.emerald[700]);
+    bg.addColorStop(1, uiColors.teal[600]);
   }
   ctx.fillStyle = bg;
   ctx.fillRect(0, 0, W, H);
 
   // decorative circles
   ctx.globalAlpha = 0.12;
-  ctx.fillStyle = "#ffffff";
+  ctx.fillStyle = uiColors.white;
   for (const [cx, cy, r] of [
     [W - 90, 80, 150],
     [90, H - 70, 120],
@@ -227,7 +228,7 @@ function studyShell(ctx: CanvasRenderingContext2D, W: number, H: number, family:
   ctx.globalAlpha = 1;
 
   // ---------- inner card ----------
-  ctx.fillStyle = "#ffffff";
+  ctx.fillStyle = uiColors.white;
   roundRect(ctx, 36, 36, W - 72, H - 72, 28);
   ctx.fill();
   ctx.strokeStyle = dark ? "rgba(180, 83, 9, 0.35)" : "rgba(6, 95, 70, 0.25)";
@@ -239,17 +240,17 @@ function studyShell(ctx: CanvasRenderingContext2D, W: number, H: number, family:
   ctx.direction = "rtl";
   ctx.textBaseline = "middle";
   ctx.textAlign = "right";
-  ctx.fillStyle = dark ? "#92400e" : "#047857";
+  ctx.fillStyle = dark ? uiColors.amber[800] : uiColors.emerald[700];
   ctx.font = `900 26px ${family}`;
   ctx.fillText("وب‌کتاب تعاملی «ویژن ۲»", W - 90, 106);
   ctx.textAlign = "left";
   ctx.direction = "ltr";
-  ctx.fillStyle = "#a8a29e";
+  ctx.fillStyle = uiColors.stone[400];
   ctx.font = `700 20px ${family}`;
   ctx.fillText("ENGLISH WEBBOOK · VISION TWO", 90, 106);
 
   // divider
-  ctx.strokeStyle = "#e7e5e4";
+  ctx.strokeStyle = uiColors.stone[200];
   ctx.lineWidth = 1.5;
   ctx.beginPath();
   ctx.moveTo(90, 138);
@@ -267,14 +268,14 @@ function studyShell(ctx: CanvasRenderingContext2D, W: number, H: number, family:
 /** پوستهٔ مشترک کارت نبرد: پس‌زمینه + دایره‌های تزئینی + کارت سفید + سربرگ + خط جداکننده */
 function battleShell(ctx: CanvasRenderingContext2D, W: number, H: number, family: string): void {
   const bg = ctx.createLinearGradient(0, 0, W, H);
-  bg.addColorStop(0, "#7c3aed"); // violet-600
-  bg.addColorStop(0.55, "#c026d3"); // fuchsia-600
-  bg.addColorStop(1, "#f43f5e"); // rose-500
+  bg.addColorStop(0, uiColors.violet[600]); // violet-600
+  bg.addColorStop(0.55, uiColors.fuchsia[600]); // fuchsia-600
+  bg.addColorStop(1, uiColors.rose[500]); // rose-500
   ctx.fillStyle = bg;
   ctx.fillRect(0, 0, W, H);
 
   ctx.globalAlpha = 0.12;
-  ctx.fillStyle = "#ffffff";
+  ctx.fillStyle = uiColors.white;
   for (const [cx, cy, r] of [
     [W - 90, 80, 150],
     [90, H - 70, 120],
@@ -286,7 +287,7 @@ function battleShell(ctx: CanvasRenderingContext2D, W: number, H: number, family
   }
   ctx.globalAlpha = 1;
 
-  ctx.fillStyle = "#ffffff";
+  ctx.fillStyle = uiColors.white;
   roundRect(ctx, 36, 36, W - 72, H - 72, 28);
   ctx.fill();
   ctx.strokeStyle = "rgba(192, 38, 211, 0.3)";
@@ -297,16 +298,16 @@ function battleShell(ctx: CanvasRenderingContext2D, W: number, H: number, family
   ctx.direction = "rtl";
   ctx.textBaseline = "middle";
   ctx.textAlign = "right";
-  ctx.fillStyle = "#a21caf"; // fuchsia-700
+  ctx.fillStyle = uiColors.fuchsia[700]; // fuchsia-700
   ctx.font = `900 26px ${family}`;
   ctx.fillText("وب‌کتاب تعاملی «ویژن ۲»", W - 90, 106);
   ctx.textAlign = "left";
   ctx.direction = "ltr";
-  ctx.fillStyle = "#a8a29e";
+  ctx.fillStyle = uiColors.stone[400];
   ctx.font = `700 20px ${family}`;
   ctx.fillText("ENGLISH WEBBOOK · VISION TWO", 90, 106);
 
-  ctx.strokeStyle = "#e7e5e4";
+  ctx.strokeStyle = uiColors.stone[200];
   ctx.lineWidth = 1.5;
   ctx.beginPath();
   ctx.moveTo(90, 138);
@@ -380,30 +381,30 @@ async function duelLedgerCanvas(opts: DuelLedgerImageOpts): Promise<HTMLCanvasEl
     ctx.textBaseline = "middle";
     ctx.lineWidth = 20;
     ctx.lineCap = "round";
-    ctx.strokeStyle = "#f5f5f4";
+    ctx.strokeStyle = uiColors.stone[100];
     ctx.beginPath();
     ctx.arc(cx, cy, r, 0, Math.PI * 2);
     ctx.stroke();
     const pct = Math.max(0, Math.min(100, s.winRate)) / 100;
     const ring = ctx.createLinearGradient(cx - r, cy - r, cx + r, cy + r);
-    ring.addColorStop(0, "#8b5cf6"); // violet-500
-    ring.addColorStop(1, "#d946ef"); // fuchsia-500
+    ring.addColorStop(0, uiColors.violet[500]); // violet-500
+    ring.addColorStop(1, uiColors.fuchsia[500]); // fuchsia-500
     ctx.strokeStyle = ring;
     ctx.beginPath();
     ctx.arc(cx, cy, r, Math.PI / 2, Math.PI / 2 + Math.PI * 2 * pct);
     ctx.stroke();
     ctx.textAlign = "center";
-    ctx.fillStyle = "#1c1917";
+    ctx.fillStyle = uiColors.stone[900];
     ctx.font = `900 52px ${family}`;
     ctx.fillText(`${faNum(s.winRate)}٪`, cx, cy - 14);
-    ctx.fillStyle = "#78716c";
+    ctx.fillStyle = uiColors.stone[500];
     ctx.font = `700 21px ${family}`;
     ctx.fillText(`${faNum(s.win)} برد از ${faNum(s.total)} نبرد`, cx, cy + 34);
 
     // ---------- title (راست، بالای حلقه) ----------
     ctx.direction = "rtl";
     ctx.textAlign = "right";
-    ctx.fillStyle = "#1c1917";
+    ctx.fillStyle = uiColors.stone[900];
     ctx.font = `800 34px ${family}`;
     ctx.fillText("کارنامهٔ نبردها", W - 90, 192);
 
@@ -412,16 +413,16 @@ async function duelLedgerCanvas(opts: DuelLedgerImageOpts): Promise<HTMLCanvasEl
     // این‌جا ستونِ مستقل تمیزتر است) ----------
     ctx.direction = "rtl";
     ctx.textAlign = "right";
-    ctx.fillStyle = "#1c1917";
+    ctx.fillStyle = uiColors.stone[900];
     ctx.font = `800 32px ${family}`;
     ctx.fillText(opts.userName ? truncate(ctx, opts.userName, 280) : "یادگیرندهٔ وب‌کتاب", 390, 200);
     ctx.font = `700 18px ${family}`;
     if (s.topRival) {
       // رقیبِ همیشگی — فقط وقتی هست (صداقت: دفترچهٔ بی‌برد، این خط را ندارد)
-      ctx.fillStyle = "#a21caf";
+      ctx.fillStyle = uiColors.fuchsia[700];
       ctx.fillText(`رقیبِ همیشگی: ${truncate(ctx, s.topRival.opponent, 150)} (${faNum(s.topRival.wins)} برد)`, 390, 232);
     } else {
-      ctx.fillStyle = "#a8a29e";
+      ctx.fillStyle = uiColors.stone[400];
       ctx.fillText("یادگیرنده", 390, 232);
     }
 
@@ -435,14 +436,14 @@ async function duelLedgerCanvas(opts: DuelLedgerImageOpts): Promise<HTMLCanvasEl
     ];
     let chy = 250;
     for (const c of chips) {
-      ctx.fillStyle = "#fdf4ff"; // fuchsia-50
+      ctx.fillStyle = uiColors.fuchsia[50]; // fuchsia-50
       roundRect(ctx, 90, chy, 300, 48, 12);
       ctx.fill();
-      ctx.fillStyle = "#78716c";
+      ctx.fillStyle = uiColors.stone[500];
       ctx.font = `700 17px ${family}`;
       ctx.textAlign = "right";
       ctx.fillText(c.label, 376, chy + 24);
-      ctx.fillStyle = "#a21caf";
+      ctx.fillStyle = uiColors.fuchsia[700];
       ctx.font = `900 21px ${family}`;
       ctx.textAlign = "left";
       ctx.fillText(c.value, 104, chy + 24);
@@ -450,7 +451,7 @@ async function duelLedgerCanvas(opts: DuelLedgerImageOpts): Promise<HTMLCanvasEl
     }
 
     // ---------- footer ----------
-    ctx.strokeStyle = "#e7e5e4";
+    ctx.strokeStyle = uiColors.stone[200];
     ctx.lineWidth = 1.5;
     ctx.beginPath();
     ctx.moveTo(90, H - 108);
@@ -458,12 +459,12 @@ async function duelLedgerCanvas(opts: DuelLedgerImageOpts): Promise<HTMLCanvasEl
     ctx.stroke();
     ctx.direction = "rtl";
     ctx.textAlign = "right";
-    ctx.fillStyle = "#a8a29e";
+    ctx.fillStyle = uiColors.stone[400];
     ctx.font = `700 19px ${family}`;
     ctx.fillText(`دفترچهٔ نبردها · ${faDate()}`, W - 90, H - 74);
     ctx.textAlign = "left";
     ctx.direction = "ltr";
-    ctx.fillStyle = "#c026d3";
+    ctx.fillStyle = uiColors.fuchsia[600];
     ctx.font = `900 20px ${family}`;
     ctx.fillText(s.winRate >= 70 ? "BATTLE STATS ★" : "KEEP FIGHTING!", 90, H - 74);
 
@@ -524,21 +525,21 @@ async function duelDoneCanvas(opts: DuelDoneImageOpts): Promise<HTMLCanvasElemen
     const H = 640;
     const win = opts.outcome === "win";
     const tie = opts.outcome === "tie";
-    const accent = win ? "#059669" : tie ? "#d97706" : "#e11d48";
+    const accent = win ? uiColors.emerald[600] : tie ? uiColors.amber[600] : uiColors.rose[600];
 
     // ---------- names over each score ----------
     ctx.direction = "rtl";
     ctx.textBaseline = "middle";
-    ctx.fillStyle = "#78716c";
+    ctx.fillStyle = uiColors.stone[500];
     ctx.font = `700 17px ${family}`;
     ctx.textAlign = "center";
     ctx.fillText(win ? "پیروزی" : tie ? "مساوی" : "شکست", W / 2, 190);
 
-    ctx.fillStyle = "#1c1917";
+    ctx.fillStyle = uiColors.stone[900];
     ctx.font = `800 30px ${family}`;
     ctx.fillText(truncate(ctx, opts.myName, 330), W - 130, 235);
     ctx.fillText(truncate(ctx, opts.oppName, 330), 130, 235);
-    ctx.fillStyle = "#a8a29e";
+    ctx.fillStyle = uiColors.stone[400];
     ctx.font = `700 16px ${family}`;
     ctx.fillText("تو", W - 130, 268);
     ctx.fillText("حریف", 130, 268);
@@ -547,14 +548,14 @@ async function duelDoneCanvas(opts: DuelDoneImageOpts): Promise<HTMLCanvasElemen
     ctx.font = `900 72px ${family}`;
     ctx.fillStyle = accent;
     ctx.fillText(faNum(opts.myScore), W - 130, 330);
-    ctx.fillStyle = "#1c1917";
+    ctx.fillStyle = uiColors.stone[900];
     ctx.fillText(faNum(opts.oppScore), 130, 330);
-    ctx.fillStyle = "#d6d3d1";
+    ctx.fillStyle = uiColors.stone[300];
     ctx.font = `900 40px ${family}`;
     ctx.fillText("–", W / 2, 330);
 
     // ---------- correct counts ----------
-    ctx.fillStyle = "#78716c";
+    ctx.fillStyle = uiColors.stone[500];
     ctx.font = `700 20px ${family}`;
     ctx.fillText(`${faNum(opts.myCorrect)} درست از ${faNum(opts.total)}`, W - 130, 380);
     ctx.fillText(`${faNum(opts.oppCorrect)} درست از ${faNum(opts.total)}`, 130, 380);
@@ -566,7 +567,7 @@ async function duelDoneCanvas(opts: DuelDoneImageOpts): Promise<HTMLCanvasElemen
     ctx.fillStyle = accent;
     roundRect(ctx, W / 2 - tw / 2 - 26, 420, tw + 52, 52, 26);
     ctx.fill();
-    ctx.fillStyle = "#ffffff";
+    ctx.fillStyle = uiColors.white;
     ctx.fillText(ribbon, W / 2, 447);
 
     // ---------- detail line ----------
@@ -574,12 +575,12 @@ async function duelDoneCanvas(opts: DuelDoneImageOpts): Promise<HTMLCanvasElemen
     if (opts.durationSec !== null && opts.durationSec > 0) details.push(`${faNum(opts.durationSec)} ثانیه`);
     if (opts.forfeit && opts.durationSec === null) details.push("ضربهٔ فنی");
     if (opts.receipt) details.push("رسیدِ امضاشدهٔ داور");
-    ctx.fillStyle = "#78716c";
+    ctx.fillStyle = uiColors.stone[500];
     ctx.font = `700 20px ${family}`;
     ctx.fillText(details.join(" · "), W / 2, 505);
 
     // ---------- footer ----------
-    ctx.strokeStyle = "#e7e5e4";
+    ctx.strokeStyle = uiColors.stone[200];
     ctx.lineWidth = 1.5;
     ctx.beginPath();
     ctx.moveTo(90, H - 108);
@@ -587,12 +588,12 @@ async function duelDoneCanvas(opts: DuelDoneImageOpts): Promise<HTMLCanvasElemen
     ctx.stroke();
     ctx.direction = "rtl";
     ctx.textAlign = "right";
-    ctx.fillStyle = "#a8a29e";
+    ctx.fillStyle = uiColors.stone[400];
     ctx.font = `700 19px ${family}`;
     ctx.fillText(`نبرد واژگان · ${faDate()}`, W - 90, H - 74);
     ctx.textAlign = "left";
     ctx.direction = "ltr";
-    ctx.fillStyle = "#c026d3";
+    ctx.fillStyle = uiColors.fuchsia[600];
     ctx.font = `900 20px ${family}`;
     ctx.fillText(win ? "VICTORY ★" : tie ? "GOOD DUEL" : "REMATCH?", 90, H - 74);
 
@@ -660,25 +661,25 @@ export async function downloadWeeklyImage(opts: WeeklyImageOpts): Promise<boolea
     ctx.direction = "rtl";
     ctx.textBaseline = "middle";
     ctx.textAlign = "right";
-    ctx.fillStyle = "#1c1917";
+    ctx.fillStyle = uiColors.stone[900];
     ctx.font = `800 34px ${family}`;
     ctx.fillText("هفته‌نامهٔ پیشرفت", W - 90, 192);
 
     // ---------- learner + streak ----------
     if (opts.userName) {
-      ctx.fillStyle = "#1c1917";
+      ctx.fillStyle = uiColors.stone[900];
       ctx.font = `800 32px ${family}`;
       ctx.fillText(truncate(ctx, opts.userName, 280), W - 90, 275);
-      ctx.fillStyle = "#a8a29e";
+      ctx.fillStyle = uiColors.stone[400];
       ctx.font = `700 18px ${family}`;
       ctx.fillText("یادگیرندهٔ وب‌کتاب", W - 90, 310);
     } else {
-      ctx.fillStyle = "#a8a29e";
+      ctx.fillStyle = uiColors.stone[400];
       ctx.font = `700 20px ${family}`;
       ctx.fillText("یادگیرندهٔ وب‌کتاب", W - 90, 275);
     }
     if (opts.streak > 0) {
-      ctx.fillStyle = "#059669";
+      ctx.fillStyle = uiColors.emerald[600];
       ctx.font = `900 22px ${family}`;
       ctx.fillText(`زنجیرهٔ ${faNum(opts.streak)} روزه`, W - 90, 350);
     }
@@ -689,23 +690,23 @@ export async function downloadWeeklyImage(opts: WeeklyImageOpts): Promise<boolea
     const r = 105;
     ctx.lineWidth = 20;
     ctx.lineCap = "round";
-    ctx.strokeStyle = "#f5f5f4";
+    ctx.strokeStyle = uiColors.stone[100];
     ctx.beginPath();
     ctx.arc(cx, cy, r, 0, Math.PI * 2);
     ctx.stroke();
     const pct = Math.max(0, Math.min(7, opts.goalDays)) / 7;
     const ring = ctx.createLinearGradient(cx - r, cy - r, cx + r, cy + r);
-    ring.addColorStop(0, "#10b981");
-    ring.addColorStop(1, "#0d9488");
+    ring.addColorStop(0, uiColors.emerald[500]);
+    ring.addColorStop(1, uiColors.teal[600]);
     ctx.strokeStyle = ring;
     ctx.beginPath();
     ctx.arc(cx, cy, r, Math.PI / 2, Math.PI / 2 + Math.PI * 2 * pct);
     ctx.stroke();
     ctx.textAlign = "center";
-    ctx.fillStyle = "#1c1917";
+    ctx.fillStyle = uiColors.stone[900];
     ctx.font = `900 52px ${family}`;
     ctx.fillText(`${faNum(Math.round(pct * 100))}٪`, cx, cy - 10);
-    ctx.fillStyle = "#78716c";
+    ctx.fillStyle = uiColors.stone[500];
     ctx.font = `700 21px ${family}`;
     ctx.fillText(`${faNum(opts.goalDays)} از ${faNum(7)} روزِ هدف`, cx, cy + 38);
 
@@ -719,14 +720,14 @@ export async function downloadWeeklyImage(opts: WeeklyImageOpts): Promise<boolea
     ];
     let chy = 246;
     for (const c of chips) {
-      ctx.fillStyle = "#f0fdf4";
+      ctx.fillStyle = uiColors.green[50];
       roundRect(ctx, 90, chy, 300, 46, 12);
       ctx.fill();
-      ctx.fillStyle = "#78716c";
+      ctx.fillStyle = uiColors.stone[500];
       ctx.font = `700 17px ${family}`;
       ctx.textAlign = "right";
       ctx.fillText(c.label, 376, chy + 23);
-      ctx.fillStyle = "#047857";
+      ctx.fillStyle = uiColors.emerald[700];
       ctx.font = `900 21px ${family}`;
       ctx.textAlign = "left";
       ctx.fillText(faNum(c.value), 104, chy + 23);
@@ -738,10 +739,10 @@ export async function downloadWeeklyImage(opts: WeeklyImageOpts): Promise<boolea
     ctx.direction = "rtl";
     ctx.font = `700 20px ${family}`;
     if (opts.duelLine) {
-      ctx.fillStyle = "#a21caf";
+      ctx.fillStyle = uiColors.fuchsia[700];
       ctx.fillText(truncate(ctx, opts.duelLine, 640), W / 2, 508);
     } else if (opts.bestDay && opts.bestDay.total > 0) {
-      ctx.fillStyle = "#78716c";
+      ctx.fillStyle = uiColors.stone[500];
       ctx.fillText(
         `پرجانب‌ترین روز: ${opts.bestDay.label} — ${faNum(opts.bestDay.total)} فعالیت`,
         W / 2,
@@ -750,7 +751,7 @@ export async function downloadWeeklyImage(opts: WeeklyImageOpts): Promise<boolea
     }
 
     // ---------- footer ----------
-    ctx.strokeStyle = "#e7e5e4";
+    ctx.strokeStyle = uiColors.stone[200];
     ctx.lineWidth = 1.5;
     ctx.beginPath();
     ctx.moveTo(90, H - 108);
@@ -758,12 +759,12 @@ export async function downloadWeeklyImage(opts: WeeklyImageOpts): Promise<boolea
     ctx.stroke();
     ctx.direction = "rtl";
     ctx.textAlign = "right";
-    ctx.fillStyle = "#a8a29e";
+    ctx.fillStyle = uiColors.stone[400];
     ctx.font = `700 19px ${family}`;
     ctx.fillText(`هفته‌نامهٔ پیشرفت · ${faDate()}`, W - 90, H - 74);
     ctx.textAlign = "left";
     ctx.direction = "ltr";
-    ctx.fillStyle = "#059669";
+    ctx.fillStyle = uiColors.emerald[600];
     ctx.font = `900 20px ${family}`;
     ctx.fillText(
       opts.activities >= 20 ? "STRONG WEEK ★" : opts.activities >= 8 ? "GOOD PACE" : "KEEP GOING!",

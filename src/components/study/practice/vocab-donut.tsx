@@ -7,6 +7,7 @@ import { useStudy, knownCountOfLesson } from "@/lib/study-store";
 import { percent as percentOf } from "@/lib/domain/percent";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
+import { uiColors } from "@/lib/ui-colors";
 
 /**
  * دونات پیشرفت واژگان — سهم واژه‌های «بلدم» هر درس از کل ۶۳۳ واژهٔ کتاب.
@@ -17,9 +18,9 @@ const R = 52;
 const CIRC = 2 * Math.PI * R;
 
 const SEGMENTS = [
-  { id: 1, color: "#059669", track: "text-emerald-600", soft: "bg-emerald-50", bar: "bg-emerald-500" },
-  { id: 2, color: "#d97706", track: "text-amber-600", soft: "bg-amber-50", bar: "bg-amber-500" },
-  { id: 3, color: "#e11d48", track: "text-rose-600", soft: "bg-rose-50", bar: "bg-rose-500" },
+  { id: 1, color: uiColors.emerald[600], track: "text-emerald-600", soft: "bg-emerald-50", bar: "bg-emerald-500" },
+  { id: 2, color: uiColors.amber[600], track: "text-amber-600", soft: "bg-amber-50", bar: "bg-amber-500" },
+  { id: 3, color: uiColors.rose[600], track: "text-rose-600", soft: "bg-rose-50", bar: "bg-rose-500" },
 ] as const;
 
 export default function VocabDonut() {
@@ -71,7 +72,7 @@ export default function VocabDonut() {
           <div className="relative shrink-0" dir="ltr">
             <svg width="150" height="150" viewBox="0 0 130 130" role="img" aria-label={`دونات پیشرفت واژگان: ${percent} درصد`}>
               {/* track */}
-              <circle cx="65" cy="65" r={R} fill="none" stroke="#e7e5e4" strokeWidth="15" />
+              <circle cx="65" cy="65" r={R} fill="none" stroke={uiColors.stone[200]} strokeWidth="15" />
               {/* arcs */}
               {arcs.map(
                 (a) =>

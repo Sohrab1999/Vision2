@@ -1,4 +1,5 @@
 "use client";
+import { uiColors } from "@/lib/ui-colors";
 
 interface ProgressRingProps {
   percent: number;
@@ -13,8 +14,8 @@ export default function ProgressRing({
   percent,
   size = 64,
   stroke = 6,
-  color = "#059669",
-  trackColor = "#e7e5e4",
+  color = uiColors.emerald[600],
+  trackColor = uiColors.stone[200],
   children,
 }: ProgressRingProps) {
   const clamped = Math.max(0, Math.min(100, percent));

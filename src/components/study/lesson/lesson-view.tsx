@@ -14,6 +14,7 @@ import GrammarTab from "./grammar-tab";
 import WritingTab from "./writing-tab";
 import DictationTab from "./dictation-tab";
 import LessonTestsTab from "./lesson-tests-tab";
+import { uiColors } from "@/lib/ui-colors";
 
 const tabs: { key: LessonTab; label: string; icon: React.ElementType }[] = [
   { key: "vocab", label: "واژگان", icon: BookOpen },
@@ -74,7 +75,7 @@ export default function LessonView({ id }: { id: number }) {
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <ProgressRing percent={knownPercent} size={62} stroke={6} color={t.text.includes("amber") ? "#d97706" : t.text.includes("rose") ? "#e11d48" : "#059669"}>
+            <ProgressRing percent={knownPercent} size={62} stroke={6} color={t.text.includes("amber") ? uiColors.amber[600] : t.text.includes("rose") ? uiColors.rose[600] : uiColors.emerald[600]}>
               <span className="text-[11px] font-black text-stone-700">{faNum(knownPercent)}٪</span>
             </ProgressRing>
             <div className="text-[12px] leading-6 text-stone-500">

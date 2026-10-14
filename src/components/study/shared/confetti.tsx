@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
+import { uiColors } from "@/lib/ui-colors";
 
 /**
  * Lightweight CSS confetti burst for new records (shared — audit §10 R-6).
@@ -14,7 +15,7 @@ export default function Confetti() {
         left: 6 + ((i * 37) % 88),
         delay: (i % 6) * 0.12,
         dur: 1.6 + ((i * 7) % 10) / 10,
-        color: ["#f59e0b", "#f97316", "#ef4444", "#10b981", "#fbbf24"][i % 5],
+        color: [uiColors.amber[500], uiColors.orange[500], uiColors.red[500], uiColors.emerald[500], uiColors.amber[400]][i % 5],
         size: 6 + (i % 3) * 3,
       })),
     [],
