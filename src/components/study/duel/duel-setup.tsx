@@ -237,7 +237,7 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
                 onKeyDown={(e) => e.key === "Enter" && joinRoom()}
                 placeholder="کد اتاق… مثل K7M2X"
                 aria-label="کد اتاق مسابقه"
-                className="duel-input w-full flex-1 rounded-xl border-2 border-white/30 bg-white/90 px-3 py-2.5 text-center font-mono text-lg font-black tracking-[0.3em] text-stone-800 outline-none placeholder:text-stone-500 focus:border-white"
+                className="duel-input w-full flex-1 rounded-xl border-2 border-white/30 bg-white/90 px-3 py-2.5 text-center font-mono text-lg font-black tracking-[0.3em] text-stone-800 outline-none placeholder:text-stone-500 focus:border-white focus-visible:ring-2 focus-visible:ring-white/80"
               />
               <button
                 onClick={joinRoom}
@@ -327,7 +327,7 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="جست‌وجوی نام حریف…"
                 aria-label="جست‌وجو در تاریخچهٔ نبردها"
-                className="w-full rounded-xl border border-stone-200 bg-white py-2 pl-9 pr-9 text-[12.5px] font-bold text-stone-800 outline-none transition-colors placeholder:text-stone-500 focus:border-fuchsia-400"
+                className="w-full rounded-xl border border-stone-200 bg-white py-2 pl-9 pr-9 text-[12.5px] font-bold text-stone-800 outline-none transition-colors placeholder:text-stone-500 focus:border-fuchsia-400 focus-visible:ring-2 focus-visible:ring-fuchsia-300"
               />
               {query && (
                 <button
