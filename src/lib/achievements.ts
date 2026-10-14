@@ -1001,6 +1001,35 @@ export const BADGES: BadgeDef[] = [
     },
     check: (s) => s.dictationDays14 >= 14 && s.goalDays >= 14,
   },
+  // پلهٔ ششم (Task 156) — سومینِ جفتِ «دوسیستمِ متفاوت»: آزمون×حضور.
+  // آزمون برای نخستین‌بار واردِ خانوادهٔ ترکیبی می‌شود (پنجمین بُعد پس از
+  // یخ/برق‌آسا/حضور/هدف/دیکته) و حضور دومین‌بار جفت می‌شود (پیمان هم ×۲ است
+  // — تعادلِ ابعاد). quizDays14 (Task 90) نخستینِ مصرف‌کنندهٔ خود را
+  // می‌یابد — از Task 90 در BadgeEvalInput حاضر بود و تا امروز بی-مصرف
+  // مانده بود. سطحِ بُعدِ آزمون با تک-مهارتِ ماراتن هم‌عدد است: ۱۴ روزِ
+  // آزمون‌دارِ پنجرهٔ ۱۴روزه (دوبرابرِ exam-run) × ۳۰ روزِ حاضر (هم‌سطحِ
+  // نشانِ ۳۰روزهٔ حضور — خطِ ۷۱۳). نوارِ «محدودهٔ مقید» و راهنمایِ بُعدِ
+  // عقب‌مانده همان قراردادِ خانواده؛ تساویِ کسرها → رشتهٔ آزمون (<=، بعدِ
+  // اول). زیرمجموعه‌یابیِ صادق: پنجرهٔ ۷ ⊂ پنجرهٔ ۱۴ است (Task 90) پس ۱۴
+  // روزِ آزمون‌دار ⇒ exam-run؛ و ۱۴ روزِ آزمون‌دار، ۱۴ روزِ حاضر هم می‌سازد
+  // ولی به ۳۰ نمی‌رسد (حضورِ ۳۰روزه روشن نمی‌شود — شکافِ صادق، تست‌قفل)؛
+  // در جهتِ دیگر، ۳۰ روزِ حاضرِ بی‌آزمون هیچ‌کدام از دو بُعدِ آزمونی را
+  // نمی‌سازد — تست‌قفلِ دوسویه.
+  {
+    id: "quiz-presence",
+    title: "آزمون و حضور",
+    desc: "۱۴ روزِ آزمون‌دار در دو هفته و ۳۰ روزِ حاضر — اوجِ آزمون و اوجِ حضور، با هم",
+    icon: "FileCheck2",
+    tier: "gold",
+    progress: (s) => {
+      const quiz = Math.min(s.quizDays14, 14);
+      const pres = Math.min(s.activeDays35, 30);
+      return quiz / 14 <= pres / 30
+        ? `${faNum(quiz)} از ۱۴ روزِ آزمون`
+        : `${faNum(pres)} از ۳۰ روزِ حاضر`;
+    },
+    check: (s) => s.quizDays14 >= 14 && s.activeDays35 >= 30,
+  },
 ];
 
 export const TIER_STYLE: Record<BadgeTier, { ring: string; grad: string; chip: string; glow: string }> = {
@@ -1098,6 +1127,9 @@ export function badgeProgressPct(id: string, s: BadgeEvalInput): number {
     // Task 154 — پنجمین دوسیستمه: دیکته×هدف (دو ۱۴تاییِ هم‌عدد)
     case "dictation-pledge":
       return clamp(Math.min((s.dictationDays14 / 14) * 100, (s.goalDays / 14) * 100));
+    // Task 156 — ششمین دوسیستمه: آزمون×حضور (۱۴ آزمون‌دار × ۳۰ حاضر)
+    case "quiz-presence":
+      return clamp(Math.min((s.quizDays14 / 14) * 100, (s.activeDays35 / 30) * 100));
     default:
       return 0;
   }

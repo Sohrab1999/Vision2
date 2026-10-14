@@ -54,6 +54,7 @@ import {
   FlameKindling,
   Handshake,
   NotebookPen,
+  FileCheck2,
 } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -134,6 +135,10 @@ export const BADGE_ICONS: Record<string, React.ElementType> = {
   Handshake,
   // پلهٔ پنجم (Task 154) — دیکته×هدف
   NotebookPen,
+  // پلهٔ ششم (Task 156) — آزمون×حضور: برگِ آزمونِ تصحیح‌شده — نخستینِ
+  // کاشیِ FileCheck2 در رجیستری (نریشنِ اوجِ آزمون، متمایز از
+  // ClipboardCheckِ exam-run)
+  FileCheck2,
 };
 
 const tierFa: Record<string, string> = {
