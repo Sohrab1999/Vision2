@@ -10,7 +10,7 @@
 
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { Sparkles, TrendingDown, TrendingUp, Minus, CalendarHeart, Check, Snowflake, Swords, Timer, ImageDown, Loader2, CalendarClock, Gauge } from "lucide-react";
+import { Sparkles, TrendingDown, TrendingUp, Minus, CalendarHeart, Check, Snowflake, Swords, Timer, ImageDown, FileDown, Loader2, CalendarClock, Gauge } from "lucide-react";
 import { useStudy, daysAgoKey } from "@/lib/study-store";
 import { faNum, secFa } from "@/lib/study-theme";
 import { computeWeeklyDigest, faWeekday, faDayLabel, DUEL_QUICK_WEEK, type Delta, type QuickWeekProfile } from "@/lib/weekly-digest";
@@ -19,6 +19,7 @@ import { weekTeacherStats } from "@/lib/week-teacher";
 import WeekTeacher from "@/components/study/reports/week-teacher";
 import { freezeDayMark, freezeLedgerMeta } from "@/lib/freeze-badge";
 import { downloadWeeklyImage } from "@/lib/result-image";
+import { downloadProgressCsv } from "@/lib/progress-csv";
 import { useToast } from "@/hooks/use-toast";
 
 const DELTA_META: { field: Delta["field"]; label: string; cls: string }[] = [
@@ -151,6 +152,18 @@ export default function WeeklyReportSection() {
     );
   };
 
+  // Task 169 — خروجیِ CSV: کلِ پنجرهٔ ۳۵روزهٔ حافظه به یک جدولِ اکسل‌پسند
+  // تبدیل می‌شود — ابزارِ تازهٔ خانوادهٔ گزارش‌ها، کنارِ عکسِ هفته‌نامه.
+  // هم‌الگویِ دایجست: anchor = daysAgoKey(0)، خروجی یکطرفه (بازیابی = پشتیبانِ JSON).
+  const saveCsv = () => {
+    const ok = downloadProgressCsv(dayHistory, daysAgoKey(0));
+    toast(
+      ok
+        ? { title: "📊 جدول CSV ذخیره شد", description: `${faNum(35)} روزِ فعالیت در یک فایل اکسل‌پسند — مناسب برای معلم یا والدین.`, duration: 3500 }
+        : { title: "خطا در ساخت فایل", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
+    );
+  };
+
   return (
     <div className="report-digest rounded-xl border border-stone-200 c-stone-70 p-3.5">
       <div className="mb-2.5 flex items-center justify-between">
@@ -171,6 +184,15 @@ export default function WeeklyReportSection() {
             className="rounded-lg p-1.5 text-stone-400 transition-colors hover:bg-stone-100 hover:text-teal-600 disabled:opacity-50"
           >
             {imgBusy ? <Loader2 size={15} className="animate-spin" aria-hidden /> : <ImageDown size={15} aria-hidden />}
+          </button>
+          {/* Task 169 — خروجیِ CSV: دومین عضوِ خانوادهٔ خروجی‌ها در همین سربرگ */}
+          <button
+            onClick={saveCsv}
+            aria-label="دانلود جدول CSV پیشرفت"
+            title="خروجیِ CSV — جدولِ ۳۵روزهٔ فعالیت برای اکسل"
+            className="rounded-lg p-1.5 text-stone-400 transition-colors hover:bg-stone-100 hover:text-teal-600"
+          >
+            <FileDown size={15} aria-hidden />
           </button>
         </div>
       </div>
