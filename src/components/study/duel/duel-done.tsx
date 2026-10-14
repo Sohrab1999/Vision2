@@ -289,7 +289,7 @@ export default function DuelDone({ endData, mySid, myFinishAt, oppConnected, rem
         {oppConnected ? (
           <button
             onClick={rematch}
-            className="duel-cta inline-flex items-center gap-2.5 rounded-2xl bg-gradient-to-l from-violet-600 to-fuchsia-600 px-8 py-3.5 text-[15px] font-black text-white shadow-xl shadow-fuchsia-600/25 transition-all hover:opacity-95 active:scale-95"
+            className="duel-cta inline-flex items-center gap-2.5 rounded-2xl bg-gradient-to-l from-violet-600 to-fuchsia-600 px-8 py-3.5 text-[15px] font-black text-white shadow-xl shadow-fuchsia-600/25 transition-all hover:opacity-95 active:scale-[0.96]"
           >
             <RotateCcw size={18} />
             نبرد دوباره
@@ -299,7 +299,7 @@ export default function DuelDone({ endData, mySid, myFinishAt, oppConnected, rem
         <button
           onClick={saveDuelImage}
           disabled={imgBusy || !mine}
-          className="inline-flex items-center gap-2 rounded-2xl bg-white px-6 py-3 text-[14px] font-black text-stone-600 transition-all hover:text-fuchsia-700 active:scale-95 disabled:opacity-50"
+          className="inline-flex items-center gap-2 rounded-2xl bg-white px-6 py-3 text-[14px] font-black text-stone-600 transition-all hover:text-fuchsia-700 active:scale-[0.96] disabled:opacity-50"
         >
           {imgBusy ? <Loader2 size={16} className="animate-spin" aria-hidden /> : <ImageDown size={16} aria-hidden />}
           عکسِ این نبرد
@@ -309,7 +309,7 @@ export default function DuelDone({ endData, mySid, myFinishAt, oppConnected, rem
           <button
             onClick={shareDuelImage}
             disabled={shareBusy || imgBusy || !mine}
-            className="inline-flex items-center gap-2 rounded-2xl bg-white px-6 py-3 text-[14px] font-black text-stone-600 transition-all hover:text-fuchsia-700 active:scale-95 disabled:opacity-50"
+            className="inline-flex items-center gap-2 rounded-2xl bg-white px-6 py-3 text-[14px] font-black text-stone-600 transition-all hover:text-fuchsia-700 active:scale-[0.96] disabled:opacity-50"
           >
             {shareBusy ? <Loader2 size={16} className="animate-spin" aria-hidden /> : <Share2 size={16} aria-hidden />}
             هم‌رسانی
@@ -317,7 +317,7 @@ export default function DuelDone({ endData, mySid, myFinishAt, oppConnected, rem
         )}
         <button
           onClick={leaveRoom}
-          className="inline-flex items-center gap-2 rounded-2xl bg-white px-6 py-3 text-[14px] font-black text-stone-600 transition-all hover:text-stone-700 active:scale-95"
+          className="inline-flex items-center gap-2 rounded-2xl bg-white px-6 py-3 text-[14px] font-black text-stone-600 transition-all hover:text-stone-700 active:scale-[0.96]"
         >
           <Swords size={16} />
           {oppConnected && rematchVotes > 0 ? "منتظر حریف… یا حریف جدید" : "حریف جدید"}

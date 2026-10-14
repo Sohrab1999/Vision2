@@ -176,7 +176,7 @@ export default function QuizResult({
         <div className="flex flex-wrap justify-center gap-2.5">
           <button
             onClick={shareResult}
-            className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-l from-amber-500 to-orange-600 px-4 py-2.5 text-sm font-bold text-white shadow-md shadow-amber-600/25 transition-all hover:opacity-90 active:scale-95"
+            className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-l from-amber-500 to-orange-600 px-4 py-2.5 text-sm font-bold text-white shadow-md shadow-amber-600/25 transition-all hover:opacity-90 active:scale-[0.96]"
           >
             <Share2 size={15} />
             اشتراک‌گذاری نتیجه
@@ -184,21 +184,21 @@ export default function QuizResult({
           <button
             onClick={() => saveResultImage(true)}
             disabled={imgBusy}
-            className="inline-flex items-center gap-1.5 rounded-xl border border-amber-300 bg-amber-50 px-4 py-2.5 text-sm font-bold text-amber-800 transition-all hover:bg-amber-100 active:scale-95 disabled:opacity-50"
+            className="inline-flex items-center gap-1.5 rounded-xl border border-amber-300 bg-amber-50 px-4 py-2.5 text-sm font-bold text-amber-800 transition-all hover:bg-amber-100 active:scale-[0.96] disabled:opacity-50"
           >
             <ImageDown size={15} />
             {imgBusy ? "در حال ساخت تصویر…" : "دانلود تصویر نتیجه"}
           </button>
           <button
             onClick={onRestart}
-            className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-bold text-white transition-all hover:bg-emerald-700 active:scale-95"
+            className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-bold text-white transition-all hover:bg-emerald-700 active:scale-[0.96]"
           >
             <RotateCcw size={15} />
             تلاش مجدد
           </button>
           <button
             onClick={onExit}
-            className="inline-flex items-center gap-1.5 rounded-xl border border-stone-300 bg-white px-4 py-2.5 text-sm font-bold text-stone-600 transition-all hover:bg-stone-50 active:scale-95"
+            className="inline-flex items-center gap-1.5 rounded-xl border border-stone-300 bg-white px-4 py-2.5 text-sm font-bold text-stone-600 transition-all hover:bg-stone-50 active:scale-[0.96]"
           >
             بازگشت
           </button>
@@ -245,21 +245,21 @@ export default function QuizResult({
         <button
           onClick={() => saveResultImage(false)}
           disabled={imgBusy}
-          className="inline-flex items-center gap-1.5 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-2.5 text-sm font-bold text-emerald-800 transition-all hover:bg-emerald-100 active:scale-95 disabled:opacity-50"
+          className="inline-flex items-center gap-1.5 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-2.5 text-sm font-bold text-emerald-800 transition-all hover:bg-emerald-100 active:scale-[0.96] disabled:opacity-50"
         >
           <ImageDown size={15} />
           {imgBusy ? "در حال ساخت تصویر…" : "دانلود تصویر نتیجه"}
         </button>
         <button
           onClick={onRestart}
-          className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-bold text-white transition-all hover:bg-emerald-700 active:scale-95"
+          className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-bold text-white transition-all hover:bg-emerald-700 active:scale-[0.96]"
         >
           <RotateCcw size={15} />
           تلاش مجدد
         </button>
         <button
           onClick={onExit}
-          className="inline-flex items-center gap-1.5 rounded-xl border border-stone-300 bg-white px-4 py-2.5 text-sm font-bold text-stone-600 transition-all hover:bg-stone-50 active:scale-95"
+          className="inline-flex items-center gap-1.5 rounded-xl border border-stone-300 bg-white px-4 py-2.5 text-sm font-bold text-stone-600 transition-all hover:bg-stone-50 active:scale-[0.96]"
         >
           بازگشت
         </button>
@@ -304,7 +304,7 @@ export default function QuizResult({
                     title={isStarred ? `حذف «${sw.en}» از واژه‌های من` : `افزودن «${sw.en}» به واژه‌های من`}
                     aria-label={isStarred ? `حذف ${sw.en} از واژه‌های من` : `افزودن ${sw.en} به واژه‌های من`}
                     aria-pressed={isStarred}
-                    className="shrink-0 rounded-md p-1 transition-all hover:scale-110 active:scale-90"
+                    className="shrink-0 rounded-md p-1 transition-all hover:scale-110 active:scale-[0.96]"
                   >
                     <Star size={15} className={isStarred ? "fill-amber-400 text-amber-400" : "text-rose-300 transition-colors hover:text-amber-400"} />
                   </motion.button>

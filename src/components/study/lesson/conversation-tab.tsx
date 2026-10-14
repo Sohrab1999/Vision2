@@ -55,7 +55,7 @@ export default function ConversationTab({ lesson }: { lesson: LessonData }) {
       <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border c-card px-4 py-3">
         <button
           onClick={playAll}
-          className={`inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-bold text-white shadow-sm transition-all active:scale-95 ${
+          className={`inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-bold text-white shadow-sm transition-all active:scale-[0.96] ${
             playingAll ? "bg-rose-600" : "bg-emerald-600 hover:bg-emerald-700"
           }`}
         >

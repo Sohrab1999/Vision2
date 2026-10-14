@@ -103,7 +103,7 @@ export default function MyWordsView() {
           {mounted && stars.length > 0 && (
             <button
               onClick={armClear}
-              className={`ms-auto inline-flex items-center gap-1.5 rounded-xl border px-3 py-2 text-[12px] font-bold transition-all active:scale-95 ${
+              className={`ms-auto inline-flex items-center gap-1.5 rounded-xl border px-3 py-2 text-[12px] font-bold transition-all active:scale-[0.96] ${
                 armedClear
                   ? "animate-pulse border-rose-300 bg-rose-500 text-white"
                   : "border-rose-200 bg-rose-50 text-rose-600 hover:bg-rose-100"
@@ -234,7 +234,7 @@ export default function MyWordsView() {
           </p>
           <button
             onClick={() => setView({ type: "dictionary" })}
-            className="mt-1 inline-flex items-center gap-1.5 rounded-full bg-stone-700 px-4 py-2 text-[12px] font-bold text-white transition-all hover:bg-stone-600 active:scale-95"
+            className="mt-1 inline-flex items-center gap-1.5 rounded-full bg-stone-700 px-4 py-2 text-[12px] font-bold text-white transition-all hover:bg-stone-600 active:scale-[0.96]"
           >
             <BookMarked size={14} />
             رفتن به دیکشنری
@@ -294,7 +294,7 @@ export default function MyWordsView() {
                         onClick={() => toggleStarred(w.key)}
                         title="حذف از واژه‌های من"
                         aria-label={`حذف ${w.en} از واژه‌های من`}
-                        className="ms-0.5 rounded-md p-0.5 transition-transform hover:scale-110 active:scale-90"
+                        className="ms-0.5 rounded-md p-0.5 transition-transform hover:scale-110 active:scale-[0.96]"
                       >
                         <Star size={14} className="fill-amber-400 text-amber-400" />
                       </button>

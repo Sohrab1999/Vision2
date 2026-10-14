@@ -199,7 +199,7 @@ export default function QuizEngine({
               <button
                 onClick={nextQuestion}
                 data-quiz-next
-                className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-[13px] font-bold text-white transition-all hover:bg-emerald-700 active:scale-95"
+                className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-[13px] font-bold text-white transition-all hover:bg-emerald-700 active:scale-[0.96]"
               >
                 {idx < total - 1 ? "سؤال بعدی" : "دیدن نتیجه"}
                 <ArrowLeft size={14} />
@@ -217,7 +217,7 @@ export default function QuizEngine({
               <button
                 onClick={nextQuestion}
                 data-quiz-next
-                className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-[13px] font-bold text-white transition-all hover:bg-emerald-700 active:scale-95"
+                className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-[13px] font-bold text-white transition-all hover:bg-emerald-700 active:scale-[0.96]"
               >
                 {idx < total - 1 ? "بعدی" : "پایان و نتیجه"}
                 <ArrowLeft size={14} />

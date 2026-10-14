@@ -131,7 +131,7 @@ export default function ExamView() {
       {mounted && totalMistakesAll > 0 && (
         <button
           onClick={() => setView({ type: "review" })}
-          className="review-hero flex w-full items-center gap-3 rounded-2xl border border-amber-200 bg-gradient-to-l from-amber-50 to-white p-4 text-right shadow-sm transition-all hover:shadow-md active:scale-[0.99]"
+          className="review-hero flex w-full items-center gap-3 rounded-2xl border border-amber-200 bg-gradient-to-l from-amber-50 to-white p-4 text-right shadow-sm transition-all hover:shadow-md active:scale-[0.96]"
         >
           <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-100 text-amber-600">
             <Zap size={19} />
@@ -190,7 +190,7 @@ export default function ExamView() {
               <button
                 key={n}
                 onClick={() => setExamCount(n)}
-                className={`rounded-xl border-2 px-5 py-2.5 text-sm font-black transition-all active:scale-95 ${
+                className={`rounded-xl border-2 px-5 py-2.5 text-sm font-black transition-all active:scale-[0.96] ${
                   examCount === n
                     ? "border-emerald-500 bg-emerald-50 text-emerald-700"
                     : "border-stone-200 bg-white text-stone-600 hover:border-emerald-300"
@@ -205,7 +205,7 @@ export default function ExamView() {
           <div className="mb-6 flex flex-wrap gap-2">
             <button
               onClick={() => setExamTimed(true)}
-              className={`inline-flex items-center gap-1.5 rounded-xl border-2 px-4 py-2.5 text-[13px] font-bold transition-all active:scale-95 ${
+              className={`inline-flex items-center gap-1.5 rounded-xl border-2 px-4 py-2.5 text-[13px] font-bold transition-all active:scale-[0.96] ${
                 examTimed
                   ? "border-emerald-500 bg-emerald-50 text-emerald-700"
                   : "border-stone-200 bg-white text-stone-600 hover:border-emerald-300"
@@ -216,7 +216,7 @@ export default function ExamView() {
             </button>
             <button
               onClick={() => setExamTimed(false)}
-              className={`inline-flex items-center gap-1.5 rounded-xl border-2 px-4 py-2.5 text-[13px] font-bold transition-all active:scale-95 ${
+              className={`inline-flex items-center gap-1.5 rounded-xl border-2 px-4 py-2.5 text-[13px] font-bold transition-all active:scale-[0.96] ${
                 !examTimed
                   ? "border-emerald-500 bg-emerald-50 text-emerald-700"
                   : "border-stone-200 bg-white text-stone-600 hover:border-emerald-300"
@@ -236,7 +236,7 @@ export default function ExamView() {
                 kind: "exam",
               })
             }
-            className="w-full rounded-xl bg-emerald-700 py-3.5 text-[15px] font-black text-white shadow-lg shadow-emerald-900/25 transition-all hover:bg-emerald-700 active:scale-[0.98]"
+            className="w-full rounded-xl bg-emerald-700 py-3.5 text-[15px] font-black text-white shadow-lg shadow-emerald-900/25 transition-all hover:bg-emerald-700 active:scale-[0.96]"
           >
             شروع آزمون جامع
           </button>
@@ -252,7 +252,7 @@ export default function ExamView() {
                   kind: "exam-mistakes",
                 })
               }
-              className="mistakes-cta mt-4 flex w-full items-center justify-between gap-3 rounded-2xl border border-rose-300 bg-gradient-to-l from-rose-50 to-red-50 p-4 text-right shadow-sm transition-all hover:shadow-md active:scale-[0.99]"
+              className="mistakes-cta mt-4 flex w-full items-center justify-between gap-3 rounded-2xl border border-rose-300 bg-gradient-to-l from-rose-50 to-red-50 p-4 text-right shadow-sm transition-all hover:shadow-md active:scale-[0.96]"
             >
               <span className="flex items-center gap-3">
                 <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-rose-500 text-white shadow-md shadow-rose-500/30">
@@ -280,7 +280,7 @@ export default function ExamView() {
                 ? `حداقل ${faNum(DICTATION_MIN_EXAM)} واژهٔ کنکوری لازم است`
                 : `${faNum(examDictCount)} واژه‌ای که بانک ${faNum(examBank.length)} تستی واقعاً آزمون می‌کند`
             }
-            className="exam-dict-cta mt-4 flex w-full items-center justify-between gap-3 rounded-2xl border border-emerald-200 bg-gradient-to-l from-emerald-50 to-white p-4 text-right shadow-sm transition-all hover:shadow-md active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-50"
+            className="exam-dict-cta mt-4 flex w-full items-center justify-between gap-3 rounded-2xl border border-emerald-200 bg-gradient-to-l from-emerald-50 to-white p-4 text-right shadow-sm transition-all hover:shadow-md active:scale-[0.96] disabled:cursor-not-allowed disabled:opacity-50"
           >
             <span className="flex items-center gap-3">
               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-500 text-white shadow-md shadow-emerald-500/30">
@@ -364,7 +364,7 @@ export default function ExamView() {
             <div className="mb-6 flex flex-wrap gap-2">
               <button
                 onClick={() => setFinalTimed(true)}
-                className={`inline-flex items-center gap-1.5 rounded-xl border-2 px-4 py-2.5 text-[13px] font-bold transition-all active:scale-95 ${
+                className={`inline-flex items-center gap-1.5 rounded-xl border-2 px-4 py-2.5 text-[13px] font-bold transition-all active:scale-[0.96] ${
                   finalTimed
                     ? "border-amber-500 bg-amber-50 text-amber-700"
                     : "border-stone-200 bg-white text-stone-600 hover:border-amber-300"
@@ -375,7 +375,7 @@ export default function ExamView() {
               </button>
               <button
                 onClick={() => setFinalTimed(false)}
-                className={`inline-flex items-center gap-1.5 rounded-xl border-2 px-4 py-2.5 text-[13px] font-bold transition-all active:scale-95 ${
+                className={`inline-flex items-center gap-1.5 rounded-xl border-2 px-4 py-2.5 text-[13px] font-bold transition-all active:scale-[0.96] ${
                   !finalTimed
                     ? "border-amber-500 bg-amber-50 text-amber-700"
                     : "border-stone-200 bg-white text-stone-600 hover:border-amber-300"
@@ -397,7 +397,7 @@ export default function ExamView() {
                 ];
                 setSession({ title: "آزمون جامع پایان ترم", questions: shuffle(pool), timed: finalTimed, kind: "final" });
               }}
-              className="w-full rounded-xl bg-gradient-to-l from-amber-700 to-orange-700 py-3.5 text-[15px] font-black text-white shadow-lg shadow-amber-700/25 transition-all hover:opacity-95 active:scale-[0.98]"
+              className="w-full rounded-xl bg-gradient-to-l from-amber-700 to-orange-700 py-3.5 text-[15px] font-black text-white shadow-lg shadow-amber-700/25 transition-all hover:opacity-95 active:scale-[0.96]"
             >
               🎓 شروع آزمون پایان ترم
             </button>
@@ -452,7 +452,7 @@ function ModeCard({
     <button
       onClick={onClick}
       aria-pressed={active}
-      className={`relative rounded-2xl border-2 p-4 text-right shadow-sm transition-all hover:shadow-md active:scale-[0.99] ${
+      className={`relative rounded-2xl border-2 p-4 text-right shadow-sm transition-all hover:shadow-md active:scale-[0.96] ${
         active ? activeCls : "border-stone-200 bg-white"
       }`}
     >
@@ -477,7 +477,7 @@ function LessonShortcut({ id, title, color }: { id: number; title: string; color
   return (
     <button
       onClick={() => openLesson(id)}
-      className={`rounded-xl border ${t.border} ${t.bgSoft} p-3.5 text-right transition-all hover:shadow-md active:scale-[0.98]`}
+      className={`rounded-xl border ${t.border} ${t.bgSoft} p-3.5 text-right transition-all hover:shadow-md active:scale-[0.96]`}
     >
       <div className={`text-[13px] font-extrabold ${t.text}`}>درس {id === 1 ? "اول" : id === 2 ? "دوم" : "سوم"}</div>
       <div className="text-[12px] font-bold text-stone-600">{title}</div>

@@ -66,7 +66,7 @@ export default function HomeHero() {
         <motion.div {...rise(0.21, reduceMotion)} className="flex flex-wrap items-center gap-3">
           <button
             onClick={() => openLesson(1)}
-            className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-emerald-900/25 transition-all hover:bg-emerald-700 hover:shadow-emerald-900/30 active:scale-95"
+            className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-emerald-900/25 transition-all hover:bg-emerald-700 hover:shadow-emerald-900/30 active:scale-[0.96]"
           >
             <BookOpen size={17} />
             شروع یادگیری — درس اول
@@ -74,7 +74,7 @@ export default function HomeHero() {
           </button>
           <button
             onClick={() => setView({ type: "exam" })}
-            className="inline-flex items-center gap-2 rounded-xl border border-stone-300 bg-white px-5 py-3 text-sm font-bold text-stone-700 transition-all hover:border-emerald-300 hover:text-emerald-700 active:scale-95"
+            className="inline-flex items-center gap-2 rounded-xl border border-stone-300 bg-white px-5 py-3 text-sm font-bold text-stone-700 transition-all hover:border-emerald-300 hover:text-emerald-700 active:scale-[0.96]"
           >
             <ClipboardCheck size={17} />
             آزمون جامع

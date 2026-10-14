@@ -312,7 +312,7 @@ export default function RushView() {
 
             <button
               onClick={start}
-              className="rush-start inline-flex items-center gap-2.5 rounded-2xl bg-gradient-to-l from-amber-500 to-orange-600 px-9 py-4 text-base font-black text-white shadow-xl shadow-orange-600/30 transition-all hover:opacity-95 active:scale-95"
+              className="rush-start inline-flex items-center gap-2.5 rounded-2xl bg-gradient-to-l from-amber-500 to-orange-600 px-9 py-4 text-base font-black text-white shadow-xl shadow-orange-600/30 transition-all hover:opacity-95 active:scale-[0.96]"
             >
               <Play size={20} />
               شروع چالش
@@ -363,7 +363,7 @@ export default function RushView() {
           <div className="flex flex-wrap justify-center gap-3">
             <button
               onClick={start}
-              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-l from-amber-500 to-orange-600 px-6 py-3 text-sm font-black text-white shadow-lg shadow-orange-600/25 transition-all hover:opacity-95 active:scale-95"
+              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-l from-amber-500 to-orange-600 px-6 py-3 text-sm font-black text-white shadow-lg shadow-orange-600/25 transition-all hover:opacity-95 active:scale-[0.96]"
             >
               <RotateCcw size={16} />
               چالش دوباره
@@ -371,14 +371,14 @@ export default function RushView() {
             <button
               onClick={saveImage}
               disabled={imgBusy}
-              className="inline-flex items-center gap-2 rounded-xl border border-stone-300 bg-white px-5 py-3 text-sm font-bold text-stone-600 transition-all hover:border-orange-300 hover:text-orange-700 active:scale-95 disabled:opacity-50"
+              className="inline-flex items-center gap-2 rounded-xl border border-stone-300 bg-white px-5 py-3 text-sm font-bold text-stone-600 transition-all hover:border-orange-300 hover:text-orange-700 active:scale-[0.96] disabled:opacity-50"
             >
               <Download size={16} />
               {imgBusy ? "در حال ساخت…" : "دانلود تصویر نتیجه"}
             </button>
             <button
               onClick={() => setView({ type: "home" })}
-              className="inline-flex items-center gap-2 rounded-xl border border-stone-200 bg-white px-5 py-3 text-sm font-bold text-stone-600 transition-all hover:bg-stone-50 active:scale-95"
+              className="inline-flex items-center gap-2 rounded-xl border border-stone-200 bg-white px-5 py-3 text-sm font-bold text-stone-600 transition-all hover:bg-stone-50 active:scale-[0.96]"
             >
               <Home size={16} />
               بازگشت به خانه

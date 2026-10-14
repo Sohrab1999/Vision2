@@ -228,7 +228,7 @@ export default function Flashcards({
               title={isStarred ? "حذف از واژه‌های من" : "افزودن به واژه‌های من"}
               aria-label={isStarred ? "حذف از واژه‌های من" : "افزودن به واژه‌های من"}
               aria-pressed={isStarred}
-              className={`absolute right-4 top-4 rounded-lg p-1 transition-all hover:scale-110 active:scale-90 ${
+              className={`absolute right-4 top-4 rounded-lg p-1 transition-all hover:scale-110 active:scale-[0.96] ${
                 isStarred ? "text-amber-400" : "text-stone-300 hover:text-amber-400"
               }`}
             >
@@ -261,28 +261,28 @@ export default function Flashcards({
       <div className="mx-auto flex max-w-xl flex-wrap items-center justify-center gap-2.5">
         <button
           onClick={() => go(-1)}
-          className="inline-flex items-center gap-1 rounded-xl border c-card px-4 py-2.5 text-sm font-bold text-stone-600 transition-all hover:bg-stone-50 active:scale-95"
+          className="inline-flex items-center gap-1 rounded-xl border c-card px-4 py-2.5 text-sm font-bold text-stone-600 transition-all hover:bg-stone-50 active:scale-[0.96]"
         >
           <ChevronRight size={16} />
           قبلی
         </button>
         <button
           onClick={() => answer(true)}
-          className={`inline-flex items-center gap-1.5 rounded-xl ${t.bg} px-5 py-2.5 text-sm font-bold text-white shadow-md transition-all hover:opacity-90 active:scale-95`}
+          className={`inline-flex items-center gap-1.5 rounded-xl ${t.bg} px-5 py-2.5 text-sm font-bold text-white shadow-md transition-all hover:opacity-90 active:scale-[0.96]`}
         >
           <Check size={16} />
           بلدم
         </button>
         <button
           onClick={() => answer(false)}
-          className="inline-flex items-center gap-1.5 rounded-xl border border-rose-200 bg-rose-50 px-5 py-2.5 text-sm font-bold text-rose-600 transition-all hover:bg-rose-100 active:scale-95"
+          className="inline-flex items-center gap-1.5 rounded-xl border border-rose-200 bg-rose-50 px-5 py-2.5 text-sm font-bold text-rose-600 transition-all hover:bg-rose-100 active:scale-[0.96]"
         >
           <RefreshCw size={15} />
           تکرار
         </button>
         <button
           onClick={() => go(1)}
-          className="inline-flex items-center gap-1 rounded-xl border c-card px-4 py-2.5 text-sm font-bold text-stone-600 transition-all hover:bg-stone-50 active:scale-95"
+          className="inline-flex items-center gap-1 rounded-xl border c-card px-4 py-2.5 text-sm font-bold text-stone-600 transition-all hover:bg-stone-50 active:scale-[0.96]"
         >
           بعدی
           <ChevronLeft size={16} />

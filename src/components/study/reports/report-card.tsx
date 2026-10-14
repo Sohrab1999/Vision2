@@ -347,7 +347,7 @@ export default function ReportCard({ open, onClose }: { open: boolean; onClose: 
                 <div className="flex flex-col gap-2 sm:flex-row">
                   <button
                     onClick={printReport}
-                    className="report-print-btn inline-flex flex-1 items-center justify-center gap-1.5 rounded-xl border border-emerald-300 bg-white px-3 py-1.5 text-[11px] font-black text-emerald-700 shadow-sm transition-all hover:bg-emerald-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 active:scale-95"
+                    className="report-print-btn inline-flex flex-1 items-center justify-center gap-1.5 rounded-xl border border-emerald-300 bg-white px-3 py-1.5 text-[11px] font-black text-emerald-700 shadow-sm transition-all hover:bg-emerald-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 active:scale-[0.96]"
                     aria-label="چاپ کارنامه"
                   >
                     <Printer size={13} />
@@ -355,7 +355,7 @@ export default function ReportCard({ open, onClose }: { open: boolean; onClose: 
                   </button>
                   <button
                     onClick={() => window.dispatchEvent(new CustomEvent("open-official-report"))}
-                    className="report-print-btn inline-flex flex-1 items-center justify-center gap-1.5 rounded-xl border border-emerald-300 bg-white px-3 py-1.5 text-[11px] font-black text-emerald-700 shadow-sm transition-all hover:bg-emerald-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 active:scale-95"
+                    className="report-print-btn inline-flex flex-1 items-center justify-center gap-1.5 rounded-xl border border-emerald-300 bg-white px-3 py-1.5 text-[11px] font-black text-emerald-700 shadow-sm transition-all hover:bg-emerald-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 active:scale-[0.96]"
                     aria-label="گزارش رسمی چاپی برای معلم"
                   >
                     <FileText size={13} />

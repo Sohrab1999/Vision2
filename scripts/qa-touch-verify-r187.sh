@@ -38,13 +38,17 @@ R=$(agent-browser eval '(()=>{
   }
   return JSON.stringify({count:els.length,small:small,measured:all})})()' 2>&1 | tr -d '"\\')
 echo "$R"
-echo "$R" | grep -q '"small":\[\]' && ok "header: zero interactive elements below 44px (F9 eval small=[])" || bad "header small targets remain: $R"
+# NOTE: output passes through tr -d quotes — match the QUOTE-FREE form
+# (the 185 lesson: assert against the ACTUAL serialized format)
+echo "$R" | grep -q 'small:\[\]' && ok "header: zero interactive elements below 44px (F9 eval small=[])" || bad "header small targets remain: $R"
 
 echo "== P2: the named F9 offenders, re-measured =="
 echo "$R" | grep -o '"measured":\[[^]]*\]' | tr ',' '\n' | sed 's/\["\?/\n/;s/"\?]//' | grep -v '^\s*$' || true
-D=$(agent-browser eval '(()=>{const p=document.querySelector(".due-pill");if(!p)return JSON.stringify({pill:false});const r=p.getBoundingClientRect();return JSON.stringify({pill:true,w:Math.round(r.width),h:Math.round(r.height)})})()' 2>&1 | tr -d '"\\')
+# the named 67x32 offender is the goal/progress chip; it renders in the
+# header at zero-due too — find it by its Persian label, not by class
+D=$(agent-browser eval '(()=>{const els=[...document.querySelectorAll("header button, header a, header span")];const p=els.find(x=>/فعالیت/.test(x.textContent||""));if(!p)return JSON.stringify({pill:false});const r=p.getBoundingClientRect();return JSON.stringify({pill:true,w:Math.round(r.width),h:Math.round(r.height)})})()' 2>&1 | tr -d '"\\')
 echo "$D"
-echo "$D" | grep -q '"pill":true' && echo "$D" | grep -Eq '"h":(4[4-9]|[5-9][0-9])' && ok "progress pill (due-pill) >= 44 tall (was 67x32)" || bad "due-pill: $D"
+echo "$D" | grep -q 'pill:true' && echo "$D" | grep -Eq 'h:(4[4-9]|[5-9][0-9])' && ok "progress pill >= 44 tall (was 67x32)" || bad "progress pill: $D"
 
 echo "== P3: hygiene =="
 E=$(agent-browser errors 2>&1)

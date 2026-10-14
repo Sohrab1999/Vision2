@@ -56,7 +56,7 @@ export default function LessonView({ id }: { id: number }) {
           <div className="flex items-center gap-4">
             <button
               onClick={goHome}
-              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border c-card text-stone-500 transition-all hover:bg-stone-50 hover:text-stone-700 active:scale-95"
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border c-card text-stone-500 transition-all hover:bg-stone-50 hover:text-stone-700 active:scale-[0.96]"
               aria-label="بازگشت به خانه"
             >
               <ArrowRight size={18} />

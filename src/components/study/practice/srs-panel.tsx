@@ -224,7 +224,7 @@ export default function SrsPanel() {
                       ? `حداقل ${faNum(DICTATION_MIN_DUE)} واژهٔ سررسید لازم است`
                       : "املای شنیداری از همهٔ واژه‌های سررسید — املا درست یعنی مرور واقعی"
                   }
-                  className="srs-due-dict-btn inline-flex items-center gap-1 rounded-lg border border-rose-200 bg-white px-2 py-1 text-[11px] font-bold text-rose-700 shadow-sm transition-all enabled:hover:border-rose-300 enabled:hover:bg-rose-50 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
+                  className="srs-due-dict-btn inline-flex items-center gap-1 rounded-lg border border-rose-200 bg-white px-2 py-1 text-[11px] font-bold text-rose-700 shadow-sm transition-all enabled:hover:border-rose-300 enabled:hover:bg-rose-50 active:scale-[0.96] disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   <Ear size={12} />
                   دیکته
@@ -250,7 +250,7 @@ export default function SrsPanel() {
                         whileTap={{ scale: 0.92 }}
                         onClick={startSmartReview}
                         title={`${w.en} — سطح ${faNum(w.level + 1)} از ۶`}
-                        className="srs-due-chip group flex items-center gap-1.5 rounded-lg border border-rose-100 bg-white px-2 py-1 shadow-sm transition-all hover:-translate-y-0.5 hover:border-rose-300 hover:shadow active:scale-95"
+                        className="srs-due-chip group flex items-center gap-1.5 rounded-lg border border-rose-100 bg-white px-2 py-1 shadow-sm transition-all hover:-translate-y-0.5 hover:border-rose-300 hover:shadow active:scale-[0.96]"
                       >
                         <span className="en-text text-[12px] font-bold text-stone-800" dir="ltr">
                           {w.en}
@@ -265,7 +265,7 @@ export default function SrsPanel() {
                   <motion.button
                     whileTap={{ scale: 0.92 }}
                     onClick={startSmartReview}
-                    className="srs-due-chip rounded-lg border border-dashed border-rose-200 bg-white/50 px-2 py-1 text-[11px] font-bold text-rose-500 transition-all hover:border-rose-400 active:scale-95"
+                    className="srs-due-chip rounded-lg border border-dashed border-rose-200 bg-white/50 px-2 py-1 text-[11px] font-bold text-rose-500 transition-all hover:border-rose-400 active:scale-[0.96]"
                   >
                     +{faNum(dueOverflow)} واژهٔ دیگر
                   </motion.button>
@@ -370,7 +370,7 @@ export default function SrsPanel() {
         <div className="flex flex-col items-stretch gap-2.5 lg:w-52">
           <button
             onClick={startSmartReview}
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-l from-teal-600 to-emerald-600 px-5 py-3 text-[13px] font-black text-white shadow-lg shadow-emerald-900/20 transition-all hover:opacity-95 active:scale-95"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-l from-teal-600 to-emerald-600 px-5 py-3 text-[13px] font-black text-white shadow-lg shadow-emerald-900/20 transition-all hover:opacity-95 active:scale-[0.96]"
           >
             <Sparkles size={16} />
             {dueTotal > 0 ? `مرور ${faNum(dueTotal)} واژهٔ سررسید` : "شروع مرور هوشمند"}

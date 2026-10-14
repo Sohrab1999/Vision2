@@ -183,7 +183,7 @@ export default function SmartPracticeView() {
                     <button
                       key={skill.def.id}
                       onClick={action!.onClick}
-                      className="inline-flex items-center gap-1.5 rounded-lg border border-stone-200 bg-stone-50 px-2.5 py-1.5 text-[11.5px] font-bold text-stone-600 transition-all hover:border-violet-300 hover:text-violet-700 active:scale-95"
+                      className="inline-flex items-center gap-1.5 rounded-lg border border-stone-200 bg-stone-50 px-2.5 py-1.5 text-[11.5px] font-bold text-stone-600 transition-all hover:border-violet-300 hover:text-violet-700 active:scale-[0.96]"
                     >
                       <Icon size={13} />
                       {action!.label}
@@ -198,7 +198,7 @@ export default function SmartPracticeView() {
           {dueCards > 0 && dueLesson && (
             <button
               onClick={() => openLesson(dueLesson, "smart")}
-              className="mt-3 flex w-full items-center justify-between gap-2 rounded-xl border border-amber-200 bg-amber-50 px-3.5 py-2.5 text-right transition-all hover:shadow-sm active:scale-[0.99]"
+              className="mt-3 flex w-full items-center justify-between gap-2 rounded-xl border border-amber-200 bg-amber-50 px-3.5 py-2.5 text-right transition-all hover:shadow-sm active:scale-[0.96]"
             >
               <span className="text-[12px] font-bold text-amber-800">
                 ⏰ {faNum(dueCards)} کارت واژگان هم سررسید مرور شده — قبل از تست یک دور بزن
@@ -243,7 +243,7 @@ export default function SmartPracticeView() {
             <button
               key={n}
               onClick={() => setSize(n)}
-              className={`rounded-xl border-2 px-5 py-2.5 text-sm font-black transition-all active:scale-95 ${
+              className={`rounded-xl border-2 px-5 py-2.5 text-sm font-black transition-all active:scale-[0.96] ${
                 size === n
                   ? "border-violet-500 bg-violet-50 text-violet-700"
                   : "border-stone-200 text-stone-500 hover:border-violet-300"
@@ -261,7 +261,7 @@ export default function SmartPracticeView() {
             setSession(plan.pool);
           }}
           disabled={!plan || plan.pool.length === 0}
-          className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-l from-violet-500 to-fuchsia-600 py-3 text-sm font-black text-white shadow-lg shadow-violet-500/25 transition-all hover:opacity-95 active:scale-[0.98] disabled:opacity-40 sm:w-auto sm:px-10"
+          className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-l from-violet-500 to-fuchsia-600 py-3 text-sm font-black text-white shadow-lg shadow-violet-500/25 transition-all hover:opacity-95 active:scale-[0.96] disabled:opacity-40 sm:w-auto sm:px-10"
         >
           <Sparkles size={17} />
           شروع تمرین هوشمند ({faNum(plan?.pool.length ?? 0)} سؤال)

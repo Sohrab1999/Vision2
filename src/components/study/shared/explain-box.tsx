@@ -84,7 +84,7 @@ export default function ExplainBox({ questionId }: { questionId: string }) {
         <span className="text-[12px] font-bold text-amber-700">توضیح هوشمند در دسترس نشد.</span>
         <button
           onClick={ask}
-          className="inline-flex items-center gap-1 rounded-lg border border-amber-300 bg-white px-2.5 py-1.5 text-[11.5px] font-bold text-amber-800 transition-all hover:bg-amber-100 active:scale-95"
+          className="inline-flex items-center gap-1 rounded-lg border border-amber-300 bg-white px-2.5 py-1.5 text-[11.5px] font-bold text-amber-800 transition-all hover:bg-amber-100 active:scale-[0.96]"
         >
           <RotateCcw size={12} />
           تلاش دوباره
@@ -98,7 +98,7 @@ export default function ExplainBox({ questionId }: { questionId: string }) {
       <button
         onClick={ask}
         disabled={state.status === "loading"}
-        className="inline-flex items-center gap-1.5 rounded-lg border border-violet-300 bg-gradient-to-l from-violet-50 to-fuchsia-50 px-3 py-2 text-[12px] font-black text-violet-700 shadow-sm transition-all hover:from-violet-100 hover:to-fuchsia-100 active:scale-95 disabled:opacity-60"
+        className="inline-flex items-center gap-1.5 rounded-lg border border-violet-300 bg-gradient-to-l from-violet-50 to-fuchsia-50 px-3 py-2 text-[12px] font-black text-violet-700 shadow-sm transition-all hover:from-violet-100 hover:to-fuchsia-100 active:scale-[0.96] disabled:opacity-60"
       >
         {state.status === "loading" ? (
           <>

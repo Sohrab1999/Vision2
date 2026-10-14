@@ -52,7 +52,7 @@ export default function FreezeBadge() {
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ type: "spring", stiffness: 380, damping: 26 }}
       onClick={open}
-      className="freeze-badge mr-1 hidden min-h-11 items-center gap-1 rounded-full border c-chip-freeze px-2.5 py-1.5 text-[12px] font-black transition-transform hover:-translate-y-px active:scale-95 sm:inline-flex"
+      className="freeze-badge mr-1 hidden min-h-11 items-center gap-1 rounded-full border c-chip-freeze px-2.5 py-1.5 text-[12px] font-black transition-transform hover:-translate-y-px active:scale-[0.96] sm:inline-flex"
       aria-label={meta.title}
       title={meta.title}
     >

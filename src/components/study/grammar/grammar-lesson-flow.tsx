@@ -109,7 +109,7 @@ export default function GrammarLessonFlow({ line, station, onExit, onGoQuiz }: P
           <button
             onClick={onExit}
             aria-label="بستن درس"
-            className="glesson-close mr-auto flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border c-card text-stone-500 shadow-sm transition hover:text-stone-700 active:scale-90"
+            className="glesson-close mr-auto flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border c-card text-stone-500 shadow-sm transition hover:text-stone-700 active:scale-[0.96]"
           >
             <X size={16} />
           </button>
@@ -174,7 +174,7 @@ export default function GrammarLessonFlow({ line, station, onExit, onGoQuiz }: P
       {step < 2 && (
         <button
           onClick={() => setStep((s) => s + 1)}
-          className={`flex w-full items-center justify-center gap-1.5 rounded-xl ${c.solid} py-3 text-[13.5px] font-black text-white shadow-md transition-all hover:brightness-110 active:scale-95`}
+          className={`flex w-full items-center justify-center gap-1.5 rounded-xl ${c.solid} py-3 text-[13.5px] font-black text-white shadow-md transition-all hover:brightness-110 active:scale-[0.96]`}
         >
           {step === 0 ? "فهمیدم — حالا آینهٔ فارسی" : "فهمیدم — امتحان کن"}
           <ArrowLeft size={15} />
@@ -362,7 +362,7 @@ function TryStep({
                     onClick={() => !answered && onPick(qi, oi)}
                     disabled={answered}
                     aria-pressed={chosen}
-                    className={`rounded-xl border px-3 py-2 font-mono text-[12.5px] font-bold transition-all ${cls} ${answered ? "cursor-default" : "active:scale-95"}`}
+                    className={`rounded-xl border px-3 py-2 font-mono text-[12.5px] font-bold transition-all ${cls} ${answered ? "cursor-default" : "active:scale-[0.96]"}`}
                   >
                     {opt}
                   </button>
@@ -380,7 +380,7 @@ function TryStep({
                   {!isRight && (
                     <button
                       onClick={() => onWhy(qi)}
-                      className="glesson-why-btn inline-flex items-center gap-1 rounded-full border border-stone-200 bg-stone-50 px-2.5 py-1 text-[11px] font-black text-stone-600 transition hover:bg-white active:scale-95"
+                      className="glesson-why-btn inline-flex items-center gap-1 rounded-full border border-stone-200 bg-stone-50 px-2.5 py-1 text-[11px] font-black text-stone-600 transition hover:bg-white active:scale-[0.96]"
                     >
                       <MessageCircleQuestion size={12} /> چرا اشتباه شد؟
                     </button>
@@ -418,13 +418,13 @@ function TryStep({
           <div className="flex flex-wrap justify-center gap-2">
             <button
               onClick={onGoQuiz}
-              className={`inline-flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-[13px] font-extrabold text-white shadow-md transition-all hover:brightness-110 active:scale-95 bg-stone-800`}
+              className={`inline-flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-[13px] font-extrabold text-white shadow-md transition-all hover:brightness-110 active:scale-[0.96] bg-stone-800`}
             >
               <Swords size={15} /> آزمونک ایستگاه را بزن
             </button>
             <button
               onClick={onRestart}
-              className="glesson-restart inline-flex items-center gap-1.5 rounded-xl border c-card px-4 py-2.5 text-[13px] font-extrabold text-stone-600 shadow-sm transition-all hover:bg-stone-50 active:scale-95"
+              className="glesson-restart inline-flex items-center gap-1.5 rounded-xl border c-card px-4 py-2.5 text-[13px] font-extrabold text-stone-600 shadow-sm transition-all hover:bg-stone-50 active:scale-[0.96]"
             >
               مرور دوبارهٔ درس
             </button>

@@ -3,6 +3,9 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* press feedback: active:scale-[0.96] everywhere — the one canonical squeeze
+   value (unslop KR-10, task 187 P10); pinned by tests/press-scale.test.ts */
+
 @theme inline {
   /* r87: pinned explicitly — the c-veil utilities' no-fallback color-mix needs
      var(--color-white) to ALWAYS resolve (Chrome's resolved-var-mix computed

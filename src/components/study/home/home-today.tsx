@@ -120,14 +120,14 @@ export default function HomeToday() {
         <div className="flex flex-col gap-2 sm:flex-row lg:flex-col">
           <button
             onClick={() => openLesson(reviewLesson ?? 1, "smart")}
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-700 px-4 py-2.5 text-[13px] font-bold text-white shadow-md shadow-emerald-900/20 transition-all hover:bg-emerald-800 active:scale-95"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-700 px-4 py-2.5 text-[13px] font-bold text-white shadow-md shadow-emerald-900/20 transition-all hover:bg-emerald-800 active:scale-[0.96]"
           >
             <RefreshCcw size={15} />
             {dueTotal > 0 ? `مرور هوشمند (${faNum(dueTotal)} واژه سررسید)` : "مرور هوشمند"}
           </button>
           <button
             onClick={() => openLessonTab(reviewLesson ?? 1, "dictation")}
-            className="inline-flex items-center justify-center gap-2 rounded-xl border border-violet-200 bg-violet-50 px-4 py-2.5 text-[13px] font-bold text-violet-700 transition-all hover:bg-violet-100 active:scale-95"
+            className="inline-flex items-center justify-center gap-2 rounded-xl border border-violet-200 bg-violet-50 px-4 py-2.5 text-[13px] font-bold text-violet-700 transition-all hover:bg-violet-100 active:scale-[0.96]"
           >
             <Ear size={15} />
             دیکتهٔ امروز

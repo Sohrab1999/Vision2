@@ -88,7 +88,7 @@ export default function VocabTab({
         </div>
         <button
           onClick={() => setFlashMode(true)}
-          className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl border border-emerald-300 bg-emerald-50 px-4 py-2.5 text-sm font-bold text-emerald-700 transition-all hover:bg-emerald-100 active:scale-95"
+          className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl border border-emerald-300 bg-emerald-50 px-4 py-2.5 text-sm font-bold text-emerald-700 transition-all hover:bg-emerald-100 active:scale-[0.96]"
         >
           <Layers size={16} />
           حالت فلش‌کارت
@@ -127,7 +127,7 @@ export default function VocabTab({
                   toggleKnown(wKey);
                 }
               }}
-              className={`group flex items-start justify-between gap-2 rounded-xl border p-3 text-right transition-all active:scale-[0.98] ${
+              className={`group flex items-start justify-between gap-2 rounded-xl border p-3 text-right transition-all active:scale-[0.96] ${
                 isKnown
                   ? `${t.border} ${t.bgSoft}`
                   : "border-stone-200 bg-white hover:border-stone-300 hover:shadow-sm"
@@ -152,7 +152,7 @@ export default function VocabTab({
                     title={isStarred ? "حذف از واژه‌های من" : "افزودن به واژه‌های من"}
                     aria-label={isStarred ? `حذف ${w.en} از واژه‌های من` : `افزودن ${w.en} به واژه‌های من`}
                     aria-pressed={isStarred}
-                    className={`rounded-md p-0.5 transition-all hover:scale-110 active:scale-90 ${
+                    className={`rounded-md p-0.5 transition-all hover:scale-110 active:scale-[0.96] ${
                       isStarred ? "text-amber-400" : "text-stone-300 hover:text-amber-400"
                     }`}
                   >

@@ -109,7 +109,7 @@ export default function DictionaryView() {
           </div>
           <button
             onClick={() => setView({ type: "my-words" })}
-            className="ms-auto inline-flex items-center gap-1.5 rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-[12px] font-bold text-amber-700 transition-all hover:bg-amber-100 active:scale-95"
+            className="ms-auto inline-flex items-center gap-1.5 rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-[12px] font-bold text-amber-700 transition-all hover:bg-amber-100 active:scale-[0.96]"
             aria-label="رفتن به واژه‌های من"
           >
             <Star size={14} className="fill-amber-400 text-amber-400" />
@@ -125,7 +125,7 @@ export default function DictionaryView() {
                 duration: 6000,
               });
             }}
-            className="inline-flex items-center gap-1.5 rounded-xl border border-emerald-200 bg-emerald-50 px-3 py-2 text-[12px] font-bold text-emerald-700 transition-all hover:bg-emerald-100 active:scale-95"
+            className="inline-flex items-center gap-1.5 rounded-xl border border-emerald-200 bg-emerald-50 px-3 py-2 text-[12px] font-bold text-emerald-700 transition-all hover:bg-emerald-100 active:scale-[0.96]"
             aria-label={`صادرات ${ankiCount} واژه به صورت فایل Anki`}
           >
             <Download size={14} />
@@ -247,7 +247,7 @@ export default function DictionaryView() {
                     title={isStarred ? "حذف از واژه‌های من" : "افزودن به واژه‌های من"}
                     aria-label={isStarred ? `حذف ${w.en} از واژه‌های من` : `افزودن ${w.en} به واژه‌های من`}
                     aria-pressed={isStarred}
-                    className={`rounded-md p-0.5 transition-all hover:scale-110 active:scale-90 ${
+                    className={`rounded-md p-0.5 transition-all hover:scale-110 active:scale-[0.96] ${
                       isStarred ? "fill-amber-400 text-amber-400" : "text-stone-300 hover:text-amber-400"
                     }`}
                   >

@@ -68,7 +68,7 @@ export default function HomeStarter() {
             <p className="mb-3 flex-1 text-[12px] leading-6 text-stone-500">{step.desc}</p>
             <button
               onClick={step.onClick}
-              className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-emerald-700 px-3 py-2 text-[12px] font-bold text-white transition-all hover:bg-emerald-800 active:scale-95"
+              className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-emerald-700 px-3 py-2 text-[12px] font-bold text-white transition-all hover:bg-emerald-800 active:scale-[0.96]"
             >
               {step.label}
               <ArrowLeft size={13} />

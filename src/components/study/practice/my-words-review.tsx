@@ -87,7 +87,7 @@ export default function MyWordsReview({ stars }: { stars: ResolvedStar[] }) {
                 key={n}
                 onClick={() => setSize(n)}
                 disabled={n > stars.length}
-                className={`rounded-lg border px-2.5 py-1.5 text-[11.5px] font-black transition-all active:scale-95 disabled:cursor-not-allowed disabled:opacity-35 ${
+                className={`rounded-lg border px-2.5 py-1.5 text-[11.5px] font-black transition-all active:scale-[0.96] disabled:cursor-not-allowed disabled:opacity-35 ${
                   clamped === n
                     ? "border-amber-400 bg-amber-100 text-amber-700"
                     : "border-stone-200 bg-white text-stone-500 hover:border-amber-300"
@@ -101,7 +101,7 @@ export default function MyWordsReview({ stars }: { stars: ResolvedStar[] }) {
         {eligible ? (
           <button
             onClick={start}
-            className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-l from-amber-500 to-orange-500 px-4 py-2.5 text-[13px] font-black text-white shadow-md shadow-amber-500/25 transition-all hover:opacity-95 active:scale-95"
+            className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-l from-amber-500 to-orange-500 px-4 py-2.5 text-[13px] font-black text-white shadow-md shadow-amber-500/25 transition-all hover:opacity-95 active:scale-[0.96]"
           >
             <Play size={14} />
             شروع مرور ({faNum(clamped)} سؤال)
@@ -109,7 +109,7 @@ export default function MyWordsReview({ stars }: { stars: ResolvedStar[] }) {
         ) : (
           <button
             onClick={() => setView({ type: "dictionary" })}
-            className="inline-flex items-center gap-1.5 rounded-xl border border-amber-300 bg-white px-4 py-2.5 text-[13px] font-bold text-amber-700 transition-all hover:bg-amber-50 active:scale-95"
+            className="inline-flex items-center gap-1.5 rounded-xl border border-amber-300 bg-white px-4 py-2.5 text-[13px] font-bold text-amber-700 transition-all hover:bg-amber-50 active:scale-[0.96]"
           >
             <RotateCcw size={14} />
             رفتن به دیکشنری

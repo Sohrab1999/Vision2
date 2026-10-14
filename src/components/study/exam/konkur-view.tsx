@@ -346,7 +346,7 @@ export default function KonkurView() {
               <button
                 key={n}
                 onClick={() => setSimCount(n)}
-                className={`rounded-xl border-2 px-5 py-2.5 text-sm font-black transition-all active:scale-95 ${
+                className={`rounded-xl border-2 px-5 py-2.5 text-sm font-black transition-all active:scale-[0.96] ${
                   simCount === n
                     ? "border-amber-500 bg-amber-50 text-amber-700"
                     : "border-stone-200 bg-white text-stone-600 hover:border-amber-300"
@@ -360,7 +360,7 @@ export default function KonkurView() {
           <div className="mb-6 flex flex-wrap gap-2">
             <button
               onClick={() => setSimTimed(true)}
-              className={`inline-flex items-center gap-1.5 rounded-xl border-2 px-4 py-2.5 text-[13px] font-bold transition-all active:scale-95 ${
+              className={`inline-flex items-center gap-1.5 rounded-xl border-2 px-4 py-2.5 text-[13px] font-bold transition-all active:scale-[0.96] ${
                 simTimed
                   ? "border-amber-500 bg-amber-50 text-amber-700"
                   : "border-stone-200 bg-white text-stone-600 hover:border-amber-300"
@@ -371,7 +371,7 @@ export default function KonkurView() {
             </button>
             <button
               onClick={() => setSimTimed(false)}
-              className={`inline-flex items-center gap-1.5 rounded-xl border-2 px-4 py-2.5 text-[13px] font-bold transition-all active:scale-95 ${
+              className={`inline-flex items-center gap-1.5 rounded-xl border-2 px-4 py-2.5 text-[13px] font-bold transition-all active:scale-[0.96] ${
                 !simTimed
                   ? "border-amber-500 bg-amber-50 text-amber-700"
                   : "border-stone-200 bg-white text-stone-600 hover:border-amber-300"
@@ -388,7 +388,7 @@ export default function KonkurView() {
           )}
           <button
             onClick={startSim}
-            className="w-full rounded-xl bg-gradient-to-l from-amber-700 to-orange-700 py-3.5 text-[15px] font-black text-white shadow-lg shadow-orange-600/25 transition-all hover:opacity-95 active:scale-[0.98]"
+            className="w-full rounded-xl bg-gradient-to-l from-amber-700 to-orange-700 py-3.5 text-[15px] font-black text-white shadow-lg shadow-orange-600/25 transition-all hover:opacity-95 active:scale-[0.96]"
           >
             شروع شبیه‌ساز کنکور
             <ArrowLeft size={17} className="mr-2 inline" />
@@ -426,7 +426,7 @@ export default function KonkurView() {
               )}
               <button
                 onClick={startHard}
-                className="w-full rounded-xl bg-rose-600 py-3.5 text-[15px] font-black text-white shadow-lg shadow-rose-600/25 transition-all hover:bg-rose-700 active:scale-[0.98]"
+                className="w-full rounded-xl bg-rose-600 py-3.5 text-[15px] font-black text-white shadow-lg shadow-rose-600/25 transition-all hover:bg-rose-700 active:scale-[0.96]"
               >
                 شروع مرور تست‌های سخت ({faNum(Math.min(stats.wrongCount, HARD_CAP))} تست)
               </button>
@@ -462,7 +462,7 @@ export default function KonkurView() {
                       key={n}
                       onClick={() => setCoverCount(n)}
                       disabled={disabled}
-                      className={`rounded-xl border-2 px-5 py-2.5 text-sm font-black transition-all active:scale-95 ${
+                      className={`rounded-xl border-2 px-5 py-2.5 text-sm font-black transition-all active:scale-[0.96] ${
                         disabled
                           ? "cursor-not-allowed border-stone-100 bg-stone-50 text-stone-300"
                           : coverCount === n
@@ -477,7 +477,7 @@ export default function KonkurView() {
               </div>
               <button
                 onClick={startCover}
-                className="w-full rounded-xl bg-emerald-600 py-3.5 text-[15px] font-black text-white shadow-lg shadow-emerald-900/25 transition-all hover:bg-emerald-700 active:scale-[0.98]"
+                className="w-full rounded-xl bg-emerald-600 py-3.5 text-[15px] font-black text-white shadow-lg shadow-emerald-900/25 transition-all hover:bg-emerald-700 active:scale-[0.96]"
               >
                 شروع پوشش بانک ({faNum(Math.min(coverCount, unseen.length))} تست)
                 <ArrowLeft size={17} className="mr-2 inline" />
@@ -566,7 +566,7 @@ function ModeCard({
     <button
       onClick={onClick}
       aria-pressed={active}
-      className={`relative rounded-2xl border-2 p-4 text-right shadow-sm transition-all hover:shadow-md active:scale-[0.99] ${
+      className={`relative rounded-2xl border-2 p-4 text-right shadow-sm transition-all hover:shadow-md active:scale-[0.96] ${
         active ? `${t.active} shadow-lg` : "border-stone-200 bg-white"
       }`}
     >
