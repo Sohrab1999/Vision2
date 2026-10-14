@@ -10,9 +10,11 @@
 
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { Sparkles, TrendingDown, TrendingUp, Minus, CalendarHeart, Check, Snowflake, Swords, Timer, ImageDown, Loader2, CalendarClock, Gauge, FileDown, BarChart3 } from "lucide-react";
+import { Sparkles, TrendingDown, TrendingUp, Minus, CalendarHeart, Check, Compass, Snowflake, Swords, Timer, ImageDown, Loader2, CalendarClock, Gauge, FileDown, BarChart3 } from "lucide-react";
 import { useStudy, daysAgoKey } from "@/lib/study-store";
 import { faNum, secFa } from "@/lib/study-theme";
+import { buildCoverageMap } from "@/lib/coverage-map";
+import { LESSONS_META } from "@/data/lesson-meta";
 import { computeWeeklyDigest, faWeekday, faDayLabel, DUEL_QUICK_WEEK, type Delta, type QuickWeekProfile } from "@/lib/weekly-digest";
 import { freezeDayMark, freezeLedgerMeta } from "@/lib/freeze-badge";
 import { downloadWeeklyImage } from "@/lib/result-image";
@@ -71,9 +73,36 @@ function QuickWeekLine({ qw }: { qw: QuickWeekProfile }) {
   );
 }
 
+/**
+ * Task 186 — «گامِ بعدی»: نخستین سلولِ تلاش‌نشده در ترتیبِ کانونیِ
+ * (vocab→dictation→listening→writing→konkuri→grammar) از همان
+ * coverage-mapِ ۱۷۴ که ستونِ «گام بعدی» کاغذِ رسمی مصرف می‌کند —
+ * یک منبع، دو مصرف: داشبورد و کاغذ هرگز واگرا نمی‌شوند. تازه‌وارد هم
+ * چیپِ درست می‌گیرد («درس ۱ · تست واژگان» — پیشنهادِ کانونیِ صادق است،
+ * نه آمارِ ساختگی)؛ همه‌پوشیده = null (چیپِ «همهٔ گام‌ها پوشیده»). خالص
+ * و O(18) — بی‌useMemo (کامپایلرِ react حفظِ memo اینجا را رد می‌کرد
+ * و هزینهٔ محاسبه ناچیز است).
+ */
+function findNextStep(
+  results: Record<string, { percent: number; at?: string }>,
+  known: Record<string, boolean>
+): { lessonId: number; label: string } | null {
+  const cov = buildCoverageMap(
+    results,
+    known,
+    LESSONS_META.map((l) => ({ id: l.id, title: l.titleFa, words: l.vocabCount }))
+  );
+  for (const L of cov.lessons) {
+    if (L.gap) return { lessonId: L.id, label: L.gap.label };
+  }
+  return null;
+}
+
 export default function WeeklyReportSection() {
   const dayHistory = useStudy((s) => s.dayHistory);
   const history = useStudy((s) => s.history);
+  const results = useStudy((s) => s.results);
+  const known = useStudy((s) => s.known);
   const goalMetDays = useStudy((s) => s.goalMetDays);
   const dailyGoal = useStudy((s) => s.dailyGoal);
   const streak = useStudy((s) => s.streak);
@@ -126,6 +155,9 @@ export default function WeeklyReportSection() {
       }),
     [freezeCount, freezeSavedDay, freezeUsedDays, goalMetDays, freezeEarnedDay]
   );
+
+  // Task 186 — گامِ بعدی: خالص و بی‌useMemo (کامنتِ findNextStep)
+  const nextStep = findNextStep(results, known);
 
   const maxTotal = Math.max(1, ...digest.perDay.map((p) => p.stat.reviews + p.stat.quizzes + p.stat.words + p.stat.dictation + p.stat.rush));
   const today = daysAgoKey(0);
@@ -208,6 +240,40 @@ export default function WeeklyReportSection() {
           const d = digest.deltas.find((x) => x.field === m.field)!;
           return <DeltaChip key={m.field} d={d} label={m.label} cls={m.cls} />;
         })}
+      </div>
+
+      {/* Task 186 — گامِ بعدی: پیشنهادِ کانونیِ صادق در یک نگاه، بالایِ دایجست؛
+          هم‌خانوادهٔ ردیف‌های نیمه‌شفافِ همین گزارش و چیپِ سبزِ هدف (c-chip-goal) —
+          aria==title هم‌قراردادِ دفتر یخ */}
+      <div
+        className="next-step-band mb-3 rounded-lg c-veil-60 px-2.5 py-2"
+        title={
+          nextStep
+            ? `گام بعدی — نخستین گامِ تلاش‌نشده در ترتیبِ کانونی: ${nextStep.label} درس ${faNum(nextStep.lessonId)}`
+            : "گام بعدی — هر ۱۸ گامِ درس‌به‌درس تلاش شده؛ مرورِ هوشمند را ادامه بده"
+        }
+        aria-label={
+          nextStep
+            ? `گام بعدی — نخستین گامِ تلاش‌نشده در ترتیبِ کانونی: ${nextStep.label} درس ${faNum(nextStep.lessonId)}`
+            : "گام بعدی — هر ۱۸ گامِ درس‌به‌درس تلاش شده؛ مرورِ هوشمند را ادامه بده"
+        }
+      >
+        <div className="flex flex-wrap items-center justify-between gap-1.5">
+          <div className="flex items-center gap-1.5 text-[10.5px] font-extrabold text-stone-600">
+            <Compass size={12} className="text-emerald-600" aria-hidden />
+            گام بعدی
+          </div>
+          {nextStep ? (
+            <span className="c-chip-goal inline-flex items-center gap-0.5 rounded-full border px-1.5 py-0.5 text-[9.5px] font-black">
+              {`درس ${faNum(nextStep.lessonId)} · ${nextStep.label}`}
+            </span>
+          ) : (
+            <span className="c-chip-goal inline-flex items-center gap-0.5 rounded-full border px-1.5 py-0.5 text-[9.5px] font-black">
+              <Check size={9} aria-hidden />
+              همهٔ گام‌ها پوشیده
+            </span>
+          )}
+        </div>
       </div>
 
       {/* 14-day strip: last week outlined, this week solid */}
