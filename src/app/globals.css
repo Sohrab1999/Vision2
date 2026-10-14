@@ -680,6 +680,18 @@ body {
 .dark .text-emerald-800 { color: #6ee7b7; }
 .dark .border-amber-300 { border-color: rgba(180, 130, 20, 0.55); }
 
+/* ---------------- home tools grid (DEC-8) ----------------
+   the audit's watch-item executed: ONE neutral tile treatment (bg-stone-50 +
+   border-stone-200, both kernel-served in dark) with color only on the glyph.
+   Four glyph 600s have no dark coverage anywhere (violet/rose/amber/stone ride
+   the global pins, sky-600 the kernel token) — these scoped lifts mirror each
+   family's established dark base (srs-panel emerald, rush orange, band teal,
+   duel fuchsia). Equal-declaration merges are handled by css-tones.cjs. */
+.dark .tools-grid .text-emerald-600 { color: #34d399; }
+.dark .tools-grid .text-orange-600,.dark .rush-hero .text-orange-600,.dark .rush-score-live,.dark .rush-board .text-orange-600,.dark .report-paper .text-orange-600 { color: #fdba74; }
+.dark .tools-grid .text-teal-600 { color: #5eead4; }
+.dark .tools-grid .text-fuchsia-600 { color: #e879f9; }
+
 /* ---------------- dark body texture (calmer) — merged into .dark body above ---------------- */
 .dark :focus-visible { outline-color: rgb(52 211 153 / 0.7); }
 
@@ -769,7 +781,6 @@ body {
 }
 .dark .rush-hero .border-orange-100 { border-color: rgb(124 58 8 / 0.55); }
 .dark .rush-hero .bg-orange-100,.dark .rush-board .bg-orange-100\/80 { background-color: rgb(69 40 8 / 0.65); }
-.dark .rush-hero .text-orange-600,.dark .rush-score-live,.dark .rush-board .text-orange-600,.dark .report-paper .text-orange-600 { color: #fdba74; }
 .dark .rush-hero .border-orange-200,.dark .rush-board .border-orange-200,.dark .report-paper .border-orange-200 { border-color: rgb(154 52 18 / 0.55); }
 .dark .rush-hero kbd {
   background-color: #292524;
