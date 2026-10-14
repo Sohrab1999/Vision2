@@ -173,7 +173,7 @@ export default function Onboarding() {
                       key={c}
                       onClick={() => setColorDraft(c)}
                       aria-label={`رنگ ${c}`}
-                      className={`h-8 w-8 rounded-full shadow-md transition-[background-color,color,border-color,box-shadow,transform,opacity] ${avatarClasses[c] ?? avatarClasses.emerald} ${
+                      className={`h-11 w-11 rounded-full shadow-md transition-[background-color,color,border-color,box-shadow,transform,opacity] ${avatarClasses[c] ?? avatarClasses.emerald} ${
                         colorDraft === c ? "scale-110 ring-2 ring-stone-700 ring-offset-2" : "opacity-70 hover:opacity-100"
                       }`}
                     />
