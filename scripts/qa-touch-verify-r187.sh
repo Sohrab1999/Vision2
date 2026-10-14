@@ -46,7 +46,7 @@ echo "== P2: the named F9 offenders, re-measured =="
 echo "$R" | grep -o '"measured":\[[^]]*\]' | tr ',' '\n' | sed 's/\["\?/\n/;s/"\?]//' | grep -v '^\s*$' || true
 # the named 67x32 offender is the goal/progress chip; it renders in the
 # header at zero-due too — find it by its Persian label, not by class
-D=$(agent-browser eval '(()=>{const els=[...document.querySelectorAll("header button, header a, header span")];const p=els.find(x=>/فعالیت/.test(x.textContent||""));if(!p)return JSON.stringify({pill:false});const r=p.getBoundingClientRect();return JSON.stringify({pill:true,w:Math.round(r.width),h:Math.round(r.height)})})()' 2>&1 | tr -d '"\\')
+D=$(agent-browser eval '(()=>{const els=[...document.querySelectorAll("header button, header a, header span")];const p=els.find(x=>/فعالیت/.test((x.getAttribute("aria-label")||"")+" "+(x.textContent||"")));if(!p)return JSON.stringify({pill:false});const r=p.getBoundingClientRect();return JSON.stringify({pill:true,w:Math.round(r.width),h:Math.round(r.height)})})()' 2>&1 | tr -d '"\\')
 echo "$D"
 echo "$D" | grep -q 'pill:true' && echo "$D" | grep -Eq 'h:(4[4-9]|[5-9][0-9])' && ok "progress pill >= 44 tall (was 67x32)" || bad "progress pill: $D"
 
