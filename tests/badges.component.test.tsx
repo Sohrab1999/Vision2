@@ -3,7 +3,7 @@
 // Task 81 — ششمین سوژهٔ زیرساخت تست کامپوننت (بازشده در Task 75):
 // بخش «نشان‌ها و دستاوردها» — ۲۵ نشان با خانوادهٔ تازهٔ یخ.
 // قراردادهایی که قفل می‌شوند:
-//   ① تازه‌وارد: شمار «۰ از ۵۹» + همهٔ کاشی‌ها قفل (بدون badge-shine)
+//   ① تازه‌وارد: شمار «۰ از ۶۰» + همهٔ کاشی‌ها قفل (بدون badge-shine)
 //   ② یادگیرندهٔ یخی: کاشی‌های یخ باز و «اول» مرتب‌شده‌اند (sort قرارداد)
 //     + پیشرفتِ زیرِ قفل با رقم فارسی
 //   ③ گارد نقشهٔ آیکن: هر iconِ رجیستری در BADGE_ICONS کلید دارد —
@@ -144,7 +144,7 @@ const seedMarathon = () => {
 // (Task 92) ۲۵ روزِ «فقط‌واژه‌ای» — گسترده‌ترین شرطِ حضور را روی کاشی اثبات می‌کند:
 // هیچ ران/هدف/زنجیره‌ای باز نمی‌شود ولی ماهِ حاضر می‌درخشد.
 // درسِ آلودگی: beforeEach يومتحن goalMetDays را ریست نمی‌کند — seedِ هدفِ تست‌های
-// قبلی می‌ماند و چیپِ «۱ از ۵۹» را «۲ از ۵۹» می‌کرد؛ این seed خودش پاکش می‌کند.
+// قبلی می‌ماند و چیپِ «۱ از ۶۰» را «۲ از ۶۰» می‌کرد؛ این seed خودش پاکش می‌کند.
 const seedPresence = () => {
   const key = (n: number) => {
     const d = new Date();
@@ -230,11 +230,11 @@ describe("نشان‌ها و دستاوردها — کامپوننت (Task 81)",
     expect(BADGE_ICONS.Package).toBeTruthy();
   });
 
-  it("تازه‌وارد: «۰ از ۵۹» + کاشی یخ قفل با پیشرفتِ فارسی زیرِ قفل", () => {
+  it("تازه‌وارد: «۰ از ۶۰» + کاشی یخ قفل با پیشرفتِ فارسی زیرِ قفل", () => {
     render(<Badges />);
     // شمار در JSX دو تکه رندر می‌شود — تطبیق با textContentِ نرمال‌شده؛
-    // لنگرِ دقیق: وادارهای «۰ از ۵۰ واژه/مرور» (قفلِ نشان‌های ۵۹تایی) هم دارند
-    const chip = screen.getByText((_, el) => el?.tagName === "SPAN" && /^۰\s*از\s*۵۹$/.test((el.textContent ?? "").trim()));
+    // لنگرِ دقیق: وادارهای «۰ از ۵۰ واژه/مرور» (قفلِ نشان‌های ۶۰تایی) هم دارند
+    const chip = screen.getByText((_, el) => el?.tagName === "SPAN" && /^۰\s*از\s*۶۰$/.test((el.textContent ?? "").trim()));
     expect(chip).toBeInTheDocument();
     const tile = screen.getByText("انبار یخ").closest(".badge-card");
     expect(tile).not.toBeNull();
@@ -246,10 +246,10 @@ describe("نشان‌ها و دستاوردها — کامپوننت (Task 81)",
     expect(goalTile).toHaveTextContent("۰ از ۷ روزِ هدف‌دار");
   });
 
-  it("یادگیرندهٔ یخی: «۴ از ۵۹» + کاشی‌های یخ باز (badge-shine) و اولِ لیست", () => {
+  it("یادگیرندهٔ یخی: «۴ از ۶۰» + کاشی‌های یخ باز (badge-shine) و اولِ لیست", () => {
     seedIce();
     const { container } = render(<Badges />);
-    expect(screen.getByText((_, el) => el?.tagName === "SPAN" && /۴\s*از\s*۵۹/.test(el.textContent ?? ""))).toBeInTheDocument();
+    expect(screen.getByText((_, el) => el?.tagName === "SPAN" && /۴\s*از\s*۶۰/.test(el.textContent ?? ""))).toBeInTheDocument();
     for (const title of ["یخ‌ساز", "نجات‌گر", "انبار یخ", "سپر یخی"]) {
       const tile = screen.getByText(title).closest(".badge-card");
       expect(tile?.className, `${title} must be unlocked`).toContain("badge-shine");
@@ -261,10 +261,10 @@ describe("نشان‌ها و دستاوردها — کامپوننت (Task 81)",
     expect(titles.join("|")).toContain("سپر یخی");
   });
 
-  it("(Task 82) یادگیرندهٔ هدف‌مند: «۳ از ۵۹» + هفتهٔ هدف‌دار باز + قفلِ آخر با پیشرفتِ فارسی", () => {
+  it("(Task 82) یادگیرندهٔ هدف‌مند: «۳ از ۶۰» + هفتهٔ هدف‌دار باز + قفلِ آخر با پیشرفتِ فارسی", () => {
     seedGoal();
     const { container } = render(<Badges />);
-    expect(screen.getByText((_, el) => el?.tagName === "SPAN" && /۳\s*از\s*۵۹/.test(el.textContent ?? ""))).toBeInTheDocument();
+    expect(screen.getByText((_, el) => el?.tagName === "SPAN" && /۳\s*از\s*۶۰/.test(el.textContent ?? ""))).toBeInTheDocument();
     for (const title of ["اولین هدف", "پنج‌روزهٔ هدف‌دار", "هفتهٔ هدف‌دار"]) {
       const tile = screen.getByText(title).closest(".badge-card");
       expect(tile?.className, `${title} must be unlocked`).toContain("badge-shine");
@@ -366,7 +366,7 @@ describe("نشان‌ها و دستاوردها — کامپوننت (Task 81)",
     }
   });
 
-  it("(Task 92) حضور: بیست‌وپنج روزِ فقط‌واژه‌ای → «ماهِ حاضر» باز، «ماهِ درخشان» قفل با پیشرفتِ صادق؛ رجیستری ۵۹ (نوبتِ ۹۲: ۴۰ بود)", () => {
+  it("(Task 92) حضور: بیست‌وپنج روزِ فقط‌واژه‌ای → «ماهِ حاضر» باز، «ماهِ درخشان» قفل با پیشرفتِ صادق؛ رجیستری ۶۰ (نوبتِ ۹۲: ۴۰ بود)", () => {
     seedPresence();
     render(<Badges />);
     const tile = screen.getByText("ماهِ حاضر").closest(".badge-card");
@@ -378,11 +378,11 @@ describe("نشان‌ها و دستاوردها — کامپوننت (Task 81)",
     expect(full?.className, "presence-month-full locked at 25 days").not.toContain("badge-shine");
     expect(full).toHaveTextContent("۲۵ از ۳۰ روزِ فعال");
     // شمارِ رجیستری روی چیپ = ۴۰
-    const chip = screen.getByText((_, el) => el?.tagName === "SPAN" && /۱\s*از\s*۵۹/.test(el.textContent ?? ""));
+    const chip = screen.getByText((_, el) => el?.tagName === "SPAN" && /۱\s*از\s*۶۰/.test(el.textContent ?? ""));
     expect(chip).toBeInTheDocument();
   });
 
-  it("(Task 93) تنوع: پنج مهارتِ پخش‌شده در پنجره → «هفتهٔ پنج‌گانه» باز با Puzzle؛ بی‌دیکته/بی‌آزمون قفلِ متقابل؛ رجیستری ۵۹", () => {
+  it("(Task 93) تنوع: پنج مهارتِ پخش‌شده در پنجره → «هفتهٔ پنج‌گانه» باز با Puzzle؛ بی‌دیکته/بی‌آزمون قفلِ متقابل؛ رجیستری ۶۰", () => {
     seedFiveSkills();
     render(<Badges />);
     const tile = screen.getByText("هفتهٔ پنج‌گانه").closest(".badge-card");
@@ -396,8 +396,8 @@ describe("نشان‌ها و دستاوردها — کامپوننت (Task 81)",
     }
     // قراردادِ lock-only (درسِ ۸۶): کاشیِ باز پیشرفت را پنهان می‌کند —
     // پس فقط بازشدن و SVG و قفلِ متقابل را روی کاشی اثبات می‌کنیم
-    // (رشته‌های پیشرفت در تستِ pure قفل‌اند)؛ شمارِ رجیستری روی چیپ = ۵۹ (۵۹ + سه‌گانهٔ ترکیبیِ Task 126)
-    const chip = screen.getByText((_, el) => el?.tagName === "SPAN" && /۱\s*از\s*۵۹/.test(el.textContent ?? ""));
+    // (رشته‌های پیشرفت در تستِ pure قفل‌اند)؛ شمارِ رجیستری روی چیپ = ۶۰ (۶۰ + سه‌گانهٔ ترکیبیِ Task 126)
+    const chip = screen.getByText((_, el) => el?.tagName === "SPAN" && /۱\s*از\s*۶۰/.test(el.textContent ?? ""));
     expect(chip).toBeInTheDocument();
   });
 

@@ -56,6 +56,7 @@ import {
   NotebookPen,
   FileCheck2,
   BookCheck,
+  RotateCcw,
 } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -144,6 +145,9 @@ export const BADGE_ICONS: Record<string, React.ElementType> = {
   // BookCheck (BookOpenCheck واژه‌شناس است، BookMarked جامع‌نگر، Repeat
   // هفتهٔ بی‌آزمون — سه‌گانهٔ اشغال، BookCheck آزاد ماند)
   BookCheck,
+  // پلهٔ هشتم (Task 160) — مرور×آزمون: پیکانِ بازخوانی — دوباره‌کاریِ
+  // آگاهانه (Crown ×۳ پیشینهٔ یکتا-نبودنِ آیکن‌هاست)
+  RotateCcw,
 };
 
 const tierFa: Record<string, string> = {
