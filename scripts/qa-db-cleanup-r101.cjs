@@ -31,7 +31,10 @@ const p = new PrismaClient();
         // -> flip) leaves these funnel rows behind — all QA-only by construction
         "my_words_open", "my_words_flashcards_start", "star_word",
         // task 189: the result-card painter QA completes a real 10-question exam
-        "exam_done", "quiz_done"].includes(e.name)) {
+        "exam_done", "quiz_done",
+        // task 190: the dictation-tab QA path (tile + streak bar probes) leaves
+        // dictation_done completions and the freeze_badge grant behind
+        "dictation_done", "freeze_badge"].includes(e.name)) {
         await p.eventDay.delete({ where: { day_name: { day: e.day, name: e.name } } });
         console.log("QA event row removed:", e.name, "=", e.count);
       }
