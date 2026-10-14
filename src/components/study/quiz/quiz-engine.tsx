@@ -133,7 +133,7 @@ export default function QuizEngine({
         </div>
         <div className="h-2 overflow-hidden rounded-full bg-stone-100">
           <div
-            className="h-full rounded-full bg-gradient-to-l from-emerald-500 to-emerald-700 transition-all duration-300"
+            className="h-full rounded-full bg-gradient-to-l from-emerald-500 to-emerald-700 transition-[background-color,color,border-color,box-shadow,transform] duration-300"
             style={{ width: `${((idx + (selected !== null ? 1 : 0)) / total) * 100}%` }}
           />
         </div>
@@ -199,7 +199,7 @@ export default function QuizEngine({
               <button
                 onClick={nextQuestion}
                 data-quiz-next
-                className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-[13px] font-bold text-white transition-all hover:bg-emerald-700 active:scale-[0.96]"
+                className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-[13px] font-bold text-white transition-[background-color,color,border-color,transform] hover:bg-emerald-700 active:scale-[0.96]"
               >
                 {idx < total - 1 ? "سؤال بعدی" : "دیدن نتیجه"}
                 <ArrowLeft size={14} />
@@ -217,7 +217,7 @@ export default function QuizEngine({
               <button
                 onClick={nextQuestion}
                 data-quiz-next
-                className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-[13px] font-bold text-white transition-all hover:bg-emerald-700 active:scale-[0.96]"
+                className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-[13px] font-bold text-white transition-[background-color,color,border-color,transform] hover:bg-emerald-700 active:scale-[0.96]"
               >
                 {idx < total - 1 ? "بعدی" : "پایان و نتیجه"}
                 <ArrowLeft size={14} />

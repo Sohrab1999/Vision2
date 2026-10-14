@@ -157,7 +157,7 @@ export default function DangerWords() {
                           title={isStarred ? `حذف «${d.en}» از واژه‌های من` : `افزودن «${d.en}» به واژه‌های من`}
                           aria-label={isStarred ? `حذف «${d.en}» از واژه‌های من` : `افزودن «${d.en}» به واژه‌های من`}
                           aria-pressed={isStarred}
-                          className="shrink-0 self-start rounded-md p-1 transition-all hover:scale-110 active:scale-[0.96]"
+                          className="shrink-0 self-start rounded-md p-1 transition-[background-color,color,border-color,transform] hover:scale-110 active:scale-[0.96]"
                         >
                           <Star
                             size={15}
@@ -178,14 +178,14 @@ export default function DangerWords() {
             <div className="mt-4 grid gap-2.5 sm:grid-cols-3">
               <button
                 onClick={openFlashcards}
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-violet-200 bg-violet-50 px-4 py-2.5 text-[13px] font-bold text-violet-700 transition-all hover:bg-violet-100 active:scale-[0.96]"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-violet-200 bg-violet-50 px-4 py-2.5 text-[13px] font-bold text-violet-700 transition-[background-color,color,border-color,transform] hover:bg-violet-100 active:scale-[0.96]"
               >
                 <Sparkles size={15} />
                 فلش‌کارت همین‌ها
               </button>
               <button
                 onClick={() => (setPracticeOpen(true), trackEvent("danger_practice"))}
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-l from-rose-500 to-orange-500 px-4 py-2.5 text-[13px] font-black text-white shadow-md shadow-rose-500/25 transition-all hover:opacity-95 active:scale-[0.96]"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-l from-rose-500 to-orange-500 px-4 py-2.5 text-[13px] font-black text-white shadow-md shadow-rose-500/25 transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-95 active:scale-[0.96]"
               >
                 <Zap size={15} />
                 تمرین همین‌ها
@@ -198,7 +198,7 @@ export default function DangerWords() {
                     ? `حداقل ${faNum(DICTATION_MIN_DANGER)} واژهٔ خطرناک لازم است`
                     : undefined
                 }
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-rose-200 bg-rose-50 px-4 py-2.5 text-[13px] font-bold text-rose-700 transition-all enabled:hover:bg-rose-100 active:scale-[0.96] disabled:cursor-not-allowed disabled:opacity-50"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-rose-200 bg-rose-50 px-4 py-2.5 text-[13px] font-bold text-rose-700 transition-[background-color,color,border-color,transform,opacity] enabled:hover:bg-rose-100 active:scale-[0.96] disabled:cursor-not-allowed disabled:opacity-50"
               >
                 <Ear size={15} />
                 دیکتهٔ همین‌ها
@@ -228,7 +228,7 @@ export default function DangerWords() {
                 <button
                   key={lid}
                   onClick={() => setFlashLesson(lid)}
-                  className={`rounded-lg px-3 py-1.5 text-[12px] font-bold transition-all active:scale-[0.96] ${
+                  className={`rounded-lg px-3 py-1.5 text-[12px] font-bold transition-[background-color,color,border-color,box-shadow,transform] active:scale-[0.96] ${
                     flashLessonId === lid ? "bg-violet-600 text-white shadow-md" : "border c-card text-stone-600 hover:border-violet-300"
                   }`}
                 >

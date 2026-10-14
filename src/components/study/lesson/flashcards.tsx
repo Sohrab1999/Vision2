@@ -157,7 +157,7 @@ export default function Flashcards({
           {/* smart review toggle */}
           <button
             onClick={() => setSmartMode((v) => !v)}
-            className={`inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-[12px] font-bold transition-all ${
+            className={`inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-[12px] font-bold transition-colors ${
               smartMode
                 ? "border-violet-300 bg-violet-50 text-violet-700"
                 : "border-stone-200 bg-white text-stone-500 hover:text-violet-600"
@@ -182,7 +182,7 @@ export default function Flashcards({
       {/* progress bar */}
       <div className="h-1.5 overflow-hidden rounded-full bg-stone-200">
         <div
-          className={`h-full ${t.bg} transition-all duration-300`}
+          className={`h-full ${t.bg} transition-[background-color,color,border-color,box-shadow,transform] duration-300`}
           style={{ width: `${((Math.min(index + 1, cards.length)) / cards.length) * 100}%` }}
         />
       </div>
@@ -228,7 +228,7 @@ export default function Flashcards({
               title={isStarred ? "حذف از واژه‌های من" : "افزودن به واژه‌های من"}
               aria-label={isStarred ? "حذف از واژه‌های من" : "افزودن به واژه‌های من"}
               aria-pressed={isStarred}
-              className={`absolute right-4 top-4 rounded-lg p-1 transition-all hover:scale-110 active:scale-[0.96] ${
+              className={`absolute right-4 top-4 rounded-lg p-1 transition-[background-color,color,border-color,transform] hover:scale-110 active:scale-[0.96] ${
                 isStarred ? "text-amber-400" : "text-stone-300 hover:text-amber-400"
               }`}
             >
@@ -261,28 +261,28 @@ export default function Flashcards({
       <div className="mx-auto flex max-w-xl flex-wrap items-center justify-center gap-2.5">
         <button
           onClick={() => go(-1)}
-          className="inline-flex items-center gap-1 rounded-xl border c-card px-4 py-2.5 text-sm font-bold text-stone-600 transition-all hover:bg-stone-50 active:scale-[0.96]"
+          className="inline-flex items-center gap-1 rounded-xl border c-card px-4 py-2.5 text-sm font-bold text-stone-600 transition-[background-color,color,border-color,transform] hover:bg-stone-50 active:scale-[0.96]"
         >
           <ChevronRight size={16} />
           قبلی
         </button>
         <button
           onClick={() => answer(true)}
-          className={`inline-flex items-center gap-1.5 rounded-xl ${t.bg} px-5 py-2.5 text-sm font-bold text-white shadow-md transition-all hover:opacity-90 active:scale-[0.96]`}
+          className={`inline-flex items-center gap-1.5 rounded-xl ${t.bg} px-5 py-2.5 text-sm font-bold text-white shadow-md transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-90 active:scale-[0.96]`}
         >
           <Check size={16} />
           بلدم
         </button>
         <button
           onClick={() => answer(false)}
-          className="inline-flex items-center gap-1.5 rounded-xl border border-rose-200 bg-rose-50 px-5 py-2.5 text-sm font-bold text-rose-600 transition-all hover:bg-rose-100 active:scale-[0.96]"
+          className="inline-flex items-center gap-1.5 rounded-xl border border-rose-200 bg-rose-50 px-5 py-2.5 text-sm font-bold text-rose-600 transition-[background-color,color,border-color,transform] hover:bg-rose-100 active:scale-[0.96]"
         >
           <RefreshCw size={15} />
           تکرار
         </button>
         <button
           onClick={() => go(1)}
-          className="inline-flex items-center gap-1 rounded-xl border c-card px-4 py-2.5 text-sm font-bold text-stone-600 transition-all hover:bg-stone-50 active:scale-[0.96]"
+          className="inline-flex items-center gap-1 rounded-xl border c-card px-4 py-2.5 text-sm font-bold text-stone-600 transition-[background-color,color,border-color,transform] hover:bg-stone-50 active:scale-[0.96]"
         >
           بعدی
           <ChevronLeft size={16} />

@@ -75,7 +75,7 @@ export default function MyWordsFlashcards({ stars }: { stars: ResolvedStar[] }) 
               <button
                 key={o.v}
                 onClick={() => setScope(o.v)}
-                className={`rounded-lg border px-2.5 py-1.5 text-[11.5px] font-black transition-all active:scale-[0.96] ${
+                className={`rounded-lg border px-2.5 py-1.5 text-[11.5px] font-black transition-[background-color,color,border-color,transform] active:scale-[0.96] ${
                   scope === o.v
                     ? "border-violet-400 bg-violet-100 text-violet-700"
                     : "border-stone-200 bg-white text-stone-500 hover:border-violet-300"
@@ -92,7 +92,7 @@ export default function MyWordsFlashcards({ stars }: { stars: ResolvedStar[] }) 
               trackEvent("my_words_flashcards_start");
               setSession({ color: deckColor, cards: deck });
             }}
-            className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-l from-violet-500 to-purple-600 px-4 py-2.5 text-[13px] font-black text-white shadow-md shadow-violet-500/25 transition-all hover:opacity-95 active:scale-[0.96]"
+            className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-l from-violet-500 to-purple-600 px-4 py-2.5 text-[13px] font-black text-white shadow-md shadow-violet-500/25 transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-95 active:scale-[0.96]"
           >
             <Play size={14} />
             شروع فلش‌کارت ({faNum(deck.length)} کارت)
@@ -100,7 +100,7 @@ export default function MyWordsFlashcards({ stars }: { stars: ResolvedStar[] }) 
         ) : (
           <button
             onClick={() => setView({ type: "dictionary" })}
-            className="inline-flex items-center gap-1.5 rounded-xl border border-violet-300 bg-white px-4 py-2.5 text-[13px] font-bold text-violet-700 transition-all hover:bg-violet-50 active:scale-[0.96]"
+            className="inline-flex items-center gap-1.5 rounded-xl border border-violet-300 bg-white px-4 py-2.5 text-[13px] font-bold text-violet-700 transition-[background-color,color,border-color,transform] hover:bg-violet-50 active:scale-[0.96]"
           >
             <RotateCcw size={14} />
             رفتن به دیکشنری

@@ -127,7 +127,7 @@ export default function ReviewView() {
           </p>
           <button
             onClick={() => setView({ type: "exam" })}
-            className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-6 py-2.5 text-sm font-bold text-white transition-all hover:opacity-90 active:scale-[0.96]"
+            className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-6 py-2.5 text-sm font-bold text-white transition-[background-color,color,border-color,transform,opacity] hover:opacity-90 active:scale-[0.96]"
           >
             <ClipboardCheck size={16} />
             آزمون جامع واژگان
@@ -193,7 +193,7 @@ export default function ReviewView() {
                   key={n}
                   onClick={() => setSize(n)}
                   disabled={n > total}
-                  className={`rounded-xl border-2 px-5 py-2.5 text-sm font-black transition-all active:scale-[0.96] disabled:cursor-not-allowed disabled:opacity-35 ${
+                  className={`rounded-xl border-2 px-5 py-2.5 text-sm font-black transition-[background-color,color,border-color,transform,opacity] active:scale-[0.96] disabled:cursor-not-allowed disabled:opacity-35 ${
                     clampedSize === n
                       ? "border-amber-500 bg-amber-50 text-amber-700"
                       : "border-stone-200 text-stone-500 hover:border-amber-300"
@@ -209,7 +209,7 @@ export default function ReviewView() {
                 trackEvent("quick_review_start");
                 setSession(resolved.slice(0, clampedSize).map((r) => r.q));
               }}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-l from-amber-500 to-amber-600 py-3 text-sm font-black text-white shadow-lg shadow-amber-500/25 transition-all hover:opacity-95 active:scale-[0.96] sm:w-auto sm:px-10"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-l from-amber-500 to-amber-600 py-3 text-sm font-black text-white shadow-lg shadow-amber-500/25 transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-95 active:scale-[0.96] sm:w-auto sm:px-10"
             >
               <Zap size={17} />
               شروع مرور سریع ({faNum(clampedSize)} سؤال)

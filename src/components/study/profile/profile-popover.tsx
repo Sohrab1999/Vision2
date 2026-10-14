@@ -237,7 +237,7 @@ export default function ProfilePopover() {
       <PopoverTrigger asChild>
         <button
           suppressHydrationWarning
-          className="ml-1 flex min-h-11 shrink-0 items-center gap-2 rounded-full border c-card py-1 pl-1 pr-2.5 transition-all hover:border-emerald-300 hover:shadow-sm active:scale-[0.96]"
+          className="ml-1 flex min-h-11 shrink-0 items-center gap-2 rounded-full border c-card py-1 pl-1 pr-2.5 transition-[background-color,color,border-color,box-shadow,transform] hover:border-emerald-300 hover:shadow-sm active:scale-[0.96]"
           aria-label="پروفایل من"
           title="پروفایل من"
         >
@@ -304,7 +304,7 @@ export default function ProfilePopover() {
                   setSaved(false);
                 }}
                 aria-label={`رنگ ${c}`}
-                className={`h-8 w-8 rounded-full shadow-md transition-all ${avatarClasses[c]} ${
+                className={`h-8 w-8 rounded-full shadow-md transition-[background-color,color,border-color,box-shadow,transform,opacity] ${avatarClasses[c]} ${
                   colorDraft === c
                     ? "scale-110 ring-2 ring-stone-700 ring-offset-2"
                     : "opacity-70 hover:opacity-100"
@@ -316,7 +316,7 @@ export default function ProfilePopover() {
         <button
           onClick={saveProfile}
           disabled={nameDraft.trim().length < 2}
-          className="w-full rounded-xl bg-emerald-600 py-2.5 text-sm font-bold text-white transition-all hover:bg-emerald-700 active:scale-[0.96] disabled:cursor-not-allowed disabled:opacity-40"
+          className="w-full rounded-xl bg-emerald-600 py-2.5 text-sm font-bold text-white transition-[background-color,color,border-color,transform,opacity] hover:bg-emerald-700 active:scale-[0.96] disabled:cursor-not-allowed disabled:opacity-40"
         >
           {saved ? "✓ ذخیره شد!" : "ذخیرهٔ پروفایل"}
         </button>
@@ -330,7 +330,7 @@ export default function ProfilePopover() {
           <div className="grid grid-cols-2 gap-2">
             <button
               onClick={handleExport}
-              className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-stone-200 bg-stone-50 px-2 py-2 text-[12px] font-bold text-stone-700 transition-all hover:border-emerald-300 hover:text-emerald-700 active:scale-[0.96]"
+              className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-stone-200 bg-stone-50 px-2 py-2 text-[12px] font-bold text-stone-700 transition-[background-color,color,border-color,transform] hover:border-emerald-300 hover:text-emerald-700 active:scale-[0.96]"
             >
               <Download size={14} />
               دانلود پشتیبان
@@ -338,7 +338,7 @@ export default function ProfilePopover() {
             <button
               onClick={() => fileRef.current?.click()}
               disabled={importing}
-              className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-stone-200 bg-stone-50 px-2 py-2 text-[12px] font-bold text-stone-700 transition-all hover:border-amber-300 hover:text-amber-700 active:scale-[0.96] disabled:opacity-50"
+              className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-stone-200 bg-stone-50 px-2 py-2 text-[12px] font-bold text-stone-700 transition-[background-color,color,border-color,transform,opacity] hover:border-amber-300 hover:text-amber-700 active:scale-[0.96] disabled:opacity-50"
             >
               <Upload size={14} />
               {importing ? "در حال خواندن…" : "بازیابی پشتیبان"}
@@ -365,7 +365,7 @@ export default function ProfilePopover() {
               </div>
               <button
                 onClick={handleAutoRestore}
-                className="inline-flex shrink-0 items-center gap-1 rounded-lg border border-emerald-300 bg-white px-2 py-1 text-[10.5px] font-black text-emerald-700 transition-all hover:bg-emerald-100 active:scale-[0.96]"
+                className="inline-flex shrink-0 items-center gap-1 rounded-lg border border-emerald-300 bg-white px-2 py-1 text-[10.5px] font-black text-emerald-700 transition-[background-color,color,border-color,transform] hover:bg-emerald-100 active:scale-[0.96]"
                 title="بازگرداندن آخرین پشتیبان خودکار مرورگر"
               >
                 <RotateCcw size={11} />
@@ -399,7 +399,7 @@ export default function ProfilePopover() {
                 </span>
                 <button
                   onClick={handleCopyCode}
-                  className="inline-flex shrink-0 items-center gap-1 rounded-lg border border-emerald-300 bg-white px-2 py-1 text-[10.5px] font-black text-emerald-700 transition-all hover:bg-emerald-100 active:scale-[0.96]"
+                  className="inline-flex shrink-0 items-center gap-1 rounded-lg border border-emerald-300 bg-white px-2 py-1 text-[10.5px] font-black text-emerald-700 transition-[background-color,color,border-color,transform] hover:bg-emerald-100 active:scale-[0.96]"
                   title="کپی کد"
                 >
                   <Copy size={11} />
@@ -415,7 +415,7 @@ export default function ProfilePopover() {
                 <button
                   onClick={handlePushNow}
                   disabled={syncing !== ""}
-                  className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-emerald-300 bg-white px-2 py-2 text-[11px] font-black text-emerald-700 transition-all hover:bg-emerald-100 active:scale-[0.96] disabled:opacity-50"
+                  className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-emerald-300 bg-white px-2 py-2 text-[11px] font-black text-emerald-700 transition-[background-color,color,border-color,transform,opacity] hover:bg-emerald-100 active:scale-[0.96] disabled:opacity-50"
                 >
                   <CloudUpload size={13} />
                   {syncing === "push" ? "در حال ارسال…" : "به‌روزرسانی ابری"}
@@ -423,7 +423,7 @@ export default function ProfilePopover() {
                 <button
                   onClick={() => handlePullMerge()}
                   disabled={syncing !== ""}
-                  className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-emerald-300 bg-white px-2 py-2 text-[11px] font-black text-emerald-700 transition-all hover:bg-emerald-100 active:scale-[0.96] disabled:opacity-50"
+                  className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-emerald-300 bg-white px-2 py-2 text-[11px] font-black text-emerald-700 transition-[background-color,color,border-color,transform,opacity] hover:bg-emerald-100 active:scale-[0.96] disabled:opacity-50"
                 >
                   <CloudDownload size={13} />
                   {syncing === "pull" ? <RefreshCw size={12} className="animate-spin" /> : "بازیابی از ابر"}
@@ -446,7 +446,7 @@ export default function ProfilePopover() {
               <button
                 onClick={handleCreateCode}
                 disabled={syncing !== ""}
-                className="flex w-full items-center justify-center gap-1.5 rounded-xl bg-emerald-600 py-2.5 text-[12px] font-black text-white transition-all hover:bg-emerald-700 active:scale-[0.96] disabled:opacity-50"
+                className="flex w-full items-center justify-center gap-1.5 rounded-xl bg-emerald-600 py-2.5 text-[12px] font-black text-white transition-[background-color,color,border-color,transform,opacity] hover:bg-emerald-700 active:scale-[0.96] disabled:opacity-50"
               >
                 <CloudUpload size={14} />
                 {syncing === "create" ? "در حال ساخت کد…" : "ساخت کد یادگیرنده"}
@@ -464,7 +464,7 @@ export default function ProfilePopover() {
                 <button
                   onClick={() => handlePullMerge(codeInput)}
                   disabled={!looksLikeCode(codeInput) || syncing !== ""}
-                  className="shrink-0 rounded-xl border border-emerald-300 bg-white px-3 py-2 text-[11.5px] font-black text-emerald-700 transition-all hover:bg-emerald-50 active:scale-[0.96] disabled:cursor-not-allowed disabled:opacity-40"
+                  className="shrink-0 rounded-xl border border-emerald-300 bg-white px-3 py-2 text-[11.5px] font-black text-emerald-700 transition-[background-color,color,border-color,transform,opacity] hover:bg-emerald-50 active:scale-[0.96] disabled:cursor-not-allowed disabled:opacity-40"
                 >
                   {syncing === "join" ? "…" : "ورود با کد"}
                 </button>

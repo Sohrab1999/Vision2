@@ -36,7 +36,7 @@ export default function AppendixView() {
               <button
                 key={st.key}
                 onClick={() => setTab(st.key)}
-                className={`inline-flex items-center gap-1.5 rounded-xl px-3.5 py-2 text-[13px] font-bold transition-all ${
+                className={`inline-flex items-center gap-1.5 rounded-xl px-3.5 py-2 text-[13px] font-bold transition-[background-color,color,border-color,box-shadow] ${
                   active ? "bg-violet-600 text-white shadow-sm" : "bg-stone-100 text-stone-600 hover:bg-stone-200"
                 }`}
               >

@@ -61,7 +61,7 @@ export default function SpeakButton({
       onClick={handle}
       title="روخوانی با هوش مصنوعی"
       aria-label="روخوانی متن انگلیسی"
-      className={`inline-flex items-center justify-center border transition-all active:scale-[0.96] ${
+      className={`inline-flex items-center justify-center border transition-[background-color,color,border-color,box-shadow,transform] active:scale-[0.96] ${
         state === "playing"
           ? "bg-emerald-600 text-white border-emerald-600 shadow-sm"
           : "bg-white/80 hover:bg-emerald-50 text-emerald-700 border-emerald-200"

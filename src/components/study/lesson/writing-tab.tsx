@@ -86,7 +86,7 @@ export default function WritingTab({ lesson }: { lesson: LessonData }) {
         </p>
         <button
           onClick={restart}
-          className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-600 px-5 py-2.5 text-sm font-bold text-white transition-all hover:bg-emerald-700 active:scale-[0.96]"
+          className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-600 px-5 py-2.5 text-sm font-bold text-white transition-[background-color,color,border-color,transform] hover:bg-emerald-700 active:scale-[0.96]"
         >
           <RotateCcw size={15} />
           تمرین مجدد
@@ -108,7 +108,7 @@ export default function WritingTab({ lesson }: { lesson: LessonData }) {
         </span>
       </div>
       <div className="h-1.5 overflow-hidden rounded-full bg-stone-200">
-        <div className={`h-full ${t.bg} transition-all duration-300`} style={{ width: `${((idx + (checked !== null ? 1 : 0)) / lesson.writing.length) * 100}%` }} />
+        <div className={`h-full ${t.bg} transition-[background-color,color,border-color,box-shadow,transform] duration-300`} style={{ width: `${((idx + (checked !== null ? 1 : 0)) / lesson.writing.length) * 100}%` }} />
       </div>
 
       <AnimatePresence mode="wait">
@@ -170,7 +170,7 @@ export default function WritingTab({ lesson }: { lesson: LessonData }) {
                         setPlaced((p) => p.filter((_, i) => i !== pos));
                         setChecked(null);
                       }}
-                      className={`en-text rounded-lg px-2.5 py-1.5 text-[14px] font-semibold transition-all active:scale-[0.96] ${
+                      className={`en-text rounded-lg px-2.5 py-1.5 text-[14px] font-semibold transition-[background-color,color,border-color,transform] active:scale-[0.96] ${
                         checked === null
                           ? "bg-stone-800 text-white hover:bg-stone-700"
                           : correctHere
@@ -198,7 +198,7 @@ export default function WritingTab({ lesson }: { lesson: LessonData }) {
                     setPlaced((p) => [...p, i]);
                     setChecked(null);
                   }}
-                  className="en-text rounded-lg border border-stone-200 bg-stone-50 px-2.5 py-1.5 text-[14px] font-semibold text-stone-700 transition-all hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700 active:scale-[0.96]"
+                  className="en-text rounded-lg border border-stone-200 bg-stone-50 px-2.5 py-1.5 text-[14px] font-semibold text-stone-700 transition-[background-color,color,border-color,transform] hover:border-emerald-300 hover:bg-emerald-50 hover:text-emerald-700 active:scale-[0.96]"
                 >
                   {item.w}
                 </motion.button>
@@ -212,7 +212,7 @@ export default function WritingTab({ lesson }: { lesson: LessonData }) {
               <button
                 onClick={check}
                 disabled={!isComplete}
-                className={`inline-flex items-center gap-1.5 rounded-xl px-5 py-2.5 text-sm font-bold text-white transition-all active:scale-[0.96] ${
+                className={`inline-flex items-center gap-1.5 rounded-xl px-5 py-2.5 text-sm font-bold text-white transition-[background-color,color,border-color,transform] active:scale-[0.96] ${
                   isComplete ? "bg-emerald-600 hover:bg-emerald-700" : "cursor-not-allowed bg-stone-300"
                 }`}
               >
@@ -221,7 +221,7 @@ export default function WritingTab({ lesson }: { lesson: LessonData }) {
               </button>
               <button
                 onClick={() => { setPlaced([]); setChecked(null); }}
-                className="inline-flex items-center gap-1.5 rounded-xl border c-card px-4 py-2.5 text-sm font-bold text-stone-600 transition-all hover:bg-stone-50 active:scale-[0.96]"
+                className="inline-flex items-center gap-1.5 rounded-xl border c-card px-4 py-2.5 text-sm font-bold text-stone-600 transition-[background-color,color,border-color,transform] hover:bg-stone-50 active:scale-[0.96]"
               >
                 <Eraser size={15} />
                 پاک کردن
@@ -244,7 +244,7 @@ export default function WritingTab({ lesson }: { lesson: LessonData }) {
                 <SpeakButton text={ex.answer.join(" ").replace(/ ,/g, ",")} label="روخوانی" />
                 <button
                   onClick={next}
-                  className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-[13px] font-bold text-white transition-all hover:bg-emerald-700 active:scale-[0.96]"
+                  className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-[13px] font-bold text-white transition-[background-color,color,border-color,transform] hover:bg-emerald-700 active:scale-[0.96]"
                 >
                   {idx < lesson.writing.length - 1 ? "تمرین بعدی" : "دیدن نتیجه"}
                   <ArrowLeft size={14} />

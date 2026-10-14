@@ -88,7 +88,7 @@ export default function Onboarding() {
       {[0, 1, 2].map((i) => (
         <span
           key={i}
-          className={`h-1.5 rounded-full transition-all duration-300 ${
+          className={`h-1.5 rounded-full transition-[background-color,color,border-color,box-shadow,transform] duration-300 ${
             i === step ? "w-6 bg-emerald-600" : i < step ? "w-1.5 bg-emerald-400" : "w-1.5 bg-stone-200"
           }`}
         />
@@ -173,7 +173,7 @@ export default function Onboarding() {
                       key={c}
                       onClick={() => setColorDraft(c)}
                       aria-label={`رنگ ${c}`}
-                      className={`h-8 w-8 rounded-full shadow-md transition-all ${avatarClasses[c] ?? avatarClasses.emerald} ${
+                      className={`h-8 w-8 rounded-full shadow-md transition-[background-color,color,border-color,box-shadow,transform,opacity] ${avatarClasses[c] ?? avatarClasses.emerald} ${
                         colorDraft === c ? "scale-110 ring-2 ring-stone-700 ring-offset-2" : "opacity-70 hover:opacity-100"
                       }`}
                     />
@@ -185,7 +185,7 @@ export default function Onboarding() {
               </div>
               <button
                 onClick={goStep2}
-                className="flex w-full items-center justify-center gap-1.5 rounded-xl bg-emerald-600 py-3 text-sm font-black text-white shadow-md shadow-emerald-900/20 transition-all hover:bg-emerald-700 active:scale-[0.96]"
+                className="flex w-full items-center justify-center gap-1.5 rounded-xl bg-emerald-600 py-3 text-sm font-black text-white shadow-md shadow-emerald-900/20 transition-[background-color,color,border-color,box-shadow,transform] hover:bg-emerald-700 active:scale-[0.96]"
               >
                 ادامه
                 <ChevronLeft size={16} />
@@ -215,7 +215,7 @@ export default function Onboarding() {
                       role="radio"
                       aria-checked={active}
                       onClick={() => setGoalDraft(g)}
-                      className={`flex w-full items-center gap-3 rounded-2xl border px-4 py-3 text-right transition-all active:scale-[0.96] ${
+                      className={`flex w-full items-center gap-3 rounded-2xl border px-4 py-3 text-right transition-[background-color,color,border-color,transform] active:scale-[0.96] ${
                         active ? GOAL_TONE[meta.tone] : GOAL_TONE_IDLE[meta.tone]
                       }`}
                     >
@@ -237,7 +237,7 @@ export default function Onboarding() {
                         <span className="mt-0.5 block text-[11.5px] leading-4 text-stone-500">{meta.desc}</span>
                       </span>
                       <span
-                        className={`h-4.5 w-4.5 shrink-0 rounded-full border-2 transition-all ${
+                        className={`h-4.5 w-4.5 shrink-0 rounded-full border-2 transition-[background-color,color,border-color,box-shadow] ${
                           active ? "border-emerald-600 bg-emerald-600 shadow-inner" : "border-stone-300 bg-white"
                         }`}
                       />
@@ -248,13 +248,13 @@ export default function Onboarding() {
               <div className="mt-4 flex gap-2">
                 <button
                   onClick={() => setStep(0)}
-                  className="rounded-xl border c-card px-4 py-3 text-[13px] font-bold text-stone-500 transition-all hover:bg-stone-50 active:scale-[0.96]"
+                  className="rounded-xl border c-card px-4 py-3 text-[13px] font-bold text-stone-500 transition-[background-color,color,border-color,transform] hover:bg-stone-50 active:scale-[0.96]"
                 >
                   بازگشت
                 </button>
                 <button
                   onClick={goStep3}
-                  className="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-emerald-600 py-3 text-sm font-black text-white shadow-md shadow-emerald-900/20 transition-all hover:bg-emerald-700 active:scale-[0.96]"
+                  className="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-emerald-600 py-3 text-sm font-black text-white shadow-md shadow-emerald-900/20 transition-[background-color,color,border-color,box-shadow,transform] hover:bg-emerald-700 active:scale-[0.96]"
                 >
                   ثبت هدف
                   <ChevronLeft size={16} />
@@ -289,7 +289,7 @@ export default function Onboarding() {
               </div>
               <button
                 onClick={startFirstExercise}
-                className="flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-600 py-3.5 text-sm font-black text-white shadow-md shadow-emerald-900/20 transition-all hover:bg-emerald-700 active:scale-[0.96]"
+                className="flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-600 py-3.5 text-sm font-black text-white shadow-md shadow-emerald-900/20 transition-[background-color,color,border-color,box-shadow,transform] hover:bg-emerald-700 active:scale-[0.96]"
               >
                 <Play size={16} />
                 شروع اولین تمرین

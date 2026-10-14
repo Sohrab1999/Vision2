@@ -75,7 +75,7 @@ export function RushModeTabs({ mode, onChange }: { mode: "quiz" | "spell"; onCha
             role="tab"
             aria-selected={mode === t.id}
             onClick={() => onChange(t.id)}
-            className={`inline-flex items-center gap-1.5 rounded-xl px-4 py-2 text-[13px] font-black transition-all active:scale-[0.96] ${
+            className={`inline-flex items-center gap-1.5 rounded-xl px-4 py-2 text-[13px] font-black transition-[background-color,color,border-color,box-shadow,transform] active:scale-[0.96] ${
               mode === t.id
                 ? "bg-gradient-to-l from-amber-500 to-orange-600 text-white shadow-md shadow-orange-500/25"
                 : "text-stone-500 hover:text-orange-700"
@@ -362,7 +362,7 @@ export default function SpellRushView({ onExit }: { onExit?: () => void }) {
 
             <button
               onClick={start}
-              className="rush-start inline-flex items-center gap-2.5 rounded-2xl bg-gradient-to-l from-sky-500 to-cyan-600 px-9 py-4 text-base font-black text-white shadow-xl shadow-sky-600/30 transition-all hover:opacity-95 active:scale-[0.96]"
+              className="rush-start inline-flex items-center gap-2.5 rounded-2xl bg-gradient-to-l from-sky-500 to-cyan-600 px-9 py-4 text-base font-black text-white shadow-xl shadow-sky-600/30 transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-95 active:scale-[0.96]"
             >
               <Play size={20} />
               شروع دیکتهٔ برق‌آسا
@@ -411,7 +411,7 @@ export default function SpellRushView({ onExit }: { onExit?: () => void }) {
           <div className="flex flex-wrap justify-center gap-3">
             <button
               onClick={start}
-              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-l from-sky-500 to-cyan-600 px-6 py-3 text-sm font-black text-white shadow-lg shadow-sky-600/25 transition-all hover:opacity-95 active:scale-[0.96]"
+              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-l from-sky-500 to-cyan-600 px-6 py-3 text-sm font-black text-white shadow-lg shadow-sky-600/25 transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-95 active:scale-[0.96]"
             >
               <RotateCcw size={16} />
               دیکتهٔ دوباره
@@ -419,7 +419,7 @@ export default function SpellRushView({ onExit }: { onExit?: () => void }) {
             <button
               onClick={saveImage}
               disabled={imgBusy}
-              className="inline-flex items-center gap-2 rounded-xl border border-stone-300 bg-white px-5 py-3 text-sm font-bold text-stone-600 transition-all hover:border-sky-300 hover:text-sky-700 active:scale-[0.96] disabled:opacity-50"
+              className="inline-flex items-center gap-2 rounded-xl border border-stone-300 bg-white px-5 py-3 text-sm font-bold text-stone-600 transition-[background-color,color,border-color,transform,opacity] hover:border-sky-300 hover:text-sky-700 active:scale-[0.96] disabled:opacity-50"
             >
               <Download size={16} />
               {imgBusy ? "در حال ساخت…" : "دانلود تصویر نتیجه"}
@@ -427,7 +427,7 @@ export default function SpellRushView({ onExit }: { onExit?: () => void }) {
             {onExit ? (
               <button
                 onClick={onExit}
-                className="inline-flex items-center gap-2 rounded-xl border border-stone-200 bg-white px-5 py-3 text-sm font-bold text-stone-600 transition-all hover:bg-stone-50 active:scale-[0.96]"
+                className="inline-flex items-center gap-2 rounded-xl border border-stone-200 bg-white px-5 py-3 text-sm font-bold text-stone-600 transition-[background-color,color,border-color,transform] hover:bg-stone-50 active:scale-[0.96]"
               >
                 <Zap size={16} />
                 حالت چهارگزینه‌ای
@@ -435,7 +435,7 @@ export default function SpellRushView({ onExit }: { onExit?: () => void }) {
             ) : (
               <button
                 onClick={() => setView({ type: "home" })}
-                className="inline-flex items-center gap-2 rounded-xl border border-stone-200 bg-white px-5 py-3 text-sm font-bold text-stone-600 transition-all hover:bg-stone-50 active:scale-[0.96]"
+                className="inline-flex items-center gap-2 rounded-xl border border-stone-200 bg-white px-5 py-3 text-sm font-bold text-stone-600 transition-[background-color,color,border-color,transform] hover:bg-stone-50 active:scale-[0.96]"
               >
                 <Home size={16} />
                 بازگشت به خانه
@@ -579,7 +579,7 @@ export default function SpellRushView({ onExit }: { onExit?: () => void }) {
               autoComplete="off"
               aria-label="املای واژه"
               placeholder="type the word…"
-              className="spell-input mx-auto block w-full max-w-sm rounded-xl border-2 border-sky-200 bg-white px-4 py-3 text-center text-lg font-black tracking-wide text-stone-800 outline-none transition-all placeholder:text-stone-300 focus:border-sky-400 focus:ring-4 focus:ring-sky-100 disabled:opacity-60"
+              className="spell-input mx-auto block w-full max-w-sm rounded-xl border-2 border-sky-200 bg-white px-4 py-3 text-center text-lg font-black tracking-wide text-stone-800 outline-none transition-[background-color,color,border-color,box-shadow,opacity] placeholder:text-stone-300 focus:border-sky-400 focus:ring-4 focus:ring-sky-100 disabled:opacity-60"
             />
 
             {/* actions */}
@@ -593,7 +593,7 @@ export default function SpellRushView({ onExit }: { onExit?: () => void }) {
                     () => setAudioErr(true)
                   )
                 }
-                className="spell-chip inline-flex items-center gap-1.5 rounded-lg border border-sky-200 bg-white px-3 py-1.5 text-[12px] font-bold text-sky-700 transition-all hover:bg-sky-50 active:scale-[0.96]"
+                className="spell-chip inline-flex items-center gap-1.5 rounded-lg border border-sky-200 bg-white px-3 py-1.5 text-[12px] font-bold text-sky-700 transition-[background-color,color,border-color,transform] hover:bg-sky-50 active:scale-[0.96]"
               >
                 <Volume2 size={13} />
                 دوباره بشنو
@@ -602,7 +602,7 @@ export default function SpellRushView({ onExit }: { onExit?: () => void }) {
                 onClick={revealHint}
                 disabled={feedback !== "none" || revealed >= current.en.length}
                 title="حرف بعدی را نشان بده (امتیاز کم می‌شود)"
-                className="spell-chip inline-flex items-center gap-1.5 rounded-lg border border-amber-200 bg-white px-3 py-1.5 text-[12px] font-bold text-amber-700 transition-all enabled:hover:bg-amber-50 active:scale-[0.96] disabled:cursor-not-allowed disabled:opacity-50"
+                className="spell-chip inline-flex items-center gap-1.5 rounded-lg border border-amber-200 bg-white px-3 py-1.5 text-[12px] font-bold text-amber-700 transition-[background-color,color,border-color,transform,opacity] enabled:hover:bg-amber-50 active:scale-[0.96] disabled:cursor-not-allowed disabled:opacity-50"
               >
                 <Lightbulb size={13} />
                 راهنما {revealed > 0 ? `(${faNum(revealed)}/${faNum(current.en.length)})` : ""}
@@ -610,7 +610,7 @@ export default function SpellRushView({ onExit }: { onExit?: () => void }) {
               <button
                 onClick={skip}
                 disabled={feedback !== "none"}
-                className="spell-chip inline-flex items-center gap-1.5 rounded-lg border border-stone-200 bg-white px-3 py-1.5 text-[12px] font-bold text-stone-500 transition-all enabled:hover:bg-stone-50 active:scale-[0.96] disabled:cursor-not-allowed disabled:opacity-50"
+                className="spell-chip inline-flex items-center gap-1.5 rounded-lg border border-stone-200 bg-white px-3 py-1.5 text-[12px] font-bold text-stone-500 transition-[background-color,color,border-color,transform,opacity] enabled:hover:bg-stone-50 active:scale-[0.96] disabled:cursor-not-allowed disabled:opacity-50"
               >
                 <SkipForward size={13} />
                 رد کردن

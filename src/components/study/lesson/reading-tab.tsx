@@ -27,7 +27,7 @@ export default function ReadingTab({ lesson }: { lesson: LessonData }) {
             className={`relative h-6 w-11 rounded-full transition-colors ${showFa ? "bg-emerald-500" : "bg-stone-300"}`}
           >
             <span
-              className={`absolute top-0.5 h-5 w-5 rounded-full bg-white shadow transition-all ${
+              className={`absolute top-0.5 h-5 w-5 rounded-full bg-white shadow transition-[background-color,color,border-color,box-shadow] ${
                 showFa ? "right-0.5" : "right-[22px]"
               }`}
             />

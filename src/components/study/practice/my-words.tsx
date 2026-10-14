@@ -103,7 +103,7 @@ export default function MyWordsView() {
           {mounted && stars.length > 0 && (
             <button
               onClick={armClear}
-              className={`ms-auto inline-flex items-center gap-1.5 rounded-xl border px-3 py-2 text-[12px] font-bold transition-all active:scale-[0.96] ${
+              className={`ms-auto inline-flex items-center gap-1.5 rounded-xl border px-3 py-2 text-[12px] font-bold transition-[background-color,color,border-color,transform] active:scale-[0.96] ${
                 armedClear
                   ? "animate-pulse border-rose-300 bg-rose-500 text-white"
                   : "border-rose-200 bg-rose-50 text-rose-600 hover:bg-rose-100"
@@ -172,7 +172,7 @@ export default function MyWordsView() {
         <div className="flex flex-wrap gap-2">
           <button
             onClick={() => setLessonFilter(null)}
-            className={`rounded-full px-3 py-1.5 text-[12px] font-bold transition-all ${
+            className={`rounded-full px-3 py-1.5 text-[12px] font-bold transition-colors ${
               lessonFilter === null ? "bg-stone-700 text-white" : "bg-stone-100 text-stone-600 hover:bg-stone-200"
             }`}
           >
@@ -185,7 +185,7 @@ export default function MyWordsView() {
               <button
                 key={l.id}
                 onClick={() => setLessonFilter(l.id)}
-                className={`rounded-full px-3 py-1.5 text-[12px] font-bold transition-all ${
+                className={`rounded-full px-3 py-1.5 text-[12px] font-bold transition-colors ${
                   lessonFilter === l.id ? `${t.bg} text-white` : "bg-stone-100 text-stone-600 hover:bg-stone-200"
                 }`}
               >
@@ -234,7 +234,7 @@ export default function MyWordsView() {
           </p>
           <button
             onClick={() => setView({ type: "dictionary" })}
-            className="mt-1 inline-flex items-center gap-1.5 rounded-full bg-stone-700 px-4 py-2 text-[12px] font-bold text-white transition-all hover:bg-stone-600 active:scale-[0.96]"
+            className="mt-1 inline-flex items-center gap-1.5 rounded-full bg-stone-700 px-4 py-2 text-[12px] font-bold text-white transition-[background-color,color,border-color,transform] hover:bg-stone-600 active:scale-[0.96]"
           >
             <BookMarked size={14} />
             رفتن به دیکشنری
@@ -252,7 +252,7 @@ export default function MyWordsView() {
               setQuery("");
               setLessonFilter(null);
             }}
-            className="mt-1 rounded-full bg-stone-700 px-3.5 py-1.5 text-[11px] font-bold text-white transition-all hover:bg-stone-600"
+            className="mt-1 rounded-full bg-stone-700 px-3.5 py-1.5 text-[11px] font-bold text-white transition-colors hover:bg-stone-600"
           >
             نمایش همهٔ نشان‌شده‌ها
           </button>
@@ -309,7 +309,7 @@ export default function MyWordsView() {
                     <button
                       onClick={() => toggleKnown(w.key)}
                       title={isKnown ? "بلدم" : "علامت‌زدن به عنوان بلد"}
-                      className={`h-8 rounded-full border px-2 text-[10px] font-bold transition-all ${
+                      className={`h-8 rounded-full border px-2 text-[10px] font-bold transition-colors ${
                         isKnown
                           ? "border-emerald-300 bg-emerald-50 text-emerald-700"
                           : "border-stone-200 bg-white text-stone-500 hover:text-stone-600"

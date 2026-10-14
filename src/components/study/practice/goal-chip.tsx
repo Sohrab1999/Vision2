@@ -82,7 +82,7 @@ export default function GoalChip() {
       {/* میکرونوار پیشرفت — جزئیات زنده زیر متن */}
       <span className="absolute inset-x-0 bottom-0 h-[3px] c-track-70" aria-hidden>
         <span
-          className={`block h-full transition-all duration-500 ${
+          className={`block h-full transition-[background-color,color,border-color,box-shadow,transform] duration-500 ${
             meta.done ? "bg-white/90" : "bg-emerald-600"
           }`}
           style={{ width: `${meta.pct}%` }}

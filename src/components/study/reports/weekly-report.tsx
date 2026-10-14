@@ -447,7 +447,7 @@ export default function WeeklyReportSection() {
           <div className="mt-1.5 flex items-center gap-2">
             <div className="h-1.5 flex-1 overflow-hidden rounded-full c-track-60" aria-hidden>
               <div
-                className="h-full rounded-full bg-gradient-to-l from-violet-600 to-fuchsia-600 transition-all"
+                className="h-full rounded-full bg-gradient-to-l from-violet-600 to-fuchsia-600 transition-[background-color,color,border-color,box-shadow,transform]"
                 style={{ width: `${Math.max(0, Math.min(100, digest.duels.winRate))}%` }}
               />
             </div>

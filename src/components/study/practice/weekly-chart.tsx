@@ -74,7 +74,7 @@ export default function WeeklyChart() {
                 role="tab"
                 aria-selected={range === r.key}
                 onClick={() => setRange(r.key)}
-                className={`rounded-lg px-3.5 py-1.5 text-[12px] font-black transition-all active:scale-[0.96] ${
+                className={`rounded-lg px-3.5 py-1.5 text-[12px] font-black transition-[background-color,color,border-color,box-shadow,transform] active:scale-[0.96] ${
                   range === r.key
                     ? "bg-white text-cyan-700 shadow-sm ring-1 ring-cyan-200"
                     : "text-stone-500 hover:text-stone-700"

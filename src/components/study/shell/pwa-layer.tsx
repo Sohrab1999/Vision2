@@ -264,7 +264,7 @@ export default function PwaLayer() {
                           setShowGuide(true);
                         }
                       }}
-                      className="pointer-events-auto inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3 py-1.5 text-[12px] font-black text-white shadow-md shadow-emerald-900/20 transition-all hover:bg-emerald-700 active:scale-[0.96]"
+                      className="pointer-events-auto inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3 py-1.5 text-[12px] font-black text-white shadow-md shadow-emerald-900/20 transition-[background-color,color,border-color,box-shadow,transform] hover:bg-emerald-700 active:scale-[0.96]"
                     >
                       <Download size={13} />
                       نصب رایگان

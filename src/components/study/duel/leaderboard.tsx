@@ -89,7 +89,7 @@ export default function Leaderboard() {
         role="tab"
         aria-selected={active}
         onClick={() => setTab(key)}
-        className={`flex flex-1 items-center justify-center gap-1.5 rounded-full px-3 py-2 text-[12.5px] font-extrabold transition-all ${
+        className={`flex flex-1 items-center justify-center gap-1.5 rounded-full px-3 py-2 text-[12.5px] font-extrabold transition-[background-color,color,border-color,box-shadow] ${
           active ? `bg-white shadow-md ${activeCls}` : "text-stone-500 hover:text-stone-700"
         }`}
       >
@@ -223,7 +223,7 @@ export default function Leaderboard() {
           </p>
           <button
             onClick={openDuel}
-            className="mx-auto mt-4 flex items-center justify-center gap-2 rounded-xl bg-fuchsia-600 px-5 py-2.5 text-[13px] font-extrabold text-white shadow-md shadow-fuchsia-600/25 transition-all hover:bg-fuchsia-700 active:scale-[0.96]"
+            className="mx-auto mt-4 flex items-center justify-center gap-2 rounded-xl bg-fuchsia-600 px-5 py-2.5 text-[13px] font-extrabold text-white shadow-md shadow-fuchsia-600/25 transition-[background-color,color,border-color,box-shadow,transform] hover:bg-fuchsia-700 active:scale-[0.96]"
           >
             <Swords size={15} aria-hidden />
             شروع اولین نبرد
@@ -301,7 +301,7 @@ export default function Leaderboard() {
       {tab === "exams" && mounted && !userName && (
         <button
           onClick={openProfile}
-          className="name-cta mt-3 flex w-full items-center justify-between gap-3 rounded-2xl border border-emerald-300 bg-gradient-to-l from-emerald-50 to-teal-50 p-4 text-right shadow-sm transition-all hover:shadow-md active:scale-[0.96]"
+          className="name-cta mt-3 flex w-full items-center justify-between gap-3 rounded-2xl border border-emerald-300 bg-gradient-to-l from-emerald-50 to-teal-50 p-4 text-right shadow-sm transition-[background-color,color,border-color,box-shadow,transform] hover:shadow-md active:scale-[0.96]"
         >
           <span className="flex items-center gap-3">
             <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-600 text-white shadow-md shadow-emerald-900/25">

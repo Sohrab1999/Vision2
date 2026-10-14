@@ -244,7 +244,7 @@ export default function Badges() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: Math.min(i * 0.03, 0.3) }}
-              className={`badge-card group relative flex h-full w-full flex-col items-center rounded-2xl border-2 p-3.5 text-center transition-all ${
+              className={`badge-card group relative flex h-full w-full flex-col items-center rounded-2xl border-2 p-3.5 text-center transition-[background-color,color,border-color,box-shadow,opacity] ${
                 isUnlocked
                   ? `border-transparent bg-gradient-to-b ${tier.grad} text-white shadow-lg ${tier.glow} badge-shine`
                   : "border-stone-200 bg-white text-stone-500"
