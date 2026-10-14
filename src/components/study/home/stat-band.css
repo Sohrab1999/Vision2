@@ -1,0 +1,8 @@
+/* Task 155 — §8.3 wave 12: the home stat band's dark painter, verbatim
+   from globals.css (owner: home-feed.tsx — sole consumer). The band's
+   light gradient is the element's own bg-gradient-to-l utility; dark
+   repaints through this !important painter — position-free, the same
+   guarantee globals.css had before the extraction. */
+
+/* ---------------- home stat band dark painter ---------------- */
+.dark .stat-band { background-image: linear-gradient(to left, rgba(6, 55, 40, 0.45), rgba(6, 44, 40, 0.3)) !important; }

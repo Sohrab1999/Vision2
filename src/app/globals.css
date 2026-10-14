@@ -389,9 +389,12 @@ body {
    theme-free book-spine pair; the light utility gradients stay on the
    elements and dark repaints through the migrated !important painters */
 
-/* home stat + quote bands */
-.dark .stat-band { background-image: linear-gradient(to left, rgba(6, 55, 40, 0.45), rgba(6, 44, 40, 0.3)) !important; }
-.dark .quote-band { background-image: linear-gradient(to left, rgba(69, 48, 12, 0.4), rgba(60, 34, 8, 0.3)) !important; }
+/* the home stat + quote band dark painters moved beside their owners
+   (§8.3 wave 12, task 155): the stat band's painter into a NEW
+   home/stat-band.css beside home-feed.tsx, the quote band's painter
+   appended to the wave-2 home/quote-band.css — the light utility
+   gradients stay on the elements and dark repaints through the migrated
+   !important painters */
 
 /* quick-review hero (review-view header + exam-view banner) */
 .dark .review-hero { background-image: linear-gradient(to left, rgba(69, 48, 12, 0.55), rgba(24, 21, 18, 0.9)) !important; }

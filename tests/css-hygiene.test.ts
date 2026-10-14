@@ -47,6 +47,9 @@ const featureCssPaths = [
   "src/components/study/practice/streak-badge.css",
   // wave 10 (task 151): the bookshelf family (spine hover + dark shelf gradients)
   "src/components/study/home/home-bookshelf.css",
+  // wave 12 (task 155): the home band dark painters (stat-band new file;
+  // quote-band's painter appended to the wave-2 file)
+  "src/components/study/home/stat-band.css",
 ];
 const readEffectiveCss = (): string =>
   readFileSync(cssPath, "utf8") +
@@ -320,9 +323,15 @@ describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
     // retired with its last resident (report-month wave 3, dict chips wave
     // 9, donut now). 3a checkpoints re-ran clean. Growth from here must
     // consolidate, not add.
+    // task 155 (§8.3 wave 12): re-based 259 → 257 — the home band dark
+    // painters (2 selector lines) moved beside their single consumers:
+    // .stat-band into home/stat-band.css (NEW file beside home-feed.tsx),
+    // .quote-band appended to the wave-2 home/quote-band.css. Anchored to
+    // the field-measured 259 (exact guard regex, node re-count). 3a
+    // checkpoints re-ran clean. Growth from here must consolidate, not add.
     const sel = lines.filter((l) => /^\s*\.[a-z]/.test(l) && !l.includes("→")).length;
     expect(sel).toBeLessThanOrEqual(505);
-    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(259);
+    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(257);
   });
 });
 
@@ -1430,7 +1439,7 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
     // wave 2 (task 135)
     "src/components/study/shared/streak-flame.css": [".streak-flame {", "@keyframes flame-flicker {"],
     "src/components/study/shell/footer.css": [".footer-band {", ".dark .footer-band {"],
-    "src/components/study/home/quote-band.css": [".quote-band::before {", ".dark .quote-band::before"],
+    "src/components/study/home/quote-band.css": [".quote-band::before {", ".dark .quote-band::before", ".dark .quote-band { background-image: linear-gradient(to left, rgba(69, 48, 12, 0.4), rgba(60, 34, 8, 0.3)) !important; }"],
     "src/components/study/home/home-hero.css": [".hero-book::after {", "@keyframes hero-sheen {"],
     "src/components/study/practice/badges.css": [".badge-shine::after {", "@keyframes badge-sheen {", ".badge-popover { animation: pop-fade 0.18s ease-out; }", "@keyframes pop-fade {"],
     "src/components/study/quiz/quiz-result.css": [".certificate-card {", ".dark .certificate-card .border-dashed"],
@@ -1443,6 +1452,10 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
     // wave 10 (task 151) — the bookshelf family: two theme-free spine rules
     // + two dark shelf gradients, all single-owner (home-bookshelf.tsx)
     "src/components/study/home/home-bookshelf.css": [".book-spine {", ".book-spine:hover {", ".dark .shelf-strip { background-image: linear-gradient(to bottom, #1c1917, #0f0d0c) !important; }", ".dark .shelf-edge { background-image: linear-gradient(to bottom, #3d372f, #26221d) !important; }"],
+    // wave 12 (task 155) — the stat band's dark painter, single owner
+    // (home-feed.tsx); the quote band's painter key lives on the wave-2
+    // quote-band.css entry above
+    "src/components/study/home/stat-band.css": [".dark .stat-band { background-image: linear-gradient(to left, rgba(6, 55, 40, 0.45), rgba(6, 44, 40, 0.3)) !important; }"],
   };
 
   it("keeps every extracted feature file present with its key selectors", () => {
@@ -1554,6 +1567,13 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
       // lesson; tombstone selector-pattern-free (the r14 band frame retired
       // with its last resident)
       "\n.dark .srs-donut {",
+      // wave 12 (task 155) — \n-prefixed with " {" suffix per the standing
+      // lesson; tombstones selector-pattern-free. The band heads stay
+      // distinct from the ::before mark already living in quote-band.css
+      // (different property; the \n prefix keeps the wave-10 tombstone's
+      // prose mention from false-positiving)
+      "\n.dark .stat-band {",
+      "\n.dark .quote-band {",
     ]) {
       expect(css, `globals.css still carries a moved rule: ${gone}`).not.toContain(gone);
     }
@@ -1576,7 +1596,7 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
     expect(css).toContain(".dark .daily-quests .text-violet-700,.dark .leaderboard.duel-mode .text-fuchsia-300");
   });
 
-  it("features.css manifest imports all twenty files; layout.tsx loads it right after globals.css", () => {
+  it("features.css manifest imports all twenty-one files; layout.tsx loads it right after globals.css", () => {
     const manifest = readFileSync(resolve(process.cwd(), "src/app/features.css"), "utf8");
     for (const p of featureCssPaths) {
       expect(manifest, `manifest line missing for ${p}`).toContain(`@import "${p.replace("src/", "../")}";`);

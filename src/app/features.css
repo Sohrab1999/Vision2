@@ -12,7 +12,10 @@
    home/home-bookshelf.css beside its owner — the bookshelf family is
    single-source now (two theme-free spine rules + two dark shelf gradients);
    wave 11 appended the SRS state donut to the existing practice/
-   srs-panel.css (the r14 band's last resident — the band frame retired).
+   srs-panel.css (the r14 band's last resident — the band frame retired);
+   wave 12 split the home band dark painters: the stat band's into a NEW
+   home/stat-band.css beside home-feed.tsx, the quote band's appended to
+   the wave-2 home/quote-band.css.
    Each file lives BESIDE its owning component and is imported here so the
    rules are ALWAYS part of the initial CSS — the same guarantee globals.css
    had before the extraction (lazy views keep zero first-paint risk), and the
@@ -46,3 +49,6 @@
 @import "../components/study/practice/streak-badge.css";
 /* wave 10 (task 151): the bookshelf family — spine hover + dark shelf gradients */
 @import "../components/study/home/home-bookshelf.css";
+/* wave 12 (task 155): the home band dark painters — stat-band is a new
+   file beside home-feed.tsx; quote-band's painter joined the wave-2 file */
+@import "../components/study/home/stat-band.css";

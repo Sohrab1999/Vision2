@@ -1,7 +1,8 @@
 /* Task 135 — §8.3 wave 2: the quote band decorative quotation mark,
    light + dark twin, verbatim from globals.css (owner: home-view.tsx).
-   The .dark .quote-band background-image !important rule (home-stat band)
-   stays in globals — different property, and !important is position-free. */
+   The .dark .quote-band background-image !important painter joined here
+   in wave 12 (task 155) — a different property from the ::before mark,
+   and !important is position-free. */
 
 /* ---------------- quote band decorative mark ---------------- */
 .quote-band {
@@ -21,3 +22,6 @@
 }
 
 .dark .quote-band::before { color: rgb(251 191 36 / 0.12); }
+
+/* ---------------- quote band dark painter (wave 12, task 155) ---------------- */
+.dark .quote-band { background-image: linear-gradient(to left, rgba(69, 48, 12, 0.4), rgba(60, 34, 8, 0.3)) !important; }
