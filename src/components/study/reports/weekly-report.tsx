@@ -10,12 +10,13 @@
 
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { Sparkles, TrendingDown, TrendingUp, Minus, CalendarHeart, Check, Snowflake, Swords, Timer, ImageDown, Loader2, CalendarClock, Gauge } from "lucide-react";
+import { Sparkles, TrendingDown, TrendingUp, Minus, CalendarHeart, Check, Snowflake, Swords, Timer, ImageDown, Loader2, CalendarClock, Gauge, FileDown, BarChart3 } from "lucide-react";
 import { useStudy, daysAgoKey } from "@/lib/study-store";
 import { faNum, secFa } from "@/lib/study-theme";
 import { computeWeeklyDigest, faWeekday, faDayLabel, DUEL_QUICK_WEEK, type Delta, type QuickWeekProfile } from "@/lib/weekly-digest";
 import { freezeDayMark, freezeLedgerMeta } from "@/lib/freeze-badge";
 import { downloadWeeklyImage } from "@/lib/result-image";
+import { downloadProgressCsv, downloadWeeklyTrendCsv } from "@/lib/progress-csv";
 import { useToast } from "@/hooks/use-toast";
 
 const DELTA_META: { field: Delta["field"]; label: string; cls: string }[] = [
@@ -83,6 +84,25 @@ export default function WeeklyReportSection() {
   const duelHistory = useStudy((s) => s.duelHistory);
   const [imgBusy, setImgBusy] = useState(false);
   const { toast } = useToast();
+
+  // تسک ۱۷۸ — خروجی‌های CSV (بازسازیِ ۱۶۹ + روندِ تازه): هم‌روزِ دایجست
+  // (daysAgoKey(0)) — آزمون‌ها با روزِ لنگر قفل‌اند.
+  const saveCsv = () => {
+    const ok = downloadProgressCsv(dayHistory, daysAgoKey(0));
+    toast(
+      ok
+        ? { title: "📊 جدول CSV ذخیره شد", description: `${faNum(35)} روزِ فعالیت برای اکسل آماده است.`, duration: 3000 }
+        : { title: "خطا در ساخت فایل", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
+    );
+  };
+  const saveTrendCsv = () => {
+    const ok = downloadWeeklyTrendCsv({ dayHistory, history, goalMetDays }, daysAgoKey(0));
+    toast(
+      ok
+        ? { title: "📈 روندِ ۴هفته‌ای ذخیره شد", description: "هر هفته یک سطر — برای گزارش معلم مناسب است.", duration: 3000 }
+        : { title: "خطا در ساخت فایل", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
+    );
+  };
 
   const digest = useMemo(
     // the digest window ends "today"; daysAgoKey(0) is the exported wall-clock
@@ -160,6 +180,24 @@ export default function WeeklyReportSection() {
             className="rounded-lg p-1.5 text-stone-500 transition-colors hover:bg-stone-100 hover:text-teal-600 disabled:opacity-50"
           >
             {imgBusy ? <Loader2 size={15} className="animate-spin" aria-hidden /> : <ImageDown size={15} aria-hidden />}
+          </button>
+          {/* تسک ۱۷۸ — خروجیِ CSVِ ۳۵روزه (بازسازیِ ۱۶۹) — هم‌الگوی عکس؛ بدونِ busy چون همگام است */}
+          <button
+            onClick={saveCsv}
+            aria-label="دانلود جدول CSV پیشرفت"
+            title="خروجیِ CSV — جدولِ ۳۵روزهٔ فعالیت برای اکسل"
+            className="rounded-lg p-1.5 text-stone-500 transition-colors hover:bg-stone-100 hover:text-teal-600"
+          >
+            <FileDown size={15} aria-hidden />
+          </button>
+          {/* تسک ۱۷۸ — روندِ ۴هفته‌ای: هر هفته یک سطر برای معلم */}
+          <button
+            onClick={saveTrendCsv}
+            aria-label="دانلود روند ۴هفته‌ای CSV"
+            title="روندِ ۴هفته‌ای CSV — هر هفته یک سطر با روزهای فعال و هدف"
+            className="rounded-lg p-1.5 text-stone-500 transition-colors hover:bg-stone-100 hover:text-teal-600"
+          >
+            <BarChart3 size={15} aria-hidden />
           </button>
         </div>
       </div>
