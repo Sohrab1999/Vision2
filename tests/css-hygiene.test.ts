@@ -171,7 +171,7 @@ describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
     }
   });
 
-  it("keeps the selector budget honest (tranche-3b part 2 ceiling 500, re-based 505 r89)", () => {
+  it("keeps the selector budget honest (tranche-3b part 2 ceiling 500, re-based 505 r89, 510 r196)", () => {
     // soft ceiling: the file may not regrow past the consolidation floor. History:
     // 535 pre-kernel → 519 pre-part-2 → 500 (roadmap §12 goal). r89 re-based to
     // 505 for phase 6: the LAST veil family (c-stone) entered with net +4 lines
@@ -180,8 +180,11 @@ describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
     // semantic classes. Growth from here must consolidate, not add.
     // r90: doc-arrow contract lines (".dark .x → value" inside comment blocks)
     // are NOT selectors — the counter skips them (was counting 8 phantoms)
+    // r196: grammar metro grew to 11 lines / 34 stations (three-grade book) —
+    // 5 new color families (sky/fuchsia/lime/indigo/cyan) entered as 5 COMPOUND
+    // rules (pre-consolidated across .gmetro-line + .glesson-head), net +5.
     const sel = lines.filter((l) => /^\s*\.[a-z]/.test(l) && !l.includes("→")).length;
-    expect(sel).toBeLessThanOrEqual(505);
+    expect(sel).toBeLessThanOrEqual(510);
     expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(490);
   });
 });

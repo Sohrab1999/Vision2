@@ -1382,6 +1382,11 @@ html.user-reduce-motion .streak-flame {
 .dark .gmetro-line[class*="border-rose-200"] { border-color: rgb(225 29 72 / 0.35); background-color: rgb(136 19 55 / 0.16); }
 .dark .gmetro-line[class*="border-violet-200"] { border-color: rgb(124 58 237 / 0.4); background-color: rgb(76 29 149 / 0.18); }
 .dark .gmetro-line[class*="border-orange-200"] { border-color: rgb(234 88 12 / 0.35); background-color: rgb(124 45 18 / 0.16); }
+.dark .gmetro-line[class*="border-sky-200"],.dark .glesson-head[class*="border-sky-200"] { border-color: rgb(2 132 199 / 0.45); background-color: rgb(12 74 110 / 0.22); }
+.dark .gmetro-line[class*="border-fuchsia-200"],.dark .glesson-head[class*="border-fuchsia-200"] { border-color: rgb(162 28 175 / 0.45); background-color: rgb(86 20 110 / 0.22); }
+.dark .gmetro-line[class*="border-lime-200"],.dark .glesson-head[class*="border-lime-200"] { border-color: rgb(101 163 13 / 0.45); background-color: rgb(42 48 8 / 0.3); }
+.dark .gmetro-line[class*="border-indigo-200"],.dark .glesson-head[class*="border-indigo-200"] { border-color: rgb(79 70 229 / 0.5); background-color: rgb(36 33 95 / 0.3); }
+.dark .gmetro-line[class*="border-cyan-200"],.dark .glesson-head[class*="border-cyan-200"] { border-color: rgb(8 145 178 / 0.45); background-color: rgb(21 67 74 / 0.26); }
 .dark .gmetro-line .text-stone-700 { color: #e7e5e4; }
 .dark .gmetro-line .border-stone-200 { border-color: rgb(87 83 78 / 0.45); }
 .dark .gmetro-line .bg-stone-100 { background-color: rgb(68 64 60 / 0.7); }

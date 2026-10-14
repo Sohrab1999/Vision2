@@ -1,6 +1,6 @@
 // ---------------------------------------------------------------------
 // متروی گرامر — درس‌های ۹۰ثانیه‌ای PPP (Task 40: خط‌های ۱-۲ / Task 41:
-// خط‌های ۳-۶ → حالا هر ۱۵ ایستگاه نقشه درس دارند)
+// خط‌های ۳-۶ / راند ۱۹۶: خط‌های ۷-۱۱ ← حالا هر ۳۴ ایستگاه نقشه درس دارند)
 // docs/grammar-roadmap.md بخش ۵-۱:
 //
 //   ۱) «ببین»    — جملهٔ رنگی: هر نقش (فاعل/فعل/مفعول/کمکی/باقی) رنگ
@@ -918,6 +918,1064 @@ export const GRAMMAR_MICRO_LESSONS: GrammarMicroLesson[] = [
         options: ["construct", "constructive", "construction"],
         answer: 2,
         why: "فاعلِ جمله اسم می‌خواهد؛ پسوند tion می‌سازدش: construction.",
+      },
+    ],
+  },
+
+  // ------------------------------------------------ خط ۷ — مجهول (درس‌های ۴-۵)
+  {
+    stationId: "g-passive-base",
+    hook: "وقتی نمی‌دانی یا نمی‌خواهی بگویی «چه کسی»، جمله مجهول می‌شود: مفعول بالا می‌آید و فعل، be + p.p. می‌گیرد.",
+    see: {
+      pieces: [
+        { text: "Rice", role: "subject" },
+        { text: "is grown", role: "verb" },
+        { text: "in the north of Iran", role: "rest" },
+      ],
+      note: "مفعولِ جملهٔ فعال، فاعلِ جملهٔ مجهول می‌شود؛ فعلِ تکه‌دو: be + قسمت سوم. انجام‌دهنده یا حذف است یا با by می‌آید.",
+    },
+    mirrors: [
+      {
+        fa: "در شمال ایران برنج کاشته می‌شود.",
+        en: "Rice is grown in the north of Iran.",
+        adds: "فارسی با «می‌شود» مجهول می‌سازد؛ انگلیسی با be + p.p. و فاعلِ تازه — برنج دیگر «می‌روید» نیست، «کاشته می‌شود».",
+        mistake: {
+          wrong: "Rice is grow in the north of Iran.",
+          right: "Rice is grown in the north of Iran.",
+          why: "بعد از be حتماً قسمت سوم فعل می‌آید؛ grow → grown، نه grow.",
+        },
+      },
+      {
+        fa: "این فرش را در اصفهان می‌بافند.",
+        en: "This carpet is woven in Isfahan.",
+        adds: "«می‌بافند» بدونِ فاعلِ مشخص یعنی مجهول؛ انگلیسی هم فاعل را حذف و مفعول را بالا می‌آورد.",
+        mistake: {
+          wrong: "This carpet weaves in Isfahan.",
+          right: "This carpet is woven in Isfahan.",
+          why: "فرش خودش نمی‌بافد؛ انجام‌دهندهٔ نامعلوم یعنی مجهول: is woven.",
+        },
+      },
+    ],
+    try: [
+      {
+        prompt: "Persian ___ by millions of people around the world.",
+        options: ["speaks", "is spoken", "is speaking"],
+        answer: 1,
+        why: "فارسی خودش حرف نمی‌زند؛ مردم آن را حرف می‌زنند → مجهول: is spoken + by.",
+      },
+      {
+        prompt: "My grandfather ___ this house more than fifty years ago.",
+        options: ["was built", "built", "is built"],
+        answer: 1,
+        why: "پدربزرگ خودش ساخته — فاعلِ انجام‌دهنده روشن است → جملهٔ فعال: built.",
+      },
+      {
+        prompt: "Who ___ this beautiful poem? — Hafez did.",
+        options: ["wrote", "was written", "is written"],
+        answer: 0,
+        why: "Who جای فاعل است و جمله فعالی می‌خواهد: Who wrote…؟ مجهولِ آن «By whom…؟» می‌شود.",
+      },
+    ],
+  },
+  {
+    stationId: "g-passive-present",
+    hook: "حقایق و کارهای همیشگی که انجام‌دهنده‌شان مهم نیست: am/is/are + p.p. — رایج‌ترین مجهولِ کتاب.",
+    see: {
+      pieces: [
+        { text: "The letters", role: "subject" },
+        { text: "are delivered", role: "verb" },
+        { text: "to this office", role: "rest" },
+        { text: "every morning", role: "rest" },
+      ],
+      note: "حال سادهٔ مجهول = am/is/are + p.p. سرنخ‌ها: every day، usually، today، aren't they؟ فاعلِ جمع are می‌خواهد.",
+    },
+    mirrors: [
+      {
+        fa: "نامه‌ها هر روز صبح به این دفتر فرستاده می‌شوند.",
+        en: "The letters are delivered to this office every morning.",
+        adds: "فارسی «می‌شوند» را یکی یکی می‌آورد؛ انگلیسی are + p.p. — فاعلِ جمع با are، مفرد با is.",
+        mistake: {
+          wrong: "The letters are deliver to this office every morning.",
+          right: "The letters are delivered to this office every morning.",
+          why: "بعد از are قسمت سوم فعل لازم است؛ deliver → delivered.",
+        },
+      },
+      {
+        fa: "امروزه انگلیسی در بیشتر مدرسه‌های جهان تدریس می‌شود.",
+        en: "English is taught in most schools of the world today.",
+        adds: "مجهولِ حال ساده با is + p.p.؛ انجام‌دهنده (معلم‌ها) مهم نیست و حذف شده.",
+        mistake: {
+          wrong: "English teaches in most schools of the world today.",
+          right: "English is taught in most schools of the world today.",
+          why: "انگلیسی خودش تدریس نمی‌کند؛ مجهول یعنی is taught — teach بی‌قاعده است: taught.",
+        },
+      },
+    ],
+    try: [
+      {
+        prompt: "Rice ___ in the north of Iran every year.",
+        options: ["is grown", "grows up", "grown"],
+        answer: 0,
+        why: "انجام‌دهندهٔ نامعلوم و برچسبِ every year → حال سادهٔ مجهول: is grown.",
+      },
+      {
+        prompt: "These beautiful carpets ___ in Isfahan, aren't they?",
+        options: ["weave", "are woven", "woven"],
+        answer: 1,
+        why: "are + p.p. → are woven؛ تگِ پرسشی هم مجهول است: aren't they؟",
+      },
+      {
+        prompt: "The letters ___ to this office every morning, and then they are read.",
+        options: ["deliver", "are delivered", "delivered"],
+        answer: 1,
+        why: "نامه‌ها خودشان نمی‌رسانند؛ نیمهٔ دوم جمله هم مجهول است → are delivered.",
+      },
+    ],
+  },
+  {
+    stationId: "g-passive-past",
+    hook: "کارهای تمام‌شدهٔ گذشته که انجام‌دهنده مهم نیست: was/were + p.p. — برچسب‌های ago و last اینجا پادشاه‌اند.",
+    see: {
+      pieces: [
+        { text: "The bridge", role: "subject" },
+        { text: "was built", role: "verb" },
+        { text: "about one hundred years ago", role: "rest" },
+      ],
+      timebar: { label: "گذشته — ساخته شد و تمام", marker: 15 },
+      note: "گذشتهٔ سادهٔ مجهول = was/were + p.p. مفرد was، جمع were؛ برچسب‌ها: ago، last night، in 1920.",
+    },
+    mirrors: [
+      {
+        fa: "این پل حدود صد سال پیش ساخته شد.",
+        en: "This bridge was built about one hundred years ago.",
+        adds: "فارسی «شد» را می‌گوید؛ انگلیسی was + p.p. — برچسبِ ago زمان را روی گذشته قفل می‌کند.",
+        mistake: {
+          wrong: "This bridge was build about one hundred years ago.",
+          right: "This bridge was built about one hundred years ago.",
+          why: "بعد از was قسمت سوم می‌آید؛ build بی‌قاعده است: built.",
+        },
+      },
+      {
+        fa: "مهمان‌ها دیشب گرم از خانوادهٔ میزبان پذیرایی شدند.",
+        en: "The guests were warmly welcomed by the host family last night.",
+        adds: "مجهولِ جمعِ گذشته = were + p.p.؛ انجام‌دهندهٔ مشخص این‌جا با by آمده.",
+        mistake: {
+          wrong: "The guests were warmly welcoming by the host family last night.",
+          right: "The guests were warmly welcomed by the host family last night.",
+          why: "مهمان‌ها خوش‌آمد «می‌گفتند» نه؛ گفته شدند → p.p. لازم است: welcomed، نه welcoming.",
+        },
+      },
+    ],
+    try: [
+      {
+        prompt: "This bridge ___ about one hundred years ago.",
+        options: ["is built", "was built", "built"],
+        answer: 1,
+        why: "برچسبِ ago یعنی گذشتهٔ تمام‌شده و پل «ساخته شد» → was built.",
+      },
+      {
+        prompt: "I ___ to the party last Friday, so I stayed home sadly.",
+        options: ["was not invited", "did not invite", "am not invited"],
+        answer: 0,
+        why: "من «دعوت شدم» نه «دعوت کردم»؛ منفیِ گذشتهٔ مجهول: was not invited.",
+      },
+      {
+        prompt: "Our thanks ___ expressed to all the kind donors by the charity last week.",
+        options: ["are", "were", "was"],
+        answer: 1,
+        why: "thanks جمع است و برچسبِ last week گذشته است → were expressed.",
+      },
+    ],
+  },
+  {
+    stationId: "g-passive-exam",
+    hook: "تله‌های کنکورِ مجهول: فعل‌های دو مفعولی، سؤال‌های Who/What، و فعل‌هایی که هرگز مجهول نمی‌شوند.",
+    see: {
+      pieces: [
+        { text: "She", role: "subject" },
+        { text: "was given", role: "verb" },
+        { text: "a golden watch", role: "object" },
+        { text: "on her retirement day", role: "rest" },
+      ],
+      note: "فعلِ دو مفعولی (give) دو شکل مجهول دارد: She was given… یا A watch was given to her. سؤالِ مجهول: By whom…؟",
+    },
+    mirrors: [
+      {
+        fa: "در روز بازنشستگی‌اش یک ساعت طلایی به او هدیه داده شد.",
+        en: "She was given a golden watch on her retirement day.",
+        adds: "فارسی «به او … داده شد»؛ انگلیسی هر دو مفعول می‌توانند فاعلِ مجهول شوند — این‌جا «او» فاعل شده.",
+        mistake: {
+          wrong: "A golden watch was given her on her retirement day.",
+          right: "A golden watch was given to her on her retirement day.",
+          why: "وقتی شیء فاعلِ مجهول می‌شود، گیرنده با to می‌آید: was given to her.",
+        },
+      },
+      {
+        fa: "این شعرِ زیبا را چه کسی سرود؟",
+        en: "By whom was this beautiful poem written?",
+        adds: "در سؤالِ مجهول، Who می‌شود By whom و بعدش ساختارِ عادی سؤالِ مجهول می‌آید: was + p.p.",
+        mistake: {
+          wrong: "Who was written this beautiful poem?",
+          right: "By whom was this beautiful poem written?",
+          why: "Who در مجهول باید By whom شود و be هم قبل از p.p. بنشیند.",
+        },
+      },
+    ],
+    try: [
+      {
+        prompt: "She was given a golden watch ___ her retirement day.",
+        options: ["in", "on", "at"],
+        answer: 1,
+        why: "با «روزِ» مشخص از on استفاده می‌شود: on her retirement day.",
+      },
+      {
+        prompt: "Nobody ___ the exact date of this old ceremony.",
+        options: ["knows", "is known", "know"],
+        answer: 0,
+        why: "اینجا فعلِ فعال می‌خواهیم؛ nobody فاعلِ مفرد است → knows با s.",
+      },
+      {
+        prompt: "English ___ in most schools of the world today.",
+        options: ["teaches", "is taught", "taught"],
+        answer: 1,
+        why: "زبان خودش تدریس نمی‌شود؛ مجهولِ حال: is taught — teach بی‌قاعده: taught.",
+      },
+    ],
+  },
+  {
+    stationId: "g-passive-future",
+    hook: "برنامه‌هایی که «انجام خواهند شد» — ولی هنوز معلوم نیست چه کسی انجام‌شان می‌دهد: will be + p.p.",
+    see: {
+      pieces: [
+        { text: "A new subway", role: "subject" },
+        { text: "will be built", role: "verb" },
+        { text: "in this city", role: "rest" },
+        { text: "in the near future", role: "rest" },
+      ],
+      timebar: { label: "آینده — ساخته خواهد شد", marker: 85 },
+      note: "آیندهٔ مجهول = will be + p.p. بینِ will و p.p. همیشه be می‌نشیند؛ never will built.",
+    },
+    mirrors: [
+      {
+        fa: "متروی تازه در آیندهٔ نزدیک در این شهر ساخته خواهد شد.",
+        en: "A new subway will be built in this city in the near future.",
+        adds: "فارسی «خواهد شد»؛ انگلیسی will be + p.p. — انجام‌دهنده هنوز نامعلوم است.",
+        mistake: {
+          wrong: "A new subway will built in this city in the near future.",
+          right: "A new subway will be built in this city in the near future.",
+          why: "بین will و p.p. حتماً be لازم است: will be built.",
+        },
+      },
+      {
+        fa: "نتیجه‌های مسابقه هفتهٔ بعد اعلام خواهند شد.",
+        en: "The results of the competition will be announced next week.",
+        adds: "مجهولِ آینده با will be + p.p.؛ برچسبِ next week آینده را نشان می‌دهد.",
+        mistake: {
+          wrong: "The results will announce next week.",
+          right: "The results will be announced next week.",
+          why: "نتایج خودشان اعلام نمی‌کنند؛ مجهول یعنی will be announced.",
+        },
+      },
+    ],
+    try: [
+      {
+        prompt: "The results of the competition ___ next week.",
+        options: ["will be announced", "will announce", "are announced"],
+        answer: 0,
+        why: "برچسبِ next week و انجام‌دهندهٔ نامعلوم → آیندهٔ مجهول: will be announced.",
+      },
+      {
+        prompt: "Will the new museum ___ next year?",
+        options: ["open", "be opened", "opened"],
+        answer: 1,
+        why: "موزه «باز می‌شود» نه «باز می‌کند»؛ سؤالِ مجهولِ آینده: Will … be opened؟",
+      },
+      {
+        prompt: "More trees ___ in our neighborhood to keep the air clean.",
+        options: ["will plant", "are planting", "will be planted"],
+        answer: 2,
+        why: "درخت‌ها «کاشته می‌شوند» و جمله آینده است → will be planted.",
+      },
+    ],
+  },
+  {
+    stationId: "g-passive-modal",
+    hook: "«باید انجام شود»، «می‌تواند حل شود» — بعد از هر فعل ناقص، مجهول با be + p.p. می‌آید.",
+    see: {
+      pieces: [
+        { text: "The environment", role: "subject" },
+        { text: "must be protected", role: "verb" },
+        { text: "by all of us", role: "rest" },
+      ],
+      note: "قاعدهٔ طلایی: modal + be + p.p. — can/must/should/may هرگز مستقیم p.p. نمی‌گیرند؛ بین‌شان همیشه be هست.",
+    },
+    mirrors: [
+      {
+        fa: "محیط زیست باید توسط همهٔ ما حفاظت شود.",
+        en: "The environment must be protected by all of us.",
+        adds: "فارسی «باید … شود»؛ انگلیسی must be + p.p. — انجام‌دهنده با by می‌آید.",
+        mistake: {
+          wrong: "The environment must protected by all of us.",
+          right: "The environment must be protected by all of us.",
+          why: "بعد از must حتماً be می‌آید؛ must protected مجهولِ ناقص است.",
+        },
+      },
+      {
+        fa: "این مشکل نمی‌تواند به‌سادگی حل شود.",
+        en: "This problem cannot be solved easily.",
+        adds: "فعل ناقص + be + p.p. — سه تکه‌ای که نباید هیچ‌کدامش جا بیفتد.",
+        mistake: {
+          wrong: "This problem cannot solved easily.",
+          right: "This problem cannot be solved easily.",
+          why: "بعد از cannot هم be لازم است: cannot be solved.",
+        },
+      },
+    ],
+    try: [
+      {
+        prompt: "This problem ___ easily; it needs a lot of research.",
+        options: ["cannot solve", "cannot be solved", "cannot been solved"],
+        answer: 1,
+        why: "cannot + be + p.p. — been غلط است چون فعل ناقص p.p.ِ کمکی نمی‌گیرد.",
+      },
+      {
+        prompt: "Smoking ___ in public places; it is against the law.",
+        options: ["must not be allowed", "must not allow", "must not been allowed"],
+        answer: 0,
+        why: "کشیدن سیگار «مجاز شمرده نمی‌شود» → مجهولِ فعل ناقص: must not be allowed.",
+      },
+      {
+        prompt: "The homework ___ by intelligent programs in a few seconds tomorrow.",
+        options: ["will do", "will be done", "will been done"],
+        answer: 1,
+        why: "تکالیف «انجام می‌شوند» → will be done؛ been جای be را نمی‌گیرد.",
+      },
+    ],
+  },
+  {
+    stationId: "g-passive-detect",
+    hook: "در تست، اول تشخیص: مجهول است یا فعال؟ دو سرنخِ بزرگ: by و منطقِ فاعل — بدونِ by هم مجهول ممکن است.",
+    see: {
+      pieces: [
+        { text: "Flying taxis", role: "subject" },
+        { text: "will be used", role: "verb" },
+        { text: "for crowded cities", role: "rest" },
+        { text: "in the next ten years", role: "rest" },
+      ],
+      note: "فاعلِ بی‌جانی که «انجام نمی‌دهد» سرنخِ اصلی است؛ انجام‌دهنده معمولاً حذف شده چون مهم نیست.",
+    },
+    mirrors: [
+      {
+        fa: "تاکسی‌های پرنده در ده سالِ آینده برای شهرهای شلوغ به کار گرفته خواهند شد.",
+        en: "Flying taxis will be used for crowded cities in the next ten years.",
+        adds: "مجهولِ آینده بدونِ by؛ فاعلِ انجام‌دهنده حذف شده چون مهم نیست.",
+        mistake: {
+          wrong: "Flying taxis will use for crowded cities in the next ten years.",
+          right: "Flying taxis will be used for crowded cities in the next ten years.",
+          why: "تاکسی‌ها «استفاده می‌کنند» نه؛ استفاده می‌شوند → will be used.",
+        },
+      },
+      {
+        fa: "دانشمندان می‌گویند این بیماری در آینده با یک داروی ساده درمان می‌شود.",
+        en: "Scientists say this disease will be cured by a simple medicine in the future.",
+        adds: "در جملهٔ مرکب، فقط بخشِ داخل مجهول می‌شود؛ فعلِ گزارنده (say) فعال می‌ماند.",
+        mistake: {
+          wrong: "This disease will cure by a simple medicine in the future.",
+          right: "This disease will be cured by a simple medicine in the future.",
+          why: "با by حتماً مجهول لازم است: will be cured.",
+        },
+      },
+    ],
+    try: [
+      {
+        prompt: "The keys ___ in the drawer yesterday; did you check there?",
+        options: ["were put", "put", "are put"],
+        answer: 0,
+        why: "برچسبِ yesterday → گذشته؛ کلیدها «گذاشته شدند» → were put — p.p.ِ put همان put است.",
+      },
+      {
+        prompt: "The letters ___ as soon as the post office opens.",
+        options: ["will send", "will be sent", "send"],
+        answer: 1,
+        why: "نامه‌ها «فرستاده می‌شوند»؛ در جملهٔ شرطیِ زمان هم will می‌آید → will be sent.",
+      },
+      {
+        prompt: "Nobody knows exactly what ___ in the future.",
+        options: ["will happen", "will be happened", "happens"],
+        answer: 0,
+        why: "happen مفعول ندارد و هرگز مجهول نمی‌شود → will happen.",
+      },
+    ],
+  },
+  {
+    stationId: "g-report-statements",
+    hook: "وقتی حرف کسی را برای دیگری تعریف می‌کنی، فعل‌ها یک پله عقب می‌روند: said که گذشته است، داخلِ جمله هم گذشته می‌شود.",
+    see: {
+      pieces: [
+        { text: "He", role: "subject" },
+        { text: "said", role: "verb" },
+        { text: "that", role: "rest" },
+        { text: "he was very tired", role: "rest" },
+      ],
+      timebar: { label: "یک پله عقب‌تر — is می‌شود was", marker: 25 },
+      note: "am/is→was، will→would، can→could، must→had to؛ حقیقتِ همیشه‌راست (زمین گرد است) عقب نمی‌رود.",
+    },
+    mirrors: [
+      {
+        fa: "او گفت که خیلی خسته است.",
+        en: "He said that he was very tired.",
+        adds: "در نقل قول، is به was عقب می‌رود و ضمیرِ I هم به he تبدیل می‌شود — نگاه از بیرونِ حرف.",
+        mistake: {
+          wrong: "He said that he is very tired.",
+          right: "He said that he was very tired.",
+          why: "بعد از said (گذشته) فعلِ داخل هم گذشته می‌شود: is → was.",
+        },
+      },
+      {
+        fa: "او گفت که می‌تواند خیلی خوب شنا کند.",
+        en: "He said that he could swim very well.",
+        adds: "can در نقل قول ثابت می‌شود could — این تغییر همیشه همین است.",
+        mistake: {
+          wrong: "He said that he can swim very well.",
+          right: "He said that he could swim very well.",
+          why: "فعلِ گزارنده در گذشته است؛ can باید عقب برود: could.",
+        },
+      },
+    ],
+    try: [
+      {
+        prompt: 'He said, "I am very tired." — He said that he ___ very tired.',
+        options: ["was", "is", "were"],
+        answer: 0,
+        why: "is بعد از said می‌شود was؛ فاعلِ he هم was مفرد می‌خواهد.",
+      },
+      {
+        prompt: 'He said, "I will come tomorrow." — He said that he ___ the next day.',
+        options: ["would come", "will come", "comes"],
+        answer: 0,
+        why: "will در نقل قول می‌شود would و tomorrow هم می‌شود the next day.",
+      },
+      {
+        prompt: 'He said, "I must save fuel." — He said that he ___ save fuel.',
+        options: ["must", "had to", "have to"],
+        answer: 1,
+        why: "must در نقل قول معمولاً had to می‌شود؛ he هم had می‌خواهد نه have.",
+      },
+    ],
+  },
+  {
+    stationId: "g-report-shifts",
+    hook: "نقل قول یعنی حرف زدن از جای دیگر و روز دیگر — جاها و روزها هم عقب می‌روند، مثل خودِ فعل‌ها.",
+    see: {
+      pieces: [
+        { text: "She", role: "subject" },
+        { text: "said", role: "verb" },
+        { text: "that she would show me her new device there", role: "rest" },
+      ],
+      note: "here→there، this→that، tomorrow→the next day، yesterday→the day before، now→then — ضمیرها هم عوض می‌شوند: I→he/she، you→me.",
+    },
+    mirrors: [
+      {
+        fa: "او گفت که دستگاه تازه‌اش را همان‌جا به من نشان خواهد داد.",
+        en: "She said that she would show me her new device there.",
+        adds: "here در نقل قول می‌شود there و you از دیدِ نقل‌کننده می‌شود me — ضمیر و قید با هم می‌چرخند.",
+        mistake: {
+          wrong: "She said that she would show me her new device here.",
+          right: "She said that she would show me her new device there.",
+          why: "جای سخن‌گویی عوض شده؛ پس here هم به there تبدیل می‌شود.",
+        },
+      },
+      {
+        fa: "او گفت که نامه را روزِ قبلش فرستاده است.",
+        en: "She said that she had sent the letter the day before.",
+        adds: "دو جابه‌جایی با هم: فعلِ گذشته ساده می‌شود گذشتهٔ کامل (sent → had sent) و yesterday می‌شود the day before.",
+        mistake: {
+          wrong: "She said that she sent the letter yesterday.",
+          right: "She said that she had sent the letter the day before.",
+          why: "در نقل قول هم زمانِ فعل عقب می‌رود هم قیدِ زمان؛ sent → had sent و yesterday → the day before.",
+        },
+      },
+    ],
+    try: [
+      {
+        prompt: 'She said, "I will show you my new device here." — She said that she would show me her new device ___.',
+        options: ["here", "there", "this"],
+        answer: 1,
+        why: "قیدِ مکان در نقل قول عقب می‌رود: here → there.",
+      },
+      {
+        prompt: 'He said, "I sent the letter yesterday." — He said that he ___ the letter the day before.',
+        options: ["had sent", "sent", "has sent"],
+        answer: 0,
+        why: "گذشتهٔ ساده در نقل قول می‌شود گذشتهٔ کامل: sent → had sent.",
+      },
+      {
+        prompt: 'He said, "I will come tomorrow." — He said that he would come ___.',
+        options: ["tomorrow", "the next day", "yesterday"],
+        answer: 1,
+        why: "tomorrow در نقل قول می‌شود the next day.",
+      },
+    ],
+  },
+  {
+    stationId: "g-report-questions",
+    hook: "سؤال در نقل قول دیگر «سؤال» نیست: ترتیب فاعل-فعل برمی‌گردد و do/does/did کامل حذف می‌شود.",
+    see: {
+      pieces: [
+        { text: "He", role: "subject" },
+        { text: "asked", role: "verb" },
+        { text: "me", role: "object" },
+        { text: "where I lived", role: "rest" },
+      ],
+      note: "الگوی Wh: wh + فاعل + فعلِ گذشته؛ سؤالِ بله/خیر: if/whether؛ do حذف و فعلِ اصلی خودش گذشته می‌شود.",
+    },
+    mirrors: [
+      {
+        fa: "از من پرسید کجا زندگی می‌کنم.",
+        en: "He asked me where I lived.",
+        adds: "do you live در نقل قول می‌شود I lived — do حذف، فعل می‌رود گذشته و ترتیب عادی می‌آید.",
+        mistake: {
+          wrong: "He asked me where did I live.",
+          right: "He asked me where I lived.",
+          why: "بعد از wh در نقل قول، جمله روایی است: فاعل-فعل — did حذف می‌شود.",
+        },
+      },
+      {
+        fa: "از او پرسیدم که آیا چای می‌خواهد.",
+        en: "I asked him if he wanted tea.",
+        adds: "سؤالِ بله/خیر در نقل قول با if/whether می‌آید و صورتِ سؤالی‌اش را کامل گم می‌کند.",
+        mistake: {
+          wrong: "I asked him if did he want tea.",
+          right: "I asked him if he wanted tea.",
+          why: "بعد از if هم ترتیبِ فاعل-فعل است؛ want هم گذشته می‌شود: wanted.",
+        },
+      },
+    ],
+    try: [
+      {
+        prompt: 'He asked me, "Where do you live?" — He asked me where ___.',
+        options: ["I lived", "do I live", "did I live"],
+        answer: 0,
+        why: "do حذف، فعل می‌رود گذشته و ترتیب فاعل-فعل می‌شود: where I lived.",
+      },
+      {
+        prompt: 'She asked me, "Do you want tea?" — She asked me ___ tea.',
+        options: ["did I want", "if I wanted", "if did I want"],
+        answer: 1,
+        why: "سؤالِ بله/خیر → if + فاعل + فعلِ گذشته: if I wanted.",
+      },
+      {
+        prompt: 'He asked me, "What is she doing?" — He asked me what ___.',
+        options: ["she was doing", "is she doing", "was she doing"],
+        answer: 0,
+        why: "be هم از جای فاعل برمی‌گردد: what she was doing.",
+      },
+    ],
+  },
+
+  // ------------------------------------------------ خط ۹ — حال و ربط (درس ۷)
+  {
+    stationId: "g-present-vs-prog",
+    hook: "«هر بهار می‌روم» یا «همین الآن دارم می‌روم»؟ انتخابِ فعل از سرنخِ زمان می‌آید — اول سرنخ را پیدا کن.",
+    see: {
+      pieces: [
+        { text: "Look!", role: "rest" },
+        { text: "The volunteers", role: "subject" },
+        { text: "are cleaning", role: "verb" },
+        { text: "the beach", role: "object" },
+        { text: "right now", role: "rest" },
+      ],
+      timebar: { label: "اکنون — همین لحظه در جریان است", marker: 60 },
+      note: "استمراری = am/is/are + ing با سرنخ‌های Look!/now؛ ساده = عادت با usually/every. فعل‌های حالتی (know، like) استمراری نمی‌شوند.",
+    },
+    mirrors: [
+      {
+        fa: "ببین! داوطلب‌ها همین الآن ساحل را تمیز می‌کنند.",
+        en: "Look! The volunteers are cleaning the beach right now.",
+        adds: "فارسی «دارند می‌کنند» می‌گوید؛ انگلیسی are + ing — خودِ Look! فریادِ «الان» است.",
+        mistake: {
+          wrong: "Look! The volunteers clean the beach right now.",
+          right: "Look! The volunteers are cleaning the beach right now.",
+          why: "با سرنخِ Look! و right now حتماً استمراری لازم است: are cleaning.",
+        },
+      },
+      {
+        fa: "خانواده‌ام معمولاً هر بهار به کوه‌ها می‌رود.",
+        en: "My family usually goes to the mountains in spring.",
+        adds: "عادت‌های تکرارشونده حال ساده می‌گیرند؛ قیدِ بسامد هم قبل از فعلِ اصلی می‌نشیند.",
+        mistake: {
+          wrong: "My family is usually going to the mountains in spring.",
+          right: "My family usually goes to the mountains in spring.",
+          why: "عادت استمراری نمی‌گیرد؛ usually هم می‌رود قبل از فعلِ اصلی، نه وسط آن.",
+        },
+      },
+    ],
+    try: [
+      {
+        prompt: "Be quiet, please! The baby ___ in the next room.",
+        options: ["is sleeping", "sleeps", "sleep"],
+        answer: 0,
+        why: "«همین الآن» با Be quiet! → استمراری: is sleeping.",
+      },
+      {
+        prompt: "My family usually ___ to the mountains in spring.",
+        options: ["is going", "goes", "go"],
+        answer: 1,
+        why: "usually یعنی عادت → حال ساده؛ family اینجا مفردِ جمعی است: goes.",
+      },
+      {
+        prompt: "I ___ the answer; please don't explain it again.",
+        options: ["know", "am knowing", "knows"],
+        answer: 0,
+        why: "فعل‌های حالتی مثل know استمراری نمی‌شوند: I know — و با I هم s نمی‌گیرد.",
+      },
+    ],
+  },
+  {
+    stationId: "g-linking",
+    hook: "پنج ربطِ کوچک که نیمهٔ دوم جمله را جهت می‌دهند: و، اما، یا، پس، چون — قبل از انتخاب، رابطهٔ دو نیمه را ببین.",
+    see: {
+      pieces: [
+        { text: "The trail was long", role: "rest" },
+        { text: "but", role: "rest" },
+        { text: "we", role: "subject" },
+        { text: "enjoyed", role: "verb" },
+        { text: "every minute of it", role: "object" },
+      ],
+      note: "so نتیجه می‌آورد، because دلیل، but تضاد، or انتخاب و and اضافه؛ ربطِ بین دو جملهٔ مستقل با کاما می‌آید.",
+    },
+    mirrors: [
+      {
+        fa: "مسیر طولانی بود، اما از هر دقیقه‌اش لذت بردیم.",
+        en: "The trail was long, but we enjoyed every minute of it.",
+        adds: "فارسی «اما» وسط می‌آید؛ انگلیسی but هم بعدِ کاما می‌آید و دو نیمهٔ مخالف را وصل می‌کند.",
+        mistake: {
+          wrong: "The trail was long, so we enjoyed every minute of it.",
+          right: "The trail was long, but we enjoyed every minute of it.",
+          why: "رابطه تضاد است نه نتیجه؛ so جهت را برعکس می‌کند — but درست است.",
+        },
+      },
+      {
+        fa: "باید جنگل‌ها را حفظ کنیم چون به ما اکسیژن و غذا می‌دهند.",
+        en: "We must protect the forests because they give us oxygen and food.",
+        adds: "because دلیلِ نیمهٔ اول را می‌آورد؛ در فارسی «چون» ممکن است اول بیاید، در انگلیسی هم آزاد است اما جایِ بعدی رایج‌تر است.",
+        mistake: {
+          wrong: "We must protect the forests so they give us oxygen and food.",
+          right: "We must protect the forests because they give us oxygen and food.",
+          why: "نیمهٔ دوم «دلیل» است نه نتیجه؛ so جهت را برعکس می‌کند.",
+        },
+      },
+    ],
+    try: [
+      {
+        prompt: "The river was full of rubbish, ___ the students decided to clean it up.",
+        options: ["because", "so", "or"],
+        answer: 1,
+        why: "تصمیمِ دانش‌آموزها «نتیجهٔ» آلودگی بود: so.",
+      },
+      {
+        prompt: "We must protect the forests ___ they give us oxygen and food.",
+        options: ["because", "but", "so"],
+        answer: 0,
+        why: "نیمهٔ دوم «دلیلِ» حفاظت است: because.",
+      },
+      {
+        prompt: "You can reuse this bottle ___ recycle it at the center.",
+        options: ["or", "but", "so"],
+        answer: 0,
+        why: "دو گزینهٔ انتخابی: یا دوباره استفاده کن یا ببرش بازیافت — or.",
+      },
+    ],
+  },
+  {
+    stationId: "g-adverbs",
+    hook: "قیدِ بسامد جای ثابتی دارد: «قبل از فعلِ اصلی، بعد از be» — و قیدِ حالت معمولاً می‌رود آخر جمله.",
+    see: {
+      pieces: [
+        { text: "She", role: "subject" },
+        { text: "always recycles", role: "verb" },
+        { text: "her bottles", role: "object" },
+        { text: "it is her daily habit", role: "rest" },
+      ],
+      note: "always/often/never بین فاعل و فعلِ اصلی؛ با be بعدِ خودِ be: are usually. قیدِ حالتِ ‎-ly‎ جای پیش‌فرضش آخر جمله است.",
+    },
+    mirrors: [
+      {
+        fa: "او همیشه بطری‌هایش را بازیافت می‌کند؛ عادتِ روزانه‌اش است.",
+        en: "She always recycles her bottles; it is her daily habit.",
+        adds: "قیدِ بسامد در انگلیسی قبل از فعلِ اصلی می‌نشیند؛ فارسی جای آزادتری دارد.",
+        mistake: {
+          wrong: "She recycles always her bottles; it is her daily habit.",
+          right: "She always recycles her bottles; it is her daily habit.",
+          why: "always قبل از فعلِ اصلی می‌آید، نه بعدش.",
+        },
+      },
+      {
+        fa: "آتش به‌خاطر بادِ شدید سریع گسترش یافت.",
+        en: "The fire spread quickly because of the strong wind.",
+        adds: "قیدِ حالت از صفت + ly ساخته می‌شود: quick → quickly؛ فعل را قید توصیف می‌کند نه صفت.",
+        mistake: {
+          wrong: "The fire spread quick because of the strong wind.",
+          right: "The fire spread quickly because of the strong wind.",
+          why: "توصیفِ فعل = قید: quickly — صفت (quick) فقط اسم را توصیف می‌کند.",
+        },
+      },
+    ],
+    try: [
+      {
+        prompt: "The fire spread ___ because of the strong wind.",
+        options: ["quickly", "quick", "quickness"],
+        answer: 0,
+        why: "توصیفِ فعل = قید: quickly.",
+      },
+      {
+        prompt: "Our team works very ___ and finishes the project on time.",
+        options: ["hardly", "harder", "hard"],
+        answer: 2,
+        why: "hard خودش قید است (سخت)؛ hardly یعنی «به‌سختی/تقریباً نه» و معنی را برعکس می‌کند.",
+      },
+      {
+        prompt: "The rangers are ___ in the reserve during the fire season.",
+        options: ["usually", "usual", "usualness"],
+        answer: 0,
+        why: "بعد از be قیدِ بسامد می‌آید: are usually — usual صفت است.",
+      },
+    ],
+  },
+  {
+    stationId: "g-past-simple",
+    hook: "برچسبِ زمانِ قطعی آمد؟ فعل هم قطعاً گذشتهٔ ساده است — نه حال کامل، نه حال.",
+    see: {
+      pieces: [
+        { text: "We", role: "subject" },
+        { text: "watched", role: "verb" },
+        { text: "the wildlife documentary", role: "object" },
+        { text: "last night", role: "rest" },
+      ],
+      timebar: { label: "گذشته — دیشب، تمام‌شده", marker: 15 },
+      note: "last night/ago/in 1390 → گذشتهٔ ساده؛ منفی و سؤال با did + مصدرِ بدونِ to — did دیدی، فعل برمی‌گردد به شکل ساده.",
+    },
+    mirrors: [
+      {
+        fa: "دیشب مستندِ حیات‌وحش را دیدیم.",
+        en: "We watched the wildlife documentary last night.",
+        adds: "برچسبِ last night فعل را قفل می‌کند؛ انگلیسی با ed (یا شکلِ بی‌قاعده) می‌سازد.",
+        mistake: {
+          wrong: "We have watched the wildlife documentary last night.",
+          right: "We watched the wildlife documentary last night.",
+          why: "با برچسبِ زمانِ قطعیِ گذشته حال کامل نمی‌آید: watched.",
+        },
+      },
+      {
+        fa: "وقتی هوای سرد رسید، پرنده‌ها به جنوب رفتند.",
+        en: "The birds flew south when the cold weather arrived.",
+        adds: "دو فعلِ گذشته در جملهٔ مرکب؛ fly بی‌قاعده است: flew.",
+        mistake: {
+          wrong: "The birds flied south when the cold weather arrived.",
+          right: "The birds flew south when the cold weather arrived.",
+          why: "fly بی‌قاعده است: flew — flied غلط رایج است.",
+        },
+      },
+    ],
+    try: [
+      {
+        prompt: "We ___ the wildlife documentary last night.",
+        options: ["have watched", "watched", "watch"],
+        answer: 1,
+        why: "last night برچسبِ گذشتهٔ قطعی است: watched.",
+      },
+      {
+        prompt: "The explorers ___ any water in the dry desert.",
+        options: ["didn't find", "didn't found", "not found"],
+        answer: 0,
+        why: "منفیِ گذشته با did not + مصدرِ ساده: didn't find — found گذشتهٔ find است نه مصدر.",
+      },
+      {
+        prompt: "___ you ___ the dolphin show last week?",
+        options: ["Did / see", "Did / saw", "Do / saw"],
+        answer: 0,
+        why: "سؤالِ گذشته: Did + فاعل + مصدرِ بدونِ to: Did you see.",
+      },
+    ],
+  },
+
+  // ------------------------------------------------ خط ۱۰ — گذشته و مقایسه (درس ۸)
+  {
+    stationId: "g-comparatives",
+    hook: "مقایسهٔ دو چیز: صفتِ کوتاه ‑er می‌گیرد، صفتِ بلند more می‌خواهد — و مقایسه بدونِ than تمام نمی‌شود.",
+    see: {
+      pieces: [
+        { text: "My new camera", role: "subject" },
+        { text: "takes", role: "verb" },
+        { text: "better pictures", role: "object" },
+        { text: "than the old one", role: "rest" },
+      ],
+      note: "کوتاه: faster/stronger + than؛ بلند: more intelligent + than؛ بی‌قاعده‌ها: good→better، bad→worse، far→farther.",
+    },
+    mirrors: [
+      {
+        fa: "دوربینِ تازه‌ام عکس‌های بهتری از قبلی می‌گیرد.",
+        en: "My new camera takes better pictures than the old one.",
+        adds: "better شکلِ تفضیلیِ good است؛ مقایسه با than کامل می‌شود.",
+        mistake: {
+          wrong: "My new camera takes more good pictures than the old one.",
+          right: "My new camera takes better pictures than the old one.",
+          why: "good بی‌قاعده است: better — more good هرگز درست نیست.",
+        },
+      },
+      {
+        fa: "یوزپلنگ از گربهٔ خانگی سریع‌تر است.",
+        en: "A cheetah is faster than a house cat.",
+        adds: "صفتِ کوتاه fast فقط er می‌گیرد: faster than — no more.",
+        mistake: {
+          wrong: "A cheetah is more fast than a house cat.",
+          right: "A cheetah is faster than a house cat.",
+          why: "صفتِ تک‌بخشی er می‌گیرد؛ more fast تکرارِ بی‌دلیلِ مقایسه است.",
+        },
+      },
+    ],
+    try: [
+      {
+        prompt: "A cheetah is ___ a house cat.",
+        options: ["faster than", "more fast than", "fast than"],
+        answer: 0,
+        why: "fast کوتاه است: faster than.",
+      },
+      {
+        prompt: "Dolphins are considered ___ many other animals.",
+        options: ["more intelligent than", "intelligent than", "most intelligent than"],
+        answer: 0,
+        why: "صفتِ بلند با more می‌آید: more intelligent than.",
+      },
+      {
+        prompt: "A spider's web is ___ steel of the same weight.",
+        options: ["more strong than", "stronger than", "strong than"],
+        answer: 1,
+        why: "strong کوتاه است: stronger than.",
+      },
+    ],
+  },
+  {
+    stationId: "g-superlatives",
+    hook: "از بینِ همه: the + ‑est / the most — و برابری با as … as. سرنخِ طلایی: «of all» یعنی عالی.",
+    see: {
+      pieces: [
+        { text: "The blue whale", role: "subject" },
+        { text: "is", role: "verb" },
+        { text: "the largest animal", role: "rest" },
+        { text: "on the earth", role: "rest" },
+      ],
+      note: "کوتاه: the largest؛ بلند: the most interesting؛ برابری: as slow as — صفتِ عالی حتماً the می‌خواهد.",
+    },
+    mirrors: [
+      {
+        fa: "نهنگ آبی بزرگ‌ترین جانور روی زمین است.",
+        en: "The blue whale is the largest animal on the earth.",
+        adds: "برترین با the می‌آید؛ large کوتاه است: the largest — «روی زمین» یعنی از بینِ همه.",
+        mistake: {
+          wrong: "The blue whale is largest animal on the earth.",
+          right: "The blue whale is the largest animal on the earth.",
+          why: "صفتِ عالی حتماً the می‌خواهد: the largest.",
+        },
+      },
+      {
+        fa: "لاک‌پشت به‌اندازهٔ خرگوش آرام است، برای همین همیشه می‌بازد.",
+        en: "A turtle is as slow as a rabbit, so it always loses the race.",
+        adds: "برابری با as + صفت + as ساخته می‌شود؛ بین دو as صفتِ ساده می‌آید، نه تفضیلی.",
+        mistake: {
+          wrong: "A turtle is as slower as a rabbit, so it always loses the race.",
+          right: "A turtle is as slow as a rabbit, so it always loses the race.",
+          why: "بین دو as صفتِ ساده می‌آید: as slow as — as slower as غلط است.",
+        },
+      },
+    ],
+    try: [
+      {
+        prompt: "The blue whale is ___ animal on the earth.",
+        options: ["the largest", "largest", "the larger"],
+        answer: 0,
+        why: "عالی یعنی the + ‑est: the largest — the larger مخصوص مقایسهٔ دوتایی است.",
+      },
+      {
+        prompt: "That was ___ program I have ever watched.",
+        options: ["more interesting", "the most interesting", "the more interesting"],
+        answer: 1,
+        why: "«از همهٔ برنامه‌هایی که دیده‌ای» → برترین با صفتِ بلند: the most interesting.",
+      },
+      {
+        prompt: "Of all the hunters in the film, the eagle worked ___.",
+        options: ["the most carefully", "more carefully", "carefullest"],
+        answer: 0,
+        why: "«of all» برترین می‌خواهد؛ قیدِ بلند هم: the most carefully.",
+      },
+    ],
+  },
+
+  // ------------------------------------------------ خط ۱۱ — آینده (درس ۹)
+  {
+    stationId: "g-future-will",
+    hook: "تصمیمِ همین لحظه، قول و پیش‌بینی — همه با will + مصدرِ بدونِ to. بعد از will هرگز to و s نمی‌آید.",
+    see: {
+      pieces: [
+        { text: "Don't worry about the exam;", role: "rest" },
+        { text: "I", role: "subject" },
+        { text: "promise", role: "verb" },
+        { text: "I will help you", role: "rest" },
+      ],
+      timebar: { label: "آینده — قولِ همین حالا", marker: 80 },
+      note: "will برای تصمیمِ درجا (I will take you)، پیش‌بینی (will open) و قول؛ منفی: won't؛ سؤال: Will you…؟",
+    },
+    mirrors: [
+      {
+        fa: "نگران امتحان نباش؛ قول می‌دهم کمکت می‌کنم.",
+        en: "Don't worry about the exam; I promise I will help you.",
+        adds: "قولِ درجا با will می‌آید؛ فارسی «می‌کنم» می‌گوید ولی انگلیسی will می‌خواهد.",
+        mistake: {
+          wrong: "I promise I will to help you.",
+          right: "I promise I will help you.",
+          why: "بعد از will مصدرِ بدونِ to می‌آید؛ will to help غلط است.",
+        },
+      },
+      {
+        fa: "فکر می‌کنم دانش برای تو درهای زیادی را در آینده باز خواهد کرد.",
+        en: "I think knowledge will open many doors for you in the future.",
+        adds: "پیش‌بینی با will؛ بعدش مصدرِ بدونِ to — بدونِ s چون will خودش علامتِ فعل است.",
+        mistake: {
+          wrong: "I think knowledge will opens many doors for you.",
+          right: "I think knowledge will open many doors for you.",
+          why: "بعد از will فعل شکلِ ساده می‌گیرد؛ s فقط وقتی می‌آید که will نباشد.",
+        },
+      },
+    ],
+    try: [
+      {
+        prompt: "I think knowledge ___ many doors for you in the future.",
+        options: ["will opens", "will open", "opens"],
+        answer: 1,
+        why: "پیش‌بینی با will + مصدرِ بدونِ to: will open.",
+      },
+      {
+        prompt: "It is late. I ___ you to the bus stop.",
+        options: ["will take", "take", "am taking"],
+        answer: 0,
+        why: "تصمیمِ لحظه‌ایِ همین حالا → will: I will take you.",
+      },
+      {
+        prompt: "___ you ___ me with my essay tonight?",
+        options: ["Will / help", "Will / helped", "Do / helped"],
+        answer: 0,
+        why: "سؤالِ آینده: Will + فاعل + مصدرِ بدونِ to: Will you help.",
+      },
+    ],
+  },
+  {
+    stationId: "g-future-going",
+    hook: "برنامهٔ ازپیش‌بسته یا شاهدِ بیرونی؟ be going to — فارسیِ دقیقش «قرار است / می‌خواهد» است.",
+    see: {
+      pieces: [
+        { text: "Look at those black clouds!", role: "rest" },
+        { text: "It", role: "subject" },
+        { text: "is going to rain", role: "verb" },
+      ],
+      timebar: { label: "آینده — با نشانه و برنامه", marker: 85 },
+      note: "شاهدِ بیرونی (ابرهای سیاه) یا برنامهٔ آماده → be going to؛ تصمیمِ درجا → will.",
+    },
+    mirrors: [
+      {
+        fa: "به آن ابرهای سیاه نگاه کن! باران می‌خواهد ببارد.",
+        en: "Look at those black clouds! It is going to rain.",
+        adds: "نشانهٔ بیرونی → be going to؛ فارسی «می‌خواهد ببارد» دقیقاً همان حسِ نزدیکیِ آینده را دارد.",
+        mistake: {
+          wrong: "Look at those black clouds! It will rain.",
+          right: "Look at those black clouds! It is going to rain.",
+          why: "با شاهدِ چشمیِ همین حالا، be going to دقیق‌تر است؛ will برای پیش‌بینیِ بدونِ شاهد.",
+        },
+      },
+      {
+        fa: "ماهِ آینده برای مدرسه‌مان کتابخانهٔ کوچکی می‌سازیم؛ نقشه آماده است.",
+        en: "We are going to build a small library in our school next month; the plan is ready.",
+        adds: "برنامهٔ آماده → be going to؛ علامتش این است که «نقشه/قرار» از قبل وجود دارد.",
+        mistake: {
+          wrong: "We will build a small library next month; the plan is ready.",
+          right: "We are going to build a small library next month; the plan is ready.",
+          why: "وقتی برنامه از قبل بسته شده، be going to درست‌تر است.",
+        },
+      },
+    ],
+    try: [
+      {
+        prompt: "Look at those black clouds! It ___ rain.",
+        options: ["is going to", "will be", "goes to"],
+        answer: 0,
+        why: "شاهدِ بیرونی → be going to: is going to rain.",
+      },
+      {
+        prompt: "We ___ a small library in our school next month; the plan is ready.",
+        options: ["are going to build", "will building", "are building to"],
+        answer: 0,
+        why: "برنامهٔ آماده → are going to + مصدرِ ساده.",
+      },
+      {
+        prompt: "I am going to ___ a book about Persian scientists.",
+        options: ["reading", "read", "reads"],
+        answer: 1,
+        why: "بعد از be going to مصدرِ ساده می‌آید: read.",
+      },
+    ],
+  },
+  {
+    stationId: "g-verb-infinitive",
+    hook: "فعل‌های «نیت و تصمیم» بعدشان to می‌خواهند: hope، decide، promise، try — قراردادِ آینده با to بسته می‌شود.",
+    see: {
+      pieces: [
+        { text: "She", role: "subject" },
+        { text: "hopes", role: "verb" },
+        { text: "to study", role: "rest" },
+        { text: "medicine", role: "object" },
+        { text: "at university one day", role: "rest" },
+      ],
+      note: "hope/decide/promise/try/plan + to + مصدر؛ برخلاف enjoy/finish که ing می‌گیرند — دو الگوی متضاد.",
+    },
+    mirrors: [
+      {
+        fa: "او امیدوار است روزی در دانشگاه پزشکی بخواند.",
+        en: "She hopes to study medicine at university one day.",
+        adds: "فارسی فعلِ صرف‌شده می‌آید؛ انگلیسی hope + to + مصدر — دو فعل با to وصل می‌شوند.",
+        mistake: {
+          wrong: "She hopes studying medicine at university one day.",
+          right: "She hopes to study medicine at university one day.",
+          why: "hope بعدش to می‌خواهد نه ing: hopes to study.",
+        },
+      },
+      {
+        fa: "او قول داد کتاب را به‌موقع به کتابخانه برگرداند.",
+        en: "He promised to return the book to the library on time.",
+        adds: "promise + to + مصدر — وعدهٔ آینده همیشه با to بسته می‌شود.",
+        mistake: {
+          wrong: "He promised returning the book to the library on time.",
+          right: "He promised to return the book to the library on time.",
+          why: "promise بعدش to می‌گیرد: promised to return — نه ing.",
+        },
+      },
+    ],
+    try: [
+      {
+        prompt: "She hopes ___ medicine at university one day.",
+        options: ["to study", "studying", "study"],
+        answer: 0,
+        why: "hope + to: hopes to study.",
+      },
+      {
+        prompt: "We decided ___ a new skill this summer.",
+        options: ["learning", "learn", "to learn"],
+        answer: 2,
+        why: "decide + to: decided to learn.",
+      },
+      {
+        prompt: "I enjoy ___ in the quiet library, but I hope ___ more books at home.",
+        options: ["reading / to read", "to read / reading", "read / read"],
+        answer: 0,
+        why: "enjoy بعدش ing و hope بعدش to — دو الگوی متضاد در یک جمله.",
       },
     ],
   },

@@ -17,10 +17,10 @@ import {
   ROLE_CLASSES,
 } from "@/lib/grammar-lesson";
 
-describe("data — درس‌های PPP تمام خط‌ها (Task 41: پوشش ۱۵/۱۵)", () => {
+describe("data — درس‌های PPP تمام خط‌ها (راند ۱۹۶: پوشش ۳۴/۳۴)", () => {
   const stationIds = GRAMMAR_LINES.flatMap((l) => l.stations.map((s) => s.id));
 
-  it("هر ۱۵ ایستگاه نقشه درس دارد", () => {
+  it("هر ۳۴ ایستگاه نقشه درس دارد", () => {
     for (const id of stationIds) expect(lessonFor(id), id).not.toBeNull();
   });
 
@@ -129,8 +129,25 @@ describe("قراردادهای خالص grammar-lesson", () => {
     expect(whyAnswer("water غیرقابل شمارش است")).toBe("چون water غیرقابل شمارش است");
   });
 
-  it("خط‌های کامل‌درس‌دار حالا هر ۶ خط نقشه است", () => {
-    expect(lineIdsWithLessons()).toEqual([1, 2, 3, 4, 5, 6]);
+  it("خط‌های کامل‌درس‌دار حالا هر ۱۱ خط نقشه است", () => {
+    expect(lineIdsWithLessons()).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
+  });
+
+  it("درس‌های ایستگاه‌های تازهٔ سه‌پایه محتوای کتاب را پوشش می‌دهند (کاوش اِلِمانی)", () => {
+    // خط ۷: مجهول — be + p.p. و مفعولِ بالا آمده
+    const passive = lessonFor("g-passive-base")!;
+    expect(passive.see.pieces.some((p) => p.text === "is grown")).toBe(true);
+    expect(passive.try.some((q) => q.options.includes("is spoken"))).toBe(true);
+    const modal = lessonFor("g-passive-modal")!;
+    expect(modal.try.some((q) => q.options.includes("cannot be solved"))).toBe(true);
+    // خط ۸: نقل قول — عقب‌رفتِ زمان و حذفِ did
+    const rep = lessonFor("g-report-statements")!;
+    expect(rep.try.some((q) => q.options.includes("would come"))).toBe(true);
+    // خط ۱۱: آینده — will و be going to
+    const will = lessonFor("g-future-will")!;
+    expect(will.see.pieces.some((p) => p.text === "I will help you")).toBe(true);
+    const going = lessonFor("g-future-going")!;
+    expect(going.try.some((q) => q.options.includes("is going to"))).toBe(true);
   });
 
   it("stationIdsWithLesson دقیقاً ایستگاه‌های درس‌دار را برمی‌گرداند", () => {

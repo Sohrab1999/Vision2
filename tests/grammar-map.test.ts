@@ -1,7 +1,9 @@
 // متروی گرامر — تست قراردادهای خالص پیشرفت (Task 39)
 import { describe, it, expect } from "vitest";
 import { lessons } from "@/data";
-import { GRAMMAR_LINES } from "@/data/grammar-map";
+import { GRAMMAR_LINES, type GrammarLineColor } from "@/data/grammar-map";
+import { GRAMMAR_MICRO_LESSONS } from "@/data/grammar-lessons";
+import { LINE_COLORS } from "@/lib/grammar-theme";
 import {
   GRAMMAR_GREEN,
   STATION_QUIZ_MIN,
@@ -91,13 +93,13 @@ describe("متروی گرامر — جمع‌های پیشرفت", () => {
   });
 
   it("mapSummary روی همهٔ خط‌ها جمع می‌زند و در نقشهٔ خالی صفر می‌ماند", () => {
-    expect(mapSummary({})).toEqual({ green: 0, total: 15, percent: 0 });
+    expect(mapSummary({})).toEqual({ green: 0, total: 34, percent: 0 });
     const results: PercentMap = {
       [stationKey("g-order")]: R(90),
       [stationKey("g-present-perfect")]: R(80),
       [stationKey("g-count")]: R(10),
     };
-    expect(mapSummary(results)).toEqual({ green: 2, total: 15, percent: 13 });
+    expect(mapSummary(results)).toEqual({ green: 2, total: 34, percent: 6 });
   });
 });
 
@@ -167,7 +169,7 @@ describe("متروی گرامر — درستیِ دادهٔ ایستگاه‌ه�
         expect(s.section).toBeLessThan(grammar.length);
       }
     }
-    expect(ids.size).toBe(15);
+    expect(ids.size).toBe(34);
   });
 
   it("هر quizIds ارجاع‌شده در بانک همان درس واقعاً وجود دارد", () => {
@@ -182,5 +184,63 @@ describe("متروی گرامر — درستیِ دادهٔ ایستگاه‌ه�
   it("آستانهٔ تسلط ۸۰ است و آزمون شناخت ۵ سؤالی", () => {
     expect(GRAMMAR_GREEN).toBe(80);
     expect(PROBE_LENGTH).toBe(5);
+  });
+});
+
+describe("متروی گرامر — خط‌های سه‌پایه (راند ۱۹۶)", () => {
+  it("نقشه ۱۱ خط و ۳۴ ایستگاه دارد و هر ۹ درسِ قفسه ایستگاه دارند", () => {
+    expect(GRAMMAR_LINES).toHaveLength(11);
+    const byLesson = [
+      ...new Set(GRAMMAR_LINES.flatMap((l) => l.stations.map((s) => s.lesson))),
+    ].sort((a, b) => a - b);
+    expect(byLesson).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  });
+
+  it("خط مجهول هفت‌ایستگاهی است: چهار ایستگاه درس ۴ و سه ایستگاه درس ۵", () => {
+    const l7 = line(7);
+    expect(l7.fa).toBe("خط مجهول");
+    expect(l7.color).toBe("sky");
+    expect(l7.stations.map((s) => s.lesson)).toEqual([4, 4, 4, 4, 5, 5, 5]);
+    expect(l7.stations.map((s) => s.section)).toEqual([0, 1, 2, 3, 0, 1, 2]);
+  });
+
+  it("خط‌های نقل قول، حال/ربط، گذشته/مقایسه و آینده تک‌درسه و سه‌ایستگاهی‌اند", () => {
+    expect(line(8).color).toBe("fuchsia");
+    expect(line(8).stations.map((s) => s.lesson)).toEqual([6, 6, 6]);
+    expect(line(9).color).toBe("lime");
+    expect(line(9).stations.map((s) => s.lesson)).toEqual([7, 7, 7]);
+    expect(line(10).color).toBe("indigo");
+    expect(line(10).stations.map((s) => s.lesson)).toEqual([8, 8, 8]);
+    expect(line(11).color).toBe("cyan");
+    expect(line(11).stations.map((s) => s.lesson)).toEqual([9, 9, 9]);
+  });
+
+  it("هر رنگِ مصرفی خط، پالتِ کاملِ LINE_COLORS دارد (بدون حفره)", () => {
+    for (const l of GRAMMAR_LINES) {
+      const c = LINE_COLORS[l.color as GrammarLineColor];
+      expect(c, l.fa).toBeDefined();
+      expect(c.solid).toContain("bg-");
+      expect(c.border).toContain("border-");
+    }
+  });
+
+  it("ایستگاه اول هر خط تازه باز و دومش قفل است (همان قرارداد زنجیره)", () => {
+    for (const id of [7, 8, 9, 10, 11]) {
+      expect(stationStatus(line(id), 0, {})).toBe("open");
+      expect(stationStatus(line(id), 1, {})).toBe("locked");
+    }
+  });
+
+  it("آزمون شناخت خط مجهول فقط از بانک درس‌های ۴ و ۵ می‌آید", () => {
+    const pool = lineProbePool(line(7));
+    expect(pool.length).toBeGreaterThanOrEqual(PROBE_LENGTH);
+    expect(
+      pool.every((q) => q.id.startsWith("l4-") || q.id.startsWith("l5-"))
+    ).toBe(true);
+  });
+
+  it("درس‌های ۹۰ثانیه‌ای هر ۳۴ ایستگاه را با ترتیبِ نقشه پوشش می‌دهند", () => {
+    const stationIds = GRAMMAR_LINES.flatMap((l) => l.stations.map((s) => s.id));
+    expect(GRAMMAR_MICRO_LESSONS.map((l) => l.stationId)).toEqual(stationIds);
   });
 });
