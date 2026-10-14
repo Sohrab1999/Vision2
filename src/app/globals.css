@@ -406,16 +406,15 @@ body {
 /* exam-review teacher launcher (quiz-teacher.tsx card, task 117) + week-review teacher panel (week-teacher.tsx, task 119) — violet family base (59,7,100) per the r115 kernel; the verdicts share one gradient */
 .dark .quiz-teacher, .dark .week-teacher { background-image: linear-gradient(to left, rgba(59, 7, 100, 0.45), rgba(24, 21, 18, 0.95)) !important; }
 
-/* smart-practice hero */
-.dark .smart-hero { background-image: linear-gradient(to left, rgba(76, 29, 149, 0.45), rgba(24, 21, 18, 0.9)) !important; }
-
-/* konkur corner hero + orange accents (no global orange-50 override exists) */
-.dark .konkur-hero { background-image: linear-gradient(to left, rgba(124, 45, 18, 0.62), rgba(24, 21, 18, 0.94)) !important; }
-
-/* exam-view + lesson-tests gradient CTAs (mistakes review rose / dictation emerald) —
-   tinted gradient stops are outside the tone kernel, same as the heroes */
+/* wave 14 (task 159): the three remaining single-consumer painters of this
+   launcher block moved beside their owners (§8.3) — practice/smart-hero.css
+   beside smart-practice-view.tsx, exam/konkur-hero.css beside konkur-view
+   and exam/exam-dict-cta.css beside exam-view: three owners, three mutually
+   exclusive views, one file each. The multi-consumer neighbours stay:
+   review-hero (exam-view + review-view), quiz-teacher/week-teacher (two
+   owners) and mistakes-cta (exam-view + lesson-tests-tab) — tinted
+   gradient stops are outside the tone kernel, same as the heroes */
 .dark .mistakes-cta { background-image: linear-gradient(to left, rgba(88, 18, 30, 0.5), rgba(24, 21, 18, 0.92)) !important; }
-.dark .exam-dict-cta { background-image: linear-gradient(to left, rgba(6, 55, 40, 0.5), rgba(24, 21, 18, 0.92)) !important; }
 
 /* task-64 sweep — every remaining tinted gradient surface, one patch each
    (direction mirrors the utility: to-l / to-b / to-bl) */

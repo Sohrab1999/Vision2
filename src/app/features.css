@@ -18,7 +18,10 @@
    the wave-2 home/quote-band.css; wave 13 created practice/
    my-words-dark.css beside the my-words family — one view family, one
    file (the duel-dark.css precedent), hero + cards/dictation pair +
-   story card.
+   story card; wave 14 split the three remaining single-consumer
+   launcher painters of the hero block each beside its owner (three
+   mutually exclusive views, one file each): practice/smart-hero.css,
+   exam/konkur-hero.css, exam/exam-dict-cta.css.
    Each file lives BESIDE its owning component and is imported here so the
    rules are ALWAYS part of the initial CSS — the same guarantee globals.css
    had before the extraction (lazy views keep zero first-paint risk), and the
@@ -58,3 +61,8 @@
 /* wave 13 (task 157): the my-words dark launcher family — one view
    family, one file (the duel-dark.css precedent) */
 @import "../components/study/practice/my-words-dark.css";
+/* wave 14 (task 159): the three remaining single-consumer launcher
+   painters each beside its owner — three mutually exclusive views */
+@import "../components/study/practice/smart-hero.css";
+@import "../components/study/exam/konkur-hero.css";
+@import "../components/study/exam/exam-dict-cta.css";

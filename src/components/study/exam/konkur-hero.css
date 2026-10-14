@@ -1,0 +1,8 @@
+/* konkur corner hero — dark painter (§8.3 wave 14, task 159)
+   Owner: exam/konkur-view.tsx (line 218 — the only .konkur-hero consumer;
+   rendered for view.type "konkur", mutually exclusive with the exam/smart
+   views). The light gradient is the element's own vivid utility
+   (from-red-600 via-orange-500 to-amber-500, white text); dark repaints
+   through this migrated !important painter — position-independent
+   (features.css loads right after globals.css). */
+.dark .konkur-hero { background-image: linear-gradient(to left, rgba(124, 45, 18, 0.62), rgba(24, 21, 18, 0.94)) !important; }

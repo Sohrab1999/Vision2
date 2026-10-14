@@ -53,6 +53,13 @@ const featureCssPaths = [
   // wave 13 (task 157): the my-words dark launcher family — one view
   // family, one file (the duel-dark.css precedent)
   "src/components/study/practice/my-words-dark.css",
+  // wave 14 (task 159): the three remaining single-consumer launcher
+  // painters each beside its owner — three mutually exclusive views
+  // (smart/exam/konkur), one file each; mistakes-cta/review-hero/
+  // quiz-teacher stay (multi-consumer)
+  "src/components/study/practice/smart-hero.css",
+  "src/components/study/exam/konkur-hero.css",
+  "src/components/study/exam/exam-dict-cta.css",
 ];
 const readEffectiveCss = (): string =>
   readFileSync(cssPath, "utf8") +
@@ -339,9 +346,17 @@ describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
     // review-hero (exam-view + review-view) and quiz-teacher/week-teacher
     // (quiz-teacher + week-teacher). 3a checkpoints re-ran clean. Growth
     // from here must consolidate, not add.
+    // task 159 (§8.3 wave 14): re-based 254 → 251 — the three remaining
+    // single-consumer launcher painters (3 selector lines) each beside its
+    // owner: practice/smart-hero.css, exam/konkur-hero.css and
+    // exam/exam-dict-cta.css (NEW files — three mutually exclusive views:
+    // smart/exam/konkur). The multi-consumer neighbours stay: review-hero,
+    // quiz-teacher/week-teacher and mistakes-cta (exam-view +
+    // lesson-tests-tab). 3a checkpoints re-ran clean. Growth from here
+    // must consolidate, not add.
     const sel = lines.filter((l) => /^\s*\.[a-z]/.test(l) && !l.includes("→")).length;
     expect(sel).toBeLessThanOrEqual(505);
-    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(254);
+    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(251);
   });
 });
 
@@ -1469,6 +1484,11 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
     // wave 13 (task 157) — the my-words dark launcher family, verbatim
     // single lines (hero + cards/dictation pair + story)
     "src/components/study/practice/my-words-dark.css": [".dark .mywords-hero { background-image: linear-gradient(to left, rgba(69, 48, 12, 0.45), rgba(24, 21, 18, 0.95)) !important; }", ".dark .mywords-cards, .dark .mywords-dictation { background-image: linear-gradient(to left, rgba(59, 32, 96, 0.45), rgba(24, 21, 18, 0.95)) !important; }", ".dark .mywords-story { background-image: linear-gradient(to left, rgba(8, 47, 60, 0.45), rgba(24, 21, 18, 0.95)) !important; }"],
+    // wave 14 (task 159) — the three remaining single-consumer launcher
+    // painters, verbatim single lines (smart/konkur/dict-cta)
+    "src/components/study/practice/smart-hero.css": [".dark .smart-hero { background-image: linear-gradient(to left, rgba(76, 29, 149, 0.45), rgba(24, 21, 18, 0.9)) !important; }"],
+    "src/components/study/exam/konkur-hero.css": [".dark .konkur-hero { background-image: linear-gradient(to left, rgba(124, 45, 18, 0.62), rgba(24, 21, 18, 0.94)) !important; }"],
+    "src/components/study/exam/exam-dict-cta.css": [".dark .exam-dict-cta { background-image: linear-gradient(to left, rgba(6, 55, 40, 0.5), rgba(24, 21, 18, 0.92)) !important; }"],
   };
 
   it("keeps every extracted feature file present with its key selectors", () => {
@@ -1594,6 +1614,11 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
       "\n.dark .mywords-hero {",
       "\n.dark .mywords-cards, .dark .mywords-dictation {",
       "\n.dark .mywords-story {",
+      // wave 14 (task 159) — \n-prefixed with " {" suffix per the standing
+      // lesson; the tombstone mentions only file paths (selector-pattern-free)
+      "\n.dark .smart-hero {",
+      "\n.dark .konkur-hero {",
+      "\n.dark .exam-dict-cta {",
     ]) {
       expect(css, `globals.css still carries a moved rule: ${gone}`).not.toContain(gone);
     }
@@ -1616,7 +1641,7 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
     expect(css).toContain(".dark .daily-quests .text-violet-700,.dark .leaderboard.duel-mode .text-fuchsia-300");
   });
 
-  it("features.css manifest imports all twenty-two files; layout.tsx loads it right after globals.css", () => {
+  it("features.css manifest imports all twenty-five files; layout.tsx loads it right after globals.css", () => {
     const manifest = readFileSync(resolve(process.cwd(), "src/app/features.css"), "utf8");
     for (const p of featureCssPaths) {
       expect(manifest, `manifest line missing for ${p}`).toContain(`@import "${p.replace("src/", "../")}";`);
