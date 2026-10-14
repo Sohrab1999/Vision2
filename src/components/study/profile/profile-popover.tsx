@@ -262,7 +262,7 @@ export default function ProfilePopover() {
           ) : (
             <span className="relative">
               <span
-                className={`flex h-7 w-7 items-center justify-center rounded-full border-2 border-dashed border-stone-300 text-stone-400${
+                className={`flex h-7 w-7 items-center justify-center rounded-full border-2 border-dashed border-stone-300 text-stone-500${
                   hasFresh
                     ? " new-badge-ring ring-2 ring-amber-400 ring-offset-2 ring-offset-transparent"
                     : ""
@@ -291,7 +291,7 @@ export default function ProfilePopover() {
           onKeyDown={(e) => e.key === "Enter" && saveProfile()}
           placeholder="مثلاً: امیر محمد"
           maxLength={24}
-          className="mb-3 w-full rounded-xl border border-stone-300 bg-white px-3 py-2.5 text-sm font-bold text-stone-800 outline-none transition-colors placeholder:font-normal placeholder:text-stone-400 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
+          className="mb-3 w-full rounded-xl border border-stone-300 bg-white px-3 py-2.5 text-sm font-bold text-stone-800 outline-none transition-colors placeholder:font-normal placeholder:text-stone-500 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
         />
         <div className="mb-4">
           <div className="mb-2 text-[11.5px] font-bold text-stone-500">رنگ آواتار:</div>
@@ -373,11 +373,11 @@ export default function ProfilePopover() {
               </button>
             </div>
           ) : (
-            <div className="mt-2.5 rounded-xl border border-dashed border-stone-200 c-stone-60 px-2.5 py-2 text-[10.5px] leading-4 text-stone-400">
+            <div className="mt-2.5 rounded-xl border border-dashed border-stone-200 c-stone-60 px-2.5 py-2 text-[10.5px] leading-4 text-stone-500">
               با اولین فعالیت شما، هر روز یک پشتیبان خودکار در همین مرورگر ذخیره می‌شود — حتی اگر داده‌ها پاک شوند قابل بازیابی است.
             </div>
           )}
-          <p className="mt-2 text-[10.5px] leading-4 text-stone-400">
+          <p className="mt-2 text-[10.5px] leading-4 text-stone-500">
             پیشرفت شما (واژه‌ها، نتایج، مرورها) در یک فایل JSON ذخیره می‌شود؛ برای انتقال به دستگاه دیگر از «بازیابی» استفاده کنید.
           </p>
         </div>
@@ -431,7 +431,7 @@ export default function ProfilePopover() {
               </div>
               <button
                 onClick={handleDisconnect}
-                className="mt-2 flex w-full items-center justify-center gap-1 text-[10px] font-bold text-stone-400 transition-colors hover:text-rose-500"
+                className="mt-2 flex w-full items-center justify-center gap-1 text-[10px] font-bold text-stone-500 transition-colors hover:text-rose-500"
               >
                 <Link2Off size={11} />
                 قطع همگام‌سازی این دستگاه
@@ -440,7 +440,7 @@ export default function ProfilePopover() {
           ) : (
             /* ---------- no code yet: create or join ---------- */
             <div>
-              <p className="mb-2 text-[10.5px] leading-4 text-stone-400">
+              <p className="mb-2 text-[10.5px] leading-4 text-stone-500">
                 پیشرفتت را بین گوشی و رایانه یکی کن: یک کد بساز و روی هر دستگاهی واردش کن — بدون ثبت‌نام.
               </p>
               <button
@@ -459,7 +459,7 @@ export default function ProfilePopover() {
                   placeholder="کد موجود، مثل K7QM-34XP"
                   dir="ltr"
                   maxLength={9}
-                  className="min-w-0 flex-1 rounded-xl border border-stone-300 bg-white px-2.5 py-2 text-left font-mono text-[12px] font-black tracking-wider text-stone-800 outline-none transition-colors placeholder:font-sans placeholder:font-normal placeholder:tracking-normal placeholder:text-stone-400 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
+                  className="min-w-0 flex-1 rounded-xl border border-stone-300 bg-white px-2.5 py-2 text-left font-mono text-[12px] font-black tracking-wider text-stone-800 outline-none transition-colors placeholder:font-sans placeholder:font-normal placeholder:tracking-normal placeholder:text-stone-500 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
                 />
                 <button
                   onClick={() => handlePullMerge(codeInput)}
@@ -469,7 +469,7 @@ export default function ProfilePopover() {
                   {syncing === "join" ? "…" : "ورود با کد"}
                 </button>
               </div>
-              <p className="mt-1.5 text-[10px] leading-4 text-stone-400">
+              <p className="mt-1.5 text-[10px] leading-4 text-stone-500">
                 با «ورود با کد»، پیشرفتِ ابر و همین دستگاه با هم ادغام می‌شود — هیچ‌کدام از دست نمی‌رود.
               </p>
             </div>

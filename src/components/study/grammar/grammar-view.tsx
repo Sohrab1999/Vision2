@@ -154,7 +154,7 @@ export default function GrammarView() {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3 }}
-        className="gmetro-hero relative overflow-hidden rounded-3xl bg-gradient-to-bl from-teal-600 via-teal-700 to-emerald-800 p-5 text-white shadow-lg shadow-teal-900/20 sm:p-7"
+        className="gmetro-hero relative overflow-hidden rounded-3xl bg-gradient-to-bl from-teal-700 via-teal-800 to-emerald-900 p-5 text-white shadow-lg shadow-teal-900/20 sm:p-7"
       >
         <TrainFront
           className="pointer-events-none absolute -left-4 -top-4 opacity-[0.09]"
@@ -167,33 +167,33 @@ export default function GrammarView() {
           </span>
           <div>
             <h1 className="text-xl font-black sm:text-2xl">متروی گرامر</h1>
-            <p className="text-[13px] leading-6 text-teal-100">
+            <p className="text-[13px] leading-6 text-teal-50">
               کل گرامر کتاب ویژن ۲، یک نقشهٔ سفر — هر خط یک خانواده، هر ایستگاه یک قاعده
             </p>
           </div>
         </div>
         <div className="relative mt-4 flex flex-wrap gap-2">
-          <span className="rounded-full bg-white/15 px-3 py-1.5 text-[12px] font-bold">
+          <span className="rounded-full bg-black/20 px-3 py-1.5 text-[12px] font-bold">
             {faNum(summary.green)} ایستگاه سبز از {faNum(summary.total)}
           </span>
-          <span className="rounded-full bg-white/15 px-3 py-1.5 text-[12px] font-bold">
+          <span className="rounded-full bg-black/20 px-3 py-1.5 text-[12px] font-bold">
             {faNum(GRAMMAR_LINES.length)} خط · {faNum(summary.total)} ایستگاه
           </span>
-          <span className="rounded-full bg-white/15 px-3 py-1.5 text-[12px] font-bold">
+          <span className="rounded-full bg-black/20 px-3 py-1.5 text-[12px] font-bold">
             آستانهٔ سبز شدن: {faNum(GRAMMAR_GREEN)}٪
           </span>
-          <span className="rounded-full bg-white/15 px-3 py-1.5 text-[12px] font-bold">
+          <span className="rounded-full bg-black/20 px-3 py-1.5 text-[12px] font-bold">
             ✨ درس ۹۰ثانیه‌ای: {faNum(withLessons.size)}/{faNum(summary.total)} ایستگاه
           </span>
         </div>
         <div className="relative mt-4 grid gap-2 text-[12px] font-bold text-teal-50 sm:grid-cols-3">
-          <span className="gmetro-step rounded-xl bg-white/10 px-3 py-2">
+          <span className="gmetro-step rounded-xl bg-black/20 px-3 py-2">
             ۱. درس ۹۰ثانیه‌ای را ببین و امتحان کن
           </span>
-          <span className="gmetro-step rounded-xl bg-white/10 px-3 py-2">
+          <span className="gmetro-step rounded-xl bg-black/20 px-3 py-2">
             ۲. آزمونکش را بالای {faNum(GRAMMAR_GREEN)}٪ بزن
           </span>
-          <span className="gmetro-step rounded-xl bg-white/10 px-3 py-2">
+          <span className="gmetro-step rounded-xl bg-black/20 px-3 py-2">
             ۳. ایستگاه بعدی همان خط باز می‌شود
           </span>
         </div>
@@ -278,7 +278,7 @@ export default function GrammarView() {
                             status === "green"
                               ? `gmetro-node-green border-white ${c.solid} text-white`
                               : locked
-                                ? "gmetro-node-locked border-stone-100 bg-stone-200 text-stone-400"
+                                ? "gmetro-node-locked border-stone-100 bg-stone-200 text-stone-500"
                                 : `gmetro-node-open border-white bg-white ${c.text} shadow-md`
                           }`}
                         >
@@ -295,7 +295,7 @@ export default function GrammarView() {
                             status === "green"
                               ? c.text
                               : locked
-                                ? "text-stone-400"
+                                ? "text-stone-500"
                                 : "text-stone-700"
                           }`}
                         >
@@ -306,7 +306,7 @@ export default function GrammarView() {
                             status === "green"
                               ? `${c.solid} text-white`
                               : locked
-                                ? "bg-stone-100 text-stone-400"
+                                ? "bg-stone-100 text-stone-500"
                                 : "bg-white text-stone-500 border border-stone-200"
                           }`}
                         >
@@ -347,7 +347,7 @@ export default function GrammarView() {
                     <Swords size={16} />
                   </span>
                   {dialog.station.fa}
-                  <span className="font-mono text-[11px] font-bold text-stone-400" dir="ltr">
+                  <span className="font-mono text-[11px] font-bold text-stone-500" dir="ltr">
                     {dialog.station.en}
                   </span>
                 </DialogTitle>
@@ -431,7 +431,7 @@ export default function GrammarView() {
       <div className="flex justify-center pb-2">
         <button
           onClick={() => setView({ type: "home" })}
-          className="text-[12px] font-bold text-stone-400 underline-offset-4 hover:text-stone-600 hover:underline"
+          className="text-[12px] font-bold text-stone-500 underline-offset-4 hover:text-stone-600 hover:underline"
         >
           بازگشت به خانه
         </button>

@@ -318,7 +318,7 @@ export default function RushView() {
               شروع چالش
             </button>
 
-            <div className="mt-4 hidden items-center justify-center gap-1.5 text-[11px] text-stone-400 min-[720px]:flex">
+            <div className="mt-4 hidden items-center justify-center gap-1.5 text-[11px] text-stone-500 min-[720px]:flex">
               <Keyboard size={13} />
               <span>میان‌بر:</span>
               {["1", "2", "3", "4"].map((k) => (
@@ -386,7 +386,7 @@ export default function RushView() {
           </div>
         </div>
 
-        <p className="text-center text-[11.5px] leading-6 text-stone-400">
+        <p className="text-center text-[11.5px] leading-6 text-stone-500">
           پاسخ‌های غلط این دور به بانک مرور اشتباهات درس مربوطه اضافه شدند — از کارت «بانک اشتباهات» در خانه می‌توانی آن‌ها را دوباره تمرین کنی.
         </p>
       </div>
@@ -437,7 +437,7 @@ export default function RushView() {
                   {faNum(score)}
                 </motion.span>
               </AnimatePresence>
-              <span className="text-[11px] font-bold text-stone-400">امتیاز</span>
+              <span className="text-[11px] font-bold text-stone-500">امتیاز</span>
               {feedback === "right" && (
                 <motion.span
                   initial={{ opacity: 0, y: 8 }}
@@ -449,7 +449,7 @@ export default function RushView() {
                 </motion.span>
               )}
             </div>
-            <div className="mt-0.5 text-[11px] font-bold text-stone-400">
+            <div className="mt-0.5 text-[11px] font-bold text-stone-500">
               دقت {faNum(accuracy)}٪ · {faNum(correct)} درست از {faNum(answered)}
             </div>
           </div>
@@ -463,7 +463,7 @@ export default function RushView() {
                 ? "bg-gradient-to-br from-rose-500 to-orange-600 text-white shadow-lg shadow-orange-500/30"
                 : combo >= 2
                   ? "bg-gradient-to-br from-amber-400 to-orange-500 text-white shadow-md"
-                  : "bg-stone-100 text-stone-400"
+                  : "bg-stone-100 text-stone-500"
             }`}
           >
             <Flame size={16} />
@@ -492,7 +492,7 @@ export default function RushView() {
             <span className="rounded-full bg-orange-50 px-2.5 py-1 text-[11px] font-bold text-orange-700">
               {current.src === 0 ? "بانک ۳۶۰ تستی" : `درس ${current.src === 1 ? "اول" : current.src === 2 ? "دوم" : "سوم"}`}
             </span>
-            <span className="text-[11px] font-bold text-stone-400">سؤال {faNum(qi + 1)}</span>
+            <span className="text-[11px] font-bold text-stone-500">سؤال {faNum(qi + 1)}</span>
           </div>
           <p className="en-text mb-5 text-[16px] font-semibold leading-8 text-stone-800" dir="ltr">
             {current.q.question}

@@ -279,7 +279,7 @@ export default function PwaLayer() {
                 </div>
                 <button
                   onClick={dismissCard}
-                  className="pointer-events-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-stone-400 transition-colors hover:bg-stone-100 hover:text-stone-600"
+                  className="pointer-events-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-stone-500 transition-colors hover:bg-stone-100 hover:text-stone-600"
                   aria-label="بستن پیشنهاد نصب"
                 >
                   <X size={14} />
@@ -333,7 +333,7 @@ export default function PwaLayer() {
               </li>
             )}
           </ol>
-          <p className="text-[11px] leading-5 text-stone-400">
+          <p className="text-[11px] leading-5 text-stone-500">
             نصب فقط یک میان‌بر است — پیشرفت‌ات همان است و با کد یادگیرنده بین دستگاه‌ها همگام می‌ماند.
           </p>
         </DialogContent>

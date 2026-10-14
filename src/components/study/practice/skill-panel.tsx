@@ -94,7 +94,7 @@ export default function SkillPanel() {
           <div className="rounded-xl border-2 border-dashed border-stone-200 c-stone-60 px-4 py-7 text-center">
             <TrendingUp size={22} className="mx-auto mb-2 text-stone-300" />
             <p className="text-[12.5px] font-bold text-stone-500">هنوز نتیجه‌ای ثبت نشده</p>
-            <p className="mt-1 text-[11.5px] leading-5 text-stone-400">
+            <p className="mt-1 text-[11.5px] leading-5 text-stone-500">
               با حل اولین تست، نمودار مهارت‌هایت اینجا ساخته می‌شود.
             </p>
             <button
@@ -128,7 +128,7 @@ export default function SkillPanel() {
                       </span>
                       <span className="text-[12.5px] font-extrabold text-stone-700">{s.def.label}</span>
                       <span className={`rounded-full px-2 py-0.5 text-[9.5px] font-black ${grade.cls}`}>{grade.label}</span>
-                      <span className="ml-auto shrink-0 text-[10.5px] font-bold text-stone-400">
+                      <span className="ml-auto shrink-0 text-[10.5px] font-bold text-stone-500">
                         {faNum(s.attempts)} نتیجه · میانگین {faNum(s.avg)}٪
                       </span>
                     </div>

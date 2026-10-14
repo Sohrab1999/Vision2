@@ -109,7 +109,7 @@ export default function GrammarLessonFlow({ line, station, onExit, onGoQuiz }: P
           <button
             onClick={onExit}
             aria-label="بستن درس"
-            className="glesson-close mr-auto flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border c-card text-stone-400 shadow-sm transition hover:text-stone-700 active:scale-90"
+            className="glesson-close mr-auto flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border c-card text-stone-500 shadow-sm transition hover:text-stone-700 active:scale-90"
           >
             <X size={16} />
           </button>
@@ -200,7 +200,7 @@ function SeeStep({
     <div className="space-y-4">
       {/* جملهٔ رنگی */}
       <div className="glesson-see rounded-2xl border c-card p-4">
-        <p className="mb-2 flex items-center gap-1.5 text-[12px] font-black text-stone-400">
+        <p className="mb-2 flex items-center gap-1.5 text-[12px] font-black text-stone-500">
           <Eye size={14} /> قاعده را با چشم بخوان — فاعل، فعل، مفعول هرکدام رنگ خودشان
         </p>
         <div dir="ltr" className="flex flex-wrap items-center justify-start gap-1.5">
@@ -234,7 +234,7 @@ function SeeStep({
                 <span className={`relative h-3.5 w-3.5 animate-ping rounded-full opacity-40 ${c}`} />
               </motion.span>
             </div>
-            <div dir="ltr" className="mt-2 flex justify-between text-[10px] font-bold text-stone-400">
+            <div dir="ltr" className="mt-2 flex justify-between text-[10px] font-bold text-stone-500">
               <span>گذشته</span>
               <span>اکنون</span>
               <span>آینده</span>
@@ -277,14 +277,14 @@ function MirrorStep({ lesson }: { lesson: GrammarMicroLesson }) {
               <MirrorIcon size={16} className="text-stone-300" />
             </div>
             <div className="glesson-mirror-en rounded-xl border c-card p-3 text-center" dir="ltr">
-              <p className="mb-1 text-[10px] font-black text-stone-400">English</p>
+              <p className="mb-1 text-[10px] font-black text-stone-500">English</p>
               <p className="font-mono text-[12.5px] font-bold leading-6 text-stone-800">{m.en}</p>
             </div>
           </div>
 
           {/* انگلیسی چه چیزی اضافه دارد */}
           <div className="glesson-adds rounded-xl bg-stone-50 p-3 text-[12px] font-bold leading-6 text-stone-600">
-            <span className="text-stone-400">انگلیسی چه چیزی اضافه می‌کند؟ </span>
+            <span className="text-stone-500">انگلیسی چه چیزی اضافه می‌کند؟ </span>
             {m.adds}
           </div>
 
@@ -343,7 +343,7 @@ function TryStep({
         return (
           <div key={qi} className="glesson-q rounded-2xl border c-card p-4">
             <p className="mb-2.5 flex items-baseline gap-1.5">
-              <span className="text-[11px] font-black text-stone-400">{faNum(qi + 1)}.</span>
+              <span className="text-[11px] font-black text-stone-500">{faNum(qi + 1)}.</span>
               <span dir="ltr" className="glesson-q-prompt font-mono text-[13.5px] font-bold leading-6 text-stone-800">
                 {q.prompt}
               </span>
@@ -355,7 +355,7 @@ function TryStep({
                 let cls = "glesson-opt border c-card text-stone-700 hover:border-stone-400";
                 if (answered && realAnswer) cls = "glesson-opt glesson-opt-correct border border-emerald-400 bg-emerald-50 text-emerald-800";
                 else if (answered && chosen && !realAnswer) cls = "glesson-opt glesson-opt-wrong border border-rose-400 bg-rose-50 text-rose-700";
-                else if (answered) cls = "glesson-opt glesson-opt-muted border border-stone-100 bg-stone-50 text-stone-400";
+                else if (answered) cls = "glesson-opt glesson-opt-muted border border-stone-100 bg-stone-50 text-stone-500";
                 return (
                   <button
                     key={oi}

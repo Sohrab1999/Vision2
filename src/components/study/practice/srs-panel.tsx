@@ -255,7 +255,7 @@ export default function SrsPanel() {
                         <span className="en-text text-[12px] font-bold text-stone-800" dir="ltr">
                           {w.en}
                         </span>
-                        <span className="hidden text-[10px] text-stone-400 sm:inline">{w.fa}</span>
+                        <span className="hidden text-[10px] text-stone-500 sm:inline">{w.fa}</span>
                         <ArrowLeft size={11} className="text-rose-400 opacity-0 transition-opacity group-hover:opacity-100" />
                       </motion.button>
                     </div>
@@ -271,7 +271,7 @@ export default function SrsPanel() {
                   </motion.button>
                 )}
               </div>
-              <div className="mt-2 flex items-center gap-1 border-t border-rose-100/70 pt-1.5 text-[10px] text-stone-400">
+              <div className="mt-2 flex items-center gap-1 border-t border-rose-100/70 pt-1.5 text-[10px] text-stone-500">
                 <Star size={10} className="text-amber-400" />
                 واژهٔ سررسید را با ستاره به «واژه‌های من» بفرست — یا با دیکته، املایش را محک بزن
               </div>
@@ -285,13 +285,13 @@ export default function SrsPanel() {
                 <CalendarClock size={12} />
                 پیش‌بینی مرور ۷ روز آینده
                 {stats.forecast.some((n) => n > 0) && (
-                  <span className="mr-auto text-[9.5px] font-bold text-stone-400">روی ستون‌ها بزن تا واژه‌ها را ببینی</span>
+                  <span className="mr-auto text-[9.5px] font-bold text-stone-500">روی ستون‌ها بزن تا واژه‌ها را ببینی</span>
                 )}
               </div>
               <div className="flex h-16 items-end gap-1.5" dir="ltr">
                 {stats.forecast.map((n, i) => (
                   <div key={i} className="flex flex-1 flex-col items-center gap-1">
-                    <span className="text-[10px] font-black text-stone-400">{n > 0 ? faNum(n) : ""}</span>
+                    <span className="text-[10px] font-black text-stone-500">{n > 0 ? faNum(n) : ""}</span>
                     <motion.button
                       type="button"
                       aria-expanded={openDay === i}
@@ -305,7 +305,7 @@ export default function SrsPanel() {
                       className={`srs-fx-bar w-full rounded-t-md transition-all ${n > 0 ? (openDay === i ? "bg-gradient-to-t from-teal-600 to-emerald-300 ring-2 ring-emerald-300/60" : "bg-gradient-to-t from-teal-500 to-emerald-400 hover:from-teal-600 hover:to-emerald-300") : "c-track-70"}`}
                       title={`${dayLabel(i)}: ${faNum(n)} واژه`}
                     />
-                    <span className={`text-[9.5px] font-bold ${openDay === i ? "text-emerald-700" : i === 0 ? "text-emerald-700" : "text-stone-400"}`}>
+                    <span className={`text-[9.5px] font-bold ${openDay === i ? "text-emerald-700" : i === 0 ? "text-emerald-700" : "text-stone-500"}`}>
                       {dayLabel(i)}
                     </span>
                   </div>
@@ -340,7 +340,7 @@ export default function SrsPanel() {
                                 className="srs-fx-chip inline-flex items-center gap-1.5 rounded-lg border border-dashed border-teal-200 bg-white px-2 py-1 text-[11px] shadow-sm"
                               >
                                 <span className="en-text text-[12px] font-bold text-stone-800" dir="ltr">{w.en}</span>
-                                <span className="hidden text-[10px] text-stone-400 sm:inline">{w.fa}</span>
+                                <span className="hidden text-[10px] text-stone-500 sm:inline">{w.fa}</span>
                                 <span className="text-[9.5px] font-black text-emerald-600">{faTime(w.dueAt)}</span>
                               </span>
                             </div>
@@ -352,13 +352,13 @@ export default function SrsPanel() {
                           </span>
                         )}
                       </div>
-                      <div className="mt-2 flex items-center gap-1 border-t border-teal-100/70 pt-1.5 text-[10px] text-stone-400">
+                      <div className="mt-2 flex items-center gap-1 border-t border-teal-100/70 pt-1.5 text-[10px] text-stone-500">
                         <Star size={10} className="text-amber-400" />
                         واژه‌ای که قرار است بیاید را با ستاره به «واژه‌های من» بفرست تا از قلم نیفتد
                       </div>
                     </>
                   ) : (
-                    <div className="py-1 text-center text-[11px] font-bold text-stone-400">واژه‌ای در این روز نیست</div>
+                    <div className="py-1 text-center text-[11px] font-bold text-stone-500">واژه‌ای در این روز نیست</div>
                   )}
                 </div>
               )}

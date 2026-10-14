@@ -157,7 +157,7 @@ export default function WeeklyReportSection() {
             disabled={imgBusy}
             aria-label="گرفتن عکس هفته‌نامهٔ پیشرفت"
             title="عکسِ هفته‌نامه — یک کارت PNG برای هم‌رسانی"
-            className="rounded-lg p-1.5 text-stone-400 transition-colors hover:bg-stone-100 hover:text-teal-600 disabled:opacity-50"
+            className="rounded-lg p-1.5 text-stone-500 transition-colors hover:bg-stone-100 hover:text-teal-600 disabled:opacity-50"
           >
             {imgBusy ? <Loader2 size={15} className="animate-spin" aria-hidden /> : <ImageDown size={15} aria-hidden />}
           </button>
@@ -206,7 +206,7 @@ export default function WeeklyReportSection() {
           );
         })}
       </div>
-      <div className="mb-3 flex justify-between text-[9px] font-bold text-stone-400" dir="ltr">
+      <div className="mb-3 flex justify-between text-[9px] font-bold text-stone-500" dir="ltr">
         <span>{faDayLabel(digest.perDay[0].day)}</span>
         <span>هفتهٔ پیش | این هفته</span>
         <span>امروز</span>
@@ -285,7 +285,7 @@ export default function WeeklyReportSection() {
         </div>
         {/* مسیر یخِ بعدی — هم‌زبان خطّ خانه؛ سقفِ پُر فقط متن */}
         <div className="mt-1.5 flex items-center justify-between gap-2">
-          <span className="text-[9.5px] font-bold text-stone-400">مسیر یخِ بعدی</span>
+          <span className="text-[9.5px] font-bold text-stone-500">مسیر یخِ بعدی</span>
           <div className="flex items-center gap-1.5">
             {ledger.earn.state !== "cap" && (
               <span className="flex gap-0.5" aria-hidden>
@@ -335,7 +335,7 @@ export default function WeeklyReportSection() {
                 </span>
               ))}
             </div>
-            <span className="text-[9.5px] font-bold text-stone-400" title="نبردهای ۸ تا ۱۴ روز پیش">
+            <span className="text-[9.5px] font-bold text-stone-500" title="نبردهای ۸ تا ۱۴ روز پیش">
               {`هفتهٔ پیش: ${faNum(digest.duels.lastWeek)}`}
             </span>
           </div>
@@ -358,11 +358,11 @@ export default function WeeklyReportSection() {
                 className="flex items-center gap-1 text-[9.5px] font-bold text-stone-500"
                 title={`میانگینِ فکر از ${faNum(digest.duels.think.seen)} سؤالِ ثبت‌شده در نبردهای فکردارِ این هفته`}
               >
-                <Timer size={11} className="text-stone-400" aria-hidden />
+                <Timer size={11} className="text-stone-500" aria-hidden />
                 {`فکرِ میانگین ${secFa(digest.duels.think.avgMs)} ثانیه · سریع‌ترین ${secFa(digest.duels.think.fastestMs)} ثانیه`}
               </span>
               {digest.duels.think.seen < digest.duels.think.total && (
-                <span className="text-[9.5px] font-bold text-stone-400">
+                <span className="text-[9.5px] font-bold text-stone-500">
                   {`ثبت برای ${faNum(digest.duels.think.seen)} از ${faNum(digest.duels.think.total)} سؤال`}
                 </span>
               )}
@@ -372,12 +372,12 @@ export default function WeeklyReportSection() {
               بهترینِ امتیاز — روایتِ همان خانواده‌ای که نشانش در کاشی‌هاست */}
           {digest.duels.quickWeek && <QuickWeekLine qw={digest.duels.quickWeek} />}
           {digest.duels.best > 0 && (
-            <div className="mt-1 text-[9.5px] font-bold text-stone-400">
+            <div className="mt-1 text-[9.5px] font-bold text-stone-500">
               {`بهترین امتیازِ همین هفته: ${faNum(digest.duels.best)}`}
             </div>
           )}
           {digest.duels.truncated && (
-            <p className="mt-1 text-[9px] font-bold leading-4 text-stone-400">
+            <p className="mt-1 text-[9px] font-bold leading-4 text-stone-500">
               دفترچه فقط ۱۵ نبردِ آخر را نگه می‌دارد — این شمارش حداقلی است.
             </p>
           )}
@@ -392,7 +392,7 @@ export default function WeeklyReportSection() {
         title="دستور رنگ‌های گزارش"
         aria-label="دستور رنگ‌های گزارش"
       >
-        <span className="text-[9.5px] font-extrabold text-stone-400">دستور رنگ‌ها:</span>
+        <span className="text-[9.5px] font-extrabold text-stone-500">دستور رنگ‌ها:</span>
         <span className="flex items-center gap-1 text-[9.5px] font-bold text-stone-500">
           <span className="h-2.5 w-2.5 rounded-full border border-emerald-600 bg-emerald-500" aria-hidden />
           هدف کامل

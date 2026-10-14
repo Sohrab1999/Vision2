@@ -164,7 +164,7 @@ export default function Onboarding() {
                   onKeyDown={(e) => e.key === "Enter" && goStep2()}
                   placeholder="مثلاً: امیر محمد"
                   maxLength={24}
-                  className="w-full rounded-xl border border-stone-300 bg-white px-3 py-2.5 text-sm font-bold text-stone-800 outline-none transition-colors placeholder:font-normal placeholder:text-stone-400 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
+                  className="w-full rounded-xl border border-stone-300 bg-white px-3 py-2.5 text-sm font-bold text-stone-800 outline-none transition-colors placeholder:font-normal placeholder:text-stone-500 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
                 />
                 <div className="mb-2 mt-3 text-[11.5px] font-bold text-stone-500">رنگ آواتارت:</div>
                 <div className="flex gap-2">
@@ -179,7 +179,7 @@ export default function Onboarding() {
                     />
                   ))}
                 </div>
-                <p className="mt-2.5 text-[10.5px] leading-4 text-stone-400">
+                <p className="mt-2.5 text-[10.5px] leading-4 text-stone-500">
                   با نام، در جدول امتیازات و فید فعالیت کلاس دیده می‌شوی. نمی‌خواهی؟ ناشناس ادامه بده.
                 </p>
               </div>
@@ -194,7 +194,7 @@ export default function Onboarding() {
                 onClick={() => {
                   finish();
                 }}
-                className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-xl py-2 text-[12px] font-bold text-stone-400 transition-colors hover:text-stone-600"
+                className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-xl py-2 text-[12px] font-bold text-stone-500 transition-colors hover:text-stone-600"
               >
                 <EyeOff size={13} />
                 رد کردن — ناشناس می‌مانم
@@ -296,7 +296,7 @@ export default function Onboarding() {
               </button>
               <button
                 onClick={finish}
-                className="mt-2 w-full rounded-xl py-2 text-[12px] font-bold text-stone-400 transition-colors hover:text-stone-600"
+                className="mt-2 w-full rounded-xl py-2 text-[12px] font-bold text-stone-500 transition-colors hover:text-stone-600"
               >
                 بعداً خودم شروع می‌کنم
               </button>

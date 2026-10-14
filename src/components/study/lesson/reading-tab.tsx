@@ -14,11 +14,11 @@ export default function ReadingTab({ lesson }: { lesson: LessonData }) {
     <div className="space-y-5">
       <div className="flex items-center justify-between rounded-xl border c-card px-4 py-3">
         <span className="flex items-center gap-2 text-[13px] font-bold text-stone-600">
-          <FileText size={15} className="text-stone-400" />
+          <FileText size={15} className="text-stone-500" />
           متن هر پاراگراف را با دکمهٔ صوتی بشنوید
         </span>
         <label className="flex cursor-pointer items-center gap-2 text-[13px] font-bold text-stone-600">
-          <Languages size={15} className="text-stone-400" />
+          <Languages size={15} className="text-stone-500" />
           ترجمهٔ فارسی
           <button
             role="switch"

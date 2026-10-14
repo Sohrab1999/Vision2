@@ -55,7 +55,7 @@ export default function HomeHero() {
         </motion.span>
         <motion.h1 {...rise(0.07, reduceMotion)} className="mb-3 text-3xl font-black leading-[1.35] text-stone-800 sm:text-4xl">
           آموزش زبان انگلیسی پایهٔ یازدهم
-          <span className="mt-1 block bg-gradient-to-l from-emerald-700 via-emerald-600 to-teal-500 bg-clip-text text-transparent">
+          <span className="mt-1 block bg-gradient-to-l from-emerald-700 via-emerald-700 to-teal-700 bg-clip-text text-transparent">
             «Vision Two» تعاملی و شنیداری
           </span>
         </motion.h1>
@@ -132,7 +132,7 @@ export default function HomeHero() {
               transformStyle: "preserve-3d",
               boxShadow: "14px 18px 34px -14px rgb(6 78 59 / 0.5), inset 6px 0 12px -6px rgb(0 0 0 / 0.45)",
             }}
-            className="hero-book relative block w-64 overflow-hidden rounded-r-2xl rounded-l-md bg-gradient-to-br from-emerald-600 via-emerald-700 to-emerald-900 p-6 text-center text-white shadow-2xl shadow-emerald-900/40 sm:w-72"
+            className="hero-book relative block w-64 overflow-hidden rounded-r-2xl rounded-l-md bg-gradient-to-br from-emerald-700 via-emerald-800 to-emerald-900 p-6 text-center text-white shadow-2xl shadow-emerald-900/40 sm:w-72"
             aria-label="باز کردن کتاب"
           >
             <div className="absolute inset-y-0 right-0 w-3 bg-black/25" aria-hidden />

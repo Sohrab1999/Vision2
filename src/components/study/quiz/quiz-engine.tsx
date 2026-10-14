@@ -210,7 +210,7 @@ export default function QuizEngine({
           {/* exam mode nav */}
           {!immediate && (
             <div className="mt-4 flex items-center justify-between">
-              <span className="inline-flex items-center gap-1 text-[12px] text-stone-400">
+              <span className="inline-flex items-center gap-1 text-[12px] text-stone-500">
                 <Eye size={13} />
                 پاسخ‌ها در پایان نمایش داده می‌شوند
               </span>
@@ -226,7 +226,7 @@ export default function QuizEngine({
           )}
 
           {/* keyboard hint (desktop) */}
-          <div className="mt-3 hidden items-center justify-center gap-1.5 border-t border-stone-100 pt-3 text-[11px] text-stone-400 min-[720px]:flex">
+          <div className="mt-3 hidden items-center justify-center gap-1.5 border-t border-stone-100 pt-3 text-[11px] text-stone-500 min-[720px]:flex">
             <span>میان‌برها:</span>
             {["1", "2", "3", "4"].map((k) => (
               <kbd key={k} className="rounded-md border border-stone-200 bg-stone-50 px-1.5 py-0.5 font-mono text-[10px] text-stone-500 shadow-sm" dir="ltr">

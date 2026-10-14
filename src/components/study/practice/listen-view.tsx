@@ -288,7 +288,7 @@ export default function ListenView() {
             </div>
           </div>
 
-          <p className="mb-5 text-[11px] text-stone-400">
+          <p className="mb-5 text-[11px] text-stone-500">
             بانک این محدوده: {faNum(stats.word)} واژه · {faNum(stats.meaning)} جمله · {faNum(stats.next)} ادامهٔ مکالمه
           </p>
 
@@ -367,8 +367,8 @@ export default function ListenView() {
                   <span className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-white ${ok ? "bg-emerald-500" : "bg-rose-500"}`}>
                     {ok ? <Check size={12} /> : <X size={12} />}
                   </span>
-                  <KindIcon size={13} className="shrink-0 text-stone-400" />
-                  <span className="text-[11px] font-bold text-stone-400">{LISTEN_KIND_LABEL[it.kind]}</span>
+                  <KindIcon size={13} className="shrink-0 text-stone-500" />
+                  <span className="text-[11px] font-bold text-stone-500">{LISTEN_KIND_LABEL[it.kind]}</span>
                 </div>
                 <p className={`${en ? "en-text " : ""}text-[13.5px] font-semibold leading-7 text-stone-800`} dir={en ? "ltr" : "rtl"}>
                   {it.reveal}
@@ -446,7 +446,7 @@ export default function ListenView() {
               {Array.from({ length: MAX_PLAYS }).map((_, i) => (
                 <span key={i} className={`h-2 w-6 rounded-full transition-colors ${i < playsLeft ? "bg-teal-500" : "bg-stone-200"}`} />
               ))}
-              <span className="mr-1 text-[10.5px] font-bold text-stone-400">
+              <span className="mr-1 text-[10.5px] font-bold text-stone-500">
                 {playing ? "در حال پخش…" : playsLeft > 0 ? `${faNum(playsLeft)} فرصت پخش` : "فرصت پخش تمام شد"}
               </span>
             </div>
@@ -508,7 +508,7 @@ export default function ListenView() {
             )}
           </AnimatePresence>
 
-          <div className="mt-3 hidden items-center justify-center gap-1.5 border-t border-stone-100 pt-3 text-[11px] text-stone-400 min-[720px]:flex">
+          <div className="mt-3 hidden items-center justify-center gap-1.5 border-t border-stone-100 pt-3 text-[11px] text-stone-500 min-[720px]:flex">
             <span>میان‌برها:</span>
             {["۱", "۲", "۳"].map((k) => (
               <kbd key={k} className="rounded-md border border-stone-200 bg-stone-50 px-1.5 py-0.5 font-mono text-[10px] text-stone-500 shadow-sm">

@@ -137,7 +137,7 @@ export default function DailyQuests() {
             />
           </svg>
           <span className="absolute inset-0 flex items-center justify-center" aria-hidden>
-            <span className={`text-[13px] font-black leading-none ${overallPct === 0 ? "text-stone-400" : "text-stone-700"}`}>
+            <span className={`text-[13px] font-black leading-none ${overallPct === 0 ? "text-stone-500" : "text-stone-700"}`}>
               {faNum(overallPct)}
               <span className="text-[9px]">٪</span>
             </span>
@@ -166,7 +166,7 @@ export default function DailyQuests() {
                 <span className="min-w-0 flex-1">
                   <span className="flex items-center justify-between gap-2">
                     <span className="truncate text-[12.5px] font-extrabold text-stone-800">{q.def.title}</span>
-                    <span className={`shrink-0 text-[11px] font-black ${q.done ? "text-emerald-600" : "text-stone-400"}`} dir="ltr">
+                    <span className={`shrink-0 text-[11px] font-black ${q.done ? "text-emerald-600" : "text-stone-500"}`} dir="ltr">
                       {faNum(Math.min(q.value, q.def.target))}/{faNum(q.def.target)}
                     </span>
                   </span>
@@ -178,7 +178,7 @@ export default function DailyQuests() {
                       transition={{ delay: i * 0.06, duration: 0.6, ease: "easeOut" }}
                     />
                   </span>
-                  <span className="mt-1 block text-[10.5px] font-bold text-stone-400">
+                  <span className="mt-1 block text-[10.5px] font-bold text-stone-500">
                     {q.done ? "کامل شد — عالی!" : q.def.hint}
                   </span>
                 </span>

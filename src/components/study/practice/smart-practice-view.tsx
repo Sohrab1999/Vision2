@@ -142,7 +142,7 @@ export default function SmartPracticeView() {
           <div className="mb-3 flex items-center gap-2">
             <Brain size={17} className="text-violet-500" />
             <h2 className="text-sm font-extrabold text-stone-800">ترکیب جلسهٔ تو</h2>
-            <span className="rounded-full bg-violet-500 px-2.5 py-0.5 text-[11px] font-black text-white shadow-sm shadow-violet-500/30">
+            <span className="rounded-full bg-violet-600 px-2.5 py-0.5 text-[11px] font-black text-white shadow-sm shadow-violet-500/30">
               {faNum(size)} سؤال
             </span>
           </div>
@@ -267,7 +267,7 @@ export default function SmartPracticeView() {
           شروع تمرین هوشمند ({faNum(plan?.pool.length ?? 0)} سؤال)
           <ArrowLeft size={16} />
         </button>
-        <p className="mt-3 text-[12px] leading-6 text-stone-400">
+        <p className="mt-3 text-[12px] leading-6 text-stone-500">
           بدون تایمر، با فیدبک فوری و ترجمهٔ فارسی — نتیجه در تحلیل مهارت‌ها و کارنامه ثبت می‌شود.
         </p>
       </div>

@@ -141,7 +141,7 @@ export default function QuizResult({
           {title}
         </div>
         <p className={`mb-1 text-sm font-bold ${grade.cls}`}>{grade.msg}</p>
-        <p className="mb-4 text-[11.5px] text-stone-400">
+        <p className="mb-4 text-[11.5px] text-stone-500">
           تاریخ اخذ: {new Date().toLocaleDateString("fa-IR")} · وب‌کتاب تعاملی زبان انگلیسی یازدهم
         </p>
 
@@ -294,7 +294,7 @@ export default function QuizResult({
                   {ok ? <Check size={12} /> : <X size={12} />}
                 </span>
                 <p className="en-text flex-1 text-[13.5px] leading-7 text-stone-800" dir="ltr">
-                  <b className="mr-1 text-stone-400">{i + 1}.</b>
+                  <b className="mr-1 text-stone-500">{i + 1}.</b>
                   {qq.question}
                 </p>
                 {sw && (

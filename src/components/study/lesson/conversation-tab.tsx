@@ -63,7 +63,7 @@ export default function ConversationTab({ lesson }: { lesson: LessonData }) {
           {playingAll ? "توقف پخش" : "پخش کل مکالمه"}
         </button>
         <label className="flex cursor-pointer items-center gap-2 text-[13px] font-bold text-stone-600">
-          <Languages size={15} className="text-stone-400" />
+          <Languages size={15} className="text-stone-500" />
           نمایش ترجمهٔ فارسی
           <button
             role="switch"
@@ -97,7 +97,7 @@ export default function ConversationTab({ lesson }: { lesson: LessonData }) {
                 <div className="mb-1.5 flex items-center justify-between gap-2">
                   <span className={`text-[12px] font-extrabold ${t.text}`}>
                     {line.speakerFa}
-                    <span className="en-text mr-1 font-medium text-stone-400" dir="ltr">
+                    <span className="en-text mr-1 font-medium text-stone-500" dir="ltr">
                       {" "}
                       ({line.speaker})
                     </span>

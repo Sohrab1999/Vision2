@@ -247,7 +247,7 @@ export default function Badges() {
               className={`badge-card group relative flex h-full w-full flex-col items-center rounded-2xl border-2 p-3.5 text-center transition-all ${
                 isUnlocked
                   ? `border-transparent bg-gradient-to-b ${tier.grad} text-white shadow-lg ${tier.glow} badge-shine`
-                  : "border-stone-200 bg-white text-stone-400"
+                  : "border-stone-200 bg-white text-stone-500"
               }`}
             >
               {!isUnlocked && (
@@ -257,7 +257,7 @@ export default function Badges() {
               )}
               <span
                 className={`mb-2 flex h-12 w-12 items-center justify-center rounded-2xl shadow-inner ${
-                  isUnlocked ? "bg-white/20 text-white" : "bg-stone-100 text-stone-400"
+                  isUnlocked ? "bg-white/20 text-white" : "bg-stone-100 text-stone-500"
                 }`}
               >
                 <Icon size={23} />
@@ -265,7 +265,7 @@ export default function Badges() {
               <span className={`text-[12.5px] font-black ${isUnlocked ? "text-white" : "text-stone-600"}`}>
                 {b.title}
               </span>
-              <span className={`mt-1 hidden text-[10.5px] leading-4 sm:block ${isUnlocked ? "text-white/85" : "text-stone-400"}`}>
+              <span className={`mt-1 hidden text-[10.5px] leading-4 sm:block ${isUnlocked ? "text-white/85" : "text-stone-500"}`}>
                 {b.desc}
               </span>
               {isUnlocked ? (
@@ -273,7 +273,7 @@ export default function Badges() {
                   نشان {tierFa[b.tier]}
                 </span>
               ) : (
-                <span className="mt-2 rounded-full bg-stone-100 px-2 py-0.5 text-[10px] font-bold text-stone-400">
+                <span className="mt-2 rounded-full bg-stone-100 px-2 py-0.5 text-[10px] font-bold text-stone-500">
                   {hint ? `قفل — ${hint}` : "قفل"}
                 </span>
               )}
@@ -294,14 +294,14 @@ export default function Badges() {
                 <div className="mb-2 flex items-center gap-2.5">
                   <span
                     className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${
-                      isUnlocked ? `bg-gradient-to-b ${tier.grad} text-white shadow-md` : "bg-stone-100 text-stone-400"
+                      isUnlocked ? `bg-gradient-to-b ${tier.grad} text-white shadow-md` : "bg-stone-100 text-stone-500"
                     }`}
                   >
                     <Icon size={20} />
                   </span>
                   <div>
                     <div className="text-[13px] font-black text-stone-800">{b.title}</div>
-                    <span className={`inline-block rounded-full px-2 py-0.5 text-[10px] font-bold ${isUnlocked ? tier.chip : "bg-stone-100 text-stone-400"}`}>
+                    <span className={`inline-block rounded-full px-2 py-0.5 text-[10px] font-bold ${isUnlocked ? tier.chip : "bg-stone-100 text-stone-500"}`}>
                       {isUnlocked ? `کسب شد — نشان ${tierFa[b.tier]}` : `نشان ${tierFa[b.tier]} — قفل`}
                     </span>
                   </div>

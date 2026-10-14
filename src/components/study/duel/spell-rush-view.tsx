@@ -368,7 +368,7 @@ export default function SpellRushView({ onExit }: { onExit?: () => void }) {
               شروع دیکتهٔ برق‌آسا
             </button>
 
-            <div className="mt-4 flex items-center justify-center gap-1.5 text-[11px] text-stone-400">
+            <div className="mt-4 flex items-center justify-center gap-1.5 text-[11px] text-stone-500">
               <Keyboard size={13} />
               <span>میان‌بر:</span>
               <kbd className="rounded-md border c-card px-1.5 py-0.5 font-mono text-[10px] font-bold text-stone-500 shadow-sm" dir="ltr">
@@ -444,7 +444,7 @@ export default function SpellRushView({ onExit }: { onExit?: () => void }) {
           </div>
         </div>
 
-        <p className="text-center text-[11.5px] leading-6 text-stone-400">
+        <p className="text-center text-[11.5px] leading-6 text-stone-500">
           نتیجهٔ هر واژه در برنامهٔ مرور (SRS) و بانک خطاهای واژگانی ثبت شد — واژه‌های غلط زودتر دوباره سر می‌رسند.
         </p>
       </div>
@@ -494,9 +494,9 @@ export default function SpellRushView({ onExit }: { onExit?: () => void }) {
                   {faNum(score)}
                 </motion.span>
               </AnimatePresence>
-              <span className="text-[10.5px] font-bold text-stone-400">امتیاز</span>
+              <span className="text-[10.5px] font-bold text-stone-500">امتیاز</span>
             </div>
-            <div className="mt-0.5 flex items-center gap-2 text-[10.5px] font-bold text-stone-400">
+            <div className="mt-0.5 flex items-center gap-2 text-[10.5px] font-bold text-stone-500">
               <span>
                 {faNum(answered)} پاسخ · دقت {faNum(fullAccuracy)}٪
               </span>
@@ -520,7 +520,7 @@ export default function SpellRushView({ onExit }: { onExit?: () => void }) {
             transition={{ duration: 0.18 }}
             className="text-center"
           >
-            <div className="mb-2 flex items-center justify-center gap-1.5 text-[11px] font-bold text-stone-400">
+            <div className="mb-2 flex items-center justify-center gap-1.5 text-[11px] font-bold text-stone-500">
               <Ear size={13} className="text-sky-500" />
               گوش کن و املایش را بنویس
               {hintUsed && <span className="spell-chip rounded-full bg-sky-50 px-2 py-0.5 text-[9.5px] font-black text-sky-700">با راهنما — {faNum(SPELL_HINT_POINTS)} امتیاز</span>}
@@ -626,7 +626,7 @@ export default function SpellRushView({ onExit }: { onExit?: () => void }) {
         </AnimatePresence>
       </div>
 
-      <p className="text-center text-[11px] text-stone-400">
+      <p className="text-center text-[11px] text-stone-500">
         <Keyboard size={12} className="ml-1 inline" />
         <kbd className="rounded-md border c-card px-1.5 py-0.5 font-mono text-[10px] font-bold text-stone-500 shadow-sm" dir="ltr">Enter</kbd> ثبت املا — واژه‌های غلط همان‌جا در SRS و بانک خطا می‌روند
       </p>

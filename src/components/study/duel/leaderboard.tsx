@@ -192,7 +192,7 @@ export default function Leaderboard() {
                       key={row.userId}
                       className={`flex items-center gap-3 rounded-xl px-2.5 py-2.5 ${isMe ? "bg-emerald-50 ring-1 ring-emerald-200" : ""}`}
                     >
-                      <span className="w-6 shrink-0 text-center text-[13px] font-black text-stone-400">
+                      <span className="w-6 shrink-0 text-center text-[13px] font-black text-stone-500">
                         {faNum(i + 4)}
                       </span>
                       <AvatarDot color={row.color} name={row.name} size={30} />
@@ -200,7 +200,7 @@ export default function Leaderboard() {
                         {row.name}
                         {isMe && <span className="mr-1.5 text-[10px] font-black text-emerald-600">(شما)</span>}
                       </span>
-                      <span className="hidden text-[11px] text-stone-400 sm:block">
+                      <span className="hidden text-[11px] text-stone-500 sm:block">
                         {faNum(row.attempts)} آزمون
                       </span>
                       <span className="w-14 shrink-0 text-left text-[13px] font-black text-stone-800">
@@ -253,7 +253,7 @@ export default function Leaderboard() {
             )}
           />
           {duelsTotal > 0 && (
-            <p className="mt-3 text-center text-[11px] font-bold text-stone-400">
+            <p className="mt-3 text-center text-[11px] font-bold text-stone-500">
               تاکنون {faNum(duelsTotal)} نبرد در کلاس برگزار شده
             </p>
           )}
@@ -267,7 +267,7 @@ export default function Leaderboard() {
                     key={row.userId}
                     className={`flex items-center gap-2.5 rounded-xl px-2.5 py-2.5 sm:gap-3 ${isMe ? "bg-fuchsia-50 ring-1 ring-fuchsia-200" : ""}`}
                   >
-                    <span className="w-6 shrink-0 text-center text-[13px] font-black text-stone-400">
+                    <span className="w-6 shrink-0 text-center text-[13px] font-black text-stone-500">
                       {faNum(i + 4)}
                     </span>
                     <AvatarDot color={row.color} name={row.name} size={30} />

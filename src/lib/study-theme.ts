@@ -13,7 +13,7 @@ export interface LessonTheme {
 export const lessonTheme: Record<string, LessonTheme> = {
   emerald: {
     text: "text-emerald-700",
-    bg: "bg-emerald-600",
+    bg: "bg-emerald-700",
     bgSoft: "bg-emerald-50",
     border: "border-emerald-200",
     gradient: "from-emerald-500 to-emerald-800",
@@ -22,7 +22,7 @@ export const lessonTheme: Record<string, LessonTheme> = {
   },
   amber: {
     text: "text-amber-700",
-    bg: "bg-amber-500",
+    bg: "bg-amber-700",
     bgSoft: "bg-amber-50",
     border: "border-amber-200",
     gradient: "from-amber-400 to-amber-700",

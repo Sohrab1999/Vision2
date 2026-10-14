@@ -95,7 +95,7 @@ export default function WeeklyChart() {
                 className="absolute inset-x-0 border-t border-dashed border-stone-300"
                 style={{ bottom: `${(goalPct / 100) * 116 + 26}px` }}
               >
-                <span className="absolute -top-2.5 left-0 rounded-full bg-stone-100 px-1.5 py-0.5 text-[9.5px] font-bold text-stone-400">
+                <span className="absolute -top-2.5 left-0 rounded-full bg-stone-100 px-1.5 py-0.5 text-[9.5px] font-bold text-stone-500">
                   هدف روزانه
                 </span>
               </div>
@@ -136,7 +136,7 @@ export default function WeeklyChart() {
                         className={`mt-2 truncate rounded-full px-1.5 py-0.5 text-[10px] font-bold ${
                           d.isToday
                             ? "bg-emerald-600 text-white shadow-sm"
-                            : "text-stone-400"
+                            : "text-stone-500"
                         }`}
                       >
                         {d.isToday ? "امروز" : d.weekday}
@@ -167,7 +167,7 @@ export default function WeeklyChart() {
                 <BarChart3 size={15} className="mx-auto mb-1 text-sky-600" />
                 <div className="text-base font-black text-stone-800">
                   {faNum(activeDays)}
-                  <span className="text-[11px] font-bold text-stone-400">/۷</span>
+                  <span className="text-[11px] font-bold text-stone-500">/۷</span>
                 </div>
                 <div className="text-[10px] text-stone-500">روز فعال</div>
               </div>
@@ -196,7 +196,7 @@ export default function WeeklyChart() {
 
             {/* heatmap legend */}
             <div className="mt-3 flex items-center justify-between">
-              <div className="flex items-center gap-1.5 text-[10.5px] text-stone-400">
+              <div className="flex items-center gap-1.5 text-[10.5px] text-stone-500">
                 <Grid3X3 size={12} />
                 کم
                 <span className="flex gap-1">
@@ -231,7 +231,7 @@ export default function WeeklyChart() {
                 <BarChart3 size={15} className="mx-auto mb-1 text-sky-600" />
                 <div className="text-base font-black text-stone-800">
                   {faNum(monthActive)}
-                  <span className="text-[11px] font-bold text-stone-400">/۳۰</span>
+                  <span className="text-[11px] font-bold text-stone-500">/۳۰</span>
                 </div>
                 <div className="text-[10px] text-stone-500">روز فعال</div>
               </div>

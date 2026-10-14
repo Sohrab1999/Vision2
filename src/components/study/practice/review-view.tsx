@@ -216,7 +216,7 @@ export default function ReviewView() {
               <ArrowLeft size={16} />
             </button>
             {total > clampedSize && (
-              <p className="mt-3 text-[12px] text-stone-400">
+              <p className="mt-3 text-[12px] text-stone-500">
                 {faNum(total - clampedSize)} سؤالِ دیگر هم در بانک هست — در جلسهٔ بعدی می‌روی سراغشان.
               </p>
             )}

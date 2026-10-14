@@ -48,10 +48,10 @@ export default function HomeToday() {
         {/* streak */}
         <div className="flex items-center gap-4">
           <div className={`relative flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl shadow-lg transition-all ${streak > 0 ? "bg-gradient-to-br from-amber-400 to-orange-500 shadow-orange-500/30" : "bg-stone-200 shadow-none"}`}>
-            <Flame size={30} className={streak > 0 ? "streak-flame text-white" : "text-stone-400"} />
+            <Flame size={30} className={streak > 0 ? "streak-flame text-white" : "text-stone-500"} />
           </div>
           <div>
-            <div className="text-[12px] font-bold text-stone-400">زنجیرهٔ یادگیری</div>
+            <div className="text-[12px] font-bold text-stone-500">زنجیرهٔ یادگیری</div>
             <div className="text-2xl font-black leading-tight text-stone-800">
               {streak > 0 ? (
                 <>
@@ -62,7 +62,7 @@ export default function HomeToday() {
               )}
             </div>
             {bestStreak > 1 && (
-              <div className="text-[11px] text-stone-400">رکورد: {faNum(bestStreak)} روز</div>
+              <div className="text-[11px] text-stone-500">رکورد: {faNum(bestStreak)} روز</div>
             )}
             {mounted && freezeCount > 0 && (
               <span
@@ -111,7 +111,7 @@ export default function HomeToday() {
               transition={{ duration: 0.8, ease: "easeOut" }}
             />
           </div>
-          <div className="mt-1.5 text-[11px] text-stone-400">
+          <div className="mt-1.5 text-[11px] text-stone-500">
             مرور فلش‌کارت، تست، نگارش و دیکته همه در شمارش فعالیت امروز تأثیر دارند
           </div>
         </div>
@@ -120,7 +120,7 @@ export default function HomeToday() {
         <div className="flex flex-col gap-2 sm:flex-row lg:flex-col">
           <button
             onClick={() => openLesson(reviewLesson ?? 1, "smart")}
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 px-4 py-2.5 text-[13px] font-bold text-white shadow-md shadow-emerald-900/20 transition-all hover:bg-emerald-700 active:scale-95"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-700 px-4 py-2.5 text-[13px] font-bold text-white shadow-md shadow-emerald-900/20 transition-all hover:bg-emerald-800 active:scale-95"
           >
             <RefreshCcw size={15} />
             {dueTotal > 0 ? `مرور هوشمند (${faNum(dueTotal)} واژه سررسید)` : "مرور هوشمند"}

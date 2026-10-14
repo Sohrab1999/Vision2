@@ -143,7 +143,7 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
       <motion.div
         initial={{ opacity: 0, y: 14 }}
         animate={{ opacity: 1, y: 0 }}
-        className="duel-hero relative overflow-hidden rounded-2xl bg-gradient-to-bl from-violet-600 via-fuchsia-600 to-rose-500 p-6 text-center text-white shadow-lg shadow-fuchsia-600/20 sm:p-10"
+        className="duel-hero relative overflow-hidden rounded-2xl bg-gradient-to-bl from-violet-600 via-fuchsia-600 to-rose-600 p-6 text-center text-white shadow-lg shadow-fuchsia-600/20 sm:p-10"
       >
         <div className="absolute -left-6 -top-8 opacity-[0.08]" aria-hidden>
           <Swords size={230} />
@@ -152,40 +152,40 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
           <span className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-violet-500 to-fuchsia-700 text-white shadow-xl shadow-fuchsia-900/30">
             <Swords size={38} />
           </span>
-          <span className="mb-3 inline-flex items-center gap-1.5 rounded-full border border-white/30 bg-white/15 px-3 py-1 text-xs font-bold backdrop-blur-sm">
+          <span className="mb-3 inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-black/25 px-3 py-1 text-xs font-bold backdrop-blur-sm">
             <Sparkles size={13} />
             حالت چندنفرهٔ زنده — واژگان Vision 2
           </span>
           <h1 className="mb-2 text-2xl font-black sm:text-3xl">نبرد دودنفره</h1>
-          <p className="mx-auto mb-6 max-w-lg text-[13.5px] leading-7 text-white/85">
+          <p className="mx-auto mb-6 max-w-lg text-[13.5px] leading-7 text-white/95">
             با یک یادگیرندهٔ دیگر همزمان مسابقه بده! هر دو همان ۱۰ سؤال را می‌بینید و داوری روی سرور انجام می‌شود —
             نه تقلبی، نه تأخیری. سریع‌تر جواب بدهی، امتیاز بیشتری می‌گیری.
           </p>
 
           <div className="mx-auto mb-7 flex flex-wrap items-center justify-center gap-2.5">
-            <span className="rounded-xl border border-white/25 bg-white/15 px-4 py-2 text-[13px] font-black backdrop-blur-sm">
+            <span className="rounded-xl border border-white/25 bg-black/25 px-4 py-2 text-[13px] font-black backdrop-blur-sm">
               🏆 بردها: {faNum(mounted ? duelWins : 0)}
             </span>
-            <span className="rounded-xl border border-white/25 bg-white/15 px-4 py-2 text-[13px] font-black backdrop-blur-sm">
+            <span className="rounded-xl border border-white/25 bg-black/25 px-4 py-2 text-[13px] font-black backdrop-blur-sm">
               😔 باخت‌ها: {faNum(mounted ? duelLosses : 0)}
             </span>
-            <span className="rounded-xl border border-white/25 bg-white/15 px-4 py-2 text-[13px] font-black backdrop-blur-sm">
+            <span className="rounded-xl border border-white/25 bg-black/25 px-4 py-2 text-[13px] font-black backdrop-blur-sm">
               🤝 مساوی: {faNum(mounted ? duelTies : 0)}
             </span>
           </div>
 
           {/* ساخت اتاق */}
-          <div className="mx-auto mb-4 max-w-md rounded-2xl border border-white/25 bg-white/10 p-4 backdrop-blur-sm">
+          <div className="mx-auto mb-4 max-w-md rounded-2xl border border-white/25 bg-black/25 p-4 backdrop-blur-sm">
             <div className="mb-2 flex items-center justify-center gap-2 text-[13px] font-black">
               <Users size={15} />
               اتاق جدید بساز
             </div>
-            <p className="mb-3 text-[12px] leading-6 text-white/80">یک کد ۵حرفی می‌گیریم؛ به دوستت بده تا بپیوندد.</p>
+            <p className="mb-3 text-[12px] leading-6 text-white/90">یک کد ۵حرفی می‌گیریم؛ به دوستت بده تا بپیوندد.</p>
             {/* Task 107 «ریتمِ نبرد» — سازنده سرعتِ هر سؤال را برمی‌گزیند؛ عددِ
                 برگزیده با duel:create می‌رود و داور گِرِفتش می‌کند. هر دو
                 بازیکن در لابی و شروع، ریتمِ نهایی را از خودِ داور می‌بینند */}
             <div className="mb-3" role="group" aria-label="انتخاب سرعت هر سؤال">
-              <div className="mb-1.5 flex items-center justify-center gap-1.5 text-[11px] font-bold text-white/75">
+              <div className="mb-1.5 flex items-center justify-center gap-1.5 text-[11px] font-bold text-white/90">
                 <Timer size={12} aria-hidden />
                 سرعت هر سؤال
               </div>
@@ -201,7 +201,7 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
                       className={`rounded-xl px-2 py-2 text-center transition-all active:scale-95 ${
                         active
                           ? "bg-white text-fuchsia-700 shadow-lg"
-                          : "border border-white/25 bg-white/10 text-white/85 hover:bg-white/20"
+                          : "border border-white/25 bg-black/25 text-white/90 hover:bg-black/35"
                       }`}
                     >
                       <span className="block text-[12px] font-black">{p.label}</span>
@@ -225,7 +225,7 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
           </div>
 
           {/* پیوستن با کد */}
-          <div className="mx-auto max-w-md rounded-2xl border border-white/25 bg-white/10 p-4 backdrop-blur-sm">
+          <div className="mx-auto max-w-md rounded-2xl border border-white/25 bg-black/25 p-4 backdrop-blur-sm">
             <div className="mb-2 flex items-center justify-center gap-2 text-[13px] font-black">
               <Target size={15} />
               با کد به نبرد بپیوند
@@ -237,7 +237,7 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
                 onKeyDown={(e) => e.key === "Enter" && joinRoom()}
                 placeholder="کد اتاق… مثل K7M2X"
                 aria-label="کد اتاق مسابقه"
-                className="duel-input w-full flex-1 rounded-xl border-2 border-white/30 bg-white/90 px-3 py-2.5 text-center font-mono text-lg font-black tracking-[0.3em] text-stone-800 outline-none placeholder:text-stone-400 focus:border-white"
+                className="duel-input w-full flex-1 rounded-xl border-2 border-white/30 bg-white/90 px-3 py-2.5 text-center font-mono text-lg font-black tracking-[0.3em] text-stone-800 outline-none placeholder:text-stone-500 focus:border-white"
               />
               <button
                 onClick={joinRoom}
@@ -250,7 +250,7 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
             </div>
           </div>
 
-          <div className="mt-4 flex items-center justify-center gap-1.5 text-[11.5px] font-bold text-white/75">
+          <div className="mt-4 flex items-center justify-center gap-1.5 text-[11.5px] font-bold text-white/90">
             {conn === "online" ? <Wifi size={13} /> : conn === "connecting" ? <Loader2 size={13} className="animate-spin" /> : <WifiOff size={13} />}
             {conn === "online" ? "متصل به سرور نبرد" : conn === "connecting" ? "در حال اتصال…" : "اتصال برقرار نیست — چند لحظه صبر کن"}
           </div>
@@ -264,7 +264,7 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
             <h2 className="flex items-center gap-2 text-[14px] font-extrabold text-stone-700">
               <History size={17} className="text-fuchsia-600" />
               آخرین نبردها
-              <span className="rounded-md bg-stone-100 px-1.5 py-0.5 text-[10px] font-black text-stone-400">
+              <span className="rounded-md bg-stone-100 px-1.5 py-0.5 text-[10px] font-black text-stone-500">
                 {faNum(duelHistory.length)} نبرد
               </span>
             </h2>
@@ -278,7 +278,7 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
                   disabled={shareBusy || imgBusy}
                   aria-label="هم‌رسانی کارنامهٔ نبردها"
                   title="هم‌رسانیِ کارنامهٔ نبردها — با شیتِ خودِ سیستم"
-                  className="rounded-lg p-1.5 text-stone-400 transition-colors hover:bg-stone-100 hover:text-fuchsia-600 disabled:opacity-50"
+                  className="rounded-lg p-1.5 text-stone-500 transition-colors hover:bg-stone-100 hover:text-fuchsia-600 disabled:opacity-50"
                 >
                   {shareBusy ? <Loader2 size={15} className="animate-spin" aria-hidden /> : <Share2 size={15} aria-hidden />}
                 </button>
@@ -288,7 +288,7 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
                 disabled={imgBusy}
                 aria-label="گرفتن عکس کارنامهٔ نبردها"
                 title="عکسِ کارنامهٔ نبردها — یک کارت PNG برای هم‌رسانی"
-                className="rounded-lg p-1.5 text-stone-400 transition-colors hover:bg-stone-100 hover:text-fuchsia-600 disabled:opacity-50"
+                className="rounded-lg p-1.5 text-stone-500 transition-colors hover:bg-stone-100 hover:text-fuchsia-600 disabled:opacity-50"
               >
                 {imgBusy ? <Loader2 size={15} className="animate-spin" aria-hidden /> : <ImageDown size={15} aria-hidden />}
               </button>
@@ -313,7 +313,7 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
               <div key={m.label} className="rounded-xl border border-stone-100 c-stone-70 p-2.5 text-center">
                 <m.icon size={14} className="mx-auto mb-1 text-fuchsia-600" aria-hidden />
                 <div className="text-[15px] font-black text-stone-800">{m.value}</div>
-                <div className="text-[10.5px] font-bold text-stone-400">{m.label}</div>
+                <div className="text-[10.5px] font-bold text-stone-500">{m.label}</div>
               </div>
             ))}
           </div>
@@ -321,19 +321,19 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
           {/* Task 98 — نوارِ کاویدن: جست‌وجوی نامِ حریف + چیپ‌های نتیجه + فقطِ داورگواه */}
           <div className="mb-3 space-y-2.5">
             <div className="relative">
-              <Search size={14} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-stone-400" aria-hidden />
+              <Search size={14} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-stone-500" aria-hidden />
               <input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="جست‌وجوی نام حریف…"
                 aria-label="جست‌وجو در تاریخچهٔ نبردها"
-                className="w-full rounded-xl border border-stone-200 bg-white py-2 pl-9 pr-9 text-[12.5px] font-bold text-stone-800 outline-none transition-colors placeholder:text-stone-400 focus:border-fuchsia-400"
+                className="w-full rounded-xl border border-stone-200 bg-white py-2 pl-9 pr-9 text-[12.5px] font-bold text-stone-800 outline-none transition-colors placeholder:text-stone-500 focus:border-fuchsia-400"
               />
               {query && (
                 <button
                   onClick={() => setQuery("")}
                   aria-label="پاک‌کردن جست‌وجو"
-                  className="absolute left-2 top-1/2 -translate-y-1/2 rounded-md p-1 text-stone-400 transition-colors hover:bg-stone-100 hover:text-stone-600"
+                  className="absolute left-2 top-1/2 -translate-y-1/2 rounded-md p-1 text-stone-500 transition-colors hover:bg-stone-100 hover:text-stone-600"
                 >
                   <X size={13} aria-hidden />
                 </button>
@@ -388,7 +388,7 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
             {/* Task 100 — مرتب‌سازیِ دفترچه: سه کلید با همان دستورِ چیپ‌های نتیجه؛
                 مرتب‌سازی روی نتیجهٔ فیلتر اعمال می‌شود (ترکیبِ ابزارها) */}
             <div className="flex flex-wrap items-center gap-1.5" role="group" aria-label="مرتب‌سازی نبردها">
-              <span className="text-[10.5px] font-black text-stone-400">ترتیب:</span>
+              <span className="text-[10.5px] font-black text-stone-500">ترتیب:</span>
               {(
                 [
                   ["newest", "جدیدترین"],
@@ -427,7 +427,7 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
               )}
             </div>
             {isSearching && (
-              <p className="text-[11px] font-bold text-stone-400" role="status">
+              <p className="text-[11px] font-bold text-stone-500" role="status">
                 {faNum(rows.length)} نبرد یافت شد · {faNum(digest.win)} برد، {faNum(digest.loss)} باخت، {faNum(digest.tie)} مساوی
               </p>
             )}
@@ -482,7 +482,7 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
                       <span className="shrink-0 rounded-md bg-stone-200 px-1.5 py-0.5 text-[9.5px] font-black text-stone-600">ضربهٔ فنی</span>
                     )}
                   </div>
-                  <div className="mt-0.5 text-[11px] font-bold text-stone-400">
+                  <div className="mt-0.5 text-[11px] font-bold text-stone-500">
                     {faNum(r.myCorrect)} از {faNum(Math.max(r.answered, r.total))} درست · {faNum(r.durationSec)} ثانیه
                   </div>
                 </div>
@@ -490,7 +490,7 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
                   <div className="text-[13.5px] font-black text-stone-800" dir="ltr">
                     {faNum(r.myScore)}–{faNum(r.oppScore)}
                   </div>
-                  <div className="text-[10.5px] font-bold text-stone-400">{timeAgoFa(r.day)}</div>
+                  <div className="text-[10.5px] font-bold text-stone-500">{timeAgoFa(r.day)}</div>
                 </div>
               </div>
             ))}
@@ -501,7 +501,7 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
           {isSearching && rows.length === 0 && (
             <div className="mt-3 rounded-xl border border-dashed border-stone-300 py-6 text-center">
               <Search size={18} className="mx-auto mb-2 text-stone-300" aria-hidden />
-              <p className="mb-2.5 text-[12px] font-bold text-stone-400">نبردی با این مشخصات پیدا نشد.</p>
+              <p className="mb-2.5 text-[12px] font-bold text-stone-500">نبردی با این مشخصات پیدا نشد.</p>
               <button
                 onClick={clearFilters}
                 className="rounded-lg bg-stone-100 px-3 py-1.5 text-[11px] font-black text-stone-600 transition-colors hover:bg-stone-200"
@@ -514,7 +514,7 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
           {/* Task 96 — پانوشتِ زیرمجموعهٔ صادق (الگوی تسک ۹۵): نیمی‌داورگواه
               باید نیمی دیده شود؛ فقط وقتی دست‌کم یک رسید هست رندر می‌شود */}
           {verified > 0 && (
-            <p className="mt-3 flex items-center justify-center gap-1.5 text-[11.5px] font-bold text-stone-400">
+            <p className="mt-3 flex items-center justify-center gap-1.5 text-[11.5px] font-bold text-stone-500">
               {/* 700 نه ۶۰۰ — قاعدهٔ تاریکِ سراسریِ 700 را می‌گیرد (قاعدهٔ 600 اسکوپ‌دار است) */}
               <ShieldCheck size={12} className="text-emerald-700" aria-hidden />
               <span>
@@ -529,7 +529,7 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
             <button
               onClick={() => setExpanded((v) => !v)}
               aria-expanded={expanded}
-              className="mt-3 flex w-full items-center justify-center gap-1.5 rounded-xl border border-dashed border-stone-300 py-2 text-[11.5px] font-black text-stone-400 transition-colors hover:bg-stone-50 hover:text-stone-600"
+              className="mt-3 flex w-full items-center justify-center gap-1.5 rounded-xl border border-dashed border-stone-300 py-2 text-[11.5px] font-black text-stone-500 transition-colors hover:bg-stone-50 hover:text-stone-600"
             >
               {expanded ? <ChevronUp size={13} aria-hidden /> : <ChevronDown size={13} aria-hidden />}
               {expanded ? "نمایش کمتر" : `نمایش همهٔ ${faNum(duelHistory.length)} نبرد`}

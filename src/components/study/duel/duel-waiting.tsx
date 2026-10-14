@@ -55,7 +55,7 @@ export default function DuelWaiting({ roomCode, players, mySid, paceMs, copyCode
             >
               <span className="h-3 w-3 rounded-full" style={{ backgroundColor: p.color }} />
               <span className="max-w-28 truncate text-[12.5px] font-extrabold text-stone-700">{p.name}</span>
-              <span className="text-[10px] font-bold text-stone-400">{p.sid === mySid ? "تو" : "حریف"}</span>
+              <span className="text-[10px] font-bold text-stone-500">{p.sid === mySid ? "تو" : "حریف"}</span>
             </motion.div>
           ) : (
             <div key={`slot-${i}`} className="flex min-w-28 flex-col items-center gap-1 rounded-xl border border-dashed border-stone-200 px-3 py-2.5 text-stone-300">

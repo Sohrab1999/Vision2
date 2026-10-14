@@ -25,7 +25,7 @@ export default function HomeRecent() {
   return (
     <section aria-label="آخرین نتایج تست‌ها">
       <h2 className="mb-4 flex items-center gap-2 text-lg font-extrabold text-stone-800">
-        <RotateCcw size={19} className="text-stone-400" />
+        <RotateCcw size={19} className="text-stone-500" />
         آخرین نتایج شما
       </h2>
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">

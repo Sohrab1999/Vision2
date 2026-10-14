@@ -112,7 +112,7 @@ export const PODIUM_VARIANTS = {
     meBadge: "bg-emerald-600",
     nameCls: "mt-2.5 max-w-full truncate text-center text-[12px] font-extrabold text-stone-800",
     metricCls: "flex items-center gap-1 text-[12px] font-black text-orange-600",
-    labelCls: "mb-1.5 text-[10px] font-bold text-stone-400",
+    labelCls: "mb-1.5 text-[10px] font-bold text-stone-500",
     podiumCls: "flex w-full items-start justify-center rounded-t-xl bg-gradient-to-b pt-1.5 shadow-inner",
     rankCls: "text-base font-black text-white/90",
     delay: 0.09,

@@ -36,7 +36,7 @@ export function ListenBanner() {
         </div>
         <button
           onClick={() => setView({ type: "listen" })}
-          className="inline-flex w-full flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-gradient-to-l from-cyan-600 to-teal-600 px-5 py-3 text-[13px] font-black text-white shadow-lg shadow-teal-600/25 transition-all hover:opacity-95 active:scale-95 sm:w-auto sm:flex-none"
+          className="inline-flex w-full flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-gradient-to-l from-cyan-700 to-teal-700 px-5 py-3 text-[13px] font-black text-white shadow-lg shadow-teal-600/25 transition-all hover:opacity-95 active:scale-95 sm:w-auto sm:flex-none"
         >
           <Headphones size={16} />
           شروع تمرین شنیداری
@@ -69,7 +69,7 @@ export function RushBanner() {
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
             <h2 className="text-base font-black text-stone-800">چالش برق‌آسا</h2>
-            <span className="rounded-full bg-orange-500 px-2 py-0.5 text-[10px] font-black text-white shadow-sm">
+            <span className="rounded-full bg-orange-500 px-2 py-0.5 text-[10px] font-black text-stone-900 shadow-sm">
               {faNum(60)} ثانیه
             </span>
           </div>

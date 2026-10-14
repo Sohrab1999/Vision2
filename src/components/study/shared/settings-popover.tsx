@@ -137,7 +137,7 @@ export default function SettingsPopover() {
           </span>
           <div>
             <h3 className="text-[13.5px] font-black text-stone-800">تنظیمات وب‌کتاب</h3>
-            <p className="text-[10.5px] leading-4 text-stone-400">روی این دستگاه ذخیره می‌شود</p>
+            <p className="text-[10.5px] leading-4 text-stone-500">روی این دستگاه ذخیره می‌شود</p>
           </div>
         </div>
 
@@ -173,7 +173,7 @@ export default function SettingsPopover() {
               )}
             </button>
           </div>
-          <div className="mt-1.5 flex justify-between text-[10px] font-bold text-stone-400">
+          <div className="mt-1.5 flex justify-between text-[10px] font-bold text-stone-500">
             <span>کند</span>
             <span>سریع</span>
           </div>
@@ -214,7 +214,7 @@ export default function SettingsPopover() {
             <Waves size={13} className="text-emerald-600" />
             <div>
               <div className="text-[12px] font-bold text-stone-700">کاهش حرکت و انیمیشن</div>
-              <div className="text-[10px] leading-4 text-stone-400">برای تمرکز بیشتر یا حساسیت به حرکت</div>
+              <div className="text-[10px] leading-4 text-stone-500">برای تمرکز بیشتر یا حساسیت به حرکت</div>
             </div>
           </div>
           <Switch
@@ -262,14 +262,14 @@ export default function SettingsPopover() {
             </span>
             <button
               onClick={loadPulse}
-              className="flex h-6 w-6 items-center justify-center rounded-full text-stone-400 transition-all hover:bg-stone-200/70 hover:text-emerald-600 active:scale-90"
+              className="flex h-6 w-6 items-center justify-center rounded-full text-stone-500 transition-all hover:bg-stone-200/70 hover:text-emerald-600 active:scale-90"
               aria-label="به‌روزرسانی آمار"
               title="به‌روزرسانی"
             >
               {pulseState === "loading" ? <Loader2 size={12} className="animate-spin" /> : <RefreshCw size={12} />}
             </button>
           </div>
-          <p className="mb-2 text-[10px] leading-4 text-stone-400">
+          <p className="mb-2 text-[10px] leading-4 text-stone-500">
             فعالیت بی‌نامِ همهٔ یادگیرندگان — بدون هیچ اطلاعات شخصی.
           </p>
           {pulseState === "ready" && pulse && pulse.length > 0 && (() => {
@@ -295,10 +295,10 @@ export default function SettingsPopover() {
             );
           })()}
           {pulseState === "ready" && pulse && pulse.length === 0 && (
-            <p className="py-2 text-center text-[11px] text-stone-400">هنوز فعالیتی ثبت نشده — اولین نفر باش!</p>
+            <p className="py-2 text-center text-[11px] text-stone-500">هنوز فعالیتی ثبت نشده — اولین نفر باش!</p>
           )}
           {pulseState === "error" && (
-            <p className="py-2 text-center text-[11px] text-stone-400">آمار زنده در دسترس نیست.</p>
+            <p className="py-2 text-center text-[11px] text-stone-500">آمار زنده در دسترس نیست.</p>
           )}
         </section>
 

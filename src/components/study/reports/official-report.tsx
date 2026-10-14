@@ -451,12 +451,12 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
             <div className="flex h-24 items-end gap-3 rounded-xl border border-stone-100 bg-stone-50 p-3" dir="ltr">
               {monthBuckets.map((b, i) => (
                 <div key={i} className="flex flex-1 flex-col items-center gap-1">
-                  <span className="text-[10px] font-black text-stone-400">{b.total > 0 ? faNum(b.total) : ""}</span>
+                  <span className="text-[10px] font-black text-stone-500">{b.total > 0 ? faNum(b.total) : ""}</span>
                   <div
                     className={`w-full rounded-t-md ${b.total > 0 ? "or-weekbar" : "or-weekbar-empty"}`}
                     style={{ height: `${Math.max(b.total > 0 ? 10 : 4, (b.total / monthMax) * 52)}px` }}
                   />
-                  <span className="text-[9.5px] font-bold text-stone-400">هفتهٔ {faNum(i + 1)}</span>
+                  <span className="text-[9.5px] font-bold text-stone-500">هفتهٔ {faNum(i + 1)}</span>
                 </div>
               ))}
             </div>

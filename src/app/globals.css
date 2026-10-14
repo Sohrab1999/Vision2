@@ -8,6 +8,12 @@
      var(--color-white) to ALWAYS resolve (Chrome's resolved-var-mix computed
      serialization depends on it; see the c-veil contract below) */
   --color-white: #fff;
+  /* r172 contrast contract: light-mode stone-500 darkened one step so
+     the muted-text family (incl. the estate-wide text-stone-400 ->
+     text-stone-500 migration) clears WCAG 4.5:1 on white/stone-50.
+     Dark mode restores the stock tone in the .dark kernel below —
+     per-panel .dark ink-tone canonical groups still override it. */
+  --color-stone-500: oklch(52% 0.013 58.071);
   /* r89: --color-stone-50 must NOT be pinned here — probe-proven: Tailwind's
      default theme value is oklch(0.984 0.003 106), NOT the hex approximation
      #fafaf9; pinning the hex shifted light computed L by ~2e-4 (0.984819 vs
@@ -90,6 +96,8 @@
 }
 
 .dark {
+  /* r172: stock stone-500 back for dark (the @theme 52% override is light-only) */
+  --color-stone-500: oklch(55.3% 0.013 58.071);
   color-scheme: dark;
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
@@ -1168,7 +1176,7 @@ html.user-reduce-motion .streak-flame {
 .dark .duel-card .border-stone-200 { border-color: rgb(87 83 78 / 0.45); }
 .dark .duel-card .bg-fuchsia-100 { background-color: rgb(74 4 78 / 0.6); }
 .dark .duel-card .text-fuchsia-700,.dark .leaderboard.duel-mode .text-fuchsia-700 { color: #f0abfc; }
-.dark .duel-card .text-fuchsia-600,.dark .leaderboard.duel-mode .text-fuchsia-600 { color: #e879f9; }
+.dark .duel-card .text-fuchsia-600,.dark .leaderboard.duel-mode .text-fuchsia-600,.dark .duel-week .text-fuchsia-600 { color: #e879f9; }
 .dark .duel-card .bg-fuchsia-50 { background-color: rgb(74 4 78 / 0.35); }
 
 .dark .duel-code {
@@ -1382,10 +1390,6 @@ html.user-reduce-motion .streak-flame {
   border-color: rgb(162 28 175 / 0.45);
   background-color: rgb(74 4 78 / 0.3);
   color: #f0abfc;
-}
-/* برچسبِ نرخِ برد در بلوکِ نبردهای هفته‌نامه — همان ارزشِ تثبیت‌شدهٔ .duel-card (۱۱۲۹) */
-.dark .duel-week .text-fuchsia-600 {
-  color: #e879f9;
 }
 .c-chip-flame {
   border-color: lab(91.7203 -0.505269 49.9084); /* amber-200 */
