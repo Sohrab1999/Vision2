@@ -24,7 +24,10 @@
    exam/konkur-hero.css, exam/exam-dict-cta.css; wave 15 dissolved the
    task-64 sweep band — its four remaining tinted gradient painters each
    beside its single owner in four feature areas: home/listen-hero.css,
-   duel/name-cta.css, shell/onboard-paper.css, lesson/dict-setup.css.
+   duel/name-cta.css, shell/onboard-paper.css, lesson/dict-setup.css;
+   wave 16 moved the Flashcard 3D flip family beside its single owner
+   (lesson/flashcards.css) and the appendix table's scroll rule beside
+   its owner (lesson/appendix-view.css).
    Each file lives BESIDE its owning component and is imported here so the
    rules are ALWAYS part of the initial CSS — the same guarantee globals.css
    had before the extraction (lazy views keep zero first-paint risk), and the
@@ -75,3 +78,6 @@
 @import "../components/study/duel/name-cta.css";
 @import "../components/study/shell/onboard-paper.css";
 @import "../components/study/lesson/dict-setup.css";
+/* wave 16 (task 163): flip family + appendix scroll — two lesson owners */
+@import "../components/study/lesson/flashcards.css";
+@import "../components/study/lesson/appendix-view.css";

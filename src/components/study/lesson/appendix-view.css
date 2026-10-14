@@ -1,0 +1,4 @@
+/* Appendix table — mobile horizontal scroll (§8.3 wave 16, task 163)
+   Owner: lesson/appendix-view.tsx (line-scoped — the only .verbs-table
+   consumer). Single structural rule. */
+.verbs-table { min-width: 540px; }

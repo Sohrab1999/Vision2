@@ -268,27 +268,9 @@ body {
   background: transparent;
 }
 
-/* Flashcard 3D flip */
-.flip-scene {
-  perspective: 1400px;
-}
-.flip-card {
-  transform-style: preserve-3d;
-  transition: transform 0.55s cubic-bezier(0.4, 0.1, 0.2, 1);
-  position: relative;
-}
-.flip-card.flipped {
-  transform: rotateY(180deg);
-}
-.flip-face {
-  position: absolute;
-  inset: 0;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-.flip-face.back {
-  transform: rotateY(180deg);
-}
+/* wave 16 (task 163): the Flashcard 3D flip family moved beside its owner
+   (§8.3) — lesson/flashcards.css beside flashcards.tsx: five structural
+   rules (scene/card/face), one view family, one file. */
 
 /* book spine hover moved beside its owner (§8.3 wave 10, task 151):
    home/home-bookshelf.css — both spine rules (theme-free) went with the
@@ -641,8 +623,8 @@ body {
    band below stays global per the wave-1 protocol (print wins wherever
    it lives). */
 
-/* ---------------- appendix table — mobile horizontal scroll ---------------- */
-.verbs-table { min-width: 540px; }
+/* wave 16 (task 163): the appendix table's single scroll rule moved
+   beside its owner — lesson/appendix-view.css beside appendix-view.tsx. */
 
 /* ---------------- print stylesheet for the report card ---------------- */
 @media print {

@@ -67,6 +67,11 @@ const featureCssPaths = [
   "src/components/study/duel/name-cta.css",
   "src/components/study/shell/onboard-paper.css",
   "src/components/study/lesson/dict-setup.css",
+  // wave 16 (task 163): the Flashcard 3D flip family (one view family,
+  // one file — wave-13 precedent) + the appendix table's scroll rule —
+  // two lesson owners
+  "src/components/study/lesson/flashcards.css",
+  "src/components/study/lesson/appendix-view.css",
 ];
 const readEffectiveCss = (): string =>
   readFileSync(cssPath, "utf8") +
@@ -368,9 +373,18 @@ describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
     // (NEW files — four feature areas, no co-render family). 3a
     // checkpoints re-ran clean. Growth from here must consolidate, not
     // add.
+    // task 163 (§8.3 wave 16): re-based 247 → 241 — the Flashcard 3D flip
+    // family (5 structural rules) moved beside its single owner
+    // (lesson/flashcards.css — one view family, one file) and the
+    // appendix table's scroll rule (1 line) beside its owner
+    // (lesson/appendix-view.css). The grammar-metro family (.gmetro/
+    // .glesson ~65 rules, co-rendered in grammar-view) is the next big
+    // candidate; print bands stay global per the wave-1 protocol; c-*
+    // tone-kernel singles stay (kernel contract). 3a checkpoints re-ran
+    // clean. Growth from here must consolidate, not add.
     const sel = lines.filter((l) => /^\s*\.[a-z]/.test(l) && !l.includes("→")).length;
     expect(sel).toBeLessThanOrEqual(505);
-    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(247);
+    expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(241);
   });
 });
 
@@ -1509,6 +1523,11 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
     "src/components/study/duel/name-cta.css": [".dark .name-cta { background-image: linear-gradient(to left, rgba(6, 55, 40, 0.5), rgba(19, 78, 74, 0.4)) !important; }"],
     "src/components/study/shell/onboard-paper.css": [".dark .onboard-paper { background-image: linear-gradient(to left, rgba(6, 55, 40, 0.4), rgba(24, 21, 18, 0.92), rgba(24, 21, 18, 0.92)) !important; }"],
     "src/components/study/lesson/dict-setup.css": [".dark .dict-setup { background-image: linear-gradient(to bottom, rgba(59, 32, 96, 0.4), transparent) !important; }"],
+    // wave 16 (task 163) — the flip family (multi-line structural rules;
+    // distinctive selector + signature-declaration substrings as keys)
+    // and the appendix scroll rule
+    "src/components/study/lesson/flashcards.css": [".flip-scene {\n  perspective: 1400px;", ".flip-card {\n  transform-style: preserve-3d;", ".flip-card.flipped {\n  transform: rotateY(180deg);", ".flip-face {\n  position: absolute;", ".flip-face.back {\n  transform: rotateY(180deg);"],
+    "src/components/study/lesson/appendix-view.css": [".verbs-table { min-width: 540px; }"],
   };
 
   it("keeps every extracted feature file present with its key selectors", () => {
@@ -1645,6 +1664,14 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
       "\n.dark .name-cta {",
       "\n.dark .onboard-paper {",
       "\n.dark .dict-setup {",
+      // wave 16 (task 163) — \n-prefixed with " {" suffix per the standing
+      // lesson; the tombstone mentions only file paths (selector-pattern-free)
+      "\n.flip-scene {",
+      "\n.flip-card {",
+      "\n.flip-card.flipped {",
+      "\n.flip-face {",
+      "\n.flip-face.back {",
+      "\n.verbs-table {",
     ]) {
       expect(css, `globals.css still carries a moved rule: ${gone}`).not.toContain(gone);
     }
@@ -1667,7 +1694,7 @@ describe("per-feature CSS extraction (§8.3 wave 1 — task 133, wave 2 — task
     expect(css).toContain(".dark .daily-quests .text-violet-700,.dark .leaderboard.duel-mode .text-fuchsia-300");
   });
 
-  it("features.css manifest imports all twenty-nine files; layout.tsx loads it right after globals.css", () => {
+  it("features.css manifest imports all thirty-one files; layout.tsx loads it right after globals.css", () => {
     const manifest = readFileSync(resolve(process.cwd(), "src/app/features.css"), "utf8");
     for (const p of featureCssPaths) {
       expect(manifest, `manifest line missing for ${p}`).toContain(`@import "${p.replace("src/", "../")}";`);

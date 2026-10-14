@@ -1,0 +1,25 @@
+/* Flashcard 3D flip family — §8.3 wave 16, task 163
+   Owner: lesson/flashcards.tsx (the only consumer of all five heads —
+   the scene/card/face trio renders together inside vocab-tab's flash
+   mode; wave-13 «one family, one file» precedent). Theme-free structural
+   rules: perspective, preserve-3d, backface-visibility. */
+.flip-scene {
+  perspective: 1400px;
+}
+.flip-card {
+  transform-style: preserve-3d;
+  transition: transform 0.55s cubic-bezier(0.4, 0.1, 0.2, 1);
+  position: relative;
+}
+.flip-card.flipped {
+  transform: rotateY(180deg);
+}
+.flip-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.flip-face.back {
+  transform: rotateY(180deg);
+}
