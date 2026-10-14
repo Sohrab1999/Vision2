@@ -55,6 +55,7 @@ import {
   Handshake,
   NotebookPen,
   FileCheck2,
+  BookCheck,
 } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -139,6 +140,10 @@ export const BADGE_ICONS: Record<string, React.ElementType> = {
   // کاشیِ FileCheck2 در رجیستری (نریشنِ اوجِ آزمون، متمایز از
   // ClipboardCheckِ exam-run)
   FileCheck2,
+  // پلهٔ هفتم (Task 158) — مرور×دیکته: کتابِ بازخوانی‌شده با تأیید —
+  // BookCheck (BookOpenCheck واژه‌شناس است، BookMarked جامع‌نگر، Repeat
+  // هفتهٔ بی‌آزمون — سه‌گانهٔ اشغال، BookCheck آزاد ماند)
+  BookCheck,
 };
 
 const tierFa: Record<string, string> = {

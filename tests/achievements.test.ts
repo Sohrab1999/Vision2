@@ -455,7 +455,7 @@ describe("رانِ ترکیبی — هفتهٔ دیکتهٔ پیوسته (Task 8
     expect(byId("dictation-run").title).toBe("هفتهٔ دیکتهٔ پیوسته");
     expect(byId("dictation-run").tier).toBe("gold");
     expect(byId("dictation-run").icon).toBe("SpellCheck2");
-    expect(BADGES.length).toBe(58);
+    expect(BADGES.length).toBe(59);
   });
 
   it("قراردادِ شمارِ روز ≠ جمع: دو دیکته در یک روز هنوز یک روزِ دیکته‌دار است", () => {
@@ -750,7 +750,7 @@ describe("رانِ مرور — هفتهٔ مرور (Task 88)", () => {
     expect(byId("review-run").title).toBe("هفتهٔ مرور");
     expect(byId("review-run").tier).toBe("silver");
     expect(byId("review-run").icon).toBe("History");
-    expect(BADGES.length).toBe(58);
+    expect(BADGES.length).toBe(59);
     const one = base({ dayHistory: { [w(2)]: dh({ day: w(2), reviews: 1 }) } });
     expect(byId("review-run").progress!(one)).toBe("۱ از ۷ روزِ این هفته");
   });
@@ -841,7 +841,7 @@ describe("رانِ سه‌گانه — هفتهٔ سه‌گانه (Task 89)", ()
     expect(byId("triple-run").title).toBe("هفتهٔ سه‌گانه");
     expect(byId("triple-run").tier).toBe("gold");
     expect(byId("triple-run").icon).toBe("Crown");
-    expect(BADGES.length).toBe(58);
+    expect(BADGES.length).toBe(59);
     const mixed = base({ dayHistory: { ...tripleWeek(), [w(3)]: dh({ day: w(3), reviews: 1, quizzes: 1, dictation: 0 }) } });
     // دیکته ۶ روز / آزمون ۷ / مرور ۷ — ضعیف‌ترین حلقه پیشرفت را می‌گوید
     expect(byId("triple-run").progress!(mixed)).toBe("۶ از ۷ روزِ سه‌گانهٔ این هفته");
@@ -939,7 +939,7 @@ describe("ماراتن — رانِ دوهفته‌ای (Task 90)", () => {
     expect(byId("marathon-run").title).toBe("ماراتنِ دوهفته‌ای");
     expect(byId("marathon-run").tier).toBe("gold");
     expect(byId("marathon-run").icon).toBe("Trophy");
-    expect(BADGES.length).toBe(58);
+    expect(BADGES.length).toBe(59);
     // دیکته ۱۳ روز / آزمون ۱۴ / مرور ۱۴ — ضعیف‌ترین حلقه پیشرفت را می‌گوید
     const thirteen = base({
       dayHistory: {
@@ -1054,7 +1054,7 @@ describe("خانوادهٔ حضور — ماهِ حاضر و ماهِ درخشا
     expect(byId("presence-month-full").title).toBe("ماهِ درخشان");
     expect(byId("presence-month-full").tier).toBe("gold");
     expect(byId("presence-month-full").icon).toBe("Sparkles");
-    expect(BADGES.length).toBe(58);
+    expect(BADGES.length).toBe(59);
     const twentyFour = base({ dayHistory: presenceDays([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]) });
     expect(twentyFour.activeDays35).toBe(25);
     expect(byId("presence-month").progress!(twentyFour)).toBe("۲۵ از ۲۵ روزِ فعال");
@@ -1148,7 +1148,7 @@ describe("ماهِ بی‌وقفه — پلهٔ نهاییِ خانوادهٔ ح
     expect(byId("presence-month-perfect").title).toBe("ماهِ بی‌وقفه");
     expect(byId("presence-month-perfect").tier).toBe("gold");
     expect(byId("presence-month-perfect").icon).toBe("Gem");
-    expect(BADGES.length).toBe(58);
+    expect(BADGES.length).toBe(59);
     const thirtyFour = base({ dayHistory: presenceDays([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33]) });
     expect(thirtyFour.activeDays35).toBe(34);
     expect(byId("presence-month-perfect").progress!(thirtyFour)).toBe("۳۴ از ۳۵ روزِ فعال");
@@ -1220,7 +1220,7 @@ describe("هفتهٔ پنج‌گانه — خانوادهٔ تنوع (Task 93)",
     expect(byId("five-skill-week").title).toBe("هفتهٔ پنج‌گانه");
     expect(byId("five-skill-week").tier).toBe("gold");
     expect(byId("five-skill-week").icon).toBe("Puzzle");
-    expect(BADGES.length).toBe(58);
+    expect(BADGES.length).toBe(59);
     // سه مهارت حاضر → «۳ از ۵ مهارت»
     const three = base({
       dayHistory: {
@@ -1351,7 +1351,7 @@ describe("خانوادهٔ سرعت — صاعقه و سرعتِ صوت (Task 10
     expect(byId("speed-sound").title).toBe("سرعتِ صوت");
     expect(byId("speed-sound").tier).toBe("gold");
     expect(byId("speed-sound").icon).toBe("Rocket");
-    expect(BADGES.length).toBe(58);
+    expect(BADGES.length).toBe(59);
   });
 
   it("دو گیتِ صادق: نمونهٔ کم با میانگینِ بالا باز نمی‌کند و پیشرفت روی گیتِ نمونه می‌ماند", () => {
@@ -1441,7 +1441,7 @@ describe("خانوادهٔ اعتماد — گواه‌گرفته و سندِ ز
     expect(byId("receipt-oath").title).toBe("سندِ زنده");
     expect(byId("receipt-oath").tier).toBe("gold");
     expect(byId("receipt-oath").icon).toBe("Stamp");
-    expect(BADGES.length).toBe(58);
+    expect(BADGES.length).toBe(59);
   });
 
   it("سیم‌کشیِ buildEvalInput: فقط بردِ رسیددار می‌شمارد — باختِ رسیددار و بردِ بی‌رسید نه", () => {
@@ -1870,5 +1870,130 @@ describe("ششمین دوسیستمه — آزمون و حضور (Task 156)", ()
     expect(d["quiz-presence"].progress?.(base({ dayHistory: mix(9, 0) }))).toContain("از ۳۰ روزِ حاضر");
     // تساویِ کسرها (هر دو ۵۰٪) → <= یعنی رشتهٔ آزمون — صادق است، هیچ‌کدام کامل نیست
     expect(d["quiz-presence"].progress?.(base({ dayHistory: mix(7, 8) }))).toContain("از ۱۴ روزِ آزمون");
+  });
+});
+
+describe("هفتمین دوسیستمه — مرور و دیکته (Task 158)", () => {
+  const w = (n: number) => daysAgoKey(n);
+  const dh = (over: Record<string, unknown>) => ({
+    day: "",
+    reviews: 0,
+    quizzes: 0,
+    words: 0,
+    dictation: 0,
+    rush: 0,
+    ...over,
+  });
+  // r روزِ مروردارِ بی‌دیکته (تازه‌ترین‌ها) + d روزِ فقط-دیکته — کلیدها
+  // بی-تصادم: مرور 0..r-1، دیکته r..r+d-1 (توجه: r+d ≤ 14 تا درونِ
+  // پنجرهٔ ۱۴روزه بمانند — پنجره = ۱۴ روزِ اخیر)
+  const mix = (r: number, d: number) => {
+    const entries: [string, ReturnType<typeof dh>][] = [];
+    for (let i = 0; i < r; i++) entries.push([w(i), dh({ day: w(i), reviews: 1 })]);
+    for (let i = 0; i < d; i++) entries.push([w(r + i), dh({ day: w(r + i), dictation: 1 })]);
+    return Object.fromEntries(entries);
+  };
+  // دوقلو: هر روزِ پنجره هم مرور هم دیکته — reviewsDays14 = dictationDays14 = n
+  const twin = (n: number) => {
+    const entries: [string, ReturnType<typeof dh>][] = [];
+    for (let i = 0; i < n; i++)
+      entries.push([w(i), dh({ day: w(i), reviews: 1, dictation: 1 })]);
+    return Object.fromEntries(entries);
+  };
+
+  it("wording و تیر و آیکن — طلا/BookCheck؛ رجیستری ۵۹ شد؛ پیشرفتِ سقف‌خورده", () => {
+    expect(byId("review-dictation").title).toBe("مرور و دیکته");
+    expect(byId("review-dictation").tier).toBe("gold");
+    expect(byId("review-dictation").icon).toBe("BookCheck");
+    const full = base({ dayHistory: twin(14) });
+    expect(byId("review-dictation").progress!(full)).toBe("۱۴ از ۱۴ روزِ مرور");
+  });
+
+  it("پیوندِ صادق: هر بُعد به‌تنهایی قفل می‌ماند — مرزهایِ ۱۳/۱۴ در هر دو بُعد", () => {
+    const revOnly = base({ dayHistory: mix(14, 0) }); // dictationDays14=0
+    const dictOnly = base({ dayHistory: mix(0, 14) }); // reviewsDays14=0
+    expect(ids(revOnly)).not.toContain("review-dictation");
+    expect(ids(dictOnly)).not.toContain("review-dictation");
+    // دوقلوی ۱۳تایی → نه؛ مرورِ کامل + دیکتهِ ۱۳ (روزِ سیزدهم فقط مرور) → نه؛ برعکس هم → نه
+    expect(ids(base({ dayHistory: twin(13) }))).not.toContain("review-dictation");
+    const rev14dict13 = Object.fromEntries([
+      ...Object.entries(twin(13)),
+      [w(13), dh({ day: w(13), reviews: 1 })],
+    ]);
+    expect(ids(base({ dayHistory: rev14dict13 }))).not.toContain("review-dictation");
+    const dict14rev13 = Object.fromEntries([
+      ...Object.entries(twin(13)),
+      [w(13), dh({ day: w(13), dictation: 1 })],
+    ]);
+    expect(ids(base({ dayHistory: dict14rev13 }))).not.toContain("review-dictation");
+    expect(ids(base({ dayHistory: twin(14) }))).toContain("review-dictation");
+  });
+
+  it("پنجرهٔ ۱۴روزه حافظهٔ هر دو بُعد است — فعالیتِ کهنه (۶۰+ روز) هیچ‌کدام را نمی‌سازد", () => {
+    // ۲۰ روزِ دوقلوی خیلی کهنه — بیرونِ هر دو پنجرهٔ ۱۴روزه (و حضورِ ۳۵روزه)
+    const oldBoth = Object.fromEntries(
+      Array.from({ length: 20 }, (_, i) => [
+        w(60 + i),
+        dh({ day: w(60 + i), reviews: 1, dictation: 1 }),
+      ]),
+    );
+    const s = base({ dayHistory: oldBoth });
+    expect(s.reviewsDays14).toBe(0);
+    expect(s.dictationDays14).toBe(0);
+    expect(ids(s)).not.toContain("review-dictation");
+  });
+
+  it("زیرمجموعهٔ پنجره‌ای: دوقلوی ۱۴ ⇒ review-run و dictation-run روشن — ولی ماراتنِ دوهفته‌ای تاریک می‌ماند (شکافِ صادقِ سوم)", () => {
+    // ۷ ⊂ ۱۴: هر دو رانِ هفتگی رایگان روشن می‌شوند
+    const full = ids(base({ dayHistory: twin(14) }));
+    expect(full).toContain("review-dictation");
+    expect(full).toContain("review-run");
+    expect(full).toContain("dictation-run");
+    // شکافِ صادقِ سوم: ماراتن هر سه بُعد را می‌خواهد — آزمونِ خالی، ماراتن را نمی‌سازد
+    expect(full).not.toContain("marathon-run");
+    // برعکس: دوقلوی ۷تایی هر دو ران را دارد ولی دوبرابرش را نمی‌سازد
+    const half = ids(base({ dayHistory: twin(7) }));
+    expect(half).toContain("review-run");
+    expect(half).toContain("dictation-run");
+    expect(half).not.toContain("review-dictation");
+    // مرورِ تنها دیکته را نمی‌سازد و برعکس
+    const revOnly = ids(base({ dayHistory: mix(14, 0) }));
+    expect(revOnly).toContain("review-run");
+    expect(revOnly).not.toContain("dictation-run");
+    expect(revOnly).not.toContain("review-dictation");
+    const dictOnly = ids(base({ dayHistory: mix(0, 14) }));
+    expect(dictOnly).toContain("dictation-run");
+    expect(dictOnly).not.toContain("review-run");
+    // درونِ خانواده: پیمان‌ها و آزمون×حضور از مرور/دیکته تغذیه نمی‌شوند
+    expect(full).not.toContain("presence-pledge");
+    expect(full).not.toContain("dictation-pledge");
+    expect(full).not.toContain("quiz-presence");
+  });
+
+  it("نوارِ پیشرفت = محدودهٔ مقید — minِ دو کسر؛ صفر مطلق صفر، کامل مطلق صد", () => {
+    // دوقلوی ۷: هر دو ۵۰٪ → ۵۰
+    expect(badgeProgressPct("review-dictation", base({ dayHistory: twin(7) }))).toBe(50);
+    // مرور عقب: ۵/۱۴≈۳۶٪ در برابر ۹/۱۴≈۶۴٪ → ۳۶
+    expect(badgeProgressPct("review-dictation", base({ dayHistory: mix(5, 9) }))).toBe(36);
+    // دیکته عقب: ۹/۱۴≈۶۴٪ در برابر ۲/۱۴≈۱۴٪ → ۱۴
+    expect(badgeProgressPct("review-dictation", base({ dayHistory: mix(9, 2) }))).toBe(14);
+    expect(badgeProgressPct("review-dictation", base())).toBe(0);
+    expect(badgeProgressPct("review-dictation", base({ dayHistory: twin(14) }))).toBe(100);
+  });
+
+  it("راهنمای قفل بُعدِ عقب‌مانده را نام می‌برد — هم‌قرارداد با نوار؛ مرزِ تساوی → رشتهٔ مرور", () => {
+    const d = Object.fromEntries(BADGES.map((b) => [b.id, b]));
+    // مرور عقب (۵/۱۴ < ۹/۱۴) → «از ۱۴ روزِ مرور»
+    expect(d["review-dictation"].progress?.(base({ dayHistory: mix(5, 9) }))).toContain(
+      "از ۱۴ روزِ مرور",
+    );
+    // دیکته عقب (۹/۱۴ > ۲/۱۴) → «از ۱۴ روزِ دیکته»
+    expect(d["review-dictation"].progress?.(base({ dayHistory: mix(9, 2) }))).toContain(
+      "از ۱۴ روزِ دیکته",
+    );
+    // تساویِ کسرها (هر دو ۵۰٪) → <= یعنی رشتهٔ مرور — صادق است، هیچ‌کدام کامل نیست
+    expect(d["review-dictation"].progress?.(base({ dayHistory: twin(7) }))).toContain(
+      "از ۱۴ روزِ مرور",
+    );
   });
 });
