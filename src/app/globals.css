@@ -234,11 +234,14 @@ body {
   background-size: 22px 22px, 100% 100%, 100% 100%;
 }
 
-/* keyboard focus — clear, brand-colored ring for keyboard users */
+/* keyboard focus — clear, brand-colored ring for keyboard users.
+   task 170: the old border-radius:4px here MUTATED the element's own radius
+   on keyboard focus (a rounded-full pill's corners snapped square while
+   focused). Outlines follow the element's native radius natively — the
+   mutation line is gone; the rule only styles the outline itself. */
 :focus-visible {
   outline: 2px solid rgb(5 150 105 / 0.65);
   outline-offset: 2px;
-  border-radius: 4px;
 }
 
 /* English text: serif, always LTR, isolated from RTL flow */

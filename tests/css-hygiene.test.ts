@@ -1924,3 +1924,78 @@ describe("css consumer-existence contract (task 166 reverse-hygiene)", () => {
     expect(g.includes(".dark .border-teal-500 {")).toBe(false);
   });
 });
+
+describe("keyboard focus contract (task 170)", () => {
+  // Task 170 — the focus-visible audit found two defects: (1) the global
+  // :focus-visible rule carried a border-radius:4px line that MUTATED the
+  // element's own radius on keyboard focus (pill buttons snapped square
+  // while focused) — removed; (2) exactly one interactive element in the
+  // estate (the command-palette search input) had outline-none with NO
+  // replacement indicator — fixed with its own focus ring. This contract
+  // pins both, estate-wide and forever.
+  const globals = readFileSync(cssPath, "utf8");
+
+  const extractRule = (css: string, selector: string): string | null => {
+    const idx = css.indexOf(selector);
+    if (idx === -1) return null;
+    const open = css.indexOf("{", idx);
+    const close = css.indexOf("}", open);
+    return css.slice(open + 1, close);
+  };
+
+  it("global :focus-visible styles the outline only — never mutates the element's radius", () => {
+    const light = extractRule(globals, ":focus-visible");
+    expect(light).not.toBeNull();
+    expect(light!).toContain("outline: 2px solid rgb(5 150 105 / 0.65)");
+    expect(light!).toContain("outline-offset: 2px");
+    expect(light!.includes("border-radius")).toBe(false);
+  });
+
+  it("the dark twin retunes the outline color without re-introducing a mutation", () => {
+    const dark = extractRule(globals, ".dark :focus-visible");
+    expect(dark).not.toBeNull();
+    expect(dark!).toContain("outline-color: rgb(52 211 153 / 0.7)");
+    expect(dark!.includes("border-radius")).toBe(false);
+  });
+
+  it("every outline-none in the estate ships a replacement focus indicator on the same line", () => {
+    // outline-none (in any variant: outline-none / focus:outline-none /
+    // focus-visible:outline-none) silently DEFEATS the global :focus-visible
+    // outline — the class wins the cascade over the bare selector. Legal ONLY
+    // when the same class string provides its own visible indicator (ring,
+    // border-color shift or shadow) on the same line. Line-based on purpose:
+    // every current occurrence keeps its tokens on one line (verified in the
+    // 170 audit); if a future className wraps, keep indicator + outline-none
+    // together.
+    const walk = (dir: string, out: string[] = []): string[] => {
+      for (const e of readdirSync(dir)) {
+        const p = join(dir, e);
+        const st = require("fs").statSync(p);
+        if (st.isDirectory()) walk(p, out);
+        else if (/\.(tsx)$/.test(e)) out.push(p);
+      }
+      return out;
+    };
+    const files = [...walk(resolve(process.cwd(), "src/components")), resolve(process.cwd(), "src/app/error.tsx")];
+    const INDICATOR = /focus(?:-visible|-within)?:(?:ring|border|shadow)|focus-visible:outline-(?!none)/;
+    const violations: string[] = [];
+    let seen = 0;
+    for (const f of files) {
+      const lines = readFileSync(f, "utf8").split("\n");
+      lines.forEach((line, i) => {
+        if (!line.includes("outline-none")) return;
+        seen++;
+        if (!INDICATOR.test(line)) violations.push(`${f.replace(process.cwd() + "/", "")}:${i + 1}`);
+      });
+    }
+    // existence contract — the audit found 22 occurrences across 15 files;
+    // if this drops to near-zero the guard has gone blind, not the estate clean.
+    expect(seen).toBeGreaterThanOrEqual(20);
+    expect(violations, `invisible keyboard focus (outline-none without a replacement indicator): ${violations.join(", ")}`).toEqual([]);
+  });
+
+  it("the command-palette input keeps its task-170 focus ring", () => {
+    const palette = readFileSync(resolve(process.cwd(), "src/components/study/shell/command-palette.tsx"), "utf8");
+    expect(palette).toContain("outline-none focus:ring-2 focus:ring-emerald-500/30");
+  });
+});

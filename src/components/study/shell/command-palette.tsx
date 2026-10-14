@@ -450,7 +450,7 @@ export default function CommandPalette() {
             aria-activedescendant={filtered[sel] ? `cp-opt-${sel}` : undefined}
             aria-label="جست‌وجوی فرمان‌ها"
             placeholder="برو به… (آزمون ۲۰، تمرین هوشمند ۱۵، هدف ۱۰، شب)"
-            className="min-w-0 flex-1 bg-transparent text-[15px] font-bold text-stone-800 outline-none"
+            className="min-w-0 flex-1 rounded-md bg-transparent text-[15px] font-bold text-stone-800 outline-none focus:ring-2 focus:ring-emerald-500/30"
             autoComplete="off"
             spellCheck={false}
           />
