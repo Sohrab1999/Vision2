@@ -31,6 +31,7 @@ import { faNum } from "@/lib/study-theme";
 import { BADGES, buildEvalInput, unlockedBadgeIds } from "@/lib/achievements";
 import { skillBreakdown, barColorFor, skillGradeFa } from "@/lib/skill-stats";
 import WeeklyReportSection from "./weekly-report";
+import CoverageMapSection from "./coverage-map";
 
 // ------------------------------------------------------------------
 // کارنامهٔ من — a letter-style progress report dialog.
@@ -329,6 +330,9 @@ export default function ReportCard({ open, onClose }: { open: boolean; onClose: 
                   </ul>
                 </div>
               )}
+
+              {/* تسک ۱۷۴ — نقشهٔ پوشش: درس × مهارت، شکافِ هرگز-تلاش‌نشده */}
+              <CoverageMapSection />
 
               {/* footer note */}
               <div className="report-foot flex flex-col gap-2 rounded-xl border border-dashed border-emerald-300 bg-emerald-50/60 px-3 py-2.5">
