@@ -22,7 +22,7 @@ export default function ErrorPage({
 
   return (
     <div className="flex min-h-[60vh] items-center justify-center px-4">
-      <div className="w-full max-w-md rounded-2xl border c-card p-8 text-center shadow-lg">
+      <div className="w-full max-w-md rounded-2xl c-card p-8 text-center shadow-lg">
         <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-rose-50 text-rose-500">
           <BookX size={26} />
         </div>

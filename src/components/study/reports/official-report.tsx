@@ -273,7 +273,7 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
         }}
       >
         {/* screen-only toolbar */}
-        <div className="official-chrome mx-auto mb-4 flex max-w-[780px] flex-col gap-2 rounded-2xl border border-white/15 bg-stone-900/85 p-3 shadow-2xl backdrop-blur sm:flex-row sm:items-center sm:justify-between">
+        <div className="official-chrome mx-auto mb-4 flex max-w-[780px] flex-col gap-2 rounded-2xl bg-stone-900/85 p-3 shadow-2xl backdrop-blur sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-2 text-[12px] font-bold leading-5 text-stone-200">
             <Lightbulb size={15} className="shrink-0 text-amber-300" />
             برای گرفتن PDF، در پنجرهٔ چاپ مقصد را «Save as PDF» انتخاب کنید.

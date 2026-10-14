@@ -241,7 +241,7 @@ export default function PwaLayer() {
             role="complementary"
             aria-label="پیشنهاد نصب وب‌کتاب"
           >
-            <div className="overflow-hidden rounded-2xl border border-emerald-200 c-veil-95 shadow-2xl shadow-emerald-900/15 backdrop-blur">
+            <div className="overflow-hidden rounded-2xl c-veil-95 shadow-2xl shadow-emerald-900/15 backdrop-blur">
               <div className="h-1 w-full bg-gradient-to-l from-emerald-500 via-teal-400 to-emerald-600" />
               <div className="flex items-start gap-3 p-4">
                 <img
