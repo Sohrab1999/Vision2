@@ -19,17 +19,19 @@ import { lessons } from "@/data";
 const LINKED = [1, 2, 3, 4, 5, 6];
 
 describe("lesson-bg-links-r220 — دادهٔ پیوند", () => {
-  it("فقط درس‌های ۱-۶ پیوند دارند با شمارشِ ۲/۳/۲/۴/۲/۲ (جمعِ ۱۵)", () => {
+  it("فقط درس‌های ۱-۶ پیوند دارند با شمارشِ ۲/۳/۳/۴/۲/۲ (جمعِ ۱۶ — راند ۲۲۵: مصدرِ درس سه)", () => {
     const keys = Object.keys(LESSON_BG_LINKS).map(Number).sort((a, b) => a - b);
     expect(keys).toEqual(LINKED);
     expect(LESSON_BG_LINKS[1]).toHaveLength(2);
     expect(LESSON_BG_LINKS[2]).toHaveLength(3);
-    expect(LESSON_BG_LINKS[3]).toHaveLength(2);
+    expect(LESSON_BG_LINKS[3]).toHaveLength(3);
     expect(LESSON_BG_LINKS[4]).toHaveLength(4);
     expect(LESSON_BG_LINKS[5]).toHaveLength(2);
     expect(LESSON_BG_LINKS[6]).toHaveLength(2);
     const total = Object.values(LESSON_BG_LINKS).reduce((n, xs) => n + xs.length, 0);
-    expect(total).toBe(15);
+    expect(total).toBe(16);
+    // راند ۲۲۵ — شاهدِ فهرستِ خودِ جزوه: «مصدر با to» در زیربخشِ گرامرِ درس سوم است (g11.txt L822-856)
+    expect(LESSON_BG_LINKS[3]).toContain("bg-infinitive");
   });
 
   it("هر شناسه واقعی است، بدونِ تکرار در یک درس، و پایهٔ درس = جزوهٔ مبدأ", () => {
@@ -49,7 +51,8 @@ describe("lesson-bg-links-r220 — دادهٔ پیوند", () => {
     // درس اول (ص۲۹، کلید ص۱۷۹) / درس دوم (ص۶۳+ص۷۵، کلید ص۱۸۷+ص۱۹۱) / درس سوم (ص۱۰۰، کلید ص۱۹۶)
     expect(LESSON_BG_LINKS[1]).toEqual(["bg-quantifiers", "bg-numbers"]);
     expect(LESSON_BG_LINKS[2]).toEqual(["bg-present-perfect", "bg-phrasal-verbs", "bg-gerund"]);
-    expect(LESSON_BG_LINKS[3]).toEqual(["bg-first-conditional", "bg-ed-ing-adjectives"]);
+    // راند ۲۲۵ — مصدر با to با شاهدِ فهرستِ خودِ جزوه (زیربخشِ گرامرِ درس سوم، g11.txt L822-856)
+    expect(LESSON_BG_LINKS[3]).toEqual(["bg-first-conditional", "bg-ed-ing-adjectives", "bg-infinitive"]);
   });
 
   it("پینِ اتکا — دوازدهم: ارجاع‌های درون‌متنیِ جزوه (ص۹۴/ص۹۵) و بازه‌های تدریس", () => {

@@ -31,8 +31,8 @@ const TOPIC = (id: string) => {
 };
 
 describe("appendix-deeplink-r221 — نقشهٔ معکوسِ BG_TOPIC_TO_LESSON", () => {
-  it("دقیقاً ۱۵ مدخل با پین‌های اتکا (خروجیِ مشتق — نه دستی)", () => {
-    expect(Object.keys(BG_TOPIC_TO_LESSON)).toHaveLength(15);
+  it("دقیقاً ۱۶ مدخل با پین‌های اتکا (خروجیِ مشتق — نه دستی)", () => {
+    expect(Object.keys(BG_TOPIC_TO_LESSON)).toHaveLength(16);
     // یازدهم — آزمون‌های تشخیصیِ خودِ جزوه (ص۲۹/۶۳/۱۰۰)
     expect(BG_TOPIC_TO_LESSON["bg-quantifiers"]).toBe(1);
     expect(BG_TOPIC_TO_LESSON["bg-numbers"]).toBe(1);
@@ -41,6 +41,8 @@ describe("appendix-deeplink-r221 — نقشهٔ معکوسِ BG_TOPIC_TO_LESSON"
     expect(BG_TOPIC_TO_LESSON["bg-gerund"]).toBe(2);
     expect(BG_TOPIC_TO_LESSON["bg-first-conditional"]).toBe(3);
     expect(BG_TOPIC_TO_LESSON["bg-ed-ing-adjectives"]).toBe(3);
+    // راند ۲۲۵ — مصدر با to با شاهدِ فهرستِ خودِ جزوه (زیربخشِ گرامرِ درس سه)
+    expect(BG_TOPIC_TO_LESSON["bg-infinitive"]).toBe(3);
     // دوازدهم — ارجاع‌های درون‌متنی + بازه‌های تدریس (ص۲۶-۴۶/ص۷۹-۹۵/ص۱۳۷-۱۵۱)
     expect(BG_TOPIC_TO_LESSON["bg-passive"]).toBe(4);
     expect(BG_TOPIC_TO_LESSON["bg-passive-tenses"]).toBe(4);
@@ -60,7 +62,7 @@ describe("appendix-deeplink-r221 — نقشهٔ معکوسِ BG_TOPIC_TO_LESSON"
     const linkEntries = Object.entries(LESSON_BG_LINKS).flatMap(([lid, tids]) =>
       tids.map((tid) => [tid, Number(lid)] as const),
     );
-    expect(linkEntries).toHaveLength(15);
+    expect(linkEntries).toHaveLength(16);
     for (const [tid, lid] of linkEntries) {
       expect(
         BG_TOPIC_TO_LESSON[tid],
@@ -209,19 +211,19 @@ describe("appendix-deeplink-r221 — دکمهٔ ↗ و چیپِ «درسِ مر�
     expect(screen.queryByRole("button", { name: /درسِ مرتبط/ })).toBeNull();
   });
 
-  it("در کلِ ضمیمه دقیقاً ۱۵ چیپِ «درسِ مرتبط» هست (۱۵ پیوندِ ۲۲۰ → ۱۵ چیپِ ۲۲۱)", () => {
+  it("در کلِ ضمیمه دقیقاً ۱۶ چیپِ «درسِ مرتبط» هست (۱۶ پیوندِ ۲۲۰+۲۲۵ → ۱۶ چیپ)", () => {
     render(<BookletGrammarView />);
-    // چیپ داخلِ بدنهٔ آکاردئون است — اول هر ۱۵ کارتِ پیونددار را باز می‌کنیم
+    // چیپ داخلِ بدنهٔ آکاردئون است — اول هر ۱۶ کارتِ پیونددار را باز می‌کنیم
     for (const tids of Object.values(LESSON_BG_LINKS)) {
       for (const tid of tids) {
         fireEvent.click(screen.getByText(TOPIC(tid).title));
       }
     }
     const chips = screen.getAllByRole("button", { name: /درسِ مرتبط/ });
-    expect(chips).toHaveLength(15);
+    expect(chips).toHaveLength(16);
     // و کارتِ بی‌پیوندِ بازشدهٔ اول، بی‌چیپ مانده
     expect(
       document.getElementById("bg-topic-bg-alphabet-word-sentence")!.textContent,
     ).not.toContain("درسِ مرتبط");
-  }, 30000); // بازکردنِ ۱۵ کارت با کلِ دریل‌ها — سنگین‌تر از timeoutِ پیش‌فرض
+  }, 30000); // بازکردنِ ۱۶ کارت با کلِ دریل‌ها — سنگین‌تر از timeoutِ پیش‌فرض
 });

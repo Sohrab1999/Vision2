@@ -45,10 +45,10 @@ function flatten(): { rows: number; tables: number; examples: number; drills: nu
 }
 
 describe("booklet-grammar-r214 — دادهٔ درسنامهٔ جامع", () => {
-  it("پینِ ساختار: ۳۱ موضوع (۱۶ دهم + ۷ یازدهم + ۸ دوازدهم)، ۱۶ ردیفِ جدولِ زمان‌ها، نمونهٔ جمعِ بخش‌ها", () => {
-    expect(ALL).toHaveLength(31);
+  it("پینِ ساختار: ۳۲ موضوع (۱۶ دهم + ۸ یازدهم + ۸ دوازدهم)، ۱۶ ردیفِ جدولِ زمان‌ها، نمونهٔ جمعِ بخش‌ها", () => {
+    expect(ALL).toHaveLength(32);
     expect(ALL.filter((t) => t.source === "دهم")).toHaveLength(16);
-    expect(ALL.filter((t) => t.source === "یازدهم")).toHaveLength(7);
+    expect(ALL.filter((t) => t.source === "یازدهم")).toHaveLength(8);
     expect(ALL.filter((t) => t.source === "دوازدهم")).toHaveLength(8);
     const sixteen = ALL.find((t) => t.id === "bg-sixteen-tenses");
     expect(sixteen).toBeDefined();
@@ -58,7 +58,7 @@ describe("booklet-grammar-r214 — دادهٔ درسنامهٔ جامع", () => 
     expect(f.tables).toBeGreaterThanOrEqual(22);
     expect(f.examples).toBeGreaterThanOrEqual(150);
     expect(f.examples).toBeLessThan(280);
-    expect(f.drills).toBe(103); // ۳۱ آزمونکِ دهم + ۶۶ آزمونکِ یازدهم (راند ۲۱۷) + ۶ دستگریمِ عبارات الحاقِ دوازدهم (کلید ص۱۸۷)
+    expect(f.drills).toBe(105); // ۳۱ آزمونکِ دهم + ۶۶ آزمونکِ یازدهم (r217) + ۶ دستگریمِ دوازدهم (ص۱۸۷) + ۲ مصدرِ ص۱۱۰ (r225)
     expect(f.notes).toBeGreaterThanOrEqual(150);
   });
 
@@ -279,6 +279,8 @@ describe("booklet-grammar-r214 — دادهٔ درسنامهٔ جامع", () => 
     expect(counts["bg-numbers"] ?? 0).toBe(0);
     expect(counts["bg-phrasal-verbs"] ?? 0).toBe(0);
     expect(counts["bg-ed-ing-adjectives"] ?? 0).toBe(0);
+    // راند ۲۲۵ — دو MCQِ مصدرِ ص۱۱۰§۷ که r217 چون کارتِ موضوعی نبود حذفش کرده بود
+    expect(counts["bg-infinitive"]).toBe(2);
   });
 
   it("r217 پینِ وفاداریِ کلیدها — نمونه‌های عینِ پاسخنامهٔ جزوه", () => {
@@ -387,14 +389,15 @@ describe("booklet-grammar-r214 — دادهٔ درسنامهٔ جامع", () => 
   });
 
   // ------------------------------------------------ راند ۲۱۹ — جمله‌سازی
-  it("r219 پینِ شمارشِ جمله‌سازی — فقط سه موضوعِ صاحبِ بخشِ جمله‌سازیِ جزوه", () => {
+  it("r219/r225 پینِ شمارشِ جمله‌سازی — چهار موضوعِ صاحبِ بخشِ جمله‌سازیِ جزوه", () => {
     const counts: Record<string, number> = {};
     for (const t of ALL) counts[t.id] = t.orderDrill?.length ?? 0;
     expect(counts["bg-quantifiers"]).toBe(10); // ص۳۱، کلید ص۱۷۹
     expect(counts["bg-present-perfect"]).toBe(3); // آزمونِ جامعِ درس دوم ص۷۵، کلید ص۱۹۱
     expect(counts["bg-first-conditional"]).toBe(11); // ص۱۰۲ (کلید ص۱۹۶-۱۹۷) + ص۱۱۰ (کلید ص۲۰۱)
+    expect(counts["bg-infinitive"]).toBe(10); // راند ۲۲۵: ۹ آیتمِ §۵ ص۱۰۲ (کلید ص۱۹۷) + ۱ آیتمِ §۸ ص۱۱۰ (کلید ص۲۰۱)
     for (const t of ALL) {
-      if (!["bg-quantifiers", "bg-present-perfect", "bg-first-conditional"].includes(t.id)) {
+      if (!["bg-quantifiers", "bg-present-perfect", "bg-first-conditional", "bg-infinitive"].includes(t.id)) {
         expect(t.orderDrill ?? []).toHaveLength(0);
       }
     }
@@ -413,8 +416,8 @@ describe("booklet-grammar-r214 — دادهٔ درسنامهٔ جامع", () => 
     expect(od("bg-quantifiers")[0].task).toBe("با استفاده از کلمات داده شده جمله بسازید.");
     expect(od("bg-present-perfect")[0].task).toBe("با هر گروه از کلمات زیر یک جملهٔ کامل بسازید.");
     expect(od("bg-first-conditional")[0].task).toBe("با استفاده از کلمات داده شده جمله بسازید. (مربوط به بخش جملات شرطی)");
-    // بخشِ مصدرِ ص۱۰۲/ص۱۱۰ بدونِ موضوعِ درسنامه — کنار گذاشته شد (سندِ راند)
-    expect(ALL.reduce((n, t) => n + (t.orderDrill?.length ?? 0), 0)).toBe(24);
+    // بخشِ مصدرِ ص۱۰۲/ص۱۱۰ حالا کارتِ موضوعِ خودش را دارد (راند ۲۲۵) — جمعِ ۳۴
+    expect(ALL.reduce((n, t) => n + (t.orderDrill?.length ?? 0), 0)).toBe(34);
   });
 
   it("r219 سلامتِ جمله‌سازی — کاشی‌ها همان کلماتِ کلیدند (چندمجموعه‌ای)، پاسخِ غیرخالی", () => {
@@ -598,5 +601,120 @@ describe("booklet-grammar-r214 — سندِ منبع", () => {
     const src = readFileSync(p, "utf8");
     expect(src.length).toBeGreaterThan(30000);
     expect(src).toContain("Prospect 1 - 3");
+  });
+});
+
+// ------------------------------------------------ راند ۲۲۵ — مصدر با to
+describe("booklet-grammar-r225 — کارتِ «مصدر با to» (ص۹۷-۹۹ یازدهم)", () => {
+  const inf = ALL.find((t) => t.id === "bg-infinitive")!;
+
+  it("موضوعِ سومِ گرامرِ درس سه با شاهدِ فهرستِ خودِ جزوه — صفحهٔ ۹۷ تا ۹۹", () => {
+    expect(inf).toBeTruthy();
+    expect(inf.source).toBe("یازدهم");
+    expect(inf.title).toBe("مصدر با to");
+    expect(inf.titleEn).toBe("Infinitive");
+    expect(inf.page).toContain("۹۷");
+    expect(inf.page).toContain("۹۹");
+  });
+
+  it("دوازده کاربرد + هفت نکته — پین‌های وفاداریِ قاعده‌ها", () => {
+    expect(inf.notes).toHaveLength(22); // ۱۲ کاربرد + نکتهٔ مهم + توجه‌ها + ۷ نکته
+    const joined = inf.notes!.join(" ");
+    // کاربردها با شمارهٔ خودِ جزوه
+    for (const k of ["کاربرد اول", "کاربرد دوم", "کاربرد سوم", "کاربرد چهارم", "کاربرد پنجم", "کاربرد ششم", "کاربرد هفتم", "کاربرد هشتم", "کاربرد نهم", "کاربرد دهم", "کاربرد یازدهم", "کاربرد دوازدهم"]) {
+      expect(joined).toContain(k);
+    }
+    // قاعده‌های کلیدی — عینِ جزوه
+    expect(joined).toContain("فعل دوم در نقش «مفعول» برای فعل اول");
+    expect(joined).toContain("تمامی تغییرات زمانی تنها بر روی «فعل اول»");
+    expect(joined).toContain("کلمات استفهامیِ Wh");
+    expect(joined).toContain("It + فعل to be + صفت + (for + مفعول) + مصدر با to");
+    expect(joined).toContain("اولویت با «اسم مصدر»");
+    expect(joined).toContain("قید منفی‌ساز not را اضافه کنیم");
+    expect(joined).toContain("in order to» و «so as to");
+    expect(joined).toContain("so that» و «in order that");
+    expect(joined).toContain("make (مجبور کردن)");
+    expect(joined).toContain("دو مثالِ stop");
+  });
+
+  it("هفت نکته با شمارهٔ خودِ جزوه پین است", () => {
+    const joined = inf.notes!.join(" ");
+    for (const k of ["نکتهٔ ۱ —", "نکتهٔ ۲ —", "نکتهٔ ۳ —", "نکتهٔ ۴ (زبان تخصصی)", "نکتهٔ ۵ (زبان تخصصی)", "نکتهٔ ۶ (زبان تخصصی)", "نکتهٔ ۷ (زبان تخصصی)"]) {
+      expect(joined).toContain(k);
+    }
+  });
+
+  it("دو جدول — ۲۷ صفتِ بعد از مصدر با to (کاربرد سوم) + ۱۲ فعلِ دوشکلی (نکتهٔ ۷)", () => {
+    expect(inf.tables).toHaveLength(2);
+    const [adjs, verbs] = inf.tables!;
+    expect(adjs.headers).toEqual(["صفت", "معنی"]);
+    expect(adjs.rows).toHaveLength(27);
+    expect(verbs.headers).toEqual(["فعل", "معنی"]);
+    expect(verbs.rows).toHaveLength(12);
+    // پین‌های جفتی — عینِ جزوه (ترمیم‌های سوپِ مستندشده در خودِ داده)
+    expect(adjs.rows[0]).toEqual(["careless", "بی‌دقت"]);
+    expect(adjs.rows[1]).toEqual(["sorry", "متأسف"]);
+    expect(adjs.rows[15]).toEqual(["sad = unhappy", "غمگین"]);
+    expect(adjs.rows[16]).toEqual(["careful", "مراقب"]);
+    expect(adjs.rows[17]).toEqual(["certain = sure", "مطمئن"]);
+    expect(adjs.rows[26]).toEqual(["hard", "سخت"]);
+    // شاهدِ متقاطعِ واژگانِ خودِ جزوه: جفتِ متضادِ careless↔careful با توضیحِ «مواظب ، با دقت» (g11.txt L13844-13845)
+    expect(verbs.rows.map((r) => r[0])).toEqual([
+      "like", "prefer", "stop", "love", "intend", "need", "hate",
+      "remember", "continue", "begin", "start", "forget",
+    ]);
+    expect(verbs.rows[4]).toEqual(["intend", "مایل بودن"]); // توضیحِ خودِ جزوه (L16122-16123)
+  });
+
+  it("ده مثالِ برجسته با برچسبِ ساختاریِ خودِ جزوه — پینِ ترجمه‌ها", () => {
+    expect(inf.examples).toHaveLength(10);
+    expect(inf.examples![0]).toEqual({
+      en: "She decided to learn Spanish carefully.",
+      fa: "او تصمیم گرفت تا اسپانیایی را به دقت یاد بگیرد.",
+      tag: "کاربرد اول — فعل دوم در نقش مفعول",
+    });
+    expect(inf.examples![3].en).toBe("He was very careful to look both ways when he crossed the street.");
+    expect(inf.examples![4].tag).toContain("It + to be + صفت");
+    expect(inf.examples![7].en).toBe("They were forced to leave the class quickly.");
+    // ترجمهٔ عینِ جزوه (g11.txt L15558-15559)
+    expect(inf.examples![4].fa).toBe("برای دانش‌آموزانم واقعاً سخت بود که به همهٔ سؤالات به درست پاسخ بدهند.");
+  });
+
+  it("دو MCQِ ص۱۱۰§۷ — کلیدِ عینِ پاسخنامهٔ ص۲۰۱§۷ (به تعویق‌افتادهٔ r217)", () => {
+    expect(inf.drill).toHaveLength(2);
+    expect(inf.drill![0].q).toBe("They try ------------------------------- the building in a few weeks.");
+    expect(inf.drill![0].options[3]).toBe("to complete");
+    expect(inf.drill![0].answer).toBe(3);
+    expect(inf.drill![1].q).toBe("My father asked me ------------------------------- about my future plans.");
+    expect(inf.drill![1].options[2]).toBe("not to speak");
+    expect(inf.drill![1].answer).toBe(2);
+  });
+
+  it("جمله‌سازیِ پارک‌شدهٔ r219 — ۹ آیتمِ §۵ ص۱۰۲ (کلید ص۱۹۷) + ۱ آیتمِ §۸ ص۱۱۰ (کلید ص۲۰۱)", () => {
+    const od = inf.orderDrill!;
+    expect(od).toHaveLength(10);
+    expect(od[0].q).toBe("eat / do / breakfast / want / for / you / to / what?");
+    expect(od[0].answer).toBe("What do you want to eat for breakfast?");
+    expect(od[0].task).toBe("با استفاده از کلمات داده شده جمله بسازید. (مربوط به بخش مصدر)");
+    expect(od[4].answer).toBe("To smoke is very bad for everyone."); // کاربرد پنجم در خودِ سؤال
+    expect(od[8].answer).toBe("It is your duty to finish the work in time.");
+    // آیتمِ آزمونِ جامع — مصدرِ منفی (نکتهٔ ۱)
+    expect(od[9].q).toBe("football / not / him / play / in / I / to / the yard / told.");
+    expect(od[9].answer).toBe("I told him not to play football in the yard.");
+    expect(od[9].task).toBe("با هر گروه از کلمات زیر یک جملهٔ کامل بسازید.");
+  });
+
+  it("ناسازگاریِ درونیِ خودِ جزوه مستند است — کلیدِ §۵ ده سطر، سؤالِ ص۱۰۲ نه آیتم", () => {
+    // کلیدِ ص۱۹۷§۵ سطرِ ۱۰ (My parents wanted me...) بی‌سؤال است — فقط ۹ جفتِ سؤال↔کلید استخراج شد
+    expect(inf.orderDrill!.filter((d) => d.task?.includes("مصدر")).length).toBe(1); // فقط آیتمِ اولِ گروهِ task دار
+    expect(inf.orderDrill!.map((d) => d.q)).not.toContain("home / at / 11 / be / me / my / o’clock / parents / to / wanted.");
+  });
+
+  it("ترمیم‌های سوپِ جدولِ صفات در خودِ داده مستندند", () => {
+    const src = readFileSync(resolve(process.cwd(), "src/data/booklet-grammar.ts"), "utf8");
+    const block = src.slice(src.indexOf('id: "bg-infinitive"'), src.indexOf('id: "bg-passive"'));
+    for (const doc of ["«تی دقت»→بی‌دقت", "«سف أ مت»→متأسف", "«غمگئر»→غمگین", "«مطمئ»→مطمئن", "«شر منده»→شرمنده"]) {
+      expect(block).toContain(doc);
+    }
   });
 });
