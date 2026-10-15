@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { ChevronLeft, Library, ListTree, Volume2, SpellCheck2, BookA, Table2, BookOpenCheck, Users } from "lucide-react";
-import { vowelPhonemes, consonantPhonemes, abbreviations, partsOfSpeech } from "@/data/appendix";
+import { abbreviations, partsOfSpeech } from "@/data/appendix";
 import {
   WORD_FAMILY_TABLES,
   WORD_FAMILY_TOTAL,
@@ -13,6 +13,7 @@ import { useStudy } from "@/lib/study-store";
 import { faNum } from "@/lib/study-theme";
 import BookletGrammarView from "./booklet-grammar-view";
 import IrregularVerbsTable from "./irregular-verbs-table";
+import PhoneticsTable from "./phonetics-table";
 import WordFamilyTableCard from "./word-family-table-card";
 
 type SubTab = "verbs" | "phonetics" | "pos" | "abbrev" | "grammar";
@@ -116,35 +117,10 @@ export default function AppendixView({ topicId, posTableId }: { topicId?: string
           + جداکنندهٔ حرف + تلفظِ هر سه ستونِ انگلیسی گرفت. */}
       {tab === "verbs" && <IrregularVerbsTable />}
 
-      {tab === "phonetics" && (
-        <div className="space-y-4">
-          {[
-            { title: "حروف صدادار (Vowels)", data: vowelPhonemes, color: "bg-emerald-600" },
-            { title: "حروف بی‌صدا (Consonants)", data: consonantPhonemes, color: "bg-rose-600" },
-          ].map((group) => (
-            <div key={group.title} className="rounded-2xl border c-card p-4">
-              <h2 className="mb-3 text-[15px] font-extrabold text-stone-800">{group.title}</h2>
-              <div className="grid max-h-[38vh] gap-2 overflow-y-auto nice-scroll sm:grid-cols-2 lg:grid-cols-4">
-                {group.data.map((p) => (
-                  <div key={p.symbol + p.example} className="rounded-xl border border-stone-100 bg-stone-50 p-3">
-                    <div className="en-text mb-1 text-xl font-black text-stone-800" dir="ltr">
-                      /{p.symbol}/
-                    </div>
-                    <div className="text-[12px] text-stone-500">{p.fa}</div>
-                    <div className="en-text mt-1 text-[12.5px] font-semibold text-emerald-700" dir="ltr">
-                      {p.example}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-          <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-[13px] leading-7 text-amber-900">
-            💡 <b>نکته:</b> علامت r در ساختارهایی مثل ɜːr و ɪər نشان می‌دهد این حرف در انگلیسی آمریکایی تلفظ می‌شود اما در
-            بریتانیایی تلفظ نمی‌گردد. سیستم IPA مخفف <b>International Phonetic Alphabet</b> (الفبای آوایی بین‌المللی) است.
-          </div>
-        </div>
-      )}
+      {/* راند ۲۳۰ — کارت‌های واک به کامپوننتِ خودش مهاجرت کردند
+          (الگویِ استخراجِ r223/r229) و جست‌وجوی دوزبانه + فیلترِ گروه
+          + روخوانیِ واژهٔ نمونهٔ هر واک گرفتند. */}
+      {tab === "phonetics" && <PhoneticsTable />}
 
       {tab === "pos" && (() => {
         const gradeCounts = { همه: WORD_FAMILY_TOTAL, دهم: 0, یازدهم: 0, دوازدهم: 0 } as Record<string, number>;
