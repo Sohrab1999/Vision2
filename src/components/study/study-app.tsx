@@ -226,7 +226,7 @@ export default function StudyApp() {
               {view.type === "dictionary" && <DictionaryView />}
               {view.type === "exam" && <ExamView />}
               {view.type === "appendix" && (
-                <AppendixView topicId={view.topicId} posTableId={view.posTableId} />
+                <AppendixView topicId={view.topicId} posTableId={view.posTableId} verbBase={view.verbBase} />
               )}
               {view.type === "rush" && <RushView />}
               {view.type === "duel" && <DuelView />}

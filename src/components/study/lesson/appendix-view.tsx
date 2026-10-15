@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ChevronLeft, Library, ListTree, Volume2, SpellCheck2, BookA, Table2, BookOpenCheck, Users } from "lucide-react";
-import { partsOfSpeech } from "@/data/appendix";
+import { irregularVerbs, partsOfSpeech } from "@/data/appendix";
 import {
   WORD_FAMILY_TABLES,
   WORD_FAMILY_TOTAL,
@@ -11,11 +11,13 @@ import {
 } from "@/data/word-families";
 import { useStudy } from "@/lib/study-store";
 import { faNum } from "@/lib/study-theme";
+import { writeAppendixResume, type AppendixScope } from "@/lib/bg-reading";
 import BookletGrammarView from "./booklet-grammar-view";
 import IrregularVerbsTable from "./irregular-verbs-table";
 import PhoneticsTable from "./phonetics-table";
 import AbbreviationsTable from "./abbreviations-table";
 import WordFamilyTableCard from "./word-family-table-card";
+import AppendixResumePill from "./appendix-resume-pill";
 
 type SubTab = "verbs" | "phonetics" | "pos" | "abbrev" | "grammar";
 
@@ -27,11 +29,14 @@ const subTabs: { key: SubTab; label: string; icon: React.ElementType }[] = [
   { key: "abbrev", label: "نشانه‌های اختصاری", icon: Table2 },
 ];
 
-export default function AppendixView({ topicId, posTableId }: { topicId?: string; posTableId?: string }) {
+export default function AppendixView({ topicId, posTableId, verbBase }: { topicId?: string; posTableId?: string; verbBase?: string }) {
   // لنگرِ عمیقِ «اجزای کلماتی» (راند ۲۲۴) — شناسهٔ معتبر یعنی ضمیمه مستقیم
   // روی زیرتبِ pos باز می‌شود؛ نامعتبر بی‌خطر است (رفتارِ سابق: درسنامهٔ جامع).
   const validPos = !!posTableId && WORD_FAMILY_TABLES.some((t) => wordFamilyTableId(t) === posTableId);
-  const [tab, setTab] = useState<SubTab>(() => (validPos ? "pos" : "grammar"));
+  // لنگرِ عمیقِ «افعال بی‌قاعده» (راند ۲۳۴) — شکلِ سادهٔ معتبر یعنی ضمیمه
+  // مستقیم روی زیرتبِ verbs باز می‌شود و سطرِ فعل در دید با پالسِ زمردی است.
+  const validVerb = !!verbBase && irregularVerbs.some((v) => v.base === verbBase);
+  const [tab, setTab] = useState<SubTab>(() => (validVerb ? "verbs" : validPos ? "pos" : "grammar"));
   // راند ۲۲۲ — فیلترِ پایهٔ جدول‌های «اجزای کلماتی» در زیرتبِ pos
   const [posGrade, setPosGrade] = useState<"همه" | "دهم" | "یازدهم" | "دوازدهم">("همه");
   // راند ۲۲۸ — فهرستِ پرشِ جدول‌ها (بندِ ② پیشنهادِ ۲۲۷): پنلِ چیپ‌ها همیشه از
@@ -46,19 +51,39 @@ export default function AppendixView({ topicId, posTableId }: { topicId?: string
   const [focusPosTableId, setFocusPosTableId] = useState<string | undefined>(
     () => (validPos ? posTableId : undefined),
   );
+  // لنگرِ عمیقِ سطرِ فعلِ بی‌قاعده (راند ۲۳۴) — یک‌بارِ مصرفِ همان الگو
+  const [focusVerbBase, setFocusVerbBase] = useState<string | undefined>(
+    () => (validVerb ? verbBase : undefined),
+  );
+
+  // راند ۲۳۴ — ثبتِ «آخرین جدولِ دیده‌شده» از خودِ دادهٔ منجمد (هیچ ساختگی):
+  // عنوانِ «پایه · درس» + شمارشِ خانواده‌ها — هر دو همان رشته‌هایِ UIِ pos.
+  const recordPosResume = useCallback((id: string) => {
+    const t = WORD_FAMILY_TABLES.find((tb) => wordFamilyTableId(tb) === id);
+    if (!t) return;
+    writeAppendixResume({
+      scope: "pos",
+      id,
+      title: `${t.grade} · ${t.lesson}`,
+      hint: `${faNum(t.families.length)} خانوادهٔ واژه`,
+    });
+  }, []);
 
   // اسکرولِ تمرکزِ لنگرِ pos (راند ۲۲۴) — jsdom scrollIntoView ندارد
   // (فراخوانِ اختیاری) و پس از نخستین تلاش لنگر پاک می‌شود.
+  // راند ۲۳۴ — رسیدن با لنگرِ عمیق هم «دیدن» است؛ نشانگر ثبت می‌شود
+  // (مثلِ درسنامهٔ جامع در r233).
   useEffect(() => {
     if (!focusPosTableId) return;
     const raf = requestAnimationFrame(() => {
+      recordPosResume(focusPosTableId);
       document
         .getElementById(`wf-table-${focusPosTableId}`)
         ?.scrollIntoView?.({ behavior: "smooth", block: "start" });
       setFocusPosTableId(undefined);
     });
     return () => cancelAnimationFrame(raf);
-  }, [focusPosTableId]);
+  }, [focusPosTableId, recordPosResume]);
 
   const openLessonTab = useStudy((s) => s.openLessonTab);
 
@@ -66,12 +91,30 @@ export default function AppendixView({ topicId, posTableId }: { topicId?: string
   // همهٔ جدول‌ها همیشه بازند — ناوبری یعنی اسکرولِ محلی به لنگرِ هدف؛
   // کاملاً محلی، بدونِ چرخشِ استور. همسایه‌ها از «فهرستِ رندرشده»
   // (همان فیلترِ فعال) مشتق می‌شوند — ناوبری هیچ‌وقت به جدولِ پنهان نمی‌رود.
+  // راند ۲۳۴ — پرش (چیپِ فهرست یا قبلی/بعدی) هم «آخرینِ دیده‌شده» است.
   const navigateToTable = (id: string) => {
+    recordPosResume(id);
     requestAnimationFrame(() => {
       document
         .getElementById(`wf-table-${id}`)
         ?.scrollIntoView?.({ behavior: "smooth", block: "start" });
     });
+  };
+
+  // راند ۲۳۴ — رفت‌وبرگشتِ محلیِ نشانگرِ «ادامه» در سرِ ضمیمه: تعویضِ زیرتبِ
+  // لایه + لنگرِ یک‌بارِ مصرفِ همان لایه — همان سازوکارِ عمیقِ r221/r224،
+  // بدونِ هیچ چرخشِ view/استور.
+  const goResume = (scope: AppendixScope, id: string) => {
+    if (scope === "grammar") {
+      setTab("grammar");
+      setFocusTopicId(id);
+    } else if (scope === "pos") {
+      setTab("pos");
+      setFocusPosTableId(id);
+    } else {
+      setTab("verbs");
+      setFocusVerbBase(id);
+    }
   };
 
   return (
@@ -103,6 +146,8 @@ export default function AppendixView({ topicId, posTableId }: { topicId?: string
               </button>
             );
           })}
+          {/* راند ۲۳۴ — «ادامه از …» کنارِ زیرتاب‌ها؛ بی‌رکورد هیچ چیزی رندر نمی‌شود */}
+          <AppendixResumePill onGo={goResume} />
         </div>
       </div>
 
@@ -115,8 +160,14 @@ export default function AppendixView({ topicId, posTableId }: { topicId?: string
 
       {/* راند ۲۲۹ — جدولِ افعال بی‌قاعده به کامپوننتِ خودش مهاجرت کرد
           (الگویِ استخراجِ r223) و جست‌وجوی دوزبانه + فهرستِ الفباییِ پرش
-          + جداکنندهٔ حرف + تلفظِ هر سه ستونِ انگلیسی گرفت. */}
-      {tab === "verbs" && <IrregularVerbsTable />}
+          + جداکنندهٔ حرف + تلفظِ هر سه ستونِ انگلیسی گرفت.
+          راند ۲۳۴ — لنگرِ عمیقِ سطرِ فعل + ثبتِ «آخرین فعلِ شنیده‌شده». */}
+      {tab === "verbs" && (
+        <IrregularVerbsTable
+          focusBase={focusVerbBase}
+          onFocusDone={() => setFocusVerbBase(undefined)}
+        />
+      )}
 
       {/* راند ۲۳۰ — کارت‌های واک به کامپوننتِ خودش مهاجرت کردند
           (الگویِ استخراجِ r223/r229) و جست‌وجوی دوزبانه + فیلترِ گروه

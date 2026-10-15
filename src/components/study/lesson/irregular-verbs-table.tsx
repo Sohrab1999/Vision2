@@ -17,14 +17,16 @@
 // صفرِ جست‌وجو صادقانه است.
 // ---------------------------------------------------------------------
 
-import { Fragment, useMemo, useState } from "react";
+import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 import { Search, SpellCheck2, X } from "lucide-react";
 import { irregularVerbs, type IrregularVerb } from "@/data/appendix";
 import { faNum } from "@/lib/study-theme";
+import { writeAppendixResume } from "@/lib/bg-reading";
 import SpeakButton from "../shared/speak-button";
 
-/** سلولِ انگلیسیِ غیرتهی: واژه + دکمهٔ تلفظ (ایدئومِ r223). */
-function EnSpeakCell({ word, bold }: { word: string; bold?: boolean }) {
+/** سلولِ انگلیسیِ غیرتهی: واژه + دکمهٔ تلفظ (ایدئومِ r223)؛ راند ۲۳۴ —
+ * شروعِ روخوانی با onSpeak به والد گزارش می‌شود («آخرین فعلِ شنیده‌شده»). */
+function EnSpeakCell({ word, bold, onSpeak }: { word: string; bold?: boolean; onSpeak?: () => void }) {
   return (
     <span className="flex items-center gap-1.5">
       <span
@@ -33,12 +35,20 @@ function EnSpeakCell({ word, bold }: { word: string; bold?: boolean }) {
       >
         {word}
       </span>
-      <SpeakButton text={word} size="sm" />
+      <SpeakButton text={word} size="sm" onSpeak={onSpeak} />
     </span>
   );
 }
 
-export default function IrregularVerbsTable() {
+export default function IrregularVerbsTable({
+  focusBase,
+  onFocusDone,
+}: {
+  /** لنگرِ عمیق (راند ۲۳۴) — فعلی که سطرش باید در دید باشد؛ نامعتبر نادیده گرفته می‌شود. */
+  focusBase?: string;
+  /** یک‌بارِ مصرف — پس از نخستین تلاشِ اسکرول صدا زده می‌شود تا والد لنگر را پاک کند. */
+  onFocusDone?: () => void;
+}) {
   const [q, setQ] = useState("");
   const trimmed = q.trim();
   const query = trimmed.toLowerCase();
@@ -66,6 +76,50 @@ export default function IrregularVerbsTable() {
   }, [rows]);
 
   const searching = trimmed.length > 0;
+
+  // راند ۲۳۴ — «آخرین فعلِ شنیده‌شده» (سوختِ «ادامهٔ مطالعه»): شنیدنِ هر شکل
+  // از فعل = کنشِ واقعیِ خواندن. رکوردِ خودکفا با عنوانِ سه‌شکلی از خودِ دادهٔ
+  // منجمد — هیچ ساختگی.
+  const recordVerbResume = (v: IrregularVerb) => {
+    writeAppendixResume({
+      scope: "verbs",
+      id: v.base,
+      title: `${v.base} · ${v.past} · ${v.pp}`,
+      hint: v.fa,
+    });
+  };
+
+  // لنگرِ عمیقِ سطرِ فعل (راند ۲۳۴ — الگویِ focusTopicIdِ r221): اسکرولِ محلی
+  // به سطر + پالسِ زمردیِ کوتاه؛ رسیدن با لنگر هم «دیدن» است و ثبت می‌شود.
+  const validFocus = !!focusBase && irregularVerbs.some((v) => v.base === focusBase);
+  const [pulseBase, setPulseBase] = useState<string | null>(null);
+  const pulseTimerRef = useRef<number | null>(null);
+  useEffect(() => {
+    if (!validFocus || !focusBase) {
+      if (focusBase) onFocusDone?.();
+      return;
+    }
+    const verb = irregularVerbs.find((v) => v.base === focusBase);
+    if (verb) recordVerbResume(verb);
+    const raf = requestAnimationFrame(() => {
+      document
+        .getElementById(`iv-row-${focusBase}`)
+        ?.scrollIntoView?.({ behavior: "smooth", block: "start" });
+      onFocusDone?.();
+      setPulseBase(focusBase);
+      // پالسِ ۱٫۶ثانیه‌ای — عمداً بیرونِ پاک‌سازیِ effect: بسته‌شدنِ لنگر
+      // (onFocusDone ← رندرِ دوباره ← cleanup) نباید تایمرِ تازه‌راه‌افتاده
+      // را بکشد وگرنه پالس برایِ همیشه روشن می‌ماند؛ پرشِ دوباره، تایمرِ
+      // قبلی را پیش از راه‌اندازیِ تازه پاک می‌کند.
+      if (pulseTimerRef.current !== null) window.clearTimeout(pulseTimerRef.current);
+      pulseTimerRef.current = window.setTimeout(() => {
+        pulseTimerRef.current = null;
+        setPulseBase(null);
+      }, 1600);
+    });
+    return () => cancelAnimationFrame(raf);
+    // وابسته‌ها کامل‌اند — فقط لنگر و validFocus؛ onFocusDone در هر رندرِ والد نوساز است
+  }, [focusBase, validFocus]);
 
   // پرشِ الفبایی — کاملاً محلی: rAF به لنگرِ سطرِ حرف داخلِ ظرفِ اسکرول
   const jumpToLetter = (letter: string) => {
@@ -200,16 +254,26 @@ export default function IrregularVerbsTable() {
                     </td>
                   </tr>
                   {g.verbs.map((v, i) => (
-                    <tr key={v.base} className={i % 2 === 0 ? "bg-white" : "bg-stone-50"}>
+                    <tr
+                      key={v.base}
+                      id={`iv-row-${v.base}`}
+                      className={`scroll-mt-12 transition-[background-color,box-shadow] ${
+                        pulseBase === v.base
+                          ? "bg-emerald-50 shadow-[inset_0_0_0_2px] shadow-emerald-300 dark:bg-emerald-900/30 dark:shadow-emerald-700"
+                          : i % 2 === 0
+                            ? "bg-white"
+                            : "bg-stone-50"
+                      }`}
+                    >
                       <td className="px-3 py-2 text-[12.5px] text-stone-700">{v.fa}</td>
                       <td className="px-3 py-2">
-                        <EnSpeakCell word={v.base} bold />
+                        <EnSpeakCell word={v.base} bold onSpeak={() => recordVerbResume(v)} />
                       </td>
                       <td className="px-3 py-2">
-                        <EnSpeakCell word={v.past} />
+                        <EnSpeakCell word={v.past} onSpeak={() => recordVerbResume(v)} />
                       </td>
                       <td className="px-3 py-2">
-                        <EnSpeakCell word={v.pp} />
+                        <EnSpeakCell word={v.pp} onSpeak={() => recordVerbResume(v)} />
                       </td>
                     </tr>
                   ))}

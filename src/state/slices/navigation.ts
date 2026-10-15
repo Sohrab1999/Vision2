@@ -20,6 +20,9 @@ export interface NavigationSlice {
   /** رفت‌وبرگشتِ «اجزای کلماتی» (راند ۲۲۴): ضمیمه را با لنگرِ جدولِ
    * خانوادهٔ واژه‌ها باز می‌کند — مستقیم روی زیرتبِ pos و در دیدِ اسکرول. */
   openAppendixPosTable: (tableId: string) => void;
+  /** رفت‌وبرگشتِ «افعال بی‌قاعده» (راند ۲۳۴): ضمیمه را با لنگرِ سطرِ فعل
+   * باز می‌کند — مستقیم روی زیرتبِ verbs، سطر در دید با پالسِ زمردی. */
+  openAppendixVerb: (base: string) => void;
   setView: (v: View) => void;
   setLessonTab: (t: LessonTab) => void;
   consumeFlashIntent: () => void;
@@ -48,6 +51,8 @@ export const createNavigationSlice: StateCreator<StudyStore, [], [], NavigationS
     set({ view: { type: "appendix", topicId }, flashIntent: "none" }),
   openAppendixPosTable: (posTableId) =>
     set({ view: { type: "appendix", posTableId }, flashIntent: "none" }),
+  openAppendixVerb: (verbBase) =>
+    set({ view: { type: "appendix", verbBase }, flashIntent: "none" }),
   setView: (v) => set({ view: v, flashIntent: "none" }),
   setLessonTab: (t) => set({ lessonTab: t }),
   consumeFlashIntent: () => set({ flashIntent: "none" }),

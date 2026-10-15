@@ -4,7 +4,7 @@ import { Sparkles, BookMarked, ClipboardCheck, GraduationCap, TrainFront, Swords
 import { TOTAL_VOCABULARY, EXAM_BANK_SIZE } from "@/data/lesson-meta";
 import { GRAMMAR_LINES, GRAMMAR_STATION_TOTAL } from "@/data/grammar-map";
 import { useStudy, summarize, srsDueTotal, firstLessonWithDue, mistakesOfLesson } from "@/lib/study-store";
-import { readBgLastTopic, type BgReadingBookmark } from "@/lib/bg-reading";
+import { readAppendixResume, APPENDIX_SCOPE_LABELS, type AppendixResumeItem } from "@/lib/bg-reading";
 import { hardIdsOf } from "@/lib/konkur";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
@@ -29,11 +29,14 @@ export default function HomeTools() {
     : 0;
   const konkurHardCount = mounted ? hardIdsOf(mistakes, konkurWrong).size : 0;
 
-  // راند ۲۳۳ — «ادامهٔ مطالعه»: آخرین موضوعِ دیده‌شدهٔ درسنامهٔ جامع
-  // (رکوردِ خودکفای localStorageِ bg-reading — بدونِ هیچ importِ سنگین در
-  // پوستهٔ eagerِ خانه، قراردادِ Task-44). هیچ رکوردی = کارت مثلِ سابق.
-  const bgBookmark: BgReadingBookmark | null = mounted ? readBgLastTopic() : null;
+  // راند ۲۳۳/۲۳۴ — «ادامهٔ مطالعه»: آخرینِ دیده‌شده در هر لایهٔ ضمیمه
+  // (درسنامهٔ جامع / اجزای کلماتی / افعال بی‌قاعده) — رکوردِ خودکفایِ
+  // localStorageِ bg-reading (بدونِ هیچ importِ سنگین در پوستهٔ eagerِ خانه،
+  // قراردادِ Task-44). هیچ رکوردی = کارت مثلِ سابق.
+  const resume: AppendixResumeItem | null = mounted ? readAppendixResume() : null;
   const openAppendixTopic = useStudy((s) => s.openAppendixTopic);
+  const openAppendixPosTable = useStudy((s) => s.openAppendixPosTable);
+  const openAppendixVerb = useStudy((s) => s.openAppendixVerb);
 
   return (
     <section aria-label="ابزارهای یادگیری" className="tools-grid">
@@ -52,7 +55,7 @@ export default function HomeTools() {
           { icon: Swords, title: "نبرد دودنفره", desc: "مصاف زندهٔ واژگانی با یادگیرندهٔ دیگر: ۱۰ سؤال، ۱۵ ثانیه، داوری روی سرور", onClick: () => setView({ type: "duel" as const }), color: "text-fuchsia-600" },
           { icon: Ear, title: "آزمون دیکته", desc: "املای شنیداری با روخوانی هوش مصنوعی و ثبت در SRS", onClick: () => openLessonTab(reviewLesson ?? 1, "dictation"), color: "text-violet-600" },
           { icon: Eraser, title: "مرور سریع قبل امتحان", desc: "ترکیبی از غلط‌های اخیر ۳ درس و بانک ۳۶۰تا؛ پاسخ درست = حذف از بانک خطا", onClick: () => setView({ type: "review" as const }), color: "text-rose-600", badge: totalMistakes },
-          { icon: Library, title: "ضمیمهٔ کتاب", desc: "افعال بی‌قاعده، جدول تلفظ IPA و اجزای کلام", view: { type: "appendix" as const }, color: "text-amber-600", resume: bgBookmark },
+          { icon: Library, title: "ضمیمهٔ کتاب", desc: "افعال بی‌قاعده، جدول تلفظ IPA و اجزای کلام", view: { type: "appendix" as const }, color: "text-amber-600", resume },
           { icon: Trophy, title: "کارنامهٔ من", desc: "گزارش کامل پیشرفت: رکوردها، مهارت‌ها و فعالیت هفته", onClick: () => window.dispatchEvent(new CustomEvent("open-report")), color: "text-stone-600", custom: true },
         ].map((tool) => (
           <button
@@ -62,16 +65,19 @@ export default function HomeTools() {
                 tool.onClick();
                 return;
               }
-              // راند ۲۳۳ — نشانگرِ «ادامهٔ مطالعه» موجود است؟ پرشِ عمیقِ r221
-              // همان موضوع را باز و در دید می‌گذارد؛ نبودِ رکورد = ضمیمهٔ ساده
+              // راند ۲۳۳/۲۳۴ — نشانگرِ «ادامهٔ مطالعه» موجود است؟ پرشِ عمیقِ همان لایه
+              // (r221 درسنامه / r224 جدولِ pos / r234 سطرِ فعل)؛ نبودِ رکورد = ضمیمهٔ ساده
               if ("resume" in tool && tool.resume) {
-                openAppendixTopic(tool.resume.id);
+                const r = tool.resume;
+                if (r.scope === "grammar") openAppendixTopic(r.id);
+                else if (r.scope === "pos") openAppendixPosTable(r.id);
+                else openAppendixVerb(r.id);
                 return;
               }
               setView((tool as { view: { type: "dictionary" } }).view);
             }}
             {...("resume" in tool && tool.resume
-              ? { title: `ادامهٔ مطالعه از «${tool.resume.title}» در درسنامهٔ جامع` }
+              ? { title: `ادامهٔ مطالعه از «${tool.resume.title}» در ${APPENDIX_SCOPE_LABELS[tool.resume.scope]}${tool.resume.hint ? ` — ${tool.resume.hint}` : ""}` }
               : {})}
             className={`relative rounded-2xl border c-card p-4 text-right shadow-sm transition-[background-color,color,border-color,box-shadow,transform] hover:-translate-y-0.5 hover:shadow-md active:scale-[0.96] ${
               "resume" in tool && tool.resume ? "ring-2 ring-emerald-200 dark:ring-emerald-800" : ""
@@ -91,7 +97,7 @@ export default function HomeTools() {
               <p className="mt-2 flex items-center gap-1 text-[12px] font-bold text-emerald-700 dark:text-emerald-300">
                 <Play size={12} className="shrink-0" />
                 <span className="min-w-0 truncate">
-                  ادامه از «{tool.resume.title}»{tool.resume.page ? ` — ${tool.resume.page}` : ""}
+                  ادامه از «{tool.resume.title}»{tool.resume.hint ? ` — ${tool.resume.hint}` : ""}
                 </span>
               </p>
             )}

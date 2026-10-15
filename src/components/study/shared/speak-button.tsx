@@ -10,6 +10,9 @@ interface SpeakButtonProps {
   size?: "sm" | "md" | "icon";
   className?: string;
   label?: string;
+  /** راند ۲۳۴ — کنشِ اختیاریِ هم‌زمانِ شروعِ روخوانی؛ جدولِ افعال با آن
+   * «آخرین فعلِ شنیده‌شده» را ثبت می‌کند (سوختِ «ادامهٔ مطالعه»). */
+  onSpeak?: () => void;
 }
 
 export default function SpeakButton({
@@ -18,6 +21,7 @@ export default function SpeakButton({
   size = "sm",
   className = "",
   label,
+  onSpeak,
 }: SpeakButtonProps) {
   const [state, setState] = useState<"idle" | "loading" | "playing">("idle");
   const stopRef = useRef<(() => void) | null>(null);
@@ -35,6 +39,8 @@ export default function SpeakButton({
       setState("idle");
       return;
     }
+    // شروعِ روخوانی = کنشِ واقعیِ خواندن (راند ۲۳۴) — پیش از هر تلاشِ شبکه
+    onSpeak?.();
     setState("loading");
     const stop = await speak(
       text,
