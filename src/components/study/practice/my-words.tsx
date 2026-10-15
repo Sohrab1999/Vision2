@@ -9,7 +9,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Star, Search, X, SearchX, BookMarked, Trash2, CheckCircle2, Circle, ArrowDownAZ, ArrowDownUp } from "lucide-react";
+import { Star, Search, X, SearchX, BookMarked, Trash2, CheckCircle2, Circle, ArrowDownAZ, ArrowDownUp, ArrowLeftRight } from "lucide-react";
 import { lessons } from "@/data";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -35,6 +35,7 @@ export default function MyWordsView() {
 
   const [query, setQuery] = useState("");
   const [lessonFilter, setLessonFilter] = useState<number | null>(null);
+  const [pairOnly, setPairOnly] = useState(false); // راند ۲۰۸: لنزِ «جفت‌دار»
   const [sort, setSort] = useState<SortMode>("new");
   const [armedClear, setArmedClear] = useState(false);
   const armTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -60,19 +61,31 @@ export default function MyWordsView() {
     return ok; // old
   }, [starredWords, sort, mounted]);
 
+  // راند ۲۰۶: جفت‌های جزوه روی کارت‌های «واژه‌های من» — نمایهٔ مشترکِ ۲۰۳
+  const pairIndex = useMemo(() => buildSynAntIndex(lessons), []);
+
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return stars.filter((w) => {
       if (lessonFilter && w.lessonId !== lessonFilter) return false;
+      // راند ۲۰۸: لنزِ «جفت‌دار» — فقط ستاره‌هایی که جفتِ جزوه دارند
+      if (pairOnly && !pairIndex.has(w.en.trim().toLowerCase())) return false;
       if (!q) return true;
       return w.en.toLowerCase().includes(q) || w.fa.includes(query.trim());
     });
-  }, [stars, query, lessonFilter]);
+  }, [stars, query, lessonFilter, pairOnly, pairIndex]);
 
   const knownCount = mounted ? stars.filter((w) => known[w.key]).length : 0;
 
-  // راند ۲۰۶: جفت‌های جزوه روی کارت‌های «واژه‌های من» — نمایهٔ مشترکِ ۲۰۳
-  const pairIndex = useMemo(() => buildSynAntIndex(lessons), []);
+  // راند ۲۰۸: شمارِ ستاره‌های جفت‌دار — badgeِ چیپ و کارتِ چهارمِ آمار
+  // (کارت می‌شمارد نه واژهٔ یکتا — هم‌نام‌ها = ۲ ستاره، مثلِ دیکشنریِ ۲۰۵)
+  const pairCount = useMemo(
+    () =>
+      mounted
+        ? stars.filter((w) => pairIndex.has(w.en.trim().toLowerCase())).length
+        : 0,
+    [stars, pairIndex, mounted]
+  );
   const lessonCounts = useMemo(() => {
     const counts = new Map<number, number>();
     for (const w of stars) counts.set(w.lessonId, (counts.get(w.lessonId) ?? 0) + 1);
@@ -122,7 +135,7 @@ export default function MyWordsView() {
         </div>
 
         {mounted && stars.length > 0 && (
-          <div className="mb-4 grid grid-cols-3 gap-2">
+          <div className="mb-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
             <div className="rounded-xl border border-amber-100 bg-amber-50/70 px-3 py-2 text-center">
               <div className="text-lg font-black text-amber-600">{faNum(stars.length)}</div>
               <div className="text-[10.5px] font-bold text-amber-600/80">واژهٔ نشان‌شده</div>
@@ -134,6 +147,10 @@ export default function MyWordsView() {
             <div className="rounded-xl border border-sky-100 bg-sky-50/70 px-3 py-2 text-center">
               <div className="text-lg font-black text-sky-600">{faNum(lessonCounts.size)}</div>
               <div className="text-[10.5px] font-bold text-sky-600/80">درس درگیر</div>
+            </div>
+            <div className="rounded-xl border border-violet-200 bg-violet-50/70 px-3 py-2 text-center">
+              <div className="text-lg font-black text-violet-600">{faNum(pairCount)}</div>
+              <div className="text-[10.5px] font-bold text-violet-600/80">جفت‌دار</div>
             </div>
           </div>
         )}
@@ -194,13 +211,35 @@ export default function MyWordsView() {
                   lessonFilter === l.id ? `${t.bg} text-white` : "bg-stone-100 text-stone-600 hover:bg-stone-200"
                 }`}
               >
-                درس {l.id}: {l.titleFa}
+                درس {faNum(l.id)}: {l.titleFa}
                 <span className={`ms-1.5 rounded-full px-1.5 text-[10px] ${lessonFilter === l.id ? "bg-white/25" : "bg-stone-200/80 text-stone-500"}`}>
                   {faNum(count)}
                 </span>
               </button>
             );
           })}
+          {/* راند ۲۰۸ — لنزِ «جفت‌دار»: همان هویتِ بنفشِ دیکشنریِ ۲۰۵؛
+              badge کارت می‌شمارد نه واژهٔ یکتا تا با خطِ «N واژه نشان‌شده» یکی بخواند */}
+          <button
+            onClick={() => setPairOnly((v) => !v)}
+            aria-pressed={pairOnly}
+            title="فقط واژه‌های دارای جفتِ مترادف/متضاد جزوه"
+            className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[12px] font-bold transition-[background-color,color,box-shadow] ${
+              pairOnly
+                ? "bg-violet-600 text-white shadow-sm"
+                : "bg-stone-100 text-stone-600 hover:bg-stone-200"
+            }`}
+          >
+            <ArrowLeftRight size={12} className={pairOnly ? "" : "text-violet-600"} />
+            جفت‌دار
+            <span
+              className={`rounded-full px-1.5 text-[10px] font-black ${
+                pairOnly ? "bg-black/25" : "bg-stone-200/80 text-stone-600"
+              }`}
+            >
+              {faNum(pairCount)}
+            </span>
+          </button>
           {/* sort segmented control */}
           <span className="mx-1 hidden h-6 w-px self-center bg-stone-200 sm:block" />
           <div className="flex overflow-hidden rounded-full border border-stone-200" role="group" aria-label="ترتیب نمایش">
@@ -256,6 +295,7 @@ export default function MyWordsView() {
             onClick={() => {
               setQuery("");
               setLessonFilter(null);
+              setPairOnly(false);
             }}
             className="mt-1 rounded-full bg-stone-700 px-3.5 py-1.5 text-[11px] font-bold text-white transition-colors hover:bg-stone-600"
           >
@@ -336,7 +376,7 @@ export default function MyWordsView() {
                       );
                     })()}
                     <span className={`mt-1 inline-block rounded-full px-2 py-0.5 text-[10px] font-bold ${t.chipBg}`}>
-                      درس {w.lessonId}: {w.titleFa}
+                      درس {faNum(w.lessonId)}: {w.titleFa}
                     </span>
                   </div>
                   <div className="flex shrink-0 flex-col items-center gap-1.5">

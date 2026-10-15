@@ -19,6 +19,7 @@ import {
   User,
   Target,
   FileSpreadsheet,
+  ArrowLeftRight,
 } from "lucide-react";
 import {
   useStudy,
@@ -37,6 +38,8 @@ import { skillBreakdown, barColorFor, skillGradeFa } from "@/lib/skill-stats";
 import { buildCoverageMap, COVERAGE_SKILLS } from "@/lib/coverage-map";
 import { COVERAGE_SKILL_SHORT, heatSummary } from "@/lib/coverage-heat";
 import { downloadCoverageCsv, coverageStatus } from "@/lib/coverage-csv";
+import { buildPairsCoverage } from "@/lib/pairs-coverage";
+import { lessons } from "@/data";
 import { useToast } from "@/hooks/use-toast";
 import { trackEvent } from "@/lib/analytics";
 import type { BadgeTier } from "@/lib/achievements";
@@ -109,6 +112,8 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
   const srs = useStudy((s) => s.srs);
   const mistakes = useStudy((s) => s.mistakes);
   const history = useStudy((s) => s.history);
+  const starredWords = useStudy((s) => s.starredWords);
+  const wordSeen = useStudy((s) => s.wordSeen);
   const streak = useStudy((s) => s.streak);
   const bestStreak = useStudy((s) => s.bestStreak);
   const rushBest = useStudy((s) => s.rushBest);
@@ -182,6 +187,19 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
     [mounted, results, known]
   );
   const coverageHeat = useMemo(() => (coverage ? heatSummary(coverage.lessons) : null), [coverage]);
+
+  // task 208 — «حسابِ جفت‌ها» on paper: the 477 booklet syn/ant rows measured
+  // against the learner's real store signals (known / starred / wordSeen).
+  // Same honesty contract as the coverage map above: nothing fabricated —
+  // a row counts as «دیده‌شده» only when at least one of its two ends lives
+  // in the store, and «کامل» demands BOTH ends known.
+  const pairsCoverage = useMemo(
+    () =>
+      mounted
+        ? buildPairsCoverage(lessons, { known, starred: starredWords, wordSeen })
+        : null,
+    [mounted, known, starredWords, wordSeen]
+  );
 
   // task 180 — coverage CSV export: third consumer of the 174/176 line and
   // sibling of the 169/178 CSV family (same BOM/CRLF/ASCII dialect), but a
@@ -589,6 +607,78 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
                     «—» یعنی این مهارت هنوز تلاش نشده است.
                     {coverageHeat.avgBest !== null &&
                       ` میانگینِ بهترینِ نمراتِ تلاش‌شده: ${faNum(coverageHeat.avgBest)}٪.`}
+                  </p>
+                </>
+              )}
+            </section>
+          )}
+
+          {/* pairs coverage (task 208) — the 477 booklet syn/ant rows the
+             learner has actually met: teacher-visible wealth of the pair
+             tour (r202..r207). Honest tiers like the coverage map: seen =
+             one end lives in the store (known/starred/wordSeen), complete =
+             BOTH ends known. Nothing fabricated for the fresh learner. */}
+          {pairsCoverage && (
+            <section className="or-section-block or-pairs mb-5">
+              <h3 className="or-section mb-2.5 flex items-center gap-1.5 text-[13.5px] font-black">
+                <ArrowLeftRight size={14} className="text-emerald-600" />
+                جفت‌های مترادف و متضاد
+                <span className="or-chip rounded-full px-2 py-0.5 text-[10px] font-black">
+                  {faNum(pairsCoverage.seen)} از {faNum(pairsCoverage.total)} دیده‌شده
+                </span>
+              </h3>
+              {pairsCoverage.seen === 0 ? (
+                <div className="or-kpi-neutral rounded-xl px-3 py-4 text-center text-[11.5px] font-bold">
+                  هنوز هیچ جفتی دیده نشده — با تمرین واژگان و آزمون مترادف/متضاد، این جدول پر می‌شود.
+                </div>
+              ) : (
+                <>
+                  <div className="mb-2 flex flex-wrap gap-x-5 gap-y-1 text-[11px] font-bold">
+                    <span>
+                      کامل (هر دو سر بلد):{" "}
+                      <span className="font-black text-emerald-700">{faNum(pairsCoverage.knownBoth)}</span>
+                    </span>
+                    <span>
+                      نیمه (فقط یک سر بلد):{" "}
+                      <span className="font-black">{faNum(pairsCoverage.knownOne)}</span>
+                    </span>
+                  </div>
+                  <div className="overflow-x-auto nice-scroll">
+                    <table className="or-table w-full min-w-[380px] text-[11.5px]">
+                      <thead>
+                        <tr className="text-right">
+                          <th className="px-2 py-1.5 font-black">درس</th>
+                          <th className="px-2 py-1.5 text-center font-black">ردیف‌های جفت</th>
+                          <th className="px-2 py-1.5 text-center font-black">دیده‌شده</th>
+                          <th className="px-2 py-1.5 text-center font-black">پوشش</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {pairsCoverage.perLesson.map((L) => {
+                          const pct = L.rows > 0 ? Math.round((L.seen / L.rows) * 100) : 0;
+                          return (
+                            <tr key={L.lessonId}>
+                              <td className="px-2 py-1.5 font-black">درس {faNum(L.lessonId)}</td>
+                              <td className="px-2 py-1.5 text-center font-bold">{faNum(L.rows)}</td>
+                              <td className="px-2 py-1.5 text-center font-black">
+                                {L.seen > 0 ? faNum(L.seen) : <span className="font-bold text-stone-500">—</span>}
+                              </td>
+                              <td
+                                className={`px-2 py-1.5 text-center font-black ${
+                                  L.seen === 0 ? "text-stone-500" : ""
+                                }`}
+                              >
+                                {L.seen > 0 ? `${faNum(pct)}٪` : "—"}
+                              </td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </table>
+                  </div>
+                  <p className="or-foot mt-1.5 text-[10px] font-bold leading-4">
+                    «دیده‌شده» یعنی دست‌کم یکی از دو سرِ جفت در بلدها، ستاره‌ها یا دیده‌شده‌های تو ثبت شده است؛
+                    «—» یعنی هنوز هیچ ردی از آن درس نیست.
                   </p>
                 </>
               )}
