@@ -36,6 +36,7 @@ import {
   type BgTopic,
 } from "@/data/booklet-grammar";
 import { useStudy } from "@/lib/study-store";
+import { writeBgLastTopic } from "@/lib/bg-reading";
 import { faNum } from "@/lib/study-theme";
 
 // راند ۲۳۱ — جایگاهِ خواندنِ پایدار (بندِ ① پیشنهادِ ۲۲۸): مجموعهٔ موضوع‌های
@@ -187,6 +188,9 @@ export default function BookletGrammarView({
       return;
     }
     const raf = requestAnimationFrame(() => {
+      // راند ۲۳۳ — رسیدن با لنگرِ عمیق هم «دیدن» است؛ نشانگر ثبت می‌شود
+      const topic = BOOKLET_GRAMMAR_TOPICS.find((t) => t.id === focusTopicId);
+      if (topic) writeBgLastTopic(topic);
       document
         .getElementById(`bg-topic-${focusTopicId}`)
         ?.scrollIntoView?.({ behavior: "smooth", block: "start" });
@@ -198,10 +202,17 @@ export default function BookletGrammarView({
 
   // toggle روی مجموعهٔ ادغام‌شده کار می‌کند — بستنِ موضوعِ متمرکزِ لنگر هم
   // درست کار می‌کند و نتیجه یک‌جا ذخیره می‌شود (راند ۲۳۱).
+  // راند ۲۳۳ — بازکردنِ یک موضوع = «آخرین موضوعِ دیده‌شده» (سوختِ «ادامهٔ
+  // مطالعه» روی کارتِ ضمیمهٔ خانه)؛ بستن نشانگر را عوض نمی‌کند.
   const toggle = (id: string) => {
     const next = new Set(open);
-    if (next.has(id)) next.delete(id);
-    else next.add(id);
+    if (next.has(id)) {
+      next.delete(id);
+    } else {
+      next.add(id);
+      const topic = BOOKLET_GRAMMAR_TOPICS.find((t) => t.id === id);
+      if (topic) writeBgLastTopic(topic);
+    }
     writeBgOpen(next);
   };
 
@@ -215,6 +226,9 @@ export default function BookletGrammarView({
   // مجموعهٔ بازها می‌گذارد و با rAF به لنگرش می‌رود — کاملاً محلی، بدونِ
   // چرخشِ استور (ضمیمه از قبل مونت است و لنگرِ prop یک‌بارِ مصرف است).
   const navigateToTopic = (id: string) => {
+    // راند ۲۳۳ — پرش (چیپِ فهرست یا قبلی/بعدی) هم «آخرین موضوعِ دیده‌شده» است
+    const topic = BOOKLET_GRAMMAR_TOPICS.find((t) => t.id === id);
+    if (topic) writeBgLastTopic(topic);
     writeBgOpen(new Set(open).add(id));
     requestAnimationFrame(() => {
       document

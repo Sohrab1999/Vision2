@@ -4,7 +4,9 @@ import { useState } from "react";
 import { ListTree } from "lucide-react";
 import { LESSONS_META, lessonNameFa, type LessonMeta } from "@/data/lesson-meta";
 import { themeOf, faNum } from "@/lib/study-theme";
-import { useStudy } from "@/lib/study-store";
+import { useStudy, knownCountOfLesson } from "@/lib/study-store";
+import { percent } from "@/lib/domain/percent";
+import { useMounted } from "@/lib/use-mounted";
 
 /**
  * راند ۲۳۲ — «فهرست درس‌ها»: پرشِ سریع میانِ ۱۲ درس از خودِ سرصفحهٔ درس.
@@ -35,7 +37,18 @@ export function gradeGroupsOf(source: LessonMeta[]): GradeGroup[] {
 export default function LessonJumpIndex({ currentId }: { currentId: number }) {
   const [open, setOpen] = useState(false);
   const openLesson = useStudy((s) => s.openLesson);
+  const known = useStudy((s) => s.known);
+  const mounted = useMounted();
   const groups = gradeGroupsOf(LESSONS_META);
+
+  /** راند ۲۳۳ — درصدِ واژگانِ بلدشدهٔ هر درس (خواندنِ read-only از استور،
+   * با useMounted تا mismatchِ هیدریشن نداشته باشیم — ایدئومِ قفسهٔ کتاب).
+   * صفرِ خوانده = هیچ عددی (صداقت: نویزِ صفر بی‌معناست). */
+  const percentOf = (l: LessonMeta): number | null => {
+    if (!mounted) return null;
+    const pct = percent(knownCountOfLesson(known, l.id), l.vocabCount);
+    return pct > 0 ? pct : null;
+  };
 
   return (
     <>
@@ -111,6 +124,14 @@ export default function LessonJumpIndex({ currentId }: { currentId: number }) {
                       >
                         {l.titleEn}
                       </span>
+                      {percentOf(l) !== null && (
+                        <span
+                          className="shrink-0 text-[10px] font-black text-emerald-700 dark:text-emerald-300"
+                          title={`${faNum(knownCountOfLesson(known, l.id))} از ${faNum(l.vocabCount)} واژهٔ این درس بلدی`}
+                        >
+                          {faNum(percentOf(l) as number)}٪
+                        </span>
+                      )}
                     </button>
                   );
                 })}
