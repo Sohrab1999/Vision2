@@ -108,3 +108,28 @@ export function buildSynAntQuiz(lesson: LessonData): QuizQuestion[] {
   }
   return shuffle(questions);
 }
+
+/**
+ * دریلِ جفت‌ها روی چند درس (راند ۲۰۷) — سؤال‌های چند درس را گردِروبین
+ * می‌آمیزد تا سهمِ هر درس متعادل بماند. قراردادِ ضدِ-درز دست‌نخورده:
+ * هر سؤال گزینه‌هایش را از استخرِ هم‌جهتِ درسِ خودش می‌گیرد (buildSynAntQuiz)،
+ * پس ترکیبِ بین‌درسیِ سؤال‌ها درز نمی‌سازد. تکرارِ id (نمی‌باید باشد) حذف
+ * و خروجی تا cap بریده می‌شود. منبع: لنزِ «جفت‌دار» دیکشنری — با فیلترِ
+ * درس فقط همان درس، بی‌فیلتر همهٔ درس‌ها.
+ */
+export function buildPairsDrillQuiz(lessons: LessonData[], cap = SYN_QUIZ_CAP): QuizQuestion[] {
+  const perLesson = lessons.map(buildSynAntQuiz);
+  const out: QuizQuestion[] = [];
+  const seen = new Set<string>();
+  for (let i = 0; out.length < cap && i < SYN_QUIZ_CAP; i++) {
+    for (const qs of perLesson) {
+      if (out.length >= cap) break;
+      const q = qs[i];
+      if (q && !seen.has(q.id)) {
+        seen.add(q.id);
+        out.push(q);
+      }
+    }
+  }
+  return shuffle(out);
+}

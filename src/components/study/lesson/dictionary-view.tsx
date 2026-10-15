@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Search, X, BookMarked, CheckCircle2, CircleDashed, AlarmClock, SearchX, Download, Star, ArrowLeftRight } from "lucide-react";
+import { Search, X, BookMarked, CheckCircle2, CircleDashed, AlarmClock, SearchX, Download, Star, ArrowLeftRight, Shuffle } from "lucide-react";
 import { lessons } from "@/data";
 import { useStudy, wordKey } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -10,8 +10,12 @@ import { downloadAnkiTsv, buildAnkiTsv } from "@/lib/anki-export";
 import { trackEvent } from "@/lib/analytics";
 import { useToast } from "@/hooks/use-toast";
 import { buildSynAntIndex, synAntPairsFor, matchesViaPairs } from "@/lib/syn-ant-lookup";
+import { buildPairsDrillQuiz, SYN_QUIZ_CAP } from "@/lib/syn-ant-quiz";
+import type { QuizQuestion } from "@/lib/study-types";
 import { speak } from "@/lib/speak";
 import SpeakButton from "../shared/speak-button";
+import QuizEngine from "../quiz/quiz-engine";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 // state filter values — «paired» (راند ۲۰۵): فقط واژه‌های جفت‌دارِ جزوه
 type StateFilter = "all" | "known" | "unknown" | "due" | "paired";
@@ -70,6 +74,25 @@ export default function DictionaryView() {
     () => allWords.reduce((n, w) => n + (pairedSet.has(w.en.trim().toLowerCase()) ? 1 : 0), 0),
     [allWords, pairedSet]
   );
+
+  // «دریلِ جفت‌ها» (راند ۲۰۷) — از لنزِ جفت‌دار مستقیم به آزمونِ استانداردِ خانه:
+  // با فیلترِ درس فقط همان درس، بی‌فیلتر همهٔ درس‌ها؛ نتیجه زیرِ «0:synant»
+  // ثبت می‌شود (پنلِ مهارتِ مترادف/متضاد و فیدِ خانه خودکار می‌فهمند)
+  const [drillOpen, setDrillOpen] = useState(false);
+  const [drill, setDrill] = useState<{ title: string; questions: QuizQuestion[] } | null>(null);
+  const startDrill = () => {
+    const scope = lessonFilter ? lessons.filter((l) => l.id === lessonFilter) : lessons;
+    if (scope.length === 0) return;
+    setDrill({
+      title: lessonFilter ? `دریل جفت‌ها — درس ${faNum(lessonFilter)}` : "دریل جفت‌ها — همهٔ درس‌ها",
+      questions: buildPairsDrillQuiz(scope),
+    });
+    setDrillOpen(true);
+  };
+  const closeDrill = () => {
+    setDrillOpen(false);
+    setDrill(null);
+  };
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -232,6 +255,34 @@ export default function DictionaryView() {
             </button>
           ))}
         </div>
+
+        {/* نوارِ دریلِ جفت‌ها — فقط وقتی لنزِ جفت‌دار فعال است (راند ۲۰۷) */}
+        {stateFilter === "paired" && pairedCount > 0 && (
+          <div
+            className="pairs-drill-bar mt-2.5 flex flex-wrap items-center gap-2 rounded-xl border border-violet-200 bg-gradient-to-l from-arcade-tint to-arcade-tint-to px-3.5 py-2.5"
+            data-testid="pairs-drill-bar"
+          >
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-arcade-from-soft to-arcade-to-soft text-white shadow-sm">
+              <ArrowLeftRight size={15} />
+            </span>
+            <div className="min-w-0 flex-1">
+              <p className="text-[12.5px] font-extrabold text-violet-800">دریل جفت‌ها</p>
+              <p className="text-[11px] font-bold leading-4 text-stone-500">
+                {lessonFilter
+                  ? `جفت‌های مترادف/متضادِ درس ${faNum(lessonFilter)} — تا ${faNum(SYN_QUIZ_CAP)} سؤالِ چهارگزینه‌ای از جدولِ جزوه`
+                  : `جفت‌های همهٔ ${faNum(lessons.length)} درس — تا ${faNum(SYN_QUIZ_CAP)} سؤالِ چهارگزینه‌ای با سهمِ متعادلِ هر درس`}
+              </p>
+            </div>
+            <button
+              onClick={startDrill}
+              className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-l from-arcade-from to-arcade-to px-4 py-2 text-[12.5px] font-black text-white shadow-md shadow-violet-600/25 transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-95 active:scale-[0.96]"
+              aria-label="شروع دریل جفت‌ها"
+            >
+              <Shuffle size={14} />
+              شروع دریل
+            </button>
+          </div>
+        )}
       </div>
 
       <p className="text-[12px] text-stone-500">{faNum(filtered.length)} واژه یافت شد</p>
@@ -341,6 +392,30 @@ export default function DictionaryView() {
           );
         })}
       </div>
+
+      {/* دریلِ جفت‌ها — آزمونِ استانداردِ خانه روی جفت‌های همان دامنه؛ نتیجه
+          زیرِ «0:synant» ثبت می‌شود (فید، پنلِ مهارت و بانکِ اشتباهات می‌فهمند) */}
+      <Dialog open={drillOpen} onOpenChange={(o) => (o ? setDrillOpen(true) : closeDrill())}>
+        <DialogContent className="max-h-[92vh] max-w-2xl overflow-y-auto nice-scroll">
+          <DialogHeader className="text-right">
+            <DialogTitle className="flex items-center gap-2 text-base">
+              <ArrowLeftRight size={16} className="text-violet-600" />
+              {drill?.title ?? "دریل جفت‌ها"}
+            </DialogTitle>
+          </DialogHeader>
+          {drill && drill.questions.length > 0 && (
+            <QuizEngine
+              title={drill.title}
+              questions={drill.questions}
+              resultKeyStr="0:synant"
+              lessonId={0}
+              category="synant"
+              immediate
+              onExit={closeDrill}
+            />
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

@@ -85,10 +85,12 @@ export const globalResultLabel: Record<string, string> = {
   review: "مرور سریع قبل امتحان",
   rush: "چالش برق‌آسا",
   "my-words": "مرور واژه‌های نشان‌شده",
+  // راند ۲۰۷ — دریلِ جفت‌ها از لنزِ «جفت‌دار» دیکشنری (کلیدِ 0:synant)
+  "0:synant": "دریل جفت‌ها",
 };
 
 // and their card theme (lesson cards take their own lesson color instead)
-export const globalResultTheme: Record<string, "emerald" | "amber" | "rose"> = {
+export const globalResultTheme: Record<string, "emerald" | "amber" | "rose" | "violet"> = {
   exam: "emerald",
   final: "emerald",
   ...Object.fromEntries(FINAL_GRADES.filter((g) => g.resultKey !== "final").map((g) => [g.resultKey, "emerald" as const])),
@@ -97,6 +99,8 @@ export const globalResultTheme: Record<string, "emerald" | "amber" | "rose"> = {
   review: "amber",
   "my-words": "amber",
   rush: "rose",
+  // راند ۲۰۷ — کارتِ دریلِ جفت‌ها بنفش (هم‌رنگِ لنزِ «جفت‌دار»)
+  "0:synant": "violet" as const,
 };
 
 // compact labels for the live feed rows
