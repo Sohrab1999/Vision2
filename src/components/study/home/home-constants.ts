@@ -11,6 +11,25 @@ const finalGradeLabels: Record<string, string> = Object.fromEntries(
   FINAL_GRADES.filter((g) => g.resultKey !== "final").map((g) => [g.resultKey, `آزمون پایان‌ترم ${g.label}`]),
 );
 
+// راند ۲۰۰ — برچسب‌های دیکتهٔ پایه‌محور: کلیدِ نتیجهٔ «exam-g10:dictation» و
+// دستهٔ آماریِ «dict-g10» هرگز با برچسبِ خالی یا کلیدِ خام رندر نمی‌شوند
+// (هم‌الگوی finalGradeLabels — از FINAL_GRADES تولید می‌شوند).
+const gradeDictKeyLabels: Record<string, string> = Object.fromEntries(
+  FINAL_GRADES.map((g) => [`exam-${g.id}:dictation`, `دیکتهٔ واژگان ${g.label}`]),
+);
+const gradeDictCategoryLabels: Record<string, string> = Object.fromEntries(
+  FINAL_GRADES.map((g) => [`dict-${g.id}`, `دیکتهٔ واژگان ${g.label}`]),
+);
+
+// راند ۲۰۰ — دسته‌های آماریِ دیکته‌های شخصیِ قدیمی هم تا امروز روی فیدِ خانه
+// با کلیدِ خام رندر می‌شدند («exam-dictation» بی‌برچسب) — حالا برچسبِ فارسی دارند.
+const personalDictCategoryLabels: Record<string, string> = {
+  "exam-dictation": "دیکتهٔ بانک آزمون",
+  "my-words-dictation": "دیکتهٔ نشان‌شده‌ها",
+  "danger-dictation": "دیکتهٔ واژه‌های خطرناک",
+  "srs-due-dictation": "دیکتهٔ مرورِ سررسید",
+};
+
 export const spineColors: Record<string, string> = {
   emerald: "bg-gradient-to-b from-emerald-500 to-emerald-800",
   amber: "bg-gradient-to-b from-amber-400 to-amber-700",
@@ -44,6 +63,8 @@ export const categoryLabel: Record<string, string> = {
   exam: "آزمون جامع",
   final: "آزمون پایان ترم",
   ...finalGradeLabels,
+  ...gradeDictCategoryLabels,
+  ...personalDictCategoryLabels,
   mixed: "تست ترکیبی درس",
   mistakes: "مرور اشتباهات",
   rush: "چالش برق‌آسا",
@@ -59,6 +80,7 @@ export const globalResultLabel: Record<string, string> = {
   exam: "آزمون جامع",
   final: "آزمون پایان ترم",
   ...finalGradeLabels,
+  ...gradeDictKeyLabels,
   review: "مرور سریع قبل امتحان",
   rush: "چالش برق‌آسا",
   "my-words": "مرور واژه‌های نشان‌شده",
@@ -69,6 +91,8 @@ export const globalResultTheme: Record<string, "emerald" | "amber" | "rose"> = {
   exam: "emerald",
   final: "emerald",
   ...Object.fromEntries(FINAL_GRADES.filter((g) => g.resultKey !== "final").map((g) => [g.resultKey, "emerald" as const])),
+  // راند ۲۰۰ — کارتِ آخرین‌نتیجهٔ دیکتهٔ پایه‌محور هم زمردی (هم‌خانوادهٔ دیکته‌ها)
+  ...Object.fromEntries(FINAL_GRADES.map((g) => [`exam-${g.id}:dictation`, "emerald" as const])),
   review: "amber",
   "my-words": "amber",
   rush: "rose",
@@ -86,6 +110,8 @@ export const feedLabel: Record<string, string> = {
   exam: "آزمون جامع",
   final: "آزمون پایان ترم",
   ...finalGradeLabels,
+  ...gradeDictCategoryLabels,
+  ...personalDictCategoryLabels,
   mixed: "تست ترکیبی",
   mistakes: "مرور اشتباهات",
   rush: "چالش برق‌آسا",

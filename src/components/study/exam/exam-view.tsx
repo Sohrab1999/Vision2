@@ -22,6 +22,7 @@ import {
 import type { FinalGradeId } from "@/lib/domain/final-exam";
 import { trackEvent } from "@/lib/analytics";
 import { buildExamDictation, DICTATION_MIN_EXAM } from "@/lib/exam-dictation";
+import { buildGradeDictations, DICTATION_MIN_GRADE } from "@/lib/grade-dictation";
 import {
   clearCountPrefill,
   clearFlagPrefill,
@@ -62,6 +63,8 @@ export default function ExamView() {
   const [examTimed, setExamTimed] = useState(() => readFlagPrefill(EXAM_TIMED_KEY) ?? true);
   const [finalTimed, setFinalTimed] = useState(true);
   const [dictOpen, setDictOpen] = useState(false);
+  /* راند ۲۰۰ — دامنهٔ دیکته: بانک ۳۶۰تا یا واژگانِ کتابِ یک پایه (شش دسته) */
+  const [dictScope, setDictScope] = useState<"bank" | FinalGradeId>("bank");
   /* grade-aware final («آزمون پایان‌ترم سه‌پایه») — default یازدهم keeps
      backward compat with the stored "final" result */
   const [finalGradeId, setFinalGradeId] = useState<FinalGradeId>("g11");
@@ -99,8 +102,15 @@ export default function ExamView() {
      mount and reuse the same object as the dialog's source, so the round
      is a stable snapshot and the CTA always knows its size. */
   const examDictPool = useMemo(() => buildExamDictation(), []);
-  const examDictSource = dictOpen ? examDictPool : null;
+  /* راند ۲۰۰ — شش دستهٔ پایه‌محور هم STATICاند (تابعِ خالصِ واژگانِ درس‌ها)
+     — یک‌بار در mount ساخته می‌شوند تا چیپ‌ها همیشه شمارشِ واقعی بدانند. */
+  const gradeDictPools = useMemo(() => buildGradeDictations(), []);
+  const activeDictSource = dictScope === "bank" ? examDictPool : gradeDictPools[dictScope];
+  const examDictSource = dictOpen ? activeDictSource : null;
   const examDictCount = examDictPool.words.length;
+  const dictAnyPool =
+    examDictCount >= DICTATION_MIN_EXAM ||
+    FINAL_GRADES.some((g) => gradeDictPools[g.id].words.length >= DICTATION_MIN_GRADE);
 
   const examMistakeCount = mounted ? mistakesOfLesson(mistakes, 0) : 0;
   const totalMistakesAll = mounted
@@ -283,14 +293,15 @@ export default function ExamView() {
             </button>
           )}
 
-          {/* exam-bank vocabulary dictation — spell what the 360 bank tests, by ear */}
+          {/* exam-bank + per-grade vocabulary dictation — spell the bank's
+              tested words and every grade's own book vocabulary, by ear */}
           <button
             onClick={() => (setDictOpen(true), trackEvent("exam_dictation_start"))}
-            disabled={examDictCount < DICTATION_MIN_EXAM}
+            disabled={!dictAnyPool}
             title={
-              examDictCount < DICTATION_MIN_EXAM
-                ? `حداقل ${faNum(DICTATION_MIN_EXAM)} واژهٔ کنکوری لازم است`
-                : `${faNum(examDictCount)} واژه‌ای که بانک ${faNum(examBank.length)} تستی واقعاً آزمون می‌کند`
+              dictAnyPool
+                ? `${faNum(examDictCount)} واژهٔ بانک + واژگانِ کتابِ هر ${faNum(FINAL_GRADES.length)} پایه`
+                : `حداقل ${faNum(DICTATION_MIN_EXAM)} واژهٔ کنکوری لازم است`
             }
             className="exam-dict-cta mt-4 flex w-full items-center justify-between gap-3 rounded-2xl border border-emerald-200 bg-gradient-to-l from-emerald-50 to-white p-4 text-right shadow-sm transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:shadow-md active:scale-[0.96] disabled:cursor-not-allowed disabled:opacity-50"
           >
@@ -299,9 +310,9 @@ export default function ExamView() {
                 <Ear size={20} />
               </span>
               <span>
-                <span className="block text-sm font-extrabold text-stone-800">دیکتهٔ واژگان کنکور</span>
+                <span className="block text-sm font-extrabold text-stone-800">دیکتهٔ واژگان — جامع و پایه‌محور</span>
                 <span className="block text-[12px] text-stone-500">
-                  املای شنیداری {faNum(examDictCount)} واژه‌ای که بانک تستی جزوه واقعاً می‌پرسد — هجیِ درست یعنی ارتقای واقعی مرور
+                  بانک ۳۶۰تا ({faNum(examDictCount)} واژه) + کتابِ هر {faNum(FINAL_GRADES.length)} پایه — هجیِ درست یعنی ارتقای واقعی مرور
                 </span>
               </span>
             </span>
@@ -310,17 +321,50 @@ export default function ExamView() {
             </span>
           </button>
 
-          {/* exam dictation dialog — 5th DictationSource (360-bank vocabulary) */}
+          {/* exam dictation dialog — bank deck + six grade decks (راند ۲۰۰):
+              scope chips swap the source; key={dictScope} remounts the tab so
+              a deliberate scope switch never resumes a half-played round */}
           <Dialog open={dictOpen} onOpenChange={setDictOpen}>
             <DialogContent className="max-h-[92vh] max-w-2xl overflow-y-auto nice-scroll">
               <DialogHeader className="text-right">
                 <DialogTitle className="flex items-center gap-2 text-base">
                   <Ear size={16} className="text-emerald-600" />
-                  دیکتهٔ واژگان بانک آزمون
+                  دیکتهٔ واژگان — دامنه را انتخاب کن
                 </DialogTitle>
               </DialogHeader>
+              <div className="flex flex-wrap gap-2" role="group" aria-label="دامنهٔ دیکته">
+                <button
+                  onClick={() => setDictScope("bank")}
+                  aria-pressed={dictScope === "bank"}
+                  className={`rounded-xl px-3 py-2 text-[12px] font-bold transition-[background-color,color,border-color,box-shadow,transform] active:scale-[0.96] ${
+                    dictScope === "bank"
+                      ? "border border-emerald-300 bg-emerald-50 text-emerald-700 shadow-sm shadow-emerald-500/20"
+                      : "border c-card text-stone-500 hover:text-emerald-600"
+                  }`}
+                >
+                  بانک آزمون · {faNum(examDictCount)}
+                </button>
+                {FINAL_GRADES.map((g) => {
+                  const t = themeOf(g.accent);
+                  const active = dictScope === g.id;
+                  return (
+                    <button
+                      key={g.id}
+                      onClick={() => setDictScope(g.id)}
+                      aria-pressed={active}
+                      className={`rounded-xl px-3 py-2 text-[12px] font-bold transition-[background-color,color,border-color,box-shadow,transform] active:scale-[0.96] ${
+                        active
+                          ? `${t.border} ${t.bgSoft} ${t.text} shadow-sm`
+                          : "border c-card text-stone-500 hover:text-stone-700"
+                      }`}
+                    >
+                      {g.label} · {faNum(gradeDictPools[g.id].words.length)}
+                    </button>
+                  );
+                })}
+              </div>
               {examDictSource && (
-                <DictationTab source={examDictSource} onExit={() => setDictOpen(false)} exitLabel="بازگشت به آزمون جامع" />
+                <DictationTab key={dictScope} source={examDictSource} onExit={() => setDictOpen(false)} exitLabel="بازگشت به آزمون جامع" />
               )}
             </DialogContent>
           </Dialog>

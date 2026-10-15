@@ -32,6 +32,8 @@ const p = new PrismaClient();
         "my_words_open", "my_words_flashcards_start", "star_word",
         // task 189: the result-card painter QA completes a real 10-question exam
         "exam_done", "quiz_done",
+        // task 200: the exam dictation CTA QA click fires the funnel opener
+        "exam_dictation_start",
         // task 190: the dictation-tab QA path (tile + streak bar probes) leaves
         // dictation_done completions and the freeze_badge grant behind
         "dictation_done", "freeze_badge"].includes(e.name)) {
