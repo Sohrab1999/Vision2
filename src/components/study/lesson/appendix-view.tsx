@@ -1,9 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { Library, Volume2, SpellCheck2, BookA, Table2, BookOpenCheck } from "lucide-react";
+import { Library, Volume2, SpellCheck2, BookA, Table2, BookOpenCheck, Users } from "lucide-react";
 import { irregularVerbs, vowelPhonemes, consonantPhonemes, abbreviations, partsOfSpeech } from "@/data/appendix";
+import { WORD_FAMILY_TABLES, WORD_FAMILY_TOTAL } from "@/data/word-families";
+import { faNum } from "@/lib/study-theme";
 import BookletGrammarView from "./booklet-grammar-view";
+import SpeakButton from "../shared/speak-button";
 
 type SubTab = "verbs" | "phonetics" | "pos" | "abbrev" | "grammar";
 
@@ -17,6 +20,8 @@ const subTabs: { key: SubTab; label: string; icon: React.ElementType }[] = [
 
 export default function AppendixView({ topicId }: { topicId?: string }) {
   const [tab, setTab] = useState<SubTab>("grammar");
+  // راند ۲۲۲ — فیلترِ پایهٔ جدول‌های «اجزای کلماتی» در زیرتبِ pos
+  const [posGrade, setPosGrade] = useState<"همه" | "دهم" | "یازدهم" | "دوازدهم">("همه");
   // لنگرِ عمیقِ «درسنامهٔ جامع» (راند ۲۲۱) — یک‌بارِ مصرف: BookletGrammarView
   // پس از نخستین تلاشِ اسکرول (موفق یا شناسهٔ نامعتبر) onFocusDone را صدا
   // می‌زند و لنگر پاک می‌شود؛ جابه‌جاییِ بعدیِ بینِ زیرتاب‌ها دوباره پرش نمی‌کند.
@@ -122,21 +127,117 @@ export default function AppendixView({ topicId }: { topicId?: string }) {
         </div>
       )}
 
-      {tab === "pos" && (
-        <div className="grid gap-3 sm:grid-cols-2">
-          {partsOfSpeech.map((p, i) => (
-            <div key={p.name} className="rounded-2xl border c-card p-4">
-              <h2 className="mb-1 flex items-center gap-2 text-[14px] font-extrabold text-violet-700">
-                <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-violet-100 text-[12px] font-black">
-                  {i + 1}
-                </span>
-                {p.name}
-              </h2>
-              <p className="text-[13px] leading-7 text-stone-600">{p.desc}</p>
+      {tab === "pos" && (() => {
+        const gradeCounts = { همه: WORD_FAMILY_TOTAL, دهم: 0, یازدهم: 0, دوازدهم: 0 } as Record<string, number>;
+        for (const t of WORD_FAMILY_TABLES) gradeCounts[t.grade] += t.families.length;
+        const tables = posGrade === "همه" ? WORD_FAMILY_TABLES : WORD_FAMILY_TABLES.filter((t) => t.grade === posGrade);
+        return (
+          <div className="space-y-4">
+            <div className="grid gap-3 sm:grid-cols-2">
+              {partsOfSpeech.map((p, i) => (
+                <div key={p.name} className="rounded-2xl border c-card p-4">
+                  <h2 className="mb-1 flex items-center gap-2 text-[14px] font-extrabold text-violet-700">
+                    <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-violet-100 text-[12px] font-black">
+                      {i + 1}
+                    </span>
+                    {p.name}
+                  </h2>
+                  <p className="text-[13px] leading-7 text-stone-600">{p.desc}</p>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      )}
+
+            {/* اجزای کلماتی از خودِ جزوه‌های جامع (راند ۲۲۲) */}
+            <div className="rounded-2xl border c-card p-5 shadow-sm">
+              <div className="mb-2 flex flex-wrap items-center gap-2.5">
+                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-100 text-violet-700">
+                  <Users size={19} />
+                </span>
+                <h2 className="text-[16px] font-extrabold text-stone-800">خانوادهٔ واژه‌ها از خودِ جزوه‌ها (اجزای کلماتی)</h2>
+                <span className="rounded-full bg-violet-100 px-2.5 py-1 text-[11.5px] font-black text-violet-700">
+                  {faNum(WORD_FAMILY_TOTAL)} خانواده · {faNum(WORD_FAMILY_TABLES.length)} جدول
+                </span>
+              </div>
+              <p className="text-[13px] leading-7 text-stone-500">
+                از خودِ جزوه‌ها: «مهم‌ترین اجزای کلماتیِ (Parts of Speech) کنکور به ترتیبِ درس آمده‌اند که در افزایشِ دایرهٔ واژگان
+                و برای ترجمه و فهمِ زبان بسیار مفید می‌باشند.» ترتیبِ ستون‌ها و محتوا عینِ جزوه است؛ خانهٔ خالیِ جزوه با خطِ تیره
+                رندر می‌شود و چیزی به‌جایش ساخته نشده است.
+              </p>
+              <div className="mt-3 flex flex-wrap items-center gap-2" role="group" aria-label="فیلتر پایهٔ جدول‌های اجزای کلماتی">
+                {(["همه", "دهم", "یازدهم", "دوازدهم"] as const).map((g) => (
+                  <button
+                    key={g}
+                    onClick={() => setPosGrade(g)}
+                    aria-pressed={posGrade === g}
+                    className={`rounded-full px-3.5 py-2 text-[12px] font-bold transition-[background-color,color,box-shadow] ${
+                      posGrade === g
+                        ? "bg-violet-600 text-white shadow-sm"
+                        : "bg-stone-100 text-stone-500 hover:bg-stone-200 hover:text-stone-700"
+                    }`}
+                  >
+                    {g}
+                    <span className="ms-1.5 text-[10.5px] font-black opacity-80">{faNum(gradeCounts[g])}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {tables.map((t, ti) => (
+              <div key={`${t.vision}-${t.lesson}`} className="overflow-hidden rounded-2xl border c-card shadow-sm">
+                <div className="flex flex-wrap items-center gap-2 border-b border-stone-100 bg-stone-50 px-4 py-3">
+                  <span className="rounded-lg bg-violet-100 px-2 py-1 text-[11.5px] font-black text-violet-700">{t.grade}</span>
+                  <h3 className="text-[14px] font-extrabold text-stone-800">اجزای کلماتیِ {t.lesson}</h3>
+                  <span className="en-text text-[11px] font-bold text-stone-500" dir="ltr">{t.vision}</span>
+                  <span className="c-track-70 ms-auto rounded-full px-2.5 py-1 text-[11px] font-black text-stone-600">
+                    {faNum(t.families.length)} خانواده
+                  </span>
+                </div>
+                <div className="max-h-[52vh] overflow-auto nice-scroll">
+                  <table className="w-full text-sm">
+                    <thead className="sticky top-0 z-10">
+                      <tr className="bg-violet-600 text-white">
+                        <th className="px-3 py-2.5 text-right text-[12px]">معنی</th>
+                        <th className="en-text px-3 py-2.5 text-[12px]" dir="ltr">Noun</th>
+                        <th className="en-text px-3 py-2.5 text-[12px]" dir="ltr">Verb</th>
+                        <th className="en-text px-3 py-2.5 text-[12px]" dir="ltr">Adjective</th>
+                        <th className="en-text px-3 py-2.5 text-[12px]" dir="ltr">Adverb</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {t.families.map((f, fi) => (
+                        <tr key={`${t.vision}-${t.lesson}-${fi}`} className={fi % 2 === 0 ? "bg-white" : "bg-stone-50"}>
+                          <td className="px-3 py-2 text-[12.5px] font-semibold text-stone-700">
+                            {f.fa || <span className="font-normal text-stone-300">—</span>}
+                          </td>
+                          <td className="px-3 py-2">
+                            {f.noun ? (
+                              <span className="flex items-center gap-1.5">
+                                <span className="en-text font-black text-violet-700" dir="ltr">{f.noun}</span>
+                                <SpeakButton text={f.noun} size="sm" />
+                              </span>
+                            ) : (
+                              <span className="text-stone-300">—</span>
+                            )}
+                          </td>
+                          <td className="en-text px-3 py-2 text-[12.5px] text-stone-600" dir="ltr">
+                            {f.verb || <span className="text-stone-300">—</span>}
+                          </td>
+                          <td className="en-text px-3 py-2 text-[12.5px] text-stone-600" dir="ltr">
+                            {f.adjective || <span className="text-stone-300">—</span>}
+                          </td>
+                          <td className="en-text px-3 py-2 text-[12.5px] text-stone-600" dir="ltr">
+                            {f.adverb || <span className="text-stone-300">—</span>}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            ))}
+          </div>
+        );
+      })()}
 
       {tab === "abbrev" && (
         <div className="rounded-2xl border c-card p-4">
