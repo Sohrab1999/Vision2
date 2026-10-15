@@ -9,7 +9,7 @@ import { TOTAL_VOCABULARY, LESSONS_META } from "@/data/lesson-meta";
 // ترتیبِ ستونی جدول‌ها را می‌فهمد و جابه‌جایی‌های شناخته‌شده با اووررایدِ
 // دستیِ بازبینی‌شده ترمیم شده‌اند.
 
-const LESSON10_COUNT = 922;
+const LESSON10_COUNT = 988;
 const LESSON11_COUNT = 454;
 const LESSON12_COUNT = 556;
 
@@ -26,7 +26,7 @@ describe("جزوه‌های متوسطهٔ اول — واژگانِ کاملِ 
     expect(vocabOf(10).length).toBe(LESSON10_COUNT);
     expect(vocabOf(11).length).toBe(LESSON11_COUNT);
     expect(vocabOf(12).length).toBe(LESSON12_COUNT);
-    expect(TOTAL_VOCABULARY).toBe(3566);
+    expect(TOTAL_VOCABULARY).toBe(4032);
     expect(LESSONS_META.reduce((s, l) => s + l.vocabCount, 0)).toBe(
       TOTAL_VOCABULARY
     );

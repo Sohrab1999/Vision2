@@ -20,10 +20,10 @@ describe("دونات پیشرفت واژگان — قفسهٔ دوازده‌د�
     useStudy.setState({ known: {}, results: {} });
   });
 
-  it("تازه‌کار: صفرِ صادق — بدونِ کمان، «۰ از ۳۵۶۶ واژه»، ۱۲ ردیفِ لِجند با نوارِ «۰٪»", () => {
+  it("تازه‌کار: صفرِ صادق — بدونِ کمان، «۰ از ۴۰۳۲ واژه»، ۱۲ ردیفِ لِجند با نوارِ «۰٪»", () => {
     render(<VocabDonut />);
     expect(screen.getByLabelText(/دونات پیشرفت واژگان/)).toBeInTheDocument();
-    expect(screen.getAllByText(/از ۳۵۶۶ واژه/).length).toBeGreaterThanOrEqual(1); // زیرنویس + شمارندهٔ مرکزی
+    expect(screen.getAllByText(/از ۴۰۳۲ واژه/).length).toBeGreaterThanOrEqual(1); // زیرنویس + شمارندهٔ مرکزی
     // بدونِ کمان: فقط circleِ زمینه
     const svg = screen.getByLabelText(/دونات پیشرفت واژگان/);
     expect(svg.querySelectorAll("circle")).toHaveLength(1);
@@ -31,7 +31,7 @@ describe("دونات پیشرفت واژگان — قفسهٔ دوازده‌د�
     expect(screen.getAllByRole("button", { name: /رفتن به واژگان درس/ })).toHaveLength(12);
   });
 
-  it("seed واژه‌های بلدم در سه پایه → سه کمان با رنگِ خانواده + مخرجِ کلِ کتاب (۳۵۶۶)", () => {
+  it("seed واژه‌های بلدم در سه پایه → سه کمان با رنگِ خانواده + مخرجِ کلِ کتاب (۴۰۳۲)", () => {
     // درس ۷ (نارنجی): ۳ واژه — درس ۸ (نیلی): ۲ واژه — درس ۱ (زمردی): ۱ واژه
     const l7 = lessons.find((l) => l.id === 7)!.vocabulary.slice(0, 3).map((w) => w.en);
     const l8 = lessons.find((l) => l.id === 8)!.vocabulary.slice(0, 2).map((w) => w.en);
@@ -43,7 +43,7 @@ describe("دونات پیشرفت واژگان — قفسهٔ دوازده‌د�
     useStudy.setState({ known });
 
     render(<VocabDonut />);
-    const svg = screen.getByLabelText(/دونات پیشرفت واژگان/); // ۶/۳۵۶۶ → ۰٫۲ → گِرد به ۰ (کمان‌ها مستقل از درصد می‌آیند)
+    const svg = screen.getByLabelText(/دونات پیشرفت واژگان/); // ۶/۴۰۳۲ → ۰٫۲ → گِرد به ۰ (کمان‌ها مستقل از درصد می‌آیند)
     // سه کمانِ فعال + circleِ زمینه
     const arcs = svg.querySelectorAll("circle[stroke-dasharray]");
     expect(arcs).toHaveLength(3);

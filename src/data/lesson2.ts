@@ -240,6 +240,8 @@ const vocabulary = [
   W("blood", "خون"),
   W("disease", "بیماری، مرض"),
   W("smart phone", "تلفن هوشمند"),
+  // — واژگان جامع (راند ۲۱۱، نجاتِ رسوبِ گیت‌شده)
+  W("social services", "خدمات اجتماعی"),
 ];
 
 const conversation = {

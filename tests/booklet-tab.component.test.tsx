@@ -46,7 +46,7 @@ describe("lesson-view booklet tab gating", () => {
     const nav = second.container.querySelector('nav[aria-label="بخش‌های درس"]');
     expect(nav?.textContent).not.toContain("جزوه");
     second.unmount();
-  });
+  }, 20000);
 
   it("clicking the tab renders booklet vocab rows with real booklet content", async () => {
     // رندرِ کاملِ ۴۰ بخشِ جزوه در jsdom سنگین است — تایم‌اوتِ سخاوتمندانه

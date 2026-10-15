@@ -12,7 +12,7 @@ import { TOTAL_VOCABULARY, LESSONS_META } from "@/data/lesson-meta";
 // booklet-extract/jame*-residue.txt برای راندهای بعدیِ کرون مانده است.
 
 const COUNTS: Record<number, number> = {
-  2: 233, 4: 232, 5: 200, 6: 149, 7: 100, 8: 140, 9: 176, 10: 922,
+  2: 234, 4: 341, 5: 303, 6: 246, 7: 105, 8: 169, 9: 232, 10: 988,
 };
 
 function vocabOf(id: number) {
@@ -28,7 +28,7 @@ describe("واژگانِ جامعِ گیت‌شده (راند ۲۱۰)", () => {
     for (const [id, count] of Object.entries(COUNTS)) {
       expect(vocabOf(Number(id)).length).toBe(count);
     }
-    expect(TOTAL_VOCABULARY).toBe(3566);
+    expect(TOTAL_VOCABULARY).toBe(4032);
     expect(LESSONS_META.reduce((s, l) => s + l.vocabCount, 0)).toBe(
       TOTAL_VOCABULARY
     );
