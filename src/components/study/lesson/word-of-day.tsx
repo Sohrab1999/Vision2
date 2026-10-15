@@ -12,26 +12,13 @@ import { lessons } from "@/data";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum, posLabel } from "@/lib/study-theme";
+import { lessonOrdinalFa } from "@/data/lesson-meta";
 import { buildSynAntIndex, synAntPairsFor } from "@/lib/syn-ant-lookup";
 import { speak } from "@/lib/speak";
 import SpeakButton from "../shared/speak-button";
 
-// round 204: the shelf grew to 12 lessons but the label only knew three
-// ordinals — every lesson ≥4 wrongly said «درس سوم». Full map, same voice.
-const LESSON_ORDINAL_FA: Record<number, string> = {
-  1: "اول",
-  2: "دوم",
-  3: "سوم",
-  4: "چهارم",
-  5: "پنجم",
-  6: "ششم",
-  7: "هفتم",
-  8: "هشتم",
-  9: "نهم",
-  10: "دهم",
-  11: "یازدهم",
-  12: "دوازدهم",
-};
+// راند ۲۰۵: نقشهٔ عددِ اصلیِ محلی حذف شد — «درس هفتم» و بقیه از کمکیِ مشترکِ
+// lesson-meta می‌آید (تکِ منبعِ حقیقت؛ همان نقشه‌ای که کتاب‌خانه و فوتر می‌خوانند)
 
 export default function WordOfDay() {
   const openLessonTab = useStudy((s) => s.openLessonTab);
@@ -97,7 +84,7 @@ export default function WordOfDay() {
               </span>
             )}
             <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-[10.5px] font-bold text-emerald-800">
-              درس {LESSON_ORDINAL_FA[pick.lessonId] ?? faNum(pick.lessonId)}
+              درس {lessonOrdinalFa(pick.lessonId)}
             </span>
           </div>
           <p className="mt-1 truncate text-[13.5px] font-bold text-stone-600">{pick.fa}</p>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Search, X, BookMarked, CheckCircle2, CircleDashed, AlarmClock, SearchX, Download, Star } from "lucide-react";
+import { Search, X, BookMarked, CheckCircle2, CircleDashed, AlarmClock, SearchX, Download, Star, ArrowLeftRight } from "lucide-react";
 import { lessons } from "@/data";
 import { useStudy, wordKey } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -13,8 +13,8 @@ import { buildSynAntIndex, synAntPairsFor, matchesViaPairs } from "@/lib/syn-ant
 import { speak } from "@/lib/speak";
 import SpeakButton from "../shared/speak-button";
 
-// state filter values
-type StateFilter = "all" | "known" | "unknown" | "due";
+// state filter values — «paired» (راند ۲۰۵): فقط واژه‌های جفت‌دارِ جزوه
+type StateFilter = "all" | "known" | "unknown" | "due" | "paired";
 
 export default function DictionaryView() {
   const [query, setQuery] = useState("");
@@ -52,6 +52,25 @@ export default function DictionaryView() {
     }).length;
   }, [allWords, srs, mounted]);
 
+  // «جفت‌دار» (پیشنهادِ ۲۰۳-③، راند ۲۰۵): واژه‌هایی که حداقل یک جفتِ مترادف/متضاد
+  // در جزوه دارند — دسترس‌پذیریِ جفت تابعِ خودِ واژه است (هم‌نام‌ها هر دو ردیف را
+  // می‌بینند)، پس مجموعهٔ نرمال‌شدهٔ en کافی است؛ یک‌بار می‌سازیم، همه‌جا می‌خوانیم.
+  // شمارنده «کارت» می‌شمارد نه واژهٔ یکتا — هم‌نام‌ها دو کارت‌اند و badge باید
+  // با «N واژه یافت شد» یکی بخواند (همان قرارداد بقیهٔ چیپ‌ها).
+  const pairedSet = useMemo(() => {
+    const set = new Set<string>();
+    for (const w of allWords) {
+      const k = w.en.trim().toLowerCase();
+      if (set.has(k)) continue;
+      if (synAntPairsFor(pairIndex, w.en).length > 0) set.add(k);
+    }
+    return set;
+  }, [allWords, pairIndex]);
+  const pairedCount = useMemo(
+    () => allWords.reduce((n, w) => n + (pairedSet.has(w.en.trim().toLowerCase()) ? 1 : 0), 0),
+    [allWords, pairedSet]
+  );
+
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     const now = Date.now();
@@ -64,12 +83,13 @@ export default function DictionaryView() {
         const it = srs[wordKey(w.lessonId, w.en)];
         if (!it || it.dueAt > now) return false;
       }
+      if (stateFilter === "paired" && !pairedSet.has(w.en.trim().toLowerCase())) return false;
       if (!q) return true;
       if (w.en.toLowerCase().includes(q) || w.fa.includes(query.trim())) return true;
       // جستجوی ازراهِجفت: «lend» کارتِ «borrow» را هم می‌آورد (تسک ۲۰۳)
       return matchesViaPairs(pairIndex, w.en, q);
     });
-  }, [allWords, query, lessonFilter, stateFilter, known, srs, pairIndex]);
+  }, [allWords, query, lessonFilter, stateFilter, known, srs, pairIndex, pairedSet]);
 
   const stateChips: { id: StateFilter; label: string; icon?: React.ElementType; cls: string; count: number }[] = [
     {
@@ -98,6 +118,13 @@ export default function DictionaryView() {
       icon: AlarmClock,
       cls: "bg-rose-500",
       count: dueCount,
+    },
+    {
+      id: "paired",
+      label: "جفت‌دار",
+      icon: ArrowLeftRight,
+      cls: "bg-violet-600",
+      count: pairedCount,
     },
   ];
 
@@ -207,7 +234,7 @@ export default function DictionaryView() {
         </div>
       </div>
 
-      <p className="text-[12px] text-stone-500">{filtered.length} واژه یافت شد</p>
+      <p className="text-[12px] text-stone-500">{faNum(filtered.length)} واژه یافت شد</p>
 
       {mounted && filtered.length === 0 && (
         <div className="dict-empty flex flex-col items-center gap-2 rounded-2xl border-2 border-dashed border-stone-200 c-stone-60 px-4 py-10 text-center">

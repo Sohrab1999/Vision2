@@ -6,7 +6,10 @@ import { Search, CheckCircle2, Circle, Layers, X, Star } from "lucide-react";
 import type { LessonData } from "@/lib/study-types";
 import { useStudy, wordKey } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
-import { posLabel, themeOf } from "@/lib/study-theme";
+import { posLabel, themeOf, faNum } from "@/lib/study-theme";
+import { buildSynAntIndex, synAntPairsFor } from "@/lib/syn-ant-lookup";
+import { speak } from "@/lib/speak";
+import { lessons } from "@/data";
 import Flashcards from "./flashcards";
 
 type Filter = "all" | "known" | "unknown";
@@ -35,6 +38,10 @@ export default function VocabTab({
   }, [startSmart, consumeFlashIntent]);
 
   const t = themeOf(lesson.color);
+
+  // راند ۲۰۵: جفت‌های مترادف/متضاد جزوه روی کارت‌های تبِ واژگان — همان نمایهٔ
+  // مشترک دیکشنری/WOTD/فلش‌کارت (تسک‌های ۲۰۳/۲۰۴)؛ یک‌بار روی همهٔ درس‌ها
+  const pairIndex = useMemo(() => buildSynAntIndex(lessons), []);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -160,6 +167,39 @@ export default function VocabTab({
                   </button>
                 </div>
                 <div className="mt-1 text-[13px] leading-6 text-stone-600">{w.fa}</div>
+                {(() => {
+                  const pairs = synAntPairsFor(pairIndex, w.en);
+                  if (pairs.length === 0) return null;
+                  return (
+                    <div className="mt-1 flex flex-wrap items-center gap-1">
+                      {pairs.slice(0, 3).map((p) => (
+                        <button
+                          key={`${p.kind}-${p.other}-${p.lessonId}`}
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation(); // کارت کلیکِ خودش را دارد: بلدم‌کردن
+                            void speak(p.other, 0.95);
+                          }}
+                          title="روخوانی جفت"
+                          aria-label={`${p.kind === "syn" ? "مترادف" : "متضاد"}ِ ${w.en}: ${p.other} — روخوانی`}
+                          className={`dict-pair-chip inline-flex items-center gap-0.5 rounded-md border px-1.5 py-0.5 text-[10.5px] font-bold transition-[background-color,color,border-color,transform] active:scale-[0.96] ${
+                            p.kind === "syn"
+                              ? "border-emerald-200 bg-emerald-50/60 text-emerald-700"
+                              : "border-rose-200 bg-rose-50/60 text-rose-700"
+                          }`}
+                        >
+                          <span aria-hidden className="font-black">{p.kind === "syn" ? "≈" : "↔"}</span>
+                          <span dir="ltr">{p.other}</span>
+                        </button>
+                      ))}
+                      {pairs.length > 3 && (
+                        <span className="rounded-md bg-stone-100 px-1.5 py-0.5 text-[10.5px] font-bold text-stone-500">
+                          +{faNum(pairs.length - 3)}
+                        </span>
+                      )}
+                    </div>
+                  );
+                })()}
               </div>
               {isKnown ? (
                 <CheckCircle2 size={17} className={`shrink-0 ${t.text}`} />
