@@ -13,7 +13,7 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { cleanup, render, screen, fireEvent } from "@testing-library/react";
 
-import BookletGrammarView from "@/components/study/lesson/booklet-grammar-view";
+import BookletGrammarView, { normTypeAnswer } from "@/components/study/lesson/booklet-grammar-view";
 import {
   BOOKLET_GRAMMAR_TOPICS,
   BOOKLET_GRAMMAR_SOURCE,
@@ -319,6 +319,67 @@ describe("booklet-grammar-r214 — دادهٔ درسنامهٔ جامع", () => 
       }
     }
   });
+
+  // ------------------------------------------------ راند ۲۱۸ — تمرینِ تایپی
+  it("r218 پینِ تمرین‌های تایپی — شمارشِ هر موضوع، فقط سه موضوعِ صاحبِ بخشِ تولیدی", () => {
+    const counts: Record<string, number> = {};
+    for (const t of ALL) counts[t.id] = t.typeDrill?.length ?? 0;
+    expect(counts["bg-quantifiers"]).toBe(20); // many/much + a few/a little (کلید ص۱۷۹)
+    expect(counts["bg-present-perfect"]).toBe(22); // ۱۲ شکلِ فعل + ۱۰ for/since (کلید ص۱۸۷)
+    expect(counts["bg-first-conditional"]).toBe(10); // شکلِ فعل (کلید ص۱۹۶)
+    for (const t of ALL) {
+      if (!["bg-quantifiers", "bg-present-perfect", "bg-first-conditional"].includes(t.id)) {
+        expect(t.typeDrill ?? []).toHaveLength(0);
+      }
+    }
+  });
+
+  it("r218 پینِ وفاداریِ کلیدهای تایپی — عینِ پاسخنامه‌های ص۱۷۹/ص۱۸۷/ص۱۹۶", () => {
+    const ans = (id: string, i: number) => ALL.find((x) => x.id === id)!.typeDrill![i].answer;
+    // کمّی‌ها (ص۱۷۹): ۱-many، ۲-much، ۳(گروه دوم)-a few، ۸(گروه دوم)-a little
+    expect(ans("bg-quantifiers", 0)).toBe("many");
+    expect(ans("bg-quantifiers", 1)).toBe("much");
+    expect(ans("bg-quantifiers", 10)).toBe("a few");
+    expect(ans("bg-quantifiers", 17)).toBe("a little");
+    // حال کامل (ص۱۸۷): ۱-didn’t play، ۱۲-has prevented، ۱۳(for/since)-for/since، ۱۶-since
+    expect(ans("bg-present-perfect", 0)).toBe("didn’t play");
+    expect(ans("bg-present-perfect", 11)).toBe("has prevented");
+    expect(ans("bg-present-perfect", 12)).toBe("for/since");
+    expect(ans("bg-present-perfect", 16)).toBe("since");
+    // شرطی نوع اول (ص۱۹۶): ۱-will stay، ۲-won’t shine، ۱۰-works
+    expect(ans("bg-first-conditional", 0)).toBe("will stay");
+    expect(ans("bg-first-conditional", 1)).toBe("won’t shine");
+    expect(ans("bg-first-conditional", 9)).toBe("works");
+  });
+
+  it("r218 سلامتِ تمرین‌های تایپی — پاسخِ غیرخالی، ساقهٔ لاتینِ جای‌خالی‌دار، گروه‌های task پشت‌سرهم", () => {
+    for (const t of ALL) {
+      for (let i = 0; i < (t.typeDrill?.length ?? 0); i++) {
+        const d = t.typeDrill![i];
+        expect(d.answer.trim().length).toBeGreaterThan(0);
+        expect(d.q).toMatch(/-{3,}/);
+        expect((d.q.match(/[A-Za-z]/g) ?? []).length).toBeGreaterThan(8);
+        if (i === 0) {
+          // اولین آیتمِ هر موضوع حتماً task دارد
+          expect(d.task).toBeDefined();
+        } else if (d.task !== undefined) {
+          // آیتمِ taskدار، گروهِ تازه است — taskِ تازه با قبلی یکی نیست
+          expect(d.task).not.toBe(t.typeDrill![i - 1].task);
+        }
+        // آیتمِ بدونِ task = ادامهٔ گروهِ قبلی — مجاز
+      }
+    }
+  });
+
+  it("r218 نرمال‌سازیِ پاسخ — فقط حروف/آپاستروف/فاصلهٔ «/»؛ بدونِ بخششِ غلطِ املایی", () => {
+    expect(normTypeAnswer("  Has Prevented ")).toBe("has prevented");
+    expect(normTypeAnswer("didn't play")).toBe(normTypeAnswer("didn’t play"));
+    expect(normTypeAnswer("for / since")).toBe("for/since");
+    expect(normTypeAnswer("WON’T   shine")).toBe(normTypeAnswer("won’t shine"));
+    // غلطِ املایی بخشش نمی‌شود
+    expect(normTypeAnswer("has prevent")).not.toBe(normTypeAnswer("has prevented"));
+    expect(normTypeAnswer("manymuch")).not.toBe("many");
+  });
 });
 
 describe("booklet-grammar-r214 — رندرِ زیرتابِ ضمیمه", () => {
@@ -378,6 +439,32 @@ describe("booklet-grammar-r214 — رندرِ زیرتابِ ضمیمه", () => 
     // از نو — همه پاک می‌شود
     fireEvent.click(screen.getByLabelText("پاک کردن پاسخ‌های آزمونک"));
     expect(screen.queryByText("۱ از ۱ درست")).toBeNull();
+  });
+
+  it("تمرینِ تایپی: پاسخِ غلط rose + نمایشِ پاسخِ درست؛ نرمال‌سازیِ پاسخِ درست emerald؛ «از نو» خالی می‌کند", () => {
+    renderTab();
+    fireEvent.click(screen.getByText("صفت‌های کمّی و شمارشی"));
+    // سؤالِ ۱: کلیدِ جزوه «many» است
+    const inp = screen.getByLabelText("پاسخ سؤال ۱ تمرین تایپی") as HTMLInputElement;
+    const check1 = screen.getByLabelText("بررسی سؤال ۱ تمرین تایپی");
+    // غلط — پیش از بررسی، دکمه روی ورودیِ خالی معلق است
+    expect(check1.hasAttribute("disabled")).toBe(true);
+    fireEvent.change(inp, { target: { value: "much" } });
+    expect(check1.hasAttribute("disabled")).toBe(false);
+    fireEvent.click(check1);
+    expect(screen.getByText("۰ از ۱ درست")).toBeTruthy();
+    expect(screen.getByText(/پاسخِ درست:/)).toBeTruthy();
+    expect(screen.getByText(/پاسخِ درست:/).textContent).toContain("many");
+    // ورودی بعد از بررسی معلق است
+    expect((screen.getByLabelText("پاسخ سؤال ۱ تمرین تایپی") as HTMLInputElement).disabled).toBe(true);
+    // از نو — همه پاک می‌شود
+    fireEvent.click(screen.getByLabelText("پاک کردن پاسخ‌های تمرین تایپی"));
+    expect(screen.queryByText("۰ از ۱ درست")).toBeNull();
+    // درست — با حروف بزرگ و فاصله‌های اضافی (نرمال‌سازی)
+    fireEvent.change(screen.getByLabelText("پاسخ سؤال ۱ تمرین تایپی"), { target: { value: "  MANY  " } });
+    fireEvent.click(screen.getByLabelText("بررسی سؤال ۱ تمرین تایپی"));
+    expect(screen.getByText("۱ از ۱ درست")).toBeTruthy();
+    expect(screen.queryByText(/پاسخِ درست:/)).toBeNull();
   });
 
   it("سرریزِ افقی ندارد در اندازهٔ موبایل (dark هم) — قراردادِ همیشگی", () => {

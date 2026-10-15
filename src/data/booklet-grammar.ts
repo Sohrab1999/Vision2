@@ -30,6 +30,16 @@ export interface BgDrill {
   answer: number; // ایندکس ۰-۳ — از کلیدِ خودِ جزوه
 }
 
+/** تمرینِ تایپی (راند ۲۱۸) — بخش‌های تولیدیِ آزمون‌های تشخیصیِ خودِ جزوه:
+ * ساقه با جای خالی و کلیدِ عینِ پاسخنامه؛ پاسخ با نرمال‌سازی (حروف بزرگ/کوچک،
+ * آپاستروف، فاصله‌های دورِ «/») مقایسه می‌شود. */
+export interface BgTypeDrill {
+  q: string;
+  /** دستورِ خودِ بخشِ جزوه (مثل «از for یا since استفاده کنید») — در UI فقط وقتی تغییر گروه می‌کند تکرار می‌شود */
+  task?: string;
+  answer: string; // کلیدِ خودِ جزوه
+}
+
 export interface BgTopic {
   id: string;
   /** جزوهٔ مبدأ — راند ۲۱۴: «دهم»؛ راند ۲۱۵: «یازدهم»؛ راند ۲۱۶: «دوازدهم» */
@@ -44,6 +54,7 @@ export interface BgTopic {
   tables?: BgTable[];
   examples?: BgExample[];
   drill?: BgDrill[];
+  typeDrill?: BgTypeDrill[];
 }
 
 export const BOOKLET_GRAMMAR_SOURCE =
@@ -788,6 +799,30 @@ export const BOOKLET_GRAMMAR_TOPICS: BgTopic[] = [
       { q: "If they have to choose a place to eat out, ------------- people will say that they love fast food.", options: ["plenty of", "much", "a lots of", "a little"], answer: 0 },
       { q: "It was a bad day for fishing. He caught very ------------- fish.", options: ["little", "much", "few", "a few"], answer: 2 },
     ],
+    typeDrill: [
+      // آزمون تشخیصی گرامر درس اول — بخشِ ۱ «از many یا much استفاده کنید» (ص۲۹) · کلید: پاسخنامهٔ ص۱۷۹
+      { q: "He doesn’t read very much. He doesn’t have ------------- books.", task: "از many یا much استفاده کرده و جاهای خالی را پر کنید.", answer: "many" },
+      { q: "How ------------- bread did your mother buy yesterday?", answer: "much" },
+      { q: "How ------------- players are there on a volleyball team?", answer: "many" },
+      { q: "My little brother doesn’t have ------------- money.", answer: "much" },
+      { q: "How ------------- people are coming to the party?", answer: "many" },
+      { q: "How ------------- milk should I get at the store?", answer: "much" },
+      { q: "She wasn’t hungry, so she didn’t eat -------------.", answer: "much" },
+      { q: "There aren’t ------------- hotels in this city.", answer: "many" },
+      { q: "Were there ------------- people on the bus?", answer: "many" },
+      { q: "Did ------------- students pass the exam?", answer: "many" },
+      // بخشِ ۲ «از a few و a little استفاده کنید» (ص۲۹) · کلید: پاسخنامهٔ ص۱۷۹
+      { q: "I can’t talk to you now. I’ve got ------------- things to do.", task: "از a few و a little استفاده کرده و جاهای خالی را پر کنید.", answer: "a few" },
+      { q: "I wrote ------------- letters to my friends last night.", answer: "a few" },
+      { q: "We have ------------- money, but we’re not rich.", answer: "a little" },
+      { q: "She went out ------------- minutes ago.", answer: "a few" },
+      { q: "Can I ask you ------------- questions?", answer: "a few" },
+      { q: "We took ------------- pictures when we were on vacation.", answer: "a few" },
+      { q: "They’re going away for ------------- days next month.", answer: "a few" },
+      { q: "I didn’t eat anything, but I drank ------------- water.", answer: "a little" },
+      { q: "I want ------------- sugar in my coffee.", answer: "a little" },
+      { q: "Everybody needs ------------- luck.", answer: "a little" },
+    ],
   },
   {
     id: "bg-numbers",
@@ -903,6 +938,32 @@ export const BOOKLET_GRAMMAR_TOPICS: BgTopic[] = [
       // از آزمون تشخیصی درس دوم، بخشِ ۶ (ص۷۵) · کلید: پاسخنامهٔ ص۱۹۱
       { q: "She told me her name, but I’ve ------------------------- it.", options: ["forget", "forgot", "forgotten", "have forgotten"], answer: 2 },
       { q: "For years he’s ------------------------- that he will be a successful businessman.", options: ["believe", "believed", "to believe", "has believed"], answer: 1 },
+    ],
+    typeDrill: [
+      // آزمون تشخیصی گرامر درس دوم — بخشِ ۳ «شکل صحیح افعال داخل پرانتز (حال کامل یا گذشتهٔ ساده)» (ص۶۳) · کلید: پاسخنامهٔ ص۱۸۷
+      { q: "We ----------------------------------------- (not play) football yesterday.", task: "شکل صحیح افعال داخل پرانتز را بنویسید (حال کامل یا گذشتهٔ ساده).", answer: "didn’t play" },
+      { q: "I ----------------------------------------- (lose) my keys. I can’t find them.", answer: "have lost" },
+      { q: "No, he ----------------------------------------- (not answer) yet. He is a lazy boy.", answer: "hasn’t answered" },
+      { q: "Ahmad is late; I hope he ----------------------------------------- (not have) an accident.", answer: "hasn’t had" },
+      { q: "My uncle travels a lot. He ----------------------------------------- (visit) many countries.", answer: "has visited" },
+      { q: "Yesterday, my brother ----------------------------------------- (repair) the car and washed it.", answer: "repaired" },
+      { q: "Last Monday the teacher ----------------------------------------- (ask) us to check our exercises.", answer: "asked" },
+      { q: "I live in Tehran now, but I ----------------------------------------- (live) in Rasht for many years.", answer: "have lived" },
+      { q: "My friend is a painter. He ----------------------------------------- (win) many prizes for his paintings.", answer: "has won" },
+      { q: "During the last summer holidays, I ----------------------------------------- (spend) one week in Turkey.", answer: "spent" },
+      { q: "My father is sixty years old and he ----------------------------------------- (never drive) a car in his whole life.", answer: "has never driven" },
+      { q: "Snow -------------------------------- (prevent) us from travelling since last Friday. We can’t go anywhere.", answer: "has prevented" },
+      // بخشِ ۱ «از for یا since استفاده کنید» (ص۶۳) · کلید: پاسخنامهٔ ص۱۸۷
+      { q: "My sister has been sick ------------- a long time. She has been in the hospital ------------- January.", task: "از for یا since استفاده کرده و جاهای خالی را پر کنید.", answer: "for/since" },
+      { q: "Nobody lives in those houses. They have been empty ------------- many years.", answer: "for" },
+      { q: "I have been interested in computer technology ------------- four years.", answer: "for" },
+      { q: "My father is in his office. He has been there ------------- 8 o’clock.", answer: "since" },
+      { q: "He has stopped smoking ------------- the birth of his baby.", answer: "since" },
+      { q: "My parents have been married ------------- 20 years.", answer: "for" },
+      { q: "We have lived in Shiraz ------------- ten years ago.", answer: "since" },
+      { q: "We have known each other ------------- 15 years.", answer: "for" },
+      { q: "I’ve painted two rooms ------------- lunchtime.", answer: "since" },
+      { q: "He has been in China ------------- two weeks.", answer: "for" },
     ],
   },
   // ================================================ یازدهم — p۶۵-۶۷
@@ -1036,6 +1097,19 @@ export const BOOKLET_GRAMMAR_TOPICS: BgTopic[] = [
       // از آزمون تشخیصی درس سوم، بخشِ ۷ (ص۱۱۰) · کلید: پاسخنامهٔ ص۲۰۱
       { q: "I’ll ------------------------------- alone if you don’t come here.", options: ["will be", "am", "be", "may be"], answer: 2 },
       { q: "Will you be successful in your life if you ------------------------------- hard?", options: ["don’t work", "won’t work", "didn’t work", "wouldn’t work"], answer: 0 },
+    ],
+    typeDrill: [
+      // آزمون تشخیصی گرامر درس سوم — بخشِ ۱ «شکل صحیح افعال داخل پرانتز» (ص۱۰۰) · کلید: پاسخنامهٔ ص۱۹۶
+      { q: "If it rains, we -------------------------------- (stay) at home.", task: "شکل صحیح افعال داخل پرانتز را بنویسید.", answer: "will stay" },
+      { q: "If it rains, the sun -------------------------------- (not shine).", answer: "won’t shine" },
+      { q: "I’ll -------------------------------- (be) very happy if you pass your exam.", answer: "be" },
+      { q: "If I -------------------------------- (not be) busy, I’ll come and pick you up.", answer: "am not" },
+      { q: "You will lose your job if you -------------------------------- (be) late again.", answer: "are" },
+      { q: "I will go to the doctor’s if you -------------------------------- (come) with me.", answer: "come" },
+      { q: "If you -------------------------------- (not slow) down, you will have an accident.", answer: "don’t slow" },
+      { q: "If the questions -------------------------------- (be) easy enough, everyone will pass the test.", answer: "are" },
+      { q: "My boss -------------------------------- (make) a good decision if he has all the information.", answer: "will make" },
+      { q: "If everything -------------------------------- (work) out like I think, the business will be a great success.", answer: "works" },
     ],
   },
   // ================================================ یازدهم — p۹۵

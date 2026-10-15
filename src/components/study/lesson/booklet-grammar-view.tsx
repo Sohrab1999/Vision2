@@ -12,6 +12,7 @@ import { useState } from "react";
 import {
   BookOpenCheck,
   ChevronDown,
+  Keyboard,
   Lightbulb,
   ListOrdered,
   MoveLeft,
@@ -103,8 +104,9 @@ export default function BookletGrammarView() {
         <p className="mt-1 text-[13px] leading-7 text-stone-600 dark:text-stone-300">
           {faNum(BOOKLET_GRAMMAR_TOPICS.length)} موضوع در {faNum(groups.length)} جزوه:
           قاعده‌ها، نکته‌ها، جدول‌ها و مثال‌های ترجمه‌دار — دقیقاً همان‌طور که جزوه‌ها
-          تدریس کرده‌اند. مثال‌های انگلیسی را می‌شنوی و آزمونکِ هر موضوع کلیدِ خودش
-          را دارد. پایهٔ دهم بنیان‌های هفتم تا نهم را مرور می‌کند و پایه‌های یازدهم
+          تدریس کرده‌اند. مثال‌های انگلیسی را می‌شنوی، آزمونکِ هر موضوع کلیدِ خودش را
+          دارد و تمرینِ تایپیِ بخش‌های تولیدی هم با پاسخِ خودِ جزوه بررسی می‌شود.
+          پایهٔ دهم بنیان‌های هفتم تا نهم را مرور می‌کند و پایه‌های یازدهم
           و دوازدهم درسنامه‌های درس‌های خودشان را.
         </p>
       </div>
@@ -264,6 +266,7 @@ function TopicCard({
           )}
 
           <TopicDrill topic={topic} />
+          <TopicTypeDrill topic={topic} />
         </div>
       )}
     </div>
@@ -346,3 +349,113 @@ function TopicDrill({ topic }: { topic: BgTopic }) {
   );
 }
 
+
+/** نرمال‌سازیِ پاسخِ تایپی — فقط حروف بزرگ/کوچک، آپاستروف، فاصله‌های دورِ «/» و فاصله‌های اضافی */
+export function normTypeAnswer(s: string): string {
+  return s
+    .trim()
+    .toLowerCase()
+    .replace(/[\u2019\u2018']/g, "'")
+    .replace(/\s*\/\s*/g, "/")
+    .replace(/\s+/g, " ");
+}
+
+/** تمرینِ تایپیِ خودِ جزوه (راند ۲۱۸) — بخش‌های تولیدیِ آزمون‌های تشخیصی:
+ * ورودیِ آزاد با کلیدِ عینِ پاسخنامه؛ هیچ نوشتنی در استورِ یادگیری نیست. */
+function TopicTypeDrill({ topic }: { topic: BgTopic }) {
+  const [vals, setVals] = useState<Record<number, string>>({});
+  const [checked, setChecked] = useState<Record<number, boolean>>({});
+  if (!topic.typeDrill?.length) return null;
+  const answered = Object.keys(checked).length;
+  const correct = topic.typeDrill.reduce(
+    (n, d, i) => n + (checked[i] && normTypeAnswer(vals[i] ?? "") === normTypeAnswer(d.answer) ? 1 : 0),
+    0,
+  );
+  return (
+    <section className="rounded-xl border border-amber-200 bg-amber-50/60 p-3 dark:border-amber-900 dark:bg-amber-950/30">
+      <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+        <h4 className="flex items-center gap-1.5 text-[13px] font-extrabold text-amber-800 dark:text-amber-300">
+          <Keyboard size={15} />
+          تمرینِ تایپیِ خودِ جزوه — {faNum(topic.typeDrill.length)} سؤال
+        </h4>
+        <div className="flex items-center gap-2">
+          {answered > 0 && (
+            <span className="text-[12px] font-bold text-amber-700 dark:text-amber-300">
+              {faNum(correct)} از {faNum(answered)} درست
+            </span>
+          )}
+          <button
+            onClick={() => {
+              setVals({});
+              setChecked({});
+            }}
+            aria-label="پاک کردن پاسخ‌های تمرین تایپی"
+            className="inline-flex items-center gap-1 rounded-lg bg-white px-2 py-1 text-[12px] font-bold text-amber-700 shadow-sm transition-[background-color,color,border-color,box-shadow] hover:bg-amber-100 dark:bg-amber-900/40 dark:text-amber-200"
+          >
+            <RotateCcw size={13} />
+            از نو
+          </button>
+        </div>
+      </div>
+      <ol className="space-y-3">
+        {topic.typeDrill.map((d, di) => {
+          const done = checked[di] === true;
+          const isOk = done && normTypeAnswer(vals[di] ?? "") === normTypeAnswer(d.answer);
+          const taskChanged = d.task !== undefined && d.task !== topic.typeDrill![di - 1]?.task;
+          return (
+            <li key={di} className="rounded-lg bg-white p-2.5 shadow-sm dark:bg-stone-900">
+              {taskChanged && (
+                <p className="mb-1.5 rounded-md bg-amber-100/70 px-2 py-1 text-[11.5px] font-bold text-amber-800 dark:bg-amber-900/40 dark:text-amber-200">
+                  {d.task}
+                </p>
+              )}
+              <p className="mb-2 text-[13px] font-bold leading-7 text-stone-800 dark:text-stone-200" dir="auto">
+                <span className="text-amber-600 dark:text-amber-400">{faNum(di + 1)}. </span>
+                {d.q}
+              </p>
+              <div className="flex items-center gap-2">
+                <input
+                  type="text"
+                  value={vals[di] ?? ""}
+                  disabled={done}
+                  onChange={(e) => setVals((v) => ({ ...v, [di]: e.target.value }))}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" && !done && (vals[di] ?? "").trim()) {
+                      setChecked((c) => ({ ...c, [di]: true }));
+                    }
+                  }}
+                  aria-label={`پاسخ سؤال ${faNum(di + 1)} تمرین تایپی`}
+                  className={`min-w-0 flex-1 rounded-lg border px-2.5 py-1.5 text-[13px] font-bold outline-none transition-[border-color,background-color,box-shadow] focus:ring-2 disabled:opacity-80 ${
+                    done
+                      ? isOk
+                        ? "border-emerald-300 bg-emerald-50 text-emerald-800 focus:ring-emerald-200 dark:border-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-200 dark:focus:ring-emerald-800/50"
+                        : "border-rose-300 bg-rose-50 text-rose-800 focus:ring-rose-200 dark:border-rose-700 dark:bg-rose-900/40 dark:text-rose-200 dark:focus:ring-rose-800/50"
+                      : "border-stone-200 bg-stone-50 text-stone-800 focus:border-amber-400 focus:ring-amber-100 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-200 dark:focus:border-amber-500 dark:focus:ring-amber-900/40"
+                  }`}
+                  dir="ltr"
+                />
+                {!done && (
+                  <button
+                    onClick={() => {
+                      if ((vals[di] ?? "").trim()) setChecked((c) => ({ ...c, [di]: true }));
+                    }}
+                    disabled={!(vals[di] ?? "").trim()}
+                    aria-label={`بررسی سؤال ${faNum(di + 1)} تمرین تایپی`}
+                    className="shrink-0 rounded-lg border border-amber-300 bg-amber-100 px-3 py-1.5 text-[12px] font-extrabold text-amber-800 shadow-sm transition-[background-color,color,border-color,box-shadow,transform] hover:bg-amber-200 active:scale-[0.96] disabled:opacity-40 dark:border-amber-800 dark:bg-amber-900/50 dark:text-amber-200"
+                  >
+                    بررسی
+                  </button>
+                )}
+              </div>
+              {done && !isOk && (
+                <p className="mt-1.5 text-[12px] font-bold text-rose-700 dark:text-rose-300" dir="auto">
+                  پاسخِ درست: <span dir="ltr">{d.answer}</span>
+                </p>
+              )}
+            </li>
+          );
+        })}
+      </ol>
+    </section>
+  );
+}
