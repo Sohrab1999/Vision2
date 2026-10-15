@@ -8,10 +8,16 @@
 // لنگرِ DOMِ «wf-table-<id>» با scroll-mt هدرِ چسبان را حمل می‌کند و چیپِ
 // «درسِ مرتبط» در هدر (کارت آکاردئون ندارد — چیپ جای خودش در ردیفِ هدر است)
 // فقط در بسترِ ضمیمه رندر می‌شود؛ درس هرگز به خودش لینک نمی‌شود.
+// راند ۲۲۷ — ناوبریِ پیوستهٔ جدول‌ها (آینهٔ TopicCard راند ۲۲۶):
+// prevTable/nextTable/onNavigateTable/tablePosition/tableTotal فقط در بسترِ
+// ضمیمه پر می‌شوند — نوارِ «قبلی/بعدی + X از Y» پانوشتِ کارت است (کارتِ جدول
+// آکاردئون ندارد و همیشه باز است؛ ناوبری = اسکرولِ محلی به لنگرِ هدف، بدونِ
+// چرخشِ استور). همسایه‌ها از فهرستِ رندرشده (فیلترِ فعال) می‌آیند — برچسبِ
+// همسایه پایه را هم می‌گوید تا مرزِ بین‌پایه‌ای (دهم·چهارم ← یازدهم·اول) روشن بماند.
 import type { WordFamilyTable } from "@/data/word-families";
 import { wordFamilyTableId } from "@/data/word-families";
 import { faNum } from "@/lib/study-theme";
-import { GraduationCap } from "lucide-react";
+import { ChevronLeft, ChevronRight, GraduationCap } from "lucide-react";
 import SpeakButton from "../shared/speak-button";
 
 /** سلولِ انگلیسیِ غیرتهی: واژه + دکمهٔ تلفظ (راند ۲۲۳ — بندِ ② نقشهٔ ۲۲۲). */
@@ -33,12 +39,24 @@ export default function WordFamilyTableCard({
   table,
   relatedLesson,
   onOpenLesson,
+  prevTable,
+  nextTable,
+  onNavigateTable,
+  tablePosition,
+  tableTotal,
 }: {
   table: WordFamilyTable;
   /** درسِ مرتبط از WF_TABLE_ID_TO_LESSON — نبودش = بی‌چیپ («درس چهارمِ دهم»
    * در برنامه جای ندارد؛ صفرِ صادقانه). فقط بسترِ ضمیمه پرش می‌کند. */
   relatedLesson?: number;
   onOpenLesson?: () => void;
+  /** ناوبریِ پیوسته (r227) — همسایه‌ها از فهرستِ رندرشده (فیلترِ فعال)؛
+   * فقط بسترِ ضمیمه؛ برچسب = «<پایه> · <درس>». */
+  prevTable?: { id: string; title: string };
+  nextTable?: { id: string; title: string };
+  onNavigateTable?: (id: string) => void;
+  tablePosition?: number;
+  tableTotal?: number;
 }) {
   return (
     // لنگرِ اسکرولِ عمیق (r224) — scroll-mt برای فاصلهٔ هدرِ چسبان
@@ -99,6 +117,42 @@ export default function WordFamilyTableCard({
           </tbody>
         </table>
       </div>
+
+      {/* ناوبریِ پیوسته (راند ۲۲۷) — پانوشتِ کارت مثلِ صفحه‌خوانیِ کتاب؛
+          فقط وقتی میزبان (ضمیمه) همسایه‌ها و callback را داده باشد */}
+      {onNavigateTable && tablePosition !== undefined && tableTotal !== undefined && (prevTable || nextTable) && (
+        <div className="flex items-center gap-2 border-t border-stone-100 c-track-70 p-2 dark:border-stone-700 dark:bg-stone-800/50">
+          {prevTable ? (
+            <button
+              type="button"
+              onClick={() => onNavigateTable(prevTable.id)}
+              aria-label={`جدولِ قبلی: ${prevTable.title}`}
+              className="inline-flex min-w-0 flex-1 items-center justify-end gap-1.5 rounded-lg px-2.5 py-2 text-right text-[12px] font-bold text-stone-600 transition-[background-color,color] hover:bg-stone-100 hover:text-stone-800 dark:text-stone-300 dark:hover:bg-stone-700/50 dark:hover:text-stone-100"
+            >
+              <ChevronRight size={15} className="shrink-0" />
+              <span className="min-w-0 truncate">قبلی: {prevTable.title}</span>
+            </button>
+          ) : (
+            <span className="flex-1" />
+          )}
+          <span className="shrink-0 rounded-full bg-white px-2.5 py-1 text-[11px] font-black text-stone-600 shadow-sm dark:bg-stone-800 dark:text-stone-300">
+            {faNum(tablePosition)} از {faNum(tableTotal)}
+          </span>
+          {nextTable ? (
+            <button
+              type="button"
+              onClick={() => onNavigateTable(nextTable.id)}
+              aria-label={`جدولِ بعدی: ${nextTable.title}`}
+              className="inline-flex min-w-0 flex-1 items-center gap-1.5 rounded-lg px-2.5 py-2 text-[12px] font-bold text-stone-600 transition-[background-color,color] hover:bg-stone-100 hover:text-stone-800 dark:text-stone-300 dark:hover:bg-stone-700/50 dark:hover:text-stone-100"
+            >
+              <span className="min-w-0 truncate">بعدی: {nextTable.title}</span>
+              <ChevronLeft size={15} className="shrink-0" />
+            </button>
+          ) : (
+            <span className="flex-1" />
+          )}
+        </div>
+      )}
     </div>
   );
 }

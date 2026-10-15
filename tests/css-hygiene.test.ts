@@ -811,7 +811,7 @@ describe("globals.css track semantic layer (stone-200 alphas — Task 90)", () =
     );
   });
 
-  it("consumer matrix pinned — 8 tracks in exact grade split (1× /60 + 5× /70 + 2× /80), comments excluded", () => {
+  it("consumer matrix pinned — exact track counts per grade (n60=2, n70=8, n80=2), comments excluded", () => {
     let n60 = 0;
     let n70 = 0;
     let n80 = 0;
@@ -838,8 +838,9 @@ describe("globals.css track semantic layer (stone-200 alphas — Task 90)", () =
     // راند ۲۲۲: چیپِ شمارشِ خانوادهٔ واژه‌های «اجزای کلماتی» +۱
     // راند ۲۲۳: همان چیپ با کارتِ مشترکِ جدول به word-family-table-card مهاجرت کرد — جمع ثابت ۶
     // راند ۲۲۶: نوارِ ناوبریِ «قبلی/بعدی» کارت‌های ضمیمه +۱ — جمع ۷
+    // راند ۲۲۷: پانوشتِ ناوبریِ جدول‌های «اجزای کلماتی» در word-family-table-card +۱ — جمع ۸
     expect(n60, "c-track-60 consumers").toBe(2);
-    expect(n70, "c-track-70 consumers").toBe(7);
+    expect(n70, "c-track-70 consumers").toBe(8);
     expect(n80, "c-track-80 consumers").toBe(2);
   });
 

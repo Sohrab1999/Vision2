@@ -16,6 +16,7 @@ import {
   ChevronLeft,
   ChevronRight,
   ExternalLink,
+  FoldVertical,
   GraduationCap,
   Keyboard,
   Lightbulb,
@@ -24,6 +25,7 @@ import {
   PencilLine,
   RotateCcw,
   Table2,
+  UnfoldVertical,
 } from "lucide-react";
 import SpeakButton from "@/components/study/shared/speak-button";
 import {
@@ -128,6 +130,12 @@ export default function BookletGrammarView({
       return next;
     });
 
+  // راند ۲۲۷ — باز/بستنِ همهٔ موضوع‌ها (بندِ ② پیشنهادِ ۲۲۶ — اکشنِ صریحِ
+  // مطالعهٔ سراسری): بازکردنِ همه = کلِ بانکِ ۳۲تایی در یک نگاه؛ بستنِ همه
+  // حتیِ موضوعِ اولِ پیش‌باز را هم می‌بندد (پیش‌فرض فقط بارِ اولِ مونت است).
+  const openAll = () => setOpen(new Set(BOOKLET_GRAMMAR_TOPICS.map((t) => t.id)));
+  const closeAll = () => setOpen(new Set());
+
   // ناوبریِ پیوسته (راند ۲۲۶) — «قبلی/بعدی» داخلِ کارت: موضوعِ هدف را در
   // مجموعهٔ بازها می‌گذارد و با rAF به لنگرش می‌رود — کاملاً محلی، بدونِ
   // چرخشِ استور (ضمیمه از قبل مونت است و لنگرِ prop یک‌بارِ مصرف است).
@@ -149,10 +157,33 @@ export default function BookletGrammarView({
   return (
     <div className="space-y-3">
       <div className="rounded-2xl border c-card p-4">
-        <h2 className="flex items-center gap-1.5 text-[15px] font-extrabold text-stone-800 dark:text-stone-100">
-          <BookOpenCheck size={17} className="text-violet-600 dark:text-violet-400" />
-          درسنامهٔ جامع — از خودِ جزوه‌های جامع
-        </h2>
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <h2 className="flex items-center gap-1.5 text-[15px] font-extrabold text-stone-800 dark:text-stone-100">
+            <BookOpenCheck size={17} className="text-violet-600 dark:text-violet-400" />
+            درسنامهٔ جامع — از خودِ جزوه‌های جامع
+          </h2>
+          {/* راند ۲۲۷ — باز/بستنِ همهٔ موضوع‌ها */}
+          <div className="flex items-center gap-1.5" role="group" aria-label="باز و بستن همهٔ موضوع‌ها">
+            <button
+              type="button"
+              onClick={openAll}
+              title="همهٔ موضوع‌ها باز می‌شوند"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-white px-2.5 py-1.5 text-[12px] font-extrabold text-violet-700 shadow-sm transition-[background-color,color,border-color,box-shadow] hover:bg-violet-100 dark:bg-violet-900/40 dark:text-violet-200 dark:hover:bg-violet-900/70"
+            >
+              <UnfoldVertical size={13} />
+              بازکردن همه
+            </button>
+            <button
+              type="button"
+              onClick={closeAll}
+              title="همهٔ موضوع‌ها بسته می‌شوند"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-white px-2.5 py-1.5 text-[12px] font-extrabold text-stone-600 shadow-sm transition-[background-color,color,border-color,box-shadow] hover:bg-stone-100 dark:bg-violet-900/40 dark:text-violet-200 dark:hover:bg-violet-900/70"
+            >
+              <FoldVertical size={13} />
+              بستن همه
+            </button>
+          </div>
+        </div>
         <p className="mt-1 text-[13px] leading-7 text-stone-600 dark:text-stone-300">
           {faNum(BOOKLET_GRAMMAR_TOPICS.length)} موضوع در {faNum(groups.length)} جزوه:
           قاعده‌ها، نکته‌ها، جدول‌ها و مثال‌های ترجمه‌دار — دقیقاً همان‌طور که جزوه‌ها

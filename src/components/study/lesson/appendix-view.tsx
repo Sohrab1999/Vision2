@@ -55,6 +55,18 @@ export default function AppendixView({ topicId, posTableId }: { topicId?: string
 
   const openLessonTab = useStudy((s) => s.openLessonTab);
 
+  // ناوبریِ پیوستهٔ جدول‌های pos (راند ۲۲۷ — آینهٔ navigateToTopicِ r226):
+  // همهٔ جدول‌ها همیشه بازند — ناوبری یعنی اسکرولِ محلی به لنگرِ هدف؛
+  // کاملاً محلی، بدونِ چرخشِ استور. همسایه‌ها از «فهرستِ رندرشده»
+  // (همان فیلترِ فعال) مشتق می‌شوند — ناوبری هیچ‌وقت به جدولِ پنهان نمی‌رود.
+  const navigateToTable = (id: string) => {
+    requestAnimationFrame(() => {
+      document
+        .getElementById(`wf-table-${id}`)
+        ?.scrollIntoView?.({ behavior: "smooth", block: "start" });
+    });
+  };
+
   return (
     <div className="space-y-4">
       <div className="rounded-2xl border c-card p-5 shadow-sm">
@@ -214,8 +226,10 @@ export default function AppendixView({ topicId, posTableId }: { topicId?: string
                 تبِ واژگانِ درس‌ها هر دو از یک رندر می‌خورند؛ دکمهٔ تلفظ هم
                 حالا روی هر چهار ستونِ انگلیسیِ غیرتهی است (بندِ ② نقشهٔ ۲۲۲).
                 راند ۲۲۴: چیپِ «درسِ مرتبط» مسیرِ برگشتِ رفت‌وبرگشت است —
-                نقشهٔ معکوس از خودِ WORD_FAMILY_LESSON_LINKS مشتق می‌شود. */}
-            {tables.map((t) => {
+                نقشهٔ معکوس از خودِ WORD_FAMILY_LESSON_LINKS مشتق می‌شود.
+                راند ۲۲۷: نوارِ ناوبری «قبلی/بعدی + X از Y» از فهرستِ رندرشده
+                (فیلترِ فعال) — ناوبریِ پیوستهٔ ۱۰ جدول، اسکرولِ محلی. */}
+            {tables.map((t, ti) => {
               const tid = wordFamilyTableId(t);
               const lesson = WF_TABLE_ID_TO_LESSON[tid];
               return (
@@ -224,6 +238,19 @@ export default function AppendixView({ topicId, posTableId }: { topicId?: string
                   table={t}
                   relatedLesson={lesson}
                   onOpenLesson={lesson !== undefined ? () => openLessonTab(lesson, "vocab") : undefined}
+                  prevTable={
+                    ti > 0
+                      ? { id: wordFamilyTableId(tables[ti - 1]), title: `${tables[ti - 1].grade} · ${tables[ti - 1].lesson}` }
+                      : undefined
+                  }
+                  nextTable={
+                    ti < tables.length - 1
+                      ? { id: wordFamilyTableId(tables[ti + 1]), title: `${tables[ti + 1].grade} · ${tables[ti + 1].lesson}` }
+                      : undefined
+                  }
+                  onNavigateTable={navigateToTable}
+                  tablePosition={ti + 1}
+                  tableTotal={tables.length}
                 />
               );
             })}
