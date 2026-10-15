@@ -14,6 +14,8 @@ import { lessons } from "@/data";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { posLabel, themeOf, faNum } from "@/lib/study-theme";
+import { buildSynAntIndex, synAntPairsFor } from "@/lib/syn-ant-lookup";
+import { speak } from "@/lib/speak";
 import { trackEvent } from "@/lib/analytics";
 import SpeakButton from "../shared/speak-button";
 import { resolveStar, type ResolvedStar } from "@/lib/my-words-resolve";
@@ -68,6 +70,9 @@ export default function MyWordsView() {
   }, [stars, query, lessonFilter]);
 
   const knownCount = mounted ? stars.filter((w) => known[w.key]).length : 0;
+
+  // راند ۲۰۶: جفت‌های جزوه روی کارت‌های «واژه‌های من» — نمایهٔ مشترکِ ۲۰۳
+  const pairIndex = useMemo(() => buildSynAntIndex(lessons), []);
   const lessonCounts = useMemo(() => {
     const counts = new Map<number, number>();
     for (const w of stars) counts.set(w.lessonId, (counts.get(w.lessonId) ?? 0) + 1);
@@ -300,6 +305,36 @@ export default function MyWordsView() {
                       </button>
                     </div>
                     <div className="mt-0.5 text-[13px] text-stone-600">{w.fa}</div>
+                    {(() => {
+                      const pairs = synAntPairsFor(pairIndex, w.en);
+                      if (pairs.length === 0) return null;
+                      return (
+                        <div className="mt-1 flex flex-wrap items-center gap-1">
+                          {pairs.slice(0, 3).map((p) => (
+                            <button
+                              key={`${p.kind}-${p.other}-${p.lessonId}`}
+                              type="button"
+                              onClick={() => void speak(p.other, 0.95)}
+                              title="روخوانی جفت"
+                              aria-label={`${p.kind === "syn" ? "مترادف" : "متضاد"}ِ ${w.en}: ${p.other} — روخوانی`}
+                              className={`dict-pair-chip inline-flex items-center gap-0.5 rounded-md border px-1.5 py-0.5 text-[10.5px] font-bold transition-[background-color,color,border-color,transform] active:scale-[0.96] ${
+                                p.kind === "syn"
+                                  ? "border-emerald-200 bg-emerald-50/60 text-emerald-700"
+                                  : "border-rose-200 bg-rose-50/60 text-rose-700"
+                              }`}
+                            >
+                              <span aria-hidden className="font-black">{p.kind === "syn" ? "≈" : "↔"}</span>
+                              <span dir="ltr">{p.other}</span>
+                            </button>
+                          ))}
+                          {pairs.length > 3 && (
+                            <span className="rounded-md bg-stone-100 px-1.5 py-0.5 text-[10.5px] font-bold text-stone-500">
+                              +{faNum(pairs.length - 3)}
+                            </span>
+                          )}
+                        </div>
+                      );
+                    })()}
                     <span className={`mt-1 inline-block rounded-full px-2 py-0.5 text-[10px] font-bold ${t.chipBg}`}>
                       درس {w.lessonId}: {w.titleFa}
                     </span>

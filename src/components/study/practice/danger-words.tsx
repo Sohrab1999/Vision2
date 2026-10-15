@@ -15,9 +15,11 @@ import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { dangerWords, buildDangerQuiz, type DangerWord } from "@/lib/word-risk";
 import { buildDangerDictation, DICTATION_MIN_DANGER } from "@/lib/danger-dictation";
-import { findLesson } from "@/data";
+import { findLesson, lessons } from "@/data";
 import { lessonNameFa } from "@/data/lesson-meta";
 import { faNum } from "@/lib/study-theme";
+import { buildSynAntIndex, synAntPairsFor } from "@/lib/syn-ant-lookup";
+import { speak } from "@/lib/speak";
 import { trackEvent } from "@/lib/analytics";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import Flashcards from "../lesson/flashcards";
@@ -48,6 +50,9 @@ export default function DangerWords() {
 
   const lessonsPresent = useMemo(() => [...new Set(list.map((d) => d.lessonId))].sort(), [list]);
   const totalMistakes = useMemo(() => list.reduce((s, d) => s + d.mistakes, 0), [list]);
+
+  // راند ۲۰۶: جفت‌های جزوه در ردیف‌های رتبه‌بندی — فشرده (تا ۲ چیپ)، چون ردیف شلوغ است
+  const pairIndex = useMemo(() => buildSynAntIndex(lessons), []);
 
   const practice = useMemo(() => (practiceOpen ? buildDangerQuiz(list, 10) : null), [practiceOpen, list]);
 
@@ -147,6 +152,40 @@ export default function DangerWords() {
                         <span className="hidden rounded-md bg-stone-100 px-1.5 py-0.5 text-[10px] font-bold text-stone-500 sm:inline">
                           {lessonFa(d.lessonId)}
                         </span>
+                        {(() => {
+                          // چیپ‌های فشردهٔ جفت — حداکثر ۲ تا؛ کلیک همتا را روخوانی می‌کند
+                          const pairs = synAntPairsFor(pairIndex, d.en);
+                          if (pairs.length === 0) return null;
+                          return (
+                            <span className="flex flex-wrap items-center gap-1">
+                              {pairs.slice(0, 2).map((p) => (
+                                <button
+                                  key={`${p.kind}-${p.other}-${p.lessonId}`}
+                                  type="button"
+                                  onClick={() => void speak(p.other, 0.95)}
+                                  title="روخوانی جفت"
+                                  aria-label={`${p.kind === "syn" ? "مترادف" : "متضاد"}ِ ${d.en}: ${p.other} — روخوانی`}
+                                  className={`dict-pair-chip inline-flex items-center gap-0.5 rounded-md border px-1.5 py-0.5 text-[10px] font-bold transition-[background-color,color,border-color,transform] active:scale-[0.96] ${
+                                    p.kind === "syn"
+                                      ? "border-emerald-200 bg-emerald-50/60 text-emerald-700"
+                                      : "border-rose-200 bg-rose-50/60 text-rose-700"
+                                  }`}
+                                >
+                                  <span aria-hidden className="font-black">{p.kind === "syn" ? "≈" : "↔"}</span>
+                                  <span dir="ltr">{p.other}</span>
+                                </button>
+                              ))}
+                              {pairs.length > 2 && (
+                                <span
+                                  className="rounded-md bg-stone-100 px-1.5 py-0.5 text-[10px] font-bold text-stone-500"
+                                  title="ردیف‌های جفت دیگر در تبِ مترادف و متضاد درس"
+                                >
+                                  +{faNum(pairs.length - 2)}
+                                </span>
+                              )}
+                            </span>
+                          );
+                        })()}
                       </div>
                     </div>
                     {(() => {

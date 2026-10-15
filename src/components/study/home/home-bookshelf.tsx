@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Layers, ClipboardCheck, ArrowLeft } from "lucide-react";
+import { Layers, ClipboardCheck, ArrowLeft, ArrowLeftRight } from "lucide-react";
 import { LESSONS_META, lessonOrdinalFa } from "@/data/lesson-meta";
 import { useStudy, knownCountOfLesson } from "@/lib/study-store";
 import { percent } from "@/lib/domain/percent";
@@ -89,10 +89,17 @@ export default function HomeBookshelf() {
                 </ProgressRing>
               </div>
               <p className="mb-4 flex-1 text-[13px] leading-7 text-stone-500">{l.tagline}</p>
-              <div className="mb-4 flex gap-2 text-[11px] text-stone-500">
+              <div className="mb-4 flex flex-wrap gap-2 text-[11px] text-stone-500">
                 <span className="rounded-lg bg-stone-100 px-2 py-1">{faNum(l.vocabCount)} واژه</span>
                 <span className="rounded-lg bg-stone-100 px-2 py-1">{faNum(l.quizCount)} تست</span>
                 <span className="rounded-lg bg-stone-100 px-2 py-1">{faNum(l.grammarCount)} بخش گرامر</span>
+                <span
+                  className="inline-flex items-center gap-1 rounded-lg bg-rose-50 px-2 py-1 font-bold text-rose-600"
+                  title="ردیف‌های مترادف و متضاد این درس در جزوه — تبِ «مترادف و متضاد»"
+                >
+                  <ArrowLeftRight size={11} aria-hidden />
+                  {faNum(l.pairCount)} جفت
+                </span>
               </div>
               <p className="mb-3 text-[12px] font-bold text-stone-600">{lessonCheer(mounted ? knownPercent : 0)}</p>
               <button

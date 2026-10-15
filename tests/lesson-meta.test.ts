@@ -18,6 +18,7 @@ import {
   LESSON_QUIZ_COUNT,
   EXAM_BANK_SIZE,
   TOTAL_QUESTIONS,
+  TOTAL_PAIRS,
   lessonMetaById,
   lessonOrdinalFa,
   lessonNameFa,
@@ -50,6 +51,15 @@ describe("lesson-meta drift guard", () => {
       expect(meta.quizCount).toBe(real.quizzes.length);
       expect(meta.grammarCount).toBe(real.grammar.length);
     }
+  });
+
+  it("pair wealth is pinned: pairCount = synonyms + antonyms rows (round 206)", () => {
+    for (const meta of LESSONS_META) {
+      const real = lessons.find((l) => l.id === meta.id)!;
+      expect(meta.pairCount).toBe((real.synonyms ?? []).length + (real.antonyms ?? []).length);
+    }
+    expect(TOTAL_PAIRS).toBe(LESSONS_META.reduce((s, m) => s + m.pairCount, 0));
+    expect(TOTAL_PAIRS).toBe(477); // the booklet's 298 syn + 179 ant rows
   });
 
   it("grades are pinned: 1-3 = یازدهم, 4-6 = دوازدهم, 7-9 = دهم, 10-12 = هفتم/هشتم/نهم (Prospect)", () => {

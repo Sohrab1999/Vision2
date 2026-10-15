@@ -32,6 +32,8 @@ export interface LessonMeta {
   vocabCount: number;
   quizCount: number;
   grammarCount: number;
+  /** راند ۲۰۶: ثروتِ جفتِ درس — ردیف‌های مترادف + متضادِ جزوه (تبِ ۸) */
+  pairCount: number;
 }
 
 export const LESSONS_META: LessonMeta[] = [
@@ -45,6 +47,7 @@ export const LESSONS_META: LessonMeta[] = [
     vocabCount: 204,
     quizCount: 55,
     grammarCount: 6,
+    pairCount: 40,
   },
   {
     id: 2,
@@ -56,6 +59,7 @@ export const LESSONS_META: LessonMeta[] = [
     vocabCount: 229,
     quizCount: 45,
     grammarCount: 6,
+    pairCount: 65,
   },
   {
     id: 3,
@@ -67,6 +71,7 @@ export const LESSONS_META: LessonMeta[] = [
     vocabCount: 200,
     quizCount: 45,
     grammarCount: 3,
+    pairCount: 123,
   },
   {
     id: 4,
@@ -78,6 +83,7 @@ export const LESSONS_META: LessonMeta[] = [
     vocabCount: 100,
     quizCount: 45,
     grammarCount: 4,
+    pairCount: 34,
   },
   {
     id: 5,
@@ -89,6 +95,7 @@ export const LESSONS_META: LessonMeta[] = [
     vocabCount: 84,
     quizCount: 45,
     grammarCount: 3,
+    pairCount: 30,
   },
   {
     id: 6,
@@ -100,6 +107,7 @@ export const LESSONS_META: LessonMeta[] = [
     vocabCount: 76,
     quizCount: 45,
     grammarCount: 3,
+    pairCount: 29,
   },
   {
     id: 7,
@@ -111,6 +119,7 @@ export const LESSONS_META: LessonMeta[] = [
     vocabCount: 80,
     quizCount: 45,
     grammarCount: 3,
+    pairCount: 28,
   },
   {
     id: 8,
@@ -122,6 +131,7 @@ export const LESSONS_META: LessonMeta[] = [
     vocabCount: 72,
     quizCount: 45,
     grammarCount: 3,
+    pairCount: 28,
   },
   {
     id: 9,
@@ -133,6 +143,7 @@ export const LESSONS_META: LessonMeta[] = [
     vocabCount: 70,
     quizCount: 45,
     grammarCount: 3,
+    pairCount: 28,
   },
   // راند ۱۹۸ — «قفسهٔ شش‌پایه»: جزوه‌های متوسطهٔ اول (Prospect 1-3)
   {
@@ -145,6 +156,7 @@ export const LESSONS_META: LessonMeta[] = [
     vocabCount: 65,
     quizCount: 40,
     grammarCount: 3,
+    pairCount: 24,
   },
   {
     id: 11,
@@ -156,6 +168,7 @@ export const LESSONS_META: LessonMeta[] = [
     vocabCount: 68,
     quizCount: 40,
     grammarCount: 3,
+    pairCount: 24,
   },
   {
     id: 12,
@@ -167,6 +180,7 @@ export const LESSONS_META: LessonMeta[] = [
     vocabCount: 64,
     quizCount: 40,
     grammarCount: 3,
+    pairCount: 24,
   },
 ];
 
@@ -174,6 +188,8 @@ export const TOTAL_VOCABULARY = 1312;
 export const LESSON_QUIZ_COUNT = 535;
 export const EXAM_BANK_SIZE = 360;
 export const TOTAL_QUESTIONS = LESSON_QUIZ_COUNT + EXAM_BANK_SIZE; // 895
+/** راند ۲۰۶: کلِ ردیف‌های جفتِ جزوه روی ۱۲ درس (۴۰+۶۵+۱۲۳+…+۲۴) */
+export const TOTAL_PAIRS = 477;
 
 /** درس‌های جزوهٔ اصلی (یازدهم) — بانک ۳۶۰ تستی و آزمون پایان ترم همین سه درس‌اند */
 export const CORE_LESSON_IDS = [1, 2, 3] as const;
