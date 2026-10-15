@@ -17,7 +17,7 @@ import {
   ROLE_CLASSES,
 } from "@/lib/grammar-lesson";
 
-describe("data — درس‌های PPP تمام خط‌ها (راند ۱۹۶: پوشش ۳۴/۳۴)", () => {
+describe("data — درس‌های PPP تمام خط‌ها (راند ۱۹۶/۱۹۸: پوشش ۴۳/۴۳)", () => {
   const stationIds = GRAMMAR_LINES.flatMap((l) => l.stations.map((s) => s.id));
 
   it("هر ۳۴ ایستگاه نقشه درس دارد", () => {
@@ -129,8 +129,8 @@ describe("قراردادهای خالص grammar-lesson", () => {
     expect(whyAnswer("water غیرقابل شمارش است")).toBe("چون water غیرقابل شمارش است");
   });
 
-  it("خط‌های کامل‌درس‌دار حالا هر ۱۱ خط نقشه است", () => {
-    expect(lineIdsWithLessons()).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
+  it("خط‌های کامل‌درس‌دار حالا هر ۱۴ خط نقشه است", () => {
+    expect(lineIdsWithLessons()).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]);
   });
 
   it("درس‌های ایستگاه‌های تازهٔ سه‌پایه محتوای کتاب را پوشش می‌دهند (کاوش اِلِمانی)", () => {
@@ -148,6 +148,32 @@ describe("قراردادهای خالص grammar-lesson", () => {
     expect(will.see.pieces.some((p) => p.text === "I will help you")).toBe(true);
     const going = lessonFor("g-future-going")!;
     expect(going.try.some((q) => q.options.includes("is going to"))).toBe(true);
+  });
+
+  it("درس‌های ایستگاه‌های شش‌پایه محتوای کتاب را پوشش می‌دهند (کاوش اِلِمانی — راند ۱۹۸)", () => {
+    // خط ۱۲: معرفی — am و صفت ملکی
+    const be = lessonFor("g-be-intro")!;
+    expect(be.see.pieces.some((p) => p.text === "am")).toBe(true);
+    expect(be.try.some((q) => q.options.includes("is"))).toBe(true);
+    const dem = lessonFor("g-demonstratives")!;
+    expect(dem.try.some((q) => q.options.includes("dictionaries"))).toBe(true);
+    const poss = lessonFor("g-possessive-jobs")!;
+    expect(poss.try.some((q) => q.options.includes("Her"))).toBe(true);
+    // خط ۱۳: توانایی — can و there is
+    const nat = lessonFor("g-nationalities")!;
+    expect(nat.try.some((q) => q.options.includes("Australian"))).toBe(true);
+    const can = lessonFor("g-can-ability")!;
+    expect(can.see.pieces.some((p) => p.text === "can")).toBe(true);
+    const thr = lessonFor("g-there-advice")!;
+    expect(thr.try.some((q) => q.options.includes("should"))).toBe(true);
+    // خط ۱۴: شخصیت و زمان‌ها
+    const adj = lessonFor("g-personality-adj")!;
+    expect(adj.try.some((q) => q.options.includes("selfish"))).toBe(true);
+    const prog = lessonFor("g-present-progressive")!;
+    expect(prog.try.some((q) => q.options.includes("is sleeping"))).toBe(true);
+    const past = lessonFor("g-past-narrative")!;
+    expect(past.try.some((q) => q.options.includes("went"))).toBe(true);
+    expect(past.try.some((q) => q.options.includes("Did"))).toBe(true);
   });
 
   it("stationIdsWithLesson دقیقاً ایستگاه‌های درس‌دار را برمی‌گرداند", () => {

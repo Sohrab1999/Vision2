@@ -16,12 +16,12 @@ describe("نقشهٔ پوشش — کامپوننت (Task 174)", () => {
     useStudy.setState({ results: {}, known: {} });
   });
 
-  it("تازه‌کار: نُه درس، هر پنجاه‌وچهار چیپِ خط‌چینِ «—»، شکافِ درس ۱ «تست واژگان»، چیپِ جمع صفر", () => {
+  it("تازه‌کار: دوازده درس، هر هفتادودو چیپِ خط‌چینِ «—»، شکافِ درس ۱ «تست واژگان»، چیپِ جمع صفر", () => {
     render(<CoverageMapSection />);
     expect(screen.getByLabelText("نقشهٔ پوشش مهارت‌ها")).toBeInTheDocument();
     expect(screen.getAllByText("تست واژگان —").length).toBeGreaterThanOrEqual(9);
-    expect(screen.getAllByText(/گامِ بعدی: تست واژگان/).length).toBe(9);
-    expect(screen.getByText(/۰ از ۵۴ تلاش‌شده/)).toBeInTheDocument();
+    expect(screen.getAllByText(/گامِ بعدی: تست واژگان/).length).toBe(12);
+    expect(screen.getByText(/۰ از ۷۲ تلاش‌شده/)).toBeInTheDocument();
   });
 
   it("بهترینِ ثبت‌شده: چیپِ زمردیِ «۸۵٪» در درس ۱ و شکافِ جابه‌جا شده به «دیکته»", () => {
@@ -30,9 +30,9 @@ describe("نقشهٔ پوشش — کامپوننت (Task 174)", () => {
     });
     render(<CoverageMapSection />);
     expect(screen.getByText("تست واژگان ۸۵٪")).toBeInTheDocument();
-    expect(screen.getAllByText(/گامِ بعدی: تست واژگان/).length).toBe(8); // درس‌های ۲ تا ۹
+    expect(screen.getAllByText(/گامِ بعدی: تست واژگان/).length).toBe(11); // درس‌های ۲ تا ۹
     expect(screen.getByText(/گامِ بعدی: دیکته این درس/)).toBeInTheDocument();
-    expect(screen.getByText(/۱ از ۵۴ تلاش‌شده/)).toBeInTheDocument();
+    expect(screen.getByText(/۱ از ۷۲ تلاش‌شده/)).toBeInTheDocument();
   });
 
   it("همه‌پوشیده: شش ستونِ پر درس ۱ → «همهٔ مهارت‌های این درس تلاش شده»", () => {
@@ -43,7 +43,7 @@ describe("نقشهٔ پوشش — کامپوننت (Task 174)", () => {
     useStudy.setState({ results });
     render(<CoverageMapSection />);
     expect(screen.getByText(/همهٔ مهارت‌های این درس تلاش شده/)).toBeInTheDocument();
-    expect(screen.getByText(/۶ از ۵۴ تلاش‌شده/)).toBeInTheDocument();
+    expect(screen.getByText(/۶ از ۷۲ تلاش‌شده/)).toBeInTheDocument();
   });
 
   it("مونتاژ در کارنامه: ReportCard بخشِ نقشه را داخلِ دیالوگ نشان می‌دهد", () => {

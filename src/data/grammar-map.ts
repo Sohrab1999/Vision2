@@ -8,6 +8,8 @@
 // راند ۱۹۶: با ورود جزوه‌های پایهٔ دهم (درس‌های ۷-۹)، نقشه از ۶ خطِ
 // ویژن ۲ به ۱۱ خطِ سه‌پایه گسترش یافت — مجهول، نقل قول، حال/ربط،
 // گذشته/مقایسه و آینده، هرکدام یک خط مستقل با رنگ خانوادهٔ خودش.
+// راند ۱۹۸: با ورود جزوه‌های متوسطهٔ اول (درس‌های ۱۰-۱۲)، نقشه
+// شش‌پایه شد — ۱۴ خط: معرفی/اشاره، توانایی/توصیه و شخصیت/زمان.
 //
 // قراردادها:
 //  - مسیر داخل هر خط یک‌طرفه است: ایستگاه i+1 فقط با سبز شدن ایستگاه i
@@ -30,13 +32,16 @@ export type GrammarLineColor =
   | "fuchsia"
   | "lime"
   | "indigo"
-  | "cyan";
+  | "cyan"
+  | "pink"
+  | "blue"
+  | "purple";
 
 export interface GrammarStation {
   id: string; // پایدار و بدون فاصله — کلید پیشرفت از روی آن ساخته می‌شود
   fa: string;
   en: string;
-  lesson: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+  lesson: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
   section: number; // ایندکس سکشن در lesson.grammar (از دادهٔ کتاب)
   quizIds: string[]; // سؤال‌های ترجیحی (ممکن است خالی باشد ← مکمل از استخر درس)
   tip: string; // ترفند حفظ کوتاه به فارسی
@@ -469,6 +474,112 @@ export const GRAMMAR_LINES: GrammarLine[] = [
         section: 2,
         quizIds: ["l9-g11", "l9-g12", "l9-g13", "l9-g14", "l9-g15"],
         tip: "hope/decide/promise/try + to — این فعل‌ها به «نیت» وصل‌اند و آینده را وعده می‌دهند.",
+      },
+    ],
+  },
+  // ---------------- خط ۱۲-۱۴ — متوسطهٔ اول (راند ۱۹۸، قفسهٔ شش‌پایه) ----------------
+  {
+    id: 12,
+    fa: "خط معرفی و اشاره",
+    en: "Introductions & Pointing",
+    color: "pink",
+    stations: [
+      {
+        id: "g-be-intro",
+        fa: "فعل to be و معرفی خود",
+        en: "To Be & Introductions",
+        lesson: 10,
+        section: 0,
+        quizIds: ["l10-g1", "l10-g2", "l10-g3", "l10-g4", "l10-g5"],
+        tip: "am فقط با I؛ is با he/she/it؛ are با you/we/they — در سؤال، فعل جلو می‌آید.",
+      },
+      {
+        id: "g-demonstratives",
+        fa: "این و آن‌ها + جمع",
+        en: "This/That & Plurals",
+        lesson: 10,
+        section: 1,
+        quizIds: ["l10-g6", "l10-g7", "l10-g8", "l10-g9", "l10-g10"],
+        tip: "نزدیک مفرد this، دور مفرد that؛ جمع‌ها these/those با فعل جمع — s/es/ies را جدی بگیر.",
+      },
+      {
+        id: "g-possessive-jobs",
+        fa: "صفت ملکی و مشاغل با a/an",
+        en: "Possessives & Jobs",
+        lesson: 10,
+        section: 2,
+        quizIds: ["l10-g11", "l10-g12", "l10-g13", "l10-g14", "l10-g15"],
+        tip: "my/your/his/her قبل از اسم و هرگز کنار a/an؛ قبل از صدادار an می‌آید.",
+      },
+    ],
+  },
+  {
+    id: 13,
+    fa: "خط توانایی و توصیه",
+    en: "Ability & Advice",
+    color: "blue",
+    stations: [
+      {
+        id: "g-nationalities",
+        fa: "کشور، ملیت و زبان",
+        en: "Countries & Nationalities",
+        lesson: 11,
+        section: 0,
+        quizIds: ["l11-g1", "l11-g2", "l11-g3", "l11-g4", "l11-g5"],
+        tip: "be from + کشور؛ ملیت با پسوند -ian/-ese/-ish و همیشه با حرف بزرگ.",
+      },
+      {
+        id: "g-can-ability",
+        fa: "توانایی با can",
+        en: "Ability with can",
+        lesson: 11,
+        section: 1,
+        quizIds: ["l11-g6", "l11-g7", "l11-g8", "l11-g9", "l11-g10"],
+        tip: "بعد از can فعل ساده می‌آید — بدون s، بدون to؛ play ورزش، make ساختنی.",
+      },
+      {
+        id: "g-there-advice",
+        fa: "هست/هستند و توصیه",
+        en: "There is/are & Advice",
+        lesson: 11,
+        section: 2,
+        quizIds: ["l11-g11", "l11-g12", "l11-g13", "l11-g14", "l11-g15"],
+        tip: "مفرد there is، جمع there are؛ پیشنهاد با Why don't you…? و توصیه با should + فعل ساده.",
+      },
+    ],
+  },
+  {
+    id: 14,
+    fa: "خط شخصیت و زمان",
+    en: "Personality & Tenses",
+    color: "purple",
+    stations: [
+      {
+        id: "g-personality-adj",
+        fa: "صفت‌های شخصیت",
+        en: "Personality Adjectives",
+        lesson: 12,
+        section: 0,
+        quizIds: ["l12-g1", "l12-g2", "l12-g3", "l12-g4", "l12-g5"],
+        tip: "صفت بعد از be می‌آید و جمع نمی‌شود؛ قبل از اسم، be حذف می‌شود: a kind man.",
+      },
+      {
+        id: "g-present-progressive",
+        fa: "حال استمراری",
+        en: "Present Progressive",
+        lesson: 12,
+        section: 1,
+        quizIds: ["l12-g6", "l12-g7", "l12-g8", "l12-g9", "l12-g10"],
+        tip: "am/is/are + V-ing؛ نشانگرها: now، Look!، Listen! — فعل‌های حالتی استمراری نمی‌گیرند.",
+      },
+      {
+        id: "g-past-narrative",
+        fa: "گذشتهٔ ساده",
+        en: "Past Simple",
+        lesson: 12,
+        section: 2,
+        quizIds: ["l12-g11", "l12-g12", "l12-g13", "l12-g14", "l12-g15"],
+        tip: "باقاعده -ed؛ بی‌قاعده شکل دوم؛ بعد از did/didn't فعل برگرد ساده.",
       },
     ],
   },

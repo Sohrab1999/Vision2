@@ -55,6 +55,8 @@ export interface QuizQuestion {
 // راند ۱۹۴: قفسهٔ کامل سه پایه — orange/indigo/fuchsia از جزوه‌های دهم
 // (Vision 1) به خانواده‌های درسی پیوستند (fuchsia-50/orange-50 از قبل در
 // kernelِ تاریک remap داشتند؛ indigo-50/200 تازه اضافه شدند).
+// راند ۱۹۸: قفسهٔ شش‌پایه — pink/blue/purple از جزوه‌های متوسطهٔ اول
+// (Prospect 1-3) پیوستند؛ kernelِ تاریک سه خانوادهٔ تازه را پین می‌کند.
 export type LessonColor =
   | "emerald"
   | "amber"
@@ -64,9 +66,12 @@ export type LessonColor =
   | "teal"
   | "orange"
   | "indigo"
-  | "fuchsia";
+  | "fuchsia"
+  | "pink"
+  | "blue"
+  | "purple";
 
-export type LessonGrade = "دهم" | "یازدهم" | "دوازدهم";
+export type LessonGrade = "هفتم" | "هشتم" | "نهم" | "دهم" | "یازدهم" | "دوازدهم";
 
 export interface LessonData {
   id: number;
@@ -74,7 +79,7 @@ export interface LessonData {
   titleFa: string;
   tagline: string;
   color: LessonColor;
-  /** پایهٔ تحصیلی — ۱-۳ یازدهم (جزوهٔ اصلی)، ۴-۶ دوازدهم (تکمیلی)، ۷-۹ دهم (Vision 1) */
+  /** پایهٔ تحصیلی — ۱-۳ یازدهم (جزوهٔ اصلی)، ۴-۶ دوازدهم (تکمیلی)، ۷-۹ دهم (Vision 1)، ۱۰-۱۲ متوسطهٔ اول (Prospect) */
   grade: LessonGrade;
   vocabulary: VocabWord[];
   conversation: { introEn: string; introFa: string; lines: DialogueLine[] };

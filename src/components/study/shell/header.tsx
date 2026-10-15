@@ -54,7 +54,7 @@ export default function Header() {
               ویژن ۲ <span className="en-text text-emerald-700">Vision Two</span>
             </span>
             <span className="hidden text-[11px] text-stone-500 sm:block">
-              وب‌کتاب تعاملی زبان یازدهم
+              وب‌کتاب تعاملی زبان هفتم تا دوازدهم
             </span>
           </span>
         </button>

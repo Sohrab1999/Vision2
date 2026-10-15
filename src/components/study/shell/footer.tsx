@@ -18,7 +18,7 @@ export default function Footer() {
           </span>
           <div className="text-[12px] leading-6 text-stone-500">
             <p className="font-extrabold text-stone-700">
-              وب‌کتاب تعاملی «Vision Two» — زبان انگلیسی پایهٔ یازدهم
+              وب‌کتاب تعاملی «Vision Two» — زبان انگلیسی هفتم تا دوازدهم
             </p>
             <p>
               بر اساس جزوهٔ جامع تألیف و گردآوری <span className="font-bold text-stone-600">جمال احمدی</span> · روخوانی هوش مصنوعی · پیشرفت شما روی همین دستگاه ذخیره می‌شود

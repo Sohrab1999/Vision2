@@ -79,6 +79,12 @@ export const uiColors = {
   pink: {
     600: "#db2777",
   },
+  blue: {
+    600: "#2563eb",
+  },
+  purple: {
+    600: "#9333ea",
+  },
   cyan: {
     600: "#0891b2",
   },

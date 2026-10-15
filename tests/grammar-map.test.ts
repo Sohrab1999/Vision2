@@ -93,13 +93,13 @@ describe("متروی گرامر — جمع‌های پیشرفت", () => {
   });
 
   it("mapSummary روی همهٔ خط‌ها جمع می‌زند و در نقشهٔ خالی صفر می‌ماند", () => {
-    expect(mapSummary({})).toEqual({ green: 0, total: 34, percent: 0 });
+    expect(mapSummary({})).toEqual({ green: 0, total: 43, percent: 0 });
     const results: PercentMap = {
       [stationKey("g-order")]: R(90),
       [stationKey("g-present-perfect")]: R(80),
       [stationKey("g-count")]: R(10),
     };
-    expect(mapSummary(results)).toEqual({ green: 2, total: 34, percent: 6 });
+    expect(mapSummary(results)).toEqual({ green: 2, total: 43, percent: 5 });
   });
 });
 
@@ -169,7 +169,7 @@ describe("متروی گرامر — درستیِ دادهٔ ایستگاه‌ه�
         expect(s.section).toBeLessThan(grammar.length);
       }
     }
-    expect(ids.size).toBe(34);
+    expect(ids.size).toBe(43);
   });
 
   it("هر quizIds ارجاع‌شده در بانک همان درس واقعاً وجود دارد", () => {
@@ -187,13 +187,13 @@ describe("متروی گرامر — درستیِ دادهٔ ایستگاه‌ه�
   });
 });
 
-describe("متروی گرامر — خط‌های سه‌پایه (راند ۱۹۶)", () => {
-  it("نقشه ۱۱ خط و ۳۴ ایستگاه دارد و هر ۹ درسِ قفسه ایستگاه دارند", () => {
-    expect(GRAMMAR_LINES).toHaveLength(11);
+describe("متروی گرامر — خط‌های شش‌پایه (راندهای ۱۹۶/۱۹۸)", () => {
+  it("نقشه ۱۴ خط و ۴۳ ایستگاه دارد و هر ۱۲ درسِ قفسه ایستگاه دارند", () => {
+    expect(GRAMMAR_LINES).toHaveLength(14);
     const byLesson = [
       ...new Set(GRAMMAR_LINES.flatMap((l) => l.stations.map((s) => s.lesson))),
     ].sort((a, b) => a - b);
-    expect(byLesson).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+    expect(byLesson).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
   });
 
   it("خط مجهول هفت‌ایستگاهی است: چهار ایستگاه درس ۴ و سه ایستگاه درس ۵", () => {
@@ -215,6 +215,21 @@ describe("متروی گرامر — خط‌های سه‌پایه (راند ۱۹
     expect(line(11).stations.map((s) => s.lesson)).toEqual([9, 9, 9]);
   });
 
+  it("خط‌های متوسطهٔ اول تک‌درسه و سه‌ایستگاهی‌اند (راند ۱۹۸)", () => {
+    const l12 = line(12);
+    expect(l12.fa).toBe("خط معرفی و اشاره");
+    expect(l12.color).toBe("pink");
+    expect(l12.stations.map((s) => s.lesson)).toEqual([10, 10, 10]);
+    expect(l12.stations.map((s) => s.section)).toEqual([0, 1, 2]);
+    expect(l12.stations.map((s) => s.id)).toEqual(["g-be-intro", "g-demonstratives", "g-possessive-jobs"]);
+    expect(line(13).color).toBe("blue");
+    expect(line(13).stations.map((s) => s.lesson)).toEqual([11, 11, 11]);
+    expect(line(13).stations.map((s) => s.id)).toEqual(["g-nationalities", "g-can-ability", "g-there-advice"]);
+    expect(line(14).color).toBe("purple");
+    expect(line(14).stations.map((s) => s.lesson)).toEqual([12, 12, 12]);
+    expect(line(14).stations.map((s) => s.id)).toEqual(["g-personality-adj", "g-present-progressive", "g-past-narrative"]);
+  });
+
   it("هر رنگِ مصرفی خط، پالتِ کاملِ LINE_COLORS دارد (بدون حفره)", () => {
     for (const l of GRAMMAR_LINES) {
       const c = LINE_COLORS[l.color as GrammarLineColor];
@@ -225,7 +240,7 @@ describe("متروی گرامر — خط‌های سه‌پایه (راند ۱۹
   });
 
   it("ایستگاه اول هر خط تازه باز و دومش قفل است (همان قرارداد زنجیره)", () => {
-    for (const id of [7, 8, 9, 10, 11]) {
+    for (const id of [7, 8, 9, 10, 11, 12, 13, 14]) {
       expect(stationStatus(line(id), 0, {})).toBe("open");
       expect(stationStatus(line(id), 1, {})).toBe("locked");
     }
@@ -239,7 +254,7 @@ describe("متروی گرامر — خط‌های سه‌پایه (راند ۱۹
     ).toBe(true);
   });
 
-  it("درس‌های ۹۰ثانیه‌ای هر ۳۴ ایستگاه را با ترتیبِ نقشه پوشش می‌دهند", () => {
+  it("درس‌های ۹۰ثانیه‌ای هر ۴۳ ایستگاه را با ترتیبِ نقشه پوشش می‌دهند", () => {
     const stationIds = GRAMMAR_LINES.flatMap((l) => l.stations.map((s) => s.id));
     expect(GRAMMAR_MICRO_LESSONS.map((l) => l.stationId)).toEqual(stationIds);
   });

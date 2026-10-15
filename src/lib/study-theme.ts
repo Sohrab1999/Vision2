@@ -104,6 +104,37 @@ export const lessonTheme: Record<string, LessonTheme> = {
     chipBg: "bg-fuchsia-100 text-fuchsia-800",
     bar: "bg-fuchsia-500",
   },
+  // راند ۱۹۸ — سه خانوادهٔ جزوه‌های متوسطهٔ اول (Prospect 1-3)
+  pink: {
+    text: "text-pink-700",
+    bg: "bg-pink-700",
+    bgSoft: "bg-pink-50",
+    border: "border-pink-200",
+    gradient: "from-pink-500 to-pink-800",
+    softText: "text-pink-600",
+    chipBg: "bg-pink-100 text-pink-800",
+    bar: "bg-pink-500",
+  },
+  blue: {
+    text: "text-blue-700",
+    bg: "bg-blue-700",
+    bgSoft: "bg-blue-50",
+    border: "border-blue-200",
+    gradient: "from-blue-500 to-blue-800",
+    softText: "text-blue-600",
+    chipBg: "bg-blue-100 text-blue-800",
+    bar: "bg-blue-500",
+  },
+  purple: {
+    text: "text-purple-700",
+    bg: "bg-purple-700",
+    bgSoft: "bg-purple-50",
+    border: "border-purple-200",
+    gradient: "from-purple-500 to-purple-800",
+    softText: "text-purple-700",
+    chipBg: "bg-purple-100 text-purple-800",
+    bar: "bg-purple-500",
+  },
 };
 
 export function themeOf(color: string): LessonTheme {
@@ -164,4 +195,8 @@ export const avatarClasses: Record<string, string> = {
   orange: "bg-gradient-to-br from-orange-400 to-orange-700 shadow-orange-700/30",
   indigo: "bg-gradient-to-br from-indigo-400 to-indigo-700 shadow-indigo-700/30",
   fuchsia: "bg-gradient-to-br from-fuchsia-400 to-fuchsia-700 shadow-fuchsia-700/30",
+  // راند ۱۹۸ — متوسطهٔ اول
+  pink: "bg-gradient-to-br from-pink-400 to-pink-700 shadow-pink-700/30",
+  blue: "bg-gradient-to-br from-blue-400 to-blue-700 shadow-blue-700/30",
+  purple: "bg-gradient-to-br from-purple-400 to-purple-700 shadow-purple-700/30",
 };

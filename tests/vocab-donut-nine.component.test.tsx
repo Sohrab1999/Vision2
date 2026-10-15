@@ -14,21 +14,21 @@ import { lessons, totalVocabulary } from "@/data";
 import { LESSONS_META } from "@/data/lesson-meta";
 import { ring600 } from "@/lib/ui-colors";
 
-describe("دونات پیشرفت واژگان — قفسهٔ نه‌درسی (راند ۱۹۴)", () => {
+describe("دونات پیشرفت واژگان — قفسهٔ دوازده‌درسی (راندهای ۱۹۴/۱۹۸)", () => {
   beforeEach(() => {
     cleanup();
     useStudy.setState({ known: {}, results: {} });
   });
 
-  it("تازه‌کار: صفرِ صادق — بدونِ کمان، «۰ از ۱۱۱۵ واژه»، ۹ ردیفِ لِجند با نوارِ «۰٪»", () => {
+  it("تازه‌کار: صفرِ صادق — بدونِ کمان، «۰ از ۱۳۱۲ واژه»، ۱۲ ردیفِ لِجند با نوارِ «۰٪»", () => {
     render(<VocabDonut />);
     expect(screen.getByLabelText(/دونات پیشرفت واژگان/)).toBeInTheDocument();
-    expect(screen.getAllByText(/از ۱۱۱۵ واژه/).length).toBeGreaterThanOrEqual(1); // زیرنویس + شمارندهٔ مرکزی
+    expect(screen.getAllByText(/از ۱۳۱۲ واژه/).length).toBeGreaterThanOrEqual(1); // زیرنویس + شمارندهٔ مرکزی
     // بدونِ کمان: فقط circleِ زمینه
     const svg = screen.getByLabelText(/دونات پیشرفت واژگان/);
     expect(svg.querySelectorAll("circle")).toHaveLength(1);
-    // ۹ ردیفِ لِجند (هر درس یک ردیف)
-    expect(screen.getAllByRole("button", { name: /رفتن به واژگان درس/ })).toHaveLength(9);
+    // ۱۲ ردیفِ لِجند (هر درس یک ردیف)
+    expect(screen.getAllByRole("button", { name: /رفتن به واژگان درس/ })).toHaveLength(12);
   });
 
   it("seed واژه‌های بلدم در سه پایه → سه کمان با رنگِ خانواده + مخرجِ کلِ کتاب (۱۱۱۵)", () => {

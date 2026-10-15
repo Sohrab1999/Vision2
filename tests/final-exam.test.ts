@@ -33,9 +33,9 @@ const identity = <T,>(a: T[]): T[] => [...a];
 const r = (p: number) => ({ correct: 1, total: 2, percent: p, at: "2026-01-01T00:00:00.000Z" });
 
 describe("FINAL_GRADES definitions", () => {
-  it("pins the three grades, their lessons and their result keys", () => {
-    expect(FINAL_GRADES).toHaveLength(3);
-    const [g10, g11, g12] = FINAL_GRADES;
+  it("pins the six grades, their lessons and their result keys (six-grade shelf r198)", () => {
+    expect(FINAL_GRADES).toHaveLength(6);
+    const [g10, g11, g12, g7, g8, g9] = FINAL_GRADES;
     expect(g10.id).toBe("g10");
     expect(g10.label).toBe("پایهٔ دهم");
     expect(g10.lessons).toEqual([7, 8, 9]);
@@ -54,6 +54,20 @@ describe("FINAL_GRADES definitions", () => {
     expect(g12.withBank).toBe(false);
     expect(g12.resultKey).toBe("final-12");
     expect(g12.category).toBe("final-12");
+    // راند ۱۹۸ — متوسطهٔ اول؛ هر پایه یک درسِ جزوه‌ای دارد
+    expect(g7.id).toBe("g7");
+    expect(g7.label).toBe("پایهٔ هفتم");
+    expect(g7.lessons).toEqual([10]);
+    expect(g7.resultKey).toBe("final-7");
+    expect(g7.category).toBe("final-7");
+    expect(g8.id).toBe("g8");
+    expect(g8.label).toBe("پایهٔ هشتم");
+    expect(g8.lessons).toEqual([11]);
+    expect(g8.resultKey).toBe("final-8");
+    expect(g9.id).toBe("g9");
+    expect(g9.label).toBe("پایهٔ نهم");
+    expect(g9.lessons).toEqual([12]);
+    expect(g9.resultKey).toBe("final-9");
     for (const g of FINAL_GRADES) expect(g.perLesson).toBe(10);
   });
 
@@ -205,13 +219,16 @@ describe("certificate accent — نشانِ رنگِ خانواده (راند ۱
       const lead = LESSONS_META.find((l) => l.id === g.lessons[0])!;
       expect(g.accent, `grade ${g.id} must lead with its first lesson's family`).toBe(lead.color);
     }
-    expect(FINAL_GRADES.map((g) => g.accent)).toEqual(["orange", "emerald", "violet"]);
+    expect(FINAL_GRADES.map((g) => g.accent)).toEqual(["orange", "emerald", "violet", "pink", "blue", "purple"]);
   });
 
   it("finalAccentOf maps the family keys and lands emerald for strangers", () => {
     expect(finalAccentOf("final-10")).toBe("orange");
     expect(finalAccentOf("final")).toBe("emerald");
     expect(finalAccentOf("final-12")).toBe("violet");
+    expect(finalAccentOf("final-7")).toBe("pink");
+    expect(finalAccentOf("final-8")).toBe("blue");
+    expect(finalAccentOf("final-9")).toBe("purple");
     expect(finalAccentOf("1:vocab")).toBe("emerald");
     expect(finalAccentOf("exam")).toBe("emerald");
   });

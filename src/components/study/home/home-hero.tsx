@@ -60,7 +60,7 @@ export default function HomeHero() {
           </span>
         </motion.h1>
         <motion.p {...rise(0.14, reduceMotion)} className="mb-6 max-w-lg text-[15px] leading-8 text-stone-600">
-          نُه درس در {faNum(3)} پایه: جزوه‌های کامل دهم، یازدهم و دوازدهم — واژگان کامل، مکالمه و ریدینگ با <b className="text-emerald-700">روخوانی هوش مصنوعی</b>،
+          دوازده درس در {faNum(6)} پایه: جزوه‌های کامل هفتم تا دوازدهم — واژگان کامل، مکالمه و ریدینگ با <b className="text-emerald-700">روخوانی هوش مصنوعی</b>،
           گرامر تشریحی، فلش‌کارت و بیش از {faNum(TOTAL_QUESTIONS)} تست کنکوری — همه در یک کتاب دیجیتال زنده.
         </motion.p>
         <motion.div {...rise(0.21, reduceMotion)} className="flex flex-wrap items-center gap-3">

@@ -134,12 +134,46 @@ export const LESSONS_META: LessonMeta[] = [
     quizCount: 40,
     grammarCount: 3,
   },
+  // راند ۱۹۸ — «قفسهٔ شش‌پایه»: جزوه‌های متوسطهٔ اول (Prospect 1-3)
+  {
+    id: 10,
+    titleEn: "Hello, English!",
+    titleFa: "سلام، انگلیسی!",
+    tagline: "الفبا، احوالپرسی، خانواده و مشاغل با فعل to be",
+    color: "pink",
+    grade: "هفتم",
+    vocabCount: 65,
+    quizCount: 40,
+    grammarCount: 3,
+  },
+  {
+    id: 11,
+    titleEn: "My World",
+    titleFa: "دنیای من",
+    tagline: "ملیت‌ها، روزهای هفته، توانایی‌ها با can و توصیه",
+    color: "blue",
+    grade: "هشتم",
+    vocabCount: 68,
+    quizCount: 40,
+    grammarCount: 3,
+  },
+  {
+    id: 12,
+    titleEn: "People and Media",
+    titleFa: "آدم‌ها و رسانه",
+    tagline: "شخصیت، سفر، جشن‌ها و گذشتهٔ ساده",
+    color: "purple",
+    grade: "نهم",
+    vocabCount: 64,
+    quizCount: 40,
+    grammarCount: 3,
+  },
 ];
 
-export const TOTAL_VOCABULARY = 1115;
-export const LESSON_QUIZ_COUNT = 370;
+export const TOTAL_VOCABULARY = 1312;
+export const LESSON_QUIZ_COUNT = 490;
 export const EXAM_BANK_SIZE = 360;
-export const TOTAL_QUESTIONS = LESSON_QUIZ_COUNT + EXAM_BANK_SIZE; // 730
+export const TOTAL_QUESTIONS = LESSON_QUIZ_COUNT + EXAM_BANK_SIZE; // 850
 
 /** درس‌های جزوهٔ اصلی (یازدهم) — بانک ۳۶۰ تستی و آزمون پایان ترم همین سه درس‌اند */
 export const CORE_LESSON_IDS = [1, 2, 3] as const;
@@ -154,7 +188,20 @@ export function lessonMetaById(id: number): LessonMeta | undefined {
 // تنها منبع حقیقت‌اند و برای شناسه‌های ناشناخته هم امن‌اند.
 // ------------------------------------------------------------------
 
-const ORDINAL_FA = ["اول", "دوم", "سوم", "چهارم", "پنجم", "ششم", "هفتم", "هشتم", "نهم", "دهم"];
+const ORDINAL_FA = [
+  "اول",
+  "دوم",
+  "سوم",
+  "چهارم",
+  "پنجم",
+  "ششم",
+  "هفتم",
+  "هشتم",
+  "نهم",
+  "دهم",
+  "یازدهم",
+  "دوازدهم",
+];
 
 /** ترتیبِ فارسیِ درس: ۴ → «چهارم»؛ خارج از جدول → رقم فارسی */
 export function lessonOrdinalFa(id: number): string {
@@ -175,5 +222,8 @@ export function lessonNumFa(id: number): string {
 export function lessonGradeFa(id: number): LessonGrade {
   if (id <= 3) return "یازدهم";
   if (id <= 6) return "دوازدهم";
-  return "دهم";
+  if (id <= 9) return "دهم";
+  if (id === 10) return "هفتم";
+  if (id === 11) return "هشتم";
+  return "نهم";
 }

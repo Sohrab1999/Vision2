@@ -1979,4 +1979,498 @@ export const GRAMMAR_MICRO_LESSONS: GrammarMicroLesson[] = [
       },
     ],
   },
+
+  // ---------------- خط ۱۲-۱۴ — متوسطهٔ اول (راند ۱۹۸، قفسهٔ شش‌پایه) ----------------
+  {
+    stationId: "g-be-intro",
+    hook: "اولین جملهٔ هر زبان‌آموز «I am …» است؛ اما همین جمله در امتحان به سؤال و منفی تبدیل می‌شود. این ایستگاه ستونِ معرفی است.",
+    see: {
+      pieces: [
+        { text: "I", role: "subject" },
+        { text: "am", role: "verb" },
+        { text: "a student", role: "rest" },
+      ],
+      note: "am فقط با I می‌نشیند؛ is با او/او (مفرد) و are با شما/ما/آن‌ها — فعل به فاعل می‌چسبد.",
+    },
+    mirrors: [
+      {
+        fa: "من دانش‌آموز پایهٔ هفتم هستم.",
+        en: "I am a seventh-grade student.",
+        adds: "معرفیِ خود همیشه با am شروع می‌شود؛ شکلِ کوتاه I'm در مکالمه رایج است.",
+        mistake: {
+          wrong: "I is a seventh-grade student.",
+          right: "I am a seventh-grade student.",
+          why: "فعل is هرگز با I نمی‌آید؛ جفتِ همیشگیِ I با am است.",
+        },
+      },
+      {
+        fa: "تو هم‌کلاسیِ تازه‌ای هستی؟",
+        en: "Are you a new classmate?",
+        adds: "در سؤال، فعل to be از میانهٔ جمله به اول می‌آید؛ جواب کوتاه: Yes, I am.",
+        mistake: {
+          wrong: "You are a new classmate? — Yes, I are.",
+          right: "Are you a new classmate? — Yes, I am.",
+          why: "سؤال به جابه‌جایی فعل نیاز دارد؛ و پاسخِ کوتاهِ you همیشه I am است نه I are.",
+        },
+      },
+    ],
+    try: [
+      {
+        prompt: "My sister ___ a nurse in a big hospital.",
+        options: ["am", "is", "are"],
+        answer: 1,
+        why: "سوم‌شخصِ مفرد (my sister) با is جفت می‌شود.",
+      },
+      {
+        prompt: "___ you a new student? — Yes, I am.",
+        options: ["Are", "Is", "Am"],
+        answer: 0,
+        why: "سؤال با you همیشه Are می‌گیرد.",
+      },
+      {
+        prompt: "We ___ in the seventh grade this year.",
+        options: ["is", "am", "are"],
+        answer: 2,
+        why: "we جمع است → are.",
+      },
+    ],
+  },
+  {
+    stationId: "g-demonstratives",
+    hook: "با چهار کلمهٔ this/that/these/those می‌توانی به همه‌چیزِ کلاس اشاره کنی؛ اما فعلِ بعدشان مفرد است یا جمع؟ این‌جا یاد می‌گیری.",
+    see: {
+      pieces: [
+        { text: "These", role: "rest" },
+        { text: "are", role: "verb" },
+        { text: "my books", role: "rest" },
+      ],
+      note: "نزدیک و مفرد → this is؛ دور و مفرد → that is؛ جمع‌ها → these/those + are.",
+    },
+    mirrors: [
+      {
+        fa: "این‌ها کتاب‌های من‌اند.",
+        en: "These are my books.",
+        adds: "these برای جمعِ نزدیک است و فعلِ جمع are را می‌کشد.",
+        mistake: {
+          wrong: "These is my books.",
+          right: "These are my books.",
+          why: "these جمع است؛ فعلش هم باید جمع باشد: are.",
+        },
+      },
+      {
+        fa: "آن (دور) مدرسهٔ ماست.",
+        en: "That is our school.",
+        adds: "چیزی که دور است با that نشان داده می‌شود و فعل مفرد is می‌گیرد.",
+        mistake: {
+          wrong: "That are our school.",
+          right: "That is our school.",
+          why: "that مفرد است؛ is می‌گیرد — are مالِ these/those است.",
+        },
+      },
+    ],
+    try: [
+      {
+        prompt: "___ is my desk and ___ is your chair (دور).",
+        options: ["This / that", "These / those", "That / this"],
+        answer: 0,
+        why: "نزدیک → this، دور → that؛ هر دو مفرد با is.",
+      },
+      {
+        prompt: "Look at ___ pens over there!",
+        options: ["this", "those", "that"],
+        answer: 1,
+        why: "pens جمع + over there (دور) → those.",
+      },
+      {
+        prompt: "I have three English ___ in my bag.",
+        options: ["dictionarys", "dictionaries", "dictionaryes"],
+        answer: 1,
+        why: "اسمِ تمام‌شده به «صدادار + y» جمعش -ies می‌گیرد: dictionaries.",
+      },
+    ],
+  },
+  {
+    stationId: "g-possessive-jobs",
+    hook: "«کیفِ او» یا «bag his»؟ و چرا شغلِ هرکس با a/an می‌آید؟ این ایستگاه مالکیت و مشاغل را تمیز می‌کند.",
+    see: {
+      pieces: [
+        { text: "Her", role: "rest" },
+        { text: "bag", role: "rest" },
+        { text: "is", role: "verb" },
+        { text: "new", role: "rest" },
+      ],
+      note: "my/your/his/her همیشه «قبل از اسم» می‌آیند و با a/an جمع نمی‌شوند.",
+    },
+    mirrors: [
+      {
+        fa: "مادر او پرستار است.",
+        en: "His mother is a nurse.",
+        adds: "صفت ملکی (his) قبل از اسم؛ شغلِ مفرد با a می‌آید.",
+        mistake: {
+          wrong: "Him mother is nurse.",
+          right: "His mother is a nurse.",
+          why: "صفت ملکی his است نه him؛ و شغل بدون a نمی‌ماند.",
+        },
+      },
+      {
+        fa: "او مهندسِ یک شرکت بزرگ است.",
+        en: "She is an engineer at a big company.",
+        adds: "قبل از صدادار (engineer) → an؛ قبل از همخوان → a.",
+        mistake: {
+          wrong: "She is a engineer at a big company.",
+          right: "She is an engineer at a big company.",
+          why: "engineer با صدای صدادار شروع می‌شود؛ a/an باید با صدا هماهنگ باشد.",
+        },
+      },
+    ],
+    try: [
+      {
+        prompt: "Sara is my classmate. ___ bag is blue.",
+        options: ["His", "Her", "Your"],
+        answer: 1,
+        why: "Sara زن است → her.",
+      },
+      {
+        prompt: "My father is ___ taxi driver.",
+        options: ["a", "an", "the"],
+        answer: 0,
+        why: "taxi با همخوان شروع می‌شود → a.",
+      },
+      {
+        prompt: "___ name is Reza and he is my best friend.",
+        options: ["His", "Her", "Their"],
+        answer: 0,
+        why: "he → his؛ جمله با he ادامه دارد.",
+      },
+    ],
+  },
+  {
+    stationId: "g-nationalities",
+    hook: "از کجایی؟ I'm from Iran — ولی «ایرانی» به انگلیسی چیست؟ پسوندهای ملیت قاعدهٔ کوچک و پرتکراری دارند.",
+    see: {
+      pieces: [
+        { text: "He", role: "subject" },
+        { text: "is from", role: "verb" },
+        { text: "China", role: "rest" },
+        { text: "→ He is Chinese", role: "rest" },
+      ],
+      note: "کشور با be from می‌آید؛ ملیت با پسوند: -ian (Iran→Iranian)، -ese (China→Chinese)، -ish (Spain→Spanish).",
+    },
+    mirrors: [
+      {
+        fa: "من از ایرانم و فارسی صحبت می‌کنم.",
+        en: "I am from Iran and I speak Persian.",
+        adds: "be from + کشور برای اصل و نسب؛ زبانِ گفتن با speak می‌آید.",
+        mistake: {
+          wrong: "I am Iran and I speak Iran.",
+          right: "I am from Iran and I speak Persian.",
+          why: "از کشور با from می‌گوییم؛ زبانِ ایران فارسی است نه «ایرانی».",
+        },
+      },
+      {
+        fa: "دوست من برزیلی است.",
+        en: "My friend is Brazilian.",
+        adds: "Brazil → Brazilian؛ ملیت همیشه با حرف بزرگ نوشته می‌شود.",
+        mistake: {
+          wrong: "My friend is brazilian.",
+          right: "My friend is Brazilian.",
+          why: "ملیت‌ها (مثل اسم کشورها) با حرف بزرگ شروع می‌شوند.",
+        },
+      },
+    ],
+    try: [
+      {
+        prompt: "Jack was born in Sydney; he is ___.",
+        options: ["Australian", "Australia", "Australia's"],
+        answer: 0,
+        why: "ملیتِ استرالیا: Australian (پسوند -ian).",
+      },
+      {
+        prompt: "Paris is the capital of France and ___ people speak French.",
+        options: ["France", "French", "France's"],
+        answer: 1,
+        why: "مردم/زبانِ فرانسه: French.",
+      },
+      {
+        prompt: "A: What's her nationality? B: She is ___.",
+        options: ["Spain", "Spanish", "Spain-country"],
+        answer: 1,
+        why: "ملیتِ اسپانیا: Spanish (پسوند -ish).",
+      },
+    ],
+  },
+  {
+    stationId: "g-can-ability",
+    hook: "«می‌توانم» یعنی can — اما چرا بعدش هیچ‌وقت s نمی‌آید؟ چون can فعلِ کمکی است و فعلِ اصلی را ساده نگه می‌دارد.",
+    see: {
+      pieces: [
+        { text: "She", role: "subject" },
+        { text: "can", role: "verb" },
+        { text: "ride", role: "rest" },
+        { text: "a bicycle", role: "rest" },
+      ],
+      note: "can + فعلِ ساده؛ منفی: can't؛ سؤال: Can you…? — ترکیب‌ها: play football، go shopping، make a cake.",
+    },
+    mirrors: [
+      {
+        fa: "تو می‌توانی دوچرخه‌سواری کنی؟",
+        en: "Can you ride a bicycle?",
+        adds: "سؤالِ توانایی با جابه‌جایی can به اول جمله ساخته می‌شود.",
+        mistake: {
+          wrong: "Do you can ride a bicycle?",
+          right: "Can you ride a bicycle?",
+          why: "can خودش فعلِ کمکی است و با do ساخته نمی‌شود.",
+        },
+      },
+      {
+        fa: "او اصلاً نمی‌تواند آشپزی کند.",
+        en: "He can't cook at all.",
+        adds: "منفیِ can = can't (cannot)؛ بعدش فعل ساده.",
+        mistake: {
+          wrong: "He can't cooks at all.",
+          right: "He can't cook at all.",
+          why: "بعد از can/can't فعلِ اصلی هرگز s نمی‌گیرد.",
+        },
+      },
+    ],
+    try: [
+      {
+        prompt: "Tara can ___ a bicycle very well.",
+        options: ["rides", "riding", "ride"],
+        answer: 2,
+        why: "بعد از can فعل ساده می‌آید: ride.",
+      },
+      {
+        prompt: "___ you help me with this puzzle, please?",
+        options: ["Can", "Are", "Do"],
+        answer: 0,
+        why: "درخواستِ توانایی با Can شروع می‌شود.",
+      },
+      {
+        prompt: "I can play ___ but I can't play ___.",
+        options: ["tennis / the piano", "the tennis / piano", "a tennis / the piano"],
+        answer: 0,
+        why: "ورزش بدون the می‌آید؛ سازهٔ موسیقی با the.",
+      },
+    ],
+  },
+  {
+    stationId: "g-there-advice",
+    hook: "«یک ایستگاه مترو هست» و «باید استراحت کنی» — دو ابزارِ روزمرهٔ هشتم: there is/are برای وجود، should برای توصیه.",
+    see: {
+      pieces: [
+        { text: "There", role: "rest" },
+        { text: "is", role: "verb" },
+        { text: "a metro station", role: "rest" },
+        { text: "near the park", role: "rest" },
+      ],
+      note: "مفرد → there is؛ جمع → there are؛ توصیه → should + فعل ساده؛ پیشنهاد → Why don't you + فعل ساده؟",
+    },
+    mirrors: [
+      {
+        fa: "در مزرعه شش گاو هست.",
+        en: "There are six cows on the farm.",
+        adds: "جمعِ واقعی (six cows) فعلِ جمع می‌خواهد: there are.",
+        mistake: {
+          wrong: "There is six cows on the farm.",
+          right: "There are six cows on the farm.",
+          why: "بعد از there، فعل با اولین اسمِ بعدی جفت می‌شود؛ cows جمع است.",
+        },
+      },
+      {
+        fa: "آنفلوانزا داری؛ باید خانه بمانی.",
+        en: "You have the flu; you should stay at home.",
+        adds: "should برای نصیحتِ دوستانه؛ بعدش فعل ساده — بدون to.",
+        mistake: {
+          wrong: "You should to stay at home.",
+          right: "You should stay at home.",
+          why: "بعد از should فعلِ ساده می‌آید؛ to مالِ want/hope است.",
+        },
+      },
+    ],
+    try: [
+      {
+        prompt: "___ don't you come with us next Thursday?",
+        options: ["What", "Why", "Where"],
+        answer: 1,
+        why: "پیشنهادِ دوستانه با Why don't you…? ساخته می‌شود.",
+      },
+      {
+        prompt: "You have a bad cough. You ___ rest and drink warm tea.",
+        options: ["should", "can't", "aren't"],
+        answer: 0,
+        why: "توصیهٔ پزشکی → should + فعل ساده.",
+      },
+      {
+        prompt: "___ there a cinema in your neighborhood?",
+        options: ["Are", "Is", "Do"],
+        answer: 1,
+        why: "a cinema مفرد است → Is there.",
+      },
+    ],
+  },
+  {
+    stationId: "g-personality-adj",
+    hook: "«او مهربان است» — صفت بعد از be می‌نشیند؛ اما در «آدمِ مهربان» فعل حذف می‌شود. جای صفت، امتحانِ نهم را تعیین می‌کند.",
+    see: {
+      pieces: [
+        { text: "He", role: "subject" },
+        { text: "is", role: "verb" },
+        { text: "kind", role: "rest" },
+      ],
+      note: "be + صفت (He is kind) در برابر صفت + اسم (a kind man) — صفت هرگز جمع نمی‌شود.",
+    },
+    mirrors: [
+      {
+        fa: "برادر نسرین جدی نیست؛ بامزه است.",
+        en: "Nasrin's brother is not serious; he is quite funny.",
+        adds: "بعد از be صفت می‌آید؛ quite/very شدت می‌دهد.",
+        mistake: {
+          wrong: "Nasrin's brother is not seriously; he is quite funnily.",
+          right: "Nasrin's brother is not serious; he is quite funny.",
+          why: "بعد از be صفت می‌آید نه قید — seriously/funnily قیدند.",
+        },
+      },
+      {
+        fa: "او سربازِ شجاعِ مهربانی بود.",
+        en: "He was a brave and kind soldier.",
+        adds: "چند صفت قبل از اسم می‌آیند و با and وصل می‌شوند.",
+        mistake: {
+          wrong: "He was a bravely and kindly soldier.",
+          right: "He was a brave and kind soldier.",
+          why: "قبل از اسم، شکلِ صفی می‌آید نه قیدی.",
+        },
+      },
+    ],
+    try: [
+      {
+        prompt: "My best friend ___ very kind and generous.",
+        options: ["are", "is", "be"],
+        answer: 1,
+        why: "فاعل مفرد → is + صفت.",
+      },
+      {
+        prompt: "We don't like ___ people who never help others.",
+        options: ["selfishness", "selfishly", "selfish"],
+        answer: 2,
+        why: "قبل از اسمِ people صفت می‌آید: selfish.",
+      },
+      {
+        prompt: "The students of class two ___ hard-working.",
+        options: ["is", "was", "are"],
+        answer: 2,
+        why: "فاعل جمع → are.",
+      },
+    ],
+  },
+  {
+    stationId: "g-present-progressive",
+    hook: "«الان دارم برنامهٔ محبوبم را می‌بینم» — برای کارِ در جریان، انگلیسی از ing استفاده می‌کند؛ نشانگرهایش را بشناس.",
+    see: {
+      pieces: [
+        { text: "I", role: "subject" },
+        { text: "am watching", role: "verb" },
+        { text: "TV", role: "rest" },
+        { text: "now", role: "rest" },
+      ],
+      note: "am/is/are + V-ing؛ نشانگرها: now، at the moment، Look!، Listen! — know/want/like استمراری نمی‌گیرند.",
+    },
+    mirrors: [
+      {
+        fa: "الان نمی‌توانم حرف بزنم؛ دارم تکالیفم را انجام می‌دهم.",
+        en: "I can't talk now; I am doing my homework.",
+        adds: "کارِ در جریان در لحظهٔ حرف زدن → حال استمراری.",
+        mistake: {
+          wrong: "I can't talk now; I do my homework.",
+          right: "I can't talk now; I am doing my homework.",
+          why: "حال ساده برای عادت است؛ کاری که همین حالا جریان دارد استمراری می‌خواهد.",
+        },
+      },
+      {
+        fa: "بچه‌ها همین حالا از بنای قدیمی عکس می‌گیرند.",
+        en: "The kids are taking photos of the old building at the moment.",
+        adds: "at the moment نشانگرِ استمراری است؛ write→writing حرفِ e را می‌اندازد.",
+        mistake: {
+          wrong: "The kids are takeing photos at the moment.",
+          right: "The kids are taking photos at the moment.",
+          why: "فعلِ تمام‌شده به e بی‌صدا، قبل از ing حرف e را حذف می‌کند: take → taking.",
+        },
+      },
+    ],
+    try: [
+      {
+        prompt: "Listen! The baby ___ in her bedroom.",
+        options: ["sleeps", "is sleeping", "slept"],
+        answer: 1,
+        why: "بعد از Listen! کارِ در جریان → حال استمراری.",
+      },
+      {
+        prompt: "I ___ my homework now.",
+        options: ["am doing", "do", "did"],
+        answer: 0,
+        why: "now نشانگرِ حال استمراری است.",
+      },
+      {
+        prompt: "He can't come to the phone; he ___ a shower.",
+        options: ["is taking", "takes", "took"],
+        answer: 0,
+        why: "همین لحظه در جریان است → استمراری.",
+      },
+    ],
+  },
+  {
+    stationId: "g-past-narrative",
+    hook: "«دیشب مستند را دیدیم» — گذشتهٔ تمام‌شده. باقاعده‌ها -ed می‌گیرند؛ بی‌قاعده‌ها شکلِ دومِ خودشان را دارند و بعد از did همه ساده می‌شوند.",
+    see: {
+      pieces: [
+        { text: "We", role: "subject" },
+        { text: "watched", role: "verb" },
+        { text: "the documentary", role: "rest" },
+        { text: "last night", role: "rest" },
+      ],
+      note: "watch→watched (باقاعده)؛ go→went، see→saw، lose→lost (بی‌قاعده)؛ منفی/سؤال با did + فعل ساده.",
+    },
+    mirrors: [
+      {
+        fa: "او پارسال به اهواز سفر کرد.",
+        en: "He traveled to Ahvaz last year.",
+        adds: "فعلِ باقاعده + ed؛ نشانگرِ زمانِ گذشته (last year) کنارش می‌آید.",
+        mistake: {
+          wrong: "He travel to Ahvaz last year.",
+          right: "He traveled to Ahvaz last year.",
+          why: "گذشتهٔ سادهٔ فعلِ باقاعده ed می‌گیرد؛ شکلِ حال نمی‌ماند.",
+        },
+      },
+      {
+        fa: "دیروز به اخبار گوش ندادی؟",
+        en: "Didn't you listen to the news yesterday?",
+        adds: "بعد از didn't فعل برمی‌گردد به شکل ساده — گذشته فقط یک‌بار می‌آید.",
+        mistake: {
+          wrong: "Didn't you listened to the news yesterday?",
+          right: "Didn't you listen to the news yesterday?",
+          why: "did قبلاً گذشته را نشان داده؛ فعلِ اصلی ساده می‌ماند.",
+        },
+      },
+    ],
+    try: [
+      {
+        prompt: "We ___ to Mashhad two years ago.",
+        options: ["go", "went", "are going"],
+        answer: 1,
+        why: "go بی‌قاعده است: went؛ two years ago گذشتهٔ قطعی.",
+      },
+      {
+        prompt: "___ you see the news yesterday evening?",
+        options: ["Did", "Do", "Are"],
+        answer: 0,
+        why: "سؤالِ گذشته با did + فعل ساده ساخته می‌شود.",
+      },
+      {
+        prompt: "Reza was upset because he ___ his wallet at the station.",
+        options: ["loses", "lost", "is losing"],
+        answer: 1,
+        why: "lose → lost (بی‌قاعده)؛ جملهٔ توضیح در گذشته است.",
+      },
+    ],
+  },
 ];

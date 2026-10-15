@@ -173,7 +173,7 @@ export default function ExamView() {
           onClick={() => setMode("final")}
           icon={GraduationCap}
           title="آزمون جامع پایان ترم"
-          desc="به‌انتخابِ پایه: دهم، یازدهم، دوازدهم — با گواهی پایان ترم"
+          desc="به‌انتخابِ پایه: هفتم تا دوازدهم — با گواهی پایان ترم"
           accent="amber"
           best={bestFinal ? `بهترین نتیجه: ${faNum(bestFinal.percent)}٪` : undefined}
         />

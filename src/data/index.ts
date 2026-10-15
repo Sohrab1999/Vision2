@@ -7,6 +7,9 @@ import lesson6 from "./lesson6";
 import lesson7 from "./lesson7";
 import lesson8 from "./lesson8";
 import lesson9 from "./lesson9";
+import lesson10 from "./lesson10";
+import lesson11 from "./lesson11";
+import lesson12 from "./lesson12";
 import examBank from "./exam";
 import type { LessonData } from "@/lib/study-types";
 
@@ -15,6 +18,8 @@ import type { LessonData } from "@/lib/study-types";
 // to the Future / Renewable Energy (راند ۱۹۱ — «جزوه‌های بیشتر»)
 // درس‌های ۷-۹: جزوه‌های پایهٔ دهم — Saving Nature / Wonders of Creation /
 // The Value of Knowledge (راند ۱۹۴ — «قفسهٔ کامل»)
+// درس‌های ۱۰-۱۲: جزوه‌های متوسطهٔ اول — Hello, English! / My World / People
+// and Media (راند ۱۹۸ — «قفسهٔ شش‌پایه»؛ جزوه‌های دکتر حسن لطفی، هفتم/هشتم/نهم)
 export const lessons: LessonData[] = [
   lesson1,
   lesson2,
@@ -25,6 +30,9 @@ export const lessons: LessonData[] = [
   lesson7,
   lesson8,
   lesson9,
+  lesson10,
+  lesson11,
+  lesson12,
 ];
 export { examBank };
 export * from "./appendix";

@@ -26,9 +26,9 @@ import {
 import { lessons, examBank } from "@/data";
 
 describe("lesson-meta drift guard", () => {
-  it("covers exactly the 9 book lessons, in order", () => {
-    expect(LESSONS_META.map((m) => m.id)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9]);
-    expect(lessons.map((l) => l.id)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  it("covers exactly the 12 book lessons, in order (six-grade shelf r198)", () => {
+    expect(LESSONS_META.map((m) => m.id)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
+    expect(lessons.map((l) => l.id)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
   });
 
   it("matches every real lesson's identity fields (incl. grade)", () => {
@@ -52,16 +52,22 @@ describe("lesson-meta drift guard", () => {
     }
   });
 
-  it("grades are pinned: 1-3 = یازدهم (core), 4-6 = دوازدهم (complementary), 7-9 = دهم (Vision 1)", () => {
+  it("grades are pinned: 1-3 = یازدهم, 4-6 = دوازدهم, 7-9 = دهم, 10-12 = هفتم/هشتم/نهم (Prospect)", () => {
     for (const id of [1, 2, 3]) expect(lessons.find((l) => l.id === id)!.grade).toBe("یازدهم");
     for (const id of [4, 5, 6]) expect(lessons.find((l) => l.id === id)!.grade).toBe("دوازدهم");
     for (const id of [7, 8, 9]) expect(lessons.find((l) => l.id === id)!.grade).toBe("دهم");
+    expect(lessons.find((l) => l.id === 10)!.grade).toBe("هفتم");
+    expect(lessons.find((l) => l.id === 11)!.grade).toBe("هشتم");
+    expect(lessons.find((l) => l.id === 12)!.grade).toBe("نهم");
     expect(lessonGradeFa(1)).toBe("یازدهم");
     expect(lessonGradeFa(3)).toBe("یازدهم");
     expect(lessonGradeFa(4)).toBe("دوازدهم");
     expect(lessonGradeFa(6)).toBe("دوازدهم");
     expect(lessonGradeFa(7)).toBe("دهم");
     expect(lessonGradeFa(9)).toBe("دهم");
+    expect(lessonGradeFa(10)).toBe("هفتم");
+    expect(lessonGradeFa(11)).toBe("هشتم");
+    expect(lessonGradeFa(12)).toBe("نهم");
   });
 
   it("aggregates match the real data layer", () => {
@@ -71,7 +77,7 @@ describe("lesson-meta drift guard", () => {
     expect(TOTAL_QUESTIONS).toBe(LESSON_QUIZ_COUNT + EXAM_BANK_SIZE);
   });
 
-  it("lessonMetaById resolves 1..9 and rejects the rest", () => {
+  it("lessonMetaById resolves 1..12 and rejects the rest", () => {
     expect(lessonMetaById(1)?.titleFa).toBe("فهمیدن مردم");
     expect(lessonMetaById(2)?.color).toBe("amber");
     expect(lessonMetaById(3)?.color).toBe("rose");
@@ -84,18 +90,31 @@ describe("lesson-meta drift guard", () => {
     expect(lessonMetaById(8)?.color).toBe("indigo");
     expect(lessonMetaById(9)?.titleEn).toBe("The Value of Knowledge");
     expect(lessonMetaById(9)?.color).toBe("fuchsia");
+    expect(lessonMetaById(10)?.titleEn).toBe("Hello, English!");
+    expect(lessonMetaById(10)?.color).toBe("pink");
+    expect(lessonMetaById(10)?.grade).toBe("هفتم");
+    expect(lessonMetaById(11)?.titleEn).toBe("My World");
+    expect(lessonMetaById(11)?.color).toBe("blue");
+    expect(lessonMetaById(11)?.grade).toBe("هشتم");
+    expect(lessonMetaById(12)?.titleEn).toBe("People and Media");
+    expect(lessonMetaById(12)?.color).toBe("purple");
+    expect(lessonMetaById(12)?.grade).toBe("نهم");
     expect(lessonMetaById(0)).toBeUndefined();
-    expect(lessonMetaById(10)).toBeUndefined();
+    expect(lessonMetaById(13)).toBeUndefined();
   });
 
-  it("Persian ordinal helpers cover all nine lessons safely", () => {
+  it("Persian ordinal helpers cover all twelve lessons safely", () => {
     expect(lessonOrdinalFa(1)).toBe("اول");
     expect(lessonOrdinalFa(4)).toBe("چهارم");
     expect(lessonOrdinalFa(6)).toBe("ششم");
     expect(lessonOrdinalFa(7)).toBe("هفتم");
     expect(lessonOrdinalFa(9)).toBe("نهم");
+    expect(lessonOrdinalFa(10)).toBe("دهم");
+    expect(lessonOrdinalFa(11)).toBe("یازدهم");
+    expect(lessonOrdinalFa(12)).toBe("دوازدهم");
     expect(lessonOrdinalFa(99)).toBe("۹۹"); // graceful fallback
     expect(lessonNameFa(4)).toBe("درس چهارم");
     expect(lessonNameFa(9)).toBe("درس نهم");
+    expect(lessonNameFa(12)).toBe("درس دوازدهم");
   });
 });

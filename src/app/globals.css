@@ -241,6 +241,17 @@
   --color-violet-50: rgba(59, 40, 92, 0.35);
   --color-violet-200: rgba(110, 80, 170, 0.5);
   --color-violet-300: rgba(130, 100, 190, 0.55);
+  /* r198: the Prospect shelf trio (pink/blue/purple lessons — متوسطهٔ اول).
+     Same mechanism as the r194 trio above: 50 = family-dark tinted wash,
+     200 = mid-tone border wash. pink reuses the duel-land rose-dark base
+     (80,18,28 → shifted magenta), blue = deep sea base, purple = night
+     orchid base (distinct from violet's (59,40,92)). */
+  --color-pink-50: rgba(88, 14, 44, 0.35);
+  --color-pink-200: rgba(190, 45, 110, 0.5);
+  --color-blue-50: rgba(16, 38, 74, 0.4);
+  --color-blue-200: rgba(60, 105, 185, 0.5);
+  --color-purple-50: rgba(52, 26, 88, 0.35);
+  --color-purple-200: rgba(125, 85, 185, 0.5);
   /* r190: arcade dialect dark remaps — ported from the retired
      .dark .from-violet-600 / .to-fuchsia-600 class rules (their consumers
      were swept to the tokens; gradient stops resolve var(--color-arcade-*)
@@ -1390,6 +1401,9 @@ html.user-reduce-motion .streak-flame {
 .dark .gmetro-line[class*="border-lime-200"],.dark .glesson-head[class*="border-lime-200"] { border-color: rgb(101 163 13 / 0.45); background-color: rgb(42 48 8 / 0.3); }
 .dark .gmetro-line[class*="border-indigo-200"],.dark .glesson-head[class*="border-indigo-200"] { border-color: rgb(79 70 229 / 0.5); background-color: rgb(36 33 95 / 0.3); }
 .dark .gmetro-line[class*="border-cyan-200"],.dark .glesson-head[class*="border-cyan-200"] { border-color: rgb(8 145 178 / 0.45); background-color: rgb(21 67 74 / 0.26); }
+.dark .gmetro-line[class*="border-pink-200"],.dark .glesson-head[class*="border-pink-200"] { border-color: rgb(219 39 119 / 0.45); background-color: rgb(112 26 63 / 0.24); }
+.dark .gmetro-line[class*="border-blue-200"],.dark .glesson-head[class*="border-blue-200"] { border-color: rgb(37 99 235 / 0.45); background-color: rgb(23 52 105 / 0.26); }
+.dark .gmetro-line[class*="border-purple-200"],.dark .glesson-head[class*="border-purple-200"] { border-color: rgb(147 51 234 / 0.45); background-color: rgb(74 27 110 / 0.24); }
 .dark .gmetro-line .text-stone-700 { color: #e7e5e4; }
 .dark .gmetro-line .border-stone-200 { border-color: rgb(87 83 78 / 0.45); }
 .dark .gmetro-line .bg-stone-100 { background-color: rgb(68 64 60 / 0.7); }

@@ -85,8 +85,8 @@ export function mapSummary(results: PercentMap): {
 
 // ---------------- استخر سؤال‌ها ----------------
 
-/** سؤال‌های گرامر یک درس از بانک کتاب (category === "grammar") */
-export function lessonGrammarPool(lesson: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9): QuizQuestion[] {
+/** سؤال‌های گرامر یک درس از بانک کتاب (category === "grammar") — راند ۱۹۸: شش‌پایه */
+export function lessonGrammarPool(lesson: GrammarStation["lesson"]): QuizQuestion[] {
   const data = lessons[lesson - 1];
   return data ? data.quizzes.filter((q) => q.category === "grammar") : [];
 }

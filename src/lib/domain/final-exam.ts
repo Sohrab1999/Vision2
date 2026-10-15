@@ -17,7 +17,7 @@ import type { LessonColor, QuizQuestion } from "@/lib/study-types";
 import { LESSONS_META, lessonOrdinalFa } from "@/data/lesson-meta";
 import { shuffle } from "./shuffle";
 
-export type FinalGradeId = "g10" | "g11" | "g12";
+export type FinalGradeId = "g7" | "g8" | "g9" | "g10" | "g11" | "g12";
 
 export interface FinalGradeDef {
   id: FinalGradeId;
@@ -69,6 +69,38 @@ export const FINAL_GRADES: FinalGradeDef[] = [
     category: "final-12",
     accent: "violet",
   },
+  // راند ۱۹۸ — «قفسهٔ شش‌پایه»: متوسطهٔ اول؛ هر پایه یک درسِ جزوه‌ای دارد
+  // (ده سؤال از همان درس) — همان قراردادِ ۱۰تاییِ گزینشِ منبع.
+  {
+    id: "g7",
+    label: "پایهٔ هفتم",
+    lessons: [10],
+    withBank: false,
+    perLesson: 10,
+    resultKey: "final-7",
+    category: "final-7",
+    accent: "pink",
+  },
+  {
+    id: "g8",
+    label: "پایهٔ هشتم",
+    lessons: [11],
+    withBank: false,
+    perLesson: 10,
+    resultKey: "final-8",
+    category: "final-8",
+    accent: "blue",
+  },
+  {
+    id: "g9",
+    label: "پایهٔ نهم",
+    lessons: [12],
+    withBank: false,
+    perLesson: 10,
+    resultKey: "final-9",
+    category: "final-9",
+    accent: "purple",
+  },
 ];
 
 /** definition of a grade final (defensive fallback: the 11th grade) */
@@ -86,13 +118,13 @@ export function finalTimerMinutes(g: FinalGradeDef): number {
   return Math.ceil((finalQuestionsCount(g) * 45) / 60);
 }
 
-/** source bucket of a question id: "l1".."l9" or "x" (the 360 bank) */
+/** source bucket of a question id: "l1".."l12" or "x" (the 360 bank) */
 export function questionGroup(q: { id: string }): string {
   const m = /^l(\d+)/.exec(q.id);
   return m ? `l${m[1]}` : "x";
 }
 
-/** full label map (l1..l9 + x) — quiz-result filters absent groups out */
+/** full label map (l1..l12 + x) — quiz-result filters absent groups out */
 export function examGroupLabels(): Record<string, string> {
   const labels: Record<string, string> = {};
   for (const l of LESSONS_META) labels[`l${l.id}`] = `درس ${lessonOrdinalFa(l.id)} — ${l.titleFa}`;

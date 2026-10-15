@@ -91,4 +91,26 @@ export const LINE_COLORS: Record<GrammarLineColor, LinePalette> = {
     text: "text-cyan-700",
     border: "border-cyan-200",
   },
+  // راند ۱۹۸ — خط‌های متوسطهٔ اول
+  pink: {
+    solid: "bg-pink-700",
+    rail: "bg-gradient-to-l from-pink-300 via-pink-500 to-pink-700",
+    soft: "bg-pink-50",
+    text: "text-pink-700",
+    border: "border-pink-200",
+  },
+  blue: {
+    solid: "bg-blue-700",
+    rail: "bg-gradient-to-l from-blue-300 via-blue-500 to-blue-700",
+    soft: "bg-blue-50",
+    text: "text-blue-700",
+    border: "border-blue-200",
+  },
+  purple: {
+    solid: "bg-purple-700",
+    rail: "bg-gradient-to-l from-purple-300 via-purple-500 to-purple-700",
+    soft: "bg-purple-50",
+    text: "text-purple-700",
+    border: "border-purple-200",
+  },
 };
