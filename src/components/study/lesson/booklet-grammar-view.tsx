@@ -13,6 +13,8 @@ import {
   Blocks,
   BookOpenCheck,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   ExternalLink,
   GraduationCap,
   Keyboard,
@@ -126,6 +128,18 @@ export default function BookletGrammarView({
       return next;
     });
 
+  // ناوبریِ پیوسته (راند ۲۲۶) — «قبلی/بعدی» داخلِ کارت: موضوعِ هدف را در
+  // مجموعهٔ بازها می‌گذارد و با rAF به لنگرش می‌رود — کاملاً محلی، بدونِ
+  // چرخشِ استور (ضمیمه از قبل مونت است و لنگرِ prop یک‌بارِ مصرف است).
+  const navigateToTopic = (id: string) => {
+    setOpen((prev) => new Set(prev).add(id));
+    requestAnimationFrame(() => {
+      document
+        .getElementById(`bg-topic-${id}`)
+        ?.scrollIntoView?.({ behavior: "smooth", block: "start" });
+    });
+  };
+
   // گروه‌بندی بر اساس جزوهٔ مبدأ — راند ۲۱۵ (شماره‌گذاریِ سراسری = جایگاه در آرایه)
   const groups = SOURCE_ORDER.map((src) => ({
     src,
@@ -158,21 +172,36 @@ export default function BookletGrammarView({
             </span>
             <span className="text-stone-500">{faNum(g.topics.length)} موضوع</span>
           </h3>
-          {g.topics.map((topic) => (
-            <TopicCard
-              key={topic.id}
-              topic={topic}
-              index={BOOKLET_GRAMMAR_TOPICS.indexOf(topic) + 1}
-              isOpen={open.has(topic.id)}
-              onToggle={toggle}
-              relatedLesson={BG_TOPIC_TO_LESSON[topic.id]}
-              onOpenLesson={
-                BG_TOPIC_TO_LESSON[topic.id] !== undefined
-                  ? () => openLessonTab(BG_TOPIC_TO_LESSON[topic.id], "grammar")
-                  : undefined
-              }
-            />
-          ))}
+          {g.topics.map((topic) => {
+            const gi = BOOKLET_GRAMMAR_TOPICS.indexOf(topic);
+            return (
+              <TopicCard
+                key={topic.id}
+                topic={topic}
+                index={gi + 1}
+                isOpen={open.has(topic.id)}
+                onToggle={toggle}
+                relatedLesson={BG_TOPIC_TO_LESSON[topic.id]}
+                onOpenLesson={
+                  BG_TOPIC_TO_LESSON[topic.id] !== undefined
+                    ? () => openLessonTab(BG_TOPIC_TO_LESSON[topic.id], "grammar")
+                    : undefined
+                }
+                prevTopic={
+                  gi > 0
+                    ? { id: BOOKLET_GRAMMAR_TOPICS[gi - 1].id, title: BOOKLET_GRAMMAR_TOPICS[gi - 1].title }
+                    : undefined
+                }
+                nextTopic={
+                  gi < BOOKLET_GRAMMAR_TOPICS.length - 1
+                    ? { id: BOOKLET_GRAMMAR_TOPICS[gi + 1].id, title: BOOKLET_GRAMMAR_TOPICS[gi + 1].title }
+                    : undefined
+                }
+                onNavigateTopic={navigateToTopic}
+                totalCount={BOOKLET_GRAMMAR_TOPICS.length}
+              />
+            );
+          })}
         </section>
       ))}
     </div>
@@ -182,7 +211,10 @@ export default function BookletGrammarView({
 /** کارتِ آکاردئونیِ موضوع — هم در زیرتابِ «درسنامهٔ جامع» و هم در تبِ گرامرِ
  * هر درس (پیوندِ درسنامه ↔ درس، راند ۲۲۰) مصرف می‌شود. رفت‌وبرگشتِ راند ۲۲۱:
  * onOpenInAppendix (از درس → ضمیمه با لنگرِ موضوع) و relatedLesson + onOpenLesson
- * (از ضمیمه → درسِ مرتبط) — هردو اختیاری و بستگی به بسترِ میزبان دارند. */
+ * (از ضمیمه → درسِ مرتبط) — هردو اختیاری و بستگی به بسترِ میزبان دارند.
+ * راند ۲۲۶ — ناوبریِ پیوسته: prevTopic/nextTopic/onNavigateTopic/totalCount
+ * فقط در بسترِ ضمیمه پر می‌شوند (مطالعهٔ پیوستهٔ ۳۲ موضوع با جایگاهِ «X از Y»);
+ * درس‌ها کارتِ تک‌پیوندیِ خودشان را بدونِ نوارِ ناوبری می‌بینند. */
 export function TopicCard({
   topic,
   index,
@@ -191,6 +223,10 @@ export function TopicCard({
   relatedLesson,
   onOpenLesson,
   onOpenInAppendix,
+  prevTopic,
+  nextTopic,
+  onNavigateTopic,
+  totalCount,
 }: {
   topic: BgTopic;
   index: number;
@@ -200,6 +236,11 @@ export function TopicCard({
   relatedLesson?: number;
   onOpenLesson?: () => void;
   onOpenInAppendix?: () => void;
+  /** ناوبریِ پیوسته (r226) — همسایه‌هایِ ترتیبِ سراسریِ آرایه؛ فقط ضمیمه. */
+  prevTopic?: { id: string; title: string };
+  nextTopic?: { id: string; title: string };
+  onNavigateTopic?: (id: string) => void;
+  totalCount?: number;
 }) {
   return (
     // لنگرِ اسکرولِ عمیق (r221) — scroll-mt برای فاصلهٔ هدرِ چسبان
@@ -347,6 +388,42 @@ export function TopicCard({
           <TopicDrill topic={topic} />
           <TopicTypeDrill topic={topic} />
           <TopicOrderDrill topic={topic} />
+
+          {/* ناوبریِ پیوسته (راند ۲۲۶) — پایانِ بدنه مثلِ صفحه‌خوانیِ کتاب؛
+              فقط وقتی میزبان (ضمیمه) همسایه‌ها و callback را داده باشد */}
+          {onNavigateTopic && totalCount !== undefined && (prevTopic || nextTopic) && (
+            <div className="flex items-center gap-2 rounded-xl border border-stone-200 c-track-70 p-2 dark:border-stone-700 dark:bg-stone-800/50">
+              {prevTopic ? (
+                <button
+                  type="button"
+                  onClick={() => onNavigateTopic(prevTopic.id)}
+                  aria-label={`موضوعِ قبلی: ${prevTopic.title}`}
+                  className="inline-flex min-w-0 flex-1 items-center justify-end gap-1.5 rounded-lg px-2.5 py-2 text-right text-[12px] font-bold text-stone-600 transition-[background-color,color] hover:bg-stone-100 hover:text-stone-800 dark:text-stone-300 dark:hover:bg-stone-700/50 dark:hover:text-stone-100"
+                >
+                  <ChevronRight size={15} className="shrink-0" />
+                  <span className="min-w-0 truncate">قبلی: {prevTopic.title}</span>
+                </button>
+              ) : (
+                <span className="flex-1" />
+              )}
+              <span className="shrink-0 rounded-full bg-white px-2.5 py-1 text-[11px] font-black text-stone-600 shadow-sm dark:bg-stone-800 dark:text-stone-300">
+                {faNum(index)} از {faNum(totalCount)}
+              </span>
+              {nextTopic ? (
+                <button
+                  type="button"
+                  onClick={() => onNavigateTopic(nextTopic.id)}
+                  aria-label={`موضوعِ بعدی: ${nextTopic.title}`}
+                  className="inline-flex min-w-0 flex-1 items-center gap-1.5 rounded-lg px-2.5 py-2 text-[12px] font-bold text-stone-600 transition-[background-color,color] hover:bg-stone-100 hover:text-stone-800 dark:text-stone-300 dark:hover:bg-stone-700/50 dark:hover:text-stone-100"
+                >
+                  <span className="min-w-0 truncate">بعدی: {nextTopic.title}</span>
+                  <ChevronLeft size={15} className="shrink-0" />
+                </button>
+              ) : (
+                <span className="flex-1" />
+              )}
+            </div>
+          )}
         </div>
       )}
     </div>
