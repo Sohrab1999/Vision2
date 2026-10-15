@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     "وب‌کتاب",
     "آموزش تعاملی",
   ],
-  authors: [{ name: "بر اساس جزوهٔ جمال احمدی" }],
+  // نامِ ناشر/مؤلفِ جزوه‌ها طبق درخواستِ صریح کاربر در هیچ رندر و متادیتایی نمی‌آید (r216)
   applicationName: "ویژن ۲",
   manifest: "/manifest.webmanifest",
   appleWebApp: {

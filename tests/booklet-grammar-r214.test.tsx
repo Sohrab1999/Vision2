@@ -1,7 +1,8 @@
 // @vitest-environment jsdom
 // ---------------------------------------------------------------------
 // راند ۲۱۴ — گاردهای «درسنامهٔ جامع» (مرور گرامرهای پایهٔ هفتم تا نهم،
-// جزوهٔ جامع پایهٔ دهم، صفحات ۲۲-۳۶). قراردادها مثل راندهای ۲۱۰-۲۱۳:
+// جزوهٔ جامع پایهٔ دهم، صفحات ۲۲-۳۶) — راند ۲۱۵: یازدهم (۷ موضوع) —
+// راند ۲۱۶: دوازدهم (۸ موضوع). قراردادها مثل راندهای ۲۱۰-۲۱۳:
 // پینِ شمارش، پینِ نمونه‌های وفادار، بلک‌لیستِ خرابیِ فونت، scrubِ
 // مؤلف/ناشر، سلامتِ آزمونک‌ها (کلید در محدوده، گزینه‌های یکتا) و
 // گاردهای رندرِ زیرتابِ پنجم ضمیمه.
@@ -39,28 +40,30 @@ function flatten(): { rows: number; tables: number; examples: number; drills: nu
 }
 
 describe("booklet-grammar-r214 — دادهٔ درسنامهٔ جامع", () => {
-  it("پینِ ساختار: ۲۳ موضوع (۱۶ دهم + ۷ یازدهم)، ۱۶ ردیفِ جدولِ زمان‌ها، نمونهٔ جمعِ بخش‌ها", () => {
-    expect(ALL).toHaveLength(23);
+  it("پینِ ساختار: ۳۱ موضوع (۱۶ دهم + ۷ یازدهم + ۸ دوازدهم)، ۱۶ ردیفِ جدولِ زمان‌ها، نمونهٔ جمعِ بخش‌ها", () => {
+    expect(ALL).toHaveLength(31);
     expect(ALL.filter((t) => t.source === "دهم")).toHaveLength(16);
     expect(ALL.filter((t) => t.source === "یازدهم")).toHaveLength(7);
+    expect(ALL.filter((t) => t.source === "دوازدهم")).toHaveLength(8);
     const sixteen = ALL.find((t) => t.id === "bg-sixteen-tenses");
     expect(sixteen).toBeDefined();
     expect(sixteen!.tables![0].rows).toHaveLength(16); // ۱۶ زمان
     const f = flatten();
     // عاقل‌بودنِ جمع‌ها — نه صفر، نه انفجار
-    expect(f.tables).toBeGreaterThanOrEqual(18);
-    expect(f.examples).toBeGreaterThanOrEqual(85);
-    expect(f.examples).toBeLessThan(160);
-    expect(f.drills).toBe(31); // ۶+۵+۴+۸+۸ آزمونکِ خودِ جزوه (دهم)
-    expect(f.notes).toBeGreaterThanOrEqual(90);
+    expect(f.tables).toBeGreaterThanOrEqual(22);
+    expect(f.examples).toBeGreaterThanOrEqual(150);
+    expect(f.examples).toBeLessThan(280);
+    expect(f.drills).toBe(37); // ۳۱ آزمونکِ دهم + ۶ دستگریمِ عبارات الحاقِ دوازدهم (کلید ص۱۸۷)
+    expect(f.notes).toBeGreaterThanOrEqual(150);
   });
 
   it("هر موضوع شناسهٔ مبدأ دارد و سرگروه‌ها مستندند", () => {
     for (const t of ALL) {
-      expect(["دهم", "یازدهم"]).toContain(t.source);
+      expect(["دهم", "یازدهم", "دوازدهم"]).toContain(t.source);
     }
     expect(BOOKLET_GRAMMAR_SOURCES["دهم"]).toContain("بنیان‌های هفتم تا نهم");
     expect(BOOKLET_GRAMMAR_SOURCES["یازدهم"]).toContain("Vision Two");
+    expect(BOOKLET_GRAMMAR_SOURCES["دوازدهم"]).toContain("Vision Three");
   });
 
   it("پینِ نمونه‌های وفادارِ جزوه — قاعده‌ها و کلیدهای آزمونک", () => {
@@ -192,17 +195,83 @@ describe("booklet-grammar-r214 — دادهٔ درسنامهٔ جامع", () => 
     const num = ALL.find((t) => t.id === "bg-numbers")!;
     expect(num.notes!.join(" ")).toContain("three hundred horses");
   });
+
+  // ------------------------------------------------ راند ۲۱۶ — دوازدهم
+  it("r216 پینِ وفاداریِ مجهول — نوارِ ترتیب، with، جدولِ افعال لازم و جدولِ زمان‌ها", () => {
+    const pas = ALL.find((t) => t.id === "bg-passive")!;
+    expect(pas.orderStrip).toEqual([
+      "مفعول", "فعل کمکی", "شکل سوم فعل", "قید حالت", "قید مکان", "قید زمان", "by + فاعل",
+    ]);
+    expect(pas.notes!.join(" ")).toContain("The yard was covered with snow");
+    // ۲۹ فعلِ لازمِ جزوه در جدولِ دونیم‌شده (۱۵ ردیف × ۴ ستون)
+    const verbs = pas.tables![0].rows.flat().filter((c) => /^[a-z]/.test(c));
+    expect(verbs).toHaveLength(29);
+    expect(verbs.join(",")).toContain("occur,understand,wait");
+    expect(pas.examples![0].en).toBe("My mother is washing the dishes carefully in the kitchen right now.");
+
+    const pt = ALL.find((t) => t.id === "bg-passive-tenses")!;
+    // جدولِ اصیلِ «فرمول مجهول در زمان‌های کتب درسی» — ۸ سطر (۷ زمان + افعال ناقص)
+    expect(pt.tables![0].rows).toHaveLength(8);
+    expect(pt.tables![0].rows[3]).toEqual(["حال استمراری", "am / is / are + being", "شکل سوم فعل", "قید حالت · قید مکان · قید زمان · (by + فاعل)"]);
+    expect(pt.notes!.join(" ")).toContain("They were forced to leave the class quickly.");
+  });
+
+  it("r216 پینِ وفاداریِ عبارات الحاق — کلیدهای دستگریمِ ص ۴۴ (پاسخنامهٔ ص ۱۸۷)", () => {
+    const tag = ALL.find((t) => t.id === "bg-tag-questions")!;
+    // کلیدهای خودِ جزوه: 1-d، 3-c، 4-a، 8-b، 9-b، 13-b
+    expect(tag.drill![0].options[tag.drill![0].answer]).toBe("will you");
+    expect(tag.drill![1].options[tag.drill![1].answer]).toBe("does he");
+    expect(tag.drill![2].options[tag.drill![2].answer]).toBe("didn’t they");
+    expect(tag.drill![3].options[tag.drill![3].answer]).toBe("didn’t we");
+    expect(tag.drill![4].options[tag.drill![4].answer]).toBe("will there");
+    expect(tag.drill![5].options[tag.drill![5].answer]).toBe("hasn’t he");
+    // قاعده‌های امضای جزوه
+    const joined = tag.notes!.join(" ");
+    expect(joined).toContain("aren’t I");
+    expect(joined).toContain("won’t you");
+    expect(joined).toContain("The old woman could hardly walk at the park, could she?");
+  });
+
+  it("r216 پینِ وفاداریِ بقیهٔ موضوعات — ربط، موصولی، شرطی، گذشتهٔ کامل، افعال ناقصِ گذشته", () => {
+    const con = ALL.find((t) => t.id === "bg-conjunctions")!;
+    // هفت همپایه‌ساز به ترتیبِ خودِ جزوه + جفتی‌ها
+    expect(con.tables![0].rows.map((r) => r[0])).toEqual(["for", "and", "nor", "but", "or", "yet", "so"]);
+    expect(con.tables![1].rows).toHaveLength(6);
+    expect(con.notes!.join(" ")).toContain("FANBOYS");
+    expect(con.examples!.map((e) => e.en).join(" ")).toContain("nor does he eat biscuits");
+
+    const rel = ALL.find((t) => t.id === "bg-relative-pronouns")!;
+    expect(rel.tables![0].rows).toHaveLength(5);
+    expect(rel.notes!.join(" ")).toContain("فقط that به کار برده می‌شود");
+    expect(rel.examples!.map((e) => e.en).join(" ")).toContain("two of whom are in the army");
+    expect(rel.examples!.map((e) => e.en).join(" ")).toContain("Rudaki who lived in the 4th century");
+
+    const cond = ALL.find((t) => t.id === "bg-conditional-type-2")!;
+    expect(cond.notes!.join(" ")).toContain("Were my brother you, he would never buy that car.");
+    expect(cond.examples!.map((e) => e.en).join(" ")).toContain("If I were you, I would tell my parents.");
+
+    const pp = ALL.find((t) => t.id === "bg-past-perfect")!;
+    expect(pp.examples![0].en).toBe("When I arrived home, my brother had left.");
+    expect(pp.notes!.join(" ")).toContain("By the time his uncle got a very good job, he had taken many risks.");
+
+    const pm = ALL.find((t) => t.id === "bg-past-modals")!;
+    expect(pm.notes!.join(" ")).toContain("should + have + p.p.");
+    expect(pm.notes!.join(" ")).toContain("این ساختار حالت منفی ندارد");
+    expect(pm.examples!.map((e) => e.en).join(" ")).toContain("He must have studied very hard");
+    expect(pm.examples!.map((e) => e.en).join(" ")).toContain("Traffic rules must be obeyed");
+  });
 });
 
 describe("booklet-grammar-r214 — رندرِ زیرتابِ ضمیمه", () => {
   beforeEach(cleanup);
 
-  it("۲۳ کارتِ موضوع در دو سرگروه؛ موضوع اول باز است و تیترها دیده می‌شوند", () => {
+  it("۳۱ کارتِ موضوع در سه سرگروه؛ موضوع اول باز است و تیترها دیده می‌شوند", () => {
     renderTab();
     expect(screen.getByText(/درسنامهٔ جامع — از خودِ جزوه‌های جامع/)).toBeTruthy();
     // سرگروه‌ها
     expect(screen.getByText(BOOKLET_GRAMMAR_SOURCES["دهم"])).toBeTruthy();
     expect(screen.getByText(BOOKLET_GRAMMAR_SOURCES["یازدهم"])).toBeTruthy();
+    expect(screen.getByText(BOOKLET_GRAMMAR_SOURCES["دوازدهم"])).toBeTruthy();
     // آکاردئون: موضوع اول باز، بقیه بسته
     const alphabet = screen.getByText("حروف، واژه و جمله");
     expect(alphabet).toBeTruthy();
@@ -211,11 +280,15 @@ describe("booklet-grammar-r214 — رندرِ زیرتابِ ضمیمه", () => 
     expect(screen.queryByText(/برای بیان کاری که در زمان گذشته انجام شده/)).toBeNull();
   });
 
-  it("بازکردنِ موضوعِ زمان‌ها جدولِ ۱۶ سطری را نشان می‌دهد", async () => {
+  it("بازکردنِ موضوعِ زمان‌ها جدولِ ۱۶ سطری را نشان می‌دهد؛ موضوعِ دوازدهم هم رندر می‌شود", async () => {
     renderTab();
     fireEvent.click(screen.getByText("انواع زمان‌ها در زبان انگلیسی"));
     expect(screen.getByText("آینده در گذشتهٔ کامل استمراری")).toBeTruthy();
     expect(screen.getByText("would have been + فعل ing‌دار")).toBeTruthy();
+    // موضوعِ مجهولِ دوازدهم — نوارِ ترتیبِ مجهول و جدولِ افعال لازم
+    fireEvent.click(screen.getByText("جملات معلوم و مجهول"));
+    expect(screen.getByText("by + فاعل")).toBeTruthy();
+    expect(screen.getByText("The dishes are being washed carefully in the kitchen right now (by my mother).")).toBeTruthy();
   });
 
   it("مثال‌ها دکمهٔ روخوانی دارند", async () => {

@@ -32,8 +32,8 @@ export interface BgDrill {
 
 export interface BgTopic {
   id: string;
-  /** جزوهٔ مبدأ — راند ۲۱۴: «دهم»؛ راند ۲۱۵ به بعد: «یازدهم» و… */
-  source: "دهم" | "یازدهم";
+  /** جزوهٔ مبدأ — راند ۲۱۴: «دهم»؛ راند ۲۱۵: «یازدهم»؛ راند ۲۱۶: «دوازدهم» */
+  source: "دهم" | "یازدهم" | "دوازدهم";
   title: string;
   titleEn?: string;
   page: string;
@@ -49,10 +49,11 @@ export interface BgTopic {
 export const BOOKLET_GRAMMAR_SOURCE =
   "مرور گرامرهای پایهٔ هفتم تا نهم (Prospect 1-3) — جزوهٔ جامع پایهٔ دهم، صفحات ۲۲ تا ۳۶";
 
-/** عنوانِ هر جزوهٔ مبدأ برای سرگروه‌های UI (راند ۲۱۵) */
-export const BOOKLET_GRAMMAR_SOURCES: Record<"دهم" | "یازدهم", string> = {
+/** عنوانِ هر جزوهٔ مبدأ برای سرگروه‌های UI (راندهای ۲۱۵ و ۲۱۶) */
+export const BOOKLET_GRAMMAR_SOURCES: Record<"دهم" | "یازدهم" | "دوازدهم", string> = {
   "دهم": "پایهٔ دهم — بنیان‌های هفتم تا نهم",
   "یازدهم": "پایهٔ یازدهم (Vision Two) — درسنامه‌های درس‌های ۱ تا ۳",
+  "دوازدهم": "پایهٔ دوازدهم (Vision Three) — درسنامه‌های درس‌های ۱ تا ۳",
 };
 
 export const BOOKLET_GRAMMAR_TOPICS: BgTopic[] = [
@@ -988,6 +989,481 @@ export const BOOKLET_GRAMMAR_TOPICS: BgTopic[] = [
     ],
     examples: [
       { en: "The children are excited because the cartoon is exciting.", fa: "بچه‌ها هیجان‌زده هستند چون کارتون هیجان‌انگیز است.", tag: "انسان → ed · غیر انسان → ing" },
+    ],
+  },
+  // ================================================ دوازدهم — p۲۶-۲۷
+  {
+    id: "bg-passive",
+    source: "دوازدهم",
+    title: "جملات معلوم و مجهول",
+    titleEn: "Active & Passive Voice",
+    page: "صفحهٔ ۲۶ تا ۲۷",
+    intro:
+      "جملهٔ معلوم (Active Voice): جمله‌ای که در آن فاعل (یا کنندهٔ کار) معلوم و مشخص باشد و در ابتدای جمله بیاید؛ در جملات معلوم تأکید بر «رابطهٔ مابین فاعل و فعل» است. جملهٔ مجهول (Passive Voice): جمله‌ای که در آن یا فاعل (کنندهٔ کار) جملهٔ معلوم و مشخص نباشد و یا اینکه اهمیت فعل و مفعول بیشتر از دانستن فاعل جمله باشد؛ در جملات مجهول مفعول به جای فاعل در ابتدای جمله قرار می‌گیرد و تأکید بر «رابطهٔ فعل و مفعول» است.",
+    notes: [
+      "موارد ترجیح جملهٔ مجهول بر جملهٔ معلوم: الف) وقتی نمی‌دانیم یا اهمیت ندارد که چه کسی کار را انجام داده است. ب) هنگامی که تأکید عمدتاً بر «فعل» است و نه فاعل عمل (یعنی اهمیت فعل انجام‌شده، از خود فاعل بیشتر است).",
+      "توجه مهم ۱: اگر بخواهیم فاعل را در جملهٔ مجهول به صورت ضمیر به کار ببریم، از «ضمیر مفعولی» استفاده می‌کنیم؛ چون بعد از حروف اضافه ضمایر به صورت مفعولی به کار می‌روند: The book was written in his hometown last year (by him). — him یک ضمیر مفعولی می‌باشد.",
+      "توجه مهم ۲: اگر مفعول را در جملهٔ مجهول به ضمیر تبدیل کنیم، آن ضمیر فقط «ضمیر فاعلی» خواهد بود؛ چون ضمایر مفعولی را نمی‌توان در ابتدای جمله به کار برد: They saw him in the park yesterday. → He was seen in the park yesterday (by them). — ضمیر مفعولی him چون به ابتدای جمله آمده، تبدیل به ضمیر فاعلی he شده است.",
+      "یادآوری: ضمایر فاعلی عبارتند از: I, you, he, she, it, we, you, they — ضمایر مفعولی عبارتند از: me, you, him, her, it, us, you, them.",
+      "نکته: چنانچه در جملهٔ مجهولی، فاعل جمله «شیء یا ابزار» باشد، از حرف اضافه with استفاده می‌کنیم: Snow covered the yard. → The yard was covered with snow.",
+      "نکتهٔ مهم: جمله‌ای که فعل آن متعدی یا گذرا است (مفعول دارد) را می‌توان به صورت مجهول به کار برد؛ اما جمله‌ای که فعل آن لازم یا ناگذرا است مجهول نمی‌شود، چون مفعول ندارد. پس فعل‌های لازم هیچگاه به صورت مجهول به کار برده نمی‌شوند.",
+      "نکتهٔ ۱: در جملات مجهول، می‌توان «قید حالت» را به قبل از شکل سوم فعل انتقال داد.",
+    ],
+    orderStrip: ["مفعول", "فعل کمکی", "شکل سوم فعل", "قید حالت", "قید مکان", "قید زمان", "by + فاعل"],
+    tables: [
+      {
+        headers: ["فعل لازم (ناگذر)", "معنی", "فعل لازم (ناگذر)", "معنی"],
+        rows: [
+          ["occur", "اتفاق افتادن", "understand", "درک کردن"],
+          ["wait", "منتظر ماندن", "fall", "افتادن"],
+          ["walk", "قدم زدن", "work", "کار کردن"],
+          ["die", "مردن", "cough", "سرفه کردن"],
+          ["shout", "فریاد زدن", "sit", "نشستن"],
+          ["disappear", "ناپدید شدن", "go", "رفتن"],
+          ["sleep", "خوابیدن", "appear", "ظاهر شدن"],
+          ["laugh", "خندیدن", "live", "زندگی کردن"],
+          ["rise", "بالا آمدن", "swim", "شنا کردن"],
+          ["jump", "پریدن، پرش کردن", "get up", "از خواب بیدار شدن"],
+          ["happen", "اتفاق افتادن", "relax", "آسوده بودن"],
+          ["party", "مهمانی گرفتن", "take place", "اتفاق افتادن"],
+          ["cry", "گریه کردن", "last", "طول کشیدن"],
+          ["belong", "متعلق بودن", "seem", "به نظر رسیدن"],
+          ["arrive", "رسیدن", "—", "—"],
+        ],
+      },
+    ],
+    examples: [
+      {
+        en: "My mother is washing the dishes carefully in the kitchen right now.",
+        fa: "مادرم هم‌اکنون در آشپزخانه با دقت در حال شستن ظرف‌ها می‌باشد.",
+        tag: "معلوم — فاعل → فعل کمکی → فعل اصیل → مفعول → قید حالت → قید مکان → قید زمان",
+      },
+      {
+        en: "The dishes are being washed carefully in the kitchen right now (by my mother).",
+        fa: "هم‌اکنون ظرف‌ها با دقت در آشپزخانه در حال شسته‌شدن هستند (توسط مادرم).",
+        tag: "مجهول — مفعول → فعل کمکی → شکل سوم فعل → قید حالت → قید مکان → قید زمان → by + فاعل",
+      },
+      {
+        en: "The famous writer wrote the book in his hometown last year. → The book was written in his hometown last year (by him).",
+        fa: "نویسندهٔ معروف این کتاب را سال گذشته در زادگاهش نوشت. → این کتاب سال گذشته توسط او در زادگاهش نوشته شد.",
+        tag: "توجه ۱ — ضمیر مفعولی بعد از by",
+      },
+      {
+        en: "They saw him in the park yesterday. → He was seen in the park yesterday (by them).",
+        fa: "آن‌ها دیروز او را در پارک دیدند. → او دیروز در پارک دیده شد (توسط آن‌ها).",
+        tag: "توجه ۲ — him به ابتدای جمله → he",
+      },
+      {
+        en: "Snow covered the yard. → The yard was covered with snow.",
+        fa: "برف حیاط را پوشاند. → حیاط با برف پوشیده شد.",
+        tag: "فاعلِ شیء/ابزار → with",
+      },
+    ],
+  },
+  // ================================================ دوازدهم — p۲۸-۳۵
+  {
+    id: "bg-passive-tenses",
+    source: "دوازدهم",
+    title: "مجهول در زمان‌ها و افعال ناقص",
+    titleEn: "The Passive in Tenses & Modals",
+    page: "صفحهٔ ۲۸ تا ۳۵",
+    intro:
+      "برای مجهول کردن هر زمان، شکل سوم فعل (p.p.) به‌همراه فعل کمکیِ همان زمان به کار می‌رود؛ جزوه هر زمان را جداگانه مجهول کرده است و در پایان، «فرمول اصیل جملات مجهول در زمان‌های ذکرشدهٔ کتب درسی» را در یک جدول جمع می‌کند. افعال ناقص هم ساختار مجهول خودشان را دارند: فعل ناقص + be + شکل سوم فعل.",
+    notes: [
+      "حال ساده — فرمول مجهول: مفعول + am / is / are + شکل سوم فعل + قید حالت + قید مکان + قید زمان + (by + فاعل).",
+      "گذشتهٔ ساده — فرمول مجهول: مفعول + was / were + شکل سوم فعل + … (مثال جزوه: Ali broke the window yesterday. → The window was broken yesterday (by him).)",
+      "آیندهٔ ساده — فرمول مجهول: مفعول + will be + شکل سوم فعل + … (مثال جزوه: Mrs. Kazemi will clean the room tomorrow. → The room will be cleaned tomorrow (by her).)",
+      "حال استمراری — فرمول مجهول: مفعول + am / is / are + being + شکل سوم فعل + … (مثال جزوه: They are making a film right now. → A film is being made right now (by them).)",
+      "گذشتهٔ استمراری — ساختار جملات مثبت آن: فاعل + was / were + فعل ing‌دار + … — He was watching a movie yesterday from 6 to 8. این زمان به کمک کلمات ربط when و while با جمله‌های «زمان گذشتهٔ ساده» ترکیب می‌شود.",
+      "حال کامل (نقلی ماضی) — فرمول مجهول: مفعول + have / has + been + شکل سوم فعل + … (مثال جزوه: They have used this car since 1998. → This car has been used since 1998 (by them).)",
+      "گذشتهٔ کامل (ماضی بعید) — فرمول مجهول: مفعول + had + been + شکل سوم فعل + …",
+      "افعال ناقص (Modals) — یادآوری: افعال ناقص تمامی ویژگی‌های سایر افعال را دارا نمی‌باشند و خود دارای ویژگی‌های منحصربه‌فرد هستند؛ این افعال بعد از فاعل و قبل از فعل اصیل جمله به کار می‌روند و فعل بعد از آن‌ها به صورت «شکل ساده» خواهد بود: can, could, may, might, should, must, have to, has to, had to, … — فرمول مجهول جملاتی که فعل ناقص دارند: مفعول + فعل ناقص + be + شکل سوم فعل + قید حالت + قید مکان + قید زمان + (by + فاعل). مثال جزوه: The principal should call the parents. → The parents should be called (by the principal).",
+      "نکتهٔ ۱: برای سوالی کردن جملات مجهول، فعل کمکی را به قبل از فاعل می‌آوریم. چنانچه در جملهٔ مجهولی بیشتر از یک فعل کمکی داشته باشیم، فقط اولین فعل کمکی را به قبل از فاعل آورده و فعل کمکی دوم در جای خود باقی خواهد ماند: Their names have just been added on this list. → Have their names just been added on this list?",
+      "نکتهٔ ۲: برای منفی کردن جملات مجهول، به اولین فعل کمکی not یا مخفف آن n’t اضافه می‌شود: The letter won’t be typed tomorrow.",
+      "نکتهٔ ۳: معمولاً در جملات مجهول، قید حالت قبل از شکل سوم فعل به کار می‌رود: The dinner was rapidly eaten last night.",
+      "نکتهٔ ۴: برای مجهول کردن فعل دومی که به صورت ing‌دار (یعنی اسم مصدر) باشد، از ساختار being + p.p. استفاده می‌کنیم: I like my father taking me to the zoo. → I like being taken to the zoo by my father.",
+      "نکتهٔ ۵: برای مجهول کردن فعل دوم به صورت مصدر با to، از ساختار to be + p.p. استفاده می‌کنیم: My father wanted the letter to be posted by my brother yesterday.",
+      "نکتهٔ ۶: چنانچه بعد از ساختار مجهول فعل دیگری بیاید، آن فعل همواره به صورت «مصدر با to» خواهد بود — حتی اگر فعل اول جزء افعالی باشد که بعد از آن اسم مصدر هم می‌آید (مثل finish, enjoy): They were forced to leave the class quickly.",
+      "نکتهٔ ۷: چنانچه بخواهیم فعل بعد از حروف اضافه را مجهول کنیم، ساختار مجهول آن فعل به صورت being + p.p. خواهد بود: He is looking forward to being sent to a mission by his company.",
+    ],
+    tables: [
+      {
+        headers: ["زمان", "فعل کمکی", "شکل سوم فعل", "ادامهٔ جمله (از راست)"],
+        rows: [
+          ["حال ساده", "am / is / are", "شکل سوم فعل", "قید حالت · قید مکان · قید زمان · (by + فاعل)"],
+          ["گذشتهٔ ساده", "was / were", "شکل سوم فعل", "قید حالت · قید مکان · قید زمان · (by + فاعل)"],
+          ["آیندهٔ ساده", "will be", "شکل سوم فعل", "قید حالت · قید مکان · قید زمان · (by + فاعل)"],
+          ["حال استمراری", "am / is / are + being", "شکل سوم فعل", "قید حالت · قید مکان · قید زمان · (by + فاعل)"],
+          ["گذشتهٔ استمراری", "was / were + being", "شکل سوم فعل", "قید حالت · قید مکان · قید زمان · (by + فاعل)"],
+          ["حال کامل", "have / has + been", "شکل سوم فعل", "قید حالت · قید مکان · قید زمان · (by + فاعل)"],
+          ["گذشتهٔ کامل", "had + been", "شکل سوم فعل", "قید حالت · قید مکان · قید زمان · (by + فاعل)"],
+          ["افعال ناقص", "فعل ناقص + be", "شکل سوم فعل", "قید حالت · قید مکان · قید زمان · (by + فاعل)"],
+        ],
+      },
+      {
+        headers: ["مشخصه‌های هر زمان (از جزوه)"],
+        rows: [
+          ["حال ساده", "every/each + قید زمان · روزهای هفته به صورت جمع (on Mondays) · قیدهای تکرار (always, usually, often, sometimes, seldom, rarely, …) · s/es سوم شخص مفرد"],
+          ["گذشتهٔ ساده", "yesterday · last (last night) · ago (2 years ago) · شکل دوم فعل"],
+          ["آیندهٔ ساده", "will/won’t · soon · later · next (month, week) · tomorrow"],
+          ["حال استمراری", "now · at the moment · at the present · right now"],
+          ["حال کامل", "since · for · yet · ever · so far · up to now · during · already · recently · once · twice · …"],
+          ["گذشتهٔ کامل", "when · before · after · because · since · by the time · as soon as · until · …"],
+        ],
+      },
+    ],
+    examples: [
+      {
+        en: "Ali broke the window yesterday. → The window was broken yesterday (by him).",
+        fa: "علی دیروز پنجره را شکست. → پنجره دیروز شکسته شد (توسط او).",
+        tag: "مجهول گذشتهٔ ساده",
+      },
+      {
+        en: "Mrs. Kazemi will clean the room tomorrow. → The room will be cleaned tomorrow (by her).",
+        fa: "خانم کاظمی فردا اتاق را تمیز خواهد کرد. → اتاق فردا تمیز خواهد شد (توسط او).",
+        tag: "مجهول آیندهٔ ساده",
+      },
+      {
+        en: "They are making a film right now. → A film is being made right now (by them).",
+        fa: "آن‌ها هم‌اکنون در حال ساختن یک فیلم هستند. → هم‌اکنون (توسط آن‌ها) در حال ساخته‌شدن است یک فیلم.",
+        tag: "مجهول حال استمراری",
+      },
+      {
+        en: "They have used this car since 1998. → This car has been used since 1998 (by them).",
+        fa: "آن‌ها از سال ۱۹۹۸ از این ماشین استفاده کرده‌اند. → از سال ۱۹۹۸ از این ماشین استفاده شده است.",
+        tag: "مجهول حال کامل",
+      },
+      {
+        en: "The principal should call the parents. → The parents should be called (by the principal).",
+        fa: "مدیر باید به والدین زنگ بزند. → والدین باید (توسط مدیر) زنگ زده شوند.",
+        tag: "مجهول با فعل ناقص",
+      },
+      {
+        en: "I like being taken to the zoo by my father.",
+        fa: "دوست دارم (توسط پدرم) به باغ‌وحش برده شوم.",
+        tag: "نکتهٔ ۴ — being + p.p. برای فعل دوم ing‌دار",
+      },
+      {
+        en: "My father wanted the letter to be posted by my brother yesterday.",
+        fa: "پدرم می‌خواست که نامه (توسط برادرم) پست شود.",
+        tag: "نکتهٔ ۵ — to be + p.p. برای فعل دوم مصدری",
+      },
+      {
+        en: "They were forced to leave the class quickly.",
+        fa: "آن‌ها مجبور شدند کلاس را ترک کنند.",
+        tag: "نکتهٔ ۶ — بعد از مجهول، مصدر با to",
+      },
+    ],
+  },
+  // ================================================ دوازدهم — p۳۹-۴۴
+  {
+    id: "bg-tag-questions",
+    source: "دوازدهم",
+    title: "عبارات الحاق (سؤال‌های کوتاه تأکیدی)",
+    titleEn: "Tag Questions",
+    page: "صفحهٔ ۳۹ تا ۴۴",
+    intro:
+      "گاهی در انگلیسی، گویندهٔ جمله برای اینکه گفتهٔ خود را به تأکید به مخاطب یا مخاطبین برساند و یا برای نشان‌دادن تعجب، در آخر جمله‌های خبری از یک جملهٔ سوالی کوتاه شامل «فعل کمکی» و «ضمیر فاعلی» استفاده می‌کند؛ به این جمله‌های سوالی کوتاه «عبارت الحاق»، «جملهٔ ضمیمه» یا Tag Question می‌گویند. در زبان فارسی به صورت «مگه نه»، «اینطور نیست» و یا برعکسِ فعل جملهٔ اصلی ترجمه می‌شوند. جملهٔ اصلی و عبارت الحاقی بوسیلهٔ «کاما» از یکدیگر جدا می‌شوند و آخرِ عبارت الحاقی «علامت سؤال» خواهد بود: He is reading a novel now, isn’t he?",
+    notes: [
+      "نکتهٔ ۱: عبارت الحاقی از نظر مثبت یا منفی‌بودن، برعکس جملهٔ اصلی می‌باشد؛ یعنی اگر جملهٔ اصلی مثبت باشد، عبارت الحاقی منفی خواهد بود و چنانچه جملهٔ اصلی منفی باشد، عبارت الحاقی می‌بایست به شکل مثبت به کار رود: She is a student, isn’t she? / She is not a student, is she?",
+      "نکتهٔ ۲: در عبارت الحاقی همیشه بعد از فعل کمکی از «ضمیر فاعلی» استفاده می‌شود؛ چنانچه در جملهٔ اصلی فاعل به شکل اسم یا عبارت اسمی آمده باشد، در عبارت الحاقی از ضمیر فاعلی مشابه آن استفاده می‌شود: Mina was playing tennis well, wasn’t she? / My brothers aren’t at school, are they? — توجه مهم: در عبارت الحاق هرگز از ضمیر مفعولی، صفت ملکی، ضمایر انعکاسی و تأکیدی استفاده نمی‌کنیم.",
+      "نکتهٔ ۳: چنانچه بخواهیم فعل کمکی را به شکل منفی به کار ببریم، آن را می‌بایست به شکل مخفف به کار برد؛ هیچ‌گاه در عبارت الحاقی not نوشته نمی‌شود و همواره به صورت مخفف n’t نوشته خواهد شد: Raman will go to Rasht next week, won’t he?",
+      "نکتهٔ ۴: چنانچه جمله‌ای با there شروع شده باشد، در عبارت الحاقی از خود there استفاده می‌کنیم و تنها در این حالت است که در عبارت الحاقی ضمیر فاعلی نداریم: There isn’t any water in the kettle, is there? / There was a clock in our class, wasn’t there?",
+      "نکتهٔ ۵: چنانچه در جمله‌ای یک فعل ناقص (can, may, should, must, might, …) وجود داشته باشد، در عبارت الحاقی از همان فعل ناقص استفاده می‌کنیم: Your little brother can play football very well, can’t he?",
+      "نکتهٔ ۶: در عبارت الحاقی به جای ضمایر اشارهٔ this و that از it و به جای these و those از they استفاده می‌کنیم: This is your watch, isn’t it? / These are very expensive, aren’t they?",
+      "نکتهٔ ۷: چنانچه در جملهٔ مثبت از am I استفاده شده باشد، در عبارت الحاقی از aren’t I استفاده می‌شود (چون در زبان انگلیسی فرم مخفف amn’t I صحیح نمی‌باشد): I am a good teacher, aren’t I? — اما چنانچه در جملهٔ منفی I am not آمده باشد، در عبارت الحاق آن طبق قاعده از am I استفاده می‌کنیم: I am not a good teacher, am I?",
+      "نکتهٔ ۸: چنانچه جملهٔ اصلی فعل کمکی داشته باشد از همان فعل کمکی در عبارت الحاقی استفاده می‌شود؛ ولی چنانچه جمله فاقد فعل کمکی باشد، یکی از مشتقات do متناسب با فعل اصلی در عبارت الحاقی استفاده می‌شود — اگر فعل اصلی در زمان گذشتهٔ ساده باشد از did، اگر در زمان حال ساده s یا es داشته باشد از does و اگر فعل به شکل ساده آمده باشد از do: We always listen to the teacher carefully at the class, don’t we? / Ali swims quickly in this part of the river, doesn’t he? / Her father opened his store at 8 this morning, didn’t he?",
+      "نکتهٔ ۹: اگر در جملهٔ اصلی قیدهای منفی‌ساز نظیر کلمات few, little, rarely, barely, seldom, nor, none, no, neither, scarcely, never, hardly به کار رفته باشد، عبارت الحاقی به شکل «مثبت» خواهد بود: Her older brother never eats breakfast in the morning, does he? / The old woman could hardly walk at the park, could she?",
+      "نکتهٔ ۱۰: اگر فاعل جمله یکی از ضمایر نامشخصِ مخصوص انسان (no one, nobody, anyone, anybody, everyone, everybody, someone, somebody) باشد، در عبارت الحاقی فعل و ضمیر فاعلی به صورت «جمع» خواهد بود (اما فراموش نکنیم که این ضمایر نامشخص در جمله همانند اسم مفرد در نظر گرفته می‌شوند): Unfortunately, somebody stole my book at the train yesterday, didn’t they?",
+      "نکتهٔ ۱۱: چنانچه فاعل جمله ضمایر نامشخصِ مخصوص غیرانسان (nothing, anything, everything, something) باشد، ضمیر فاعلی در عبارت الحاقی it می‌باشد: Everything is really neat, isn’t it?",
+      "نکتهٔ ۱۲ (زبان تخصصی): در جملات امری مثبت، عبارت الحاقی با won’t you ساخته می‌شود؛ در این حالت می‌توان از could you, would you, will you هم استفاده کرد و تمامی آن‌ها در این کاربرد برابر هستند: Open your books, won’t you?",
+      "نکتهٔ ۱۳ (زبان تخصصی): در جملات امری منفی، عبارت الحاقی با will you ساخته می‌شود: Don’t turn on the radio, will you?",
+      "نکتهٔ ۱۷: تنها زمانی have/has/had فعل کمکی حساب می‌آیند که بعد از آن‌ها «شکل سوم فعل (p.p.)» آمده باشد (زمان‌های حال کامل و گذشتهٔ کامل) که در این حالت از آن‌ها برای ساختن عبارت الحاقی استفاده می‌کنیم: The police have caught the addict man at his house, haven’t they? / Up to now, he hasn’t arrived at home on time, has he?",
+      "نکتهٔ ۱۸: در صورتی‌که افعال have, has, had تنها فعل اصلی جمله باشند (به معنی «داشتن» یا «خوردن») و یا زمانی‌که این فعل‌ها به معنی «مجبور بودن» باشند (have to, has to, had to به عنوان فعل اصلی جمله محسوب می‌شوند)، بنابراین با توجه به زمان جمله (حال ساده یا گذشتهٔ ساده)، در عبارت الحاقی باید از فعل کمکی مناسب برای آن‌ها استفاده کنیم. توجه: هرچند در این حالت از خود همین فعل‌ها هم می‌توان در عبارت الحاقی استفاده کرد، اما ترجیحاً در کنکور آن‌ها را به صورت فعل اصلی در نظر بگیرید و از افعال کمکی do, does, did با توجه به زمان جمله استفاده کنید.",
+    ],
+    examples: [
+      { en: "He is reading a novel now, isn’t he?", fa: "او الان دارد یک رمان می‌خواند، مگه نه / اینطور نیست؟", tag: "فعل کمکی + ضمیر فاعلی" },
+      { en: "She is not a student, is she?", fa: "او یک دانش‌آموز نیست، مگه نه؟", tag: "منفی → الحاقی مثبت" },
+      { en: "Mina was playing tennis well, wasn’t she?", fa: "مینا به خوبی در حال تنیس بازی کردن بود، مگه نه؟", tag: "اسم → ضمیر فاعلی" },
+      { en: "There isn’t any water in the kettle, is there?", fa: "در کتری کمی آب وجود ندارد، مگه نه؟", tag: "there → there" },
+      { en: "The students mustn’t speak loudly at the classroom, must they?", fa: "دانش‌آموزان نباید با صدای بلند در کلاس صحبت کنند، مگه نه؟", tag: "فعل ناقص → همان فعل ناقص" },
+      { en: "These are very expensive, aren’t they?", fa: "اینها خیلی گران‌قیمت هستند، مگه نه؟", tag: "these → they" },
+      { en: "I am a good teacher, aren’t I?", fa: "من معلم خوبی هستم، مگه نه؟", tag: "am I → aren’t I" },
+      { en: "We don’t wash the dishes, do we?", fa: "ما ظرف‌ها را نمی‌شوئیم، مگه نه؟", tag: "منفی حال ساده → do we" },
+      { en: "The man didn’t obey the traffic rules, did he?", fa: "این مرد از قوانین رانندگی اطاعت نکرد، مگه نه؟", tag: "گذشتهٔ ساده → did" },
+      { en: "Your cousin seldom wants to speak about his problems to you anymore, does he?", fa: "عموزاده‌ات دیگر به ندرت می‌خواهد دربارهٔ مشکلاتش با تو صحبت کند، مگه نه؟", tag: "seldom → الحاقی مثبت" },
+      { en: "Unfortunately, somebody stole my book at the train yesterday, didn’t they?", fa: "متأسفانه، دیروز در قطار یک نفری کتابم را دزدید، مگه نه؟", tag: "somebody → they" },
+      { en: "Everything is really neat, isn’t it?", fa: "همه‌چیز (هر چیزی) واقعاً مرتب است، مگه نه؟", tag: "غیر انسان → it" },
+      { en: "Open your books, would you / could you / will you?", fa: "کتاب‌هایتان را باز کنید، باز نمی‌کنید؟", tag: "امری مثبت (زبان تخصصی)" },
+      { en: "Don’t speak too fast, will you?", fa: "خیلی سریع صحبت نمی‌کنید؟", tag: "امری منفی (زبان تخصصی)" },
+      { en: "The police have caught the addict man at his house, haven’t they?", fa: "پلیس مرد معتاد را در خانه‌اش دستگیر کرده‌اند، مگه نه؟", tag: "have + p.p. → haven’t" },
+      { en: "Up to now, he hasn’t arrived at home on time, has he?", fa: "تا به حال او به وقت به خانه نیامده است، مگه نه؟", tag: "hasn’t → has" },
+    ],
+    drill: [
+      {
+        q: "1. Do not talk to me whenever I am studying, …………………?",
+        options: ["won’t you", "do you", "aren’t I", "will you"],
+        answer: 3,
+      },
+      {
+        q: "3. My father hardly plays football with us whenever he is free, …………………?",
+        options: ["doesn’t he", "don’t we", "does he", "do we"],
+        answer: 2,
+      },
+      {
+        q: "4. Somebody rang while you were taking a shower, …………………?",
+        options: ["didn’t they", "weren’t you", "didn’t he", "were they"],
+        answer: 0,
+      },
+      {
+        q: "8. We had a great day out at the amusement park, …………………?",
+        options: ["don’t we", "didn’t we", "had we", "will we"],
+        answer: 1,
+      },
+      {
+        q: "9. There won’t be enough food for 8 billion people in the near future, …………………?",
+        options: ["be there", "will there", "is there", "is it"],
+        answer: 1,
+      },
+      {
+        q: "13. He’s been very successful in learning English during the last four weeks, …………………?",
+        options: ["isn’t he", "hasn’t he", "wasn’t he", "doesn’t he"],
+        answer: 1,
+      },
+    ],
+  },
+  // ================================================ دوازدهم — p۴۶-۴۹
+  {
+    id: "bg-conjunctions",
+    source: "دوازدهم",
+    title: "کلمات ربط همپایه‌ساز و جفتی",
+    titleEn: "Coordinating & Paired Conjunctions",
+    page: "صفحهٔ ۴۶ تا ۴۹",
+    intro:
+      "تعریف جملهٔ مرکب: یک جمله باید حداقل دارای یک فاعل و یک فعل باشد؛ این‌گونه جمله‌ها را «جمله‌های ساده» می‌نامیم. اگر دو جملهٔ ساده را که هر کدام حداقل دارای یک فاعل و یک فعل می‌باشند، با کلمه‌های ربط مانند and، or و so به هم مرتبط کنیم، یک «جملهٔ مرکب» تشکیل می‌شود. حروف ربط همپایه‌ساز (coordinating conjunctions) برای وصل‌کردن کلمات، عبارات و جملات یکسان (از نظر گرامری) به کار می‌روند — برای مثال هر دو باید اسم، صفت و … باشند. در زبان انگلیسی هفت حرف همپایه‌ساز وجود دارند (در جمله، قبل از این کلمات ربط باید «کاما» بنویسیم).",
+    notes: [
+      "برای به خاطر سپردن این هفت حرف ربط می‌توانید از عبارت اختصاری FANBOYS استفاده کنید: for (زیرا)، and (و)، nor (و نه)، but (اما)، or (یا)، yet (با این وجود)، so (بنابراین).",
+      "and — به معنی «و» می‌باشد؛ «یکسان‌بودن و توانایی» دو چیز را نشان می‌دهد.",
+      "but — بیان‌کنندهٔ «تضاد و مغایرت» بوده و در فارسی به معادل «اما» و «ولی» می‌باشد.",
+      "or — برای «انتخاب یک گزینه از بین چندین انتخاب دیگر» به کار می‌رود و معنی فارسی آن «یا» می‌باشد.",
+      "so — برای نشان‌دادن «نتیجه و پیامد» چیزی به کار می‌رود؛ معادل فارسی آن «بنابراین» و «پس» یا «در نتیجه» می‌باشد. توجه: می‌توان به جای so از مترادف آن یعنی therefore با همین معنی استفاده کرد.",
+      "for — برای نشان‌دادن «دلیل و علت» به کار می‌رود و معنی آن «زیرا» یا «چون» می‌باشد و با because هم‌کاربرد می‌باشد.",
+      "nor — برای «نشان‌دادن یا انتخاب یک حالت منفی بعد از یک حالت منفی» به کار می‌رود و معنی آن «و نه» می‌باشد؛ حرف ربط nor دو جمله یا عبارت را به هم وصل می‌کند. جمله‌ای که nor در آن است باید به شکل سوالی و جملهٔ قبل از آن حتماً باید به صورت منفی نوشته شود: He doesn’t eat cake, nor does he eat biscuits.",
+      "yet (زبان تخصصی) — برای بیان «تضاد غیرمنتظره» به کار می‌رود؛ یعنی اینکه با توجه به شرایطی انتظار نداریم کاری صورت بگیرد اما صورت می‌گیرد. معادل فارسی yet «با این وجود» می‌باشد: He’s ninety-two, yet he still swims, runs and plays football regularly.",
+      "کلمات ربط جفتی یا زوجی — همان‌طور که از نامشان پیداست حروف ربطی هستند که به صورت جفت استفاده می‌شوند؛ حروف ربط زوجی کنار هم استفاده نمی‌شوند و مکان آن‌ها در جمله متفاوت است: both … and (هم … هم)، either … or (یا … یا)، neither … nor (نه … نه)، not only … but also (نه تنها … بلکه)، not … but (نه … اما)، whether … or (که آیا / چه … چه).",
+    ],
+    tables: [
+      {
+        headers: ["حرف ربط", "معنی فارسی", "کاربرد (از جزوه)"],
+        rows: [
+          ["for", "زیرا / چون", "نشان‌دادن «دلیل و علت» — با because هم‌کاربرد"],
+          ["and", "و", "«یکسان‌بودن و توانایی» دو چیز"],
+          ["nor", "و نه", "حالت منفی بعد از حالت منفی — جملهٔ بعد از it سوالی می‌شود"],
+          ["but", "اما / ولی", "«تضاد و مغایرت»"],
+          ["or", "یا", "انتخاب یک گزینه از بین چندین انتخاب"],
+          ["yet", "با این وجود", "«تضاد غیرمنتظره» (زبان تخصصی)"],
+          ["so", "بنابراین / پس", "«نتیجه و پیامد» — مترادف therefore"],
+        ],
+      },
+      {
+        headers: ["جفت اول", "جفت دوم", "معنی"],
+        rows: [
+          ["both", "and", "هم … هم"],
+          ["either", "or", "یا … یا"],
+          ["neither", "nor", "نه … نه"],
+          ["not only", "but also", "نه تنها … بلکه"],
+          ["not", "but", "نه … اما"],
+          ["whether", "or", "که آیا / چه … چه"],
+        ],
+      },
+    ],
+    examples: [
+      { en: "I get up early in the morning, and I make an omelet myself.", fa: "من صبح زود از خواب بیدار می‌شوم و املت برای خودم درست می‌کنم.", tag: "and" },
+      { en: "Susan has a pink dress, but she never wears it.", fa: "سوزان یک لباس صورتی دارد، اما هرگز آن را نمی‌پوشد.", tag: "but" },
+      { en: "You should do your homework, or you should wash the dishes.", fa: "تو باید تکلیفت را انجام بدی یا باید ظرف‌ها را بشوری.", tag: "or" },
+      { en: "Saeed studied a lot for the exam, so he passed it.", fa: "سعید خیلی برای امتحان مطالعه کرد، بنابراین آن را پاس کرد.", tag: "so" },
+      { en: "She was very hungry, for she ate everything immediately.", fa: "او خیلی گرسنه بوده، چون همه‌چیز را به سرعت خورد.", tag: "for" },
+      { en: "He doesn’t eat cake, nor does he eat biscuits.", fa: "او نه کیک می‌خورد و نه بیسکویت می‌خورد.", tag: "nor — جملهٔ سوالی بعد از nor" },
+      { en: "Switzerland isn’t in the European Union, nor is it a member of NATO.", fa: "سوییس نه عضو اتحادیهٔ اروپا است و نه عضو ناتو است.", tag: "nor" },
+      { en: "He’s ninety-two, yet he still swims, runs and plays football regularly.", fa: "او نود و دو سال سن دارد، با این وجود هنوز هم به طور مرتب شنا می‌کند، می‌دود و فوتبال بازی می‌کند.", tag: "yet (زبان تخصصی)" },
+      { en: "I either want the cheesecake or the hot chocolate.", fa: "من یا کیک پنیری یا شکلات داغ می‌خواهم.", tag: "either … or" },
+      { en: "I’ll have both the cheesecake and the hot chocolate.", fa: "من هم کیک پنیری و هم شکلات داغ خواهم خورد.", tag: "both … and" },
+      { en: "I didn’t know whether you’d want the cheesecake or the hot chocolate, so I got you both.", fa: "من نمی‌دانستم که آیا شما کیک پنیری می‌خواهید و یا شکلات داغ، بنابراین من هر دو را گرفتم.", tag: "whether … or" },
+      { en: "I want neither the cheesecake nor the hot chocolate.", fa: "من نه کیک پنیری و نه شکلات داغ می‌خواهم.", tag: "neither … nor" },
+    ],
+  },
+  // ================================================ دوازدهم — p۷۹-۸۵
+  {
+    id: "bg-relative-pronouns",
+    source: "دوازدهم",
+    title: "ضمایر موصولی",
+    titleEn: "Relative Pronouns",
+    page: "صفحهٔ ۷۹ تا ۸۵",
+    intro:
+      "ضمایر موصولی کلمات wh‌دار هستند که در وسط جمله آمده و برای اسم ماقبل خود توضیحات بیشتری می‌دهند. ما از ضمایر موصولی برای دادن اطلاعات اضافی دربارهٔ اسم استفاده می‌کنیم؛ جمله‌وارهٔ موصولی بعد از اسم می‌آید و مشخص می‌کند ما داریم دربارهٔ کدام شخص یا کدام چیز صحبت می‌کنیم. به جمله‌هایی که با ضمایر موصولی شروع می‌شوند و اسم یا ضمیر قبل از خود را توضیح می‌دهند «جملات موصولی» می‌گویند. ضمایر موصولی همیشه به صورت «که – را که» ترجمه می‌شوند: I found the keys (which I lost yesterday).",
+    notes: [
+      "دسته‌بندی: ضمایر موصولی دو نقش «فاعلی» و «مفعولی» دارند. الف) ضمایر موصولی فاعلی: در جملهٔ وصفی نقش فاعل را دارند و بعد از آن‌ها همیشه «فعل» به کار می‌رود. ب) ضمایر موصولی مفعولی: در جملهٔ وصفی نقش مفعول را دارند؛ بعد از آن‌ها بلافاصله اسم یا ضمیری روبروست که «فاعل» جملهٔ وصفی است.",
+      "تشخیص: اگر بلافاصله بعد از ضمیر موصولی فعل قرار داشت، آن «ضمیر موصولی فاعلی» است (به صورت «که» ترجمه می‌شود)؛ اما اگر بلافاصله بعد از آن اسم یا ضمیر قرار داشته باشد، آن «ضمیر موصولی مفعولی» است (به صورت «را که» ترجمه می‌شود): The man who called me was very angry. (فعل) / The man whom we talked to was very angry. (فاعل)",
+      "who — نقش «فاعلی» دارد و برای «انسان» به کار می‌رود؛ بعد از آن «فعل» می‌آید.",
+      "whom — نقش «مفعولی» دارد و برای «انسان» به کار می‌رود؛ بعد از آن «فاعل» می‌آید.",
+      "which — هم نقش «فاعلی» دارد و هم نقش مفعولی و برای «غیرانسان» به کار برده می‌شود.",
+      "that — هم برای انسان و هم برای غیرانسان به کار برده می‌شود؛ هم نقش «فاعلی» دارد و هم نقش «مفعولی». در واقع این ضمیر موصولی جانشین ضمایر موصولی دیگر می‌شود.",
+      "what (زبان تخصصی) — تنها ضمیری است که «نیاز به مرجع ظاهری و مشخص» ندارد؛ بدین معنی که مفهوم مرجع در آن مستتر است و بیشتر جنبهٔ خنثی دارد، یعنی حالت مذکر و مؤنث‌بودن آن مشخص نیست (به معنی «آنچه که – هر آنچه که»): I can’t tell you what he wanted me to do.",
+      "نکتهٔ ۱: به جای ضمیر موصولی whom می‌توان از who استفاده کرد.",
+      "نکتهٔ ۲ (بسیار مهم و کنکوری): در حالت فاعلی، بعد از ضمیر موصولی نمی‌توانیم ضمایر فاعلی بیاوریم و در حالت مفعولی هم نمی‌توانیم بعد از آن‌ها ضمایر مفعولی بیاوریم.",
+      "نکتهٔ ۳ (بسیار مهم و کنکوری): چنانچه «حرف اضافه» قبل از ضمیر موصولی بیاید، فقط از whom (برای انسان) و which (برای غیرانسان) استفاده می‌کنیم.",
+      "نکتهٔ ۸ (زبان تخصصی): بعد از the only، all، «صفات عالی»، «اعداد ترتیبی» و «ضمایر نامشخص» (anybody, anyone, somebody, nothing, nobody, anywhere, anything, …) فقط that به کار برده می‌شود و نمی‌توان از سایر ضمایر موصولی استفاده نمود: It was the third accident that I saw yesterday. / He was the tallest man that I had ever seen.",
+      "نکتهٔ ۹ (زبان تخصصی): با ضمایر موصولی می‌توانیم از صفت‌های شمارشی و اعداد استفاده کنیم؛ در این حالت ما بین اعداد و کمیت‌ها «حرف اضافه of» می‌آید — به یاد داشته باشیم که بعد از حروف اضافه، ضمیر موصولی برای انسان whom و برای غیرانسان which می‌باشد: many of whom، most of whom، none of whom، one of which، some of which، two of which.",
+      "حذف ضمایر موصولی (زبان تخصصی) — این قسمت از گرامر در کتب درسی اصلاً ذکر نشده و انتظار نمی‌رود در کنکورهای نظام جدید سوالی از این بخش طرح شود؛ اما با توجه به اهمیت این گرامر، مطالعه و یادگیری آن توصیه می‌شود. الف) بعد از ضمیر موصولی مفعولی «فاعل» آمده باشد، می‌توانیم آن ضمیر را حذف کنیم.",
+    ],
+    tables: [
+      {
+        headers: ["ضمیر موصولی", "نقش", "برای", "بعد از آن می‌آید"],
+        rows: [
+          ["who", "فاعلی", "انسان", "فعل"],
+          ["whom", "مفعولی", "انسان", "فاعل"],
+          ["which", "فاعلی / مفعولی", "غیرانسان", "حالت فاعلی: فعل · حالت مفعولی: فاعل"],
+          ["that", "فاعلی / مفعولی", "انسان و غیرانسان", "حالت فاعلی: فعل · حالت مفعولی: فاعل"],
+          ["what", "فاعلی / مفعولی", "بدون مرجع («آنچه که»)", "—"],
+        ],
+      },
+      {
+        headers: ["ساختار کمّی + of (از نکتهٔ ۹)", "معنی"],
+        rows: [
+          ["many of whom / most of whom", "بیشترِ آن‌ها"],
+          ["none of whom", "هیچ‌یک از آن‌ها"],
+          ["one of which / some of which", "یکی از آن‌ها / بعضی از آن‌ها"],
+          ["two of which", "دو تا از آن‌ها"],
+        ],
+      },
+    ],
+    examples: [
+      { en: "The man who called me was very angry.", fa: "مردی که به من زنگ زد، خیلی عصبانی بود.", tag: "who — بعد از آن فعل آمده (فاعلی)" },
+      { en: "The man whom we talked to was very angry.", fa: "مردی را که ما با او صحبت کردیم، خیلی عصبانی بود.", tag: "whom — بعد از آن فاعل آمده (مفعولی)" },
+      { en: "Rudaki who lived in the 4th century is a famous Persian poet.", fa: "رودکی که در قرن چهارم زندگی می‌کرد، یک شاعر مشهور ایرانی است.", tag: "who — انسان، فاعلی" },
+      { en: "The teacher who taught us French at university was American.", fa: "معلمی که در دانشگاه به ما زبان فرانسوی را تدریس کرد، آمریکایی بود.", tag: "who — انسان، فاعلی" },
+      { en: "The man whom you met at school yesterday is an English teacher.", fa: "مردی را که دیروز در مدرسه ملاقات کردی، یک معلم انگلیسی است.", tag: "whom — انسان، مفعولی" },
+      { en: "Her favorite actor is Marlon Brando, whom she saw in “Godfather One”.", fa: "بازیگر مورد علاقهٔ او، مارلون براندو است که او در فیلم «پدرخوانده ۱» دید.", tag: "whom — انسان، مفعولی" },
+      { en: "The cat which lives near us is drinking milk.", fa: "گربه‌ای که نزدیک ما زندگی می‌کند، دارد شیر می‌نوشد.", tag: "which — غیرانسان، فاعلی" },
+      { en: "I found the keys which you lost yesterday.", fa: "کلیدهایی را که دیروز گم کرده بودی، پیدا کردم.", tag: "which — غیرانسان، مفعولی" },
+      { en: "The police said the accident which happened last night was unavoidable.", fa: "پلیس گفت تصادفی که دیشب رخ داد، اجتناب‌ناپذیر بود.", tag: "which — غیرانسان، فاعلی" },
+      { en: "The food was definitely the thing which we enjoyed a lot in our holiday.", fa: "غذا واقعاً چیزی بود که ما خیلی در تعطیلات ازش لذت بردیم.", tag: "which — غیرانسان، مفعولی" },
+      { en: "Rudaki that lived in the 4th century is a famous Persian poet.", fa: "رودکی که در قرن چهارم زندگی می‌کرد، یک شاعر مشهور ایرانی است.", tag: "that — جانشین who" },
+      { en: "I found the keys that you lost yesterday.", fa: "کلیدهایی را که دیروز گم کرده بودی، پیدا کردم.", tag: "that — جانشین which" },
+      { en: "I can’t tell you what he wanted me to do.", fa: "من نمی‌توانم آنچه که او از من خواست انجام بدهم را به شما بگویم.", tag: "what — بدون مرجع" },
+      { en: "It was the third accident that I saw yesterday.", fa: "سومین تصادفی بود که دیروز دیدم.", tag: "نکتهٔ ۸ — بعد از عدد ترتیبی فقط that" },
+      { en: "He was the tallest man that I had ever seen.", fa: "او بلندقدترین مردی بود که تا آن وقت دیده بودم.", tag: "نکتهٔ ۸ — بعد از صفت عالی فقط that" },
+      { en: "All the books that I have read belong to his library.", fa: "همهٔ کتاب‌هایی را که خوانده‌ام، متعلق به کتابخانهٔ او است.", tag: "نکتهٔ ۸ — بعد از all فقط that" },
+      { en: "She has three brothers, two of whom are in the army.", fa: "او سه برادر دارد، دوتای آن‌ها در ارتش هستند.", tag: "نکتهٔ ۹ — دو تا از آن‌ها (انسان)" },
+      { en: "I read three books last week, one of which I really enjoyed.", fa: "من هفتهٔ پیش سه کتاب خواندم، از یکی از آن‌ها واقعاً لذت بردم.", tag: "نکتهٔ ۹ — یکی از آن‌ها (غیرانسان)" },
+      { en: "There were some good programs on the radio, none of which I listened to.", fa: "چند برنامهٔ خوب از رادیو پخش می‌شد، به هیچ‌کدام از آن‌ها گوش نکردم.", tag: "نکتهٔ ۹ — هیچ‌یک از آن‌ها" },
+    ],
+  },
+  // ================================================ دوازدهم — p۹۲-۹۴
+  {
+    id: "bg-conditional-type-2",
+    source: "دوازدهم",
+    title: "جملات شرطی نوع دوم (+ مرور نوع اول و سوم)",
+    titleEn: "Conditional Sentences (Type 2)",
+    page: "صفحهٔ ۹۲ تا ۹۴",
+    intro:
+      "یادآوری (درس ۳ یازدهم): این نوع از جملات، جملات مرکبی هستند که در آن‌ها انجام یک عمل، مشروط به انجام کار دیگری می‌باشد. ساختار کلی جملات شرطی: If + جملهٔ شرط ، جواب شرط — می‌توان جواب شرط را به ابتدای جمله منتقل کرد و در این حالت برای معنای جمله مشکلی پیش نخواهد آمد و تنها ویرگول حذف می‌شود. در جملات شرطی نوع دوم، دربارهٔ موقعیت‌های فرضی یا خیالی صحبت می‌کنیم که احتمال رخ‌دادن آن‌ها غیرممکن است یا در گذشته می‌توانستند رخ بدهند اما چون روی نداده‌اند، دیگر امکان وقوع آن‌ها وجود ندارد.",
+    notes: [
+      "مرور — شرطی نوع اول: جملهٔ شرط در «زمان حال ساده» و جواب شرط در «زمان آیندهٔ ساده» خواهد بود؛ یعنی عملی را نشان می‌دهد که به شرط انجام کار دیگری احتمال دارد در آینده انجام شود: If you study more, you will learn a lot.",
+      "نکتهٔ ۱ (نوع اول): در جواب شرط به جای will می‌توان از «شکل اول افعال ناقص» (can, may, must, should) استفاده کرد: If you don’t go now, you may miss the train.",
+      "نکتهٔ ۲ (نوع اول): برای سوالی کردن جملات شرطی، «جواب شرط» را سوالی می‌کنیم: Will you stay home if it rains in the afternoon?",
+      "نکتهٔ ۳ (نوع اول): می‌توان جواب شرط را برای اشاره به توصیه، پیشنهاد یا دستور به صورت «امری» بیان کرد: If he comes here, tell him that I’m not at home.",
+      "نکتهٔ ۴ (نوع اول): اگر قصد انجام عملی را در آینده بیان کنیم، در جواب شرط به جای will می‌توان از ساختار be going to استفاده کرد: If Raman wins the competition, he is going to invite us to dinner next Friday.",
+      "نکتهٔ ۵ (نوع اول): در جملهٔ شرط به جای زمان حال ساده می‌توان از زمان‌های «حال استمراری» (برای عملی که هم‌اکنون در حال انجام است) و «حال کامل» (برای عملی که در گذشته انجام شده و اثرش باقی مانده) هم استفاده کرد: If you are studying your final exams, you shouldn’t use your cell phone. / If he has written the letter, I will post it soon.",
+      "ساختار نوع دوم: جملهٔ شرط در «زمان گذشتهٔ ساده» و جواب شرط در «آینده در گذشتهٔ ساده» (would + شکل سادهٔ فعل) خواهد بود: If you studied more, you would learn more. — در جواب شرط به جای would می‌توان از شکل دوم افعال ناقص (could, might) هم استفاده کرد: If I had enough money, I could visit 6 countries.",
+      "نکتهٔ ۱ (نوع دوم): اگر بخواهیم یکی از افعال to be را به کار ببریم، برای تمامی فاعل‌ها از were استفاده می‌کنیم (در این حالت می‌توان از was هم استفاده کرد اما بهتر است برای تمامی فاعل‌ها فقط از were بهره بگیریم): If I were you, I would tell my parents. / If he were a millionaire, he could travel around the world.",
+      "نکتهٔ ۲ (نوع دوم — زبان تخصصی): در این حالت می‌توان if را از جمله حذف کرده و were را به ابتدای جمله بیاوریم؛ در این صورت جملهٔ خبری دارای ساختار سوالی می‌شود (بدون علامت سؤال در آخر جمله) اما در معنی جمله تغییر ایجاد نخواهد شد: Were my brother you, he would never buy that car. / Were I rich, I might spend all my time traveling.",
+      "شرطی نوع سوم (زبان تخصصی): از این نوع در مواردی استفاده می‌کنیم که کاری در گذشته انجام نشده است و یا اتفاقی که امکان وقوع آن در زمان حال یا آینده دیگر وجود ندارد؛ زمان در این نوع از جملات شرطی مربوط به گذشته است که برای تصور کردن نتیجهٔ چیزی که در گذشته روی نداده است به کار می‌رود. جملهٔ شرط در زمان گذشتهٔ کامل (فاعل + had + شکل سوم فعل) و جواب شرط در زمان آیندهٔ در گذشته (فاعل + would + have + شکل سوم فعل) خواهد بود؛ در جواب شرط به جای would می‌توان از شکل دوم افعال ناقص هم استفاده کرد.",
+    ],
+    examples: [
+      { en: "If you study more, you will learn a lot.", fa: "اگه بیشتر مطالعه کنی، بیشتر یاد خواهی گرفت.", tag: "نوع اول — حال ساده + آیندهٔ ساده" },
+      { en: "Will you stay home if it rains in the afternoon?", fa: "اگه در بعدازظهر باران ببارد، در خانه خواهی ماند؟", tag: "نکتهٔ ۲ — سؤال از جواب شرط" },
+      { en: "If he comes here, tell him that I’m not at home.", fa: "اگه او به اینجا آمد، بهش بگو که من در خانه نیستم.", tag: "نکتهٔ ۳ — جواب امری" },
+      { en: "If Raman wins the competition, he is going to invite us to dinner next Friday.", fa: "اگه رامان در رقابت برنده بشود، جمعهٔ آینده ما را به شام دعوت خواهد کرد.", tag: "نکتهٔ ۴ — be going to" },
+      { en: "If you studied more, you would learn more.", fa: "تو اگه بیشتر مطالعه می‌کردی، بیشتر یاد می‌گرفتی.", tag: "نوع دوم — گذشتهٔ ساده + آینده در گذشته" },
+      { en: "If it didn’t rain, she would go on a picnic.", fa: "اگه باران نمی‌بارید، او به گردش می‌رفت.", tag: "نوع دوم" },
+      { en: "If I had enough money, I could visit 6 countries.", fa: "اگر به اندازهٔ کافی پول داشتم، می‌توانستم از ۶ کشور دیدن کنم.", tag: "نوع دوم — جواب با could" },
+      { en: "If I knew his name, I would tell you.", fa: "اگر اسمش را می‌دانستم به تو می‌گفتم.", tag: "نوع دوم" },
+      { en: "If I were you, I would tell my parents.", fa: "اگر من به جای تو بودم، به والدینم می‌گفتم.", tag: "نکتهٔ ۱ — were برای تمامی فاعل‌ها" },
+      { en: "If he were a millionaire, he could travel around the world.", fa: "اگه میلیونر بود، می‌توانست به دور دنیا سفر کنه.", tag: "نکتهٔ ۱ — were + could" },
+      { en: "If my brother were you, he would never buy that car.", fa: "اگه برادرم جای تو بود، هرگز اون ماشین را نمی‌خرید.", tag: "نکتهٔ ۱" },
+      { en: "If I were rich, I might spend all my time traveling.", fa: "اگه ثروتمند بودم، احتمالاً همهٔ وقتم را صرف مسافرت می‌کردم.", tag: "نکتهٔ ۱ — were + might" },
+      { en: "Were my brother you, he would never buy that car.", fa: "اگه برادرم جای تو بود، هرگز اون ماشین را نمی‌خرید.", tag: "نکتهٔ ۲ — حذف if و آوردن were" },
+      { en: "Were I rich, I might spend all my time traveling.", fa: "اگه ثروتمند بودم، احتمالاً همهٔ وقتم را صرف مسافرت می‌کردم.", tag: "نکتهٔ ۲ — حذف if" },
+    ],
+  },
+  // ================================================ دوازدهم — p۱۳۷-۱۴۱
+  {
+    id: "bg-past-perfect",
+    source: "دوازدهم",
+    title: "زمان گذشتهٔ کامل",
+    titleEn: "Past Perfect Tense (ماضی بعید)",
+    page: "صفحهٔ ۱۳۷ تا ۱۴۱",
+    intro:
+      "تعریف: برای اشاره به عملی که در گذشته قبل از عمل دیگری انجام گرفته باشد، از زمان «گذشتهٔ کامل» یا «ماضی بعید» استفاده می‌کنیم: When I arrived home, my brother had left. — وقتی من به خانه رسیدم، برادرم رفته بود. بخش دوم این جمله یعنی «برادرم رفته بود» نشان‌دهندهٔ زمان گذشتهٔ کامل است (چون قبل از اینکه گوینده به خانه برسد، انجام شده بود) و به صورت (رفته بودم، رفته بودی، رفته بود و…) ترجمه می‌شود.",
+    notes: [
+      "فرمول جملات مثبت: فاعل + had (فعل کمکی) + شکل سوم فعل (p.p.) + مفعول + قید حالت + قید مکان + قید زمان — They had killed the man before the police came in.",
+      "نکتهٔ ۱: همانند زمان حال کامل، در این زمان نیز قسمت سوم فعل با استفاده از اضافه‌کردن ed- به آخر افعال باقاعده ساخته می‌شود (در حالتی که قسمت سوم فعل افعال بی‌قاعده از قواعد خاصی پیروی نمی‌کند و می‌بایست آن‌ها را حفظ نمود).",
+      "نکتهٔ ۲: مخفف had (فعل کمکی) به صورت ’d نوشته می‌شود.",
+      "سوالی و منفی کردن: برای سوالی کردن این زمان، فعل کمکی had را به قبل از فاعل منتقل کرده و برای منفی کردن، بعد از فعل کمکی had قید منفی‌ساز not و یا مخفف آن n’t را اضافه می‌کنیم: They had practiced together before they gave the concert. / Had they practiced together before they gave the concert? / They hadn’t practiced together before they gave the concert.",
+      "کاربرد اول: برای بیان عمل یا کاری که در گذشته قبل از عمل دیگری اتفاق افتاده باشد — نیازمند دو عمل است: عملی که در گذشتهٔ دورتر انجام شده به شکل «زمان گذشتهٔ کامل» و عملی که بعداً انجام شده به شکل «زمان گذشتهٔ ساده» بیان می‌شوند: I had eaten my breakfast, when my little baby brother got up.",
+      "کاربرد (دلیل): برای بیان رابطهٔ علت و معلولی در زمان گذشته، از because / since استفاده می‌کنیم (در معنی «چونکه»، «از آنجائیکه»): گذشتهٔ ساده + because / since + گذشتهٔ کامل — I didn’t have any money because / since I had lost my wallet.",
+      "نتیجه‌گیری مهم: اگر دو عمل در گذشته پشت سر هم یا با فاصلهٔ کوتاهی انجام شده باشند، هر دو عمل به شکل «گذشتهٔ ساده» بیان می‌شوند و اگر عملی در گذشته قبل از عمل دیگر با فاصله انجام شده باشد، از «گذشتهٔ کامل» استفاده می‌شود: When I arrived at the airport (at 7), the plane had landed (at 5). — با فاصلهٔ زمانی زیاد / When I arrived at the airport, the plane landed immediately. — با فاصلهٔ زمانی کم و بلافاصله.",
+      "نکتهٔ مهم ۴: as soon as، by the time، until، till از دیگر مشخصه‌های زمان گذشتهٔ کامل هستند. یادآوری خیلی مهم: چنانچه عملی در گذشته قبل از عمل دیگری به کار رفته باشد، یک طرف کلمات و عبارات بالا «گذشتهٔ کامل» و طرف دیگر «گذشتهٔ ساده» خواهد بود؛ باز تکرار می‌کنیم چنانچه دو عمل در گذشته بلافاصله بعد از هم انجام بگیرند، هر دو طرف آن‌ها «زمان گذشتهٔ ساده» خواهد بود: The teacher didn’t check our papers until everyone had finished. / By the time his uncle got a very good job, he had taken many risks.",
+    ],
+    examples: [
+      { en: "When I arrived home, my brother had left.", fa: "وقتی من به خانه رسیدم، برادرم رفته بود.", tag: "گذشتهٔ کامل قبل از گذشتهٔ ساده" },
+      { en: "They had killed the man before the police came in.", fa: "آن‌ها آن مرد را کشته بودند قبل از اینکه پلیس وارد بشود.", tag: "فرمول مثبت" },
+      { en: "Had they practiced together before they gave the concert?", fa: "آیا آن‌ها قبل از این‌که کنسرت را اجرا کنند، با هم تمرین کرده بودند؟", tag: "سوالی — had به قبل از فاعل" },
+      { en: "They hadn’t practiced together before they gave the concert.", fa: "آن‌ها قبل از این‌که کنسرت را اجرا کنند، با هم تمرین نکرده بودند.", tag: "منفی — hadn’t" },
+      { en: "I had eaten my breakfast, when my little baby brother got up.", fa: "هنگامی که برادر کوچکیم از خواب بیدار شد، من صبحانه‌ام را خورده بودم.", tag: "کاربرد اول — دو عمل گذشته" },
+      { en: "My mother had gone shopping before she started cooking dinner.", fa: "مادرم قبل از پختن شام، به خرید رفته بود.", tag: "کاربرد اول — before" },
+      { en: "I didn’t have any money because / since I had lost my wallet.", fa: "من هیچ پولی نداشتم چونکه کیف پولم را گم کرده بودم.", tag: "کاربرد علت — because / since" },
+      { en: "He bought a new laptop because / since his son had broken his old one.", fa: "او یک لپ‌تاپ جدید خرید چونکه پسرش لپ‌تاپ قدیمی او را خراب کرده بود.", tag: "کاربرد علت" },
+      { en: "She could understand the movie easily because / since she had read the book before.", fa: "او از آنجائیکه کتاب را قبلاً خوانده بود، به راحتی توانست فیلم را بفهمد.", tag: "کاربرد علت" },
+      { en: "When I arrived at the airport (at 7), the plane had landed (at 5).", fa: "وقتی که به فرودگاه رسیدم، هواپیما به زمین نشسته بود. (با فاصلهٔ زمانی زیاد)", tag: "نتیجه‌گیری — فاصلهٔ زیاد → گذشتهٔ کامل" },
+      { en: "When I arrived at the airport, the plane landed immediately.", fa: "وقتی که به فرودگاه رسیدم، هواپیما به زمین نشست. (با فاصلهٔ زمانی کم و بلافاصله)", tag: "نتیجه‌گیری — بلافاصله → گذشتهٔ ساده" },
+      { en: "The teacher didn’t check our papers until everyone had finished.", fa: "تا زمانی که همه تمام نشدند، معلم ما ورقه‌هایمان را چک نکرد.", tag: "نکتهٔ ۴ — until" },
+      { en: "By the time his uncle got a very good job, he had taken many risks.", fa: "تا زمانی که عمویش شغل خیلی خوبی گرفت، ریسک‌های زیادی کرده بود.", tag: "نکتهٔ ۴ — by the time" },
+    ],
+  },
+  // ================================================ دوازدهم — p۱۴۶-۱۴۸
+  {
+    id: "bg-past-modals",
+    source: "دوازدهم",
+    title: "کاربرد افعال ناقص در ساختارهای زمان گذشته",
+    titleEn: "Past Modals (زبان تخصصی)",
+    page: "صفحهٔ ۱۴۶ تا ۱۴۸",
+    intro:
+      "یادآوری: در درس چهارم پایهٔ دهم به طور مفصل با افعال ناقص و کاربردهای آن‌ها آشنا شدیم و همچنین در درس اول پایهٔ دوازدهم ساختارهای مجهول آن‌ها را یاد گرفتیم. اینجا با یکی از مهم‌ترین گرامرهای زبان انگلیسی آشنا می‌شویم که در کنکور نظام قدیم جزء اصلی‌ترین گرامرها برای طراحی سؤال بود (چون در کتاب‌های درسی نظام جدید این بخش از گرامر اصلاً نیامده است، اجباری برای یادگیری آن نمی‌باشد). نکتهٔ پایه: چنانچه بعد از افعال ناقص، ساختار have + p.p. آمده باشد، به «زمان گذشته» اشاره دارد.",
+    notes: [
+      "۱) should + have + p.p. — از این ساختار برای اشاره به عملی که «می‌بایست (یا بهتر بود) در گذشته انجام بگیرد» استفاده می‌کنیم (برای نصیحت و توصیه و بیان سهل‌انگاری و بی‌توجهی در زمان گذشته): Alfred failed the test. He should have studied so hard. (اما مطالعه نکرد)",
+      "۲) shouldn’t + have + p.p. — این ساختار حالت منفی ساختار شمارهٔ ۱ می‌باشد و برای اشاره به عملی به کار می‌رود که «نمی‌بایست در گذشته انجام گیرد».",
+      "۳) may / might + have + p.p. — این ساختار برای بیان «احتمال ضعیف وقوع عملی در گذشته» که احتمال آن کمتر از ۵۰٪ باشد، به کار برده می‌شود: Mary wasn’t at the party. She may / might have been sick. I’m not sure.",
+      "۴) may / might + not + have + p.p. — حالت منفی فرمول شمارهٔ ۳ می‌باشد؛ برای بیان «احتمال ضعیف عدم وقوع عملی در گذشته» به کار برده می‌شود؛ یعنی برای اشاره به عملی که احتمال ندارد در گذشته انجام گرفته باشد (اما مطمئن نیستیم که انجام گرفته است یا نه): I wonder why the math teacher didn’t come to the meeting. He might not have known about it.",
+      "۵) must + have + p.p. — از این ساختار برای اشاره به عملی که «باید یا حتماً در گذشته انجام گرفته» استفاده می‌شود (با دلیل، مدرک و یا استنباط منطقی)؛ یعنی برای بیان عملی است که به احتمال قوی (بیش از ۹۵٪) در گذشته رخ داده است و از آن برای نتیجه‌گیری در زمان گذشته استفاده می‌شود. این ساختار حالت منفی ندارد و در تست‌ها حالت منفی آن همواره اشتباه می‌باشد: Raman passed all the final exams with the highest grades. He must have studied very hard during the academic year.",
+      "۶) can’t / couldn’t + have + p.p. — فرمول شمارهٔ ۵ حالت منفی ندارد و این فرمول برای حالت منفی آن به کار می‌رود؛ از این ساختار برای اشاره به عملی که «باید یا حتماً (با دلیل، مدرک و یا استنباط منطقی) در گذشته نمی‌توانسته انجام گرفته باشد» استفاده می‌شود: A: “Your grandfather answered the phone.” B: “He can’t / couldn’t have been my grandfather. He died many years ago.”",
+      "۷) could + have + p.p. — از این ساختار برای اشاره به عملی استفاده می‌کنیم که «می‌توانست» انجام بگیرد اما انجام نگرفته است (برای بیان عملی است که توانایی انجام آن در گذشته وجود داشته، ولی روی نداده است)؛ این ترکیب نشان می‌دهد که فاعل امکان، شانس و فرصت انجام کاری را در گذشته داشته ولی بنا به ملاحظاتی آن را انجام نداده است: There was an interesting film on TV. I could have watched it, but I went to the cinema.",
+      "همچنین فرمول مجهول جملاتی که فعل ناقص دارند: مفعول + فعل ناقص + be + شکل سوم فعل + قید حالت + قید مکان + قید زمان + (by + فاعل) — The drivers must obey traffic rules. → Traffic rules must be obeyed (by them).",
+    ],
+    examples: [
+      { en: "Alfred failed the test. He should have studied so hard.", fa: "آلفرد در آزمون قبول نشد. او می‌بایست خیلی به سختی مطالعه می‌کرد. (اما مطالعه نکرد)", tag: "should have + p.p." },
+      { en: "Mary wasn’t at the party. She may / might have been sick. I’m not sure.", fa: "مری در مهمانی نبود. احتمال داره مریض بوده باشد. (احتمال ضعیف)", tag: "may / might have + p.p." },
+      { en: "I wonder why she didn’t answer the phone. She may have been asleep.", fa: "نمی‌دانم چرا تلفن را جواب نداد. شاید او خواب بوده باشد. (احتمال ضعیف)", tag: "may have + p.p." },
+      { en: "I wonder why the math teacher didn’t come to the meeting. He might not have known about it.", fa: "من نمی‌دانم چرا معلم ریاضی به جلسه نیامد. ممکن است او دربارهٔ آن خبر نداشته باشد. (شاید از جلسه خبر نداشت)", tag: "might not have + p.p." },
+      { en: "Raman passed all the final exams with the highest grades. He must have studied very hard during the academic year.", fa: "رامان تمام امتحانات نهایی را با بالاترین نمرات قبول شد. او باید در طول سال تحصیلی خیلی سخت درس خوانده است.", tag: "must have + p.p. — بدون حالت منفی" },
+      { en: "He can’t / couldn’t have been my grandfather. He died many years ago.", fa: "او نمی‌توانسته پدربزرگم باشد چون او خیلی سال‌ها قبل فوت کرد.", tag: "can’t / couldn’t have + p.p." },
+      { en: "There was an interesting film on TV. I could have watched it, but I went to the cinema.", fa: "تلویزیون فیلم عالی را نشان می‌داد. می‌توانستم که فیلم را تماشا کنم (ولی تماشا نکردم) و به جای آن به سینما رفتم.", tag: "could have + p.p. — فرصتِ انجام‌نشده" },
+      { en: "He is a rich man. He could have bought an expensive car. (but he didn’t.)", fa: "او مرد ثروتمندی است. او می‌توانست یک ماشین گران‌قیمت بخرد. (ولی نخریده است.)", tag: "could have + p.p." },
+      { en: "They had enough time. They could have gone to park. (but they didn’t.)", fa: "آن‌ها وقت کافی داشتند، می‌توانستند به پارک بروند. (اما نرفتند)", tag: "could have + p.p." },
+      { en: "Farid worked very hard all day long. So, he went to bed so early last night. He must have been too tired.", fa: "فرید در تمام طول روز خیلی به سختی کار کرد. بنابراین دیشب خیلی زود به بستر رفت. حتماً (باید) بیش از حد خسته بوده است.", tag: "زبان تخصصی — نتیجه‌گیری گذشته" },
+      { en: "Farhad caught a bad cold last night. He must have stayed in the rain for a long time.", fa: "فرهاد دیشب سرماخوردگی شدیدی گرفت، باید مدت طولانی زیر باران مانده باشد.", tag: "must have + p.p." },
+      { en: "The drivers must obey traffic rules. → Traffic rules must be obeyed (by them).", fa: "راننده‌ها باید قوانین رانندگی را رعایت کنند. → قوانین رانندگی باید رعایت شود. (توسط آن‌ها)", tag: "مجهول با فعل ناقص" },
     ],
   },
 ];
