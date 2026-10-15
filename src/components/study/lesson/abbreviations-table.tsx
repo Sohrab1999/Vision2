@@ -14,19 +14,44 @@
 // ترتیبِ نشانه‌ها عینِ جزوه است؛ این نشانه‌ها سرِ واژگانِ جزوه می‌آیند
 // و هیچ گروه‌بندی/شمارشِ برساخته‌ای به آن‌ها نمی‌چسبد.
 // ---------------------------------------------------------------------
+// راند ۲۳۵ — پیوستن به حلقهٔ «ادامهٔ مطالعه» (بندِ ① پیشنهادِ ۲۳۴):
+//   ① نقطهٔ نوشتنِ TTS — شنیدنِ شکلِ کاملِ یک نشانه = کنشِ واقعیِ خواندن؛
+//      رکوردِ خودکفا {scope:abbrev, id: نماد, title: «نماد — معنی», hint:
+//      شکلِ کامل} — عینِ الگویِ افعالِ r234/واک‌هایِ همین راند.
+//   ② لنگرِ عمیقِ کارتِ نشانه — الگویِ focusBaseِ r234: اسکرولِ محلی
+//      + پالسِ زمردیِ ۱٫۶ثانیه‌ای (تایمر بیرونِ پاک‌سازیِ effect).
+// ---------------------------------------------------------------------
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Search, Table2, X } from "lucide-react";
 import { abbreviations, type Abbreviation } from "@/data/appendix";
 import { faNum } from "@/lib/study-theme";
+import { writeAppendixResume } from "@/lib/bg-reading";
 import SpeakButton from "../shared/speak-button";
 
 const TOTAL = abbreviations.length;
 
-/** کارتِ یک نشانه — نمادِ بنفش + شکلِ کامل + روخوانی + معنیِ فارسی. */
-function AbbreviationCard({ a }: { a: Abbreviation }) {
+/** کارتِ یک نشانه — نمادِ بنفش + شکلِ کامل + روخوانی + معنیِ فارسی.
+ *  راند ۲۳۵ — لنگرِ واقعیِ کارت (`ab-<sym>`) + پالسِ زمردیِ رسیدن
+ *  + نقطهٔ نوشتنِ TTS («آخرین نشانهٔ شنیده‌شده»). */
+function AbbreviationCard({
+  a,
+  pulsing,
+  onSpeak,
+}: {
+  a: Abbreviation;
+  pulsing?: boolean;
+  onSpeak?: () => void;
+}) {
   return (
-    <div className="flex items-center gap-3 rounded-xl border border-stone-100 bg-stone-50 p-3 transition-[border-color,background-color,box-shadow] hover:border-violet-300 hover:bg-white hover:shadow-sm">
+    <div
+      id={`ab-${a.sym}`}
+      className={`flex items-center gap-3 rounded-xl border p-3 scroll-mt-24 transition-[border-color,background-color,box-shadow] ${
+        pulsing
+          ? "bg-emerald-50 border-emerald-200 shadow-[inset_0_0_0_2px] shadow-emerald-300 dark:bg-emerald-900/30 dark:border-emerald-700 dark:shadow-emerald-700"
+          : "border-stone-100 bg-stone-50 hover:border-violet-300 hover:bg-white hover:shadow-sm"
+      }`}
+    >
       <span
         className="en-text flex h-9 w-14 shrink-0 items-center justify-center rounded-lg bg-violet-600 text-[13px] font-black text-white shadow-sm"
         dir="ltr"
@@ -36,7 +61,7 @@ function AbbreviationCard({ a }: { a: Abbreviation }) {
       <div className="min-w-0 flex-1">
         <div className="en-text flex items-center gap-1.5 text-[12px] text-stone-500" dir="ltr">
           <span className="min-w-0 break-words">{a.full}</span>
-          <SpeakButton text={a.full} size="sm" />
+          <SpeakButton text={a.full} size="sm" onSpeak={onSpeak} />
         </div>
         <div className="text-[13px] font-bold text-stone-700">{a.fa}</div>
       </div>
@@ -44,7 +69,15 @@ function AbbreviationCard({ a }: { a: Abbreviation }) {
   );
 }
 
-export default function AbbreviationsTable() {
+export default function AbbreviationsTable({
+  focusSym,
+  onFocusDone,
+}: {
+  /** لنگرِ عمیق (راند ۲۳۵) — نشانه‌ای که کارتش باید در دید باشد؛ نامعتبر نادیده گرفته می‌شود. */
+  focusSym?: string;
+  /** یک‌بارِ مصرف — پس از نخستین تلاشِ اسکرول صدا زده می‌شود تا والد لنگر را پاک کند. */
+  onFocusDone?: () => void;
+}) {
   const [q, setQ] = useState("");
   const trimmed = q.trim();
   const query = trimmed.toLowerCase();
@@ -61,6 +94,46 @@ export default function AbbreviationsTable() {
   }, [trimmed, query]);
 
   const searching = trimmed.length > 0;
+
+  // راند ۲۳۵ — «آخرین نشانهٔ شنیده‌شده» (سوختِ «ادامهٔ مطالعه»): شنیدنِ
+  // شکلِ کامل = کنشِ واقعیِ خواندن — الگویِ r234. عنوانِ خودکفا از خودِ
+  // دادهٔ منجمد: «نماد — معنیِ فارسی» + شکلِ کامل به‌عنوان hint.
+  const recordAbbrevResume = (a: Abbreviation) => {
+    writeAppendixResume({
+      scope: "abbrev",
+      id: a.sym,
+      title: `${a.sym} — ${a.fa}`,
+      hint: a.full,
+    });
+  };
+
+  // لنگرِ عمیقِ کارتِ نشانه (راند ۲۳۵ — الگویِ focusBaseِ r234): اسکرولِ
+  // محلی + پالسِ زمردیِ کوتاه؛ رسیدن ثبت نمی‌کند (نقطهٔ نوشتنِ این لایه
+  // فقط شنیدن است — تصمیمِ ۲۳۴).
+  const validFocus = !!focusSym && abbreviations.some((a) => a.sym === focusSym);
+  const [pulseSym, setPulseSym] = useState<string | null>(null);
+  const pulseTimerRef = useRef<number | null>(null);
+  useEffect(() => {
+    if (!focusSym || !validFocus) {
+      if (focusSym) onFocusDone?.();
+      return;
+    }
+    const raf = requestAnimationFrame(() => {
+      document
+        .getElementById(`ab-${focusSym}`)
+        ?.scrollIntoView?.({ behavior: "smooth", block: "center" });
+      onFocusDone?.();
+      setPulseSym(focusSym);
+      // پالسِ ۱٫۶ثانیه‌ای — عمداً بیرونِ پاک‌سازیِ effect (آموزشِ r234)
+      if (pulseTimerRef.current !== null) window.clearTimeout(pulseTimerRef.current);
+      pulseTimerRef.current = window.setTimeout(() => {
+        pulseTimerRef.current = null;
+        setPulseSym(null);
+      }, 1600);
+    });
+    return () => cancelAnimationFrame(raf);
+    // وابسته‌ها کامل‌اند — فقط لنگر و validFocus؛ onFocusDone در هر رندرِ والد نوساز است
+  }, [focusSym, validFocus]);
 
   return (
     <div className="space-y-4">
@@ -135,7 +208,12 @@ export default function AbbreviationsTable() {
         <div className="rounded-2xl border c-card p-4">
           <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
             {rows.map((a) => (
-              <AbbreviationCard key={a.sym} a={a} />
+              <AbbreviationCard
+                key={a.sym}
+                a={a}
+                pulsing={pulseSym === a.sym}
+                onSpeak={() => recordAbbrevResume(a)}
+              />
             ))}
           </div>
         </div>

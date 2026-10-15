@@ -37,6 +37,8 @@ export default function HomeTools() {
   const openAppendixTopic = useStudy((s) => s.openAppendixTopic);
   const openAppendixPosTable = useStudy((s) => s.openAppendixPosTable);
   const openAppendixVerb = useStudy((s) => s.openAppendixVerb);
+  const openAppendixPhoneme = useStudy((s) => s.openAppendixPhoneme);
+  const openAppendixAbbrev = useStudy((s) => s.openAppendixAbbrev);
 
   return (
     <section aria-label="ابزارهای یادگیری" className="tools-grid">
@@ -65,12 +67,15 @@ export default function HomeTools() {
                 tool.onClick();
                 return;
               }
-              // راند ۲۳۳/۲۳۴ — نشانگرِ «ادامهٔ مطالعه» موجود است؟ پرشِ عمیقِ همان لایه
-              // (r221 درسنامه / r224 جدولِ pos / r234 سطرِ فعل)؛ نبودِ رکورد = ضمیمهٔ ساده
+              // راند ۲۳۳/۲۳۴/۲۳۵ — نشانگرِ «ادامهٔ مطالعه» موجود است؟ پرشِ عمیقِ همان لایه
+              // (r221 درسنامه / r224 جدولِ pos / r234 سطرِ فعل / r235 واک و نشانه)؛
+              // نبودِ رکورد = ضمیمهٔ ساده
               if ("resume" in tool && tool.resume) {
                 const r = tool.resume;
                 if (r.scope === "grammar") openAppendixTopic(r.id);
                 else if (r.scope === "pos") openAppendixPosTable(r.id);
+                else if (r.scope === "phonetics") openAppendixPhoneme(r.id);
+                else if (r.scope === "abbrev") openAppendixAbbrev(r.id);
                 else openAppendixVerb(r.id);
                 return;
               }

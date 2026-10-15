@@ -100,7 +100,7 @@ describe("generalized appendix resume record (r234)", () => {
     expect(readAppendixResume()).toBeNull();
     localStorage.setItem(
       "vision2-bg-last-item",
-      JSON.stringify({ scope: "phonetics", id: "x", title: "t" }), // scopeِ سیم‌کشی‌نشده
+      JSON.stringify({ scope: "future-layer", id: "x", title: "t" }), // scopeِ سیم‌کشی‌نشده (ر۲۳۵: phonetics/abbrev هم سیم شدند)
     );
     expect(readAppendixResume()).toBeNull();
     // hintِ غیررشته‌ای کنارِ رکوردِ سالم دور ریخته می‌شود نه کلِ رکورد
@@ -113,7 +113,7 @@ describe("generalized appendix resume record (r234)", () => {
 
   it("write whitelist: an unwired scope never reaches storage", () => {
     writeAppendixResume({
-      scope: "phonetics" as "verbs",
+      scope: "future-layer" as "verbs", // ر۲۳۵: phonetics/abbrev سیم شدند — scopeِ واقعاً سیم‌کشی‌نشده
       id: "x",
       title: "t",
     });

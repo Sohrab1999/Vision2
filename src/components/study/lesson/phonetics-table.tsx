@@ -22,11 +22,22 @@
 // بی‌صدا حالا هم‌رنگِ گروهِ خودش است (rose) — در چیدمانِ قدیمِ مشترک
 // به‌اشتباه زمردی بود؛ هاورِ کارت‌ها scope‌شده است (قراردادِ P4).
 // ---------------------------------------------------------------------
+// راند ۲۳۵ — پیوستن به حلقهٔ «ادامهٔ مطالعه» (بندِ ① پیشنهادِ ۲۳۴):
+//   ① نقطهٔ نوشتنِ TTS — شنیدنِ واژهٔ نمونهٔ یک واک = کنشِ واقعیِ خواندن؛
+//      رکوردِ خودکفا {scope:phonetics, id: نشانهٔ IPA, title, hint} — عینِ
+//      الگویِ افعالِ r234. در این لایه «شنیدن» نوشتن می‌کند، «دیدن» نه
+//      (تصمیمِ ۲۳۴: فقظ یک نقطهٔ نوشتنِ TTS در هر لایه).
+//   ② لنگرِ عمیقِ کارتِ واک — الگویِ focusBaseِ r234: اسکرولِ محلی به
+//      کارت + پالسِ زمردیِ ۱٫۶ثانیه‌ای؛ تایمرِ پالس عمداً بیرونِ
+//      پاک‌سازیِ effect (آموزشِ r234: بسته‌شدنِ لنگر نباید تایمرِ تازه
+//      را بکشد). رسیدن با لنگر ثبت نمی‌کند — فقط می‌رسد.
+// ---------------------------------------------------------------------
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Search, Volume2, X } from "lucide-react";
 import { vowelPhonemes, consonantPhonemes, type Phoneme } from "@/data/appendix";
 import { faNum } from "@/lib/study-theme";
+import { writeAppendixResume } from "@/lib/bg-reading";
 import SpeakButton from "../shared/speak-button";
 
 type PhonemeGroup = "صدادار" | "بی‌صدا";
@@ -62,12 +73,29 @@ const TOTAL = vowelPhonemes.length + consonantPhonemes.length;
  *  جزئیاتِ چیدمان: جزوه نامِ هر واک را سطری به‌شکل «نام /نشانه/» چاپ کرده؛
  *  موربِ انتهاییِ نام آرایه‌نگاریِ همان سطر است و در کارت، نشانه خطِ خودش را
  *  با مورب‌ها دارد — نمایشِ نام بدونِ تکرارِ مورب، چیدمان است نه تغییرِ
- *  محتوا (دادهٔ خام دست‌نخورده می‌ماند و جست‌وجو روی آن کار می‌کند). */
-function PhonemeCard({ p, meta }: { p: Phoneme; meta: (typeof GROUP_META)[PhonemeGroup] }) {
+ *  محتوا (دادهٔ خام دست‌نخورده می‌ماند و جست‌وجو روی آن کار می‌کند).
+ *  راند ۲۳۵ — لنگرِ واقعیِ کارت (`ph-<symbol>`) برایِ اسکرولِ عمیقِ
+ *  نشانگرِ «ادامه» + پالسِ زمردیِ هنگامِ رسیدن. */
+function PhonemeCard({
+  p,
+  meta,
+  pulsing,
+  onSpeak,
+}: {
+  p: Phoneme;
+  meta: (typeof GROUP_META)[PhonemeGroup];
+  pulsing?: boolean;
+  onSpeak?: () => void;
+}) {
   const faName = p.fa.replace(/\s*\/\s*$/, "");
   return (
     <div
-      className={`rounded-xl border border-stone-100 bg-stone-50 p-3 transition-[border-color,background-color,box-shadow] ${meta.hoverBorder} hover:bg-white hover:shadow-sm`}
+      id={`ph-${p.symbol}`}
+      className={`rounded-xl border border-stone-100 p-3 scroll-mt-24 transition-[border-color,background-color,box-shadow] ${
+        pulsing
+          ? "bg-emerald-50 border-emerald-200 shadow-[inset_0_0_0_2px] shadow-emerald-300 dark:bg-emerald-900/30 dark:border-emerald-700 dark:shadow-emerald-700"
+          : `bg-stone-50 ${meta.hoverBorder} hover:bg-white hover:shadow-sm`
+      }`}
     >
       <div className="en-text mb-1 break-words text-xl font-black text-stone-800" dir="ltr">
         /{p.symbol}/
@@ -75,13 +103,21 @@ function PhonemeCard({ p, meta }: { p: Phoneme; meta: (typeof GROUP_META)[Phonem
       <div className="text-[12px] text-stone-500">{faName}</div>
       <div className={`en-text mt-1.5 flex items-center gap-1.5 text-[12.5px] font-semibold ${meta.example}`} dir="ltr">
         <span className="min-w-0 break-words">{p.example}</span>
-        <SpeakButton text={p.example} size="sm" />
+        <SpeakButton text={p.example} size="sm" onSpeak={onSpeak} />
       </div>
     </div>
   );
 }
 
-export default function PhoneticsTable() {
+export default function PhoneticsTable({
+  focusSymbol,
+  onFocusDone,
+}: {
+  /** لنگرِ عمیق (راند ۲۳۵) — واکِی که کارتش باید در دید باشد؛ نامعتبر نادیده گرفته می‌شود. */
+  focusSymbol?: string;
+  /** یک‌بارِ مصرف — پس از نخستین تلاشِ اسکرول صدا زده می‌شود تا والد لنگر را پاک کند. */
+  onFocusDone?: () => void;
+}) {
   const [q, setQ] = useState("");
   const [group, setGroup] = useState<GroupKey>("همه");
   const trimmed = q.trim();
@@ -104,6 +140,46 @@ export default function PhoneticsTable() {
     group === "همه" ? GROUP_ORDER.filter((g) => filtered[g].length > 0) : [group];
   const visibleCount = visibleGroups.reduce((n, g) => n + filtered[g].length, 0);
   const searching = trimmed.length > 0;
+
+  // راند ۲۳۵ — «آخرین واکِ روخوانی‌شده» (سوختِ «ادامهٔ مطالعه»): شنیدنِ
+  // واژهٔ نمونه = کنشِ واقعیِ خواندن — الگویِ recordVerbResumeِ r234.
+  // عنوانِ خودکفا از خودِ دادهٔ منجمد: «/نشانه/ — نامِ فارسی» + نمونه به‌عنوان hint.
+  const recordPhonemeResume = (p: Phoneme) => {
+    writeAppendixResume({
+      scope: "phonetics",
+      id: p.symbol,
+      title: `/${p.symbol}/ ${p.fa.replace(/\s*\/\s*$/, "")}`,
+      hint: p.example,
+    });
+  };
+
+  // لنگرِ عمیقِ کارتِ واک (راند ۲۳۵ — الگویِ focusBaseِ r234): اسکرولِ محلی
+  // به کارت + پالسِ زمردیِ کوتاه؛ رسیدن ثبت نمی‌کند (نقطهٔ نوشتنِ این لایه
+  // فقط شنیدن است — تصمیمِ ۲۳۴).
+  const validFocus = !!focusSymbol && [vowelPhonemes, consonantPhonemes].some((arr) => arr.some((p) => p.symbol === focusSymbol));
+  const [pulseSymbol, setPulseSymbol] = useState<string | null>(null);
+  const pulseTimerRef = useRef<number | null>(null);
+  useEffect(() => {
+    if (!focusSymbol || !validFocus) {
+      if (focusSymbol) onFocusDone?.();
+      return;
+    }
+    const raf = requestAnimationFrame(() => {
+      document
+        .getElementById(`ph-${focusSymbol}`)
+        ?.scrollIntoView?.({ behavior: "smooth", block: "center" });
+      onFocusDone?.();
+      setPulseSymbol(focusSymbol);
+      // پالسِ ۱٫۶ثانیه‌ای — عمداً بیرونِ پاک‌سازیِ effect (آموزشِ r234)
+      if (pulseTimerRef.current !== null) window.clearTimeout(pulseTimerRef.current);
+      pulseTimerRef.current = window.setTimeout(() => {
+        pulseTimerRef.current = null;
+        setPulseSymbol(null);
+      }, 1600);
+    });
+    return () => cancelAnimationFrame(raf);
+    // وابسته‌ها کامل‌اند — فقط لنگر و validFocus؛ onFocusDone در هر رندرِ والد نوساز است
+  }, [focusSymbol, validFocus]);
 
   const chipCounts: Record<GroupKey, number> = {
     همه: filtered["صدادار"].length + filtered["بی‌صدا"].length,
@@ -230,7 +306,13 @@ export default function PhoneticsTable() {
               </h2>
               <div className="grid max-h-[38vh] gap-2 overflow-y-auto nice-scroll sm:grid-cols-2 lg:grid-cols-4">
                 {rows.map((p) => (
-                  <PhonemeCard key={p.symbol + p.example} p={p} meta={meta} />
+                  <PhonemeCard
+                    key={p.symbol + p.example}
+                    p={p}
+                    meta={meta}
+                    pulsing={pulseSymbol === p.symbol}
+                    onSpeak={() => recordPhonemeResume(p)}
+                  />
                 ))}
               </div>
             </div>

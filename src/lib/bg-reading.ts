@@ -10,9 +10,11 @@
 // اجازهٔ کشیدنِ booklet-grammar (۲۱۴ کیلوبایت) یا بانکِ افعال را به آن نمی‌دهد؛
 // رکوردِ ذخیره‌شده عنوان را بی‌هیچِ importِ سنگین به خانه می‌آورد. صحتِ
 // ناوبری با خودِ شناسه تضمین می‌شود — هر scope مقصدهایِ خودش را دارد:
-//   grammar → openAppendixTopic (داوریِ validFocus روی دادهٔ واقعی)
-//   pos     → openAppendixPosTable (داوریِ validPos روی WORD_FAMILY_TABLES)
-//   verbs   → openAppendixVerb (داوریِ validVerb روی irregularVerbs)
+//   grammar   → openAppendixTopic (داوریِ validFocus روی دادهٔ واقعی)
+//   pos       → openAppendixPosTable (داوریِ validPos روی WORD_FAMILY_TABLES)
+//   verbs     → openAppendixVerb (داوریِ validVerb روی irregularVerbs)
+//   phonetics → openAppendixPhoneme (داوریِ validPhoneme روی واک‌هایِ جزوه) — r235
+//   abbrev    → openAppendixAbbrev (داوریِ validAbbrev روی نشانه‌هایِ جزوه) — r235
 // شناسهٔ مرده = بازشدنِ سادهٔ ضمیمه، هیچ گره‌ای.
 //
 // مهاجرتِ رکوردِ ۲۳۳: کلیدِ قدیمیِ vision2-bg-last-topic همان‌جا می‌ماند
@@ -31,8 +33,12 @@ export interface BgReadingBookmark {
   source?: string;
 }
 
-/** لایه‌هایِ دارایِ نشانگرِ «ادامه» — فقط لایه‌هایِ سیم‌کشی‌شدهٔ واقعی. */
-export const APPENDIX_SCOPES = ["grammar", "pos", "verbs"] as const;
+/** لایه‌هایِ دارایِ نشانگرِ «ادامه» — فقط لایه‌هایِ سیم‌کشی‌شدهٔ واقعی.
+ *  راند ۲۳۵ — دو لایهٔ باقی‌مانده هم به حلقه پیوستند (بندِ ① پیشنهادِ ۲۳۴):
+ *  phonetics = آخرین واکِ روخوانی‌شده، abbrev = آخرین نشانه‌ای که شکلِ
+ *  کاملش شنیده شد — هر دو فقط با یک نقطهٔ نوشتنِ TTS (تصمیمِ طراحیِ ۲۳۴:
+ *  در این دو لایه «شنیدن» کنشِ واقعیِ خواندن است، نه دیدن). */
+export const APPENDIX_SCOPES = ["grammar", "pos", "verbs", "phonetics", "abbrev"] as const;
 export type AppendixScope = (typeof APPENDIX_SCOPES)[number];
 
 /** برچسبِ فارسیِ هر لایه — مشترک میانِ کارتِ خانه و نشانگرِ سرِ ضمیمه. */
@@ -40,11 +46,14 @@ export const APPENDIX_SCOPE_LABELS: Record<AppendixScope, string> = {
   grammar: "درسنامهٔ جامع",
   pos: "اجزای کلماتی",
   verbs: "افعال بی‌قاعده",
+  phonetics: "جدول تلفظ",
+  abbrev: "نشانه‌های اختصاری",
 };
 
 export interface AppendixResumeItem {
   scope: AppendixScope;
-  /** grammar: شناسهٔ موضوع / pos: شناسهٔ جدولِ خانوادهٔ واژه‌ها / verbs: شکلِ سادهٔ فعل */
+  /** grammar: شناسهٔ موضوع / pos: شناسهٔ جدول / verbs: شکلِ سادهٔ فعل /
+   *  phonetics: نشانهٔ IPA / abbrev: نمادِ اختصاری (راند ۲۳۵) */
   id: string;
   /** رشتهٔ نمایشیِ خودکفا — از محتوایِ منجمدِ خودِ جزوه، هیچ ساختگی */
   title: string;

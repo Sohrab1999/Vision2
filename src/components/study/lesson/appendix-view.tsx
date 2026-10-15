@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { ChevronLeft, Library, ListTree, Volume2, SpellCheck2, BookA, Table2, BookOpenCheck, Users } from "lucide-react";
-import { irregularVerbs, partsOfSpeech } from "@/data/appendix";
+import { irregularVerbs, partsOfSpeech, vowelPhonemes, consonantPhonemes, abbreviations } from "@/data/appendix";
 import {
   WORD_FAMILY_TABLES,
   WORD_FAMILY_TOTAL,
@@ -29,14 +29,34 @@ const subTabs: { key: SubTab; label: string; icon: React.ElementType }[] = [
   { key: "abbrev", label: "نشانه‌های اختصاری", icon: Table2 },
 ];
 
-export default function AppendixView({ topicId, posTableId, verbBase }: { topicId?: string; posTableId?: string; verbBase?: string }) {
+export default function AppendixView({
+  topicId,
+  posTableId,
+  verbBase,
+  phonemeId,
+  abbrevSym,
+}: {
+  topicId?: string;
+  posTableId?: string;
+  verbBase?: string;
+  phonemeId?: string;
+  abbrevSym?: string;
+}) {
   // لنگرِ عمیقِ «اجزای کلماتی» (راند ۲۲۴) — شناسهٔ معتبر یعنی ضمیمه مستقیم
   // روی زیرتبِ pos باز می‌شود؛ نامعتبر بی‌خطر است (رفتارِ سابق: درسنامهٔ جامع).
   const validPos = !!posTableId && WORD_FAMILY_TABLES.some((t) => wordFamilyTableId(t) === posTableId);
   // لنگرِ عمیقِ «افعال بی‌قاعده» (راند ۲۳۴) — شکلِ سادهٔ معتبر یعنی ضمیمه
   // مستقیم روی زیرتبِ verbs باز می‌شود و سطرِ فعل در دید با پالسِ زمردی است.
   const validVerb = !!verbBase && irregularVerbs.some((v) => v.base === verbBase);
-  const [tab, setTab] = useState<SubTab>(() => (validVerb ? "verbs" : validPos ? "pos" : "grammar"));
+  // لنگرِ عمیقِ «جدول تلفظ» و «نشانه‌های اختصاری» (راند ۲۳۵) — همان داوریِ
+  // روی دادهٔ منجمد؛ نامعتبر = رفتارِ سابق.
+  const validPhoneme =
+    !!phonemeId &&
+    [vowelPhonemes, consonantPhonemes].some((arr) => arr.some((p) => p.symbol === phonemeId));
+  const validAbbrev = !!abbrevSym && abbreviations.some((a) => a.sym === abbrevSym);
+  const [tab, setTab] = useState<SubTab>(() =>
+    validVerb ? "verbs" : validPos ? "pos" : validPhoneme ? "phonetics" : validAbbrev ? "abbrev" : "grammar",
+  );
   // راند ۲۲۲ — فیلترِ پایهٔ جدول‌های «اجزای کلماتی» در زیرتبِ pos
   const [posGrade, setPosGrade] = useState<"همه" | "دهم" | "یازدهم" | "دوازدهم">("همه");
   // راند ۲۲۸ — فهرستِ پرشِ جدول‌ها (بندِ ② پیشنهادِ ۲۲۷): پنلِ چیپ‌ها همیشه از
@@ -54,6 +74,14 @@ export default function AppendixView({ topicId, posTableId, verbBase }: { topicI
   // لنگرِ عمیقِ سطرِ فعلِ بی‌قاعده (راند ۲۳۴) — یک‌بارِ مصرفِ همان الگو
   const [focusVerbBase, setFocusVerbBase] = useState<string | undefined>(
     () => (validVerb ? verbBase : undefined),
+  );
+  // لنگرِ عمیقِ کارتِ واکِ «جدول تلفظ» (راند ۲۳۵) — یک‌بارِ مصرفِ همان الگو
+  const [focusPhonemeId, setFocusPhonemeId] = useState<string | undefined>(
+    () => (validPhoneme ? phonemeId : undefined),
+  );
+  // لنگرِ عمیقِ کارتِ نشانهٔ «نشانه‌های اختصاری» (راند ۲۳۵) — یک‌بارِ مصرفِ همان الگو
+  const [focusAbbrevSym, setFocusAbbrevSym] = useState<string | undefined>(
+    () => (validAbbrev ? abbrevSym : undefined),
   );
 
   // راند ۲۳۴ — ثبتِ «آخرین جدولِ دیده‌شده» از خودِ دادهٔ منجمد (هیچ ساختگی):
@@ -111,6 +139,12 @@ export default function AppendixView({ topicId, posTableId, verbBase }: { topicI
     } else if (scope === "pos") {
       setTab("pos");
       setFocusPosTableId(id);
+    } else if (scope === "phonetics") {
+      setTab("phonetics");
+      setFocusPhonemeId(id);
+    } else if (scope === "abbrev") {
+      setTab("abbrev");
+      setFocusAbbrevSym(id);
     } else {
       setTab("verbs");
       setFocusVerbBase(id);
@@ -171,8 +205,14 @@ export default function AppendixView({ topicId, posTableId, verbBase }: { topicI
 
       {/* راند ۲۳۰ — کارت‌های واک به کامپوننتِ خودش مهاجرت کردند
           (الگویِ استخراجِ r223/r229) و جست‌وجوی دوزبانه + فیلترِ گروه
-          + روخوانیِ واژهٔ نمونهٔ هر واک گرفتند. */}
-      {tab === "phonetics" && <PhoneticsTable />}
+          + روخوانیِ واژهٔ نمونهٔ هر واک گرفتند.
+          راند ۲۳۵ — لنگرِ عمیقِ کارتِ واک + نقطهٔ نوشتنِ TTS. */}
+      {tab === "phonetics" && (
+        <PhoneticsTable
+          focusSymbol={focusPhonemeId}
+          onFocusDone={() => setFocusPhonemeId(undefined)}
+        />
+      )}
 
       {tab === "pos" && (() => {
         const gradeCounts = { همه: WORD_FAMILY_TOTAL, دهم: 0, یازدهم: 0, دوازدهم: 0 } as Record<string, number>;
@@ -316,8 +356,14 @@ export default function AppendixView({ topicId, posTableId, verbBase }: { topicI
 
       {/* راند ۲۳۱ — نشانه‌های اختصاری هم به کامپوننتِ خودش مهاجرت کردند
           (الگویِ استخراجِ r230) و جست‌وجوی دوزبانه + روخوانیِ شکلِ کامل
-          گرفتند. */}
-      {tab === "abbrev" && <AbbreviationsTable />}
+          گرفتند.
+          راند ۲۳۵ — لنگرِ عمیقِ کارتِ نشانه + نقطهٔ نوشتنِ TTS. */}
+      {tab === "abbrev" && (
+        <AbbreviationsTable
+          focusSym={focusAbbrevSym}
+          onFocusDone={() => setFocusAbbrevSym(undefined)}
+        />
+      )}
     </div>
   );
 }

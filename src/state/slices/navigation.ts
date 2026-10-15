@@ -23,6 +23,12 @@ export interface NavigationSlice {
   /** رفت‌وبرگشتِ «افعال بی‌قاعده» (راند ۲۳۴): ضمیمه را با لنگرِ سطرِ فعل
    * باز می‌کند — مستقیم روی زیرتبِ verbs، سطر در دید با پالسِ زمردی. */
   openAppendixVerb: (base: string) => void;
+  /** رفت‌وبرگشتِ «جدول تلفظ» (راند ۲۳۵): ضمیمه را با لنگرِ کارتِ واک
+   * باز می‌کند — مستقیم روی زیرتبِ phonetics، کارت در دید با پالسِ زمردی. */
+  openAppendixPhoneme: (symbol: string) => void;
+  /** رفت‌وبرگشتِ «نشانه‌های اختصاری» (راند ۲۳۵): ضمیمه را با لنگرِ کارتِ
+   * نشانه باز می‌کند — مستقیم روی زیرتبِ abbrev، کارت در دید با پالسِ زمردی. */
+  openAppendixAbbrev: (sym: string) => void;
   setView: (v: View) => void;
   setLessonTab: (t: LessonTab) => void;
   consumeFlashIntent: () => void;
@@ -53,6 +59,10 @@ export const createNavigationSlice: StateCreator<StudyStore, [], [], NavigationS
     set({ view: { type: "appendix", posTableId }, flashIntent: "none" }),
   openAppendixVerb: (verbBase) =>
     set({ view: { type: "appendix", verbBase }, flashIntent: "none" }),
+  openAppendixPhoneme: (phonemeId) =>
+    set({ view: { type: "appendix", phonemeId }, flashIntent: "none" }),
+  openAppendixAbbrev: (abbrevSym) =>
+    set({ view: { type: "appendix", abbrevSym }, flashIntent: "none" }),
   setView: (v) => set({ view: v, flashIntent: "none" }),
   setLessonTab: (t) => set({ lessonTab: t }),
   consumeFlashIntent: () => set({ flashIntent: "none" }),

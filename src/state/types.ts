@@ -22,10 +22,12 @@ export type View =
   | { type: "lesson"; id: number }
   | { type: "dictionary" }
   | { type: "exam" }
-  | { type: "appendix"; topicId?: string; posTableId?: string; verbBase?: string }
+  | { type: "appendix"; topicId?: string; posTableId?: string; verbBase?: string; phonemeId?: string; abbrevSym?: string }
 // topicId — لنگرِ عمیقِ موضوعِ «درسنامهٔ جامع» (راند ۲۲۱)
 // posTableId — لنگرِ عمیقِ جدولِ «اجزای کلماتی» (راند ۲۲۴، بازشدن روی زیرتبِ pos)
 // verbBase — لنگرِ عمیقِ سطرِ فعلِ بی‌قاعده (راند ۲۳۴، بازشدن روی زیرتبِ verbs)
+// phonemeId — لنگرِ عمیقِ کارتِ واکِ «جدول تلفظ» (راند ۲۳۵، زیرتبِ phonetics)
+// abbrevSym — لنگرِ عمیقِ کارتِ نشانهٔ «نشانه‌های اختصاری» (راند ۲۳۵، زیرتبِ abbrev)
   | { type: "rush" }
   | { type: "duel" }
   | { type: "listen" }

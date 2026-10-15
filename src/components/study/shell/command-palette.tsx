@@ -33,6 +33,7 @@ import {
   UserCog,
   Zap,
   BarChart3,
+  Play,
 } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { useStudy, type LessonTab } from "@/lib/study-store";
@@ -56,6 +57,7 @@ import {
   writeCountPrefill,
   writeFlagPrefill,
 } from "@/lib/nav-prefill";
+import { readAppendixResume, APPENDIX_SCOPE_LABELS, type AppendixResumeItem } from "@/lib/bg-reading";
 import { Kbd } from "./shortcut-guide";
 
 // ------------------------------------------------------------------
@@ -96,6 +98,7 @@ const ICONS: Record<string, React.ElementType> = {
   Settings,
   UserCog,
   Smartphone,
+  Play,
 };
 
 // ------------------------------------------------------------------
@@ -129,6 +132,12 @@ export default function CommandPalette() {
   const goHome = useStudy((s) => s.goHome);
   const openLesson = useStudy((s) => s.openLesson);
   const openLessonTab = useStudy((s) => s.openLessonTab);
+  // راند ۲۳۵ — مسیرِ فرمانِ «ادامهٔ مطالعه»: همان پنج مقصدِ کارتِ خانه
+  const openAppendixTopic = useStudy((s) => s.openAppendixTopic);
+  const openAppendixPosTable = useStudy((s) => s.openAppendixPosTable);
+  const openAppendixVerb = useStudy((s) => s.openAppendixVerb);
+  const openAppendixPhoneme = useStudy((s) => s.openAppendixPhoneme);
+  const openAppendixAbbrev = useStudy((s) => s.openAppendixAbbrev);
   const { theme, setTheme } = useTheme();
   const isDark = theme === "dark";
 
@@ -146,10 +155,14 @@ export default function CommandPalette() {
 
   // Ctrl/Cmd+K — چرخه‌ایِ باز/بسته؛ با e.code تا روی چیدمان فارسی هم کار کند
   // (ریست پرس‌وجو/انتخاب همین‌جا در رویداد — نه داخل اثر)
+  // راند ۲۳۵ — هر باز شدن، رکوردِ «ادامهٔ مطالعه» هم همان‌جا خوانده می‌شود
+  // (خواندنِ localStorage در رویداد = بدونِ اثر، بدونِ سطحِ هیدریشن).
+  const [resumeItem, setResumeItem] = useState<AppendixResumeItem | null>(null);
   const togglePalette = () => {
     setOpen((v) => !v);
     setQuery("");
     setSelected(0);
+    setResumeItem(readAppendixResume());
   };
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -168,6 +181,7 @@ export default function CommandPalette() {
       setOpen(true);
       setQuery("");
       setSelected(0);
+      setResumeItem(readAppendixResume());
     };
     window.addEventListener("open-command-palette", handler);
     return () => window.removeEventListener("open-command-palette", handler);
@@ -180,8 +194,24 @@ export default function CommandPalette() {
     return () => clearTimeout(t);
   }, [open]);
 
+  // راند ۲۳۵ — فرمانِ «ادامهٔ مطالعه» (بندِ ② پیشنهادِ ۲۳۴): فقط وقتی
+  // رکوردی هست فرمانی هست — هیچ فرمانِ ساختگیِ بی‌مقصد. اولین فرمانِ
+  // ناوبری می‌شود تا ورودِ سریعِ کیبوردی باشد (در نمای خالی هم دیده می‌شود).
+  const resumeCmd: CommandDef | null = useMemo(() => {
+    if (!resumeItem) return null;
+    const layer = APPENDIX_SCOPE_LABELS[resumeItem.scope];
+    return {
+      id: "nav-resume",
+      label: "ادامهٔ مطالعه",
+      group: "ناوبری",
+      hint: `از «${resumeItem.title}» در ${layer}${resumeItem.hint ? ` — ${resumeItem.hint}` : ""}`,
+      keywords: ["resume", "bookmark", "ادامه", "آخرین دیده‌شده", "ضمیمه", layer],
+    } satisfies CommandDef;
+  }, [resumeItem]);
+
   const baseCommands: CommandDef[] = useMemo(
     () => [
+      ...(resumeCmd ? [resumeCmd] : []),
       // ── ناوبری ──
       { id: "nav-home", label: "خانه", group: "ناوبری", hint: "برگشت به جلد کتاب", keywords: ["home", "bookshelf"] },
       { id: "nav-dictionary", label: "دیکشنری واژگان", group: "ناوبری", hint: `جست‌وجوی ${faNum(TOTAL_VOCABULARY)}+ واژه`, keywords: ["dictionary", "vocab", "لغت", "culture"] },
@@ -224,7 +254,7 @@ export default function CommandPalette() {
       { id: "tool-profile", label: "پروفایل و پشتیبان", group: "ابزارها", hint: "نام، رنگ، پشتیبان‌گیری و سینک ابری", keywords: ["profile", "backup", "sync", "پروفایل", "ذخیره"] },
       { id: "tool-install", label: "نصب روی دستگاه", group: "ابزارها", hint: "وب‌کتاب مثل اپ — آفلاین و تمام‌صفحه", keywords: ["install", "pwa", "نصب", "اپلیکیشن"] },
     ],
-    [isDark],
+    [isDark, resumeCmd],
   );
 
   // کلیدواژهٔ ناوبری برای همهٔ فرمان‌ها (جست‌وجو) + نگاشت شناسه برای «اخیر»
@@ -285,6 +315,19 @@ export default function CommandPalette() {
       case "nav-appendix":
         setView({ type: "appendix" });
         break;
+      case "nav-resume": {
+        // راند ۲۳۵ — همان مسیرِ کارتِ خانه، ولی مقصد از snapshotِ لحظهٔ اجرا
+        // خوانده می‌شود (نه لحظهٔ باز شدن) تا همیشه «آخرینِ واقعی» برود.
+        // رکورد در فاصلهٔ باز شدن تا اجرا پاک شده باشد = هیچ جابه‌جاییِ
+        // ساختگی — فرمان بی‌مقصد هیچ کار نمی‌کند (صداقتِ رفتاری).
+        const r = readAppendixResume();
+        if (r?.scope === "grammar") openAppendixTopic(r.id);
+        else if (r?.scope === "pos") openAppendixPosTable(r.id);
+        else if (r?.scope === "phonetics") openAppendixPhoneme(r.id);
+        else if (r?.scope === "abbrev") openAppendixAbbrev(r.id);
+        else if (r) openAppendixVerb(r.id);
+        break;
+      }
       case "nav-grammar":
         setView({ type: "grammar" });
         break;
@@ -555,6 +598,8 @@ function cmdIconKey(id: string, isDark: boolean): string {
   switch (id) {
     case "nav-home":
       return "Home";
+    case "nav-resume":
+      return "Play";
     case "nav-dictionary":
       return "BookMarked";
     case "nav-exam":
