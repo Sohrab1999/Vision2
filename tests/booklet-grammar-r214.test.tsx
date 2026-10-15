@@ -53,7 +53,7 @@ describe("booklet-grammar-r214 — دادهٔ درسنامهٔ جامع", () => 
     expect(f.tables).toBeGreaterThanOrEqual(22);
     expect(f.examples).toBeGreaterThanOrEqual(150);
     expect(f.examples).toBeLessThan(280);
-    expect(f.drills).toBe(37); // ۳۱ آزمونکِ دهم + ۶ دستگریمِ عبارات الحاقِ دوازدهم (کلید ص۱۸۷)
+    expect(f.drills).toBe(103); // ۳۱ آزمونکِ دهم + ۶۶ آزمونکِ یازدهم (راند ۲۱۷) + ۶ دستگریمِ عبارات الحاقِ دوازدهم (کلید ص۱۸۷)
     expect(f.notes).toBeGreaterThanOrEqual(150);
   });
 
@@ -259,6 +259,65 @@ describe("booklet-grammar-r214 — دادهٔ درسنامهٔ جامع", () => 
     expect(pm.notes!.join(" ")).toContain("این ساختار حالت منفی ندارد");
     expect(pm.examples!.map((e) => e.en).join(" ")).toContain("He must have studied very hard");
     expect(pm.examples!.map((e) => e.en).join(" ")).toContain("Traffic rules must be obeyed");
+  });
+
+  // ------------------------------------------------ راند ۲۱۷ — آزمونک‌های یازدهم
+  it("r217 پینِ آزمونک‌های یازدهم — شمارشِ هر موضوع + کلیدهای پاسخنامهٔ خودِ جزوه", () => {
+    // درس اول (ص۲۹-۳۰، کلید ص۱۷۹) / درس دوم (ص۶۳-۶۴، کلید ص۱۸۷ + ص۷۵، کلید ص۱۹۱) / درس سوم (ص۱۰۰-۱۰۱، کلید ص۱۹۶ + ص۱۱۰، کلید ص۲۰۱)
+    const counts: Record<string, number> = {};
+    for (const t of ALL) if (t.source === "یازدهم") counts[t.id] = t.drill?.length ?? 0;
+    expect(counts["bg-quantifiers"]).toBe(20);
+    expect(counts["bg-present-perfect"]).toBe(22);
+    expect(counts["bg-gerund"]).toBe(2);
+    expect(counts["bg-first-conditional"]).toBe(22);
+    // موضوعاتی که جزوه برایشان سؤالِ چهارتایی ندارد — صفرِ صادقانه
+    expect(counts["bg-numbers"] ?? 0).toBe(0);
+    expect(counts["bg-phrasal-verbs"] ?? 0).toBe(0);
+    expect(counts["bg-ed-ing-adjectives"] ?? 0).toBe(0);
+  });
+
+  it("r217 پینِ وفاداریِ کلیدها — نمونه‌های عینِ پاسخنامهٔ جزوه", () => {
+    const pick = (id: string, i: number) => {
+      const t = ALL.find((x) => x.id === id)!;
+      const d = t.drill![i];
+      return d.options[d.answer];
+    };
+    // کلیدِ ص۱۷۹ (کمّی‌ها): ۱-much، ۴-few، ۱۳-A little، ۱۶-isn’t much، ۱۹-plenty of
+    expect(pick("bg-quantifiers", 0)).toBe("much");
+    expect(pick("bg-quantifiers", 3)).toBe("few");
+    expect(pick("bg-quantifiers", 12)).toBe("A little");
+    expect(pick("bg-quantifiers", 15)).toBe("isn’t much");
+    expect(pick("bg-quantifiers", 18)).toBe("plenty of");
+    // کلیدِ ص۱۸۷ (حال کامل): ۱-has had، ۷-were you late، ۹-has / won، ۱۶-spoke، ۲۰-hasn’t done
+    expect(pick("bg-present-perfect", 0)).toBe("has had");
+    expect(pick("bg-present-perfect", 6)).toBe("were you late");
+    expect(pick("bg-present-perfect", 8)).toBe("has / won");
+    expect(pick("bg-present-perfect", 15)).toBe("spoke");
+    expect(pick("bg-present-perfect", 19)).toBe("hasn’t done");
+    // کلیدِ ص۱۹۱ (بخشِ ۶ درس دوم): forgotten / riding / believed / using
+    expect(pick("bg-present-perfect", 20)).toBe("forgotten");
+    expect(pick("bg-present-perfect", 21)).toBe("believed");
+    expect(pick("bg-gerund", 0)).toBe("riding");
+    expect(pick("bg-gerund", 1)).toBe("using");
+    // کلیدِ ص۱۹۶ (شرطی نوع اول): ۱-b، ۳-d، ۷-d، ۱۸-d؛ کلیدِ ص۲۰۱ (بخشِ ۷): be / don’t work
+    expect(pick("bg-first-conditional", 0)).toBe("will receive");
+    expect(pick("bg-first-conditional", 2)).toBe("finds");
+    expect(pick("bg-first-conditional", 6)).toBe("will not be");
+    expect(pick("bg-first-conditional", 17)).toBe("come");
+    expect(pick("bg-first-conditional", 20)).toBe("be");
+    expect(pick("bg-first-conditional", 21)).toBe("don’t work");
+  });
+
+  it("r217 سؤال‌های آزمونکِ یازدهم لاتین‌محور و بدونِ گلوی استخراج‌اند", () => {
+    for (const id of ["bg-quantifiers", "bg-present-perfect", "bg-gerund", "bg-first-conditional"]) {
+      const t = ALL.find((x) => x.id === id)!;
+      for (const d of t.drill ?? []) {
+        expect(d.q).not.toMatch(/گزینه|پاسخ|ترجمه|Telegram|Vision|احمدی/);
+        expect(d.q).toMatch(/[A-Za-z]/);
+        // جای خالی همیشه در ساقه هست
+        expect(d.q).toMatch(/-{3,}/);
+      }
+    }
   });
 });
 
