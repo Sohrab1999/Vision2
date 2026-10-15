@@ -12,7 +12,26 @@ import { lessons } from "@/data";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum, posLabel } from "@/lib/study-theme";
+import { buildSynAntIndex, synAntPairsFor } from "@/lib/syn-ant-lookup";
+import { speak } from "@/lib/speak";
 import SpeakButton from "../shared/speak-button";
+
+// round 204: the shelf grew to 12 lessons but the label only knew three
+// ordinals — every lesson ≥4 wrongly said «درس سوم». Full map, same voice.
+const LESSON_ORDINAL_FA: Record<number, string> = {
+  1: "اول",
+  2: "دوم",
+  3: "سوم",
+  4: "چهارم",
+  5: "پنجم",
+  6: "ششم",
+  7: "هفتم",
+  8: "هشتم",
+  9: "نهم",
+  10: "دهم",
+  11: "یازدهم",
+  12: "دوازدهم",
+};
 
 export default function WordOfDay() {
   const openLessonTab = useStudy((s) => s.openLessonTab);
@@ -32,6 +51,11 @@ export default function WordOfDay() {
 
   const isKnown = mounted ? Boolean(known[pick.key]) : false;
   const lesson = lessons.find((l) => l.id === pick.lessonId);
+
+  // round 204: booklet syn/ant pairs on the daily card (same index the
+  // dictionary uses — task 203), tap a chip to hear the counterpart
+  const pairIndex = useMemo(() => buildSynAntIndex(lessons), []);
+  const pairs = mounted ? synAntPairsFor(pairIndex, pick.en) : [];
 
   return (
     <motion.section
@@ -73,10 +97,36 @@ export default function WordOfDay() {
               </span>
             )}
             <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-[10.5px] font-bold text-emerald-800">
-              درس {pick.lessonId === 1 ? "اول" : pick.lessonId === 2 ? "دوم" : "سوم"}
+              درس {LESSON_ORDINAL_FA[pick.lessonId] ?? faNum(pick.lessonId)}
             </span>
           </div>
           <p className="mt-1 truncate text-[13.5px] font-bold text-stone-600">{pick.fa}</p>
+          {pairs.length > 0 && (
+            <div className="mt-1.5 flex flex-wrap items-center gap-1">
+              {pairs.slice(0, 3).map((p) => (
+                <button
+                  key={`${p.kind}-${p.other}-${p.lessonId}`}
+                  type="button"
+                  onClick={() => void speak(p.other, 0.95)}
+                  title="روخوانی جفت"
+                  aria-label={`${p.kind === "syn" ? "مترادف" : "متضاد"}ِ ${pick.en}: ${p.other} — روخوانی`}
+                  className={`dict-pair-chip inline-flex items-center gap-0.5 rounded-md border px-1.5 py-0.5 text-[10.5px] font-bold transition-[background-color,color,border-color,transform] active:scale-[0.96] ${
+                    p.kind === "syn"
+                      ? "border-emerald-200 bg-emerald-50/60 text-emerald-700"
+                      : "border-rose-200 bg-rose-50/60 text-rose-700"
+                  }`}
+                >
+                  <span aria-hidden className="font-black">{p.kind === "syn" ? "≈" : "↔"}</span>
+                  <span dir="ltr">{p.other}</span>
+                </button>
+              ))}
+              {pairs.length > 3 && (
+                <span className="rounded-md bg-stone-100 px-1.5 py-0.5 text-[10.5px] font-bold text-stone-500">
+                  +{faNum(pairs.length - 3)}
+                </span>
+              )}
+            </div>
+          )}
         </div>
 
         {/* actions */}

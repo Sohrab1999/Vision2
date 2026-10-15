@@ -6,6 +6,7 @@
 
 import type { QuizResult } from "@/lib/study-types";
 import { LESSONS_META } from "@/data/lesson-meta";
+import type { LessonTab, View } from "@/state/types";
 import { uiColors } from "./ui-colors";
 
 export interface SkillDef {
@@ -44,6 +45,55 @@ export function lessonIdOfKey(key: string): number | null {
   const head = key.split(":")[0];
   const n = Number(head);
   return Number.isInteger(n) && n >= 1 && n <= LESSONS_META.length ? n : null;
+}
+
+// ---------------------------------------------------------------
+// Round 204 — targeted-practice CTA routing. The home skill
+// panel's weakest-skill CTA used to dump every lesson-bound skill
+// on the tests tab; now each skill lands where it is actually
+// practiced (vocab → flashcards, grammar → the grammar lesson,
+// synant → the tables/drill tab, mistakes → the review session).
+// Pure so tests can pin the whole map.
+// ---------------------------------------------------------------
+
+/** where the targeted-practice CTA of a skill should land */
+export type SkillPracticeTarget =
+  | { kind: "view"; view: View }
+  | { kind: "lesson"; lessonId: number; tab: LessonTab };
+
+/** lesson tab each lesson-bound skill practices in; null → generic tests tab */
+const PRACTICE_TAB: Record<string, LessonTab | null> = {
+  vocab: "vocab",
+  grammar: "grammar",
+  writing: "writing",
+  dictation: "dictation",
+  synant: "synant",
+  mixed: "tests",
+};
+
+export function skillPracticeTarget(s: SkillStat): SkillPracticeTarget {
+  switch (s.def.id) {
+    case "rush":
+      return { kind: "view", view: { type: "rush" } };
+    case "exam":
+    case "final":
+      return { kind: "view", view: { type: "exam" } };
+    case "listening":
+      return { kind: "view", view: { type: "listen" } };
+    case "mistakes":
+      // the mistake-bank review session is cross-lesson by design —
+      // the weakest result key carries no actionable lesson
+      return { kind: "view", view: { type: "review" } };
+    default: {
+      // lesson-bound: the weakest result's lesson decides WHERE, the
+      // skill decides WHICH tab; an unparsable key (global dictation
+      // buckets like exam-gN:dictation, or a missing weakest entry)
+      // falls back to lesson 1 of the same tab — never a wrong-skill tab
+      const lessonId = s.weakest ? lessonIdOfKey(s.weakest.key) : null;
+      const tab = PRACTICE_TAB[s.def.id] ?? "tests";
+      return { kind: "lesson", lessonId: lessonId ?? 1, tab };
+    }
+  }
 }
 
 export function skillBreakdown(results: Record<string, QuizResult>): SkillStat[] {

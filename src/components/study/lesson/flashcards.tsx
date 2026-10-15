@@ -8,7 +8,10 @@ import { useStudy, wordKey, SRS_LABELS } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { isTypingTarget, useKeydown } from "@/hooks/use-keyboard";
 import { trackEvent } from "@/lib/analytics";
-import { posLabel, themeOf } from "@/lib/study-theme";
+import { posLabel, themeOf, faNum } from "@/lib/study-theme";
+import { buildSynAntIndex, synAntPairsFor } from "@/lib/syn-ant-lookup";
+import { speak } from "@/lib/speak";
+import { lessons } from "@/data";
 import SpeakButton from "../shared/speak-button";
 
 export interface FlashcardDeckCard {
@@ -85,6 +88,12 @@ export default function Flashcards({
         return !item || item.dueAt <= Date.now();
       }).length
     : 0;
+
+  // round 204: booklet syn/ant pairs on the answer face — one index for all
+  // deck sources (lesson tab, F7 subset, multi-lesson «واژه‌های من» deck);
+  // same all-lesson lookup the dictionary cards use (homonyms see both rows)
+  const pairIndex = useMemo(() => buildSynAntIndex(lessons), []);
+  const pairs = word ? synAntPairsFor(pairIndex, word.en) : [];
 
   useEffect(() => {
     setIndex(0);
@@ -253,6 +262,31 @@ export default function Flashcards({
             <div className="en-text text-sm opacity-80" dir="ltr">
               {word.en}
             </div>
+            {pairs.length > 0 && (
+              <div className="mt-1 flex max-w-full flex-wrap items-center justify-center gap-1">
+                {pairs.slice(0, 3).map((p) => (
+                  <button
+                    key={`${p.kind}-${p.other}-${p.lessonId}`}
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      void speak(p.other, 0.95);
+                    }}
+                    title="روخوانی جفت"
+                    aria-label={`${p.kind === "syn" ? "مترادف" : "متضاد"}ِ ${word.en}: ${p.other} — روخوانی`}
+                    className="flip-pair-chip inline-flex items-center gap-0.5 rounded-md border border-white/35 bg-white/15 px-1.5 py-0.5 text-[10.5px] font-bold text-white transition-[background-color,color,border-color,transform] hover:bg-white/25 active:scale-[0.96]"
+                  >
+                    <span aria-hidden className="font-black">{p.kind === "syn" ? "≈" : "↔"}</span>
+                    <span dir="ltr">{p.other}</span>
+                  </button>
+                ))}
+                {pairs.length > 3 && (
+                  <span className="rounded-md bg-white/15 px-1.5 py-0.5 text-[10.5px] font-bold text-white/85">
+                    +{faNum(pairs.length - 3)}
+                  </span>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>

@@ -22,7 +22,13 @@ import {
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
-import { skillBreakdown, barColorFor, skillGradeFa, lessonIdOfKey, type SkillStat } from "@/lib/skill-stats";
+import {
+  skillBreakdown,
+  barColorFor,
+  skillGradeFa,
+  skillPracticeTarget,
+  type SkillStat,
+} from "@/lib/skill-stats";
 
 // ------------------------------------------------------------------
 // تحلیل مهارت‌ها — aggregates every stored quiz result into per-skill
@@ -59,16 +65,11 @@ export default function SkillPanel() {
   }, [stats]);
 
   const targetCta = (s: SkillStat) => {
-    const lessonId = s.weakest ? lessonIdOfKey(s.weakest.key) : null;
-    if (s.def.id === "rush") return setView({ type: "rush" });
-    if (s.def.id === "exam" || s.def.id === "final") return setView({ type: "exam" });
-    if (s.def.id === "listening") return setView({ type: "listen" });
-    if (lessonId) {
-      const tab = s.def.id === "dictation" ? "dictation" : s.def.id === "writing" ? "writing" : "tests";
-      openLessonTab(lessonId, tab);
-      return;
-    }
-    openLessonTab(1, "tests");
+    // round 204: the routing map lives in the pure lib (skillPracticeTarget)
+    // so tests pin it; the panel only translates the target into store calls
+    const t = skillPracticeTarget(s);
+    if (t.kind === "view") return setView(t.view);
+    openLessonTab(t.lessonId, t.tab);
   };
 
   return (
