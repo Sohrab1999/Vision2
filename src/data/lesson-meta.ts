@@ -45,7 +45,7 @@ export const LESSONS_META: LessonMeta[] = [
     color: "emerald",
     grade: "یازدهم",
     vocabCount: 204,
-    quizCount: 87,
+    quizCount: 453,
     grammarCount: 6,
     pairCount: 40,
   },
@@ -57,7 +57,7 @@ export const LESSONS_META: LessonMeta[] = [
     color: "amber",
     grade: "یازدهم",
     vocabCount: 234,
-    quizCount: 64,
+    quizCount: 109,
     grammarCount: 6,
     pairCount: 65,
   },
@@ -69,7 +69,7 @@ export const LESSONS_META: LessonMeta[] = [
     color: "rose",
     grade: "یازدهم",
     vocabCount: 200,
-    quizCount: 96,
+    quizCount: 230,
     grammarCount: 3,
     pairCount: 123,
   },
@@ -81,7 +81,7 @@ export const LESSONS_META: LessonMeta[] = [
     color: "violet",
     grade: "دوازدهم",
     vocabCount: 341,
-    quizCount: 110,
+    quizCount: 264,
     grammarCount: 4,
     pairCount: 34,
   },
@@ -93,7 +93,7 @@ export const LESSONS_META: LessonMeta[] = [
     color: "sky",
     grade: "دوازدهم",
     vocabCount: 303,
-    quizCount: 128,
+    quizCount: 387,
     grammarCount: 3,
     pairCount: 30,
   },
@@ -105,7 +105,7 @@ export const LESSONS_META: LessonMeta[] = [
     color: "teal",
     grade: "دوازدهم",
     vocabCount: 246,
-    quizCount: 121,
+    quizCount: 188,
     grammarCount: 3,
     pairCount: 29,
   },
@@ -117,7 +117,7 @@ export const LESSONS_META: LessonMeta[] = [
     color: "orange",
     grade: "دهم",
     vocabCount: 105,
-    quizCount: 97,
+    quizCount: 188,
     grammarCount: 3,
     pairCount: 28,
   },
@@ -129,7 +129,7 @@ export const LESSONS_META: LessonMeta[] = [
     color: "indigo",
     grade: "دهم",
     vocabCount: 169,
-    quizCount: 85,
+    quizCount: 197,
     grammarCount: 3,
     pairCount: 28,
   },
@@ -141,7 +141,7 @@ export const LESSONS_META: LessonMeta[] = [
     color: "fuchsia",
     grade: "دهم",
     vocabCount: 232,
-    quizCount: 121,
+    quizCount: 572,
     grammarCount: 3,
     pairCount: 28,
   },
@@ -185,9 +185,9 @@ export const LESSONS_META: LessonMeta[] = [
 ];
 
 export const TOTAL_VOCABULARY = 4032;
-export const LESSON_QUIZ_COUNT = 1029;
+export const LESSON_QUIZ_COUNT = 2708;
 export const EXAM_BANK_SIZE = 360;
-export const TOTAL_QUESTIONS = LESSON_QUIZ_COUNT + EXAM_BANK_SIZE; // 1389
+export const TOTAL_QUESTIONS = LESSON_QUIZ_COUNT + EXAM_BANK_SIZE; // 3068
 /** راند ۲۰۶: کلِ ردیف‌های جفتِ جزوه روی ۱۲ درس (۴۰+۶۵+۱۲۳+…+۲۴) */
 export const TOTAL_PAIRS = 477;
 

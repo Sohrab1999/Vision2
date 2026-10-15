@@ -14,16 +14,19 @@ function bkRows(lesson: number) {
 }
 
 const BK_COUNTS: Record<number, number> = {
-  1: 32,
-  2: 19,
-  3: 51,
-  4: 65,
-  5: 83,
-  6: 76,
-  7: 52,
-  8: 40,
-  9: 76,
+  1: 398,
+  2: 64,
+  3: 185,
+  4: 219,
+  5: 342,
+  6: 143,
+  7: 143,
+  8: 152,
+  9: 527,
 };
+// [به‌روزِ صادقانهٔ راند ۲۱۳] ردیف‌های نجات‌یافتهٔ رسوب (۱۶۷۹ ردیف) ادامهٔ
+// همین namespace (l{N}-bk{M}) هستند؛ پین‌ها به جمعِ انباشتهٔ ۲۱۷۳ ری‌بیلت شدند.
+// دلتای دقیق راند ۲۱۳ و نمونه‌هایش در tests/booklet-mcq-r213.test.ts پین است.
 
 describe("booklet-mcq-r212: بانک تست‌های استاندارد/کنکوری جزوه‌های جامع", () => {
   it("count pins — ردیف‌های جزوهٔ هر درس و جمع کل", () => {
@@ -33,7 +36,7 @@ describe("booklet-mcq-r212: بانک تست‌های استاندارد/کنکو
       expect(rows, `lesson ${id}`).toHaveLength(cnt);
       total += cnt;
     }
-    expect(total).toBe(494);
+    expect(total).toBe(2173);
   });
 
   it("every booklet row is well-formed: ۴ گزینهٔ یکتا و کلید در محدوده", () => {
@@ -113,7 +116,7 @@ describe("booklet-mcq-r212: بانک تست‌های استاندارد/کنکو
   it("aggregate pins — جمعِ بانک و سازگاریِ meta", () => {
     const real = lessons.reduce((s, l) => s + l.quizzes.length, 0);
     expect(LESSON_QUIZ_COUNT).toBe(real);
-    expect(LESSON_QUIZ_COUNT).toBe(1029);
+    expect(LESSON_QUIZ_COUNT).toBe(2708);
     expect(TOTAL_QUESTIONS).toBe(LESSON_QUIZ_COUNT + examBank.length);
   });
 });
