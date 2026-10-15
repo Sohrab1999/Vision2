@@ -998,6 +998,11 @@ body {
 .dark .dict-state-chip [class*="bg-stone-200"] { background-color: rgb(60 55 49 / 0.95); color: #a8a29e; }
 .dark .dict-state-chip.bg-stone-700 { background-color: #57534e; }
 
+/* dictionary pair chips (task 203 — syn/ant booklet relations on word cards);
+   syn tints (emerald-200/50-60/700) ride the global kernel remaps — ant's
+   border-rose-200 has no global remap, served here scoped to the chip */
+.dark .dict-pair-chip.border-rose-200 { border-color: rgb(120 30 45 / 0.55); }
+
 /* monthly report band */
 .dark .report-month { background-color: rgb(28 25 23 / 0.6); border-color: #37312b; }
 .dark .report-month .text-stone-700 { color: #d6d3cf; }

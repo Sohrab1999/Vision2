@@ -9,6 +9,8 @@ import { posLabel, themeOf, faNum } from "@/lib/study-theme";
 import { downloadAnkiTsv, buildAnkiTsv } from "@/lib/anki-export";
 import { trackEvent } from "@/lib/analytics";
 import { useToast } from "@/hooks/use-toast";
+import { buildSynAntIndex, synAntPairsFor, matchesViaPairs } from "@/lib/syn-ant-lookup";
+import { speak } from "@/lib/speak";
 import SpeakButton from "../shared/speak-button";
 
 // state filter values
@@ -28,6 +30,9 @@ export default function DictionaryView() {
   const { toast } = useToast();
 
   const ankiCount = useMemo(() => buildAnkiTsv().count, []);
+
+  // نمایهٔ جفت‌های مترادف/متضاد جزوه (تسک ۲۰۳) — یک‌بار روی همهٔ درس‌ها
+  const pairIndex = useMemo(() => buildSynAntIndex(lessons), []);
 
   const allWords = useMemo(
     () =>
@@ -60,9 +65,11 @@ export default function DictionaryView() {
         if (!it || it.dueAt > now) return false;
       }
       if (!q) return true;
-      return w.en.toLowerCase().includes(q) || w.fa.includes(query.trim());
+      if (w.en.toLowerCase().includes(q) || w.fa.includes(query.trim())) return true;
+      // جستجوی ازراهِجفت: «lend» کارتِ «borrow» را هم می‌آورد (تسک ۲۰۳)
+      return matchesViaPairs(pairIndex, w.en, q);
     });
-  }, [allWords, query, lessonFilter, stateFilter, known, srs]);
+  }, [allWords, query, lessonFilter, stateFilter, known, srs, pairIndex]);
 
   const stateChips: { id: StateFilter; label: string; icon?: React.ElementType; cls: string; count: number }[] = [
     {
@@ -104,7 +111,7 @@ export default function DictionaryView() {
           <div>
             <h1 className="text-lg font-extrabold text-stone-800">دیکشنری واژگان</h1>
             <p className="text-[12px] text-stone-500">
-              جستجو در {faNum(allWords.length)} واژهٔ همهٔ درس‌ها — با تلفظ صوتی
+              جستجو در {faNum(allWords.length)} واژهٔ همهٔ درس‌ها — با تلفظ صوتی؛ جفت‌های مترادف/متضاد جزوه هم جستجو می‌شوند
             </p>
           </div>
           <button
@@ -255,6 +262,36 @@ export default function DictionaryView() {
                   </button>
                 </div>
                 <div className="mt-0.5 text-[13px] text-stone-600">{w.fa}</div>
+                {(() => {
+                  const pairs = mounted ? synAntPairsFor(pairIndex, w.en) : [];
+                  if (pairs.length === 0) return null;
+                  return (
+                    <div className="mt-1 flex flex-wrap items-center gap-1">
+                      {pairs.slice(0, 3).map((p) => (
+                        <button
+                          key={`${p.kind}-${p.other}-${p.lessonId}`}
+                          type="button"
+                          onClick={() => void speak(p.other, 0.95)}
+                          title="روخوانی جفت"
+                          aria-label={`${p.kind === "syn" ? "مترادف" : "متضاد"}ِ ${w.en}: ${p.other} — روخوانی`}
+                          className={`dict-pair-chip inline-flex items-center gap-0.5 rounded-md border px-1.5 py-0.5 text-[10.5px] font-bold transition-[background-color,color,border-color,transform] active:scale-[0.96] ${
+                            p.kind === "syn"
+                              ? "border-emerald-200 bg-emerald-50/60 text-emerald-700"
+                              : "border-rose-200 bg-rose-50/60 text-rose-700"
+                          }`}
+                        >
+                          <span aria-hidden className="font-black">{p.kind === "syn" ? "≈" : "↔"}</span>
+                          <span dir="ltr">{p.other}</span>
+                        </button>
+                      ))}
+                      {pairs.length > 3 && (
+                        <span className="rounded-md bg-stone-100 px-1.5 py-0.5 text-[10.5px] font-bold text-stone-500">
+                          +{faNum(pairs.length - 3)}
+                        </span>
+                      )}
+                    </div>
+                  );
+                })()}
                 <span className={`mt-1 inline-block rounded-full px-2 py-0.5 text-[10px] font-bold ${t.chipBg}`}>
                   درس {faNum(w.lessonId)}
                 </span>
