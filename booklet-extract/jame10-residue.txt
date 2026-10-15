@@ -1,0 +1,90 @@
+G10L1T7	till	تا، تا اینکه، تا زمانیکه	<bad: زمانیکه>
+G10L1T7	tonight	امشب	<bad: امشب>
+G10L1T7	unscramble	مرتب کردن (کلمات به هم ریخته)	<bad: (کلمات ریخته)>
+G10L1T7	visitor	بازدید کننده، مالقات کننده	<bad: بازدید>
+G10L1T7	whenever	هر زماتز که	<bad: زماتز>
+G10L2T8	element	عنرص	<bad: عنرص>
+G10L2T8	monkey	میمون	<bad: میمون>
+G10L2T8	rock	سنگ، صخره	<bad: سنگ صخره>
+G10L2T8	rocky	سنکی ، سنگالچز	<bad: سنکی سنگالچز>
+G10L2T8	round	اطراف، گرد، دایره ای	<bad: اطراف>
+G10L2T8	Russia	کشور روسیه	<bad: روسیه>
+G10L2T8	Saturn	سیاره زحل	<bad: زحل>
+G10L2T8	Neptune	سیاره نپتون	<bad: نپتون>
+G10L2T8	observe	مشاهده کردن ، رصد کردن- رعایت کردن	<bad: رعایت>
+G10L2T8	sick	بیمار، مریض	<bad: مریض>
+G10L2T8	of all	از همه، از بقیه	<bad: بقیه>
+G10L2T8	on one’s own	تنها، به تنهات	<bad: تنهات>
+G10L2T8	spelling	امالء، هح	<bad: هح>
+G10L2T8	pepper	فلفل	<bad: فلفل>
+G10L2T8	plasma	پالسما، ماییع در خون	<bad: پالسما ماییع>
+G10L2T8	Pluto	سیاره پلوتون	<bad: پلوتون>
+G10L2T8	pump	پمپاژ کردن، پمپ	<bad: پمپاژ>
+G10L2T8	than	از ( برای مقایسه در صفات برتری)	<bad: صفات>
+G10L2T8	thousand	هزار	<bad: هزار>
+G10L2T8	Uranus	سیاره اورانوس	<bad: اورانوس>
+G10L2T8	wooden	چوت	<bad: چوت>
+G10L2T8	worse	بدتر صفت تفضییل	<bad: تفضییل>
+G10L2T8	Venus	سیاره ونوس	<bad: ونوس>
+G10L2T8	basement	زیر زمت ز	<bad: زمت>
+G10L2T8	weakness	ضعف	<bad: ضعف>
+G10L2T8	visible	قابل رؤیت	<bad: رؤیت>
+G10L2T8	chance	شانس، بخت	<bad: شانس بخت>
+G10L2T8	crayon	مداد شمیع	<bad: شمیع>
+G10L2T8	gather	جمع کردن، گرد آ وری کردن	<bad: آ وری>
+G10L3T9	emphasis	تأکید - تکیه- اضار	<bad: تاکید اضار>
+G10L3T9	anything	هیحر، هیچ چی زی- هر چی زی	<bad: هیحر>
+G10L3T9	at the moment	در حال حاضز	<bad: حاضز>
+G10L3T9	get around	پخش شدن- شایع شدن	<bad: شایع>
+G10L3T9	build	ساختر ز ، درست کردن	<bad: ساختر>
+G10L3T9	bulb	حباب- المپ	<bad: حباب->
+G10L3T9	camera	دوربت ز	<bad: دوربت>
+G10L3T9	grave	گور، قی	<bad: گور قی>
+G10L3T9	column	ن ستو (می ن کتاب، ساختمان )	<bad: ن>
+G10L3T9	cool	عایل، محشی- خنک	<bad: محشی->
+G10L3T9	hearing	شنوات	<bad: شنوات>
+G10L3T9	cradle	گهواره- مهد	<bad: گهواره- مهد>
+G10L3T9	heavily	به شدت، به طور سنگت ز(بارش برف و باران)	<bad: (بارش برف و باران)>
+G10L3T9	destructive	مخرب، ویرانگر	<bad: مخرب ویرانگر>
+G10L3T9	historian	تاری خ نویس، تاری خ دان، مورخ	<bad: دان>
+G10L3T9	emotionless	ت احساس	<bad: ت>
+G10L3T9	interrogative	جمالت سؤایل	<bad: جمالت سؤایل>
+G10L3T9	pass away	فوت کردن، مردن، از دنیا رفتر ز	<bad: فوت مردن رفتر>
+G10L3T9	into	داخل، به درون	<bad: درون>
+G10L3T9	past progressive	زمان ) گذشته استمراری	<bad: استمراری>
+G10L3T9	jump out	بی ون پریدن	<bad: پریدن>
+G10L3T9	kitty	بچه گربه	<bad: گربه>
+G10L3T9	prophet	پیامی ، پیغمی ، نن	<bad: پیغمی نن>
+G10L3T9	publish	منتشی کردن- چاپ کردن	<bad: منتشی>
+G10L3T9	light bulb	الم پ	<bad: الم پ>
+G10L3T9	put aside	کنار گذاشتر ز	<bad: کنار گذاشتر>
+G10L3T9	rapidly	به رسعت	<bad: رسعت>
+G10L3T9	must	باید (اجبار )	<bad: (اجبار)>
+G10L3T9	rather	نسبتآ	<bad: نسبتآ>
+G10L3T9	myself	خودم	<bad: خودم>
+G10L3T9	refinery	پالایشگاه	<bad: پالایشگاه>
+G10L3T9	narrator	نقل کننده، راوی، روایت کننده	<bad: راوی>
+G10L3T9	negative	منفز	<bad: منفز>
+G10L3T9	next door	خانه همسایه- در بغیل	<bad: بغیل>
+G10L3T9	ourselves	خودمان	<bad: خودمان>
+G10L3T9	smoking	استعمال دخانیات	<bad: استعمال دخانیات>
+G10L3T9	painless	ت درد	<bad: ت>
+G10L3T9	state	حالت - استان، ایالت- بیان کردن	<bad: استان ایالت->
+G10L3T9	universe	جهان، دنیا ، عالم	<bad: عالم>
+G10L3T9	wait	صی کردن، منتظر ماندن	<bad: صی>
+G10L3T9	themselves	خودشان	<bad: خودشان>
+G10L3T9	thinker	متفکر، اندیشمند	<bad: متفکر اندیشمند>
+G10L4T9	obligation	اجبار	<bad: اجبار>
+G10L4T9	offline	بدون اتصال به اینیر نت ، آف الین	<bad: اتصال اینیر نت آف الین>
+G10L4T9	home - made	خانکی	<bad: خانکی>
+G10L4T9	own	مال خود - صاحب بودن، داشتر ز	<bad: صاحب>
+G10L4T9	hospitable	مهمان نواز	<bad: نواز>
+G10L4T9	patiently	صبورانه - با شکیبات	<bad: صبورانه شکیبات>
+G10L4T9	in front of	روبروی، در جلوی	<bad: جلوی>
+G10L4T9	safe	ایمن، ت خطر	<bad: ایمن ت>
+G10L4T9	tourism	گردشگری، توریسم	<bad: توریسم>
+G10L4T9	sell (sold)	فروختر ز	<bad: فروختر>
+G10L4T9	tradition	سنت، آئت ز ، رسم	<bad: سنت آئت>
+G10L4T9	spend (spent)	خرج کردن- سیر ی کردن	<bad: سیر>
+G10L4T9	vegetables	سی زیجات	<bad: سی زیجات>
+G10L4T9	wide	گسیر ده، وسیع، عریض ، پهن	<bad: گسیر ده عریض پهن>

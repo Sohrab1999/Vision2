@@ -9,7 +9,7 @@ import { TOTAL_VOCABULARY, LESSONS_META } from "@/data/lesson-meta";
 // ترتیبِ ستونی جدول‌ها را می‌فهمد و جابه‌جایی‌های شناخته‌شده با اووررایدِ
 // دستیِ بازبینی‌شده ترمیم شده‌اند.
 
-const LESSON10_COUNT = 631;
+const LESSON10_COUNT = 922;
 const LESSON11_COUNT = 454;
 const LESSON12_COUNT = 556;
 
@@ -22,11 +22,11 @@ function findWord(id: number, en: string) {
 }
 
 describe("جزوه‌های متوسطهٔ اول — واژگانِ کاملِ استخراج‌شده (راند ۲۰۹)", () => {
-  it("پینِ شمارش: ۶۳۱/۴۵۴/۵۵۷ واژه در درس‌های ۱۰-۱۲ و مجموعِ کتاب ۲۷۵۶", () => {
+  it("پینِ شمارش: ۹۲۲/۴۵۴/۵۵۶ واژه در درس‌های ۱۰-۱۲ و مجموعِ کتاب ۳۵۶۶", () => {
     expect(vocabOf(10).length).toBe(LESSON10_COUNT);
     expect(vocabOf(11).length).toBe(LESSON11_COUNT);
     expect(vocabOf(12).length).toBe(LESSON12_COUNT);
-    expect(TOTAL_VOCABULARY).toBe(2756);
+    expect(TOTAL_VOCABULARY).toBe(3566);
     expect(LESSONS_META.reduce((s, l) => s + l.vocabCount, 0)).toBe(
       TOTAL_VOCABULARY
     );

@@ -1,0 +1,5682 @@
+[
+ {
+  "grade": 12,
+  "lesson": 1,
+  "prospect": 0,
+  "target": 4,
+  "rows": [
+   {
+    "en": "accidental",
+    "fa": "تصادق",
+    "raw": "تصادق",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "at all",
+    "fa": "اصأل، ابدأ، به هیچ وجه",
+    "raw": "اصأل، ابدأ، به هیچ وجه",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "accidentally",
+    "fa": "تصادفأ، اتفاق",
+    "raw": "تصادفأ، اتفاق",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "at last",
+    "fa": "شانجام، در نهایت",
+    "raw": "شانجام، در نهایت",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "A.D",
+    "fa": "بعد از میالد مسیح ، میالدی",
+    "raw": "بعد از میالد مسیح ، میالدی",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "at least",
+    "fa": "حداقل",
+    "raw": "حداقل",
+    "dup": false,
+    "gold": "حداقل",
+    "goldLesson": 1
+   },
+   {
+    "en": "a set of",
+    "fa": "مجموعه ای از",
+    "raw": "مجموعه ای از",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "attempt",
+    "fa": "تالش، کوشش",
+    "raw": "تالش، کوشش",
+    "dup": false,
+    "gold": "تلاش، سعی، کوشش - تلاش کردن",
+    "goldLesson": 3
+   },
+   {
+    "en": "abroad",
+    "fa": "خارج از کشور",
+    "raw": "خارج از کشور",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "author",
+    "fa": "نویسنده، مؤلف",
+    "raw": "نویسنده، مؤلف",
+    "dup": false,
+    "gold": "نویسنده، مؤلف",
+    "goldLesson": 9
+   },
+   {
+    "en": "active",
+    "fa": "فعال، پر جنب و جوش",
+    "raw": "فعال، پر جنب و جوش",
+    "dup": false,
+    "gold": "فعال",
+    "goldLesson": 2
+   },
+   {
+    "en": "authorized",
+    "fa": "مجاز- مختار",
+    "raw": "مجاز- مختار",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "active voice",
+    "fa": "جمله معلوم ( در دستور زبان )",
+    "raw": "جمله معلوم ( در دستور زبان )",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "authority",
+    "fa": "صالحیت، اختیار - معتیی",
+    "raw": "صالحیت، اختیار - معتیی",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "addition",
+    "fa": "جمع، اضافه",
+    "raw": "جمع، اضافه",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "babysit",
+    "fa": "از بچه پرستاری کردن",
+    "raw": "از بچه پرستاری کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "advice",
+    "fa": "نصیحت، توصیه",
+    "raw": "نصیحت، توصیه",
+    "dup": false,
+    "gold": "نصیحت، پند",
+    "goldLesson": 3
+   },
+   {
+    "en": "babysitter",
+    "fa": "پرستار بچه",
+    "raw": "پرستار بچه",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "advise",
+    "fa": "نصیحت کردن، توصیه کردن",
+    "raw": "نصیحت کردن، توصیه کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "bear",
+    "fa": "خرس- به دنیا آوردن- تحمل کردن",
+    "raw": "خرس- به دنیا آوردن- تحمل کردن",
+    "dup": false,
+    "gold": "تحمل کردن - به دنیا آوردن - خرس",
+    "goldLesson": 2
+   },
+   {
+    "en": "advisement",
+    "fa": "مشورت، تأمل",
+    "raw": "مشورت، تأمل",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "be born",
+    "fa": "متولد شدن، به دنیا آمدن",
+    "raw": "متولد شدن، به دنیا آمدن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "advisor",
+    "fa": "مشاور، ر ا هنما",
+    "raw": "مشاور، ر ا هنما",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "because of",
+    "fa": "به خاطر",
+    "raw": "به خاطر",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "again and again",
+    "fa": "بارها، دوباره و دوباره",
+    "raw": "بارها، دوباره و دوباره",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "belonging",
+    "fa": "تعلق، وابستگ",
+    "raw": "تعلق، وابستگ",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "agreement",
+    "fa": "توافق، موافقت، قرارداد",
+    "raw": "توافق، موافقت، قرارداد",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "bless",
+    "fa": "دعا کردن، مبارک خواندن",
+    "raw": "دعا کردن، مبارک خواندن",
+    "dup": false,
+    "gold": "برکت دادن، رحمت فرستادن",
+    "goldLesson": 4
+   },
+   {
+    "en": "after a while",
+    "fa": "بعد از مدت",
+    "raw": "بعد از مدت",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "blessed",
+    "fa": "مبارک، سعید، خوشبخت",
+    "raw": "مبارک، سعید، خوشبخت",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "airbag",
+    "fa": "کیسه هوا",
+    "raw": "کیسه هوا",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "blessedness",
+    "fa": "سعادت، برکت، خوشبخن",
+    "raw": "سعادت، برکت، خوشبخن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "airplane",
+    "fa": "هواپیما",
+    "raw": "هواپیما",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "blessing",
+    "fa": "رحمت، برکت، دعای خیر ، نعمت",
+    "raw": "رحمت، برکت، دعای خیر ، نعمت",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "along with",
+    "fa": "به عالوه، افزون بر، همراه با",
+    "raw": "به عالوه، افزون بر، همراه با",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "boost",
+    "fa": "بالابردن، افزایش دادن، تقویت کردن",
+    "raw": "باالبردن، افزایش دادن، تقویت کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "aloud",
+    "fa": "بلند، با صدای بلند",
+    "raw": "بلند، با صدای بلند",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "booster",
+    "fa": "تقویت کننده، حایم سیایس",
+    "raw": "تقویت کننده، حایم سیایس",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "although",
+    "fa": "اگرچه ، گرچه، با اینکه",
+    "raw": "اگرچه ، گرچه، با اینکه",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "bother",
+    "fa": "آزار، اذیت - اذیت کردن",
+    "raw": "آزار، اذیت  - اذیت کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "analyze",
+    "fa": "برریس کردن، آنالیر کردن",
+    "raw": "برریس کردن، آنالیر  کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "bring up",
+    "fa": "تربیت کردن، مطرح کردن",
+    "raw": "تربیت کردن، مطرح کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "analyzer",
+    "fa": "تحلیل کننده، تحلیل گر",
+    "raw": "تحلیل کننده، تحلیل گر",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "broken-hearted",
+    "fa": "دلشکسته، نا امید",
+    "raw": "دلشکسته، نا امید",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "anniversary",
+    "fa": "سالگرد",
+    "raw": "سالگرد",
+    "dup": false,
+    "gold": "سال روز",
+    "goldLesson": 12
+   },
+   {
+    "en": "burst",
+    "fa": "ترکیدن، منفجر شدن",
+    "raw": "ترکیدن، منفجر شدن",
+    "dup": false,
+    "gold": "منفجر شدن",
+    "goldLesson": 12
+   },
+   {
+    "en": "antonym",
+    "fa": "متضاد، ضد",
+    "raw": "متضاد، ضد",
+    "dup": false,
+    "gold": "متضاد",
+    "goldLesson": 3
+   },
+   {
+    "en": "businessman",
+    "fa": "تاجر، بازرگان",
+    "raw": "تاجر، بازرگان",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "appropriate",
+    "fa": "مناسب، شایسته",
+    "raw": "مناسب، شایسته",
+    "dup": false,
+    "gold": "مناسب، شایسته، درخور",
+    "goldLesson": 1
+   },
+   {
+    "en": "by heart",
+    "fa": "از حفظ، از بر، حفظ",
+    "raw": "از حفظ، از بر، حفظ",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "appreciation",
+    "fa": "قدردات ، درک، فهم",
+    "raw": "قدردات  ، درک، فهم",
+    "dup": false,
+    "gold": "قدردانی، ارج‌شناسی، سپاس",
+    "goldLesson": 4
+   },
+   {
+    "en": "by the way",
+    "fa": "راسن ، بگذریم",
+    "raw": "راسن  ، بگذریم",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "appreciative",
+    "fa": "قدردان، قدرشناس",
+    "raw": "قدردان، قدرشناس",
+    "dup": false,
+    "gold": "قدرشناس، قدردان",
+    "goldLesson": 4
+   },
+   {
+    "en": "cage",
+    "fa": "قفس، قفسه، محفظه",
+    "raw": "قفس، قفسه، محفظه",
+    "dup": false,
+    "gold": "قفس",
+    "goldLesson": 7
+   },
+   {
+    "en": "appreciate",
+    "fa": "قدردات کردن، درک کردن، فهمیدن",
+    "raw": "قدردات  کردن، درک کردن، فهمیدن",
+    "dup": false,
+    "gold": "ارج نهادن، قدر... دانستن",
+    "goldLesson": 3
+   },
+   {
+    "en": "calmly",
+    "fa": "آرام، راحت، به آرایم، آهسته",
+    "raw": "آرام، راحت، به آرایم، آهسته",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "article",
+    "fa": "مقاله - شین",
+    "raw": "مقاله  - شین",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "cancer",
+    "fa": "، شطان بال",
+    "raw": "،شطان بال",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "as",
+    "fa": "از آنجائیکه- وقن که- به عنوان",
+    "raw": "از آنجائیکه- وقن  که- به عنوان",
+    "dup": false,
+    "gold": "به عنوان",
+    "goldLesson": 11
+   },
+   {
+    "en": "capable of",
+    "fa": "قادر به",
+    "raw": "قادر به",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "as follows",
+    "fa": "، به شر ح زیر همچون زیر",
+    "raw": "،به شر ح زیر همچون زیر",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "care for",
+    "fa": "مراقبت کردن از، پرستاری کردن از",
+    "raw": "مراقبت کردن از، پرستاری کردن از",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "a sign of",
+    "fa": "یک نشانه از",
+    "raw": "یک نشانه از",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "carry",
+    "fa": "حمل کردن، با خود بردن، منتقل کردن",
+    "raw": "حمل کردن، با خود بردن، منتقل کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "as well",
+    "fa": "همچنیر در انتهای جمله یم آید )",
+    "raw": "همچنیر در انتهای جمله یم آید )",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "carry no risk",
+    "fa": "خطر نکردن، ریسک نکردن",
+    "raw": "خطر نکردن، ریسک نکردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   }
+  ]
+ },
+ {
+  "grade": 12,
+  "lesson": 1,
+  "prospect": 0,
+  "target": 4,
+  "rows": [
+   {
+    "en": "catch",
+    "fa": "گرفی(بیماری ، تاکیس و)، قاپیدن - فهمیدن",
+    "raw": "گرفی(بیماری ، تاکیس و)، قاپیدن - فهمیدن",
+    "dup": false,
+    "gold": "گرفتن (تاکسی، قطار و...)، به‌چنگ آوردن",
+    "goldLesson": 3
+   },
+   {
+    "en": "definition",
+    "fa": "تعریف، معن",
+    "raw": "تعریف، معن",
+    "dup": false,
+    "gold": "تعریف، معنی، تعبیر",
+    "goldLesson": 2
+   },
+   {
+    "en": "center",
+    "fa": "، مرکز وسط، کانون",
+    "raw": "،مرکز وسط، کانون",
+    "dup": false,
+    "gold": "مرکز",
+    "goldLesson": 11
+   },
+   {
+    "en": "description",
+    "fa": "توصیف، تشر ی ح",
+    "raw": "توصیف، تشر ی  ح",
+    "dup": false,
+    "gold": "توصیف",
+    "goldLesson": 2
+   },
+   {
+    "en": "chapter",
+    "fa": "فصل(کتاب )",
+    "raw": "فصل(کتاب )",
+    "dup": false,
+    "gold": "فصل (کتاب)",
+    "goldLesson": 9
+   },
+   {
+    "en": "descriptive",
+    "fa": "توصیف ، تشر ییح، وصف",
+    "raw": "توصیف  ، تشر ییح، وصف",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "chess",
+    "fa": "شطرنج",
+    "raw": "شطرنج",
+    "dup": false,
+    "gold": "شطرنج",
+    "goldLesson": 11
+   },
+   {
+    "en": "detective",
+    "fa": "کاراگاه پلیس )، بازرس",
+    "raw": "کاراگاه پلیس )، بازرس",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "childhood",
+    "fa": "بچگ ، کودیک، دوران بچگ",
+    "raw": "بچگ  ،کودیک، دوران بچگ",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "diary",
+    "fa": "دفی خاطرات، دفی یادداشت",
+    "raw": "دفی  خاطرات، دفی  یادداشت",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "choose",
+    "fa": "انتخاب کردن، تصمیم گرفی",
+    "raw": "انتخاب کردن، تصمیم گرفی",
+    "dup": false,
+    "gold": "انتخاب کردن",
+    "goldLesson": 1
+   },
+   {
+    "en": "diploma",
+    "fa": "مدرک تحصییل، دیپلم",
+    "raw": "مدرک تحصییل، دیپلم",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "close friend",
+    "fa": "دوست صمییم، دوست نزدیک",
+    "raw": "دوست صمییم، دوست نزدیک",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "discover",
+    "fa": "کشف کردن، تی بردن، پیدا کردن",
+    "raw": "کشف کردن، تی بردن، پیدا کردن",
+    "dup": false,
+    "gold": "کشف کردن، یافتن",
+    "goldLesson": 5
+   },
+   {
+    "en": "college",
+    "fa": "دانشکده، کالج",
+    "raw": "دانشکده، کالج",
+    "dup": false,
+    "gold": "دانشکده",
+    "goldLesson": 9
+   },
+   {
+    "en": "discovery",
+    "fa": "کشف، اکتشاف",
+    "raw": "کشف، اکتشاف",
+    "dup": false,
+    "gold": "کشف",
+    "goldLesson": 5
+   },
+   {
+    "en": "collocation",
+    "fa": "ترکیب، هم آیند هم نشین",
+    "raw": "ترکیب، هم آیند هم نشین",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "distinguish",
+    "fa": "تشخیص دادن، متمایز کردن",
+    "raw": "تشخیص دادن، متمایز کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "combine",
+    "fa": "ترکیب کردن، ترکیب شدن",
+    "raw": "ترکیب کردن، ترکیب شدن",
+    "dup": false,
+    "gold": "ترکیب کردن",
+    "goldLesson": 3
+   },
+   {
+    "en": "distinguished",
+    "fa": "برجسته، ممتاز، ششناس",
+    "raw": "برجسته، ممتاز، ششناس",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "combination",
+    "fa": "ترکیب",
+    "raw": "ترکیب",
+    "dup": false,
+    "gold": "ترکیب",
+    "goldLesson": 3
+   },
+   {
+    "en": "dish",
+    "fa": "غذا، ظرف غذا - بشقاب",
+    "raw": "غذا، ظرف غذا - بشقاب",
+    "dup": false,
+    "gold": "ظرف",
+    "goldLesson": 12
+   },
+   {
+    "en": "come back",
+    "fa": "برگشی",
+    "raw": "برگشی",
+    "dup": false,
+    "gold": "برگشتن",
+    "goldLesson": 2
+   },
+   {
+    "en": "doer",
+    "fa": "انجام دهنده، اهل عمل",
+    "raw": "انجام دهنده، اهل عمل",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "complain",
+    "fa": "شکایت کردن، گالیه کردن",
+    "raw": "شکایت کردن، گالیه کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "deserve",
+    "fa": "استحقاق داشی ، ش اوار بودن",
+    "raw": "استحقاق داشی   ، ش  اوار بودن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "compound",
+    "fa": "مرکب، ترکینی ، مخلوط، ترکیب",
+    "raw": "مرکب، ترکینی ، مخلوط، ترکیب",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "divorce",
+    "fa": "طالق، جدات",
+    "raw": "طالق، جدات",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "comprehension",
+    "fa": "درک مطلب، فهم",
+    "raw": "درک مطلب، فهم",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "documentary",
+    "fa": "مستند، سند دار",
+    "raw": "مستند، سند دار",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "concern",
+    "fa": "دغدغه، نگرات ، تشویش",
+    "raw": "دغدغه، نگرات  ، تشویش",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "duty",
+    "fa": "وظیفه، کار، خدمت، تکلیف",
+    "raw": "وظیفه،کار، خدمت، تکلیف",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "conference",
+    "fa": "کنفرانس، جلسه",
+    "raw": "کنفرانس، جلسه",
+    "dup": false,
+    "gold": "کنفرانس،مذاکره،سخنرانی",
+    "goldLesson": 10
+   },
+   {
+    "en": "economically",
+    "fa": "از نظر اقتصادی",
+    "raw": "از نظر اقتصادی",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "confirm",
+    "fa": "تائید کردن، ثابت کردن",
+    "raw": "تائید کردن، ثابت کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "effortless",
+    "fa": "بدون تالش، آسان، ساده",
+    "raw": "بدون تالش، آسان، ساده",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "confirmation",
+    "fa": "تصدیق، تائید- تثبیت",
+    "raw": "تصدیق، تائید- تثبیت",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "connecting",
+    "fa": "رابط، ربط دهنده",
+    "raw": "رابط، ربط دهنده",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "elder",
+    "fa": "بزرگ تر، بزرگ",
+    "raw": "بزرگ تر، بزرگ",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "countless",
+    "fa": "تی شمار، تی اندازه، بسیار زیاد",
+    "raw": "تی شمار، تی اندازه، بسیار زیاد",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "elderly",
+    "fa": "سالخورده، پیر ، قدییم، کهنه",
+    "raw": "سالخورده، پیر ، قدییم، کهنه",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "cousin",
+    "fa": "خاله یا عمه زاده - عمو یا دات زاده",
+    "raw": "خاله یا عمه زاده - عمو یا دات  زاده",
+    "dup": false,
+    "gold": "عموزاده، دایی‌زاده، عمه‌زاده، خاله‌زاده",
+    "goldLesson": 10
+   },
+   {
+    "en": "elicit",
+    "fa": "بیر ون کشیدن، به دست آوردن",
+    "raw": "بیر ون کشیدن، به دست آوردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "critic",
+    "fa": "منتقد، انتقاد کننده",
+    "raw": "منتقد، انتقاد کننده",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "emotion",
+    "fa": "احساس، شور",
+    "raw": "احساس، شور",
+    "dup": false,
+    "gold": "احساس",
+    "goldLesson": 2
+   },
+   {
+    "en": "criticize",
+    "fa": "نقد کردن ، انتقاد کردن، نکوهش",
+    "raw": "نقد کردن ، انتقاد کردن، نکوهش",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "end in",
+    "fa": "ختم شدن به، پایان یافی با",
+    "raw": "ختم شدن به، پایان یافی   با",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "cry",
+    "fa": "، گریه کردن جیغ کشیدن",
+    "raw": "،گریه کردن جیغ کشیدن",
+    "dup": false,
+    "gold": "گریه کردن",
+    "goldLesson": 12
+   },
+   {
+    "en": "enjoyable",
+    "fa": "لذت بخش، مطبوع، خوشایند",
+    "raw": "لذت بخش، مطبوع، خوشایند",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "culture",
+    "fa": "فرهنگ",
+    "raw": "فرهنگ",
+    "dup": false,
+    "gold": "فرهنگ",
+    "goldLesson": 1
+   },
+   {
+    "en": "ethics",
+    "fa": "، اخالق اخالقیات، اصول اخالق",
+    "raw": "،اخالق  اخالقیات، اصول اخالق",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "cultural",
+    "fa": "فرهنگ",
+    "raw": "فرهنگ",
+    "dup": false,
+    "gold": "فرهنگی",
+    "goldLesson": 1
+   },
+   {
+    "en": "evidence",
+    "fa": "مدرک، گوایه، دلیل- شاهد",
+    "raw": "مدرک، گوایه، دلیل- شاهد",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "cure",
+    "fa": "درمان، چاره، درمان کردن",
+    "raw": "درمان، چاره، درمان کردن",
+    "dup": false,
+    "gold": "معالجه کردن، درمان کردن",
+    "goldLesson": 2
+   },
+   {
+    "en": "expert",
+    "fa": "متخصص، کارشناس",
+    "raw": "متخصص، کارشناس",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "custom",
+    "fa": "رسم، سنت- گمرک (در جمع )",
+    "raw": "رسم، سنت- گمرک (در جمع )",
+    "dup": false,
+    "gold": "رسم، آیین",
+    "goldLesson": 3
+   },
+   {
+    "en": "feed",
+    "fa": "غذا دادن به، تغذیه کردن",
+    "raw": "غذا دادن به، تغذیه کردن",
+    "dup": false,
+    "gold": "غذا دادن",
+    "goldLesson": 12
+   },
+   {
+    "en": "customer",
+    "fa": "مشی ی، خریدار",
+    "raw": "مشی  ی، خریدار",
+    "dup": false,
+    "gold": "مشتری، خریدار",
+    "goldLesson": 3
+   },
+   {
+    "en": "feedback",
+    "fa": "بازخورد، بازده، فیدبک",
+    "raw": "بازخورد، بازده، فیدبک",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "dear",
+    "fa": "عزیز، گرانمایه",
+    "raw": "عزیز، گرانمایه",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "feeding",
+    "fa": "تغذیه، خوراک",
+    "raw": "تغذیه، خوراک",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "dedicate",
+    "fa": "وقف کردن، اختصاص دادن",
+    "raw": "وقف کردن، اختصاص دادن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "fingerprint",
+    "fa": "اثر انگشت",
+    "raw": "اثر انگشت",
+    "dup": false,
+    "gold": "اثر انگشت",
+    "goldLesson": 3
+   },
+   {
+    "en": "dedicated",
+    "fa": "متعهد- وقف شده- ایثارگر",
+    "raw": "متعهد- وقف شده- ایثارگر",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "fix",
+    "fa": "تعمیر کردن، محکم کردن - درست کرد ن (غذا )",
+    "raw": "تعمیر کردن، محکم کردن - درست کرد ن (غذا )",
+    "dup": false,
+    "gold": "تعمیر کردن، نصب کردن",
+    "goldLesson": 10
+   },
+   {
+    "en": "dedication",
+    "fa": "اهداء، وقف، تخصیص - فداکاری",
+    "raw": "اهداء، وقف، تخصیص - فداکاری",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   }
+  ]
+ },
+ {
+  "grade": 12,
+  "lesson": 1,
+  "prospect": 0,
+  "target": 4,
+  "rows": [
+   {
+    "en": "forgiveness",
+    "fa": "بخشش، عفو، گذشت ( sit on) lap روی دامن )کیس نشسی",
+    "raw": "بخشش، عفو، گذشت ( sit on) lap روی دامن )کیس نشسی",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "forgiver",
+    "fa": "بخش نده ، عفو کننده",
+    "raw": "بخش نده ، عفو کننده",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "lawyer",
+    "fa": "وکیل",
+    "raw": "وکیل",
+    "dup": false,
+    "gold": "وکیل",
+    "goldLesson": 10
+   },
+   {
+    "en": "found",
+    "fa": "تأسیس کردن، ایجاد کردن",
+    "raw": "تأسیس کردن، ایجاد کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "lie",
+    "fa": "دروغ، دروغ گفی - دراز کشیدن",
+    "raw": "دروغ، دروغ گفی - دراز کشیدن",
+    "dup": false,
+    "gold": "دروغ گفتن",
+    "goldLesson": 12
+   },
+   {
+    "en": "founder",
+    "fa": "تآسیس کننده، مؤسس، بنیان گذار",
+    "raw": "تآسیس کننده، مؤسس، بنیان گذار",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "location",
+    "fa": "محل، جا، موقعیت",
+    "raw": "محل، جا، موقعیت",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "failure",
+    "fa": "شکست، سقوط",
+    "raw": "شکست، سقوط",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "loving",
+    "fa": "مهربان، بامحبت، محبت آمیر",
+    "raw": "مهربان، بامحبت، محبت آمیر",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "fridge",
+    "fa": "یخچال",
+    "raw": "یخچال",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "lower",
+    "fa": "، پاییر آوردن کم کردن",
+    "raw": "،پاییر  آوردن کم کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "generate",
+    "fa": "تولید کردن، به وجود آوردن",
+    "raw": "تولید کردن، به وجود آوردن",
+    "dup": false,
+    "gold": "تولید کردن، ایجاد کردن",
+    "goldLesson": 6
+   },
+   {
+    "en": "lack",
+    "fa": "فقدان، نبود، کمبود، نداشی",
+    "raw": "فقدان، نبود، کمبود، نداشی",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "generation",
+    "fa": "تولید، نسل",
+    "raw": "تولید، نسل",
+    "dup": false,
+    "gold": "تولید؛ نسل",
+    "goldLesson": 6
+   },
+   {
+    "en": "major",
+    "fa": "اصیل، عمده",
+    "raw": "اصیل، عمده",
+    "dup": false,
+    "gold": "عمده، اصلی، بزرگ",
+    "goldLesson": 6
+   },
+   {
+    "en": "go together",
+    "fa": "با هم همراه بودن، با هم جور بودن",
+    "raw": "با هم همراه بودن، با هم جور بودن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "marketing",
+    "fa": "بازاریاتی",
+    "raw": "بازاریاتی",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "grandchild",
+    "fa": "نوه",
+    "raw": "نوه",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "meaningful",
+    "fa": "با معن ، معن دار",
+    "raw": "با معن  ، معن  دار",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "guideline",
+    "fa": "رهنمود، توصیه، دستور العمل",
+    "raw": "رهنمود، توصیه، دستور العمل",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "moral",
+    "fa": "اخالق ، نتیجه ی اخالق",
+    "raw": "اخالق  ، نتیجه ی  اخالق",
+    "dup": false,
+    "gold": "اخلاقی، معنوی - معنی، مفهوم",
+    "goldLesson": 3
+   },
+   {
+    "en": "grateful",
+    "fa": "سپاسگ ز ار، متشکر",
+    "raw": "سپاسگ ز ار، متشکر",
+    "dup": false,
+    "gold": "سپاسگزار، شاکر، ممنون",
+    "goldLesson": 4
+   },
+   {
+    "en": "most",
+    "fa": "مهم تر این که، از همه مهمی این که",
+    "raw": "مهم تر این که، از همه مهمی  این که",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "gulf",
+    "fa": "خلیج",
+    "raw": "خلیج",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "mother-in-law",
+    "fa": "مادر شوهر - مادر زن",
+    "raw": "مادر شوهر - مادر زن",
+    "dup": false,
+    "gold": "مادرزن، مادرشوهر",
+    "goldLesson": 11
+   },
+   {
+    "en": "handle",
+    "fa": "کنی ل کردن، از عهده برآمدن",
+    "raw": "کنی  ل کردن، از عهده برآمدن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "muscle",
+    "fa": "ماهیچه",
+    "raw": "ماهیچه",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "hard of hearing",
+    "fa": "گوش کیس ) سنگیر بودن (",
+    "raw": "گوش کیس ) سنگیر  بودن (",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "the) North Pole",
+    "fa": "قطب شمال",
+    "raw": "قطب شمال",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "hate",
+    "fa": "نفرت داشی از ، متنفر بودن از",
+    "raw": "نفرت داشی   از ، متنفر بودن از",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "Not surprisingly",
+    "fa": "تعجنی نداره که، معلوم است که",
+    "raw": "تعجنی نداره که، معلوم است که",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "hear of",
+    "fa": "با خیی بودن از، خیی ی داشی",
+    "raw": "با خیی بودن از، خیی ی داشی",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "note",
+    "fa": "توجه کردن به، دقت کردن - یادداشت",
+    "raw": "توجه کردن به، دقت کردن - یادداشت",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "hence",
+    "fa": "بنابراین- از حالا به بعد، دیگر",
+    "raw": "بنابراین- از حاال به بعد، دیگر",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "icy",
+    "fa": "ییح ، شد",
+    "raw": "ییح  ، شد",
+    "dup": false,
+    "gold": "یخ‌بندان، یخ‌زده",
+    "goldLesson": 11
+   },
+   {
+    "en": "pause",
+    "fa": "مکث کردن، مکث",
+    "raw": "مکث کردن، مکث",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "identity",
+    "fa": "هویت",
+    "raw": "هویت",
+    "dup": false,
+    "gold": "هویت - شناسایی",
+    "goldLesson": 3
+   },
+   {
+    "en": "pay raise",
+    "fa": "افزایش حقوق",
+    "raw": "افزایش حقوق",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "immigration",
+    "fa": "مهاجرت",
+    "raw": "مهاجرت",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "peaceful",
+    "fa": "آرام، صلح طلب، صلح آمیر",
+    "raw": "آرام، صلح طلب، صلح آمیر",
+    "dup": false,
+    "gold": "آرام، صلح‌آمیز",
+    "goldLesson": 7
+   },
+   {
+    "en": "immoral",
+    "fa": "غیر اخالق ، بد اخالق",
+    "raw": "غیر اخالق  ، بد اخالق",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "penalty",
+    "fa": "جریمه، مجازات، تاوان",
+    "raw": "جریمه، مجازات، تاوان",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "inappropriate",
+    "fa": "نا مناسب",
+    "raw": "نا مناسب",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "physician",
+    "fa": "پزشک، طبیب",
+    "raw": "پزشک، طبیب",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "inspiration",
+    "fa": "الهام، منبع الهام",
+    "raw": "الهام، منبع الهام",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "pigeon",
+    "fa": "کبوتر",
+    "raw": "کبوتر",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "inspire",
+    "fa": "الهام بخشیدن",
+    "raw": "الهام بخشیدن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "pity",
+    "fa": "ترحم، دلسوزی، جای تأسف",
+    "raw": "ترحم، دلسوزی، جای تأسف",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "interestingly",
+    "fa": "جالب است که ...، شگفت است",
+    "raw": "جالب است که ...، شگفت است",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "poetry",
+    "fa": "شعر، شاعری، اشعار",
+    "raw": "شعر، شاعری، اشعار",
+    "dup": false,
+    "gold": "شعر و شاعری",
+    "goldLesson": 3
+   },
+   {
+    "en": "inform",
+    "fa": "مطلع کردن، با خیی کردن",
+    "raw": "مطلع کردن، با خیی کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "informer",
+    "fa": "خیی چیر ، جاسوس، اطالع دهنده",
+    "raw": "خیی چیر  ، جاسوس، اطالع دهنده",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "present (v)",
+    "fa": "ارائه کردن - اهدا کردن، تقدیم کردن",
+    "raw": "ارائه کردن - اهدا کردن، تقدیم کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "judge",
+    "fa": "قضاوت کردن- قاض",
+    "raw": "قضاوت کردن- قاض",
+    "dup": false,
+    "gold": "قاضی",
+    "goldLesson": 10
+   },
+   {
+    "en": "principle",
+    "fa": "اصل، قاعده، اصل اخالق",
+    "raw": "اصل، قاعده، اصل اخالق",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "kindly",
+    "fa": "با مهربات ، با مالیمت",
+    "raw": "با مهربات  ، با مالیمت",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "process",
+    "fa": "فرآیند، جریان، روش - فرآوری کردن",
+    "raw": "فرآیند، جریان، روش  - فرآوری کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "kindness",
+    "fa": "مهربات ، لطف، محبت",
+    "raw": "مهربات  ، لطف، محبت",
+    "dup": false,
+    "gold": "مهربانی، نیکی، خوش‌خویی",
+    "goldLesson": 4
+   }
+  ]
+ },
+ {
+  "grade": 12,
+  "lesson": 1,
+  "prospect": 0,
+  "target": 4,
+  "rows": [
+   {
+    "en": "provide",
+    "fa": "تامیر کردن، تهیه کردن",
+    "raw": "تامیر  کردن، تهیه کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "sometime",
+    "fa": "زمات ، روزی، یک روزی",
+    "raw": "زمات  ، روزی، یک روزی",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "psychologist",
+    "fa": "روانشناس",
+    "raw": "روانشناس",
+    "dup": false,
+    "gold": "روانشناس",
+    "goldLesson": 10
+   },
+   {
+    "en": "sound",
+    "fa": "به نظر رسیدن - صدا دادن- صدا",
+    "raw": "به نظر رسیدن - صدا دادن- صدا",
+    "dup": false,
+    "gold": "صدا؛ صدا کردن",
+    "goldLesson": 8
+   },
+   {
+    "en": "punish",
+    "fa": "تنبیه کردن، مجازات کردن",
+    "raw": "تنبیه کردن، مجازات کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "spare",
+    "fa": "کردن ر دری غ کردن، چشم پویس",
+    "raw": "کردن ر دری  غ کردن، چشم پویس",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "punisher",
+    "fa": "تنبیه کننده، مجازات گر",
+    "raw": "تنبیه کننده، مجازات گر",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "steal",
+    "fa": "دزدیدن، دزدی کردن",
+    "raw": "دزدیدن، دزدی کردن",
+    "dup": false,
+    "gold": "دزدیدن",
+    "goldLesson": 12
+   },
+   {
+    "en": "punishment",
+    "fa": "تنبیه، مجازات",
+    "raw": "تنبیه، مجازات",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "strength",
+    "fa": "قدرت، توان، استحکام، شدت",
+    "raw": "قدرت، توان، استحکام، شدت",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "qualitative",
+    "fa": "کیف ، از نظر کیفیت",
+    "raw": "کیف  ، از نظر کیفیت",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "strict",
+    "fa": "سخت گیر",
+    "raw": "سخت گیر",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "quantity",
+    "fa": "کمیت، مقدار، تعداد",
+    "raw": "کمیت، مقدار، تعداد",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "substance",
+    "fa": "ر ماده اصیل، جنس، جسم، یس",
+    "raw": "ر ماده اصیل، جنس، جسم، یس",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "quantitative",
+    "fa": "از نظر کمیت، کیم",
+    "raw": "از نظر کمیت، کیم",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "such",
+    "fa": "چنیر ، اینطور، چنان، آنقدر",
+    "raw": "چنیر  ، اینطور، چنان، آنقدر",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "rather than",
+    "fa": "به جای، به جای اینکه",
+    "raw": "به جای، به جای اینکه",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "suddenly",
+    "fa": "ناگهان، یک دفعه ، یکهو",
+    "raw": "ناگهان، یک دفعه ، یکهو",
+    "dup": false,
+    "gold": "ناگهان، یک‌دفعه",
+    "goldLesson": 7
+   },
+   {
+    "en": "receive",
+    "fa": "دریافت کردن، بدست آوردن",
+    "raw": "دریافت کردن، بدست آوردن",
+    "dup": false,
+    "gold": "به دست آوردن، دریافت کردن",
+    "goldLesson": 1
+   },
+   {
+    "en": "tag question",
+    "fa": "عبارت الحاق- پرسش تاکیدی",
+    "raw": "عبارت  الحاق- پرسش تاکیدی",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "record",
+    "fa": "ثبت کردن، یادداشت کردن",
+    "raw": "ثبت کردن، یادداشت کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "take a rest",
+    "fa": "اسی احت کردن",
+    "raw": "اسی  احت کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "refuse",
+    "fa": "امتناع، رد کردن، نپذیرفی",
+    "raw": "امتناع، رد کردن، نپذیرفی",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "tear (n)",
+    "fa": "اشک",
+    "raw": "اشک",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "regard",
+    "fa": "در نظر گرفی ، مالحضه کردن",
+    "raw": "در نظر گرفی   ، مالحضه کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "tear (v)",
+    "fa": "پاره کردن، گسسی",
+    "raw": "پاره کردن، گسسی",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "regarding",
+    "fa": "در ارتباط با، با توجه به",
+    "raw": "در ارتباط با، با توجه به",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "teenager",
+    "fa": "نوجوان",
+    "raw": "نوجوان",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "release",
+    "fa": "رها کردن، آزاد کردن",
+    "raw": "رها کردن، آزاد کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "temperature",
+    "fa": "درجه حرارت، دما، حرارت بدن، تب",
+    "raw": "درجه حرارت، دما، حرارت بدن، تب",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "religion",
+    "fa": "مذهب",
+    "raw": "مذهب",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "terrible",
+    "fa": "وحشتناک، خییل بد، افتضاح",
+    "raw": "وحشتناک، خییل بد، افتضاح",
+    "dup": false,
+    "gold": "وحشتناک، افتضاح",
+    "goldLesson": 7
+   },
+   {
+    "en": "religious",
+    "fa": "مذهنی ، مؤمن",
+    "raw": "مذهنی ، مؤمن",
+    "dup": false,
+    "gold": "مذهبی",
+    "goldLesson": 12
+   },
+   {
+    "en": "textbook",
+    "fa": "کتاب دریس",
+    "raw": "کتاب دریس",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "repeatedly",
+    "fa": "بارها، بارها و بارها، به کرات",
+    "raw": "بارها، بارها و بارها، به کرات",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "thus",
+    "fa": "بدین ترتیب، بنابراین، این طور",
+    "raw": "بدین ترتیب، بنابراین، این طور",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "replace",
+    "fa": "، جایگزین کردن قرار دادن",
+    "raw": "،جایگزین کردن قرار دادن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "tool",
+    "fa": "ابزار، وسیله",
+    "raw": "ابزار، وسیله",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "reply",
+    "fa": "جواب دادن، جواب",
+    "raw": "جواب دادن، جواب",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "truth",
+    "fa": "حقیقت، راسن",
+    "raw": "حقیقت، راسن",
+    "dup": false,
+    "gold": "حقیقت، راستی، درستی",
+    "goldLesson": 3
+   },
+   {
+    "en": "responsibility",
+    "fa": "مسئولیت، وظیفه",
+    "raw": "مسئولیت، وظیفه",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "trustworthy",
+    "fa": "قابل اعتماد، درستکار",
+    "raw": "قابل اعتماد، درستکار",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "rub",
+    "fa": "سائیدن، مالیدن",
+    "raw": "سائیدن، مالیدن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "uncertainty",
+    "fa": "عدم قطعیت، شک، تردید",
+    "raw": "عدم قطعیت، شک، تردید",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "robber",
+    "fa": "سارق، دزد",
+    "raw": "سارق، دزد",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "unnatural",
+    "fa": "غیر طبییع، غیر عادی، ساختگ",
+    "raw": "غیر طبییع، غیر عادی، ساختگ",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "rubbish",
+    "fa": "آشغال، زباله",
+    "raw": "آشغال، زباله",
+    "dup": false,
+    "gold": "زباله، آشغال",
+    "goldLesson": 7
+   },
+   {
+    "en": "umbrella",
+    "fa": "چی ، حافظ، پوشش",
+    "raw": "چی  ، حافظ، پوشش",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "salary",
+    "fa": "حقوق، دستمزد",
+    "raw": "حقوق، دستمزد",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "unconditionally",
+    "fa": "بدون قید و شر ط",
+    "raw": "بدون قید و شر ط",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "score",
+    "fa": "نمره، امتیاز، نتیجه",
+    "raw": "نمره، امتیاز، نتیجه",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "unreal",
+    "fa": "غیر واقیع، باور نکردت",
+    "raw": "غیر واقیع، باور نکردت",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "scoreboard",
+    "fa": "تابلو امتیاز",
+    "raw": "تابلو امتیاز",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "voluntarily",
+    "fa": "به طور داوطلبانه",
+    "raw": "به طور داوطلبانه",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "sensation",
+    "fa": "احساس، حس، شور",
+    "raw": "احساس، حس، شور",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "warn",
+    "fa": "، هشدار دادن اخطار دادن",
+    "raw": "،هشدار دادن اخطار دادن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "sense",
+    "fa": "حس، احساس، عقل، فهم، شعور",
+    "raw": "حس، احساس، عقل، فهم، شعور",
+    "dup": false,
+    "gold": "حس، احساس؛ حِسّ (دیداری/ششم)",
+    "goldLesson": 4
+   },
+   {
+    "en": "wealthy",
+    "fa": "ثروتمند، پو ل دار، غن",
+    "raw": "ثروتمند، پو ل  دار، غن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "series",
+    "fa": "شی، مجموعه",
+    "raw": "شی، مجموعه",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "shameful",
+    "fa": "شر م ، آور ، خجالت آور ننگیر",
+    "raw": "شر م ،آور ،خجالت آور  ننگیر",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "whereby",
+    "fa": "که با آن، که از طریق آن",
+    "raw": "که با آن،که از طریق آن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "shout",
+    "fa": "فریاد کشیدن، فریاد",
+    "raw": "فریاد کشیدن، فریاد",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   }
+  ]
+ },
+ {
+  "grade": 12,
+  "lesson": 2,
+  "prospect": 0,
+  "target": 5,
+  "rows": [
+   {
+    "en": "abbreviation",
+    "fa": "مخفف",
+    "raw": "مخفف",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "basement",
+    "fa": "زیر زمیر",
+    "raw": "زیر زمیر",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "absent",
+    "fa": "غائب",
+    "raw": "غائب",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "battle",
+    "fa": "نیی د، جدال ، جنگ",
+    "raw": "نیی د، جدال ،جنگ",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "access",
+    "fa": "دسی یس یافی ، دسی یس، اجازه ورود",
+    "raw": "دسی  یس یافی   ، دسی  یس، اجازه ورود",
+    "dup": false,
+    "gold": "دسترسی، دست‌یابی",
+    "goldLesson": 1
+   },
+   {
+    "en": "BC",
+    "fa": "قبل از میالد مسیح",
+    "raw": "قبل از میالد مسیح",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "accessible",
+    "fa": "قابل دسی س",
+    "raw": "قابل دسی  س",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "behind",
+    "fa": "پشت، عقب",
+    "raw": "پشت، عقب",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "accessibility",
+    "fa": "دسی یس",
+    "raw": "دسی  یس",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "beige",
+    "fa": "رنگ کریم- بژ",
+    "raw": "رنگ کریم- بژ",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "accidentally",
+    "fa": "به طور تصادق",
+    "raw": "به طور تصادق",
+    "dup": true,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "beings",
+    "fa": "موجودات زنده",
+    "raw": "موجودات زنده",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "accurately",
+    "fa": "به درسن ، به دقت، به طور صحیح",
+    "raw": "به درسن  ، به دقت، به طور صحیح",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "bilingual",
+    "fa": "دو زبانه",
+    "raw": "دو زبانه",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "achieve",
+    "fa": "به دست آوردن",
+    "raw": "به دست آوردن",
+    "dup": false,
+    "gold": "به دست آوردن",
+    "goldLesson": 3
+   },
+   {
+    "en": "biography",
+    "fa": "زندیک نامه",
+    "raw": "زندیک  نامه",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "achievement",
+    "fa": "دست آورد، موفقیت",
+    "raw": "دست آورد، موفقیت",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "biology",
+    "fa": "زیست شنایس",
+    "raw": "زیست شنایس",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "a couple of",
+    "fa": "یه چند تات ، تعداد کیم",
+    "raw": "یه چند تات  ، تعداد کیم",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "body building",
+    "fa": "بدن سازی، پرورش اندام",
+    "raw": "بدن سازی، پرورش اندام",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "admission",
+    "fa": "پذیرش - تصدیق، اجازه ورود",
+    "raw": "پذیرش - تصدیق، اجازه ورود",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "break",
+    "fa": "وقت اسی احت ، زنگ تفری ح- شکسی",
+    "raw": "وقت اسی  احت ، زنگ تفری  ح- شکسی",
+    "dup": false,
+    "gold": "شکستن",
+    "goldLesson": 12
+   },
+   {
+    "en": "advance",
+    "fa": "پیشر فت، پیشر فت کردن",
+    "raw": "پیشر فت، پیشر فت کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "browse",
+    "fa": "جستجو کردن",
+    "raw": "جستجو کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "advanced",
+    "fa": "پیشر فته",
+    "raw": "پیشر فته",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "browser",
+    "fa": "جستجوگر",
+    "raw": "جستجوگر",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "aid",
+    "fa": "ک مک، ک مک کردن - دستیار",
+    "raw": "ک مک، ک مک کردن - دستیار",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "come to no fruit",
+    "fa": "تی ثمر بودن، تی فایده بودن",
+    "raw": "تی ثمر بودن، تی فایده بودن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "allow",
+    "fa": "اجازه دادن",
+    "raw": "اجازه دادن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "can afford",
+    "fa": "توانات مایل داشی",
+    "raw": "توانات  مایل داشی",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "allowance",
+    "fa": "اجازه- پول تو جینی",
+    "raw": "اجازه- پول تو جینی",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "capability",
+    "fa": "توانات ، قدرت، قابلیت",
+    "raw": "توانات  ، قدرت، قابلیت",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "although",
+    "fa": "اگرچه - هر چند - با اینکه",
+    "raw": "اگرچه - هر چند - با اینکه",
+    "dup": true,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "cause",
+    "fa": "علت، دلیل",
+    "raw": "علت، دلیل",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "ancient",
+    "fa": "باستان، باستات ، کهن، قدییم",
+    "raw": "باستان، باستات ، کهن، قدییم",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "changeable",
+    "fa": "قابل تغییر ، تغییر پذیر",
+    "raw": "قابل تغییر ، تغییر پذیر",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "Antarctica",
+    "fa": "قطب جنوب",
+    "raw": "قطب جنوب",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "circumstance",
+    "fa": "محیط، پیر امون – شر ایط(در جمع )",
+    "raw": "محیط، پیر امون  – شر ایط(در جمع )",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "anthill",
+    "fa": "تپه مورچه",
+    "raw": "تپه مورچه",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "claim",
+    "fa": "ادعا کردن، ادعا- مطالبه",
+    "raw": "ادعا کردن، ادعا- مطالبه",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "antonym",
+    "fa": "متضاد",
+    "raw": "متضاد",
+    "dup": true,
+    "gold": "متضاد",
+    "goldLesson": 3
+   },
+   {
+    "en": "clue",
+    "fa": "، شنخ، اثر نشان، راهنما",
+    "raw": "،شنخ، اثر نشان، راهنما",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "appear",
+    "fa": "ظاهر شدن – به نظر رسیدن",
+    "raw": "ظاهر شدن – به نظر رسیدن",
+    "dup": false,
+    "gold": "آشکار شدن، به نظر رسیدن",
+    "goldLesson": 1
+   },
+   {
+    "en": "collocation",
+    "fa": "هم نشین ، هم آوات - ترتیب",
+    "raw": "هم نشین  ، هم آوات - ترتیب",
+    "dup": true,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "application",
+    "fa": "برنامه- کاربرد",
+    "raw": "برنامه- کاربرد",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "colony",
+    "fa": "گروه، دسته - مستعمره",
+    "raw": "گروه، دسته  - مستعمره",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "argue",
+    "fa": "جر و بحث کردن، استدالل کردن",
+    "raw": "جر و بحث کردن، استدالل کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "combination",
+    "fa": "ترکیب",
+    "raw": "ترکیب",
+    "dup": true,
+    "gold": "ترکیب",
+    "goldLesson": 3
+   },
+   {
+    "en": "arm",
+    "fa": "بازو",
+    "raw": "بازو",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "combine",
+    "fa": "ترکیب کردن - متحد شدن",
+    "raw": "ترکیب کردن - متحد شدن",
+    "dup": true,
+    "gold": "ترکیب کردن",
+    "goldLesson": 3
+   },
+   {
+    "en": "armed",
+    "fa": "، مسلح، مجهز آماده جنگ",
+    "raw": "،مسلح، مجهز آماده جنگ",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "commercial",
+    "fa": "تجاری- بازرگات",
+    "raw": "تجاری- بازرگات",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "arrange",
+    "fa": "تنظیم کردن - مرتب کردن - هماهنگ کردن",
+    "raw": "تنظیم کردن - مرتب کردن - هماهنگ کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "common",
+    "fa": "عادی- رایج",
+    "raw": "عادی- رایج",
+    "dup": false,
+    "gold": "عادی، رایج، متداول",
+    "goldLesson": 2
+   },
+   {
+    "en": "arrangement",
+    "fa": "ترتیب، نظم - آرایش - چینش",
+    "raw": "ترتیب، نظم - آرایش  - چینش",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "communicate",
+    "fa": "ارتباط برقرار کردن",
+    "raw": "ارتباط برقرار کردن",
+    "dup": false,
+    "gold": "ارتباط برقرار کردن",
+    "goldLesson": 1
+   },
+   {
+    "en": "astronaut",
+    "fa": "فضانورد",
+    "raw": "فضانورد",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "communicative",
+    "fa": "خوش برخورد ، ارتبایط، اهل معاشر ت",
+    "raw": "خوش برخورد ، ارتبایط، اهل معاشر ت",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "at least",
+    "fa": "حداقل",
+    "raw": "حداقل",
+    "dup": true,
+    "gold": "حداقل",
+    "goldLesson": 1
+   },
+   {
+    "en": "compare",
+    "fa": "مقایسه کردن",
+    "raw": "مقایسه کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "attack",
+    "fa": "حمله کردن، هجوم بردن",
+    "raw": "حمله کردن، هجوم بردن",
+    "dup": false,
+    "gold": "حمله کردن؛ حمله",
+    "goldLesson": 8
+   },
+   {
+    "en": "compete",
+    "fa": "رقابت کردن، مسابقه دادن",
+    "raw": "رقابت کردن، مسابقه دادن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "attractive",
+    "fa": "جذاب ، دلربا",
+    "raw": "جذاب ، دلربا",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "competition",
+    "fa": "رقابت، مسابقه",
+    "raw": "رقابت، مسابقه",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "available",
+    "fa": "موجود - در دسی س",
+    "raw": "موجود - در دسی  س",
+    "dup": false,
+    "gold": "موجود، در دسترس",
+    "goldLesson": 1
+   },
+   {
+    "en": "competitor",
+    "fa": "رقیب، حریف",
+    "raw": "رقیب، حریف",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "average",
+    "fa": "میانگیر- متوسط - معدل",
+    "raw": "میانگیر- متوسط - معدل",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "avoid",
+    "fa": "اجتناب کرد ن ، خودداری کردن",
+    "raw": "اجتناب کرد ن ، خودداری کردن",
+    "dup": false,
+    "gold": "خودداری کردن - اجتناب کردن",
+    "goldLesson": 2
+   },
+   {
+    "en": "aware of",
+    "fa": "آگاه از، مطلع از",
+    "raw": "آگاه از، مطلع از",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   }
+  ]
+ },
+ {
+  "grade": 12,
+  "lesson": 2,
+  "prospect": 0,
+  "target": 5,
+  "rows": [
+   {
+    "en": "complex",
+    "fa": "پیچیده - مجتمع، مجموعه",
+    "raw": "پیچیده - مجتمع، مجموعه",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "entrance",
+    "fa": "ورود، اجازه ورود",
+    "raw": "ورود، اجازه ورود",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "complicated",
+    "fa": "پیچیده - سخت",
+    "raw": "پیچیده - سخت",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "entrant",
+    "fa": "وارد شونده، داوطلب",
+    "raw": "وارد شونده، داوطلب",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "comprehensible",
+    "fa": "فهمیدت - قابل فهم",
+    "raw": "فهمیدت - قابل فهم",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "entry",
+    "fa": "ش واژه - ورود",
+    "raw": "ش واژه - ورود",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "confuse",
+    "fa": "گیج کردن- دست پاچه کردن",
+    "raw": "گیج کردن- دست پاچه کردن",
+    "dup": false,
+    "gold": "گیج کردن",
+    "goldLesson": 2
+   },
+   {
+    "en": "escaped",
+    "fa": "فراری",
+    "raw": "فراری",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "confused",
+    "fa": "گیج- شاسیمه - مغشوش",
+    "raw": "گیج- شاسیمه - مغشوش",
+    "dup": false,
+    "gold": "گیج",
+    "goldLesson": 3
+   },
+   {
+    "en": "essential",
+    "fa": "الزم- رص وری",
+    "raw": "الزم- رص  وری",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "confusing",
+    "fa": "گیج کننده",
+    "raw": "گیج کننده",
+    "dup": false,
+    "gold": "گیج‌کننده",
+    "goldLesson": 3
+   },
+   {
+    "en": "everywhere",
+    "fa": "همه جا",
+    "raw": "همه جا",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "confusion",
+    "fa": "گییحی ، دستپاچگ ، پریشات",
+    "raw": "گییحی ، دستپاچگ  ، پریشات",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "exact",
+    "fa": "دقیق",
+    "raw": "دقیق",
+    "dup": false,
+    "gold": "دقیق، درست، معیّن",
+    "goldLesson": 4
+   },
+   {
+    "en": "consider",
+    "fa": "در نظر گرفی",
+    "raw": "در نظر گرفی",
+    "dup": false,
+    "gold": "بررسی کردن، در نظر گرفتن",
+    "goldLesson": 1
+   },
+   {
+    "en": "examine",
+    "fa": "ا متحان کردن، معاینه کردن",
+    "raw": "ا متحان کردن، معاینه کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "contain",
+    "fa": "دربر گرفی- شامل شدن",
+    "raw": "دربر گرفی- شامل شدن",
+    "dup": false,
+    "gold": "شامل بودن، در بر داشتن",
+    "goldLesson": 2
+   },
+   {
+    "en": "exclamation mark",
+    "fa": "عالمت تعجب",
+    "raw": "عالمت تعجب",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "container",
+    "fa": "ظرف",
+    "raw": "ظرف",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "exist",
+    "fa": "، وجود داشی موجود بودن",
+    "raw": "،   وجود داشی موجود بودن",
+    "dup": false,
+    "gold": "وجود داشتن، موجود بودن",
+    "goldLesson": 1
+   },
+   {
+    "en": "continent",
+    "fa": "قاره",
+    "raw": "قاره",
+    "dup": false,
+    "gold": "قاره",
+    "goldLesson": 1
+   },
+   {
+    "en": "expand",
+    "fa": "گسی ش دادن، توسعه دادن",
+    "raw": "گسی  ش دادن، توسعه دادن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "convert",
+    "fa": "تبدیل کردن",
+    "raw": "تبدیل کردن",
+    "dup": false,
+    "gold": "تبدیل کردن، دگرگون کردن",
+    "goldLesson": 6
+   },
+   {
+    "en": "expensive",
+    "fa": "گران قیمت",
+    "raw": "گران قیمت",
+    "dup": false,
+    "gold": "گران، پرهزینه",
+    "goldLesson": 6
+   },
+   {
+    "en": "database",
+    "fa": "پایگاه داده",
+    "raw": "پایگاه داده",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "explain",
+    "fa": "توضیح دادن، شر ح دادن",
+    "raw": "توضیح دادن، شر ح دادن",
+    "dup": false,
+    "gold": "توضیح دادن",
+    "goldLesson": 9
+   },
+   {
+    "en": "deal with",
+    "fa": "پرداخی به، مشغول بودن به",
+    "raw": "پرداخی به، مشغول بودن به",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "expression",
+    "fa": "عبارت ، بیان - حالت چهره",
+    "raw": "عبارت ، بیان - حالت چهره",
+    "dup": false,
+    "gold": "اصطلاح؛ بیان، ابزارِ احساس",
+    "goldLesson": 4
+   },
+   {
+    "en": "decide",
+    "fa": "تصمیم گرفی",
+    "raw": "تصمیم گرفی",
+    "dup": false,
+    "gold": "تصمیم گرفتن",
+    "goldLesson": 3
+   },
+   {
+    "en": "facial muscles",
+    "fa": "ماهیچه های صورت",
+    "raw": "ماهیچه های صورت",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "definition",
+    "fa": "، تعریف توضیح معن یک کلمه ، تعبیر",
+    "raw": "،تعریف توضیح معن  یک کلمه ، تعبیر",
+    "dup": true,
+    "gold": "تعریف، معنی، تعبیر",
+    "goldLesson": 2
+   },
+   {
+    "en": "fact",
+    "fa": "حقیقت -",
+    "raw": "حقیقت -",
+    "dup": false,
+    "gold": "واقعیت، حقیقت",
+    "goldLesson": 9
+   }
+  ]
+ },
+ {
+  "grade": 12,
+  "lesson": 2,
+  "prospect": 0,
+  "target": 5,
+  "rows": [
+   {
+    "en": "habit",
+    "fa": "عادت",
+    "raw": "عادت",
+    "dup": false,
+    "gold": "عادت",
+    "goldLesson": 2
+   },
+   {
+    "en": "jump into",
+    "fa": "نادیده گرفی به - پریدن - پریدن",
+    "raw": "نادیده گرفی به - پریدن - پریدن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "habitat",
+    "fa": "محل سکونت، مسکن",
+    "raw": "محل سکونت، مسکن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "keep in touch",
+    "fa": "در تماس بودن، ارتباط داشن",
+    "raw": "در تماس بودن، ارتباط داشن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "handicraft",
+    "fa": "صنایع دسن",
+    "raw": "صنایع دسن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "keep to oneself",
+    "fa": "در الک خود بودن، ساکت بودن",
+    "raw": "در الک خود بودن،  ساکت بودن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "hardware",
+    "fa": "سخت افزار",
+    "raw": "سخت افزار",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "lobster",
+    "fa": "خرچنگ دریات",
+    "raw": "خرچنگ دریات",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "harmful",
+    "fa": "مرص",
+    "raw": "مرص",
+    "dup": false,
+    "gold": "مضر",
+    "goldLesson": 2
+   },
+   {
+    "en": "lack",
+    "fa": "فقدان ، کمبود- کمبود داشی",
+    "raw": "فقدان ، کمبود- کمبود داشی",
+    "dup": true,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "healthful",
+    "fa": "مفید(برای سالمت)",
+    "raw": "مفید(برای سالمت)",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "last",
+    "fa": "آخرین - گذشته - طول کشیدن",
+    "raw": "آخرین - گذشته - طول کشیدن",
+    "dup": false,
+    "gold": "گذشته ، قبلی",
+    "goldLesson": 12
+   },
+   {
+    "en": "highlight",
+    "fa": "برجسته کردن",
+    "raw": "برجسته کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "laugh at",
+    "fa": "خندیدن به",
+    "raw": "خندیدن به",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "host",
+    "fa": "میر بان، مجری برنامه",
+    "raw": "میر بان، مجری برنامه",
+    "dup": false,
+    "gold": "میزبان، مهمان‌داری کردن",
+    "goldLesson": 1
+   },
+   {
+    "en": "lead to",
+    "fa": "منجرشدن به ، منتیه شدن به",
+    "raw": "منجرشدن به ، منتیه شدن به",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "huge",
+    "fa": "عظیم، خییل بزرگ",
+    "raw": "عظیم، خییل بزرگ",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "lecture",
+    "fa": "سخی ات",
+    "raw": "سخی  ات",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "ice cap",
+    "fa": "کوه ییح ، قله ییح",
+    "raw": "کوه ییح  ، قله ییح",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "level",
+    "fa": "سطح",
+    "raw": "سطح",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "ideal",
+    "fa": "، ایده آل، رؤیات آرمات ، دلخواه",
+    "raw": "،  ایده آل، رؤیات آرمات  ، دلخواه",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "lie",
+    "fa": "دروغ گفی، دروغ - دراز کشیدن - واقع شدن",
+    "raw": "دروغ گفی، دروغ - دراز کشیدن - واقع شدن",
+    "dup": true,
+    "gold": "دروغ گفتن",
+    "goldLesson": 12
+   },
+   {
+    "en": "identify",
+    "fa": "شناسات کردن",
+    "raw": "شناسات  کردن",
+    "dup": false,
+    "gold": "شناسایی کردن، تشخیص دادن",
+    "goldLesson": 2
+   },
+   {
+    "en": "look for",
+    "fa": "گشی به دنبال، جستجو کردن برای",
+    "raw": "گشی   به دنبال، جستجو کردن برای",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "imagination",
+    "fa": "تصور - خیال",
+    "raw": "تصور - خیال",
+    "dup": false,
+    "gold": "تصور، خیال",
+    "goldLesson": 3
+   },
+   {
+    "en": "look after",
+    "fa": "مراقبت کردن از",
+    "raw": "مراقبت کردن از",
+    "dup": false,
+    "gold": "مراقبت کردن از",
+    "goldLesson": 2
+   },
+   {
+    "en": "imaginary",
+    "fa": "تخییل- غیر واقیع",
+    "raw": "تخییل- غیر واقیع",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "look sth up",
+    "fa": "جستجو کردن(معت لغت در دیکشی ی )",
+    "raw": "جستجو کردن(معت  لغت در دیکشی  ی )",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "immediate",
+    "fa": "فوری",
+    "raw": "فوری",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "modernism",
+    "fa": "مدرن گرات ، نو گرات",
+    "raw": "مدرن گرات  ، نو گرات",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "immediately",
+    "fa": "فورأ",
+    "raw": "فورأ",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "magnet",
+    "fa": "آهن ربا",
+    "raw": "آهن ربا",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "in advance",
+    "fa": "از پیش، از قبل، پیشاپیش",
+    "raw": "از پیش، از قبل، پیشاپیش",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "magnify",
+    "fa": "بزرگنمات کردن - بزرگ کردن",
+    "raw": "بزرگنمات  کردن - بزرگ کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "include",
+    "fa": "شامل شدن - در بر گرفی",
+    "raw": "شامل شدن - در بر گرفی",
+    "dup": false,
+    "gold": "شامل بودن، در بر داشتن",
+    "goldLesson": 2
+   },
+   {
+    "en": "male",
+    "fa": "مردانه ، مذکر",
+    "raw": "مردانه ، مذکر",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "incomprehensible",
+    "fa": "غیر قابل فهم",
+    "raw": "غیر قابل فهم",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "in contrast to",
+    "fa": "در مقایسه با",
+    "raw": "در مقایسه با",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "measure",
+    "fa": "اندازه گیر ی کردن",
+    "raw": "اندازه گیر ی کردن",
+    "dup": false,
+    "gold": "اندازه‌گیری کردن",
+    "goldLesson": 1
+   },
+   {
+    "en": "increasingly",
+    "fa": "به طور فزاینده",
+    "raw": "به طور فزاینده",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "meet",
+    "fa": "برآورده کردن - مالقات کردن",
+    "raw": "برآورده کردن - مالقات کردن",
+    "dup": false,
+    "gold": "برآورده کردن، ملاقات کردن",
+    "goldLesson": 1
+   },
+   {
+    "en": "increase",
+    "fa": "افزایش دادن ، افزایش یافی",
+    "raw": "افزایش دادن   ، افزایش یافی",
+    "dup": false,
+    "gold": "افزایش دادن، افزایش یافتن",
+    "goldLesson": 1
+   },
+   {
+    "en": "minor",
+    "fa": "جزت- کم اهمیت",
+    "raw": "جزت- کم اهمیت",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "infection",
+    "fa": "عفونت، آلودیک( میکروب)",
+    "raw": "عفونت، آلودیک( میکروب)",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "monolingual",
+    "fa": "یک زبانه",
+    "raw": "یک زبانه",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "information",
+    "fa": "اطالعات",
+    "raw": "اطالعات",
+    "dup": false,
+    "gold": "اطلاعات، خبر، داده",
+    "goldLesson": 5
+   },
+   {
+    "en": "multiple",
+    "fa": "چندگانه، چندین- متعدد، گوناگون",
+    "raw": "چندگانه، چندین- متعدد، گوناگون",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "inner",
+    "fa": "داخیل",
+    "raw": "داخیل",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "nearly",
+    "fa": "تقریبأ",
+    "raw": "تقریبأ",
+    "dup": false,
+    "gold": "تقریباً، تا حدودی",
+    "goldLesson": 1
+   },
+   {
+    "en": "in order to",
+    "fa": "به منظور، تا اینکه",
+    "raw": "به منظور، تا اینکه",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "neat",
+    "fa": "تمیر ، مرتب",
+    "raw": "تمیر  ، مرتب",
+    "dup": false,
+    "gold": "مرتب، تمیز و منظم",
+    "goldLesson": 12
+   },
+   {
+    "en": "insect",
+    "fa": "حشر ه",
+    "raw": "حشر ه",
+    "dup": false,
+    "gold": "حشره",
+    "goldLesson": 7
+   },
+   {
+    "en": "need",
+    "fa": "نیاز داشی ، الزم داشی ، نیاز",
+    "raw": "نیاز داشی   ، الزم داشی   ، نیاز",
+    "dup": false,
+    "gold": "نیاز، لازم، احتیاج",
+    "goldLesson": 10
+   },
+   {
+    "en": "insist on",
+    "fa": "پا فشاری کردن بر روی، ارصار",
+    "raw": "پا فشاری کردن بر روی، ارصار",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "offer",
+    "fa": "پیشنهاد کردن، ارائه دادن",
+    "raw": "پیشنهاد کردن، ارائه دادن",
+    "dup": false,
+    "gold": "پیشنهاد دادن؛ پیشنهاد",
+    "goldLesson": 4
+   },
+   {
+    "en": "instead",
+    "fa": "به جای، در عوض",
+    "raw": "به جای، در عوض",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "once",
+    "fa": "یکبار، روزی، زمات که، در گذشته",
+    "raw": "یکبار، روزی، زمات  که، در گذشته",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "insulting",
+    "fa": "توهیر آمیر",
+    "raw": "توهیر  آمیر",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "onion",
+    "fa": "پیاز",
+    "raw": "پیاز",
+    "dup": false,
+    "gold": "پیاز",
+    "goldLesson": 2
+   },
+   {
+    "en": "intermediate",
+    "fa": "سطح متوسط",
+    "raw": "سطح متوسط",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "opinion",
+    "fa": "نظر، عقیده",
+    "raw": "نظر، عقیده",
+    "dup": false,
+    "gold": "عقیده، نظر",
+    "goldLesson": 2
+   },
+   {
+    "en": "international",
+    "fa": "بیر الملیل",
+    "raw": "بیر  الملیل",
+    "dup": false,
+    "gold": "بین المللی،بین الملل",
+    "goldLesson": 10
+   },
+   {
+    "en": "opposite",
+    "fa": "برعکس، متضاد",
+    "raw": "برعکس، متضاد",
+    "dup": false,
+    "gold": "مخالف، ضد",
+    "goldLesson": 3
+   }
+  ]
+ },
+ {
+  "grade": 12,
+  "lesson": 2,
+  "prospect": 0,
+  "target": 5,
+  "rows": [
+   {
+    "en": "painful",
+    "fa": "دردناک",
+    "raw": "دردناک",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "quite",
+    "fa": "کامأل- نسبتأ",
+    "raw": "کامأل- نسبتأ",
+    "dup": false,
+    "gold": "نسبتاً، کاملاً",
+    "goldLesson": 3
+   },
+   {
+    "en": "pay for",
+    "fa": "پرداخت کردن برای",
+    "raw": "پرداخت کردن برای",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "race",
+    "fa": "مسابقه، نژاد",
+    "raw": "مسابقه، نژاد",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "part",
+    "fa": "بخش، قسمت",
+    "raw": "بخش، قسمت",
+    "dup": false,
+    "gold": "قسمت، بخش",
+    "goldLesson": 2
+   },
+   {
+    "en": "recognize",
+    "fa": "تشخیص دادن- شناخی",
+    "raw": "تشخیص دادن- شناخی",
+    "dup": false,
+    "gold": "شناختن، تشخیص دادن، آگاه بودن",
+    "goldLesson": 3
+   },
+   {
+    "en": "parts of speech",
+    "fa": "نوع کلمه ( اسم، صفت، قید و)",
+    "raw": "نوع کلمه ( اسم، صفت، قید و)",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "recommend",
+    "fa": "توصیه کردن، سفارش کردن",
+    "raw": "توصیه کردن، سفارش کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "pattern",
+    "fa": "الگو، نمونه",
+    "raw": "الگو، نمونه",
+    "dup": false,
+    "gold": "الگو، روش",
+    "goldLesson": 1
+   },
+   {
+    "en": "recommendation",
+    "fa": "توصیه، سفارش",
+    "raw": "توصیه، سفارش",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "PC",
+    "fa": "کامپیوتر شخض",
+    "raw": "کامپیوتر شخض",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "relate",
+    "fa": "مرتبط ، بودن ربط ، داشی رابطه داشی",
+    "raw": "مرتبط ،بودن ربط ،   داشی رابطه داشی",
+    "dup": false,
+    "gold": "ربط دادن، مربوط بودن",
+    "goldLesson": 2
+   },
+   {
+    "en": "period",
+    "fa": "نقطه - دوره( زماب )",
+    "raw": "نقطه - دوره( زماب )",
+    "dup": false,
+    "gold": "نقطه، دورهٔ زمانی",
+    "goldLesson": 1
+   },
+   {
+    "en": "relationship",
+    "fa": "رابطه، ارتباط",
+    "raw": "رابطه، ارتباط",
+    "dup": false,
+    "gold": "رابطه",
+    "goldLesson": 2
+   },
+   {
+    "en": "permission",
+    "fa": "اجازه",
+    "raw": "اجازه",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "relaxation",
+    "fa": "اسی احت، آرامش، شل شدن عضالت",
+    "raw": "اسی  احت، آرامش، شل شدن عضالت",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "philosophy",
+    "fa": "فلسفه",
+    "raw": "فلسفه",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "rely on",
+    "fa": "متگ بودن به، وابسته بودن به",
+    "raw": "متگ بودن به، وابسته بودن به",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "phonetic",
+    "fa": "علم آ، وا شنایس آوات",
+    "raw": "علم آ،وا شنایس آوات",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "remember",
+    "fa": "به خاطر آوردن",
+    "raw": "به خاطر آوردن",
+    "dup": false,
+    "gold": "به خاطر آوردن، به خاطر داشتن",
+    "goldLesson": 1
+   },
+   {
+    "en": "pocket",
+    "fa": "جیب- جینی",
+    "raw": "جیب- جینی",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "repair",
+    "fa": "تعمیر کردن",
+    "raw": "تعمیر کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "di i",
+    "fa": "فرهنگ لغت جینی",
+    "raw": "فرهنگ لغت جینی",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "reproduce",
+    "fa": "تولید مثل کردن، تکثیر کردن",
+    "raw": "تولید مثل کردن، تکثیر کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   }
+  ]
+ },
+ {
+  "grade": 12,
+  "lesson": 2,
+  "prospect": 0,
+  "target": 5,
+  "rows": [
+   {
+    "en": "stage",
+    "fa": "مرحله - صحنه نمایش",
+    "raw": "مرحله - صحنه نمایش",
+    "dup": false,
+    "gold": "مرحله - صحنه",
+    "goldLesson": 2
+   },
+   {
+    "en": "type",
+    "fa": "، نوع گونه - تایپ کرن",
+    "raw": "،نوع گونه - تایپ کرن",
+    "dup": false,
+    "gold": "نوع - تایپ کردن",
+    "goldLesson": 1
+   },
+   {
+    "en": "stand",
+    "fa": "دکه، کیوسک - ایستادن - تحمل کردن",
+    "raw": "دکه، کیوسک - ایستادن - تحمل کردن",
+    "dup": false,
+    "gold": "ایستادن",
+    "goldLesson": 12
+   },
+   {
+    "en": "understanding",
+    "fa": "درک- فهم",
+    "raw": "درک- فهم",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "stand for",
+    "fa": "نماد چیر ی بودن",
+    "raw": "نماد چیر ی بودن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "unexpectedly",
+    "fa": "به طور غیر منتظره",
+    "raw": "به طور غیر منتظره",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "station",
+    "fa": "ایستگاه",
+    "raw": "ایستگاه",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "university",
+    "fa": "دانشگاه",
+    "raw": "دانشگاه",
+    "dup": false,
+    "gold": "دانشگاه",
+    "goldLesson": 9
+   },
+   {
+    "en": "stationary",
+    "fa": "ساکن، تی حرکت، تی تغییر",
+    "raw": "ساکن، تی حرکت، تی تغییر",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "unknown",
+    "fa": "نا آشنا، غریبه",
+    "raw": "نا آشنا، غریبه",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "steak",
+    "fa": "باریکه گوشت کباتی ، استیک",
+    "raw": "باریکه گوشت کباتی ، استیک",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "upcoming",
+    "fa": "پیش رو، آت",
+    "raw": "پیش رو، آت",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "stick to / in",
+    "fa": "به چیر ی چسبیدن",
+    "raw": "به چیر ی چسبیدن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "unpredictable",
+    "fa": "غیر ر قابل پیش بین",
+    "raw": "غیر ر قابل پیش بین",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "stick in mind",
+    "fa": "در ذهن فرو رفی",
+    "raw": "در ذهن فرو رفی",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "unsuccessfully",
+    "fa": "با ناکایم",
+    "raw": "با ناکایم",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "stick to one’s word",
+    "fa": "روی حرف خود بودن",
+    "raw": "روی حرف خود بودن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "unsystematically",
+    "fa": "بدون قاعده ، بطور غیر سیستماتیک",
+    "raw": "بدون قاعده ، بطور غیر سیستماتیک",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "stress",
+    "fa": "تنش، فشار روات- تأکید کردن بر",
+    "raw": "تنش، فشار روات- تأکید کردن بر",
+    "dup": false,
+    "gold": "تأکید، استرس",
+    "goldLesson": 1
+   },
+   {
+    "en": "useable",
+    "fa": "قابل استفاده، قابل بهره وری",
+    "raw": "قابل استفاده، قابل بهره وری",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "suffer",
+    "fa": "رنج کشیدن",
+    "raw": "رنج کشیدن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "usefulness",
+    "fa": "، سودمندی فایده",
+    "raw": "،سودمندی فایده",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "suggest",
+    "fa": "پیشنهاد دادن",
+    "raw": "پیشنهاد دادن",
+    "dup": false,
+    "gold": "پیشنهاد دادن - اشاره کردن بر",
+    "goldLesson": 1
+   },
+   {
+    "en": "user",
+    "fa": "کاربر - استفاده کننده، مرصف کننده",
+    "raw": "کاربر - استفاده کننده، مرصف کننده",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "suitable",
+    "fa": "مناسب",
+    "raw": "مناسب",
+    "dup": false,
+    "gold": "مناسب، شایسته",
+    "goldLesson": 1
+   },
+   {
+    "en": "valuable",
+    "fa": "ارزشمند، گران بها، با ارزش",
+    "raw": "ارزشمند، گران بها، با ارزش",
+    "dup": false,
+    "gold": "باارزش، گران‌بها",
+    "goldLesson": 1
+   },
+   {
+    "en": "superhuman",
+    "fa": "ابر انسان - فوق انسات",
+    "raw": "ابر انسان - فوق انسات",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "veterinarian",
+    "fa": "دامیی شک",
+    "raw": "دامیی شک",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "support",
+    "fa": "حمایت کردن",
+    "raw": "حمایت کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "vibration",
+    "fa": "ارتعاش - لرزش",
+    "raw": "ارتعاش - لرزش",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "suppose",
+    "fa": "فرض کردن- گمان کردن",
+    "raw": "فرض کردن- گمان کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "viewer",
+    "fa": "بیننده، تماشایحی",
+    "raw": "بیننده، تماشایحی",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "surround",
+    "fa": "احاطه کردن، محارصه کردن",
+    "raw": "احاطه کردن، محارصه کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "violation",
+    "fa": "تخلف، تجاوز",
+    "raw": "تخلف، تجاوز",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "surrounding",
+    "fa": "اطراف- محیط، پیر امون",
+    "raw": "اطراف- محیط، پیر امون",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "volume",
+    "fa": "جلد- حجم- درجه صدا",
+    "raw": "جلد- حجم- درجه صدا",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "sweet",
+    "fa": "شیر ین ، شیر ین",
+    "raw": "شیر ین  ، شیر ین",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "watcher",
+    "fa": "تماشاگر، ببننده",
+    "raw": "تماشاگر، ببننده",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "symbol",
+    "fa": "نماد، مظهر، نشان",
+    "raw": "نماد، مظهر، نشان",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "waterway",
+    "fa": "آبراهه، راه آتی",
+    "raw": "آبراهه، راه آتی",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "take action",
+    "fa": "اقدام کردن",
+    "raw": "اقدام کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "web browser",
+    "fa": "جستجوگر وب",
+    "raw": "جستجوگر وب",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "take note of",
+    "fa": "توجه کردن به",
+    "raw": "توجه کردن به",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "whatever",
+    "fa": "هر آنچه که، هر چیر ی که",
+    "raw": "هر آنچه که، هر چیر ی که",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "take notes",
+    "fa": "یادداشت برداشی",
+    "raw": "یادداشت برداشی",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   }
+  ]
+ },
+ {
+  "grade": 12,
+  "lesson": 3,
+  "prospect": 0,
+  "target": 6,
+  "rows": [
+   {
+    "en": "absence",
+    "fa": "غیبت - فقدان",
+    "raw": "غیبت - فقدان",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "chemical",
+    "fa": "شیمیات",
+    "raw": "شیمیات",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "absorb",
+    "fa": "جذب کردن - فهمیدن",
+    "raw": "جذب کردن - فهمیدن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "chemistry",
+    "fa": "شییم",
+    "raw": "شییم",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "air conditioner",
+    "fa": "دست گ اه تهویه هوا ، کولر",
+    "raw": "دست گ اه تهویه هوا ، کولر",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "chemist",
+    "fa": "شیمیدان- دارو ساز",
+    "raw": "شیمیدان- دارو ساز",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "alcoholic",
+    "fa": "الکیل، حاوی الکل",
+    "raw": "الکیل، حاوی الکل",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "circulate",
+    "fa": "چرخش کردن، چرخیدن",
+    "raw": "چرخش کردن، چرخیدن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "alternative",
+    "fa": "جایگزین، جانشیر- گزینه",
+    "raw": "جایگزین، جانشیر- گزینه",
+    "dup": false,
+    "gold": "جایگزین، بدل",
+    "goldLesson": 6
+   },
+   {
+    "en": "circulation",
+    "fa": "گردش، جریان، دوران",
+    "raw": "گردش، جریان، دوران",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "anger",
+    "fa": "خشم، عصبانیت، غضب",
+    "raw": "خشم، عصبانیت، غضب",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "clean energy",
+    "fa": "انرژی پاک",
+    "raw": "انرژی پاک",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "angry",
+    "fa": "عصبات ، خشمگیر",
+    "raw": "عصبات  ، خشمگیر",
+    "dup": false,
+    "gold": "عصبانی",
+    "goldLesson": 12
+   },
+   {
+    "en": "client",
+    "fa": "مشی ی - موکل",
+    "raw": "مشی  ی - موکل",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "annual",
+    "fa": "سالیانه",
+    "raw": "سالیانه",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "climate",
+    "fa": "شر ایط آب و هوات ، اقلیم",
+    "raw": "شر ایط آب و هوات ، اقلیم",
+    "dup": false,
+    "gold": "اقلیم، آب‌وهوا",
+    "goldLesson": 6
+   },
+   {
+    "en": "apologize",
+    "fa": "معذرت خوایه کردن",
+    "raw": "معذرت خوایه کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "cloth",
+    "fa": "پارچه - دستمال",
+    "raw": "پارچه - دستمال",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "apology",
+    "fa": "معذرت خوایه",
+    "raw": "معذرت خوایه",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "coal",
+    "fa": "زغال سنگ ، زغال",
+    "raw": "زغال سنگ ، زغال",
+    "dup": false,
+    "gold": "زغال‌سنگ، ذغال",
+    "goldLesson": 6
+   },
+   {
+    "en": "application",
+    "fa": "تقاضا، درخواست- کاربرد",
+    "raw": "تقاضا، درخواست- کاربرد",
+    "dup": true,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "collect",
+    "fa": "جمع آوری کردن",
+    "raw": "جمع آوری کردن",
+    "dup": false,
+    "gold": "جمع‌آوری کردن، جمع کردن",
+    "goldLesson": 7
+   },
+   {
+    "en": "apply",
+    "fa": "درخواست کردن، تقاضا کردن",
+    "raw": "درخواست کردن، تقاضا کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "collective",
+    "fa": "، مشی ک، جمیع عمویم، اشی ایک",
+    "raw": "،مشی  ک، جمیع عمویم، اشی  ایک",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "apply for",
+    "fa": "نام نوییس کردن برای",
+    "raw": "نام نوییس کردن برای",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "collector",
+    "fa": "جمع کننده",
+    "raw": "جمع کننده",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "argument",
+    "fa": "جر و بحث، مشاجره",
+    "raw": "جر و بحث، مشاجره",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "come from",
+    "fa": "شچشمه گرفی ، اهل جات بودن",
+    "raw": "شچشمه گرفی   ، اهل جات  بودن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "arrangement",
+    "fa": "آرایش، چیدمان، ترتیب",
+    "raw": "آرایش، چیدمان، ترتیب",
+    "dup": true,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "community",
+    "fa": "جامعه، اجتماع",
+    "raw": "جامعه، اجتماع",
+    "dup": false,
+    "gold": "جامعهٔ محلی، اجتماع",
+    "goldLesson": 7
+   },
+   {
+    "en": "as a result of",
+    "fa": "در نتیجه- به دلیل",
+    "raw": "در نتیجه- به دلیل",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "component",
+    "fa": "جزء سازنده",
+    "raw": "جزء سازنده",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "atmosphere",
+    "fa": "جو - اتمسفر",
+    "raw": "جو  - اتمسفر",
+    "dup": false,
+    "gold": "جوّ (زمین)، هواکره",
+    "goldLesson": 6
+   },
+   {
+    "en": "conclude",
+    "fa": "نتیجه گرفی- تمام کردن",
+    "raw": "نتیجه گرفی- تمام کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "attitude",
+    "fa": "، نگرش نقطه نظر",
+    "raw": "،نگرش نقطه نظر",
+    "dup": false,
+    "gold": "نگرش، گرایش - طرز برخورد",
+    "goldLesson": 3
+   },
+   {
+    "en": "conflict",
+    "fa": "کشمکش، نیی د - ناسازگاری، تضاد",
+    "raw": "کشمکش، نیی د - ناسازگاری، تضاد",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "awareness",
+    "fa": "هوشیاری، آگایه",
+    "raw": "هوشیاری، آگایه",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "considerable",
+    "fa": "، قابل توجه، شایان توجه فراوان",
+    "raw": "،قابل توجه، شایان توجه فراوان",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "background",
+    "fa": "پس زمینه",
+    "raw": "پس زمینه",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "consist of",
+    "fa": "تشکیل شدن از",
+    "raw": "تشکیل شدن از",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "balcony",
+    "fa": "ایوان- بالکن",
+    "raw": "ایوان- بالکن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "constantly",
+    "fa": "پیوسته - دائمأ",
+    "raw": "پیوسته - دائمأ",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "basis",
+    "fa": "اساس- اصل",
+    "raw": "اساس- اصل",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "consume",
+    "fa": "مرصف کردن",
+    "raw": "مرصف کردن",
+    "dup": false,
+    "gold": "مصرف کردن، به‌هدر دادن",
+    "goldLesson": 6
+   },
+   {
+    "en": "battery",
+    "fa": "باطری",
+    "raw": "باطری",
+    "dup": false,
+    "gold": "باتری، پیل",
+    "goldLesson": 6
+   },
+   {
+    "en": "consumer",
+    "fa": "مرصف کننده",
+    "raw": "مرصف کننده",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "beach",
+    "fa": "ساحل",
+    "raw": "ساحل",
+    "dup": false,
+    "gold": "ساحل (دریا)",
+    "goldLesson": 7
+   },
+   {
+    "en": "convert",
+    "fa": "تبدیل کردن",
+    "raw": "تبدیل کردن",
+    "dup": true,
+    "gold": "تبدیل کردن، دگرگون کردن",
+    "goldLesson": 6
+   },
+   {
+    "en": "beam",
+    "fa": "اشعه، پرتو، شعاع - ، تیر سقف ک",
+    "raw": "اشعه، پرتو، شعاع - ،تیر سقف ک",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "cool",
+    "fa": "خنک - با حال، معرکه، محشر",
+    "raw": "خنک - با حال، معرکه، محشر",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "beloved",
+    "fa": "محبوب، مورد علاقه",
+    "raw": "محبوب، مورد عالقه",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "cooling",
+    "fa": "خنک سازی",
+    "raw": "خنک سازی",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "benefit",
+    "fa": "سود، بهره، منفعت – سود بردن",
+    "raw": "سود، بهره، منفعت – سود بردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "cooler",
+    "fa": "خنک کننده",
+    "raw": "خنک کننده",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "bill",
+    "fa": "صورتحساب - اسکناس",
+    "raw": "صورتحساب - اسکناس",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "consumption",
+    "fa": "مرصف، استفاده",
+    "raw": "مرصف، استفاده",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "blow",
+    "fa": "وزیدن- فوت کردن- دمیدن",
+    "raw": "وزیدن- فوت کردن- دمیدن",
+    "dup": false,
+    "gold": "وزیدن - دمیدن - ضرب",
+    "goldLesson": 3
+   },
+   {
+    "en": "convince",
+    "fa": "کردن، متقاعد کردن قانع کردن، راض",
+    "raw": "کردن، متقاعد کردن قانع کردن، راض",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "broth",
+    "fa": "آبگوشت",
+    "raw": "آبگوشت",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "cooperate",
+    "fa": "، همیاری کردن همکاری کردن",
+    "raw": "،همیاری کردن همکاری کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "budget",
+    "fa": "بودجه",
+    "raw": "بودجه",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "cost",
+    "fa": "هزینه- ارزش - ار زیدن",
+    "raw": "هزینه- ارزش - ار زیدن",
+    "dup": false,
+    "gold": "قیمت داشتن",
+    "goldLesson": 12
+   },
+   {
+    "en": "burn",
+    "fa": "سوخی ، سوزاندن",
+    "raw": "سوخی   ، سوزاندن",
+    "dup": false,
+    "gold": "سوزاندن، سوختن",
+    "goldLesson": 7
+   },
+   {
+    "en": "counterpart",
+    "fa": "همکار، شر یک - همتا",
+    "raw": "همکار، شر یک - همتا",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "character",
+    "fa": "شخصیت",
+    "raw": "شخصیت",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "couple",
+    "fa": "زوج، زن و شوهر",
+    "raw": "زوج، زن و شوهر",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "charge",
+    "fa": "شارژ، هزینه- ش ارژ کردن",
+    "raw": "شارژ، هزینه- ش ارژ کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "cross out",
+    "fa": "چیر ی را خط زدن، اخراج کردن",
+    "raw": "چیر ی را خط زدن، اخراج کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "check",
+    "fa": "برریس کردن، چک کردن",
+    "raw": "برریس کردن، چک کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   }
+  ]
+ },
+ {
+  "grade": 12,
+  "lesson": 3,
+  "prospect": 0,
+  "target": 6,
+  "rows": [
+   {
+    "en": "decade",
+    "fa": "دهه(ده سال )",
+    "raw": "دهه(ده سال )",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "fossil fuel",
+    "fa": "سوخت فسییل",
+    "raw": "سوخت فسییل",
+    "dup": false,
+    "gold": "سوخت فسیلی",
+    "goldLesson": 6
+   },
+   {
+    "en": "delivery",
+    "fa": "تحویل",
+    "raw": "تحویل",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "fuel",
+    "fa": "سوخت- سوخت گیر ی کردن",
+    "raw": "سوخت- سوخت گیر ی کردن",
+    "dup": false,
+    "gold": "سوخت؛ سوخت‌رسانی کردن",
+    "goldLesson": 6
+   },
+   {
+    "en": "deliver",
+    "fa": "تحویل دادن",
+    "raw": "تحویل دادن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "gadget",
+    "fa": "وسیله، ابزار، اسباب",
+    "raw": "وسیله، ابزار، اسباب",
+    "dup": false,
+    "gold": "وسیله، ابزار کوچک، دستگاه جادویی",
+    "goldLesson": 5
+   },
+   {
+    "en": "demand",
+    "fa": "تقاضا، درخواست- نیاز- مطالبه ک",
+    "raw": "تقاضا، درخواست- نیاز- مطالبه ک",
+    "dup": false,
+    "gold": "تقاضا، مطالبه؛ تقاضا داشتن",
+    "goldLesson": 5
+   },
+   {
+    "en": "garbage",
+    "fa": "آشغال- زباله",
+    "raw": "آشغال- زباله",
+    "dup": false,
+    "gold": "زباله، آشغال",
+    "goldLesson": 7
+   },
+   {
+    "en": "digest",
+    "fa": "هضم کردن - فهمیدن",
+    "raw": "هضم کردن - فهمیدن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "gasoline",
+    "fa": "بی ین",
+    "raw": "بی  ین",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "disability",
+    "fa": "معلولیت- نقص",
+    "raw": "معلولیت- نقص",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "generate",
+    "fa": "تولید کردن، بوجود آوردن",
+    "raw": "تولید کردن، بوجود آوردن",
+    "dup": true,
+    "gold": "تولید کردن، ایجاد کردن",
+    "goldLesson": 6
+   },
+   {
+    "en": "distance",
+    "fa": "فاصله- مسافت",
+    "raw": "فاصله- مسافت",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "generation",
+    "fa": "تولید- نسل",
+    "raw": "تولید- نسل",
+    "dup": true,
+    "gold": "تولید؛ نسل",
+    "goldLesson": 6
+   },
+   {
+    "en": "document",
+    "fa": "مدرک- سند",
+    "raw": "مدرک- سند",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "give off",
+    "fa": "ساطع کردن- منتشر کردن",
+    "raw": "ساطع کردن- منتشر کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "dread",
+    "fa": "ترس، بیم، وحشت، ترسیدن از",
+    "raw": "ترس، بیم، وحشت، ترسیدن از",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "global",
+    "fa": "جهات",
+    "raw": "جهات",
+    "dup": false,
+    "gold": "جهانی، جهان‌شمول",
+    "goldLesson": 5
+   },
+   {
+    "en": "dreadful",
+    "fa": "ترسناک",
+    "raw": "ترسناک",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "global warming",
+    "fa": "گرمایش جهات",
+    "raw": "گرمایش جهات",
+    "dup": false,
+    "gold": "گرمایش جهانی",
+    "goldLesson": 6
+   },
+   {
+    "en": "economy",
+    "fa": "اقتصاد",
+    "raw": "اقتصاد",
+    "dup": false,
+    "gold": "اقتصاد",
+    "goldLesson": 3
+   },
+   {
+    "en": "goal",
+    "fa": "هدف، مقصد، منظور",
+    "raw": "هدف، مقصد، منظور",
+    "dup": false,
+    "gold": "هدف، مقصد، منظور",
+    "goldLesson": 2
+   },
+   {
+    "en": "Egyptian",
+    "fa": "مرصی (اهل کشور مرص )",
+    "raw": "مرصی (اهل کشور مرص )",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "gone",
+    "fa": "ناپدید- رفته- مرده",
+    "raw": "ناپدید- رفته- مرده",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "electric",
+    "fa": "برق",
+    "raw": "برق",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "gradually",
+    "fa": "به تدری ج- کم کم",
+    "raw": "به تدری  ج- کم کم",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "electrical",
+    "fa": "، برق الکی یگ",
+    "raw": "،  برق الکی  یگ",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "harm",
+    "fa": "آسیب زدن- صدمه، آسیب، زیان",
+    "raw": "آسیب زدن- صدمه، آسیب، زیان",
+    "dup": false,
+    "gold": "ضرر",
+    "goldLesson": 2
+   },
+   {
+    "en": "electricity",
+    "fa": "برق",
+    "raw": "برق",
+    "dup": false,
+    "gold": "برق، الکتریسیته",
+    "goldLesson": 6
+   },
+   {
+    "en": "harmful",
+    "fa": "مرص ، زیان آور",
+    "raw": "مرص  ، زیان آور",
+    "dup": true,
+    "gold": "مضر",
+    "goldLesson": 2
+   },
+   {
+    "en": "energy",
+    "fa": "انرژی",
+    "raw": "انرژی",
+    "dup": false,
+    "gold": "انرژی، نیرو",
+    "goldLesson": 6
+   },
+   {
+    "en": "hatch",
+    "fa": "از تخم بیر ون آمدن",
+    "raw": "از تخم بیر ون آمدن",
+    "dup": false,
+    "gold": "از تخم درآمدن؛ جوجه کشیدن",
+    "goldLesson": 8
+   },
+   {
+    "en": "energetic",
+    "fa": "پر انرژی، فعال",
+    "raw": "پر انرژی، فعال",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "heart",
+    "fa": "مرکز- قلب - دل و جرأت، رشادت",
+    "raw": "مرکز- قلب - دل و جرأت، رشادت",
+    "dup": false,
+    "gold": "قلب، دل؛ مرکز، مغزِ ماجرا",
+    "goldLesson": 4
+   },
+   {
+    "en": "energetically",
+    "fa": "با انرژی، به طور پر انرژی",
+    "raw": "با انرژی، به طور پر انرژی",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "heat",
+    "fa": "حرارت- گرما",
+    "raw": "حرارت- گرما",
+    "dup": false,
+    "gold": "گرما؛ گرم کردن",
+    "goldLesson": 6
+   },
+   {
+    "en": "ensure",
+    "fa": "، مطمی کردن اطمینان حاصل کردن",
+    "raw": "،مطمی   کردن اطمینان حاصل کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "herd",
+    "fa": "گروه- دسته- گله",
+    "raw": "گروه- دسته- گله",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "environment",
+    "fa": "محیط زیست",
+    "raw": "محیط زیست",
+    "dup": false,
+    "gold": "محیط زیست؛ محیط",
+    "goldLesson": 5
+   },
+   {
+    "en": "hold",
+    "fa": "نگه داشی ، برگزارکردن",
+    "raw": "نگه داشی ، برگزارکردن",
+    "dup": false,
+    "gold": "برگزار کردن",
+    "goldLesson": 12
+   },
+   {
+    "en": "equivalent",
+    "fa": "برابر",
+    "raw": "برابر",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "holder",
+    "fa": "نگهدارنده",
+    "raw": "نگهدارنده",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "except",
+    "fa": "به جزء، به غیر از",
+    "raw": "به جزء، به غیر از",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "hole",
+    "fa": "چاله، سوراخ، گودال",
+    "raw": "چاله، سوراخ، گودال",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "exclamation",
+    "fa": "حرف ندا",
+    "raw": "حرف ندا",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "household",
+    "fa": "، خانوار اعضای خانواده",
+    "raw": "،خانوار اعضای خانواده",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "fall",
+    "fa": "افتادن- پاییر",
+    "raw": "افتادن- پاییر",
+    "dup": false,
+    "gold": "پایین - افتادن، سقوط کردن",
+    "goldLesson": 3
+   },
+   {
+    "en": "huge",
+    "fa": "عظیم- بزرگ",
+    "raw": "عظیم- بزرگ",
+    "dup": true,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "fall asleep",
+    "fa": "به خواب رفی",
+    "raw": "به خواب رفی",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "hybrid",
+    "fa": "دوگانه",
+    "raw": "دوگانه",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "fan",
+    "fa": "پنکه - طرفدار، هوادار",
+    "raw": "پنکه - طرفدار، هوادار",
+    "dup": false,
+    "gold": "پنکه،فن،بادبزن،بادزن",
+    "goldLesson": 10
+   },
+   {
+    "en": "hydropower",
+    "fa": "نیر وی برق آتی",
+    "raw": "نیر وی برق آتی",
+    "dup": false,
+    "gold": "انرژی آبی، برق‌آبی",
+    "goldLesson": 6
+   },
+   {
+    "en": "fantastic",
+    "fa": "عایل، معرکه، محشر",
+    "raw": "عایل، معرکه، محشر",
+    "dup": false,
+    "gold": "رویایی",
+    "goldLesson": 12
+   },
+   {
+    "en": "identifiable",
+    "fa": "قابل شناسات",
+    "raw": "قابل شناسات",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "feather",
+    "fa": "پر( پرندگان و حش ات ...و)",
+    "raw": "پر( پرندگان و حش  ات ...و)",
+    "dup": false,
+    "gold": "پَر (پرنده)",
+    "goldLesson": 8
+   },
+   {
+    "en": "idiom",
+    "fa": "اصطالح",
+    "raw": "اصطالح",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "fitness",
+    "fa": "تناسب اندام - شایستگ",
+    "raw": "تناسب اندام  - شایستگ",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "I’m afraid",
+    "fa": "شر مند ه ا م، متأسفم",
+    "raw": "شر مند ه ا م، متأسفم",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "flashlight",
+    "fa": "چراغ قوه",
+    "raw": "چراغ قوه",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "impression",
+    "fa": "تأثیر - احساس، ادراک",
+    "raw": "تأثیر - احساس، ادراک",
+    "dup": false,
+    "gold": "برداشت، تأثیر، امضاء (ذهنی)",
+    "goldLesson": 4
+   },
+   {
+    "en": "flock",
+    "fa": "دسته ، گروه- دور هم جمع شدن",
+    "raw": "دسته ، گروه- دور هم جمع شدن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "incandescent lamp",
+    "fa": "المپ رشته ای",
+    "raw": "المپ رشته ای",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "fly",
+    "fa": "پرواز کردن - مگس",
+    "raw": "پرواز کردن - مگس",
+    "dup": false,
+    "gold": "پرواز کردن",
+    "goldLesson": 12
+   },
+   {
+    "en": "inform",
+    "fa": "اطالع دادن - با خیی کردن",
+    "raw": "اطالع دادن - با خیی کردن",
+    "dup": true,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "fond",
+    "fa": "عالقمند، مایل، مشتاق، خواهان",
+    "raw": "عالقمند، مایل، مشتاق، خواهان",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "initial",
+    "fa": "ابتدات ، آغازین، نخستیر",
+    "raw": "ابتدات  ، آغازین، نخستیر",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "force",
+    "fa": "نیر و، اجبار- مجبور کردن",
+    "raw": "نیر و، اجبار- مجبور کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "innovation",
+    "fa": "نوآوری، ابداع",
+    "raw": "نوآوری، ابداع",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "forever",
+    "fa": "برای همیشه",
+    "raw": "برای همیشه",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   }
+  ]
+ },
+ {
+  "grade": 12,
+  "lesson": 3,
+  "prospect": 0,
+  "target": 6,
+  "rows": [
+   {
+    "en": "kinetic",
+    "fa": "، حرکن ر جنبیس",
+    "raw": "، حرکن ر جنبیس",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "organized",
+    "fa": "سازمان یافته، آرایش داده شده",
+    "raw": "سازمان یافته، آرایش داده شده",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "landfill",
+    "fa": "محل دفن زباله- گورستان زباله",
+    "raw": "محل دفن زباله- گورستان زباله",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "organization",
+    "fa": "سازمان، نهاد، ارگان",
+    "raw": "سازمان، نهاد، ارگان",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "last",
+    "fa": "طول کشیدن، دوام یافی- آخرین",
+    "raw": "طول کشیدن، دوام یافی- آخرین",
+    "dup": true,
+    "gold": "گذشته ، قبلی",
+    "goldLesson": 12
+   },
+   {
+    "en": "outlet",
+    "fa": "پریز)(برق",
+    "raw": "پریز)(برق",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "lead",
+    "fa": "راهنمات کردن - هدایت کردن",
+    "raw": "راهنمات  کردن - هدایت کردن",
+    "dup": false,
+    "gold": "راهنمایی کردن",
+    "goldLesson": 12
+   },
+   {
+    "en": "overcome",
+    "fa": "غلبه کردن - برتری یافی",
+    "raw": "غلبه کردن - برتری یافی",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "leader",
+    "fa": "رهیی- راهنما",
+    "raw": "رهیی- راهنما",
+    "dup": false,
+    "gold": "رهبر",
+    "goldLesson": 10
+   },
+   {
+    "en": "lead to",
+    "fa": "منجر شدن به– منتیه شدن به",
+    "raw": "منجر شدن به– منتیه شدن به",
+    "dup": true,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "particularly",
+    "fa": "به ویژه، به طور خاص",
+    "raw": "به ویژه، به طور خاص",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "lettuce",
+    "fa": "کاهو",
+    "raw": "کاهو",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "perfect",
+    "fa": "کامل - تی نقص",
+    "raw": "کامل - تی نقص",
+    "dup": false,
+    "gold": "عالی، کامل، تمام",
+    "goldLesson": 2
+   },
+   {
+    "en": "light",
+    "fa": "نور، چراغ - سبک - روشن کردن",
+    "raw": "نور، چراغ  - سبک - روشن کردن",
+    "dup": false,
+    "gold": "نور، روشنایی؛ چراغ",
+    "goldLesson": 6
+   },
+   {
+    "en": "permanently",
+    "fa": "به طور پایدار، ماندگار",
+    "raw": "به طور پایدار، ماندگار",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "likelihood",
+    "fa": "احتمال",
+    "raw": "احتمال",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "place",
+    "fa": "قرار دادن- مکان",
+    "raw": "قرار دادن- مکان",
+    "dup": false,
+    "gold": "مکان، جا، محل، میدان",
+    "goldLesson": 10
+   },
+   {
+    "en": "line",
+    "fa": "صف، خط، ردیف- به خط شدن",
+    "raw": "صف، خط، ردیف- به خط شدن",
+    "dup": false,
+    "gold": "خط - سطر، ردیف - ریسمان",
+    "goldLesson": 2
+   },
+   {
+    "en": "plug in",
+    "fa": "به برق وصل کردن",
+    "raw": "به برق وصل کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "load",
+    "fa": "بار، محموله - بار کردن",
+    "raw": "بار، محموله - بار کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "politics",
+    "fa": "سیاست",
+    "raw": "سیاست",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "machine",
+    "fa": "دستگاه - ماشیر",
+    "raw": "دستگاه - ماشیر",
+    "dup": false,
+    "gold": "دستگاه - ماشین",
+    "goldLesson": 3
+   },
+   {
+    "en": "pollute",
+    "fa": "آلوده کردن",
+    "raw": "آلوده کردن",
+    "dup": false,
+    "gold": "آلوده کردن، آلودن ساختن",
+    "goldLesson": 6
+   },
+   {
+    "en": "magic",
+    "fa": "جادوت - غیر معمویل",
+    "raw": "جادوت - غیر معمویل",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "pollution",
+    "fa": "آلودیک",
+    "raw": "آلودیک",
+    "dup": false,
+    "gold": "آلودگی",
+    "goldLesson": 6
+   },
+   {
+    "en": "mammals",
+    "fa": "موجودات پستاندار",
+    "raw": "موجودات پستاندار",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "polluted",
+    "fa": "آلوده",
+    "raw": "آلوده",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "margin",
+    "fa": "حاشیه- کناره",
+    "raw": "حاشیه- کناره",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "provide for",
+    "fa": "فراهم کردن برای",
+    "raw": "فراهم کردن برای",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "marketplace",
+    "fa": "بازار، میدان فروش کالا",
+    "raw": "بازار، میدان فروش کاال",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "portable",
+    "fa": "قابل حمل",
+    "raw": "قابل حمل",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "material",
+    "fa": "ماده - عنرص- جنس",
+    "raw": "ماده - عنرص- جنس",
+    "dup": false,
+    "gold": "ماده، جنس، جسم",
+    "goldLesson": 3
+   },
+   {
+    "en": "power",
+    "fa": "نیر و، برق - قدرت",
+    "raw": "نیر و، برق - قدرت",
+    "dup": false,
+    "gold": "قدرت، توان، نیروی برق",
+    "goldLesson": 1
+   },
+   {
+    "en": "meaningful",
+    "fa": "معنا دار، با معن - مهم",
+    "raw": "معنا دار، با معن - مهم",
+    "dup": true,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "practical",
+    "fa": "عمیل - مفید - کاربردی",
+    "raw": "عمیل - مفید - کاربردی",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "mechanical",
+    "fa": "مکانیگ",
+    "raw": "مکانیگ",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "principal",
+    "fa": "مدیر، رئیس - اصیل، عمده، مهم",
+    "raw": "مدیر، رئیس - اصیل، عمده، مهم",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "mix up",
+    "fa": "قایط کردن - گیج شدن",
+    "raw": "قایط کردن - گیج شدن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "principle",
+    "fa": "قانون- اصل",
+    "raw": "قانون- اصل",
+    "dup": true,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "mouth",
+    "fa": "دهان",
+    "raw": "دهان",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "process",
+    "fa": "فرآیند- جریان، پروسه - پردازش کردن",
+    "raw": "فرآیند- جریان، پروسه - پردازش کردن",
+    "dup": true,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "multiplication",
+    "fa": "رص ب، تکثیر ، ازدیاد",
+    "raw": "رص  ب، تکثیر ، ازدیاد",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "produce",
+    "fa": "تولیدکردن",
+    "raw": "تولیدکردن",
+    "dup": false,
+    "gold": "تولید کردن",
+    "goldLesson": 2
+   },
+   {
+    "en": "namely",
+    "fa": "یعن - بدین معن",
+    "raw": "یعن - بدین معن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "product",
+    "fa": "محصول، حاصل، فرآورده",
+    "raw": "محصول، حاصل، فرآورده",
+    "dup": false,
+    "gold": "محصول",
+    "goldLesson": 3
+   },
+   {
+    "en": "natural",
+    "fa": "طبییع، فطری، ذات",
+    "raw": "طبییع، فطری، ذات",
+    "dup": false,
+    "gold": "طبیعی",
+    "goldLesson": 2
+   },
+   {
+    "en": "proverb",
+    "fa": "رص ب المثل",
+    "raw": "رص  ب المثل",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "natural gas",
+    "fa": "گاز طبییع",
+    "raw": "گاز طبییع",
+    "dup": false,
+    "gold": "گاز طبیعی",
+    "goldLesson": 6
+   },
+   {
+    "en": "quotation",
+    "fa": "نقل قول، اقتباس کالم",
+    "raw": "نقل قول، اقتباس کالم",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "nephew",
+    "fa": "پش خواهر، پش برادر",
+    "raw": "پش خواهر، پش برادر",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "radiation",
+    "fa": "اشعه- تابش",
+    "raw": "اشعه- تابش",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "noise-free",
+    "fa": "بدون صدا",
+    "raw": "بدون صدا",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "reach",
+    "fa": "رسیدن ...به- نائل شدن به",
+    "raw": "رسیدن ...به- نائل شدن به",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "nonrenewable",
+    "fa": "تجدید ناپذیر",
+    "raw": "تجدید ناپذیر",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "reasonable",
+    "fa": "منطف ، معقول",
+    "raw": "منطف  ، معقول",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "nuclear",
+    "fa": "هسته ای",
+    "raw": "هسته ای",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "reduce",
+    "fa": "، کم کردن ، کم شدن پائیر آوردن",
+    "raw": "،کم کردن ،کم شدن پائیر  آوردن",
+    "dup": false,
+    "gold": "کاهش دادن، کم کردن",
+    "goldLesson": 6
+   },
+   {
+    "en": "obey",
+    "fa": "اطاعت کردن- پیر وی کردن",
+    "raw": "اطاعت کردن- پیر وی کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "remind",
+    "fa": "یادآوری کردن",
+    "raw": "یادآوری کردن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "obedient",
+    "fa": "مطیع، فرمان بردار",
+    "raw": "مطیع، فرمان بردار",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "remote",
+    "fa": "دور- پرت، دور افتاده",
+    "raw": "دور- پرت، دور افتاده",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "oil",
+    "fa": "نفت - روغن",
+    "raw": "نفت - روغن",
+    "dup": false,
+    "gold": "نفت، روغن",
+    "goldLesson": 6
+   },
+   {
+    "en": "renewable",
+    "fa": "تجدید پذیر",
+    "raw": "تجدید پذیر",
+    "dup": false,
+    "gold": "تجدیدپذیر، نوپدید",
+    "goldLesson": 6
+   },
+   {
+    "en": "opposite",
+    "fa": "برعکس",
+    "raw": "برعکس",
+    "dup": true,
+    "gold": "مخالف، ضد",
+    "goldLesson": 3
+   },
+   {
+    "en": "repeat",
+    "fa": "تکرار کردن",
+    "raw": "تکرار کردن",
+    "dup": false,
+    "gold": "تکرار کردن",
+    "goldLesson": 1
+   },
+   {
+    "en": "other than",
+    "fa": "به جز، به غیر از",
+    "raw": "به جز، به غیر از",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "replace",
+    "fa": "جایگزین کردن - ش جای خود گذاشی",
+    "raw": "جایگزین کردن - ش جای خود گذاشی",
+    "dup": true,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "organic",
+    "fa": "طبییع ، ارگانیک",
+    "raw": "طبییع ، ارگانیک",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   }
+  ]
+ },
+ {
+  "grade": 12,
+  "lesson": 3,
+  "prospect": 0,
+  "target": 6,
+  "rows": [
+   {
+    "en": "result",
+    "fa": "نتیجه- حاصل",
+    "raw": "نتیجه- حاصل",
+    "dup": false,
+    "gold": "نتیجه، پیامد، حاصل",
+    "goldLesson": 3
+   },
+   {
+    "en": "supply",
+    "fa": "فراهم کردن",
+    "raw": "فراهم کردن",
+    "dup": false,
+    "gold": "تأمین کردن؛ عرضه",
+    "goldLesson": 6
+   },
+   {
+    "en": "supporting",
+    "fa": "قانع کننده- مکمل",
+    "raw": "قانع کننده- مکمل",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "revolve",
+    "fa": "چرخیدن، گردش کردن، دور زدن",
+    "raw": "چرخیدن، گردش کردن، دور زدن",
+    "dup": false,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "sweet",
+    "fa": "شیر ین، شیر ین",
+    "raw": "شیر ین، شیر ین",
+    "dup": true,
+    "gold": null,
+    "goldLesson": null
+   },
+   {
+    "en": "rise",
+    "fa": "افزایش ، افزایش حقوق",
+    "raw": "افزایش ، افزایش حقوق",
+    "dup": false,
+    "gold": "بالا آمدن، افزایش یافتن - طلوع کردن",
+    "goldLesson": 3
+   }
+  ]
+ }
+]

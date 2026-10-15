@@ -56,7 +56,7 @@ export const LESSONS_META: LessonMeta[] = [
     tagline: "سلامتی، تکنولوژی و زمان حال کامل",
     color: "amber",
     grade: "یازدهم",
-    vocabCount: 229,
+    vocabCount: 233,
     quizCount: 45,
     grammarCount: 6,
     pairCount: 65,
@@ -80,7 +80,7 @@ export const LESSONS_META: LessonMeta[] = [
     tagline: "قدردانی، ادب و فرهنگ‌های جهان و جملهٔ مجهول",
     color: "violet",
     grade: "دوازدهم",
-    vocabCount: 100,
+    vocabCount: 232,
     quizCount: 45,
     grammarCount: 4,
     pairCount: 34,
@@ -92,7 +92,7 @@ export const LESSONS_META: LessonMeta[] = [
     tagline: "آینده، فناوری و مجهولِ آینده و مدال‌دار",
     color: "sky",
     grade: "دوازدهم",
-    vocabCount: 84,
+    vocabCount: 200,
     quizCount: 45,
     grammarCount: 3,
     pairCount: 30,
@@ -104,7 +104,7 @@ export const LESSONS_META: LessonMeta[] = [
     tagline: "انرژی‌های پاک، محیط زیست و نقل قول",
     color: "teal",
     grade: "دوازدهم",
-    vocabCount: 76,
+    vocabCount: 149,
     quizCount: 45,
     grammarCount: 3,
     pairCount: 29,
@@ -116,7 +116,7 @@ export const LESSONS_META: LessonMeta[] = [
     tagline: "طبیعت، بازیافت و مرورِ حال ساده/استمراری با حروف ربط",
     color: "orange",
     grade: "دهم",
-    vocabCount: 80,
+    vocabCount: 100,
     quizCount: 45,
     grammarCount: 3,
     pairCount: 28,
@@ -128,7 +128,7 @@ export const LESSONS_META: LessonMeta[] = [
     tagline: "حیوانات شگفت‌انگیز، مهاجرت و گذشتهٔ ساده با تفضیلی/عالی",
     color: "indigo",
     grade: "دهم",
-    vocabCount: 72,
+    vocabCount: 140,
     quizCount: 45,
     grammarCount: 3,
     pairCount: 28,
@@ -140,7 +140,7 @@ export const LESSONS_META: LessonMeta[] = [
     tagline: "کتاب‌خوانی، دانشگاه و آینده با will و be going to",
     color: "fuchsia",
     grade: "دهم",
-    vocabCount: 70,
+    vocabCount: 176,
     quizCount: 45,
     grammarCount: 3,
     pairCount: 28,
@@ -153,7 +153,7 @@ export const LESSONS_META: LessonMeta[] = [
     tagline: "الفبا، احوالپرسی، خانواده و مشاغل با فعل to be",
     color: "pink",
     grade: "هفتم",
-    vocabCount: 631,
+    vocabCount: 922,
     quizCount: 40,
     grammarCount: 3,
     pairCount: 24,
@@ -184,7 +184,7 @@ export const LESSONS_META: LessonMeta[] = [
   },
 ];
 
-export const TOTAL_VOCABULARY = 2756;
+export const TOTAL_VOCABULARY = 3566;
 export const LESSON_QUIZ_COUNT = 535;
 export const EXAM_BANK_SIZE = 360;
 export const TOTAL_QUESTIONS = LESSON_QUIZ_COUNT + EXAM_BANK_SIZE; // 895

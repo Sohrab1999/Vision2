@@ -25,22 +25,22 @@ describe("هیرو — کتابِ زنده (Task 111)", () => {
 
   it("حلقهٔ گنجینه درصدِ واقعیِ استور را نشان می‌دهد — aria + ارقامِ فارسی + شمار", () => {
     const known = Object.fromEntries(
-      Array.from({ length: 126 }, (_, i) => [`w${i}`, true])
+      Array.from({ length: 179 }, (_, i) => [`w${i}`, true])
     );
     useStudy.setState({ known });
     render(<HomeHero />);
     expect(screen.getByRole("img", { name: "گنجینهٔ واژگانِ تو: ۵٪" })).toBeInTheDocument();
-    expect(screen.getByText("۱۲۶ از ۲۷۵۶ واژه")).toBeInTheDocument();
+    expect(screen.getByText("۱۷۹ از ۳۵۶۶ واژه")).toBeInTheDocument();
     expect(screen.getByText("گنجینهٔ واژگانِ تو")).toBeInTheDocument();
   });
 
-  it("تازه‌وارد: «۰٪» و «۰ از ۲۷۵۶ واژه» — حلقه بدونِ کمانِ پیشرفت رندر می‌شود", () => {
+  it("تازه‌وارد: «۰٪» و «۰ از ۳۵۶۶ واژه» — حلقه بدونِ کمانِ پیشرفت رندر می‌شود", () => {
     render(<HomeHero />);
     const ring = screen.getByRole("img", { name: "گنجینهٔ واژگانِ تو: ۰٪" });
     expect(ring).toBeInTheDocument();
     // بدونِ کمان: فقط دو circle (زمینه + متن) — کمانِ کهربایی اصلاً نمی‌آید
     expect(ring.querySelectorAll("circle").length).toBe(1);
-    expect(screen.getByText("۰ از ۲۷۵۶ واژه")).toBeInTheDocument();
+    expect(screen.getByText("۰ از ۳۵۶۶ واژه")).toBeInTheDocument();
   });
 
   it("ساختارِ زنده: جلد کلاسِ hero-book دارد و لبهٔ صفحات aria-hidden است", () => {

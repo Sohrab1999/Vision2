@@ -72,10 +72,10 @@ describe("WordOfDay — booklet pair chips", () => {
       expect(screen.queryByTitle("روخوانی جفت")).toBeNull();
       return;
     }
-    for (const p of pairs.slice(0, 3)) {
-      expect(screen.getByTitle("روخوانی جفت")).toBeTruthy(); // at least one
-      break;
-    }
+    // honest count: one speak-button per chip, capped at 3 (r210: today's
+    // word can carry several pairs — getByTitle would die on multiplicity)
+    const chips = screen.getAllByTitle("روخوانی جفت");
+    expect(chips.length).toBe(Math.min(pairs.length, 3));
     const first = pairs[0];
     expect(screen.getByText(first.other, { selector: "[dir='ltr']" })).toBeInTheDocument();
   });

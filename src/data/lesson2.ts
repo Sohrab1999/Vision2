@@ -235,6 +235,11 @@ const vocabulary = [
   W("worth", "ارزش، بها، قیمت - قیمت داشتن", "n"),
   W("worthy", "ارزشمند، شایسته، سزاوار", "adj"),
   W("yet", "هنوز - با وجود این", "adv"),
+  // — واژگان جامع (راند ۲۱۰، گیت‌شده)
+  W("anti- cancer", "ضد شیطان"),
+  W("blood", "خون"),
+  W("disease", "بیماری، مرض"),
+  W("smart phone", "تلفن هوشمند"),
 ];
 
 const conversation = {
