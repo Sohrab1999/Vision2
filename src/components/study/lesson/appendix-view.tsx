@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { ChevronLeft, Library, ListTree, Volume2, SpellCheck2, BookA, Table2, BookOpenCheck, Users } from "lucide-react";
-import { irregularVerbs, vowelPhonemes, consonantPhonemes, abbreviations, partsOfSpeech } from "@/data/appendix";
+import { vowelPhonemes, consonantPhonemes, abbreviations, partsOfSpeech } from "@/data/appendix";
 import {
   WORD_FAMILY_TABLES,
   WORD_FAMILY_TOTAL,
@@ -12,6 +12,7 @@ import {
 import { useStudy } from "@/lib/study-store";
 import { faNum } from "@/lib/study-theme";
 import BookletGrammarView from "./booklet-grammar-view";
+import IrregularVerbsTable from "./irregular-verbs-table";
 import WordFamilyTableCard from "./word-family-table-card";
 
 type SubTab = "verbs" | "phonetics" | "pos" | "abbrev" | "grammar";
@@ -110,36 +111,10 @@ export default function AppendixView({ topicId, posTableId }: { topicId?: string
         />
       )}
 
-      {tab === "verbs" && (
-        <div className="rounded-2xl border c-card p-4">
-          <p className="mb-3 text-[13px] leading-7 text-stone-500">
-            افعال در زبان انگلیسی سه شکل دارند: ۱) شکل ساده ۲) شکل دوم یا گذشته ۳) شکل سوم (اسم مفعول - p.p.).
-            افعال بی‌قاعده به‌جای گرفتن «ed» تغییر شکل می‌دهند و باید حفظ شوند.
-          </p>
-          <div className="max-h-[58vh] overflow-auto rounded-xl border border-stone-200 nice-scroll">
-            <table className="verbs-table w-full text-sm">
-              <thead className="sticky top-0 z-10">
-                <tr className="bg-violet-600 text-white">
-                  <th className="px-3 py-2.5 text-right">معنی فارسی</th>
-                  <th className="px-3 py-2.5">شکل اول (ساده)</th>
-                  <th className="px-3 py-2.5">شکل دوم (گذشته)</th>
-                  <th className="px-3 py-2.5">شکل سوم (p.p.)</th>
-                </tr>
-              </thead>
-              <tbody>
-                {irregularVerbs.map((v, i) => (
-                  <tr key={v.base} className={i % 2 === 0 ? "bg-white" : "bg-stone-50"}>
-                    <td className="px-3 py-2 text-stone-700">{v.fa}</td>
-                    <td className="en-text px-3 py-2 font-bold text-violet-700" dir="ltr">{v.base}</td>
-                    <td className="en-text px-3 py-2 text-stone-600" dir="ltr">{v.past}</td>
-                    <td className="en-text px-3 py-2 font-semibold text-stone-800" dir="ltr">{v.pp}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      )}
+      {/* راند ۲۲۹ — جدولِ افعال بی‌قاعده به کامپوننتِ خودش مهاجرت کرد
+          (الگویِ استخراجِ r223) و جست‌وجوی دوزبانه + فهرستِ الفباییِ پرش
+          + جداکنندهٔ حرف + تلفظِ هر سه ستونِ انگلیسی گرفت. */}
+      {tab === "verbs" && <IrregularVerbsTable />}
 
       {tab === "phonetics" && (
         <div className="space-y-4">
