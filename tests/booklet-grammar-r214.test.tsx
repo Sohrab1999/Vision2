@@ -463,7 +463,10 @@ describe("booklet-grammar-r214 — دادهٔ درسنامهٔ جامع", () => 
 });
 
 describe("booklet-grammar-r214 — رندرِ زیرتابِ ضمیمه", () => {
-  beforeEach(cleanup);
+  beforeEach(() => {
+    cleanup();
+    window.localStorage.clear(); // راند ۲۳۱ — ایزوله‌سازی از جایگاهِ خواندنِ پایدار
+  });
 
   it("۳۱ کارتِ موضوع در سه سرگروه؛ موضوع اول باز است و تیترها دیده می‌شوند", () => {
     renderTab();

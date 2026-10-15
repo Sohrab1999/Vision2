@@ -27,6 +27,7 @@ describe("topic-nav-r226 — ترتیبِ سراسری و چیپِ موقعیت 
 
   beforeEach(() => {
     cleanup();
+    window.localStorage.clear(); // راند ۲۳۱ — ایزوله‌سازی از جایگاهِ خواندنِ پایدار
     vi.mocked(Element.prototype.scrollIntoView).mockClear();
   });
 

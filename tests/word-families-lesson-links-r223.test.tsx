@@ -25,7 +25,10 @@ import type { LessonData } from "@/lib/study-types";
 vi.mock("@/lib/analytics", () => ({ trackEvent: vi.fn() }));
 vi.mock("@/lib/speak", () => ({ speak: vi.fn() }));
 
-beforeEach(cleanup);
+beforeEach(() => {
+  cleanup();
+  window.localStorage.clear(); // راند ۲۳۱ — ایزوله‌سازی از جایگاهِ خواندنِ پایدار
+});
 
 // فیچرِ کمینه — VocabTab فقط id/color/vocabulary را از LessonData می‌خواند
 // (الگویِ vocab-tab-pairs.component.test.tsx)؛ جدولِ پیوندی از کلیدِ id

@@ -8,7 +8,7 @@
 // آزمونکِ خودِ جزوه (تودوزنیِ محلی — هیچ نوشتنی در استورِ یادگیری نیست).
 // ---------------------------------------------------------------------
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import {
   Blocks,
   BookOpenCheck,
@@ -37,6 +37,76 @@ import {
 } from "@/data/booklet-grammar";
 import { useStudy } from "@/lib/study-store";
 import { faNum } from "@/lib/study-theme";
+
+// راند ۲۳۱ — جایگاهِ خواندنِ پایدار (بندِ ① پیشنهادِ ۲۲۸): مجموعهٔ موضوع‌های
+// باز در localStorage فقط برایِ این UI ذخیره می‌شود — چیپِ توپُرِ فهرستِ پرش
+// بینِ نشست‌ها می‌ماند و «باز/بستنِ همه» هم یک انتخابِ ماندگار است؛ هیچ
+// نوشتنی در استورِ یادگیری نیست. localStorage مثلِ یک storeِ خارجیِ واقعی
+// خوانده/نوشته می‌شود (useSyncExternalStore — ایدئومِ useMountedِ خودِ پروژه):
+// بدونِ setState-in-effect و بدونِ mismatchِ هیدریشن (snapshotsِ سرور/کلاینت).
+const BG_OPEN_TOPICS_KEY = "vision2-bg-open-topics";
+
+const BG_DEFAULT_OPEN: Set<string> = new Set([BOOKLET_GRAMMAR_TOPICS[0].id]);
+
+let bgLastRaw: string | null;
+let bgCache: Set<string> = BG_DEFAULT_OPEN;
+const bgListeners = new Set<() => void>();
+
+/** snapshotِ کلاینت — با cacheِ مبتنی بر رشتهٔ خام (پایدار برایِ React) */
+const bgSnapshot = (): Set<string> => {
+  if (typeof window === "undefined") return bgCache;
+  let raw: string | null = null;
+  try {
+    raw = window.localStorage.getItem(BG_OPEN_TOPICS_KEY);
+  } catch {
+    raw = null;
+  }
+  if (raw === bgLastRaw) return bgCache;
+  bgLastRaw = raw;
+  if (raw === null) {
+    // هرگز بازدیدنشده یا JSONِ خراب — پیش‌فرضِ موضوعِ ۱ (انتخابِ کاربر نیست)
+    bgCache = new Set(BG_DEFAULT_OPEN);
+    return bgCache;
+  }
+  try {
+    const ids: unknown = JSON.parse(raw);
+    bgCache = Array.isArray(ids)
+      ? new Set(
+          ids.filter(
+            (id): id is string =>
+              typeof id === "string" && BOOKLET_GRAMMAR_TOPICS.some((t) => t.id === id),
+          ),
+        )
+      : new Set(BG_DEFAULT_OPEN);
+  } catch {
+    bgCache = new Set(BG_DEFAULT_OPEN);
+  }
+  return bgCache;
+};
+
+/** snapshotِ سرور/هیدریشن — همیشه پیش‌فرض؛ مجموعهٔ واقعی بعد از مونت می‌آید */
+const bgServerSnapshot = (): Set<string> => BG_DEFAULT_OPEN;
+
+const subscribeBg = (cb: () => void) => {
+  bgListeners.add(cb);
+  return () => {
+    bgListeners.delete(cb);
+  };
+};
+
+/** نوشتن = localStorage + cache + اطلاع به مشترکین — همگامِ بی‌واسطه */
+const writeBgOpen = (next: Set<string>) => {
+  bgCache = next;
+  if (typeof window !== "undefined") {
+    try {
+      window.localStorage.setItem(BG_OPEN_TOPICS_KEY, JSON.stringify([...next]));
+      bgLastRaw = window.localStorage.getItem(BG_OPEN_TOPICS_KEY);
+    } catch {
+      /* حافظه در دسترس نیست — UI محلی می‌ماند */
+    }
+  }
+  bgListeners.forEach((l) => l());
+};
 
 /** ترتیبِ سرگروه‌ها + عنوانِ هر جزوهٔ مبدأ */
 const SOURCE_ORDER: ("دهم" | "یازدهم" | "دوازدهم")[] = ["دهم", "یازدهم", "دوازدهم"];
@@ -98,12 +168,15 @@ export default function BookletGrammarView({
   const openLessonTab = useStudy((s) => s.openLessonTab);
   const validFocus =
     focusTopicId && BOOKLET_GRAMMAR_TOPICS.some((t) => t.id === focusTopicId);
-  const [open, setOpen] = useState<Set<string>>(
+
+  // راند ۲۳۱ — مجموعهٔ پایدار از localStorage (storeِ خارجی) + ادغامِ لنگرِ
+  // عمیقِ در-مسیر (session-scope): پرشِ عمیق همیشه باز می‌ماند حتی اگر در
+  // مجموعهٔ ذخیره‌شده نباشد. بعد از مونت، snapshotِ واقعی جایگزین می‌شود.
+  const baseOpen = useSyncExternalStore(subscribeBg, bgSnapshot, bgServerSnapshot);
+  const open = useMemo(
     () =>
-      new Set([
-        BOOKLET_GRAMMAR_TOPICS[0].id,
-        ...(validFocus ? [focusTopicId] : []),
-      ]),
+      validFocus && focusTopicId ? new Set(baseOpen).add(focusTopicId) : baseOpen,
+    [baseOpen, validFocus, focusTopicId],
   );
 
   // اسکرولِ تمرکزِ لنگر (راند ۲۲۱) — یک‌بارِ مصرف؛ jsdom scrollIntoView ندارد
@@ -123,25 +196,26 @@ export default function BookletGrammarView({
     // عمداً فقط به لنگر وابسته است — onFocusDone/validFocus در هر رندرِ والد نوسازند
   }, [focusTopicId, validFocus, onFocusDone]);
 
-  const toggle = (id: string) =>
-    setOpen((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
-      return next;
-    });
+  // toggle روی مجموعهٔ ادغام‌شده کار می‌کند — بستنِ موضوعِ متمرکزِ لنگر هم
+  // درست کار می‌کند و نتیجه یک‌جا ذخیره می‌شود (راند ۲۳۱).
+  const toggle = (id: string) => {
+    const next = new Set(open);
+    if (next.has(id)) next.delete(id);
+    else next.add(id);
+    writeBgOpen(next);
+  };
 
   // راند ۲۲۷ — باز/بستنِ همهٔ موضوع‌ها (بندِ ② پیشنهادِ ۲۲۶ — اکشنِ صریحِ
   // مطالعهٔ سراسری): بازکردنِ همه = کلِ بانکِ ۳۲تایی در یک نگاه؛ بستنِ همه
-  // حتیِ موضوعِ اولِ پیش‌باز را هم می‌بندد (پیش‌فرض فقط بارِ اولِ مونت است).
-  const openAll = () => setOpen(new Set(BOOKLET_GRAMMAR_TOPICS.map((t) => t.id)));
-  const closeAll = () => setOpen(new Set());
+  // حتیِ موضوعِ اولِ پیش‌باز را هم می‌بندد. راند ۲۳۱: هر دو انتخاب ماندگارند.
+  const openAll = () => writeBgOpen(new Set(BOOKLET_GRAMMAR_TOPICS.map((t) => t.id)));
+  const closeAll = () => writeBgOpen(new Set());
 
   // ناوبریِ پیوسته (راند ۲۲۶) — «قبلی/بعدی» داخلِ کارت: موضوعِ هدف را در
   // مجموعهٔ بازها می‌گذارد و با rAF به لنگرش می‌رود — کاملاً محلی، بدونِ
   // چرخشِ استور (ضمیمه از قبل مونت است و لنگرِ prop یک‌بارِ مصرف است).
   const navigateToTopic = (id: string) => {
-    setOpen((prev) => new Set(prev).add(id));
+    writeBgOpen(new Set(open).add(id));
     requestAnimationFrame(() => {
       document
         .getElementById(`bg-topic-${id}`)

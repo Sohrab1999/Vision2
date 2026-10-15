@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { ChevronLeft, Library, ListTree, Volume2, SpellCheck2, BookA, Table2, BookOpenCheck, Users } from "lucide-react";
-import { abbreviations, partsOfSpeech } from "@/data/appendix";
+import { partsOfSpeech } from "@/data/appendix";
 import {
   WORD_FAMILY_TABLES,
   WORD_FAMILY_TOTAL,
@@ -14,6 +14,7 @@ import { faNum } from "@/lib/study-theme";
 import BookletGrammarView from "./booklet-grammar-view";
 import IrregularVerbsTable from "./irregular-verbs-table";
 import PhoneticsTable from "./phonetics-table";
+import AbbreviationsTable from "./abbreviations-table";
 import WordFamilyTableCard from "./word-family-table-card";
 
 type SubTab = "verbs" | "phonetics" | "pos" | "abbrev" | "grammar";
@@ -262,23 +263,10 @@ export default function AppendixView({ topicId, posTableId }: { topicId?: string
         );
       })()}
 
-      {tab === "abbrev" && (
-        <div className="rounded-2xl border c-card p-4">
-          <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
-            {abbreviations.map((a) => (
-              <div key={a.sym} className="flex items-center gap-3 rounded-xl border border-stone-100 bg-stone-50 p-3">
-                <span className="en-text flex h-9 w-14 items-center justify-center rounded-lg bg-violet-600 text-[13px] font-black text-white" dir="ltr">
-                  {a.sym}
-                </span>
-                <div>
-                  <div className="en-text text-[12px] text-stone-500" dir="ltr">{a.full}</div>
-                  <div className="text-[13px] font-bold text-stone-700">{a.fa}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
+      {/* راند ۲۳۱ — نشانه‌های اختصاری هم به کامپوننتِ خودش مهاجرت کردند
+          (الگویِ استخراجِ r230) و جست‌وجوی دوزبانه + روخوانیِ شکلِ کامل
+          گرفتند. */}
+      {tab === "abbrev" && <AbbreviationsTable />}
     </div>
   );
 }

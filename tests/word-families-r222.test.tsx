@@ -7,7 +7,10 @@ import { cleanup, fireEvent, render, screen, within } from "@testing-library/rea
 import AppendixView from "@/components/study/lesson/appendix-view";
 import { WORD_FAMILY_TABLES, WORD_FAMILY_TOTAL } from "@/data/word-families";
 
-afterEach(cleanup);
+afterEach(() => {
+  cleanup();
+  window.localStorage.clear(); // راند ۲۳۱ — ایزوله‌سازی از جایگاهِ خواندنِ پایدار
+});
 
 const LATIN = /^[A-Za-z'’\-\. ]*$/;
 const PERSIAN = /[\u0600-\u06FF]/;

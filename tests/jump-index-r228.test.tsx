@@ -36,6 +36,7 @@ describe("jump-index-r228 — فهرستِ پرشِ درسنامهٔ جامع", 
 
   beforeEach(() => {
     cleanup();
+    window.localStorage.clear(); // راند ۲۳۱ — ایزوله‌سازی از جایگاهِ خواندنِ پایدار
     vi.mocked(Element.prototype.scrollIntoView).mockClear();
     useStudy.setState({ view: { type: "appendix" } as never });
   });
