@@ -4,8 +4,14 @@
 // بندِ ② نقشهٔ ۲۲۲ هم همین‌جا فرود آمد: دکمهٔ تلفظ حالا روی هر چهار ستونِ
 // انگلیسیِ غیرتهی است (قبلاً فقط اسم)؛ خانهٔ خالیِ جزوه باز هم خطِ تیرهٔ
 // کم‌رنگ و بدونِ هیچ دکمه‌ای — صفرِ صادقانه دست‌نخورده.
+// راند ۲۲۴ — رفت‌وبرگشتِ ضمیمه↔درس (آینهٔ TopicCard راند ۲۲۱): ریشهٔ کارت
+// لنگرِ DOMِ «wf-table-<id>» با scroll-mt هدرِ چسبان را حمل می‌کند و چیپِ
+// «درسِ مرتبط» در هدر (کارت آکاردئون ندارد — چیپ جای خودش در ردیفِ هدر است)
+// فقط در بسترِ ضمیمه رندر می‌شود؛ درس هرگز به خودش لینک نمی‌شود.
 import type { WordFamilyTable } from "@/data/word-families";
+import { wordFamilyTableId } from "@/data/word-families";
 import { faNum } from "@/lib/study-theme";
+import { GraduationCap } from "lucide-react";
 import SpeakButton from "../shared/speak-button";
 
 /** سلولِ انگلیسیِ غیرتهی: واژه + دکمهٔ تلفظ (راند ۲۲۳ — بندِ ② نقشهٔ ۲۲۲). */
@@ -23,13 +29,34 @@ function EnSpeakCell({ word, bold }: { word: string; bold?: boolean }) {
   );
 }
 
-export default function WordFamilyTableCard({ table }: { table: WordFamilyTable }) {
+export default function WordFamilyTableCard({
+  table,
+  relatedLesson,
+  onOpenLesson,
+}: {
+  table: WordFamilyTable;
+  /** درسِ مرتبط از WF_TABLE_ID_TO_LESSON — نبودش = بی‌چیپ («درس چهارمِ دهم»
+   * در برنامه جای ندارد؛ صفرِ صادقانه). فقط بسترِ ضمیمه پرش می‌کند. */
+  relatedLesson?: number;
+  onOpenLesson?: () => void;
+}) {
   return (
-    <div className="overflow-hidden rounded-2xl border c-card shadow-sm">
+    // لنگرِ اسکرولِ عمیق (r224) — scroll-mt برای فاصلهٔ هدرِ چسبان
+    <div id={`wf-table-${wordFamilyTableId(table)}`} className="scroll-mt-24 overflow-hidden rounded-2xl border c-card shadow-sm">
       <div className="flex flex-wrap items-center gap-2 border-b border-stone-100 bg-stone-50 px-4 py-3">
         <span className="rounded-lg bg-violet-100 px-2 py-1 text-[11.5px] font-black text-violet-700">{table.grade}</span>
         <h3 className="text-[14px] font-extrabold text-stone-800">اجزای کلماتیِ {table.lesson}</h3>
         <span className="en-text text-[11px] font-bold text-stone-500" dir="ltr">{table.vision}</span>
+        {relatedLesson !== undefined && onOpenLesson && (
+          <button
+            onClick={onOpenLesson}
+            title={`همان جدول داخلِ درسِ ${faNum(relatedLesson)} — تبِ واژگان`}
+            className="inline-flex items-center gap-1.5 rounded-lg bg-violet-100 px-2.5 py-1.5 text-[12px] font-extrabold text-violet-700 shadow-sm transition-[background-color,color,border-color,box-shadow] hover:bg-violet-200 dark:bg-violet-900/50 dark:text-violet-200 dark:hover:bg-violet-900/70"
+          >
+            <GraduationCap size={14} />
+            درسِ مرتبط: درسِ {faNum(relatedLesson)}
+          </button>
+        )}
         <span className="c-track-70 ms-auto rounded-full px-2.5 py-1 text-[11px] font-black text-stone-600">
           {faNum(table.families.length)} خانواده
         </span>

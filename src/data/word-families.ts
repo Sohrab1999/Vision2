@@ -412,3 +412,32 @@ export const WORD_FAMILY_LESSON_LINKS: Record<number, WordFamilyTable> = Object.
     return table ? [[Number(idStr), table] as const] : [];
   }),
 );
+
+// ---------------------------------------------------------------------------
+// راند ۲۲۴ — لنگرِ عمیقِ رفت‌وبرگشت برای جدول‌های «اجزای کلماتی» (آینهٔ
+// BG_TOPIC_TO_LESSON راند ۲۲۱ برای لایهٔ واژگان): هر جدول شناسهٔ پایداری دارد
+// (لنگرِ DOM + کلیدِ ناوبری) و نقشهٔ معکوس، از خودِ WORD_FAMILY_LESSON_LINKS
+// مشتق می‌شود (نه دستی) — جدولِ «درس چهارمِ دهم» که در برنامه جای ندارد
+// بیرونِ نقشه می‌ماند (صفرِ صادقانهٔ r223).
+// ---------------------------------------------------------------------------
+
+const WF_GRADE_NUM: Record<WordFamilyTable["grade"], number> = {
+  دهم: 10,
+  یازدهم: 11,
+  دوازدهم: 12,
+};
+
+/** شناسهٔ پایدارِ جدول — «wf-g11-l1» یعنی درسِ اولِ یازدهم؛ مشتق از grade و
+ * lessonِ خودِ جدول، پس شناسه و محتوا هیچ‌وقت از هم جدا نمی‌افتند. */
+export function wordFamilyTableId(t: Pick<WordFamilyTable, "grade" | "lesson">): string {
+  return `wf-g${WF_GRADE_NUM[t.grade]}-l${WF_LESSON_NUM[t.lesson]}`;
+}
+
+/** نقشهٔ معکوسِ شناسهٔ جدول ← درسِ برنامه — مشتق از WORD_FAMILY_LESSON_LINKS:
+ * دقیقاً ۹ مدخل (۱۰ جدول منهایِ «درس چهارمِ دهم» که درسِ برنامه‌ای ندارد). */
+export const WF_TABLE_ID_TO_LESSON: Record<string, number> = Object.fromEntries(
+  Object.entries(WORD_FAMILY_LESSON_LINKS).map(([lid, table]) => [
+    wordFamilyTableId(table),
+    Number(lid),
+  ]),
+);

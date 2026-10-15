@@ -1,9 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Library, Volume2, SpellCheck2, BookA, Table2, BookOpenCheck, Users } from "lucide-react";
 import { irregularVerbs, vowelPhonemes, consonantPhonemes, abbreviations, partsOfSpeech } from "@/data/appendix";
-import { WORD_FAMILY_TABLES, WORD_FAMILY_TOTAL } from "@/data/word-families";
+import {
+  WORD_FAMILY_TABLES,
+  WORD_FAMILY_TOTAL,
+  WF_TABLE_ID_TO_LESSON,
+  wordFamilyTableId,
+} from "@/data/word-families";
+import { useStudy } from "@/lib/study-store";
 import { faNum } from "@/lib/study-theme";
 import BookletGrammarView from "./booklet-grammar-view";
 import WordFamilyTableCard from "./word-family-table-card";
@@ -18,14 +24,36 @@ const subTabs: { key: SubTab; label: string; icon: React.ElementType }[] = [
   { key: "abbrev", label: "نشانه‌های اختصاری", icon: Table2 },
 ];
 
-export default function AppendixView({ topicId }: { topicId?: string }) {
-  const [tab, setTab] = useState<SubTab>("grammar");
+export default function AppendixView({ topicId, posTableId }: { topicId?: string; posTableId?: string }) {
+  // لنگرِ عمیقِ «اجزای کلماتی» (راند ۲۲۴) — شناسهٔ معتبر یعنی ضمیمه مستقیم
+  // روی زیرتبِ pos باز می‌شود؛ نامعتبر بی‌خطر است (رفتارِ سابق: درسنامهٔ جامع).
+  const validPos = !!posTableId && WORD_FAMILY_TABLES.some((t) => wordFamilyTableId(t) === posTableId);
+  const [tab, setTab] = useState<SubTab>(() => (validPos ? "pos" : "grammar"));
   // راند ۲۲۲ — فیلترِ پایهٔ جدول‌های «اجزای کلماتی» در زیرتبِ pos
   const [posGrade, setPosGrade] = useState<"همه" | "دهم" | "یازدهم" | "دوازدهم">("همه");
   // لنگرِ عمیقِ «درسنامهٔ جامع» (راند ۲۲۱) — یک‌بارِ مصرف: BookletGrammarView
   // پس از نخستین تلاشِ اسکرول (موفق یا شناسهٔ نامعتبر) onFocusDone را صدا
   // می‌زند و لنگر پاک می‌شود؛ جابه‌جاییِ بعدیِ بینِ زیرتاب‌ها دوباره پرش نمی‌کند.
   const [focusTopicId, setFocusTopicId] = useState<string | undefined>(topicId);
+  // لنگرِ عمیقِ جدولِ خانوادهٔ واژه‌ها (راند ۲۲۴) — یک‌بارِ مصرفِ همان الگو
+  const [focusPosTableId, setFocusPosTableId] = useState<string | undefined>(
+    () => (validPos ? posTableId : undefined),
+  );
+
+  // اسکرولِ تمرکزِ لنگرِ pos (راند ۲۲۴) — jsdom scrollIntoView ندارد
+  // (فراخوانِ اختیاری) و پس از نخستین تلاش لنگر پاک می‌شود.
+  useEffect(() => {
+    if (!focusPosTableId) return;
+    const raf = requestAnimationFrame(() => {
+      document
+        .getElementById(`wf-table-${focusPosTableId}`)
+        ?.scrollIntoView?.({ behavior: "smooth", block: "start" });
+      setFocusPosTableId(undefined);
+    });
+    return () => cancelAnimationFrame(raf);
+  }, [focusPosTableId]);
+
+  const openLessonTab = useStudy((s) => s.openLessonTab);
 
   return (
     <div className="space-y-4">
@@ -184,10 +212,21 @@ export default function AppendixView({ topicId }: { topicId?: string }) {
 
             {/* راند ۲۲۳: کارتِ جدول به کامپوننتِ مشترک مهاجرت کرد — ضمیمه و
                 تبِ واژگانِ درس‌ها هر دو از یک رندر می‌خورند؛ دکمهٔ تلفظ هم
-                حالا روی هر چهار ستونِ انگلیسیِ غیرتهی است (بندِ ② نقشهٔ ۲۲۲) */}
-            {tables.map((t) => (
-              <WordFamilyTableCard key={`${t.vision}-${t.lesson}`} table={t} />
-            ))}
+                حالا روی هر چهار ستونِ انگلیسیِ غیرتهی است (بندِ ② نقشهٔ ۲۲۲).
+                راند ۲۲۴: چیپِ «درسِ مرتبط» مسیرِ برگشتِ رفت‌وبرگشت است —
+                نقشهٔ معکوس از خودِ WORD_FAMILY_LESSON_LINKS مشتق می‌شود. */}
+            {tables.map((t) => {
+              const tid = wordFamilyTableId(t);
+              const lesson = WF_TABLE_ID_TO_LESSON[tid];
+              return (
+                <WordFamilyTableCard
+                  key={`${t.vision}-${t.lesson}`}
+                  table={t}
+                  relatedLesson={lesson}
+                  onOpenLesson={lesson !== undefined ? () => openLessonTab(lesson, "vocab") : undefined}
+                />
+              );
+            })}
           </div>
         );
       })()}

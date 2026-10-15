@@ -22,7 +22,9 @@ export type View =
   | { type: "lesson"; id: number }
   | { type: "dictionary" }
   | { type: "exam" }
-  | { type: "appendix"; topicId?: string } // topicId — لنگرِ عمیقِ موضوعِ «درسنامهٔ جامع» (راند ۲۲۱)
+  | { type: "appendix"; topicId?: string; posTableId?: string }
+// topicId — لنگرِ عمیقِ موضوعِ «درسنامهٔ جامع» (راند ۲۲۱)
+// posTableId — لنگرِ عمیقِ جدولِ «اجزای کلماتی» (راند ۲۲۴، بازشدن روی زیرتبِ pos)
   | { type: "rush" }
   | { type: "duel" }
   | { type: "listen" }
