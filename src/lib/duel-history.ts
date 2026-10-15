@@ -338,6 +338,60 @@ export function duelHeadToHead(
   return matched > 0 ? digest : null;
 }
 
+// ---------------- رقیبِ همیشگیِ setup نبرد (Task 201 — توصیهٔ ۱۹۴) ----------------
+/**
+ * دفترچه روی صفحهٔ پایان نبرد «کارنامهٔ مقابلِ همین حریف» را نشان می‌دهد
+ * (duelHeadToHead، Task 191) اما صفحهٔ setup هنوز فقط سه شمارندهٔ کلِ W/L/T
+ * دارد — «رقیبِ همیشگی» حلقهٔ گم‌شده است: حریفی که بیشترین نبرد را با او
+ * داشته‌ای، با کارنامهٔ کاملِ مقابلِ او، همین بالای دکمهٔ ساخت اتاق.
+ *
+ * تفاوت با duelTopRival (Task 99): آن‌جا «بیشترین بردِ مقلب» است و نبردهای
+ * باخت/مساوی کلاً بی‌صدا نادیده می‌شوند؛ این‌جا «بیشترین روبه‌روشدنِ کل» است —
+ * حریفی که با او بیشتر مسابقه دادی رقیبِ همیشگی توست حتی اگر بیشتر برندهٔ
+ * تو بوده باشد. کارنامهٔ صادقِ مقابلِ او دقیقاً همان چیزی است که یادگیرنده
+ * پیش از شروعِ نبردِ بعدی می‌خواهد ببیند.
+ *
+ * صداقتِ قرارداد (هم‌خانوادهٔ duelHeadToHead):
+ *  • فقط رکوردهای واقعیِ دفترچه (سقفِ DUEL_HISTORY_CAP) — زیرمجموعهٔ صادق.
+ *  • نامِ فالبکِ «حریف» هرگز کلیدِ تطبیق نیست و رکوردِ ناشناس به هیچ
+ *    رقیبی چسپانده نمی‌شود — دو «حریفِ» گذشته آدم‌های متفاوتی‌اند.
+ *  • گروه‌بندی با normalizeDuelQuery (بی‌فاصله/بی‌نیم‌فاصله) — «امیر محمد»
+ *    و «امیرمحمد» یک رقیب‌اند؛ نامِ نمایشی = اولین دیده‌شده (جدید→قدیم).
+ *  • تساویِ شمارِ نبرد: رقیبی که نبردِ Nامش تازه‌تر است می‌ماند (پیمایشِ
+ *    جدید→قدیم، اولینِ رسیده به سقف — قطعی، همان قاعدهٔ duelTopRival).
+ *  • دفترچهٔ بی‌رکوردِ نام‌دار → null (بلوکِ غایب — نه صفرِ ساختگی).
+ */
+export interface DuelPerennialRival {
+  /** نامِ نمایشیِ رقیب (اولین دیده‌شده در پیمایشِ جدید→قدیم) */
+  opponent: string;
+  /** کلِ نبردهای مقابلِ او در دفترچه (برد+باخت+مساوی) */
+  duels: number;
+  win: number;
+  loss: number;
+  tie: number;
+}
+
+export function duelPerennialRival(records: DuelRecord[]): DuelPerennialRival | null {
+  if (!Array.isArray(records)) return null;
+  let top: DuelPerennialRival | null = null;
+  const byKey = new Map<string, DuelPerennialRival>();
+  for (const r of records) {
+    if (!r || r.opponent === DUEL_ANON_OPPONENT) continue;
+    const key = normalizeDuelQuery(r.opponent);
+    if (!key) continue;
+    const cur = byKey.get(key);
+    if (cur) {
+      cur.duels++;
+      cur[r.outcome]++;
+    } else {
+      byKey.set(key, { opponent: r.opponent, duels: 1, win: r.outcome === "win" ? 1 : 0, loss: r.outcome === "loss" ? 1 : 0, tie: r.outcome === "tie" ? 1 : 0 });
+    }
+    const now = byKey.get(key)!;
+    if (!top || now.duels > top.duels) top = now;
+  }
+  return top;
+}
+
 // ---------------- آمارِ سرعتِ دفترچه (Task 100 — هفتمین خانوادهٔ نشان: «سرعت») ----------------
 // قراردادِ داور (Task 99): امتیاز = درست×۱۰۰ + پاداشِ سرعتِ ۰..۱۰۰ بر پاسخ.
 // پس پاداشِ سرعتِ هر نبرد از همان decomposeDuelScore درمی‌آید — صفر ورودیِ

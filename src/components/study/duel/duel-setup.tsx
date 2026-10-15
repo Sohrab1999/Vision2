@@ -16,6 +16,7 @@ import {
   duelForm,
   duelVerifiedCount,
   duelLedgerStats,
+  duelPerennialRival,
   filterDuelLedger,
   duelLedgerDigest,
   normalizeDuelQuery,
@@ -58,6 +59,10 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
   const form = duelForm(duelHistory, 5);
   // Task 96 — زیرمجموعهٔ صادق: چند نبردِ دفترچه رسیدِ امضاشدهٔ داور دارند
   const verified = duelVerifiedCount(duelHistory);
+  // Task 201 «رقیبِ همیشگی» (توصیهٔ ۱۹۴) — حریفی که بیشترین روبه‌روشدن را با او
+  // داشته‌ای با کارنامهٔ کاملِ مقابلِ او، همین بالای ساخت اتاق. SSR → null
+  // (هم‌الگوی شمارنده‌ها که تا mount صفرند — هیچ عددی دووجهی نمی‌شود)
+  const perennial = mounted ? duelPerennialRival(duelHistory) : null;
   // Task 98 — دفترچهٔ قابلِ کاویدن: جست‌وجوی حریف + فیلترِ نتیجه + فقطِ داورگواه؛
   // Task 100 — «دفترچهٔ مرتب»: سه کلیدِ مرتب‌سازی روی نتیجهٔ فیلتر (ANDِ ابزارها)
   const [query, setQuery] = useState("");
@@ -173,6 +178,36 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
               🤝 مساوی: {faNum(mounted ? duelTies : 0)}
             </span>
           </div>
+
+          {/* Task 201 — رقیبِ همیشگی: بلوکِ غایب — دفترچهٔ بی‌رکوردِ نام‌دار هیچ چیزی رندر نمی‌کند */}
+          {perennial && (
+            <div className="mx-auto mb-7 max-w-md rounded-2xl border border-white/25 bg-black/25 p-4 backdrop-blur-sm">
+              <div className="mb-1 flex items-center justify-center gap-2 text-[13px] font-black">
+                <Target size={15} aria-hidden />
+                رقیبِ همیشگی تو
+              </div>
+              <p className="mb-2 text-[14px] font-black text-white">
+                {perennial.opponent}
+              </p>
+              <div className="flex flex-wrap items-center justify-center gap-2 text-[12px] font-bold">
+                <span className="rounded-lg bg-emerald-500/25 px-2.5 py-1 text-emerald-200">
+                  {faNum(perennial.win)} برد
+                </span>
+                <span className="rounded-lg bg-rose-500/25 px-2.5 py-1 text-rose-200">
+                  {faNum(perennial.loss)} باخت
+                </span>
+                <span className="rounded-lg bg-amber-500/25 px-2.5 py-1 text-amber-200">
+                  {faNum(perennial.tie)} مساوی
+                </span>
+                <span className="rounded-lg border border-white/20 px-2.5 py-1 text-white/85">
+                  از {faNum(perennial.duels)} نبرد
+                </span>
+              </div>
+              <p className="mt-2 text-[10.5px] font-bold text-white/70">
+                طبق دفترچهٔ نبردهای همین دستگاه — دفترچه {faNum(duelHistory.length)} نبردِ آخر را نگه می‌دارد
+              </p>
+            </div>
+          )}
 
           {/* ساخت اتاق */}
           <div className="mx-auto mb-4 max-w-md rounded-2xl border border-white/25 bg-black/25 p-4 backdrop-blur-sm">

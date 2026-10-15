@@ -237,7 +237,7 @@ export default function ProfilePopover() {
       <PopoverTrigger asChild>
         <button
           suppressHydrationWarning
-          className="ml-1 flex min-h-11 shrink-0 items-center gap-2 rounded-full border c-card py-1 pl-1 pr-2.5 transition-[background-color,color,border-color,box-shadow,transform] hover:border-emerald-300 hover:shadow-sm active:scale-[0.96]"
+          className="flex min-h-11 shrink-0 items-center gap-2 rounded-full border c-card py-1 pl-1 pr-2.5 transition-[background-color,color,border-color,box-shadow,transform] hover:border-emerald-300 hover:shadow-sm active:scale-[0.96]"
           aria-label="پروفایل من"
           title="پروفایل من"
         >

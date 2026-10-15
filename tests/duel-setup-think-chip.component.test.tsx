@@ -82,7 +82,8 @@ describe("چیپِ آمارِ فکر روی دفترچه (Task 108)", () => {
     renderSetup();
 
     expect(thinkChips()).toHaveLength(0);
-    expect(screen.getAllByText("سینا")).toHaveLength(1);
+    // ردیف + بلوکِ «رقیبِ همیشگی» (Task 201 — رکوردِ واحد، نام‌دار → بلوک رندر می‌شود)
+    expect(screen.getAllByText("سینا")).toHaveLength(2);
   });
 
   it("دفترچهٔ ترکیبی → فقط رکوردهای thinkدار چیپ دارند (۲ از ۳)", () => {

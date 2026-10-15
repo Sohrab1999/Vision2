@@ -93,7 +93,9 @@ describe("سپرِ داورگواه روی دفترچهٔ نبردها (Task 96)
     expect(shieldChips()).toHaveLength(0);
     expect(footerLine()).not.toBeInTheDocument();
     // خودِ پنل سرِ پا است — دو ردیف با نامِ حریف
-    expect(screen.getAllByText("سینا")).toHaveLength(2);
+    // (+۱ از بلوکِ «رقیبِ همیشگی» — Task 201: هر دو رکورد مقابلِ «سینا»ست
+    // و بلوک هم نامِ او را نشان می‌دهد؛ رندرِ کاملِ بلوک جای دیگری قفل است)
+    expect(screen.getAllByText("سینا")).toHaveLength(3);
   });
 
   it("دو رسید از سه نبرد → دو سپر + پانوشتِ «۲ از ۳» — نیمی‌داورگواه نیمی دیده می‌شود", () => {
