@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { Library, Volume2, SpellCheck2, BookA, Table2 } from "lucide-react";
+import { Library, Volume2, SpellCheck2, BookA, Table2, BookOpenCheck } from "lucide-react";
 import { irregularVerbs, vowelPhonemes, consonantPhonemes, abbreviations, partsOfSpeech } from "@/data/appendix";
+import BookletGrammarView from "./booklet-grammar-view";
 
-type SubTab = "verbs" | "phonetics" | "pos" | "abbrev";
+type SubTab = "verbs" | "phonetics" | "pos" | "abbrev" | "grammar";
 
 const subTabs: { key: SubTab; label: string; icon: React.ElementType }[] = [
+  { key: "grammar", label: "درسنامهٔ جامع", icon: BookOpenCheck },
   { key: "verbs", label: "افعال بی‌قاعده", icon: SpellCheck2 },
   { key: "phonetics", label: "جدول تلفظ (IPA)", icon: Volume2 },
   { key: "pos", label: "اجزای کلام", icon: BookA },
@@ -14,7 +16,7 @@ const subTabs: { key: SubTab; label: string; icon: React.ElementType }[] = [
 ];
 
 export default function AppendixView() {
-  const [tab, setTab] = useState<SubTab>("verbs");
+  const [tab, setTab] = useState<SubTab>("grammar");
 
   return (
     <div className="space-y-4">
@@ -25,7 +27,7 @@ export default function AppendixView() {
           </span>
           <div>
             <h1 className="text-xl font-extrabold text-stone-800">ضمیمهٔ کتاب</h1>
-            <p className="text-[13px] text-stone-500">ابزارهای مرجع جزوه: افعال بی‌قاعده، تلفظ بین‌المللی و واژه‌شناسی</p>
+            <p className="text-[13px] text-stone-500">ابزارهای مرجع جزوه: درسنامهٔ جامع، افعال بی‌قاعده، تلفظ بین‌المللی و واژه‌شناسی</p>
           </div>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -47,6 +49,8 @@ export default function AppendixView() {
           })}
         </div>
       </div>
+
+      {tab === "grammar" && <BookletGrammarView />}
 
       {tab === "verbs" && (
         <div className="rounded-2xl border c-card p-4">
