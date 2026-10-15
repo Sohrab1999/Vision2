@@ -136,7 +136,9 @@ export default function BookletGrammarView() {
   );
 }
 
-function TopicCard({
+/** کارتِ آکاردئونیِ موضوع — هم در زیرتابِ «درسنامهٔ جامع» و هم در تبِ گرامرِ
+ * هر درس (پیوندِ درسنامه ↔ درس، راند ۲۲۰) مصرف می‌شود. */
+export function TopicCard({
   topic,
   index,
   isOpen,
