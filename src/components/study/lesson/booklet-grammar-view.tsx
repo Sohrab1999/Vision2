@@ -8,11 +8,13 @@
 // آزمونکِ خودِ جزوه (تودوزنیِ محلی — هیچ نوشتنی در استورِ یادگیری نیست).
 // ---------------------------------------------------------------------
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Blocks,
   BookOpenCheck,
   ChevronDown,
+  ExternalLink,
+  GraduationCap,
   Keyboard,
   Lightbulb,
   ListOrdered,
@@ -23,10 +25,12 @@ import {
 } from "lucide-react";
 import SpeakButton from "@/components/study/shared/speak-button";
 import {
+  BG_TOPIC_TO_LESSON,
   BOOKLET_GRAMMAR_SOURCES,
   BOOKLET_GRAMMAR_TOPICS,
   type BgTopic,
 } from "@/data/booklet-grammar";
+import { useStudy } from "@/lib/study-store";
 import { faNum } from "@/lib/study-theme";
 
 /** ترتیبِ سرگروه‌ها + عنوانِ هر جزوهٔ مبدأ */
@@ -76,10 +80,43 @@ function TopicTables({ topic }: { topic: BgTopic }) {
   );
 }
 
-export default function BookletGrammarView() {
+export default function BookletGrammarView({
+  focusTopicId,
+  onFocusDone,
+}: {
+  /** لنگرِ عمیق (راند ۲۲۱) — موضوعی که باید باز و در دید باشد (از ضمیمه با
+   * openAppendixTopic می‌آید)؛ نامعتبر باشد نادیده گرفته می‌شود. */
+  focusTopicId?: string;
+  /** یک‌بارِ مصرف — پس از نخستین تلاشِ اسکرول صدا زده می‌شود تا والد لنگر را پاک کند. */
+  onFocusDone?: () => void;
+}) {
+  const openLessonTab = useStudy((s) => s.openLessonTab);
+  const validFocus =
+    focusTopicId && BOOKLET_GRAMMAR_TOPICS.some((t) => t.id === focusTopicId);
   const [open, setOpen] = useState<Set<string>>(
-    () => new Set([BOOKLET_GRAMMAR_TOPICS[0].id]),
+    () =>
+      new Set([
+        BOOKLET_GRAMMAR_TOPICS[0].id,
+        ...(validFocus ? [focusTopicId] : []),
+      ]),
   );
+
+  // اسکرولِ تمرکزِ لنگر (راند ۲۲۱) — یک‌بارِ مصرف؛ jsdom scrollIntoView ندارد
+  // (فراخوانِ اختیاری) و والد هم بعدش لنگر را پاک می‌کند تا پرش تکرار نشود.
+  useEffect(() => {
+    if (!validFocus) {
+      if (focusTopicId) onFocusDone?.();
+      return;
+    }
+    const raf = requestAnimationFrame(() => {
+      document
+        .getElementById(`bg-topic-${focusTopicId}`)
+        ?.scrollIntoView?.({ behavior: "smooth", block: "start" });
+      onFocusDone?.();
+    });
+    return () => cancelAnimationFrame(raf);
+    // عمداً فقط به لنگر وابسته است — onFocusDone/validFocus در هر رندرِ والد نوسازند
+  }, [focusTopicId, validFocus, onFocusDone]);
 
   const toggle = (id: string) =>
     setOpen((prev) => {
@@ -128,6 +165,12 @@ export default function BookletGrammarView() {
               index={BOOKLET_GRAMMAR_TOPICS.indexOf(topic) + 1}
               isOpen={open.has(topic.id)}
               onToggle={toggle}
+              relatedLesson={BG_TOPIC_TO_LESSON[topic.id]}
+              onOpenLesson={
+                BG_TOPIC_TO_LESSON[topic.id] !== undefined
+                  ? () => openLessonTab(BG_TOPIC_TO_LESSON[topic.id], "grammar")
+                  : undefined
+              }
             />
           ))}
         </section>
@@ -137,51 +180,83 @@ export default function BookletGrammarView() {
 }
 
 /** کارتِ آکاردئونیِ موضوع — هم در زیرتابِ «درسنامهٔ جامع» و هم در تبِ گرامرِ
- * هر درس (پیوندِ درسنامه ↔ درس، راند ۲۲۰) مصرف می‌شود. */
+ * هر درس (پیوندِ درسنامه ↔ درس، راند ۲۲۰) مصرف می‌شود. رفت‌وبرگشتِ راند ۲۲۱:
+ * onOpenInAppendix (از درس → ضمیمه با لنگرِ موضوع) و relatedLesson + onOpenLesson
+ * (از ضمیمه → درسِ مرتبط) — هردو اختیاری و بستگی به بسترِ میزبان دارند. */
 export function TopicCard({
   topic,
   index,
   isOpen,
   onToggle,
+  relatedLesson,
+  onOpenLesson,
+  onOpenInAppendix,
 }: {
   topic: BgTopic;
   index: number;
   isOpen: boolean;
   onToggle: (id: string) => void;
+  /** درسِ مرتبط از BG_TOPIC_TO_LESSON — نبودش = بی‌چیپ (بنیان‌های دهم). */
+  relatedLesson?: number;
+  onOpenLesson?: () => void;
+  onOpenInAppendix?: () => void;
 }) {
   return (
-    <div className="rounded-2xl border c-card overflow-hidden">
-      <button
-        onClick={() => onToggle(topic.id)}
-        aria-expanded={isOpen}
-        className="flex w-full items-center gap-3 px-4 py-3 text-right transition-[background-color,color,border-color,box-shadow] hover:bg-stone-50 dark:hover:bg-stone-800/60"
-      >
-        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-violet-100 text-[13px] font-extrabold text-violet-700 dark:bg-violet-900/50 dark:text-violet-300">
-          {faNum(index)}
-        </span>
-        <span className="min-w-0 flex-1">
-          <span className="block text-[15px] font-extrabold text-stone-800 dark:text-stone-100">
-            {topic.title}
-            {topic.titleEn && (
-              <span className="mr-2 text-[12px] font-bold text-stone-500" dir="ltr">
-                {topic.titleEn}
-              </span>
-            )}
+    // لنگرِ اسکرولِ عمیق (r221) — scroll-mt برای فاصلهٔ هدرِ چسبان
+    <div id={`bg-topic-${topic.id}`} className="scroll-mt-24 rounded-2xl border c-card overflow-hidden">
+      {/* هدرِ دو-دکمه‌ای — toggle و ↗ هر دو دکمه‌اند؛ تو‌در‌توسبادی مجاز نیست */}
+      <div className="flex w-full items-center gap-1 py-2 pl-2 pr-2.5">
+        <button
+          onClick={() => onToggle(topic.id)}
+          aria-expanded={isOpen}
+          className="flex min-w-0 flex-1 items-center gap-3 rounded-xl px-2.5 py-1.5 text-right transition-[background-color,color,border-color,box-shadow] hover:bg-stone-50 dark:hover:bg-stone-800/60"
+        >
+          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-violet-100 text-[13px] font-extrabold text-violet-700 dark:bg-violet-900/50 dark:text-violet-300">
+            {faNum(index)}
           </span>
-          <span className="mt-0.5 block text-[12px] font-bold text-violet-600 dark:text-violet-400">
-            {topic.page}
+          <span className="min-w-0 flex-1">
+            <span className="block text-[15px] font-extrabold text-stone-800 dark:text-stone-100">
+              {topic.title}
+              {topic.titleEn && (
+                <span className="mr-2 text-[12px] font-bold text-stone-500" dir="ltr">
+                  {topic.titleEn}
+                </span>
+              )}
+            </span>
+            <span className="mt-0.5 block text-[12px] font-bold text-violet-600 dark:text-violet-400">
+              {topic.page}
+            </span>
           </span>
-        </span>
-        <ChevronDown
-          size={18}
-          className={`shrink-0 text-stone-500 transition-transform duration-200 ${
-            isOpen ? "rotate-180" : ""
-          }`}
-        />
-      </button>
+          <ChevronDown
+            size={18}
+            className={`shrink-0 text-stone-500 transition-transform duration-200 ${
+              isOpen ? "rotate-180" : ""
+            }`}
+          />
+        </button>
+        {onOpenInAppendix && (
+          <button
+            onClick={onOpenInAppendix}
+            aria-label={`نمایشِ «${topic.title}» در ضمیمه`}
+            title="همان موضوع در ضمیمه — درسنامهٔ جامع"
+            className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white text-violet-600 shadow-sm transition-[background-color,color,border-color,box-shadow] hover:bg-violet-100 dark:bg-violet-900/40 dark:text-violet-300 dark:hover:bg-violet-900/70"
+          >
+            <ExternalLink size={14} />
+          </button>
+        )}
+      </div>
 
       {isOpen && (
         <div className="space-y-4 border-t border-stone-100 px-4 py-4 dark:border-stone-700">
+          {relatedLesson !== undefined && onOpenLesson && (
+            <button
+              onClick={onOpenLesson}
+              className="inline-flex items-center gap-1.5 rounded-lg bg-violet-100 px-2.5 py-1.5 text-[12px] font-extrabold text-violet-700 shadow-sm transition-[background-color,color,border-color,box-shadow] hover:bg-violet-200 dark:bg-violet-900/50 dark:text-violet-200 dark:hover:bg-violet-900/70"
+            >
+              <GraduationCap size={14} />
+              درسِ مرتبط: درسِ {faNum(relatedLesson)}
+            </button>
+          )}
           {topic.intro && (
             <p className="text-[14px] leading-8 text-stone-700 dark:text-stone-300">
               {topic.intro}

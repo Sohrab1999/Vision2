@@ -14,6 +14,9 @@ export interface NavigationSlice {
   goHome: () => void;
   openLesson: (id: number, flashIntent?: FlashIntent) => void;
   openLessonTab: (id: number, tab: LessonTab) => void;
+  /** رفت‌وبرگشتِ درسنامه ↔ ضمیمه (راند ۲۲۱): ضمیمه را با لنگرِ موضوعِ
+   * «درسنامهٔ جامع» باز می‌کند — کارتِ همان موضوع باز و در دیدِ اسکرول می‌شود. */
+  openAppendixTopic: (topicId: string) => void;
   setView: (v: View) => void;
   setLessonTab: (t: LessonTab) => void;
   consumeFlashIntent: () => void;
@@ -38,6 +41,8 @@ export const createNavigationSlice: StateCreator<StudyStore, [], [], NavigationS
       };
     }),
   openLessonTab: (id, tab) => set({ view: { type: "lesson", id }, lessonTab: tab }),
+  openAppendixTopic: (topicId) =>
+    set({ view: { type: "appendix", topicId }, flashIntent: "none" }),
   setView: (v) => set({ view: v, flashIntent: "none" }),
   setLessonTab: (t) => set({ lessonTab: t }),
   consumeFlashIntent: () => set({ flashIntent: "none" }),

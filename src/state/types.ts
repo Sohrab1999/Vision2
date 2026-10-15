@@ -22,7 +22,7 @@ export type View =
   | { type: "lesson"; id: number }
   | { type: "dictionary" }
   | { type: "exam" }
-  | { type: "appendix" }
+  | { type: "appendix"; topicId?: string } // topicId — لنگرِ عمیقِ موضوعِ «درسنامهٔ جامع» (راند ۲۲۱)
   | { type: "rush" }
   | { type: "duel" }
   | { type: "listen" }

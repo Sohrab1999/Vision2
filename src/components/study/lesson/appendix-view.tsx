@@ -15,8 +15,12 @@ const subTabs: { key: SubTab; label: string; icon: React.ElementType }[] = [
   { key: "abbrev", label: "نشانه‌های اختصاری", icon: Table2 },
 ];
 
-export default function AppendixView() {
+export default function AppendixView({ topicId }: { topicId?: string }) {
   const [tab, setTab] = useState<SubTab>("grammar");
+  // لنگرِ عمیقِ «درسنامهٔ جامع» (راند ۲۲۱) — یک‌بارِ مصرف: BookletGrammarView
+  // پس از نخستین تلاشِ اسکرول (موفق یا شناسهٔ نامعتبر) onFocusDone را صدا
+  // می‌زند و لنگر پاک می‌شود؛ جابه‌جاییِ بعدیِ بینِ زیرتاب‌ها دوباره پرش نمی‌کند.
+  const [focusTopicId, setFocusTopicId] = useState<string | undefined>(topicId);
 
   return (
     <div className="space-y-4">
@@ -50,7 +54,12 @@ export default function AppendixView() {
         </div>
       </div>
 
-      {tab === "grammar" && <BookletGrammarView />}
+      {tab === "grammar" && (
+        <BookletGrammarView
+          focusTopicId={focusTopicId}
+          onFocusDone={() => setFocusTopicId(undefined)}
+        />
+      )}
 
       {tab === "verbs" && (
         <div className="rounded-2xl border c-card p-4">

@@ -100,6 +100,16 @@ export const LESSON_BG_LINKS: Record<number, string[]> = {
   6: ["bg-past-perfect", "bg-past-modals"],
 };
 
+/** پیوندِ معکوسِ درسنامه ↔ درس (راند ۲۲۱) — از LESSON_BG_LINKS مشتق می‌شود:
+ * هر موضوعِ درسنامه به «درسِ مرتبط» خودش در برنامه. موضوع‌هایی که کلیدشان
+ * اینجا نیست (بنیان‌های پایهٔ دهم — صفرِ صادقانهٔ ۲۲۰) هیچ چیپی می‌گیرند.
+ * جهتِ خواندن: [شناسهٔ موضوع] → شناسهٔ درس. */
+export const BG_TOPIC_TO_LESSON: Record<string, number> = Object.fromEntries(
+  Object.entries(LESSON_BG_LINKS).flatMap(([lessonId, topicIds]) =>
+    topicIds.map((tid) => [tid, Number(lessonId)]),
+  ),
+);
+
 export const BOOKLET_GRAMMAR_TOPICS: BgTopic[] = [
   // ------------------------------------------------ p۲۲ — بنیان‌ها
   {

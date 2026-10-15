@@ -9,6 +9,7 @@ import {
   LESSON_BG_LINKS,
   type BgTopic,
 } from "@/data/booklet-grammar";
+import { useStudy } from "@/lib/study-store";
 import { TopicCard } from "@/components/study/lesson/booklet-grammar-view";
 
 export default function GrammarTab({ lesson }: { lesson: LessonData }) {
@@ -41,9 +42,12 @@ export default function GrammarTab({ lesson }: { lesson: LessonData }) {
  * برای گرامرِ این درس تدریس کرده، با همان کارت‌های آکاردئونیِ ضمیمه (جدول‌ها،
  * مثال‌های شنیداری، آزمونک‌ها، تمرینِ تایپی و جمله‌سازی — همه محلی، هیچ
  * نوشتنی در استورِ یادگیری نیست). پیش‌فرضِ همه بسته؛ پیوند فقط برای
- * درس‌هایی که شاهدِ خودِ جزوه دارد (LESSON_BG_LINKS). */
+ * درس‌هایی که شاهدِ خودِ جزوه دارد (LESSON_BG_LINKS).
+ * رفت‌وبرگشتِ راند ۲۲۱: دکمهٔ ↗ هر کارت همان موضوع را با لنگرِ عمیق
+ * (باز + اسکرول) در ضمیمه باز می‌کند و چیپِ «درسِ مرتبط»ِ ضمیمه برمی‌گرداند. */
 function LinkedBookletTopics({ lesson }: { lesson: LessonData }) {
   const [open, setOpen] = useState<Set<string>>(() => new Set());
+  const openAppendixTopic = useStudy((s) => s.openAppendixTopic);
   const ids = LESSON_BG_LINKS[lesson.id] ?? [];
   if (!ids.length) return null;
   const topics = ids
@@ -74,7 +78,8 @@ function LinkedBookletTopics({ lesson }: { lesson: LessonData }) {
           مطالبی که جزوهٔ جامعِ پایهٔ {lesson.grade} برای گرامرِ همین درس تدریس
           کرده — دقیقاً با نکته‌ها، جدول‌ها و مثال‌های خودِ جزوه. هر موضوع را باز
           کن: مثال‌ها را می‌شنوی و آزمونک‌ها، تمرینِ تایپی و جمله‌سازی با کلیدِ
-          خودِ جزوه همین‌جا کار می‌کنند (نسخهٔ کامل: ضمیمه ← «درسنامهٔ جامع»).
+          خودِ جزوه همین‌جا کار می‌کنند؛ دکمهٔ ↗ گوشهٔ هر کارت هم همان موضوع را
+          باز و ردیف‌شده در «ضمیمه ← درسنامهٔ جامع» نشان می‌دهد.
         </p>
         {topics.map((topic) => (
           <TopicCard
@@ -83,6 +88,7 @@ function LinkedBookletTopics({ lesson }: { lesson: LessonData }) {
             index={BOOKLET_GRAMMAR_TOPICS.indexOf(topic) + 1}
             isOpen={open.has(topic.id)}
             onToggle={toggle}
+            onOpenInAppendix={() => openAppendixTopic(topic.id)}
           />
         ))}
       </div>
