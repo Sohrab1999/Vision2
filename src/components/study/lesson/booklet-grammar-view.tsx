@@ -21,6 +21,7 @@ import {
   Keyboard,
   Lightbulb,
   ListOrdered,
+  ListTree,
   MoveLeft,
   PencilLine,
   RotateCcw,
@@ -148,6 +149,11 @@ export default function BookletGrammarView({
     });
   };
 
+  // راند ۲۲۸ — فهرستِ پرش (بندِ ② پیشنهادِ ۲۲۷): پنلِ «برو به هر موضوع…»
+  // کنارِ باز/بستنِ همه — چیپِ هر موضوع با شمارهٔ سراسری و نشانِ باز/بسته؛
+  // کلیک = همان navigateToTopicِ محلی (بازکردنِ هدف + اسکرول) + بستنِ پنل.
+  const [jumpOpen, setJumpOpen] = useState(false);
+
   // گروه‌بندی بر اساس جزوهٔ مبدأ — راند ۲۱۵ (شماره‌گذاریِ سراسری = جایگاه در آرایه)
   const groups = SOURCE_ORDER.map((src) => ({
     src,
@@ -162,7 +168,9 @@ export default function BookletGrammarView({
             <BookOpenCheck size={17} className="text-violet-600 dark:text-violet-400" />
             درسنامهٔ جامع — از خودِ جزوه‌های جامع
           </h2>
-          {/* راند ۲۲۷ — باز/بستنِ همهٔ موضوع‌ها */}
+          {/* راند ۲۲۷ — باز/بستنِ همهٔ موضوع‌ها + راند ۲۲۸ — فهرستِ پرش
+              (دکمهٔ پرش بیرونِ گروهِ دودکمه‌ای است — قراردادِ گاردِ r227) */}
+          <div className="flex flex-wrap items-center gap-1.5">
           <div className="flex items-center gap-1.5" role="group" aria-label="باز و بستن همهٔ موضوع‌ها">
             <button
               type="button"
@@ -183,6 +191,74 @@ export default function BookletGrammarView({
               بستن همه
             </button>
           </div>
+          <button
+            type="button"
+            onClick={() => setJumpOpen((v) => !v)}
+            aria-expanded={jumpOpen}
+            aria-controls="bg-jump-index"
+            title="پرشِ سریع به هر موضوع — با شمارهٔ جایگاه و نشانِ باز/بسته"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-white px-2.5 py-1.5 text-[12px] font-extrabold text-stone-600 shadow-sm transition-[background-color,color,border-color,box-shadow] hover:bg-stone-100 dark:bg-violet-900/40 dark:text-violet-200 dark:hover:bg-violet-900/70"
+          >
+            <ListTree size={13} />
+            فهرست پرش
+          </button>
+          </div>
+          {/* راند ۲۲۸ — پنلِ فهرستِ پرش: ۳۲ چیپ در ۳ گروهِ جزوه — نشانِ توپُر =
+              موضوعِ باز، یک نگاه، کلِ نقشهٔ درسنامه؛ کلیک = پرشِ محلی + بستن */}
+          {jumpOpen && (
+            <div
+              id="bg-jump-index"
+              role="group"
+              aria-label="فهرست پرش موضوع‌های درسنامهٔ جامع"
+              className="mt-3 mb-1 rounded-xl border border-stone-200 bg-stone-50 p-3 dark:border-stone-700 dark:bg-stone-800/60"
+            >
+              {groups.map((g) => (
+                <div key={g.src} className="mb-3 last:mb-0">
+                  {/* div نه h4 — پنل پیش از نخستین h3 است و قراردادِ outline (P7) پرشِ h2→h4 را نمی‌پذیرد */}
+                  <div className="mb-1.5 flex items-center gap-1.5 text-[11.5px] font-extrabold text-stone-500 dark:text-stone-300">
+                    <span className="rounded-md bg-violet-100 px-1.5 py-0.5 text-[11px] font-black text-violet-700 dark:bg-violet-900/50 dark:text-violet-300">
+                      {BOOKLET_GRAMMAR_SOURCES[g.src]}
+                    </span>
+                    {faNum(g.topics.length)} موضوع
+                  </div>
+                  <div className="grid gap-1.5 sm:grid-cols-2 lg:grid-cols-3">
+                    {g.topics.map((t) => {
+                      const gi = BOOKLET_GRAMMAR_TOPICS.indexOf(t);
+                      const isOpen = open.has(t.id);
+                      return (
+                        <button
+                          key={t.id}
+                          type="button"
+                          onClick={() => {
+                            navigateToTopic(t.id);
+                            setJumpOpen(false);
+                          }}
+                          data-open={isOpen}
+                          aria-label={`پرش به موضوعِ ${faNum(gi + 1)}: ${t.title}`}
+                          title={`${t.page} — ${isOpen ? "باز است" : "بسته است"}`}
+                          className="flex min-w-0 items-center gap-2 rounded-lg border border-stone-200 bg-white px-2 py-1.5 text-right transition-[background-color,border-color,color,box-shadow] hover:border-violet-300 hover:bg-violet-50 dark:border-stone-700 dark:bg-stone-900 dark:hover:border-violet-700 dark:hover:bg-violet-900/30"
+                        >
+                          <span
+                            className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-md text-[11px] font-black ${
+                              isOpen
+                                ? "bg-violet-600 text-white shadow-sm"
+                                : "bg-violet-100 text-violet-700 dark:bg-violet-900/50 dark:text-violet-300"
+                            }`}
+                          >
+                            {faNum(gi + 1)}
+                          </span>
+                          <span className="min-w-0 flex-1 truncate text-[12px] font-bold text-stone-700 dark:text-stone-200">
+                            {t.title}
+                          </span>
+                          <ChevronLeft size={13} className="shrink-0 text-stone-300 dark:text-stone-600" />
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
         <p className="mt-1 text-[13px] leading-7 text-stone-600 dark:text-stone-300">
           {faNum(BOOKLET_GRAMMAR_TOPICS.length)} موضوع در {faNum(groups.length)} جزوه:

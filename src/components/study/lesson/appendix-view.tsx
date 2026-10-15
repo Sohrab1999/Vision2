@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Library, Volume2, SpellCheck2, BookA, Table2, BookOpenCheck, Users } from "lucide-react";
+import { ChevronLeft, Library, ListTree, Volume2, SpellCheck2, BookA, Table2, BookOpenCheck, Users } from "lucide-react";
 import { irregularVerbs, vowelPhonemes, consonantPhonemes, abbreviations, partsOfSpeech } from "@/data/appendix";
 import {
   WORD_FAMILY_TABLES,
@@ -31,6 +31,10 @@ export default function AppendixView({ topicId, posTableId }: { topicId?: string
   const [tab, setTab] = useState<SubTab>(() => (validPos ? "pos" : "grammar"));
   // راند ۲۲۲ — فیلترِ پایهٔ جدول‌های «اجزای کلماتی» در زیرتبِ pos
   const [posGrade, setPosGrade] = useState<"همه" | "دهم" | "یازدهم" | "دوازدهم">("همه");
+  // راند ۲۲۸ — فهرستِ پرشِ جدول‌ها (بندِ ② پیشنهادِ ۲۲۷): پنلِ چیپ‌ها همیشه از
+  // «فهرستِ رندرشده» (فیلترِ فعال) — همان قراردادِ ناوبریِ r227؛ کلیک =
+  // اسکرولِ محلی به لنگر + بستنِ پنل، بدونِ چرخشِ استور.
+  const [posJumpOpen, setPosJumpOpen] = useState(false);
   // لنگرِ عمیقِ «درسنامهٔ جامع» (راند ۲۲۱) — یک‌بارِ مصرف: BookletGrammarView
   // پس از نخستین تلاشِ اسکرول (موفق یا شناسهٔ نامعتبر) onFocusDone را صدا
   // می‌زند و لنگر پاک می‌شود؛ جابه‌جاییِ بعدیِ بینِ زیرتاب‌ها دوباره پرش نمی‌کند.
@@ -203,23 +207,72 @@ export default function AppendixView({ topicId, posTableId }: { topicId?: string
                 و برای ترجمه و فهمِ زبان بسیار مفید می‌باشند.» ترتیبِ ستون‌ها و محتوا عینِ جزوه است؛ خانهٔ خالیِ جزوه با خطِ تیره
                 رندر می‌شود و چیزی به‌جایش ساخته نشده است.
               </p>
-              <div className="mt-3 flex flex-wrap items-center gap-2" role="group" aria-label="فیلتر پایهٔ جدول‌های اجزای کلماتی">
-                {(["همه", "دهم", "یازدهم", "دوازدهم"] as const).map((g) => (
-                  <button
-                    key={g}
-                    onClick={() => setPosGrade(g)}
-                    aria-pressed={posGrade === g}
-                    className={`rounded-full px-3.5 py-2 text-[12px] font-bold transition-[background-color,color,box-shadow] ${
-                      posGrade === g
-                        ? "bg-violet-600 text-white shadow-sm"
-                        : "bg-stone-100 text-stone-500 hover:bg-stone-200 hover:text-stone-700"
-                    }`}
-                  >
-                    {g}
-                    <span className="ms-1.5 text-[10.5px] font-black opacity-80">{faNum(gradeCounts[g])}</span>
-                  </button>
-                ))}
+              <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
+                <div className="flex flex-wrap items-center gap-2" role="group" aria-label="فیلتر پایهٔ جدول‌های اجزای کلماتی">
+                  {(["همه", "دهم", "یازدهم", "دوازدهم"] as const).map((g) => (
+                    <button
+                      key={g}
+                      onClick={() => setPosGrade(g)}
+                      aria-pressed={posGrade === g}
+                      className={`rounded-full px-3.5 py-2 text-[12px] font-bold transition-[background-color,color,box-shadow] ${
+                        posGrade === g
+                          ? "bg-violet-600 text-white shadow-sm"
+                          : "bg-stone-100 text-stone-500 hover:bg-stone-200 hover:text-stone-700"
+                      }`}
+                    >
+                      {g}
+                      <span className="ms-1.5 text-[10.5px] font-black opacity-80">{faNum(gradeCounts[g])}</span>
+                    </button>
+                  ))}
+                </div>
+                {/* راند ۲۲۸ — فهرستِ پرشِ جدول‌ها (بیرونِ گروهِ فیلتر — قراردادِ گارد) */}
+                <button
+                  type="button"
+                  onClick={() => setPosJumpOpen((v) => !v)}
+                  aria-expanded={posJumpOpen}
+                  aria-controls="pos-jump-index"
+                  title="پرشِ سریع به هر جدول — با شمارهٔ جایگاه و شمارشِ خانواده‌ها"
+                  className="inline-flex items-center gap-1.5 rounded-lg bg-white px-2.5 py-1.5 text-[12px] font-extrabold text-stone-600 shadow-sm transition-[background-color,color,border-color,box-shadow] hover:bg-stone-100 dark:bg-violet-900/40 dark:text-violet-200 dark:hover:bg-violet-900/70"
+                >
+                  <ListTree size={13} />
+                  فهرست جدول‌ها
+                </button>
               </div>
+              {posJumpOpen && (
+                <div
+                  id="pos-jump-index"
+                  role="group"
+                  aria-label="فهرست پرش جدول‌های اجزای کلماتی"
+                  className="mt-2 rounded-xl border border-stone-200 bg-stone-50 p-3 dark:border-stone-700 dark:bg-stone-800/60"
+                >
+                  <div className="grid gap-1.5 sm:grid-cols-2 lg:grid-cols-3">
+                    {tables.map((t, ti) => (
+                      <button
+                        key={wordFamilyTableId(t)}
+                        type="button"
+                        onClick={() => {
+                          navigateToTable(wordFamilyTableId(t));
+                          setPosJumpOpen(false);
+                        }}
+                        aria-label={`پرش به جدولِ ${faNum(ti + 1)}: ${t.grade} · ${t.lesson}`}
+                        title={`${t.grade} · ${t.lesson} — ${faNum(t.families.length)} خانوادهٔ واژه`}
+                        className="flex min-w-0 items-center gap-2 rounded-lg border border-stone-200 bg-white px-2 py-1.5 text-right transition-[background-color,border-color,color,box-shadow] hover:border-violet-300 hover:bg-violet-50 dark:border-stone-700 dark:bg-stone-900 dark:hover:border-violet-700 dark:hover:bg-violet-900/30"
+                      >
+                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-violet-100 text-[11px] font-black text-violet-700 shadow-sm dark:bg-violet-900/50 dark:text-violet-300">
+                          {faNum(ti + 1)}
+                        </span>
+                        <span className="min-w-0 flex-1 truncate text-[12px] font-bold text-stone-700 dark:text-stone-200">
+                          {t.grade} · {t.lesson}
+                        </span>
+                        <span className="shrink-0 text-[10.5px] font-black text-stone-500">
+                          {faNum(t.families.length)} خانواده
+                        </span>
+                        <ChevronLeft size={13} className="shrink-0 text-stone-300 dark:text-stone-600" />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* راند ۲۲۳: کارتِ جدول به کامپوننتِ مشترک مهاجرت کرد — ضمیمه و
