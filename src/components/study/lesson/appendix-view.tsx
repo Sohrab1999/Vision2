@@ -6,7 +6,7 @@ import { irregularVerbs, vowelPhonemes, consonantPhonemes, abbreviations, partsO
 import { WORD_FAMILY_TABLES, WORD_FAMILY_TOTAL } from "@/data/word-families";
 import { faNum } from "@/lib/study-theme";
 import BookletGrammarView from "./booklet-grammar-view";
-import SpeakButton from "../shared/speak-button";
+import WordFamilyTableCard from "./word-family-table-card";
 
 type SubTab = "verbs" | "phonetics" | "pos" | "abbrev" | "grammar";
 
@@ -182,58 +182,11 @@ export default function AppendixView({ topicId }: { topicId?: string }) {
               </div>
             </div>
 
-            {tables.map((t, ti) => (
-              <div key={`${t.vision}-${t.lesson}`} className="overflow-hidden rounded-2xl border c-card shadow-sm">
-                <div className="flex flex-wrap items-center gap-2 border-b border-stone-100 bg-stone-50 px-4 py-3">
-                  <span className="rounded-lg bg-violet-100 px-2 py-1 text-[11.5px] font-black text-violet-700">{t.grade}</span>
-                  <h3 className="text-[14px] font-extrabold text-stone-800">اجزای کلماتیِ {t.lesson}</h3>
-                  <span className="en-text text-[11px] font-bold text-stone-500" dir="ltr">{t.vision}</span>
-                  <span className="c-track-70 ms-auto rounded-full px-2.5 py-1 text-[11px] font-black text-stone-600">
-                    {faNum(t.families.length)} خانواده
-                  </span>
-                </div>
-                <div className="max-h-[52vh] overflow-auto nice-scroll">
-                  <table className="w-full text-sm">
-                    <thead className="sticky top-0 z-10">
-                      <tr className="bg-violet-600 text-white">
-                        <th className="px-3 py-2.5 text-right text-[12px]">معنی</th>
-                        <th className="en-text px-3 py-2.5 text-[12px]" dir="ltr">Noun</th>
-                        <th className="en-text px-3 py-2.5 text-[12px]" dir="ltr">Verb</th>
-                        <th className="en-text px-3 py-2.5 text-[12px]" dir="ltr">Adjective</th>
-                        <th className="en-text px-3 py-2.5 text-[12px]" dir="ltr">Adverb</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {t.families.map((f, fi) => (
-                        <tr key={`${t.vision}-${t.lesson}-${fi}`} className={fi % 2 === 0 ? "bg-white" : "bg-stone-50"}>
-                          <td className="px-3 py-2 text-[12.5px] font-semibold text-stone-700">
-                            {f.fa || <span className="font-normal text-stone-300">—</span>}
-                          </td>
-                          <td className="px-3 py-2">
-                            {f.noun ? (
-                              <span className="flex items-center gap-1.5">
-                                <span className="en-text font-black text-violet-700" dir="ltr">{f.noun}</span>
-                                <SpeakButton text={f.noun} size="sm" />
-                              </span>
-                            ) : (
-                              <span className="text-stone-300">—</span>
-                            )}
-                          </td>
-                          <td className="en-text px-3 py-2 text-[12.5px] text-stone-600" dir="ltr">
-                            {f.verb || <span className="text-stone-300">—</span>}
-                          </td>
-                          <td className="en-text px-3 py-2 text-[12.5px] text-stone-600" dir="ltr">
-                            {f.adjective || <span className="text-stone-300">—</span>}
-                          </td>
-                          <td className="en-text px-3 py-2 text-[12.5px] text-stone-600" dir="ltr">
-                            {f.adverb || <span className="text-stone-300">—</span>}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+            {/* راند ۲۲۳: کارتِ جدول به کامپوننتِ مشترک مهاجرت کرد — ضمیمه و
+                تبِ واژگانِ درس‌ها هر دو از یک رندر می‌خورند؛ دکمهٔ تلفظ هم
+                حالا روی هر چهار ستونِ انگلیسیِ غیرتهی است (بندِ ② نقشهٔ ۲۲۲) */}
+            {tables.map((t) => (
+              <WordFamilyTableCard key={`${t.vision}-${t.lesson}`} table={t} />
             ))}
           </div>
         );

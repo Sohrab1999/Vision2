@@ -117,12 +117,13 @@ describe("رندرِ زیرتبِ «اجزای کلام» — جدول‌های 
     expect(screen.getByText("وجود مطلق")).toBeTruthy();
   });
 
-  it("دکمهٔ تلفظِ اسمِ خانواده با aria-labelِ فارسی رندر می‌شود", () => {
+  it("دکمه‌های تلفظِ ردیفِ خانواده — از راند ۲۲۳ روی همهٔ ستون‌های انگلیسیِ غیرتهی (agreement: ۳ دکمه؛ قیدِ خالی دکمه ندارد)", () => {
     render(<AppendixView />);
     fireEvent.click(screen.getByRole("button", { name: "اجزای کلام" }));
     const agreement = screen.getByText("agreement");
     const row = agreement.closest("tr") as HTMLElement;
-    expect(within(row).getByRole("button", { name: "روخوانی متن انگلیسی" })).toBeTruthy();
+    // agreement: اسم + فعل + صفت دکمه دارند؛ قیدِ خالیِ جزوه فقط خطِ تیره است
+    expect(within(row).getAllByRole("button", { name: "روخوانی متن انگلیسی" })).toHaveLength(3);
   });
 
   it("خانهٔ خالیِ صادقانه با خطِ تیره رندر می‌شود (ردیفِ proper)", () => {

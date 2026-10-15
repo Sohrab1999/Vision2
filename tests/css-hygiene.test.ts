@@ -835,7 +835,8 @@ describe("globals.css track semantic layer (stone-200 alphas — Task 90)", () =
     };
     walk(resolve(process.cwd(), "src"));
     // Task 103: weekly-report +۱ — مسیرِ نوارِ نرخِ بردِ نبردها (زیرِ همان retargetِ report-digest)
-    // راند ۲۲۲: appendix-view +۱ — چیپِ شمارشِ خانوادهٔ واژه‌های «اجزای کلماتی»
+    // راند ۲۲۲: چیپِ شمارشِ خانوادهٔ واژه‌های «اجزای کلماتی» +۱
+    // راند ۲۲۳: همان چیپ با کارتِ مشترکِ جدول به word-family-table-card مهاجرت کرد — جمع ثابت ۶
     expect(n60, "c-track-60 consumers").toBe(2);
     expect(n70, "c-track-70 consumers").toBe(6);
     expect(n80, "c-track-80 consumers").toBe(2);

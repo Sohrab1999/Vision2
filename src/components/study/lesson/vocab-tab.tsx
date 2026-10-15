@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { Search, CheckCircle2, Circle, Layers, X, Star } from "lucide-react";
+import { Search, CheckCircle2, Circle, Layers, X, Star, Users, ChevronDown } from "lucide-react";
 import type { LessonData } from "@/lib/study-types";
 import { useStudy, wordKey } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -10,7 +10,9 @@ import { posLabel, themeOf, faNum } from "@/lib/study-theme";
 import { buildSynAntIndex, synAntPairsFor } from "@/lib/syn-ant-lookup";
 import { speak } from "@/lib/speak";
 import { lessons } from "@/data";
+import { WORD_FAMILY_LESSON_LINKS } from "@/data/word-families";
 import Flashcards from "./flashcards";
+import WordFamilyTableCard from "./word-family-table-card";
 
 type Filter = "all" | "known" | "unknown";
 
@@ -215,6 +217,55 @@ export default function VocabTab({
           </div>
         )}
       </div>
+
+      <LinkedWordFamilies lesson={lesson} />
     </div>
+  );
+}
+
+/** خانوادهٔ واژه‌های مرتبط از جزوه (راند ۲۲۳ — بندِ ① نقشهٔ ۲۲۲، ادامهٔ
+ * حرفِ کاربرِ «به درس‌های مرتبط در برنامه اضافه کنی» برای لایهٔ واژگان):
+ * جدولِ «اجزای کلماتی» که خودِ جزوهٔ جامعِ همین پایه برای همین درس آورده
+ * («به ترتیبِ درس» — درسِ Nامِ هر پایه، جدولِ «درس Nام» همان پایه).
+ * همان کارتِ ضمیمه با دکمهٔ تلفظِ همهٔ ستون‌های انگلیسی (بندِ ②).
+ * پیش‌فرضِ بسته — درسِ سبک می‌ماند (الگویِ LinkedBookletTopics راند ۲۲۰).
+ * درس‌های بی‌جدول (۱۰-۱۲ جزوهٔ جامع ندارند) اصلاً این بخش را نمی‌بینند. */
+function LinkedWordFamilies({ lesson }: { lesson: LessonData }) {
+  const [open, setOpen] = useState(false);
+  const table = WORD_FAMILY_LESSON_LINKS[lesson.id];
+  if (!table) return null;
+  return (
+    <section className="overflow-hidden rounded-2xl border border-violet-200 c-card dark:border-violet-900">
+      <button
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        className="flex w-full items-center gap-2.5 border-b border-violet-200 bg-violet-50/70 px-4 py-3 text-right transition-[background-color,color,border-color,box-shadow] hover:bg-violet-100/70 dark:border-violet-900 dark:bg-violet-950/40 dark:hover:bg-violet-900/40"
+      >
+        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-violet-600 text-white">
+          <Users size={15} />
+        </span>
+        <span className="min-w-0 flex-1 text-[15px] font-extrabold text-stone-800 dark:text-stone-100">
+          خانوادهٔ واژه‌های مرتبط از جزوه
+        </span>
+        <span className="shrink-0 rounded-lg bg-violet-100 px-2 py-0.5 text-[11.5px] font-extrabold text-violet-700 dark:bg-violet-900/50 dark:text-violet-300">
+          {faNum(table.families.length)} خانواده
+        </span>
+        <ChevronDown
+          size={18}
+          className={`shrink-0 text-stone-500 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+        />
+      </button>
+      {open && (
+        <div className="space-y-3 p-3">
+          <p className="rounded-lg bg-stone-50 px-3 py-2 text-[12.5px] leading-6 text-stone-600 dark:bg-stone-800/70 dark:text-stone-300">
+            خانوادهٔ واژه‌های «{table.lesson}» از خودِ جزوهٔ جامعِ پایهٔ {lesson.grade}
+            — قید، صفت، فعل و اسمِ کنارِ هم، عینِ جدولِ «اجزای کلماتیِ» جزوه.
+            دکمهٔ بلندگو کنارِ هر واژه آن را می‌خوانَد؛ نسخهٔ کاملِ هر سه پایه:
+            «ضمیمه ← اجزای کلام».
+          </p>
+          <WordFamilyTableCard table={table} />
+        </div>
+      )}
+    </section>
   );
 }

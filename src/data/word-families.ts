@@ -372,3 +372,43 @@ export const WORD_FAMILY_TABLES: WordFamilyTable[] = [
 
 /** جمعِ خانواده‌های همهٔ جدول‌ها — برای گاردِ تست و شمارش‌های UI */
 export const WORD_FAMILY_TOTAL = WORD_FAMILY_TABLES.reduce((n, t) => n + t.families.length, 0);
+
+// ---------------------------------------------------------------------------
+// راند ۲۲۳ — پیوندِ «اجزای کلماتی» به درس‌های برنامه (بندِ ① نقشهٔ ۲۲۲ — همان
+// الگویِ LESSON_BG_LINKSِ راند ۲۲۰ ولی برای لایهٔ واژگان): کلید = شناسهٔ درسِ
+// برنامه، مقدار = خودِ جدولِ همان درس از WORD_FAMILY_TABLES (ارجاعِ مستقیم،
+// نه کپی — یک منبعِ حقیقت). شاهدِ نگاشت فقط خودِ جزوه است: جدول‌ها «به ترتیبِ
+// درس» آمده‌اند و جایگاهِ درس‌های برنامه در lesson-meta ثابت است — درس‌های
+// ۱-۳ برنامه = یازدهم (Vision Two)، ۴-۶ = دوازدهم (Vision Three)، ۷-۹ = دهم
+// (Vision One)؛ پس درسِ Nامِ هر پایه جدولِ «درس Nام» همان پایه را می‌گیرد.
+// صفرهایِ صادقانه: جدولِ «درس چهارمِ دهم» در برنامهٔ درسی جای ندارد (برنامه
+// ۳ درسِ دهمی دارد) و فقط در ضمیمه دیده می‌شود؛ درس‌های ۱۰-۱۲ (هفتم/هشتم/
+// نهم) جزوهٔ جامع ندارند و بیرونِ نقشه‌اند.
+// ---------------------------------------------------------------------------
+const WF_LESSON_NUM: Record<string, number> = {
+  "درس اول": 1,
+  "درس دوم": 2,
+  "درس سوم": 3,
+  "درس چهارم": 4,
+};
+
+const LESSON_WF_SPEC: Record<number, { grade: WordFamilyTable["grade"]; ordinal: number }> = {
+  1: { grade: "یازدهم", ordinal: 1 },
+  2: { grade: "یازدهم", ordinal: 2 },
+  3: { grade: "یازدهم", ordinal: 3 },
+  4: { grade: "دوازدهم", ordinal: 1 },
+  5: { grade: "دوازدهم", ordinal: 2 },
+  6: { grade: "دوازدهم", ordinal: 3 },
+  7: { grade: "دهم", ordinal: 1 },
+  8: { grade: "دهم", ordinal: 2 },
+  9: { grade: "دهم", ordinal: 3 },
+};
+
+export const WORD_FAMILY_LESSON_LINKS: Record<number, WordFamilyTable> = Object.fromEntries(
+  Object.entries(LESSON_WF_SPEC).flatMap(([idStr, spec]) => {
+    const table = WORD_FAMILY_TABLES.find(
+      (t) => t.grade === spec.grade && WF_LESSON_NUM[t.lesson] === spec.ordinal,
+    );
+    return table ? [[Number(idStr), table] as const] : [];
+  }),
+);
