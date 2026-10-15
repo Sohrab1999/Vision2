@@ -51,8 +51,8 @@ describe("lesson-view booklet tab gating", () => {
   it("clicking the tab renders booklet vocab rows with real booklet content", async () => {
     // رندرِ کاملِ ۴۰ بخشِ جزوه در jsdom سنگین است — تایم‌اوتِ سخاوتمندانه
     render(<LessonView id={10} />);
-    fireEvent.click(await screen.findByRole("button", { name: /جزوه/ }, {}, { timeout: 10000 }));
-    await screen.findByRole("button", { name: /همهٔ بخش‌ها/ }, {}, { timeout: 10000 });
+    fireEvent.click(await screen.findByRole("button", { name: /جزوه/ }, { timeout: 10000 }));
+    await screen.findByRole("button", { name: /همهٔ بخش‌ها/ }, { timeout: 10000 });
     // محتوای واقعی جزوهٔ هفتم — واژهٔ شناخته‌شده
     await waitFor(() => {
       expect(screen.getAllByText("توانستن، قادر بودن").length).toBeGreaterThan(0);
