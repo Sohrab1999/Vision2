@@ -661,6 +661,28 @@ const quizzes = [
   Q("l2-g13", "grammar", "---------------- and finding job -------------------- not easy in a foreign country.", ["Living / is", "Lived / are", "Living / are", "Lives / is"], 0, "زندگی‌کردن و پیدا کردن شغل در یک کشور خارجی آسان نیست. (اسم مصدر مفرد)"),
   Q("l2-g14", "grammar", "-------------------- helps your body be healthy and prevents it from --------------------- sick.", ["Exercise / being", "Exercising / be", "Exercise / be", "Exercising / being"], 3, "ورزش‌کردن به بدن‌تان کمک می‌کند سالم باشد و از بیمار شدن آن جلوگیری می‌کند."),
   Q("l2-g15", "grammar", "My grandfather loves ---------------------- a long walk. He often goes ---------------------- on Sundays.", ["taking / hike", "take / hike", "taking / hiking", "took / hiking"], 2, "پدربزرگم عاشق پیاده‌روی طولانی‌مدت است. او اغلب در یک‌شنبه‌ها به کوه‌نوردی می‌رود. (love + gerund / go + gerund)"),
+
+  // ---------------- واژگان/گرامر استاندارد و کنکوری جزوهٔ جامع (راند ۲۱۲) ----------------
+  Q("l2-bk1", "vocab-konkuri", "For centuries, the country remained untouched by outside --------------------.", ["causes", "influences", "habits", "devices"], 1),
+  Q("l2-bk2", "vocab-konkuri", "The ------------------- of International House is to enable students of different cultures to live together and build life-long friendships.", ["miracle", "mission", "habit", "diet"], 1),
+  Q("l2-bk3", "vocab-konkuri", "The book gives a ------------------- account of the war, and the reader is left to decide whether the fight was worth it or not.", ["harmful", "balanced", "confused", "worthy"], 1),
+  Q("l2-bk4", "vocab-konkuri", "She’s a wonderfully ---------------- dancer but she doesn’t have the technique of a truly great performer.", ["creative", "nervous", "confused", "balanced"], 0),
+  Q("l2-bk5", "vocab-konkuri", "Sugar addicts --------------------, rot their teeth, and in extreme cases may even develop diabetes.", ["find weight", "gain weight", "take part", "couch potato"], 1),
+  Q("l2-bk6", "vocab-konkuri", "You can ---------- about them, and I personally do, but they are great ideas that have made people think.", ["disagree", "agree", "produce", "measure"], 0),
+  Q("l2-bk7", "vocab-konkuri", "Please would you -------------------- at the reception desk and sign your name in the book.", ["take part", "check in", "check out", "hang out"], 1),
+  Q("l2-bk8", "vocab-konkuri", "At his work he was regarded as a ----------- worker, the man who took risks and could not lose any opportunities.", ["mission", "device", "miracle", "habit"], 2),
+  Q("l2-bk9", "vocab-konkuri", "------------------ reading can be defined as a pastime by which the reader spends his / her time pleasantly.", ["Recreational", "Rush", "Scientific", "Worthy"], 0),
+  Q("l2-bk10", "vocab-konkuri", "A cure for that terrible disease will eventually be found through -------------------- research.", ["particular", "scientific", "socialized", "creative"], 1),
+  Q("l2-bk11", "vocab-konkuri", "The ------- parts of a ministry should have complete coordination with each other for developing affairs.", ["physical", "recent", "balanced", "various"], 3),
+  Q("l2-bk12", "vocab-konkuri", "He never thought twice about walking into danger and ----------------- cared if he survived or not.", ["frequently", "rarely", "normally", "naturally"], 1),
+  Q("l2-bk13", "vocab-konkuri", "However, this view has recently been the subject of debate among -------------------.", ["suggestions", "population", "specialists", "media"], 2),
+  Q("l2-bk14", "vocab-konkuri", "Unlike his brother, David tended to talk to people, get along with them, and ----------------- with them.", ["check in", "watch out", "hang out", "check out"], 2),
+  Q("l2-bk15", "vocab-konkuri", "His body was warm, his breathing and -------------- was deep and slow and that situation was dangerous.", ["heart attack", "blood pressure", "heart beat", "heart disease"], 2),
+  Q("l2-bk16", "vocab-konkuri", "The school officials tries hard to create some ways to --------- cheating among students in various ways.", ["prevent", "forbid", "allow", "socialize"], 0),
+  Q("l2-bk17", "vocab-konkuri", "His funny comment about the novel brought much ------------------- from the audience to him.", ["habit", "laughter", "device", "mission"], 1),
+  Q("l2-bk18", "vocab-konkuri", "A double -------------- of food maybe isn’t sufficient for a professional athlete especially a body builder.", ["habit", "serving", "diet", "miracle"], 1),
+  Q("l2-bk19", "grammar", "Sarah has lost her passport again. This is the second time this --------------------------------.", ["happened", "has happened", "happens", "have happened"], 1),
+
 ];
 
 export const lesson2: LessonData = {
