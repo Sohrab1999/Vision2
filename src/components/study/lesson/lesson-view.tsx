@@ -18,6 +18,7 @@ import DictationTab from "./dictation-tab";
 import LessonTestsTab from "./lesson-tests-tab";
 import SynAntTab from "./syn-ant-tab";
 import BookletTab from "./booklet-tab";
+import LessonJumpIndex from "./lesson-jump-index";
 import { ring600 } from "@/lib/ui-colors";
 
 const tabs: { key: LessonTab; label: string; icon: React.ElementType }[] = [
@@ -95,6 +96,12 @@ export default function LessonView({ id }: { id: number }) {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* راند ۲۳۲ — فهرستِ درس‌ها: پرشِ میانِ ۱۲ درس از خودِ سرصفحه (الگویِ r228)
+            — چیپِ درسِ فعلی توپُر و بی‌اثر، بقیه با openLesson پرش می‌کنند */}
+        <div className="border-t border-stone-100 px-3 py-2">
+          <LessonJumpIndex currentId={lesson.id} />
         </div>
 
         {/* tab bar */}
