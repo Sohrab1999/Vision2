@@ -10,6 +10,7 @@
 
 import { useState } from "react";
 import {
+  Blocks,
   BookOpenCheck,
   ChevronDown,
   Keyboard,
@@ -105,7 +106,8 @@ export default function BookletGrammarView() {
           {faNum(BOOKLET_GRAMMAR_TOPICS.length)} موضوع در {faNum(groups.length)} جزوه:
           قاعده‌ها، نکته‌ها، جدول‌ها و مثال‌های ترجمه‌دار — دقیقاً همان‌طور که جزوه‌ها
           تدریس کرده‌اند. مثال‌های انگلیسی را می‌شنوی، آزمونکِ هر موضوع کلیدِ خودش را
-          دارد و تمرینِ تایپیِ بخش‌های تولیدی هم با پاسخِ خودِ جزوه بررسی می‌شود.
+          دارد، تمرینِ تایپیِ بخش‌های تولیدی بررسی می‌شود و جمله‌سازیِ کلیک‌کردنیِ
+          آزمون‌های تشخیصی هم با جملهٔ کلیدِ خودِ جزوه سنجیده می‌شود.
           پایهٔ دهم بنیان‌های هفتم تا نهم را مرور می‌کند و پایه‌های یازدهم
           و دوازدهم درسنامه‌های درس‌های خودشان را.
         </p>
@@ -267,6 +269,7 @@ function TopicCard({
 
           <TopicDrill topic={topic} />
           <TopicTypeDrill topic={topic} />
+          <TopicOrderDrill topic={topic} />
         </div>
       )}
     </div>
@@ -447,6 +450,202 @@ function TopicTypeDrill({ topic }: { topic: BgTopic }) {
                   </button>
                 )}
               </div>
+              {done && !isOk && (
+                <p className="mt-1.5 text-[12px] font-bold text-rose-700 dark:text-rose-300" dir="auto">
+                  پاسخِ درست: <span dir="ltr">{d.answer}</span>
+                </p>
+              )}
+            </li>
+          );
+        })}
+      </ol>
+    </section>
+  );
+}
+
+/** جداکردنِ کاشی‌ها از گروهِ کلماتِ خودِ جزوه («do / much / need / …») — راند ۲۱۹ */
+export function buildOrderTiles(q: string): string[] {
+  return q
+    .split("/")
+    .map((w) => w.trim())
+    .filter(Boolean);
+}
+
+/** نرمال‌سازیِ جملهٔ ساخته‌شده برای سنجش با کلید — حروف کوچک، آپاستروفِ یکسان،
+ * بی‌اعتنا به نقطه/علامتِ سؤال/کاما و فاصله‌های اضافی (کلماتِ خودِ جزوه‌اند،
+ * غلطِ املایی در میان نیست — ترتیب مهارتِ این تمرین است). */
+export function normOrderAnswer(s: string): string {
+  return s
+    .toLowerCase()
+    .replace(/[\u2019\u2018']/g, "'")
+    .replace(/[.,!?():;"«»]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+/** بُر زدنِ قطعی (deterministic) — همان seed همان ترتیب؛ برای هم‌خوانیِ SSR/کلاینت
+ * Math.random در رندر ممنوع است (هیدریشن و خطای lint react-hooks). */
+export function seededShuffle<T>(arr: T[], seed: number): T[] {
+  let a = seed >>> 0;
+  const rand = () => {
+    a |= 0;
+    a = (a + 0x6d2b79f5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+  const out = [...arr];
+  for (let i = out.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1));
+    [out[i], out[j]] = [out[j], out[i]];
+  }
+  return out;
+}
+
+function hashSeed(s: string): number {
+  let h = 2166136261;
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return h >>> 0;
+}
+
+/** ترتیبِ کاشی‌های هر سؤال — بُر خورده اما هرگز از قبل برابرِ کلید نیست. */
+export function orderTilesFor(itemKey: string, q: string, answer: string): string[] {
+  const tiles = buildOrderTiles(q);
+  const key = normOrderAnswer(answer);
+  let seed = hashSeed(itemKey);
+  for (let tries = 0; tries < 8; tries++) {
+    const shuffled = seededShuffle(tiles, seed);
+    if (normOrderAnswer(shuffled.join(" ")) !== key) return shuffled;
+    seed = (seed + 1) >>> 0;
+  }
+  return seededShuffle(tiles, (hashSeed(itemKey) ^ 0x9e3779b9) >>> 0);
+}
+
+/** جمله‌سازیِ کلیک‌کردنیِ خودِ جزوه (راند ۲۱۹) — بخش‌های «جمله بسازید» آزمون‌های
+ * تشخیصی: کاشی‌ها را به ترتیب کلیک کن؛ سنجش با جملهٔ کلیدِ عینِ پاسخنامه.
+ * هیچ نوشتنی در استورِ یادگیری نیست. */
+function TopicOrderDrill({ topic }: { topic: BgTopic }) {
+  const [seq, setSeq] = useState<Record<number, number[]>>({});
+  const [checked, setChecked] = useState<Record<number, boolean>>({});
+  if (!topic.orderDrill?.length) return null;
+  const answered = Object.keys(checked).length;
+  const correct = topic.orderDrill.reduce((n, d, i) => {
+    // همان ترتیبِ قطعیِ کاشی‌های هر سؤال — ایندکس‌هایِ seq به آرایهٔ بُرخورده اشاره می‌کنند
+    const tiles = orderTilesFor(`${topic.id}#${i}`, d.q, d.answer);
+    const built = (seq[i] ?? []).map((ti) => tiles[ti]).join(" ");
+    return n + (checked[i] && normOrderAnswer(built) === normOrderAnswer(d.answer) ? 1 : 0);
+  }, 0);
+  return (
+    <section className="rounded-xl border border-sky-200 bg-sky-50/60 p-3 dark:border-sky-900 dark:bg-sky-950/30">
+      <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+        <h4 className="flex items-center gap-1.5 text-[13px] font-extrabold text-sky-800 dark:text-sky-300">
+          <Blocks size={15} />
+          جمله‌سازیِ خودِ جزوه — {faNum(topic.orderDrill.length)} سؤال
+        </h4>
+        <div className="flex items-center gap-2">
+          {answered > 0 && (
+            <span className="text-[12px] font-bold text-sky-700 dark:text-sky-300">
+              {faNum(correct)} از {faNum(answered)} درست
+            </span>
+          )}
+          <button
+            onClick={() => {
+              setSeq({});
+              setChecked({});
+            }}
+            aria-label="پاک کردن پاسخ‌های جمله‌سازی"
+            className="inline-flex items-center gap-1 rounded-lg bg-white px-2 py-1 text-[12px] font-bold text-sky-700 shadow-sm transition-[background-color,color,border-color,box-shadow] hover:bg-sky-100 dark:bg-sky-900/40 dark:text-sky-300"
+          >
+            <RotateCcw size={13} />
+            از نو
+          </button>
+        </div>
+      </div>
+      <ol className="space-y-3">
+        {topic.orderDrill.map((d, di) => {
+          const tiles = orderTilesFor(`${topic.id}#${di}`, d.q, d.answer);
+          const picked = seq[di] ?? [];
+          const done = checked[di] === true;
+          const built = picked.map((ti) => tiles[ti]).join(" ");
+          const isOk = done && normOrderAnswer(built) === normOrderAnswer(d.answer);
+          const complete = picked.length === tiles.length;
+          const taskChanged = d.task !== undefined && d.task !== topic.orderDrill![di - 1]?.task;
+          const stripCls = done
+            ? isOk
+              ? "border-emerald-300 bg-emerald-50/70 dark:border-emerald-700 dark:bg-emerald-900/30"
+              : "border-rose-300 bg-rose-50/70 dark:border-rose-700 dark:bg-rose-900/30"
+            : "border-stone-200 bg-stone-50 dark:border-stone-700 dark:bg-stone-800/70";
+          return (
+            <li key={di} className="rounded-lg bg-white p-2.5 shadow-sm dark:bg-stone-900">
+              {taskChanged && (
+                <p className="mb-1.5 rounded-md bg-sky-100/70 px-2 py-1 text-[11.5px] font-bold text-sky-800 dark:bg-sky-900/40 dark:text-sky-300">
+                  {d.task}
+                </p>
+              )}
+              <div className="flex items-start gap-2">
+                <div
+                  className={`min-h-[38px] flex-1 rounded-lg border px-2 py-1.5 transition-[border-color,background-color,box-shadow] ${stripCls}`}
+                  dir="ltr"
+                  aria-label={`جملهٔ ساخته‌شدهٔ سؤال ${faNum(di + 1)} جمله‌سازی`}
+                >
+                  {picked.length === 0 ? (
+                    <span className="text-[12px] font-bold text-stone-500">
+                      جمله را با کلیک روی کلمه‌ها بسازید…
+                    </span>
+                  ) : (
+                    <div className="flex flex-wrap items-center gap-1.5">
+                      {picked.map((ti, pos) => (
+                        <button
+                          key={`${ti}-${pos}`}
+                          disabled={done}
+                          onClick={() =>
+                            setSeq((s) => ({
+                              ...s,
+                              [di]: (s[di] ?? []).filter((_, p) => p !== pos),
+                            }))
+                          }
+                          aria-label={`برگرداندن واژهٔ ${faNum(pos + 1)} سؤال ${faNum(di + 1)} جمله‌سازی`}
+                          className="rounded-md border border-sky-300 bg-sky-100 px-2 py-0.5 text-[12px] font-extrabold text-sky-900 transition-[background-color,color,border-color,box-shadow] hover:bg-sky-200 disabled:cursor-default disabled:opacity-90 dark:border-sky-800 dark:bg-sky-900/60 dark:text-sky-100"
+                        >
+                          {tiles[ti]}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                {!done && (
+                  <button
+                    onClick={() => {
+                      if (complete) setChecked((c) => ({ ...c, [di]: true }));
+                    }}
+                    disabled={!complete}
+                    aria-label={`بررسی سؤال ${faNum(di + 1)} جمله‌سازی`}
+                    className="shrink-0 rounded-lg border border-sky-300 bg-sky-100 px-3 py-1.5 text-[12px] font-extrabold text-sky-800 shadow-sm transition-[background-color,color,border-color,box-shadow,transform] hover:bg-sky-200 active:scale-[0.96] disabled:opacity-40 dark:border-sky-800 dark:bg-sky-900/50 dark:text-sky-300"
+                  >
+                    بررسی
+                  </button>
+                )}
+              </div>
+              {!done && (
+                <div className="mt-2 flex flex-wrap items-center gap-1.5" dir="ltr">
+                  {tiles.map((w, ti) =>
+                    picked.includes(ti) ? null : (
+                      <button
+                        key={ti}
+                        onClick={() =>
+                          setSeq((s) => ({ ...s, [di]: [...(s[di] ?? []), ti] }))
+                        }
+                        className="rounded-lg border border-stone-200 bg-stone-50 px-2 py-1 text-[12px] font-extrabold text-stone-700 shadow-sm transition-[background-color,color,border-color,box-shadow,transform] hover:border-sky-300 hover:bg-sky-100 hover:text-sky-900 active:scale-[0.96] dark:border-stone-700 dark:bg-stone-800 dark:text-stone-200 dark:hover:border-sky-700 dark:hover:bg-sky-900/50 dark:hover:text-sky-100"
+                      >
+                        {w}
+                      </button>
+                    ),
+                  )}
+                </div>
+              )}
               {done && !isOk && (
                 <p className="mt-1.5 text-[12px] font-bold text-rose-700 dark:text-rose-300" dir="auto">
                   پاسخِ درست: <span dir="ltr">{d.answer}</span>

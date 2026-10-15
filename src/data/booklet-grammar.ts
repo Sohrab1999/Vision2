@@ -40,6 +40,17 @@ export interface BgTypeDrill {
   answer: string; // کلیدِ خودِ جزوه
 }
 
+/** جمله‌سازیِ کلیک‌کردنی (راند ۲۱۹) — بخش‌های «جمله بسازید» آزمون‌های تشخیصی:
+ * گروهِ کلماتِ خودِ جزوه (با جداکنندهٔ «/») و کلیدِ عینِ پاسخنامه؛ کاربر
+ * با کلیک روی کاشی‌ها جمله را می‌سازد و با کلیدِ خودِ جزوه سنجیده می‌شود. */
+export interface BgOrderDrill {
+  /** گروهِ کلماتِ خودِ جزوه — مثل «do / much / need / information / how / they?» */
+  q: string;
+  /** دستورِ خودِ بخشِ جزوه (مثل «با استفاده از کلمات داده شده جمله بسازید») */
+  task?: string;
+  answer: string; // جملهٔ کلید — عینِ پاسخنامهٔ جزوه
+}
+
 export interface BgTopic {
   id: string;
   /** جزوهٔ مبدأ — راند ۲۱۴: «دهم»؛ راند ۲۱۵: «یازدهم»؛ راند ۲۱۶: «دوازدهم» */
@@ -55,6 +66,7 @@ export interface BgTopic {
   examples?: BgExample[];
   drill?: BgDrill[];
   typeDrill?: BgTypeDrill[];
+  orderDrill?: BgOrderDrill[];
 }
 
 export const BOOKLET_GRAMMAR_SOURCE =
@@ -823,6 +835,19 @@ export const BOOKLET_GRAMMAR_TOPICS: BgTopic[] = [
       { q: "I want ------------- sugar in my coffee.", answer: "a little" },
       { q: "Everybody needs ------------- luck.", answer: "a little" },
     ],
+    orderDrill: [
+      // آزمون تشخیصی گرامر درس اول — بخشِ پایانی «جمله‌سازی» (ص۳۱) · کلید: پاسخنامهٔ خودِ جزوه، ص۱۷۹
+      { q: "do / much / need / information / how / they?", task: "با استفاده از کلمات داده شده جمله بسازید.", answer: "How much information do they need?" },
+      { q: "drink / every / eight / we / of / should / glasses / day / water.", answer: "We should drink eight glasses of water every day." },
+      { q: "many / in / students / there / the class / are / new?", answer: "Are there many new students in the class?" },
+      { q: "much / a present / they / have / to buy / money / don’t.", answer: "They don’t have much money to buy a present." },
+      { q: "lessons / have / many / on Mondays / how / you / do?", answer: "How many lessons do you have on Mondays?" },
+      { q: "carrots / aren’t / the fridge / there / in / many.", answer: "There aren’t many carrots in the fridge." },
+      { q: "last / many / summer / how / did / read / books / you?", answer: "How many books did you read last summer?" },
+      { q: "spend / time / television / too much / the children / watching.", answer: "The children spend too much time watching television." },
+      { q: "did / of / how / drink / many / you / tea / cups?", answer: "How many cups of tea did you drink?" },
+      { q: "knows / Chinese / little / culture / he / about.", answer: "He knows little about Chinese culture." },
+    ],
   },
   {
     id: "bg-numbers",
@@ -964,6 +989,12 @@ export const BOOKLET_GRAMMAR_TOPICS: BgTopic[] = [
       { q: "We have known each other ------------- 15 years.", answer: "for" },
       { q: "I’ve painted two rooms ------------- lunchtime.", answer: "since" },
       { q: "He has been in China ------------- two weeks.", answer: "for" },
+    ],
+    orderDrill: [
+      // آزمونِ جامعِ درس دوم — بخشِ «جمله‌سازی» (ص۷۵) · کلید: پاسخنامهٔ خودِ جزوه، ص۱۹۱
+      { q: "written / letters / have / today / they / three.", task: "با هر گروه از کلمات زیر یک جملهٔ کامل بسازید.", answer: "They have written three letters today." },
+      { q: "bad / health / for / smoking / your / is.", answer: "Smoking is bad for your health." },
+      { q: "his / doing / has / homework / he / finished?", answer: "Has he finished doing his homework?" },
     ],
   },
   // ================================================ یازدهم — p۶۵-۶۷
@@ -1110,6 +1141,34 @@ export const BOOKLET_GRAMMAR_TOPICS: BgTopic[] = [
       { q: "If the questions -------------------------------- (be) easy enough, everyone will pass the test.", answer: "are" },
       { q: "My boss -------------------------------- (make) a good decision if he has all the information.", answer: "will make" },
       { q: "If everything -------------------------------- (work) out like I think, the business will be a great success.", answer: "works" },
+      // بخشِ ۲ «اصلاحِ خطا — جملات شرطی نوع اول» (ص۱۰۰) · کلید: پرانتزِ پاسخنامهٔ ص۱۹۶ (شکلِ اصلاح‌شدهٔ واژه)
+      { q: "If you didn’t get married, you will have more money to spend on yourself. (----------)", task: "در جملات زیر یک اشتباهِ گرامری وجود دارد، آن را پیدا کرده و تصحیح نمایید. (جملات شرطی نوع اول)", answer: "don’t" },
+      { q: "That boy is very clever. If you ask him a question, he answers it! (----------)", answer: "will answer" },
+      { q: "If you got a part-time job, you may be able to save some money. (----------)", answer: "get" },
+      { q: "If he have a typewriter, he will type the letter himself. (----------)", answer: "has" },
+      { q: "If I won, I will take a short vacation with my family. (----------)", answer: "win" },
+      { q: "If I saw Tom tomorrow, I will give him the books. (----------)", answer: "see" },
+      { q: "Ali won’t pass his exam if he don’t study harder. (----------)", answer: "doesn’t" },
+      { q: "My brother will lose weight if he eat less sugar. (----------)", answer: "eats" },
+      { q: "They will certainly help you if you asked them. (----------)", answer: "ask" },
+      { q: "He will go camping if his parents allows him. (----------)", answer: "allow" },
+      { q: "Your parents are worried if you go home late. (----------)", answer: "will be" },
+      { q: "If I quitted smoking, I will gain weight. (----------)", answer: "quit" },
+    ],
+    orderDrill: [
+      // آزمون تشخیصی گرامر درس سوم — بخشِ «جمله‌سازی — مربوط به بخش جملات شرطی» (ص۱۰۲) · کلید: پاسخنامهٔ ص۱۹۶-۱۹۷
+      { q: "this / fix / you / it / they / will / car / buy / if?", task: "با استفاده از کلمات داده شده جمله بسازید. (مربوط به بخش جملات شرطی)", answer: "Will you buy this car if they fix it?" },
+      { q: "hungry / if / am / will / a sandwich / I / I / make.", answer: "I will make a sandwich if I am hungry." },
+      { q: "don’t / won’t / practice / improve / you / you / if.", answer: "If you don’t practice, you won’t improve." },
+      { q: "swimming / if / will / the sun / we / go / comes out.", answer: "We will go swimming if the sun comes out." },
+      { q: "tomorrow / if / you / it / will / at home / rains / stay?", answer: "Will you stay at home if it rains tomorrow?" },
+      { q: "doesn’t / may / if / he / the plane / now / go / he / miss.", answer: "If he doesn’t go now, he may miss the plane." },
+      { q: "if / a pencil / you / can / 3000 tomans / buy / have / you?", answer: "Can you buy a pencil if you have 3000 tomans?" },
+      { q: "exercise / feel / may / if / take / you / better / you / more.", answer: "If you take more exercise, you may feel better." },
+      { q: "finish / I / I / television / soon / will / my homework / watch / if.", answer: "I will watch television if I finish my homework soon." },
+      { q: "computer games / tomorrow / if / all night / will be / they / they / tired / play.", answer: "If they play computer games all night, they will be tired tomorrow." },
+      // از آزمونِ جامعِ درس سوم — بخشِ جمله‌سازی (ص۱۱۰) · کلید: پاسخنامهٔ ص۲۰۱
+      { q: "the river / hurt / if / jump / you / will / you / into / yourself.", task: "با هر گروه از کلمات زیر یک جملهٔ کامل بسازید.", answer: "You will hurt yourself if you jump into the river." },
     ],
   },
   // ================================================ یازدهم — p۹۵

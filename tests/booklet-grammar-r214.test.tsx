@@ -11,9 +11,14 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { cleanup, render, screen, fireEvent } from "@testing-library/react";
+import { cleanup, render, screen, fireEvent, within } from "@testing-library/react";
 
-import BookletGrammarView, { normTypeAnswer } from "@/components/study/lesson/booklet-grammar-view";
+import BookletGrammarView, {
+  normTypeAnswer,
+  normOrderAnswer,
+  buildOrderTiles,
+  orderTilesFor,
+} from "@/components/study/lesson/booklet-grammar-view";
 import {
   BOOKLET_GRAMMAR_TOPICS,
   BOOKLET_GRAMMAR_SOURCE,
@@ -326,7 +331,7 @@ describe("booklet-grammar-r214 — دادهٔ درسنامهٔ جامع", () => 
     for (const t of ALL) counts[t.id] = t.typeDrill?.length ?? 0;
     expect(counts["bg-quantifiers"]).toBe(20); // many/much + a few/a little (کلید ص۱۷۹)
     expect(counts["bg-present-perfect"]).toBe(22); // ۱۲ شکلِ فعل + ۱۰ for/since (کلید ص۱۸۷)
-    expect(counts["bg-first-conditional"]).toBe(10); // شکلِ فعل (کلید ص۱۹۶)
+    expect(counts["bg-first-conditional"]).toBe(22); // ۱۰ شکلِ فعل + ۱۲ اصلاحِ خطا (کلید ص۱۹۶ — راند ۲۱۹)
     for (const t of ALL) {
       if (!["bg-quantifiers", "bg-present-perfect", "bg-first-conditional"].includes(t.id)) {
         expect(t.typeDrill ?? []).toHaveLength(0);
@@ -379,6 +384,78 @@ describe("booklet-grammar-r214 — دادهٔ درسنامهٔ جامع", () => 
     // غلطِ املایی بخشش نمی‌شود
     expect(normTypeAnswer("has prevent")).not.toBe(normTypeAnswer("has prevented"));
     expect(normTypeAnswer("manymuch")).not.toBe("many");
+  });
+
+  // ------------------------------------------------ راند ۲۱۹ — جمله‌سازی
+  it("r219 پینِ شمارشِ جمله‌سازی — فقط سه موضوعِ صاحبِ بخشِ جمله‌سازیِ جزوه", () => {
+    const counts: Record<string, number> = {};
+    for (const t of ALL) counts[t.id] = t.orderDrill?.length ?? 0;
+    expect(counts["bg-quantifiers"]).toBe(10); // ص۳۱، کلید ص۱۷۹
+    expect(counts["bg-present-perfect"]).toBe(3); // آزمونِ جامعِ درس دوم ص۷۵، کلید ص۱۹۱
+    expect(counts["bg-first-conditional"]).toBe(11); // ص۱۰۲ (کلید ص۱۹۶-۱۹۷) + ص۱۱۰ (کلید ص۲۰۱)
+    for (const t of ALL) {
+      if (!["bg-quantifiers", "bg-present-perfect", "bg-first-conditional"].includes(t.id)) {
+        expect(t.orderDrill ?? []).toHaveLength(0);
+      }
+    }
+  });
+
+  it("r219 پینِ وفاداریِ جمله‌سازی — گروهِ کلمات و جملهٔ کلیدِ عینِ جزوه + دستورِ خودِ بخش", () => {
+    const od = (id: string) => ALL.find((x) => x.id === id)!.orderDrill!;
+    expect(od("bg-quantifiers")[0].q).toBe("do / much / need / information / how / they?");
+    expect(od("bg-quantifiers")[0].answer).toBe("How much information do they need?");
+    expect(od("bg-quantifiers")[7].answer).toBe("The children spend too much time watching television.");
+    expect(od("bg-present-perfect")[0].answer).toBe("They have written three letters today.");
+    expect(od("bg-first-conditional")[0].answer).toBe("Will you buy this car if they fix it?");
+    expect(od("bg-first-conditional")[10].q).toBe("the river / hurt / if / jump / you / will / you / into / yourself.");
+    expect(od("bg-first-conditional")[10].answer).toBe("You will hurt yourself if you jump into the river.");
+    // دستورِ هر بخش — عینِ جزوه با ترمیمِ «جمله ی» → «جملهٔ»
+    expect(od("bg-quantifiers")[0].task).toBe("با استفاده از کلمات داده شده جمله بسازید.");
+    expect(od("bg-present-perfect")[0].task).toBe("با هر گروه از کلمات زیر یک جملهٔ کامل بسازید.");
+    expect(od("bg-first-conditional")[0].task).toBe("با استفاده از کلمات داده شده جمله بسازید. (مربوط به بخش جملات شرطی)");
+    // بخشِ مصدرِ ص۱۰۲/ص۱۱۰ بدونِ موضوعِ درسنامه — کنار گذاشته شد (سندِ راند)
+    expect(ALL.reduce((n, t) => n + (t.orderDrill?.length ?? 0), 0)).toBe(24);
+  });
+
+  it("r219 سلامتِ جمله‌سازی — کاشی‌ها همان کلماتِ کلیدند (چندمجموعه‌ای)، پاسخِ غیرخالی", () => {
+    const words = (s: string) => normOrderAnswer(s).split(" ").filter(Boolean);
+    for (const t of ALL) {
+      for (const d of t.orderDrill ?? []) {
+        expect(d.answer.trim().length).toBeGreaterThan(0);
+        const tiles = buildOrderTiles(d.q);
+        expect(tiles.length).toBeGreaterThan(2);
+        expect(tiles.flatMap(words).sort()).toEqual(words(d.answer).sort());
+      }
+    }
+  });
+
+  it("r219 بُر خوردنِ کاشی‌ها — قطعی (همان seed همان ترتیب) و هرگز از قبل برابرِ کلید نیست", () => {
+    for (const t of ALL) {
+      (t.orderDrill ?? []).forEach((d, di) => {
+        const tiles = orderTilesFor(`${t.id}#${di}`, d.q, d.answer);
+        expect(normOrderAnswer(tiles.join(" "))).not.toBe(normOrderAnswer(d.answer));
+        expect(orderTilesFor(`${t.id}#${di}`, d.q, d.answer)).toEqual(tiles);
+      });
+    }
+  });
+
+  it("r219 پینِ اصلاحِ خطا — کلیدهای پرانتزِ پاسخنامهٔ ص۱۹۶ روی تمرینِ تایپی", () => {
+    const ans = (i: number) => ALL.find((x) => x.id === "bg-first-conditional")!.typeDrill![i].answer;
+    expect(ans(10)).toBe("don’t");
+    expect(ans(11)).toBe("will answer");
+    expect(ans(13)).toBe("has");
+    expect(ans(16)).toBe("doesn’t");
+    expect(ans(20)).toBe("will be");
+    expect(ans(21)).toBe("quit");
+  });
+
+  it("r219 نرمال‌سازیِ جمله — نقطه/علامتِ سؤال/کاما و آپاستروف بی‌اعتنا، ترتیب و واژه‌ها اکید", () => {
+    expect(normOrderAnswer("  They have written three letters today. ")).toBe("they have written three letters today");
+    expect(normOrderAnswer("How much information do they need?")).toBe("how much information do they need");
+    expect(normOrderAnswer("They don’t have much money to buy a present.")).toBe("they don't have much money to buy a present");
+    expect(normOrderAnswer("They don't have much money to buy a present")).toBe(normOrderAnswer("They don’t have much money to buy a present."));
+    // ترتیبِ متفاوت = پاسخِ متفاوت
+    expect(normOrderAnswer("do they need how much information")).not.toBe(normOrderAnswer("How much information do they need?"));
   });
 });
 
@@ -465,6 +542,45 @@ describe("booklet-grammar-r214 — رندرِ زیرتابِ ضمیمه", () => 
     fireEvent.click(screen.getByLabelText("بررسی سؤال ۱ تمرین تایپی"));
     expect(screen.getByText("۱ از ۱ درست")).toBeTruthy();
     expect(screen.queryByText(/پاسخِ درست:/)).toBeNull();
+  });
+
+  it("جمله‌سازی: ترتیبِ غلط rose + کلیدِ جزوه؛ ترتیبِ درست emerald؛ برگرداندنِ کاشی؛ «از نو» خالی می‌کند", () => {
+    renderTab();
+    fireEvent.click(screen.getByText("صفت‌های کمّی و شمارشی"));
+    expect(screen.getByText(/جمله‌سازیِ خودِ جزوه — ۱۰ سؤال/)).toBeTruthy();
+    const strip = screen.getByLabelText("جملهٔ ساخته‌شدهٔ سؤال ۱ جمله‌سازی");
+    const q1 = within(strip.closest("li") as HTMLElement);
+    // بررسی روی جملهٔ ناتمام معلق است
+    expect(q1.getByLabelText("بررسی سؤال ۱ جمله‌سازی").hasAttribute("disabled")).toBe(true);
+    // یک کاشی بردار و برگردان — نوار و بانک سالم می‌مانند
+    fireEvent.click(q1.getByRole("button", { name: "do" }));
+    fireEvent.click(q1.getByLabelText("برگرداندن واژهٔ ۱ سؤال ۱ جمله‌سازی"));
+    expect(q1.getByText("جمله را با کلیک روی کلمه‌ها بسازید…")).toBeTruthy();
+    // ترتیبِ غلط → rose + کلیدِ جزوه
+    fireEvent.click(q1.getByRole("button", { name: "do" }));
+    fireEvent.click(q1.getByRole("button", { name: "they?" }));
+    fireEvent.click(q1.getByRole("button", { name: "how" }));
+    fireEvent.click(q1.getByRole("button", { name: "much" }));
+    fireEvent.click(q1.getByRole("button", { name: "information" }));
+    fireEvent.click(q1.getByRole("button", { name: "need" }));
+    fireEvent.click(q1.getByLabelText("بررسی سؤال ۱ جمله‌سازی"));
+    expect(screen.getByText("۰ از ۱ درست")).toBeTruthy();
+    const keyLine = screen.getByText(/پاسخِ درست:/);
+    expect(keyLine.textContent).toContain("How much information do they need?");
+    // از نو و ترتیبِ درستِ کلید → emerald
+    fireEvent.click(screen.getByLabelText("پاک کردن پاسخ‌های جمله‌سازی"));
+    expect(screen.queryByText("۰ از ۱ درست")).toBeNull();
+    const strip2 = screen.getByLabelText("جملهٔ ساخته‌شدهٔ سؤال ۱ جمله‌سازی");
+    const q1b = within(strip2.closest("li") as HTMLElement);
+    for (const w of ["how", "much", "information", "do", "they?", "need"]) {
+      fireEvent.click(q1b.getByRole("button", { name: w }));
+    }
+    fireEvent.click(q1b.getByLabelText("بررسی سؤال ۱ جمله‌سازی"));
+    expect(screen.getByText("۱ از ۱ درست")).toBeTruthy();
+    expect(screen.queryByText(/پاسخِ درست:/)).toBeNull();
+    // از نو — همه پاک می‌شود
+    fireEvent.click(screen.getByLabelText("پاک کردن پاسخ‌های جمله‌سازی"));
+    expect(screen.queryByText("۱ از ۱ درست")).toBeNull();
   });
 
   it("سرریزِ افقی ندارد در اندازهٔ موبایل (dark هم) — قراردادِ همیشگی", () => {
