@@ -16,6 +16,7 @@ import BookletGrammarView from "@/components/study/lesson/booklet-grammar-view";
 import {
   BOOKLET_GRAMMAR_TOPICS,
   BOOKLET_GRAMMAR_SOURCE,
+  BOOKLET_GRAMMAR_SOURCES,
   type BgTopic,
 } from "@/data/booklet-grammar";
 
@@ -38,18 +39,28 @@ function flatten(): { rows: number; tables: number; examples: number; drills: nu
 }
 
 describe("booklet-grammar-r214 — دادهٔ درسنامهٔ جامع", () => {
-  it("پینِ ساختار: ۱۶ موضوع، ۱۶ ردیفِ جدولِ زمان‌ها، نمونهٔ جمعِ بخش‌ها", () => {
-    expect(ALL).toHaveLength(16);
+  it("پینِ ساختار: ۲۳ موضوع (۱۶ دهم + ۷ یازدهم)، ۱۶ ردیفِ جدولِ زمان‌ها، نمونهٔ جمعِ بخش‌ها", () => {
+    expect(ALL).toHaveLength(23);
+    expect(ALL.filter((t) => t.source === "دهم")).toHaveLength(16);
+    expect(ALL.filter((t) => t.source === "یازدهم")).toHaveLength(7);
     const sixteen = ALL.find((t) => t.id === "bg-sixteen-tenses");
     expect(sixteen).toBeDefined();
     expect(sixteen!.tables![0].rows).toHaveLength(16); // ۱۶ زمان
     const f = flatten();
     // عاقل‌بودنِ جمع‌ها — نه صفر، نه انفجار
-    expect(f.tables).toBeGreaterThanOrEqual(12);
-    expect(f.examples).toBeGreaterThanOrEqual(55);
-    expect(f.examples).toBeLessThan(120);
-    expect(f.drills).toBe(31); // ۶+۵+۴+۸+۸ آزمونکِ خودِ جزوه
-    expect(f.notes).toBeGreaterThanOrEqual(40);
+    expect(f.tables).toBeGreaterThanOrEqual(18);
+    expect(f.examples).toBeGreaterThanOrEqual(85);
+    expect(f.examples).toBeLessThan(160);
+    expect(f.drills).toBe(31); // ۶+۵+۴+۸+۸ آزمونکِ خودِ جزوه (دهم)
+    expect(f.notes).toBeGreaterThanOrEqual(90);
+  });
+
+  it("هر موضوع شناسهٔ مبدأ دارد و سرگروه‌ها مستندند", () => {
+    for (const t of ALL) {
+      expect(["دهم", "یازدهم"]).toContain(t.source);
+    }
+    expect(BOOKLET_GRAMMAR_SOURCES["دهم"]).toContain("بنیان‌های هفتم تا نهم");
+    expect(BOOKLET_GRAMMAR_SOURCES["یازدهم"]).toContain("Vision Two");
   });
 
   it("پینِ نمونه‌های وفادارِ جزوه — قاعده‌ها و کلیدهای آزمونک", () => {
@@ -143,14 +154,55 @@ describe("booklet-grammar-r214 — دادهٔ درسنامهٔ جامع", () => 
     expect(BOOKLET_GRAMMAR_SOURCE).toContain("صفحات ۲۲ تا ۳۶");
     expect(BOOKLET_GRAMMAR_SOURCE).toContain("Prospect 1-3");
   });
+
+  // ------------------------------------------------ راند ۲۱۵ — یازدهم
+  it("r215 پینِ وفاداریِ یازدهم — حال کامل، افعال دو کلمه‌ای، شرطی نوع اول، -ed/-ing", () => {
+    const pp = ALL.find((t) => t.id === "bg-present-perfect")!;
+    expect(pp.notes!.join(" ")).toContain("have / has (فعل‌های کمکی) + شکل سوم فعل (p.p.)");
+    // هر ۱۲ علامتِ کاربردها مستندند
+    const joined = pp.notes!.join(" ");
+    for (const marker of ["since", "for", "yet", "just", "ever", "already", "so far", "lately", "during", "second time"]) {
+      expect(joined).toContain(marker);
+    }
+    // جدولِ صرفِ worked
+    expect(pp.tables![0].rows[0][1]).toContain("I have worked — من کار کرده‌ام");
+    expect(pp.examples![0].en).toBe("We have lived in Boukan since 1356.");
+
+    const phr = ALL.find((t) => t.id === "bg-phrasal-verbs")!;
+    // ۹ جدا نشدنی + ۱۹ جدا شدنی = ۲۸ ردیفِ دوستونه
+    expect(phr.tables![0].rows).toHaveLength(19);
+    expect(phr.notes!.join(" ")).toContain("هرگز بعد از حرف اضافه نمی‌آید");
+    expect(phr.examples![2].en).toContain("Turn it on please.");
+
+    const cond = ALL.find((t) => t.id === "bg-first-conditional")!;
+    expect(cond.notes!.join(" ")).toContain("If you study more, you will learn a lot.");
+    expect(cond.notes!.join(" ")).toContain("must, should, may, can");
+
+    const ed = ALL.find((t) => t.id === "bg-ed-ing-adjectives")!;
+    expect(ed.tables![0].rows).toHaveLength(11);
+    expect(ed.tables![0].rows[0]).toEqual(["amuse — شگفت‌زده کردن", "amused — شگفت‌زده", "amusing — شگفت‌زده‌کننده"]);
+
+    const ger = ALL.find((t) => t.id === "bg-gerund")!;
+    expect(ger.notes!.join(" ")).toContain("No smoking");
+    expect(ger.notes!.join(" ")).toContain("Fishing and swimming");
+
+    const quan = ALL.find((t) => t.id === "bg-quantifiers")!;
+    expect(quan.notes!.join(" ")).toContain("They have lived in Rasht for many years.");
+
+    const num = ALL.find((t) => t.id === "bg-numbers")!;
+    expect(num.notes!.join(" ")).toContain("three hundred horses");
+  });
 });
 
 describe("booklet-grammar-r214 — رندرِ زیرتابِ ضمیمه", () => {
   beforeEach(cleanup);
 
-  it("۱۶ کارتِ موضوع رندر می‌شود؛ موضوع اول باز است و تیترِ منبع دیده می‌شود", async () => {
+  it("۲۳ کارتِ موضوع در دو سرگروه؛ موضوع اول باز است و تیترها دیده می‌شوند", () => {
     renderTab();
-    expect(screen.getByText(/مرور گرامرهای پایهٔ هفتم تا نهم — از خودِ جزوهٔ جامع/)).toBeTruthy();
+    expect(screen.getByText(/درسنامهٔ جامع — از خودِ جزوه‌های جامع/)).toBeTruthy();
+    // سرگروه‌ها
+    expect(screen.getByText(BOOKLET_GRAMMAR_SOURCES["دهم"])).toBeTruthy();
+    expect(screen.getByText(BOOKLET_GRAMMAR_SOURCES["یازدهم"])).toBeTruthy();
     // آکاردئون: موضوع اول باز، بقیه بسته
     const alphabet = screen.getByText("حروف، واژه و جمله");
     expect(alphabet).toBeTruthy();
