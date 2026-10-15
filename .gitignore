@@ -17,6 +17,10 @@ node_modules
 /.next/
 /out/
 
+# local QA witnesses + copyrighted booklet extracts — never ship to the repo
+/download/
+/scripts/jozvat-extract/
+
 # production
 /build
 
