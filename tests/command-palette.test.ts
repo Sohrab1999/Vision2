@@ -191,11 +191,11 @@ const lessonMeta = [
 ];
 
 describe("lessonTabCommands", () => {
-  it("۳ درس × (۷ تب + فلش‌کارت هوشمند) = ۲۴ فرمان با شناسهٔ یکتا", () => {
+  it("۳ درس × (هشت تب + فلش‌کارت هوشمند) = ۲۷ فرمان با شناسهٔ یکتا", () => {
     const out = lessonTabCommands(lessonMeta);
-    expect(PALETTE_TABS).toHaveLength(7);
-    expect(out).toHaveLength(24);
-    expect(new Set(out.map((c) => c.id)).size).toBe(24);
+    expect(PALETTE_TABS).toHaveLength(8);
+    expect(out).toHaveLength(27);
+    expect(new Set(out.map((c) => c.id)).size).toBe(27);
   });
 
   it("همه در گروه «بخش‌های درس» هستند و برچسب «درس N» با رقم فارسی دارند", () => {
@@ -205,9 +205,9 @@ describe("lessonTabCommands", () => {
     expect(out.find((c) => c.id === "ltab-2-dictation")?.label).toBe("دیکتهٔ درس ۲");
   });
 
-  it("کلیدواژهٔ لاتین عنوان درس — «culture» هر ۸ فرمان درس ۳ را می‌آورد", () => {
-    const out = filterCommands(lessonTabCommands(lessonMeta), "culture", 24);
-    expect(out).toHaveLength(8);
+  it("کلیدواژهٔ لاتین عنوان درس — «culture» هر ۹ فرمان درس ۳ را می‌آورد", () => {
+    const out = filterCommands(lessonTabCommands(lessonMeta), "culture", 27);
+    expect(out).toHaveLength(9);
     expect(out.every((c) => c.id.startsWith("ltab-3-") || c.id === "lesson-smart-3")).toBe(true);
   });
 });

@@ -24,6 +24,7 @@ export const SKILL_DEFS: SkillDef[] = [
   { id: "listening", label: "شنیداری", icon: "Headphones", color: uiColors.cyan[600], match: (k) => k.endsWith(":listening") },
   { id: "mixed", label: "تست ترکیبی", icon: "Layers", color: uiColors.teal[600], match: (k) => k.endsWith(":mixed") },
   { id: "mistakes", label: "مرور اشتباهات", icon: "Eraser", color: uiColors.rose[600], match: (k) => k.endsWith(":mistakes") },
+  { id: "synant", label: "مترادف و متضاد", icon: "ArrowLeftRight", color: uiColors.sky[600], match: (k) => k.endsWith(":synant") },
   { id: "exam", label: "آزمون جامع", icon: "ClipboardCheck", color: uiColors.lime[700], match: (k) => k === "exam" },
   { id: "final", label: "پایان ترم", icon: "GraduationCap", color: uiColors.amber[700], match: (k) => k === "final" || k.startsWith("final-") },
   { id: "rush", label: "چالش برق‌آسا", icon: "Zap", color: uiColors.orange[600], match: (k) => k === "rush" },

@@ -42,7 +42,7 @@ export interface PaletteTabSeed {
   keywords: string[];
 }
 
-/** هفت تبِ درس به ترتیب خودِ درس‌نما + کلیدواژه‌های مترادف (برچسب با کسرهٔ اضافه مثل خودِ تب) */
+/** هشت تبِ درس به ترتیب خودِ درس‌نما + کلیدواژه‌های مترادف (برچسب با کسرهٔ اضافه مثل خودِ تب) */
 export const PALETTE_TABS: PaletteTabSeed[] = [
   { key: "vocab", label: "واژگان", keywords: ["vocab", "words", "لغت", "واژه", "فلش‌کارت", "flashcard"] },
   { key: "conversation", label: "مکالمهٔ", keywords: ["conversation", "dialog", "گفتگو", "دیالوگ"] },
@@ -51,11 +51,12 @@ export const PALETTE_TABS: PaletteTabSeed[] = [
   { key: "writing", label: "نگارش", keywords: ["writing", "sentence", "جمله‌سازی", "نوشتن"] },
   { key: "dictation", label: "دیکتهٔ", keywords: ["dictation", "spelling", "املا", "املاء"] },
   { key: "tests", label: "تست‌های", keywords: ["quiz", "کوییز", "آزمون درس"] },
+  { key: "synant", label: "مترادف و متضادِ", keywords: ["synonym", "antonym", "مترادف", "متضاد", "معنی"] },
 ];
 
 /**
- * برای هر درس: هفت فرمان تب + یک فرمان «فلش‌کارت هوشمند» (نیت SRS).
- * ۳ درس × ۸ = ۲۴ فرمان در گروه «بخش‌های درس».
+ * برای هر درس: هشت فرمان تب + یک فرمان «فلش‌کارت هوشمند» (نیت SRS).
+ * ۳ درس × ۹ = ۲۷ فرمان در گروه «بخش‌های درس».
  */
 export function lessonTabCommands(lessons: LessonTabSeed[]): CommandDef[] {
   const out: CommandDef[] = [];

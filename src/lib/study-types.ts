@@ -40,7 +40,7 @@ export interface GrammarSection {
   html: string;
 }
 
-export type QuizCategory = "vocab" | "vocab-konkuri" | "grammar";
+export type QuizCategory = "vocab" | "vocab-konkuri" | "grammar" | "synant";
 
 export interface QuizQuestion {
   id: string;
