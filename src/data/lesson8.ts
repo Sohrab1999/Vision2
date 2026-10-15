@@ -344,6 +344,11 @@ const quizzes = [
   Q("l8-k8", "vocab-konkuri", "The bee's dance is a special ---------------- that shows the way to flowers.", ["signal", "spot", "tail", "shell"], 0, "رقصِ زنبور سیگنالِ خاصی است که راهِ گل‌ها را نشان می‌دهد."),
   Q("l8-k9", "vocab-konkuri", "Whales are the biggest animals on the earth, but they are surprisingly ---------------- with humans.", ["gentle", "poisonous", "frozen", "strange"], 0, "نهنگ‌ها بزرگ‌ترین حیوانات زمین‌اند، اما شگفت‌آور است که با انسان‌ها ملایم‌اند."),
   Q("l8-k10", "vocab-konkuri", "The eagle's sharp eyes can ---------------- a small rabbit from a great height.", ["spot", "freeze", "hatch", "escape"], 0, "چشمانِ تیزِ عقاب می‌تواند از ارتفاعِ زیاد یک خرگوش کوچک را ببیند."),
+  Q("l8-k11", "vocab-konkuri", "We heard voices when we drew ---------------- the village.", ["far", "near", "real", "above"], 1, "وقتی به روستا نزدیک شدیم صدایی شنیدیم."),
+  Q("l8-k12", "vocab-konkuri", "The first ---------------- of rain fell down on the ground yesterday and we enjoyed a lot.", ["drops", "pumps", "liquids", "signs"], 0, "اولین قطره‌های باران دیروز روی زمین نشست و خیلی خوشحال شدیم."),
+  Q("l8-k13", "vocab-konkuri", "Have you ever explored the ---------------- of other planets?", ["powers", "signs", "wonders", "types"], 2, "آیا تا حالا شگفتی‌های سیاراتِ دیگر را کاویده‌ای؟"),
+  Q("l8-k14", "vocab-konkuri", "He went around the office ---------------- old coffee cups.", ["carrying", "creating", "orbiting", "collecting"], 3, "دورِ دفتر می‌گشت و لیوان‌های قهوهٔ کهنه را جمع می‌کرد."),
+  Q("l8-k15", "vocab-konkuri", "Crying is seen as a ---------------- of weakness among some people in bad situations.", ["system", "sign", "power", "ring"], 1, "گریه نزدِ برخی مردم در موقعیت‌های بد نشانهٔ ضعف دیده می‌شود."),
   // ---------------- گرامر (۱۵ تست) ----------------
   Q("l8-g1", "grammar", "We ---------------- the wildlife documentary last night.", ["watched", "watch", "are watching", "will watch"], 0, "مستند حیات وحش را دیشب دیدیم.", "قیدِ گذشته last night → گذشتهٔ ساده."),
   Q("l8-g2", "grammar", "The birds ---------------- south when the cold weather arrived.", ["flew", "fly", "flied", "flying"], 0, "پرنده‌ها وقتی هوای سرد رسید، به سمت جنوب پرواز کردند.", "گذشتهٔ بی‌قاعدهٔ fly → flew."),

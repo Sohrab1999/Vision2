@@ -43,7 +43,7 @@ export const LESSONS_META: LessonMeta[] = [
     color: "emerald",
     grade: "یازدهم",
     vocabCount: 204,
-    quizCount: 50,
+    quizCount: 55,
     grammarCount: 6,
   },
   {
@@ -54,7 +54,7 @@ export const LESSONS_META: LessonMeta[] = [
     color: "amber",
     grade: "یازدهم",
     vocabCount: 229,
-    quizCount: 40,
+    quizCount: 45,
     grammarCount: 6,
   },
   {
@@ -65,7 +65,7 @@ export const LESSONS_META: LessonMeta[] = [
     color: "rose",
     grade: "یازدهم",
     vocabCount: 200,
-    quizCount: 40,
+    quizCount: 45,
     grammarCount: 3,
   },
   {
@@ -76,7 +76,7 @@ export const LESSONS_META: LessonMeta[] = [
     color: "violet",
     grade: "دوازدهم",
     vocabCount: 100,
-    quizCount: 40,
+    quizCount: 45,
     grammarCount: 4,
   },
   {
@@ -87,7 +87,7 @@ export const LESSONS_META: LessonMeta[] = [
     color: "sky",
     grade: "دوازدهم",
     vocabCount: 84,
-    quizCount: 40,
+    quizCount: 45,
     grammarCount: 3,
   },
   {
@@ -98,7 +98,7 @@ export const LESSONS_META: LessonMeta[] = [
     color: "teal",
     grade: "دوازدهم",
     vocabCount: 76,
-    quizCount: 40,
+    quizCount: 45,
     grammarCount: 3,
   },
   {
@@ -109,7 +109,7 @@ export const LESSONS_META: LessonMeta[] = [
     color: "orange",
     grade: "دهم",
     vocabCount: 80,
-    quizCount: 40,
+    quizCount: 45,
     grammarCount: 3,
   },
   {
@@ -120,7 +120,7 @@ export const LESSONS_META: LessonMeta[] = [
     color: "indigo",
     grade: "دهم",
     vocabCount: 72,
-    quizCount: 40,
+    quizCount: 45,
     grammarCount: 3,
   },
   {
@@ -131,7 +131,7 @@ export const LESSONS_META: LessonMeta[] = [
     color: "fuchsia",
     grade: "دهم",
     vocabCount: 70,
-    quizCount: 40,
+    quizCount: 45,
     grammarCount: 3,
   },
   // راند ۱۹۸ — «قفسهٔ شش‌پایه»: جزوه‌های متوسطهٔ اول (Prospect 1-3)
@@ -171,9 +171,9 @@ export const LESSONS_META: LessonMeta[] = [
 ];
 
 export const TOTAL_VOCABULARY = 1312;
-export const LESSON_QUIZ_COUNT = 490;
+export const LESSON_QUIZ_COUNT = 535;
 export const EXAM_BANK_SIZE = 360;
-export const TOTAL_QUESTIONS = LESSON_QUIZ_COUNT + EXAM_BANK_SIZE; // 850
+export const TOTAL_QUESTIONS = LESSON_QUIZ_COUNT + EXAM_BANK_SIZE; // 895
 
 /** درس‌های جزوهٔ اصلی (یازدهم) — بانک ۳۶۰ تستی و آزمون پایان ترم همین سه درس‌اند */
 export const CORE_LESSON_IDS = [1, 2, 3] as const;
