@@ -153,7 +153,7 @@ export const LESSONS_META: LessonMeta[] = [
     tagline: "الفبا، احوالپرسی، خانواده و مشاغل با فعل to be",
     color: "pink",
     grade: "هفتم",
-    vocabCount: 65,
+    vocabCount: 631,
     quizCount: 40,
     grammarCount: 3,
     pairCount: 24,
@@ -165,7 +165,7 @@ export const LESSONS_META: LessonMeta[] = [
     tagline: "ملیت‌ها، روزهای هفته، توانایی‌ها با can و توصیه",
     color: "blue",
     grade: "هشتم",
-    vocabCount: 68,
+    vocabCount: 454,
     quizCount: 40,
     grammarCount: 3,
     pairCount: 24,
@@ -177,14 +177,14 @@ export const LESSONS_META: LessonMeta[] = [
     tagline: "شخصیت، سفر، جشن‌ها و گذشتهٔ ساده",
     color: "purple",
     grade: "نهم",
-    vocabCount: 64,
+    vocabCount: 556,
     quizCount: 40,
     grammarCount: 3,
     pairCount: 24,
   },
 ];
 
-export const TOTAL_VOCABULARY = 1312;
+export const TOTAL_VOCABULARY = 2756;
 export const LESSON_QUIZ_COUNT = 535;
 export const EXAM_BANK_SIZE = 360;
 export const TOTAL_QUESTIONS = LESSON_QUIZ_COUNT + EXAM_BANK_SIZE; // 895

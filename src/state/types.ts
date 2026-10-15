@@ -32,7 +32,7 @@ export type View =
   | { type: "grammar" } // متروی گرامر — Task 39
   | { type: "my-words" }; // واژه‌های نشان‌شده — واژه‌نامهٔ شخصی
 
-export type LessonTab = "vocab" | "conversation" | "reading" | "grammar" | "writing" | "dictation" | "tests" | "synant";
+export type LessonTab = "vocab" | "conversation" | "reading" | "grammar" | "writing" | "dictation" | "tests" | "synant" | "booklet";
 
 // daily activity for streak + daily goal + quests
 export interface DayStat {

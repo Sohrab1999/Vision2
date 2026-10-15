@@ -1,9 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, BookOpen, MessageSquareText, BookOpenText, GraduationCap, ListChecks, Layers, PenLine, Ear, ArrowLeftRight } from "lucide-react";
+import { ArrowRight, BookOpen, MessageSquareText, BookOpenText, GraduationCap, ListChecks, Layers, PenLine, Ear, ArrowLeftRight, BookMarked } from "lucide-react";
 import { findLesson } from "@/data";
 import { lessonNameFa } from "@/data/lesson-meta";
+import { hasBooklet } from "@/data/booklet-content";
 import { useStudy, knownCountOfLesson, type LessonTab } from "@/lib/study-store";
 import { percent } from "@/lib/domain/percent";
 import { themeOf, faNum } from "@/lib/study-theme";
@@ -16,6 +17,7 @@ import WritingTab from "./writing-tab";
 import DictationTab from "./dictation-tab";
 import LessonTestsTab from "./lesson-tests-tab";
 import SynAntTab from "./syn-ant-tab";
+import BookletTab from "./booklet-tab";
 import { ring600 } from "@/lib/ui-colors";
 
 const tabs: { key: LessonTab; label: string; icon: React.ElementType }[] = [
@@ -28,6 +30,9 @@ const tabs: { key: LessonTab; label: string; icon: React.ElementType }[] = [
   { key: "tests", label: "تست‌ها", icon: ListChecks },
   { key: "synant", label: "مترادف و متضاد", icon: ArrowLeftRight },
 ];
+
+/** تبِ «جزوه» فقط برای درس‌های جزوه‌دار (۱۰-۱۲ در راند ۲۰۹) */
+const bookletTab = { key: "booklet" as LessonTab, label: "جزوه", icon: BookMarked };
 
 export default function LessonView({ id }: { id: number }) {
   const lesson = findLesson(id);
@@ -94,7 +99,7 @@ export default function LessonView({ id }: { id: number }) {
 
         {/* tab bar */}
         <nav className="flex gap-1 overflow-x-auto border-t border-stone-100 c-stone-70 px-3 py-2" aria-label="بخش‌های درس">
-          {tabs.map((item) => {
+          {(hasBooklet(lesson.id) ? [...tabs, bookletTab] : tabs).map((item) => {
             const Icon = item.icon;
             const active = tab === item.key;
             return (
@@ -131,6 +136,7 @@ export default function LessonView({ id }: { id: number }) {
         {tab === "dictation" && <DictationTab lesson={lesson} />}
         {tab === "tests" && <LessonTestsTab lesson={lesson} />}
         {tab === "synant" && <SynAntTab lesson={lesson} />}
+        {tab === "booklet" && <BookletTab lesson={lesson} />}
       </motion.div>
     </motion.div>
   );

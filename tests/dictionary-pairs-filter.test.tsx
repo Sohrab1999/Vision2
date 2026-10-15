@@ -88,9 +88,13 @@ describe("DictionaryView — فیلترِ «جفت‌دار» (راند ۲۰۵)"
     render(<DictionaryView />);
     clickPairedChip();
     fireEvent.change(screen.getByPlaceholderText(/language یا زبان/), { target: { value: "borrow" } });
-    // borrow lives in lessons 3 AND 4 — both homonym cards stay visible
-    const cards = screen.getAllByText("borrow", { selector: "[dir='ltr']" });
-    expect(cards.length).toBe(2);
+    // عنوانِ کارتِ borrow (درس ۱) حاضر است؛ انتخابگر به عنوانِ کارت محدود است
+    // تا چیپِ «↔ borrow» روی کارت‌های دیگر شمرده نشود. چیپِ متقابل هم دیده
+    // می‌شود — شاهدِ ترکیبِ جستجو با لنزِ جفت‌دار.
+    const cards = screen.getAllByText("borrow", { selector: "span.en-text[dir='ltr']" });
+    expect(cards.length).toBe(1);
+    const chips = screen.getAllByText("borrow", { selector: ".dict-pair-chip [dir='ltr']" });
+    expect(chips.length).toBeGreaterThan(0);
   });
 
   it("switching back to «همه» restores the full dictionary", () => {

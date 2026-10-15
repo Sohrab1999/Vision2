@@ -1,0 +1,1932 @@
+[
+ {
+  "lesson": 1,
+  "en": "a little",
+  "fa": "کمی، مقدار"
+ },
+ {
+  "lesson": 1,
+  "en": "shoes",
+  "fa": "کفش ها"
+ },
+ {
+  "lesson": 1,
+  "en": "Spain",
+  "fa": "اسپانیا"
+ },
+ {
+  "lesson": 1,
+  "en": "Brazil",
+  "fa": "برزیل"
+ },
+ {
+  "lesson": 1,
+  "en": "welcome",
+  "fa": "خوش‌آمدید"
+ },
+ {
+  "lesson": 1,
+  "en": "but",
+  "fa": "اما"
+ },
+ {
+  "lesson": 1,
+  "en": "Africa",
+  "fa": "آفریقا"
+ },
+ {
+  "lesson": 1,
+  "en": "China",
+  "fa": "چین"
+ },
+ {
+  "lesson": 1,
+  "en": "African",
+  "fa": "آفریقایی"
+ },
+ {
+  "lesson": 1,
+  "en": "Asia",
+  "fa": "آسیا"
+ },
+ {
+  "lesson": 1,
+  "en": "Australia",
+  "fa": "استرالیا"
+ },
+ {
+  "lesson": 1,
+  "en": "cousin",
+  "fa": "عموزاده، دایی‌زاده، عمه‌زاده، خاله‌زاده"
+ },
+ {
+  "lesson": 1,
+  "en": "England",
+  "fa": "انگلیس"
+ },
+ {
+  "lesson": 1,
+  "en": "fish",
+  "fa": "ماهی"
+ },
+ {
+  "lesson": 1,
+  "en": "Europe",
+  "fa": "اروپا"
+ },
+ {
+  "lesson": 1,
+  "en": "France",
+  "fa": "فرانسه"
+ },
+ {
+  "lesson": 1,
+  "en": "French",
+  "fa": "فرانسوی"
+ },
+ {
+  "lesson": 1,
+  "en": "fruit",
+  "fa": "میوه"
+ },
+ {
+  "lesson": 1,
+  "en": "great",
+  "fa": "عالی"
+ },
+ {
+  "lesson": 1,
+  "en": "Iran",
+  "fa": "ایران"
+ },
+ {
+  "lesson": 1,
+  "en": "or",
+  "fa": "یا"
+ },
+ {
+  "lesson": 1,
+  "en": "from",
+  "fa": "از"
+ },
+ {
+  "lesson": 2,
+  "en": "beginning",
+  "fa": "ابتدا"
+ },
+ {
+  "lesson": 2,
+  "en": "can",
+  "fa": "توانستن"
+ },
+ {
+  "lesson": 2,
+  "en": "there is",
+  "fa": "وجود دارد"
+ },
+ {
+  "lesson": 2,
+  "en": "go shopping",
+  "fa": "خرید کردن، رفتن برای خرید"
+ },
+ {
+  "lesson": 2,
+  "en": "visit relative",
+  "fa": "عیادت اقوام، مالقات کردن"
+ },
+ {
+  "lesson": 2,
+  "en": "good at",
+  "fa": "خوب بودن در"
+ },
+ {
+  "lesson": 2,
+  "en": "gym",
+  "fa": "سالن ورزشی"
+ },
+ {
+  "lesson": 2,
+  "en": "week",
+  "fa": "هفته"
+ },
+ {
+  "lesson": 2,
+  "en": "weekdays",
+  "fa": "روزهای هفته"
+ },
+ {
+  "lesson": 2,
+  "en": "weekend",
+  "fa": "تعطیلات آخر هفته"
+ },
+ {
+  "lesson": 2,
+  "en": "library",
+  "fa": "کتابخانه"
+ },
+ {
+  "lesson": 2,
+  "en": "why",
+  "fa": "چرا"
+ },
+ {
+  "lesson": 2,
+  "en": "climb a mountain",
+  "fa": "کوهنوردی کردن"
+ },
+ {
+  "lesson": 2,
+  "en": "day",
+  "fa": "روز"
+ },
+ {
+  "lesson": 2,
+  "en": "play sport",
+  "fa": "ورزش کردن"
+ },
+ {
+  "lesson": 2,
+  "en": "start",
+  "fa": "شروع کردن"
+ },
+ {
+  "lesson": 2,
+  "en": "study",
+  "fa": "مطالعه کردن"
+ },
+ {
+  "lesson": 2,
+  "en": "sir",
+  "fa": "آقا"
+ },
+ {
+  "lesson": 2,
+  "en": "in the morning",
+  "fa": "صبح‌ها"
+ },
+ {
+  "lesson": 2,
+  "en": "in the afternoon",
+  "fa": "بعدازظهرها"
+ },
+ {
+  "lesson": 2,
+  "en": "in the evening",
+  "fa": "عصرها"
+ },
+ {
+  "lesson": 2,
+  "en": "on weekdays",
+  "fa": "روزهای هفته"
+ },
+ {
+  "lesson": 2,
+  "en": "on the weekend",
+  "fa": "آخر هفته"
+ },
+ {
+  "lesson": 2,
+  "en": "habits",
+  "fa": "عادت‌های روزانه"
+ },
+ {
+  "lesson": 3,
+  "en": "see",
+  "fa": "دیدن"
+ },
+ {
+  "lesson": 3,
+  "en": "all",
+  "fa": "همه"
+ },
+ {
+  "lesson": 3,
+  "en": "short",
+  "fa": "کوتاه"
+ },
+ {
+  "lesson": 3,
+  "en": "be",
+  "fa": "بودن"
+ },
+ {
+  "lesson": 3,
+  "en": "sound",
+  "fa": "صدا"
+ },
+ {
+  "lesson": 3,
+  "en": "sure",
+  "fa": "حتماً"
+ },
+ {
+  "lesson": 3,
+  "en": "between",
+  "fa": "بین"
+ },
+ {
+  "lesson": 3,
+  "en": "swim",
+  "fa": "شنا کردن"
+ },
+ {
+  "lesson": 3,
+  "en": "bring",
+  "fa": "آوردن"
+ },
+ {
+  "lesson": 3,
+  "en": "photo",
+  "fa": "عکس"
+ },
+ {
+  "lesson": 3,
+  "en": "take",
+  "fa": "گرفتن، بردن"
+ },
+ {
+  "lesson": 3,
+  "en": "story",
+  "fa": "داستان"
+ },
+ {
+  "lesson": 3,
+  "en": "tell",
+  "fa": "گفتن، بیان کردن"
+ },
+ {
+  "lesson": 3,
+  "en": "too",
+  "fa": "هم، نیز"
+ },
+ {
+  "lesson": 3,
+  "en": "come",
+  "fa": "آمدن"
+ },
+ {
+  "lesson": 3,
+  "en": "very",
+  "fa": "خیلی"
+ },
+ {
+  "lesson": 3,
+  "en": "puzzle",
+  "fa": "حل کردن، جدول"
+ },
+ {
+  "lesson": 3,
+  "en": "well",
+  "fa": "خوب، سالم"
+ },
+ {
+  "lesson": 3,
+  "en": "double",
+  "fa": "دو(عدد"
+ },
+ {
+  "lesson": 3,
+  "en": "draw",
+  "fa": "رسم، کردن نقاشی، کشیدن"
+ },
+ {
+  "lesson": 3,
+  "en": "drawing",
+  "fa": "نقاشی"
+ },
+ {
+  "lesson": 3,
+  "en": "word",
+  "fa": "کلمه"
+ },
+ {
+  "lesson": 3,
+  "en": "excuse",
+  "fa": "ببخشید"
+ },
+ {
+  "lesson": 3,
+  "en": "computer",
+  "fa": "کامپیوتر"
+ },
+ {
+  "lesson": 3,
+  "en": "work",
+  "fa": "کار کردن"
+ },
+ {
+  "lesson": 3,
+  "en": "good",
+  "fa": "خوب"
+ },
+ {
+  "lesson": 3,
+  "en": "write",
+  "fa": "نوشتن"
+ },
+ {
+  "lesson": 3,
+  "en": "house",
+  "fa": "خانه"
+ },
+ {
+  "lesson": 3,
+  "en": "movies",
+  "fa": "فیلم"
+ },
+ {
+  "lesson": 3,
+  "en": "act",
+  "fa": "عمل کردن، بازی کردن"
+ },
+ {
+  "lesson": 3,
+  "en": "tea",
+  "fa": "چای"
+ },
+ {
+  "lesson": 3,
+  "en": "cake",
+  "fa": "کیک"
+ },
+ {
+  "lesson": 3,
+  "en": "make",
+  "fa": "ساختن، انجام دادن"
+ },
+ {
+  "lesson": 3,
+  "en": "badminton",
+  "fa": "بدمینتون"
+ },
+ {
+  "lesson": 3,
+  "en": "play",
+  "fa": "بازی کردن"
+ },
+ {
+  "lesson": 3,
+  "en": "chess",
+  "fa": "شطرنج"
+ },
+ {
+  "lesson": 3,
+  "en": "basketball",
+  "fa": "بسکتبال"
+ },
+ {
+  "lesson": 3,
+  "en": "football",
+  "fa": "فوتبال"
+ },
+ {
+  "lesson": 3,
+  "en": "read",
+  "fa": "خواندن"
+ },
+ {
+  "lesson": 3,
+  "en": "tennis",
+  "fa": "تنیس"
+ },
+ {
+  "lesson": 3,
+  "en": "Quran",
+  "fa": "قرآن"
+ },
+ {
+  "lesson": 3,
+  "en": "recite",
+  "fa": "از حفظ خواندن، اداء کردن"
+ },
+ {
+  "lesson": 3,
+  "en": "pronunciation",
+  "fa": "تلفظ"
+ },
+ {
+  "lesson": 3,
+  "en": "horse",
+  "fa": "اسب"
+ },
+ {
+  "lesson": 3,
+  "en": "ride",
+  "fa": "سوار شدن، راندن"
+ },
+ {
+  "lesson": 3,
+  "en": "question",
+  "fa": "سوال"
+ },
+ {
+  "lesson": 3,
+  "en": "run",
+  "fa": "دویدن"
+ },
+ {
+  "lesson": 3,
+  "en": "really",
+  "fa": "واقعاً"
+ },
+ {
+  "lesson": 3,
+  "en": "bicycle",
+  "fa": "دوچرخه"
+ },
+ {
+  "lesson": 3,
+  "en": "your",
+  "fa": "مال تو"
+ },
+ {
+  "lesson": 3,
+  "en": "you",
+  "fa": "تو"
+ },
+ {
+  "lesson": 3,
+  "en": "her",
+  "fa": "مال  او"
+ },
+ {
+  "lesson": 3,
+  "en": "she",
+  "fa": "او (مؤنث)"
+ },
+ {
+  "lesson": 3,
+  "en": "his",
+  "fa": "مال  او"
+ },
+ {
+  "lesson": 3,
+  "en": "he",
+  "fa": "او (مذکر)"
+ },
+ {
+  "lesson": 3,
+  "en": "its",
+  "fa": "مال آن"
+ },
+ {
+  "lesson": 3,
+  "en": "it",
+  "fa": "آن (شیء)"
+ },
+ {
+  "lesson": 3,
+  "en": "our",
+  "fa": "مال ما"
+ },
+ {
+  "lesson": 3,
+  "en": "we",
+  "fa": "ما"
+ },
+ {
+  "lesson": 3,
+  "en": "their",
+  "fa": "مال آنها"
+ },
+ {
+  "lesson": 3,
+  "en": "they",
+  "fa": "آن ها"
+ },
+ {
+  "lesson": 3,
+  "en": "all right",
+  "fa": "خوب بودن، سالم بودن"
+ },
+ {
+  "lesson": 3,
+  "en": "should",
+  "fa": "باید"
+ },
+ {
+  "lesson": 3,
+  "en": "backache",
+  "fa": "کمر درد"
+ },
+ {
+  "lesson": 3,
+  "en": "sore eyes",
+  "fa": "درد چشم"
+ },
+ {
+  "lesson": 3,
+  "en": "be quiet",
+  "fa": "ساکت باش"
+ },
+ {
+  "lesson": 3,
+  "en": "sore throat",
+  "fa": "گلو درد"
+ },
+ {
+  "lesson": 3,
+  "en": "stomachache",
+  "fa": "دل درد"
+ },
+ {
+  "lesson": 3,
+  "en": "call",
+  "fa": "تلفن زدن"
+ },
+ {
+  "lesson": 3,
+  "en": "the flu",
+  "fa": "آنفولانزا"
+ },
+ {
+  "lesson": 3,
+  "en": "these",
+  "fa": "این‌ها"
+ },
+ {
+  "lesson": 3,
+  "en": "don’t worry",
+  "fa": "نگران نباش"
+ },
+ {
+  "lesson": 3,
+  "en": "toothache",
+  "fa": "دندان‌درد"
+ },
+ {
+  "lesson": 3,
+  "en": "earache",
+  "fa": "گوش‌درد"
+ },
+ {
+  "lesson": 3,
+  "en": "first",
+  "fa": "ابتدا"
+ },
+ {
+  "lesson": 3,
+  "en": "go home",
+  "fa": "رفتن به خانه"
+ },
+ {
+  "lesson": 3,
+  "en": "have",
+  "fa": "داشتن"
+ },
+ {
+  "lesson": 3,
+  "en": "headache",
+  "fa": "سردرد"
+ },
+ {
+  "lesson": 3,
+  "en": "drug store",
+  "fa": "داروخانه"
+ },
+ {
+  "lesson": 3,
+  "en": "have a fever",
+  "fa": "تب داشتن"
+ },
+ {
+  "lesson": 3,
+  "en": "I’ll talk",
+  "fa": "حرف خواهم زد"
+ },
+ {
+  "lesson": 3,
+  "en": "hospital",
+  "fa": "بیمارستان"
+ },
+ {
+  "lesson": 3,
+  "en": "let's go",
+  "fa": "بیا برویم"
+ },
+ {
+  "lesson": 3,
+  "en": "measles",
+  "fa": "سرخک"
+ },
+ {
+  "lesson": 3,
+  "en": "minute",
+  "fa": "دقیقه"
+ },
+ {
+  "lesson": 4,
+  "en": "mumps",
+  "fa": "اوریون"
+ },
+ {
+  "lesson": 4,
+  "en": "more",
+  "fa": "بیشتر"
+ },
+ {
+  "lesson": 4,
+  "en": "nurse",
+  "fa": "پرستار"
+ },
+ {
+  "lesson": 4,
+  "en": "office",
+  "fa": "دفتر شرکت"
+ },
+ {
+  "lesson": 4,
+  "en": "patient",
+  "fa": "بیمار"
+ },
+ {
+  "lesson": 4,
+  "en": "pain",
+  "fa": "درد"
+ },
+ {
+  "lesson": 4,
+  "en": "sneeze",
+  "fa": "عطسه"
+ },
+ {
+  "lesson": 4,
+  "en": "parents",
+  "fa": "والدین"
+ },
+ {
+  "lesson": 4,
+  "en": "problem",
+  "fa": "مشکل"
+ },
+ {
+  "lesson": 4,
+  "en": "soldier",
+  "fa": "سرباز"
+ },
+ {
+  "lesson": 4,
+  "en": "farmer",
+  "fa": "کشاورز"
+ },
+ {
+  "lesson": 4,
+  "en": "worker",
+  "fa": "کارگر"
+ },
+ {
+  "lesson": 4,
+  "en": "footballer",
+  "fa": "بازیکن فوتبال"
+ },
+ {
+  "lesson": 4,
+  "en": "player",
+  "fa": "بازیگر"
+ },
+ {
+  "lesson": 4,
+  "en": "driver",
+  "fa": "راننده"
+ },
+ {
+  "lesson": 4,
+  "en": "shopkeeper",
+  "fa": "مغازه دار"
+ },
+ {
+  "lesson": 4,
+  "en": "house maker",
+  "fa": "خانه دار"
+ },
+ {
+  "lesson": 4,
+  "en": "doctor",
+  "fa": "پزشک"
+ },
+ {
+  "lesson": 4,
+  "en": "dressmaker",
+  "fa": "خیاط زنانه"
+ },
+ {
+  "lesson": 4,
+  "en": "banker",
+  "fa": "بانکدار"
+ },
+ {
+  "lesson": 4,
+  "en": "teacher",
+  "fa": "معلم"
+ },
+ {
+  "lesson": 4,
+  "en": "actor",
+  "fa": "هنرپیشه مرد"
+ },
+ {
+  "lesson": 4,
+  "en": "baker",
+  "fa": "نانوا دار"
+ },
+ {
+  "lesson": 4,
+  "en": "tailor",
+  "fa": "خیاط مردانه"
+ },
+ {
+  "lesson": 4,
+  "en": "headmaster",
+  "fa": "مدیر مرد"
+ },
+ {
+  "lesson": 4,
+  "en": "singer",
+  "fa": "خواننده"
+ },
+ {
+  "lesson": 4,
+  "en": "actress",
+  "fa": "ر هن پیشه زن"
+ },
+ {
+  "lesson": 4,
+  "en": "boss",
+  "fa": "رئیس"
+ },
+ {
+  "lesson": 4,
+  "en": "headmistress",
+  "fa": "مدیر زن"
+ },
+ {
+  "lesson": 4,
+  "en": "engineer",
+  "fa": "مهندس"
+ },
+ {
+  "lesson": 4,
+  "en": "boatman",
+  "fa": "قایقران"
+ },
+ {
+  "lesson": 4,
+  "en": "gardener",
+  "fa": "باغدار"
+ },
+ {
+  "lesson": 4,
+  "en": "leader",
+  "fa": "رهبر"
+ },
+ {
+  "lesson": 4,
+  "en": "photographer",
+  "fa": "عکاس"
+ },
+ {
+  "lesson": 4,
+  "en": "watchmaker",
+  "fa": "ساعت ساز"
+ },
+ {
+  "lesson": 4,
+  "en": "president",
+  "fa": "رئیس جمهور"
+ },
+ {
+  "lesson": 4,
+  "en": "forester",
+  "fa": "جنگلبان"
+ },
+ {
+  "lesson": 4,
+  "en": "sergeant",
+  "fa": "گروهبان"
+ },
+ {
+  "lesson": 4,
+  "en": "clergyman",
+  "fa": "روحانی"
+ },
+ {
+  "lesson": 4,
+  "en": "welder",
+  "fa": "جوشکار"
+ },
+ {
+  "lesson": 4,
+  "en": "tiller",
+  "fa": "سفالگر"
+ },
+ {
+  "lesson": 4,
+  "en": "governor",
+  "fa": "فرماندار"
+ },
+ {
+  "lesson": 4,
+  "en": "cameleer",
+  "fa": "ساربان"
+ },
+ {
+  "lesson": 4,
+  "en": "assistant",
+  "fa": "معاون"
+ },
+ {
+  "lesson": 4,
+  "en": "demarche",
+  "fa": "بخشدار"
+ },
+ {
+  "lesson": 4,
+  "en": "sleeper",
+  "fa": "چوپان"
+ },
+ {
+  "lesson": 4,
+  "en": "brigadier",
+  "fa": "سرتیپ"
+ },
+ {
+  "lesson": 4,
+  "en": "muezzin",
+  "fa": "موذن"
+ },
+ {
+  "lesson": 4,
+  "en": "merchant",
+  "fa": "تاجر"
+ },
+ {
+  "lesson": 4,
+  "en": "professor",
+  "fa": "استاد"
+ },
+ {
+  "lesson": 4,
+  "en": "grocer",
+  "fa": "بقال"
+ },
+ {
+  "lesson": 4,
+  "en": "writer",
+  "fa": "نویسنده"
+ },
+ {
+  "lesson": 4,
+  "en": "colonel",
+  "fa": "سرهنگ"
+ },
+ {
+  "lesson": 4,
+  "en": "carpenter",
+  "fa": "نجار"
+ },
+ {
+  "lesson": 4,
+  "en": "student",
+  "fa": "دانش آموز"
+ },
+ {
+  "lesson": 4,
+  "en": "painter",
+  "fa": "نقاش ساختمان"
+ },
+ {
+  "lesson": 4,
+  "en": "butcher",
+  "fa": "قصاب"
+ },
+ {
+  "lesson": 4,
+  "en": "council",
+  "fa": "شورا"
+ },
+ {
+  "lesson": 4,
+  "en": "miner",
+  "fa": "معدنچ، ی"
+ },
+ {
+  "lesson": 4,
+  "en": "minister",
+  "fa": "وزیر"
+ },
+ {
+  "lesson": 4,
+  "en": "rancher",
+  "fa": "گله دار"
+ },
+ {
+  "lesson": 4,
+  "en": "waiter",
+  "fa": "گارسون"
+ },
+ {
+  "lesson": 4,
+  "en": "prime minister",
+  "fa": "نخست وزیر"
+ },
+ {
+  "lesson": 4,
+  "en": "street sweeper",
+  "fa": "رفتگر"
+ },
+ {
+  "lesson": 4,
+  "en": "captain",
+  "fa": "ناخدا"
+ },
+ {
+  "lesson": 4,
+  "en": "porter",
+  "fa": "باربر"
+ },
+ {
+  "lesson": 4,
+  "en": "repairman",
+  "fa": "تعمیرکار"
+ },
+ {
+  "lesson": 4,
+  "en": "specialist",
+  "fa": "متخصص"
+ },
+ {
+  "lesson": 4,
+  "en": "greengrocery",
+  "fa": "میوه فروش"
+ },
+ {
+  "lesson": 4,
+  "en": "housewife",
+  "fa": "زن خانه دار"
+ },
+ {
+  "lesson": 4,
+  "en": "seller",
+  "fa": "فروشنده"
+ },
+ {
+  "lesson": 4,
+  "en": "mayor",
+  "fa": "شهردار"
+ },
+ {
+  "lesson": 4,
+  "en": "optician",
+  "fa": "عینکسا ز"
+ },
+ {
+  "lesson": 4,
+  "en": "glassmaker",
+  "fa": "شیشه ساز"
+ },
+ {
+  "lesson": 4,
+  "en": "lawyer",
+  "fa": "وکیل"
+ },
+ {
+  "lesson": 4,
+  "en": "barber",
+  "fa": "آرایشگر مرد"
+ },
+ {
+  "lesson": 4,
+  "en": "judge",
+  "fa": "قاضی"
+ },
+ {
+  "lesson": 4,
+  "en": "pilot",
+  "fa": "خلبان"
+ },
+ {
+  "lesson": 4,
+  "en": "decorator",
+  "fa": "آرایشگر زن"
+ },
+ {
+  "lesson": 4,
+  "en": "fisherman",
+  "fa": "ماهیگیر"
+ },
+ {
+  "lesson": 4,
+  "en": "clerk",
+  "fa": "کارمند"
+ },
+ {
+  "lesson": 4,
+  "en": "calligrapher",
+  "fa": "خوشنویس"
+ },
+ {
+  "lesson": 4,
+  "en": "artist",
+  "fa": "هنرمند"
+ },
+ {
+  "lesson": 4,
+  "en": "diver",
+  "fa": "غواص"
+ },
+ {
+  "lesson": 4,
+  "en": "piper",
+  "fa": "لوله کش"
+ },
+ {
+  "lesson": 4,
+  "en": "surgeon",
+  "fa": "جراح"
+ },
+ {
+  "lesson": 4,
+  "en": "reporter",
+  "fa": "گزارشگر"
+ },
+ {
+  "lesson": 4,
+  "en": "guard",
+  "fa": "نگهبان"
+ },
+ {
+  "lesson": 4,
+  "en": "army",
+  "fa": "نظامی"
+ },
+ {
+  "lesson": 4,
+  "en": "fireman",
+  "fa": "آتش نشان"
+ },
+ {
+  "lesson": 4,
+  "en": "guard man",
+  "fa": "مرد پاسدار"
+ },
+ {
+  "lesson": 4,
+  "en": "coach",
+  "fa": "مربی"
+ },
+ {
+  "lesson": 4,
+  "en": "tourist",
+  "fa": "جهانگرد"
+ },
+ {
+  "lesson": 4,
+  "en": "officer",
+  "fa": "افسر"
+ },
+ {
+  "lesson": 4,
+  "en": "doorkeeper",
+  "fa": "دربان"
+ },
+ {
+  "lesson": 4,
+  "en": "speaker",
+  "fa": "سخنران"
+ },
+ {
+  "lesson": 4,
+  "en": "psychologist",
+  "fa": "روانشناس"
+ },
+ {
+  "lesson": 4,
+  "en": "blacksmith",
+  "fa": "آهنگر"
+ },
+ {
+  "lesson": 4,
+  "en": "sculptor",
+  "fa": "مجسمه ساز"
+ },
+ {
+  "lesson": 4,
+  "en": "operator",
+  "fa": "تلفنچی"
+ },
+ {
+  "lesson": 4,
+  "en": "retired",
+  "fa": "بازنشسته"
+ },
+ {
+  "lesson": 4,
+  "en": "caretaker",
+  "fa": "سرایدار"
+ },
+ {
+  "lesson": 4,
+  "en": "mother",
+  "fa": "مادر"
+ },
+ {
+  "lesson": 4,
+  "en": "son",
+  "fa": "پسر"
+ },
+ {
+  "lesson": 4,
+  "en": "sister",
+  "fa": "خواهر"
+ },
+ {
+  "lesson": 4,
+  "en": "step-brother",
+  "fa": "برادرخوانده"
+ },
+ {
+  "lesson": 4,
+  "en": "daughter",
+  "fa": "دختر"
+ },
+ {
+  "lesson": 4,
+  "en": "brother",
+  "fa": "برادر"
+ },
+ {
+  "lesson": 4,
+  "en": "step-mother",
+  "fa": "نامادری، مادرخوانده"
+ },
+ {
+  "lesson": 4,
+  "en": "half-brother",
+  "fa": "برادر ناتنی"
+ },
+ {
+  "lesson": 4,
+  "en": "step-sister",
+  "fa": "خواهرخوانده"
+ },
+ {
+  "lesson": 4,
+  "en": "stepfather",
+  "fa": "نامادری، پدرخوانده"
+ },
+ {
+  "lesson": 4,
+  "en": "grandfather",
+  "fa": "پدر بزرگ"
+ },
+ {
+  "lesson": 4,
+  "en": "grandmother",
+  "fa": "مادر بزرگ"
+ },
+ {
+  "lesson": 4,
+  "en": "half-sister",
+  "fa": "خواهر ناتنی"
+ },
+ {
+  "lesson": 4,
+  "en": "grandparents",
+  "fa": "پدر بزرگ و مادر بزرگ"
+ },
+ {
+  "lesson": 4,
+  "en": "grandchildren",
+  "fa": "نوه"
+ },
+ {
+  "lesson": 4,
+  "en": "grandson",
+  "fa": "نوهٔ پسر"
+ },
+ {
+  "lesson": 4,
+  "en": "uncle",
+  "fa": "دایی، عمو"
+ },
+ {
+  "lesson": 4,
+  "en": "granddaughter",
+  "fa": "نوهٔ دختر"
+ },
+ {
+  "lesson": 4,
+  "en": "aunt",
+  "fa": "عمه، خاله"
+ },
+ {
+  "lesson": 4,
+  "en": "brother-in-law",
+  "fa": "برادرشوهر، برادرزن، باجناق"
+ },
+ {
+  "lesson": 4,
+  "en": "sister-in-law",
+  "fa": "جاری – زن برادر زن"
+ },
+ {
+  "lesson": 4,
+  "en": "niece",
+  "fa": "دختر برادر یا خواهر"
+ },
+ {
+  "lesson": 4,
+  "en": "only-child",
+  "fa": "تک فرزند"
+ },
+ {
+  "lesson": 4,
+  "en": "twins",
+  "fa": "دوقلو"
+ },
+ {
+  "lesson": 4,
+  "en": "father-in-law",
+  "fa": "پدرزن، پدرشوهر"
+ },
+ {
+  "lesson": 4,
+  "en": "mother-in-law",
+  "fa": "مادرزن، مادرشوهر"
+ },
+ {
+  "lesson": 4,
+  "en": "wife",
+  "fa": "زن"
+ },
+ {
+  "lesson": 4,
+  "en": "girl friend",
+  "fa": "دوست دختر"
+ },
+ {
+  "lesson": 4,
+  "en": "husband",
+  "fa": "شوهر"
+ },
+ {
+  "lesson": 4,
+  "en": "boy friend",
+  "fa": "دوست پسر"
+ },
+ {
+  "lesson": 4,
+  "en": "blouse",
+  "fa": "بلوز"
+ },
+ {
+  "lesson": 4,
+  "en": "pants",
+  "fa": "شلوار"
+ },
+ {
+  "lesson": 4,
+  "en": "shirt",
+  "fa": "پیراهن مردانه"
+ },
+ {
+  "lesson": 4,
+  "en": "jeans",
+  "fa": "جین"
+ },
+ {
+  "lesson": 4,
+  "en": "sport shirt",
+  "fa": "پیراهن اسپورت"
+ },
+ {
+  "lesson": 4,
+  "en": "dress",
+  "fa": "پیراهن زنانه"
+ },
+ {
+  "lesson": 4,
+  "en": "jersey",
+  "fa": "پیراهن کشباف"
+ },
+ {
+  "lesson": 4,
+  "en": "jacket",
+  "fa": "کت"
+ },
+ {
+  "lesson": 4,
+  "en": "sweater",
+  "fa": "سویستر"
+ },
+ {
+  "lesson": 4,
+  "en": "three-piece suit",
+  "fa": "لباس سه‌تکه"
+ },
+ {
+  "lesson": 4,
+  "en": "suit",
+  "fa": "کت و شلوار"
+ },
+ {
+  "lesson": 4,
+  "en": "uniform",
+  "fa": "لباس فرم"
+ },
+ {
+  "lesson": 4,
+  "en": "tie",
+  "fa": "کراوات"
+ },
+ {
+  "lesson": 4,
+  "en": "shorts",
+  "fa": "شلوارک"
+ },
+ {
+  "lesson": 4,
+  "en": "T-shirt",
+  "fa": "تی‌شرت"
+ },
+ {
+  "lesson": 4,
+  "en": "jumpsuit",
+  "fa": "لباس کار یکسره"
+ },
+ {
+  "lesson": 4,
+  "en": "maternity dress",
+  "fa": "لباس بارداری"
+ },
+ {
+  "lesson": 4,
+  "en": "jumper",
+  "fa": "سارافون"
+ },
+ {
+  "lesson": 4,
+  "en": "vest",
+  "fa": "جلیقه"
+ },
+ {
+  "lesson": 4,
+  "en": "tunic",
+  "fa": "تونیک"
+ },
+ {
+  "lesson": 4,
+  "en": "blazer",
+  "fa": "کت رسمی"
+ },
+ {
+  "lesson": 4,
+  "en": "overalls",
+  "fa": "لباس کار بندی"
+ },
+ {
+  "lesson": 4,
+  "en": "leggings",
+  "fa": "شلوار استرچ"
+ },
+ {
+  "lesson": 4,
+  "en": "tuxedo",
+  "fa": "کت و شلوار رسمی مردانه"
+ },
+ {
+  "lesson": 4,
+  "en": "turtleneck",
+  "fa": "پیراهن یقه‌گردان"
+ },
+ {
+  "lesson": 4,
+  "en": "gown",
+  "fa": "لباس شب"
+ },
+ {
+  "lesson": 4,
+  "en": "bow tie",
+  "fa": "پاپیون"
+ },
+ {
+  "lesson": 5,
+  "en": "about",
+  "fa": "راجع به"
+ },
+ {
+  "lesson": 5,
+  "en": "some",
+  "fa": "تعدادی"
+ },
+ {
+  "lesson": 5,
+  "en": "actually",
+  "fa": "در واقع"
+ },
+ {
+  "lesson": 5,
+  "en": "soon",
+  "fa": "به زودی"
+ },
+ {
+  "lesson": 5,
+  "en": "south",
+  "fa": "جنوب"
+ },
+ {
+  "lesson": 5,
+  "en": "any",
+  "fa": "هیچ"
+ },
+ {
+  "lesson": 5,
+  "en": "special",
+  "fa": "مخصوص"
+ },
+ {
+  "lesson": 5,
+  "en": "big",
+  "fa": "بزرگ"
+ },
+ {
+  "lesson": 5,
+  "en": "stadium",
+  "fa": "ورزشگاه"
+ },
+ {
+  "lesson": 5,
+  "en": "tell me",
+  "fa": "به من بگو"
+ },
+ {
+  "lesson": 5,
+  "en": "there are",
+  "fa": "وجود دارند"
+ },
+ {
+  "lesson": 5,
+  "en": "zoo",
+  "fa": "باغ وحش"
+ },
+ {
+  "lesson": 5,
+  "en": "bus station",
+  "fa": "ایستگاه اتوبوس"
+ },
+ {
+  "lesson": 5,
+  "en": "friend",
+  "fa": "دوست"
+ },
+ {
+  "lesson": 5,
+  "en": "church",
+  "fa": "کلیسا"
+ },
+ {
+  "lesson": 5,
+  "en": "many",
+  "fa": "زیاد"
+ },
+ {
+  "lesson": 5,
+  "en": "minaret",
+  "fa": "منارهٔ مسجد"
+ },
+ {
+  "lesson": 5,
+  "en": "metro system",
+  "fa": "سیستم مترو"
+ },
+ {
+  "lesson": 5,
+  "en": "store",
+  "fa": "مغازه"
+ },
+ {
+  "lesson": 5,
+  "en": "mosque",
+  "fa": "مسجد"
+ },
+ {
+  "lesson": 5,
+  "en": "museum",
+  "fa": "موزه"
+ },
+ {
+  "lesson": 5,
+  "en": "train station",
+  "fa": "ایستگاه قطار"
+ },
+ {
+  "lesson": 5,
+  "en": "near",
+  "fa": "نزدیک"
+ },
+ {
+  "lesson": 5,
+  "en": "restaurant",
+  "fa": "رستوران"
+ },
+ {
+  "lesson": 5,
+  "en": "new",
+  "fa": "جدید"
+ },
+ {
+  "lesson": 5,
+  "en": "north",
+  "fa": "شمال"
+ },
+ {
+  "lesson": 5,
+  "en": "palace",
+  "fa": "کاخ"
+ },
+ {
+  "lesson": 5,
+  "en": "old",
+  "fa": "قدیمی، پیر"
+ },
+ {
+  "lesson": 6,
+  "en": "rainy",
+  "fa": "بارانی"
+ },
+ {
+  "lesson": 6,
+  "en": "animal",
+  "fa": "حیوان"
+ },
+ {
+  "lesson": 6,
+  "en": "raise",
+  "fa": "پرورش دادن"
+ },
+ {
+  "lesson": 6,
+  "en": "river",
+  "fa": "رودخانه"
+ },
+ {
+  "lesson": 6,
+  "en": "same",
+  "fa": "یکسان"
+ },
+ {
+  "lesson": 6,
+  "en": "snowy",
+  "fa": "برفی"
+ },
+ {
+  "lesson": 6,
+  "en": "spring",
+  "fa": "بهار"
+ },
+ {
+  "lesson": 6,
+  "en": "different",
+  "fa": "متفاوت"
+ },
+ {
+  "lesson": 6,
+  "en": "sunflower",
+  "fa": "گل آفتابگردان"
+ },
+ {
+  "lesson": 6,
+  "en": "example",
+  "fa": "مثال"
+ },
+ {
+  "lesson": 6,
+  "en": "sunny",
+  "fa": "آفتابی"
+ },
+ {
+  "lesson": 6,
+  "en": "fall",
+  "fa": "پاییز"
+ },
+ {
+  "lesson": 6,
+  "en": "tree",
+  "fa": "درخت"
+ },
+ {
+  "lesson": 6,
+  "en": "village",
+  "fa": "روستا"
+ },
+ {
+  "lesson": 6,
+  "en": "warm",
+  "fa": "گرم"
+ },
+ {
+  "lesson": 6,
+  "en": "weather",
+  "fa": "آب و هوا"
+ },
+ {
+  "lesson": 6,
+  "en": "give",
+  "fa": "دادن"
+ },
+ {
+  "lesson": 6,
+  "en": "wet",
+  "fa": "خیس(مرطوب"
+ },
+ {
+  "lesson": 6,
+  "en": "hot",
+  "fa": "گرم"
+ },
+ {
+  "lesson": 6,
+  "en": "icy",
+  "fa": "یخ‌بندان، یخ‌زده"
+ },
+ {
+  "lesson": 6,
+  "en": "wind",
+  "fa": "باد"
+ },
+ {
+  "lesson": 6,
+  "en": "interesting",
+  "fa": "جالب"
+ },
+ {
+  "lesson": 6,
+  "en": "windy",
+  "fa": "طوفانی"
+ },
+ {
+  "lesson": 6,
+  "en": "job",
+  "fa": "شغل"
+ },
+ {
+  "lesson": 6,
+  "en": "winter",
+  "fa": "زمستان"
+ },
+ {
+  "lesson": 6,
+  "en": "madam",
+  "fa": "خانم"
+ },
+ {
+  "lesson": 6,
+  "en": "much",
+  "fa": "مقدار زیادی"
+ },
+ {
+  "lesson": 6,
+  "en": "dog",
+  "fa": "سگ"
+ },
+ {
+  "lesson": 6,
+  "en": "people",
+  "fa": "مردم"
+ },
+ {
+  "lesson": 6,
+  "en": "place",
+  "fa": "مکان"
+ },
+ {
+  "lesson": 6,
+  "en": "cattle",
+  "fa": "گله گاو"
+ },
+ {
+  "lesson": 6,
+  "en": "plow",
+  "fa": "گاوآهن، شخم زدن"
+ },
+ {
+  "lesson": 7,
+  "en": "usually",
+  "fa": "معمولاً"
+ },
+ {
+  "lesson": 7,
+  "en": "walk",
+  "fa": "راه رفتن"
+ },
+ {
+  "lesson": 7,
+  "en": "as",
+  "fa": "به عنوان"
+ },
+ {
+  "lesson": 7,
+  "en": "watch movie",
+  "fa": "فیلم تماشا کردن"
+ },
+ {
+  "lesson": 7,
+  "en": "book",
+  "fa": "کتاب"
+ },
+ {
+  "lesson": 7,
+  "en": "free time",
+  "fa": "اوقات فراغت"
+ },
+ {
+  "lesson": 7,
+  "en": "go to the movies",
+  "fa": "رفتن به سینما"
+ },
+ {
+  "lesson": 7,
+  "en": "ski",
+  "fa": "اسکی"
+ },
+ {
+  "lesson": 7,
+  "en": "hobby",
+  "fa": "سرگرمی"
+ },
+ {
+  "lesson": 7,
+  "en": "walk in the park",
+  "fa": "قدم زدن در پارک"
+ },
+ {
+  "lesson": 7,
+  "en": "horse riding",
+  "fa": "اسب‌سواری"
+ },
+ {
+  "lesson": 7,
+  "en": "work in the garden",
+  "fa": "کار کردن در باغ"
+ },
+ {
+  "lesson": 7,
+  "en": "play tennis",
+  "fa": "تنیس بازی کردن"
+ },
+ {
+  "lesson": 7,
+  "en": "poem",
+  "fa": "شعر"
+ },
+ {
+  "lesson": 7,
+  "en": "listen to story",
+  "fa": "گوش دادن به داستان"
+ },
+ {
+  "lesson": 7,
+  "en": "magazine",
+  "fa": "مجله"
+ },
+ {
+  "lesson": 7,
+  "en": "play computer",
+  "fa": "بازی‌های کامپیوتری"
+ },
+ {
+  "lesson": 7,
+  "en": "games",
+  "fa": "بازی‌ها"
+ },
+ {
+  "lesson": 7,
+  "en": "net",
+  "fa": "شبکه، اینترنت"
+ },
+ {
+  "lesson": 7,
+  "en": "time",
+  "fa": "وقت، زمان"
+ },
+ {
+  "lesson": 7,
+  "en": "reading",
+  "fa": "خواندن، مطالعه"
+ },
+ {
+  "lesson": 7,
+  "en": "shopping",
+  "fa": "خرید کردن"
+ },
+ {
+  "lesson": 7,
+  "en": "seventy",
+  "fa": "هفتاد"
+ },
+ {
+  "lesson": 7,
+  "en": "colors",
+  "fa": "رنگ‌ها"
+ },
+ {
+  "lesson": 7,
+  "en": "January",
+  "fa": "ژانویه (دی/بهمن)"
+ },
+ {
+  "lesson": 7,
+  "en": "February",
+  "fa": "فوریه (بهمن/اسفند)"
+ },
+ {
+  "lesson": 7,
+  "en": "March",
+  "fa": "مارس (اسفند/فروردین)"
+ },
+ {
+  "lesson": 7,
+  "en": "April",
+  "fa": "آوریل (فروردین/اردیبهشت)"
+ },
+ {
+  "lesson": 7,
+  "en": "May",
+  "fa": "مه (اردیبهشت/خرداد)"
+ },
+ {
+  "lesson": 7,
+  "en": "June",
+  "fa": "ژوئن (خرداد/تیر)"
+ },
+ {
+  "lesson": 7,
+  "en": "July",
+  "fa": "ژوئیه (تیر/مرداد)"
+ },
+ {
+  "lesson": 7,
+  "en": "August",
+  "fa": "اوت (مرداد/شهریور)"
+ },
+ {
+  "lesson": 7,
+  "en": "September",
+  "fa": "سپتامبر (شهریور/مهر)"
+ },
+ {
+  "lesson": 7,
+  "en": "October",
+  "fa": "اکتبر (مهر/آبان)"
+ },
+ {
+  "lesson": 7,
+  "en": "November",
+  "fa": "نوامبر (آبان/آذر)"
+ },
+ {
+  "lesson": 7,
+  "en": "December",
+  "fa": "دسامبر (آذر/دی)"
+ }
+]
