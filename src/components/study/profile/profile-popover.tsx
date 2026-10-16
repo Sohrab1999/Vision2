@@ -12,6 +12,7 @@ import NewBadgeDot from "./new-badge-dot";
 import { exportProgress, parseBackup, applyBackup, backupSummary, readAutoBackup, restoreAutoBackup, autoBackupAgeFa, collectData } from "@/lib/backup";
 import { trackEvent } from "@/lib/analytics";
 import { pushSync, fetchSync, mergeSyncData, applyMergedSnapshot, normalizeCode, looksLikeCode } from "@/lib/sync";
+import { adoptResumeIfAbsent } from "@/lib/bg-reading";
 import { useToast } from "@/hooks/use-toast";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
@@ -193,6 +194,10 @@ export default function ProfilePopover() {
     }
     const merged = mergeSyncData(collectData(), res.data);
     if (applyMergedSnapshot(merged)) {
+      // راند ۲۳۶ — رکوردِ «ادامهٔ مطالعه»ی ابری با پذیرش-اگر-غایب: دستگاهِ
+      // بی‌رکورد نشانگرِ ابری را می‌گیرد (دستگاهِ نو = «ادامه» هم می‌آید)؛
+      // دستگاهِ رکورددار «آخرینِ دیده‌شدهٔ» خودش را نگه می‌دارد.
+      if (res.resume) adoptResumeIfAbsent(res.resume);
       if (codeForJoin) setSyncCode(normalizeCode(codeForJoin));
       markSynced(res.updatedAt);
       trackEvent("sync_restore");

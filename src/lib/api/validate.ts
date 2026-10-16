@@ -105,7 +105,10 @@ export const syncQuerySchema = z.object({
   code: z.string().max(32, "قالب کد ارسالی نامعتبر است."),
 });
 
-/** /api/sync POST — snapshot envelope; data shape checked by dataToString */
+/** /api/sync POST — snapshot envelope; data shape checked by dataToString.
+ *  راند ۲۳۶ — resume (نشانگرِ «ادامهٔ مطالعه») اختیاری و مات: سرور فقط
+ *  قابِ شیء را می‌پذیرد؛ پالایشِ محتوایی با sanitizeResumeInput سمتِ
+ *  کلاینتِ گیرنده است. */
 export const syncSchema = z.object({
   userId: z
     .string()
@@ -114,6 +117,7 @@ export const syncSchema = z.object({
     .max(64, "شناسهٔ یادگیرنده نامعتبر است."),
   code: z.string().max(32, "قالب کد ارسالی نامعتبر است.").optional(),
   data: z.record(z.string(), z.unknown(), { message: "دادهٔ ارسالی باید یک شیء باشد." }),
+  resume: z.record(z.string(), z.unknown()).optional(),
 });
 
 /** /api/event POST — whitelist check lives in the route (isEventName) */

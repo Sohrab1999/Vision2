@@ -5,6 +5,7 @@ import { TOTAL_VOCABULARY, EXAM_BANK_SIZE } from "@/data/lesson-meta";
 import { GRAMMAR_LINES, GRAMMAR_STATION_TOTAL } from "@/data/grammar-map";
 import { useStudy, summarize, srsDueTotal, firstLessonWithDue, mistakesOfLesson } from "@/lib/study-store";
 import { readAppendixResume, APPENDIX_SCOPE_LABELS, type AppendixResumeItem } from "@/lib/bg-reading";
+import { useAppendixResumeNav } from "../shared/use-appendix-resume-nav";
 import { hardIdsOf } from "@/lib/konkur";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
@@ -29,16 +30,13 @@ export default function HomeTools() {
     : 0;
   const konkurHardCount = mounted ? hardIdsOf(mistakes, konkurWrong).size : 0;
 
-  // راند ۲۳۳/۲۳۴ — «ادامهٔ مطالعه»: آخرینِ دیده‌شده در هر لایهٔ ضمیمه
-  // (درسنامهٔ جامع / اجزای کلماتی / افعال بی‌قاعده) — رکوردِ خودکفایِ
-  // localStorageِ bg-reading (بدونِ هیچ importِ سنگین در پوستهٔ eagerِ خانه،
-  // قراردادِ Task-44). هیچ رکوردی = کارت مثلِ سابق.
+  // راند ۲۳۳/۲۳۴/۲۳۵ — «ادامهٔ مطالعه»: آخرینِ دیده‌شده در هر لایهٔ ضمیمه
+  // (درسنامهٔ جامع / اجزای کلماتی / افعال بی‌قاعده / جدول تلفظ / نشانه‌های
+  // اختصاری) — رکوردِ خودکفایِ localStorageِ bg-reading (بدونِ هیچ importِ
+  // سنگین در پوستهٔ eagerِ خانه، قراردادِ Task-44). هیچ رکوردی = کارت مثلِ سابق.
   const resume: AppendixResumeItem | null = mounted ? readAppendixResume() : null;
-  const openAppendixTopic = useStudy((s) => s.openAppendixTopic);
-  const openAppendixPosTable = useStudy((s) => s.openAppendixPosTable);
-  const openAppendixVerb = useStudy((s) => s.openAppendixVerb);
-  const openAppendixPhoneme = useStudy((s) => s.openAppendixPhoneme);
-  const openAppendixAbbrev = useStudy((s) => s.openAppendixAbbrev);
+  // راند ۲۳۶ — نگاشتِ scope→view از قلابِ مشترکِ سه‌دره (یک قرارداد)
+  const navigateResume = useAppendixResumeNav();
 
   return (
     <section aria-label="ابزارهای یادگیری" className="tools-grid">
@@ -67,16 +65,10 @@ export default function HomeTools() {
                 tool.onClick();
                 return;
               }
-              // راند ۲۳۳/۲۳۴/۲۳۵ — نشانگرِ «ادامهٔ مطالعه» موجود است؟ پرشِ عمیقِ همان لایه
-              // (r221 درسنامه / r224 جدولِ pos / r234 سطرِ فعل / r235 واک و نشانه)؛
-              // نبودِ رکورد = ضمیمهٔ ساده
+              // راند ۲۳۳/۲۳۴/۲۳۵/۲۳۶ — نشانگرِ «ادامهٔ مطالعه» موجود است؟ پرشِ عمیقِ همان
+              // لایه از قلابِ مشترکِ سه‌دره؛ نبودِ رکورد = ضمیمهٔ ساده
               if ("resume" in tool && tool.resume) {
-                const r = tool.resume;
-                if (r.scope === "grammar") openAppendixTopic(r.id);
-                else if (r.scope === "pos") openAppendixPosTable(r.id);
-                else if (r.scope === "phonetics") openAppendixPhoneme(r.id);
-                else if (r.scope === "abbrev") openAppendixAbbrev(r.id);
-                else openAppendixVerb(r.id);
+                navigateResume(tool.resume);
                 return;
               }
               setView((tool as { view: { type: "dictionary" } }).view);

@@ -7,8 +7,13 @@ import { looksLikeCode, newCode, strictNormalizeCode } from "@/lib/sync-code";
 export const runtime = "nodejs";
 
 // F3 «کد یادگیرنده» — cross-device progress sync.
-// POST { code?, data } → upsert snapshot (code generated when absent)
+// POST { code?, data, resume? } → upsert snapshot (code generated when absent)
 // GET  ?code=XXXX-XXXX → return the stored snapshot (merge happens client-side)
+//
+// راند ۲۳۶ — نشانگرِ «ادامهٔ مطالعه» (r233-235) هم‌پایِ data سفر می‌کند:
+// ردیفِ DB همان رشتهٔ JSON می‌ماند ولی اکنون پاکتِ {data, resume} را نگه
+// می‌دارد؛ خواندنِ legacy (خودِ SyncData) هم با unwrapِ دفاعی پشتیبانی
+// می‌شود — snapshotهایِ کهنه هیچ می‌شکنند.
 //
 // The code is the only credential (deliberately no full auth for this
 // product stage — see roadmap §8). Brute-force resistance comes from
@@ -58,6 +63,16 @@ export const POST = withApi(
       throw ApiError.bad("دادهٔ ارسالی نامعتبر یا بیش از حد بزرگ است.");
     }
 
+    // راند ۲۳۶ — پاکتِ ذخیره‌شونی: خودِ data + رکوردِ اختیاریِ «ادامهٔ
+    // مطالعه» (هر دو مات و نامحوظ — پالایشِ محتوایی سمتِ کلاینت است و
+    // سرور فقط قاب و سقفِ بایت را نگاه می‌کند). رکوردِ خراب = حذفِ کلید.
+    const stored = JSON.stringify({
+      data: JSON.parse(dataStr),
+      ...(body.resume && typeof body.resume === "object" && !Array.isArray(body.resume)
+        ? { resume: body.resume }
+        : {}),
+    });
+
     const requested = body.code !== undefined ? strictNormalizeCode(body.code) : "";
     if (body.code !== undefined && !looksLikeCode(body.code)) {
       throw ApiError.bad("قالب کد درست نیست.");
@@ -70,13 +85,13 @@ export const POST = withApi(
       // generate a collision-free code (retry a few times)
       for (let i = 0; i < 5 && !row; i++) {
         const code = newCode();
-        row = await db.learnerSync.create({ data: { code, userId: body.userId, data: dataStr } }).catch(() => null);
+        row = await db.learnerSync.create({ data: { code, userId: body.userId, data: stored } }).catch(() => null);
       }
       if (!row) {
         throw ApiError.server("ساخت کد ناموفق بود — دوباره تلاش کن.");
       }
     } else {
-      row = await db.learnerSync.update({ where: { code: row.code }, data: { data: dataStr } });
+      row = await db.learnerSync.update({ where: { code: row.code }, data: { data: stored } });
     }
 
     return json({ code: row.code, updatedAt: row.updatedAt });

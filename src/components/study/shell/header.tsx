@@ -10,6 +10,7 @@ import ProfilePopover from "../profile/profile-popover";
 import DuePill from "../practice/due-pill";
 import GoalChip from "../practice/goal-chip";
 import FreezeBadge from "../practice/freeze-badge";
+import HeaderResumeButton from "./header-resume-button";
 
 // ------------------------------------------------------------------
 // هدر چسبان — گام ۷.۲-ج §12: این فایل فقط «میلهٔ هدر» است؛ پاپ‌اُور
@@ -76,6 +77,9 @@ export default function Header() {
           <GoalChip />
           {/* نشانگر یخِ زنجیره — مخزن یخ/نجات امروز، کنار شعله (Task 77) */}
           <FreezeBadge />
+          {/* راند ۲۳۶ — دکمهٔ «ادامهٔ مطالعه» (بندِ ① پیشنهادِ ۲۳۵): درِ چهارمِ
+              حلقه از هر نمایِ غیرِضمیمه‌ای؛ بی‌رکورد یا خودِ ضمیمه = هیچ */}
+          <HeaderResumeButton />
           <button
             onClick={() => setTheme(isDark ? "light" : "dark")}
             className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border c-card text-stone-500 transition-[background-color,color,border-color,transform] hover:text-amber-500 hover:border-amber-200 active:scale-[0.96]"

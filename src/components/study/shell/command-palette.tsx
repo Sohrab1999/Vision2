@@ -58,6 +58,7 @@ import {
   writeFlagPrefill,
 } from "@/lib/nav-prefill";
 import { readAppendixResume, APPENDIX_SCOPE_LABELS, type AppendixResumeItem } from "@/lib/bg-reading";
+import { useAppendixResumeNav } from "../shared/use-appendix-resume-nav";
 import { Kbd } from "./shortcut-guide";
 
 // ------------------------------------------------------------------
@@ -132,12 +133,8 @@ export default function CommandPalette() {
   const goHome = useStudy((s) => s.goHome);
   const openLesson = useStudy((s) => s.openLesson);
   const openLessonTab = useStudy((s) => s.openLessonTab);
-  // راند ۲۳۵ — مسیرِ فرمانِ «ادامهٔ مطالعه»: همان پنج مقصدِ کارتِ خانه
-  const openAppendixTopic = useStudy((s) => s.openAppendixTopic);
-  const openAppendixPosTable = useStudy((s) => s.openAppendixPosTable);
-  const openAppendixVerb = useStudy((s) => s.openAppendixVerb);
-  const openAppendixPhoneme = useStudy((s) => s.openAppendixPhoneme);
-  const openAppendixAbbrev = useStudy((s) => s.openAppendixAbbrev);
+  // راند ۲۳۶ — مسیرِ فرمانِ «ادامهٔ مطالعه» از قلابِ مشترکِ سه‌دره
+  const navigateResume = useAppendixResumeNav();
   const { theme, setTheme } = useTheme();
   const isDark = theme === "dark";
 
@@ -316,16 +313,12 @@ export default function CommandPalette() {
         setView({ type: "appendix" });
         break;
       case "nav-resume": {
-        // راند ۲۳۵ — همان مسیرِ کارتِ خانه، ولی مقصد از snapshotِ لحظهٔ اجرا
-        // خوانده می‌شود (نه لحظهٔ باز شدن) تا همیشه «آخرینِ واقعی» برود.
-        // رکورد در فاصلهٔ باز شدن تا اجرا پاک شده باشد = هیچ جابه‌جاییِ
-        // ساختگی — فرمان بی‌مقصد هیچ کار نمی‌کند (صداقتِ رفتاری).
+        // راند ۲۳۵/۲۳۶ — مقصد از snapshotِ لحظهٔ اجرا خوانده می‌شود (نه لحظهٔ
+        // باز شدن) تا همیشه «آخرینِ واقعی» برود. رکورد در فاصلهٔ باز شدن تا
+        // اجرا پاک شده باشد = هیچ جابه‌جاییِ ساختگی — فرمانِ بی‌مقصد هیچ کار
+        // نمی‌کند (صداقتِ رفتاری).
         const r = readAppendixResume();
-        if (r?.scope === "grammar") openAppendixTopic(r.id);
-        else if (r?.scope === "pos") openAppendixPosTable(r.id);
-        else if (r?.scope === "phonetics") openAppendixPhoneme(r.id);
-        else if (r?.scope === "abbrev") openAppendixAbbrev(r.id);
-        else if (r) openAppendixVerb(r.id);
+        if (r) navigateResume(r);
         break;
       }
       case "nav-grammar":

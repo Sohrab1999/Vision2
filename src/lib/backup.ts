@@ -9,6 +9,7 @@
 import { useStudy } from "./study-store";
 import { DEVICE_KEYS, sanitizeAll, asRecord } from "@/lib/persist/schema";
 import type { SyncData } from "@/lib/persist/schema";
+import { readAppendixResume, sanitizeResumeInput, adoptResumeIfAbsent, type AppendixResumeItem } from "./bg-reading";
 import { faNum } from "./study-theme";
 
 // R-1 «پایداری schema-محور»: the payload shape, its sanitization and
@@ -21,6 +22,11 @@ export interface BackupPayload {
   version: number;
   exportedAt: string;
   data: SyncData;
+  /** راند ۲۳۶ — نشانگرِ «ادامهٔ مطالعه» همراهِ پشتیبان سفر می‌کند (بندِ ②
+   *  پیشنهادِ ۲۳۵). بیرونِ SyncData می‌ماند (رکورد در استورِ یادگیری نیست —
+   *  قراردادِ r233-235) ولی در همهٔ مسیرهایِ سفر همسفرِ data است. legacy
+   *  payloads بدونِ آن می‌آیند — پالایشِ دفاعیِ sanitizeResumeInput. */
+  resume?: AppendixResumeItem;
 }
 
 /**
@@ -50,6 +56,7 @@ export function exportProgress(): boolean {
       version: BACKUP_VERSION,
       exportedAt: new Date().toISOString(),
       data: collectData(),
+      ...(readAppendixResume() ? { resume: readAppendixResume()! } : {}),
     };
     const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
     const url = URL.createObjectURL(blob);
@@ -94,6 +101,11 @@ export function parseBackup(text: string): BackupPayload {
     version: BACKUP_VERSION,
     exportedAt: typeof rec["exportedAt"] === "string" ? rec["exportedAt"] : new Date().toISOString(),
     data: sanitizeAll(rec["data"]),
+    // راند ۲۳۶ — رکوردِ مسافر با همان سیاستِ دفاعیِ خواندنِ محلی پالایش می‌شود؛
+    // خراب/سیم‌نشده/ناقص = حذفِ کاملِ کلید (نه یک رکوردِ نیمه‌کارِ جعلی)
+    ...(sanitizeResumeInput(rec["resume"])
+      ? { resume: sanitizeResumeInput(rec["resume"])! }
+      : {}),
   };
 }
 
@@ -128,6 +140,10 @@ export function applyBackup(payload: BackupPayload): boolean {
         version: 0, // force zustand to rehydrate/migrate normally
       })
     );
+    // راند ۲۳۶ — رکوردِ «ادامهٔ مطالعه»ی مسافر با سیاستِ پذیرش-اگر-غایب:
+    // دستگاهِ بی‌رکورد نشانگرِ پشتیبان را می‌گیرد؛ دستگاهِ رکورددار «آخرینِ
+    // دیده‌شدهٔ» خودش را نگه می‌دارد (حقیقتِ محلی از مسافر تازه‌تر است).
+    if (payload.resume) adoptResumeIfAbsent(payload.resume);
     return true;
   } catch {
     return false;
@@ -158,6 +174,9 @@ export interface AutoBackup {
   savedAt: string; // ISO
   counts: { known: number; results: number; srs: number; mistakes: number; history: number; dayHistory: number; konkur: number; duel: number };
   data: BackupPayload["data"];
+  /** راند ۲۳۶ — نشانگرِ «ادامهٔ مطالعه» در snapshotِ خودکار هم هست (legacy
+   *  snapshots بدونِ آن می‌آیند). */
+  resume?: AppendixResumeItem;
 }
 
 /** count-based fingerprint so we only rewrite when something actually changed */
@@ -197,7 +216,12 @@ export function maybeAutoBackup(force = false): "written" | "skipped" | "unchang
       return "skipped"; // nothing worth snapshotting yet
     }
 
-    const payload: AutoBackup = { savedAt: new Date().toISOString(), counts, data };
+    const payload: AutoBackup = {
+      savedAt: new Date().toISOString(),
+      counts,
+      data,
+      ...(readAppendixResume() ? { resume: readAppendixResume()! } : {}),
+    };
     localStorage.setItem(AUTO_KEY, JSON.stringify(payload));
     return "written";
   } catch {
@@ -218,16 +242,19 @@ export function readAutoBackup(): AutoBackup | null {
   }
 }
 
-/** Restore the automatic snapshot into the live persisted state (then reload). */
+/** Restore the automatic snapshot into the live persisted state (then reload).
+ *  راند ۲۳۶ — رکوردِ «ادامهٔ مطالعه» هم همان‌جا با پذیرش-اگر-غایب برمی‌گردد. */
 export function restoreAutoBackup(): boolean {
   const snap = readAutoBackup();
   if (!snap) return false;
-  return applyBackup({
+  const ok = applyBackup({
     app: "vision2-webbook",
     version: BACKUP_VERSION,
     exportedAt: snap.savedAt,
     data: snap.data,
+    ...(snap.resume ? { resume: snap.resume } : {}),
   });
+  return ok;
 }
 
 /** Persian relative label for the auto-backup age. */

@@ -14,6 +14,7 @@
 import { useStudy } from "./study-store";
 import type { BackupPayload } from "./backup";
 import { BACKUP_VERSION, collectData, parseBackup } from "./backup";
+import { readAppendixResume, sanitizeResumeInput, type AppendixResumeItem } from "./bg-reading";
 import { mergeAll } from "@/lib/persist/schema";
 import { looksLikeCode, normalizeCode } from "./sync-code";
 
@@ -62,14 +63,22 @@ export interface SyncPushResult {
   error?: string;
 }
 
-/** Push the local snapshot to the cloud. Generates a new code when none given. */
+/** Push the local snapshot to the cloud. Generates a new code when none given.
+ *  راند ۲۳۶ — نشانگرِ «ادامهٔ مطالعه» هم‌پایِ data به ابر می‌رود (بندِ ②
+ *  پیشنهادِ ۲۳۵): سرور پاکتِ {data, resume} را مات و نامحوظ ذخیره می‌کند. */
 export async function pushSync(code: string | null): Promise<SyncPushResult> {
   try {
     const userId = useStudy.getState().ensureUserId();
+    const resume = readAppendixResume();
     const res = await fetch("/api/sync", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ code: code || undefined, userId, data: collectData() }),
+      body: JSON.stringify({
+        code: code || undefined,
+        userId,
+        data: collectData(),
+        ...(resume ? { resume } : {}),
+      }),
     });
     const json = (await res.json().catch(() => ({}))) as { code?: string; updatedAt?: string; error?: string };
     if (!res.ok) return { ok: false, error: json.error ?? "خطا در همگام‌سازی. دوباره تلاش کن." };
@@ -83,6 +92,8 @@ export interface SyncFetchResult {
   ok: boolean;
   updatedAt?: string;
   data?: SyncData;
+  /** راند ۲۳۶ — نشانگرِ «ادامهٔ مطالعه»ی ابری (وقتی پاکتِ ذخیره‌شده آن را دارد). */
+  resume?: AppendixResumeItem;
   error?: string;
 }
 
@@ -95,9 +106,22 @@ export async function fetchSync(rawCode: string): Promise<SyncFetchResult> {
     const json = (await res.json().catch(() => ({}))) as { updatedAt?: string; data?: unknown; error?: string };
     if (res.status === 404) return { ok: false, error: "کدی با این مشخصات پیدا نشد." };
     if (!res.ok) return { ok: false, error: json.error ?? "خطا در بازیابی. دوباره تلاش کن." };
+    // راند ۲۳۶ — پاکت می‌تواند دو شکل داشته باشد: legacy (خودِ SyncData)
+    // یا جدید ({data, resume}). unwrapِ دفاعی — هر شکلی که نباشد = بی‌رکورد.
+    const envelope = (json.data ?? null) as unknown;
+    const envRec = envelope && typeof envelope === "object" && !Array.isArray(envelope) ? (envelope as Record<string, unknown>) : null;
+    const isEnvelope = !!envRec && "data" in envRec && envRec["data"] && typeof envRec["data"] === "object";
+    const rawData = isEnvelope ? envRec!["data"] : envelope;
+    const rawResume = isEnvelope ? envRec!["resume"] : undefined;
     try {
-      const payload = parseBackup(JSON.stringify({ app: "vision2-webbook", version: BACKUP_VERSION, exportedAt: json.updatedAt ?? "", data: json.data }));
-      return { ok: true, updatedAt: json.updatedAt, data: payload.data };
+      const payload = parseBackup(JSON.stringify({ app: "vision2-webbook", version: BACKUP_VERSION, exportedAt: json.updatedAt ?? "", data: rawData }));
+      const resume = sanitizeResumeInput(rawResume);
+      return {
+        ok: true,
+        updatedAt: json.updatedAt,
+        data: payload.data,
+        ...(resume ? { resume } : {}),
+      };
     } catch {
       return { ok: false, error: "دادهٔ ابری قابل خواندن نیست." };
     }

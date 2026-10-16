@@ -183,6 +183,36 @@ const parseResumeRaw = (raw: string): AppendixResumeItem | null => {
   }
 };
 
+/** راند ۲۳۶ — پالایشِ عمومیِ یک مقدارِ ناموثق به رکوردِ «ادامهٔ مطالعه» —
+ *  همان قواعدِ parseResumeRaw (whitelistِ scope + رشته‌هایِ غیرخالی + دور
+ *  ریختنِ hint خراب) برایِ مصرفِ لایهٔ پشتیبان/سینک: payloadِ فایلِ پشتیبان،
+ *  snapshotِ خودکار و پاکتِ ابری همگی همین یک سیاست را می‌گیرند — هیچ
+ *  رکوردِ جعلی از سفر برنمی‌گردد. null = بی‌رکورد (پذیرش نمی‌شود). */
+export const sanitizeResumeInput = (v: unknown): AppendixResumeItem | null => {
+  if (!v || typeof v !== "object" || Array.isArray(v)) return null;
+  const rec = v as Record<string, unknown>;
+  if (!APPENDIX_SCOPES.includes(rec.scope as AppendixScope)) return null;
+  if (!isNonEmptyString(rec.id) || !isNonEmptyString(rec.title)) return null;
+  return {
+    scope: rec.scope as AppendixScope,
+    id: rec.id,
+    title: rec.title,
+    ...(isNonEmptyString(rec.hint) ? { hint: rec.hint } : {}),
+  };
+};
+
+/** راند ۲۳۶ — سیاستِ پذیرشِ رکوردِ مسافر (پشتیبان/ابر): فقط وقتی دستگاه
+ *  فعلی هیچ رکوردی ندارد. «آخرینِ دیده‌شدهٔ» دستگاهِ فعلی همیشه حقیقتِ
+ *  خودش است — کاربر همین‌جاست و همین‌جا خوانده؛ برگشتِ عقب از مسافر یعنی
+ *  از دست دادنِ آخرینِ واقعی. خروجی: "adopted" | "kept-local". */
+export const adoptResumeIfAbsent = (incoming: unknown): "adopted" | "kept-local" => {
+  if (readAppendixResume()) return "kept-local";
+  const clean = sanitizeResumeInput(incoming);
+  if (!clean) return "kept-local";
+  writeAppendixResume(clean);
+  return "adopted";
+};
+
 /** مهاجرتِ روی-خواندنِ ۲۳۳: رکوردِ قدیمیِ درسنامه = آخرینِ دیده‌شده با scopeِ grammar. */
 const parseLegacyAsResume = (raw: string): AppendixResumeItem | null => {
   try {
