@@ -7,6 +7,14 @@
 import { useEffect, useState } from "react";
 import { BookX, Home, RotateCcw } from "lucide-react";
 
+// Dev/preview chunk-load races (a fetch of a not-yet-compiled chunk under
+// load, e.g. right after a heavy test run) surface here as a broken module
+// graph — reset() cannot heal that, but a single reload does. Patterns
+// cover the wording of turbopack/webpack/Safari respectively.
+const CHUNK_LOAD_ERR =
+  /failed to (fetch|load)( dynamically)?( imported)? (module|chunk)|error loading dynamically imported module|loading chunk \d+ failed|importing a module script failed/i;
+const CHUNK_RELOAD_KEY = "v2-chunk-reload";
+
 export default function ErrorPage({
   error,
   reset,
@@ -18,6 +26,33 @@ export default function ErrorPage({
 
   useEffect(() => {
     console.error("Webbook view error:", error);
+    try {
+      // 1) self-heal: a chunk-load failure gets exactly ONE automatic
+      //    reload per session (sessionStorage guard keeps it loop-proof);
+      //    every other error falls through to the recovery card.
+      if (CHUNK_LOAD_ERR.test(error.message || "")) {
+        if (!sessionStorage.getItem(CHUNK_RELOAD_KEY)) {
+          sessionStorage.setItem(CHUNK_RELOAD_KEY, "1");
+          window.location.reload();
+          return;
+        }
+      }
+      // 2) report: forward the crash to the server log (dev.log) — a
+      //    client-only console.error made incidents undiscoverable.
+      fetch("/api/client-error", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: error.message,
+          stack: error.stack,
+          digest: error.digest,
+          href: window.location.href,
+        }),
+        keepalive: true,
+      }).catch(() => {});
+    } catch {
+      /* diagnostics must never become a crash source */
+    }
   }, [error]);
 
   return (
