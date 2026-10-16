@@ -149,6 +149,80 @@
    },
    "translations": "در جزوه برای این سه خانواده چاپ نشده است (غیبت صادقانه — الگوی r278/r279)",
    "extractedRound": 282
+  },
+  "tags": {
+   "pages": "44 و 45",
+   "topic": "عبارات الحاق (Tag Questions)",
+   "familyA": {
+    "questions": 20,
+    "pages": "44",
+    "level": "دستگرمی",
+    "keyType": "گرید ستونی چاپی «پاسخنامه 20 تست آموزش گرامر عبارات الحاق (صفحه 44)» — انتهای ص۱۸۷؛ جفت‌های (حرف،عدد) خط‌به‌خط جدا با چینش دوباره‌چینی ستونی",
+    "spotLocks": {
+     "1": "d",
+     "2": "d",
+     "7": "b",
+     "10": "d",
+     "18": "a",
+     "19": "a",
+     "20": "d"
+    },
+    "notes": "A-Q18 عبارت الحاق ناقص چاپی («--- he?») با گزینه‌های فعلِ برهنه — وفادار ماندیم"
+   },
+   "familyB": {
+    "questions": 15,
+    "pages": "45",
+    "level": "کنکوری",
+    "keyType": "توضیحی «پاسخنامه 15 تست استاندارد (صفحه 45)» — ص۱۸۹-۱۹۱؛ قیدِ «گزینه(X)» با انتظارِ عددِ بعدی",
+    "konkur98": {
+     "1": "کنکور انسانی داخل کشور 98",
+     "3": "کنکور ریاضی داخل کشور 98"
+    },
+    "statementList": [
+     4,
+     9,
+     12
+    ],
+    "blankless": [
+     9,
+     12
+    ],
+    "spotLocks": {
+     "1": "d",
+     "2": "c",
+     "5": "d",
+     "6": "c",
+     "7": "d",
+     "8": "a",
+     "13": "c",
+     "15": "b"
+    }
+   },
+   "printedQuirks": [
+    {
+     "q": "A9",
+     "field": "stem",
+     "note": "«future.,» — نقطه+ویرگول چاپی؛ وفادار ماندیم"
+    },
+    {
+     "q": "A11",
+     "field": "stem",
+     "note": "«100 ℃» — نماد چاپی سلسیوس حفظ شد"
+    },
+    {
+     "q": "B7",
+     "field": "options.c",
+     "note": "«hasn't order» — غلط چاپی خود جزوه (hasn't ordered)؛ وفادار ماندیم"
+    },
+    {
+     "q": "B12",
+     "field": "options.c",
+     "note": "«have good job» بدون حرف تعریف — وفادار به چاپ (خودِ گزینه در داوریِ «کدام اشتباه است» نقش دارد)"
+    }
+   ],
+   "translations": "کلید توضیحی بانک B ترجمهٔ فارسی دارد ولی OCR جزوه مخدوش است (جین→جیر، دلایل→دالئل، ریاضی→ریی)؛ بازسازیِ رسیددار به راند مستقل موکول شد — فیلد ترجمه ثبت نشد (الگوی r281)",
+   "discovery": "ص۱۸۷ گرید ۴۰کلیدی «معلوم و مجهول — بخش دوم (صفحه 37 و 38)» را هم دارد — هویتِ گرید ۱۰۰کلیدیِ c13/sec1 (ابهام r280) بخشی روشن شد؛ ص۴۳ هم ۲۲ تمرینِ «بنویسید» با پاسخنامهٔ ص۱۸۸ دارد — راندهای بعد",
+   "extractedRound": 283
   }
  },
  "lessons": [
@@ -3429,6 +3503,477 @@
       "could have stolen"
      ],
      "answer": 3
+    }
+   ]
+  },
+  {
+   "lesson": 8,
+   "title": "عبارات الحاق (Tag Questions) — دستگرمی (ص۴۴)",
+   "level": "دستگرمی",
+   "count": 20,
+   "questions": [
+    {
+     "id": "g12-tag1-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Do not talk to me whenever I am studying, ---------------?",
+     "options": [
+      "won’t you",
+      "do you",
+      "aren’t I",
+      "will you"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-tag1-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "This winter is not very cold, ---------------?",
+     "options": [
+      "isn’t it",
+      "does it",
+      "won’t it",
+      "is it"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-tag1-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "My father hardly plays football with us whenever he is free, ---------------?",
+     "options": [
+      "doesn’t he",
+      "don’t we",
+      "does he",
+      "do we"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-tag1-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "Somebody rang while you were taking a shower, ---------------?",
+     "options": [
+      "didn’t they",
+      "weren’t you",
+      "didn’t he",
+      "were they"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-tag1-5",
+     "n": 5,
+     "category": "grammar",
+     "question": "Come sit beside me to read you a story, ---------------?",
+     "options": [
+      "won’t you",
+      "won’t I",
+      "don’t we",
+      "do you"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-tag1-6",
+     "n": 6,
+     "category": "grammar",
+     "question": "Most of them don’t speak more than one language, ---------------?",
+     "options": [
+      "do most of them",
+      "don’t most of them",
+      "do they",
+      "do them"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-tag1-7",
+     "n": 7,
+     "category": "grammar",
+     "question": "I’m ashamed to be seen with you when you behave too badly, ---------------?",
+     "options": [
+      "isn’t he",
+      "aren’t I",
+      "haven’t we",
+      "doesn’t he"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-tag1-8",
+     "n": 8,
+     "category": "grammar",
+     "question": "We had a great day out at the amusement park, ---------------?",
+     "options": [
+      "don’t we",
+      "didn’t we",
+      "had we",
+      "will we"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-tag1-9",
+     "n": 9,
+     "category": "grammar",
+     "question": "There won’t be enough food for 8 billion people in the near future., ---------------?",
+     "options": [
+      "be there",
+      "will there",
+      "is there",
+      "is it"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-tag1-10",
+     "n": 10,
+     "category": "grammar",
+     "question": "I think that your sister isn’t very clever, ---------------?",
+     "options": [
+      "don’t I",
+      "is your sister",
+      "isn’t she",
+      "is she"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-tag1-11",
+     "n": 11,
+     "category": "grammar",
+     "question": "Water boils at 100 ℃, ---------------?",
+     "options": [
+      "it doesn’t",
+      "it does",
+      "doesn’t it",
+      "isn’t there"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-tag1-12",
+     "n": 12,
+     "category": "grammar",
+     "question": "No one stays with the old man in the hotel, ---------------?",
+     "options": [
+      "is he",
+      "do they",
+      "isn’t he",
+      "doesn’t he"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-tag1-13",
+     "n": 13,
+     "category": "grammar",
+     "question": "He’s been very successful in learning English during the last four weeks, ---------------?",
+     "options": [
+      "isn’t he",
+      "hasn’t he",
+      "wasn’t he",
+      "doesn’t he"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-tag1-14",
+     "n": 14,
+     "category": "grammar",
+     "question": "Students should have some respect for their teachers, ---------------?",
+     "options": [
+      "shouldn’t he",
+      "haven’t student",
+      "haven’t they",
+      "shouldn’t they"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-tag1-15",
+     "n": 15,
+     "category": "grammar",
+     "question": "My friend and I will take part in the party tomorrow, ---------------?",
+     "options": [
+      "will I",
+      "won’t I",
+      "will we",
+      "won’t we"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-tag1-16",
+     "n": 16,
+     "category": "grammar",
+     "question": "James built the first steam engine, ---------------?",
+     "options": [
+      "did he",
+      "does he",
+      "didn’t he",
+      "doesn’t he"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-tag1-17",
+     "n": 17,
+     "category": "grammar",
+     "question": "Our teacher speaks English fast, ---------------?",
+     "options": [
+      "does he",
+      "doesn’t he",
+      "does the teacher",
+      "doesn’t the teacher"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-tag1-18",
+     "n": 18,
+     "category": "grammar",
+     "question": "The teacher let students play a game in class, --------------- he?",
+     "options": [
+      "didn’t",
+      "doesn’t",
+      "did",
+      "does"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-tag1-19",
+     "n": 19,
+     "category": "grammar",
+     "question": "This very important meeting’s in my boss’s room at twelve o’clock, ---------------?",
+     "options": [
+      "isn’t it",
+      "isn’t there",
+      "doesn’t it",
+      "doesn’t there"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-tag1-20",
+     "n": 20,
+     "category": "grammar",
+     "question": "You will see my teacher tomorrow if you come to our class, ---------------?",
+     "options": [
+      "do you",
+      "will you",
+      "don’t you",
+      "won’t you"
+     ],
+     "answer": 3
+    }
+   ]
+  },
+  {
+   "lesson": 9,
+   "title": "عبارات الحاق (Tag Questions) — کنکوری (ص۴۵)",
+   "level": "کنکوری",
+   "count": 15,
+   "questions": [
+    {
+     "id": "g12-tag2-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Jane believes that her team members won the game because they are familiar with teamwork, ---------------?",
+     "options": [
+      "aren’t they",
+      "didn’t they",
+      "didn’t she",
+      "doesn’t she"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-tag2-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "Since your elder brother has many reasons to lie, his explanation mustn’t be true, ---------------?",
+     "options": [
+      "didn’t he",
+      "must he",
+      "must it",
+      "mustn’t it"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-tag2-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "It is a fact that all people are ready to try as hard as possible to become happy, ---------------?",
+     "options": [
+      "don’t they",
+      "isn’t it",
+      "aren’t they",
+      "doesn’t it"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-tag2-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "Which of the following statements is NOT the correct beginning of the sentence? ---------------, did they?",
+     "options": [
+      "Ali and his sister didn’t want to get up this morning early",
+      "They never visited their elder parents who were sick",
+      "They rarely intended to go out and to play football",
+      "My friend’s parents had enough money to pay their rent and their bill"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-tag2-5",
+     "n": 5,
+     "category": "grammar",
+     "question": "Her uncle said that he had to be at his cousin’s engagement party that evening, ---------------?",
+     "options": [
+      "did his cousin",
+      "didn’t they",
+      "hadn’t he",
+      "didn’t he"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-tag2-6",
+     "n": 6,
+     "category": "grammar",
+     "question": "Let’s take a nice hotel in this beautiful city and enjoy ourselves, ---------------?",
+     "options": [
+      "will we",
+      "do we",
+      "shall we",
+      "don’t we"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-tag2-7",
+     "n": 7,
+     "category": "grammar",
+     "question": "Their aunt --------------- a delicious big Italian pizza for herself, didn’t she?",
+     "options": [
+      "orders",
+      "didn’t order",
+      "hasn’t order",
+      "ordered"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-tag2-8",
+     "n": 8,
+     "category": "grammar",
+     "question": "I think that you never promised me the car would be ready on Monday, ---------------?",
+     "options": [
+      "did you",
+      "didn’t you",
+      "wouldn’t it",
+      "would it"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-tag2-9",
+     "n": 9,
+     "category": "grammar",
+     "question": "Which of the following statements is grammatically WRONG?",
+     "options": [
+      "Don’t open the door before I signal you, do you?",
+      "I’m not the student who won the gold medal, am I?",
+      "Close the window and light bulb, won’t you?",
+      "She had to study English instead of mathematics at the university, didn’t she?"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-tag2-10",
+     "n": 10,
+     "category": "grammar",
+     "question": "The math teacher let his students talk to each other at the classroom, ---------------?",
+     "options": [
+      "didn’t he",
+      "doesn’t he",
+      "did he",
+      "does she"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-tag2-11",
+     "n": 11,
+     "category": "grammar",
+     "question": "We’re having a small tea party for one of our friends who’s leaving next week, ---------------?",
+     "options": [
+      "isn’t he",
+      "aren’t we",
+      "haven’t we",
+      "doesn’t he"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-tag2-12",
+     "n": 12,
+     "category": "grammar",
+     "question": "Which of the following statements is grammatically WRONG?",
+     "options": [
+      "Fortunately, there has been little crime for which many people should be kept in prison, has there?",
+      "I had seen many wonderful places in European countries before I came back, didn’t I?",
+      "Unfortunately, a few people in this town have good job to meet their family’s basic needs, don’t they?",
+      "Let’s find an interesting movie that has been produced by one of the Italian filmmakers, shall we?"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-tag2-13",
+     "n": 13,
+     "category": "grammar",
+     "question": "If my parents had free time, they would come to your party, ---------------?",
+     "options": [
+      "didn’t they",
+      "would you",
+      "wouldn’t they",
+      "hadn’t they"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-tag2-14",
+     "n": 14,
+     "category": "grammar",
+     "question": "If you can’t access your account, you have to call the service center, ---------------?",
+     "options": [
+      "can you",
+      "have you",
+      "can’t you",
+      "don’t you"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-tag2-15",
+     "n": 15,
+     "category": "grammar",
+     "question": "I think that none of us can eat the food of the restaurant, ---------------?",
+     "options": [
+      "don’t I",
+      "can we",
+      "can’t we",
+      "do I"
+     ],
+     "answer": 1
     }
    ]
   }

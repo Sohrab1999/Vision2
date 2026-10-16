@@ -58,7 +58,7 @@ const fresh = [...l3.questions, ...l4.questions];
 
 describe("jozve topic grammar bank g12 — tenses (r281 extraction receipt)", () => {
   it("bank shape: four lessons, tenses added as exactly 30/50 with continuous printed numbering", () => {
-    expect(bank.lessons.map((l) => l.lesson)).toEqual([1, 2, 3, 4, 5, 6, 7]); // r282 سه بانک sec23 را افزود
+    expect(bank.lessons.map((l) => l.lesson)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9]); // r282 سه بانک sec23 و r283 دو بانک الحاق را افزودند
     // درس‌های r280 دست‌نخورده
     expect(l1.questions).toHaveLength(27);
     expect(l2.questions).toHaveLength(61);

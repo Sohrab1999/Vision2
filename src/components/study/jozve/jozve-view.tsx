@@ -239,6 +239,9 @@ const GRADE_GRAMMAR_TOPIC: Record<number, { lessons: { lesson: number; title: st
       { lesson: 5, title: "کاربردهای افعال ناقص — متوسط (ص۱۴۹)", count: 20 },
       { lesson: 6, title: "معلوم و مجهول — کنکوری (ص۱۵۰)", count: 20 },
       { lesson: 7, title: "افعال ناقص زمان گذشته — تخصصی (ص۱۵۱-۱۵۲)", count: 40 },
+      // r283 — بانک‌های عبارات الحاق (Tag Questions): ص۴۴ دستگرمی با کلید گرید ص۱۸۷ + ص۴۵ کنکوری با کلید توضیحی ص۱۸۹-۱۹۱
+      { lesson: 8, title: "عبارات الحاق (Tag Questions) — دستگرمی (ص۴۴)", count: 20 },
+      { lesson: 9, title: "عبارات الحاق (Tag Questions) — کنکوری (ص۴۵)", count: 15 },
     ],
   },
 };
