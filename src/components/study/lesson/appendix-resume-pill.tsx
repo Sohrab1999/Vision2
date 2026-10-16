@@ -20,9 +20,11 @@ import {
   APPENDIX_SCOPE_LABELS,
   appendixResumeServerSnapshot,
   appendixResumeSnapshot,
+  clearAppendixResume,
   subscribeAppendixResume,
   type AppendixScope,
 } from "@/lib/bg-reading";
+import { useToast } from "@/hooks/use-toast";
 
 export default function AppendixResumePill({
   onGo,
@@ -35,7 +37,20 @@ export default function AppendixResumePill({
     appendixResumeSnapshot,
     appendixResumeServerSnapshot,
   );
+  const { toast } = useToast();
   if (!item) return null;
+
+  // راند ۲۳۷ — کلیکِ راست رویِ نشانگر هم پاک می‌کند (تقارنِ کنترل با هدر —
+  // بندِ ① پیشنهادِ ۲۳۶): پاک‌کردنِ فوری + توست، بدونِ منو و بدونِ چرخشِ استور.
+  const handleClear = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    clearAppendixResume();
+    toast({
+      title: "ادامهٔ مطالعه پاک شد",
+      description: "نشانگرِ آخرین موضوع برداشته شد — با نخستین دیدنِ بعدی در ضمیمه دوباره ساخته می‌شود.",
+      duration: 3000,
+    });
+  };
 
   const layer = APPENDIX_SCOPE_LABELS[item.scope];
   const tooltip = `ادامهٔ مطالعه از «${item.title}» در ${layer}${item.hint ? ` — ${item.hint}` : ""}`;
@@ -44,6 +59,7 @@ export default function AppendixResumePill({
     <button
       type="button"
       onClick={() => onGo(item.scope, item.id)}
+      onContextMenu={handleClear}
       aria-label={tooltip}
       title={tooltip}
       data-testid="appendix-resume-pill"

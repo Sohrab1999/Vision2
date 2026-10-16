@@ -1,7 +1,7 @@
 "use client";
 
-import { User, Download, Upload, ShieldCheck, History, RotateCcw, Laptop, CloudUpload, CloudDownload, Copy, Link2Off, RefreshCw } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { User, Download, Upload, ShieldCheck, History, RotateCcw, Laptop, CloudUpload, CloudDownload, Copy, Link2Off, RefreshCw, BookmarkCheck, Play, Trash2 } from "lucide-react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useStudy, AVATAR_COLORS } from "@/lib/study-store";
 import { avatarClasses } from "@/lib/study-theme";
 import { sendProfile } from "@/lib/identity";
@@ -12,7 +12,8 @@ import NewBadgeDot from "./new-badge-dot";
 import { exportProgress, parseBackup, applyBackup, backupSummary, readAutoBackup, restoreAutoBackup, autoBackupAgeFa, collectData } from "@/lib/backup";
 import { trackEvent } from "@/lib/analytics";
 import { pushSync, fetchSync, mergeSyncData, applyMergedSnapshot, normalizeCode, looksLikeCode } from "@/lib/sync";
-import { adoptResumeIfAbsent } from "@/lib/bg-reading";
+import { adoptResumeIfAbsent, appendixResumeServerSnapshot, appendixResumeSnapshot, clearAppendixResume, subscribeAppendixResume, APPENDIX_SCOPE_LABELS } from "@/lib/bg-reading";
+import { useAppendixResumeNav } from "../shared/use-appendix-resume-nav";
 import { useToast } from "@/hooks/use-toast";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
@@ -53,6 +54,15 @@ export default function ProfilePopover() {
       return "";
     }
   });
+
+  // راند ۲۳۷ — رکوردِ «ادامهٔ مطالعه» با storeِ خارجیِ r231 واکنشی می‌آید:
+  // پاپ‌اُور باز است و کاربر در ضمیمه می‌خواند؟ رکوردِ تازه همان‌جا حاضر است.
+  const resumeItem = useSyncExternalStore(
+    subscribeAppendixResume,
+    appendixResumeSnapshot,
+    appendixResumeServerSnapshot,
+  );
+  const navigateResume = useAppendixResumeNav();
 
   const openPopover = (next: boolean) => {
     setOpen(next);
@@ -231,6 +241,25 @@ export default function ProfilePopover() {
     });
   };
 
+  // ------------------- راند ۲۳۷ — کنترلِ «ادامهٔ مطالعه» -------------------
+
+  // پنجمین درِ کوچک: از خودِ پروفایل هم می‌شود به همان‌جا رفت — پاپ‌اُور اول
+  // بسته می‌شود تا ناوبری زیرِ آن گم نشود. صفرِ نوشتنِ استور (قراردادِ قلابِ r236).
+  const handleResumeGo = () => {
+    if (!resumeItem) return;
+    setOpen(false);
+    navigateResume(resumeItem);
+  };
+
+  const handleResumeClear = () => {
+    clearAppendixResume();
+    toast({
+      title: "ادامهٔ مطالعه پاک شد",
+      description: "نشانگرِ آخرین موضوع برداشته شد — با نخستین دیدنِ بعدی در ضمیمه دوباره ساخته می‌شود.",
+      duration: 3000,
+    });
+  };
+
   return (
     <Popover open={open} onOpenChange={openPopover}>
       {/* suppressHydrationWarning: Radix emits aria-controls={useId()} on the
@@ -325,6 +354,53 @@ export default function ProfilePopover() {
         >
           {saved ? "✓ ذخیره شد!" : "ذخیرهٔ پروفایل"}
         </button>
+
+        {/* ------------------- ادامهٔ مطالعه (راند ۲۳۷) ------------------- */}
+        {resumeItem && (
+          <div className="mt-4 border-t border-stone-200 pt-3" data-testid="profile-resume-section">
+            <div className="mb-2 flex items-center gap-1.5 text-[11.5px] font-bold text-stone-500">
+              <BookmarkCheck size={13} className="text-emerald-600" />
+              ادامهٔ مطالعه
+            </div>
+            <div className="rounded-xl border border-emerald-200 bg-emerald-50/70 p-2.5">
+              <div className="flex min-w-0 items-center justify-between gap-2">
+                <span className="min-w-0 truncate text-[11.5px] font-black text-emerald-800">
+                  «{resumeItem.title}»
+                </span>
+                <span className="shrink-0 rounded-full bg-emerald-100 px-1.5 py-0.5 text-[9px] font-black text-emerald-700">
+                  {APPENDIX_SCOPE_LABELS[resumeItem.scope]}
+                </span>
+              </div>
+              {resumeItem.hint && (
+                <div className="mt-0.5 truncate text-[10px] font-bold text-emerald-700/70">
+                  {resumeItem.hint}
+                </div>
+              )}
+              <div className="mt-2 grid grid-cols-2 gap-2">
+                <button
+                  onClick={handleResumeGo}
+                  className="inline-flex items-center justify-center gap-1 rounded-lg bg-emerald-600 px-2 py-1.5 text-[10.5px] font-black text-white transition-[background-color,color,border-color,transform] hover:bg-emerald-700 active:scale-[0.96]"
+                  title="رفتن به همان‌جا در ضمیمه"
+                >
+                  <Play size={11} className="shrink-0" />
+                  ادامه
+                </button>
+                <button
+                  onClick={handleResumeClear}
+                  data-testid="profile-resume-clear"
+                  className="inline-flex items-center justify-center gap-1 rounded-lg border border-stone-200 bg-white px-2 py-1.5 text-[10.5px] font-black text-stone-600 transition-[background-color,color,border-color,transform] hover:border-rose-200 hover:text-rose-600 active:scale-[0.96]"
+                  title="برداشتنِ نشانگرِ ادامهٔ مطالعه"
+                >
+                  <Trash2 size={11} className="shrink-0" />
+                  پاک‌کردن
+                </button>
+              </div>
+              <p className="mt-1.5 text-[9.5px] leading-4 text-stone-500">
+                آخرین چیزی که در ضمیمه دیدی — کلیکِ راست روی دکمهٔ «ادامه» در هدر هم پاکش می‌کند.
+              </p>
+            </div>
+          </div>
+        )}
 
         {/* ------------------- progress backup ------------------- */}
         <div className="mt-4 border-t border-stone-200 pt-3">

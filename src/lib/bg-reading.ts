@@ -135,6 +135,23 @@ export const writeAppendixResume = (item: {
   }
 };
 
+/** راند ۲۳۷ — پاک‌کردنِ رکورد (بندِ ① پیشنهادِ ۲۳۶): کنترلِ کاملِ کاربر روی
+ *  نشانگرِ «ادامهٔ مطالعه». هر دو کلید (نو + legacyِ ۲۳۳) با هم برداشته
+ *  می‌شوند — اگر legacy بماند، مهاجرتِ روی-خواندنِ آن رکوردِ پاک‌شده را
+ *  همان لحظه زنده می‌کند و «پاک‌کردن» دروغ می‌شود. مشترکین خبر می‌شوند تا
+ *  همهٔ درها (هدر، نشانگرِ ضمیمه، کارتِ خانه، فرمان‌یاب و بخشِ پروفایل)
+ *  بی‌درنگ بی‌رکورد شوند. هیچ نوشتنی در استورِ یادگیری نیست. */
+export const clearAppendixResume = (): void => {
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.removeItem(APPENDIX_LAST_KEY);
+    window.localStorage.removeItem(BG_LAST_TOPIC_KEY);
+  } catch {
+    /* حافظه در دسترس نیست — رکوردِ محلی می‌ماند */
+  }
+  notifyResume();
+};
+
 /** نوشتنِ نشانگرِ درسنامه (r233) — کلیدِ قدیمی برایِ سازگاری + آینه در کلیدِ نو. */
 export const writeBgLastTopic = (topic: {
   id: string;

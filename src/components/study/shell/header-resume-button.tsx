@@ -23,10 +23,12 @@ import {
   APPENDIX_SCOPE_LABELS,
   appendixResumeServerSnapshot,
   appendixResumeSnapshot,
+  clearAppendixResume,
   subscribeAppendixResume,
 } from "@/lib/bg-reading";
 import { useStudy } from "@/lib/study-store";
 import { useAppendixResumeNav } from "../shared/use-appendix-resume-nav";
+import { useToast } from "@/hooks/use-toast";
 
 export default function HeaderResumeButton() {
   const item = useSyncExternalStore(
@@ -36,6 +38,20 @@ export default function HeaderResumeButton() {
   );
   const view = useStudy((s) => s.view);
   const navigateResume = useAppendixResumeNav();
+  const { toast } = useToast();
+
+  // راند ۲۳۷ — کلیکِ راست رویِ دکمهٔ هدر = پاک‌کردنِ رکورد (بندِ ① پیشنهادِ
+  // ۲۳۶). پاک‌کردنِ فوری + توست — همان سبکِ قطعِ همگام‌سازی؛ رکوردِ پاک‌شده
+  // با نخستین دیدنِ بعدی در ضمیمه دوباره ساخته می‌شود، پس کنشِ کم‌خطر است.
+  const handleClear = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    clearAppendixResume();
+    toast({
+      title: "ادامهٔ مطالعه پاک شد",
+      description: "نشانگرِ آخرین موضوع برداشته شد — با نخستین دیدنِ بعدی در ضمیمه دوباره ساخته می‌شود.",
+      duration: 3000,
+    });
+  };
 
   // بی‌رکورد یا خودِ ضمیمه = هیچ (قراردادِ صداقت + بودجهٔ هدر)
   if (!item || view.type === "appendix") return null;
@@ -47,6 +63,7 @@ export default function HeaderResumeButton() {
     <button
       type="button"
       onClick={() => navigateResume(item)}
+      onContextMenu={handleClear}
       aria-label={tooltip}
       title={tooltip}
       data-testid="header-resume-button"
