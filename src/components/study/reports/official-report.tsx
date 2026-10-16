@@ -308,7 +308,7 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
           <div className="flex shrink-0 items-center gap-2">
             <button
               onClick={printOfficial}
-              className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-emerald-600 px-4 py-2 text-[12px] font-black text-white shadow-sm transition-all hover:bg-emerald-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 active:scale-95"
+              className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-emerald-600 px-4 py-2 text-[12px] font-black text-white shadow-sm transition-[background-color,box-shadow,transform] hover:bg-emerald-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 active:scale-95"
             >
               <Printer size={14} />
               چاپ / ذخیرهٔ PDF
@@ -316,7 +316,7 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
             <button
               ref={closeRef}
               onClick={onClose}
-              className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-white/20 bg-white/10 px-3 py-2 text-[12px] font-black text-stone-100 transition-all hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 active:scale-95"
+              className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-white/20 bg-white/10 px-3 py-2 text-[12px] font-black text-stone-100 transition-[background-color,box-shadow,transform] hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 active:scale-95"
             >
               <X size={14} />
               بستن
@@ -683,7 +683,7 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
           <div className="official-chrome mt-4 text-center">
             <button
               onClick={printOfficial}
-              className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-emerald-300 bg-emerald-50 px-4 py-2 text-[12px] font-black text-emerald-700 shadow-sm transition-all hover:bg-emerald-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 active:scale-95"
+              className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-emerald-300 bg-emerald-50 px-4 py-2 text-[12px] font-black text-emerald-700 shadow-sm transition-[background-color,box-shadow,transform] hover:bg-emerald-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 active:scale-95"
             >
               <Printer size={14} />
               چاپ / ذخیرهٔ PDF

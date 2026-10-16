@@ -171,7 +171,7 @@ export default function MyWordsStory({ stars }: { stars: ResolvedStar[] }) {
           <button
             onClick={forge}
             disabled={state.status === "loading"}
-            className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-l from-sky-500 to-cyan-600 px-4 py-2.5 text-[13px] font-black text-white shadow-md shadow-sky-500/25 transition-all hover:opacity-95 active:scale-95 disabled:cursor-not-allowed disabled:opacity-70"
+            className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-l from-sky-500 to-cyan-600 px-4 py-2.5 text-[13px] font-black text-white shadow-md shadow-sky-500/25 transition-[opacity,transform] hover:opacity-95 active:scale-95 disabled:cursor-not-allowed disabled:opacity-70"
             aria-label="ساخت داستان با واژه‌های نشان‌شده"
           >
             {state.status === "loading" ? (
@@ -189,7 +189,7 @@ export default function MyWordsStory({ stars }: { stars: ResolvedStar[] }) {
         ) : (
           <button
             onClick={() => trackEvent("my_words_open")}
-            className="inline-flex items-center gap-1.5 rounded-xl border border-sky-300 bg-white px-4 py-2.5 text-[13px] font-bold text-sky-700 transition-all hover:bg-sky-50 active:scale-95"
+            className="inline-flex items-center gap-1.5 rounded-xl border border-sky-300 bg-white px-4 py-2.5 text-[13px] font-bold text-sky-700 transition-[background-color,transform] hover:bg-sky-50 active:scale-95"
           >
             <RotateCcw size={14} />
             رفتن به دیکشنری
@@ -220,7 +220,7 @@ export default function MyWordsStory({ stars }: { stars: ResolvedStar[] }) {
               )}
               <button
                 onClick={readAloud}
-                className={`inline-flex items-center gap-1 rounded-lg border px-2 py-1 text-[11px] font-bold transition-all active:scale-95 ${
+                className={`inline-flex items-center gap-1 rounded-lg border px-2 py-1 text-[11px] font-bold transition-[background-color,transform] active:scale-95 ${
                   speaking ? "border-sky-400 bg-sky-500 text-white" : "border-sky-200 bg-white text-sky-600 hover:bg-sky-50"
                 }`}
                 aria-label={speaking ? "توقف روخوانی داستان" : "روخوانی داستان"}
@@ -258,7 +258,7 @@ export default function MyWordsStory({ stars }: { stars: ResolvedStar[] }) {
             <button
               onClick={saveCard}
               disabled={imgBusy || shareBusy}
-              className="inline-flex items-center gap-1.5 rounded-xl border border-sky-200 bg-white px-3 py-1.5 text-[12px] font-black text-sky-700 transition-all hover:border-sky-300 hover:bg-sky-50/60 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
+              className="inline-flex items-center gap-1.5 rounded-xl border border-sky-200 bg-white px-3 py-1.5 text-[12px] font-black text-sky-700 transition-[background-color,border-color,opacity,transform] hover:border-sky-300 hover:bg-sky-50/60 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
               aria-label="ذخیرهٔ عکس داستان"
             >
               {imgBusy ? <Loader2 size={13} className="animate-spin" aria-hidden /> : <ImageDown size={13} aria-hidden />}
@@ -268,7 +268,7 @@ export default function MyWordsStory({ stars }: { stars: ResolvedStar[] }) {
               <button
                 onClick={shareCard}
                 disabled={imgBusy || shareBusy}
-                className="inline-flex items-center gap-1.5 rounded-xl border border-sky-200 bg-white px-3 py-1.5 text-[12px] font-black text-sky-700 transition-all hover:border-sky-300 hover:bg-sky-50/60 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
+                className="inline-flex items-center gap-1.5 rounded-xl border border-sky-200 bg-white px-3 py-1.5 text-[12px] font-black text-sky-700 transition-[background-color,border-color,opacity,transform] hover:border-sky-300 hover:bg-sky-50/60 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
                 aria-label="هم‌رسانی عکس داستان"
               >
                 {shareBusy ? <Loader2 size={13} className="animate-spin" aria-hidden /> : <Share2 size={13} aria-hidden />}

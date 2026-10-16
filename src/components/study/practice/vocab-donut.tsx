@@ -142,7 +142,7 @@ export default function VocabDonut() {
                       />
                     </span>
                   </span>
-                  <ArrowLeft size={13} className="shrink-0 text-stone-300 transition-all group-hover:-translate-x-0.5 group-hover:text-stone-500" />
+                  <ArrowLeft size={13} className="shrink-0 text-stone-300 transition-[color,transform] group-hover:-translate-x-0.5 group-hover:text-stone-500" />
                 </button>
               </motion.li>
             ))}

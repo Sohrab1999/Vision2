@@ -84,7 +84,7 @@ export default function WordOfDay() {
           <SpeakButton text={pick.en} size="md" />
           <button
             onClick={() => toggleKnown(pick.key)}
-            className={`inline-flex items-center gap-1.5 rounded-xl border px-3 py-2 text-[12px] font-bold transition-all active:scale-95 ${
+            className={`inline-flex items-center gap-1.5 rounded-xl border px-3 py-2 text-[12px] font-bold transition-[background-color,transform] active:scale-95 ${
               isKnown
                 ? "border-emerald-600 bg-emerald-600 text-white shadow-md shadow-emerald-600/25"
                 : "border-emerald-300 bg-white text-emerald-700 hover:bg-emerald-50"
@@ -95,14 +95,14 @@ export default function WordOfDay() {
           </button>
           <button
             onClick={() => openLessonTab(pick.lessonId, "vocab")}
-            className="inline-flex items-center gap-1.5 rounded-xl border border-stone-200 bg-white px-3 py-2 text-[12px] font-bold text-stone-600 transition-all hover:border-emerald-300 hover:text-emerald-700 active:scale-95"
+            className="inline-flex items-center gap-1.5 rounded-xl border border-stone-200 bg-white px-3 py-2 text-[12px] font-bold text-stone-600 transition-[color,border-color,transform] hover:border-emerald-300 hover:text-emerald-700 active:scale-95"
           >
             <BookOpen size={14} />
             فلش‌کارت درس
           </button>
           <button
             onClick={() => setView({ type: "dictionary" })}
-            className="hidden items-center gap-1.5 rounded-xl px-2 py-2 text-[12px] font-bold text-teal-700 transition-all hover:text-teal-900 active:scale-95 sm:inline-flex"
+            className="hidden items-center gap-1.5 rounded-xl px-2 py-2 text-[12px] font-bold text-teal-700 transition-[color,transform] hover:text-teal-900 active:scale-95 sm:inline-flex"
           >
             در دیکشنری ↗
           </button>

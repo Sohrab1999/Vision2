@@ -84,7 +84,7 @@ export default function LessonTestsTab({ lesson }: { lesson: LessonData }) {
               )}
               <button
                 onClick={() => start(c.key, c.label)}
-                className={`mt-auto inline-flex items-center justify-center gap-1.5 rounded-xl ${t.bg} py-2.5 text-sm font-bold text-white transition-all hover:opacity-90 active:scale-95`}
+                className={`mt-auto inline-flex items-center justify-center gap-1.5 rounded-xl ${t.bg} py-2.5 text-sm font-bold text-white transition-[opacity,transform] hover:opacity-90 active:scale-95`}
               >
                 <ListChecks size={16} />
                 شروع تست
@@ -96,7 +96,7 @@ export default function LessonTestsTab({ lesson }: { lesson: LessonData }) {
 
       <button
         onClick={startMixed}
-        className="flex w-full items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-stone-300 c-veil-60 py-4 text-sm font-bold text-stone-600 transition-all hover:border-emerald-400 hover:text-emerald-700 active:scale-[0.99]"
+        className="flex w-full items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-stone-300 c-veil-60 py-4 text-sm font-bold text-stone-600 transition-[color,border-color,transform] hover:border-emerald-400 hover:text-emerald-700 active:scale-[0.99]"
       >
         <Shuffle size={17} />
         تست ترکیبی — همهٔ {lesson.quizzes.length} تست این درس (بُر خورده)
@@ -105,7 +105,7 @@ export default function LessonTestsTab({ lesson }: { lesson: LessonData }) {
       {mistakeCount > 0 && (
         <button
           onClick={startMistakeReview}
-          className="lesson-mistakes-cta flex w-full items-center justify-between gap-3 rounded-2xl border border-rose-300 bg-gradient-to-l from-rose-50 to-red-50 p-4 text-right shadow-sm transition-all hover:shadow-md hover:shadow-rose-200/50 active:scale-[0.99]"
+          className="lesson-mistakes-cta flex w-full items-center justify-between gap-3 rounded-2xl border border-rose-300 bg-gradient-to-l from-rose-50 to-red-50 p-4 text-right shadow-sm transition-[box-shadow,transform] hover:shadow-md hover:shadow-rose-200/50 active:scale-[0.99]"
         >
           <span className="flex items-center gap-3">
             <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-rose-500 text-white shadow-md shadow-rose-500/30">

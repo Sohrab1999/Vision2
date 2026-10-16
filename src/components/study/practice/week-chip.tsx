@@ -67,7 +67,7 @@ export default function WeekChip() {
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ type: "spring", stiffness: 380, damping: 26 }}
       onClick={open}
-      className={`week-chip relative hidden sm:inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border p-0 transition-all hover:-translate-y-px active:scale-90 ${
+      className={`week-chip relative hidden sm:inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border p-0 transition-transform hover:-translate-y-px active:scale-90 ${
         meta.done
           ? "border-emerald-600/70 shadow-sm shadow-emerald-900/10"
           : "border c-card"

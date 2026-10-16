@@ -26,7 +26,7 @@ export default function DuelWaiting({ roomCode, players, mySid, paceMs, copyCode
 
       <button
         onClick={copyCode}
-        className="duel-code group mx-auto flex w-full max-w-xs items-center justify-center gap-3 rounded-2xl border-2 border-dashed border-fuchsia-300 bg-fuchsia-50 px-4 py-4 transition-all hover:border-fuchsia-400 active:scale-[0.98]"
+        className="duel-code group mx-auto flex w-full max-w-xs items-center justify-center gap-3 rounded-2xl border-2 border-dashed border-fuchsia-300 bg-fuchsia-50 px-4 py-4 transition-[border-color,transform] hover:border-fuchsia-400 active:scale-[0.98]"
         aria-label={`کد اتاق ${roomCode} — برای کپی کلیک کن`}
       >
         <span className="font-mono text-3xl font-black tracking-[0.35em] text-fuchsia-700" dir="ltr">

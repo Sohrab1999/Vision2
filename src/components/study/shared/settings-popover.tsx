@@ -123,7 +123,7 @@ export default function SettingsPopover() {
       <PopoverTrigger asChild>
         <button
           suppressHydrationWarning
-          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border c-card text-stone-500 transition-all hover:text-emerald-600 hover:border-emerald-200 active:scale-90"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border c-card text-stone-500 transition-[color,border-color,transform] hover:text-emerald-600 hover:border-emerald-200 active:scale-90"
           aria-label="تنظیمات"
           title="تنظیمات"
         >
@@ -162,7 +162,7 @@ export default function SettingsPopover() {
             />
             <button
               onClick={preview}
-              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-600 text-white shadow-sm transition-all hover:bg-emerald-700 active:scale-90"
+              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-600 text-white shadow-sm transition-[background-color,transform] hover:bg-emerald-700 active:scale-90"
               aria-label={previewing ? "توقف پخش نمونه" : "پخش نمونهٔ روخوانی"}
               title={previewing ? "توقف" : "بشنو"}
             >
@@ -194,7 +194,7 @@ export default function SettingsPopover() {
                   role="radio"
                   aria-checked={active}
                   onClick={() => setSettings({ fontScale: f.scale })}
-                  className={`flex items-center justify-center gap-1 rounded-lg border py-2 transition-all active:scale-95 ${f.cls} ${
+                  className={`flex items-center justify-center gap-1 rounded-lg border py-2 transition-[border-color,transform] active:scale-95 ${f.cls} ${
                     active
                       ? "border-emerald-500 bg-emerald-50 font-black text-emerald-700"
                       : "border-stone-200 bg-white font-bold text-stone-500 hover:border-emerald-200"
@@ -243,7 +243,7 @@ export default function SettingsPopover() {
                   role="radio"
                   aria-checked={active}
                   onClick={() => setDailyGoal(g)}
-                  className={`flex items-center justify-center gap-1 rounded-lg border py-2 text-[13px] transition-all active:scale-95 ${
+                  className={`flex items-center justify-center gap-1 rounded-lg border py-2 text-[13px] transition-[border-color,transform] active:scale-95 ${
                     active
                       ? "border-emerald-500 bg-emerald-50 font-black text-emerald-700"
                       : "border-stone-200 bg-white font-bold text-stone-500 hover:border-emerald-200"
@@ -266,7 +266,7 @@ export default function SettingsPopover() {
             </span>
             <button
               onClick={loadPulse}
-              className="flex h-6 w-6 items-center justify-center rounded-full text-stone-400 transition-all hover:bg-stone-200/70 hover:text-emerald-600 active:scale-90"
+              className="flex h-6 w-6 items-center justify-center rounded-full text-stone-400 transition-[color,background-color,transform] hover:bg-stone-200/70 hover:text-emerald-600 active:scale-90"
               aria-label="به‌روزرسانی آمار"
               title="به‌روزرسانی"
             >
@@ -313,7 +313,7 @@ export default function SettingsPopover() {
               setOpen(false);
               setTimeout(() => window.dispatchEvent(new CustomEvent("install-app")), 150);
             }}
-            className="mb-2 flex w-full items-center justify-center gap-1.5 rounded-xl border border-emerald-200 bg-emerald-50/60 py-2.5 text-[12px] font-black text-emerald-700 transition-all hover:bg-emerald-100 active:scale-95"
+            className="mb-2 flex w-full items-center justify-center gap-1.5 rounded-xl border border-emerald-200 bg-emerald-50/60 py-2.5 text-[12px] font-black text-emerald-700 transition-[background-color,transform] hover:bg-emerald-100 active:scale-95"
           >
             <Smartphone size={14} />
             نصب وب‌کتاب روی دستگاه
@@ -326,7 +326,7 @@ export default function SettingsPopover() {
             setOpen(false);
             setTimeout(() => window.dispatchEvent(new CustomEvent("open-profile")), 150);
           }}
-          className="flex w-full items-center justify-center gap-1.5 rounded-xl border c-card py-2.5 text-[12px] font-bold text-stone-600 transition-all hover:border-emerald-300 hover:text-emerald-700 active:scale-95"
+          className="flex w-full items-center justify-center gap-1.5 rounded-xl border c-card py-2.5 text-[12px] font-bold text-stone-600 transition-[color,border-color,transform] hover:border-emerald-300 hover:text-emerald-700 active:scale-95"
         >
           <UserCog size={14} />
           نام، رنگ و پشتیبان‌گیری پیشرفت

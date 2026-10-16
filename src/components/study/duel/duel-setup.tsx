@@ -227,7 +227,7 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
                       onClick={() => choosePace(p.ms)}
                       aria-pressed={active}
                       title={`هر سؤال ${paceSecondsLabel(p.ms)} وقت دارد`}
-                      className={`rounded-xl px-2 py-2 text-center transition-all active:scale-95 ${
+                      className={`rounded-xl px-2 py-2 text-center transition-[background-color,transform] active:scale-95 ${
                         active
                           ? "bg-white text-fuchsia-700 shadow-lg"
                           : "border border-white/25 bg-white/10 text-white/85 hover:bg-white/20"
@@ -246,7 +246,7 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
               onClick={createRoom}
               disabled={conn !== "online" || createBusy}
               aria-busy={createBusy}
-              className="duel-cta inline-flex w-full items-center justify-center gap-2.5 rounded-2xl bg-white px-8 py-3.5 text-[15px] font-black text-fuchsia-700 shadow-xl transition-all hover:opacity-95 active:scale-95 disabled:opacity-50"
+              className="duel-cta inline-flex w-full items-center justify-center gap-2.5 rounded-2xl bg-white px-8 py-3.5 text-[15px] font-black text-fuchsia-700 shadow-xl transition-[opacity,transform] hover:opacity-95 active:scale-95 disabled:opacity-50"
             >
               {createBusy ? <Loader2 size={18} className="animate-spin" /> : <Swords size={18} />}
               {createBusy ? "در حالِ گرفتنِ بلیت…" : "ساخت اتاق نبرد"}
@@ -271,7 +271,7 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
               <button
                 onClick={joinRoom}
                 disabled={conn !== "online" || joinBusy || joinInput.trim().length < 4}
-                className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-stone-900 px-5 py-2.5 text-[13px] font-black text-white transition-all hover:opacity-90 active:scale-95 disabled:opacity-50"
+                className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-stone-900 px-5 py-2.5 text-[13px] font-black text-white transition-[opacity,transform] hover:opacity-90 active:scale-95 disabled:opacity-50"
               >
                 {joinBusy ? <Loader2 size={15} className="animate-spin" /> : <Swords size={15} />}
                 پیوستن

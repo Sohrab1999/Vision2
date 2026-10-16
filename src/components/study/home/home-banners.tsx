@@ -36,7 +36,7 @@ export function ListenBanner() {
         </div>
         <button
           onClick={() => setView({ type: "listen" })}
-          className="inline-flex w-full flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-gradient-to-l from-cyan-600 to-teal-600 px-5 py-3 text-[13px] font-black text-white shadow-lg shadow-teal-600/25 transition-all hover:opacity-95 active:scale-95 sm:w-auto sm:flex-none"
+          className="inline-flex w-full flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-gradient-to-l from-cyan-600 to-teal-600 px-5 py-3 text-[13px] font-black text-white shadow-lg shadow-teal-600/25 transition-[opacity,transform,width] hover:opacity-95 active:scale-95 sm:w-auto sm:flex-none"
         >
           <Headphones size={16} />
           شروع تمرین شنیداری
@@ -85,7 +85,7 @@ export function RushBanner() {
           )}
           <button
             onClick={() => setView({ type: "rush" })}
-            className="inline-flex flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-gradient-to-l from-amber-500 to-orange-600 px-5 py-3 text-[13px] font-black text-white shadow-lg shadow-orange-600/25 transition-all hover:opacity-95 active:scale-95 sm:flex-none"
+            className="inline-flex flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-gradient-to-l from-amber-500 to-orange-600 px-5 py-3 text-[13px] font-black text-white shadow-lg shadow-orange-600/25 transition-[opacity,transform] hover:opacity-95 active:scale-95 sm:flex-none"
           >
             <Zap size={16} />
             شروع چالش

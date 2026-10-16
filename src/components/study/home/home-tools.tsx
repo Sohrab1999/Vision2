@@ -51,7 +51,7 @@ export default function HomeTools() {
           <button
             key={tool.title}
             onClick={() => ("onClick" in tool && tool.onClick ? tool.onClick() : setView((tool as { view: { type: "dictionary" } }).view))}
-            className="relative rounded-2xl border c-card p-4 text-right shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md active:scale-[0.98]"
+            className="relative rounded-2xl border c-card p-4 text-right shadow-sm transition-[box-shadow,transform] hover:-translate-y-0.5 hover:shadow-md active:scale-[0.98]"
           >
             {"badge" in tool && typeof tool.badge === "number" && tool.badge > 0 && (
               <span className="absolute left-3 top-3 flex h-6 min-w-6 items-center justify-center rounded-full bg-rose-500 px-1.5 text-[11px] font-black text-white shadow-md shadow-rose-500/30">

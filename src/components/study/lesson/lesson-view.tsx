@@ -56,7 +56,7 @@ export default function LessonView({ id }: { id: number }) {
           <div className="flex items-center gap-4">
             <button
               onClick={goHome}
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border c-card text-stone-500 transition-all hover:bg-stone-50 hover:text-stone-700 active:scale-95"
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border c-card text-stone-500 transition-[color,background-color,transform] hover:bg-stone-50 hover:text-stone-700 active:scale-95"
               aria-label="بازگشت به خانه"
             >
               <ArrowRight size={18} />
@@ -97,7 +97,7 @@ export default function LessonView({ id }: { id: number }) {
               <button
                 key={item.key}
                 onClick={() => setTab(item.key)}
-                className={`flex shrink-0 items-center gap-1.5 rounded-xl px-3.5 py-2 text-[13px] font-bold transition-all ${
+                className={`flex shrink-0 items-center gap-1.5 rounded-xl px-3.5 py-2 text-[13px] font-bold transition-colors ${
                   active
                     ? `${t.bg} text-white shadow-sm`
                     : "text-stone-500 hover:bg-white hover:text-stone-700"

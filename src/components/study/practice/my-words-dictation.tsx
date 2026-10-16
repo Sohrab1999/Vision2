@@ -52,7 +52,7 @@ export default function MyWordsDictation({ stars }: { stars: ResolvedStar[] }) {
               trackEvent("my_words_dictation_start");
               setSession(buildStarredDictation(stars));
             }}
-            className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-l from-violet-500 to-fuchsia-500 px-4 py-2.5 text-[13px] font-black text-white shadow-md shadow-violet-500/25 transition-all hover:opacity-95 active:scale-95"
+            className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-l from-violet-500 to-fuchsia-500 px-4 py-2.5 text-[13px] font-black text-white shadow-md shadow-violet-500/25 transition-[opacity,transform] hover:opacity-95 active:scale-95"
           >
             <Play size={14} />
             شروع دیکته
@@ -60,7 +60,7 @@ export default function MyWordsDictation({ stars }: { stars: ResolvedStar[] }) {
         ) : (
           <button
             onClick={() => setView({ type: "dictionary" })}
-            className="inline-flex items-center gap-1.5 rounded-xl border border-violet-300 bg-white px-4 py-2.5 text-[13px] font-bold text-violet-700 transition-all hover:bg-violet-50 active:scale-95"
+            className="inline-flex items-center gap-1.5 rounded-xl border border-violet-300 bg-white px-4 py-2.5 text-[13px] font-bold text-violet-700 transition-[background-color,transform] hover:bg-violet-50 active:scale-95"
           >
             <RotateCcw size={14} />
             رفتن به دیکشنری

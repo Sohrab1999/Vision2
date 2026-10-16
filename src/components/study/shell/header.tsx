@@ -70,7 +70,7 @@ export default function Header() {
           <WeekChip />
           <button
             onClick={() => setTheme(isDark ? "light" : "dark")}
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border c-card text-stone-500 transition-all hover:text-amber-500 hover:border-amber-200 active:scale-90"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border c-card text-stone-500 transition-[color,border-color,transform] hover:text-amber-500 hover:border-amber-200 active:scale-90"
             aria-label={isDark ? "حالت روشن" : "حالت شب"}
             title={isDark ? "حالت روشن" : "حالت شب"}
           >
@@ -83,7 +83,7 @@ export default function Header() {
           {/* command palette — جست‌وجوی همه‌جا (Ctrl+K) */}
           <button
             onClick={() => window.dispatchEvent(new CustomEvent("open-command-palette"))}
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border c-card text-stone-500 transition-all hover:text-teal-600 hover:border-teal-200 active:scale-90"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border c-card text-stone-500 transition-[color,border-color,transform] hover:text-teal-600 hover:border-teal-200 active:scale-90"
             aria-label="فرمان‌یاب — جست‌وجوی همه‌جا"
             title="فرمان‌یاب (Ctrl+K)"
           >
@@ -94,7 +94,7 @@ export default function Header() {
               راهنمای کیبورد لمسی نیست و از پالت هم reachable است) */}
           <button
             onClick={() => window.dispatchEvent(new CustomEvent("open-shortcuts"))}
-            className="hidden h-9 w-9 shrink-0 items-center justify-center rounded-full border c-card text-stone-500 transition-all hover:text-emerald-600 hover:border-emerald-200 active:scale-90 sm:flex"
+            className="hidden h-9 w-9 shrink-0 items-center justify-center rounded-full border c-card text-stone-500 transition-[color,border-color,transform] hover:text-emerald-600 hover:border-emerald-200 active:scale-90 sm:flex"
             aria-label="راهنمای میان‌برهای کیبورد"
             title="راهنمای میان‌برهای کیبورد (؟)"
           >
@@ -112,7 +112,7 @@ export default function Header() {
                 <button
                   key={item.key}
                   onClick={() => setView(item.view)}
-                  className={`flex shrink-0 items-center gap-1.5 rounded-full px-3 py-2 text-[13px] font-semibold transition-all ${
+                  className={`flex shrink-0 items-center gap-1.5 rounded-full px-3 py-2 text-[13px] font-semibold transition-colors ${
                     active
                       ? "bg-emerald-600 text-white shadow-sm shadow-emerald-900/20"
                       : "text-stone-600 hover:bg-stone-200/70"

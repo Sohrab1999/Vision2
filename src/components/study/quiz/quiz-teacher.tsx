@@ -148,7 +148,7 @@ export default function QuizTeacher({
         <button
           onClick={ask}
           disabled={state.status === "loading"}
-          className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-l from-violet-500 to-fuchsia-600 px-4 py-2.5 text-[13px] font-black text-white shadow-md shadow-violet-500/25 transition-all hover:opacity-95 active:scale-95 disabled:cursor-not-allowed disabled:opacity-70"
+          className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-l from-violet-500 to-fuchsia-600 px-4 py-2.5 text-[13px] font-black text-white shadow-md shadow-violet-500/25 transition-[opacity,transform] hover:opacity-95 active:scale-95 disabled:cursor-not-allowed disabled:opacity-70"
           aria-label="نظرِ معلم را برای این جلسه بخواه"
         >
           {state.status === "loading" ? (
@@ -216,7 +216,7 @@ export default function QuizTeacher({
             <button
               onClick={saveCard}
               disabled={imgBusy || shareBusy}
-              className="inline-flex items-center gap-1.5 rounded-xl border border-violet-200 bg-white px-3 py-1.5 text-[12px] font-black text-violet-700 transition-all hover:border-violet-300 hover:bg-violet-50/60 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
+              className="inline-flex items-center gap-1.5 rounded-xl border border-violet-200 bg-white px-3 py-1.5 text-[12px] font-black text-violet-700 transition-[background-color,border-color,opacity,transform] hover:border-violet-300 hover:bg-violet-50/60 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
               aria-label="ذخیرهٔ عکس نظر معلم"
             >
               {imgBusy ? <Loader2 size={13} className="animate-spin" aria-hidden /> : <ImageDown size={13} aria-hidden />}
@@ -226,7 +226,7 @@ export default function QuizTeacher({
               <button
                 onClick={shareCard}
                 disabled={imgBusy || shareBusy}
-                className="inline-flex items-center gap-1.5 rounded-xl border border-violet-200 bg-white px-3 py-1.5 text-[12px] font-black text-violet-700 transition-all hover:border-violet-300 hover:bg-violet-50/60 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
+                className="inline-flex items-center gap-1.5 rounded-xl border border-violet-200 bg-white px-3 py-1.5 text-[12px] font-black text-violet-700 transition-[background-color,border-color,opacity,transform] hover:border-violet-300 hover:bg-violet-50/60 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
                 aria-label="هم‌رسانی عکس نظر معلم"
               >
                 {shareBusy ? <Loader2 size={13} className="animate-spin" aria-hidden /> : <Share2 size={13} aria-hidden />}
@@ -242,7 +242,7 @@ export default function QuizTeacher({
           <span>{state.serverMsg ?? "بازخورد ساخته نشد — اتصال را چک کن و دوباره تلاش کن."}</span>
           <button
             onClick={ask}
-            className="inline-flex items-center gap-1 rounded-lg border border-rose-200 bg-white px-2.5 py-1 text-[11px] font-bold text-rose-600 transition-all hover:bg-rose-50 active:scale-95"
+            className="inline-flex items-center gap-1 rounded-lg border border-rose-200 bg-white px-2.5 py-1 text-[11px] font-bold text-rose-600 transition-[background-color,transform] hover:bg-rose-50 active:scale-95"
             aria-label="تلاش دوباره برای گرفتن نظر معلم"
           >
             <RotateCcw size={11} />

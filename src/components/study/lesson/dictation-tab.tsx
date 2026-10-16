@@ -292,7 +292,7 @@ export default function DictationTab({
                 <button
                   key={n}
                   onClick={() => setCount(n)}
-                  className={`rounded-xl px-4 py-2 text-sm font-bold transition-all active:scale-95 ${
+                  className={`rounded-xl px-4 py-2 text-sm font-bold transition-[color,border-color,transform] active:scale-95 ${
                     count === n
                       ? "bg-violet-600 text-white shadow-md shadow-violet-500/25"
                       : "border c-card text-stone-600 hover:border-violet-300 hover:text-violet-600"
@@ -306,7 +306,7 @@ export default function DictationTab({
 
           <button
             onClick={() => setSmartOrder((v) => !v)}
-            className={`mx-auto mb-6 flex items-center gap-2 rounded-xl border px-4 py-2 text-[12px] font-bold transition-all ${
+            className={`mx-auto mb-6 flex items-center gap-2 rounded-xl border px-4 py-2 text-[12px] font-bold transition-colors ${
               smartOrder
                 ? "border-violet-300 bg-violet-50 text-violet-700"
                 : "border-stone-200 bg-white text-stone-500 hover:text-violet-600"
@@ -322,7 +322,7 @@ export default function DictationTab({
           <div className="flex flex-wrap items-center justify-center gap-3">
             <button
               onClick={startRound}
-              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-l from-violet-600 to-fuchsia-600 px-7 py-3 text-sm font-bold text-white shadow-lg shadow-violet-600/30 transition-all hover:opacity-90 active:scale-95"
+              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-l from-violet-600 to-fuchsia-600 px-7 py-3 text-sm font-bold text-white shadow-lg shadow-violet-600/30 transition-[opacity,transform] hover:opacity-90 active:scale-95"
             >
               <Play size={16} />
               شروع دیکته
@@ -333,7 +333,7 @@ export default function DictationTab({
                   stopSpeaking();
                   onExit();
                 }}
-                className="inline-flex items-center gap-1.5 rounded-xl border c-card px-4 py-2.5 text-[13px] font-bold text-stone-500 transition-all hover:bg-stone-50 active:scale-95"
+                className="inline-flex items-center gap-1.5 rounded-xl border c-card px-4 py-2.5 text-[13px] font-bold text-stone-500 transition-[background-color,transform] hover:bg-stone-50 active:scale-95"
               >
                 بازگشت
               </button>
@@ -369,21 +369,21 @@ export default function DictationTab({
           <div className="flex flex-wrap justify-center gap-3">
             <button
               onClick={startRound}
-              className="inline-flex items-center gap-2 rounded-xl bg-violet-600 px-5 py-2.5 text-sm font-bold text-white shadow-md transition-all hover:bg-violet-700 active:scale-95"
+              className="inline-flex items-center gap-2 rounded-xl bg-violet-600 px-5 py-2.5 text-sm font-bold text-white shadow-md transition-[background-color,transform] hover:bg-violet-700 active:scale-95"
             >
               <RotateCcw size={15} />
               دیکتهٔ جدید
             </button>
             <button
               onClick={restart}
-              className="inline-flex items-center gap-2 rounded-xl border c-card px-5 py-2.5 text-sm font-bold text-stone-600 transition-all hover:bg-stone-50 active:scale-95"
+              className="inline-flex items-center gap-2 rounded-xl border c-card px-5 py-2.5 text-sm font-bold text-stone-600 transition-[background-color,transform] hover:bg-stone-50 active:scale-95"
             >
               بازگشت به تنظیمات
             </button>
             {onExit && (
               <button
                 onClick={onExit}
-                className="inline-flex items-center gap-2 rounded-xl border border-violet-200 bg-violet-50 px-5 py-2.5 text-sm font-bold text-violet-700 transition-all hover:bg-violet-100 active:scale-95"
+                className="inline-flex items-center gap-2 rounded-xl border border-violet-200 bg-violet-50 px-5 py-2.5 text-sm font-bold text-violet-700 transition-[background-color,transform] hover:bg-violet-100 active:scale-95"
               >
                 {exitLabel}
               </button>
@@ -424,14 +424,14 @@ export default function DictationTab({
                 <div className="mr-2 flex shrink-0 items-center gap-1.5">
                   <button
                     onClick={() => playAudio(w.en)}
-                    className="flex h-8 w-8 items-center justify-center rounded-lg border border-violet-200 bg-white text-violet-600 transition-all hover:bg-violet-50"
+                    className="flex h-8 w-8 items-center justify-center rounded-lg border border-violet-200 bg-white text-violet-600 transition-colors hover:bg-violet-50"
                     aria-label={`روخوانی ${w.en}`}
                   >
                     <Volume2 size={14} />
                   </button>
                   <button
                     onClick={() => playSpelled(w.en, false)}
-                    className="flex h-8 w-8 items-center justify-center rounded-lg border border-sky-200 bg-white text-sky-600 transition-all hover:bg-sky-50"
+                    className="flex h-8 w-8 items-center justify-center rounded-lg border border-sky-200 bg-white text-sky-600 transition-colors hover:bg-sky-50"
                     aria-label={`املای حرف‌به‌حرف ${w.en}`}
                     title="املای حرف‌به‌حرف"
                   >
@@ -460,7 +460,7 @@ export default function DictationTab({
       <div className="flex items-center gap-3">
         <div className="h-2 flex-1 overflow-hidden rounded-full bg-stone-200">
           <div
-            className="h-full bg-gradient-to-l from-violet-500 to-fuchsia-500 transition-all duration-300"
+            className="h-full bg-gradient-to-l from-violet-500 to-fuchsia-500 transition duration-300"
             style={{ width: `${((idx + (state === "typing" ? 0 : 1)) / total) * 100}%` }}
           />
         </div>
@@ -494,7 +494,7 @@ export default function DictationTab({
               whileTap={{ scale: 0.9 }}
               animate={replaying ? { scale: [1, 1.08, 1] } : {}}
               transition={replaying ? { repeat: Infinity, duration: 1 } : {}}
-              className="relative flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-500 text-white shadow-xl shadow-violet-500/35 transition-all hover:opacity-90"
+              className="relative flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-500 text-white shadow-xl shadow-violet-500/35 transition-opacity hover:opacity-90"
               aria-label="پخش دوبارهٔ کلمه"
             >
               {/* sound waves */}
@@ -543,20 +543,20 @@ export default function DictationTab({
                   spellCheck={false}
                   autoComplete="off"
                   placeholder="type the word..."
-                  className="en-text mx-auto block w-full max-w-md rounded-xl border-2 border-stone-200 bg-stone-50 px-4 py-3.5 text-center text-xl font-bold tracking-wide outline-none transition-all focus:border-violet-400 focus:bg-white focus:ring-4 focus:ring-violet-100"
+                  className="en-text mx-auto block w-full max-w-md rounded-xl border-2 border-stone-200 bg-stone-50 px-4 py-3.5 text-center text-xl font-bold tracking-wide outline-none transition-[background-color,border-color,box-shadow] focus:border-violet-400 focus:bg-white focus:ring-4 focus:ring-violet-100"
                 />
                 <div className="mx-auto mt-4 flex max-w-md flex-wrap items-center justify-center gap-2.5">
                   <button
                     onClick={check}
                     disabled={!input.trim()}
-                    className="inline-flex items-center gap-2 rounded-xl bg-violet-600 px-6 py-2.5 text-sm font-bold text-white shadow-md shadow-violet-500/25 transition-all hover:bg-violet-700 active:scale-95 disabled:cursor-not-allowed disabled:opacity-40"
+                    className="inline-flex items-center gap-2 rounded-xl bg-violet-600 px-6 py-2.5 text-sm font-bold text-white shadow-md shadow-violet-500/25 transition-[background-color,opacity,transform] hover:bg-violet-700 active:scale-95 disabled:cursor-not-allowed disabled:opacity-40"
                   >
                     <CheckCircle2 size={16} />
                     بررسی
                   </button>
                   <button
                     onClick={revealHint}
-                    className="inline-flex items-center gap-1.5 rounded-xl border border-amber-200 bg-amber-50 px-4 py-2.5 text-[13px] font-bold text-amber-700 transition-all hover:bg-amber-100 active:scale-95"
+                    className="inline-flex items-center gap-1.5 rounded-xl border border-amber-200 bg-amber-50 px-4 py-2.5 text-[13px] font-bold text-amber-700 transition-[background-color,transform] hover:bg-amber-100 active:scale-95"
                   >
                     <Lightbulb size={15} />
                     راهنما
@@ -565,14 +565,14 @@ export default function DictationTab({
                     onClick={() => playSpelled(word.en, true)}
                     disabled={spelling}
                     title="شنیدن املای حرف‌به‌حرف (نیم‌امتیاز)"
-                    className="inline-flex items-center gap-1.5 rounded-xl border border-sky-200 bg-sky-50 px-4 py-2.5 text-[13px] font-bold text-sky-700 transition-all hover:bg-sky-100 active:scale-95 disabled:opacity-50"
+                    className="inline-flex items-center gap-1.5 rounded-xl border border-sky-200 bg-sky-50 px-4 py-2.5 text-[13px] font-bold text-sky-700 transition-[background-color,opacity,transform] hover:bg-sky-100 active:scale-95 disabled:opacity-50"
                   >
                     <SpellCheck size={15} />
                     حرف‌به‌حرف
                   </button>
                   <button
                     onClick={skip}
-                    className="inline-flex items-center gap-1.5 rounded-xl border c-card px-4 py-2.5 text-[13px] font-bold text-stone-500 transition-all hover:bg-stone-50 active:scale-95"
+                    className="inline-flex items-center gap-1.5 rounded-xl border c-card px-4 py-2.5 text-[13px] font-bold text-stone-500 transition-[background-color,transform] hover:bg-stone-50 active:scale-95"
                   >
                     رد کردن
                     <ChevronLeft size={14} />
@@ -638,14 +638,14 @@ export default function DictationTab({
                     <button
                       onClick={() => playSpelled(word.en, false)}
                       disabled={spelling}
-                      className="inline-flex items-center gap-1.5 rounded-lg border border-sky-200 bg-white px-3 py-1.5 text-[12px] font-bold text-sky-700 transition-all hover:bg-sky-50 active:scale-95 disabled:opacity-50"
+                      className="inline-flex items-center gap-1.5 rounded-lg border border-sky-200 bg-white px-3 py-1.5 text-[12px] font-bold text-sky-700 transition-[background-color,opacity,transform] hover:bg-sky-50 active:scale-95 disabled:opacity-50"
                     >
                       <SpellCheck size={13} />
                       {spelling ? "در حال خواندن…" : "شنیدن حرف‌به‌حرف"}
                     </button>
                     <button
                       onClick={() => playAudio(word.en)}
-                      className="inline-flex items-center gap-1.5 rounded-lg border border-violet-200 bg-white px-3 py-1.5 text-[12px] font-bold text-violet-700 transition-all hover:bg-violet-50 active:scale-95"
+                      className="inline-flex items-center gap-1.5 rounded-lg border border-violet-200 bg-white px-3 py-1.5 text-[12px] font-bold text-violet-700 transition-[background-color,transform] hover:bg-violet-50 active:scale-95"
                     >
                       <Volume2 size={13} />
                       تلفظ کلمه
@@ -656,7 +656,7 @@ export default function DictationTab({
                 {!isCorrect && (
                   <button
                     onClick={() => goNext(score)}
-                    className="inline-flex items-center gap-2 rounded-xl bg-violet-600 px-6 py-2.5 text-sm font-bold text-white shadow-md transition-all hover:bg-violet-700 active:scale-95"
+                    className="inline-flex items-center gap-2 rounded-xl bg-violet-600 px-6 py-2.5 text-sm font-bold text-white shadow-md transition-[background-color,transform] hover:bg-violet-700 active:scale-95"
                   >
                     واژهٔ بعدی
                     <ChevronLeft size={15} />

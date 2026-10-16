@@ -95,7 +95,7 @@ export default function HomeBookshelf() {
               <p className="mb-3 text-[12px] font-bold text-stone-600">{lessonCheer(mounted ? knownPercent : 0)}</p>
               <button
                 onClick={() => openLesson(l.id)}
-                className={`inline-flex w-full items-center justify-center gap-2 rounded-xl ${t.bg} py-2.5 text-sm font-bold text-white transition-all hover:opacity-90 active:scale-95`}
+                className={`inline-flex w-full items-center justify-center gap-2 rounded-xl ${t.bg} py-2.5 text-sm font-bold text-white transition-[opacity,transform] hover:opacity-90 active:scale-95`}
               >
                 ورود به درس
                 <ArrowLeft size={15} />

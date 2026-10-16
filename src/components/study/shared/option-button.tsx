@@ -90,7 +90,7 @@ export default function OptionButton({
       {...(dataAttr ? { [`data-${dataAttr}-option`]: index } : {})}
       className={`flex w-full items-center gap-3 rounded-xl border-2 ${roomy ? "p-3.5" : "p-3"} ${
         align === "right" ? "text-right" : "text-left"
-      } transition-all active:scale-[0.99] ${stateCls} ${dimCls}`}
+      } transition-transform active:scale-[0.99] ${stateCls} ${dimCls}`}
     >
       <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-[13px] font-black ${badgeCls}`}>
         {Icon ? <Icon size={14} /> : label}

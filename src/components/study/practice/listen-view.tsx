@@ -257,7 +257,7 @@ export default function ListenView() {
                 <button
                   key={n}
                   onClick={() => setCount(n)}
-                  className={`rounded-xl px-4 py-2 text-sm font-bold transition-all active:scale-95 ${
+                  className={`rounded-xl px-4 py-2 text-sm font-bold transition-[color,border-color,transform] active:scale-95 ${
                     count === n
                       ? "bg-teal-600 text-white shadow-md shadow-teal-500/25"
                       : "border c-card text-stone-600 hover:border-teal-300 hover:text-teal-600"
@@ -276,7 +276,7 @@ export default function ListenView() {
                 <button
                   key={o.id}
                   onClick={() => setLessonFilter(o.id)}
-                  className={`rounded-xl px-3.5 py-2 text-[12.5px] font-bold transition-all active:scale-95 ${
+                  className={`rounded-xl px-3.5 py-2 text-[12.5px] font-bold transition-[border-color,transform] active:scale-95 ${
                     lessonFilter === o.id
                       ? "bg-stone-800 text-white shadow-md"
                       : "border c-card text-stone-600 hover:border-stone-400"
@@ -294,7 +294,7 @@ export default function ListenView() {
 
           <button
             onClick={startRound}
-            className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-l from-cyan-600 to-teal-600 px-6 py-3 text-sm font-black text-white shadow-lg shadow-teal-600/25 transition-all hover:opacity-95 active:scale-95"
+            className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-l from-cyan-600 to-teal-600 px-6 py-3 text-sm font-black text-white shadow-lg shadow-teal-600/25 transition-[opacity,transform] hover:opacity-95 active:scale-95"
           >
             <Play size={17} />
             شروع تمرین شنیداری
@@ -335,20 +335,20 @@ export default function ListenView() {
           <div className="flex flex-wrap justify-center gap-2.5">
             <button
               onClick={startRound}
-              className="inline-flex items-center gap-1.5 rounded-xl bg-teal-600 px-4 py-2.5 text-sm font-bold text-white transition-all hover:bg-teal-700 active:scale-95"
+              className="inline-flex items-center gap-1.5 rounded-xl bg-teal-600 px-4 py-2.5 text-sm font-bold text-white transition-[background-color,transform] hover:bg-teal-700 active:scale-95"
             >
               <RotateCcw size={15} />
               یک دور دیگر
             </button>
             <button
               onClick={restart}
-              className="inline-flex items-center gap-1.5 rounded-xl border border-stone-300 bg-white px-4 py-2.5 text-sm font-bold text-stone-600 transition-all hover:bg-stone-50 active:scale-95"
+              className="inline-flex items-center gap-1.5 rounded-xl border border-stone-300 bg-white px-4 py-2.5 text-sm font-bold text-stone-600 transition-[background-color,transform] hover:bg-stone-50 active:scale-95"
             >
               تغییر تنظیمات
             </button>
             <button
               onClick={() => useStudy.getState().goHome()}
-              className="inline-flex items-center gap-1.5 rounded-xl border border-stone-300 bg-white px-4 py-2.5 text-sm font-bold text-stone-600 transition-all hover:bg-stone-50 active:scale-95"
+              className="inline-flex items-center gap-1.5 rounded-xl border border-stone-300 bg-white px-4 py-2.5 text-sm font-bold text-stone-600 transition-[background-color,transform] hover:bg-stone-50 active:scale-95"
             >
               بازگشت به خانه
             </button>
@@ -400,7 +400,7 @@ export default function ListenView() {
           </span>
         </div>
         <div className="h-2 overflow-hidden rounded-full bg-stone-100">
-          <div className="h-full rounded-full bg-gradient-to-l from-cyan-500 to-teal-600 transition-all duration-300" style={{ width: `${(idx / total) * 100}%` }} />
+          <div className="h-full rounded-full bg-gradient-to-l from-cyan-500 to-teal-600 transition duration-300" style={{ width: `${(idx / total) * 100}%` }} />
         </div>
       </div>
 
@@ -429,7 +429,7 @@ export default function ListenView() {
               onClick={() => playAudio(item, true)}
               disabled={playing || playsLeft <= 0 || selected !== null}
               aria-label="پخش صدا"
-              className={`relative flex h-20 w-20 items-center justify-center rounded-full text-white shadow-xl transition-all ${
+              className={`relative flex h-20 w-20 items-center justify-center rounded-full text-white shadow-xl transition-opacity ${
                 playing
                   ? "bg-gradient-to-br from-teal-400 to-cyan-600 shadow-teal-500/40"
                   : playsLeft <= 0 || selected !== null
@@ -499,7 +499,7 @@ export default function ListenView() {
                     else finishRound(answers);
                   }}
                   data-listen-next
-                  className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-teal-600 px-4 py-2 text-[13px] font-bold text-white transition-all hover:bg-teal-700 active:scale-95"
+                  className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-teal-600 px-4 py-2 text-[13px] font-bold text-white transition-[background-color,transform] hover:bg-teal-700 active:scale-95"
                 >
                   {idx < total - 1 ? "آیتم بعدی" : "دیدن نتیجه"}
                   <ChevronLeft size={14} />

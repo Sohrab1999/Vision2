@@ -47,7 +47,7 @@ export default function HomeToday() {
       <div className="grid gap-5 p-5 sm:p-6 lg:grid-cols-[auto_1fr_auto] lg:items-center">
         {/* streak */}
         <div className="flex items-center gap-4">
-          <div className={`relative flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl shadow-lg transition-all ${streak > 0 ? "bg-gradient-to-br from-amber-400 to-orange-500 shadow-orange-500/30" : "bg-stone-200 shadow-none"}`}>
+          <div className={`relative flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl shadow-lg transition ${streak > 0 ? "bg-gradient-to-br from-amber-400 to-orange-500 shadow-orange-500/30" : "bg-stone-200 shadow-none"}`}>
             <Flame size={30} className={streak > 0 ? "streak-flame text-white" : "text-stone-400"} />
           </div>
           <div>
@@ -120,14 +120,14 @@ export default function HomeToday() {
         <div className="flex flex-col gap-2 sm:flex-row lg:flex-col">
           <button
             onClick={() => openLesson(reviewLesson ?? 1, "smart")}
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 px-4 py-2.5 text-[13px] font-bold text-white shadow-md shadow-emerald-900/20 transition-all hover:bg-emerald-700 active:scale-95"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 px-4 py-2.5 text-[13px] font-bold text-white shadow-md shadow-emerald-900/20 transition-[background-color,transform] hover:bg-emerald-700 active:scale-95"
           >
             <RefreshCcw size={15} />
             {dueTotal > 0 ? `مرور هوشمند (${faNum(dueTotal)} واژه سررسید)` : "مرور هوشمند"}
           </button>
           <button
             onClick={() => openLessonTab(reviewLesson ?? 1, "dictation")}
-            className="inline-flex items-center justify-center gap-2 rounded-xl border border-violet-200 bg-violet-50 px-4 py-2.5 text-[13px] font-bold text-violet-700 transition-all hover:bg-violet-100 active:scale-95"
+            className="inline-flex items-center justify-center gap-2 rounded-xl border border-violet-200 bg-violet-50 px-4 py-2.5 text-[13px] font-bold text-violet-700 transition-[background-color,transform] hover:bg-violet-100 active:scale-95"
           >
             <Ear size={15} />
             دیکتهٔ امروز

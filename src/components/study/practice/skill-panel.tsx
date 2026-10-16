@@ -99,7 +99,7 @@ export default function SkillPanel() {
             </p>
             <button
               onClick={() => setView({ type: "smart" })}
-              className="mt-4 inline-flex items-center gap-1.5 rounded-lg bg-violet-600 px-4 py-2 text-[11.5px] font-black text-white shadow-sm shadow-violet-500/25 transition-all hover:opacity-90 active:scale-95"
+              className="mt-4 inline-flex items-center gap-1.5 rounded-lg bg-violet-600 px-4 py-2 text-[11.5px] font-black text-white shadow-sm shadow-violet-500/25 transition-[opacity,transform] hover:opacity-90 active:scale-95"
             >
               <Sparkles size={13} />
               شروع با جلسهٔ سنجش هوشمند
@@ -154,7 +154,7 @@ export default function SkillPanel() {
             {weakest && (
               <button
                 onClick={() => targetCta(weakest)}
-                className="skill-weak-cta mt-4 flex w-full items-center justify-between gap-3 rounded-xl border border-amber-200 bg-gradient-to-l from-amber-50 to-orange-50 px-3.5 py-3 text-right transition-all hover:shadow-sm active:scale-[0.99]"
+                className="skill-weak-cta mt-4 flex w-full items-center justify-between gap-3 rounded-xl border border-amber-200 bg-gradient-to-l from-amber-50 to-orange-50 px-3.5 py-3 text-right transition-[box-shadow,transform] hover:shadow-sm active:scale-[0.99]"
               >
                 <span className="flex items-center gap-2.5">
                   <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-amber-100 c-ink-amber">
@@ -180,7 +180,7 @@ export default function SkillPanel() {
 
             <button
               onClick={() => setView({ type: "smart" })}
-              className="mt-2 flex w-full items-center justify-between gap-3 rounded-xl border border-violet-200 bg-gradient-to-l from-violet-50 to-fuchsia-50 px-3.5 py-3 text-right transition-all hover:shadow-sm active:scale-[0.99]"
+              className="mt-2 flex w-full items-center justify-between gap-3 rounded-xl border border-violet-200 bg-gradient-to-l from-violet-50 to-fuchsia-50 px-3.5 py-3 text-right transition-[box-shadow,transform] hover:shadow-sm active:scale-[0.99]"
             >
               <span className="flex items-center gap-2.5">
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-violet-100 text-violet-700">

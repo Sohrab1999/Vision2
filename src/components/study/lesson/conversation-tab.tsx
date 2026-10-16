@@ -55,7 +55,7 @@ export default function ConversationTab({ lesson }: { lesson: LessonData }) {
       <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border c-card px-4 py-3">
         <button
           onClick={playAll}
-          className={`inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-bold text-white shadow-sm transition-all active:scale-95 ${
+          className={`inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-bold text-white shadow-sm transition-[background-color,transform] active:scale-95 ${
             playingAll ? "bg-rose-600" : "bg-emerald-600 hover:bg-emerald-700"
           }`}
         >
@@ -72,7 +72,7 @@ export default function ConversationTab({ lesson }: { lesson: LessonData }) {
             className={`relative h-6 w-11 rounded-full transition-colors ${showFa ? "bg-emerald-500" : "bg-stone-300"}`}
           >
             <span
-              className={`absolute top-0.5 h-5 w-5 rounded-full bg-white shadow transition-all ${
+              className={`absolute top-0.5 h-5 w-5 rounded-full bg-white shadow transition ${
                 showFa ? "right-0.5" : "right-[22px]"
               }`}
             />
@@ -88,7 +88,7 @@ export default function ConversationTab({ lesson }: { lesson: LessonData }) {
           return (
             <div key={i} className={`flex ${isA ? "justify-start" : "justify-end"}`}>
               <div
-                className={`max-w-[88%] rounded-2xl border p-3.5 transition-all sm:max-w-[75%] ${
+                className={`max-w-[88%] rounded-2xl border p-3.5 transition-[max-width] sm:max-w-[75%] ${
                   speaking
                     ? `${t.border} ${t.bgSoft} shadow-md`
                     : "border-stone-200 bg-white"

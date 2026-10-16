@@ -303,7 +303,7 @@ export default function JozveView() {
                   setChapterIdx(null);
                   setQuery("");
                 }}
-                className={`rounded-xl border px-3.5 py-2 text-[12.5px] font-extrabold shadow-sm transition-all active:scale-95 ${
+                className={`rounded-xl border px-3.5 py-2 text-[12.5px] font-extrabold shadow-sm transition-[background-color,border-color,transform] active:scale-95 ${
                   active
                     ? "border-amber-300 bg-amber-100 text-amber-900 shadow-amber-200/50"
                     : "border-stone-200 bg-white text-stone-600 hover:border-amber-200 hover:bg-amber-50"
@@ -397,7 +397,7 @@ export default function JozveView() {
                   setChapterIdx(ci);
                   setOpenSections(new Set([0]));
                 }}
-                className="block w-full rounded-2xl border border-stone-200 bg-white p-4 text-right shadow-sm transition-all hover:-translate-y-0.5 hover:border-amber-300 hover:shadow-md active:scale-[0.99]"
+                className="block w-full rounded-2xl border border-stone-200 bg-white p-4 text-right shadow-sm transition-[border-color,box-shadow,transform] hover:-translate-y-0.5 hover:border-amber-300 hover:shadow-md active:scale-[0.99]"
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
@@ -605,7 +605,7 @@ export default function JozveView() {
                     setGrade(g.grade);
                     setChapterIdx(null);
                   }}
-                  className="rounded-2xl border border-stone-200 bg-white p-4 text-right shadow-sm transition-all hover:-translate-y-0.5 hover:border-amber-300 hover:shadow-md active:scale-[0.99]"
+                  className="rounded-2xl border border-stone-200 bg-white p-4 text-right shadow-sm transition-[border-color,box-shadow,transform] hover:-translate-y-0.5 hover:border-amber-300 hover:shadow-md active:scale-[0.99]"
                 >
                   <div className="mb-1 flex items-center justify-between">
                     <h3 className="text-[14px] font-black text-stone-800">پایهٔ {GRADE_LABEL[g.grade]}</h3>

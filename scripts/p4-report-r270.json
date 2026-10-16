@@ -1,0 +1,2678 @@
+[
+ {
+  "file": "src/components/study/duel/duel-done.tsx",
+  "line": 320,
+  "new": "transition-[border-color,transform]",
+  "why": "partial combo: border-color,transform",
+  "props": [
+   "border-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/duel/duel-done.tsx",
+  "line": 312,
+  "new": "transition-[color,border-color,opacity,transform]",
+  "why": "partial combo: border-color,color,opacity,transform",
+  "props": [
+   "border-color",
+   "color",
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/duel/duel-done.tsx",
+  "line": 302,
+  "new": "transition-[color,border-color,opacity,transform]",
+  "why": "partial combo: border-color,color,opacity,transform",
+  "props": [
+   "border-color",
+   "color",
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/duel/duel-done.tsx",
+  "line": 292,
+  "new": "transition-[opacity,transform]",
+  "why": "partial combo: opacity,transform",
+  "props": [
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/duel/duel-setup.tsx",
+  "line": 274,
+  "new": "transition-[opacity,transform]",
+  "why": "partial combo: opacity,transform",
+  "props": [
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/duel/duel-setup.tsx",
+  "line": 249,
+  "new": "transition-[opacity,transform]",
+  "why": "partial combo: opacity,transform",
+  "props": [
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/duel/duel-setup.tsx",
+  "line": 230,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/duel/duel-waiting.tsx",
+  "line": 29,
+  "new": "transition-[border-color,transform]",
+  "why": "partial combo: border-color,transform",
+  "props": [
+   "border-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/duel/leaderboard.tsx",
+  "line": 304,
+  "new": "transition-[box-shadow,transform]",
+  "why": "partial combo: box-shadow,transform",
+  "props": [
+   "box-shadow",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/duel/leaderboard.tsx",
+  "line": 226,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/duel/leaderboard.tsx",
+  "line": 92,
+  "new": "transition-colors",
+  "why": "colors only",
+  "props": [
+   "color"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/duel/rush-view.tsx",
+  "line": 381,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/duel/rush-view.tsx",
+  "line": 374,
+  "new": "transition-[color,border-color,opacity,transform]",
+  "why": "partial combo: border-color,color,opacity,transform",
+  "props": [
+   "border-color",
+   "color",
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/duel/rush-view.tsx",
+  "line": 366,
+  "new": "transition-[opacity,transform]",
+  "why": "partial combo: opacity,transform",
+  "props": [
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/duel/rush-view.tsx",
+  "line": 315,
+  "new": "transition-[opacity,transform]",
+  "why": "partial combo: opacity,transform",
+  "props": [
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/duel/spell-rush-view.tsx",
+  "line": 613,
+  "new": "transition-[background-color,opacity,transform]",
+  "why": "partial combo: background-color,opacity,transform",
+  "props": [
+   "background-color",
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/duel/spell-rush-view.tsx",
+  "line": 605,
+  "new": "transition-[background-color,opacity,transform]",
+  "why": "partial combo: background-color,opacity,transform",
+  "props": [
+   "background-color",
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/duel/spell-rush-view.tsx",
+  "line": 596,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/duel/spell-rush-view.tsx",
+  "line": 582,
+  "new": "transition-[color,border-color,opacity,box-shadow]",
+  "why": "partial combo: border-color,box-shadow,color,opacity",
+  "props": [
+   "border-color",
+   "box-shadow",
+   "color",
+   "opacity"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/duel/spell-rush-view.tsx",
+  "line": 438,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/duel/spell-rush-view.tsx",
+  "line": 430,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/duel/spell-rush-view.tsx",
+  "line": 422,
+  "new": "transition-[color,border-color,opacity,transform]",
+  "why": "partial combo: border-color,color,opacity,transform",
+  "props": [
+   "border-color",
+   "color",
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/duel/spell-rush-view.tsx",
+  "line": 414,
+  "new": "transition-[opacity,transform]",
+  "why": "partial combo: opacity,transform",
+  "props": [
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/duel/spell-rush-view.tsx",
+  "line": 365,
+  "new": "transition-[opacity,transform]",
+  "why": "partial combo: opacity,transform",
+  "props": [
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/duel/spell-rush-view.tsx",
+  "line": 78,
+  "new": "transition-[color,transform]",
+  "why": "partial combo: color,transform",
+  "props": [
+   "color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/exam/exam-view.tsx",
+  "line": 480,
+  "new": "transition-[box-shadow,transform]",
+  "why": "partial combo: box-shadow,transform",
+  "props": [
+   "box-shadow",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/exam/exam-view.tsx",
+  "line": 455,
+  "new": "transition-[box-shadow,transform]",
+  "why": "partial combo: box-shadow,transform",
+  "props": [
+   "box-shadow",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/exam/exam-view.tsx",
+  "line": 400,
+  "new": "transition-[opacity,transform]",
+  "why": "partial combo: opacity,transform",
+  "props": [
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/exam/exam-view.tsx",
+  "line": 378,
+  "new": "transition-[border-color,transform]",
+  "why": "partial combo: border-color,transform",
+  "props": [
+   "border-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/exam/exam-view.tsx",
+  "line": 367,
+  "new": "transition-[border-color,transform]",
+  "why": "partial combo: border-color,transform",
+  "props": [
+   "border-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/exam/exam-view.tsx",
+  "line": 283,
+  "new": "transition-[opacity,box-shadow,transform]",
+  "why": "partial combo: box-shadow,opacity,transform",
+  "props": [
+   "box-shadow",
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/exam/exam-view.tsx",
+  "line": 255,
+  "new": "transition-[box-shadow,transform]",
+  "why": "partial combo: box-shadow,transform",
+  "props": [
+   "box-shadow",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/exam/exam-view.tsx",
+  "line": 239,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/exam/exam-view.tsx",
+  "line": 219,
+  "new": "transition-[border-color,transform]",
+  "why": "partial combo: border-color,transform",
+  "props": [
+   "border-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/exam/exam-view.tsx",
+  "line": 208,
+  "new": "transition-[border-color,transform]",
+  "why": "partial combo: border-color,transform",
+  "props": [
+   "border-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/exam/exam-view.tsx",
+  "line": 193,
+  "new": "transition-[border-color,transform]",
+  "why": "partial combo: border-color,transform",
+  "props": [
+   "border-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/exam/exam-view.tsx",
+  "line": 134,
+  "new": "transition-[box-shadow,transform]",
+  "why": "partial combo: box-shadow,transform",
+  "props": [
+   "box-shadow",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/exam/konkur-view.tsx",
+  "line": 569,
+  "new": "transition-[box-shadow,transform]",
+  "why": "partial combo: box-shadow,transform",
+  "props": [
+   "box-shadow",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/exam/konkur-view.tsx",
+  "line": 480,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/exam/konkur-view.tsx",
+  "line": 465,
+  "new": "transition-[border-color,transform]",
+  "why": "partial combo: border-color,transform",
+  "props": [
+   "border-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/exam/konkur-view.tsx",
+  "line": 429,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/exam/konkur-view.tsx",
+  "line": 391,
+  "new": "transition-[opacity,transform]",
+  "why": "partial combo: opacity,transform",
+  "props": [
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/exam/konkur-view.tsx",
+  "line": 374,
+  "new": "transition-[border-color,transform]",
+  "why": "partial combo: border-color,transform",
+  "props": [
+   "border-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/exam/konkur-view.tsx",
+  "line": 363,
+  "new": "transition-[border-color,transform]",
+  "why": "partial combo: border-color,transform",
+  "props": [
+   "border-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/exam/konkur-view.tsx",
+  "line": 349,
+  "new": "transition-[border-color,transform]",
+  "why": "partial combo: border-color,transform",
+  "props": [
+   "border-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/grammar/grammar-lesson-flow.tsx",
+  "line": 427,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/grammar/grammar-lesson-flow.tsx",
+  "line": 421,
+  "new": "transition-[transform,filter]",
+  "why": "explicit list incl. extras: ['filter']",
+  "props": [
+   "filter",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/grammar/grammar-lesson-flow.tsx",
+  "line": 365,
+  "new": "transition-transform",
+  "why": "transform only",
+  "props": [
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/grammar/grammar-lesson-flow.tsx",
+  "line": 177,
+  "new": "transition-[transform,filter]",
+  "why": "explicit list incl. extras: ['filter']",
+  "props": [
+   "filter",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/grammar/grammar-lesson-flow.tsx",
+  "line": 127,
+  "new": "transition",
+  "why": "fallback: no changing props detected (dynamic classes)",
+  "props": [],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/grammar/grammar-view.tsx",
+  "line": 419,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/grammar/grammar-view.tsx",
+  "line": 393,
+  "new": "transition-[transform,filter]",
+  "why": "explicit list incl. extras: ['filter']",
+  "props": [
+   "filter",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/grammar/grammar-view.tsx",
+  "line": 384,
+  "new": "transition-[transform,filter]",
+  "why": "explicit list incl. extras: ['filter']",
+  "props": [
+   "filter",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/grammar/grammar-view.tsx",
+  "line": 238,
+  "new": "transition-[box-shadow,transform]",
+  "why": "partial combo: box-shadow,transform",
+  "props": [
+   "box-shadow",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/home/home-banners.tsx",
+  "line": 88,
+  "new": "transition-[opacity,transform]",
+  "why": "partial combo: opacity,transform",
+  "props": [
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/home/home-banners.tsx",
+  "line": 39,
+  "new": "transition-[opacity,transform,width]",
+  "why": "explicit list incl. extras: ['width']",
+  "props": [
+   "opacity",
+   "transform",
+   "width"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/home/home-bookshelf.tsx",
+  "line": 98,
+  "new": "transition-[opacity,transform]",
+  "why": "partial combo: opacity,transform",
+  "props": [
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/home/home-hero.tsx",
+  "line": 84,
+  "new": "transition-[color,border-color,transform,width]",
+  "why": "explicit list incl. extras: ['width']",
+  "props": [
+   "border-color",
+   "color",
+   "transform",
+   "width"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/home/home-hero.tsx",
+  "line": 76,
+  "new": "transition-[background-color,box-shadow,transform,width]",
+  "why": "explicit list incl. extras: ['width']",
+  "props": [
+   "background-color",
+   "box-shadow",
+   "transform",
+   "width"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/home/home-starter.tsx",
+  "line": 71,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/home/home-today.tsx",
+  "line": 130,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/home/home-today.tsx",
+  "line": 123,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/home/home-today.tsx",
+  "line": 50,
+  "new": "transition",
+  "why": "fallback: no changing props detected (dynamic classes)",
+  "props": [],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/home/home-tools.tsx",
+  "line": 54,
+  "new": "transition-[box-shadow,transform]",
+  "why": "partial combo: box-shadow,transform",
+  "props": [
+   "box-shadow",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/jozve/jozve-view.tsx",
+  "line": 608,
+  "new": "transition-[border-color,box-shadow,transform]",
+  "why": "partial combo: border-color,box-shadow,transform",
+  "props": [
+   "border-color",
+   "box-shadow",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/jozve/jozve-view.tsx",
+  "line": 400,
+  "new": "transition-[border-color,box-shadow,transform]",
+  "why": "partial combo: border-color,box-shadow,transform",
+  "props": [
+   "border-color",
+   "box-shadow",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/jozve/jozve-view.tsx",
+  "line": 306,
+  "new": "transition-[background-color,border-color,transform]",
+  "why": "partial combo: background-color,border-color,transform",
+  "props": [
+   "background-color",
+   "border-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/appendix-view.tsx",
+  "line": 39,
+  "new": "transition-colors",
+  "why": "colors only",
+  "props": [
+   "background-color"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/conversation-tab.tsx",
+  "line": 91,
+  "new": "transition-[max-width]",
+  "why": "explicit list incl. extras: ['max-width']",
+  "props": [
+   "max-width"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/conversation-tab.tsx",
+  "line": 75,
+  "new": "transition",
+  "why": "fallback: no changing props detected (dynamic classes)",
+  "props": [],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/conversation-tab.tsx",
+  "line": 58,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/dictation-tab.tsx",
+  "line": 659,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/dictation-tab.tsx",
+  "line": 648,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/dictation-tab.tsx",
+  "line": 641,
+  "new": "transition-[background-color,opacity,transform]",
+  "why": "partial combo: background-color,opacity,transform",
+  "props": [
+   "background-color",
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/dictation-tab.tsx",
+  "line": 575,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/dictation-tab.tsx",
+  "line": 568,
+  "new": "transition-[background-color,opacity,transform]",
+  "why": "partial combo: background-color,opacity,transform",
+  "props": [
+   "background-color",
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/dictation-tab.tsx",
+  "line": 559,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/dictation-tab.tsx",
+  "line": 552,
+  "new": "transition-[background-color,opacity,transform]",
+  "why": "partial combo: background-color,opacity,transform",
+  "props": [
+   "background-color",
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/dictation-tab.tsx",
+  "line": 546,
+  "new": "transition-[background-color,border-color,box-shadow]",
+  "why": "partial combo: background-color,border-color,box-shadow",
+  "props": [
+   "background-color",
+   "border-color",
+   "box-shadow"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/dictation-tab.tsx",
+  "line": 497,
+  "new": "transition-opacity",
+  "why": "opacity only",
+  "props": [
+   "opacity"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/dictation-tab.tsx",
+  "line": 463,
+  "new": "transition",
+  "why": "fallback: no changing props detected (dynamic classes)",
+  "props": [],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/dictation-tab.tsx",
+  "line": 434,
+  "new": "transition-colors",
+  "why": "colors only",
+  "props": [
+   "background-color"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/dictation-tab.tsx",
+  "line": 427,
+  "new": "transition-colors",
+  "why": "colors only",
+  "props": [
+   "background-color"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/dictation-tab.tsx",
+  "line": 386,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/dictation-tab.tsx",
+  "line": 379,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/dictation-tab.tsx",
+  "line": 372,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/dictation-tab.tsx",
+  "line": 336,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/dictation-tab.tsx",
+  "line": 325,
+  "new": "transition-[opacity,transform]",
+  "why": "partial combo: opacity,transform",
+  "props": [
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/dictation-tab.tsx",
+  "line": 309,
+  "new": "transition-colors",
+  "why": "colors only",
+  "props": [
+   "color"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/dictation-tab.tsx",
+  "line": 295,
+  "new": "transition-[color,border-color,transform]",
+  "why": "partial combo: border-color,color,transform",
+  "props": [
+   "border-color",
+   "color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/dictionary-view.tsx",
+  "line": 267,
+  "new": "transition-colors",
+  "why": "colors only",
+  "props": [
+   "color"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/dictionary-view.tsx",
+  "line": 250,
+  "new": "transition-[color,transform]",
+  "why": "partial combo: color,transform",
+  "props": [
+   "color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/dictionary-view.tsx",
+  "line": 217,
+  "new": "transition-colors",
+  "why": "colors only",
+  "props": [
+   "background-color"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/dictionary-view.tsx",
+  "line": 183,
+  "new": "transition-colors",
+  "why": "colors only",
+  "props": [
+   "background-color"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/dictionary-view.tsx",
+  "line": 168,
+  "new": "transition-colors",
+  "why": "colors only",
+  "props": [
+   "background-color"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/dictionary-view.tsx",
+  "line": 156,
+  "new": "transition-colors",
+  "why": "colors only",
+  "props": [
+   "background-color"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/dictionary-view.tsx",
+  "line": 128,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/dictionary-view.tsx",
+  "line": 112,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/flashcards.tsx",
+  "line": 273,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/flashcards.tsx",
+  "line": 266,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/flashcards.tsx",
+  "line": 259,
+  "new": "transition-[opacity,transform]",
+  "why": "partial combo: opacity,transform",
+  "props": [
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/flashcards.tsx",
+  "line": 252,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/flashcards.tsx",
+  "line": 219,
+  "new": "transition-[color,transform]",
+  "why": "partial combo: color,transform",
+  "props": [
+   "color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/flashcards.tsx",
+  "line": 185,
+  "new": "transition",
+  "why": "fallback: no changing props detected (dynamic classes)",
+  "props": [],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/flashcards.tsx",
+  "line": 160,
+  "new": "transition-colors",
+  "why": "colors only",
+  "props": [
+   "color"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/lesson-tests-tab.tsx",
+  "line": 108,
+  "new": "transition-[box-shadow,transform]",
+  "why": "partial combo: box-shadow,transform",
+  "props": [
+   "box-shadow",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/lesson-tests-tab.tsx",
+  "line": 99,
+  "new": "transition-[color,border-color,transform]",
+  "why": "partial combo: border-color,color,transform",
+  "props": [
+   "border-color",
+   "color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/lesson-tests-tab.tsx",
+  "line": 87,
+  "new": "transition-[opacity,transform]",
+  "why": "partial combo: opacity,transform",
+  "props": [
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/lesson-view.tsx",
+  "line": 100,
+  "new": "transition-colors",
+  "why": "colors only",
+  "props": [
+   "background-color",
+   "color"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/lesson-view.tsx",
+  "line": 59,
+  "new": "transition-[color,background-color,transform]",
+  "why": "partial combo: background-color,color,transform",
+  "props": [
+   "background-color",
+   "color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/reading-tab.tsx",
+  "line": 30,
+  "new": "transition",
+  "why": "fallback: no changing props detected (dynamic classes)",
+  "props": [],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/vocab-tab.tsx",
+  "line": 155,
+  "new": "transition-[color,transform]",
+  "why": "partial combo: color,transform",
+  "props": [
+   "color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/vocab-tab.tsx",
+  "line": 130,
+  "new": "transition-[border-color,box-shadow,transform]",
+  "why": "partial combo: border-color,box-shadow,transform",
+  "props": [
+   "border-color",
+   "box-shadow",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/vocab-tab.tsx",
+  "line": 91,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/vocab-tab.tsx",
+  "line": 59,
+  "new": "transition-colors",
+  "why": "colors only",
+  "props": [
+   "background-color"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/word-of-day.tsx",
+  "line": 105,
+  "new": "transition-[color,transform]",
+  "why": "partial combo: color,transform",
+  "props": [
+   "color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/word-of-day.tsx",
+  "line": 98,
+  "new": "transition-[color,border-color,transform]",
+  "why": "partial combo: border-color,color,transform",
+  "props": [
+   "border-color",
+   "color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/word-of-day.tsx",
+  "line": 87,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/writing-tab.tsx",
+  "line": 247,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/writing-tab.tsx",
+  "line": 224,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/writing-tab.tsx",
+  "line": 215,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/writing-tab.tsx",
+  "line": 201,
+  "new": "transition-[color,background-color,border-color,transform]",
+  "why": "partial combo: background-color,border-color,color,transform",
+  "props": [
+   "background-color",
+   "border-color",
+   "color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/writing-tab.tsx",
+  "line": 173,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/writing-tab.tsx",
+  "line": 111,
+  "new": "transition",
+  "why": "fallback: no changing props detected (dynamic classes)",
+  "props": [],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/lesson/writing-tab.tsx",
+  "line": 89,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/badges.tsx",
+  "line": 289,
+  "new": "transition",
+  "why": "fallback: no changing props detected (dynamic classes)",
+  "props": [],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/daily-quests.tsx",
+  "line": 178,
+  "new": "transition-[background-color,border-color,box-shadow]",
+  "why": "partial combo: background-color,border-color,box-shadow",
+  "props": [
+   "background-color",
+   "border-color",
+   "box-shadow"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/danger-words.tsx",
+  "line": 231,
+  "new": "transition-[border-color,transform]",
+  "why": "partial combo: border-color,transform",
+  "props": [
+   "border-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/danger-words.tsx",
+  "line": 201,
+  "new": "transition-[background-color,opacity,transform]",
+  "why": "partial combo: background-color,opacity,transform",
+  "props": [
+   "background-color",
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/danger-words.tsx",
+  "line": 188,
+  "new": "transition-[opacity,transform]",
+  "why": "partial combo: opacity,transform",
+  "props": [
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/danger-words.tsx",
+  "line": 181,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/danger-words.tsx",
+  "line": 160,
+  "new": "transition-transform",
+  "why": "transform only",
+  "props": [
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/goal-chip.tsx",
+  "line": 89,
+  "new": "transition",
+  "why": "fallback: no changing props detected (dynamic classes)",
+  "props": [],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/listen-view.tsx",
+  "line": 502,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/listen-view.tsx",
+  "line": 432,
+  "new": "transition-opacity",
+  "why": "opacity only",
+  "props": [
+   "opacity"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/listen-view.tsx",
+  "line": 403,
+  "new": "transition",
+  "why": "fallback: no changing props detected (dynamic classes)",
+  "props": [],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/listen-view.tsx",
+  "line": 351,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/listen-view.tsx",
+  "line": 345,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/listen-view.tsx",
+  "line": 338,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/listen-view.tsx",
+  "line": 297,
+  "new": "transition-[opacity,transform]",
+  "why": "partial combo: opacity,transform",
+  "props": [
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/listen-view.tsx",
+  "line": 279,
+  "new": "transition-[border-color,transform]",
+  "why": "partial combo: border-color,transform",
+  "props": [
+   "border-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/listen-view.tsx",
+  "line": 260,
+  "new": "transition-[color,border-color,transform]",
+  "why": "partial combo: border-color,color,transform",
+  "props": [
+   "border-color",
+   "color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/my-words-dictation.tsx",
+  "line": 63,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/my-words-dictation.tsx",
+  "line": 55,
+  "new": "transition-[opacity,transform]",
+  "why": "partial combo: opacity,transform",
+  "props": [
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/my-words-flashcards.tsx",
+  "line": 103,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/my-words-flashcards.tsx",
+  "line": 95,
+  "new": "transition-[opacity,transform]",
+  "why": "partial combo: opacity,transform",
+  "props": [
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/my-words-flashcards.tsx",
+  "line": 78,
+  "new": "transition-[border-color,transform]",
+  "why": "partial combo: border-color,transform",
+  "props": [
+   "border-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/my-words-review.tsx",
+  "line": 112,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/my-words-review.tsx",
+  "line": 104,
+  "new": "transition-[opacity,transform]",
+  "why": "partial combo: opacity,transform",
+  "props": [
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/my-words-review.tsx",
+  "line": 90,
+  "new": "transition-[border-color,opacity,transform]",
+  "why": "partial combo: border-color,opacity,transform",
+  "props": [
+   "border-color",
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/my-words-story.tsx",
+  "line": 271,
+  "new": "transition-[background-color,border-color,opacity,transform]",
+  "why": "partial combo: background-color,border-color,opacity,transform",
+  "props": [
+   "background-color",
+   "border-color",
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/my-words-story.tsx",
+  "line": 261,
+  "new": "transition-[background-color,border-color,opacity,transform]",
+  "why": "partial combo: background-color,border-color,opacity,transform",
+  "props": [
+   "background-color",
+   "border-color",
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/my-words-story.tsx",
+  "line": 223,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/my-words-story.tsx",
+  "line": 192,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/my-words-story.tsx",
+  "line": 174,
+  "new": "transition-[opacity,transform]",
+  "why": "partial combo: opacity,transform",
+  "props": [
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/my-words.tsx",
+  "line": 318,
+  "new": "transition-colors",
+  "why": "colors only",
+  "props": [
+   "color"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/my-words.tsx",
+  "line": 261,
+  "new": "transition-colors",
+  "why": "colors only",
+  "props": [
+   "background-color"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/my-words.tsx",
+  "line": 243,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/my-words.tsx",
+  "line": 194,
+  "new": "transition-colors",
+  "why": "colors only",
+  "props": [
+   "background-color"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/my-words.tsx",
+  "line": 181,
+  "new": "transition-colors",
+  "why": "colors only",
+  "props": [
+   "background-color"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/my-words.tsx",
+  "line": 107,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/review-view.tsx",
+  "line": 212,
+  "new": "transition-[opacity,transform,padding-left,width]",
+  "why": "explicit list incl. extras: ['padding-left', 'width']",
+  "props": [
+   "opacity",
+   "padding-left",
+   "transform",
+   "width"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/review-view.tsx",
+  "line": 196,
+  "new": "transition-[border-color,opacity,transform]",
+  "why": "partial combo: border-color,opacity,transform",
+  "props": [
+   "border-color",
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/review-view.tsx",
+  "line": 130,
+  "new": "transition-[opacity,transform]",
+  "why": "partial combo: opacity,transform",
+  "props": [
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/skill-panel.tsx",
+  "line": 183,
+  "new": "transition-[box-shadow,transform]",
+  "why": "partial combo: box-shadow,transform",
+  "props": [
+   "box-shadow",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/skill-panel.tsx",
+  "line": 157,
+  "new": "transition-[box-shadow,transform]",
+  "why": "partial combo: box-shadow,transform",
+  "props": [
+   "box-shadow",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/skill-panel.tsx",
+  "line": 102,
+  "new": "transition-[opacity,transform]",
+  "why": "partial combo: opacity,transform",
+  "props": [
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/smart-practice-view.tsx",
+  "line": 264,
+  "new": "transition-[opacity,transform,padding-left,width]",
+  "why": "explicit list incl. extras: ['padding-left', 'width']",
+  "props": [
+   "opacity",
+   "padding-left",
+   "transform",
+   "width"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/smart-practice-view.tsx",
+  "line": 246,
+  "new": "transition-[border-color,transform]",
+  "why": "partial combo: border-color,transform",
+  "props": [
+   "border-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/smart-practice-view.tsx",
+  "line": 201,
+  "new": "transition-[box-shadow,transform]",
+  "why": "partial combo: box-shadow,transform",
+  "props": [
+   "box-shadow",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/smart-practice-view.tsx",
+  "line": 186,
+  "new": "transition-[color,border-color,transform]",
+  "why": "partial combo: border-color,color,transform",
+  "props": [
+   "border-color",
+   "color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/srs-panel.tsx",
+  "line": 373,
+  "new": "transition-[opacity,transform]",
+  "why": "partial combo: opacity,transform",
+  "props": [
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/srs-panel.tsx",
+  "line": 305,
+  "new": "transition-[background-image]",
+  "why": "explicit list incl. extras: ['background-image']",
+  "props": [
+   "background-image"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/srs-panel.tsx",
+  "line": 268,
+  "new": "transition-[border-color,transform]",
+  "why": "partial combo: border-color,transform",
+  "props": [
+   "border-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/srs-panel.tsx",
+  "line": 253,
+  "new": "transition-[border-color,box-shadow,transform]",
+  "why": "partial combo: border-color,box-shadow,transform",
+  "props": [
+   "border-color",
+   "box-shadow",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/srs-panel.tsx",
+  "line": 227,
+  "new": "transition-[background-color,border-color,opacity,transform]",
+  "why": "partial combo: background-color,border-color,opacity,transform",
+  "props": [
+   "background-color",
+   "border-color",
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/vocab-donut.tsx",
+  "line": 145,
+  "new": "transition-[color,transform]",
+  "why": "partial combo: color,transform",
+  "props": [
+   "color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/week-chip.tsx",
+  "line": 70,
+  "new": "transition-transform",
+  "why": "transform only",
+  "props": [
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/practice/weekly-chart.tsx",
+  "line": 77,
+  "new": "transition-[color,transform]",
+  "why": "partial combo: color,transform",
+  "props": [
+   "color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/profile/profile-popover.tsx",
+  "line": 467,
+  "new": "transition-[background-color,opacity,transform]",
+  "why": "partial combo: background-color,opacity,transform",
+  "props": [
+   "background-color",
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/profile/profile-popover.tsx",
+  "line": 449,
+  "new": "transition-[background-color,opacity,transform]",
+  "why": "partial combo: background-color,opacity,transform",
+  "props": [
+   "background-color",
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/profile/profile-popover.tsx",
+  "line": 426,
+  "new": "transition-[background-color,opacity,transform]",
+  "why": "partial combo: background-color,opacity,transform",
+  "props": [
+   "background-color",
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/profile/profile-popover.tsx",
+  "line": 418,
+  "new": "transition-[background-color,opacity,transform]",
+  "why": "partial combo: background-color,opacity,transform",
+  "props": [
+   "background-color",
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/profile/profile-popover.tsx",
+  "line": 402,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/profile/profile-popover.tsx",
+  "line": 368,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/profile/profile-popover.tsx",
+  "line": 341,
+  "new": "transition-[color,border-color,opacity,transform]",
+  "why": "partial combo: border-color,color,opacity,transform",
+  "props": [
+   "border-color",
+   "color",
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/profile/profile-popover.tsx",
+  "line": 333,
+  "new": "transition-[color,border-color,transform]",
+  "why": "partial combo: border-color,color,transform",
+  "props": [
+   "border-color",
+   "color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/profile/profile-popover.tsx",
+  "line": 319,
+  "new": "transition-[background-color,opacity,transform]",
+  "why": "partial combo: background-color,opacity,transform",
+  "props": [
+   "background-color",
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/profile/profile-popover.tsx",
+  "line": 307,
+  "new": "transition-opacity",
+  "why": "opacity only",
+  "props": [
+   "opacity"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/profile/profile-popover.tsx",
+  "line": 240,
+  "new": "transition-[border-color,box-shadow,transform]",
+  "why": "partial combo: border-color,box-shadow,transform",
+  "props": [
+   "border-color",
+   "box-shadow",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/quiz/quiz-engine.tsx",
+  "line": 220,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/quiz/quiz-engine.tsx",
+  "line": 202,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/quiz/quiz-engine.tsx",
+  "line": 136,
+  "new": "transition",
+  "why": "fallback: no changing props detected (dynamic classes)",
+  "props": [],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/quiz/quiz-result.tsx",
+  "line": 319,
+  "new": "transition-transform",
+  "why": "transform only",
+  "props": [
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/quiz/quiz-result.tsx",
+  "line": 263,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/quiz/quiz-result.tsx",
+  "line": 256,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/quiz/quiz-result.tsx",
+  "line": 249,
+  "new": "transition-[background-color,opacity,transform]",
+  "why": "partial combo: background-color,opacity,transform",
+  "props": [
+   "background-color",
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/quiz/quiz-result.tsx",
+  "line": 202,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/quiz/quiz-result.tsx",
+  "line": 195,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/quiz/quiz-result.tsx",
+  "line": 188,
+  "new": "transition-[background-color,opacity,transform]",
+  "why": "partial combo: background-color,opacity,transform",
+  "props": [
+   "background-color",
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/quiz/quiz-result.tsx",
+  "line": 180,
+  "new": "transition-[opacity,transform]",
+  "why": "partial combo: opacity,transform",
+  "props": [
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/quiz/quiz-teacher.tsx",
+  "line": 245,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/quiz/quiz-teacher.tsx",
+  "line": 229,
+  "new": "transition-[background-color,border-color,opacity,transform]",
+  "why": "partial combo: background-color,border-color,opacity,transform",
+  "props": [
+   "background-color",
+   "border-color",
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/quiz/quiz-teacher.tsx",
+  "line": 219,
+  "new": "transition-[background-color,border-color,opacity,transform]",
+  "why": "partial combo: background-color,border-color,opacity,transform",
+  "props": [
+   "background-color",
+   "border-color",
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/quiz/quiz-teacher.tsx",
+  "line": 151,
+  "new": "transition-[opacity,transform]",
+  "why": "partial combo: opacity,transform",
+  "props": [
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/reports/official-report.tsx",
+  "line": 686,
+  "new": "transition-[background-color,box-shadow,transform]",
+  "why": "partial combo: background-color,box-shadow,transform",
+  "props": [
+   "background-color",
+   "box-shadow",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/reports/official-report.tsx",
+  "line": 319,
+  "new": "transition-[background-color,box-shadow,transform]",
+  "why": "partial combo: background-color,box-shadow,transform",
+  "props": [
+   "background-color",
+   "box-shadow",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/reports/official-report.tsx",
+  "line": 311,
+  "new": "transition-[background-color,box-shadow,transform]",
+  "why": "partial combo: background-color,box-shadow,transform",
+  "props": [
+   "background-color",
+   "box-shadow",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/reports/report-card.tsx",
+  "line": 350,
+  "new": "transition-[background-color,box-shadow,transform]",
+  "why": "partial combo: background-color,box-shadow,transform",
+  "props": [
+   "background-color",
+   "box-shadow",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/reports/report-card.tsx",
+  "line": 342,
+  "new": "transition-[background-color,box-shadow,transform]",
+  "why": "partial combo: background-color,box-shadow,transform",
+  "props": [
+   "background-color",
+   "box-shadow",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/reports/week-teacher.tsx",
+  "line": 241,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/reports/week-teacher.tsx",
+  "line": 225,
+  "new": "transition-[background-color,border-color,opacity,transform]",
+  "why": "partial combo: background-color,border-color,opacity,transform",
+  "props": [
+   "background-color",
+   "border-color",
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/reports/week-teacher.tsx",
+  "line": 215,
+  "new": "transition-[background-color,border-color,opacity,transform]",
+  "why": "partial combo: background-color,border-color,opacity,transform",
+  "props": [
+   "background-color",
+   "border-color",
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/reports/week-teacher.tsx",
+  "line": 147,
+  "new": "transition-[opacity,transform]",
+  "why": "partial combo: opacity,transform",
+  "props": [
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/reports/weekly-report.tsx",
+  "line": 447,
+  "new": "transition",
+  "why": "fallback: no changing props detected (dynamic classes)",
+  "props": [],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/shared/explain-box.tsx",
+  "line": 101,
+  "new": "transition-[opacity,transform,background-image]",
+  "why": "explicit list incl. extras: ['background-image']",
+  "props": [
+   "background-image",
+   "opacity",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/shared/explain-box.tsx",
+  "line": 87,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/shared/option-button.tsx",
+  "line": 93,
+  "new": "transition-transform",
+  "why": "transform only",
+  "props": [
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/shared/settings-popover.tsx",
+  "line": 329,
+  "new": "transition-[color,border-color,transform]",
+  "why": "partial combo: border-color,color,transform",
+  "props": [
+   "border-color",
+   "color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/shared/settings-popover.tsx",
+  "line": 316,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/shared/settings-popover.tsx",
+  "line": 269,
+  "new": "transition-[color,background-color,transform]",
+  "why": "partial combo: background-color,color,transform",
+  "props": [
+   "background-color",
+   "color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/shared/settings-popover.tsx",
+  "line": 246,
+  "new": "transition-[border-color,transform]",
+  "why": "partial combo: border-color,transform",
+  "props": [
+   "border-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/shared/settings-popover.tsx",
+  "line": 197,
+  "new": "transition-[border-color,transform]",
+  "why": "partial combo: border-color,transform",
+  "props": [
+   "border-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/shared/settings-popover.tsx",
+  "line": 165,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/shared/settings-popover.tsx",
+  "line": 126,
+  "new": "transition-[color,border-color,transform]",
+  "why": "partial combo: border-color,color,transform",
+  "props": [
+   "border-color",
+   "color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/shared/speak-button.tsx",
+  "line": 64,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/shell/footer.tsx",
+  "line": 32,
+  "new": "transition-[color,border-color,transform]",
+  "why": "partial combo: border-color,color,transform",
+  "props": [
+   "border-color",
+   "color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/shell/header.tsx",
+  "line": 115,
+  "new": "transition-colors",
+  "why": "colors only",
+  "props": [
+   "background-color"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/shell/header.tsx",
+  "line": 97,
+  "new": "transition-[color,border-color,transform]",
+  "why": "partial combo: border-color,color,transform",
+  "props": [
+   "border-color",
+   "color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/shell/header.tsx",
+  "line": 86,
+  "new": "transition-[color,border-color,transform]",
+  "why": "partial combo: border-color,color,transform",
+  "props": [
+   "border-color",
+   "color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/shell/header.tsx",
+  "line": 73,
+  "new": "transition-[color,border-color,transform]",
+  "why": "partial combo: border-color,color,transform",
+  "props": [
+   "border-color",
+   "color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/shell/onboarding.tsx",
+  "line": 292,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/shell/onboarding.tsx",
+  "line": 257,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/shell/onboarding.tsx",
+  "line": 251,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/shell/onboarding.tsx",
+  "line": 240,
+  "new": "transition",
+  "why": "fallback: no changing props detected (dynamic classes)",
+  "props": [],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/shell/onboarding.tsx",
+  "line": 218,
+  "new": "transition-transform",
+  "why": "transform only",
+  "props": [
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/shell/onboarding.tsx",
+  "line": 188,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/shell/onboarding.tsx",
+  "line": 176,
+  "new": "transition-opacity",
+  "why": "opacity only",
+  "props": [
+   "opacity"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/shell/onboarding.tsx",
+  "line": 91,
+  "new": "transition",
+  "why": "fallback: no changing props detected (dynamic classes)",
+  "props": [],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/study/shell/pwa-layer.tsx",
+  "line": 267,
+  "new": "transition-[background-color,transform]",
+  "why": "partial combo: background-color,transform",
+  "props": [
+   "background-color",
+   "transform"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/ui/switch.tsx",
+  "line": 16,
+  "new": "transition-[background-color,border-color,opacity,box-shadow]",
+  "why": "partial combo: background-color,border-color,box-shadow,opacity",
+  "props": [
+   "background-color",
+   "border-color",
+   "box-shadow",
+   "opacity"
+  ],
+  "scope": "attr"
+ },
+ {
+  "file": "src/components/ui/toast.tsx",
+  "line": 28,
+  "new": "transition-[bottom,max-width,right,top]",
+  "why": "explicit list incl. extras: ['bottom', 'max-width', 'right', 'top']",
+  "props": [
+   "bottom",
+   "max-width",
+   "right",
+   "top"
+  ],
+  "scope": "attr"
+ }
+]

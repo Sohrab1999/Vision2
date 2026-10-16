@@ -235,7 +235,7 @@ export default function GrammarView() {
               )}
               <button
                 onClick={() => startProbe(line)}
-                className={`gmetro-probe-btn mr-auto inline-flex items-center gap-1.5 rounded-full border ${c.border} bg-white px-3 py-1.5 text-[12px] font-extrabold ${c.text} shadow-sm transition-all hover:-translate-y-px hover:shadow active:scale-95`}
+                className={`gmetro-probe-btn mr-auto inline-flex items-center gap-1.5 rounded-full border ${c.border} bg-white px-3 py-1.5 text-[12px] font-extrabold ${c.text} shadow-sm transition-[box-shadow,transform] hover:-translate-y-px hover:shadow active:scale-95`}
               >
                 <Compass size={14} />
                 {probeRes === null ? "آزمون شناخت خط" : `شناخت: ${faNum(probeRes)}٪`}
@@ -381,7 +381,7 @@ export default function GrammarView() {
                       {hasLesson && status !== "locked" && (
                         <button
                           onClick={() => startLesson(dialog.line, dialog.station)}
-                          className={`inline-flex items-center gap-1.5 rounded-xl ${c.solid} px-4 py-2.5 text-[13px] font-extrabold text-white shadow-md transition-all hover:brightness-110 active:scale-95`}
+                          className={`inline-flex items-center gap-1.5 rounded-xl ${c.solid} px-4 py-2.5 text-[13px] font-extrabold text-white shadow-md transition-[transform,filter] hover:brightness-110 active:scale-95`}
                         >
                           <PencilLine size={15} />{" "}
                           {lessonDone ? "مرور دوبارهٔ درس ✓" : "درس ۹۰ثانیه‌ای"}
@@ -390,7 +390,7 @@ export default function GrammarView() {
                       <button
                         onClick={() => canQuiz && startStationQuiz(dialog.line, dialog.station)}
                         disabled={!canQuiz}
-                        className={`inline-flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-[13px] font-extrabold shadow-md transition-all active:scale-95 ${
+                        className={`inline-flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-[13px] font-extrabold shadow-md transition-[transform,filter] active:scale-95 ${
                           hasLesson && status !== "locked"
                             ? `border-2 ${c.border} ${c.soft} ${c.text} hover:brightness-105` // ثانویه بعد از دکمهٔ درس
                             : canQuiz
@@ -416,7 +416,7 @@ export default function GrammarView() {
                     openLessonTab(dialog.station.lesson, "grammar");
                     setDialog(null);
                   }}
-                  className="inline-flex items-center gap-1.5 rounded-xl border border-stone-200 bg-white px-4 py-2.5 text-[13px] font-extrabold text-stone-600 shadow-sm transition-all hover:bg-stone-50 active:scale-95"
+                  className="inline-flex items-center gap-1.5 rounded-xl border border-stone-200 bg-white px-4 py-2.5 text-[13px] font-extrabold text-stone-600 shadow-sm transition-[background-color,transform] hover:bg-stone-50 active:scale-95"
                 >
                   <BookOpen size={15} />
                   توضیح کامل در کتاب

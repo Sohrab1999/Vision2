@@ -175,7 +175,7 @@ export default function DailyQuests() {
             <li key={q.def.id}>
               <button
                 onClick={() => jump(q.def.jump.kind)}
-                className={`quest-row group flex w-full items-center gap-3 rounded-xl border p-3 text-right transition-all hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 ${
+                className={`quest-row group flex w-full items-center gap-3 rounded-xl border p-3 text-right transition-[background-color,border-color,box-shadow] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 ${
                   q.done
                     ? "border-emerald-300 bg-emerald-50/70"
                     : "border-stone-200 bg-stone-50/60 hover:border-emerald-200 hover:bg-emerald-50/40"
