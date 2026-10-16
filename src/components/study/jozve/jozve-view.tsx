@@ -143,6 +143,9 @@ const GRADE_TESTS: Record<number, { lessons: { lesson: number; title: string; co
       { lesson: 1, title: "درس اول", count: 40 },
       { lesson: 2, title: "درس دوم", count: 40 },
       { lesson: 3, title: "درس سوم", count: 40 },
+      // r278 — بانک‌های تکمیلی با کلید گرید چاپی «پاسخنامه کلیدی» (بدون ترجمه)
+      { lesson: 4, title: "تکمیلی درس اول (ص۲۱)", count: 22 },
+      { lesson: 5, title: "تکمیلی درس سوم (ص۹۳)", count: 20 },
     ],
   },
   12: {
@@ -642,7 +645,7 @@ export default function JozveView() {
                 <div className="min-w-0">
                   <h3 className="text-[13.5px] font-black text-violet-900">آزمون واژگان این جزوه</h3>
                   <p className="text-[11px] leading-5 text-violet-700/80">
-                    تست‌های استخراج‌شده از دلِ PDF جزوه، با کلید و ترجمهٔ خودِ جزوه — پاسخ اشتباه به بانک خطای سه درس نمی‌رود
+                    تست‌های استخراج‌شده از دلِ PDF جزوه، با کلیدِ خودِ جزوه — بانک‌های ۴۰تستی ترجمهٔ خود جزوه را هم دارند؛ پاسخ اشتباه به بانک خطای سه درس نمی‌رود
                   </p>
                 </div>
               </div>

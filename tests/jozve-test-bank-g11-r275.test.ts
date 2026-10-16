@@ -42,9 +42,10 @@ const l2 = bank.lessons.find((l) => l.lesson === 2)!;
 const l3 = bank.lessons.find((l) => l.lesson === 3)!;
 
 describe("jozve test bank g11 (r275 extraction receipt)", () => {
-  it("bank shape: grade 11, three lessons of exactly 40 questions each", () => {
+  it("bank shape: three 40-test lessons intact — extended by r278's supplementary lessons 4/5", () => {
     expect(bank.grade).toBe(11);
-    expect(bank.lessons.map((l) => l.lesson)).toEqual([1, 2, 3]);
+    // r278 دو بانک تکمیلی (۲۲+۲۰) افزود؛ سه بانک اصلی ۴۰تستی باید دست‌نخورده بمانند
+    expect(bank.lessons.map((l) => l.lesson)).toEqual([1, 2, 3, 4, 5]);
     for (const l of [l1, l2, l3]) {
       expect(l.count, `lesson ${l.lesson}`).toBe(40);
       expect(l.questions, `lesson ${l.lesson}`).toHaveLength(40);
