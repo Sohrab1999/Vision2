@@ -10,7 +10,7 @@ import {
   appendixResumeSnapshot,
   subscribeAppendixResume,
 } from "@/lib/bg-reading";
-import { RESUME_LOOP_DOORS, type ResumeLoopDoor } from "@/lib/resume-loop-doors";
+import { RESUME_LOOP_DOORS, DOOR_HANDOFF_DELAY_MS as HANDOFF_DELAY_MS, focusHeaderDoor, type ResumeLoopDoor } from "@/lib/resume-loop-doors";
 import { isTypingTarget, useKeydown } from "@/hooks/use-keyboard";
 import { RESUME_FOCUS_RING } from "@/lib/study-theme";
 
@@ -103,7 +103,8 @@ export function Kbd({ children }: { children: React.ReactNode }) {
 // به دکمهٔ فراخوانش برمی‌گرداند (FocusScopeِ رادیکس — بعد از انیمیشنِ خروجِ
 // ۲۰۰ms). اگر فرمان‌یاب/پروفایل را هم‌زمان باز کنیم، بازگشتِ فوکوسِ راهنما
 // فوکوسِ تازه‌وارد را می‌دزدد — پس کنش‌هایِ فوکوس‌بر بعد از ۲۶۰ms اجرا می‌شوند.
-const HANDOFF_DELAY_MS = 260;
+// راند ۲۴۴ — ثابت به DOOR_HANDOFF_DELAY_MS (lib/resume-loop-doors) کوچید تا
+// فرمان‌یاب (گروهِ «درهای حلقه») هم همان قرارداد را داشته باشد — یک عدد، یک منبع.
 
 export default function ShortcutGuide() {
   const [open, setOpen] = useState(false);
@@ -160,11 +161,9 @@ export default function ShortcutGuide() {
       } else if (a.kind === "open-profile") {
         window.dispatchEvent(new CustomEvent("open-profile"));
       } else if (a.kind === "focus-header") {
-        const btn = document.querySelector<HTMLElement>('[data-testid="header-resume-button"]');
-        if (btn) {
-          btn.scrollIntoView({ block: "center", behavior: "smooth" });
-          btn.focus();
-        }
+        // راند ۲۴۴ — کمکیِ مشترکِ درِ هدر: اسکرول + فوکوس + رویدادِ پالسِ
+        // زرشکی (همان ایدئومِ لنگرِ ضمیمه؛ دکمهٔ هدر مالکِ نمایشِ پالس است).
+        focusHeaderDoor();
       }
     }, HANDOFF_DELAY_MS);
   };

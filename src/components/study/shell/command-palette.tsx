@@ -63,6 +63,12 @@ import {
   APPENDIX_SCOPE_LABELS,
   type AppendixResumeItem,
 } from "@/lib/bg-reading";
+import {
+  RESUME_LOOP_DOORS,
+  DOOR_HANDOFF_DELAY_MS,
+  doorCmdId,
+  focusHeaderDoor,
+} from "@/lib/resume-loop-doors";
 import { useAppendixResumeNav } from "../shared/use-appendix-resume-nav";
 import { Kbd } from "./shortcut-guide";
 
@@ -166,6 +172,7 @@ export default function CommandPalette() {
   const goHome = useStudy((s) => s.goHome);
   const openLesson = useStudy((s) => s.openLesson);
   const openLessonTab = useStudy((s) => s.openLessonTab);
+  const view = useStudy((s) => s.view); // راند ۲۴۴ — گِیتِ درِ هدر (رویِ ضمیمه مستور است)
   // راند ۲۳۶ — مسیرِ فرمانِ «ادامهٔ مطالعه» از قلابِ مشترکِ سه‌دره
   const navigateResume = useAppendixResumeNav();
   const { theme, setTheme } = useTheme();
@@ -188,6 +195,13 @@ export default function CommandPalette() {
   // راند ۲۳۵ — هر باز شدن، رکوردِ «ادامهٔ مطالعه» هم همان‌جا خوانده می‌شود
   // (خواندنِ localStorage در رویداد = بدونِ اثر، بدونِ سطحِ هیدریشن).
   const [resumeItem, setResumeItem] = useState<AppendixResumeItem | null>(null);
+  // راند ۲۴۴ — تایمرِ تحویلِ درِ هدر با خودِ کامپوننت تمیز شود (ایدئومِ راهنمایِ r243)
+  const handoffRef = useRef<number | null>(null);
+  useEffect(() => {
+    return () => {
+      if (handoffRef.current !== null) window.clearTimeout(handoffRef.current);
+    };
+  }, []);
   // راند ۲۴۱ — تاریخچه در رویدادهایِ باز شدن خوانده می‌شود (بدونِ اثر،
   // بدونِ سطحِ هیدریشن — همان قراردادِ خواندنِ رکوردِ r235).
   const [resumeHistory, setResumeHistory] = useState<AppendixResumeItem[]>([]);
@@ -263,6 +277,28 @@ export default function CommandPalette() {
     }));
   }, [resumeItem, resumeHistory]);
 
+  // راند ۲۴۴ — «درهای حلقه» در فرمان‌یاب (بندِ ① پیشنهادِ ۲۴۳): دومین مصرفِ
+  // فهرستِ زندهٔ RESUME_LOOP_DOORS — فرمانِ پرش به محلِ هر در؛ درِ نو = یک
+  // سطرِ داده، نه یک فرمانِ دستی. قراردادها:
+  //   • درِ فرمان‌یاب خودش حذف است — فرمانِ «باز کردنِ فرمان‌یاب» از درونِ
+  //     فرمان‌یاب، کنشِ ساختگی است (صداقتِ r236: بی‌مقصد = هیچ).
+  //   • درِ هدر فقط با رکورد و بیرونِ ضمیمه حاضر است (قراردادِ r236/r240:
+  //     بی‌رکورد یا مستوریِ ضمیمه هیچ فرمانِ ساختگی نمی‌خواهد — پالت هم مثل
+  //     راهنما «غیبتِ صادقانه» دارد نه ردیفِ بی‌کنش).
+  //   • برچسب از خودِ داده («درِ « + lead بدونِ »:») و hint = openLabel —
+  //     همان چیزی که اجرا می‌کند.
+  const doorCmds: CommandDef[] = useMemo(() => {
+    return RESUME_LOOP_DOORS.filter((d) => d.id !== "palette")
+      .filter((d) => d.action.kind !== "focus-header" || (resumeItem && view.type !== "appendix"))
+      .map((d) => ({
+        id: doorCmdId(d.id),
+        label: d.lead ? `درِ ${d.lead.replace(/:\s*$/, "")}` : d.openLabel,
+        group: "درهای حلقه",
+        hint: d.openLabel,
+        keywords: [d.id, "door", "حلقه", d.text],
+      }));
+  }, [resumeItem, view.type]);
+
   const baseCommands: CommandDef[] = useMemo(
     () => [
       ...(resumeCmd ? [resumeCmd] : []),
@@ -281,6 +317,10 @@ export default function CommandPalette() {
       { id: "nav-my-words", label: "واژه‌های من", group: "ناوبری", hint: "نشان‌شده‌ها و وضعیت یادگیری", keywords: ["my words", "starred", "favorites"] },
       { id: "nav-smart", label: "تمرین هوشمند", group: "ناوبری", hint: "دور ترکیبی متناسب با تو", keywords: ["smart practice", "mixed"] },
       { id: "nav-listen", label: "آموخته‌های شنیداری", group: "ناوبری", hint: "تمرین گوش و روخوانی", keywords: ["listen", "audio", "ear"] },
+      // راند ۲۴۴ — درهایِ حلقه بعد از بلوکِ ناوبری: در تساویِ امتیازِ جست‌وجو،
+      // مقصدِ اصلی (مثل «ضمیمهٔ کتاب») از ترتیبِ آرایه اول می‌آید — گروه‌بندیِ
+      // نمایش به ترتیبِ COMMAND_GROUPS است و به این ترتیب کاری ندارد.
+      ...doorCmds,
       // ── درس‌ها ──
       ...LESSONS_META.map((l) => ({
         id: `lesson-${l.id}`,
@@ -309,7 +349,7 @@ export default function CommandPalette() {
       { id: "tool-profile", label: "پروفایل و پشتیبان", group: "ابزارها", hint: "نام، رنگ، پشتیبان‌گیری و سینک ابری", keywords: ["profile", "backup", "sync", "پروفایل", "ذخیره"] },
       { id: "tool-install", label: "نصب روی دستگاه", group: "ابزارها", hint: "وب‌کتاب مثل اپ — آفلاین و تمام‌صفحه", keywords: ["install", "pwa", "نصب", "اپلیکیشن"] },
     ],
-    [isDark, resumeCmd, resumeRecentCmds],
+    [isDark, resumeCmd, resumeRecentCmds, doorCmds],
   );
 
   // کلیدواژهٔ ناوبری برای همهٔ فرمان‌ها (جست‌وجو) + نگاشت شناسه برای «اخیر»
@@ -398,6 +438,27 @@ export default function CommandPalette() {
         break;
       case "nav-listen":
         setView({ type: "listen" });
+        break;
+      // راند ۲۴۴ — درهایِ حلقه (بندِ ① پیشنهادِ ۲۴۳): ناوبری‌ها فوری‌اند
+      // (بی‌تعارضِ فوکوس)؛ درِ هدر فوکوس‌بر است و بعد از دورهٔ تحویلِ
+      // DOOR_HANDOFF_DELAY_MS اجرا می‌شود (درسِ r243 — FocusScopeِ پالتِ
+      // بسته‌شونده فوکوس را پس می‌گیرد)؛ اجرا با خودِ دکمه داوری می‌شود —
+      // رکورد در فاصلهٔ باز-تا-اجرا پاک شده باشد = هیچ (صداقتِ nav-resume).
+      case "door-home":
+        goHome();
+        break;
+      case "door-appendix":
+        setView({ type: "appendix" });
+        break;
+      case "door-profile":
+        window.dispatchEvent(new CustomEvent("open-profile"));
+        break;
+      case "door-header":
+        if (handoffRef.current !== null) window.clearTimeout(handoffRef.current);
+        handoffRef.current = window.setTimeout(() => {
+          handoffRef.current = null;
+          focusHeaderDoor();
+        }, DOOR_HANDOFF_DELAY_MS);
         break;
       case "act-rush":
         setView({ type: "rush" });

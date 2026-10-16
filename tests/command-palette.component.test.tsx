@@ -5,7 +5,8 @@
 // (دو راند تعویق شده بود). قراردادهایی که قفل می‌شوند:
 //   ① بسته به‌صورت پیش‌فرض؛ باز شدن با رویداد پنجره‌ای (دکمهٔ هدر/فوتر)
 //     و چرخهٔ Ctrl+K — هر دو مسیر باز شدن واقعی
-//   ② نمای خالی = ۲۵ فرمان سطح‌بالا (ناوبری+درس‌ها+تمرین+گزارش+ابزار)
+//   ② نمای خالی = فرمان‌های سطح‌بالا (ناوبری+درس‌ها+تمرین+گزارش+ابزار)
+//     + سه درِ حلقه (r244 — بی‌رکورد: خانه/ضمیمه/پروفایل)
 //   ③ «آزمون ۱۵» → دقیقاً ۱ گزینهٔ پارامتری با مقدار اسنپ‌شده به
 //     خانواده (exam values = [10,20,30] → ۱۵ به ۱۰ می‌چسبد — قرارداد
 //     واقعی، نه حدس؛ رگرسیون snap راند ۷۲ در سطح UI)
@@ -55,14 +56,14 @@ describe("پالت فرمان — کامپوننت (Task 79)", () => {
     });
   });
 
-  it("بسته به‌صورت پیش‌فرض؛ رویداد پنجره‌ای باز می‌کند — ۳۱ گزینهٔ سطح‌بالا (قفسهٔ دوازده‌درسی)", () => {
+  it("بسته به‌صورت پیش‌فرض؛ رویداد پنجره‌ای باز می‌کند — ۳۴ گزینهٔ سطح‌بالا (۳۱ کهنه + ۳ درِ حلقهٔ r244)", () => {
     const { container } = render(<CommandPalette />);
     expect(container.querySelector(".command-palette")).toBeNull();
     openPalette();
     const input = screen.getByRole("combobox");
     expect(input).toBeInTheDocument();
     const opts = screen.getAllByRole("option");
-    expect(opts.length).toBe(31);
+    expect(opts.length).toBe(34); // ۳۱ کهنه + ۳ درِ حلقه (بی‌رکورد: درِ هدر هم غیب است)
     // گروه‌بندی: «ناوبری» اول است
     expect(screen.getAllByRole("group")[0]?.getAttribute("aria-label")).toBe("ناوبری");
   });
@@ -75,9 +76,9 @@ describe("پالت فرمان — کامپوننت (Task 79)", () => {
     expect(screen.getAllByRole("option").length).toBeGreaterThan(0);
     fireEvent.keyDown(window, { ctrlKey: true, code: "KeyK" });
     expect(screen.queryByRole("combobox")).toBeNull();
-    // بازِ دوباره: پرس‌وجوی کهنه نمانده — نمای خالیِ ۳۱گزینهٔ دوازده‌درسی
+    // بازِ دوباره: پرس‌وجوی کهنه نمانده — نمای خالیِ ۳۴گزینه‌ای (۳۱ + ۳ در)
     fireEvent.keyDown(window, { ctrlKey: true, code: "KeyK" });
-    expect(screen.getAllByRole("option").length).toBe(31);
+    expect(screen.getAllByRole("option").length).toBe(34);
   });
 
   it("«آزمون ۱۵» → دقیقاً ۱ گزینه با مقدار اسنپ‌شده به [۱۰/۲۰/۳۰] (قرارداد واقعی)", () => {
@@ -107,12 +108,14 @@ describe("پالت فرمان — کامپوننت (Task 79)", () => {
     window.removeEventListener("open-exam-with", spy);
   });
 
-  it("ناوبری ساده: «ضمیمه» → ۱ گزینه → Enter → store واقعی به appendix می‌رود", () => {
+  it("ناوبری ساده: «ضمیمه» → مقصدِ اصلی اول (با درهایِ تازهٔ r244) → Enter → store واقعی به appendix می‌رود", () => {
     render(<CommandPalette />);
     openPalette();
     typeQuery("ضمیمه");
     const opts = screen.getAllByRole("option");
-    expect(opts.length).toBe(1);
+    // r244 — درهایِ حلقه هم با پرس‌وجو می‌آیند (متنِ درِ خانه/ضمیمه/پروفایل «ضمیمه» دارد)
+    expect(opts.length).toBe(3);
+    // مقصدِ اصلی در تساویِ امتیاز از ترتیبِ آرایه اول است
     expect(opts[0]).toHaveTextContent("ضمیمهٔ کتاب");
     fireEvent.keyDown(screen.getByRole("combobox"), { key: "Enter" });
     expect(useStudy.getState().view.type).toBe("appendix");

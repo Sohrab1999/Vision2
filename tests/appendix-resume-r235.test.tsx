@@ -257,9 +257,15 @@ describe("command palette «ادامهٔ مطالعه» (r235)", () => {
     openPalette();
     expect(screen.getByRole("combobox")).toBeInTheDocument();
     const opts = screen.getAllByRole("option");
-    // نقطهٔ شروعِ پایه = ۳۱ فرمانِ سطح‌بالا — فرمانِ «ادامهٔ مطالعه» در آن‌ها نیست
-    expect(opts.length).toBe(31);
-    expect(opts.some((o) => o.textContent?.includes("ادامهٔ مطالعه"))).toBe(false);
+    // نقطهٔ شروعِ پایه = ۳۱ فرمانِ کهنه + ۳ درِ حلقه (r244) — فرمانِ «ادامهٔ مطالعه» در ناوبری نیست
+    expect(opts.length).toBe(34);
+    // فرمانِ «ادامهٔ مطالعه» (nav-resume) فقط با رکورد می‌آید — گروهِ ناوبریِ بی‌رکورد
+    // هیچ ردیفِ «ادامهٔ مطالعه»ای ندارد (hintِ درِ ضمیمهٔ r244 چنین واژه‌ای دارد؛
+    // مقصودِ گارد، فرمانِ ناوبری است نه هر رشته‌ای که ورداشت)
+    const navGroup = screen
+      .getAllByRole("group")
+      .find((g) => g.getAttribute("aria-label") === "ناوبری");
+    expect(navGroup!.textContent).not.toContain("ادامهٔ مطالعه");
   });
 
   it("with a phonetics record: the command exists, sits first in ناوبری and dispatches the deep-link view", () => {
@@ -272,9 +278,9 @@ describe("command palette «ادامهٔ مطالعه» (r235)", () => {
     });
     render(<CommandPalette />);
     openPalette();
-    // ۳۱ فرمانِ پایه + فرمانِ «ادامهٔ مطالعه»
+    // ۳۱ فرمانِ پایه + ۴ درِ حلقه (r244) + فرمانِ «ادامهٔ مطالعه»
     const opts = screen.getAllByRole("option");
-    expect(opts.length).toBe(32);
+    expect(opts.length).toBe(36);
     const cmd = opts.find((o) => o.textContent?.includes("ادامهٔ مطالعه"));
     expect(cmd).toBeDefined();
     expect(cmd!.textContent).toContain(`از «/${p0.symbol}/`);

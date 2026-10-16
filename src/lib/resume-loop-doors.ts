@@ -36,6 +36,44 @@ export interface ResumeLoopDoor {
   action: ResumeDoorAction;
 }
 
+// ------------------------------------------------------------------
+// راند ۲۴۴ — دومین مصرفِ «فهرستِ زنده»: گروهِ «درهای حلقه» در فرمان‌یاب
+// (بندِ ① پیشنهادِ ۲۴۳). فرمان‌های پالت از همین داده ساخته می‌شوند —
+// درِ نو = یک فرمانِ تازه در پالت، بدونِ ردیفِ دستی.
+//
+// شناسهٔ فرمانِ هر در: «door-<id>» — ثابت و خودکفا (سبکِ قراردادهایِ
+// شناسهٔ r241: اجرا با خودِ شناسه داوری می‌شود نه ایندکسِ رندر).
+// ------------------------------------------------------------------
+
+export const DOOR_CMD_PREFIX = "door-";
+export const doorCmdId = (id: ResumeDoorId): string => `${DOOR_CMD_PREFIX}${id}`;
+
+// رویدادِ پالسِ درِ هدر (بندِ ② پیشنهادِ ۲۴۳): دکمهٔ هدر خودش مالکِ
+// پالسِ زرشکیِ گذراست — پرنده‌هایِ در (راهنما/فرمان‌یاب) فقط رویداد را
+// می‌فرستند؛ منطقِ نمایش در یک نقطه است.
+export const PULSE_HEADER_RESUME_EVENT = "pulse-header-resume";
+
+// تحویلِ فوکوس بینِ دو دایالوگِ رادیکس (درسِ بزرگِ r243): دایالوگِ بسته‌شونده
+// بعد از انیمیشنِ خروجِ ۲۰۰ms فوکوس را به فراخوانش برمی‌گرداند؛ کنشِ
+// فوکوس‌برِ در (باز کردنِ فرمان‌یاب/پروفایل، فوکوسِ هدر) بعد از این دوره
+// اجرا می‌شود — راهنما و فرمان‌یاب هر دو همین قرارداد را دارند.
+export const DOOR_HANDOFF_DELAY_MS = 260;
+
+/**
+ * باز کردنِ درِ هدر: اسکرولِ نرم به دکمهٔ واقعی + فوکوس + رویدادِ پالس.
+ * دکمه هست نیست (بی‌رکورد یا رویِ خودِ ضمیمه) = هیچ — صداقتِ r236.
+ * true = دکمه پیدا شد و در باز شد.
+ */
+export function focusHeaderDoor(): boolean {
+  if (typeof document === "undefined") return false;
+  const btn = document.querySelector<HTMLElement>('[data-testid="header-resume-button"]');
+  if (!btn) return false;
+  btn.scrollIntoView({ block: "center", behavior: "smooth" });
+  btn.focus();
+  window.dispatchEvent(new CustomEvent(PULSE_HEADER_RESUME_EVENT));
+  return true;
+}
+
 export const RESUME_LOOP_DOORS: ResumeLoopDoor[] = [
   {
     id: "palette",

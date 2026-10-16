@@ -31,7 +31,7 @@
 // درهایِ Tab-پذیرِ تازهٔ همین حلقه‌اند.
 // ------------------------------------------------------------------
 
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { ChevronDown, History, Play } from "lucide-react";
 import {
   APPENDIX_SCOPE_LABELS,
@@ -47,6 +47,7 @@ import { useStudy } from "@/lib/study-store";
 import { useAppendixResumeNav } from "../shared/use-appendix-resume-nav";
 import { useToast } from "@/hooks/use-toast";
 import { faNum, RESUME_FOCUS_RING } from "@/lib/study-theme";
+import { PULSE_HEADER_RESUME_EVENT } from "@/lib/resume-loop-doors";
 
 /** سقفِ مسیرهایِ پنلِ سریعِ هدر — پروفایل مالکِ تاریخچهٔ کاملِ ۸تاست. */
 const HEADER_RECENT_CAP = 4;
@@ -69,6 +70,30 @@ export default function HeaderResumeButton() {
   const navigateResume = useAppendixResumeNav();
   const { toast } = useToast();
   const [open, setOpen] = useState(false);
+
+  // راند ۲۴۴ — پالسِ زرشکیِ گذرا (بندِ ② پیشنهادِ ۲۴۳): بعد از پرشِ اسکرول
+  // از کارتِ راهنما/فرمان‌یاب، فوکوس به‌تنهایی همیشه دیده نمی‌شود (focus-visible
+  // پس از فوکوسِ برنامه‌ای در همهٔ مرورگرها یکسان رفتار نمی‌کند) — همان
+  // ایدئومِ لنگرِ ضمیمهٔ r235: هایلایتِ گذرای ۱٫۶ثانیه‌ای که مالکش خودِ دکمه
+  // است و پرنده‌هایِ در فقط رویداد می‌فرستند (تک‌نقطه‌ای بودنِ منطقِ نمایش).
+  const [pulsing, setPulsing] = useState(false);
+  const pulseTimerRef = useRef<number | null>(null);
+  useEffect(() => {
+    const onPulse = () => {
+      setPulsing(true);
+      // پالسِ ۱٫۶ثانیه‌ای — عمداً بیرونِ پاک‌سازیِ effect (آموزشِ r234)
+      if (pulseTimerRef.current !== null) window.clearTimeout(pulseTimerRef.current);
+      pulseTimerRef.current = window.setTimeout(() => {
+        pulseTimerRef.current = null;
+        setPulsing(false);
+      }, 1600);
+    };
+    window.addEventListener(PULSE_HEADER_RESUME_EVENT, onPulse);
+    return () => {
+      window.removeEventListener(PULSE_HEADER_RESUME_EVENT, onPulse);
+      if (pulseTimerRef.current !== null) window.clearTimeout(pulseTimerRef.current);
+    };
+  }, []);
 
   // راند ۲۳۷ — کلیکِ راست رویِ دکمهٔ هدر = پاک‌کردنِ رکورد (بندِ ① پیشنهادِ
   // ۲۳۶). پاک‌کردنِ فوری + توست — همان سبکِ قطعِ همگام‌سازی؛ رکوردِ پاک‌شده
@@ -115,8 +140,16 @@ export default function HeaderResumeButton() {
         aria-label={tooltip}
         title={tooltip}
         data-testid="header-resume-button"
+        data-pulsing={pulsing ? "true" : undefined}
         // راند ۲۳۹ — حلقهٔ کیبوردِ واحدِ درهایِ «ادامه» (بندِ ② پیشنهادِ ۲۳۸)
-        className={`flex h-11 min-w-11 max-w-[13rem] shrink-0 items-center justify-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-3 text-emerald-700 shadow-sm transition-[background-color,color,border-color,transform] hover:bg-emerald-100 hover:border-emerald-300 active:scale-[0.96] dark:border-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300 dark:hover:bg-emerald-900/70 ${RESUME_FOCUS_RING}`}
+        // راند ۲۴۴ — پالسِ زرشکیِ گذرا: هایلایتِ هم‌خانوادهٔ لنگرِ ضمیمه اما
+        // زرشکی تا با حلقهٔ زمردیِ focus-visible آمیخته نشود؛ box-shadow هم
+        // به ترنزیشن اضافه شد تا حلقهٔ درونیِ inset نرم محو شود.
+        className={`flex h-11 min-w-11 max-w-[13rem] shrink-0 items-center justify-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-3 text-emerald-700 shadow-sm transition-[background-color,color,border-color,transform,box-shadow] hover:bg-emerald-100 hover:border-emerald-300 active:scale-[0.96] dark:border-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300 dark:hover:bg-emerald-900/70 ${
+          pulsing
+            ? "border-rose-300 bg-rose-50 shadow-[inset_0_0_0_2px] shadow-rose-300 dark:border-rose-700 dark:bg-rose-950/40 dark:shadow-rose-700"
+            : ""
+        } ${RESUME_FOCUS_RING}`}
       >
         <Play size={15} className="shrink-0" />
         <span className="hidden min-w-0 truncate text-[12.5px] font-extrabold min-[420px]:inline">
