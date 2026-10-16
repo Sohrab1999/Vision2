@@ -15,17 +15,28 @@ const p = new PrismaClient();
   console.log("today events:", JSON.stringify(ev));
   console.log("attempts total:", await p.quizAttempt.count());
   if (process.argv.includes("--clean")) {
-    // QA round touched no quiz/profile rows (duel panel + badges only, localStorage seed);
-    // restore passive app_open baseline and drop QA-only event rows if any appeared.
+    // Round 260 update: QA sessions now ride full loops (rush completion, konkur
+    // simulator, smart practice), which DO write quizAttempt rows and session
+    // events. Baseline contract stays attempts=0 / app_open=2, so --clean now
+    // also drops QA-session attempts from the last hour and the QA-generated
+    // event names. Unknown event names are deliberately preserved.
+    const del = await p.quizAttempt.deleteMany({ where: { createdAt: { gte: since } } });
+    if (del.count) console.log("QA attempts removed (<60m):", del.count);
+    const QA_EVENT_NAMES = [
+      "duel_start", "duel_done", "lesson_open", "konkur_start", "konkur_done",
+      "smart_practice_start", "smart_practice_done", "quiz_done", "rush_done",
+      "my_words_open", "listen_start", "listen_done",
+    ];
     for (const e of ev) {
       if (e.name === "app_open") {
         await p.eventDay.update({ where: { day_name: { day: e.day, name: e.name } }, data: { count: 2 } });
         console.log("app_open restored to 2 (was", e.count + ")");
-      } else if (["duel_start", "duel_done", "lesson_open"].includes(e.name)) {
+      } else if (QA_EVENT_NAMES.includes(e.name)) {
         await p.eventDay.delete({ where: { day_name: { day: e.day, name: e.name } } });
         console.log("QA event row removed:", e.name, "=", e.count);
       }
     }
+    console.log("attempts total now:", await p.quizAttempt.count());
     console.log("CLEAN-OK");
   }
   await p.$disconnect();
