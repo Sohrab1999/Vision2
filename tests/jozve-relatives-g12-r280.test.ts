@@ -63,7 +63,7 @@ describe("jozve topic grammar bank g12 — relatives (r280 extraction receipt)",
     expect(bank.family).toBe("grammar-topic");
     expect(bank.source.extractedRound).toBe(280);
     // r281 — درس‌های ۳/۴ (مرور زمان‌ها) به همان فایل الحاق شدند؛ درس‌های ضمایر دست‌نخورده‌اند
-    expect(bank.lessons.map((l) => l.lesson)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9]); // r281 درس ۳/۴ + r282 درس ۵/۶/۷ + r283 درس ۸/۹ را افزودند
+    expect(bank.lessons.map((l) => l.lesson)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]); // r281 درس ۳/۴ + r282 درس ۵/۶/۷ + r283 درس ۸/۹ + r284 درس ۱۰/۱۱ را افزودند
     expect(l1.count).toBe(27);
     expect(l2.count).toBe(61);
     expect(l1.questions.map((q) => q.n)).toEqual(Array.from({ length: 27 }, (_, i) => i + 1));

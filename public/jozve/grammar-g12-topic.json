@@ -223,6 +223,49 @@
    "translations": "کلید توضیحی بانک B ترجمهٔ فارسی دارد ولی OCR جزوه مخدوش است (جین→جیر، دلایل→دالئل، ریاضی→ریی)؛ بازسازیِ رسیددار به راند مستقل موکول شد — فیلد ترجمه ثبت نشد (الگوی r281)",
    "discovery": "ص۱۸۷ گرید ۴۰کلیدی «معلوم و مجهول — بخش دوم (صفحه 37 و 38)» را هم دارد — هویتِ گرید ۱۰۰کلیدیِ c13/sec1 (ابهام r280) بخشی روشن شد؛ ص۴۳ هم ۲۲ تمرینِ «بنویسید» با پاسخنامهٔ ص۱۸۸ دارد — راندهای بعد",
    "extractedRound": 283
+  },
+  "passive": {
+   "pages": "36-38",
+   "topic": "تست گرامر جملات معلوم و مجهول",
+   "part1": {
+    "questions": 20,
+    "pages": "36",
+    "level": "آموزش",
+    "keyType": "توضیحی «پاسخنامه تستهای گرامر جملات معلوم و مجهول — بخش اول» (ص۱۸۵-۱۸۶)؛ قیدِ «گزینه(X)» با انتظارِ عددِ بعدی",
+    "spotLocks": {
+     "1": "d",
+     "2": "c",
+     "6": "d",
+     "8": "b",
+     "11": "d",
+     "13": "a",
+     "17": "d",
+     "19": "a",
+     "20": "c"
+    }
+   },
+   "part2": {
+    "questions": 40,
+    "pages": "37-38",
+    "level": "کنکوری",
+    "keyType": "گرید ستونی چاپی «پاسخنامه کلیدی 40 تست گرامر معلوم و مجهول — بخش دوم (صفحه 37 و 38)» — بالای ص۱۸۷؛ کشف r283",
+    "spotLocks": {
+     "1": "d",
+     "5": "c",
+     "9": "b",
+     "12": "d",
+     "14": "c",
+     "22": "c",
+     "24": "b",
+     "31": "c",
+     "35": "d",
+     "38": "c",
+     "40": "a"
+    }
+   },
+   "gridIdentityReceipt": "گرید ۱۰۰کلیدی c13/sec1 با کپشن چاپی «پاسخنامه بخش اول (صفحه 36)» ولی ناسازگار با کلید توضیحیِ خودِ بخش (توافق 6/۲۰؛ ۱:b در برابر ۱:d رسیددارِ ص۱۸۵) و ناسازگار با گرید ص۱۸۷ (توافق 6/۴۰) — کپشن چاپی نادرست؛ هویت واقعی ناشناخته (ابهام r280 با رسید بسته شد)",
+   "translations": "کلید توضیحی بخش اول ترجمهٔ فارسی دارد ولی OCR مخدوش است (چین→چیر، گشایش→گسی ش عرص، دیزنی‌لند→دیزب لند)؛ بازسازیِ رسیددار به راند مستقل موکول شد — فیلد ترجمه ثبت نشد (الگوی r281/r283)",
+   "extractedRound": 284
   }
  },
  "lessons": [
@@ -3974,6 +4017,802 @@
       "do I"
      ],
      "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 10,
+   "title": "معلوم و مجهول — بخش اول، آموزشی (ص۳۶)",
+   "level": "آموزشی",
+   "count": 20,
+   "questions": [
+    {
+     "id": "g12-pass1-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "The man said, “Many cars --------------- in this place.”",
+     "options": [
+      "buy",
+      "are buying",
+      "will buy",
+      "are bought"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-pass1-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "The students cleaned the blackboard. In other words, The blackboard --------------- by the students.",
+     "options": [
+      "did clean",
+      "did cleaned",
+      "was cleaned",
+      "were cleaned"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-pass1-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "Betty has washed her hands. In other words, Betty’s hands ---------------.",
+     "options": [
+      "have washed",
+      "have been washed",
+      "has washed",
+      "has been washed"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-pass1-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "A lot of homework --------------- since 8 o’clock.",
+     "options": [
+      "has done",
+      "has been doing",
+      "has been done",
+      "is being done"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-pass1-5",
+     "n": 5,
+     "category": "grammar",
+     "question": "Many interesting Movies --------------- in this cinema.",
+     "options": [
+      "show often",
+      "often show",
+      "are often shown",
+      "are shown often"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-pass1-6",
+     "n": 6,
+     "category": "grammar",
+     "question": "This product --------------- at a low price for many years.",
+     "options": [
+      "is sold",
+      "have been sold",
+      "are sold",
+      "has been sold"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-pass1-7",
+     "n": 7,
+     "category": "grammar",
+     "question": "It’s interesting to know that the bridge --------------- two years ago.",
+     "options": [
+      "was built",
+      "built",
+      "has built",
+      "has been built"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-pass1-8",
+     "n": 8,
+     "category": "grammar",
+     "question": "Something funny --------------- in class today, and all the students laughed.",
+     "options": [
+      "is happened",
+      "happened",
+      "happens",
+      "was happened"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-pass1-9",
+     "n": 9,
+     "category": "grammar",
+     "question": "We --------------- that you had borrowed the book from the library.",
+     "options": [
+      "told",
+      "have told",
+      "were told",
+      "will be told"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-pass1-10",
+     "n": 10,
+     "category": "grammar",
+     "question": "The report of the experiments done by the students --------------- to the teacher.",
+     "options": [
+      "sent",
+      "are sent",
+      "are sending",
+      "was sent"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-pass1-11",
+     "n": 11,
+     "category": "grammar",
+     "question": "I didn’t know that “Crime and Punishment” --------------- by “Fyodor Dostoyevsky”.",
+     "options": [
+      "will be writing",
+      "has been written",
+      "was writing",
+      "was written"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-pass1-12",
+     "n": 12,
+     "category": "grammar",
+     "question": "My sister --------------- a good job by them, but she refused it.",
+     "options": [
+      "offered",
+      "have been offered",
+      "were offered",
+      "was offered"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-pass1-13",
+     "n": 13,
+     "category": "grammar",
+     "question": "Mr. Alavi --------------- a present by his colleagues when he retired.",
+     "options": [
+      "was given",
+      "is given",
+      "gave",
+      "has given"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-pass1-14",
+     "n": 14,
+     "category": "grammar",
+     "question": "Albert Einstein --------------- to the general public as the most famous scientist of all time.",
+     "options": [
+      "knows",
+      "is known",
+      "were known",
+      "have been known"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-pass1-15",
+     "n": 15,
+     "category": "grammar",
+     "question": "Penicillin --------------- in the 1940’s, helping open up the era of antibiotics.",
+     "options": [
+      "has introduced",
+      "were introduced",
+      "has been introduced",
+      "was introduced"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-pass1-16",
+     "n": 16,
+     "category": "grammar",
+     "question": "The Great Wall of China --------------- thousands of years ago.",
+     "options": [
+      "were built",
+      "has been built",
+      "was built",
+      "builds"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-pass1-17",
+     "n": 17,
+     "category": "grammar",
+     "question": "I --------------- how to use the old machine when I was a child. You needn’t educate me.",
+     "options": [
+      "am teaching",
+      "taught",
+      "am taught",
+      "was taught"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-pass1-18",
+     "n": 18,
+     "category": "grammar",
+     "question": "Disneyland is a world famous amusement park in Southern California. It --------------- by more than ten million people every year.",
+     "options": [
+      "is visited",
+      "has been visited",
+      "was visited",
+      "visits"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-pass1-19",
+     "n": 19,
+     "category": "grammar",
+     "question": "Many of us take water for granted in our daily lives, but people who live in the desert --------------- water carelessly. To them, each drop is precious.",
+     "options": [
+      "don’t use",
+      "doesn’t use",
+      "are used",
+      "were used"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-pass1-20",
+     "n": 20,
+     "category": "grammar",
+     "question": "The flight to Istanbul --------------- for five hours because of the fog that is preventing the planes from taking off and landing at the moment.",
+     "options": [
+      "delays",
+      "was delayed",
+      "has been delayed",
+      "have been delayed"
+     ],
+     "answer": 2
+    }
+   ]
+  },
+  {
+   "lesson": 11,
+   "title": "معلوم و مجهول — بخش دوم، کنکوری (ص۳۷-۳۸)",
+   "level": "کنکوری",
+   "count": 40,
+   "questions": [
+    {
+     "id": "g12-pass2-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "The house is very old. It --------------- over 100 years ago.",
+     "options": [
+      "built",
+      "builds",
+      "is built",
+      "was built"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-pass2-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "English --------------- in schools, so many Iranian students know a little English.",
+     "options": [
+      "taught",
+      "teaches",
+      "is taught",
+      "is teaching"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-pass2-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "The coffee --------------- when I walked into the kitchen.",
+     "options": [
+      "was make",
+      "was being made",
+      "has made",
+      "had made"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-pass2-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "All the coconuts --------------- by the monkey in those old days.",
+     "options": [
+      "pick quickly",
+      "picked quickly",
+      "are quickly picked",
+      "were quickly picked"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-pass2-5",
+     "n": 5,
+     "category": "grammar",
+     "question": "How much homework --------------- by the student?",
+     "options": [
+      "has to do",
+      "has to done",
+      "has to be done",
+      "has done"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-pass2-6",
+     "n": 6,
+     "category": "grammar",
+     "question": "Hurry up! This information should --------------- to Mary and her family as soon as possible.",
+     "options": [
+      "be sent",
+      "be sending",
+      "have sent",
+      "being sent"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-pass2-7",
+     "n": 7,
+     "category": "grammar",
+     "question": "This is very difficult question, so it cannot --------------- so easily within a short time.",
+     "options": [
+      "answer",
+      "be answered",
+      "to be answered",
+      "have answered"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-pass2-8",
+     "n": 8,
+     "category": "grammar",
+     "question": "My bike ---------------! I am going to call the police.",
+     "options": [
+      "stole",
+      "was stealing",
+      "has been stolen",
+      "was being stolen"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-pass2-9",
+     "n": 9,
+     "category": "grammar",
+     "question": "The dishes --------------- yet. Could you please wash them up?",
+     "options": [
+      "have been not washed",
+      "have not been washed",
+      "are not being washed",
+      "had not been washed"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-pass2-10",
+     "n": 10,
+     "category": "grammar",
+     "question": "In the 20th century, advances --------------- in the study of much older American civilizations.",
+     "options": [
+      "were making",
+      "were made",
+      "have been made",
+      "made"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-pass2-11",
+     "n": 11,
+     "category": "grammar",
+     "question": "Every participating country --------------- to four entries in the winter games in the Olympic Games.",
+     "options": [
+      "limits",
+      "has limited",
+      "have been limited",
+      "is limited"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-pass2-12",
+     "n": 12,
+     "category": "grammar",
+     "question": "One of the most famous books in the world is the Gutenberg Bible. As much as half a million dollars --------------- for a single copy of it.",
+     "options": [
+      "had paid",
+      "has paid",
+      "had been paid",
+      "has been paid"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-pass2-13",
+     "n": 13,
+     "category": "grammar",
+     "question": "All the food --------------- before we got to the picnic.",
+     "options": [
+      "has eaten",
+      "had eaten",
+      "had been eaten",
+      "has been eaten"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-pass2-14",
+     "n": 14,
+     "category": "grammar",
+     "question": "Do you know that Maria --------------- as a computer programmer of the company?",
+     "options": [
+      "was inviting",
+      "is inviting",
+      "has been invited",
+      "is going to invite"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-pass2-15",
+     "n": 15,
+     "category": "grammar",
+     "question": "The land next to our house --------------- to the government recently.",
+     "options": [
+      "sold",
+      "will be selling",
+      "has been sold",
+      "had sold"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-pass2-16",
+     "n": 16,
+     "category": "grammar",
+     "question": "Many apartments --------------- for the poor employees during the last five years.",
+     "options": [
+      "are built",
+      "were building",
+      "have built",
+      "have been built"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-pass2-17",
+     "n": 17,
+     "category": "grammar",
+     "question": "An extra amount of money --------------- for poor students at our high school at the moment.",
+     "options": [
+      "had been collected",
+      "is being collected",
+      "was collected",
+      "has collected"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-pass2-18",
+     "n": 18,
+     "category": "grammar",
+     "question": "The children’s medical center --------------- in 1950 by one of the distinguished physicians who had studied in France for 10 years.",
+     "options": [
+      "has founded",
+      "founded",
+      "has been founded",
+      "was founded"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-pass2-19",
+     "n": 19,
+     "category": "grammar",
+     "question": "The house in front of the bank --------------- in 1925 that’s why it looks old.",
+     "options": [
+      "was built",
+      "built",
+      "had built",
+      "has been built"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-pass2-20",
+     "n": 20,
+     "category": "grammar",
+     "question": "The new book about chemistry that he had bought from England --------------- to me last week.",
+     "options": [
+      "was shown",
+      "showed",
+      "has shown",
+      "had shown"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-pass2-21",
+     "n": 21,
+     "category": "grammar",
+     "question": "Many buildings --------------- during the war that imposed by Iraq.",
+     "options": [
+      "are being badly damaged",
+      "have been badly damaged",
+      "has badly damaged",
+      "was badly damaged"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-pass2-22",
+     "n": 22,
+     "category": "grammar",
+     "question": "I didn’t believe his explanation that he --------------- the money to donate it to poor people.",
+     "options": [
+      "had been stolen",
+      "steals",
+      "had stolen",
+      "was stolen"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-pass2-23",
+     "n": 23,
+     "category": "grammar",
+     "question": "A hard physics problem which nobody could understand it --------------- by one of my intelligent students last month.",
+     "options": [
+      "solved",
+      "was solved",
+      "solves",
+      "has been solved"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-pass2-24",
+     "n": 24,
+     "category": "grammar",
+     "question": "His family --------------- him for a long time. When they last saw him, he was trying to travel to Europe.",
+     "options": [
+      "didn’t see",
+      "hasn’t seen",
+      "wasn’t seen",
+      "hasn’t been seen"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-pass2-25",
+     "n": 25,
+     "category": "grammar",
+     "question": "This room --------------- recently that’s why it looks more different.",
+     "options": [
+      "has been painted",
+      "are painted",
+      "has painted",
+      "was painting"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-pass2-26",
+     "n": 26,
+     "category": "grammar",
+     "question": "I was talking to my friend about an important issue and I didn’t realize that our conversation ---------------.",
+     "options": [
+      "will be recorded",
+      "was being recorded",
+      "would record",
+      "was recording"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-pass2-27",
+     "n": 27,
+     "category": "grammar",
+     "question": "While I was on holiday, my bag --------------- from my hotel room.",
+     "options": [
+      "steals",
+      "was stolen",
+      "had stolen",
+      "has stolen"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-pass2-28",
+     "n": 28,
+     "category": "grammar",
+     "question": "There is somebody walking behind us. I think we ---------------.",
+     "options": [
+      "are following",
+      "had followed",
+      "are being followed",
+      "had been followed"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-pass2-29",
+     "n": 29,
+     "category": "grammar",
+     "question": "I --------------- a cigarette by the old man who thought it was harmful for a person at my age to smoke.",
+     "options": [
+      "wasn’t offered",
+      "wasn’t offering",
+      "haven’t offered",
+      "has not been offered"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-pass2-30",
+     "n": 30,
+     "category": "grammar",
+     "question": "Many workers --------------- from their jobs since they asked a 5% rise in their payments.",
+     "options": [
+      "have recently fired",
+      "have been recently fired",
+      "are recently firing",
+      "are being recently fired"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-pass2-31",
+     "n": 31,
+     "category": "grammar",
+     "question": "I --------------- him to drive more slowly, but he didn’t take any notice.",
+     "options": [
+      "was asked",
+      "have asked",
+      "asked",
+      "had been asked"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-pass2-32",
+     "n": 32,
+     "category": "grammar",
+     "question": "At the last night party, we --------------- a set of silver spoons by my uncle as a wedding present.",
+     "options": [
+      "gave",
+      "were giving",
+      "have been given",
+      "were given"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-pass2-33",
+     "n": 33,
+     "category": "grammar",
+     "question": "Being --------------- quickly is important for customers in a restaurant that is well-known.",
+     "options": [
+      "served",
+      "serving",
+      "serves",
+      "to served"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-pass2-34",
+     "n": 34,
+     "category": "grammar",
+     "question": "His piano playing has greatly improved since he --------------- regular practice.",
+     "options": [
+      "is giving",
+      "was given",
+      "has given",
+      "gave"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-pass2-35",
+     "n": 35,
+     "category": "grammar",
+     "question": "Andy --------------- as a television reporter before he became a physician.",
+     "options": [
+      "has worked",
+      "had been worked",
+      "worked",
+      "had worked"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-pass2-36",
+     "n": 36,
+     "category": "grammar",
+     "question": "The beautiful apartments next to the bank --------------- to their owners recently.",
+     "options": [
+      "had delivered",
+      "are delivering",
+      "will be delivered",
+      "have been delivered"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-pass2-37",
+     "n": 37,
+     "category": "grammar",
+     "question": "Not only am I getting started, but also --------------- what to buy for everyone so far.",
+     "options": [
+      "haven’t decided",
+      "hadn’t decided",
+      "haven’t been decided",
+      "won’t decide"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-pass2-38",
+     "n": 38,
+     "category": "grammar",
+     "question": "This trend --------------- to continue in this century - but so far, population growth has not brought wealth with it.",
+     "options": [
+      "expects",
+      "expected",
+      "is expected",
+      "expecting"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-pass2-39",
+     "n": 39,
+     "category": "grammar",
+     "question": "Antibiotics --------------- until the 1800s, and it was almost impossible to cure diseases without them.",
+     "options": [
+      "weren’t invented",
+      "had not invented",
+      "have not invented",
+      "won’t be invented"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-pass2-40",
+     "n": 40,
+     "category": "grammar",
+     "question": "The new high-quality models of sunglasses are going to --------------- in our factory next year.",
+     "options": [
+      "be produced",
+      "be producing",
+      "produced",
+      "produce"
+     ],
+     "answer": 0
     }
    ]
   }

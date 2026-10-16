@@ -242,6 +242,9 @@ const GRADE_GRAMMAR_TOPIC: Record<number, { lessons: { lesson: number; title: st
       // r283 — بانک‌های عبارات الحاق (Tag Questions): ص۴۴ دستگرمی با کلید گرید ص۱۸۷ + ص۴۵ کنکوری با کلید توضیحی ص۱۸۹-۱۹۱
       { lesson: 8, title: "عبارات الحاق (Tag Questions) — دستگرمی (ص۴۴)", count: 20 },
       { lesson: 9, title: "عبارات الحاق (Tag Questions) — کنکوری (ص۴۵)", count: 15 },
+      // r284 — بانک‌های معلوم و مجهول: بخش اول آموزشی ص۳۶ (کلید توضیحی ص۱۸۵-۱۸۶) + بخش دوم کنکوری ص۳۷-۳۸ (گرید ص۱۸۷)
+      { lesson: 10, title: "معلوم و مجهول — بخش اول، آموزشی (ص۳۶)", count: 20 },
+      { lesson: 11, title: "معلوم و مجهول — بخش دوم، کنکوری (ص۳۷-۳۸)", count: 40 },
     ],
   },
 };
