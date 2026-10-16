@@ -10,9 +10,11 @@
 // می‌کند؛ قرارداد خارجی (default export + QuizEngineProps) دست‌نخورده
 // مانده تا ۸ مصرف‌کننده (درس/آزمون/کنکور/مرور هوشمند/…) بدون تغییر کار کنند.
 
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, Eye } from "lucide-react";
+import { ArrowLeft, CheckCircle2, Eye, Keyboard, XCircle } from "lucide-react";
 import type { QuizQuestion } from "@/lib/study-types";
+import { normalizeTypedAnswer, typedAnswerIndex } from "@/lib/typed-answer";
 import { useStudy } from "@/lib/study-store";
 import { completeQuizRun } from "@/lib/quiz-finish";
 import { useToast } from "@/hooks/use-toast";
@@ -21,6 +23,60 @@ import { useQuizRun } from "./use-quiz-run";
 import QuizResult from "./quiz-result";
 import { letters } from "./quiz-constants";
 import ExplainBox from "../shared/explain-box";
+
+/**
+ * r285 — ورودی پاسخ تایپی («بنویسید»). state محلیِ متن اینجاست و با key=q.id
+ * در مونتِ والد، به‌ازای هر سؤال از نو ساخته می‌شود — بدون اثرِ ریست.
+ */
+function TypedAnswerInput({
+  q,
+  disabled,
+  onSubmit,
+}: {
+  q: QuizQuestion;
+  disabled: boolean;
+  onSubmit: (raw: string) => void;
+}) {
+  const [typed, setTyped] = useState("");
+  const submit = () => {
+    if (!normalizeTypedAnswer(typed)) return; // ورودی خالی
+    onSubmit(typed.trim());
+  };
+  return (
+    <div className="space-y-2.5" dir="ltr">
+      <div className="flex gap-2">
+        <input
+          value={typed}
+          onChange={(e) => setTyped(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              submit();
+            }
+          }}
+          disabled={disabled}
+          placeholder="type the tag question… (e.g. are they)"
+          autoComplete="off"
+          autoCapitalize="off"
+          spellCheck={false}
+          aria-label="پاسخ تایپی"
+          data-quiz-typed-input
+          className="en-text min-w-0 flex-1 rounded-xl border border-stone-300 bg-white px-3.5 py-2.5 text-[15px] font-semibold text-stone-800 outline-none transition-[border-color,box-shadow] placeholder:font-normal placeholder:text-stone-300 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100 disabled:opacity-60"
+        />
+        <button
+          type="button"
+          data-quiz-typed-submit
+          onClick={submit}
+          disabled={disabled || !normalizeTypedAnswer(typed)}
+          className="inline-flex shrink-0 items-center gap-1.5 rounded-xl bg-emerald-600 px-4 py-2.5 text-[13px] font-bold text-white transition-[background-color,transform] hover:bg-emerald-700 active:scale-95 disabled:opacity-50"
+        >
+          <Keyboard size={15} />
+          بررسی پاسخ
+        </button>
+      </div>
+    </div>
+  );
+}
 
 export interface QuizEngineProps {
   title: string;
@@ -83,9 +139,19 @@ export default function QuizEngine({
   };
 
   const run = useQuizRun({ questions, immediate, secondsPerQuestion, onFinish: finish });
-  const { idx, selected, answers, finished, timeLeft, total, choose, nextQuestion, restart } = run;
+  const { idx, selected, answers, finished, timeLeft, total, choose, nextQuestion, restart, typedTexts, recordTyped } = run;
   const q = questions[idx];
   const faOpt = q ? (faOptions?.(q) ?? false) : false;
+
+  // r285 — پاسخ تایپی: سنجش با شکل‌هایِ accepted (نرمال‌سازی در lib/typed-answer.ts)
+  // و ثبت به‌صورت اندیس گزینه؛ متنِ خام در run.typedTexts می‌ماند.
+  const isTyped = q?.kind === "typed";
+  const submitTyped = (raw: string) => {
+    if (!q) return;
+    if (immediate && selected !== null) return; // بازخورد داده شده — قفل
+    recordTyped(q.id, raw);
+    choose(typedAnswerIndex(q, raw));
+  };
 
   /* ------------------------------- finished ------------------------------- */
   if (finished) {
@@ -98,6 +164,7 @@ export default function QuizEngine({
         trackMistakes={trackMistakes}
         certificate={certificate}
         faOptions={faOptions}
+        typedTexts={run.typedTexts}
         groupOf={groupOf}
         groupLabels={groupLabels}
         onRestart={restart}
@@ -152,8 +219,18 @@ export default function QuizEngine({
           <p className="en-text mb-5 text-[16px] font-semibold leading-8 text-stone-800" dir="ltr">
             {q.question}
           </p>
-          <div className="space-y-2.5" dir={faOpt ? "rtl" : "ltr"}>
-            {q.options.map((opt, i) => {
+          {isTyped && q ? (
+            /* r285 — سؤال تایپی («بنویسید» جزوهٔ دوازدهم): ورودیِ پاسخ باز؛
+               key=q.id → state تایپ به‌ازای هر سؤال نو می‌شود */
+            <TypedAnswerInput
+              key={q.id}
+              q={q}
+              disabled={immediate && selected !== null}
+              onSubmit={submitTyped}
+            />
+          ) : (
+            <div className="space-y-2.5" dir={faOpt ? "rtl" : "ltr"}>
+              {q.options.map((opt, i) => {
               const isCorrect = immediate && selected !== null && i === q.answer;
               const isWrong = immediate && selected === i && i !== q.answer;
               const chosen = selected === i;
@@ -175,7 +252,8 @@ export default function QuizEngine({
                 />
               );
             })}
-          </div>
+            </div>
+          )}
 
           {/* feedback */}
           {immediate && selected !== null && (
@@ -185,12 +263,30 @@ export default function QuizEngine({
               data-quiz-feedback
               className="mt-4 scroll-mt-24 rounded-xl border border-stone-200 bg-stone-50 p-3.5"
             >
+              {isTyped && (
+                <p className="mb-1.5 text-[12.5px] text-stone-500">
+                  پاسخ تایپیِ شما:{" "}
+                  <span className="en-text font-bold text-stone-700" dir="ltr">
+                    “{typedTexts[q.id] ?? "—"}”
+                  </span>
+                </p>
+              )}
               <p
-                className={`mb-1 text-[13px] font-black ${
+                className={`mb-1 flex items-center gap-1.5 text-[13px] font-black ${
                   selected === q.answer ? "text-emerald-700" : "text-rose-600"
                 }`}
               >
-                {selected === q.answer ? "✓ پاسخ درست!" : `✗ پاسخ درست: ${letters[q.answer]}) ${q.options[q.answer]}`}
+                {selected === q.answer ? (
+                  <>
+                    <CheckCircle2 size={15} />
+                    ✓ پاسخ درست!
+                  </>
+                ) : (
+                  <>
+                    <XCircle size={15} />
+                    ✗ پاسخ درست: {letters[q.answer]}) {q.options[q.answer]}
+                  </>
+                )}
               </p>
               {q.translation && (
                 <p className="text-[13px] leading-7 text-stone-600">{q.translation}</p>
@@ -227,17 +323,29 @@ export default function QuizEngine({
 
           {/* keyboard hint (desktop) */}
           <div className="mt-3 hidden items-center justify-center gap-1.5 border-t border-stone-100 pt-3 text-[11px] text-stone-400 min-[720px]:flex">
-            <span>میان‌برها:</span>
-            {["1", "2", "3", "4"].map((k) => (
-              <kbd key={k} className="rounded-md border border-stone-200 bg-stone-50 px-1.5 py-0.5 font-mono text-[10px] text-stone-500 shadow-sm" dir="ltr">
-                {k}
-              </kbd>
-            ))}
-            <span>برای انتخاب گزینه</span>
-            <kbd className="rounded-md border border-stone-200 bg-stone-50 px-1.5 py-0.5 font-mono text-[10px] text-stone-500 shadow-sm" dir="ltr">
-              Enter
-            </kbd>
-            <span>برای سؤال بعدی</span>
+            {isTyped ? (
+              <>
+                <span>پاسخ را تایپ کنید و</span>
+                <kbd className="rounded-md border border-stone-200 bg-stone-50 px-1.5 py-0.5 font-mono text-[10px] text-stone-500 shadow-sm" dir="ltr">
+                  Enter
+                </kbd>
+                <span>بزنید — بعد از بازخورد، Enter سؤال بعدی</span>
+              </>
+            ) : (
+              <>
+                <span>میان‌برها:</span>
+                {["1", "2", "3", "4"].map((k) => (
+                  <kbd key={k} className="rounded-md border border-stone-200 bg-stone-50 px-1.5 py-0.5 font-mono text-[10px] text-stone-500 shadow-sm" dir="ltr">
+                    {k}
+                  </kbd>
+                ))}
+                <span>برای انتخاب گزینه</span>
+                <kbd className="rounded-md border border-stone-200 bg-stone-50 px-1.5 py-0.5 font-mono text-[10px] text-stone-500 shadow-sm" dir="ltr">
+                  Enter
+                </kbd>
+                <span>برای سؤال بعدی</span>
+              </>
+            )}
           </div>
         </motion.div>
       </AnimatePresence>

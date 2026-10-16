@@ -36,6 +36,9 @@ export interface QuizRunState {
   choose: (i: number) => void;
   nextQuestion: () => void;
   restart: () => void;
+  /** r285 — متنِ خامِ پاسخ تایپی بر اساس شناسهٔ سؤال (برای بازبینی صادقانه) */
+  typedTexts: Record<string, string>;
+  recordTyped: (qid: string, text: string) => void;
 }
 
 export function useQuizRun({
@@ -47,6 +50,9 @@ export function useQuizRun({
   const [idx, setIdx] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
   const [answers, setAnswers] = useState<number[]>([]); // chosen per question (in order)
+  // r285 — پاسخ تایپی: متنِ خامِ تایپ‌شده نگه داشته می‌شود تا بازبینی پایان
+  // راند «پاسخ شما» را صادقانه نشان دهد، نه گزینهٔ داربستیِ نگاشت‌شده.
+  const [typedTexts, setTypedTexts] = useState<Record<string, string>>({});
   const [finished, setFinished] = useState(false);
   const finishedRef = useRef(false);
   const [timeLeft, setTimeLeft] = useState<number | null>(
@@ -92,6 +98,10 @@ export function useQuizRun({
     return () => clearTimeout(t);
   }, [timeLeft, finished]);
 
+  const recordTyped = (qid: string, text: string) => {
+    setTypedTexts((prev) => ({ ...prev, [qid]: text }));
+  };
+
   const choose = (i: number) => {
     if (finishedRef.current || finished) return;
     if (immediate) {
@@ -129,6 +139,7 @@ export function useQuizRun({
     setIdx(0);
     setSelected(null);
     commitAnswers([]);
+    setTypedTexts({});
     setFinished(false);
     setTimeLeft(secondsPerQuestion ? secondsPerQuestion * questions.length : null);
   };
@@ -141,7 +152,9 @@ export function useQuizRun({
     // option picking works on any keyboard layout: physical digit keys
     // (e.code), Persian digits (۰-۹) and Latin digits all count
     const num = readDigit(e);
-    if (num !== null && num >= 1 && num <= (questions[idx]?.options.length ?? 0)) {
+    // r285 — سؤال تایپی: کلیدهای رقم راهِ میان‌برِ دورزدنِ تایپ نیستند؛
+    // Enter/← برای پیشروی پس از بازخورد سرِ جایش می‌ماند
+    if (num !== null && questions[idx]?.kind !== "typed" && num >= 1 && num <= (questions[idx]?.options.length ?? 0)) {
       e.preventDefault();
       choose(num - 1);
       return;
@@ -170,5 +183,7 @@ export function useQuizRun({
     choose,
     nextQuestion,
     restart,
+    typedTexts,
+    recordTyped,
   };
 }

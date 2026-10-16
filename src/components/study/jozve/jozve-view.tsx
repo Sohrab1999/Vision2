@@ -132,6 +132,8 @@ interface JozveTestQuestion {
   options: string[];
   answer: number;
   translation?: string;
+  kind?: "mcq" | "typed"; // r285 — پاسخ تایپیِ «بنویسید»
+  accepted?: string[];
 }
 interface JozveTestBank {
   grade: number;
@@ -245,6 +247,8 @@ const GRADE_GRAMMAR_TOPIC: Record<number, { lessons: { lesson: number; title: st
       // r284 — بانک‌های معلوم و مجهول: بخش اول آموزشی ص۳۶ (کلید توضیحی ص۱۸۵-۱۸۶) + بخش دوم کنکوری ص۳۷-۳۸ (گرید ص۱۸۷)
       { lesson: 10, title: "معلوم و مجهول — بخش اول، آموزشی (ص۳۶)", count: 20 },
       { lesson: 11, title: "معلوم و مجهول — بخش دوم، کنکوری (ص۳۷-۳۸)", count: 40 },
+      // r285 — بانک تایپی «بنویسید» ص۴۳: پاسخِ باز، کلید توضیحیِ ترجمه‌دار ص۱۸۸ — نخستین بانکِ ورودِ آزاد
+      { lesson: 12, title: "عبارات الحاق — بنویسید، تایپی (ص۴۳)", count: 22 },
     ],
   },
 };
@@ -478,6 +482,8 @@ export default function JozveView() {
           options: q.options,
           answer: q.answer,
           ...(q.translation ? { translation: q.translation } : {}),
+          // r285 — سؤال تایپی: kind/accepted باید به موتور برسد
+          ...(q.kind === "typed" ? { kind: "typed" as const, accepted: q.accepted ?? [] } : {}),
         }));
         setTestSession({
           title: `آزمون گرامر موضوعی جزوه — ${les.title} پایهٔ ${GRADE_LABEL[g]}`,

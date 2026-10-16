@@ -64,7 +64,7 @@ const fresh = [...l5.questions, ...l6.questions, ...l7.questions];
 
 describe("jozve topic grammar bank g12 — modals/passive trio (r282 extraction receipt)", () => {
   it("bank shape: seven lessons, trio added as exactly 20/20/40 with continuous printed numbering", () => {
-    expect(bank.lessons.map((l) => l.lesson)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
+    expect(bank.lessons.map((l) => l.lesson)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]); // r285 درس ۱۲ تایپی «بنویسید» را افزود
     // درس‌های r280/r281 دست‌نخورده
     expect(l1.questions).toHaveLength(27);
     expect(l2.questions).toHaveLength(61);

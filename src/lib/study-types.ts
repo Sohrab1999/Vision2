@@ -50,6 +50,14 @@ export interface QuizQuestion {
   answer: number; // index 0..3
   translation?: string;
   note?: string;
+  /**
+   * r285 — «mcq» پیش‌فرض (غایب = mcq)؛ «typed» = پاسخ بازِ تایپی:
+   * موتور به‌جای گزینه‌ها ورودی متن رندر می‌کند و با شکل‌هایِ accepted
+   * (پس از نرمال‌سازی lib/typed-answer.ts) مقایسه می‌کند. options در این
+   * حالت داربستِ بازبینی/ثبتِ اشتباه است و رندر نمی‌شود.
+   */
+  kind?: "mcq" | "typed";
+  accepted?: string[];
 }
 
 export interface LessonData {

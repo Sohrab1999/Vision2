@@ -31,6 +31,8 @@ export interface QuizResultProps {
   certificate?: boolean;
   /** predicate: question's options are Persian → rendered RTL (word drills) */
   faOptions?: (q: QuizQuestion) => boolean;
+  /** r285 — متنِ خامِ پاسخ تایپی بر اساس شناسهٔ سؤال (بازبینی صادقانهٔ «بنویسید») */
+  typedTexts?: Record<string, string>;
   /** per-question group key for the result breakdown (e.g. source lesson) */
   groupOf?: (q: QuizQuestion) => string;
   /** display label per group key */
@@ -47,6 +49,7 @@ export default function QuizResult({
   trackMistakes = true,
   certificate = false,
   faOptions,
+  typedTexts,
   groupOf,
   groupLabels,
   onRestart,
@@ -323,7 +326,21 @@ export default function QuizResult({
                 )}
               </div>
               <p className="mr-7 text-[12.5px] text-stone-600">
-                پاسخ شما: <span className={`${faOptions?.(qq) ? "" : "en-text "}font-bold`} dir={faOptions?.(qq) ? "rtl" : "ltr"}>{my !== undefined ? `${letters[my]}) ${qq.options[my]}` : "—"}</span>
+                {qq.kind === "typed" && typedTexts?.[qq.id] ? (
+                  <>
+                    پاسخ تایپیِ شما:{" "}
+                    <span className="en-text font-bold" dir="ltr">
+                      “{typedTexts[qq.id]}”
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    پاسخ شما:{" "}
+                    <span className={`${faOptions?.(qq) ? "" : "en-text "}font-bold`} dir={faOptions?.(qq) ? "rtl" : "ltr"}>
+                      {my !== undefined ? `${letters[my]}) ${qq.options[my]}` : "—"}
+                    </span>
+                  </>
+                )}
                 {!ok && (
                   <>
                     {" "}· پاسخ درست:{" "}

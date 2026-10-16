@@ -266,6 +266,16 @@
    "gridIdentityReceipt": "گرید ۱۰۰کلیدی c13/sec1 با کپشن چاپی «پاسخنامه بخش اول (صفحه 36)» ولی ناسازگار با کلید توضیحیِ خودِ بخش (توافق 6/۲۰؛ ۱:b در برابر ۱:d رسیددارِ ص۱۸۵) و ناسازگار با گرید ص۱۸۷ (توافق 6/۴۰) — کپشن چاپی نادرست؛ هویت واقعی ناشناخته (ابهام r280 با رسید بسته شد)",
    "translations": "کلید توضیحی بخش اول ترجمهٔ فارسی دارد ولی OCR مخدوش است (چین→چیر، گشایش→گسی ش عرص، دیزنی‌لند→دیزب لند)؛ بازسازیِ رسیددار به راند مستقل موکول شد — فیلد ترجمه ثبت نشد (الگوی r281/r283)",
    "extractedRound": 284
+  },
+  "typed": "بانک ۱۲ — تمرین «بنویسید» ص۴۳: ۲۲ جمله با کلید توضیحیِ ترجمه‌دار ص۱۸۸؛ نخستین بانکِ پاسخِ باز (kind=typed) با نرمال‌سازی آپاستروف/علامت سؤال (lib/typed-answer.ts)",
+  "tagwrite": {
+   "pages": "43",
+   "topic": "تمرین آموزش و دستگریم گرامر «عبارات الحاق» — پاسخِ باز",
+   "questions": 22,
+   "keyType": "کلید توضیحیِ ترجمه‌دار ص۱۸۸ (رسید ترجمه برای هر ۲۲ آیتم)",
+   "translations": "رسیدِ ترجمهٔ چاپی ص۱۸۸ برای همهٔ آیتم‌ها — شکستنِ سنتِ غیبتِ صادقانهٔ این خانواده",
+   "typedMode": "kind=typed + accepted؛ نرمال‌سازی آپاستروف/علامت سؤال در lib/typed-answer.ts؛ options داربست بازبینی",
+   "extractedRound": 285
   }
  },
  "lessons": [
@@ -4813,6 +4823,410 @@
       "produce"
      ],
      "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 12,
+   "title": "عبارات الحاق (Tag Questions) — بنویسید، پاسخ تایپی (ص۴۳)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 22,
+   "questions": [
+    {
+     "id": "g12-tagwrite-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "They aren’t going to cut that tree down, ---------------?",
+     "options": [
+      "are they",
+      "aren’t they",
+      "is it",
+      "don’t they"
+     ],
+     "answer": 0,
+     "accepted": [
+      "are they"
+     ],
+     "translation": "آنها قصد ندارند آن درخت را قطع کنند، مگه نه؟"
+    },
+    {
+     "id": "g12-tagwrite-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "You will come to our house tonight, ---------------?",
+     "options": [
+      "won’t you",
+      "will you",
+      "don’t you",
+      "won’t we"
+     ],
+     "answer": 0,
+     "accepted": [
+      "won’t you"
+     ],
+     "translation": "شما امشب به خانهٔ ما خواهید آمد، مگه نه؟"
+    },
+    {
+     "id": "g12-tagwrite-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "These aren’t my pencils, ---------------?",
+     "options": [
+      "are they",
+      "aren’t they",
+      "is it",
+      "aren’t these"
+     ],
+     "answer": 0,
+     "accepted": [
+      "are they"
+     ],
+     "translation": "اینها مدادهای من نیستند، مگه نه؟"
+    },
+    {
+     "id": "g12-tagwrite-4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "We should take our umbrellas, ---------------?",
+     "options": [
+      "shouldn’t we",
+      "should we",
+      "won’t we",
+      "don’t we"
+     ],
+     "answer": 0,
+     "accepted": [
+      "shouldn’t we"
+     ],
+     "translation": "ما باید چترهایمان را با خودمان بیاوریم، مگه نه؟"
+    },
+    {
+     "id": "g12-tagwrite-5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Fatemeh likes playing tennis, ---------------?",
+     "options": [
+      "doesn’t she",
+      "does she",
+      "don’t she",
+      "isn’t she"
+     ],
+     "answer": 0,
+     "accepted": [
+      "doesn’t she"
+     ],
+     "translation": "فاطمه تنیس بازی کردن را دوست دارد، مگه نه؟"
+    },
+    {
+     "id": "g12-tagwrite-6",
+     "n": 6,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "The ticket costs five thousand tomans, ---------------?",
+     "options": [
+      "doesn’t it",
+      "does it",
+      "don’t they",
+      "isn’t it"
+     ],
+     "answer": 0,
+     "accepted": [
+      "doesn’t it"
+     ],
+     "translation": "قیمت بلیط ۵ هزار تومان است، مگه نه؟"
+    },
+    {
+     "id": "g12-tagwrite-7",
+     "n": 7,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "You paid for dinner at the restaurant last night, ---------------?",
+     "options": [
+      "didn’t you",
+      "did you",
+      "don’t you",
+      "didn’t we"
+     ],
+     "answer": 0,
+     "accepted": [
+      "didn’t you"
+     ],
+     "translation": "تو دیشب پول شام رستوران را پرداخت کردی، مگه نه؟"
+    },
+    {
+     "id": "g12-tagwrite-8",
+     "n": 8,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "We use only 10 percent of our brain, ---------------?",
+     "options": [
+      "don’t we",
+      "do we",
+      "doesn’t it",
+      "aren’t we"
+     ],
+     "answer": 0,
+     "accepted": [
+      "don’t we"
+     ],
+     "translation": "ما از ده درصد مغزمان استفاده می‌کنیم، مگه نه؟"
+    },
+    {
+     "id": "g12-tagwrite-9",
+     "n": 9,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "You made many mistakes, ---------------?",
+     "options": [
+      "didn’t you",
+      "did you",
+      "don’t you",
+      "didn’t they"
+     ],
+     "answer": 0,
+     "accepted": [
+      "didn’t you"
+     ],
+     "translation": "تو اشتباهات زیادی مرتکب شدی، مرتکب نشدی؟ / مگه نه؟"
+    },
+    {
+     "id": "g12-tagwrite-10",
+     "n": 10,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "We need one more person to make up a team, ---------------?",
+     "options": [
+      "don’t we",
+      "do we",
+      "doesn’t he",
+      "aren’t we"
+     ],
+     "answer": 0,
+     "accepted": [
+      "don’t we"
+     ],
+     "translation": "ما به یک نفر بیشتر برای تشکیل تیم‌مان نیاز داریم، مگه نه؟"
+    },
+    {
+     "id": "g12-tagwrite-11",
+     "n": 11,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "He has been here before, ---------------?",
+     "options": [
+      "hasn’t he",
+      "has he",
+      "doesn’t he",
+      "isn’t he"
+     ],
+     "answer": 0,
+     "accepted": [
+      "hasn’t he"
+     ],
+     "translation": "او قبلاً در اینجا بوده است، مگه نه؟"
+    },
+    {
+     "id": "g12-tagwrite-12",
+     "n": 12,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Your students can play ping-pong after doing their homework, ---------------?",
+     "options": [
+      "can’t they",
+      "can they",
+      "don’t they",
+      "can’t we"
+     ],
+     "answer": 0,
+     "accepted": [
+      "can’t they"
+     ],
+     "translation": "دانش‌آموزانت بعد از انجام تکالیفشان می‌توانند پینگ‌پنگ بازی کنند، مگه نه؟"
+    },
+    {
+     "id": "g12-tagwrite-13",
+     "n": 13,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "I have seen you at school many times, ---------------?",
+     "options": [
+      "haven’t I",
+      "have I",
+      "don’t I",
+      "hasn’t he"
+     ],
+     "answer": 0,
+     "accepted": [
+      "haven’t I"
+     ],
+     "translation": "من چندین بار تو را در مدرسه دیده‌ام، مگه نه؟"
+    },
+    {
+     "id": "g12-tagwrite-14",
+     "n": 14,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "You will be sorry to leave your parents, ---------------?",
+     "options": [
+      "won’t you",
+      "will you",
+      "don’t you",
+      "won’t we"
+     ],
+     "answer": 0,
+     "accepted": [
+      "won’t you"
+     ],
+     "translation": "تو از ترک کردن والدینت متأسف می‌شوی، مگه نه؟"
+    },
+    {
+     "id": "g12-tagwrite-15",
+     "n": 15,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "My aunt has worked here for a long time, ---------------?",
+     "options": [
+      "hasn’t she",
+      "has she",
+      "doesn’t she",
+      "isn’t she"
+     ],
+     "answer": 0,
+     "accepted": [
+      "hasn’t she"
+     ],
+     "translation": "خاله‌ام برای مدت طولانی در اینجا کار کرده است، مگه نه؟"
+    },
+    {
+     "id": "g12-tagwrite-16",
+     "n": 16,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "That’s a good idea, ---------------?",
+     "options": [
+      "isn’t it",
+      "is it",
+      "doesn’t it",
+      "isn’t this"
+     ],
+     "answer": 0,
+     "accepted": [
+      "isn’t it"
+     ],
+     "translation": "این ایده خوب است، مگه نه؟"
+    },
+    {
+     "id": "g12-tagwrite-17",
+     "n": 17,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "You haven’t finished reading that story, ---------------?",
+     "options": [
+      "have you",
+      "haven’t you",
+      "did you",
+      "do you"
+     ],
+     "answer": 0,
+     "accepted": [
+      "have you"
+     ],
+     "translation": "تو خواندن آن داستان را تمام نکرده‌ای، مگه نه؟"
+    },
+    {
+     "id": "g12-tagwrite-18",
+     "n": 18,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "I never go to that supermarket, ---------------?",
+     "options": [
+      "do I",
+      "don’t I",
+      "does he",
+      "am I"
+     ],
+     "answer": 0,
+     "accepted": [
+      "do I"
+     ],
+     "translation": "من هرگز به آن سوپرمارکت نمی‌روم، مگه نه؟"
+    },
+    {
+     "id": "g12-tagwrite-19",
+     "n": 19,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "The Children have not played with Raman, ---------------?",
+     "options": [
+      "have they",
+      "haven’t they",
+      "did they",
+      "do they"
+     ],
+     "answer": 0,
+     "accepted": [
+      "have they"
+     ],
+     "translation": "بچه‌ها با «رامان» بازی نکردند، مگه نه؟"
+    },
+    {
+     "id": "g12-tagwrite-20",
+     "n": 20,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Mary can speak English, Spanish and Italian well, ---------------?",
+     "options": [
+      "can’t she",
+      "can she",
+      "doesn’t she",
+      "can’t they"
+     ],
+     "answer": 0,
+     "accepted": [
+      "can’t she"
+     ],
+     "translation": "مری می‌تواند انگلیسی، اسپانیایی و ایتالیایی را به‌خوبی صحبت کند، مگه نه؟"
+    },
+    {
+     "id": "g12-tagwrite-21",
+     "n": 21,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "You and I answered some difficult questions, ---------------?",
+     "options": [
+      "didn’t we",
+      "did we",
+      "don’t we",
+      "didn’t you"
+     ],
+     "answer": 0,
+     "accepted": [
+      "didn’t we"
+     ],
+     "translation": "من و تو سؤالات سخت را جواب دادیم، مگه نه؟"
+    },
+    {
+     "id": "g12-tagwrite-22",
+     "n": 22,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Mehdi and Mehran want to be with each other at the party, ---------------?",
+     "options": [
+      "don’t they",
+      "do they",
+      "doesn’t it",
+      "aren’t they"
+     ],
+     "answer": 0,
+     "accepted": [
+      "don’t they"
+     ],
+     "translation": "مهدی و مهران می‌خواهند در مهمانی با هم باشند، مگه نه؟"
     }
    ]
   }
