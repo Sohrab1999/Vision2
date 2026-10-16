@@ -1,11 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Keyboard, BookMarked, ClipboardCheck, Sun, Moon, History } from "lucide-react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { Keyboard, BookMarked, ClipboardCheck, Sun, Moon, History, ChevronLeft, MousePointerClick } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useStudy, type LessonTab } from "@/lib/study-store";
+import {
+  appendixResumeServerSnapshot,
+  appendixResumeSnapshot,
+  subscribeAppendixResume,
+} from "@/lib/bg-reading";
+import { RESUME_LOOP_DOORS, type ResumeLoopDoor } from "@/lib/resume-loop-doors";
 import { isTypingTarget, useKeydown } from "@/hooks/use-keyboard";
+import { RESUME_FOCUS_RING } from "@/lib/study-theme";
 
 /**
  * راهنمای میان‌برهای کیبورد + اجرای میان‌برهای سراسری.
@@ -92,6 +99,12 @@ export function Kbd({ children }: { children: React.ReactNode }) {
   );
 }
 
+// راند ۲۴۳ — تحویلِ فوکوس بینِ دو دایالوگ: راهنما هنگامِ بسته‌شدن فوکوس را
+// به دکمهٔ فراخوانش برمی‌گرداند (FocusScopeِ رادیکس — بعد از انیمیشنِ خروجِ
+// ۲۰۰ms). اگر فرمان‌یاب/پروفایل را هم‌زمان باز کنیم، بازگشتِ فوکوسِ راهنما
+// فوکوسِ تازه‌وارد را می‌دزدد — پس کنش‌هایِ فوکوس‌بر بعد از ۲۶۰ms اجرا می‌شوند.
+const HANDOFF_DELAY_MS = 260;
+
 export default function ShortcutGuide() {
   const [open, setOpen] = useState(false);
   const setView = useStudy((s) => s.setView);
@@ -100,6 +113,15 @@ export default function ShortcutGuide() {
   const view = useStudy((s) => s.view);
   const lessonTab = useStudy((s) => s.lessonTab);
   const { theme, setTheme } = useTheme();
+  // راند ۲۴۳ — درِ هدر فقط وقتی «هست» که رکوردی باشد و رویِ خودِ ضمیمه
+  // نباشیم (قراردادِ صداقتِ r236: بی‌رکورد هیچ کنشِ ساختگی). همان ایدئومِ
+  // storeِ خارجیِ دکمهٔ هدر — هیدریشنِ صادقانه با snapshotِ سرورِ null.
+  const resumeItem = useSyncExternalStore(
+    subscribeAppendixResume,
+    appendixResumeSnapshot,
+    appendixResumeServerSnapshot,
+  );
+  const handoffRef = useRef<number | null>(null);
 
   // open via event (header/footer buttons)
   useEffect(() => {
@@ -107,6 +129,45 @@ export default function ShortcutGuide() {
     window.addEventListener("open-shortcuts", handler);
     return () => window.removeEventListener("open-shortcuts", handler);
   }, []);
+
+  // راند ۲۴۳ — تایمرِ تحویلِ درها با خودِ کامپوننت تمیز شود
+  useEffect(() => {
+    return () => {
+      if (handoffRef.current !== null) window.clearTimeout(handoffRef.current);
+    };
+  }, []);
+
+  // راند ۲۴۳ ② — «کلیک روی هر ردیف، همان در را باز می‌کند»: ناوبری‌ها
+  // فوری‌اند (بی‌تعارضِ فوکوس)؛ فرمان‌یاب/پروفایل بعد از بسته‌شدنِ کاملِ
+  // راهنما باز می‌شوند (HANDOFF_DELAY_MS) و درِ هدر با اسکرولِ نرم و
+  // فوکوس نشان داده می‌شود (حلقهٔ کیبوردِ r239 در focus-visible).
+  const runDoorAction = (door: ResumeLoopDoor) => {
+    const a = door.action;
+    if (handoffRef.current !== null) window.clearTimeout(handoffRef.current);
+    setOpen(false);
+    if (a.kind === "goto-home") {
+      setView({ type: "home" });
+      return;
+    }
+    if (a.kind === "goto-appendix") {
+      setView({ type: "appendix" });
+      return;
+    }
+    handoffRef.current = window.setTimeout(() => {
+      handoffRef.current = null;
+      if (a.kind === "open-palette") {
+        window.dispatchEvent(new CustomEvent("open-command-palette"));
+      } else if (a.kind === "open-profile") {
+        window.dispatchEvent(new CustomEvent("open-profile"));
+      } else if (a.kind === "focus-header") {
+        const btn = document.querySelector<HTMLElement>('[data-testid="header-resume-button"]');
+        if (btn) {
+          btn.scrollIntoView({ block: "center", behavior: "smooth" });
+          btn.focus();
+        }
+      }
+    }, HANDOFF_DELAY_MS);
+  };
 
   // inside an active test/exam/challenge the nav letters/numbers are disabled
   // so they can't wipe an in-progress session (quiz uses 1-4 itself)
@@ -183,12 +244,14 @@ export default function ShortcutGuide() {
               </section>
             ))}
 
-            {/* حلقهٔ «ادامهٔ مطالعه» (r242 ②) — نُه درِ r231-r241 در یک کارتِ
-                کشف‌پذیر: کلیدِ واقعی فقط Ctrl+K است؛ چهار درِ دیگر کلیک‌محورند
-                و با برچسبِ محلِ خود توصیف می‌شوند نه با کلیدِ جعلی. رنگ‌ها همه
-                از kernelِ تاریکِ سراسری می‌آیند (emerald-50 var-remap،
-                border-emerald-200/text-emerald-700/800 painterهایِ جهانی) —
-                هیچ CSS تازه‌ای لازم نشد. */}
+            {/* حلقهٔ «ادامهٔ مطالعه» (r242 ②، راند ۲۴۳ ①+②) — درها از
+                RESUME_LOOP_DOORS (تک‌منبعِ حقیقتِ src/lib/resume-loop-doors.ts)
+                رندر می‌شوند: درِ نو به فهرست اضافه شود، کارتِ راهنما خودش
+                تازه می‌شود. هر ردیف حالا یک دکمهٔ واقعی است — کلیکش همان
+                در را باز می‌کند (ناوبری فوری؛ فرمان‌یاب/پروفایل/فوکوسِ هدر
+                بعد از HANDOFF_DELAY_MS). صداقتِ کلیدِ r242 پابرجا: فقط
+                Ctrl+K چیپ دارد؛ چهار درِ دیگر با برچسبِ محل. درِ هدر
+                بی‌رکورد یا رویِ خودِ ضمیمه صادقانه disable است. */}
             <section
               data-testid="shortcut-guide-resume-loop"
               className="rounded-xl border border-emerald-200 bg-emerald-50 p-3"
@@ -198,37 +261,54 @@ export default function ShortcutGuide() {
                 حلقهٔ «ادامهٔ مطالعه» — هر جا رها کنی، از همین‌جاها برمی‌گردی
               </h3>
               <ul className="space-y-1.5">
-                <li className="flex items-center justify-between gap-3 rounded-lg bg-white px-2.5 py-1.5 shadow-sm">
-                  <span className="text-[12px] font-bold text-stone-600">
-                    فرمان‌یاب — فرمانِ «ادامهٔ مطالعه» و گروهِ «ادامه‌های اخیر»؛ هر دو با تایپِ عنوانِ موضوع پیدا می‌شوند
-                  </span>
-                  <span className="flex shrink-0 items-center gap-1">
-                    <Kbd>Ctrl</Kbd>
-                    <span className="text-[10px] text-stone-300">+</span>
-                    <Kbd>K</Kbd>
-                  </span>
-                </li>
-                <li className="rounded-lg bg-white px-2.5 py-1.5 shadow-sm">
-                  <span className="text-[12px] font-bold leading-5 text-stone-600">
-                    <span className="text-emerald-700">هدر:</span> دکمهٔ «ادامهٔ مطالعه» — فلشِ کنارش پنلِ «مسیرهای اخیر» را با تا ۴ مسیرِ آخر باز می‌کند
-                  </span>
-                </li>
-                <li className="rounded-lg bg-white px-2.5 py-1.5 shadow-sm">
-                  <span className="text-[12px] font-bold leading-5 text-stone-600">
-                    <span className="text-emerald-700">خانه:</span> کارتِ ضمیمه با خطِ «ادامه از» + سینیِ «اخیراً در ضمیمه» زیرِ آن (۳ مسیرِ آخر)
-                  </span>
-                </li>
-                <li className="rounded-lg bg-white px-2.5 py-1.5 shadow-sm">
-                  <span className="text-[12px] font-bold leading-5 text-stone-600">
-                    <span className="text-emerald-700">ضمیمه:</span> نشانگرِ «ادامهٔ مطالعه» سرِ صفحه + چیپِ «مسیر اخیر» زیرِ آن
-                  </span>
-                </li>
-                <li className="rounded-lg bg-white px-2.5 py-1.5 shadow-sm">
-                  <span className="text-[12px] font-bold leading-5 text-stone-600">
-                    <span className="text-emerald-700">پروفایل:</span> بلوکِ «ادامهٔ مطالعه» با تاریخچهٔ کامل (تا ۸ مسیر) + پاک‌کردنِ هرکدام
-                  </span>
-                </li>
+                {RESUME_LOOP_DOORS.map((door) => {
+                  const disabled =
+                    door.action.kind === "focus-header" && (!resumeItem || view.type === "appendix");
+                  return (
+                    <li key={door.id}>
+                      <button
+                        type="button"
+                        onClick={() => runDoorAction(door)}
+                        disabled={disabled}
+                        title={
+                          disabled
+                            ? !resumeItem
+                              ? door.closedHint ?? door.openLabel
+                              : "روی خودِ ضمیمه دکمهٔ هدر مستور است — نشانگرِ سرِ صفحه همین در است"
+                            : door.openLabel
+                        }
+                        data-testid={`resume-door-${door.id}`}
+                        className={`flex w-full items-center justify-between gap-3 rounded-lg bg-white px-2.5 py-1.5 text-right shadow-sm transition-[background-color,color,opacity] hover:bg-emerald-50 hover:text-emerald-800 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:bg-white ${RESUME_FOCUS_RING}`}
+                      >
+                        <span className="min-w-0 text-[12px] font-bold leading-5 text-stone-600">
+                          {door.lead ? (
+                            <>
+                              <span className="text-emerald-700">{door.lead}</span> {door.text}
+                            </>
+                          ) : (
+                            door.text
+                          )}
+                        </span>
+                        <span className="flex shrink-0 items-center gap-1">
+                          {door.keys?.map((k, i) => (
+                            <span key={i} className="flex items-center gap-1">
+                              {i > 0 && <span className="text-[10px] text-stone-300">+</span>}
+                              <Kbd>{k}</Kbd>
+                            </span>
+                          ))}
+                          {!disabled && (
+                            <ChevronLeft size={12} className="shrink-0 text-emerald-600" aria-hidden />
+                          )}
+                        </span>
+                      </button>
+                    </li>
+                  );
+                })}
               </ul>
+              <p className="mt-2 flex items-center gap-1 text-[10px] font-bold text-emerald-800">
+                <MousePointerClick size={11} className="shrink-0" aria-hidden />
+                کلیک روی هر ردیف، همان در را باز می‌کند.
+              </p>
             </section>
 
             <p className="flex items-start gap-1.5 rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-[11px] font-bold leading-5 text-amber-800">
