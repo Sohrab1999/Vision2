@@ -276,6 +276,15 @@
    "translations": "رسیدِ ترجمهٔ چاپی ص۱۸۸ برای همهٔ آیتم‌ها — شکستنِ سنتِ غیبتِ صادقانهٔ این خانواده",
    "typedMode": "kind=typed + accepted؛ نرمال‌سازی آپاستروف/علامت سؤال در lib/typed-answer.ts؛ options داربست بازبینی",
    "extractedRound": 285
+  },
+  "connectives": {
+   "pages": "48/49",
+   "topic": "کلمات ربط همپایه‌ساز (coordinating conjunctions) — دستگرمیِ «بنویسید» + تست استاندارد",
+   "questions": 40,
+   "keyType": "ص۱۹۲ دو کلید: توضیحیِ ترجمه‌دار دستگریمی (۱-(but) ترجمه…) + گرید ستونیِ ۲۰تایی تست (جفت‌های (حرف،عدد) خط‌جدا — الگوی r283/r284)",
+   "translations": "رسید ترجمهٔ چاپی ص۱۹۲ برای هر ۲۰ آیتم تایپی — بازسازی خوانا از OCR مخدوش (شگرم کننده/بهی ه/خوایه؛ الگوی r285)",
+   "quirks": "Q2 ص۴۸ خالیِ چندتکهٔ شکسته (MERGE_BLANKS — الگوی r282)؛ Q5 ساقهٔ دوخطی؛ «Where» با W بزرگ در Q11 ص۴۹ وفادار به چاپ؛ «ping- pong» چاپی وفادار ماند",
+   "extractedRound": 286
   }
  },
  "lessons": [
@@ -5227,6 +5236,642 @@
       "don’t they"
      ],
      "translation": "مهدی و مهران می‌خواهند در مهمانی با هم باشند، مگه نه؟"
+    }
+   ]
+  },
+  {
+   "lesson": 13,
+   "title": "کلمات ربط — دستگرمی، پاسخ تایپی (ص۴۸)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 20,
+   "questions": [
+    {
+     "id": "g12-connwrite-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "He reads magazines, --------------- he doesn’t like to read books.",
+     "options": [
+      "but",
+      "and",
+      "or",
+      "so"
+     ],
+     "answer": 0,
+     "accepted": [
+      "but"
+     ],
+     "translation": "او روزنامه می‌خواند، اما دوست ندارد کتاب بخواند."
+    },
+    {
+     "id": "g12-connwrite-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Playing soccer in the park is exciting in the winter, --------------- it’s better in the heat of summer.",
+     "options": [
+      "but",
+      "so",
+      "and",
+      "or"
+     ],
+     "answer": 0,
+     "accepted": [
+      "but"
+     ],
+     "translation": "بازی فوتبال در پارک در فصل زمستان هیجان‌انگیز است، اما در گرمای تابستان بهتر است."
+    },
+    {
+     "id": "g12-connwrite-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "I go to the park every Sunday, --------------- I love to watch the ducks on the lake.",
+     "options": [
+      "for",
+      "but",
+      "so",
+      "and"
+     ],
+     "answer": 0,
+     "accepted": [
+      "for"
+     ],
+     "translation": "من هر یکشنبه به پارک می‌روم، چون دوست دارم اردک‌ها را در دریاچه تماشا کنم."
+    },
+    {
+     "id": "g12-connwrite-4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "I went to the party --------------- I enjoyed it a lot.",
+     "options": [
+      "and",
+      "but",
+      "so",
+      "or"
+     ],
+     "answer": 0,
+     "accepted": [
+      "and"
+     ],
+     "translation": "من به مهمانی رفتم و از آن لذت بردم."
+    },
+    {
+     "id": "g12-connwrite-5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "He doesn’t like tennis, --------------- ping- pong. Honestly, He just likes the soccer.",
+     "options": [
+      "nor",
+      "or",
+      "but",
+      "and"
+     ],
+     "answer": 0,
+     "accepted": [
+      "nor"
+     ],
+     "translation": "او نه تنیس را دوست دارد و نه پینگ‌پونگ؛ صادقانه بگویم، او فقط فوتبال را دوست دارد."
+    },
+    {
+     "id": "g12-connwrite-6",
+     "n": 6,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "It was not my duty, --------------- his. It just was Ali’s duty to clean the room.",
+     "options": [
+      "nor",
+      "or",
+      "but",
+      "so"
+     ],
+     "answer": 0,
+     "accepted": [
+      "nor"
+     ],
+     "translation": "نه وظیفهٔ من بود و نه او؛ فقط وظیفهٔ علی بود که اتاق را تمیز کند."
+    },
+    {
+     "id": "g12-connwrite-7",
+     "n": 7,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Do you like tea, --------------- coffee?",
+     "options": [
+      "or",
+      "and",
+      "but",
+      "so"
+     ],
+     "answer": 0,
+     "accepted": [
+      "or"
+     ],
+     "translation": "چای دوست داری یا قهوه؟"
+    },
+    {
+     "id": "g12-connwrite-8",
+     "n": 8,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "This soup is hot, --------------- delicious.",
+     "options": [
+      "and",
+      "but",
+      "or",
+      "so"
+     ],
+     "answer": 0,
+     "accepted": [
+      "and"
+     ],
+     "translation": "این سوپ گرم و خوشمزه است."
+    },
+    {
+     "id": "g12-connwrite-9",
+     "n": 9,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "My best friend, --------------- his family come from Spain.",
+     "options": [
+      "and",
+      "but",
+      "or",
+      "so"
+     ],
+     "answer": 0,
+     "accepted": [
+      "and"
+     ],
+     "translation": "بهترین دوستم و خانواده‌اش اهل اسپانیا هستند."
+    },
+    {
+     "id": "g12-connwrite-10",
+     "n": 10,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "I want to go to bed, --------------- I am brushing my teeth.",
+     "options": [
+      "so",
+      "but",
+      "and",
+      "or"
+     ],
+     "answer": 0,
+     "accepted": [
+      "so"
+     ],
+     "translation": "من می‌خواهم بروم بخوابم، بنابراین دارم دندان‌هایم را مسواک می‌کنم."
+    },
+    {
+     "id": "g12-connwrite-11",
+     "n": 11,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "They are very poor. They don’t have a television, --------------- a radio.",
+     "options": [
+      "nor",
+      "or",
+      "and",
+      "but"
+     ],
+     "answer": 0,
+     "accepted": [
+      "nor"
+     ],
+     "translation": "آنها خیلی فقیر هستند؛ نه تلویزیون دارند و نه رادیو."
+    },
+    {
+     "id": "g12-connwrite-12",
+     "n": 12,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Should we go out to the cinema, --------------- stay at home?",
+     "options": [
+      "or",
+      "and",
+      "but",
+      "so"
+     ],
+     "answer": 0,
+     "accepted": [
+      "or"
+     ],
+     "translation": "ما باید به سینما برویم یا در خانه بمانیم."
+    },
+    {
+     "id": "g12-connwrite-13",
+     "n": 13,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "I always buy a book to read, --------------- I never seem to turn a single page.",
+     "options": [
+      "yet",
+      "so",
+      "but",
+      "and"
+     ],
+     "answer": 0,
+     "accepted": [
+      "yet"
+     ],
+     "translation": "من همیشه کتابی برای خریدن می‌خرم، با وجود این به نظر نمی‌رسد حتی یک صفحه از آن را ورق بزنم."
+    },
+    {
+     "id": "g12-connwrite-14",
+     "n": 14,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "He is so young, --------------- he is very experienced.",
+     "options": [
+      "yet",
+      "so",
+      "but",
+      "or"
+     ],
+     "answer": 0,
+     "accepted": [
+      "yet"
+     ],
+     "translation": "او خیلی جوان است، با وجود این خیلی باتجربه است."
+    },
+    {
+     "id": "g12-connwrite-15",
+     "n": 15,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "She goes to the tennis club every afternoon, --------------- she likes to play tennis.",
+     "options": [
+      "for",
+      "so",
+      "and",
+      "but"
+     ],
+     "answer": 0,
+     "accepted": [
+      "for"
+     ],
+     "translation": "او هر بعدازظهر به باشگاه تنیس می‌رود، چون عاشق تنیس بازی کردن است."
+    },
+    {
+     "id": "g12-connwrite-16",
+     "n": 16,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "She did not come to school, --------------- she was ill.",
+     "options": [
+      "for",
+      "so",
+      "but",
+      "and"
+     ],
+     "answer": 0,
+     "accepted": [
+      "for"
+     ],
+     "translation": "او به مدرسه نیامد، چون مریض بود."
+    },
+    {
+     "id": "g12-connwrite-17",
+     "n": 17,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "We were bored with the movie, --------------- we left cinema.",
+     "options": [
+      "so",
+      "but",
+      "and",
+      "or"
+     ],
+     "answer": 0,
+     "accepted": [
+      "so"
+     ],
+     "translation": "ما از فیلم خسته شدیم، بنابراین سینما را ترک کردیم."
+    },
+    {
+     "id": "g12-connwrite-18",
+     "n": 18,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "There are no more chairs available, --------------- you will have to stand.",
+     "options": [
+      "so",
+      "but",
+      "and",
+      "or"
+     ],
+     "answer": 0,
+     "accepted": [
+      "so"
+     ],
+     "translation": "صندلی دیگری موجود نبود، بنابراین مجبور بودی بایستی."
+    },
+    {
+     "id": "g12-connwrite-19",
+     "n": 19,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Every Friday, I go to the park --------------- listen to the birds singing on the trees.",
+     "options": [
+      "and",
+      "so",
+      "but",
+      "or"
+     ],
+     "answer": 0,
+     "accepted": [
+      "and"
+     ],
+     "translation": "من هر جمعه به پارک می‌روم و به آواز خواندن پرندگان گوش می‌دهم."
+    },
+    {
+     "id": "g12-connwrite-20",
+     "n": 20,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "She likes swimming, --------------- she doesn’t know how to swim.",
+     "options": [
+      "but",
+      "and",
+      "so",
+      "or"
+     ],
+     "answer": 0,
+     "accepted": [
+      "but"
+     ],
+     "translation": "او شنا کردن را دوست دارد، اما نمی‌داند چطور شنا کند."
+    }
+   ]
+  },
+  {
+   "lesson": 14,
+   "title": "کلمات ربط — تست استاندارد و متوسط (ص۴۹)",
+   "level": "استاندارد و متوسط",
+   "count": 20,
+   "questions": [
+    {
+     "id": "g12-conn-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "The grammar test on conditional sentences was very long, --------------- it took a long time to finish.",
+     "options": [
+      "but",
+      "so",
+      "while",
+      "or"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-conn-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "We can eat our lunch at the restaurant, --------------- we can have it at home.",
+     "options": [
+      "yet",
+      "but",
+      "or",
+      "while"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-conn-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "We should do a lot of homework, --------------- we don’t have enough time.",
+     "options": [
+      "since",
+      "or",
+      "so",
+      "but"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-conn-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "Behnam’s family went to the museum last week, --------------- they did not enjoy it a lot.",
+     "options": [
+      "if",
+      "and",
+      "but",
+      "so"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-conn-5",
+     "n": 5,
+     "category": "grammar",
+     "question": "All of my students studied hard for their exams, --------------- they passed them successfully.",
+     "options": [
+      "and",
+      "for",
+      "or",
+      "so"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-conn-6",
+     "n": 6,
+     "category": "grammar",
+     "question": "Our English teacher is a very strict person, --------------- all of the students really like him.",
+     "options": [
+      "when",
+      "but",
+      "so",
+      "or"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-conn-7",
+     "n": 7,
+     "category": "grammar",
+     "question": "Their school books were really boring, --------------- they had to read them carefully.",
+     "options": [
+      "so",
+      "or",
+      "when",
+      "but"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-conn-8",
+     "n": 8,
+     "category": "grammar",
+     "question": "My mother doesn’t like fast food, --------------- she doesn’t eat any.",
+     "options": [
+      "so",
+      "while",
+      "but",
+      "or"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-conn-9",
+     "n": 9,
+     "category": "grammar",
+     "question": "There have been fewer orders for our new products, --------------- many employees in the factory are afraid of losing their job.",
+     "options": [
+      "so",
+      "since",
+      "but",
+      "or"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-conn-10",
+     "n": 10,
+     "category": "grammar",
+     "question": "Susan has lived in Spain since 2014, --------------- she hasn’t learned to speak Spanish yet.",
+     "options": [
+      "or",
+      "so",
+      "nor",
+      "but"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-conn-11",
+     "n": 11,
+     "category": "grammar",
+     "question": "Raman bought apples, oranges, carrots, lemons, --------------- potatoes from the market in the city center.",
+     "options": [
+      "Where",
+      "so",
+      "and",
+      "nor"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-conn-12",
+     "n": 12,
+     "category": "grammar",
+     "question": "We will visit Australia, --------------- New Zealand during our next vacation.",
+     "options": [
+      "and",
+      "but",
+      "so",
+      "yet"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-conn-13",
+     "n": 13,
+     "category": "grammar",
+     "question": "My teeth were hurting, --------------- I made an appointment to go to the dentist.",
+     "options": [
+      "or",
+      "so",
+      "but",
+      "and"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-conn-14",
+     "n": 14,
+     "category": "grammar",
+     "question": "You can install a mobile dictionary, --------------- you can buy a pocket one.",
+     "options": [
+      "but",
+      "so",
+      "or",
+      "for"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-conn-15",
+     "n": 15,
+     "category": "grammar",
+     "question": "They wanted to go to the Rock concert, --------------- all the tickets were already sold out.",
+     "options": [
+      "so",
+      "but",
+      "and",
+      "yet"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-conn-16",
+     "n": 16,
+     "category": "grammar",
+     "question": "These shoes are not comfortable, --------------- I rarely wear them.",
+     "options": [
+      "but",
+      "so",
+      "or",
+      "and"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-conn-17",
+     "n": 17,
+     "category": "grammar",
+     "question": "I wanted to eat fish for lunch, --------------- the fish and chip shop had closed for the day.",
+     "options": [
+      "or",
+      "but",
+      "so",
+      "for"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-conn-18",
+     "n": 18,
+     "category": "grammar",
+     "question": "I am going to do my homework, --------------- take a shower as soon as I get home from school.",
+     "options": [
+      "yet",
+      "but",
+      "so",
+      "or"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-conn-19",
+     "n": 19,
+     "category": "grammar",
+     "question": "He wanted to watch a soccer match on television, --------------- his wife was already watching another program.",
+     "options": [
+      "but",
+      "so",
+      "or",
+      "and"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-conn-20",
+     "n": 20,
+     "category": "grammar",
+     "question": "My brother wanted to buy a novel, --------------- he went to the book store after he finished work.",
+     "options": [
+      "so",
+      "or",
+      "but",
+      "yet"
+     ],
+     "answer": 0
     }
    ]
   }

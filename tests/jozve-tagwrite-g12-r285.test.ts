@@ -74,7 +74,7 @@ const STEM_LOCKS: Record<number, RegExp> = {
 
 describe("jozve topic grammar bank g12 — typed «بنویسید» p43 (r285 extraction receipt)", () => {
   it("bank shape: twelve lessons, typed bank added as exactly 22 with continuous numbering", () => {
-    expect(bank.lessons.map((l) => l.lesson)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
+    expect(bank.lessons.map((l) => l.lesson)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]); // r286 دو بانک کلمات ربط را افزود
     // بانک‌های r280-r284 دست‌نخورده
     const counts = [27, 61, 30, 50, 20, 20, 40, 20, 15, 20, 40];
     counts.forEach((c, i) => expect(bank.lessons[i].questions).toHaveLength(c));
@@ -84,7 +84,7 @@ describe("jozve topic grammar bank g12 — typed «بنویسید» p43 (r285 ex
     expect(l12.questions.every((q) => q.id === `g12-tagwrite-${q.n}`)).toBe(true);
     expect(l12.level).toBe("آموزشی — ورود آزاد");
     // جمع خانواده: ۳۴۳ + ۲۲ = ۳۶۵
-    expect(bank.lessons.reduce((a, l) => a + l.count, 0)).toBe(365);
+    expect(bank.lessons.reduce((a, l) => a + l.count, 0)).toBe(405);
   });
 
   it("every question is typed-shaped: kind, accepted==printed key, correct scaffold at answer index", () => {
@@ -129,10 +129,10 @@ describe("jozve topic grammar bank g12 — typed «بنویسید» p43 (r285 ex
     expect(l12.questions[5].translation).toContain("قیمت بلیط");
   });
 
-  it("id uniqueness across the whole 12-bank family (365 ids) + lesson 12 introduces zero new stem collisions", () => {
+  it("id uniqueness across the whole 14-bank family (405 ids) + lesson 12 introduces zero new stem collisions", () => {
     const all = bank.lessons.flatMap((l) => l.questions);
     const ids = new Set(all.map((q) => q.id));
-    expect(ids.size).toBe(365);
+    expect(ids.size).toBe(405);
     // برخورد ساقهٔ «نو» صفر: ساقه‌های درس ۱۲ نباید در بانک‌های ۱..۱۲ باشند.
     // (دو برخوردِ پیشینِ چاپیِ مستندِ r281/r283 — tense1/14↔tense2/38 و tag2/9↔tag2/12 —
     //  وفادار به خود جزوه نگه داشته شده‌اند و دامنهٔ این گارد نیستند.)
@@ -160,8 +160,8 @@ describe("jozve topic grammar bank g12 — typed «بنویسید» p43 (r285 ex
     expect(stats.lesson2).toBe(61);
   });
 
-  it("family purity: lessons 1..11 remain mcq (no kind field leaked), lesson 12 fully typed", () => {
-    for (const l of bank.lessons.filter((x) => x.lesson !== 12)) {
+  it("family purity: lessons 1..11 + 14 remain mcq (no kind field leaked), lessons 12/13 fully typed", () => {
+    for (const l of bank.lessons.filter((x) => x.lesson !== 12 && x.lesson !== 13)) {
       for (const q of l.questions) expect(q.kind, q.id).toBeUndefined();
     }
     expect(l12.questions.every((q) => q.kind === "typed")).toBe(true);

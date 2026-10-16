@@ -48,7 +48,7 @@ const fresh = [...l8.questions, ...l9.questions];
 
 describe("jozve topic grammar bank g12 — tag questions duo (r283 extraction receipt)", () => {
   it("bank shape: nine lessons, duo added as exactly 20/15 with continuous printed numbering", () => {
-    expect(bank.lessons.map((l) => l.lesson)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]); // r285 درس ۱۲ تایپی «بنویسید» را افزود
+    expect(bank.lessons.map((l) => l.lesson)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]); // r285 درس ۱۲ تایپی و r286 دو بانک کلمات ربط را افزودند
     // درس‌های r280-r282 دست‌نخورده
     const counts = [27, 61, 30, 50, 20, 20, 40];
     counts.forEach((c, i) => expect(bank.lessons[i].questions).toHaveLength(c));
@@ -150,10 +150,10 @@ describe("jozve topic grammar bank g12 — tag questions duo (r283 extraction re
     expect(tr).toContain("OCR");
   });
 
-  it("family-wide uniqueness: 365 ids after r285, old lessons untouched, discovery receipt for p187 40-key grid", () => {
+  it("family-wide uniqueness: 405 ids after r286, old lessons untouched, discovery receipt for p187 40-key grid", () => {
     const all = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
     expect(new Set(all).size).toBe(all.length);
-    expect(all).toHaveLength(365); // r284 شصت تست مجهول + r285 بیست‌ودو تست تایپی «بنویسید» را افزودند
+    expect(all).toHaveLength(405); // r284+r285 و r286 چهل تست کلمات ربط را افزودند
     expect(bank.source.tags?.discovery).toContain("معلوم و مجهول");
     expect(bank.source.tags?.discovery).toContain("37");
   });
