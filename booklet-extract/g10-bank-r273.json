@@ -4,51 +4,13 @@
   "generator": "extract-g10-bank-r273.py",
   "provenance": "page-parse of booklet tests + printed key letters + r213 curated cross-check",
   "stats": {
-   "section_no_ref": 1,
-   "agree": 28,
-   "with_key": 312,
-   "curated_no_text_match": 275,
-   "disagree": 6,
-   "questions_without_key": 642
+   "section_no_ref": 12,
+   "agree": 19,
+   "with_key": 334,
+   "curated_no_text_match": 103,
+   "questions_without_key": 620
   },
-  "disagreements": [
-   {
-    "id": "g10-p87-n20",
-    "stem": "These crayons are not ----------------- to use in very hot weather.",
-    "key": "b",
-    "curated": "d"
-   },
-   {
-    "id": "g10-p99-n16",
-    "stem": "Which sport is --------------------- dangerous of all the sports in th",
-    "key": "d",
-    "curated": "c"
-   },
-   {
-    "id": "g10-p100-n20",
-    "stem": "I had ------------------ time than I needed to finish that work.",
-    "key": "d",
-    "curated": "b"
-   },
-   {
-    "id": "g10-p103-n40",
-    "stem": "There have been many ---------------------- diseases in the human’s hi",
-    "key": "c",
-    "curated": "d"
-   },
-   {
-    "id": "g10-p124-n40",
-    "stem": "Our country needs to ------------------- a new kind of energy for the ",
-    "key": "c",
-    "curated": "a"
-   },
-   {
-    "id": "g10-p151-n19",
-    "stem": "Airlines have lost ----------------------- of dollars because of Coron",
-    "key": "d",
-    "curated": "b"
-   }
-  ]
+  "disagreements": []
  },
  "bank": [
   {
@@ -65,9 +27,8 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "تام تماس گرفت که بگوید او چند.دقیقه دیگر آنجا خواهد بود",
-   "note": null,
-   "curatedAgree": true
+   "translation": "تام تماس گرفت که بگوید او چند.دقیقه دیگر آنجا خواهد بود\"",
+   "note": null
   },
   {
    "id": "g10-p52-n2",
@@ -83,7 +44,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "آن یک تصادف بد بود. آن‌ها خوش شانس هستند که زنده.هستند",
+   "translation": "آن یک تصادف بد بود. آن‌ها خوش شانس هستند که زنده.هستند \"",
    "note": null
   },
   {
@@ -100,7 +61,7 @@
    ],
    "answerIdx": 2,
    "answerSource": "booklet-key",
-   "translation": "شگفت انگیر ن است که.چند وقت یکبار شما رانندگاتیز نمی بینید که از موبایل استفاده می‌کنند",
+   "translation": "شگفت انگیر ن است که.چند وقت یکبار شما رانندگاتیز نمی بینید که از موبایل استفاده می‌کنند \"",
    "note": null
   },
   {
@@ -117,7 +78,7 @@
    ],
    "answerIdx": 3,
    "answerSource": "booklet-key",
-   "translation": "که برای نیازهای دانش آموزان ی دولت باید یک سیستم آموزش مناسب تر.باشد توسعه دهد",
+   "translation": "که برای نیازهای دانش آموزان ی دولت باید یک سیستم آموزش مناسب تر.باشد توسعه دهد\"",
    "note": null
   },
   {
@@ -134,7 +95,7 @@
    ],
    "answerIdx": 3,
    "answerSource": "booklet-key",
-   "translation": "متوسط هزینه فیلم سازی تا25 %.افزایش یافته است",
+   "translation": "متوسط هزینه فیلم سازی تا25 %.افزایش یافته است\"",
    "note": null
   },
   {
@@ -151,7 +112,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "نمایش تلویزیون‌ها براساس.رخدادهای زندگی واقیع فقرا در جامعه مان بود",
+   "translation": "نمایش تلویزیون‌ها براساس.رخدادهای زندگی واقیع فقرا در جامعه مان بود\"",
    "note": null
   },
   {
@@ -168,7 +129,7 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "سبک نوشتاری او الان کسل کننده.و منسوخ است و بسیاری از مردم از آن لذت نم برند",
+   "translation": "سبک نوشتاری او الان کسل کننده.و منسوخ است و بسیاری از مردم از آن لذت نم برند \"",
    "note": null
   },
   {
@@ -185,7 +146,7 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "ما برای رسیدن به هدف مشی ک مان.نیاز است که با همدیگر کار کنیم",
+   "translation": "ما برای رسیدن به هدف مشی ک مان.نیاز است که با همدیگر کار کنیم\"",
    "note": null
   },
   {
@@ -202,7 +163,7 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "با در نظر گرفی ن.سنش، سالمنر او خییل خوب است",
+   "translation": "با در نظر گرفی ن.سنش، سالمنر او خییل خوب است\"",
    "note": null
   },
   {
@@ -219,7 +180,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "اگر ما به نابودی.مناطق روستات ادامه بدهیم حیوانات خییل زیادی در آینده نزدیک منقرض خواهند شد",
+   "translation": "اگر ما به نابودی.مناطق روستات ادامه بدهیم حیوانات خییل زیادی در آینده نزدیک منقرض خواهند شد\"",
    "note": null
   },
   {
@@ -236,7 +197,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "امروزه ایجاد.شغلهای جدید برای افراد بیکار، برای بیشیر کشورها سخت است",
+   "translation": "امروزه ایجاد.شغلهای جدید برای افراد بیکار، برای بیشیر کشورها سخت است \"",
    "note": null
   },
   {
@@ -253,7 +214,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "اسم کاملت را در فضای خایل.در پایت ز صفحه بنویس",
+   "translation": "اسم کاملت را در فضای خایل.در پایت ز صفحه بنویس\"",
    "note": null
   },
   {
@@ -270,7 +231,7 @@
    ],
    "answerIdx": 2,
    "answerSource": "booklet-key",
-   "translation": "در معرض ی جمعیت کواالی وحش انقراض.است",
+   "translation": "در معرض ی جمعیت کواالی وحش انقراض.است\"",
    "note": null
   },
   {
@@ -287,7 +248,7 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "اینجا رودخانه به سه آبراه تقسیم یم شود.و ما باید از آبراه یک برای ماهیگی ی برویم",
+   "translation": "اینجا رودخانه به سه آبراه تقسیم یم شود.و ما باید از آبراه یک برای ماهیگی ی برویم \"",
    "note": null
   },
   {
@@ -304,7 +265,7 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "بعد از یک هفته در دریا، احساس اینکه زمیر ن.مسطح دوباره زیر پایمان هست خوب بود",
+   "translation": "بعد از یک هفته در دریا، احساس اینکه زمیر ن.مسطح دوباره زیر پایمان هست خوب بود \"",
    "note": null
   },
   {
@@ -321,7 +282,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "مارمولکها به عنوان گونه های)در معرض خطر (انقراض.طبقه بندی شده اند",
+   "translation": "مارمولکها به عنوان گونه های)در معرض خطر (انقراض.طبقه بندی شده اند \"",
    "note": null
   },
   {
@@ -338,7 +299,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "من هرگز پیاده روی های طوالتز را بویژه.در ایام زمستان دوست ندارم",
+   "translation": "من هرگز پیاده روی های طوالتز را بویژه.در ایام زمستان دوست ندارم\"",
    "note": null
   },
   {
@@ -355,7 +316,7 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "یک دستگاه تلویزیون متوسط.طول عمر شصت ساله دارد",
+   "translation": "یک دستگاه تلویزیون متوسط.طول عمر شصت ساله دارد\"",
    "note": null
   },
   {
@@ -372,7 +333,7 @@
    ],
    "answerIdx": 2,
    "answerSource": "booklet-key",
-   "translation": "برای ما خییل ضز وری است که دانش مان.را درباره کنیر ل تولد افزایش دهیم",
+   "translation": "برای ما خییل ضز وری است که دانش مان.را درباره کنیر ل تولد افزایش دهیم\"",
    "note": null
   },
   {
@@ -389,9 +350,8 @@
    ],
    "answerIdx": 2,
    "answerSource": "booklet-key",
-   "translation": "هلن نخواست هیز بخواند در عوض.او تصمیم گرفت خلبان شود",
-   "note": null,
-   "curatedAgree": true
+   "translation": "هلن نخواست هیز بخواند در عوض.او تصمیم گرفت خلبان شود\"",
+   "note": null
   },
   {
    "id": "g10-p53-n21",
@@ -407,7 +367,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "تصادف ماشت ز وحشتناک هفته گذشته، او را به طور جدی مجروح.کرد",
+   "translation": "تصادف ماشت ز وحشتناک هفته گذشته، او را به طور جدی مجروح.کرد \"",
    "note": null
   },
   {
@@ -424,7 +384,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "معلم مان خییل نگران است چونکه غیبت هایت در کالس ها در حال افزایش.است",
+   "translation": "معلم مان خییل نگران است چونکه غیبت هایت در کالس ها در حال افزایش.است\"",
    "note": null
   },
   {
@@ -441,7 +401,7 @@
    ],
    "answerIdx": 3,
    "answerSource": "booklet-key",
-   "translation": "بدن انسان.یک دستگاه خییل پیچیده است و یک از عجایب خلقت است",
+   "translation": "بدن انسان.یک دستگاه خییل پیچیده است و یک از عجایب خلقت است\"",
    "note": null
   },
   {
@@ -458,7 +418,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "امتحان انگلیش سخت بود، اما او هنوز امیدوار.است نمره خوت بگی د",
+   "translation": "امتحان انگلیش سخت بود، اما او هنوز امیدوار.است نمره خوت بگی د \"",
    "note": null
   },
   {
@@ -475,7 +435,7 @@
    ],
    "answerIdx": 2,
    "answerSource": "booklet-key",
-   "translation": "ما بهیر بود یم شنیدیم.آنچه که آن‌ها مجبور بودند در مورد آن پروژه مهم بگویند",
+   "translation": "ما بهیر بود یم شنیدیم.آنچه که آن‌ها مجبور بودند در مورد آن پروژه مهم بگویند \"",
    "note": null
   },
   {
@@ -492,7 +452,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "ما قادر بوده ایم( این رسزمت ز را از توسعه نجات بدهیم جلوی توسعه آنرا بگی یم ) و آنرا برای نسل های آینده نگه.داریم",
+   "translation": "ما قادر بوده ایم( این رسزمت ز را از توسعه نجات بدهیم جلوی توسعه آنرا بگی یم ) و آنرا برای نسل های آینده نگه.داریم\"",
    "note": null
   },
   {
@@ -509,7 +469,7 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "،بسیاری از کشورها به عنوان مثال.مکزیک و ژاپن زلزله های زیادی دارند",
+   "translation": "،بسیاری از کشورها به عنوان مثال.مکزیک و ژاپن زلزله های زیادی دارند\"",
    "note": null
   },
   {
@@ -526,7 +486,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "منطقه بزرگی از خشک که به طور پر پشنر با درختان و بوته ها و غی ه پوشیده شده است و درختانش در نزدیک هم رشد یم کنند جنگل.است",
+   "translation": "منطقه بزرگی از خشک که به طور پر پشنر با درختان و بوته ها و غی ه پوشیده شده است و درختانش در نزدیک هم رشد یم کنند جنگل.است \"",
    "note": null
   },
   {
@@ -543,7 +503,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "کمی ی ج همیشه در تابستان پر از توریست.است",
+   "translation": "کمی ی ج همیشه در تابستان پر از توریست.است\"",
    "note": null
   },
   {
@@ -560,7 +520,7 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "نوع خاض از کتاب وجود دارد که او از آن لذت بی د؟",
+   "translation": "نوع خاض از کتاب وجود دارد که او از آن لذت بی د؟ \"",
    "note": null
   },
   {
@@ -577,7 +537,7 @@
    ],
    "answerIdx": 3,
    "answerSource": "booklet-key",
-   "translation": "من نمیخواهم دیگر.شما را ببینم چونکه شما بد با من رفتار کردید",
+   "translation": "من نمیخواهم دیگر.شما را ببینم چونکه شما بد با من رفتار کردید\"",
    "note": null
   },
   {
@@ -594,7 +554,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "مهم است که بت ز یادگی ی زبان انگلیش بصورت شفایه از یادگی ی آن از طریق خواندن کتابها، تمایز قایل شویم.",
+   "translation": "مهم است که بت ز یادگی ی زبان انگلیش بصورت شفایه از یادگی ی آن از طریق خواندن کتابها، تمایز قایل شویم. \"",
    "note": null
   },
   {
@@ -611,7 +571,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "سازمان به شدت متک به کمک داوطلبانه.بود",
+   "translation": "سازمان به شدت متک به کمک داوطلبانه.بود\"",
    "note": null
   },
   {
@@ -628,7 +588,7 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "ماشت ز های دورنگار یک اخیر اع شگفت انگیر ن.در آن زمان بودند",
+   "translation": "ماشت ز های دورنگار یک اخیر اع شگفت انگیر ن.در آن زمان بودند\"",
    "note": null
   },
   {
@@ -645,7 +605,7 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "آن‌ها در یک برج ده.طبقه در مرکز شهر زندگی یم کردند",
+   "translation": "آن‌ها در یک برج ده.طبقه در مرکز شهر زندگی یم کردند\"",
    "note": null
   },
   {
@@ -662,7 +622,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "او چهارده سالش است، به اندازه کافز بزرگ هست که از خودش مراقبت.کند",
+   "translation": "او چهارده سالش است، به اندازه کافز بزرگ هست که از خودش مراقبت.کند\"",
    "note": null
   },
   {
@@ -679,7 +639,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "بی بزرگ است که خطوط سیاه و زرد روی بدنش دارد ی حیوان وحش.",
+   "translation": "بی بزرگ است که خطوط سیاه و زرد روی بدنش دارد ی حیوان وحش.\"",
    "note": null
   },
   {
@@ -696,7 +656,7 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "چطور او یم تواند همه چی ز را در برنامه.شلوغش بگنجاند",
+   "translation": "چطور او یم تواند همه چی ز را در برنامه.شلوغش بگنجاند\"",
    "note": null
   },
   {
@@ -713,7 +673,7 @@
    ],
    "answerIdx": 2,
    "answerSource": "booklet-key",
-   "translation": "جو یک متخصص در اسی اتژی.نظایم است",
+   "translation": "جو یک متخصص در اسی اتژی.نظایم است\"",
    "note": null
   },
   {
@@ -731,8 +691,7 @@
    "answerIdx": 2,
    "answerSource": "booklet-key",
    "translation": "رسی ایطش بحراتز بود، اما دکیر ها قادر بودند او را نجات.دهند\" : Note",
-   "note": null,
-   "curatedAgree": true
+   "note": null
   },
   {
    "id": "g10-p54-n1",
@@ -749,8 +708,7 @@
    "answerIdx": 1,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null,
-   "curatedAgree": true
+   "note": "ترجمه : \" به نظر میر سید که تصادف به طور کامل اعتماد به نفس او را از بیر ن برده بود.\" 1 ) ساختر ز2 )نابود کردن 3 ) ماندن4 ) در نظر گرفتر ز"
   },
   {
    "id": "g10-p54-n2",
@@ -767,8 +725,7 @@
    "answerIdx": 0,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null,
-   "curatedAgree": true
+   "note": "ترجمه : \" اگر بشود، ما یم توانیم دوباره تاریخ های تعطیالتمان را بچینیم.\" 1 )اگر بشود، با امیدواری 2 ) معموال3 ) واقعا4) با عصبانیت"
   },
   {
    "id": "g10-p54-n3",
@@ -785,8 +742,7 @@
    "answerIdx": 2,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null,
-   "curatedAgree": true
+   "note": "ترجمه : \" یک تکه گچ برداشت و جواب را روی تخته نوشت. \" 1 ) الگو2 ) هوا3 ) گچ4) نمودار"
   },
   {
    "id": "g10-p54-n4",
@@ -820,7 +776,7 @@
    "answerIdx": 1,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" از وقت از رسی کت بازنشسته شده، کارهای داوطلبانه برای خیر یه کرده است. \" 1 ) طبییع2 )داوطلبانه 3 ) جمع4 ) اخی"
   },
   {
    "id": "g10-p54-n6",
@@ -837,7 +793,7 @@
    "answerIdx": 0,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \"خیر یه بسته و ورشکسه خواهد شد اگر یک اهدا کننده بخشنده در ماه های بعد پیدا نشود.\" 1 )خیر یه 2 ) گیاه3 ) جهان4 ) آب و هوا"
   },
   {
    "id": "g10-p54-n7",
@@ -854,7 +810,7 @@
    "answerIdx": 1,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" در پایان سخین ابن، دوست دارم دانش آموزان به گروه های مکالمه کوچک تقسیم بشوند.\" 1 )) خاموش کردن (آتش2 )تقسیم شدن به 3 ) تسویه حساب کردن4) پرواز کردن هواپیما"
   },
   {
    "id": "g10-p54-n8",
@@ -871,7 +827,7 @@
    "answerIdx": 1,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" اگر همه چیر ن طبق برنامه پیش برود، کار تا دسامی تمام خواهد شد.\" 1 ) عبارت2 )برنامه 3 ) جنگل 4 ) افت و خی ز صدا"
   },
   {
    "id": "g10-p54-n9",
@@ -888,7 +844,7 @@
    "answerIdx": 1,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" تنها کاری که باید برای بردن بکنید این است که کلمات اینجا را مرتب کنید تا چهار اسم پرنده پیدا کنید. \" 1 ) در نظر گرفتر ز2 ) مرتب کردن 3 ) تمی ز کردن4 ) رسی وع کردن"
   },
   {
    "id": "g10-p54-n10",
@@ -905,7 +861,7 @@
    "answerIdx": 0,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" ما به اندازه کاقن تالش نیم کنیم که محیط زیست را از آ لودگی حفظ کنیم.\" 1 )محافظت کردن 2 ) شکستر ز 3 ) اهدا کردن4) مصاحبه کردن"
   },
   {
    "id": "g10-p54-n11",
@@ -922,7 +878,7 @@
    "answerIdx": 3,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \"م د ت زمان کار کردن اکیر وسایل نقلیه میتواند افزایش پیدا کند اگر به طور منظم رسویس بشوند.\" 1 ) اخی ا 2 ) به طور ت دقت3 ) در اصل4 )به طور منظم"
   },
   {
    "id": "g10-p54-n12",
@@ -939,7 +895,7 @@
    "answerIdx": 2,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \"حت کوچک ترین بچه ها میتوانند که مادرشان را از صدایش تشخیص بدهند.\" 1 ) فرض کردن 2 ) کاهش دادن3 )تشخیص دادن 4) نجات دادن"
   },
   {
    "id": "g10-p54-n13",
@@ -956,7 +912,7 @@
    "answerIdx": 1,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" اینطور فکر کردم که زمان مناست برای اشاره کردن به موضوع پول نبود.\" 1 ) متفاوت2 ) مناسب 3 ) عایل4) بخشنده"
   },
   {
    "id": "g10-p54-n14",
@@ -973,7 +929,7 @@
    "answerIdx": 1,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" حیوانات و گیاهان در معرض خطر انقراض نیاز دارند که در مقابل شکارچیان حفاظت شوند. \" 1 ) بت ز الملیل2 )در معرض خطر (انقراض ) 3 ) ممکن4 ) فرهنکی"
   },
   {
    "id": "g10-p54-n15",
@@ -990,7 +946,7 @@
    "answerIdx": 1,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" اگر بشود، کار ساخت و ساز قبل از این که مدارس دوباره در سپتامی باز بشوند تمام خواهد شد. دانش آ موزان خییل احساس خوب در این باره خواهند داشت.\" 1 ) به طور طبییع2 ) اگر بشود، انشاهلل 3 ) به طور بادقت4 )به سخنر، به ندرت"
   },
   {
    "id": "g10-p54-n16",
@@ -1007,7 +963,7 @@
    "answerIdx": 3,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" دیدن قایق های زیبای زیادی روی دریاچه به طور همزمان چه صحنه فوق العاده ای بود.\" 1 ) ساده 2 ) ت قاعده3 ) مذهن4 )فوق العاده، عایل"
   },
   {
    "id": "g10-p54-n17",
@@ -1024,7 +980,7 @@
    "answerIdx": 2,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" مدیریت مجبور شد که حقوق ها را برای کارگران زیادی افزایش دهد.\" 1 ) معرفز کردن2 ) عطسه کردن3 )افزایش دادن 4) پیشنهاد کردن"
   },
   {
    "id": "g10-p54-n18",
@@ -1041,7 +997,7 @@
    "answerIdx": 1,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \"مهم است که یاد گرفی ن انگلیسی به طور شفایه را از یادگیر ی انگلیسی به وسیله خواندن.کتاب را از هم جدا کنیم\" 1 ) به ارایم2 )به طور شفایه 3 ) به طور متوسط4) به رسعت"
   },
   {
    "id": "g10-p54-n19",
@@ -1058,8 +1014,7 @@
    "answerIdx": 0,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null,
-   "curatedAgree": true
+   "note": "ترجمه : \" نقش دانشمندان مشاهده و توصیف کردن جهان است، نه سیع کردن برای کنی ل آن. \" 1 )توصیف کردن 2 ) ترک کردن3 ) تصمیم گرفتر ز4) حساب کردن"
   },
   {
    "id": "g10-p55-n20",
@@ -1076,7 +1031,7 @@
    "answerIdx": 1,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" رهی به آن ها توصیه کرد که به رسعت کشور را ترک کنند.\" 1 ) عالقه مند کردن2 )توصیه کردن 3 ) استخدام کردن4) حضور پیدا کردن"
   },
   {
    "id": "g10-p55-n21",
@@ -1093,7 +1048,7 @@
    "answerIdx": 2,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" یک مقاله جالب درباره گیاه خواری در روزنامه دیروز بود. \" 1 ) جمع2 ) خودخواه 3 )جالب 4 ) با ادب"
   },
   {
    "id": "g10-p55-n22",
@@ -1110,7 +1065,7 @@
    "answerIdx": 0,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \"،در هشت سال گذشته جمعیت فیل ها در آفریقا نصف شده است.\" 1 )جمعیت 2 ) امکانات3 ) توجه4) عجایب"
   },
   {
    "id": "g10-p55-n23",
@@ -1127,7 +1082,7 @@
    "answerIdx": 3,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" وقت توی شلوغن بودم، مجبور شدم صدایم رو باال بی م تا صدام شنیده بشود.\" 1 ) تقسیم کردن2 ) نگه داشتر ز3 ) گذاشتر ز4 ) باال بردن"
   },
   {
    "id": "g10-p55-n24",
@@ -1144,7 +1099,7 @@
    "answerIdx": 2,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" یک سیستم دفاع از خود از خودش در برابر صدمات تصادقن و حمالت بیر وبن دفاع یم کند. \" 1 ) امیدوار2 ) زباتز3 ) تصادقن 4) مهم"
   },
   {
    "id": "g10-p55-n25",
@@ -1161,7 +1116,7 @@
    "answerIdx": 0,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : :الف \" مهمابن د یشب چطور بود؟\" :ب\" اوه عایل!بود، خییل خوش گذشت \" 1 )عایل،خییل خوب 2 ) رایج3 ) دردناک4) متفاوت"
   },
   {
    "id": "g10-p55-n26",
@@ -1178,7 +1133,7 @@
    "answerIdx": 1,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" بعد از جنگ جهابن، کشورهای زیادی تصمیم گرفی ن یک ارتش عایل داشته باشند تا از خودشان محافظت کنند؟ \" 1 ) حدس زدن2 ) تصمیم گرفی ن 3 ) ترک کردن 4) کامل کردن"
   },
   {
    "id": "g10-p55-n27",
@@ -1229,7 +1184,7 @@
    "answerIdx": 2,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" یک مصدومیت از ناحیه پا، اجازه حضور را به او نیم ی فعال در مسابقات ورزیس دهد.\" 1 ) توضیح2 ) اطالعات3 ) حضور 4) موقعیت"
   },
   {
    "id": "g10-p55-n30",
@@ -1246,7 +1201,7 @@
    "answerIdx": 0,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" هر اتاق یک رسی کتاب، اسباب بازی و بازی دارد که مناسب آن سن خاص هستند.\" 1 )مناسب 2 ) واقیع3 ) عالقه مند4) ممکن"
   },
   {
    "id": "g10-p55-n31",
@@ -1263,7 +1218,7 @@
    "answerIdx": 2,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" ما داریم یک شام را برنامه ریزی میکنیم تا پنجاهمیر ن سالگرد تاسیس کمپابن را جشن بگیر یم. \" 1 ) خی یه2 ) حساب3 ) سالگرد 4) شخصیت"
   },
   {
    "id": "g10-p55-n32",
@@ -1280,7 +1235,7 @@
    "answerIdx": 0,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" او میل و عالقه کشورش را برای روابط دوستانه با تمام کشور های همسایه را بازگو کرد.\" 1 )دوستانه 2 ) خودخواه 3 ) داوطلبانه4 ) مذهن"
   },
   {
    "id": "g10-p55-n33",
@@ -1297,7 +1252,7 @@
    "answerIdx": 2,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" اسی الیا فرهنگ خود را دارد، که خییل متفاوت از فرهنگ بریتانیا است.\" 1 ) اطالعات 2 ) مکالمه 3 )فرهنگ 4) دوره"
   },
   {
    "id": "g10-p55-n34",
@@ -1314,7 +1269,7 @@
    "answerIdx": 2,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" خییل از مردم همیشه میگویند که زمان اوضاع را عوض میکند، اما خود شما در واقع باید آن ها عوض کنید. \" 1 ) به طور با دقت2 ) با ادبانه 3 )در واقع 4 ) به سخنر"
   },
   {
    "id": "g10-p55-n35",
@@ -1331,7 +1286,7 @@
    "answerIdx": 1,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" به چندین کتابخانه رفتم تا اطالعاب درباره یک کتاب درباره حیوانات در معرض خطر انقراض جمع کنم.\" 1 ) با دقت2 ) در معرض خطر انقراض 3 ) جدی4) عایل"
   },
   {
    "id": "g10-p55-n36",
@@ -1348,7 +1303,7 @@
    "answerIdx": 3,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \"کاهش در تعداد دوچرخه ها و ماشیر ن ها ممکن است تا مشکالت محیط زیست جدیدی را به وجود بیاورد.\" 1 ) ارتش2 ) اطالعات3 ) صدمه4 )کاهش"
   },
   {
    "id": "g10-p55-n37",
@@ -1365,7 +1320,7 @@
    "answerIdx": 0,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه :\" والدین فرزندان جوان و کوچک اغلب افسده میشوند، و این موضوع مخصوص أ درباره پدر ها و مادر های مجرد (آن ها که طالق گرفته اند ) واقعیت دارد. \" 1 )مخصوص أ، بخصوص 2 ) به طور طبییع3) واقع أ 4) به طور بت ز الملیل"
   },
   {
    "id": "g10-p55-n38",
@@ -1382,7 +1337,7 @@
    "answerIdx": 3,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" اگر قیمت های خانه را در دو شهر مقایسه کنید، این که چقدر با هم متفاوت هستند کامأل شگفت انگیر ن.است \" 1 ) مطلوب، خوشایند2 ) ممکن 3 ) جدی4 ) شگفت انگیر ن"
   },
   {
    "id": "g10-p55-n39",
@@ -1399,7 +1354,7 @@
    "answerIdx": 1,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" بزرگداشت یعتن انجام دادن کاری برای اینکه شما، شخص مهم و یا رویداد مهیم در گذشته را به یاد بیاورید یا احی امتان را نشاد دهید.\" 1 ) صدمه زدن 2 )بزرگداشت، گرایم داشی ن 3 ) مرتب کردن 4) تشخیص دادن"
   },
   {
    "id": "g10-p55-n40",
@@ -1416,8 +1371,313 @@
    "answerIdx": 0,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null,
-   "curatedAgree": true
+   "note": "ترجمه : \" طول عمر متوسط انسان در کشورهای توسعه یافته در صد سال گذسته افزایش یافته است. \" 1 ) طول عمر 2 ) برنامه3 ) طبیعت4 ) عالقه : Note"
+  },
+  {
+   "id": "g10-p66-n5",
+   "page": 66,
+   "num": 5,
+   "category": "vocab",
+   "stem": "Armin and Alireza have ---------- Italian class together. ------------- teacher is ----------- Mr. Del Piero.",
+   "options": [
+    "a / Their / the",
+    "a / His / -",
+    "an / Their / -",
+    "an / His / the"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "گزینه های این تست، حالتهای مختلف فعلread بوده پس این تست مربوط به زمآن‌ها می باشد. قبل از جای خالیare going آمده که بعد از آن باید اولto و آنگاه \"شکل ساده فعل\".بیاید (زمان آینده ساده) :ترجمه تست \" سایر دانش اموزان قرار است که گزارشات دوستان خود را خوانده و چیر ن های زیادی در مورد طبیعت و حیوانات دریاب.یاد بگیر ند\""
+  },
+  {
+   "id": "g10-p66-n6",
+   "page": 66,
+   "num": 6,
+   "category": "vocab",
+   "stem": "A: My classmates and I don’t know how to answer these difficult math questions. B: They’re really easy. Don’t worry my dear students. I --------------------- you these questions again.",
+   "options": [
+    "am going to teach",
+    "will teach",
+    "am teaching",
+    "taught"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "قبل از جای خالی اول عددfour آمده، پس اسم باید\"جمع\" باشد در نتیجه گزینهd وc حذف می شوند. هر گاه اسمی برای،بار اول ذکر شود\"نکره\" یا نا معین بوده اما چنانچه برای بار دوم ذکر شود تبدیل به اسم معین یا\"معرفه \" می شود و حرف تعریفthe می.گیرد :ترجمه تست \" همسایه ما خانواده پر جمعیت دارد. او صاحب چهار فرزند است. یک پس و سه دخی. پس7 ساله دارد و دخی ها3، 16 و20 ساله هستند\"."
+  },
+  {
+   "id": "g10-p66-n7",
+   "page": 66,
+   "num": 7,
+   "category": "vocab",
+   "stem": "------------- shops aren’t very expensive, because they’re not in the center of ------------- town.",
+   "options": [
+    "That / the",
+    "This / a",
+    "These / a",
+    "These / the"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "با توجه به قید زمان جمله در\"زمان آینده ساده\" می باشد پس گزینه b،که در زمان گذشته ساده است اشتباه می باشد. در گزینهa نباید خودbe.بکار برده شود بعد از فعل کمکیwill هرگز فعل اصلی جملهing نمی گیرد. (رد گزینهc ) :ترجمه تست \" دخی کوچک آقای رحییم لپ تاپ گران قیمت او را شکست. او قرار است یک لپ تاپ جدید را ماه آینده بخرند\"."
+  },
+  {
+   "id": "g10-p66-n8",
+   "page": 66,
+   "num": 8,
+   "category": "vocab",
+   "stem": "Next Saturday, my cousin ----------------- to Tehran for 2 days to visit Milad Tower and Azadi Square.",
+   "options": [
+    "is going to travel",
+    "will travel",
+    "traveled",
+    "travel"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "کلمه Italian با حرف صدادار شروع شده پسan می.گیرد ( رد گزینه های b وa). برای جای خالی دوم، صفت ملکیArmin and Alireza بایدtheir.باشد (حذف گزینه b وd ). جای خالی سوم: اسامی خاص، حرف تعریف نمی.گیرند (رد گزینه های dوa). :ترجمه تست \" آرمیر ن و علیر ضا به یک کالس زبان ایتالیاب میر وند و معلم آ نها آقای دل پیر و است \"."
+  },
+  {
+   "id": "g10-p66-n9",
+   "page": 66,
+   "num": 9,
+   "category": "vocab",
+   "stem": "My parents have decided to have a great birthday party for me. They --------------------- my best friends next Wednesday.",
+   "options": [
+    "invite",
+    "will invite",
+    "are going to invite",
+    "have invited"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": ".جمله دارای مشخصه زمانی نمی باشد چنانچه در لحظه تصمیمی گرفته شود و در جمله نشانی از برنامه ریزی قبلی و قصد و نیت،وجود نداشته باشد جمله در زمان آینده ط فق با فعل کمکیwill ساخته خواهد شد. :ترجمه تست \" :الف. پاسخ دهیم ن من و همکالسیهایم نمیدانیم چطور به این سواالت سخت ریاض \" :ب این سواالت واقعأ آسان هستند نگران نباشید. من این سواالت را دوباره به شما تدریس خواهم کرد \"."
+  },
+  {
+   "id": "g10-p66-n10",
+   "page": 66,
+   "num": 10,
+   "category": "vocab",
+   "stem": "A: Why did they buy a lot of paint last week? B: Because they --------------------- all the classes of our school soon.",
+   "options": [
+    "paint",
+    "painted",
+    "will paint",
+    "are going to paint"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "کلمهshops جمع است پس صفت اشاره آن هم باید\"جمع\".باشد (گزینهa و b رد یم ).شوند،برای بیان مالکیت غیر انسان هر دو اسم باید معرفه باشند (حرف تعریف the می ).گیرند :مثال. is brown class the of door The :ترجمه تست \" این مغازه ها خییل گران قیمت نیستند، چونکه در مرکز شهر نیستند\"."
+  },
+  {
+   "id": "g10-p66-n11",
+   "page": 66,
+   "num": 11,
+   "category": "vocab",
+   "stem": "A: The windows of your house are really dirty. B: Yes, I know. I -------------------- and clean -------------------- with my sister next Friday.",
+   "options": [
+    "’m going to wash / them",
+    "’ll wash / it",
+    "’ll wash / them",
+    "’m going to wash / it"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "با توجه به قید زمان ) Saturday (next جمله در زمان \" آینده ساده\" می باشد. پس گزینه هایd وc.اشتباه هستند چنانچه برای انجام کاری در زمان آینده برنامه ریزی شود، از ساختارbe going to استفاده می.کنیم :ترجمه تست \" شنبه آینده عمو زاده من قرار است به مدت2 روز به تهران، برای دیدن کردن از برج میالد و میدان آزادی، سفر کند\"."
+  },
+  {
+   "id": "g10-p66-n12",
+   "page": 66,
+   "num": 12,
+   "category": "vocab",
+   "stem": "Our mother has bought some rice, meat from the supermarket. So, she ----------------------- a delicious food tomorrow night.",
+   "options": [
+    "cook",
+    "cooked",
+    "will cook",
+    "is going to cook"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "با توجه به قید زمان day) Wednes (next جمله در زمان\" آینده ساده\" می باشد. پس گزینه های d وa.اشتباه هستند چنانچه برای انجام کاری در زمان آینده تصمیم گیری شود، از ساختارbe going to استفاده می.کنیم :ترجمه تست \" والدین من تصمیم گرفته ا ند یک مهمابن تولد برای من بگیر ند. آن‌ها قرار است تعداد زیادی از بهی ین دوستانم را برای چهارشنبه آینده دعوت کن ند\"."
+  },
+  {
+   "id": "g10-p66-n13",
+   "page": 66,
+   "num": 13,
+   "category": "vocab",
+   "stem": "Most of the professors who are going ------------ us English at university are from ------------ Mexico and ---------- USA.",
+   "options": [
+    "teach / a / the",
+    "to teach / - / the",
+    "to teach / - / an",
+    "teach / the / an"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "با توجه به قید زمان ) soon ( جمله در زمان\" آینده ساده\" می باشد. پس گزینه های b وa.اشتباه هستند چنانچه برای انجام کاری در زمان آینده برنامه ریزی شود، از ساختارbe going to.استفاده میکنیم ترجمه تست : \" الف- چرا آن‌ها هفته گذشته آن همه رنگ را خریدند؟ ب - زیرا آن‌ها قصد دارند همه کالسهای مدرسه ما را به زودی رنگ آمیر نی کنند\"."
+  },
+  {
+   "id": "g10-p66-n14",
+   "page": 66,
+   "num": 14,
+   "category": "vocab",
+   "stem": "When you come to our house Sunday night, I --------------------- you my big new toy train.",
+   "options": [
+    "am going to show",
+    "will show",
+    "show",
+    "showed"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "با توجه به قید زمان) next Friday ( جمله در زمان \" آینده ساده \" می باشد. چنانچه قبل از جای خالیknow،آمده باشد بدین معنی است که از انجام آن عمل در آینده از قبل خبر داشته ایم پس ساختارbe going to درست می.باشد (رد گزینه هایb وc ) ضمیر مفعولی مناسب برای the windows که جمع است، بایدthem.باشد :ترجمه تست \" الف–.پنجره ها ی خانه شما واقعأ کثیف هستند ب– بله میدانم. من قراره با خواهرم جمعه آینده آن‌ها را بشوریم و تمیر ن کنیم\"."
+  },
+  {
+   "id": "g10-p67-n15",
+   "page": 67,
+   "num": 15,
+   "category": "vocab",
+   "stem": "The hard-working zookeepers in our city’s zoo ----------------- the endangered animals more seriously.",
+   "options": [
+    "will protects",
+    "are going to protect",
+    "protecting",
+    "to protect"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "با توجه به قید زمان( tomorrow night ) جمله در زمان آینده ساده می.باشد (حذف گزینهb وa.). با توجه به قبل و بعد از جای خالی می توان از مفهوم جمله این برداشت را داشته باشیم.که قصد و نیتی برای انجام کاری در آینده وجود دارد برنامه ریزی قبلی برای آینده را با ساختار کمکی be going to نشان می دهیم. :ترجمه تست \" مادرم کیم برنج و گوشت را از سوپرمارکت خریده است. او قصد دارد برای فردا شب یک شام خوشمزه ای را بی ند\"."
+  },
+  {
+   "id": "g10-p67-n16",
+   "page": 67,
+   "num": 16,
+   "category": "vocab",
+   "stem": "A: I don’t have any pens and pencils in my school bag today. B: Really? Well, I --------------- you some.",
+   "options": [
+    "am going to lend",
+    "am lending",
+    "will lend",
+    "lent"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "قبل از جای خال ی اولare going آمده که بعد از آن باید اولto و آنگاه \"شکل ساده فعل\".بیاید (زمان آینده ساده) پس گزینهa و d رد می ( شوند. بعد از جای خالی دوم اسم خاصMexico ) آمده است و می دانیم که قبل از اسامی خاص هیچ حرف تعریفی را بکار نمی بریم. (رد گزینه هایd وa ). چنانچه اسم کشوری به صورت مخفف نوشته شود، حرف تعریفthe می.گیرد :ترجمه تست \" بیشی اساتیدی که امسال قرار است به ما در دانشگاه زبان انگلیسی را تدریس کنند اهل کشور مکزیک و ایاالت متحده آمریکا هستند\"."
+  },
+  {
+   "id": "g10-p67-n17",
+   "page": 67,
+   "num": 17,
+   "category": "vocab",
+   "stem": "A: Did you send your homework for the teacher? B: Oh, I completely forgot, I ------------------- it after dinner.",
+   "options": [
+    "will send",
+    "am going to send",
+    "send",
+    "sent"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "با توجه به قید زمان(tomorrow) جمله در زمان آینده ساده میباشد. پس گزینه هایdوc اشتباه هستند. چنانچه برای انجام کاری در زمان آینده برنامه ریزی شود، از ساختارbe going to.استفاده میکنیم :ترجمه تست \" )اگه (زمانیکه شما یکشنبه شب به خانه ما آمدید، قطار اسباب بازی جدید بزرگم را به تو نشان خواهم داد\"."
+  },
+  {
+   "id": "g10-p67-n18",
+   "page": 67,
+   "num": 18,
+   "category": "vocab",
+   "stem": "Raman helped his friend, Arshan to solve his math problems. He -------------------- him do his homework next Thursday.",
+   "options": [
+    "will help",
+    "helps",
+    "is going to help",
+    "be going to help"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "بعد از فاعل هرگز فعل اول جمله بدون افعالto be به صورتing دار و یا به شکل مصدر با to نخواهد بود. (رد گزینه های dوc.( بعد از فعل کمکی will باید\"شکل ساده فعل\".بیاید (رد گزینهa ) :ترجمه تست \" نگهبانان سختکوش در باغ وحش شهر ما قرار است از حیوانات در معرض خطر به طور جدی تر محافظت کنند\"."
+  },
+  {
+   "id": "g10-p69-n1",
+   "page": 69,
+   "num": 1,
+   "category": "grammar",
+   "stem": "Firefighters soon ---------- ----------- the fire out.",
+   "options": [
+    "take",
+    "put",
+    "turn",
+    "make"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "در زبان \" انگلیش برای اشاره به عادات باید از زمان حال ساده.\" استفاده کنیم ترجمه : \"او صبح های جمعه ساعت هفت و نیم از خواب بیدار می‌شود\"."
+  },
+  {
+   "id": "g10-p69-n2",
+   "page": 69,
+   "num": 2,
+   "category": "grammar",
+   "stem": "I really like to be a ---------- ----------- because I enjoy visiting different places in the world.",
+   "options": [
+    "hunter",
+    "pilot",
+    "tourist",
+    "zookeeper"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "کردن از ز از آنجات که تصمیم گوینده دوم جمله برای خداحافظ \"سام\" لحظه ای گرفته شده است باید از will.استفاده کنیم ترجمه : \" خواهم کرد ن الف: سام فردا بعد از ظهر به خارج از کشور یم رود؟ ب: واقعا؟من یم روم و با او خداحافیط\"."
+  },
+  {
+   "id": "g10-p69-n3",
+   "page": 69,
+   "num": 3,
+   "category": "grammar",
+   "stem": "This is a ---------- ----------- mountain, but those mountains are low.",
+   "options": [
+    "high",
+    "long",
+    "short",
+    "thin"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "با توجه به بافت جمله میتوان فهمید که گوینده دوم از قبل تصمیم به عیادت پدر احمد را داشته پس باید از be going to.استفاده کنیم ترجمه : \" :الف \".پدر احمد اخیر ا به مدت دو هفته در بیمارستان بوده است :ب\".آره، ما قصد داریم فردا همیر ن موقع از او دیدن کنیم"
+  },
+  {
+   "id": "g10-p69-n4",
+   "page": 69,
+   "num": 4,
+   "category": "grammar",
+   "stem": "Humans cut down trees and destroy lakes. They make homes and roads ---------- -----------.",
+   "options": [
+    "natural",
+    "instead",
+    "forest",
+    "future"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "در این تست با کاربرد دیگر o be going t \" :روبه رو هستیم پیش بیتن براساس نشانه ها و مدارک موجود \" ترجمه : او آنقدر رنگش پریده است که باور دارم الان غش یم کند."
   },
   {
    "id": "g10-p87-n1",
@@ -1433,7 +1693,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "وقتی که ما به نزدیک روستا آمدیم، صداهایی را شنیدیم.",
+   "translation": "وقتی که ما به نزدیک روستا آمدیم، صداهایی را شنیدیم. \"",
    "note": null
   },
   {
@@ -1450,7 +1710,7 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "دیروز اولین قطرات باران روی زمین افتاد و ما هم خیلی لذت بردیم.",
+   "translation": "دیروز اولین قطرات باران روی زمین افتاد و ما هم خیلی لذت بردیم. \"",
    "note": null
   },
   {
@@ -1467,7 +1727,7 @@
    ],
    "answerIdx": 2,
    "answerSource": "booklet-key",
-   "translation": "تا کنون شما عجایب سیارات دیگر را کشف کرده اید؟",
+   "translation": "تا کنون شما عجایب سیارات دیگر را کشف کرده اید؟ \"",
    "note": null
   },
   {
@@ -1484,7 +1744,7 @@
    ],
    "answerIdx": 3,
    "answerSource": "booklet-key",
-   "translation": "او برای جمع آوری فنجان های قهوه ای قدیمی اطراف دفتر را گشت.",
+   "translation": "او برای جمع آوری فنجان های قهوه ای قدیمی اطراف دفتر را گشت.\"",
    "note": null
   },
   {
@@ -1501,7 +1761,7 @@
    ],
    "answerIdx": 3,
    "answerSource": "booklet-key",
-   "translation": "یک موجود زنده خیلی کوچک که با چشمانتان نمی توانید ببینید و می تواند بیماری هایی را بوجود آورد میکروب نامیده می.شود",
+   "translation": "یک موجود زنده خیلی کوچک که با چشمانتان نمی توانید ببینید و می تواند بیماری هایی را بوجود آورد میکروب نامیده می.شود\"",
    "note": null
   },
   {
@@ -1518,7 +1778,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "گریه کردن به عنوان یک نشانه ضعف میان بعضی افراد در وضعیت های بد دیده می شود.",
+   "translation": "گریه کردن به عنوان یک نشانه ضعف میان بعضی افراد در وضعیت های بد دیده می شود.\"",
    "note": null
   },
   {
@@ -1535,7 +1795,7 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "این سیاره ی کوچک در منظومه شمسی، نزدیک ترین سیاره به خورشید است و گاهی اوقات با چشم، درست بعد از غروب آفتاب، قابل ر ؤ یت است. آن سیاره عطارد است.",
+   "translation": "این سیاره ی کوچک در منظومه شمسی، نزدیک ترین سیاره به خورشید است و گاهی اوقات با چشم، درست بعد از غروب آفتاب، قابل ر ؤ یت است. آن سیاره عطارد است. \"",
    "note": null
   },
   {
@@ -1552,7 +1812,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "اگر باران سنگین ببارد این دستگاه آب را از زیر زمین پمپاژ می کند.",
+   "translation": "اگر باران سنگین ببارد این دستگاه آب را از زیر زمین پمپاژ می کند. \"",
    "note": null
   },
   {
@@ -1569,7 +1829,7 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "وقتی که شما سرما می خورید یا آنفوالنزا دارید، بهتر است مایعات زیادی بنوشید.",
+   "translation": "وقتی که شما سرما می خورید یا آنفوالنزا دارید، بهتر است مایعات زیادی بنوشید. \"",
    "note": null
   },
   {
@@ -1586,7 +1846,7 @@
    ],
    "answerIdx": 3,
    "answerSource": "booklet-key",
-   "translation": "تعطیالت به او فرصت داد که اتاق را رنگ بزند.",
+   "translation": "تعطیالت به او فرصت داد که اتاق را رنگ بزند.\"",
    "note": null
   },
   {
@@ -1601,9 +1861,9 @@
     "city",
     "abroad"
    ],
-   "answerIdx": 2,
+   "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "یک ساختمان ویژه که دانشمندان در آن ماه، ستاره ها، آب و هوا و غیره را تماشا می کنند رصدخانه نامیده می شود.",
+   "translation": "ماهواره هر دوازده ساعت یک مدار را کامل می.کند\"",
    "note": null
   },
   {
@@ -1618,9 +1878,9 @@
     "delicious",
     "comfortable"
    ],
-   "answerIdx": 1,
+   "answerIdx": 2,
    "answerSource": "booklet-key",
-   "translation": "بدترین و وحشتناک ترین چیز ممکن که می تواند اتفاق بیافتد، چیست؟",
+   "translation": "یک ساختمان ویژه که دانشمندان در آن ماه، ستاره ها، آب و هوا و غیره را تماشا می کنند رصدخانه نامیده می شود. \"",
    "note": null
   },
   {
@@ -1635,9 +1895,9 @@
     "most",
     "least"
    ],
-   "answerIdx": 1,
+   "answerIdx": 3,
    "answerSource": "booklet-key",
-   "translation": "جزئی ِاتِسطح کره ماه ی، فقط از طریق یک تلسکوپ می تواند دیده شود.",
+   "translation": "ِاین کتابها در مورد هری پاتر هم در داخل و هم در خارج خیلی محبوب و جالب بوده اند. \"",
    "note": null
   },
   {
@@ -1654,7 +1914,7 @@
    ],
    "answerIdx": 2,
    "answerSource": "booklet-key",
-   "translation": "کوچکترین قسمت یک موجود زنده که می تواند به طور مستقل وجود داشته باشد، سلول نامیده می شود.",
+   "translation": "زه م ی آن نان قهوه ای خانگی خیلی مطبوع است. به عبارت دیگر خیلی خوشمزه است. \"",
    "note": null
   },
   {
@@ -1671,7 +1931,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "هواپیماهای زیادی وجود دارند که افراد بیشتری را نسبت به قبل، حمل می کنند.",
+   "translation": "بدترین و وحشتناک ترین چیز ممکن که می تواند اتفاق بیافتد، چیست؟ \"",
    "note": null
   },
   {
@@ -1686,9 +1946,9 @@
     "completing",
     "comparing"
    ],
-   "answerIdx": 0,
+   "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "زمانیکه او کمی پیرتر می شود، دیدن آنچه رخ می دهد، )(برایش جالب خواهد بود.",
+   "translation": "جزئی ِاتِسطح کره ماه ی، فقط از طریق یک تلسکوپ می تواند دیده شود. \"",
    "note": null
   },
   {
@@ -1703,9 +1963,9 @@
     "near",
     "powerful"
    ],
-   "answerIdx": 3,
+   "answerIdx": 2,
    "answerSource": "booklet-key",
-   "translation": "این مداد شمعی ها برای استفاده در آب و هوای خیلی گرم مناسب نیستند.",
+   "translation": "کوچکترین قسمت یک موجود زنده که می تواند به طور مستقل وجود داشته باشد، سلول نامیده می شود. \"",
    "note": null
   },
   {
@@ -1722,9 +1982,8 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "پلیس کنترل کامل موقعیت (وضعیت) را در دست داشت.",
-   "note": null,
-   "curatedAgree": false
+   "translation": "هواپیماهای زیادی وجود دارند که افراد بیشتری را نسبت به قبل، حمل می کنند.\"",
+   "note": null
   },
   {
    "id": "g10-p88-n21",
@@ -1740,7 +1999,7 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "ِبهتر است یک تماس تلفنی برقرار شود که برریس شود )(که ایاِشما برای شخص درستی )(نامه نوشته اید.",
+   "translation": "زمانیکه او کمی پیرتر می شود، دیدن آنچه رخ می دهد، )(برایش جالب خواهد بود.\"",
    "note": null
   },
   {
@@ -1755,9 +2014,9 @@
     "Bacteria",
     "Virus"
    ],
-   "answerIdx": 2,
+   "answerIdx": 3,
    "answerSource": "booklet-key",
-   "translation": "ِچطور زندگی در بریتانیا با ایاالت متحده مقایسه می شود؟",
+   "translation": "این مداد شمعی ها برای استفاده در آب و هوای خیلی گرم مناسب نیستند. \"",
    "note": null
   },
   {
@@ -1772,9 +2031,9 @@
     "medium",
     "strange"
    ],
-   "answerIdx": 3,
+   "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "ِروش ِدیگر برای حل مساله، در بخش سوم کتاب توصیف شده است.",
+   "translation": "او ِپارسال صد هزار دالر به تحقیقات سرطان ِبیمارستان نیویورک اهدا کرد. \"",
    "note": null
   },
   {
@@ -1791,7 +2050,7 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "دارو علیه دسته ای از باکی ی ها موثر است.",
+   "translation": "پالسما ِقسمت ِمایع زرد ِرنگ ِخون است که شامل سلول های خونی هست. \"",
    "note": null
   },
   {
@@ -1808,7 +2067,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "ِپلیس قطرات کوچکی از خون را در آپارتمان پیدا کرد ه و سرانجام قاتل را شناسایی کر د دن.",
+   "translation": "پلیس کنترل کامل موقعیت (وضعیت) را در دست داشت. \"",
    "note": null
   },
   {
@@ -1825,7 +2084,7 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "ِپدربزرگم دو سال پیش، بعد از رنج بردن از یک حمله ِقلبی شدید، فوت کرد.",
+   "translation": "ِبهتر است یک تماس تلفنی برقرار شود که برریس شود )(که ایاِشما برای شخص درستی )(نامه نوشته اید. \"",
    "note": null
   },
   {
@@ -1840,9 +2099,9 @@
     "plasma",
     "body"
    ],
-   "answerIdx": 1,
+   "answerIdx": 2,
    "answerSource": "booklet-key",
-   "translation": "آن‌ها همیشه می گویند که زمان چیزها را تغییر می دهد. اما در واقع شما بایستی خودت آن‌ها را تغییر دهی.",
+   "translation": "ِچطور زندگی در بریتانیا با ایاالت متحده مقایسه می شود؟ \"",
    "note": null
   },
   {
@@ -1857,9 +2116,9 @@
     "water",
     "cell"
    ],
-   "answerIdx": 0,
+   "answerIdx": 3,
    "answerSource": "booklet-key",
-   "translation": "لیوان(بر روی زمین ) افتاد و به هزار تکه (تبدیل) شد.",
+   "translation": "ِروش ِدیگر برای حل مسأله، در بخش سوم کتاب توصیف شده است.\"",
    "note": null
   },
   {
@@ -1874,9 +2133,9 @@
     "body",
     "element"
    ],
-   "answerIdx": 2,
+   "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "تالش کن( تا انجام ) چند تمرین منظم به کارهای(مرتب ) روزانه ات را اضافه کنی.",
+   "translation": "دارو علیه دسته ای از باکی ی ها موثر است.\"",
    "note": null
   },
   {
@@ -1891,9 +2150,9 @@
     "finally",
     "nowadays"
    ],
-   "answerIdx": 0,
+   "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "ِدر میان اعضای خانواده ما، خواه ِر کوچکترم تنها کسی بود که به خارج از کشور مسافرت کرد.",
+   "translation": "ِپلیس قطرات کوچکی از خون را در آپارتمان پیدا کرد ه و سرانجام قاتل را شناسایی کر د دن. \"",
    "note": null
   },
   {
@@ -1908,9 +2167,9 @@
     "millions",
     "billions"
    ],
-   "answerIdx": 1,
+   "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "اشتباه است که به فلوریدا فقط بر حسب جاذبه های توریستی فکر کنیم.",
+   "translation": "ِپدربزرگم دو سال پیش، بعد از رنج بردن از یک حمله ِقلبی شدید، فوت کرد. \"",
    "note": null
   },
   {
@@ -1925,9 +2184,9 @@
     "common",
     "average"
    ],
-   "answerIdx": 0,
+   "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "مذهب)عنرصی (عامیل بود که کشور را به دو گروه تقسیم کرد.",
+   "translation": "آن‌ها همیشه می گویند که زمان چیزها را تغییر می دهد. اما در واقع شما بایستی خودت آن‌ها را تغییر دهی. \"",
    "note": null
   },
   {
@@ -1942,9 +2201,9 @@
     "exercise",
     "health"
    ],
-   "answerIdx": 3,
+   "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "ِاو با خواندن روزنامه ها، از دهه199۰ مطالت ُرا برای ر مانش جمع آوری کرد.",
+   "translation": "لیوان(بر روی زمین ) افتاد و به هزار تکه (تبدیل) شد. \"",
    "note": null
   },
   {
@@ -1959,9 +2218,9 @@
     "distance",
     "upward"
    ],
-   "answerIdx": 0,
+   "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "اگر قرار است چنین شرکت هایی در دنیای مدرن رقابت کنند، می بایستی تغییر کنند.",
+   "translation": "آن‌ها تلویزیونی با تصویر ی واضح و صدای ی با کیفیت باال دارند.\"",
    "note": null
   },
   {
@@ -1976,9 +2235,9 @@
     "by mean of",
     "jumped out of"
    ],
-   "answerIdx": 1,
+   "answerIdx": 2,
    "answerSource": "booklet-key",
-   "translation": "بگذار برای شما چند نکته ِمفید در مورد مراقبت کردن از گیاهان خانگی را بگویم.",
+   "translation": "تالش کن( تا انجام ) چند تمرین منظم به کارهای(مرتب ) روزانه ات را اضافه کنی. \"",
    "note": null
   },
   {
@@ -1993,9 +2252,77 @@
     "system",
     "gift"
    ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "ِدر میان اعضای خانواده ما، خواه ِر کوچکترم تنها کسی بود که به خارج از کشور مسافرت کرد.\"",
+   "note": null
+  },
+  {
+   "id": "g10-p88-n37",
+   "page": 88,
+   "num": 37,
+   "category": "vocab",
+   "stem": "She gathered ----------------- for her novel by reading newspapers from 1990s.",
+   "options": [
+    "elements",
+    "hints",
+    "keys",
+    "material"
+   ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "چه مدت برای سیاره مشتری، طول می ِکشد تا یک چرخش ِکامل دور خورشید، داشته باشد؟\" : Note",
+   "translation": "اشتباه است که به فلوریدا فقط بر حسب جاذبه های توریستی فکر کنیم. \"",
+   "note": null
+  },
+  {
+   "id": "g10-p88-n38",
+   "page": 88,
+   "num": 38,
+   "category": "vocab",
+   "stem": "Such companies must change if they are to compete in the----------------- world.",
+   "options": [
+    "modern",
+    "ancient",
+    "nation",
+    "living"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "مذهب)عنرصی (عامیل بود که کشور را به دو گروه تقسیم کرد. \"",
+   "note": null
+  },
+  {
+   "id": "g10-p88-n39",
+   "page": 88,
+   "num": 39,
+   "category": "vocab",
+   "stem": "Let me tell you some helpful ----------------- on looking after house plants.",
+   "options": [
+    "elements",
+    "hints",
+    "materials",
+    "gifts"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": "ِاو با خواندن روزنامه ها، از دهه1990 مطالت ُرا برای ر مانش جمع آوری کرد. \"",
+   "note": null
+  },
+  {
+   "id": "g10-p88-n40",
+   "page": 88,
+   "num": 40,
+   "category": "vocab",
+   "stem": "How long does it take for the ----------------- Jupiter to make a complete orbit around the sun?",
+   "options": [
+    "star",
+    "planet",
+    "orbit",
+    "plane"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "اگر قرار است چنین شرکت هایی در دنیای مدرن رقابت کنند، می بایستی تغییر کنند. \"",
    "note": null
   },
   {
@@ -2013,8 +2340,7 @@
    "answerIdx": 1,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null,
-   "curatedAgree": true
+   "note": "ترجمه : \" اگر به این موسیف عایل با دقت گوش بدهید، یم توانید صدای فلوت را در موسیف زمینه بشنوید.\" 1 ) واقعا 2 ) با دقت 3 ) به طور منظم 4) به آرایم"
   },
   {
    "id": "g10-p89-n2",
@@ -2031,8 +2357,7 @@
    "answerIdx": 1,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null,
-   "curatedAgree": true
+   "note": "ترجمه : \" کودکان در برابر بیماری های عمده ی.دوران کودگ واکسینه شدند\" 1 ) منطقه 2 )بیماری 3 ) انرژی 4) هدیه"
   },
   {
    "id": "g10-p89-n3",
@@ -2049,8 +2374,7 @@
    "answerIdx": 1,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null,
-   "curatedAgree": true
+   "note": "ترجمه : \" خلبان گفت: کاپیتان شما صحبت یم کند. ما انتظار داریم که در حدود یک ساعت آینده در فرودگاه لندن فرود بیاییم.\" 1 ) اتفاق افتادن2 ) انتظار داشی ن3 ) دنبال کردن 4) تمرین کردن"
   },
   {
    "id": "g10-p89-n4",
@@ -2084,7 +2408,7 @@
    "answerIdx": 0,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \"موقعیت سخت است و نیم دانم برای این که مشکلم را حل بکنم، چیکار کنم.\" 1 )موقعیت 2 ) نیمه 3 ) مایع 4) خشگ، فرود آمدن"
   },
   {
    "id": "g10-p89-n6",
@@ -2101,7 +2425,7 @@
    "answerIdx": 2,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \"دنبال یک هدیه روز تولد برای مادر یم گشتم، اما چیر ن مناست پیدا نکردم.\" 1 ) شجاع، شجاعانه 2 ) پرچرب 3 ) مناسب 4) اضافه"
   },
   {
    "id": "g10-p89-n7",
@@ -2118,7 +2442,7 @@
    "answerIdx": 0,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" آخرین پروژه او فیلیم است که بر اساس زندگی یک ستاره ی موسیف قرن نوزدهم است. \" 1 ) پایه گذاری کردن )(اینجا معتن بر اساس میدهد 2 ) تقسیم شدن به 3) بریدن، قطع کردن 4 ) مراقبت کرد، پرستاری کردن"
   },
   {
    "id": "g10-p89-n8",
@@ -2135,7 +2459,7 @@
    "answerIdx": 0,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \"احتماأل یک چاقوی خوب، یگ از پرکاربرد و مفید ترین چیر ن هاب است که میتوانید در.آشی نخانه داشته باشید\" 1 ) مفید 2 ) قوی 3 ) شگفت انگیر ن4 ) جالب"
   },
   {
    "id": "g10-p89-n9",
@@ -2152,7 +2476,7 @@
    "answerIdx": 2,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" کیفیت تصویر بد است زیرا سیگنال تلویزیون به اندازه کاقن قوی نیست. \" 1 ) مناسب2 ) طالب 3 ) قوی 4 ) با ادب"
   },
   {
    "id": "g10-p89-n10",
@@ -2169,7 +2493,7 @@
    "answerIdx": 3,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" پروژه تحقیق در حال مشاهده (رصد) کردن تغییر ات جمعیت محیل بوده است. \" 1 ) کشیدن 2 ) باالرفی ن3 ) اهدا کردن 4 )مشاهده کردن"
   },
   {
    "id": "g10-p89-n11",
@@ -2186,7 +2510,7 @@
    "answerIdx": 2,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" یک رس درد بسیار بد داشتم، اما به کنست رفتم.\" 1 ) پرانرژی2 ) ب دقت 3 ) بسیار بد 4 ) نامنظم"
   },
   {
    "id": "g10-p89-n12",
@@ -2203,7 +2527,7 @@
    "answerIdx": 0,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \"اگر این ها کاقن نیستند، من یم توانم به تو مسکن های قوی تری.بدهم\" 1 )قوی تر2 ) مهربان تر 3 ) دورتر 4 ) بزرگی"
   },
   {
    "id": "g10-p89-n13",
@@ -2220,7 +2544,7 @@
    "answerIdx": 0,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \"کار کردن در آن کارخانه، برای\" آن\" ماه ها سخت بود، اما تجربه.خوب برایش بود\" 1 )تجربه 2 ) اطالعات3 ) محتویات4) وضعیت"
   },
   {
    "id": "g10-p89-n14",
@@ -2237,7 +2561,7 @@
    "answerIdx": 3,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" باید قبل از این که امتحان رانندگی ماشیر ن را بدهید، یک بار بیشی پارک کردن ماشیر ن را تمرین کنید.\" 1 ) اتفاق افتادن2 ) به خطر انداخی ن3 ) هچ کردن 4 )تمرین کردن"
   },
   {
    "id": "g10-p89-n15",
@@ -2254,7 +2578,7 @@
    "answerIdx": 2,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" با تمام شگفت های تکنولوژی مدرن، چرا هیچکس ایده ای برای سفر در زمان نداشته است؟\" 1 ) حلقه2 ) هدیه 3 ) شگفت 4 ) عالمت"
   },
   {
    "id": "g10-p89-n16",
@@ -2271,7 +2595,7 @@
    "answerIdx": 1,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \"واتیکان قبول کرده است که 80 هزار دالر برای کمک اضطراری به کشورهاب که درگیر جنگ شده اند، اهدا کند. \" 1 ) سفارش دادن 2 ) اهدا کردن 3 ) انتظار داشی ن 4 ) پمپاژ کردن"
   },
   {
    "id": "g10-p89-n17",
@@ -2288,7 +2612,7 @@
    "answerIdx": 0,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" از ر ئی س جمهور پرسیده شد که چطور توانست از سیاست که موجب افزایش بیکاری شد، دفاع؟ کند \" 1 ) دفاع کردن2 ) عطسه کردن3 ) افزایش دادن 4) رصد کردن"
   },
   {
    "id": "g10-p89-n18",
@@ -2305,7 +2629,7 @@
    "answerIdx": 2,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" او تمام جزییات آنچه را که آن ها با او در بیمارستان کردند،.به من گفت\" 1 ) ارگان، عضو 2 ) سنگ 3 )جزییات 4 ) فلز"
   },
   {
    "id": "g10-p89-n19",
@@ -2322,8 +2646,7 @@
    "answerIdx": 0,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null,
-   "curatedAgree": true
+   "note": "ترجمه : \"پائول به همسایه ی سالخورده اش به وسیله تمیر ن کردن برف از حیاط خانه اش،.کمک کرد \" 1 ) تمیر ن کردن2 ) دنبال کردن3 ) تمرین گرفی ن 4) اهدا کردن"
   },
   {
    "id": "g10-p90-n20",
@@ -2340,7 +2663,7 @@
    "answerIdx": 3,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \"قطرات کوچک رنگی در کف آشی نخانه بود و ما مجبور بودیم که پاکشان کنیم.\" 1 ) عالقه، سود 2 ) طال 3 ) نشانه 4 ) قطره"
   },
   {
    "id": "g10-p90-n21",
@@ -2357,7 +2680,7 @@
    "answerIdx": 2,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" آن یک عبارب بود که قبال نشنیده بود و در شگفت بود که معتن آن چه یم شد. \" 1 ) فامیل و خویشاوند2 ) امید 3 )عبارت، اصطالح4) نمودار"
   },
   {
    "id": "g10-p90-n22",
@@ -2374,7 +2697,7 @@
    "answerIdx": 0,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" او به طور غیر مس قیم ت بارها به رییس گفته است که اگر ترفیع درجه نگیر د، از کار انرصاف میدهد. \" 1 )نکته، اشاره، تذکر2 ) قطره 3 ) عالمت 4،) فلش پیکان Drop a hint: به طور غیر مستقیم چیر نی را گفی ن"
   },
   {
    "id": "g10-p90-n23",
@@ -2391,7 +2714,7 @@
    "answerIdx": 2,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" ما سیع میکنیم که آن چه را که بهی ین است از لحاظ کیفیت محصوالت مان، برای مشی ی هایمان انجام بدهیم. \" 1 ) به تنهاب، خودمان 2 ) به جای 3 ) از لحاظ 4) در واقع"
   },
   {
    "id": "g10-p90-n24",
@@ -2408,7 +2731,7 @@
    "answerIdx": 1,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \"قیمت های محصوالت به وسیله ی قیمت مواد اولیه و همچنیر ن هزینه ی تولید کنی ل یم شود.\" 1 ) سالمت2 ) مواد سازنده 3 ) اصطالح 4 ) شگفت"
   },
   {
    "id": "g10-p90-n25",
@@ -2425,7 +2748,7 @@
    "answerIdx": 0,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : :الف \" او به کیفیت عالقه مند نیست. تمام چیر نی که او برایش مهم است،.پول در آوردن است\" 1 )کیفیت 2 ) فلفل 3 ) هدیه 4) عنرص"
   },
   {
    "id": "g10-p90-n26",
@@ -2442,7 +2765,7 @@
    "answerIdx": 2,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" داشی ن یک در آ مد دوم، یک عنرص.مهم برای خریداران خانه است\" 1 ) خارج2 ) منطقه 3 ) عنرص 4) شکل، حالت"
   },
   {
    "id": "g10-p90-n27",
@@ -2493,7 +2816,7 @@
    "answerIdx": 1,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" اگر ][آن دارو مستقیم أ به جریان خون تزریق شود،رسیع تر عمل یم کند. \" 1 ) حقیقت2 )جریان 3 ) خشگ 4) موقعیت، محل، مکان"
   },
   {
    "id": "g10-p90-n30",
@@ -2510,7 +2833,7 @@
    "answerIdx": 3,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" یک تصمیم شجاعانه بود که از کارش انرصاف بدهد و کسب و کار خودش را راه بندازد.\" 1 ) شفاف2 ) واقیع 3 ) گران 4 )شجاع، شجاعانه"
   },
   {
    "id": "g10-p90-n31",
@@ -2527,7 +2850,7 @@
    "answerIdx": 3,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \"او بعد از استفاده ی بیش از حد قرص های خواب آور، به یک کمای عمیق رفت.\" 1 ) رایج2 ) اضافه 3 ) پالستیگ 4 ) عمیق"
   },
   {
    "id": "g10-p90-n32",
@@ -2561,7 +2884,7 @@
    "answerIdx": 0,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \"یم توانم برای نهار شما، جوجه در سس مخصوص خودمان را پیشنهاد دهم. واقع أ خوشمزه است.\" 1 ) خوشمزه2 ) جدی3 ) فرهنگی 4 ) قوی"
   },
   {
    "id": "g10-p90-n34",
@@ -2578,7 +2901,7 @@
    "answerIdx": 1,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" خییل چیر ن ها برای خانم ها این را سخت یم کند که به درجات باال در تجارت.در آمریکا برسند\" 1 ) مریض 2 ) سخت و دشوار3 ) شگفت انگیر ن 4 ) سالم"
   },
   {
    "id": "g10-p90-n35",
@@ -2595,7 +2918,7 @@
    "answerIdx": 0,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" کلمهflight دو معتن متفاوت دارد : یک سفر هواب، و عمل فرار کردن.\" 1 )متفاوت 2 ) در معرض خطر انقراض3 ) خطرناک 4) پر انرژی"
   },
   {
    "id": "g10-p90-n36",
@@ -2612,7 +2935,7 @@
    "answerIdx": 2,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" زندگی انسان ها خییل چیر ن های مختلفن دارد برای انتخاب کردن،؛ مانند شغل، رشته دانشگاه....و \" 1 ) هچ کردن 2 ) تمیر ن کردن3 ) انتخاب کردن 4) کاهش دادن"
   },
   {
    "id": "g10-p90-n37",
@@ -2629,7 +2952,7 @@
    "answerIdx": 0,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه :\" ما به کیس نیاز داریم که در امر بازاریاب و معلیم تجربه دارد، و فکر کنم آ.لکس تنها فرد برای این کار است \" 1 ) تجربه 2 ) حسی ه 3 ) مثال 4 ) شکل، حالت"
   },
   {
    "id": "g10-p90-n38",
@@ -2646,7 +2969,7 @@
    "answerIdx": 3,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" والدین او به او اجازه ی بازی کردن هایک روی یخ را نخواهند داد چون فکر میکنند که خییل خطرناک.است \" 1 ) خوشایند و لذت بخش 2 ) ممکن3 ) مهم 4 )خطرناک"
   },
   {
    "id": "g10-p90-n39",
@@ -2663,8 +2986,7 @@
    "answerIdx": 1,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null,
-   "curatedAgree": true
+   "note": "ترجمه : \" این مهم است که از پوستتان در برابر ن خورشید تاثیر ات مرص محافظت کنید.\" 1 ) صدمه زدن 2 )مراقبت کردن 3 ) مرتب کردن 4) تشخیص دادن"
   },
   {
    "id": "g10-p90-n40",
@@ -2681,7 +3003,7 @@
    "answerIdx": 0,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "ترجمه : \" در طول 1980، مقدار ازون در اسی اتوسفر باالی اروپا حدود أ 8. درصد کاهش پیدا کرد \" 1 ) طول عمر2 ) برنامه3 ) طبیعت 4 ) عالقه : Note"
   },
   {
    "id": "g10-p99-n1",
@@ -2698,8 +3020,7 @@
    "answerIdx": 3,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": "با توجه به قبل و بعد از جای خالی، تست مربوط به صفت برابری می باشد. ما بینas…as صفت ساده می آید. (حذف گزینه a, b, c ) ترجمه تست : \"دستخط او به اندازه دستخط من بد نیست\".",
-   "curatedAgree": true
+   "note": "با توجه به قبل و بعد از جای خالی، تست مربوط به صفت برابری می باشد. ما بینas…as صفت ساده می آید. (حذف گزینه a, b, c ) ترجمه تست : \"دستخط او به اندازه دستخط من بد نیست\"."
   },
   {
    "id": "g10-p99-n2",
@@ -2852,7 +3173,7 @@
    "answerIdx": 2,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": "دو اسم داریم پس جواب یا صفت برابری و یا صفت برتری می باشد. (حذف گزینهdوa ) با توجه به جمله اول، به صفت برتری نیاز است. ترجمه تست : \" مرد70 کیلو وزن دارد. زن۶7.کیلو وزن دارد. مرد از زن سنگیر ن وزن تر است"
+   "note": "دو اسم داریم پس جواب یا صفت برابری و یا صفت برتری می باشد. (حذف گزینهdوa ) با توجه به جمله اول، به صفت برتری نیاز است. ترجمه تست : \" مرد70 کیلو وزن دارد. زن67.کیلو وزن دارد. مرد از زن سنگیر ن وزن تر است\""
   },
   {
    "id": "g10-p99-n11",
@@ -2869,7 +3190,7 @@
    "answerIdx": 2,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": "برای مقایسه یک اسم با گروهی از اسامی به صفت عالی نیاز داریم. ترجمه تست : \"رابرت به خوب نیم نویسد. او بدترین دستخط کالس را دارد."
+   "note": "برای مقایسه یک اسم با گروهی از اسامی به صفت عالی نیاز داریم. ترجمه تست : \"رابرت به خوب نیم نویسد. او بدترین دستخط کالس را دارد.\""
   },
   {
    "id": "g10-p99-n12",
@@ -2937,8 +3258,7 @@
    "answerIdx": 3,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": "(.با توجه به گزینه ها و عوض شدن جای کلمات، این تست مربوط به ترتیب صفات میباشد :رمز جم رساک.) توضیحات مثل سؤال12 old big expensive سن اندازه کیفیت ترجمه تست : \" دوستم هرگز به برادرش اجازه نمیدهد که ماشیر ن قدییم بزرگ گران قیمتش را براند\".",
-   "curatedAgree": false
+   "note": "(.با توجه به گزینه ها و عوض شدن جای کلمات، این تست مربوط به ترتیب صفات میباشد :رمز جم رساک.) توضیحات مثل سؤال12 old big expensive سن اندازه کیفیت ترجمه تست : \" دوستم هرگز به برادرش اجازه نمیدهد که ماشیر ن قدییم بزرگ گران قیمتش را براند\"."
   },
   {
    "id": "g10-p100-n17",
@@ -3006,8 +3326,7 @@
    "answerIdx": 3,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": "برای مقایسه یک اسم با گروهی از اسامی به صفت عالی نیاز داریم. ترجمه تست : \"وسایل ارزان زیادی در این مغازه وجود دارد اما کیک ارزانی ین آن‌هاست \".",
-   "curatedAgree": false
+   "note": "برای مقایسه یک اسم با گروهی از اسامی به صفت عالی نیاز داریم. ترجمه تست : \"وسایل ارزان زیادی در این مغازه وجود دارد اما کیک ارزانی ین آن‌هاست \"."
   },
   {
    "id": "g10-p101-n4",
@@ -3024,7 +3343,7 @@
    "answerIdx": 1,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": "با نگاه کردن به گزینه های این تست، میتوان گرامر را که در مورد\"انواع صفات\" میباشد، حدس زد. صفت، قبل از اسم می آید نه بعد از آن. (پس گزینه های aوc فورا حذف خواهند شد.) از بین دو گزینه باقیمانده، گزینهd صفت عالی بوده اما چون حرف تعریف the ندارد، حذف می گردد. در نتیجه جواب این تست فقط گزینهb )!!!خواهد بود. (در این تست اصال به جمله نگاه هم نکردیم :توجه گرامری میتوان قبل از صفت عالی، از\"صفت برتری \" هم.استفاده کرد. همانند آخر این تست faster than the fastest car سریعتر از سریعترین ماشینها صفت عایل صفت برتری :ترجمه \" به نظر رسید که این قطار مدرن، به اندازه رسیعی ین ماشینها، رسیع باشد شاید هم! رسیعی"
+   "note": "با نگاه کردن به گزینه های این تست، میتوان گرامر را که در مورد\"انواع صفات\" میباشد، حدس زد. صفت، قبل از اسم می آید نه بعد از آن. (پس گزینه های aوc فورأ حذف خواهند شد.) از بین دو گزینه باقیمانده، گزینهd صفت عالی بوده اما چون حرف تعریف the ندارد، حذف می گردد. در نتیجه جواب این تست فقط گزینهb )!!!خواهد بود. (در این تست اصأل به جمله نگاه هم نکردیم :توجه گرامری میتوان قبل از صفت عالی، از\"صفت برتری \" هم.استفاده کرد. همانند آخر این تست faster than the fastest car سریعتر از سریعترین ماشینها صفت عایل صفت برتری :ترجمه \" به نظر رسید که این قطار مدرن، به اندازه رسیعی ین ماشینها، رسیع باشد شاید هم! رسیعی \""
   },
   {
    "id": "g10-p101-n5",
@@ -3041,7 +3360,7 @@
    "answerIdx": 3,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": "با توجه به گزینه ها و عوض شدن جای کلمات در آن‌ها، این تست مربوط به\"ترتیب صفات\" می.باشد ( :رمز از سمت راست به چپ جم رساک :)اس م +ج + نس م + لیت ر + نگ س +ا ن + ندازه ک یفیت اولین صفت : \" جنس\" و تنها گزینه ای که از سمت اسم، این ترتیب را رعایت کرده فقط گزینهd میباشد. سایر گزینه ها، جای صفت\" جنس\"!!را عوض کرده اند پس همگی اشتباه هستند و به این راحتی تست حل شد stone green old big جنس رنگ سن اندازه :ترجمه \" به نظر نمیر سید یخچال سنگی سی ن قدییم بزرگی را که من خریده ام، مورد پسند همسم باشد."
+   "note": "با توجه به گزینه ها و عوض شدن جای کلمات در آن‌ها، این تست مربوط به\"ترتیب صفات\" می.باشد ( :رمز از سمت راست به چپ جم رساک :)اس م +ج + نس م + لیت ر + نگ س +ا ن + ندازه ک یفیت اولین صفت : \" جنس\" و تنها گزینه ای که از سمت اسم، این ترتیب را رعایت کرده فقط گزینهd میباشد. سایر گزینه ها، جای صفت\" جنس\"!!را عوض کرده اند پس همگی اشتباه هستند و به این راحتی تست حل شد stone green old big جنس رنگ سن اندازه :ترجمه \" به نظر نمیر سید یخچال سنگی سی ن قدییم بزرگی را که من خریده ام، مورد پسند همسم باشد. \""
   },
   {
    "id": "g10-p102-n26",
@@ -3092,7 +3411,7 @@
    "answerIdx": 2,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": "با نگاه کردن به گزینه ها، گرامر این تست که در مورد\" انواع صفات\".!!لو می رود صفت قبل از اسم میآید (حذف گزینهa). صفت برتری بعد از خود نیاز به than دارد (حذف گزینه b). ما بین صفت و اسم حرف اضافه نمیآید (حذف گزینهd). پس جواب به همین سادگی و حتی بدون کوچکترین نگاه به جمله تست به دست آمد!! شیوه دوم: بعد از جای خالیof all آمده که مشخصه صفت عالی میباشد و تنها گزینه ای که صفت عالی را به درستی به کار برده فقط گزینهc میباشد. :ترجمه \" متاسفم که این را میگویم اما از همه بدتر (بدترین چیر ن ) این است که آن‌ها با این الگوی رفتاری بزرگ شده اند \". :یادآوری تعدادی از صفات در حالت برتری و عالی تغییر قیافه داده و"
+   "note": "با نگاه کردن به گزینه ها، گرامر این تست که در مورد\" انواع صفات\".!!لو می رود صفت قبل از اسم میآید (حذف گزینهa). صفت برتری بعد از خود نیاز به than دارد (حذف گزینه b). ما بین صفت و اسم حرف اضافه نمیآید (حذف گزینهd). پس جواب به همین سادگی و حتی بدون کوچکترین نگاه به جمله تست به دست آمد!! شیوه دوم: بعد از جای خالیof all آمده که مشخصه صفت عالی میباشد و تنها گزینه ای که صفت عالی را به درستی به کار برده فقط گزینهc میباشد. :ترجمه \" متاسفم که این را میگویم اما از همه بدتر (بدترین چیر ن ) این است که آن‌ها با این الگوی رفتاری بزرگ شده اند \". :یادآوری تعدادی از صفات در حالت برتری و عالی تغییر قیافه داده و ما باید آن‌ها را حفظ کنیم (همانند صفتbad ) bad بد worse than بدتر از the worst بدترین"
   },
   {
    "id": "g10-p103-n29",
@@ -3143,7 +3462,7 @@
    "answerIdx": 1,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": "قبل از جای خالی اسمCatherine و بعد از جای خالیan experienced teacher را داریم. پس گزینهc که صفت عالی بوده و برای مقایسه یک اسم با گروهی از اسامی بکار میرفت، حذف خواهد شد. گزینهd هم چونthat،در آن اضافی بکار رفته است حذف میشود. (اسم بعد از جای خالی حرف تعریفan دارد و استفاده از صفت اشاره that.با آن کامال اشتباه است( :یادآوری چنانچه حالت برابری ما بین دو اسم باشد ما بین ساختارas … as، \"صفت برابری\"،و چنانچه حالت فعل مد نظر باشد \" قید حالت\" ما بین as … as می آید. پس در این تست ناچارا برای رسیدن به گزینه درست جمله را بخوانید و با توجه به معنی گزینهb صحیح.خواهد بود :ترجمه \"کاترین درس را برای کال"
+   "note": "قبل از جای خالی اسمCatherine و بعد از جای خالیan experienced teacher را داریم. پس گزینهc که صفت عالی بوده و برای مقایسه یک اسم با گروهی از اسامی بکار میرفت، حذف خواهد شد. گزینهd هم چونthat،در آن اضافی بکار رفته است حذف میشود. (اسم بعد از جای خالی حرف تعریفan دارد و استفاده از صفت اشاره that.با آن کامأل اشتباه است( :یادآوری چنانچه حالت برابری ما بین دو اسم باشد ما بین ساختارas … as، \"صفت برابری\"،و چنانچه حالت فعل مد نظر باشد \" قید حالت\" ما بین as … as می آید. پس در این تست ناچارأ برای رسیدن به گزینه درست جمله را بخوانید و با توجه به معنی گزینهb صحیح.خواهد بود :ترجمه \"کاترین درس را برای کالس به خوب یک معلم با تجربه توضیح داد\"."
   },
   {
    "id": "g10-p103-n32",
@@ -3177,7 +3496,7 @@
    "answerIdx": 2,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": "ترتیب صفات\" ( رجوع به توضیحات تست شماره 8) Japanese white big beautiful ملیت رنگ اندازه کیفیت :ترجمه \"او اخیر ا یک ماشیر ن ژاپتن سفید بزرگ قشنگ خریده است \"."
+   "note": "ترتیب صفات\" ( رجوع به توضیحات تست شماره 8) Japanese white big beautiful ملیت رنگ اندازه کیفیت :ترجمه \"او اخیر أ یک ماشیر ن ژاپتن سفید بزرگ قشنگ خریده است \"."
   },
   {
    "id": "g10-p103-n34",
@@ -3211,7 +3530,7 @@
    "answerIdx": 0,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": "صفت برابریas difficult to do as :ترجمه \"برای من این شغل برای انجام دادن به اندازه شغیل که من قبال داشتم، سخت است\"."
+   "note": "صفت برابریas difficult to do as :ترجمه \"برای من این شغل برای انجام دادن به اندازه شغیل که من قبأل داشتم، سخت است\"."
   },
   {
    "id": "g10-p103-n36",
@@ -3245,7 +3564,7 @@
    "answerIdx": 2,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": "با توجه به ترجمه و بافت جمله می توان پی برد که در جای خالی اول مقایسه ای صورت نگرفته است و فقط به قد بلند بودن محسن اشاره شده است (رد گزینهb وd ) با توجه به کلمه as بعد از جای خالی دوم میتوان فهمید که با صفت برابری طرف هستیم. در نتیجه گزینه (a).غلط می باشد :ترجمه \" محسن یک پس خییل قد بلند است. او الان هم قد احمد شده است."
+   "note": "با توجه به ترجمه و بافت جمله می توان پی برد که در جای خالی اول مقایسه ای صورت نگرفته است و فقط به قد بلند بودن محسن اشاره شده است (رد گزینهb وd ) با توجه به کلمه as بعد از جای خالی دوم میتوان فهمید که با صفت برابری طرف هستیم. در نتیجه گزینه (a).غلط می باشد :ترجمه \" محسن یک پس خییل قد بلند است. او الان هم قد احمد شده است. \""
   },
   {
    "id": "g10-p103-n38",
@@ -3262,7 +3581,7 @@
    "answerIdx": 2,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": "نکته مهم : برای تبدیل کردن یک صفت سه یا چندسیالبی به صفت تفضیلی و عالی باید به ترتیب more و most می آوریم. کلمه expensive هم در اینجا چند سیالبی است و نمی توانیم دیگر به آنer و est.اضافه کرد (رد گزینهb وd ) قبل از صفات عالی همیشه باید از حرف تعریف theاستفاده بکنیم. (رد گزینه a ) :ترجمه \" این دوچرخه از دوچرخه تو گران قیمت تر است. به نظر من این دوچرخه گران قیمت ترین دوچرخه در دنیا است."
+   "note": "نکته مهم : برای تبدیل کردن یک صفت سه یا چندسیالبی به صفت تفضیلی و عالی باید به ترتیب more و most می آوریم. کلمه expensive هم در اینجا چند سیالبی است و نمی توانیم دیگر به آنer و est.اضافه کرد (رد گزینهb وd ) قبل از صفات عالی همیشه باید از حرف تعریف theاستفاده بکنیم. (رد گزینه a ) :ترجمه \" این دوچرخه از دوچرخه تو گران قیمت تر است. به نظر من این دوچرخه گران قیمت ترین دوچرخه در دنیا است.\""
   },
   {
    "id": "g10-p103-n39",
@@ -3279,7 +3598,7 @@
    "answerIdx": 3,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": "ترتیب صفات\" (رجوع به توضیحات تست شماره 8) :ترجمه \" او قصد دارد فردا یک ماشیر ن خوب دراز آمریکاب بخرد."
+   "note": "ترتیب صفات\" (رجوع به توضیحات تست شماره 8) :ترجمه \" او قصد دارد فردا یک ماشیر ن خوب دراز آمریکاب بخرد. \""
   },
   {
    "id": "g10-p103-n40",
@@ -3296,8 +3615,7 @@
    "answerIdx": 2,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": "دراین تست بین دو قاره آسیا و اروپا مقایسه صورت گرفته است (رد گزینه b) چونکه مقایسه بین دو چیز است نمی توان از.صفت عالی استفاده کرد ( رد گزینه d ) با توجه به بافت و معنی جمله جای خالی اول گزینه های (aوc ) هر.دو صحیح است ولی چونکه در جای خالی دوم گزینه (a) قبل از صفت عالی حرف تعریف the را نیاورده این گزینه نیز نمی.تواند گزینه درستی باشد :ترجمه \" قاره اروپا از قاره آسیا بزرگی نیست. در حقیقیت آسیا بزرگی ین قاره در جهان است.",
-   "curatedAgree": false
+   "note": "دراین تست بین دو قاره آسیا و اروپا مقایسه صورت گرفته است (رد گزینه b) چونکه مقایسه بین دو چیز است نمی توان از.صفت عالی استفاده کرد ( رد گزینه d ) با توجه به بافت و معنی جمله جای خالی اول گزینه های (aوc ) هر.دو صحیح است ولی چونکه در جای خالی دوم گزینه (a) قبل از صفت عالی حرف تعریف the را نیاورده این گزینه نیز نمی.تواند گزینه درستی باشد :ترجمه \" قاره اروپا از قاره آسیا بزرگی نیست. در حقیقیت آسیا بزرگی ین قاره در جهان است. \""
   },
   {
    "id": "g10-p103-n41",
@@ -3314,7 +3632,7 @@
    "answerIdx": 0,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": "یوزپلنگ ها با همه حیوانات مقایسه شده است پس باید از صفت عالی استفاده بکنیم. (رد گزینهc وd ). همانطور که می دانیم صفت fast تک بخشی یا تک سیالبی هست و برای تبدیل کردن آن به صفت عالی کافی است که به آن est اضافه بکنیم. (رد گزینهb ) :ترجمه \" یوزپلنگ ها رسیعی ین حیوانات بر روی کره زمیر ن هستند. آن‌ها یم توانند.خییل رسیع بروند و طعمه شان را شکار بکنند"
+   "note": "یوزپلنگ ها با همه حیوانات مقایسه شده است پس باید از صفت عالی استفاده بکنیم. (رد گزینهc وd ). همانطور که می دانیم صفت fast تک بخشی یا تک سیالبی هست و برای تبدیل کردن آن به صفت عالی کافی است که به آن est اضافه بکنیم. (رد گزینهb ) :ترجمه \" یوزپلنگ ها رسیعی ین حیوانات بر روی کره زمیر ن هستند. آن‌ها یم توانند.خییل رسیع بروند و طعمه شان را شکار بکنند \""
   },
   {
    "id": "g10-p103-n42",
@@ -3331,7 +3649,7 @@
    "answerIdx": 3,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": "ترتیب صفات\" (رجوع به توضیحات تست شماره 8) :ترجمه \" او ساعت قدییم طالب شگفت انگیر نش را به دخی ش داد. آن ساعت هدیه مادربزرگ مرحومش بود."
+   "note": "ترتیب صفات\" (رجوع به توضیحات تست شماره 8) :ترجمه \" او ساعت قدییم طالب شگفت انگیر نش را به دخی ش داد. آن ساعت هدیه مادربزرگ مرحومش بود. \""
   },
   {
    "id": "g10-p104-n43",
@@ -3348,7 +3666,7 @@
    "answerIdx": 1,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": "در اینجا باتوجه مفهوم کلی جمله دستخط جک با دستخط همه دانش آموزان کالس مقایسه شده است پس باید از صفت عایل استفاده بکنیم. (رد گزینهc وd ( ) با توجه به جملهit’s not readable ) ( باید ازthe worst.) استفاده بکنیم :ترجمه \".در کالس ما جک بدترین دستخط را دارد (دستخط او) قابل خواندن نیست."
+   "note": "در اینجا باتوجه مفهوم کلی جمله دستخط جک با دستخط همه دانش آموزان کالس مقایسه شده است پس باید از صفت عایل استفاده بکنیم. (رد گزینهc وd ( ) با توجه به جملهit’s not readable ) ( باید ازthe worst.) استفاده بکنیم :ترجمه \".در کالس ما جک بدترین دستخط را دارد (دستخط او) قابل خواندن نیست. \""
   },
   {
    "id": "g10-p104-n44",
@@ -3365,7 +3683,7 @@
    "answerIdx": 1,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": "ترتیب صفات\" (رجوع به توضیحات تست شماره 8) :ترجمه \" آن مردان سخاوتمند قدبلند جوان ایتالیاب قصد دارند ماه بعد به خانه(کشور) خود بازگردند."
+   "note": "ترتیب صفات\" (رجوع به توضیحات تست شماره 8) :ترجمه \" آن مردان سخاوتمند قدبلند جوان ایتالیاب قصد دارند ماه بعد به خانه(کشور) خود بازگردند.\""
   },
   {
    "id": "g10-p104-n45",
@@ -3382,7 +3700,7 @@
    "answerIdx": 2,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": "با توجه به کلمهthan در ادامه جمله پی می.بریم که صحبت از صفت تفضیلی (برتری) است (رد گزینهa وb ) :نکته مهم هیچ گاه نباید قبل از صفات تفضییل از قیدvery.استفاده کرد (رد گزینهd ) :ترجمه \".یک ورزشکار غالبا از یک شخص معمویل که خییل ورزش نیم کند سالم تر است"
+   "note": "با توجه به کلمهthan در ادامه جمله پی می.بریم که صحبت از صفت تفضیلی (برتری) است (رد گزینهa وb ) :نکته مهم هیچ گاه نباید قبل از صفات تفضییل از قیدvery.استفاده کرد (رد گزینهd ) :ترجمه \".یک ورزشکار غالبا از یک شخص معمویل که خییل ورزش نیم کند سالم تر است \""
   },
   {
    "id": "g10-p123-n1",
@@ -3398,9 +3716,8 @@
    ],
    "answerIdx": 2,
    "answerSource": "booklet-key",
-   "translation": "ج ک در حالیکه پدرش مشغول تماشای فیلم مورد عالقه،اش در اتاق نشیمن بود.به خانه رسید",
-   "note": null,
-   "curatedAgree": true
+   "translation": "ج ک در حالیکه پدرش مشغول تماشای فیلم مورد عالقه،اش در اتاق نشیمن بود.به خانه رسید \"",
+   "note": null
   },
   {
    "id": "g10-p123-n2",
@@ -3416,9 +3733,8 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "م ا قصد داریم تابستان امسال با هواپیما.به روسیه مسافرت کنیم من پرواز کردن را.دوست دارم",
-   "note": null,
-   "curatedAgree": true
+   "translation": "م ا قصد داریم تابستان امسال با هواپیما.به روسیه مسافرت کنیم من پرواز کردن را.دوست دارم\"",
+   "note": null
   },
   {
    "id": "g10-p123-n3",
@@ -3434,9 +3750,8 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "ِمن درحال ِخواندن کتاب ی هستم که در مورد دانشمندان بزرگ ایرانی مشهور.مانند ابوعلی سینا و رازی هست",
-   "note": null,
-   "curatedAgree": true
+   "translation": "ِمن درحال ِخواندن کتاب ی هستم که در مورد دانشمندان بزرگ ایرانی مشهور.مانند ابوعلی سینا و رازی هست\"",
+   "note": null
   },
   {
    "id": "g10-p123-n4",
@@ -3452,7 +3767,7 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "آُن ر مان چنان مفید ِبود که من چیزهای جالب.زیادی از آن یاد گرفتم",
+   "translation": "آُن ر مان چنان مفید ِبود که من چیزهای جالب.زیادی از آن یاد گرفتم \"",
    "note": null
   },
   {
@@ -3469,7 +3784,7 @@
    ],
    "answerIdx": 3,
    "answerSource": "booklet-key",
-   "translation": "ا و در ِدانشگاه تهران پزشگ می خواند. او دوست دارد، دکتر بشود.",
+   "translation": "ا و در ِدانشگاه تهران پزشگ می خواند. او دوست دارد، دکتر بشود. \"",
    "note": null
   },
   {
@@ -3486,7 +3801,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": ":الف\"چه کسی زودتر،به مدرسه آمد تو یا دوستت؟\" :ب\".من اول آمدم",
+   "translation": ":الف\"چه کسی زودتر،به مدرسه آمد تو یا دوستت؟\" :ب\".من اول آمدم \"",
    "note": null
   },
   {
@@ -3503,7 +3818,7 @@
    ],
    "answerIdx": 3,
    "answerSource": "booklet-key",
-   "translation": "ب رادرم خیلی پر انرژی است. او همیشه ورزش می.کند",
+   "translation": "ب رادرم خیلی پر انرژی است. او همیشه ورزش می.کند \"",
    "note": null
   },
   {
@@ -3520,7 +3835,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "آ نها در آزمایشگاه روی سلولهای خونی آزمایش انجام می دهند.",
+   "translation": "آ نها در آزمایشگاه روی سلولهای خونی آزمایش انجام می دهند. \"",
    "note": null
   },
   {
@@ -3537,7 +3852,7 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "پ شتکار و توکل بر خدا برای همه موفقیت می.آورد",
+   "translation": "پ شتکار و توکل بر خدا برای همه موفقیت می.آورد\"",
    "note": null
   },
   {
@@ -3554,7 +3869,7 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "ت وماس ادیسون اولین المپ را اخی اع کرد.و بعد از آن مشهور شد",
+   "translation": "ت وماس ادیسون اولین المپ را اخی اع کرد.و بعد از آن مشهور شد\"",
    "note": null
   },
   {
@@ -3571,7 +3886,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "م علمم خیلی یاری رسان است. او در حل ِمسائل فیزیک به من کمک می.کند",
+   "translation": "م علمم خیلی یاری رسان است. او در حل ِمسائل فیزیک به من کمک می.کند \"",
    "note": null
   },
   {
@@ -3588,7 +3903,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "پ درم هر سال چند شعر حافظ را در شب یلدا می.خواند",
+   "translation": "پ درم هر سال چند شعر حافظ را در شب یلدا می.خواند \"",
    "note": null
   },
   {
@@ -3605,7 +3920,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "ق ی عمویم در بهشت زهرا ا ست و من بعضی اوقات به آنجا می.روم",
+   "translation": "ق ی عمویم در بهشت زهرا ا ست و من بعضی اوقات به آنجا می.روم \"",
    "note": null
   },
   {
@@ -3622,7 +3937,7 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "ا و کارش را با ناراحتی ترک کرد و فور ا.بیرون رفت",
+   "translation": "ا و کارش را با ناراحتی ترک کرد و فور أ.بیرون رفت\"",
    "note": null
   },
   {
@@ -3639,7 +3954,7 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "ی ک متفکر ِشخصی است که وقت زیادی به فکر کردن در مورد ایده ها و مسائل مهم صرف می.کند",
+   "translation": "ی ک متفکر ِشخصی است که وقت زیادی به فکر کردن در مورد ایده ها و مسائل مهم صرف می.کند \"",
    "note": null
   },
   {
@@ -3656,7 +3971,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "ب سیاری از مردم سخت تالش می کنند که حقایف.در مورد جهان را پیدا کنند",
+   "translation": "ب سیاری از مردم سخت تالش می کنند که حقایف.در مورد جهان را پیدا کنند \"",
    "note": null
   },
   {
@@ -3673,7 +3988,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "م ن هرگز تحقیق کردن را رها نمی کنم.\" رها کردن\" مترادف ترک کردن.است",
+   "translation": "م ن هرگز تحقیق کردن را رها نمی کنم.\" رها کردن\" مترادف ترک کردن.است\"",
    "note": null
   },
   {
@@ -3690,7 +4005,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "اِو سرانجام پول زیادی از اختراع بزرگش بدست آورد.",
+   "translation": "اِو سرانجام پول زیادی از اختراع بزرگش بدست آورد.\"",
    "note": null
   },
   {
@@ -3707,9 +4022,8 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "خِواهر کوچکترم به پزشکی و کمک به بیماران عالقه.مند است",
-   "note": null,
-   "curatedAgree": true
+   "translation": "خِواهر کوچکترم به پزشکی و کمک به بیماران عالقه.مند است \"",
+   "note": null
   },
   {
    "id": "g10-p124-n21",
@@ -3725,7 +4039,7 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "رزش ا علم برای همه واضح است. آن (علم) باعث می شود زندگی.مان بهتر شود",
+   "translation": "رزش ا علم برای همه واضح است. آن (علم) باعث می شود زندگی.مان بهتر شود\"",
    "note": null
   },
   {
@@ -3742,7 +4056,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "پ:یامبر اکرم (درود خدا بر او باد) اینچنین فرمود \" زگهواره تا گور دانش بجوی.",
+   "translation": "پ:یامبر اکرم (درود خدا بر او باد) اینچنین فرمود \" زگهواره تا گور دانش بجوی.\"",
    "note": null
   },
   {
@@ -3759,7 +4073,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "این حقیقت ی است که بچه ها معموال به سرعت رشد یم کنند و همه این.(حقیقت) را دوست دارند",
+   "translation": "این حقیقت ی است که بچه ها معموأل به سرعت رشد یم کنند و همه این.(حقیقت) را دوست دارند\"",
    "note": null
   },
   {
@@ -3776,7 +4090,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "عِکس گرفتن با دوربین مدرن.خیلی لذت بخش است",
+   "translation": "عِکس گرفتن با دوربین مدرن.خیلی لذت بخش است \"",
    "note": null
   },
   {
@@ -3793,7 +4107,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "م تاسفانه، جان پارسال یکی از چشمهایش را در4.شنبه سوری از دست داد\"متاسفانه\" هم معنی: بطور ت ا سف بار.",
+   "translation": "م تاسفانه، جان پارسال یکی از چشمهایش را در4.شنبه سوری از دست داد\"متاسفانه\" هم معنی: بطور ت أ سف بار. \"",
    "note": null
   },
   {
@@ -3810,7 +4124,7 @@
    ],
    "answerIdx": 2,
    "answerSource": "booklet-key",
-   "translation": "دِوستم پارسال به خاطر ِبیماریش به مدت سه ماه در مدرسه حضور نیافت.",
+   "translation": "دِوستم پارسال به خاطر ِبیماریش به مدت سه ماه در مدرسه حضور نیافت. \"",
    "note": null
   },
   {
@@ -3827,7 +4141,7 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "پ شتکار کلید ِموفقیت.همه در جهان است",
+   "translation": "پ شتکار کلید ِموفقیت.همه در جهان است\"",
    "note": null
   },
   {
@@ -3844,7 +4158,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "وِیروس کرونا به سرعت در جهان در حال گسی ش است و افراد زیادی مریض می.شوند",
+   "translation": "وِیروس کرونا به سرعت در جهان در حال گسی ش است و افراد زیادی مریض می.شوند \"",
    "note": null
   },
   {
@@ -3861,7 +4175,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "خ واندن و تالوت.قرآن کریم برای ما در هر سنی خیلی مهم و ضروری است",
+   "translation": "خ واندن و تالوت.قرآن کریم برای ما در هر سنی خیلی مهم و ضروری است\"",
    "note": null
   },
   {
@@ -3878,7 +4192,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "بع ضی از نویسندگان بزرگ، هر سال کتابهایشان را منتسی یم کنند.",
+   "translation": "بع ضی از نویسندگان بزرگ، هر سال کتابهایشان را منتسی یم کنند. \"",
    "note": null
   },
   {
@@ -3895,7 +4209,7 @@
    ],
    "answerIdx": 2,
    "answerSource": "booklet-key",
-   "translation": "بِا یادگیری یک زبان جدید ما می توانیم بعضی کتابها را به آن زبان ترجمه کنیم.",
+   "translation": "بِا یادگیری یک زبان جدید ما می توانیم بعضی کتابها را به آن زبان ترجمه کنیم. \"",
    "note": null
   },
   {
@@ -3912,7 +4226,7 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "آ تشِنشانان برای خاموش کردن آتش، همیشه به سرعت از ماشین هایشان بیر ون یم پرند.",
+   "translation": "آ تشِنشانان برای خاموش کردن آتش، همیشه به سرعت از ماشین هایشان بیر ون یم پرند.\"",
    "note": null
   },
   {
@@ -3929,7 +4243,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "من ب رای کمر دردم باید مقداری دارو.بخورم",
+   "translation": "من ب رای کمر دردم باید مقداری دارو.بخورم\"",
    "note": null
   },
   {
@@ -3946,7 +4260,7 @@
    ],
    "answerIdx": 2,
    "answerSource": "booklet-key",
-   "translation": "کِلید موفقیت دانش آموزان، داشتن اعتقاد.به خودشان است",
+   "translation": "کِلید موفقیت دانش آموزان، داشتن اعتقاد.به خودشان است\"",
    "note": null
   },
   {
@@ -3963,7 +4277,7 @@
    ],
    "answerIdx": 2,
    "answerSource": "booklet-key",
-   "translation": "پ در بزرگم در سال1397 به علت بیماری اش به رحمت خدا رفت.",
+   "translation": "پ در بزرگم در سال1397 به علت بیماری اش به رحمت خدا رفت. \"",
    "note": null
   },
   {
@@ -3980,7 +4294,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "من ب ا یک قلب ضعیف،.مشکالتی در دویدن دارم",
+   "translation": "من ب ا یک قلب ضعیف،.مشکالتی در دویدن دارم \"",
    "note": null
   },
   {
@@ -3997,7 +4311,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "اِین بچه کوچک که در گهواره خوابیده،.خیلی زیباست",
+   "translation": "اِین بچه کوچک که در گهواره خوابیده،.خیلی زیباست \"",
    "note": null
   },
   {
@@ -4014,7 +4328,7 @@
    ],
    "answerIdx": 2,
    "answerSource": "booklet-key",
-   "translation": "دیشب هنگام یکه ساعت11 در اتاق خوابم خواب یده،بودم ناگهان.یک صدای بلندی شنیدم و به سرعت بیدار شدم",
+   "translation": "دیشب هنگام یکه ساعت11 در اتاق خوابم خواب یده،بودم ناگهان.یک صدای بلندی شنیدم و به سرعت بیدار شدم \"",
    "note": null
   },
   {
@@ -4031,9 +4345,8 @@
    ],
    "answerIdx": 2,
    "answerSource": "booklet-key",
-   "translation": "ب ه عنوان یک معلم انگلیسی، من عالقه.زیادی به تدریس انگلیسی دارم",
-   "note": null,
-   "curatedAgree": false
+   "translation": "ب ه عنوان یک معلم انگلیسی، من عالقه.زیادی به تدریس انگلیسی دارم\"",
+   "note": null
   },
   {
    "id": "g10-p134-n1",
@@ -4050,8 +4363,7 @@
    "answerIdx": 1,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": "( چنانچه یک عملی در گذشته در حال انجام گرفتن بوده\"گذشته استمراری\" ( ) و عمل دیگر در خالل آن روی دهد\"گذشته ساده)\" از ساختار روبرو :استفاده میکنیم گذشته ساده, گذشته استمراری While ترجمه تست : \" دیروز در حایل که مشغول مطالعه کردن بودم، برادرم زنگ زد \".",
-   "curatedAgree": true
+   "note": "( چنانچه یک عملی در گذشته در حال انجام گرفتن بوده\"گذشته استمراری\" ( ) و عمل دیگر در خالل آن روی دهد\"گذشته ساده)\" از ساختار روبرو :استفاده میکنیم گذشته ساده, گذشته استمراری While ترجمه تست : \" دیروز در حایل که مشغول مطالعه کردن بودم، برادرم زنگ زد \"."
   },
   {
    "id": "g10-p134-n2",
@@ -4068,8 +4380,7 @@
    "answerIdx": 2,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": "( چنانچه عملی در زمان گذشته\"گذشته ساده)\" ( عملی دیگر که در حال انجام گرفتن بوده است\" گذشته استمراری\" ) را قطع کند، از :ساختار زیر استفاده میکنیم گذشته استمراری,گذشته ساده When ترجمه تست : \" زمانیکه دستم را باال بردم، معلم در حال صحبت کردن بود\".",
-   "curatedAgree": true
+   "note": "( چنانچه عملی در زمان گذشته\"گذشته ساده)\" ( عملی دیگر که در حال انجام گرفتن بوده است\" گذشته استمراری\" ) را قطع کند، از :ساختار زیر استفاده میکنیم گذشته استمراری,گذشته ساده When ترجمه تست : \" زمانیکه دستم را باال بردم، معلم در حال صحبت کردن بود\"."
   },
   {
    "id": "g10-p134-n3",
@@ -4086,8 +4397,7 @@
    "answerIdx": 1,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": "رجوع به توضیحات سؤال1 : گذشته استمراریwhile گذشته ساده \" :ترجمه درخت بر روی ماشیر ن پدرم افتاد، درحایل که به سمت مین نل در حال رانندگی کردن بود \".",
-   "curatedAgree": true
+   "note": "رجوع به توضیحات سؤال1 : گذشته استمراریwhile گذشته ساده \" :ترجمه درخت بر روی ماشیر ن پدرم افتاد، درحایل که به سمت مین نل در حال رانندگی کردن بود \"."
   },
   {
    "id": "g10-p134-n4",
@@ -4104,8 +4414,7 @@
    "answerIdx": 0,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": "رجوع به توضیحات سؤال2 : گذشته ساده when گذشته استمراری ترجمه تست : \" ما مشغول خوردن شام در رستوران بودیم زمانیکه یگ از دوستان قدییم ا م را دیدیم\".",
-   "curatedAgree": true
+   "note": "رجوع به توضیحات سؤال2 : گذشته ساده when گذشته استمراری ترجمه تست : \" ما مشغول خوردن شام در رستوران بودیم زمانیکه یگ از دوستان قدییم ا م را دیدیم\"."
   },
   {
    "id": "g10-p134-n5",
@@ -4122,8 +4431,7 @@
    "answerIdx": 1,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": "رجوع به توضیحات سؤال1 : گذشته استمراریwhile گذشته ساده ترجمه تست : \"دیروز خواهر کوچیکم مقداری شکالت خورد در حایل که پیاده به مدرسه میر فت\".",
-   "curatedAgree": true
+   "note": "رجوع به توضیحات سؤال1 : گذشته استمراریwhile گذشته ساده ترجمه تست : \"دیروز خواهر کوچیکم مقداری شکالت خورد در حایل که پیاده به مدرسه میر فت\"."
   },
   {
    "id": "g10-p134-n6",
@@ -4259,7 +4567,7 @@
    "answerIdx": 3,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": "چنانچه جمله ای باlet’s شروع شده باشد، ضمیر تاکیدی آن جملهourselves.خواهد بود ترجمه تست : \" بیا خودمان همه ساختمان را تمیر ن کنیم. مهمه که به همدیگر کمک کنیم \"."
+   "note": "چنانچه جمله ای باlet’s شروع شده باشد، ضمیر تأکیدی آن جملهourselves.خواهد بود ترجمه تست : \" بیا خودمان همه ساختمان را تمیر ن کنیم. مهمه که به همدیگر کمک کنیم \"."
   },
   {
    "id": "g10-p134-n14",
@@ -4276,7 +4584,7 @@
    "answerIdx": 2,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": "ضمیر تاکیدی برای(Sara and Mina) themselves یعنی\"خودشان\".خواهد بود ترجمه تست : \" سارا و مینا خودشان به تنهاب خانه را مرتب کردند\"."
+   "note": "ضمیر تأکیدی برای(Sara and Mina) themselves یعنی\"خودشان\".خواهد بود ترجمه تست : \" سارا و مینا خودشان به تنهاب خانه را مرتب کردند\"."
   },
   {
    "id": "g10-p134-n15",
@@ -4293,7 +4601,7 @@
    "answerIdx": 1,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": "ضمیر تاکیدی برای(Maryam and I) ourselves یعنی\"خودمان\".خواهد بود ترجمه تست : \" شب گذشته من و مریم همه ظرفها را خودمان شستیم\"."
+   "note": "ضمیر تأکیدی برای(Maryam and I) ourselves یعنی\"خودمان\".خواهد بود ترجمه تست : \" شب گذشته من و مریم همه ظرفها را خودمان شستیم\"."
   },
   {
    "id": "g10-p134-n16",
@@ -4310,7 +4618,7 @@
    "answerIdx": 1,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": "ضمیر تاکیدی برای(Pari’s father) himself یعنی\" خودش\" )!!!!خواهد بود. (منظور پدر پری است نه خود پری ترجمه تست : \" پدر پری قصد دارد که خودش هفته آینده ماشینش را تعمیر کند \"."
+   "note": "ضمیر تأکیدی برای(Pari’s father) himself یعنی\" خودش\" )!!!!خواهد بود. (منظور پدر پری است نه خود پری ترجمه تست : \" پدر پری قصد دارد که خودش هفته آینده ماشینش را تعمیر کند \"."
   },
   {
    "id": "g10-p134-n17",
@@ -4327,7 +4635,7 @@
    "answerIdx": 3,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": "ضمیر تاکیدی برای(my little brother) himself یعنی\"خودش\" )خواهد بود. ( برادر کوچک من ترجمه تست : \" برادر کوچک من هر روز صبح خودش به تنهاب صورتش را یم شوید و دندآن‌هایش را مسواک میکند \"."
+   "note": "ضمیر تأکیدی برای(my little brother) himself یعنی\"خودش\" )خواهد بود. ( برادر کوچک من ترجمه تست : \" برادر کوچک من هر روز صبح خودش به تنهاب صورتش را یم شوید و دندآن‌هایش را مسواک میکند \"."
   },
   {
    "id": "g10-p134-n18",
@@ -4344,7 +4652,7 @@
    "answerIdx": 0,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": "ضمیر تاکیدی برای) you and your classmates ( yourselves یعنی\"خودتان\" )خواهد بود. ( تو و همکالسیهایت ترجمه تست : \" اگه تو و همکالیس هایت نمیتوانید خودتان به تنهاب این تمرین را انجام دهید از معلم در خواست کمک کنید \"."
+   "note": "ضمیر تأکیدی برای) you and your classmates ( yourselves یعنی\"خودتان\" )خواهد بود. ( تو و همکالسیهایت ترجمه تست : \" اگه تو و همکالیس هایت نمیتوانید خودتان به تنهاب این تمرین را انجام دهید از معلم در خواست کمک کنید \"."
   },
   {
    "id": "g10-p134-n19",
@@ -4361,8 +4669,7 @@
    "answerIdx": 0,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": "گزینه های این تست، حالتهای مختلف فعلneed میباشد. این فعل، یک فعل حالتی بوده پس حالت استمراری ندارد وing.نمیگیرد (حذف گزینه هایdوc ). گزینهb.در زمان گذشته بوده و نادرست میباشد ترجمه تست : \"من واقعا به لباسهاب جدید برای زمستان آینده نیاز دارم \".",
-   "curatedAgree": true
+   "note": "گزینه های این تست، حالتهای مختلف فعلneed میباشد. این فعل، یک فعل حالتی بوده پس حالت استمراری ندارد وing.نمیگیرد (حذف گزینه هایdوc ). گزینهb.در زمان گذشته بوده و نادرست میباشد ترجمه تست : \"من واقعأ به لباسهاب جدید برای زمستان آینده نیاز دارم \"."
   },
   {
    "id": "g10-p134-n20",
@@ -4395,9 +4702,8 @@
    ],
    "answerIdx": 3,
    "answerSource": "booklet-key",
-   "translation": "تست \" او قصد دارد برای تعطیالت تابستانی اش در چهارشنبه به آمریکا پرواز.کند",
-   "note": null,
-   "curatedAgree": true
+   "translation": "تست \" او قصد دارد برای تعطیالت تابستانی اش در چهارشنبه به آمریکا پرواز.کند \"",
+   "note": null
   },
   {
    "id": "g10-p151-n2",
@@ -4413,9 +4719,8 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "تست \"اهرام مصر یکی از هفت عجایب جهان هستند که خیلی حیرت.آور هستند",
-   "note": null,
-   "curatedAgree": true
+   "translation": "تست \"اهرام مصر یکی از هفت عجایب جهان هستند که خیلی حیرت.آور هستند\"",
+   "note": null
   },
   {
    "id": "g10-p151-n3",
@@ -4431,9 +4736,8 @@
    ],
    "answerIdx": 2,
    "answerSource": "booklet-key",
-   "translation": "تست \" افراد بومی خیلی مهربان و مهمان نواز بودند بنابراین ما از.رفتارشان خیلی لذت بردیم",
-   "note": null,
-   "curatedAgree": true
+   "translation": "تست \" افراد بومی خیلی مهربان و مهمان نواز بودند بنابراین ما از.رفتارشان خیلی لذت بردیم \"",
+   "note": null
   },
   {
    "id": "g10-p151-n4",
@@ -4449,7 +4753,7 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "تست \"این منطقه از کشور همیشه خشک است با ماسه زیاد و بدون هیچ گونه فعالیتی. آن جا بیابان.است",
+   "translation": "تست \"این منطقه از کشور همیشه خشک است با ماسه زیاد و بدون هیچ گونه فعالیتی. آن جا بیابان.است \"",
    "note": null
   },
   {
@@ -4466,7 +4770,7 @@
    ],
    "answerIdx": 2,
    "answerSource": "booklet-key",
-   "translation": "تست \" در فرهنگ ما، پرسیدن از کسی سؤ االتی مانند درآمد و سن، بی ادب انه.است",
+   "translation": "تست \" در فرهنگ ما، پرسیدن از کسی سؤ االتی مانند درآمد و سن، بی ادب انه.است\"",
    "note": null
   },
   {
@@ -4483,7 +4787,7 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "تست \"حمله به سفارت، تنش های بیر ن الملیل زیادی برای چند کشور.بوجود آورد",
+   "translation": "تست \"حمله به سفارت، تنش های بیر ن الملیل زیادی برای چند کشور.بوجود آورد\"",
    "note": null
   },
   {
@@ -4500,7 +4804,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "تست \"شخص یا گروهی از افراد که شخص دیگر را نمایندگی می کنند یا برای افراد کار می کنند نماینده.آن شخص یا افراد است",
+   "translation": "تست \"شخص یا گروهی از افراد که شخص دیگر را نمایندگی می کنند یا برای افراد کار می کنند نماینده.آن شخص یا افراد است\"",
    "note": null
   },
   {
@@ -4517,7 +4821,7 @@
    ],
    "answerIdx": 3,
    "answerSource": "booklet-key",
-   "translation": "تست \"یک خانه بزرگ با حیاط جلوئی بزرگ پوشیده از چمن نزدیک دریا، ایده من )(رؤیای من از بهشت.واقعی است",
+   "translation": "تست \"یک خانه بزرگ با حیاط جلوئی بزرگ پوشیده از چمن نزدیک دریا، ایده من )(رؤیای من از بهشت.واقعی است\"",
    "note": null
   },
   {
@@ -4534,7 +4838,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "تست \" آن‌ها به سنت،، اعتقاد رسوم و راه شان از انجام چیزی که برای مدت زمان زیادی وجود داشته است،.اعتقاد داشتند",
+   "translation": "تست \" آن‌ها به سنت،، اعتقاد رسوم و راه شان از انجام چیزی که برای مدت زمان زیادی وجود داشته است،.اعتقاد داشتند \"",
    "note": null
   },
   {
@@ -4551,7 +4855,7 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "تست \"شما باید چند انتخاب مهم برای آینده تان داشته باشید. آن‌ها برای پیشرفت شما خیلی ضروری هستند.",
+   "translation": "تست \"شما باید چند انتخاب مهم برای آینده تان داشته باشید. آن‌ها برای پیشرفت شما خیلی ضروری هستند.\"",
    "note": null
   },
   {
@@ -4568,7 +4872,7 @@
    ],
    "answerIdx": 2,
    "answerSource": "booklet-key",
-   "translation": "تست \"(آن) د و محصول خیلی شبیه به هم.به نظر رسیدند و من گیج شدم",
+   "translation": "تست \"(آن) د و محصول خیلی شبیه به هم.به نظر رسیدند و من گیج شدم\"",
    "note": null
   },
   {
@@ -4585,7 +4889,7 @@
    ],
    "answerIdx": 3,
    "answerSource": "booklet-key",
-   "translation": "تست \"من فکر می کنم کنار دریا، یک مقصد ایده ِآل برای استراحت.آخر هفته است",
+   "translation": "تست \"من فکر می کنم کنار دریا، یک مقصد ایده ِآل برای استراحت.آخر هفته است\"",
    "note": null
   },
   {
@@ -4602,7 +4906,7 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "تست \" ِاین ساختمان قدیمی به احتمال قوی با یک مرکز ورزشی مد نر، جایگزین.خواهد شد",
+   "translation": "تست \" ِاین ساختمان قدیمی به احتمال قوی با یک مرکز ورزشی مد نر، جایگزین.خواهد شد \"",
    "note": null
   },
   {
@@ -4619,7 +4923,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "تست \"رسگریم های زنده ِای در تمام طول روز مانند فیلم ها - اجراهای تلویزیونی که قصد سرگرم کردن مردم دارند، وجود خواهد داشت.",
+   "translation": "تست \"رسگریم های زنده ِای در تمام طول روز مانند فیلم ها - اجراهای تلویزیونی که قصد سرگرم کردن مردم دارند، وجود خواهد داشت.\"",
    "note": null
   },
   {
@@ -4636,7 +4940,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "تست \"سفارت، بحث هایش را با دولت چین در مورد آن قرارداد،.ادامه خواهد داد",
+   "translation": "تست \"سفارت، بحث هایش را با دولت چین در مورد آن قرارداد،.ادامه خواهد داد \"",
    "note": null
   },
   {
@@ -4653,7 +4957,7 @@
    ],
    "answerIdx": 2,
    "answerSource": "booklet-key",
-   "translation": "تست \" ِمتاسفانه زندگی ( درونی داخیل).اش خیلی شاد نبود و پر از مشکالت بود",
+   "translation": "تست \" ِمتأسفانه زندگی ( درونی داخیل).اش خیلی شاد نبود و پر از مشکالت بود\"",
    "note": null
   },
   {
@@ -4670,7 +4974,7 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "تست \" کمیته این پیشنهاد.که خانه باید در این جا ساخته شود را رد کرد",
+   "translation": "تست \" کمیته این پیشنهاد.که خانه باید در این جا ساخته شود را رد کرد \"",
    "note": null
   },
   {
@@ -4687,9 +4991,8 @@
    ],
    "answerIdx": 3,
    "answerSource": "booklet-key",
-   "translation": "تست \"این اسباب بازی ها برای بچه ها در محدوده سن پیش.دبستانی مناسب هستند",
-   "note": null,
-   "curatedAgree": false
+   "translation": "تست \"این اسباب بازی ها برای بچه ها در محدوده سن پیش.دبستانی مناسب هستند \"",
+   "note": null
   },
   {
    "id": "g10-p152-n20",
@@ -4705,7 +5008,7 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "تست \" خطوط هوایی میلیاردها ِدالر به خاطر.ویروس کرونا از دست دادند",
+   "translation": "تست \" خطوط هوایی میلیاردها ِدالر به خاطر.ویروس کرونا از دست دادند \"",
    "note": null
   },
   {
@@ -4722,7 +5025,7 @@
    ],
    "answerIdx": 2,
    "answerSource": "booklet-key",
-   "translation": "تست \" بچه الگوی طبیعی پیشرفت را به آن‌ها نشان داد و افراد زیادی او.را تحسین کردند",
+   "translation": "تست \" بچه الگوی طبیعی پیشرفت را به آن‌ها نشان داد و افراد زیادی او.را تحسین کردند\"",
    "note": null
   },
   {
@@ -4739,7 +5042,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "تست \"روابط خانوادگی قوی، هنوز آن‌ها را در همه وضعیت ها به هم متصل.ساخته است",
+   "translation": "تست \"روابط خانوادگی قوی، هنوز آن‌ها را در همه وضعیت ها به هم متصل.ساخته است\"",
    "note": null
   },
   {
@@ -4756,7 +5059,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "تست \" تخت جمشید در شیراز یک جاذبه توریس ت.مهم برای بعضی از مردم در سراسر جهان است",
+   "translation": "تست \" تخت جمشید در شیراز یک جاذبه توریس ت.مهم برای بعضی از مردم در سراسر جهان است \"",
    "note": null
   },
   {
@@ -4773,7 +5076,7 @@
    ],
    "answerIdx": 3,
    "answerSource": "booklet-key",
-   "translation": "تست \" من برای کار\"جین\" که برای پیشرفت جامعه خیلی ارزشمند است، بیشترین احی ام.را قائل هستم",
+   "translation": "تست \" من برای کار\"جین\" که برای پیشرفت جامعه خیلی ارزشمند است، بیشترین احی ام.را قائل هستم\"",
    "note": null
   },
   {
@@ -4790,7 +5093,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "تست \" ِما زیاد جستجو کردیم اما نتوانستیم منبع امواج رادیویی را پیدا کنیم.",
+   "translation": "تست \" ِما زیاد جستجو کردیم اما نتوانستیم منبع امواج رادیویی را پیدا کنیم.\"",
    "note": null
   },
   {
@@ -4807,7 +5110,7 @@
    ],
    "answerIdx": 3,
    "answerSource": "booklet-key",
-   "translation": "تست \"همسایه ام به دالیل مذهبی به مکآن‌های مقدس مسافرت می کند. در حقیقت او یک زائر.است",
+   "translation": "تست \"همسایه ام به دالیل مذهبی به مکآن‌های مقدس مسافرت می کند. در حقیقت او یک زائر.است\"",
    "note": null
   },
   {
@@ -4824,7 +5127,7 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "تست \" سطوح آموزشی در آموزشگاهای زبان خیلی به هم مرتبط.هستند",
+   "translation": "تست \" سطوح آموزشی در آموزشگاهای زبان خیلی به هم مرتبط.هستند \"",
    "note": null
   },
   {
@@ -4841,7 +5144,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "تست \" شهر\"ُدِیب\" ِبرای درآمد بیشترش به شدت به گردشگری.وابسته است",
+   "translation": "تست \" شهر\"ُدِیب\" ِبرای درآمد بیشترش به شدت به گردشگری.وابسته است\"",
    "note": null
   },
   {
@@ -4858,7 +5161,7 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "تست \" مسافر خارجی شکایت کرد که او بدون هیچ دلیل م ؤ جهی توسط پلیس محلی،.بازداشت شده است",
+   "translation": "تست \" مسافر خارجی شکایت کرد که او بدون هیچ دلیل م ؤ جهی توسط پلیس محلی،.بازداشت شده است \"",
    "note": null
   },
   {
@@ -4875,7 +5178,7 @@
    ],
    "answerIdx": 2,
    "answerSource": "booklet-key",
-   "translation": "تست \" ِوالدین تحت اجبار قانونی برای آموزش دادن خوب به بچه ها.هستند",
+   "translation": "تست \" ِوالدین تحت اجبار قانونی برای آموزش دادن خوب به بچه ها.هستند\"",
    "note": null
   },
   {
@@ -4892,7 +5195,7 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "تست \"همیشه یک احتمایل.وجود دارد که او ممکن است به لندن برگردد",
+   "translation": "تست \"همیشه یک احتمایل.وجود دارد که او ممکن است به لندن برگردد\"",
    "note": null
   },
   {
@@ -4909,7 +5212,7 @@
    ],
    "answerIdx": 2,
    "answerSource": "booklet-key",
-   "translation": "تست \" ِتکالیف زیاد نباید به عنوان وسیله ِکنترل.بچه ها در خانه و مدرسه به کار برده شود",
+   "translation": "تست \" ِتکالیف زیاد نباید به عنوان وسیله ِکنترل.بچه ها در خانه و مدرسه به کار برده شود \"",
    "note": null
   },
   {
@@ -4926,7 +5229,7 @@
    ],
    "answerIdx": 2,
    "answerSource": "booklet-key",
-   "translation": "تست \" اگر شما چیزها را مقایسه کنید، آن‌ها را برای نشان دادن تفاوت های بین ما شان مقایسه کرده.اید",
+   "translation": "تست \" اگر شما چیزها را مقایسه کنید، آن‌ها را برای نشان دادن تفاوت های بین ما شان مقایسه کرده.اید \"",
    "note": null
   },
   {
@@ -4943,7 +5246,7 @@
    ],
    "answerIdx": 3,
    "answerSource": "booklet-key",
-   "translation": "تست \"از آنجایی که آب و هوا معموالً گرد و غبار است، بهتر است پنجره ها را حداقل.یکبار در هفته تمیز کنید",
+   "translation": "تست \"از آنجایی که آب و هوا معموالً گرد و غبار است، بهتر است پنجره ها را حداقل.یکبار در هفته تمیز کنید \"",
    "note": null
   },
   {
@@ -4960,7 +5263,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "تست \" او به اندازه کافی بخشنده است که اشتباه های کوچک من را نادیده بگیرد.",
+   "translation": "تست \" او به اندازه کافی بخشنده است که اشتباه های کوچک من را نادیده بگیرد.\"",
    "note": null
   },
   {
@@ -4977,7 +5280,7 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "تست \" من در رختخوابم خیلی راحت.و گرم بودم. من نخواستم اصالً بلند شوم",
+   "translation": "تست \" من در رختخوابم خیلی راحت.و گرم بودم. من نخواستم اصالً بلند شوم\"",
    "note": null
   },
   {
@@ -4994,7 +5297,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "تست \" این منطقه از کشور بیشی بیابان است بدون هیچ گونه )(زمین.کشاورزی",
+   "translation": "تست \" این منطقه از کشور بیشی بیابان است بدون هیچ گونه )(زمین.کشاورزی \"",
    "note": null
   },
   {
@@ -5011,7 +5314,7 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "تست \"من امیدوار بوده ام که شما با یک روش مسئوالنه.تری برخورد خواهید کرد",
+   "translation": "تست \"من امیدوار بوده ام که شما با یک روش مسئوالنه.تری برخورد خواهید کرد \"",
    "note": null
   },
   {
@@ -5028,7 +5331,7 @@
    ],
    "answerIdx": 0,
    "answerSource": "booklet-key",
-   "translation": "تست \" یک مربی برای آماده کردن تیمش برای بردن مسابقه چکار می کند؟",
+   "translation": "تست \" یک مربی برای آماده کردن تیمش برای بردن مسابقه چکار می کند؟ \"",
    "note": null
   },
   {
@@ -5045,7 +5348,7 @@
    ],
    "answerIdx": 1,
    "answerSource": "booklet-key",
-   "translation": "تست \" ما هرگز غذای هله هوله (ب ارزش) نمی خوریم زیرا غذایی بسته بندی شده است که ارزش کمی.برای سالمتی دارد",
+   "translation": "تست \" ما هرگز غذای هله هوله (ب ارزش) نمی خوریم زیرا غذایی بسته بندی شده است که ارزش کمی.برای سالمتی دارد \"",
    "note": null
   },
   {
@@ -5063,7 +5366,7 @@
    "answerIdx": 3,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "توانایی انجام کار در گذشته را با فعل ناقصcould نشان می دهیم. :ترجمه تست \" وقتیکه بچه بودم میتوانستم به آسابن از درختان باال بروم اما الان نمیتوانم \"."
   },
   {
    "id": "g10-p163-n2",
@@ -5080,7 +5383,7 @@
    "answerIdx": 2,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "وجود جملهI don’t know بیانگر\"احتمال\" است. برای نشان دادن احتمال ازmay.استفاده میکنیم :ترجمه تست \"- چرا عیل در کالس نیست؟- نمیدونم. شاید امروز مریض باشد\"."
   },
   {
    "id": "g10-p163-n3",
@@ -5097,7 +5400,7 @@
    "answerIdx": 3,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "برای اجازه گرفتن ازcan وmay.استفاده میکنیم :ترجمه تست \" به وسائل مدرسه ام دست نزن. وقت در خانه نیستم، تو اجازه داری از کتابهای من استفاده کتن\"."
   },
   {
    "id": "g10-p163-n4",
@@ -5114,7 +5417,7 @@
    "answerIdx": 2,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "برای اجازه گرفتن ازcan وmay.استفاده میکنیم :ترجمه تست \"من به تو اجازه نمیدهم که کالس را ترک کتن. وقت که تکالیفت را انجام دادی، اجازه داری بیر ون بری \"."
   },
   {
    "id": "g10-p163-n5",
@@ -5131,7 +5434,7 @@
    "answerIdx": 2,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "برای پیشنهاد و توصیه ازshould.استفاده میکنیم :ترجمه تست \" - داره برای اتوبوس دیرم میشه. چکار باید بکنم؟- تو میتوابن تاکیس بگیر ی\"."
   },
   {
    "id": "g10-p163-n6",
@@ -5148,7 +5451,7 @@
    "answerIdx": 1,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "برای اجبار شدید و قانون و مقررات ازmust.استفاده میکنیم :ترجمه تست \"همه مسافران خاریح باید پاسپورت هایشان را در فرودگاه ارائه دهند \"."
   },
   {
    "id": "g10-p163-n7",
@@ -5165,7 +5468,7 @@
    "answerIdx": 2,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "وجود جمله not sure I’m بیانگر\"احتمال\" است. برای نشان دادن احتمال ازmay.استفاده میکنیم :ترجمه تست \" – چرا رامان در خانه نیست؟- مطمیی ن نیستم. شاید در کتابخانه باشد \"."
   },
   {
    "id": "g10-p163-n8",
@@ -5182,7 +5485,7 @@
    "answerIdx": 3,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "برای اجازه گرفتن ازcan وmay.استفاده میکنیم :ترجمه تست \"- )میتونم( اجازه دارم خودکارت را قرض بگیر م؟- بله، البته \"."
   },
   {
    "id": "g10-p163-n9",
@@ -5199,7 +5502,7 @@
    "answerIdx": 1,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": ".برای نشان دادن حالت و چگونگی انجام فعل جمله از قید حالت استفاده میکنیم که محل آن معموأل بعد از فعل و مفعول جمله میباشد She writes interesting novels well. قید حالت مفعول فعل :ترجمه تست \"او نویسنده خوب است. او رمان های جالت را به خوب مینویسد \"."
   },
   {
    "id": "g10-p163-n10",
@@ -5216,7 +5519,7 @@
    "answerIdx": 0,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "در جای خالی به قید حالت نیاز داریم. تنها قید حالت در بین گزینه هاfast میباشد.( صفتfast هنگام تبدیل شدن به قید حالتly ).نمیگیرد. fast drives He always قی د حالت فعل :ترجمه تست \"برادرم راننده رسییع است. او همیشه به رسعت رانندگی میکند\"."
   },
   {
    "id": "g10-p163-n11",
@@ -5233,7 +5536,7 @@
    "answerIdx": 3,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "در جای خالی به قید حالت نیاز داریم. تنها قید حالت درگزینه هاhard میباشد.(صفتhard هنگام تبدیل شدن به قیدly ).نمیگیرد. hard it answered I قید حالت مفعول فعل :ترجمه تست \"معلم سوال آسابن را نی سید. من آن را به سخت جواب دادم\"."
   },
   {
    "id": "g10-p163-n12",
@@ -5250,7 +5553,7 @@
    "answerIdx": 2,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "در جای خالی به قید حالت برای نشان دادن حالت فعل نیاز داریم. (حذف گزینهb وa). با توجه به معنی جمله اول، جواب فقط گزینه c می.باشد :ترجمه تست \"عیل با گردشگران به خوب صحبت کرد. در واقع او همه سؤالات آن‌ها را مؤدبانه جواب داد\"."
   },
   {
    "id": "g10-p163-n13",
@@ -5267,7 +5570,7 @@
    "answerIdx": 1,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "حرف اضافه مربوط به طلوع و غروب آفتاب at.است :ترجمه تست \"من همیشه در هنگام غروب آفتاب برای قدم زدن و ورزش کردن به پارک میر وم \"."
   },
   {
    "id": "g10-p163-n14",
@@ -5284,7 +5587,7 @@
    "answerIdx": 1,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "حرف اضافه مربوط بهwork (رس کار) at.است :ترجمه تست \"دیروز هنگامیکه در رس کار بودم، یک تماس تلفتن مهیم داشتم \"."
   },
   {
    "id": "g10-p163-n15",
@@ -5301,8 +5604,7 @@
    "answerIdx": 2,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null,
-   "curatedAgree": true
+   "note": "حرف اضافه مربوط بهhome (در مین نل) at.است :ترجمه تست \" امروز صبح بچه ها در خانه بودند \"."
   },
   {
    "id": "g10-p163-n16",
@@ -5319,7 +5621,7 @@
    "answerIdx": 0,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "حرف اضافه مربوط به تاریخ on.است :ترجمه تست \" ما قصد داریم در22 شهریورماه ماه99 از مازندران دیدن کنیم\"."
   },
   {
    "id": "g10-p163-n17",
@@ -5336,7 +5638,7 @@
    "answerIdx": 0,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "حرف اضافه مربوط به تعطییلon و حرف اضافه فصلهاin.میباشد :ترجمه تست \" آن‌ها در تعطیالت در فصل بهار عموزاده های خود را مالقات خواهند کرد \"."
   },
   {
    "id": "g10-p163-n18",
@@ -5353,7 +5655,7 @@
    "answerIdx": 2,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "حرف اضافه مربوط به روز تولدon و حرف اضافه ماه هاin.میباشد :ترجمه تست \"آیا قصد داری که دوستانت را در روز تولدت در خرداد ماه دعوت کتن؟\""
   },
   {
    "id": "g10-p163-n19",
@@ -5370,7 +5672,7 @@
    "answerIdx": 0,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "حرف اضافه رفتن با وسائل نقلیهby و حرف اضافه قسمتهای مختلف روزin.میباشد :ترجمه تست \"من همیشه در بعد از ظهرها با اتوبوس به باشگاه میر وم\"."
   },
   {
    "id": "g10-p163-n20",
@@ -5387,7 +5689,7 @@
    "answerIdx": 1,
    "answerSource": "booklet-key",
    "translation": null,
-   "note": null
+   "note": "حرف اضافه مربوط به کشورهاin و حرف اضافه تعطییل on.میباشد :ترجمه تست \" سال آینده در تعطیالت ما در کشور کره خواهیم بود\". Note:"
   }
  ]
 }
