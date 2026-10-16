@@ -9,7 +9,7 @@ import { APPENDIX_SCOPE_LABELS, appendixHistoryServerSnapshot, appendixHistorySn
 import { useAppendixResumeNav } from "../shared/use-appendix-resume-nav";
 import { hardIdsOf } from "@/lib/konkur";
 import { useMounted } from "@/lib/use-mounted";
-import { faNum } from "@/lib/study-theme";
+import { faNum, RESUME_FOCUS_RING } from "@/lib/study-theme";
 import HomeAppendixHistory from "./home-appendix-history";
 
 // شبکهٔ «ابزارهای ویژه» — ده میان‌بر به سطوح تمرین و گزارش
@@ -105,6 +105,10 @@ export default function HomeTools() {
               // راند ۲۳۸ — کارتِ ضمیمه در wrapperِ سینیِ چیپ‌ها می‌نشیند؛
               // flex-1 ارتفاعِ ردیفِ گرید را مثلِ قبل پر می‌کند
               "resume" in tool ? "flex-1" : ""
+            } ${
+              // راند ۲۳۹ — حلقهٔ کیبوردِ واحد (بندِ ② پیشنهادِ ۲۳۸) — فقط
+              // کارتِ ضمیمه (درِ حلقه)، نه کلِ گریدِ ابزارها
+              "resume" in tool ? RESUME_FOCUS_RING : ""
             }`}
           >
             {"badge" in tool && typeof tool.badge === "number" && tool.badge > 0 && (

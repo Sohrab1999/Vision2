@@ -29,6 +29,7 @@ import {
 import { useStudy } from "@/lib/study-store";
 import { useAppendixResumeNav } from "../shared/use-appendix-resume-nav";
 import { useToast } from "@/hooks/use-toast";
+import { RESUME_FOCUS_RING } from "@/lib/study-theme";
 
 export default function HeaderResumeButton() {
   const item = useSyncExternalStore(
@@ -67,7 +68,8 @@ export default function HeaderResumeButton() {
       aria-label={tooltip}
       title={tooltip}
       data-testid="header-resume-button"
-      className="flex h-11 min-w-11 max-w-[13rem] shrink-0 items-center justify-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-3 text-emerald-700 shadow-sm transition-[background-color,color,border-color,transform] hover:bg-emerald-100 hover:border-emerald-300 active:scale-[0.96] dark:border-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300 dark:hover:bg-emerald-900/70"
+      // راند ۲۳۹ — حلقهٔ کیبوردِ واحدِ درهایِ «ادامه» (بندِ ② پیشنهادِ ۲۳۸)
+      className={`flex h-11 min-w-11 max-w-[13rem] shrink-0 items-center justify-center gap-1.5 rounded-full border border-emerald-200 bg-emerald-50 px-3 text-emerald-700 shadow-sm transition-[background-color,color,border-color,transform] hover:bg-emerald-100 hover:border-emerald-300 active:scale-[0.96] dark:border-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-300 dark:hover:bg-emerald-900/70 ${RESUME_FOCUS_RING}`}
     >
       <Play size={15} className="shrink-0" />
       <span className="hidden min-w-0 truncate text-[12.5px] font-extrabold min-[420px]:inline">

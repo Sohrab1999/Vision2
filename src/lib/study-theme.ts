@@ -200,3 +200,15 @@ export const avatarClasses: Record<string, string> = {
   blue: "bg-gradient-to-br from-blue-400 to-blue-700 shadow-blue-700/30",
   purple: "bg-gradient-to-br from-purple-400 to-purple-700 shadow-purple-700/30",
 };
+
+// راند ۲۳۹ — حلقهٔ کیبوردِ واحدِ درهایِ «ادامهٔ مطالعه» (بندِ ② پیشنهادِ ۲۳۸):
+// یک قرارداد در همهٔ درهایی که رکوردِ «ادامه» را نشان می‌دهند و با Tab
+// قابلِ رسیدن‌اند — کارتِ ضمیمهٔ خانه + چیپ‌هایِ سینیِ «اخیراً»، دکمهٔ هدر،
+// نشانگرِ سرِ ضمیمه + چیپِ «مسیرِ اخیر»، و دکمهٔ «ادامه» + ردیف‌هایِ
+// تاریخچه در پروفایل. درِ فرمان‌یاب مستثناست: ردیف‌هایش هرگز فوکوس
+// نمی‌گیرند (الگوی aria-activedescendant — هایلایتِ ردیف با کلیدهایِ
+// جهت است) و حلقه رویشان هرگز دیده نمی‌شود.
+// ring-offset با رنگِ سطحِ هر تم — تا حلقه رویِ کارتِ سفید و سطوحِ
+// تیره به‌یک اندازه خوانا بماند.
+export const RESUME_FOCUS_RING =
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-1 focus-visible:ring-offset-white dark:focus-visible:ring-offset-stone-900";

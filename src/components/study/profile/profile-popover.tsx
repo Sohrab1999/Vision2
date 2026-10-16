@@ -15,6 +15,7 @@ import { pushSync, fetchSync, mergeSyncData, applyMergedSnapshot, normalizeCode,
 import { adoptResumeIfAbsent, appendixHistoryServerSnapshot, appendixHistorySnapshot, appendixResumeServerSnapshot, appendixResumeSnapshot, clearAppendixResume, clearAppendixResumeHistory, subscribeAppendixHistory, subscribeAppendixResume, APPENDIX_SCOPE_LABELS, type AppendixResumeItem } from "@/lib/bg-reading";
 import { useAppendixResumeNav } from "../shared/use-appendix-resume-nav";
 import { useToast } from "@/hooks/use-toast";
+import { RESUME_FOCUS_RING } from "@/lib/study-theme";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 // ------------------------------------------------------------------
@@ -407,7 +408,7 @@ export default function ProfilePopover() {
               <div className="mt-2 grid grid-cols-2 gap-2">
                 <button
                   onClick={handleResumeGo}
-                  className="inline-flex items-center justify-center gap-1 rounded-lg bg-emerald-600 px-2 py-1.5 text-[10.5px] font-black text-white transition-[background-color,color,border-color,transform] hover:bg-emerald-700 active:scale-[0.96]"
+                  className={`inline-flex items-center justify-center gap-1 rounded-lg bg-emerald-600 px-2 py-1.5 text-[10.5px] font-black text-white transition-[background-color,color,border-color,transform] hover:bg-emerald-700 active:scale-[0.96] ${RESUME_FOCUS_RING}`}
                   title="رفتن به همان‌جا در ضمیمه"
                 >
                   <Play size={11} className="shrink-0" />
@@ -453,7 +454,7 @@ export default function ProfilePopover() {
                       key={`${h.scope}:${h.id}`}
                       onClick={() => handleHistoryGo(h)}
                       data-testid={`profile-history-item-${h.scope}-${h.id}`}
-                      className="flex min-h-9 w-full items-center justify-between gap-2 rounded-lg border border-stone-100 bg-transparent px-2.5 py-1.5 text-right transition-[background-color,color,border-color,transform] hover:border-emerald-200 hover:bg-emerald-50 active:scale-[0.96] dark:hover:bg-emerald-900/30"
+                      className={`flex min-h-9 w-full items-center justify-between gap-2 rounded-lg border border-stone-100 bg-transparent px-2.5 py-1.5 text-right transition-[background-color,color,border-color,transform] hover:border-emerald-200 hover:bg-emerald-50 active:scale-[0.96] dark:hover:bg-emerald-900/30 ${RESUME_FOCUS_RING}`}
                     >
                       <span className="min-w-0 flex-1 truncate text-[10.5px] font-bold text-stone-700">
                         «{h.title}»
