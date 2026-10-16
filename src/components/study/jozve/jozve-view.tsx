@@ -232,6 +232,9 @@ const GRADE_GRAMMAR_TOPIC: Record<number, { lessons: { lesson: number; title: st
     lessons: [
       { lesson: 1, title: "ضمایر موصولی — متوسط و کنکوری (ص۸۸)", count: 27 },
       { lesson: 2, title: "حذف ضمایر — نظام قدیم (ص۸۹-۹۱)", count: 61 },
+      // r281 — بانک مرور زمان‌ها: بخش اول کلید توضیحی، بخش دوم کلید گرید چاپی
+      { lesson: 3, title: "مرور زمان‌ها — متوسط (ص۱۴۲-۱۴۳)", count: 30 },
+      { lesson: 4, title: "مرور زمان‌ها — استاندارد (ص۱۴۳-۱۴۵)", count: 50 },
     ],
   },
 };

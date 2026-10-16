@@ -41,6 +41,45 @@
    "24": "b",
    "87": "d",
    "88": "b"
+  },
+  "tenses": {
+   "pages": "142-145",
+   "part1": {
+    "questions": 30,
+    "pages": "142-143",
+    "level": "متوسط",
+    "keyType": "توضیحی «-Nگزینه (X)» ص۲۲۰-۲۲۳ (c15/sec3..sec23)",
+    "translations": "در PDF به‌هم‌ریخته/ناقص‌اند (OCR دوبه‌ویرایش‌نشدنی) — ثبت نشد"
+   },
+   "part2": {
+    "questions": 50,
+    "pages": "143-145",
+    "level": "استاندارد",
+    "keyType": "گرید چاپی «بخش دوم پاسخنامه تستهای مرور زمانها» (c15/sec23)",
+    "translations": "در جزوه چاپ نشده است"
+   },
+   "spotLocks": {
+    "part1": {
+     "1": "c",
+     "4": "a",
+     "8": "d",
+     "17": "b",
+     "30": "a"
+    },
+    "part2": {
+     "4": "b",
+     "8": "c",
+     "10": "b",
+     "33": "d",
+     "50": "c"
+    }
+   },
+   "printedDuplicate": {
+    "part1": 14,
+    "part2": 38,
+    "note": "خود جزوه سؤال ۱۴ بخش اول را در بخش دوم هم چاپ کرده (Q38) — وفادار ماندیم"
+   },
+   "extractedRound": 281
   }
  },
  "lessons": [
@@ -1201,6 +1240,1062 @@
       "whom came"
      ],
      "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 3,
+   "title": "مرور زمان‌ها — متوسط (ص۱۴۲-۱۴۳)",
+   "level": "متوسط",
+   "count": 30,
+   "questions": [
+    {
+     "id": "g12-tense1-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "I --------------- to see him three days ago. I --------------- him twice since that day.",
+     "options": [
+      "want / have called",
+      "wanted / called",
+      "wanted / have called",
+      "have wanted / called"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-tense1-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "When Mr. Saeedi --------------- on the radio in his car, he was driving home.",
+     "options": [
+      "turns",
+      "turned",
+      "was turning",
+      "is going to turn"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-tense1-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "I --------------- two poem books since I --------------- to this city.",
+     "options": [
+      "wrote / moved",
+      "have written / have moved",
+      "have written / moved",
+      "wrote / have moved"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-tense1-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "A: “Did you write that letter for me?” B: “Sorry, I completely forgot, I --------------- it soon.”",
+     "options": [
+      "will write",
+      "am going to write",
+      "write",
+      "wrote"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-tense1-5",
+     "n": 5,
+     "category": "grammar",
+     "question": "I --------------- this exam twice up to now. I am hopeful I will pass it.",
+     "options": [
+      "had taken",
+      "took",
+      "will be taking",
+      "have taken"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-tense1-6",
+     "n": 6,
+     "category": "grammar",
+     "question": "My elder sister felt a little better after my mother --------------- her the medicine.",
+     "options": [
+      "has taken",
+      "was taking",
+      "had taken",
+      "is taking"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-tense1-7",
+     "n": 7,
+     "category": "grammar",
+     "question": "A tree fell on my father’s car while he --------------- home yesterday.",
+     "options": [
+      "is going to drive",
+      "was driving",
+      "drove",
+      "drives"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-tense1-8",
+     "n": 8,
+     "category": "grammar",
+     "question": "Last week he received an offer for a job in London, but he --------------- what to do about it yet.",
+     "options": [
+      "won’t decide",
+      "wasn’t deciding",
+      "didn’t decide",
+      "hasn’t decided"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-tense1-9",
+     "n": 9,
+     "category": "grammar",
+     "question": "Raman --------------- an envelope and a stamp from the post office yesterday.",
+     "options": [
+      "bought",
+      "have bought",
+      "is buying",
+      "will buy"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-tense1-10",
+     "n": 10,
+     "category": "grammar",
+     "question": "She --------------- what the problem was until her advisor --------------- it to her in detail.",
+     "options": [
+      "hadn’t understood / explained",
+      "didn’t understand / would explain",
+      "hadn’t understood / had explained",
+      "won’t understand / had explained"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-tense1-11",
+     "n": 11,
+     "category": "grammar",
+     "question": "I have decided to have a birthday party. I --------------- lots of my friends next Wednesday.",
+     "options": [
+      "invite",
+      "will invite",
+      "am going to invite",
+      "have invited"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-tense1-12",
+     "n": 12,
+     "category": "grammar",
+     "question": "Raman --------------- television at 8 o’clock yesterday when we ---------------.",
+     "options": [
+      "was watching / arrived",
+      "watched / arrived",
+      "was watching / were arriving",
+      "watched / were arriving"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-tense1-13",
+     "n": 13,
+     "category": "grammar",
+     "question": "My mother --------------- the cookies on the table 2 hours ago.",
+     "options": [
+      "puts",
+      "have put",
+      "is putting",
+      "put"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-tense1-14",
+     "n": 14,
+     "category": "grammar",
+     "question": "They were upset because I --------------- to see them before they left the city.",
+     "options": [
+      "do not go",
+      "had not gone",
+      "would not go",
+      "have not gone"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-tense1-15",
+     "n": 15,
+     "category": "grammar",
+     "question": "Their mother usually --------------- a short story for Pari and her little brother before they go to bed.",
+     "options": [
+      "am reading",
+      "had read",
+      "reading",
+      "reads"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-tense1-16",
+     "n": 16,
+     "category": "grammar",
+     "question": "I hadn’t ever been to any of Asian countries before I --------------- to china.",
+     "options": [
+      "travelling",
+      "was going to travel",
+      "has traveled",
+      "traveled"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-tense1-17",
+     "n": 17,
+     "category": "grammar",
+     "question": "I think your uncle --------------- you the money you need. He is a rich man.",
+     "options": [
+      "is going to lend",
+      "will lend",
+      "lends",
+      "won’t lend"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-tense1-18",
+     "n": 18,
+     "category": "grammar",
+     "question": "We were having dinner at the restaurant when we --------------- an old friend.",
+     "options": [
+      "saw",
+      "see",
+      "were seeing",
+      "are going to see"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-tense1-19",
+     "n": 19,
+     "category": "grammar",
+     "question": "A: “Would you like something to have?” B: “No, thanks. I --------------- a sandwich.",
+     "options": [
+      "have just eaten",
+      "just ate",
+      "will just eat",
+      "had just eaten"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-tense1-20",
+     "n": 20,
+     "category": "grammar",
+     "question": "A: “Why did you buy a lot of paint?” B: “I --------------- my bedroom tomorrow.”",
+     "options": [
+      "paint",
+      "painted",
+      "will paint",
+      "am going to paint"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-tense1-21",
+     "n": 21,
+     "category": "grammar",
+     "question": "While he --------------- a newspaper, his dog was lying beside him.",
+     "options": [
+      "reads",
+      "was reading",
+      "had read",
+      "has read"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-tense1-22",
+     "n": 22,
+     "category": "grammar",
+     "question": "I --------------- a game of tennis with Mike when Mary ---------------.",
+     "options": [
+      "finished / had arrived",
+      "have finished / arrived",
+      "finished / has arrived",
+      "had finished / arrived"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-tense1-23",
+     "n": 23,
+     "category": "grammar",
+     "question": "Sarah was very tired because she --------------- all her homework.",
+     "options": [
+      "did",
+      "does",
+      "had done",
+      "would do"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-tense1-24",
+     "n": 24,
+     "category": "grammar",
+     "question": "A: The windows of your room are dirty. B: Yes, I know, I --------------- them later.",
+     "options": [
+      "am going to wash",
+      "have washed",
+      "will wash",
+      "wash"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-tense1-25",
+     "n": 25,
+     "category": "grammar",
+     "question": "By the time you --------------- me, I had written most parts of my book.",
+     "options": [
+      "calls",
+      "will call",
+      "called",
+      "has been called"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-tense1-26",
+     "n": 26,
+     "category": "grammar",
+     "question": "A: I don’t have any money. B: Really? Well, don’t worry. I --------------- you some.",
+     "options": [
+      "am going to lend",
+      "am lending",
+      "will lend",
+      "lent"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-tense1-27",
+     "n": 27,
+     "category": "grammar",
+     "question": "They have won all the other games easily since they --------------- the football game to Germany.",
+     "options": [
+      "lose",
+      "were losing",
+      "lost",
+      "had lost"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-tense1-28",
+     "n": 28,
+     "category": "grammar",
+     "question": "This is the second time I --------------- in such a hard situation because of your mistakes.",
+     "options": [
+      "am",
+      "were",
+      "was",
+      "have been"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-tense1-29",
+     "n": 29,
+     "category": "grammar",
+     "question": "While I --------------- at this time yesterday, my brother called and invited us to dinner.",
+     "options": [
+      "am going to study",
+      "was studying",
+      "studied",
+      "study"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-tense1-30",
+     "n": 30,
+     "category": "grammar",
+     "question": "We think that Raman has the most expensive sport car that we --------------- in the city.",
+     "options": [
+      "have ever seen",
+      "ever saw",
+      "was ever going to",
+      "will ever see"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 4,
+   "title": "مرور زمان‌ها — استاندارد (ص۱۴۳-۱۴۵)",
+   "level": "استاندارد",
+   "count": 50,
+   "questions": [
+    {
+     "id": "g12-tense2-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "The man sitting next to me on the plane was very afraid because he --------------- never --------------- before.",
+     "options": [
+      "has / flown",
+      "had / flown",
+      "would / fly",
+      "will / fly"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-tense2-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "Mary hasn’t been able to play volleyball since he --------------- his arm.",
+     "options": [
+      "is broking",
+      "broke",
+      "was broking",
+      "had broken"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-tense2-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "He had eaten his dinner before he --------------- to bed.",
+     "options": [
+      "had gone",
+      "gone",
+      "went",
+      "goes"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-tense2-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "Alex was very tired because he --------------- football all afternoon yesterday.",
+     "options": [
+      "played",
+      "had played",
+      "plays",
+      "will play"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-tense2-5",
+     "n": 5,
+     "category": "grammar",
+     "question": "My friend, Jack, is a better football player than I am, but in the last few months he --------------- some trouble with his left knee.",
+     "options": [
+      "has have",
+      "is having",
+      "had have",
+      "has had"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-tense2-6",
+     "n": 6,
+     "category": "grammar",
+     "question": "My mother --------------- the dishes after the guests had gone away.",
+     "options": [
+      "had washed",
+      "have washed",
+      "washed",
+      "wash"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-tense2-7",
+     "n": 7,
+     "category": "grammar",
+     "question": "I couldn’t buy ticket because I --------------- my money.",
+     "options": [
+      "had forgot",
+      "forgot",
+      "forget",
+      "had forgotten"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-tense2-8",
+     "n": 8,
+     "category": "grammar",
+     "question": "The woman told me that she --------------- in Isfahan before.",
+     "options": [
+      "has worked",
+      "worked",
+      "had worked",
+      "works"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-tense2-9",
+     "n": 9,
+     "category": "grammar",
+     "question": "I’m too tired to walk home. I think I --------------- a taxi.",
+     "options": [
+      "am going to take",
+      "will take",
+      "take",
+      "took"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-tense2-10",
+     "n": 10,
+     "category": "grammar",
+     "question": "I have been to Norway but I haven't been to Sweden ---------------.",
+     "options": [
+      "still",
+      "yet",
+      "already",
+      "recently"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-tense2-11",
+     "n": 11,
+     "category": "grammar",
+     "question": "--------------- he moved to China?",
+     "options": [
+      "Had studied Joe Chinese after",
+      "Had Joe studied Chinese after",
+      "Had Joe studied Chinese before",
+      "Have Joe studied Chinese before"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-tense2-12",
+     "n": 12,
+     "category": "grammar",
+     "question": "The football game had already started when we --------------- there.",
+     "options": [
+      "arrived",
+      "had arrived",
+      "were arrived",
+      "had been arriving"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-tense2-13",
+     "n": 13,
+     "category": "grammar",
+     "question": "He hadn’t left the shop until I --------------- him to do so.",
+     "options": [
+      "will ask",
+      "had asked",
+      "asked",
+      "were asking"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-tense2-14",
+     "n": 14,
+     "category": "grammar",
+     "question": "When we arrived at the party, most of the guests --------------- home.",
+     "options": [
+      "had already gone",
+      "would have gone",
+      "had never gone",
+      "are going to go"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-tense2-15",
+     "n": 15,
+     "category": "grammar",
+     "question": "Jack and David --------------- together as partners for ten years.",
+     "options": [
+      "have worked",
+      "were working",
+      "were going to work",
+      "work"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-tense2-16",
+     "n": 16,
+     "category": "grammar",
+     "question": "We had just eaten two sandwiches when David --------------- the bell.",
+     "options": [
+      "rings",
+      "has rung",
+      "rang",
+      "have rung"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-tense2-17",
+     "n": 17,
+     "category": "grammar",
+     "question": "It’s a great movie. I have --------------- it many times.",
+     "options": [
+      "saw",
+      "seen",
+      "see",
+      "seeing"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-tense2-18",
+     "n": 18,
+     "category": "grammar",
+     "question": "A: What would you like to drink, sir? B: I --------------- a glass of milk, please.",
+     "options": [
+      "will have",
+      "am going to drink",
+      "am drinking",
+      "drink"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-tense2-19",
+     "n": 19,
+     "category": "grammar",
+     "question": "She --------------- worried because she had failed the test.",
+     "options": [
+      "was looking",
+      "looked",
+      "has looked",
+      "is going to look"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-tense2-20",
+     "n": 20,
+     "category": "grammar",
+     "question": "We were watching TV while my father --------------- a magazine.",
+     "options": [
+      "read",
+      "was reading",
+      "had read",
+      "has read"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-tense2-21",
+     "n": 21,
+     "category": "grammar",
+     "question": "My sister --------------- the room before the guests arrived.",
+     "options": [
+      "will clean",
+      "has cleaned",
+      "had cleaned",
+      "would clean"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-tense2-22",
+     "n": 22,
+     "category": "grammar",
+     "question": "A: There’s no milk at home. B: I know. I --------------- some milk from Mr. Amini’s shop soon.",
+     "options": [
+      "will get",
+      "got",
+      "am going to get",
+      "get"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-tense2-23",
+     "n": 23,
+     "category": "grammar",
+     "question": "He has not --------------- my book --------------- .",
+     "options": [
+      "given back -/ already",
+      "given back / yet",
+      "gave back / yet",
+      "already / given back"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-tense2-24",
+     "n": 24,
+     "category": "grammar",
+     "question": "They --------------- English very well. They --------------- English for many years.",
+     "options": [
+      "speak / speak",
+      "had spoken / spoke",
+      "speak / have spoken",
+      "speak / had spoken"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-tense2-25",
+     "n": 25,
+     "category": "grammar",
+     "question": "I was surprised because he --------------- never --------------- the apartment before.",
+     "options": [
+      "have / cleaned",
+      "had / cleaned",
+      "would / clean",
+      "was / cleaning"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-tense2-26",
+     "n": 26,
+     "category": "grammar",
+     "question": "I --------------- in that restaurant yet, but I’m going to eat there soon.",
+     "options": [
+      "don’t eat",
+      "didn’t eat",
+      "hadn’t eat",
+      "haven’t eaten"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-tense2-27",
+     "n": 27,
+     "category": "grammar",
+     "question": "My grades are good because I --------------- carefully.",
+     "options": [
+      "will study",
+      "had studied",
+      "have studied",
+      "are studying"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-tense2-28",
+     "n": 28,
+     "category": "grammar",
+     "question": "We arrived at work in the morning and found that somebody --------------- the window during the night.",
+     "options": [
+      "had broken",
+      "has broken",
+      "was breaking",
+      "would break"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-tense2-29",
+     "n": 29,
+     "category": "grammar",
+     "question": "I saw my close friend yesterday while she --------------- a nice red dress.",
+     "options": [
+      "wears",
+      "wore",
+      "was wearing",
+      "is going to wear"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-tense2-30",
+     "n": 30,
+     "category": "grammar",
+     "question": "Only after posting the letter, I remembered that I --------------- to put on a stamp.",
+     "options": [
+      "have forgotten",
+      "will forget",
+      "would forget",
+      "had forgotten"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-tense2-31",
+     "n": 31,
+     "category": "grammar",
+     "question": "When she had read all the greeting cards, she --------------- a short thank-you speech.",
+     "options": [
+      "has made",
+      "made",
+      "was making",
+      "had made"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-tense2-32",
+     "n": 32,
+     "category": "grammar",
+     "question": "A: There is a good movie on TV tonight. B: Yes, I know. I --------------- it.",
+     "options": [
+      "am going to watch",
+      "will watch",
+      "watched",
+      "watching"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-tense2-33",
+     "n": 33,
+     "category": "grammar",
+     "question": "When I entered the garden, I noticed that it was completely dry. I thought the owner --------------- it for weeks.",
+     "options": [
+      "was not watering",
+      "won't water",
+      "isn’t watering",
+      "hadn’t watered"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-tense2-34",
+     "n": 34,
+     "category": "grammar",
+     "question": "Mr. Thomson has just received an offer for a job but he --------------- what to do about it yet.",
+     "options": [
+      "didn’t decide",
+      "hadn’t decided",
+      "hasn’t decided",
+      "won’t decide"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-tense2-35",
+     "n": 35,
+     "category": "grammar",
+     "question": "A: I don’t know how to use this computer. B: OK, --------------- you.",
+     "options": [
+      "I’m going to show",
+      "I showed",
+      "I’m showing",
+      "I’ll show"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-tense2-36",
+     "n": 36,
+     "category": "grammar",
+     "question": "Amir didn’t want to come to the movies with us because he --------------- the film twice.",
+     "options": [
+      "was seeing",
+      "had yet seen",
+      "would see",
+      "had already seen"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-tense2-37",
+     "n": 37,
+     "category": "grammar",
+     "question": "I haven’t spoken Italian since I --------------- a child.",
+     "options": [
+      "am",
+      "was",
+      "were",
+      "have been"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-tense2-38",
+     "n": 38,
+     "category": "grammar",
+     "question": "They were upset because I --------------- to see them before they left the city.",
+     "options": [
+      "do not go",
+      "had not gone",
+      "would not go",
+      "have not gone"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-tense2-39",
+     "n": 39,
+     "category": "grammar",
+     "question": "We had shopped in that store for the past ten years until it ---------------.",
+     "options": [
+      "had closed",
+      "will close",
+      "closed down",
+      "was closing"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-tense2-40",
+     "n": 40,
+     "category": "grammar",
+     "question": "When I spoke to the woman, I realized that I --------------- her somewhere before.",
+     "options": [
+      "have met",
+      "would have met",
+      "had met",
+      "am going to meet"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-tense2-41",
+     "n": 41,
+     "category": "grammar",
+     "question": "Amir is very happy because he --------------- very good marks in his exam.",
+     "options": [
+      "was getting",
+      "has gotten",
+      "got",
+      "would get"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-tense2-42",
+     "n": 42,
+     "category": "grammar",
+     "question": "While Reza was eating dinner, Kamran --------------- and --------------- about the events of the day.",
+     "options": [
+      "came / speaking",
+      "came / was speaking",
+      "came / spoke",
+      "was coming / spoke"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-tense2-43",
+     "n": 43,
+     "category": "grammar",
+     "question": "The house was very quiet when I got home. Everybody --------------- to bed.",
+     "options": [
+      "will go",
+      "had gone",
+      "was going",
+      "has gone"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-tense2-44",
+     "n": 44,
+     "category": "grammar",
+     "question": "My father --------------- at 70 km/h when a policeman --------------- him.",
+     "options": [
+      "drove / stopped",
+      "drove / stops",
+      "was driving / stopped",
+      "was driving / was stopping"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-tense2-45",
+     "n": 45,
+     "category": "grammar",
+     "question": "I --------------- my hand while I --------------- dinner last night.",
+     "options": [
+      "burned / was cooking",
+      "burned / am going to cook",
+      "burned / cooked",
+      "burn / cook"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-tense2-46",
+     "n": 46,
+     "category": "grammar",
+     "question": "Maria just telephoned from Italy. I --------------- to her a few minutes ago.",
+     "options": [
+      "have spoken",
+      "had spoken",
+      "am going to speak",
+      "spoke"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-tense2-47",
+     "n": 47,
+     "category": "grammar",
+     "question": "I --------------- her for more than 11 years. It is because I haven’t been in her hometown --------------- we broke up.",
+     "options": [
+      "haven’t seen / for",
+      "haven’t seen / since",
+      "didn’t see / just don't",
+      "see / since"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-tense2-48",
+     "n": 48,
+     "category": "grammar",
+     "question": "Which hotel --------------- you staying in when you --------------- your passport?",
+     "options": [
+      "were / were losing",
+      "were / lost",
+      "did / were losing",
+      "did / lost"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-tense2-49",
+     "n": 49,
+     "category": "grammar",
+     "question": "I --------------- much of the book yet, but I have to finish it by the weekend.",
+     "options": [
+      "didn’t read",
+      "haven’t read",
+      "will not reading",
+      "hadn’t read"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-tense2-50",
+     "n": 50,
+     "category": "grammar",
+     "question": "What a boring film! It is the most boring film ---------------.",
+     "options": [
+      "I ever see",
+      "I ever saw",
+      "I’ve ever seen",
+      "had ever seen"
+     ],
+     "answer": 2
     }
    ]
   }
