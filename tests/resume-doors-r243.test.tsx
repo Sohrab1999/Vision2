@@ -52,9 +52,9 @@ function openGuide() {
 const waitHandoff = () => new Promise((r) => setTimeout(r, 360));
 
 describe("تک‌منبعِ حقیقتِ درهایِ حلقه — r243 ①", () => {
-  it("① داده: پنج در با شناسه‌هایِ یکتا؛ فقط فرمان‌یاب کلید دارد و آن Ctrl+K است", () => {
-    expect(RESUME_LOOP_DOORS).toHaveLength(5);
-    expect(RESUME_LOOP_DOORS.map((d) => d.id)).toEqual(["palette", "header", "home", "appendix", "profile"]);
+  it("① داده: شش در با شناسه‌هایِ یکتا؛ فقط فرمان‌یاب کلید دارد و آن Ctrl+K است (r246: درِ ششمِ «نتایج» به فهرستِ زنده پیوست)", () => {
+    expect(RESUME_LOOP_DOORS).toHaveLength(6);
+    expect(RESUME_LOOP_DOORS.map((d) => d.id)).toEqual(["palette", "header", "home", "appendix", "results", "profile"]);
     for (const d of RESUME_LOOP_DOORS) {
       expect(d.text.length).toBeGreaterThan(0);
       expect(d.openLabel.length).toBeGreaterThan(0);
@@ -71,6 +71,7 @@ describe("تک‌منبعِ حقیقتِ درهایِ حلقه — r243 ①", ()
     expect(byId.header.action).toEqual({ kind: "focus-header" });
     expect(byId.home.action).toEqual({ kind: "goto-home" });
     expect(byId.appendix.action).toEqual({ kind: "goto-appendix" });
+    expect(byId.results.action).toEqual({ kind: "goto-results" });
     expect(byId.profile.action).toEqual({ kind: "open-profile" });
     expect(byId.header.closedHint).toContain("با نخستین دیدنِ ضمیمه");
   });

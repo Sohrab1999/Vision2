@@ -69,6 +69,7 @@ import {
   doorCmdId,
   doorShortName,
   focusHeaderDoor,
+  openAppendixDoor,
 } from "@/lib/resume-loop-doors";
 import { useAppendixResumeNav } from "../shared/use-appendix-resume-nav";
 import { Kbd } from "./shortcut-guide";
@@ -452,7 +453,13 @@ export default function CommandPalette() {
         goHome();
         break;
       case "door-appendix":
-        setView({ type: "appendix" });
+        // راند ۲۴۶ — helperِ مشترک: رویدادِ زندهٔ نشانگر رویِ خودِ ضمیمه،
+        // پرچمِ یک‌بارمصرف + ناوبری از جای دیگر (منطقِ رفت در یک نقطه).
+        openAppendixDoor(setView, view.type === "appendix");
+        break;
+      case "door-results":
+        // راند ۲۴۶ — درِ ششم: تبِ تست‌های درسِ حاضر، وگرنه درسِ اول.
+        openLessonTab(view.type === "lesson" ? view.id : 1, "tests");
         break;
       case "door-profile":
         window.dispatchEvent(new CustomEvent("open-profile"));

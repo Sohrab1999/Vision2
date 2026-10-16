@@ -123,26 +123,26 @@ describe("قراردادِ داده — گروهِ «درهای حلقه» از 
 });
 
 describe("حضورِ صادقانه — گِیت‌هایِ درِ هدر — r244 ①", () => {
-  it("④ بی‌رکورد: سه در (خانه/ضمیمه/پروفایل)، بی‌«درِ هدر» — شمارشِ ۳۴گزینه‌ای", () => {
-    render(<CommandPalette />);
-    openPalette();
-    const group = screen.getByRole("group", { name: "درهای حلقه" });
-    const rows = group.querySelectorAll('[role="option"]');
-    expect(rows).toHaveLength(3);
-    expect(group.textContent).not.toContain("درِ هدر");
-    expect(screen.getAllByRole("option").length).toBe(34);
-  });
-
-  it("⑤ با رکورد: «درِ هدر» هم حاضر است — شمارشِ ۳۶گزینه‌ای (۳۱ + nav-resume + ۴ در)", () => {
-    writeAppendixResume(grammarRec);
+  it("④ بی‌رکورد: چهار در (خانه/نتایج/ضمیمه/پروفایل)، بی‌«درِ هدر» — شمارشِ ۳۵گزینه‌ای (r246: درِ ششم پیوست)", () => {
     render(<CommandPalette />);
     openPalette();
     const group = screen.getByRole("group", { name: "درهای حلقه" });
     const rows = group.querySelectorAll('[role="option"]');
     expect(rows).toHaveLength(4);
+    expect(group.textContent).not.toContain("درِ هدر");
+    expect(screen.getAllByRole("option").length).toBe(35);
+  });
+
+  it("⑤ با رکورد: «درِ هدر» هم حاضر است — شمارشِ ۳۷گزینه‌ای (۳۱ + nav-resume + ۵ در؛ r246: درِ ششم)", () => {
+    writeAppendixResume(grammarRec);
+    render(<CommandPalette />);
+    openPalette();
+    const group = screen.getByRole("group", { name: "درهای حلقه" });
+    const rows = group.querySelectorAll('[role="option"]');
+    expect(rows).toHaveLength(5);
     expect(group.textContent).toContain("درِ هدر");
-    // ۳۱ فرمانِ کهنه + فرمانِ «ادامهٔ مطالعه» (r235) + ۴ درِ حلقه
-    expect(screen.getAllByRole("option").length).toBe(36);
+    // ۳۱ فرمانِ کهنه + فرمانِ «ادامهٔ مطالعه» (r235) + ۵ درِ حلقه
+    expect(screen.getAllByRole("option").length).toBe(37);
   });
 
   it("⑥ رویِ خودِ ضمیمه: «درِ هدر» غیب است (نشانگرِ سرِ صفحه همین در است) — سه درِ دیگر زنده", () => {

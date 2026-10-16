@@ -38,15 +38,16 @@ function openGuide() {
 }
 
 describe("کارتِ کشفِ حلقهٔ «ادامهٔ مطالعه» در راهنمای میان‌برها — r242", () => {
-  it("① کارتِ زمردی با عنوانِ حلقه حاضر است و هر پنج در را نام می‌برد", () => {
+  it("① کارتِ زمردی با عنوانِ حلقه حاضر است و هر شش در را نام می‌برد (r246: درِ «نتایج» پیوست)", () => {
     openGuide();
     const card = screen.getByTestId("shortcut-guide-resume-loop");
     expect(card).toHaveTextContent("حلقهٔ «ادامهٔ مطالعه»");
-    // پنج در: فرمان‌یاب + چهار درِ کلیک‌محور
+    // شش در: فرمان‌یاب + پنج درِ کلیک‌محور
     expect(card).toHaveTextContent("فرمان‌یاب");
     expect(card).toHaveTextContent("هدر:");
     expect(card).toHaveTextContent("خانه:");
     expect(card).toHaveTextContent("ضمیمه:");
+    expect(card).toHaveTextContent("نتایج:");
     expect(card).toHaveTextContent("پروفایل:");
   });
 
@@ -62,9 +63,9 @@ describe("کارتِ کشفِ حلقهٔ «ادامهٔ مطالعه» در را
     const card = screen.getByTestId("shortcut-guide-resume-loop");
     const kbds = Array.from(card.querySelectorAll("kbd")).map((k) => k.textContent);
     expect(kbds).toEqual(["Ctrl", "K"]);
-    // هیچ ردیفِ دیگری چیپِ کلید ندارد (چهار درِ کلیک‌محور = برچسبِ محل، نه کلید)
+    // هیچ ردیفِ دیگری چیپِ کلید ندارد (پنج درِ کلیک‌محور = برچسبِ محل، نه کلید)
     const rows = card.querySelectorAll("li");
-    expect(rows).toHaveLength(5);
+    expect(rows).toHaveLength(6);
     const rowsWithKbd = Array.from(rows).filter((r) => r.querySelector("kbd"));
     expect(rowsWithKbd).toHaveLength(1);
   });

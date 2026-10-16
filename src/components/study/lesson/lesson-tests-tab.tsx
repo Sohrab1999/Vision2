@@ -7,6 +7,7 @@ import { useStudy, resultKey, mistakesOfLesson } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { themeOf, faNum } from "@/lib/study-theme";
 import QuizEngine from "../quiz/quiz-engine";
+import AppendixResumeRow from "../shared/appendix-resume-row";
 
 const categoryInfo: { key: QuizCategory; label: string; desc: string; icon: React.ElementType }[] = [
   { key: "vocab", label: "تست واژگان — سطح استاندارد", desc: "برگرفته از بخش «تست واژگان» جزوه همراه با ترجمهٔ پاسخ‌ها", icon: BookA },
@@ -23,6 +24,9 @@ export default function LessonTestsTab({ lesson }: { lesson: LessonData }) {
   const mistakeCount = mounted ? mistakesOfLesson(mistakes, lesson.id) : 0;
 
   if (session) {
+    // راند ۲۴۶ — درِ ششم: خودِ صفحهٔ نتیجه راهِ برگشت به ضمیمه را دارد
+    // (resumeDoor → QuizResult بینِ کارتِ نتیجه و مرور) — در حینِ آزمونِ
+    // فعال هیچ چیزِ پرشی نیست (حفاظتِ سشن — همان روحِ quizContextِ راهنما).
     return (
       <QuizEngine
         title={session.title}
@@ -31,6 +35,7 @@ export default function LessonTestsTab({ lesson }: { lesson: LessonData }) {
         lessonId={lesson.id}
         category={session.cat}
         immediate
+        resumeDoor
         onExit={() => setSession(null)}
       />
     );
@@ -123,6 +128,11 @@ export default function LessonTestsTab({ lesson }: { lesson: LessonData }) {
           </span>
         </button>
       )}
+
+      {/* راند ۲۴۶ — درِ ششمِ حلقه: خطِ «ادامهٔ مطالعه» در تبِ تست‌ها —
+          تستِ بعدی را می‌توانی بعداً بزنی؛ ضمیمه همین حالا یک کلیک فاصله دارد.
+          بی‌رکورد = هیچ (صداقتِ nav-resume) — خودِ کامپوننت تصمیم می‌گیرد. */}
+      <AppendixResumeRow />
     </div>
   );
 }

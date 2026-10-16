@@ -22,9 +22,15 @@
 // می‌ماند. مستقل از رکوردِ اصلی (قراردادِ دو-معناییِ ۲۳۷): بعد از
 // پاک‌کردنِ رکورد هم چیپ حاضر است. حلقهٔ کیبوردِ واحد (RESUME_FOCUS_RING)
 // رویِ هر دو دکمه — بندِ ② پیشنهادِ ۲۳۸.
+//
+// راند ۲۴۶ — پالس + حبابِ آموزشیِ لحظهٔ رسیدنِ در (بندِ ① پیشنهادِ ۲۴۵):
+// ایدئومِ درِ هدر (r244 پالسِ زرشکی / r245 حبابِ آموزشی) قابلِ حمل است —
+// دو مسیرِ رسیدن (رویدادِ زنده رویِ خودِ ضمیمه، پرچمِ یک‌بارمصرف برایِ
+// ناوبری از جای دیگر که قبل از mount می‌آید) هر دو این‌جا مصرف می‌شوند؛
+// مالکیتِ نمایش با خودِ نشانگر — پرنده‌ها فقط درخواست می‌دهند.
 // ---------------------------------------------------------------------
 
-import { useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { History, Play } from "lucide-react";
 import {
   APPENDIX_SCOPE_LABELS,
@@ -39,6 +45,11 @@ import {
 } from "@/lib/bg-reading";
 import { useToast } from "@/hooks/use-toast";
 import { RESUME_FOCUS_RING } from "@/lib/study-theme";
+import {
+  PULSE_APPENDIX_PILL_EVENT,
+  peekAppendixPillHint,
+  ackAppendixPillHint,
+} from "@/lib/resume-loop-doors";
 
 export default function AppendixResumePill({
   onGo,
@@ -62,6 +73,65 @@ export default function AppendixResumePill({
     (h) => !(item && h.scope === item.scope && h.id === item.id),
   );
   const { toast } = useToast();
+
+  // راند ۲۴۶ — پالسِ زرشکیِ ۱٫۶ثانیه‌ای + حبابِ آموزشیِ ۳٫۶ثانیه‌ای
+  // (همان زمان‌بندیِ درِ هدر — یک ایدئوم، یک عمر): مسیرِ اول = پرچمِ
+  // یک‌بارمصرفِ راند ۲۴۶ که پرنده‌هایِ ناوبری‌کننده (راهنما/فرمان‌یاب/
+  // پروفایل) قبل از رسیدن می‌گذارند و این‌جا بعد از mount مصرف می‌شود؛
+  // مسیرِ دوم = رویدادِ زنده وقتی نشانگر همین حالا سوار است. تایمرها
+  // عمداً بیرونِ پاک‌سازیِ effect نگه داشته می‌شوند نه داخلش (آموزشِ r234 —
+  // پاک‌سازیِ تایمرِ در حالِ اجرا پالسِ تازه را می‌کُشد).
+  const [pulsing, setPulsing] = useState(false);
+  const [hinting, setHinting] = useState(false);
+  const pulseTimerRef = useRef<number | null>(null);
+  const hintTimerRef = useRef<number | null>(null);
+  const showArrival = () => {
+    setPulsing(true);
+    setHinting(true);
+    if (pulseTimerRef.current !== null) window.clearTimeout(pulseTimerRef.current);
+    pulseTimerRef.current = window.setTimeout(() => {
+      pulseTimerRef.current = null;
+      setPulsing(false);
+    }, 1600);
+    if (hintTimerRef.current !== null) window.clearTimeout(hintTimerRef.current);
+    hintTimerRef.current = window.setTimeout(() => {
+      hintTimerRef.current = null;
+      setHinting(false);
+    }, 3600);
+  };
+  useEffect(() => {
+    // mount = تنها لحظه‌ای که پرچمِ ناوبریِ از جایِ دیگر مصرف می‌شود؛
+    // نگاه، خواندنیِ بدونِ عارضه است و اقرار فقط در تایمرِ زندهٔ نهایی
+    // انجام می‌شود — StrictMode دو-بارِ mount می‌کند: mountِ اول تایمرش
+    // با cleanup لغو می‌شود و اگر پرچم در همان نگاه مصرف می‌شد، mountِ
+    // دوم دیگر چیزی نمی‌دید (درسِ QA زندهٔ r246). نمایش با یک ماکروتسک
+    // به تعویق می‌افتد — setState همگام در effect ممنوع است
+    // (قانونِ react-hooks/set-state-in-effect) و پالسِ تازه بعد از
+    // نقاشیِ اول رنگ می‌گیرد نه هم‌زمان با آن.
+    let consumeTimer: number | null = null;
+    if (peekAppendixPillHint()) {
+      consumeTimer = window.setTimeout(() => {
+        consumeTimer = null;
+        ackAppendixPillHint();
+        showArrival();
+      }, 0);
+    }
+    const onPulse = () => showArrival();
+    window.addEventListener(PULSE_APPENDIX_PILL_EVENT, onPulse);
+    return () => {
+      window.removeEventListener(PULSE_APPENDIX_PILL_EVENT, onPulse);
+      if (consumeTimer !== null) window.clearTimeout(consumeTimer);
+      if (pulseTimerRef.current !== null) window.clearTimeout(pulseTimerRef.current);
+      if (hintTimerRef.current !== null) window.clearTimeout(hintTimerRef.current);
+    };
+  }, []);
+  /** هر کلیکِ رویِ خودِ نشانگر = یادگیرنده خودش آمده؛ حباب دیگر لازم نیست */
+  const dismissHint = () => {
+    if (hintTimerRef.current !== null) window.clearTimeout(hintTimerRef.current);
+    hintTimerRef.current = null;
+    setHinting(false);
+  };
+
   if (!item && !recent) return null;
 
   // راند ۲۳۷ — کلیکِ راست رویِ نشانگر هم پاک می‌کند (تقارنِ کنترل با هدر —
@@ -84,20 +154,44 @@ export default function AppendixResumePill({
   return (
     <div className="flex flex-col items-start gap-1" data-testid="appendix-resume-cluster">
       {item && (
-        <button
-          type="button"
-          onClick={() => onGo(item.scope, item.id)}
-          onContextMenu={handleClear}
-          aria-label={tooltip}
-          title={tooltip}
-          data-testid="appendix-resume-pill"
-          className={`inline-flex min-w-0 items-center gap-1.5 rounded-xl bg-emerald-50 px-3.5 py-2 text-[13px] font-bold text-emerald-700 transition-[background-color,color,box-shadow] hover:bg-emerald-100 dark:bg-emerald-900/40 dark:text-emerald-300 dark:hover:bg-emerald-900/70 ${RESUME_FOCUS_RING}`}
-        >
-          <Play size={14} className="shrink-0" />
-          <span className="min-w-0 truncate">
-            ادامه از «{item.title}»
-          </span>
-        </button>
+        <span className="relative inline-flex">
+          <button
+            type="button"
+            onClick={() => {
+              dismissHint();
+              onGo(item.scope, item.id);
+            }}
+            onContextMenu={handleClear}
+            aria-label={tooltip}
+            title={tooltip}
+            data-testid="appendix-resume-pill"
+            data-pulsing={pulsing ? "true" : undefined}
+            className={`inline-flex min-w-0 items-center gap-1.5 rounded-xl bg-emerald-50 px-3.5 py-2 text-[13px] font-bold text-emerald-700 transition-[background-color,color,box-shadow,border-color] border border-transparent hover:bg-emerald-100 dark:bg-emerald-900/40 dark:text-emerald-300 dark:hover:bg-emerald-900/70 ${
+              pulsing
+                ? "border-rose-300 bg-rose-50 shadow-[inset_0_0_0_2px] shadow-rose-300 dark:border-rose-700 dark:bg-rose-950/40 dark:shadow-rose-700"
+                : ""
+            } ${RESUME_FOCUS_RING}`}
+          >
+            <Play size={14} className="shrink-0" />
+            <span className="min-w-0 truncate">
+              ادامه از «{item.title}»
+            </span>
+          </button>
+          {hinting && (
+            /* راند ۲۴۶ — حبابِ آموزشیِ لحظهٔ رسیدنِ درِ ضمیمه: پالس «کجا» را
+               می‌گوید، این «چه‌کار» را می‌گوید — همان قراردادِ حبابِ درِ هدرِ
+               r245: بی‌اثر برِ ماوس (pointer-events-none)، role=status برایِ
+               صفحه‌خوان، با کلیکِ رویِ خودِ نشانگر یا ۳٫۶ثانیه می‌رود. */
+            <span
+              role="status"
+              data-testid="appendix-resume-pill-hint"
+              data-hinting="true"
+              className="pointer-events-none absolute top-full right-0 z-30 mt-2 w-64 max-w-[calc(100vw-2.5rem)] rounded-xl border border-emerald-200 bg-white px-3 py-2 text-[10.5px] font-bold leading-5 text-emerald-800 shadow-xl dark:border-emerald-800 dark:bg-stone-900 dark:text-emerald-200"
+            >
+              کلیک: پرش به همین موضوع — کلیکِ راست: پاک‌کردنِ نشانگرِ «ادامهٔ مطالعه» (پاک‌کردن چیزی را از یادگیری‌ات کم نمی‌کند)
+            </span>
+          )}
+        </span>
       )}
       {recent && (
         <button

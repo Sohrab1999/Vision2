@@ -6,7 +6,7 @@
 // تاریخچه (vision2-bg-history — بدونِ کلیدِ تازه) هم به‌شکلِ فرمان‌های
 // گروهِ «ادامه‌های اخیر» سوارِ همان جست‌وجو می‌آیند — هشتمین درِ حلقه.
 // قراردادهایی که قفل می‌شوند:
-//   ① بی‌تاریخچه = هیچ گروهی — شمارشِ ۳۴/۳۶ سطح‌بالا (۳۱/۳۲ کهنه + ۳/۴ درِ r244) دست‌نخورده
+//   ① بی‌تاریخچه = هیچ گروهی — شمارشِ ۳۵/۳۷ سطح‌بالا (۳۱/۳۲ کهنه + ۴/۵ درِ r244/r246) دست‌نخورده
 //   ② خودِ رکوردِ فعلی از فهرست حذف است (فرمانِ اصلی همان را می‌برد)
 //     و جدیدترینِ «دیگر» اول می‌آید — ترتیب از خودِ نوشتن
 //   ③ سقفِ ۴ مثلِ پنلِ هدرِ r240 — پروفایل مالکِ همهٔ ۸تاست
@@ -66,14 +66,14 @@ describe("«مسیرهای اخیر» در فرمان‌یاب (r241)", () => {
     render(<CommandPalette />);
     openPalette();
     const opts = screen.getAllByRole("option");
-    expect(opts.length).toBe(34); // ۳۱ کهنه + ۳ درِ حلقه (r244 — بی‌رکورد)
+    expect(opts.length).toBe(35); // ۳۱ کهنه + ۴ درِ حلقه (r246 — بی‌رکورد)
     expect(screen.queryByRole("group", { name: "ادامه‌های اخیر" })).toBeNull();
-    // حتی با رکورد، بدونِ تاریخچه فقط فرمانِ اصلی هست (۳۶ = ۳۱ + nav-resume + ۴ درِ r244) و گروهِ اخیر نیست
+    // حتی با رکورد، بدونِ تاریخچه فقط فرمانِ اصلی هست (۳۷ = ۳۱ + nav-resume + ۵ در) و گروهِ اخیر نیست
     writeAppendixResume(phonRec);
     cleanup();
     render(<CommandPalette />);
     openPalette();
-    expect(screen.getAllByRole("option").length).toBe(36);
+    expect(screen.getAllByRole("option").length).toBe(37);
     expect(screen.queryByRole("group", { name: "ادامه‌های اخیر" })).toBeNull();
   });
 

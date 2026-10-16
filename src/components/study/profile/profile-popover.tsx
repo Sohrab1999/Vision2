@@ -16,7 +16,7 @@ import { adoptResumeIfAbsent, appendixHistoryServerSnapshot, appendixHistorySnap
 import { useAppendixResumeNav } from "../shared/use-appendix-resume-nav";
 import { useToast } from "@/hooks/use-toast";
 import { RESUME_FOCUS_RING } from "@/lib/study-theme";
-import { RESUME_LOOP_DOORS, DOOR_HANDOFF_DELAY_MS, doorShortName, focusHeaderDoor, type ResumeLoopDoor } from "@/lib/resume-loop-doors";
+import { RESUME_LOOP_DOORS, DOOR_HANDOFF_DELAY_MS, doorShortName, focusHeaderDoor, openAppendixDoor, type ResumeLoopDoor } from "@/lib/resume-loop-doors";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 // ------------------------------------------------------------------
@@ -35,6 +35,7 @@ export default function ProfilePopover() {
   const setSyncCode = useStudy((s) => s.setSyncCode);
   // راند ۲۴۵ — مینی‌کارتِ درهایِ حلقه: ناوبریِ درها + گِیتِ درِ هدر (رویِ ضمیمه مستور است)
   const setView = useStudy((s) => s.setView);
+  const openLessonTab = useStudy((s) => s.openLessonTab);
   const view = useStudy((s) => s.view);
   const mounted = useMounted();
   const { toast } = useToast();
@@ -325,7 +326,14 @@ export default function ProfilePopover() {
       return;
     }
     if (a.kind === "goto-appendix") {
-      setView({ type: "appendix" });
+      // راند ۲۴۶ — helperِ مشترکِ درِ ضمیمه: رویدادِ زنده رویِ خودِ ضمیمه،
+      // پرچمِ یک‌بارمصرف + ناوبری از جای دیگر (منطقِ رفت در یک نقطه).
+      openAppendixDoor(setView, view.type === "appendix");
+      return;
+    }
+    if (a.kind === "goto-results") {
+      // راند ۲۴۶ — درِ ششم: تبِ تست‌های درسِ حاضر، وگرنه درسِ اول.
+      openLessonTab(view.type === "lesson" ? view.id : 1, "tests");
       return;
     }
     if (handoffRef.current !== null) window.clearTimeout(handoffRef.current);

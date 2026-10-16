@@ -150,18 +150,19 @@ describe("حبابِ آموزشیِ درِ هدر — r245 ①", () => {
 });
 
 describe("doorShortName — یک اشتقاق، یک منبع — r245 ②", () => {
-  it("⑤ درهایِ leadدار = leadِ بدونِ «:»؛ درِ بی‌lead = نخستینِ بخشِ متن", () => {
+  it("⑤ درهایِ leadدار = leadِ بدونِ «:»؛ درِ بی‌lead = نخستینِ بخشِ متن (r246: درِ «نتایج» هم)", () => {
     const byId = Object.fromEntries(RESUME_LOOP_DOORS.map((d) => [d.id, d]));
     expect(doorShortName(byId.header!)).toBe("هدر");
     expect(doorShortName(byId.home!)).toBe("خانه");
     expect(doorShortName(byId.appendix!)).toBe("ضمیمه");
+    expect(doorShortName(byId.results!)).toBe("نتایج");
     expect(doorShortName(byId.profile!)).toBe("پروفایل");
     expect(doorShortName(byId.palette!)).toBe("فرمان‌یاب");
   });
 });
 
 describe("مینی‌کارتِ درهایِ حلقه در پروفایل — r245 ②", () => {
-  it("⑥ با رکورد: چهار ردیف از داده — بی‌درِ پروفایل (اینجا ایستاده‌ای) + پانویسِ عملیاتی", () => {
+  it("⑥ با رکورد: پنج ردیف از داده — بی‌درِ پروفایل (اینجا ایستاده‌ای) + پانویسِ عملیاتی (r246: درِ ششم پیوست)", () => {
     writeAppendixResume(grammarRec);
     render(<ProfilePopover />);
     openProfile();

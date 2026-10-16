@@ -10,7 +10,7 @@ import {
   appendixResumeSnapshot,
   subscribeAppendixResume,
 } from "@/lib/bg-reading";
-import { RESUME_LOOP_DOORS, DOOR_HANDOFF_DELAY_MS as HANDOFF_DELAY_MS, focusHeaderDoor, type ResumeLoopDoor } from "@/lib/resume-loop-doors";
+import { RESUME_LOOP_DOORS, DOOR_HANDOFF_DELAY_MS as HANDOFF_DELAY_MS, focusHeaderDoor, openAppendixDoor, type ResumeLoopDoor } from "@/lib/resume-loop-doors";
 import { isTypingTarget, useKeydown } from "@/hooks/use-keyboard";
 import { RESUME_FOCUS_RING } from "@/lib/study-theme";
 
@@ -151,7 +151,15 @@ export default function ShortcutGuide() {
       return;
     }
     if (a.kind === "goto-appendix") {
-      setView({ type: "appendix" });
+      // راند ۲۴۶ — helperِ مشترک: رویِ خودِ ضمیمه رویدادِ زندهٔ نشانگر،
+      // از جای دیگر پرچمِ یک‌بارمصرف + ناوبریِ فوری (ناوبری‌ها بی‌تعارضِ فوکوس‌اند).
+      openAppendixDoor(setView, view.type === "appendix");
+      return;
+    }
+    if (a.kind === "goto-results") {
+      // راند ۲۴۶ — درِ ششم: باز کردنِ خودِ محلِ خطِ «ادامهٔ مطالعه» —
+      // تبِ تست‌های درسِ حاضر، وگرنه درسِ اول (مدخلِ اصلیِ کتاب).
+      openLessonTab(view.type === "lesson" ? view.id : 1, "tests");
       return;
     }
     handoffRef.current = window.setTimeout(() => {

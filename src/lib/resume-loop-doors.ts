@@ -22,9 +22,10 @@ export type ResumeDoorAction =
   | { kind: "focus-header" }
   | { kind: "goto-home" }
   | { kind: "goto-appendix" }
+  | { kind: "goto-results" }
   | { kind: "open-profile" };
 
-export type ResumeDoorId = "palette" | "header" | "home" | "appendix" | "profile";
+export type ResumeDoorId = "palette" | "header" | "home" | "appendix" | "results" | "profile";
 
 export interface ResumeLoopDoor {
   id: ResumeDoorId;
@@ -61,6 +62,54 @@ export function doorShortName(door: ResumeLoopDoor): string {
 // پالسِ زرشکیِ گذراست — پرنده‌هایِ در (راهنما/فرمان‌یاب) فقط رویداد را
 // می‌فرستند؛ منطقِ نمایش در یک نقطه است.
 export const PULSE_HEADER_RESUME_EVENT = "pulse-header-resume";
+
+// ------------------------------------------------------------------
+// راند ۲۴۶ — بندِ ① پیشنهادِ ۲۴۵: ایدئومِ درِ هدر برایِ نشانگرِ سرِ
+// ضمیمه هم قابلِ حمل است — پالسِ زرشکیِ ۱٫۶ثانیه‌ای + حبابِ آموزشیِ
+// ۳٫۶ثانیه‌ای که «چه‌کار می‌توانم بکنم» را می‌گوید، لحظهٔ رسیدنِ درِ ضمیمه.
+//
+// نکتهٔ زمان‌بندی که هدر نداشت: نشانگر فقط رویِ خودِ نمایِ ضمیمه سوار
+// است — پرنده‌ای که از جای دیگر ناوبری می‌کند، رویداد را قبل از mount
+// نشانگر می‌فرستد و رویدادِ گم می‌شود. راه‌حل: درخواستِ یک‌بارمصرف
+// (پرچمِ مُهَردار) — پرنده پرچم را می‌گذارد و ناوبری می‌کند؛ نشانگر
+// بعد از mount آن را مصرف می‌کند. رویِ خودِ ضمیمه (نشانگر سوار است)
+// همان رویدادِ زنده — دو مسیر، یک نمایش، مالکیت با خودِ نشانگر.
+// ------------------------------------------------------------------
+export const PULSE_APPENDIX_PILL_EVENT = "pulse-appendix-pill";
+
+let appendixPillHintAt = 0;
+/** درخواستِ پالس+حباب برایِ نشانگرِ ضمیمه — قبل از ناوبریِ به ضمیمه.
+ * یک‌بارمصرف: مصرف‌کننده فقط نشانگرِ سوارشده است؛ مهلتِ ۲ثانیه‌ای تا
+ * درخواستِ کهنه هرگز دیرتر پالسِ کاذب نسازد. */
+export function requestAppendixPillHint(): void {
+  appendixPillHintAt = Date.now();
+}
+/** نگاهِ تازه‌بودنِ درخواستِ معلق — بدونِ مصرف ( StrictMode دو-بارِ mount
+ * می‌کند: نگاهِ خواندنیِ بدونِ عارضه از خورده‌شدنِ پرچم در mountِ اول
+ * جلوگیری می‌کند؛ اقرارِ جدا در تایمرِ زندهٔ نهایی است). */
+export function peekAppendixPillHint(): boolean {
+  return appendixPillHintAt !== 0 && Date.now() - appendixPillHintAt < 2000;
+}
+/** اقرارِ درخواستِ معلق — فقط در تایم‌اوتِ زنده‌ای که واقعاً نشان می‌دهد. */
+export function ackAppendixPillHint(): void {
+  appendixPillHintAt = 0;
+}
+
+/** باز کردنِ درِ ضمیمه از هر پرنده‌ای (راهنما/فرمان‌یاب/پروفایل —
+ * تک‌نقطه‌ای بودنِ منطقِ رفت، همان ایدئومِ focusHeaderDoor): رویِ خودِ
+ * ضمیمه رویدادِ زنده (نشانگر سوار است)، از جای دیگر پرچمِ یک‌بارمصرف +
+ * ناوبریِ فوری (ناوبری‌ها بی‌تعارضِ فوکوس‌اند — درسِ r243). */
+export function openAppendixDoor(
+  setView: (v: { type: "appendix" }) => void,
+  onAppendix: boolean,
+): void {
+  if (onAppendix) {
+    window.dispatchEvent(new CustomEvent(PULSE_APPENDIX_PILL_EVENT));
+    return;
+  }
+  requestAppendixPillHint();
+  setView({ type: "appendix" });
+}
 
 // تحویلِ فوکوس بینِ دو دایالوگِ رادیکس (درسِ بزرگِ r243): دایالوگِ بسته‌شونده
 // بعد از انیمیشنِ خروجِ ۲۰۰ms فوکوس را به فراخوانش برمی‌گرداند؛ کنشِ
@@ -113,6 +162,17 @@ export const RESUME_LOOP_DOORS: ResumeLoopDoor[] = [
     text: "نشانگرِ «ادامهٔ مطالعه» سرِ صفحه + چیپِ «مسیر اخیر» زیرِ آن",
     openLabel: "رفتن به ضمیمهٔ کتاب — محلِ نشانگرِ «ادامهٔ مطالعه»",
     action: { kind: "goto-appendix" },
+  },
+  {
+    // راند ۲۴۶ — بندِ ② پیشنهادِ ۲۴۵: درِ ششم — جایی که یادگیرنده نتیجه
+    // می‌گیرد (تبِ تست‌ها و صفحهٔ نتیجهٔ هر درس)، راهِ برگشت به ضمیمه هم
+    // آن‌جاست: خطِ «ادامهٔ مطالعه» زیرِ کارت‌های تست و زیرِ کارتِ نتیجه.
+    // اکشنِ در = باز کردنِ خودِ محل (تبِ تست‌های درسِ حاضر، وگرنه درس ۱).
+    id: "results",
+    lead: "نتایج:",
+    text: "تبِ تست‌های هر درس — خطِ «ادامهٔ مطالعه» زیرِ کارت‌های تست و زیرِ نتیجه، راهِ برگشت به ضمیمه",
+    openLabel: "رفتن به تبِ تست‌ها — محلِ خطِ «ادامهٔ مطالعه»",
+    action: { kind: "goto-results" },
   },
   {
     id: "profile",

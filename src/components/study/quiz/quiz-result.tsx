@@ -17,6 +17,7 @@ import { downloadResultImage } from "@/lib/result-image";
 import { useToast } from "@/hooks/use-toast";
 import { gradeFor } from "@/lib/domain/grade";
 import ExplainBox from "../shared/explain-box";
+import AppendixResumeRow from "../shared/appendix-resume-row";
 import ProgressRing from "../practice/progress-ring";
 import { letters } from "./quiz-constants";
 
@@ -38,6 +39,8 @@ export interface QuizResultProps {
   groupOf?: (q: QuizQuestion) => string;
   /** display label per group key */
   groupLabels?: Record<string, string>;
+  /** راند ۲۴۶ — درِ ششمِ حلقه: خطِ «ادامهٔ مطالعه» بینِ کارتِ نتیجه و مرور */
+  resumeDoor?: boolean;
   onRestart: () => void;
   onExit: () => void;
 }
@@ -114,6 +117,7 @@ export default function QuizResult({
   faOptions,
   groupOf,
   groupLabels,
+  resumeDoor = false,
   onRestart,
   onExit,
 }: QuizResultProps) {
@@ -358,6 +362,11 @@ export default function QuizResult({
   return (
     <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="space-y-5">
       {certificate ? certificateCard : standardCard}
+
+      {/* راند ۲۴۶ — درِ ششمِ حلقه: بینِ کارتِ نتیجه و مرور، راهِ برگشت به ضمیمه —
+          جایی که یادگیرنده نتیجه می‌گیرد، حلقه هم آن‌جاست (بندِ ② پیشنهادِ ۲۴۵).
+          بی‌رکورد = هیچ (صداقتِ nav-resume) — خودِ ردیف تصمیم می‌گیرد. */}
+      {resumeDoor && <AppendixResumeRow />}
 
       {/* review */}
       <div className="max-h-[46vh] space-y-2.5 overflow-y-auto nice-scroll pl-1">

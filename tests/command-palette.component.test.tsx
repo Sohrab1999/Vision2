@@ -56,14 +56,14 @@ describe("پالت فرمان — کامپوننت (Task 79)", () => {
     });
   });
 
-  it("بسته به‌صورت پیش‌فرض؛ رویداد پنجره‌ای باز می‌کند — ۳۴ گزینهٔ سطح‌بالا (۳۱ کهنه + ۳ درِ حلقهٔ r244)", () => {
+  it("بسته به‌صورت پیش‌فرض؛ رویداد پنجره‌ای باز می‌کند — ۳۵ گزینهٔ سطح‌بالا (۳۱ کهنه + ۴ درِ حلقه؛ r246: درِ ششم پیوست)", () => {
     const { container } = render(<CommandPalette />);
     expect(container.querySelector(".command-palette")).toBeNull();
     openPalette();
     const input = screen.getByRole("combobox");
     expect(input).toBeInTheDocument();
     const opts = screen.getAllByRole("option");
-    expect(opts.length).toBe(34); // ۳۱ کهنه + ۳ درِ حلقه (بی‌رکورد: درِ هدر هم غیب است)
+    expect(opts.length).toBe(35); // ۳۱ کهنه + ۴ درِ حلقه (بی‌رکورد: درِ هدر هم غیب است)
     // گروه‌بندی: «ناوبری» اول است
     expect(screen.getAllByRole("group")[0]?.getAttribute("aria-label")).toBe("ناوبری");
   });
@@ -76,9 +76,9 @@ describe("پالت فرمان — کامپوننت (Task 79)", () => {
     expect(screen.getAllByRole("option").length).toBeGreaterThan(0);
     fireEvent.keyDown(window, { ctrlKey: true, code: "KeyK" });
     expect(screen.queryByRole("combobox")).toBeNull();
-    // بازِ دوباره: پرس‌وجوی کهنه نمانده — نمای خالیِ ۳۴گزینه‌ای (۳۱ + ۳ در)
+    // بازِ دوباره: پرس‌وجوی کهنه نمانده — نمای خالیِ ۳۵گزینه‌ای (۳۱ + ۴ در)
     fireEvent.keyDown(window, { ctrlKey: true, code: "KeyK" });
-    expect(screen.getAllByRole("option").length).toBe(34);
+    expect(screen.getAllByRole("option").length).toBe(35);
   });
 
   it("«آزمون ۱۵» → دقیقاً ۱ گزینه با مقدار اسنپ‌شده به [۱۰/۲۰/۳۰] (قرارداد واقعی)", () => {
@@ -113,8 +113,8 @@ describe("پالت فرمان — کامپوننت (Task 79)", () => {
     openPalette();
     typeQuery("ضمیمه");
     const opts = screen.getAllByRole("option");
-    // r244 — درهایِ حلقه هم با پرس‌وجو می‌آیند (متنِ درِ خانه/ضمیمه/پروفایل «ضمیمه» دارد)
-    expect(opts.length).toBe(3);
+    // r244/r246 — درهایِ حلقه هم با پرس‌وجو می‌آیند (متنِ درِ خانه/ضمیمه/نتایج/پروفایل «ضمیمه» دارد)
+    expect(opts.length).toBe(4);
     // مقصدِ اصلی در تساویِ امتیاز از ترتیبِ آرایه اول است
     expect(opts[0]).toHaveTextContent("ضمیمهٔ کتاب");
     fireEvent.keyDown(screen.getByRole("combobox"), { key: "Enter" });

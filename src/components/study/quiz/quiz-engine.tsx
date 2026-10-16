@@ -47,6 +47,9 @@ export interface QuizEngineProps {
   trackMistakes?: boolean;
   /** predicate: question's options are Persian → rendered RTL (word drills) */
   faOptions?: (q: QuizQuestion) => boolean;
+  /** راند ۲۴۶ — درِ ششمِ حلقه: خطِ «ادامهٔ مطالعه» زیرِ کارتِ نتیجه
+   * (فقط مصرف‌کننده‌هایِ درس opt-in می‌کنند — آزمون جامع/کنکور/… دست‌نخورده) */
+  resumeDoor?: boolean;
 }
 
 export default function QuizEngine({
@@ -66,6 +69,7 @@ export default function QuizEngine({
   mistakesOf,
   trackMistakes = true,
   faOptions,
+  resumeDoor = false,
 }: QuizEngineProps) {
   const { toast } = useToast();
 
@@ -108,6 +112,7 @@ export default function QuizEngine({
         faOptions={faOptions}
         groupOf={groupOf}
         groupLabels={groupLabels}
+        resumeDoor={resumeDoor}
         onRestart={restart}
         onExit={onExit}
       />
