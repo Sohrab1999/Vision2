@@ -10,10 +10,11 @@ import {
   TOTAL_VOCABULARY,
   LESSON_QUIZ_COUNT,
   EXAM_BANK_SIZE,
+  EXAM_BANK_G10_SIZE,
   TOTAL_QUESTIONS,
   lessonMetaById,
 } from "@/data/lesson-meta";
-import { lessons, examBank } from "@/data";
+import { lessons, examBank, examBankG10 } from "@/data";
 
 describe("lesson-meta drift guard", () => {
   it("covers exactly the 3 book lessons, in order", () => {
@@ -45,7 +46,31 @@ describe("lesson-meta drift guard", () => {
     expect(TOTAL_VOCABULARY).toBe(lessons.reduce((s, l) => s + l.vocabulary.length, 0));
     expect(LESSON_QUIZ_COUNT).toBe(lessons.reduce((s, l) => s + l.quizzes.length, 0));
     expect(EXAM_BANK_SIZE).toBe(examBank.length);
-    expect(TOTAL_QUESTIONS).toBe(LESSON_QUIZ_COUNT + EXAM_BANK_SIZE);
+    expect(EXAM_BANK_G10_SIZE).toBe(examBankG10.length);
+    expect(TOTAL_QUESTIONS).toBe(LESSON_QUIZ_COUNT + EXAM_BANK_SIZE + EXAM_BANK_G10_SIZE);
+  });
+
+  it("grade-10 bank: every question has a valid 4-option shape and a booklet-key answer", () => {
+    expect(examBankG10.length).toBeGreaterThan(0);
+    for (const q of examBankG10) {
+      expect(q.id.startsWith("g10-"), q.id).toBe(true);
+      expect(q.options.length, q.id).toBe(4);
+      expect(q.answer, q.id).toBeGreaterThanOrEqual(0);
+      expect(q.answer, q.id).toBeLessThanOrEqual(3);
+      expect(q.options.every((o) => o.trim().length > 0), q.id).toBe(true);
+    }
+    // شناسه‌ها یکتا و پیوسته‌اند
+    const ids = new Set(examBankG10.map((q) => q.id));
+    expect(ids.size).toBe(examBankG10.length);
+    // هیچ نشت فارسی در متن انگلیسی (استاندارد بانک x)
+    const faRe = /[\u0600-\u06FF]/;
+    for (const q of examBankG10) {
+      expect(faRe.test(q.question), q.id).toBe(false);
+      expect(q.options.some((o) => faRe.test(o)), q.id).toBe(false);
+    }
+    // حذف تکرارهای نزدیک (الگوی Jaccard r268)
+    const stems = examBankG10.map((q) => q.question.replace(/-{2,}/g, " ").toLowerCase());
+    expect(new Set(stems).size).toBe(stems.length);
   });
 
   it("lessonMetaById resolves 1..3 and rejects the rest", () => {

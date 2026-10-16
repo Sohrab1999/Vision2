@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
-import { ClipboardCheck, Timer, Zap, BookOpen, GraduationCap, ScrollText, Eraser, Layers, ArrowLeft, Ear } from "lucide-react";
-import { examBank, lessons } from "@/data";
+import { ClipboardCheck, Timer, Zap, BookOpen, GraduationCap, ScrollText, Eraser, Layers, ArrowLeft, Ear, Library } from "lucide-react";
+import { examBank, examBankG10, lessons } from "@/data";
 import type { QuizQuestion } from "@/lib/study-types";
 import { useStudy, mistakesOfLesson } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -38,12 +38,15 @@ const GROUP_LABELS: Record<string, string> = {
 
 const MISTAKES_TARGET: Record<string, number | string> = { l1: 1, l2: 2, l3: 3, x: 0 };
 
-type Mode = "vocab" | "final";
+type Mode = "vocab" | "final" | "konkur10";
 interface Session {
   title: string;
   questions: QuizQuestion[];
   timed: boolean;
   kind: "exam" | "final" | "exam-mistakes";
+  /** کلید نتیجه در store — بانک دهم سهمیهٔ مستقل دارد ("exam-g10") */
+  resultKey: "exam" | "final" | "exam-mistakes" | "exam-g10";
+  mistakesBucket?: number | string;
 }
 
 /** طول‌های مجاز آزمون جامع — فرمان پارامتری پالت هم همین‌ها را پیش‌انتخاب می‌کند */
@@ -53,6 +56,7 @@ const EXAM_PREFILL_KEY = "vision2-exam-prefill";
 export default function ExamView() {
   const [session, setSession] = useState<Session | null>(null);
   const [mode, setMode] = useState<Mode>("vocab");
+  const [konkurTimed, setKonkurTimed] = useState(false);
   // Task 69: فرمان پارامتری پالت («آزمون ۲۰») مقدار را در sessionStorage
   // می‌گذارد — initializer غیرمخرب می‌خواند (نما lazy است و رویدادش گم می‌شود)
   // Task 71: صفت زمان هم راه می‌آید («آزمون ۲۰ بدون زمان») — هم‌الگوی تعداد
@@ -62,6 +66,7 @@ export default function ExamView() {
   const [dictOpen, setDictOpen] = useState(false);
   const bestExam = useStudy((s) => s.results["exam"]);
   const bestFinal = useStudy((s) => s.results["final"]);
+  const bestKonkur10 = useStudy((s) => s.results["exam-g10"]);
   const mistakes = useStudy((s) => s.mistakes);
   const setView = useStudy((s) => s.setView);
   const mounted = useMounted();
@@ -96,6 +101,7 @@ export default function ExamView() {
   const examDictCount = examDictPool.words.length;
 
   const examMistakeCount = mounted ? mistakesOfLesson(mistakes, 0) : 0;
+  const konkurMistakeCount = mounted ? mistakesOfLesson(mistakes, "g10") : 0;
   const totalMistakesAll = mounted
     ? mistakesOfLesson(mistakes, 0) + mistakesOfLesson(mistakes, 1) + mistakesOfLesson(mistakes, 2) + mistakesOfLesson(mistakes, 3)
     : 0;
@@ -109,8 +115,8 @@ export default function ExamView() {
       <QuizEngine
         title={session.title}
         questions={session.questions}
-        resultKeyStr={session.kind === "final" ? "final" : session.kind === "exam" ? "exam" : "exam-mistakes"}
-        lessonId={0}
+        resultKeyStr={session.resultKey}
+        lessonId={session.mistakesBucket ?? 0}
         category={session.kind === "final" ? "final" : session.kind === "exam" ? "exam" : "mistakes"}
         immediate={session.kind === "exam-mistakes"}
         secondsPerQuestion={session.timed && session.kind !== "exam-mistakes" ? 45 : undefined}
@@ -166,8 +172,17 @@ export default function ExamView() {
           title="آزمون جامع پایان ترم"
           desc="۴۰ سؤال ترکیبی از هر سه درس + بانک تستی، با گواهی پایان ترم"
           accent="amber"
-          badge="جدید"
           best={bestFinal ? `بهترین نتیجه: ${faNum(bestFinal.percent)}٪` : undefined}
+        />
+        <ModeCard
+          active={mode === "konkur10"}
+          onClick={() => setMode("konkur10")}
+          icon={Library}
+          title="بانک کنکوری پایهٔ دهم"
+          desc={`${faNum(examBankG10.length)} تست واژگان و گرامر از جزوهٔ جامع دهم، با کلید و ترجمهٔ خودِ جزوه`}
+          accent="teal"
+          badge="جدید"
+          best={bestKonkur10 ? `بهترین نتیجه: ${faNum(bestKonkur10.percent)}٪` : undefined}
         />
       </div>
 
@@ -234,6 +249,7 @@ export default function ExamView() {
                 questions: shuffle(examBank).slice(0, examCount),
                 timed: examTimed,
                 kind: "exam",
+                resultKey: "exam",
               })
             }
             className="w-full rounded-xl bg-emerald-600 py-3.5 text-[15px] font-black text-white shadow-lg shadow-emerald-900/25 transition-[background-color,transform] hover:bg-emerald-700 active:scale-[0.98]"
@@ -250,6 +266,7 @@ export default function ExamView() {
                   questions: shuffle(examBank.filter((q) => (mistakes[`0:${q.id}`] ?? 0) > 0)),
                   timed: false,
                   kind: "exam-mistakes",
+                  resultKey: "exam-mistakes",
                 })
               }
               className="mistakes-cta mt-4 flex w-full items-center justify-between gap-3 rounded-2xl border border-rose-300 bg-gradient-to-l from-rose-50 to-red-50 p-4 text-right shadow-sm transition-[box-shadow,transform] hover:shadow-md active:scale-[0.99]"
@@ -312,6 +329,113 @@ export default function ExamView() {
               )}
             </DialogContent>
           </Dialog>
+        </div>
+      )}
+
+      {/* --------------------------- konkur grade-10 bank config --------------------------- */}
+      {mode === "konkur10" && (
+        <div className="rounded-2xl border c-card p-5 shadow-sm sm:p-6">
+          <div className="mb-4 flex items-center gap-3">
+            <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-teal-50 text-teal-600">
+              <Library size={22} />
+            </span>
+            <div>
+              <h1 className="text-xl font-extrabold text-stone-800">بانک کنکوری پایهٔ دهم</h1>
+              <p className="text-[13px] text-stone-500">
+                {faNum(examBankG10.length)} تست واژگان و گرامر از جزوهٔ جامع دهم — پاسخ‌ها از کلید چاپی خودِ جزوه
+              </p>
+            </div>
+          </div>
+
+          <p className="mb-2 text-[13px] font-bold text-stone-600">۱. تعداد سؤالات را انتخاب کنید:</p>
+          <div className="mb-5 flex flex-wrap gap-2">
+            {EXAM_COUNTS.map((n) => (
+              <button
+                key={n}
+                onClick={() => setExamCount(n)}
+                className={`rounded-xl border-2 px-5 py-2.5 text-sm font-black transition-[border-color,transform] active:scale-95 ${
+                  examCount === n
+                    ? "border-teal-500 bg-teal-50 text-teal-700"
+                    : "border-stone-200 bg-white text-stone-600 hover:border-teal-300"
+                }`}
+              >
+                {faNum(n)} تست
+              </button>
+            ))}
+          </div>
+
+          <p className="mb-2 text-[13px] font-bold text-stone-600">۲. حالت آزمون:</p>
+          <div className="mb-6 flex flex-wrap gap-2">
+            <button
+              onClick={() => setKonkurTimed(true)}
+              className={`inline-flex items-center gap-1.5 rounded-xl border-2 px-4 py-2.5 text-[13px] font-bold transition-[border-color,transform] active:scale-95 ${
+                konkurTimed
+                  ? "border-teal-500 bg-teal-50 text-teal-700"
+                  : "border-stone-200 bg-white text-stone-600 hover:border-teal-300"
+              }`}
+            >
+              <Timer size={16} />
+              با تایمر (۴۵ ثانیه برای هر تست)
+            </button>
+            <button
+              onClick={() => setKonkurTimed(false)}
+              className={`inline-flex items-center gap-1.5 rounded-xl border-2 px-4 py-2.5 text-[13px] font-bold transition-[border-color,transform] active:scale-95 ${
+                !konkurTimed
+                  ? "border-teal-500 bg-teal-50 text-teal-700"
+                  : "border-stone-200 bg-white text-stone-600 hover:border-teal-300"
+              }`}
+            >
+              <Zap size={16} />
+              بدون تایمر
+            </button>
+          </div>
+
+          <button
+            onClick={() =>
+              setSession({
+                title: `آزمون کنکوری دهم (${examCount} تست)`,
+                questions: shuffle(examBankG10).slice(0, examCount),
+                timed: konkurTimed,
+                kind: "exam",
+                resultKey: "exam-g10",
+                mistakesBucket: "g10",
+              })
+            }
+            className="w-full rounded-xl bg-teal-600 py-3.5 text-[15px] font-black text-white shadow-lg shadow-teal-900/25 transition-[background-color,transform] hover:bg-teal-700 active:scale-[0.98]"
+          >
+            شروع آزمون بانک دهم
+          </button>
+
+          {konkurMistakeCount > 0 && (
+            <button
+              onClick={() =>
+                setSession({
+                  title: "مرور اشتباهات بانک دهم",
+                  questions: shuffle(examBankG10.filter((q) => (mistakes[`g10:${q.id}`] ?? 0) > 0)),
+                  timed: false,
+                  kind: "exam-mistakes",
+                  resultKey: "exam-g10",
+                  mistakesBucket: "g10",
+                })
+              }
+              className="mistakes-cta mt-4 flex w-full items-center justify-between gap-3 rounded-2xl border border-rose-300 bg-gradient-to-l from-rose-50 to-red-50 p-4 text-right shadow-sm transition-[box-shadow,transform] hover:shadow-md active:scale-[0.99]"
+            >
+              <span className="flex items-center gap-3">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-rose-500 text-white shadow-md shadow-rose-500/30">
+                  <Eraser size={20} />
+                </span>
+                <span>
+                  <span className="block text-sm font-extrabold text-stone-800">مرور اشتباهات بانک دهم</span>
+                  <span className="block text-[12px] text-stone-500">
+                    {faNum(konkurMistakeCount)} سؤال از بانک {faNum(examBankG10.length)} تستی که اشتباه جواب داده‌ای
+                  </span>
+                </span>
+              </span>
+              <span className="shrink-0 rounded-xl bg-rose-600 px-4 py-2.5 text-[13px] font-bold text-white shadow-md shadow-rose-600/30">
+                شروع مرور
+              </span>
+            </button>
+          )}
         </div>
       )}
 
@@ -395,7 +519,7 @@ export default function ExamView() {
                   ...shuffle(lessons[2].quizzes).slice(0, 10),
                   ...shuffle(examBank).slice(0, 10),
                 ];
-                setSession({ title: "آزمون جامع پایان ترم", questions: shuffle(pool), timed: finalTimed, kind: "final" });
+                setSession({ title: "آزمون جامع پایان ترم", questions: shuffle(pool), timed: finalTimed, kind: "final", resultKey: "final" });
               }}
               className="w-full rounded-xl bg-gradient-to-l from-amber-500 to-orange-600 py-3.5 text-[15px] font-black text-white shadow-lg shadow-amber-700/25 transition-[opacity,transform] hover:opacity-95 active:scale-[0.98]"
             >
@@ -436,18 +560,22 @@ function ModeCard({
   icon: React.ElementType;
   title: string;
   desc: string;
-  accent: "emerald" | "amber";
+  accent: "emerald" | "amber" | "teal";
   badge?: string;
   best?: string;
 }) {
   const activeCls =
     accent === "amber"
       ? "border-amber-500 bg-amber-50 shadow-amber-200/50"
-      : "border-emerald-500 bg-emerald-50 shadow-emerald-200/50";
+      : accent === "teal"
+        ? "border-teal-500 bg-teal-50 shadow-teal-200/50"
+        : "border-emerald-500 bg-emerald-50 shadow-emerald-200/50";
   const iconCls =
     accent === "amber"
       ? "bg-gradient-to-br from-amber-400 to-orange-600 text-white"
-      : "bg-emerald-50 text-emerald-600";
+      : accent === "teal"
+        ? "bg-teal-50 text-teal-600"
+        : "bg-emerald-50 text-emerald-600";
   return (
     <button
       onClick={onClick}
