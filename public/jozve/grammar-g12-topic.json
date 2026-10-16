@@ -80,6 +80,75 @@
     "note": "خود جزوه سؤال ۱۴ بخش اول را در بخش دوم هم چاپ کرده (Q38) — وفادار ماندیم"
    },
    "extractedRound": 281
+  },
+  "modals": {
+   "pages": "149-152",
+   "familyA": {
+    "questions": 20,
+    "pages": "149",
+    "level": "متوسط",
+    "titlePrinted": "کاربردهای افعال ناقص (Modals)",
+    "keyType": "گرید چاپی «پاسخنامه 20تست :کاربردهای افعال ناقص» (c15/sec23)"
+   },
+   "familyB": {
+    "questions": 20,
+    "pages": "150",
+    "level": "کنکوری",
+    "titlePrinted": "جملات معلوم و مجهول (Passive & Active Sentences)",
+    "keyType": "گرید چاپی «پاسخنامه 20تست گرامر جملات معلوم و مجهول» (c15/sec23)"
+   },
+   "familyC": {
+    "questions": 40,
+    "pages": "151-152",
+    "level": "استاندارد و کنکوری",
+    "titlePrinted": "افعال ناقص در ساختارهای زمان گذشته (زبان تخصصی؛ OCR جزوه «تخصیص»)",
+    "keyType": "گرید چاپی «پاسخنامه تستهای افعال ناقص» (c15/sec23 — ردیف‌های «6a» بدون فاصله با تحمل فاصلهٔ اختیاری)"
+   },
+   "spotLocks": {
+    "A": {
+     "1": "d",
+     "5": "c",
+     "9": "c",
+     "11": "b",
+     "19": "d",
+     "20": "b"
+    },
+    "B": {
+     "1": "c",
+     "3": "b",
+     "5": "c",
+     "8": "d",
+     "19": "b",
+     "20": "a"
+    },
+    "C": {
+     "1": "c",
+     "5": "b",
+     "10": "c",
+     "21": "a",
+     "27": "b",
+     "33": "b",
+     "40": "d"
+    }
+   },
+   "answerRepairs": [
+    {
+     "family": "C",
+     "n": 10,
+     "grid": "b",
+     "applied": "c",
+     "reason": "داوری r269: گرید چاپی b=«should have been painted» (انتظارِ برآورده‌نشده/انتقاد) با تعجبِ مثبتِ «What a beautiful painting!» نمی‌سازد؛ طراحیِ خود سؤال (پسیو + استنتاج) و الگوی کلاسیک کنکور c=«must have been painted» است — الگوی دقیق override راند ۲۷۹ (vocab Q236)."
+    }
+   ],
+   "doubleBlanks": {
+    "A": [],
+    "B": [
+     9
+    ],
+    "C": []
+   },
+   "translations": "در جزوه برای این سه خانواده چاپ نشده است (غیبت صادقانه — الگوی r278/r279)",
+   "extractedRound": 282
   }
  },
  "lessons": [
@@ -2296,6 +2365,1070 @@
       "had ever seen"
      ],
      "answer": 2
+    }
+   ]
+  },
+  {
+   "lesson": 5,
+   "title": "کاربردهای افعال ناقص — متوسط (ص۱۴۹)",
+   "level": "متوسط",
+   "count": 20,
+   "questions": [
+    {
+     "id": "g12-modal1-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Some useful information on how to use this dictionary --------------- at the beginning of the book.",
+     "options": [
+      "can find",
+      "must found",
+      "must find",
+      "can be found"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-modal1-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "You may even find wide ranges of poor people in the US that --------------- their basic needs.",
+     "options": [
+      "cannot be met",
+      "must not meet",
+      "cannot meet",
+      "must not be met"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-modal1-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "Traffic rules and regulations about how to drive safely --------------- by drivers to reduce the number of accidents.",
+     "options": [
+      "can be obeyed",
+      "might be obeyed",
+      "must be obeyed",
+      "will be obeyed"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-modal1-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "Tom is 16 years old and a fast runner who --------------- 200 meters in 22 seconds.",
+     "options": [
+      "can run",
+      "must run",
+      "can be run",
+      "must be run"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-modal1-5",
+     "n": 5,
+     "category": "grammar",
+     "question": "He will be having lessons for another two hours, so we --------------- him now.",
+     "options": [
+      "may be visited",
+      "can be visited",
+      "should visit",
+      "must not be visited"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-modal1-6",
+     "n": 6,
+     "category": "grammar",
+     "question": "Lots of trees --------------- regularly to make building by local people illegally right now.",
+     "options": [
+      "may cut",
+      "are being cut",
+      "must be cut",
+      "are cutting"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-modal1-7",
+     "n": 7,
+     "category": "grammar",
+     "question": "The bill --------------- on time, or we won’t have light next month.",
+     "options": [
+      "can be paid",
+      "must be paid",
+      "may be paid",
+      "should pay"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-modal1-8",
+     "n": 8,
+     "category": "grammar",
+     "question": "Some milk --------------- for the night because we don’t have enough milk in the fridge.",
+     "options": [
+      "should be bought",
+      "must buy",
+      "may buy",
+      "can be bought"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-modal1-9",
+     "n": 9,
+     "category": "grammar",
+     "question": "You really --------------- TV too much because it may have harmful effects on your vision.",
+     "options": [
+      "can not watch",
+      "may not watch",
+      "should not watch",
+      "must be watched"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-modal1-10",
+     "n": 10,
+     "category": "grammar",
+     "question": "You don’t need to be worry because I have got plenty of time and I --------------- as long as you are ready to go.",
+     "options": [
+      "must be waited",
+      "may wait",
+      "should be waited",
+      "can wait"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-modal1-11",
+     "n": 11,
+     "category": "grammar",
+     "question": "The window --------------- because lots of dust enters the room every time, we open it.",
+     "options": [
+      "should close",
+      "must be closed",
+      "may be closed",
+      "can close"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-modal1-12",
+     "n": 12,
+     "category": "grammar",
+     "question": "A: “Where are you going to go on your vacation next summer?” B:”I am not completely sure. I --------------- to Spain or England.”",
+     "options": [
+      "should go",
+      "must be gone",
+      "may go",
+      "can be gone"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-modal1-13",
+     "n": 13,
+     "category": "grammar",
+     "question": "I believe that this discussion --------------- an end to before something serious happens.",
+     "options": [
+      "can be put",
+      "must be put",
+      "may be put",
+      "should put"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-modal1-14",
+     "n": 14,
+     "category": "grammar",
+     "question": "Children --------------- vaccinated against the major childhood diseases that are seriously dangerous.",
+     "options": [
+      "may be",
+      "should be",
+      "can",
+      "must have"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-modal1-15",
+     "n": 15,
+     "category": "grammar",
+     "question": "“Do you think that less money --------------- on buying books or fast-food?”",
+     "options": [
+      "can be spent",
+      "must spend",
+      "may have spent",
+      "should be spent"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-modal1-16",
+     "n": 16,
+     "category": "grammar",
+     "question": "Some low-price stuff --------------- from the downtown mall because they offer high discount.",
+     "options": [
+      "must buy",
+      "can be bought",
+      "should buy",
+      "might buy"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-modal1-17",
+     "n": 17,
+     "category": "grammar",
+     "question": "Recently, an experiment --------------- on bacteria to discover the probable role of harmful bacteria in causing some diseases.",
+     "options": [
+      "has done",
+      "can do",
+      "has been done",
+      "may do"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-modal1-18",
+     "n": 18,
+     "category": "grammar",
+     "question": "We have come to this conclusion that no decision --------------- until the next meeting.",
+     "options": [
+      "can make",
+      "was being made",
+      "will be made",
+      "is making"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-modal1-19",
+     "n": 19,
+     "category": "grammar",
+     "question": "My father has traveled to England many times. So, he --------------- English well.",
+     "options": [
+      "may be spoken",
+      "can be spoken",
+      "should speaks",
+      "can speak"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-modal1-20",
+     "n": 20,
+     "category": "grammar",
+     "question": "If you want to learn a foreign language better, you --------------- it more.",
+     "options": [
+      "must be practiced",
+      "should practice",
+      "would practice",
+      "should be practiced"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 6,
+   "title": "معلوم و مجهول — کنکوری (ص۱۵۰)",
+   "level": "کنکوری",
+   "count": 20,
+   "questions": [
+    {
+     "id": "g12-passive-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "By the time I arrived at the theater, there were no tickets left. They ---------------.",
+     "options": [
+      "had sold",
+      "were sold",
+      "had been sold",
+      "would sell"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-passive-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "The music at the party was loud and --------------- from far away.",
+     "options": [
+      "could hear",
+      "can be heard",
+      "can hear",
+      "could be heard"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-passive-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "Computers --------------- in any field of activity.",
+     "options": [
+      "should use",
+      "can be used",
+      "can use",
+      "must be use"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-passive-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "I have heard that a new house --------------- next to ours next year.",
+     "options": [
+      "must build",
+      "could be build",
+      "is going to be built",
+      "has been built"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-passive-5",
+     "n": 5,
+     "category": "grammar",
+     "question": "When I arrived at the airport yesterday, I --------------- by my cousin and a couple of her friends.",
+     "options": [
+      "have been met",
+      "could meet",
+      "was met",
+      "met"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-passive-6",
+     "n": 6,
+     "category": "grammar",
+     "question": "Marjan said she was really busy this week, but I think she --------------- the party if she doesn’t have to work overtime on Friday.",
+     "options": [
+      "should attend",
+      "will attend",
+      "will be attended",
+      "should be attended"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-passive-7",
+     "n": 7,
+     "category": "grammar",
+     "question": "The road over the mountains --------------- if this rain turns to snow.",
+     "options": [
+      "are closed",
+      "can close",
+      "those can close",
+      "may be closed"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-passive-8",
+     "n": 8,
+     "category": "grammar",
+     "question": "It is expected that a new law --------------- by the government next year.",
+     "options": [
+      "had been introduced",
+      "would be introduced",
+      "will introduce",
+      "will be introduced"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-passive-9",
+     "n": 9,
+     "category": "grammar",
+     "question": "Why --------------- the doctor --------------- before I was told?",
+     "options": [
+      "had / been called",
+      "had been / called",
+      "has been / called",
+      "has / been called"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-passive-10",
+     "n": 10,
+     "category": "grammar",
+     "question": "The five great lakes of the world --------------- in Michigan.",
+     "options": [
+      "can find",
+      "can be found",
+      "can found",
+      "can be find"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-passive-11",
+     "n": 11,
+     "category": "grammar",
+     "question": "That new bridge --------------- before the first snow hits this winter.",
+     "options": [
+      "may been finished",
+      "may be finished",
+      "may finished be",
+      "may finish"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-passive-12",
+     "n": 12,
+     "category": "grammar",
+     "question": "The application form --------------- carefully to make sure we don’t miss anything.",
+     "options": [
+      "should to be filled out",
+      "should be filled out",
+      "should fill out be",
+      "should fill out"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-passive-13",
+     "n": 13,
+     "category": "grammar",
+     "question": "The bill --------------- before leaving the restaurant.",
+     "options": [
+      "must be paid",
+      "may be paid",
+      "had paid",
+      "may pay"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-passive-14",
+     "n": 14,
+     "category": "grammar",
+     "question": "Some dangerous gases --------------- when garbage is burned.",
+     "options": [
+      "should be produced",
+      "may be produced",
+      "should produce",
+      "may produce"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-passive-15",
+     "n": 15,
+     "category": "grammar",
+     "question": "Mom says we --------------- watch TV after we have finished our homework.",
+     "options": [
+      "can be",
+      "must be",
+      "can",
+      "must"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-passive-16",
+     "n": 16,
+     "category": "grammar",
+     "question": "Problems with policies --------------- to the customer service manager.",
+     "options": [
+      "should reported",
+      "be should reported",
+      "should be reported",
+      "should report"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-passive-17",
+     "n": 17,
+     "category": "grammar",
+     "question": "I believe more apartments must --------------- to the workers.",
+     "options": [
+      "be built and given",
+      "be built and give",
+      "be built given",
+      "built and give"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-passive-18",
+     "n": 18,
+     "category": "grammar",
+     "question": "The new book has been recently written --------------- very soon.",
+     "options": [
+      "will be published",
+      "will publish",
+      "would publish",
+      "are publishing"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-passive-19",
+     "n": 19,
+     "category": "grammar",
+     "question": "A man’s worth --------------- by his character rather than by his social position.",
+     "options": [
+      "should be judge",
+      "should be judged",
+      "should judge",
+      "judge"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-passive-20",
+     "n": 20,
+     "category": "grammar",
+     "question": "A mere repetition of other people’s research --------------- true scientific research.",
+     "options": [
+      "cannot be called",
+      "may be call",
+      "cannot call",
+      "may call"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 7,
+   "title": "افعال ناقص زمان گذشته — تخصصی (ص۱۵۱-۱۵۲)",
+   "level": "استاندارد و کنکوری",
+   "count": 40,
+   "questions": [
+    {
+     "id": "g12-modal2-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "The man does not know the ABC of driving; I wonder why he --------------- to take the car.",
+     "options": [
+      "could allow",
+      "must have allowed",
+      "should be allowed",
+      "might have allowed"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-modal2-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "You have to prepare yourself for the interview in which you --------------- a number of unexpected questions.",
+     "options": [
+      "must have asked",
+      "may be asked",
+      "have to be asked",
+      "should have asked"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-modal2-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "It is not enough to do the task; what is more important is that it --------------- as carefully as possible.",
+     "options": [
+      "maybe done",
+      "might have done",
+      "must have done",
+      "should be done"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-modal2-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "The plant is dead. You --------------- it more water.",
+     "options": [
+      "could give",
+      "should gave",
+      "must be given",
+      "should have given"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-modal2-5",
+     "n": 5,
+     "category": "grammar",
+     "question": "You --------------- my grandmother, she died before you were born.",
+     "options": [
+      "couldn't meet",
+      "couldn't have met",
+      "shouldn't meet",
+      "shouldn't have met"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-modal2-6",
+     "n": 6,
+     "category": "grammar",
+     "question": "I knocked at the door, but nobody answered. They --------------- out.",
+     "options": [
+      "might have gone",
+      "should have gone",
+      "should go",
+      "must go"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-modal2-7",
+     "n": 7,
+     "category": "grammar",
+     "question": "Reza doesn’t feel sleepy today. He --------------- very well last night.",
+     "options": [
+      "must have slept",
+      "should have slept",
+      "would have slept",
+      "could have slept"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-modal2-8",
+     "n": 8,
+     "category": "grammar",
+     "question": "I sent a telegram to my uncle a few days ago. He --------------- it by now.",
+     "options": [
+      "could have received",
+      "must have received",
+      "should have received",
+      "would have received"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-modal2-9",
+     "n": 9,
+     "category": "grammar",
+     "question": "The host was rich and --------------- more and better food for the guests, but he didn’t.",
+     "options": [
+      "could prepare",
+      "must have prepared",
+      "must prepare",
+      "could have prepared"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-modal2-10",
+     "n": 10,
+     "category": "grammar",
+     "question": "What a beautiful painting! It --------------- by a famous painter.",
+     "options": [
+      "must have painted",
+      "should have been painted",
+      "must have been painted",
+      "should have painted"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-modal2-11",
+     "n": 11,
+     "category": "grammar",
+     "question": "In the morning the streets were wet. There --------------- a heavy rain during the night.",
+     "options": [
+      "would have been",
+      "must have been",
+      "should have been",
+      "could have been"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-modal2-12",
+     "n": 12,
+     "category": "grammar",
+     "question": "I can’t find my bag anywhere. You --------------- in the shop.",
+     "options": [
+      "could leave",
+      "should have left",
+      "would leave",
+      "might have left"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-modal2-13",
+     "n": 13,
+     "category": "grammar",
+     "question": "My shirts are nice and clean. My mother --------------- and pressed them.",
+     "options": [
+      "should wash",
+      "must have washed",
+      "must wash",
+      "should have washed"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-modal2-14",
+     "n": 14,
+     "category": "grammar",
+     "question": "A: “The luggage was too heavy. I almost died.” B: “You --------------- a telephone taxi. There are plenty of them.”",
+     "options": [
+      "could taken",
+      "must have taken",
+      "must take",
+      "could have taken"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-modal2-15",
+     "n": 15,
+     "category": "grammar",
+     "question": "A: The police stopped the taxi driver. B: He --------------- while the traffic light was red.",
+     "options": [
+      "should have stopped",
+      "must have stopped",
+      "could have stopped",
+      "may have stopped"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-modal2-16",
+     "n": 16,
+     "category": "grammar",
+     "question": "Fatima caught a bad cold last night. She --------------- in the rain for a long time.",
+     "options": [
+      "must stay",
+      "must have stayed",
+      "should stay",
+      "would have stayed"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-modal2-17",
+     "n": 17,
+     "category": "grammar",
+     "question": "James did not know about the trip. He --------------- informed about it earlier.",
+     "options": [
+      "should be",
+      "should have been",
+      "must be",
+      "might have been"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-modal2-18",
+     "n": 18,
+     "category": "grammar",
+     "question": "A: “Where is that cold air coming from?” B: “Someone --------------- the door open.”",
+     "options": [
+      "must leave",
+      "must have left",
+      "should leave",
+      "should have left"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-modal2-19",
+     "n": 19,
+     "category": "grammar",
+     "question": "A: “Do you know where Ali left the car keys?” B: “He --------------- them on the table; I am not sure.”",
+     "options": [
+      "must have left",
+      "should have left",
+      "might have left",
+      "would have left"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-modal2-20",
+     "n": 20,
+     "category": "grammar",
+     "question": "Ali had failed in the exam. He --------------- harder last semester.",
+     "options": [
+      "must study",
+      "must have studied",
+      "should study",
+      "should have studied"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-modal2-21",
+     "n": 21,
+     "category": "grammar",
+     "question": "Steve didn’t go to work in his car. His car --------------- broken down.",
+     "options": [
+      "must have",
+      "would have",
+      "should have",
+      "could have"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-modal2-22",
+     "n": 22,
+     "category": "grammar",
+     "question": "A: “I saw Henry at the library yesterday.” B: “You ---------------. He went abroad last week.”",
+     "options": [
+      "will have",
+      "shouldn't have",
+      "could have",
+      "couldn't have"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-modal2-23",
+     "n": 23,
+     "category": "grammar",
+     "question": "She is afraid of going into the yard. She --------------- have seen a cat.",
+     "options": [
+      "could",
+      "might",
+      "shouldn’t",
+      "should"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-modal2-24",
+     "n": 24,
+     "category": "grammar",
+     "question": "A: “Why is he still at home?” B: “He --------------- have gone to school by now.”",
+     "options": [
+      "might",
+      "should",
+      "must",
+      "could"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-modal2-25",
+     "n": 25,
+     "category": "grammar",
+     "question": "In the morning the light was still on. She --------------- have forgotten to turn it off.",
+     "options": [
+      "should",
+      "might",
+      "could",
+      "would"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-modal2-26",
+     "n": 26,
+     "category": "grammar",
+     "question": "You’ve caught a bad cold. You --------------- have gone out without warm clothes.",
+     "options": [
+      "might",
+      "shouldn’t",
+      "couldn’t",
+      "should"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-modal2-27",
+     "n": 27,
+     "category": "grammar",
+     "question": "Mary knew everything about our decision. She --------------- to our conversation.",
+     "options": [
+      "must listen",
+      "must have listened",
+      "might listen",
+      "should have listened"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-modal2-28",
+     "n": 28,
+     "category": "grammar",
+     "question": "A: “They wanted James to translate the text from Chinese to English.” B: “He --------------- it because he doesn’t know any Chinese.”",
+     "options": [
+      "shouldn’t have translated",
+      "should translate",
+      "couldn’t have translated",
+      "could translate"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-modal2-29",
+     "n": 29,
+     "category": "grammar",
+     "question": "He didn’t give a reply to my letter. I --------------- to write the address on the envelope.",
+     "options": [
+      "could have forgotten",
+      "should forget",
+      "might have forgotten",
+      "might forget"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-modal2-30",
+     "n": 30,
+     "category": "grammar",
+     "question": "A: “Why did you stay at a hotel?” B: “You --------------- with us.”",
+     "options": [
+      "must have stayed",
+      "could stay",
+      "could have stayed",
+      "should stay"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-modal2-31",
+     "n": 31,
+     "category": "grammar",
+     "question": "A: Why didn’t you let her buy what she wanted? B: “You --------------- her like a child yesterday.”",
+     "options": [
+      "shouldn’t treat",
+      "shouldn’t have treated",
+      "mustn’t treat",
+      "might not have treated"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-modal2-32",
+     "n": 32,
+     "category": "grammar",
+     "question": "A: “All the cake has been eaten.” B: “Raman --------------- it. He is in Tehran.”",
+     "options": [
+      "could have eaten",
+      "should have eaten",
+      "couldn’t have eaten",
+      "shouldn’t have eaten"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-modal2-33",
+     "n": 33,
+     "category": "grammar",
+     "question": "The little boy’s eyes are red and watery. He --------------- have cried a lot.",
+     "options": [
+      "should",
+      "must",
+      "could",
+      "shouldn’t"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-modal2-34",
+     "n": 34,
+     "category": "grammar",
+     "question": "He failed all his exams. He --------------- have studied much harder.",
+     "options": [
+      "could",
+      "should",
+      "must",
+      "might"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-modal2-35",
+     "n": 35,
+     "category": "grammar",
+     "question": "Let’s take an umbrella; it --------------- when we get out of the theater.",
+     "options": [
+      "could have rained",
+      "may rain",
+      "might have rained",
+      "should rain"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-modal2-36",
+     "n": 36,
+     "category": "grammar",
+     "question": "A: “I wonder why he didn’t telephone.” B: “He --------------- have forgotten your number.”",
+     "options": [
+      "could",
+      "should",
+      "might",
+      "would"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-modal2-37",
+     "n": 37,
+     "category": "grammar",
+     "question": "You looked much weaker than yesterday. You --------------- an appointment with a doctor then.",
+     "options": [
+      "must have made",
+      "could make",
+      "could had made",
+      "should have made"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-modal2-38",
+     "n": 38,
+     "category": "grammar",
+     "question": "I --------------- have written a letter to him, but I telephoned him instead.",
+     "options": [
+      "could",
+      "shouldn’t",
+      "would",
+      "must"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-modal2-39",
+     "n": 39,
+     "category": "grammar",
+     "question": "The children returned from the picnic very happily. They --------------- have had a good time.",
+     "options": [
+      "should",
+      "must",
+      "could",
+      "would"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-modal2-40",
+     "n": 40,
+     "category": "grammar",
+     "question": "You shouldn’t have left your bicycle there. Someone --------------- it. You were lucky.",
+     "options": [
+      "should steal",
+      "could steal",
+      "must have stolen",
+      "could have stolen"
+     ],
+     "answer": 3
     }
    ]
   }
