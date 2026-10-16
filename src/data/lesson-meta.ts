@@ -52,15 +52,15 @@ export const LESSONS_META: LessonMeta[] = [
     tagline: "فرهنگ ایران، صنایع دستی و جملات شرطی",
     color: "rose",
     vocabCount: 200,
-    quizCount: 40,
+    quizCount: 160,
     grammarCount: 3,
   },
 ];
 
 export const TOTAL_VOCABULARY = 633;
-export const LESSON_QUIZ_COUNT = 332;
+export const LESSON_QUIZ_COUNT = 452;
 export const EXAM_BANK_SIZE = 360;
-export const TOTAL_QUESTIONS = LESSON_QUIZ_COUNT + EXAM_BANK_SIZE; // 692
+export const TOTAL_QUESTIONS = LESSON_QUIZ_COUNT + EXAM_BANK_SIZE; // 812
 
 export function lessonMetaById(id: number): LessonMeta | undefined {
   return LESSONS_META.find((l) => l.id === id);
