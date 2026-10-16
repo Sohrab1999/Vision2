@@ -5,7 +5,7 @@
 // (دو راند تعویق شده بود). قراردادهایی که قفل می‌شوند:
 //   ① بسته به‌صورت پیش‌فرض؛ باز شدن با رویداد پنجره‌ای (دکمهٔ هدر/فوتر)
 //     و چرخهٔ Ctrl+K — هر دو مسیر باز شدن واقعی
-//   ② نمای خالی = ۲۲ فرمان سطح‌بالا (ناوبری+درس‌ها+تمرین+گزارش+ابزار)
+//   ② نمای خالی = ۲۳ فرمان سطح‌بالا (ناوبری+درس‌ها+تمرین+گزارش+ابزار)
 //   ③ «آزمون ۱۵» → دقیقاً ۱ گزینهٔ پارامتری با مقدار اسنپ‌شده به
 //     خانواده (exam values = [10,20,30] → ۱۵ به ۱۰ می‌چسبد — قرارداد
 //     واقعی، نه حدس؛ رگرسیون snap راند ۷۲ در سطح UI)
@@ -55,14 +55,14 @@ describe("پالت فرمان — کامپوننت (Task 79)", () => {
     });
   });
 
-  it("بسته به‌صورت پیش‌فرض؛ رویداد پنجره‌ای باز می‌کند — ۲۲ گزینهٔ سطح‌بالا", () => {
+  it("بسته به‌صورت پیش‌فرض؛ رویداد پنجره‌ای باز می‌کند — ۲۳ گزینهٔ سطح‌بالا", () => {
     const { container } = render(<CommandPalette />);
     expect(container.querySelector(".command-palette")).toBeNull();
     openPalette();
     const input = screen.getByRole("combobox");
     expect(input).toBeInTheDocument();
     const opts = screen.getAllByRole("option");
-    expect(opts.length).toBe(22);
+    expect(opts.length).toBe(23);
     // گروه‌بندی: «ناوبری» اول است
     expect(screen.getAllByRole("group")[0]?.getAttribute("aria-label")).toBe("ناوبری");
   });
@@ -75,9 +75,9 @@ describe("پالت فرمان — کامپوننت (Task 79)", () => {
     expect(screen.getAllByRole("option").length).toBeGreaterThan(0);
     fireEvent.keyDown(window, { ctrlKey: true, code: "KeyK" });
     expect(screen.queryByRole("combobox")).toBeNull();
-    // بازِ دوباره: پرس‌وجوی کهنه نمانده — نمای خالیِ ۲۲گزینه
+    // بازِ دوباره: پرس‌وجوی کهنه نمانده — نمای خالیِ ۲۳گزینه
     fireEvent.keyDown(window, { ctrlKey: true, code: "KeyK" });
-    expect(screen.getAllByRole("option").length).toBe(22);
+    expect(screen.getAllByRole("option").length).toBe(23);
   });
 
   it("«آزمون ۱۵» → دقیقاً ۱ گزینه با مقدار اسنپ‌شده به [۱۰/۲۰/۳۰] (قرارداد واقعی)", () => {

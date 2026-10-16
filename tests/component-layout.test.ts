@@ -48,6 +48,7 @@ const PLACEMENT: Record<string, string> = {
 const FOLDERS = [
   "shell", "lesson", "practice", "exam", "grammar",
   "duel", "home", "profile", "quiz", "reports", "shared",
+  "jozve", // کتابخانهٔ جزوه‌ها — استخراج کامل ۶ جزوهٔ پایهٔ ۷ تا ۱۲
 ];
 
 function walkTsFiles(dir: string): string[] {

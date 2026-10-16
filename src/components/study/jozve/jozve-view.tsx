@@ -436,7 +436,7 @@ export default function JozveView() {
       {doc && chapter && (
         <section aria-label={chapter.title}>
           <div ref={secAnchor} className="-scroll-mt-24" />
-          <div className="sticky top-14 z-10 -mx-1 mb-4 rounded-2xl border border-stone-200 bg-white/95 p-3 shadow-sm backdrop-blur">
+          <div className="sticky top-14 z-10 -mx-1 mb-4 rounded-2xl border border-stone-200 c-veil-95 p-3 shadow-sm backdrop-blur">
             <h2 className="mb-2 truncate text-[15px] font-black text-stone-800">
               <span className={`mr-2 inline-block rounded-full border px-2 py-0.5 text-[10px] font-black align-middle ${KIND_META[chapter.kind]?.cls ?? KIND_META.intro.cls}`}>
                 {KIND_META[chapter.kind]?.label ?? "بخش"}
