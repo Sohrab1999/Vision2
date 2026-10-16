@@ -712,7 +712,7 @@ describe("globals.css stone veil phase 6 (bg-stone-50/60|70 — Task 89)", () =>
     ]);
   });
 
-  it("consumer matrix pinned — 28 migrations in exact file split (18× /60 + 10× /70)", () => {
+  it("consumer matrix pinned — 28 migrations + sanctioned growth in exact split (19× /60 + 11× /70)", () => {
     let n60 = 0;
     let n70 = 0;
     const walk = (d: string): void => {
@@ -734,7 +734,9 @@ describe("globals.css stone veil phase 6 (bg-stone-50/60|70 — Task 89)", () =>
     // task 192: +1 c-stone-60 — the duel-play waiting-card live-progress module
     // joined the family (sanctioned growth, same primitive as the HUD cells)
     expect(n60, "c-stone-60 consumers").toBe(19);
-    expect(n70, "c-stone-70 consumers").toBe(10);
+    // r251: +1 c-stone-70 — the guide's door-coverage map section (راند ۲۵۱)
+    // joined the same primitive as the r89-retargeted guide section itself
+    expect(n70, "c-stone-70 consumers").toBe(11);
   });
 
   it("deviating painters retargeted in place + exclusion painters pinned", () => {

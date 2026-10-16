@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
-import { Keyboard, BookMarked, ClipboardCheck, Sun, Moon, History, ChevronLeft, MousePointerClick } from "lucide-react";
+import { Keyboard, BookMarked, ClipboardCheck, Sun, Moon, History, ChevronLeft, MousePointerClick, MapPin } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useStudy, type LessonTab } from "@/lib/study-store";
@@ -11,8 +11,9 @@ import {
   subscribeAppendixResume,
 } from "@/lib/bg-reading";
 import { RESUME_LOOP_DOORS, DOOR_HANDOFF_DELAY_MS as HANDOFF_DELAY_MS, focusHeaderDoor, openAppendixDoor, type ResumeLoopDoor } from "@/lib/resume-loop-doors";
+import { RESUME_DOOR_COVERAGE } from "@/lib/resume-door-coverage";
+import { faNum, RESUME_FOCUS_RING } from "@/lib/study-theme";
 import { isTypingTarget, useKeydown } from "@/hooks/use-keyboard";
-import { RESUME_FOCUS_RING } from "@/lib/study-theme";
 
 /**
  * راهنمای میان‌برهای کیبورد + اجرای میان‌برهای سراسری.
@@ -315,6 +316,41 @@ export default function ShortcutGuide() {
               <p className="mt-2 flex items-center gap-1 text-[10px] font-bold text-emerald-800">
                 <MousePointerClick size={11} className="shrink-0" aria-hidden />
                 کلیک روی هر ردیف، همان در را باز می‌کند.
+              </p>
+            </section>
+
+            {/* راند ۲۵۱ — بندِ ② پیشنهادِ ۲۴۹: جدولِ «پوششِ درها» — از
+                RESUME_DOOR_COVERAGE (تک‌منبعِ حقیقتِ src/lib/resume-door-coverage.ts)
+                رندر می‌شود: محلِ نو به خانواده اضافه شود، این کارت خودش تازه
+                می‌شود. برخلافِ بخشِ درها این‌جا ردیف‌ها اطلاعاتی‌اند نه دکمه —
+                کنش‌ها را بخشِ بالا دارد؛ این نقشهٔ «کجاها» است. صداقتِ
+                nav-resume در پانویس تکرار می‌شود: بی‌رکورد، هیچ. */}
+            <section
+              data-testid="shortcut-guide-coverage"
+              className="rounded-xl border border-stone-200 c-stone-70 p-3"
+            >
+              <h3 className="mb-2 flex flex-wrap items-center gap-1.5 text-[12.5px] font-extrabold text-stone-700">
+                <MapPin size={14} className="shrink-0 text-emerald-600" aria-hidden />
+                ردیفِ «ادامهٔ مطالعه» همه‌جایِ حکم — پوششِ {faNum(RESUME_DOOR_COVERAGE.length)}گانه
+              </h3>
+              <ul className="space-y-1.5">
+                {RESUME_DOOR_COVERAGE.map((c) => (
+                  <li
+                    key={c.id}
+                    data-testid={`coverage-${c.id}`}
+                    className="rounded-lg bg-white px-2.5 py-1.5 shadow-sm"
+                  >
+                    <div className="flex items-center gap-2">
+                      <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" aria-hidden />
+                      <span className="min-w-0 text-[12px] font-extrabold text-stone-700">{c.label}</span>
+                    </div>
+                    <p className="mt-0.5 pr-3.5 text-[10.5px] font-bold leading-4 text-stone-500">{c.where}</p>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-2 flex items-start gap-1 text-[10px] font-bold leading-4 text-emerald-800">
+                <MousePointerClick size={11} className="mt-0.5 shrink-0" aria-hidden />
+                این ردیف فقط وقتی دیده می‌شود که نشانگری از ضمیمه داشته باشی — بی‌رکورد، هیچ (صداقتِ همیشگیِ حلقه).
               </p>
             </section>
 

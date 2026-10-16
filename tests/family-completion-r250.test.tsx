@@ -31,6 +31,7 @@ import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 import QuizResult from "@/components/study/quiz/quiz-result";
 import { writeAppendixResume, readAppendixResume } from "@/lib/bg-reading";
+import { RESUME_DOOR_COVERAGE } from "@/lib/resume-door-coverage";
 import { useStudy } from "@/lib/study-store";
 import type { QuizQuestion } from "@/lib/study-types";
 import type { AppendixResumeItem } from "@/lib/bg-reading";
@@ -51,19 +52,13 @@ function walk(dir: string): string[] {
   return out;
 }
 
-// ده عضوِ ثابتِ خانواده — مسیرهایِ نسبی از src/components/study
-const FAMILY_TEN = [
-  "exam/exam-view.tsx",
-  "exam/konkur-view.tsx",
-  "grammar/grammar-view.tsx",
-  "lesson/dictionary-view.tsx",
-  "lesson/lesson-tests-tab.tsx",
-  "lesson/syn-ant-tab.tsx",
-  "practice/danger-words.tsx",
-  "practice/my-words-review.tsx",
-  "practice/review-view.tsx",
-  "practice/smart-practice-view.tsx",
-].map((p) => join(ROOT, p).replace(/\\/g, "/"));
+// ده عضوِ ثابتِ خانواده — از خودِ تک‌منبعِ حقیقتِ r251 مشتق می‌شود نه
+// فهرستِ دستی: مسیرهایِ نسبیِ lib/resume-door-coverage نسبت به ROOT.
+// گاردِ «داده ↔ درخت» حالا یعنی اسکنِ پویا باید با RESUME_DOOR_COVERAGE
+// یکی باشد — دادهِ UI (کارتِ راهنما) و درختِ واقعی، دو دیدِ یک حقیقت.
+const FAMILY_TEN = RESUME_DOOR_COVERAGE.map((e) =>
+  join(ROOT, e.file).replace(/\\/g, "/")
+);
 
 const grammarRec: AppendixResumeItem = {
   scope: "grammar",
