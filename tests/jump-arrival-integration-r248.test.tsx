@@ -234,27 +234,30 @@ describe("resumeDoor family: the smaller result consumers opt in (r248 ①)", ()
   });
 
   it("opt-out honesty: the remaining smaller consumers stay opt-out by default", () => {
-    // همان قراردادِ r247: opt-inِ مصرف‌کننده — پیش‌فرضِ بقیه دست‌نخورده؛
-    // این قفل یعنی اگر فردا کسی ناخواسته opt-in کند، مرورِ راند می‌بیند
+    // همان قراردادِ r247 — راند ۲۴۹ (بندِ ① پیشنهادِ ۲۴۸) سه مصرف‌کنندهٔ
+    // کوچک‌تر را opt-in کرد (syn-ant/review/danger) و این قفل صادقانه
+    // کوچک شد: فقط دو مصرف‌کنندهٔ باقی‌مانده پیش‌فرضِ دست‌نخورده‌اند؛
+    // اگر فردا کسی ناخواسته opt-in کند، مرورِ راند می‌بیند
     for (const p of [
-      "src/components/study/lesson/syn-ant-tab.tsx",
       "src/components/study/grammar/grammar-view.tsx",
-      "src/components/study/practice/danger-words.tsx",
-      "src/components/study/practice/review-view.tsx",
       "src/components/study/practice/my-words-review.tsx",
     ]) {
       expect(read(p)).not.toMatch(/^\s*resumeDoor\s*$/m);
     }
   });
 
-  it("family census: exactly five opt-ins — lesson-tests, exam, konkur, dictionary, smart", () => {
-    // شمارشِ صادقانهٔ خانواده (قراردادِ شمارش‌هایِ r244/r246) — پنج opt-in
+  it("family census: exactly eight opt-ins — lesson-tests, exam, konkur, dictionary, smart, synant, review, danger", () => {
+    // شمارشِ صادقانهٔ خانواده (قراردادِ شمارش‌هایِ r244/r246) — پنج opt-inِ
+    // r248 با بندِ ① پیشنهادِ ۲۴۸ در راند ۲۴۹ به هشت رسید (synant/review/danger)
     const optedIn = [
       "src/components/study/lesson/lesson-tests-tab.tsx",
       "src/components/study/exam/exam-view.tsx",
       "src/components/study/exam/konkur-view.tsx",
       "src/components/study/lesson/dictionary-view.tsx",
       "src/components/study/practice/smart-practice-view.tsx",
+      "src/components/study/lesson/syn-ant-tab.tsx",
+      "src/components/study/practice/review-view.tsx",
+      "src/components/study/practice/danger-words.tsx",
     ];
     for (const p of optedIn) {
       expect(read(p), p).toMatch(/^\s*resumeDoor\s*$/m);

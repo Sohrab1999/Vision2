@@ -315,6 +315,11 @@ export default function DangerWords() {
               immediate
               trackMistakes={false}
               faOptions={(q) => practice.faOptions.has(q.id)}
+              // راند ۲۴۹ — بندِ ① پیشنهادِ ۲۴۸: خانوادهٔ resumeDoor به
+              // تمرینِ هدفمندِ واژه‌های خطرناک هم رسید — نتیجه در دیالوگ
+              // گرفته می‌شود و راهِ برگشت به ضمیمه همان‌جاست؛ پرش، دیالوگ
+              // را با ویویِ خانه جمع می‌کند (تمیز، بدون نشتِ سشن).
+              resumeDoor
               onExit={() => setPracticeOpen(false)}
             />
           )}

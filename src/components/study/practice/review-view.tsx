@@ -78,6 +78,10 @@ export default function ReviewView() {
         category="review"
         immediate={true}
         mistakesOf={(q) => questionSourceLesson(q)}
+        // راند ۲۴۹ — بندِ ① پیشنهادِ ۲۴۸: خانوادهٔ resumeDoor به نتیجهٔ
+        // مرورِ سریع قبل امتحان هم رسید — جایی که بانکِ خطا قضاوت
+        // می‌شود، راهِ برگشت به ضمیمه هم آن‌جاست (همان الگو، opt-in).
+        resumeDoor
         onExit={() => setSession(null)}
       />
     );

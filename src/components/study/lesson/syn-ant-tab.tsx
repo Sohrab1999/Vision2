@@ -36,6 +36,10 @@ export default function SynAntTab({ lesson }: { lesson: LessonData }) {
         lessonId={lesson.id}
         category="synant"
         immediate
+        // راند ۲۴۹ — بندِ ① پیشنهادِ ۲۴۸: خانوادهٔ resumeDoor به نتیجهٔ
+        // تمرینِ جفت‌هایِ خودِ درس هم رسید — جایی که حکمِ کوچک گرفته
+        // می‌شود، راهِ برگشت به ضمیمه هم آن‌جاست (همان الگو، opt-in).
+        resumeDoor
         onExit={() => setSession(null)}
       />
     );
