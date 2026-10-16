@@ -1,0 +1,2330 @@
+[
+ {
+  "en": "correct",
+  "fa": "درست، صحیح؛ اصلاح کردن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "follow",
+  "fa": "دنبال کردن - پیروی کردن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw"
+ },
+ {
+  "en": "glasses",
+  "fa": "عینک",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw"
+ },
+ {
+  "en": "great",
+  "fa": "عالی",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "hand",
+  "fa": "دست",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw"
+ },
+ {
+  "en": "help",
+  "fa": "کمک کردن؛ کمک",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "hen",
+  "fa": "مرغِ تخم‌گذار",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "person",
+  "fa": "شخص، نفر",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw"
+ },
+ {
+  "en": "know",
+  "fa": "دانستن / شناختن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "school",
+  "fa": "مدرسه",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "socks",
+  "fa": "جوراب",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw"
+ },
+ {
+  "en": "stairs",
+  "fa": "پلکان، پله",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw"
+ },
+ {
+  "en": "whose",
+  "fa": "مال چه کسی",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "take",
+  "fa": "گرفتن - برداشتن - بردن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "talk",
+  "fa": "حرف زدن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw"
+ },
+ {
+  "en": "thank",
+  "fa": "تشکر کردن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw"
+ },
+ {
+  "en": "yoghourt",
+  "fa": "ماست",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw"
+ },
+ {
+  "en": "ability",
+  "fa": "توانایی، لیاقت، شایستگی",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "cinema",
+  "fa": "سینما",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "ache",
+  "fa": "درد",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw"
+ },
+ {
+  "en": "city",
+  "fa": "شهر",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "act",
+  "fa": "عمل کردن، بازی کردن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "clean",
+  "fa": "تمیز، پاکیزه",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "climb",
+  "fa": "بالا رفتن، صعود کردن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "advise",
+  "fa": "نصیحت",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw"
+ },
+ {
+  "en": "a little",
+  "fa": "کمی، مقدار",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "continent",
+  "fa": "قاره",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "animal",
+  "fa": "حیوان، جانور",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "cough",
+  "fa": "سرفه؛ سرفه کردن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "another",
+  "fa": "دیگر",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw"
+ },
+ {
+  "en": "country",
+  "fa": "کشور",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "as",
+  "fa": "به عنوان",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "cow",
+  "fa": "گاو",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "backache",
+  "fa": "کمر درد",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "decide",
+  "fa": "تصمیم گرفتن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "beautiful",
+  "fa": "زیبا، قشنگ",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "double",
+  "fa": "دوعدد",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "beginning",
+  "fa": "شروع، آغاز، ابتدا",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "downtown",
+  "fa": "مرکز شهر",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "draw",
+  "fa": "نقاشی کشیدن، طراحی کردن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "drawing",
+  "fa": "نقاشی",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "bridge",
+  "fa": "پل",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "bring",
+  "fa": "آوردن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "drugstore",
+  "fa": "داروخانه",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw"
+ },
+ {
+  "en": "browse",
+  "fa": "جستجو کردن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw"
+ },
+ {
+  "en": "dry",
+  "fa": "خشک",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "building",
+  "fa": "ساختمان",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "earache",
+  "fa": "گوش‌درد",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "east",
+  "fa": "شرق",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "capital",
+  "fa": "پایتخت؛ سرمایه",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "enjoy",
+  "fa": "لذت بردن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "cattle",
+  "fa": "گله گاو",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "center",
+  "fa": "مرکز",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "excellent",
+  "fa": "عالی، عالی‌مقشر",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "chess",
+  "fa": "شطرنج",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "farm",
+  "fa": "مزرعه",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "church",
+  "fa": "کلیسا",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "field",
+  "fa": "حوزه، رشته؛ مزرعه",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "flower",
+  "fa": "گل، شکوفه",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "flu",
+  "fa": "آنفلوانزا",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "location",
+  "fa": "محل، جا، موقعیت",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "cand"
+ },
+ {
+  "en": "madam",
+  "fa": "خانم",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "measles",
+  "fa": "سرخک",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "midnight",
+  "fa": "نیمه‌شب",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "minaret",
+  "fa": "منارهٔ مسجد",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "minute",
+  "fa": "دقیقه",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "guess",
+  "fa": "حدس - حدس زدن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "guest",
+  "fa": "مهمان",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "moon",
+  "fa": "ماه (آسمان)",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw"
+ },
+ {
+  "en": "gym",
+  "fa": "سالن ورزشی",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "have",
+  "fa": "داشتن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "headache",
+  "fa": "سردرد",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "movie",
+  "fa": "فیلم",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "health",
+  "fa": "سلامتی، تندرستی",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "mumps",
+  "fa": "اوریون",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "hear",
+  "fa": "شنیدن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "nationality",
+  "fa": "ملیت",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "hill",
+  "fa": "تپه",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "near",
+  "fa": "نزدیک",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "history",
+  "fa": "تاریخ، تاریخچه",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "nearby",
+  "fa": "حوالی، نزدیک",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "hobby",
+  "fa": "سرگرمی",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "holy",
+  "fa": "مقدس",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "north",
+  "fa": "شمال",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "horse",
+  "fa": "اسب",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "hospital",
+  "fa": "بیمارستان",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "hot",
+  "fa": "گرم",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "originally",
+  "fa": "در اصل، اصالتاً",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "icy",
+  "fa": "یخ‌بندان، یخ‌زده",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "imagine",
+  "fa": "تصور کردن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "pain",
+  "fa": "درد",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "important",
+  "fa": "مهم، با اهمیت",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw"
+ },
+ {
+  "en": "palace",
+  "fa": "کاخ",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "interesting",
+  "fa": "جالب",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "patient",
+  "fa": "بیمار - صبور",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "interview",
+  "fa": "مصاحبه کردن، مصاحبه",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "keep away",
+  "fa": "دور نگه داشتن ریاضی",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "learned"
+ },
+ {
+  "en": "poem",
+  "fa": "شعر",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "population",
+  "fa": "جمعیت، تعداد نفوس",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "position",
+  "fa": "موقعیت، وضعیت",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw"
+ },
+ {
+  "en": "station",
+  "fa": "ایستگاه",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw"
+ },
+ {
+  "en": "prayer",
+  "fa": "نماز - عبادت- دعا",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw"
+ },
+ {
+  "en": "problem",
+  "fa": "مشکل",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "store",
+  "fa": "مغازه، ذخیره کردن، انبار کردن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "story",
+  "fa": "داستان",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "quiet",
+  "fa": "ساکت، آرام، بی‌صدا",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "sun",
+  "fa": "خورشید",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw"
+ },
+ {
+  "en": "sunflower",
+  "fa": "گل آفتابگردان",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "raise",
+  "fa": "پرورش دادن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "sunny",
+  "fa": "آفتابی",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "recite",
+  "fa": "از حفظ خواندن، اداء کردن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "sunrise",
+  "fa": "طلوع خورشید",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "relax",
+  "fa": "آرام گرفتن، استراحت کردن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "sunset",
+  "fa": "غروب خورشید",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "search",
+  "fa": "جست‌وجو کردن؛ جست‌وجو",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "shopping",
+  "fa": "خرید کردن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "sneeze",
+  "fa": "عطسه",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "snowy",
+  "fa": "برفی",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "toothache",
+  "fa": "دندان‌درد",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "warm",
+  "fa": "صمیمی، گرم، مهربان",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "soon",
+  "fa": "به زودی",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "weather",
+  "fa": "آب و هوا",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "south",
+  "fa": "جنوب",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "why",
+  "fa": "چرا",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "accident",
+  "fa": "تصادف",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "bruise",
+  "fa": "کبودی",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "account",
+  "fa": "حساب",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "burn",
+  "fa": "سوزاندن، سوختن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "actually",
+  "fa": "واقعاً",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "business",
+  "fa": "تجارت - حرفه - کار",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "advice",
+  "fa": "نصیحت، پند",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "busy",
+  "fa": "پرکار، شلوغ؛ گرفتار",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "ago",
+  "fa": "قبل، پیش",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "buy",
+  "fa": "خریدن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "always",
+  "fa": "همیشه",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "careful",
+  "fa": "با دقت، مواظب",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "amazing",
+  "fa": "شگفت‌انگیز، حیرت‌برانگیز",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "careless",
+  "fa": "بی‌دقت",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "angry",
+  "fa": "عصبانی",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "celebrate",
+  "fa": "جشن گرفتن، برگزار کردن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "ankle",
+  "fa": "قوزک پا",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "ceremony",
+  "fa": "مراسم، تشریفات، آیین",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "anniversary",
+  "fa": "سال روز",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "anthem",
+  "fa": "سرود ملی",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "antivirus",
+  "fa": "آنتی ویروس",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "charity",
+  "fa": "خیریه، نیکوکاری، صدقه، خیرات",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "cheap",
+  "fa": "ارزان",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "ask for",
+  "fa": "درخواست کردن برای",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw"
+ },
+ {
+  "en": "check in",
+  "fa": "پذیرش شدن (هتل، فرودگاه و...)",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "at first",
+  "fa": "در ابتدا",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw"
+ },
+ {
+  "en": "check out",
+  "fa": "تسویه حساب کردن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "attend",
+  "fa": "شرکت کردن در، حضور یافتن در",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "children",
+  "fa": "کودکان",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "back",
+  "fa": "پشت، کمر",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "clear",
+  "fa": "واضح، شفاف - پاک کردن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "bake",
+  "fa": "پختن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "clever",
+  "fa": "باهوش، زیرک",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "begin",
+  "fa": "شروع کردن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "connect",
+  "fa": "متصل شدن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "big",
+  "fa": "بزرگ",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "bleed",
+  "fa": "خون‌ریزی کردن، خون آمدن از",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "board",
+  "fa": "سوارشدن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "commemorate",
+  "fa": "بزرگداشت",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "brave",
+  "fa": "شجاع",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "break",
+  "fa": "شکستن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "course",
+  "fa": "دوره آموزشی",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "festival",
+  "fa": "جشن، جشنواره",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "crash",
+  "fa": "تصادف",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw"
+ },
+ {
+  "en": "cruel",
+  "fa": "بی‌رحم، ستمگر",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "find",
+  "fa": "پیدا کردن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "cry",
+  "fa": "گریه کردن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "finger",
+  "fa": "انگشت",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "culture",
+  "fa": "فرهنگ",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "fire",
+  "fa": "آتش",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "cut",
+  "fa": "بریدن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "firefighter",
+  "fa": "آتش نشان",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "firework",
+  "fa": "آتش بازی",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw"
+ },
+ {
+  "en": "first aids",
+  "fa": "کمکهای اولیه",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw"
+ },
+ {
+  "en": "dish",
+  "fa": "ظرف",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "do homework",
+  "fa": "تکلیف انجام دادن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw"
+ },
+ {
+  "en": "donate blood",
+  "fa": "اهدا کردن خون",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw"
+ },
+ {
+  "en": "forget",
+  "fa": "فراموش کردن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "don’t worry",
+  "fa": "نگران نباش",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "French",
+  "fa": "فرانسوی",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "do voluntary work",
+  "fa": "کار داوطلبانه انجام دادن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw"
+ },
+ {
+  "en": "friendly",
+  "fa": "صمیمی، دوستانه",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "drive",
+  "fa": "رانندگی کردن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "from",
+  "fa": "از",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "easy",
+  "fa": "آسان",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "funny",
+  "fa": "بامزه، خنده‌دار",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "gas station",
+  "fa": "پمپ بنزین",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "generous",
+  "fa": "بخشنده، دست‌ودل‌باز",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "emergency",
+  "fa": "اورژانس",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "get",
+  "fa": "گرفتن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "envelope",
+  "fa": "پاکت نامه",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "get off",
+  "fa": "پیاده شدن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "environment",
+  "fa": "محیط زیست؛ محیط",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "get on",
+  "fa": "سوار شدن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "every",
+  "fa": "هر، هروقت",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "gift",
+  "fa": "کادو، هدیه، پیشکش",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "everybody",
+  "fa": "هرکس، همه",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "event",
+  "fa": "رویداد، حادثه، رخداد",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "go out",
+  "fa": "بیرون رفتن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "express train",
+  "fa": "قطار سریع‌السیر",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "guide book",
+  "fa": "کتاب راهنما",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "fall",
+  "fa": "پایین - افتادن، سقوط کردن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "fantastic",
+  "fa": "رویایی",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "happen",
+  "fa": "اتفاق افتادن، روی دادن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "fast",
+  "fa": "سریع، تند",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "hard",
+  "fa": "سخت",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "hard-working",
+  "fa": "سخت‌کوش، کوشا",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "head",
+  "fa": "سر",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "keep on",
+  "fa": "ادامه دادن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "key",
+  "fa": "کلید",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "heart attack",
+  "fa": "سکتهٔ قلبی",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "kid",
+  "fa": "بچه",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "helpful",
+  "fa": "مفید، یاری‌رسان",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "knee",
+  "fa": "زانو",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "lake",
+  "fa": "دریاچه",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "hire",
+  "fa": "کرایه کردن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "land",
+  "fa": "فرود آمدن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "hit",
+  "fa": "زدن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "last",
+  "fa": "گذشته، قبلی",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "hold",
+  "fa": "برگزار کردن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "late",
+  "fa": "دیر",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "holiday",
+  "fa": "تعطیلات",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "later",
+  "fa": "بعدا",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "homework",
+  "fa": "تکلیف، کارِ خانه",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "learn",
+  "fa": "یاد گرفتن - مطلع شدن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "leg",
+  "fa": "پا",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "life",
+  "fa": "زندگی",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "hurt",
+  "fa": "صدمه زدن، آسیب رساندن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "look after",
+  "fa": "مراقبت کردن از",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "look at",
+  "fa": "نگاه کردن به",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw"
+ },
+ {
+  "en": "injury",
+  "fa": "جراحت، آسیب",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "lost",
+  "fa": "گم شده",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "install",
+  "fa": "نصب کردن، کار گذاشتن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "love",
+  "fa": "عشق داشتن، دوست داشتن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "interested in",
+  "fa": "علاقه‌مند به",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "make",
+  "fa": "ساختن، انجام دادن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "invite",
+  "fa": "دعوت کردن، مهمان کردن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "match",
+  "fa": "مسابقه",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "media",
+  "fa": "رسانه",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "stand",
+  "fa": "ایستادن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "stick",
+  "fa": "چسباندن / چسبیدن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "message",
+  "fa": "پیام",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "military",
+  "fa": "نظامی",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "suitable",
+  "fa": "مناسب، شایسته",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "money",
+  "fa": "پول",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "nature",
+  "fa": "طبیعت، سرشت",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "take care of",
+  "fa": "مراقبت کردن از",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw"
+ },
+ {
+  "en": "neat",
+  "fa": "مرتب، تمیز و منظم",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "take off",
+  "fa": "بلندشدن هواپیما",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "nervous",
+  "fa": "مضطرب، نگران",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "take out",
+  "fa": "برداشت پول",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "never",
+  "fa": "هرگز",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "talkative",
+  "fa": "پرحرف",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "normally",
+  "fa": "به طور عادی- معمول",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw"
+ },
+ {
+  "en": "text",
+  "fa": "پیامک کردن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "often",
+  "fa": "اغلب",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "the same",
+  "fa": "یکسان - مشابه",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw"
+ },
+ {
+  "en": "pack",
+  "fa": "بستن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "participate",
+  "fa": "شرکت کردن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "think",
+  "fa": "فکر کردن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "ticket",
+  "fa": "بلیط",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "plaster",
+  "fa": "چسب زخم",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "pleasant",
+  "fa": "دلپذیر",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "together",
+  "fa": "با هم",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw"
+ },
+ {
+  "en": "possible",
+  "fa": "ممکن، احتمال",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "receptionist",
+  "fa": "مسئول پذیرش",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "travel",
+  "fa": "سفر کردن؛ سفر",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "relative",
+  "fa": "خویشاوند، فامیل",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "trip",
+  "fa": "سفر (کوتاه)",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "religious",
+  "fa": "مذهبی",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "upset",
+  "fa": "ناراحت",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "selfish",
+  "fa": "خودخواه",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "serious",
+  "fa": "جدی، عبوس، اخمو",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "shy",
+  "fa": "خجالتی",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "sing",
+  "fa": "آواز خواندن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "voyage",
+  "fa": "سفر دریایی",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "wake up",
+  "fa": "از خواب برخاستن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "war",
+  "fa": "جنگ",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "weigh",
+  "fa": "وزن کردن - وزن داشتن ریاضی",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "learned"
+ },
+ {
+  "en": "wish",
+  "fa": "آرزو - خواهش - آرزو داشتن",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "wound",
+  "fa": "زخم",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "stamp",
+  "fa": "تمبر",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "ambulance",
+  "fa": "آمبولانس",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ },
+ {
+  "en": "throat",
+  "fa": "گلو",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw"
+ },
+ {
+  "en": "lesson",
+  "fa": "درس",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw"
+ },
+ {
+  "en": "yesterday",
+  "fa": "دیروز",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "raw=gold"
+ },
+ {
+  "en": "mark",
+  "fa": "علامت‌گذاری کردن، نشانه، علامت",
+  "target": 10,
+  "grade": 7,
+  "lesson": 0,
+  "src": "gold-x"
+ }
+]

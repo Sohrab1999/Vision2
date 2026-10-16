@@ -1,0 +1,468 @@
+[U0] L1 p19 #2 ANS=d
+  S: Jim knew -------------------- nothing about the business when he joined the company.
+  A: absolutely
+  B: fluently
+  C: frequently
+  D: wrongly
+[U1] L1 p19 #5 ANS=b
+  S: The kitchen connects with the dining room -------------------- of a narrow hallway in that old building.
+  A: including
+  B: by means of
+  C: for instance
+  D: get along
+[U2] L1 p19 #9 ANS=a
+  S: The program enables pupils to gain some -------------------- of the world of work.
+  A: experiments
+  B: experience
+  C: suggestions
+  D: influences
+[U3] L1 p19 #11 ANS=b
+  S: Only thirty -------------------- of that country’s people are covered by health insurance.
+  A: despite
+  B: item
+  C: percent
+  D: range
+[U4] L1 p20 #21 ANS=a
+  S: Educational system shouldn’t be -------------------- purely by examination results.
+  A: disappeared
+  B: measured
+  C: imagined
+  D: range
+[U5] L1 p20 #22 ANS=c
+  S: The role of the news -------------------- in forming public opinion is very important.
+  A: society
+  B: label
+  C: media
+  D: value
+[U6] L1 p20 #23 ANS=b
+  S: The store has a sale on furniture and household --------------------.
+  A: points
+  B: limits
+  C: labels
+  D: items
+[U7] L1 p20 #24 ANS=d
+  S: It is important to look at the political and ------- ------------- context in which the novel was written.
+  A: physical
+  B: scientific
+  C: cultural
+  D: emotional
+[U8] L1 p20 #25 ANS=a
+  S: Meetings were held to update employees as soon as new information become ---------------.
+  A: cultural
+  B: specific
+  C: popular
+  D: available
+[U9] L1 p20 #26 ANS=b
+  S: Good -------------------- are vital in a large organization for reaching to its suitable goals.
+  A: communications
+  B: experiences
+  C: suggestions
+  D: productions
+[U10] L1 p20 #27 ANS=c
+  S: It is hardly -------------------- that new mothers often suffer from depression.
+  A: popular
+  B: surprising
+  C: available
+  D: specific
+[U11] L1 p20 #28 ANS=a
+  S: If you would like to -------------------- further information, return the attached from.
+  A: improve
+  B: access
+  C: receive
+  D: label
+[U12] L1 p20 #29 ANS=a
+  S: Their most -------------------- belongings were locked in a safe place in the bedroom.
+  A: specific
+  B: popular
+  C: valuable
+  D: fluent
+[U13] L1 p20 #30 ANS=d
+  S: About sixty percent of the world's ----------------- live in areas that are at risk from sea-level rises.
+  A: population
+  B: media
+  C: society
+  D: relationship
+[U14] L1 p20 #31 ANS=d
+  S: Her -------------------- from committee duties allowed her more time with her family.
+  A: imagine
+  B: experience
+  C: escape
+  D: exchange
+[U15] L1 p20 #32 ANS=c
+  S: Price control would gradually -------------------- in favor of a free market.
+  A: disappear
+  B: escape
+  C: range
+  D: measure
+[U16] L1 p20 #33 ANS=a
+  S: That famous company seek to -------------------- its public image among faithful customers.
+  A: exist
+  B: receive
+  C: explain
+  D: improve
+[U17] L1 p20 #34 ANS=d
+  S: Those who believe money can do everything are ---------------- prepared to do everything for money.
+  A: fluently
+  B: frequently
+  C: wrongly
+  D: absolutely
+[U18] L1 p20 #35 ANS=b
+  S: Companies need to wake up and ---------------- the public’s increasing concern with the environment.
+  A: meet the needs of
+  B: take notice of
+  C: to be honest
+  D: take part in
+[U19] L1 p20 #36 ANS=a
+  S: Attach a ------------------- with your child's name to each of the items he or she is bringing to camp.
+  A: media
+  B: suggestion
+  C: point
+  D: label
+[U20] L1 p20 #37 ANS=b
+  S: In this way, they will be able to -------------------- individual pupils in a more effective manner.
+  A: meet the needs of
+  B: take notice of
+  C: according to
+  D: take part in
+[U21] L1 p20 #39 ANS=a
+  S: The first 15 years of the 19th -------- in Europe present an extraordinary movement of millions of people.
+  A: decade
+  B: century
+  C: year
+  D: month
+[U22] L1 p20 #40 ANS=d
+  S: Can you give some examples of the harmony that -------------------- between living things.
+  A: range
+  B: make up
+  C: imagine
+  D: exist
+[U23] L1 p21 #2 ANS=b
+  S: Everyone needs to have both -------------------- and physical health.
+  A: mental
+  B: religious
+  C: careful
+  D: reasonable
+[U24] L1 p21 #5 ANS=c
+  S: The police -------------------- the copy with the original, but there was not much difference.
+  A: combined
+  B: connected
+  C: compared
+  D: considered
+[U25] L1 p21 #9 ANS=b
+  S: Every month the group meets so its members can ----------------------- their opinions.
+  A: contrast
+  B: range
+  C: exchange
+  D: imagine
+[U26] L1 p37 #19 ANS=c
+  S: There is only ------------------ water in the glass. Please give me some more.
+  A: many
+  B: much
+  C: a few
+  D: a little
+[U27] L1 p37 #25 ANS=c
+  S: I didn’t have --------------- trouble buying dollars to go abroad. I only had a problem with my passport because it was an old one.
+  A: many
+  B: a lot
+  C: no
+  D: much
+[U28] L1 p37 #28 ANS=c
+  S: Which of the following sentences is grammatically CORRECT?
+  A: I’m going to invite a lot of people to the party tomorrow
+  B: I’m going to invite to the party a lot of people tomorrow
+  C: I’m going to a lot of people invite to the party tomorrow
+  D: I’m going to tomorrow to the party invite a lot of people
+[U29] L1 p37 #29 ANS=d
+  S: My grandmother often puts -------------------- salt in her food, that’s why she has high blood pressure.
+  A: a little
+  B: a few
+  C: a lot of
+  D: any
+[U30] L1 p37 #31 ANS=a
+  S: --------------------- people attended the stadium to watch the competition.
+  A: Twelve thousand eight hundred forty two
+  B: Twelve-thousand-eight-hundred-forty-two
+  C: Twelve thousand eight-hundred forty-two
+  D: Twelve thousand eight hundred forty-two
+[U31] L1 p37 #33 ANS=a
+  S: Yesterday we had some ------------------ and I went to the bakery to buy three ------------------.
+  A: guest / loaf of bread
+  B: guests / loaf of bread
+  C: guest / loaves of bread
+  D: guests / loaves of bread
+[U32] L1 p38 #35 ANS=a
+  S: Only ------------------ people stay calm to help the injured man after the accident.
+  A: much
+  B: a few
+  C: many
+  D: a lot of
+[U33] L1 p38 #38 ANS=d
+  S: I gave presents to ---------------------- of the four students in the class.
+  A: both
+  B: little
+  C: each
+  D: much
+[U34] L1 p38 #39 ANS=a
+  S: I don’t know -------------------- students in this class. Because I am a newcomer.
+  A: a little
+  B: a few
+  C: many
+  D: much
+[U35] L3 p105 #2 ANS=a
+  S: He was surprised ------------------ me sitting behind his desk.
+  A: saw
+  B: see
+  C: to see
+  D: seeing
+[U36] L3 p105 #4 ANS=a
+  S: We were amazed ---------------- that no one was hurt in that accident.
+  A: finding
+  B: to find
+  C: find
+  D: to found
+[U37] L3 p105 #5 ANS=d
+  S: It is sometimes necessary for Peter ------------ his parent’s car before they give him any pocket money.
+  A: to clean
+  B: cleaning
+  C: cleans
+  D: cleaned
+[U38] L3 p105 #6 ANS=b
+  S: The math teacher ----------- let the students leave the class if they don’t finish their homework carefully.
+  A: will not
+  B: do not
+  C: would
+  D: will
+[U39] L3 p105 #7 ANS=d
+  S: Hamid has never been in Shiraz. He is very --------------------- about going there.
+  A: to excite
+  B: excite
+  C: excited
+  D: exciting
+[U40] L3 p105 #8 ANS=b
+  S: You -------------------- a brilliant and successful teacher in the future if you study hard. To be a good teacher, you also need to be patient and kind enough.
+  A: are become
+  B: would become
+  C: will become
+  D: have become
+[U41] L3 p105 #9 ANS=a
+  S: Reza and Arash promised ------------- me with math. I’m really lucky -------------- such good friends.
+  A: helping / having
+  B: to help / to have
+  C: helping / to have
+  D: to help / having
+[U42] L3 p105 #10 ANS=a
+  S: He was very careful -------------------- both ways when he crosses the road.
+  A: look
+  B: looking
+  C: to looking
+  D: to look
+[U43] L3 p105 #12 ANS=b
+  S: You can’t buy this car if you -------------------- have enough money.
+  A: can
+  B: will
+  C: didn’t
+  D: don’t
+[U44] L3 p105 #13 ANS=b
+  S: I think you are really fortunate ----------------- in one of the most beautiful towns in the country.
+  A: to live
+  B: living
+  C: to living
+  D: live
+[U45] L3 p105 #14 ANS=a
+  S: Your mother won’t buy that beautiful bicycle you showed us yesterday for you if you ---------------- your exams. So, study your lessons as much as possible.
+  A: will fail
+  B: are failing
+  C: failed
+  D: fail
+[U46] L3 p105 #15 ANS=a
+  S: We’re planning ---------------- this afternoon. Would you like to join us?
+  A: to go to jog
+  B: to go jogging
+  C: going jogging
+  D: going to jog
+[U47] L3 p105 #17 ANS=b
+  S: Jane hasn’t been in a good mood recently because of her father’s death. I believe she ----------------
+  A: becomes / invited
+  B: will become / invited
+  C: will be / invite
+  D: is / invited
+[U48] L3 p105 #18 ANS=b
+  S: We enjoy ---------------- parties so we invited Jim and Robert ---------------- lunch with us.
+  A: to give / to have
+  B: to give / having
+  C: giving / to have
+  D: giving/ having
+[U49] L3 p106 #19 ANS=a
+  S: It was dark in the room and she got -------------------- when he shouted at her suddenly.
+  A: surprised
+  B: frightening
+  C: surprising
+  D: frightened
+[U50] L3 p106 #21 ANS=b
+  S: She felt hurt and ---------------- when they didn’t call to invite her to the party.
+  A: confusing
+  B: confused
+  C: confuse
+  D: confusingly
+[U51] L3 p106 #22 ANS=b
+  S: His achievement surprised everyone, because we all expected his business ----------------- within the first few months.
+  A: fail
+  B: of failing
+  C: failing
+  D: to fail
+[U52] L3 p106 #23 ANS=b
+  S: They were careful ---------------- people who the winner of the prize was until the end.
+  A: don’t tell
+  B: not tell
+  C: not telling
+  D: not to tell
+[U53] L3 p106 #24 ANS=b
+  S: The interview went very well. She is certain ---------------- the job.
+  A: getting
+  B: get
+  C: to get
+  D: gets
+[U54] L3 p106 #25 ANS=c
+  S: He was deeply shocked ---------------- the truth about his mom’s disease.
+  A: discovering
+  B: to discovering
+  C: discover
+  D: to discover
+[U55] L3 p106 #27 ANS=b
+  S: ---------------- Maryam get a prize if she answers the question correctly?
+  A: Does
+  B: Did
+  C: Would
+  D: Will
+[U56] L3 p106 #28 ANS=b
+  S: They are attempting ------------------- the first to climb Mt. Everest without oxygen tanks.
+  A: to becoming
+  B: to become
+  C: becoming
+  D: become
+[U57] L3 p106 #29 ANS=b
+  S: Mom wanted me ---------------- to the library ---------------- some books.
+  A: to go / to borrow
+  B: to go / borrow
+  C: go / borrow
+  D: go / to borrow
+[U58] L3 p106 #30 ANS=c
+  S: I wonder why the students got ---------------- by the simple explanation I gave about the problem. It seems I have to put it another way.
+  A: confusing
+  B: to confuse
+  C: have confused
+  D: confused
+[U59] L3 p106 #32 ANS=b
+  S: My father was the first person --------------- a school in our village --------------- our children educated in our village. They used to go to the neighboring village to study.
+  A: imagine to build / to get
+  B: to imagine to build / getting
+  C: to imagine building / getting
+  D: to imagine building / to get
+[U60] L3 p106 #33 ANS=c
+  S: Our father told us ------------------- by bus because it was very slow.
+  A: didn’t travel
+  B: not to travel
+  C: not travelled
+  D: not travelling
+[U61] L3 p106 #35 ANS=b
+  S: The famous writer hopes ---------------------- his novel next month.
+  A: publishing
+  B: published
+  C: publish
+  D: to publish
+[U62] L3 p107 #37 ANS=c
+  S: I live in England, so I have learned -------------------- English easily.
+  A: speak
+  B: speaking
+  C: spoke
+  D: to speak
+[U63] L3 p107 #38 ANS=c
+  S: He is ashamed -------------------- his father that he didn’t get a high grade in the exam.
+  A: telling
+  B: tell
+  C: told
+  D: to tell
+[U64] L3 p107 #39 ANS=a
+  S: If the weather is good, we -------------------- to have a picnic tomorrow.
+  A: had gone
+  B: went
+  C: were going
+  D: are going
+[U65] L3 p107 #40 ANS=a
+  S: We were all ---------------- at my grandfather’s stories. I always find his stories very ----------------.
+  A: amused / interested
+  B: amusing / interesting
+  C: amused / interesting
+  D: amusing / interested
+[U66] L4 p19 #14 ANS=c
+  S: When she welcomed them with a --------------------------------, she burst into tears.
+  A: lap
+  B: hug
+  C: score
+  D: function
+[U67] L5 p86 #6 ANS=b
+  S: The novel --------- ------------ my father bought for me last week was very amusing.
+  A: where
+  B: when
+  C: that
+  D: who
+[U68] L5 p86 #11 ANS=c
+  S: Those are the boxes -------------------- were sent to us last month.
+  A: which
+  B: who
+  C: whose
+  D: whom
+[U69] L5 p86 #13 ANS=d
+  S: We bought some books --------------------- the teacher suggested.
+  A: which
+  B: who
+  C: whose
+  D: whom
+[U70] L6 p131 #18 ANS=a
+  S: The doctor recommended that she lower her --------------------------- of sugar.
+  A: consumption
+  B: description
+  C: production
+  D: generation
+[U71] L6 p131 #19 ANS=a
+  S: Hybrid cars combine the ------------- -------------- of gasoline engines and electric motors.
+  A: benefits
+  B: faults
+  C: variances
+  D: shapes
+[U72] L6 p131 #20 ANS=b
+  S: This --------------------------- device enables deaf people to telephone the hospital by typing a message instead of speaking.
+  A: immovable
+  B: stable
+  C: portable
+  D: changeless
+[U73] L6 p132 #4 ANS=a
+  S: They have greatly ---------------------- the size and cost of most electronic products, while at the same time increasing their power and quality.
+  A: reduced
+  B: developed
+  C: generated
+  D: labeled
+[U74] L9 p134 #7 ANS=b
+  S: While he was swimming in the river, he ------------------ a big black fish.
+  A: saw
+  B: sees
+  C: was seeing
+  D: is going to see
+[U75] L9 p134 #14 ANS=b
+  S: Sara and Mina made the house tidy by ------------------.
+  A: ourselves
+  B: yourselves
+  C: themselves
+  D: herself
+[U76] L9 p134 #18 ANS=a
+  S: If you and your classmates can’t do this exercise by ------------------, ask the teacher for help.
+  A: yourselves
+  B: himself
+  C: herself
+  D: yourself
+[U77] L9 p134 #20 ANS=d
+  S: That boy who was standing next to your brother ----------------- very tired.
+  A: was looking
+  B: looked
+  C: is looking
+  D: looks

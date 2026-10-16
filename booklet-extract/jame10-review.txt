@@ -1,0 +1,288 @@
+G7L0	blanket	پتو
+G7L0	follow	دنبال کردن - پیر وی کردن
+G7L0	glasses	عینک
+G7L0	group work	کار گرویه
+G7L0	hand	دست
+G7L0	pair work	کار دو نفری
+G7L0	person	شخص، نفر
+G7L0	look like	شبیه بودن
+G7L0	sandals	کفش راحنر- دمپات
+G7L0	sit down	نشستر ز
+G7L0	wall	دیوار
+G7L0	socks	جوراب
+G7L0	stairs	پلکان، پله
+G7L0	talk	حرف زدن
+G7L0	thank	تشکر کردن
+G7L0	yoghourt	ماست
+G7L0	zebra	گورخر
+G7L0	ache	درد
+G7L0	advise	نصیحت
+G7L0	a lot of	خییل زیاد
+G7L0	another	دیگر
+G7L0	average	متوسط- معدل - میانگیر ن
+G7L0	crossword puzzle	جدول ک ل مات متقاطع
+G7L0	boulevard	بلوار
+G7L0	drugstore	داروخانه
+G7L0	browse	جستجو کردن
+G7L0	let’s	بیا - اجازه بده
+G7L0	location	موقعیت مکاتز
+G7L0	geographical	جغرافیات
+G7L0	geography	جغرافز
+G7L0	mood	حوصله- حال
+G7L0	moon	ماه (آسمان)
+G7L0	mountain	کوه
+G7L0	northeast	شمال رسی فر
+G7L0	important	مهم، با اهمیت
+G7L0	person	شخص، نفر
+G7L0	journalist	روزنامه نگار
+G7L0	keep away	دور نگه داشتر ز
+G7L0	position	موقعیت، وضعیت
+G7L0	station	ایستگاه
+G7L0	prayer	نماز - عبادت- دعا
+G7L0	stomach	شکم، معده
+G7L0	province	استان
+G7L0	summer	تابستان
+G7L0	sun	خورشید
+G7L0	rain	باران- باران باریدن
+G7L0	take a photo	عکس گرفتر ز
+G7L0	shrine	آرامگاه، مقی ه، حرم
+G7L0	temperature	درجه حرارت - تب
+G7L0	thermometer	دماسنج
+G7L0	weak	ضعیف، ناتوان
+G7L0	sore	دردناک، دشوار– زخم، جراحت
+G7L0	by	به وسیله، با- کنار، نزدیک
+G7L0	all around	در رستارس
+G7L0	anyone	هر کیس
+G7L0	ask for	درخواست کردن برای
+G7L0	at first	در ابتدا
+G7L0	baggage	چمدان- وسایل سفر
+G7L0	because	زیرا، چونکه
+G7L0	comedy	کمدی - طین ن
+G7L0	company	رسی کت، کارخانه
+G7L0	cookie	شیر یتن ، کلوچه
+G7L0	brilliant	باهوش- خ ارق العاده ، محسی
+G7L0	crash	تصادف
+G7L0	firework	آتش بازی
+G7L0	first aids	کمکهای اولیه
+G7L0	do homework	تکلیف انجام دادن
+G7L0	fun	تفری ح- رسگریم
+G7L0	donate blood	اهدا کردن خون
+G7L0	do voluntary work	کار داوطلبانه انجام دادن
+G7L0	Germany	آلمان
+G7L0	e-ticket	بلیط الکیر ونیک
+G7L0	get out	بی ون آ مدن- بی ون رفتر ز
+G7L0	facilities	امکانات
+G7L0	hair	موی رس
+G7L0	just	فقط، تنها - تازه، به تازگی
+G7L0	just a moment	فقط یک لحظه
+G7L0	has	داشتر ز- خوردن
+G7L0	keep clean	تمی ز نگه داشتر ز
+G7L0	help charity	به امور خی یه کمک کردن
+G7L0	housework	کار میز زل
+G7L0	lock	قفل- قفل کردن
+G7L0	I’d like	مایلم- تمایل دارم ، دوست دارم
+G7L0	look at	نگاه کردن به
+G7L0	important	مهم
+G7L0	look for	گشتر ز به ، دنبال جستجو کردن برای
+G7L0	look up	نگاه کردن به بالا - گشتر ز به دنبال معنز لغت
+G7L0	luck	شانس - بخت
+G7L0	mail box	جعبه پسنر
+G7L0	take care of	مراقبت کردن از
+G7L0	normally	به طور عادی- معمول
+G7L0	on shifts	نوبنر - شیفنر
+G7L0	the same	یکسان - مشابه
+G7L0	things	اشیاء- وسایل- چی زها
+G7L0	pay toll	پرداخت عوارض
+G7L0	timetable	برنامه زماتز- جدول زماتز
+G7L0	together	با هم
+G7L0	prayer	عبادت- نماز
+G7L0	vegetable	سی زیجات
+G7L0	somebody	شخض- کش
+G7L0	weigh	وزن کردن - وزن داشتر ز
+G7L0	fill	پر کردن - پر شدن- انباشی ن
+G7L0	throat	گلو
+G7L0	mantle	رو پوش - عبا- ردا
+G7L0	lesson	درس
+G7L0	check	برریس کردن ، چک کردن
+G7L0	delete	حذف کردن
+G10L1	till	تا، تا اینکه، تا زمانیکه
+G10L1	tonight	امشب
+G10L1	only	فقط، تنها
+G10L1	order (n)	نظم ، ترتیب - دستور- سفارش
+G10L1	past	گذشته، پیش
+G10L1	take care of	مراقبت کردن از
+G10L1	unscramble	مرتب کردن (کلمات به هم ریخته)
+G10L1	pay attention to	توجه کردن به
+G10L1	visitor	بازدید کننده، مالقات کننده
+G10L1	plural	جمع
+G10L1	whenever	هر زماتز که
+G10L2	above	، بالای در بالای
+G10L2	carry	حمل کردن، با خود بردن
+G10L2	abroad	به خارج، از ، خارج در خارج(از کشور)
+G10L2	adjective	صفت
+G10L2	element	عنرص
+G10L2	heaven	بهشت - آسمان
+G10L2	modern	مدرن، امروزی
+G10L2	monkey	میمون
+G10L2	mountain	کوه
+G10L2	more than	بیشیر از
+G10L2	rock	سنگ، صخره
+G10L2	most	بیشیر ین
+G10L2	rocky	سنکی ، سنگالچز
+G10L2	round	اطراف، گرد، دایره ای
+G10L2	Russia	کشور روسیه
+G10L2	Saturn	سیاره زحل
+G10L2	Neptune	سیاره نپتون
+G10L2	seafood	غذای دریات
+G10L2	nothing	هیچ، هیچ چی ز
+G10L2	observe	مشاهده کردن ، رصد کردن- رعایت کردن
+G10L2	sick	بیمار، مریض
+G10L2	observer	مشاهده کننده
+G10L2	observatory	رصد خانه
+G10L2	of all	از همه، از بقیه
+G10L2	on one’s own	تنها، به تنهات
+G10L2	sky	آسمان
+G10L2	organ	عضو، اندام
+G10L2	order (v)	من ظم کردن، دستور دادن، سفارش دادن
+G10L2	spelling	امالء، هح
+G10L2	stay	ماندن، اقامت کردن
+G10L2	pepper	فلفل
+G10L2	plasma	پالسما، ماییع در خون
+G10L2	summer	تابستان
+G10L2	sun	خورشید
+G10L2	Pluto	سیاره پلوتون
+G10L2	superlative	، عایل صفت ) برترین
+G10L2	pump	پمپاژ کردن، پمپ
+G10L2	than	از ( برای مقایسه در صفات برتری)
+G10L2	powerful	قدرتمند، قوی
+G10L2	things	اشیاء، وسایل، چی زها
+G10L2	think about	فکر کردن درباره
+G10L2	thousand	هزار
+G10L2	quality	کیفیت
+G10L2	without	بدون
+G10L2	Uranus	سیاره اورانوس
+G10L2	wooden	چوت
+G10L2	useful	مفید، کارآمد
+G10L2	worse	بدتر صفت تفضییل
+G10L2	Venus	سیاره ونوس
+G10L2	worst	بدترین صفت عایل
+G10L2	basement	زیر زمت ز
+G10L2	extremely	ت نهایت
+G10L2	weakness	ضعف
+G10L2	crying	گریه
+G10L2	visible	قابل رؤیت
+G10L2	compete	رقابت کردن
+G10L2	chance	شانس، بخت
+G10L2	surface	سطح
+G10L2	crayon	مداد شمیع
+G10L2	cause	سبب شدن ، باعث شدن
+G10L2	gather	جمع کردن، گرد آ وری کردن
+G10L2	independently	به طور مستقل
+G10L3	emphasis	تأکید - تکیه- اضار
+G10L3	airplane	هواپیما
+G10L3	emphatic	تأکیدی
+G10L3	anything	هیحر، هیچ چی زی- هر چی زی
+G10L3	energetic	پر انرژی، فعال، پر جنب و جوش
+G10L3	everything	هر چی زی- هر کاری
+G10L3	at all	اصأل، ابدأ
+G10L3	at first	در ابتدا
+G10L3	at that time	در آن زمان
+G10L3	at the moment	در حال حاضز
+G10L3	background	پس زمینه
+G10L3	be after	به دنبال بودن
+G10L3	full of	پر از
+G10L3	believe	باور داشتر ز ، ایمان داشتر ز ، عقیده
+G10L3	get around	پخش شدن- شایع شدن
+G10L3	build	ساختر ز ، درست کردن
+G10L3	given	داده شده - ارائه شده
+G10L3	bulb	حباب- المپ
+G10L3	camera	دوربت ز
+G10L3	carry out	انجام دادن
+G10L3	grave	گور، قی
+G10L3	change into	تبدیل شدن به، تبدیل کردن به
+G10L3	column	ن ستو (می ن کتاب، ساختمان )
+G10L3	come in	وارد شدن، داخل شدن
+G10L3	have fun	خوش گذراندن، تفری ح داشتر ز
+G10L3	cookie	کلوچه
+G10L3	cool	عایل، محشی- خنک
+G10L3	hearing	شنوات
+G10L3	cradle	گهواره- مهد
+G10L3	heavily	به شدت، به طور سنگت ز(بارش برف و باران)
+G10L3	herself	خودش خانم)
+G10L3	himself	خودش آقا )
+G10L3	destructive	مخرب، ویرانگر
+G10L3	historian	تاری خ نویس، تاری خ دان، مورخ
+G10L3	do research	تحقیق انجام دادن
+G10L3	emotionless	ت احساس
+G10L3	interrogative	جمالت سؤایل
+G10L3	pass away	فوت کردن، مردن، از دنیا رفتر ز
+G10L3	into	داخل، به درون
+G10L3	past progressive	زمان ) گذشته استمراری
+G10L3	peace	صلح- آرامش
+G10L3	itself	خودش غیر انسان)
+G10L3	jump out	بی ون پریدن
+G10L3	kitty	بچه گربه
+G10L3	prophet	پیامی ، پیغمی ، نن
+G10L3	publish	منتشی کردن- چاپ کردن
+G10L3	light bulb	الم پ
+G10L3	put aside	کنار گذاشتر ز
+G10L3	jump out	بی ون پریدن
+G10L3	rapidly	به رسعت
+G10L3	must	باید (اجبار )
+G10L3	rather	نسبتآ
+G10L3	myself	خودم
+G10L3	refinery	پالایشگاه
+G10L3	narrate	نقل کردن- روایت کردن
+G10L3	narrator	نقل کننده، راوی، روایت کننده
+G10L3	researcher	محقق
+G10L3	negative	منفز
+G10L3	rich	ثروتمند
+G10L3	next door	خانه همسایه- در بغیل
+G10L3	no one	هیچ کش
+G10L3	observe	مشاهده کردن، رصد ، کردن رعایت کردن
+G10L3	ourselves	خودمان
+G10L3	slowly	به آرایم
+G10L3	painful	دردناک
+G10L3	smoking	استعمال دخانیات
+G10L3	painless	ت درد
+G10L3	state	حالت - استان، ایالت- بیان کردن
+G10L3	universe	جهان، دنیا ، عالم
+G10L3	until	تا، تا اینکه
+G10L3	successfully	با موفقیت
+G10L3	wait	صی کردن، منتظر ماندن
+G10L3	themselves	خودشان
+G10L3	weak	ضعیف- نحیف
+G10L3	thinker	متفکر، اندیشمند
+G10L4	adverb	قید
+G10L4	obligation	اجبار
+G10L4	offline	بدون اتصال به اینیر نت ، آف الین
+G10L4	home - made	خانکی
+G10L4	organization	سازمان
+G10L4	own	مال خود - صاحب بودن، داشتر ز
+G10L4	hospitable	مهمان نواز
+G10L4	paradise	بهشت
+G10L4	patiently	صبورانه - با شکیبات
+G10L4	image	، تصور تصویر، عکس
+G10L4	in fact	در حقیقت
+G10L4	pilgrim	زائر، مسافر مذهت )
+G10L4	in front of	روبروی، در جلوی
+G10L4	safe	ایمن، ت خطر
+G10L4	take time	زمان بردن، طول کشیدن
+G10L4	tour	سفر تفریح، گردش، اردو
+G10L4	seem	به نظر رسیدن
+G10L4	tourism	گردشگری، توریسم
+G10L4	sell (sold)	فروختر ز
+G10L4	shrine	آرامگاه - مرقد
+G10L4	travel agency	آژانس مسافرتر
+G10L4	similar	مشابه، مانند
+G10L4	travel agent	کارمند آژانس مسافرتر
+G10L4	sick	بیمار، مریض
+G10L4	traveler	مسافر
+G10L4	tradition	سنت، آئت ز ، رسم
+G10L4	vacation	تعطییل
+G10L4	spend (spent)	خرج کردن- سیر ی کردن
+G10L4	vegetables	سی زیجات
+G10L4	station	ایستگاه
+G10L4	wall	دیوار
+G10L4	wide	گسیر ده، وسیع، عریض ، پهن
+G10L4	suitably	به طور مناسب

@@ -24,6 +24,8 @@ import {
 import { faNum } from "@/lib/study-theme";
 import { speak } from "@/lib/speak";
 import { useStudy } from "@/lib/study-store";
+import QuizEngine from "../quiz/quiz-engine";
+import type { QuizQuestion } from "@/lib/study-types";
 
 // =====================================================================
 // «کتابخانهٔ جزوه‌ها» — استخراجِ کامل و واژه‌به‌واژهٔ ۶ جزوهٔ پایهٔ ۷ تا ۱۲.
@@ -114,6 +116,40 @@ const fetchDoc = (grade: number): Promise<JozveDoc> => {
   if (!p) {
     p = fetch(`/jozve/g${grade}.json`).then((r) => r.json());
     docCache.set(grade, p);
+  }
+  return p;
+};
+
+// —— بانک‌های تستِ قابلِ‌اجرا از دلِ جزوه‌ها (ادامهٔ استخراج — r273) ——
+// هر پایه‌ای که فایل tests-gN.json بگیرد این‌جا ثبت می‌شود؛ مانیفست شمارش‌ها
+// برای کارت «اجرای تست» بدونِ شبکه است و خودِ فایل در لحظهٔ شروع خوانده می‌شود.
+interface JozveTestQuestion {
+  id: string;
+  n: number;
+  category: string;
+  question: string;
+  options: string[];
+  answer: number;
+  translation?: string;
+}
+interface JozveTestBank {
+  grade: number;
+  answerArbitration?: { q: number; letter: string; why: string }[];
+  lessons: { lesson: number; title: string; level: string; count: number; questions: JozveTestQuestion[] }[];
+}
+const GRADE_TESTS: Record<number, { lessons: { lesson: number; title: string; count: number }[] }> = {
+  12: { lessons: [{ lesson: 1, title: "درس اول", count: 100 }] },
+};
+const testsCache = new Map<number, Promise<JozveTestBank | null>>();
+const fetchTests = (grade: number): Promise<JozveTestBank | null> => {
+  let p = testsCache.get(grade);
+  if (!p) {
+    p = GRADE_TESTS[grade]
+      ? fetch(`/jozve/tests-g${grade}.json`)
+          .then((r) => (r.ok ? r.json() : null))
+          .catch(() => null)
+      : Promise.resolve(null);
+    testsCache.set(grade, p);
   }
   return p;
 };
@@ -251,6 +287,42 @@ export default function JozveView() {
     speak(line, 0.9, () => setSpeakingLine(null), () => setSpeakingLine(null));
   }, []);
 
+  // اجرای تست واژگان جزوه — سشن QuizEngine مستقل (خارج از بانک ۳ درس):
+  // trackMistakes=false چون این محتوا جزوهٔ پایه‌های دیگر است و نباید بانک
+  // خطای درس‌های Vision 2 را آلوده کند؛ نتیجه زیر کلید مستقل خودش می‌رود.
+  const [testSession, setTestSession] = useState<{
+    title: string;
+    questions: QuizQuestion[];
+    resultKey: string;
+  } | null>(null);
+  const [testLoadingLesson, setTestLoadingLesson] = useState<string | null>(null);
+  const startJozveTest = useCallback(
+    async (g: number, les: { lesson: number; title: string; count: number }) => {
+      setTestLoadingLesson(`g${g}-l${les.lesson}`);
+      try {
+        const bank = await fetchTests(g);
+        const l = bank?.lessons.find((x) => x.lesson === les.lesson);
+        if (!l || l.questions.length === 0) return;
+        const questions: QuizQuestion[] = l.questions.map((q) => ({
+          id: q.id,
+          category: "vocab",
+          question: q.question,
+          options: q.options,
+          answer: q.answer,
+          ...(q.translation ? { translation: q.translation } : {}),
+        }));
+        setTestSession({
+          title: `آزمون واژگان جزوه — ${les.title} پایهٔ ${GRADE_LABEL[g]}`,
+          questions,
+          resultKey: `jozve-g${g}-l${les.lesson}`,
+        });
+      } finally {
+        setTestLoadingLesson(null);
+      }
+    },
+    []
+  );
+
   // نتایج جست‌وجو در سند بارگیری‌شده
   const searchResults = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -293,6 +365,21 @@ export default function JozveView() {
 
   return (
     <div className="mx-auto w-full max-w-3xl px-4 pb-24 pt-6" dir="rtl">
+      {/* اجرای تست جزوه — سشن تمام‌عرض جایگزین خواننده */}
+      {testSession && (
+        <QuizEngine
+          title={testSession.title}
+          questions={testSession.questions}
+          resultKeyStr={testSession.resultKey}
+          lessonId="jozve"
+          category="vocab"
+          immediate
+          trackMistakes={false}
+          onExit={() => setTestSession(null)}
+        />
+      )}
+      {!testSession && (
+      <>
       {/* سرصفحه */}
       <header className="mb-5 flex items-start justify-between gap-3">
         <div>
@@ -419,6 +506,38 @@ export default function JozveView() {
       {/* فهرست فصل‌ها */}
       {doc && !query && chapterIdx == null && (
         <section aria-label="فهرست فصل‌ها" className="space-y-2.5">
+          {/* اجرای تست واژگان جزوه — ادامهٔ استخراج (r273) */}
+          {GRADE_TESTS[doc.grade] && (
+            <div className="rounded-2xl border border-violet-200 bg-violet-50/60 p-4">
+              <div className="mb-3 flex items-center gap-2.5">
+                <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-violet-200 bg-white text-violet-700">
+                  <ListChecks size={18} />
+                </span>
+                <div className="min-w-0">
+                  <h3 className="text-[13.5px] font-black text-violet-900">آزمون واژگان این جزوه</h3>
+                  <p className="text-[11px] leading-5 text-violet-700/80">
+                    تست‌های استخراج‌شده از دلِ PDF جزوه، با کلید و ترجمهٔ خودِ جزوه — پاسخ اشتباه به بانک خطای سه درس نمی‌رود
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {GRADE_TESTS[doc.grade].lessons.map((les) => {
+                  const busy = testLoadingLesson === `g${doc.grade}-l${les.lesson}`;
+                  return (
+                    <button
+                      key={les.lesson}
+                      onClick={() => startJozveTest(doc.grade, les)}
+                      disabled={busy}
+                      className="inline-flex items-center gap-1.5 rounded-xl border border-violet-300 bg-white px-3 py-2 text-[12px] font-extrabold text-violet-800 shadow-sm transition-[background-color,transform] hover:bg-violet-100 active:scale-95 disabled:opacity-60"
+                    >
+                      {busy ? <Loader2 size={14} className="animate-spin" /> : <ListChecks size={14} />}
+                      {les.title} — {faNum(les.count)} تست
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
           {doc.chapters.map((c, ci) => {
             const km = KIND_META[c.kind] ?? KIND_META.intro;
             const lines = c.sections.reduce((a, s) => a + s.lines.length, 0);
@@ -662,6 +781,8 @@ export default function JozveView() {
             </div>
           )}
         </section>
+      )}
+      </>
       )}
     </div>
   );

@@ -1,0 +1,555 @@
+L1	Intonation	کتاب
+L1	falling	و افتان
+L1	n’t	و، یا مخفف آن
+L1	first person singular pronoun	میر اول شخص مفرد یا
+L1	You	می  ش    ود
+L1	He	مذکر
+L1	She	مؤنث
+L1	it	غیرجاندار
+L1	first	می میش    ود
+L1	To be	مصدر بودن، افعال
+L1	to	به
+L1	was	به، صورت
+L1	were	می باشد و
+L1	we	دوم، شخص جمع است، که از آن، برای ضمایر
+L1	not	کلمه
+L1	We are	بیاوریم
+L1	some	حرف تعریف”
+L1	the	در زبان انگلیسی، کلمه”
+L1	restaurant	بپیچ به چپ و برو به شماره45
+L1	sea	کوه
+L1	lake	دریا و
+L1	republic	همراه اسم کشورهایی که در ابتدای آنها کلمات”
+L1	there	برخالف معنای واژه
+L1	there is	ساختارهای
+L1	there are	یا
+L1	be	را به افعال
+L1	is	یا
+L1	are	قرار دهید
+L1	This	صفات اشاره به دور
+L1	That	این
+L1	These	آن
+L1	Those	اینها
+L1	es	ختم شود هنگام جمع بستن به آخر آن
+L1	box	گاهی حرف
+L1	A book	مفرد
+L1	books	جمع
+L1	Need	معنی (2، کلمه (1 )، نیاز داشتن
+L1	Airport	فرودگاه
+L1	Novel	رمان
+L1	Around	دور
+L1	Pack	بستن
+L1	Board	سوارشدن
+L1	Passport	پاسپورت
+L1	Book	رزرو کردن
+L1	Plane	هواپیما
+L1	Buy	خریدن
+L1	Poem	شعر
+L1	Check in	پذیرش شدن
+L1	Possible	ممکن
+L1	Check out	تسویه حساب کردن
+L1	Receptionist	مسئول پذیرش
+L1	Enjoy	لذت بردن
+L1	Reservation	رزرو
+L1	Exchange	تبدیل کردن
+L1	Story	داستان
+L1	Express train	قطار سریع اسیر
+L1	Stand	ایستادن
+L1	Fill out	پرکردن
+L1	Take off	بلندشدن هواپیما
+L1	Find	پیدا کردن
+L1	Ticket	بلیط
+L1	Gift shop	فروشگاه هدیه
+L1	Guide book	کتاب راهنما
+L1	Hope	امیدوار بودن
+L1	Key	کلید
+L1	Land	فرود آمدن
+L1	Voyage	سفردریایی
+L1	Wheel	چرخ
+L1	Letter	نامه
+L1	world	جهان
+L1	map	نقشه
+L2	Sara	صحبت کردن در مورد سفر
+L2	am	برای اول شخص مفرد از
+L2	ing	ختم شود هنگام اضافه کردن
+L2	forever	و عبارت
+L2	s-	که
+L2	s’	باز هم باید نشانه مالکیت
+L2	objects	به طور کلی اگر مالکیت متعلق به اشیاء)
+L2	of	باشد از
+L2	Hold	معنی  (2 )، برگزار کردن
+L2	Anniversary	سال روز
+L2	Holiday	تعطیالت
+L2	Anthem	سرود ملی
+L2	International	بین المللی
+L2	Bake	پختن
+L2	Islamic	اسالمی
+L2	Lunch	ناهار
+L2	Change	تغییر کردن
+L2	Children	کودکان
+L2	Meal	وعده غذایی
+L2	Clean	تمیز کردن
+L2	Military	نظامی
+L2	Clear	تمیزکردن،پاک کردن
+L2	Muslim	مسلمان
+L2	Clothes	لباس ها
+L2	National	ملی
+L2	Color	رنگ کردن
+L2	Nature day	روز طبیعت
+L2	Commemorate	بزرگداشت
+L2	New year	سال نو
+L2	Culture	فرهنگ
+L2	Nut	آجیل
+L2	Dinner	شام
+L2	Paint	رنگ کردن
+L2	Dish	ظرف
+L2	Parade	رژه
+L2	Egg	تخم مرغ
+L2	Religious	مذهبی
+L2	Fast	روزه گرفتن
+L2	Revolution	انقالب
+L2	Set	چیدن
+L2	Fireworks	آتش بازی
+L2	Special	مخصوص
+L2	Get	گرفتن
+L2	Wash	شستن
+L2	Go out	بیرون رفتن
+L2	watch	تماشا کردن
+L2	goldfish	ماهی قرمز
+L3	friends	بله او دوستان زیادی دارد
+L3	language melody	بیرون رفتن در روز طبیعت، آهنگ زبان یا
+L3	does	یا
+L3	sh	یا
+L3	ie	را به
+L3	Services	خدمات
+L3	Information	معنی (2، کلمه (1 )، اطالعات
+L3	Account	حساب
+L3	Keep	نگه داشتن
+L3	ATM	دستگاه خود پرداز
+L3	Late	دیر
+L3	Bring	آوردن
+L3	Learn	یادگرفتن
+L3	Blood	خون
+L3	Life	زندگی
+L3	Charity	خیریه
+L3	Lost	گم شده
+L3	Cheap	ارزان
+L3	Money	پول
+L3	Donate	اهدا کردن
+L3	Open	بازکردن
+L3	Easy	آسان
+L3	Outside	بیرون
+L3	Emergency	اورژانسی
+L3	Postcard	کارت پستال
+L3	Envelope	پاکت نامه
+L3	Put out	خاموش کردن
+L3	ER	اتاق اورژانس
+L3	Recharge	شارژ مجدد
+L3	Save	نجات دادن
+L3	Fire	آتش
+L3	Send	فرستادن
+L3	Fire station	ایستگاه آتش نشانی
+L3	Firefighter	آتش نشان
+L3	Shift	شیفت،نوبت کاری
+L3	Gas station	پمپ بنزین
+L3	Stamp	تمبر
+L3	Get off	پیاده شدن
+L3	Take out	برداشت پول
+L3	Get on	سوار شدن
+L3	Voluntary	داوطلبانه
+L3	Hard	سخت
+L3	Wake up	بیدار شدن
+L3	hire	کرایه کردن
+L4	How many	صفت مقدار چند تا
+L4	much - a little	صفت مقدار
+L4	How much	چه مقدار
+L4	Whose	مال چه کسی
+L4	little - thin - clever	صفت
+L4	which	کدام
+L4	what	شغل–، شیء، چه چیز-، چه کار
+L4	green - blue - white	رنگ
+L4	What color	چه رنگی
+L4	What time	کی–، چه ساعت
+L4	at Monday - Saturday	روز هفته
+L4	What day	چند شنبه
+L4	slowly - hard - rapidly	قید حالت
+L4	How	چگونه–، چطوری
+L4	When	کی–، چه وقت
+L4	at home - in the park	قید مکان
+L4	Where	کجا
+L4	How old	چند ساله
+L4	adverb of frequency	در زبان انگلیسی یا همان
+L4	Have	قید
+L4	Interview	معنی (2، کلمه (1 )، مصاحبه کردن
+L4	Ago	قبل، پیش
+L4	Amazing	شگفت انگیز
+L4	Last	گذشته ، قبلی
+L4	Antivirus	آنتی ویروس
+L4	Later	بعدا
+L4	Attend	حضوریافتن
+L4	Look	نگاه کردن
+L4	Beautiful	زیبا
+L4	Match	مسابقه
+L4	Blog	وبالگ
+L4	Message	پیام
+L4	Call	تماس گرفتن
+L4	Movie	فیلم
+L4	Newsstand	دکه روزنامه فروشی
+L4	Online	آنالین
+L4	Cinema	سینما
+L4	Participate	شرکت کردن
+L4	Connect	متصل شدن
+L4	Course	دوره آموزشی
+L4	Quiz show	مسابقه تلویزیونی
+L4	Dictionary	فرهنگ لغت
+L4	Receive	دریافت کردن
+L4	Different	متفاوت
+L4	Report	گزارش
+L4	Download	دانلود کردن
+L4	See	دیدن
+L4	Event	رویداد
+L4	Text	پیامک کردن
+L4	Fantastic	رویایی
+L4	War	جنگی
+L4	Happen	اتفاق افتادن
+L4	Wonderful	شگفت انگیز
+L4	Install	نصب کردن
+L4	yesterday	دیروز
+L4	intersting	جالب
+L4	farmer	کشاورز
+L4	worker	کارگر
+L4	footballer	بازیکن فوتبال
+L4	Player	بازیگر
+L4	driver	راننده
+L4	shopkeeper	مغازه دار
+L4	house maker	خانه دار
+L4	doctor	پزشک
+L4	dressmaker	خیاط زنانه
+L4	Banker	بانکدار
+L4	Teacher	معلم
+L4	actor	هنرپیشه مرد
+L4	baker	نانوا دار
+L4	Tailor	خیاط مردانه
+L4	headmaster	مدیر مرد
+L4	singer	خواننده
+L4	actress	ر هن پیشه زن
+L4	boss	رئیس
+L4	headmistress	مدیر زن
+L4	engineer	مهندس
+L4	boatman	قایقران
+L4	gardener	باغدار
+L4	leader	رهبر
+L4	photographer	عکاس
+L4	watchmaker	ساعت ساز
+L4	president	رئیس جمهور
+L4	forester	جنگلبان
+L4	sergeant	گروهبان
+L4	clergyman	روحانی
+L4	welder	جوشکار
+L4	tiller	سفالگر
+L4	governor	فرماندار
+L4	cameleer	ساربان
+L4	assistant	معاون
+L4	demarche	بخشدار
+L4	sleeper	چوپان
+L4	brigadier	سرتیپ
+L4	muezzin	موذن
+L4	merchant	تاجر
+L4	professor	استاد
+L4	Grocer	بقال
+L4	writer	نویسنده
+L4	colonel	سرهنگ
+L4	carpenter	نجار
+L4	student	دانش آموز
+L4	painter	نقاش ساختمان
+L4	butcher	قصاب
+L4	council	شورا
+L4	miner	معدنچ، ی
+L4	minister	وزیر
+L4	rancher	گله دار
+L4	waiter	گارسون
+L4	prime minister	نخست وزیر
+L4	street sweeper	رفتگر
+L4	Capitan	ناخدا
+L4	porter	باربر
+L4	repairman	تعمیرکار
+L4	specialist	متخصص
+L4	greengrocery	میوه فروش
+L4	housewife	زن خانه دار
+L4	seller	فروشنده
+L4	mayor	شهردار
+L4	Optician	عینکسا ز
+L4	glassmaker	شیشه ساز
+L4	lawyer	وکیل
+L4	nurse	پرستار
+L4	barber	آرایشگر مرد
+L4	judge	قاضی
+L4	pilot	خلبان
+L4	Decorator	آرایشگر زن
+L4	fisherman	ماهیگیر
+L4	clerk	کارمند
+L4	Calligrapher	خوشنویس
+L4	artist	هنرمند
+L4	cook	آشپز
+L4	Diver	غواص
+L4	piper	لوله کش
+L4	surgeon	جراح
+L4	reporter	گزارشگر
+L4	guard	نگهبان
+L4	army	نظامی
+L4	fireman	آتش نشان
+L4	guard man	مرد پاسدار
+L4	coach	مربی
+L4	officer	افسر
+L4	dentist	دندانپزشک
+L4	doorkeeper	دربان
+L4	speaker	سخنران
+L4	psychologist	روانشناس
+L4	blacksmith	آهنگر
+L4	sculptor	مجسمه ساز
+L4	operator	تلفنچی
+L4	retired	بازنشسته
+L4	caretaker	سرایدار
+L4	Mother	مادر
+L4	Parents	والدین
+L4	son	پسر
+L4	Sister	خواهر
+L4	Step-brother	نابرادری–برادر، خوانده
+L4	Daughter	دختر
+L4	Brother	برادر
+L4	Step-mother	نا مادری– مادر، خوانده
+L4	Half-brother	نا برادری– برادر، خوانده
+L4	Step-sister	ناخواهر–خواهر، خوانده
+L4	Stepfather	نا پدری – پدر خوانده
+L4	Grandfather	پدر بزرگ
+L4	Grandmother	مادر بزرگ
+L4	Half-sister	ناخواهر–خواهر، خوانده
+L4	Grandparents	پدر بزرگ و مادر بزرگ
+L4	Grandchildren	نوه
+L4	Grandson	نوه–پسر پسر–، پسردختر
+L4	Great	پدر جد
+L4	Uncle	دایی – شوهر، عمه – شوهر، خاله
+L4	Cousin	عموزاده–، دایی زاده – عمه، زاده – خاله زاده
+L4	Granddaughter	نوه–دختردختر –دختر، پسر
+L4	Aunt	عمه–خاله–، زن دایی عمو
+L4	Brother-in-law	برادر شوهر– برادر زن، باجناق
+L4	Sister-in-law	جاری – زن برادر زن
+L4	Niece	دختر برادر یا خواهر
+L4	Only-child	تک فرزند
+L4	Twins	دوقلو
+L4	Father-in-law	پدر زن– پدر شوهر
+L4	Mother-in-	مادر زن–مادر شوهر
+L4	law	زن
+L4	Wife	دوست دختر
+L4	Girl friend	شوهر
+L4	Husband	دوست پسر
+L4	Boy friend	در  این بخش به یادگیری
+L4	skirt	انواع لباس و پوشیدنی ها، می پردازیم، دامن
+L4	blouse	بلوز
+L4	pants	شلوار
+L4	shirt	پیراهن، مردانه
+L4	jeans	لباس، جین
+L4	sport shirt	پیراهن، اسپورت
+L4	dress	پیراهن، زنانه
+L4	jersey	پیراهن، کشباف
+L4	jacket	کت
+L4	sweater	سوئیتر
+L4	three-piece suit	لباس سه، تیکه
+L4	suit	کت و، دامن
+L4	uniform	لباس، فرم
+L4	tie	کراوات
+L4	shorts	شلوارک
+L4	T-shirt	تی، شرت
+L4	jumpsuit	لباس کار، یکسره
+L4	maternity dress	لباس، حاملگی
+L4	jumper	سارافون
+L4	vest	جلیقه
+L4	tunic	تونیک
+L4	blazer	کت، رسمی
+L4	overalls	شلوار پیش، بندی
+L4	leggings	شلوار، استرچ
+L4	tuxedo	کت رسمی، مردانه
+L4	turtleneck	پیراهن یقه، برگردان
+L4	gown	لباس، شب
+L4	bow tie	پاپیون
+L4	Irregular verbs	افعال بی قاعده
+L4	cut	بریدن
+L4	put	قرار
+L4	read	دادن
+L4	sit	نشستن
+L4	run	دویدن
+L4	say	گفتن
+L4	drink	نوشیدن
+L4	sing	آواز
+L4	written	خواندن
+L4	write	نوشتن
+L4	arise	بلند شدن
+L4	awake	بیدار کردن / شدن
+L4	bear	حمل کردن / تحمل کردن
+L4	beat	زدن
+L4	become	شدن
+L4	begin	شروع کردن
+L4	bend	خم
+L4	bet	کردن / شدن
+L4	bind	به هم بستن
+L4	bite	گاز گرفتن
+L4	bleed	خونریزی کردن
+L4	blow	وزیدن
+L4	break	شکستن
+L4	breed	پرورش دادن
+L4	broadcast	پخش کردن
+L4	built	ساختن
+L4	burn	سوزاندن
+L4	burst	منفجر شدن
+L4	catch	گرفتن
+L4	choose	انتخاب کردن
+L4	cling	چسبیدن
+L4	come	آمدن
+L4	cost	قیمت داشتن
+L4	creep	خزیدن
+L4	deal	داد و ستد داشتن
+L4	dig	کندن
+L4	do	انجام دادن
+L4	draw	نقاشی کردن
+L4	dream	خواب
+L4	drunk	دیدن
+L4	drive	رانندگی کردن
+L4	eat	خوردن
+L4	fall	افتادن
+L4	feed	غذا دادن
+L4	feel	احساس کردن
+L4	fight	جنگیدن
+L4	fly	پرواز کردن
+L4	forbid	ممنوع کردن
+L4	forgive	بخشیدن
+L4	freeze	منجمد کردن / یخ زدن
+L4	give	دادن
+L4	go	رفتن
+L4	grind	خرد کردن
+L4	grow	رشد
+L4	hang	آویزان کردن
+L4	hear	شنیدن
+L4	hide	مخفی کردن
+L4	hit	زدن
+L4	kneel	زانو زدن
+L4	know	دانستن / شناختن
+L4	lay	قرار دادن
+L4	lead	راهنمایی کردن
+L4	lean	تکیه دادن  / خم
+L4	learned	شدن
+L4	left	گرفتن
+L4	leave	ترک کردن
+L4	lend	قرض دادن
+L4	lie	دروغ گفتن
+L4	light	روشن
+L4	lose	از دست دادن
+L4	may	ممکن بودن
+L4	mean	معنی دادن
+L4	meet	مالقات کردن
+L4	mow	چیدن
+L4	overtake	چیره شدن
+L4	pay	پرداخت کردن
+L4	ride	راندن
+L4	ring	زنگ زدن
+L4	rise	بالا رفتن / طلوع کردن
+L4	saw	اره کردن
+L4	sell	فروختن
+L4	sew	دوختن
+L4	shake	لرزاندن / لرزیدن
+L4	shed	بیرون ریختن
+L4	shine	درخشیدن
+L4	shoot	شلیک کردن
+L4	show	نمایش دادن
+L4	shrink	کوچک شدن
+L4	shut	بستن
+L4	sink	غرق شدن
+L4	sleep	خوابیدن
+L4	slide	سر خودن
+L4	smell	بوییدن
+L4	sow	بذر افشانی کردن
+L4	speak	صحبت کردن
+L4	spell	هجی کردن
+L4	spend	خرج کردن / گذراندن
+L4	spill	افشا کردن
+L4	spit	تف کردن
+L4	spread	گستردن/پخش شدن
+L4	steal	دزدیدن
+L4	stick	چسباندن / چسبیدن
+L4	sting	نیش زدن
+L4	stink	بوی بد دادن
+L4	strike	ضربه
+L4	sworn	زدن
+L4	swear	قسم خوردن
+L4	sweep	جارو کردن
+L4	swell	باد کردن / متورم شدن
+L4	swim	شنا کردن
+L4	swing	تاب خوردن
+L4	take	گرفتن
+L4	tear	پاره کردن
+L4	tell	گفتن
+L4	think	فکر کردن
+L4	throw	پرتاب کردن
+L4	understand	فهمیدن
+L4	wake	بیدار کردن
+L4	wear	پوشیدن
+L4	weep	گریه کردن
+L4	win	برنده شدن
+L4	wind	کوک کردن / شدن
+L5	My sister	صحبت کردن در مورد رسانه
+L5	school	او
+L5	rising	ها، خیزان، صعودی، یا
+L5	simple	معموال برای بیان وقایعی که یک یا چند بار
+L5	I played	افعال با
+L5	I spoke	افعال بی قاعده
+L5	went to school	صبح زود از خواب بیدار
+L5	often	همیشه
+L5	Heart attack	معنی (2، کلمه (1 )، حمله قبلی
+L5	Accident	تصادف
+L5	Advice	توصیه
+L5	Hurry up	عجله کردن
+L5	Again	دوباره
+L5	Ankle	قوزک پا
+L5	Back	پشت ، کمر
+L5	Invite	دعوت کردن
+L5	Knee	زانو
+L5	Bruise	کبودی
+L5	Leg	پا
+L5	Little	کوچک
+L5	Cast	گچ
+L5	Climb	بالا رفتن
+L5	Plan	برنامه ریزی کردن
+L5	Cry	گریه کردن
+L5	Plaster	چسپ زخم
+L5	Scar	جای زخم
+L5	Finger	انگشت
+L5	Twist	پیچ خوردن
+L5	First aid	کمک های اولیه
+L5	Wound	زخم
+L5	Head	سر
+L5	yard	حیاط
+L6	Reza	صحبت کردن در مورد سالمتی و آسیب ها
+L6	and	هنگامیکه از ضمایر شخصی به همراه
+L6	seventy	رنگها در زبان انگلیسی
+L6	Colors	روزها
+L6	Weekdays	به معنی
+L6	Sunday	هفته است که تعطیل می باشند
+L6	Tues	از
+L6	Thur	از
+L6	Thurs	یا
+L6	Monday	روز مریخ
+L6	Tuesday	روز عطارد
+L6	Wednesday	روز مشتری
+L6	Thursday	روز زهره
+L6	Friday	روز زحل
+L6	Saturday	ماهها
+L6	January	مــــاه مـیـالدی ماه شمسی، تعداد روز
+L6	February	ژانویه، دی  تا11، بهمن
+L6	March	فوریه، بهمن  تا9، اسفند
+L6	April	مارس، اسفند  تا11، فروردین
+L6	June	می، اردیبهشت تا10، خرداد
+L6	July	جان، خرداد    تا9، تیر
+L6	August	جوالی، تیر    تا9، مرداد
+L6	September	آگوست، مرداد  تا9، شهریور
+L6	October	سپتامبر، شهریور  تا۸، مهر
+L6	November	اکتبر، مهر    تا9، آبان
+L6	December	نوامبر، آبان     تا9، آذر

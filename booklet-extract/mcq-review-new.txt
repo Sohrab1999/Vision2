@@ -1,0 +1,1470 @@
+[N0] L1 p30 #8 ANS=b
+  S: The weather has been very dry recently. We’ve had ----------------------------- rain.
+  A: many
+  B: a lot of
+  C: little
+  D: a few
+[N1] L1 p30 #12 ANS=a
+  S: Ali always talks ----------------------------- about his school days.
+  A: many
+  B: a lot of
+  C: lots of
+  D: a lot
+[N2] L1 p30 #14 ANS=a
+  S: ----------------------------- drops of lemon can be useful to clean windows.
+  A: Little
+  B: A little
+  C: Much
+  D: A few
+[N3] L1 p30 #15 ANS=c
+  S: Our team didn’t play well. We made too ----------------------------- mistakes.
+  A: very
+  B: many
+  C: much
+  D: some
+[N4] L1 p30 #17 ANS=b
+  S: I have got ----------------------------- friends abroad, not many.
+  A: a few
+  B: very few
+  C: a lot of
+  D: much
+[N5] L3 p89 #1 ANS=a
+  S: The museum’s collection ---------------------------------- works of art from all around the world.
+  A: appreciates
+  B: attempts
+  C: includes
+  D: depends
+[N6] L3 p89 #2 ANS=d
+  S: He welcomed me with a wide smile and a warm ----------------------------------.
+  A: calligraphy
+  B: handshake
+  C: collection
+  D: truth
+[N7] L3 p89 #3 ANS=a
+  S: It’s funny how Ali always disappears ---------------------------------- there’s work to be done.
+  A: uncertain
+  B: shared
+  C: pleasure
+  D: whenever
+[N8] L3 p89 #4 ANS=d
+  S: Making and selling handicrafts are good ways to help a country’s ---------------------------------- and introduce its culture to other nations.
+  A: attitude
+  B: economy
+  C: souvenir
+  D: combination
+[N9] L3 p89 #8 ANS=c
+  S: Having pictures to color will keep children ---------------------------------- for hours.
+  A: common
+  B: amused
+  C: unique
+  D: frightened
+[N10] L3 p89 #12 ANS=b
+  S: The only way to ------------------ the impossible is to believe that it is possible.
+  A: expect
+  B: lend
+  C: achieve
+  D: handshake
+[N11] L3 p90 #15 ANS=a
+  S: Reza won the ---------------------------------- prize when he was at school.
+  A: uncertain
+  B: antonym
+  C: calligraphy
+  D: infinitive
+[N12] L3 p90 #18 ANS=d
+  S: It is easy for you to ----------------------------------, but difficult to take advice from others.
+  A: advise
+  B: produce
+  C: agree
+  D: respect
+[N13] L3 p90 #19 ANS=a
+  S: Culture is a/an ---------------------------------- of thoughts, feelings, attitudes, and beliefs.
+  A: imagination
+  B: discount
+  C: souvenir
+  D: combination
+[N14] L3 p90 #20 ANS=c
+  S: By handicrafts, we mean making ---------------------------------- items in a skillful way using our hands.
+  A: uncertain
+  B: respectful
+  C: decorative
+  D: impatient
+[N15] L3 p90 #21 ANS=a
+  S: You have to ---------------------------------- on how to answer his questions before you get to his house.
+  A: weave
+  B: bow
+  C: reflect
+  D: escape
+[N16] L3 p90 #22 ANS=d
+  S: His unsociable character makes it hard for us to ---------------------------------- each other.
+  A: disappear
+  B: get along with
+  C: attempt
+  D: get back
+[N17] L3 p90 #23 ANS=c
+  S: Newspapers are produced in ---------------------------------- numbers.
+  A: decorative
+  B: vast
+  C: artifact
+  D: skillful
+[N18] L3 p90 #24 ANS=b
+  S: Many people of the world produce ---------------------------------- and sell them to tourists.
+  A: handicrafts
+  B: charities
+  C: imaginations
+  D: instances
+[N19] L4 p21 #10 ANS=a
+  S: I go to English class four ----------------- a week. Sometimes I find it really boring.
+  A: times
+  B: periods
+  C: rings
+  D: sizes
+[N20] L4 p21 #11 ANS=b
+  S: After that terrible earthquake in Kermanshah, many people were ready to -------- blood to the patients.
+  A: prepare
+  B: donate
+  C: produce
+  D: save
+[N21] L4 p22 #22 ANS=a
+  S: The driver should ------------------ at a yellow signal and come to a complete stop at a red light.
+  A: pause
+  B: record
+  C: catch
+  D: boost
+[N22] L4 p22 #23 ANS=a
+  S: She was angry because her boss increased her ------------- in her job, but he didn’t increase her salary.
+  A: duties
+  B: feelings
+  C: values
+  D: inspirations
+[N23] L4 p22 #25 ANS=b
+  S: We will --------------------- no efforts to find out who did this.
+  A: forgive
+  B: spare
+  C: confirm
+  D: dedicate
+[N24] L4 p22 #27 ANS=c
+  S: We received your invitation and are sorry to -------------- you that we won’t attend the conference.
+  A: connect
+  B: confirm
+  C: inform
+  D: dedicate
+[N25] L4 p22 #28 ANS=d
+  S: This --------------- of students doesn’t seem to care about school as much as their parents.
+  A: tradition
+  B: inspiration
+  C: installation
+  D: generation
+[N26] L4 p22 #29 ANS=c
+  S: I would be most ------------------- if you would send me the book immediately.
+  A: hopeful
+  B: dedicated
+  C: grateful
+  D: responsible
+[N27] L4 p22 #30 ANS=d
+  S: The name of the dead man will not be released until his relatives have been ----------------.
+  A: invited
+  B: appreciated
+  C: respected
+  D: informed
+[N28] L4 p22 #32 ANS=d
+  S: A police detective often finds himself in the position of having to ------------ between a lie and a truth.
+  A: forgive
+  B: dedicate
+  C: mention
+  D: distinguish
+[N29] L4 p22 #33 ANS=d
+  S: Jane suddenly --------------- tears thinking about leaving this place and all of her friends for 3 years.
+  A: look for
+  B: care for
+  C: take care of
+  D: burst into
+[N30] L4 p22 #34 ANS=c
+  S: The music was loud at the party, and ------------------- I could not hear what you were saying.
+  A: whereby
+  B: by accident
+  C: hence
+  D: aloud
+[N31] L4 p22 #35 ANS=c
+  S: Although the excellent worker ------------- a pay raise, his strict boss refuses to give him extra money.
+  A: inform
+  B: boost
+  C: deserve
+  D: provide
+[N32] L4 p22 #36 ANS=b
+  S: The book I got out of the library ----------------- the information I needed to finish my report, so I’ll have to find a better one.
+  A: born
+  B: lacked
+  C: improved
+  D: signaled
+[N33] L4 p22 #38 ANS=a
+  S: He ---------------- his little brother for breaking his toy airplane, but warned him to be more careful.
+  A: forgave
+  B: signaled
+  C: mentioned
+  D: distinguished
+[N34] L4 p22 #39 ANS=d
+  S: Check that any medicine you are taking ---------------- no risk for your developing baby.
+  A: builds
+  B: identifies
+  C: generates
+  D: carries
+[N35] L4 p23 #41 ANS=d
+  S: Police hoped that showing the missing girl’s face on the news would --------- new interest in her case.
+  A: lower
+  B: compare
+  C: pause
+  D: generate
+[N36] L4 p23 #42 ANS=c
+  S: We are a one-income family now; ------------------ we will not be taking two vacation trips this year.
+  A: sometime
+  B: when
+  C: hence
+  D: once
+[N37] L4 p23 #43 ANS=c
+  S: Not -----------------, it was much appreciated by Hitler and the Nazi immigration lawyers.
+  A: unconditionally
+  B: hopefully
+  C: surprisingly
+  D: seriously
+[N38] L4 p23 #44 ANS=c
+  S: Because of their cultural ----- ---------, the Wang family still celebrates Chinese New Year every year.
+  A: difference
+  B: process
+  C: heritage
+  D: generation
+[N39] L4 p23 #45 ANS=c
+  S: It is our ------------------- that makes us who we are and how we are different from everybody else.
+  A: sense of belonging
+  B: sense of appreciation
+  C: sense of identity
+  D: sense of responsibility
+[N40] L4 p23 #46 ANS=b
+  S: I'd never ------ ---------- myself if anything happened to the kids.
+  A: shout
+  B: forgive
+  C: found
+  D: regard
+[N41] L4 p23 #47 ANS=d
+  S: She has always been encouraged to swim to build up the ---------------- of her muscles.
+  A: feeling
+  B: difference
+  C: description
+  D: strength
+[N42] L4 p23 #48 ANS=b
+  S: Whenever she tried to have a ---- ------------ conversation with her friend, her friend always changed the subject to a new one.
+  A: countless
+  B: meaningful
+  C: religious
+  D: compound
+[N43] L4 p23 #49 ANS=a
+  S: If you do not ------------------ your parents of where you will be when you leave the house, it only makes sense that they would worry about you.
+  A: inform
+  B: feed
+  C: provide
+  D: confirm
+[N44] L4 p23 #51 ANS=c
+  S: The beautiful forests of this country are part of our national --------------- and must be protected.
+  A: elicitation
+  B: generation
+  C: heritage
+  D: inspiration
+[N45] L4 p23 #52 ANS=c
+  S: Researchers have found that one --------------- of the brain is to produce substances that can improve your health.
+  A: collection
+  B: distribution
+  C: function
+  D: solution
+[N46] L4 p23 #54 ANS=c
+  S: The clinic provides free ---------------- for elderly and infirm people who lack health insurance.
+  A: look
+  B: dedicate
+  C: care
+  D: ask
+[N47] L4 p23 #56 ANS=a
+  S: Even an expert would find it hard to ----------------- between the original painting and the copy.
+  A: distinguish
+  B: identify
+  C: inspire
+  D: belong
+[N48] L4 p23 #57 ANS=a
+  S: A generous businessman --------------- three million dollars to the charity.
+  A: donated
+  B: respected
+  C: cured
+  D: hugged
+[N49] L4 p24 #62 ANS=c
+  S: Because of so much noise rising from the engine, we had to -------------- to hear each other clearly.
+  A: reply
+  B: respect
+  C: shout
+  D: point
+[N50] L4 p24 #68 ANS=a
+  S: He was one of the Australia’s most -------------- artists, known for his paintings of nature.
+  A: distinguished
+  B: oral
+  C: frightening
+  D: quiet
+[N51] L4 p24 #73 ANS=c
+  S: Children often ----------------- at one another because they don’t have the skills to solve disagreements appropriately.
+  A: look
+  B: add
+  C: shout
+  D: start
+[N52] L4 p24 #76 ANS=a
+  S: Six people have ---------------- that they will attend the meeting but ten people haven’t replied yet.
+  A: confirmed
+  B: discovered
+  C: combined
+  D: inspired
+[N53] L4 p24 #77 ANS=b
+  S: My mother --------------- every hour of the day to take care of us while my father was away at work.
+  A: founded
+  B: dedicated
+  C: shared
+  D: regarded
+[N54] L4 p25 #79 ANS=a
+  S: Some of the managers give really helpful ------- to improve the quality of working lives in the society.
+  A: responsibility
+  B: protection
+  C: combination
+  D: cure
+[N55] L4 p25 #81 ANS=c
+  S: As I know, the author ---------------- no documentary references to support her statements.
+  A: distinguishes
+  B: shows
+  C: provides
+  D: concerns
+[N56] L4 p25 #82 ANS=c
+  S: She can’t go out to work because she has to stay at home to --------------- her elderly mother.
+  A: hug
+  B: look for
+  C: care for
+  D: bring up
+[N57] L4 p25 #83 ANS=a
+  S: The charity uses pictures of small children on its website to --------------- the support of the public.
+  A: elicit
+  B: boost
+  C: protect
+  D: donate
+[N58] L4 p25 #84 ANS=c
+  S: Most working environments are improved by -------- ------- of a few plants and pictures.
+  A: feeling
+  B: correction
+  C: addition
+  D: installation
+[N59] L4 p25 #85 ANS=a
+  S: The successful marketing of the new product has already ---------------- sales and increased profits.
+  A: boosted
+  B: spared
+  C: protected
+  D: succeeded
+[N60] L4 p25 #87 ANS=d
+  S: We plan to organize a special party to celebrate the 50th anniversary of -------------- of the company.
+  A: leaving
+  B: feeding
+  C: finding
+  D: founding
+[N61] L4 p25 #89 ANS=b
+  S: The company likes to --------------- wind turbines on the mountain and use them as a source of energy.
+  A: carry
+  B: install
+  C: record
+  D: form
+[N62] L4 p25 #90 ANS=c
+  S: The organization works on the ---- -------------- that all members have the same rights.
+  A: metal
+  B: role
+  C: principle
+  D: order
+[N63] L4 p25 #91 ANS=a
+  S: I don’t think she’s ever quite --------------- me for calling her name wrong that time.
+  A: forgiven
+  B: forgotten
+  C: invented
+  D: paid
+[N64] L4 p25 #92 ANS=d
+  S: We have --------------- received complaints from our customers. They still send us lots of emails.
+  A: beautifully
+  B: probably
+  C: powerfully
+  D: repeatedly
+[N65] L4 p25 #93 ANS=c
+  S: She was grateful for the help and baked them a cake as a sign of her ---------------.
+  A: agreement
+  B: selection
+  C: appreciation
+  D: importance
+[N66] L4 p25 #94 ANS=c
+  S: When he saw many examples of immoral acts, he wrote an article criticizing the society for its lack of --------.
+  A: identities
+  B: entertainments
+  C: ethics
+  D: diversities
+[N67] L4 p25 #95 ANS=c
+  S: Animals should not be kept in zoos and we should take them back to where they ----- ----------.
+  A: attend
+  B: consider
+  C: belong
+  D: carry
+[N68] L4 p25 #98 ANS=a
+  S: The mother asked the teacher to kindly keep her ------------------- her child's progress at school.
+  A: informed of
+  B: friendly towards
+  C: careful about
+  D: interested in
+[N69] L4 p25 #99 ANS=a
+  S: I am tired of you; please don’t complain about things you are not ------------- to work hard to change.
+  A: willing
+  B: social
+  C: specific
+  D: responsible
+[N70] L4 p25 #100 ANS=c
+  S: It is exiting to do something that really ------------------- a difference in your community.
+  A: does
+  B: gets
+  C: make
+  D: acts
+[N71] L5 p74 #1 ANS=b
+  S: My family doctor ------------------- that I should take more exercise and stop smoking to get better.
+  A: forgot
+  B: recommended
+  C: expanded
+  D: chose
+[N72] L5 p74 #2 ANS=b
+  S: If my parents set off early tomorrow morning, they will ------------------- most of the traffic.
+  A: decide
+  B: avoid
+  C: meet
+  D: face
+[N73] L5 p74 #3 ANS=d
+  S: Education and training are the most ------------------- means of improving a nation’s culture.
+  A: wonderful
+  B: symbolic
+  C: lingual
+  D: effective
+[N74] L5 p74 #4 ANS=c
+  S: Tsunami researchers rely on computers to try to ----------- where waves might start and how they might behave.
+  A: point out
+  B: put out
+  C: figure out
+  D: look out
+[N75] L5 p74 #8 ANS=a
+  S: A variety of ------------------- can help establish a best friendship.
+  A: factors
+  B: entries
+  C: definitions
+  D: symbols
+[N76] L5 p74 #10 ANS=a
+  S: The word philosophy is usually ------------------- to come from the Latin language.
+  A: supposed
+  B: bitten
+  C: stuck to
+  D: magnified
+[N77] L5 p75 #30 ANS=b
+  S: A lot of ---------- have been updated in the most recent edition of the Cambridge Advanced Learner’s Dictionary.
+  A: issues
+  B: entries
+  C: sections
+  D: parts
+[N78] L5 p76 #52 ANS=d
+  S: In order to open the discussion, the teacher began with a / an ------------------- example.
+  A: far
+  B: effective
+  C: essential
+  D: imaginary
+[N79] L5 p76 #54 ANS=a
+  S: The female hormones help the body to defend itself against some kinds of -------------------.
+  A: infections
+  B: accessibilities
+  C: entry
+  D: sections
+[N80] L5 p76 #55 ANS=b
+  S: Please don’t make photocopies of copyrighted material without the permission of the -----------------.
+  A: reader
+  B: publisher
+  C: browser
+  D: passenger
+[N81] L5 p76 #56 ANS=c
+  S: The earthquake so ------------------- caused destruction that the bridge was no longer usable.
+  A: hardly
+  B: generally
+  C: heavily
+  D: exactly
+[N82] L5 p76 #58 ANS=c
+  S: As societies developed, it became necessary to identify days more accurately and to --------------- when they began and ended.
+  A: order
+  B: distinguish
+  C: work out
+  D: enter
+[N83] L5 p76 #59 ANS=c
+  S: ------------------- like to take part in space missions though they are aware of the dangers involved.
+  A: Scientists
+  B: Physicians
+  C: Astronauts
+  D: Babysitters
+[N84] L5 p76 #60 ANS=b
+  S: As early as you can, introduce the idea that we read for a ---------------- even if it is pure enjoyment.
+  A: saying
+  B: purpose
+  C: meaning
+  D: colony
+[N85] L5 p76 #61 ANS=a
+  S: Through earplugs the baby is able to hear echoes in stereo which tell him what --------------- in front.
+  A: lays
+  B: rises
+  C: says
+  D: arises
+[N86] L5 p77 #63 ANS=a
+  S: We have been informed, in -------------------, of those behaviors that are considered as inappropriate and of the results that will follow them.
+  A: advance
+  B: regard
+  C: vision
+  D: return
+[N87] L5 p77 #64 ANS=d
+  S: He was absolutely ----------, as he was speaking in a language with which I was anything but familiar.
+  A: proud
+  B: skillful
+  C: monolingual
+  D: incomprehensible
+[N88] L5 p77 #69 ANS=d
+  S: The result of the ------------------- war is unlikely to be affected by what he, as an individual, does.
+  A: quite
+  B: extra
+  C: plain
+  D: entire
+[N89] L5 p77 #70 ANS=b
+  S: I ------------------- what I would be doing now in this strange country without your kind help.
+  A: suppose
+  B: wonder
+  C: prefer
+  D: hat
+[N90] L5 p77 #71 ANS=b
+  S: This business company needs a ------------------- secretary-a secretary who can speak Arabic besides her own native language.
+  A: familiar
+  B: bilingual
+  C: intermediate
+  D: hardworking
+[N91] L5 p77 #72 ANS=b
+  S: Now that their business is good enough, they plan to -------------- their store by adding another room.
+  A: replace
+  B: expand
+  C: provide
+  D: found
+[N92] L5 p77 #73 ANS=c
+  S: She borrowed my dictionary in order to ------------------- the meaning of the new words.
+  A: look for
+  B: look after
+  C: look up
+  D: look out
+[N93] L5 p77 #74 ANS=a
+  S: Antarctica is covered by a huge ice cap ------------------- 70 percent of the earth’s fresh water.
+  A: consisting
+  B: containing
+  C: combining
+  D: defining
+[N94] L5 p77 #75 ANS=c
+  S: In my opinion, she’s had the best ------------------- of competition till now.
+  A: speech
+  B: entry
+  C: jump
+  D: aid
+[N95] L5 p78 #80 ANS=a
+  S: They have taken great care in the ------------------- of this guidebook.
+  A: compilation
+  B: violation
+  C: competition
+  D: packing
+[N96] L5 p78 #81 ANS=b
+  S: Many adults seem to know little about some of the most ------------------- sciences.
+  A: emotional
+  B: elementary
+  C: lingual
+  D: voluntary
+[N97] L5 p78 #82 ANS=c
+  S: Some people find it hard to prove that it is possible for people to succeed even without ------------ technology.
+  A: elementary
+  B: related
+  C: advance
+  D: complicated
+[N98] L5 p78 #83 ANS=d
+  S: Personal computers in various forms are ------------------- of the information age and are what most people think of as “a computer”.
+  A: signal
+  B: symbol
+  C: mark
+  D: sign
+[N99] L5 p78 #84 ANS=b
+  S: The building he designed with them were simple and well ---------- outside, and the large rooms inside.
+  A: related
+  B: arranged
+  C: compiled
+  D: educated
+[N100] L5 p78 #85 ANS=d
+  S: Human being used ------------------- as a means of communication long before writing was invented.
+  A: word
+  B: phrase
+  C: saying
+  D: speech
+[N101] L5 p78 #86 ANS=c
+  S: He spent more than 20 years and thousands of dollars researching the ------------------- of words.
+  A: purposes
+  B: sections
+  C: origins
+  D: claims
+[N102] L5 p78 #87 ANS=d
+  S: Normal phones are harmless because they ----------------- sound as an electrical pulse through wires.
+  A: order
+  B: publish
+  C: destruct
+  D: transmit
+[N103] L5 p78 #88 ANS=a
+  S: She needs to be given some useful ------------------- before starting every new project.
+  A: advice
+  B: trips
+  C: advises
+  D: tip
+[N104] L5 p78 #90 ANS=b
+  S: If the restaurant is not very -------------------, you can place your child on another chair about 3 to 4 feet away from you.
+  A: empty
+  B: crowded
+  C: full
+  D: invisible
+[N105] L5 p78 #91 ANS=d
+  S: Luckily, most of the ------------------- earthquakes occur in less populated places.
+  A: constructive
+  B: confident
+  C: particular
+  D: destructive
+[N106] L5 p78 #92 ANS=b
+  S: We should put all the files in alphabetical --------------- to find them easily whenever they are needed.
+  A: infection
+  B: order
+  C: symbol
+  D: identity
+[N107] L5 p78 #93 ANS=c
+  S: There was a dead cow around which a group of ------------------- circled to eat its meat.
+  A: matters
+  B: marks
+  C: scavengers
+  D: neighbors
+[N108] L5 p78 #94 ANS=c
+  S: Our soldiers can’t afford to make any false moves in war ------------------- they’re in enemy territory.
+  A: whereas
+  B: besides
+  C: once
+  D: instead of
+[N109] L5 p78 #95 ANS=b
+  S: It is always the poorest ------------------- of the community that have much worse health.
+  A: processes
+  B: sections
+  C: ideas
+  D: locations
+[N110] L5 p78 #96 ANS=d
+  S: There’s a whole ------------------- of reasons why Jack couldn’t pass the English exam on tenses.
+  A: guest
+  B: loss
+  C: explanation
+  D: host
+[N111] L5 p78 #97 ANS=b
+  S: Ahmad explained the whole idea again, but I still didn't ------------------- what he meant.
+  A: come from
+  B: work out
+  C: go out
+  D: get around
+[N112] L5 p78 #98 ANS=d
+  S: This apartment is so spacious and large that it has a series of small ------------------- rooms.
+  A: physical
+  B: regional
+  C: national
+  D: inner
+[N113] L5 p78 #99 ANS=b
+  S: Out of my entire time in high school, one day in particular ------------------- in my mind the day of the big biology test.
+  A: respects
+  B: sticks
+  C: arises
+  D: rings
+[N114] L6 p132 #1 ANS=a
+  S: After finishing reading the novel, I ---------------------- the book correctly on the shelf.
+  A: replaced
+  B: defended
+  C: covered
+  D: attracted
+[N115] L6 p132 #2 ANS=d
+  S: In a natural process, nitrogen is ---------------------- into nitrates in the soil which plants can then use.
+  A: magnified
+  B: visited
+  C: consumed
+  D: converted
+[N116] L6 p132 #3 ANS=c
+  S: As the number of population increases, power plants should ---------- more fossil fuels to generate electricity.
+  A: consider
+  B: endanger
+  C: consume
+  D: expand
+[N117] L6 p132 #5 ANS=a
+  S: I see China as a necessary part of a growing new ---------------------- economy.
+  A: global
+  B: renewable
+  C: suitable
+  D: common
+[N118] L6 p132 #6 ANS=a
+  S: The concert was a ------------------ to raise money for a young boy who had to have an expensive operation.
+  A: benefit
+  B: choice
+  C: course
+  D: ceremony
+[N119] L6 p132 #8 ANS=a
+  S: This article teaches how you can permanently lose your weight by ---------------------- the carbohydrates.
+  A: reducing
+  B: absorbing
+  C: increasing
+  D: tasting
+[N120] L6 p132 #9 ANS=c
+  S: Some writers’ memories make you so ---------------------- of them that you wish you knew them personally.
+  A: magic
+  B: shiny
+  C: fond
+  D: invisible
+[N121] L6 p132 #10 ANS=c
+  S: The market economy means peaceful ---------------------- and peaceful exchange of goods and services.
+  A: activity
+  B: suggestion
+  C: cooperation
+  D: manner
+[N122] L6 p132 #11 ANS=c
+  S: The ------------------- of these three experiments suggest that there are many ways to feed young horses.
+  A: guidelines
+  B: differences
+  C: results
+  D: panels
+[N123] L6 p132 #12 ANS=c
+  S: Contracts are made for an initial 4 years, ---------------------- up to an additional 4-year period.
+  A: countless
+  B: global
+  C: renewable
+  D: suitable
+[N124] L6 p132 #13 ANS=c
+  S: Last week a satellite weighing 12 tons was successfully ---------------------- in orbit.
+  A: revolved
+  B: heated
+  C: placed
+  D: generated
+[N125] L6 p132 #15 ANS=a
+  S: Scientists are looking for a --------------------- which will produce energy without polluting the air.
+  A: fuel
+  B: gadget
+  C: panel
+  D: variety
+[N126] L6 p132 #16 ANS=a
+  S: Wind turbines are used to --------------------- electricity for the local community.
+  A: generate
+  B: consume
+  C: power
+  D: form
+[N127] L6 p132 #17 ANS=d
+  S: Researchers are looking at ways of ---------------------- power using the action of the ocean’s tides.
+  A: saving
+  B: pumping
+  C: orbiting
+  D: generating
+[N128] L6 p132 #19 ANS=d
+  S: We can start by reducing our energy consumption and turning to --------------------- resources.
+  A: separate
+  B: portable
+  C: remote
+  D: renewable
+[N129] L6 p133 #24 ANS=b
+  S: Because they are mostly Muslim, Egyptians do not ------------------------ alcoholic drinks.
+  A: like
+  B: consume
+  C: absorb
+  D: deliver
+[N130] L6 p133 #25 ANS=b
+  S: You should wear something light-colored when you’re cycling at night so that you’re more ----------------.
+  A: shiny
+  B: visible
+  C: loving
+  D: fantastic
+[N131] L6 p133 #28 ANS=a
+  S: It seems reasonable to ------------------------ that people’s behavior is influenced by what they see on TV.
+  A: conclude
+  B: demand
+  C: allow
+  D: protect
+[N132] L6 p133 #29 ANS=a
+  S: Decisions could be made on the ------------------------ of price, delivery dates, after- sales service.
+  A: basis
+  B: expression
+  C: term
+  D: type
+[N133] L6 p133 #31 ANS=c
+  S: Many people have been ordered to stay indoors and some people are suffering ----------------------- sickness.
+  A: magic
+  B: magnet
+  C: radiation
+  D: issue
+[N134] L6 p133 #33 ANS=b
+  S: Billy was a good student because he would actively participate in class and ---------------------- all the rules.
+  A: power
+  B: obey
+  C: discover
+  D: transmit
+[N135] L6 p133 #35 ANS=a
+  S: This fruit is also an important ------------------------ of many traditional Chinese medicines.
+  A: component
+  B: variety
+  C: demand
+  D: product
+[N136] L6 p133 #36 ANS=a
+  S: The purpose of the steam turbine is to ------------------- the heat contained in steam into mechanical energy.
+  A: convert
+  B: consume
+  C: cooperate
+  D: absorb
+[N137] L6 p133 #37 ANS=a
+  S: The teacher will probably --------------------- I am not listening to her lecture because I have my eyes closed.
+  A: conclude
+  B: elicit
+  C: warn
+  D: consider
+[N138] L6 p133 #38 ANS=c
+  S: Some babies are unable to ------------------------ the sugar lactose, which is in cow’s milk formulas.
+  A: convert
+  B: consume
+  C: digest
+  D: absorb
+[N139] L6 p133 #39 ANS=a
+  S: Solar panels, wind turbines, and hydroelectricity are renewable ------------------------ sources of power.
+  A: alternative
+  B: light
+  C: waste
+  D: radiation
+[N140] L6 p134 #41 ANS=b
+  S: I always ------------------------ if I hurt someone’s feelings and find a way to show that I’m sorry
+  A: allow
+  B: apologize
+  C: arrange
+  D: disconnect
+[N141] L6 p134 #42 ANS=b
+  S: Many rivers have been so ------------------------ that they can no longer be used for drinking water.
+  A: designed
+  B: polluted
+  C: highlighted
+  D: recognized
+[N142] L6 p134 #44 ANS=c
+  S: The ------------------------ from the bomb circulated through the air and killed thousands.
+  A: component
+  B: feather
+  C: radiation
+  D: garbage
+[N143] L6 p134 #45 ANS=c
+  S: She has a lot of ------------------------ experience in dealing with these kinds of problems.
+  A: portable
+  B: gone
+  C: practical
+  D: supporting
+[N144] L6 p134 #46 ANS=c
+  S: Students should not write outside the ------------------------ but instead stay inside the lines.
+  A: booklet
+  B: diary
+  C: margin
+  D: diploma
+[N145] L6 p134 #47 ANS=b
+  S: A robot must ------------------ the orders given it by men except where such orders conflict with the first law.
+  A: demand
+  B: obey
+  C: combine
+  D: record
+[N146] L6 p134 #49 ANS=b
+  S: Cutting the police force is not a ------------------------ idea when crime is high in our city.
+  A: confusing
+  B: practical
+  C: ancient
+  D: magic
+[N147] L6 p134 #50 ANS=d
+  S: The rocks on this beach ------------------------ me of those summer days when we were there.
+  A: waste
+  B: roll
+  C: select
+  D: remind
+[N148] L6 p134 #52 ANS=c
+  S: In addition to teaching basic academic skills, we offer a large ------------------------ of activities for students.
+  A: source
+  B: benefit
+  C: variety
+  D: background
+[N149] L6 p134 #55 ANS=a
+  S: Because of his learning ------------------------, the student had a difficult time solving multiplication problems in his mind.
+  A: disability
+  B: strength
+  C: identity
+  D: likelihood
+[N150] L6 p134 #56 ANS=a
+  S: The results showed that cookies are very good for the -----------, so babies can generally eat them without problem.
+  A: digestion
+  B: broth
+  C: joint
+  D: sweet
+[N151] L6 p134 #58 ANS=b
+  S: Because my father is a huge ------------------------ of alcohol, he has probably done considerable damage to his liver.
+  A: physician
+  B: consumer
+  C: researcher
+  D: discoverer
+[N152] L6 p134 #60 ANS=b
+  S: The only ----------------------- of the sandwich that I do not like is the tomato, but the turkey, lettuce and mayonnaise are fine.
+  A: combination
+  B: component
+  C: unit
+  D: device
+[N153] L6 p135 #62 ANS=b
+  S: When planning meals, you need to think about -------------------------- and taste as well as nutritional value.
+  A: grocery
+  B: variety
+  C: supply
+  D: junk
+[N154] L6 p135 #66 ANS=d
+  S: While European football is often mixed up with American football, the two sports are not ------------.
+  A: joint
+  B: basis
+  C: component
+  D: equivalent
+[N155] L6 p135 #67 ANS=d
+  S: My mother practiced some relaxation techniques to help her -------------------------- the pain she suffered as a result of having cancer.
+  A: apply for
+  B: check with
+  C: provide for
+  D: deal with
+[N156] L6 p135 #68 ANS=a
+  S: There is a potential educational ---------------- in allowing pictures to tell the story, rather than the spoken word.
+  A: benefit
+  B: center
+  C: collocation
+  D: ethic
+[N157] L6 p135 #69 ANS=a
+  S: It is generally difficult for parents to -------------------------- information about several major problems in their baby all at the same time.
+  A: absorb
+  B: wonder
+  C: transmit
+  D: cooperate
+[N158] L6 p135 #70 ANS=b
+  S: They -------------------------- discuss ways to increase awareness and understanding of their problems.
+  A: alphabetically
+  B: constantly
+  C: accidentally
+  D: unsystematically
+[N159] L6 p135 #73 ANS=c
+  S: The company has angered its employees with its decision to ----------- the number of hours worked to part-time.
+  A: claim
+  B: cooperate
+  C: reduce
+  D: obey
+[N160] L6 p135 #74 ANS=a
+  S: For most of the time the United Kingdom played an important part in the organization of world ---------- ---------------- sources even in the Middle East.
+  A: power
+  B: reminder
+  C: travel
+  D: building
+[N161] L6 p135 #75 ANS=a
+  S: We, I mean Rachel and I, are a really happy couple although we have -------------------------- views when it comes to such issues as politics and religion.
+  A: opposite
+  B: practical
+  C: impossible
+  D: following
+[N162] L6 p135 #76 ANS=a
+  S: In cold climates, houses need to have walls that will -------------------------- heat.
+  A: absorb
+  B: blow
+  C: dread
+  D: demand
+[N163] L6 p135 #77 ANS=d
+  S: Please call this number if you -------------------------- any further information.
+  A: reduce
+  B: collect
+  C: consider
+  D: require
+[N164] L6 p135 #79 ANS=c
+  S: The role of the police is to ensure that the law is --------------------------.
+  A: combined
+  B: forgive
+  C: demanded
+  D: discovered
+[N165] L6 p136 #80 ANS=b
+  S: Within a short space of time you could be speaking -------------------------- English!
+  A: essential
+  B: perfect
+  C: bilingual
+  D: dedicated
+[N166] L6 p136 #81 ANS=d
+  S: He returns to the England team after a long -------------------------- from international football.
+  A: community
+  B: source
+  C: formula
+  D: absence
+[N167] L6 p136 #83 ANS=b
+  S: It’s important to create a good impression when you meet a new --------------------------.
+  A: broth
+  B: client
+  C: distance
+  D: charger
+[N168] L6 p136 #84 ANS=d
+  S: The art department and the music department are in two -------------------------- buildings.
+  A: meaningful
+  B: countless
+  C: immediate
+  D: separate
+[N169] L6 p136 #85 ANS=c
+  S: Good communication is an important -------------------------- of any relationship.
+  A: community
+  B: outlet
+  C: component
+  D: device
+[N170] L6 p136 #86 ANS=b
+  S: He was careful to keep out of -------------------------- because he had not obeyed the traffic rules when the traffic light was red.
+  A: vision
+  B: sight
+  C: effect
+  D: sense
+[N171] L6 p136 #87 ANS=c
+  S: Doctors recommend that after having your meal sit still and allow it to -------------------------- calmly.
+  A: arrange
+  B: hug
+  C: digest
+  D: pump
+[N172] L6 p136 #89 ANS=b
+  S: He had walked for two hours, so he took off his shoes to -------------------------- his sweaty feet.
+  A: change
+  B: cool
+  C: convert
+  D: compare
+[N173] L6 p136 #90 ANS=a
+  S: He is a dedicated physician who helps poor people and he is well-known in the local --------------------------.
+  A: community
+  B: morality
+  C: heritage
+  D: personality
+[N174] L6 p136 #91 ANS=b
+  S: I shone the -------------------------- into the dark room, and it sent out a powerful beam of light.
+  A: bulb
+  B: flashlight
+  C: outlet
+  D: electricity
+[N175] L6 p136 #92 ANS=b
+  S: As I love my beloved nephew a lot, I always try to -------------------------- some chocolate to give to him.
+  A: repeat
+  B: save
+  C: require
+  D: revolve
+[N176] L6 p136 #94 ANS=b
+  S: God helps, says the --------------------------, those who help themselves.
+  A: idiom
+  B: proverb
+  C: quotation
+  D: exclamation
+[N177] L6 p136 #96 ANS=c
+  S: All the students ran out in to the -------------------------- happily to take break when the bell rang.
+  A: class
+  B: hall
+  C: yard
+  D: balcony
+[N178] L6 p136 #97 ANS=c
+  S: The English course has four main --------------------------: reading, speaking, listening and writing skills.
+  A: patterns
+  B: points
+  C: components
+  D: situations
+[N179] L6 p136 #98 ANS=d
+  S: We should continue using fossil fuels until we manage to find cleaner -------------------------- of energy.
+  A: cases
+  B: qualities
+  C: differences
+  D: sources
+[N180] L6 p136 #99 ANS=b
+  S: Reza is sick and the doctor has advised him to -------------------------- the amount of fat in his food.
+  A: produce
+  B: reduce
+  C: prepare
+  D: destroy
+[N181] L6 p136 #100 ANS=a
+  S: He is not poor; he actually has more money than -------------------------- for the support of a family.
+  A: required
+  B: transferred
+  C: handled
+  D: involved
+[N182] L6 p237 #11 ANS=c
+  S: Why has Bijan saved some money?
+  A: to buy a new pair of shoes
+  B: to solve his friend’s problem
+  C: to help Mehran
+  D: to buy a new mobile phone
+[N183] L6 p247 #50 ANS=a
+  S: What is the closest synonym for the word “suppose”?
+  A: True
+  B: False
+  C: understand
+  D: imagine
+[N184] L6 p262 #41 ANS=b
+  S: Which is the best title for this passage?
+  A: The use of waste products for energy
+  B: The search for new sources of energy
+  C: Effective ways of producing hydropower
+  D: New discoveries in geothermal power
+[N185] L6 p263 #42 ANS=c
+  S: Which of the following is not offered in the passage as a source of energy?
+  A: Electrical power
+  B: Clean energy
+  C: Nuclear energy
+  D: Hydroelectric power True / False
+[N186] L6 p311 #37 ANS=a
+  S: What do dictionaries of biography explain?
+  A: These dictionaries explain the meanings of technical words
+  B: Dictionaries of biography explain IPA
+  C: They tell about famous people
+  D: They translate words from one language to another
+[N187] L7 p19 #1 ANS=b
+  S: In the past, teachers and students used ------------------------- to write instead of the marker we use today.
+  A: pens
+  B: chalks
+  C: pencils
+  D: rulers
+[N188] L7 p19 #3 ANS=a
+  S: A ---------------------- person is able to do dangerous things with no fear.
+  A: brave
+  B: hard-working
+  C: neat
+  D: generous
+[N189] L7 p19 #6 ANS=b
+  S: ----------------------- are rich in vitamins and I advise you to eat them with lunch and dinner.
+  A: coconuts
+  B: vegetables
+  C: nuts
+  D: dates
+[N190] L7 p19 #8 ANS=c
+  S: We ------------------------ martyrs in our country. They are the symbols of our power.
+  A: keep
+  B: help
+  C: respect
+  D: celebrate
+[N191] L7 p19 #10 ANS=a
+  S: He wants to be a/an ---------------------- in the future. He likes designing the map of the buildings a lot.
+  A: engineer
+  B: painter
+  C: pilot
+  D: mechanic
+[N192] L7 p19 #12 ANS=a
+  S: Mina ---------------------- a newspaper every day. She is into magazines and newspapers.
+  A: reads
+  B: studies
+  C: attends
+  D: receives
+[N193] L7 p19 #13 ANS=c
+  S: My English teacher believes that it is necessary for us to ------------------- in classroom activities.
+  A: set
+  B: read
+  C: participate
+  D: interview
+[N194] L7 p19 #15 ANS=d
+  S: When I saw the ------------------------, I called the emergency immediately.
+  A: ceremony
+  B: fireworks
+  C: parade
+  D: accident
+[N195] L7 p19 #16 ANS=b
+  S: All of us have heard that eating ----------------------- is useful for our eyes.
+  A: apples
+  B: carrots
+  C: bananas
+  D: onions
+[N196] L7 p19 #17 ANS=a
+  S: Muslims don’t usually--------------------- on Fitr Eid.
+  A: fast
+  B: work
+  C: eat
+  D: cook
+[N197] L7 p50 #2 ANS=b
+  S: After the Second World War, Germany was ----------- --------------- into two separate countries.
+  A: identified
+  B: hoped
+  C: underlined
+  D: divided
+[N198] L7 p50 #6 ANS=b
+  S: My brother brought the ----------- --------------- bird into the room and took care of it.
+  A: injured
+  B: endangered
+  C: natural
+  D: relative
+[N199] L7 p50 #8 ANS=a
+  S: I called the firefighters to ----------- --------------- the fire in the city center.
+  A: put out
+  B: cut down
+  C: turn off
+  D: pay attention
+[N200] L7 p50 #10 ANS=b
+  S: I think they should ----------- --------------- the number of the buses.
+  A: hurt
+  B: choose
+  C: destroy
+  D: increase
+[N201] L7 p51 #12 ANS=b
+  S: We had to change our ----------- --------------- because the bus arrived late.
+  A: plain
+  B: report
+  C: information
+  D: schedule
+[N202] L7 p51 #13 ANS=c
+  S: Endangered animals need ----------- --------------- and attention.
+  A: protection
+  B: hope
+  C: enough
+  D: intonation
+[N203] L7 p51 #15 ANS=a
+  S: In the past, many hunters didn’t ----------- --------------- attention to wildlife.
+  A: take
+  B: pay
+  C: hurt
+  D: save
+[N204] L7 p51 #17 ANS=b
+  S: The building was completely ----------- --------------- by fire.
+  A: identified
+  B: divided
+  C: destroyed
+  D: increased
+[N205] L7 p51 #19 ANS=c
+  S: I ----------- --------------- my pocket money in the street yesterday.
+  A: destroyed
+  B: put out
+  C: paid
+  D: lost
+[N206] L7 p51 #25 ANS=c
+  S: Many homes, schools, mosques and offices were damaged and thousands of ----------- --------------- people were taken to hospitals.
+  A: hopeful
+  B: injured
+  C: dangerous
+  D: endangered Telegram Channel: @PracticalEnglishInKonkour
+[N207] L8 p85 #5 ANS=d
+  S: You should ask your doctor’s ------------------ before you start an exercise program.
+  A: element
+  B: interest
+  C: opinion
+  D: quality
+[N208] L8 p85 #7 ANS=a
+  S: Plasma is a ------------------ and yellow liquid and carries red and white cells.
+  A: cheap
+  B: fresh
+  C: wonder
+  D: clear
+[N209] L8 p85 #8 ANS=b
+  S: What ------------------ if nobody comes to the party?
+  A: happens
+  B: describes
+  C: creates
+  D: crosses
+[N210] L8 p85 #9 ANS=a
+  S: A special building for studying stars, planets, weather, etc. is called a/an ------------------.
+  A: superlative
+  B: observatory
+  C: abroad
+  D: telescope
+[N211] L8 p86 #15 ANS=b
+  S: We live in a/an ------------------ world. All around us there are amazing things.
+  A: upward
+  B: famous
+  C: important
+  D: wonderful
+[N212] L8 p86 #16 ANS=b
+  S: The ------------------ of the picture on our television isn’t very good.
+  A: details
+  B: opinion
+  C: quality
+  D: nation
+[N213] L8 p86 #17 ANS=c
+  S: I can’t go into much ------------------, but I’ve been having some health problems recently.
+  A: interest
+  B: detail
+  C: term
+  D: hint
+[N214] L8 p86 #19 ANS=a
+  S: Heart ------------------ is the most important reason of death in many Western countries.
+  A: blood
+  B: disease
+  C: plasma
+  D: liquid
+[N215] L8 p105 #1 ANS=c
+  S: I was standing just ----------------- enough to hear what they were saying.
+  A: far
+  B: even
+  C: near
+  D: such
+[N216] L8 p105 #2 ANS=a
+  S: Red blood cells carry oxygen round the body and ----------------- carbon dioxide from body parts.
+  A: donate
+  B: collect
+  C: lose
+  D: create
+[N217] L8 p105 #4 ANS=a
+  S: We can keep our body ----------------- by doing daily exercises.
+  A: upward
+  B: difficult
+  C: dangerous
+  D: healthy
+[N218] L8 p106 #1 ANS=c
+  S: It was ----------------- holiday than the one we had last year.
+  A: a long
+  B: a longer
+  C: longest
+  D: the longest
+[N219] L8 p106 #2 ANS=a
+  S: This food is ----------------- than the food we had yesterday.
+  A: better much
+  B: much better
+  C: the best
+  D: good
+[N220] L8 p106 #4 ANS=a
+  S: Which sentence is wrong?
+  A: That is a really ugly wooden chair
+  B: I carried a very small black suitcase
+  C: They have some old French paintings
+  D: She was wearing a red new silk dress
+[N221] L9 p34 #11 ANS=d
+  S: My father didn’t ----------------------- to the radio last night.
+  A: listens
+  B: listened
+  C: listening
+  D: listen
+[N222] L9 p34 #16 ANS=a
+  S: She ----------------------- her mother and cleaned the house three hours ago.
+  A: helped
+  B: helps
+  C: helping
+  D: help
+[N223] L9 p37 #1 ANS=b
+  S: This year, there ------------ a French teacher and four Italian Students in our school.
+  A: is
+  B: are
+  C: does
+  D: am
+[N224] L9 p37 #3 ANS=b
+  S: Mohsen ----------------------- want to tell you the answer now.
+  A: don’t
+  B: doesn’t
+  C: isn’t
+  D: didn’t
+[N225] L9 p37 #10 ANS=b
+  S: -------------------- those soldiers sing the national anthem every morning?
+  A: Does
+  B: Do
+  C: Are
+  D: Is
+[N226] L9 p37 #11 ANS=a
+  S: Everybody --------------------- that Jack can pass the exam.
+  A: thinks
+  B: think
+  C: thinking
+  D: are thinking
+[N227] L9 p38 #23 ANS=b
+  S: My classmate and I --------------------- speaking English with each other at the present.
+  A: is
+  B: are
+  C: am
+  D: do
+[N228] L9 p38 #35 ANS=a
+  S: There ---------------------- many newspapers in the newsstand. I bought one.
+  A: were
+  B: is
+  C: was
+  D: are
+[N229] L9 p178 #2 ANS=b
+  S: Some people -------------------- weight when they stop smoking.
+  A: seek
+  B: carry
+  C: donate
+  D: gain
+[N230] L9 p178 #3 ANS=a
+  S: I became very nervous when I couldn’t ------------------ my passport.
+  A: find
+  B: lose
+  C: carry
+  D: donate
+[N231] L9 p178 #4 ANS=c
+  S: Those who have never thought about the ------------------- of life should not study medicine.
+  A: skill
+  B: moment
+  C: value
+  D: belief
+[N232] L9 p178 #5 ANS=c
+  S: The wolf may --------------------- his teeth, but never his nature.
+  A: carry
+  B: grow
+  C: lose
+  D: hunt
+[N233] L9 p178 #9 ANS=b
+  S: They don’t like the plan to build the road through the --------------------.
+  A: chart
+  B: nation
+  C: world
+  D: forest
+[N234] L9 p178 #12 ANS=d
+  S: The last bear in this forest --------------------- one hundred years ago.
+  A: died out
+  B: cut
+  C: put out
+  D: hurt
+[N235] L9 p178 #17 ANS=d
+  S: Mina came home While her brother was watching his -------------------- movie at the living room.
+  A: interested
+  B: building
+  C: hard-working
+  D: favorite
+[N236] L9 p178 #19 ANS=a
+  S: Smoking can -------------------- the risk of developing heart disease.
+  A: fill
+  B: increase
+  C: bore
+  D: fight
+[N237] L9 p178 #20 ANS=c
+  S: Buckingham Palace is one of London’s most popular tourist --------------------.
+  A: entertainments
+  B: suggestions
+  C: choices
+  D: attractions
+[N238] L9 p179 #26 ANS=a
+  S: My study showed that working in a garden is the most ------------------ activity for old people.
+  A: hospitable
+  B: popular
+  C: domestic
+  D: comfortable
+[N239] L9 p179 #37 ANS=b
+  S: When I asked his name after the accident, he ------------------- that he could not remember.
+  A: answered
+  B: observed
+  C: behaved
+  D: believed
+[N240] L9 p181 #69 ANS=a
+  S: Red blood cells --------------------- oxygen round the body.
+  A: keep
+  B: collect
+  C: carry
+  D: seem
+[N241] L9 p181 #70 ANS=b
+  S: After the accident she had a terrible harm. “harm” is a synonym for -------------------.
+  A: injury
+  B: safety
+  C: living
+  D: protect
+[N242] L9 p181 #74 ANS=b
+  S: I’d like to get more information about India. It seems a suitable ------------- ------- for traveling.
+  A: nation
+  B: choice
+  C: behavior
+  D: continent
+[N243] L9 p181 #80 ANS=d
+  S: My little sister is taller than last month. Children grow up ------------------.
+  A: sadly
+  B: finally
+  C: rapidly
+  D: at first
+[N244] L9 p181 #86 ANS=c
+  S: He -------------------- the heavy box alone. Now he has a terrible backache.
+  A: carried
+  B: collected
+  C: orbited
+  D: seemed
