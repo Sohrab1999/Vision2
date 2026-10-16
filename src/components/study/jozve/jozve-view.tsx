@@ -12,6 +12,7 @@ import {
   Languages,
   LibraryBig,
   Lightbulb,
+  Link2,
   ListChecks,
   Loader2,
   PenLine,
@@ -222,6 +223,32 @@ const fetchKonkurGrammar = (grade: number): Promise<JozveTestBank | null> => {
   return p;
 };
 
+// —— بانک‌های موضوعی گرامر جزوه (r280) ——
+// فایل grammar-gN-topic.json — هر درس = یک مبحث کامل از جزوه (اینجا: ضمایر موصولی
+// و حذف آنها — ۸۸ تست، دو سطح، کلید گرید چاپی «پاسخنامه 88تست»). ترجمه برای این
+// خانواده در جزوه چاپ نشده (غیبتِ صادقانه — الگوی r278/r279).
+const GRADE_GRAMMAR_TOPIC: Record<number, { lessons: { lesson: number; title: string; count: number }[] }> = {
+  12: {
+    lessons: [
+      { lesson: 1, title: "ضمایر موصولی — متوسط و کنکوری (ص۸۸)", count: 27 },
+      { lesson: 2, title: "حذف ضمایر — نظام قدیم (ص۸۹-۹۱)", count: 61 },
+    ],
+  },
+};
+const topicCache = new Map<number, Promise<JozveTestBank | null>>();
+const fetchTopicGrammar = (grade: number): Promise<JozveTestBank | null> => {
+  let p = topicCache.get(grade);
+  if (!p) {
+    p = GRADE_GRAMMAR_TOPIC[grade]
+      ? fetch(`/jozve/grammar-g${grade}-topic.json`)
+          .then((r) => (r.ok ? r.json() : null))
+          .catch(() => null)
+      : Promise.resolve(null);
+    topicCache.set(grade, p);
+  }
+  return p;
+};
+
 const POS_KEY = "jozve-reader-pos-v1"; // آخرین موقعیت مطالعه
 
 export default function JozveView() {
@@ -414,6 +441,35 @@ export default function JozveView() {
           title: `آزمون گرامر جزوه — ${les.title} پایهٔ ${GRADE_LABEL[g]}`,
           questions,
           resultKey: `jozve-g${g}-gram-l${les.lesson}`,
+          category: "grammar",
+        });
+      } finally {
+        setTestLoadingLesson(null);
+      }
+    },
+    []
+  );
+
+  // اجرای بانک موضوعی گرامر (r280) — ضمایر موصولی دوازدهم؛ سشن مستقل با کلید گرید چاپی
+  const startJozveTopic = useCallback(
+    async (g: number, les: { lesson: number; title: string; count: number }) => {
+      setTestLoadingLesson(`g${g}-tgram-l${les.lesson}`);
+      try {
+        const bank = await fetchTopicGrammar(g);
+        const l = bank?.lessons.find((x) => x.lesson === les.lesson);
+        if (!l || l.questions.length === 0) return;
+        const questions: QuizQuestion[] = l.questions.map((q) => ({
+          id: q.id,
+          category: "grammar",
+          question: q.question,
+          options: q.options,
+          answer: q.answer,
+          ...(q.translation ? { translation: q.translation } : {}),
+        }));
+        setTestSession({
+          title: `آزمون گرامر موضوعی جزوه — ${les.title} پایهٔ ${GRADE_LABEL[g]}`,
+          questions,
+          resultKey: `jozve-g${g}-tgram-l${les.lesson}`,
           category: "grammar",
         });
       } finally {
@@ -724,6 +780,38 @@ export default function JozveView() {
                       className="inline-flex items-center gap-1.5 rounded-xl border border-sky-300 bg-white px-3 py-2 text-[12px] font-extrabold text-sky-800 shadow-sm transition-[background-color,transform] hover:bg-sky-100 active:scale-95 disabled:opacity-60"
                     >
                       {busy ? <Loader2 size={14} className="animate-spin" /> : <KeyRound size={14} />}
+                      {les.title} — {faNum(les.count)} تست
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+          {/* اجرای بانک موضوعی گرامر جزوه — کلید گرید چاپی (r280) */}
+          {GRADE_GRAMMAR_TOPIC[doc.grade] && (
+            <div className="rounded-2xl border border-amber-200 bg-amber-50/60 p-4">
+              <div className="mb-3 flex items-center gap-2.5">
+                <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-amber-200 bg-white text-amber-700">
+                  <Link2 size={18} />
+                </span>
+                <div className="min-w-0">
+                  <h3 className="text-[13.5px] font-black text-amber-900">آزمون گرامر موضوعی جزوه</h3>
+                  <p className="text-[11px] leading-5 text-amber-700/80">
+                    بانک‌های مبحث‌محور با کلید گرید چاپی خودِ جزوه — سطح‌بندی مطابق سرصفحهٔ خود جزوه
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {GRADE_GRAMMAR_TOPIC[doc.grade].lessons.map((les) => {
+                  const busy = testLoadingLesson === `g${doc.grade}-tgram-l${les.lesson}`;
+                  return (
+                    <button
+                      key={les.lesson}
+                      onClick={() => startJozveTopic(doc.grade, les)}
+                      disabled={busy}
+                      className="inline-flex items-center gap-1.5 rounded-xl border border-amber-300 bg-white px-3 py-2 text-[12px] font-extrabold text-amber-800 shadow-sm transition-[background-color,transform] hover:bg-amber-100 active:scale-95 disabled:opacity-60"
+                    >
+                      {busy ? <Loader2 size={14} className="animate-spin" /> : <Link2 size={14} />}
                       {les.title} — {faNum(les.count)} تست
                     </button>
                   );

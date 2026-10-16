@@ -1,0 +1,1208 @@
+{
+ "grade": 12,
+ "family": "grammar-topic",
+ "source": {
+  "booklet": "Vision Three — جزوهٔ جامع کمک‌آموزش زبان انگلیسی پایهٔ دوازدهم",
+  "test": "تست دیگر از گرامر ضمایر موصولی و حذف آنها",
+  "pages": "88-91",
+  "keyGrid": "پاسخنامه 88تست گرامر ضمایر موصولی (صفحه 88 تا 91) — g12.json c14/sec26",
+  "extractedRound": 280,
+  "levels": {
+   "1-27": "در حد کتاب و کنکور 98 — متوسط و کنکوری",
+   "28-88": "حذف ضمایر موصولی / زبان تخصصی — نظام قدیم و دشوار"
+  },
+  "translations": "برای این خانواده در جزوه چاپ نشده است (غیبتِ صادقانه)",
+  "stats": {
+   "questions": 88,
+   "keys": 88,
+   "lesson1": 27,
+   "lesson2": 61
+  },
+  "errata": [
+   {
+    "q": 33,
+    "field": "options.d",
+    "printed": "which wining",
+    "note": "غلط چاپی خود جزوه — wining به‌جای winning؛ وفادار ماندیم"
+   },
+   {
+    "q": 78,
+    "field": "stem",
+    "printed": "knew that scape from the Island",
+    "note": "غلط چاپی خود جزوه — scape به‌جای escape؛ وفادار ماندیم"
+   }
+  ],
+  "spotLocks": {
+   "1": "c",
+   "2": "c",
+   "3": "a",
+   "22": "a",
+   "23": "d",
+   "24": "b",
+   "87": "d",
+   "88": "b"
+  }
+ },
+ "lessons": [
+  {
+   "lesson": 1,
+   "title": "ضمایر موصولی — متوسط و کنکوری (ص۸۸)",
+   "level": "متوسط و کنکوری",
+   "count": 27,
+   "questions": [
+    {
+     "id": "g12-rel-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Thomas Edison, --------------- was American, invented many things, including the light bulb.",
+     "options": [
+      "which",
+      "whom",
+      "who",
+      "whose"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-rel-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "It seems that the Earth is the only planet --------------- can support life.",
+     "options": [
+      "who",
+      "when",
+      "that",
+      "where"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-rel-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "Did I tell you about the people --------------- lived next door?",
+     "options": [
+      "who",
+      "whom",
+      "that they",
+      "who they"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-rel-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "Students --------------- register before September do not have any problems.",
+     "options": [
+      "who",
+      "when",
+      "what",
+      "whom"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-rel-5",
+     "n": 5,
+     "category": "grammar",
+     "question": "China is the country --------------- paper, silk and gunpowder were first produced in.",
+     "options": [
+      "that",
+      "in where",
+      "in there",
+      "in that"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-rel-6",
+     "n": 6,
+     "category": "grammar",
+     "question": "The man --------------- telephoned you is reading the newspaper.",
+     "options": [
+      "who",
+      "whom",
+      "whose",
+      "which"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-rel-7",
+     "n": 7,
+     "category": "grammar",
+     "question": "There was a man at the party --------------- name I didn’t know.",
+     "options": [
+      "whose",
+      "who",
+      "whom",
+      "which"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-rel-8",
+     "n": 8,
+     "category": "grammar",
+     "question": "You may not believe it, but the stories --------------- I have told are all true.",
+     "options": [
+      "if",
+      "which",
+      "because",
+      "what"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-rel-9",
+     "n": 9,
+     "category": "grammar",
+     "question": "The girl --------------- was injured in the terrible accident is now in the hospital.",
+     "options": [
+      "whom",
+      "whose",
+      "who",
+      "which"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-rel-10",
+     "n": 10,
+     "category": "grammar",
+     "question": "Each year, universities in the West take in quite a number of students --------------- come from Asian countries.",
+     "options": [
+      "they",
+      "who",
+      "that they",
+      "most of them"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-rel-11",
+     "n": 11,
+     "category": "grammar",
+     "question": "The man --------------- life was saved was my father.",
+     "options": [
+      "who",
+      "whom",
+      "whose",
+      "which"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-rel-12",
+     "n": 12,
+     "category": "grammar",
+     "question": "The garden --------------- Reza works in is full of flower.",
+     "options": [
+      "in that",
+      "where",
+      "which",
+      "in which"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-rel-13",
+     "n": 13,
+     "category": "grammar",
+     "question": "This is the house in --------------- we lived for ten years.",
+     "options": [
+      "where",
+      "that",
+      "whose",
+      "which"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-rel-14",
+     "n": 14,
+     "category": "grammar",
+     "question": "He is the man about --------------- I told you.",
+     "options": [
+      "who",
+      "whom",
+      "whose",
+      "that"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-rel-15",
+     "n": 15,
+     "category": "grammar",
+     "question": "For many animals, the problem is their habitat - the place --------------- they live - is disappearing.",
+     "options": [
+      "which",
+      "as",
+      "where",
+      "whom"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-rel-16",
+     "n": 16,
+     "category": "grammar",
+     "question": "I think you have to speak to the man --------------- standing with a notebook in front of the car.",
+     "options": [
+      "which",
+      "whom",
+      "who’s",
+      "how"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-rel-17",
+     "n": 17,
+     "category": "grammar",
+     "question": "The man --------------- answered the phone was polite.",
+     "options": [
+      "which",
+      "that he",
+      "who",
+      "whom"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-rel-18",
+     "n": 18,
+     "category": "grammar",
+     "question": "He didn’t wait at the traffic lights --------------- were red.",
+     "options": [
+      "which they",
+      "which",
+      "who",
+      "whom"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-rel-19",
+     "n": 19,
+     "category": "grammar",
+     "question": "He wore a mask --------------- made him look like Mickey Mouse.",
+     "options": [
+      "which it",
+      "that",
+      "that he",
+      "whom"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-rel-20",
+     "n": 20,
+     "category": "grammar",
+     "question": "Here is an article --------------- might interest you.",
+     "options": [
+      "it",
+      "which it",
+      "which",
+      "that it"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-rel-21",
+     "n": 21,
+     "category": "grammar",
+     "question": "The hired men --------------- we interviewed last week, were very poor.",
+     "options": [
+      "whom",
+      "they whom",
+      "whom they",
+      "who they"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-rel-22",
+     "n": 22,
+     "category": "grammar",
+     "question": "People --------------- paint houses for a living are called house painters.",
+     "options": [
+      "who",
+      "whom",
+      "which",
+      "who they"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-rel-23",
+     "n": 23,
+     "category": "grammar",
+     "question": "While I was waiting at the bus stop, I stood next to an elderly man --------------- started a conversation.",
+     "options": [
+      "whom",
+      "to whom",
+      "that he",
+      "that"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-rel-24",
+     "n": 24,
+     "category": "grammar",
+     "question": "What did you do with the money --------------- your mother lent you.",
+     "options": [
+      "which you",
+      "that",
+      "who",
+      "that when"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-rel-25",
+     "n": 25,
+     "category": "grammar",
+     "question": "The robber stole a car --------------- the lady parked in front of the supermarket.",
+     "options": [
+      "that",
+      "when",
+      "where that",
+      "from that"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-rel-26",
+     "n": 26,
+     "category": "grammar",
+     "question": "He was a person --------------- everyone regarded as trustworthy.",
+     "options": [
+      "who",
+      "whom",
+      "whose",
+      "which"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-rel-27",
+     "n": 27,
+     "category": "grammar",
+     "question": "She wanted to write on a topic --------------- she knew nothing about.",
+     "options": [
+      "who",
+      "that",
+      "whose",
+      "what"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 2,
+   "title": "حذف ضمایر موصولی — نظام قدیم (ص۸۹-۹۱)",
+   "level": "نظام قدیم و دشوار",
+   "count": 61,
+   "questions": [
+    {
+     "id": "g12-rel-28",
+     "n": 28,
+     "category": "grammar",
+     "question": "The man --------------- in front of me at the movies was wearing a big hat.",
+     "options": [
+      "sits",
+      "sat",
+      "who sits",
+      "sitting"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-rel-29",
+     "n": 29,
+     "category": "grammar",
+     "question": "The man --------------- to the principal is my uncle.",
+     "options": [
+      "talked",
+      "talking",
+      "to talk",
+      "talks"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-rel-30",
+     "n": 30,
+     "category": "grammar",
+     "question": "The machine --------------- down has now been repaired.",
+     "options": [
+      "breaks",
+      "which breaking",
+      "broke",
+      "that broke"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-rel-31",
+     "n": 31,
+     "category": "grammar",
+     "question": "The woman --------------- dinner in the kitchen is my mother.",
+     "options": [
+      "cooking",
+      "to cook",
+      "cooks",
+      "cooked"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-rel-32",
+     "n": 32,
+     "category": "grammar",
+     "question": "She is one of those people --------------- to be the center of attention.",
+     "options": [
+      "are loved",
+      "who are loved",
+      "who loves",
+      "being loved"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-rel-33",
+     "n": 33,
+     "category": "grammar",
+     "question": "What was the name of the horse --------------- the race?",
+     "options": [
+      "won",
+      "which won",
+      "wins",
+      "which wining"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-rel-34",
+     "n": 34,
+     "category": "grammar",
+     "question": "The people --------------- yesterday wanted to buy the house.",
+     "options": [
+      "who call",
+      "calling",
+      "to call",
+      "whom I call"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-rel-35",
+     "n": 35,
+     "category": "grammar",
+     "question": "Who were those people --------------- outside?",
+     "options": [
+      "waited",
+      "who are waiting",
+      "waiting",
+      "they wait"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-rel-36",
+     "n": 36,
+     "category": "grammar",
+     "question": "The road --------------- the two villages is very narrow.",
+     "options": [
+      "connecting",
+      "that connecting",
+      "connected",
+      "it connects"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-rel-37",
+     "n": 37,
+     "category": "grammar",
+     "question": "Can you think of the name of a flower --------------- with T?",
+     "options": [
+      "it begins",
+      "begun",
+      "to begin",
+      "beginning"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-rel-38",
+     "n": 38,
+     "category": "grammar",
+     "question": "There are some children --------------- in the river.",
+     "options": [
+      "who swims",
+      "swum",
+      "being swimming",
+      "swimming"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-rel-39",
+     "n": 39,
+     "category": "grammar",
+     "question": "The company sent me a letter --------------- the information I needed.",
+     "options": [
+      "that is containing",
+      "containing",
+      "contained",
+      "to contain"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-rel-40",
+     "n": 40,
+     "category": "grammar",
+     "question": "The bridge --------------- in the storm has now been repaired.",
+     "options": [
+      "which damaged",
+      "damaging",
+      "being damaged",
+      "damaged"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-rel-41",
+     "n": 41,
+     "category": "grammar",
+     "question": "We have eaten nearly all the chocolates. There are only a few ---------------.",
+     "options": [
+      "that leave",
+      "leaving",
+      "left",
+      "which left"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-rel-42",
+     "n": 42,
+     "category": "grammar",
+     "question": "Do you know anyone --------------- French and Italian?",
+     "options": [
+      "spoken",
+      "speaking",
+      "can speak",
+      "who speak"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-rel-43",
+     "n": 43,
+     "category": "grammar",
+     "question": "Everybody can enjoy the useful effects --------------- by exercise.",
+     "options": [
+      "that they provide",
+      "provides",
+      "provided",
+      "providing"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-rel-44",
+     "n": 44,
+     "category": "grammar",
+     "question": "The woman --------------- over there is waiting for a taxi.",
+     "options": [
+      "standing",
+      "stands",
+      "stood",
+      "is standing"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-rel-45",
+     "n": 45,
+     "category": "grammar",
+     "question": "Antarctica is covered by a huge ice cap --------------- 70 percent of the earths fresh water.",
+     "options": [
+      "contains",
+      "to contain",
+      "which is containing",
+      "containing"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-rel-46",
+     "n": 46,
+     "category": "grammar",
+     "question": "It would cost a lot to rebuild the houses --------------- in the earthquake that happened a week ago.",
+     "options": [
+      "destroyed",
+      "were destroyed",
+      "which destroyed",
+      "they were destroyed"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-rel-47",
+     "n": 47,
+     "category": "grammar",
+     "question": "The valley, --------------- by the mountains, was very calm and pleasant.",
+     "options": [
+      "protected",
+      "protect",
+      "protecting",
+      "was protected"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-rel-48",
+     "n": 48,
+     "category": "grammar",
+     "question": "Her friend, on the other hand, worked for famous companies --------------- high salaries.",
+     "options": [
+      "pay",
+      "to pay",
+      "paid",
+      "paying"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-rel-49",
+     "n": 49,
+     "category": "grammar",
+     "question": "He says that the books --------------- by this writer are very interesting.",
+     "options": [
+      "writes",
+      "wrote",
+      "written",
+      "are written"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-rel-50",
+     "n": 50,
+     "category": "grammar",
+     "question": "Anyone --------------- in this country should plan to attend another lecture tonight.",
+     "options": [
+      "who is interesting",
+      "interesting",
+      "is interested",
+      "interested"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-rel-51",
+     "n": 51,
+     "category": "grammar",
+     "question": "The story --------------- to everyone here is one that has actually happened.",
+     "options": [
+      "told",
+      "is told",
+      "telling",
+      "it is told"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-rel-52",
+     "n": 52,
+     "category": "grammar",
+     "question": "The tasks --------------- in that company are very complex.",
+     "options": [
+      "performs",
+      "to perform",
+      "performing",
+      "performed"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-rel-53",
+     "n": 53,
+     "category": "grammar",
+     "question": "Acid rain, --------------- by burning of gas, oil, and coal, destroys forests.",
+     "options": [
+      "is created",
+      "creating",
+      "created",
+      "which created"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-rel-54",
+     "n": 54,
+     "category": "grammar",
+     "question": "Somebody --------------- Jack phoned while you were out.",
+     "options": [
+      "named",
+      "naming",
+      "being named",
+      "which named"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-rel-55",
+     "n": 55,
+     "category": "grammar",
+     "question": "The man --------------- the car was badly injured in the accident.",
+     "options": [
+      "driven",
+      "drives",
+      "driving",
+      "to drive"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-rel-56",
+     "n": 56,
+     "category": "grammar",
+     "question": "The people --------------- last month had to take a preparation course this month.",
+     "options": [
+      "who hired",
+      "hiring",
+      "were hired",
+      "hired"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-rel-57",
+     "n": 57,
+     "category": "grammar",
+     "question": "There is a small wall --------------- the living room from the rest of the house.",
+     "options": [
+      "which separating",
+      "separating",
+      "separated",
+      "separate"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-rel-58",
+     "n": 58,
+     "category": "grammar",
+     "question": "The children --------------- that school receive a good education.",
+     "options": [
+      "attended",
+      "are attending",
+      "who to attend",
+      "attending"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-rel-59",
+     "n": 59,
+     "category": "grammar",
+     "question": "A new drug --------------- at a British university may give us eternal youth.",
+     "options": [
+      "the developing",
+      "developed",
+      "is developed",
+      "which developed"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-rel-60",
+     "n": 60,
+     "category": "grammar",
+     "question": "Many people believe that we should avoid all foods --------------- chemical substances.",
+     "options": [
+      "contain",
+      "contained",
+      "containing",
+      "which containing"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-rel-61",
+     "n": 61,
+     "category": "grammar",
+     "question": "The teacher advised us --------------- the article --------------- about the greenhouse effect.",
+     "options": [
+      "to read / writing",
+      "reading / writing",
+      "to read / written",
+      "reading / written"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-rel-62",
+     "n": 62,
+     "category": "grammar",
+     "question": "The man --------------- for the best place to park his car has spent a lot of time.",
+     "options": [
+      "looks",
+      "looked",
+      "looking",
+      "to look"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-rel-63",
+     "n": 63,
+     "category": "grammar",
+     "question": "The cinema --------------- in the square nearby is very wonderful.",
+     "options": [
+      "locates",
+      "locating",
+      "to locate",
+      "located"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-rel-64",
+     "n": 64,
+     "category": "grammar",
+     "question": "Trash --------------- to produce energy can be really useful.",
+     "options": [
+      "burning",
+      "which burns",
+      "burned",
+      "burns"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-rel-65",
+     "n": 65,
+     "category": "grammar",
+     "question": "The teacher showed us some pictures --------------- by his son.",
+     "options": [
+      "painting",
+      "paint",
+      "painted",
+      "to paint"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-rel-66",
+     "n": 66,
+     "category": "grammar",
+     "question": "The man who --------------- next door has ten children.",
+     "options": [
+      "lives",
+      "living",
+      "he lives",
+      "he’s living"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-rel-67",
+     "n": 67,
+     "category": "grammar",
+     "question": "Most of the people --------------- in this area are originally from France.",
+     "options": [
+      "lived",
+      "to live",
+      "living",
+      "live"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-rel-68",
+     "n": 68,
+     "category": "grammar",
+     "question": "The students --------------- Dr. Smith’s class this semester are enjoying it.",
+     "options": [
+      "taken",
+      "taking",
+      "to take",
+      "are taking"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-rel-69",
+     "n": 69,
+     "category": "grammar",
+     "question": "The prisoners --------------- are all women.",
+     "options": [
+      "releasing",
+      "released",
+      "who will release",
+      "who are releasing"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-rel-70",
+     "n": 70,
+     "category": "grammar",
+     "question": "In big cities cars --------------- fossil fuels do a lot of harm to the air.",
+     "options": [
+      "using",
+      "are using",
+      "used",
+      "uses"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-rel-71",
+     "n": 71,
+     "category": "grammar",
+     "question": "My grandfather often tells stories ---------------.",
+     "options": [
+      "which people laugh",
+      "what people laugh at",
+      "that people laugh at",
+      "at what people laugh"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-rel-72",
+     "n": 72,
+     "category": "grammar",
+     "question": "Those birthday cards --------------- by you made me very excited.",
+     "options": [
+      "was sent",
+      "that sent",
+      "sent",
+      "were sending"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-rel-73",
+     "n": 73,
+     "category": "grammar",
+     "question": "These are the books Mary and her sister --------------- to buy.",
+     "options": [
+      "wanted",
+      "wanting",
+      "who wanted",
+      "who they want"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-rel-74",
+     "n": 74,
+     "category": "grammar",
+     "question": "A few days after the interview, I received a letter --------------- me the job.",
+     "options": [
+      "offered",
+      "offering",
+      "which offered",
+      "to offer"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-rel-75",
+     "n": 75,
+     "category": "grammar",
+     "question": "The rules --------------- public access to the wild areas need to be reconsidered.",
+     "options": [
+      "allowing",
+      "allowed",
+      "are allowed",
+      "that allows"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-rel-76",
+     "n": 76,
+     "category": "grammar",
+     "question": "A healthful diet --------------- fruit and fiber will decrease one’s risk of cancer.",
+     "options": [
+      "includes",
+      "included",
+      "which included",
+      "including"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-rel-77",
+     "n": 77,
+     "category": "grammar",
+     "question": "The man --------------- beside the host is the guest.",
+     "options": [
+      "seating",
+      "who seats",
+      "seated",
+      "who seated"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-rel-78",
+     "n": 78,
+     "category": "grammar",
+     "question": "Prisoners --------------- at Alcatraz knew that scape from the Island was impossible.",
+     "options": [
+      "were hold",
+      "held",
+      "holding",
+      "who were holding"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-rel-79",
+     "n": 79,
+     "category": "grammar",
+     "question": "The glasses --------------- were on the floor belonged to my grandmother.",
+     "options": [
+      "which",
+      "which it",
+      "whose",
+      "that it"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-rel-80",
+     "n": 80,
+     "category": "grammar",
+     "question": "A person --------------- at least 30 minutes of exercise a day will feel better.",
+     "options": [
+      "doing",
+      "does",
+      "who did",
+      "did"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-rel-81",
+     "n": 81,
+     "category": "grammar",
+     "question": "Today, the number of people --------------- from AIDS is finally decreasing.",
+     "options": [
+      "who they die",
+      "dying",
+      "died",
+      "who died"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-rel-82",
+     "n": 82,
+     "category": "grammar",
+     "question": "My wife and I are really enjoying the TV set --------------- for our anniversary.",
+     "options": [
+      "that we bought it",
+      "that we bought",
+      "we bought that",
+      "we bought it"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-rel-83",
+     "n": 83,
+     "category": "grammar",
+     "question": "The official --------------- clean energy explained his plan.",
+     "options": [
+      "supports",
+      "who supporting",
+      "supporting",
+      "supported"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-rel-84",
+     "n": 84,
+     "category": "grammar",
+     "question": "Many of the students --------------- to enter the university will be disappointed because only one-tenth of those --------------- for admission will be accepted.",
+     "options": [
+      "hope / apply",
+      "who hope / which applies",
+      "hoped / applied",
+      "hoping/ applying"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-rel-85",
+     "n": 85,
+     "category": "grammar",
+     "question": "Competitors --------------- in the marathon should get to the stadium early to warm up.",
+     "options": [
+      "will run",
+      "running",
+      "who runs",
+      "run"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-rel-86",
+     "n": 86,
+     "category": "grammar",
+     "question": "Fifty years ago, many people --------------- from the flu eventually died.",
+     "options": [
+      "who have suffered",
+      "suffering",
+      "suffered",
+      "were suffering"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-rel-87",
+     "n": 87,
+     "category": "grammar",
+     "question": "The woman --------------- last night was interesting.",
+     "options": [
+      "I met her",
+      "who met",
+      "met me",
+      "whom I met"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-rel-88",
+     "n": 88,
+     "category": "grammar",
+     "question": "The student --------------- to class late missed the quiz.",
+     "options": [
+      "that come",
+      "who came",
+      "came",
+      "whom came"
+     ],
+     "answer": 1
+    }
+   ]
+  }
+ ]
+}
