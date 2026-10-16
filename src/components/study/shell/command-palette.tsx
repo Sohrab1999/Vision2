@@ -57,9 +57,42 @@ import {
   writeCountPrefill,
   writeFlagPrefill,
 } from "@/lib/nav-prefill";
-import { readAppendixResume, APPENDIX_SCOPE_LABELS, type AppendixResumeItem } from "@/lib/bg-reading";
+import {
+  readAppendixResume,
+  readAppendixResumeHistory,
+  APPENDIX_SCOPE_LABELS,
+  type AppendixResumeItem,
+} from "@/lib/bg-reading";
 import { useAppendixResumeNav } from "../shared/use-appendix-resume-nav";
 import { Kbd } from "./shortcut-guide";
+
+// راند ۲۴۱ — «مسیرهای اخیر» در فرمان‌یاب (بندِ ① پیشنهادِ ۲۴۰): هشتمین درِ
+// حلقهٔ «ادامهٔ مطالعه». سقفِ ۴ مثلِ پنلِ هدرِ r240 — پروفایل مالکِ همهٔ ۸تاست،
+// این فقط پرشِ سریعِ همین‌جاست.
+const RESUME_RECENTS_CAP = 4;
+const RESUME_RECENT_PREFIX = "resume-recent-";
+
+// شناسهٔ خودکفای مسیرِ اخیر: scope و id داخلِ خودِ شناسهٔ فرمان سفر می‌کنند
+// (جداکنندهٔ %7C — «|» در خروجیِ encodeURIComponent هرگز باقی نمی‌ماند) تا
+// اجرا با خودِ ورودیِ تاریخچه داوری شود، نه با ایندکسیِ شکننده که بازنویسیِ
+// تاریخچه در فاصلهٔ باز-تا-اجرا ردیف را به مقصدِ دیگری می‌فرستد.
+const resumeRecentCmdId = (h: { scope: string; id: string }): string =>
+  `${RESUME_RECENT_PREFIX}${encodeURIComponent(h.scope)}%7C${encodeURIComponent(h.id)}`;
+
+const parseResumeRecentCmdId = (id: string): { scope: string; id: string } | null => {
+  if (!id.startsWith(RESUME_RECENT_PREFIX)) return null;
+  const rest = id.slice(RESUME_RECENT_PREFIX.length);
+  const sep = rest.indexOf("%7C");
+  if (sep < 0) return null;
+  try {
+    const scope = decodeURIComponent(rest.slice(0, sep));
+    const entryId = decodeURIComponent(rest.slice(sep + 3));
+    if (!scope || !entryId) return null;
+    return { scope, id: entryId };
+  } catch {
+    return null; // شناسهٔ خراب — مثلِ شناسهٔ ناشناخته هیچ
+  }
+};
 
 // ------------------------------------------------------------------
 // فرمان‌یاب (Task 66) — پنجرهٔ «جست‌وجوی همه‌جا» با Ctrl+K.
@@ -155,11 +188,15 @@ export default function CommandPalette() {
   // راند ۲۳۵ — هر باز شدن، رکوردِ «ادامهٔ مطالعه» هم همان‌جا خوانده می‌شود
   // (خواندنِ localStorage در رویداد = بدونِ اثر، بدونِ سطحِ هیدریشن).
   const [resumeItem, setResumeItem] = useState<AppendixResumeItem | null>(null);
+  // راند ۲۴۱ — تاریخچه در رویدادهایِ باز شدن خوانده می‌شود (بدونِ اثر،
+  // بدونِ سطحِ هیدریشن — همان قراردادِ خواندنِ رکوردِ r235).
+  const [resumeHistory, setResumeHistory] = useState<AppendixResumeItem[]>([]);
   const togglePalette = () => {
     setOpen((v) => !v);
     setQuery("");
     setSelected(0);
     setResumeItem(readAppendixResume());
+    setResumeHistory(readAppendixResumeHistory());
   };
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -179,6 +216,7 @@ export default function CommandPalette() {
       setQuery("");
       setSelected(0);
       setResumeItem(readAppendixResume());
+      setResumeHistory(readAppendixResumeHistory());
     };
     window.addEventListener("open-command-palette", handler);
     return () => window.removeEventListener("open-command-palette", handler);
@@ -206,9 +244,29 @@ export default function CommandPalette() {
     } satisfies CommandDef;
   }, [resumeItem]);
 
+  // راند ۲۴۱ — «مسیرهای اخیر» (بندِ ① پیشنهادِ ۲۴۰): فرمانِ «ادامهٔ مطالعه»
+  // (r235) حالا جست‌وجوپذیر می‌شود و ورودی‌هایِ اخیرِ تاریخچه هم سوارِ همان
+  // جست‌وجو می‌آیند. همان قراردادهایِ هر شش درِ قبلی: خودِ رکوردِ فعلی از
+  // فهرست حذف است (فرمانِ اصلی همان را می‌برد — بدونِ ردیفِ تکراری)،
+  // بی‌تاریخچه = هیچ گروهی (شمارشِ ۳۱تاییِ Task 79 دست‌نخورده)، و شناسهٔ
+  // خودکفا نه ایندکسی — اجرا با خودِ ورودی داوری می‌شود.
+  const resumeRecentCmds: CommandDef[] = useMemo(() => {
+    const others = resumeHistory.filter(
+      (h) => !(resumeItem && resumeItem.scope === h.scope && resumeItem.id === h.id),
+    );
+    return others.slice(0, RESUME_RECENTS_CAP).map((h) => ({
+      id: resumeRecentCmdId(h),
+      label: h.title,
+      group: "ادامه‌های اخیر",
+      hint: `${APPENDIX_SCOPE_LABELS[h.scope]} · مسیرِ اخیر`,
+      keywords: ["ادامه", "اخیر", "recent", "history", APPENDIX_SCOPE_LABELS[h.scope], h.title],
+    }));
+  }, [resumeItem, resumeHistory]);
+
   const baseCommands: CommandDef[] = useMemo(
     () => [
       ...(resumeCmd ? [resumeCmd] : []),
+      ...resumeRecentCmds,
       // ── ناوبری ──
       { id: "nav-home", label: "خانه", group: "ناوبری", hint: "برگشت به جلد کتاب", keywords: ["home", "bookshelf"] },
       { id: "nav-dictionary", label: "دیکشنری واژگان", group: "ناوبری", hint: `جست‌وجوی ${faNum(TOTAL_VOCABULARY)}+ واژه`, keywords: ["dictionary", "vocab", "لغت", "culture"] },
@@ -251,7 +309,7 @@ export default function CommandPalette() {
       { id: "tool-profile", label: "پروفایل و پشتیبان", group: "ابزارها", hint: "نام، رنگ، پشتیبان‌گیری و سینک ابری", keywords: ["profile", "backup", "sync", "پروفایل", "ذخیره"] },
       { id: "tool-install", label: "نصب روی دستگاه", group: "ابزارها", hint: "وب‌کتاب مثل اپ — آفلاین و تمام‌صفحه", keywords: ["install", "pwa", "نصب", "اپلیکیشن"] },
     ],
-    [isDark, resumeCmd],
+    [isDark, resumeCmd, resumeRecentCmds],
   );
 
   // کلیدواژهٔ ناوبری برای همهٔ فرمان‌ها (جست‌وجو) + نگاشت شناسه برای «اخیر»
@@ -298,7 +356,9 @@ export default function CommandPalette() {
   const run = (cmd: CommandDef | undefined) => {
     if (!cmd) return;
     setOpen(false);
-    rememberRecent(cmd.id);
+    // راند ۲۴۱ — فرمان‌های مسیرِ اخیر خودشان «اخیر»اند؛ در نوارِ «اخیر»
+    // ذخیره نمی‌شوند (پنل هر بار از تاریخچهٔ واقعی ساخته می‌شود).
+    if (!cmd.id.startsWith(RESUME_RECENT_PREFIX)) rememberRecent(cmd.id);
     switch (cmd.id) {
       case "nav-home":
         goHome();
@@ -367,6 +427,20 @@ export default function CommandPalette() {
         window.dispatchEvent(new CustomEvent("install-app"));
         break;
       default: {
+        // راند ۲۴۱ — پرش به مسیرِ اخیر: dispatch در لحظهٔ اجرا تاریخچهٔ واقعی
+        // را دوباره می‌خواند و با شناسهٔ خودکفا داوری می‌کند — ورودیِ حذف‌شده
+        // در فاصلهٔ باز-تا-اجرا = هیچ جابه‌جاییِ ساختگی (همان صداقتِ nav-resume
+        // در r235). مقصد از قلابِ مشترکِ r236 می‌رود — پرش ≠ نوشتن.
+        if (cmd.id.startsWith(RESUME_RECENT_PREFIX)) {
+          const ref = parseResumeRecentCmdId(cmd.id);
+          const target = ref
+            ? readAppendixResumeHistory().find(
+                (h) => h.scope === ref.scope && h.id === ref.id,
+              )
+            : null;
+          if (target) navigateResume(target);
+          break;
+        }
         // ── فرمان‌های پارامتری (Task 69) ──
         // آزمون جامع N سؤالی: prefill در sessionStorage می‌نشیند (نمای lazy
         // رویداد را از دست می‌دهد) + رویداد برای وقتی که نما همین حالا باز است
@@ -630,6 +704,8 @@ function cmdIconKey(id: string, isDark: boolean): string {
     case "tool-install":
       return "Smartphone";
     default: {
+      // راند ۲۴۱ — مسیرهای اخیر: آیکونِ تاریخچه، متمایز از Playِ خودِ «ادامه»
+      if (id.startsWith(RESUME_RECENT_PREFIX)) return "History";
       // فرمان‌های پارامتری (Task 69): آیکونِ مقصدِ هر خانواده
       if (id.startsWith("exam-count-")) return "ClipboardCheck";
       if (id.startsWith("konkur-count-")) return "GraduationCap";
