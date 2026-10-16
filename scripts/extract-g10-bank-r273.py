@@ -78,8 +78,8 @@ def parse_questions(pages):
         lines = raw.split("\n")
         starts = []
         for i, ln in enumerate(lines):
-            m = re.match(r"^\s*(\d{1,3})\s*\.\s+(\S.*)$", ln)
-            if m and not re.match(r"^\s*\d{1,3}\s*\.\s*[a-d][\.\)]", ln):
+            m = re.match(r"^\s*(\d{1,3})\s*[\.\-]\s+(\S.*)$", ln)
+            if m and not re.match(r"^\s*\d{1,3}\s*[\.\-]\s*[a-d][\.\)]", ln):
                 starts.append((i, int(m.group(1)), m.group(2)))
         for k, (i, num, first) in enumerate(starts):
             end = starts[k + 1][0] if k + 1 < len(starts) else len(lines)
@@ -204,10 +204,27 @@ def main():
         for pg in range(plo, phi + 1):
             targets.extend(q_by_page.get(pg, []))
         kp = min(e["pos"] for e in sec["entries"])
-        kind = "grammar" if "گرامر" in stream[max(0, kp - 500):kp] else "vocab"
+        # رده: نزدیک‌ترین اشاره به گرامر/واژگان قبل از اولین مدخل (پنجرهٔ ۱۴۰۰)
+        window = stream[max(0, kp - 1400):kp]
+        g = window.rfind("گرامر")
+        v = window.rfind("واژگان")
+        kind = "grammar" if g > v else "vocab"
+        yield_ratio = (len(targets) / len(sec["entries"])) if sec["entries"] else 0
+        if yield_ratio < 0.6:
+            stats["section_skipped_low_yield"] += len(sec["entries"])
+            print(f"  s{si}: {kind} SKIP — yield {len(targets)}/{len(sec['entries'])} < 60%")
+            continue
         if len(targets) != len(sec["entries"]):
-            print(f"  s{si}: {kind} key={len(sec['entries'])} vs questions p{plo}-{phi}={len(targets)} (zip-min)")
-        for e, q in zip(sec["entries"], targets):
+            print(f"  s{si}: {kind} key={len(sec['entries'])} vs questions p{plo}-{phi}={len(targets)} (num-map join)")
+        # تطبیق با «شمارهٔ سؤال» نه ترتیب کور — پارس‌ناقص‌ها شیفت نمی‌سازند
+        q_by_num = {}
+        for q in targets:
+            q_by_num.setdefault(q["num"], q)
+        for e in sec["entries"]:
+            q = q_by_num.get(e["num"])
+            if q is None:
+                stats["entry_no_question"] += 1
+                continue
             qid = f"g10-p{q['page']}-n{q['num']}"
             if qid in used:
                 continue
