@@ -1,0 +1,7407 @@
+{
+ "meta": {
+  "grade": 10,
+  "generator": "extract-g10-konkur-r279.py",
+  "provenance": "konkur sections of g10 jozve (PDF p172-176 grammar, p178-194 vocab) + printed grid keys at g10.json c20/sec54",
+  "stats": {
+   "grammar": 100,
+   "vocab": 360,
+   "parsed": 460,
+   "kept": 458,
+   "dropped_dup_stems": 2,
+   "r213_agree": 288,
+   "r213_disagree": 3
+  },
+  "dropped": [
+   {
+    "num": 96,
+    "bank": "grammar-100",
+    "stem": "Which sentence is grammatically WRONG?"
+   },
+   {
+    "num": 58,
+    "bank": "vocab-360",
+    "stem": "A: “Who came to the school --------------------, you or your friend?” B: “I came first.”"
+   }
+  ],
+  "r213_disagreements": [
+   {
+    "num": 26,
+    "bank": "grammar-100",
+    "grid": 2,
+    "curated": 1
+   },
+   {
+    "num": 91,
+    "bank": "vocab-360",
+    "grid": 1,
+    "curated": 3
+   },
+   {
+    "num": 243,
+    "bank": "vocab-360",
+    "grid": 1,
+    "curated": 0
+   }
+  ],
+  "quoteRepairs": [
+   {
+    "ref": "grammar-100/Q32",
+    "note": "فقط تایپوگرافیِ کوتیشن — صفر تغییر واژه"
+   },
+   {
+    "ref": "vocab-360/Q78",
+    "note": "فقط تایپوگرافیِ کوتیشن — صفر تغییر واژه"
+   }
+  ],
+  "answerRepairs": [
+   {
+    "ref": "vocab-360/Q236",
+    "from": 0,
+    "to": 2,
+    "reason": "گرید چاپی «a/rapidly» معنایی ناممکن دارد (متضادِ quickly نه مترادف)؛ c/slowly درست است — بانک r213 هم موافق."
+   }
+  ],
+  "grids": {
+   "grammar": "c20/sec54 lines after «پاسخنامه تستهای گرامر درس یک تا چهار» (۱۰۰ جفت)",
+   "vocab": "c20/sec54 lines after «پاسخنامه کلیدی 360تست واژگان درس 1 تا 4» (۳۶۰ جفت، ستونی/شکسته — با جفت‌یاب ردیفی خوانده شد)"
+  },
+  "translations": "printed grid has no translations — q.translation intentionally absent (honest omission, الگوی r276/r278)",
+  "errata": [
+   {
+    "ref": "vocab-360/Q174",
+    "note": "گزینهٔ چهارم در خودِ جزوه به‌اشتباه «b) suitably» چاپ شده (حرفِ غلط + متنِ تکراری گزینهٔ اول). وفادار به چاپ ماندیم؛ کلید گرید c=honestly معنایی و سالم است."
+   }
+  ]
+ },
+ "bank": [
+  {
+   "num": 1,
+   "category": "grammar",
+   "stem": "I don’t know where Mr. Jordan is. He -------------------- in the garden, but I’m not sure.",
+   "options": [
+    "may is",
+    "may be",
+    "must is",
+    "must be"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-405"
+  },
+  {
+   "num": 2,
+   "category": "grammar",
+   "stem": "-------------------- they increase the number of the houses next year?",
+   "options": [
+    "Do",
+    "Did",
+    "Will",
+    "Are"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-406"
+  },
+  {
+   "num": 3,
+   "category": "grammar",
+   "stem": "You -------------------- drive when you are very tired. It’s so dangerous.",
+   "options": [
+    "would not",
+    "must not",
+    "could not",
+    "might not"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-407"
+  },
+  {
+   "num": 4,
+   "category": "grammar",
+   "stem": "My -------------------- has -------------------- young aunt. She is going to start learning -------------------- Spanish in September.",
+   "options": [
+    "friend / a /-",
+    "friend / an / the",
+    "friends / a / the",
+    "friends / a / -"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-408"
+  },
+  {
+   "num": 5,
+   "category": "grammar",
+   "stem": "I -------------------- fast when the car in front of me stopped suddenly and I hit it.",
+   "options": [
+    "driving",
+    "will drive",
+    "drove",
+    "was driving"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-409"
+  },
+  {
+   "num": 6,
+   "category": "grammar",
+   "stem": "A: “What would you like to drink, madam?” B: “I -------------------- a glass of milk, please.”",
+   "options": [
+    "will have",
+    "am going to drink",
+    "am drinking",
+    "drink"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-410"
+  },
+  {
+   "num": 7,
+   "category": "grammar",
+   "stem": "Unfortunately, my cousin -------------------- her leg while she -------------------- fast.",
+   "options": [
+    "broke / skied",
+    "broke / was skiing",
+    "was breaking / was skiing",
+    "was breaking / skied"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-411"
+  },
+  {
+   "num": 8,
+   "category": "grammar",
+   "stem": "He really wants to answer the questions in his physics exam --------------------. So, he’s studying --------------------.",
+   "options": [
+    "correctly / hardly",
+    "correct / hardly",
+    "correctly / hard",
+    "correct / hard"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-412"
+  },
+  {
+   "num": 9,
+   "category": "grammar",
+   "stem": "As she was walking home, it started to snow. So, she opened her -------------------- umbrella.",
+   "options": [
+    "large new red and yellow",
+    "new large red and yellow",
+    "red and yellow large new",
+    "large red and yellow new"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-413"
+  },
+  {
+   "num": 10,
+   "category": "grammar",
+   "stem": "A: “I told you to clean your room.” B: “Sorry, I forgot, -------------------- it after having dinner.”",
+   "options": [
+    "I’m going to do",
+    "I’ll do",
+    "I did",
+    "I do"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-414"
+  },
+  {
+   "num": 11,
+   "category": "grammar",
+   "stem": "Be careful with that sharp knife, Mehran! You are going to hurt -------------------- if you are not careful.",
+   "options": [
+    "ourselves",
+    "himself",
+    "yourselves",
+    "yourself"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-415"
+  },
+  {
+   "num": 12,
+   "category": "grammar",
+   "stem": "You are eating your food too --------------------. Please eat it --------------------.",
+   "options": [
+    "quickly / slow",
+    "fast / slowly",
+    "slowly / quick",
+    "rapid / slowly"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-416"
+  },
+  {
+   "num": 13,
+   "category": "grammar",
+   "stem": "A: “Where are you going on holiday?” B: “I’m not sure, maybe I -------------------- to Germany.",
+   "options": [
+    "go",
+    "am going",
+    "will go",
+    "went"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-417"
+  },
+  {
+   "num": 14,
+   "category": "grammar",
+   "stem": "They usually visit their grandparents -------------------- Thursday evenings.",
+   "options": [
+    "on",
+    "in",
+    "with",
+    "to"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-418"
+  },
+  {
+   "num": 15,
+   "category": "grammar",
+   "stem": "These poor students really -------------------- some new school things right now. We should help them.",
+   "options": [
+    "needed",
+    "need",
+    "are needing",
+    "were needing"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-419"
+  },
+  {
+   "num": 16,
+   "category": "grammar",
+   "stem": "He often eats in restaurants all -------------------- Sunday afternoons because he can’t -------------------- by himself.",
+   "options": [
+    "in / cook",
+    "on / cooks",
+    "in / cooks",
+    "on / cook"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-420"
+  },
+  {
+   "num": 17,
+   "category": "grammar",
+   "stem": "People living here are very --------------------, but African people are -------------------- people in the world.",
+   "options": [
+    "the poorer / poor",
+    "the poorest / poorer",
+    "poor / the poorest",
+    "poor / poorest"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-421"
+  },
+  {
+   "num": 18,
+   "category": "grammar",
+   "stem": "While we were studying at the library, my friend -------------------- and -------------------- about his accident.",
+   "options": [
+    "came/ speaking",
+    "came / was speaking",
+    "came / spoke",
+    "was coming / spoke"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-422"
+  },
+  {
+   "num": 19,
+   "category": "grammar",
+   "stem": "Mardin is only nine months old. He -------------------- eat food yet, but he -------------------- drink milk.",
+   "options": [
+    "can / can’t",
+    "can / can",
+    "can’t / can’t",
+    "can’t / can"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-423"
+  },
+  {
+   "num": 20,
+   "category": "grammar",
+   "stem": "Mr. Amini and his brother drive -------------------- to work every day. They don’t take the bus.",
+   "options": [
+    "herself",
+    "themselves",
+    "himself",
+    "yourselves"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-424"
+  },
+  {
+   "num": 21,
+   "category": "grammar",
+   "stem": "It’s a hospital. You -------------------- smoke and talk --------------------.",
+   "options": [
+    "shouldn’t / loud",
+    "mustn’t / loudly",
+    "can’t / loud",
+    "may not / loudly"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-425"
+  },
+  {
+   "num": 22,
+   "category": "grammar",
+   "stem": "A: I don’t know how to use this computer. B: Really? Don’t worry, -------------------- you.",
+   "options": [
+    "I’m going to show",
+    "I showed",
+    "I’m showing",
+    "I’ll show"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-426"
+  },
+  {
+   "num": 23,
+   "category": "grammar",
+   "stem": "They can speak Spanish very --------------------. They have lived -------------------- Spain for seven years.",
+   "options": [
+    "good / in",
+    "good /at",
+    "well / in",
+    "well / at"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-427"
+  },
+  {
+   "num": 24,
+   "category": "grammar",
+   "stem": "My classmate behaves -------------------- towards me. I -------------------- talk to the teacher about it next session.",
+   "options": [
+    "rude / am going to",
+    "rudely / am going to",
+    "rudely / will",
+    "rude / will"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-428"
+  },
+  {
+   "num": 25,
+   "category": "grammar",
+   "stem": "We usually work really -------------------- from Saturday -------------------- Wednesday.",
+   "options": [
+    "hard / to",
+    "hardly / on",
+    "hard / on",
+    "hardly / to"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-429"
+  },
+  {
+   "num": 26,
+   "category": "grammar",
+   "stem": "Sarah and her friend Mina are both thirty-seven years old. Sarah isn’t -------------------- Mina.",
+   "options": [
+    "the oldest",
+    "as old as",
+    "older than",
+    "very old"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-430"
+  },
+  {
+   "num": 27,
+   "category": "grammar",
+   "stem": "Rebecca has the flu. She must rest at home and take care of --------------------.",
+   "options": [
+    "you",
+    "yourself",
+    "herself",
+    "her"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-431"
+  },
+  {
+   "num": 28,
+   "category": "grammar",
+   "stem": "Ali finally bought a nice car, so now he drives to work by his own’s. He -------------------- take the bus.",
+   "options": [
+    "doesn’t have to",
+    "shouldn’t",
+    "couldn’t",
+    "wouldn’t"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-432"
+  },
+  {
+   "num": 29,
+   "category": "grammar",
+   "stem": "A: “There is no coffee. Would you like a cup of tea, instead?” B: “No, thanks. I -------------------- some orange juice.”",
+   "options": [
+    "drink",
+    "will drink",
+    "drank",
+    "am going to drink"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-433"
+  },
+  {
+   "num": 30,
+   "category": "grammar",
+   "stem": "A: Are you able to -------------------- Chinese? B: No, I --------------------. It’s not easy.",
+   "options": [
+    "speak / won’t",
+    "speak / can’t",
+    "speaking / may not",
+    "speaking / shouldn’t"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-434"
+  },
+  {
+   "num": 31,
+   "category": "grammar",
+   "stem": "They have lived in a -------------------- apartment -------------------- 805 Azadi street for 12 years.",
+   "options": [
+    "small / on",
+    "smaller / in",
+    "small / at",
+    "the smallest / to"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-435"
+  },
+  {
+   "num": 32,
+   "category": "grammar",
+   "stem": "A: “Are you going to play tennis next Friday?” B: “I can’t. I -------------------- my mother in hospital.”",
+   "options": [
+    "will visit",
+    "can visit",
+    "visited",
+    "am going to visit"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-436"
+  },
+  {
+   "num": 33,
+   "category": "grammar",
+   "stem": "Sometimes I walk to work and sometimes I go -------------------- bus -------------------- the afternoon.",
+   "options": [
+    "by / on",
+    "in / in",
+    "at / by",
+    "by / in"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-437"
+  },
+  {
+   "num": 34,
+   "category": "grammar",
+   "stem": "A: “Do you like Swimming?” B: “Yes, I -------------------- swim very --------------------. I have practiced it for 5 years.”",
+   "options": [
+    "must / good",
+    "may / good",
+    "should / well",
+    "can / well"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-438"
+  },
+  {
+   "num": 35,
+   "category": "grammar",
+   "stem": "I saw my close friend yesterday while she -------------------- a nice red dress.",
+   "options": [
+    "wears",
+    "wore",
+    "was wearing",
+    "is going to wear"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-439"
+  },
+  {
+   "num": 36,
+   "category": "grammar",
+   "stem": "A: “There’s no milk at home.” B: “I know. I -------------------- some milk from Mr. Amini’s shop soon.”",
+   "options": [
+    "will get",
+    "got",
+    "am going to get",
+    "get"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-440"
+  },
+  {
+   "num": 37,
+   "category": "grammar",
+   "stem": "My dad was very -------------------- at me and my brother when we got home late -------------------- last night.",
+   "options": [
+    "angry / at",
+    "angry / -",
+    "angrily / -",
+    "angrily / at"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-441"
+  },
+  {
+   "num": 38,
+   "category": "grammar",
+   "stem": "Don’t help us, mommy! Bahareh and I can wash your car all by --------------------.",
+   "options": [
+    "themselves",
+    "herself",
+    "himself",
+    "ourselves"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-442"
+  },
+  {
+   "num": 39,
+   "category": "grammar",
+   "stem": "Negin is really a -------------------- student. She talked -------------------- to the interviewer.",
+   "options": [
+    "polite / politely",
+    "politely / polite",
+    "polite / polite",
+    "politely / politely"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-443"
+  },
+  {
+   "num": 40,
+   "category": "grammar",
+   "stem": "He has an interesting hobby, but my sister has -------------------- hobby in the family.",
+   "options": [
+    "more interesting",
+    "as interesting as",
+    "the most interesting",
+    "the more interesting"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-444"
+  },
+  {
+   "num": 41,
+   "category": "grammar",
+   "stem": "A: “Do you like French, Mohammad? B: “Yes, I do. And I -------------------- speak French well.”",
+   "options": [
+    "could",
+    "can",
+    "may",
+    "would"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-445"
+  },
+  {
+   "num": 42,
+   "category": "grammar",
+   "stem": "Do you know that France is one of -------------------- countries in the world.",
+   "options": [
+    "richer",
+    "the richest",
+    "as rich as",
+    "richest"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-446"
+  },
+  {
+   "num": 43,
+   "category": "grammar",
+   "stem": "He’s always -------------------- a hurry. I don’t understand why he often walks so --------------------.",
+   "options": [
+    "in / slowly",
+    "on / fast",
+    "in / quickly",
+    "at / rapidly"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-447"
+  },
+  {
+   "num": 44,
+   "category": "grammar",
+   "stem": "My Father a good manager. We think that he -------------------- any mistakes at work.",
+   "options": [
+    "isn’t going to make",
+    "is going to make",
+    "won’t make",
+    "will make"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-448"
+  },
+  {
+   "num": 45,
+   "category": "grammar",
+   "stem": "The hotel which I reserved was very small. I expected it to be -------------------- than the hotels of my city.",
+   "options": [
+    "bigger",
+    "smaller",
+    "the biggest",
+    "the smallest"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-449"
+  },
+  {
+   "num": 46,
+   "category": "grammar",
+   "stem": "You mustn’t -------------------- to turn off the lights when you go to bed.",
+   "options": [
+    "to forget",
+    "forget",
+    "forgot",
+    "forgetting"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-450"
+  },
+  {
+   "num": 47,
+   "category": "grammar",
+   "stem": "His uncles like to practice English by talking to --------------------.",
+   "options": [
+    "ourselves",
+    "themselves",
+    "himself",
+    "herself"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-451"
+  },
+  {
+   "num": 48,
+   "category": "grammar",
+   "stem": "Yesterday, his older brother bought a -------------------- shirt which was very nice.",
+   "options": [
+    "Chinese small white",
+    "white Chinese small",
+    "small white Chinese",
+    "white small Chinese"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-452"
+  },
+  {
+   "num": 49,
+   "category": "grammar",
+   "stem": "I think my friend Fatemeh -------------------- her math exam tomorrow. but I’m not quite sure about that.",
+   "options": [
+    "is going to pass",
+    "will pass",
+    "passes",
+    "passed"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-453"
+  },
+  {
+   "num": 50,
+   "category": "grammar",
+   "stem": "Both my parents are working, but my mother makes -------------------- money than my father.",
+   "options": [
+    "little",
+    "more",
+    "the most",
+    "much"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-454"
+  },
+  {
+   "num": 51,
+   "category": "grammar",
+   "stem": "I -------------------- carry this box alone. It is too --------------------! Would you help me?",
+   "options": [
+    "can’t / heavy",
+    "can’t / heavily",
+    "can / heavy",
+    "can / heavily"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-455"
+  },
+  {
+   "num": 52,
+   "category": "grammar",
+   "stem": "A: Where did your older -------------------- put the --------------------? B: “She put them on that --------------------.”",
+   "options": [
+    "sister / knives / shelf",
+    "sisters / knife/ shelf",
+    "sister / knives / shelves",
+    "sister / knife / shelves"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-456"
+  },
+  {
+   "num": 53,
+   "category": "grammar",
+   "stem": "Recently, Mr. Moradi’s sister has made a very nice blue cotton dress for --------------------.",
+   "options": [
+    "her",
+    "herself",
+    "himself",
+    "his"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-457"
+  },
+  {
+   "num": 54,
+   "category": "grammar",
+   "stem": "-------------------- boys sitting over there like football. -------------------- favorite team is -------------------- Liverpool.",
+   "options": [
+    "These / Their / the",
+    "Those / Their /-",
+    "This / His /-",
+    "That / His /-"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-458"
+  },
+  {
+   "num": 55,
+   "category": "grammar",
+   "stem": "My father -------------------- at 70 km/h when a policeman -------------------- him.",
+   "options": [
+    "drove / stopped",
+    "drove / stops",
+    "was driving / stopped",
+    "was driving / was stopping"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-459"
+  },
+  {
+   "num": 56,
+   "category": "grammar",
+   "stem": "It's raining --------------------. You -------------------- take your own umbrella.",
+   "options": [
+    "heavily / may",
+    "heavily / must",
+    "heavy /should",
+    "heavy / can"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-460"
+  },
+  {
+   "num": 57,
+   "category": "grammar",
+   "stem": "She put the plates on the table and told Mary and -------------------- to help -------------------- to the food.",
+   "options": [
+    "me / ourselves",
+    "you / themselves",
+    "him / yourselves",
+    "her / herself"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-461"
+  },
+  {
+   "num": 58,
+   "category": "grammar",
+   "stem": "My older sister has three children. Mahyar is -------------------- of all. He is only 3 years old.",
+   "options": [
+    "younger than",
+    "youngest",
+    "the youngest",
+    "younger"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-462"
+  },
+  {
+   "num": 59,
+   "category": "grammar",
+   "stem": "A: There is a good movie on TV tonight. B: Yes, I know. I -------------------- it with my family.",
+   "options": [
+    "am going to watch",
+    "will watch",
+    "watched",
+    "watching"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-463"
+  },
+  {
+   "num": 60,
+   "category": "grammar",
+   "stem": "Which hotel -------------------- you staying in when you -------------------- all the money and your passport?",
+   "options": [
+    "were / were losing",
+    "were / lost",
+    "did / were losing",
+    "did / lost"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-464"
+  },
+  {
+   "num": 61,
+   "category": "grammar",
+   "stem": "I finished all of my homework this afternoon. Fortunately, I -------------------- study tonight.",
+   "options": [
+    "shouldn’t",
+    "couldn’t",
+    "wouldn’t",
+    "don’t have to"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-465"
+  },
+  {
+   "num": 62,
+   "category": "grammar",
+   "stem": "I’m too tired to walk home. I think I -------------------- a taxi.",
+   "options": [
+    "am going to take",
+    "will take",
+    "take",
+    "took"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-466"
+  },
+  {
+   "num": 63,
+   "category": "grammar",
+   "stem": "Be --------------------! You are speaking too --------------------. The baby is sleeping in the next room.",
+   "options": [
+    "quiet / loud",
+    "quietly / loudly",
+    "quiet / loudly",
+    "quietly / loud"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-467"
+  },
+  {
+   "num": 64,
+   "category": "grammar",
+   "stem": "A: “Did you send an e-mail to Marry?” B: “NO, I forgot. I -------------------- her tomorrow.”",
+   "options": [
+    "am going to send",
+    "will send",
+    "send",
+    "sent"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-468"
+  },
+  {
+   "num": 65,
+   "category": "grammar",
+   "stem": "I like to tell jokes and -------------------- people laugh. I tell jokes --------------------.",
+   "options": [
+    "always make / badly",
+    "make always / good",
+    "always make / well",
+    "make always / bad"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-469"
+  },
+  {
+   "num": 66,
+   "category": "grammar",
+   "stem": "A: “Why do you need to borrow my suitcase?” B: I -------------------- Mr. Kane in London next month.",
+   "options": [
+    "visited",
+    "visit",
+    "will visit",
+    "am going to visit"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-470"
+  },
+  {
+   "num": 67,
+   "category": "grammar",
+   "stem": "A: “Can you read this for me? My eyes aren’t -------------------- yours.” B: “Sure”.",
+   "options": [
+    "better",
+    "more weak than",
+    "the weak as",
+    "as good as"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-471"
+  },
+  {
+   "num": 68,
+   "category": "grammar",
+   "stem": "Look! There are not any clouds in the sky. So, it -------------------- a beautiful day.",
+   "options": [
+    "will be",
+    "is going to be",
+    "would be",
+    "was"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-472"
+  },
+  {
+   "num": 69,
+   "category": "grammar",
+   "stem": "We should be careful about our behavior when traveling -------------------- a foreign country.",
+   "options": [
+    "next to",
+    "on",
+    "by",
+    "in"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-473"
+  },
+  {
+   "num": 70,
+   "category": "grammar",
+   "stem": "I’m very tired today. I -------------------- clean my room now, but I -------------------- do it tomorrow.",
+   "options": [
+    "can’t / won’t",
+    "shouldn’t / will",
+    "should / won’t",
+    "can’t / will"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-474"
+  },
+  {
+   "num": 71,
+   "category": "grammar",
+   "stem": "The phone and the doorbell rang -------------------- the same time and I didn’t know which one to answer first.",
+   "options": [
+    "by",
+    "at",
+    "with",
+    "to"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-475"
+  },
+  {
+   "num": 72,
+   "category": "grammar",
+   "stem": "Miss Mohammadi’s older brother -------------------- cooked a meal and then he listened to music by --------------------.",
+   "options": [
+    "him / him",
+    "himself / himself",
+    "herself / herself",
+    "her / her"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-476"
+  },
+  {
+   "num": 73,
+   "category": "grammar",
+   "stem": "A: “What is -------------------- sport in your country?” B: “It’s football but I’m not quite sure.”",
+   "options": [
+    "better",
+    "as popular as",
+    "more popular",
+    "the most popular"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-477"
+  },
+  {
+   "num": 74,
+   "category": "grammar",
+   "stem": "My -------------------- live in -------------------- old house in -------------------- London. There is a beautiful garden near the house.",
+   "options": [
+    "grandparent / an / -",
+    "grandparents / a / the",
+    "grandparents / an / -",
+    "grandparent / a / the"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-478"
+  },
+  {
+   "num": 75,
+   "category": "grammar",
+   "stem": "Did you know that December is -------------------- month of the year in my country?",
+   "options": [
+    "the coldest",
+    "colder than",
+    "as cold as",
+    "much cold"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-479"
+  },
+  {
+   "num": 76,
+   "category": "grammar",
+   "stem": "Is your -------------------- going to invite his --------------------, Mohsen and Milad, and their -------------------- to the wedding tomorrow?",
+   "options": [
+    "uncles / sons / wives",
+    "uncles / son / wife",
+    "uncle / son / wife",
+    "uncle / sons / wives"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-480"
+  },
+  {
+   "num": 77,
+   "category": "grammar",
+   "stem": "I’m a good swimmer and -------------------- swim very well these days, but I -------------------- 15 years ago.",
+   "options": [
+    "can / couldn’t",
+    "can / could",
+    "can’t / could",
+    "could / can’t"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-481"
+  },
+  {
+   "num": 78,
+   "category": "grammar",
+   "stem": "You should -------------------- to the doctor. Your cold is -------------------- than it was a few days ago.",
+   "options": [
+    "going / as bad as",
+    "go / worst",
+    "go / worse",
+    "going / very bad"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-482"
+  },
+  {
+   "num": 79,
+   "category": "grammar",
+   "stem": "The writer sat down -------------------- her desk, turned on her computer and -------------------- for a few hours.",
+   "options": [
+    "on / worked",
+    "above / works",
+    "in / works",
+    "at / worked"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-483"
+  },
+  {
+   "num": 80,
+   "category": "grammar",
+   "stem": "Their school isn’t as -------------------- our school. It has only five classes.",
+   "options": [
+    "nearer as",
+    "farther than",
+    "the nearest",
+    "far as"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-484"
+  },
+  {
+   "num": 81,
+   "category": "grammar",
+   "stem": "Which sentence is grammatically WRONG?",
+   "options": [
+    "They went to school at three o'clock",
+    "He went to a new school at London",
+    "I can’t sleep at night these days",
+    "We often go on holiday in summer"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-485"
+  },
+  {
+   "num": 82,
+   "category": "grammar",
+   "stem": "-------------------- your classmates going to -------------------- wildlife museum next Tuesday?",
+   "options": [
+    "Are / visiting",
+    "Are / visit",
+    "Were / visiting",
+    "Will / visit"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-486"
+  },
+  {
+   "num": 83,
+   "category": "grammar",
+   "stem": "-------------------- they swimming at the swimming pool when they -------------------- a terrible noise?",
+   "options": [
+    "Were / heard",
+    "Are / were hearing",
+    "Do / were hearing",
+    "Did / heard"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-487"
+  },
+  {
+   "num": 84,
+   "category": "grammar",
+   "stem": "Blue whales can weigh 120 tons. No other whales are so heavy. Blue whales are -------------------- the other whales. They are -------------------- animals in the world.",
+   "options": [
+    "the heaviest / heavier than",
+    "the heaviest / the heaviest",
+    "heavier than / the heaviest",
+    "heavier than / heavier than"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-488"
+  },
+  {
+   "num": 85,
+   "category": "grammar",
+   "stem": "I know Ali very well. He is always late to school. I’m quite sure he -------------------- late tomorrow evening.",
+   "options": [
+    "will be",
+    "is going to be",
+    "is",
+    "was"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-489"
+  },
+  {
+   "num": 86,
+   "category": "grammar",
+   "stem": "His handwriting is -------------------- as my handwriting. He writes as -------------------- as me.",
+   "options": [
+    "as good / beautifully",
+    "better than / beautiful",
+    "worse than / beautifully",
+    "as bad / beautiful"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-490"
+  },
+  {
+   "num": 87,
+   "category": "grammar",
+   "stem": "He believes that his job is -------------------- job in the world. He would like to give it up.",
+   "options": [
+    "more boring",
+    "the most boring",
+    "boring than",
+    "boring"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-491"
+  },
+  {
+   "num": 88,
+   "category": "grammar",
+   "stem": "My grandparents are living in a (n) -------------------- house in a -------------------- village.",
+   "options": [
+    "old wooden / small lovely old",
+    "old wooden / lovely small old",
+    "wooden old / small lovely old",
+    "wooden old / lovely old small"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-492"
+  },
+  {
+   "num": 89,
+   "category": "grammar",
+   "stem": "While Behnam -------------------- his homework last night, he received a text message from his friend.",
+   "options": [
+    "did",
+    "was doing",
+    "will do",
+    "does"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-493"
+  },
+  {
+   "num": 90,
+   "category": "grammar",
+   "stem": "Yesterday John told me a -------------------- joke. This joke was -------------------- joke I’ve ever heard.",
+   "options": [
+    "funnier / funnier than",
+    "funny / the funniest",
+    "funny / as funny as",
+    "funniest / much funny"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-494"
+  },
+  {
+   "num": 91,
+   "category": "grammar",
+   "stem": "Your little children -------------------- sit so -------------------- the TV. It’s very bad for their eyes.",
+   "options": [
+    "may not / in front of",
+    "won’t / by",
+    "shouldn’t / near",
+    "can’t / next to"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-495"
+  },
+  {
+   "num": 92,
+   "category": "grammar",
+   "stem": "I -------------------- my hand while I -------------------- dinner last night.",
+   "options": [
+    "burned / was cooking",
+    "burned / will cook",
+    "burned / cooked",
+    "burn / cook"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-496"
+  },
+  {
+   "num": 93,
+   "category": "grammar",
+   "stem": "We were running to the station exactly when the train --------------------.",
+   "options": [
+    "were leaving",
+    "was leaving",
+    "left",
+    "leaving"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-497"
+  },
+  {
+   "num": 94,
+   "category": "grammar",
+   "stem": "Raman, Ali, Mohammad, and I -------------------- cleaned all the rooms very carefully.",
+   "options": [
+    "themselves",
+    "myself",
+    "himself",
+    "ourselves"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-498"
+  },
+  {
+   "num": 95,
+   "category": "grammar",
+   "stem": "Don’t ride so --------------------. You -------------------- have an accident.",
+   "options": [
+    "fast / may",
+    "quick / should",
+    "quickly / can",
+    "rapidly / must"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-499"
+  },
+  {
+   "num": 97,
+   "category": "grammar",
+   "stem": "My parents have lived in a -------------------- apartment in the city center since 1363.",
+   "options": [
+    "beautiful big wooden new",
+    "beautiful big new wooden",
+    "new big beautiful wooden",
+    "wooden beautiful big new"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-500"
+  },
+  {
+   "num": 98,
+   "category": "grammar",
+   "stem": "You and your roommates should -------------------- your rooms by --------------------.",
+   "options": [
+    "clean / yourselves",
+    "to clean / himself",
+    "cleaning / herself",
+    "clean / yourself"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-501"
+  },
+  {
+   "num": 99,
+   "category": "grammar",
+   "stem": "Mark has three --------------------, -------------------- boy and two girls. -------------------- boy is 7 years old and their girls are 3.",
+   "options": [
+    "children / a / A",
+    "children / a / The",
+    "child / the / A",
+    "child / the / The"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-502"
+  },
+  {
+   "num": 100,
+   "category": "grammar",
+   "stem": "The man worked very hard all day long. So, it wasn’t surprising that he -------------------- very tired.",
+   "options": [
+    "was looking",
+    "looked",
+    "is looking",
+    "looks"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 172,
+   "bank": "grammar-100",
+   "id": "g10-503"
+  },
+  {
+   "num": 1,
+   "category": "vocab",
+   "stem": "We didn’t have enough money for a movie, so we went to the park --------------------.",
+   "options": [
+    "instead",
+    "anymore",
+    "tomorrow",
+    "nowadays"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 178,
+   "bank": "vocab-360",
+   "id": "g10-504"
+  },
+  {
+   "num": 2,
+   "category": "vocab",
+   "stem": "Some people -------------------- weight when they stop smoking.",
+   "options": [
+    "seek",
+    "carry",
+    "donate",
+    "gain"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 178,
+   "bank": "vocab-360",
+   "id": "g10-505"
+  },
+  {
+   "num": 3,
+   "category": "vocab",
+   "stem": "I became very nervous when I couldn’t -------------------- my passport.",
+   "options": [
+    "find",
+    "lose",
+    "carry",
+    "donate"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 178,
+   "bank": "vocab-360",
+   "id": "g10-506"
+  },
+  {
+   "num": 4,
+   "category": "vocab",
+   "stem": "Those who have never thought about the -------------------- of life should not study medicine.",
+   "options": [
+    "skill",
+    "moment",
+    "value",
+    "belief"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 178,
+   "bank": "vocab-360",
+   "id": "g10-507"
+  },
+  {
+   "num": 5,
+   "category": "vocab",
+   "stem": "The wolf may -------------------- his teeth, but never his nature.",
+   "options": [
+    "carry",
+    "grow",
+    "lose",
+    "hunt"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 178,
+   "bank": "vocab-360",
+   "id": "g10-508"
+  },
+  {
+   "num": 6,
+   "category": "vocab",
+   "stem": "After a busy day, all I want is -------------------- and quiet.",
+   "options": [
+    "power",
+    "interest",
+    "science",
+    "peace"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 178,
+   "bank": "vocab-360",
+   "id": "g10-509"
+  },
+  {
+   "num": 7,
+   "category": "vocab",
+   "stem": "There are a lot of dark -------------------- in the sky. It seems it will rain.",
+   "options": [
+    "sites",
+    "clouds",
+    "ranges",
+    "images"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 178,
+   "bank": "vocab-360",
+   "id": "g10-510"
+  },
+  {
+   "num": 8,
+   "category": "vocab",
+   "stem": "Do you -------------------- money to buy a new laptop?",
+   "options": [
+    "cut",
+    "save",
+    "hope",
+    "mean"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 178,
+   "bank": "vocab-360",
+   "id": "g10-511"
+  },
+  {
+   "num": 9,
+   "category": "vocab",
+   "stem": "They don’t like the plan to build the road through the --------------------.",
+   "options": [
+    "chart",
+    "nation",
+    "world",
+    "forest"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 178,
+   "bank": "vocab-360",
+   "id": "g10-512"
+  },
+  {
+   "num": 10,
+   "category": "vocab",
+   "stem": "The museum hopes to attract both foreign and -------------------- visitors.",
+   "options": [
+    "home-made",
+    "international",
+    "domestic",
+    "popular"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 178,
+   "bank": "vocab-360",
+   "id": "g10-513"
+  },
+  {
+   "num": 11,
+   "category": "vocab",
+   "stem": "We can become familiar with the culture of the -------------------- people from the wall painting.",
+   "options": [
+    "patient",
+    "comfortable",
+    "ancient",
+    "actual"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 178,
+   "bank": "vocab-360",
+   "id": "g10-514"
+  },
+  {
+   "num": 12,
+   "category": "vocab",
+   "stem": "The last bear in this forest -------------------- one hundred years ago.",
+   "options": [
+    "died out",
+    "cut",
+    "put out",
+    "hurt"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 178,
+   "bank": "vocab-360",
+   "id": "g10-515"
+  },
+  {
+   "num": 13,
+   "category": "vocab",
+   "stem": "Unfortunately, the -------------------- from Chicago will arrive at the airport thirty minutes late.",
+   "options": [
+    "airplane",
+    "cradle",
+    "power",
+    "interest"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 178,
+   "bank": "vocab-360",
+   "id": "g10-516"
+  },
+  {
+   "num": 14,
+   "category": "vocab",
+   "stem": "To understand Japanese --------------------, you should learn the language.",
+   "options": [
+    "image",
+    "culture",
+    "range",
+    "behavior"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 178,
+   "bank": "vocab-360",
+   "id": "g10-517"
+  },
+  {
+   "num": 15,
+   "category": "vocab",
+   "stem": "My grandfather can -------------------- people’s faces, but not their names.",
+   "options": [
+    "observe",
+    "believe",
+    "remember",
+    "behave"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 178,
+   "bank": "vocab-360",
+   "id": "g10-518"
+  },
+  {
+   "num": 16,
+   "category": "vocab",
+   "stem": "Ants work a lot all day long. They are -------------------- animals.",
+   "options": [
+    "interested",
+    "important",
+    "hard-working",
+    "favorite"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 178,
+   "bank": "vocab-360",
+   "id": "g10-519"
+  },
+  {
+   "num": 17,
+   "category": "vocab",
+   "stem": "Mina came home While her brother was watching his -------------------- movie at the living room.",
+   "options": [
+    "interested",
+    "building",
+    "hard-working",
+    "favorite"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 178,
+   "bank": "vocab-360",
+   "id": "g10-520"
+  },
+  {
+   "num": 18,
+   "category": "vocab",
+   "stem": "A: “Do you know where the Taj Mahal is --------------------?” B: “Yes, in India.”",
+   "options": [
+    "prepared",
+    "located",
+    "attracted",
+    "planned"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 178,
+   "bank": "vocab-360",
+   "id": "g10-521"
+  },
+  {
+   "num": 19,
+   "category": "vocab",
+   "stem": "Smoking can -------------------- the risk of developing heart disease.",
+   "options": [
+    "fill",
+    "increase",
+    "bore",
+    "fight"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 178,
+   "bank": "vocab-360",
+   "id": "g10-522"
+  },
+  {
+   "num": 20,
+   "category": "vocab",
+   "stem": "Buckingham Palace is one of London’s most popular tourist --------------------.",
+   "options": [
+    "entertainments",
+    "suggestions",
+    "choices",
+    "attractions"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 178,
+   "bank": "vocab-360",
+   "id": "g10-523"
+  },
+  {
+   "num": 21,
+   "category": "vocab",
+   "stem": "My sister is very kind. She always -------------------- animals from danger.",
+   "options": [
+    "hurts",
+    "hunts",
+    "cuts",
+    "saves"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 178,
+   "bank": "vocab-360",
+   "id": "g10-524"
+  },
+  {
+   "num": 22,
+   "category": "vocab",
+   "stem": "Planets -------------------- the sun in different orbits.",
+   "options": [
+    "look like",
+    "go around",
+    "fill out",
+    "carry out"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 179,
+   "bank": "vocab-360",
+   "id": "g10-525"
+  },
+  {
+   "num": 23,
+   "category": "vocab",
+   "stem": "You can take and -------------------- pictures by a camera very easily.",
+   "options": [
+    "solve",
+    "keep",
+    "attend",
+    "key"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 179,
+   "bank": "vocab-360",
+   "id": "g10-526"
+  },
+  {
+   "num": 24,
+   "category": "vocab",
+   "stem": "Isfahan has many interesting historical -------------------- -.",
+   "options": [
+    "price",
+    "agents",
+    "hosts",
+    "sites"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 179,
+   "bank": "vocab-360",
+   "id": "g10-527"
+  },
+  {
+   "num": 25,
+   "category": "vocab",
+   "stem": "Look at the pretty little baby sleeping in the --------------------.",
+   "options": [
+    "shelf",
+    "cradle",
+    "noise",
+    "grave"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 179,
+   "bank": "vocab-360",
+   "id": "g10-528"
+  },
+  {
+   "num": 26,
+   "category": "vocab",
+   "stem": "My study showed that working in a garden is the most -------------------- activity for old people.",
+   "options": [
+    "hospitable",
+    "popular",
+    "domestic",
+    "comfortable"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 179,
+   "bank": "vocab-360",
+   "id": "g10-529"
+  },
+  {
+   "num": 27,
+   "category": "vocab",
+   "stem": "Some people -------------------- the trees and don’t take care of the nature.",
+   "options": [
+    "save",
+    "protect",
+    "increase",
+    "cut"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 179,
+   "bank": "vocab-360",
+   "id": "g10-530"
+  },
+  {
+   "num": 28,
+   "category": "vocab",
+   "stem": "Penicillin is a / an -------------------- for killing bacteria that are in your body and making you ill.",
+   "options": [
+    "medicine",
+    "experiment",
+    "science",
+    "laboratory"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 179,
+   "bank": "vocab-360",
+   "id": "g10-531"
+  },
+  {
+   "num": 29,
+   "category": "vocab",
+   "stem": "Are you interested -------------------- planets and stars?",
+   "options": [
+    "for",
+    "to",
+    "at",
+    "in"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 179,
+   "bank": "vocab-360",
+   "id": "g10-532"
+  },
+  {
+   "num": 30,
+   "category": "vocab",
+   "stem": "I forgot to take my -------------------- with me to Portugal, so I couldn’t take any photos.",
+   "options": [
+    "passport",
+    "cradle",
+    "camera",
+    "ticket"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 179,
+   "bank": "vocab-360",
+   "id": "g10-533"
+  },
+  {
+   "num": 31,
+   "category": "vocab",
+   "stem": "An airplane helps us travel very fast to -------------------- places.",
+   "options": [
+    "same",
+    "first",
+    "clear",
+    "far"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 179,
+   "bank": "vocab-360",
+   "id": "g10-534"
+  },
+  {
+   "num": 32,
+   "category": "vocab",
+   "stem": "Every year millions of -------------------- come to the holy shrines in Iran.",
+   "options": [
+    "pilgrims",
+    "nations",
+    "destinations",
+    "attractions"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 179,
+   "bank": "vocab-360",
+   "id": "g10-535"
+  },
+  {
+   "num": 33,
+   "category": "vocab",
+   "stem": "My older uncle cannot run because he has a -------------------- heart.",
+   "options": [
+    "heavy",
+    "powerful",
+    "healthy",
+    "weak"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 179,
+   "bank": "vocab-360",
+   "id": "g10-536"
+  },
+  {
+   "num": 34,
+   "category": "vocab",
+   "stem": "My brother is a brave firefighter. He always -------------------- the fire very fast.",
+   "options": [
+    "forgets",
+    "puts out",
+    "cuts",
+    "saves"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 179,
+   "bank": "vocab-360",
+   "id": "g10-537"
+  },
+  {
+   "num": 35,
+   "category": "vocab",
+   "stem": "I was sitting -------------------- in that chair beside the fire in the living room, reading a newspaper.",
+   "options": [
+    "politely",
+    "hungrily",
+    "generously",
+    "comfortably"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 179,
+   "bank": "vocab-360",
+   "id": "g10-538"
+  },
+  {
+   "num": 36,
+   "category": "vocab",
+   "stem": "A: “Are animals really -------------------- for you?” B: “I’d like to know more about them.”",
+   "options": [
+    "interesting",
+    "powerful",
+    "alike",
+    "clear"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 179,
+   "bank": "vocab-360",
+   "id": "g10-539"
+  },
+  {
+   "num": 37,
+   "category": "vocab",
+   "stem": "When I asked his name after the accident, he -------------------- that he could not remember.",
+   "options": [
+    "answered",
+    "observed",
+    "behaved",
+    "believed"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 179,
+   "bank": "vocab-360",
+   "id": "g10-540"
+  },
+  {
+   "num": 38,
+   "category": "vocab",
+   "stem": "I was reading a book about -------------------- Iranian scientists, Farabi and Toosi.",
+   "options": [
+    "first",
+    "last",
+    "famous",
+    "possible"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 179,
+   "bank": "vocab-360",
+   "id": "g10-541"
+  },
+  {
+   "num": 39,
+   "category": "vocab",
+   "stem": "A: “Are you -------------------- for your summer vacation?” B: “Yes, I want to travel.”",
+   "options": [
+    "spending",
+    "enjoying",
+    "planning",
+    "visiting"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 179,
+   "bank": "vocab-360",
+   "id": "g10-542"
+  },
+  {
+   "num": 40,
+   "category": "vocab",
+   "stem": "I played football yesterday and I -------------------- my foot badly.",
+   "options": [
+    "hurt",
+    "took",
+    "planed",
+    "hoped"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 179,
+   "bank": "vocab-360",
+   "id": "g10-543"
+  },
+  {
+   "num": 41,
+   "category": "vocab",
+   "stem": "Some planets are --------------------. They have many mountains.",
+   "options": [
+    "amazing",
+    "useful",
+    "rocky",
+    "dry"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 179,
+   "bank": "vocab-360",
+   "id": "g10-544"
+  },
+  {
+   "num": 42,
+   "category": "vocab",
+   "stem": "A: “Was the book --------------------?” B: “Yes, I learned many interesting things.”",
+   "options": [
+    "energetic",
+    "useful",
+    "possible",
+    "natural"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 179,
+   "bank": "vocab-360",
+   "id": "g10-545"
+  },
+  {
+   "num": 43,
+   "category": "vocab",
+   "stem": "I’m going to visit Africa, but I’m not sure about my --------------------. I don’t know Africa well.",
+   "options": [
+    "ceremony",
+    "behavior",
+    "destination",
+    "passport"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 180,
+   "bank": "vocab-360",
+   "id": "g10-546"
+  },
+  {
+   "num": 44,
+   "category": "vocab",
+   "stem": "Did you know that children often cry just to -------------------- attention?",
+   "options": [
+    "attract",
+    "spend",
+    "check",
+    "plan"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 180,
+   "bank": "vocab-360",
+   "id": "g10-547"
+  },
+  {
+   "num": 45,
+   "category": "vocab",
+   "stem": "Mary had a terrible car accident last night and she was -------------------- badly.",
+   "options": [
+    "special",
+    "helpful",
+    "injured",
+    "cruel"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 180,
+   "bank": "vocab-360",
+   "id": "g10-548"
+  },
+  {
+   "num": 46,
+   "category": "vocab",
+   "stem": "Some planets have -------------------- around them like our planet, Earth.",
+   "options": [
+    "rocks",
+    "moons",
+    "types",
+    "systems"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 180,
+   "bank": "vocab-360",
+   "id": "g10-549"
+  },
+  {
+   "num": 47,
+   "category": "vocab",
+   "stem": "Razi taught -------------------- to young doctors while he was working in Ray Hospital.",
+   "options": [
+    "medicine",
+    "invention",
+    "translation",
+    "novels"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 180,
+   "bank": "vocab-360",
+   "id": "g10-550"
+  },
+  {
+   "num": 48,
+   "category": "vocab",
+   "stem": "“I’m going on a trip to England tomorrow. Do you have any -------------------- to tell me?",
+   "options": [
+    "suggestion",
+    "departure",
+    "destination",
+    "entertainment"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 180,
+   "bank": "vocab-360",
+   "id": "g10-551"
+  },
+  {
+   "num": 49,
+   "category": "vocab",
+   "stem": "In -------------------- times, people believed that the earth was not round.",
+   "options": [
+    "traditional",
+    "ancient",
+    "historical",
+    "local"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 180,
+   "bank": "vocab-360",
+   "id": "g10-552"
+  },
+  {
+   "num": 50,
+   "category": "vocab",
+   "stem": "Our grandmother died at the age of 83 after a long --------------------.",
+   "options": [
+    "behavior",
+    "entertainment",
+    "risk",
+    "illness"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 180,
+   "bank": "vocab-360",
+   "id": "g10-553"
+  },
+  {
+   "num": 51,
+   "category": "vocab",
+   "stem": "Some South American countries -------------------- many tourists because of their amazing nature.",
+   "options": [
+    "prepare",
+    "spend",
+    "attract",
+    "break"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 180,
+   "bank": "vocab-360",
+   "id": "g10-554"
+  },
+  {
+   "num": 52,
+   "category": "vocab",
+   "stem": "Planets go around the sun in different --------------------.",
+   "options": [
+    "kinds",
+    "systems",
+    "orbits",
+    "abilities"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 180,
+   "bank": "vocab-360",
+   "id": "g10-555"
+  },
+  {
+   "num": 53,
+   "category": "vocab",
+   "stem": "Sadly, he lost his hearing at the age of 12. “Sadly” is a synonym for --------------------.",
+   "options": [
+    "unfortunately",
+    "successfully",
+    "rapidly",
+    "easily"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 180,
+   "bank": "vocab-360",
+   "id": "g10-556"
+  },
+  {
+   "num": 54,
+   "category": "vocab",
+   "stem": "A: “Is China famous for The Great Wall?” B: “Yes, it’s really --------------------.”",
+   "options": [
+    "hospitable",
+    "suitable",
+    "domestic",
+    "popular"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 180,
+   "bank": "vocab-360",
+   "id": "g10-557"
+  },
+  {
+   "num": 55,
+   "category": "vocab",
+   "stem": "The train station is -------------------- between these two towns. It's far from here.",
+   "options": [
+    "attended",
+    "located",
+    "planned",
+    "developed"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 180,
+   "bank": "vocab-360",
+   "id": "g10-558"
+  },
+  {
+   "num": 56,
+   "category": "vocab",
+   "stem": "Pay attention! Don’t swim here. It’s --------------------.",
+   "options": [
+    "natural",
+    "dangerous",
+    "safe",
+    "alive"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 180,
+   "bank": "vocab-360",
+   "id": "g10-559"
+  },
+  {
+   "num": 57,
+   "category": "vocab",
+   "stem": "We can see the planets -------------------- to us without telescope.",
+   "options": [
+    "wonderful",
+    "strong",
+    "true",
+    "nearer"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 180,
+   "bank": "vocab-360",
+   "id": "g10-560"
+  },
+  {
+   "num": 59,
+   "category": "vocab",
+   "stem": "A large number of people visited this historical -------------------- yesterday afternoon.",
+   "options": [
+    "desert",
+    "season",
+    "site",
+    "fact"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 180,
+   "bank": "vocab-360",
+   "id": "g10-561"
+  },
+  {
+   "num": 60,
+   "category": "vocab",
+   "stem": "The children have a six week -------------------- during the summer.",
+   "options": [
+    "culture",
+    "flight",
+    "vacation",
+    "destination"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 180,
+   "bank": "vocab-360",
+   "id": "g10-562"
+  },
+  {
+   "num": 61,
+   "category": "vocab",
+   "stem": "We got up early in the morning to see the --------------------.",
+   "options": [
+    "destination",
+    "sunset",
+    "season",
+    "sunrise"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 180,
+   "bank": "vocab-360",
+   "id": "g10-563"
+  },
+  {
+   "num": 62,
+   "category": "vocab",
+   "stem": "If I'm late, please -------------------- for me in the train station.",
+   "options": [
+    "save",
+    "gain",
+    "create",
+    "wait"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 180,
+   "bank": "vocab-360",
+   "id": "g10-564"
+  },
+  {
+   "num": 63,
+   "category": "vocab",
+   "stem": "I bought a model of the Eiffel Tower as a -------------------- of my trip to Paris.",
+   "options": [
+    "destination",
+    "pyramid",
+    "souvenir",
+    "suggestion"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 180,
+   "bank": "vocab-360",
+   "id": "g10-565"
+  },
+  {
+   "num": 64,
+   "category": "vocab",
+   "stem": "“I will not let that kind of -------------------- in my class,” the teacher said angrily.",
+   "options": [
+    "suggestion",
+    "culture",
+    "choice",
+    "behavior"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 181,
+   "bank": "vocab-360",
+   "id": "g10-566"
+  },
+  {
+   "num": 65,
+   "category": "vocab",
+   "stem": "Iran was the -------------------- home of Persian lion.",
+   "options": [
+    "wild",
+    "dangerous",
+    "endangered",
+    "natural"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 181,
+   "bank": "vocab-360",
+   "id": "g10-567"
+  },
+  {
+   "num": 66,
+   "category": "vocab",
+   "stem": "A: “Is your brother --------------------?” B: “Yes, he’s playing and running all the time.”",
+   "options": [
+    "successful",
+    "useful",
+    "energetic",
+    "famous"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 181,
+   "bank": "vocab-360",
+   "id": "g10-568"
+  },
+  {
+   "num": 67,
+   "category": "vocab",
+   "stem": "“Is Isfahan a popular -------------------- in Asia for tourists?”",
+   "options": [
+    "information",
+    "destination",
+    "nation",
+    "vacation"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 181,
+   "bank": "vocab-360",
+   "id": "g10-569"
+  },
+  {
+   "num": 68,
+   "category": "vocab",
+   "stem": "We can see some planets like Neptune only with -------------------- telescopes.",
+   "options": [
+    "powerful",
+    "wonderful",
+    "useful",
+    "interesting"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 181,
+   "bank": "vocab-360",
+   "id": "g10-570"
+  },
+  {
+   "num": 69,
+   "category": "vocab",
+   "stem": "Red blood cells -------------------- oxygen round the body.",
+   "options": [
+    "keep",
+    "collect",
+    "carry",
+    "seem"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 181,
+   "bank": "vocab-360",
+   "id": "g10-571"
+  },
+  {
+   "num": 70,
+   "category": "vocab",
+   "stem": "After the accident she had a terrible harm. “harm” is a synonym for --------------------.",
+   "options": [
+    "injury",
+    "safety",
+    "living",
+    "protect"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 181,
+   "bank": "vocab-360",
+   "id": "g10-572"
+  },
+  {
+   "num": 71,
+   "category": "vocab",
+   "stem": "I read a useful book and I learned many things. The synonym for “useful” is --------------------.",
+   "options": [
+    "powerful",
+    "energetic",
+    "helpful",
+    "famous"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 181,
+   "bank": "vocab-360",
+   "id": "g10-573"
+  },
+  {
+   "num": 72,
+   "category": "vocab",
+   "stem": "Some countries attract tourists from other parts of the world because of their -------------------- nature.",
+   "options": [
+    "hospitable",
+    "amazing",
+    "similar",
+    "foreign"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 181,
+   "bank": "vocab-360",
+   "id": "g10-574"
+  },
+  {
+   "num": 73,
+   "category": "vocab",
+   "stem": "You should give money -------------------- to the poor people who need help.",
+   "options": [
+    "generously",
+    "hungrily",
+    "bravely",
+    "patiently"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 181,
+   "bank": "vocab-360",
+   "id": "g10-575"
+  },
+  {
+   "num": 74,
+   "category": "vocab",
+   "stem": "I’d like to get more information about India. It seems a suitable -------------------- for traveling.",
+   "options": [
+    "nation",
+    "choice",
+    "behavior",
+    "continent"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 181,
+   "bank": "vocab-360",
+   "id": "g10-576"
+  },
+  {
+   "num": 75,
+   "category": "vocab",
+   "stem": "How are the planets different? Are they so much --------------------?",
+   "options": [
+    "rocky",
+    "useful",
+    "nearer",
+    "alike"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 181,
+   "bank": "vocab-360",
+   "id": "g10-577"
+  },
+  {
+   "num": 76,
+   "category": "vocab",
+   "stem": "The students do -------------------- in the school laboratory.",
+   "options": [
+    "knowledge",
+    "experiment",
+    "science",
+    "success"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 181,
+   "bank": "vocab-360",
+   "id": "g10-578"
+  },
+  {
+   "num": 77,
+   "category": "vocab",
+   "stem": "We -------------------- to help the injured animals. It’s really good.",
+   "options": [
+    "hope",
+    "save",
+    "cut",
+    "hurt"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 181,
+   "bank": "vocab-360",
+   "id": "g10-579"
+  },
+  {
+   "num": 78,
+   "category": "vocab",
+   "stem": "A: “Can you finish painting all the rooms today?” B: “Sorry. -------------------- not.”",
+   "options": [
+    "Quietly",
+    "rudely",
+    "Probably",
+    "Patiently"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 181,
+   "bank": "vocab-360",
+   "id": "g10-580"
+  },
+  {
+   "num": 79,
+   "category": "vocab",
+   "stem": "Ants are wonderful --------------------. They work a lot in groups.",
+   "options": [
+    "systems",
+    "rings",
+    "cells",
+    "insects"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 181,
+   "bank": "vocab-360",
+   "id": "g10-581"
+  },
+  {
+   "num": 80,
+   "category": "vocab",
+   "stem": "My little sister is taller than last month. Children grow up --------------------.",
+   "options": [
+    "sadly",
+    "finally",
+    "rapidly",
+    "at first"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 181,
+   "bank": "vocab-360",
+   "id": "g10-582"
+  },
+  {
+   "num": 81,
+   "category": "vocab",
+   "stem": "There are more than 100 pyramids in Egypt, so it’s really --------------------.",
+   "options": [
+    "wonderful",
+    "honest",
+    "brave",
+    "probable"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 181,
+   "bank": "vocab-360",
+   "id": "g10-583"
+  },
+  {
+   "num": 82,
+   "category": "vocab",
+   "stem": "A; “Are there many students in your class? B; “No, there are --------------------.”",
+   "options": [
+    "around",
+    "instead",
+    "a few",
+    "anymore"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 181,
+   "bank": "vocab-360",
+   "id": "g10-584"
+  },
+  {
+   "num": 83,
+   "category": "vocab",
+   "stem": "He is a brave soldier who -------------------- most of his life fighting his enemies.",
+   "options": [
+    "attacked",
+    "saved",
+    "spent",
+    "defended"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 181,
+   "bank": "vocab-360",
+   "id": "g10-585"
+  },
+  {
+   "num": 84,
+   "category": "vocab",
+   "stem": "A: “Why is Isfahan --------------------?” B: “Because there are many attractive old buildings.”",
+   "options": [
+    "familiar",
+    "ancient",
+    "safe",
+    "holy"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 181,
+   "bank": "vocab-360",
+   "id": "g10-586"
+  },
+  {
+   "num": 85,
+   "category": "vocab",
+   "stem": "No -------------------- is possible without hard work.",
+   "options": [
+    "noise",
+    "pain",
+    "problems",
+    "success"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 182,
+   "bank": "vocab-360",
+   "id": "g10-587"
+  },
+  {
+   "num": 86,
+   "category": "vocab",
+   "stem": "He -------------------- the heavy box alone. Now he has a terrible backache.",
+   "options": [
+    "carried",
+    "collected",
+    "orbited",
+    "seemed"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 182,
+   "bank": "vocab-360",
+   "id": "g10-588"
+  },
+  {
+   "num": 87,
+   "category": "vocab",
+   "stem": "Helicopters saved about 20 people from the roof of the -------------------- building.",
+   "options": [
+    "similar",
+    "burning",
+    "traditional",
+    "comfortable"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 182,
+   "bank": "vocab-360",
+   "id": "g10-589"
+  },
+  {
+   "num": 88,
+   "category": "vocab",
+   "stem": "There’s no milk. Would you like a glass of orange juice --------------------?",
+   "options": [
+    "anymore",
+    "instead",
+    "a few",
+    "many"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 182,
+   "bank": "vocab-360",
+   "id": "g10-590"
+  },
+  {
+   "num": 89,
+   "category": "vocab",
+   "stem": "When I was a child, I -------------------- different types of natural flowers.",
+   "options": [
+    "hoped",
+    "pumped",
+    "carried",
+    "collected"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 182,
+   "bank": "vocab-360",
+   "id": "g10-591"
+  },
+  {
+   "num": 90,
+   "category": "vocab",
+   "stem": "Wind towers in Yazd are really -------------------- for tourists because no place in the world has got something like this.",
+   "options": [
+    "international",
+    "domestic",
+    "familiar",
+    "attractive"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 182,
+   "bank": "vocab-360",
+   "id": "g10-592"
+  },
+  {
+   "num": 91,
+   "category": "vocab",
+   "stem": "Everyone needs to -------------------- for the future.",
+   "options": [
+    "cut",
+    "plan",
+    "destroy",
+    "hurt"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 182,
+   "bank": "vocab-360",
+   "id": "g10-593"
+  },
+  {
+   "num": 92,
+   "category": "vocab",
+   "stem": "Edison -------------------- the first light bulb and became famous.",
+   "options": [
+    "felt",
+    "quitted",
+    "invented",
+    "published"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 182,
+   "bank": "vocab-360",
+   "id": "g10-594"
+  },
+  {
+   "num": 93,
+   "category": "vocab",
+   "stem": "He had no -------------------- but to give up school because his family was very poor.",
+   "options": [
+    "choice",
+    "suggestion",
+    "rule",
+    "site"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 182,
+   "bank": "vocab-360",
+   "id": "g10-595"
+  },
+  {
+   "num": 94,
+   "category": "vocab",
+   "stem": "Are there many domestic animals -------------------- your house?",
+   "options": [
+    "again",
+    "anymore",
+    "instead",
+    "around"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 182,
+   "bank": "vocab-360",
+   "id": "g10-596"
+  },
+  {
+   "num": 95,
+   "category": "vocab",
+   "stem": "Do you know the -------------------- about this event?",
+   "options": [
+    "orbits",
+    "facts",
+    "creations",
+    "exercises"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 182,
+   "bank": "vocab-360",
+   "id": "g10-597"
+  },
+  {
+   "num": 96,
+   "category": "vocab",
+   "stem": "I can help you -------------------- your math problem.",
+   "options": [
+    "develop",
+    "solve",
+    "grow",
+    "build"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 182,
+   "bank": "vocab-360",
+   "id": "g10-598"
+  },
+  {
+   "num": 97,
+   "category": "vocab",
+   "stem": "I play the guitar only for my -------------------- in summer.",
+   "options": [
+    "information",
+    "entertainment",
+    "destination",
+    "suggestion"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 182,
+   "bank": "vocab-360",
+   "id": "g10-599"
+  },
+  {
+   "num": 98,
+   "category": "vocab",
+   "stem": "--------------------, I don’t know where your money is.",
+   "options": [
+    "Honestly",
+    "Politely",
+    "Bravely",
+    "Safely"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 182,
+   "bank": "vocab-360",
+   "id": "g10-600"
+  },
+  {
+   "num": 99,
+   "category": "vocab",
+   "stem": "I don’t remember my grandmother's face --------------------.",
+   "options": [
+    "probably",
+    "exactly",
+    "patiently",
+    "nicely"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 182,
+   "bank": "vocab-360",
+   "id": "g10-601"
+  },
+  {
+   "num": 100,
+   "category": "vocab",
+   "stem": "Many people think that hunting is -------------------- to animals.",
+   "options": [
+    "actual",
+    "cruel",
+    "attractive",
+    "popular"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 182,
+   "bank": "vocab-360",
+   "id": "g10-602"
+  },
+  {
+   "num": 101,
+   "category": "vocab",
+   "stem": "I want to buy a new car, but I don’t have much money to --------------------.",
+   "options": [
+    "create",
+    "spend",
+    "check",
+    "seek"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 182,
+   "bank": "vocab-360",
+   "id": "g10-603"
+  },
+  {
+   "num": 102,
+   "category": "vocab",
+   "stem": "A strong person has a powerful body, and can -------------------- heavy things.",
+   "options": [
+    "defend",
+    "carry",
+    "control",
+    "cross"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 182,
+   "bank": "vocab-360",
+   "id": "g10-604"
+  },
+  {
+   "num": 103,
+   "category": "vocab",
+   "stem": "Tom didn't want to hear about all of Mary's problems, but he sat -------------------- and listened.",
+   "options": [
+    "suitably",
+    "honestly",
+    "quietly",
+    "generously"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 182,
+   "bank": "vocab-360",
+   "id": "g10-605"
+  },
+  {
+   "num": 104,
+   "category": "vocab",
+   "stem": "The bed I slept in last night was so -------------------- and warm that I didn't want to get up.",
+   "options": [
+    "dangerous",
+    "burning",
+    "familiar",
+    "comfortable"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 182,
+   "bank": "vocab-360",
+   "id": "g10-606"
+  },
+  {
+   "num": 105,
+   "category": "vocab",
+   "stem": "It’s not an English word. It’s French. What does it --------------------?",
+   "options": [
+    "hunt",
+    "save",
+    "mean",
+    "increase"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 182,
+   "bank": "vocab-360",
+   "id": "g10-607"
+  },
+  {
+   "num": 106,
+   "category": "vocab",
+   "stem": "The system of our body is a --------------------.",
+   "options": [
+    "type",
+    "ring",
+    "wonder",
+    "liquid"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 183,
+   "bank": "vocab-360",
+   "id": "g10-608"
+  },
+  {
+   "num": 107,
+   "category": "vocab",
+   "stem": "This book can -------------------- your speaking skill.",
+   "options": [
+    "develop",
+    "invent",
+    "feel",
+    "solve"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 183,
+   "bank": "vocab-360",
+   "id": "g10-609"
+  },
+  {
+   "num": 108,
+   "category": "vocab",
+   "stem": "A: “Why are domestic flights cheaper than -------------------- flights?” B: “Because of the distance.”",
+   "options": [
+    "foreign",
+    "attractive",
+    "ancient",
+    "historical"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 183,
+   "bank": "vocab-360",
+   "id": "g10-610"
+  },
+  {
+   "num": 109,
+   "category": "vocab",
+   "stem": "This shop sells a wide -------------------- of amazing wild flowers.",
+   "options": [
+    "risk",
+    "range",
+    "image",
+    "price"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 183,
+   "bank": "vocab-360",
+   "id": "g10-611"
+  },
+  {
+   "num": 110,
+   "category": "vocab",
+   "stem": "Humans destroy the nature and make homes and roads --------------------.",
+   "options": [
+    "instead",
+    "anymore",
+    "around",
+    "again"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 183,
+   "bank": "vocab-360",
+   "id": "g10-612"
+  },
+  {
+   "num": 111,
+   "category": "vocab",
+   "stem": "Our body is doing -------------------- of jobs all the time.",
+   "options": [
+    "rings",
+    "facts",
+    "millions",
+    "systems"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 183,
+   "bank": "vocab-360",
+   "id": "g10-613"
+  },
+  {
+   "num": 112,
+   "category": "vocab",
+   "stem": "Schools must try to make science more -------------------- to children.",
+   "options": [
+    "similar",
+    "familiar",
+    "attractive",
+    "historical"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 183,
+   "bank": "vocab-360",
+   "id": "g10-614"
+  },
+  {
+   "num": 113,
+   "category": "vocab",
+   "stem": "A -------------------- is one of the seven areas of land on the earth, such as Asia, Africa.",
+   "options": [
+    "desert",
+    "country",
+    "world",
+    "continent"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 183,
+   "bank": "vocab-360",
+   "id": "g10-615"
+  },
+  {
+   "num": 114,
+   "category": "vocab",
+   "stem": "His -------------------- in Allah gave him hope during difficult times.",
+   "options": [
+    "key",
+    "end",
+    "belief",
+    "flight"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 183,
+   "bank": "vocab-360",
+   "id": "g10-616"
+  },
+  {
+   "num": 115,
+   "category": "vocab",
+   "stem": "One of the most -------------------- facts about our body is the heart.",
+   "options": [
+    "strong",
+    "interesting",
+    "healthy",
+    "daily"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 183,
+   "bank": "vocab-360",
+   "id": "g10-617"
+  },
+  {
+   "num": 116,
+   "category": "vocab",
+   "stem": "Tourism is traveling for --------------------, health, sport or learning about other cultures.",
+   "options": [
+    "suggestion",
+    "destination",
+    "entertainment",
+    "behavior"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 183,
+   "bank": "vocab-360",
+   "id": "g10-618"
+  },
+  {
+   "num": 117,
+   "category": "vocab",
+   "stem": "He -------------------- his work without saying anything to us.",
+   "options": [
+    "solved",
+    "felt",
+    "gave up",
+    "went out"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 183,
+   "bank": "vocab-360",
+   "id": "g10-619"
+  },
+  {
+   "num": 118,
+   "category": "vocab",
+   "stem": "Is there any -------------------- to save Iranian cheetahs?",
+   "options": [
+    "future",
+    "nature",
+    "hope",
+    "plain"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 183,
+   "bank": "vocab-360",
+   "id": "g10-620"
+  },
+  {
+   "num": 119,
+   "category": "vocab",
+   "stem": "Human knowledge -------------------- with scientist’s hard work.",
+   "options": [
+    "feels",
+    "cheers",
+    "quits",
+    "develops"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 183,
+   "bank": "vocab-360",
+   "id": "g10-621"
+  },
+  {
+   "num": 120,
+   "category": "vocab",
+   "stem": "Plasma is a -------------------- and yellow liquid that carries red and white cells in our blood.",
+   "options": [
+    "useful",
+    "healthy",
+    "alive",
+    "clear"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 183,
+   "bank": "vocab-360",
+   "id": "g10-622"
+  },
+  {
+   "num": 121,
+   "category": "vocab",
+   "stem": "You know that -------------------- tourists travel abroad.",
+   "options": [
+    "international",
+    "historical",
+    "familiar",
+    "domestic"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 183,
+   "bank": "vocab-360",
+   "id": "g10-623"
+  },
+  {
+   "num": 122,
+   "category": "vocab",
+   "stem": "Many kind people are interested in -------------------- the injured animals.",
+   "options": [
+    "saving",
+    "destroying",
+    "cutting",
+    "hurting"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 183,
+   "bank": "vocab-360",
+   "id": "g10-624"
+  },
+  {
+   "num": 123,
+   "category": "vocab",
+   "stem": "Doctors say useful foods keep us healthy and --------------------.",
+   "options": [
+    "clear",
+    "alive",
+    "different",
+    "famous"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 183,
+   "bank": "vocab-360",
+   "id": "g10-625"
+  },
+  {
+   "num": 124,
+   "category": "vocab",
+   "stem": "The -------------------- dentist gave two billion yen to charity.",
+   "options": [
+    "ancient",
+    "generous",
+    "comfortable",
+    "usual"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 183,
+   "bank": "vocab-360",
+   "id": "g10-626"
+  },
+  {
+   "num": 125,
+   "category": "vocab",
+   "stem": "You’ll -------------------- yourself a lot of time if you take the car.",
+   "options": [
+    "plan",
+    "save",
+    "solve",
+    "prepare"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 183,
+   "bank": "vocab-360",
+   "id": "g10-627"
+  },
+  {
+   "num": 126,
+   "category": "vocab",
+   "stem": "Some countries -------------------- a lot of tourists every year.",
+   "options": [
+    "spend",
+    "prepare",
+    "break",
+    "attract"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 183,
+   "bank": "vocab-360",
+   "id": "g10-628"
+  },
+  {
+   "num": 127,
+   "category": "vocab",
+   "stem": "She’s very kind and everybody speaks about her good nature. “nature” means --------------------.",
+   "options": [
+    "safety",
+    "injury",
+    "living",
+    "personality"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 184,
+   "bank": "vocab-360",
+   "id": "g10-629"
+  },
+  {
+   "num": 128,
+   "category": "vocab",
+   "stem": "Many great men and women try hard to find --------------------.",
+   "options": [
+    "facts",
+    "novels",
+    "cradles",
+    "buildings"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 184,
+   "bank": "vocab-360",
+   "id": "g10-630"
+  },
+  {
+   "num": 129,
+   "category": "vocab",
+   "stem": "Some scientists never give up while they are doing research. “give up” means --------------------.",
+   "options": [
+    "grow",
+    "quit",
+    "seek",
+    "use"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 184,
+   "bank": "vocab-360",
+   "id": "g10-631"
+  },
+  {
+   "num": 130,
+   "category": "vocab",
+   "stem": "Egypt in Africa is famous for its -------------------- pyramids.",
+   "options": [
+    "similar",
+    "wonderful",
+    "hospitable",
+    "international"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 184,
+   "bank": "vocab-360",
+   "id": "g10-632"
+  },
+  {
+   "num": 131,
+   "category": "vocab",
+   "stem": "We speak Persian at home so that the boys don’t forget their language and --------------------.",
+   "options": [
+    "behavior",
+    "image",
+    "destination",
+    "culture"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 184,
+   "bank": "vocab-360",
+   "id": "g10-633"
+  },
+  {
+   "num": 132,
+   "category": "vocab",
+   "stem": "In one small drop of blood there are millions of red --------------------.",
+   "options": [
+    "rings",
+    "cells",
+    "liquid",
+    "facts"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 184,
+   "bank": "vocab-360",
+   "id": "g10-634"
+  },
+  {
+   "num": 133,
+   "category": "vocab",
+   "stem": "I hurt my hand when I was playing volleyball yesterday. “hurt” means --------------------.",
+   "options": [
+    "cut",
+    "injured",
+    "saved",
+    "hunted"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 184,
+   "bank": "vocab-360",
+   "id": "g10-635"
+  },
+  {
+   "num": 134,
+   "category": "vocab",
+   "stem": "You should go to the Australian -------------------- to get a visa.",
+   "options": [
+    "destination",
+    "airport",
+    "embassy",
+    "laboratory"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 184,
+   "bank": "vocab-360",
+   "id": "g10-636"
+  },
+  {
+   "num": 135,
+   "category": "vocab",
+   "stem": "There are thousands of white -------------------- in a drop of blood.",
+   "options": [
+    "liquid",
+    "rings",
+    "facts",
+    "cells"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 184,
+   "bank": "vocab-360",
+   "id": "g10-637"
+  },
+  {
+   "num": 136,
+   "category": "vocab",
+   "stem": "Iran is a great -------------------- for tourists from other parts of the world.",
+   "options": [
+    "embassy",
+    "continent",
+    "destination",
+    "behavior"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 184,
+   "bank": "vocab-360",
+   "id": "g10-638"
+  },
+  {
+   "num": 137,
+   "category": "vocab",
+   "stem": "White cells in our blood -------------------- our body against microbes.",
+   "options": [
+    "carry",
+    "defend",
+    "keep",
+    "collect"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 184,
+   "bank": "vocab-360",
+   "id": "g10-639"
+  },
+  {
+   "num": 138,
+   "category": "vocab",
+   "stem": "Tigers are wild animals of the Asian cat family. “wild” is an opposite of --------------------.",
+   "options": [
+    "hurtful",
+    "domestic",
+    "safe",
+    "dead"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 184,
+   "bank": "vocab-360",
+   "id": "g10-640"
+  },
+  {
+   "num": 139,
+   "category": "vocab",
+   "stem": "She’s energetic. She’s always doing something. “energetic” means --------------------.",
+   "options": [
+    "interested",
+    "famous",
+    "useful",
+    "active"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 184,
+   "bank": "vocab-360",
+   "id": "g10-641"
+  },
+  {
+   "num": 140,
+   "category": "vocab",
+   "stem": "When you are going abroad, you should get to the airport 2 hours before -------------------- flight.",
+   "options": [
+    "domestic",
+    "local",
+    "popular",
+    "international"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 184,
+   "bank": "vocab-360",
+   "id": "g10-642"
+  },
+  {
+   "num": 141,
+   "category": "vocab",
+   "stem": "Please speak more -------------------- so that everybody can hear you.",
+   "options": [
+    "loudly",
+    "quietly",
+    "bravely",
+    "politely"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 184,
+   "bank": "vocab-360",
+   "id": "g10-643"
+  },
+  {
+   "num": 142,
+   "category": "vocab",
+   "stem": "Everybody knows my brother. Actually he’s --------------------.",
+   "options": [
+    "interested",
+    "possible",
+    "natural",
+    "famous"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 184,
+   "bank": "vocab-360",
+   "id": "g10-644"
+  },
+  {
+   "num": 143,
+   "category": "vocab",
+   "stem": "Each year, many people from all parts of the world visit Iran’s --------------------.",
+   "options": [
+    "information",
+    "attractions",
+    "language",
+    "vacation"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 184,
+   "bank": "vocab-360",
+   "id": "g10-645"
+  },
+  {
+   "num": 144,
+   "category": "vocab",
+   "stem": "London's airports -------------------- one hundred thousand domestic flights a year.",
+   "options": [
+    "save",
+    "plan",
+    "attract",
+    "attend"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 184,
+   "bank": "vocab-360",
+   "id": "g10-646"
+  },
+  {
+   "num": 145,
+   "category": "vocab",
+   "stem": "Blood is a -------------------- gift from Allah. It’s really amazing.",
+   "options": [
+    "wonderful",
+    "healthy",
+    "famous",
+    "powerful"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 184,
+   "bank": "vocab-360",
+   "id": "g10-647"
+  },
+  {
+   "num": 146,
+   "category": "vocab",
+   "stem": "Many Muslims from other parts of the world travel to Iran and go to holy -------------------- in Mashhad.",
+   "options": [
+    "shrines",
+    "cultures",
+    "behavior",
+    "suggestion"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 184,
+   "bank": "vocab-360",
+   "id": "g10-648"
+  },
+  {
+   "num": 147,
+   "category": "vocab",
+   "stem": "We can thank Allah by -------------------- our body healthy.",
+   "options": [
+    "collecting",
+    "carrying",
+    "keeping",
+    "defending"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 184,
+   "bank": "vocab-360",
+   "id": "g10-649"
+  },
+  {
+   "num": 148,
+   "category": "vocab",
+   "stem": "They had a car accident, but they are alive. “alive” is an opposite of --------------------.",
+   "options": [
+    "safe",
+    "wild",
+    "dead",
+    "hurtful"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 185,
+   "bank": "vocab-360",
+   "id": "g10-650"
+  },
+  {
+   "num": 149,
+   "category": "vocab",
+   "stem": "There isn’t much -------------------- for young people in this town- just the cinema and a park.",
+   "options": [
+    "experiment",
+    "suggestion",
+    "entertainment",
+    "interest"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 185,
+   "bank": "vocab-360",
+   "id": "g10-651"
+  },
+  {
+   "num": 150,
+   "category": "vocab",
+   "stem": "This homework can develop your writing --------------------.",
+   "options": [
+    "key",
+    "end",
+    "shelf",
+    "skill"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 185,
+   "bank": "vocab-360",
+   "id": "g10-652"
+  },
+  {
+   "num": 151,
+   "category": "vocab",
+   "stem": "Some scientists tried hard while they were working on --------------------.",
+   "options": [
+    "answers",
+    "problems",
+    "skills",
+    "pains"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 185,
+   "bank": "vocab-360",
+   "id": "g10-653"
+  },
+  {
+   "num": 152,
+   "category": "vocab",
+   "stem": "When we have different idea, we should -------------------- their opinions without any problem.",
+   "options": [
+    "attract",
+    "respect",
+    "locate",
+    "spend"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 185,
+   "bank": "vocab-360",
+   "id": "g10-654"
+  },
+  {
+   "num": 153,
+   "category": "vocab",
+   "stem": "I don’t remember --------------------, but I think it was last Friday.",
+   "options": [
+    "exactly",
+    "quietly",
+    "suitably",
+    "neatly"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 185,
+   "bank": "vocab-360",
+   "id": "g10-655"
+  },
+  {
+   "num": 154,
+   "category": "vocab",
+   "stem": "We can -------------------- Allah by saving the nature and wildlife.",
+   "options": [
+    "keep",
+    "thank",
+    "seem",
+    "defend"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 185,
+   "bank": "vocab-360",
+   "id": "g10-656"
+  },
+  {
+   "num": 155,
+   "category": "vocab",
+   "stem": "Some people destroy beautiful jungles in our country. “jungle” means --------------------.",
+   "options": [
+    "lake",
+    "earth",
+    "forest",
+    "plain"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 185,
+   "bank": "vocab-360",
+   "id": "g10-657"
+  },
+  {
+   "num": 156,
+   "category": "vocab",
+   "stem": "She’s interested in medicine. She wants to work in a hospital and helps --------------------.",
+   "options": [
+    "writers",
+    "builders",
+    "patients",
+    "beliefs"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 185,
+   "bank": "vocab-360",
+   "id": "g10-658"
+  },
+  {
+   "num": 157,
+   "category": "vocab",
+   "stem": "Why don’t you pay attention to me? “attention” is a synonym for --------------------.",
+   "options": [
+    "safe",
+    "care",
+    "injury",
+    "harm"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 185,
+   "bank": "vocab-360",
+   "id": "g10-659"
+  },
+  {
+   "num": 158,
+   "category": "vocab",
+   "stem": "The translator was great and wonderful. He could speak five --------------------.",
+   "options": [
+    "cultures",
+    "languages",
+    "ceremonies",
+    "behavior"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 185,
+   "bank": "vocab-360",
+   "id": "g10-660"
+  },
+  {
+   "num": 159,
+   "category": "vocab",
+   "stem": "Children must not eat -------------------- food. It’s not good for their health.",
+   "options": [
+    "wide",
+    "safe",
+    "neat",
+    "junk"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 185,
+   "bank": "vocab-360",
+   "id": "g10-661"
+  },
+  {
+   "num": 160,
+   "category": "vocab",
+   "stem": "They returned the African elephants to their -------------------- home.",
+   "options": [
+    "amazing",
+    "natural",
+    "endangered",
+    "easy"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 185,
+   "bank": "vocab-360",
+   "id": "g10-662"
+  },
+  {
+   "num": 161,
+   "category": "vocab",
+   "stem": "Camels are -------------------- they do not drink water all day long.",
+   "options": [
+    "neat",
+    "fresh",
+    "medium",
+    "fantastic"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 185,
+   "bank": "vocab-360",
+   "id": "g10-663"
+  },
+  {
+   "num": 162,
+   "category": "vocab",
+   "stem": "Do you know the -------------------- of knowledge? It develops our lives.",
+   "options": [
+    "light",
+    "cradle",
+    "value",
+    "pain"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 185,
+   "bank": "vocab-360",
+   "id": "g10-664"
+  },
+  {
+   "num": 163,
+   "category": "vocab",
+   "stem": "Tom didn’t see any -------------------- faces at the party. He didn’t know anybody.",
+   "options": [
+    "hospitable",
+    "similar",
+    "familiar",
+    "attractive"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 185,
+   "bank": "vocab-360",
+   "id": "g10-665"
+  },
+  {
+   "num": 164,
+   "category": "vocab",
+   "stem": "I have an information -------------------- that can help me to know about different countries.",
+   "options": [
+    "activity",
+    "embassy",
+    "booklet",
+    "departure"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 185,
+   "bank": "vocab-360",
+   "id": "g10-666"
+  },
+  {
+   "num": 165,
+   "category": "vocab",
+   "stem": "There are a few trees in our garden. “a few” is an opposite of --------------------.",
+   "options": [
+    "around",
+    "instead",
+    "near",
+    "many"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 185,
+   "bank": "vocab-360",
+   "id": "g10-667"
+  },
+  {
+   "num": 166,
+   "category": "vocab",
+   "stem": "Planets and stars are different from each other. They aren’t so much --------------------.",
+   "options": [
+    "rocky",
+    "near",
+    "alike",
+    "alive"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 185,
+   "bank": "vocab-360",
+   "id": "g10-668"
+  },
+  {
+   "num": 167,
+   "category": "vocab",
+   "stem": "It’s important to -------------------- science to students at schools.",
+   "options": [
+    "recite",
+    "teach",
+    "rest",
+    "quit"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 185,
+   "bank": "vocab-360",
+   "id": "g10-669"
+  },
+  {
+   "num": 168,
+   "category": "vocab",
+   "stem": "Cats and dogs are domestic animals. “domestic” is an opposite of --------------------.",
+   "options": [
+    "dead",
+    "safe",
+    "hurtful",
+    "wild"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 185,
+   "bank": "vocab-360",
+   "id": "g10-670"
+  },
+  {
+   "num": 169,
+   "category": "vocab",
+   "stem": "You can see our website or -------------------- this booklet to get more information.",
+   "options": [
+    "locate",
+    "attract",
+    "spend",
+    "check"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 186,
+   "bank": "vocab-360",
+   "id": "g10-671"
+  },
+  {
+   "num": 170,
+   "category": "vocab",
+   "stem": "Our holy prophet (PBUH) said, “ -------------------- knowledge from cradle to the grave.”",
+   "options": [
+    "attend",
+    "quit",
+    "seek",
+    "solve"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 186,
+   "bank": "vocab-360",
+   "id": "g10-672"
+  },
+  {
+   "num": 171,
+   "category": "vocab",
+   "stem": "One of the smallest -------------------- of our body is the cell.",
+   "options": [
+    "parts",
+    "orbits",
+    "facts",
+    "types"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 186,
+   "bank": "vocab-360",
+   "id": "g10-673"
+  },
+  {
+   "num": 172,
+   "category": "vocab",
+   "stem": "Some -------------------- do not pay attention to the wild life. They hunt all the animals.",
+   "options": [
+    "trips",
+    "programs",
+    "advice",
+    "hunters"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 186,
+   "bank": "vocab-360",
+   "id": "g10-674"
+  },
+  {
+   "num": 173,
+   "category": "vocab",
+   "stem": "The best way to learn a -------------------- language is to live in a country where it is spoken.",
+   "options": [
+    "domestic",
+    "foreign",
+    "popular",
+    "successful"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 186,
+   "bank": "vocab-360",
+   "id": "g10-675"
+  },
+  {
+   "num": 174,
+   "category": "vocab",
+   "stem": "Tell me --------------------, Kate, what do you think of John?",
+   "options": [
+    "suitably",
+    "probably",
+    "honestly",
+    "suitably"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 186,
+   "bank": "vocab-360",
+   "id": "g10-676"
+  },
+  {
+   "num": 175,
+   "category": "vocab",
+   "stem": "My father is a good person. He never -------------------- the animals in the jungle.",
+   "options": [
+    "hunts",
+    "cuts",
+    "hopes",
+    "protects"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 186,
+   "bank": "vocab-360",
+   "id": "g10-677"
+  },
+  {
+   "num": 176,
+   "category": "vocab",
+   "stem": "It’s -------------------- that our body is one of the wonders of creation.",
+   "options": [
+    "clever",
+    "clear",
+    "alive",
+    "alike"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 186,
+   "bank": "vocab-360",
+   "id": "g10-678"
+  },
+  {
+   "num": 177,
+   "category": "vocab",
+   "stem": "A: “Is your little brother taller than last year?” B: “Yes, children -------------------- rapidly.”",
+   "options": [
+    "put aside",
+    "grow up",
+    "look for",
+    "look like"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 186,
+   "bank": "vocab-360",
+   "id": "g10-679"
+  },
+  {
+   "num": 178,
+   "category": "vocab",
+   "stem": "Can camels travel -------------------- hot and dry deserts with little food and water?",
+   "options": [
+    "against",
+    "during",
+    "across",
+    "without"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 186,
+   "bank": "vocab-360",
+   "id": "g10-680"
+  },
+  {
+   "num": 179,
+   "category": "vocab",
+   "stem": "Did you know that most of the world's -------------------- countries are in Africa?",
+   "options": [
+    "ugliest",
+    "deepest",
+    "poorest",
+    "farthest"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 186,
+   "bank": "vocab-360",
+   "id": "g10-681"
+  },
+  {
+   "num": 180,
+   "category": "vocab",
+   "stem": "A: “Would you like to have dinner with us?’ B: “I can’t. --------------------, I have to study tonight.”",
+   "options": [
+    "especially",
+    "unfortunately",
+    "easily",
+    "luckily"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 186,
+   "bank": "vocab-360",
+   "id": "g10-682"
+  },
+  {
+   "num": 181,
+   "category": "vocab",
+   "stem": "“Raman” decided to -------------------- city life and live in a small village.",
+   "options": [
+    "grow up",
+    "give up",
+    "protect",
+    "increase"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 186,
+   "bank": "vocab-360",
+   "id": "g10-683"
+  },
+  {
+   "num": 182,
+   "category": "vocab",
+   "stem": "She suddenly -------------------- that her keys were in her other bag.",
+   "options": [
+    "attended",
+    "observed",
+    "remembered",
+    "behaved"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 186,
+   "bank": "vocab-360",
+   "id": "g10-684"
+  },
+  {
+   "num": 183,
+   "category": "vocab",
+   "stem": "You know that -------------------- tourists travel to different parts of their own country.",
+   "options": [
+    "international",
+    "historical",
+    "familiar",
+    "domestic"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 186,
+   "bank": "vocab-360",
+   "id": "g10-685"
+  },
+  {
+   "num": 184,
+   "category": "vocab",
+   "stem": "What do you -------------------- when you say everything is possible?",
+   "options": [
+    "destroy",
+    "hurt",
+    "cut",
+    "mean"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 186,
+   "bank": "vocab-360",
+   "id": "g10-686"
+  },
+  {
+   "num": 185,
+   "category": "vocab",
+   "stem": "You can take pictures with this camera easily and fast because it’s really --------------------.",
+   "options": [
+    "absent",
+    "energetic",
+    "successful",
+    "modern"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 186,
+   "bank": "vocab-360",
+   "id": "g10-687"
+  },
+  {
+   "num": 186,
+   "category": "vocab",
+   "stem": "Planets are really amazing but not so much --------------------. They are different.",
+   "options": [
+    "nearer",
+    "alike",
+    "useful",
+    "rocky"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 186,
+   "bank": "vocab-360",
+   "id": "g10-688"
+  },
+  {
+   "num": 187,
+   "category": "vocab",
+   "stem": "The villagers were very kind and -------------------- to anyone who visited their village.",
+   "options": [
+    "traditional",
+    "hospitable",
+    "domestic",
+    "historical"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 186,
+   "bank": "vocab-360",
+   "id": "g10-689"
+  },
+  {
+   "num": 188,
+   "category": "vocab",
+   "stem": "One of the smallest -------------------- of our body is the cell. There are millions of them in our body.",
+   "options": [
+    "liquid",
+    "parts",
+    "facts",
+    "signs"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 186,
+   "bank": "vocab-360",
+   "id": "g10-690"
+  },
+  {
+   "num": 189,
+   "category": "vocab",
+   "stem": "“Oromia” -------------------- is in the north west of Iran and is the biggest one inside our country.",
+   "options": [
+    "plain",
+    "jungle",
+    "lake",
+    "trip"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 186,
+   "bank": "vocab-360",
+   "id": "g10-691"
+  },
+  {
+   "num": 190,
+   "category": "vocab",
+   "stem": "Living abroad is the best way to learn a foreign --------------------.",
+   "options": [
+    "embassy",
+    "flight",
+    "language",
+    "suggestion"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 187,
+   "bank": "vocab-360",
+   "id": "g10-692"
+  },
+  {
+   "num": 191,
+   "category": "vocab",
+   "stem": "He never -------------------- his interest for making new things. Finally, he became a great inventor.",
+   "options": [
+    "developed",
+    "published",
+    "grew",
+    "lost"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 187,
+   "bank": "vocab-360",
+   "id": "g10-693"
+  },
+  {
+   "num": 192,
+   "category": "vocab",
+   "stem": "The waiter was too rude. He didn’t speak --------------------.",
+   "options": [
+    "rudely",
+    "loudly",
+    "comfortably",
+    "nicely"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 187,
+   "bank": "vocab-360",
+   "id": "g10-694"
+  },
+  {
+   "num": 193,
+   "category": "vocab",
+   "stem": "His shoe was very dirty. There were some -------------------- of blood on it.",
+   "options": [
+    "rings",
+    "drops",
+    "systems",
+    "rocks"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 187,
+   "bank": "vocab-360",
+   "id": "g10-695"
+  },
+  {
+   "num": 194,
+   "category": "vocab",
+   "stem": "If you do exercise, you will be healthy and --------------------.",
+   "options": [
+    "interesting",
+    "useful",
+    "strong",
+    "true"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 187,
+   "bank": "vocab-360",
+   "id": "g10-696"
+  },
+  {
+   "num": 195,
+   "category": "vocab",
+   "stem": "My older brother was angry, but he sat down and listened to me --------------------.",
+   "options": [
+    "angrily",
+    "bravely",
+    "patiently",
+    "rudely"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 187,
+   "bank": "vocab-360",
+   "id": "g10-697"
+  },
+  {
+   "num": 196,
+   "category": "vocab",
+   "stem": "She was famous for doing thousands of experiments to find -------------------- to problems.",
+   "options": [
+    "answers",
+    "cradles",
+    "values",
+    "novels"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 187,
+   "bank": "vocab-360",
+   "id": "g10-698"
+  },
+  {
+   "num": 197,
+   "category": "vocab",
+   "stem": "Vegetable sandwiches are easy to --------------------, so they are useful for short trips.",
+   "options": [
+    "spend",
+    "prepare",
+    "attract",
+    "locate"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 187,
+   "bank": "vocab-360",
+   "id": "g10-699"
+  },
+  {
+   "num": 198,
+   "category": "vocab",
+   "stem": "When you go on a long trip, there is a / an -------------------- of illnesses, so take care of yourself.",
+   "options": [
+    "plan",
+    "risk",
+    "host",
+    "image"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 187,
+   "bank": "vocab-360",
+   "id": "g10-700"
+  },
+  {
+   "num": 199,
+   "category": "vocab",
+   "stem": "My five-year-old daughter always goes to kindergarten happily and is full of --------------------.",
+   "options": [
+    "oxygen",
+    "fact",
+    "sign",
+    "energy"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 187,
+   "bank": "vocab-360",
+   "id": "g10-701"
+  },
+  {
+   "num": 200,
+   "category": "vocab",
+   "stem": "The Russian soldiers -------------------- the country against foreign enemies many times.",
+   "options": [
+    "attacked",
+    "defended",
+    "fought",
+    "taught"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 187,
+   "bank": "vocab-360",
+   "id": "g10-702"
+  },
+  {
+   "num": 201,
+   "category": "vocab",
+   "stem": "I always run all the way home, so my heart is -------------------- fast.",
+   "options": [
+    "orbiting",
+    "carrying",
+    "pumping",
+    "doing"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 187,
+   "bank": "vocab-360",
+   "id": "g10-703"
+  },
+  {
+   "num": 202,
+   "category": "vocab",
+   "stem": "She didn’t sleep last night, so no -------------------- she's tired.",
+   "options": [
+    "wonder",
+    "power",
+    "sign",
+    "fact"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 187,
+   "bank": "vocab-360",
+   "id": "g10-704"
+  },
+  {
+   "num": 203,
+   "category": "vocab",
+   "stem": "Do you think a computer will ever be as powerful as your --------------------?",
+   "options": [
+    "organ",
+    "heart",
+    "nation",
+    "brain"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 187,
+   "bank": "vocab-360",
+   "id": "g10-705"
+  },
+  {
+   "num": 204,
+   "category": "vocab",
+   "stem": "It’s -------------------- for you to cross the street when the light is red.",
+   "options": [
+    "powerful",
+    "useful",
+    "rocky",
+    "dangerous"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 187,
+   "bank": "vocab-360",
+   "id": "g10-706"
+  },
+  {
+   "num": 205,
+   "category": "vocab",
+   "stem": "It’s -------------------- that the system of our body is among the wonders of creation.",
+   "options": [
+    "alike",
+    "alive",
+    "clever",
+    "clear"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 187,
+   "bank": "vocab-360",
+   "id": "g10-707"
+  },
+  {
+   "num": 206,
+   "category": "vocab",
+   "stem": "When you go to the nature on your holiday, don’t forget to -------------------- the fire.",
+   "options": [
+    "fill out",
+    "take care",
+    "put out",
+    "pay attention"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 187,
+   "bank": "vocab-360",
+   "id": "g10-708"
+  },
+  {
+   "num": 207,
+   "category": "vocab",
+   "stem": "The -------------------- to scientists’ success is their hard work.",
+   "options": [
+    "gain",
+    "pain",
+    "end",
+    "key"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 187,
+   "bank": "vocab-360",
+   "id": "g10-709"
+  },
+  {
+   "num": 208,
+   "category": "vocab",
+   "stem": "My father thinks that Spain is a very popular -------------------- for traveling in summer.",
+   "options": [
+    "attraction",
+    "pyramid",
+    "entertainment",
+    "destination"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 187,
+   "bank": "vocab-360",
+   "id": "g10-710"
+  },
+  {
+   "num": 209,
+   "category": "vocab",
+   "stem": "The policeman answered the tourists politely and --------------------.",
+   "options": [
+    "patiently",
+    "probably",
+    "rudely",
+    "hungrily"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 187,
+   "bank": "vocab-360",
+   "id": "g10-711"
+  },
+  {
+   "num": 210,
+   "category": "vocab",
+   "stem": "He’s going to stay at least three weeks, -------------------- longer.",
+   "options": [
+    "possibly",
+    "safely",
+    "quietly",
+    "neatly"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 187,
+   "bank": "vocab-360",
+   "id": "g10-712"
+  },
+  {
+   "num": 211,
+   "category": "vocab",
+   "stem": "Doctors helped people with penicillin while the flu was --------------------.",
+   "options": [
+    "putting aside",
+    "getting around",
+    "going out",
+    "filling out"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 188,
+   "bank": "vocab-360",
+   "id": "g10-713"
+  },
+  {
+   "num": 212,
+   "category": "vocab",
+   "stem": "You should go to the -------------------- of a foreign country to get visa.",
+   "options": [
+    "agency",
+    "embassy",
+    "booklet",
+    "sites"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 188,
+   "bank": "vocab-360",
+   "id": "g10-714"
+  },
+  {
+   "num": 213,
+   "category": "vocab",
+   "stem": "It’s not health to eat junk food during your trip. You should -------------------- your meals yourself.",
+   "options": [
+    "spend",
+    "locate",
+    "attract",
+    "prepare"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 188,
+   "bank": "vocab-360",
+   "id": "g10-715"
+  },
+  {
+   "num": 214,
+   "category": "vocab",
+   "stem": "My brother -------------------- his foot while he was playing football.",
+   "options": [
+    "saved",
+    "hurt",
+    "protected",
+    "heard"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 188,
+   "bank": "vocab-360",
+   "id": "g10-716"
+  },
+  {
+   "num": 215,
+   "category": "vocab",
+   "stem": "The cells of our body can get oxygen by every -------------------- of the heart.",
+   "options": [
+    "pump",
+    "orbit",
+    "ring",
+    "wonder"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 188,
+   "bank": "vocab-360",
+   "id": "g10-717"
+  },
+  {
+   "num": 216,
+   "category": "vocab",
+   "stem": "Because of a serious illness, he can’t -------------------- his body as most people can.",
+   "options": [
+    "carry",
+    "collect",
+    "move",
+    "grow"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 188,
+   "bank": "vocab-360",
+   "id": "g10-718"
+  },
+  {
+   "num": 217,
+   "category": "vocab",
+   "stem": "It’s really important to read and to -------------------- the holy Quran during childhood.",
+   "options": [
+    "publish",
+    "recite",
+    "attend",
+    "cheer"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 188,
+   "bank": "vocab-360",
+   "id": "g10-719"
+  },
+  {
+   "num": 218,
+   "category": "vocab",
+   "stem": "At this time of the year, most animals are -------------------- for winter.",
+   "options": [
+    "spending",
+    "preparing",
+    "checking",
+    "solving"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 188,
+   "bank": "vocab-360",
+   "id": "g10-720"
+  },
+  {
+   "num": 219,
+   "category": "vocab",
+   "stem": "Firemen always -------------------- endangered people from danger.",
+   "options": [
+    "put out",
+    "increase",
+    "hurt",
+    "save"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 188,
+   "bank": "vocab-360",
+   "id": "g10-721"
+  },
+  {
+   "num": 220,
+   "category": "vocab",
+   "stem": "My mother knows French. She’s going to -------------------- the holy Quran into French.",
+   "options": [
+    "feel",
+    "solve",
+    "translate",
+    "attend"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 188,
+   "bank": "vocab-360",
+   "id": "g10-722"
+  },
+  {
+   "num": 221,
+   "category": "vocab",
+   "stem": "It’s important to became -------------------- with your destination before your trip.",
+   "options": [
+    "familiar",
+    "popular",
+    "attractive",
+    "similar"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 188,
+   "bank": "vocab-360",
+   "id": "g10-723"
+  },
+  {
+   "num": 222,
+   "category": "vocab",
+   "stem": "I participate in an online course to learn about -------------------- the nature.",
+   "options": [
+    "hurting",
+    "saving",
+    "increasing",
+    "hunting"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 188,
+   "bank": "vocab-360",
+   "id": "g10-724"
+  },
+  {
+   "num": 223,
+   "category": "vocab",
+   "stem": "They have carpets in wide range of colors in their store, so it’s difficult to make a --------------------.",
+   "options": [
+    "suggestion",
+    "choice",
+    "tour",
+    "price"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 188,
+   "bank": "vocab-360",
+   "id": "g10-725"
+  },
+  {
+   "num": 224,
+   "category": "vocab",
+   "stem": "She -------------------- her first book when she was a young student.",
+   "options": [
+    "solved",
+    "quitted",
+    "believed",
+    "published"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 188,
+   "bank": "vocab-360",
+   "id": "g10-726"
+  },
+  {
+   "num": 225,
+   "category": "vocab",
+   "stem": "She always eat healthy food. She -------------------- strong.",
+   "options": [
+    "defends",
+    "seems",
+    "carries",
+    "moves"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 188,
+   "bank": "vocab-360",
+   "id": "g10-727"
+  },
+  {
+   "num": 226,
+   "category": "vocab",
+   "stem": "You should know your destination before your trip by reading travel --------------------.",
+   "options": [
+    "prices",
+    "hosts",
+    "booklets",
+    "paradises"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 188,
+   "bank": "vocab-360",
+   "id": "g10-728"
+  },
+  {
+   "num": 227,
+   "category": "vocab",
+   "stem": "I don’t know all the about your sister. Is it true that she is a famous person?",
+   "options": [
+    "rings",
+    "creations",
+    "facts",
+    "types"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 188,
+   "bank": "vocab-360",
+   "id": "g10-729"
+  },
+  {
+   "num": 228,
+   "category": "vocab",
+   "stem": "She’s an excellent teacher and I have the greatest -------------------- for her.",
+   "options": [
+    "plan",
+    "behavior",
+    "respect",
+    "suggestion"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 188,
+   "bank": "vocab-360",
+   "id": "g10-730"
+  },
+  {
+   "num": 229,
+   "category": "vocab",
+   "stem": "If you want to succeed, you have to take a lot of --------------------.",
+   "options": [
+    "risks",
+    "behaviors",
+    "respects",
+    "prices"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 188,
+   "bank": "vocab-360",
+   "id": "g10-731"
+  },
+  {
+   "num": 230,
+   "category": "vocab",
+   "stem": "We must not break any rules in a foreign country. If we want to have a good and -------------------- trip.",
+   "options": [
+    "holy",
+    "ready",
+    "safe",
+    "polite"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 188,
+   "bank": "vocab-360",
+   "id": "g10-732"
+  },
+  {
+   "num": 231,
+   "category": "vocab",
+   "stem": "I do a research about how to -------------------- animals from danger.",
+   "options": [
+    "protect",
+    "hurt",
+    "hunt",
+    "increase"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 188,
+   "bank": "vocab-360",
+   "id": "g10-733"
+  },
+  {
+   "num": 232,
+   "category": "vocab",
+   "stem": "One of the most interesting -------------------- about our body is blood.",
+   "options": [
+    "orbits",
+    "wonders",
+    "rings",
+    "types"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 189,
+   "bank": "vocab-360",
+   "id": "g10-734"
+  },
+  {
+   "num": 233,
+   "category": "vocab",
+   "stem": "We opened an account to -------------------- money to help injured animals.",
+   "options": [
+    "mean",
+    "destroy",
+    "attend",
+    "save"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 189,
+   "bank": "vocab-360",
+   "id": "g10-735"
+  },
+  {
+   "num": 234,
+   "category": "vocab",
+   "stem": "I really like math. I can -------------------- math problems fast.",
+   "options": [
+    "develop",
+    "solve",
+    "grow",
+    "quit"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 189,
+   "bank": "vocab-360",
+   "id": "g10-736"
+  },
+  {
+   "num": 235,
+   "category": "vocab",
+   "stem": "My father is a good firefighter. He -------------------- the fire fast and helps the people.",
+   "options": [
+    "pays attention",
+    "puts out",
+    "destroys",
+    "protects"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 189,
+   "bank": "vocab-360",
+   "id": "g10-737"
+  },
+  {
+   "num": 236,
+   "category": "vocab",
+   "stem": "Firefighters always work quickly. The opposite of “quickly” is --------------------.",
+   "options": [
+    "rapidly",
+    "easily",
+    "slowly",
+    "sadly"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 0,
+   "page": 189,
+   "bank": "vocab-360",
+   "id": "g10-738"
+  },
+  {
+   "num": 237,
+   "category": "vocab",
+   "stem": "It’s important to -------------------- nature and people and everything during our trip.",
+   "options": [
+    "spend",
+    "respect",
+    "locate",
+    "prepare"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 189,
+   "bank": "vocab-360",
+   "id": "g10-739"
+  },
+  {
+   "num": 238,
+   "category": "vocab",
+   "stem": "The firefighters always -------------------- of their car fast.",
+   "options": [
+    "fill out",
+    "put aside",
+    "put out",
+    "jump out"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 189,
+   "bank": "vocab-360",
+   "id": "g10-740"
+  },
+  {
+   "num": 239,
+   "category": "vocab",
+   "stem": "Doctors say suitable and useful foods -------------------- us healthy and alive.",
+   "options": [
+    "collect",
+    "carry",
+    "seem",
+    "keep"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 189,
+   "bank": "vocab-360",
+   "id": "g10-741"
+  },
+  {
+   "num": 240,
+   "category": "vocab",
+   "stem": "You’re breaking the -------------------- if you touch the ball with your hands.",
+   "options": [
+    "prices",
+    "skills",
+    "shelfs",
+    "rule"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 189,
+   "bank": "vocab-360",
+   "id": "g10-742"
+  },
+  {
+   "num": 241,
+   "category": "vocab",
+   "stem": "A: “In which -------------------- can we visit the ancient pyramids?” B: “I think Africa.”",
+   "options": [
+    "suggestion",
+    "entertainment",
+    "continent",
+    "country"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 189,
+   "bank": "vocab-360",
+   "id": "g10-743"
+  },
+  {
+   "num": 242,
+   "category": "vocab",
+   "stem": "A: “What’s your advice about the nature?” B: “Never -------------------- wildlife.”",
+   "options": [
+    "protect",
+    "put out",
+    "hunt",
+    "destroy"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 189,
+   "bank": "vocab-360",
+   "id": "g10-744"
+  },
+  {
+   "num": 243,
+   "category": "vocab",
+   "stem": "Red blood cells -------------------- carbon dioxide from body parts.",
+   "options": [
+    "carry",
+    "collect",
+    "defend",
+    "keep"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 189,
+   "bank": "vocab-360",
+   "id": "g10-745"
+  },
+  {
+   "num": 244,
+   "category": "vocab",
+   "stem": "White cells in our blood defend our body -------------------- microbes.",
+   "options": [
+    "like",
+    "without",
+    "around",
+    "against"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 189,
+   "bank": "vocab-360",
+   "id": "g10-746"
+  },
+  {
+   "num": 245,
+   "category": "vocab",
+   "stem": "If you don’t have an accident on the snowy roads, you should be able to return --------------------.",
+   "options": [
+    "loudly",
+    "bravely",
+    "safely",
+    "neatly"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 189,
+   "bank": "vocab-360",
+   "id": "g10-747"
+  },
+  {
+   "num": 246,
+   "category": "vocab",
+   "stem": "His family had a terrible accident, all of them are --------------------.",
+   "options": [
+    "natural",
+    "special",
+    "injured",
+    "domestic"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 189,
+   "bank": "vocab-360",
+   "id": "g10-748"
+  },
+  {
+   "num": 247,
+   "category": "vocab",
+   "stem": "Yesterday a careless driver -------------------- me and hurt my hand.",
+   "options": [
+    "put",
+    "hit",
+    "lost",
+    "grew"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 189,
+   "bank": "vocab-360",
+   "id": "g10-749"
+  },
+  {
+   "num": 248,
+   "category": "vocab",
+   "stem": "You should make a / an -------------------- between your family and your job.",
+   "options": [
+    "choice",
+    "trip",
+    "vacation",
+    "pyramid"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 189,
+   "bank": "vocab-360",
+   "id": "g10-750"
+  },
+  {
+   "num": 249,
+   "category": "vocab",
+   "stem": "I work in a company that -------------------- children's books.",
+   "options": [
+    "publishes",
+    "believes",
+    "observes",
+    "behaves"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 189,
+   "bank": "vocab-360",
+   "id": "g10-751"
+  },
+  {
+   "num": 250,
+   "category": "vocab",
+   "stem": "My older brother wants to go to -------------------- to study medicine when he finishes high school.",
+   "options": [
+    "laboratory",
+    "university",
+    "drugstore",
+    "hospital"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 189,
+   "bank": "vocab-360",
+   "id": "g10-752"
+  },
+  {
+   "num": 251,
+   "category": "vocab",
+   "stem": "--------------------, fire destroyed most of their house in 1928.",
+   "options": [
+    "Fortunately",
+    "Especially",
+    "Sadly",
+    "Naturally"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 189,
+   "bank": "vocab-360",
+   "id": "g10-753"
+  },
+  {
+   "num": 252,
+   "category": "vocab",
+   "stem": "The -------------------- of the French novel into Chinese took him more than three months.",
+   "options": [
+    "research",
+    "translation",
+    "knowledge",
+    "success"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 189,
+   "bank": "vocab-360",
+   "id": "g10-754"
+  },
+  {
+   "num": 253,
+   "category": "vocab",
+   "stem": "My friend is very upset because her father -------------------- in a car accident last week.",
+   "options": [
+    "forgot",
+    "attended",
+    "passed away",
+    "put aside"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 190,
+   "bank": "vocab-360",
+   "id": "g10-755"
+  },
+  {
+   "num": 254,
+   "category": "vocab",
+   "stem": "The earth is -------------------- to an orange in shape.",
+   "options": [
+    "familiar",
+    "attractive",
+    "similar",
+    "actual"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 190,
+   "bank": "vocab-360",
+   "id": "g10-756"
+  },
+  {
+   "num": 255,
+   "category": "vocab",
+   "stem": "He never lost his interest for making new things. Finally, he became a great --------------------.",
+   "options": [
+    "translate",
+    "inventor",
+    "experiment",
+    "knowledge"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 190,
+   "bank": "vocab-360",
+   "id": "g10-757"
+  },
+  {
+   "num": 256,
+   "category": "vocab",
+   "stem": "“Is this film appropriate for small children?” The underlined word means --------------------.",
+   "options": [
+    "amazing",
+    "weak",
+    "suitable",
+    "successful"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 190,
+   "bank": "vocab-360",
+   "id": "g10-758"
+  },
+  {
+   "num": 257,
+   "category": "vocab",
+   "stem": "When I went to Egypt, I kept my ticket as a -------------------- of my trip.",
+   "options": [
+    "booklet",
+    "rule",
+    "souvenir",
+    "suggestion"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 190,
+   "bank": "vocab-360",
+   "id": "g10-759"
+  },
+  {
+   "num": 258,
+   "category": "vocab",
+   "stem": "Blood is an amazing -------------------- from Allah. We really thank Allah.",
+   "options": [
+    "drop",
+    "gift",
+    "cell",
+    "type"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 190,
+   "bank": "vocab-360",
+   "id": "g10-760"
+  },
+  {
+   "num": 259,
+   "category": "vocab",
+   "stem": "I love the animals and I always take care of the --------------------.",
+   "options": [
+    "humans",
+    "present",
+    "wildlife",
+    "plains"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 190,
+   "bank": "vocab-360",
+   "id": "g10-761"
+  },
+  {
+   "num": 260,
+   "category": "vocab",
+   "stem": "The key to scientists’ success is their -------------------- in themselves.",
+   "options": [
+    "research",
+    "experiment",
+    "belief",
+    "invention"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 190,
+   "bank": "vocab-360",
+   "id": "g10-762"
+  },
+  {
+   "num": 261,
+   "category": "vocab",
+   "stem": "I have a bad headache. I want to buy some --------------------.",
+   "options": [
+    "research",
+    "medicine",
+    "experiment",
+    "invention"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 190,
+   "bank": "vocab-360",
+   "id": "g10-763"
+  },
+  {
+   "num": 262,
+   "category": "vocab",
+   "stem": "We can -------------------- our body healthy by doing exercise.",
+   "options": [
+    "keep",
+    "collect",
+    "defend",
+    "seem"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 190,
+   "bank": "vocab-360",
+   "id": "g10-764"
+  },
+  {
+   "num": 263,
+   "category": "vocab",
+   "stem": "We can thank Allah by keeping our body --------------------.",
+   "options": [
+    "different",
+    "interesting",
+    "healthy",
+    "daily"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 190,
+   "bank": "vocab-360",
+   "id": "g10-765"
+  },
+  {
+   "num": 264,
+   "category": "vocab",
+   "stem": "We had an exam but we couldn’t -------------------- on time and failed it.",
+   "options": [
+    "arrive",
+    "value",
+    "feel",
+    "need"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 190,
+   "bank": "vocab-360",
+   "id": "g10-766"
+  },
+  {
+   "num": 265,
+   "category": "vocab",
+   "stem": "A: “What’s your favorite hobby?” B: “Going to the -------------------- and looking at the flowers.”",
+   "options": [
+    "future",
+    "earth",
+    "nature",
+    "spring"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 190,
+   "bank": "vocab-360",
+   "id": "g10-767"
+  },
+  {
+   "num": 266,
+   "category": "vocab",
+   "stem": "If anyone has a better --------------------, let's hear it.",
+   "options": [
+    "choice",
+    "culture",
+    "suggestion",
+    "image"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 190,
+   "bank": "vocab-360",
+   "id": "g10-768"
+  },
+  {
+   "num": 267,
+   "category": "vocab",
+   "stem": "She thought a lot about how to -------------------- this winter vacation.",
+   "options": [
+    "spend",
+    "wait",
+    "save",
+    "attract"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 190,
+   "bank": "vocab-360",
+   "id": "g10-769"
+  },
+  {
+   "num": 268,
+   "category": "vocab",
+   "stem": "Ancient places of Iran are -------------------- for the tourists.",
+   "options": [
+    "rapid",
+    "attractive",
+    "religious",
+    "kind"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 190,
+   "bank": "vocab-360",
+   "id": "g10-770"
+  },
+  {
+   "num": 269,
+   "category": "vocab",
+   "stem": "Tom usually eats -------------------- fruits and vegetables, and doesn’t eat meat.",
+   "options": [
+    "fresh",
+    "actual",
+    "familiar",
+    "local"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 190,
+   "bank": "vocab-360",
+   "id": "g10-771"
+  },
+  {
+   "num": 270,
+   "category": "vocab",
+   "stem": "I watched a film about the -------------------- of the blood stream.",
+   "options": [
+    "exercise",
+    "body",
+    "system",
+    "part"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 190,
+   "bank": "vocab-360",
+   "id": "g10-772"
+  },
+  {
+   "num": 271,
+   "category": "vocab",
+   "stem": "When you can’t do something the first time you should try --------------------.",
+   "options": [
+    "again",
+    "little",
+    "before",
+    "one time"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 190,
+   "bank": "vocab-360",
+   "id": "g10-773"
+  },
+  {
+   "num": 272,
+   "category": "vocab",
+   "stem": "My friend is really brave. She plays with -------------------- animals in the jungle.",
+   "options": [
+    "wild",
+    "domestic",
+    "helpful",
+    "important"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 190,
+   "bank": "vocab-360",
+   "id": "g10-774"
+  },
+  {
+   "num": 273,
+   "category": "vocab",
+   "stem": "Culture is the special belief and -------------------- of a group of people.",
+   "options": [
+    "behavior",
+    "journey",
+    "experiment",
+    "fun"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 190,
+   "bank": "vocab-360",
+   "id": "g10-775"
+  },
+  {
+   "num": 274,
+   "category": "vocab",
+   "stem": "My mother uses -------------------- vegetables for cooking so our dinner is always great.",
+   "options": [
+    "true",
+    "clear",
+    "medium",
+    "fresh"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 191,
+   "bank": "vocab-360",
+   "id": "g10-776"
+  },
+  {
+   "num": 275,
+   "category": "vocab",
+   "stem": "The students should wear -------------------- clothes for attending the classes.",
+   "options": [
+    "dirty",
+    "metal",
+    "appropriate",
+    "old"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 191,
+   "bank": "vocab-360",
+   "id": "g10-777"
+  },
+  {
+   "num": 276,
+   "category": "vocab",
+   "stem": "It was too late to save the sick woman, and she --------------------.",
+   "options": [
+    "attacked",
+    "died",
+    "worried",
+    "swam"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 191,
+   "bank": "vocab-360",
+   "id": "g10-778"
+  },
+  {
+   "num": 277,
+   "category": "vocab",
+   "stem": "I was -------------------- to show my bad marks in math to my parents.",
+   "options": [
+    "happy",
+    "ashamed",
+    "running",
+    "glad"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 191,
+   "bank": "vocab-360",
+   "id": "g10-779"
+  },
+  {
+   "num": 278,
+   "category": "vocab",
+   "stem": "She always -------------------- herself with the best students of the class.",
+   "options": [
+    "surf",
+    "respect",
+    "compare",
+    "invite"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 191,
+   "bank": "vocab-360",
+   "id": "g10-780"
+  },
+  {
+   "num": 279,
+   "category": "vocab",
+   "stem": "The French word “bonjour” -------------------- as “hello” in English.",
+   "options": [
+    "publishes",
+    "develops",
+    "translates",
+    "believes"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 191,
+   "bank": "vocab-360",
+   "id": "g10-781"
+  },
+  {
+   "num": 280,
+   "category": "vocab",
+   "stem": "What did people do for -------------------- at home before inventing TV?",
+   "options": [
+    "behavior",
+    "entertainment",
+    "culture",
+    "attraction"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 191,
+   "bank": "vocab-360",
+   "id": "g10-782"
+  },
+  {
+   "num": 281,
+   "category": "vocab",
+   "stem": "Some people do not -------------------- to the nature and they cut the trees in the jungles.",
+   "options": [
+    "pay attention",
+    "put out",
+    "die out",
+    "protect"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 191,
+   "bank": "vocab-360",
+   "id": "g10-783"
+  },
+  {
+   "num": 282,
+   "category": "vocab",
+   "stem": "Humans change some metals into -------------------- by making them hot.",
+   "options": [
+    "sign",
+    "liquid",
+    "fact",
+    "cell"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 191,
+   "bank": "vocab-360",
+   "id": "g10-784"
+  },
+  {
+   "num": 283,
+   "category": "vocab",
+   "stem": "If you water this plant too much, you will -------------------- it.",
+   "options": [
+    "kill",
+    "quit",
+    "create",
+    "hunt"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 191,
+   "bank": "vocab-360",
+   "id": "g10-785"
+  },
+  {
+   "num": 284,
+   "category": "vocab",
+   "stem": "A: “How are they -------------------- the jungles?” B: “By putting out the fire.”",
+   "options": [
+    "destroying",
+    "burning",
+    "saving",
+    "cutting"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 191,
+   "bank": "vocab-360",
+   "id": "g10-786"
+  },
+  {
+   "num": 285,
+   "category": "vocab",
+   "stem": "Our knowledge -------------------- by studying new books.",
+   "options": [
+    "develops",
+    "cleans",
+    "invents",
+    "drops"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 191,
+   "bank": "vocab-360",
+   "id": "g10-787"
+  },
+  {
+   "num": 286,
+   "category": "vocab",
+   "stem": "Children usually learn foreign languages very --------------------.",
+   "options": [
+    "suddenly",
+    "recently",
+    "finally",
+    "quickly"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 191,
+   "bank": "vocab-360",
+   "id": "g10-788"
+  },
+  {
+   "num": 287,
+   "category": "vocab",
+   "stem": "Telescopes and microscopes are every -------------------- machines for working on different creations.",
+   "options": [
+    "daily",
+    "true",
+    "useful",
+    "medium"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 191,
+   "bank": "vocab-360",
+   "id": "g10-789"
+  },
+  {
+   "num": 288,
+   "category": "vocab",
+   "stem": "Everybody should respect other people’s --------------------.",
+   "options": [
+    "site",
+    "pain",
+    "flight",
+    "culture"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 191,
+   "bank": "vocab-360",
+   "id": "g10-790"
+  },
+  {
+   "num": 289,
+   "category": "vocab",
+   "stem": "To get a visa, you should go to the Swedish --------------------.",
+   "options": [
+    "embassy",
+    "history",
+    "culture",
+    "museum"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 191,
+   "bank": "vocab-360",
+   "id": "g10-791"
+  },
+  {
+   "num": 290,
+   "category": "vocab",
+   "stem": "You can go to the -------------------- to see planets or stars.",
+   "options": [
+    "systems",
+    "wonders",
+    "villages",
+    "observatories"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 191,
+   "bank": "vocab-360",
+   "id": "g10-792"
+  },
+  {
+   "num": 291,
+   "category": "vocab",
+   "stem": "“How can you help -------------------- animals like Iranian cheetahs?”",
+   "options": [
+    "natural",
+    "favorite",
+    "terrible",
+    "endangered"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 191,
+   "bank": "vocab-360",
+   "id": "g10-793"
+  },
+  {
+   "num": 292,
+   "category": "vocab",
+   "stem": "The police -------------------- a man leaving the house this morning.",
+   "options": [
+    "attended",
+    "behaved",
+    "observed",
+    "developed"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 191,
+   "bank": "vocab-360",
+   "id": "g10-794"
+  },
+  {
+   "num": 293,
+   "category": "vocab",
+   "stem": "Schools here put -------------------- on listening and speaking.",
+   "options": [
+    "health",
+    "care",
+    "emphasis",
+    "medicine"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 191,
+   "bank": "vocab-360",
+   "id": "g10-795"
+  },
+  {
+   "num": 294,
+   "category": "vocab",
+   "stem": "Wonders of creation like our blood or our bones are -------------------- of God’s power.",
+   "options": [
+    "signs",
+    "rings",
+    "nature",
+    "rocks"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 191,
+   "bank": "vocab-360",
+   "id": "g10-796"
+  },
+  {
+   "num": 295,
+   "category": "vocab",
+   "stem": "A: “What’s your -------------------- for the future?” B: “I would like to be a good teacher.”",
+   "options": [
+    "safe",
+    "danger",
+    "wildlife",
+    "plan"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 192,
+   "bank": "vocab-360",
+   "id": "g10-797"
+  },
+  {
+   "num": 296,
+   "category": "vocab",
+   "stem": "My sister studied -------------------- at one of the best universities in the country. She is a famous doctor.",
+   "options": [
+    "translation",
+    "medicine",
+    "science",
+    "disease"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 192,
+   "bank": "vocab-360",
+   "id": "g10-798"
+  },
+  {
+   "num": 297,
+   "category": "vocab",
+   "stem": "They -------------------- all the employees before starting their job.",
+   "options": [
+    "interview",
+    "ask",
+    "answer",
+    "develop"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 192,
+   "bank": "vocab-360",
+   "id": "g10-799"
+  },
+  {
+   "num": 298,
+   "category": "vocab",
+   "stem": "He will easily find a job with his knowledge and -------------------- soon.",
+   "options": [
+    "beliefs",
+    "values",
+    "skills",
+    "facts"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 192,
+   "bank": "vocab-360",
+   "id": "g10-800"
+  },
+  {
+   "num": 299,
+   "category": "vocab",
+   "stem": "In summer, its -------------------- until about eight o’clock.",
+   "options": [
+    "power",
+    "light",
+    "deep",
+    "fresh"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 192,
+   "bank": "vocab-360",
+   "id": "g10-801"
+  },
+  {
+   "num": 300,
+   "category": "vocab",
+   "stem": "Everybody should be careful about his behavior in a -------------------- country.",
+   "options": [
+    "proper",
+    "wonderful",
+    "probable",
+    "foreign"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 192,
+   "bank": "vocab-360",
+   "id": "g10-802"
+  },
+  {
+   "num": 301,
+   "category": "vocab",
+   "stem": "Honey is a -------------------- and yellow liquid that is really useful for our health.",
+   "options": [
+    "medium",
+    "true",
+    "clear",
+    "alike"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 192,
+   "bank": "vocab-360",
+   "id": "g10-803"
+  },
+  {
+   "num": 302,
+   "category": "vocab",
+   "stem": "A: “How can you help the endangered animals? B: “By -------------------- their homes.”",
+   "options": [
+    "protecting",
+    "destroying",
+    "cutting",
+    "putting out"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 192,
+   "bank": "vocab-360",
+   "id": "g10-804"
+  },
+  {
+   "num": 303,
+   "category": "vocab",
+   "stem": "Doctors try to find new -------------------- to save the lives of the people.",
+   "options": [
+    "hospitals",
+    "places",
+    "tests",
+    "medicines"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 192,
+   "bank": "vocab-360",
+   "id": "g10-805"
+  },
+  {
+   "num": 304,
+   "category": "vocab",
+   "stem": "Her parents are really generous. The synonym of the underlined word means --------------------.",
+   "options": [
+    "mean",
+    "kind",
+    "hospitable",
+    "angry"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 192,
+   "bank": "vocab-360",
+   "id": "g10-806"
+  },
+  {
+   "num": 305,
+   "category": "vocab",
+   "stem": "A -------------------- is a person who does experiment to find answers to the problems.",
+   "options": [
+    "scientist",
+    "sportsman",
+    "driver",
+    "policeman"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 192,
+   "bank": "vocab-360",
+   "id": "g10-807"
+  },
+  {
+   "num": 306,
+   "category": "vocab",
+   "stem": "It’s so -------------------- that all the parts of our body are wonders of creation.",
+   "options": [
+    "alike",
+    "clear",
+    "alive",
+    "next"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 192,
+   "bank": "vocab-360",
+   "id": "g10-808"
+  },
+  {
+   "num": 307,
+   "category": "vocab",
+   "stem": "A: “Are they -------------------- animals?” B: “Yes, they are Iranian cheetahs.”",
+   "options": [
+    "injured",
+    "endangered",
+    "domestic",
+    "lost"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 192,
+   "bank": "vocab-360",
+   "id": "g10-809"
+  },
+  {
+   "num": 308,
+   "category": "vocab",
+   "stem": "I wanted to take my friend's -------------------- to take pictures of tom's new house.",
+   "options": [
+    "cradle",
+    "shelf",
+    "lens",
+    "camera"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 192,
+   "bank": "vocab-360",
+   "id": "g10-810"
+  },
+  {
+   "num": 309,
+   "category": "vocab",
+   "stem": "--------------------, the firefighters put out the fire before it became too serious.",
+   "options": [
+    "Especially",
+    "Fortunately",
+    "Patiently",
+    "Sadly"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 192,
+   "bank": "vocab-360",
+   "id": "g10-811"
+  },
+  {
+   "num": 310,
+   "category": "vocab",
+   "stem": "If you look at the sky at night, you can see -------------------- of stars easily.",
+   "options": [
+    "beliefs",
+    "science",
+    "values",
+    "thousands"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 192,
+   "bank": "vocab-360",
+   "id": "g10-812"
+  },
+  {
+   "num": 311,
+   "category": "vocab",
+   "stem": "Do not worry about winning or losing, think of what you will --------------------.",
+   "options": [
+    "quit",
+    "attend",
+    "gain",
+    "seek"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 192,
+   "bank": "vocab-360",
+   "id": "g10-813"
+  },
+  {
+   "num": 312,
+   "category": "vocab",
+   "stem": "My doctor told me to stay in bed -------------------- I feel better.",
+   "options": [
+    "against",
+    "like",
+    "during",
+    "until"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 192,
+   "bank": "vocab-360",
+   "id": "g10-814"
+  },
+  {
+   "num": 313,
+   "category": "vocab",
+   "stem": "Do you believe that computer is one of the most important -------------------- of the human?",
+   "options": [
+    "translation",
+    "invention",
+    "knowledge",
+    "research"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 192,
+   "bank": "vocab-360",
+   "id": "g10-815"
+  },
+  {
+   "num": 314,
+   "category": "vocab",
+   "stem": "We waited for him until two o’clock and --------------------, we went home.",
+   "options": [
+    "suddenly",
+    "easily",
+    "finally",
+    "hopefully"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 192,
+   "bank": "vocab-360",
+   "id": "g10-816"
+  },
+  {
+   "num": 315,
+   "category": "vocab",
+   "stem": "You must always have the -------------------- that you can be successful.",
+   "options": [
+    "interest",
+    "skill",
+    "belief",
+    "power"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 192,
+   "bank": "vocab-360",
+   "id": "g10-817"
+  },
+  {
+   "num": 316,
+   "category": "vocab",
+   "stem": "He didn’t want to be left on his own. The underlined part means --------------------.",
+   "options": [
+    "strong",
+    "worried",
+    "alive",
+    "alone"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 193,
+   "bank": "vocab-360",
+   "id": "g10-818"
+  },
+  {
+   "num": 317,
+   "category": "vocab",
+   "stem": "My older brother is able to -------------------- Persian into English very easily.",
+   "options": [
+    "translate",
+    "take",
+    "send",
+    "turn"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 193,
+   "bank": "vocab-360",
+   "id": "g10-819"
+  },
+  {
+   "num": 318,
+   "category": "vocab",
+   "stem": "Chips and cookies are not -------------------- foods for little children.",
+   "options": [
+    "healthy",
+    "ancient",
+    "cultural",
+    "local"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 193,
+   "bank": "vocab-360",
+   "id": "g10-820"
+  },
+  {
+   "num": 319,
+   "category": "vocab",
+   "stem": "The doctor gave my younger sister some -------------------- to take for her cough this morning.",
+   "options": [
+    "medicine",
+    "liquid",
+    "metal",
+    "experiment"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 193,
+   "bank": "vocab-360",
+   "id": "g10-821"
+  },
+  {
+   "num": 320,
+   "category": "vocab",
+   "stem": "Tom told me that Mary was good at playing the piano, but I didn’t really -------------------- him until I heard her play.",
+   "options": [
+    "observe",
+    "stop",
+    "believe",
+    "remember"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 193,
+   "bank": "vocab-360",
+   "id": "g10-822"
+  },
+  {
+   "num": 321,
+   "category": "vocab",
+   "stem": "He drove so fast that I really felt my life was in --------------------.",
+   "options": [
+    "care",
+    "danger",
+    "health",
+    "hope"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 193,
+   "bank": "vocab-360",
+   "id": "g10-823"
+  },
+  {
+   "num": 322,
+   "category": "vocab",
+   "stem": "My uncle brought some nice -------------------- from his holiday in Shiraz.",
+   "options": [
+    "souvenirs",
+    "winds",
+    "pilgrims",
+    "flights"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 193,
+   "bank": "vocab-360",
+   "id": "g10-824"
+  },
+  {
+   "num": 323,
+   "category": "vocab",
+   "stem": "My friend was -------------------- in math so I helped him a lot.",
+   "options": [
+    "weak",
+    "strong",
+    "angry",
+    "happy"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 193,
+   "bank": "vocab-360",
+   "id": "g10-825"
+  },
+  {
+   "num": 324,
+   "category": "vocab",
+   "stem": "Don’t -------------------- if you can’t finish all the questions.",
+   "options": [
+    "defend",
+    "worry",
+    "fight",
+    "attack"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 193,
+   "bank": "vocab-360",
+   "id": "g10-826"
+  },
+  {
+   "num": 325,
+   "category": "vocab",
+   "stem": "Something you keep to help you remember a place is called a --------------------.",
+   "options": [
+    "shop",
+    "souvenir",
+    "booklet",
+    "pyramid"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 193,
+   "bank": "vocab-360",
+   "id": "g10-827"
+  },
+  {
+   "num": 326,
+   "category": "vocab",
+   "stem": "My friend didn’t come on time and wanted me to -------------------- for him a long time.",
+   "options": [
+    "wait",
+    "count",
+    "invent",
+    "waste"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 193,
+   "bank": "vocab-360",
+   "id": "g10-828"
+  },
+  {
+   "num": 327,
+   "category": "vocab",
+   "stem": "Viruses need to be inside a -------------------- cell to live and grow.",
+   "options": [
+    "deaf",
+    "liquid",
+    "clean",
+    "living"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 193,
+   "bank": "vocab-360",
+   "id": "g10-829"
+  },
+  {
+   "num": 328,
+   "category": "vocab",
+   "stem": "Tom had a -------------------- in his stomach, so he went to the hospital.",
+   "options": [
+    "pain",
+    "cell",
+    "wall",
+    "pen"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 193,
+   "bank": "vocab-360",
+   "id": "g10-830"
+  },
+  {
+   "num": 329,
+   "category": "vocab",
+   "stem": "Suddenly, she -------------------- laughing and looked serious.",
+   "options": [
+    "forgot",
+    "stopped",
+    "gained",
+    "behaved"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 193,
+   "bank": "vocab-360",
+   "id": "g10-831"
+  },
+  {
+   "num": 330,
+   "category": "vocab",
+   "stem": "Tradition and -------------------- are sometimes different with the needs of modern living.",
+   "options": [
+    "culture",
+    "nature",
+    "program",
+    "information"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 193,
+   "bank": "vocab-360",
+   "id": "g10-832"
+  },
+  {
+   "num": 331,
+   "category": "vocab",
+   "stem": "These animals sleep in the day and -------------------- at night.",
+   "options": [
+    "burn",
+    "hunt",
+    "run",
+    "plant"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 193,
+   "bank": "vocab-360",
+   "id": "g10-833"
+  },
+  {
+   "num": 332,
+   "category": "vocab",
+   "stem": "Bacteria and viruses are two important -------------------- of microbes.",
+   "options": [
+    "types",
+    "elements",
+    "drops",
+    "areas"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 193,
+   "bank": "vocab-360",
+   "id": "g10-834"
+  },
+  {
+   "num": 333,
+   "category": "vocab",
+   "stem": "A small bed for a baby, especially one that moves from side to side is a / an --------------------.",
+   "options": [
+    "grave",
+    "shelf",
+    "cradle",
+    "orbit"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 193,
+   "bank": "vocab-360",
+   "id": "g10-835"
+  },
+  {
+   "num": 334,
+   "category": "vocab",
+   "stem": "Finally, after many years of war, people on both sides wanted --------------------.",
+   "options": [
+    "fight",
+    "peace",
+    "attack",
+    "value"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 193,
+   "bank": "vocab-360",
+   "id": "g10-836"
+  },
+  {
+   "num": 335,
+   "category": "vocab",
+   "stem": "The teacher -------------------- the importance of education and hard working.",
+   "options": [
+    "collected",
+    "donated",
+    "dropped",
+    "emphasized"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 193,
+   "bank": "vocab-360",
+   "id": "g10-837"
+  },
+  {
+   "num": 336,
+   "category": "vocab",
+   "stem": "The Hubble Telescope -------------------- the Earth every 97 minutes.",
+   "options": [
+    "defends",
+    "protects",
+    "pumps",
+    "orbits"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 193,
+   "bank": "vocab-360",
+   "id": "g10-838"
+  },
+  {
+   "num": 337,
+   "category": "vocab",
+   "stem": "When I have a -------------------- I ask my father to help me.",
+   "options": [
+    "gain",
+    "notice",
+    "device",
+    "problem"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 194,
+   "bank": "vocab-360",
+   "id": "g10-839"
+  },
+  {
+   "num": 338,
+   "category": "vocab",
+   "stem": "I don’t want to -------------------- when I don’t know the answer to a problem.",
+   "options": [
+    "give up",
+    "pass away",
+    "look for",
+    "turn on"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 194,
+   "bank": "vocab-360",
+   "id": "g10-840"
+  },
+  {
+   "num": 339,
+   "category": "vocab",
+   "stem": "I asked him a simple question but he gave me a long and boring --------------------.",
+   "options": [
+    "test",
+    "knowledge",
+    "answer",
+    "experiment"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 194,
+   "bank": "vocab-360",
+   "id": "g10-841"
+  },
+  {
+   "num": 340,
+   "category": "vocab",
+   "stem": "She does -------------------- work for the Red Cross two days a week.",
+   "options": [
+    "hopeless",
+    "voluntary",
+    "harmful",
+    "soft"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 194,
+   "bank": "vocab-360",
+   "id": "g10-842"
+  },
+  {
+   "num": 341,
+   "category": "vocab",
+   "stem": "The national football team will -------------------- in Madrid tomorrow afternoon.",
+   "options": [
+    "keep",
+    "bore",
+    "arrive",
+    "move"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 194,
+   "bank": "vocab-360",
+   "id": "g10-843"
+  },
+  {
+   "num": 342,
+   "category": "vocab",
+   "stem": "The bomb will probably -------------------- the soldiers and destroy the bridge.",
+   "options": [
+    "water",
+    "find",
+    "kill",
+    "cut"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 194,
+   "bank": "vocab-360",
+   "id": "g10-844"
+  },
+  {
+   "num": 343,
+   "category": "vocab",
+   "stem": "We -------------------- out of the class when we heard the loud noise.",
+   "options": [
+    "searched",
+    "needed",
+    "visited",
+    "jumped"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 194,
+   "bank": "vocab-360",
+   "id": "g10-845"
+  },
+  {
+   "num": 344,
+   "category": "vocab",
+   "stem": "I’m sure my uncle hasn’t gone -------------------- since 2010. He has always been in Iran.",
+   "options": [
+    "across",
+    "abroad",
+    "above",
+    "inside"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 194,
+   "bank": "vocab-360",
+   "id": "g10-846"
+  },
+  {
+   "num": 345,
+   "category": "vocab",
+   "stem": "Every year, we -------------------- our blood to those who need it.",
+   "options": [
+    "donate",
+    "protect",
+    "take care of",
+    "pump"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 194,
+   "bank": "vocab-360",
+   "id": "g10-847"
+  },
+  {
+   "num": 346,
+   "category": "vocab",
+   "stem": "I feel -------------------- that I brought to you so much trouble.",
+   "options": [
+    "ashamed",
+    "happy",
+    "cold",
+    "safe"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 194,
+   "bank": "vocab-360",
+   "id": "g10-848"
+  },
+  {
+   "num": 347,
+   "category": "vocab",
+   "stem": "My grandfather remembered the names from seventy years ago - isn’t that very --------------------?",
+   "options": [
+    "natural",
+    "boring",
+    "amazing",
+    "tiring"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 194,
+   "bank": "vocab-360",
+   "id": "g10-849"
+  },
+  {
+   "num": 348,
+   "category": "vocab",
+   "stem": "My older brother was thirsty so he asked me -------------------- for a glass of water.",
+   "options": [
+    "safely",
+    "patiently",
+    "politely",
+    "probably"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 194,
+   "bank": "vocab-360",
+   "id": "g10-850"
+  },
+  {
+   "num": 349,
+   "category": "vocab",
+   "stem": "He wants to do -------------------- into the nature of human cells.",
+   "options": [
+    "science",
+    "knowledge",
+    "research",
+    "interest"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 194,
+   "bank": "vocab-360",
+   "id": "g10-851"
+  },
+  {
+   "num": 350,
+   "category": "vocab",
+   "stem": "We don’t exactly know if he is -------------------- or dead.",
+   "options": [
+    "suitable",
+    "famous",
+    "fake",
+    "alive"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 194,
+   "bank": "vocab-360",
+   "id": "g10-852"
+  },
+  {
+   "num": 351,
+   "category": "vocab",
+   "stem": "The film was so -------------------- that I left the cinema in the middle of it.",
+   "options": [
+    "dry",
+    "correct",
+    "boring",
+    "new"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 194,
+   "bank": "vocab-360",
+   "id": "g10-853"
+  },
+  {
+   "num": 352,
+   "category": "vocab",
+   "stem": "The Great Wall of China is one of the seven -------------------- of the world.",
+   "options": [
+    "signs",
+    "details",
+    "abilities",
+    "wonders"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 194,
+   "bank": "vocab-360",
+   "id": "g10-854"
+  },
+  {
+   "num": 353,
+   "category": "vocab",
+   "stem": "I can’t -------------------- the meeting but I’ll send my friend instead.",
+   "options": [
+    "attempt",
+    "focus",
+    "attend",
+    "destroy"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 194,
+   "bank": "vocab-360",
+   "id": "g10-855"
+  },
+  {
+   "num": 354,
+   "category": "vocab",
+   "stem": "Don’t -------------------- all your money on the first day of your holiday!",
+   "options": [
+    "spend",
+    "check",
+    "gain",
+    "shop"
+   ],
+   "answerIdx": 0,
+   "gridAnswer": 0,
+   "page": 194,
+   "bank": "vocab-360",
+   "id": "g10-856"
+  },
+  {
+   "num": 355,
+   "category": "vocab",
+   "stem": "Tom has the flu and he's feeling -------------------- now.",
+   "options": [
+    "poor",
+    "energetic",
+    "weak",
+    "fresh"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 194,
+   "bank": "vocab-360",
+   "id": "g10-857"
+  },
+  {
+   "num": 356,
+   "category": "vocab",
+   "stem": "Keeping the house -------------------- and clean is a very difficult work.",
+   "options": [
+    "heavy",
+    "common",
+    "neat",
+    "deep"
+   ],
+   "answerIdx": 2,
+   "gridAnswer": 2,
+   "page": 194,
+   "bank": "vocab-360",
+   "id": "g10-858"
+  },
+  {
+   "num": 357,
+   "category": "vocab",
+   "stem": "The book was written in a style -------------------- to the age of the children.",
+   "options": [
+    "rocky",
+    "late",
+    "fresh",
+    "appropriate"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 194,
+   "bank": "vocab-360",
+   "id": "g10-859"
+  },
+  {
+   "num": 358,
+   "category": "vocab",
+   "stem": "In the --------------------, camels are more important than cars for travelling.",
+   "options": [
+    "embassy",
+    "desert",
+    "pyramid",
+    "airport"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 195,
+   "bank": "vocab-360",
+   "id": "g10-860"
+  },
+  {
+   "num": 359,
+   "category": "vocab",
+   "stem": "A: “Where the Milad Tower is --------------------?” B: “In Tehran.”",
+   "options": [
+    "prepared",
+    "located",
+    "attracted",
+    "planned"
+   ],
+   "answerIdx": 1,
+   "gridAnswer": 1,
+   "page": 195,
+   "bank": "vocab-360",
+   "id": "g10-861"
+  },
+  {
+   "num": 360,
+   "category": "vocab",
+   "stem": "Did you know that Hamadan has many interesting historical --------------------?",
+   "options": [
+    "price",
+    "agents",
+    "hosts",
+    "sites"
+   ],
+   "answerIdx": 3,
+   "gridAnswer": 3,
+   "page": 195,
+   "bank": "vocab-360",
+   "id": "g10-862"
+  }
+ ]
+}

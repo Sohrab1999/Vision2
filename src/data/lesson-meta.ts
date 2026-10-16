@@ -60,9 +60,9 @@ export const LESSONS_META: LessonMeta[] = [
 export const TOTAL_VOCABULARY = 633;
 export const LESSON_QUIZ_COUNT = 452;
 export const EXAM_BANK_SIZE = 360;
-/** بانک کنکوری پایهٔ دهم — r273 (جزوهٔ جامع دهم، کلید چاپی) */
-export const EXAM_BANK_G10_SIZE = 404;
-export const TOTAL_QUESTIONS = LESSON_QUIZ_COUNT + EXAM_BANK_SIZE + EXAM_BANK_G10_SIZE; // 1216
+/** بانک کنکوری پایهٔ دهم — r273 (کلید چاپی) + r279 (بخش‌های کنکوری با کلید گرید) */
+export const EXAM_BANK_G10_SIZE = 862;
+export const TOTAL_QUESTIONS = LESSON_QUIZ_COUNT + EXAM_BANK_SIZE + EXAM_BANK_G10_SIZE; // 1674
 
 export function lessonMetaById(id: number): LessonMeta | undefined {
   return LESSONS_META.find((l) => l.id === id);

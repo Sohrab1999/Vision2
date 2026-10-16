@@ -179,7 +179,7 @@ export default function ExamView() {
           onClick={() => setMode("konkur10")}
           icon={Library}
           title="بانک کنکوری پایهٔ دهم"
-          desc={`${faNum(examBankG10.length)} تست واژگان و گرامر از جزوهٔ جامع دهم، با کلید و ترجمهٔ خودِ جزوه`}
+          desc={`${faNum(examBankG10.length)} تست از جزوهٔ جامع دهم — ۴۰۴ با ترجمهٔ خود جزوه + ۴۵۸ بخش کنکوری با کلید گرید چاپی`}
           accent="teal"
           badge="جدید"
           best={bestKonkur10 ? `بهترین نتیجه: ${faNum(bestKonkur10.percent)}٪` : undefined}
@@ -342,7 +342,7 @@ export default function ExamView() {
             <div>
               <h1 className="text-xl font-extrabold text-stone-800">بانک کنکوری پایهٔ دهم</h1>
               <p className="text-[13px] text-stone-500">
-                {faNum(examBankG10.length)} تست واژگان و گرامر از جزوهٔ جامع دهم — پاسخ‌ها از کلید چاپی خودِ جزوه
+                {faNum(examBankG10.length)} تست از جزوهٔ جامع دهم — پاسخ‌ها از کلید چاپی خودِ جزوه (گرامر ۱۰۰تستی و واژگان ۳۶۰تستی بخش کنکوری هم اضافه شد)
               </p>
             </div>
           </div>
