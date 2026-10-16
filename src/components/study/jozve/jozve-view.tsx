@@ -167,6 +167,32 @@ const fetchTests = (grade: number): Promise<JozveTestBank | null> => {
   return p;
 };
 
+// —— بانک‌های «جمع‌بندی گرامر و نگارش» (r276) ——
+// فایل grammar-gN.json؛ کلید از شبکهٔ چاپی خود جزوه (پاسخنامه کلیدی) —
+// ترجمهٔ فارسی برای تست‌های گرامر در جزوه چاپ نشده (غیبتِ صادقانه).
+const GRADE_GRAMMAR: Record<number, { lessons: { lesson: number; title: string; count: number }[] }> = {
+  11: {
+    lessons: [
+      { lesson: 1, title: "درس اول", count: 60 },
+      { lesson: 2, title: "درس دوم", count: 70 },
+      { lesson: 3, title: "درس سوم", count: 70 },
+    ],
+  },
+};
+const grammarCache = new Map<number, Promise<JozveTestBank | null>>();
+const fetchGrammar = (grade: number): Promise<JozveTestBank | null> => {
+  let p = grammarCache.get(grade);
+  if (!p) {
+    p = GRADE_GRAMMAR[grade]
+      ? fetch(`/jozve/grammar-g${grade}.json`)
+          .then((r) => (r.ok ? r.json() : null))
+          .catch(() => null)
+      : Promise.resolve(null);
+    grammarCache.set(grade, p);
+  }
+  return p;
+};
+
 const POS_KEY = "jozve-reader-pos-v1"; // آخرین موقعیت مطالعه
 
 export default function JozveView() {
@@ -307,6 +333,7 @@ export default function JozveView() {
     title: string;
     questions: QuizQuestion[];
     resultKey: string;
+    category: "vocab" | "grammar";
   } | null>(null);
   const [testLoadingLesson, setTestLoadingLesson] = useState<string | null>(null);
   const startJozveTest = useCallback(
@@ -328,6 +355,37 @@ export default function JozveView() {
           title: `آزمون واژگان جزوه — ${les.title} پایهٔ ${GRADE_LABEL[g]}`,
           questions,
           resultKey: `jozve-g${g}-l${les.lesson}`,
+          category: "vocab",
+        });
+      } finally {
+        setTestLoadingLesson(null);
+      }
+    },
+    []
+  );
+
+  // اجرای آزمون گرامر جزوه (r276) — سشن مستقلِ همان‌خانواده: trackMistakes=false
+  // (محتوای جزوهٔ پایه‌های دیگر)، نتیجه زیر کلید مستقل jozve-gN-gram-lM.
+  const startJozveGrammar = useCallback(
+    async (g: number, les: { lesson: number; title: string; count: number }) => {
+      setTestLoadingLesson(`g${g}-gram-l${les.lesson}`);
+      try {
+        const bank = await fetchGrammar(g);
+        const l = bank?.lessons.find((x) => x.lesson === les.lesson);
+        if (!l || l.questions.length === 0) return;
+        const questions: QuizQuestion[] = l.questions.map((q) => ({
+          id: q.id,
+          category: "grammar",
+          question: q.question,
+          options: q.options,
+          answer: q.answer,
+          ...(q.translation ? { translation: q.translation } : {}),
+        }));
+        setTestSession({
+          title: `آزمون گرامر جزوه — ${les.title} پایهٔ ${GRADE_LABEL[g]}`,
+          questions,
+          resultKey: `jozve-g${g}-gram-l${les.lesson}`,
+          category: "grammar",
         });
       } finally {
         setTestLoadingLesson(null);
@@ -385,7 +443,7 @@ export default function JozveView() {
           questions={testSession.questions}
           resultKeyStr={testSession.resultKey}
           lessonId="jozve"
-          category="vocab"
+          category={testSession.category}
           immediate
           trackMistakes={false}
           onExit={() => setTestSession(null)}
@@ -544,6 +602,38 @@ export default function JozveView() {
                       className="inline-flex items-center gap-1.5 rounded-xl border border-violet-300 bg-white px-3 py-2 text-[12px] font-extrabold text-violet-800 shadow-sm transition-[background-color,transform] hover:bg-violet-100 active:scale-95 disabled:opacity-60"
                     >
                       {busy ? <Loader2 size={14} className="animate-spin" /> : <ListChecks size={14} />}
+                      {les.title} — {faNum(les.count)} تست
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+          {/* اجرای آزمون گرامر جزوه — بانک جمع‌بندی با کلید شبکهٔ چاپی (r276) */}
+          {GRADE_GRAMMAR[doc.grade] && (
+            <div className="rounded-2xl border border-teal-200 bg-teal-50/60 p-4">
+              <div className="mb-3 flex items-center gap-2.5">
+                <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-teal-200 bg-white text-teal-700">
+                  <PenLine size={18} />
+                </span>
+                <div className="min-w-0">
+                  <h3 className="text-[13.5px] font-black text-teal-900">آزمون گرامر این جزوه</h3>
+                  <p className="text-[11px] leading-5 text-teal-700/80">
+                    بانک «جمع‌بندی گرامر و نگارش» با کلید شبکهٔ چاپی خودِ جزوه — بدون ترجمه (در جزوه چاپ نشده)
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {GRADE_GRAMMAR[doc.grade].lessons.map((les) => {
+                  const busy = testLoadingLesson === `g${doc.grade}-gram-l${les.lesson}`;
+                  return (
+                    <button
+                      key={les.lesson}
+                      onClick={() => startJozveGrammar(doc.grade, les)}
+                      disabled={busy}
+                      className="inline-flex items-center gap-1.5 rounded-xl border border-teal-300 bg-white px-3 py-2 text-[12px] font-extrabold text-teal-800 shadow-sm transition-[background-color,transform] hover:bg-teal-100 active:scale-95 disabled:opacity-60"
+                    >
+                      {busy ? <Loader2 size={14} className="animate-spin" /> : <PenLine size={14} />}
                       {les.title} — {faNum(les.count)} تست
                     </button>
                   );
