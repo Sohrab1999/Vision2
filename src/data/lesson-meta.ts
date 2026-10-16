@@ -42,7 +42,7 @@ export const LESSONS_META: LessonMeta[] = [
     tagline: "سلامتی، تکنولوژی و زمان حال کامل",
     color: "amber",
     vocabCount: 229,
-    quizCount: 40,
+    quizCount: 150,
     grammarCount: 6,
   },
   {
@@ -58,9 +58,9 @@ export const LESSONS_META: LessonMeta[] = [
 ];
 
 export const TOTAL_VOCABULARY = 633;
-export const LESSON_QUIZ_COUNT = 222;
+export const LESSON_QUIZ_COUNT = 332;
 export const EXAM_BANK_SIZE = 360;
-export const TOTAL_QUESTIONS = LESSON_QUIZ_COUNT + EXAM_BANK_SIZE; // 582
+export const TOTAL_QUESTIONS = LESSON_QUIZ_COUNT + EXAM_BANK_SIZE; // 692
 
 export function lessonMetaById(id: number): LessonMeta | undefined {
   return LESSONS_META.find((l) => l.id === id);

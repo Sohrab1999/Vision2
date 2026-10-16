@@ -1,0 +1,282 @@
+#!/usr/bin/env python3
+# Round 267 — Close the lesson-2 (A Healthy Lifestyle) extraction gap of the grade-11 جزوه:
+#   A) standard vocab Q16-40 (pp.57-58)  + key with translations (pp.185-186)
+#   B) konkur vocab Q11-20 (p.59)        + letters-only key (tail of p.186, RTL columns)
+#   C) grammar&writing tests Q16-20 (p.69) + key with explanations/translations (pp.188-189)
+#   D) 70-test grammar/writing summary Q1-70 (pp.70-73) + letters-only key (p.190, RTL columns)
+# Output: /home/z/my-project/content-extracts/l2-missing-tests-r267.json
+import json
+import re
+import unicodedata
+
+SRC = "/home/z/my-project/content-extracts/grade11.json"
+OUT = "/home/z/my-project/content-extracts/l2-missing-tests-r267.json"
+
+doc = json.load(open(SRC))
+pages = {p["n"]: p["text"] for p in doc["pages"]}
+
+# ---------- Persian cleanup (shared with r265 parser, extended WORD_FIXES) ----------
+def fix_fa(s: str) -> str:
+    s = unicodedata.normalize("NFC", s)
+    s = s.replace("\u0640", "")  # tatweel
+    for marker in ("پاسخنامه", "واژگان \"درس", "تست واژ", "بخش :", "Note", "تس گ"):
+        i = s.find(marker)
+        if i > 0:
+            s = s[:i]
+    # period reversed onto next word: ".دارد" -> "دارد."
+    s = re.sub(r"(\S+)\s*\.\s*(?=[\u0600-\u06FF])", r". \1 ", s)
+    WORD_FIXES = {
+        # لا-ligature swaps (defective font: لا rendered as ال)
+        "اطالعات": "اطلاعات", "کامال": "کاملاً", "اصالً": "اصلاً", "اصال": "اصل",
+        "باال": "بالا", "اضاق": "اضافه", "عیل رغم": "علی‌رغم", "الزم": "لازم",
+        "عالوه": "علاوه", "سالمتی": "سلامتی", "طوالنی": "طولانی", "جمالت": "جملات",
+        "تالش": "تلاش", "علیم": "علمی", "سواالت": "سوالات", "حایلی": "حیلی",
+        "متخصصیر": "متخصصین", "عیل الخصوص": "علی‌الخصوص", "مشکالت": "مشکلات",
+        "االمروزی": "امروزی", "خصوصاً": "خصوصاً", "مفید اس": "مفید است",
+        # ر/ز glyph confusions observed in p185-186 keys
+        "افشده": "افسرده", "سکته قلت": "سکته قلبی", "آساب": "آسانی",
+        "شغیل": "شغلی", "چیر": "چیزی", "خو اندن": "خواندن", "تفرییح": "تفریحی",
+        "مناقشه": "مناقشه", "پرس": "وعدهٔ", "حضار": "حضار", "ا مسال": "امسال",
+        "بخطر افتادن": "به خطر افتادن", "دوبار فکر": "دوباره فکر",
+        "متقاعد": "متقاعد", "تالش کرده": "تلاش کرده", "گشت و گذار": "گشت‌وگذار",
+        "می کند": "می‌کند", "می شود": "می‌شود", "می آید": "می‌آید",
+        "می رود": "می‌رود", "می روند": "می‌روند", "می گویند": "می‌گویند",
+        "می خواند": "می‌خواند", "می تواند": "می‌تواند", "می کنند": "می‌کنند",
+        "می شود": "می‌شود", "بویژه": "به‌ویژه", "حرفه ایی": "حرفه‌ای",
+        "ا و": "او", "ب عضعی": "بعضی", "ب عضی": "بعضی", "ک Niem": "",
+    }
+    for bad, good in WORD_FIXES.items():
+        if bad:
+            s = s.replace(bad, good)
+    s = s.replace("می  ", "می‌")
+    # stray mid-sentence periods
+    s = re.sub(r"\s*\.\s+(?=[\u0600-\u06FF])", " ", s)
+    s = re.sub(r"\s{2,}", " ", s).strip()
+    if s and not s.endswith((".", "!", "؟", "?", "،")):
+        s += "."
+    return s.strip()
+
+def fix_en(s: str) -> str:
+    s = s.replace("’", "'").replace("“", '"').replace("”", '"')
+    s = re.sub(r"[-\s]{3,}[-\s]*", " ---------------- ", s) if "----" in s else s
+    # dialogue separator dashes (between "..." and B:) are not blanks
+    s = re.sub(r'"\s*-{3,}\s*[-\s]*(?=[AB]:)', '" ', s)
+    s = re.sub(r"\s{2,}", " ", s)
+    return s.strip()
+
+# ---------- question parser (same contract as r265) ----------
+def split_options(line: str) -> dict:
+    # bare-letter start (missing dot after extraction): "a  is broking b. broke"
+    line = re.sub(r"^([abcd])\s+(?=[A-Za-z])", r"\1. ", line)
+    parts = re.split(r"(?:^|\s)([abcd])\.\s*", line)
+    opts = {}
+    for i in range(1, len(parts) - 1, 2):
+        letter, val = parts[i], parts[i + 1].strip()
+        for marker in ("ست ت واژگان", "پاسخنامه", "بخش", "واژگان \"درس", "تس گ"):
+            j = val.find(marker)
+            if j > 0:
+                val = val[:j].strip()
+        # hard-scrub page-header junk glued onto option values
+        for marker in ("کمک آموزش", "زبان انگل", "گردآوری", "همکاران", "پایه یازدهم", "جزوه"):
+            j = val.find(marker)
+            if j > 0:
+                val = val[:j].strip()
+        val = val.rstrip("() ").strip()
+        if letter not in opts and val:
+            opts[letter] = val
+    return opts
+
+def parse_questions(page_nums, max_q=70):
+    raw = "\n".join(pages[n] for n in page_nums)
+    lines = raw.split("\n")
+    items = []
+    cur = None
+    for ln in lines:
+        t = ln.strip()
+        if not t or t.isdigit() or "جزوه" in t or "Vision" in t or "تألی" in t:
+            continue
+        if re.search(r"سطح تستها|پاسخنامه|سطح\"|تست استاندارد و کنکوری|تست های گرامر|تست جمع بندی|Grammar / Writing|سواالت صفحه|Note", t):
+            continue
+        qm = re.match(r"^(\d{1,2})\s*\.\s*(.*)$", t)
+        om = re.match(r"^([abcd])\s*\.?\s*(.*)$", t)
+        if qm and int(qm.group(1)) <= max_q and not om:
+            if cur and cur.get("options"):
+                items.append(cur)
+            cur = {"num": int(qm.group(1)), "text": qm.group(2), "options": {}}
+        elif om and cur is not None and len(cur["options"]) < 4:
+            opts = split_options(t)
+            for letter, val in opts.items():
+                if letter not in cur["options"]:
+                    cur["options"][letter] = val
+        elif cur is not None:
+            if re.search(r"واژگان \"درس|پاسخنامه|پایه یازدهم|Vision|جزوه|بخش|تس گ|درس دوم", t) or re.search(r"کمک آموزش|زبان انگل|گردآوری|همکاران", t):
+                continue
+            if not re.search(r"[A-Za-z\u0600-\u06FF]", t):
+                continue
+            if not cur["options"]:
+                cur["text"] += " " + t
+            else:
+                last = list(cur["options"])[-1]
+                cur["options"][last] += " " + t
+    if cur and cur.get("options"):
+        items.append(cur)
+    return items
+
+# ---------- key parsers ----------
+GOZINE_BODY = re.compile(
+    r"(\d{1,2})\s*[\s().\-]{0,8}گزینه\s*\(?\s*([abcd])\s*\)?(.*?)(?=\d{1,2}\s*[\s().\-]{0,8}گزینه|\Z)",
+    re.S,
+)
+
+def _gozine_entries(raw):
+    """Entries in DOCUMENT ORDER (position == question number; RTL digit splits
+    corrupt printed numbers but never skip entries). Returns list of entries."""
+    raw = raw.replace("ترجمه :تست", "ترجمه تست").replace(":ترجمه تست", "ترجمه تست")
+    raw = re.sub(r"ترجمه\s+تست", "ترجمه تست", raw)
+    out = []
+    for m in GOZINE_BODY.finditer(raw):
+        letter = m.group(2)
+        body = m.group(3)
+        tr = ""
+        tmi = body.find("ترجمه تست")
+        if tmi >= 0:
+            tr = body[tmi:].replace("ترجمه تست", "").lstrip(" :").strip('" «»')
+        tr = re.sub(r"-{4,}", " ", tr)
+        tr = re.sub(r"\s+", " ", tr).strip()
+        out.append({"letter": letter, "translation": fix_fa(tr)})
+    return out
+
+def parse_key_gozine(page_nums, num_range):
+    """Concatenate pages, collect entries in document order, assign question
+    numbers by POSITION (num_range[0] + index)."""
+    raw = "\n".join(pages[n] for n in page_nums)
+    entries = _gozine_entries(raw)
+    lo, hi = num_range
+    assert len(entries) == hi - lo + 1, f"expected {hi-lo+1} key entries, got {len(entries)}"
+    return {lo + i: ent for i, ent in enumerate(entries)}
+
+def parse_key_columns(page_text, expected):
+    """RTL-column letters-only key: stream of (letter, number) pairs where each
+    visual row reads high->low; e.g. 'a 61 c 51 ... c 1'."""
+    t = re.sub(r"-{4,}", " ", page_text)
+    toks = t.split()
+    m = {}
+    j = 0
+    while j < len(toks):
+        if toks[j] in ("a", "b", "c", "d") and j + 1 < len(toks) and toks[j + 1].isdigit():
+            m[int(toks[j + 1])] = toks[j]
+            j += 2
+        else:
+            j += 1
+    missing = [n for n in range(1, expected + 1) if n not in m]
+    assert not missing, f"column key missing {missing}"
+    return m
+
+# ---------- A) standard vocab Q16-40 (pp.57-58) ----------
+vocab_items = parse_questions([57, 58], max_q=40)
+vocab_keys = parse_key_gozine([185, 186], (1, 40))
+
+# ---------- B) konkur Q11-20 (p.59) ----------
+konkur_items = parse_questions([59], max_q=20)
+konkur_raw = pages[186]
+ki = konkur_raw.find("پاسخنامه کلیدی")
+konkur_keys = parse_key_columns(konkur_raw[ki:], 20)
+
+# ---------- C) grammar&writing Q16-20 (p.69) ----------
+gram_items = parse_questions([69], max_q=20)
+gram_keys = parse_key_gozine([188, 189], (1, 20))
+
+# ---------- D) 70-test summary Q1-70 (pp.70-73) ----------
+gs_items = parse_questions([70, 71, 72, 73], max_q=70)
+gs_raw = pages[190]
+gi = gs_raw.find("Grammar / Writing Tests")
+gs_keys = parse_key_columns(gs_raw[gi:], 70)
+
+LETTER_IDX = {"a": 0, "b": 1, "c": 2, "d": 3}
+
+def assemble(items, keys, category, skip_questions, explanations=None):
+    """Keep ALL items (skip_questions = normalized texts already in the app).
+    srcNum = jozve question number; ID assignment happens in the splicer."""
+    out, problems = [], []
+    for it in items:
+        num = it["num"]
+        if len(it["options"]) < 4:
+            problems.append((num, "options<4", list(it["options"])))
+            continue
+        opts = [it["options"].get(l, "").strip() for l in "abcd"]
+        if any(not o for o in opts):
+            problems.append((num, "empty option", opts))
+            continue
+        key = keys.get(num)
+        if key is None:
+            problems.append((num, "no key", ""))
+            continue
+        letter = key if isinstance(key, str) else key["letter"]
+        qtext = fix_en(it["text"])
+        norm = re.sub(r"[-\s]+", " ", qtext.lower()).strip()
+        if norm in skip_questions:
+            continue
+        rec = {
+            "srcNum": num,
+            "category": category,
+            "question": qtext,
+            "options": opts,
+            "answer": LETTER_IDX[letter],
+            "translation": (key.get("translation", "") if isinstance(key, dict) else ""),
+        }
+        if explanations and num in explanations:
+            rec["explanation"] = explanations[num]
+        out.append(rec)
+    return out, problems
+
+# existing app questions (normalized) are computed here so the JSON contains
+# ONLY the genuinely-absent items; the splicer assigns sequential IDs.
+import pathlib
+l2src = pathlib.Path("/home/z/my-project/src/data/lesson2.ts").read_text()
+# unescape TS string literals so apostrophes/quotes inside stems don't break matching
+l2src = l2src.replace("\\'", "'").replace('\\"', '"')
+def norm_ts(q):
+    q = q.replace("’", "'").replace("“", '"').replace("”", '"')
+    q = re.sub(r"[-\s]+", " ", q.lower()).strip()
+    return q
+app_qs = set()
+for line in l2src.split("\n"):
+    if 'Q("l2-' not in line:
+        continue
+    m = re.match(r'\s*Q\("l2-[a-z0-9]+",\s*"[^"]*",(.*),\s*\[', line)
+    if not m:
+        continue
+    stem = m.group(1).strip()
+    if (stem.startswith("'") and stem.endswith("'")) or (stem.startswith('"') and stem.endswith('"')):
+        stem = stem[1:-1]
+    app_qs.add(norm_ts(stem))
+print(f"existing l2 questions in app: {len(app_qs)}")
+
+new_vocab, pv = assemble(vocab_items, vocab_keys, "vocab", app_qs)
+new_konkur, pk = assemble(konkur_items, konkur_keys, "vocab-konkuri", app_qs)
+new_gram, pg = assemble(gram_items, gram_keys, "grammar", app_qs)
+# gs: letters-only key — explanations hand-authored in the splicer
+new_gs, pgs = assemble(gs_items, gs_keys, "grammar", set())
+
+# Persian purity guard on English fields (same as r265)
+def has_fa(s):
+    return bool(re.search(r"[\u0600-\u06FF]", s))
+
+for rec in new_vocab + new_konkur + new_gram + new_gs:
+    assert not has_fa(rec["question"]), f"FA leaked into src{rec['srcNum']} question"
+    for o in rec["options"]:
+        assert not has_fa(o), f"FA leaked into src{rec['srcNum']} options: {o}"
+
+result = {
+    "newVocab": new_vocab, "newKonkur": new_konkur,
+    "newGram": new_gram, "newGs": new_gs,
+}
+json.dump(result, open(OUT, "w"), ensure_ascii=False, indent=1)
+
+print(f"vocab missing : {len(new_vocab)}  problems={pv}")
+print(f"konkur missing: {len(new_konkur)}  problems={pk}")
+print(f"gram missing  : {len(new_gram)}  problems={pg}")
+print(f"gs (all new)  : {len(new_gs)}  problems={pgs[:6]}")
+print("vocab srcNums :", [q["srcNum"] for q in new_vocab])
+print("konkur srcNums:", [q["srcNum"] for q in new_konkur])
+print("gram srcNums  :", [q["srcNum"] for q in new_gram])
