@@ -23,7 +23,8 @@ export default function GlobalErrorPage({
       const CHUNK_LOAD_ERR =
         /failed to (fetch|load)( dynamically)?( imported)? (module|chunk)|error loading dynamically imported module|loading chunk \d+ failed|importing a module script failed|module factory is not available|deleted in an HMR update/i;
       const key = "v2-chunk-reload";
-      if (CHUNK_LOAD_ERR.test(error.message || "")) {
+      const isChunkErr = CHUNK_LOAD_ERR.test(error.message || "");
+      if (isChunkErr) {
         if (!sessionStorage.getItem(key)) {
           sessionStorage.setItem(key, "1");
           window.location.reload();
@@ -96,7 +97,23 @@ export default function GlobalErrorPage({
             ذخیره شده است — با یک بار بازخوانی برگردی.
           </p>
           <button
-            onClick={reset}
+            onClick={() => {
+              // parity with route error.tsx: a chunk-class failure can only
+              // be healed by a full document reload — reset() re-renders the
+              // same broken module graph. User-consented ⇒ cannot loop.
+              const CHUNK_LOAD_ERR =
+                /failed to (fetch|load)( dynamically)?( imported)? (module|chunk)|error loading dynamically imported module|loading chunk \d+ failed|importing a module script failed|module factory is not available|deleted in an HMR update/i;
+              if (CHUNK_LOAD_ERR.test(error.message || "")) {
+                try {
+                  sessionStorage.removeItem("v2-chunk-reload");
+                } catch {
+                  /* storage may be unavailable — reload still proceeds */
+                }
+                window.location.reload();
+                return;
+              }
+              reset();
+            }}
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -115,6 +132,25 @@ export default function GlobalErrorPage({
             <RotateCcw size={15} />
             بارگذاری دوباره
           </button>
+          {error.message ? (
+            // raw cause, truncated — a screenshot of this card carries the
+            // diagnosis with it (same lesson as route error.tsx)
+            <p
+              dir="ltr"
+              style={{
+                margin: "12px 0 0",
+                fontSize: 10,
+                lineHeight: "16px",
+                color: "#d6d3d1",
+                wordBreak: "break-all",
+                maxWidth: "100%",
+              }}
+            >
+              {error.message.length > 160
+                ? `${error.message.slice(0, 160)}…`
+                : error.message}
+            </p>
+          ) : null}
         </div>
       </body>
     </html>

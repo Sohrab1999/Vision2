@@ -27,6 +27,13 @@ export default function ErrorPage({
   reset: () => void;
 }) {
   const [counting, setCounting] = useState(false);
+  // A chunk-class failure can only be healed by a full document reload:
+  // reset() re-renders the same broken lazy module graph. When the session's
+  // one-shot auto-reload is already spent (several HMR incidents inside one
+  // long-lived preview session — the 2026-10-17 follow-up), the learner must
+  // not be trapped on this card, so the primary button becomes a real hard
+  // reload (user-consented ⇒ cannot loop without them).
+  const isChunkErr = CHUNK_LOAD_ERR.test(error.message || "");
 
   useEffect(() => {
     console.error("Webbook view error:", error);
@@ -34,7 +41,7 @@ export default function ErrorPage({
       // 1) self-heal: a chunk-load failure gets exactly ONE automatic
       //    reload per session (sessionStorage guard keeps it loop-proof);
       //    every other error falls through to the recovery card.
-      if (CHUNK_LOAD_ERR.test(error.message || "")) {
+      if (isChunkErr) {
         if (!sessionStorage.getItem(CHUNK_RELOAD_KEY)) {
           sessionStorage.setItem(CHUNK_RELOAD_KEY, "1");
           window.location.reload();
@@ -57,7 +64,7 @@ export default function ErrorPage({
     } catch {
       /* diagnostics must never become a crash source */
     }
-  }, [error]);
+  }, [error, isChunkErr]);
 
   return (
     <div className="flex min-h-[60vh] items-center justify-center px-4">
@@ -76,6 +83,17 @@ export default function ErrorPage({
           <button
             onClick={() => {
               setCounting(true);
+              if (isChunkErr) {
+                // hard reload heals a broken module graph; clearing the
+                // guard key lets the fresh session auto-heal once more
+                try {
+                  sessionStorage.removeItem(CHUNK_RELOAD_KEY);
+                } catch {
+                  /* storage may be unavailable — reload still proceeds */
+                }
+                window.location.reload();
+                return;
+              }
               reset();
               // guard: if reset silently fails, offer home after a beat
               setTimeout(() => setCounting(false), 600);
@@ -96,6 +114,19 @@ export default function ErrorPage({
         {error.digest && (
           <p className="mt-5 text-[11px] text-stone-300" dir="ltr">
             code: {error.digest}
+          </p>
+        )}
+        {error.message && (
+          // the raw cause, truncated — a screenshot of this card then
+          // carries the diagnosis with it (lesson of the 2026-10-16/17
+          // incidents: client-only console errors made each report blind)
+          <p
+            dir="ltr"
+            className="mt-2 max-w-full overflow-hidden text-ellipsis break-all px-2 text-[10px] leading-4 text-stone-300"
+          >
+            {error.message.length > 160
+              ? `${error.message.slice(0, 160)}…`
+              : error.message}
           </p>
         )}
         {counting && (
