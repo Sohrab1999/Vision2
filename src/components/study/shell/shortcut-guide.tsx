@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Keyboard, BookMarked, ClipboardCheck, Sun, Moon } from "lucide-react";
+import { Keyboard, BookMarked, ClipboardCheck, Sun, Moon, History } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useStudy, type LessonTab } from "@/lib/study-store";
@@ -182,6 +182,54 @@ export default function ShortcutGuide() {
                 </ul>
               </section>
             ))}
+
+            {/* حلقهٔ «ادامهٔ مطالعه» (r242 ②) — نُه درِ r231-r241 در یک کارتِ
+                کشف‌پذیر: کلیدِ واقعی فقط Ctrl+K است؛ چهار درِ دیگر کلیک‌محورند
+                و با برچسبِ محلِ خود توصیف می‌شوند نه با کلیدِ جعلی. رنگ‌ها همه
+                از kernelِ تاریکِ سراسری می‌آیند (emerald-50 var-remap،
+                border-emerald-200/text-emerald-700/800 painterهایِ جهانی) —
+                هیچ CSS تازه‌ای لازم نشد. */}
+            <section
+              data-testid="shortcut-guide-resume-loop"
+              className="rounded-xl border border-emerald-200 bg-emerald-50 p-3"
+            >
+              <h3 className="mb-2 flex items-center gap-1.5 text-[12.5px] font-extrabold text-emerald-800">
+                <History size={14} className="shrink-0 text-emerald-600" aria-hidden />
+                حلقهٔ «ادامهٔ مطالعه» — هر جا رها کنی، از همین‌جاها برمی‌گردی
+              </h3>
+              <ul className="space-y-1.5">
+                <li className="flex items-center justify-between gap-3 rounded-lg bg-white px-2.5 py-1.5 shadow-sm">
+                  <span className="text-[12px] font-bold text-stone-600">
+                    فرمان‌یاب — فرمانِ «ادامهٔ مطالعه» و گروهِ «ادامه‌های اخیر»؛ هر دو با تایپِ عنوانِ موضوع پیدا می‌شوند
+                  </span>
+                  <span className="flex shrink-0 items-center gap-1">
+                    <Kbd>Ctrl</Kbd>
+                    <span className="text-[10px] text-stone-300">+</span>
+                    <Kbd>K</Kbd>
+                  </span>
+                </li>
+                <li className="rounded-lg bg-white px-2.5 py-1.5 shadow-sm">
+                  <span className="text-[12px] font-bold leading-5 text-stone-600">
+                    <span className="text-emerald-700">هدر:</span> دکمهٔ «ادامهٔ مطالعه» — فلشِ کنارش پنلِ «مسیرهای اخیر» را با تا ۴ مسیرِ آخر باز می‌کند
+                  </span>
+                </li>
+                <li className="rounded-lg bg-white px-2.5 py-1.5 shadow-sm">
+                  <span className="text-[12px] font-bold leading-5 text-stone-600">
+                    <span className="text-emerald-700">خانه:</span> کارتِ ضمیمه با خطِ «ادامه از» + سینیِ «اخیراً در ضمیمه» زیرِ آن (۳ مسیرِ آخر)
+                  </span>
+                </li>
+                <li className="rounded-lg bg-white px-2.5 py-1.5 shadow-sm">
+                  <span className="text-[12px] font-bold leading-5 text-stone-600">
+                    <span className="text-emerald-700">ضمیمه:</span> نشانگرِ «ادامهٔ مطالعه» سرِ صفحه + چیپِ «مسیر اخیر» زیرِ آن
+                  </span>
+                </li>
+                <li className="rounded-lg bg-white px-2.5 py-1.5 shadow-sm">
+                  <span className="text-[12px] font-bold leading-5 text-stone-600">
+                    <span className="text-emerald-700">پروفایل:</span> بلوکِ «ادامهٔ مطالعه» با تاریخچهٔ کامل (تا ۸ مسیر) + پاک‌کردنِ هرکدام
+                  </span>
+                </li>
+              </ul>
+            </section>
 
             <p className="flex items-start gap-1.5 rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-[11px] font-bold leading-5 text-amber-800">
               <Sun size={13} className="mt-0.5 shrink-0" />
