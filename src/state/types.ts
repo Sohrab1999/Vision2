@@ -31,7 +31,11 @@ export type View =
   | { type: "konkur" }
   | { type: "grammar" } // متروی گرامر — Task 39
   | { type: "my-words" } // واژه‌های نشان‌شده — واژه‌نامهٔ شخصی
-  | { type: "jozve" }; // کتابخانهٔ جزوه‌ها — استخراج کامل ۶ جزوهٔ پایه ۷ تا ۱۲
+  // کتابخانهٔ جزوه‌ها — استخراج کامل ۶ جزوهٔ پایه ۷ تا ۱۲؛
+  // grade/chapterId اختیاری برای deep-link «جزوهٔ همین درس» (مستقیم روی
+  // فصلِ جزوهٔ همان درس باز می‌شود؛ همهٔ فراخوانی‌های { type: "jozve" }
+  // بدونِ فیلدها هم معتبر می‌مانند)
+  | { type: "jozve"; grade?: number; chapterId?: string };
 
 export type LessonTab = "vocab" | "conversation" | "reading" | "grammar" | "writing" | "dictation" | "tests";
 

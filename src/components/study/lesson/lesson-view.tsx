@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, BookOpen, MessageSquareText, BookOpenText, GraduationCap, ListChecks, Layers, PenLine, Ear } from "lucide-react";
+import { ArrowRight, BookOpen, MessageSquareText, BookOpenText, GraduationCap, ListChecks, Layers, PenLine, Ear, LibraryBig } from "lucide-react";
 import { findLesson } from "@/data";
 import { useStudy, knownCountOfLesson, type LessonTab } from "@/lib/study-store";
 import { percent } from "@/lib/domain/percent";
@@ -28,6 +28,7 @@ const tabs: { key: LessonTab; label: string; icon: React.ElementType }[] = [
 export default function LessonView({ id }: { id: number }) {
   const lesson = findLesson(id);
   const goHome = useStudy((s) => s.goHome);
+  const setView = useStudy((s) => s.setView);
   const tab = useStudy((s) => s.lessonTab);
   const setTab = useStudy((s) => s.setLessonTab);
   const known = useStudy((s) => s.known);
@@ -41,6 +42,26 @@ export default function LessonView({ id }: { id: number }) {
   const t = themeOf(lesson.color);
   const knownCount = knownCountOfLesson(known, lesson.id);
   const knownPercent = percent(knownCount, lesson.vocabulary.length);
+
+  // «جزوهٔ همین درس» — پرش مستقیم به فصلِ همان درس در کتابخانهٔ جزوه‌ها.
+  // نگاشت سنجیده و در زمانِ کلیک: اولین فصلِ kind=lesson با عنوان «درس N»
+  // در جزوهٔ پایهٔ یازدهم (فصل‌های اصلی c3/c4/c5 قبل از فصل‌های گرامر و
+  // کلیدِ تست‌ها در آرایه می‌آیند). اگر ایندکس در دسترس نبود، گرِیس‌فول:
+  // جزوهٔ پایهٔ ۱۱ از فهرست باز می‌شود.
+  const openJozve = () => {
+    const ord = lesson.id === 1 ? "اول" : lesson.id === 2 ? "دوم" : "سوم";
+    interface IdxChapter { id: string; kind: string; title: string }
+    interface IdxGrade { grade: number; chapters: IdxChapter[] }
+    type Idx = { grades?: IdxGrade[] };
+    fetch("/jozve/index.json")
+      .then((r) => r.json() as Promise<Idx>)
+      .then((idx) => {
+        const g11 = idx.grades?.find((g) => g.grade === 11);
+        const ch = g11?.chapters?.find((c) => c.kind === "lesson" && c.title === `درس ${ord}`);
+        setView({ type: "jozve", grade: 11, chapterId: ch?.id });
+      })
+      .catch(() => setView({ type: "jozve", grade: 11 }));
+  };
 
   return (
     <motion.div
@@ -64,7 +85,17 @@ export default function LessonView({ id }: { id: number }) {
             <div>
               <span className={`mb-1 inline-block rounded-full px-2.5 py-0.5 text-[11px] font-bold ${t.chipBg}`}>
                 درس {lesson.id === 1 ? "اول" : lesson.id === 2 ? "دوم" : "سوم"} — پایهٔ یازدهم
-              </span>
+              </span>{" "}
+              {lesson.id <= 3 && (
+                <button
+                  onClick={openJozve}
+                  title="متن کامل همین درس در جزوهٔ یازدهم — کتابخانهٔ جزوه‌ها"
+                  className="mb-1 inline-flex translate-y-0.5 items-center gap-1 rounded-full border border-amber-200 bg-amber-50 px-2.5 py-0.5 text-[11px] font-bold text-amber-800 transition-[background-color,border-color,transform] hover:border-amber-300 hover:bg-amber-100 active:scale-95"
+                >
+                  <LibraryBig size={11} />
+                  جزوهٔ همین درس
+                </button>
+              )}
               <h1 className={`en-text text-2xl font-bold leading-tight ${t.text}`} dir="ltr">
                 “{lesson.titleEn}”
               </h1>

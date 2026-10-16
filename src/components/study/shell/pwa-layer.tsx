@@ -84,6 +84,35 @@ export default function PwaLayer() {
     () => false
   );
 
+  // ---------------- legacy service-worker purge ----------------
+  // حادثهٔ ۲۰۲۶-۱۰-۱۷ «چندمین بار برنامه باگ خورده و باز نمیشه»: کلاینت‌هایی
+  // که قبل از گاردِ dev (ریشه‌یابی 2026-10-12) SW نسخهٔ v1 را ثبت کرده
+  // بودند، همچنان آن را دارند — و v1 چانک‌های /_next/static را cache-first
+  // سرو می‌کند؛ یعنی حتی بعد از رفرش دستی هم کدِ کهنه از انبار می‌آید و
+  // گراف ماژول می‌شکند. پاک‌سازیِ هدفمند و بدون‌تکرار: هر جا انبارِ v1
+  // دیده شد، همهٔ SWها برچین و همهٔ انبارهای vision2 حذف می‌شوند؛ در prod
+  // ثبتِ v2 در همان سشن/بازدید بعدی دوباره انجام می‌شود. بدون این، کلاینت
+  // قدیمی تا ابد در حلقهٔ «باز نمیشه» می‌ماند.
+  useEffect(() => {
+    if (!("serviceWorker" in navigator)) return;
+    const purgeLegacy = async () => {
+      try {
+        const keys = "caches" in window ? await caches.keys() : [];
+        if (!keys.some((k) => k.startsWith("vision2-sw-v1"))) return;
+        const regs = await navigator.serviceWorker.getRegistrations();
+        await Promise.all(regs.map((r) => r.unregister()));
+        await Promise.all(
+          keys
+            .filter((k) => k.startsWith("vision2-sw-"))
+            .map((k) => caches.delete(k))
+        );
+      } catch {
+        /* پاک‌سازی هرگز منبع کرش نمی‌شود */
+      }
+    };
+    purgeLegacy();
+  }, []);
+
   // ---------------- service worker ----------------
   useEffect(() => {
     // ریشه‌یابی 2026-10-12: در dev، چانک‌های توربوپک هم از مسیر

@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import { faNum } from "@/lib/study-theme";
 import { speak } from "@/lib/speak";
+import { useStudy } from "@/lib/study-store";
 
 // =====================================================================
 // «کتابخانهٔ جزوه‌ها» — استخراجِ کامل و واژه‌به‌واژهٔ ۶ جزوهٔ پایهٔ ۷ تا ۱۲.
@@ -132,13 +133,45 @@ export default function JozveView() {
   const restored = useRef(false);
   const secAnchor = useRef<HTMLDivElement | null>(null);
 
+  // deep-link «جزوهٔ همین درس» — نما با { type: "jozve", grade, chapterId }
+  // مونت می‌شود و باید مستقیم روی فصلِ همان درس باز شود، نه روی آخرین
+  // موقعیتِ ذخیره‌شده. الگوی رسمیِ «تنظیم state هنگام تغییر props» است:
+  // اعمال در رندر (با گاردِ applied)، نه افکت — تا رندر آبشاری نداشته باشیم.
+  const view = useStudy((s) => s.view);
+  const linkGrade = view.type === "jozve" ? view.grade : undefined;
+  const linkChapterId = view.type === "jozve" ? view.chapterId : undefined;
+  const initialLinkGrade = useRef(linkGrade); // مقدارِ لحظهٔ مونت — برای گاردِ بازیابیِ موقعیت
+  const [appliedLink, setAppliedLink] = useState<string | null>(null);
+  const [appliedChapter, setAppliedChapter] = useState<string | null>(null);
+  if (linkGrade != null) {
+    const key = `${linkGrade}:${linkChapterId ?? ""}`;
+    if (appliedLink !== key) {
+      setAppliedLink(key);
+      setGrade(linkGrade);
+      setFailedGrade(null);
+      setQuery("");
+      setChapterIdx(null); // رزولوشنِ فصل فقط بعد از بارگیری سندِ درست
+    }
+  }
+  if (doc && linkChapterId != null && doc.grade === linkGrade && appliedChapter !== linkChapterId) {
+    const ci = doc.chapters.findIndex((c) => c.id === linkChapterId);
+    if (ci >= 0) {
+      setAppliedChapter(linkChapterId);
+      setChapterIdx(ci);
+    }
+    // فصلِ یافت‌نشده = گرِیس‌فول: فهرست فصل‌های همان پایه باز می‌ماند
+  }
+
   // بارگیری فهرست + بازگردانیِ آخرین موقعیت (همه در کالبکِ async — نه بدنهٔ افکت)
+  // استثنا: deep-link «جزوهٔ همین درس» فعال است — آن هم اولویت و آخرین
+  // موقعیت نباید جای آن را بگیرد.
   useEffect(() => {
     fetchIndex()
       .then((idx) => {
         setIndex(idx);
         if (restored.current) return;
         restored.current = true;
+        if (initialLinkGrade.current != null) return; // deep-link اولویت دارد
         try {
           const pos = JSON.parse(localStorage.getItem(POS_KEY) || "null");
           if (pos && typeof pos.grade === "number" && idx.grades.some((g) => g.grade === pos.grade)) {

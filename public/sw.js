@@ -1,15 +1,26 @@
 // ------------------------------------------------------------------
-// F4 «PWA نصب‌پذیر» — service worker (نقشهٔ راه فیچرها، اسپرینت ۳)
+// F4 «PWA نصب‌پذیر» — service worker (v2 — بازطراحی بعد از حادثهٔ
+// ۲۰۲۶-۱۰-۱۷ «چندمین بار برنامه باز نمیشه»)
 //
-// Strategy (dev-safe by design):
-//   • navigations  → network-first (3.5s timeout) → cached copy → cached "/"
-//   • /api/*       → network-only (never cached — rate-limit & sync stay live)
-//   • immutable-ish static (/_next/static, /icons, fonts) → cache-first
-//   • everything else GET → network, fallback to cache
+// چرا v2؟ v1 برای /_next/static «cache-first» بود — فرضِ ایمیجِ پروड.
+// اما واقعیت این سرویس `next dev` ۲۴/۷ با ویرایشِ زندهٔ فایل‌هاست:
+// چانک‌های dev تغییر می‌کنند ولی SW نسخهٔ کش‌شدهٔ کهنه را می‌داد ⇒
+// گراف ماژولِ شکسته حتی بعد از رفرش، و اگر سرور در حال کامپایل دیرتر
+// از ۳.۵s جواب می‌داد، صفحهٔ کهنهٔ کش‌شده جای صفحهٔ تازه را می‌گرفت —
+// دقیقاً همان حلقهٔ تکرارشوندهٔ «باز نمیشه».
+//
+// Strategy v2 (dev-reality-safe):
+//   • navigations       → network-first (بدون تایم‌اوتِ کوتاه) → فقط در
+//     شکستِ واقعیِ شبکه → کش → "/"
+//   • /api/*            → network-only (never cached)
+//   • /_next/static/* و /_next/image → network-first → کش فقط آفلاین
+//     (دارایی dev ایمیج‌پذیر نیست؛ هرگز کهنه سرو نشود)
+//   • برندِ واقعاً ثابت (icons, logo, favicon) → cache-first
+//   • بقیهٔ GET          → network → fallback کش
 // Bump VERSION to invalidate every cache on deploy.
 // ------------------------------------------------------------------
 
-const VERSION = "vision2-sw-v1";
+const VERSION = "vision2-sw-v2";
 const STATIC_CACHE = `${VERSION}-static`;
 const PAGE_CACHE = `${VERSION}-pages`;
 
@@ -30,6 +41,7 @@ self.addEventListener("activate", (event) => {
   event.waitUntil(
     (async () => {
       const names = await caches.keys();
+      // پاک‌سازی کامل انبار v1 — کش‌های کهنه همان زهرِ حادثه بودند
       await Promise.all(names.filter((n) => !n.startsWith(VERSION)).map((n) => caches.delete(n)));
       await self.clients.claim();
     })()
@@ -41,37 +53,43 @@ self.addEventListener("message", (event) => {
   if (event.data === "SKIP_WAITING") self.skipWaiting();
 });
 
-function fetchWithTimeout(request, ms) {
-  return new Promise((resolve, reject) => {
-    const timer = setTimeout(() => reject(new Error("timeout")), ms);
-    fetch(request).then(
-      (res) => {
-        clearTimeout(timer);
-        resolve(res);
-      },
-      (err) => {
-        clearTimeout(timer);
-        reject(err);
-      }
-    );
-  });
-}
-
-async function networkFirstPage(request) {
-  const cache = await caches.open(PAGE_CACHE);
+async function networkFirst(request, { cacheName, timeoutMs = 0 } = {}) {
+  const cache = await caches.open(cacheName);
   try {
-    const res = await fetchWithTimeout(request, 3500);
+    let res;
+    if (timeoutMs > 0) {
+      res = await new Promise((resolve, reject) => {
+        const timer = setTimeout(() => reject(new Error("timeout")), timeoutMs);
+        fetch(request).then(
+          (r) => {
+            clearTimeout(timer);
+            resolve(r);
+          },
+          (e) => {
+            clearTimeout(timer);
+            reject(e);
+          }
+        );
+      });
+    } else {
+      res = await fetch(request);
+    }
     if (res && res.ok) cache.put(request, res.clone());
     return res;
   } catch {
+    // فقط شکستِ واقعیِ شبکه (آفلاین/سرور مرده) به کش پناه می‌برد —
+    // کندیِ کامپایل دیگر صفحهٔ کهنه نمی‌سازد
     const cached = await cache.match(request, { ignoreSearch: true });
     if (cached) return cached;
-    const home = await cache.match("/");
-    if (home) return home;
-    return new Response(
-      "<!doctype html><html lang=\"fa\" dir=\"rtl\"><meta charset=\"utf-8\"><title>آفلاین</title><body style=\"font-family:sans-serif;text-align:center;padding-top:40vh;color:#444\">اینترنت در دسترس نیست — دوباره تلاش کن.</body></html>",
-      { status: 503, headers: { "Content-Type": "text/html; charset=utf-8" } }
-    );
+    if (request.mode === "navigate") {
+      const home = await cache.match("/");
+      if (home) return home;
+      return new Response(
+        "<!doctype html><html lang=\"fa\" dir=\"rtl\"><meta charset=\"utf-8\"><title>آفلاین</title><body style=\"font-family:sans-serif;text-align:center;padding-top:40vh;color:#444\">اینترنت در دسترس نیست — دوباره تلاش کن.</body></html>",
+        { status: 503, headers: { "Content-Type": "text/html; charset=utf-8" } }
+      );
+    }
+    throw new Error("offline");
   }
 }
 
@@ -86,19 +104,6 @@ async function cacheFirstStatic(request) {
   return res;
 }
 
-async function networkFallbackCache(request) {
-  const cache = await caches.open(PAGE_CACHE);
-  try {
-    const res = await fetch(request);
-    if (res && res.ok) cache.put(request, res.clone());
-    return res;
-  } catch {
-    const cached = await cache.match(request, { ignoreSearch: true });
-    if (cached) return cached;
-    throw new Error("offline");
-  }
-}
-
 self.addEventListener("fetch", (event) => {
   const { request } = event;
   if (request.method !== "GET") return;
@@ -108,18 +113,21 @@ self.addEventListener("fetch", (event) => {
   if (url.pathname.startsWith("/api/")) return; // network-only
 
   if (request.mode === "navigate") {
-    event.respondWith(networkFirstPage(request));
+    event.respondWith(networkFirst(request, { cacheName: PAGE_CACHE }));
     return;
   }
   if (
-    url.pathname.startsWith("/_next/static/") ||
+    url.pathname === "/icons/" ||
     url.pathname.startsWith("/icons/") ||
     url.pathname === "/logo.svg" ||
-    url.pathname === "/favicon-32.png" ||
-    url.pathname.startsWith("/_next/image")
+    url.pathname === "/favicon-32.png"
   ) {
+    // فقط برندِ واقعاً ایمیج‌پذیر cache-first می‌ماند
     event.respondWith(cacheFirstStatic(request));
     return;
   }
-  event.respondWith(networkFallbackCache(request).catch(() => fetch(request)));
+  // هر چیز دیگر — از جمله /_next/static و /_next/image — اول شبکه
+  event.respondWith(
+    networkFirst(request, { cacheName: PAGE_CACHE }).catch(() => fetch(request))
+  );
 });
