@@ -233,22 +233,22 @@ describe("resumeDoor family: the smaller result consumers opt in (r248 ①)", ()
     expect(src).toMatch(/^\s*resumeDoor\s*$/m);
   });
 
-  it("opt-out honesty: the remaining smaller consumers stay opt-out by default", () => {
-    // همان قراردادِ r247 — راند ۲۴۹ (بندِ ① پیشنهادِ ۲۴۸) سه مصرف‌کنندهٔ
-    // کوچک‌تر را opt-in کرد (syn-ant/review/danger) و این قفل صادقانه
-    // کوچک شد: فقط دو مصرف‌کنندهٔ باقی‌مانده پیش‌فرضِ دست‌نخورده‌اند؛
-    // اگر فردا کسی ناخواسته opt-in کند، مرورِ راند می‌بیند
+  it("family completion: no opt-out consumer remains — the r250 census closes the family", () => {
+    // راند ۲۵۰ (بندِ ① پیشنهادِ ۲۴۹): دو مصرف‌کنندهٔ آخر (گرامر، مرورِ
+    // واژه‌های من) هم opt-in شدند — دیگر هیچِ مصرف‌کنندهٔ نتیجه‌ایِ
+    // دست‌نخورده‌ای نیست؛ قفلِ opt-out که از r247 تا r249 نگهبانِ
+    // «باقی‌مانده‌ها» بود، حالا اتمامِ خانواده را اعلام می‌کند
     for (const p of [
       "src/components/study/grammar/grammar-view.tsx",
       "src/components/study/practice/my-words-review.tsx",
     ]) {
-      expect(read(p)).not.toMatch(/^\s*resumeDoor\s*$/m);
+      expect(read(p)).toMatch(/^\s*resumeDoor\s*$/m);
     }
   });
 
-  it("family census: exactly eight opt-ins — lesson-tests, exam, konkur, dictionary, smart, synant, review, danger", () => {
-    // شمارشِ صادقانهٔ خانواده (قراردادِ شمارش‌هایِ r244/r246) — پنج opt-inِ
-    // r248 با بندِ ① پیشنهادِ ۲۴۸ در راند ۲۴۹ به هشت رسید (synant/review/danger)
+  it("family census: exactly ten opt-ins — lesson-tests, exam, konkur, dictionary, smart, synant, review, danger, grammar, my-words", () => {
+    // شمارشِ صادقانهٔ خانواده (قراردادِ شمارش‌هایِ r244/r246) — هشتِ r249
+    // با بندِ ① پیشنهادِ ۲۴۹ در راند ۲۵۰ به ده رسید (grammar/my-words)
     const optedIn = [
       "src/components/study/lesson/lesson-tests-tab.tsx",
       "src/components/study/exam/exam-view.tsx",
@@ -258,6 +258,8 @@ describe("resumeDoor family: the smaller result consumers opt in (r248 ①)", ()
       "src/components/study/lesson/syn-ant-tab.tsx",
       "src/components/study/practice/review-view.tsx",
       "src/components/study/practice/danger-words.tsx",
+      "src/components/study/grammar/grammar-view.tsx",
+      "src/components/study/practice/my-words-review.tsx",
     ];
     for (const p of optedIn) {
       expect(read(p), p).toMatch(/^\s*resumeDoor\s*$/m);

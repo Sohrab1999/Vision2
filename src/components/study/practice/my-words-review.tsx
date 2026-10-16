@@ -52,6 +52,10 @@ export default function MyWordsReview({ stars }: { stars: ResolvedStar[] }) {
         category="my-words"
         immediate={true}
         trackMistakes={false}
+        // راند ۲۵۰ — بندِ ① پیشنهادِ ۲۴۹: آخرین عضوِ خانواده — مرورِ
+        // نشان‌شده‌ها هم در لحظهٔ حکم، راهِ برگشت به ضمیمه را نشان می‌دهد
+        // (همان الگو، opt-inِ مصرف‌کننده؛ سرشماری به ده رسید).
+        resumeDoor
         faOptions={(q) => session.faOptions.has(q.id)}
         groupOf={(q) => String(session.lessonOf.get(q.id) ?? 0)}
         groupLabels={LESSON_LABELS}

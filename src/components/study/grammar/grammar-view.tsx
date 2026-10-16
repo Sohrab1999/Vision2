@@ -142,6 +142,11 @@ export default function GrammarView() {
         lessonId={quiz.lessonId}
         category="grammar"
         immediate
+        // راند ۲۵۰ — بندِ ① پیشنهادِ ۲۴۹: خانوادهٔ resumeDoor کامل می‌شود —
+        // آزمونک ایستگاه و آزمون شناختِ خط هم در لحظهٔ حکم، راهِ برگشت به
+        // ضمیمه را نشان می‌دهند (همان الگو، opt-inِ مصرف‌کننده؛ دهمین و
+        // نهمین عضو — محلِ فراخوانیِ واحد برای هر دو نوعِ سشن).
+        resumeDoor
         onExit={() => setQuiz(null)}
         mistakesOf={quiz.perQuestionLesson ? lessonOf : () => quiz.lessonId}
       />
