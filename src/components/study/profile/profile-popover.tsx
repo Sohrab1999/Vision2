@@ -12,7 +12,7 @@ import NewBadgeDot from "./new-badge-dot";
 import { exportProgress, parseBackup, applyBackup, backupSummary, readAutoBackup, restoreAutoBackup, autoBackupAgeFa, collectData } from "@/lib/backup";
 import { trackEvent } from "@/lib/analytics";
 import { pushSync, fetchSync, mergeSyncData, applyMergedSnapshot, normalizeCode, looksLikeCode } from "@/lib/sync";
-import { adoptResumeIfAbsent, appendixResumeServerSnapshot, appendixResumeSnapshot, clearAppendixResume, subscribeAppendixResume, APPENDIX_SCOPE_LABELS } from "@/lib/bg-reading";
+import { adoptResumeIfAbsent, appendixHistoryServerSnapshot, appendixHistorySnapshot, appendixResumeServerSnapshot, appendixResumeSnapshot, clearAppendixResume, clearAppendixResumeHistory, subscribeAppendixHistory, subscribeAppendixResume, APPENDIX_SCOPE_LABELS, type AppendixResumeItem } from "@/lib/bg-reading";
 import { useAppendixResumeNav } from "../shared/use-appendix-resume-nav";
 import { useToast } from "@/hooks/use-toast";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
@@ -62,7 +62,19 @@ export default function ProfilePopover() {
     appendixResumeSnapshot,
     appendixResumeServerSnapshot,
   );
+  // راند ۲۳۷ — تاریخچهٔ «ادامه»ها (بندِ ③ پیشنهادِ ۲۳۶): چند رکوردِ آخر،
+  // دستگاه‌محلی — با snapshotِ جدا اما همان ایدئومِ storeِ خارجی.
+  const resumeHistory = useSyncExternalStore(
+    subscribeAppendixHistory,
+    appendixHistorySnapshot,
+    appendixHistoryServerSnapshot,
+  );
   const navigateResume = useAppendixResumeNav();
+
+  // تاریخچه بدونِ خودِ رکوردِ فعلی (که بالا نمایش دارد) — پرشِ چیپ، رکورد را عوض نمی‌کند.
+  const recentHistory = resumeHistory.filter(
+    (h) => !(resumeItem && h.scope === resumeItem.scope && h.id === resumeItem.id),
+  );
 
   const openPopover = (next: boolean) => {
     setOpen(next);
@@ -251,12 +263,28 @@ export default function ProfilePopover() {
     navigateResume(resumeItem);
   };
 
+  /** پرش به یک ورودیِ تاریچه — پرش، «آخرینِ دیده‌شده» را عوض نمی‌کند
+   * (نوشتن فقط با کنشِ واقعیِ خواندن در خودِ لایه‌ها انجام می‌شود). */
+  const handleHistoryGo = (item: AppendixResumeItem) => {
+    setOpen(false);
+    navigateResume(item);
+  };
+
   const handleResumeClear = () => {
     clearAppendixResume();
     toast({
       title: "ادامهٔ مطالعه پاک شد",
       description: "نشانگرِ آخرین موضوع برداشته شد — با نخستین دیدنِ بعدی در ضمیمه دوباره ساخته می‌شود.",
       duration: 3000,
+    });
+  };
+
+  const handleHistoryClear = () => {
+    clearAppendixResumeHistory();
+    toast({
+      title: "تاریخچهٔ ادامه‌ها پاک شد",
+      description: "فقط فهرستِ «اخیراً» برداشته شد — نشانگرِ «ادامهٔ مطالعه» سرِ جایش است.",
+      duration: 2500,
     });
   };
 
@@ -399,6 +427,48 @@ export default function ProfilePopover() {
                 آخرین چیزی که در ضمیمه دیدی — کلیکِ راست روی دکمهٔ «ادامه» در هدر هم پاکش می‌کند.
               </p>
             </div>
+            {recentHistory.length > 0 && (
+              <div className="mt-2.5 border-t border-emerald-100 pt-2" data-testid="profile-resume-history">
+                <div className="mb-1.5 flex items-center justify-between gap-2">
+                  <span className="flex items-center gap-1 text-[10px] font-black text-stone-500">
+                    <History size={11} className="text-emerald-600" />
+                    اخیراً در ضمیمه
+                    <span className="rounded-full bg-stone-100 px-1.5 py-0.5 text-[9px] font-black text-stone-600">
+                      {faNum(recentHistory.length)}
+                    </span>
+                  </span>
+                  <button
+                    onClick={handleHistoryClear}
+                    data-testid="profile-history-clear"
+                    className="inline-flex shrink-0 items-center gap-0.5 rounded-md px-1 py-0.5 text-[9.5px] font-bold text-stone-500 transition-colors hover:text-rose-500"
+                    title="فقط فهرستِ «اخیراً» پاک می‌شود؛ نشانگرِ «ادامهٔ مطالعه» می‌ماند"
+                  >
+                    <Trash2 size={10} />
+                    پاک‌کردن
+                  </button>
+                </div>
+                <div className="flex flex-col gap-1">
+                  {recentHistory.map((h) => (
+                    <button
+                      key={`${h.scope}:${h.id}`}
+                      onClick={() => handleHistoryGo(h)}
+                      data-testid={`profile-history-item-${h.scope}-${h.id}`}
+                      className="flex min-h-9 w-full items-center justify-between gap-2 rounded-lg border border-stone-100 bg-transparent px-2.5 py-1.5 text-right transition-[background-color,color,border-color,transform] hover:border-emerald-200 hover:bg-emerald-50 active:scale-[0.96] dark:hover:bg-emerald-900/30"
+                    >
+                      <span className="min-w-0 flex-1 truncate text-[10.5px] font-bold text-stone-700">
+                        «{h.title}»
+                      </span>
+                      <span className="shrink-0 text-[9px] font-bold text-stone-500">
+                        {APPENDIX_SCOPE_LABELS[h.scope]}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+                <p className="mt-1 text-[9px] leading-4 text-stone-500">
+                  پرش به این‌ها «ادامهٔ مطالعه» را عوض نمی‌کند — فقط خواندنِ واقعی همان‌جا عوضش می‌کند.
+                </p>
+              </div>
+            )}
           </div>
         )}
 

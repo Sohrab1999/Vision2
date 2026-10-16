@@ -30,6 +30,9 @@ import {
   readAppendixResume,
   clearAppendixResume,
   subscribeAppendixResume,
+  subscribeAppendixHistory,
+  appendixHistorySnapshot,
+  clearAppendixResumeHistory,
   APPENDIX_SCOPES,
 } from "@/lib/bg-reading";
 import { useStudy } from "@/lib/study-store";
@@ -259,5 +262,142 @@ describe("D — نشانگرِ سرِ ضمیمه: کلیکِ راست همان�
     expect(readAppendixResume()).toBeNull();
     expect(localStorage.getItem(KEY_NEW)).toBeNull();
     expect(localStorage.getItem(KEY_LEGACY)).toBeNull();
+  });
+});
+
+describe("E — تاریخچهٔ «ادامه»ها (راند ۲۳۷ — بندِ ③ پیشنهادِ ۲۳۶)", () => {
+  const rec2: AppendixResumeItem = {
+    scope: "grammar",
+    id: "t-present-simple",
+    title: "حال ساده",
+    hint: "ص ۲۳",
+  };
+
+  it("① هر نوشتن به سرِ تاریخچه می‌رود؛ بازنویسی = جابه‌جایی به اول بدونِ تکرار", () => {
+    act(() => {
+      writeAppendixResume(rec);
+      writeAppendixResume(rec2);
+    });
+    const hist = appendixHistorySnapshot();
+    expect(hist.map((x) => x.id)).toEqual(["t-present-simple", "eat"]);
+    act(() => {
+      writeAppendixResume({ ...rec, hint: "خوردن (دوباره)" });
+    });
+    const again = appendixHistorySnapshot();
+    expect(again.map((x) => x.id)).toEqual(["eat", "t-present-simple"]);
+    expect(again).toHaveLength(2);
+    // رکوردِ اصلی هم همان نوشتنِ آخر است
+    expect(readAppendixResume()?.id).toBe("eat");
+  });
+
+  it("② سقفِ ۸ — نوشتنِ نهم، کهنه‌ترین را می‌اندازد", () => {
+    act(() => {
+      for (let i = 0; i < 9; i++) {
+        writeAppendixResume({ scope: "verbs", id: `v${i}`, title: `فعل ${i}` });
+      }
+    });
+    const hist = appendixHistorySnapshot();
+    expect(hist).toHaveLength(8);
+    expect(hist[0].id).toBe("v8");
+    expect(hist[7].id).toBe("v1");
+  });
+
+  it("③ ورودیِ خرابِ وسطِ تاریخچه فقط خودش دور ریخته می‌شود، نه کلِ فهرست", () => {
+    const good = { scope: "pos", id: "nouns", title: "اسم‌ها" };
+    localStorage.setItem(
+      "vision2-bg-history",
+      JSON.stringify([
+        { scope: "bogus", id: "x", title: "جعلی" },
+        good,
+        "garbage-string",
+        42,
+        { scope: "verbs", title: "بدونِ شناسه" },
+      ]),
+    );
+    const hist = appendixHistorySnapshot();
+    expect(hist).toHaveLength(1);
+    expect(hist[0].id).toBe("nouns");
+  });
+
+  it("④ دو پاک‌کننده دو معنا دارند: پاک‌کردنِ تاریخچه رکورد را نمی‌زند؛ پاک‌کردنِ رکورد تاریخچه را نمی‌زند", () => {
+    const spy = vi.fn();
+    const un = subscribeAppendixHistory(spy);
+    act(() => {
+      writeAppendixResume(rec);
+      clearAppendixResumeHistory();
+    });
+    expect(appendixHistorySnapshot()).toEqual([]);
+    expect(readAppendixResume()).not.toBeNull(); // رکوردِ اصلی سالم
+    expect(spy).toHaveBeenCalled();
+    un();
+    act(() => {
+      clearAppendixResume();
+    });
+    // تاریخچه از قبل خالی بود — ولی اگر می‌بود، پاک‌کردنِ رکورد نباید دستش می‌زد
+    act(() => {
+      writeAppendixResume(rec2);
+      clearAppendixResume();
+    });
+    expect(appendixHistorySnapshot().map((x) => x.id)).toContain("t-present-simple");
+    expect(readAppendixResume()).toBeNull();
+  });
+
+  it("⑤ پروفایل: بلوکِ «اخیراً» با شمارش، بدونِ رکوردِ فعلی؛ کلیکِ چیپ = همان مقصد + رکورد دست‌نخورده", () => {
+    act(() => {
+      writeAppendixResume(rec); // قدیمی‌تر → چیپِ «اخیراً»
+      writeAppendixResume(rec2); // آخرین نوشتن = رکوردِ فعلی
+    });
+    render(<ProfilePopover />);
+    const trigger = screen.getByRole("button", { name: "پروفایل من" });
+    act(() => {
+      fireEvent.pointerDown(trigger);
+      fireEvent.click(trigger);
+    });
+    const hist = screen.getByTestId("profile-resume-history");
+    expect(hist).toHaveTextContent("اخیراً در ضمیمه");
+    expect(hist).toHaveTextContent("۱"); // فقط قدیمی‌تر — فعلی حذف شده
+    expect(screen.getByTestId("profile-history-item-verbs-eat")).toBeInTheDocument();
+    expect(screen.queryByTestId("profile-history-item-grammar-t-present-simple")).toBeNull();
+    act(() => {
+      fireEvent.click(screen.getByTestId("profile-history-item-verbs-eat"));
+    });
+    expect(useStudy.getState().view).toEqual({ type: "appendix", verbBase: "eat" });
+    expect(readAppendixResume()?.id).toBe("t-present-simple"); // پرش، رکورد را عوض نمی‌کند
+  });
+
+  it("⑥ «پاک‌کردن» تاریخچه در پروفایل: فهرست غیب + توست + رکوردِ اصلی سرِ جایش", () => {
+    act(() => {
+      writeAppendixResume(rec);
+      writeAppendixResume(rec2);
+    });
+    render(<ProfilePopover />);
+    const trigger = screen.getByRole("button", { name: "پروفایل من" });
+    act(() => {
+      fireEvent.pointerDown(trigger);
+      fireEvent.click(trigger);
+    });
+    act(() => {
+      fireEvent.click(screen.getByTestId("profile-history-clear"));
+    });
+    expect(screen.queryByTestId("profile-resume-history")).toBeNull();
+    expect(screen.getByTestId("profile-resume-section")).toBeInTheDocument();
+    expect(readAppendixResume()).not.toBeNull();
+    expect(toastSpy).toHaveBeenCalledWith(
+      expect.objectContaining({ title: "تاریخچهٔ ادامه‌ها پاک شد" }),
+    );
+  });
+
+  it("⑦ بی‌تاریخچه = هیچ بلوکی (صداقت)", () => {
+    act(() => {
+      writeAppendixResume(rec);
+    });
+    render(<ProfilePopover />);
+    const trigger = screen.getByRole("button", { name: "پروفایل من" });
+    act(() => {
+      fireEvent.pointerDown(trigger);
+      fireEvent.click(trigger);
+    });
+    expect(screen.getByTestId("profile-resume-section")).toBeInTheDocument();
+    expect(screen.queryByTestId("profile-resume-history")).toBeNull();
   });
 });

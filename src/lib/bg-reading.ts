@@ -133,6 +133,7 @@ export const writeAppendixResume = (item: {
   } catch {
     /* حافظه در دسترس نیست — نشانگرِ UI-محلی می‌ماند */
   }
+  pushResumeHistory(record);
 };
 
 /** راند ۲۳۷ — پاک‌کردنِ رکورد (بندِ ① پیشنهادِ ۲۳۶): کنترلِ کاملِ کاربر روی
@@ -150,6 +151,100 @@ export const clearAppendixResume = (): void => {
     /* حافظه در دسترس نیست — رکوردِ محلی می‌ماند */
   }
   notifyResume();
+};
+
+// ---- تاریخچهٔ «ادامه»ها (راند ۲۳۷ — بندِ ③ پیشنهادِ ۲۳۶) --------------------
+// چند رکوردِ آخر به‌جای یکی — افزودنی و کاملاً دستگاه‌محلی: رکوردِ اصلی
+// (و قراردادِ سفرِ آن در پشتیبان/ابر از r236) دست‌نخورده می‌ماند و تاریخچه
+// هرگز وارد پشتیبان/سینک نمی‌شود (رکورد «دادهٔ یادگیرنده» نیست — تاریخچه
+// حتی کمتر). هر نوشتنِ واقعی، ورودیِ همان scope+id را از جای قبلی‌اش حذف
+// و به سرِ فهرست می‌آورد (بدونِ تکرار، بدونِ timestamp — ترتیب از خودِ
+// نوشتن می‌آید)؛ سقفِ ۸ تا. پاک‌کردنِ رکوردِ اصلی تاریخچه را پاک نمی‌کند —
+// دو کنترلِ جدا با دو معنایِ جدا («ادامه» = آخرین؛ «اخیراً» = چند تایِ آخر).
+
+const HISTORY_KEY = "vision2-bg-history";
+const HISTORY_CAP = 8;
+
+const historyListeners = new Set<() => void>();
+const notifyHistory = () => {
+  for (const l of historyListeners) l();
+};
+
+/** مشترکینِ تاریخچه — همان ایدئومِ storeِ خارجیِ r231، با snapshotِ جدا. */
+export const subscribeAppendixHistory = (cb: () => void): (() => void) => {
+  historyListeners.add(cb);
+  return () => {
+    historyListeners.delete(cb);
+  };
+};
+
+let histCacheKey = "\u0000empty";
+let histCacheVal: AppendixResumeItem[] = [];
+
+const parseHistoryRaw = (raw: string): AppendixResumeItem[] => {
+  if (!raw) return [];
+  try {
+    const parsed: unknown = JSON.parse(raw);
+    if (!Array.isArray(parsed)) return [];
+    // هر ورودی با همان سیاستِ دفاعیِ رکوردِ اصلی پالایش می‌شود — خرابِ
+    // وسطِ فهرست فقط خودش دور ریخته می‌شود، نه کلِ تاریخچه.
+    return parsed
+      .map(sanitizeResumeInput)
+      .filter((x): x is AppendixResumeItem => x !== null);
+  } catch {
+    return [];
+  }
+};
+
+/** snapshotِ تاریخچه برایِ useSyncExternalStore — [] روی سرور. */
+export const appendixHistorySnapshot = (): AppendixResumeItem[] => {
+  if (typeof window === "undefined") return [];
+  let raw = "";
+  try {
+    raw = window.localStorage.getItem(HISTORY_KEY) ?? "";
+  } catch {
+    return [];
+  }
+  if (raw === histCacheKey) return histCacheVal;
+  histCacheKey = raw;
+  histCacheVal = parseHistoryRaw(raw);
+  return histCacheVal;
+};
+
+/** snapshotِ سرورِ تاریخچه — همیشه []. ثابتِ سطحِ ماژول است نه آرایهٔ تازه —
+ *  React برایِ getServerSnapshot هویتِ پایدار می‌خواهد و آرایهٔ تازه در هر
+ *  فراخوانی هشدارِ «snapshot باید cache شود» می‌دهد. */
+const EMPTY_HISTORY: AppendixResumeItem[] = [];
+export const appendixHistoryServerSnapshot = (): AppendixResumeItem[] =>
+  EMPTY_HISTORY;
+
+/** خواندنِ مستقیمِ تاریخچه — همان cache، همان دفاع. */
+export const readAppendixResumeHistory = (): AppendixResumeItem[] =>
+  appendixHistorySnapshot();
+
+const pushResumeHistory = (item: AppendixResumeItem): void => {
+  const list = readAppendixResumeHistory().filter(
+    (x) => !(x.scope === item.scope && x.id === item.id),
+  );
+  list.unshift(item);
+  const capped = list.slice(0, HISTORY_CAP);
+  try {
+    window.localStorage.setItem(HISTORY_KEY, JSON.stringify(capped));
+  } catch {
+    /* حافظه در دسترس نیست — تاریخچهِ UI-محلی می‌ماند */
+  }
+  notifyHistory();
+};
+
+/** پاک‌کردنِ فقط تاریخچه — رکوردِ اصلی «ادامهٔ مطالعه» دست‌نخورده می‌ماند. */
+export const clearAppendixResumeHistory = (): void => {
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.removeItem(HISTORY_KEY);
+  } catch {
+    /* حافظه در دسترس نیست — تاریخچهِ محلی می‌ماند */
+  }
+  notifyHistory();
 };
 
 /** نوشتنِ نشانگرِ درسنامه (r233) — کلیدِ قدیمی برایِ سازگاری + آینه در کلیدِ نو. */
