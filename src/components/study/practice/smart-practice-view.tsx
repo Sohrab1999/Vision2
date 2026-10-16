@@ -108,6 +108,10 @@ export default function SmartPracticeView() {
         groupOf={(q) => String(questionSourceLesson(q))}
         groupLabels={{ "0": "بانک ۳۶۰", "1": "درس ۱", "2": "درس ۲", "3": "درس ۳" }}
         mistakesOf={(q) => questionSourceLesson(q)}
+        // راند ۲۴۸ — بندِ ① پیشنهادِ ۲۴۷: خانوادهٔ resumeDoor به نتیجهٔ
+        // مرورِ هوشمند هم رسید — جایی که نتیجهٔ ترکیبی گرفته می‌شود،
+        // راهِ برگشت به ضمیمه هم آن‌جاست (همان الگو، opt-inِ مصرف‌کننده).
+        resumeDoor
         onExit={() => setSession(null)}
       />
     );

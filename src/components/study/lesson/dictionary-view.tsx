@@ -411,6 +411,10 @@ export default function DictionaryView() {
               lessonId={0}
               category="synant"
               immediate
+              // راند ۲۴۸ — بندِ ① پیشنهادِ ۲۴۷: خانوادهٔ resumeDoor به نتیجهٔ
+              // دریلِ دیکشنری هم رسید — جایی که نتیجهٔ جفت‌ها گرفته می‌شود،
+              // راهِ برگشت به ضمیمه هم آن‌جاست (همان الگو، opt-inِ مصرف‌کننده).
+              resumeDoor
               onExit={closeDrill}
             />
           )}
