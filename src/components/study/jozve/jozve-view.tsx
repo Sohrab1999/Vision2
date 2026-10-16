@@ -193,6 +193,32 @@ const fetchGrammar = (grade: number): Promise<JozveTestBank | null> => {
   return p;
 };
 
+// —— بانک‌های کنکوری/دستگرمی گرامر (r277) ——
+// فایل grammar-gN-konkur.json؛ کلید از بلوک‌های توضیحی خود جزوه (N - گزینه (X))
+// و این‌بار با ترجمهٔ فارسی خودِ جزوه (ترجمه تست) — برخلاف جمع‌بندی که بی‌ترجمه بود.
+const GRADE_GRAMMAR_KONKUR: Record<number, { lessons: { lesson: number; title: string; count: number }[] }> = {
+  11: {
+    lessons: [
+      { lesson: 1, title: "درس اول", count: 20 },
+      { lesson: 2, title: "درس دوم", count: 20 },
+      { lesson: 3, title: "درس سوم", count: 30 },
+    ],
+  },
+};
+const konkurCache = new Map<number, Promise<JozveTestBank | null>>();
+const fetchKonkurGrammar = (grade: number): Promise<JozveTestBank | null> => {
+  let p = konkurCache.get(grade);
+  if (!p) {
+    p = GRADE_GRAMMAR_KONKUR[grade]
+      ? fetch(`/jozve/grammar-g${grade}-konkur.json`)
+          .then((r) => (r.ok ? r.json() : null))
+          .catch(() => null)
+      : Promise.resolve(null);
+    konkurCache.set(grade, p);
+  }
+  return p;
+};
+
 const POS_KEY = "jozve-reader-pos-v1"; // آخرین موقعیت مطالعه
 
 export default function JozveView() {
@@ -385,6 +411,35 @@ export default function JozveView() {
           title: `آزمون گرامر جزوه — ${les.title} پایهٔ ${GRADE_LABEL[g]}`,
           questions,
           resultKey: `jozve-g${g}-gram-l${les.lesson}`,
+          category: "grammar",
+        });
+      } finally {
+        setTestLoadingLesson(null);
+      }
+    },
+    []
+  );
+
+  // اجرای بانک‌های کنکوری گرامر (r277) — کلید و ترجمه از بلوک‌های توضیحی خود جزوه
+  const startJozveKonkur = useCallback(
+    async (g: number, les: { lesson: number; title: string; count: number }) => {
+      setTestLoadingLesson(`g${g}-kgram-l${les.lesson}`);
+      try {
+        const bank = await fetchKonkurGrammar(g);
+        const l = bank?.lessons.find((x) => x.lesson === les.lesson);
+        if (!l || l.questions.length === 0) return;
+        const questions: QuizQuestion[] = l.questions.map((q) => ({
+          id: q.id,
+          category: "grammar",
+          question: q.question,
+          options: q.options,
+          answer: q.answer,
+          ...(q.translation ? { translation: q.translation } : {}),
+        }));
+        setTestSession({
+          title: `تست‌های کنکوری گرامر جزوه — ${les.title} پایهٔ ${GRADE_LABEL[g]}`,
+          questions,
+          resultKey: `jozve-g${g}-kgram-l${les.lesson}`,
           category: "grammar",
         });
       } finally {
@@ -634,6 +689,38 @@ export default function JozveView() {
                       className="inline-flex items-center gap-1.5 rounded-xl border border-teal-300 bg-white px-3 py-2 text-[12px] font-extrabold text-teal-800 shadow-sm transition-[background-color,transform] hover:bg-teal-100 active:scale-95 disabled:opacity-60"
                     >
                       {busy ? <Loader2 size={14} className="animate-spin" /> : <PenLine size={14} />}
+                      {les.title} — {faNum(les.count)} تست
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+          {/* اجرای بانک‌های کنکوری گرامر جزوه — کلید توضیحی + ترجمهٔ خود جزوه (r277) */}
+          {GRADE_GRAMMAR_KONKUR[doc.grade] && (
+            <div className="rounded-2xl border border-sky-200 bg-sky-50/60 p-4">
+              <div className="mb-3 flex items-center gap-2.5">
+                <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-sky-200 bg-white text-sky-700">
+                  <KeyRound size={18} />
+                </span>
+                <div className="min-w-0">
+                  <h3 className="text-[13.5px] font-black text-sky-900">تست‌های کنکوری گرامر جزوه</h3>
+                  <p className="text-[11px] leading-5 text-sky-700/80">
+                    بانک‌های «دستگرمی/کنکوری» با کلید توضیحی و ترجمهٔ خودِ جزوه
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {GRADE_GRAMMAR_KONKUR[doc.grade].lessons.map((les) => {
+                  const busy = testLoadingLesson === `g${doc.grade}-kgram-l${les.lesson}`;
+                  return (
+                    <button
+                      key={les.lesson}
+                      onClick={() => startJozveKonkur(doc.grade, les)}
+                      disabled={busy}
+                      className="inline-flex items-center gap-1.5 rounded-xl border border-sky-300 bg-white px-3 py-2 text-[12px] font-extrabold text-sky-800 shadow-sm transition-[background-color,transform] hover:bg-sky-100 active:scale-95 disabled:opacity-60"
+                    >
+                      {busy ? <Loader2 size={14} className="animate-spin" /> : <KeyRound size={14} />}
                       {les.title} — {faNum(les.count)} تست
                     </button>
                   );
