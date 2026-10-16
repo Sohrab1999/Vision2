@@ -116,8 +116,10 @@ describe("A — caretِ «مسیرهای اخیر» کنارِ دکمهٔ هدر
     expect(rows[0]).toHaveTextContent("جدول تلفظ");
     // فعلی (حال ساده) در فهرست نیست — دکمهٔ اصلی همان را می‌برد
     expect(screen.queryByTestId("header-recent-item-grammar-t-present-simple")).toBeNull();
-    // پانویسِ صداقتِ حلقه
-    expect(panel).toHaveTextContent("نشانگرِ «ادامهٔ مطالعه» را عوض نمی‌کند");
+    // پانویسِ صداقتِ حلقه — r247: متنِ لایه-بی‌طرفِ صادق (سه لایه رسیدنِ
+    // لنگردار را «دیدن» می‌دانند؛ پرش نوشتنِ دستی نیست، خواندن تازه می‌کند)
+    expect(panel).toHaveTextContent("پرش ≠ نوشتنِ دستی");
+    expect(panel).toHaveTextContent("از خواندنِ واقعی");
   });
 
   it("③ کلیکِ ردیف = پرشِ view به همان لایه + بستنِ پنل + رکوردِ سالم (پرش ≠ نوشتن)", () => {

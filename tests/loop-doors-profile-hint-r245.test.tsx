@@ -91,7 +91,8 @@ describe("حبابِ آموزشیِ درِ هدر — r245 ①", () => {
     expect(hint).toHaveAttribute("data-hinting", "true");
     expect(hint.className).toContain("pointer-events-none");
     expect(hint.textContent).toContain("مسیرهای اخیر");
-    expect(hint.textContent).toContain("نشانگر را عوض نمی‌کند");
+    // r247 — تصحیحِ صداقت: «پرش ≠ نوشتنِ دستی» (جملهٔ کهنه فقط برایِ دو لایهٔ شنیدنی درست بود)
+    expect(hint.textContent).toContain("پرش ≠ نوشتنِ دستی");
     expect(btn).toHaveAttribute("data-pulsing", "true");
   });
 

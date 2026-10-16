@@ -165,6 +165,9 @@ export default function KonkurView() {
         groupOf={sourceOf}
         groupLabels={GROUP_LABELS}
         mistakesOf={() => 0}
+        // راند ۲۴۷ — بندِ ① پیشنهادِ ۲۴۶: خانوادهٔ resumeDoor به نتیجهٔ کنکور هم رسید —
+        // جایی که نتیجه گرفته می‌شود، راهِ برگشت به ضمیمه هم آن‌جاست (همان الگو، opt-inِ مصرف‌کننده).
+        resumeDoor
         onExit={() => setSession(null)}
       />
     );

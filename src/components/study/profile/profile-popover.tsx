@@ -17,6 +17,7 @@ import { useAppendixResumeNav } from "../shared/use-appendix-resume-nav";
 import { useToast } from "@/hooks/use-toast";
 import { RESUME_FOCUS_RING } from "@/lib/study-theme";
 import { RESUME_LOOP_DOORS, DOOR_HANDOFF_DELAY_MS, doorShortName, focusHeaderDoor, openAppendixDoor, type ResumeLoopDoor } from "@/lib/resume-loop-doors";
+import { JUMP_VS_WRITE_FA } from "@/lib/bg-reading";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 // ------------------------------------------------------------------
@@ -524,7 +525,7 @@ export default function ProfilePopover() {
                   ))}
                 </div>
                 <p className="mt-1 text-[9px] leading-4 text-stone-500">
-                  پرش به این‌ها «ادامهٔ مطالعه» را عوض نمی‌کند — فقط خواندنِ واقعی همان‌جا عوضش می‌کند.
+                  {JUMP_VS_WRITE_FA}
                 </p>
               </div>
             )}

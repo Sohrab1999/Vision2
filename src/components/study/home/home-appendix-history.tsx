@@ -17,7 +17,7 @@
 // ------------------------------------------------------------------
 
 import { History } from "lucide-react";
-import { APPENDIX_SCOPE_LABELS, type AppendixResumeItem } from "@/lib/bg-reading";
+import { APPENDIX_SCOPE_LABELS, JUMP_VS_WRITE_FA, type AppendixResumeItem } from "@/lib/bg-reading";
 import { faNum, RESUME_FOCUS_RING } from "@/lib/study-theme";
 
 export default function HomeAppendixHistory({
@@ -47,7 +47,7 @@ export default function HomeAppendixHistory({
             type="button"
             data-testid={`home-history-item-${h.scope}-${h.id}`}
             onClick={() => onJump(h)}
-            title={`پرش به «${h.title}» در ${APPENDIX_SCOPE_LABELS[h.scope]} — این پرش نشانگرِ «ادامهٔ مطالعه» را عوض نمی‌کند${h.hint ? ` — ${h.hint}` : ""}`}
+            title={`پرش به «${h.title}» در ${APPENDIX_SCOPE_LABELS[h.scope]} — پرش ≠ نوشتنِ دستی؛ خواندنِ همان‌جا نشانگر را تازه می‌کند${h.hint ? ` — ${h.hint}` : ""}`}
             className={`flex min-h-7 items-center justify-between gap-1.5 rounded-lg border border-stone-100 bg-white px-2 text-right transition-[background-color,color,border-color,transform] hover:border-emerald-200 hover:bg-emerald-50 active:scale-[0.96] dark:border-stone-800 dark:hover:bg-emerald-900/30 ${RESUME_FOCUS_RING}`}
           >
             <span className="min-w-0 flex-1 truncate text-[10px] font-bold text-stone-700 dark:text-stone-300">

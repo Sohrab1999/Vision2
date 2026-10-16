@@ -35,6 +35,7 @@ import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { ChevronDown, History, Play } from "lucide-react";
 import {
   APPENDIX_SCOPE_LABELS,
+  JUMP_VS_WRITE_FA,
   appendixHistoryServerSnapshot,
   appendixHistorySnapshot,
   appendixResumeServerSnapshot,
@@ -236,7 +237,7 @@ export default function HeaderResumeButton() {
                     navigateResume(h);
                     setOpen(false);
                   }}
-                  title={`پرش به «${h.title}» در ${APPENDIX_SCOPE_LABELS[h.scope]} — این پرش نشانگرِ «ادامهٔ مطالعه» را عوض نمی‌کند${h.hint ? ` — ${h.hint}` : ""}`}
+                  title={`پرش به «${h.title}» در ${APPENDIX_SCOPE_LABELS[h.scope]} — پرش ≠ نوشتنِ دستی؛ خواندنِ همان‌جا نشانگر را تازه می‌کند${h.hint ? ` — ${h.hint}` : ""}`}
                   className={`flex min-h-9 items-center justify-between gap-1.5 rounded-lg px-2 text-right transition-[background-color,color] hover:bg-emerald-50 hover:text-emerald-800 dark:hover:bg-emerald-900/40 dark:hover:text-emerald-200 ${RESUME_FOCUS_RING}`}
                 >
                   <span className="min-w-0 flex-1 truncate text-[11.5px] font-bold text-stone-700 dark:text-stone-200">
@@ -249,7 +250,7 @@ export default function HeaderResumeButton() {
               ))}
             </div>
             <p className="mt-1 border-t border-stone-100 px-1.5 pt-1.5 text-[9px] leading-relaxed text-stone-500 dark:border-stone-800">
-              پرش به مسیرهای اخیر نشانگرِ «ادامهٔ مطالعه» را عوض نمی‌کند — فقط یک دیدنِ دوباره است.
+              {JUMP_VS_WRITE_FA}
             </p>
           </div>
         </>
@@ -264,7 +265,7 @@ export default function HeaderResumeButton() {
           data-hinting="true"
           className="pointer-events-none absolute top-full z-50 mt-2 w-64 max-w-[calc(100vw-2rem)] rounded-xl border border-emerald-200 bg-white px-3 py-2 text-[10.5px] font-bold leading-5 text-emerald-800 shadow-xl ltr:left-0 rtl:right-0 dark:border-emerald-800 dark:bg-stone-900 dark:text-emerald-200"
         >
-          کلیک: ادامهٔ مطالعه از همین‌جا — فلشِ کناری: مسیرهای اخیر (پرش به اخیرها نشانگر را عوض نمی‌کند)
+          کلیک: ادامهٔ مطالعه از همین‌جا — فلشِ کناری: مسیرهای اخیر (پرش ≠ نوشتنِ دستی)
         </div>
       )}
     </div>

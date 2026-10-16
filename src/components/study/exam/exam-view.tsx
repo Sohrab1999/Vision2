@@ -137,6 +137,9 @@ export default function ExamView() {
         groupOf={session.kind === "final" ? questionGroup : undefined}
         groupLabels={session.kind === "final" ? EXAM_GROUP_LABELS : undefined}
         mistakesOf={session.kind === "final" ? (q) => mistakesTargetOf(questionGroup(q)) : undefined}
+        // راند ۲۴۷ — بندِ ① پیشنهادِ ۲۴۶: خانوادهٔ resumeDoor به نتیجهٔ آزمون جامع هم رسید —
+        // جایی که گواهی گرفته می‌شود، راهِ برگشت به ضمیمه هم آن‌جاست (همان الگو، opt-inِ مصرف‌کننده).
+        resumeDoor
         onExit={() => setSession(null)}
       />
     );

@@ -28,12 +28,20 @@
 // دو مسیرِ رسیدن (رویدادِ زنده رویِ خودِ ضمیمه، پرچمِ یک‌بارمصرف برایِ
 // ناوبری از جای دیگر که قبل از mount می‌آید) هر دو این‌جا مصرف می‌شوند؛
 // مالکیتِ نمایش با خودِ نشانگر — پرنده‌ها فقط درخواست می‌دهند.
+//
+// راند ۲۴۷ — بندِ ② پیشنهادِ ۲۴۶: حبابِ آموزشیِ چیپِ «مسیر اخیر» —
+// قراردادِ «پرش ≠ نوشتن» که تا حالا فقط در تولتیپِ چیپ ساکن بود، حالا
+// لحظهٔ استفاده از نزدیک هم درس می‌دهد: بعد از پرشِ چیپ، یک statusِ
+// گذرای ۳٫۶ثانیه‌ای تأیید می‌کند که نشانگر عوض نشده — همان زمان‌بندیِ
+// حباب‌هایِ دیگرِ حلقه (یک ایدئوم، یک عمر). بی‌اثر برِ ماوس،
+// بی‌گیرِ تمرکز، و با هر پرشِ تازه عمرش نوسازی می‌شود.
 // ---------------------------------------------------------------------
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { History, Play } from "lucide-react";
 import {
   APPENDIX_SCOPE_LABELS,
+  JUMP_VS_WRITE_FA,
   appendixHistoryServerSnapshot,
   appendixHistorySnapshot,
   appendixResumeServerSnapshot,
@@ -132,6 +140,26 @@ export default function AppendixResumePill({
     setHinting(false);
   };
 
+  // راند ۲۴۷ — حبابِ «پرش ≠ نوشتن» چیپِ «مسیر اخیر»: بعد از پرش،
+  // تأییدِ گذرای ۳٫۶ثانیه‌ای که نشانگر همان ماند — آموزشِ از نزدیک.
+  const [chipHinting, setChipHinting] = useState(false);
+  const chipHintTimerRef = useRef<number | null>(null);
+  useEffect(() => {
+    return () => {
+      if (chipHintTimerRef.current !== null) window.clearTimeout(chipHintTimerRef.current);
+    };
+  }, []);
+  const jumpRecent = (h: { scope: AppendixScope; id: string }) => {
+    onGo(h.scope, h.id);
+    // پرش انجام شد — حالا درسِ «پرش ≠ نوشتن» از نزدیک؛ پالسِ نو عمر را نوسازی می‌کند
+    setChipHinting(true);
+    if (chipHintTimerRef.current !== null) window.clearTimeout(chipHintTimerRef.current);
+    chipHintTimerRef.current = window.setTimeout(() => {
+      chipHintTimerRef.current = null;
+      setChipHinting(false);
+    }, 3600);
+  };
+
   if (!item && !recent) return null;
 
   // راند ۲۳۷ — کلیکِ راست رویِ نشانگر هم پاک می‌کند (تقارنِ کنترل با هدر —
@@ -194,19 +222,35 @@ export default function AppendixResumePill({
         </span>
       )}
       {recent && (
-        <button
-          type="button"
-          onClick={() => onGo(recent.scope, recent.id)}
-          data-testid={`appendix-recent-chip-${recent.scope}-${recent.id}`}
-          title={`پرش به «${recent.title}» در ${APPENDIX_SCOPE_LABELS[recent.scope]} — این پرش نشانگرِ «ادامهٔ مطالعه» را عوض نمی‌کند${recent.hint ? ` — ${recent.hint}` : ""}`}
-          className={`inline-flex min-w-0 items-center gap-1 rounded-lg border border-stone-200 bg-transparent px-2 py-1 text-[11px] font-bold text-stone-600 transition-[background-color,color,border-color,transform] hover:border-emerald-200 hover:bg-emerald-50 hover:text-emerald-700 active:scale-[0.96] dark:border-stone-700 dark:text-stone-300 dark:hover:border-emerald-800 dark:hover:bg-emerald-900/30 dark:hover:text-emerald-300 ${RESUME_FOCUS_RING}`}
-        >
-          <History size={10} className="shrink-0 text-emerald-600" />
-          <span className="min-w-0 truncate">«{recent.title}»</span>
-          <span className="shrink-0 text-[9px] font-bold text-stone-500 dark:text-stone-300">
-            {APPENDIX_SCOPE_LABELS[recent.scope]}
-          </span>
-        </button>
+        <span className="relative inline-flex">
+          <button
+            type="button"
+            onClick={() => jumpRecent(recent)}
+            data-testid={`appendix-recent-chip-${recent.scope}-${recent.id}`}
+            title={`پرش به «${recent.title}» در ${APPENDIX_SCOPE_LABELS[recent.scope]} — پرش ≠ نوشتنِ دستی؛ خواندنِ همان‌جا نشانگر را تازه می‌کند${recent.hint ? ` — ${recent.hint}` : ""}`}
+            className={`inline-flex min-w-0 items-center gap-1 rounded-lg border border-stone-200 bg-transparent px-2 py-1 text-[11px] font-bold text-stone-600 transition-[background-color,color,border-color,transform] hover:border-emerald-200 hover:bg-emerald-50 hover:text-emerald-700 active:scale-[0.96] dark:border-stone-700 dark:text-stone-300 dark:hover:border-emerald-800 dark:hover:bg-emerald-900/30 dark:hover:text-emerald-300 ${RESUME_FOCUS_RING}`}
+          >
+            <History size={10} className="shrink-0 text-emerald-600" />
+            <span className="min-w-0 truncate">«{recent.title}»</span>
+            <span className="shrink-0 text-[9px] font-bold text-stone-500 dark:text-stone-300">
+              {APPENDIX_SCOPE_LABELS[recent.scope]}
+            </span>
+          </button>
+          {chipHinting && (
+            /* راند ۲۴۷ — تأییدِ گذرای پرشِ چیپ با متنِ صادقِ لایه-بی‌طرف
+               (یافتهٔ QA زنده: سه لایه رسیدنِ لنگردار را «دیدن» می‌دانند و
+               نشانگر همان‌جا تازه می‌شود — جملهٔ کهنه برایشان نادرست بود):
+               قرارداد از JUMP_VS_WRITE_FA — یک منبع، صفرِ نسخهٔ دستی. */
+            <span
+              role="status"
+              data-testid="appendix-recent-chip-hint"
+              data-chip-hinting="true"
+              className="pointer-events-none absolute top-full right-0 z-30 mt-1.5 w-64 max-w-[calc(100vw-2.5rem)] rounded-xl border border-emerald-200 bg-white px-3 py-2 text-[10.5px] font-bold leading-5 text-emerald-800 shadow-xl dark:border-emerald-800 dark:bg-stone-900 dark:text-emerald-200"
+            >
+              {JUMP_VS_WRITE_FA}
+            </span>
+          )}
+        </span>
       )}
     </div>
   );
