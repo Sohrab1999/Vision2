@@ -1,10 +1,46 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Vazirmatn } from "next/font/google";
 import "./globals.css";
 import "./features.css";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/study/shell/theme-provider";
 import LiveAnnouncer from "@/components/study/shell/live-announcer";
+
+// Pre-React boot guard (r269): a turbopack HMR stale-factory error that
+// fires BEFORE the first React mount reaches no error boundary at all —
+// the learner sees a blank iframe (the platform then shows its own
+// "page won't open" card, the 2026-10-17 user-visible incident). This
+// tiny inline script owns that window: it listens for the same chunk /
+// stale-factory wording as error.tsx + global-error.tsx (three copies
+// MUST stay literally in sync — the last-resort boundary stays
+// dependency-free, so no shared import) and performs the same ONE
+// loop-proof reload per session (shared sessionStorage key). Listeners
+// retire after 30s so post-mount errors flow through the boundaries,
+// keeping the /api/client-error telemetry that made this diagnosis
+// possible in the first place.
+const BOOT_GUARD_SNIPPET = String.raw`(function(){
+  try{
+    var KEY="v2-chunk-reload";
+    var RX=/failed to (fetch|load)( dynamically)?( imported)? (module|chunk)|error loading dynamically imported module|loading chunk \d+ failed|importing a module script failed|module factory is not available|deleted in an HMR update/i;
+    function heal(msg){
+      try{
+        if(!RX.test(msg||"")) return;
+        if(sessionStorage.getItem(KEY)) return;
+        sessionStorage.setItem(KEY,"1");
+        window.location.reload();
+      }catch(e){}
+    }
+    function onErr(e){ heal(e && (e.message || (e.error && e.error.message))); }
+    function onRej(e){ heal(e && e.reason && (e.reason.message || String(e.reason))); }
+    window.addEventListener("error", onErr, true);
+    window.addEventListener("unhandledrejection", onRej, true);
+    setTimeout(function(){
+      window.removeEventListener("error", onErr, true);
+      window.removeEventListener("unhandledrejection", onRej, true);
+    }, 30000);
+  }catch(e){}
+})();`;
 
 const vazir = Vazirmatn({
   variable: "--font-vazir",
@@ -84,6 +120,12 @@ export default function RootLayout({
   return (
     <html lang="fa" dir="rtl" suppressHydrationWarning>
       <body className={`${vazir.variable} antialiased bg-background text-foreground`}>
+        {/* r269 pre-React boot guard — see comment above the snippet */}
+        <Script
+          id="boot-guard"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: BOOT_GUARD_SNIPPET }}
+        />
         <ThemeProvider>{children}</ThemeProvider>
         {/* Task 171 — the screen-reader announcement layer: two sr-only live
             regions (polite + assertive) fed by lib/announcer via the toaster.
