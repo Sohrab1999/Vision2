@@ -10,9 +10,13 @@ import { BookX, Home, RotateCcw } from "lucide-react";
 // Dev/preview chunk-load races (a fetch of a not-yet-compiled chunk under
 // load, e.g. right after a heavy test run) surface here as a broken module
 // graph — reset() cannot heal that, but a single reload does. Patterns
-// cover the wording of turbopack/webpack/Safari respectively.
+// cover the wording of turbopack/webpack/Safari plus the turbopack HMR
+// stale-factory wording ("module factory is not available ... deleted in
+// an HMR update") that fired the 2026-10-16 user-visible incident: the
+// old regex missed it, so the self-heal never ran and the learner was
+// left staring at the recovery card instead of the healed page.
 const CHUNK_LOAD_ERR =
-  /failed to (fetch|load)( dynamically)?( imported)? (module|chunk)|error loading dynamically imported module|loading chunk \d+ failed|importing a module script failed/i;
+  /failed to (fetch|load)( dynamically)?( imported)? (module|chunk)|error loading dynamically imported module|loading chunk \d+ failed|importing a module script failed|module factory is not available|deleted in an HMR update/i;
 const CHUNK_RELOAD_KEY = "v2-chunk-reload";
 
 export default function ErrorPage({

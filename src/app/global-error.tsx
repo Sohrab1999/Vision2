@@ -16,10 +16,12 @@ export default function GlobalErrorPage({
   useEffect(() => {
     console.error("Webbook fatal error:", error);
     try {
-      // same contract as route error.tsx: one loop-proof reload for
-      // chunk-load races, otherwise forward to the server log
+      // same contract as route error.tsx (regex kept literally in sync —
+      // this last-resort boundary must stay dependency-free, so no shared
+      // import): one loop-proof reload for chunk-load races and turbopack
+      // HMR stale factories, otherwise forward to the server log
       const CHUNK_LOAD_ERR =
-        /failed to (fetch|load)( dynamically)?( imported)? (module|chunk)|error loading dynamically imported module|loading chunk \d+ failed|importing a module script failed/i;
+        /failed to (fetch|load)( dynamically)?( imported)? (module|chunk)|error loading dynamically imported module|loading chunk \d+ failed|importing a module script failed|module factory is not available|deleted in an HMR update/i;
       const key = "v2-chunk-reload";
       if (CHUNK_LOAD_ERR.test(error.message || "")) {
         if (!sessionStorage.getItem(key)) {
