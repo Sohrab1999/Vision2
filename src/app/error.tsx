@@ -4,7 +4,7 @@
 // a crash in any view no longer kills the whole app — the shell
 // (header/footer/store) survives and the learner can retry or go home.
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { BookX, Home, RotateCcw } from "lucide-react";
 
 // Dev/preview chunk-load races (a fetch of a not-yet-compiled chunk under
@@ -21,18 +21,21 @@ const CHUNK_RELOAD_KEY = "v2-chunk-reload";
 
 export default function ErrorPage({
   error,
-  reset,
 }: {
   error: Error & { digest?: string };
-  reset: () => void;
+  // Next's route-boundary API still hands us reset(); it is intentionally
+  // unused — see the button comment below.
+  reset?: () => void;
 }) {
-  const [counting, setCounting] = useState(false);
   // A chunk-class failure can only be healed by a full document reload:
-  // reset() re-renders the same broken lazy module graph. When the session's
-  // one-shot auto-reload is already spent (several HMR incidents inside one
-  // long-lived preview session — the 2026-10-17 follow-up), the learner must
-  // not be trapped on this card, so the primary button becomes a real hard
-  // reload (user-consented ⇒ cannot loop without them).
+  // reset() re-renders the same broken lazy module graph. And in this
+  // long-lived preview reality (parallel HMR churn + watchdog server
+  // restarts), even non-chunk crashes leave a stale graph behind — the
+  // 2026-10-17 "هنوزم همینه" follow-up showed the learner clicking retry
+  // on a card whose reset() kept re-rendering the same broken state. So
+  // whatever the error class, the primary escape is a real hard reload
+  // (user-consented ⇒ cannot loop without them); the raw error stays on
+  // the card and /api/client-error keeps incidents discoverable.
   const isChunkErr = CHUNK_LOAD_ERR.test(error.message || "");
 
   useEffect(() => {
@@ -82,30 +85,24 @@ export default function ErrorPage({
         <div className="flex flex-col items-center justify-center gap-2 sm:flex-row">
           <button
             onClick={() => {
-              setCounting(true);
-              if (isChunkErr) {
-                // hard reload heals a broken module graph; clearing the
-                // guard key lets the fresh session auto-heal once more
-                try {
-                  sessionStorage.removeItem(CHUNK_RELOAD_KEY);
-                } catch {
-                  /* storage may be unavailable — reload still proceeds */
-                }
-                window.location.reload();
-                return;
+              // hard reload heals a broken/stale module graph whatever the
+              // error class; clearing the guard key lets the fresh session
+              // auto-heal once more
+              try {
+                sessionStorage.removeItem(CHUNK_RELOAD_KEY);
+              } catch {
+                /* storage may be unavailable — reload still proceeds */
               }
-              reset();
-              // guard: if reset silently fails, offer home after a beat
-              setTimeout(() => setCounting(false), 600);
+              window.location.reload();
             }}
-            className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-emerald-600 px-5 py-2.5 text-sm font-bold text-white shadow-sm transition-all hover:bg-emerald-700 active:scale-95"
+            className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-emerald-600 px-5 py-2.5 text-sm font-bold text-white shadow-sm transition-[background-color,transform] hover:bg-emerald-700 active:scale-95"
           >
             <RotateCcw size={15} />
             تلاش دوباره
           </button>
           <a
             href="/"
-            className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-stone-300 bg-white px-5 py-2.5 text-sm font-bold text-stone-700 transition-all hover:bg-stone-50 active:scale-95"
+            className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-stone-300 bg-white px-5 py-2.5 text-sm font-bold text-stone-700 transition-[background-color,transform] hover:bg-stone-50 active:scale-95"
           >
             <Home size={15} />
             بازگشت به خانه
@@ -127,11 +124,6 @@ export default function ErrorPage({
             {error.message.length > 160
               ? `${error.message.slice(0, 160)}…`
               : error.message}
-          </p>
-        )}
-        {counting && (
-          <p className="mt-3 text-[12px] font-bold text-emerald-600">
-            در حال بازیابی…
           </p>
         )}
       </div>

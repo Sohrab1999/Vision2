@@ -8,10 +8,11 @@ import { BookX, RotateCcw } from "lucide-react";
 
 export default function GlobalErrorPage({
   error,
-  reset,
 }: {
   error: Error & { digest?: string };
-  reset: () => void;
+  // Next's global-boundary API still hands us reset(); intentionally
+  // unused — see the button comment below.
+  reset?: () => void;
 }) {
   useEffect(() => {
     console.error("Webbook fatal error:", error);
@@ -98,21 +99,18 @@ export default function GlobalErrorPage({
           </p>
           <button
             onClick={() => {
-              // parity with route error.tsx: a chunk-class failure can only
-              // be healed by a full document reload — reset() re-renders the
-              // same broken module graph. User-consented ⇒ cannot loop.
-              const CHUNK_LOAD_ERR =
-                /failed to (fetch|load)( dynamically)?( imported)? (module|chunk)|error loading dynamically imported module|loading chunk \d+ failed|importing a module script failed|module factory is not available|deleted in an HMR update/i;
-              if (CHUNK_LOAD_ERR.test(error.message || "")) {
-                try {
-                  sessionStorage.removeItem("v2-chunk-reload");
-                } catch {
-                  /* storage may be unavailable — reload still proceeds */
-                }
-                window.location.reload();
-                return;
+              // parity with route error.tsx: whatever the error class, the
+              // only real escape here is a full document reload — reset()
+              // re-renders the same stale/broken module graph (the
+              // 2026-10-17 "هنوزم همینه" follow-up). User-consented ⇒
+              // cannot loop; clearing the guard key lets the fresh session
+              // auto-heal once more.
+              try {
+                sessionStorage.removeItem("v2-chunk-reload");
+              } catch {
+                /* storage may be unavailable — reload still proceeds */
               }
-              reset();
+              window.location.reload();
             }}
             style={{
               display: "inline-flex",
