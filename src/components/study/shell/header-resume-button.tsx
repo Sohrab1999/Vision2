@@ -78,22 +78,43 @@ export default function HeaderResumeButton() {
   // است و پرنده‌هایِ در فقط رویداد می‌فرستند (تک‌نقطه‌ای بودنِ منطقِ نمایش).
   const [pulsing, setPulsing] = useState(false);
   const pulseTimerRef = useRef<number | null>(null);
+  // راند ۲۴۵ — تولتیپِ آموزشیِ گذرا (بندِ ① پیشنهادِ ۲۴۴): بعد از پرشِ در،
+  // پالس «کجا» را نشان می‌دهد و این حباب «چه‌کار» را — قراردادِ «پرش ≠ نوشتن»
+  // (r240) تا حالا فقط در پنلِ caret ساکن بود؛ حالا لحظهٔ رسیدنِ در هم آموزش
+  // می‌دهد. بی‌اثر برِ ماوس (pointer-events-none) و با role=status برایِ
+  // صفحه‌خوان — و با هر کلیکِ رویِ خودِ خوشه زودتر می‌رود.
+  const [hinting, setHinting] = useState(false);
+  const hintTimerRef = useRef<number | null>(null);
   useEffect(() => {
     const onPulse = () => {
       setPulsing(true);
+      setHinting(true);
       // پالسِ ۱٫۶ثانیه‌ای — عمداً بیرونِ پاک‌سازیِ effect (آموزشِ r234)
       if (pulseTimerRef.current !== null) window.clearTimeout(pulseTimerRef.current);
       pulseTimerRef.current = window.setTimeout(() => {
         pulseTimerRef.current = null;
         setPulsing(false);
       }, 1600);
+      // حبابِ آموزشی کمی طولانی‌تر از پالس — خواندنش زمان می‌برد
+      if (hintTimerRef.current !== null) window.clearTimeout(hintTimerRef.current);
+      hintTimerRef.current = window.setTimeout(() => {
+        hintTimerRef.current = null;
+        setHinting(false);
+      }, 3600);
     };
     window.addEventListener(PULSE_HEADER_RESUME_EVENT, onPulse);
     return () => {
       window.removeEventListener(PULSE_HEADER_RESUME_EVENT, onPulse);
       if (pulseTimerRef.current !== null) window.clearTimeout(pulseTimerRef.current);
+      if (hintTimerRef.current !== null) window.clearTimeout(hintTimerRef.current);
     };
   }, []);
+  /** هر کلیکِ رویِ خودِ خوشه = کاربر خودش آمده؛ حبابِ آموزشی دیگر لازم نیست */
+  const dismissHint = () => {
+    if (hintTimerRef.current !== null) window.clearTimeout(hintTimerRef.current);
+    hintTimerRef.current = null;
+    setHinting(false);
+  };
 
   // راند ۲۳۷ — کلیکِ راست رویِ دکمهٔ هدر = پاک‌کردنِ رکورد (بندِ ① پیشنهادِ
   // ۲۳۶). پاک‌کردنِ فوری + توست — همان سبکِ قطعِ همگام‌سازی؛ رکوردِ پاک‌شده
@@ -135,7 +156,10 @@ export default function HeaderResumeButton() {
     <div className="relative flex items-center" data-testid="header-resume-cluster">
       <button
         type="button"
-        onClick={() => navigateResume(item)}
+        onClick={() => {
+          dismissHint();
+          navigateResume(item);
+        }}
         onContextMenu={handleClear}
         aria-label={tooltip}
         title={tooltip}
@@ -159,7 +183,10 @@ export default function HeaderResumeButton() {
       {recents.length > 0 && (
         <button
           type="button"
-          onClick={() => setOpen((o) => !o)}
+          onClick={() => {
+            dismissHint();
+            setOpen((o) => !o);
+          }}
           aria-expanded={open}
           aria-controls={RECENT_PANEL_ID}
           aria-label={`مسیرهای اخیر ضمیمه — ${faNum(recents.length)} مسیر`}
@@ -226,6 +253,19 @@ export default function HeaderResumeButton() {
             </p>
           </div>
         </>
+      )}
+      {hinting && (
+        /* راند ۲۴۵ ① — حبابِ آموزشیِ لحظهٔ رسیدنِ در: «چه‌کار می‌توانم بکنم؟» —
+           پالس «کجا» را گفت، این «چه‌کار» را می‌گوید. بی‌اثر برِ ماوس و بی‌گیرِ
+           تمرکز (pointer-events-none)؛ با کلیکِ رویِ خودِ خوشه یا ۳٫۶ثانیه می‌رود. */
+        <div
+          role="status"
+          data-testid="header-resume-door-hint"
+          data-hinting="true"
+          className="pointer-events-none absolute top-full z-50 mt-2 w-64 max-w-[calc(100vw-2rem)] rounded-xl border border-emerald-200 bg-white px-3 py-2 text-[10.5px] font-bold leading-5 text-emerald-800 shadow-xl ltr:left-0 rtl:right-0 dark:border-emerald-800 dark:bg-stone-900 dark:text-emerald-200"
+        >
+          کلیک: ادامهٔ مطالعه از همین‌جا — فلشِ کناری: مسیرهای اخیر (پرش به اخیرها نشانگر را عوض نمی‌کند)
+        </div>
       )}
     </div>
   );

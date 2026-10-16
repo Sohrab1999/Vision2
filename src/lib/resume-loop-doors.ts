@@ -48,6 +48,15 @@ export interface ResumeLoopDoor {
 export const DOOR_CMD_PREFIX = "door-";
 export const doorCmdId = (id: ResumeDoorId): string => `${DOOR_CMD_PREFIX}${id}`;
 
+// راند ۲۴۵ — نامِ کوتاهِ هر در برایِ ردیف‌هایِ فشرده (پروفایل/پالت):
+// درِ leadدار = leadِ بدونِ «:» (هدر/خانه/ضمیمه/پروفایل)؛ درِ بی‌lead
+// (فرمان‌یاب) = نخستینِ بخشِ متنش پیش از «—». یک اشتقاق، یک منبع —
+// مصرف‌کننده‌هایِ ردیفِ فشرده هرگز نامِ در را دوباره نمی‌نویسند.
+export function doorShortName(door: ResumeLoopDoor): string {
+  if (door.lead) return door.lead.replace(/:\s*$/, "");
+  return door.text.split("—")[0]!.trim();
+}
+
 // رویدادِ پالسِ درِ هدر (بندِ ② پیشنهادِ ۲۴۳): دکمهٔ هدر خودش مالکِ
 // پالسِ زرشکیِ گذراست — پرنده‌هایِ در (راهنما/فرمان‌یاب) فقط رویداد را
 // می‌فرستند؛ منطقِ نمایش در یک نقطه است.

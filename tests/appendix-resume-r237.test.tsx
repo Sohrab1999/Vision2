@@ -205,7 +205,8 @@ describe("C — پروفایل: بخشِ «ادامهٔ مطالعه»", () => {
     render(<ProfilePopover />);
     openProfile();
     expect(screen.getByTestId("profile-resume-section")).toBeInTheDocument();
-    const goBtn = screen.getByRole("button", { name: /ادامه/ });
+    // نامِ دقیق — از r245 مینی‌کارتِ درهایِ حلقه هم ردیف‌هایِ حاویِ «ادامه» دارد
+    const goBtn = screen.getByRole("button", { name: "ادامه" });
     act(() => {
       fireEvent.click(goBtn);
     });

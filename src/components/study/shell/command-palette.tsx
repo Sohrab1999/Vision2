@@ -67,6 +67,7 @@ import {
   RESUME_LOOP_DOORS,
   DOOR_HANDOFF_DELAY_MS,
   doorCmdId,
+  doorShortName,
   focusHeaderDoor,
 } from "@/lib/resume-loop-doors";
 import { useAppendixResumeNav } from "../shared/use-appendix-resume-nav";
@@ -292,7 +293,10 @@ export default function CommandPalette() {
       .filter((d) => d.action.kind !== "focus-header" || (resumeItem && view.type !== "appendix"))
       .map((d) => ({
         id: doorCmdId(d.id),
-        label: d.lead ? `درِ ${d.lead.replace(/:\s*$/, "")}` : d.openLabel,
+        // راند ۲۴۵ — اشتقاقِ نام از doorShortName (یک اشتقاق، یک منبع —
+        // همان helperِ مینی‌کارتِ پروفایل)؛ برایِ درهایِ leadدار همان
+        // «درِ هدر/خانه/ضمیمه/پروفایل»ِ قبل است.
+        label: `درِ ${doorShortName(d)}`,
         group: "درهای حلقه",
         hint: d.openLabel,
         keywords: [d.id, "door", "حلقه", d.text],

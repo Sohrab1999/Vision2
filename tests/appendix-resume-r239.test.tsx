@@ -198,7 +198,8 @@ describe("B — حلقهٔ کیبوردِ واحدِ درهایِ «ادامه»
       fireEvent.pointerDown(trigger);
       fireEvent.click(trigger);
     });
-    expect(screen.getByRole("button", { name: /ادامه/ })).toHaveClass("focus-visible:ring-2");
+    // نامِ دقیق — از r245 مینی‌کارتِ درهایِ حلقه هم ردیف‌هایِ حاویِ «ادامه» دارد
+    expect(screen.getByRole("button", { name: "ادامه" })).toHaveClass("focus-visible:ring-2");
     expect(screen.getByTestId("profile-history-item-verbs-eat")).toHaveClass("focus-visible:ring-2");
   });
 });

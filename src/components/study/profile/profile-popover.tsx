@@ -1,6 +1,6 @@
 "use client";
 
-import { User, Download, Upload, ShieldCheck, History, RotateCcw, Laptop, CloudUpload, CloudDownload, Copy, Link2Off, RefreshCw, BookmarkCheck, Play, Trash2 } from "lucide-react";
+import { User, Download, Upload, ShieldCheck, History, RotateCcw, Laptop, CloudUpload, CloudDownload, Copy, Link2Off, RefreshCw, BookmarkCheck, Play, Trash2, Route, ChevronLeft } from "lucide-react";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useStudy, AVATAR_COLORS } from "@/lib/study-store";
 import { avatarClasses } from "@/lib/study-theme";
@@ -16,6 +16,7 @@ import { adoptResumeIfAbsent, appendixHistoryServerSnapshot, appendixHistorySnap
 import { useAppendixResumeNav } from "../shared/use-appendix-resume-nav";
 import { useToast } from "@/hooks/use-toast";
 import { RESUME_FOCUS_RING } from "@/lib/study-theme";
+import { RESUME_LOOP_DOORS, DOOR_HANDOFF_DELAY_MS, doorShortName, focusHeaderDoor, type ResumeLoopDoor } from "@/lib/resume-loop-doors";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 // ------------------------------------------------------------------
@@ -32,6 +33,9 @@ export default function ProfilePopover() {
   const setProfile = useStudy((s) => s.setProfile);
   const syncCode = useStudy((s) => s.syncCode);
   const setSyncCode = useStudy((s) => s.setSyncCode);
+  // راند ۲۴۵ — مینی‌کارتِ درهایِ حلقه: ناوبریِ درها + گِیتِ درِ هدر (رویِ ضمیمه مستور است)
+  const setView = useStudy((s) => s.setView);
+  const view = useStudy((s) => s.view);
   const mounted = useMounted();
   const { toast } = useToast();
   const fileRef = useRef<HTMLInputElement>(null);
@@ -289,6 +293,52 @@ export default function ProfilePopover() {
     });
   };
 
+  // ------------------- راند ۲۴۵ — مینی‌کارتِ درهایِ حلقه (بندِ ② پیشنهادِ ۲۴۴) -------------------
+
+  // «فهرستِ زنده» مصرفِ سومش را گرفت: بلوکِ پروفایل هم ردیف‌هایِ «ادامه» را
+  // از RESUME_LOOP_DOORS می‌شناسد — درِ نو یک سطرِ داده است، نه یک ردیفِ دستی.
+  // درِ خودِ پروفایل حذف است (اینجا ایستاده‌ای — فرمانِ باز کردنِ پروفایل از
+  // درونِ پروفایل کنشِ ساختگی است) و درِ هدر رویِ خودِ ضمیمه غیبِ صادقانه
+  // (نشانگرِ سرِ صفحه همان در است — همان ایدئومِ پالتِ r244). رکورد همیشه
+  // هست (بخش با رکورد رندر می‌شود) پس گِیتِ بی‌رکوردِ درِ هدر اینجا معنا ندارد.
+  const doorRows = RESUME_LOOP_DOORS.filter(
+    (d) =>
+      d.id !== "profile" &&
+      (d.action.kind !== "focus-header" || view.type !== "appendix"),
+  );
+
+  // تایمرِ تحویلِ درهایِ فوکوس‌بر (فرمان‌یاب/هدر) — ایدئومِ راهنمایِ r243:
+  // پاپ‌اُورِ بسته‌شونده فوکوس را به فراخوانش برمی‌گرداند؛ dispatchِ هم‌زمان
+  // فوکوسِ تازه‌وارد را می‌دزدد. با خودِ کامپوننت تمیز شود.
+  const handoffRef = useRef<number | null>(null);
+  useEffect(() => {
+    return () => {
+      if (handoffRef.current !== null) window.clearTimeout(handoffRef.current);
+    };
+  }, []);
+
+  const runDoorAction = (door: ResumeLoopDoor) => {
+    const a = door.action;
+    setOpen(false);
+    if (a.kind === "goto-home") {
+      setView({ type: "home" });
+      return;
+    }
+    if (a.kind === "goto-appendix") {
+      setView({ type: "appendix" });
+      return;
+    }
+    if (handoffRef.current !== null) window.clearTimeout(handoffRef.current);
+    handoffRef.current = window.setTimeout(() => {
+      handoffRef.current = null;
+      if (a.kind === "open-palette") {
+        window.dispatchEvent(new CustomEvent("open-command-palette"));
+      } else if (a.kind === "focus-header") {
+        focusHeaderDoor();
+      }
+    }, DOOR_HANDOFF_DELAY_MS);
+  };
+
   return (
     <Popover open={open} onOpenChange={openPopover}>
       {/* suppressHydrationWarning: Radix emits aria-controls={useId()} on the
@@ -467,6 +517,41 @@ export default function ProfilePopover() {
                 </div>
                 <p className="mt-1 text-[9px] leading-4 text-stone-500">
                   پرش به این‌ها «ادامهٔ مطالعه» را عوض نمی‌کند — فقط خواندنِ واقعی همان‌جا عوضش می‌کند.
+                </p>
+              </div>
+            )}
+            {doorRows.length > 0 && (
+              /* راند ۲۴۵ ② — مینی‌کارتِ درهایِ حلقه از RESUME_LOOP_DOORS:
+                 حلقه فقط «اخیراً» و تاریخچه نیست — از کجاها می‌شود برگشت؟
+                 همان دادهٔ راهنما/پالت، سبکِ فشرده؛ درِ نو خودش می‌آید. */
+              <div
+                className="mt-2.5 border-t border-emerald-100 pt-2"
+                data-testid="profile-resume-doors"
+              >
+                <div className="mb-1.5 flex items-center gap-1 text-[10px] font-black text-stone-500">
+                  <Route size={11} className="shrink-0 text-emerald-600" />
+                  حلقهٔ «ادامهٔ مطالعه» — درهای دیگر
+                </div>
+                <div className="flex flex-col gap-0.5">
+                  {doorRows.map((door) => (
+                    <button
+                      key={door.id}
+                      onClick={() => runDoorAction(door)}
+                      title={door.openLabel}
+                      data-testid={`profile-resume-door-${door.id}`}
+                      className={`flex min-h-8 w-full items-center justify-between gap-2 rounded-lg bg-transparent px-2 py-1 text-right transition-[background-color,color] hover:bg-emerald-50 hover:text-emerald-800 dark:hover:bg-emerald-900/30 dark:hover:text-emerald-200 ${RESUME_FOCUS_RING}`}
+                    >
+                      <span className="min-w-0 flex-1 truncate text-[10px] font-bold text-stone-600">
+                        <span className="text-emerald-700 dark:text-emerald-300">درِ {doorShortName(door)}</span>
+                        {" — "}
+                        {door.openLabel}
+                      </span>
+                      <ChevronLeft size={11} className="shrink-0 text-emerald-600 dark:text-emerald-400" aria-hidden />
+                    </button>
+                  ))}
+                </div>
+                <p className="mt-1 text-[9px] leading-4 text-stone-500">
+                  کلیک روی هر ردیف، همان در را باز می‌کند.
                 </p>
               </div>
             )}
