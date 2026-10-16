@@ -46,6 +46,7 @@ const SmartPracticeView = lazyView(() => import("./practice/smart-practice-view"
 const KonkurView = lazyView(() => import("./exam/konkur-view"));
 const GrammarView = lazyView(() => import("./grammar/grammar-view"));
 const MyWordsView = lazyView(() => import("./practice/my-words"));
+const JozveView = lazyView(() => import("./jozve/jozve-view"));
 
 // Report modals: heavy (official-report pulls per-lesson stats) and computed
 // while closed (audit finding G-5). They mount only after the first "open"
@@ -237,6 +238,7 @@ export default function StudyApp() {
                 {view.type === "konkur" && <KonkurView />}
                 {view.type === "grammar" && <GrammarView />}
                 {view.type === "my-words" && <MyWordsView />}
+                {view.type === "jozve" && <JozveView />}
               </motion.div>
             </AnimatePresence>
           ) : (

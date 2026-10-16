@@ -30,7 +30,8 @@ export type View =
   | { type: "smart" }
   | { type: "konkur" }
   | { type: "grammar" } // متروی گرامر — Task 39
-  | { type: "my-words" }; // واژه‌های نشان‌شده — واژه‌نامهٔ شخصی
+  | { type: "my-words" } // واژه‌های نشان‌شده — واژه‌نامهٔ شخصی
+  | { type: "jozve" }; // کتابخانهٔ جزوه‌ها — استخراج کامل ۶ جزوهٔ پایه ۷ تا ۱۲
 
 export type LessonTab = "vocab" | "conversation" | "reading" | "grammar" | "writing" | "dictation" | "tests";
 
