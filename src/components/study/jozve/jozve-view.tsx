@@ -138,6 +138,13 @@ interface JozveTestBank {
   lessons: { lesson: number; title: string; level: string; count: number; questions: JozveTestQuestion[] }[];
 }
 const GRADE_TESTS: Record<number, { lessons: { lesson: number; title: string; count: number }[] }> = {
+  11: {
+    lessons: [
+      { lesson: 1, title: "درس اول", count: 40 },
+      { lesson: 2, title: "درس دوم", count: 40 },
+      { lesson: 3, title: "درس سوم", count: 40 },
+    ],
+  },
   12: {
     lessons: [
       { lesson: 1, title: "درس اول", count: 100 },
