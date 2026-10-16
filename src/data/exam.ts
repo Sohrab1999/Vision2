@@ -6,6 +6,12 @@ import { applyExamTranslations } from "./exam-fa";
 // آزمون جامع: بانک کامل «۳۶۰ تست واژگان درس ۱ تا ۳» جزوه (صفحهٔ ۱۱۸ تا ۱۳۵)
 // کلید: صفحهٔ ۲۰۴ جزوه — استخراج و اعتبارسنجی خودکار با اسکریپت (۱۴۰۳)
 // سطح تست‌ها: استاندارد و کنکوری
+// r269 receipt: scripts/verify-exam-key-r269.py decoded the printed p.204
+// column key programmatically (printed == positional, 360/360) and cross-
+// checked every answer: 358/360 identical. The two deviations (x-296, x-353)
+// are errata IN THE JOZVE'S OWN KEY — its letters (confusing / communication)
+// are semantically impossible in context; the app keeps the correct
+// «extra» / «transportation».
 // =====================================================================
 
 export const examBank: QuizQuestion[] = [
@@ -304,6 +310,7 @@ export const examBank: QuizQuestion[] = [
   Q("x-293", "vocab", "A planned series of actions for achieving something is called --------------------.", ["step", "confidence", "strategy", "secret"], 2),
   Q("x-294", "vocab", "Students should set a ----------------------- time aside to do their homework.", ["mental", "aware", "specific", "domestic"], 2),
   Q("x-295", "vocab", "Unemployment as a --------------- issue remained unsolved and politicians couldn’t find any solution.", ["local", "busy", "interesting", "social"], 3),
+  // jozve key erratum (p.204 prints «b/confusing») — semantic answer is extra
   Q("x-296", "vocab", "She has been working ------------------- hours to save enough money for next summer vacation.", ["extra", "confusing", "voluntary", "necessary"], 0),
   Q("x-297", "vocab", "Physical exercise can ----------------------- you against heart disease.", ["develop", "create", "protect", "improve"], 2),
   Q("x-298", "vocab", "He -------------------- his job to find a better one.", ["separated", "gave up", "disliked", "put off"], 1),
@@ -361,6 +368,7 @@ export const examBank: QuizQuestion[] = [
   Q("x-350", "vocab", "He is a player of real talent and ------------------- and has the ability to make a real and lasting impression at the highest level.", ["access", "opinion", "aid", "skill"], 3),
   Q("x-351", "vocab", "Medicines are not always without problems, and doctors usually ------------------ the risks to patients.", ["measure", "imagine", "suggest", "explain"], 3),
   Q("x-352", "vocab", "He published his findings after a detailed study of how moral values ------------------ over time.", ["draw", "donate", "vary", "carry"], 2),
+  // jozve key erratum (p.204 prints «b/communication») — semantic answer is transportation
   Q("x-353", "vocab", "In the 19th century, horses and carts were the only means of ------------------ available.", ["transportation", "communication", "education", "production"], 0),
   Q("x-354", "vocab", "Ali was sent to a company in China and his ------------------- was to explain them our goals.", ["dream", "mission", "pattern", "offer"], 1),
   Q("x-355", "vocab", "They have the --------------------- of creating conditions for every child in the society to have free access to education.", ["goal", "topic", "prize", "step"], 0),
