@@ -138,7 +138,13 @@ interface JozveTestBank {
   lessons: { lesson: number; title: string; level: string; count: number; questions: JozveTestQuestion[] }[];
 }
 const GRADE_TESTS: Record<number, { lessons: { lesson: number; title: string; count: number }[] }> = {
-  12: { lessons: [{ lesson: 1, title: "درس اول", count: 100 }] },
+  12: {
+    lessons: [
+      { lesson: 1, title: "درس اول", count: 100 },
+      { lesson: 2, title: "درس دوم", count: 100 },
+      { lesson: 3, title: "درس سوم", count: 100 },
+    ],
+  },
 };
 const testsCache = new Map<number, Promise<JozveTestBank | null>>();
 const fetchTests = (grade: number): Promise<JozveTestBank | null> => {

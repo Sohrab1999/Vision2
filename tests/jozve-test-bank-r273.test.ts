@@ -32,14 +32,14 @@ const FA = /[\u0600-\u06FF]/;
 const BLANK = /-{5,}/;
 
 describe("jozve test bank g12-l1 (r273 extraction receipt)", () => {
-  it("bank shape: grade 12, one lesson, exactly 100 questions", () => {
+  it("bank shape: grade 12, three lessons (r273=l1 + r274=l2/l3), exactly 100 questions each", () => {
     expect(bank.grade).toBe(12);
-    expect(bank.lessons).toHaveLength(1);
-    const l = bank.lessons[0];
-    expect(l.lesson).toBe(1);
-    expect(l.count).toBe(100);
-    expect(l.questions).toHaveLength(100);
-    expect(l.questions.map((q) => q.n)).toEqual(Array.from({ length: 100 }, (_, i) => i + 1));
+    expect(bank.lessons.map((l) => l.lesson)).toEqual([1, 2, 3]);
+    for (const l of bank.lessons) {
+      expect(l.count, `lesson ${l.lesson}`).toBe(100);
+      expect(l.questions, `lesson ${l.lesson}`).toHaveLength(100);
+      expect(l.questions.map((q) => q.n)).toEqual(Array.from({ length: 100 }, (_, i) => i + 1));
+    }
   });
 
   it("every question: 4 unique options, valid answer, blanked stem, English purity", () => {
@@ -85,12 +85,14 @@ describe("jozve test bank g12-l1 (r273 extraction receipt)", () => {
     expect(opt(100)).toBe("make");
   });
 
-  it("manifest lock: GRADE_TESTS in jozve-view must mirror the real bank", async () => {
+  it("manifest lock: GRADE_TESTS in jozve-view must mirror the real bank (3 lessons of grade 12)", async () => {
     const src = readFileSync(
       path.join(process.cwd(), "src/components/study/jozve/jozve-view.tsx"),
       "utf8"
     );
-    expect(src).toContain('12: { lessons: [{ lesson: 1, title: "درس اول", count: 100 }] }');
+    expect(src).toContain('lesson: 1, title: "درس اول", count: 100');
+    expect(src).toContain('lesson: 2, title: "درس دوم", count: 100');
+    expect(src).toContain('lesson: 3, title: "درس سوم", count: 100');
     expect(src).toContain("trackMistakes={false}"); // بانک خطای سه درس دست‌نخورده می‌ماند
   });
 });
