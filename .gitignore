@@ -64,3 +64,6 @@ tool-results/
 # the stats API share it; leaking it would let anyone forge match receipts
 mini-services/challenge-service/.receipt-secret
 mini-services/challenge-service/.ticket-secret
+
+# round 265: extracted jozve corpus — regenerable via scripts/extract-jozve-r265.py
+content-extracts/

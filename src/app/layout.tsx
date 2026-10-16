@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     "وب‌کتاب",
     "آموزش تعاملی",
   ],
-  authors: [{ name: "بر اساس جزوهٔ جمال احمدی" }],
+  authors: [{ name: "تیم ویژن ۲" }],
   applicationName: "ویژن ۲",
   manifest: "/manifest.webmanifest",
   appleWebApp: {

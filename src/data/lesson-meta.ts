@@ -32,7 +32,7 @@ export const LESSONS_META: LessonMeta[] = [
     tagline: "زبان‌های دنیا، ارتباطات و مهارت‌های یادگیری زبان",
     color: "emerald",
     vocabCount: 204,
-    quizCount: 50,
+    quizCount: 82,
     grammarCount: 6,
   },
   {
@@ -58,9 +58,9 @@ export const LESSONS_META: LessonMeta[] = [
 ];
 
 export const TOTAL_VOCABULARY = 633;
-export const LESSON_QUIZ_COUNT = 130;
+export const LESSON_QUIZ_COUNT = 162;
 export const EXAM_BANK_SIZE = 360;
-export const TOTAL_QUESTIONS = LESSON_QUIZ_COUNT + EXAM_BANK_SIZE; // 490
+export const TOTAL_QUESTIONS = LESSON_QUIZ_COUNT + EXAM_BANK_SIZE; // 522
 
 export function lessonMetaById(id: number): LessonMeta | undefined {
   return LESSONS_META.find((l) => l.id === id);
