@@ -1,14 +1,16 @@
 "use client";
 
+import { useSyncExternalStore } from "react";
 import { Sparkles, BookMarked, ClipboardCheck, GraduationCap, TrainFront, Swords, Ear, Eraser, Library, Trophy, Star, Play } from "lucide-react";
 import { TOTAL_VOCABULARY, EXAM_BANK_SIZE } from "@/data/lesson-meta";
 import { GRAMMAR_LINES, GRAMMAR_STATION_TOTAL } from "@/data/grammar-map";
 import { useStudy, summarize, srsDueTotal, firstLessonWithDue, mistakesOfLesson } from "@/lib/study-store";
-import { readAppendixResume, APPENDIX_SCOPE_LABELS, type AppendixResumeItem } from "@/lib/bg-reading";
+import { APPENDIX_SCOPE_LABELS, appendixHistoryServerSnapshot, appendixHistorySnapshot, appendixResumeServerSnapshot, appendixResumeSnapshot, subscribeAppendixHistory, subscribeAppendixResume, type AppendixResumeItem } from "@/lib/bg-reading";
 import { useAppendixResumeNav } from "../shared/use-appendix-resume-nav";
 import { hardIdsOf } from "@/lib/konkur";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
+import HomeAppendixHistory from "./home-appendix-history";
 
 // شبکهٔ «ابزارهای ویژه» — ده میان‌بر به سطوح تمرین و گزارش
 
@@ -34,7 +36,27 @@ export default function HomeTools() {
   // (درسنامهٔ جامع / اجزای کلماتی / افعال بی‌قاعده / جدول تلفظ / نشانه‌های
   // اختصاری) — رکوردِ خودکفایِ localStorageِ bg-reading (بدونِ هیچ importِ
   // سنگین در پوستهٔ eagerِ خانه، قراردادِ Task-44). هیچ رکوردی = کارت مثلِ سابق.
-  const resume: AppendixResumeItem | null = mounted ? readAppendixResume() : null;
+  // راند ۲۳۸ — خواندنِ رکورد از storeِ خارجیِ r231 (واکنشی) به‌جایِ mounted —
+  // همان ایدئومِ پنج درِ دیگر (هدر/نشانگر/پروفایل/فرمان‌یاب/پاپ‌اُور):
+  // هر نوشتنِ واقعی در لایه‌ها، کارتِ خانه را هم بی‌درنگ تازه می‌کند.
+  const resume = useSyncExternalStore(
+    subscribeAppendixResume,
+    appendixResumeSnapshot,
+    appendixResumeServerSnapshot,
+  );
+  // راند ۲۳۸ — بندِ ① پیشنهادِ ۲۳۷: تاریخچهٔ «اخیراً» هم از همان دادهٔ
+  // vision2-bg-history (بدونِ کلیدِ تازه) — سه چیپِ کوچک زیرِ پرشِ اصلی.
+  // مستقل از رکوردِ اصلی است (دو معنایِ جدا: «ادامه»=آخرین، «اخیراً»=چند
+  // تایِ آخر) — پاک‌کردنِ رکورد چیپ‌ها را نمی‌کشد و برعکس. خودِ رکوردِ
+  // فعلی از چیپ‌ها حذف می‌شود (بلوکِ اصلی دارد).
+  const history = useSyncExternalStore(
+    subscribeAppendixHistory,
+    appendixHistorySnapshot,
+    appendixHistoryServerSnapshot,
+  );
+  const historyChips: AppendixResumeItem[] = history
+    .filter((h) => !(resume && h.scope === resume.scope && h.id === resume.id))
+    .slice(0, 3);
   // راند ۲۳۶ — نگاشتِ scope→view از قلابِ مشترکِ سه‌دره (یک قرارداد)
   const navigateResume = useAppendixResumeNav();
 
@@ -57,7 +79,8 @@ export default function HomeTools() {
           { icon: Eraser, title: "مرور سریع قبل امتحان", desc: "ترکیبی از غلط‌های اخیر ۳ درس و بانک ۳۶۰تا؛ پاسخ درست = حذف از بانک خطا", onClick: () => setView({ type: "review" as const }), color: "text-rose-600", badge: totalMistakes },
           { icon: Library, title: "ضمیمهٔ کتاب", desc: "افعال بی‌قاعده، جدول تلفظ IPA و اجزای کلام", view: { type: "appendix" as const }, color: "text-amber-600", resume },
           { icon: Trophy, title: "کارنامهٔ من", desc: "گزارش کامل پیشرفت: رکوردها، مهارت‌ها و فعالیت هفته", onClick: () => window.dispatchEvent(new CustomEvent("open-report")), color: "text-stone-600", custom: true },
-        ].map((tool) => (
+        ].map((tool) => {
+          const card = (
           <button
             key={tool.title}
             onClick={() => {
@@ -78,6 +101,10 @@ export default function HomeTools() {
               : {})}
             className={`relative rounded-2xl border c-card p-4 text-right shadow-sm transition-[background-color,color,border-color,box-shadow,transform] hover:-translate-y-0.5 hover:shadow-md active:scale-[0.96] ${
               "resume" in tool && tool.resume ? "ring-2 ring-emerald-200 dark:ring-emerald-800" : ""
+            } ${
+              // راند ۲۳۸ — کارتِ ضمیمه در wrapperِ سینیِ چیپ‌ها می‌نشیند؛
+              // flex-1 ارتفاعِ ردیفِ گرید را مثلِ قبل پر می‌کند
+              "resume" in tool ? "flex-1" : ""
             }`}
           >
             {"badge" in tool && typeof tool.badge === "number" && tool.badge > 0 && (
@@ -104,7 +131,25 @@ export default function HomeTools() {
               </p>
             )}
           </button>
-        ))}
+          );
+          // راند ۲۳۸ — چیپ‌هایِ «اخیراً در ضمیمه» (بندِ ① پیشنهادِ ۲۳۷): سه
+          // چیپِ کوچک زیرِ پرشِ اصلی — همان دادهٔ vision2-bg-history، بدونِ
+          // کلیدِ تازه؛ در کامپوننتِ مستقلِ HomeAppendixHistory (گاردهایِ
+          // DEC-8 و veil فایلِ گرید را نمی‌بندند — سند در خودِ فایل).
+          // دکمهٔ واقعی است پس بیرونِ کارتِ دکمه‌ای می‌نشیند (DOM معتبر:
+          // دکمه در دکمه ممنوع) — سینیِ چسبیده به پایینِ کارت با flex-1 رویِ
+          // کارت، ارتفاعِ ردیفِ گرید حفظ می‌شود. کلیکِ چیپ = همان ناوبریِ
+          // viewِ قلابِ مشترک — صفرِ نوشتنِ استور و رکوردِ «ادامهٔ مطالعه»
+          // دست‌نخورده می‌ماند (پرش ≠ نوشتن). مستقل از رکوردِ اصلی: بعد از
+          // پاک‌کردنِ رکورد هم چیپ‌ها حاضرند (دو معنایِ جدا — قراردادِ ۲۳۷).
+          if (!("resume" in tool)) return card;
+          return (
+            <div key={tool.title} className="flex flex-col gap-1.5">
+              {card}
+              <HomeAppendixHistory items={historyChips} onJump={navigateResume} />
+            </div>
+          );
+        })}
       </div>
     </section>
   );
