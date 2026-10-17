@@ -41,9 +41,9 @@ const K_R3TF: Record<number, string> = { 1: "a", 2: "b" }; // True / False
 const K_R3M: Record<number, string> = { 3: "c", 4: "d" };
 
 describe("jozve topic grammar bank g12 — official nationwide khordad 1400 exam (r302 extraction receipt)", () => {
-  it("bank shape: two hundred eighty-four lessons, khordad 1400 official adds 19 banks / 56 items (family 1441)", () => {
+  it("bank shape: three hundred four lessons, khordad 1400 official adds 19 banks / 56 items (family 1494)", () => {
     expect(bank.lessons.map((l) => l.lesson)).toEqual(
-      Array.from({ length: 284 }, (_, i) => i + 1)
+      Array.from({ length: 304 }, (_, i) => i + 1)
     );
     const counts: Record<number, number> = {
       209: 4, 210: 4, 211: 4, 212: 3, 213: 4, 214: 3, 215: 3, 216: 1,
@@ -71,9 +71,9 @@ describe("jozve topic grammar bank g12 — official nationwide khordad 1400 exam
     ]);
     // آزمون رسمی سراسری خرداد ۱۴۰۰: ۵۶ آیتم در ۱۹ بانک — خانواده: ۱۲۲۷ + ۵۶ = ۱۲۸۳
     const total = bank.lessons.reduce((s, l) => s + l.count, 0);
-    expect(total).toBe(1441);
+    expect(total).toBe(1494);
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(new Set(ids).size).toBe(1441);
+    expect(new Set(ids).size).toBe(1494);
   });
 
   it("provenance: source.final1400khr registered — third official-source round, near-complete key 56/57, whole listening playable, first three-option listening MCQ", () => {

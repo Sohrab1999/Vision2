@@ -39,9 +39,9 @@ const K_R2TF: Record<number, string> = { 1: "b", 2: "a" }; // False / True
 const K_R2M: Record<number, string> = { 3: "c", 4: "d" };
 
 describe("jozve topic grammar bank g12 — official nationwide dey 99 exam (r301 extraction receipt)", () => {
-  it("bank shape: two hundred eighty-four lessons, dey 99 official adds 18 banks / 61 items (family 1441)", () => {
+  it("bank shape: three hundred four lessons, dey 99 official adds 18 banks / 61 items (family 1494)", () => {
     expect(bank.lessons.map((l) => l.lesson)).toEqual(
-      Array.from({ length: 284 }, (_, i) => i + 1)
+      Array.from({ length: 304 }, (_, i) => i + 1)
     );
     const counts: Record<number, number> = {
       191: 3, 192: 4, 193: 4, 194: 6, 195: 2, 196: 4, 197: 3, 198: 3, 199: 2,
@@ -68,9 +68,9 @@ describe("jozve topic grammar bank g12 — official nationwide dey 99 exam (r301
     ]);
     // آزمون رسمی سراسری دی ۹۹: ۶۱ آیتم در ۱۸ بانک — خانواده: ۱۱۶۶ + ۶۱ = ۱۲۲۷
     const total = bank.lessons.reduce((s, l) => s + l.count, 0);
-    expect(total).toBe(1441);
+    expect(total).toBe(1494);
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(new Set(ids).size).toBe(1441);
+    expect(new Set(ids).size).toBe(1494);
   });
 
   it("provenance: source.final99dey registered — second official-source round, near-complete key 61/62, whole listening playable", () => {

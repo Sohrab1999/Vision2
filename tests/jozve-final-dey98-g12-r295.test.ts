@@ -44,9 +44,9 @@ const K_G: Record<number, string> = { 1: "c", 2: "a", 3: "c", 4: "d" }; // چا�
 const K_CONN: Record<number, string> = { 1: "or", 2: "so", 3: "but", 4: "and" };
 
 describe("jozve topic grammar bank g12 — final exam دی ۹۸ (r295 extraction receipt)", () => {
-  it("bank shape: two hundred eighty-four lessons, final dey 98 adds 12 banks / 46 items (family 1441)", () => {
+  it("bank shape: three hundred four lessons, final dey 98 adds 12 banks / 46 items (family 1494)", () => {
     expect(bank.lessons.map((l) => l.lesson)).toEqual(
-      Array.from({ length: 284 }, (_, i) => i + 1)
+      Array.from({ length: 304 }, (_, i) => i + 1)
     );
     const counts: Record<number, number> = {
       93: 3, 94: 2, 95: 4, 96: 4, 97: 4, 98: 4, 99: 4, 100: 2, 101: 4, 102: 1, 103: 5, 104: 4,
@@ -67,9 +67,9 @@ describe("jozve topic grammar bank g12 — final exam دی ۹۸ (r295 extraction
     expect(L(102).questions.every((q) => q.id === `g12-fin98d-tree${q.n}`)).toBe(true);
     // آزمون نهایی دی ۹۸: ۴۶ آیتم در ۱۲ بانک — خانواده: ۸۱۴ + ۴۶ = ۸۵۵
     const total = bank.lessons.reduce((s, l) => s + l.count, 0);
-    expect(total).toBe(1441);
+    expect(total).toBe(1494);
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(new Set(ids).size).toBe(1441);
+    expect(new Set(ids).size).toBe(1494);
   });
 
   it("provenance: source.final98d registered with honest absences (printed-less listening stems + two open writings)", () => {
