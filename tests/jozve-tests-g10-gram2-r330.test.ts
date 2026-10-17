@@ -155,8 +155,8 @@ describe("jozve tests-g10 gram2 (r330 تست گرامر و نگارش درس ا�
     expect(L17.questions[10].options[1]).toBe("’ll wash / it");
   });
 
-  it("ids unique across the whole 331-item family (r330 gram2 appended)", () => {
+  it("ids unique across the whole 398-item family (r331 jame1 appended)", () => {
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(new Set(ids).size).toBe(331);
+    expect(new Set(ids).size).toBe(398);
   });
 });
