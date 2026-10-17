@@ -53,10 +53,13 @@ describe("jozve vocab wash g12-l3 (r316 print-verbatim wash receipt)", () => {
     expect(w.printQuirks.length).toBeGreaterThanOrEqual(20);
   });
 
-  it("old r274 restoration receipt is gone from lesson 3 (superseded), lesson 2 untouched", () => {
+  it("old r274 restoration receipt is gone from lesson 3 (superseded), lesson 2 superseded by r317 wash", () => {
     expect((l3 as unknown as { translationRestorations?: unknown }).translationRestorations).toBeUndefined();
+    // r317: درس ۲ هم چاپ‌محور شسته شد — رسیدِ بازچینیِ r274 جای خود را به translationsWashed داد
     const l2 = bank.lessons.find((l) => l.lesson === 2)!;
-    expect((l2 as unknown as { translationRestorations?: { count: number } }).translationRestorations?.count).toBe(4);
+    expect((l2 as unknown as { translationRestorations?: { count: number } }).translationRestorations).toBeUndefined();
+    expect(l2.source.translationsWashed?.round).toBe("r317");
+    expect(l2.source.translationsWashed?.pages).toBe("198-202");
   });
 
   it("all 100 translations present, Persian-pure, no Latin leak beyond the two printed brand names", () => {

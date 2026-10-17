@@ -94,9 +94,11 @@ describe("jozve test bank g12-l2/l3 (r274 extraction receipt)", () => {
     }
   });
 
-  it("receipts: lesson 2 keeps r274 restorations, lesson 3 superseded by r316 print-verbatim wash", () => {
-    expect(l2.translationRestorations?.count).toBe(4);
-    expect(l2.translationRestorations?.questions).toEqual([4, 5, 14, 15]);
+  it("receipts: lesson 2 superseded by r317 print-verbatim wash, lesson 3 superseded by r316 wash", () => {
+    // r317: تمام ۱۰۰ ترجمهٔ l2 چاپ‌محور بازنویسی شد — رسیدِ بازچینیِ r274 جای خود را به translationsWashed داد
+    expect((l2 as unknown as { translationRestorations?: unknown }).translationRestorations).toBeUndefined();
+    expect(l2.source?.translationsWashed?.round).toBe("r317");
+    expect(l2.source?.translationsWashed?.items).toBe(100);
     // r316: تمام ۱۰۰ ترجمهٔ l3 چاپ‌محور بازنویسی شد — رسیدِ بازچینیِ r274 جای خود را به translationsWashed داد
     expect((l3 as unknown as { translationRestorations?: unknown }).translationRestorations).toBeUndefined();
     expect(l3.source?.translationsWashed?.round).toBe("r316");
@@ -106,6 +108,10 @@ describe("jozve test bank g12-l2/l3 (r274 extraction receipt)", () => {
     expect(l3.questions.find((q) => q.n === 65)?.translation).not.toContain("الکترونیک آرتس");
     expect(l3.questions.find((q) => q.n === 43)?.translation).toContain("۲۵ درصد");
     expect(l2.questions.find((q) => q.n === 5)?.translation).toContain("W.H.O");
+    // r317: لنگرهای چاپ‌محورِ درس ۲ که خوانشِ قدیمیِ لایه با چاپ تفاوت آشکار داشت
+    expect(l2.questions.find((q) => q.n === 39)?.translation).toContain("دستمزد");
+    expect(l2.questions.find((q) => q.n === 54)?.translation).toContain("هورمون های زنانه");
+    expect(l2.questions.find((q) => q.n === 92)?.translation).toContain("فایل ها");
   });
 
   it("no cross-question pollution survived: restored scopes hold their own content only", () => {
