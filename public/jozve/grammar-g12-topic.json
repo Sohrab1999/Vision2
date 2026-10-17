@@ -320,6 +320,73 @@
    "translations": "بدنهٔ آزمون جامع ترجمهٔ چاپی ندارد — غیبتِ صادقانه",
    "placeholders": "فیلد اختیاری placeholder در QuizQuestion (r289) — راهنمای ورودیِ وابسته به بخش: بانک واژگان/تعریف/مجهول/جملهٔ کامل/مرتب‌سازی؛ بانک‌های تگ/ربط/کلوز از استنتاجِ خودکارِ شکل (r288) بهره می‌برند",
    "extractedRound": 289
+  },
+  "comprehensive2": {
+   "pages": "109-113",
+   "keyPages": "213",
+   "titlePrinted": "آزمون تشریحی درس دوم (پاسخنامه صفحه: 213) — «Vision Three»",
+   "sections": 12,
+   "banks": 10,
+   "questions": 51,
+   "keys": 51,
+   "extractedRound": 290,
+   "visualAbsent": {
+    "section": 1,
+    "items": 4,
+    "printedKey": "1.D / 2.B / 3.C / 4.A",
+    "note": "وابسته به تصویر — بانک ساخته نشد؛ کلید چاپی ص۲۱۳ همین‌جا محفوظ است (الگوی r289)"
+   },
+   "openEndedNoPrintedKey": {
+    "section": 9,
+    "items": 8,
+    "topics": [
+     "sport",
+     "writing",
+     "forest",
+     "smoking",
+     "firefighters",
+     "Avicenna",
+     "clean energy",
+     "Persian Gulf"
+    ],
+    "printedNote": "در این بخش با توجه به رعایت «topic sentence» جملات متفاوتی می‌توان نوشت",
+    "note": "کلید چاپی به‌ازای هر آیتم ندارد؛ صداقتِ داده — بانک جعل نشد"
+   },
+   "fiveOptions": {
+    "section": 3,
+    "note": "۵ گزینهٔ چاپی (a-e) وفادار ماند؛ extra چاپی: b.symbol — ترکیب چاپی «word attack» واقعی است"
+   },
+   "leonardoReversed": {
+    "section": 12,
+    "item": 2,
+    "note": "گزینه‌های چاپی به ترتیب معکوس حرف چاپ شده‌اند (d→a)؛ نگاشت وفادار: a=nearly/b=sadly/c=anxiously/d=bravely — کلید چاپی c=anxiously"
+   },
+   "receipts": [
+    {
+     "item": "S7-3",
+     "field": "stem",
+     "printed": "birth day",
+     "note": "غلط چاپی خود جزوه — دوواژه‌ای؛ وفادار ماندیم"
+    },
+    {
+     "item": "S12-3b",
+     "field": "options.b",
+     "printed": "after he known as",
+     "note": "غلط چاپی خود جزوه؛ وفادار ماندیم"
+    },
+    {
+     "item": "S12-4c",
+     "field": "options.c",
+     "printed": "Why did the glider flight was not successful enough",
+     "note": "غلط چاپی خود جزوه؛ وفادار ماندیم"
+    },
+    {
+     "item": "S12-2",
+     "field": "options",
+     "printed": "eagerly → anxiously",
+     "note": "تنشِ معناییِ جزئی؛ کلید چاپی حاکم است (الگوی tfReceipt r289)"
+    }
+   ]
   }
  },
  "lessons": [
@@ -8820,6 +8887,865 @@
       "When they are musical."
      ],
      "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 37,
+   "title": "جامع درس دوم — واژگان: جای خالی از بانک، بنویسید (ص۱۰۹)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 8,
+   "questions": [
+    {
+     "id": "g12-comp2-v1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Two atoms of hydrogen --------------- with one atom of oxygen to form a molecule of water.",
+     "options": [
+      "combine",
+      "recommend",
+      "jumped",
+      "respect"
+     ],
+     "answer": 0,
+     "accepted": [
+      "combine"
+     ],
+     "placeholder": "fill in the blank with the word bank…"
+    },
+    {
+     "id": "g12-comp2-v2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "I'm trying to --------------- my work so that I can have a couple of days off next week.",
+     "options": [
+      "arrange",
+      "combine",
+      "recommend",
+      "jumped"
+     ],
+     "answer": 0,
+     "accepted": [
+      "arrange"
+     ],
+     "placeholder": "fill in the blank with the word bank…"
+    },
+    {
+     "id": "g12-comp2-v3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "It often takes five or six years of hard work to --------------- a good dictionary.",
+     "options": [
+      "compile",
+      "advanced",
+      "suppose",
+      "arrange"
+     ],
+     "answer": 0,
+     "accepted": [
+      "compile"
+     ],
+     "placeholder": "fill in the blank with the word bank…"
+    },
+    {
+     "id": "g12-comp2-v4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Without more training or --------------- technical skills, they'll lose their jobs.",
+     "options": [
+      "advanced",
+      "suppose",
+      "arrange",
+      "combine"
+     ],
+     "answer": 0,
+     "accepted": [
+      "advanced"
+     ],
+     "placeholder": "fill in the blank with the word bank…"
+    },
+    {
+     "id": "g12-comp2-v5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "My father didn't read the introduction and --------------- into the next part.",
+     "options": [
+      "jumped",
+      "respect",
+      "wonder",
+      "compile"
+     ],
+     "answer": 0,
+     "accepted": [
+      "jumped"
+     ],
+     "placeholder": "fill in the blank with the word bank…"
+    },
+    {
+     "id": "g12-comp2-v6",
+     "n": 6,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "I --------------- that you avoid processed foods whenever possible.",
+     "options": [
+      "recommend",
+      "jumped",
+      "respect",
+      "wonder"
+     ],
+     "answer": 0,
+     "accepted": [
+      "recommend"
+     ],
+     "placeholder": "fill in the blank with the word bank…"
+    },
+    {
+     "id": "g12-comp2-v7",
+     "n": 7,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "My brothers and I --------------- our parents all the time.",
+     "options": [
+      "respect",
+      "wonder",
+      "compile",
+      "advanced"
+     ],
+     "answer": 0,
+     "accepted": [
+      "respect"
+     ],
+     "placeholder": "fill in the blank with the word bank…"
+    },
+    {
+     "id": "g12-comp2-v8",
+     "n": 8,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Getting a visa isn't as simple as you might ---------------.",
+     "options": [
+      "suppose",
+      "arrange",
+      "combine",
+      "recommend"
+     ],
+     "answer": 0,
+     "accepted": [
+      "suppose"
+     ],
+     "placeholder": "fill in the blank with the word bank…"
+    }
+   ]
+  },
+  {
+   "lesson": 38,
+   "title": "جامع درس دوم — واژگان: ترکیب‌ها، ۵ گزینهٔ چاپی (ص۱۰۹)",
+   "level": "استاندارد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-comp2-col1",
+     "n": 1,
+     "category": "grammar",
+     "question": "helpful",
+     "options": [
+      "dictionary",
+      "symbol",
+      "tips",
+      "words",
+      "attack"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-comp2-col2",
+     "n": 2,
+     "category": "grammar",
+     "question": "word",
+     "options": [
+      "dictionary",
+      "symbol",
+      "tips",
+      "words",
+      "attack"
+     ],
+     "answer": 4
+    },
+    {
+     "id": "g12-comp2-col3",
+     "n": 3,
+     "category": "grammar",
+     "question": "complicated",
+     "options": [
+      "dictionary",
+      "symbol",
+      "tips",
+      "words",
+      "attack"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-comp2-col4",
+     "n": 4,
+     "category": "grammar",
+     "question": "bilingual",
+     "options": [
+      "dictionary",
+      "symbol",
+      "tips",
+      "words",
+      "attack"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 39,
+   "title": "جامع درس دوم — واژگان: تعریف‌ها، بنویسید (ص۱۰۹)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-comp2-def1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Successful or achieving the results that you want:",
+     "options": [
+      "effective",
+      "symbol",
+      "entry",
+      "jump into"
+     ],
+     "answer": 0,
+     "accepted": [
+      "effective"
+     ],
+     "placeholder": "write the word from the bank…"
+    },
+    {
+     "id": "g12-comp2-def2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Something that stands for something else:",
+     "options": [
+      "symbol",
+      "entry",
+      "effective",
+      "jump into"
+     ],
+     "answer": 0,
+     "accepted": [
+      "symbol"
+     ],
+     "placeholder": "write the word from the bank…"
+    },
+    {
+     "id": "g12-comp2-def3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "To suddenly decide to do something:",
+     "options": [
+      "jump into",
+      "symbol",
+      "entry",
+      "effective"
+     ],
+     "answer": 0,
+     "accepted": [
+      "jump into"
+     ],
+     "placeholder": "write the word from the bank…"
+    },
+    {
+     "id": "g12-comp2-def4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "To understand or solve something:",
+     "options": [
+      "figure out",
+      "symbol",
+      "entry",
+      "effective"
+     ],
+     "answer": 0,
+     "accepted": [
+      "figure out"
+     ],
+     "placeholder": "write the word from the bank…"
+    }
+   ]
+  },
+  {
+   "lesson": 40,
+   "title": "جامع درس دوم — گرامر: تست چهارگزینه‌ای (ص۱۱۰)",
+   "level": "استاندارد",
+   "count": 8,
+   "questions": [
+    {
+     "id": "g12-comp2-g1",
+     "n": 1,
+     "category": "grammar",
+     "question": "He is not very ---------------, thus he doesn't feel comfortable to talk to people.",
+     "options": [
+      "communicatively",
+      "communicative",
+      "communication",
+      "communicate"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-comp2-g2",
+     "n": 2,
+     "category": "grammar",
+     "question": "The team had a football match, but it finished ---------------.",
+     "options": [
+      "success",
+      "unsuccessfully",
+      "succeed",
+      "unsuccessful"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-comp2-g3",
+     "n": 3,
+     "category": "grammar",
+     "question": "We went out to play football, but it started to rain ---------------.",
+     "options": [
+      "unexpectedly",
+      "expected",
+      "expectation",
+      "unexpected"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-comp2-g4",
+     "n": 4,
+     "category": "grammar",
+     "question": "Scientists believe that hot weather is often --------------- the crops.",
+     "options": [
+      "endanger",
+      "endangering",
+      "endangered",
+      "dangers"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-comp2-g5",
+     "n": 5,
+     "category": "grammar",
+     "question": "--------------- you --------------- to the movie theatre with me tonight if you didn't work?",
+     "options": [
+      "Would / go",
+      "Would / went",
+      "Will / go",
+      "Will / went"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-comp2-g6",
+     "n": 6,
+     "category": "grammar",
+     "question": "Where would you like to travel if you --------------- an astronaut?",
+     "options": [
+      "would be",
+      "are",
+      "might be",
+      "were"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-comp2-g7",
+     "n": 7,
+     "category": "grammar",
+     "question": "What was the name of the horse --------------- won the race?",
+     "options": [
+      "whom",
+      "which",
+      "who",
+      "whose"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-comp2-g8",
+     "n": 8,
+     "category": "grammar",
+     "question": "My father spoke to the man --------------- was standing next to him.",
+     "options": [
+      "where",
+      "who",
+      "which",
+      "whom"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 41,
+   "title": "جامع درس دوم — ضمایر موصولی who/which، بنویسید (ص۱۱۰)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-comp2-rel1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Summer holidays, --------------- are starting soon, are the best period to learn languages.",
+     "options": [
+      "which",
+      "who"
+     ],
+     "answer": 0,
+     "accepted": [
+      "which"
+     ],
+     "placeholder": "fill in the blank… (who / which)"
+    },
+    {
+     "id": "g12-comp2-rel2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "This is the pocket dictionary --------------- my brother bought last week.",
+     "options": [
+      "which",
+      "who"
+     ],
+     "answer": 0,
+     "accepted": [
+      "which"
+     ],
+     "placeholder": "fill in the blank… (who / which)"
+    },
+    {
+     "id": "g12-comp2-rel3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "The old lady --------------- was here yesterday has gone to England.",
+     "options": [
+      "who",
+      "which"
+     ],
+     "answer": 0,
+     "accepted": [
+      "who"
+     ],
+     "placeholder": "fill in the blank… (who / which)"
+    },
+    {
+     "id": "g12-comp2-rel4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "The child --------------- is crying loudly is my little sister.",
+     "options": [
+      "who",
+      "which"
+     ],
+     "answer": 0,
+     "accepted": [
+      "who"
+     ],
+     "placeholder": "fill in the blank… (who / which)"
+    }
+   ]
+  },
+  {
+   "lesson": 42,
+   "title": "جامع درس دوم — شکل صحیح فعل شرطی، بنویسید (ص۱۱۰)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-comp2-vf1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "If I --------------- my job, I might go abroad for a while. (lose)",
+     "options": [
+      "lost",
+      "would be",
+      "didn't invite",
+      "would pass"
+     ],
+     "answer": 0,
+     "accepted": [
+      "lost"
+     ],
+     "placeholder": "write the correct verb form…"
+    },
+    {
+     "id": "g12-comp2-vf2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "They --------------- healthier if they didn't live in a crowded city. (be)",
+     "options": [
+      "would be",
+      "lost",
+      "didn't invite",
+      "would pass"
+     ],
+     "answer": 0,
+     "accepted": [
+      "would be"
+     ],
+     "placeholder": "write the correct verb form…"
+    },
+    {
+     "id": "g12-comp2-vf3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "If he --------------- me to his birth day party, I wouldn't come. (not / invite)",
+     "options": [
+      "didn't invite",
+      "lost",
+      "would be",
+      "would pass"
+     ],
+     "answer": 0,
+     "accepted": [
+      "didn't invite"
+     ],
+     "placeholder": "write the correct verb form…"
+    },
+    {
+     "id": "g12-comp2-vf4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "If the questions were easy enough, everyone --------------- the test. (pass)",
+     "options": [
+      "would pass",
+      "lost",
+      "would be",
+      "didn't invite"
+     ],
+     "answer": 0,
+     "accepted": [
+      "would pass"
+     ],
+     "placeholder": "write the correct verb form…"
+    }
+   ]
+  },
+  {
+   "lesson": 43,
+   "title": "جامع درس دوم — مرتب‌کردن کلمات، بنویسید (ص۱۱۰)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-comp2-un1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "which / detective story / read / I / the book / a / yesterday / was / .",
+     "options": [
+      "The book which I read yesterday was a detective story.",
+      "If I had enough money, I would buy a modern car.",
+      "What would you do if you didn't have any teeth?",
+      "His wife is a woman who loves jokes."
+     ],
+     "answer": 0,
+     "accepted": [
+      "The book which I read yesterday was a detective story."
+     ],
+     "placeholder": "write the complete sentence…"
+    },
+    {
+     "id": "g12-comp2-un2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "a / would / enough / I / buy / car / had / I / money / if / modern / .",
+     "options": [
+      "If I had enough money, I would buy a modern car.",
+      "The book which I read yesterday was a detective story.",
+      "What would you do if you didn't have any teeth?",
+      "His wife is a woman who loves jokes."
+     ],
+     "answer": 0,
+     "accepted": [
+      "If I had enough money, I would buy a modern car."
+     ],
+     "placeholder": "write the complete sentence…"
+    },
+    {
+     "id": "g12-comp2-un3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "didn't / you / you / any / what / teeth / do / have / would / if / ?",
+     "options": [
+      "What would you do if you didn't have any teeth?",
+      "The book which I read yesterday was a detective story.",
+      "If I had enough money, I would buy a modern car.",
+      "His wife is a woman who loves jokes."
+     ],
+     "answer": 0,
+     "accepted": [
+      "What would you do if you didn't have any teeth?"
+     ],
+     "placeholder": "write the complete sentence…"
+    },
+    {
+     "id": "g12-comp2-un4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "jokes / his / who / a woman / loves / is / wife / .",
+     "options": [
+      "His wife is a woman who loves jokes.",
+      "The book which I read yesterday was a detective story.",
+      "If I had enough money, I would buy a modern car.",
+      "What would you do if you didn't have any teeth?"
+     ],
+     "answer": 0,
+     "accepted": [
+      "His wife is a woman who loves jokes."
+     ],
+     "placeholder": "write the complete sentence…"
+    }
+   ]
+  },
+  {
+   "lesson": 44,
+   "title": "جامع درس دوم — متن ۵خالی: مغز دوزبانه‌ها (ص۱۱۱)",
+   "level": "استاندارد",
+   "count": 5,
+   "questions": [
+    {
+     "id": "g12-comp2-clz1",
+     "n": 1,
+     "category": "grammar",
+     "question": "People who speak two languages may have brains that are more efficient at language processing and other tasks. Brain scans showed that people (---1---) spoke only one language had to work harder to focus on a single word",
+     "options": [
+      "who",
+      "which",
+      "whose",
+      "whom"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-comp2-clz2",
+     "n": 2,
+     "category": "grammar",
+     "question": "according to the study (---2---) on Nov. 12 in the journal Brain and Language.",
+     "options": [
+      "transmitted",
+      "surrounded",
+      "published",
+      "supported"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-comp2-clz3",
+     "n": 3,
+     "category": "grammar",
+     "question": "People who are (---3---) are constantly activating both languages in their brain",
+     "options": [
+      "sweet",
+      "superhuman",
+      "right",
+      "bilingual"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-comp2-clz4",
+     "n": 4,
+     "category": "grammar",
+     "question": "choosing which to use and (---4---) to ignore, said study leader Viorica Marian, a linguistic psychologist at Northwestern University.",
+     "options": [
+      "which",
+      "whose",
+      "what",
+      "who"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-comp2-clz5",
+     "n": 5,
+     "category": "grammar",
+     "question": "Bilingual people were no faster at performing the task than (---5---).",
+     "options": [
+      "monolinguals",
+      "jumps",
+      "designs",
+      "disconnections"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 45,
+   "title": "جامع درس دوم — ریدینگ انیشتین: تست + پرسش پاسخ (ص۱۱۱-۱۱۲)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 6,
+   "questions": [
+    {
+     "id": "g12-comp2-rd1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Before the World War II, Einstein left Germany and became a/an ---------------.",
+     "options": [
+      "president",
+      "American citizen",
+      "physicist",
+      "student"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-comp2-rd2",
+     "n": 2,
+     "category": "grammar",
+     "question": "He died because of his ---------------.",
+     "options": [
+      "Relativity Theory",
+      "scientific research",
+      "health problems",
+      "academic studies"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-comp2-rd3",
+     "n": 3,
+     "category": "grammar",
+     "question": "His job helped him to think about his theory.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-comp2-rd4",
+     "n": 4,
+     "category": "grammar",
+     "question": "He found a job easily after graduation.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-comp2-rd5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "When was the Nobel Prize awarded to Einstein?",
+     "options": [
+      "The Nobel Prize was awarded to Einstein for physics in 1921.",
+      "He wrote a letter to President Roosevelt expressing his worry about the atomic bomb."
+     ],
+     "answer": 0,
+     "accepted": [
+      "The Nobel Prize was awarded to Einstein for physics in 1921."
+     ]
+    },
+    {
+     "id": "g12-comp2-rd6",
+     "n": 6,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What did Einstein do for expressing his fear of the atomic bomb?",
+     "options": [
+      "He wrote a letter to President Roosevelt expressing his worry about the atomic bomb.",
+      "The Nobel Prize was awarded to Einstein for physics in 1921."
+     ],
+     "answer": 0,
+     "accepted": [
+      "He wrote a letter to President Roosevelt expressing his worry about the atomic bomb."
+     ]
+    }
+   ]
+  },
+  {
+   "lesson": 46,
+   "title": "جامع درس دوم — ریدینگ لئوناردو: تست چهارگزینه‌ای (ص۱۱۲-۱۱۳)",
+   "level": "استاندارد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-comp2-rm1",
+     "n": 1,
+     "category": "grammar",
+     "question": "What does paragraph 3 mainly discuss?",
+     "options": [
+      "What were the subjects that Leonardo wanted to learn",
+      "Leonardo's art and invention talent",
+      "The role of Leonardo in the invention of the airplane",
+      "most famous painting"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-comp2-rm2",
+     "n": 2,
+     "category": "grammar",
+     "question": "The word “eagerly” in paragraph 2 is closest in meaning to ----------------------------.",
+     "options": [
+      "nearly",
+      "sadly",
+      "anxiously",
+      "bravely"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-comp2-rm3",
+     "n": 3,
+     "category": "grammar",
+     "question": "According to the passage, which of the following statements is true?",
+     "options": [
+      "Verrocchio, the famous master painter who was taught by Leonardo.",
+      "Leonardo started to draw everything after he known as a talented artist.",
+      "Once Leonardo succeeded in making a glider flight.",
+      "A pump worked by water-power to bring water from a stream to a house was invented by Leonardo."
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-comp2-rm4",
+     "n": 4,
+     "category": "grammar",
+     "question": "The passage provides enough information to answer which of the following questions?",
+     "options": [
+      "How did Verrocchio accept Leonardo as his student in Italy?",
+      "Where is one of the most Leonardo's famous paintings now?",
+      "Why did the glider flight was not successful enough to be tried again?",
+      "What were Leonardo's plans for a submarine?"
+     ],
+     "answer": 1
     }
    ]
   }
