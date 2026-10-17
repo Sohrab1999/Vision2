@@ -1653,6 +1653,574 @@
      "translation": "شرایطش بحرانی بود، اما دکترها قادر بودند او را نجات دهند."
     }
    ]
+  },
+  {
+   "lesson": 6,
+   "title": "استاندارد — تست واژگان درس اول (ص۵۴-۵۵)",
+   "level": "استاندارد — چهارگزینه‌ای",
+   "count": 40,
+   "questions": [
+    {
+     "id": "g10-l6-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "The accident seemed to have completely --------------- his confidence.",
+     "options": [
+      "built",
+      "destroyed",
+      "stayed",
+      "considered"
+     ],
+     "answer": 1,
+     "translation": "به نظر میرسید که تصادف به طور کامل اعتماد به نفس او را از بین برده بود."
+    },
+    {
+     "id": "g10-l6-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "---------------, we’ll be able to rearrange the dates of our holiday.",
+     "options": [
+      "Hopefully",
+      "Usually",
+      "Really",
+      "Angrily"
+     ],
+     "answer": 0,
+     "translation": "اگر بشود، ما می توانیم دوباره تاریخ های تعطیلاتمان را بچینیم."
+    },
+    {
+     "id": "g10-l6-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "He picked up a piece of --------------- and wrote the answer on the blackboard.",
+     "options": [
+      "pattern",
+      "air",
+      "chalk",
+      "graph"
+     ],
+     "answer": 2,
+     "translation": "یک تکه گچ برداشت و جواب را روی تخته نوشت."
+    },
+    {
+     "id": "g10-l6-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "The vaccines such as “COViran Barekat” are known to prevent a COVID infection from resulting in --------------- illness or death.",
+     "options": [
+      "singular",
+      "simple",
+      "serious",
+      "special"
+     ],
+     "answer": 2,
+     "translation": "واکسنهایی مثل \"کوایران برکت\" شناخته شده اند که از آلودگی کرونایی که منجر به مرضی جدی یا مرگ میشود، جلوگیری کنند."
+    },
+    {
+     "id": "g10-l6-5",
+     "n": 5,
+     "category": "vocab",
+     "question": "Since retiring from the company, she has done --------------- work for a charity.",
+     "options": [
+      "natural",
+      "voluntary",
+      "plural",
+      "recent"
+     ],
+     "answer": 1,
+     "translation": "از وقتی از شرکت بازنشسته شده، کارهای داوطلبانه برای خیریه کرده است."
+    },
+    {
+     "id": "g10-l6-6",
+     "n": 6,
+     "category": "vocab",
+     "question": "The --------------- will be closed and go under if a generous donor isn’t found within the next few months.",
+     "options": [
+      "charity",
+      "plant",
+      "world",
+      "weather"
+     ],
+     "answer": 0,
+     "translation": "خیریه بسته و ورشکسته خواهد شد اگر یک اهدا کننده بخشنده در ماه های بعد پیدا نشود."
+    },
+    {
+     "id": "g10-l6-7",
+     "n": 7,
+     "category": "vocab",
+     "question": "At the end of the lecture, I’d like all the students to --------------- small discussion groups.",
+     "options": [
+      "put out",
+      "divide into",
+      "check out",
+      "take off"
+     ],
+     "answer": 1,
+     "translation": "در پایان سخنرانی، دوست دارم دانش آموزان به گروه های مکالمه کوچک تقسیم بشوند."
+    },
+    {
+     "id": "g10-l6-8",
+     "n": 8,
+     "category": "vocab",
+     "question": "If everything goes according to ---------------, work will be complete in December.",
+     "options": [
+      "phrase",
+      "schedule",
+      "forest",
+      "intonation"
+     ],
+     "answer": 1,
+     "translation": "اگر همه چیز طبق برنامه پیش برود، کار تا دسامبر تمام خواهد شد."
+    },
+    {
+     "id": "g10-l6-9",
+     "n": 9,
+     "category": "vocab",
+     "question": "All you have to do to win is --------------- the words here to find four names of birds.",
+     "options": [
+      "considering",
+      "unscrambling",
+      "cleaning",
+      "beginning"
+     ],
+     "answer": 1,
+     "translation": "تنها کاری که باید برای بردن بکنید این است که کلمات اینجا را مرتب کنید تا چهار اسم پرنده پیدا کنید."
+    },
+    {
+     "id": "g10-l6-10",
+     "n": 10,
+     "category": "vocab",
+     "question": "We’re not doing enough to --------------- the environment from pollution.",
+     "options": [
+      "protect",
+      "break",
+      "donate",
+      "interview"
+     ],
+     "answer": 0,
+     "translation": "ما به اندازه کافی تلاش نمی کنیم که محیط زیست را از آلودگی حفظ کنیم."
+    },
+    {
+     "id": "g10-l6-11",
+     "n": 11,
+     "category": "vocab",
+     "question": "The working life of most vehicles can be increased if they are serviced ---------------.",
+     "options": [
+      "recently",
+      "carelessly",
+      "originally",
+      "regularly"
+     ],
+     "answer": 3,
+     "translation": "مدت زمان کار کردن اکثر وسایل نقلیه میتواند افزایش پیدا کند اگر به طور منظم سرویس شوند."
+    },
+    {
+     "id": "g10-l6-12",
+     "n": 12,
+     "category": "vocab",
+     "question": "Even the smallest baby can --------------- its mother by her voice.",
+     "options": [
+      "imagine",
+      "decrease",
+      "identify",
+      "save"
+     ],
+     "answer": 2,
+     "translation": "حتی کوچک ترین بچه ها میتوانند که مادرشان را از صدایش تشخیص بدهند."
+    },
+    {
+     "id": "g10-l6-13",
+     "n": 13,
+     "category": "vocab",
+     "question": "I didn’t feel that this was an --------------- time to mention the subject of money.",
+     "options": [
+      "different",
+      "appropriate",
+      "excellent",
+      "generous"
+     ],
+     "answer": 1,
+     "translation": "اینطور فکر کردم که زمان مناسبی برای اشاره کردن به موضوع پول نبود."
+    },
+    {
+     "id": "g10-l6-14",
+     "n": 14,
+     "category": "vocab",
+     "question": "--------------- animals and plants need to be kept secure from poachers.",
+     "options": [
+      "International",
+      "Endangered",
+      "possible",
+      "cultural"
+     ],
+     "answer": 1,
+     "translation": "حیوانات و گیاهان در معرض خطر انقراض نیاز دارند که در مقابل شکارچیان حفاظت شوند."
+    },
+    {
+     "id": "g10-l6-15",
+     "n": 15,
+     "category": "vocab",
+     "question": "---------------, the construction will be finished before school reopens in September. The students will feel great about this.",
+     "options": [
+      "Naturally",
+      "Hopefully",
+      "Carefully",
+      "Hardly"
+     ],
+     "answer": 1,
+     "translation": "اگر بشود، کار ساخت و ساز قبل از این که مدارس دوباره در سپتامبر باز بشوند تمام خواهد شد. دانش آموزان خیلی احساس خوبی در این باره خواهند داشت."
+    },
+    {
+     "id": "g10-l6-16",
+     "n": 16,
+     "category": "vocab",
+     "question": "What a --------------- sight it was to see so many beautiful boats on the lake at the same time.",
+     "options": [
+      "simple",
+      "irregular",
+      "religious",
+      "wonderful"
+     ],
+     "answer": 3,
+     "translation": "دیدن قایق های زیبای زیادی روی دریاچه به طور همزمان چه صحنه فوق العاده ای بود."
+    },
+    {
+     "id": "g10-l6-17",
+     "n": 17,
+     "category": "vocab",
+     "question": "The management was forced to --------------- salaries for many of the workers.",
+     "options": [
+      "introduce",
+      "sneeze",
+      "increase",
+      "suggest"
+     ],
+     "answer": 2,
+     "translation": "مدیریت مجبور شد که حقوق ها را برای کارگران زیادی افزایش دهد."
+    },
+    {
+     "id": "g10-l6-18",
+     "n": 18,
+     "category": "vocab",
+     "question": "It is important to separate learning English --------------- from learning English by reading books.",
+     "options": [
+      "slowly",
+      "orally",
+      "averagely",
+      "quickly"
+     ],
+     "answer": 1,
+     "translation": "مهم است که یاد گرفتن انگلیسی به طور شفاهی را از یادگیری انگلیسی به وسیله خواندن کتاب را از هم جدا کنیم."
+    },
+    {
+     "id": "g10-l6-19",
+     "n": 19,
+     "category": "vocab",
+     "question": "The role of scientists is to observe and --------------- the world, not to try to control it.",
+     "options": [
+      "describe",
+      "leave",
+      "decide",
+      "account"
+     ],
+     "answer": 0,
+     "translation": "نقش دانشمندان مشاهده و توصیف کردن جهان است، نه سعی کردن برای کنترل آن."
+    },
+    {
+     "id": "g10-l6-20",
+     "n": 20,
+     "category": "vocab",
+     "question": "The leader --------------- them that they should leave the country immediately.",
+     "options": [
+      "interested",
+      "advised",
+      "hired",
+      "attended"
+     ],
+     "answer": 1,
+     "translation": "رهبر به آن ها توصیه کرد که به سرعت کشور را ترک کنند."
+    },
+    {
+     "id": "g10-l6-21",
+     "n": 21,
+     "category": "vocab",
+     "question": "There was an --------------- article about vegetarianism in the newspaper yesterday.",
+     "options": [
+      "plural",
+      "selfish",
+      "interesting",
+      "polite"
+     ],
+     "answer": 2,
+     "translation": "یک مقاله جالب درباره گیاه خواری در روزنامه دیروز بود."
+    },
+    {
+     "id": "g10-l6-22",
+     "n": 22,
+     "category": "vocab",
+     "question": "In the past eight years, the elephant --------------- in Africa has been halved.",
+     "options": [
+      "population",
+      "facilities",
+      "attention",
+      "wonders"
+     ],
+     "answer": 0,
+     "translation": "در هشت سال گذشته، جمعیت فیل ها در آفریقا نصف شده است."
+    },
+    {
+     "id": "g10-l6-23",
+     "n": 23,
+     "category": "vocab",
+     "question": "While I was in the crowd, I had to --------------- my voice to make myself heard over the noise.",
+     "options": [
+      "divide",
+      "keep",
+      "put",
+      "raise"
+     ],
+     "answer": 3,
+     "translation": "وقتی توی شلوغی بودم، مجبور شدم صدایم رو بلا بیرم تا صدایم شنیده بشود."
+    },
+    {
+     "id": "g10-l6-24",
+     "n": 24,
+     "category": "vocab",
+     "question": "A self-protecting system will defend itself from --------------- damages and external attacks.",
+     "options": [
+      "hopeful",
+      "oral",
+      "accidental",
+      "important"
+     ],
+     "answer": 2,
+     "translation": "یک سیستم دفاع از خود از خودش در برابر صدمات تصادفی و حملات بیرونی دفاع می کند."
+    },
+    {
+     "id": "g10-l6-25",
+     "n": 25,
+     "category": "vocab",
+     "question": "A: “So how was the party last night?”      B: “Oh, it was ---------------, - we had a fantastic time!”",
+     "options": [
+      "brilliant",
+      "common",
+      "painful",
+      "different"
+     ],
+     "answer": 0,
+     "translation": "الف: \"مهمانی دییشب چطور بود؟\" ب: \"اوه عالی بود، خیلی خوش گذشت!\""
+    },
+    {
+     "id": "g10-l6-26",
+     "n": 26,
+     "category": "vocab",
+     "question": "After world war, many countries --------------- to have a great army to protect themselves.",
+     "options": [
+      "guessed",
+      "decided",
+      "left",
+      "completed"
+     ],
+     "answer": 1,
+     "translation": "بعد از جنگ جهانی، کشورهای زیادی تصمیم گرفتند یک ارتش عالی داشته باشند تا از خودشان محافظت کنند؟"
+    },
+    {
+     "id": "g10-l6-27",
+     "n": 27,
+     "category": "vocab",
+     "question": "The people at the table behind us were --------------- someone’s birthday.",
+     "options": [
+      "suggesting",
+      "hoping",
+      "celebrating",
+      "destroying"
+     ],
+     "answer": 2,
+     "translation": "آدم های میز پشتی ما داشتند تولد یکی را جشن می گرفتند."
+    },
+    {
+     "id": "g10-l6-28",
+     "n": 28,
+     "category": "vocab",
+     "question": "A dangerous amount of radioactivity was released into the --------------- last month.",
+     "options": [
+      "environment",
+      "point",
+      "mirror",
+      "history"
+     ],
+     "answer": 0,
+     "translation": "مقدار خطرناک رادیواکتیو ماه پیش در محیط زیست رها شد."
+    },
+    {
+     "id": "g10-l6-29",
+     "n": 29,
+     "category": "vocab",
+     "question": "A leg injury is stopping him from active --------------- in the sport matches.",
+     "options": [
+      "description",
+      "information",
+      "participation",
+      "location"
+     ],
+     "answer": 2,
+     "translation": "یک مصدومیت از ناحیه پا، اجازه حضور فعالی را به او در مسابقات ورزشی نمی دهد."
+    },
+    {
+     "id": "g10-l6-30",
+     "n": 30,
+     "category": "vocab",
+     "question": "Each room has books, toys, and games that are --------------- to that specific age group.",
+     "options": [
+      "suitable",
+      "actual",
+      "interested",
+      "possible"
+     ],
+     "answer": 0,
+     "translation": "هر اتاق یک سری کتاب، اسباب بازی و بازی دارد که مناسب آن سن خاص هستند."
+    },
+    {
+     "id": "g10-l6-31",
+     "n": 31,
+     "category": "vocab",
+     "question": "We are planning a dinner to celebrate the 50th --------------- of the founding of the company.",
+     "options": [
+      "charity",
+      "account",
+      "anniversary",
+      "personality"
+     ],
+     "answer": 2,
+     "translation": "ما داریم یک شام را برنامه ریزی میکنیم تا پنجاهمین سالگرد تاسیس کمپانی را جشن بگیریم."
+    },
+    {
+     "id": "g10-l6-32",
+     "n": 32,
+     "category": "vocab",
+     "question": "He repeated his country’s desire and interest for --------------- relations with all neighboring countries.",
+     "options": [
+      "friendly",
+      "selfish",
+      "voluntary",
+      "religious"
+     ],
+     "answer": 0,
+     "translation": "او میل و علاقه کشورش را برای روابط دوستانه با تمام کشور های همسایه را بازگو کرد."
+    },
+    {
+     "id": "g10-l6-33",
+     "n": 33,
+     "category": "vocab",
+     "question": "Australia has its own ---------------, which is very different from that of Britain.",
+     "options": [
+      "information",
+      "conversation",
+      "culture",
+      "course"
+     ],
+     "answer": 2,
+     "translation": "استرالیا فرهنگ خود را دارد، که خیلی متفاوت از فرهنگ بریتانیا است."
+    },
+    {
+     "id": "g10-l6-34",
+     "n": 34,
+     "category": "vocab",
+     "question": "Lots of people always say time changes things, but you --------------- have to change them yourself.",
+     "options": [
+      "carefully",
+      "politely",
+      "actually",
+      "hardly"
+     ],
+     "answer": 2,
+     "translation": "خیلی از مردم همیشه میگویند که زمان اوضاع را عوض میکند، اما خود شما در واقع باید آن ها عوض کنید."
+    },
+    {
+     "id": "g10-l6-35",
+     "n": 35,
+     "category": "vocab",
+     "question": "I went to several libraries to gather information about a book about --------------- animals.",
+     "options": [
+      "careful",
+      "endangered",
+      "serious",
+      "wonderful"
+     ],
+     "answer": 1,
+     "translation": "به چندین کتابخانه رفتم تا اطلاعات درباره یک کتاب درباره حیوانات در معرض خطر انقراض جمع کنم."
+    },
+    {
+     "id": "g10-l6-36",
+     "n": 36,
+     "category": "vocab",
+     "question": "The --------------- in the number of bicycles and cars might give rise to another new set of environmental problems.",
+     "options": [
+      "military",
+      "information",
+      "injury",
+      "decrease"
+     ],
+     "answer": 3,
+     "translation": "کاهش در تعداد دوچرخه ها و ماشین ها ممکن است تا مشکلات محیط زیستی جدیدی را به وجود بیاورد."
+    },
+    {
+     "id": "g10-l6-37",
+     "n": 37,
+     "category": "vocab",
+     "question": "Parents of young children often become depressed, and this is --------------- true of single parents.",
+     "options": [
+      "especially",
+      "naturally",
+      "really",
+      "internationally"
+     ],
+     "answer": 0,
+     "translation": "والدین فرزندان جوان و کوچک اغلب افسرده میشوند، و این موضوع مخصوصاً درباره پدر ها و مادر های مجرد (آن ها که طلاق گرفته اند) واقعیت دارد."
+    },
+    {
+     "id": "g10-l6-38",
+     "n": 38,
+     "category": "vocab",
+     "question": "If you compare house prices in the two towns, it’s quite --------------- how different they are.",
+     "options": [
+      "pleasant",
+      "possible",
+      "serious",
+      "amazing"
+     ],
+     "answer": 3,
+     "translation": "اگر قیمت های خانه را در دو شهر مقایسه کنید، این که چقدر با هم متفاوت هستند کاملاً شگفت انگیز است."
+    },
+    {
+     "id": "g10-l6-39",
+     "n": 39,
+     "category": "vocab",
+     "question": "--------------- is to do something to show that you remember and respect someone important or an important event in the past.",
+     "options": [
+      "injures",
+      "commemorates",
+      "unscrambles",
+      "identifies"
+     ],
+     "answer": 1,
+     "translation": "بزرگداشت یعنی انجام دادن کاری برای اینکه شما، شخص مهم و یا رویداد مهمی در گذشته را به یاد بیاورید یا احترامشان را نشان دهید."
+    },
+    {
+     "id": "g10-l6-40",
+     "n": 40,
+     "category": "vocab",
+     "question": "The average human --------------- in the developed countries has increased over the last hundred years.",
+     "options": [
+      "lifespan",
+      "schedule",
+      "nature",
+      "interest"
+     ],
+     "answer": 0,
+     "translation": "طول عمر متوسط انسان در کشورهای توسعه یافته در صد سال گذشته افزایش یافته است."
+    }
+   ]
   }
  ],
  "source": {
@@ -1685,6 +2253,34 @@
     "Q13: ترجمهٔ چاپ «انقراض» (≈dying out) در حالی که کلیدِ چاپ c (destroying) است — جفت‌سازیِ خودِ چاپ؛ کلید حاکم، ترجمه عینِ چاپ",
     "Q27: چاپ ویرگول بعد از «ژاپن» نگذاشته؛ عینِ چاپ",
     "فاصله‌ها: «می بینید/می کنند/می شنیدیم/می برد» جدای چاپ؛ «نمیخواهم/انرا/آنرا/بصورت/شغلهای/مارمولکها» چسبیده چاپ — عینِ چاپ (الگوی r320/r321)"
+   ]
+  },
+  "exam3": {
+   "exam": "تست واژگان درس اول — بخش دوم، سطح استاندارد (سؤالات: ص۵۴ و ۵۵)",
+   "header": "سؤالات تستی واژگان درس: «اول» پایه: «دهم» (پاسخنامه صفحه: ۲۴۵ تا ۲۴۷) بخش: «دوم» سطح تستها: «استاندارد»",
+   "keyPages": "245-247",
+   "keyVerification": "print key pp245-247 «پاسخنامه تستی تستهای واژگان — درس اول، سطح تستها استاندارد» — 40/40 agree with semantic pre-fill (key option reflected in printed translation — lexical in 38, synonym in Q1/Q10), zero divergence",
+   "extractedRound": "r325",
+   "pattern": "r324 (ترجمهٔ چاپ‌محور) + r311/r323 (بانک درس‌محور) + r320/r321 (عینِ چاپ)",
+   "translations": "۴۰ ترجمهٔ چاپی «ترجمه تست» به آیتم‌ها تزریق شد؛ ۱۳ نقطهٔ سرنوشت‌ساز با زومِ ۲۶۰۰-۸۰۰۰dpi داوری شد (تاریــخ/واکسنهایی/کرونایی/مرضی/انقراض/خوبی/بلا بیرم/از خود از خودش/میز پشتی/را دوبل/به طور با دقت/گرفته اند/از بین برده)",
+   "printQuirks": [
+    "Q1: چاپ «میرسید» چسبیده (بدون ZWNJ) و «از بین برده بود» برای destroyed — مترادفِ چاپ (گزینهٔ «نابود کردن» لفظاً در ترجمه نیست)؛ رندر ۴۰۰۰dpi",
+    "Q2: چاپ «تاریــخ» با کشیده (tatweel)؛ رونویسی «تاریخ» — «می توانیم/تاریخ های» جدای چاپ (زوم ۴۰۰۰dpi)",
+    "Q4: «واکسنهایی» چسبیده چاپ + «کوایران برکت» املای چاپ برای COViran Barekat + «کرونایی» + «مرضی جدی» (لایه «مرییص» نویز — رندر ۴۰۰۰dpi حاکم)",
+    "Q9: گزینهٔ ۴ چاپ «شروع کردن» است (لایه «رسی وع کردن» — نویزِ کامل لایه؛ رندر ۱۴۰۰dpi حاکم)",
+    "Q14: «در معرض خطر انقراض» بدون یِ پایانی در ترجمه (زوم ۴۰۰۰dpi؛ لایه «فرهنکی» = فرهنگی)",
+    "Q15: «احساس خوبی» با ی (زوم ۴۰۰۰dpi)؛ «سپتامبر» (لایه «سپتامی» نویز)",
+    "Q23: چاپ «بلا بیرم» (املای چاپ برای «بالا ببرم»؛ زوم ۴۰۰۰dpi؛ گزینهٔ ۴ خود چاپ «بالا بردن» درست دارد) + «شنیده بشود»",
+    "Q24: چاپ «یک سیستم دفاع از خود از خودش ... دفاع می کند» — تکرار «از خود از خودش» عینِ چاپ (زوم ۴۰۰۰dpi)",
+    "Q25: چاپ «دییشب» با یِ دوبل",
+    "Q26: «؟» در پایانِ جملهٔ خبری چاپ («...محافظت کنند؟»)",
+    "Q27: چاپ «میز پشتی» با یِ پایانی (زوم ۸۰۰۰dpi؛ لایه «میر» بی‌نقطه و واژهٔ دوم را حذف کرده بود) + ترتیبِ چاپ «داشتند تولد یکی را جشن می گرفتند»",
+    "Q29: ترتیبِ چاپ «اجازه حضور فعالی را به او در مسابقات ورزشی نمی دهد» عینِ چاپ؛ «مصدومیت/ورزشی» (لایه: ورزیس)",
+    "Q30: چاپ «یک سری کتاب» (لایه «رسی» نویز)",
+    "Q32: «را» دوبلِ چاپ («کشورش را ... همسایه را بازگو کرد»)",
+    "Q34: گزینهٔ ۱ «به طور با دقت» و گزینهٔ ۲ «با ادبانه» — املای چاپ",
+    "Q37: «گرفته اند» با د (زوم ۸۰۰۰dpi؛ خوانشِ نخستِ ۱۴۰۰dpi «ان» رد شد؛ لایه «طالق» = طلاق)",
+    "فاصله‌ها: «میشود/میشوند/میکند/میتواند/میتوانند/میکنیم/میگویند» چسبیده چاپ؛ «می کند/می دهد/می توانیم/می گرفتند/می شنویم» جدای چاپ — هر آیتم عینِ چاپ (الگوی r320/r324)"
    ]
   }
  }
