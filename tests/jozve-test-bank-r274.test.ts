@@ -20,11 +20,26 @@ interface BankQuestion {
   answer: number;
   translation?: string;
 }
+interface BankSource {
+  file: string;
+  questionPages: string;
+  keyGrid: string;
+  translationsWashed?: {
+    round: string;
+    pages: string;
+    section: string;
+    method: string;
+    items: number;
+    supersedes: string;
+    printQuirks: string[];
+  };
+}
 interface BankLesson {
   lesson: number;
   title: string;
   count: number;
   translationRestorations?: { count: number; note: string; questions: number[] };
+  source?: BankSource;
   questions: BankQuestion[];
 }
 interface Bank {
@@ -79,14 +94,16 @@ describe("jozve test bank g12-l2/l3 (r274 extraction receipt)", () => {
     }
   });
 
-  it("restoration receipt: lesson 2 has 4 re-assembled translations, lesson 3 has 42", () => {
+  it("receipts: lesson 2 keeps r274 restorations, lesson 3 superseded by r316 print-verbatim wash", () => {
     expect(l2.translationRestorations?.count).toBe(4);
     expect(l2.translationRestorations?.questions).toEqual([4, 5, 14, 15]);
-    expect(l3.translationRestorations?.count).toBe(42);
-    expect(l3.translationRestorations?.questions).toHaveLength(42);
-    expect(l3.translationRestorations?.note.length).toBeGreaterThan(30);
-    // بازسازی‌ها واقعاً در متن سؤال نشسته‌اند
-    expect(l3.questions.find((q) => q.n === 65)?.translation).toContain("الکترونیک آرتس");
+    // r316: تمام ۱۰۰ ترجمهٔ l3 چاپ‌محور بازنویسی شد — رسیدِ بازچینیِ r274 جای خود را به translationsWashed داد
+    expect((l3 as unknown as { translationRestorations?: unknown }).translationRestorations).toBeUndefined();
+    expect(l3.source?.translationsWashed?.round).toBe("r316");
+    expect(l3.source?.translationsWashed?.items).toBe(100);
+    // چاپِ جزوه حاکم است: Q65 «هنرهای الکتریکی» (تحت‌اللفظی Electronic Arts) — نه بازسازیِ معنایی r274
+    expect(l3.questions.find((q) => q.n === 65)?.translation).toContain("هنرهای الکتریکی");
+    expect(l3.questions.find((q) => q.n === 65)?.translation).not.toContain("الکترونیک آرتس");
     expect(l3.questions.find((q) => q.n === 43)?.translation).toContain("۲۵ درصد");
     expect(l2.questions.find((q) => q.n === 5)?.translation).toContain("W.H.O");
   });
