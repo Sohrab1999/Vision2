@@ -134,16 +134,18 @@ describe("jozve topic grammar bank g12 — connectives p48/p49 (r286 extraction 
     expect(l13.questions[4].question).toContain("ping- pong. Honestly, He just likes the soccer.");
   });
 
-  it("translation receipts: every typed item carries the reconstructed p188-style Persian receipt (non-empty, Persian)", () => {
+  it("translation receipts: typed bank washed print-verbatim by r321 (p192) — non-empty, Persian", () => {
+    // r321 — بازسازیِ خوانای r285 با شست‌وشوی چاپ‌محورِ ص۱۹۲ جانشین شد (الگوی r313/r316-r320):
+    // ۲۰ ترجمه عینِ چاپ شدند (محاورهٔ چاپ + املای چسبیده/جدا حفظ؛ ZWNJ نرمالِ r285 حذف).
     for (const q of l13.questions) {
       expect(q.translation, q.id).toBeTruthy();
       expect(FA.test(q.translation!), q.id).toBe(true);
       expect(q.translation!.length, q.id).toBeGreaterThan(12);
     }
-    // نمونه‌های قفل‌شده از کلید چاپی ص۱۹۲ (بازسازیِ خوانا — الگوی r285)
-    expect(l13.questions[0].translation).toContain("او روزنامه می‌خواند");
+    // نمونه‌های قفل‌شده به رونویسیِ چاپیِ ص۱۹۲ (الگوی r320)
+    expect(l13.questions[0].translation).toContain("او روزنامه میخواند");
     expect(l13.questions[6].translation).toContain("چای دوست داری یا قهوه");
-    expect(l13.questions[19].translation).toContain("نمی‌داند چطور شنا کند");
+    expect(l13.questions[19].translation).toContain("نمیداند چطور شنا کند");
   });
 
   it("mcq bank p49: grid fidelity (all 20 letters), semantic locks, English purity, single canonical blank", () => {
