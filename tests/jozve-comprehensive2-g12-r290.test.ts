@@ -55,9 +55,9 @@ const OPEN_KEYS: Record<number, string> = {
 };
 
 describe("jozve topic grammar bank g12 — comprehensive exam lesson 2 (r290 extraction receipt)", () => {
-  it("bank shape: two hundred sixty-five lessons, comprehensive lesson-2 adds 10 banks / 51 items (family 1390)", () => {
+  it("bank shape: two hundred eighty-four lessons, comprehensive lesson-2 adds 10 banks / 51 items (family 1441)", () => {
     expect(bank.lessons.map((l) => l.lesson)).toEqual(
-      Array.from({ length: 265 }, (_, i) => i + 1)
+      Array.from({ length: 284 }, (_, i) => i + 1)
     );
     const counts: Record<number, number> = { 37: 8, 38: 4, 39: 4, 40: 8, 41: 4, 42: 4, 43: 4, 44: 5, 45: 6, 46: 4 };
     const levels: Record<number, string> = { 38: "استاندارد", 40: "استاندارد", 44: "استاندارد", 46: "استاندارد" };
@@ -74,7 +74,7 @@ describe("jozve topic grammar bank g12 — comprehensive exam lesson 2 (r290 ext
     // آزمون جامع درس دوم: ۵۱ آیتم در ۱۰ بانک — خانواده: ۵۷۴ + ۵۱ = ۶۲۵
     const compTotal = COMP2.reduce((a, n) => a + L(n).count, 0);
     expect(compTotal).toBe(51);
-    expect(bank.lessons.reduce((a, l) => a + l.count, 0)).toBe(1390);
+    expect(bank.lessons.reduce((a, l) => a + l.count, 0)).toBe(1441);
   });
 
   it("typed vocab bank 37: all 8 printed keys (p213), closed 9-word bank scaffolds, wonder is the printed extra word", () => {
@@ -264,10 +264,10 @@ describe("jozve topic grammar bank g12 — comprehensive exam lesson 2 (r290 ext
     expect(rm2.question).toContain("“eagerly”");
   });
 
-  it("id uniqueness across the whole 265-bank family (1390 ids) + comprehensive lesson-2 banks introduce zero new stem collisions", () => {
+  it("id uniqueness across the whole 284-bank family (1441 ids) + comprehensive lesson-2 banks introduce zero new stem collisions", () => {
     const all = bank.lessons.flatMap((l) => l.questions);
     const ids = new Set(all.map((q) => q.id));
-    expect(ids.size).toBe(1390);
+    expect(ids.size).toBe(1441);
     const stems = new Set(
       bank.lessons
         .filter((l) => l.lesson < 37)

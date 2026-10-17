@@ -42,9 +42,9 @@ const K_PRVB: Record<number, string> = { 1: "j", 2: "h", 3: "f", 4: "g" };
 const K_VB: Record<number, string> = { 1: "arrange", 2: "demand", 3: "repeatedly", 4: "burst", 5: "variety" };
 
 describe("jozve topic grammar bank g12 — deaf-students shahrivar 99 exam (r300 extraction receipt)", () => {
-  it("bank shape: two hundred sixty-five lessons, deaf exam adds 19 banks / 63 items (family 1390)", () => {
+  it("bank shape: two hundred eighty-four lessons, deaf exam adds 19 banks / 63 items (family 1441)", () => {
     expect(bank.lessons.map((l) => l.lesson)).toEqual(
-      Array.from({ length: 265 }, (_, i) => i + 1)
+      Array.from({ length: 284 }, (_, i) => i + 1)
     );
     const counts: Record<number, number> = {
       172: 4, 173: 5, 174: 2, 175: 3, 176: 6, 177: 4, 178: 2, 179: 4, 180: 2,
@@ -68,9 +68,9 @@ describe("jozve topic grammar bank g12 — deaf-students shahrivar 99 exam (r300
     expect(L(186).questions.map((q) => q.id)).toEqual(["g12-fin99shd-cc1"]);
     // آزمون ویژهٔ ناشنوایان: ۶۳ آیتم در ۱۹ بانک — خانواده: ۱۱۰۳ + ۶۳ = ۱۱۶۶
     const total = bank.lessons.reduce((s, l) => s + l.count, 0);
-    expect(total).toBe(1390);
+    expect(total).toBe(1441);
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(new Set(ids).size).toBe(1390);
+    expect(new Set(ids).size).toBe(1441);
   });
 
   it("provenance: source.final99shd registered — first listening-free round, four NEW sections, third variant of one date", () => {
