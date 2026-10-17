@@ -43,7 +43,7 @@ const fresh = [...l10.questions, ...l11.questions];
 
 describe("jozve topic grammar bank g12 — passive/active duo (r284 extraction receipt)", () => {
   it("bank shape: eleven lessons, duo added as exactly 20/40 with continuous printed numbering", () => {
-    expect(bank.lessons.map((l) => l.lesson)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]); // r285-r286 بانک‌های ۱۲-۱۴ و r287 هفت بانک تشریحی را افزودند
+    expect(bank.lessons.map((l) => l.lesson)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]); // r285-r286 بانک‌های ۱۲-۱۴، r287 هفت بانک تشریحی و r288 بخش‌های ۸/۹ را افزودند
     // درس‌های r280-r283 دست‌نخورده
     const counts = [27, 61, 30, 50, 20, 20, 40, 20, 15];
     counts.forEach((c, i) => expect(bank.lessons[i].questions).toHaveLength(c));
@@ -127,10 +127,10 @@ describe("jozve topic grammar bank g12 — passive/active duo (r284 extraction r
     expect(tr).toContain("OCR");
   });
 
-  it("family-wide uniqueness: 499 ids after r287, no stem collision with lesson 6 (p150 passive bank)", () => {
+  it("family-wide uniqueness: 515 ids after r288, no stem collision with lesson 6 (p150 passive bank)", () => {
     const all = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
     expect(new Set(all).size).toBe(all.length);
-    expect(all).toHaveLength(499); // r285-r286 و r287 نودوچهار تست تشریحی را افزودند
+    expect(all).toHaveLength(515); // r285-r287 و r288 شانزده تست بخش‌های ۸/۹ را افزودند
     const l6Stems = new Set(bank.lessons.find((l) => l.lesson === 6)!.questions.map((q) => q.question));
     for (const q of fresh) expect(l6Stems.has(q.question), `${q.id} stem collision`).toBe(false);
   });

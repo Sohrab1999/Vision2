@@ -85,9 +85,9 @@ const MCQ_LOCKS: Record<number, string> = {
 };
 
 describe("jozve topic grammar bank g12 — diagnostic test p50-54 (r287 extraction receipt)", () => {
-  it("bank shape: twenty-one lessons, seven diagnostic banks added with printed counts", () => {
+  it("bank shape: twenty-three lessons, seven diagnostic banks added with printed counts", () => {
     expect(bank.lessons.map((l) => l.lesson)).toEqual(
-      [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+      [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23] // r288 بخش‌های ۸/۹ (۲۲-۲۳) را افزود
     );
     const counts = [27, 61, 30, 50, 20, 20, 40, 20, 15, 20, 40, 22, 20, 20];
     counts.forEach((c, i) => expect(bank.lessons[i].questions).toHaveLength(c));
@@ -103,8 +103,8 @@ describe("jozve topic grammar bank g12 — diagnostic test p50-54 (r287 extracti
     expect(l19.questions.every((q) => q.id === `g12-dfix-${q.n}`)).toBe(true);
     expect(l20.questions.every((q) => q.id === `g12-dmcq-${q.n}`)).toBe(true);
     expect(l21.questions.every((q) => q.id === `g12-dtag-${q.n}`)).toBe(true);
-    // جمع خانواده: ۴۰۵ + ۹۴ = ۴۹۹
-    expect(bank.lessons.reduce((a, l) => a + l.count, 0)).toBe(499);
+    // جمع خانواده: ۴۹۹ + ۱۶ (r288) = ۵۱۵
+    expect(bank.lessons.reduce((a, l) => a + l.count, 0)).toBe(515);
   });
 
   it("typed banks 15-17: full-sentence keys from printed p193, scramble stems faithful, single typed input", () => {
@@ -200,10 +200,10 @@ describe("jozve topic grammar bank g12 — diagnostic test p50-54 (r287 extracti
     }
   });
 
-  it("id uniqueness across the whole 21-bank family (499 ids) + diagnostic banks introduce zero new stem collisions", () => {
+  it("id uniqueness across the whole 23-bank family (515 ids) + diagnostic banks introduce zero new stem collisions", () => {
     const all = bank.lessons.flatMap((l) => l.questions);
     const ids = new Set(all.map((q) => q.id));
-    expect(ids.size).toBe(499);
+    expect(ids.size).toBe(515);
     const stems = new Set(
       bank.lessons
         .filter((l) => l.lesson < 15)

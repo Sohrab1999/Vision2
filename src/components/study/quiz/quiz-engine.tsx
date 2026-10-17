@@ -42,6 +42,17 @@ function TypedAnswerInput({
     if (!normalizeTypedAnswer(typed)) return; // ورودی خالی
     onSubmit(typed.trim());
   };
+  // r288 — placeholder وابسته به شکلِ سؤال: فعل داخل پرانتز / اصلاح خطا / تگ / خالیِ کانونی / متنِ ۴خالی
+  const stem = q.question;
+  const placeholder = /---------------\s*\)/.test(stem)
+    ? "write the correction…"
+    : /\([a-z ]+\)/.test(stem) && /---------------/.test(stem)
+      ? "write the correct verb form…"
+      : /---------------/.test(stem) && stem.trim().endsWith("?")
+        ? "type the tag question… (e.g. are they)"
+        : /---------------|\(---\d---\)/.test(stem)
+          ? "fill in the blank… (e.g. and)"
+          : "type your answer…";
   return (
     <div className="space-y-2.5" dir="ltr">
       <div className="flex gap-2">
@@ -55,7 +66,7 @@ function TypedAnswerInput({
             }
           }}
           disabled={disabled}
-          placeholder="type the tag question… (e.g. are they)"
+          placeholder={placeholder}
           autoComplete="off"
           autoCapitalize="off"
           spellCheck={false}

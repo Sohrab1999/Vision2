@@ -294,8 +294,20 @@
    "typedMode": "بانک‌های ۱۵-۱۹ و ۲۱: kind=typed + accepted (داربست = سه آیتم بعدیِ همان بخش، چرخه‌ای)؛ آیتم‌های دوخالی S4 (۵/۶/۹/۱۳/۱۵) کلید اسلش‌دار چاپی با فاصله accepted شد",
    "translations": "غیبت صادقانه — بدنهٔ آزمون تشریحی ترجمه چاپی ندارد (الگوی r281-r283)",
    "printedDups": "S6-5==ص۳۸ Q14 (g12-pass2-14) و S6-7==ص۳۸ Q16 (g12-pass2-16): خود جزوه این دو سؤال را در دو آزمون چاپ کرده — کلیدهای هر جفت یکسان (has been invited / have been built) با ترتیب گزینهٔ متفاوت؛ الگوی ERRATA_DUP r281",
-   "deferred": "بخش ۸ (۱۲ آیتم کامل کنید and/or/but/so) و بخش ۹ (متن ۴خالی) ص۵۴ با کلید ص۱۹۴ — راند آینده",
+   "deferred": "بخش‌های ۸/۹ ص۵۴ در r288 استخراج شد — رسیدش در source.diagnosticS89؛ آزمون تشریحی اکنون کامل است (۹ بخش / ۱۱۰ آیتم)",
    "extractedRound": 287
+  },
+  "diagnosticS89": {
+   "pages": "54 (بدنه) + 194 (کلید)",
+   "topic": "تکمیل آزمون تشریحی بخش گرامر و نگارش درس اول — بخش‌های ۸/۹: کلمات ربط (and, or, but, so)",
+   "questions": 16,
+   "keyType": "ص۱۹۴ دو کلید: گرید دوسطریِ ۱۲تایی بخش ۸ (ستون فرد ۱..۱۱ سپس زوج ۲..۱۲ — الگوی ستونیِ r283/r284) + فهرست ۴تایی بخش ۹",
+   "typedMode": "kind=typed + accepted؛ داربست = سه واژهٔ دیگرِ استخرِ بستهٔ خودِ بخش (and/or/but/so) — الگوی r286 با استخرِ بسته",
+   "passage": "بخش ۹ متنِ پیوستهٔ Amin با خالی‌های شماره‌دار چاپی (---N---) — نخستین بانکِ متنِ ۴خالیِ اپ؛ ساقه‌های ۴گانه تکه‌های verbatim از خودِ متن با دقیقاً یک خالیِ شماره‌دار",
+   "keyBalance": "بخش ۸: so۳/and۳/or۳/but۳ — توزیع متوازنِ کاملِ چاپی؛ بخش ۹: هر چهار واژه یک‌بار",
+   "translations": "غیبت صادقانه — بدنهٔ آزمون تشریحی ترجمه چاپی ندارد (الگوی r281-r287)",
+   "examComplete": "آزمون تشریحی درس اول اکنون ۹ بخش / ۱۱۰ آیتم کامل است (۹۴ r287 + ۱۶ r288) — کلید ص۱۹۳-۱۹۴",
+   "extractedRound": 288
   }
  },
  "lessons": [
@@ -7456,6 +7468,294 @@
      "answer": 0,
      "accepted": [
       "shall we"
+     ]
+    }
+   ]
+  },
+  {
+   "lesson": 22,
+   "title": "تشریحی — کامل کنید: کلمات ربط (ص۵۴)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 12,
+   "questions": [
+    {
+     "id": "g12-dconn-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "The early bird catches the worm, --------------- if you want to succeed, wake up and start work early.",
+     "options": [
+      "so",
+      "and",
+      "or",
+      "but"
+     ],
+     "answer": 0,
+     "accepted": [
+      "so"
+     ]
+    },
+    {
+     "id": "g12-dconn-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "He bought a house, found a job, --------------- chose a school for his children last year.",
+     "options": [
+      "and",
+      "or",
+      "but",
+      "so"
+     ],
+     "answer": 0,
+     "accepted": [
+      "and"
+     ]
+    },
+    {
+     "id": "g12-dconn-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "There was no bread at home, --------------- my mother went out to buy some.",
+     "options": [
+      "so",
+      "and",
+      "or",
+      "but"
+     ],
+     "answer": 0,
+     "accepted": [
+      "so"
+     ]
+    },
+    {
+     "id": "g12-dconn-4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "You should pay the price, --------------- you should leave the store quickly.",
+     "options": [
+      "or",
+      "and",
+      "but",
+      "so"
+     ],
+     "answer": 0,
+     "accepted": [
+      "or"
+     ]
+    },
+    {
+     "id": "g12-dconn-5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "He can buy the dictionary, --------------- he can borrow it from the library.",
+     "options": [
+      "or",
+      "and",
+      "but",
+      "so"
+     ],
+     "answer": 0,
+     "accepted": [
+      "or"
+     ]
+    },
+    {
+     "id": "g12-dconn-6",
+     "n": 6,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Ali bought a new coat, --------------- he wore it for two years.",
+     "options": [
+      "and",
+      "or",
+      "but",
+      "so"
+     ],
+     "answer": 0,
+     "accepted": [
+      "and"
+     ]
+    },
+    {
+     "id": "g12-dconn-7",
+     "n": 7,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "The glass fell down to the floor, --------------- it didn’t break.",
+     "options": [
+      "but",
+      "and",
+      "or",
+      "so"
+     ],
+     "answer": 0,
+     "accepted": [
+      "but"
+     ]
+    },
+    {
+     "id": "g12-dconn-8",
+     "n": 8,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "You can pay now, --------------- when I finish your painting.",
+     "options": [
+      "or",
+      "and",
+      "but",
+      "so"
+     ],
+     "answer": 0,
+     "accepted": [
+      "or"
+     ]
+    },
+    {
+     "id": "g12-dconn-9",
+     "n": 9,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "He couldn’t find his pen, --------------- he wrote in pencil.",
+     "options": [
+      "so",
+      "and",
+      "or",
+      "but"
+     ],
+     "answer": 0,
+     "accepted": [
+      "so"
+     ]
+    },
+    {
+     "id": "g12-dconn-10",
+     "n": 10,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "My sister loves apples, --------------- she hates bananas.",
+     "options": [
+      "but",
+      "and",
+      "or",
+      "so"
+     ],
+     "answer": 0,
+     "accepted": [
+      "but"
+     ]
+    },
+    {
+     "id": "g12-dconn-11",
+     "n": 11,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "The class was hot, --------------- the lesson was boring.",
+     "options": [
+      "and",
+      "or",
+      "but",
+      "so"
+     ],
+     "answer": 0,
+     "accepted": [
+      "and"
+     ]
+    },
+    {
+     "id": "g12-dconn-12",
+     "n": 12,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "She likes fish, --------------- her grandfather hates it.",
+     "options": [
+      "but",
+      "and",
+      "or",
+      "so"
+     ],
+     "answer": 0,
+     "accepted": [
+      "but"
+     ]
+    }
+   ]
+  },
+  {
+   "lesson": 23,
+   "title": "تشریحی — متن ۴خالی: کلمات ربط (ص۵۴)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-dcloze-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Amin is a student, (---1---) he goes to a school near his house.",
+     "options": [
+      "and",
+      "or",
+      "but",
+      "so"
+     ],
+     "answer": 0,
+     "accepted": [
+      "and"
+     ]
+    },
+    {
+     "id": "g12-dcloze-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "He can come home by taxi, (---2---) he can come on foot.",
+     "options": [
+      "or",
+      "and",
+      "but",
+      "so"
+     ],
+     "answer": 0,
+     "accepted": [
+      "or"
+     ]
+    },
+    {
+     "id": "g12-dcloze-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "He usually gets back on time, (---3---) yesterday he came home late because one of his friends got sick,",
+     "options": [
+      "but",
+      "and",
+      "or",
+      "so"
+     ],
+     "answer": 0,
+     "accepted": [
+      "but"
+     ]
+    },
+    {
+     "id": "g12-dcloze-4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "yesterday he came home late because one of his friends got sick, (---4---) Amin waited until his friend’s father arrived.",
+     "options": [
+      "so",
+      "and",
+      "or",
+      "but"
+     ],
+     "answer": 0,
+     "accepted": [
+      "so"
      ]
     }
    ]
