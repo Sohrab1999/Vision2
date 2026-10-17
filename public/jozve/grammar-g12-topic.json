@@ -6773,7 +6773,7 @@
      "accepted": [
       "so"
      ],
-     "translation": "صندلیهای زیادی وجود داشت بنابراین تو مجبور نبود که بایستی."
+     "translation": "صندلیهای زیادی وجود داشت بنابراین تو مجبور خواهی بود که بایستی."
     },
     {
      "id": "g12-connwrite-19",
@@ -6833,7 +6833,7 @@
       "Q11/Q14 «خییل» لایه → «خیلی» چاپ",
       "Q13 «نمیر سه» لایه → «نمیرسه» چاپ (زوم ۲۴۰۰dpi)",
       "Q15 «میر ود» → «میرود»؛ Q3/Q19 «میر وم» → «میروم» (زوم i19)",
-      "Q18 «مجبور خوایه بود» لایه → «مجبور نبود» چاپ؛ «بیاست» → «بایستی» (زوم ۱۶۰۰dpi خطِ کامل)",
+      "Q18 «مجبور خوایه بود» لایه → «مجبور خواهی بود» چاپ؛ «بیاست» → «بایستی» (خوانشِ ۱۶۰۰dpiِ r321 اصلاح شد — زومِ ۴۰۰۰dpiِ r322)",
       "نقطه‌های میان‌جمله‌ایِ لایه (مثل «اما .خواندن») آرتیفکتِ استخراج‌اند — نرمال به پایانِ جمله"
      ],
      "printQuirks": [
@@ -6850,10 +6850,20 @@
       "Q18 «صندلیهای» چسبیده",
       "Q19 «گوش میکنم» چسبیده"
      ],
-     "printErrata": [
-      "Q18 ترجمهٔ چاپ «صندلیهای زیادی وجود داشت» ناسازگار با ساقهٔ انگلیسی \"There are no more chairs available\" — عینِ چاپ حفظ شد (الگوی printErrata r309/r320)"
-     ],
-     "keyAgree": 20
+     "printErrata": [],
+     "keyAgree": 20,
+     "q18Arbitration": {
+      "round": "r322",
+      "issue": "خوانشِ Q18 در r321 («مجبور نبود» + اراتومِ چاپیِ فرضی) با رندرِ تازهٔ مستقل رد شد",
+      "method": "three-vote r269: fresh 4000dpi render + English stem + OCR layer",
+      "print": "تو مجبور خواهی بود که بایستی",
+      "english": "There are no more chairs available, so you will have to stand.",
+      "layer": "مجبور خوایه بود",
+      "verdict": "no print erratum — print agrees with the English stem; translation corrected print-verbatim",
+      "supersedes": "r321 printErrata[0]",
+      "evidence": "/tmp/r322-q18-4000.png + /tmp/r321-i18-token.png + /tmp/r321-i18-khahi-L.png"
+     },
+     "correctedRound": "r322"
     }
    }
   },

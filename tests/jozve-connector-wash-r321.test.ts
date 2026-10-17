@@ -11,6 +11,8 @@ type TWash = {
   round: string; pages: string; section: string; method: string; items: number;
   supersedes: string; keyAgree: number; layerNoiseFixes: string[];
   printQuirks: string[]; printErrata: string[];
+  correctedRound?: string;
+  q18Arbitration?: { round: string; method: string; print: string; english: string; verdict: string; supersedes: string };
 };
 type TLesson = { lesson: number; title: string; count: number; questions: TQ[]; source?: { translationsWashed?: TWash } };
 type TBank = { grade: number; lessons: TLesson[] };
@@ -40,7 +42,7 @@ const TRANSCRIPT: Record<number, string> = {
   15: "او هر بعد از ظهر به باشگاه تنیس میرود چونکه عاشق تنیس بازی کردن است.",
   16: "او به مدرسه نیامد چونکه مریض بود.",
   17: "ما از فیلم خسته شدیم بنابراین سینما را ترک کردیم.",
-  18: "صندلیهای زیادی وجود داشت بنابراین تو مجبور نبود که بایستی.",
+  18: "صندلیهای زیادی وجود داشت بنابراین تو مجبور خواهی بود که بایستی.",
   19: "من هر جمعه به پارک میروم و به آواز خواندن پرندگان گوش میکنم.",
   20: "او شنا کردن را دوست دارد اما نمیداند چطور شنا کند.",
 };
@@ -61,7 +63,9 @@ describe("jozve connector wash g12 (r321 print-verbatim translations of p192 key
     expect(w.keyAgree).toBe(20);
     expect(w.layerNoiseFixes.length).toBeGreaterThanOrEqual(8);
     expect(w.printQuirks.length).toBeGreaterThanOrEqual(10);
-    expect(w.printErrata.length).toBe(1);
+    // r322: اراتومِ فرضیِ Q18 رد شد (رندرِ ۴۰۰۰dpi + ساقهٔ انگلیسی) — printErrata خالی شد
+    expect(w.printErrata.length).toBe(0);
+    expect(w.correctedRound).toBe("r322");
   });
 
   it("all 20 translations verbatim-locked to the independent print transcript, Persian-pure", () => {
@@ -81,21 +85,26 @@ describe("jozve connector wash g12 (r321 print-verbatim translations of p192 key
     expect(TRANSCRIPT[4]).not.toContain("مهماب");
     expect(TRANSCRIPT[10]).toContain("مسواک میزنم");
     expect(TRANSCRIPT[10]).not.toContain("میر نم");
-    expect(TRANSCRIPT[18]).toContain("مجبور نبود");
+    expect(TRANSCRIPT[18]).toContain("مجبور خواهی بود");
     expect(TRANSCRIPT[18]).toContain("بایستی");
     expect(TRANSCRIPT[18]).not.toContain("خوایه");
+    expect(TRANSCRIPT[18]).not.toContain("نبود");
     expect(TRANSCRIPT[6]).toContain("علی");
     expect(TRANSCRIPT[6]).toContain("تمیز");
   });
 
-  it("print erratum of Q18 documented (چاپ ناسازگار با ساقهٔ انگلیسی — الگوی r309/r320)", () => {
-    expect(w.printErrata[0]).toContain("Q18");
-    expect(w.printErrata[0]).toContain("صندلیهای زیادی");
-    expect(TRANSCRIPT[18]).toContain("صندلیهای زیادی");
+  it("Q18 arbitration (r322): خوانشِ «نبود» رد شد — چاپ «خواهی بود» با ساقهٔ انگلیسی هم‌رأی است", () => {
+    const arb = w.q18Arbitration!;
+    expect(arb.round).toBe("r322");
+    expect(arb.method).toContain("4000dpi");
+    expect(arb.print).toContain("خواهی بود");
+    expect(arb.verdict).toContain("no print erratum");
+    expect(arb.supersedes).toContain("r321 printErrata");
     // ساقهٔ انگلیسی دست‌نخورده: "There are no more chairs available, --- you will have to stand."
     const q18 = les.questions.find((q) => q.n === 18)!;
     expect(q18.question).toContain("no more chairs");
     expect(q18.options[q18.answer]).toBe("so");
+    expect(q18.translation).toContain("خواهی بود");
   });
 
   it("all 20 keys locked to the printed letter key of p192 (۲۰/۲۰)", () => {
