@@ -42,9 +42,9 @@ const K_R3TF: Record<number, string> = { 1: "a", 2: "a" }; // True / True
 const K_R3M: Record<number, string> = { 3: "c", 4: "a" };
 
 describe("jozve topic grammar bank g12 — official nationwide khordad 1400 humanities exam (r303 extraction receipt)", () => {
-  it("bank shape: three hundred four lessons, khordad 1400 humanities adds 20 banks / 56 items (family 1494)", () => {
+  it("bank shape: three hundred twenty four lessons, khordad 1400 humanities adds 20 banks / 56 items (family 1556)", () => {
     expect(bank.lessons.map((l) => l.lesson)).toEqual(
-      Array.from({ length: 304 }, (_, i) => i + 1)
+      Array.from({ length: 324 }, (_, i) => i + 1)
     );
     const counts: Record<number, number> = {
       228: 3, 229: 4, 230: 4, 231: 4, 232: 4, 233: 3, 234: 3, 235: 1,
@@ -72,9 +72,9 @@ describe("jozve topic grammar bank g12 — official nationwide khordad 1400 huma
     ]);
     // آزمون رسمی سراسری خرداد ۱۴۰۰ انسانی: ۵۶ آیتم در ۲۰ بانک — خانواده: ۱۲۸۳ + ۵۶ = ۱۳۳۹
     const total = bank.lessons.reduce((s, l) => s + l.count, 0);
-    expect(total).toBe(1494);
+    expect(total).toBe(1556);
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(new Set(ids).size).toBe(1494);
+    expect(new Set(ids).size).toBe(1556);
   });
 
   it("provenance: source.final1400khh registered — track-variant pair of r302, near-complete key 56/57, third six-slot, or-keyed half-sentence", () => {

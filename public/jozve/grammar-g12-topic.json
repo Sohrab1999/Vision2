@@ -1282,6 +1282,34 @@
         "وفاداری‌های چاپی: «2.True (a)» بدونِ فاصله، «38. ( c )» با فاصلهٔ چاپی، «Oh ,yes.» با ویرگولِ چسبیده، «19%»، «Mehran’s friend»، «9 p.m.»، سربرگِ صوتیِ «Audio file (MP3) / Audio script (MP3)» — واریانتِ نو پس از Audio script (PDF) و Audio file (PDF)",
         "پنج دکمهٔ شنیداری با فایلِ صوتیِ غایب — الگوی r292-r305"
       ]
+    },
+    "final1401shr": {
+      "pages": "343-347",
+      "keyPages": "348-349",
+      "titlePrinted": "آزمون نهایی انگلیسی دوازدهم — نوبت شهریور ماه سال ۱۴۰۱، رسمیِ سراسریِ کلیهٔ رشته‌ها، مرکز سنجش و پایش کیفیت آموزشی (aee.medu.ir)، تاریخ ۲۱/۰۶/۱۴۰۱، ۵ صفحه، جمع نمره ۴۰ — شانزدهمین و واپسین نوبتِ خانواده، هشتمین نوبتِ منبعِ رسمی؛ صفحهٔ ۳۴۹ واپسین صفحهٔ جزوه است",
+      "sections": 19,
+      "banks": 20,
+      "questions": 62,
+      "keys": 62,
+      "extractedRound": 307,
+      "branchVariant": "شانزدهمین و واپسین نوبتِ سریِ دی۹۷ تا شهریور۱۴۰۱ — هشتمین نوبتِ منبعِ رسمی: رکوردِ آیتم (۶۲ در برابرِ ۵۳ِ r306) + کلیدِ دولایهٔ اسلش‌دارِ فاعلیِ ۵۲ (We / You spend) + بازسازیِ کلیدِ ۵۸ از قطعاتِ RTL + ششمین بانکِ سه‌گزینه‌ایِ شنیداری + چهارمین اضافهٔ تصویریِ (b) دوم‌جای + بازگوییِ اول‌شخصِ داستانِ مایک/جانِ r306 در شنیداری + ارتقای پاراگرافِ Solar energy (بارمِ اصولیِ r306) به ریدینگِ کاملِ ۷ آیتمی + کلیدهای تازهٔ محضِ be kept / would tell / had studied(تایپی) / scrambleِ دوواریانته.",
+      "audioFilesAbsent": true,
+      "openWritingAbsent": {
+        "items": "۶۳-۶۵ (Topic sentence برای Iran/Books/Computer) و ۶۶ (پاراگرافِ Water با داده‌های چاپی Nearly 70 percent of our body / Be important for living things / Generate electricity)",
+        "reason": "راهنما فقط بارمِ اصولی می‌دهد — الگوی r296-r306؛ پوششِ کلید: ۶۲/۶۶"
+      },
+      "receipts": [
+        "واپسین نوبتِ سری: صفحهٔ ۳۴۹ واپسین صفحهٔ جزوه است («جمع نمره 40» + «با آرزوی سلامتی») — سریِ دی۹۷ تا شهریور۱۴۰۱ با ۱۶ نوبت بسته شد؛ پیش‌بینیِ handoff چهارمین بار پیاپی درست بود",
+        "رکوردِ آیتم: ۶۲ آیتم در ۲۰ بانک (پیشتر ۵۳/۲۰ در r306)؛ کلیدِ چاپیِ آیتم‌به‌آیتمِ کامل برای همهٔ ۶۲ (فقط ۶۳-۶۶ اصولی)",
+        "کلیدِ دولایهٔ اسلش‌دارِ فاعلیِ ۵۲ «We / You spend about one-third (1/3) of our lives in sleep.» با بارم (0/25)+(0/75) — سومین اسلش‌دولایهٔ خانواده (r304 had got/gotten، r306 these/those shoes)؛ این‌بار اسلش میانِ دو فاعل است",
+        "بازسازیِ کلیدِ ۵۸ «we are still confused or think we are missing important information» از قطعاتِ RTL چاپی (used or think / still conf / are / we) — دومین وقوعِ الگوی r305-47",
+        "ششمین بانکِ سه‌گزینه‌ایِ شنیداری (گزارشگر/ورزشکار: c/a/b/c)؛ چهارمین اضافهٔ تصویریِ (b) دوم‌جای (r302/r304/r306) و نخستین اضافهٔ تعریف‌ها با جایگاهِ اول (a)",
+        "متنِ خیابانِ تاریک (ص۳۴۳) بازگوییِ اول‌شخصِ داستانِ مایک/جانِ r306 (ص۳۳۹) است: six stems موازی با کلیدهای late/office/quiet/walking/wondered/suddenly — همان خطِ داستانی، دو بازیِ متفاوت",
+        "ارتقای بارمِ اصولی به قابلِ بازی: پاراگرافِ Solar energy که در r306 فقط برای پاراگراف‌نویسی بود، این‌جا ریدینگِ کامل با ۷ آیتم (۴۱-۴۷) و جملهٔ کلیدیِ ۴۷ «Solar technologies can deliver heat, cooling, natural lighting, electricity, and fuels.»",
+        "کلیدهای تازهٔ محض (۰ برخورد در خانواده): be kept (مجهولِ مدرکی)، would tell (شرطیِ نوع دوم)، had studied (نخستین تایپی؛ l87 فقط MCQ بود)، scrambleِ ۳۸ با دو واریانتِ چاپی «یا»، ضرب‌المثلِ Birds of a feather نخستین‌بار شکاف‌حرفی (شکلِ کاملِ l136 موجود)",
+        "خویشاوندی‌های خانواده: refer-to سومین وقوع (r302-r1m2 «them»، r306، این‌جا «it» با کلیدِ word)؛ A Forest is a place خویشاوندِ A doctor (l296) و garage/factory/cinema (l18-20)؛ burst نخستین‌بار با شکاف روی خودِ فعل (l87 شکاف روی into)؛ monolingual نخستین‌بار تایپی (l67 MCQ)؛ sentence-عامِ rich man خویشاوندِ l3 با ساقهٔ متفاوت",
+        "وفاداری‌های چاپی: F بزرگِ «A Forest»، «I hadn’t experienced such a thing» با I بزرگ در میانهٔ جمله، «9 p.m.»، «(1/3)»، «who can it be?» با can (نه could)، شماره‌گذاریِ پرانتزدارِ ……(13)……-……(18)……، سربرگِ صوتیِ «Listening» — واریانتِ چهارم پس از PDF/MP3"
+      ]
     }
   },
   "lessons": [
@@ -25462,6 +25490,1064 @@
             "Yesterday, my sister saw an ant."
           ],
           "placeholder": "جملهٔ نامرتبطِ متن را بنویسید…"
+        }
+      ]
+    },
+    {
+      "lesson": 305,
+      "title": "نهایی سراسری شهریور ۱۴۰۱ — شنیداری فایل ۱: مکالمه پدر و پسر (والیبال)، درست/نادرست (ص۳۴۳)",
+      "level": "استاندارد",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g12-fin1401shr-l1tf1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "They played volleyball and had a sandwich.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g12-fin1401shr-l1tf2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "They had taken some photographs before playing volleyball.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g12-fin1401shr-l1tf3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "After they had eaten lunch, they flew their kites.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g12-fin1401shr-l1tf4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "That was fantastic because they had bought the kites.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "lesson": 306,
+      "title": "نهایی سراسری شهریور ۱۴۰۱ — شنیداری فایل ۲: مکالمه گزارشگر و ورزشکار، تست سه‌گزینه‌ای (ص۳۴۳)",
+      "level": "استاندارد",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g12-fin1401shr-l2m1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "He likes to play --------------- .",
+          "options": [
+            "football",
+            "basketball",
+            "badminton"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g12-fin1401shr-l2m2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "That sport is --------------- in his country.",
+          "options": [
+            "popular",
+            "special",
+            "wonderful"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g12-fin1401shr-l2m3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "He plays that sport every --------------- .",
+          "options": [
+            "week",
+            "weekend",
+            "Wednesday"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g12-fin1401shr-l2m4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "He prefers watching football --------------- .",
+          "options": [
+            "offline",
+            "online",
+            "offline and online"
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "lesson": 307,
+      "title": "نهایی سراسری شهریور ۱۴۰۱ — شنیداری فایل ۳: مکالمه مجید و آقای ایرانمهر، کامل کنید (ص۳۴۳)",
+      "level": "استاندارد",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g12-fin1401shr-l3q1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Mr. Iranmehr: First, I --------------- a learner’s dictionary.",
+          "options": [
+            "recommend"
+          ],
+          "answer": 0,
+          "accepted": [
+            "recommend"
+          ],
+          "placeholder": "fill in the blank with the missing word…"
+        },
+        {
+          "id": "g12-fin1401shr-l3q2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Mr. Iranmehr: I suppose a --------------- dictionary is more suitable for you.",
+          "options": [
+            "monolingual"
+          ],
+          "answer": 0,
+          "accepted": [
+            "monolingual"
+          ],
+          "placeholder": "fill in the blank with the missing word…"
+        },
+        {
+          "id": "g12-fin1401shr-l3q3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Mr. Iranmehr: For you as a high school student, an --------------- one is OK.",
+          "options": [
+            "elementary"
+          ],
+          "answer": 0,
+          "accepted": [
+            "elementary"
+          ],
+          "placeholder": "fill in the blank with the missing word…"
+        },
+        {
+          "id": "g12-fin1401shr-l3q4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Mr. Iranmehr: Yes, a --------------- dictionary.",
+          "options": [
+            "pocket"
+          ],
+          "answer": 0,
+          "accepted": [
+            "pocket"
+          ],
+          "placeholder": "fill in the blank with the missing word…"
+        }
+      ]
+    },
+    {
+      "lesson": 308,
+      "title": "نهایی سراسری شهریور ۱۴۰۱ — شنیداری فایل ۴: متن خیابانِ تاریک، کامل کنید (ص۳۴۳)",
+      "level": "استاندارد",
+      "count": 6,
+      "questions": [
+        {
+          "id": "g12-fin1401shr-l4q1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Last night, I left work ……(13)……--------------- at around 9 p.m.",
+          "options": [
+            "late"
+          ],
+          "answer": 0,
+          "accepted": [
+            "late"
+          ],
+          "placeholder": "fill in the blank with the missing word…"
+        },
+        {
+          "id": "g12-fin1401shr-l4q2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "When I came out of the ……(14)……--------------- , most people had already gone home.",
+          "options": [
+            "office"
+          ],
+          "answer": 0,
+          "accepted": [
+            "office"
+          ],
+          "placeholder": "fill in the blank with the missing word…"
+        },
+        {
+          "id": "g12-fin1401shr-l4q3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "The street was very dark and ……(15)……--------------- I hadn’t experienced such a thing before.",
+          "options": [
+            "quiet"
+          ],
+          "answer": 0,
+          "accepted": [
+            "quiet"
+          ],
+          "placeholder": "fill in the blank with the missing word…"
+        },
+        {
+          "id": "g12-fin1401shr-l4q4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "While I was ……(16)……--------------- , a car pulled over.",
+          "options": [
+            "walking"
+          ],
+          "answer": 0,
+          "accepted": [
+            "walking"
+          ],
+          "placeholder": "fill in the blank with the missing word…"
+        },
+        {
+          "id": "g12-fin1401shr-l4q5",
+          "n": 5,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "I ……(17)……--------------- who can it be? He waved at me and came out of the car.",
+          "options": [
+            "wondered"
+          ],
+          "answer": 0,
+          "accepted": [
+            "wondered"
+          ],
+          "placeholder": "fill in the blank with the missing word…"
+        },
+        {
+          "id": "g12-fin1401shr-l4q6",
+          "n": 6,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "……(18)……--------------- , I remembered.",
+          "options": [
+            "suddenly"
+          ],
+          "answer": 0,
+          "accepted": [
+            "suddenly"
+          ],
+          "placeholder": "fill in the blank with the missing word…"
+        }
+      ]
+    },
+    {
+      "lesson": 309,
+      "title": "نهایی سراسری شهریور ۱۴۰۱ — واژگان با تصویر: جملهٔ مناسب هر تصویر (ص۳۴۴)",
+      "level": "استاندارد",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g12-fin1401shr-pic1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "با توجه به تصاویر داده‌شده، جملهٔ مناسب برای هر تصویر را انتخاب کنید. (یک جمله اضافی است)",
+          "options": [
+            "The smallest dictionary in the world needs to be read with a magnifying glass.",
+            "Absence makes the heart grow fonder.",
+            "Teenagers who help others are more successful in life.",
+            "Wind towers in Yazd’s buildings can lower the cooling cost.",
+            "Factories have polluted the air and environment."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g12-fin1401shr-pic2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "با توجه به تصاویر داده‌شده، جملهٔ مناسب برای هر تصویر را انتخاب کنید. (یک جمله اضافی است)",
+          "options": [
+            "The smallest dictionary in the world needs to be read with a magnifying glass.",
+            "Absence makes the heart grow fonder.",
+            "Teenagers who help others are more successful in life.",
+            "Wind towers in Yazd’s buildings can lower the cooling cost.",
+            "Factories have polluted the air and environment."
+          ],
+          "answer": 4
+        },
+        {
+          "id": "g12-fin1401shr-pic3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "با توجه به تصاویر داده‌شده، جملهٔ مناسب برای هر تصویر را انتخاب کنید. (یک جمله اضافی است)",
+          "options": [
+            "The smallest dictionary in the world needs to be read with a magnifying glass.",
+            "Absence makes the heart grow fonder.",
+            "Teenagers who help others are more successful in life.",
+            "Wind towers in Yazd’s buildings can lower the cooling cost.",
+            "Factories have polluted the air and environment."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g12-fin1401shr-pic4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "با توجه به تصاویر داده‌شده، جملهٔ مناسب برای هر تصویر را انتخاب کنید. (یک جمله اضافی است)",
+          "options": [
+            "The smallest dictionary in the world needs to be read with a magnifying glass.",
+            "Absence makes the heart grow fonder.",
+            "Teenagers who help others are more successful in life.",
+            "Wind towers in Yazd’s buildings can lower the cooling cost.",
+            "Factories have polluted the air and environment."
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "lesson": 310,
+      "title": "نهایی سراسری شهریور ۱۴۰۱ — واژگان: جای خالی از بانک (ص۳۴۴)",
+      "level": "استاندارد",
+      "count": 3,
+      "questions": [
+        {
+          "id": "g12-fin1401shr-pool1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "This wind --------------- is able to generate a lot of electricity each day.",
+          "options": [
+            "identify",
+            "shouted",
+            "diary",
+            "turbine"
+          ],
+          "answer": 0,
+          "accepted": [
+            "turbine"
+          ],
+          "placeholder": "fill in the blank with a word from the pool…"
+        },
+        {
+          "id": "g12-fin1401shr-pool2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "To choose the best dictionary, first --------------- your needs.",
+          "options": [
+            "identify",
+            "shouted",
+            "diary",
+            "turbine"
+          ],
+          "answer": 0,
+          "accepted": [
+            "identify"
+          ],
+          "placeholder": "fill in the blank with a word from the pool…"
+        },
+        {
+          "id": "g12-fin1401shr-pool3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "When my mother saw my score, she --------------- at me angrily.",
+          "options": [
+            "identify",
+            "shouted",
+            "diary",
+            "turbine"
+          ],
+          "answer": 0,
+          "accepted": [
+            "shouted"
+          ],
+          "placeholder": "fill in the blank with a word from the pool…"
+        }
+      ]
+    },
+    {
+      "lesson": 311,
+      "title": "نهایی سراسری شهریور ۱۴۰۱ — واژگان: تعریف‌های ستون B (ص۳۴۴)",
+      "level": "استاندارد",
+      "count": 3,
+      "questions": [
+        {
+          "id": "g12-fin1401shr-def1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "I really appreciate the culture and art of Iran.",
+          "options": [
+            "to change in a form",
+            "to be grateful for",
+            "to have something inside",
+            "to think and believe"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g12-fin1401shr-def2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "I suppose we shouldn’t give up trying after a failure.",
+          "options": [
+            "to change in a form",
+            "to be grateful for",
+            "to have something inside",
+            "to think and believe"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g12-fin1401shr-def3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "Pizza contains a lot of fat.",
+          "options": [
+            "to change in a form",
+            "to be grateful for",
+            "to have something inside",
+            "to think and believe"
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "lesson": 312,
+      "title": "نهایی سراسری شهریور ۱۴۰۱ — واژگان: شکافِ حرفی، کامل کنید (ص۳۴۴)",
+      "level": "استاندارد",
+      "count": 2,
+      "questions": [
+        {
+          "id": "g12-fin1401shr-ok1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "When Amir saw the film, he b --------------- into tears.",
+          "options": [
+            "burst"
+          ],
+          "answer": 0,
+          "accepted": [
+            "burst"
+          ],
+          "placeholder": "کلیدِ واژه را با حرفِ اولِ چاپی کامل کنید…"
+        },
+        {
+          "id": "g12-fin1401shr-ok2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "People like to spend time with others who are similar to them. Therefore, “Birds of a feather, f --------------- together.”",
+          "options": [
+            "flock"
+          ],
+          "answer": 0,
+          "accepted": [
+            "flock"
+          ],
+          "placeholder": "کلیدِ واژه را با حرفِ اولِ چاپی کامل کنید…"
+        }
+      ]
+    },
+    {
+      "lesson": 313,
+      "title": "نهایی سراسری شهریور ۱۴۰۱ — گرامر: تست چهارگزینه‌ای (ص۳۴۵)",
+      "level": "استاندارد",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g12-fin1401shr-g1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "The boy --------------- you invited arrived very late.",
+          "options": [
+            "which",
+            "whom",
+            "who",
+            "whose"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g12-fin1401shr-g2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "English --------------- in many countries.",
+          "options": [
+            "speaks",
+            "is speaking",
+            "is spoken",
+            "has spoken"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g12-fin1401shr-g3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "His sister never behaves politely, --------------- ?",
+          "options": [
+            "does she",
+            "doesn’t she",
+            "does he",
+            "doesn’t he"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g12-fin1401shr-g4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "Zahra --------------- chess before, so I showed her what to do.",
+          "options": [
+            "didn’t play",
+            "wasn’t playing",
+            "hasn’t played",
+            "hadn’t played"
+          ],
+          "answer": 3
+        }
+      ]
+    },
+    {
+      "lesson": 314,
+      "title": "نهایی سراسری شهریور ۱۴۰۱ — شکل صحیح فعل، بنویسید (ص۳۴۵)",
+      "level": "استاندارد",
+      "count": 3,
+      "questions": [
+        {
+          "id": "g12-fin1401shr-vf1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "The meat must --------------- in a freezer. (to keep)",
+          "options": [
+            "be kept"
+          ],
+          "answer": 0,
+          "accepted": [
+            "be kept"
+          ],
+          "placeholder": "شکل صحیح فعل داخل پرانتز را بنویسید…"
+        },
+        {
+          "id": "g12-fin1401shr-vf2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "I passed my final exam because I --------------- well. (to study)",
+          "options": [
+            "had studied"
+          ],
+          "answer": 0,
+          "accepted": [
+            "had studied"
+          ],
+          "placeholder": "شکل صحیح فعل داخل پرانتز را بنویسید…"
+        },
+        {
+          "id": "g12-fin1401shr-vf3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "I don’t know the answer. If I knew the answer, I --------------- you. (to tell)",
+          "options": [
+            "would tell"
+          ],
+          "answer": 0,
+          "accepted": [
+            "would tell"
+          ],
+          "placeholder": "شکل صحیح فعل داخل پرانتز را بنویسید…"
+        }
+      ]
+    },
+    {
+      "lesson": 315,
+      "title": "نهایی سراسری شهریور ۱۴۰۱ — مرتب‌کردن کلمات، بنویسید (ص۳۴۵)",
+      "level": "استاندارد",
+      "count": 1,
+      "questions": [
+        {
+          "id": "g12-fin1401shr-ws1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "the teacher / had done / the students / their homework / when / came to the class / . /",
+          "options": [
+            "When the teacher came to the class, the students had done their homework."
+          ],
+          "answer": 0,
+          "accepted": [
+            "When the teacher came to the class, the students had done their homework.",
+            "The students had done their homework when the teacher came to the class."
+          ],
+          "placeholder": "با هر گروه از کلمات یک جمله بنویسید…"
+        }
+      ]
+    },
+    {
+      "lesson": 316,
+      "title": "نهایی سراسری شهریور ۱۴۰۱ — جملهٔ شرطی، کامل کنید (ص۳۴۵)",
+      "level": "استاندارد",
+      "count": 1,
+      "questions": [
+        {
+          "id": "g12-fin1401shr-cnd1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "If I had a time machine, --------------- . (travel to the future)",
+          "options": [
+            "I would travel to the future."
+          ],
+          "answer": 0,
+          "accepted": [
+            "I would travel to the future."
+          ],
+          "placeholder": "جملهٔ شرطی را با عبارتِ داخل پرانتز کامل کنید…"
+        }
+      ]
+    },
+    {
+      "lesson": 317,
+      "title": "نهایی سراسری شهریور ۱۴۰۱ — ضمیر موصولی، کامل کنید (ص۳۴۵)",
+      "level": "استاندارد",
+      "count": 1,
+      "questions": [
+        {
+          "id": "g12-fin1401shr-rel1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "A Forest is a place --------------- .",
+          "options": [
+            "which"
+          ],
+          "answer": 0,
+          "accepted": [
+            "which"
+          ],
+          "placeholder": "which را به همراه یک عبارتِ دارای فعل در ادامه بنویسید…"
+        }
+      ]
+    },
+    {
+      "lesson": 318,
+      "title": "نهایی سراسری شهریور ۱۴۰۱ — ریدینگ انرژی خورشیدی: درست/نادرست (ص۳۴۵)",
+      "level": "استاندارد",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g12-fin1401shr-r1tf1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "Solar energy comes from the Earth.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g12-fin1401shr-r1tf2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "Solar panels cost a lot in the last few years.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g12-fin1401shr-r1tf3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "Solar panels convert sunlight into electrical energy.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g12-fin1401shr-r1tf4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "All countries use solar energy to generate electricity.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "lesson": 319,
+      "title": "نهایی سراسری شهریور ۱۴۰۱ — ریدینگ انرژی خورشیدی: کامل کنید + پرسش پاسخ (ص۳۴۶)",
+      "level": "استاندارد",
+      "count": 3,
+      "questions": [
+        {
+          "id": "g12-fin1401shr-r1q1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "In cloudy weather --------------- is available.",
+          "options": [
+            "solar energy"
+          ],
+          "answer": 0,
+          "accepted": [
+            "solar energy"
+          ],
+          "placeholder": "fill in the blank with the missing word…"
+        },
+        {
+          "id": "g12-fin1401shr-r1q2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Solar --------------- are produced to work for a long time.",
+          "options": [
+            "panels"
+          ],
+          "answer": 0,
+          "accepted": [
+            "panels"
+          ],
+          "placeholder": "fill in the blank with the missing word…"
+        },
+        {
+          "id": "g12-fin1401shr-r1q3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "What do solar technologies deliver to us?",
+          "options": [
+            "Solar technologies can deliver heat, cooling, natural lighting, electricity, and fuels."
+          ],
+          "answer": 0,
+          "accepted": [
+            "Solar technologies can deliver heat, cooling, natural lighting, electricity, and fuels."
+          ],
+          "placeholder": "پاسخ کامل را بنویسید…"
+        }
+      ]
+    },
+    {
+      "lesson": 320,
+      "title": "نهایی سراسری شهریور ۱۴۰۱ — ریدینگ خواب: درست/نادرست + تست (ص۳۴۶)",
+      "level": "استاندارد",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g12-fin1401shr-r2tf1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "Food is less important than sleep.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g12-fin1401shr-r2tf2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "There is no difference in sleep time among people.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g12-fin1401shr-r2m1",
+          "n": 3,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "Old people need --------------- hours of sleep each night.",
+          "options": [
+            "9 to 10",
+            "10 to 12",
+            "6.5",
+            "16"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g12-fin1401shr-r2m2",
+          "n": 4,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "A person, who does not sleep, --------------- than one who does not eat.",
+          "options": [
+            "lives longer",
+            "lives less",
+            "eats more",
+            "gets older"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "lesson": 321,
+      "title": "نهایی سراسری شهریور ۱۴۰۱ — ریدینگ خواب: پرسش پاسخ (ص۳۴۶)",
+      "level": "استاندارد",
+      "count": 1,
+      "questions": [
+        {
+          "id": "g12-fin1401shr-r2q1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "How much do we sleep in our lives?",
+          "options": [
+            "We spend about one-third (1/3) of our lives in sleep."
+          ],
+          "answer": 0,
+          "accepted": [
+            "We spend about one-third (1/3) of our lives in sleep.",
+            "You spend about one-third (1/3) of our lives in sleep."
+          ],
+          "placeholder": "پاسخ کامل را بنویسید (فاعلِ We یا You هر دو پذیرفته است)…"
+        }
+      ]
+    },
+    {
+      "lesson": 322,
+      "title": "نهایی سراسری شهریور ۱۴۰۱ — ریدینگ فرهنگ‌لغت: درست/نادرست + تست (ص۳۴۷)",
+      "level": "استاندارد",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g12-fin1401shr-r3tf1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "After looking the word up, try to guess it.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g12-fin1401shr-r3tf2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "The information around the words helps you guess their meanings.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g12-fin1401shr-r3m1",
+          "n": 3,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "Dictionary helps you --------------- .",
+          "options": [
+            "to miss important information",
+            "to guess the meaning of the word",
+            "to read the whole sentence",
+            "to improve reading understanding"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g12-fin1401shr-r3m2",
+          "n": 4,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "What does “it” in paragraph one refer to --------------- .",
+          "options": [
+            "word",
+            "dictionary",
+            "context",
+            "meaning"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "lesson": 323,
+      "title": "نهایی سراسری شهریور ۱۴۰۱ — ریدینگ فرهنگ‌لغت: کامل کنید (ص۳۴۷)",
+      "level": "استاندارد",
+      "count": 2,
+      "questions": [
+        {
+          "id": "g12-fin1401shr-r3q1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "The part of speech helps you find --------------- .",
+          "options": [
+            "the meaning of the word."
+          ],
+          "answer": 0,
+          "accepted": [
+            "the meaning of the word."
+          ],
+          "placeholder": "fill in the blank with the missing word…"
+        },
+        {
+          "id": "g12-fin1401shr-r3q2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "According to the passage, we use a dictionary when --------------- .",
+          "options": [
+            "we are still confused or think we are missing important information"
+          ],
+          "answer": 0,
+          "accepted": [
+            "we are still confused or think we are missing important information"
+          ],
+          "placeholder": "پاسخ کامل را بنویسید…"
+        }
+      ]
+    },
+    {
+      "lesson": 324,
+      "title": "نهایی سراسری شهریور ۱۴۰۱ — کلمات ربط، کامل کنید (ص۳۴۷)",
+      "level": "استاندارد",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g12-fin1401shr-conn1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "You lost the game! --------------- if you want to succeed, you have to practice more.",
+          "options": [
+            "and",
+            "or",
+            "but",
+            "so"
+          ],
+          "answer": 0,
+          "accepted": [
+            "so"
+          ],
+          "placeholder": "fill in the blank with a connective…"
+        },
+        {
+          "id": "g12-fin1401shr-conn2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "You can take a bus, --------------- you can take a taxi.",
+          "options": [
+            "and",
+            "or",
+            "but",
+            "so"
+          ],
+          "answer": 0,
+          "accepted": [
+            "or"
+          ],
+          "placeholder": "fill in the blank with a connective…"
+        },
+        {
+          "id": "g12-fin1401shr-conn3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "I went to the whiteboard, --------------- I wrote the topic of the new lesson.",
+          "options": [
+            "and",
+            "or",
+            "but",
+            "so"
+          ],
+          "answer": 0,
+          "accepted": [
+            "and"
+          ],
+          "placeholder": "fill in the blank with a connective…"
+        },
+        {
+          "id": "g12-fin1401shr-conn4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "My brother is a rich man, --------------- my sister is poor.",
+          "options": [
+            "and",
+            "or",
+            "but",
+            "so"
+          ],
+          "answer": 0,
+          "accepted": [
+            "but"
+          ],
+          "placeholder": "fill in the blank with a connective…"
         }
       ]
     }

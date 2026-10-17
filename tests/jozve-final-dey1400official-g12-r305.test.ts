@@ -39,9 +39,9 @@ const K_R2TF: Record<number, string> = { 1: "b", 2: "a" }; // False / True
 const K_R3TF: Record<number, string> = { 1: "b", 2: "b" }; // False / False
 
 describe("jozve topic grammar bank g12 — official nationwide dey 1400 exam (r305 extraction receipt)", () => {
-  it("bank shape: three hundred four lessons, dey 1400 adds 19 banks / 51 items (family 1494)", () => {
+  it("bank shape: three hundred twenty four lessons, dey 1400 adds 19 banks / 51 items (family 1556)", () => {
     expect(bank.lessons.map((l) => l.lesson)).toEqual(
-      Array.from({ length: 304 }, (_, i) => i + 1)
+      Array.from({ length: 324 }, (_, i) => i + 1)
     );
     const counts: Record<number, number> = {
       266: 4, 267: 3, 268: 4, 269: 5, 270: 4, 271: 3, 272: 3, 273: 1,
@@ -66,9 +66,9 @@ describe("jozve topic grammar bank g12 — official nationwide dey 1400 exam (r3
     expect(L(284).questions.map((q) => q.id)).toEqual(["g12-fin1400dey-cx1"]);
     // آزمون رسمی سراسری دی ۱۴۰۰: ۵۱ آیتم در ۱۹ بانک — خانواده: ۱۳۹۰ + ۵۱ = ۱۴۴۱
     const total = bank.lessons.reduce((s, l) => s + l.count, 0);
-    expect(total).toBe(1494);
+    expect(total).toBe(1556);
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(new Set(ids).size).toBe(1494);
+    expect(new Set(ids).size).toBe(1556);
   });
 
   it("provenance: source.final1400dey registered — sixth official-source round, four multi-blank keys, four-example (0/25) list, Arabic-yeh header", () => {

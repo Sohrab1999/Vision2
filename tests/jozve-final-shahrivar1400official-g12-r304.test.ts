@@ -41,9 +41,9 @@ const K_R2M: Record<number, string> = { 3: "b", 4: "a" };
 const K_R3TF: Record<number, string> = { 1: "b", 2: "a" }; // False / True
 
 describe("jozve topic grammar bank g12 — official nationwide shahrivar 1400 exam (r304 extraction receipt)", () => {
-  it("bank shape: three hundred four lessons, shahrivar 1400 adds 18 banks / 51 items (family 1494)", () => {
+  it("bank shape: three hundred twenty four lessons, shahrivar 1400 adds 18 banks / 51 items (family 1556)", () => {
     expect(bank.lessons.map((l) => l.lesson)).toEqual(
-      Array.from({ length: 304 }, (_, i) => i + 1)
+      Array.from({ length: 324 }, (_, i) => i + 1)
     );
     const counts: Record<number, number> = {
       248: 4, 249: 3, 250: 4, 251: 5, 252: 4, 253: 3, 254: 3, 255: 1,
@@ -68,9 +68,9 @@ describe("jozve topic grammar bank g12 — official nationwide shahrivar 1400 ex
     expect(L(265).questions.map((q) => q.id)).toEqual(["g12-fin1400shr-cx1"]);
     // آزمون رسمی سراسری شهریور ۱۴۰۰: ۵۱ آیتم در ۱۸ بانک — خانواده: ۱۳۳۹ + ۵۱ = ۱۳۹۰
     const total = bank.lessons.reduce((s, l) => s + l.count, 0);
-    expect(total).toBe(1494);
+    expect(total).toBe(1556);
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(new Set(ids).size).toBe(1494);
+    expect(new Set(ids).size).toBe(1556);
   });
 
   it("provenance: source.final1400shr registered — fifth official-source round, near-complete key 52/55, dual verb-form key, family pool reuse", () => {
