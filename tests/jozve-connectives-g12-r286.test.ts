@@ -79,7 +79,7 @@ const STEM_LOCKS: Record<number, { key: string; frag: RegExp }> = {
 
 describe("jozve topic grammar bank g12 — connectives p48/p49 (r286 extraction receipt)", () => {
   it("bank shape: fourteen lessons, connectives added as exactly 20+20 with continuous numbering", () => {
-    expect(bank.lessons.map((l) => l.lesson)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]);
+    expect(bank.lessons.map((l) => l.lesson)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]); // r287 هفت بانک تشریحی (۱۵-۲۱) را افزود
     // بانک‌های r280-r285 دست‌نخورده
     const counts = [27, 61, 30, 50, 20, 20, 40, 20, 15, 20, 40, 22];
     counts.forEach((c, i) => expect(bank.lessons[i].questions).toHaveLength(c));
@@ -94,7 +94,7 @@ describe("jozve topic grammar bank g12 — connectives p48/p49 (r286 extraction 
     expect(l13.level).toBe("آموزشی — ورود آزاد");
     expect(l14.level).toBe("استاندارد و متوسط");
     // جمع خانواده: ۳۶۵ + ۴۰ = ۴۰۵
-    expect(bank.lessons.reduce((a, l) => a + l.count, 0)).toBe(405);
+    expect(bank.lessons.reduce((a, l) => a + l.count, 0)).toBe(499);
   });
 
   it("typed bank p48: kind/accepted==printed key, correct scaffold at index 0, scaffolds from the 7-connective pool", () => {
@@ -164,10 +164,10 @@ describe("jozve topic grammar bank g12 — connectives p48/p49 (r286 extraction 
     expect(l14.questions[10].options[0]).toBe("Where");
   });
 
-  it("id uniqueness across the whole 14-bank family (405 ids) + lessons 13/14 introduce zero new stem collisions", () => {
+  it("id uniqueness across the whole 21-bank family (499 ids) + lessons 13/14 introduce zero new stem collisions", () => {
     const all = bank.lessons.flatMap((l) => l.questions);
     const ids = new Set(all.map((q) => q.id));
-    expect(ids.size).toBe(405);
+    expect(ids.size).toBe(499);
     const stems = new Set(
       bank.lessons
         .filter((l) => l.lesson !== 13 && l.lesson !== 14)

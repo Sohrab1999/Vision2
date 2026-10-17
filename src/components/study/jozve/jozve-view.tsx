@@ -229,7 +229,7 @@ const fetchKonkurGrammar = (grade: number): Promise<JozveTestBank | null> => {
 // فایل grammar-gN-topic.json — هر درس = یک مبحث کامل از جزوه (اینجا: ضمایر موصولی
 // و حذف آنها — ۸۸ تست، دو سطح، کلید گرید چاپی «پاسخنامه 88تست»). ترجمه برای این
 // خانواده در جزوه چاپ نشده (غیبتِ صادقانه — الگوی r278/r279).
-const GRADE_GRAMMAR_TOPIC: Record<number, { lessons: { lesson: number; title: string; count: number }[] }> = {
+const GRADE_GRAMMAR_TOPIC: Record<number, { lessons: { lesson: number; title: string; count: number; group?: string }[] }> = {
   12: {
     lessons: [
       { lesson: 1, title: "ضمایر موصولی — متوسط و کنکوری (ص۸۸)", count: 27 },
@@ -252,6 +252,14 @@ const GRADE_GRAMMAR_TOPIC: Record<number, { lessons: { lesson: number; title: st
       // r286 — بانک‌های کلمات ربط: ص۴۸ دستگرمیِ تایپی (کلید توضیحیِ ترجمه‌دار ص۱۹۲) + ص۴۹ تست استاندارد (گرید ص۱۹۲)
       { lesson: 13, title: "کلمات ربط — دستگرمی، تایپی (ص۴۸)", count: 20 },
       { lesson: 14, title: "کلمات ربط — تست استاندارد (ص۴۹)", count: 20 },
+      // r287 — آزمون تشریحی بخش گرامر و نگارش درس اول (ص۵۰-۵۴، کلید ص۱۹۳-۱۹۴) — گروه جدا در کارت
+      { lesson: 15, title: "مجهول‌سازی حال ساده — بسازید (ص۵۰)", count: 8, group: "آزمون تشریحی درس اول" },
+      { lesson: 16, title: "مجهول‌سازی گذشته ساده — بسازید (ص۵۰)", count: 8, group: "آزمون تشریحی درس اول" },
+      { lesson: 17, title: "مجهول‌سازی حال کامل — بسازید (ص۵۱)", count: 8, group: "آزمون تشریحی درس اول" },
+      { lesson: 18, title: "شکل صحیح فعل — بنویسید (ص۵۱)", count: 15, group: "آزمون تشریحی درس اول" },
+      { lesson: 19, title: "پیدا و اصلاح خطا — بنویسید (ص۵۲)", count: 15, group: "آزمون تشریحی درس اول" },
+      { lesson: 20, title: "تست چهارگزینه‌ای مجهول (ص۵۲-۵۳)", count: 20, group: "آزمون تشریحی درس اول" },
+      { lesson: 21, title: "عبارات الحاق — بنویسید (ص۵۳-۵۴)", count: 20, group: "آزمون تشریحی درس اول" },
     ],
   },
 };
@@ -824,18 +832,30 @@ export default function JozveView() {
                 </div>
               </div>
               <div className="flex flex-wrap gap-2">
-                {GRADE_GRAMMAR_TOPIC[doc.grade].lessons.map((les) => {
+                {GRADE_GRAMMAR_TOPIC[doc.grade].lessons.map((les, i, arr) => {
                   const busy = testLoadingLesson === `g${doc.grade}-tgram-l${les.lesson}`;
+                  // r287 — زیرعنوانِ گروه: وقتی گروهِ آیتم با قبلی فرق دارد، برچسبِ کوچک پیش از آن رندر می‌شود
+                  const showGroup = les.group && arr[i - 1]?.group !== les.group;
                   return (
-                    <button
-                      key={les.lesson}
-                      onClick={() => startJozveTopic(doc.grade, les)}
-                      disabled={busy}
-                      className="inline-flex items-center gap-1.5 rounded-xl border border-amber-300 bg-white px-3 py-2 text-[12px] font-extrabold text-amber-800 shadow-sm transition-[background-color,transform] hover:bg-amber-100 active:scale-95 disabled:opacity-60"
-                    >
-                      {busy ? <Loader2 size={14} className="animate-spin" /> : <Link2 size={14} />}
-                      {les.title} — {faNum(les.count)} تست
-                    </button>
+                    <div key={les.lesson} className="contents">
+                      {showGroup && (
+                        <div className="mt-1 flex w-full items-center gap-2">
+                          <span className="h-px flex-1 bg-amber-200" />
+                          <span className="text-[10.5px] font-extrabold tracking-wide text-amber-700/90">
+                            {les.group}
+                          </span>
+                          <span className="h-px flex-1 bg-amber-200" />
+                        </div>
+                      )}
+                      <button
+                        onClick={() => startJozveTopic(doc.grade, les)}
+                        disabled={busy}
+                        className="inline-flex items-center gap-1.5 rounded-xl border border-amber-300 bg-white px-3 py-2 text-[12px] font-extrabold text-amber-800 shadow-sm transition-[background-color,transform] hover:bg-amber-100 active:scale-95 disabled:opacity-60"
+                      >
+                        {busy ? <Loader2 size={14} className="animate-spin" /> : <Link2 size={14} />}
+                        {les.title} — {faNum(les.count)} تست
+                      </button>
+                    </div>
                   );
                 })}
               </div>

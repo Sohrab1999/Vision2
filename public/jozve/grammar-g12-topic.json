@@ -285,6 +285,17 @@
    "translations": "رسید ترجمهٔ چاپی ص۱۹۲ برای هر ۲۰ آیتم تایپی — بازسازی خوانا از OCR مخدوش (شگرم کننده/بهی ه/خوایه؛ الگوی r285)",
    "quirks": "Q2 ص۴۸ خالیِ چندتکهٔ شکسته (MERGE_BLANKS — الگوی r282)؛ Q5 ساقهٔ دوخطی؛ «Where» با W بزرگ در Q11 ص۴۹ وفادار به چاپ؛ «ping- pong» چاپی وفادار ماند",
    "extractedRound": 286
+  },
+  "diagnostic": {
+   "pages": "50-54",
+   "topic": "آزمون تشریحی بخش گرامر و نگارش درس اول — ۷ بخش (مجهول‌سازی سه‌زمان + شکل فعل + اصلاح خطا + MCQ + الحاق)",
+   "questions": 94,
+   "keyType": "کلید کامل ص۱۹۳-۱۹۴ («کلید آزمون تشریحی گرامر درس اول، صفحه 50 تا 54») — جملهٔ کامل/شکل فعل/تصحیح پرانتزی/حرف گرید/تگ",
+   "typedMode": "بانک‌های ۱۵-۱۹ و ۲۱: kind=typed + accepted (داربست = سه آیتم بعدیِ همان بخش، چرخه‌ای)؛ آیتم‌های دوخالی S4 (۵/۶/۹/۱۳/۱۵) کلید اسلش‌دار چاپی با فاصله accepted شد",
+   "translations": "غیبت صادقانه — بدنهٔ آزمون تشریحی ترجمه چاپی ندارد (الگوی r281-r283)",
+   "printedDups": "S6-5==ص۳۸ Q14 (g12-pass2-14) و S6-7==ص۳۸ Q16 (g12-pass2-16): خود جزوه این دو سؤال را در دو آزمون چاپ کرده — کلیدهای هر جفت یکسان (has been invited / have been built) با ترتیب گزینهٔ متفاوت؛ الگوی ERRATA_DUP r281",
+   "deferred": "بخش ۸ (۱۲ آیتم کامل کنید and/or/but/so) و بخش ۹ (متن ۴خالی) ص۵۴ با کلید ص۱۹۴ — راند آینده",
+   "extractedRound": 287
   }
  },
  "lessons": [
@@ -5872,6 +5883,1580 @@
       "yet"
      ],
      "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 15,
+   "title": "تشریحی — مجهول‌سازی حال ساده (ص۵۰)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 8,
+   "questions": [
+    {
+     "id": "g12-dpass1-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "cream / butter / make / from /.",
+     "options": [
+      "Butter is made from cream.",
+      "I am never invited to parties.",
+      "Oranges are imported into Canada.",
+      "Are these rooms cleaned every day?"
+     ],
+     "answer": 0,
+     "accepted": [
+      "Butter is made from cream."
+     ]
+    },
+    {
+     "id": "g12-dpass1-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "parties / I / invite / never / to /.",
+     "options": [
+      "I am never invited to parties.",
+      "Oranges are imported into Canada.",
+      "Are these rooms cleaned every day?",
+      "My parrots are kept in the cage."
+     ],
+     "answer": 0,
+     "accepted": [
+      "I am never invited to parties."
+     ]
+    },
+    {
+     "id": "g12-dpass1-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "import / Canada / Oranges / into /.",
+     "options": [
+      "Oranges are imported into Canada.",
+      "Are these rooms cleaned every day?",
+      "My parrots are kept in the cage.",
+      "How often are these rooms cleaned?"
+     ],
+     "answer": 0,
+     "accepted": [
+      "Oranges are imported into Canada."
+     ]
+    },
+    {
+     "id": "g12-dpass1-4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "clean / rooms / every day / these /?",
+     "options": [
+      "Are these rooms cleaned every day?",
+      "My parrots are kept in the cage.",
+      "How often are these rooms cleaned?",
+      "How many languages are spoken in Canada?"
+     ],
+     "answer": 0,
+     "accepted": [
+      "Are these rooms cleaned every day?"
+     ]
+    },
+    {
+     "id": "g12-dpass1-5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "keep / parrots / the / my / cage / in /.",
+     "options": [
+      "My parrots are kept in the cage.",
+      "How often are these rooms cleaned?",
+      "How many languages are spoken in Canada?",
+      "Football is played in most countries of the world."
+     ],
+     "answer": 0,
+     "accepted": [
+      "My parrots are kept in the cage."
+     ]
+    },
+    {
+     "id": "g12-dpass1-6",
+     "n": 6,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "rooms / clean / often / these / how /?",
+     "options": [
+      "How often are these rooms cleaned?",
+      "How many languages are spoken in Canada?",
+      "Football is played in most countries of the world.",
+      "Butter is made from cream."
+     ],
+     "answer": 0,
+     "accepted": [
+      "How often are these rooms cleaned?"
+     ]
+    },
+    {
+     "id": "g12-dpass1-7",
+     "n": 7,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "speak / in Canada / languages / how many /?",
+     "options": [
+      "How many languages are spoken in Canada?",
+      "Football is played in most countries of the world.",
+      "Butter is made from cream.",
+      "I am never invited to parties."
+     ],
+     "answer": 0,
+     "accepted": [
+      "How many languages are spoken in Canada?"
+     ]
+    },
+    {
+     "id": "g12-dpass1-8",
+     "n": 8,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "play / football / of the world / most countries / in /.",
+     "options": [
+      "Football is played in most countries of the world.",
+      "Butter is made from cream.",
+      "I am never invited to parties.",
+      "Oranges are imported into Canada."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Football is played in most countries of the world."
+     ]
+    }
+   ]
+  },
+  {
+   "lesson": 16,
+   "title": "تشریحی — مجهول‌سازی گذشته ساده (ص۵۰)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 8,
+   "questions": [
+    {
+     "id": "g12-dpass2-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "money / last / steal / train / your / the / week / in /?",
+     "options": [
+      "Was your money stolen in the train last week?",
+      "These houses were built seventy years ago.",
+      "We were invited to the party last month.",
+      "Two people were taken to the hospital."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Was your money stolen in the train last week?"
+     ]
+    },
+    {
+     "id": "g12-dpass2-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "build / ago / houses / seventy / these / years /.",
+     "options": [
+      "These houses were built seventy years ago.",
+      "We were invited to the party last month.",
+      "Two people were taken to the hospital.",
+      "Was anybody injured in the accident?"
+     ],
+     "answer": 0,
+     "accepted": [
+      "These houses were built seventy years ago."
+     ]
+    },
+    {
+     "id": "g12-dpass2-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "last / to / invite / the party / we / month /.",
+     "options": [
+      "We were invited to the party last month.",
+      "Two people were taken to the hospital.",
+      "Was anybody injured in the accident?",
+      "I was born in Tehran in 1360."
+     ],
+     "answer": 0,
+     "accepted": [
+      "We were invited to the party last month."
+     ]
+    },
+    {
+     "id": "g12-dpass2-4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "take / two / the hospital / people / to /.",
+     "options": [
+      "Two people were taken to the hospital.",
+      "Was anybody injured in the accident?",
+      "I was born in Tehran in 1360.",
+      "When was the telephone invented?"
+     ],
+     "answer": 0,
+     "accepted": [
+      "Two people were taken to the hospital."
+     ]
+    },
+    {
+     "id": "g12-dpass2-5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "anybody / the accident / injure / in /?",
+     "options": [
+      "Was anybody injured in the accident?",
+      "I was born in Tehran in 1360.",
+      "When was the telephone invented?",
+      "Where were you born?"
+     ],
+     "answer": 0,
+     "accepted": [
+      "Was anybody injured in the accident?"
+     ]
+    },
+    {
+     "id": "g12-dpass2-6",
+     "n": 6,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "be born / in / in / 1360 / Tehran / I /.",
+     "options": [
+      "I was born in Tehran in 1360.",
+      "When was the telephone invented?",
+      "Where were you born?",
+      "Was your money stolen in the train last week?"
+     ],
+     "answer": 0,
+     "accepted": [
+      "I was born in Tehran in 1360."
+     ]
+    },
+    {
+     "id": "g12-dpass2-7",
+     "n": 7,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "invent / the telephone / when /?",
+     "options": [
+      "When was the telephone invented?",
+      "Where were you born?",
+      "Was your money stolen in the train last week?",
+      "These houses were built seventy years ago."
+     ],
+     "answer": 0,
+     "accepted": [
+      "When was the telephone invented?"
+     ]
+    },
+    {
+     "id": "g12-dpass2-8",
+     "n": 8,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "you / be born / where /?",
+     "options": [
+      "Where were you born?",
+      "Was your money stolen in the train last week?",
+      "These houses were built seventy years ago.",
+      "We were invited to the party last month."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Where were you born?"
+     ]
+    }
+   ]
+  },
+  {
+   "lesson": 17,
+   "title": "تشریحی — مجهول‌سازی حال کامل (ص۵۱)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 8,
+   "questions": [
+    {
+     "id": "g12-dpass3-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "skillful / cars / a / fix / mechanic / the / by /.",
+     "options": [
+      "The cars have been fixed by a skillful mechanic.",
+      "Has this beautiful bridge been built recently?",
+      "My car key has been lost since this morning.",
+      "The doors of the building have just been broken."
+     ],
+     "answer": 0,
+     "accepted": [
+      "The cars have been fixed by a skillful mechanic."
+     ]
+    },
+    {
+     "id": "g12-dpass3-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "recently / beautiful / build / bridge / this /?",
+     "options": [
+      "Has this beautiful bridge been built recently?",
+      "My car key has been lost since this morning.",
+      "The doors of the building have just been broken.",
+      "Have they been invited to a party by their friends?"
+     ],
+     "answer": 0,
+     "accepted": [
+      "Has this beautiful bridge been built recently?"
+     ]
+    },
+    {
+     "id": "g12-dpass3-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "since / key / lose / this / my / car / morning /.",
+     "options": [
+      "My car key has been lost since this morning.",
+      "The doors of the building have just been broken.",
+      "Have they been invited to a party by their friends?",
+      "The tall trees have been cut down by some thieves."
+     ],
+     "answer": 0,
+     "accepted": [
+      "My car key has been lost since this morning."
+     ]
+    },
+    {
+     "id": "g12-dpass3-4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "building / doors / break / the / the / of / just /.",
+     "options": [
+      "The doors of the building have just been broken.",
+      "Have they been invited to a party by their friends?",
+      "The tall trees have been cut down by some thieves.",
+      "Has a new medicine been made by doctors to cure corona?"
+     ],
+     "answer": 0,
+     "accepted": [
+      "The doors of the building have just been broken."
+     ]
+    },
+    {
+     "id": "g12-dpass3-5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "a / they / their / to / invite / party / friends / by /?",
+     "options": [
+      "Have they been invited to a party by their friends?",
+      "The tall trees have been cut down by some thieves.",
+      "Has a new medicine been made by doctors to cure corona?",
+      "English language has been spoken in our country since many years ago."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Have they been invited to a party by their friends?"
+     ]
+    },
+    {
+     "id": "g12-dpass3-6",
+     "n": 6,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "thieves / tall / down / cut / some / the / by / trees /.",
+     "options": [
+      "The tall trees have been cut down by some thieves.",
+      "Has a new medicine been made by doctors to cure corona?",
+      "English language has been spoken in our country since many years ago.",
+      "The cars have been fixed by a skillful mechanic."
+     ],
+     "answer": 0,
+     "accepted": [
+      "The tall trees have been cut down by some thieves."
+     ]
+    },
+    {
+     "id": "g12-dpass3-7",
+     "n": 7,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "medicine / doctors / corona / new / make / a / cure / by / to /?",
+     "options": [
+      "Has a new medicine been made by doctors to cure corona?",
+      "English language has been spoken in our country since many years ago.",
+      "The cars have been fixed by a skillful mechanic.",
+      "Has this beautiful bridge been built recently?"
+     ],
+     "answer": 0,
+     "accepted": [
+      "Has a new medicine been made by doctors to cure corona?"
+     ]
+    },
+    {
+     "id": "g12-dpass3-8",
+     "n": 8,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "language / our / ago / many / speak / English / country / since / in / years /.",
+     "options": [
+      "English language has been spoken in our country since many years ago.",
+      "The cars have been fixed by a skillful mechanic.",
+      "Has this beautiful bridge been built recently?",
+      "My car key has been lost since this morning."
+     ],
+     "answer": 0,
+     "accepted": [
+      "English language has been spoken in our country since many years ago."
+     ]
+    }
+   ]
+  },
+  {
+   "lesson": 18,
+   "title": "تشریحی — شکل صحیح فعل (ص۵۱)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 15,
+   "questions": [
+    {
+     "id": "g12-dverb-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Glass --------------- (make) from sand.",
+     "options": [
+      "is made",
+      "was painted",
+      "are sold",
+      "isn’t used"
+     ],
+     "answer": 0,
+     "accepted": [
+      "is made"
+     ]
+    },
+    {
+     "id": "g12-dverb-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "The house --------------- (paint) last month.",
+     "options": [
+      "was painted",
+      "are sold",
+      "isn’t used",
+      "was / built"
+     ],
+     "answer": 0,
+     "accepted": [
+      "was painted"
+     ]
+    },
+    {
+     "id": "g12-dverb-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Stamps --------------- (sell) in a post office.",
+     "options": [
+      "are sold",
+      "isn’t used",
+      "was / built",
+      "Are / allowed"
+     ],
+     "answer": 0,
+     "accepted": [
+      "are sold"
+     ]
+    },
+    {
+     "id": "g12-dverb-4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "This word --------------- (not use) very often.",
+     "options": [
+      "isn’t used",
+      "was / built",
+      "Are / allowed",
+      "was bitten"
+     ],
+     "answer": 0,
+     "accepted": [
+      "isn’t used"
+     ]
+    },
+    {
+     "id": "g12-dverb-5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "When --------------- this bridge --------------- (build)?",
+     "options": [
+      "was built",
+      "Are / allowed",
+      "was bitten",
+      "were injured"
+     ],
+     "answer": 0,
+     "accepted": [
+      "was built"
+     ]
+    },
+    {
+     "id": "g12-dverb-6",
+     "n": 6,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "--------------- we --------------- (allow) to park here?",
+     "options": [
+      "Are allowed",
+      "was bitten",
+      "were injured",
+      "is / pronounced"
+     ],
+     "answer": 0,
+     "accepted": [
+      "Are allowed"
+     ]
+    },
+    {
+     "id": "g12-dverb-7",
+     "n": 7,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "My friend --------------- (bite) by a dog last week.",
+     "options": [
+      "was bitten",
+      "were injured",
+      "is / pronounced",
+      "are repaired"
+     ],
+     "answer": 0,
+     "accepted": [
+      "was bitten"
+     ]
+    },
+    {
+     "id": "g12-dverb-8",
+     "n": 8,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Three people --------------- (injure) in the accident.",
+     "options": [
+      "were injured",
+      "is / pronounced",
+      "are repaired",
+      "were woken up"
+     ],
+     "answer": 0,
+     "accepted": [
+      "were injured"
+     ]
+    },
+    {
+     "id": "g12-dverb-9",
+     "n": 9,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "How --------------- this word --------------- (pronounce)?",
+     "options": [
+      "is pronounced",
+      "are repaired",
+      "were woken up",
+      "stole"
+     ],
+     "answer": 0,
+     "accepted": [
+      "is pronounced"
+     ]
+    },
+    {
+     "id": "g12-dverb-10",
+     "n": 10,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "A garage is a place where cars --------------- (repair).",
+     "options": [
+      "are repaired",
+      "were woken up",
+      "stole",
+      "Were / invited"
+     ],
+     "answer": 0,
+     "accepted": [
+      "are repaired"
+     ]
+    },
+    {
+     "id": "g12-dverb-11",
+     "n": 11,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "We --------------- (wake up) by a loud noise last night.",
+     "options": [
+      "were woken up",
+      "stole",
+      "Were / invited",
+      "invented"
+     ],
+     "answer": 0,
+     "accepted": [
+      "were woken up"
+     ]
+    },
+    {
+     "id": "g12-dverb-12",
+     "n": 12,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Somebody --------------- (steal) my bike a few days ago.",
+     "options": [
+      "stole",
+      "Were / invited",
+      "invented",
+      "is / remembered"
+     ],
+     "answer": 0,
+     "accepted": [
+      "stole"
+     ]
+    },
+    {
+     "id": "g12-dverb-13",
+     "n": 13,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "--------------- you --------------- (invite) to the party last week?",
+     "options": [
+      "Were invited",
+      "invented",
+      "is / remembered",
+      "is made"
+     ],
+     "answer": 0,
+     "accepted": [
+      "Were invited"
+     ]
+    },
+    {
+     "id": "g12-dverb-14",
+     "n": 14,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Alexander Graham Bell --------------- (invent) the telephone in 1876.",
+     "options": [
+      "invented",
+      "is / remembered",
+      "is made",
+      "was painted"
+     ],
+     "answer": 0,
+     "accepted": [
+      "invented"
+     ]
+    },
+    {
+     "id": "g12-dverb-15",
+     "n": 15,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Hafez --------------- mostly --------------- (remember) for a special type of poetry.",
+     "options": [
+      "is remembered",
+      "is made",
+      "was painted",
+      "are sold"
+     ],
+     "answer": 0,
+     "accepted": [
+      "is remembered"
+     ]
+    }
+   ]
+  },
+  {
+   "lesson": 19,
+   "title": "تشریحی — پیدا و اصلاح خطا (ص۵۲)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 15,
+   "questions": [
+    {
+     "id": "g12-dfix-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Paper makes from wood. (---------------)",
+     "options": [
+      "is made",
+      "are made",
+      "weren’t invited",
+      "were stolen"
+     ],
+     "answer": 0,
+     "accepted": [
+      "is made"
+     ]
+    },
+    {
+     "id": "g12-dfix-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "A factory is a place where things make. (---------------)",
+     "options": [
+      "are made",
+      "weren’t invited",
+      "were stolen",
+      "was"
+     ],
+     "answer": 0,
+     "accepted": [
+      "are made"
+     ]
+    },
+    {
+     "id": "g12-dfix-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "We didn’t go to the party. We didn’t invite. (---------------)",
+     "options": [
+      "weren’t invited",
+      "were stolen",
+      "was",
+      "was stolen"
+     ],
+     "answer": 0,
+     "accepted": [
+      "weren’t invited"
+     ]
+    },
+    {
+     "id": "g12-dfix-4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "My sunglasses stole at the beach yesterday. (---------------)",
+     "options": [
+      "were stolen",
+      "was",
+      "was stolen",
+      "are shown"
+     ],
+     "answer": 0,
+     "accepted": [
+      "were stolen"
+     ]
+    },
+    {
+     "id": "g12-dfix-5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "A: How old is this film? B: It is made in 1980. (---------------)",
+     "options": [
+      "was",
+      "was stolen",
+      "are shown",
+      "called"
+     ],
+     "answer": 0,
+     "accepted": [
+      "was"
+     ]
+    },
+    {
+     "id": "g12-dfix-6",
+     "n": 6,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Somebody broke into our house, but nothing stolen. (---------------)",
+     "options": [
+      "was stolen",
+      "are shown",
+      "called",
+      "was invited"
+     ],
+     "answer": 0,
+     "accepted": [
+      "was stolen"
+     ]
+    },
+    {
+     "id": "g12-dfix-7",
+     "n": 7,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Many British programs show on American television. (---------------)",
+     "options": [
+      "are shown",
+      "called",
+      "was invited",
+      "were damaged"
+     ],
+     "answer": 0,
+     "accepted": [
+      "are shown"
+     ]
+    },
+    {
+     "id": "g12-dfix-8",
+     "n": 8,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "I’ve never seen these flowers before. What are they call? (---------------)",
+     "options": [
+      "called",
+      "was invited",
+      "were damaged",
+      "has been repaired"
+     ],
+     "answer": 0,
+     "accepted": [
+      "called"
+     ]
+    },
+    {
+     "id": "g12-dfix-9",
+     "n": 9,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "A: Did you go to the party? B: No, I invited, but I didn’t go. (---------------)",
+     "options": [
+      "was invited",
+      "were damaged",
+      "has been repaired",
+      "was found"
+     ],
+     "answer": 0,
+     "accepted": [
+      "was invited"
+     ]
+    },
+    {
+     "id": "g12-dfix-10",
+     "n": 10,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "There was a fire at the hotel last week. Two of the rooms damaged. (---------------)",
+     "options": [
+      "were damaged",
+      "has been repaired",
+      "was found",
+      "was invented"
+     ],
+     "answer": 0,
+     "accepted": [
+      "were damaged"
+     ]
+    },
+    {
+     "id": "g12-dfix-11",
+     "n": 11,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "The washing machine was broken, but it’s OK now. It has repaired. (---------------)",
+     "options": [
+      "has been repaired",
+      "was found",
+      "was invented",
+      "was given"
+     ],
+     "answer": 0,
+     "accepted": [
+      "has been repaired"
+     ]
+    },
+    {
+     "id": "g12-dfix-12",
+     "n": 12,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "My car was stolen last week, but the next day it found by the police. (---------------)",
+     "options": [
+      "was found",
+      "was invented",
+      "was given",
+      "hasn’t been repaired"
+     ],
+     "answer": 0,
+     "accepted": [
+      "was found"
+     ]
+    },
+    {
+     "id": "g12-dfix-13",
+     "n": 13,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Microwave oven invented during a scientist’s experiment on energy. (---------------)",
+     "options": [
+      "was invented",
+      "was given",
+      "hasn’t been repaired",
+      "is made"
+     ],
+     "answer": 0,
+     "accepted": [
+      "was invented"
+     ]
+    },
+    {
+     "id": "g12-dfix-14",
+     "n": 14,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "A: Where did you get this picture? B: It gave to me by a friend of mine. (---------------)",
+     "options": [
+      "was given",
+      "hasn’t been repaired",
+      "is made",
+      "are made"
+     ],
+     "answer": 0,
+     "accepted": [
+      "was given"
+     ]
+    },
+    {
+     "id": "g12-dfix-15",
+     "n": 15,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "The bridge is closed. It was damaged last week and it hasn’t repaired yet (---------------)",
+     "options": [
+      "hasn’t been repaired",
+      "is made",
+      "are made",
+      "weren’t invited"
+     ],
+     "answer": 0,
+     "accepted": [
+      "hasn’t been repaired"
+     ]
+    }
+   ]
+  },
+  {
+   "lesson": 20,
+   "title": "تشریحی — تست چهارگزینه‌ای (ص۵۲-۵۳)",
+   "level": "استاندارد",
+   "count": 20,
+   "questions": [
+    {
+     "id": "g12-dmcq-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "My bicycle ---------------! I’m going to call the police.",
+     "options": [
+      "stole",
+      "was stealing",
+      "has been stolen",
+      "have been stolen"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-dmcq-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "The dishes --------------- washed yet. Could you please wash them up?",
+     "options": [
+      "have been not",
+      "have not been",
+      "are been not",
+      "are not been"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-dmcq-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "We --------------- to dinner last Friday night and we had a good time.",
+     "options": [
+      "have invited",
+      "have been invited",
+      "invited",
+      "were invited"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-dmcq-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "My little brother --------------- to school by my mother every day.",
+     "options": [
+      "takes",
+      "has taken",
+      "is taken",
+      "was taken"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-dmcq-5",
+     "n": 5,
+     "category": "grammar",
+     "question": "Do you know that Maria --------------- as a computer programmer of the company?",
+     "options": [
+      "was inviting",
+      "has been invited",
+      "is going to invite",
+      "is inviting"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-dmcq-6",
+     "n": 6,
+     "category": "grammar",
+     "question": "The land next to our house --------------- sold to the government recently.",
+     "options": [
+      "is",
+      "has",
+      "has been",
+      "have been"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-dmcq-7",
+     "n": 7,
+     "category": "grammar",
+     "question": "Many apartments --------------- for the poor employees during the last five years.",
+     "options": [
+      "are built",
+      "were building",
+      "have built",
+      "have been built"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-dmcq-8",
+     "n": 8,
+     "category": "grammar",
+     "question": "Teams from many countries --------------- to take part in the previous Olympic Games.",
+     "options": [
+      "didn’t invite",
+      "haven’t been invited",
+      "weren’t invited",
+      "haven’t invited"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-dmcq-9",
+     "n": 9,
+     "category": "grammar",
+     "question": "Many accidents --------------- by dangerous driving.",
+     "options": [
+      "are caused",
+      "cause",
+      "is caused",
+      "has caused"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-dmcq-10",
+     "n": 10,
+     "category": "grammar",
+     "question": "The roof of the building --------------- in a storm a few days ago.",
+     "options": [
+      "is damaged",
+      "was damaged",
+      "is going to damage",
+      "were damaged"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-dmcq-11",
+     "n": 11,
+     "category": "grammar",
+     "question": "A cinema is a place where films ---------------.",
+     "options": [
+      "show",
+      "are shown",
+      "are showing",
+      "has been shown"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-dmcq-12",
+     "n": 12,
+     "category": "grammar",
+     "question": "Originally the book --------------- in Spanish, and a few years ago it was translated into English.",
+     "options": [
+      "were written",
+      "wrote",
+      "was written",
+      "are written"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-dmcq-13",
+     "n": 13,
+     "category": "grammar",
+     "question": "It’s a big factory. Five hundred people --------------- there.",
+     "options": [
+      "is employed",
+      "was employed",
+      "are employed",
+      "have employed"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-dmcq-14",
+     "n": 14,
+     "category": "grammar",
+     "question": "Water --------------- most of the earth’s surface.",
+     "options": [
+      "covers",
+      "is covered",
+      "cover",
+      "was covered"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-dmcq-15",
+     "n": 15,
+     "category": "grammar",
+     "question": "How much of the earth’s surface --------------- by water.",
+     "options": [
+      "are covered",
+      "is covering",
+      "covers",
+      "is covered"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-dmcq-16",
+     "n": 16,
+     "category": "grammar",
+     "question": "The letter --------------- a week ago and it arrived yesterday.",
+     "options": [
+      "posted",
+      "was posted",
+      "is posted",
+      "is going to post"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-dmcq-17",
+     "n": 17,
+     "category": "grammar",
+     "question": "There were some problems at first, but they seem to ---------------.",
+     "options": [
+      "has been solved",
+      "solve",
+      "have been solved",
+      "have solved"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-dmcq-18",
+     "n": 18,
+     "category": "grammar",
+     "question": "I --------------- the information I needed.",
+     "options": [
+      "wasn’t given",
+      "not given",
+      "weren’t given",
+      "not gave"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-dmcq-19",
+     "n": 19,
+     "category": "grammar",
+     "question": "They --------------- some difficult questions at the interview.",
+     "options": [
+      "was asked",
+      "has been asked",
+      "were asked",
+      "is asked"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-dmcq-20",
+     "n": 20,
+     "category": "grammar",
+     "question": "Linda --------------- a present by her colleagues when she retired.",
+     "options": [
+      "gave",
+      "has given",
+      "is given",
+      "was given"
+     ],
+     "answer": 3
+    }
+   ]
+  },
+  {
+   "lesson": 21,
+   "title": "تشریحی — عبارات الحاق (ص۵۳-۵۴)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 20,
+   "questions": [
+    {
+     "id": "g12-dtag-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "The children weren’t playing in the yard between 10 to 12 last Monday, ---------------?",
+     "options": [
+      "were they",
+      "wasn’t she",
+      "has she",
+      "haven’t they"
+     ],
+     "answer": 0,
+     "accepted": [
+      "were they"
+     ]
+    },
+    {
+     "id": "g12-dtag-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Your sister was weaving a beautiful at this time yesterday, ---------------?",
+     "options": [
+      "wasn’t she",
+      "has she",
+      "haven’t they",
+      "isn’t he"
+     ],
+     "answer": 0,
+     "accepted": [
+      "wasn’t she"
+     ]
+    },
+    {
+     "id": "g12-dtag-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "That naughty girl hasn’t broken the window, ---------------?",
+     "options": [
+      "has she",
+      "haven’t they",
+      "isn’t he",
+      "didn’t we"
+     ],
+     "answer": 0,
+     "accepted": [
+      "has she"
+     ]
+    },
+    {
+     "id": "g12-dtag-4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "All my classmates have passed the test, ---------------?",
+     "options": [
+      "haven’t they",
+      "isn’t he",
+      "didn’t we",
+      "shouldn’t they"
+     ],
+     "answer": 0,
+     "accepted": [
+      "haven’t they"
+     ]
+    },
+    {
+     "id": "g12-dtag-5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Johnny Depp is a very good actor, ---------------?",
+     "options": [
+      "isn’t he",
+      "didn’t we",
+      "shouldn’t they",
+      "hasn’t he"
+     ],
+     "answer": 0,
+     "accepted": [
+      "isn’t he"
+     ]
+    },
+    {
+     "id": "g12-dtag-6",
+     "n": 6,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "It was rainy yesterday, so we had to go to school by taxi, ---------------?",
+     "options": [
+      "didn’t we",
+      "shouldn’t they",
+      "hasn’t he",
+      "mustn’t they"
+     ],
+     "answer": 0,
+     "accepted": [
+      "didn’t we"
+     ]
+    },
+    {
+     "id": "g12-dtag-7",
+     "n": 7,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "All the students should do their homework carefully, ---------------?",
+     "options": [
+      "shouldn’t they",
+      "hasn’t he",
+      "mustn’t they",
+      "could they"
+     ],
+     "answer": 0,
+     "accepted": [
+      "shouldn’t they"
+     ]
+    },
+    {
+     "id": "g12-dtag-8",
+     "n": 8,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "I’ve heard that your uncle has traveled to Europe, ---------------?",
+     "options": [
+      "hasn’t he",
+      "mustn’t they",
+      "could they",
+      "didn’t he"
+     ],
+     "answer": 0,
+     "accepted": [
+      "hasn’t he"
+     ]
+    },
+    {
+     "id": "g12-dtag-9",
+     "n": 9,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Children must respect their parents and teachers, ---------------?",
+     "options": [
+      "mustn’t they",
+      "could they",
+      "didn’t he",
+      "won’t you"
+     ],
+     "answer": 0,
+     "accepted": [
+      "mustn’t they"
+     ]
+    },
+    {
+     "id": "g12-dtag-10",
+     "n": 10,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "The police couldn’t catch the thieves last night, ---------------?",
+     "options": [
+      "could they",
+      "didn’t he",
+      "won’t you",
+      "don’t they"
+     ],
+     "answer": 0,
+     "accepted": [
+      "could they"
+     ]
+    },
+    {
+     "id": "g12-dtag-11",
+     "n": 11,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Mr. Fekri saw us while we were going shopping, ---------------?",
+     "options": [
+      "didn’t he",
+      "won’t you",
+      "don’t they",
+      "isn’t he"
+     ],
+     "answer": 0,
+     "accepted": [
+      "didn’t he"
+     ]
+    },
+    {
+     "id": "g12-dtag-12",
+     "n": 12,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "You will brush your teeth before going to bed, ---------------?",
+     "options": [
+      "won’t you",
+      "don’t they",
+      "isn’t he",
+      "aren’t I"
+     ],
+     "answer": 0,
+     "accepted": [
+      "won’t you"
+     ]
+    },
+    {
+     "id": "g12-dtag-13",
+     "n": 13,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "They often have lunch at 2 o’clock every day, ---------------?",
+     "options": [
+      "don’t they",
+      "isn’t he",
+      "aren’t I",
+      "does he"
+     ],
+     "answer": 0,
+     "accepted": [
+      "don’t they"
+     ]
+    },
+    {
+     "id": "g12-dtag-14",
+     "n": 14,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Ali is sending an email to his former coach, ---------------?",
+     "options": [
+      "isn’t he",
+      "aren’t I",
+      "does he",
+      "can they"
+     ],
+     "answer": 0,
+     "accepted": [
+      "isn’t he"
+     ]
+    },
+    {
+     "id": "g12-dtag-15",
+     "n": 15,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "I am listening to my English teacher now, ---------------?",
+     "options": [
+      "aren’t I",
+      "does he",
+      "can they",
+      "is there"
+     ],
+     "answer": 0,
+     "accepted": [
+      "aren’t I"
+     ]
+    },
+    {
+     "id": "g12-dtag-16",
+     "n": 16,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Your father never eats dinner at night, ---------------?",
+     "options": [
+      "does he",
+      "can they",
+      "is there",
+      "shall we"
+     ],
+     "answer": 0,
+     "accepted": [
+      "does he"
+     ]
+    },
+    {
+     "id": "g12-dtag-17",
+     "n": 17,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "He doesn’t have an expensive car, ---------------?",
+     "options": [
+      "does he",
+      "can they",
+      "is there",
+      "shall we"
+     ],
+     "answer": 0,
+     "accepted": [
+      "does he"
+     ]
+    },
+    {
+     "id": "g12-dtag-18",
+     "n": 18,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Some old people can hardly walk, ---------------?",
+     "options": [
+      "can they",
+      "is there",
+      "shall we",
+      "were they"
+     ],
+     "answer": 0,
+     "accepted": [
+      "can they"
+     ]
+    },
+    {
+     "id": "g12-dtag-19",
+     "n": 19,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "There is no water in the kettle, ---------------?",
+     "options": [
+      "is there",
+      "shall we",
+      "were they",
+      "wasn’t she"
+     ],
+     "answer": 0,
+     "accepted": [
+      "is there"
+     ]
+    },
+    {
+     "id": "g12-dtag-20",
+     "n": 20,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Let’s go to the cinema, ---------------?",
+     "options": [
+      "shall we",
+      "were they",
+      "wasn’t she",
+      "has she"
+     ],
+     "answer": 0,
+     "accepted": [
+      "shall we"
+     ]
     }
    ]
   }
