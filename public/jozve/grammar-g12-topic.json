@@ -436,6 +436,83 @@
      "note": "ساقهٔ دوسطری چاپی در یک خط نگه داشته شد"
     }
    ]
+  },
+  "final97": {
+   "pages": "229-233",
+   "keyPages": "234-236",
+   "titlePrinted": "آزمون نهایی انگلیسی دوازدهم — نوبت دی ۱۳۹۷، داوطلبان آزاد و بزرگسال سراسر کشور (بخش چهارم: آزمون‌های نهایی دی ۹۷ تا شهریور ۱۴۰۱) — «Vision Three»",
+   "sections": 13,
+   "banks": 10,
+   "questions": 42,
+   "keys": 42,
+   "extractedRound": 292,
+   "audioAbsent": {
+    "section": "1 (listening ۱-۸ + speaking ۹-۱۶)",
+    "items": 16,
+    "printedKey": "1.a next week / 2.b No / 3.It was red./red / 4.Yes, she did./Yes / 5.a True / 6.b False / 7.water / 8.healthy",
+    "note": "وابسته به فایل صوت (QR) — بانک ساخته نشد؛ کلید چاپی ص۲۳۴ همین‌جا محفوظ است؛ سؤال‌های ۹-۱۶ speakingِ آزمونگر-محورند"
+   },
+   "openWritingAbsent": {
+    "section": "13 (topic sentence ۴۳-۴۸)",
+    "items": 6,
+    "note": "پاسخِ باز با داوریِ اصولیِ تصحیح‌کننده (کلید ص۲۳۵: «رعایت اصول Topic sentence») — بانک صادقانه ساخته نشد؛ موضوع‌های چاپی: sport / forest / smoking / language / bad habits / art"
+   },
+   "receipts": [
+    {
+     "item": "37",
+     "field": "scramble",
+     "printed": "very heavy / a bag I always / which / …",
+     "note": "اسلشِ چاپی در OCR به I خوانده شده — توکن‌ها وفادار، فاصله‌گذاریِ « / » یکدست شد"
+    },
+    {
+     "item": "38",
+     "field": "scramble",
+     "printed": "well,/ should/ so /has /study…",
+     "note": "فاصله‌گذاریِ ناهمگونِ OCR به « / » یکدست شد؛ توکن‌ها عیناً چاپ"
+    },
+    {
+     "item": "36",
+     "field": "stem",
+     "printed": "…figure ----. What they were talking about.",
+     "note": "W بزرگِ چاپی — وفادار ماندیم"
+    },
+    {
+     "item": "61",
+     "field": "stem",
+     "printed": "in the first lime",
+     "note": "غلط چاپیِ خود جزوه — lime به‌جای line؛ وفادار ماندیم"
+    },
+    {
+     "item": "60",
+     "field": "accepted",
+     "printed": "They attend conference and training sessions…",
+     "note": "conference مفردِ چاپی — وفادار ماندیم"
+    },
+    {
+     "item": "62",
+     "field": "answer",
+     "printed": "d / the students' names",
+     "note": "کلید چاپی حاکم؛ تنشِ معناییِ ارجاعِ «then» همان الگوی r289 («All people») ثبت شد"
+    },
+    {
+     "item": "54",
+     "field": "stem",
+     "printed": "Horses are farm animals. They are usually black, grey…",
+     "note": "کلید ص۲۳۶ فقط جملهٔ نخست را Topic خط زده — نقشِ کلِ آیتم ۵۴ حاکم است"
+    },
+    {
+     "item": "19",
+     "field": "stem",
+     "printed": "the ----- by and on 'birds and insects",
+     "note": "گیومهٔ اضافهٔ چاپ/OCR پیش از birds پاک شد"
+    },
+    {
+     "item": "passages",
+     "field": "—",
+     "printed": "p232-233",
+     "note": "متنِ دو ریدینگ درون‌اپ حمل نشد (الگوی r289-r291) — تصویر صفحه در کتابخانهٔ جزوه در دسترس است"
+    }
+   ]
   }
  },
  "lessons": [
@@ -10706,6 +10783,700 @@
       "reliable"
      ],
      "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 59,
+   "title": "نهایی دی ۹۷ — واژگان: جای خالی از بانک، بنویسید (ص۲۳۰)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-fin97-v1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Engineers design and make machines that measure wind and ......17.... wind into energy.",
+     "options": [
+      "convert",
+      "turbine",
+      "effect",
+      "generate"
+     ],
+     "answer": 0,
+     "accepted": [
+      "convert"
+     ],
+     "placeholder": "fill in the blank with the word bank…"
+    },
+    {
+     "id": "g12-fin97-v2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "They develop wind turbines that ......18.... electricity by considering the Earth's surface, wind direction, average outside temperature,",
+     "options": [
+      "generate",
+      "renewable",
+      "convert",
+      "turbine"
+     ],
+     "answer": 0,
+     "accepted": [
+      "generate"
+     ],
+     "placeholder": "fill in the blank with the word bank…"
+    },
+    {
+     "id": "g12-fin97-v3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "the ......19.... by and on birds and insects, and the great forces on the ......",
+     "options": [
+      "effect",
+      "generate",
+      "renewable",
+      "convert"
+     ],
+     "answer": 0,
+     "accepted": [
+      "effect"
+     ],
+     "placeholder": "fill in the blank with the word bank…"
+    },
+    {
+     "id": "g12-fin97-v4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "and the great forces on the ......20….....",
+     "options": [
+      "turbine",
+      "effect",
+      "generate",
+      "renewable"
+     ],
+     "answer": 0,
+     "accepted": [
+      "turbine"
+     ],
+     "placeholder": "fill in the blank with the word bank…"
+    }
+   ]
+  },
+  {
+   "lesson": 60,
+   "title": "نهایی دی ۹۷ — واژگان: تعریف‌ها، ۵ گزینهٔ چاپی (ص۲۳۰)",
+   "level": "استاندارد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-fin97-def1",
+     "n": 1,
+     "category": "grammar",
+     "question": "calmly",
+     "options": [
+      "well-known",
+      "in a quiet way",
+      "to finish something",
+      "to take something in, especially gradually",
+      "the amount of a product or service that people want"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-fin97-def2",
+     "n": 2,
+     "category": "grammar",
+     "question": "Distinguished",
+     "options": [
+      "well-known",
+      "in a quiet way",
+      "to finish something",
+      "to take something in, especially gradually",
+      "the amount of a product or service that people want"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-fin97-def3",
+     "n": 3,
+     "category": "grammar",
+     "question": "Demand",
+     "options": [
+      "well-known",
+      "in a quiet way",
+      "to finish something",
+      "to take something in, especially gradually",
+      "the amount of a product or service that people want"
+     ],
+     "answer": 4
+    },
+    {
+     "id": "g12-fin97-def4",
+     "n": 4,
+     "category": "grammar",
+     "question": "Use up",
+     "options": [
+      "well-known",
+      "in a quiet way",
+      "to finish something",
+      "to take something in, especially gradually",
+      "the amount of a product or service that people want"
+     ],
+     "answer": 2
+    }
+   ]
+  },
+  {
+   "lesson": 61,
+   "title": "نهایی دی ۹۷ — واژگان: ترکیب‌ها، ۵ گزینهٔ چاپی (ص۲۳۰)",
+   "level": "استاندارد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-fin97-col1",
+     "n": 1,
+     "category": "grammar",
+     "question": "spare",
+     "options": [
+      "temperature",
+      "the train",
+      "a mistake",
+      "no pains",
+      "the needs"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-fin97-col2",
+     "n": 2,
+     "category": "grammar",
+     "question": "make",
+     "options": [
+      "temperature",
+      "the train",
+      "a mistake",
+      "no pains",
+      "the needs"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-fin97-col3",
+     "n": 3,
+     "category": "grammar",
+     "question": "meet",
+     "options": [
+      "temperature",
+      "the train",
+      "a mistake",
+      "no pains",
+      "the needs"
+     ],
+     "answer": 4
+    },
+    {
+     "id": "g12-fin97-col4",
+     "n": 4,
+     "category": "grammar",
+     "question": "take",
+     "options": [
+      "temperature",
+      "the train",
+      "a mistake",
+      "no pains",
+      "the needs"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 62,
+   "title": "نهایی دی ۹۷ — شکل صحیح فعل، بنویسید (ص۲۳۰-۲۳۱)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-fin97-vf1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "The little boy --------------- the box, can't he? (to open)",
+     "options": [
+      "can open",
+      "would sell",
+      "be paid",
+      "had not washed"
+     ],
+     "answer": 0,
+     "accepted": [
+      "can open"
+     ],
+     "placeholder": "write the correct form of the verb…"
+    },
+    {
+     "id": "g12-fin97-vf2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "If I were you, I --------------- the old house. (to sell)",
+     "options": [
+      "would sell",
+      "can open",
+      "be paid",
+      "had not washed"
+     ],
+     "answer": 0,
+     "accepted": [
+      "would sell"
+     ],
+     "placeholder": "write the correct form of the verb…"
+    },
+    {
+     "id": "g12-fin97-vf3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "The bill must --------------- before leaving the restaurant. (to pay)",
+     "options": [
+      "be paid",
+      "can open",
+      "would sell",
+      "had not washed"
+     ],
+     "answer": 0,
+     "accepted": [
+      "be paid"
+     ],
+     "placeholder": "write the correct form of the verb…"
+    },
+    {
+     "id": "g12-fin97-vf4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "My mother was very angry with my sister because she --------------- the dishes. (not to wash)",
+     "options": [
+      "had not washed",
+      "can open",
+      "would sell",
+      "be paid"
+     ],
+     "answer": 0,
+     "accepted": [
+      "had not washed"
+     ],
+     "placeholder": "write the correct form of the verb…"
+    }
+   ]
+  },
+  {
+   "lesson": 63,
+   "title": "نهایی دی ۹۷ — گرامر: تست چهارگزینه‌ای (ص۲۳۱)",
+   "level": "استاندارد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-fin97-g1",
+     "n": 1,
+     "category": "grammar",
+     "question": "The man --------------- is wearing glasses is Reza's uncle.",
+     "options": [
+      "whom",
+      "whose",
+      "who",
+      "which"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-fin97-g2",
+     "n": 2,
+     "category": "grammar",
+     "question": "The letter --------------- by my father two hours ago.",
+     "options": [
+      "was posted",
+      "posted",
+      "was posting",
+      "has posted"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-fin97-g3",
+     "n": 3,
+     "category": "grammar",
+     "question": "Ali's sister had an accident last week, ---------------?",
+     "options": [
+      "did he",
+      "did she",
+      "didn't he",
+      "didn't she"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-fin97-g4",
+     "n": 4,
+     "category": "grammar",
+     "question": "I couldn't figure --------------- What they were talking about.",
+     "options": [
+      "off",
+      "out",
+      "at",
+      "on"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 64,
+   "title": "نهایی دی ۹۷ — مرتب‌کردن کلمات، بنویسید (ص۲۳۱)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g12-fin97-wo1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "very heavy / a bag / always / which / my brother / seems / carries .",
+     "options": [
+      "My brother always carries a bag which seems very heavy.",
+      "Mina has an exam tomorrow, so she should study well tonight."
+     ],
+     "answer": 0,
+     "accepted": [
+      "My brother always carries a bag which seems very heavy."
+     ],
+     "placeholder": "write the complete sentence…"
+    },
+    {
+     "id": "g12-fin97-wo2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "well, / should / so / has / study / tonight / tomorrow / an exam / she Mina.",
+     "options": [
+      "Mina has an exam tomorrow, so she should study well tonight.",
+      "My brother always carries a bag which seems very heavy."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Mina has an exam tomorrow, so she should study well tonight."
+     ],
+     "placeholder": "write the complete sentence…"
+    }
+   ]
+  },
+  {
+   "lesson": 65,
+   "title": "نهایی دی ۹۷ — کلمات ربط، کامل کنید (ص۲۳۱)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-fin97-conn1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Mrs. Tehrani likes fish, --------------- her grandmother hates it.",
+     "options": [
+      "but",
+      "and",
+      "or",
+      "so"
+     ],
+     "answer": 0,
+     "accepted": [
+      "but"
+     ],
+     "placeholder": "complete with and / or / but / so…"
+    },
+    {
+     "id": "g12-fin97-conn2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "These shoes aren't comfortable, --------------- I rarely wear them.",
+     "options": [
+      "so",
+      "and",
+      "or",
+      "but"
+     ],
+     "answer": 0,
+     "accepted": [
+      "so"
+     ],
+     "placeholder": "complete with and / or / but / so…"
+    },
+    {
+     "id": "g12-fin97-conn3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "The woman washed the dishes, --------------- her daughter dried them.",
+     "options": [
+      "and",
+      "or",
+      "but",
+      "so"
+     ],
+     "answer": 0,
+     "accepted": [
+      "and"
+     ],
+     "placeholder": "complete with and / or / but / so…"
+    },
+    {
+     "id": "g12-fin97-conn4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "You can check this booklet, --------------- you may see our website.",
+     "options": [
+      "or",
+      "and",
+      "but",
+      "so"
+     ],
+     "answer": 0,
+     "accepted": [
+      "or"
+     ],
+     "placeholder": "complete with and / or / but / so…"
+    }
+   ]
+  },
+  {
+   "lesson": 66,
+   "title": "نهایی دی ۹۷ — نقش‌های پاراگراف اسب‌ها: تست (ص۲۳۱-۲۳۲)",
+   "level": "استاندارد",
+   "count": 6,
+   "questions": [
+    {
+     "id": "g12-fin97-role1",
+     "n": 1,
+     "category": "grammar",
+     "question": "They are very useful farm animals.",
+     "options": [
+      "Topic sentence",
+      "Supporting sentence",
+      "Concluding sentence"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-fin97-role2",
+     "n": 2,
+     "category": "grammar",
+     "question": "They can easily run long distances.",
+     "options": [
+      "Topic sentence",
+      "Supporting sentence",
+      "Concluding sentence"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-fin97-role3",
+     "n": 3,
+     "category": "grammar",
+     "question": "They have long legs, which are very strong.",
+     "options": [
+      "Topic sentence",
+      "Supporting sentence",
+      "Concluding sentence"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-fin97-role4",
+     "n": 4,
+     "category": "grammar",
+     "question": "Horses usually move in herds and live in a stable.",
+     "options": [
+      "Topic sentence",
+      "Supporting sentence",
+      "Concluding sentence"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-fin97-role5",
+     "n": 5,
+     "category": "grammar",
+     "question": "They carry people and goods from one place to another.",
+     "options": [
+      "Topic sentence",
+      "Supporting sentence",
+      "Concluding sentence"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-fin97-role6",
+     "n": 6,
+     "category": "grammar",
+     "question": "Horses are farm animals. They are usually black, grey, white and brown in color.",
+     "options": [
+      "Topic sentence",
+      "Supporting sentence",
+      "Concluding sentence"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 67,
+   "title": "نهایی دی ۹۷ — ریدینگ دیکشنری‌ها: پرسش پاسخ + درست/نادرست (ص۲۳۲)",
+   "level": "استاندارد",
+   "count": 5,
+   "questions": [
+    {
+     "id": "g12-fin97-rd1-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Which kind of dictionary is useful for beginners?",
+     "options": [
+      "Bilingual dictionary is useful for them."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Bilingual dictionary is useful for them."
+     ],
+     "placeholder": "answer in a complete sentence…"
+    },
+    {
+     "id": "g12-fin97-rd1-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What does the first half of a bilingual dictionary contain?",
+     "options": [
+      "It contains the English word along with their meaning in another language."
+     ],
+     "answer": 0,
+     "accepted": [
+      "It contains the English word along with their meaning in another language."
+     ],
+     "placeholder": "answer in a complete sentence…"
+    },
+    {
+     "id": "g12-fin97-rd1-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "How many languages are used in a monolingual dictionary to explain the word meanings?",
+     "options": [
+      "One language is used in it."
+     ],
+     "answer": 0,
+     "accepted": [
+      "One language is used in it."
+     ],
+     "placeholder": "answer in a complete sentence…"
+    },
+    {
+     "id": "g12-fin97-rd1-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "A monolingual dictionary improves your English reading skills.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-fin97-rd1-5",
+     "n": 5,
+     "category": "grammar",
+     "question": "You can correct your pronunciation by using an electronic dictionary.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 68,
+   "title": "نهایی دی ۹۷ — ریدینگ معلمان: تست + پرسش پاسخ (ص۲۳۳)",
+   "level": "استاندارد",
+   "count": 5,
+   "questions": [
+    {
+     "id": "g12-fin97-rd2-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What do teachers do to find tools and ways to help their students become successful?",
+     "options": [
+      "They attend conference and training sessions to find tools and ways to help their students become successful."
+     ],
+     "answer": 0,
+     "accepted": [
+      "They attend conference and training sessions to find tools and ways to help their students become successful."
+     ],
+     "placeholder": "answer in a complete sentence…"
+    },
+    {
+     "id": "g12-fin97-rd2-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "What does the word essential in the first lime mean?",
+     "options": [
+      "dedicated",
+      "knowledgeable",
+      "necessary",
+      "productive"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-fin97-rd2-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "What does the word \"then\" refer to?",
+     "options": [
+      "subjects",
+      "classes",
+      "teachers",
+      "students' names"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-fin97-rd2-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "Teachers are just busy when they are at school.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-fin97-rd2-5",
+     "n": 5,
+     "category": "grammar",
+     "question": "The only things that students learn at school are reading and writing.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 1
     }
    ]
   }
