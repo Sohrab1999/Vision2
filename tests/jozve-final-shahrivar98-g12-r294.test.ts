@@ -46,9 +46,9 @@ const ROLE_OPTIONS = ["Topic sentence", "Supporting sentence", "Concluding sente
 const K_ROLE: Record<number, number> = { 1: 1, 2: 1, 3: 1, 4: 0, 5: 2, 6: 1 }; // جدول ص۲۵۰: Topic=۴۵ / Concluding=۴۶
 
 describe("jozve topic grammar bank g12 — final exam شهریور ۹۸ (r294 extraction receipt)", () => {
-  it("bank shape: one hundred fifty-three lessons, final shahrivar 98 adds 12 banks / 44 items (family 1042)", () => {
+  it("bank shape: one hundred seventy-one lessons, final shahrivar 98 adds 12 banks / 44 items (family 1103)", () => {
     expect(bank.lessons.map((l) => l.lesson)).toEqual(
-      Array.from({ length: 153 }, (_, i) => i + 1)
+      Array.from({ length: 171 }, (_, i) => i + 1)
     );
     const counts: Record<number, number> = {
       81: 3, 82: 2, 83: 4, 84: 3, 85: 3, 86: 4, 87: 4, 88: 2, 89: 4, 90: 6, 91: 4, 92: 4,
@@ -68,9 +68,9 @@ describe("jozve topic grammar bank g12 — final exam شهریور ۹۸ (r294 ex
     expect(L(90).questions.every((q) => q.id === `g12-fin98sh-role${q.n}`)).toBe(true);
     // آزمون نهایی شهریور ۹۸: ۴۴ آیتم در ۱۲ بانک — خانواده: ۷۷۱ + ۴۴ = ۸۱۴ (۸۱۵ آیتمِ چاپی منهای ۵ غیبتِ صادقانه: ۱-۶، ۹؟ نه — ۹ هست؛ غیبت‌ها: ۱-۶ + ۱۰ + ۱۱ + ۴۱ + ۴۹)
     const total = bank.lessons.reduce((s, l) => s + l.count, 0);
-    expect(total).toBe(1042);
+    expect(total).toBe(1103);
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(new Set(ids).size).toBe(1042);
+    expect(new Set(ids).size).toBe(1103);
   });
 
   it("provenance: source.final98sh registered with honest absences (printed-less listening stems + open paragraph + unreconstructable 49)", () => {

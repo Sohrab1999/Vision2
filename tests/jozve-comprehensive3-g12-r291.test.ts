@@ -61,9 +61,9 @@ const K_WO: Record<number, string> = {
 const ROLE_OPTIONS = ["Topic sentence", "Supporting sentence", "Concluding sentence"];
 
 describe("jozve topic grammar bank g12 — comprehensive exam lesson 3 (r291 extraction receipt)", () => {
-  it("bank shape: one hundred fifty-three lessons, comprehensive lesson-3 adds 12 banks / 53 items (family 1042)", () => {
+  it("bank shape: one hundred seventy-one lessons, comprehensive lesson-3 adds 12 banks / 53 items (family 1103)", () => {
     expect(bank.lessons.map((l) => l.lesson)).toEqual(
-      Array.from({ length: 153 }, (_, i) => i + 1)
+      Array.from({ length: 171 }, (_, i) => i + 1)
     );
     const counts: Record<number, number> = { 47: 8, 48: 4, 49: 4, 50: 4, 51: 4, 52: 4, 53: 4, 54: 2, 55: 4, 56: 6, 57: 5, 58: 4 };
     const levels: Record<number, string> = { 48: "استاندارد", 50: "استاندارد", 55: "استاندارد", 56: "استاندارد", 57: "استاندارد", 58: "استاندارد" };
@@ -80,7 +80,7 @@ describe("jozve topic grammar bank g12 — comprehensive exam lesson 3 (r291 ext
     // آزمون جامع درس سوم: ۵۳ آیتم در ۱۲ بانک — خانواده: ۶۲۵ + ۵۳ = ۶۷۸
     const compTotal = COMP3.reduce((a, n) => a + L(n).count, 0);
     expect(compTotal).toBe(53);
-    expect(bank.lessons.reduce((a, l) => a + l.count, 0)).toBe(1042);
+    expect(bank.lessons.reduce((a, l) => a + l.count, 0)).toBe(1103);
   });
 
   it("typed vocab bank 47: all 8 printed keys (p226), closed 9-word bank scaffolds, forever is the printed extra word", () => {
@@ -291,10 +291,10 @@ describe("jozve topic grammar bank g12 — comprehensive exam lesson 3 (r291 ext
     expect(L(58).questions[1].options[1]).toContain("sophisticated from of communication");
   });
 
-  it("id uniqueness across the whole 153-bank family (1042 ids) + comprehensive lesson-3 banks introduce zero new stem collisions", () => {
+  it("id uniqueness across the whole 171-bank family (1103 ids) + comprehensive lesson-3 banks introduce zero new stem collisions", () => {
     const all = bank.lessons.flatMap((l) => l.questions);
     const ids = new Set(all.map((q) => q.id));
-    expect(ids.size).toBe(1042);
+    expect(ids.size).toBe(1103);
     const stems = new Set(
       bank.lessons
         .filter((l) => l.lesson < 47)

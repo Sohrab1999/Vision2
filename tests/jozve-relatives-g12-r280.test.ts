@@ -63,7 +63,7 @@ describe("jozve topic grammar bank g12 — relatives (r280 extraction receipt)",
     expect(bank.family).toBe("grammar-topic");
     expect(bank.source.extractedRound).toBe(280);
     // r281 — درس‌های ۳/۴ (مرور زمان‌ها) به همان فایل الحاق شدند؛ درس‌های ضمایر دست‌نخورده‌اند
-    expect(bank.lessons.map((l) => l.lesson)).toEqual(Array.from({ length: 153 }, (_, i) => i + 1)); // r281-r286 بانک‌های ۳..۱۴، r287 هفت بانک تشریحی (۱۵-۲۱) و r288 بخش‌های ۸/۹ (۲۲-۲۳) را افزودند؛ r289-r291 آزمون‌های جامع درس اول تا سوم (۲۴-۵۸) و r292-r298 آزمون‌های نهایی دی ۹۷، خرداد ۹۸، شهریور ۹۸، دی ۹۸، خرداد ۹۹ (دو واریانتِ رشته‌ای) و شهریور ۹۹ (۵۹-۱۵۳) را افزودند
+    expect(bank.lessons.map((l) => l.lesson)).toEqual(Array.from({ length: 171 }, (_, i) => i + 1)); // r281-r286 بانک‌های ۳..۱۴، r287 هفت بانک تشریحی (۱۵-۲۱) و r288 بخش‌های ۸/۹ (۲۲-۲۳) را افزودند؛ r289-r291 آزمون‌های جامع درس اول تا سوم (۲۴-۵۸) و r292-r299 آزمون‌های نهایی دی ۹۷، خرداد ۹۸، شهریور ۹۸، دی ۹۸، خرداد ۹۹ (دو واریانتِ رشته‌ای)، شهریور ۹۹ و چاپِ رسمیِ سراسریِ آن (۵۹-۱۷۱) را افزودند
     expect(l1.count).toBe(27);
     expect(l2.count).toBe(61);
     expect(l1.questions.map((q) => q.n)).toEqual(Array.from({ length: 27 }, (_, i) => i + 1));

@@ -48,7 +48,7 @@ const fresh = [...l8.questions, ...l9.questions];
 
 describe("jozve topic grammar bank g12 — tag questions duo (r283 extraction receipt)", () => {
   it("bank shape: nine lessons, duo added as exactly 20/15 with continuous printed numbering", () => {
-    expect(bank.lessons.map((l) => l.lesson)).toEqual(Array.from({ length: 153 }, (_, i) => i + 1)); // r285-r286 بانک‌های ۱۲-۱۴، r287 هفت بانک تشریحی و r288 بخش‌های ۸/۹ را افزودند؛ r289-r291 آزمون‌های جامع درس اول تا سوم (۲۴-۵۸) و r292-r298 آزمون‌های نهایی دی ۹۷، خرداد ۹۸، شهریور ۹۸، دی ۹۸، خرداد ۹۹ (دو واریانتِ رشته‌ای) و شهریور ۹۹ (۵۹-۱۵۳) را افزودند
+    expect(bank.lessons.map((l) => l.lesson)).toEqual(Array.from({ length: 171 }, (_, i) => i + 1)); // r285-r286 بانک‌های ۱۲-۱۴، r287 هفت بانک تشریحی و r288 بخش‌های ۸/۹ را افزودند؛ r289-r291 آزمون‌های جامع درس اول تا سوم (۲۴-۵۸) و r292-r299 آزمون‌های نهایی دی ۹۷، خرداد ۹۸، شهریور ۹۸، دی ۹۸، خرداد ۹۹ (دو واریانتِ رشته‌ای)، شهریور ۹۹ و چاپِ رسمیِ سراسریِ آن (۵۹-۱۷۱) را افزودند
     // درس‌های r280-r282 دست‌نخورده
     const counts = [27, 61, 30, 50, 20, 20, 40];
     counts.forEach((c, i) => expect(bank.lessons[i].questions).toHaveLength(c));
@@ -150,10 +150,10 @@ describe("jozve topic grammar bank g12 — tag questions duo (r283 extraction re
     expect(tr).toContain("OCR");
   });
 
-  it("family-wide uniqueness: 1042 ids after r289, old lessons untouched, discovery receipt for p187 40-key grid", () => {
+  it("family-wide uniqueness: 1103 ids after r289, old lessons untouched, discovery receipt for p187 40-key grid", () => {
     const all = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
     expect(new Set(all).size).toBe(all.length);
-    expect(all).toHaveLength(1042); // r284-r288 و r289 پنجاه‌ونه تست آزمون جامع را افزودند
+    expect(all).toHaveLength(1103); // r284-r288 و r289 پنجاه‌ونه تست آزمون جامع را افزودند
     expect(bank.source.tags?.discovery).toContain("معلوم و مجهول");
     expect(bank.source.tags?.discovery).toContain("37");
   });

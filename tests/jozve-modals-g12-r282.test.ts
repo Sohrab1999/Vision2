@@ -64,7 +64,7 @@ const fresh = [...l5.questions, ...l6.questions, ...l7.questions];
 
 describe("jozve topic grammar bank g12 — modals/passive trio (r282 extraction receipt)", () => {
   it("bank shape: seven lessons, trio added as exactly 20/20/40 with continuous printed numbering", () => {
-    expect(bank.lessons.map((l) => l.lesson)).toEqual(Array.from({ length: 153 }, (_, i) => i + 1)); // r285-r286 بانک‌های ۱۲-۱۴، r287 هفت بانک تشریحی و r288 بخش‌های ۸/۹ را افزودند؛ r289-r291 آزمون‌های جامع درس اول تا سوم (۲۴-۵۸) و r292-r298 آزمون‌های نهایی دی ۹۷، خرداد ۹۸، شهریور ۹۸، دی ۹۸، خرداد ۹۹ (دو واریانتِ رشته‌ای) و شهریور ۹۹ (۵۹-۱۵۳) را افزودند
+    expect(bank.lessons.map((l) => l.lesson)).toEqual(Array.from({ length: 171 }, (_, i) => i + 1)); // r285-r286 بانک‌های ۱۲-۱۴، r287 هفت بانک تشریحی و r288 بخش‌های ۸/۹ را افزودند؛ r289-r291 آزمون‌های جامع درس اول تا سوم (۲۴-۵۸) و r292-r299 آزمون‌های نهایی دی ۹۷، خرداد ۹۸، شهریور ۹۸، دی ۹۸، خرداد ۹۹ (دو واریانتِ رشته‌ای)، شهریور ۹۹ و چاپِ رسمیِ سراسریِ آن (۵۹-۱۷۱) را افزودند
     // درس‌های r280/r281 دست‌نخورده
     expect(l1.questions).toHaveLength(27);
     expect(l2.questions).toHaveLength(61);
