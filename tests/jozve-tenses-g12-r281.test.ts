@@ -58,7 +58,7 @@ const fresh = [...l3.questions, ...l4.questions];
 
 describe("jozve topic grammar bank g12 — tenses (r281 extraction receipt)", () => {
   it("bank shape: four lessons, tenses added as exactly 30/50 with continuous printed numbering", () => {
-    expect(bank.lessons.map((l) => l.lesson)).toEqual(Array.from({ length: 137 }, (_, i) => i + 1)); // r282-r286 بانک‌های ۵..۱۴، r287 هفت بانک تشریحی (۱۵-۲۱) و r288 بخش‌های ۸/۹ (۲۲-۲۳) را افزودند؛ r289-r291 آزمون‌های جامع درس اول تا سوم (۲۴-۵۸) و r292-r297 آزمون‌های نهایی دی ۹۷، خرداد ۹۸، شهریور ۹۸، دی ۹۸، خرداد ۹۹ و واریانتِ رشته‌ایِ انسانیِ آن (۵۹-۱۳۷) را افزودند
+    expect(bank.lessons.map((l) => l.lesson)).toEqual(Array.from({ length: 153 }, (_, i) => i + 1)); // r282-r286 بانک‌های ۵..۱۴، r287 هفت بانک تشریحی (۱۵-۲۱) و r288 بخش‌های ۸/۹ (۲۲-۲۳) را افزودند؛ r289-r291 آزمون‌های جامع درس اول تا سوم (۲۴-۵۸) و r292-r298 آزمون‌های نهایی دی ۹۷، خرداد ۹۸، شهریور ۹۸، دی ۹۸، خرداد ۹۹ (دو واریانتِ رشته‌ای) و شهریور ۹۹ (۵۹-۱۵۳) را افزودند
     // درس‌های r280 دست‌نخورده
     expect(l1.questions).toHaveLength(27);
     expect(l2.questions).toHaveLength(61);

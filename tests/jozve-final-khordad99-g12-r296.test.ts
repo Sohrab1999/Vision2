@@ -53,9 +53,9 @@ const K_DEFB: Record<number, string> = { 1: "b", 2: "e", 3: "a", 4: "c" }; // d 
 const K_PRVB: Record<number, string> = { 1: "g", 2: "j", 3: "f", 4: "h" }; // i اضافهٔ چاپی
 
 describe("jozve topic grammar bank g12 — final exam خرداد ۹۹ (r296 extraction receipt)", () => {
-  it("bank shape: one hundred thirty-seven lessons, final khordad 99 adds 15 banks / 63 items (family 984)", () => {
+  it("bank shape: one hundred fifty-three lessons, final khordad 99 adds 15 banks / 63 items (family 1042)", () => {
     expect(bank.lessons.map((l) => l.lesson)).toEqual(
-      Array.from({ length: 137 }, (_, i) => i + 1)
+      Array.from({ length: 153 }, (_, i) => i + 1)
     );
     const counts: Record<number, number> = {
       105: 4, 106: 6, 107: 5, 108: 4, 109: 3, 110: 3, 111: 4,
@@ -77,9 +77,9 @@ describe("jozve topic grammar bank g12 — final exam خرداد ۹۹ (r296 extr
     expect(L(119).questions.every((q) => q.id === `g12-fin99k-wo${q.n}`)).toBe(true);
     // آزمون نهایی خرداد ۹۹: ۶۳ آیتم در ۱۵ بانک — خانواده: ۸۵۵ + ۶۳ = ۹۱۸
     const total = bank.lessons.reduce((s, l) => s + l.count, 0);
-    expect(total).toBe(984);
+    expect(total).toBe(1042);
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(new Set(ids).size).toBe(984);
+    expect(new Set(ids).size).toBe(1042);
   });
 
   it("provenance: source.final99k registered with honest absences (open relative 30, topic sentences 53/54, choice section 17)", () => {
