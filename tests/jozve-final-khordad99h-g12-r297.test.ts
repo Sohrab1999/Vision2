@@ -53,9 +53,9 @@ const K_DEFB: Record<number, string> = { 1: "d", 2: "e", 3: "c", 4: "b" }; // a 
 const K_PRVB: Record<number, string> = { 1: "i", 2: "h", 3: "f", 4: "j" }; // g اضافهٔ چاپی
 
 describe("jozve topic grammar bank g12 — final exam خرداد ۹۹ انسانی (r297 extraction receipt)", () => {
-  it("bank shape: two hundred eight lessons, humanities variant adds 18 banks / 66 items (family 1227)", () => {
+  it("bank shape: two hundred twenty-seven lessons, humanities variant adds 18 banks / 66 items (family 1283)", () => {
     expect(bank.lessons.map((l) => l.lesson)).toEqual(
-      Array.from({ length: 208 }, (_, i) => i + 1)
+      Array.from({ length: 227 }, (_, i) => i + 1)
     );
     const counts: Record<number, number> = {
       120: 4, 121: 5, 122: 5, 123: 4, 124: 3, 125: 3, 126: 5, 127: 5,
@@ -78,9 +78,9 @@ describe("jozve topic grammar bank g12 — final exam خرداد ۹۹ انسان
     expect(L(137).questions.every((q) => q.id === `g12-fin99h-wo${q.n}`)).toBe(true);
     // آزمون نهایی خرداد ۹۹ انسانی: ۶۶ آیتم در ۱۸ بانک — خانواده: ۹۱۸ + ۶۶ = ۹۸۴
     const total = bank.lessons.reduce((s, l) => s + l.count, 0);
-    expect(total).toBe(1227);
+    expect(total).toBe(1283);
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(new Set(ids).size).toBe(1227);
+    expect(new Set(ids).size).toBe(1283);
   });
 
   it("provenance: source.final99h registered — branch variant + honest absences (topic sentences 55/56, choice section 16 ج/د)", () => {

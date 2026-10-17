@@ -41,9 +41,9 @@ const K_PRVB: Record<number, string> = { 1: "j", 2: "h", 3: "f", 4: "g" }; // i 
 const K_LG: Record<number, string> = { 1: "volleyball", 2: "team", 3: "fun", 4: "play", 5: "twice", 6: "games" };
 
 describe("jozve topic grammar bank g12 — official shahrivar 99 exam (r299 extraction receipt)", () => {
-  it("bank shape: two hundred eight lessons, official shahrivar 99 adds 18 banks / 61 items (family 1227)", () => {
+  it("bank shape: two hundred twenty-seven lessons, official shahrivar 99 adds 18 banks / 61 items (family 1283)", () => {
     expect(bank.lessons.map((l) => l.lesson)).toEqual(
-      Array.from({ length: 208 }, (_, i) => i + 1)
+      Array.from({ length: 227 }, (_, i) => i + 1)
     );
     const counts: Record<number, number> = {
       154: 3, 155: 3, 156: 2, 157: 6, 158: 4, 159: 3, 160: 3, 161: 6, 162: 2,
@@ -67,9 +67,9 @@ describe("jozve topic grammar bank g12 — official shahrivar 99 exam (r299 extr
     expect(L(168).questions.map((q) => q.id)).toEqual(["g12-fin99sho-cc1"]);
     // آزمون رسمی سراسری شهریور ۹۹: ۶۱ آیتم در ۱۸ بانک — خانواده: ۱۰۴۲ + ۶۱ = ۱۱۰۳
     const total = bank.lessons.reduce((s, l) => s + l.count, 0);
-    expect(total).toBe(1227);
+    expect(total).toBe(1283);
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(new Set(ids).size).toBe(1227);
+    expect(new Set(ids).size).toBe(1283);
   });
 
   it("provenance: source.final99sho registered — first official-source round (aee.medu.ir), second variant of one round, honest 50/63-67 absence", () => {
