@@ -49,6 +49,8 @@ describe("jozve test bank g11 (r275 extraction receipt)", () => {
       1, 2, 3, 4, 5,
       // r308 — ۱۸ بانکِ «آزمون جامع ۳۶۰ واژگان» (درس ۶..۲۳) الحاق شد؛ بانکِ ۱۲ (درس ۱۷) ۲۱تستی است
     ...Array.from({ length: 18 }, (_, i) => i + 6),
+      // r309 — واژگان کنکوری درس دوم (ص۵۹) با شناسهٔ ۲۴ الحاق شد
+    24,
     ]);
     for (const l of [l1, l2, l3]) {
       expect(l.count, `lesson ${l.lesson}`).toBe(40);

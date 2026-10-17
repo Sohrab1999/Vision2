@@ -67,7 +67,7 @@ const KEY_RECEIPT: Record<number, string> = {
   330: "d", 340: "a", 341: "d", 350: "d", 360: "c",
 };
 
-const newLessons = bank.lessons.filter((l) => l.lesson >= 6);
+const newLessons = bank.lessons.filter((l) => l.lesson >= 6 && l.lesson <= 23); // فقط جامع؛ l24 (r309) گاردِ خودش را دارد
 const newQuestions = newLessons.flatMap((l) =>
   l.questions.map((q, k) => ({
     lesson: l.lesson,
@@ -88,10 +88,10 @@ function printedOf(lesson: number, k: number): number {
 const L = (lesson: number) => newLessons.find((l) => l.lesson === lesson)!;
 
 describe("jozve comprehensive360 g11 (r308 extraction receipt)", () => {
-  it("bank shape: grade 11 now has 23 lessons — 18 new banks of 20 (bank 12 has 21)", () => {
+  it("bank shape: grade 11 now has 24 lessons — 18 comprehensive banks of 20 (bank 12 has 21) + r309 konkur vocab", () => {
     expect(bank.grade).toBe(11);
     expect(bank.lessons.map((l) => l.lesson)).toEqual(
-      Array.from({ length: 23 }, (_, i) => i + 1)
+      Array.from({ length: 24 }, (_, i) => i + 1)
     );
     for (const l of newLessons) {
       const want = l.lesson === 17 ? 21 : 20;
@@ -104,10 +104,10 @@ describe("jozve comprehensive360 g11 (r308 extraction receipt)", () => {
     }
   });
 
-  it("ids: g11-l6-1 .. g11-l23-20 unique across the whole bank — total 523", () => {
+  it("ids: g11-l6-1 .. g11-l23-20 unique across the whole bank — total 543 (r309 added l24)", () => {
     const all = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
     expect(new Set(all).size).toBe(all.length);
-    expect(all).toHaveLength(40 + 40 + 40 + 22 + 20 + 361);
+    expect(all).toHaveLength(40 + 40 + 40 + 22 + 20 + 20 + 361); // +۲۰: واژگان کنکوری درس دوم (r309)
     for (const l of newLessons) {
       expect(l.questions.map((q) => q.id)).toEqual(
         Array.from({ length: l.questions.length }, (_, i) => `g11-l${l.lesson}-${i + 1}`)
@@ -227,8 +227,9 @@ describe("jozve comprehensive360 g11 (r308 extraction receipt)", () => {
     expect(src).toContain('lesson: 6, title: "جامع ۳۶۰ — بانک ۱ (۱-۲۰)", count: 20');
     expect(src).toContain('lesson: 17, title: "جامع ۳۶۰ — بانک ۱۲ (۲۲۱-۲۴۰)", count: 21');
     expect(src).toContain('lesson: 23, title: "جامع ۳۶۰ — بانک ۱۸ (۳۴۱-۳۶۰)", count: 20');
-    // بانک‌های قدیمیِ کارت دست‌نخورده‌اند
+    // بانک‌های قدیمیِ کارت دست‌نخورده‌اند + دکمهٔ ص۵۹ (r309) میانِ ص۲۱ و ص۹۳
     expect(src).toContain('lesson: 4, title: "تکمیلی درس اول (ص۲۱)", count: 22');
+    expect(src).toContain('lesson: 24, title: "واژگان کنکوری درس دوم (ص۵۹)", count: 20');
     expect(src).toContain('lesson: 5, title: "تکمیلی درس سوم (ص۹۳)", count: 20');
   });
 });

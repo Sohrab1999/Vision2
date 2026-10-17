@@ -53,6 +53,8 @@ describe("jozve supplementary g11 (r278 extraction receipt)", () => {
       1, 2, 3, 4, 5,
       // r308 — ۱۸ بانکِ «آزمون جامع ۳۶۰ واژگان» (درس ۶..۲۳) الحاق شد؛ بانکِ ۱۲ (درس ۱۷) ۲۱تستی است
     ...Array.from({ length: 18 }, (_, i) => i + 6),
+      // r309 — واژگان کنکوری درس دوم (ص۵۹) با شناسهٔ ۲۴ الحاق شد
+    24,
     ]);
     expect(l4.count).toBe(22);
     expect(l4.questions).toHaveLength(22);
@@ -73,7 +75,7 @@ describe("jozve supplementary g11 (r278 extraction receipt)", () => {
     }
     const all = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
     expect(new Set(all).size).toBe(all.length);
-    expect(all).toHaveLength(40 + 40 + 40 + 22 + 20 + 361); // +۳۶۱: جامع ۳۶۰ (r308) — با دو «۲۲۸» چاپی
+    expect(all).toHaveLength(40 + 40 + 40 + 22 + 20 + 20 + 361); // +۳۶۱: جامع ۳۶۰ (r308) — با دو «۲۲۸» چاپی؛ +۲۰: واژگان کنکوری درس دوم (r309)
   });
 
   it("every supplementary question: 4 unique options, valid answer, healthy blank, English purity", () => {
