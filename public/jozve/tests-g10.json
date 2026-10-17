@@ -3306,6 +3306,574 @@
      "answer": 0
     }
    ]
+  },
+  {
+   "lesson": 11,
+   "title": "متوسط — تست واژگان درس دوم (ص۸۷-۸۸)",
+   "level": "متوسط — چهارگزینه‌ای",
+   "count": 40,
+   "questions": [
+    {
+     "id": "g10-l11-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "We heard voices when we drew --------------- the village.",
+     "options": [
+      "far",
+      "near",
+      "real",
+      "above"
+     ],
+     "answer": 1,
+     "translation": "وقتی که ما به نزدیک روستا آمدیم، صداهایی را شنیدیم."
+    },
+    {
+     "id": "g10-l11-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "The first --------------- of rain fell down on the ground yesterday and we enjoyed a lot.",
+     "options": [
+      "drops",
+      "pumps",
+      "liquids",
+      "signs"
+     ],
+     "answer": 0,
+     "translation": "دیروز اولین قطرات باران روی زمین افتاد و ما هم خیلی لذت بردیم."
+    },
+    {
+     "id": "g10-l11-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "Have you ever explored the --------------- of other planets.",
+     "options": [
+      "powers",
+      "signs",
+      "wonders",
+      "types"
+     ],
+     "answer": 2,
+     "translation": "تاکنون شما عجایب سیارات دیگر را کشف کردهاید؟"
+    },
+    {
+     "id": "g10-l11-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "He went around the office --------------- old coffee cups.",
+     "options": [
+      "carrying",
+      "creating",
+      "orbiting",
+      "collecting"
+     ],
+     "answer": 3,
+     "translation": "او برای جمع آوری فنجانهای قهوهای قدیمی اطراف دفتر را گشت."
+    },
+    {
+     "id": "g10-l11-5",
+     "n": 5,
+     "category": "vocab",
+     "question": "An extremely small living thing which you can’t see with your eyes and can cause diseases is called ---------------.",
+     "options": [
+      "plasma",
+      "cell",
+      "body",
+      "microbe"
+     ],
+     "answer": 3,
+     "translation": "یک موجود زنده خیلی کوچک که با چشمانتان نمیتوانید ببینید و میتواند بیماریهایی را بوجود آورد میکروب نامیده می شود."
+    },
+    {
+     "id": "g10-l11-6",
+     "n": 6,
+     "category": "vocab",
+     "question": "Crying is seen as a --------------- of weakness among some people in bad situations.",
+     "options": [
+      "system",
+      "sign",
+      "power",
+      "ring"
+     ],
+     "answer": 1,
+     "translation": "گریه کردن به عنوان یک نشانه ضعف میان بعضی افراد در وضعیتهای بد دیده می شود."
+    },
+    {
+     "id": "g10-l11-7",
+     "n": 7,
+     "category": "vocab",
+     "question": "A planet that is the closest to the sun in the solar system and sometimes visible with eyes after sunset is ---------------.",
+     "options": [
+      "Mercury",
+      "earth",
+      "orbit",
+      "telescope"
+     ],
+     "answer": 0,
+     "translation": "این سیاره ی کوچک در منظومه شمسی، نزدیکترین سیاره به خورشید است و گاهی اوقات با چشم، درست بعد از غروب آفتاب، قابل رؤیت است. آن سیاره عطارد است."
+    },
+    {
+     "id": "g10-l11-8",
+     "n": 8,
+     "category": "vocab",
+     "question": "This machine will --------------- water from the basement if there is a heavy rain.",
+     "options": [
+      "carry",
+      "pump",
+      "collect",
+      "clear"
+     ],
+     "answer": 1,
+     "translation": "اگر باران سنگین ببارد این دستگاه آب را از زیر زمین پمپاژ می کند."
+    },
+    {
+     "id": "g10-l11-9",
+     "n": 9,
+     "category": "vocab",
+     "question": "When you have a cold or the flu, you should drink plenty of ---------------.",
+     "options": [
+      "liquids",
+      "drops",
+      "plasma",
+      "pepper"
+     ],
+     "answer": 0,
+     "translation": "وقتی که شما سرما میخورید یا آنفولانزا دارید، بهتر است مایعات زیادی بنوشید."
+    },
+    {
+     "id": "g10-l11-10",
+     "n": 10,
+     "category": "vocab",
+     "question": "The holidays gave him a chance to --------------- the room.",
+     "options": [
+      "follow",
+      "create",
+      "carry",
+      "paint"
+     ],
+     "answer": 3,
+     "translation": "تعطیلات به او فرصت داد که اتاق را رنگ بزند."
+    },
+    {
+     "id": "g10-l11-11",
+     "n": 11,
+     "category": "vocab",
+     "question": "The satellite will complete one --------------- every 12 hours.",
+     "options": [
+      "space",
+      "orbit",
+      "planet",
+      "drop"
+     ],
+     "answer": 1,
+     "translation": "ماهواره هر دوره زمان یک مدار را کامل می کند."
+    },
+    {
+     "id": "g10-l11-12",
+     "n": 12,
+     "category": "vocab",
+     "question": "A special building from which scientists watch the moon, stars weather etc. is called ---------------.",
+     "options": [
+      "university",
+      "laboratory",
+      "observatory",
+      "college"
+     ],
+     "answer": 2,
+     "translation": "یک ساختمان ویژه که دانشمندان در آن ماه، ستارهها، آب و هوا و غیره را تماشا می کند رصدخانه نامیده می شود."
+    },
+    {
+     "id": "g10-l11-13",
+     "n": 13,
+     "category": "vocab",
+     "question": "The books about Harry Potter have been very popular and interesting both at home and ---------------.",
+     "options": [
+      "country",
+      "continent",
+      "city",
+      "abroad"
+     ],
+     "answer": 3,
+     "translation": "این کتابها در مورد هری پاتر هم در داخل و هم درخارج خیلی محبوب و جالب بودهاند."
+    },
+    {
+     "id": "g10-l11-14",
+     "n": 14,
+     "category": "vocab",
+     "question": "The taste of that home-baked brown bread is highly pleasant. In other word, it’s so ---------------.",
+     "options": [
+      "terrible",
+      "suitable",
+      "delicious",
+      "comfortable"
+     ],
+     "answer": 2,
+     "translation": "مزه آن نان قهوهای خانگی خیلی مطبوع است. به عبارت دیگر خیلی خوشمزه است."
+    },
+    {
+     "id": "g10-l11-15",
+     "n": 15,
+     "category": "vocab",
+     "question": "What is the --------------- and the most terrible possible thing that can happen?",
+     "options": [
+      "best",
+      "worst",
+      "most",
+      "least"
+     ],
+     "answer": 1,
+     "translation": "بدترین و وحشتناک ترین چیزی که میتواند اتفاق بیافتد، چیست؟"
+    },
+    {
+     "id": "g10-l11-16",
+     "n": 16,
+     "category": "vocab",
+     "question": "Details on the moon’s surface can only be seen through a ---------------.",
+     "options": [
+      "microscope",
+      "telescope",
+      "camera",
+      "lens"
+     ],
+     "answer": 1,
+     "translation": "جزئیات سطح کره ی ماه، فقط از طریق یک تلسکوپ میتوانند دیده شوند."
+    },
+    {
+     "id": "g10-l11-17",
+     "n": 17,
+     "category": "vocab",
+     "question": "A smallest part of a living thing that can exist independently is called ---------------.",
+     "options": [
+      "virus",
+      "microbe",
+      "cell",
+      "bacteria"
+     ],
+     "answer": 2,
+     "translation": "کوچکترین قسمت یک موجود زنده که می تواند به طور مستقل وجود داشته باشد، سلول نامیده می شود."
+    },
+    {
+     "id": "g10-l11-18",
+     "n": 18,
+     "category": "vocab",
+     "question": "There are more air planes --------------- more people than ever before.",
+     "options": [
+      "collecting",
+      "carrying",
+      "completing",
+      "comparing"
+     ],
+     "answer": 1,
+     "translation": "هواپیماهای زیادی وجود دارند که افراد بیشتری را نسبت به قبل، حمل می کند."
+    },
+    {
+     "id": "g10-l11-19",
+     "n": 19,
+     "category": "vocab",
+     "question": "It will be --------------- to see what happens when he gets a bit older.",
+     "options": [
+      "interesting",
+      "healthy",
+      "near",
+      "powerful"
+     ],
+     "answer": 0,
+     "translation": "زمانیکه او کمی پتر شود، دیدن اینکه چه رخ میدهد، (برایش) جالب خواهد بود."
+    },
+    {
+     "id": "g10-l11-20",
+     "n": 20,
+     "category": "vocab",
+     "question": "These crayons are not --------------- to use in very hot weather.",
+     "options": [
+      "actual",
+      "modern",
+      "interesting",
+      "suitable"
+     ],
+     "answer": 3,
+     "translation": "این مداد شمعیها برای استفاده در آب و هوای خیلی گرم مناسب نیستند."
+    },
+    {
+     "id": "g10-l11-21",
+     "n": 21,
+     "category": "vocab",
+     "question": "Last year he --------------- $10000 to cancer research of New York hospital.",
+     "options": [
+      "donated",
+      "completed",
+      "controlled",
+      "turned"
+     ],
+     "answer": 0,
+     "translation": "او پارسال صد هزار دلار به تحقیقات سرطان بیمارستان نیویورک اهدا کرد."
+    },
+    {
+     "id": "g10-l11-22",
+     "n": 22,
+     "category": "vocab",
+     "question": "--------------- is the yellow liquid part of blood that contains the blood cells.",
+     "options": [
+      "Plasma",
+      "Microbe",
+      "Bacteria",
+      "Virus"
+     ],
+     "answer": 0,
+     "translation": "پلاسما قسمت مایع زردنگ خون است که شامل سلولهای خونی هست."
+    },
+    {
+     "id": "g10-l11-23",
+     "n": 23,
+     "category": "vocab",
+     "question": "The police were in --------------- control of the situation.",
+     "options": [
+      "around",
+      "complete",
+      "medium",
+      "strange"
+     ],
+     "answer": 1,
+     "translation": "پلیس کنترل کامل موقعیت (وضعیت) را در دست داشت."
+    },
+    {
+     "id": "g10-l11-24",
+     "n": 24,
+     "category": "vocab",
+     "question": "It’s better to make a phone call to --------------- that you’re writing to the right person.",
+     "options": [
+      "check",
+      "locate",
+      "break",
+      "compare"
+     ],
+     "answer": 0,
+     "translation": "بهتر است یک تماس تلفنی برقرار شود که بررسی شود (که آیا) شما برای شخص درستی (نامه) نوشتهاید."
+    },
+    {
+     "id": "g10-l11-25",
+     "n": 25,
+     "category": "vocab",
+     "question": "How does life in Britain --------------- with life in the United States?",
+     "options": [
+      "defend",
+      "describe",
+      "compare",
+      "pair"
+     ],
+     "answer": 2,
+     "translation": "چطور زندگی در بریتانیا با ایالات متحده مقایسه می شود؟"
+    },
+    {
+     "id": "g10-l11-26",
+     "n": 26,
+     "category": "vocab",
+     "question": "Another approach for solving the problem is --------------- in chapter 3 of the book.",
+     "options": [
+      "compared",
+      "contrasted",
+      "completed",
+      "described"
+     ],
+     "answer": 3,
+     "translation": "روش دیگر برای حل مسأله، در بخش سوم کتاب توصیف شده است."
+    },
+    {
+     "id": "g10-l11-27",
+     "n": 27,
+     "category": "vocab",
+     "question": "The drug is effective against a range of ---------------.",
+     "options": [
+      "bacteria",
+      "cell",
+      "plasma",
+      "body"
+     ],
+     "answer": 0,
+     "translation": "دارو علیه دسته ای از باکتری ها موثر است."
+    },
+    {
+     "id": "g10-l11-28",
+     "n": 28,
+     "category": "vocab",
+     "question": "Police found tiny drops of --------------- in the apartment and finally identified killer.",
+     "options": [
+      "paint",
+      "blood",
+      "water",
+      "cell"
+     ],
+     "answer": 1,
+     "translation": "پلیس قطرات کوچکی از خون را در آپارتمان پیدا کرده و سرانجام قاتل را شناسایی کردند."
+    },
+    {
+     "id": "g10-l11-29",
+     "n": 29,
+     "category": "vocab",
+     "question": "My grandfather died after suffering a severe heart --------------- two years ago.",
+     "options": [
+      "attack",
+      "cross",
+      "body",
+      "element"
+     ],
+     "answer": 0,
+     "translation": "پدربزرگم دو سال پیش، بعد از رنج بردن از یک حمله قلبی شدید، فوت کرد."
+    },
+    {
+     "id": "g10-l11-30",
+     "n": 30,
+     "category": "vocab",
+     "question": "They always say time changes things but you --------------- have to change them yourself.",
+     "options": [
+      "at first",
+      "actually",
+      "finally",
+      "nowadays"
+     ],
+     "answer": 1,
+     "translation": "آنها همیشه میگویند که زمان چیزها را تغییر می دهد. اما در واقع شما بایستی خودت آنها را تغییر دهی."
+    },
+    {
+     "id": "g10-l11-31",
+     "n": 31,
+     "category": "vocab",
+     "question": "The glass fell down and broke in to a --------------- pieces.",
+     "options": [
+      "thousand",
+      "thousand of",
+      "millions",
+      "billions"
+     ],
+     "answer": 0,
+     "translation": "لیوان (بر روی زمین) افتاد و به هزار تکه (تبدیل) شد."
+    },
+    {
+     "id": "g10-l11-32",
+     "n": 32,
+     "category": "vocab",
+     "question": "They have a TV with a --------------- picture and high-quality sound.",
+     "options": [
+      "simple",
+      "clear",
+      "common",
+      "average"
+     ],
+     "answer": 1,
+     "translation": "آنها تلویزیونی با تصویری واضح و صدایی با کیفیت بالا دارند."
+    },
+    {
+     "id": "g10-l11-33",
+     "n": 33,
+     "category": "vocab",
+     "question": "Try to add doing some regular --------------- into your daily routine.",
+     "options": [
+      "experiment",
+      "research",
+      "exercise",
+      "health"
+     ],
+     "answer": 2,
+     "translation": "تلاش کن تا (انجام) چند تمرین منظم به کارهای(مرتب) روزانه ات را اضافه کنی."
+    },
+    {
+     "id": "g10-l11-34",
+     "n": 34,
+     "category": "vocab",
+     "question": "Among our family members my younger sister was the only one who travelled ---------------.",
+     "options": [
+      "abroad",
+      "near",
+      "distance",
+      "upward"
+     ],
+     "answer": 0,
+     "translation": "در میان اعضای خانواده ما، خواهر کوچکترم تنها کسی بود که به خارج از کشور مسافرت کرد."
+    },
+    {
+     "id": "g10-l11-35",
+     "n": 35,
+     "category": "vocab",
+     "question": "It’s a mistake to think of Florida only --------------- its tourist attractions.",
+     "options": [
+      "based",
+      "in terms of",
+      "by mean of",
+      "jumped out of"
+     ],
+     "answer": 1,
+     "translation": "اشتباه است که به فلوریدا فقط برحسب جاذبههای توریستی فکر کنیم."
+    },
+    {
+     "id": "g10-l11-36",
+     "n": 36,
+     "category": "vocab",
+     "question": "Religion was an --------------- which divided that country into two group.",
+     "options": [
+      "element",
+      "ring",
+      "system",
+      "gift"
+     ],
+     "answer": 0,
+     "translation": "مذهب عنصری (عامل) بود که کشور را به دو گروه تقسیم کرد."
+    },
+    {
+     "id": "g10-l11-37",
+     "n": 37,
+     "category": "vocab",
+     "question": "She gathered --------------- for her novel by reading newspapers from 1990s.",
+     "options": [
+      "elements",
+      "hints",
+      "keys",
+      "material"
+     ],
+     "answer": 3,
+     "translation": "او با خواندن روزنامهها، از دهه ۱۹۹۰ مطالی را برای رمانش جمع آوری کرد."
+    },
+    {
+     "id": "g10-l11-38",
+     "n": 38,
+     "category": "vocab",
+     "question": "Such companies must change if they are to compete in the --------------- world.",
+     "options": [
+      "modern",
+      "ancient",
+      "nation",
+      "living"
+     ],
+     "answer": 0,
+     "translation": "اگر قرار است چنین شرکتهایی در دنیای مدرن رقابت کنند، می بایستی تغییر کنند."
+    },
+    {
+     "id": "g10-l11-39",
+     "n": 39,
+     "category": "vocab",
+     "question": "Let me tell you some helpful --------------- on looking after house plants.",
+     "options": [
+      "elements",
+      "hints",
+      "materials",
+      "gifts"
+     ],
+     "answer": 1,
+     "translation": "بگذار برای شما چند نکته مفید در مورد مراقبت کردن از گیاهان خانگی را بگویم."
+    },
+    {
+     "id": "g10-l11-40",
+     "n": 40,
+     "category": "vocab",
+     "question": "How long does it take for the --------------- Jupiter to make a complete orbit around the sun?",
+     "options": [
+      "star",
+      "planet",
+      "orbit",
+      "plane"
+     ],
+     "answer": 1,
+     "translation": "چه مدت برای سیاره مشتری، طول می کشد تا یک چرخش کامل دور خورشید، داشته باشد؟"
+    }
+   ]
   }
  ],
  "source": {
@@ -3386,6 +3954,36 @@
     "Q5 بانک ۷: ساقهٔ چاپ «round the body to keeps us alive» — to keeps (خطای چاپ؛ زوم ۴۰۰۰dpi)؛ عینِ چاپ",
     "Q10 بانک ۱۰: «soldiers» جمع — استعارهٔ چاپ برای گلبول‌های سفید؛ عینِ چاپ",
     "Q24 بانک ۱۰: ساقه با جای خالی آغاز می‌شود («--------------- if you take a taxi…»)؛ عینِ چاپ"
+   ]
+  },
+  "exam4": {
+   "exam": "تست واژگان درس دوم — سطح متوسط (سؤالات: ص۸۷ و ۸۸)",
+   "header": "تست واژگان «درس دوم - پایه دهم» سطح تستها: «متوسط» (پاسخنامه صفحه: ۲۵۹-۲۶۰)",
+   "keyPages": "259-260",
+   "keyVerification": "print key pp259-260 «کلید و ترجمه تستهای واژگان درس دوم - پایه دهم (سؤالات: صفحه ۸۷ و ۸۸)» — 40/40 agree with semantic pre-fill (key word reflected in printed translation), zero divergence; Q4 double-c label vs key (d) arbitrated by printed translation «جمع آوری»",
+   "extractedRound": "r327",
+   "pattern": "r311/r323 (بانک درس‌محور) + r320/r324/r325 (ترجمهٔ چاپ‌محور در translation)",
+   "translations": "۴۰ ترجمهٔ چاپی «ترجمه تست» به آیتم‌ها تزریق شد؛ ۱۷+ نقطهٔ سرنوشت‌ساز با زومِ ۲۶۰۰-۸۰۰۰dpi داوری شد (برچسب دوتایی Q3/Q4، هری پاتر، پتر، زردنگ، لیوان، عنصری (عامل)، مطالی، گیاهان، بررسی، خودت، می-های جدای/چسبیده، کره ی/سیاره ی)",
+   "printQuirks": [
+    "Q3 و Q4: سطرِ گزینه‌های چاپ، گزینهٔ چهارم را هم «c.» برچسب زده (c. types / c. collecting — برچسبِ دوتاییِ c؛ زومِ ۸۰۰۰dpi قطعی)؛ عینِ چاپ",
+    "Q4: ناسازگاریِ درونیِ چاپ — سطرِ گزینه‌ها برچسب c برای collecting دارد ولی کلیدِ چاپِ ص۲۵۹ «گزینه (d)» میگوید؛ ترجمهٔ چاپی «جمع آوری» حاکمیتِ collecting را تأیید می‌کند — کلید حاکم، برچسب عینِ چاپ مستند",
+    "Q3: ساقه با نقطه پایان مییابد نه علامت سؤال («…of other planets.»)؛ عینِ چاپ",
+    "Q12: «stars weather» بدونِ ویرگول در چاپ؛ عینِ چاپ",
+    "Q14: «In other word» (جمعِ words نیست)؛ عینِ چاپ",
+    "Q17: «A smallest part» (به‌جای The smallest)؛ عینِ چاپ",
+    "Q18: «air planes» دو واژه جدا در چاپ؛ عینِ چاپ",
+    "Q28: «finally identified killer» بدونِ the در چاپ؛ عینِ چاپ",
+    "Q31: «broke in to a --------------- pieces» (in to جدا + تعدادِ ناسازگار)؛ عینِ چاپ",
+    "Q35: گزینهٔ چاپ «by mean of» (means نیست)؛ عینِ چاپ",
+    "Q36: «into two group» (groups نیست)؛ عینِ چاپ",
+    "Q38: «compete in the --------------- world» — چاپ فاصله پیش از جای خالی را حذف کرده؛ فاصله در رونویسی بازچینی شد (نشانهگذاری در رسید)",
+    "ترجمهٔ Q19: چاپ «پتر شود» (پیرتر — یِ میانه حذفِ چاپ؛ زومِ ۲۶۰۰dpi)؛ عینِ چاپ",
+    "ترجمهٔ Q22: چاپ «زردنگ» (زردرنگ — رِ دوم حذفِ چاپ)؛ عینِ چاپ",
+    "ترجمهٔ Q30: چاپ «خودت» (خودتان — انِ آخر حذفِ چاپ؛ زومِ ۸۰۰۰dpi)؛ عینِ چاپ",
+    "ترجمهٔ Q37: چاپ «مطالی» (مطالبی؛ زومِ ۲۶۰۰dpi)؛ عینِ چاپ",
+    "ترجمهٔ Q27: «موثر» بدونِ همزه (مؤثر نیست) + «دسته ای/باکتری ها» جدایِ چاپ؛ عینِ چاپ",
+    "الگوی میـها: «میخورید/میدهد(۱۹)/میکروب…» چسبیده ولی «می کند/می شود/می دهد(۳۰)/می کشد/می بایستی/می تواند(۱۷)» جدای — ناهماهنگیِ خودِ چاپ، هر دو عینِ چاپ (الگوی r324)",
+    "اضافهٔ «ی»: «سیاره ی/کره ی» جدایِ چاپ (زومِ ۸۰۰۰dpi) ولی «بیماریهایی/جاذبههای/شمعیها/کتابها/روزنامهها/ستارهها/شرکتهایی/هواپیماهای» چسبیده — عینِ چاپ"
    ]
   }
  }

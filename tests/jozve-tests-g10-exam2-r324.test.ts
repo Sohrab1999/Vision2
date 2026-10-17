@@ -144,8 +144,8 @@ describe("jozve tests-g10 exam2 (r324 آموزشی — p52-53, key+translations 
     expect(byN(13).translation).toContain("انقراض");
   });
 
-  it("ids unique across the whole 194-item family (r326 tashrihi2 appended)", () => {
+  it("ids unique across the whole 234-item family (r327 exam4 appended)", () => {
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(new Set(ids).size).toBe(194);
+    expect(new Set(ids).size).toBe(234);
   });
 });

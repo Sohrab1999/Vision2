@@ -22,11 +22,11 @@ describe("tests-g10 tashrihi2 — تشریحی واژگان درس دوم (r326)
     expect(src.printQuirks.some((q: string) => q.includes("to keeps"))).toBe(true);
   });
 
-  it("file shape: 10 banks, family 194 items (16+8+8+25 appended)", () => {
+  it("file shape: 11 banks, family 234 items (40 exam4 appended)", () => {
     expect(doc.grade).toBe(10);
-    expect(doc.lessons).toHaveLength(10);
-    expect(doc.lessons.slice(6).map((l: { count: number }) => l.count)).toEqual([16, 8, 8, 25]);
-    expect(doc.lessons.reduce((s: number, l: { count: number }) => s + l.count, 0)).toBe(194);
+    expect(doc.lessons).toHaveLength(11);
+    expect(doc.lessons.slice(6).map((l: { count: number }) => l.count)).toEqual([16, 8, 8, 25, 40]);
+    expect(doc.lessons.reduce((s: number, l: { count: number }) => s + l.count, 0)).toBe(234);
   });
 
   it("bank 7 (بانک واژه): 16 typed keys locked to p258, extras disease/element never the accepted key", () => {
@@ -91,8 +91,8 @@ describe("tests-g10 tashrihi2 — تشریحی واژگان درس دوم (r326)
     expect(l10.questions[23].question.startsWith("--------------- if you take a taxi")).toBe(true);
   });
 
-  it("ids unique across the whole 194-item family", () => {
+  it("ids unique across the whole 234-item family", () => {
     const ids = doc.lessons.flatMap((l: { questions: { id: string }[] }) => l.questions.map((q) => q.id));
-    expect(new Set(ids).size).toBe(194);
+    expect(new Set(ids).size).toBe(234);
   });
 });
