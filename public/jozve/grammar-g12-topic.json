@@ -165,7 +165,27 @@
     "C": []
    },
    "translations": "در جزوه برای این سه خانواده چاپ نشده است (غیبت صادقانه — الگوی r278/r279)",
-   "extractedRound": 282
+   "extractedRound": 282,
+   "printVerification": {
+    "round": "r319",
+    "page": "224",
+    "method": "visual transcription of 300dpi full-page render + 1400dpi zone zoom (print-verbatim)",
+    "items": 80,
+    "agree": 79,
+    "transcripts": {
+     "A": "dccacbbacdbcbbdbccdb",
+     "B": "cdbccbddabbbbbccaaba",
+     "C": "cbddbaabdbbdbdabbbcdadbbbbbcccbcbbbcdabd"
+    },
+    "printErratum": {
+     "family": "C",
+     "n": 10,
+     "print": "b",
+     "json": "c",
+     "cellZoom": "1400dpi — خانهٔ «10 b» قطعی است",
+     "reason": "چاپ b=«should have been painted» با تعجبِ مثبتِ «What a beautiful painting!» نمی‌سازد؛ c=«must have been painted» (پسیو + استنتاجِ قطعیِ گذشته) — حکمِ داوریِ r269/r282 پابرجاست؛ کلیدِ درون‌خطی در ص۱۵۱ وجود ندارد"
+    }
+   }
   },
   "tags": {
    "pages": "44 و 45",
