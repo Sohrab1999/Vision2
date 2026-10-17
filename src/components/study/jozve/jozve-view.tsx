@@ -255,6 +255,9 @@ const fetchKonkurGrammar = (grade: number): Promise<JozveTestBank | null> => {
 const GRADE_GRAMMAR_TOPIC: Record<number, { lessons: { lesson: number; title: string; count: number; group?: string }[] }> = {
   12: {
     lessons: [
+      // r310 — دو بانکِ باقی‌ماندهٔ خانوادهٔ «ضمایر موصولی» — ص۸۶/۸۷ پیش از ص۸۸ (ترتیبِ کتابت)؛ کلید توضیحیِ «گزینه(X)» ص۲۰۳-۲۰۶
+      { lesson: 325, title: "ضمایر موصولی — دستگرمی (ص۸۶)", count: 20 },
+      { lesson: 326, title: "حذف ضمایر موصولی — زبان تخصیص (ص۸۷)", count: 11 },
       { lesson: 1, title: "ضمایر موصولی — متوسط و کنکوری (ص۸۸)", count: 27 },
       { lesson: 2, title: "حذف ضمایر — نظام قدیم (ص۸۹-۹۱)", count: 61 },
       // r281 — بانک مرور زمان‌ها: بخش اول کلید توضیحی، بخش دوم کلید گرید چاپی

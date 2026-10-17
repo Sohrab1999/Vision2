@@ -43,7 +43,7 @@ const fresh = [...l10.questions, ...l11.questions];
 
 describe("jozve topic grammar bank g12 — passive/active duo (r284 extraction receipt)", () => {
   it("bank shape: eleven lessons, duo added as exactly 20/40 with continuous printed numbering", () => {
-    expect(bank.lessons.map((l) => l.lesson)).toEqual(Array.from({ length: 324 }, (_, i) => i + 1)); // r285-r286 بانک‌های ۱۲-۱۴، r287 هفت بانک تشریحی و r288 بخش‌های ۸/۹ را افزودند؛ r289-r291 آزمون‌های جامع درس اول تا سوم (۲۴-۵۸) و r292-r307 آزمون‌های نهایی دی ۹۷، خرداد ۹۸، شهریور ۹۸، دی ۹۸، خرداد ۹۹ (دو واریانتِ رشته‌ای)، شهریور ۹۹ (چاپِ جزوه + چاپِ رسمیِ سراسری + ویژهٔ ناشنوایان)، دی ۹۹، خرداد ۱۴۰۰ (دو واریانتِ رشته‌ای)، شهریور ۱۴۰۰، دی ۱۴۰۰، خرداد ۱۴۰۱ و شهریور ۱۴۰۱ (۵۹-۳۲۴) را افزودند
+    expect(bank.lessons.map((l) => l.lesson)).toEqual(Array.from({ length: 326 }, (_, i) => i + 1)); // r285-r286 بانک‌های ۱۲-۱۴، r287 هفت بانک تشریحی و r288 بخش‌های ۸/۹ را افزودند؛ r289-r291 آزمون‌های جامع درس اول تا سوم (۲۴-۵۸) و r292-r307 آزمون‌های نهایی دی ۹۷، خرداد ۹۸، شهریور ۹۸، دی ۹۸، خرداد ۹۹ (دو واریانتِ رشته‌ای)، شهریور ۹۹ (چاپِ جزوه + چاپِ رسمیِ سراسری + ویژهٔ ناشنوایان)، دی ۹۹، خرداد ۱۴۰۰ (دو واریانتِ رشته‌ای)، شهریور ۱۴۰۰، دی ۱۴۰۰، خرداد ۱۴۰۱ و شهریور ۱۴۰۱ (۵۹-۳۲۴) را افزودند
     // درس‌های r280-r283 دست‌نخورده
     const counts = [27, 61, 30, 50, 20, 20, 40, 20, 15];
     counts.forEach((c, i) => expect(bank.lessons[i].questions).toHaveLength(c));
@@ -127,10 +127,10 @@ describe("jozve topic grammar bank g12 — passive/active duo (r284 extraction r
     expect(tr).toContain("OCR");
   });
 
-  it("family-wide uniqueness: 1556 ids after r289, no stem collision with lesson 6 (p150 passive bank)", () => {
+  it("family-wide uniqueness: 1587 ids after r289, no stem collision with lesson 6 (p150 passive bank)", () => {
     const all = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
     expect(new Set(all).size).toBe(all.length);
-    expect(all).toHaveLength(1556); // r285-r288 و r289 پنجاه‌ونه تست آزمون جامع را افزودند
+    expect(all).toHaveLength(1587); // r285-r288 و r289 پنجاه‌ونه تست آزمون جامع را افزودند
     const l6Stems = new Set(bank.lessons.find((l) => l.lesson === 6)!.questions.map((q) => q.question));
     for (const q of fresh) expect(l6Stems.has(q.question), `${q.id} stem collision`).toBe(false);
   });

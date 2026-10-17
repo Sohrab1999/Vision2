@@ -55,9 +55,9 @@ const ROLE_OPTS = ["Topic sentence", "Supporting sentence", "Concluding sentence
 const K_ROLE: Record<number, number> = { 1: 2, 2: 1, 3: 0, 4: 1, 5: 1, 6: 1 }; // a=Concluding / c=Topic / b,d,e,f=Supporting
 
 describe("jozve topic grammar bank g12 — final exam شهریور ۹۹ (r298 extraction receipt)", () => {
-  it("bank shape: three hundred twenty four lessons, shahrivar 99 adds 16 banks / 58 items (family 1556)", () => {
+  it("bank shape: three hundred twenty six lessons, shahrivar 99 adds 16 banks / 58 items (family 1587)", () => {
     expect(bank.lessons.map((l) => l.lesson)).toEqual(
-      Array.from({ length: 324 }, (_, i) => i + 1)
+      Array.from({ length: 326 }, (_, i) => i + 1)
     );
     const counts: Record<number, number> = {
       138: 4, 139: 4, 140: 4, 141: 4, 142: 4, 143: 3, 144: 3, 145: 4,
@@ -82,9 +82,9 @@ describe("jozve topic grammar bank g12 — final exam شهریور ۹۹ (r298 ex
     expect(L(153).questions.every((q) => q.id === `g12-fin99sh-role${q.n}`)).toBe(true);
     // آزمون نهایی شهریور ۹۹: ۵۸ آیتم در ۱۶ بانک — خانواده: ۹۸۴ + ۵۸ = ۱۰۴۲
     const total = bank.lessons.reduce((s, l) => s + l.count, 0);
-    expect(total).toBe(1556);
+    expect(total).toBe(1587);
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(new Set(ids).size).toBe(1556);
+    expect(new Set(ids).size).toBe(1587);
   });
 
   it("provenance: source.final99sh registered — first inline Answer key round, complete 52/52 coverage, honest Gharib absence", () => {

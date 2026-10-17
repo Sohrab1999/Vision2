@@ -39,9 +39,9 @@ const K_R2M: Record<number, string> = { 1: "d", 2: "a" };
 const K_R3TF: Record<number, string> = { 1: "a", 2: "b" }; // True / False
 
 describe("jozve topic grammar bank g12 — official nationwide khordad 1401 exam (r306 extraction receipt)", () => {
-  it("bank shape: three hundred twenty four lessons, khordad 1401 adds 20 banks / 53 items (family 1556) — first 20-row exam of the family (bank record)", () => {
+  it("bank shape: three hundred twenty six lessons, khordad 1401 adds 20 banks / 53 items (family 1587) — first 20-row exam of the family (bank record)", () => {
     expect(bank.lessons.map((l) => l.lesson)).toEqual(
-      Array.from({ length: 324 }, (_, i) => i + 1)
+      Array.from({ length: 326 }, (_, i) => i + 1)
     );
     const counts: Record<number, number> = {
       285: 3, 286: 4, 287: 3, 288: 6, 289: 4, 290: 3, 291: 3, 292: 1,
@@ -54,7 +54,7 @@ describe("jozve topic grammar bank g12 — official nationwide khordad 1401 exam
       expect(L(n).title).toContain("خرداد ۱۴۰۱");
     }
     expect(bank.lessons.filter((l) => l.lesson >= 285 && l.lesson <= 304).reduce((a, l) => a + l.count, 0)).toBe(53);
-    expect(bank.lessons.reduce((a, l) => a + l.count, 0)).toBe(1556);
+    expect(bank.lessons.reduce((a, l) => a + l.count, 0)).toBe(1587);
   });
 
   it("provenance: source.final1401khh — pages 336-340 / key pages 341-342 / seventh official source / fifteenth session / MP3 audio header variant", () => {
