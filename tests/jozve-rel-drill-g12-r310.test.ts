@@ -6,10 +6,11 @@ import { describe, expect, it } from "vitest";
 // r310 — گاردِ دو بانکِ باقی‌ماندهٔ خانوادهٔ «ضمایر موصولی» جزوهٔ دوازدهم
 // درس ۳۲۵ = ۲۰ تست دستگرمی (ص۸۶، کلید توضیحی ص۲۰۳-۲۰۴)
 // درس ۳۲۶ = ۱۱ تست حذف/زبان تخصیص (ص۸۷، کلید توضیحی ص۲۰۵-۲۰۶)
-// کلید = «N - ( گزینهX)» چاپی خود جزوه — سه داوری:
+// کلید = «N - ( گزینهX)» چاپی خود جزوه — سه داوریِ r310:
 //   Pass A (لایهٔ pdfplumberِ آینه‌ایِ RTL) / Pass B (لایهٔ g12.txt) / رونویسیِ چشمی (SECOND).
+// r313 — شست‌وشوی ترجمه‌ها: هر ۳۱ آیتم ترجمهٔ چاپیِ «ترجمه:» را دارد؛ قفلِ حرف‌به‌حرفِ رونویسیِ
+//   چشمیِ خطوطِ قرمز (TRANSCRIPT) + داوریِ چهارمِ کلید از لایهٔ fitz (پارسرِ scripts/jozve-translations-wash-r313.py).
 // l1/l2 (ص۸۸-۹۱) دست‌نخورده — خانوادهٔ ضمایر موصولی اکنون ص۸۶ تا ص۹۱ را کامل پوشش می‌دهد.
-// صداقت: ترجمه‌های چاپی به دلیل آشفتگیِ لایهٔ RTL موکول شدند (source.relDrill).
 // =====================================================================
 
 interface GQuestion {
@@ -37,6 +38,14 @@ interface GBank {
       round: string;
       arbitration: { passA: string; passB: string; third: string };
       deferredTranslations?: string;
+      translationsWashed?: {
+        round: string;
+        pages: string;
+        items: number;
+        method: string;
+        fourthArbitration: string;
+        printQuirks: string[];
+      };
       duplicateHunt?: string;
     };
   };
@@ -62,6 +71,46 @@ const SECOND: Record<number, Record<number, string>> = {
   },
   326: {
     1: "b", 2: "b", 3: "a", 4: "b", 5: "c", 6: "c", 7: "b", 8: "b", 9: "c", 10: "a", 11: "b",
+  },
+};
+
+// r313 — رونویسیِ چشمیِ دستیِ ۳۱ خطِ قرمزِ «ترجمه:» (رندر pdftoppm ص۲۰۳-۲۰۶؛ ۱۵۰/۳۰۰/۶۰۰dpi)
+// قفلِ حرف‌به‌حرف — هر انحرافِ JSON از چاپ، این گارد را می‌شکند (الگوی SECONDِ خودِ r310).
+const TRANSCRIPT: Record<number, Record<number, string>> = {
+  325: {
+    1: "دانش آموزان با معلمی که جان قبلاً ملاقات کرده بود، صحبت کردند.",
+    2: "من نامه ای را دریافت کردم که توسط یکی از دانش آموزان نوشته شده بود.",
+    3: "او به من سنگهایی را داد که او از استرالیا آورده بود.",
+    4: "مکانیکی که خیلی ماهر است، یک تصادف داشت.",
+    5: "دانش آموزی که والدینش هر دو معلم هستند، برنده جایزه اول در رقابت شد.",
+    6: "رمانی که پدرم هفته گذشته برایم خرید، واقعا سرگرم کننده بود.",
+    7: "هنرپیشه ای که قبلاً با اصغر فرهادی کار کرده بود، در مورد نقش با او تماس گرفت.",
+    8: "این معلمی بود که به من گفت پسرم در کلاس رفتار بدی داشته است.",
+    9: "خواهرم که من خیلی دوستش دارم,برایم در سر کار,گلهایی فرستاد.",
+    10: "او دختری است که هفته گذشته ماشینش را با درخت برخورد کرد.",
+    11: "آنها جعبه هایی هستند که ماه گذشته برای ما فرستاده شدند.",
+    12: "او DVDهایی را که پدرش خریده بود، تماشا کرد.",
+    13: "ما تعدادی کتاب خریدیم که معلم پیشنهاد داده بود.",
+    14: "من دوستانی دارم که عاشق من هستند. آنها برای من یک مهمانی تولد دیدنی گرفتند.",
+    15: "مرد جوانی که زندگی برادرمان را در آن تصادف ماشین نجات داد خیلی شجاع است.",
+    16: "این یک راه دیگر برای گفتن آن (موضوع) است. من درباره ماشینی که آنجا پارک شده بود، حرف میزنم.",
+    17: "خوبی، من باید بگویم که پول برای او اهمیتی ندارد.",
+    18: "من مردی را که در همسایگی ما زندگی میکند را دیدم.",
+    19: "جالب. ما داریم در مورد ماشینی که سقف قرمز رنگی دارد حرف میزنیم.",
+    20: "این بهترین ماشینی است که تا به حال داشته ام. چرا این (سؤال) را پرسیدی؟",
+  },
+  326: {
+    1: "دکتری که دیروز آن پسربچه را معاینه کرد (معاینه میکرد) خیلی پیر بود.",
+    2: "عکسهای منتشر شده در روزنامه، فوق العاده بودند.",
+    3: "تو خوش شانسی هستی که در یک کلاسی هستی که توسط چنین معلم محترمی تدریس میشود",
+    4: "آیا این مقاله عالی در باره اقتصاد بومی که شنبه گذشته در روزنامه چاپ شده بود را خواندی؟",
+    5: "موضوعات بحث شده در آن کتاب خیلی برای دانش آموزان آقای کاظمی جالب هستند.",
+    6: "در سراسر دنیا، افرادی وجود دارند که خشکی، دریا و هوا را آلوده میکنند.",
+    7: "دیواری که دور خانه را احاطه کرده، از چوب و آهن ساخته شده است.",
+    8: "تعداد زیادی از افرادی که به مهمانی دعوت شده بودند، سر وقت نیامدند.",
+    9: "اسم مردی که توسط پلیس دستگیر شد، چی بود؟",
+    10: "آنها گفتند که آزمایشات انجام گرفته توسط دانشآموزان دانشگاه شیراز خیلی موفقیت آمیز بودند.",
+    11: "پدرم ماشین آبی بزرگی دارد که در بیرون خانه پارک شده است.",
   },
 };
 
@@ -136,14 +185,40 @@ describe("jozve g12 relative-clause drill/reduction banks (r310 extraction recei
     }
   });
 
-  it("honest absence: no translation field on the 31 new items — printed translations deferred (RTL layer scrambled)", () => {
+  it("r313 wash: all 31 items carry the printed Persian translation, verbatim to the red-line visual transcript", () => {
     for (const l of newLessons) {
-      for (const q of l.questions) expect(q.translation, q.id).toBeUndefined();
+      for (const q of l.questions) {
+        expect(q.translation, q.id).toBe(TRANSCRIPT[l.lesson][q.n]);
+        expect(FA.test(q.translation!), `${q.id} Persian`).toBe(true);
+        expect(q.translation!.length, q.id).toBeGreaterThan(20);
+      }
     }
+    // تنها نویسهٔ لاتینِ چاپیِ درونِ ترجمه‌ها = DVDهایی (l325-12)
+    const latin = newLessons
+      .flatMap((l) => l.questions)
+      .filter((q) => /[A-Za-z]{3,}/.test(q.translation!));
+    expect(latin.map((q) => q.id)).toEqual(["g12-reldrill-12"]);
+    // لنگرهای معناییِ رونویسی (فارسیِ خرابِ لایهٔ متنی جای آنها را نمی‌گیرد)
+    const q = (l: GLesson, n: number) => l.questions.find((x) => x.n === n)!;
+    expect(q(l325, 1).translation).toContain("قبلاً ملاقات");
+    expect(q(l325, 14).translation).toContain("دیدنی"); // عینِ چاپ — ساقه last night دارد (printErrata r309)
+    expect(q(l326, 11).translation).toContain("آبی بزرگی");
+    expect(q(l326, 3).translation!.endsWith("میشود")).toBe(true); // بدونِ نقطهٔ پایانی — عینِ چاپ
+  });
+
+  it("r313 receipt: deferredTranslations removed, translationsWashed registered with pages+method+printQuirks", () => {
     const receipt = bank.source.relDrill!;
     expect(receipt.family).toBe("relative-clauses-drill-and-reduction-g12");
     expect(receipt.round).toBe("r310");
-    expect(receipt.deferredTranslations).toContain("موکول");
+    expect(receipt.deferredTranslations, "wash completed in r313").toBeUndefined();
+    const w = receipt.translationsWashed!;
+    expect(w.round).toBe("r313");
+    expect(w.pages).toBe("203-206");
+    expect(w.items).toBe(31);
+    expect(w.method).toContain("pdftoppm");
+    expect(w.fourthArbitration).toContain("fitz");
+    expect(w.printQuirks.some((q) => q.includes("l325-14"))).toBe(true);
+    // گاردهای ماندگارِ r310
     expect(receipt.arbitration.third).toContain("pdftoppm");
     expect(receipt.duplicateHunt).toContain("r277");
   });
