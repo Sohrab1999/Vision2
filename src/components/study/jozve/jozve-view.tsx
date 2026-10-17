@@ -141,9 +141,16 @@ interface JozveTestBank {
   answerArbitration?: { q: number; letter: string; why: string }[];
   lessons: { lesson: number; title: string; level: string; count: number; questions: JozveTestQuestion[] }[];
 }
-const GRADE_TESTS: Record<number, { lessons: { lesson: number; title: string; count: number }[] }> = {
+const GRADE_TESTS: Record<number, { lessons: { lesson: number; title: string; count: number; group?: string }[] }> = {
   11: {
     lessons: [
+      // r311 — «آزمون تشریحی واژگان درس اول» (ص۱۶-۱۸، کلید واژه‌ای ص۱۷۶) — ۴ بانک/۵۷ آیتم؛
+      // سه بانک تایپی (جای خالی بانک‌واژه، جدول حرف اول، تعریف‌ها) + MCQ با نگاشتِ واژه→حرف؛
+      // صدرِ کارت به‌ترتیبِ کتابت (ص۱۶ < ص۱۹) با برچسبِ گروه — الگوی r310
+      { lesson: 25, title: "تشریحی — جای خالی از بانک واژه (ص۱۶)", count: 16, group: "آزمون تشریحی واژگان درس اول" },
+      { lesson: 26, title: "تشریحی — جدول کلمه با حرف اول (ص۱۶)", count: 8, group: "آزمون تشریحی واژگان درس اول" },
+      { lesson: 27, title: "تشریحی — تعریف‌ها، بنویسید (ص۱۷)", count: 8, group: "آزمون تشریحی واژگان درس اول" },
+      { lesson: 28, title: "تشریحی — تست چهارگزینه‌ای (ص۱۷-۱۸)", count: 25, group: "آزمون تشریحی واژگان درس اول" },
       { lesson: 1, title: "درس اول", count: 40 },
       { lesson: 2, title: "درس دوم", count: 40 },
       { lesson: 3, title: "درس سوم", count: 40 },
@@ -783,6 +790,9 @@ export default function JozveView() {
           options: q.options,
           answer: q.answer,
           ...(q.translation ? { translation: q.translation } : {}),
+          // r311 — سؤال تایپیِ آزمون تشریحی: kind/accepted/placeholder به موتور برسد (الگوی r285/r289)
+          ...(q.kind === "typed" ? { kind: "typed" as const, accepted: q.accepted ?? [] } : {}),
+          ...(q.placeholder ? { placeholder: q.placeholder } : {}),
         }));
         setTestSession({
           title: `آزمون واژگان جزوه — ${les.title} پایهٔ ${GRADE_LABEL[g]}`,
@@ -1082,23 +1092,35 @@ export default function JozveView() {
                 <div className="min-w-0">
                   <h3 className="text-[13.5px] font-black text-violet-900">آزمون واژگان این جزوه</h3>
                   <p className="text-[11px] leading-5 text-violet-700/80">
-                    تست‌های استخراج‌شده از دلِ PDF جزوه، با کلیدِ خودِ جزوه — بانک‌های ۴۰تستی ترجمهٔ خود جزوه را هم دارند؛ پاسخ اشتباه به بانک خطای سه درس نمی‌رود
+                    تست‌های استخراج‌شده از دلِ PDF جزوه، با کلیدِ خودِ جزوه — بانک‌های ۴۰تستی ترجمهٔ خود جزوه را هم دارند؛ از r311 بخشِ تشریحیِ تایپیِ پاسخِ ورود آزاد هم دارد
                   </p>
                 </div>
               </div>
               <div className="flex flex-wrap gap-2">
-                {GRADE_TESTS[doc.grade].lessons.map((les) => {
+                {GRADE_TESTS[doc.grade].lessons.map((les, i, arr) => {
                   const busy = testLoadingLesson === `g${doc.grade}-l${les.lesson}`;
+                  // r311 — زیرعنوانِ گروه در کارت بنفش هم (الگوی کارت کهربایی r287)
+                  const showGroup = les.group && arr[i - 1]?.group !== les.group;
                   return (
-                    <button
-                      key={les.lesson}
-                      onClick={() => startJozveTest(doc.grade, les)}
-                      disabled={busy}
-                      className="inline-flex items-center gap-1.5 rounded-xl border border-violet-300 bg-white px-3 py-2 text-[12px] font-extrabold text-violet-800 shadow-sm transition-[background-color,transform] hover:bg-violet-100 active:scale-95 disabled:opacity-60"
-                    >
-                      {busy ? <Loader2 size={14} className="animate-spin" /> : <ListChecks size={14} />}
-                      {les.title} — {faNum(les.count)} تست
-                    </button>
+                    <div key={les.lesson} className="contents">
+                      {showGroup && (
+                        <div className="mt-1 flex w-full items-center gap-2">
+                          <span className="h-px flex-1 bg-violet-200" />
+                          <span className="text-[10.5px] font-extrabold tracking-wide text-violet-700/90">
+                            {les.group}
+                          </span>
+                          <span className="h-px flex-1 bg-violet-200" />
+                        </div>
+                      )}
+                      <button
+                        onClick={() => startJozveTest(doc.grade, les)}
+                        disabled={busy}
+                        className="inline-flex items-center gap-1.5 rounded-xl border border-violet-300 bg-white px-3 py-2 text-[12px] font-extrabold text-violet-800 shadow-sm transition-[background-color,transform] hover:bg-violet-100 active:scale-95 disabled:opacity-60"
+                      >
+                        {busy ? <Loader2 size={14} className="animate-spin" /> : <ListChecks size={14} />}
+                        {les.title} — {faNum(les.count)} تست
+                      </button>
+                    </div>
                   );
                 })}
               </div>

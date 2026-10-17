@@ -51,6 +51,8 @@ describe("jozve test bank g11 (r275 extraction receipt)", () => {
     ...Array.from({ length: 18 }, (_, i) => i + 6),
       // r309 — واژگان کنکوری درس دوم (ص۵۹) با شناسهٔ ۲۴ الحاق شد
     24,
+      // r311 — «آزمون تشریحی واژگان درس اول» (ص۱۶-۱۸، کلید واژه‌ای ص۱۷۶) — l25..l28 الحاق شد
+    25, 26, 27, 28,
     ]);
     for (const l of [l1, l2, l3]) {
       expect(l.count, `lesson ${l.lesson}`).toBe(40);

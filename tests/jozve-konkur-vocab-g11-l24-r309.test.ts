@@ -77,6 +77,8 @@ describe("jozve konkur-vocab lesson-2 g11 (r309 extraction receipt)", () => {
       // r309 — واژگان کنکوری درس دوم (ص۵۹) با شناسهٔ ۲۴ (ترتیبِ JSON عددی است؛
       // ترتیبِ نمایشیِ UI با مانیفست ص۵۹ میانِ ص۲۱ و ص۹۳ می‌آید)
       24,
+      // r311 — «آزمون تشریحی واژگان درس اول» (ص۱۶-۱۸، کلید واژه‌ای ص۱۷۶) — l25..l28 الحاق شد
+      25, 26, 27, 28,
     ]);
     expect(l24.count).toBe(20);
     expect(l24.questions).toHaveLength(20);
@@ -90,7 +92,7 @@ describe("jozve konkur-vocab lesson-2 g11 (r309 extraction receipt)", () => {
     );
     const all = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
     expect(new Set(all).size).toBe(all.length);
-    expect(all).toHaveLength(40 + 40 + 40 + 22 + 20 + 20 + 361); // +۲۰: واژگان کنکوری درس دوم (r309)
+    expect(all).toHaveLength(40 + 40 + 40 + 22 + 20 + 20 + 361 + 57); // +۲۰: واژگان کنکوری درس دوم (r309)
   });
 
   it("every p59 question: 4 unique options, valid answer, healthy blank, English purity, no translation", () => {
