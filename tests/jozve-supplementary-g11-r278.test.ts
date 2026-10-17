@@ -49,7 +49,11 @@ const l5 = bank.lessons.find((l) => l.lesson === 5)!;
 describe("jozve supplementary g11 (r278 extraction receipt)", () => {
   it("bank shape: grade 11 now has five lessons — 40/40/40/22/20", () => {
     expect(bank.grade).toBe(11);
-    expect(bank.lessons.map((l) => l.lesson)).toEqual([1, 2, 3, 4, 5]);
+    expect(bank.lessons.map((l) => l.lesson)).toEqual([
+      1, 2, 3, 4, 5,
+      // r308 — ۱۸ بانکِ «آزمون جامع ۳۶۰ واژگان» (درس ۶..۲۳) الحاق شد؛ بانکِ ۱۲ (درس ۱۷) ۲۱تستی است
+    ...Array.from({ length: 18 }, (_, i) => i + 6),
+    ]);
     expect(l4.count).toBe(22);
     expect(l4.questions).toHaveLength(22);
     expect(l5.count).toBe(20);
@@ -69,7 +73,7 @@ describe("jozve supplementary g11 (r278 extraction receipt)", () => {
     }
     const all = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
     expect(new Set(all).size).toBe(all.length);
-    expect(all).toHaveLength(40 + 40 + 40 + 22 + 20);
+    expect(all).toHaveLength(40 + 40 + 40 + 22 + 20 + 361); // +۳۶۱: جامع ۳۶۰ (r308) — با دو «۲۲۸» چاپی
   });
 
   it("every supplementary question: 4 unique options, valid answer, healthy blank, English purity", () => {
