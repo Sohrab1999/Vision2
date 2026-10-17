@@ -54,11 +54,12 @@ describe("jozve test bank g12-l1 (r273 extraction receipt)", () => {
     }
   });
 
-  it("translations: 99/100 with the jozve's own honest absence at Q75", () => {
+  it("translations: 100/100 — r318 print-verbatim wash recovered Q75 (printed 74 was duplicated)", () => {
+    // r318: ترجمهٔ Q75 از بلوکِ دومِ «۷۴» بازیابی شد و رسیدِ «غیبتِ صادقانه» r273 تصحیح گردید.
     const withTr = bank.lessons[0].questions.filter((q) => q.translation && q.translation.trim().length > 4);
-    expect(withTr).toHaveLength(99);
+    expect(withTr).toHaveLength(100);
     const q75 = bank.lessons[0].questions.find((q) => q.n === 75);
-    expect(q75?.translation).toBeUndefined();
+    expect(q75?.translation).toContain("تحت فشار بودند");
   });
 
   it("arbitration receipt: the two jozve-key errata are locked (Q74→b, Q79→a) with reasons", () => {
