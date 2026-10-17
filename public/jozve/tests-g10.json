@@ -1085,6 +1085,574 @@
      "answer": 1
     }
    ]
+  },
+  {
+   "lesson": 5,
+   "title": "آموزشی — تست واژگان درس اول (ص۵۲-۵۳)",
+   "level": "آموزشی — چهارگزینه‌ای",
+   "count": 40,
+   "questions": [
+    {
+     "id": "g10-l5-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "Tom called to say he’s going to be --------------- minutes late.",
+     "options": [
+      "much",
+      "a few",
+      "anymore",
+      "else"
+     ],
+     "answer": 1,
+     "translation": "تام تماس گرفت که بگوید او چند دقیقه دیگر آنجا خواهد بود."
+    },
+    {
+     "id": "g10-l5-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "It was a bad accident. They’re lucky to be --------------- .",
+     "options": [
+      "dead",
+      "alive",
+      "living",
+      "injured"
+     ],
+     "answer": 1,
+     "translation": "آن یک تصادف بد بود. آنها خوش شانس هستند که زنده هستند."
+    },
+    {
+     "id": "g10-l5-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "It's --------------- how often you see drivers using mobile phones.",
+     "options": [
+      "boring",
+      "common",
+      "amazing",
+      "important"
+     ],
+     "answer": 2,
+     "translation": "شگفت انگیز است که چند وقت یکبار شما رانندگیای می بینید که از موبایل استفاده می کنند."
+    },
+    {
+     "id": "g10-l5-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "The government should develop an education system which is more --------------- to the needs of the students.",
+     "options": [
+      "common",
+      "especial",
+      "important",
+      "appropriate"
+     ],
+     "answer": 3,
+     "translation": "دولت باید یک سیستم آموزشی که برای نیازهای دانش آموزان مناسب تر باشد توسعه دهد."
+    },
+    {
+     "id": "g10-l5-5",
+     "n": 5,
+     "category": "vocab",
+     "question": "The --------------- cost of making a movie has increased by 25 percent.",
+     "options": [
+      "above",
+      "beginning",
+      "hope",
+      "average"
+     ],
+     "answer": 3,
+     "translation": "متوسط هزینه فیلم سازی تا ۲۵٪ افزایش یافته است."
+    },
+    {
+     "id": "g10-l5-6",
+     "n": 6,
+     "category": "vocab",
+     "question": "The TV play was --------------- real-life events of poor people in our society.",
+     "options": [
+      "instead of",
+      "based on",
+      "interested in",
+      "asked for"
+     ],
+     "answer": 1,
+     "translation": "نمایش تلویزیونی براساس رخدادهای زندگی واقعی فقرا در جامعه مان بود."
+    },
+    {
+     "id": "g10-l5-7",
+     "n": 7,
+     "category": "vocab",
+     "question": "His writing style is now --------------- and out of date and many people didn’t enjoy it.",
+     "options": [
+      "boring",
+      "hopeful",
+      "interesting",
+      "especial"
+     ],
+     "answer": 0,
+     "translation": "سبک نوشتاری او الان کسل کننده و منسوخ است و بسیاری از مردم از آن لذت نمی برند."
+    },
+    {
+     "id": "g10-l5-8",
+     "n": 8,
+     "category": "vocab",
+     "question": "We need to work together to achieve our --------------- goal.",
+     "options": [
+      "common",
+      "completed",
+      "natural",
+      "protected"
+     ],
+     "answer": 0,
+     "translation": "ما برای رسیدن به هدف مشترکمان نیاز است که با همدیگر کار کنیم."
+    },
+    {
+     "id": "g10-l5-9",
+     "n": 9,
+     "category": "vocab",
+     "question": "Her health is very good if you --------------- her age.",
+     "options": [
+      "consider",
+      "identify",
+      "order",
+      "save"
+     ],
+     "answer": 0,
+     "translation": "با در نظر گرفتن سنش، سلامتی او خیلی خوب است."
+    },
+    {
+     "id": "g10-l5-10",
+     "n": 10,
+     "category": "vocab",
+     "question": "If we continue to --------------- the countryside, many more animals will die out in the near future.",
+     "options": [
+      "protect",
+      "destroy",
+      "build",
+      "take care of"
+     ],
+     "answer": 1,
+     "translation": "اگر ما به نابودی مناطق روستانی ادامه بدهیم حیوانات خیلی زیادی در آینده نزدیک منقرض خواهند شد."
+    },
+    {
+     "id": "g10-l5-11",
+     "n": 11,
+     "category": "vocab",
+     "question": "The --------------- of new jobs for unemployed people is hard for most countries nowadays.",
+     "options": [
+      "destroying",
+      "creation",
+      "dividing",
+      "decreasing"
+     ],
+     "answer": 1,
+     "translation": "امروزه ایجاد شغلهای جدید برای افراد بیکار، برای بیشتر کشورها سخت است."
+    },
+    {
+     "id": "g10-l5-12",
+     "n": 12,
+     "category": "vocab",
+     "question": "Write your full name in the --------------- space at the bottom of the from.",
+     "options": [
+      "column",
+      "blank",
+      "next",
+      "right"
+     ],
+     "answer": 1,
+     "translation": "اسم کاملت را در فضای خالی در پایین صفحه بنویس."
+    },
+    {
+     "id": "g10-l5-13",
+     "n": 13,
+     "category": "vocab",
+     "question": "The wild population of koalas is in danger of --------------- .",
+     "options": [
+      "identifying",
+      "cutting down",
+      "destroying",
+      "dying out"
+     ],
+     "answer": 2,
+     "translation": "جمعیت کوالای وحشی در معرض انقراض است."
+    },
+    {
+     "id": "g10-l5-14",
+     "n": 14,
+     "category": "vocab",
+     "question": "Here, the river --------------- three channels and we must take channel one for fishing.",
+     "options": [
+      "divides in to",
+      "dies out",
+      "odds out",
+      "takes care of"
+     ],
+     "answer": 0,
+     "translation": "اینجا رودخانه به سه آبراه تقسیم می شود و ما باید از آبراه یک برای ماهیگیری برویم."
+    },
+    {
+     "id": "g10-l5-15",
+     "n": 15,
+     "category": "vocab",
+     "question": "After a week at sea, it was good to feel the flat --------------- under our feet again.",
+     "options": [
+      "earth",
+      "desert",
+      "forest",
+      "lake"
+     ],
+     "answer": 0,
+     "translation": "بعد از یک هفته در دریا، احساس اینکه زمین مسطح دوباره زیر پایمان هست خوب بود."
+    },
+    {
+     "id": "g10-l5-16",
+     "n": 16,
+     "category": "vocab",
+     "question": "The lizards are classed as an --------------- species.",
+     "options": [
+      "common",
+      "endangered",
+      "injured",
+      "natural"
+     ],
+     "answer": 1,
+     "translation": "مارمولکها به عنوان گونه های در معرض خطر (انقراض) طبقه بندی شده اند."
+    },
+    {
+     "id": "g10-l5-17",
+     "n": 17,
+     "category": "vocab",
+     "question": "I never liked long walks, --------------- in winter days.",
+     "options": [
+      "hopefully",
+      "especially",
+      "amazingly",
+      "wonderfully"
+     ],
+     "answer": 1,
+     "translation": "من هرگز پیاده روی های طولانی را بویژه در ایام زمستان دوست ندارم."
+    },
+    {
+     "id": "g10-l5-18",
+     "n": 18,
+     "category": "vocab",
+     "question": "A TV set has an average --------------- of 60 years.",
+     "options": [
+      "lifespan",
+      "living",
+      "life",
+      "graph"
+     ],
+     "answer": 0,
+     "translation": "یک دستگاه تلویزیون متوسط طول عمر شصت ساله دارد."
+    },
+    {
+     "id": "g10-l5-19",
+     "n": 19,
+     "category": "vocab",
+     "question": "It’s so necessary for us to increase our --------------- about birth control.",
+     "options": [
+      "lifespan",
+      "expression",
+      "knowledge",
+      "chart"
+     ],
+     "answer": 2,
+     "translation": "برای ما خیلی ضروری است که دانش مان را درباره کنترل تولد افزایش دهیم."
+    },
+    {
+     "id": "g10-l5-20",
+     "n": 20,
+     "category": "vocab",
+     "question": "Helen didn’t study, she decided to become a pilot art ---------------.",
+     "options": [
+      "finally",
+      "at first",
+      "instead",
+      "for example"
+     ],
+     "answer": 2,
+     "translation": "هلن نخواست هنر بخواند در عوض او تصمیم گرفت خلبان شود."
+    },
+    {
+     "id": "g10-l5-21",
+     "n": 21,
+     "category": "vocab",
+     "question": "The last week terrible car accident left him seriously ---------------.",
+     "options": [
+      "endangered",
+      "injured",
+      "died out",
+      "saved"
+     ],
+     "answer": 1,
+     "translation": "تصادف ماشین وحشتناک هفته گذشته، او را به طور جدی مجروح کرد."
+    },
+    {
+     "id": "g10-l5-22",
+     "n": 22,
+     "category": "vocab",
+     "question": "Our teacher is really worried that your absences in the classes are ---------------.",
+     "options": [
+      "decreasing",
+      "increasing",
+      "completing",
+      "protecting"
+     ],
+     "answer": 1,
+     "translation": "معلم مان خیلی نگران است چونکه غیبت هایت در کلاس ها در حال افزایش است."
+    },
+    {
+     "id": "g10-l5-23",
+     "n": 23,
+     "category": "vocab",
+     "question": "The --------------- body is a very complicated machine and is one of wonders of creation.",
+     "options": [
+      "tiger",
+      "elephant",
+      "animal",
+      "human"
+     ],
+     "answer": 3,
+     "translation": "بدن انسان یک دستگاه خیلی پیچیده است و یک از عجایب خلقت است."
+    },
+    {
+     "id": "g10-l5-24",
+     "n": 24,
+     "category": "vocab",
+     "question": "The English exam was hard, but he’s still --------------- he’ll get a good score.",
+     "options": [
+      "hunting",
+      "hoping",
+      "building",
+      "taking"
+     ],
+     "answer": 1,
+     "translation": "امتحان انگلیسی سخت بود، اما او هنوز امیدوار است نمره خوبی بگیرد."
+    },
+    {
+     "id": "g10-l5-25",
+     "n": 25,
+     "category": "vocab",
+     "question": "We had better --------------- what they have to say about that important project .",
+     "options": [
+      "complete",
+      "lose",
+      "hear",
+      "order"
+     ],
+     "answer": 2,
+     "translation": "ما بهتر بود می شنیدیم آنچه که آنها مجبور بودند در مورد آن پروژه مهم بگویند."
+    },
+    {
+     "id": "g10-l5-26",
+     "n": 26,
+     "category": "vocab",
+     "question": "We’ve been able to save this land from development and keep it for --------------- generations.",
+     "options": [
+      "past",
+      "future",
+      "present",
+      "injury"
+     ],
+     "answer": 1,
+     "translation": "ما قادر بوده ایم این سرزمین را از توسعه نجات بدهیم (جلوی توسعه انرا بگیریم) و آنرا برای نسل های آینده نگه داریم."
+    },
+    {
+     "id": "g10-l5-27",
+     "n": 27,
+     "category": "vocab",
+     "question": "Many countries, --------------- Mexico and Japan, have a lot of earthquakes every year.",
+     "options": [
+      "for example",
+      "instead",
+      "yet",
+      "finally"
+     ],
+     "answer": 0,
+     "translation": "بسیاری از کشورها، به عنوان مثال مکزیک و ژاپن زلزله های زیادی دارند."
+    },
+    {
+     "id": "g10-l5-28",
+     "n": 28,
+     "category": "vocab",
+     "question": "It is a large area of land covered with flowers, trees, bushes, etc. and its trees grow close together is called ---------------.",
+     "options": [
+      "plain",
+      "forest",
+      "gulf",
+      "ocean"
+     ],
+     "answer": 1,
+     "translation": "منطقه بزرگی از خشکی که به طور پر پشتی با درختان و بوته ها و غیره پوشیده شده است و درختانش در نزدیک هم رشد می کنند جنگل است."
+    },
+    {
+     "id": "g10-l5-29",
+     "n": 29,
+     "category": "vocab",
+     "question": "Cambridge is always full of --------------- in the summer.",
+     "options": [
+      "patterns",
+      "tourists",
+      "phrases",
+      "expression"
+     ],
+     "answer": 1,
+     "translation": "کمبریج همیشه در تابستان پر از توریست است."
+    },
+    {
+     "id": "g10-l5-30",
+     "n": 30,
+     "category": "vocab",
+     "question": "Is there a particular --------------- of book he enjoys?",
+     "options": [
+      "type",
+      "point",
+      "rule",
+      "way"
+     ],
+     "answer": 0,
+     "translation": "نوع خاص از کتاب وجود دارد که او از آن لذت می برد؟"
+    },
+    {
+     "id": "g10-l5-31",
+     "n": 31,
+     "category": "vocab",
+     "question": "I don’t want to see you --------------- because you behaved badly toward me.",
+     "options": [
+      "next",
+      "else",
+      "till",
+      "anymore"
+     ],
+     "answer": 3,
+     "translation": "من نمیخواهم دیگر شما را ببینم چونکه شما بد با من رفتار کردید."
+    },
+    {
+     "id": "g10-l5-32",
+     "n": 32,
+     "category": "vocab",
+     "question": "It is important to separate learning English --------------- from learning it by reading books.",
+     "options": [
+      "irregularly",
+      "orally",
+      "especially",
+      "naturally"
+     ],
+     "answer": 1,
+     "translation": "مهم است که بین یادگیری زبان انگلیسی بصورت شفاهی از یادگیری آن از طریق خواندن کتابها، تمایز قایل شویم."
+    },
+    {
+     "id": "g10-l5-33",
+     "n": 33,
+     "category": "vocab",
+     "question": "The organization depended heavily on --------------- help.",
+     "options": [
+      "natural",
+      "voluntary",
+      "regular",
+      "simple"
+     ],
+     "answer": 1,
+     "translation": "سازمان به شدت متکی به کمک داوطلبانه بود."
+    },
+    {
+     "id": "g10-l5-34",
+     "n": 34,
+     "category": "vocab",
+     "question": "Fax machines were a --------------- invention at that time.",
+     "options": [
+      "wonderful",
+      "simple",
+      "natural",
+      "common"
+     ],
+     "answer": 0,
+     "translation": "ماشین های دورنگار یک اختراع شگفت انگیز در آن زمان بودند."
+    },
+    {
+     "id": "g10-l5-35",
+     "n": 35,
+     "category": "vocab",
+     "question": "They lived in a ten-story --------------- in the town center.",
+     "options": [
+      "tower",
+      "place",
+      "plain",
+      "pattern"
+     ],
+     "answer": 0,
+     "translation": "آنها در یک برج ده طبقه در مرکز شهر زندگی می کردند."
+    },
+    {
+     "id": "g10-l5-36",
+     "n": 36,
+     "category": "vocab",
+     "question": "He is fourteen, old enough to --------------- himself.",
+     "options": [
+      "pay attention to",
+      "take care of",
+      "divide into",
+      "based on"
+     ],
+     "answer": 1,
+     "translation": "او چهارده سالش است، به اندازه کافی بزرگ هست که از خودش مراقبت کند."
+    },
+    {
+     "id": "g10-l5-37",
+     "n": 37,
+     "category": "vocab",
+     "question": "A --------------- is a large wild animal that has yellow and black lines on its body .",
+     "options": [
+      "elephant",
+      "tiger",
+      "fish",
+      "dolphin"
+     ],
+     "answer": 1,
+     "translation": "ببر حیوان وحشی بزرگی است که خطوط سیاه و زرد روی بدنش دارد."
+    },
+    {
+     "id": "g10-l5-38",
+     "n": 38,
+     "category": "vocab",
+     "question": "How can he fit everything in to his busy ---------------?",
+     "options": [
+      "schedule",
+      "strategy",
+      "weight",
+      "pattern"
+     ],
+     "answer": 0,
+     "translation": "چطور او می تواند همه چیز را در برنامه شلوغش بگنجاند."
+    },
+    {
+     "id": "g10-l5-39",
+     "n": 39,
+     "category": "vocab",
+     "question": "Joe is an expert in military ---------------.",
+     "options": [
+      "world",
+      "rule",
+      "strategy",
+      "type"
+     ],
+     "answer": 2,
+     "translation": "جو یک متخصص در استراتژی نظامی است."
+    },
+    {
+     "id": "g10-l5-40",
+     "n": 40,
+     "category": "vocab",
+     "question": "His conditions was critical, but the doctors were able to --------------- him.",
+     "options": [
+      "visit",
+      "protect",
+      "save",
+      "consider"
+     ],
+     "answer": 2,
+     "translation": "شرایطش بحرانی بود، اما دکترها قادر بودند او را نجات دهند."
+    }
+   ]
   }
  ],
  "source": {
@@ -1100,6 +1668,24 @@
   "keyVerification": "print key p242 «پاسخنامه آزمون تشریحی واژگان درس اول» — 57/57 agree with semantic pre-fill, zero divergence",
   "extractedRound": "r323",
   "pattern": "r311 (tests-g11 تشریحی) — ۴ بانک / ۵۷ آیتم؛ typed-engine r285/r289",
-  "translations": "برای این آزمون در جزوه چاپ نشده است (غیبتِ صادقانه)"
+  "translations": "برای این آزمون در جزوه چاپ نشده است (غیبتِ صادقانه)",
+  "exam2": {
+   "exam": "تست واژگان درس اول — بخش اول، سطح آموزشی (سؤالات: ص۵۲ و ۵۳)",
+   "header": "تست واژگان «درس یکم - پایه دهم» بخش: «اول» سطح: «آموزشی» (پاسخنامه صفحه: ۲۴۳-۲۴۴)",
+   "keyPages": "243-244",
+   "keyVerification": "print key pp243-244 «کلید و ترجمه تستهای واژگان درس اول - پایه دهم» — 40/40 agree with semantic pre-fill (key word reflected in printed translation), zero divergence",
+   "extractedRound": "r324",
+   "pattern": "r311/r323 (بانک درس‌محور) + r320/r321 (ترجمهٔ چاپ‌محور در translation)",
+   "translations": "۴۰ ترجمهٔ چاپی «ترجمه تست» به آیتم‌ها تزریق شد؛ ۱۴ نقطهٔ سرنوشت‌ساز با زومِ ۵۰۰۰-۸۰۰۰dpi داوری شد (ایجاد/اینجا/آبراه/پایمان/شصت/تولد/هنر/برج/خاص/انرا/سرزمین/معلم مان/رانندگیای/پشتی)",
+   "printQuirks": [
+    "Q12: ساقهٔ چاپ «the bottom of the from» — typوی چاپ (from به‌جای form)؛ عینِ چاپ",
+    "Q20: ساقهٔ چاپ «become a pilot art ---» — جابه‌جاییِ compositional چاپ (چاپِ درست: didn't study art … pilot instead)؛ ترجمهٔ چاپی خودِ جزوه خوانشِ درست را تأیید می‌کند",
+    "Q28: «به طور پر پشتی» — عبارتِ بی‌معنای چاپ (زومِ ۸۰۰۰dpi: پشتی قطعی)؛ عینِ چاپ",
+    "Q23: «و یک از عجایب» — چاپ «یک» به‌جای «یکی»؛ عینِ چاپ",
+    "Q13: ترجمهٔ چاپ «انقراض» (≈dying out) در حالی که کلیدِ چاپ c (destroying) است — جفت‌سازیِ خودِ چاپ؛ کلید حاکم، ترجمه عینِ چاپ",
+    "Q27: چاپ ویرگول بعد از «ژاپن» نگذاشته؛ عینِ چاپ",
+    "فاصله‌ها: «می بینید/می کنند/می شنیدیم/می برد» جدای چاپ؛ «نمیخواهم/انرا/آنرا/بصورت/شغلهای/مارمولکها» چسبیده چاپ — عینِ چاپ (الگوی r320/r321)"
+   ]
+  }
  }
 }
