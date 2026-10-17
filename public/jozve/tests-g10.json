@@ -2221,6 +2221,1091 @@
      "translation": "طول عمر متوسط انسان در کشورهای توسعه یافته در صد سال گذشته افزایش یافته است."
     }
    ]
+  },
+  {
+   "lesson": 7,
+   "title": "تشریحی درس دوم — جای خالی از بانک واژه (ص۸۴)",
+   "level": "تشریحی — تایپی",
+   "count": 16,
+   "questions": [
+    {
+     "id": "g10-l7-1",
+     "n": 1,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "------------------ keeps us safe from some injuries. [bank: compare / strong / important / ugly / suitable / disease / exercise / strange / blood]",
+     "options": [
+      "strong",
+      "important",
+      "ugly",
+      "suitable",
+      "disease",
+      "exercise",
+      "strange",
+      "blood",
+      "compare"
+     ],
+     "answer": 0,
+     "accepted": [
+      "exercise"
+     ],
+     "placeholder": "fill in the blank with the bank word…"
+    },
+    {
+     "id": "g10-l7-2",
+     "n": 2,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "He was looking at me in a very ------------------ way. [bank: compare / strong / important / ugly / suitable / disease / exercise / strange / blood]",
+     "options": [
+      "important",
+      "ugly",
+      "suitable",
+      "disease",
+      "exercise",
+      "strange",
+      "blood",
+      "compare",
+      "strong"
+     ],
+     "answer": 0,
+     "accepted": [
+      "strange"
+     ],
+     "placeholder": "fill in the blank with the bank word…"
+    },
+    {
+     "id": "g10-l7-3",
+     "n": 3,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "She is beautiful, but her younger sister is really ------------------. [bank: compare / strong / important / ugly / suitable / disease / exercise / strange / blood]",
+     "options": [
+      "ugly",
+      "suitable",
+      "disease",
+      "exercise",
+      "strange",
+      "blood",
+      "compare",
+      "strong",
+      "important"
+     ],
+     "answer": 0,
+     "accepted": [
+      "ugly"
+     ],
+     "placeholder": "fill in the blank with the bank word…"
+    },
+    {
+     "id": "g10-l7-4",
+     "n": 4,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "Bacteria and viruses are two ------------------ types of microbes. [bank: compare / strong / important / ugly / suitable / disease / exercise / strange / blood]",
+     "options": [
+      "suitable",
+      "disease",
+      "exercise",
+      "strange",
+      "blood",
+      "compare",
+      "strong",
+      "important",
+      "ugly"
+     ],
+     "answer": 0,
+     "accepted": [
+      "important"
+     ],
+     "placeholder": "fill in the blank with the bank word…"
+    },
+    {
+     "id": "g10-l7-5",
+     "n": 5,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "The heart pumps ------------------ round the body to keeps us alive. [bank: compare / strong / important / ugly / suitable / disease / exercise / strange / blood]",
+     "options": [
+      "disease",
+      "exercise",
+      "strange",
+      "blood",
+      "compare",
+      "strong",
+      "important",
+      "ugly",
+      "suitable"
+     ],
+     "answer": 0,
+     "accepted": [
+      "blood"
+     ],
+     "placeholder": "fill in the blank with the bank word…"
+    },
+    {
+     "id": "g10-l7-6",
+     "n": 6,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "My brother has a very ------------------ body because he does a lot of exercise. [bank: compare / strong / important / ugly / suitable / disease / exercise / strange / blood]",
+     "options": [
+      "exercise",
+      "strange",
+      "blood",
+      "compare",
+      "strong",
+      "important",
+      "ugly",
+      "suitable",
+      "disease"
+     ],
+     "answer": 0,
+     "accepted": [
+      "strong"
+     ],
+     "placeholder": "fill in the blank with the bank word…"
+    },
+    {
+     "id": "g10-l7-7",
+     "n": 7,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "We want to ------------------ the prices of all the cars before deciding which one to buy. [bank: compare / strong / important / ugly / suitable / disease / exercise / strange / blood]",
+     "options": [
+      "strange",
+      "blood",
+      "compare",
+      "strong",
+      "important",
+      "ugly",
+      "suitable",
+      "disease",
+      "exercise"
+     ],
+     "answer": 0,
+     "accepted": [
+      "compare"
+     ],
+     "placeholder": "fill in the blank with the bank word…"
+    },
+    {
+     "id": "g10-l7-8",
+     "n": 8,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "Some children have to do work that is not ------------------ for them and they often do not like it. [bank: compare / strong / important / ugly / suitable / disease / exercise / strange / blood]",
+     "options": [
+      "blood",
+      "compare",
+      "strong",
+      "important",
+      "ugly",
+      "suitable",
+      "disease",
+      "exercise",
+      "strange"
+     ],
+     "answer": 0,
+     "accepted": [
+      "suitable"
+     ],
+     "placeholder": "fill in the blank with the bank word…"
+    },
+    {
+     "id": "g10-l7-9",
+     "n": 9,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "We should have a ------------------ breakfast because it gives us a lot of energy. [bank: worst / healthy / element / drop / lost / orbits / without / abroad / carry]",
+     "options": [
+      "worst",
+      "healthy",
+      "element",
+      "drop",
+      "lost",
+      "orbits",
+      "without",
+      "abroad",
+      "carry"
+     ],
+     "answer": 0,
+     "accepted": [
+      "healthy"
+     ],
+     "placeholder": "fill in the blank with the bank word…"
+    },
+    {
+     "id": "g10-l7-10",
+     "n": 10,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "He’s a very bad student. Actually, he is the ------------------ student in our class. [bank: worst / healthy / element / drop / lost / orbits / without / abroad / carry]",
+     "options": [
+      "healthy",
+      "element",
+      "drop",
+      "lost",
+      "orbits",
+      "without",
+      "abroad",
+      "carry",
+      "worst"
+     ],
+     "answer": 0,
+     "accepted": [
+      "worst"
+     ],
+     "placeholder": "fill in the blank with the bank word…"
+    },
+    {
+     "id": "g10-l7-11",
+     "n": 11,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "There are millions of red blood cells in one small ------------------ of blood. [bank: worst / healthy / element / drop / lost / orbits / without / abroad / carry]",
+     "options": [
+      "element",
+      "drop",
+      "lost",
+      "orbits",
+      "without",
+      "abroad",
+      "carry",
+      "worst",
+      "healthy"
+     ],
+     "answer": 0,
+     "accepted": [
+      "drop"
+     ],
+     "placeholder": "fill in the blank with the bank word…"
+    },
+    {
+     "id": "g10-l7-12",
+     "n": 12,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "The injured man was too heavy for me to ------------------. [bank: worst / healthy / element / drop / lost / orbits / without / abroad / carry]",
+     "options": [
+      "drop",
+      "lost",
+      "orbits",
+      "without",
+      "abroad",
+      "carry",
+      "worst",
+      "healthy",
+      "element"
+     ],
+     "answer": 0,
+     "accepted": [
+      "carry"
+     ],
+     "placeholder": "fill in the blank with the bank word…"
+    },
+    {
+     "id": "g10-l7-13",
+     "n": 13,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "I was very sad when I ------------------ my watch in a store. [bank: worst / healthy / element / drop / lost / orbits / without / abroad / carry]",
+     "options": [
+      "lost",
+      "orbits",
+      "without",
+      "abroad",
+      "carry",
+      "worst",
+      "healthy",
+      "element",
+      "drop"
+     ],
+     "answer": 0,
+     "accepted": [
+      "lost"
+     ],
+     "placeholder": "fill in the blank with the bank word…"
+    },
+    {
+     "id": "g10-l7-14",
+     "n": 14,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "Planets go around the Sun in different ------------------. [bank: worst / healthy / element / drop / lost / orbits / without / abroad / carry]",
+     "options": [
+      "orbits",
+      "without",
+      "abroad",
+      "carry",
+      "worst",
+      "healthy",
+      "element",
+      "drop",
+      "lost"
+     ],
+     "answer": 0,
+     "accepted": [
+      "orbits"
+     ],
+     "placeholder": "fill in the blank with the bank word…"
+    },
+    {
+     "id": "g10-l7-15",
+     "n": 15,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "Can we see all planets ------------------ a telescope? [bank: worst / healthy / element / drop / lost / orbits / without / abroad / carry]",
+     "options": [
+      "without",
+      "abroad",
+      "carry",
+      "worst",
+      "healthy",
+      "element",
+      "drop",
+      "lost",
+      "orbits"
+     ],
+     "answer": 0,
+     "accepted": [
+      "without"
+     ],
+     "placeholder": "fill in the blank with the bank word…"
+    },
+    {
+     "id": "g10-l7-16",
+     "n": 16,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "I’m not interested in working ------------------. [bank: worst / healthy / element / drop / lost / orbits / without / abroad / carry]",
+     "options": [
+      "abroad",
+      "carry",
+      "worst",
+      "healthy",
+      "element",
+      "drop",
+      "lost",
+      "orbits",
+      "without"
+     ],
+     "answer": 0,
+     "accepted": [
+      "abroad"
+     ],
+     "placeholder": "fill in the blank with the bank word…"
+    }
+   ]
+  },
+  {
+   "lesson": 8,
+   "title": "تشریحی درس دوم — کلمه با حرف اول (ص۸۴)",
+   "level": "تشریحی — تایپی",
+   "count": 8,
+   "questions": [
+    {
+     "id": "g10-l8-1",
+     "n": 1,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "Gold is the most expensive m _ _ _ _ of the world.",
+     "options": [
+      "metal",
+      "camel",
+      "fact",
+      "difficult",
+      "oxygen",
+      "helpful",
+      "polite",
+      "defend"
+     ],
+     "answer": 0,
+     "accepted": [
+      "metal"
+     ],
+     "placeholder": "complete the word (first letter is given)…"
+    },
+    {
+     "id": "g10-l8-2",
+     "n": 2,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "A c _ _ _ _ can live without water for a long time.",
+     "options": [
+      "camel",
+      "fact",
+      "difficult",
+      "oxygen",
+      "helpful",
+      "polite",
+      "defend",
+      "metal"
+     ],
+     "answer": 0,
+     "accepted": [
+      "camel"
+     ],
+     "placeholder": "complete the word (first letter is given)…"
+    },
+    {
+     "id": "g10-l8-3",
+     "n": 3,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "It’s a f _ _ _ that Earth goes around the Sun.",
+     "options": [
+      "fact",
+      "difficult",
+      "oxygen",
+      "helpful",
+      "polite",
+      "defend",
+      "metal",
+      "camel"
+     ],
+     "answer": 0,
+     "accepted": [
+      "fact"
+     ],
+     "placeholder": "complete the word (first letter is given)…"
+    },
+    {
+     "id": "g10-l8-4",
+     "n": 4,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "This problem is not easy. It’s very d _ _ _ _ _ _ _ _ .",
+     "options": [
+      "difficult",
+      "oxygen",
+      "helpful",
+      "polite",
+      "defend",
+      "metal",
+      "camel",
+      "fact"
+     ],
+     "answer": 0,
+     "accepted": [
+      "difficult"
+     ],
+     "placeholder": "complete the word (first letter is given)…"
+    },
+    {
+     "id": "g10-l8-5",
+     "n": 5,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "Plants and animals need o _ _ _ _ _ to live.",
+     "options": [
+      "oxygen",
+      "helpful",
+      "polite",
+      "defend",
+      "metal",
+      "camel",
+      "fact",
+      "difficult"
+     ],
+     "answer": 0,
+     "accepted": [
+      "oxygen"
+     ],
+     "placeholder": "complete the word (first letter is given)…"
+    },
+    {
+     "id": "g10-l8-6",
+     "n": 6,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "A person or thing that is h _ _ _ _ _ _ gives help.",
+     "options": [
+      "helpful",
+      "polite",
+      "defend",
+      "metal",
+      "camel",
+      "fact",
+      "difficult",
+      "oxygen"
+     ],
+     "answer": 0,
+     "accepted": [
+      "helpful"
+     ],
+     "placeholder": "complete the word (first letter is given)…"
+    },
+    {
+     "id": "g10-l8-7",
+     "n": 7,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "It is p _ _ _ _ _ to say please when you ask for something.",
+     "options": [
+      "polite",
+      "defend",
+      "metal",
+      "camel",
+      "fact",
+      "difficult",
+      "oxygen",
+      "helpful"
+     ],
+     "answer": 0,
+     "accepted": [
+      "polite"
+     ],
+     "placeholder": "complete the word (first letter is given)…"
+    },
+    {
+     "id": "g10-l8-8",
+     "n": 8,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "White blood cells d _ _ _ _ _ body against diseases.",
+     "options": [
+      "defend",
+      "metal",
+      "camel",
+      "fact",
+      "difficult",
+      "oxygen",
+      "helpful",
+      "polite"
+     ],
+     "answer": 0,
+     "accepted": [
+      "defend"
+     ],
+     "placeholder": "complete the word (first letter is given)…"
+    }
+   ]
+  },
+  {
+   "lesson": 9,
+   "title": "تشریحی درس دوم — تعریف‌ها، بنویسید (ص۸۵)",
+   "level": "تشریحی — تایپی",
+   "count": 8,
+   "questions": [
+    {
+     "id": "g10-l9-1",
+     "n": 1,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "A small place where people live:",
+     "options": [
+      "gift",
+      "planet",
+      "war",
+      "collect",
+      "pepper",
+      "daily",
+      "heart",
+      "sky",
+      "village"
+     ],
+     "answer": 0,
+     "accepted": [
+      "village"
+     ],
+     "placeholder": "type the word for the definition…"
+    },
+    {
+     "id": "g10-l9-2",
+     "n": 2,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "To go and get someone or something:",
+     "options": [
+      "planet",
+      "war",
+      "collect",
+      "pepper",
+      "daily",
+      "heart",
+      "sky",
+      "village",
+      "gift"
+     ],
+     "answer": 0,
+     "accepted": [
+      "collect"
+     ],
+     "placeholder": "type the word for the definition…"
+    },
+    {
+     "id": "g10-l9-3",
+     "n": 3,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "That happens or comes every day or once a day:",
+     "options": [
+      "war",
+      "collect",
+      "pepper",
+      "daily",
+      "heart",
+      "sky",
+      "village",
+      "gift",
+      "planet"
+     ],
+     "answer": 0,
+     "accepted": [
+      "daily"
+     ],
+     "placeholder": "type the word for the definition…"
+    },
+    {
+     "id": "g10-l9-4",
+     "n": 4,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "Something that you give to or get from somebody:",
+     "options": [
+      "collect",
+      "pepper",
+      "daily",
+      "heart",
+      "sky",
+      "village",
+      "gift",
+      "planet",
+      "war"
+     ],
+     "answer": 0,
+     "accepted": [
+      "gift"
+     ],
+     "placeholder": "type the word for the definition…"
+    },
+    {
+     "id": "g10-l9-5",
+     "n": 5,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "The space above the earth where you can see the sun:",
+     "options": [
+      "pepper",
+      "daily",
+      "heart",
+      "sky",
+      "village",
+      "gift",
+      "planet",
+      "war",
+      "collect"
+     ],
+     "answer": 0,
+     "accepted": [
+      "sky"
+     ],
+     "placeholder": "type the word for the definition…"
+    },
+    {
+     "id": "g10-l9-6",
+     "n": 6,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "A large round thing in space that moves around the sun:",
+     "options": [
+      "daily",
+      "heart",
+      "sky",
+      "village",
+      "gift",
+      "planet",
+      "war",
+      "collect",
+      "pepper"
+     ],
+     "answer": 0,
+     "accepted": [
+      "planet"
+     ],
+     "placeholder": "type the word for the definition…"
+    },
+    {
+     "id": "g10-l9-7",
+     "n": 7,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "Fighting between countries or between groups of people:",
+     "options": [
+      "heart",
+      "sky",
+      "village",
+      "gift",
+      "planet",
+      "war",
+      "collect",
+      "pepper",
+      "daily"
+     ],
+     "answer": 0,
+     "accepted": [
+      "war"
+     ],
+     "placeholder": "type the word for the definition…"
+    },
+    {
+     "id": "g10-l9-8",
+     "n": 8,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "The part of a person’s or animal’s body that makes the blood go around inside:",
+     "options": [
+      "sky",
+      "village",
+      "gift",
+      "planet",
+      "war",
+      "collect",
+      "pepper",
+      "daily",
+      "heart"
+     ],
+     "answer": 0,
+     "accepted": [
+      "heart"
+     ],
+     "placeholder": "type the word for the definition…"
+    }
+   ]
+  },
+  {
+   "lesson": 10,
+   "title": "تشریحی درس دوم — تست چهارگزینه‌ای (ص۸۵-۸۶)",
+   "level": "تشریحی — چهارگزینه‌ای",
+   "count": 25,
+   "questions": [
+    {
+     "id": "g10-l10-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "My father went to the hospital and --------------- blood yesterday.",
+     "options": [
+      "attacked",
+      "pumped",
+      "defended",
+      "donated"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g10-l10-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "I think that it’s --------------- to climb a mountain in bad weather.",
+     "options": [
+      "important",
+      "dangerous",
+      "comparative",
+      "suitable"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g10-l10-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "A --------------- is the organ inside the head of a human or an animal that thinks and feels.",
+     "options": [
+      "sign",
+      "blood",
+      "brain",
+      "hint"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g10-l10-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "The school bus --------------- the students each morning.",
+     "options": [
+      "collects",
+      "checks",
+      "completes",
+      "compares"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g10-l10-5",
+     "n": 5,
+     "category": "vocab",
+     "question": "You should ask your doctor’s --------------- before you start an exercise program.",
+     "options": [
+      "element",
+      "interest",
+      "opinion",
+      "quality"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g10-l10-6",
+     "n": 6,
+     "category": "vocab",
+     "question": "I couldn’t find the right words to --------------- my feelings for her.",
+     "options": [
+      "defend",
+      "describe",
+      "happen",
+      "create"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g10-l10-7",
+     "n": 7,
+     "category": "vocab",
+     "question": "Plasma is a --------------- and yellow liquid and carries red and white cells.",
+     "options": [
+      "cheap",
+      "fresh",
+      "wonder",
+      "clear"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g10-l10-8",
+     "n": 8,
+     "category": "vocab",
+     "question": "What --------------- if nobody comes to the party?",
+     "options": [
+      "happens",
+      "describes",
+      "creates",
+      "crosses"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g10-l10-9",
+     "n": 9,
+     "category": "vocab",
+     "question": "A special building for studying stars, planets, weather, etc. is called a/an ---------------.",
+     "options": [
+      "superlative",
+      "observatory",
+      "abroad",
+      "telescope"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g10-l10-10",
+     "n": 10,
+     "category": "vocab",
+     "question": "The white cells in our blood are like --------------- that defend the body against microbes.",
+     "options": [
+      "peppers",
+      "soldiers",
+      "arrows",
+      "wonders"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g10-l10-11",
+     "n": 11,
+     "category": "vocab",
+     "question": "The bed was hard, but it was --------------- than nothing.",
+     "options": [
+      "better",
+      "more",
+      "worse",
+      "farther"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g10-l10-12",
+     "n": 12,
+     "category": "vocab",
+     "question": "You shouldn’t drive for more than two hours --------------- taking a break.",
+     "options": [
+      "without",
+      "even",
+      "extra",
+      "round"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g10-l10-13",
+     "n": 13,
+     "category": "vocab",
+     "question": "The hole is so ---------------, you can’t see the bottom.",
+     "options": [
+      "dangerous",
+      "deep",
+      "clear",
+      "real"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g10-l10-14",
+     "n": 14,
+     "category": "vocab",
+     "question": "We can thank Allah by keeping our body ---------------.",
+     "options": [
+      "downward",
+      "wonderful",
+      "healthy",
+      "interested"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g10-l10-15",
+     "n": 15,
+     "category": "vocab",
+     "question": "We live in a/an --------------- world. All around us there are amazing things.",
+     "options": [
+      "upward",
+      "famous",
+      "important",
+      "wonderful"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g10-l10-16",
+     "n": 16,
+     "category": "vocab",
+     "question": "The --------------- of the picture on our television isn’t very good.",
+     "options": [
+      "details",
+      "opinion",
+      "quality",
+      "nation"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g10-l10-17",
+     "n": 17,
+     "category": "vocab",
+     "question": "I can’t go into much ---------------, but I’ve been having some health problems recently.",
+     "options": [
+      "interest",
+      "detail",
+      "term",
+      "hint"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g10-l10-18",
+     "n": 18,
+     "category": "vocab",
+     "question": "I have to be in London on Friday for a/an --------------- meeting.",
+     "options": [
+      "important",
+      "dangerous",
+      "powerful",
+      "cloudy"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g10-l10-19",
+     "n": 19,
+     "category": "vocab",
+     "question": "Heart --------------- is the most important reason of death in many Western countries.",
+     "options": [
+      "blood",
+      "disease",
+      "plasma",
+      "liquid"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g10-l10-20",
+     "n": 20,
+     "category": "vocab",
+     "question": "Telescopes and microscopes are --------------- machines for working on different creations.",
+     "options": [
+      "interesting",
+      "delicious",
+      "dangerous",
+      "useful"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g10-l10-21",
+     "n": 21,
+     "category": "vocab",
+     "question": "For the first few months the babies looked so --------------- I couldn’t tell which was which.",
+     "options": [
+      "alike",
+      "ugly",
+      "beautiful",
+      "rising"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g10-l10-22",
+     "n": 22,
+     "category": "vocab",
+     "question": "My father is going to --------------- some computers to our school.",
+     "options": [
+      "laugh",
+      "happen",
+      "describe",
+      "donate"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g10-l10-23",
+     "n": 23,
+     "category": "vocab",
+     "question": "A chemical element that is a gas with no smell or color is called ---------------.",
+     "options": [
+      "heavens",
+      "oxygen",
+      "silver",
+      "plasma"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g10-l10-24",
+     "n": 24,
+     "category": "vocab",
+     "question": "--------------- if you take a taxi, you’ll still miss your train.",
+     "options": [
+      "Fact",
+      "Even",
+      "Such",
+      "Without"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g10-l10-25",
+     "n": 25,
+     "category": "vocab",
+     "question": "All she needed to --------------- her happiness was a baby.",
+     "options": [
+      "complete",
+      "attack",
+      "pump",
+      "donate"
+     ],
+     "answer": 0
+    }
+   ]
   }
  ],
  "source": {
@@ -2281,6 +3366,26 @@
     "Q34: گزینهٔ ۱ «به طور با دقت» و گزینهٔ ۲ «با ادبانه» — املای چاپ",
     "Q37: «گرفته اند» با د (زوم ۸۰۰۰dpi؛ خوانشِ نخستِ ۱۴۰۰dpi «ان» رد شد؛ لایه «طالق» = طلاق)",
     "فاصله‌ها: «میشود/میشوند/میکند/میتواند/میتوانند/میکنیم/میگویند» چسبیده چاپ؛ «می کند/می دهد/می توانیم/می گرفتند/می شنویم» جدای چاپ — هر آیتم عینِ چاپ (الگوی r320/r324)"
+   ]
+  },
+  "tashrihi2": {
+   "exam": "آزمون تشریحی واژگان درس دوم (آزمون: ص۸۴ تا ۸۶)",
+   "header": "«آزمون تشریحی واژگان درس دوم» (پاسخنامه صفحه: ۲۵۸)",
+   "sections": {
+    "1": "جای خالی از بانک واژه — دو بانک ۹ کلمه‌ای (یک کلمه اضافه: disease / element) — ۱۶ آیتم",
+    "2": "کلمه با حرف اول — ۸ آیتم (شمارشِ زیرخطِ چاپ با طولِ کلید هم‌خوان — بدونِ استثنا)",
+    "3": "تعریف‌ها، بنویسید — بانک ۹ کلمه‌ای (یک اضافه: pepper) — ۸ آیتم",
+    "4": "تست چهارگزینه‌ای — ۲۵ آیتم"
+   },
+   "keyPages": "258",
+   "keyVerification": "print key p258 «پاسخنامه آزمون تشریحی واژگان درس دوم (آزمون: صفحه ۸۴ تا ۸۶)» — 57/57 agree with semantic pre-fill, zero divergence",
+   "extractedRound": "r326",
+   "pattern": "r323 (بانک‌های تشریحیِ درس‌محور) + r311 — ۴ بانک / ۵۷ آیتم؛ typed-engine r285/r289",
+   "translations": "برای این آزمون در جزوه چاپ نشده است (غیبتِ صادقانه — الگوی r323)",
+   "printQuirks": [
+    "Q5 بانک ۷: ساقهٔ چاپ «round the body to keeps us alive» — to keeps (خطای چاپ؛ زوم ۴۰۰۰dpi)؛ عینِ چاپ",
+    "Q10 بانک ۱۰: «soldiers» جمع — استعارهٔ چاپ برای گلبول‌های سفید؛ عینِ چاپ",
+    "Q24 بانک ۱۰: ساقه با جای خالی آغاز می‌شود («--------------- if you take a taxi…»)؛ عینِ چاپ"
    ]
   }
  }

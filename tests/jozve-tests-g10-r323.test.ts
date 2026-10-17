@@ -35,12 +35,12 @@ const KEY_B3 = ["nature", "plan", "hope", "road", "lake", "whale", "zebra", "phr
 const KEY_B4 = "bddbcacacdbdabbdcbdacbcab".split("");
 
 describe("jozve tests-g10 (r323 تشریحی واژگان درس اول — p49-51, key p242)", () => {
-  it("file shape: grade 10, 6 banks 16/8/8/25/40/40 = 137 (r325 exam3 appended), receipt complete", () => {
+  it("file shape: grade 10, 10 banks ... = 194 (r326 tashrihi2 appended), receipt complete", () => {
     expect(bank.grade).toBe(10);
-    // r325 — بانک ششم (استاندارد ص۵۴-۵۵) به خانواده اضافه شد؛ پنج بانکِ r323/r324 دست‌نخورده‌اند
-    expect(bank.lessons).toHaveLength(6);
+    // r326 — بانک‌های ۷-۱۰ (تشریحی درس دوم) به خانواده اضافه شد؛ شش بانکِ r323-r325 دست‌نخورده‌اند
+    expect(bank.lessons).toHaveLength(10);
     expect(bank.lessons.slice(0, 4).map((l) => l.count)).toEqual([16, 8, 8, 25]);
-    expect(bank.lessons.reduce((s, l) => s + l.count, 0)).toBe(137);
+    expect(bank.lessons.reduce((s, l) => s + l.count, 0)).toBe(194);
     expect(bank.source.extractedRound).toBe("r323");
     expect(bank.source.keyPages).toBe("242");
     expect(bank.source.keyVerification).toContain("57/57");
@@ -113,6 +113,6 @@ describe("jozve tests-g10 (r323 تشریحی واژگان درس اول — p49-
 
   it("ids unique across the bank family", () => {
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(new Set(ids).size).toBe(137);
+    expect(new Set(ids).size).toBe(194);
   });
 });
