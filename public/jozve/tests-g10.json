@@ -4442,6 +4442,654 @@
      "translation": "در طول ۱۹۸۰، مقدار ازون در استراتوسفر بالای اروپا حدوداً ۸ درصد کاهش پیدا کرد."
     }
    ]
+  },
+  {
+   "lesson": 13,
+   "title": "تشریحی گرامر — جای خالی با will یا be going to (ص۵۹)",
+   "level": "تشریحی — جای خالی",
+   "count": 15,
+   "questions": [
+    {
+     "id": "g10-l13-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "There is a good film on TV tonight. I --------------- watch it.",
+     "options": [
+      "am going to",
+      "will",
+      "is going to",
+      "are going to"
+     ],
+     "answer": 0,
+     "accepted": [
+      "am going to"
+     ],
+     "placeholder": "fill in the blank with will or be going to…"
+    },
+    {
+     "id": "g10-l13-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "I feel terrible. I think I --------------- be sick.",
+     "options": [
+      "am going to",
+      "will",
+      "is going to",
+      "are going to"
+     ],
+     "answer": 0,
+     "accepted": [
+      "am going to"
+     ],
+     "placeholder": "fill in the blank with will or be going to…"
+    },
+    {
+     "id": "g10-l13-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Perhaps I --------------- visit Japan one day.",
+     "options": [
+      "will",
+      "am going to",
+      "is going to",
+      "are going to"
+     ],
+     "answer": 0,
+     "accepted": [
+      "will"
+     ],
+     "placeholder": "fill in the blank with will or be going to…"
+    },
+    {
+     "id": "g10-l13-4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What time --------------- you --------------- leave tomorrow?",
+     "options": [
+      "are / going to",
+      "will",
+      "am going to",
+      "is going to"
+     ],
+     "answer": 0,
+     "accepted": [
+      "are / going to"
+     ],
+     "placeholder": "fill in the blank with will or be going to…"
+    },
+    {
+     "id": "g10-l13-5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Don’t touch that dog. It --------------- bite you.",
+     "options": [
+      "will",
+      "am going to",
+      "is going to",
+      "are going to"
+     ],
+     "answer": 0,
+     "accepted": [
+      "will"
+     ],
+     "placeholder": "fill in the blank with will or be going to…"
+    },
+    {
+     "id": "g10-l13-6",
+     "n": 6,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Who --------------- win the next World Cup?",
+     "options": [
+      "will",
+      "am going to",
+      "is going to",
+      "are going to"
+     ],
+     "answer": 0,
+     "accepted": [
+      "will"
+     ],
+     "placeholder": "fill in the blank with will or be going to…"
+    },
+    {
+     "id": "g10-l13-7",
+     "n": 7,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "A: Your hands are very dirty.  B: Oh, I didn’t know. I --------------- wash them.",
+     "options": [
+      "will",
+      "am going to",
+      "is going to",
+      "are going to"
+     ],
+     "answer": 0,
+     "accepted": [
+      "will"
+     ],
+     "placeholder": "fill in the blank with will or be going to…"
+    },
+    {
+     "id": "g10-l13-8",
+     "n": 8,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "A: I’ve got a headache.  B: I --------------- get an aspirin for you.",
+     "options": [
+      "will",
+      "am going to",
+      "is going to",
+      "are going to"
+     ],
+     "answer": 0,
+     "accepted": [
+      "will"
+     ],
+     "placeholder": "fill in the blank with will or be going to…"
+    },
+    {
+     "id": "g10-l13-9",
+     "n": 9,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "A: Why are you filling that bucket with water?  B: I --------------- wash the car.",
+     "options": [
+      "am going to",
+      "will",
+      "is going to",
+      "are going to"
+     ],
+     "answer": 0,
+     "accepted": [
+      "am going to"
+     ],
+     "placeholder": "fill in the blank with will or be going to…"
+    },
+    {
+     "id": "g10-l13-10",
+     "n": 10,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "A: I can’t work out how to use this camera?  B: It’s very easy. I --------------- show you.",
+     "options": [
+      "will",
+      "am going to",
+      "is going to",
+      "are going to"
+     ],
+     "answer": 0,
+     "accepted": [
+      "will"
+     ],
+     "placeholder": "fill in the blank with will or be going to…"
+    },
+    {
+     "id": "g10-l13-11",
+     "n": 11,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "A: Did you post that letter for me?  B: Oh, I’m sorry. I --------------- do it now.",
+     "options": [
+      "will",
+      "am going to",
+      "is going to",
+      "are going to"
+     ],
+     "answer": 0,
+     "accepted": [
+      "will"
+     ],
+     "placeholder": "fill in the blank with will or be going to…"
+    },
+    {
+     "id": "g10-l13-12",
+     "n": 12,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "A: We need some bread for lunch.  B: Oh, do we? I --------------- go to the shop and get some.",
+     "options": [
+      "will",
+      "am going to",
+      "is going to",
+      "are going to"
+     ],
+     "answer": 0,
+     "accepted": [
+      "will"
+     ],
+     "placeholder": "fill in the blank with will or be going to…"
+    },
+    {
+     "id": "g10-l13-13",
+     "n": 13,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "A: Those clouds are very black, aren’t they?  B: I think it --------------- rain.",
+     "options": [
+      "is going to",
+      "will",
+      "am going to",
+      "are going to"
+     ],
+     "answer": 0,
+     "accepted": [
+      "is going to"
+     ],
+     "placeholder": "fill in the blank with will or be going to…"
+    },
+    {
+     "id": "g10-l13-14",
+     "n": 14,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "A: What would you like to drink, tea or coffee?  B: I --------------- have coffee, please.",
+     "options": [
+      "will",
+      "am going to",
+      "is going to",
+      "are going to"
+     ],
+     "answer": 0,
+     "accepted": [
+      "will"
+     ],
+     "placeholder": "fill in the blank with will or be going to…"
+    },
+    {
+     "id": "g10-l13-15",
+     "n": 15,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "A: Why do you want to sell your apartment?  B: We --------------- move to the countryside.",
+     "options": [
+      "are going to",
+      "will",
+      "am going to",
+      "is going to"
+     ],
+     "answer": 0,
+     "accepted": [
+      "are going to"
+     ],
+     "placeholder": "fill in the blank with will or be going to…"
+    }
+   ]
+  },
+  {
+   "lesson": 14,
+   "title": "تشریحی گرامر — جمله‌سازی با کلمات داده شده (ص۵۹)",
+   "level": "تشریحی — جمله‌سازی",
+   "count": 7,
+   "questions": [
+    {
+     "id": "g10-l14-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "going / a house / they / soon / to / are / buy?",
+     "options": [
+      "Are they going to buy a house soon?",
+      "We are not going to watch TV tonight.",
+      "I don’t think I will go out tonight.",
+      "Where will you be this time next year?"
+     ],
+     "answer": 0,
+     "accepted": [
+      "Are they going to buy a house soon?"
+     ],
+     "placeholder": "make a sentence with the given words…"
+    },
+    {
+     "id": "g10-l14-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "not / watch / tonight / are / we / TV / to / going .",
+     "options": [
+      "We are not going to watch TV tonight.",
+      "Are they going to buy a house soon?",
+      "I don’t think I will go out tonight.",
+      "Where will you be this time next year?"
+     ],
+     "answer": 0,
+     "accepted": [
+      "We are not going to watch TV tonight."
+     ],
+     "placeholder": "make a sentence with the given words…"
+    },
+    {
+     "id": "g10-l14-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "don’t / go out / I / I / tonight / will / think .",
+     "options": [
+      "I don’t think I will go out tonight.",
+      "Are they going to buy a house soon?",
+      "We are not going to watch TV tonight.",
+      "Where will you be this time next year?"
+     ],
+     "answer": 0,
+     "accepted": [
+      "I don’t think I will go out tonight."
+     ],
+     "placeholder": "make a sentence with the given words…"
+    },
+    {
+     "id": "g10-l14-4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "will / be / next / where / year / you / this time?",
+     "options": [
+      "Where will you be this time next year?",
+      "Are they going to buy a house soon?",
+      "We are not going to watch TV tonight.",
+      "I don’t think I will go out tonight."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Where will you be this time next year?"
+     ],
+     "placeholder": "make a sentence with the given words…"
+    },
+    {
+     "id": "g10-l14-5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "am / make / phone call / I / to / a / going .",
+     "options": [
+      "I am going to make a phone call.",
+      "Are they going to buy a house soon?",
+      "We are not going to watch TV tonight.",
+      "I don’t think I will go out tonight."
+     ],
+     "answer": 0,
+     "accepted": [
+      "I am going to make a phone call."
+     ],
+     "placeholder": "make a sentence with the given words…"
+    },
+    {
+     "id": "g10-l14-6",
+     "n": 6,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "going / a museum / are / this / they / weekend / visit / to?",
+     "options": [
+      "Are they going to visit a museum this weekend?",
+      "Are they going to buy a house soon?",
+      "We are not going to watch TV tonight.",
+      "I don’t think I will go out tonight."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Are they going to visit a museum this weekend?"
+     ],
+     "placeholder": "make a sentence with the given words…"
+    },
+    {
+     "id": "g10-l14-7",
+     "n": 7,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "family / next / will / buy / a / our / year / car / new?",
+     "options": [
+      "Will our family buy a new car next year?",
+      "Are they going to buy a house soon?",
+      "We are not going to watch TV tonight.",
+      "I don’t think I will go out tonight."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Will our family buy a new car next year?"
+     ],
+     "placeholder": "make a sentence with the given words…"
+    }
+   ]
+  },
+  {
+   "lesson": 15,
+   "title": "تشریحی گرامر — پاسخ به سؤالات با پرانتز (ص۶۰)",
+   "level": "تشریحی — پاسخ کوتاه",
+   "count": 5,
+   "questions": [
+    {
+     "id": "g10-l15-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Where are they going to eat lunch? ( restaurant )",
+     "options": [
+      "They are going to eat lunch in a restaurant.",
+      "I am going to wash my car.",
+      "He will travel to Paris by plane next week.",
+      "They are going to play volleyball tomorrow."
+     ],
+     "answer": 0,
+     "accepted": [
+      "They are going to eat lunch in a restaurant."
+     ],
+     "placeholder": "answer the question using the word in parentheses…"
+    },
+    {
+     "id": "g10-l15-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What are you going to do? ( wash my car )",
+     "options": [
+      "I am going to wash my car.",
+      "They are going to eat lunch in a restaurant.",
+      "He will travel to Paris by plane next week.",
+      "They are going to play volleyball tomorrow."
+     ],
+     "answer": 0,
+     "accepted": [
+      "I am going to wash my car."
+     ],
+     "placeholder": "answer the question using the word in parentheses…"
+    },
+    {
+     "id": "g10-l15-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "How will your father travel to Paris next week? ( plane )",
+     "options": [
+      "He will travel to Paris by plane next week.",
+      "They are going to eat lunch in a restaurant.",
+      "I am going to wash my car.",
+      "They are going to play volleyball tomorrow."
+     ],
+     "answer": 0,
+     "accepted": [
+      "He will travel to Paris by plane next week."
+     ],
+     "placeholder": "answer the question using the word in parentheses…"
+    },
+    {
+     "id": "g10-l15-4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "When are the students going to play volleyball? ( tomorrow )",
+     "options": [
+      "They are going to play volleyball tomorrow.",
+      "They are going to eat lunch in a restaurant.",
+      "I am going to wash my car.",
+      "He will travel to Paris by plane next week."
+     ],
+     "answer": 0,
+     "accepted": [
+      "They are going to play volleyball tomorrow."
+     ],
+     "placeholder": "answer the question using the word in parentheses…"
+    },
+    {
+     "id": "g10-l15-5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Where will the tourists visit next summer? ( Yazd )",
+     "options": [
+      "They will visit Yazd next summer.",
+      "They are going to eat lunch in a restaurant.",
+      "I am going to wash my car.",
+      "He will travel to Paris by plane next week."
+     ],
+     "answer": 0,
+     "accepted": [
+      "They will visit Yazd next summer."
+     ],
+     "placeholder": "answer the question using the word in parentheses…"
+    }
+   ]
+  },
+  {
+   "lesson": 16,
+   "title": "تشریحی گرامر — تست چهارگزینه‌ای (ص۶۰)",
+   "level": "تشریحی — چهارگزینه‌ای",
+   "count": 10,
+   "questions": [
+    {
+     "id": "g10-l16-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "A: When does your father arrive?  B: He is going --------------- in the afternoon.",
+     "options": [
+      "arrive",
+      "arriving",
+      "to arrive",
+      "arrives"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g10-l16-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "The man can’t see where he is going. He --------------- into the hole.",
+     "options": [
+      "is falling",
+      "falls",
+      "will fall",
+      "is going to fall"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g10-l16-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "Her situation is getting worse. The doctors think that she --------------- die.",
+     "options": [
+      "is going to",
+      "will",
+      "goes to",
+      "will go to"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g10-l16-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "Look! The barometer is falling, perhaps the weather --------------- be nice at the weekend.",
+     "options": [
+      "won’t go to",
+      "isn’t going to",
+      "won’t",
+      "willn’t"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g10-l16-5",
+     "n": 5,
+     "category": "grammar",
+     "question": "A: Why are you wearing your best suit?  B: I --------------- have lunch with my biggest customer.",
+     "options": [
+      "will",
+      "'m going to",
+      "go to",
+      "will to"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g10-l16-6",
+     "n": 6,
+     "category": "grammar",
+     "question": "If he passes his exam, he --------------- stay in England for a year. His aim is to speak English fluently.",
+     "options": [
+      "is going",
+      "want to",
+      "go to",
+      "will"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g10-l16-7",
+     "n": 7,
+     "category": "grammar",
+     "question": "There isn’t any butter left. I --------------- go to the grocer’s and get some.",
+     "options": [
+      "'m going to",
+      "will",
+      "will to",
+      "wants to"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g10-l16-8",
+     "n": 8,
+     "category": "grammar",
+     "question": "A: Why are your children dressed like that?  B: They --------------- to wash the car.",
+     "options": [
+      "are going to",
+      "will go",
+      "go",
+      "are going"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g10-l16-9",
+     "n": 9,
+     "category": "grammar",
+     "question": "A: This box is very heavy.  B: Don’t worry. I --------------- carry it for you.",
+     "options": [
+      "will to",
+      "would",
+      "'m going o",
+      "will"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g10-l16-10",
+     "n": 10,
+     "category": "grammar",
+     "question": "A: Do you want to borrow my car?  B: Thanks, I --------------- bring it back tonight.",
+     "options": [
+      "'m going to",
+      "will",
+      "would",
+      "was going to"
+     ],
+     "answer": 1
+    }
+   ]
   }
  ],
  "source": {
@@ -4592,6 +5240,28 @@
     "Q40 کلید — اراتای بزرگِ صفحهٔ کلید: سطرِ glossها (۱) طول عمر [قرمز] (۲) برنامه (۳) طبیعت (۴) علاقه و هایلایتِ قرمزِ «طول» در ترجمه، کپیِ اشتباه از Q40ِ «استاندارد درس اول» (r325) است؛ ترجمهٔ جمله («...حدوداً ۸ درصد کاهش پیدا کرد») و کلیدِ (a) با decreased سازگارند — قفلِ دوگانه با انعکاسِ ترجمه برقرار؛ glossها عیناً مستند، کلید دست‌نخورده",
     "فاصله‌های می: «می توانید/می کند(Q3,Q29)/می توانم(Q12,Q33)/میدهد(Q22)/میکنیم(Q23)/می شود(Q21,Q24)/نمی خواستم(Q27)/می کردم(Q28)/می کند(Q34)/میکنند(Q38)» — هر آیتم عین چاپ (الگوی r325/r327)",
     "ZWNJ: «بیماری‌های/گذاشته‌ام/شگفتی‌های/مشتری‌هایمان/قیمت‌های/انسان‌ها/کرده‌ند/جنگ شده‌اند» چسبیده-با-ZWNJ چاپ"
+   ]
+  },
+  "gram1": {
+   "exam": "آزمون تشریحی گرامر درس اول — will / be going to (سؤالات: ص۵۹ و ۶۰)",
+   "header": "«آزمون تشریحی گرامر درس اول» (پاسخنامه صفحه: ۲۴۸) — بخش ۱ جای خالی (۱۵) + بخش ۲ جمله‌سازی (۷) + بخش ۳ پاسخ کوتاه (۵) + بخش ۴ چهارگزینه‌ای (۱۰)",
+   "keyPages": "248",
+   "keyVerification": "print key p248 «پاسخنامه آزمون تشریحی گرامر درس اول (آزمون: صفحه ۵۹ و ۶۰)» — 37/37 agree with semantic pre-fill (S1/S2/S3 sentence keys verbatim; S4 word-keys mapped to letters, 10/10 semantic), zero divergence",
+   "extractedRound": "r329",
+   "pattern": "r323/r326 (بانک تشریحی چهاربخشی) + r285/r289 (kind/accepted/placeholder + نرمال‌سازِ اسلش→فاصله) + r309/r321 (کلید دست‌نخورده، اراتوم مستند)",
+   "printQuirks": [
+    "بخش۱-Q4: کلید چاپ «are / going to» دوبلانک است (گرید ص۲۴۸ با فاصله‌دورِ اسلش — زوم ۵۰۰۰dpi)؛ نرمال‌سازِ r285 اسلش→فاصله می‌کند و «are going to» تایپی می‌پذیرد",
+    "بخش۱-Q10: ساقه چاپ «...how to use this camera?» با علامت سؤال نه نقطه (زوم ۴۰۰۰dpi — عین چاپ)",
+    "بخش۱-Q7/۸/۹/۱۰/۱۱/۱۲/۱۳/۱۴/۱۵: دیالوگ A/B در چاپ دوستونه — رونویسی درونخطی با دو فاصله",
+    "بخش۲-Q2: کلمات داده با «going .» پایانی (نقطه با فاصله — عین چاپ)",
+    "بخش۲-Q3: دو «I» در کلمات داده (عین چاپ — جملهٔ کلید «I don't think I will go out tonight» هر دو را می‌خواهد)",
+    "بخش۴-Q9 گزینهٔ c: چاپ «'m going o» بدون t (زوم ۵۰۰۰dpi — اراتوم چاپ؛ عین چاپ ذخیره شد، کلیدِ (d) will دست‌نخورده)",
+    "بخش۴-Q4 گزینهٔ d: چاپ «willn't» (عین چاپ — حاشیهٔ حواس‌پرت‌کن)؛ گزینهٔ a «won't go to»",
+    "بخش۴-Q9 گزینهٔ a: چاپ «will to» (عین چاپ)",
+    "کلیدِ بخش ۴ واژه‌ای است نه حرفی («۱. to arrive ...») — نگاشتِ واژه→اندیس با پیش‌پرکردنِ معنایی ۱۰/۱۰ هم‌رأی (صفر واگرایی)",
+    "ص۲۴۸ سربرگ: «پاسخنامه آزمون تشریحی گرامر درس اول (آزمون: صفحه ۵۹ و ۶۰)» — سربرگ نشانیِ کلید را خودش می‌گوید (درسِ r318)",
+    "آپاستروف‌های چاپ راست‌خمیده (’) — رونویسی با ’؛ نرمال‌ساز r285 به ' راست تبدیل می‌کند",
+    "ص۶۱ درسِ «نکات درس یکم — انواع اسم» را آغاز می‌کند — آزمون در ص۶۰ بسته می‌شود"
    ]
   }
  }
