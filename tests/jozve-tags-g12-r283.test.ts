@@ -48,7 +48,7 @@ const fresh = [...l8.questions, ...l9.questions];
 
 describe("jozve topic grammar bank g12 — tag questions duo (r283 extraction receipt)", () => {
   it("bank shape: nine lessons, duo added as exactly 20/15 with continuous printed numbering", () => {
-    expect(bank.lessons.map((l) => l.lesson)).toEqual(Array.from({ length: 326 }, (_, i) => i + 1)); // r285-r286 بانک‌های ۱۲-۱۴، r287 هفت بانک تشریحی و r288 بخش‌های ۸/۹ را افزودند؛ r289-r291 آزمون‌های جامع درس اول تا سوم (۲۴-۵۸) و r292-r307 آزمون‌های نهایی دی ۹۷، خرداد ۹۸، شهریور ۹۸، دی ۹۸، خرداد ۹۹ (دو واریانتِ رشته‌ای)، شهریور ۹۹ (چاپِ جزوه + چاپِ رسمیِ سراسری + ویژهٔ ناشنوایان)، دی ۹۹، خرداد ۱۴۰۰ (دو واریانتِ رشته‌ای)، شهریور ۱۴۰۰، دی ۱۴۰۰، خرداد ۱۴۰۱ و شهریور ۱۴۰۱ (۵۹-۳۲۴) را افزودند
+    expect(bank.lessons.map((l) => l.lesson)).toEqual(Array.from({ length: 330 }, (_, i) => i + 1)); // r285-r286 بانک‌های ۱۲-۱۴، r287 هفت بانک تشریحی و r288 بخش‌های ۸/۹ را افزودند؛ r289-r291 آزمون‌های جامع درس اول تا سوم (۲۴-۵۸) و r292-r307 آزمون‌های نهایی دی ۹۷، خرداد ۹۸، شهریور ۹۸، دی ۹۸، خرداد ۹۹ (دو واریانتِ رشته‌ای)، شهریور ۹۹ (چاپِ جزوه + چاپِ رسمیِ سراسری + ویژهٔ ناشنوایان)، دی ۹۹، خرداد ۱۴۰۰ (دو واریانتِ رشته‌ای)، شهریور ۱۴۰۰، دی ۱۴۰۰، خرداد ۱۴۰۱ و شهریور ۱۴۰۱ (۵۹-۳۲۴) را افزودند
     // درس‌های r280-r282 دست‌نخورده
     const counts = [27, 61, 30, 50, 20, 20, 40];
     counts.forEach((c, i) => expect(bank.lessons[i].questions).toHaveLength(c));
@@ -150,10 +150,10 @@ describe("jozve topic grammar bank g12 — tag questions duo (r283 extraction re
     expect(tr).toContain("OCR");
   });
 
-  it("family-wide uniqueness: 1587 ids after r289, old lessons untouched, discovery receipt for p187 40-key grid", () => {
+  it("family-wide uniqueness: 1659 ids after r289, old lessons untouched, discovery receipt for p187 40-key grid", () => {
     const all = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
     expect(new Set(all).size).toBe(all.length);
-    expect(all).toHaveLength(1587); // r284-r288 و r289 پنجاه‌ونه تست آزمون جامع را افزودند
+    expect(all).toHaveLength(1659); // r284-r288 و r289 پنجاه‌ونه تست آزمون جامع را افزودند
     expect(bank.source.tags?.discovery).toContain("معلوم و مجهول");
     expect(bank.source.tags?.discovery).toContain("37");
   });

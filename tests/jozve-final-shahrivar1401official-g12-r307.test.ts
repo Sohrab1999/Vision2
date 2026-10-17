@@ -40,9 +40,9 @@ const K_R3TF: Record<number, string> = { 1: "b", 2: "a" }; // فرهنگ‌لغ�
 const K_R3M: Record<number, string> = { 3: "d", 4: "a" };
 
 describe("jozve topic grammar bank g12 — official nationwide shahrivar 1401 exam (r307 extraction receipt)", () => {
-  it("bank shape: three hundred twenty six lessons, shahrivar 1401 adds 20 banks / 62 items (family 1587) — ITEM record (62 > 53) tying the 20-bank record; booklet now fully extracted", () => {
+  it("bank shape: three hundred thirty lessons, shahrivar 1401 adds 20 banks / 62 items (family 1659) — ITEM record (62 > 53) tying the 20-bank record; booklet now fully extracted", () => {
     expect(bank.lessons.map((l) => l.lesson)).toEqual(
-      Array.from({ length: 326 }, (_, i) => i + 1)
+      Array.from({ length: 330 }, (_, i) => i + 1)
     );
     const counts: Record<number, number> = {
       305: 4, 306: 4, 307: 4, 308: 6, 309: 4, 310: 3, 311: 3, 312: 2,
@@ -55,7 +55,7 @@ describe("jozve topic grammar bank g12 — official nationwide shahrivar 1401 ex
       expect(L(n).title).toContain("شهریور ۱۴۰۱");
     }
     expect(bank.lessons.filter((l) => l.lesson >= 305 && l.lesson <= 324).reduce((a, l) => a + l.count, 0)).toBe(62); // r310 بانک‌های ۳۲۵/۳۲۶ را جداگانه افزود
-    expect(bank.lessons.reduce((a, l) => a + l.count, 0)).toBe(1587);
+    expect(bank.lessons.reduce((a, l) => a + l.count, 0)).toBe(1659);
   });
 
   it("provenance: source.final1401shr — pages 343-347 / key pages 348-349 / eighth official source / sixteenth and FINAL session of the series (page 349 is the last page of the booklet)", () => {

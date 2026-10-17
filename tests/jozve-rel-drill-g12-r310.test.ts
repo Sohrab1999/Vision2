@@ -223,10 +223,10 @@ describe("jozve g12 relative-clause drill/reduction banks (r310 extraction recei
     expect(receipt.duplicateHunt).toContain("r277");
   });
 
-  it("ids are globally unique across the 1587-question topic bank", () => {
+  it("ids are globally unique across the 1659-question topic bank", () => {
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
     expect(new Set(ids).size).toBe(ids.length);
-    expect(ids).toHaveLength(1587);
+    expect(ids).toHaveLength(1659);
   });
 
   it("UI manifest: the two new buttons sit before l1/l2 in GRADE_GRAMMAR_TOPIC (booklet order p86/p87 < p88)", () => {

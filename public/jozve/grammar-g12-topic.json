@@ -1348,6 +1348,33 @@
      "l325-12: «DVDهایی» تنها نویسهٔ لاتینِ درونِ ترجمه‌ها — عینِ چاپ"
     ]
    }
+  },
+  "condSentences": {
+   "round": "r314",
+   "title": "۷۲ تست آموزش گرامر «جملات شرطی» و کنکوری",
+   "bodyPages": "96-99",
+   "keyPages": "207-210 (بلوکِ توضیحیِ ۱-۵۰ + گریدِ «پاسخنامه کلیدی بقیهٔ تست‌های جملات شرطی» برای ۵۱-۷۲)",
+   "printedHeader": "سربرگِ خودِ جزوه: «پاسخنامه 72 تست آموزش گرامر جملات شرطی و کنکوری (صفحه: 96 تا 99)» — ابهامِ «ص۱۰۶-۱۱۰؟» handoff r313 را حل کرد",
+   "items": 72,
+   "translated": 50,
+   "honestAbsence": "آیتم‌های ۵۱-۷۲ گریدِ خالص‌اند (بدونِ خطِ ترجمهٔ چاپی) — الگوی r278",
+   "method": "بدنه: pdfplumber (ماشین r309/r310)؛ کلید: داوریِ چهارلایه (pdfplumber-آینه‌ای + g12.txt + fitz بلوک‌به‌بلوکِ لنگری + گریدِ دوصدا)؛ ترجمه‌ها: رونویسیِ چشمیِ ۶۰۰-۱۴۰۰dpi (الگوی r313 — لایه‌های متنی فارسیِ خراب می‌دهند).",
+   "printQuirks": {
+    "1": "«به تو» دوبار در یک جمله («من به تو هیچ چیزی در مورد او به تو نمیگفتم») — عینِ چاپ",
+    "3": "«باغ بزرگی» + «چکار میکردی؟» — عینِ چاپ",
+    "7": "«می توانستی» پس از «چطور» — عینِ چاپ (خوانشِ اولیهٔ «مینواستی» با زومِ ۱۳۰۰dpi رد شد)",
+    "10": "ناسازگاریِ درون‌جزوه‌ای: شرح دربارهٔ rice/tonight است اما خطِ ترجمه دربارهٔ ترکِ سیگار — عینِ چاپ (الگوی printErrata r309)",
+    "11": "«کنه،و» چسبیده (ویرگول بدونِ فاصله) — عینِ چاپ",
+    "16": "پایان با «؟» بدونِ نقطه و بدونِ «اسباب بازی» در برابرِ ساقه (new toy car → ماشین بزرگ) — عینِ چاپ",
+    "22": "«کاملاً» با لِن، «(وظیفه)» داخلِ پرانتز، «شیوهٔ ای» — عینِ چاپ",
+    "26": "بدونِ نقطهٔ پایانی (بسته با گیومه) — عینِ چاپ",
+    "31": "«می پریدی» با فاصله؛ پایان با «؟» — عینِ چاپ",
+    "39": "«ازدست» چسبیده (بدونِ فاصله) — عینِ چاپ",
+    "43": "«نمی ماندنم» و «می رفتتم» (ت دوبل) — عینِ چاپ",
+    "46": "«بله» با گیومهٔ درونی پس از شکافِ چاپیِ پهن — عینِ چاپ",
+    "48": "«سلامتی» (لایهٔ fitz «سالمت» می‌دهد — افتِ گلیف) + پرانتزِ پایانی — عینِ چاپ"
+   },
+   "banks": "۴ بانک × ۱۸ (l327..l330، ids g12-cond-1..72)"
   }
  },
  "lessons": [
@@ -27038,6 +27065,1024 @@
      "translation": "پدرم ماشین آبی بزرگی دارد که در بیرون خانه پارک شده است."
     }
    ]
+  },
+  {
+   "lesson": 327,
+   "title": "جمله‌های شرطی — بانک ۱ (ص۹۶)",
+   "questions": [
+    {
+     "id": "g12-cond-1",
+     "n": 1,
+     "type": "mcq",
+     "question": "I -------------------- tell you to tell him anything if you were not his close friend.",
+     "options": [
+      "don’t",
+      "won't",
+      "wouldn’t",
+      "hadn’t"
+     ],
+     "answer": 2,
+     "translation": "اگر دوست صمیمیش نبودی، من به تو هیچ چیزی در مورد او به تو نمیگفتم."
+    },
+    {
+     "id": "g12-cond-2",
+     "n": 2,
+     "type": "mcq",
+     "question": "If I were you, I -------------------- that coat. It was too expensive.",
+     "options": [
+      "wouldn’t buy",
+      "won’t buy",
+      "bought",
+      "didn’t buy"
+     ],
+     "answer": 0,
+     "translation": "اگه من جای تو بودم، آن کت را نمیخریدم، خیلی گران بود."
+    },
+    {
+     "id": "g12-cond-3",
+     "n": 3,
+     "type": "mcq",
+     "question": "What -------------------- you -------------------- if you have a big garden?",
+     "options": [
+      "would / do",
+      "are / doing",
+      "were / done",
+      "will / do"
+     ],
+     "answer": 3,
+     "translation": "اگه یک باغ بزرگی داشتی، چکار میکردی؟"
+    },
+    {
+     "id": "g12-cond-4",
+     "n": 4,
+     "type": "mcq",
+     "question": "What could we do if we -------------------- a key?",
+     "options": [
+      "don’t have",
+      "hadn’t had",
+      "didn’t have",
+      "haven’t had"
+     ],
+     "answer": 2,
+     "translation": "اگه ما کلید نداشتیم، چکار میکردیم؟"
+    },
+    {
+     "id": "g12-cond-5",
+     "n": 5,
+     "type": "mcq",
+     "question": "If they were here, I -------------------- their car.",
+     "options": [
+      "would borrow",
+      "borrowed",
+      "will borrow",
+      "borrow"
+     ],
+     "answer": 0,
+     "translation": "اگر آنها اینجا بودند، ماشینشان را قرض میگرفتم."
+    },
+    {
+     "id": "g12-cond-6",
+     "n": 6,
+     "type": "mcq",
+     "question": "You wouldn’t be so fat if you -------------------- too much.",
+     "options": [
+      "don’t eat",
+      "hadn’t eaten",
+      "didn’t eat",
+      "can’t eat"
+     ],
+     "answer": 2,
+     "translation": "اگه خیلی زیاد غذا نمیخوردی، چاق نمیشدی."
+    },
+    {
+     "id": "g12-cond-7",
+     "n": 7,
+     "type": "mcq",
+     "question": "How -------------------- you write if you didn’t have any fingers?",
+     "options": [
+      "can",
+      "will",
+      "could",
+      "should"
+     ],
+     "answer": 2,
+     "translation": "اگه تو انگشت نداشتی، چطور میتوانستی بنویسی؟"
+    },
+    {
+     "id": "g12-cond-8",
+     "n": 8,
+     "type": "mcq",
+     "question": "If I -------------------- you, I wouldn’t risk it.",
+     "options": [
+      "had been",
+      "am",
+      "would be",
+      "were"
+     ],
+     "answer": 3,
+     "translation": "اگه من جای تو بودم، آن ریسک را نمیکردم."
+    },
+    {
+     "id": "g12-cond-9",
+     "n": 9,
+     "type": "mcq",
+     "question": "If you -------------------- to know a country or a nation well, you -------------------- study its art.",
+     "options": [
+      "have wanted / could",
+      "will want / may",
+      "want / should",
+      "want / would"
+     ],
+     "answer": 2,
+     "translation": "اگه میخواهی یک کشور یا ملتی را به خوبی بشناسی، باید هنر آن را مطالعه کنی."
+    },
+    {
+     "id": "g12-cond-10",
+     "n": 10,
+     "type": "mcq",
+     "question": "If there -------------------- some rice in the supermarket, -------------------- you -------------------- some for dinner tonight?",
+     "options": [
+      "had been / would - buy",
+      "were / would - buy",
+      "are / will - buy",
+      "is / will – buy"
+     ],
+     "answer": 3,
+     "translation": "اگه به سختی تلاش کرده بودم، قادر میشدم که از سیگار کشیدن دست بکشم."
+    },
+    {
+     "id": "g12-cond-11",
+     "n": 11,
+     "type": "mcq",
+     "question": "If he decides to accept that job, he -------------------- it for the rest of his life.",
+     "options": [
+      "has regretted",
+      "had regretted",
+      "is regretting",
+      "will regret"
+     ],
+     "answer": 3,
+     "translation": "اگه او تصمیم میگیره آن شغل را قبول کنه،و برای بقیه عمرش پشیمان خواهد شد."
+    },
+    {
+     "id": "g12-cond-12",
+     "n": 12,
+     "type": "mcq",
+     "question": "If you -------------------- of applying for that job, my advice is: Forget it.",
+     "options": [
+      "are thinking",
+      "will think",
+      "will be thinking",
+      "would think"
+     ],
+     "answer": 0,
+     "translation": "اگه داری برای آن شغل درخواست میدی، نصیحت من اینه: آن را فراموش کن."
+    },
+    {
+     "id": "g12-cond-13",
+     "n": 13,
+     "type": "mcq",
+     "question": "If she goes on passing her exams, -------------------- soon be qualified to practice as a lawyer.",
+     "options": [
+      "she’s",
+      "she had",
+      "she has",
+      "she’ll"
+     ],
+     "answer": 3,
+     "translation": "اگه میخواهد که امتحاناتش را پاس کنه، او به زودی این کیفیت را خواهد داشت که مثل یک وکیل کار کنه."
+    },
+    {
+     "id": "g12-cond-14",
+     "n": 14,
+     "type": "mcq",
+     "question": "If you really want to be helpful, then you -------------------- to tell me the truth.",
+     "options": [
+      "have",
+      "had",
+      "will have",
+      "would have"
+     ],
+     "answer": 2,
+     "translation": "اگه میخواهی یاری رسان باشی، تو مجبور خواهی بود حقیقت را به من بگویی."
+    },
+    {
+     "id": "g12-cond-15",
+     "n": 15,
+     "type": "mcq",
+     "question": "If I win that competition, I -------------------- buy you a very big toy car as a present.",
+     "options": [
+      "should",
+      "will",
+      "am",
+      "have"
+     ],
+     "answer": 1,
+     "translation": "اگه من در رقابت برنده بشوم، به عنوان یک کادو یک ماشین اسباب بازی خیلی بزرگی برایت خواهم خرید."
+    },
+    {
+     "id": "g12-cond-16",
+     "n": 16,
+     "type": "mcq",
+     "question": "If I -------------------- you a new toy car, would you be very happy?",
+     "options": [
+      "buy",
+      "bought",
+      "would buy",
+      "will buy"
+     ],
+     "answer": 1,
+     "translation": "اگه برایت یک ماشین بزرگ میخریدم، تو خیلی خوشحال میشدی؟"
+    },
+    {
+     "id": "g12-cond-17",
+     "n": 17,
+     "type": "mcq",
+     "question": "I would move to a new house if I -------------------- as wealthy as he is.",
+     "options": [
+      "am",
+      "had",
+      "were",
+      "would be"
+     ],
+     "answer": 2,
+     "translation": "اگه به اندازه او ثروتمند بودم، به یک خانه جدید اسباب کشی میکردم."
+    },
+    {
+     "id": "g12-cond-18",
+     "n": 18,
+     "type": "mcq",
+     "question": "Will you come to dinner with us if we -------------------- a babysitter for you?",
+     "options": [
+      "had found",
+      "will find",
+      "found",
+      "find"
+     ],
+     "answer": 3,
+     "translation": "اگه ما برایت یک پرستار بچه پیدا کنیم، آیا برای شام با ما میآمدی؟"
+    }
+   ],
+   "count": 18,
+   "level": "آموزشی و کنکوری — سرصفحهٔ خود جزوه"
+  },
+  {
+   "lesson": 328,
+   "title": "جمله‌های شرطی — بانک ۲ (ص۹۶-۹۷)",
+   "questions": [
+    {
+     "id": "g12-cond-19",
+     "n": 19,
+     "type": "mcq",
+     "question": "I will try very hard to come and have dinner at your house if I -------------------- able to.",
+     "options": [
+      "am",
+      "was",
+      "were",
+      "will be"
+     ],
+     "answer": 0,
+     "translation": "اگه قادر باشم به سختی تلاش خواهم کرد که بیایم و شام را در خانه شما بخورم."
+    },
+    {
+     "id": "g12-cond-20",
+     "n": 20,
+     "type": "mcq",
+     "question": "If I -------------------- you, I would work very hard so that I could earn more money.",
+     "options": [
+      "am",
+      "were",
+      "are",
+      "have"
+     ],
+     "answer": 1,
+     "translation": "اگه جای تو بودم، خیلی به شدت کار میکردم تا اینکه پول بیشتری را کسب کنم."
+    },
+    {
+     "id": "g12-cond-21",
+     "n": 21,
+     "type": "mcq",
+     "question": "I -------------------- to save the man if I knew how to swim.",
+     "options": [
+      "tried",
+      "will try",
+      "would try",
+      "had tried"
+     ],
+     "answer": 2,
+     "translation": "اگه می دانستم چطور شنا کنم، من سعی می کردم آن مرد را نجات دهم."
+    },
+    {
+     "id": "g12-cond-22",
+     "n": 22,
+     "type": "mcq",
+     "question": "I am absolutely sure that Jennifer would do the same task differently if she -------------------- you.",
+     "options": [
+      "is",
+      "was",
+      "were",
+      "had been"
+     ],
+     "answer": 2,
+     "translation": "من کاملاً مطمئن هستم که اگر جنیفر جای تو بود همان کار (وظیفه) را به شیوهٔ ای متفاوت انجام میداد."
+    },
+    {
+     "id": "g12-cond-23",
+     "n": 23,
+     "type": "mcq",
+     "question": "The boss will get mad if you leave early again, so -------------------- ask for his permission first.",
+     "options": [
+      "you should",
+      "you might",
+      "would you",
+      "you are going to"
+     ],
+     "answer": 0,
+     "translation": "اگه دوباره زود بروی، رئیس عصبانی خواهد شد. پس اول از او درخواست اجازه کن."
+    },
+    {
+     "id": "g12-cond-24",
+     "n": 24,
+     "type": "mcq",
+     "question": "-------------------- that difficult job if they offered it to you?",
+     "options": [
+      "Did you take",
+      "Would you take",
+      "Have you taken",
+      "Had you taken"
+     ],
+     "answer": 1,
+     "translation": "اگه آنها آن شغل سخت را به تو پیشنهاد می دادند، آیا آن را قبول میکردی؟"
+    },
+    {
+     "id": "g12-cond-25",
+     "n": 25,
+     "type": "mcq",
+     "question": "If they weren’t in a hurry, they -------------------- in their exams.",
+     "options": [
+      "succeed",
+      "succeeded",
+      "will succeed",
+      "would succeed"
+     ],
+     "answer": 3,
+     "translation": "اگه آنها عجله نمیکردند در امتحاناتشان موفق میشدند."
+    },
+    {
+     "id": "g12-cond-26",
+     "n": 26,
+     "type": "mcq",
+     "question": "If I had enough apples, I -------------------- an apple pie.",
+     "options": [
+      "could bake",
+      "will bake",
+      "baked",
+      "must bake"
+     ],
+     "answer": 0,
+     "translation": "اگه من به اندازه کافی سیب داشتم یک کیک سیب میپختم"
+    },
+    {
+     "id": "g12-cond-27",
+     "n": 27,
+     "type": "mcq",
+     "question": "I think everything will be fine, but if -------------------- any problem, -------------------- you, OK?",
+     "options": [
+      "there is / I’ll call",
+      "there was / I call",
+      "there will be / I call",
+      "there was / I called"
+     ],
+     "answer": 0,
+     "translation": "من فکر کنم همه چیز درست خواهد شد. اما اگه مشکلی وجود داشت با من تماس بگیر، باشه؟"
+    },
+    {
+     "id": "g12-cond-28",
+     "n": 28,
+     "type": "mcq",
+     "question": "This soup isn’t very good. It -------------------- better if it weren’t salty.",
+     "options": [
+      "can taste",
+      "will be tasted",
+      "could be tasted",
+      "would taste"
+     ],
+     "answer": 3,
+     "translation": "این سوپ خیلی خوب نیست. اگه نمکین نبود، بهتر میشد."
+    },
+    {
+     "id": "g12-cond-29",
+     "n": 29,
+     "type": "mcq",
+     "question": "I -------------------- the bicycle myself if nobody helps me.",
+     "options": [
+      "have repaired",
+      "am repairing",
+      "will repair",
+      "repair"
+     ],
+     "answer": 2,
+     "translation": "اگه هیچ کسی به من کمک نکنه، من دوچرخه را خودم تعمیر خواهم کرد."
+    },
+    {
+     "id": "g12-cond-30",
+     "n": 30,
+     "type": "mcq",
+     "question": "You are always tired. If you -------------------- to bed so late, you wouldn’t be so tired.",
+     "options": [
+      "don’t go",
+      "didn’t go",
+      "hadn’t gone",
+      "haven’t gone"
+     ],
+     "answer": 1,
+     "translation": "تو همیشه خسته هستی. اگه خیلی دیر نمی خوابیدی، تو انقدر خسته نمی شدی."
+    },
+    {
+     "id": "g12-cond-31",
+     "n": 31,
+     "type": "mcq",
+     "question": "-------------------- you jump out of a plane if you -------------------- a parachute?",
+     "options": [
+      "Will / had",
+      "Do / have",
+      "Would / had",
+      "Could / have"
+     ],
+     "answer": 2,
+     "translation": "از یک هواپیما به بیرون می پریدی اگر یک چتر نجات داشت؟"
+    },
+    {
+     "id": "g12-cond-32",
+     "n": 32,
+     "type": "mcq",
+     "question": "If he -------------------- enough experience for the job, the boss -------------------- hire him.",
+     "options": [
+      "has / would",
+      "had / could",
+      "have / will",
+      "had / may"
+     ],
+     "answer": 1,
+     "translation": "اگر او تجربه کافی برای آن شغل داشت، رئیس می توانست او را استخدام کند."
+    },
+    {
+     "id": "g12-cond-33",
+     "n": 33,
+     "type": "mcq",
+     "question": "I -------------------- a house like a palace if I -------------------- a rich man but I’m poor.",
+     "options": [
+      "will buy / am",
+      "would buy / were",
+      "buy / was",
+      "bought / were"
+     ],
+     "answer": 1,
+     "translation": "خانه ای شبیه به یک کاخ می خریدم اگر مرد پولداری بودم اما من فقیر هستم."
+    },
+    {
+     "id": "g12-cond-34",
+     "n": 34,
+     "type": "mcq",
+     "question": "If I could -------------------- English very well, I -------------------- look for a job in foreign companies.",
+     "options": [
+      "speak / will",
+      "spoke / may",
+      "speak / would",
+      "spoke / might"
+     ],
+     "answer": 2,
+     "translation": "اگر من می توانستم خیلی خوب انگلیسی صحبت کنم، دنبال شغلی در شرکت های خارجی می گشتم."
+    },
+    {
+     "id": "g12-cond-35",
+     "n": 35,
+     "type": "mcq",
+     "question": "If I -------------------- to work, I would come to the amusement park with you.",
+     "options": [
+      "didn’t have",
+      "don’t have",
+      "had",
+      "won’t have"
+     ],
+     "answer": 0,
+     "translation": "اگر مجبور نبودم کار کنم، با تو به پارک تفریحی می آمدم."
+    },
+    {
+     "id": "g12-cond-36",
+     "n": 36,
+     "type": "mcq",
+     "question": "If Ali and Reza -------------------- older, they -------------------- play in our football team.",
+     "options": [
+      "are / might",
+      "was / would",
+      "is / can",
+      "were / would"
+     ],
+     "answer": 3,
+     "translation": "اگر علی و رضا بزرگتر بودند، آنها در تیم فوتبال ما بازی می کردند."
+    }
+   ],
+   "count": 18,
+   "level": "آموزشی و کنکوری — سرصفحهٔ خود جزوه"
+  },
+  {
+   "lesson": 329,
+   "title": "جمله‌های شرطی — بانک ۳ (ص۹۷-۹۸)",
+   "questions": [
+    {
+     "id": "g12-cond-37",
+     "n": 37,
+     "type": "mcq",
+     "question": "Everyone -------------------- pass the test if the questions -------------------- easy enough.",
+     "options": [
+      "will / were",
+      "could / are",
+      "would / were",
+      "might / was"
+     ],
+     "answer": 2,
+     "translation": "همه آن امتحان را قبول می شدند اگر سوالات به اندازه کافی آسان بودند."
+    },
+    {
+     "id": "g12-cond-38",
+     "n": 38,
+     "type": "mcq",
+     "question": "If he -------------------- richer, he -------------------- in a bigger house.",
+     "options": [
+      "was / will live",
+      "were / would live",
+      "is / could live",
+      "were / lived"
+     ],
+     "answer": 1,
+     "translation": "اگر او پولدارتر بود، در یک خانه بزرگتر زندگی می کرد."
+    },
+    {
+     "id": "g12-cond-39",
+     "n": 39,
+     "type": "mcq",
+     "question": "The taxi is late. If Farhad -------------------- his job interview, he won’t have a new job.",
+     "options": [
+      "misses",
+      "missed",
+      "miss",
+      "is missing"
+     ],
+     "answer": 0,
+     "translation": "تاکسی دیر کرده است. اگر فرهاد مصاحبه شغلی اش را ازدست بدهد، او صاحب کار جدیدی نخواهد شد."
+    },
+    {
+     "id": "g12-cond-40",
+     "n": 40,
+     "type": "mcq",
+     "question": "If the weather -------------------- good, we -------------------- football.",
+     "options": [
+      "was / played",
+      "were / may play",
+      "is / will play",
+      "are / would play"
+     ],
+     "answer": 2,
+     "translation": "اگر هوا خوب بشه، ما فوتبال بازی خواهیم کرد."
+    },
+    {
+     "id": "g12-cond-41",
+     "n": 41,
+     "type": "mcq",
+     "question": "Where -------------------- you live if you could live anywhere in the world?",
+     "options": [
+      "will",
+      "would",
+      "did",
+      "do"
+     ],
+     "answer": 1,
+     "translation": "کجا زندگی می کردی اگر می توانستی هرجای دنیا زندگی کنی؟"
+    },
+    {
+     "id": "g12-cond-42",
+     "n": 42,
+     "type": "mcq",
+     "question": "If Ali had enough free time to practice, he -------------------- a good guitarist.",
+     "options": [
+      "can be",
+      "will be",
+      "is",
+      "would be"
+     ],
+     "answer": 3,
+     "translation": "اگر علی وقت آزاد کافی برای تمرین کردن داشت، او گیتاریست خوبی می شد."
+    },
+    {
+     "id": "g12-cond-43",
+     "n": 43,
+     "type": "mcq",
+     "question": "If I were you, I -------------------- wait. I -------------------- immediately.",
+     "options": [
+      "wouldn’t / would go",
+      "won’t / will go",
+      "wouldn’t / am going",
+      "won’t / can go"
+     ],
+     "answer": 0,
+     "translation": "اگر من جای تو بودم، منتظر نمی ماندنم. فوراً می رفتتم."
+    },
+    {
+     "id": "g12-cond-44",
+     "n": 44,
+     "type": "mcq",
+     "question": "You -------------------- a better job if you could use a computer.",
+     "options": [
+      "got",
+      "would get",
+      "will get",
+      "have got"
+     ],
+     "answer": 1,
+     "translation": "شما شغل بهتری به دست می آوردید اگر می توانستید از یک رایانه استفاده کنید."
+    },
+    {
+     "id": "g12-cond-45",
+     "n": 45,
+     "type": "mcq",
+     "question": "Your grandfather -------------------- the newspaper better if he -------------------- his glasses.",
+     "options": [
+      "can read / wore",
+      "reads / wears",
+      "could read / wore",
+      "have read / wore"
+     ],
+     "answer": 2,
+     "translation": "پدربزرگت می توانست این روزنامه را بهتر بخواند اگر عینکش را زده بود."
+    },
+    {
+     "id": "g12-cond-46",
+     "n": 46,
+     "type": "mcq",
+     "question": "If he -------------------- me to marry him, I’d -------------------- yes.",
+     "options": [
+      "asked / said",
+      "asks / say",
+      "would ask / said",
+      "asked / say"
+     ],
+     "answer": 3,
+     "translation": "اگر از من می خواست که با او ازدواج کنم، \"بله\" می گفتم."
+    },
+    {
+     "id": "g12-cond-47",
+     "n": 47,
+     "type": "mcq",
+     "question": "If my grandmother -------------------- smoke, she -------------------- a lot healthier.",
+     "options": [
+      "didn’t / would be",
+      "wouldn’t / were",
+      "doesn’t / could be",
+      "won’t / is"
+     ],
+     "answer": 0,
+     "translation": "اگر مادربزرگم سیگار نمی کشید، او خیلی سالمتر می بود."
+    },
+    {
+     "id": "g12-cond-48",
+     "n": 48,
+     "type": "mcq",
+     "question": "A lot of health problems could be prevented if people -------------------- better.",
+     "options": [
+      "would eat",
+      "ate",
+      "will eat",
+      "have eaten"
+     ],
+     "answer": 1,
+     "translation": "جلوی خیلی از مشکلات سلامتی می توانست گرفته شود اگر مردم بهتر غذا می خوردند. (غذاهای بهتری می خوردند.)"
+    },
+    {
+     "id": "g12-cond-49",
+     "n": 49,
+     "type": "mcq",
+     "question": "If you lend me some money, I -------------------- you back before the end of the month.",
+     "options": [
+      "would pay",
+      "paid",
+      "will pay",
+      "might pay"
+     ],
+     "answer": 2,
+     "translation": "اگر شما به من مقداری پول قرض بدهید، من قبل از آخر همین ماه به شما آن را برخواهم گرداند."
+    },
+    {
+     "id": "g12-cond-50",
+     "n": 50,
+     "type": "mcq",
+     "question": "You -------------------- so many accidents if you drove more carefully.",
+     "options": [
+      "wouldn’t have",
+      "had",
+      "didn’t have",
+      "haven’t had"
+     ],
+     "answer": 0,
+     "translation": "شما تصادفات خیلی زیادی نمی کردید اگر با دقت بیشتری رانندگی می کردید."
+    },
+    {
+     "id": "g12-cond-51",
+     "n": 51,
+     "type": "mcq",
+     "question": "I don’t know anything about cars. If the car broke down, what --------------------?",
+     "options": [
+      "I would have done",
+      "will I do",
+      "could I have done",
+      "would I do"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-cond-52",
+     "n": 52,
+     "type": "mcq",
+     "question": "What -------------------- to your family if you leave them? They depend on you.",
+     "options": [
+      "will happen",
+      "has happened",
+      "could happen",
+      "should happen"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-cond-53",
+     "n": 53,
+     "type": "mcq",
+     "question": "I -------------------- to a movie tonight if I -------------------- any homework to do.",
+     "options": [
+      "would go / don’t have",
+      "would go / didn’t have",
+      "go / don’t have",
+      "could go / won't have"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-cond-54",
+     "n": 54,
+     "type": "mcq",
+     "question": "Sally -------------------- the phone if she -------------------- in her office in the morning.",
+     "options": [
+      "would answer / was",
+      "would answer/ were",
+      "answers / will be",
+      "will answer / will be"
+     ],
+     "answer": 1
+    }
+   ],
+   "count": 18,
+   "level": "آموزشی و کنکوری — سرصفحهٔ خود جزوه"
+  },
+  {
+   "lesson": 330,
+   "title": "جمله‌های شرطی — بانک ۴ (ص۹۸-۹۹)",
+   "questions": [
+    {
+     "id": "g12-cond-55",
+     "n": 55,
+     "type": "mcq",
+     "question": "If I had eaten breakfast --------------------.",
+     "options": [
+      "I will not feel hungry now",
+      "I will be feeling hungry now",
+      "I won’t feel hungry now",
+      "I wouldn’t have felt hungry now"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-cond-56",
+     "n": 56,
+     "type": "mcq",
+     "question": "Tell me what to do, where to go, and what to expect if I -------------------- your home town as a tourist.",
+     "options": [
+      "visited",
+      "would visit",
+      "visit",
+      "have visited"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-cond-57",
+     "n": 57,
+     "type": "mcq",
+     "question": "If I went anywhere, it -------------------- Italy; it's a wonderful country, and I can already speak Italian.",
+     "options": [
+      "will be",
+      "would be",
+      "would have been",
+      "had been"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-cond-58",
+     "n": 58,
+     "type": "mcq",
+     "question": "If you had to teach your language to a person who knew nothing at all about your language, --------------------?",
+     "options": [
+      "how would you begin",
+      "how you would begin",
+      "how did you begin",
+      "how had you begun"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-cond-59",
+     "n": 59,
+     "type": "mcq",
+     "question": "I am sure he -------------------- his parents if he became rich.",
+     "options": [
+      "is looking after",
+      "will look after",
+      "would look after",
+      "looks after"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-cond-60",
+     "n": 60,
+     "type": "mcq",
+     "question": "A: Are you coming to the party? B: I don’t think so, but if I -------------------- my mind, I -------------------- you.",
+     "options": [
+      "have changed / will tell",
+      "changed / would tell",
+      "changed / will tell",
+      "change / will tell"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-cond-61",
+     "n": 61,
+     "type": "mcq",
+     "question": "If the music were better at the party, everybody --------------------.",
+     "options": [
+      "could dance",
+      "will dance",
+      "was dancing",
+      "is dancing"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-cond-62",
+     "n": 62,
+     "type": "mcq",
+     "question": "If I were living in Brazil, I -------------------- at a bank.",
+     "options": [
+      "will be working",
+      "would be working",
+      "will work",
+      "have worked"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-cond-63",
+     "n": 63,
+     "type": "mcq",
+     "question": "If we -------------------- machines, we -------------------- the work much more easily.",
+     "options": [
+      "used / will finish",
+      "uses / finish",
+      "were using / may finish",
+      "use / can finish"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-cond-64",
+     "n": 64,
+     "type": "mcq",
+     "question": "Jane hasn’t been in a good mood recently because of her father’s death. I believe she -------------------- happy if we -------------------- her to the party.",
+     "options": [
+      "becomes / invited",
+      "will become / invited",
+      "will be / invite",
+      "is / invited"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-cond-65",
+     "n": 65,
+     "type": "mcq",
+     "question": "You -------------------- a brilliant and successful teacher in the future if you study hard. To be a good teacher, you also need to be patient and kind enough.",
+     "options": [
+      "are become",
+      "will be become",
+      "will become",
+      "have become"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-cond-66",
+     "n": 66,
+     "type": "mcq",
+     "question": "Your mother won’t buy that beautiful bicycle you showed us yesterday for you if you -------------------- your exams. So, study your lessons as much as possible.",
+     "options": [
+      "will fail",
+      "are failing",
+      "failed",
+      "fail"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-cond-67",
+     "n": 67,
+     "type": "mcq",
+     "question": "If you -------------------- to have a healthy body, you -------------------- do a lot of exercise.",
+     "options": [
+      "want / should",
+      "are going to want / may",
+      "have wanted / could",
+      "want / will"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-cond-68",
+     "n": 68,
+     "type": "mcq",
+     "question": "Which of the following sentences is grammatically WRONG?",
+     "options": [
+      "If you mix red and yellow, you’ll get orange.",
+      "If you decide to have a birthday party, tell me!",
+      "We’ll miss the train if you're late.",
+      "Paper makes a lot of smoke if it’ll burn."
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-cond-69",
+     "n": 69,
+     "type": "mcq",
+     "question": "If you decide to go to the central department store, -------------------- some shopping for me?",
+     "options": [
+      "will you do",
+      "you will do",
+      "do you do",
+      "you can do"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-cond-70",
+     "n": 70,
+     "type": "mcq",
+     "question": "I think the air will be clean if people --------------------.",
+     "options": [
+      "used public transportation",
+      "will walk to work",
+      "would cycle to work",
+      "stop driving their own cars"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-cond-71",
+     "n": 71,
+     "type": "mcq",
+     "question": "We’ll be late --------------------.",
+     "options": [
+      "if you don’t hurry",
+      "if the train didn’t come",
+      "if we won’t take a taxi",
+      "if you woke up late"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-cond-72",
+     "n": 72,
+     "type": "mcq",
+     "question": "The math teacher -------------------- let the students leave the class if they don’t finish their homework carefully.",
+     "options": [
+      "will not",
+      "do not",
+      "would",
+      "will"
+     ],
+     "answer": 0
+    }
+   ],
+   "count": 18,
+   "level": "آموزشی و کنکوری — سرصفحهٔ خود جزوه"
   }
  ]
 }
