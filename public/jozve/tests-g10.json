@@ -1,0 +1,1105 @@
+{
+ "grade": 10,
+ "lessons": [
+  {
+   "lesson": 1,
+   "title": "تشریحی — جای خالی از بانک واژه (ص۴۹)",
+   "level": "تشریحی — تایپی",
+   "count": 16,
+   "questions": [
+    {
+     "id": "g10-l1-1",
+     "n": 1,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "My brother --------------- a little boy from falling into the water. [bank: take care / pay attention / saved / died out / divided / increase / destroy / choose / protecting]",
+     "options": [
+      "pay attention",
+      "saved",
+      "died out",
+      "divided",
+      "increase",
+      "destroy",
+      "choose",
+      "protecting",
+      "take care"
+     ],
+     "answer": 0,
+     "accepted": [
+      "saved"
+     ],
+     "placeholder": "fill in the blank with the bank word…"
+    },
+    {
+     "id": "g10-l1-2",
+     "n": 2,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "--------------- the trees is helpful for endangered animals. [bank: take care / pay attention / saved / died out / divided / increase / destroy / choose / protecting]",
+     "options": [
+      "saved",
+      "died out",
+      "divided",
+      "increase",
+      "destroy",
+      "choose",
+      "protecting",
+      "take care",
+      "pay attention"
+     ],
+     "answer": 0,
+     "accepted": [
+      "protecting"
+     ],
+     "placeholder": "fill in the blank with the bank word…"
+    },
+    {
+     "id": "g10-l1-3",
+     "n": 3,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "If we --------------- of cheetahs, the number of them will increase. [bank: take care / pay attention / saved / died out / divided / increase / destroy / choose / protecting]",
+     "options": [
+      "died out",
+      "divided",
+      "increase",
+      "destroy",
+      "choose",
+      "protecting",
+      "take care",
+      "pay attention",
+      "saved"
+     ],
+     "answer": 0,
+     "accepted": [
+      "take care"
+     ],
+     "placeholder": "fill in the blank with the bank word…"
+    },
+    {
+     "id": "g10-l1-4",
+     "n": 4,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "The workers want to --------------- the old house. [bank: take care / pay attention / saved / died out / divided / increase / destroy / choose / protecting]",
+     "options": [
+      "divided",
+      "increase",
+      "destroy",
+      "choose",
+      "protecting",
+      "take care",
+      "pay attention",
+      "saved",
+      "died out"
+     ],
+     "answer": 0,
+     "accepted": [
+      "destroy"
+     ],
+     "placeholder": "fill in the blank with the bank word…"
+    },
+    {
+     "id": "g10-l1-5",
+     "n": 5,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "There are a lot of restaurants to --------------- from. [bank: take care / pay attention / saved / died out / divided / increase / destroy / choose / protecting]",
+     "options": [
+      "increase",
+      "destroy",
+      "choose",
+      "protecting",
+      "take care",
+      "pay attention",
+      "saved",
+      "died out",
+      "divided"
+     ],
+     "answer": 0,
+     "accepted": [
+      "choose"
+     ],
+     "placeholder": "fill in the blank with the bank word…"
+    },
+    {
+     "id": "g10-l1-6",
+     "n": 6,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "Did you know that the Persian lion --------------- many years ago? [bank: take care / pay attention / saved / died out / divided / increase / destroy / choose / protecting]",
+     "options": [
+      "destroy",
+      "choose",
+      "protecting",
+      "take care",
+      "pay attention",
+      "saved",
+      "died out",
+      "divided",
+      "increase"
+     ],
+     "answer": 0,
+     "accepted": [
+      "died out"
+     ],
+     "placeholder": "fill in the blank with the bank word…"
+    },
+    {
+     "id": "g10-l1-7",
+     "n": 7,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "When your teacher is teaching, you must --------------- to him. [bank: take care / pay attention / saved / died out / divided / increase / destroy / choose / protecting]",
+     "options": [
+      "choose",
+      "protecting",
+      "take care",
+      "pay attention",
+      "saved",
+      "died out",
+      "divided",
+      "increase",
+      "destroy"
+     ],
+     "answer": 0,
+     "accepted": [
+      "pay attention"
+     ],
+     "placeholder": "fill in the blank with the bank word…"
+    },
+    {
+     "id": "g10-l1-8",
+     "n": 8,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "We cannot hear you, --------------- the volume of your voice. [bank: take care / pay attention / saved / died out / divided / increase / destroy / choose / protecting]",
+     "options": [
+      "protecting",
+      "take care",
+      "pay attention",
+      "saved",
+      "died out",
+      "divided",
+      "increase",
+      "destroy",
+      "choose"
+     ],
+     "answer": 0,
+     "accepted": [
+      "increase"
+     ],
+     "placeholder": "fill in the blank with the bank word…"
+    },
+    {
+     "id": "g10-l1-9",
+     "n": 9,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "It’s --------------- for parents to feel sad when their children leave home. [bank: recently / amazing / plain / natural / endangered / instead / future / injured / living]",
+     "options": [
+      "recently",
+      "amazing",
+      "plain",
+      "natural",
+      "endangered",
+      "instead",
+      "future",
+      "injured",
+      "living"
+     ],
+     "answer": 0,
+     "accepted": [
+      "natural"
+     ],
+     "placeholder": "fill in the blank with the bank word…"
+    },
+    {
+     "id": "g10-l1-10",
+     "n": 10,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "School students will learn to help --------------- animals. [bank: recently / amazing / plain / natural / endangered / instead / future / injured / living]",
+     "options": [
+      "amazing",
+      "plain",
+      "natural",
+      "endangered",
+      "instead",
+      "future",
+      "injured",
+      "living",
+      "recently"
+     ],
+     "answer": 0,
+     "accepted": [
+      "injured"
+     ],
+     "placeholder": "fill in the blank with the bank word…"
+    },
+    {
+     "id": "g10-l1-11",
+     "n": 11,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "His ability to write with his foot is ---------------. [bank: recently / amazing / plain / natural / endangered / instead / future / injured / living]",
+     "options": [
+      "plain",
+      "natural",
+      "endangered",
+      "instead",
+      "future",
+      "injured",
+      "living",
+      "recently",
+      "amazing"
+     ],
+     "answer": 0,
+     "accepted": [
+      "amazing"
+     ],
+     "placeholder": "fill in the blank with the bank word…"
+    },
+    {
+     "id": "g10-l1-12",
+     "n": 12,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "We need to plan for the ---------------. [bank: recently / amazing / plain / natural / endangered / instead / future / injured / living]",
+     "options": [
+      "natural",
+      "endangered",
+      "instead",
+      "future",
+      "injured",
+      "living",
+      "recently",
+      "amazing",
+      "plain"
+     ],
+     "answer": 0,
+     "accepted": [
+      "future"
+     ],
+     "placeholder": "fill in the blank with the bank word…"
+    },
+    {
+     "id": "g10-l1-13",
+     "n": 13,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "Humans need more places for ---------------, when their number increases. [bank: recently / amazing / plain / natural / endangered / instead / future / injured / living]",
+     "options": [
+      "endangered",
+      "instead",
+      "future",
+      "injured",
+      "living",
+      "recently",
+      "amazing",
+      "plain",
+      "natural"
+     ],
+     "answer": 0,
+     "accepted": [
+      "living"
+     ],
+     "placeholder": "fill in the blank with the bank word…"
+    },
+    {
+     "id": "g10-l1-14",
+     "n": 14,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "Now I can walk to work --------------- of going by car. [bank: recently / amazing / plain / natural / endangered / instead / future / injured / living]",
+     "options": [
+      "instead",
+      "future",
+      "injured",
+      "living",
+      "recently",
+      "amazing",
+      "plain",
+      "natural",
+      "endangered"
+     ],
+     "answer": 0,
+     "accepted": [
+      "instead"
+     ],
+     "placeholder": "fill in the blank with the bank word…"
+    },
+    {
+     "id": "g10-l1-15",
+     "n": 15,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "Our teacher says that --------------- he cannot get enough sleep. [bank: recently / amazing / plain / natural / endangered / instead / future / injured / living]",
+     "options": [
+      "future",
+      "injured",
+      "living",
+      "recently",
+      "amazing",
+      "plain",
+      "natural",
+      "endangered",
+      "instead"
+     ],
+     "answer": 0,
+     "accepted": [
+      "recently"
+     ],
+     "placeholder": "fill in the blank with the bank word…"
+    },
+    {
+     "id": "g10-l1-16",
+     "n": 16,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "Some places give good information about how to protect --------------- animals. [bank: recently / amazing / plain / natural / endangered / instead / future / injured / living]",
+     "options": [
+      "injured",
+      "living",
+      "recently",
+      "amazing",
+      "plain",
+      "natural",
+      "endangered",
+      "instead",
+      "future"
+     ],
+     "answer": 0,
+     "accepted": [
+      "endangered"
+     ],
+     "placeholder": "fill in the blank with the bank word…"
+    }
+   ]
+  },
+  {
+   "lesson": 2,
+   "title": "تشریحی — کلمه با حرف اول (ص۴۹)",
+   "level": "تشریحی — تایپی",
+   "count": 8,
+   "questions": [
+    {
+     "id": "g10-l2-1",
+     "n": 1,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "The e _ _ _ _ goes round the sun once a year.",
+     "options": [
+      "earth",
+      "elephant",
+      "plain",
+      "hunter",
+      "spring",
+      "mountain",
+      "forest",
+      "visitor"
+     ],
+     "answer": 0,
+     "accepted": [
+      "earth"
+     ],
+     "placeholder": "complete the word (first letter is given)…"
+    },
+    {
+     "id": "g10-l2-2",
+     "n": 2,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "An e _ _ _ _ _ _ _ is a very big wild animal from Africa or Asia.",
+     "options": [
+      "elephant",
+      "plain",
+      "hunter",
+      "spring",
+      "mountain",
+      "forest",
+      "visitor",
+      "earth"
+     ],
+     "answer": 0,
+     "accepted": [
+      "elephant"
+     ],
+     "placeholder": "complete the word (first letter is given)…"
+    },
+    {
+     "id": "g10-l2-3",
+     "n": 3,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "A large piece of flat land is called p _ _ _ _.",
+     "options": [
+      "plain",
+      "hunter",
+      "spring",
+      "mountain",
+      "forest",
+      "visitor",
+      "earth",
+      "elephant"
+     ],
+     "answer": 0,
+     "accepted": [
+      "plain"
+     ],
+     "placeholder": "complete the word (first letter is given)…"
+    },
+    {
+     "id": "g10-l2-4",
+     "n": 4,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "A h _ _ _ _ _ is a person who hunts wild animals for food or sport.",
+     "options": [
+      "hunter",
+      "spring",
+      "mountain",
+      "forest",
+      "visitor",
+      "earth",
+      "elephant",
+      "plain"
+     ],
+     "answer": 0,
+     "accepted": [
+      "hunter"
+     ],
+     "placeholder": "complete the word (first letter is given)…"
+    },
+    {
+     "id": "g10-l2-5",
+     "n": 5,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "S _ _ _ _ _ is the first season of the year.",
+     "options": [
+      "spring",
+      "mountain",
+      "forest",
+      "visitor",
+      "earth",
+      "elephant",
+      "plain",
+      "hunter"
+     ],
+     "answer": 0,
+     "accepted": [
+      "spring"
+     ],
+     "placeholder": "complete the word (first letter is given)…"
+    },
+    {
+     "id": "g10-l2-6",
+     "n": 6,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "Everest is the highest m _ _ _ _ _ _ _ in the world.",
+     "options": [
+      "mountain",
+      "forest",
+      "visitor",
+      "earth",
+      "elephant",
+      "plain",
+      "hunter",
+      "spring"
+     ],
+     "answer": 0,
+     "accepted": [
+      "mountain"
+     ],
+     "placeholder": "complete the word (first letter is given)…"
+    },
+    {
+     "id": "g10-l2-7",
+     "n": 7,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "A big piece of land with a lot of trees is called f _ _ _ _.",
+     "options": [
+      "forest",
+      "visitor",
+      "earth",
+      "elephant",
+      "plain",
+      "hunter",
+      "spring",
+      "mountain"
+     ],
+     "answer": 0,
+     "accepted": [
+      "forest"
+     ],
+     "placeholder": "complete the word (first letter is given)…"
+    },
+    {
+     "id": "g10-l2-8",
+     "n": 8,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "A v _ _ _ _ _ _ is a person who goes to see another person or a place for a short time.",
+     "options": [
+      "visitor",
+      "earth",
+      "elephant",
+      "plain",
+      "hunter",
+      "spring",
+      "mountain",
+      "forest"
+     ],
+     "answer": 0,
+     "accepted": [
+      "visitor"
+     ],
+     "placeholder": "complete the word (first letter is given)…"
+    }
+   ]
+  },
+  {
+   "lesson": 3,
+   "title": "تشریحی — تعریف‌ها، بنویسید (ص۵۰)",
+   "level": "تشریحی — تایپی",
+   "count": 8,
+   "questions": [
+    {
+     "id": "g10-l3-1",
+     "n": 1,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "Everything in the world that was not made by people:",
+     "options": [
+      "lake",
+      "plan",
+      "phrase",
+      "zebra",
+      "nature",
+      "danger",
+      "hope",
+      "road",
+      "whale"
+     ],
+     "answer": 0,
+     "accepted": [
+      "nature"
+     ],
+     "placeholder": "type the word for the definition…"
+    },
+    {
+     "id": "g10-l3-2",
+     "n": 2,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "Something that you decide to do, and how to do it:",
+     "options": [
+      "plan",
+      "phrase",
+      "zebra",
+      "nature",
+      "danger",
+      "hope",
+      "road",
+      "whale",
+      "lake"
+     ],
+     "answer": 0,
+     "accepted": [
+      "plan"
+     ],
+     "placeholder": "type the word for the definition…"
+    },
+    {
+     "id": "g10-l3-3",
+     "n": 3,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "A feeling of wanting something to happen and thinking that it will:",
+     "options": [
+      "phrase",
+      "zebra",
+      "nature",
+      "danger",
+      "hope",
+      "road",
+      "whale",
+      "lake",
+      "plan"
+     ],
+     "answer": 0,
+     "accepted": [
+      "hope"
+     ],
+     "placeholder": "type the word for the definition…"
+    },
+    {
+     "id": "g10-l3-4",
+     "n": 4,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "The way from one place to another, where cars can go:",
+     "options": [
+      "zebra",
+      "nature",
+      "danger",
+      "hope",
+      "road",
+      "whale",
+      "lake",
+      "plan",
+      "phrase"
+     ],
+     "answer": 0,
+     "accepted": [
+      "road"
+     ],
+     "placeholder": "type the word for the definition…"
+    },
+    {
+     "id": "g10-l3-5",
+     "n": 5,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "A big area of water with land all around it:",
+     "options": [
+      "nature",
+      "danger",
+      "hope",
+      "road",
+      "whale",
+      "lake",
+      "plan",
+      "phrase",
+      "zebra"
+     ],
+     "answer": 0,
+     "accepted": [
+      "lake"
+     ],
+     "placeholder": "type the word for the definition…"
+    },
+    {
+     "id": "g10-l3-6",
+     "n": 6,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "A very big animal that lives in the sea and looks like a very big fish:",
+     "options": [
+      "danger",
+      "hope",
+      "road",
+      "whale",
+      "lake",
+      "plan",
+      "phrase",
+      "zebra",
+      "nature"
+     ],
+     "answer": 0,
+     "accepted": [
+      "whale"
+     ],
+     "placeholder": "type the word for the definition…"
+    },
+    {
+     "id": "g10-l3-7",
+     "n": 7,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "An African wild animal like a horse, with black and white lines on its body:",
+     "options": [
+      "hope",
+      "road",
+      "whale",
+      "lake",
+      "plan",
+      "phrase",
+      "zebra",
+      "nature",
+      "danger"
+     ],
+     "answer": 0,
+     "accepted": [
+      "zebra"
+     ],
+     "placeholder": "type the word for the definition…"
+    },
+    {
+     "id": "g10-l3-8",
+     "n": 8,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "A group of words that you use together as part of a sentence:",
+     "options": [
+      "road",
+      "whale",
+      "lake",
+      "plan",
+      "phrase",
+      "zebra",
+      "nature",
+      "danger",
+      "hope"
+     ],
+     "answer": 0,
+     "accepted": [
+      "phrase"
+     ],
+     "placeholder": "type the word for the definition…"
+    }
+   ]
+  },
+  {
+   "lesson": 4,
+   "title": "تشریحی — تست چهارگزینه‌ای (ص۵۰-۵۱)",
+   "level": "تشریحی — چهارگزینه‌ای",
+   "count": 25,
+   "questions": [
+    {
+     "id": "g10-l4-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "The Iranian cheetah is --------------- endangered animals.",
+     "options": [
+      "anymore",
+      "among",
+      "wildlife",
+      "common"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g10-l4-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "After the Second World War, Germany was --------------- into two separate countries.",
+     "options": [
+      "identified",
+      "hoped",
+      "underlined",
+      "divided"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g10-l4-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "I’m not --------------- in reading long stories.",
+     "options": [
+      "take care",
+      "attention",
+      "hopeful",
+      "interested"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g10-l4-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "We just had soup --------------- of a full meal.",
+     "options": [
+      "such",
+      "instead",
+      "enough",
+      "appropriate"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g10-l4-5",
+     "n": 5,
+     "category": "vocab",
+     "question": "The car is very small, --------------- if you have children.",
+     "options": [
+      "recently",
+      "naturally",
+      "especially",
+      "normally"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g10-l4-6",
+     "n": 6,
+     "category": "vocab",
+     "question": "My brother brought the --------------- bird into the room and took care of it.",
+     "options": [
+      "injured",
+      "endangered",
+      "natural",
+      "relative"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g10-l4-7",
+     "n": 7,
+     "category": "vocab",
+     "question": "There is a --------------- wall round the garden.",
+     "options": [
+      "proper",
+      "marker",
+      "low",
+      "boring"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g10-l4-8",
+     "n": 8,
+     "category": "vocab",
+     "question": "I called the firefighters to ---------------  the fire in the city center.",
+     "options": [
+      "put out",
+      "cut down",
+      "turn off",
+      "pay attention"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g10-l4-9",
+     "n": 9,
+     "category": "vocab",
+     "question": "There are lots of things in that shop, for ---------------, games toys, and flowers.",
+     "options": [
+      "different",
+      "future",
+      "example",
+      "recently"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g10-l4-10",
+     "n": 10,
+     "category": "vocab",
+     "question": "I think they should --------------- the number of the buses.",
+     "options": [
+      "hurt",
+      "choose",
+      "destroy",
+      "increase"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g10-l4-11",
+     "n": 11,
+     "category": "vocab",
+     "question": "When you --------------- your family, you try to help them.",
+     "options": [
+      "match",
+      "protect",
+      "take care",
+      "hear"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g10-l4-12",
+     "n": 12,
+     "category": "vocab",
+     "question": "We had to change our --------------- because the bus arrived late.",
+     "options": [
+      "plain",
+      "report",
+      "information",
+      "schedule"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g10-l4-13",
+     "n": 13,
+     "category": "vocab",
+     "question": "Endangered animals need --------------- and attention.",
+     "options": [
+      "protection",
+      "hope",
+      "enough",
+      "intonation"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g10-l4-14",
+     "n": 14,
+     "category": "vocab",
+     "question": "I --------------- a terrible noise last night. Do you know what it was?",
+     "options": [
+      "filled",
+      "heard",
+      "chose",
+      "increased"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g10-l4-15",
+     "n": 15,
+     "category": "vocab",
+     "question": "In the past, many hunters didn’t --------------- attention to wildlife.",
+     "options": [
+      "take",
+      "pay",
+      "hurt",
+      "save"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g10-l4-16",
+     "n": 16,
+     "category": "vocab",
+     "question": "I bought some material and a/an --------------- to make a new dress.",
+     "options": [
+      "phrase",
+      "idea",
+      "marker",
+      "pattern"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g10-l4-17",
+     "n": 17,
+     "category": "vocab",
+     "question": "The building was completely --------------- by fire.",
+     "options": [
+      "identified",
+      "divided",
+      "destroyed",
+      "increased"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g10-l4-18",
+     "n": 18,
+     "category": "vocab",
+     "question": "---------------, we will arrive before dark.",
+     "options": [
+      "Recently",
+      "Hopefully",
+      "Especially",
+      "Orally"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g10-l4-19",
+     "n": 19,
+     "category": "vocab",
+     "question": "I ---------------  my pocket money in the street yesterday.",
+     "options": [
+      "destroyed",
+      "put out",
+      "paid",
+      "lost"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g10-l4-20",
+     "n": 20,
+     "category": "vocab",
+     "question": "I like to see the --------------- home of some animals.",
+     "options": [
+      "natural",
+      "human",
+      "correct",
+      "plural"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g10-l4-21",
+     "n": 21,
+     "category": "vocab",
+     "question": "I am free tonight. I’m going to read some ---------------.",
+     "options": [
+      "dangers",
+      "types",
+      "poems",
+      "plains"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g10-l4-22",
+     "n": 22,
+     "category": "vocab",
+     "question": "One of our relatives is a --------------- in Tehran.",
+     "options": [
+      "passage",
+      "zookeeper",
+      "schedule",
+      "spring"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g10-l4-23",
+     "n": 23,
+     "category": "vocab",
+     "question": "I saw some --------------- in the street yesterday.",
+     "options": [
+      "natural",
+      "human",
+      "mice",
+      "plural"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g10-l4-24",
+     "n": 24,
+     "category": "vocab",
+     "question": "Do you know the --------------- way to shut the machine down?",
+     "options": [
+      "correct",
+      "low",
+      "falling",
+      "blank"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g10-l4-25",
+     "n": 25,
+     "category": "vocab",
+     "question": "Many homes, schools, mosques and offices were damaged and thousands of --------------- people were taken to hospitals.",
+     "options": [
+      "hopeful",
+      "injured",
+      "dangerous",
+      "endangered"
+     ],
+     "answer": 1
+    }
+   ]
+  }
+ ],
+ "source": {
+  "file": "جزوه جامع دهم .pdf",
+  "exam": "آزمون تشریحی واژگان درس اول (آزمون: ص۴۹ تا ۵۱)",
+  "sections": {
+   "1": "جای خالی از بانک واژه — دو بانک ۹ کلمه‌ای (یک کلمه اضافه) — ۱۶ آیتم",
+   "2": "کلمه با حرف اول — ۸ آیتم (شمارشِ حرفِ چاپ با کلید هم‌خوان؛ استثنا: Q7 «f _ _ _ _» برای forest شش‌حرفی — زیرخطِ کمِ چاپ، کلیدِ ص۲۴۲ حاکم)",
+   "3": "تعریف‌ها، بنویسید — بانک ۹ کلمه‌ای (یک اضافه: danger) — ۸ آیتم",
+   "4": "تست چهارگزینه‌ای — ۲۵ آیتم"
+  },
+  "keyPages": "242",
+  "keyVerification": "print key p242 «پاسخنامه آزمون تشریحی واژگان درس اول» — 57/57 agree with semantic pre-fill, zero divergence",
+  "extractedRound": "r323",
+  "pattern": "r311 (tests-g11 تشریحی) — ۴ بانک / ۵۷ آیتم؛ typed-engine r285/r289",
+  "translations": "برای این آزمون در جزوه چاپ نشده است (غیبتِ صادقانه)"
+ }
+}

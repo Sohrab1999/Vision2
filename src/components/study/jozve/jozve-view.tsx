@@ -142,6 +142,17 @@ interface JozveTestBank {
   lessons: { lesson: number; title: string; level: string; count: number; questions: JozveTestQuestion[] }[];
 }
 const GRADE_TESTS: Record<number, { lessons: { lesson: number; title: string; count: number; group?: string }[] }> = {
+  10: {
+    lessons: [
+      // r323 — «آزمون تشریحی واژگان درس اول» (ص۴۹-۵۱، کلید چاپی ص۲۴۲) — ۴ بانک/۵۷ آیتم؛
+      // الگوی r311: سه بانک تایپی (بانک‌واژه، حرف اول، تعریف‌ها) + MCQ با کلید واژه‌ای چاپ؛
+      // نخستین پایه‌ای که با خواستهٔ صریح کاربر («درس‌های هر پایه») به GRADE_TESTS اضافه شد
+      { lesson: 1, title: "تشریحی — جای خالی از بانک واژه (ص۴۹)", count: 16, group: "آزمون تشریحی واژگان درس اول" },
+      { lesson: 2, title: "تشریحی — کلمه با حرف اول (ص۴۹)", count: 8, group: "آزمون تشریحی واژگان درس اول" },
+      { lesson: 3, title: "تشریحی — تعریف‌ها، بنویسید (ص۵۰)", count: 8, group: "آزمون تشریحی واژگان درس اول" },
+      { lesson: 4, title: "تشریحی — تست چهارگزینه‌ای (ص۵۰-۵۱)", count: 25, group: "آزمون تشریحی واژگان درس اول" },
+    ],
+  },
   11: {
     lessons: [
       // r311 — «آزمون تشریحی واژگان درس اول» (ص۱۶-۱۸، کلید واژه‌ای ص۱۷۶) — ۴ بانک/۵۷ آیتم؛
