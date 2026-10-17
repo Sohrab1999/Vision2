@@ -58,9 +58,9 @@ const OPEN_KEYS: Record<number, string> = {
 };
 
 describe("jozve topic grammar bank g12 — comprehensive exam lesson 1 (r289 extraction receipt)", () => {
-  it("bank shape: one hundred ninety lessons, comprehensive exam adds 13 banks / 59 items (family 1166)", () => {
+  it("bank shape: two hundred eight lessons, comprehensive exam adds 13 banks / 59 items (family 1227)", () => {
     expect(bank.lessons.map((l) => l.lesson)).toEqual(
-      Array.from({ length: 190 }, (_, i) => i + 1)
+      Array.from({ length: 208 }, (_, i) => i + 1)
     );
     const counts: Record<number, number> = { 24: 8, 25: 4, 26: 4, 27: 4, 28: 4, 29: 4, 30: 4, 31: 4, 32: 4, 33: 4, 34: 6, 35: 5, 36: 4 };
     const levels: Record<number, string> = { 25: "استاندارد", 27: "استاندارد", 32: "استاندارد", 36: "استاندارد" };
@@ -77,7 +77,7 @@ describe("jozve topic grammar bank g12 — comprehensive exam lesson 1 (r289 ext
     // آزمون جامع: ۵۹ آیتم در ۱۳ بانک — خانواده: ۵۱۵ + ۵۹ = ۵۷۴
     const compTotal = COMP.reduce((a, n) => a + L(n).count, 0);
     expect(compTotal).toBe(59);
-    expect(bank.lessons.reduce((a, l) => a + l.count, 0)).toBe(1166);
+    expect(bank.lessons.reduce((a, l) => a + l.count, 0)).toBe(1227);
   });
 
   it("typed vocab bank 24: all 8 printed keys (p195), closed 9-word bank scaffolds, calmly is the printed extra word", () => {
@@ -273,10 +273,10 @@ describe("jozve topic grammar bank g12 — comprehensive exam lesson 1 (r289 ext
     }
   });
 
-  it("id uniqueness across the whole 190-bank family (1166 ids) + comprehensive banks introduce zero new stem collisions", () => {
+  it("id uniqueness across the whole 208-bank family (1227 ids) + comprehensive banks introduce zero new stem collisions", () => {
     const all = bank.lessons.flatMap((l) => l.questions);
     const ids = new Set(all.map((q) => q.id));
-    expect(ids.size).toBe(1166);
+    expect(ids.size).toBe(1227);
     const stems = new Set(
       bank.lessons
         .filter((l) => l.lesson < 24)
