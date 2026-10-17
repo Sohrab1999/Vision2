@@ -134,6 +134,7 @@ interface JozveTestQuestion {
   translation?: string;
   kind?: "mcq" | "typed"; // r285 — پاسخ تایپیِ «بنویسید»
   accepted?: string[];
+  placeholder?: string; // r289 — راهنمای ورودیِ وابسته به بخش
 }
 interface JozveTestBank {
   grade: number;
@@ -263,6 +264,20 @@ const GRADE_GRAMMAR_TOPIC: Record<number, { lessons: { lesson: number; title: st
       // r288 — تکمیل آزمون تشریحی: بخش ۸ «کامل کنید» + بخش ۹ متن ۴خالی (ص۵۴، کلید ص۱۹۴) — گروه اکنون ۹ بانک / ۱۱۰ آیتم
       { lesson: 22, title: "کلمات ربط — کامل کنید، بنویسید (ص۵۴)", count: 12, group: "آزمون تشریحی درس اول" },
       { lesson: 23, title: "کلمات ربط — متن ۴خالی، بنویسید (ص۵۴)", count: 4, group: "آزمون تشریحی درس اول" },
+      // r289 — آزمون جامع تشریحی درس اول (ص۵۵-۵۸، کلید ص۱۹۵-۱۹۶) — ۱۳ بانک / ۵۹ آیتم؛ بخش ۱ تصویری است (رسیدِ غیبت در source.comprehensive)
+      { lesson: 24, title: "واژگان: جای خالی از بانک، بنویسید (ص۵۵)", count: 8, group: "آزمون جامع درس اول" },
+      { lesson: 25, title: "واژگان: ترکیب‌ها، ۵ گزینهٔ چاپی (ص۵۵)", count: 4, group: "آزمون جامع درس اول" },
+      { lesson: 26, title: "واژگان: تعریف‌ها، بنویسید (ص۵۵)", count: 4, group: "آزمون جامع درس اول" },
+      { lesson: 27, title: "تست چهارگزینه‌ای مجهول (ص۵۶)", count: 4, group: "آزمون جامع درس اول" },
+      { lesson: 28, title: "عبارات الحاق، بنویسید (ص۵۶)", count: 4, group: "آزمون جامع درس اول" },
+      { lesson: 29, title: "مجهول‌سازی سه‌زمان، بنویسید (ص۵۶)", count: 4, group: "آزمون جامع درس اول" },
+      { lesson: 30, title: "جمله‌سازی معلوم/مجهول، بنویسید (ص۵۶)", count: 4, group: "آزمون جامع درس اول" },
+      { lesson: 31, title: "کلمات ربط، کامل کنید (ص۵۶)", count: 4, group: "آزمون جامع درس اول" },
+      { lesson: 32, title: "جفت‌سازی دو ستون (ص۵۷)", count: 4, group: "آزمون جامع درس اول" },
+      { lesson: 33, title: "مرتب‌کردن کلمات، بنویسید (ص۵۷)", count: 4, group: "آزمون جامع درس اول" },
+      { lesson: 34, title: "متن ۶خالی حسن عمیدزاده، بنویسید (ص۵۷)", count: 6, group: "آزمون جامع درس اول" },
+      { lesson: 35, title: "ریدینگ: پرسش پاسخ + درست/نادرست (ص۵۷-۵۸)", count: 5, group: "آزمون جامع درس اول" },
+      { lesson: 36, title: "ریدینگ: تست چهارگزینه‌ای گوش‌ها (ص۵۸)", count: 4, group: "آزمون جامع درس اول" },
     ],
   },
 };
@@ -498,6 +513,8 @@ export default function JozveView() {
           ...(q.translation ? { translation: q.translation } : {}),
           // r285 — سؤال تایپی: kind/accepted باید به موتور برسد
           ...(q.kind === "typed" ? { kind: "typed" as const, accepted: q.accepted ?? [] } : {}),
+          // r289 — راهنمای ورودیِ داده‌محور (بانک‌های آزمون جامع)
+          ...(q.placeholder ? { placeholder: q.placeholder } : {}),
         }));
         setTestSession({
           title: `آزمون گرامر موضوعی جزوه — ${les.title} پایهٔ ${GRADE_LABEL[g]}`,

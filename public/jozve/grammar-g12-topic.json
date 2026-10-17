@@ -308,6 +308,18 @@
    "translations": "غیبت صادقانه — بدنهٔ آزمون تشریحی ترجمه چاپی ندارد (الگوی r281-r287)",
    "examComplete": "آزمون تشریحی درس اول اکنون ۹ بخش / ۱۱۰ آیتم کامل است (۹۴ r287 + ۱۶ r288) — کلید ص۱۹۳-۱۹۴",
    "extractedRound": 288
+  },
+  "comprehensive": {
+   "pages": "55-58",
+   "topic": "آزمون جامع تشریحی درس اول — ۱۴ بخش چاپی (واژگان + گرامر + نگارش + کلوز + ریدینگ)",
+   "questions": "59 آیتم از ۶۳ آیتم چاپی در ۱۳ بانک (درس‌های ۲۴-۳۶)",
+   "keyType": "کلید کامل ص۱۹۵-۱۹۶ («کلید آزمون تشریحی جامع درس اول» صفحه: 55 تا 58) — حروف گرید / واژه / جملهٔ کامل",
+   "visualAbsent": "بخش ۱ «Match the pictures» (۴ آیتم) وابسته به تصویر است و بدونِ داراییِ تصویری قابل استخراج نیست — کلید چاپی 1.D/2.C/3.B/4.A فقط در همین رسید ثبت شد (غیبتِ صادقانه)",
+   "fiveOptions": "بخش ۳ «ترکیب‌ها» ۵ گزینهٔ چاپی دارد (a-e؛ d.meal اضافه) — وفادار به چاپ ماندیم؛ انحرافِ مستند از قراردادِ ۴گزینهٔ خانواده",
+   "tfReceipt": "S13-5 «All people feel great personal happiness…» کلید چاپی a=True محفوظ — داوری معنایی: «all people» بیش‌گویی است و False منطقی‌تر می‌نماید؛ الگوی خانواده: کلید چاپی حاکم + رسیدِ تنش",
+   "translations": "بدنهٔ آزمون جامع ترجمهٔ چاپی ندارد — غیبتِ صادقانه",
+   "placeholders": "فیلد اختیاری placeholder در QuizQuestion (r289) — راهنمای ورودیِ وابسته به بخش: بانک واژگان/تعریف/مجهول/جملهٔ کامل/مرتب‌سازی؛ بانک‌های تگ/ربط/کلوز از استنتاجِ خودکارِ شکل (r288) بهره می‌برند",
+   "extractedRound": 289
   }
  },
  "lessons": [
@@ -7757,6 +7769,1057 @@
      "accepted": [
       "so"
      ]
+    }
+   ]
+  },
+  {
+   "lesson": 24,
+   "title": "جامع — واژگان: جای خالی از بانک، بنویسید (ص۵۵)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 8,
+   "questions": [
+    {
+     "id": "g12-comp-v1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Our parents have a lot to share with us like their experiences and ---------------.",
+     "options": [
+      "failures",
+      "boosts",
+      "forgive",
+      "calmly"
+     ],
+     "answer": 0,
+     "accepted": [
+      "failures"
+     ],
+     "placeholder": "fill in the blank with the word bank…"
+    },
+    {
+     "id": "g12-comp-v2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "I believe he was an honorable man, --------------- to the people and his union.",
+     "options": [
+      "dedicated",
+      "boosts",
+      "forgive",
+      "failures"
+     ],
+     "answer": 0,
+     "accepted": [
+      "dedicated"
+     ],
+     "placeholder": "fill in the blank with the word bank…"
+    },
+    {
+     "id": "g12-comp-v3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "I may --------------- myself for the accident, but it is very difficult to forget.",
+     "options": [
+      "forgive",
+      "boosts",
+      "failures",
+      "calmly"
+     ],
+     "answer": 0,
+     "accepted": [
+      "forgive"
+     ],
+     "placeholder": "fill in the blank with the word bank…"
+    },
+    {
+     "id": "g12-comp-v4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "It is believed that hugging your child --------------- the level of happiness.",
+     "options": [
+      "boosts",
+      "forgive",
+      "failures",
+      "calmly"
+     ],
+     "answer": 0,
+     "accepted": [
+      "boosts"
+     ],
+     "placeholder": "fill in the blank with the word bank…"
+    },
+    {
+     "id": "g12-comp-v5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Taking people's --------------- can help them fight the corona virus.",
+     "options": [
+      "temperature",
+      "boosts",
+      "forgive",
+      "failures"
+     ],
+     "answer": 0,
+     "accepted": [
+      "temperature"
+     ],
+     "placeholder": "fill in the blank with the word bank…"
+    },
+    {
+     "id": "g12-comp-v6",
+     "n": 6,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Listening to the --------------- of older people improves our lives.",
+     "options": [
+      "advice",
+      "boosts",
+      "forgive",
+      "failures"
+     ],
+     "answer": 0,
+     "accepted": [
+      "advice"
+     ],
+     "placeholder": "fill in the blank with the word bank…"
+    },
+    {
+     "id": "g12-comp-v7",
+     "n": 7,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "My sister --------------- her food among the poor children.",
+     "options": [
+      "shared",
+      "boosts",
+      "forgive",
+      "failures"
+     ],
+     "answer": 0,
+     "accepted": [
+      "shared"
+     ],
+     "placeholder": "fill in the blank with the word bank…"
+    },
+    {
+     "id": "g12-comp-v8",
+     "n": 8,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Elders feel --------------- when we appreciate them.",
+     "options": [
+      "honored",
+      "boosts",
+      "forgive",
+      "failures"
+     ],
+     "answer": 0,
+     "accepted": [
+      "honored"
+     ],
+     "placeholder": "fill in the blank with the word bank…"
+    }
+   ]
+  },
+  {
+   "lesson": 25,
+   "title": "جامع — واژگان: ترکیب‌ها، ۵ گزینهٔ چاپی (ص۵۵)",
+   "level": "استاندارد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-comp-col1",
+     "n": 1,
+     "category": "grammar",
+     "question": "fast",
+     "options": [
+      "speakers",
+      "temperature",
+      "food",
+      "meal",
+      "wind"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-comp-col2",
+     "n": 2,
+     "category": "grammar",
+     "question": "strong",
+     "options": [
+      "speakers",
+      "temperature",
+      "food",
+      "meal",
+      "wind"
+     ],
+     "answer": 4
+    },
+    {
+     "id": "g12-comp-col3",
+     "n": 3,
+     "category": "grammar",
+     "question": "native",
+     "options": [
+      "speakers",
+      "temperature",
+      "food",
+      "meal",
+      "wind"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-comp-col4",
+     "n": 4,
+     "category": "grammar",
+     "question": "take",
+     "options": [
+      "speakers",
+      "temperature",
+      "food",
+      "meal",
+      "wind"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 26,
+   "title": "جامع — واژگان: تعریف‌ها، بنویسید (ص۵۵)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-comp-def1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "To hold someone close to your body with your arms, usually to show that you like, love, or value them:",
+     "options": [
+      "hug",
+      "sofa",
+      "diary",
+      "distinguished"
+     ],
+     "answer": 0,
+     "accepted": [
+      "hug"
+     ],
+     "placeholder": "write the word from the bank…"
+    },
+    {
+     "id": "g12-comp-def2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "A long, soft seat with a back and usually arms, on which more than one person can sit at the same time:",
+     "options": [
+      "sofa",
+      "hug",
+      "diary",
+      "distinguished"
+     ],
+     "answer": 0,
+     "accepted": [
+      "sofa"
+     ],
+     "placeholder": "write the word from the bank…"
+    },
+    {
+     "id": "g12-comp-def3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "A book in which you record your thoughts or feelings or what has happened each day:",
+     "options": [
+      "diary",
+      "hug",
+      "sofa",
+      "distinguished"
+     ],
+     "answer": 0,
+     "accepted": [
+      "diary"
+     ],
+     "placeholder": "write the word from the bank…"
+    },
+    {
+     "id": "g12-comp-def4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Used to describe a respected and admired person, or their work:",
+     "options": [
+      "distinguished",
+      "hug",
+      "sofa",
+      "diary"
+     ],
+     "answer": 0,
+     "accepted": [
+      "distinguished"
+     ],
+     "placeholder": "write the word from the bank…"
+    }
+   ]
+  },
+  {
+   "lesson": 27,
+   "title": "جامع — تست چهارگزینه‌ای مجهول (ص۵۶)",
+   "level": "استاندارد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-comp-mcq1",
+     "n": 1,
+     "category": "grammar",
+     "question": "There was a fire at the hotel last week. Two of the rooms ---------------.",
+     "options": [
+      "were damaged",
+      "have damaged",
+      "was damaged",
+      "were damaging"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-comp-mcq2",
+     "n": 2,
+     "category": "grammar",
+     "question": "My little brothers --------------- to school by my mother every day.",
+     "options": [
+      "take",
+      "are taken",
+      "have taken",
+      "was taken"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-comp-mcq3",
+     "n": 3,
+     "category": "grammar",
+     "question": "He --------------- to use the car whenever he needs to do his business.",
+     "options": [
+      "allows",
+      "allowed",
+      "is allowing",
+      "is allowed"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-comp-mcq4",
+     "n": 4,
+     "category": "grammar",
+     "question": "There is a new building in the neighborhood. The workers --------------- it very well.",
+     "options": [
+      "have built",
+      "are built",
+      "were built",
+      "have been built"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 28,
+   "title": "جامع — عبارات الحاق، بنویسید (ص۵۶)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-comp-tag1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Your father won't sell his car, ---------------?",
+     "options": [
+      "will he",
+      "wasn't she",
+      "does he",
+      "hasn't she"
+     ],
+     "answer": 0,
+     "accepted": [
+      "will he"
+     ]
+    },
+    {
+     "id": "g12-comp-tag2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "The woman was weaving a rug, ---------------?",
+     "options": [
+      "wasn't she",
+      "will he",
+      "does he",
+      "hasn't she"
+     ],
+     "answer": 0,
+     "accepted": [
+      "wasn't she"
+     ]
+    },
+    {
+     "id": "g12-comp-tag3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "He never speaks Persian in our class, ---------------?",
+     "options": [
+      "does he",
+      "will he",
+      "wasn't she",
+      "hasn't she"
+     ],
+     "answer": 0,
+     "accepted": [
+      "does he"
+     ]
+    },
+    {
+     "id": "g12-comp-tag4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "His sister has passed her driver's test, ---------------?",
+     "options": [
+      "hasn't she",
+      "will he",
+      "wasn't she",
+      "does he"
+     ],
+     "answer": 0,
+     "accepted": [
+      "hasn't she"
+     ]
+    }
+   ]
+  },
+  {
+   "lesson": 29,
+   "title": "جامع — مجهول‌سازی سه‌زمان، بنویسید (ص۵۶)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-comp-pass1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Penicillin --------------- by Alexander Fleming. (discover)",
+     "options": [
+      "was discovered",
+      "has been stolen",
+      "are used",
+      "were broken"
+     ],
+     "answer": 0,
+     "accepted": [
+      "was discovered"
+     ],
+     "placeholder": "write the passive form…"
+    },
+    {
+     "id": "g12-comp-pass2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "My car ---------------! I'm going to call the police. (steal)",
+     "options": [
+      "has been stolen",
+      "was discovered",
+      "are used",
+      "were broken"
+     ],
+     "answer": 0,
+     "accepted": [
+      "has been stolen"
+     ],
+     "placeholder": "write the passive form…"
+    },
+    {
+     "id": "g12-comp-pass3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Emotions and ethics --------------- in Ghazals a lot. (use)",
+     "options": [
+      "are used",
+      "was discovered",
+      "has been stolen",
+      "were broken"
+     ],
+     "answer": 0,
+     "accepted": [
+      "are used"
+     ],
+     "placeholder": "write the passive form…"
+    },
+    {
+     "id": "g12-comp-pass4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "The windows --------------- by them last night. (break)",
+     "options": [
+      "were broken",
+      "was discovered",
+      "has been stolen",
+      "are used"
+     ],
+     "answer": 0,
+     "accepted": [
+      "were broken"
+     ],
+     "placeholder": "write the passive form…"
+    }
+   ]
+  },
+  {
+   "lesson": 30,
+   "title": "جامع — جمله‌سازی معلوم/مجهول، بنویسید (ص۵۶)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-comp-sent1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "makes / morning / pancakes / my mother / every / . — Active: ---------------",
+     "options": [
+      "My mother makes pancakes every morning.",
+      "Pancakes are made every morning.",
+      "The mechanics have repaired the cars.",
+      "The cars have been repaired."
+     ],
+     "answer": 0,
+     "accepted": [
+      "My mother makes pancakes every morning."
+     ],
+     "placeholder": "write the full sentence…"
+    },
+    {
+     "id": "g12-comp-sent2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "makes / morning / pancakes / my mother / every / . — Passive: ---------------",
+     "options": [
+      "Pancakes are made every morning.",
+      "My mother makes pancakes every morning.",
+      "The mechanics have repaired the cars.",
+      "The cars have been repaired."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Pancakes are made every morning."
+     ],
+     "placeholder": "write the full sentence…"
+    },
+    {
+     "id": "g12-comp-sent3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "repaired / the mechanics / the cars / have / . — Active: ---------------",
+     "options": [
+      "The mechanics have repaired the cars.",
+      "My mother makes pancakes every morning.",
+      "Pancakes are made every morning.",
+      "The cars have been repaired."
+     ],
+     "answer": 0,
+     "accepted": [
+      "The mechanics have repaired the cars."
+     ],
+     "placeholder": "write the full sentence…"
+    },
+    {
+     "id": "g12-comp-sent4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "repaired / the mechanics / the cars / have / . — Passive: ---------------",
+     "options": [
+      "The cars have been repaired.",
+      "My mother makes pancakes every morning.",
+      "Pancakes are made every morning.",
+      "The mechanics have repaired the cars."
+     ],
+     "answer": 0,
+     "accepted": [
+      "The cars have been repaired."
+     ],
+     "placeholder": "write the full sentence…"
+    }
+   ]
+  },
+  {
+   "lesson": 31,
+   "title": "جامع — کلمات ربط، کامل کنید (ص۵۶)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-comp-conn1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "My sister has a beautiful dress, --------------- she never wears it.",
+     "options": [
+      "but",
+      "and",
+      "or",
+      "so"
+     ],
+     "answer": 0,
+     "accepted": [
+      "but"
+     ]
+    },
+    {
+     "id": "g12-comp-conn2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "I get up early in the morning, --------------- I make an omelet myself.",
+     "options": [
+      "and",
+      "or",
+      "but",
+      "so"
+     ],
+     "answer": 0,
+     "accepted": [
+      "and"
+     ]
+    },
+    {
+     "id": "g12-comp-conn3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Ahmad didn't study hard for the exam, --------------- he didn't pass it.",
+     "options": [
+      "so",
+      "and",
+      "or",
+      "but"
+     ],
+     "answer": 0,
+     "accepted": [
+      "so"
+     ]
+    },
+    {
+     "id": "g12-comp-conn4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "You should wash the dishes, --------------- you should do your homework.",
+     "options": [
+      "or",
+      "and",
+      "but",
+      "so"
+     ],
+     "answer": 0,
+     "accepted": [
+      "or"
+     ]
+    }
+   ]
+  },
+  {
+   "lesson": 32,
+   "title": "جامع — جفت‌سازی دو ستون (ص۵۷)",
+   "level": "استاندارد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-comp-mtch1",
+     "n": 1,
+     "category": "grammar",
+     "question": "You can use mobile dictionary, or ---------------",
+     "options": [
+      "I didn't have your number.",
+      "I looked out.",
+      "you can buy a pocket one.",
+      "it was not safe to drive."
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-comp-mtch2",
+     "n": 2,
+     "category": "grammar",
+     "question": "The roads were covered with ice, so ---------------",
+     "options": [
+      "I didn't have your number.",
+      "I looked out.",
+      "you can buy a pocket one.",
+      "it was not safe to drive."
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-comp-mtch3",
+     "n": 3,
+     "category": "grammar",
+     "question": "I wanted to call you, but ---------------",
+     "options": [
+      "I didn't have your number.",
+      "I looked out.",
+      "you can buy a pocket one.",
+      "it was not safe to drive."
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-comp-mtch4",
+     "n": 4,
+     "category": "grammar",
+     "question": "I went to the window, and ---------------",
+     "options": [
+      "I didn't have your number.",
+      "I looked out.",
+      "you can buy a pocket one.",
+      "it was not safe to drive."
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 33,
+   "title": "جامع — مرتب‌کردن کلمات، بنویسید (ص۵۷)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-comp-wo1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "went / my brother / to the library / at all / he / didn't / but / study / , / .",
+     "options": [
+      "My brother went to the library, but he didn't study at all.",
+      "This shirt is not comfortable, so I rarely wear it.",
+      "That book is expensive, so I can't buy it.",
+      "I like spaghetti, but my mother hates it."
+     ],
+     "answer": 0,
+     "accepted": [
+      "My brother went to the library, but he didn't study at all."
+     ],
+     "placeholder": "write the complete sentence…"
+    },
+    {
+     "id": "g12-comp-wo2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "shirt / it / comfortable / so / wear / not / I / this / is / rarely / , / .",
+     "options": [
+      "This shirt is not comfortable, so I rarely wear it.",
+      "My brother went to the library, but he didn't study at all.",
+      "That book is expensive, so I can't buy it.",
+      "I like spaghetti, but my mother hates it."
+     ],
+     "answer": 0,
+     "accepted": [
+      "This shirt is not comfortable, so I rarely wear it."
+     ],
+     "placeholder": "write the complete sentence…"
+    },
+    {
+     "id": "g12-comp-wo3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "expensive / I / it / that book / so / buy / can't / is / , / .",
+     "options": [
+      "That book is expensive, so I can't buy it.",
+      "My brother went to the library, but he didn't study at all.",
+      "This shirt is not comfortable, so I rarely wear it.",
+      "I like spaghetti, but my mother hates it."
+     ],
+     "answer": 0,
+     "accepted": [
+      "That book is expensive, so I can't buy it."
+     ],
+     "placeholder": "write the complete sentence…"
+    },
+    {
+     "id": "g12-comp-wo4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "it / like / spaghetti / hates / my mother / I / but / , / .",
+     "options": [
+      "I like spaghetti, but my mother hates it.",
+      "My brother went to the library, but he didn't study at all.",
+      "This shirt is not comfortable, so I rarely wear it.",
+      "That book is expensive, so I can't buy it."
+     ],
+     "answer": 0,
+     "accepted": [
+      "I like spaghetti, but my mother hates it."
+     ],
+     "placeholder": "write the complete sentence…"
+    }
+   ]
+  },
+  {
+   "lesson": 34,
+   "title": "جامع — متن ۶خالی حسن عمیدزاده، بنویسید (ص۵۷)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 6,
+   "questions": [
+    {
+     "id": "g12-comp-clz1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "In the February of 1997, the school where he was teaching (---1---) fire.",
+     "options": [
+      "caught",
+      "brought",
+      "injuries",
+      "fight"
+     ],
+     "answer": 0,
+     "accepted": [
+      "caught"
+     ]
+    },
+    {
+     "id": "g12-comp-clz2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "The (---2---) teacher saved thirty students",
+     "options": [
+      "dedicated",
+      "brought",
+      "injuries",
+      "fight"
+     ],
+     "answer": 0,
+     "accepted": [
+      "dedicated"
+     ]
+    },
+    {
+     "id": "g12-comp-clz3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "where he himself was (---3---) in the face and around his head.",
+     "options": [
+      "burnt",
+      "brought",
+      "injuries",
+      "fight"
+     ],
+     "answer": 0,
+     "accepted": [
+      "burnt"
+     ]
+    },
+    {
+     "id": "g12-comp-clz4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "He (---4---) the students out one by one when the door was closed",
+     "options": [
+      "brought",
+      "injuries",
+      "fight",
+      "dedicated"
+     ],
+     "answer": 0,
+     "accepted": [
+      "brought"
+     ]
+    },
+    {
+     "id": "g12-comp-clz5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "he had to (---5---) a lot to take himself out of the room.",
+     "options": [
+      "fight",
+      "brought",
+      "injuries",
+      "dedicated"
+     ],
+     "answer": 0,
+     "accepted": [
+      "fight"
+     ]
+    },
+    {
+     "id": "g12-comp-clz6",
+     "n": 6,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "His (---6---) were so hard and finally he died on July 18, 2012.",
+     "options": [
+      "injuries",
+      "brought",
+      "fight",
+      "dedicated"
+     ],
+     "answer": 0,
+     "accepted": [
+      "injuries"
+     ]
+    }
+   ]
+  },
+  {
+   "lesson": 35,
+   "title": "جامع — ریدینگ: پرسش پاسخ + درست/نادرست (ص۵۷-۵۸)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 5,
+   "questions": [
+    {
+     "id": "g12-comp-rd1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What can it lead to when you see the impacts on those you are helping?",
+     "options": [
+      "It can lead not only to great personal happiness but also to respect from others who appreciate the work you do.",
+      "The important point is that we continue to give to those who are more in need than ourselves."
+     ],
+     "answer": 0,
+     "accepted": [
+      "It can lead not only to great personal happiness but also to respect from others who appreciate the work you do."
+     ]
+    },
+    {
+     "id": "g12-comp-rd2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What is the important point in helping others?",
+     "options": [
+      "The important point is that we continue to give to those who are more in need than ourselves.",
+      "It can lead not only to great personal happiness but also to respect from others who appreciate the work you do."
+     ],
+     "answer": 0,
+     "accepted": [
+      "The important point is that we continue to give to those who are more in need than ourselves."
+     ]
+    },
+    {
+     "id": "g12-comp-rd3",
+     "n": 3,
+     "category": "grammar",
+     "question": "What is the closest synonym for the word “benefit”?",
+     "options": [
+      "experience",
+      "advantage",
+      "choice",
+      "effect"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-comp-rd4",
+     "n": 4,
+     "category": "grammar",
+     "question": "Helping people in bad environmental events has the global importance.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-comp-rd5",
+     "n": 5,
+     "category": "grammar",
+     "question": "All people feel great personal happiness when they help others.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 36,
+   "title": "جامع — ریدینگ: تست چهارگزینه‌ای گوش‌ها (ص۵۸)",
+   "level": "استاندارد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-comp-rm1",
+     "n": 1,
+     "category": "grammar",
+     "question": "When we grow up, ---------------.",
+     "options": [
+      "our ears will not change in size",
+      "our ears will be the same size",
+      "our ears will get colder",
+      "our ears will not change in shape"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-comp-rm2",
+     "n": 2,
+     "category": "grammar",
+     "question": "If someone's ears are red, it means ---------------.",
+     "options": [
+      "he/she is a kind person",
+      "he/she is very happy",
+      "he/she may get angry easily",
+      "he/she drinks a lot"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-comp-rm3",
+     "n": 3,
+     "category": "grammar",
+     "question": "If you look at someone's ears, the right way to see ---------------.",
+     "options": [
+      "his face, ears and nose",
+      "the size, color and shape",
+      "his mouth, eyes and nose",
+      "the hair, eyes and color"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-comp-rm4",
+     "n": 4,
+     "category": "grammar",
+     "question": "How can we find out a person has a nervous character through his/her ears?",
+     "options": [
+      "When they are cold.",
+      "When they are medium-size.",
+      "When they are not white color.",
+      "When they are musical."
+     ],
+     "answer": 0
     }
    ]
   }

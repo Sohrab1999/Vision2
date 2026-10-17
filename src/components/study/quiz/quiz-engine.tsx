@@ -43,16 +43,19 @@ function TypedAnswerInput({
     onSubmit(typed.trim());
   };
   // r288 — placeholder وابسته به شکلِ سؤال: فعل داخل پرانتز / اصلاح خطا / تگ / خالیِ کانونی / متنِ ۴خالی
+  // r289 — فیلدِ داده‌محورِ placeholder (بانک‌های آزمون جامع) بر استنتاجِ خودکار مقدم است
   const stem = q.question;
-  const placeholder = /---------------\s*\)/.test(stem)
-    ? "write the correction…"
-    : /\([a-z ]+\)/.test(stem) && /---------------/.test(stem)
-      ? "write the correct verb form…"
-      : /---------------/.test(stem) && stem.trim().endsWith("?")
-        ? "type the tag question… (e.g. are they)"
-        : /---------------|\(---\d---\)/.test(stem)
-          ? "fill in the blank… (e.g. and)"
-          : "type your answer…";
+  const placeholder =
+    q.placeholder ??
+    (/---------------\s*\)/.test(stem)
+      ? "write the correction…"
+      : /\([a-z ]+\)/.test(stem) && /---------------/.test(stem)
+        ? "write the correct verb form…"
+        : /---------------/.test(stem) && stem.trim().endsWith("?")
+          ? "type the tag question… (e.g. are they)"
+          : /---------------|\(---\d---\)/.test(stem)
+            ? "fill in the blank… (e.g. and)"
+            : "type your answer…");
   return (
     <div className="space-y-2.5" dir="ltr">
       <div className="flex gap-2">
