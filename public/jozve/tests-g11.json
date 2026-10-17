@@ -8479,6 +8479,2176 @@
     }
    ],
    "title": "تشریحی واژگان — تست چهارگزینه‌ای (ص۱۷-۱۸)"
+  },
+  {
+   "count": 16,
+   "lesson": 29,
+   "level": "تشریحی — تایپی",
+   "questions": [
+    {
+     "accepted": [
+      "unhealthy"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l29-1",
+     "kind": "typed",
+     "n": 1,
+     "options": [
+      "unhealthy",
+      "details",
+      "miracle",
+      "depression",
+      "particular",
+      "effective",
+      "weight",
+      "lifestyle",
+      "forbidden"
+     ],
+     "placeholder": "fill in the blank with the bank word…",
+     "question": "It’s to eat fatty foods all the time. --------------- [bank: details / miracle / depression / particular / effective / weight / unhealthy / lifestyle / forbidden]"
+    },
+    {
+     "accepted": [
+      "forbidden"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l29-2",
+     "kind": "typed",
+     "n": 2,
+     "options": [
+      "forbidden",
+      "details",
+      "miracle",
+      "depression",
+      "particular",
+      "effective",
+      "weight",
+      "unhealthy",
+      "lifestyle"
+     ],
+     "placeholder": "fill in the blank with the bank word…",
+     "question": "The use of cameras in this museum is . --------------- [bank: details / miracle / depression / particular / effective / weight / unhealthy / lifestyle / forbidden]"
+    },
+    {
+     "accepted": [
+      "weight"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l29-3",
+     "kind": "typed",
+     "n": 3,
+     "options": [
+      "weight",
+      "details",
+      "miracle",
+      "depression",
+      "particular",
+      "effective",
+      "unhealthy",
+      "lifestyle",
+      "forbidden"
+     ],
+     "placeholder": "fill in the blank with the bank word…",
+     "question": "I gained a lot of while I was on holiday. --------------- [bank: details / miracle / depression / particular / effective / weight / unhealthy / lifestyle / forbidden]"
+    },
+    {
+     "accepted": [
+      "details"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l29-4",
+     "kind": "typed",
+     "n": 4,
+     "options": [
+      "details",
+      "miracle",
+      "depression",
+      "particular",
+      "effective",
+      "weight",
+      "unhealthy",
+      "lifestyle",
+      "forbidden"
+     ],
+     "placeholder": "fill in the blank with the bank word…",
+     "question": "A police officer wrote the of what happened. --------------- [bank: details / miracle / depression / particular / effective / weight / unhealthy / lifestyle / forbidden]"
+    },
+    {
+     "accepted": [
+      "lifestyle"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l29-5",
+     "kind": "typed",
+     "n": 5,
+     "options": [
+      "lifestyle",
+      "details",
+      "miracle",
+      "depression",
+      "particular",
+      "effective",
+      "weight",
+      "unhealthy",
+      "forbidden"
+     ],
+     "placeholder": "fill in the blank with the bank word…",
+     "question": "I don’t know how they can support their expensive . --------------- [bank: details / miracle / depression / particular / effective / weight / unhealthy / lifestyle / forbidden]"
+    },
+    {
+     "accepted": [
+      "effective"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l29-6",
+     "kind": "typed",
+     "n": 6,
+     "options": [
+      "effective",
+      "details",
+      "miracle",
+      "depression",
+      "particular",
+      "weight",
+      "unhealthy",
+      "lifestyle",
+      "forbidden"
+     ],
+     "placeholder": "fill in the blank with the bank word…",
+     "question": "You need a/an strategy for developing your business. --------------- [bank: details / miracle / depression / particular / effective / weight / unhealthy / lifestyle / forbidden]"
+    },
+    {
+     "accepted": [
+      "depression"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l29-7",
+     "kind": "typed",
+     "n": 7,
+     "options": [
+      "depression",
+      "details",
+      "miracle",
+      "particular",
+      "effective",
+      "weight",
+      "unhealthy",
+      "lifestyle",
+      "forbidden"
+     ],
+     "placeholder": "fill in the blank with the bank word…",
+     "question": "I’m just beginning to get over the from losing my job. --------------- [bank: details / miracle / depression / particular / effective / weight / unhealthy / lifestyle / forbidden]"
+    },
+    {
+     "accepted": [
+      "particular"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l29-8",
+     "kind": "typed",
+     "n": 8,
+     "options": [
+      "particular",
+      "details",
+      "miracle",
+      "depression",
+      "effective",
+      "weight",
+      "unhealthy",
+      "lifestyle",
+      "forbidden"
+     ],
+     "placeholder": "fill in the blank with the bank word…",
+     "question": "As he gets older, my son is developing a interest in history. --------------- [bank: details / miracle / depression / particular / effective / weight / unhealthy / lifestyle / forbidden]"
+    },
+    {
+     "accepted": [
+      "enable"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l29-9",
+     "kind": "typed",
+     "n": 9,
+     "options": [
+      "enable",
+      "prevent",
+      "socialize",
+      "contains",
+      "avoid",
+      "disagree",
+      "discussed",
+      "influencing",
+      "decreased"
+     ],
+     "placeholder": "fill in the blank with the bank word…",
+     "question": "I’m looking for a job which will me to develop my skills. --------------- [bank: prevent / socialize / contains / avoid / disagree / enable / discussed / influencing / decreased]"
+    },
+    {
+     "accepted": [
+      "avoid"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l29-10",
+     "kind": "typed",
+     "n": 10,
+     "options": [
+      "avoid",
+      "prevent",
+      "socialize",
+      "contains",
+      "disagree",
+      "enable",
+      "discussed",
+      "influencing",
+      "decreased"
+     ],
+     "placeholder": "fill in the blank with the bank word…",
+     "question": "If you want to lose weight, eating between meals. --------------- [bank: prevent / socialize / contains / avoid / disagree / enable / discussed / influencing / decreased]"
+    },
+    {
+     "accepted": [
+      "influencing"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l29-11",
+     "kind": "typed",
+     "n": 11,
+     "options": [
+      "influencing",
+      "prevent",
+      "socialize",
+      "contains",
+      "avoid",
+      "disagree",
+      "enable",
+      "discussed",
+      "decreased"
+     ],
+     "placeholder": "fill in the blank with the bank word…",
+     "question": "He’s very good at making friends and people. --------------- [bank: prevent / socialize / contains / avoid / disagree / enable / discussed / influencing / decreased]"
+    },
+    {
+     "accepted": [
+      "decreased"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l29-12",
+     "kind": "typed",
+     "n": 12,
+     "options": [
+      "decreased",
+      "prevent",
+      "socialize",
+      "contains",
+      "avoid",
+      "disagree",
+      "enable",
+      "discussed",
+      "influencing"
+     ],
+     "placeholder": "fill in the blank with the bank word…",
+     "question": "The number of people in some villages has . --------------- [bank: prevent / socialize / contains / avoid / disagree / enable / discussed / influencing / decreased]"
+    },
+    {
+     "accepted": [
+      "contains"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l29-13",
+     "kind": "typed",
+     "n": 13,
+     "options": [
+      "contains",
+      "prevent",
+      "socialize",
+      "avoid",
+      "disagree",
+      "enable",
+      "discussed",
+      "influencing",
+      "decreased"
+     ],
+     "placeholder": "fill in the blank with the bank word…",
+     "question": "How much liquid do you think this bottle ? --------------- [bank: prevent / socialize / contains / avoid / disagree / enable / discussed / influencing / decreased]"
+    },
+    {
+     "accepted": [
+      "socialize"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l29-14",
+     "kind": "typed",
+     "n": 14,
+     "options": [
+      "socialize",
+      "prevent",
+      "contains",
+      "avoid",
+      "disagree",
+      "enable",
+      "discussed",
+      "influencing",
+      "decreased"
+     ],
+     "placeholder": "fill in the blank with the bank word…",
+     "question": "I don’t like to with my friends much. --------------- [bank: prevent / socialize / contains / avoid / disagree / enable / discussed / influencing / decreased]"
+    },
+    {
+     "accepted": [
+      "prevent"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l29-15",
+     "kind": "typed",
+     "n": 15,
+     "options": [
+      "prevent",
+      "socialize",
+      "contains",
+      "avoid",
+      "disagree",
+      "enable",
+      "discussed",
+      "influencing",
+      "decreased"
+     ],
+     "placeholder": "fill in the blank with the bank word…",
+     "question": "The police tried to him from leaving. --------------- [bank: prevent / socialize / contains / avoid / disagree / enable / discussed / influencing / decreased]"
+    },
+    {
+     "accepted": [
+      "disagree"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l29-16",
+     "kind": "typed",
+     "n": 16,
+     "options": [
+      "disagree",
+      "prevent",
+      "socialize",
+      "contains",
+      "avoid",
+      "enable",
+      "discussed",
+      "influencing",
+      "decreased"
+     ],
+     "placeholder": "fill in the blank with the bank word…",
+     "question": "I the problem with my parents. --------------- [bank: prevent / socialize / contains / avoid / disagree / enable / discussed / influencing / decreased]"
+    }
+   ],
+   "title": "تشریحی واژگان د۲ — جای خالی از بانک واژه (ص۵۴)"
+  },
+  {
+   "count": 8,
+   "lesson": 30,
+   "level": "تشریحی — تایپی",
+   "questions": [
+    {
+     "accepted": [
+      "couch"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l30-1",
+     "kind": "typed",
+     "n": 1,
+     "options": [
+      "couch",
+      "harmful",
+      "patient",
+      "forget",
+      "after",
+      "habit",
+      "part",
+      "vary"
+     ],
+     "placeholder": "complete the word (first letter is given)…",
+     "question": "A person who watches a lot of television and does not have an active life is a (c _ _ _ _) potato."
+    },
+    {
+     "accepted": [
+      "harmful"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l30-2",
+     "kind": "typed",
+     "n": 2,
+     "options": [
+      "harmful",
+      "couch",
+      "patient",
+      "forget",
+      "after",
+      "habit",
+      "part",
+      "vary"
+     ],
+     "placeholder": "complete the word (first letter is given)…",
+     "question": "It’s important to protect your skin from the (h _ _ _ _ _ _) effects of the sun."
+    },
+    {
+     "accepted": [
+      "patient"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l30-3",
+     "kind": "typed",
+     "n": 3,
+     "options": [
+      "patient",
+      "couch",
+      "harmful",
+      "forget",
+      "after",
+      "habit",
+      "part",
+      "vary"
+     ],
+     "placeholder": "complete the word (first letter is given)…",
+     "question": "A (p _ _ _ _ _ _) is a sick person that a doctor is looking after."
+    },
+    {
+     "accepted": [
+      "forget"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l30-4",
+     "kind": "typed",
+     "n": 4,
+     "options": [
+      "forget",
+      "couch",
+      "harmful",
+      "patient",
+      "after",
+      "habit",
+      "part",
+      "vary"
+     ],
+     "placeholder": "complete the word (first letter is given)…",
+     "question": "If you (f _ _ _ _ _) something, you cannot remember it."
+    },
+    {
+     "accepted": [
+      "after"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l30-5",
+     "kind": "typed",
+     "n": 5,
+     "options": [
+      "after",
+      "couch",
+      "harmful",
+      "patient",
+      "forget",
+      "habit",
+      "part",
+      "vary"
+     ],
+     "placeholder": "complete the word (first letter is given)…",
+     "question": "Don’t worry about me. I can look (a _ _ _ _) myself."
+    },
+    {
+     "accepted": [
+      "habit"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l30-6",
+     "kind": "typed",
+     "n": 6,
+     "options": [
+      "habit",
+      "couch",
+      "harmful",
+      "patient",
+      "forget",
+      "after",
+      "part",
+      "vary"
+     ],
+     "placeholder": "complete the word (first letter is given)…",
+     "question": "Something that you do very often is your (h _ _ _ _) ."
+    },
+    {
+     "accepted": [
+      "part"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l30-7",
+     "kind": "typed",
+     "n": 7,
+     "options": [
+      "part",
+      "couch",
+      "harmful",
+      "patient",
+      "forget",
+      "after",
+      "habit",
+      "vary"
+     ],
+     "placeholder": "complete the word (first letter is given)…",
+     "question": "All the countries can take (p _ _ _) in the Olympics."
+    },
+    {
+     "accepted": [
+      "vary"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l30-8",
+     "kind": "typed",
+     "n": 8,
+     "options": [
+      "vary",
+      "couch",
+      "harmful",
+      "patient",
+      "forget",
+      "after",
+      "habit",
+      "part"
+     ],
+     "placeholder": "complete the word (first letter is given)…",
+     "question": "Languages (v _ _ _ ) greatly from region to region."
+    }
+   ],
+   "title": "تشریحی واژگان د۲ — کلمه با حرف اول (ص۵۴)"
+  },
+  {
+   "count": 8,
+   "lesson": 31,
+   "level": "تشریحی — تایپی",
+   "questions": [
+    {
+     "accepted": [
+      "addict"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l31-1",
+     "kind": "typed",
+     "n": 1,
+     "options": [
+      "addict",
+      "homeless",
+      "despite",
+      "laughter",
+      "specialist",
+      "carrot",
+      "creative",
+      "cure",
+      "oil"
+     ],
+     "placeholder": "type the word for the definition…",
+     "question": "A person who cannot stop doing or using something, especially something harmful. ( ) [bank: homeless / despite / laughter / specialist / carrot / creative / cure / addict / oil]"
+    },
+    {
+     "accepted": [
+      "specialist"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l31-2",
+     "kind": "typed",
+     "n": 2,
+     "options": [
+      "specialist",
+      "homeless",
+      "despite",
+      "laughter",
+      "carrot",
+      "creative",
+      "cure",
+      "addict",
+      "oil"
+     ],
+     "placeholder": "type the word for the definition…",
+     "question": "Someone who has a lot of experience, knowledge, or skill in a particular subject: ( ) [bank: homeless / despite / laughter / specialist / carrot / creative / cure / addict / oil]"
+    },
+    {
+     "accepted": [
+      "oil"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l31-3",
+     "kind": "typed",
+     "n": 3,
+     "options": [
+      "oil",
+      "homeless",
+      "despite",
+      "laughter",
+      "specialist",
+      "carrot",
+      "creative",
+      "cure",
+      "addict"
+     ],
+     "placeholder": "type the word for the definition…",
+     "question": "A smooth thick liquid produced from plants or animals that is used in cooking: ( ) [bank: homeless / despite / laughter / specialist / carrot / creative / cure / addict / oil]"
+    },
+    {
+     "accepted": [
+      "homeless"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l31-4",
+     "kind": "typed",
+     "n": 4,
+     "options": [
+      "homeless",
+      "despite",
+      "laughter",
+      "specialist",
+      "carrot",
+      "creative",
+      "cure",
+      "addict",
+      "oil"
+     ],
+     "placeholder": "type the word for the definition…",
+     "question": "People who do not have a home, usually because they are poor: ( ) [bank: homeless / despite / laughter / specialist / carrot / creative / cure / addict / oil]"
+    },
+    {
+     "accepted": [
+      "cure"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l31-5",
+     "kind": "typed",
+     "n": 5,
+     "options": [
+      "cure",
+      "homeless",
+      "despite",
+      "laughter",
+      "specialist",
+      "carrot",
+      "creative",
+      "addict",
+      "oil"
+     ],
+     "placeholder": "type the word for the definition…",
+     "question": "To make someone with an illness healthy again: ( ) [bank: homeless / despite / laughter / specialist / carrot / creative / cure / addict / oil]"
+    },
+    {
+     "accepted": [
+      "creative"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l31-6",
+     "kind": "typed",
+     "n": 6,
+     "options": [
+      "creative",
+      "homeless",
+      "despite",
+      "laughter",
+      "specialist",
+      "carrot",
+      "cure",
+      "addict",
+      "oil"
+     ],
+     "placeholder": "type the word for the definition…",
+     "question": "Producing or using original and unusual ideas: ( ) [bank: homeless / despite / laughter / specialist / carrot / creative / cure / addict / oil]"
+    },
+    {
+     "accepted": [
+      "despite"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l31-7",
+     "kind": "typed",
+     "n": 7,
+     "options": [
+      "despite",
+      "homeless",
+      "laughter",
+      "specialist",
+      "carrot",
+      "creative",
+      "cure",
+      "addict",
+      "oil"
+     ],
+     "placeholder": "type the word for the definition…",
+     "question": "Without taking any notice of: ( ) [bank: homeless / despite / laughter / specialist / carrot / creative / cure / addict / oil]"
+    },
+    {
+     "accepted": [
+      "carrot"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l31-8",
+     "kind": "typed",
+     "n": 8,
+     "options": [
+      "carrot",
+      "homeless",
+      "despite",
+      "laughter",
+      "specialist",
+      "creative",
+      "cure",
+      "addict",
+      "oil"
+     ],
+     "placeholder": "type the word for the definition…",
+     "question": "A long thin orange vegetable: ( ) [bank: homeless / despite / laughter / specialist / carrot / creative / cure / addict / oil]"
+    }
+   ],
+   "title": "تشریحی واژگان د۲ — تعریف‌ها، بنویسید (ص۵۵)"
+  },
+  {
+   "count": 25,
+   "lesson": 32,
+   "level": "تشریحی — چهارگزینه‌ای",
+   "questions": [
+    {
+     "answer": 1,
+     "category": "vocab",
+     "id": "g11-l32-1",
+     "n": 1,
+     "options": [
+      "mineral",
+      "balanced",
+      "recent",
+      "harmful"
+     ],
+     "question": "If you have a diet, you are getting all the vitamins you need."
+    },
+    {
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l32-2",
+     "n": 2,
+     "options": [
+      "relationship",
+      "disorder",
+      "device",
+      "reality"
+     ],
+     "question": "His isn’t good with his mother, but he’s very close to his father."
+    },
+    {
+     "answer": 3,
+     "category": "vocab",
+     "id": "g11-l32-3",
+     "n": 3,
+     "options": [
+      "groceries",
+      "reasons",
+      "hobbies",
+      "effects"
+     ],
+     "question": "Our interests and feelings have a lot of on our memory."
+    },
+    {
+     "answer": 2,
+     "category": "vocab",
+     "id": "g11-l32-4",
+     "n": 4,
+     "options": [
+      "worthy",
+      "healthy",
+      "impatient",
+      "depressed"
+     ],
+     "question": "He’s got a lot of exciting ideas and he’s to get started."
+    },
+    {
+     "answer": 2,
+     "category": "vocab",
+     "id": "g11-l32-5",
+     "n": 5,
+     "options": [
+      "decrease",
+      "prevent",
+      "disagree",
+      "socialize"
+     ],
+     "question": "We on most things, but on this question we are at one with each other."
+    },
+    {
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l32-6",
+     "n": 6,
+     "options": [
+      "improves",
+      "identifies",
+      "enables",
+      "turns around"
+     ],
+     "question": "Our health when we visit our friends and family members."
+    },
+    {
+     "answer": 3,
+     "category": "vocab",
+     "id": "g11-l32-7",
+     "n": 7,
+     "options": [
+      "suffix",
+      "heartbeat",
+      "candy",
+      "pressure"
+     ],
+     "question": "The nurse will take your blood in a moment."
+    },
+    {
+     "answer": 1,
+     "category": "vocab",
+     "id": "g11-l32-8",
+     "n": 8,
+     "options": [
+      "social",
+      "particular",
+      "medical",
+      "forbidden"
+     ],
+     "question": "A: Why did you ask? B: Oh, no reason, just making conversation."
+    },
+    {
+     "answer": 2,
+     "category": "vocab",
+     "id": "g11-l32-9",
+     "n": 9,
+     "options": [
+      "prefix",
+      "situation",
+      "cancer",
+      "education"
+     ],
+     "question": "This new medicine could be an important step in the fight against ."
+    },
+    {
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l32-10",
+     "n": 10,
+     "options": [
+      "avoid",
+      "forget",
+      "disable",
+      "measure"
+     ],
+     "question": "I try to going shopping on Fridays."
+    },
+    {
+     "answer": 3,
+     "category": "vocab",
+     "id": "g11-l32-11",
+     "n": 11,
+     "options": [
+      "impatient",
+      "effective",
+      "creative",
+      "calm"
+     ],
+     "question": "Now keep everyone, the police are on their way."
+    },
+    {
+     "answer": 2,
+     "category": "vocab",
+     "id": "g11-l32-12",
+     "n": 12,
+     "options": [
+      "producing",
+      "preventing",
+      "retiring",
+      "calling back"
+     ],
+     "question": "Since from the company, he has done voluntary work for a charity."
+    },
+    {
+     "answer": 3,
+     "category": "vocab",
+     "id": "g11-l32-13",
+     "n": 13,
+     "options": [
+      "incomplete",
+      "disabled",
+      "common",
+      "healthy"
+     ],
+     "question": "A good diet and plenty of exercise will help you to keep your body ."
+    },
+    {
+     "answer": 1,
+     "category": "vocab",
+     "id": "g11-l32-14",
+     "n": 14,
+     "options": [
+      "condition",
+      "influence",
+      "habit",
+      "mission"
+     ],
+     "question": "My grandfather had a strong on my early childhood."
+    },
+    {
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l32-15",
+     "n": 15,
+     "options": [
+      "contains",
+      "hangs out",
+      "harms",
+      "wins"
+     ],
+     "question": "A balanced diet lots of fruits and green vegetables."
+    },
+    {
+     "answer": 1,
+     "category": "vocab",
+     "id": "g11-l32-16",
+     "n": 16,
+     "options": [
+      "unhealthy",
+      "emotional",
+      "unimportant",
+      "unsafe"
+     ],
+     "question": "People generally think that women are more than men."
+    },
+    {
+     "answer": 2,
+     "category": "vocab",
+     "id": "g11-l32-17",
+     "n": 17,
+     "options": [
+      "details",
+      "stages",
+      "tastes",
+      "topics"
+     ],
+     "question": "My son and I have very different in music."
+    },
+    {
+     "answer": 1,
+     "category": "vocab",
+     "id": "g11-l32-18",
+     "n": 18,
+     "options": [
+      "even",
+      "towards",
+      "as",
+      "yet"
+     ],
+     "question": "The teacher is warm and kind her students."
+    },
+    {
+     "answer": 3,
+     "category": "vocab",
+     "id": "g11-l32-19",
+     "n": 19,
+     "options": [
+      "laughter",
+      "thus",
+      "suffix",
+      "topic"
+     ],
+     "question": "I am really glad to be able to speak about this with you this evening."
+    },
+    {
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l32-20",
+     "n": 20,
+     "options": [
+      "harmful",
+      "healthy",
+      "careful",
+      "wellness"
+     ],
+     "question": "Some bacteria are useful to your body. The opposite of useful is ."
+    },
+    {
+     "answer": 1,
+     "category": "vocab",
+     "id": "g11-l32-21",
+     "n": 21,
+     "options": [
+      "stages",
+      "habits",
+      "titles",
+      "goals"
+     ],
+     "question": "Using technology in a wrong way has created bad and new types of addictions."
+    },
+    {
+     "answer": 2,
+     "category": "vocab",
+     "id": "g11-l32-22",
+     "n": 22,
+     "options": [
+      "looked at",
+      "took part in",
+      "took care of",
+      "turned around"
+     ],
+     "question": "My father my brother and me properly when my mother was in the hospital."
+    },
+    {
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l32-23",
+     "n": 23,
+     "options": [
+      "hanging out",
+      "turning around",
+      "going away",
+      "gaining weight"
+     ],
+     "question": "They enjoyed with each other when they were children."
+    },
+    {
+     "answer": 3,
+     "category": "vocab",
+     "id": "g11-l32-24",
+     "n": 24,
+     "options": [
+      "socially",
+      "incorrectly",
+      "recently",
+      "properly"
+     ],
+     "question": "How much money and time do you need to do the job ?"
+    },
+    {
+     "answer": 1,
+     "category": "vocab",
+     "id": "g11-l32-25",
+     "n": 25,
+     "options": [
+      "educational",
+      "emotional",
+      "natural",
+      "cultural"
+     ],
+     "question": "My psychologist says that my problem is more than physical."
+    }
+   ],
+   "title": "تشریحی واژگان د۲ — تست چهارگزینه‌ای (ص۵۵-۵۶)"
+  },
+  {
+   "count": 16,
+   "lesson": 33,
+   "level": "تشریحی — تایپی",
+   "questions": [
+    {
+     "accepted": [
+      "craftsmen"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l33-1",
+     "kind": "typed",
+     "n": 1,
+     "options": [
+      "craftsmen",
+      "product",
+      "identity",
+      "economy",
+      "promised",
+      "diversity",
+      "instance",
+      "includes",
+      "customs"
+     ],
+     "placeholder": "fill in the blank with the bank word…",
+     "question": "The plates are painted by our finest . --------------- [bank: product / identity / craftsmen / economy / promised / diversity / instance / includes / customs]"
+    },
+    {
+     "accepted": [
+      "promised"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l33-2",
+     "kind": "typed",
+     "n": 2,
+     "options": [
+      "promised",
+      "product",
+      "identity",
+      "craftsmen",
+      "economy",
+      "diversity",
+      "instance",
+      "includes",
+      "customs"
+     ],
+     "placeholder": "fill in the blank with the bank word…",
+     "question": "His parents him a new car if he passes his exams. --------------- [bank: product / identity / craftsmen / economy / promised / diversity / instance / includes / customs]"
+    },
+    {
+     "accepted": [
+      "diversity"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l33-3",
+     "kind": "typed",
+     "n": 3,
+     "options": [
+      "diversity",
+      "product",
+      "identity",
+      "craftsmen",
+      "economy",
+      "promised",
+      "instance",
+      "includes",
+      "customs"
+     ],
+     "placeholder": "fill in the blank with the bank word…",
+     "question": "What do you have for New Year in your country? --------------- [bank: product / identity / craftsmen / economy / promised / diversity / instance / includes / customs]"
+    },
+    {
+     "accepted": [
+      "product"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l33-4",
+     "kind": "typed",
+     "n": 4,
+     "options": [
+      "product",
+      "identity",
+      "craftsmen",
+      "economy",
+      "promised",
+      "diversity",
+      "instance",
+      "includes",
+      "customs"
+     ],
+     "placeholder": "fill in the blank with the bank word…",
+     "question": "I saw an artistic made of gold and silver in the museum. --------------- [bank: product / identity / craftsmen / economy / promised / diversity / instance / includes / customs]"
+    },
+    {
+     "accepted": [
+      "includes"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l33-5",
+     "kind": "typed",
+     "n": 5,
+     "options": [
+      "includes",
+      "product",
+      "identity",
+      "craftsmen",
+      "economy",
+      "promised",
+      "diversity",
+      "instance",
+      "customs"
+     ],
+     "placeholder": "fill in the blank with the bank word…",
+     "question": "This dictionary both British and American spellings of words. --------------- [bank: product / identity / craftsmen / economy / promised / diversity / instance / includes / customs]"
+    },
+    {
+     "accepted": [
+      "economy"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l33-6",
+     "kind": "typed",
+     "n": 6,
+     "options": [
+      "economy",
+      "product",
+      "identity",
+      "craftsmen",
+      "promised",
+      "diversity",
+      "instance",
+      "includes",
+      "customs"
+     ],
+     "placeholder": "fill in the blank with the bank word…",
+     "question": "Any decrease in tourism could have a serious effect on the local . --------------- [bank: product / identity / craftsmen / economy / promised / diversity / instance / includes / customs]"
+    },
+    {
+     "accepted": [
+      "identity"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l33-7",
+     "kind": "typed",
+     "n": 7,
+     "options": [
+      "identity",
+      "product",
+      "craftsmen",
+      "economy",
+      "promised",
+      "diversity",
+      "instance",
+      "includes",
+      "customs"
+     ],
+     "placeholder": "fill in the blank with the bank word…",
+     "question": "Our country has its own cultural , which is very different from other countries. --------------- [bank: product / identity / craftsmen / economy / promised / diversity / instance / includes / customs]"
+    },
+    {
+     "accepted": [
+      "customs"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l33-8",
+     "kind": "typed",
+     "n": 8,
+     "options": [
+      "customs",
+      "product",
+      "identity",
+      "craftsmen",
+      "economy",
+      "promised",
+      "diversity",
+      "instance",
+      "includes"
+     ],
+     "placeholder": "fill in the blank with the bank word…",
+     "question": "He teaches the students to have respect for different nations and appreciate the of other cultures. --------------- [bank: product / identity / craftsmen / economy / promised / diversity / instance / includes / customs]"
+    },
+    {
+     "accepted": [
+      "income"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l33-9",
+     "kind": "typed",
+     "n": 9,
+     "options": [
+      "income",
+      "attempted",
+      "unique",
+      "touching",
+      "satisfied",
+      "amused",
+      "metals",
+      "imagination",
+      "appreciate"
+     ],
+     "placeholder": "fill in the blank with the bank word…",
+     "question": "The report shows that poor families spend a larger proportion of their on food. --------------- [bank: attempted / unique / income / touching / satisfied / amused / metals / imagination / appreciate]"
+    },
+    {
+     "accepted": [
+      "amused"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l33-10",
+     "kind": "typed",
+     "n": 10,
+     "options": [
+      "amused",
+      "attempted",
+      "unique",
+      "income",
+      "touching",
+      "satisfied",
+      "metals",
+      "imagination",
+      "appreciate"
+     ],
+     "placeholder": "fill in the blank with the bank word…",
+     "question": "The teacher was very at some of the children’s comments. --------------- [bank: attempted / unique / income / touching / satisfied / amused / metals / imagination / appreciate]"
+    },
+    {
+     "accepted": [
+      "appreciate"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l33-11",
+     "kind": "typed",
+     "n": 11,
+     "options": [
+      "appreciate",
+      "attempted",
+      "unique",
+      "income",
+      "touching",
+      "satisfied",
+      "amused",
+      "metals",
+      "imagination"
+     ],
+     "placeholder": "fill in the blank with the bank word…",
+     "question": "We really all the help you gave us last weekend. --------------- [bank: attempted / unique / income / touching / satisfied / amused / metals / imagination / appreciate]"
+    },
+    {
+     "accepted": [
+      "imagination"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l33-12",
+     "kind": "typed",
+     "n": 12,
+     "options": [
+      "imagination",
+      "attempted",
+      "unique",
+      "income",
+      "touching",
+      "satisfied",
+      "amused",
+      "metals",
+      "appreciate"
+     ],
+     "placeholder": "fill in the blank with the bank word…",
+     "question": "It’s a job that needs someone with a bit of . --------------- [bank: attempted / unique / income / touching / satisfied / amused / metals / imagination / appreciate]"
+    },
+    {
+     "accepted": [
+      "satisfied"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l33-13",
+     "kind": "typed",
+     "n": 13,
+     "options": [
+      "satisfied",
+      "attempted",
+      "unique",
+      "income",
+      "touching",
+      "amused",
+      "metals",
+      "imagination",
+      "appreciate"
+     ],
+     "placeholder": "fill in the blank with the bank word…",
+     "question": "His teachers seem with his improvement. --------------- [bank: attempted / unique / income / touching / satisfied / amused / metals / imagination / appreciate]"
+    },
+    {
+     "accepted": [
+      "metals"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l33-14",
+     "kind": "typed",
+     "n": 14,
+     "options": [
+      "metals",
+      "attempted",
+      "unique",
+      "income",
+      "touching",
+      "satisfied",
+      "amused",
+      "imagination",
+      "appreciate"
+     ],
+     "placeholder": "fill in the blank with the bank word…",
+     "question": "Silver, gold, and platinum are valuable . --------------- [bank: attempted / unique / income / touching / satisfied / amused / metals / imagination / appreciate]"
+    },
+    {
+     "accepted": [
+      "unique"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l33-15",
+     "kind": "typed",
+     "n": 15,
+     "options": [
+      "unique",
+      "attempted",
+      "income",
+      "touching",
+      "satisfied",
+      "amused",
+      "metals",
+      "imagination",
+      "appreciate"
+     ],
+     "placeholder": "fill in the blank with the bank word…",
+     "question": "Fingerprints are to every person. --------------- [bank: attempted / unique / income / touching / satisfied / amused / metals / imagination / appreciate]"
+    },
+    {
+     "accepted": [
+      "attempted"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l33-16",
+     "kind": "typed",
+     "n": 16,
+     "options": [
+      "attempted",
+      "unique",
+      "income",
+      "touching",
+      "satisfied",
+      "amused",
+      "metals",
+      "imagination",
+      "appreciate"
+     ],
+     "placeholder": "fill in the blank with the bank word…",
+     "question": "He to escape through a window. --------------- [bank: attempted / unique / income / touching / satisfied / amused / metals / imagination / appreciate]"
+    }
+   ],
+   "title": "تشریحی واژگان د۳ — جای خالی از بانک واژه (ص۸۸)"
+  },
+  {
+   "count": 8,
+   "lesson": 34,
+   "level": "تشریحی — تایپی",
+   "questions": [
+    {
+     "accepted": [
+      "poet"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l34-1",
+     "kind": "typed",
+     "n": 1,
+     "options": [
+      "poet",
+      "homeland",
+      "neighbor",
+      "pack",
+      "workshop",
+      "income",
+      "Prize",
+      "Souvenir"
+     ],
+     "placeholder": "complete the word (first letter is given)…",
+     "question": "A person who writes poems is a p _ _ _."
+    },
+    {
+     "accepted": [
+      "homeland"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l34-2",
+     "kind": "typed",
+     "n": 2,
+     "options": [
+      "homeland",
+      "poet",
+      "neighbor",
+      "pack",
+      "workshop",
+      "income",
+      "Prize",
+      "Souvenir"
+     ],
+     "placeholder": "complete the word (first letter is given)…",
+     "question": "The country you were born in is your h _ _ _ _ _ _ _."
+    },
+    {
+     "accepted": [
+      "neighbor"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l34-3",
+     "kind": "typed",
+     "n": 3,
+     "options": [
+      "neighbor",
+      "poet",
+      "homeland",
+      "pack",
+      "workshop",
+      "income",
+      "Prize",
+      "Souvenir"
+     ],
+     "placeholder": "complete the word (first letter is given)…",
+     "question": "Someone who lives near you is your n _ _ _ _ _ _ _."
+    },
+    {
+     "accepted": [
+      "pack"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l34-4",
+     "kind": "typed",
+     "n": 4,
+     "options": [
+      "pack",
+      "poet",
+      "homeland",
+      "neighbor",
+      "workshop",
+      "income",
+      "Prize",
+      "Souvenir"
+     ],
+     "placeholder": "complete the word (first letter is given)…",
+     "question": "When you p _ _ _ something, you put it into a bag, box, etc."
+    },
+    {
+     "accepted": [
+      "workshop"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l34-5",
+     "kind": "typed",
+     "n": 5,
+     "options": [
+      "workshop",
+      "poet",
+      "homeland",
+      "neighbor",
+      "pack",
+      "income",
+      "Prize",
+      "Souvenir"
+     ],
+     "placeholder": "complete the word (first letter is given)…",
+     "question": "A w _ _ _ _ _ _ _ is a place where people make or repair things."
+    },
+    {
+     "accepted": [
+      "income"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l34-6",
+     "kind": "typed",
+     "n": 6,
+     "options": [
+      "income",
+      "poet",
+      "homeland",
+      "neighbor",
+      "pack",
+      "workshop",
+      "Prize",
+      "Souvenir"
+     ],
+     "placeholder": "complete the word (first letter is given)…",
+     "question": "All the money that you receive for your work is your i _ _ _ _ _."
+    },
+    {
+     "accepted": [
+      "Prize"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l34-7",
+     "kind": "typed",
+     "n": 7,
+     "options": [
+      "Prize",
+      "poet",
+      "homeland",
+      "neighbor",
+      "pack",
+      "workshop",
+      "income",
+      "Souvenir"
+     ],
+     "placeholder": "complete the word (first letter is given)…",
+     "question": "P _ _ _ _ is something that you give to the person who wins a game, race, etc."
+    },
+    {
+     "accepted": [
+      "Souvenir"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l34-8",
+     "kind": "typed",
+     "n": 8,
+     "options": [
+      "Souvenir",
+      "poet",
+      "homeland",
+      "neighbor",
+      "pack",
+      "workshop",
+      "income",
+      "Prize"
+     ],
+     "placeholder": "complete the word (first letter is given)…",
+     "question": "S _ _ _ _ _ _ _ is something you buy or keep to help you remember a holiday or special event."
+    }
+   ],
+   "title": "تشریحی واژگان د۳ — کلمه با حرف اول (ص۸۸)"
+  },
+  {
+   "count": 8,
+   "lesson": 35,
+   "level": "تشریحی — تایپی",
+   "questions": [
+    {
+     "accepted": [
+      "discount"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l35-1",
+     "kind": "typed",
+     "n": 1,
+     "options": [
+      "discount",
+      "lend",
+      "appreciate",
+      "photography",
+      "humankind",
+      "economy",
+      "custom",
+      "painting",
+      "shocked"
+     ],
+     "placeholder": "type the word for the definition…",
+     "question": "Money that somebody takes away from the price of something to make it cheaper ( ) [bank: lend / appreciate / photography / humankind / economy / custom / discount / painting / shocked]"
+    },
+    {
+     "accepted": [
+      "painting"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l35-2",
+     "kind": "typed",
+     "n": 2,
+     "options": [
+      "painting",
+      "lend",
+      "appreciate",
+      "photography",
+      "humankind",
+      "economy",
+      "custom",
+      "discount",
+      "shocked"
+     ],
+     "placeholder": "type the word for the definition…",
+     "question": "The skill or activity of making a picture or putting paint on a wall: ( ) [bank: lend / appreciate / photography / humankind / economy / custom / discount / painting / shocked]"
+    },
+    {
+     "accepted": [
+      "humankind"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l35-3",
+     "kind": "typed",
+     "n": 3,
+     "options": [
+      "humankind",
+      "lend",
+      "appreciate",
+      "photography",
+      "economy",
+      "custom",
+      "discount",
+      "painting",
+      "shocked"
+     ],
+     "placeholder": "type the word for the definition…",
+     "question": "The whole of the human race, including both men and women: ( ) [bank: lend / appreciate / photography / humankind / economy / custom / discount / painting / shocked]"
+    },
+    {
+     "accepted": [
+      "custom"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l35-4",
+     "kind": "typed",
+     "n": 4,
+     "options": [
+      "custom",
+      "lend",
+      "appreciate",
+      "photography",
+      "humankind",
+      "economy",
+      "discount",
+      "painting",
+      "shocked"
+     ],
+     "placeholder": "type the word for the definition…",
+     "question": "Traditional or unusual things that people do in an area: ( ) [bank: lend / appreciate / photography / humankind / economy / custom / discount / painting / shocked]"
+    },
+    {
+     "accepted": [
+      "photography"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l35-5",
+     "kind": "typed",
+     "n": 5,
+     "options": [
+      "photography",
+      "lend",
+      "appreciate",
+      "humankind",
+      "economy",
+      "custom",
+      "discount",
+      "painting",
+      "shocked"
+     ],
+     "placeholder": "type the word for the definition…",
+     "question": "The activity or job of taking photographs or filming: ( ) [bank: lend / appreciate / photography / humankind / economy / custom / discount / painting / shocked]"
+    },
+    {
+     "accepted": [
+      "lend"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l35-6",
+     "kind": "typed",
+     "n": 6,
+     "options": [
+      "lend",
+      "appreciate",
+      "photography",
+      "humankind",
+      "economy",
+      "custom",
+      "discount",
+      "painting",
+      "shocked"
+     ],
+     "placeholder": "type the word for the definition…",
+     "question": "Give something to somebody for a short time: ( ) [bank: lend / appreciate / photography / humankind / economy / custom / discount / painting / shocked]"
+    },
+    {
+     "accepted": [
+      "appreciate"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l35-7",
+     "kind": "typed",
+     "n": 7,
+     "options": [
+      "appreciate",
+      "lend",
+      "photography",
+      "humankind",
+      "economy",
+      "custom",
+      "discount",
+      "painting",
+      "shocked"
+     ],
+     "placeholder": "type the word for the definition…",
+     "question": "To value somebody or something: ( ) [bank: lend / appreciate / photography / humankind / economy / custom / discount / painting / shocked]"
+    },
+    {
+     "accepted": [
+      "shocked"
+     ],
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l35-8",
+     "kind": "typed",
+     "n": 8,
+     "options": [
+      "shocked",
+      "lend",
+      "appreciate",
+      "photography",
+      "humankind",
+      "economy",
+      "custom",
+      "discount",
+      "painting"
+     ],
+     "placeholder": "type the word for the definition…",
+     "question": "Feeling very upset or surprised: ( ) [bank: lend / appreciate / photography / humankind / economy / custom / discount / painting / shocked]"
+    }
+   ],
+   "title": "تشریحی واژگان د۳ — تعریف‌ها، بنویسید (ص۸۹)"
+  },
+  {
+   "count": 25,
+   "lesson": 36,
+   "level": "تشریحی — چهارگزینه‌ای",
+   "questions": [
+    {
+     "answer": 2,
+     "category": "vocab",
+     "id": "g11-l36-1",
+     "n": 1,
+     "options": [
+      "appreciates",
+      "attempts",
+      "includes",
+      "depends"
+     ],
+     "question": "The museum’s collection works of art from all around the world."
+    },
+    {
+     "answer": 1,
+     "category": "vocab",
+     "id": "g11-l36-2",
+     "n": 2,
+     "options": [
+      "calligraphy",
+      "handshake",
+      "collection",
+      "truth"
+     ],
+     "question": "He welcomed me with a wide smile and a warm ."
+    },
+    {
+     "answer": 3,
+     "category": "vocab",
+     "id": "g11-l36-3",
+     "n": 3,
+     "options": [
+      "uncertain",
+      "shared",
+      "pleasure",
+      "whenever"
+     ],
+     "question": "It’s funny how Ali always disappears there’s work to be done."
+    },
+    {
+     "answer": 1,
+     "category": "vocab",
+     "id": "g11-l36-4",
+     "n": 4,
+     "options": [
+      "attitude",
+      "economy",
+      "souvenir",
+      "combination"
+     ],
+     "question": "Making and selling handicrafts are good ways to help a country’s and introduce its culture to other nations."
+    },
+    {
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l36-5",
+     "n": 5,
+     "options": [
+      "along",
+      "away",
+      "back",
+      "up"
+     ],
+     "question": "If people practice art, they will get with their stress and enjoy the pleasure of making artwork."
+    },
+    {
+     "answer": 3,
+     "category": "vocab",
+     "id": "g11-l36-6",
+     "n": 6,
+     "options": [
+      "touching",
+      "handshaking",
+      "painting",
+      "bowing"
+     ],
+     "question": "In Japan, people greet each other by ."
+    },
+    {
+     "answer": 1,
+     "category": "vocab",
+     "id": "g11-l36-7",
+     "n": 7,
+     "options": [
+      "worse",
+      "other",
+      "better",
+      "nothing"
+     ],
+     "question": "He never speaks to me than to ask for something."
+    },
+    {
+     "answer": 1,
+     "category": "vocab",
+     "id": "g11-l36-8",
+     "n": 8,
+     "options": [
+      "common",
+      "amused",
+      "unique",
+      "frightened"
+     ],
+     "question": "Having pictures to color will keep children for hours."
+    },
+    {
+     "answer": 2,
+     "category": "vocab",
+     "id": "g11-l36-9",
+     "n": 9,
+     "options": [
+      "attempted",
+      "achieved",
+      "confused",
+      "wove"
+     ],
+     "question": "They me by asking so many questions."
+    },
+    {
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l36-10",
+     "n": 10,
+     "options": [
+      "depend",
+      "greet",
+      "recognize",
+      "interest"
+     ],
+     "question": "Children on their parents for food and clothing."
+    },
+    {
+     "answer": 3,
+     "category": "vocab",
+     "id": "g11-l36-11",
+     "n": 11,
+     "options": [
+      "collection",
+      "product",
+      "charity",
+      "diversity"
+     ],
+     "question": "There is a need for greater and choice in education."
+    },
+    {
+     "answer": 2,
+     "category": "vocab",
+     "id": "g11-l36-12",
+     "n": 12,
+     "options": [
+      "expect",
+      "lend",
+      "achieve",
+      "handshake"
+     ],
+     "question": "The only way to --------------- the impossible is to believe that it is possible."
+    },
+    {
+     "answer": 1,
+     "category": "vocab",
+     "id": "g11-l36-13",
+     "n": 13,
+     "options": [
+      "beauty",
+      "attitude",
+      "craft",
+      "pleasure"
+     ],
+     "question": "People’s towards the president varies widely."
+    },
+    {
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l36-14",
+     "n": 14,
+     "options": [
+      "appreciate",
+      "prevent",
+      "include",
+      "disagree"
+     ],
+     "question": "The happiest people do not necessarily have the best of all. They simply what they find on their way."
+    },
+    {
+     "answer": 2,
+     "category": "vocab",
+     "id": "g11-l36-15",
+     "n": 15,
+     "options": [
+      "uncertain",
+      "antonym",
+      "calligraphy",
+      "infinitive"
+     ],
+     "question": "Reza won the prize when he was at school."
+    },
+    {
+     "answer": 3,
+     "category": "vocab",
+     "id": "g11-l36-16",
+     "n": 16,
+     "options": [
+      "explain",
+      "recognize",
+      "accept",
+      "weave"
+     ],
+     "question": "Only a few of the women still ."
+    },
+    {
+     "answer": 1,
+     "category": "vocab",
+     "id": "g11-l36-17",
+     "n": 17,
+     "options": [
+      "frightened",
+      "sociable",
+      "proud",
+      "fortunate"
+     ],
+     "question": "She’s a child who’ll talk to anyone."
+    },
+    {
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l36-18",
+     "n": 18,
+     "options": [
+      "advise",
+      "produce",
+      "agree",
+      "respect"
+     ],
+     "question": "It is easy for you to , but difficult to take advice from others."
+    },
+    {
+     "answer": 3,
+     "category": "vocab",
+     "id": "g11-l36-19",
+     "n": 19,
+     "options": [
+      "imagination",
+      "discount",
+      "souvenir",
+      "combination"
+     ],
+     "question": "Culture is a/an of thoughts, feelings, attitudes, and beliefs."
+    },
+    {
+     "answer": 2,
+     "category": "vocab",
+     "id": "g11-l36-20",
+     "n": 20,
+     "options": [
+      "uncertain",
+      "respectful",
+      "decorative",
+      "impatient"
+     ],
+     "question": "By handicrafts, we mean making items in a skillful way using our hands."
+    },
+    {
+     "answer": 2,
+     "category": "vocab",
+     "id": "g11-l36-21",
+     "n": 21,
+     "options": [
+      "weave",
+      "bow",
+      "reflect",
+      "escape"
+     ],
+     "question": "You have to on how to answer his questions before you get to his house."
+    },
+    {
+     "answer": 1,
+     "category": "vocab",
+     "id": "g11-l36-22",
+     "n": 22,
+     "options": [
+      "disappear",
+      "get along with",
+      "attempt",
+      "get back"
+     ],
+     "question": "His unsociable character makes it hard for us to each other."
+    },
+    {
+     "answer": 1,
+     "category": "vocab",
+     "id": "g11-l36-23",
+     "n": 23,
+     "options": [
+      "decorative",
+      "vast",
+      "artifact",
+      "skillful"
+     ],
+     "question": "Newspapers are produced in numbers."
+    },
+    {
+     "answer": 0,
+     "category": "vocab",
+     "id": "g11-l36-24",
+     "n": 24,
+     "options": [
+      "handicrafts",
+      "charities",
+      "imaginations",
+      "instances"
+     ],
+     "question": "Many people of the world produce and sell them to tourists."
+    },
+    {
+     "answer": 3,
+     "category": "vocab",
+     "id": "g11-l36-25",
+     "n": 25,
+     "options": [
+      "attitudes",
+      "synonyms",
+      "references",
+      "antonyms"
+     ],
+     "question": "Two of “light” are “dark” and “heavy”."
+    }
+   ],
+   "title": "تشریحی واژگان د۳ — تست چهارگزینه‌ای (ص۸۹-۹۰)"
   }
  ],
  "source": {
@@ -8524,6 +10694,70 @@
     "s3box": [
      "despite"
     ]
+   }
+  },
+  "descVocab2": {
+   "duplicateHunt": {
+    "duplicates": [
+     {
+      "new": "g11-l33-6",
+      "old": "g11-l5-12",
+      "oldLesson": 5
+     }
+    ],
+    "note": "یک بازاستفادهٔ درون‌جزوه‌ایِ چاپی: ساقهٔ g11-l33-6 عیناً در بانکِ تکمیلیِ درس سوم (g11-l5-12، ص۹۳) هم چاپ شده — هر دو نگه داشته شدند؛ گاردِ برابریِ بین‌بانکی (ساقه+کلید) قفل است. الگوی r309.",
+    "scope": "همهٔ بانک‌های پیشینِ tests-g11 — ساقهٔ نرمال‌شده (هم‌راستا با منطقِ گارد)"
+   },
+   "extractedRound": "r312",
+   "family": "descriptive-vocab-lesson2-and-3",
+   "keyKind": "word-keyed — نگاشتِ واژه→حرف برای MCQ با تطبیقِ یکتا (assert)",
+   "keyPages": "184 / 193",
+   "lessons": {
+    "L2": {
+     "29": "بخش ۱ — جای خالی از دو بانک ۹تایی (تایپی)",
+     "30": "بخش ۲ — کلمه با حرف اول (تایپی)",
+     "31": "بخش ۳ — تعریف‌ها با بانک ۹تایی (تایپی)",
+     "32": "بخش ۴ — ۲۵ MCQ با کلید واژه‌ای چاپی"
+    },
+    "L3": {
+     "33": "بخش ۱ — جای خالی از دو بانک ۹تایی (تایپی)",
+     "34": "بخش ۲ — کلمه با حرف اول (تایپی)",
+     "35": "بخش ۳ — تعریف‌ها با بانک ۹تایی (تایپی)",
+     "36": "بخش ۴ — ۲۵ MCQ با کلید واژه‌ای چاپی"
+    }
+   },
+   "printQuirks": [
+    "درس دوم بخش ۱ کلیدِ ۱۶ «disagree» چاپ شده با ساقهٔ «I --- the problem with my parents.» (معناییِ «discussed» به‌جای مانده و مزاحمِ بی‌استفاده است) — عینِ چاپ حاکم است (رندر pdftoppm ص۵۴ و ص۱۸۴) — الگوی printErrata r309.",
+    "درس دوم بخش ۴ Q12 خانهٔ چهارمِ گزینه بدون «d.» چاپ شده («c. retiring calling back») — بازسازیِ مستند: c=retiring / d=calling back (رندر ص۵۶).",
+    "درس سوم بخش ۲ کلیدهای ۷ و ۸ («Prize»/«Souvenir») با حرف بزرگ چاپ شده‌اند — عینِ چاپ (الگوی Imagine ر۳۱۱)؛ تطبیقِ تایپ حساس به حروف نیست.",
+    "پرانتزهای الگوی حرف‌اولِ بخش ۲ درس دوم در لایهٔ RTL معکوس می‌آیند («)c _ _ _(») — سوآپِ امن در ساقهٔ انگلیسیِ خالص انجام شد (رندر ص۵۴: چاپ طبیعی «(c _ _ _)»)."
+   ],
+   "printedHeader": "«آزمون تشریحی واژگان درس دوم» (پاسخ: ص۱۸۴) + «آزمون تشریحی واژگان درس سوم» (پاسخ: ص۱۹۳) — هر دو چهاربخشی",
+   "questionPages": "54-56 / 88-90",
+   "translation": "برای هر دو آزمون در جزوه ترجمهٔ چاپی نیست (الگوی صادقانهٔ r278/r308/r309/r311) — translation ساخته نشد.",
+   "unusedBoxWords": {
+    "L2": {
+     "s1boxA": [
+      "miracle"
+     ],
+     "s1boxB": [
+      "discussed"
+     ],
+     "s3box": [
+      "laughter"
+     ]
+    },
+    "L3": {
+     "s1boxA": [
+      "instance"
+     ],
+     "s1boxB": [
+      "touching"
+     ],
+     "s3box": [
+      "economy"
+     ]
+    }
    }
   },
   "file": "جزوه جامع یازدهم .pdf",

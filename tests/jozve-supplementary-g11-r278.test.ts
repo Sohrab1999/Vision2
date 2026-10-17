@@ -57,6 +57,8 @@ describe("jozve supplementary g11 (r278 extraction receipt)", () => {
     24,
       // r311 — «آزمون تشریحی واژگان درس اول» (ص۱۶-۱۸، کلید واژه‌ای ص۱۷۶) — l25..l28 الحاق شد
     25, 26, 27, 28,
+      // r312 — «آزمون تشریحی واژگان درس دوم/سوم» (ص۵۴-۵۶/ص۸۸-۹۰، کلیدهای ص۱۸۴/ص۱۹۳) — l29..l36 الحاق شد
+    29, 30, 31, 32, 33, 34, 35, 36,
     ]);
     expect(l4.count).toBe(22);
     expect(l4.questions).toHaveLength(22);
@@ -77,7 +79,7 @@ describe("jozve supplementary g11 (r278 extraction receipt)", () => {
     }
     const all = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
     expect(new Set(all).size).toBe(all.length);
-    expect(all).toHaveLength(40 + 40 + 40 + 22 + 20 + 20 + 361 + 57); // +۳۶۱: جامع ۳۶۰ (r308) — با دو «۲۲۸» چاپی؛ +۲۰: واژگان کنکوری درس دوم (r309)
+    expect(all).toHaveLength(40 + 40 + 40 + 22 + 20 + 20 + 361 + 57 + 114); // +۳۶۱: جامع ۳۶۰ (r308) — با دو «۲۲۸» چاپی؛ +۲۰: واژگان کنکوری درس دوم (r309)
   });
 
   it("every supplementary question: 4 unique options, valid answer, healthy blank, English purity", () => {
