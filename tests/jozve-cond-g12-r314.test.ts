@@ -26,6 +26,7 @@ interface GLesson {
   lesson: number;
   title: string;
   count?: number;
+  level?: string;
   questions: GQuestion[];
 }
 interface GBank {

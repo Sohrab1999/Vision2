@@ -33,7 +33,19 @@ interface TBank {
     extractedRound: number;
     tenses?: {
       pages: string;
-      part1: { questions: number; pages: string; keyType: string; translations: string };
+      part1: {
+        questions: number;
+        pages: string;
+        keyType: string;
+        translations?: string;
+        translationsWashed?: {
+          round: string;
+          pages: string;
+          items: number;
+          method: string;
+          printQuirks: Record<string, string>;
+        };
+      };
       part2: { questions: number; pages: string; keyType: string; translations: string };
       spotLocks: { part1: Record<string, string>; part2: Record<string, string> };
       printedDuplicate: { part1: number; part2: number; note: string };
@@ -49,6 +61,40 @@ const bank: TBank = JSON.parse(
 
 const FA = /[\u0600-\u06FF]/;
 const BLANK = "---------------";
+
+// r315 — رونویسیِ چشمیِ دستیِ ۳۰ خطِ قرمزِ «ترجمه:» (رندر ۳۰۰-۳۰۰۰dpi ص۲۲۰-۲۲۳ — قفلِ حرف‌به‌حرف)
+const TRANSCRIPT: Record<number, string> = {
+  1: "من ۳ روز قبل خواستم او را ببینم. از آن روز، دو بار به او زنگ زده ام.",
+  2: "زمانیکه آقای سعیدی رادیو را در ماشینش روشن کرد، در حال رانندگی کردن به سمت خانه بود.",
+  3: "من از وقتیکه به این شهر نقل مکان کرده ام، دو کتاب شعر را نوشته ام.",
+  4: "ـ آیا آن نامه را برایم نوشتی؟ - شرمنده. کاملاً فراموشش کردم. به زودی آن را خواهم نوشت.",
+  5: "من تا به حال دو بار این امتحان را داده ام. امیدوارم که در آن قبول بشوم.",
+  6: "خواهر بزرگترم بعد از اینکه مادرم بهش دارو داد، حالش بهتر شد.",
+  7: "درخت بر روی ماشین پدرم افتاد، درحالی که به سمت منزل در حال رانندگی کردن بود.",
+  8: "او هفته گذشته پیشنهاد یک شغلی را در لندن دریافت کرد اما هنوز درباره اینکه چه چیزی در مورد آن انجام دهد، تصمیم نگرفته است.",
+  9: "رامان دیروز یک پاکت نامه و یک تمبر را از اداره پست خرید.",
+  10: "او تا زمانیکه مشاورش در زندان مشکل را برایش توضیح نداد، آن را نفهمیده بود.",
+  11: "من تصمیم گرفته ام یک مهمانی تولد بگیرم. قراره تعداد زیادی از دوستانم را برای چهارشنبه آینده دعوت کنم.",
+  12: "زمانیکه ما وارد شدیم، رامان مشغول تماشای تلویزیون بود.",
+  13: "مادرم بیسکویتها را دو ساعت قبل بر روی میز گذاشت.",
+  14: "آنها ناراحت بودند از آنجاییکه من قبل از اینکه آنها شهر را ترک کنند، به دیدنشان نرفته بودم.",
+  15: "معمولاً قبل از اینکه پری و برادر کوچکش به تختخواب بروند، مادرشان یک داستان کوتاه را برای آنها میخوانند.",
+  16: "من تا قبل از اینکه به چین سفر کنم، به هیچ کشور آسیایی نرفته بودم.",
+  17: "من فکر میکنم که عمویت به تو، پولی، را که لازم داری، قرض خواهد داد. او مرد ثروتمندی است.",
+  18: "ما مشغول خوردن شام در رستوران بودیم زمانیکه یکی از دوستان قدیمییم را دیدیم.",
+  19: "ـ مایلیذ چیزی برای خوردن بخورید؟ - نه متشکرم. من تازه یک ساندویــج خورده ام.",
+  20: "ـ چرا آن همه رنگ را خریدی؟ - قصد دارم اتاق خوابم را فردا رنگ آمیزی کنم.",
+  21: "در حالیکه او مشغول خواندن روزنامه بود، سگش در کنار او دراز کشیده بود.",
+  22: "زمانیکه مری وارد شد من بازی تنیس را با مایک تمام کرده بودم.",
+  23: "سارا چونکه همه تکالیفش را انجام داده بود، خیلی خسته بود.",
+  24: "ـ پنجره های اتاقت کثیف هستند. ـ میدونم. قراره بعداً آنها را بشویم.",
+  25: "زمانیکه تو به من زنگ زدی، من بیشتر قسمتهای کتاب را نوشته بودم.",
+  26: "ـ من هیچ پولی ندارم. ـ واقعاً؟ نگران نباش. من بهت کمی(پول) قرض خواهم داد.",
+  27: "آنها همه بازیهای دیگر را به آسانی برده اند از زمانیکه بازی فوتبال را به آلمان باختند.",
+  28: "این دومین بار است که من بخاطر اشتباهات تو در چنین وضعیت سختی قرار گرفته ام.",
+  29: "دیروز در همین مواقع، در حالی که مشغول مطالعه کردن بودم، برادرم زنگ زد و ما را برای شام دعوت کرد.",
+  30: 'ما فکر میکنیم که "رامان" گران قیمت ترین ماشین اسپرتی را که ما تا به حال در این شهر دیده ایم، دارد.',
+};
 
 const l1 = bank.lessons.find((l) => l.lesson === 1)!;
 const l2 = bank.lessons.find((l) => l.lesson === 2)!;
@@ -146,12 +192,30 @@ describe("jozve topic grammar bank g12 — tenses (r281 extraction receipt)", ()
     });
   });
 
-  it("honest absence: no translation field anywhere in the tense lessons, with recorded reasons", () => {
-    expect(bank.source.tenses!.part1.translations).toContain("ثبت نشد");
-    expect(bank.source.tenses!.part2.translations).toContain("چاپ نشده");
-    for (const q of fresh) {
-      expect(q.translation, `${q.id} no translation`).toBeUndefined();
+  it("r315 wash: all 30 part-1 items carry the printed Persian translation verbatim to the red-line transcript; part-2 keeps honest absence", () => {
+    // r315 — بستنِ رسیدِ موکولِ r281: ۳۰ ترجمهٔ چاپیِ ص۲۲۰-۲۲۳ با رونویسیِ چشمی (الگوی r313)
+    for (const q of l3.questions) {
+      expect(q.translation, q.id).toBe(TRANSCRIPT[q.n]);
+      expect(FA.test(q.translation!), `${q.id} Persian`).toBe(true);
+      expect(q.translation!.length, q.id).toBeGreaterThan(20);
     }
+    for (const q of l4.questions) {
+      expect(q.translation, `${q.id} grid part keeps honest absence`).toBeUndefined();
+    }
+    const receipt = bank.source.tenses!.part1.translationsWashed!;
+    expect(receipt.round).toBe("r315");
+    expect(receipt.pages).toBe("220-223");
+    expect(receipt.items).toBe(30);
+    expect(receipt.method).toContain("r313");
+    expect(receipt.printQuirks["10"]).toContain("زندان");
+    expect(receipt.printQuirks["19"]).toContain("ساندوی");
+    expect(receipt.printQuirks["18"]).toContain("قدیمییم");
+  });
+
+  it("honest absence reasons: part-1 receipt replaced by the wash, part-2 keeps the printed-absence reason", () => {
+    expect(bank.source.tenses!.part1.translations).toBeUndefined();
+    expect(bank.source.tenses!.part1.translationsWashed).toBeDefined();
+    expect(bank.source.tenses!.part2.translations).toContain("چاپ نشده");
   });
 
   it("ID uniqueness across the whole topic bank (r280 + r281 = 168 questions)", () => {
