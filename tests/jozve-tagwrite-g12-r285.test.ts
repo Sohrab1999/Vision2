@@ -74,7 +74,7 @@ const STEM_LOCKS: Record<number, RegExp> = {
 
 describe("jozve topic grammar bank g12 — typed «بنویسید» p43 (r285 extraction receipt)", () => {
   it("bank shape: twelve lessons, typed bank added as exactly 22 with continuous numbering", () => {
-    expect(bank.lessons.map((l) => l.lesson)).toEqual(Array.from({ length: 92 }, (_, i) => i + 1)); // r286 دو بانک کلمات ربط، r287 هفت بانک تشریحی و r288 بخش‌های ۸/۹ را افزودند؛ r289-r291 آزمون‌های جامع درس اول تا سوم (۲۴-۵۸) و r292-r294 آزمون‌های نهایی دی ۹۷، خرداد ۹۸ و شهریور ۹۸ (۵۹-۹۲) را افزودند
+    expect(bank.lessons.map((l) => l.lesson)).toEqual(Array.from({ length: 104 }, (_, i) => i + 1)); // r286 دو بانک کلمات ربط، r287 هفت بانک تشریحی و r288 بخش‌های ۸/۹ را افزودند؛ r289-r291 آزمون‌های جامع درس اول تا سوم (۲۴-۵۸) و r292-r295 آزمون‌های نهایی دی ۹۷، خرداد ۹۸، شهریور ۹۸ و دی ۹۸ (۵۹-۱۰۴) را افزودند
     // بانک‌های r280-r284 دست‌نخورده
     const counts = [27, 61, 30, 50, 20, 20, 40, 20, 15, 20, 40];
     counts.forEach((c, i) => expect(bank.lessons[i].questions).toHaveLength(c));
@@ -84,7 +84,7 @@ describe("jozve topic grammar bank g12 — typed «بنویسید» p43 (r285 ex
     expect(l12.questions.every((q) => q.id === `g12-tagwrite-${q.n}`)).toBe(true);
     expect(l12.level).toBe("آموزشی — ورود آزاد");
     // جمع خانواده: ۴۹۹ + ۱۶ (r288) = ۵۱۵
-    expect(bank.lessons.reduce((a, l) => a + l.count, 0)).toBe(814); // ۵۱۵ + ۵۹ آزمون جامع r289
+    expect(bank.lessons.reduce((a, l) => a + l.count, 0)).toBe(855); // ۵۱۵ + ۵۹ آزمون جامع r289
   });
 
   it("every question is typed-shaped: kind, accepted==printed key, correct scaffold at answer index", () => {
@@ -129,10 +129,10 @@ describe("jozve topic grammar bank g12 — typed «بنویسید» p43 (r285 ex
     expect(l12.questions[5].translation).toContain("قیمت بلیط");
   });
 
-  it("id uniqueness across the whole 92-bank family (814 ids) + lesson 12 introduces zero new stem collisions", () => {
+  it("id uniqueness across the whole 104-bank family (855 ids) + lesson 12 introduces zero new stem collisions", () => {
     const all = bank.lessons.flatMap((l) => l.questions);
     const ids = new Set(all.map((q) => q.id));
-    expect(ids.size).toBe(814);
+    expect(ids.size).toBe(855);
     // برخورد ساقهٔ «نو» صفر: ساقه‌های درس ۱۲ نباید در بانک‌های ۱..۱۲ باشند.
     // (دو برخوردِ پیشینِ چاپیِ مستندِ r281/r283 — tense1/14↔tense2/38 و tag2/9↔tag2/12 —
     //  وفادار به خود جزوه نگه داشته شده‌اند و دامنهٔ این گارد نیستند.)
