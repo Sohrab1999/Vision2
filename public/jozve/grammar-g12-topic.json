@@ -387,6 +387,55 @@
      "note": "تنشِ معناییِ جزئی؛ کلید چاپی حاکم است (الگوی tfReceipt r289)"
     }
    ]
+  },
+  "comprehensive3": {
+   "pages": "156-159",
+   "keyPages": "226",
+   "titlePrinted": "آزمون جامع تشریحی درس سوم (پاسخنامه صفحه: 226) — «Vision Three»",
+   "sections": 13,
+   "banks": 12,
+   "questions": 53,
+   "keys": 53,
+   "extractedRound": 291,
+   "visualAbsent": {
+    "section": 1,
+    "items": 4,
+    "printedKey": "1.D / 2.A / 3.C / 4.B",
+    "note": "وابسته به تصویر — بانک ساخته نشد؛ کلید چاپی ص۲۲۶ همین‌جا محفوظ است (الگوی r289/r290)"
+   },
+   "threeRoles": {
+    "section": 10,
+    "items": 4,
+    "note": "MCQ سه‌گزینه‌ای — سه نقشِ چاپیِ خودِ تمرین (Topic/Supporting/Concluding)؛ کلید چاپی: Topic(3) Supporting(1) Supporting(4) Concluding(2)"
+   },
+   "reversedPrint": {
+    "sections": "11, 12, 13-4",
+    "note": "گزینه‌های سه کلوز به ترتیب معکوس حرف چاپ شده‌اند (d→a)؛ نگاشت وفادار a..d — کلیدهای چاپی حاکم"
+   },
+   "slashKeys": {
+    "section": 8,
+    "note": "کلیدهای دوخالی چاپی با « / » — accepted عیناً وفادار به چاپ؛ normalizeTypedAnswer از این راند اسلش را به فاصله نرمال می‌کند"
+   },
+   "receipts": [
+    {
+     "item": "S2-1",
+     "field": "stem",
+     "printed": "Solar cell can",
+     "note": "مفرد چاپی (cell نه cells) — وفادار ماندیم"
+    },
+    {
+     "item": "S13-2b",
+     "field": "options.b",
+     "printed": "a very sophisticated from of communication",
+     "note": "غلط چاپی خود جزوه — from به‌جای form؛ وفادار ماندیم"
+    },
+    {
+     "item": "S13-2",
+     "field": "stem",
+     "printed": "…than they can kill us ----.",
+     "note": "ساقهٔ دوسطری چاپی در یک خط نگه داشته شد"
+    }
+   ]
   }
  },
  "lessons": [
@@ -9746,6 +9795,917 @@
       "What were Leonardo's plans for a submarine?"
      ],
      "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 47,
+   "title": "جامع درس سوم — واژگان: جای خالی از بانک، بنویسید (ص۱۵۶)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 8,
+   "questions": [
+    {
+     "id": "g12-comp3-v1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Solar cell can --------------- sunlight and convert it into electricity.",
+     "options": [
+      "absorb",
+      "forever",
+      "remind",
+      "opposite"
+     ],
+     "answer": 0,
+     "accepted": [
+      "absorb"
+     ],
+     "placeholder": "fill in the blank with the word bank…"
+    },
+    {
+     "id": "g12-comp3-v2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Factories are no longer allowed to --------------- the air with black smoke.",
+     "options": [
+      "pollute",
+      "common",
+      "absorb",
+      "forever"
+     ],
+     "answer": 0,
+     "accepted": [
+      "pollute"
+     ],
+     "placeholder": "fill in the blank with the word bank…"
+    },
+    {
+     "id": "g12-comp3-v3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "There's increasing --------------- for cars which are more economical on fuel.",
+     "options": [
+      "demand",
+      "blow",
+      "generate",
+      "pollute"
+     ],
+     "answer": 0,
+     "accepted": [
+      "demand"
+     ],
+     "placeholder": "fill in the blank with the word bank…"
+    },
+    {
+     "id": "g12-comp3-v4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "I had to --------------- myself that being confident is not the same as being perfect!",
+     "options": [
+      "remind",
+      "opposite",
+      "demand",
+      "blow"
+     ],
+     "answer": 0,
+     "accepted": [
+      "remind"
+     ],
+     "placeholder": "fill in the blank with the word bank…"
+    },
+    {
+     "id": "g12-comp3-v5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "In England you must drive on the --------------- side of the road to the rest of Europe.",
+     "options": [
+      "opposite",
+      "demand",
+      "blow",
+      "generate"
+     ],
+     "answer": 0,
+     "accepted": [
+      "opposite"
+     ],
+     "placeholder": "fill in the blank with the word bank…"
+    },
+    {
+     "id": "g12-comp3-v6",
+     "n": 6,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "The company should be able to --------------- business on the back of existing contracts.",
+     "options": [
+      "generate",
+      "pollute",
+      "common",
+      "absorb"
+     ],
+     "answer": 0,
+     "accepted": [
+      "generate"
+     ],
+     "placeholder": "fill in the blank with the word bank…"
+    },
+    {
+     "id": "g12-comp3-v7",
+     "n": 7,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "The winds --------------- across the sea, pushing little waves into bigger and bigger ones.",
+     "options": [
+      "blow",
+      "generate",
+      "pollute",
+      "common"
+     ],
+     "answer": 0,
+     "accepted": [
+      "blow"
+     ],
+     "placeholder": "fill in the blank with the word bank…"
+    },
+    {
+     "id": "g12-comp3-v8",
+     "n": 8,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "The results of the research should be used for the --------------- good rather than for individual profit.",
+     "options": [
+      "common",
+      "absorb",
+      "forever",
+      "remind"
+     ],
+     "answer": 0,
+     "accepted": [
+      "common"
+     ],
+     "placeholder": "fill in the blank with the word bank…"
+    }
+   ]
+  },
+  {
+   "lesson": 48,
+   "title": "جامع درس سوم — واژگان: ترکیب‌ها، ۵ گزینهٔ چاپی (ص۱۵۶)",
+   "level": "استاندارد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-comp3-col1",
+     "n": 1,
+     "category": "grammar",
+     "question": "fossil",
+     "options": [
+      "instance",
+      "balcony",
+      "fuels",
+      "energy",
+      "sources"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-comp3-col2",
+     "n": 2,
+     "category": "grammar",
+     "question": "kinetic",
+     "options": [
+      "instance",
+      "balcony",
+      "fuels",
+      "energy",
+      "sources"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-comp3-col3",
+     "n": 3,
+     "category": "grammar",
+     "question": "for",
+     "options": [
+      "instance",
+      "balcony",
+      "fuels",
+      "energy",
+      "sources"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-comp3-col4",
+     "n": 4,
+     "category": "grammar",
+     "question": "main",
+     "options": [
+      "instance",
+      "balcony",
+      "fuels",
+      "energy",
+      "sources"
+     ],
+     "answer": 4
+    }
+   ]
+  },
+  {
+   "lesson": 49,
+   "title": "جامع درس سوم — واژگان: تعریف‌ها، بنویسید (ص۱۵۶)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-comp3-def1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "To put something back in the right place:",
+     "options": [
+      "replace",
+      "generation",
+      "conversion",
+      "consumption"
+     ],
+     "answer": 0,
+     "accepted": [
+      "replace"
+     ],
+     "placeholder": "write the word from the bank…"
+    },
+    {
+     "id": "g12-comp3-def2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "The act of using energy, food or materials:",
+     "options": [
+      "consumption",
+      "generation",
+      "replace",
+      "conversion"
+     ],
+     "answer": 0,
+     "accepted": [
+      "consumption"
+     ],
+     "placeholder": "write the word from the bank…"
+    },
+    {
+     "id": "g12-comp3-def3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "The process of making air, water, soil, etc. dirty:",
+     "options": [
+      "pollution",
+      "generation",
+      "replace",
+      "conversion"
+     ],
+     "answer": 0,
+     "accepted": [
+      "pollution"
+     ],
+     "placeholder": "write the word from the bank…"
+    },
+    {
+     "id": "g12-comp3-def4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "The production of something, especially electricity, heat, etc:",
+     "options": [
+      "generation",
+      "replace",
+      "conversion",
+      "consumption"
+     ],
+     "answer": 0,
+     "accepted": [
+      "generation"
+     ],
+     "placeholder": "write the word from the bank…"
+    }
+   ]
+  },
+  {
+   "lesson": 50,
+   "title": "جامع درس سوم — گرامر: تست چهارگزینه‌ای (ص۱۵۷)",
+   "level": "استاندارد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-comp3-g1",
+     "n": 1,
+     "category": "grammar",
+     "question": "The police reported that they finally --------------- the thief.",
+     "options": [
+      "had been captured",
+      "had captured",
+      "will be captured",
+      "capture"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-comp3-g2",
+     "n": 2,
+     "category": "grammar",
+     "question": "They didn't want to go to the cinema because they --------------- the film the week before.",
+     "options": [
+      "saw",
+      "may be seen",
+      "had been seen",
+      "had seen"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-comp3-g3",
+     "n": 3,
+     "category": "grammar",
+     "question": "They --------------- something about global warming, or some types of animals will die out.",
+     "options": [
+      "should do",
+      "had done",
+      "should be done",
+      "have to be done"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-comp3-g4",
+     "n": 4,
+     "category": "grammar",
+     "question": "A fish salad --------------- for dinner by the cook.",
+     "options": [
+      "may make",
+      "may be made",
+      "had made",
+      "have been made"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 51,
+   "title": "جامع درس سوم — مجهول‌سازی: بنویسید (ص۱۵۷)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-comp3-pass1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "The bill --------------- (must / pay) before leaving the restaurant.",
+     "options": [
+      "must be paid",
+      "may be produced",
+      "can be used",
+      "should be informed"
+     ],
+     "answer": 0,
+     "accepted": [
+      "must be paid"
+     ],
+     "placeholder": "write the passive form…"
+    },
+    {
+     "id": "g12-comp3-pass2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Some dangerous gases --------------- (may / produce) when garbage is burned.",
+     "options": [
+      "may be produced",
+      "must be paid",
+      "can be used",
+      "should be informed"
+     ],
+     "answer": 0,
+     "accepted": [
+      "may be produced"
+     ],
+     "placeholder": "write the passive form…"
+    },
+    {
+     "id": "g12-comp3-pass3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "It is important to know that not all types of waste --------------- (can / use) to produce fuel.",
+     "options": [
+      "can be used",
+      "must be paid",
+      "may be produced",
+      "should be informed"
+     ],
+     "answer": 0,
+     "accepted": [
+      "can be used"
+     ],
+     "placeholder": "write the passive form…"
+    },
+    {
+     "id": "g12-comp3-pass4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "People --------------- (should / inform) of this danger and warned about the possible harms.",
+     "options": [
+      "should be informed",
+      "must be paid",
+      "may be produced",
+      "can be used"
+     ],
+     "answer": 0,
+     "accepted": [
+      "should be informed"
+     ],
+     "placeholder": "write the passive form…"
+    }
+   ]
+  },
+  {
+   "lesson": 52,
+   "title": "جامع درس سوم — جمله‌سازی فعال/مجهول، بنویسید (ص۱۵۷)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-comp3-sent1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "must / rules / the / obey / people / traffic / . — Active: ---------------",
+     "options": [
+      "People must obey the traffic rules.",
+      "The traffic rules must be obeyed by people.",
+      "Scientists can change wind into electricity.",
+      "Wind can be changed into electricity."
+     ],
+     "answer": 0,
+     "accepted": [
+      "People must obey the traffic rules."
+     ],
+     "placeholder": "write the full sentence…"
+    },
+    {
+     "id": "g12-comp3-sent2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "must / rules / the / obey / people / traffic / . — Passive: ---------------",
+     "options": [
+      "The traffic rules must be obeyed by people.",
+      "People must obey the traffic rules.",
+      "Scientists can change wind into electricity.",
+      "Wind can be changed into electricity."
+     ],
+     "answer": 0,
+     "accepted": [
+      "The traffic rules must be obeyed by people."
+     ],
+     "placeholder": "write the full sentence…"
+    },
+    {
+     "id": "g12-comp3-sent3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "electricity / can / scientists / into / change / wind / . — Active: ---------------",
+     "options": [
+      "Scientists can change wind into electricity.",
+      "People must obey the traffic rules.",
+      "The traffic rules must be obeyed by people.",
+      "Wind can be changed into electricity."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Scientists can change wind into electricity."
+     ],
+     "placeholder": "write the full sentence…"
+    },
+    {
+     "id": "g12-comp3-sent4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "electricity / can / scientists / into / change / wind / . — Passive: ---------------",
+     "options": [
+      "Wind can be changed into electricity.",
+      "People must obey the traffic rules.",
+      "The traffic rules must be obeyed by people.",
+      "Scientists can change wind into electricity."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Wind can be changed into electricity."
+     ],
+     "placeholder": "write the full sentence…"
+    }
+   ]
+  },
+  {
+   "lesson": 53,
+   "title": "جامع درس سوم — گذشته ساده/کامل: دوخالی، بنویسید (ص۱۵۷)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-comp3-pt1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "The meeting was at nine o'clock. When I --------------- (arrive) at ten, the meeting --------------- (finish).",
+     "options": [
+      "arrived / had finished",
+      "phoned / had been",
+      "had had / broke",
+      "played / had gone"
+     ],
+     "answer": 0,
+     "accepted": [
+      "arrived / had finished"
+     ],
+     "placeholder": "write both verb forms… (e.g. arrived / had finished)"
+    },
+    {
+     "id": "g12-comp3-pt2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Sina had just got home when I --------------- (phone). He --------------- (be) at his mother's house.",
+     "options": [
+      "phoned / had been",
+      "arrived / had finished",
+      "had had / broke",
+      "played / had gone"
+     ],
+     "answer": 0,
+     "accepted": [
+      "phoned / had been"
+     ],
+     "placeholder": "write both verb forms… (e.g. arrived / had finished)"
+    },
+    {
+     "id": "g12-comp3-pt3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "We --------------- (have) the car for ten years before it --------------- (break) down.",
+     "options": [
+      "had had / broke",
+      "arrived / had finished",
+      "phoned / had been",
+      "played / had gone"
+     ],
+     "answer": 0,
+     "accepted": [
+      "had had / broke"
+     ],
+     "placeholder": "write both verb forms… (e.g. arrived / had finished)"
+    },
+    {
+     "id": "g12-comp3-pt4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "We --------------- (play) chess after the children --------------- (go) to bed.",
+     "options": [
+      "played / had gone",
+      "arrived / had finished",
+      "phoned / had been",
+      "had had / broke"
+     ],
+     "answer": 0,
+     "accepted": [
+      "played / had gone"
+     ],
+     "placeholder": "write both verb forms… (e.g. arrived / had finished)"
+    }
+   ]
+  },
+  {
+   "lesson": 54,
+   "title": "جامع درس سوم — مرتب‌کردن کلمات، بنویسید (ص۱۵۷)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g12-comp3-wo1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "already / at the party / my friends / I / when / gone / arrived / had / .",
+     "options": [
+      "When I arrived at the party my friends had already gone.",
+      "Students should be informed about the possible harms."
+     ],
+     "answer": 0,
+     "accepted": [
+      "When I arrived at the party my friends had already gone."
+     ],
+     "placeholder": "write the complete sentence…"
+    },
+    {
+     "id": "g12-comp3-wo2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "possible / should / about / be / students / the / harms / informed / .",
+     "options": [
+      "Students should be informed about the possible harms.",
+      "When I arrived at the party my friends had already gone."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Students should be informed about the possible harms."
+     ],
+     "placeholder": "write the complete sentence…"
+    }
+   ]
+  },
+  {
+   "lesson": 55,
+   "title": "جامع درس سوم — نقش‌های پاراگراف: تست (ص۱۵۸)",
+   "level": "استاندارد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-comp3-role1",
+     "n": 1,
+     "category": "grammar",
+     "question": "We need water to drink, to wash our bodies and clothes, to cook our food and grow vegetables and fruits.",
+     "options": [
+      "Topic sentence",
+      "Supporting sentence",
+      "Concluding sentence"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-comp3-role2",
+     "n": 2,
+     "category": "grammar",
+     "question": "Thus, water is very important to our life and planet.",
+     "options": [
+      "Topic sentence",
+      "Supporting sentence",
+      "Concluding sentence"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-comp3-role3",
+     "n": 3,
+     "category": "grammar",
+     "question": "Water is the most essential element in our life.",
+     "options": [
+      "Topic sentence",
+      "Supporting sentence",
+      "Concluding sentence"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-comp3-role4",
+     "n": 4,
+     "category": "grammar",
+     "question": "Water is also essential for animals, birds, insects, etc.",
+     "options": [
+      "Topic sentence",
+      "Supporting sentence",
+      "Concluding sentence"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 56,
+   "title": "جامع درس سوم — متن ۶خالی: ضرب‌المثل‌ها (ص۱۵۸)",
+   "level": "استاندارد",
+   "count": 6,
+   "questions": [
+    {
+     "id": "g12-comp3-clz1",
+     "n": 1,
+     "category": "grammar",
+     "question": "One of my favorite Persian (---1---) is “You cannot carry two watermelons in one hand.”",
+     "options": [
+      "conversations",
+      "proverbs",
+      "abbreviations",
+      "barbecues"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-comp3-clz2",
+     "n": 2,
+     "category": "grammar",
+     "question": "(---2---) in English is “Don't bite off more than you can chew.”",
+     "options": [
+      "It is an equivalent",
+      "Its equivalent",
+      "It has an equivalent",
+      "It's equivalent"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-comp3-clz3",
+     "n": 3,
+     "category": "grammar",
+     "question": "(---3---) like the first one better",
+     "options": [
+      "But I",
+      "So I",
+      "But",
+      "So"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-comp3-clz4",
+     "n": 4,
+     "category": "grammar",
+     "question": "because it's a (---4---) metaphor.",
+     "options": [
+      "fantastic",
+      "concluding",
+      "similar",
+      "confusing"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-comp3-clz5",
+     "n": 5,
+     "category": "grammar",
+     "question": "Whenever I have to decide about a new project, I (---5---) myself trying to carry two watermelons",
+     "options": [
+      "can be seen",
+      "must be seen",
+      "can see",
+      "must see"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-comp3-clz6",
+     "n": 6,
+     "category": "grammar",
+     "question": "and I stop and think about (---6---) I can handle.",
+     "options": [
+      "how many works",
+      "how much works",
+      "how many work",
+      "how much work"
+     ],
+     "answer": 3
+    }
+   ]
+  },
+  {
+   "lesson": 57,
+   "title": "جامع درس سوم — متن ۵خالی: انرژی باد (ص۱۵۸)",
+   "level": "استاندارد",
+   "count": 5,
+   "questions": [
+    {
+     "id": "g12-comp3-wnd1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Wind is a form of (---1---) energy.",
+     "options": [
+      "cool",
+      "solar",
+      "upset",
+      "rich"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-comp3-wnd2",
+     "n": 2,
+     "category": "grammar",
+     "question": "This wind flow, or motion energy, when “harvested” by modern wind turbines, (---2---) to generate electricity.",
+     "options": [
+      "may use",
+      "must be used",
+      "used",
+      "can be used"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-comp3-wnd3",
+     "n": 3,
+     "category": "grammar",
+     "question": "Wind turbines (---3---) the kinetic energy in the wind into mechanical power.",
+     "options": [
+      "present",
+      "count",
+      "convert",
+      "apply"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-comp3-wnd4",
+     "n": 4,
+     "category": "grammar",
+     "question": "This (---4---) power can be used for specific tasks (such as grinding grain or pumping water)",
+     "options": [
+      "mechanical",
+      "cool",
+      "solar",
+      "excellent"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-comp3-wnd5",
+     "n": 5,
+     "category": "grammar",
+     "question": "or a generator can convert this mechanical power into electricity to (---5---) homes, businesses, schools, and the like.",
+     "options": [
+      "waste",
+      "power",
+      "warn",
+      "use up"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 58,
+   "title": "جامع درس سوم — ریدینگ دلفین‌ها: تست چهارگزینه‌ای (ص۱۵۹)",
+   "level": "استاندارد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-comp3-rd1",
+     "n": 1,
+     "category": "grammar",
+     "question": "It is clear from the passage that dolphins ---------------.",
+     "options": [
+      "are the most powerful creatures that live in the oceans",
+      "don't want to be with us as much as we want to be with them",
+      "are proven to be less intelligent than once thought",
+      "have a reputation for being friendly to humans"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-comp3-rd2",
+     "n": 2,
+     "category": "grammar",
+     "question": "The fact that the writer of the passage thinks that man can kill dolphins more easily than they can kill us ---------------.",
+     "options": [
+      "means that they are better adapted to their environment than we are",
+      "shows that dolphins have a very sophisticated from of communication",
+      "does not mean that we are superior to them",
+      "proves that dolphins have linguistic skills far beyond what we previously thought"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-comp3-rd3",
+     "n": 3,
+     "category": "grammar",
+     "question": "One can understand from the passage that ---------------.",
+     "options": [
+      "communication is the most fascinating aspect of the dolphins",
+      "dolphins have skills that no other living creatures have, such as the ability to think",
+      "it is not usual for dolphins to communicate with one another",
+      "dolphins have some social traits that are similar to those of humans"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-comp3-rd4",
+     "n": 4,
+     "category": "grammar",
+     "question": "In line 3, complex is the synonym of ---------------.",
+     "options": [
+      "complicated",
+      "strong",
+      "dedicated",
+      "reliable"
+     ],
+     "answer": 0
     }
    ]
   }

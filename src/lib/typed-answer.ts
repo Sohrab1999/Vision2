@@ -12,11 +12,13 @@
 
 import type { QuizQuestion } from "./study-types";
 
-/** آپاستروف‌های خمیده/بریده → راست؛ نقطه‌گذاری پایانی و فاصلهٔ اضافی حذف */
+/** آپاستروف‌های خمیده/بریده → راست؛ اسلش → فاصله (کلیدهای دودویی چاپی «X / Y»)؛
+ *  نقطه‌گذاری پایانی و فاصلهٔ اضافی حذف */
 export function normalizeTypedAnswer(raw: string): string {
   return raw
     .toLowerCase()
     .replace(/[’‘`´]/g, "'")
+    .replace(/\//g, " ")
     .replace(/[\s?؟.!]+$/g, "")
     .replace(/\s+/g, " ")
     .trim();
