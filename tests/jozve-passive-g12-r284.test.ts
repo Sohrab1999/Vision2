@@ -9,6 +9,7 @@ type TQuestion = {
   question: string;
   options: string[];
   answer: number;
+  translation?: string;
 };
 type TLesson = { lesson: number; title: string; level: string; count: number; questions: TQuestion[] };
 type TBank = {
@@ -119,12 +120,16 @@ describe("jozve topic grammar bank g12 — passive/active duo (r284 extraction r
     expect(receipt).toMatch(/6\/(۴۰|40)/);
   });
 
-  it("honest absence of translations with reason (OCR-damaged explanatory Persian)", () => {
-    for (const q of fresh) expect(q, `${q.id} no translation field`).not.toHaveProperty("translation");
+  it("r320 wash: part1 (l10) carries the 20 printed «ترجمه تست» lines (pp185-186) — former honest absence superseded; part2 (l11) keeps honest absence", () => {
+    for (const q of l10.questions) {
+      expect(typeof q.translation, `${q.id} washed translation`).toBe("string");
+      expect(q.translation!.trim().length, `${q.id} non-trivial`).toBeGreaterThan(10);
+    }
+    for (const q of l11.questions) expect(q, `${q.id} part2 honest absence`).not.toHaveProperty("translation");
     const tr = bank.source.passive?.translations;
     if (!tr) throw new Error("passive.translations missing");
-    expect(tr).toContain("r281");
-    expect(tr).toContain("OCR");
+    expect(tr).toContain("r320");
+    expect(tr).toContain("translationsWashed");
   });
 
   it("family-wide uniqueness: 1659 ids after r289, no stem collision with lesson 6 (p150 passive bank)", () => {
