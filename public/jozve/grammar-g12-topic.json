@@ -846,6 +846,125 @@
      "note": "متنِ دو ریدینگ درون‌اپ حمل نشد (الگوی r289-r294) — تصویر صفحه در کتابخانهٔ جزوه در دسترس است"
     }
    ]
+  },
+  "final99k": {
+   "pages": "259-265",
+   "keyPages": "266-267",
+   "titlePrinted": "آزمون نهایی انگلیسی دوازدهم — نوبت خرداد ماه سال ۱۳۹۹ (تاریخ امتحان 05/04/99، ساعت ۸ صبح، مدت ۱۲۰ دقیقه، ۷ صفحه، دانش‌آموزان روزانه سراسر کشور — بخش چهارم: آزمون‌های نهایی دی ۹۷ تا شهریور ۱۴۰۱)",
+   "sections": 17,
+   "banks": 15,
+   "questions": 63,
+   "keys": 63,
+   "extractedRound": 296,
+   "openWritingAbsent": {
+    "section": "8 (موصولِ باز ۳۰ «A pigeon is a bird…») + 14 (topic sentenceِ ۵۳ Reading / ۵۴ Nature) + 17 (انتخابیِ ج: topic sentenceِ تصویری Water/Damavand/Perspolis/Tahereh Saffarzadeh — د: پاراگرافِ بازِ شهید فهمیده)",
+    "items": 8,
+    "note": "کلیدِ راهنما فقط معیار است نه نمونهٔ چاپی: ۳۰ «باید which را به همراه یک عبارت دارای فعل بنویسد»؛ ۵۳/۵۴ «با توجه به رعایت Topic Sentence نمره لحاظ گردد (هر جمله 0/5)»؛ بخش ۱۷ «با توجه به رعایت Topic Sentence (هر جمله ۱) یا اصول پاراگراف‌نویسی (۴ نمره)» — بانک صادقانه ساخته نشد؛ داده‌های چاپیِ فهمیده (Birth: May 6, 1967, Qom / Death: Martyred October 30, 1980, Khorramshahr / Job: Student / War: Iran–Iraq War) در رسید محفوظ است"
+   },
+   "receipts": [
+    {
+     "item": "1-4",
+     "field": "section",
+     "printed": "شنیداریِ فایل ۱ با ساقهٔ چاپیِ کامل برای هر چهار آیتم",
+     "note": "نخستین نوبتِ نهایی که ساقه‌های شنیداریِ ۱-۴ همگی چاپی‌اند (الگوی r293-r295 ادامه دارد) — کلیدهای ۳/۴ کوچک‌نویسِ چاپیِ راهنما وفادار («she had the  money.» با فاصلهٔ دوگانهٔ چاپ)"
+    },
+    {
+     "item": "10",
+     "field": "accepted",
+     "printed": "کلیدِ آشفتهٔ OCR: «No, he doesn`t like it. / .s job / `t appreciate the woman / `he doesn, / No / .10»",
+     "note": "بازمونتاژِ سطربه‌سطر: «No, he doesn`t appreciate the woman`s job.» با لنگرهای چندگانه (he doesn + t appreciate the woman + s job) — الگوی r294 آیتم ۴۹"
+    },
+    {
+     "item": "13",
+     "field": "accepted",
+     "printed": "«13. creative» با تورمِ راهنما: «هر کلمه‌ای هم که به نوعی به پاسخ اشاره کند صحیح است»",
+     "note": "کلیدِ چاپیِ حاکم (creative) قفل شد؛ حرمتِ راهنما در رسید — گاردِ اپ تک‌کلیدی است"
+    },
+    {
+     "item": "16-19",
+     "field": "section",
+     "printed": "«با توجه به تصاویر داده شده… (یک جمله اضافی است)» — پنج جملهٔ چاپیِ a-e",
+     "note": "تصویرِ گمشده با ساقه/کلیدِ کامل جبران شد (الگوی r293/r294) — کلیدهای حرفیِ راهنما d/e/b/a؛ c اضافهٔ چاپی؛ جملهٔ b با بک‌تیکِ چاپیِ «sun`s rays» وفادار"
+    },
+    {
+     "item": "20-22",
+     "field": "key",
+     "printed": "honored/overcome/suppose — demand اضافهٔ چاپی",
+     "note": "بانکِ ۴واژه‌ایِ چاپ با ترتیبِ عینِ چاپ «suppose, honored, demand, overcome»"
+    },
+    {
+     "item": "23-25",
+     "field": "stem",
+     "printed": "حرفِ نخستِ چاپیِ درونِ ساقه (i - - - / r - - - - / g - - -)",
+     "note": "حاملِ حرف در ساقه حفظ شد + placeholderِ «start with the printed first letter…» — الگوی دانش‌خودیِ r294"
+    },
+    {
+     "item": "26-29",
+     "field": "options",
+     "printed": "چاپِ طبیعی a-d (نخستین نوبتِ نهایی بدونِ چاپِ وارونه از r290)",
+     "note": "کلیدهای حرفیِ راهنما (c)(b)(d)(b) عین چاپ؛ «the corps» غلطِ چاپیِ بدنهٔ ۲۷ وفادار (crops)؛ فاصله‌های چاپیِ «isn’t  she» و «could  save» وفادار"
+    },
+    {
+     "item": "34",
+     "field": "accepted",
+     "printed": "«might/would /could choose» — کلیدِ سه‌واریانتهٔ چاپ",
+     "note": "دومین کلیدِ سه‌واریانتهٔ خانواده (الگوی r294 آیتم ۳۰) — accepted آرایه‌ایِ سه‌تایی؛ موتورِ accepted.some آماده بود"
+    },
+    {
+     "item": "39",
+     "field": "accepted",
+     "printed": "«English is easier… because it is very similar to French» با نشان‌های (0/5)(0/5)",
+     "note": "کلیدِ جمله‌کاملِ راهنما — دو نیمهٔ بارم‌دار در یک پاسخِ کامل"
+    },
+    {
+     "item": "43",
+     "field": "answer",
+     "printed": "False کلید چاپی — تنش با بدنهٔ ریدینگ («a cheap way»)",
+     "note": "ساقه می‌گوید expensive؛ متنِ چاپی می‌گوید cheap — تنشِ معنایی با کلیدِ چاپی حاکم (الگوی r289 «Not all»)"
+    },
+    {
+     "item": "45",
+     "field": "accepted",
+     "printed": "«It is produced from streams and rivers/oceans/water.»",
+     "note": "نخستین کلیدِ چندمنبعیِ بازمونتاژشده: سه واریانتِ جمله‌کامل از اسلش‌های راهنما — الگوی r295 آیتم ۳۸"
+    },
+    {
+     "item": "46",
+     "field": "answer",
+     "printed": "شمارهٔ چاپیِ کلید در OCR «٦٤.» است (لغزشِ چاپ برای ۴۶)",
+     "note": "کلیدِ جمله‌کاملِ چاپی حاکم؛ لغزشِ شماره‌گذاری در رسید"
+    },
+    {
+     "item": "47-50",
+     "field": "section",
+     "printed": "پاراگرافِ پیوستهٔ «Teachers» با چهار خالیِ ربط",
+     "note": "هر آیتم با جملهٔ زمینهٔ خودش ساقه شد — استخرِ چاپیِ بستهٔ (but, and, so, or)؛ کلیدهای so/and/but/or عین چاپ"
+    },
+    {
+     "item": "55-58",
+     "field": "section",
+     "printed": "«در این قسمت فقط به یکی از بخش‌های (الف) یا (ب) به اختیار پاسخ دهید»",
+     "note": "نخستین استخراجِ موازیِ هر دو شاخهٔ انتخابیِ آزمون: ۱۱۷ (تعریف‌ها: b/e/a/c — d اضافه) و ۱۱۸ (ضرب‌المثل‌ها: g/j/f/h — i اضافه) به‌عنوانِ دو بانک مستقل"
+    },
+    {
+     "item": "57(ب)",
+     "field": "stem",
+     "printed": "«Action speak louder than words» غلطِ چاپیِ بدنه وفادار",
+     "note": "همچنین «they come up with better idea» غلطِ چاپیِ گزینهٔ j وفادار"
+    },
+    {
+     "item": "59-60",
+     "field": "section",
+     "printed": "«به دلخواه فقط یکی از بخش‌های (a) یا (b)…» — چهار بهم‌ریختهٔ چاپی",
+     "note": "نخستین مرتب‌کردنِ چهارواریانته از دو آیتمِ انتخابی: ۵۹الف/۵۹ب/۶۰الف/۶۰ب — کلیدهای کامل با نشان‌های بارمِ (0/25)(0/25)(0/5) و (0/75)(0/25)؛ ۶۰ب پرسشی است"
+    },
+    {
+     "item": "passages",
+     "field": "—",
+     "printed": "p261-262",
+     "note": "متنِ دو ریدینگ درون‌اپ حمل نشد (الگوی r289-r295) — تصویر صفحه در کتابخانهٔ جزوه در دسترس است"
+    }
+   ]
   }
  },
  "lessons": [
@@ -14063,6 +14182,1026 @@
       "When they are musical"
      ],
      "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 105,
+   "title": "نهایی خرداد ۹۹ — شنیداری فایل ۱: درست/نادرست + پرسش پاسخ (ص۲۵۹)",
+   "level": "استاندارد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-fin99k-l1tf1",
+     "n": 1,
+     "category": "grammar",
+     "question": "The man has taken the laptop to the computer shop.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-fin99k-l1tf2",
+     "n": 2,
+     "category": "grammar",
+     "question": "She wants to hit someone in the head.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-fin99k-l1t3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "The woman would buy a new laptop if --------------- .",
+     "options": [
+      "she had the money."
+     ],
+     "answer": 0,
+     "accepted": [
+      "she had the money."
+     ],
+     "placeholder": "answer in a complete sentence…"
+    },
+    {
+     "id": "g12-fin99k-l1t4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Why does the woman want to throw the laptop out the window? Because ---------------.",
+     "options": [
+      "Because it is so slow."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Because it is so slow."
+     ],
+     "placeholder": "answer in a complete sentence…"
+    }
+   ]
+  },
+  {
+   "lesson": 106,
+   "title": "نهایی خرداد ۹۹ — شنیداری فایل ۲: تست + درست/نادرست + پرسش پاسخ (ص۲۵۹)",
+   "level": "استاندارد",
+   "count": 6,
+   "questions": [
+    {
+     "id": "g12-fin99k-l2m1",
+     "n": 1,
+     "category": "grammar",
+     "question": "What is the woman doing?",
+     "options": [
+      "She is trying to imagine.",
+      "She is trying to invite somebody.",
+      "She is working on her invention.",
+      "She is cooking food."
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-fin99k-l2m2",
+     "n": 2,
+     "category": "grammar",
+     "question": "Which one is not mentioned in the dialog you heard?",
+     "options": [
+      "energy source",
+      "fuel",
+      "coal",
+      "renewable energy"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-fin99k-l2t3",
+     "n": 3,
+     "category": "grammar",
+     "question": "The woman thinks recycling unwanted food to fuel will happen in the future.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-fin99k-l2t4",
+     "n": 4,
+     "category": "grammar",
+     "question": "The man thinks that the woman is doing something new.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-fin99k-l2w5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Does the man like the smell?",
+     "options": [
+      "No, he doesn`t like it."
+     ],
+     "answer": 0,
+     "accepted": [
+      "No, he doesn`t like it."
+     ],
+     "placeholder": "answer in a complete sentence…"
+    },
+    {
+     "id": "g12-fin99k-l2w6",
+     "n": 6,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Does the man appreciate the woman’s job?",
+     "options": [
+      "No, he doesn`t appreciate the woman`s job."
+     ],
+     "answer": 0,
+     "accepted": [
+      "No, he doesn`t appreciate the woman`s job."
+     ],
+     "placeholder": "answer in a complete sentence…"
+    }
+   ]
+  },
+  {
+   "lesson": 107,
+   "title": "نهایی خرداد ۹۹ — شنیداری فایل ۳: درست/نادرست + کامل کنید (ص۲۵۹)",
+   "level": "استاندارد",
+   "count": 5,
+   "questions": [
+    {
+     "id": "g12-fin99k-l3t1",
+     "n": 1,
+     "category": "grammar",
+     "question": "The man is working alone now.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-fin99k-l3t2",
+     "n": 2,
+     "category": "grammar",
+     "question": "The man likes the new environment.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-fin99k-l3w3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "According to the speaker, Delilah is the --------------- member in the team.",
+     "options": [
+      "creative"
+     ],
+     "answer": 0,
+     "accepted": [
+      "creative"
+     ],
+     "placeholder": "fill in the blank with one word…"
+    },
+    {
+     "id": "g12-fin99k-l3w4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "The key to their success in working together is that they --------------- .",
+     "options": [
+      "respect each other`s abilities."
+     ],
+     "answer": 0,
+     "accepted": [
+      "respect each other`s abilities."
+     ],
+     "placeholder": "answer in a complete sentence…"
+    },
+    {
+     "id": "g12-fin99k-l3w5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What was his idea about working in a team environment a year ago?",
+     "options": [
+      "He didn`t enjoy working in a team environment a year ago."
+     ],
+     "answer": 0,
+     "accepted": [
+      "He didn`t enjoy working in a team environment a year ago."
+     ],
+     "placeholder": "answer in a complete sentence…"
+    }
+   ]
+  },
+  {
+   "lesson": 108,
+   "title": "نهایی خرداد ۹۹ — واژگان با تصویر: جملهٔ مناسب هر تصویر (ص۲۶۰)",
+   "level": "استاندارد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-fin99k-pic1",
+     "n": 1,
+     "category": "grammar",
+     "question": "با توجه به تصاویر داده شده، جملهٔ مناسب برای هر تصویر را انتخاب کنید. (یک جمله اضافی است) — تصویر (16)",
+     "options": [
+      "Taking people’s temperature can help them fight the coronavirus.",
+      "If you focus the sun`s rays through a magnifying glass on a dry leaf, it will start to burn.",
+      "Teenagers who help others are more successful in life.",
+      "Wind tower is a type of natural air cooling system.",
+      "John couldn’t figure out what the teacher was talking about."
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-fin99k-pic2",
+     "n": 2,
+     "category": "grammar",
+     "question": "با توجه به تصاویر داده شده، جملهٔ مناسب برای هر تصویر را انتخاب کنید. (یک جمله اضافی است) — تصویر (17)",
+     "options": [
+      "Taking people’s temperature can help them fight the coronavirus.",
+      "If you focus the sun`s rays through a magnifying glass on a dry leaf, it will start to burn.",
+      "Teenagers who help others are more successful in life.",
+      "Wind tower is a type of natural air cooling system.",
+      "John couldn’t figure out what the teacher was talking about."
+     ],
+     "answer": 4
+    },
+    {
+     "id": "g12-fin99k-pic3",
+     "n": 3,
+     "category": "grammar",
+     "question": "با توجه به تصاویر داده شده، جملهٔ مناسب برای هر تصویر را انتخاب کنید. (یک جمله اضافی است) — تصویر (18)",
+     "options": [
+      "Taking people’s temperature can help them fight the coronavirus.",
+      "If you focus the sun`s rays through a magnifying glass on a dry leaf, it will start to burn.",
+      "Teenagers who help others are more successful in life.",
+      "Wind tower is a type of natural air cooling system.",
+      "John couldn’t figure out what the teacher was talking about."
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-fin99k-pic4",
+     "n": 4,
+     "category": "grammar",
+     "question": "با توجه به تصاویر داده شده، جملهٔ مناسب برای هر تصویر را انتخاب کنید. (یک جمله اضافی است) — تصویر (19)",
+     "options": [
+      "Taking people’s temperature can help them fight the coronavirus.",
+      "If you focus the sun`s rays through a magnifying glass on a dry leaf, it will start to burn.",
+      "Teenagers who help others are more successful in life.",
+      "Wind tower is a type of natural air cooling system.",
+      "John couldn’t figure out what the teacher was talking about."
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 109,
+   "title": "نهایی خرداد ۹۹ — واژگان: جای خالی از بانک (ص۲۶۰)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g12-fin99k-vb1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Elders feel --------------- when we appreciate them.",
+     "options": [
+      "suppose",
+      "honored",
+      "demand",
+      "overcome"
+     ],
+     "answer": 0,
+     "accepted": [
+      "honored"
+     ],
+     "placeholder": "fill in the blank with the missing word…"
+    },
+    {
+     "id": "g12-fin99k-vb2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "People use hybrid cars to --------------- the problem of charging electric cars.",
+     "options": [
+      "suppose",
+      "honored",
+      "demand",
+      "overcome"
+     ],
+     "answer": 0,
+     "accepted": [
+      "overcome"
+     ],
+     "placeholder": "fill in the blank with the missing word…"
+    },
+    {
+     "id": "g12-fin99k-vb3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Let us --------------- for a moment that the news is really true.",
+     "options": [
+      "suppose",
+      "honored",
+      "demand",
+      "overcome"
+     ],
+     "answer": 0,
+     "accepted": [
+      "suppose"
+     ],
+     "placeholder": "fill in the blank with the missing word…"
+    }
+   ]
+  },
+  {
+   "lesson": 110,
+   "title": "نهایی خرداد ۹۹ — واژگان: کامل‌کردن از دانش خود (ص۲۶۰)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g12-fin99k-ok1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Dictionaries are usually in three levels: elementary, i --------------- and advanced.",
+     "options": [
+      "intermediate"
+     ],
+     "answer": 0,
+     "accepted": [
+      "intermediate"
+     ],
+     "placeholder": "start with the printed first letter i…"
+    },
+    {
+     "id": "g12-fin99k-ok2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "The factory could r --------------- most of its workers with robots two years ago.",
+     "options": [
+      "replace"
+     ],
+     "answer": 0,
+     "accepted": [
+      "replace"
+     ],
+     "placeholder": "start with the printed first letter r…"
+    },
+    {
+     "id": "g12-fin99k-ok3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "The two words at the top of each page of a dictionary are called g --------------- words.",
+     "options": [
+      "guide"
+     ],
+     "answer": 0,
+     "accepted": [
+      "guide"
+     ],
+     "placeholder": "start with the printed first letter g…"
+    }
+   ]
+  },
+  {
+   "lesson": 111,
+   "title": "نهایی خرداد ۹۹ — گرامر: تست چهارگزینه‌ای (ص۲۶۰-۲۶۱)",
+   "level": "استاندارد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-fin99k-g1",
+     "n": 1,
+     "category": "grammar",
+     "question": "She was the person --------------- everyone regarded as trustworthy.",
+     "options": [
+      "which",
+      "when",
+      "whom",
+      "whose"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-fin99k-g2",
+     "n": 2,
+     "category": "grammar",
+     "question": "Scientists believe that hot weather is often --------------- the corps.",
+     "options": [
+      "endanger",
+      "endangering",
+      "endangered",
+      "dangers"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-fin99k-g3",
+     "n": 3,
+     "category": "grammar",
+     "question": "Zhila never says a word when she is sad,---------------?",
+     "options": [
+      "isn’t  she",
+      "did she",
+      "doesn't she",
+      "does she"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-fin99k-g4",
+     "n": 4,
+     "category": "grammar",
+     "question": "My father might buy a new car if some more dollars--------------- by the family.",
+     "options": [
+      "could  save",
+      "were saved",
+      "had saved",
+      "were saving"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 112,
+   "title": "نهایی خرداد ۹۹ — شکل صحیح فعل در مکالمه (ص۲۶۱)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-fin99k-vf1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Do you know Javid’s birthday is this Friday? You (31) --------------- (invite) to his birthday party, haven`t you?",
+     "options": [
+      "have been invited"
+     ],
+     "answer": 0,
+     "accepted": [
+      "have been invited"
+     ],
+     "placeholder": "write the correct form of the verb…"
+    },
+    {
+     "id": "g12-fin99k-vf2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "No, nothing (32) --------------- (say) about it while I was talking to him.",
+     "options": [
+      "was said"
+     ],
+     "answer": 0,
+     "accepted": [
+      "was said"
+     ],
+     "placeholder": "write the correct form of the verb…"
+    },
+    {
+     "id": "g12-fin99k-vf3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "He always (33) --------------- (decide) to do things at the last moment, doesn’t he?",
+     "options": [
+      "decides"
+     ],
+     "answer": 0,
+     "accepted": [
+      "decides"
+     ],
+     "placeholder": "write the correct form of the verb…"
+    },
+    {
+     "id": "g12-fin99k-vf4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "But if he told us sooner we (34) --------------- (choose) a better gift to buy.",
+     "options": [
+      "might choose"
+     ],
+     "answer": 0,
+     "accepted": [
+      "might choose",
+      "would choose",
+      "could choose"
+     ],
+     "placeholder": "write the correct form of the verb…"
+    }
+   ]
+  },
+  {
+   "lesson": 113,
+   "title": "نهایی خرداد ۹۹ — ریدینگ زبان‌ها: تست + درست/نادرست + پرسش پاسخ (ص۲۶۱-۲۶۲)",
+   "level": "استاندارد",
+   "count": 6,
+   "questions": [
+    {
+     "id": "g12-fin99k-r1m1",
+     "n": 1,
+     "category": "grammar",
+     "question": "The word “it” in paragraph 2 line 4 refers to --------------- .",
+     "options": [
+      "learning first language",
+      "second language",
+      "difference of languages",
+      "Chinese language"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-fin99k-r1m2",
+     "n": 2,
+     "category": "grammar",
+     "question": "Hardness of learning a language can depend on --------------- .",
+     "options": [
+      "how different it is from one’s mother tongue",
+      "whether it is French or English",
+      "whether you are learning Japanese or Chinese",
+      "how long it takes to master pronunciation"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-fin99k-r1t3",
+     "n": 3,
+     "category": "grammar",
+     "question": "Being familiar with writing system of the second language makes it harder to learn.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-fin99k-r1t4",
+     "n": 4,
+     "category": "grammar",
+     "question": "The reason behind learning a language can slow down or speed up learning.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-fin99k-r1w5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Which language is easier for French people to learn, English or Chinese? Why?",
+     "options": [
+      "English is easier for French people to learn because it is very similar to French."
+     ],
+     "answer": 0,
+     "accepted": [
+      "English is easier for French people to learn because it is very similar to French."
+     ],
+     "placeholder": "answer in a complete sentence…"
+    },
+    {
+     "id": "g12-fin99k-r1w6",
+     "n": 6,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Why does a Japanese speaker find the Chinese writing system less difficult?",
+     "options": [
+      "Because they already use Chinese letters in their own language."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Because they already use Chinese letters in their own language."
+     ],
+     "placeholder": "answer in a complete sentence…"
+    }
+   ]
+  },
+  {
+   "lesson": 114,
+   "title": "نهایی خرداد ۹۹ — ریدینگ انرژی: تست + درست/نادرست + پرسش پاسخ (ص۲۶۲-۲۶۳)",
+   "level": "استاندارد",
+   "count": 6,
+   "questions": [
+    {
+     "id": "g12-fin99k-r2m1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Which is the best title for this passage?",
+     "options": [
+      "The use of waste products for energy",
+      "The search for new sources of energy",
+      "Effective ways of producing hydropower",
+      "New discoveries in geothermal power"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-fin99k-r2m2",
+     "n": 2,
+     "category": "grammar",
+     "question": "Which of the following is not offered in the passage as a source of energy?",
+     "options": [
+      "Electrical power",
+      "Clean energy",
+      "Nuclear energy",
+      "Hydroelectric power"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-fin99k-r2t3",
+     "n": 3,
+     "category": "grammar",
+     "question": "Changing waste products to gas or oil is an expensive way to generate energy, but it is very effective.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-fin99k-r2t4",
+     "n": 4,
+     "category": "grammar",
+     "question": "Geothermal power is the heat from the Earth.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-fin99k-r2w5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What is hydroelectric power produced from?",
+     "options": [
+      "It is produced from streams and rivers.",
+      "It is produced from oceans.",
+      "It is produced from water."
+     ],
+     "answer": 0,
+     "accepted": [
+      "It is produced from streams and rivers.",
+      "It is produced from oceans.",
+      "It is produced from water."
+     ],
+     "placeholder": "answer in a complete sentence…"
+    },
+    {
+     "id": "g12-fin99k-r2w6",
+     "n": 6,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What will happen if the nations of the world use clean sources of energy?",
+     "options": [
+      "It will keep the environment clean."
+     ],
+     "answer": 0,
+     "accepted": [
+      "It will keep the environment clean."
+     ],
+     "placeholder": "answer in a complete sentence…"
+    }
+   ]
+  },
+  {
+   "lesson": 115,
+   "title": "نهایی خرداد ۹۹ — کلمات ربط: معلمان (ص۲۶۳)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-fin99k-conn1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Teachers work hard every day to make sure you have learnt your lessons, --------------- they deserve your respect.",
+     "options": [
+      "but",
+      "and",
+      "so",
+      "or"
+     ],
+     "answer": 0,
+     "accepted": [
+      "so"
+     ],
+     "placeholder": "connect the sentences with and, or, but, so…"
+    },
+    {
+     "id": "g12-fin99k-conn2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "You should know their values, --------------- tell them that you are grateful to them for their help.",
+     "options": [
+      "but",
+      "and",
+      "so",
+      "or"
+     ],
+     "answer": 0,
+     "accepted": [
+      "and"
+     ],
+     "placeholder": "connect the sentences with and, or, but, so…"
+    },
+    {
+     "id": "g12-fin99k-conn3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "You may sometimes forget their kindness, --------------- you need to remember that they shape your lives like your parents.",
+     "options": [
+      "but",
+      "and",
+      "so",
+      "or"
+     ],
+     "answer": 0,
+     "accepted": [
+      "but"
+     ],
+     "placeholder": "connect the sentences with and, or, but, so…"
+    },
+    {
+     "id": "g12-fin99k-conn4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Treat them well when they are still around, --------------- you will be sorry one day.",
+     "options": [
+      "but",
+      "and",
+      "so",
+      "or"
+     ],
+     "answer": 0,
+     "accepted": [
+      "or"
+     ],
+     "placeholder": "connect the sentences with and, or, but, so…"
+    }
+   ]
+  },
+  {
+   "lesson": 116,
+   "title": "نهایی خرداد ۹۹ — ادامهٔ جمله با تصویر (ص۲۶۳)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g12-fin99k-cont1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Many people are still becoming sick because of the COVID 19, so --------------- .",
+     "options": [
+      "they should stay at home."
+     ],
+     "answer": 0,
+     "accepted": [
+      "they should stay at home."
+     ],
+     "placeholder": "complete the sentence…"
+    },
+    {
+     "id": "g12-fin99k-cont2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Jimmy seems very tired, but --------------- .",
+     "options": [
+      "he has to do his homework."
+     ],
+     "answer": 0,
+     "accepted": [
+      "he has to do his homework."
+     ],
+     "placeholder": "complete the sentence…"
+    }
+   ]
+  },
+  {
+   "lesson": 117,
+   "title": "نهایی خرداد ۹۹ — واژگان: تعریف‌های ستون B، بخش الف (ص۲۶۴)",
+   "level": "استاندارد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-fin99k-defb1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Our parents have a lot to share with us like their experiences and failures.",
+     "options": [
+      "to make water, air, etc. dirty",
+      "lack of success in doing something",
+      "have something inside",
+      "an arrangement in a particular order",
+      "many different types of things or people"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-fin99k-defb2",
+     "n": 2,
+     "category": "grammar",
+     "question": "I really like the variety the store has to offer.",
+     "options": [
+      "to make water, air, etc. dirty",
+      "lack of success in doing something",
+      "have something inside",
+      "an arrangement in a particular order",
+      "many different types of things or people"
+     ],
+     "answer": 4
+    },
+    {
+     "id": "g12-fin99k-defb3",
+     "n": 3,
+     "category": "grammar",
+     "question": "The factory polluted the river.",
+     "options": [
+      "to make water, air, etc. dirty",
+      "lack of success in doing something",
+      "have something inside",
+      "an arrangement in a particular order",
+      "many different types of things or people"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-fin99k-defb4",
+     "n": 4,
+     "category": "grammar",
+     "question": "Try to avoid foods that contain a lot of fat.",
+     "options": [
+      "to make water, air, etc. dirty",
+      "lack of success in doing something",
+      "have something inside",
+      "an arrangement in a particular order",
+      "many different types of things or people"
+     ],
+     "answer": 2
+    }
+   ]
+  },
+  {
+   "lesson": 118,
+   "title": "نهایی خرداد ۹۹ — ضرب‌المثل‌ها: ستون B، بخش ب (ص۲۶۴)",
+   "level": "استاندارد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-fin99k-prvb1",
+     "n": 1,
+     "category": "grammar",
+     "question": "God helps those who help themselves",
+     "options": [
+      "Just saying that you will do something doesn`t mean much. Actually, doing it is harder.",
+      "Don`t just wait for good things to happen to you. Work hard to achieve your goals.",
+      "Someone who has experienced some kind of negative situation will try to avoid making the same mistake.",
+      "People like to spend time with others who are similar to them.",
+      "When two people cooperate with each other, they come up with better idea."
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-fin99k-prvb2",
+     "n": 2,
+     "category": "grammar",
+     "question": "Two heads are better than one",
+     "options": [
+      "Just saying that you will do something doesn`t mean much. Actually, doing it is harder.",
+      "Don`t just wait for good things to happen to you. Work hard to achieve your goals.",
+      "Someone who has experienced some kind of negative situation will try to avoid making the same mistake.",
+      "People like to spend time with others who are similar to them.",
+      "When two people cooperate with each other, they come up with better idea."
+     ],
+     "answer": 4
+    },
+    {
+     "id": "g12-fin99k-prvb3",
+     "n": 3,
+     "category": "grammar",
+     "question": "Action speak louder than words",
+     "options": [
+      "Just saying that you will do something doesn`t mean much. Actually, doing it is harder.",
+      "Don`t just wait for good things to happen to you. Work hard to achieve your goals.",
+      "Someone who has experienced some kind of negative situation will try to avoid making the same mistake.",
+      "People like to spend time with others who are similar to them.",
+      "When two people cooperate with each other, they come up with better idea."
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-fin99k-prvb4",
+     "n": 4,
+     "category": "grammar",
+     "question": "A burnt child dreads the fire",
+     "options": [
+      "Just saying that you will do something doesn`t mean much. Actually, doing it is harder.",
+      "Don`t just wait for good things to happen to you. Work hard to achieve your goals.",
+      "Someone who has experienced some kind of negative situation will try to avoid making the same mistake.",
+      "People like to spend time with others who are similar to them.",
+      "When two people cooperate with each other, they come up with better idea."
+     ],
+     "answer": 2
+    }
+   ]
+  },
+  {
+   "lesson": 119,
+   "title": "نهایی خرداد ۹۹ — مرتب‌کردن کلمات: هر دو بخش الف/ب (ص۲۶۵)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-fin99k-wo1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "more free time / Mina / would / had / help / you / if / she / with your homework /.",
+     "options": [
+      "Mina would help you with your homework if she had more free time."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Mina would help you with your homework if she had more free time."
+     ],
+     "placeholder": "write the full sentence in the correct order…"
+    },
+    {
+     "id": "g12-fin99k-wo2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "was / because / he / my mother / hadn’t / angry / my brother / washed / with / his hands /.",
+     "options": [
+      "My mother was angry with my brother because he hadn`t washed his hands."
+     ],
+     "answer": 0,
+     "accepted": [
+      "My mother was angry with my brother because he hadn`t washed his hands."
+     ],
+     "placeholder": "write the full sentence in the correct order…"
+    },
+    {
+     "id": "g12-fin99k-wo3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "bought / the students / which / their teacher / some / useful / suggested / books /.",
+     "options": [
+      "The students bought some useful books which their teacher suggested."
+     ],
+     "answer": 0,
+     "accepted": [
+      "The students bought some useful books which their teacher suggested."
+     ],
+     "placeholder": "write the full sentence in the correct order…"
+    },
+    {
+     "id": "g12-fin99k-wo4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "cold weather / into / converted / water / in / ice / be / can / ?",
+     "options": [
+      "Can water be converted into ice in cold weather?"
+     ],
+     "answer": 0,
+     "accepted": [
+      "Can water be converted into ice in cold weather?"
+     ],
+     "placeholder": "write the full sentence in the correct order…"
     }
    ]
   }

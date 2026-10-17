@@ -48,9 +48,9 @@ const ROLE_OPTIONS = ["Topic sentence", "Supporting sentence", "Concluding sente
 const K_ROLE: Record<number, number> = { 1: 2, 2: 1, 3: 1, 4: 1, 5: 1, 6: 0 }; // Concluding / Supporting×۴ / Topic
 
 describe("jozve topic grammar bank g12 — final exam دِی ۹۷ (r292 extraction receipt)", () => {
-  it("bank shape: one hundred four lessons, final 97 adds 10 banks / 42 items (family 855)", () => {
+  it("bank shape: one hundred nineteen lessons, final 97 adds 10 banks / 42 items (family 918)", () => {
     expect(bank.lessons.map((l) => l.lesson)).toEqual(
-      Array.from({ length: 104 }, (_, i) => i + 1)
+      Array.from({ length: 119 }, (_, i) => i + 1)
     );
     const counts: Record<number, number> = { 59: 4, 60: 4, 61: 4, 62: 4, 63: 4, 64: 2, 65: 4, 66: 6, 67: 5, 68: 5 };
     const levels: Record<number, string> = { 60: "استاندارد", 61: "استاندارد", 63: "استاندارد", 66: "استاندارد", 67: "استاندارد", 68: "استاندارد" };
@@ -66,9 +66,9 @@ describe("jozve topic grammar bank g12 — final exam دِی ۹۷ (r292 extracti
     expect(L(66).questions.every((q) => q.id === `g12-fin97-role${q.n}`)).toBe(true);
     // آزمون نهایی دی ۹۷: ۴۲ آیتم در ۱۰ بانک — خانواده: ۶۷۸ + ۴۲ = ۷۲۰
     const total = bank.lessons.reduce((s, l) => s + l.count, 0);
-    expect(total).toBe(855);
+    expect(total).toBe(918);
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(new Set(ids).size).toBe(855);
+    expect(new Set(ids).size).toBe(918);
   });
 
   it("provenance: source.final97 registered with two honest absences (audio + open writing)", () => {
