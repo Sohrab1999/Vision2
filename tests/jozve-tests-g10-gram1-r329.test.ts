@@ -158,9 +158,9 @@ describe("jozve tests-g10 gram1 (r329 تشریحی گرامر درس اول — 
     expect(L15.questions[0].question).toContain("( restaurant )");
   });
 
-  it("ids unique across the whole 311-item family (r329 gram1 appended)", () => {
+  it("ids unique across the whole 331-item family (r330 gram2 appended)", () => {
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(new Set(ids).size).toBe(311);
+    expect(new Set(ids).size).toBe(331);
   });
 });
 
