@@ -513,6 +513,131 @@
      "note": "متنِ دو ریدینگ درون‌اپ حمل نشد (الگوی r289-r291) — تصویر صفحه در کتابخانهٔ جزوه در دسترس است"
     }
    ]
+  },
+  "final98": {
+   "pages": "237-241",
+   "keyPages": "242-243",
+   "titlePrinted": "آزمون نهایی انگلیسی دوازدهم — نوبت خرداد ۱۳۹۸ (تاریخ امتحان 13/3/1398، مدت ۱۲۰ دقیقه، داوطلبان آزاد و بزرگسال سراسر کشور — بخش چهارم: آزمون‌های نهایی دی ۹۷ تا شهریور ۱۴۰۱) — «Vision Three»",
+   "sections": 16,
+   "banks": 12,
+   "questions": 51,
+   "keys": 51,
+   "extractedRound": 293,
+   "audioAbsent": {
+    "section": "1 (listening ۱-۶ بدونِ متنِ چاپی)",
+    "items": 6,
+    "printedKey": "1. take temperature / 2. Dr. Gharib / 3. Solar power / 4. English / 5. Natural gas, oil, and coal (ذکر دو مورد کافی است) / 6. I would take a photo / photos",
+    "note": "بدنهٔ چاپی ندارد (فقط کلیدِ کوتاهِ راهنمای تصحیح ص۲۴۲) — بانک ساخته نشد؛ بخش ۲ (۷-۱۴) متنِ چاپیِ کامل دارد و در بانک ۶۹ آمد؛ یادداشتِ چاپیِ خودِ برگه: «Audio file (MP3) / Audio script (PDF)»"
+   },
+   "openWritingAbsent": {
+    "section": "13 (پاراگراف‌نویسی «save our Earth» آیتم ۴۱)",
+    "items": 1,
+    "note": "پاسخِ باز با داوریِ اصولیِ تصحیح‌کننده (کلید ص۲۴۳: رعایت اصول topic/supporting/concluding و عباراتِ داده‌شده) — بانک صادقانه ساخته نشد؛ موضوع‌های چاپی: Plant trees / Use less fossil fuels / Increase the use of solar and wind energy / Change waste to energy"
+   },
+   "receipts": [
+    {
+     "item": "7-14",
+     "field": "section",
+     "printed": "«به فایل صوتی به دقت گوش دهید» + Audio file (MP3)",
+     "note": "بخش ۲ رسماً شنیداری است اما ساقه/گزینه/کلیدِ چاپیِ کامل دارد — نخستین بانکِ شنیداریِ متن‌چاپ؛ آیتم‌های ۱۰-۱۲ وابسته به داستانِ صوتیِ نامشنیدهٔ Bijan/Mehran — با کلیدِ چاپیِ راهنما حاکم"
+    },
+    {
+     "item": "12,13,14",
+     "field": "options",
+     "printed": "سه‌گزینه‌ایِ چاپ (a/b/c)",
+     "note": "برخلاف ۸-۱۱ چهارگزینه‌ای — عین چاپ"
+    },
+    {
+     "item": "26",
+     "field": "accepted",
+     "printed": "کلیدِ چاپی «26. hu» — بریدهٔ OCR",
+     "note": "تکمیل به hug: حرفِ نخستِ چاپیِ ساقه (h…) + پیشوندِ چاپی (hu) + حضورِ hug در واژه‌نامهٔ خود جزوه — دریافت شد"
+    },
+    {
+     "item": "31-34",
+     "field": "options",
+     "printed": "چاپ وارونه d,c,b,a (از d به a)",
+     "note": "به ترتیب طبیعی a-d بازنگاشت شد — الگوی r290/r291؛ کلیدهای حرفیِ راهنما (b/d/c/a) عین چاپ حاکم"
+    },
+    {
+     "item": "35",
+     "field": "accepted",
+     "printed": "«Everything in the garden was brown or everything is brown in the garden…»",
+     "note": "نخستین کلیدِ دودوییِ جمله‌کامل؛ واریانت دوم چاپی «is» دارد در حالی‌که بهم‌ریخته فقط «was» — وفادار به هر دو واریانتِ راهنما؛ رسید ثبت شد"
+    },
+    {
+     "item": "36",
+     "field": "accepted",
+     "printed": "دو واریانتِ چاپیِ راهنما",
+     "note": "«The woman who lives next door is a famous professor» / «The woman who is a famous professor lives next door»"
+    },
+    {
+     "item": "16",
+     "field": "accepted",
+     "printed": "«Wind turbines/ turbines»",
+     "note": "کلید دودوییِ چاپ"
+    },
+    {
+     "item": "25",
+     "field": "accepted",
+     "printed": "«symbol /sign»",
+     "note": "کلید دودوییِ چاپ"
+    },
+    {
+     "item": "29",
+     "field": "accepted",
+     "printed": "«would/ could go»",
+     "note": "کلید دودوییِ چاپ"
+    },
+    {
+     "item": "47",
+     "field": "stem",
+     "printed": "بدنه: «No living-being» / جدولِ کلید: «no living being»",
+     "note": "املأ بدنهٔ برگهٔ سؤال حاکم؛ واریانسِ راهنما ثبت شد"
+    },
+    {
+     "item": "52",
+     "field": "answer",
+     "printed": "کلید چاپی (a) True",
+     "note": "تنشِ معناییِ «All people» — الگوی r289 («All people») و r289-receipt؛ کلید چاپی حاکم"
+    },
+    {
+     "item": "44",
+     "field": "answer",
+     "printed": "جدولِ ص۲۴۳",
+     "note": "Topic جملهٔ نخستِ پاراگراف نیست (۴۲ اول است) — جدولِ Descriptor صریح: Topic=۴۴؛ «ترتیب جملات Supporting مهم نیست»"
+    },
+    {
+     "item": "54",
+     "field": "accepted",
+     "printed": "کلیدِ OCR با آشفتگیِ سطر (can provide more con / text and help you better / understand proper usage)",
+     "note": "بازمونتاژ شد؛ تکه‌ها جداگانه راستی‌آزمایی شدند"
+    },
+    {
+     "item": "55",
+     "field": "accepted",
+     "printed": "«story,an essay,a paragraph» بدونِ فاصلهٔ پس از ویرگول",
+     "note": "فاصله‌گذاریِ ویرگولِ OCR یکدست شد؛ عبارت عین چاپ"
+    },
+    {
+     "item": "3",
+     "field": "printedKey",
+     "printed": "«5. Natural gas, oil ,and coal (ذکر دو مورد کافی است)»",
+     "note": "یادداشتِ بخششِ نمرهٔ چاپیِ راهنما در رسیدِ غیبتِ شنیداری محفوظ است"
+    },
+    {
+     "item": "15,16",
+     "field": "section",
+     "printed": "«با توجه به تصاویر داده شده»",
+     "note": "ساقه و کلید از متنِ چاپی کامل است — تصویر صرفاً تزئینی؛ بانک تایپی ساخته شد"
+    },
+    {
+     "item": "passages",
+     "field": "—",
+     "printed": "p240-241",
+     "note": "متنِ دو ریدینگ درون‌اپ حمل نشد (الگوی r289-r292) — تصویر صفحه در کتابخانهٔ جزوه در دسترس است"
+    }
+   ]
   }
  },
  "lessons": [
@@ -11472,6 +11597,853 @@
      "n": 5,
      "category": "grammar",
      "question": "The only things that students learn at school are reading and writing.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 69,
+   "title": "نهایی خرداد ۹۸ — شنیداری: سوال‌های متن‌چاپ (ص۲۳۷)",
+   "level": "استاندارد",
+   "count": 8,
+   "questions": [
+    {
+     "id": "g12-fin98-lis1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Which one is clean energy? Wind or Coal? ---------------",
+     "options": [
+      "wind",
+      "coal"
+     ],
+     "answer": 0,
+     "accepted": [
+      "wind"
+     ],
+     "placeholder": "fill in the blank with the missing word…"
+    },
+    {
+     "id": "g12-fin98-lis2",
+     "n": 2,
+     "category": "grammar",
+     "question": "Scientists try to use clean energy because ---------------.",
+     "options": [
+      "do not pollute the earth",
+      "are harmful to the environment",
+      "cannot be replaced",
+      "cannot be turned into other forms of energy"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-fin98-lis3",
+     "n": 3,
+     "category": "grammar",
+     "question": "When renewable energy is used, the demand for fossil fuels ---------------.",
+     "options": [
+      "is produced",
+      "is made",
+      "is reduced",
+      "is provided"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-fin98-lis4",
+     "n": 4,
+     "category": "grammar",
+     "question": "Bijan didn't tell Mehran about the problem because ---------------.",
+     "options": [
+      "it was an emergency",
+      "it was a secret",
+      "he didn't need any money",
+      "he had no mobile phone"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-fin98-lis5",
+     "n": 5,
+     "category": "grammar",
+     "question": "Why has Bijan saved some money?",
+     "options": [
+      "to buy a new pair of shoes",
+      "to solve his friend's problem",
+      "to help Mehran",
+      "to buy a new mobile phone"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-fin98-lis6",
+     "n": 6,
+     "category": "grammar",
+     "question": "Ali is doing research on ---------------.",
+     "options": [
+      "heart attack",
+      "human's life",
+      "air pollution"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-fin98-lis7",
+     "n": 7,
+     "category": "grammar",
+     "question": "Where does air pollution mostly happen?",
+     "options": [
+      "big cities",
+      "roads",
+      "highways"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-fin98-lis8",
+     "n": 8,
+     "category": "grammar",
+     "question": "Polluted air causes different --------------- to human.",
+     "options": [
+      "reasons",
+      "diseases",
+      "ways"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 70,
+   "title": "نهایی خرداد ۹۸ — واژگان با تصویر: کامل کنید، بنویسید (ص۲۳۸)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g12-fin98-vocpic1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "We have to speak louder, because my grandfather is --------------- of hearing.",
+     "options": [
+      "hard"
+     ],
+     "answer": 0,
+     "accepted": [
+      "hard"
+     ],
+     "placeholder": "fill in the blank with the missing word…"
+    },
+    {
+     "id": "g12-fin98-vocpic2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "In opposite to fans, --------------- (s) use wind to generate electricity.",
+     "options": [
+      "wind turbines",
+      "turbines"
+     ],
+     "answer": 0,
+     "accepted": [
+      "wind turbines",
+      "turbines"
+     ],
+     "placeholder": "fill in the blank with the missing word…"
+    }
+   ]
+  },
+  {
+   "lesson": 71,
+   "title": "نهایی خرداد ۹۸ — واژگان: تعریف‌ها، ۵ گزینهٔ چاپی (ص۲۳۸)",
+   "level": "استاندارد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-fin98-def1",
+     "n": 1,
+     "category": "grammar",
+     "question": "There are some helpful tips on how to use a dictionary more effectively.",
+     "options": [
+      "the rise and fall of the sea",
+      "in a quiet way",
+      "a book in which you record your thoughts and feelings",
+      "to change in form or character",
+      "in a way that is successful and achieves what you want"
+     ],
+     "answer": 4
+    },
+    {
+     "id": "g12-fin98-def2",
+     "n": 2,
+     "category": "grammar",
+     "question": "She agreed some parts of her personal diary to be published.",
+     "options": [
+      "the rise and fall of the sea",
+      "in a quiet way",
+      "a book in which you record your thoughts and feelings",
+      "to change in form or character",
+      "in a way that is successful and achieves what you want"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-fin98-def3",
+     "n": 3,
+     "category": "grammar",
+     "question": "Strong tides make swimming dangerous.",
+     "options": [
+      "the rise and fall of the sea",
+      "in a quiet way",
+      "a book in which you record your thoughts and feelings",
+      "to change in form or character",
+      "in a way that is successful and achieves what you want"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-fin98-def4",
+     "n": 4,
+     "category": "grammar",
+     "question": "We can convert some sofas into a bed.",
+     "options": [
+      "the rise and fall of the sea",
+      "in a quiet way",
+      "a book in which you record your thoughts and feelings",
+      "to change in form or character",
+      "in a way that is successful and achieves what you want"
+     ],
+     "answer": 3
+    }
+   ]
+  },
+  {
+   "lesson": 72,
+   "title": "نهایی خرداد ۹۸ — واژگان: جای خالی از بانک، بنویسید (ص۲۳۸)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g12-fin98-bank1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Nowadays the new light bulbs --------------- less electricity.",
+     "options": [
+      "consume",
+      "combination",
+      "compile",
+      "dedicated"
+     ],
+     "answer": 0,
+     "accepted": [
+      "consume"
+     ],
+     "placeholder": "fill in the blank with the word bank…"
+    },
+    {
+     "id": "g12-fin98-bank2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "As a great artist, he has used a --------------- of paints in his works.",
+     "options": [
+      "combination",
+      "compile",
+      "dedicated",
+      "consume"
+     ],
+     "answer": 0,
+     "accepted": [
+      "combination"
+     ],
+     "placeholder": "fill in the blank with the word bank…"
+    },
+    {
+     "id": "g12-fin98-bank3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Dr. Gharib was regarded as a --------------- physician and he spared no pains to help sick people.",
+     "options": [
+      "dedicated",
+      "combination",
+      "compile",
+      "consume"
+     ],
+     "answer": 0,
+     "accepted": [
+      "dedicated"
+     ],
+     "placeholder": "fill in the blank with the word bank…"
+    }
+   ]
+  },
+  {
+   "lesson": 73,
+   "title": "نهایی خرداد ۹۸ — واژگان: کامل‌کردن از دانش خود، بنویسید (ص۲۳۸)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g12-fin98-know1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Plants a--------------- carbon dioxide from the air.",
+     "options": [
+      "absorb",
+      "symbol",
+      "sign",
+      "hug"
+     ],
+     "answer": 0,
+     "accepted": [
+      "absorb"
+     ],
+     "placeholder": "complete with a suitable word from your own knowledge…"
+    },
+    {
+     "id": "g12-fin98-know2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "H is the chemical s --------------- for hydrogen.",
+     "options": [
+      "symbol",
+      "absorb",
+      "sign",
+      "hug"
+     ],
+     "answer": 0,
+     "accepted": [
+      "symbol",
+      "sign"
+     ],
+     "placeholder": "complete with a suitable word from your own knowledge…"
+    },
+    {
+     "id": "g12-fin98-know3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "In Germany people usually h--------------- each other when they meet.",
+     "options": [
+      "hug",
+      "absorb",
+      "symbol",
+      "sign"
+     ],
+     "answer": 0,
+     "accepted": [
+      "hug"
+     ],
+     "placeholder": "complete with a suitable word from your own knowledge…"
+    }
+   ]
+  },
+  {
+   "lesson": 74,
+   "title": "نهایی خرداد ۹۸ — شکل صحیح فعل در مکالمه، بنویسید (ص۲۳۹)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-fin98-vf1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "It --------------- rather cold today, doesn't it? (to seem)",
+     "options": [
+      "seems",
+      "had decided",
+      "would go",
+      "are served"
+     ],
+     "answer": 0,
+     "accepted": [
+      "seems"
+     ],
+     "placeholder": "write the correct form of the verb…"
+    },
+    {
+     "id": "g12-fin98-vf2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "I --------------- to go swimming before I left home. (to decide)",
+     "options": [
+      "had decided",
+      "seems",
+      "would go",
+      "are served"
+     ],
+     "answer": 0,
+     "accepted": [
+      "had decided"
+     ],
+     "placeholder": "write the correct form of the verb…"
+    },
+    {
+     "id": "g12-fin98-vf3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "If it were fine, We --------------- swimming today. (to go)",
+     "options": [
+      "would go",
+      "seems",
+      "had decided",
+      "are served"
+     ],
+     "answer": 0,
+     "accepted": [
+      "would go",
+      "could go"
+     ],
+     "placeholder": "write the correct form of the verb…"
+    },
+    {
+     "id": "g12-fin98-vf4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "OK. I know a restaurant in which a variety of sea foods ---------------. (to serve)",
+     "options": [
+      "are served",
+      "seems",
+      "had decided",
+      "would go"
+     ],
+     "answer": 0,
+     "accepted": [
+      "are served"
+     ],
+     "placeholder": "write the correct form of the verb…"
+    }
+   ]
+  },
+  {
+   "lesson": 75,
+   "title": "نهایی خرداد ۹۸ — گرامر: تست چهارگزینه‌ای (ص۲۳۹)",
+   "level": "استاندارد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-fin98-g1",
+     "n": 1,
+     "category": "grammar",
+     "question": "The train --------------- he catches early in the morning is not very crowded.",
+     "options": [
+      "whom",
+      "which",
+      "who",
+      "whose"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-fin98-g2",
+     "n": 2,
+     "category": "grammar",
+     "question": "Some dangerous gases --------------- when we burn garbage.",
+     "options": [
+      "was produced",
+      "produce",
+      "may produce",
+      "may be produced"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-fin98-g3",
+     "n": 3,
+     "category": "grammar",
+     "question": "The old man wasn't very --------------- and kept to himself.",
+     "options": [
+      "communicate",
+      "communication",
+      "communicative",
+      "to communicate"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-fin98-g4",
+     "n": 4,
+     "category": "grammar",
+     "question": "I did not read the introduction and jumped --------------- the next part.",
+     "options": [
+      "into",
+      "on",
+      "up",
+      "over"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 76,
+   "title": "نهایی خرداد ۹۸ — مرتب‌کردن کلمات، بنویسید (ص۲۳۹)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g12-fin98-wo1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "rained / brown / for months / everything / because / hadn't / in the garden / was / it.",
+     "options": [
+      "Everything in the garden was brown because it hadn't rained for months.",
+      "Everything is brown in the garden because it hadn't rained for months."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Everything in the garden was brown because it hadn't rained for months.",
+      "Everything is brown in the garden because it hadn't rained for months."
+     ],
+     "placeholder": "write the complete sentence…"
+    },
+    {
+     "id": "g12-fin98-wo2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "famous / lives / the woman / professor / next door / is / who / a.",
+     "options": [
+      "The woman who lives next door is a famous professor.",
+      "The woman who is a famous professor lives next door."
+     ],
+     "answer": 0,
+     "accepted": [
+      "The woman who lives next door is a famous professor.",
+      "The woman who is a famous professor lives next door."
+     ],
+     "placeholder": "write the complete sentence…"
+    }
+   ]
+  },
+  {
+   "lesson": 77,
+   "title": "نهایی خرداد ۹۸ — کلمات ربط، کامل کنید (ص۲۳۹)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-fin98-conn1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "The early bird catches the worm, --------------- if you want to succeed, wake up and start work early.",
+     "options": [
+      "so",
+      "and",
+      "or",
+      "but"
+     ],
+     "answer": 0,
+     "accepted": [
+      "so"
+     ],
+     "placeholder": "complete with and / or / but / so…"
+    },
+    {
+     "id": "g12-fin98-conn2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "He bought a house, found a job, --------------- chose a school for his children last year.",
+     "options": [
+      "and",
+      "or",
+      "but",
+      "so"
+     ],
+     "answer": 0,
+     "accepted": [
+      "and"
+     ],
+     "placeholder": "complete with and / or / but / so…"
+    },
+    {
+     "id": "g12-fin98-conn3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "The glass fell down to the floor, --------------- it didn't break.",
+     "options": [
+      "but",
+      "and",
+      "or",
+      "so"
+     ],
+     "answer": 0,
+     "accepted": [
+      "but"
+     ],
+     "placeholder": "complete with and / or / but / so…"
+    },
+    {
+     "id": "g12-fin98-conn4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "You can pay now, --------------- when I finish your painting.",
+     "options": [
+      "or",
+      "and",
+      "but",
+      "so"
+     ],
+     "answer": 0,
+     "accepted": [
+      "or"
+     ],
+     "placeholder": "complete with and / or / but / so…"
+    }
+   ]
+  },
+  {
+   "lesson": 78,
+   "title": "نهایی خرداد ۹۸ — نقش‌های پاراگراف آب: تست (ص۲۴۰)",
+   "level": "استاندارد",
+   "count": 6,
+   "questions": [
+    {
+     "id": "g12-fin98-role1",
+     "n": 1,
+     "category": "grammar",
+     "question": "We cannot think of life without water.",
+     "options": [
+      "Topic sentence",
+      "Supporting sentence",
+      "Concluding sentence"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-fin98-role2",
+     "n": 2,
+     "category": "grammar",
+     "question": "So, water is also essential for animals, birds, insects, etc.",
+     "options": [
+      "Topic sentence",
+      "Supporting sentence",
+      "Concluding sentence"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-fin98-role3",
+     "n": 3,
+     "category": "grammar",
+     "question": "Water is the most essential element in our life.",
+     "options": [
+      "Topic sentence",
+      "Supporting sentence",
+      "Concluding sentence"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-fin98-role4",
+     "n": 4,
+     "category": "grammar",
+     "question": "Thus, water is very important to our life and our planet.",
+     "options": [
+      "Topic sentence",
+      "Supporting sentence",
+      "Concluding sentence"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-fin98-role5",
+     "n": 5,
+     "category": "grammar",
+     "question": "We need huge resources of water to generate electricity on a large and commercial scale.",
+     "options": [
+      "Topic sentence",
+      "Supporting sentence",
+      "Concluding sentence"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-fin98-role6",
+     "n": 6,
+     "category": "grammar",
+     "question": "Besides, No living-being can exist for long without water, the most valuable liquid.",
+     "options": [
+      "Topic sentence",
+      "Supporting sentence",
+      "Concluding sentence"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 79,
+   "title": "نهایی خرداد ۹۸ — ریدینگ نیکوکاری: پرسش پاسخ + تست (ص۲۴۰)",
+   "level": "استاندارد",
+   "count": 5,
+   "questions": [
+    {
+     "id": "g12-fin98-rd1-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What can it lead to when you see the impacts on those you are helping?",
+     "options": [
+      "It can lead not only to great personal happiness but also to respect from others who appreciate the work you do."
+     ],
+     "answer": 0,
+     "accepted": [
+      "It can lead not only to great personal happiness but also to respect from others who appreciate the work you do."
+     ],
+     "placeholder": "answer in a complete sentence…"
+    },
+    {
+     "id": "g12-fin98-rd1-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What is the important point in helping others?",
+     "options": [
+      "The important point is that we continue to give to those who are more in need than ourselves."
+     ],
+     "answer": 0,
+     "accepted": [
+      "The important point is that we continue to give to those who are more in need than ourselves."
+     ],
+     "placeholder": "answer in a complete sentence…"
+    },
+    {
+     "id": "g12-fin98-rd1-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "What is the closest synonym for the word \"benefit\"?",
+     "options": [
+      "experience",
+      "advantage",
+      "choice",
+      "effect"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-fin98-rd1-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "Helping people in bad environmental events has the global importance.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-fin98-rd1-5",
+     "n": 5,
+     "category": "grammar",
+     "question": "All people feel great personal happiness when they help others.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 80,
+   "title": "نهایی خرداد ۹۸ — ریدینگ دیکشنری: پرسش پاسخ + تست (ص۲۴۱)",
+   "level": "استاندارد",
+   "count": 6,
+   "questions": [
+    {
+     "id": "g12-fin98-rd2-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "How can a talking dictionary help us?",
+     "options": [
+      "By using a talking dictionary, we are able to look the words up in a few minutes."
+     ],
+     "answer": 0,
+     "accepted": [
+      "By using a talking dictionary, we are able to look the words up in a few minutes."
+     ],
+     "placeholder": "answer in a complete sentence…"
+    },
+    {
+     "id": "g12-fin98-rd2-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What is the use of example sentences?",
+     "options": [
+      "Seeing specific words used in a sentence can provide more context and help you better understand proper usage."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Seeing specific words used in a sentence can provide more context and help you better understand proper usage."
+     ],
+     "placeholder": "answer in a complete sentence…"
+    },
+    {
+     "id": "g12-fin98-rd2-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "When is a dictionary a great help for us?",
+     "options": [
+      "When reading or writing a story, an essay, a paragraph or even a sentence, using a dictionary is a great help."
+     ],
+     "answer": 0,
+     "accepted": [
+      "When reading or writing a story, an essay, a paragraph or even a sentence, using a dictionary is a great help."
+     ],
+     "placeholder": "answer in a complete sentence…"
+    },
+    {
+     "id": "g12-fin98-rd2-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "What does the pronoun (it) in line 7 refer to?",
+     "options": [
+      "pronunciation",
+      "spelling",
+      "part of speech",
+      "example sentence"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-fin98-rd2-5",
+     "n": 5,
+     "category": "grammar",
+     "question": "What is the opposite of the underlined word \"available\"?",
+     "options": [
+      "out of reach",
+      "valuable",
+      "repetitive",
+      "accessible"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-fin98-rd2-6",
+     "n": 6,
+     "category": "grammar",
+     "question": "Learning a word's part of speech helps us better understand proper usage of it.",
      "options": [
       "True",
       "False"
