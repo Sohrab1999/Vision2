@@ -638,6 +638,107 @@
      "note": "متنِ دو ریدینگ درون‌اپ حمل نشد (الگوی r289-r292) — تصویر صفحه در کتابخانهٔ جزوه در دسترس است"
     }
    ]
+  },
+  "final98sh": {
+   "pages": "244-248",
+   "keyPages": "249-250",
+   "titlePrinted": "آزمون نهایی انگلیسی دوازدهم — نوبت شهریور ۱۳۹۸ (تاریخ امتحان 12/6/1398، مدت ۱۲۰ دقیقه، داوطلبان آزاد و بزرگسال سراسر کشور — بخش چهارم: آزمون‌های نهایی دی ۹۷ تا شهریور ۱۴۰۱) — «Vision Three»",
+   "sections": 16,
+   "banks": 12,
+   "questions": 44,
+   "keys": 44,
+   "extractedRound": 294,
+   "audioAbsent": {
+    "section": "1 (listening ۱-۶ بدونِ متنِ چاپی) + ساقه‌های چاپی‌ناداشتهٔ ۹/۱۰/۱۱",
+    "items": 9,
+    "printedKey": "1. stories / 2. wind / 3. We can carry it. / 4. I would found a company (املای چاپیِ راهنما) / 5. I feel proud or happy. / 6. The foods which contain fat. / 9. They flew their kites. / 10. It was dark and quiet. / 11. The driver waved him.",
+    "note": "بخش ۱ بدنهٔ چاپی ندارد؛ آیتم‌های ۹/۱۰/۱۱ ساقهٔ چاپی ندارند (فقط کلیدِ راهنمای تصحیح ص۲۴۹) — بانک‌های ۹/۱۰/۱۱ ساخته نشدند؛ یادداشتِ چاپیِ خودِ برگه: «Audio file (MP3) / script (PDF)»"
+   },
+   "openWritingAbsent": {
+    "section": "13 (پاراگراف‌نویسیِ باز «smoking» آیتم ۴۱)",
+    "items": 1,
+    "note": "پاسخِ باز با داوریِ اصولیِ تصحیح‌کننده (کلید ص۲۵۰: رعایت اصول topic/supporting/concluding و استفاده از عباراتِ داده‌شده) — بانک صادقانه ساخته نشد؛ عبارت‌های چاپی: causing diseases such as lung cancer / increasing stress and depression / a common terrible habit among people / being addictive and difficult for smokers to quit"
+   },
+   "receipts": [
+    {
+     "item": "7,8",
+     "field": "options",
+     "printed": "سه‌گزینه‌ایِ چاپ (a/b/c)",
+     "note": "ساقه/گزینه/کلیدِ چاپیِ کامل — بانکِ شنیداریِ متن‌چاپ ادامه دارد (الگوی r293)"
+    },
+    {
+     "item": "9",
+     "field": "typed",
+     "printed": "ساقهٔ چاپی «What did they do in the afternoon?»",
+     "note": "کلیدِ جمله‌کاملِ راهنما «They flew their kites.» — بدونِ گزینهٔ چاپی؛ بانک تایپی با placeholder پاسخِ جمله‌کامل"
+    },
+    {
+     "item": "15,16",
+     "field": "section",
+     "printed": "«با توجه به تصاویر داده شده»",
+     "note": "ساقه و کلید از متنِ چاپی کامل است — تصویر صرفاً تزئینی؛ بانک تایپی ساخته شد (الگوی ۱۵/۱۶ r293)"
+    },
+    {
+     "item": "17-20",
+     "field": "key",
+     "printed": "e/a/d/b — c اضافهٔ چاپی",
+     "note": "ترتیبِ گزینه‌های چاپیِ ستون B عیناً a..e حفظ شد"
+    },
+    {
+     "item": "24-26",
+     "field": "stem",
+     "printed": "حرفِ نخستِ چاپی به خالی چسبیده (d…….. / i……….. / d………)",
+     "note": "الگوی r293 — درون‌اپ با «———————» بازسازی شد؛ placeholder حرفِ چاپیِ نخست را حمل می‌کند"
+    },
+    {
+     "item": "30",
+     "field": "accepted",
+     "printed": "«would/ might/ could give»",
+     "note": "نخستین کلیدِ سه‌واریانتهِ تایپیِ خانواده — accepted آرایه‌ایِ سه‌تایی؛ موتورِ accepted.some از r285 آماده"
+    },
+    {
+     "item": "31-34",
+     "field": "options",
+     "printed": "چاپ وارونه d,c,b,a (از d به a)",
+     "note": "به ترتیب طبیعی a-d بازنگاشت شد — الگوی r290/r291/r293؛ کلیدهای حرفیِ راهنما (b/c/d/a) عین چاپ حاکم"
+    },
+    {
+     "item": "35",
+     "field": "accepted",
+     "printed": "«The dog which can run very fast is brown. Or The dog which is brown can run very fast.»",
+     "note": "کلیدِ دودوییِ جمله‌کامل — واریانتِ دوم در OCR دوخطی است (can run very / fast.)؛ هر دو واریانتِ راهنما accepted"
+    },
+    {
+     "item": "36",
+     "field": "accepted",
+     "printed": "«A lot of workers have been employed during the last five years.»",
+     "note": "تک‌واریانته — نشانِ نمرهٔ چاپی «(0/25)(0/5)(0/25)» درونِ کلید با تکه‌های سالم راستی‌آزمایی شد"
+    },
+    {
+     "item": "42-47",
+     "field": "answer",
+     "printed": "جدولِ Descriptor ص۲۵۰",
+     "note": "نخستین «مرتب‌کردن جملات در قالب پاراگراف» — Topic=۴۵ / Concluding=۴۶ / چهار Supporting؛ جدول ترتیبِ چاپِ سطرها را حفظ می‌کند (۴۵/۴۷/۴۲/۴۴/۴۳/۴۶)"
+    },
+    {
+     "item": "48",
+     "field": "accepted",
+     "printed": "«That word may stop my understanding of the passage.»",
+     "note": "کلیدِ جمله‌کاملِ چاپیِ راهنما — پیشوندِ شرطیِ «If you have a good vocabulary, you» در راهنما نیامده؛ عینِ چاپ حاکم"
+    },
+    {
+     "item": "49",
+     "field": "—",
+     "printed": "کلیدِ جمله‌کاملِ راهنما با آشفتگیِ سطرِ OCR",
+     "note": "بدونِ لنگرِ چاپیِ قابلِ راستی‌آزماییِ کامل (تکه‌های «If / we / have a good vocabulary , / we / are more interested in reading.») — بانکِ ۴۹ ساخته نشد؛ غیبتِ صادقانه"
+    },
+    {
+     "item": "passages",
+     "field": "—",
+     "printed": "p247-248",
+     "note": "متنِ دو ریدینگ درون‌اپ حمل نشد (الگوی r289-r293) — تصویر صفحه در کتابخانهٔ جزوه در دسترس است"
+    }
+   ]
   }
  },
  "lessons": [
@@ -12449,6 +12550,717 @@
       "False"
      ],
      "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 81,
+   "title": "نهایی شهریور ۹۸ — شنیداری: سوال‌های متن‌چاپ (ص۲۴۴)",
+   "level": "استاندارد",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g12-fin98sh-lis1",
+     "n": 1,
+     "category": "grammar",
+     "question": "What are they talking about?",
+     "options": [
+      "playing volleyball",
+      "taking photographs",
+      "picnic"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-fin98sh-lis2",
+     "n": 2,
+     "category": "grammar",
+     "question": "When did they have barbecue?",
+     "options": [
+      "in the morning",
+      "at midnight",
+      "in the evening"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-fin98sh-lis3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What did they do in the afternoon?",
+     "options": [
+      "They flew their kites."
+     ],
+     "answer": 0,
+     "accepted": [
+      "They flew their kites."
+     ],
+     "placeholder": "answer in a complete sentence…"
+    }
+   ]
+  },
+  {
+   "lesson": 82,
+   "title": "نهایی شهریور ۹۸ — واژگان با تصویر: کامل کنید، بنویسید (ص۲۴۵)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g12-fin98sh-vocpic1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "My grandfather feeds the --------------- in the park every morning.",
+     "options": [
+      "pigeons"
+     ],
+     "answer": 0,
+     "accepted": [
+      "pigeons"
+     ],
+     "placeholder": "fill in the blank with the missing word…"
+    },
+    {
+     "id": "g12-fin98sh-vocpic2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "The new light bulbs --------------- less electricity.",
+     "options": [
+      "consume"
+     ],
+     "answer": 0,
+     "accepted": [
+      "consume"
+     ],
+     "placeholder": "fill in the blank with the missing word…"
+    }
+   ]
+  },
+  {
+   "lesson": 83,
+   "title": "نهایی شهریور ۹۸ — واژگان: تعریف‌ها، ۵ گزینهٔ چاپی (ص۲۴۵)",
+   "level": "استاندارد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-fin98sh-def1",
+     "n": 1,
+     "category": "grammar",
+     "question": "No one can live forever.",
+     "options": [
+      "to change in form or character",
+      "to put things in a neat, attractive, or useful order",
+      "to suddenly decide to do something",
+      "to stop being angry with someone",
+      "for all time"
+     ],
+     "answer": 4
+    },
+    {
+     "id": "g12-fin98sh-def2",
+     "n": 2,
+     "category": "grammar",
+     "question": "Those sofas convert into bed.",
+     "options": [
+      "to change in form or character",
+      "to put things in a neat, attractive, or useful order",
+      "to suddenly decide to do something",
+      "to stop being angry with someone",
+      "for all time"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-fin98sh-def3",
+     "n": 3,
+     "category": "grammar",
+     "question": "Mom will forgive me for breaking the vase.",
+     "options": [
+      "to change in form or character",
+      "to put things in a neat, attractive, or useful order",
+      "to suddenly decide to do something",
+      "to stop being angry with someone",
+      "for all time"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-fin98sh-def4",
+     "n": 4,
+     "category": "grammar",
+     "question": "We’ll need to arrange the chairs around the table.",
+     "options": [
+      "to change in form or character",
+      "to put things in a neat, attractive, or useful order",
+      "to suddenly decide to do something",
+      "to stop being angry with someone",
+      "for all time"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 84,
+   "title": "نهایی شهریور ۹۸ — واژگان: جای خالی از بانک، بنویسید (ص۲۴۵)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g12-fin98sh-bank1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Being able to communicate --------------- is one of the most important life skills",
+     "options": [
+      "origin",
+      "generous",
+      "effectively",
+      "share"
+     ],
+     "answer": 0,
+     "accepted": [
+      "effectively"
+     ],
+     "placeholder": "fill in the blank with the missing word…"
+    },
+    {
+     "id": "g12-fin98sh-bank2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Elders have a lot to --------------- with us: their life experiences, failures, successes and many more.",
+     "options": [
+      "origin",
+      "generous",
+      "effectively",
+      "share"
+     ],
+     "answer": 0,
+     "accepted": [
+      "share"
+     ],
+     "placeholder": "fill in the blank with the missing word…"
+    },
+    {
+     "id": "g12-fin98sh-bank3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "A complete dictionary tells you about the --------------- of words and the story behind them.",
+     "options": [
+      "origin",
+      "generous",
+      "effectively",
+      "share"
+     ],
+     "answer": 0,
+     "accepted": [
+      "origin"
+     ],
+     "placeholder": "fill in the blank with the missing word…"
+    }
+   ]
+  },
+  {
+   "lesson": 85,
+   "title": "نهایی شهریور ۹۸ — واژگان: کامل‌کردن از دانش خود، بنویسید (ص۲۴۶)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g12-fin98sh-know1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "I have recorded my thoughts and feelings on my d——————— every day for 10 years.",
+     "options": [
+      "diary"
+     ],
+     "answer": 0,
+     "accepted": [
+      "diary"
+     ],
+     "placeholder": "start with the printed first letter d…"
+    },
+    {
+     "id": "g12-fin98sh-know2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "This book has only a two-page i———————. It is about the writer and his success.",
+     "options": [
+      "introduction"
+     ],
+     "answer": 0,
+     "accepted": [
+      "introduction"
+     ],
+     "placeholder": "start with the printed first letter i…"
+    },
+    {
+     "id": "g12-fin98sh-know3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Nowadays d——————— for organic food is increasing.",
+     "options": [
+      "demand"
+     ],
+     "answer": 0,
+     "accepted": [
+      "demand"
+     ],
+     "placeholder": "start with the printed first letter d…"
+    }
+   ]
+  },
+  {
+   "lesson": 86,
+   "title": "نهایی شهریور ۹۸ — شکل صحیح فعل، بنویسید (ص۲۴۶)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-fin98sh-vf1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "I think more money should --------------- on education. ( to spend )",
+     "options": [
+      "be spent"
+     ],
+     "answer": 0,
+     "accepted": [
+      "be spent"
+     ],
+     "placeholder": "write the correct form of the verb…"
+    },
+    {
+     "id": "g12-fin98sh-vf2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Paul had gone home before I --------------- at the party. ( to arrive )",
+     "options": [
+      "arrived"
+     ],
+     "answer": 0,
+     "accepted": [
+      "arrived"
+     ],
+     "placeholder": "write the correct form of the verb…"
+    },
+    {
+     "id": "g12-fin98sh-vf3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Last night my father --------------- home very late, didn’t he? ( to come )",
+     "options": [
+      "came"
+     ],
+     "answer": 0,
+     "accepted": [
+      "came"
+     ],
+     "placeholder": "write the correct form of the verb…"
+    },
+    {
+     "id": "g12-fin98sh-vf4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "If we found two hundred dollars, we --------------- it to the police station. ( to give )",
+     "options": [
+      "would give"
+     ],
+     "answer": 0,
+     "accepted": [
+      "would give",
+      "might give",
+      "could give"
+     ],
+     "placeholder": "write the correct form of the verb…"
+    }
+   ]
+  },
+  {
+   "lesson": 87,
+   "title": "نهایی شهریور ۹۸ — گرامر: تست چهارگزینه‌ای (ص۲۴۶)",
+   "level": "استاندارد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-fin98sh-g1",
+     "n": 1,
+     "category": "grammar",
+     "question": "I --------------- to play ping pong when I was six years old.",
+     "options": [
+      "had taught",
+      "was taught",
+      "taught",
+      "will be taught"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-fin98sh-g2",
+     "n": 2,
+     "category": "grammar",
+     "question": "She answered all the questions correctly --------------- she had studied well.",
+     "options": [
+      "before",
+      "although",
+      "because",
+      "when"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-fin98sh-g3",
+     "n": 3,
+     "category": "grammar",
+     "question": "The woman --------------- my sister met in the hospital is a nurse.",
+     "options": [
+      "where",
+      "what",
+      "which",
+      "whom"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-fin98sh-g4",
+     "n": 4,
+     "category": "grammar",
+     "question": "Aida burst --------------- tears when she saw her score.",
+     "options": [
+      "into",
+      "on",
+      "up",
+      "over"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 88,
+   "title": "نهایی شهریور ۹۸ — مرتب‌کردن کلمات، بنویسید (ص۲۴۶)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g12-fin98sh-wo1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "very fast / the dog / is / can /which /runs / brown.",
+     "options": [
+      "The dog which can run very fast is brown."
+     ],
+     "answer": 0,
+     "accepted": [
+      "The dog which can run very fast is brown.",
+      "The dog which is brown can run very fast."
+     ],
+     "placeholder": "write the full sentence in the correct order…"
+    },
+    {
+     "id": "g12-fin98sh-wo2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "employed /  during / a lot of / the last five years / have been / workers.",
+     "options": [
+      "A lot of workers have been employed during the last five years."
+     ],
+     "answer": 0,
+     "accepted": [
+      "A lot of workers have been employed during the last five years."
+     ],
+     "placeholder": "write the full sentence in the correct order…"
+    }
+   ]
+  },
+  {
+   "lesson": 89,
+   "title": "نهایی شهریور ۹۸ — کلمات ربط، کامل کنید (ص۲۴۶)",
+   "level": "آموزشی — ورود آزاد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-fin98sh-conn1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "You can buy a shirt --------------- you can save your money.",
+     "options": [
+      "and",
+      "or",
+      "but",
+      "so"
+     ],
+     "answer": 0,
+     "accepted": [
+      "or"
+     ],
+     "placeholder": "connect the sentences with and, or, but, so…"
+    },
+    {
+     "id": "g12-fin98sh-conn2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "There was nothing at home to eat --------------- I went to a restaurant.",
+     "options": [
+      "and",
+      "or",
+      "but",
+      "so"
+     ],
+     "answer": 0,
+     "accepted": [
+      "so"
+     ],
+     "placeholder": "connect the sentences with and, or, but, so…"
+    },
+    {
+     "id": "g12-fin98sh-conn3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "My friend had a lot of problems --------------- she didn’t tell me anything.",
+     "options": [
+      "and",
+      "or",
+      "but",
+      "so"
+     ],
+     "answer": 0,
+     "accepted": [
+      "but"
+     ],
+     "placeholder": "connect the sentences with and, or, but, so…"
+    },
+    {
+     "id": "g12-fin98sh-conn4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "He wrote some books for children --------------- translated a lot of story books.",
+     "options": [
+      "and",
+      "or",
+      "but",
+      "so"
+     ],
+     "answer": 0,
+     "accepted": [
+      "and"
+     ],
+     "placeholder": "connect the sentences with and, or, but, so…"
+    }
+   ]
+  },
+  {
+   "lesson": 90,
+   "title": "نهایی شهریور ۹۸ — نقش‌های پاراگراف فوتبال: تست (ص۲۴۷)",
+   "level": "استاندارد",
+   "count": 6,
+   "questions": [
+    {
+     "id": "g12-fin98sh-role1",
+     "n": 1,
+     "category": "grammar",
+     "question": "You can often see them playing at school or in the street.",
+     "options": [
+      "Topic sentence",
+      "Supporting sentence",
+      "Concluding sentence"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-fin98sh-role2",
+     "n": 2,
+     "category": "grammar",
+     "question": "If a player is very good, he may go on to play for a famous team.",
+     "options": [
+      "Topic sentence",
+      "Supporting sentence",
+      "Concluding sentence"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-fin98sh-role3",
+     "n": 3,
+     "category": "grammar",
+     "question": "In high schools, students may play football on a team.",
+     "options": [
+      "Topic sentence",
+      "Supporting sentence",
+      "Concluding sentence"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-fin98sh-role4",
+     "n": 4,
+     "category": "grammar",
+     "question": "There are many popular sports in my country, but the most popular one is football.",
+     "options": [
+      "Topic sentence",
+      "Supporting sentence",
+      "Concluding sentence"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-fin98sh-role5",
+     "n": 5,
+     "category": "grammar",
+     "question": "Football is really a national sport in my country.",
+     "options": [
+      "Topic sentence",
+      "Supporting sentence",
+      "Concluding sentence"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-fin98sh-role6",
+     "n": 6,
+     "category": "grammar",
+     "question": "Many children begin learning to play football when they are very young.",
+     "options": [
+      "Topic sentence",
+      "Supporting sentence",
+      "Concluding sentence"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 91,
+   "title": "نهایی شهریور ۹۸ — ریدینگ واژگان: پرسش پاسخ + تست (ص۲۴۷)",
+   "level": "استاندارد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-fin98sh-rd1-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What may happen when you come across an unfamiliar word?",
+     "options": [
+      "That word may stop my understanding of the passage."
+     ],
+     "answer": 0,
+     "accepted": [
+      "That word may stop my understanding of the passage."
+     ],
+     "placeholder": "answer in a complete sentence…"
+    },
+    {
+     "id": "g12-fin98sh-rd1-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "What is the closest synonym for the word \"suppose\"?",
+     "options": [
+      "believe",
+      "accept",
+      "understand",
+      "imagine"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-fin98sh-rd1-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "Unknown words in a passage may make comprehension easier.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-fin98sh-rd1-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "The meaning of a new word may be guessed from the text.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 92,
+   "title": "نهایی شهریور ۹۸ — ریدینگ انرژی: تست (ص۲۴۸)",
+   "level": "استاندارد",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-fin98sh-rd2-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Where does most of the energy that people use come from?",
+     "options": [
+      "the wind",
+      "plants",
+      "fossil fuels",
+      "the sun"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-fin98sh-rd2-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "What are two examples of clean energy?",
+     "options": [
+      "solar power and electricity",
+      "wind power and solar power",
+      "fossil fuels and wind power",
+      "electricity and fossil fuels"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-fin98sh-rd2-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "What is the main goal of using clean energy?",
+     "options": [
+      "to replace the sun and wind with man-made energy sources",
+      "to remove pollution from the air as quickly as possible",
+      "to stop destroying fossils from long ago",
+      "to create electricity without creating pollution"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-fin98sh-rd2-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "What is the closest synonym for the word \"spin\"?",
+     "options": [
+      "turn",
+      "run",
+      "fly",
+      "climb"
+     ],
+     "answer": 0
     }
    ]
   }
