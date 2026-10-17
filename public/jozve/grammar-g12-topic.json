@@ -1075,6 +1075,39 @@
         "Section 15 راهنما یک ردیفِ پیوسته برای ۳۳-۳۶ است (درست/نادرست + تست) — درون‌اپ به دو بانکِ r1tf/r1m شکسته شد (الگوی r296-r298 ریدینگ‌ها)",
         "چاپِ «ﺳﻨﺠﺶ و ﭘﺎﯾﺶ» در سربرگ (خطای چاپیِ پایش) — وفادارِ OCR، بی‌اثر بر آیتم‌ها"
       ]
+    },
+    "final99shd": {
+      "pages": "293-298",
+      "keyPages": "299-300",
+      "titlePrinted": "آزمون نهایی انگلیسی دوازدهم — نوبت شهریور ماه سال ۱۳۹۹، ویژهٔ ناشنوایان، مرکز سنجش و پایش کیفیت آموزشی (aee.medu.ir)، کلیهٔ رشته‌ها، تاریخ ۱۳/۰۶/۹۹، ۶ صفحه، جمع نمره ۴۸ — واریانتِ سومِ همان شهریور ۹۹ (r298 = چاپِ جزوه؛ r299 = رسمیِ سراسریِ کل رشته‌ها)",
+      "sections": 18,
+      "banks": 19,
+      "questions": 63,
+      "keys": 63,
+      "extractedRound": 300,
+      "branchVariant": "سومین واریانتِ یک نوبتِ واحد — امتحانِ ویژهٔ ناشنوایان: نخستین نوبتِ بی‌شنیداریِ خانواده (حذفِ کاملِ بخشِ شنیداری، نه غیبتِ فایل) + چهار بخشِ نو (ناهماهنگِ یگانه ۱۰/۱۱، شکلِ صحیحِ فعل با راهنمای چاپی ۲۱-۲۴، ریدینگِ تازهٔ فرهنگ‌لغت/جملهٔ نمونه ۳۹-۴۲، پاراگراف‌کاویِ آغازین/نامربوط ۴۹-۵۰). بخش‌های ۱۵-۲۰/۲۵-۲۶/۳۳-۴۶/۴۷/۵۱-۶۲ عینِ چاپِ سراسریِ r299 است — هم‌ساقه‌گیِ موازی عمدی (گاردِ شناسه‌محور).",
+      "audioAbsent": null,
+      "openWritingAbsent": {
+        "items": "۴۸ (topic sentence برای Smoking) و بخش ۱۸: ۶۳-۶۶ (topic sentence برای Ferdowsi/Watching TV/Sport/Clean energy) و ۶۷ (پاراگرافِ بازِ Having a healthy lifestyle) + بارمِ «explanation» پاراگراف‌کاویِ ۴۹/۵۰ (باز، بدونِ نمونهٔ چاپی)",
+        "reason": "راهنما فقط بارمِ اصولی می‌دهد — الگوی r296-r299"
+      },
+      "receipts": [
+        "نخستین نوبتِ بی‌شنیداریِ خانواده: سربرگِ «(ویژه ناشنوایان)» — ساختار بدونِ هیچ بخشِ شنیداری آغاز می‌شود (واژگان تصویری اولین بخش است)",
+        "پاراگراف‌کاویِ ۴۹/۵۰ — نخستین بار: راهنما Topic (۰/۵) + explanation (۰/۵) + Irrelevant sentence (۰/۵) می‌دهد؛ Topic و Irrelevantِ هر دو پاراگراف چاپی‌اند (چهار آیتمِ playable) و explanation باز است — رسید",
+        "کلیدِ Topicِ ۴۹ در راهنما بدونِ خطِّ تیره چاپ شده («are fast swimming fishes») در برابر بدنهٔ «fast-swimming» — هر دو accepted",
+        "جملهٔ «Tigers live on the ground» در راهنما با چاپِ دوپارهٔ RTL است («Tiger» + «s live on the ground») — هم‌خانوادهٔ لغزش‌های چاپیِ r297 (١٢٩١) و r299 (٠٤)",
+        "ناهماهنگِ یگانهٔ ۱۰/۱۱ — دومین نوبتِ خانواده پس از r295 (دی ۹۸): take care of/look up/care for/look after → look up؛ water/wind/coal/sun → coal",
+        "شکلِ صحیحِ فعل ۲۱-۲۴ با راهنمای چاپیِ درون‌پرانتزی (to find/to forget/to get/to make) — کلیدها: was found/forgets/got/been made؛ «got» شرطیِ نوع دوم (به‌پاسِ would travel)",
+        "ریدینگِ تازهٔ فرهنگ‌لغت/جملهٔ نمونه (۳۹-۴۲): نخستین متنِ ریدینگِ نو در سه نوبتِ شهریور ۹۹ — کلیدِ ۴۱ «The word “truth” usually goes with tell.» و کلیدِ ۴۲ دو واریانتِ You/I",
+        "علامتِ چاپیِ ˝ در بدنهٔ ریدینگِ فرهنگ‌لغت = U+030B (آکسانِ دوتاییِ ترکیبی) — به کلاسِ پاک‌سازیِ نرمال‌ساز افزوده شد (رسیدِ فنی)",
+        "آیتم ۲۹ «line 2» دارد در برابر «line 3» چاپِ سراسری (r299) — یگانه تفاوتِ متنیِ بخش‌های مشترک",
+        "پرسشِ ۴۱ با «؟؟» دوگانهٔ چاپی وفادار ماند",
+        "بانکِ شش‌واژه‌ای با اضافهٔ یگانهٔ forever (r299 چهارتایی با یک اضافه داشت؛ این راند burst/variety نو هستند)",
+        "کلیدِ ۳۸ سه واریانت (washing the dishes/ cleaning the kitchen/ cleaning the room) — عینِ r299",
+        "بخش‌های انتخابی ۱۶/۱۷/۱۸ عینِ r299: تعریف‌ها+ضرب‌المثل‌ها هر دو استخراج، مرتب‌کردنِ هر چهار جمله، غیبتِ ۶۳-۶۷",
+        "متنِ سه ریدینگ (Early humans/Respect/Dictionary) درون‌اپ حمل نشد (الگوی r289-r299) — ساقه‌ها خودبسنده‌اند",
+        "جمعِ نمره ۴۸ — چاپِ سالم (برخلاف «٠٤» برعکس‌شدهٔ r299)"
+      ]
     }
   },
   "lessons": [
@@ -18474,6 +18507,1116 @@
         },
         {
           "id": "g12-fin99sho-ws4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "be / by the teacher / the parents / called / should / .",
+          "options": [
+            "The parents should be called by the teacher."
+          ],
+          "answer": 0,
+          "accepted": [
+            "The parents should be called by the teacher."
+          ],
+          "placeholder": "جملهٔ مرتب‌شده را کامل بنویسید…"
+        }
+      ]
+    },
+    {
+      "lesson": 172,
+      "title": "نهایی ناشنوایان شهریور ۹۹ — واژگان با تصویر: جملهٔ مناسب هر تصویر (ص۲۹۳)",
+      "level": "استاندارد",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g12-fin99shd-pic1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "با توجه به تصاویر داده‌شده، جملهٔ مناسب برای هر تصویر را انتخاب کنید. (یک جمله اضافی است)",
+          "options": [
+            "The mother is hugging her little child.",
+            "My sister often sits in the balcony and studies her lessons.",
+            "The student circled the dictionary entry for the new word.",
+            "Solar panels change solar power into electricity.",
+            "The sofa converts into bed."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g12-fin99shd-pic2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "با توجه به تصاویر داده‌شده، جملهٔ مناسب برای هر تصویر را انتخاب کنید. (یک جمله اضافی است)",
+          "options": [
+            "The mother is hugging her little child.",
+            "My sister often sits in the balcony and studies her lessons.",
+            "The student circled the dictionary entry for the new word.",
+            "Solar panels change solar power into electricity.",
+            "The sofa converts into bed."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g12-fin99shd-pic3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "با توجه به تصاویر داده‌شده، جملهٔ مناسب برای هر تصویر را انتخاب کنید. (یک جمله اضافی است)",
+          "options": [
+            "The mother is hugging her little child.",
+            "My sister often sits in the balcony and studies her lessons.",
+            "The student circled the dictionary entry for the new word.",
+            "Solar panels change solar power into electricity.",
+            "The sofa converts into bed."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g12-fin99shd-pic4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "با توجه به تصاویر داده‌شده، جملهٔ مناسب برای هر تصویر را انتخاب کنید. (یک جمله اضافی است)",
+          "options": [
+            "The mother is hugging her little child.",
+            "My sister often sits in the balcony and studies her lessons.",
+            "The student circled the dictionary entry for the new word.",
+            "Solar panels change solar power into electricity.",
+            "The sofa converts into bed."
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "lesson": 173,
+      "title": "نهایی ناشنوایان شهریور ۹۹ — واژگان: بانک شش‌واژه‌ای، کامل کنید (ص۲۹۳)",
+      "level": "آموزشی — ورود آزاد",
+      "count": 5,
+      "questions": [
+        {
+          "id": "g12-fin99shd-vb1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "We’ll need to --------------- the chairs around the table.",
+          "options": [
+            "repeatedly",
+            "forever",
+            "burst",
+            "demand",
+            "variety",
+            "arrange"
+          ],
+          "answer": 0,
+          "accepted": [
+            "arrange"
+          ],
+          "placeholder": "fill in the blank with the missing word…"
+        },
+        {
+          "id": "g12-fin99shd-vb2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "The --------------- for organic food is increasing these days.",
+          "options": [
+            "repeatedly",
+            "forever",
+            "burst",
+            "demand",
+            "variety",
+            "arrange"
+          ],
+          "answer": 0,
+          "accepted": [
+            "demand"
+          ],
+          "placeholder": "fill in the blank with the missing word…"
+        },
+        {
+          "id": "g12-fin99shd-vb3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "I have told Mohsen --------------- to talk politely to his teacher.",
+          "options": [
+            "repeatedly",
+            "forever",
+            "burst",
+            "demand",
+            "variety",
+            "arrange"
+          ],
+          "answer": 0,
+          "accepted": [
+            "repeatedly"
+          ],
+          "placeholder": "fill in the blank with the missing word…"
+        },
+        {
+          "id": "g12-fin99shd-vb4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Aida --------------- into tears when she saw her score.",
+          "options": [
+            "repeatedly",
+            "forever",
+            "burst",
+            "demand",
+            "variety",
+            "arrange"
+          ],
+          "answer": 0,
+          "accepted": [
+            "burst"
+          ],
+          "placeholder": "fill in the blank with the missing word…"
+        },
+        {
+          "id": "g12-fin99shd-vb5",
+          "n": 5,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "They do a --------------- of fitness activities.",
+          "options": [
+            "repeatedly",
+            "forever",
+            "burst",
+            "demand",
+            "variety",
+            "arrange"
+          ],
+          "answer": 0,
+          "accepted": [
+            "variety"
+          ],
+          "placeholder": "fill in the blank with the missing word…"
+        }
+      ]
+    },
+    {
+      "lesson": 174,
+      "title": "نهایی ناشنوایان شهریور ۹۹ — ناهماهنگِ یگانه: تست (ص۲۹۳)",
+      "level": "استاندارد",
+      "count": 2,
+      "questions": [
+        {
+          "id": "g12-fin99shd-odd1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "کلمهٔ ناهماهنگ با بقیه گزینه‌ها را مشخص کنید.",
+          "options": [
+            "take care of",
+            "look up",
+            "care for",
+            "look after"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g12-fin99shd-odd2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "کلمهٔ ناهماهنگ با بقیه گزینه‌ها را مشخص کنید.",
+          "options": [
+            "water",
+            "wind",
+            "coal",
+            "sun"
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "lesson": 175,
+      "title": "نهایی ناشنوایان شهریور ۹۹ — واژگان: کامل‌کردن از دانش خود (ص۲۹۳)",
+      "level": "آموزشی — ورود آزاد",
+      "count": 3,
+      "questions": [
+        {
+          "id": "g12-fin99shd-ok1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "They have to speak louder, because their grandmother is hard of h --------------- .",
+          "options": [
+            "hearing"
+          ],
+          "answer": 0,
+          "accepted": [
+            "hearing"
+          ],
+          "placeholder": "start with the printed first letter h…"
+        },
+        {
+          "id": "g12-fin99shd-ok2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "There are some free dictionaries for PCs and apps for s --------------- phones.",
+          "options": [
+            "smart"
+          ],
+          "answer": 0,
+          "accepted": [
+            "smart"
+          ],
+          "placeholder": "start with the printed first letter s…"
+        },
+        {
+          "id": "g12-fin99shd-ok3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "We should not build factories near rivers because they p --------------- the rivers.",
+          "options": [
+            "pollute"
+          ],
+          "answer": 0,
+          "accepted": [
+            "pollute"
+          ],
+          "placeholder": "start with the printed first letter p…"
+        }
+      ]
+    },
+    {
+      "lesson": 176,
+      "title": "نهایی ناشنوایان شهریور ۹۹ — گرامر: تست چهارگزینه‌ای (ص۲۹۳-۲۹۴)",
+      "level": "استاندارد",
+      "count": 6,
+      "questions": [
+        {
+          "id": "g12-fin99shd-g1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "They will buy a new house, ---------------?",
+          "options": [
+            "won`t he",
+            "won`t they",
+            "will they",
+            "will he"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g12-fin99shd-g2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "My mother found the keys --------------- I lost last week.",
+          "options": [
+            "when",
+            "whom",
+            "which",
+            "who"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g12-fin99shd-g3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "Hafez --------------- to be as one of the most famous Persian poet of all time.",
+          "options": [
+            "knows",
+            "is known",
+            "knowing",
+            "has known"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g12-fin99shd-g4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "A: What is the problem? B: The windows --------------- by the boys.",
+          "options": [
+            "are breaking",
+            "have broken",
+            "broke",
+            "have been broken"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g12-fin99shd-g5",
+          "n": 5,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "If the old man had his glasses, he --------------- the paper easily.",
+          "options": [
+            "can read",
+            "was reading",
+            "could read",
+            "read"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g12-fin99shd-g6",
+          "n": 6,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "My job has become --------------- difficult because of my illness.",
+          "options": [
+            "increasingly",
+            "increase",
+            "increasing",
+            "increases"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "lesson": 177,
+      "title": "نهایی ناشنوایان شهریور ۹۹ — شکل صحیح فعل با راهنما، بنویسید (ص۲۹۴)",
+      "level": "آموزشی — ورود آزاد",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g12-fin99shd-vf1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "The robber --------------- by the police last week. (to find)",
+          "options": [
+            "was found"
+          ],
+          "answer": 0,
+          "accepted": [
+            "was found"
+          ],
+          "placeholder": "شکل صحیح فعلِ داخل پرانتز را بنویسید…"
+        },
+        {
+          "id": "g12-fin99shd-vf2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Kate --------------- to feed the chickens, doesn`t he? (to forget)",
+          "options": [
+            "forgets"
+          ],
+          "answer": 0,
+          "accepted": [
+            "forgets"
+          ],
+          "placeholder": "شکل صحیح فعلِ داخل پرانتز را بنویسید…"
+        },
+        {
+          "id": "g12-fin99shd-vf3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "If it --------------- warmer, they would travel to the north. (to get)",
+          "options": [
+            "got"
+          ],
+          "answer": 0,
+          "accepted": [
+            "got"
+          ],
+          "placeholder": "شکل صحیح فعلِ داخل پرانتز را بنویسید…"
+        },
+        {
+          "id": "g12-fin99shd-vf4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "A new medicine has --------------- by doctors to cure cancer. (to make)",
+          "options": [
+            "been made"
+          ],
+          "answer": 0,
+          "accepted": [
+            "been made"
+          ],
+          "placeholder": "شکل صحیح فعلِ داخل پرانتز را بنویسید…"
+        }
+      ]
+    },
+    {
+      "lesson": 178,
+      "title": "نهایی ناشنوایان شهریور ۹۹ — ضمیر موصولی و شرطی، بنویسید (ص۲۹۴)",
+      "level": "آموزشی — ورود آزاد",
+      "count": 2,
+      "questions": [
+        {
+          "id": "g12-fin99shd-rel1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "A cheetah is an animal --------------- .",
+          "options": [
+            "which"
+          ],
+          "answer": 0,
+          "accepted": [
+            "which"
+          ],
+          "placeholder": "با which + یک جملهٔ دارای فعل کامل کنید…"
+        },
+        {
+          "id": "g12-fin99shd-cond1",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "If I had wings, I --------------- .",
+          "options": [
+            "would"
+          ],
+          "answer": 0,
+          "accepted": [
+            "would",
+            "could",
+            "might"
+          ],
+          "placeholder": "با would/could/might + جمله ادامه دهید…"
+        }
+      ]
+    },
+    {
+      "lesson": 179,
+      "title": "نهایی ناشنوایان شهریور ۹۹ — ریدینگ انسان‌های اولیه: درست/نادرست + تست (ص۲۹۴-۲۹۵)",
+      "level": "استاندارد",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g12-fin99shd-r1tf1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "Early humans killed the animals and ate them as their food.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g12-fin99shd-r1tf2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "Early humans discovered how to make fire.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g12-fin99shd-r1m1",
+          "n": 3,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "What does “they” in line 2 refer to?",
+          "options": [
+            "environments",
+            "humans",
+            "fires",
+            "animals"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g12-fin99shd-r1m2",
+          "n": 4,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "What is this passage mostly about? It is about --------------- .",
+          "options": [
+            "how animals were hunted",
+            "the plants early humans ate",
+            "how to make fire",
+            "the life of early humans"
+          ],
+          "answer": 3
+        }
+      ]
+    },
+    {
+      "lesson": 180,
+      "title": "نهایی ناشنوایان شهریور ۹۹ — ریدینگ انسان‌های اولیه: کامل کنید (ص۲۹۵)",
+      "level": "آموزشی — ورود آزاد",
+      "count": 2,
+      "questions": [
+        {
+          "id": "g12-fin99shd-r1c1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Fire provided the --------------- for cooking plants which were not eaten before.",
+          "options": [
+            "means"
+          ],
+          "answer": 0,
+          "accepted": [
+            "means"
+          ],
+          "placeholder": "fill in the blank with the missing word…"
+        },
+        {
+          "id": "g12-fin99shd-r1c2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Finally, early humans began to follow other goals such as --------------- the cities.",
+          "options": [
+            "founding"
+          ],
+          "answer": 0,
+          "accepted": [
+            "founding"
+          ],
+          "placeholder": "fill in the blank with the missing word…"
+        }
+      ]
+    },
+    {
+      "lesson": 181,
+      "title": "نهایی ناشنوایان شهریور ۹۹ — ریدینگ احترام: درست/نادرست + تست (ص۲۹۵)",
+      "level": "استاندارد",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g12-fin99shd-r2tf1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "We respect those who are important to us for some reasons.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g12-fin99shd-r2tf2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "If you are impolite or act badly toward people, they feel important.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g12-fin99shd-r2m1",
+          "n": 3,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "We show our --------------- by being polite to those we care for.",
+          "options": [
+            "need",
+            "strength",
+            "happiness",
+            "respect"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g12-fin99shd-r2m2",
+          "n": 4,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "Telling your parents that you thank them --------------- the level of your respect for them.",
+          "options": [
+            "reflects",
+            "invents",
+            "imagines",
+            "shouts"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "lesson": 182,
+      "title": "نهایی ناشنوایان شهریور ۹۹ — ریدینگ احترام: پرسش پاسخ (ص۲۹۵)",
+      "level": "آموزشی — ورود آزاد",
+      "count": 2,
+      "questions": [
+        {
+          "id": "g12-fin99shd-r2q1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "What is the easiest way to show your love and respect to your parents?",
+          "options": [
+            "The easiest way to show your love and respect is to tell them that you appreciate who they are and what they do."
+          ],
+          "answer": 0,
+          "accepted": [
+            "The easiest way to show your love and respect is to tell them that you appreciate who they are and what they do."
+          ],
+          "placeholder": "answer with a full sentence…"
+        },
+        {
+          "id": "g12-fin99shd-r2q2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Can doing good small things show your respect to your parents? (Give an example).",
+          "options": [
+            "Yes, it can, for example, washing the dishes."
+          ],
+          "answer": 0,
+          "accepted": [
+            "Yes, it can, for example, washing the dishes.",
+            "Yes, it can, for example, cleaning the kitchen.",
+            "Yes, it can, for example, cleaning the room."
+          ],
+          "placeholder": "answer with a full sentence…"
+        }
+      ]
+    },
+    {
+      "lesson": 183,
+      "title": "نهایی ناشنوایان شهریور ۹۹ — ریدینگ فرهنگ‌لغت: درست/نادرست (ص۲۹۵-۲۹۶)",
+      "level": "استاندارد",
+      "count": 2,
+      "questions": [
+        {
+          "id": "g12-fin99shd-r3tf1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "You can see the new word in its example sentence.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g12-fin99shd-r3tf2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "Definitions sometimes give you grammatical information.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "lesson": 184,
+      "title": "نهایی ناشنوایان شهریور ۹۹ — ریدینگ فرهنگ‌لغت: پرسش پاسخ (ص۲۹۶)",
+      "level": "آموزشی — ورود آزاد",
+      "count": 2,
+      "questions": [
+        {
+          "id": "g12-fin99shd-r3q1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "What does the word “truth” usually go with??",
+          "options": [
+            "The word “truth” usually goes with tell."
+          ],
+          "answer": 0,
+          "accepted": [
+            "The word “truth” usually goes with tell."
+          ],
+          "placeholder": "answer with a full sentence…"
+        },
+        {
+          "id": "g12-fin99shd-r3q2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "How can you make your own sentences more natural?",
+          "options": [
+            "You can easily copy them to make your own sentences seem more natural."
+          ],
+          "answer": 0,
+          "accepted": [
+            "You can easily copy them to make your own sentences seem more natural.",
+            "I can easily copy them to make my own sentences seem more natural."
+          ],
+          "placeholder": "answer with a full sentence…"
+        }
+      ]
+    },
+    {
+      "lesson": 185,
+      "title": "نهایی ناشنوایان شهریور ۹۹ — کلمات ربط، کامل کنید (ص۲۹۶)",
+      "level": "آموزشی — ورود آزاد",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g12-fin99shd-conn1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "I get up early in the morning, --------------- I make an omelet myself.",
+          "options": [
+            "but",
+            "and",
+            "so",
+            "or"
+          ],
+          "answer": 0,
+          "accepted": [
+            "and"
+          ],
+          "placeholder": "fill in the blank with a connective…"
+        },
+        {
+          "id": "g12-fin99shd-conn2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "We can eat our lunch at the restaurant, --------------- we can have it at home.",
+          "options": [
+            "but",
+            "and",
+            "so",
+            "or"
+          ],
+          "answer": 0,
+          "accepted": [
+            "or"
+          ],
+          "placeholder": "fill in the blank with a connective…"
+        },
+        {
+          "id": "g12-fin99shd-conn3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "They wanted to call you, --------------- they did not have your phone number.",
+          "options": [
+            "but",
+            "and",
+            "so",
+            "or"
+          ],
+          "answer": 0,
+          "accepted": [
+            "but"
+          ],
+          "placeholder": "fill in the blank with a connective…"
+        },
+        {
+          "id": "g12-fin99shd-conn4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "That dictionary is expensive, --------------- I can’t buy it.",
+          "options": [
+            "but",
+            "and",
+            "so",
+            "or"
+          ],
+          "answer": 0,
+          "accepted": [
+            "so"
+          ],
+          "placeholder": "fill in the blank with a connective…"
+        }
+      ]
+    },
+    {
+      "lesson": 186,
+      "title": "نهایی ناشنوایان شهریور ۹۹ — جملهٔ مرکب با کلمهٔ ربط، بنویسید (ص۲۹۶)",
+      "level": "آموزشی — ورود آزاد",
+      "count": 1,
+      "questions": [
+        {
+          "id": "g12-fin99shd-cc1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Saeed studied hard for the exam, --------------- .",
+          "options": [
+            "so he passed it."
+          ],
+          "answer": 0,
+          "accepted": [
+            "so he passed it."
+          ],
+          "placeholder": "با یکی از کلمات ربط جملهٔ مرکب معنادار بسازید…"
+        }
+      ]
+    },
+    {
+      "lesson": 187,
+      "title": "نهایی ناشنوایان شهریور ۹۹ — پاراگراف‌کاوی: آغازین و نامربوط، بنویسید (ص۲۹۶)",
+      "level": "آموزشی — ورود آزاد",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g12-fin99shd-pa1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "جملهٔ آغازین (Topic) پاراگراف A کوسه‌ها را بنویسید.",
+          "options": [
+            "Sharks are fast-swimming fishes."
+          ],
+          "answer": 0,
+          "accepted": [
+            "Sharks are fast-swimming fishes.",
+            "Sharks are fast swimming fishes."
+          ],
+          "placeholder": "جملهٔ آغازینِ پاراگراف را کامل بنویسید…"
+        },
+        {
+          "id": "g12-fin99shd-pa2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "جملهٔ نامربوط (Irrelevant) پاراگراف A کوسه‌ها را بنویسید.",
+          "options": [
+            "Tigers live on the ground, and in the trees."
+          ],
+          "answer": 0,
+          "accepted": [
+            "Tigers live on the ground, and in the trees."
+          ],
+          "placeholder": "جمله‌ای که به موضوعِ پاراگراف مربوط نیست را کامل بنویسید…"
+        },
+        {
+          "id": "g12-fin99shd-pa3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "جملهٔ آغازین (Topic) پاراگراف B ستارگان را بنویسید.",
+          "options": [
+            "The stars are tiny points of light in the space."
+          ],
+          "answer": 0,
+          "accepted": [
+            "The stars are tiny points of light in the space."
+          ],
+          "placeholder": "جملهٔ آغازینِ پاراگراف را کامل بنویسید…"
+        },
+        {
+          "id": "g12-fin99shd-pa4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "جملهٔ نامربوط (Irrelevant) پاراگراف B ستارگان را بنویسید.",
+          "options": [
+            "We live on the Earth."
+          ],
+          "answer": 0,
+          "accepted": [
+            "We live on the Earth."
+          ],
+          "placeholder": "جمله‌ای که به موضوعِ پاراگراف مربوط نیست را کامل بنویسید…"
+        }
+      ]
+    },
+    {
+      "lesson": 188,
+      "title": "نهایی ناشنوایان شهریور ۹۹ — واژگان: تعریف‌های ستون B، بخش الف (ص۲۹۷)",
+      "level": "استاندارد",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g12-fin99shd-defb1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "I have kept a diary for twelve years.",
+          "options": [
+            "to take something in, especially gradually",
+            "cry suddenly",
+            "a book in which you record your thoughts or feelings or what has happened every day",
+            "to suddenly decide to do something",
+            "to finish something"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g12-fin99shd-defb2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "Plants absorb carbon dioxide.",
+          "options": [
+            "to take something in, especially gradually",
+            "cry suddenly",
+            "a book in which you record your thoughts or feelings or what has happened every day",
+            "to suddenly decide to do something",
+            "to finish something"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g12-fin99shd-defb3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "I did not read the introduction and jumped into the next part.",
+          "options": [
+            "to take something in, especially gradually",
+            "cry suddenly",
+            "a book in which you record your thoughts or feelings or what has happened every day",
+            "to suddenly decide to do something",
+            "to finish something"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g12-fin99shd-defb4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "Don’t use up all the milk - we need some for breakfast.",
+          "options": [
+            "to take something in, especially gradually",
+            "cry suddenly",
+            "a book in which you record your thoughts or feelings or what has happened every day",
+            "to suddenly decide to do something",
+            "to finish something"
+          ],
+          "answer": 4
+        }
+      ]
+    },
+    {
+      "lesson": 189,
+      "title": "نهایی ناشنوایان شهریور ۹۹ — ضرب‌المثل‌ها: ستون B، بخش ب (ص۲۹۷)",
+      "level": "استاندارد",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g12-fin99shd-prvb1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "Out of sight, out of mind",
+          "options": [
+            "When you get money quickly, like by winning it, it’s easy to spend it or lose it quickly as well.",
+            "When two people cooperate with each other, they come up with better ideas.",
+            "You have to practice a skill a lot to become good at it.",
+            "People like to spend time with those who are similar to them.",
+            "You soon forget people or things that are no longer visible or present."
+          ],
+          "answer": 4
+        },
+        {
+          "id": "g12-fin99shd-prvb2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "Practice makes perfect",
+          "options": [
+            "When you get money quickly, like by winning it, it’s easy to spend it or lose it quickly as well.",
+            "When two people cooperate with each other, they come up with better ideas.",
+            "You have to practice a skill a lot to become good at it.",
+            "People like to spend time with those who are similar to them.",
+            "You soon forget people or things that are no longer visible or present."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g12-fin99shd-prvb3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "Easy come, easy go",
+          "options": [
+            "When you get money quickly, like by winning it, it’s easy to spend it or lose it quickly as well.",
+            "When two people cooperate with each other, they come up with better ideas.",
+            "You have to practice a skill a lot to become good at it.",
+            "People like to spend time with those who are similar to them.",
+            "You soon forget people or things that are no longer visible or present."
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g12-fin99shd-prvb4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "Two heads are better than one",
+          "options": [
+            "When you get money quickly, like by winning it, it’s easy to spend it or lose it quickly as well.",
+            "When two people cooperate with each other, they come up with better ideas.",
+            "You have to practice a skill a lot to become good at it.",
+            "People like to spend time with those who are similar to them.",
+            "You soon forget people or things that are no longer visible or present."
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "lesson": 190,
+      "title": "نهایی ناشنوایان شهریور ۹۹ — مرتب‌کردن کلمات، بنویسید (ص۲۹۷)",
+      "level": "آموزشی — ورود آزاد",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g12-fin99shd-ws1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "work / some workers / who / and teachers / in the village / there are / .",
+          "options": [
+            "There are some workers and teachers who work in the village."
+          ],
+          "answer": 0,
+          "accepted": [
+            "There are some workers and teachers who work in the village."
+          ],
+          "placeholder": "جملهٔ مرتب‌شده را کامل بنویسید…"
+        },
+        {
+          "id": "g12-fin99shd-ws2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "wrote / didn’t / a letter / the girl / she / , / ?",
+          "options": [
+            "The girl wrote a letter, didn`t she?"
+          ],
+          "answer": 0,
+          "accepted": [
+            "The girl wrote a letter, didn`t she?"
+          ],
+          "placeholder": "جملهٔ مرتب‌شده را کامل بنویسید…"
+        },
+        {
+          "id": "g12-fin99shd-ws3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "because / hadn’t rained / everything in the garden / it / was brown / .",
+          "options": [
+            "Everything in the garden was brown because it hadn`t rained."
+          ],
+          "answer": 0,
+          "accepted": [
+            "Everything in the garden was brown because it hadn`t rained."
+          ],
+          "placeholder": "جملهٔ مرتب‌شده را کامل بنویسید…"
+        },
+        {
+          "id": "g12-fin99shd-ws4",
           "n": 4,
           "category": "grammar",
           "kind": "typed",
