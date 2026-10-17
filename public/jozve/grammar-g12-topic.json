@@ -1168,6 +1168,35 @@
         "هم‌موضوع‌های Vision 3: مکالمهٔ باشگاه (ورزش‌های سالم) و ریدینگ‌های انرژی خورشیدی/نوجوانان — محتوای خانواده‌تازه؛ هیچ ساقه‌ای از نوبت‌های پیشین کپی نشده (یکتاییِ ۱۲۸۳ شناسه)",
         "پنج دکمهٔ شنیداری با فایلِ صوتیِ غایب — الگوی r292-r301 (ساقه‌های چاپیِ شنیداری قابلِ بازی‌اند، فایل نه)"
       ]
+    },
+    "final1400khh": {
+      "pages": "315-319",
+      "keyPages": "320-321",
+      "titlePrinted": "آزمون نهایی انگلیسی دوازدهم — نوبت خرداد ماه سال ۱۴۰۰، رسمیِ سراسریِ رشتهٔ ادبیات و علوم انسانی-علوم و معارف اسلامی، مرکز سنجش و پایش کیفیت آموزشی (aee.medu.ir)، تاریخ ۱۸/۰۳/۱۴۰۰، ۵ صفحه، جمع نمره ۴۰ — دوازدهمین نوبتِ خانواده، چهارمین نوبتِ منبعِ رسمی و واریانتِ رشته‌ایِ خرداد ۱۴۰۰ (جفتِ r302)",
+      "sections": 19,
+      "banks": 20,
+      "questions": 56,
+      "keys": 56,
+      "extractedRound": 303,
+      "branchVariant": "دوازدهمین نوبتِ خانواده — واریانتِ انسانیِ خرداد ۱۴۰۰ (جفتِ رشته‌ایِ r302، عینِ الگوی جفتِ r296/r297): کلیدِ ۵۶ از ۵۷ (فقط ۵۷ پاراگرافِ Forests بارمِ اصولی) + تمامِ شنیداریِ قابلِ بازی (۱۵ آیتم) + دومین بانکِ شنیداریِ سه‌گزینه‌ای (۴-۷: a/b/c) + سومین مرتب‌کردنِ شش‌جمله‌ای (d/a/c/b/f/e) + کلیدِ نیمه‌جمله‌ایِ ۵۰ با or (استخرِ پرانتزیِ but/so/or) + اضافهٔ نخست‌جایِ (a) در تصویری و تعریف‌ها.",
+      "audioFilesAbsent": true,
+      "openWritingAbsent": {
+        "items": "۵۷ (پاراگرافِ Forests با داده‌های چاپی Natural home of animals / Source of fresh air / Source of necessary things for man)",
+        "reason": "راهنما فقط بارمِ اصولیِ «رعایت اصول پاراگراف‌نویسی» می‌دهد — الگوی r296-r302"
+      },
+      "receipts": [
+        "جفتِ رشته‌ایِ یک تاریخ: r302 (ریاضی-تجربی، ۱۹/۰۳/۱۴۰۰) و این راند (انسانی، ۱۸/۰۳/۱۴۰۰) — دو آزمونِ مستقل با محتوای متفاوت؛ الگوی r296/r297 تکرار شد",
+        "نزدیک‌ترین پوششِ کلید برای دومین نوبتِ متوالی: ۵۶ از ۵۷ (فقط Forests بارمِ اصولی) — پس از r302",
+        "تمامِ شنیداریِ قابلِ بازی: پرسشِ پاسخِ زهره/مریم (a/b + sister)، رستورانِ سه‌گزینه‌ایِ شیلا/سمیرا (b/c/b/a)، فرهنگ‌لغتِ عسدی طوسی (famous/final/taken/lived) و سعادت‌زاده (b/a/b/a)",
+        "متنِ سومِ فرهنگ‌لغت‌محور در خانوادهٔ موضوعی هفدهم: عسدی طوسی (لغت‌نامهٔ فارسی)، راهنمای فرهنگ‌لغت (Guide Words/Definitions/Collocations) و تعریفِ فرهنگ‌لغتِ r301-r302 — موضوعِ محبوبِ خرداد ۱۴۰۰",
+        "سومین مرتب‌کردنِ شش‌جمله‌ای: پاراگراف مورچه‌ها (۵۱-۵۶) با کلیدِ d/a/c/b/f/e — راهنما حرفِ هر جایگاه را جداگانه چاپ کرده (51(d)/52(a)/53(c)/54(b)/55(f)/56(e))",
+        "کلیدِ نیمه‌جمله‌ایِ ۵۰: «…..or you should wash the dishes.» — نخستین کلیدِ نیمه‌جمله‌ایِ خانواده با or (r302 با but بود)؛ استخرِ پرانتزیِ بدنه سه‌گزینه‌ایِ (but, so, or) است نه چهارتایی",
+        "اضافه‌ها در سه بانک با جایگاه‌های متمایز: تصویری (a) نخست (Iran is rich in oil resources)، تعریف‌های ستون B (a) نخست (cry suddenly)، بانکِ چهارتایی effectively در جای آخر — r302 تصویری‌اش (b) دوم بود",
+        "گریدِ ۳۳ عینِ تمرینِ چاپیِ r301-ws2 (John could fix the car if he were at home) و گریدِ ۳۲ هم‌خانوادهٔ r301-ws1 با سوژهٔ Roya — بازاستفادهِ عمدیِ خانواده از تمرین‌های کتاب (درسِ r299: گاردِ ساقه‌محورِ راندهای قدیمی به دورهٔ خودشان محدود است)؛ یکتاییِ ۱۳۳۹ شناسه حاکم",
+        "وفاداری‌های چاپی: «in some of countries» (۴۶)، «Easy c - - , easy go» با شکافِ حرفی، «find sweet lying on the floor» بدونِ حرفِ تعریف، آیتمِ ۳۸ با نقطه‌چینِ چاپیِ پاسخ، «13.True» بدونِ فاصله در راهنما",
+        "سربرگِ رسمی با رشتهٔ محدودِ «ادبیات و علوم انسانی-علوم و معارف اسلامی» — جفتِ «ریاضی-فیزیک و علوم تجربی»ی r302",
+        "پنج دکمهٔ شنیداری با فایلِ صوتیِ غایب — الگوی r292-r302 (ساقه‌های چاپیِ شنیداری قابلِ بازی‌اند، فایل نه)"
+      ]
     }
   },
   "lessons": [
@@ -21680,6 +21709,967 @@
           "answer": 0,
           "accepted": [
             "In short, communication can depend on technology."
+          ],
+          "placeholder": "جملهٔ پاراگراف را کامل بنویسید…"
+        }
+      ]
+    },
+    {
+      "lesson": 228,
+      "title": "نهایی سراسری خرداد ۱۴۰۰ انسانی — شنیداری فایل ۱: درست/نادرست + کامل کنید (ص۳۱۵)",
+      "level": "آموزشی — ورود آزاد",
+      "count": 3,
+      "questions": [
+        {
+          "id": "g12-fin1400khh-l1tf1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "Zohreh has invited everyone but Mina.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g12-fin1400khh-l1tf2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "Zohreh and Mina were not close friends at school.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g12-fin1400khh-l1q1",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Maryam could check Mina’s address with her --------------- because she is her mother’s friend.",
+          "options": [
+            "sister"
+          ],
+          "answer": 0,
+          "accepted": [
+            "sister"
+          ],
+          "placeholder": "fill in the blank with the missing word…"
+        }
+      ]
+    },
+    {
+      "lesson": 229,
+      "title": "نهایی سراسری خرداد ۱۴۰۰ انسانی — شنیداری فایل ۲: تست (ص۳۱۵)",
+      "level": "استاندارد",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g12-fin1400khh-l2m1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "Yeganeh and Kiana came over for dinner on --------------- .",
+          "options": [
+            "Monday",
+            "Thursday",
+            "Saturday"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g12-fin1400khh-l2m2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "Samira wanted to go to the Museum of --------------- .",
+          "options": [
+            "Modern Art",
+            "Holy shrine",
+            "Holy Defense"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g12-fin1400khh-l2m3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "Before they got home, they had gone to the --------------- .",
+          "options": [
+            "park",
+            "museum",
+            "restaurant"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g12-fin1400khh-l2m4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "After dinner, their mothers arrived and took them --------------- .",
+          "options": [
+            "home",
+            "to school",
+            "to the museum"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "lesson": 230,
+      "title": "نهایی سراسری خرداد ۱۴۰۰ انسانی — شنیداری فایل ۳: متن فرهنگ‌لغت عسدی طوسی، کامل کنید (ص۳۱۵)",
+      "level": "آموزشی — ورود آزاد",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g12-fin1400khh-l3q1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Asadi Tusi was a …… (8)……--------------- poet in the 5th century.",
+          "options": [
+            "famous"
+          ],
+          "answer": 0,
+          "accepted": [
+            "famous"
+          ],
+          "placeholder": "fill in the blank with the missing word…"
+        },
+        {
+          "id": "g12-fin1400khh-l3q2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "In this dictionary, the list of entries has been arranged according to the……(9)……--------------- letters of the words.",
+          "options": [
+            "final"
+          ],
+          "answer": 0,
+          "accepted": [
+            "final"
+          ],
+          "placeholder": "fill in the blank with the missing word…"
+        },
+        {
+          "id": "g12-fin1400khh-l3q3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "This dictionary has many sentences which were ……(10)……--------------- from poetry.",
+          "options": [
+            "taken"
+          ],
+          "answer": 0,
+          "accepted": [
+            "taken"
+          ],
+          "placeholder": "fill in the blank with the missing word…"
+        },
+        {
+          "id": "g12-fin1400khh-l3q4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "This dictionary has been used by the poets who ……(11)……..--------------- after Asadi Tusi.",
+          "options": [
+            "lived"
+          ],
+          "answer": 0,
+          "accepted": [
+            "lived"
+          ],
+          "placeholder": "fill in the blank with the missing word…"
+        }
+      ]
+    },
+    {
+      "lesson": 231,
+      "title": "نهایی سراسری خرداد ۱۴۰۰ انسانی — شنیداری فایل ۴: درست/نادرست (ص۳۱۵)",
+      "level": "استاندارد",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g12-fin1400khh-l4tf1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "Tahereh Saffarzadeh was born in Shiraz.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g12-fin1400khh-l4tf2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "She learned reading and reciting the Holy Quran at the age of 6.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g12-fin1400khh-l4tf3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "When she was a young student, she didn’t write poems.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g12-fin1400khh-l4tf4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "She published the translation of Holy Quran in 1380.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "lesson": 232,
+      "title": "نهایی سراسری خرداد ۱۴۰۰ انسانی — واژگان با تصویر: جملهٔ مناسب هر تصویر (ص۳۱۶)",
+      "level": "استاندارد",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g12-fin1400khh-pic1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "با توجه به تصاویر داده‌شده، جملهٔ مناسب برای هر تصویر را انتخاب کنید. (یک جمله اضافی است)",
+          "options": [
+            "Iran is rich in oil resources.",
+            "My uncle often sits in the balcony, has a cup of coffee and reads a book.",
+            "Try to avoid foods that contain a lot of fat.",
+            "Dad really shouted at me when I didn’t pass the exam.",
+            "Wind turbines are used to produce electricity from wind power."
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g12-fin1400khh-pic2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "با توجه به تصاویر داده‌شده، جملهٔ مناسب برای هر تصویر را انتخاب کنید. (یک جمله اضافی است)",
+          "options": [
+            "Iran is rich in oil resources.",
+            "My uncle often sits in the balcony, has a cup of coffee and reads a book.",
+            "Try to avoid foods that contain a lot of fat.",
+            "Dad really shouted at me when I didn’t pass the exam.",
+            "Wind turbines are used to produce electricity from wind power."
+          ],
+          "answer": 4
+        },
+        {
+          "id": "g12-fin1400khh-pic3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "با توجه به تصاویر داده‌شده، جملهٔ مناسب برای هر تصویر را انتخاب کنید. (یک جمله اضافی است)",
+          "options": [
+            "Iran is rich in oil resources.",
+            "My uncle often sits in the balcony, has a cup of coffee and reads a book.",
+            "Try to avoid foods that contain a lot of fat.",
+            "Dad really shouted at me when I didn’t pass the exam.",
+            "Wind turbines are used to produce electricity from wind power."
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g12-fin1400khh-pic4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "با توجه به تصاویر داده‌شده، جملهٔ مناسب برای هر تصویر را انتخاب کنید. (یک جمله اضافی است)",
+          "options": [
+            "Iran is rich in oil resources.",
+            "My uncle often sits in the balcony, has a cup of coffee and reads a book.",
+            "Try to avoid foods that contain a lot of fat.",
+            "Dad really shouted at me when I didn’t pass the exam.",
+            "Wind turbines are used to produce electricity from wind power."
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "lesson": 233,
+      "title": "نهایی سراسری خرداد ۱۴۰۰ انسانی — واژگان: جای خالی از بانک (ص۳۱۶)",
+      "level": "آموزشی — ورود آزاد",
+      "count": 3,
+      "questions": [
+        {
+          "id": "g12-fin1400khh-pool1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Plants --------------- carbon dioxide.",
+          "options": [
+            "hugged",
+            "introduction",
+            "absorb",
+            "effectively"
+          ],
+          "answer": 0,
+          "accepted": [
+            "absorb"
+          ],
+          "placeholder": "fill in the blank with the missing word…"
+        },
+        {
+          "id": "g12-fin1400khh-pool2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "This book has only a two-page --------------- .",
+          "options": [
+            "hugged",
+            "introduction",
+            "absorb",
+            "effectively"
+          ],
+          "answer": 0,
+          "accepted": [
+            "introduction"
+          ],
+          "placeholder": "fill in the blank with the missing word…"
+        },
+        {
+          "id": "g12-fin1400khh-pool3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "My uncle went to his son and --------------- him.",
+          "options": [
+            "hugged",
+            "introduction",
+            "absorb",
+            "effectively"
+          ],
+          "answer": 0,
+          "accepted": [
+            "hugged"
+          ],
+          "placeholder": "fill in the blank with the missing word…"
+        }
+      ]
+    },
+    {
+      "lesson": 234,
+      "title": "نهایی سراسری خرداد ۱۴۰۰ انسانی — واژگان: تعریف‌های ستون B (ص۳۱۶)",
+      "level": "استاندارد",
+      "count": 3,
+      "questions": [
+        {
+          "id": "g12-fin1400khh-def1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "He always speaks slowly and calmly.",
+          "options": [
+            "cry suddenly",
+            "for all time",
+            "the rise and fall of the sea",
+            "in a quiet way"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g12-fin1400khh-def2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "Here you can see two high and two low tides each day.",
+          "options": [
+            "cry suddenly",
+            "for all time",
+            "the rise and fall of the sea",
+            "in a quiet way"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g12-fin1400khh-def3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "No one can live forever.",
+          "options": [
+            "cry suddenly",
+            "for all time",
+            "the rise and fall of the sea",
+            "in a quiet way"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "lesson": 235,
+      "title": "نهایی سراسری خرداد ۱۴۰۰ انسانی — واژگان: کامل‌کردن از دانش خود (ص۳۱۶)",
+      "level": "آموزشی — ورود آزاد",
+      "count": 1,
+      "questions": [
+        {
+          "id": "g12-fin1400khh-ok1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "A: When you get money quickly, it’s easy to spend it or lose it quickly as well. B: You know that “Easy c --------------- , easy go”.",
+          "options": [
+            "come"
+          ],
+          "answer": 0,
+          "accepted": [
+            "come"
+          ],
+          "placeholder": "start with the printed first letter c…"
+        }
+      ]
+    },
+    {
+      "lesson": 236,
+      "title": "نهایی سراسری خرداد ۱۴۰۰ انسانی — گرامر: تست چهارگزینه‌ای (ص۳۱۷)",
+      "level": "استاندارد",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g12-fin1400khh-g1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "They invited you to their party, --------------- ?",
+          "options": [
+            "do they",
+            "didn’t we",
+            "didn’t they",
+            "don’t you"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g12-fin1400khh-g2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "A: What did the students want to do? B: They wanted to talk to the teacher --------------- Ali met before.",
+          "options": [
+            "whom",
+            "when",
+            "where",
+            "which"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g12-fin1400khh-g3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "I --------------- lunch before I went out.",
+          "options": [
+            "am eating",
+            "will eat",
+            "had eaten",
+            "eat"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g12-fin1400khh-g4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "A: How can we have better streets? B: The traffic rules --------------- by everyone.",
+          "options": [
+            "may obey",
+            "must be obeyed",
+            "obeyed",
+            "has obeyed"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "lesson": 237,
+      "title": "نهایی سراسری خرداد ۱۴۰۰ انسانی — شکل صحیح فعل، بنویسید (ص۳۱۷)",
+      "level": "آموزشی — ورود آزاد",
+      "count": 1,
+      "questions": [
+        {
+          "id": "g12-fin1400khh-vf1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "The window --------------- by that boy yesterday. (break)",
+          "options": [
+            "was broken"
+          ],
+          "answer": 0,
+          "accepted": [
+            "was broken"
+          ],
+          "placeholder": "شکل صحیح فعلِ داخل پرانتز را بنویسید…"
+        }
+      ]
+    },
+    {
+      "lesson": 238,
+      "title": "نهایی سراسری خرداد ۱۴۰۰ انسانی — مرتب‌کردن کلمات، بنویسید (ص۳۱۷)",
+      "level": "آموزشی — ورود آزاد",
+      "count": 2,
+      "questions": [
+        {
+          "id": "g12-fin1400khh-ws1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "had gotten/ was upset/ because/ a bad score/ she/ Roya /. /",
+          "options": [
+            "Roya was upset because she had gotten a bad score."
+          ],
+          "answer": 0,
+          "accepted": [
+            "Roya was upset because she had gotten a bad score."
+          ],
+          "placeholder": "جملهٔ مرتب‌شده را کامل بنویسید…"
+        },
+        {
+          "id": "g12-fin1400khh-ws2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "the car / were at home /if / he / could fix/ John  /. /",
+          "options": [
+            "John could fix the car if he were at home."
+          ],
+          "answer": 0,
+          "accepted": [
+            "John could fix the car if he were at home."
+          ],
+          "placeholder": "جملهٔ مرتب‌شده را کامل بنویسید…"
+        }
+      ]
+    },
+    {
+      "lesson": 239,
+      "title": "نهایی سراسری خرداد ۱۴۰۰ انسانی — ضمیر موصولی، کامل کنید (ص۳۱۷)",
+      "level": "آموزشی — ورود آزاد",
+      "count": 1,
+      "questions": [
+        {
+          "id": "g12-fin1400khh-rel1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "An ostrich is a bird …………………………………. .",
+          "options": [
+            "which"
+          ],
+          "answer": 0,
+          "accepted": [
+            "which"
+          ],
+          "placeholder": "which را به همراه یک جمله یا عبارت دارای فعل ادامه دهید…"
+        }
+      ]
+    },
+    {
+      "lesson": 240,
+      "title": "نهایی سراسری خرداد ۱۴۰۰ انسانی — ریدینگ احترام به بزرگ‌ترها: درست/نادرست + تست (ص۳۱۷)",
+      "level": "استاندارد",
+      "count": 3,
+      "questions": [
+        {
+          "id": "g12-fin1400khh-r1tf1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "It is important to remember that elders were not born elders.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g12-fin1400khh-r1tf2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "The passage says that elders have nothing to share with us.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g12-fin1400khh-r1m1",
+          "n": 3,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "What does “they” in the third line of paragraph 2 refer to?",
+          "options": [
+            "future generations",
+            "parents",
+            "teachers",
+            "lives"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "lesson": 241,
+      "title": "نهایی سراسری خرداد ۱۴۰۰ انسانی — ریدینگ احترام به بزرگ‌ترها: پرسش پاسخ (ص۳۱۸)",
+      "level": "آموزشی — ورود آزاد",
+      "count": 1,
+      "questions": [
+        {
+          "id": "g12-fin1400khh-r1q1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "How do elders feel when we appreciate their love? ……………………………… .",
+          "options": [
+            "They feel honored."
+          ],
+          "answer": 0,
+          "accepted": [
+            "They feel honored."
+          ],
+          "placeholder": "answer with a full sentence…"
+        }
+      ]
+    },
+    {
+      "lesson": 242,
+      "title": "نهایی سراسری خرداد ۱۴۰۰ انسانی — ریدینگ راهنمای فرهنگ‌لغت: درست/نادرست + تست (ص۳۱۸)",
+      "level": "استاندارد",
+      "count": 3,
+      "questions": [
+        {
+          "id": "g12-fin1400khh-r2tf1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "The passage says that good dictionaries give information about how to buy a dictionary.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g12-fin1400khh-r2tf2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "It is necessary to know how to use a dictionary.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g12-fin1400khh-r2m1",
+          "n": 3,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "According to the passage, --------------- are the two words at the top of each page that show the first and last entries on the page.",
+          "options": [
+            "definitions",
+            "guide words",
+            "pronunciations",
+            "spellings"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "lesson": 243,
+      "title": "نهایی سراسری خرداد ۱۴۰۰ انسانی — ریدینگ راهنمای فرهنگ‌لغت: کامل کنید (ص۳۱۸)",
+      "level": "آموزشی — ورود آزاد",
+      "count": 2,
+      "questions": [
+        {
+          "id": "g12-fin1400khh-r2c1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "When you find a/an --------------- , you can find the exact meaning of the word, pronunciation, part of speech and many other things.",
+          "options": [
+            "entry"
+          ],
+          "answer": 0,
+          "accepted": [
+            "entry"
+          ],
+          "placeholder": "fill in the blank with the missing word…"
+        },
+        {
+          "id": "g12-fin1400khh-r2c2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "The passage says that you should try to learn --------------- to expand your vocabulary.",
+          "options": [
+            "collocations"
+          ],
+          "answer": 0,
+          "accepted": [
+            "collocations"
+          ],
+          "placeholder": "fill in the blank with the missing word…"
+        }
+      ]
+    },
+    {
+      "lesson": 244,
+      "title": "نهایی سراسری خرداد ۱۴۰۰ انسانی — ریدینگ برق‌آبی: درست/نادرست + تست (ص۳۱۸)",
+      "level": "استاندارد",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g12-fin1400khh-r3tf1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "A type of renewable energy is called hydropower.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g12-fin1400khh-r3tf2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "Turbines convert the water energy into electricity.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g12-fin1400khh-r3m1",
+          "n": 3,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "The passage says that clean energy is used in some of countries to keep the cities. --------------- .",
+          "options": [
+            "hot",
+            "renewable",
+            "clean",
+            "endless"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g12-fin1400khh-r3m2",
+          "n": 4,
+          "category": "grammar",
+          "kind": "mcq",
+          "question": "When fewer fossil fuels are used each year, they are --------------- for future.",
+          "options": [
+            "saved",
+            "consumed",
+            "used up",
+            "decreased"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "lesson": 245,
+      "title": "نهایی سراسری خرداد ۱۴۰۰ انسانی — کلمات ربط، کامل کنید (ص۳۱۹)",
+      "level": "آموزشی — ورود آزاد",
+      "count": 2,
+      "questions": [
+        {
+          "id": "g12-fin1400khh-conn1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "I get up early in the morning, --------------- I make an omelet myself.",
+          "options": [
+            "but",
+            "and",
+            "so",
+            "or"
+          ],
+          "answer": 0,
+          "accepted": [
+            "and"
+          ],
+          "placeholder": "fill in the blank with a connective…"
+        },
+        {
+          "id": "g12-fin1400khh-conn2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "There is snow in the street, --------------- it’s not too cold.",
+          "options": [
+            "but",
+            "and",
+            "so",
+            "or"
+          ],
+          "answer": 0,
+          "accepted": [
+            "but"
+          ],
+          "placeholder": "fill in the blank with a connective…"
+        }
+      ]
+    },
+    {
+      "lesson": 246,
+      "title": "نهایی سراسری خرداد ۱۴۰۰ انسانی — جملهٔ مرکب با کلمهٔ ربط و تصویر، بنویسید (ص۳۱۹)",
+      "level": "آموزشی — ورود آزاد",
+      "count": 1,
+      "questions": [
+        {
+          "id": "g12-fin1400khh-cx1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "You should do your homework, --------------- . (wash the dishes)",
+          "options": [
+            "You should do your homework, or you should wash the dishes."
+          ],
+          "answer": 0,
+          "accepted": [
+            "You should do your homework, or you should wash the dishes.",
+            "or you should wash the dishes"
+          ],
+          "placeholder": "با but/so/or جملهٔ مرکبِ معنادار بنویسید…"
+        }
+      ]
+    },
+    {
+      "lesson": 247,
+      "title": "نهایی سراسری خرداد ۱۴۰۰ انسانی — مرتب‌کردن جمله‌های پاراگراف، بنویسید (ص۳۱۹)",
+      "level": "آموزشی — ورود آزاد",
+      "count": 6,
+      "questions": [
+        {
+          "id": "g12-fin1400khh-ord1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "جملهٔ نخست (Topic) پاراگراف مورچه‌ها را بنویسید.",
+          "options": [
+            "Ants are hardworking insects."
+          ],
+          "answer": 0,
+          "accepted": [
+            "Ants are hardworking insects."
+          ],
+          "placeholder": "جملهٔ پاراگراف را کامل بنویسید…"
+        },
+        {
+          "id": "g12-fin1400khh-ord2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "جملهٔ دوم پاراگراف مورچه‌ها را بنویسید.",
+          "options": [
+            "Throughout the summer, they collect food for the winter season."
+          ],
+          "answer": 0,
+          "accepted": [
+            "Throughout the summer, they collect food for the winter season."
+          ],
+          "placeholder": "جملهٔ پاراگراف را کامل بنویسید…"
+        },
+        {
+          "id": "g12-fin1400khh-ord3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "جملهٔ سوم پاراگراف مورچه‌ها را بنویسید.",
+          "options": [
+            "Whenever they find sweet lying on the floor,"
+          ],
+          "answer": 0,
+          "accepted": [
+            "Whenever they find sweet lying on the floor,"
+          ],
+          "placeholder": "جملهٔ پاراگراف را کامل بنویسید…"
+        },
+        {
+          "id": "g12-fin1400khh-ord4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "جملهٔ چهارم پاراگراف مورچه‌ها را بنویسید.",
+          "options": [
+            "they stick to the sweet and carry it to their home."
+          ],
+          "answer": 0,
+          "accepted": [
+            "they stick to the sweet and carry it to their home."
+          ],
+          "placeholder": "جملهٔ پاراگراف را کامل بنویسید…"
+        },
+        {
+          "id": "g12-fin1400khh-ord5",
+          "n": 5,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "جملهٔ پنجم پاراگراف مورچه‌ها را بنویسید.",
+          "options": [
+            "Thus, in this way, they clean the floor."
+          ],
+          "answer": 0,
+          "accepted": [
+            "Thus, in this way, they clean the floor."
+          ],
+          "placeholder": "جملهٔ پاراگراف را کامل بنویسید…"
+        },
+        {
+          "id": "g12-fin1400khh-ord6",
+          "n": 6,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "جملهٔ پایانی (Concluding) پاراگراف مورچه‌ها را بنویسید.",
+          "options": [
+            "As a result, they are known as helpful and active insects."
+          ],
+          "answer": 0,
+          "accepted": [
+            "As a result, they are known as helpful and active insects."
           ],
           "placeholder": "جملهٔ پاراگراف را کامل بنویسید…"
         }

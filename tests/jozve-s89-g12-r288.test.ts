@@ -53,7 +53,7 @@ const S9_STEMS: Record<number, string> = {
 describe("jozve topic grammar bank g12 — diagnostic sections 8/9, exam completed (r288 extraction receipt)", () => {
   it("bank shape: twenty-three lessons, sections 8/9 complete the printed exam at 110 items", () => {
     expect(bank.lessons.map((l) => l.lesson)).toEqual(
-      Array.from({ length: 227 }, (_, i) => i + 1)
+      Array.from({ length: 247 }, (_, i) => i + 1)
     );
     const counts = [27, 61, 30, 50, 20, 20, 40, 20, 15, 20, 40, 22, 20, 20, 8, 8, 8, 15, 15, 20, 20];
     counts.forEach((c, i) => expect(bank.lessons[i].questions).toHaveLength(c));
@@ -69,7 +69,7 @@ describe("jozve topic grammar bank g12 — diagnostic sections 8/9, exam complet
       .reduce((a, n) => a + L(n).count, 0);
     expect(diagnosticTotal).toBe(110);
     // جمع خانواده: ۴۹۹ + ۱۶ = ۵۱۵
-    expect(bank.lessons.reduce((a, l) => a + l.count, 0)).toBe(1283); // ۵۱۵ + ۵۹ آزمون جامع r289
+    expect(bank.lessons.reduce((a, l) => a + l.count, 0)).toBe(1339); // ۵۱۵ + ۵۹ آزمون جامع r289
   });
 
   it("typed bank 22 (complete with connectives): all 12 printed keys from the two-column p194 grid, closed-pool scaffolds, single blank", () => {
@@ -130,10 +130,10 @@ describe("jozve topic grammar bank g12 — diagnostic sections 8/9, exam complet
     lock(l23, 4, "so", /got sick/); // نتیجه
   });
 
-  it("id uniqueness across the whole 227-bank family (1283 ids) + sections 8/9 introduce zero new stem collisions", () => {
+  it("id uniqueness across the whole 247-bank family (1339 ids) + sections 8/9 introduce zero new stem collisions", () => {
     const all = bank.lessons.flatMap((l) => l.questions);
     const ids = new Set(all.map((q) => q.id));
-    expect(ids.size).toBe(1283);
+    expect(ids.size).toBe(1339);
     const stems = new Set(
       bank.lessons
         .filter((l) => l.lesson < 22)
