@@ -13596,6 +13596,294 @@
           "placeholder": "make a sentence with the given words…"
         }
       ]
+    },
+    {
+      "lesson": 66,
+      "title": "آموزشی — ۲۰ تست گرامر و نگارش درس سوم (ص۱۳۴)",
+      "level": "آموزشی — چهارگزینه‌ای",
+      "count": 20,
+      "questions": [
+        {
+          "id": "g10-l66-1",
+          "n": 1,
+          "category": "grammar",
+          "question": "While I ------------------ yesterday, my brother called.",
+          "options": [
+            "will study",
+            "was studying",
+            "studied",
+            "am studying"
+          ],
+          "answer": 1,
+          "translation": "دیروز در حایل که مشغول مطالعه کردن بودم، برادرم زنگ زد."
+        },
+        {
+          "id": "g10-l66-2",
+          "n": 2,
+          "category": "grammar",
+          "question": "When I ------------------ my hand, the teacher was talking.",
+          "options": [
+            "to rise",
+            "was raising",
+            "raised",
+            "am going to rise"
+          ],
+          "answer": 2,
+          "translation": "زمانیکه دستم را بالا بردم، معلم در حال صحبت کردن بود."
+        },
+        {
+          "id": "g10-l66-3",
+          "n": 3,
+          "category": "grammar",
+          "question": "A tree fell on my father’s car while he ------------------ home yesterday.",
+          "options": [
+            "is going to drive",
+            "was driving",
+            "drives",
+            "drove"
+          ],
+          "answer": 1,
+          "translation": "درخت بر روی ماشین پدرم افتاد، درحایل که به سمت منزل در حال رانندگی کردن بود."
+        },
+        {
+          "id": "g10-l66-4",
+          "n": 4,
+          "category": "grammar",
+          "question": "We were having dinner at the restaurant when we ------------------ an old friend.",
+          "options": [
+            "saw",
+            "to see",
+            "were seeing",
+            "will see"
+          ],
+          "answer": 0,
+          "translation": "ما مشغول خوردن شام در رستوران بودیم زمانیکه یکی از دوستان قدیمی ام را دیدیم."
+        },
+        {
+          "id": "g10-l66-5",
+          "n": 5,
+          "category": "grammar",
+          "question": "My little sister ate some chocolate while she ------------------ to school yesterday.",
+          "options": [
+            "is walking",
+            "was walking",
+            "walked",
+            "walks"
+          ],
+          "answer": 1,
+          "translation": "دیروز خواهر کوچیکم مقداری شکلات خورد در حایل که پیاده به مدرسه می رفت."
+        },
+        {
+          "id": "g10-l66-6",
+          "n": 6,
+          "category": "grammar",
+          "question": "When Mr. Saeedi ------------------ on the radio in his car, he was driving home.",
+          "options": [
+            "turns",
+            "turned",
+            "was turning",
+            "will turn"
+          ],
+          "answer": 1,
+          "translation": "زمانیکه آقای سعیدی رادیو را در ماشینش روشن کرد، در حال رانندگی کردن به سمت خانه بود."
+        },
+        {
+          "id": "g10-l66-7",
+          "n": 7,
+          "category": "grammar",
+          "question": "While he was swimming in the river, he ------------------ a big black fish.",
+          "options": [
+            "saw",
+            "sees",
+            "was seeing",
+            "is going to see"
+          ],
+          "answer": 0,
+          "translation": "در حالیکه او مشغول شنا کردن در رودخانه بود، یک ماهی بزرگ سیاه را دید."
+        },
+        {
+          "id": "g10-l66-8",
+          "n": 8,
+          "category": "grammar",
+          "question": "Narin was watching a movie about Newton when I ------------------ in.",
+          "options": [
+            "to come",
+            "came",
+            "was coming",
+            "am coming"
+          ],
+          "answer": 1,
+          "translation": "نارین مشغول تماشای یک فیلم سینمایی در مورد نیوتن بود زمانیکه من وارد شدم."
+        },
+        {
+          "id": "g10-l66-9",
+          "n": 9,
+          "category": "grammar",
+          "question": "While Zahra was walking along the street, she ---------------------- a noise behind her.",
+          "options": [
+            "was hearing",
+            "will hear",
+            "heard",
+            "hears"
+          ],
+          "answer": 2,
+          "translation": "در حالیکه زهرا در امتداد خیابان در حال قدم زدن بود، صدایی را در پشت سرش شنید."
+        },
+        {
+          "id": "g10-l66-10",
+          "n": 10,
+          "category": "grammar",
+          "question": "Raman ------------------ television at 8 o’clock yesterday when we ------------------.",
+          "options": [
+            "was watching / arrived",
+            "watched / are arriving",
+            "is watching / were arriving",
+            "watches / were arrive"
+          ],
+          "answer": 0,
+          "translation": "رامان مشغول تماشای تلویزیون بود زمانیکه ما رسیدیم."
+        },
+        {
+          "id": "g10-l66-11",
+          "n": 11,
+          "category": "grammar",
+          "question": "The sun was shining in the sky -------------------- they went out for a walk.",
+          "options": [
+            "as",
+            "while",
+            "when",
+            "so"
+          ],
+          "answer": 2,
+          "translation": "زمانیکه آنها برای پیاده روی به بیرون رفتند، خورشید در آسمان در حال درخشیدن بود."
+        },
+        {
+          "id": "g10-l66-12",
+          "n": 12,
+          "category": "grammar",
+          "question": "Their father arrived home ------------------ they were arguing loudly.",
+          "options": [
+            "when",
+            "because",
+            "while",
+            "so"
+          ],
+          "answer": 2,
+          "translation": "در حالیکه آنها مشغول جر و بحث کردن بودند، پدرشان به خانه وارد شد."
+        },
+        {
+          "id": "g10-l66-13",
+          "n": 13,
+          "category": "grammar",
+          "question": "Let’s clean all the building ------------------. It’s important to help each other.",
+          "options": [
+            "by myself",
+            "yourselves",
+            "themselves",
+            "ourselves"
+          ],
+          "answer": 3,
+          "translation": "بیا خودمان همه ساختمان را تمیز ن کنیم. مهمه که به همدیگر کمک کنیم."
+        },
+        {
+          "id": "g10-l66-14",
+          "n": 14,
+          "category": "grammar",
+          "question": "Sara and Mina made the house tidy by ------------------.",
+          "options": [
+            "ourselves",
+            "yourselves",
+            "themselves",
+            "herself"
+          ],
+          "answer": 2,
+          "translation": "سارا و مینا خودشان به تنهایی خانه را مرتب کردند."
+        },
+        {
+          "id": "g10-l66-15",
+          "n": 15,
+          "category": "grammar",
+          "question": "Maryam and I washed all the dishes ------------------ last night.",
+          "options": [
+            "herself",
+            "ourselves",
+            "myself",
+            "themselves"
+          ],
+          "answer": 1,
+          "translation": "شب گذشته من و مریم همه ظرفها را خودمان شستیم."
+        },
+        {
+          "id": "g10-l66-16",
+          "n": 16,
+          "category": "grammar",
+          "question": "Pari’s father is going to repair his car ------------------ next week.",
+          "options": [
+            "herself",
+            "himself",
+            "ourselves",
+            "myself"
+          ],
+          "answer": 1,
+          "translation": "پدر پری قصد دارد که خودش هفته آینده ماشینش را تعمیر کند."
+        },
+        {
+          "id": "g10-l66-17",
+          "n": 17,
+          "category": "grammar",
+          "question": "Every morning my little brother washes his face and brushes his teeth by ------------------.",
+          "options": [
+            "yourself",
+            "herself",
+            "myself",
+            "himself"
+          ],
+          "answer": 3,
+          "translation": "برادر کوچک من هر روز صبح خودش به تنهایی صورتش را می شوید و دندانهایش را مسواک میکند."
+        },
+        {
+          "id": "g10-l66-18",
+          "n": 18,
+          "category": "grammar",
+          "question": "If you and your classmates can’t do this exercise by ------------------, ask the teacher for help.",
+          "options": [
+            "yourselves",
+            "himself",
+            "herself",
+            "yourself"
+          ],
+          "answer": 0,
+          "translation": "اگه تو و همکلاسیهایت نمیتوانید خودتان به تنهایی این تمرین را انجام دهید از معلم درخواست کمک کنید."
+        },
+        {
+          "id": "g10-l66-19",
+          "n": 19,
+          "category": "grammar",
+          "question": "I really ----------------- some new clothes for next winter.",
+          "options": [
+            "need",
+            "needed",
+            "am needing",
+            "was needing"
+          ],
+          "answer": 0,
+          "translation": "من واقعاً به لباسهای جدید برای زمستان آینده نیاز دارم."
+        },
+        {
+          "id": "g10-l66-20",
+          "n": 20,
+          "category": "grammar",
+          "question": "That boy who was standing next to your brother ----------------- very tired.",
+          "options": [
+            "was looking",
+            "looked",
+            "is looking",
+            "looks"
+          ],
+          "answer": 1,
+          "translation": "اون پسری که نزدیک برادرت ایستاده بود، به نظر خیلی خسته می رسید."
+        }
+      ]
     }
   ],
   "source": {
@@ -14075,6 +14363,32 @@
         "سکشن‌های چاپ با ارقامِ فارسیِ قرمز (۱ تا ۸) و سربرگِ هلوئیِ خطِ آبی؛ آیتم‌ها با ارقامِ قرمزِ لاتین (1 تا 10)"
       ],
       "extractedRound": "r340"
+    },
+    "gram7": {
+      "exam": "۲۰ تست گرامر و نگارش درس سوم (ص۱۳۴)",
+      "header": "سربرگِ چاپیِ ص۱۳۴: «۲۰ تست گرامر و نگارش \"درس سوم - پایه دهم\" سطح: \"آموزشی\" (پاسخنامه صفحه: ۲۷۹ - ۲۸۰)» — ۲۰ MCQ",
+      "keyPages": "279-280",
+      "keyVerification": "print key pp279-280 «پاسخنامه تست های آموزشی گرامر و نگارش درس سوم» + 20 مدخلِ توضیح‌دار (گزینه + شیوهٔ حل + ترجمهٔ چاپی) — 20/20 agree with semantic pre-fill, zero divergence",
+      "extractedRound": "r341",
+      "pattern": "r334 (کلیدِ توضیح‌دار + ترجمهٔ چاپی در هر آیتم) + r330 (روشِ گپِ لایه) + r339 (لایهٔ واژه‌محور + رندرِ عالی برای داوریِ واژه)",
+      "printQuirks": [
+        "سربرگِ چاپیِ ص۱۳۴: «۲۰ تست گرامر و نگارش \"درس سوم - پایه دهم\" سطح: \"آموزشی\" (پاسخنامه صفحه: ۲۷۹ - ۲۸۰)» — فقط «آموزشی» (برخلافِ r334 که «صرفاً آموزشی ، ساده» بود)؛ ارقامِ فارسیِ سربرگ (مثل r340، برخلافِ r339 لاتین)؛ عنوان از فهرستِ ص۱۱۳: «۲۰ تست دستگرمی» (لایه «دستگیری»)",
+        "«حایل» (Q1/Q3/Q5) چاپ‌غلطِ تکرارشوندهٔ «حالی» است: یِ بلندِ بی‌نقطه در رندرِ ۸-۱۰هزارdpi + لایه هم «حایل» می‌دهد — عینِ چاپ محفوظ (پدیدهٔ «هنگامیک» r339)؛ در برابرِ Q7/Q9/Q12 «حالیکه/در حال» سالم — ناسازگاریِ درونِ چاپ",
+        "کشفِ راند: «بِ» پایانیِ لایه (سینماب/صداب/تنهاب/لباسهاب) = تجزیهٔ لیگاتورِ «یی» — رندر ۸۰۰۰dpi: سینمایی/صدایی/تنهایی/لباسهای با نقطه‌های دوتایی؛ «ب» هرگز در چاپ نیست",
+        "Q3 «منزل» در لایه بالانویسِ دو-توکنیِ «مین|نل» بود (y=229 در برابرِ سطرِ 234) — رندر ۴۰۰۰dpi: «منزل» درون‌خطیِ تمیز با زِ نقطه‌دار؛ «ماشیر ن» لایه = «ماشین» (رندر: شِ سه‌نقطه + نِ یک‌نقطه)",
+        "Q5 «می رفت» / Q20 «می رسید» / Q17 «می شوید» فاصله‌دار — لایه «میر فت/میر سید/یم شوید» (جابه‌جاییِ جای فاصله)؛ رندر: فاصلهٔ واقعی پس از «می»؛ در برابرِ همان سطر «مسواک میکند» چسبیده — ناسازگاریِ خودِ چاپ",
+        "Q4 «قدیمی ام» فاصله‌دار (رندر ۴۰۰۰dpi) و «یکی» لایه «یگ»؛ پایانِ سطر «دیدیم\".» با گیومه‌ونقطهٔ چسبیده (توکنِ لایه \"\".\")",
+        "Q13 «تمیز ن کنیم.» با نِ تک‌افتاده (به‌جای «نکنیم») + «مهمه که به همدیگر کمک کنیم.» — «مهمه» لایه و رندر هر دو تمیز (م-ه-م-ه)؛ «تمیر» لایه = «تمیز» (زِ نقطه‌دار در رندر)",
+        "Q18 «همکلاسیهایت» و «درخواست» چسبیده — شکافِ ۱-۳pt در مختصاتِ لایه = بدونِ فاصله (لایه دو-توکنیِ «همکالیس هایت» و «در خواست» گمراه‌کننده بود)؛ «نمیتوانید» هم چسبیده؛ «اگه» محاورهِ عینِ چاپ",
+        "Q19 «واقعاً» با فتحتانانِ بالای الف (لایه «واقعأ» — رندر: همزهٔ جدا در بالای الف)؛ «لباسهای» با یِ نقطه‌دارِ پایانی",
+        "Q20 «پسری» — لایه «پسی» (ر را انداخته بود)؛ رندر ۸۰۰۰dpi: چهار قائمِ پ/س/ر/ی — «اون پسری که...»",
+        "Q16 توضیحِ چاپیِ کلید: «ضمیر تأکیدی برای (Pari’s father) himself یعنی \"خودش\" خواهد بود. (منظور پدر پری است نه خود پری)!!!!» — چهار علامتِ تعجبِ پس از پرانتزِ بسته (عینِ چاپ)",
+        "Q2 پایانِ چاپ: «...صحبت کردن بود. \"» — نقطه داخلِ گیومه و گیومه با فاصله؛ در برابرِ Q4/Q8/Q10/Q15 «شدم\"./رسیدیم\".» چسبیده — ناسازگاریِ گیومه‌پایانِ خودِ چاپ",
+        "کلیدِ ص۲۷۹ با جعبهٔ «شیوه کلی حل تستهای گرامر» آغاز می‌شود: «عموماً برای حل تستهای گرامر ابتدا به گزینه های سؤال نگاه کرده و سعی میکنیم گرامر مربوطه را حدس بزنیم، آنگاه در قبل و بعد از جای خالی به دنبال نکته مربوطه در آن گرامر، برای به دست آوردن پاسخ صحیح، میگردیم.» (لایه «کیل» = کلی — همان r334)؛ سربرگِ کلید: «پاسخــ نامه تست های ـ یآموزیس گرامـ ر و نگارش \" درس سوم- پایه دهم\" ( :سؤاالت صفحه134)» — کشیدگیِ حروف + «سؤاالت» هشتمین تکرارِ تجزیهٔ لایگِچر + ارقامِ لاتینِ 134",
+        "مدخل‌های کلیدِ Q1-12 همگی «رجوع به توضیحات سؤال ۱/۲» با تکرارِ جدولِ ساختارِ While/When (گذشته استمراری/گذشته ساده)؛ Q11 توضیحِ مستقل: «برای توصیف شرایط و اوضاع در زمان گذشته...»؛ Q19 فعلِ حالتیِ need و Q20 فعلِ حالتیِ look به معنی «به نظر رسیدن» با حذفِ گزینه‌ها",
+        "جای‌خالی‌های سبزِ خط‌چین: Q1-8/Q12-18 هجده‌تیره، Q9 بیست‌ودو، Q11 بیست، Q19/Q20 هفده، Q10 دوجای‌خالیِ ۱۸+۱۸ — طولِ هر ساقه عیناً از لایه (شمارشِ لایه حاکم — r338)؛ آپاستروف‌های تایپوگرافیکِ ساقه‌ها: father’s/o’clock/Let’s/It’s/Pari’s/can’t",
+        "بدونِ برچسبِ «کنکور» — سطحِ چاپ: «آموزشی»؛ سؤال‌های ۱-۲۰ همه در ص۱۳۴؛ جعبهٔ Note خالیِ ص۲۸۰ (۱۷ خط)"
+      ]
     }
   }
 }

@@ -152,7 +152,7 @@ describe("jozve tests-g10 jame2 (r336 آزمون جامع تشریحی درس د
 
   it("no duplicate ids across the whole family (828)", () => {
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(ids.length).toBe(828);
-    expect(new Set(ids).size).toBe(828);
+    expect(ids.length).toBe(848);
+    expect(new Set(ids).size).toBe(848);
   });
 });

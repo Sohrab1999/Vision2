@@ -166,6 +166,6 @@ describe("jozve tests-g10 exam4 (r327 متوسط — p87-88, key+translations pp
 
   it("ids unique across the whole 482-item family (r333 gram4 appended)", () => {
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(new Set(ids).size).toBe(828);
+    expect(new Set(ids).size).toBe(848);
   });
 });

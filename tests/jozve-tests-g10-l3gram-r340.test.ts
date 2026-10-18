@@ -169,7 +169,7 @@ describe("jozve tests-g10 l3gram (r340 آزمون تشریحی گرامر درس
 
   it("ids unique across the whole 828-item family (r340 l3gram appended)", () => {
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(ids.length).toBe(828);
-    expect(new Set(ids).size).toBe(828);
+    expect(ids.length).toBe(848);
+    expect(new Set(ids).size).toBe(848);
   });
 });
