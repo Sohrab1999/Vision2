@@ -158,17 +158,17 @@ describe("jozve tests-g10 l14 (r350 — ۱۰۰ تست گرامر و نگارش �
     expect(B.questions[96].question).not.toMatch(/۱۳۶۳/);
   });
 
-  it("file shape after r350: 98 banks, 1466 items, unique ids, tail vector", () => {
-    expect(bank.lessons).toHaveLength(98);
+  it("file shape after r350: 99 banks, 1586 items, unique ids, tail vector", () => {
+    expect(bank.lessons).toHaveLength(99);
     const counts = bank.lessons.map((l) => l.count);
-    expect(counts.reduce((a, b) => a + b, 0)).toBe(1466);
+    expect(counts.reduce((a, b) => a + b, 0)).toBe(1586);
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(new Set(ids).size).toBe(1466);
+    expect(new Set(ids).size).toBe(1586);
     // وکتورِ دنباله: بانکِ ۹۷ با ۱۰۰؛ هفت‌تاییِ پیش از آن = جامعِ چهارم (r348)
     const tail = bank.lessons.slice(6).map((l) => l.count);
-    expect(tail.length).toBe(92);
-    expect(tail.slice(-2, -1)).toEqual([100]);
-    expect(tail.slice(-3, -2)).toEqual([57]); // استانداردِ گرامرِ چهارم — r349
-    expect(tail.slice(-10, -3)).toEqual([16, 12, 13, 2, 4, 6, 6]); // جامعِ چهارم — r348
+    expect(tail.length).toBe(93);
+    expect(tail.slice(-3, -2)).toEqual([100]);
+    expect(tail.slice(-4, -3)).toEqual([57]); // استانداردِ گرامرِ چهارم — r349
+    expect(tail.slice(-11, -4)).toEqual([16, 12, 13, 2, 4, 6, 6]); // جامعِ چهارم — r348
   });
 });

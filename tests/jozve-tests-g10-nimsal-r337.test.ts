@@ -202,7 +202,7 @@ describe("jozve tests-g10 nimsal (r337 آزمون نیمسال اول ۹۸-۹۹ 
 
   it("no duplicate ids across the whole family (828)", () => {
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(ids.length).toBe(1466);
-    expect(new Set(ids).size).toBe(1466);
+    expect(ids.length).toBe(1586);
+    expect(new Set(ids).size).toBe(1586);
   });
 });

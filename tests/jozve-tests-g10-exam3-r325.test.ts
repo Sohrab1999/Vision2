@@ -28,8 +28,8 @@ describe("tests-g10 exam3 — استاندارد (r325)", () => {
     expect(bank.questions).toHaveLength(40);
     const ids = bank.questions.map((q: { id: string }) => q.id);
     expect(new Set(ids).size).toBe(40);
-    expect(doc.lessons).toHaveLength(98);
-    expect(doc.lessons.reduce((s: number, l: { count: number }) => s + l.count, 0)).toBe(1466);
+    expect(doc.lessons).toHaveLength(99);
+    expect(doc.lessons.reduce((s: number, l: { count: number }) => s + l.count, 0)).toBe(1586);
   });
 
   it("dual lock: printed letter + key word reflected in printed translation", () => {

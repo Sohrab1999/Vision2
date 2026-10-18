@@ -23072,6 +23072,1574 @@
           "answer": 3
         }
       ]
+    },
+    {
+      "lesson": 99,
+      "title": "آموزشی/متوسط — ۳۶۰ تست واژگان درس ۱ تا ۴ — بخش ۲ از ۳ (ص۱۸۳-۱۸۸)",
+      "level": "آموزشی/متوسط — چهارگزینه‌ای",
+      "count": 120,
+      "questions": [
+        {
+          "id": "g10-l99-121",
+          "n": 121,
+          "category": "vocab",
+          "question": "You know that ------------------- tourists travel abroad.",
+          "options": [
+            "international",
+            "historical",
+            "familiar",
+            "domestic"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l99-122",
+          "n": 122,
+          "category": "vocab",
+          "question": "Many kind people are interested in ------------------- the injured animals.",
+          "options": [
+            "saving",
+            "destroying",
+            "cutting",
+            "hurting"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l99-123",
+          "n": 123,
+          "category": "vocab",
+          "question": "Doctors say useful foods keep us healthy and ----------------------.",
+          "options": [
+            "clear",
+            "alive",
+            "different",
+            "famous"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-124",
+          "n": 124,
+          "category": "vocab",
+          "question": "The -------------------- dentist gave two billion yen to charity.",
+          "options": [
+            "ancient",
+            "generous",
+            "comfortable",
+            "usual"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-125",
+          "n": 125,
+          "category": "vocab",
+          "question": "You’ll ------------------- yourself a lot of time if you take the car.",
+          "options": [
+            "plan",
+            "save",
+            "solve",
+            "prepare"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-126",
+          "n": 126,
+          "category": "vocab",
+          "question": "Some countries ------------------- a lot of tourists every year.",
+          "options": [
+            "spend",
+            "prepare",
+            "break",
+            "attract"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l99-127",
+          "n": 127,
+          "category": "vocab",
+          "question": "She’s very kind and everybody speaks about her good nature. “nature” means --------------------.",
+          "options": [
+            "safety",
+            "injury",
+            "living",
+            "personality"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l99-128",
+          "n": 128,
+          "category": "vocab",
+          "question": "Many great men and women try hard to find ------------------.",
+          "options": [
+            "facts",
+            "novels",
+            "cradles",
+            "buildings"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l99-129",
+          "n": 129,
+          "category": "vocab",
+          "question": "Some scientists never give up while they are doing research. “give up” means ---------------------.",
+          "options": [
+            "grow",
+            "quit",
+            "seek",
+            "use"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-130",
+          "n": 130,
+          "category": "vocab",
+          "question": "Egypt in Africa is famous for its ------------------- pyramids.",
+          "options": [
+            "similar",
+            "wonderful",
+            "hospitable",
+            "international"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-131",
+          "n": 131,
+          "category": "vocab",
+          "question": "We speak Persian at home so that the boys don’t forget their language and ------------------.",
+          "options": [
+            "behavior",
+            "image",
+            "destination",
+            "culture"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l99-132",
+          "n": 132,
+          "category": "vocab",
+          "question": "In one small drop of blood there are millions of red ----------------------.",
+          "options": [
+            "rings",
+            "cells",
+            "liquid",
+            "facts"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-133",
+          "n": 133,
+          "category": "vocab",
+          "question": "I hurt my hand when I was playing volleyball yesterday. “hurt” means ------------------.",
+          "options": [
+            "cut",
+            "injured",
+            "saved",
+            "hunted"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-134",
+          "n": 134,
+          "category": "vocab",
+          "question": "You should go to the Australian ------------------- to get a visa.",
+          "options": [
+            "destination",
+            "airport",
+            "embassy",
+            "laboratory"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l99-135",
+          "n": 135,
+          "category": "vocab",
+          "question": "There are thousands of white -------------------- in a drop of blood.",
+          "options": [
+            "liquid",
+            "rings",
+            "facts",
+            "cells"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l99-136",
+          "n": 136,
+          "category": "vocab",
+          "question": "Iran is a great ------------------ for tourists from other parts of the world.",
+          "options": [
+            "embassy",
+            "continent",
+            "destination",
+            "behavior"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l99-137",
+          "n": 137,
+          "category": "vocab",
+          "question": "White cells in our blood -------------------- our body against microbes.",
+          "options": [
+            "carry",
+            "defend",
+            "keep",
+            "collect"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-138",
+          "n": 138,
+          "category": "vocab",
+          "question": "Tigers are wild animals of the Asian cat family. “wild” is an opposite of ------------------.",
+          "options": [
+            "hurtful",
+            "domestic",
+            "safe",
+            "dead"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-139",
+          "n": 139,
+          "category": "vocab",
+          "question": "She’s energetic. She’s always doing something. “energetic” means --------------------.",
+          "options": [
+            "interested",
+            "famous",
+            "useful",
+            "active"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l99-140",
+          "n": 140,
+          "category": "vocab",
+          "question": "When you are going abroad, you should get to the airport 2 hours before ------------------- flight.",
+          "options": [
+            "domestic",
+            "local",
+            "popular",
+            "international"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l99-141",
+          "n": 141,
+          "category": "vocab",
+          "question": "Please speak more --------------------- so that everybody can hear you.",
+          "options": [
+            "loudly",
+            "quietly",
+            "bravely",
+            "politely"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l99-142",
+          "n": 142,
+          "category": "vocab",
+          "question": "Everybody knows my brother. Actually he’s ------------------.",
+          "options": [
+            "interested",
+            "possible",
+            "natural",
+            "famous"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l99-143",
+          "n": 143,
+          "category": "vocab",
+          "question": "Each year, many people from all parts of the world visit Iran’s ---------------------.",
+          "options": [
+            "information",
+            "attractions",
+            "language",
+            "vacation"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-144",
+          "n": 144,
+          "category": "vocab",
+          "question": "London's airports --------------------- one hundred thousand domestic flights a year.",
+          "options": [
+            "save",
+            "plan",
+            "attract",
+            "attend"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-145",
+          "n": 145,
+          "category": "vocab",
+          "question": "Blood is a --------------------- gift from Allah. It’s really amazing.",
+          "options": [
+            "wonderful",
+            "healthy",
+            "famous",
+            "powerful"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l99-146",
+          "n": 146,
+          "category": "vocab",
+          "question": "Many Muslims from other parts of the world travel to Iran and go to holy ---------------- in Mashhad.",
+          "options": [
+            "shrines",
+            "cultures",
+            "behavior",
+            "suggestion"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l99-147",
+          "n": 147,
+          "category": "vocab",
+          "question": "We can thank Allah by ----------------------- our body healthy.",
+          "options": [
+            "collecting",
+            "carrying",
+            "keeping",
+            "defending"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l99-148",
+          "n": 148,
+          "category": "vocab",
+          "question": "They had a car accident, but they are alive. “alive” is an opposite of ----------------.",
+          "options": [
+            "safe",
+            "wild",
+            "dead",
+            "hurtful"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l99-149",
+          "n": 149,
+          "category": "vocab",
+          "question": "There isn’t much ------------------- for young people in this town- just the cinema and a park.",
+          "options": [
+            "experiment",
+            "suggestion",
+            "entertainment",
+            "interest"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l99-150",
+          "n": 150,
+          "category": "vocab",
+          "question": "This homework can develop your writing ------------------.",
+          "options": [
+            "key",
+            "end",
+            "shelf",
+            "skill"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l99-151",
+          "n": 151,
+          "category": "vocab",
+          "question": "Some scientists tried hard while they were working on ------------------.",
+          "options": [
+            "answers",
+            "problems",
+            "skills",
+            "pains"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-152",
+          "n": 152,
+          "category": "vocab",
+          "question": "When we have different idea, we should ------------------- their opinions without any problem.",
+          "options": [
+            "attract",
+            "respect",
+            "locate",
+            "spend"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-153",
+          "n": 153,
+          "category": "vocab",
+          "question": "I don’t remember ---------------------, but I think it was last Friday.",
+          "options": [
+            "exactly",
+            "quietly",
+            "suitably",
+            "neatly"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l99-154",
+          "n": 154,
+          "category": "vocab",
+          "question": "We can ---------------------- Allah by saving the nature and wildlife.",
+          "options": [
+            "keep",
+            "thank",
+            "seem",
+            "defend"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-155",
+          "n": 155,
+          "category": "vocab",
+          "question": "Some people destroy beautiful jungles in our country. “jungle” means --------------------.",
+          "options": [
+            "lake",
+            "earth",
+            "forest",
+            "plain"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l99-156",
+          "n": 156,
+          "category": "vocab",
+          "question": "She’s interested in medicine. She wants to work in a hospital and helps ---------------------.",
+          "options": [
+            "writers",
+            "builders",
+            "patients",
+            "beliefs"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l99-157",
+          "n": 157,
+          "category": "vocab",
+          "question": "Why don’t you pay attention to me? “attention” is a synonym for -------------------.",
+          "options": [
+            "safe",
+            "care",
+            "injury",
+            "harm"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-158",
+          "n": 158,
+          "category": "vocab",
+          "question": "The translator was great and wonderful. He could speak five ---------------------.",
+          "options": [
+            "cultures",
+            "languages",
+            "ceremonies",
+            "behavior"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-159",
+          "n": 159,
+          "category": "vocab",
+          "question": "Children must not eat ------------------- food. It’s not good for their health.",
+          "options": [
+            "wide",
+            "safe",
+            "neat",
+            "junk"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l99-160",
+          "n": 160,
+          "category": "vocab",
+          "question": "They returned the African elephants to their --------------------- home.",
+          "options": [
+            "amazing",
+            "natural",
+            "endangered",
+            "easy"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-161",
+          "n": 161,
+          "category": "vocab",
+          "question": "Camels are -------------------------- they do not drink water all day long.",
+          "options": [
+            "neat",
+            "fresh",
+            "medium",
+            "fantastic"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l99-162",
+          "n": 162,
+          "category": "vocab",
+          "question": "Do you know the ---------------------- of knowledge? It develops our lives.",
+          "options": [
+            "light",
+            "cradle",
+            "value",
+            "pain"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l99-163",
+          "n": 163,
+          "category": "vocab",
+          "question": "Tom didn’t see any ------------------------ faces at the party. He didn’t know anybody.",
+          "options": [
+            "hospitable",
+            "similar",
+            "familiar",
+            "attractive"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l99-164",
+          "n": 164,
+          "category": "vocab",
+          "question": "I have an information --------------------- that can help me to know about different countries.",
+          "options": [
+            "activity",
+            "embassy",
+            "booklet",
+            "departure"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l99-165",
+          "n": 165,
+          "category": "vocab",
+          "question": "There are a few trees in our garden. “a few” is an opposite of ---------------------.",
+          "options": [
+            "around",
+            "instead",
+            "near",
+            "many"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l99-166",
+          "n": 166,
+          "category": "vocab",
+          "question": "Planets and stars are different from each other. They aren’t so much ----------------------.",
+          "options": [
+            "rocky",
+            "near",
+            "alike",
+            "alive"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l99-167",
+          "n": 167,
+          "category": "vocab",
+          "question": "It’s important to ---------------------- science to students at schools.",
+          "options": [
+            "recite",
+            "teach",
+            "rest",
+            "quit"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-168",
+          "n": 168,
+          "category": "vocab",
+          "question": "Cats and dogs are domestic animals. “domestic” is an opposite of --------------------.",
+          "options": [
+            "dead",
+            "safe",
+            "hurtful",
+            "wild"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l99-169",
+          "n": 169,
+          "category": "vocab",
+          "question": "You can see our website or --------------------- this booklet to get more information.",
+          "options": [
+            "locate",
+            "attract",
+            "spend",
+            "check"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l99-170",
+          "n": 170,
+          "category": "vocab",
+          "question": "Our holy prophet (PBUH) said, “---------------------- knowledge from cradle to the grave.”",
+          "options": [
+            "attend",
+            "quit",
+            "seek",
+            "solve"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l99-171",
+          "n": 171,
+          "category": "vocab",
+          "question": "One of the smallest -------------------------- of our body is the cell.",
+          "options": [
+            "parts",
+            "orbits",
+            "facts",
+            "types"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l99-172",
+          "n": 172,
+          "category": "vocab",
+          "question": "Some ----------------------- do not pay attention to the wild life. They hunt all the animals.",
+          "options": [
+            "trips",
+            "programs",
+            "advice",
+            "hunters"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l99-173",
+          "n": 173,
+          "category": "vocab",
+          "question": "The best way to learn a ------------------- language is to live in a country where it is spoken.",
+          "options": [
+            "domestic",
+            "foreign",
+            "popular",
+            "successful"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-174",
+          "n": 174,
+          "category": "vocab",
+          "question": "Tell me --------------------, Kate, what do you think of John?",
+          "options": [
+            "suitably",
+            "probably",
+            "honestly",
+            "suitably"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l99-175",
+          "n": 175,
+          "category": "vocab",
+          "question": "My father is a good person. He never -------------------- the animals in the jungle.",
+          "options": [
+            "hunts",
+            "cuts",
+            "hopes",
+            "protects"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l99-176",
+          "n": 176,
+          "category": "vocab",
+          "question": "It’s ---------------------- that our body is one of the wonders of creation.",
+          "options": [
+            "clever",
+            "clear",
+            "alive",
+            "alike"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-177",
+          "n": 177,
+          "category": "vocab",
+          "question": "A: “Is your little brother taller than last year?” B: “Yes, children ----------------- rapidly.”",
+          "options": [
+            "put aside",
+            "grow up",
+            "look for",
+            "look like"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-178",
+          "n": 178,
+          "category": "vocab",
+          "question": "Can camels travel ----------------------- hot and dry deserts with little food and water?",
+          "options": [
+            "against",
+            "during",
+            "across",
+            "without"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l99-179",
+          "n": 179,
+          "category": "vocab",
+          "question": "Did you know that most of the world's ---------------------- countries are in Africa?",
+          "options": [
+            "ugliest",
+            "deepest",
+            "poorest",
+            "farthest"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l99-180",
+          "n": 180,
+          "category": "vocab",
+          "question": "A: “Would you like to have dinner with us?’ B: “I can’t. --------------, I have to study tonight.”",
+          "options": [
+            "especially",
+            "unfortunately",
+            "easily",
+            "luckily"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-181",
+          "n": 181,
+          "category": "vocab",
+          "question": "“Raman” decided to ---------------------- city life and live in a small village.",
+          "options": [
+            "grow up",
+            "give up",
+            "protect",
+            "increase"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-182",
+          "n": 182,
+          "category": "vocab",
+          "question": "She suddenly ---------------------- that her keys were in her other bag.",
+          "options": [
+            "attended",
+            "observed",
+            "remembered",
+            "behaved"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l99-183",
+          "n": 183,
+          "category": "vocab",
+          "question": "You know that ------------------- tourists travel to different parts of their own country.",
+          "options": [
+            "international",
+            "historical",
+            "familiar",
+            "domestic"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l99-184",
+          "n": 184,
+          "category": "vocab",
+          "question": "What do you --------------------- when you say everything is possible?",
+          "options": [
+            "destroy",
+            "hurt",
+            "cut",
+            "mean"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l99-185",
+          "n": 185,
+          "category": "vocab",
+          "question": "You can take pictures with this camera easily and fast because it’s really ------------------.",
+          "options": [
+            "absent",
+            "energetic",
+            "successful",
+            "modern"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l99-186",
+          "n": 186,
+          "category": "vocab",
+          "question": "Planets are really amazing but not so much ----------------------. They are different.",
+          "options": [
+            "nearer",
+            "alike",
+            "useful",
+            "rocky"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-187",
+          "n": 187,
+          "category": "vocab",
+          "question": "The villagers were very kind and --------------------- to anyone who visited their village.",
+          "options": [
+            "traditional",
+            "hospitable",
+            "domestic",
+            "historical"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-188",
+          "n": 188,
+          "category": "vocab",
+          "question": "One of the smallest ----------------- of our body is the cell. There are millions of them in our body.",
+          "options": [
+            "liquid",
+            "parts",
+            "facts",
+            "signs"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-189",
+          "n": 189,
+          "category": "vocab",
+          "question": "“Oromia” ------------------- is in the north west of Iran and is the biggest one inside our country.",
+          "options": [
+            "plain",
+            "jungle",
+            "lake",
+            "trip"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l99-190",
+          "n": 190,
+          "category": "vocab",
+          "question": "Living abroad is the best way to learn a foreign ---------------------.",
+          "options": [
+            "embassy",
+            "flight",
+            "language",
+            "suggestion"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l99-191",
+          "n": 191,
+          "category": "vocab",
+          "question": "He never ----------------- his interest for making new things. Finally, he became a great inventor.",
+          "options": [
+            "developed",
+            "published",
+            "grew",
+            "lost"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l99-192",
+          "n": 192,
+          "category": "vocab",
+          "question": "The waiter was too rude. He didn’t speak ---------------------.",
+          "options": [
+            "rudely",
+            "loudly",
+            "comfortably",
+            "nicely"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l99-193",
+          "n": 193,
+          "category": "vocab",
+          "question": "His shoe was very dirty. There were some ------------------------ of blood on it.",
+          "options": [
+            "rings",
+            "drops",
+            "systems",
+            "rocks"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-194",
+          "n": 194,
+          "category": "vocab",
+          "question": "If you do exercise, you will be healthy and ------------------------.",
+          "options": [
+            "interesting",
+            "useful",
+            "strong",
+            "true"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l99-195",
+          "n": 195,
+          "category": "vocab",
+          "question": "My older brother was angry, but he sat down and listened to me ---------------------.",
+          "options": [
+            "angrily",
+            "bravely",
+            "patiently",
+            "rudely"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l99-196",
+          "n": 196,
+          "category": "vocab",
+          "question": "She was famous for doing thousands of experiments to find ------------------ to problems.",
+          "options": [
+            "answers",
+            "cradles",
+            "values",
+            "novels"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l99-197",
+          "n": 197,
+          "category": "vocab",
+          "question": "Vegetable sandwiches are easy to -------------------, so they are useful for short trips.",
+          "options": [
+            "spend",
+            "prepare",
+            "attract",
+            "locate"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-198",
+          "n": 198,
+          "category": "vocab",
+          "question": "When you go on a long trip, there is a / an ----------------- of illnesses, so take care of yourself.",
+          "options": [
+            "plan",
+            "risk",
+            "host",
+            "image"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-199",
+          "n": 199,
+          "category": "vocab",
+          "question": "My five-year-old daughter always goes to kindergarten happily and is full of --------------------.",
+          "options": [
+            "oxygen",
+            "fact",
+            "sign",
+            "energy"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l99-200",
+          "n": 200,
+          "category": "vocab",
+          "question": "The Russian soldiers --------------------- the country against foreign enemies many times.",
+          "options": [
+            "attacked",
+            "defended",
+            "fought",
+            "taught"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-201",
+          "n": 201,
+          "category": "vocab",
+          "question": "I always run all the way home, so my heart is -------------------------- fast.",
+          "options": [
+            "orbiting",
+            "carrying",
+            "pumping",
+            "doing"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l99-202",
+          "n": 202,
+          "category": "vocab",
+          "question": "She didn’t sleep last night, so no ---------------------- she's tired.",
+          "options": [
+            "wonder",
+            "power",
+            "sign",
+            "fact"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l99-203",
+          "n": 203,
+          "category": "vocab",
+          "question": "Do you think a computer will ever be as powerful as your --------------------?",
+          "options": [
+            "organ",
+            "heart",
+            "nation",
+            "brain"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l99-204",
+          "n": 204,
+          "category": "vocab",
+          "question": "It’s -------------------- for you to cross the street when the light is red.",
+          "options": [
+            "powerful",
+            "useful",
+            "rocky",
+            "dangerous"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l99-205",
+          "n": 205,
+          "category": "vocab",
+          "question": "It’s --------------------- that the system of our body is among the wonders of creation.",
+          "options": [
+            "alike",
+            "alive",
+            "clever",
+            "clear"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l99-206",
+          "n": 206,
+          "category": "vocab",
+          "question": "When you go to the nature on your holiday, don’t forget to --------------------- the fire.",
+          "options": [
+            "fill out",
+            "take care",
+            "put out",
+            "pay attention"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l99-207",
+          "n": 207,
+          "category": "vocab",
+          "question": "The -------------------- to scientists’ success is their hard work.",
+          "options": [
+            "gain",
+            "pain",
+            "end",
+            "key"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l99-208",
+          "n": 208,
+          "category": "vocab",
+          "question": "My father thinks that Spain is a very popular --------------------- for traveling in summer.",
+          "options": [
+            "attraction",
+            "pyramid",
+            "entertainment",
+            "destination"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l99-209",
+          "n": 209,
+          "category": "vocab",
+          "question": "The policeman answered the tourists politely and -------------------.",
+          "options": [
+            "patiently",
+            "probably",
+            "rudely",
+            "hungrily"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l99-210",
+          "n": 210,
+          "category": "vocab",
+          "question": "He’s going to stay at least three weeks, --------------------- longer.",
+          "options": [
+            "possibly",
+            "safely",
+            "quietly",
+            "neatly"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l99-211",
+          "n": 211,
+          "category": "vocab",
+          "question": "Doctors helped people with penicillin while the flu was ------------------.",
+          "options": [
+            "putting aside",
+            "getting around",
+            "going out",
+            "filling out"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-212",
+          "n": 212,
+          "category": "vocab",
+          "question": "You should go to the ------------------- of a foreign country to get visa.",
+          "options": [
+            "agency",
+            "embassy",
+            "booklet",
+            "sites"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-213",
+          "n": 213,
+          "category": "vocab",
+          "question": "It’s not health to eat junk food during your trip. You should ------------------ your meals yourself.",
+          "options": [
+            "spend",
+            "locate",
+            "attract",
+            "prepare"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l99-214",
+          "n": 214,
+          "category": "vocab",
+          "question": "My brother --------------------- his foot while he was playing football.",
+          "options": [
+            "saved",
+            "hurt",
+            "protected",
+            "heard"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-215",
+          "n": 215,
+          "category": "vocab",
+          "question": "The cells of our body can get oxygen by every -------------------------- of the heart.",
+          "options": [
+            "pump",
+            "orbit",
+            "ring",
+            "wonder"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l99-216",
+          "n": 216,
+          "category": "vocab",
+          "question": "Because of a serious illness, he can’t --------------------- his body as most people can.",
+          "options": [
+            "carry",
+            "collect",
+            "move",
+            "grow"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l99-217",
+          "n": 217,
+          "category": "vocab",
+          "question": "It’s really important to read and to ------------------ the holy Quran during childhood.",
+          "options": [
+            "publish",
+            "recite",
+            "attend",
+            "cheer"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-218",
+          "n": 218,
+          "category": "vocab",
+          "question": "At this time of the year, most animals are --------------------- for winter.",
+          "options": [
+            "spending",
+            "preparing",
+            "checking",
+            "solving"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-219",
+          "n": 219,
+          "category": "vocab",
+          "question": "Firemen always -------------------- endangered people from danger.",
+          "options": [
+            "put out",
+            "increase",
+            "hurt",
+            "save"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l99-220",
+          "n": 220,
+          "category": "vocab",
+          "question": "My mother knows French. She’s going to ------------------ the holy Quran into French.",
+          "options": [
+            "feel",
+            "solve",
+            "translate",
+            "attend"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l99-221",
+          "n": 221,
+          "category": "vocab",
+          "question": "It’s important to became --------------------- with your destination before your trip.",
+          "options": [
+            "familiar",
+            "popular",
+            "attractive",
+            "similar"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l99-222",
+          "n": 222,
+          "category": "vocab",
+          "question": "I participate in an online course to learn about ----------------------- the nature.",
+          "options": [
+            "hurting",
+            "saving",
+            "increasing",
+            "hunting"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-223",
+          "n": 223,
+          "category": "vocab",
+          "question": "They have carpets in wide range of colors in their store, so it’s difficult to make a ------------------.",
+          "options": [
+            "suggestion",
+            "choice",
+            "tour",
+            "price"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-224",
+          "n": 224,
+          "category": "vocab",
+          "question": "She ------------------ her first book when she was a young student.",
+          "options": [
+            "solved",
+            "quitted",
+            "believed",
+            "published"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l99-225",
+          "n": 225,
+          "category": "vocab",
+          "question": "She always eat healthy food. She ----------------------- strong.",
+          "options": [
+            "defends",
+            "seems",
+            "carries",
+            "moves"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-226",
+          "n": 226,
+          "category": "vocab",
+          "question": "You should know your destination before your trip by reading travel ---------------------.",
+          "options": [
+            "prices",
+            "hosts",
+            "booklets",
+            "paradises"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l99-227",
+          "n": 227,
+          "category": "vocab",
+          "question": "I don’t know all the -------------------- about your sister. Is it true that she is a famous person?",
+          "options": [
+            "rings",
+            "creations",
+            "facts",
+            "types"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l99-228",
+          "n": 228,
+          "category": "vocab",
+          "question": "She’s an excellent teacher and I have the greatest --------------------- for her.",
+          "options": [
+            "plan",
+            "behavior",
+            "respect",
+            "suggestion"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l99-229",
+          "n": 229,
+          "category": "vocab",
+          "question": "If you want to succeed, you have to take a lot of -----------------------.",
+          "options": [
+            "risks",
+            "behaviors",
+            "respects",
+            "prices"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l99-230",
+          "n": 230,
+          "category": "vocab",
+          "question": "We must not break any rules in a foreign country. If we want to have a good and ---------------- trip.",
+          "options": [
+            "holy",
+            "ready",
+            "safe",
+            "polite"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l99-231",
+          "n": 231,
+          "category": "vocab",
+          "question": "I do a research about how to --------------------- animals from danger.",
+          "options": [
+            "protect",
+            "hurt",
+            "hunt",
+            "increase"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l99-232",
+          "n": 232,
+          "category": "vocab",
+          "question": "One of the most interesting ----------------------- about our body is blood.",
+          "options": [
+            "orbits",
+            "wonders",
+            "rings",
+            "types"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-233",
+          "n": 233,
+          "category": "vocab",
+          "question": "We opened an account to --------------------- money to help injured animals.",
+          "options": [
+            "mean",
+            "destroy",
+            "attend",
+            "save"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l99-234",
+          "n": 234,
+          "category": "vocab",
+          "question": "I really like math. I can -------------------- math problems fast.",
+          "options": [
+            "develop",
+            "solve",
+            "grow",
+            "quit"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-235",
+          "n": 235,
+          "category": "vocab",
+          "question": "My father is a good firefighter. He --------------------- the fire fast and helps the people.",
+          "options": [
+            "pays attention",
+            "puts out",
+            "destroys",
+            "protects"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-236",
+          "n": 236,
+          "category": "vocab",
+          "question": "Firefighters always work quickly. The opposite of “quickly” is ------------------.",
+          "options": [
+            "rapidly",
+            "easily",
+            "slowly",
+            "sadly"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l99-237",
+          "n": 237,
+          "category": "vocab",
+          "question": "It’s important to ------------------- nature and people and everything during our trip.",
+          "options": [
+            "spend",
+            "respect",
+            "locate",
+            "prepare"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l99-238",
+          "n": 238,
+          "category": "vocab",
+          "question": "The firefighters always ------------------ of their car fast.",
+          "options": [
+            "fill out",
+            "put aside",
+            "put out",
+            "jump out"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l99-239",
+          "n": 239,
+          "category": "vocab",
+          "question": "Doctors say suitable and useful foods ----------------------- us healthy and alive.",
+          "options": [
+            "collect",
+            "carry",
+            "seem",
+            "keep"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l99-240",
+          "n": 240,
+          "category": "vocab",
+          "question": "You’re breaking the ------------------- if you touch the ball with your hands.",
+          "options": [
+            "prices",
+            "skills",
+            "shelfs",
+            "rule"
+          ],
+          "answer": 3
+        }
+      ]
     }
   ],
   "source": {
@@ -23834,6 +25402,23 @@
       "exam": "عبارات الحاق (Tag Questions) — دستگرمی (ص۴۴) — کلیدِ گریدِ انتهای ص۱۸۷ جزوهٔ دوازدهم",
       "verification": "printed grid p187 (پایه دوازدهم) vs grammar-g12-topic.json bank «دستگرمی (ص۴۴)»: 20/20 AGREE — render 1100dpi verified (1=d 6=c 11=c 16=c / 2=d 7=b 12=b 17=b / 3=c 8=b 13=b 18=a / 4=a 9=b 14=d 19=a / 5=a 10=d 15=d 20=d)؛ گریدِ مجاورِ «معلوم و مجهول بخش دوم ص۳۷-۳۸» (r284) هم 40/40 AGREE",
       "closedRound": "r351"
+    },
+    "vocab360b": {
+      "exam": "۳۶۰ تست واژگان درس ۱ تا ۴ - پایه دهم — بخش ۲ (ص۱۸۳-۱۸۸)",
+      "header": "بدونِ سربرگِ جدید — ادامهٔ «۳۶۰ تست آموزشی واژگان \"درس ۱ تا ۴ - پایه دهم\" (پاسخنامه کلیدی صفحه: ۳۰۱)» از ص۱۷۸ (r351) — ۱۲۰ MCQ (سؤال ۱۲۱-۲۴۰ از ۳۶۰)",
+      "keyPages": "301",
+      "keyVerification": "print key p301 — بازتولیدِ برنامه‌ایِ حرف-اول (360/360 unique) + AGREE با رکوردِ r351: 360/360، صفر واگرایی؛ spot checks معنایی: Q121 international / Q133 injured / Q143 attractions / Q146 shrines / Q152 respect / Q158 languages / Q174 honestly / Q175 hunts / Q213 prepare / Q220 translate / Q221 familiar / Q222 saving",
+      "extractedRound": "r352",
+      "pattern": "r351 (بخشِ ۱ همین آزمون — همان پارسرِ دورفرمتِ «a[.)]» و فرفرجهٔ پنجره‌دار) + r350 (بانکِ MCQِ بدونِ ترجمه) + r349/r351 (ادغامِ ران‌های تیرهٔ لایه)",
+      "printQuirks": [
+        "این بانک = سؤال‌های ۱۲۱-۲۴۰ از همان آزمونِ ص۱۷۸-۱۹۴ (بخشِ ۲ از ۳؛ ص۱۸۳-۱۸۸) — بدونِ سربرگِ جدید؛ سربرگِ آزمون در ص۱۷۸ است (r351) و کلیدِ همان جدولِ یک‌صفحه‌ایِ ص۳۰۱ برای هر ۳۶۰ سؤال",
+        "گریدِ کلیدِ ص۳۰۱ در این راند به‌صورت برنامه‌ای بازتولید شد (regex حرف-اول: «a 121» — الگوی شماره-اول فقط ۳۵۹/۳۶۰ می‌گرفت؛ یک جفت با خط‌شکستِ متفاوت) و با رکوردِ KEY_RAWِ r351 مقایسه شد: 360/360 AGREE، صفر واگرایی — درسِ r351 («کلید را از حفظ نساز») رعایت شد",
+        "فرمتِ گزینه‌ها در ۱۲۱-۲۴۰: همگی پرانتزدار «a) b) c) d)» (ادامهٔ پیچشِ Q39→Q40 از r351؛ پیچشِ بازگشتیِ دوم در این محدوده نیست)",
+        "چاپ‌خطایِ گزینه‌نامهٔ Q174: گزینهٔ چهارم در خودِ چاپ با حرفِ «b)» چاپ شده (تکرارِ حرفِ b — باید d می‌بود) و محتوای آن هم تکراریِ گزینهٔ a است («suitably») — داوریِ رندرِ ۱۲۰۰dpi: عینِ چاپ «b) suitably». داده فقط متن را نگه می‌دارد: options = [suitably, probably, honestly, suitably] — کلیدِ c («honestly») مستقل از این خطاست. جراحیِ پیش‌پارس فقط حرفِ گزینهٔ چهارم را برای پارس d کرد (بدونِ آن، پارسر c/d را تا «d) protects» قورت می‌داد و Q175 از پارس سقوط می‌کرد)",
+        "پنج سؤالِ دورانِ چندگانهٔ لایه = یک خطِ خط‌چینِ پیوسته در رندرِ ۱۲۰۰dpi → ادغام (قانونِ r349-Q2/r351-Q24): Q143: ۱۰+۱۱=۲۱ (نقطه‌چسبیده) | Q146: ۱۲+۴=۱۶ | Q152: ۹+۱۰=۱۹ | Q158: ۱۰+۱۱=۲۱ (نقطه‌چسبیده) | Q213: ۱۰+۸=۱۸ — بعدِ ادغام هر ۱۲۰ سؤال دقیقاً یک ران (سنز: ۱۲۰ ران/۲۴۳۲ تیره)",
+        "چاپ‌غلط‌های عینِ چاپ در stem (حفظِ verbatim): Q152 «different idea» (باید ideas) | Q213 «It's not health to eat» (باید healthy) | Q221 «It's important to became» (باید become) — گزینهٔ «quitted» در Q224-b هم شکلِ چاپیِ جزوه است (حفظِ عینِ چاپ)",
+        "بدونِ هیچ ترجمهٔ چاپی در محدوده («ترجمه» ×۰ در ص۱۸۳-۱۸۸ — قرینهٔ بخشِ ۱)؛ آپستروفِ مستقیمِ لایه در سه سؤال (Q144/Q179/Q202 «she's») عینِ لایه حفظ شد — بقیهٔ آپستروف‌ها curlyِ چاپ"
+      ]
     }
   }
 }

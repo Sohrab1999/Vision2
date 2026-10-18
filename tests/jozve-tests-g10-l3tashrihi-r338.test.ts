@@ -24,11 +24,11 @@ describe("tests-g10 tashrihi3 — تشریحی واژگان درس سوم (r338)
     expect(src.printQuirks.some((q: string) => q.includes("دو تیره کم"))).toBe(true);
   });
 
-  it("file shape: 98 banks, family 1466 items (4 tashrihi4 + 1 vocab40l4 + 7 g10l4c appended — r345/r346/r347 surgery)", () => {
+  it("file shape: 99 banks, family 1586 items (4 tashrihi4 + 1 vocab40l4 + 7 g10l4c appended — r345/r346/r347 surgery)", () => {
     expect(doc.grade).toBe(10);
-    expect(doc.lessons).toHaveLength(98);
-    expect(doc.lessons.slice(6).map((l: { count: number }) => l.count)).toEqual([16, 8, 8, 25, 40, 40, 15, 7, 5, 10, 20, 16, 12, 6, 7, 14, 6, 6, 40, 15, 7, 10, 12, 20, 45, 16, 12, 5, 7, 4, 6, 8, 8, 6, 6, 3, 4, 6, 6, 1, 4, 6, 2, 8, 6, 6, 16, 8, 8, 25, 40, 10, 7, 7, 5, 5, 10, 5, 5, 20, 16, 12, 9, 5, 2, 6, 7, 46, 4, 10, 16, 8, 8, 25, 40, 8, 10, 10, 5, 5, 10, 20, 16, 12, 13, 2, 4, 6, 6, 57, 100, 120]);
-    expect(doc.lessons.reduce((s: number, l: { count: number }) => s + l.count, 0)).toBe(1466);
+    expect(doc.lessons).toHaveLength(99);
+    expect(doc.lessons.slice(6).map((l: { count: number }) => l.count)).toEqual([16, 8, 8, 25, 40, 40, 15, 7, 5, 10, 20, 16, 12, 6, 7, 14, 6, 6, 40, 15, 7, 10, 12, 20, 45, 16, 12, 5, 7, 4, 6, 8, 8, 6, 6, 3, 4, 6, 6, 1, 4, 6, 2, 8, 6, 6, 16, 8, 8, 25, 40, 10, 7, 7, 5, 5, 10, 5, 5, 20, 16, 12, 9, 5, 2, 6, 7, 46, 4, 10, 16, 8, 8, 25, 40, 8, 10, 10, 5, 5, 10, 20, 16, 12, 13, 2, 4, 6, 6, 57, 100, 120, 120]);
+    expect(doc.lessons.reduce((s: number, l: { count: number }) => s + l.count, 0)).toBe(1586);
   });
 
   it("bank 53 (بانک واژه): 16 typed keys locked to p274, extras situation/interview never the accepted key", () => {
@@ -107,7 +107,7 @@ describe("tests-g10 tashrihi3 — تشریحی واژگان درس سوم (r338)
 
   it("no duplicate ids across the whole family (828)", () => {
     const ids = doc.lessons.flatMap((l: { questions: { id: string }[] }) => l.questions.map((q: { id: string }) => q.id));
-    expect(ids.length).toBe(1466);
-    expect(new Set(ids).size).toBe(1466);
+    expect(ids.length).toBe(1586);
+    expect(new Set(ids).size).toBe(1586);
   });
 });

@@ -136,17 +136,17 @@ describe("jozve tests-g10 v360a (r351 — ۳۶۰ تست واژگان درس ۱ �
     expect(total).toBe(2315);
   });
 
-  it("file shape after r351: 98 banks, 1466 items, unique ids, tail vector", () => {
-    expect(bank.lessons).toHaveLength(98);
+  it("file shape after r351: 99 banks, 1586 items, unique ids, tail vector", () => {
+    expect(bank.lessons).toHaveLength(99);
     const counts = bank.lessons.map((l) => l.count);
-    expect(counts.reduce((a, b) => a + b, 0)).toBe(1466);
+    expect(counts.reduce((a, b) => a + b, 0)).toBe(1586);
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(new Set(ids).size).toBe(1466);
+    expect(new Set(ids).size).toBe(1586);
     // وکتورِ دنباله: بانکِ ۹۸ با ۱۲۰؛ بانکِ ۹۷ با ۱۰۰؛ جامعِ چهارم در -10..-3
     const tail = bank.lessons.slice(6).map((l) => l.count);
-    expect(tail.length).toBe(92);
-    expect(tail.slice(-1)).toEqual([120]);
-    expect(tail.slice(-2, -1)).toEqual([100]); // گرامرِ ۱-۴ — r350
-    expect(tail.slice(-10, -2)).toEqual([16, 12, 13, 2, 4, 6, 6, 57]); // جامعِ چهارم + استانداردِ گرامرِ چهارم
+    expect(tail.length).toBe(93);
+    expect(tail.slice(-2, -1)).toEqual([120]);
+    expect(tail.slice(-3, -2)).toEqual([100]); // گرامرِ ۱-۴ — r350
+    expect(tail.slice(-11, -3)).toEqual([16, 12, 13, 2, 4, 6, 6, 57]); // جامعِ چهارم + استانداردِ گرامرِ چهارم
   });
 });
