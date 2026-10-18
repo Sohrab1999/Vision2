@@ -84,13 +84,13 @@ describe("r354 — bank shapes (l37..l42)", () => {
     }
     const all = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
     expect(new Set(all).size).toBe(all.length);
-    expect(all).toHaveLength(714 + 68 + 57); // ۷۱۴ (تا r312) + ۶۸ (r354) + ۵۷ (r355 — جامع تشریحی د۱)
-    expect(bank.lessons).toHaveLength(55);
+    expect(all).toHaveLength(714 + 68 + 57 + 54); // ۷۱۴ (تا r312) + ۶۸ (r354) + ۵۷ (r355 — جامع تشریحی د۱) + ۵۴ (r356 — تشریحی گرامر د۲)
+    expect(bank.lessons).toHaveLength(59);
   });
 
-  it("file shape: last nineteen banks are l37..l55 in order", () => {
-    const tail = bank.lessons.slice(-19).map((l) => l.lesson);
-    expect(tail).toEqual([37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55]);
+  it("file shape: last twenty-three banks are l37..l59 in order (r356 appended l56..l59)", () => {
+    const tail = bank.lessons.slice(-23).map((l) => l.lesson);
+    expect(tail).toEqual([37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]);
   });
 });
 

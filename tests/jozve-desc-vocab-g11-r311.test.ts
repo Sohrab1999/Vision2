@@ -61,7 +61,7 @@ const norm = (s: string) => s.trim().toLowerCase().replace(/\s+/g, " ");
 describe("jozve descriptive vocab g11 lesson-1 (r311 extraction receipt)", () => {
   it("bank shape: lessons 25..28 appended after r309's l24 — counts 16/8/8/25", () => {
     expect(bank.grade).toBe(11);
-    expect(bank.lessons.map((l) => l.lesson).slice(-13)).toEqual([43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55]); // r355: l43..l55 (جامع تشریحی د۱) الحاق شد
+    expect(bank.lessons.map((l) => l.lesson).slice(-17)).toEqual([43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]); // r356: l56..l59 (تشریحی گرامر د۲) الحاق شد — دنبالهٔ l25..l28 در برابر [-31:-23] می‌ماند
     expect(l25.count).toBe(16);
     expect(l26.count).toBe(8);
     expect(l27.count).toBe(8);
@@ -86,7 +86,7 @@ describe("jozve descriptive vocab g11 lesson-1 (r311 extraction receipt)", () =>
     }
     const all = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
     expect(new Set(all).size).toBe(all.length);
-    expect(all).toHaveLength(40 + 40 + 40 + 22 + 20 + 20 + 361 + 57 + 114 + 68 + 57); // +۵۷: تشریحی درس اول (r311)؛ +۱۱۴: تشریحی درس دوم/سوم (r312)؛ +۶۸: تشریحی گرامر د۱ (r354)؛ +۵۷: جامع تشریحی د۱ (r355)
+    expect(all).toHaveLength(40 + 40 + 40 + 22 + 20 + 20 + 361 + 57 + 114 + 68 + 57 + 54); // +۵۷: تشریحی درس اول (r311)؛ +۱۱۴: تشریحی درس دوم/سوم (r312)؛ +۶۸: تشریحی گرامر د۱ (r354)؛ +۵۷: جامع تشریحی د۱ (r355)؛ +۵۴: تشریحی گرامر د۲ (r356)
   });
 
   it("typed purity (l25/l26/l27): kind=typed, accepted[0]=options[answer], answer=0, placeholder set, English purity, healthy blank/hint", () => {

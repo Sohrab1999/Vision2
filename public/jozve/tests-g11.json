@@ -12768,6 +12768,866 @@
           "answer": 0
         }
       ]
+    },
+    {
+      "lesson": 56,
+      "title": "تشریحی گرامر د۲ — جاهای خالی با since یا for (ص۶۳)",
+      "level": "تشریحی — تایپی",
+      "count": 10,
+      "questions": [
+        {
+          "id": "g11-l56-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "My sister has been sick ------------------------ a long time. She has been in the hospital ------------------------ January.",
+          "options": [
+            "for / since",
+            "since / for"
+          ],
+          "answer": 0,
+          "accepted": [
+            "for / since"
+          ],
+          "placeholder": "fill each blank: first blank / second blank…"
+        },
+        {
+          "id": "g11-l56-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Nobody lives in those houses. They have been empty ------------------------ many years.",
+          "options": [
+            "for",
+            "since"
+          ],
+          "answer": 0,
+          "accepted": [
+            "for"
+          ],
+          "placeholder": "fill the blank with since or for…"
+        },
+        {
+          "id": "g11-l56-3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "I have been interested in computer technology ------------------------ four years.",
+          "options": [
+            "for",
+            "since"
+          ],
+          "answer": 0,
+          "accepted": [
+            "for"
+          ],
+          "placeholder": "fill the blank with since or for…"
+        },
+        {
+          "id": "g11-l56-4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "My father is in his office. He has been there ------------------------ 8 o’clock.",
+          "options": [
+            "since",
+            "for"
+          ],
+          "answer": 0,
+          "accepted": [
+            "since"
+          ],
+          "placeholder": "fill the blank with since or for…"
+        },
+        {
+          "id": "g11-l56-5",
+          "n": 5,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "He has stopped smoking ------------------------ the birth of his baby.",
+          "options": [
+            "since",
+            "for"
+          ],
+          "answer": 0,
+          "accepted": [
+            "since"
+          ],
+          "placeholder": "fill the blank with since or for…"
+        },
+        {
+          "id": "g11-l56-6",
+          "n": 6,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "My parents have been married ------------------------ 20 years.",
+          "options": [
+            "for",
+            "since"
+          ],
+          "answer": 0,
+          "accepted": [
+            "for"
+          ],
+          "placeholder": "fill the blank with since or for…"
+        },
+        {
+          "id": "g11-l56-7",
+          "n": 7,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "We have lived in Shiraz ------------------------ ten years ago.",
+          "options": [
+            "since",
+            "for"
+          ],
+          "answer": 0,
+          "accepted": [
+            "since"
+          ],
+          "placeholder": "fill the blank with since or for…"
+        },
+        {
+          "id": "g11-l56-8",
+          "n": 8,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "We have known each other ------------------------ 15 years.",
+          "options": [
+            "for",
+            "since"
+          ],
+          "answer": 0,
+          "accepted": [
+            "for"
+          ],
+          "placeholder": "fill the blank with since or for…"
+        },
+        {
+          "id": "g11-l56-9",
+          "n": 9,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "I’ve painted two rooms ------------------------ lunchtime.",
+          "options": [
+            "since",
+            "for"
+          ],
+          "answer": 0,
+          "accepted": [
+            "since"
+          ],
+          "placeholder": "fill the blank with since or for…"
+        },
+        {
+          "id": "g11-l56-10",
+          "n": 10,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "He has been in China ------------------------ two weeks.",
+          "options": [
+            "for",
+            "since"
+          ],
+          "answer": 0,
+          "accepted": [
+            "for"
+          ],
+          "placeholder": "fill the blank with since or for…"
+        }
+      ]
+    },
+    {
+      "lesson": 57,
+      "title": "تشریحی گرامر د۲ — گزینهٔ صحیح پرانتزی (ص۶۳)",
+      "level": "تشریحی — تایپی",
+      "count": 12,
+      "questions": [
+        {
+          "id": "g11-l57-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Reza (went / has gone) to the cinema with Ali yesterday.",
+          "options": [
+            "went",
+            "has gone"
+          ],
+          "answer": 0,
+          "accepted": [
+            "went"
+          ],
+          "placeholder": "type the correct option in parentheses…"
+        },
+        {
+          "id": "g11-l57-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "She (have bought / has bought) two dresses, shoes and a handbag.",
+          "options": [
+            "have bought",
+            "has bought"
+          ],
+          "answer": 1,
+          "accepted": [
+            "has bought"
+          ],
+          "placeholder": "type the correct option in parentheses…"
+        },
+        {
+          "id": "g11-l57-3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "He (took / have taken) the plane last week to go to Japan.",
+          "options": [
+            "took",
+            "have taken"
+          ],
+          "answer": 0,
+          "accepted": [
+            "took"
+          ],
+          "placeholder": "type the correct option in parentheses…"
+        },
+        {
+          "id": "g11-l57-4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Look at the dress I (has bought / have bought). Isn’t it beautiful?",
+          "options": [
+            "has bought",
+            "have bought"
+          ],
+          "answer": 1,
+          "accepted": [
+            "have bought"
+          ],
+          "placeholder": "type the correct option in parentheses…"
+        },
+        {
+          "id": "g11-l57-5",
+          "n": 5,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "He (will eat / has eaten) too much chocolate and he feels sick.",
+          "options": [
+            "will eat",
+            "has eaten"
+          ],
+          "answer": 1,
+          "accepted": [
+            "has eaten"
+          ],
+          "placeholder": "type the correct option in parentheses…"
+        },
+        {
+          "id": "g11-l57-6",
+          "n": 6,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "A: How long (do you live / have you lived) in this apartment? B: About five years.",
+          "options": [
+            "do you live",
+            "have you lived"
+          ],
+          "answer": 1,
+          "accepted": [
+            "have you lived"
+          ],
+          "placeholder": "type the correct option in parentheses…"
+        },
+        {
+          "id": "g11-l57-7",
+          "n": 7,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "My father (is / has been) in Yazd right now. He (is / has been) there for two weeks.",
+          "options": [
+            "is / has been",
+            "has been / is"
+          ],
+          "answer": 0,
+          "accepted": [
+            "is / has been"
+          ],
+          "placeholder": "type both answers in order: first blank / second blank…"
+        },
+        {
+          "id": "g11-l57-8",
+          "n": 8,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "She (didn’t see / hasn’t seen) her son for a long time.",
+          "options": [
+            "didn’t see",
+            "hasn’t seen"
+          ],
+          "answer": 1,
+          "accepted": [
+            "hasn’t seen"
+          ],
+          "placeholder": "type the correct option in parentheses…"
+        },
+        {
+          "id": "g11-l57-9",
+          "n": 9,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "My brother (hasn’t called / didn’t call) me since Friday.",
+          "options": [
+            "hasn’t called",
+            "didn’t call"
+          ],
+          "answer": 0,
+          "accepted": [
+            "hasn’t called"
+          ],
+          "placeholder": "type the correct option in parentheses…"
+        },
+        {
+          "id": "g11-l57-10",
+          "n": 10,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Recently, we (had / have had) many parties with our friends.",
+          "options": [
+            "had",
+            "have had"
+          ],
+          "answer": 1,
+          "accepted": [
+            "have had"
+          ],
+          "placeholder": "type the correct option in parentheses…"
+        },
+        {
+          "id": "g11-l57-11",
+          "n": 11,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Have you ever (are / been) to England?",
+          "options": [
+            "are",
+            "been"
+          ],
+          "answer": 1,
+          "accepted": [
+            "been"
+          ],
+          "placeholder": "type the correct option in parentheses…"
+        },
+        {
+          "id": "g11-l57-12",
+          "n": 12,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "When the egg was cooked she (ate / has eaten) it.",
+          "options": [
+            "ate",
+            "has eaten"
+          ],
+          "answer": 0,
+          "accepted": [
+            "ate"
+          ],
+          "placeholder": "type the correct option in parentheses…"
+        }
+      ]
+    },
+    {
+      "lesson": 58,
+      "title": "تشریحی گرامر د۲ — شکل صحیح افعال (ص۶۳)",
+      "level": "تشریحی — تایپی",
+      "count": 12,
+      "questions": [
+        {
+          "id": "g11-l58-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "We ---------------------------------------- (not play) football yesterday.",
+          "options": [
+            "didn’t play",
+            "have lost",
+            "hasn’t answered",
+            "hasn’t had"
+          ],
+          "answer": 0,
+          "accepted": [
+            "didn’t play"
+          ],
+          "placeholder": "write the correct verb form (present perfect or simple past)…"
+        },
+        {
+          "id": "g11-l58-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "I ---------------------------------------- (lose) my keys. I can’t find them.",
+          "options": [
+            "have lost",
+            "didn’t play",
+            "hasn’t answered",
+            "hasn’t had"
+          ],
+          "answer": 0,
+          "accepted": [
+            "have lost"
+          ],
+          "placeholder": "write the correct verb form (present perfect or simple past)…"
+        },
+        {
+          "id": "g11-l58-3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "No, he ---------------------------------------- (not answer) yet. He is a lazy boy.",
+          "options": [
+            "hasn’t answered",
+            "didn’t play",
+            "have lost",
+            "hasn’t had"
+          ],
+          "answer": 0,
+          "accepted": [
+            "hasn’t answered"
+          ],
+          "placeholder": "write the correct verb form (present perfect or simple past)…"
+        },
+        {
+          "id": "g11-l58-4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Ahmad is late; I hope he ---------------------------------------- (not have) an accident.",
+          "options": [
+            "hasn’t had",
+            "didn’t play",
+            "have lost",
+            "hasn’t answered"
+          ],
+          "answer": 0,
+          "accepted": [
+            "hasn’t had"
+          ],
+          "placeholder": "write the correct verb form (present perfect or simple past)…"
+        },
+        {
+          "id": "g11-l58-5",
+          "n": 5,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "My uncle travels a lot. He ---------------------------------------- (visit) many countries.",
+          "options": [
+            "has visited",
+            "didn’t play",
+            "have lost",
+            "hasn’t answered"
+          ],
+          "answer": 0,
+          "accepted": [
+            "has visited"
+          ],
+          "placeholder": "write the correct verb form (present perfect or simple past)…"
+        },
+        {
+          "id": "g11-l58-6",
+          "n": 6,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Yesterday, my brother ---------------------------------------- (repair) the car and washed it.",
+          "options": [
+            "repaired",
+            "didn’t play",
+            "have lost",
+            "hasn’t answered"
+          ],
+          "answer": 0,
+          "accepted": [
+            "repaired"
+          ],
+          "placeholder": "write the correct verb form (present perfect or simple past)…"
+        },
+        {
+          "id": "g11-l58-7",
+          "n": 7,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Last Monday the teacher ---------------------------------------- (ask) us to check our exercises.",
+          "options": [
+            "asked",
+            "didn’t play",
+            "have lost",
+            "hasn’t answered"
+          ],
+          "answer": 0,
+          "accepted": [
+            "asked"
+          ],
+          "placeholder": "write the correct verb form (present perfect or simple past)…"
+        },
+        {
+          "id": "g11-l58-8",
+          "n": 8,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "I live in Tehran now, but I ---------------------------------------- (live) in Rasht for many years.",
+          "options": [
+            "have lived",
+            "didn’t play",
+            "have lost",
+            "hasn’t answered"
+          ],
+          "answer": 0,
+          "accepted": [
+            "have lived"
+          ],
+          "placeholder": "write the correct verb form (present perfect or simple past)…"
+        },
+        {
+          "id": "g11-l58-9",
+          "n": 9,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "My friend is a painter. He ---------------------------------------- (win) many prizes for his paintings.",
+          "options": [
+            "has won",
+            "didn’t play",
+            "have lost",
+            "hasn’t answered"
+          ],
+          "answer": 0,
+          "accepted": [
+            "has won"
+          ],
+          "placeholder": "write the correct verb form (present perfect or simple past)…"
+        },
+        {
+          "id": "g11-l58-10",
+          "n": 10,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "During the last summer holidays, I ---------------------------------------- (spend) one week in Turkey.",
+          "options": [
+            "spent",
+            "didn’t play",
+            "have lost",
+            "hasn’t answered"
+          ],
+          "answer": 0,
+          "accepted": [
+            "spent"
+          ],
+          "placeholder": "write the correct verb form (present perfect or simple past)…"
+        },
+        {
+          "id": "g11-l58-11",
+          "n": 11,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "My father is sixty years old and he ---------------------------------------- (never drive) a car in his whole life.",
+          "options": [
+            "has never driven",
+            "didn’t play",
+            "have lost",
+            "hasn’t answered"
+          ],
+          "answer": 0,
+          "accepted": [
+            "has never driven"
+          ],
+          "placeholder": "write the correct verb form (present perfect or simple past)…"
+        },
+        {
+          "id": "g11-l58-12",
+          "n": 12,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Snow ---------------------------------------- (prevent) us from travelling since last Friday. We can’t go anywhere.",
+          "options": [
+            "has prevented",
+            "didn’t play",
+            "have lost",
+            "hasn’t answered"
+          ],
+          "answer": 0,
+          "accepted": [
+            "has prevented"
+          ],
+          "placeholder": "write the correct verb form (present perfect or simple past)…"
+        }
+      ]
+    },
+    {
+      "lesson": 59,
+      "title": "تشریحی گرامر د۲ — تست چهارگزینه‌ای (ص۶۴)",
+      "level": "تشریحی — چهارگزینه‌ای",
+      "count": 20,
+      "questions": [
+        {
+          "id": "g11-l59-1",
+          "n": 1,
+          "category": "grammar",
+          "question": "Ahmad works in a factory now, but he -------------------- a lot of different jobs.",
+          "options": [
+            "has",
+            "have had",
+            "had",
+            "has had"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l59-2",
+          "n": 2,
+          "category": "grammar",
+          "question": "He’s only 30 and he -------------------- on all the seas and oceans of the world!",
+          "options": [
+            "has sailed",
+            "sails",
+            "have sailed",
+            "sailed"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l59-3",
+          "n": 3,
+          "category": "grammar",
+          "question": "I -------------------- smoking several years ago.",
+          "options": [
+            "have given up",
+            "gave up",
+            "has given up",
+            "gives up"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l59-4",
+          "n": 4,
+          "category": "grammar",
+          "question": "She -------------------- talking since the beginning of the lesson.",
+          "options": [
+            "doesn’t stop",
+            "hasn’t stopped",
+            "didn’t stop",
+            "haven’t stopped"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l59-5",
+          "n": 5,
+          "category": "grammar",
+          "question": "When I was a child, I -------------------- to be a photographer.",
+          "options": [
+            "wanted",
+            "have wanted",
+            "want",
+            "has wanted"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l59-6",
+          "n": 6,
+          "category": "grammar",
+          "question": "I -------------------- anything since breakfast.",
+          "options": [
+            "didn’t eat",
+            "hasn’t eaten",
+            "never eat",
+            "haven’t eaten"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l59-7",
+          "n": 7,
+          "category": "grammar",
+          "question": "A: Why -------------------- this morning? B: The traffic was bad.",
+          "options": [
+            "were you late",
+            "have you been",
+            "are you late",
+            "has you been"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l59-8",
+          "n": 8,
+          "category": "grammar",
+          "question": "Have you ever -------------------- to Paris or to London?",
+          "options": [
+            "were",
+            "be",
+            "been",
+            "are"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g11-l59-9",
+          "n": 9,
+          "category": "grammar",
+          "question": "How many times -------------------- Brazil -------------------- the World Cup?",
+          "options": [
+            "does / win",
+            "has / won",
+            "did / win",
+            "have / won"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l59-10",
+          "n": 10,
+          "category": "grammar",
+          "question": "A: Who is that man? B: I don’t know. I -------------------- him before.",
+          "options": [
+            "has never seen",
+            "never see",
+            "have never seen",
+            "didn’t see"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g11-l59-11",
+          "n": 11,
+          "category": "grammar",
+          "question": "A: Is that a new coat? B: No, I -------------------- this coat for a long time.",
+          "options": [
+            "have",
+            "have had",
+            "had",
+            "has had"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l59-12",
+          "n": 12,
+          "category": "grammar",
+          "question": "I was doing my homework when my mother -------------------- home.",
+          "options": [
+            "comes back",
+            "has come back",
+            "came back",
+            "have come back"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g11-l59-13",
+          "n": 13,
+          "category": "grammar",
+          "question": "You -------------------- never -------------------- this lesson so you have to do more exercises.",
+          "options": [
+            "don’t / learn",
+            "didn’t / learn",
+            "has / learnt",
+            "have / learnt"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l59-14",
+          "n": 14,
+          "category": "grammar",
+          "question": "He has -------------------- for 3 hours in this swimming pool.",
+          "options": [
+            "swim",
+            "swam",
+            "swum",
+            "swimming"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g11-l59-15",
+          "n": 15,
+          "category": "grammar",
+          "question": "I bought a new tie last week, but I -------------------- it yet.",
+          "options": [
+            "haven’t worn",
+            "didn’t wear",
+            "hasn’t worn",
+            "don’t wear"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l59-16",
+          "n": 16,
+          "category": "grammar",
+          "question": "A: Have you ever spoken to him. B: Yes, I -------------------- to him last month.",
+          "options": [
+            "has spoken",
+            "have spoken",
+            "speak",
+            "spoke"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l59-17",
+          "n": 17,
+          "category": "grammar",
+          "question": "He -------------------- his homework yet, although he started it two hours ago.",
+          "options": [
+            "didn’t finish",
+            "hasn’t finished",
+            "never finishes",
+            "haven’t finished"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l59-18",
+          "n": 18,
+          "category": "grammar",
+          "question": "While I was walking in the park yesterday, I -------------------- a woman running very fast.",
+          "options": [
+            "saw",
+            "have seen",
+            "see",
+            "has seen"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l59-19",
+          "n": 19,
+          "category": "grammar",
+          "question": "Sarah has lost her passport again. This is the second time this --------------------.",
+          "options": [
+            "happened",
+            "has happened",
+            "happens",
+            "have happened"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l59-20",
+          "n": 20,
+          "category": "grammar",
+          "question": "My son -------------------- his English homework yet.",
+          "options": [
+            "didn’t do",
+            "haven’t done",
+            "doesn’t do",
+            "hasn’t done"
+          ],
+          "answer": 3
+        }
+      ]
     }
   ],
   "source": {
@@ -13068,6 +13928,28 @@
         "متنِ ریدینگِ سکشن۱۳ (زبان اشاره) و متنِ کلوزِ سکشن۱۲ (قاره‌ها) طبقِ قراردادِ کتابخانه در ساقه‌ها تکرار نشد (الگوی g10-l23/l24 و l35 گ12)؛ کلوز با جملهٔ حاویِ بلنکِ شماره‌دار خودبسنده شد",
         "بدونِ ترجمهٔ چاپی («ترجمه» ×۰ در ص۴۰-۴۲) — فیلدِ translation ساخته نشده",
         "هم‌پوشانی‌سنجی: ساقه‌های این خانواده با بانک‌های پیشینِ tests-g11 (r275/r277/r278/r308/r309/r311/r312/r354) اشتراک ندارند — «۶۰/۷۰/۷۰ تست جمع بندی» ص۳۶-۳۹ (r276) و «تست دستگریمی» خانوادهٔ جدا هستند"
+      ]
+    },
+    "g11l2gtash": {
+      "exam": "آزمون تشریحی گرامر درس دوم - پایه یازدهم (ص۶۳-۶۴)",
+      "header": "«آزمون تشریحی گرامر درس دوم (پاسخنامه صفحه ۱۸۷)» — چهار سکشن / ۵۴ آیتم (۱۰+۱۲+۱۲+۲۰)",
+      "keyPages": "187",
+      "keyVerification": "کلیدِ ص۱۸۷ — ۵۴ مدخلِ شماره‌دار با شماره‌گذاریِ بازشوندهِ هر سکشن (۱۰/۱۲/۱۲/۲۰)؛ سکشن۱ → کلیدها ∈ {for, since} با Q1 دوبلانکیِ ترتیب‌دار «for / since»؛ سکشن۲ → کلید ∈ دو نامزدِ پرانتزیِ همان سؤال (۱۱/۱۱) + Q7 دوبلانکیِ «is / has been»؛ سکشن۳ → قفلِ رادیکالِ فعلِ پرانتزی (۱۲/۱۲ با win→wonِ بی‌قاعده)؛ سکشن۴ → نگاشتِ یکتای متنِ کلید→گزینه (۲۰/۲۰)",
+      "extractedRound": "r356",
+      "pattern": "r354 (برشِ سکشن با لنگرِ اولین سؤال + گاردِ فارسی + ماشینِ MCQ) + r351 (کلیدِ پارس‌شده از لایه، نه از حفظ) + r355 (پارسِ chunk-محورِ آیتمِ چندخطی + ادغامِ رانِ شکسته) + g10-l14/l15 و r354-l40 (قراردادِ typed: accepted + placeholder؛ گزینه‌ها = دو نامزدِ پرانتزی)",
+      "printQuirks": [
+        "چهار سکشنِ خودِ آزمون چهار بانک شدند (الگوی r354/r355): سکشن۱ جاهای خالی با since یا for (۱۰ تایپی)، سکشن۲ زیر گزینهٔ صحیح خط بکشید (۱۲ تایپیِ پرانتزی)، سکشن۳ شکل صحیح افعال داخل پرانتز (۱۲ تایپی)، سکشن۴ بهترین گزینه (۲۰ MCQ) — کلیدِ ص۱۸۷ هر چهار سکشن را در یک صفحه دارد («پاسخنامه آزمون تش  ییح گرامر درس دوم» با ارجاعِ «آزمون صفحه ۶۳ و ۶۴») و سربرگِ خودِ آزمون لوکاتور را اعلام می‌کند: «پاسخنامه صفحه ۱۸۷» (رقم‌ها در لایه دوخطی: «7⏎18»)",
+        "سربرگِ لایه به‌هم‌ریخته است: «آزمون تش  ییح گرامر درس دوم» (حروفِ ر/حِ «تشریحی» در لایه غایب) — همان خانوادهٔ scrambleِ r331/r355؛ scrambleهای مشابه در سربرگ‌های سکشن‌ها: «جاهای خایل» (خالی)، «بهی  ین» (بهترین)، «پرانی» (پرانتز)؛ ترتیبِ واژه‌های سربرگِ سکشن۱ در لایه RTL-شکسته است («.استفاده کرده و جاهای خایل را پر کنید for ⏎ یاsince ⏎ 1 ⏎ . از»)",
+        "سکشن۱ آیتم۱: دو جای خالی با کلیدِ ترتیب‌دارِ چاپی «for / since» (جای اول for، جای دوم since) — accepted به‌صورتِ «for / since» حفظ شد و نرمال‌سازیِ موتورِ تایپ اسلش را به فاصله تبدیل می‌کند؛ گزینهٔ دومِ داربست «since / for» است (خرابِ ترتیب)",
+        "سکشن۱ آیتم۸: رانِ خط‌تیرهٔ جای‌خالی در لایه بینِ سه خط شکسته است («each other ⏎ ۱۶تیره ⏎ ۸تیره ⏎ 15 years.») — پارسِ chunk-محور (درسِ r355) و ادغام در یک جای‌خالیِ ۲۴تیره؛ عرضِ همهٔ بلنک‌های سکشن۱ به ۲۴ تیره نرمال شد",
+        "سکشن۲ آیتم۷: جفتِ «(is / has been)» دو بار در همان سؤال چاپ شده (دو جای خالی) و کلیدِ چاپی «is / has been» هر دو را به‌ترتیب می‌دهد — تنها آیتمِ دومِ آزمون؛ داربستِ گزینه‌ها «is / has been» و «has been / is»",
+        "سربرگِ سکشن۲ با نقطهٔ جفتِ چاپی «2 .. زیر گزینه ی صحیح خط بکشید» (و در کلید ص۱۸۷ نیز «2 ..» و «4 ..») — عینِ چاپ",
+        "سکشن۴ آیتم۷: گزینهٔ d با چاپ‌غلطِ «has you been» (صحیح: have you been) — verbatim در گزینه‌ها حفظ شد (کلید: «were you late»)",
+        "سکشن۴ آیتم۱۶: بخشِ A با نقطهٔ چاپی به‌جای علامت سؤال («A: Have you ever spoken to him.») — عینِ چاپ حفظ شد (کلید: spoke)",
+        "سکشن۴ آیتم‌های ۹ و ۱۳: دوبلانکی‌های MCQ («How many times --- Brazil --- the World Cup؟» و «You --- never --- this lesson») که خودِ گزینه‌ها جفت‌دو‌بخشیِ چاپی‌اند («has / won»، «have / learnt») — نگاشتِ یکتای متنِ کلید→گزینه ۲۰/۲۰ برقرار است",
+        "عرضِ بلنک‌های سکشن۳ در لایه ناهمگون است (۴۱ تیره در همهٔ آیتم‌ها به‌جز آیتم۱۲ با ۳۲ تیره) — به ۴۰ تیره نرمال شد؛ بلنک‌های سکشن۴ به ۲۰ تیره",
+        "بدونِ ترجمهٔ چاپی («ترجمه» ×۰ در ص۶۳-۶۴) — فیلدِ translation ساخته نشده؛ هر چهار بانک category=grammar (آزمونِ گرامرِ حال کامل/گذشته ساده)",
+        "هم‌پوشانی‌سنجی: ساقه‌های این خانواده با بانک‌های پیشینِ tests-g11 (r275/r277/r278/r308/r309/r311/r312/r354/r355) اشتراک ندارند"
       ]
     }
   }
