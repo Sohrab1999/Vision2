@@ -157,11 +157,11 @@ describe("jozve tests-g10 gwr8 (r343 تست گرامر و نگارش درس سو
 
   it("file shape: 74 banks, 951 items, unique ids", () => {
     expect(bank.grade).toBe(10);
-    expect(bank.lessons).toHaveLength(74);
-    expect(bank.lessons.reduce((s: number, l: { count: number }) => s + l.count, 0)).toBe(951);
+    expect(bank.lessons).toHaveLength(76);
+    expect(bank.lessons.reduce((s: number, l: { count: number }) => s + l.count, 0)).toBe(965);
     const ids = bank.lessons.flatMap((l: TL) => l.questions.map((q: TQ) => q.id));
-    expect(ids.length).toBe(951);
-    expect(new Set(ids).size).toBe(951);
+    expect(ids.length).toBe(965);
+    expect(new Set(ids).size).toBe(965);
     expect(ids).toContain("g10-l74-1");
     expect(ids).toContain("g10-l74-46");
   });

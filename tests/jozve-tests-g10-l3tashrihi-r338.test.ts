@@ -26,9 +26,9 @@ describe("tests-g10 tashrihi3 — تشریحی واژگان درس سوم (r338)
 
   it("file shape: 56 banks, family 734 items (4 tashrihi3 appended)", () => {
     expect(doc.grade).toBe(10);
-    expect(doc.lessons).toHaveLength(74);
-    expect(doc.lessons.slice(6).map((l: { count: number }) => l.count)).toEqual([16, 8, 8, 25, 40, 40, 15, 7, 5, 10, 20, 16, 12, 6, 7, 14, 6, 6, 40, 15, 7, 10, 12, 20, 45, 16, 12, 5, 7, 4, 6, 8, 8, 6, 6, 3, 4, 6, 6, 1, 4, 6, 2, 8, 6, 6, 16, 8, 8, 25, 40, 10, 7, 7, 5, 5, 10, 5, 5, 20, 16, 12, 9, 5, 2, 6, 7, 46]);
-    expect(doc.lessons.reduce((s: number, l: { count: number }) => s + l.count, 0)).toBe(951);
+    expect(doc.lessons).toHaveLength(76);
+    expect(doc.lessons.slice(6).map((l: { count: number }) => l.count)).toEqual([16, 8, 8, 25, 40, 40, 15, 7, 5, 10, 20, 16, 12, 6, 7, 14, 6, 6, 40, 15, 7, 10, 12, 20, 45, 16, 12, 5, 7, 4, 6, 8, 8, 6, 6, 3, 4, 6, 6, 1, 4, 6, 2, 8, 6, 6, 16, 8, 8, 25, 40, 10, 7, 7, 5, 5, 10, 5, 5, 20, 16, 12, 9, 5, 2, 6, 7, 46, 4, 10]);
+    expect(doc.lessons.reduce((s: number, l: { count: number }) => s + l.count, 0)).toBe(965);
   });
 
   it("bank 53 (بانک واژه): 16 typed keys locked to p274, extras situation/interview never the accepted key", () => {
@@ -107,7 +107,7 @@ describe("tests-g10 tashrihi3 — تشریحی واژگان درس سوم (r338)
 
   it("no duplicate ids across the whole family (828)", () => {
     const ids = doc.lessons.flatMap((l: { questions: { id: string }[] }) => l.questions.map((q: { id: string }) => q.id));
-    expect(ids.length).toBe(951);
-    expect(new Set(ids).size).toBe(951);
+    expect(ids.length).toBe(965);
+    expect(new Set(ids).size).toBe(965);
   });
 });

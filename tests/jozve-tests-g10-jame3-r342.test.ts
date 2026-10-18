@@ -222,11 +222,11 @@ describe("jozve tests-g10 jame3 (r342 آزمون جامع تشریحی درس س
 
   it("file shape: 73 banks, 905 items, unique ids", () => {
     expect(bank.grade).toBe(10);
-    expect(bank.lessons).toHaveLength(74);
-    expect(bank.lessons.reduce((s: number, l: { count: number }) => s + l.count, 0)).toBe(951);
+    expect(bank.lessons).toHaveLength(76);
+    expect(bank.lessons.reduce((s: number, l: { count: number }) => s + l.count, 0)).toBe(965);
     const ids = bank.lessons.flatMap((l: TL) => l.questions.map((q: TQ) => q.id));
-    expect(ids.length).toBe(951);
-    expect(new Set(ids).size).toBe(951);
+    expect(ids.length).toBe(965);
+    expect(new Set(ids).size).toBe(965);
     // هفت آیتمِ جدید با الگویِ idِ خانواده
     ["g10-l67-1", "g10-l68-12", "g10-l69-9", "g10-l70-5", "g10-l71-2", "g10-l72-6", "g10-l73-7"].forEach((id) =>
       expect(ids).toContain(id)

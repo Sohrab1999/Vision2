@@ -15559,6 +15559,184 @@
           "translation": "به محض اینکه معلم روی برگرداند تا سوالات را بر روی تخته بنویسد بچه ها در همان لحظه شروع به صحبت کردن با همدیگر کردند."
         }
       ]
+    },
+    {
+      "lesson": 75,
+      "title": "کنکور ۹۸-۱۴۰۰ — تستهای ضمیر انعکاسی و تاکیدی (ص۱۲۸)",
+      "level": "کنکوری — چهارگزینه‌ای",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g10-l75-1",
+          "n": 1,
+          "category": "grammar",
+          "question": "We spent a week in Istanbul, and then a month in a village. The villagers --------------------- were very welcoming. (کنکور خارج تجربی ۱۴۰۰)",
+          "options": [
+            "they",
+            "them",
+            "themselves",
+            "who they"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l75-2",
+          "n": 2,
+          "category": "grammar",
+          "question": "Gerald --------------------- forgot to lock the door the night our restaurant was robbed. (کنکور ریاضی ۹۹)",
+          "options": [
+            "and I",
+            "or myself",
+            "and I themselves",
+            "himself and myself"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l75-3",
+          "n": 3,
+          "category": "grammar",
+          "question": "When a student doesn’t listen to the teacher in class and talks to others, she prevents -------------------- and others from learning. (کنکور هنر ۹۹)",
+          "options": [
+            "it",
+            "those",
+            "herself",
+            "themselves"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l75-4",
+          "n": 4,
+          "category": "grammar",
+          "question": "A: Did anyone help them do the project? B: No, those college students, Ted and Tom, --------------------- did the project. (کنکور هنر با اندکی تغییر ۹۸)",
+          "options": [
+            "ourselves",
+            "they",
+            "themselves",
+            "were those"
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "lesson": 76,
+      "title": "تمرین افعال حالتی و کنشی (ص۱۳۰)",
+      "level": "تمرین — دونگزینه‌ایِ خط‌بکشید",
+      "count": 10,
+      "questions": [
+        {
+          "id": "g10-l76-1",
+          "n": 1,
+          "category": "grammar",
+          "question": "I don’t know him but he (seems / is seeming) like such a nice boy.",
+          "options": [
+            "seems",
+            "is seeming"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l76-2",
+          "n": 2,
+          "category": "grammar",
+          "question": "I (have / am having) dinner with my friends now. Can you call me later?",
+          "options": [
+            "have",
+            "am having"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l76-3",
+          "n": 3,
+          "category": "grammar",
+          "question": "I eat a lot of chocolate because I (love / am loving) sweets.",
+          "options": [
+            "love",
+            "am loving"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l76-4",
+          "n": 4,
+          "category": "grammar",
+          "question": "My coffee (tastes / is tasting) bitter. Pass me the sugar, please.",
+          "options": [
+            "tastes",
+            "is tasting"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l76-5",
+          "n": 5,
+          "category": "grammar",
+          "question": "Maryam (studies / is studying) English with her mother at the moment.",
+          "options": [
+            "studies",
+            "is studying"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l76-6",
+          "n": 6,
+          "category": "grammar",
+          "question": "Why (don’t you remember / aren’t you remembering) my family name?",
+          "options": [
+            "don’t you remember",
+            "aren’t you remembering"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l76-7",
+          "n": 7,
+          "category": "grammar",
+          "question": "I had dinner and (was watching / watched) TV for a couple of hours.",
+          "options": [
+            "was watching",
+            "watched"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l76-8",
+          "n": 8,
+          "category": "grammar",
+          "question": "I (need / am needing) to do some shopping on my way home from work.",
+          "options": [
+            "need",
+            "am needing"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l76-9",
+          "n": 9,
+          "category": "grammar",
+          "question": "He (is liking / likes) to spend his evenings in front of the television.",
+          "options": [
+            "is liking",
+            "likes"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l76-10",
+          "n": 10,
+          "category": "grammar",
+          "question": "We (were cooking / cooked) all morning because we had 15 people coming for lunch.",
+          "options": [
+            "were cooking",
+            "cooked"
+          ],
+          "answer": 0
+        }
+      ]
     }
   ],
   "source": {
@@ -16110,6 +16288,40 @@
         "برچسب‌های قرمزِ منبعِ کنکور با ارقامِ فارسی — نخستین خانوادهٔ شاخه+سال در کارتِ دهم: Q43 «(زبان ۹۳)»، Q44 «(هنر ۹۴)»، Q45 «(تجربی ۹۶ - با تغییر)»، Q46 «(هنر ۱۴۰۰)» — لایه «هین94/هین1400» = «هنر» (رندر حاکم)؛ الگویِ درون‌ساقه مثل r322 «(کنکور منحصراً زبان)»",
         "تیره‌ها: ۷۳ رانِ لایه / ۴۶ ساقه / ۷۳ جای‌خالی — استانداردِ ۲۲ با استثناهای عینِ چاپ: Q7=۱۵+۲۲، Q35=۱۷+۱۷، Q37=۲۰+۱۹، Q41=۱۵+۱۳، Q42=۱۹+۱۹، Q28 سه‌جای‌خالی (شمارشِ لایه حاکم — r338)؛ آپاستروف‌های تایپوگرافیک: didn’t/wouldn’t/son’s/don’t/wasn’t/can’t/aren’t/hasn’t",
         "گفتمانِ A/B در Q22 و Q36 با گیومهٔ تایپوگرافیک؛ فاصلهٔ ستونیِ چاپ بین «الف/ب» به یک فاصله فروپاشید (قرینهٔ r339-Q6)؛ بدونِ جعبهٔ Note در ص۲۸۶ (برخلافِ r334/r338/r341) — کلید در چهار صفحهٔ ۲۸۳-۲۸۶ پخش است"
+      ]
+    },
+    "refl1": {
+      "exam": "تستهای ضمیر انعکاسی و تاکیدی در کنکورهای سال ۱۳۹۸ تا ۱۴۰۰ (ص۱۲۸)",
+      "header": "سربرگِ چاپیِ ص۱۲۸: «تستهای ضمیر انعکاسی و تاکیدی در کنکورهای سال ۱۳۹۸ تا ۱۴۰۰» — جعبهٔ صورتی با ارقامِ فارسیِ ۱۳۹۸/۱۴۰۰ — ۴ MCQ کنکوری",
+      "keyPages": "128",
+      "keyVerification": "print key p128 «پاسخنامه تشریحی ۴ تست بالا:» — ۴ مدخلِ توضیح‌دار با نکاتِ سرخِ «(رد گزینه ...)» — 4/4 agree with semantic pre-fill, zero divergence (گریدِ ۳/۱/۳/۳)",
+      "extractedRound": "r344",
+      "pattern": "r343/r322 (برچسبِ کنکورِ درون‌ساقه) — MCQ چهارگزینه‌ایِ بدونِ ترجمهٔ چاپی (کلیدِ توضیح‌دارِ همان صفحه)",
+      "printQuirks": [
+        "سربرگِ چاپیِ ص۱۲۸: «تستهای ضمیر انعکاسی و تاکیدی در کنکورهای سال ۱۳۹۸ تا ۱۴۰۰» — جعبهٔ صورتی، ارقامِ فارسیِ ۱۳۹۸/۱۴۰۰ با واصفِ «تا»؛ «تاکیدی» بی‌همزه در سربرگ در برابرِ «تأکیدی» همزه‌دار در نکتهٔ ۶ همان صفحه و در کلید — ناسازگاریِ خودِ چاپ؛ «انعکایس» لایه = «انعکاسی» چاپ",
+        "سربرگِ کلید (جعبهٔ زردِ همان صفحه): «پاسخنامه تشریحی ۴ تست بالا:» — «تسی یچ» لایه = هشتمین تجزیهٔ به‌هم‌ریختگیِ «تشریحی» (r340 ششم، r342 هفتم)؛ کلیدِ درون‌متنیِ زیرِ خودِ تست‌ها — نه صفحاتِ انتهایی؛ گریدِ ۳/۱/۳/۳",
+        "«باال» لایه = «بالا» چاپ در «هیچگاه بالا فاصله بعد از فاعل» (کلیدِ ۱ و ۴) — لا-لیگاتور در رندرِ ۳۰۰۰dpi؛ عبارتِ ناهموارِ خودِ چاپ (ظاهراً «با فاصله» مقصود بوده) — عینِ چاپ محفوظ؛ در مقدمهٔ ص۱۲۷ «به تنهاب» = تجزیهٔ «تنهایی» (خانوادهٔ r341)",
+        "نکاتِ سرخِ «(رد گزینه ...)» در کلید: نخستِ هر مدخل فاصله‌دار «(رد گزینه ۱ و۴.)» با نقطهٔ درونِ پرانتز، دومی چسبیده «(رد گزینه۲).» با نقطهٔ بیرونِ پرانتز — ناسازگاریِ نقطه‌گذاری/فاصله‌گذاریِ خودِ چاپ (برشِ span-محورِ ۳۰۰۰dpi: span « (رد گزینه2» + « )»)",
+        "«حتمأ» لایه = «حتماً» چاپ (تنوینِ روی الفِ پایانی — رندرِ ۳۰۰۰dpi)؛ «ضمیر تاکیدی» بی‌همزه در همان جمله در برابرِ «تأکیدی» همزه‌دار در جملهٔ بعدیِ همان مدخلِ ۲",
+        "دیاگرامِ کلیدِ ۲: «Gerald and I ourselves forget …» — ساختارِ ساقه+ضمیرِ تأکیدی با «ourselves» سرخ؛ «f sel her» لایه در مدخلِ ۳ = «herself» چاپ (به‌هم‌ریختگیِ OCR)",
+        "برچسب‌های آبیِ کنکور با ارقامِ فارسی — درون‌ساقه به الگوی r322/r343: Q1 «(کنکور خارج تجربی ۱۴۰۰)»، Q2 «(کنکور ریاضی ۹۹)»، Q3 «(کنکور هنر ۹۹)»، Q4 «(کنکور هنر با اندکی تغییر ۹۸)» — لایه «نکنکور/تجرب/هین/اندگ تغییر» = نویزِ OCR (رندر حاکم: «ریاضی/تجربی/هنر/اندکی»)",
+        "تیره‌ها: Q1=۲۱، Q2=۲۱، Q3=۲۰، Q4=۲۱ (شمارشِ لایه حاکم — r338)؛ سبکِ چاپِ جای‌خالی خط‌چینِ سبزِ پیوسته است (در رونویسی با تیرهٔ یونیکد)؛ آپاستروفِ تایپوگرافیکِ doesn’t در Q3",
+        "بدونِ ترجمهٔ چاپی برای این ۴ تست (برخلافِ r334/r339/r341/r343) — کلید فقط توضیحِ فارسی دارد؛ غیبتِ صادقانه"
+      ]
+    },
+    "verb1": {
+      "exam": "تمرین \"افعال حالتی و کنشی\" (ص۱۳۰)",
+      "header": "سربرگِ چاپیِ ص۱۳۰: «تمرین \"افعال حالتی و کنشی\". زیر گزینه صحیح خط بکشید.» — عنوانِ سرخِ نقل‌قولی — ۱۰ آیتمِ دونگزینه‌ای",
+      "keyPages": "130",
+      "keyVerification": "print key p130 «Answer Key:» جدولِ ۲×۵ در همان صفحه — 10/10 agree with semantic pre-fill, zero divergence",
+      "extractedRound": "r344",
+      "pattern": "MCQ دونگزینه‌ای — نخستین بانکِ دونگزینه‌ایِ کارتِ دهم (options.length=2)؛ ساقه با پرانتزِ عینِ چاپ",
+      "printQuirks": [
+        "سربرگِ چاپیِ ص۱۳۰: «تمرین \"افعال حالتی و کنشی\". زیر گزینه صحیح خط بکشید.» — عنوانِ سرخِ نقل‌قولی؛ «حالتی» با ی در برابرِ سربرگِ بخشِ ص۱۲۹ «افعال حالت و کنشی» بدونِ ی — ناسازگاریِ خودِ چاپ",
+        "نخستین بانکِ دونگزینه‌ایِ کارتِ دهم: هر آیتم دقیقاً دو گزینه درونِ پرانتز (options.length=2 — موتور با برچسبِ a/b)؛ ساقه‌ها پرانتزِ عینِ چاپ را هم نگه می‌دارند",
+        "گزینه‌های درونِ پرانتز سرمه‌ای با اسلشِ سرخ و شماره‌های سرخ — رنگِ تزئینی است (برخلافِ r342-B71 کلیدِ رنگ‌نشانه‌ای نیست)؛ حاکم: Answer Keyِ جدولی",
+        "Answer Key: جدولِ ۲×۵ با سربرگِ سبزِ «Answer Key:» در همان صفحه — کلیدِ درون‌متنی (نه صفحاتِ انتهایی): seems/am having/love/tastes/is studying/don’t you remember/watched/need/likes/were cooking — 10/10 هم‌رأی",
+        "«15» لاتین در Q10 «we had 15 people coming for lunch» — عینِ چاپ (لایه هم لاتین)؛ آپاستروف‌های تایپوگرافیکِ don’t/aren’t در Q1/Q6"
       ]
     }
   }
