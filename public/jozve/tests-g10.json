@@ -16822,6 +16822,574 @@
           "answer": 1
         }
       ]
+    },
+    {
+      "lesson": 81,
+      "title": "متوسط — تست واژگان درس چهارم (ص۱۵۱-۱۵۲)",
+      "level": "متوسط — چهارگزینه‌ای",
+      "count": 40,
+      "questions": [
+        {
+          "id": "g10-l81-1",
+          "n": 1,
+          "category": "vocab",
+          "question": "He ----------------------- to fly to America for his summer vacations on Wednesday.",
+          "options": [
+            "compares",
+            "leaves",
+            "prepares",
+            "plans"
+          ],
+          "answer": 3,
+          "translation": "او قصد دارد برای تعطیلات تابستانی اش در چهارشنبه به آمریکا پرواز کند."
+        },
+        {
+          "id": "g10-l81-2",
+          "n": 2,
+          "category": "vocab",
+          "question": "Egypt ----------------------- are one of the Seven Wonders of the World that are really amazing.",
+          "options": [
+            "agents",
+            "pyramids",
+            "deserts",
+            "cultures"
+          ],
+          "answer": 1,
+          "translation": "اهرام مصر یکی از هفت عجایب جهان هستند که خیلی حیرت آور هستند."
+        },
+        {
+          "id": "g10-l81-3",
+          "n": 3,
+          "category": "vocab",
+          "question": "The local people were very kind and --------------------, so we enjoyed their behavior so much.",
+          "options": [
+            "amazing",
+            "honest",
+            "hospitable",
+            "ancient"
+          ],
+          "answer": 2,
+          "translation": "افراد بومی خیلی مهربان و مهمان نواز بودند بنابراین ما از رفتارشان خیلی لذت بردیم."
+        },
+        {
+          "id": "g10-l81-4",
+          "n": 4,
+          "category": "vocab",
+          "question": "This area of the country is always dry with a lot of sand and no activity. It’s a ------------------.",
+          "options": [
+            "desert",
+            "paradise",
+            "site",
+            "beach"
+          ],
+          "answer": 0,
+          "translation": "این منطقه از کشور همیشه خشک است با ماسه زیاد و بدون هیچ گونه فعالیتی. آنجا بیابان است."
+        },
+        {
+          "id": "g10-l81-5",
+          "n": 5,
+          "category": "vocab",
+          "question": "In our ------------------, it is rude to ask someone some questions such as their earnings and age.",
+          "options": [
+            "choice",
+            "vacation",
+            "culture",
+            "nation"
+          ],
+          "answer": 2,
+          "translation": "در فرهنگ ما، پرسیدن از کسی سؤالاتی مانند درآمد و سن، بی ادبانه است."
+        },
+        {
+          "id": "g10-l81-6",
+          "n": 6,
+          "category": "vocab",
+          "question": "The attack on the embassy made a lot of ----------------------- tensions for some countries.",
+          "options": [
+            "international",
+            "national",
+            "worldwide",
+            "native"
+          ],
+          "answer": 0,
+          "translation": "حمله به سفارت، تنش های بین المللی زیادی برای چند کشور بوجود آورد."
+        },
+        {
+          "id": "g10-l81-7",
+          "n": 7,
+          "category": "vocab",
+          "question": "A person or group of people that represent another person or that takes action for other people is ------- of that person or people.",
+          "options": [
+            "tourist",
+            "agent",
+            "traveler",
+            "host"
+          ],
+          "answer": 1,
+          "translation": "شخص یا گروهی از افراد که شخص دیگری را نمایندگی می کند یا برای افراد کار می کند نماینده آن شخص یا افراد است."
+        },
+        {
+          "id": "g10-l81-8",
+          "n": 8,
+          "category": "vocab",
+          "question": "A big home with a large front yard covered with grass near the sea is my idea of true ------------------.",
+          "options": [
+            "desert",
+            "abroad",
+            "embassy",
+            "paradise"
+          ],
+          "answer": 3,
+          "translation": "یک خانه بزرگ با حیاط جلوی بزرگ پوشیده از چمن نزدیک دریا، ایده من (رؤیای من) از بهشت واقعی است."
+        },
+        {
+          "id": "g10-l81-9",
+          "n": 9,
+          "category": "vocab",
+          "question": "They believed in their -----------------------, belief, customs and way of doing something that has existed for a long time.",
+          "options": [
+            "destination",
+            "tradition",
+            "suggestion",
+            "entertainment"
+          ],
+          "answer": 1,
+          "translation": "آنها به سنت، اعتقاد، رسوم و راه شان از انجام چیزی که برای مدت زمان زیادی وجود داشته است، اعتقاد داشتند."
+        },
+        {
+          "id": "g10-l81-10",
+          "n": 10,
+          "category": "vocab",
+          "question": "You must make some important ----------------------- for your future. They are so necessary for your improvement.",
+          "options": [
+            "choices",
+            "suggestions",
+            "traditions",
+            "entertainments"
+          ],
+          "answer": 0,
+          "translation": "شما باید چند انتخاب مهم برای آینده تان داشته باشید. آنها برای پیشرفت شما خیلی ضروری هستند."
+        },
+        {
+          "id": "g10-l81-11",
+          "n": 11,
+          "category": "vocab",
+          "question": "The two products looked quite ----------------------- and I got confused.",
+          "options": [
+            "different",
+            "domestic",
+            "similar",
+            "suitable"
+          ],
+          "answer": 2,
+          "translation": "(آن) دو محصول خیلی شبیه به هم به نظر رسیدند و من گیج شدم."
+        },
+        {
+          "id": "g10-l81-12",
+          "n": 12,
+          "category": "vocab",
+          "question": "I think seaside is an ideal ----------------------- for a relaxing weekend.",
+          "options": [
+            "range",
+            "obligation",
+            "possibility",
+            "destination"
+          ],
+          "answer": 3,
+          "translation": "من فکر می کنم کنار دریا، یک مقصد ایده آل برای استراحت آخر هفته است."
+        },
+        {
+          "id": "g10-l81-13",
+          "n": 13,
+          "category": "vocab",
+          "question": "This old building will be replaced, most ----------------------- by a modern sports center.",
+          "options": [
+            "probably",
+            "patiently",
+            "generously",
+            "especially"
+          ],
+          "answer": 0,
+          "translation": "این ساختمان قدیمی به احتمال قوی با یک مرکز ورزشی مدرن، جایگزین خواهد شد."
+        },
+        {
+          "id": "g10-l81-14",
+          "n": 14,
+          "category": "vocab",
+          "question": "There will be live ----------------------- all day long such as films,  TV performances, etc. that are intended to amuse people.",
+          "options": [
+            "choices",
+            "entertainments",
+            "suggestions",
+            "traditions"
+          ],
+          "answer": 1,
+          "translation": "سرگرمی های زنده ای در تمام طول روز مانند فیلم ها - اجراهای تلویزیونی که قصد سرگرم کردن مردم دارند، وجود خواهد داشت."
+        },
+        {
+          "id": "g10-l81-15",
+          "n": 15,
+          "category": "vocab",
+          "question": "The ---------------- will continue discussions with the Chinese government about that contract.",
+          "options": [
+            "pilgrim",
+            "embassy",
+            "traveler",
+            "nation"
+          ],
+          "answer": 1,
+          "translation": "سفارت، بحث هایش را با دولت چین در مورد آن قرارداد، ادامه خواهد داد."
+        },
+        {
+          "id": "g10-l81-16",
+          "n": 16,
+          "category": "vocab",
+          "question": "Unfortunately, his ----------------------- life wasn’t very happy and was full of problems.",
+          "options": [
+            "cultural",
+            "hospitable",
+            "domestic",
+            "agent"
+          ],
+          "answer": 2,
+          "translation": "متأسفانه زندگی درونی (داخلی) اش خیلی شاد نبود و پر از مشکلات بود."
+        },
+        {
+          "id": "g10-l81-17",
+          "n": 17,
+          "category": "vocab",
+          "question": "The committee rejected the ----------------------- that house should be built on this site.",
+          "options": [
+            "suggestion",
+            "agent",
+            "choice",
+            "tradition"
+          ],
+          "answer": 0,
+          "translation": "کمیته این پیشنهاد که خانه باید در این جا ساخته شود را رد کرد."
+        },
+        {
+          "id": "g10-l81-18",
+          "n": 18,
+          "category": "vocab",
+          "question": "These toys are suitable for children in the pre-school age -----------------------.",
+          "options": [
+            "vacation",
+            "suggestion",
+            "agent",
+            "range"
+          ],
+          "answer": 3,
+          "translation": "این اسباب بازی ها برای بچه ها در محدوده سن پیش دبستانی مناسب هستند."
+        },
+        {
+          "id": "g10-l81-19",
+          "n": 19,
+          "category": "vocab",
+          "question": "Airlines have lost ----------------------- of dollars because of Corona Virus.",
+          "options": [
+            "travels",
+            "thousands",
+            "passengers",
+            "many"
+          ],
+          "answer": 0,
+          "translation": "خطوط هوایی میلیاردها دلار به خاطر ویروس کرونا از دست دادند."
+        },
+        {
+          "id": "g10-l81-20",
+          "n": 20,
+          "category": "vocab",
+          "question": "The child showed them a normal ---------------- of development and a lot of people admired him.",
+          "options": [
+            "element",
+            "fact",
+            "pattern",
+            "means"
+          ],
+          "answer": 2,
+          "translation": "بچه الگوی طبیعی پیشرفت را به آنها نشان داد و افراد زیادی او را تحسین کردند."
+        },
+        {
+          "id": "g10-l81-21",
+          "n": 21,
+          "category": "vocab",
+          "question": "Strong family relationship still ----------------------- them together in all of the situations.",
+          "options": [
+            "built",
+            "linked",
+            "defended",
+            "compared"
+          ],
+          "answer": 1,
+          "translation": "روابط خانوادگی قوی، هنوز آنها را در همه وضعیت ها به هم متصل ساخته است."
+        },
+        {
+          "id": "g10-l81-22",
+          "n": 22,
+          "category": "vocab",
+          "question": "Takhteh-Jamshid in Shiraz is a major ---------------------- for some of people around the world.",
+          "options": [
+            "tourist attention",
+            "tourist attraction",
+            "distance",
+            "obligation"
+          ],
+          "answer": 1,
+          "translation": "تخت جمشید در شیراز یک جاذبه توریستی مهم برای بعضی از مردم در سراسر جهان است."
+        },
+        {
+          "id": "g10-l81-23",
+          "n": 23,
+          "category": "vocab",
+          "question": "I have the greatest ---------------- for Jane’s work that is so valuable for society improvement.",
+          "options": [
+            "belief",
+            "honest",
+            "background",
+            "respect"
+          ],
+          "answer": 3,
+          "translation": "من برای کار \"جین\" که برای پیشرفت جامعه خیلی ارزشمند است، بیشترین احترام را قائل هستم."
+        },
+        {
+          "id": "g10-l81-24",
+          "n": 24,
+          "category": "vocab",
+          "question": "We searched a lot but couldn't ----------------------- the source of radio signal.",
+          "options": [
+            "relate",
+            "locate",
+            "check",
+            "create"
+          ],
+          "answer": 1,
+          "translation": "ما زیاد جستجو کردیم اما نتوانستیم منبع امواج رادیویی را پیدا کنیم."
+        },
+        {
+          "id": "g10-l81-25",
+          "n": 25,
+          "category": "vocab",
+          "question": "My neighbor makes a trip for religious reasons to holy places. In fact, he is a -------------------.",
+          "options": [
+            "traveler",
+            "agent",
+            "foreigner",
+            "pilgrim"
+          ],
+          "answer": 3,
+          "translation": "همسایه ام به دلیل مذهبی به مکانهای مقدس مسافرت می کند، در حقیقت او یک زائر است."
+        },
+        {
+          "id": "g10-l81-26",
+          "n": 26,
+          "category": "vocab",
+          "question": "Education levels in English language institutes are strongly ----------------------- to each other.",
+          "options": [
+            "related",
+            "compared",
+            "based",
+            "prepared"
+          ],
+          "answer": 0,
+          "translation": "سطوح آموزشی در آموزشگاههای زبان خیلی به هم مرتبط هستند."
+        },
+        {
+          "id": "g10-l81-27",
+          "n": 27,
+          "category": "vocab",
+          "question": "Dubai depends highly on ----------------------- for much of its income.",
+          "options": [
+            "embassy",
+            "tourism",
+            "vacation",
+            "tradition"
+          ],
+          "answer": 1,
+          "translation": "شهر \"دُبی\" برای درآمد بیشترش به شدت به گردشگری وابسته است."
+        },
+        {
+          "id": "g10-l81-28",
+          "n": 28,
+          "category": "vocab",
+          "question": "The foreign ------------- complained that he’s been held by the local police without good reason.",
+          "options": [
+            "traveler",
+            "embassy",
+            "host",
+            "tourism"
+          ],
+          "answer": 0,
+          "translation": "مسافر خارجی شکایت کرد که او بدون هیچ دلیل موجهی توسط پلیس محلی، بازداشت شده است."
+        },
+        {
+          "id": "g10-l81-29",
+          "n": 29,
+          "category": "vocab",
+          "question": "Parents are under a legal ----------------------- to educate their children well.",
+          "options": [
+            "creation",
+            "possibility",
+            "obligation",
+            "culture"
+          ],
+          "answer": 2,
+          "translation": "والدین تحت اجبار قانونی برای آموزش دادن خوب به بچه ها هستند."
+        },
+        {
+          "id": "g10-l81-30",
+          "n": 30,
+          "category": "vocab",
+          "question": "There’s always a ----------------------- that he might go back to London.",
+          "options": [
+            "possibility",
+            "obligation",
+            "vacation",
+            "choice"
+          ],
+          "answer": 0,
+          "translation": "همیشه یک احتمال وجود دارد که او ممکن است به لندن برگردد."
+        },
+        {
+          "id": "g10-l81-31",
+          "n": 31,
+          "category": "vocab",
+          "question": "Much homework should not be used as a ---------------- controlling children at home and school.",
+          "options": [
+            "care of",
+            "rather than",
+            "means of",
+            "in terms of"
+          ],
+          "answer": 2,
+          "translation": "تکالیف زیاد نباید به عنوان وسیله کنترل بچه ها در خانه و مدرسه به کار برده شود."
+        },
+        {
+          "id": "g10-l81-32",
+          "n": 32,
+          "category": "vocab",
+          "question": "If you ----------------------- things you compare them to show the differences between them.",
+          "options": [
+            "base on",
+            "count",
+            "contrast",
+            "prepare"
+          ],
+          "answer": 2,
+          "translation": "اگر شما چیزها را مقایسه کنید، آنها را برای نشان دادن تفاوت های مابین شان مقایسه کرده اید."
+        },
+        {
+          "id": "g10-l81-33",
+          "n": 33,
+          "category": "vocab",
+          "question": "Since the weather usually is dusty you should clean the windows ------------------- once a week.",
+          "options": [
+            "at most",
+            "for a while",
+            "so much",
+            "at least"
+          ],
+          "answer": 3,
+          "translation": "از آنجایی که آب و هوا معمولاً گرد و غبار است، بهتر است پنجره ها را حداقل یکبار در هفته تمیز کنید."
+        },
+        {
+          "id": "g10-l81-34",
+          "n": 34,
+          "category": "vocab",
+          "question": "She was ----------------------- enough to overlook my little mistake.",
+          "options": [
+            "patient",
+            "generous",
+            "honest",
+            "rude"
+          ],
+          "answer": 1,
+          "translation": "او به اندازه کافی بخشنده است که اشتباه های کوچک من را نادیده بگیرد."
+        },
+        {
+          "id": "g10-l81-35",
+          "n": 35,
+          "category": "vocab",
+          "question": "I was so ----------------------- and warm in my bed. I didn’t want to get up at all",
+          "options": [
+            "comfortable",
+            "hospitable",
+            "cultural",
+            "neat"
+          ],
+          "answer": 0,
+          "translation": "من در رختخوابم خیلی راحت و گرم بودم. من نخواستم اصلاً بلند شوم."
+        },
+        {
+          "id": "g10-l81-36",
+          "n": 36,
+          "category": "vocab",
+          "question": "This area of the country is ----------------------- desert without any farming.",
+          "options": [
+            "probably",
+            "mostly",
+            "nicely",
+            "bravely"
+          ],
+          "answer": 1,
+          "translation": "این منطقه از کشور بیشتر بیابان است بدون هیچ گونه (زمین) کشاورزی."
+        },
+        {
+          "id": "g10-l81-37",
+          "n": 37,
+          "category": "vocab",
+          "question": "I had hoped you would behave in a more responsible ---------------------.",
+          "options": [
+            "manner",
+            "blank",
+            "choice",
+            "activity"
+          ],
+          "answer": 0,
+          "translation": "من امیدوار بوده ام که شما با یک روش مسئولانه تری برخورد خواهید کرد."
+        },
+        {
+          "id": "g10-l81-38",
+          "n": 38,
+          "category": "vocab",
+          "question": "What does a coach do to ------------------ his team for winning the match?",
+          "options": [
+            "prepare",
+            "ready",
+            "compare",
+            "create"
+          ],
+          "answer": 0,
+          "translation": "یک مربی برای آماده کردن تیمش برای بردن مسابقه چکار می کند؟"
+        },
+        {
+          "id": "g10-l81-39",
+          "n": 39,
+          "category": "vocab",
+          "question": "We never eat --------------------- food because it is a packaged food that has low value for health",
+          "options": [
+            "delicious",
+            "junk",
+            "healthy",
+            "cooked"
+          ],
+          "answer": 1,
+          "translation": "ما هرگز غذای هله هوله (بی ارزش) نمی خوریم زیرا غذایی بسته بندی شده است که ارزش کمی برای سلامتی دارد."
+        },
+        {
+          "id": "g10-l81-40",
+          "n": 40,
+          "category": "vocab",
+          "question": "She applied for a three month tourist ------------------- .",
+          "options": [
+            "visa",
+            "ticket",
+            "agent",
+            "attraction"
+          ],
+          "answer": 0,
+          "translation": "او تقاضای ویزای تحصیلی سه ماهه کرد."
+        }
+      ]
     }
   ],
   "source": {
@@ -17428,6 +17996,28 @@
         "اضافه‌های بانک‌واژه (یک کلمه اضافه می باشد): بخش ۱ زیربانکِ اول = embassy، زیربانکِ دوم = journey، بخش ۳ = traveler",
         "پاصفحهٔ ص۱۵۰ بدونِ خطِ «Telegram Channel: @PracticalEnglishInKonkour» — برخلافِ پاصفحهٔ ص۱۲۲ خانوادهٔ درس سوم (r338)",
         "جعبهٔ «Note:» خالیِ خط‌چینِ بنفش در پایینِ ص۲۸۷ — همان الگویِ r334/r338"
+      ]
+    },
+    "vocab40l4": {
+      "exam": "تست واژگان «درس چهارم - پایه دهم» — سطح متوسط (ص۱۵۱-۱۵۲)",
+      "header": "سربرگِ آزمونِ ص۱۵۱ (رندرِ ۹۰۰dpi): «تست واژگان 'درس چهارم - پایه دهم'» سرخ با گیومه + «سطح: 'متوسط'» + «(پاسخنامه صفحه: ۲۸۸ - ۲۸۹)» با ارقامِ فارسی و خط‌تیره (لایه لاتین 288 - 289)؛ سربرگِ کلیدِ ص۲۸۸: «کلید و ترجمه تستهای واژگان 'درس چهارم - پایه دهم'» سرخ + «(سؤالات: صفحه ۱۵۱ تا ۱۵۲)» با ارقامِ فارسی و واصفِ «تا» (لایه لاتین 151/152 — همان درسِ تکرارشدهٔ r344/r345)؛ سرصفحهٔ «جزوه جامع زبان انگلیسی، پایه دهم» / «Vision One» / «تألیف و گردآوری: 'جمال احمدی و همکاران'»؛ گزینه‌ها با حرفِ کادردارِ فیروزه‌ایِ «a.» و زیرخطِ سبزِ خط‌چین در ساقه‌ها؛ قابِ سرخِ ناحیهٔ پایینِ ص۱۵۲؛ پاصفحه‌های ص۱۵۱/۱۵۲/۲۸۸/۲۸۹ بدونِ خطِ Telegram (ادامهٔ الگویِ درسِ چهارم r345)",
+      "keyPages": "288-289",
+      "extractedRound": "r346",
+      "keyVerification": "چهل گریدِ چاپی «N. گزینه (x) : ترجمه تست: ‹...›» — ۲۶ گرید در ص۲۸۸ + ۱۴ گرید در ص۲۸۹؛ «N.» با ارقامِ فارسی (لایه لاتین)؛ «گزینه» با پس‌زمینهٔ زردِ کمرنگ و حرفِ گزینه سبزِ توپُر درونِ پرانتز؛ «ترجمه تست:» با پس‌زمینهٔ سبزِ کمرنگ؛ کلیدواژهٔ ترجمه سرخِ توپُرِ زیرخط‌دار (قصد دارد/فرهنگ/بین المللی/مقصد/انتخاب/فرهنگ/سنت/جاذبه توریستی/احترام/پیدا/زائر/مرتبط/گردشگری/مسافر/اجبار/احتمال/وسیله/مقایسه کنید/حداقل/راحت/بیشتر/روش/هله هوله (بی ارزش)/ویزای)؛ جداکنندهٔ خط‌چینِ بنفشِ زیرِ هر گرید؛ جعبهٔ «Note:» خالیِ خط‌چین در پایینِ ص۲۸۹ (الگوی r345)؛ ۴۰/۴۰ گرید با پیش‌پرکردنِ معنایی هم‌رأی — صفر واگرایی",
+      "pattern": "r339/r343 — MCQ واژگانِ تک‌بانکی با ترجمهٔ چاپیِ «ترجمه تست» برای هر آیتم؛ بیست‌وپنجمین گروهِ کارتِ دهم",
+      "printQuirks": [
+        "تیره‌شماریِ لایه: ۴۰ ران = ۸۲۶ تیره — استاندارد ۲۳؛ استثناها: Q3=۲۰، Q4/Q5/Q8/Q38=۱۸، Q7=۷ (ساقهٔ دوسطری «is ------- of that person»)، Q15/Q20/Q23/Q31=۱۶، Q22=۲۲، Q25/Q33/Q40=۱۹، Q28=۱۳، Q37/Q39=۲۱ — همگی عینِ چاپ",
+        "Q11 «11.The» بدونِ فاصله بعدِ شماره — عینِ چاپ (دیتا بدونِ شماره؛ ثبتِ رسیدی)",
+        "Q14 دو فاصله بعدِ کاما «such as films,  TV performances» — عینِ چاپ (رندر ۹۰۰dpi)",
+        "Q24 آپوستروفِ مستقیمِ «couldn't» در برابرِ ’ خمیدهٔ بقیه (Q16 wasn’t/Q23 Jane’s/Q30 There’s/Q35 didn’t) — عینِ چاپ",
+        "Q35 و Q39 بدونِ نقطهٔ پایانی («...get up at all» / «...low value for health») — عینِ چاپ؛ Q40 «------------------- .» نقطهٔ فاصله‌دار — عینِ چاپ",
+        "Q1 «summer vacations» جمع (برخلافِ دستور)؛ Q19 «Corona Virus» کپیتالِ هر دو؛ Q22 «for some of people» دستورِ چاپ؛ Q40 «three month» بدونِ خط‌تیره — همگی عینِ چاپ",
+        "ترجمه‌ها فاصله‌محورِ چاپ: «تابستانی اش»/«تنش های»/«فیلم ها»/«بچه ها»/«سرگرمی های»/«هله هوله»/«همسایه ام»/«مسئولانه تری»/«حیرت آور»/«مهمان نواز»/«آینده تان»/«اسباب بازی ها»/«وضعیت ها»/«تفاوت های»/«اشتباه های»/«بسته بندی»/«پیش دبستانی»/«بحث هایش»/«پنجره ها»/«می کند» همگی فاصله‌دار؛ «کرده اید.» با فاصلهٔ کامل (داوریِ ۳۰×)",
+        "پرانتزهای درون‌ترجمه: «(رؤیای من)» Q8، «(آن)» Q11، «(داخلی) اش» Q16، «(زمین) کشاورزی.» Q36، «(بی ارزش)» Q39 — عینِ چاپ",
+        "گیومهٔ درونیِ ترجمه: Q23 «کار \"جین\"»؛ Q27 «شهر \"دُبی\"» با ضمهٔ چاپی (لایه «ُدِیب» = تجزیهٔ کسره/ضمه) — و گیومهٔ آغازینِ گریدِ ۲۷ سرخ (کوئیرکِ رنگِ چاپ)",
+        "کشف‌های تجزیهٔ لایه (رندر حاکم): «جلوئی»→جلوی؛ «سنت،،»→سنت، اعتقاد، رسوم؛ «بین ما شان»→تفاوت های مابین شان؛ «بیشی»→بیشتر؛ «رسگریم»→سرگرمی (جابجاییِ ن/م)؛ «احی ام»→احترام؛ «داخیل»→داخلی؛ «مؤ جهی»→موجهی؛ «دالر/دالیل»→دلار/دلیل؛ «احتمایل»→احتمال؛ «آموزشگاهای»→آموزشگاههای؛ «مد نر»→مدرن؛ «سؤ االتی»→سؤالاتی؛ «بی ادب انه»→بی ادبانه؛ «مشکالت/تعطیالت»→مشکلات/تعطیلات؛ «بیر ن»→بین؛ «الملیل»→المللی؛ «مسئوالنه»→مسئولانه؛ «معموالً»→معمولاً؛ «اصالً»→اصلاً؛ «ب ارزش»→بی ارزش؛ «پرواز.کند»→پرواز کند.",
+        "«می کند، در حقیقت» در Q25 ویرگولِ چاپ (لایه نقطه داده بود — رندر ۹۰۰dpi حاکم)؛ «آنجا» در Q4 چسبیده (لایه «آن جا»)؛ نقطه‌های پایانیِ همهٔ گریدها داخل گیومه (لایه بی‌نقطه در Q11/Q21/Q35 تجزیه)",
+        "«تخت جمشید» Q22 — دو نقطهٔ چاپ در ۳۰۰۰dpi (شبههٔ «نخت» رد شد)؛ پاصفحهٔ ص۲۸۸ استاندارد («جزوه جامع زبان انگلیسی، پایه دهم» / Vision One / تألیف و گردآوری) بدونِ Telegram"
       ]
     }
   }

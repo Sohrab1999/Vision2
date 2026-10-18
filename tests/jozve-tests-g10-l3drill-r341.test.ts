@@ -191,7 +191,7 @@ describe("jozve tests-g10 gram7 (r341 ۲۰ تست گرامر و نگارش در�
 
   it("ids unique across the whole 848-item family (r341 gram7 appended)", () => {
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(ids.length).toBe(1022);
-    expect(new Set(ids).size).toBe(1022);
+    expect(ids.length).toBe(1062);
+    expect(new Set(ids).size).toBe(1062);
   });
 });

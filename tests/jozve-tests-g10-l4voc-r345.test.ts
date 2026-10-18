@@ -235,13 +235,13 @@ describe("jozve tests-g10 l4voc bank 80 (r345 تست چهارگزینه‌ای �
 });
 
 describe("jozve tests-g10 file shape after r345", () => {
-  it("file shape: 80 banks, 1022 items, unique ids", () => {
+  it("file shape: 81 banks, 1062 items, unique ids", () => {
     expect(bank.grade).toBe(10);
-    expect(bank.lessons).toHaveLength(80);
-    expect(bank.lessons.reduce((s: number, l: { count: number }) => s + l.count, 0)).toBe(1022);
+    expect(bank.lessons).toHaveLength(81);
+    expect(bank.lessons.reduce((s: number, l: { count: number }) => s + l.count, 0)).toBe(1062);
     const ids = bank.lessons.flatMap((l: TL) => l.questions.map((q: TQ) => q.id));
-    expect(ids.length).toBe(1022);
-    expect(new Set(ids).size).toBe(1022);
+    expect(ids.length).toBe(1062);
+    expect(new Set(ids).size).toBe(1062);
     expect(ids).toContain("g10-l77-1");
     expect(ids).toContain("g10-l77-16");
     expect(ids).toContain("g10-l78-8");
