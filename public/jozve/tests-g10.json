@@ -19390,6 +19390,812 @@
           "answer": 1
         }
       ]
+    },
+    {
+      "lesson": 96,
+      "title": "استاندارد — تست گرامر و نگارش درس چهارم (ص۱۶۷-۱۶۹)",
+      "level": "استاندارد — چهارگزینه‌ای",
+      "count": 57,
+      "questions": [
+        {
+          "id": "g10-l96-1",
+          "n": 1,
+          "category": "grammar",
+          "question": "They have been working on the project all day, they --------------------- very tired.",
+          "options": [
+            "must",
+            "may",
+            "will",
+            "can"
+          ],
+          "answer": 0,
+          "translation": "آنها همه روز مشغول کار کردن بر روی آن پروژه بوده اند، لابد که خیلی خسته اند."
+        },
+        {
+          "id": "g10-l96-2",
+          "n": 2,
+          "category": "grammar",
+          "question": "A: “Do you know where Sara is?”                   B: “I am not sure, she -------------- be in her office.”",
+          "options": [
+            "must",
+            "can",
+            "should",
+            "may"
+          ],
+          "answer": 3,
+          "translation": "الف: می دانی سارا کجا است؟ ب: مطمئن نیستم. ممکن است در دفتر کارش باشد."
+        },
+        {
+          "id": "g10-l96-3",
+          "n": 3,
+          "category": "grammar",
+          "question": "You -------------------- exercise a lot, it -------------------- hurt your heart.",
+          "options": [
+            "may not / may",
+            "can’t /must",
+            "shouldn’t / may",
+            "won’t / can"
+          ],
+          "answer": 2,
+          "translation": "تو نباید خیلی زیاد ورزش بکنی ، ممکن است به قلبت آسیب برساند ."
+        },
+        {
+          "id": "g10-l96-4",
+          "n": 4,
+          "category": "grammar",
+          "question": "The teacher said: “You ------------------- raise your hand and permit when you want to go out.”",
+          "options": [
+            "can",
+            "must",
+            "may",
+            "will"
+          ],
+          "answer": 1,
+          "translation": "معلم گفت: \"وقتی که می خواهی بیرون بروی باید دستت را بالا ببری و اجازه بگیری.\""
+        },
+        {
+          "id": "g10-l96-5",
+          "n": 5,
+          "category": "grammar",
+          "question": "She can ---------------------- the holy Quran very well. She has gotten many prizes so far.",
+          "options": [
+            "reciting",
+            "recites",
+            "to recite",
+            "recite"
+          ],
+          "answer": 3,
+          "translation": "او می تواند قرآن کریم را خیلی خوب تلاوت بکند. او تا به حال جایزه های زیادی گرفته است"
+        },
+        {
+          "id": "g10-l96-6",
+          "n": 6,
+          "category": "grammar",
+          "question": "Jack, you -------------- be hungry right now, because you had dinner several minutes ago.",
+          "options": [
+            "can’t",
+            "mustn’t",
+            "may not",
+            "shouldn’t"
+          ],
+          "answer": 0,
+          "translation": "جک امکان نداره (منطقی نیست) که الان گرسنه باشی. تو چند دقیقه پیش شام خوردی."
+        },
+        {
+          "id": "g10-l96-7",
+          "n": 7,
+          "category": "grammar",
+          "question": "A: “--------------------- I use your cell phone to call my father?                    B: “Yes, sure.”",
+          "options": [
+            "May",
+            "Must",
+            "Do",
+            "Am"
+          ],
+          "answer": 0,
+          "translation": "الف: امکانش است که از تلفن همراهتون برای زنگ زدن به پدرم استفاده بکنم؟ ب: بله حتما ."
+        },
+        {
+          "id": "g10-l96-8",
+          "n": 8,
+          "category": "grammar",
+          "question": "She tried a lot to find a tutor for her son, but she ------------------- find anyone.",
+          "options": [
+            "may not",
+            "couldn’t",
+            "mustn’t",
+            "shouldn’t"
+          ],
+          "answer": 1,
+          "translation": "او خیلی تلاش کرد یک معلم خصوصی برای پسرش پیدا بکند اما نتوانست هیچ کس را پیدا بکند ."
+        },
+        {
+          "id": "g10-l96-9",
+          "n": 9,
+          "category": "grammar",
+          "question": "She --------------- speak five languages. Everybody thinks that she will get a grant soon.",
+          "options": [
+            "can",
+            "may",
+            "should",
+            "must"
+          ],
+          "answer": 0,
+          "translation": "او قادر است که پنج زبان صحبت بکند. همه فکر می کنند که او به زودی بورسیه می شود ."
+        },
+        {
+          "id": "g10-l96-10",
+          "n": 10,
+          "category": "grammar",
+          "question": "Hamid can --------------------- as fast as a professional runner can.",
+          "options": [
+            "running",
+            "runs",
+            "ran",
+            "run"
+          ],
+          "answer": 3,
+          "translation": "حمید می تواند مثل یک دونده حرفه ای سریع بدود ."
+        },
+        {
+          "id": "g10-l96-11",
+          "n": 11,
+          "category": "grammar",
+          "question": "You ------------------- be so worried that your little son has been lost for two days.",
+          "options": [
+            "can",
+            "may",
+            "will",
+            "must"
+          ],
+          "answer": 3,
+          "translation": "حتما خیلی نگران هستی که پسر کوچکت دو روز است که گم شده است ."
+        },
+        {
+          "id": "g10-l96-12",
+          "n": 12,
+          "category": "grammar",
+          "question": "As a weatherman I am not completely certain, but it ------------------ snow tomorrow afternoon.",
+          "options": [
+            "should",
+            "might",
+            "must",
+            "can"
+          ],
+          "answer": 1,
+          "translation": "من به عنوان یک کارشناس آب و هوا کاملا مطمئن نیستم، ولی ممکن است فردا بعد از ظهر برف بیارد."
+        },
+        {
+          "id": "g10-l96-13",
+          "n": 13,
+          "category": "grammar",
+          "question": "A: “----------------- go there in two hours?”                             B: “Yes, it’s not very far.”",
+          "options": [
+            "May we",
+            "Can we going",
+            "Must we",
+            "Should we"
+          ],
+          "answer": 0,
+          "translation": "الف: آیا امکان داره که ما ظرف دو ساعت به آنجا برسیم ؟ ب: بله خیلی دور نیست ."
+        },
+        {
+          "id": "g10-l96-14",
+          "n": 14,
+          "category": "grammar",
+          "question": "She -------------------- work all day some years ago. He didn’t become tired at all.",
+          "options": [
+            "must",
+            "should",
+            "could",
+            "can"
+          ],
+          "answer": 2,
+          "translation": "او چند سال پیش می توانست همه روز را کار بکند . او اصلا خسته نمی شد ."
+        },
+        {
+          "id": "g10-l96-15",
+          "n": 15,
+          "category": "grammar",
+          "question": "“Can you ------------------ this to anyone?”       B: “Yes. don’t worry, I ------------------- keep it secret.”",
+          "options": [
+            "don’t tell / may",
+            "not tell / will",
+            "don’t tell / must",
+            "not tell / should"
+          ],
+          "answer": 1,
+          "translation": "الف: می توانی این موضوع را به هیچکس نگویی ؟ ب: بله نگران نباش. قول می دهم آن را به عنوان یک راز نگه دارم"
+        },
+        {
+          "id": "g10-l96-16",
+          "n": 16,
+          "category": "grammar",
+          "question": "In this bad economic situation, I think we --------------------- lend them some money.",
+          "options": [
+            "may",
+            "should",
+            "will",
+            "can"
+          ],
+          "answer": 1,
+          "translation": "در این شرایط بد اقتصادی من فکر می کنم ما باید به آنها کمی پول قرض بدهیم ."
+        },
+        {
+          "id": "g10-l96-17",
+          "n": 17,
+          "category": "grammar",
+          "question": "Samira hasn’t studied for that exam. I believe she -------------------- pass it.",
+          "options": [
+            "won’t",
+            "mustn’t",
+            "may not",
+            "can’t"
+          ],
+          "answer": 3,
+          "translation": "سمیرا برای آن امتحان اصلا هیچ مطالعه ای نکرده است. من فکر می کنم او نمی تواند قبول بشود ."
+        },
+        {
+          "id": "g10-l96-18",
+          "n": 18,
+          "category": "grammar",
+          "question": "The singer -------------- continue singing because of the event that happened --------------- the concert.",
+          "options": [
+            "can’t / at",
+            "couldn’t / in",
+            "can’t / in",
+            "couldn’t/ at"
+          ],
+          "answer": 3,
+          "translation": "آن خواننده به دلیل آن اتفاقی که در کنسرت افتاد نتوانست به آهنگ خواندن خود را ادامه بدهد."
+        },
+        {
+          "id": "g10-l96-19",
+          "n": 19,
+          "category": "grammar",
+          "question": "There are a lot of factories ----------------------Tehran. It ------------------- be a clean city.",
+          "options": [
+            "in / must not",
+            "at / can’t",
+            "on / must not",
+            "in / can’t"
+          ],
+          "answer": 3,
+          "translation": "کارخانه های زیادی در تهران وجود دارد. این شهر نمی تواند شهر تمیزی باشد ."
+        },
+        {
+          "id": "g10-l96-20",
+          "n": 20,
+          "category": "grammar",
+          "question": "It’s very heavy. It weighs around 200 kilos. Ali --------------------- pick it up.",
+          "options": [
+            "will not",
+            "must not",
+            "cannot",
+            "may not"
+          ],
+          "answer": 2,
+          "translation": "این خیلی سنگین است. حدود دویست کیلو وزن دارد . علی نمی تواند آن را بلند بکند ."
+        },
+        {
+          "id": "g10-l96-21",
+          "n": 21,
+          "category": "grammar",
+          "question": "Everybody -------------------- observe the rules of the class. Otherwise, I will punish them.",
+          "options": [
+            "must",
+            "can",
+            "may",
+            "will"
+          ],
+          "answer": 0,
+          "translation": "همه باید قوانین کلاس را رعایت بکنند. در غیر اینصورت، من آنها را تنبیه خواهم کرد ."
+        },
+        {
+          "id": "g10-l96-22",
+          "n": 22,
+          "category": "grammar",
+          "question": "We stayed ------------- France for three weeks. In my opinion it’s the most beautiful country ----------- Europe.",
+          "options": [
+            "in / on",
+            "at / in",
+            "in / at",
+            "in / in"
+          ],
+          "answer": 3,
+          "translation": "ما سه هفته در کشور فرانسه ماندگار شدیم. به نظر من این کشور زیباترین کشور در قاره اروپا است ."
+        },
+        {
+          "id": "g10-l96-23",
+          "n": 23,
+          "category": "grammar",
+          "question": "I always go to the gym ---------------------- Saturday and Wednesday.",
+          "options": [
+            "in",
+            "on",
+            "into",
+            "at"
+          ],
+          "answer": 1,
+          "translation": "من همیشه شنبه و چهارشنبه به باشگاه می روم ."
+        },
+        {
+          "id": "g10-l96-24",
+          "n": 24,
+          "category": "grammar",
+          "question": "We usually have a lot of fun --------------- Norouz. We often go out --------------- Nature Day.",
+          "options": [
+            "at / on",
+            "in / at",
+            "on / in",
+            "in / on"
+          ],
+          "answer": 3,
+          "translation": "در نوروز خیلی به ما خوش می گذرد. ما اغلب روز طبیعت به بیرون می رویم ."
+        },
+        {
+          "id": "g10-l96-25",
+          "n": 25,
+          "category": "grammar",
+          "question": "-------------------- Friday mornings, I go walking with my brothers.",
+          "options": [
+            "On",
+            "At",
+            "In",
+            "Until"
+          ],
+          "answer": 0,
+          "translation": "صبح های جمعه من با برادرانم به پیاده روی می روم ."
+        },
+        {
+          "id": "g10-l96-26",
+          "n": 26,
+          "category": "grammar",
+          "question": "A: “My train leaves -------------------- 10: 30.”           \"B: “Oh, it’s late. You --------------- hurry.”",
+          "options": [
+            "at / may",
+            "on / can",
+            "at / must",
+            "in / should"
+          ],
+          "answer": 2,
+          "translation": "الف: قطار من ساعت ده و نیم حرکت می کند. ب: اوه، دیر شده است. تو باید عجله بکنی"
+        },
+        {
+          "id": "g10-l96-27",
+          "n": 27,
+          "category": "grammar",
+          "question": "I saw him -------------------- the morning. He was preparing himself for the party.",
+          "options": [
+            "in",
+            "at",
+            "on",
+            "by"
+          ],
+          "answer": 0,
+          "translation": "من او را صبح دیدم. او خودش را برای مهمانی آماده می کرد ."
+        },
+        {
+          "id": "g10-l96-28",
+          "n": 28,
+          "category": "grammar",
+          "question": "Every day, they see each other -------------------- the bust station.",
+          "options": [
+            "in",
+            "on",
+            "with",
+            "at"
+          ],
+          "answer": 3,
+          "translation": "آنها هر روز همدیگر را در ایستگاه اتوبوس می بینند"
+        },
+        {
+          "id": "g10-l96-29",
+          "n": 29,
+          "category": "grammar",
+          "question": "A: “Jane, where is that shop?”                           B: “It’s exactly -------------------- Saderat Bank.”",
+          "options": [
+            "at",
+            "behind",
+            "in",
+            "on"
+          ],
+          "answer": 1,
+          "translation": "الف : جین ، آن مغازه کجا است ؟ ب: دقیقا پشت بانک صادرات واقع شده است ."
+        },
+        {
+          "id": "g10-l96-30",
+          "n": 30,
+          "category": "grammar",
+          "question": "I will leave --------------- 2:30 -------------- the afternoon ----------------- August 29.",
+          "options": [
+            "at / at / on",
+            "at / in / on",
+            "on / in / at",
+            "at / in / in"
+          ],
+          "answer": 1,
+          "translation": "من در ساعت دو و نیم بعد از ظهر در روز بیست و نهم اوت خواهم رفت ."
+        },
+        {
+          "id": "g10-l96-31",
+          "n": 31,
+          "category": "grammar",
+          "question": "Nowadays, we watch football --------------- TV. There are few spectators ------------- the stadium.",
+          "options": [
+            "on / in",
+            "at/ on",
+            "in / in",
+            "on / on"
+          ],
+          "answer": 0,
+          "translation": "این روزها ما فوتبال را در تلویزیون تماشا می کنیم. تماشاچیان خیلی کمی در داخل ورزشگاه هستند ."
+        },
+        {
+          "id": "g10-l96-32",
+          "n": 32,
+          "category": "grammar",
+          "question": "----------------- midnight I was woken up by a strange noise --------------- the street.",
+          "options": [
+            "At / at",
+            "In / in",
+            "At / in",
+            "In / on"
+          ],
+          "answer": 2,
+          "translation": "نیمه شب با سر و صدای عجیب که در خیابان بود بیدار شدم ."
+        },
+        {
+          "id": "g10-l96-33",
+          "n": 33,
+          "category": "grammar",
+          "question": "There is much water --------------- the bottle. There is also a label ------------------ it.",
+          "options": [
+            "in / in",
+            "at / on",
+            "on / on",
+            "in / on"
+          ],
+          "answer": 3,
+          "translation": "آب زیادی در آن بطری است. یک برچسب هم روی بطری وجود دارد ."
+        },
+        {
+          "id": "g10-l96-34",
+          "n": 34,
+          "category": "grammar",
+          "question": "-------------- the past man had a lot of difficulties going to far places, but today we ------------ have access to everywhere very easily and -------------.",
+          "options": [
+            "In / could / fastly",
+            "In / can / fast",
+            "At / must / fast",
+            "In / may / fastly"
+          ],
+          "answer": 1,
+          "translation": "انسان در گذشته مشکلات زیادی در رفتن به مکان های دورافتاده داشت اما امروزه ما می توانیم به آسانی و به سرعت به همه جا دسترسی داشته باشیم"
+        },
+        {
+          "id": "g10-l96-35",
+          "n": 35,
+          "category": "grammar",
+          "question": "It’s said that she studies -------------------, but she can ----------------- pass her exams.",
+          "options": [
+            "hard / hard",
+            "hardly / hardly",
+            "hard / hardly",
+            "hardly / hard"
+          ],
+          "answer": 2,
+          "translation": "می گویند که او به سختی (خیلی) درس می خواند اما به ندرت در امتحاناتش قبول می شود ."
+        },
+        {
+          "id": "g10-l96-36",
+          "n": 36,
+          "category": "grammar",
+          "question": "Her father forces them not to talk to each other ---------------------- the table.",
+          "options": [
+            "in",
+            "on",
+            "at",
+            "by"
+          ],
+          "answer": 2,
+          "translation": "پدرش آنها را مجبور می کند که پشت میز با همدیگر صحبت نکنند"
+        },
+        {
+          "id": "g10-l96-37",
+          "n": 37,
+          "category": "grammar",
+          "question": "Jane has been working ----------------- the hospital for 28 years and she will regret --------------- 1405.",
+          "options": [
+            "at / in",
+            "in / in",
+            "at / on",
+            "in / on"
+          ],
+          "answer": 0,
+          "translation": "جین بیست و هشت سال است که در آن بیمارستان کار می کند. او در سال ۱۴۰۵ بازنشسته می شود"
+        },
+        {
+          "id": "g10-l96-38",
+          "n": 38,
+          "category": "grammar",
+          "question": "I believe no one ---------------- count the number of the stars ---------------- the sky.",
+          "options": [
+            "may / in",
+            "can / at",
+            "can / in",
+            "must / at"
+          ],
+          "answer": 2,
+          "translation": "من فکر می کنم که هیچکس توانایی شمردن تعداد ستاره ها در آسمان را ندارد ."
+        },
+        {
+          "id": "g10-l96-39",
+          "n": 39,
+          "category": "grammar",
+          "question": "Paris is very -------------------. It attracts a great number of tourists ------------------ every year.",
+          "options": [
+            "beautiful / in",
+            "beautifully / in",
+            "beautiful / -",
+            "beautifully / -"
+          ],
+          "answer": 2,
+          "translation": "پاریس خیلی زیبا است. این شهر گردشگران خیلی زیادی را هر ساله به خود جذب می کند"
+        },
+        {
+          "id": "g10-l96-40",
+          "n": 40,
+          "category": "grammar",
+          "question": "She has bought a nice car -------------------. She takes care of it ------------------.",
+          "options": [
+            "lately / well",
+            "lately / goodly",
+            "late / well",
+            "late / goodly"
+          ],
+          "answer": 0,
+          "translation": "او اخیرا ماشین زیبایی خریده است . او به خوبی از آن مراقبت می کند ."
+        },
+        {
+          "id": "g10-l96-41",
+          "n": 41,
+          "category": "grammar",
+          "question": "He seemed ------------------ because he rode his motorcycle ------------------.",
+          "options": [
+            "angry / quick",
+            "angrily / quickly",
+            "angry / quickly",
+            "angrily / quick"
+          ],
+          "answer": 2,
+          "translation": "او عصبانی به نظر می رسید زیرا موتورش را به تندی راند"
+        },
+        {
+          "id": "g10-l96-42",
+          "n": 42,
+          "category": "grammar",
+          "question": "Try to stay ----------------- in the interview room and behave ----------------.",
+          "options": [
+            "calmly / beautifully",
+            "calm / beautiful",
+            "calmly / beautiful",
+            "calm / beautifully"
+          ],
+          "answer": 3,
+          "translation": "سعی کن در اتاق مصاحبه آرام باشی و به زیبایی رفتار بکنی."
+        },
+        {
+          "id": "g10-l96-43",
+          "n": 43,
+          "category": "grammar",
+          "question": "A: “Sama always looks --------------------.       B: “Yes, because she does exercise -----------------.”",
+          "options": [
+            "healthy / regularly",
+            "healthily / regular",
+            "healthy / regular",
+            "healthily / regularly"
+          ],
+          "answer": 0,
+          "translation": "الف: سما سالم و تندرست به نظر می آید. ب: آره، چونکه او به طور منظم ورزش می کند"
+        },
+        {
+          "id": "g10-l96-44",
+          "n": 44,
+          "category": "grammar",
+          "question": "Traveling --------------- a plane for the first time, I was a bit anxious, but after a while, I got better.",
+          "options": [
+            "by",
+            "in",
+            "at",
+            "on"
+          ],
+          "answer": 3,
+          "translation": "وقتی که برای اولین بار در هواپیما سفر می کردم یکم مضطرب بودم اما بعد از مدتی حالم بهتر شد."
+        },
+        {
+          "id": "g10-l96-45",
+          "n": 45,
+          "category": "grammar",
+          "question": "She appears so ---------------- that I think she ----------------- help the charity.",
+          "options": [
+            "generous / may",
+            "generously / should",
+            "generous / could",
+            "generously / must"
+          ],
+          "answer": 0,
+          "translation": "او آنقدر سخاوتمند به نظر می آید که من فکر می کنم ممکن است به خیریه کمک بکند"
+        },
+        {
+          "id": "g10-l96-46",
+          "n": 46,
+          "category": "grammar",
+          "question": "Drive ----------------! with the high speed we are going to have a car crash.",
+          "options": [
+            "slow",
+            "slower",
+            "slowly",
+            "the slowestly"
+          ],
+          "answer": 2,
+          "translation": "آرام رانندگی بکن! با این سرعت بالا تصادف خواهیم کرد ."
+        },
+        {
+          "id": "g10-l96-47",
+          "n": 47,
+          "category": "grammar",
+          "question": "A: “Sam had all his money stolen ------------------ the holiday.” B: “Oh no, he ---------------- very upset at the same very moment.”",
+          "options": [
+            "in / must",
+            "on / must",
+            "in / can",
+            "on / can"
+          ],
+          "answer": 1,
+          "translation": "الف: همه پول های سام را در تعطیلات دزدیدند. ب: اوه نه. حتما الان خیلی ناراحت است ."
+        },
+        {
+          "id": "g10-l96-48",
+          "n": 48,
+          "category": "grammar",
+          "question": "Laleh ------------------ look after herself ------------------ because she had a heart attack two days ago.",
+          "options": [
+            "must / more careful",
+            "can / more carefully",
+            "may / more carefully",
+            "should / more carefully"
+          ],
+          "answer": 3,
+          "translation": "لاله باید با دقت بیشتری از خودش مراقبت بکند زیرا او دو روز پیش سکته قلب کرد."
+        },
+        {
+          "id": "g10-l96-49",
+          "n": 49,
+          "category": "grammar",
+          "question": "Sara is able to reach the top of the mountain ------------------ Navid can.",
+          "options": [
+            "as quick as",
+            "more quickly",
+            "as quickly as",
+            "quicker than"
+          ],
+          "answer": 2,
+          "translation": "سارا قادر است به همان سرعت که نوید می تواند به بالای کوه برسد ."
+        },
+        {
+          "id": "g10-l96-50",
+          "n": 50,
+          "category": "grammar",
+          "question": "We --------------- see some amazing changes ---------------- the future.",
+          "options": [
+            "may / in",
+            "must / at",
+            "can / on",
+            "should / in"
+          ],
+          "answer": 0,
+          "translation": "امکان دارد که ما در آینده با تغییرات شگفت انگیزی روبه رو بشویم ."
+        },
+        {
+          "id": "g10-l96-51",
+          "n": 51,
+          "category": "grammar",
+          "question": "It’s a --------------- expensive car. I think we --------------- look for another one.",
+          "options": [
+            "real / can",
+            "really / should",
+            "real / must",
+            "really / may"
+          ],
+          "answer": 1,
+          "translation": "این یک ماشین واقعا گران قیمت است. فکر می کنم بهتر است که دنبال یک ماشین دیگری بگردیم ."
+        },
+        {
+          "id": "g10-l96-52",
+          "n": 52,
+          "category": "grammar",
+          "question": "What are all these pictures ------------------- the wall? Hurry up, you ----------------- take them down one by one.  It’s an order.",
+          "options": [
+            "at / must",
+            "in / should",
+            "on / must",
+            "on / can"
+          ],
+          "answer": 2,
+          "translation": "این همه عکس روی دیوار چیه؟ زود باش، تو باید یکی یکی آنها را پایین بیاوری. این یک دستور است"
+        },
+        {
+          "id": "g10-l96-53",
+          "n": 53,
+          "category": "grammar",
+          "question": "It’s so cold ----------------- winter that we should wear warm clothes ----------------.",
+          "options": [
+            "at / good",
+            "in / well",
+            "on / well",
+            "in / good"
+          ],
+          "answer": 1,
+          "translation": "در زمستان آنقدر هوا سرد است که باید به خوبی لباس گرم بپوشیم."
+        },
+        {
+          "id": "g10-l96-54",
+          "n": 54,
+          "category": "grammar",
+          "question": "Would you please talk ---------------------? We ---------------- understand what you are saying.",
+          "options": [
+            "loud / can’t",
+            "loudly / can’t",
+            "loud / mustn’t",
+            "loudly / mustn’t"
+          ],
+          "answer": 1,
+          "translation": "میشه لطفاً بلند صحبت بکنید؟ ما نمی توانیم آنچه را که می گویید را متوجه بشویم."
+        },
+        {
+          "id": "g10-l96-55",
+          "n": 55,
+          "category": "grammar",
+          "question": "They put the same amount of pressure on the two people under different conditions to whether they would react -------------------. (هنر ۹۵)",
+          "options": [
+            "the most differently",
+            "very different",
+            "as different as",
+            "differently"
+          ],
+          "answer": 3,
+          "translation": "آنها همان میزان فشار را بر روی آن دو نفر در شرایط متفاوت قرار دادند تا ببینند که آیا آنها به شکل متفاوت از خود واکنش نشان می دهند یا نه."
+        },
+        {
+          "id": "g10-l96-56",
+          "n": 56,
+          "category": "grammar",
+          "question": "The bus drivers ---------------- a rest, as they have just returned from a long trip. (تجربی ۹۸)",
+          "options": [
+            "will need",
+            "must need",
+            "should be needed",
+            "who are going to need"
+          ],
+          "answer": 1,
+          "translation": "رانندگان اتوبوس حتما به یک استراحت نیاز دارند ، زیرا آنها تازه از یک سفر طولانی برگشته اند ."
+        },
+        {
+          "id": "g10-l96-57",
+          "n": 57,
+          "category": "grammar",
+          "question": "The boss would get mad if you leave early again, so ------------- ask for his permission first. (ریاضی ۹۸)",
+          "options": [
+            "you should",
+            "you might",
+            "would you",
+            "you are going to"
+          ],
+          "answer": 0,
+          "translation": "رئیس عصبانی می شود اگر دوباره زود بروی، بنابراین تو باید اول از او اجازه بگیری"
+        }
+      ]
     }
   ],
   "source": {
@@ -20078,6 +20884,35 @@
         "جعبهٔ «Note:» خالیِ پایانِ کلیدِ ص۲۹۴ با خط‌چین‌های بنفشِ ۷۰۳۰a0 — عضوِ خانوادهٔ r346/r347",
         "دستورِ S1 لایهٔ «امالب» = تجزیهٔ «املایی» (رندر: «از لحاظ املایی کامل کنید») — دستورِ S2 لایهٔ «اضاقن یم باشد» = «اضافی می باشد»",
         "لایهٔ سربرگِ کلید «1۶4 تا1۶۶» = ترکیبِ لاتین/فارسیِ تجزیه‌شده — رندر: همه فارسی «۱۶۴ تا ۱۶۶»"
+      ]
+    },
+    "gram9": {
+      "exam": "تست گرامر و نگارش درس چهارم - پایه دهم (ص۱۶۷-۱۶۹)",
+      "header": "سربرگِ چاپیِ ص۱۶۷: «تست گرامر و نگارش \"درس چهارم- پایه دهم\" (پاسخنامه صفحه: ۲۹۵ - ۲۹۹)» + سطرِ سطحِ «سطح: \"استاندارد\"» — ۵۷ MCQ",
+      "keyPages": "295-299",
+      "keyVerification": "print key pp295-299 «پاسخنامه تستهای استاندارد و سخت گرامر و نگارش درس چهارم» + ۵۷ مدخلِ توضیح‌دار (گزینه + نکتهٔ مروری + ترجمهٔ چاپی) — 56/57 agree with semantic pre-fill; Q24 single documented divergence: pre-fill «at Norouz» vs printed key d «in / on» — the key's own explanation explicitly teaches «in برای مناسب‌های خاص» → print key governs (r344)",
+      "extractedRound": "r349",
+      "pattern": "r343/r341 (کلیدِ توضیح‌دار + ترجمهٔ چاپی در هر آیتم) + r322 (برچسبِ کنکورِ درون‌ساقه) + r338 (شمارشِ لایهٔ تیره‌ها)",
+      "printQuirks": [
+        "سربرگِ چاپیِ ص۱۶۷: «تست گرامر و نگارش \"درس چهارم- پایه دهم\" (پاسخنامه صفحه: ۲۹۵ - ۲۹۹)» — قرمز در گیومه روی نوارِ سبز؛ ارقامِ فارسی با دونقطه و تیره (الگوی r347/r348)؛ سطرِ سطح: «سطح: \"استاندارد\"» — تک‌سطحِ نقل‌قولی (برخلافِ r343 دو سطح)",
+        "سربرگِ کلیدِ ص۲۹۵: «پاسخنامه تستهای استاندارد و سخت گرامر و نگارش \"درس چهارم- پایه دهم\" (سؤالات: صفحه ۱۶۷ - ۱۶۹)» — «سؤاالت» لایه = پانزدهمین تجزیهٔ لیگاتور (چاپ تمیز)؛ گیومهٔ سربارِ لایه بر «سخت\"» نویز است؛ کلید در پنج صفحهٔ ۲۹۵-۲۹۹ (طولانی‌ترین کلیدِ خانواده)",
+        "جای‌خالی‌ها تیره‌چینِ سبز در چاپ (خط‌چین) — لایه ران‌های ممتد؛ Q2 رانِ [۱۰،۴] لایه = یک خطِ خط‌چین در رندرِ ۱۲۰۰dpi → ۱۴ تیرهٔ یکپارچه (مجموعِ لایه حاکم: ۸۸ ران/۱۵۰۷ تیره)؛ حروفِ گزینه‌ها کادرِ آبیِ روشن؛ شماره‌ها قرمز",
+        "چاپ‌غلط‌های عینِ چاپ: Q28 «bust station» (رندر ۱۶۰۰dpi — باید bus باشد)، Q37 «she will regret --- 1405» (باید retire؛ ترجمهٔ چاپی «بازنشسته می شود»)، Q46-d «the slowestly»، Q13-b «Can we going»، Q55 «to whether they would react» — هم‌خانوادهٔ r348 «23th/you-you»",
+        "Q14 ساقه: «She --- work all day... He didn’t become tired» — نهادِ ناسازگارِ She/He عینِ چاپ",
+        "اسلش‌های تک‌فاصله‌شدهٔ خودِ چاپ: Q3-b «can’t /must»، Q18-d «couldn’t/ at»، Q31-b «at/ on» — در برابرِ بقیهٔ گزینه‌ها با فاصلهٔ دوطرف",
+        "تیره‌های چسبیده: Q19 «factories ----------------------Tehran.» (بدونِ فاصله پیش از تهران)، Q35 «-------------------,» ویرگول، Q39/Q40 «-------------------.» نقطه، Q46 «----------------!» تعجب — عینِ چاپ",
+        "Q26: «My train leaves ------------------ 10: 30.» — لایه تیره‌چسبیده به ۱۰ می‌داد، رندرِ ۱۲۰۰dpi فاصله نشان داد (رندر حاکم)؛ «10: 30» با فاصله پس از دونقطه عینِ چاپ؛ گیومهٔ سربارِ «\"B:» پیش از ب (لایه و رندر هم‌رأی) — سومین عضوِ خانوادهٔ گیومهٔ سربار",
+        "Q47 گفتگو دوسطری در چاپ (A یک خط، B خطِ بعد بدونِ برچسبِ A) — با یک فاصله تخت شد (قرینهٔ فلتِ r348)؛ Q43 گیومهٔ بستهٔ گفتگوی A نیامده (عینِ چاپ)؛ Q15 «Yes. don’t worry» دِ کوچک پس از نقطه",
+        "Q25 گزینه‌های سرکوته‌دار On/At/In + Until (کلید On — قرینهٔ B94ِ r348)؛ Q39/Q40 گزینهٔ «-» = حرف اضافهٔ تهی (کلید: «قبل از every حرف اضافه نمی‌آید»)",
+        "برچسب‌های قرمزِ منبعِ کنکور با ارقامِ فارسی: Q55 «(هنر ۹۵)»، Q56 «(تجربی ۹۸)»، Q57 «(ریاضی ۹۸)» — لایه «هین95/تجرب98/نریاض98» (رندر حاکم؛ قرینهٔ r343 «هین94→هنر»)",
+        "گفتمان‌های A/B در Q2/Q7/Q13/Q15/Q26/Q29/Q43/Q47 با گیومهٔ تایپوگرافیک — فاصلهٔ ستونیِ چاپ بینِ نوبت‌ها عینِ لایه نگه داشته شد (19/20/29/7/11/27/7 فاصله؛ قرینهٔ r347)؛ در ترجمه‌ها به یک فاصله فروپاشید (قرینهٔ r343)",
+        "نویزهای لایه که رندرِ ۹۰۰-۱۶۰۰dpi چاپِ تمیز نشان داد: «البد»→لابد، «منطف»→منطقی، «بکتن»→بکنی/بکنید، «خصوض»→خصوصی، «پسش»→پسرش، «کنست»→کنسرت، «تمیر نی»→تمیزی، «مشکالت»→مشکلات، «رسی ایط»→شرایط، «میر نان»→میزان، «الله»→لاله، «قلت»→قلب، «آچه»→آنچه، «رسد»→سرد، «جیر ن»→جین، «باالی»→بالای، «بهی »→بهتر، «یگ به یگ»→یکی یکی، «خوایه»→می خواهی، «بایس»→باشی، «ببارد»→بیارد، «خیر یه»→خیریه، «شگفت انگیر نی»→شگفت انگیزی",
+        "خانوادهٔ لا→الِ لایه: «االن»→الان، «اصال»→اصلا (بی‌تنوین در چاپ)، «حتم أ»→حتما (بی‌تنوین؛ در برابرِ «لطفاً» Q54 با تنوین — ناسازگاریِ خودِ چاپ)، «تعطیالت»→تعطیلات، «طواالب»→طولانی، «مشکالت»→مشکلات، «باالی»→بالای",
+        "Q6 ترجمه: «جک امکان نداره (منطقی نیست) که الان گرسنه باشی.» — «جک» = Jack نامِ خاص (رندر حاکم؛ «یک» برداشتِ اولیه غلط بود)؛ «نداره» و «میشه» Q54 و «چیه» Q51 و «داره» Q13 و «یکم» Q44 و «تون» در «همراهتون» Q7 — محاورهٔ چاپیِ عینِ چاپ (قرینهٔ r347)",
+        "Q35 ترجمه با پرانتزِ درون‌متنی «به سختی (خیلی)» — معنیِ جایگزینِ خودِ چاپ؛ Q12 «برف بیارد» (لایه «ببارد» — رندر «بیارد» حاکم)",
+        "تیره‌سنجی: ۸۸ رانِ لایه بر ۵۷ ساقه / ۸۶ جای‌خالی — استانداردِ ۲۰ با استثناهای عینِ چاپ: Q22=۱۳+۱۱، Q30 سه‌جای‌خالی، Q34 سه‌جای‌خالی، Q2=۱۴ یکپارچه (شمارشِ لایه حاکم — r338)؛ آپاستروف‌های تایپوگرافیک: didn’t/can’t/couldn’t/won’t/mustn’t/shouldn’t/hasn’t/It’s",
+        "Q24 تک‌واگراییِ کلیدِ خانواده: پیش‌پرکردنِ معناییِ مستقل «at Norouz» ولی کلیدِ چاپی d «in / on» — توضیحِ خودِ کلید صریحاً درس می‌دهد «برای مناسب‌های خاص (همچون نوروز) از in» — کلید حاکم (r344)؛ در برابرِ Q30/Q32 همان کلید «at» برای ساعت را درست می‌گیرد — ناسازگاریِ درون‌چاپیِ خودِ جزوه",
+        "بدونِ جعبهٔ Note در کلید (ص۲۹۹ فقط یک Note خالیِ تیره‌دار) — جعبهٔ Noteِ خالیِ ص۱۶۸-۱۶۹ (۲۷ سطرِ تیره) هم استخراج نشد (قرینهٔ r348: Note خالی بخشی از آزمون نیست)"
       ]
     }
   }

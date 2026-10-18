@@ -167,13 +167,13 @@ describe("jozve tests-g10 verb1 (r344 تمرین افعال حالتی و کنش
 });
 
 describe("jozve tests-g10 file shape after r344", () => {
-  it("file shape: 95 banks, 1189 items, unique ids", () => {
+  it("file shape: 96 banks, 1246 items, unique ids", () => {
     expect(bank.grade).toBe(10);
-    expect(bank.lessons).toHaveLength(95);
-    expect(bank.lessons.reduce((s: number, l: { count: number }) => s + l.count, 0)).toBe(1189);
+    expect(bank.lessons).toHaveLength(96);
+    expect(bank.lessons.reduce((s: number, l: { count: number }) => s + l.count, 0)).toBe(1246);
     const ids = bank.lessons.flatMap((l: TL) => l.questions.map((q: TQ) => q.id));
-    expect(ids.length).toBe(1189);
-    expect(new Set(ids).size).toBe(1189);
+    expect(ids.length).toBe(1246);
+    expect(new Set(ids).size).toBe(1246);
     expect(ids).toContain("g10-l75-1");
     expect(ids).toContain("g10-l75-4");
     expect(ids).toContain("g10-l76-1");
