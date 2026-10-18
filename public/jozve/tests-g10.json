@@ -6455,6 +6455,574 @@
           "placeholder": "answer the question about the reading…"
         }
       ]
+    },
+    {
+      "lesson": 25,
+      "title": "استاندارد/متوسط — تست گرامر و نگارش درس اول (ص۷۲-۷۴)",
+      "level": "استاندارد/متوسط — چهارگزینه‌ای",
+      "count": 40,
+      "questions": [
+        {
+          "id": "g10-l25-1",
+          "n": 1,
+          "category": "grammar",
+          "question": "On Friday mornings she --------------------- up at 7:30.",
+          "options": [
+            "wakes",
+            "is waking",
+            "will wake",
+            "is going to wake"
+          ],
+          "answer": 0,
+          "translation": "او صبح های جمعه ساعت هفت و نیم از خواب بیدار می شود."
+        },
+        {
+          "id": "g10-l25-2",
+          "n": 2,
+          "category": "grammar",
+          "question": "A: “Sam is going abroad tomorrow afternoon.”  B: “Really? I -------------------- him off.”",
+          "options": [
+            "will see",
+            "am going to see",
+            "see",
+            "am seeing"
+          ],
+          "answer": 0,
+          "translation": "الف: سام فردا بعد از ظهر به خارج از کشور می رود؟ ب: واقعا؟من می روم و با او خداحافیط خواهم کرد."
+        },
+        {
+          "id": "g10-l25-3",
+          "n": 3,
+          "category": "grammar",
+          "question": "A: “Ahmad’s father has just been in hospital for two weeks.  B: “Yes, we ------------------ him at this time tomorrow.”",
+          "options": [
+            "will visit",
+            "visit",
+            "are going to visit",
+            "were going to visit"
+          ],
+          "answer": 2,
+          "translation": "الف: پدر اخیرا به مدت دو هفته در بیمارستان بوده است.\" ب:آره، ما قصد داریم فردا همین موقع از او دیدن کنیم.\""
+        },
+        {
+          "id": "g10-l25-4",
+          "n": 4,
+          "category": "grammar",
+          "question": "She is so pale that I believe she---------------- now.",
+          "options": [
+            "is going to faint",
+            "will faint",
+            "faints",
+            "is fainting"
+          ],
+          "answer": 0,
+          "translation": "او آنقدر رنگش پریده است که باور دارم الان غش می کند."
+        },
+        {
+          "id": "g10-l25-5",
+          "n": 5,
+          "category": "grammar",
+          "question": "A: Will you please -------------------- me carry the table?”  B: “Yes, sure”",
+          "options": [
+            "helps",
+            "help",
+            "to help",
+            "helping"
+          ],
+          "answer": 1,
+          "translation": "الف: میشه لطفا کمکم میز را حمل بکنم؟ ب:بله. حتما."
+        },
+        {
+          "id": "g10-l25-6",
+          "n": 6,
+          "category": "grammar",
+          "question": "Samira and Saba ------------------- to the cinema tonight. It’s said that the movie is great. I wish I could go with them.",
+          "options": [
+            "is going to",
+            "were going to",
+            "are going to",
+            "was going to"
+          ],
+          "answer": 2,
+          "translation": "سمیرا و صبا قصد دارند امشب به سینما بروند. میگویند که فیلم عالی است. ای کاش من هم میتوانستم با آنها بروم."
+        },
+        {
+          "id": "g10-l25-7",
+          "n": 7,
+          "category": "grammar",
+          "question": "A: “Hi Sobhan, it’s getting too dark. Don’t you want to come back home?”  B: “Yes dad, ok I ------------------- back very soon.”",
+          "options": [
+            "am going to go",
+            "will go",
+            "am going",
+            "go"
+          ],
+          "answer": 1,
+          "translation": "الف: سلام سبحان، هوا دارد تاریک می شود. نمی خوایه به خانه برگردی؟ ب: بله پدر، باشه خیلی زود برخواهم گشت."
+        },
+        {
+          "id": "g10-l25-8",
+          "n": 8,
+          "category": "grammar",
+          "question": "A: “I ------------ my finger a few seconds ago.”  B: “Ok, I ------------- bring the plaster soon”.",
+          "options": [
+            "cut / will",
+            "am cutting / will",
+            "cut / am going to",
+            "am cutting / am going to"
+          ],
+          "answer": 0,
+          "translation": "الف: انگشتم را چند ثانیه قبل بریدم. ب: باشه زود چسب زخم را خواهم آورد."
+        },
+        {
+          "id": "g10-l25-9",
+          "n": 9,
+          "category": "grammar",
+          "question": "We should wrap up warm, it has been snowing for two day, so it ------------------ very cold outside.",
+          "options": [
+            "was",
+            "will be",
+            "isn’t",
+            "is going to be"
+          ],
+          "answer": 3,
+          "translation": "باید به خوبی لباس گرم بپوشیم، دو روز است که دارد برف می بارد، بنابراین بیرون خیلی سرد خواهد بود."
+        },
+        {
+          "id": "g10-l25-10",
+          "n": 10,
+          "category": "grammar",
+          "question": "The day after tomorrow -------------- my little son’s birthday and he ----------------- be seven years old.",
+          "options": [
+            "is / will",
+            "was / is going to",
+            "was / will",
+            "is / is going to"
+          ],
+          "answer": 0,
+          "translation": "پس فردا تولد پس کوچکم است و او هفت سالش خواهد شد."
+        },
+        {
+          "id": "g10-l25-11",
+          "n": 11,
+          "category": "grammar",
+          "question": "A:’ There’s nothing in the fridge.  B: “I know, I ------------------ shopping this evening.",
+          "options": [
+            "will go",
+            "am going to go",
+            "go",
+            "am going to going"
+          ],
+          "answer": 1,
+          "translation": "الف: هیچ چیز در یخچال نیست. ب: می دانم امروز عصر قصد دارم به خرید بروم."
+        },
+        {
+          "id": "g10-l25-12",
+          "n": 12,
+          "category": "grammar",
+          "question": "He ------------------------ her mother the whole truth, but he didn’t.",
+          "options": [
+            "will",
+            "is going to",
+            "was going to",
+            "was going"
+          ],
+          "answer": 2,
+          "translation": "او قصد داشت تمام حقیقت را به مادرش بگوید اما این کار را نکرد."
+        },
+        {
+          "id": "g10-l25-13",
+          "n": 13,
+          "category": "grammar",
+          "question": "Drive slowly! Jack! Otherwise, we -------------------- a car crash!",
+          "options": [
+            "will have",
+            "have",
+            "are having",
+            "are going to have"
+          ],
+          "answer": 3,
+          "translation": "جک،آرام بکن! در غیر اینصورت تصادف خواهیم کرد."
+        },
+        {
+          "id": "g10-l25-14",
+          "n": 14,
+          "category": "grammar",
+          "question": "A: “When --------------the sun come up every day”?  B: “I think it is around 6:30”.",
+          "options": [
+            "will",
+            "does",
+            "do",
+            "did"
+          ],
+          "answer": 1,
+          "translation": "الف: خورشید هر روز ساعت چند طلوع می کند؟ ب: فکر بکنم حدود ساعت شش و نیم ."
+        },
+        {
+          "id": "g10-l25-15",
+          "n": 15,
+          "category": "grammar",
+          "question": "After graduation, I ------------------- an institute. I think it ----------------- attract lots of students.",
+          "options": [
+            "will / is going to",
+            "am going to / is going to",
+            "will / will",
+            "am going to / will"
+          ],
+          "answer": 3,
+          "translation": "بعد از اینکه فارغ التحصیل بشوم قصد دارم یک آموزشگاه تاسیس کنم. فکر می کنم دانش آموزان زیادی را (به خود) جذب خواهد کرد."
+        },
+        {
+          "id": "g10-l25-16",
+          "n": 16,
+          "category": "grammar",
+          "question": "A: “Unfortunately, her daughter has just caught Covid-19.”  B: “Oh, that’s bad! She -------------------- in a good mood.”",
+          "options": [
+            "isn’t going to be",
+            "won’t be",
+            "is going to be",
+            "will be"
+          ],
+          "answer": 0,
+          "translation": "الف: متاسفانه دختر او اخیرا بیماری کرونا گرفته است. ب: اوه، چه بد! او (الن) در حال و هوای خوب نیست."
+        },
+        {
+          "id": "g10-l25-17",
+          "n": 17,
+          "category": "grammar",
+          "question": "The film ------------ at 4:30 and now it’s 3:45. It takes an hour to reach the cinema, ------------ we will be late.",
+          "options": [
+            "is starting / are going to be",
+            "will start / will be",
+            "starts / are going to be",
+            "is going to start / will be"
+          ],
+          "answer": 2,
+          "translation": "فیلم ساعت چهار و نیم شروع می شود و الان ساعت سه و چهل و پنج دقیقه است. یک ساعت هم طول می کشد تا به سینما برسیم، ما (قطعا) دیر خواهیم کرد."
+        },
+        {
+          "id": "g10-l25-18",
+          "n": 18,
+          "category": "grammar",
+          "question": "A: “Why are you buying these things?”  B: “Because I ---------------- soup for Pedram.”",
+          "options": [
+            "will make",
+            "am going to make",
+            "am making",
+            "make"
+          ],
+          "answer": 1,
+          "translation": "الف: چرا این چیزها را میخری؟ ب: زیرا قصد دارم برای پدرام سوپ درست بکنم."
+        },
+        {
+          "id": "g10-l25-19",
+          "n": 19,
+          "category": "grammar",
+          "question": "A: ----------------- you want to attend these courses?  B: Actually no, I ----------------- have enough money.",
+          "options": [
+            "Will / don’t",
+            "Do / don’t",
+            "Are / won’t",
+            "Will / am not going to"
+          ],
+          "answer": 1,
+          "translation": "الف: آیا می خوایه در این دوره ها شرکت بکنی؟ ب:راستش نه. پول کافی ندارم."
+        },
+        {
+          "id": "g10-l25-20",
+          "n": 20,
+          "category": "grammar",
+          "question": "A: “Karo, -------------- you guide me how to solve this math problem?  B: “Yes. Don’t worry, I --------------- help you with it”",
+          "options": [
+            "do / will",
+            "will / am going to",
+            "am going to / do",
+            "will / will"
+          ],
+          "answer": 3,
+          "translation": "الف:کاوو میشه راهنماییم بکنی که چور این مسئله ریاضی را حل بکنم؟ ب:بله نگران نباش. کمکت خواهم کرد."
+        },
+        {
+          "id": "g10-l25-21",
+          "n": 21,
+          "category": "grammar",
+          "question": "There is a football match on TV tomorrow night. I feel Real Madrid --------------- against Barcelona.",
+          "options": [
+            "will win",
+            "is going to win",
+            "wins",
+            "is winning"
+          ],
+          "answer": 0,
+          "translation": "الف: فردا شب در تلویزیون فوتبال پخش میشود. ب: من احساس می کنم که رئال مادرید در مقابل بارسلونا بازی را میبرد."
+        },
+        {
+          "id": "g10-l25-22",
+          "n": 22,
+          "category": "grammar",
+          "question": "There are many ---------------- in the alley. They ----------------- right now.",
+          "options": [
+            "children / are playing",
+            "children / play",
+            "childs / are going to play",
+            "childs / will play"
+          ],
+          "answer": 0,
+          "translation": "بچه های زیادی در کوچه هستند . آنها در حال حاضر مشغول بازی کردن هستند."
+        },
+        {
+          "id": "g10-l25-23",
+          "n": 23,
+          "category": "grammar",
+          "question": "There are around 190 --------------- in the world. I wish we were able to visit all of them.",
+          "options": [
+            "country",
+            "countries",
+            "countrys",
+            "countris"
+          ],
+          "answer": 1,
+          "translation": "حدود 190 کشور در دنیا وجود دارد. ای کاش می توانستیم از همه آنها بازدید بکنیم."
+        },
+        {
+          "id": "g10-l25-24",
+          "n": 24,
+          "category": "grammar",
+          "question": "I saw three --------------- in the mountain. They -------------- very dangerous.",
+          "options": [
+            "wolves/are",
+            "wolfs/were",
+            "wolves/were",
+            "wolfs / are"
+          ],
+          "answer": 2,
+          "translation": "سه گرگ را در کوهستان دیدم. آنها خیلی خطرناک بودند."
+        },
+        {
+          "id": "g10-l25-25",
+          "n": 25,
+          "category": "grammar",
+          "question": "Coming back home, we found -----------------. She was crying loudly.",
+          "options": [
+            "three missing kids",
+            "a missing kids",
+            "a missing kid",
+            "two missing kid"
+          ],
+          "answer": 2,
+          "translation": "وقتی به خانه بر می گشتیم یک بچه گمشده را پیدا کردیم. او داشت با صدای بلند گریه می کرد."
+        },
+        {
+          "id": "g10-l25-26",
+          "n": 26,
+          "category": "grammar",
+          "question": "A:” Today, few ------------- take notice of moral ---------------, do they”?  B: “Yes, you are right”.",
+          "options": [
+            "persons / principle",
+            "people / prnciples",
+            "people / principle",
+            "person / principles"
+          ],
+          "answer": 1,
+          "translation": "الف:امروزه مردم خیلی کم به اصول اخلاق توجه می کنند ,مگر نه؟ ب:بله درست می گوب."
+        },
+        {
+          "id": "g10-l25-27",
+          "n": 27,
+          "category": "grammar",
+          "question": "Which of the following is grammatically CORRECT?",
+          "options": [
+            "The my uncle bought a nice present for my birthday.",
+            "Two salmons died because of a long lack of water .",
+            "Pejman will want to go abroad next Tuesday .",
+            "Jamshid has two sons and a daughter. Sadly, one of the boys had a bad car accident two days ago."
+          ],
+          "answer": 3,
+          "translation": "کدام یک از گزینه های زیر از نظر گرامری درست است ؟ — a: دایی من برای تولدم یک هدیه خرید. b: دو ماهی (آزاد) به دلیل کمبود مدت آب مردند. c: پژمان سه شنبه بعد می خواهد به خارج برود. d: جمشید دو پس و یک دختر دارد. متاسفانه یکی از پسها دو روز پیش تصادف بدی کرده."
+        },
+        {
+          "id": "g10-l25-28",
+          "n": 28,
+          "category": "grammar",
+          "question": "If you don’t follow the rules, I -------------- the police to catch you.",
+          "options": [
+            "will inform",
+            "am going to inform",
+            "am informing",
+            "inform"
+          ],
+          "answer": 0,
+          "translation": "اگر از قوانین پیروی نکنی به پلیس اطلاع خواهم داد تا تو را دستگیر بکنند."
+        },
+        {
+          "id": "g10-l25-29",
+          "n": 29,
+          "category": "grammar",
+          "question": "-------------- guest who they invited was from -------------. He was a famous athlete.",
+          "options": [
+            "A / the German",
+            "The / Germany",
+            "A / the Germany",
+            "The / German"
+          ],
+          "answer": 1,
+          "translation": "مهمانی که آنها دعوت کردند اهل کشور آلمان بود . او یک ورزشکار مشهور بود."
+        },
+        {
+          "id": "g10-l25-30",
+          "n": 30,
+          "category": "grammar",
+          "question": "The police ------------ still looking into the murder. They believe they can catch ------------ killer soon.",
+          "options": [
+            "is / the",
+            "are / a",
+            "is / a",
+            "are / the"
+          ],
+          "answer": 3,
+          "translation": "پلیس هنوز دارد درباره آن قتل تحقیق می کند. آنها معتقدند که می توانند قاتل را به زودی پیدا بکنند."
+        },
+        {
+          "id": "g10-l25-31",
+          "n": 31,
+          "category": "grammar",
+          "question": "Since the creation, there have been a lot of ---------------- on the earth who have had different traditions and --------------- too.",
+          "options": [
+            "peoples / beliefs",
+            "people / believes",
+            "persons / beliefs",
+            "peoples / believes"
+          ],
+          "answer": 0,
+          "translation": "از آغاز هستی اقوام زیادی روی زمین بوده اند که سنت ها و اعتقادات مختلفی داشته اند."
+        },
+        {
+          "id": "g10-l25-32",
+          "n": 32,
+          "category": "grammar",
+          "question": "A: “Jane, we haven’t watered ----------------- flowers for a long period of time”  B: “Ok, I --------------- them very soon”.",
+          "options": [
+            "the / am going to water",
+            "the / will water",
+            "_ / am going to water",
+            "_ / will water"
+          ],
+          "answer": 1,
+          "translation": "الف: جین، مدت طولانی است که گل ها را آب نداده ایم . ب:باشه، به زودی آنها را آب می دهم."
+        },
+        {
+          "id": "g10-l25-33",
+          "n": 33,
+          "category": "grammar",
+          "question": "A: “Excuse me sir, how much is this -----------------?”  B: “It’s 100 thousand -------------------.”",
+          "options": [
+            "knife / toman",
+            "knife / tomans",
+            "knives / toman",
+            "knives / tomans"
+          ],
+          "answer": 1,
+          "translation": "الف: ببخشید آقا قیمت این چاقو چقدر است؟ ب: قیمت آن صد هزار تومان است."
+        },
+        {
+          "id": "g10-l25-34",
+          "n": 34,
+          "category": "grammar",
+          "question": "A: “Sahar, would you please drop me off next to --------- confectionary shop? I ------------ some sweet.”  B: “Yeah, sure.”",
+          "options": [
+            "that / will buy",
+            "these / am going to buy",
+            "the / am going to buy",
+            "a / will buy"
+          ],
+          "answer": 2,
+          "translation": "سحر، میشه لطفا کنار آن مغازه شیرفروشی من را پیاده کنی؟ می خواهم کمی شیرینی بخرم."
+        },
+        {
+          "id": "g10-l25-35",
+          "n": 35,
+          "category": "grammar",
+          "question": "The accident happened --------------- hour ago. --------------- were taken to hospital immediately.",
+          "options": [
+            "a / The injured people",
+            "an / Injured people",
+            "a / Injured people",
+            "an / The injured people"
+          ],
+          "answer": 3,
+          "translation": "تصادف یک ساعت قبل اتفاق افتاد. مصدومان را فورا به بیمارستان بردند."
+        },
+        {
+          "id": "g10-l25-36",
+          "n": 36,
+          "category": "grammar",
+          "question": "--------------- shops of our city will be closed tomorrow, and it lasts for two ------------------.",
+          "options": [
+            "The / weeks",
+            "_ / weeks",
+            "The / week",
+            "_ / week"
+          ],
+          "answer": 0,
+          "translation": "مغازه های شهر ما فردا بسته خواهند شد و این تعطیلی تا دو هفته طول خواهد کشید."
+        },
+        {
+          "id": "g10-l25-37",
+          "n": 37,
+          "category": "grammar",
+          "question": "Two of the ---------------- were devoured by ---------------- hungry wolf.",
+          "options": [
+            "a / sheeps",
+            "sheep / two",
+            "sheep / a",
+            "sheeps / those"
+          ],
+          "answer": 2,
+          "translation": "دو راس از گوسفندان توسط یک گرگ گرسنه بلعیده شدند."
+        },
+        {
+          "id": "g10-l25-38",
+          "n": 38,
+          "category": "grammar",
+          "question": "Those people standing in --------------- are impatient with the long queue.",
+          "options": [
+            "lines",
+            "a line",
+            "an line",
+            "line"
+          ],
+          "answer": 3,
+          "translation": "آن افرادی که در صف ایستاده اند از صف بی تاب و بی حوصله شده اند."
+        },
+        {
+          "id": "g10-l25-39",
+          "n": 39,
+          "category": "grammar",
+          "question": "A: “Where are you going?”  B: “I ------------- my coat from the cleaner’s. Is there anything I can do for you?” (ریاضی ۹۴)",
+          "options": [
+            "am going to pick up",
+            "am picking up",
+            "would pick up",
+            "pick up"
+          ],
+          "answer": 0,
+          "translation": "الف: کجا داری می روی ؟ ب: قصد دارم کتم را از خشکشویی بگیریم. کاری هست که بتونم برای تو انجام بدهم؟"
+        },
+        {
+          "id": "g10-l25-40",
+          "n": 40,
+          "category": "grammar",
+          "question": "Helen is such a good English teacher that I’m sure you --------------- be happy with her. (تجاری ۹۴)",
+          "options": [
+            "were going to",
+            "would",
+            "may",
+            "will"
+          ],
+          "answer": 3,
+          "translation": "هلن یک معلم خیلی خوب انگلیسی است که من مطمئنم تو از او راضی خواهی بود."
+        }
+      ]
     }
   ],
   "source": {
@@ -6681,6 +7249,48 @@
         "بخش۱۴-۱: «A few dolphins live in salt water oceans» کلید false در حالی که متن «Most live in salt water oceans» می‌گوید (most منطقاً few را نفی نمی‌کند) — کلید چاپ حاکم، عین چاپ",
         "کلیدِ بخش۱۴-۶ «Yes, they are among clever animals .» با فاصلهٔ پیش از نقطه (عین چاپ)؛ accepted شکل تمیز",
         "پایان ص۷۱: کانال تلگرام «@PracticalEnglishInKonkour»؛ پاسخنامه ص۲۵۳ با «Note:» و سطرهای خط‌دارِ خالی — خارج از محتوا"
+      ]
+    },
+    "gram3": {
+      "exam": "تست گرامر و نگارش درس اول — استاندارد/متوسط (سؤالات: ص۷۲ تا ۷۴)",
+      "header": "تست گرامر و نگارش «درس اول - پایه دهم» — سطح تستها: «استاندارد» - «متوسط» (پاسخنامه صفحه: ۲۵۴ تا ۲۵۷) — ۴۰ MCQ",
+      "keyPages": "254-257",
+      "keyVerification": "print key pp254-257 «پاسخنامه تشریحی تستهای گرامر — درس اول - پایه دهم، بخش: دوم (سؤالات: صفحه ۷۲ تا ۷۴)» — 40/40 agree with semantic pre-fill (هر مدخل: گزینه + شیوهٔ حل + ترجمهٔ چاپی), zero divergence; Q13=د و Q32=ب با کلید چاپ حاکم شدند",
+      "extractedRound": "r332",
+      "pattern": "r330 (کلیدِ توضیح‌دار + ترجمهٔ چاپی) + r328 (ترجمه‌محور) + r321 (عین چاپ + اندازه‌گیریِ گپ)",
+      "translations": "۴۰ ترجمهٔ چاپی «ترجمه:» تزریق شد؛ ~۳۰ نقطهٔ سرنوشت‌ساز با زوم ۲۲۰۰-۹۰۰۰dpi داوری شد (فهرست کوئیرک‌ها)",
+      "printQuirks": [
+        "سربرگِ آزمونِ ص۷۲: «تست گرامر و نگارش \"درس اول - پایه دهم\"» + «سطح تستها: \"استاندارد\" - \"متوسط\" (پاسخنامه صفحه ۲۵۴ تا ۲۵۷)» — لایه ارقام را «254 257» بهم‌ریخته داده بود؛ رندر ۲۴۰۰dpi حاکم",
+        "سربرگِ کلیدِ ص۲۵۴ تمیز است: «پاسخنامه تشریحی تستهای گرامر \"درس اول - پایه دهم\" — بخش: \"دوم\" (سؤالات: صفحه ۷۲ تا ۷۴)» — برخلافِ «دستگری» ص۲۴۹ (r330) این سربرگ واژهٔ تحریف‌شده ندارد؛ لایه «72 4 7» نویز",
+        "Q2 ترجمه: «خداحافیط» با ف و ط — تحریفِ چاپیِ «خداحافظی» (۳۰۰۰dpi عین چاپ) + «واقعا؟من» بدون فاصله پس از علامت سؤال",
+        "Q3 ساقه: گیومهٔ نامتوازن — «A: “Ahmad’s …» بسته نمی‌شود و B هم با «“Yes» آغاز می‌شود؛ ترجمه: «بوده است.\"» گیومهٔ درونی + «ب:آره» بدون فاصله",
+        "Q4 ساقه: «she----------------» خط‌تیره‌ها چسبیده به she",
+        "Q5 ترجمه: «میز را» (لایه «میر» و «را» را حذف کرده بود — رندر ۳۰۰۰dpi حاکم) + «ب:بله. حتما.» دونقطه چسبیده و دو جملهٔ کوتاه",
+        "Q8 ساقه: B با «soon”.» می‌شود — گیومه سپس نقطه",
+        "Q9 ساقه: «for two day,» — day مفرد (عین چاپ، رندر ۲۲۰۰dpi)",
+        "Q11 ساقه: «A:’» آپاستروف به‌جای گیومه (رندر حاکم) + B گیومهٔ باز بدون بستن؛ ترجمه: «به خرید بروم.\"»",
+        "Q13 ترجمه: «جک،آرام» — ویرگول از هر دو طرف چسبیده، بدون فاصله (۳۰۰۰dpi)",
+        "Q14 ساقه: «--------------the» خط‌تیره‌ها چسبیده به the + «day”?” + «6:30”.” — گیومه بیرون از علامت‌ها؛ ترجمه: «شش و نیم .» فاصله پیش از نقطه",
+        "Q18 ترجمه: «چیزها» جمع (لایه «چیر» ناقص)",
+        "Q20 ترجمه: «کاوو» تحریفِ چاپیِ «کارو» (رندر ۳۰۰۰dpi — و، نه ر) + «چور» عینِ چاپ برای «چطور» + «الف:کاوو» دونقطه چسبیده",
+        "Q21 ترجمه: «میشود» و «میبرد» چسبیده + نقطهٔ پایان سیاه‌رنگ (متفاوت از متنِ آبی) با گیومهٔ بالارفته — ۹۰۰۰dpi",
+        "Q22 ترجمه: «هستند . آنها» فاصله پیش از نقطه + «مشغول» و «حاضر» در لایه غایب بودند (رندر ۳۰۰۰dpi حاکم)",
+        "Q24 گزینه‌ها: «wolves/are» بدون فاصله دورِ اسلش ولی گزینهٔ d «wolfs / are» با فاصله — ناهماهنگیِ خودِ چاپ",
+        "Q25 ترجمه: «بر می گشتیم» سه‌واژه‌ای (میِ واقعی — لایه «یم» جابه‌جا) + «وقتی» (لایه «وقت» ی را حذف کرده بود)",
+        "Q26 ساقه: «A:”» گیومه پس از دونقطه + «they”?” گیومه میان they و ? + دو جای خالی (few---/moral---)؛ ترجمه: «می گوب.» تحریفِ چاپیِ «می گویی/گویید» (۶۰۰۰dpi عین چاپ) + «,مگر» ویرگول چسبیده + «الف:امروزه» دونقطه چسبیده",
+        "Q27 گزینه‌های b/c با نقطهٔ فاصله‌دار «water .» و «Tuesday .» + CORRECT ایتالیک زیرخط‌دار؛ ترجمهٔ گزینه‌ها: «دایی» (لایه «داب»)، «ماهی (آزاد)» (لایه «مایه»)، «دو پس» و «پسها» بدون ر (خانوادهٔ تحریفِ r330-Q3)، «کرده.» (لایه «کرد»)",
+        "Q29 ساقه: جای خالی نخست «-------------- guest» — بدون The چاپی؛ ترجمه: «مهمانی» (لایه «مهمان» ی را حذف کرده بود) + «بود . او» فاصله پیش از نقطه",
+        "Q32 ترجمه: «جین،» (لایه «جیر») + «مدت طولانی است» (لایه «طولانی» را حذف کرده بود) + «نداده ایم .» فاصله پیش از نقطه + «ب:باشه،» دونقطه چسبیده؛ گزینه‌ها با «the» کوچک و «_» برای حرف تعریف خالی",
+        "Q33 ساقه: «Excuse me sir,» بدون ویرگول پس از me + «this -----------------?”» علامت سؤال درون گیومه",
+        "Q34 ترجمه: بدون «الف:» آغازین — مستقیم «سحر،» + «شیرفروشی» و «شیرینی» (لایه «شیر بخرم» ناقص) + «پیاده کنی؟» (لایه «کنی» را حذف کرده بود)",
+        "Q35 ترجمه: «مصدومان» (لایه «مصدومان را فورا» کامل)",
+        "Q36 ترجمه: «تعطیلی» تک‌ی (لایه «تعطییل» نویز)؛ گزینه‌ها با «The» بزرگ و «_» خالی",
+        "Q38 توضیحِ کلید: «( in line به معنای درصف )» — «درصف» چسبیده؛ ترجمه: «بی تاب و بی حوصله» (لایه «ب تاب» ی حذف‌شده)",
+        "Q39 ترجمه: «می روی ؟» فاصله پیش از علامت سؤال + «بگیریم» به‌جای «بگیرم» (عین چاپ ۳۰۰۰dpi) + «خشکشویی» (لایه «خشکشوب»)؛ برچسب قرمز «(ریاضی ۹۴)» با رقم فارسی (لایه «ریاض 94»)",
+        "Q40 برچسب قرمز «(تجاری ۹۴)» (لایه «تجرت» نویز — رندر ۲۴۰۰dpi حاکم)؛ ترجمه با «هلن» آغاز می‌شود (لایه غایب) + «راضی خواهی بود» (لایه «راض خوایه» ناقص)",
+        "Q31 گزینه‌ها به سبک «a.» نقطه‌دار می‌آیند (تا Q30 سبک «a)») — تغییرِ سبکِ چاپ در میانهٔ آزمون؛ استثناهای roof/belief در توضیحِ کلید",
+        "جعبهٔ اصطلاحِ پس از Q40: «اصطلاح به کار رفته در تست فوق توجه بکنید: To be happy with sb — از دست کسی راضی بودن:» — ترتیبِ وارونهٔ چاپی حفظ شد",
+        "Note خالیِ خط‌چین در پایین ص۷۴ (جعبهٔ خالی)؛ جداسازِ خط‌چینِ قرمز پیش از Q39"
       ]
     }
   }

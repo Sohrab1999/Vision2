@@ -59,10 +59,10 @@ describe("jozve tests-g10 (r331 آزمون جامع تشریحی درس اول �
     expect(r.printQuirks.some((q) => q.includes("A few"))).toBe(true);
   });
 
-  it("file shape: 24 banks, new counts [16,12,6,7,14,6,6], levels and titles", () => {
-    expect(bank.lessons).toHaveLength(24);
-    expect(bank.lessons.slice(17).map((l) => l.lesson)).toEqual([18, 19, 20, 21, 22, 23, 24]);
-    expect(bank.lessons.slice(17).map((l) => l.count)).toEqual([16, 12, 6, 7, 14, 6, 6]);
+  it("file shape: 25 banks (r332 gram3 appended), new counts [16,12,6,7,14,6,6], levels and titles", () => {
+    expect(bank.lessons).toHaveLength(25);
+    expect(bank.lessons.slice(17, 24).map((l) => l.lesson)).toEqual([18, 19, 20, 21, 22, 23, 24]);
+    expect(bank.lessons.slice(17, 24).map((l) => l.count)).toEqual([16, 12, 6, 7, 14, 6, 6]);
     expect(bank.lessons[17].title).toContain("کلمات ناقص، بانک واژه و تعریف‌ها (ص۶۸)");
     expect(bank.lessons[17].level).toBe("تشریحی — تایپی");
     expect(bank.lessons[18].level).toBe("تشریحی — چهارگزینه‌ای");
@@ -72,7 +72,7 @@ describe("jozve tests-g10 (r331 آزمون جامع تشریحی درس اول �
     expect(bank.lessons[22].title).toContain("کلوز — استرالیا (ص۷۱)");
     expect(bank.lessons[23].title).toContain("درک مطلب — دلفین (ص۷۱)");
     expect(bank.lessons[23].level).toBe("تشریحی — درست/نادرست و تایپی");
-    expect(bank.lessons.reduce((s, l) => s + l.count, 0)).toBe(398);
+    expect(bank.lessons.reduce((s, l) => s + l.count, 0)).toBe(438);
   });
 
   it("MCQ keys locked to print: L19 (12) + L22 (14) + L23 (6) + L24 T/F (4) = 36 indices", () => {
@@ -168,10 +168,10 @@ describe("jozve tests-g10 (r331 آزمون جامع تشریحی درس اول �
     expect(L(24).questions[4].question).toBe("Where is a dolphin’s nose?");
   });
 
-  it("ids unique across the whole 398-item family (r331 jame1 appended)", () => {
+  it("ids unique across the whole 438-item family (r332 gram3 appended)", () => {
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(ids.length).toBe(398);
-    expect(new Set(ids).size).toBe(398);
+    expect(ids.length).toBe(438);
+    expect(new Set(ids).size).toBe(438);
     expect(ids.filter((id) => id.startsWith("g10-l18-"))).toHaveLength(16);
     expect(ids.filter((id) => id.startsWith("g10-l24-"))).toHaveLength(6);
   });
