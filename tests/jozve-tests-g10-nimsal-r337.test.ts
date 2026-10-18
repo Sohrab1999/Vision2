@@ -200,9 +200,9 @@ describe("jozve tests-g10 nimsal (r337 آزمون نیمسال اول ۹۸-۹۹ 
     expect(L47.questions[2].question).toBe("Where -------- the tourists ------------------ next Friday? (be going to / to visit)");
   });
 
-  it("no duplicate ids across the whole family (677)", () => {
+  it("no duplicate ids across the whole family (734)", () => {
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(ids.length).toBe(677);
-    expect(new Set(ids).size).toBe(677);
+    expect(ids.length).toBe(734);
+    expect(new Set(ids).size).toBe(734);
   });
 });

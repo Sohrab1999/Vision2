@@ -150,9 +150,9 @@ describe("jozve tests-g10 jame2 (r336 آزمون جامع تشریحی درس د
     expect(L38.questions[7].question).toBe("The Sun is a planet because the other objects are pulled into orbit around it.");
   });
 
-  it("no duplicate ids across the whole family (677)", () => {
+  it("no duplicate ids across the whole family (734)", () => {
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(ids.length).toBe(677);
-    expect(new Set(ids).size).toBe(677);
+    expect(ids.length).toBe(734);
+    expect(new Set(ids).size).toBe(734);
   });
 });

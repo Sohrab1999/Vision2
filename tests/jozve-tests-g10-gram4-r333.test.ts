@@ -188,6 +188,6 @@ describe("jozve tests-g10 gram4 (r333 آزمون تشریحی گرامر درس 
 
   it("ids unique across the whole 482-item family (r333 gram4 appended)", () => {
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(new Set(ids).size).toBe(677);
+    expect(new Set(ids).size).toBe(734);
   });
 });

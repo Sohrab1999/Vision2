@@ -10902,6 +10902,1091 @@
           "answer": 0
         }
       ]
+    },
+    {
+      "lesson": 53,
+      "title": "تشریحی درس سوم — جای خالی از بانک واژه (ص۱۲۰)",
+      "level": "تشریحی — تایپی",
+      "count": 16,
+      "questions": [
+        {
+          "id": "g10-l53-1",
+          "n": 1,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "------------------, we got home before it started to rain. [bank: developed / inventions / try / possible / lives / experiments / situation / fortunately / medicines]",
+          "options": [
+            "inventions",
+            "try",
+            "possible",
+            "lives",
+            "experiments",
+            "situation",
+            "fortunately",
+            "medicines",
+            "developed"
+          ],
+          "answer": 0,
+          "accepted": [
+            "fortunately"
+          ],
+          "placeholder": "fill in the blank with the bank word…"
+        },
+        {
+          "id": "g10-l53-2",
+          "n": 2,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Is it right to say that ------------------ make people famous? [bank: developed / inventions / try / possible / lives / experiments / situation / fortunately / medicines]",
+          "options": [
+            "try",
+            "possible",
+            "lives",
+            "experiments",
+            "situation",
+            "fortunately",
+            "medicines",
+            "developed",
+            "inventions"
+          ],
+          "answer": 0,
+          "accepted": [
+            "inventions"
+          ],
+          "placeholder": "fill in the blank with the bank word…"
+        },
+        {
+          "id": "g10-l53-3",
+          "n": 3,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "This antibiotic should not be taken with other ------------------. [bank: developed / inventions / try / possible / lives / experiments / situation / fortunately / medicines]",
+          "options": [
+            "possible",
+            "lives",
+            "experiments",
+            "situation",
+            "fortunately",
+            "medicines",
+            "developed",
+            "inventions",
+            "try"
+          ],
+          "answer": 0,
+          "accepted": [
+            "medicines"
+          ],
+          "placeholder": "fill in the blank with the bank word…"
+        },
+        {
+          "id": "g10-l53-4",
+          "n": 4,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "We can learn a lot of things about our scientists’ ------------------. [bank: developed / inventions / try / possible / lives / experiments / situation / fortunately / medicines]",
+          "options": [
+            "lives",
+            "experiments",
+            "situation",
+            "fortunately",
+            "medicines",
+            "developed",
+            "inventions",
+            "try",
+            "possible"
+          ],
+          "answer": 0,
+          "accepted": [
+            "lives"
+          ],
+          "placeholder": "fill in the blank with the bank word…"
+        },
+        {
+          "id": "g10-l53-5",
+          "n": 5,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "If your brother wants to learn English, he must ------------------ hard. [bank: developed / inventions / try / possible / lives / experiments / situation / fortunately / medicines]",
+          "options": [
+            "experiments",
+            "situation",
+            "fortunately",
+            "medicines",
+            "developed",
+            "inventions",
+            "try",
+            "possible",
+            "lives"
+          ],
+          "answer": 0,
+          "accepted": [
+            "try"
+          ],
+          "placeholder": "fill in the blank with the bank word…"
+        },
+        {
+          "id": "g10-l53-6",
+          "n": 6,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "In 1879, Edison ------------------ the first successful electric light bulb. [bank: developed / inventions / try / possible / lives / experiments / situation / fortunately / medicines]",
+          "options": [
+            "situation",
+            "fortunately",
+            "medicines",
+            "developed",
+            "inventions",
+            "try",
+            "possible",
+            "lives",
+            "experiments"
+          ],
+          "answer": 0,
+          "accepted": [
+            "developed"
+          ],
+          "placeholder": "fill in the blank with the bank word…"
+        },
+        {
+          "id": "g10-l53-7",
+          "n": 7,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Some people believe that ------------------ on animals should be stopped. [bank: developed / inventions / try / possible / lives / experiments / situation / fortunately / medicines]",
+          "options": [
+            "fortunately",
+            "medicines",
+            "developed",
+            "inventions",
+            "try",
+            "possible",
+            "lives",
+            "experiments",
+            "situation"
+          ],
+          "answer": 0,
+          "accepted": [
+            "experiments"
+          ],
+          "placeholder": "fill in the blank with the bank word…"
+        },
+        {
+          "id": "g10-l53-8",
+          "n": 8,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Will it be ------------------ for human beings to live on other planets some day in future? [bank: developed / inventions / try / possible / lives / experiments / situation / fortunately / medicines]",
+          "options": [
+            "medicines",
+            "developed",
+            "inventions",
+            "try",
+            "possible",
+            "lives",
+            "experiments",
+            "situation",
+            "fortunately"
+          ],
+          "answer": 0,
+          "accepted": [
+            "possible"
+          ],
+          "placeholder": "fill in the blank with the bank word…"
+        },
+        {
+          "id": "g10-l53-9",
+          "n": 9,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "We were asked to ------------------ a list of sentences. [bank: inventors / passed / solve / thousands / interview / knowledge / cradle / published / translate]",
+          "options": [
+            "inventors",
+            "passed",
+            "solve",
+            "thousands",
+            "interview",
+            "knowledge",
+            "cradle",
+            "published",
+            "translate"
+          ],
+          "answer": 0,
+          "accepted": [
+            "translate"
+          ],
+          "placeholder": "fill in the blank with the bank word…"
+        },
+        {
+          "id": "g10-l53-10",
+          "n": 10,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Her ------------------ of English grammar is very good. [bank: inventors / passed / solve / thousands / interview / knowledge / cradle / published / translate]",
+          "options": [
+            "passed",
+            "solve",
+            "thousands",
+            "interview",
+            "knowledge",
+            "cradle",
+            "published",
+            "translate",
+            "inventors"
+          ],
+          "answer": 0,
+          "accepted": [
+            "knowledge"
+          ],
+          "placeholder": "fill in the blank with the bank word…"
+        },
+        {
+          "id": "g10-l53-11",
+          "n": 11,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "She was only 19 when her first novel was ------------------. [bank: inventors / passed / solve / thousands / interview / knowledge / cradle / published / translate]",
+          "options": [
+            "solve",
+            "thousands",
+            "interview",
+            "knowledge",
+            "cradle",
+            "published",
+            "translate",
+            "inventors",
+            "passed"
+          ],
+          "answer": 0,
+          "accepted": [
+            "published"
+          ],
+          "placeholder": "fill in the blank with the bank word…"
+        },
+        {
+          "id": "g10-l53-12",
+          "n": 12,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "She’s upset because her father ------------------ away last week. [bank: inventors / passed / solve / thousands / interview / knowledge / cradle / published / translate]",
+          "options": [
+            "thousands",
+            "interview",
+            "knowledge",
+            "cradle",
+            "published",
+            "translate",
+            "inventors",
+            "passed",
+            "solve"
+          ],
+          "answer": 0,
+          "accepted": [
+            "passed"
+          ],
+          "placeholder": "fill in the blank with the bank word…"
+        },
+        {
+          "id": "g10-l53-13",
+          "n": 13,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "They spent ------------------ of dollars trying to fix the problem. [bank: inventors / passed / solve / thousands / interview / knowledge / cradle / published / translate]",
+          "options": [
+            "interview",
+            "knowledge",
+            "cradle",
+            "published",
+            "translate",
+            "inventors",
+            "passed",
+            "solve",
+            "thousands"
+          ],
+          "answer": 0,
+          "accepted": [
+            "thousands"
+          ],
+          "placeholder": "fill in the blank with the bank word…"
+        },
+        {
+          "id": "g10-l53-14",
+          "n": 14,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "He lived in the same village from the ------------------ to the grave. [bank: inventors / passed / solve / thousands / interview / knowledge / cradle / published / translate]",
+          "options": [
+            "knowledge",
+            "cradle",
+            "published",
+            "translate",
+            "inventors",
+            "passed",
+            "solve",
+            "thousands",
+            "interview"
+          ],
+          "answer": 0,
+          "accepted": [
+            "cradle"
+          ],
+          "placeholder": "fill in the blank with the bank word…"
+        },
+        {
+          "id": "g10-l53-15",
+          "n": 15,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "I really hope this report will help to ------------------ those problems. [bank: inventors / passed / solve / thousands / interview / knowledge / cradle / published / translate]",
+          "options": [
+            "cradle",
+            "published",
+            "translate",
+            "inventors",
+            "passed",
+            "solve",
+            "thousands",
+            "interview",
+            "knowledge"
+          ],
+          "answer": 0,
+          "accepted": [
+            "solve"
+          ],
+          "placeholder": "fill in the blank with the bank word…"
+        },
+        {
+          "id": "g10-l53-16",
+          "n": 16,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Edison was one of the most important scientists and ------------------ of the past two centuries. [bank: inventors / passed / solve / thousands / interview / knowledge / cradle / published / translate]",
+          "options": [
+            "published",
+            "translate",
+            "inventors",
+            "passed",
+            "solve",
+            "thousands",
+            "interview",
+            "knowledge",
+            "cradle"
+          ],
+          "answer": 0,
+          "accepted": [
+            "inventors"
+          ],
+          "placeholder": "fill in the blank with the bank word…"
+        }
+      ]
+    },
+    {
+      "lesson": 54,
+      "title": "تشریحی درس سوم — کلمه با حرف اول (ص۱۲۰)",
+      "level": "تشریحی — تایپی",
+      "count": 8,
+      "questions": [
+        {
+          "id": "g10-l54-1",
+          "n": 1,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Someone who has invented something or whose job is to invent things is an (i _ _ _ _ _ _ _).",
+          "options": [
+            "inventor",
+            "camera",
+            "telephone",
+            "patient",
+            "bulb",
+            "energetic",
+            "airplane",
+            "winter"
+          ],
+          "answer": 0,
+          "accepted": [
+            "inventor"
+          ],
+          "placeholder": "complete the word (first letter is given)…"
+        },
+        {
+          "id": "g10-l54-2",
+          "n": 2,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "A device for taking photographs or making films is a (c _ _ _ _).",
+          "options": [
+            "camera",
+            "telephone",
+            "patient",
+            "bulb",
+            "energetic",
+            "airplane",
+            "winter",
+            "inventor"
+          ],
+          "answer": 0,
+          "accepted": [
+            "camera"
+          ],
+          "placeholder": "complete the word (first letter is given)…"
+        },
+        {
+          "id": "g10-l54-3",
+          "n": 3,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "We use a (t _ _ _ _ _ _ _ _) to talk with someone in another place.",
+          "options": [
+            "telephone",
+            "patient",
+            "bulb",
+            "energetic",
+            "airplane",
+            "winter",
+            "inventor",
+            "camera"
+          ],
+          "answer": 0,
+          "accepted": [
+            "telephone"
+          ],
+          "placeholder": "complete the word (first letter is given)…"
+        },
+        {
+          "id": "g10-l54-4",
+          "n": 4,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "A (p _ _ _ _ _ ) is a sick person that a doctor is looking after.",
+          "options": [
+            "patient",
+            "bulb",
+            "energetic",
+            "airplane",
+            "winter",
+            "inventor",
+            "camera",
+            "telephone"
+          ],
+          "answer": 0,
+          "accepted": [
+            "patient"
+          ],
+          "placeholder": "complete the word (first letter is given)…"
+        },
+        {
+          "id": "g10-l54-5",
+          "n": 5,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "A light (b _ _) gives us an easier life when there is no light.",
+          "options": [
+            "bulb",
+            "energetic",
+            "airplane",
+            "winter",
+            "inventor",
+            "camera",
+            "telephone",
+            "patient"
+          ],
+          "answer": 0,
+          "accepted": [
+            "bulb"
+          ],
+          "placeholder": "complete the word (first letter is given)…"
+        },
+        {
+          "id": "g10-l54-6",
+          "n": 6,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "If you are (e _ _ _ _ _ _ _ ), you have a lot of energy.",
+          "options": [
+            "energetic",
+            "airplane",
+            "winter",
+            "inventor",
+            "camera",
+            "telephone",
+            "patient",
+            "bulb"
+          ],
+          "answer": 0,
+          "accepted": [
+            "energetic"
+          ],
+          "placeholder": "complete the word (first letter is given)…"
+        },
+        {
+          "id": "g10-l54-7",
+          "n": 7,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "We use it for air travel. It is an (a _ _ _ _ _ ).",
+          "options": [
+            "airplane",
+            "winter",
+            "inventor",
+            "camera",
+            "telephone",
+            "patient",
+            "bulb",
+            "energetic"
+          ],
+          "answer": 0,
+          "accepted": [
+            "airplane"
+          ],
+          "placeholder": "complete the word (first letter is given)…"
+        },
+        {
+          "id": "g10-l54-8",
+          "n": 8,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "The coldest season of the year is (w _ _ _ _ ).",
+          "options": [
+            "winter",
+            "inventor",
+            "camera",
+            "telephone",
+            "patient",
+            "bulb",
+            "energetic",
+            "airplane"
+          ],
+          "answer": 0,
+          "accepted": [
+            "winter"
+          ],
+          "placeholder": "complete the word (first letter is given)…"
+        }
+      ]
+    },
+    {
+      "lesson": 55,
+      "title": "تشریحی درس سوم — تعریف‌ها، بنویسید (ص۱۲۱)",
+      "level": "تشریحی — تایپی",
+      "count": 8,
+      "questions": [
+        {
+          "id": "g10-l55-1",
+          "n": 1,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "A person whose job is changing words, especially written words, into a different language:",
+          "options": [
+            "quit",
+            "careless",
+            "thinker",
+            "description",
+            "value",
+            "experiment",
+            "translator",
+            "noise",
+            "weak"
+          ],
+          "answer": 0,
+          "accepted": [
+            "translator"
+          ],
+          "placeholder": "type the word for the definition…"
+        },
+        {
+          "id": "g10-l55-2",
+          "n": 2,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "A test done to learn something or to discover if something works or is true:",
+          "options": [
+            "careless",
+            "thinker",
+            "description",
+            "value",
+            "experiment",
+            "translator",
+            "noise",
+            "weak",
+            "quit"
+          ],
+          "answer": 0,
+          "accepted": [
+            "experiment"
+          ],
+          "placeholder": "type the word for the definition…"
+        },
+        {
+          "id": "g10-l55-3",
+          "n": 3,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "A sound or sounds, especially when it is unwanted, unpleasant, or loud:",
+          "options": [
+            "thinker",
+            "description",
+            "value",
+            "experiment",
+            "translator",
+            "noise",
+            "weak",
+            "quit",
+            "careless"
+          ],
+          "answer": 0,
+          "accepted": [
+            "noise"
+          ],
+          "placeholder": "type the word for the definition…"
+        },
+        {
+          "id": "g10-l55-4",
+          "n": 4,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Someone who considers important subjects or produces new ideas:",
+          "options": [
+            "description",
+            "value",
+            "experiment",
+            "translator",
+            "noise",
+            "weak",
+            "quit",
+            "careless",
+            "thinker"
+          ],
+          "answer": 0,
+          "accepted": [
+            "thinker"
+          ],
+          "placeholder": "type the word for the definition…"
+        },
+        {
+          "id": "g10-l55-5",
+          "n": 5,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "The amount of money that can be received for something:",
+          "options": [
+            "value",
+            "experiment",
+            "translator",
+            "noise",
+            "weak",
+            "quit",
+            "careless",
+            "thinker",
+            "description"
+          ],
+          "answer": 0,
+          "accepted": [
+            "value"
+          ],
+          "placeholder": "type the word for the definition…"
+        },
+        {
+          "id": "g10-l55-6",
+          "n": 6,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Not taking or showing enough care and attention:",
+          "options": [
+            "experiment",
+            "translator",
+            "noise",
+            "weak",
+            "quit",
+            "careless",
+            "thinker",
+            "description",
+            "value"
+          ],
+          "answer": 0,
+          "accepted": [
+            "careless"
+          ],
+          "placeholder": "type the word for the definition…"
+        },
+        {
+          "id": "g10-l55-7",
+          "n": 7,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "To stop doing something:",
+          "options": [
+            "translator",
+            "noise",
+            "weak",
+            "quit",
+            "careless",
+            "thinker",
+            "description",
+            "value",
+            "experiment"
+          ],
+          "answer": 0,
+          "accepted": [
+            "quit"
+          ],
+          "placeholder": "type the word for the definition…"
+        },
+        {
+          "id": "g10-l55-8",
+          "n": 8,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Not physically strong:",
+          "options": [
+            "noise",
+            "weak",
+            "quit",
+            "careless",
+            "thinker",
+            "description",
+            "value",
+            "experiment",
+            "translator"
+          ],
+          "answer": 0,
+          "accepted": [
+            "weak"
+          ],
+          "placeholder": "type the word for the definition…"
+        }
+      ]
+    },
+    {
+      "lesson": 56,
+      "title": "تشریحی درس سوم — تست چهارگزینه‌ای (ص۱۲۱-۱۲۲)",
+      "level": "تشریحی — چهارگزینه‌ای",
+      "count": 25,
+      "questions": [
+        {
+          "id": "g10-l56-1",
+          "n": 1,
+          "category": "vocab",
+          "question": "------------------ on mice can give us an idea of the effect of the disease in humans.",
+          "options": [
+            "Thinking",
+            "Describing",
+            "Experimenting",
+            "Developing"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l56-2",
+          "n": 2,
+          "category": "vocab",
+          "question": "They work ------------------ the night and sleep by day.",
+          "options": [
+            "during",
+            "while",
+            "still",
+            "at all"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l56-3",
+          "n": 3,
+          "category": "vocab",
+          "question": "A lot of people ------------------ in life after death.",
+          "options": [
+            "invent",
+            "relate",
+            "guess",
+            "believe"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l56-4",
+          "n": 4,
+          "category": "vocab",
+          "question": "Ali got here at midday and Reza arrived soon ------------------.",
+          "options": [
+            "at all",
+            "after",
+            "same",
+            "rather"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l56-5",
+          "n": 5,
+          "category": "vocab",
+          "question": "He is the writer of two books on French ------------------.",
+          "options": [
+            "invention",
+            "history",
+            "emphatic",
+            "medicine"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l56-6",
+          "n": 6,
+          "category": "vocab",
+          "question": "Could you mind my bag for a/an ------------------ while I go to the toilet?",
+          "options": [
+            "moment",
+            "stress",
+            "emphasis",
+            "possible"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l56-7",
+          "n": 7,
+          "category": "vocab",
+          "question": "The role of scientists is to ------------------ and describe the world, not to try to control it.",
+          "options": [
+            "publish",
+            "feel",
+            "observe",
+            "change into"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l56-8",
+          "n": 8,
+          "category": "vocab",
+          "question": "The ------------------ of a sentence often depends on stress and intonation.",
+          "options": [
+            "during",
+            "peace",
+            "history",
+            "meaning"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l56-9",
+          "n": 9,
+          "category": "vocab",
+          "question": "Can we ------------------ that question ------------------ for now, and come back to it later?",
+          "options": [
+            "be / after",
+            "give / up",
+            "put / aside",
+            "grow / up"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l56-10",
+          "n": 10,
+          "category": "vocab",
+          "question": "We tried to get tickets, but ------------------ they were already sold out.",
+          "options": [
+            "strongly",
+            "unfortunately",
+            "finally",
+            "suddenly"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l56-11",
+          "n": 11,
+          "category": "vocab",
+          "question": "It was snowing ------------------ when I had an accident.",
+          "options": [
+            "fortunately",
+            "finally",
+            "heavily",
+            "hopefully"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l56-12",
+          "n": 12,
+          "category": "vocab",
+          "question": "Like a lot of men, he finds it difficult to express his ------------------.",
+          "options": [
+            "languages",
+            "inventions",
+            "medicines",
+            "emotions"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l56-13",
+          "n": 13,
+          "category": "vocab",
+          "question": "I ------------------ him some sandwiches because I thought he might be hungry.",
+          "options": [
+            "invented",
+            "brought",
+            "changed into",
+            "noticed"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l56-14",
+          "n": 14,
+          "category": "vocab",
+          "question": "The scientists feel ------------------ when they solve problems and find answers to their questions.",
+          "options": [
+            "skillful",
+            "careful",
+            "successful",
+            "careless"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l56-15",
+          "n": 15,
+          "category": "vocab",
+          "question": "He started his working life as an engineer but later ------------------ a teacher.",
+          "options": [
+            "believed",
+            "became",
+            "invented",
+            "rang"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l56-16",
+          "n": 16,
+          "category": "vocab",
+          "question": "Mars is sometimes ------------------ the red planet because of its different color.",
+          "options": [
+            "attended",
+            "called",
+            "behaved",
+            "related"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l56-17",
+          "n": 17,
+          "category": "vocab",
+          "question": "He was a/an ------------------ businessman before becoming a writer.",
+          "options": [
+            "situation",
+            "invention",
+            "knowledge",
+            "successful"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l56-18",
+          "n": 18,
+          "category": "vocab",
+          "question": "I’m ashamed to be seen with you when you ------------------ so badly!",
+          "options": [
+            "bring",
+            "behave",
+            "guess",
+            "solve"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l56-19",
+          "n": 19,
+          "category": "vocab",
+          "question": "Would you ------------------ your job if you got lots of money?",
+          "options": [
+            "quit",
+            "express",
+            "get around",
+            "come in"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l56-20",
+          "n": 20,
+          "category": "vocab",
+          "question": "They are very interested in starting work as soon as ------------------.",
+          "options": [
+            "reflexive",
+            "description",
+            "possible",
+            "together"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l56-21",
+          "n": 21,
+          "category": "vocab",
+          "question": "They are doing some ------------------ on the language of dolphins.",
+          "options": [
+            "research",
+            "invention",
+            "emphasis",
+            "stress"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l56-22",
+          "n": 22,
+          "category": "vocab",
+          "question": "You need to state your arguments with greater ------------------.",
+          "options": [
+            "creation",
+            "cradle",
+            "emphasis",
+            "worth"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l56-23",
+          "n": 23,
+          "category": "vocab",
+          "question": "Is there anything ------------------ that you’d like to do today?",
+          "options": [
+            "hospital",
+            "special",
+            "moment",
+            "thought"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l56-24",
+          "n": 24,
+          "category": "vocab",
+          "question": "After months of looking he ------------------ found a job.",
+          "options": [
+            "strongly",
+            "finally",
+            "quickly",
+            "unfortunately"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l56-25",
+          "n": 25,
+          "category": "vocab",
+          "question": "His ------------------ in God gave him hope during difficult times.",
+          "options": [
+            "belief",
+            "growth",
+            "behavior",
+            "interview"
+          ],
+          "answer": 0
+        }
+      ]
     }
   ],
   "source": {
@@ -11310,6 +12395,24 @@
         "پاصفحهٔ ص۱۱۱: «موفق و مؤید باشید» + «جمع بارم: 40 نمره» — و ص۱۱۲ تماماً برگهٔ «Note:» خالیِ خط‌چین (بدونِ سؤال)",
         "جغرافیای بومی: Gahar Lake (Q4) و Moghan (Q60) — همان رویکردِ بومی‌گرایِ جزوهٔ بوکان (قرینهٔ r336)؛ «zookeepers» جمع در Q12 (خانوادهٔ zookeeperِ r336)",
         "تیره‌های جای خالی ۱۶-۳۰ متغیر در چاپ؛ در بازسازی یکنواخت شد (BL) — طولِ تیره محتوایی نیست"
+      ]
+    },
+    "tashrihi3": {
+      "exam": "آزمون تشریحی واژگان درس سوم (ص۱۲۰-۱۲۲)",
+      "header": "سربرگِ ص۱۲۰ (رندرِ ۶۰۰dpi): «آزمون تشریحی واژگان درس سوم» (پاسخنامه صفحه: ۲۷۴) — لایهٔ OCR «تسی یچ» (پنجمین تکرارِ لایه‌غلطِ تشریحی: r318/r331/r333/r336 — رندر حاکم: تمیز)؛ دستورِ سکشن‌۱ «با استفاده از کلمات داده شده، جملات زیر را کامل کنید. (یک کلمه اضافه می باشد)» (لایه «جمالت/اضاقن یم» = جملات/اضافه می)؛ سکشن‌۲ «جملات زیر را با نوشتن یک کلمه مناسب کامل کنید.»؛ سکشن‌۳ «کلمات زیر را با تعاریف داده شده مطابقت دهید. (یک کلمه اضافه می باشد)»؛ سکشن‌۴ «بهترین گزینه را انتخاب کنید.»؛ پاصفحهٔ ص۱۲۲: «Telegram Channel: @PracticalEnglishInKonkour»",
+      "keyPages": "274",
+      "extractedRound": "r338",
+      "keyVerification": "گریدِ واژه‌ایِ چاپِ ص۲۷۴ «آزمون تشریحی واژگان درس سوم (آزمون صفحه: ۱۲۰ تا ۱۲۲)» — ۱۶ کلیدِ سکشن‌۱ + ۸ کلیدِ سکشن‌۲ + ۸ کلیدِ سکشن‌۳ + ۲۵ کلیدِ واژه‌ایِ سکشن‌۴ که همگی با حروفِ گزینه‌ها می‌خوانند — ۵۷/۵۷ با پیش‌پرکردنِ معنایی هم‌رأی، صفر واگرایی؛ گریدِ کلیدِ سکشن‌۴ بدونِ فاصله بعدِ عدد («1.Experimentig») و با سطرهای یک‌درمیانِ خاکستری",
+      "pattern": "r323/r326 — چهار بانک به ازای چهار سکشن: بانک‌واژه ۱۶ تایپی از دو زیربانکِ ۹کلمه‌ای چاپ + حرفِ اول ۸ تایپی + تعریف‌ها ۸ تایپی + ۲۵ MCQ",
+      "printQuirks": [
+        "گریدِ کلیدِ ص۲۷۴ Q1: «1.Experimentig» بدونِ n — عینِ چاپ؛ گزینهٔ خودِ سؤال (ص۱۲۱، رندر ۶۰۰dpi) «Experimenting» تمیز است؛ کلید = گزینهٔ c هر دوصورت",
+        "سکشن‌۲ — زیرخطِ چاپ در ۶ از ۸ آیتم کوتاه‌تر از طولِ کلید: Q2 c+4 (camera=۶)، Q4 p+5 (patient=۷)، Q5 b+2 (bulb=۴)، Q6 e+7 (energetic=۹)، Q7 a+5 (airplane=۸ — دو تیره کم!)، Q8 w+4 (winter=۶) — قاعدهٔ r323-Q7: ساقه عینِ چاپ، کلید از گریدِ ص۲۷۴؛ فقط Q1 (i+7=inventor) و Q3 (t+8=telephone) هم‌طولند",
+        "MCQ-6 «Could you mind my bag for a/an …» — عینِ چاپ (Would انتظار می‌رفت)؛ «a/an» هم عینِ چاپ (همچنین Q17 و سکشن‌۲-۷ «an (a…»)",
+        "MCQ-23: گزینه‌های b/c/d (special/moment/thought) در چاپ جعبهٔ خاکستریِ سایه‌دار دارند (a. hospital زرد) — آرتیفکتِ چاپ؛ کلید = b (special)",
+        "MCQ-9: دوجای‌خالی با گزینه‌های اسلش‌دارِ چاپ («be / after»، «give / up»، «put / aside»، «grow / up») — کلیدِ گرید بدونِ فاصله «put/aside»؛ گزینه به عینِ چاپِ سؤال (فاصله‌دار) ذخیره شد",
+        "MCQ-14: جای خالیِ چاپِ ساقه فقط ۴ تیره است («----») برخلافِ ۱۸-۲۵ تیرهٔ بقیه — ناهماهنگیِ خودِ چاپ؛ نرمال‌شده به تیرهٔ استانداردِ خانواده",
+        "سکشن‌۱ Q1: کاما چسبیده به جای خالی («------------------, we got home») — عینِ چاپ",
+        "جعبهٔ «Note:» خالیِ خط‌چین در پایینِ ص۲۷۴ (۴ خط — همان الگویِ r334)"
       ]
     }
   }
