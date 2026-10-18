@@ -164,16 +164,16 @@ describe("jozve tests-g10 l4gwr (r349 تست گرامر و نگارش درس چ�
     expect(B.questions[46].translation).toContain("دزدیدند. ب: اوه نه");
   });
 
-  it("file shape after r349: 96 banks, 1246 items, unique ids, group registered", () => {
-    expect(bank.lessons).toHaveLength(96);
+  it("file shape after r349: 97 banks, 1346 items, unique ids, group registered", () => {
+    expect(bank.lessons).toHaveLength(97);
     const counts = bank.lessons.map((l) => l.count);
-    expect(counts.reduce((a, b) => a + b, 0)).toBe(1246);
+    expect(counts.reduce((a, b) => a + b, 0)).toBe(1346);
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(new Set(ids).size).toBe(1246);
+    expect(new Set(ids).size).toBe(1346);
     // وکتورِ دنباله: بانکِ ۹۶ با ۵۷
     const tail = bank.lessons.slice(6).map((l) => l.count);
-    expect(tail.length).toBe(90);
-    expect(tail.slice(-1)).toEqual([57]);
-    expect(tail.slice(-8, -1)).toEqual([16, 12, 13, 2, 4, 6, 6]); // جامعِ چهارم — r348
+    expect(tail.length).toBe(91);
+    expect(tail.slice(-2, -1)).toEqual([57]);
+    expect(tail.slice(-9, -2)).toEqual([16, 12, 13, 2, 4, 6, 6]); // جامعِ چهارم — r348
   });
 });

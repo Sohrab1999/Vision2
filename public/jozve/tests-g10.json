@@ -20196,6 +20196,1314 @@
           "translation": "رئیس عصبانی می شود اگر دوباره زود بروی، بنابراین تو باید اول از او اجازه بگیری"
         }
       ]
+    },
+    {
+      "lesson": 97,
+      "title": "متوسط/کنکوری — ۱۰۰ تست گرامر و نگارش درس ۱ تا ۴ (ص۱۷۲-۱۷۶)",
+      "level": "متوسط/کنکوری — چهارگزینه‌ای",
+      "count": 100,
+      "questions": [
+        {
+          "id": "g10-l97-1",
+          "n": 1,
+          "category": "grammar",
+          "question": "I don’t know where Mr. Jordan is. He ------------------ in the garden, but I’m not sure.",
+          "options": [
+            "may is",
+            "may be",
+            "must is",
+            "must be"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l97-2",
+          "n": 2,
+          "category": "grammar",
+          "question": "-------------------- they increase the number of the houses next year?",
+          "options": [
+            "Do",
+            "Did",
+            "Will",
+            "Are"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l97-3",
+          "n": 3,
+          "category": "grammar",
+          "question": "You -------------------- drive when you are very tired. It’s so dangerous.",
+          "options": [
+            "would not",
+            "must not",
+            "could not",
+            "might not"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l97-4",
+          "n": 4,
+          "category": "grammar",
+          "question": "My ------------- has -------- young aunt. She is going to start learning -------------- Spanish in September.",
+          "options": [
+            "friend / a /-",
+            "friend / an / the",
+            "friends / a / the",
+            "friends / a / -"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l97-5",
+          "n": 5,
+          "category": "grammar",
+          "question": "I --------------------- fast when the car in front of me stopped suddenly and I hit it.",
+          "options": [
+            "driving",
+            "will drive",
+            "drove",
+            "was driving"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l97-6",
+          "n": 6,
+          "category": "grammar",
+          "question": "A: “What would you like to drink, madam?” B: “I ------------------ a glass of milk, please.”",
+          "options": [
+            "will have",
+            "am going to drink",
+            "am drinking",
+            "drink"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l97-7",
+          "n": 7,
+          "category": "grammar",
+          "question": "Unfortunately, my cousin ------------------- her leg while she ------------------- fast.",
+          "options": [
+            "broke / skied",
+            "broke / was skiing",
+            "was breaking / was skiing",
+            "was breaking / skied"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l97-8",
+          "n": 8,
+          "category": "grammar",
+          "question": "He really wants to answer the questions in his physics exam ------------. So, he’s studying ---------------.",
+          "options": [
+            "correctly / hardly",
+            "correct / hardly",
+            "correctly / hard",
+            "correct / hard"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l97-9",
+          "n": 9,
+          "category": "grammar",
+          "question": "As she was walking home, it started to snow. So, she opened her ------------------ umbrella.",
+          "options": [
+            "large new red and yellow",
+            "new large red and yellow",
+            "red and yellow large new",
+            "large red and yellow new"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l97-10",
+          "n": 10,
+          "category": "grammar",
+          "question": "A: “I told you to clean your room.” B: “Sorry, I forgot, --------------- it after having dinner.”",
+          "options": [
+            "I’m going to do",
+            "I’ll do",
+            "I did",
+            "I do"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l97-11",
+          "n": 11,
+          "category": "grammar",
+          "question": "Be careful with that sharp knife, Mehran! You are going to hurt ----------------- if you are not careful.",
+          "options": [
+            "ourselves",
+            "himself",
+            "yourselves",
+            "yourself"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l97-12",
+          "n": 12,
+          "category": "grammar",
+          "question": "You are eating your food too ------------------. Please eat it ------------------.",
+          "options": [
+            "quickly / slow",
+            "fast / slowly",
+            "slowly / quick",
+            "rapid / slowly"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l97-13",
+          "n": 13,
+          "category": "grammar",
+          "question": "A: “Where are you going on holiday?” B: “I’m not sure, maybe I ------------------ to Germany.",
+          "options": [
+            "go",
+            "am going",
+            "will go",
+            "went"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l97-14",
+          "n": 14,
+          "category": "grammar",
+          "question": "They usually visit their grandparents ------------------- Thursday evenings.",
+          "options": [
+            "on",
+            "in",
+            "with",
+            "to"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l97-15",
+          "n": 15,
+          "category": "grammar",
+          "question": "These poor students really ----------------- some new school things right now. We should help them.",
+          "options": [
+            "needed",
+            "need",
+            "are needing",
+            "were needing"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l97-16",
+          "n": 16,
+          "category": "grammar",
+          "question": "He often eats in restaurants all ---------- Sunday afternoons because he can’t ---------------- by himself.",
+          "options": [
+            "in / cook",
+            "on / cooks",
+            "in / cooks",
+            "on / cook"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l97-17",
+          "n": 17,
+          "category": "grammar",
+          "question": "People living here are very ---------------, but African people are --------------- people in the world.",
+          "options": [
+            "the poorer / poor",
+            "the poorest / poorer",
+            "poor / the poorest",
+            "poor / poorest"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l97-18",
+          "n": 18,
+          "category": "grammar",
+          "question": "While we were studying at the library, my friend ------------- and ------------ about his accident.",
+          "options": [
+            "came/ speaking",
+            "came / was speaking",
+            "came / spoke",
+            "was coming / spoke"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l97-19",
+          "n": 19,
+          "category": "grammar",
+          "question": "Mardin is only nine months old. He ------------------- eat food yet, but he ------------------ drink milk.",
+          "options": [
+            "can / can’t",
+            "can / can",
+            "can’t / can’t",
+            "can’t / can"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l97-20",
+          "n": 20,
+          "category": "grammar",
+          "question": "Mr. Amini and his brother drive ------------------- to work every day. They don’t take the bus.",
+          "options": [
+            "herself",
+            "themselves",
+            "himself",
+            "yourselves"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l97-21",
+          "n": 21,
+          "category": "grammar",
+          "question": "It’s a hospital. You -------------------- smoke and talk ------------------.",
+          "options": [
+            "shouldn’t / loud",
+            "mustn’t / loudly",
+            "can’t / loud",
+            "may not / loudly"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l97-22",
+          "n": 22,
+          "category": "grammar",
+          "question": "A: I don’t know how to use this computer. B: Really? Don’t worry, ----------------- you.",
+          "options": [
+            "I’m going to show",
+            "I showed",
+            "I’m showing",
+            "I’ll show"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l97-23",
+          "n": 23,
+          "category": "grammar",
+          "question": "They can speak Spanish very ----------------. They have lived -------------- Spain for seven years.",
+          "options": [
+            "good / in",
+            "good /at",
+            "well / in",
+            "well / at"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l97-24",
+          "n": 24,
+          "category": "grammar",
+          "question": "My classmate behaves ------------- towards me. I -------------- talk to the teacher about it next session.",
+          "options": [
+            "rude / am going to",
+            "rudely / am going to",
+            "rudely / will",
+            "rude / will"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l97-25",
+          "n": 25,
+          "category": "grammar",
+          "question": "We usually work really ---------------- from Saturday ------------ Wednesday.",
+          "options": [
+            "hard / to",
+            "hardly / on",
+            "hard / on",
+            "hardly / to"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l97-26",
+          "n": 26,
+          "category": "grammar",
+          "question": "Sarah and her friend Mina are both thirty-seven years old. Sarah isn’t ---------------- Mina.",
+          "options": [
+            "the oldest",
+            "as old as",
+            "older than",
+            "very old"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l97-27",
+          "n": 27,
+          "category": "grammar",
+          "question": "Rebecca has the flu. She must rest at home and take care of -------------------.",
+          "options": [
+            "you",
+            "yourself",
+            "herself",
+            "her"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l97-28",
+          "n": 28,
+          "category": "grammar",
+          "question": "Ali finally bought a nice car, so now he drives to work by his own’s. He ---------------- take the bus.",
+          "options": [
+            "doesn’t have to",
+            "shouldn’t",
+            "couldn’t",
+            "wouldn’t"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l97-29",
+          "n": 29,
+          "category": "grammar",
+          "question": "A: “There is no coffee. Would you like a cup of tea, instead?” B: “No, thanks. I ------------------- some orange juice.”",
+          "options": [
+            "drink",
+            "will drink",
+            "drank",
+            "am going to drink"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l97-30",
+          "n": 30,
+          "category": "grammar",
+          "question": "A: Are you able to --------------- Chinese? B: No, I ---------------. It’s not easy.",
+          "options": [
+            "speak / won’t",
+            "speak / can’t",
+            "speaking / may not",
+            "speaking / shouldn’t"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l97-31",
+          "n": 31,
+          "category": "grammar",
+          "question": "They have lived in a ---------------- apartment ---------------- 805 Azadi street for 12 years.",
+          "options": [
+            "small / on",
+            "smaller / in",
+            "small / at",
+            "the smallest / to"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l97-32",
+          "n": 32,
+          "category": "grammar",
+          "question": "A: “Are you going to play tennis next Friday?\" B: “I can’t. I ---------------- my mother in hospital.”",
+          "options": [
+            "will visit",
+            "can visit",
+            "visited",
+            "am going to visit"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l97-33",
+          "n": 33,
+          "category": "grammar",
+          "question": "Sometimes I walk to work and sometimes I go -------------- bus ------------ the afternoon.",
+          "options": [
+            "by / on",
+            "in / in",
+            "at / by",
+            "by / in"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l97-34",
+          "n": 34,
+          "category": "grammar",
+          "question": "A: “Do you like Swimming?” B: “Yes, I -------- swim very ----------. I have practiced it for 5 years.”",
+          "options": [
+            "must / good",
+            "may / good",
+            "should / well",
+            "can / well"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l97-35",
+          "n": 35,
+          "category": "grammar",
+          "question": "I saw my close friend yesterday while she ------------------ a nice red dress.",
+          "options": [
+            "wears",
+            "wore",
+            "was wearing",
+            "is going to wear"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l97-36",
+          "n": 36,
+          "category": "grammar",
+          "question": "A: “There’s no milk at home.” B: “I know. I ------------ some milk from Mr. Amini’s shop soon.”",
+          "options": [
+            "will get",
+            "got",
+            "am going to get",
+            "get"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l97-37",
+          "n": 37,
+          "category": "grammar",
+          "question": "My dad was very ----------------- at me and my brother when we got home late ------------- last night.",
+          "options": [
+            "angry / at",
+            "angry / -",
+            "angrily / -",
+            "angrily / at"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l97-38",
+          "n": 38,
+          "category": "grammar",
+          "question": "Don’t help us, mommy! Bahareh and I can wash your car all by -------------------.",
+          "options": [
+            "themselves",
+            "herself",
+            "himself",
+            "ourselves"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l97-39",
+          "n": 39,
+          "category": "grammar",
+          "question": "Negin is really a ------------------ student. She talked ------------------ to the interviewer.",
+          "options": [
+            "polite / politely",
+            "politely / polite",
+            "polite / polite",
+            "politely / politely"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l97-40",
+          "n": 40,
+          "category": "grammar",
+          "question": "He has an interesting hobby, but my sister has ------------------ hobby in the family.",
+          "options": [
+            "more interesting",
+            "as interesting as",
+            "the most interesting",
+            "the more interesting"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l97-41",
+          "n": 41,
+          "category": "grammar",
+          "question": "A: “Do you like French, Mohammad? B: “Yes, I do. And I ----------------- speak French well.”",
+          "options": [
+            "could",
+            "can",
+            "may",
+            "would"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l97-42",
+          "n": 42,
+          "category": "grammar",
+          "question": "Do you know that France is one of ------------------ countries in the world.",
+          "options": [
+            "richer",
+            "the richest",
+            "as rich as",
+            "richest"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l97-43",
+          "n": 43,
+          "category": "grammar",
+          "question": "He’s always ------------------ a hurry. I don’t understand why he often walks so -----------------.",
+          "options": [
+            "in / slowly",
+            "on / fast",
+            "in / quickly",
+            "at / rapidly"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l97-44",
+          "n": 44,
+          "category": "grammar",
+          "question": "My Father a good manager. We think that he ---------------------- any mistakes at work.",
+          "options": [
+            "isn’t going to make",
+            "is going to make",
+            "won’t make",
+            "will make"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l97-45",
+          "n": 45,
+          "category": "grammar",
+          "question": "The hotel which I reserved was very small. I expected it to be --------------- than the hotels of my city.",
+          "options": [
+            "bigger",
+            "smaller",
+            "the biggest",
+            "the smallest"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l97-46",
+          "n": 46,
+          "category": "grammar",
+          "question": "You mustn’t ------------------ to turn off the lights when you go to bed.",
+          "options": [
+            "to forget",
+            "forget",
+            "forgot",
+            "forgetting"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l97-47",
+          "n": 47,
+          "category": "grammar",
+          "question": "His uncles like to practice English by talking to ------------------.",
+          "options": [
+            "ourselves",
+            "themselves",
+            "himself",
+            "herself"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l97-48",
+          "n": 48,
+          "category": "grammar",
+          "question": "Yesterday, his older brother bought a ------------------ shirt which was very nice.",
+          "options": [
+            "Chinese small white",
+            "white Chinese small",
+            "small white Chinese",
+            "white small Chinese"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l97-49",
+          "n": 49,
+          "category": "grammar",
+          "question": "I think my friend Fatemeh ------------------ her math exam tomorrow. but I’m not quite sure about that.",
+          "options": [
+            "is going to pass",
+            "will pass",
+            "passes",
+            "passed"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l97-50",
+          "n": 50,
+          "category": "grammar",
+          "question": "Both my parents are working, but my mother makes ----------------- money than my father.",
+          "options": [
+            "little",
+            "more",
+            "the most",
+            "much"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l97-51",
+          "n": 51,
+          "category": "grammar",
+          "question": "I ------------------ carry this box alone. It is too ------------------! Would you help me?",
+          "options": [
+            "can’t / heavy",
+            "can’t / heavily",
+            "can / heavy",
+            "can / heavily"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l97-52",
+          "n": 52,
+          "category": "grammar",
+          "question": "A: Where did your older ------------- put the -------------? B: “She put them on that ----------------.”",
+          "options": [
+            "sister / knives / shelf",
+            "sisters / knife/ shelf",
+            "sister / knives / shelves",
+            "sister / knife / shelves"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l97-53",
+          "n": 53,
+          "category": "grammar",
+          "question": "Recently, Mr. Moradi’s sister has made a very nice blue cotton dress for ------------------.",
+          "options": [
+            "her",
+            "herself",
+            "himself",
+            "his"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l97-54",
+          "n": 54,
+          "category": "grammar",
+          "question": "---------------- boys sitting over there like football. -------------- favorite team is -------------- Liverpool.",
+          "options": [
+            "These / Their / the",
+            "Those / Their /-",
+            "This / His /-",
+            "That / His /-"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l97-55",
+          "n": 55,
+          "category": "grammar",
+          "question": "My father ------------------ at 70 km/h when a policeman ---------------- him.",
+          "options": [
+            "drove / stopped",
+            "drove / stops",
+            "was driving / stopped",
+            "was driving / was stopping"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l97-56",
+          "n": 56,
+          "category": "grammar",
+          "question": "It's raining --------------------. You ------------------- take your own umbrella.",
+          "options": [
+            "heavily / may",
+            "heavily / must",
+            "heavy /should",
+            "heavy / can"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l97-57",
+          "n": 57,
+          "category": "grammar",
+          "question": "She put the plates on the table and told Mary and --------------- to help ------------- to the food.",
+          "options": [
+            "me / ourselves",
+            "you / themselves",
+            "him / yourselves",
+            "her / herself"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l97-58",
+          "n": 58,
+          "category": "grammar",
+          "question": "My older sister has three children. Mahyar is ------------------- of all. He is only 3 years old.",
+          "options": [
+            "younger than",
+            "youngest",
+            "the youngest",
+            "younger"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l97-59",
+          "n": 59,
+          "category": "grammar",
+          "question": "A: There is a good movie on TV tonight. B: Yes, I know. I ----------------- it with my family.",
+          "options": [
+            "am going to watch",
+            "will watch",
+            "watched",
+            "watching"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l97-60",
+          "n": 60,
+          "category": "grammar",
+          "question": "Which hotel ---------------- you staying in when you ---------------- all the money and your passport?",
+          "options": [
+            "were / were losing",
+            "were / lost",
+            "did / were losing",
+            "did / lost"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l97-61",
+          "n": 61,
+          "category": "grammar",
+          "question": "I finished all of my homework this afternoon. Fortunately, I ----------------- study tonight.",
+          "options": [
+            "shouldn’t",
+            "couldn’t",
+            "wouldn’t",
+            "don’t have to"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l97-62",
+          "n": 62,
+          "category": "grammar",
+          "question": "I’m too tired to walk home. I think I ----------------- a taxi.",
+          "options": [
+            "am going to take",
+            "will take",
+            "take",
+            "took"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l97-63",
+          "n": 63,
+          "category": "grammar",
+          "question": "Be ------------------! You are speaking too -------------------. The baby is sleeping in the next room.",
+          "options": [
+            "quiet / loud",
+            "quietly / loudly",
+            "quiet / loudly",
+            "quietly / loud"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l97-64",
+          "n": 64,
+          "category": "grammar",
+          "question": "A: “Did you send an e-mail to Marry?” B: “NO, I forgot. I --------------------- her tomorrow.”",
+          "options": [
+            "am going to send",
+            "will send",
+            "send",
+            "sent"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l97-65",
+          "n": 65,
+          "category": "grammar",
+          "question": "I like to tell jokes and ----------------- people laugh. I tell jokes ------------------.",
+          "options": [
+            "always make / badly",
+            "make always / good",
+            "always make / well",
+            "make always / bad"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l97-66",
+          "n": 66,
+          "category": "grammar",
+          "question": "A: “Why do you need to borrow my suitcase?” B: I --------------- Mr. Kane in London next month.",
+          "options": [
+            "visited",
+            "visit",
+            "will visit",
+            "am going to visit"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l97-67",
+          "n": 67,
+          "category": "grammar",
+          "question": "A: “Can you read this for me? My eyes aren’t ----------------- yours.” B: “Sure”.",
+          "options": [
+            "better",
+            "more weak than",
+            "the weak as",
+            "as good as"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l97-68",
+          "n": 68,
+          "category": "grammar",
+          "question": "Look! There are not any clouds in the sky. So, it ------------------ a beautiful day.",
+          "options": [
+            "will be",
+            "is going to be",
+            "would be",
+            "was"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l97-69",
+          "n": 69,
+          "category": "grammar",
+          "question": "We should be careful about our behavior when traveling ----------------- a foreign country.",
+          "options": [
+            "next to",
+            "on",
+            "by",
+            "in"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l97-70",
+          "n": 70,
+          "category": "grammar",
+          "question": "I’m very tired today. I --------------- clean my room now, but I -------------- do it tomorrow.",
+          "options": [
+            "can’t / won’t",
+            "shouldn’t / will",
+            "should / won’t",
+            "can’t / will"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l97-71",
+          "n": 71,
+          "category": "grammar",
+          "question": "The phone and the doorbell rang ----------- the same time and I didn’t know which one to answer first.",
+          "options": [
+            "by",
+            "at",
+            "with",
+            "to"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l97-72",
+          "n": 72,
+          "category": "grammar",
+          "question": "Miss Mohammadi’s older brother ---------- cooked a meal and then he listened to music by ------------.",
+          "options": [
+            "him / him",
+            "himself / himself",
+            "herself / herself",
+            "her / her"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l97-73",
+          "n": 73,
+          "category": "grammar",
+          "question": "A: “What is ------------------- sport in your country?” B: “It’s football but I’m not quite sure.”",
+          "options": [
+            "better",
+            "as popular as",
+            "more popular",
+            "the most popular"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l97-74",
+          "n": 74,
+          "category": "grammar",
+          "question": "My ---------- live in ---------- old house in --------- London. There is a beautiful garden near the house.",
+          "options": [
+            "grandparent / an / -",
+            "grandparents / a / the",
+            "grandparents / an / -",
+            "grandparent / a / the"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l97-75",
+          "n": 75,
+          "category": "grammar",
+          "question": "Did you know that December is -------------------- month of the year in my country?",
+          "options": [
+            "the coldest",
+            "colder than",
+            "as cold as",
+            "much cold"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l97-76",
+          "n": 76,
+          "category": "grammar",
+          "question": "Is your ------- going to invite his --------, Mohsen and Milad, and their -------- to the wedding tomorrow?",
+          "options": [
+            "uncles / sons / wives",
+            "uncles / son / wife",
+            "uncle / son / wife",
+            "uncle / sons / wives"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l97-77",
+          "n": 77,
+          "category": "grammar",
+          "question": "I’m a good swimmer and ------------- swim very well these days, but I -------------- 15 years ago.",
+          "options": [
+            "can / couldn’t",
+            "can / could",
+            "can’t / could",
+            "could / can’t"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l97-78",
+          "n": 78,
+          "category": "grammar",
+          "question": "You should ----------------- to the doctor. Your cold is ----------------- than it was a few days ago.",
+          "options": [
+            "going / as bad as",
+            "go / worst",
+            "go / worse",
+            "going / very bad D"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l97-79",
+          "n": 79,
+          "category": "grammar",
+          "question": "The writer sat down ------------ her desk, turned on her computer and ------------ for a few hours.",
+          "options": [
+            "on / worked",
+            "above / works",
+            "in / works",
+            "at / worked"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l97-80",
+          "n": 80,
+          "category": "grammar",
+          "question": "Their school isn’t as ---------------------- our school. It has only five classes.",
+          "options": [
+            "nearer as",
+            "farther than",
+            "the nearest",
+            "far as"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l97-81",
+          "n": 81,
+          "category": "grammar",
+          "question": "Which sentence is grammatically WRONG?",
+          "options": [
+            "They went to school at three o'clock.",
+            "He went to a new school at London.",
+            "I can’t sleep at night these days.",
+            "We often go on holiday in summer."
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l97-82",
+          "n": 82,
+          "category": "grammar",
+          "question": "----------- your classmates going to --------------------- wildlife museum next Tuesday?",
+          "options": [
+            "Are / visiting",
+            "Are / visit",
+            "Were / visiting",
+            "Will / visit"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l97-83",
+          "n": 83,
+          "category": "grammar",
+          "question": "------------------ they swimming at the swimming pool when they ------------- a terrible noise?",
+          "options": [
+            "Were / heard",
+            "Are / were hearing",
+            "Do / were hearing",
+            "Did / heard"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l97-84",
+          "n": 84,
+          "category": "grammar",
+          "question": "Blue whales can weigh 120 tons. No other whales are so heavy. Blue whales are ---------------- the other whales. They are -------------- animals in the world.",
+          "options": [
+            "the heaviest / heavier than",
+            "the heaviest / the heaviest",
+            "heavier than / the heaviest",
+            "heavier than / heavier than"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l97-85",
+          "n": 85,
+          "category": "grammar",
+          "question": "I know Ali very well. He is always late to school. I’m quite sure he ------------ late tomorrow evening.",
+          "options": [
+            "will be",
+            "is going to be",
+            "is",
+            "was"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l97-86",
+          "n": 86,
+          "category": "grammar",
+          "question": "His handwriting is ---------------------- as my handwriting. He writes as ------------------ as me.",
+          "options": [
+            "as good / beautifully",
+            "better than / beautiful",
+            "worse than / beautifully",
+            "as bad / beautiful"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l97-87",
+          "n": 87,
+          "category": "grammar",
+          "question": "He believes that his job is ----------------- job in the world. He would like to give it up.",
+          "options": [
+            "more boring",
+            "the most boring",
+            "boring than",
+            "boring"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l97-88",
+          "n": 88,
+          "category": "grammar",
+          "question": "My grandparents are living in a (n) ------------------ house in a ------------------- village.",
+          "options": [
+            "old wooden / small lovely old",
+            "old wooden / lovely small old",
+            "wooden old / small lovely old",
+            "wooden old / lovely old small"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l97-89",
+          "n": 89,
+          "category": "grammar",
+          "question": "While Behnam ----------------- his homework last night, he received a text message from his friend.",
+          "options": [
+            "did",
+            "was doing",
+            "will do",
+            "does"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l97-90",
+          "n": 90,
+          "category": "grammar",
+          "question": "Yesterday John told me a ----------------- joke. This joke was ----------------- joke I’ve ever heard.",
+          "options": [
+            "funnier / funnier than",
+            "funny / the funniest",
+            "funny / as funny as",
+            "funniest / much funny"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l97-91",
+          "n": 91,
+          "category": "grammar",
+          "question": "Your little children --------------- sit so --------------- the TV. It’s very bad for their eyes.",
+          "options": [
+            "may not / in front of",
+            "won’t / by",
+            "shouldn’t / near",
+            "can’t / next to"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l97-92",
+          "n": 92,
+          "category": "grammar",
+          "question": "I ----------------- my hand while I ------------------ dinner last night.",
+          "options": [
+            "burned / was cooking",
+            "burned / will cook",
+            "burned / cooked",
+            "burn / cook"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l97-93",
+          "n": 93,
+          "category": "grammar",
+          "question": "We were running to the station exactly when the train ------------------.",
+          "options": [
+            "were leaving",
+            "was leaving",
+            "left",
+            "leaving"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l97-94",
+          "n": 94,
+          "category": "grammar",
+          "question": "Raman, Ali, Mohammad, and I ------------------ cleaned all the rooms very carefully.",
+          "options": [
+            "themselves",
+            "myself",
+            "himself",
+            "ourselves"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l97-95",
+          "n": 95,
+          "category": "grammar",
+          "question": "Don’t ride so ------------------. You ------------------ have an accident.",
+          "options": [
+            "fast / may",
+            "quick / should",
+            "quickly / can",
+            "rapidly / must"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l97-96",
+          "n": 96,
+          "category": "grammar",
+          "question": "Which sentence is grammatically WRONG?",
+          "options": [
+            "Look at the picture on the wall.",
+            "I found my keys on the desk.",
+            "Most students have lunch on school.",
+            "What are you doing on Saturday?"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l97-97",
+          "n": 97,
+          "category": "grammar",
+          "question": "My parents have lived in a ----------------------- apartment in the city center since 1363.",
+          "options": [
+            "beautiful big wooden new",
+            "beautiful big new wooden",
+            "new big beautiful wooden",
+            "wooden beautiful big new"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l97-98",
+          "n": 98,
+          "category": "grammar",
+          "question": "You and your roommates should ----------------- your rooms by -----------------.",
+          "options": [
+            "clean / yourselves",
+            "to clean / himself",
+            "cleaning / herself",
+            "clean / yourself"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l97-99",
+          "n": 99,
+          "category": "grammar",
+          "question": "Mark has three -----------, ----------- boy and two girls. ---------- boy is 7 years old and their girls are 3.",
+          "options": [
+            "children / a / A",
+            "children / a / The",
+            "child / the / A",
+            "child / the / The"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l97-100",
+          "n": 100,
+          "category": "grammar",
+          "question": "The man worked very hard all day long. So, it wasn’t surprising that he ----------------- very tired.",
+          "options": [
+            "was looking",
+            "looked",
+            "is looking",
+            "looks"
+          ],
+          "answer": 1
+        }
+      ]
     }
   ],
   "source": {
@@ -20913,6 +22221,27 @@
         "تیره‌سنجی: ۸۸ رانِ لایه بر ۵۷ ساقه / ۸۶ جای‌خالی — استانداردِ ۲۰ با استثناهای عینِ چاپ: Q22=۱۳+۱۱، Q30 سه‌جای‌خالی، Q34 سه‌جای‌خالی، Q2=۱۴ یکپارچه (شمارشِ لایه حاکم — r338)؛ آپاستروف‌های تایپوگرافیک: didn’t/can’t/couldn’t/won’t/mustn’t/shouldn’t/hasn’t/It’s",
         "Q24 تک‌واگراییِ کلیدِ خانواده: پیش‌پرکردنِ معناییِ مستقل «at Norouz» ولی کلیدِ چاپی d «in / on» — توضیحِ خودِ کلید صریحاً درس می‌دهد «برای مناسب‌های خاص (همچون نوروز) از in» — کلید حاکم (r344)؛ در برابرِ Q30/Q32 همان کلید «at» برای ساعت را درست می‌گیرد — ناسازگاریِ درون‌چاپیِ خودِ جزوه",
         "بدونِ جعبهٔ Note در کلید (ص۲۹۹ فقط یک Note خالیِ تیره‌دار) — جعبهٔ Noteِ خالیِ ص۱۶۸-۱۶۹ (۲۷ سطرِ تیره) هم استخراج نشد (قرینهٔ r348: Note خالی بخشی از آزمون نیست)"
+      ]
+    },
+    "gram14": {
+      "exam": "۱۰۰ تست گرامر و نگارش درس ۱ تا ۴ - پایه دهم (ص۱۷۲-۱۷۶)",
+      "header": "جلدِ ص۱۷۱: «Grammar Tests / Vision 1 / (Lesson: 1-4) / سطح تستها: متوسط و استاندارد» + سربرگِ چاپیِ ص۱۷۲: «۱۰۰ تست گرامر و نگارش درس ۱ تا ۴ - پایه دهم (پاسخنامه کلیدی صفحه ۳۰۰)» + «سطح تستها \"متوسط\" و \"کنکوری\"» — ۱۰۰ MCQ",
+      "keyPages": "300",
+      "keyVerification": "print key p300 «پاسخنامه تستهای گرامر درس یک تا چهار - پایه دهم (سؤالات: صفحه ۱۷۲ تا ۱۷۶)» — کلیدِ جدولیِ ۱۰×۱۰ با ارقامِ لاتین — 100/100 agree with semantic pre-fill, zero divergence",
+      "extractedRound": "r350",
+      "pattern": "r349 (بانکِ MCQِ درس‌محور) + r334 (گرامرِ بدونِ ترجمهٔ چاپی) + r322 (عینِ چاپ)",
+      "printQuirks": [
+        "جلدِ ص۱۷۱ خانواده: «Grammar Tests / Vision 1 / (Lesson: 1-4)» سرمه‌ایِ ایتالیک روی نوارِ زرد + «Vision 1» سرخِ بزرگ + «سطح تستها: متوسط و استاندارد» — ولی سربرگِ خودِ آزمونِ ص۱۷۲: «سطح تستها \"متوسط\" و \"کنکوری\"» («متوسط» سبزِ نقل‌قولی، «کنکوری» سرخِ نقل‌قولی؛ رندرِ ۹۰۰dpi حاکم) — آزمونِ «متوسط و کنکوری» است نه استاندارد",
+        "سربرگِ چاپیِ ص۱۷۲: «۱۰۰ تست گرامر و نگارش درس ۱ تا ۴ - پایه دهم» با «۱۰۰» سرخ و «ست ت» لایه (= تست) + «:(پاسخنامه کلیدی صفحه ۳۰۰)» با رقمِ لاتینِ ۳۰۰ در لایه (چاپ: فارسی)",
+        "سربرگِ کلیدِ ص۳۰۰: «پاسخنامه تستهای گرامر\"درس یک تا چهار - پایه دهم (سؤاالت صفحه ۱۷۲ تا ۱۷۶)» — «سؤاالت» = پانزدهمین تجزیهٔ لیگاتورِ مستندشده (r349؛ چاپ تمیز)؛ جعبهٔ Noteِ خالیِ تیره‌دارِ زیرِ سربرگ استخراج نشد (قرینهٔ r348/r349)",
+        "کلید = جدولِ ۱۰×۱۰ (سطرها ۱-۹، ستون‌ها ده‌تایی نزولی) با ارقامِ لاتینِ مشکی و حروفِ سرخ — گریدِ کاملِ ۱۰۰تایی با regex چندالگویی یکجا: ۱۰۰/۱۰۰ بدونِ تکرار/نقص (key-grid-g10-l14-r350.py)؛ 100/100 agree with semantic pre-fill — صفر واگرایی (الگوی r323)",
+        "جای‌خالی‌ها تیره‌چینِ سبز (خط‌چین)؛ لایه ران‌های ممتدِ ۷-۲۳تایی بدونِ هیچ بریدگیِ بین‌خطی می‌دهد — ۱۵۰ رانِ ≥۳ بر ۱۰۰ ساقه عینِ لایه حفظ شد؛ حروفِ گزینه‌ها کادرِ آبیِ روشن؛ شمارهٔ سؤال‌ها سرخ",
+        "نویزهای لایه که رندر حکم کرد: Q14 خطِ نویزِ «a       » پیش از «a) on» (حذف)؛ Q93 حرفِ گزینهٔ «a(» با پرانتزِ باز (گزینه: were leaving)؛ Q96 حروفِ سربارِ «B»/«D» در انتهای گزینه‌های a/c نویزِ لایه‌اند — رندرِ ۱۲۰۰dpi گزینه‌های تمیز نشان داد",
+        "دو سؤالِ «Which sentence is grammatically WRONG?» (Q81/Q96) — «WRONG» در چاپ زیرخط‌دار؛ Q81 کلیدِ b «He went to a new school at London.» (at London = خطایِ هدف)؛ Q96 کلیدِ c «Most students have lunch on school.»",
+        "چاپ‌غلط‌ها/کوئیرک‌های عینِ چاپ (رندر ۱۲۰۰dpi تأیید): Q28 «by his own’s» (باید on his own)؛ Q34 «Do you like Swimming?» Sِ بزرگ؛ Q42 ساقه با نقطه پایان می‌یابد («... in the world.»)؛ Q44 «My Father a good manager.» (فعلِ اسنادی نیامده + Fِ بزرگ)؛ Q49 «tomorrow. but» بِ کوچک؛ Q64 «Marry» (املای چاپِ Mary) + «NO,» بزرگ؛ Q97 «since 1363» رقمِ لاتینِ سالِ شمسی؛ Q30 «speak / won’t» جفتِ ناهماهنگِ خودِ چاپ",
+        "Q88 گزینه‌ها عینِ چاپ: a) old wooden / small lovely old، b) old wooden / lovely small old (کلید — ترتیبِ صفتِ درست)، c) wooden old / small lovely old، d) wooden old / lovely old small",
+        "Q99 سه‌جای‌خالی: «Mark has three -----------, ----------- boy and two girls. ---------- boy is 7 years old and their girls are 3.» — کلیدِ b «children / a / The»",
+        "بدونِ هیچ ترجمهٔ چاپی در صفحاتِ سؤال (بررسی: «ترجمه» ×۰ در ص۱۷۲-۱۷۶) — بانکِ بدونِ translation (قرینهٔ r334)؛ مجموعِ tests-g10 = ۱۳۴۶ در ۹۷ بانک"
       ]
     }
   }

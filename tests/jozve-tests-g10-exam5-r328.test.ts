@@ -175,6 +175,6 @@ describe("jozve tests-g10 exam5 (r328 استاندارد درس دوم — p89-9
 
   it("ids unique across the whole 482-item family (r333 gram4 appended)", () => {
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(new Set(ids).size).toBe(1246);
+    expect(new Set(ids).size).toBe(1346);
   });
 });
