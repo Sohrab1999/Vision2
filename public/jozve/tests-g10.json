@@ -18499,6 +18499,897 @@
           "translation": "سال آینده در تعطیلات ما در کشور کره خواهیم بود."
         }
       ]
+    },
+    {
+      "lesson": 89,
+      "title": "جامع چهارم — کلمات ناقص، بانک واژه و کلمهٔ مناسب (ص۱۶۴)",
+      "level": "تشریحی — تایپی (ناقص/بانک/حرفِ اول)",
+      "count": 16,
+      "questions": [
+        {
+          "id": "g10-l89-1",
+          "n": 1,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "We should become (fam__li__r) with our destination before our trip.",
+          "options": [
+            "familiar"
+          ],
+          "answer": 0,
+          "accepted": [
+            "familiar"
+          ],
+          "placeholder": "complete the missing letters…"
+        },
+        {
+          "id": "g10-l89-2",
+          "n": 2,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "You can check this booklet or may see our (w__bs__te).",
+          "options": [
+            "website"
+          ],
+          "answer": 0,
+          "accepted": [
+            "website"
+          ],
+          "placeholder": "complete the missing letters…"
+        },
+        {
+          "id": "g10-l89-3",
+          "n": 3,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "We can leave our country (s__f__ly) and enjoy our trip.",
+          "options": [
+            "safely"
+          ],
+          "answer": 0,
+          "accepted": [
+            "safely"
+          ],
+          "placeholder": "complete the missing letters…"
+        },
+        {
+          "id": "g10-l89-4",
+          "n": 4,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Around one (b__lli__n) people live in India.",
+          "options": [
+            "billion"
+          ],
+          "answer": 0,
+          "accepted": [
+            "billion"
+          ],
+          "placeholder": "complete the missing letters…"
+        },
+        {
+          "id": "g10-l89-5",
+          "n": 5,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "As a tourist, we should be careful about our -------------------------- in a foreign country. [bank: comfortably / seem / suitably / respect / choice / attractive / cultures / behavior / local]",
+          "options": [
+            "behavior"
+          ],
+          "answer": 0,
+          "accepted": [
+            "behavior"
+          ],
+          "placeholder": "type a word from the bank…"
+        },
+        {
+          "id": "g10-l89-6",
+          "n": 6,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "The man kept looking at Ali, but he didn’t -------------------------- to notice. [bank: comfortably / seem / suitably / respect / choice / attractive / cultures / behavior / local]",
+          "options": [
+            "seem"
+          ],
+          "answer": 0,
+          "accepted": [
+            "seem"
+          ],
+          "placeholder": "type a word from the bank…"
+        },
+        {
+          "id": "g10-l89-7",
+          "n": 7,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "She was born in a small -------------------------- hospital 30 years ago. [bank: comfortably / seem / suitably / respect / choice / attractive / cultures / behavior / local]",
+          "options": [
+            "local"
+          ],
+          "answer": 0,
+          "accepted": [
+            "local"
+          ],
+          "placeholder": "type a word from the bank…"
+        },
+        {
+          "id": "g10-l89-8",
+          "n": 8,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Ancient wind towers of Iran are -------------------------- for tourists. [bank: comfortably / seem / suitably / respect / choice / attractive / cultures / behavior / local]",
+          "options": [
+            "attractive"
+          ],
+          "answer": 0,
+          "accepted": [
+            "attractive"
+          ],
+          "placeholder": "type a word from the bank…"
+        },
+        {
+          "id": "g10-l89-9",
+          "n": 9,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "My little brother wasn’t -------------------------- dressed for a party. [bank: comfortably / seem / suitably / respect / choice / attractive / cultures / behavior / local]",
+          "options": [
+            "suitably"
+          ],
+          "answer": 0,
+          "accepted": [
+            "suitably"
+          ],
+          "placeholder": "type a word from the bank…"
+        },
+        {
+          "id": "g10-l89-10",
+          "n": 10,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "In some -------------------------- children have an important place. [bank: comfortably / seem / suitably / respect / choice / attractive / cultures / behavior / local]",
+          "options": [
+            "cultures"
+          ],
+          "answer": 0,
+          "accepted": [
+            "cultures"
+          ],
+          "placeholder": "type a word from the bank…"
+        },
+        {
+          "id": "g10-l89-11",
+          "n": 11,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Everyone should -------------------------- other people’s culture. [bank: comfortably / seem / suitably / respect / choice / attractive / cultures / behavior / local]",
+          "options": [
+            "respect"
+          ],
+          "answer": 0,
+          "accepted": [
+            "respect"
+          ],
+          "placeholder": "type a word from the bank…"
+        },
+        {
+          "id": "g10-l89-12",
+          "n": 12,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "We have enough money to live --------------------------. [bank: comfortably / seem / suitably / respect / choice / attractive / cultures / behavior / local]",
+          "options": [
+            "comfortably"
+          ],
+          "answer": 0,
+          "accepted": [
+            "comfortably"
+          ],
+          "placeholder": "type a word from the bank…"
+        },
+        {
+          "id": "g10-l89-13",
+          "n": 13,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "A person who travels to a holy place for religious reasons is a p _ _ _ _ _ _.",
+          "options": [
+            "pilgrim"
+          ],
+          "answer": 0,
+          "accepted": [
+            "pilgrim"
+          ],
+          "placeholder": "type the word (initial letter is given)…"
+        },
+        {
+          "id": "g10-l89-14",
+          "n": 14,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "A person who works in a travel agency is a travel a _ _ _ _.",
+          "options": [
+            "agent"
+          ],
+          "answer": 0,
+          "accepted": [
+            "agent"
+          ],
+          "placeholder": "type the word (initial letter is given)…"
+        },
+        {
+          "id": "g10-l89-15",
+          "n": 15,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Iran is a true p _ _ _ _ _ _ _ for people of the world.",
+          "options": [
+            "paradise"
+          ],
+          "answer": 0,
+          "accepted": [
+            "paradise"
+          ],
+          "placeholder": "type the word (initial letter is given)…"
+        },
+        {
+          "id": "g10-l89-16",
+          "n": 16,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "D _ _ _ _ _ _ _ flights are cheaper than international flights.",
+          "options": [
+            "Domestic"
+          ],
+          "answer": 0,
+          "accepted": [
+            "Domestic"
+          ],
+          "placeholder": "type the word (initial letter is given)…"
+        }
+      ]
+    },
+    {
+      "lesson": 90,
+      "title": "جامع چهارم — چهارگزینه‌ای واژگان و گرامر (ص۱۶۴-۱۶۵)",
+      "level": "تشریحی — چهارگزینه‌ای",
+      "count": 12,
+      "questions": [
+        {
+          "id": "g10-l90-1",
+          "n": 1,
+          "category": "vocab",
+          "question": "کدام گزینه با سایر گزینه‌ها متفاوت است؟ (۱) — Asia / Africa / Egypt / Europe",
+          "options": [
+            "Asia",
+            "Africa",
+            "Egypt",
+            "Europe"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l90-2",
+          "n": 2,
+          "category": "vocab",
+          "question": "کدام گزینه با سایر گزینه‌ها متفاوت است؟ (۲) — journey / tourist / trip / travel",
+          "options": [
+            "journey",
+            "tourist",
+            "trip",
+            "travel"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l90-3",
+          "n": 3,
+          "category": "vocab",
+          "question": "کدام گزینه با سایر گزینه‌ها متفاوت است؟ (۳) — late / well / slowly / real",
+          "options": [
+            "late",
+            "well",
+            "slowly",
+            "real"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l90-4",
+          "n": 4,
+          "category": "vocab",
+          "question": "کدام گزینه با سایر گزینه‌ها متفاوت است؟ (۴) — Beijing / Peru / Brazil / Chile",
+          "options": [
+            "Beijing",
+            "Peru",
+            "Brazil",
+            "Chile"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l90-5",
+          "n": 5,
+          "category": "vocab",
+          "question": "We want to change the ----------------------------- of our city and attract more international tourists.",
+          "options": [
+            "embassy",
+            "desert",
+            "point",
+            "image"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l90-6",
+          "n": 6,
+          "category": "vocab",
+          "question": "If you want to learn about the ----------------------------- of a country, you can travel there.",
+          "options": [
+            "choice",
+            "culture",
+            "souvenir",
+            "vacation"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l90-7",
+          "n": 7,
+          "category": "vocab",
+          "question": "I was surprised that nobody checked my ----------------------------- when we arrived in France.",
+          "options": [
+            "ceremony",
+            "passport",
+            "respect",
+            "flight"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l90-8",
+          "n": 8,
+          "category": "vocab",
+          "question": "The school uses both modern and ----------------------------- ways for teaching grammar.",
+          "options": [
+            "traditional",
+            "entertainment",
+            "domestic",
+            "probable"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l90-9",
+          "n": 9,
+          "category": "grammar",
+          "question": "Mobile phones are not allowed in this museum. We ----------------------------- take them inside.",
+          "options": [
+            "may",
+            "can’t",
+            "should",
+            "must"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l90-10",
+          "n": 10,
+          "category": "grammar",
+          "question": "Listen to my advice. You ----------------------- do your homework more carefully if you want to be successful.",
+          "options": [
+            "should",
+            "must",
+            "may",
+            "can"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l90-11",
+          "n": 11,
+          "category": "grammar",
+          "question": "We were sitting -------------------- the floor ------------------- the TV when our father came home.",
+          "options": [
+            "at / on",
+            "in / next to",
+            "on/ at",
+            "on / in front of"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l90-12",
+          "n": 12,
+          "category": "grammar",
+          "question": "I was born -------------------- ten o’clock -------------------- the morning -------------------- Friday 23th August 1998.",
+          "options": [
+            "at / on / in",
+            "in / on / at",
+            "at / in / on",
+            "on / at / in"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "lesson": 91,
+      "title": "جامع چهارم — جمله‌سازی، تصحیح خطا و شکل افعال (ص۱۶۵)",
+      "level": "تشریحی — تایپی (جمله‌سازی/اصلاح/شکلِ فعل)",
+      "count": 13,
+      "questions": [
+        {
+          "id": "g10-l91-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "careful / this / be / you / knife / must / with.",
+          "options": [
+            "You must be careful with this knife.",
+            "You must be this careful with knife.",
+            "You must careful be with this knife.",
+            "This knife must be careful with you."
+          ],
+          "answer": 0,
+          "accepted": [
+            "You must be careful with this knife."
+          ],
+          "placeholder": "make a sentence with the given words…"
+        },
+        {
+          "id": "g10-l91-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "should / you / you / the ball / when / watch / play / always / tennis.",
+          "options": [
+            "You should always watch the ball when you play tennis.",
+            "You should watch always the ball when you play tennis.",
+            "You should always play the ball when you watch tennis.",
+            "The ball should always watch you when you play tennis."
+          ],
+          "answer": 0,
+          "accepted": [
+            "You should always watch the ball when you play tennis."
+          ],
+          "placeholder": "make a sentence with the given words…"
+        },
+        {
+          "id": "g10-l91-3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "They are waiting patient for the bus. (-------------------------)",
+          "options": [
+            "patiently"
+          ],
+          "answer": 0,
+          "accepted": [
+            "patiently"
+          ],
+          "placeholder": "write the correction…"
+        },
+        {
+          "id": "g10-l91-4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Ali’s father can speaks three foreign languages. (-------------------------)",
+          "options": [
+            "speak"
+          ],
+          "answer": 0,
+          "accepted": [
+            "speak"
+          ],
+          "placeholder": "write the correction…"
+        },
+        {
+          "id": "g10-l91-5",
+          "n": 5,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Our English teacher speaks English good. (-------------------------)",
+          "options": [
+            "well"
+          ],
+          "answer": 0,
+          "accepted": [
+            "well"
+          ],
+          "placeholder": "write the correction…"
+        },
+        {
+          "id": "g10-l91-6",
+          "n": 6,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "I live on a city, but I’d like to live in the country. (-------------------------)",
+          "options": [
+            "in"
+          ],
+          "answer": 0,
+          "accepted": [
+            "in"
+          ],
+          "placeholder": "write the correction…"
+        },
+        {
+          "id": "g10-l91-7",
+          "n": 7,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "The police stopped my car in front on the bank. (-------------------------)",
+          "options": [
+            "of"
+          ],
+          "answer": 0,
+          "accepted": [
+            "of"
+          ],
+          "placeholder": "write the correction…"
+        },
+        {
+          "id": "g10-l91-8",
+          "n": 8,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "My friend may not comes to see me on Friday. (-------------------------)",
+          "options": [
+            "come"
+          ],
+          "answer": 0,
+          "accepted": [
+            "come"
+          ],
+          "placeholder": "write the correction…"
+        },
+        {
+          "id": "g10-l91-9",
+          "n": 9,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Can you ------------------------- (speak) a little louder? We can’t ------------------------- (hear) you.",
+          "options": [
+            "speak / hear"
+          ],
+          "answer": 0,
+          "accepted": [
+            "speak / hear"
+          ],
+          "placeholder": "complete both blanks (use / between the two answers)…"
+        },
+        {
+          "id": "g10-l91-10",
+          "n": 10,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Our teacher came ------------------------- (early) to the class this morning.",
+          "options": [
+            "early"
+          ],
+          "answer": 0,
+          "accepted": [
+            "early"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l91-11",
+          "n": 11,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Should your brother ------------------------- (help) you with your lessons?",
+          "options": [
+            "help"
+          ],
+          "answer": 0,
+          "accepted": [
+            "help"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l91-12",
+          "n": 12,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Some companies pay their workers very ------------------------- (bad).",
+          "options": [
+            "badly"
+          ],
+          "answer": 0,
+          "accepted": [
+            "badly"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l91-13",
+          "n": 13,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "The children asked a lot of questions ------------------------- (polite).",
+          "options": [
+            "politely"
+          ],
+          "answer": 0,
+          "accepted": [
+            "politely"
+          ],
+          "placeholder": "type your answer…"
+        }
+      ]
+    },
+    {
+      "lesson": 92,
+      "title": "جامع چهارم — تأکید تلفظ (ص۱۶۵)",
+      "level": "تشریحی — تایپی (کلیدِ زیرخطِ سرخ)",
+      "count": 2,
+      "questions": [
+        {
+          "id": "g10-l92-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Which one should I read? The newspaper or the magazine?",
+          "options": [
+            "The newspaper / the magazine"
+          ],
+          "answer": 0,
+          "accepted": [
+            "The newspaper / the magazine"
+          ],
+          "placeholder": "type the words with the stronger stress (use / between the two answers)…"
+        },
+        {
+          "id": "g10-l92-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Is the Statue of Liberty in New York or Los Angeles?",
+          "options": [
+            "New York / Los Angeles"
+          ],
+          "answer": 0,
+          "accepted": [
+            "New York / Los Angeles"
+          ],
+          "placeholder": "type the words with the stronger stress (use / between the two answers)…"
+        }
+      ]
+    },
+    {
+      "lesson": 93,
+      "title": "جامع چهارم — مرتبط‌کردن کلمات با تعاریف (ص۱۶۶)",
+      "level": "تشریحی — وصلِ تعریف",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g10-l93-1",
+          "n": 1,
+          "category": "vocab",
+          "question": "کلمات را با تعاریف داده شده مرتبط کنید — range",
+          "options": [
+            "like one thing or person better than another",
+            "between different countries",
+            "different things of the same kind",
+            "relating to one country"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l93-2",
+          "n": 2,
+          "category": "vocab",
+          "question": "کلمات را با تعاریف داده شده مرتبط کنید — domestic",
+          "options": [
+            "like one thing or person better than another",
+            "between different countries",
+            "different things of the same kind",
+            "relating to one country"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l93-3",
+          "n": 3,
+          "category": "vocab",
+          "question": "کلمات را با تعاریف داده شده مرتبط کنید — international",
+          "options": [
+            "like one thing or person better than another",
+            "between different countries",
+            "different things of the same kind",
+            "relating to one country"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l93-4",
+          "n": 4,
+          "category": "vocab",
+          "question": "کلمات را با تعاریف داده شده مرتبط کنید — prefer",
+          "options": [
+            "like one thing or person better than another",
+            "between different countries",
+            "different things of the same kind",
+            "relating to one country"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "lesson": 94,
+      "title": "جامع چهارم — کلوز حروف اضافهٔ زمان (ص۱۶۶)",
+      "level": "تشریحی — تایپی (کلوز)",
+      "count": 6,
+      "questions": [
+        {
+          "id": "g10-l94-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "I work (---1---) night on weekends.",
+          "options": [
+            "at"
+          ],
+          "answer": 0,
+          "accepted": [
+            "at"
+          ],
+          "placeholder": "fill in with a time preposition…"
+        },
+        {
+          "id": "g10-l94-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "(---2---) Thursdays and Fridays, I sleep most of the day and wake up a little before nine (---3---) the evening, usually (---4---) 8:45 or 8:50.",
+          "options": [
+            "On"
+          ],
+          "answer": 0,
+          "accepted": [
+            "On"
+          ],
+          "placeholder": "fill in with a time preposition…"
+        },
+        {
+          "id": "g10-l94-3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "(---2---) Thursdays and Fridays, I sleep most of the day and wake up a little before nine (---3---) the evening, usually (---4---) 8:45 or 8:50.",
+          "options": [
+            "in"
+          ],
+          "answer": 0,
+          "accepted": [
+            "in"
+          ],
+          "placeholder": "fill in with a time preposition…"
+        },
+        {
+          "id": "g10-l94-4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "(---2---) Thursdays and Fridays, I sleep most of the day and wake up a little before nine (---3---) the evening, usually (---4---) 8:45 or 8:50.",
+          "options": [
+            "at"
+          ],
+          "answer": 0,
+          "accepted": [
+            "at"
+          ],
+          "placeholder": "fill in with a time preposition…"
+        },
+        {
+          "id": "g10-l94-5",
+          "n": 5,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "I watch TV until eleven o’clock, and then start work (---5---) midnight.",
+          "options": [
+            "at"
+          ],
+          "answer": 0,
+          "accepted": [
+            "at"
+          ],
+          "placeholder": "fill in with a time preposition…"
+        },
+        {
+          "id": "g10-l94-6",
+          "n": 6,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Early (---6---) the morning, usually around 5:00 A.M., I leave work, have a little snack, go home, go to bed, and sleep late.",
+          "options": [
+            "in"
+          ],
+          "answer": 0,
+          "accepted": [
+            "in"
+          ],
+          "placeholder": "fill in with a time preposition…"
+        }
+      ]
+    },
+    {
+      "lesson": 95,
+      "title": "جامع چهارم — درک مطلب (ص۱۶۶)",
+      "level": "تشریحی — درک مطلب (true/false)",
+      "count": 6,
+      "questions": [
+        {
+          "id": "g10-l95-1",
+          "n": 1,
+          "category": "vocab",
+          "question": "In the United States: Some young adults share apartments with roommates.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l95-2",
+          "n": 2,
+          "category": "vocab",
+          "question": "In the United States: Nearly all young adults live with their parents.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l95-3",
+          "n": 3,
+          "category": "vocab",
+          "question": "In the United States: Very few students live in university housing.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l95-4",
+          "n": 4,
+          "category": "vocab",
+          "question": "In Hong Kong: Few young people live alone.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l95-5",
+          "n": 5,
+          "category": "vocab",
+          "question": "In Hong Kong: Not many university students live with their parents.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l95-6",
+          "n": 6,
+          "category": "vocab",
+          "question": "In Hong Kong: Most young married couples have enough money to live in their own apartments.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 1
+        }
+      ]
     }
   ],
   "source": {
@@ -19161,6 +20052,32 @@
       ],
       "layerDecompositions": [
         "لایه→چاپ (رندر حاکم): «تسی یچ»→تشریحی (دهمین)؛ «آموزیس»→آموزشی؛ «دستگریم ـگ رامر»→دستگریمی گرامر؛ «سؤاالت»→سؤالات؛ «خاریح»→خارج؛ «تعطیالت»→تعطیلات؛ «مطمیی ن»→مطمئن (همزه)؛ «میر وم»→میروم (چسبیده)؛ «رس کار»→سرکار؛ «رسگریم» خانوادهٔ جابجایی؛ «تلفتن»→تلفنی؛ «مهیم»→مهم؛ «جالت»→جالب؛ «رسییع»→سریعی؛ «رسعت»→سرعت؛ «آسابن»→آسان/آسانی؛ «باال»→بالا؛ «االن»→الان؛ «کتن»→کنی؛ «بگیر م»→بگیرم؛ «بگیر ی»→بگیری؛ «میتوابن»→میتوانی؛ «تاکیس»→تاکسی؛ «عموزاده ها» فاصله‌دار؛ «شهریورماه ماه ۹۹» عینِ چاپ"
+      ]
+    },
+    "jame4": {
+      "exam": "آزمون جامع تشریحی درس چهارم (ص۱۶۴-۱۶۶)",
+      "header": "سربرگِ ص۱۶۴ (رندرِ ۱۲۰۰dpi): «\"آزمون جامع تشریحی درس چهارم\"» سرخِ گیومه‌دار روی باندِ سبز + «(پاسخنامه صفحه: ۲۹۳ - ۲۹۴)» — ارقامِ فارسی با دونقطه و تیره (الگوی r347 «۲۹۰»)؛ سربرگِ کلیدِ ص۲۹۳: «\"پاسخنامه آزمون جامع تشریحی درس چهارم\"» سرخِ گیومه‌دار + «(آزمون: صفحه ۱۶۴ تا ۱۶۶)» — فارسی با «تا» (الگوی jame3)؛ لایهٔ «تسی یچ» = هشتمین تحریفِ «تشریحی» (r318/r331/r333/r336/r338/r340/r342؛ رندر: تمیز)؛ ۱۳ سکشن / ۵۹ آیتم برای ۶۰ جایِ کلیدِ چاپی (S9-Q1 دوجای‌خالیِ «speak / hear»)؛ بارمِ چاپی: ۱+۲+۱+۱+۱+۱+۱+۱/۵+۱/۵+۱+۲+۳+۳ = ۲۰ نمره.",
+      "keyPages": "293-294",
+      "keyVerification": "کلیدِ چاپیِ کاملِ ص۲۹۳-۲۹۴ — ۵۹/۵۹ آیتم برای ۶۰ جایِ کلید با پیش‌پرکردنِ معنایی هم‌رأی — صفر واگرایی؛ S10: کلیدِ چاپی دو جمله را تکرار می‌کند و پاسخ را با زیرخطِ سرخِ دوبخشی نشان می‌دهد (Q1 «The newspaper» + «the magazine» / Q2 «New York» + «Los Angeles» — سؤالِ «کدام کلمات» جمع است و هر دو اسمِ محتوایی زیرخط دارند؛ get_drawings: چهار مستطیلِ سرخِ ۱.۲pt-ارتفاع) — دومین کلیدِ رنگ‌نشانه‌ایِ این خانواده بعد از r342-S11؛ S8: واژهٔ غلطِ سرخِ زیرخط‌دار درونِ جمله + اصلاحِ سرخِ پرانتزی («(patiently)»...)؛ S9 سطرِ ۱ = «speak / hear»؛ S12-Q2 با «On» سرکوته (تنها کلیدِ سرکوته‌دارِ سکشن)؛ S1 جدولِ ۲×۲ با شماره‌های سرخ؛ S4 واژه‌ایِ ساده (Egypt/tourist/real/Beijing)؛ S13 شش true/false.",
+      "extractedRound": "r348",
+      "pattern": "r342/r336 — بانک به ازای خانوادهٔ سکشن: تایپیِ ناقص/بانک/حرفِ اول ۱۶ + چهارگزینه‌ایِ ۱۲ + جمله‌سازی/تصحیحِ خطا/شکلِ افعال ۱۳ + تأکیدِ تلفظ ۲ (زیرخطِ سرخِ دوبخشی) + وصلِ تعریف ۴ + کلوزِ حروفِ اضافهٔ زمان ۶ + درکِ مطلب ۶",
+      "printQuirks": [
+        "S6-Q4 «Friday 23th August 1998» — چاپ‌غلطِ ترتیبی (باید 23rd باشد) عینِ چاپ حفظ شد",
+        "S6-Q3 گزینهٔ «c. on/ at» بدونِ فاصله پس از اسلش — ناسازگاریِ فاصله‌گذاریِ خودِ چاپ (a/b/d با « / » استاندارد)",
+        "S2 این بار واژهٔ اضافهٔ واقعی دارد: ۹ واژه / ۸ جای‌خالی و «choice» بیرون می‌ماند — برخلافِ jame3 که دستورِ «یک کلمه اضافه» داشت اما ۸/۸ بود",
+        "S7-Q2 گروهِ کلمات «you» را دوبار دارد («should / you / you / the ball / ...» — ۹ واژه برای ۸ واژهٔ جملهٔ کلید) — عینِ چاپ",
+        "کلیدِ S10 زیرخطِ سرخِ دوبخشی — هر دو عبارتِ اسمی (نه یکی) — دومین کلیدِ رنگ‌نشانه‌ایِ خانواده",
+        "کلیدِ S8 واژهٔ غلطِ سرخِ زیرخط‌دار درونِ جمله + اصلاحِ سرخِ پرانتزی — غنی‌تر از الگوی r347 (فقط پرانتز)",
+        "کلیدِ S9 سطرِ ۱ دوجای‌خالیِ «speak / hear» — ۵۹ آیتم برای ۶۰ جایِ کلید",
+        "کلیدِ S12-Q2 «On» سرکوته — یگانه سرکوته در شش کلیدِ حروفِ اضافه",
+        "سربرگِ آزمون «(پاسخنامه صفحه: ۲۹۳ - ۲۹۴)» با دونقطه و تیره؛ سربرگِ کلید «(آزمون: صفحه ۱۶۴ تا ۱۶۶)» با «تا» — دوگانگیِ آدرس‌دهیِ چاپ (الگوی r346/r347)",
+        "دستورهای بخش با ارقامِ فارسیِ «(۱ نمره)/(۲ نمره)/(۱/۵ نمره)/(۳ نمره)» — بارمِ کسری با اسلشِ فارسیِ ۱/۵",
+        "پاسخ‌نوارهٔ S12: شش پرانتزِ ۸تیره‌ای در یک سطر («1. (--------) 2. (--------) ...»)",
+        "جاهای خالیِ سبزِ خط‌چین (S2/S5/S6/S7/S8/S9) + underscoreهای سبزِ S3 + واژه‌های ناقصِ سرمه‌ایِ S1 + گزینه‌های ایتالیکِ سرمه‌ای در چیپ‌های زرد (S4/S5/S6)",
+        "S13 برچسبِ چاپیِ «(true or false)» پس از هر جمله — به الگوی بانکِ ۲۴ حذف شد (options=[True,False] نمایندهٔ آن است) و پیشوندِ کشور («In the United States:»/«In Hong Kong:») برای استنادِ صحیح به متن اضافه شد",
+        "جعبهٔ «Note:» خالیِ پایانِ کلیدِ ص۲۹۴ با خط‌چین‌های بنفشِ ۷۰۳۰a0 — عضوِ خانوادهٔ r346/r347",
+        "دستورِ S1 لایهٔ «امالب» = تجزیهٔ «املایی» (رندر: «از لحاظ املایی کامل کنید») — دستورِ S2 لایهٔ «اضاقن یم باشد» = «اضافی می باشد»",
+        "لایهٔ سربرگِ کلید «1۶4 تا1۶۶» = ترکیبِ لاتین/فارسیِ تجزیه‌شده — رندر: همه فارسی «۱۶۴ تا ۱۶۶»"
       ]
     }
   }

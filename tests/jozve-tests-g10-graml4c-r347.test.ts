@@ -272,19 +272,19 @@ describe("jozve tests-g10 bank 88 — 20 educational MCQ p163 with printed trans
   });
 });
 
-describe("jozve tests-g10 file shape after r347 (88 banks / 1130 items)", () => {
-  it("file shape: 88 banks, 1130 items, unique ids", () => {
-    expect(bank.lessons.length).toBe(88);
-    expect(bank.lessons.reduce((s: number, l: { count: number }) => s + l.count, 0)).toBe(1130);
+describe("jozve tests-g10 file shape after r347 (95 banks / 1189 items)", () => {
+  it("file shape: 95 banks, 1189 items, unique ids", () => {
+    expect(bank.lessons.length).toBe(95);
+    expect(bank.lessons.reduce((s: number, l: { count: number }) => s + l.count, 0)).toBe(1189);
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(ids.length).toBe(1130);
-    expect(new Set(ids).size).toBe(1130);
+    expect(ids.length).toBe(1189);
+    expect(new Set(ids).size).toBe(1189);
   });
 
-  it("family shape vector extended: r326/r338 +7 members (8,10,10,5,5,10,20) — 82 members", () => {
+  it("family shape vector extended: r326/r338 +7 members (8,10,10,5,5,10,20) — 89 members", () => {
     const tail = bank.lessons.slice(6).map((l) => l.count);
-    expect(tail.length).toBe(82);
-    expect(tail.slice(-7)).toEqual([8, 10, 10, 5, 5, 10, 20]); // بانک‌های ۸۲-۸۸ — r347
-    expect(tail.slice(-12, -7)).toEqual([16, 8, 8, 25, 40]); // خانوادهٔ درس چهارمِ قبلی
+    expect(tail.length).toBe(89);
+    expect(tail.slice(-14, -7)).toEqual([8, 10, 10, 5, 5, 10, 20]); // بانک‌های ۸۲-۸۸ — r347
+    expect(tail.slice(-19, -14)).toEqual([16, 8, 8, 25, 40]); // خانوادهٔ درس چهارمِ قبلی
   });
 });
