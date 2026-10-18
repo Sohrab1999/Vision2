@@ -1,0 +1,22 @@
+r353: extract part 3 (Q241-360) of the grade-10 combined four-lesson 360-item
+vocabulary test (pp189-194 — Q241 actually starts on p189; p188 belongs wholly
+to part 2 — printed one-page table key p301) into tests-g10.json as bank 100 —
+third and final member of group 32; the 360-item family is now complete.
+
+Round highlights:
+- third independent programmatic regeneration of the p301 key grid: 360/360
+  unique, AGREE with the r351 record with zero divergence
+- zero multi-run dash questions in this range (unlike r352's five) — census:
+  120 runs / 2473 dashes, every question exactly one 16-24 dash run; render
+  arbitration of Q241/Q300/Q359/Q360 confirms single continuous blanks
+- new parser edge discovered — last question of the whole exam: Q360's option
+  d swallowed the empty "Note:" box and decorative dashed rules of p194 in the
+  text layer (lookahead has no next question); trimmed at the Note anchor
+- print quirks recorded verbatim (8 in source.vocab360c receipt): Q308
+  "tom's new house" lowercase t; printed key of Q243 is "collect" (b) though
+  "carry" reads better — the printed key always governs, never altered;
+  straight apostrophes of the layer kept in Q249/Q266/Q308/Q355
+- grade-10 card: 100 buttons / 32 groups; tests-g10 = 1706 items in 100 banks
+  (the 100th bank of the booklet library); full suite 2254/2254 in 193 files
+- E2E: DOM count verified, 120-question MCQ driver 120/120 OK with zero
+  MISS/DESYNC, 100% champion; mobile 390px no overflow; console clean
