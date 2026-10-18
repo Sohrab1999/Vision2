@@ -58,14 +58,14 @@ describe("r362 — receipt & shape", () => {
     expect(rec.printQuirks[2]).toContain("r358");
   });
 
-  it("file shape: grade 9, two native r362 banks + six r363 tamarin banks, unique ids", () => {
+  it("file shape: grade 9, r362+r363+r364 banks, unique ids", () => {
     expect(bank.grade).toBe(9);
-    // r363 — شش بانکِ «تمرین‌های مکالمه» اضافه شدند (۸ بانک در کل)
-    expect(bank.lessons).toHaveLength(8);
-    expect(bank.lessons.map((l) => l.count)).toEqual([7, 50, 11, 9, 8, 10, 9, 8]);
+    // r363 — شش بانکِ «تمرین‌های مکالمه»؛ r364 — هفت بانکِ «سؤالات امتحانی درس اول» (۱۵ بانک در کل)
+    expect(bank.lessons).toHaveLength(15);
+    expect(bank.lessons.map((l) => l.count)).toEqual([7, 50, 11, 9, 8, 10, 9, 8, 4, 2, 4, 3, 7, 5, 4]);
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(ids).toHaveLength(112);
-    expect(new Set(ids).size).toBe(112);
+    expect(ids).toHaveLength(141);
+    expect(new Set(ids).size).toBe(141);
     expect(ids.slice(0, 7)).toEqual([
       "g9-l1-1", "g9-l1-2", "g9-l1-3", "g9-l1-4", "g9-l1-5", "g9-l1-6", "g9-l1-7",
     ]);
@@ -73,8 +73,10 @@ describe("r362 — receipt & shape", () => {
     expect(ids[56]).toBe("g9-l2-50");
   });
 
-  it("latin purity: no Persian characters inside any question or option", () => {
-    for (const l of bank.lessons) {
+  it("latin purity: no Persian characters inside any question or option (بانک‌های r362/r363)", () => {
+    // r364 — قفل به بانک‌های ۱-۸ محدود شد؛ بانک‌های امتحانیِ ۹-۱۵ ساقه‌های با برچسبِ فارسیِ چاپی دارند
+    // (س۴ «سوالی :/منفی:») — قاعدهٔ خودشان در گاردِ r364 است (گزینه‌ها لاتین‌محض می‌مانند)
+    for (const l of bank.lessons.filter((x) => x.lesson <= 8)) {
       for (const q of l.questions) {
         expect(q.question, q.id).not.toMatch(/[\u0600-\u06FF]/);
         for (const o of q.options) expect(o, q.id).not.toMatch(/[\u0600-\u06FF]/);

@@ -101,10 +101,10 @@ describe("r363 — شکلِ شش بانکِ مکالمه", () => {
     }
   });
 
-  it("id uniqueness: 112 آیتمِ یکتا در کلِ tests-g9", () => {
+  it("id uniqueness: 141 آیتمِ یکتا در کلِ tests-g9", () => {
     const ids = g9.lessons.flatMap((b) => b.questions.map((q) => q.id));
-    expect(ids).toHaveLength(112);
-    expect(new Set(ids).size).toBe(112);
+    expect(ids).toHaveLength(141);
+    expect(new Set(ids).size).toBe(141);
   });
 
   it("locks معنایی: هر شش درس + جفت‌های شکسته", () => {
@@ -197,9 +197,9 @@ describe("r363 — قفلِ اصلاحِ باگِ تک‌گزینه‌ای (۴۳
     expect((g11.source.typedFixR363 as { fixed: number }).fixed).toBe(4);
   });
 
-  it("شمارشِ کلِ آیتم‌ها تغییر نکرده: g9=112، g10=1706، g11=1223", () => {
+  it("شمارشِ کلِ آیتم‌ها تغییر نکرده: g9=141، g10=1706، g11=1223", () => {
     const total = (d: Doc) => d.lessons.reduce((s, b) => s + b.questions.length, 0);
-    expect(total(g9)).toBe(112);
+    expect(total(g9)).toBe(141);
     expect(total(g10)).toBe(1706);
     expect(total(g11)).toBe(1223);
   });

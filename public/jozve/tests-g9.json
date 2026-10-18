@@ -1811,6 +1811,497 @@
      "translation": "چرا آنها تصادف کردند؟ چون که با سرعت رانندگی کردند."
     }
    ]
+  },
+  {
+   "lesson": 9,
+   "title": "امتحانی درس اول — متضاد کلمات (س۲، ص۳۱)",
+   "level": "تمرین تایپی",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g9-l9-1",
+     "n": 1,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "Kind: -------",
+     "options": [
+      "cruel",
+      "hard working"
+     ],
+     "answer": 0,
+     "accepted": [
+      "cruel"
+     ],
+     "placeholder": "the opposite word…"
+    },
+    {
+     "id": "g9-l9-2",
+     "n": 2,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "lazy: -------",
+     "options": [
+      "hard working",
+      "upset"
+     ],
+     "answer": 0,
+     "accepted": [
+      "hard working",
+      "hardworking",
+      "hard-working"
+     ],
+     "placeholder": "the opposite word…"
+    },
+    {
+     "id": "g9-l9-3",
+     "n": 3,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "Happy: -------",
+     "options": [
+      "upset",
+      "quiet"
+     ],
+     "answer": 0,
+     "accepted": [
+      "upset",
+      "sad"
+     ],
+     "placeholder": "the opposite word…"
+    },
+    {
+     "id": "g9-l9-4",
+     "n": 4,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "Talkative: -------",
+     "options": [
+      "quiet",
+      "cruel"
+     ],
+     "answer": 0,
+     "accepted": [
+      "quiet"
+     ],
+     "placeholder": "the opposite word…"
+    }
+   ]
+  },
+  {
+   "lesson": 10,
+   "title": "امتحانی درس اول — سوالی و منفی (س۴، ص۳۱)",
+   "level": "تمرین تایپی",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g9-l10-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Mina is hard working. (سوالی : -------)",
+     "options": [
+      "Is Mina hard working?",
+      "Mina is not hard working."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Is Mina hard working?"
+     ],
+     "placeholder": "rewrite as a question…"
+    },
+    {
+     "id": "g9-l10-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Mina is hard working. (منفی: -------)",
+     "options": [
+      "Mina is not hard working.",
+      "Is Mina hard working?"
+     ],
+     "answer": 0,
+     "accepted": [
+      "Mina is not hard working.",
+      "Mina isn’t hard working."
+     ],
+     "placeholder": "rewrite as a negative…"
+    }
+   ]
+  },
+  {
+   "lesson": 11,
+   "title": "امتحانی درس اول — there is/there are (س۶، ص۳۲)",
+   "level": "تمرین تایپی",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g9-l11-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "------- some pens on the deask.",
+     "options": [
+      "There is",
+      "There are"
+     ],
+     "answer": 1,
+     "accepted": [
+      "There are"
+     ],
+     "placeholder": "there is / there are…"
+    },
+    {
+     "id": "g9-l11-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "------- a computer in the library.",
+     "options": [
+      "There is",
+      "There are"
+     ],
+     "answer": 0,
+     "accepted": [
+      "There is"
+     ],
+     "placeholder": "there is / there are…"
+    },
+    {
+     "id": "g9-l11-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "------- an eraser in here.",
+     "options": [
+      "There is",
+      "There are"
+     ],
+     "answer": 0,
+     "accepted": [
+      "There is"
+     ],
+     "placeholder": "there is / there are…"
+    },
+    {
+     "id": "g9-l11-4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "------- four students in the class.",
+     "options": [
+      "There is",
+      "There are"
+     ],
+     "answer": 1,
+     "accepted": [
+      "There are"
+     ],
+     "placeholder": "there is / there are…"
+    }
+   ]
+  },
+  {
+   "lesson": 12,
+   "title": "امتحانی درس اول — گزینه صحیح (س۷، ص۳۲)",
+   "level": "چهارگزینه‌ای",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g9-l12-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "My sister is ------- she is not quiet.",
+     "options": [
+      "neat",
+      "talkative",
+      "kind",
+      "pleasant"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g9-l12-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "Sina is ------- Everybody likes him.",
+     "options": [
+      "lazy",
+      "cruel",
+      "serious",
+      "kind"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g9-l12-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "There is ------- apple in my bag.",
+     "options": [
+      "a",
+      "some",
+      "an",
+      "6"
+     ],
+     "answer": 2
+    }
+   ]
+  },
+  {
+   "lesson": 13,
+   "title": "امتحانی درس اول — کلمه ناهماهنگ (س۹، ص۳۲)",
+   "level": "چهارگزینه‌ای",
+   "count": 7,
+   "questions": [
+    {
+     "id": "g9-l13-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "serious – help – quiet – neat",
+     "options": [
+      "serious",
+      "help",
+      "quiet",
+      "neat"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g9-l13-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "rude – polite – angry – selfish",
+     "options": [
+      "rude",
+      "polite",
+      "angry",
+      "selfish"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g9-l13-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "kind – cruel – patient – helpful",
+     "options": [
+      "kind",
+      "cruel",
+      "patient",
+      "helpful"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g9-l13-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "selfish – generous – shy – person",
+     "options": [
+      "selfish",
+      "generous",
+      "shy",
+      "person"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g9-l13-5",
+     "n": 5,
+     "category": "vocab",
+     "question": "office – library- company – homework",
+     "options": [
+      "office",
+      "library",
+      "company",
+      "homework"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g9-l13-6",
+     "n": 6,
+     "category": "vocab",
+     "question": "nervous – hardworking – careful – brave",
+     "options": [
+      "nervous",
+      "hardworking",
+      "careful",
+      "brave"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g9-l13-7",
+     "n": 7,
+     "category": "vocab",
+     "question": "hardworking – clever – careless – careful",
+     "options": [
+      "hardworking",
+      "clever",
+      "careless",
+      "careful"
+     ],
+     "answer": 2
+    }
+   ]
+  },
+  {
+   "lesson": 14,
+   "title": "امتحانی درس اول — am/is/are (س۱۱، ص۳۳)",
+   "level": "تمرین تایپی",
+   "count": 5,
+   "questions": [
+    {
+     "id": "g9-l14-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "They ------- neat.",
+     "options": [
+      "am",
+      "is",
+      "are"
+     ],
+     "answer": 2,
+     "accepted": [
+      "are"
+     ],
+     "placeholder": "am, is or are…"
+    },
+    {
+     "id": "g9-l14-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "My brother ------- helpful.",
+     "options": [
+      "am",
+      "is",
+      "are"
+     ],
+     "answer": 1,
+     "accepted": [
+      "is"
+     ],
+     "placeholder": "am, is or are…"
+    },
+    {
+     "id": "g9-l14-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "I ------- not cruel.",
+     "options": [
+      "am",
+      "is",
+      "are"
+     ],
+     "answer": 0,
+     "accepted": [
+      "am"
+     ],
+     "placeholder": "am, is or are…"
+    },
+    {
+     "id": "g9-l14-4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "We ------- clever.",
+     "options": [
+      "am",
+      "is",
+      "are"
+     ],
+     "answer": 2,
+     "accepted": [
+      "are"
+     ],
+     "placeholder": "am, is or are…"
+    },
+    {
+     "id": "g9-l14-5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "------- Zahra careless?",
+     "options": [
+      "am",
+      "is",
+      "are"
+     ],
+     "answer": 1,
+     "accepted": [
+      "Is"
+     ],
+     "placeholder": "am, is or are…"
+    }
+   ]
+  },
+  {
+   "lesson": 15,
+   "title": "امتحانی درس اول — مکالمهٔ وصل‌شدنی (س۱۴، ص۳۳)",
+   "level": "چهارگزینه‌ای (پنج‌گزینه‌ای چاپی)",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g9-l15-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Are you angry? ( ------- )",
+     "options": [
+      "Yes, he is.",
+      "She is a careful girl.",
+      "I`m brave.",
+      "No, she isn`t.",
+      "No, we are not."
+     ],
+     "answer": 4
+    },
+    {
+     "id": "g9-l15-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "Is your uncle careful? ( ------- )",
+     "options": [
+      "Yes, he is.",
+      "She is a careful girl.",
+      "I`m brave.",
+      "No, she isn`t.",
+      "No, we are not."
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g9-l15-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "What are you like? ( ------- )",
+     "options": [
+      "Yes, he is.",
+      "She is a careful girl.",
+      "I`m brave.",
+      "No, she isn`t.",
+      "No, we are not."
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g9-l15-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "What is your sister like? ( ------- )",
+     "options": [
+      "Yes, he is.",
+      "She is a careful girl.",
+      "I`m brave.",
+      "No, she isn`t.",
+      "No, we are not."
+     ],
+     "answer": 1
+    }
+   ]
   }
  ],
  "source": {
@@ -1922,6 +2413,99 @@
     "fix": "افزودنِ اسکافولدِ غلطِ خانواده‌محور به options — g9: جفتِ ساختاری [is، are] با answer=اندیسِ کلید؛ l89/l91: شکلِ خالیِ چاپیِ خودِ سؤال (فام__لی__ر / رانِ dash)؛ l92/l90: جفتِ برعکسِ اسلش‌دار؛ l94: چرخشِ at/in/on؛ l99: سطرِ به‌هم‌ریختهٔ چاپ؛ l105: جملهٔ ناهمدیسی؛ l108: «do»",
     "guard": "tests/jozve-tests-g9-tamarin-r363.test.ts — هیچ آیتمِ تایپی در هیچ tests-gN.json نباید options.length<2 داشته باشد"
    }
+  },
+  "g9exam1": {
+   "extractedRound": "r364",
+   "section": "سؤالات امتحانی درس اول پایه نهم",
+   "examPages": "ص۳۱-۳۳ (برچسبِ فوترِ خودِ اسکن در این بازه با شمارهٔ PDF برابر است)",
+   "keyPages": "هیچ پاسخنامهٔ چاپی در جزوه برای این خانواده نیست (تنها پاسخنامهٔ جزوه: کلید واژگان ص۱۰۱ — r362)؛ کلیدها استنتاجیِ مستندند",
+   "sectionsTotal": 15,
+   "sectionsExtracted": 7,
+   "sectionsSkipped": 8,
+   "items": 29,
+   "bankCounts": [
+    4,
+    2,
+    4,
+    3,
+    7,
+    5,
+    4
+   ],
+   "keyPolicy": "کلیدِ استنتاجیِ لغت‌نامه‌محور/ساختاری: هر کلید یا از توافقِ نحویِ خودِ ساقه (س۶/س۱۱) یا از واژنامهٔ بیست‌وهفت‌واژه‌ایِ خودِ درس اول (س۲/س۷/س۹) یا از توافقِ ضمیر و نوعِ پرسش (س۱۴) یکتا می‌شود — الگوی خوداعتبارسنجیِ r357؛ هیچ کلیدی از خارجِ متنِ درس نیامده",
+   "derivedKeys": {
+    "S7": [
+     "ق۱ «she is not quiet» → talkative (متضادِ مستقیمِ Quiet در واژنامه)",
+     "ق۲ «Everybody likes him» → kind (تنها گزینهٔ مثبتِ سازگار)",
+     "ق۳ «There is … apple» → an (an+واکه؛ a/some/6 ناسازگار)"
+    ],
+    "S9": [
+     "ق۱ help = فعل میانِ چهار صفت",
+     "ق۲ angry = حالتِ گذرا میانِ ویژگی‌های شخصیتی (موضوعِ واحدِ درس: Personality)",
+     "ق۳ cruel = تنها منفی میانِ سه مثبت",
+     "ق۴ person = اسم میانِ چهار صفت",
+     "ق۵ homework = غیرِ مکان",
+     "ق۶ nervous = حالتِ گذرا (همان استدلالِ ق۲)",
+     "ق۷ careless = تنها منفی"
+    ],
+    "S14": [
+     "ق۱ «Are you angry?» → e «No, we are not.» (تنها پاسخِ you/we؛ بقیه he/she یا خودتوصیفی)",
+     "ق۲ «Is your uncle careful?» → a «Yes, he is.» (he=uncle)",
+     "ق۳ «What are you like?» → c «I`m brave.» (تنها خودتوصیفیِ I-form)",
+     "ق۴ «What is your sister like?» → b «She is a careful girl.» (Wh نیازمندِ توصیف؛ d پاسخِ بله/خیر است)"
+    ]
+   },
+   "skippedSections": [
+    "س۱: صفتِ مناسب برای هر تصویر — تصویری؛ بانکِ (Cruel–careless–rude–brave) بدونِ تصویر کلیدپذیر نیست",
+    "س۳ و س۱۲: تطبیقِ جمله با تصویر — تصویری (جمله‌ها در لایه موجودند ولی بدونِ تصویر بی‌کلیدند)",
+    "س۵ و س۱۵: تولیدِ آزاد («پاسخ کامل دهید» / «متن را کامل کنید») — بی‌کلیدِ یکتا",
+    "س۸: دیالوگِ بانک‌واژه‌ای — جای‌خالی‌های ۴/۵ دو تفسیرِ سازگار دارند (selfish/patient) — ابهامِ دوکلیدی؛ به قراردادِ r358 وارد بانک نمی‌شود",
+    "س۱۰: افتان و خیزان — آهنگی؛ در قالبِ تعاملیِ متنیِ فعلی سنجش‌پذیر نیست"
+   ],
+   "printQuirkCount": 11,
+   "printQuirks": [
+    "چیدمانِ دوستونیِ RTL در س۲/س۶/س۱۱ (دو آیتم در یک سطرِ چاپ) — با لنگرِ شماره‌ها بازچینی شد (قرارداد r361)",
+    "چاپ‌غلطِ «deask» (س۶ ق۱ به‌جای desk) — verbatim در ساقه",
+    "جداکنندهٔ سومِ س۹-۵ به‌صورتِ خطِ تیرهٔ چسبیده چاپ شده («library-») — با الگوی «- » جدا شد؛ چهار واژه: office/library/company/homework",
+    "آپاستروفِ وارونهٔ چاپیِ س۱۴ («I`m brave.» / «No, she isn`t.» با backtick) — verbatim؛ نرمال‌سازِ موتور backtick را به آپاستروفِ راست یکسان می‌کند",
+    "«d –No» و «e –No» بدونِ فاصله پس از خطِ تیره — در متنِ گزینه اثری ندارد",
+    "رهروهای نقطه‌چینِ اطرافِ بلنک‌ها (با نقطه‌های مجاورِ خودشان) در یک رانِ تیرهٔ «-------» فروپاشیدند؛ فاصلهٔ پس از ران درج شد (بازسازیِ خوانا)",
+    "سه‌گونه‌چاپیِ یک واژه در خودِ جزوه: «Hard working» (واژنامه) / «a hard-working worker» (مثالِ درس) / «hardworking» (س۹-۷) — هر سه شکل در acceptedِ متضادِ lazy",
+    "ساقه‌های س۴ برچسب‌های چاپیِ «سوالی :/منفی:» را حفظ کرده‌اند — متنِ مختلطِ فارسی-لاتین، عینِ چاپ",
+    "شماره‌های چاپیِ آیتم‌ها به فیلدِ n منتقل شدند و از ساقه حذف شدند (قرارداد r362)",
+    "دستورِ چندخطیِ س۶ در لایه به‌هم‌ریخته است («جاهای خالی را باthere is/وthere are/.کامل کنید») — لنگرگیریِ ساقه‌ها با «1)»",
+    "گزینه‌های س۱۴ در سطرِ خودِ سؤال‌ها چاپ شده‌اند (a با ق۱ … d با ق۴) و «e» تنها — پنج گزینه برای هر چهار سؤال"
+   ],
+   "lessonLexicon": {
+    "Kind": "مهربان",
+    "Lazy": "تنبل",
+    "Angry": "عصبانی",
+    "Neat": "مرتب",
+    "Big": "بزرگ",
+    "Nervous": "مضطرب",
+    "Brave": "شجاع",
+    "Patient": "صبور",
+    "Careful": "بادقت",
+    "Careless": "بی‌دقت",
+    "Clever": "باهوش",
+    "Pleasant": "دلپذیر",
+    "Cruel": "بی‌رحم",
+    "Polite": "مودب",
+    "Quiet": "ساکت",
+    "Rude": "بی‌ادب",
+    "Friendly": "صمیمی",
+    "Selfish": "خودخواه",
+    "Funny": "بامزه",
+    "Serious": "جدی",
+    "Generous": "بخشنده",
+    "Happy": "خوشحال",
+    "Shy": "خجالتی",
+    "Hard working": "سخت‌کوش",
+    "Talkative": "پرحرف",
+    "Helpful": "مفید",
+    "Upset": "ناراحت"
+   },
+   "typedNote": "بانک‌های تایپیِ س۲/س۱۰ اسکافولدِ غلطِ درون‌بانکی دارند (پاسخِ آیتمِ دیگرِ همان بانک) — قفلِ «تک‌گزینه‌ایِ ممنوع» r363؛ س۶/س۱۱ گزینه‌های ساختاریِ خودِ دستورِ چاپ‌اند (There is/There are و am/is/are)"
   }
  }
 }
