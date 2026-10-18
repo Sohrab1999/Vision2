@@ -15737,6 +15737,1091 @@
           "answer": 0
         }
       ]
+    },
+    {
+      "lesson": 77,
+      "title": "تشریحی درس چهارم — جای خالی از بانک واژه (ص۱۴۸)",
+      "level": "تشریحی — تایپی",
+      "count": 16,
+      "questions": [
+        {
+          "id": "g10-l77-1",
+          "n": 1,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "We need to make plans for the ------------------. [bank: illness / international / behavior / quietly / attractions / embassy / historical / holidays / anything]",
+          "options": [
+            "international",
+            "behavior",
+            "quietly",
+            "attractions",
+            "embassy",
+            "historical",
+            "holidays",
+            "anything",
+            "illness"
+          ],
+          "answer": 0,
+          "accepted": [
+            "holidays"
+          ],
+          "placeholder": "fill in the blank with the bank word…"
+        },
+        {
+          "id": "g10-l77-2",
+          "n": 2,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "I was hungry but there wasn’t ------------------ to eat. [bank: illness / international / behavior / quietly / attractions / embassy / historical / holidays / anything]",
+          "options": [
+            "behavior",
+            "quietly",
+            "attractions",
+            "embassy",
+            "historical",
+            "holidays",
+            "anything",
+            "illness",
+            "international"
+          ],
+          "answer": 0,
+          "accepted": [
+            "anything"
+          ],
+          "placeholder": "fill in the blank with the bank word…"
+        },
+        {
+          "id": "g10-l77-3",
+          "n": 3,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "English is the ------------------ language in all over the world. [bank: illness / international / behavior / quietly / attractions / embassy / historical / holidays / anything]",
+          "options": [
+            "quietly",
+            "attractions",
+            "embassy",
+            "historical",
+            "holidays",
+            "anything",
+            "illness",
+            "international",
+            "behavior"
+          ],
+          "answer": 0,
+          "accepted": [
+            "international"
+          ],
+          "placeholder": "fill in the blank with the bank word…"
+        },
+        {
+          "id": "g10-l77-4",
+          "n": 4,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Our country has many ------------------ sites and an amazing nature. [bank: illness / international / behavior / quietly / attractions / embassy / historical / holidays / anything]",
+          "options": [
+            "attractions",
+            "embassy",
+            "historical",
+            "holidays",
+            "anything",
+            "illness",
+            "international",
+            "behavior",
+            "quietly"
+          ],
+          "answer": 0,
+          "accepted": [
+            "historical"
+          ],
+          "placeholder": "fill in the blank with the bank word…"
+        },
+        {
+          "id": "g10-l77-5",
+          "n": 5,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Because we were in the library, he spoke very ------------------in my ear. [bank: illness / international / behavior / quietly / attractions / embassy / historical / holidays / anything]",
+          "options": [
+            "embassy",
+            "historical",
+            "holidays",
+            "anything",
+            "illness",
+            "international",
+            "behavior",
+            "quietly",
+            "attractions"
+          ],
+          "answer": 0,
+          "accepted": [
+            "quietly"
+          ],
+          "placeholder": "fill in the blank with the bank word…"
+        },
+        {
+          "id": "g10-l77-6",
+          "n": 6,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "My father was in the hospital for three weeks because of his ------------------. [bank: illness / international / behavior / quietly / attractions / embassy / historical / holidays / anything]",
+          "options": [
+            "historical",
+            "holidays",
+            "anything",
+            "illness",
+            "international",
+            "behavior",
+            "quietly",
+            "attractions",
+            "embassy"
+          ],
+          "answer": 0,
+          "accepted": [
+            "illness"
+          ],
+          "placeholder": "fill in the blank with the bank word…"
+        },
+        {
+          "id": "g10-l77-7",
+          "n": 7,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Each year, a lot of people from all parts of the world visit Iran’s ------------------. [bank: illness / international / behavior / quietly / attractions / embassy / historical / holidays / anything]",
+          "options": [
+            "holidays",
+            "anything",
+            "illness",
+            "international",
+            "behavior",
+            "quietly",
+            "attractions",
+            "embassy",
+            "historical"
+          ],
+          "answer": 0,
+          "accepted": [
+            "attractions"
+          ],
+          "placeholder": "fill in the blank with the bank word…"
+        },
+        {
+          "id": "g10-l77-8",
+          "n": 8,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Your good ------------------ in a foreign country gives a good image of your culture. [bank: illness / international / behavior / quietly / attractions / embassy / historical / holidays / anything]",
+          "options": [
+            "anything",
+            "illness",
+            "international",
+            "behavior",
+            "quietly",
+            "attractions",
+            "embassy",
+            "historical",
+            "holidays"
+          ],
+          "answer": 0,
+          "accepted": [
+            "behavior"
+          ],
+          "placeholder": "fill in the blank with the bank word…"
+        },
+        {
+          "id": "g10-l77-9",
+          "n": 9,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Why is your child eating ------------------food? It’s not good for his health. [bank: pilgrims / range / junk / souvenir / means / journey / located / generously / destination]",
+          "options": [
+            "pilgrims",
+            "range",
+            "junk",
+            "souvenir",
+            "means",
+            "journey",
+            "located",
+            "generously",
+            "destination"
+          ],
+          "answer": 0,
+          "accepted": [
+            "junk"
+          ],
+          "placeholder": "fill in the blank with the bank word…"
+        },
+        {
+          "id": "g10-l77-10",
+          "n": 10,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Our baggage was checked all the way through to our final ------------------. [bank: pilgrims / range / junk / souvenir / means / journey / located / generously / destination]",
+          "options": [
+            "range",
+            "junk",
+            "souvenir",
+            "means",
+            "journey",
+            "located",
+            "generously",
+            "destination",
+            "pilgrims"
+          ],
+          "answer": 0,
+          "accepted": [
+            "destination"
+          ],
+          "placeholder": "fill in the blank with the bank word…"
+        },
+        {
+          "id": "g10-l77-11",
+          "n": 11,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "People usually go to different places by different ------------------of travel. [bank: pilgrims / range / junk / souvenir / means / journey / located / generously / destination]",
+          "options": [
+            "junk",
+            "souvenir",
+            "means",
+            "journey",
+            "located",
+            "generously",
+            "destination",
+            "pilgrims",
+            "range"
+          ],
+          "answer": 0,
+          "accepted": [
+            "means"
+          ],
+          "placeholder": "fill in the blank with the bank word…"
+        },
+        {
+          "id": "g10-l77-12",
+          "n": 12,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "The age ------------------ of the children is between eight and twelve. [bank: pilgrims / range / junk / souvenir / means / journey / located / generously / destination]",
+          "options": [
+            "souvenir",
+            "means",
+            "journey",
+            "located",
+            "generously",
+            "destination",
+            "pilgrims",
+            "range",
+            "junk"
+          ],
+          "answer": 0,
+          "accepted": [
+            "range"
+          ],
+          "placeholder": "fill in the blank with the bank word…"
+        },
+        {
+          "id": "g10-l77-13",
+          "n": 13,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Most tall buildings are ------------------ in the north of Tehran. [bank: pilgrims / range / junk / souvenir / means / journey / located / generously / destination]",
+          "options": [
+            "means",
+            "journey",
+            "located",
+            "generously",
+            "destination",
+            "pilgrims",
+            "range",
+            "junk",
+            "souvenir"
+          ],
+          "answer": 0,
+          "accepted": [
+            "located"
+          ],
+          "placeholder": "fill in the blank with the bank word…"
+        },
+        {
+          "id": "g10-l77-14",
+          "n": 14,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "The people of the town ------------------ helped poor people. [bank: pilgrims / range / junk / souvenir / means / journey / located / generously / destination]",
+          "options": [
+            "journey",
+            "located",
+            "generously",
+            "destination",
+            "pilgrims",
+            "range",
+            "junk",
+            "souvenir",
+            "means"
+          ],
+          "answer": 0,
+          "accepted": [
+            "generously"
+          ],
+          "placeholder": "fill in the blank with the bank word…"
+        },
+        {
+          "id": "g10-l77-15",
+          "n": 15,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "The ------------------ came to Imam Reza Holy Shrine. [bank: pilgrims / range / junk / souvenir / means / journey / located / generously / destination]",
+          "options": [
+            "located",
+            "generously",
+            "destination",
+            "pilgrims",
+            "range",
+            "junk",
+            "souvenir",
+            "means",
+            "journey"
+          ],
+          "answer": 0,
+          "accepted": [
+            "pilgrims"
+          ],
+          "placeholder": "fill in the blank with the bank word…"
+        },
+        {
+          "id": "g10-l77-16",
+          "n": 16,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "I bought the ring as a ------------------ of Mashhad. [bank: pilgrims / range / junk / souvenir / means / journey / located / generously / destination]",
+          "options": [
+            "generously",
+            "destination",
+            "pilgrims",
+            "range",
+            "junk",
+            "souvenir",
+            "means",
+            "journey",
+            "located"
+          ],
+          "answer": 0,
+          "accepted": [
+            "souvenir"
+          ],
+          "placeholder": "fill in the blank with the bank word…"
+        }
+      ]
+    },
+    {
+      "lesson": 78,
+      "title": "تشریحی درس چهارم — کلمه با حرف اول (ص۱۴۸)",
+      "level": "تشریحی — تایپی",
+      "count": 8,
+      "questions": [
+        {
+          "id": "g10-l78-1",
+          "n": 1,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "English is used a lot in (i _ _ _ _ _ _ _ _ _ _ _ _) business.",
+          "options": [
+            "international",
+            "traveler",
+            "louder",
+            "airport",
+            "sunrise",
+            "sunset",
+            "pyramids",
+            "fall"
+          ],
+          "answer": 0,
+          "accepted": [
+            "international"
+          ],
+          "placeholder": "complete the word (first letter is given)…"
+        },
+        {
+          "id": "g10-l78-2",
+          "n": 2,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "A person who visits a place on holiday is a (t _ _ _ _ _ _) .",
+          "options": [
+            "traveler",
+            "louder",
+            "airport",
+            "sunrise",
+            "sunset",
+            "pyramids",
+            "fall",
+            "international"
+          ],
+          "answer": 0,
+          "accepted": [
+            "traveler"
+          ],
+          "placeholder": "complete the word (first letter is given)…"
+        },
+        {
+          "id": "g10-l78-3",
+          "n": 3,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "I cannot hear you. Please, speak (l _ _ _ _ _) .",
+          "options": [
+            "louder",
+            "airport",
+            "sunrise",
+            "sunset",
+            "pyramids",
+            "fall",
+            "international",
+            "traveler"
+          ],
+          "answer": 0,
+          "accepted": [
+            "louder"
+          ],
+          "placeholder": "complete the word (first letter is given)…"
+        },
+        {
+          "id": "g10-l78-4",
+          "n": 4,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "If you want to catch a plane, you go to the (a _ _ _ _ _ _) .",
+          "options": [
+            "airport",
+            "sunrise",
+            "sunset",
+            "pyramids",
+            "fall",
+            "international",
+            "traveler",
+            "louder"
+          ],
+          "answer": 0,
+          "accepted": [
+            "airport"
+          ],
+          "placeholder": "complete the word (first letter is given)…"
+        },
+        {
+          "id": "g10-l78-5",
+          "n": 5,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "The time in the morning when the sun comes up is called (s _ _ _ _ _ _) .",
+          "options": [
+            "sunrise",
+            "sunset",
+            "pyramids",
+            "fall",
+            "international",
+            "traveler",
+            "louder",
+            "airport"
+          ],
+          "answer": 0,
+          "accepted": [
+            "sunrise"
+          ],
+          "placeholder": "complete the word (first letter is given)…"
+        },
+        {
+          "id": "g10-l78-6",
+          "n": 6,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "The time in the evening when the sun goes down is called (s _ _ _ _ _) .",
+          "options": [
+            "sunset",
+            "pyramids",
+            "fall",
+            "international",
+            "traveler",
+            "louder",
+            "airport",
+            "sunrise"
+          ],
+          "answer": 0,
+          "accepted": [
+            "sunset"
+          ],
+          "placeholder": "complete the word (first letter is given)…"
+        },
+        {
+          "id": "g10-l78-7",
+          "n": 7,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Egypt is famous for its wonderful (p _ _ _ _ _ _ _) .",
+          "options": [
+            "pyramids",
+            "fall",
+            "international",
+            "traveler",
+            "louder",
+            "airport",
+            "sunrise",
+            "sunset"
+          ],
+          "answer": 0,
+          "accepted": [
+            "pyramids"
+          ],
+          "placeholder": "complete the word (first letter is given)…"
+        },
+        {
+          "id": "g10-l78-8",
+          "n": 8,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "The part of the year between summer and winter is called (f _ _ _).",
+          "options": [
+            "fall",
+            "international",
+            "traveler",
+            "louder",
+            "airport",
+            "sunrise",
+            "sunset",
+            "pyramids"
+          ],
+          "answer": 0,
+          "accepted": [
+            "fall"
+          ],
+          "placeholder": "complete the word (first letter is given)…"
+        }
+      ]
+    },
+    {
+      "lesson": 79,
+      "title": "تشریحی درس چهارم — تعریف‌ها، بنویسید (ص۱۴۹)",
+      "level": "تشریحی — تایپی",
+      "count": 8,
+      "questions": [
+        {
+          "id": "g10-l79-1",
+          "n": 1,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Something that tells you what you must or must not do:",
+          "options": [
+            "range",
+            "domestic",
+            "traveler",
+            "continent",
+            "price",
+            "rule",
+            "journey",
+            "local",
+            "prefer"
+          ],
+          "answer": 0,
+          "accepted": [
+            "rule"
+          ],
+          "placeholder": "type the word for the definition…"
+        },
+        {
+          "id": "g10-l79-2",
+          "n": 2,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "One of the seven big pieces of land in the world:",
+          "options": [
+            "domestic",
+            "traveler",
+            "continent",
+            "price",
+            "rule",
+            "journey",
+            "local",
+            "prefer",
+            "range"
+          ],
+          "answer": 0,
+          "accepted": [
+            "continent"
+          ],
+          "placeholder": "type the word for the definition…"
+        },
+        {
+          "id": "g10-l79-3",
+          "n": 3,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "How much money you pay to buy something:",
+          "options": [
+            "traveler",
+            "continent",
+            "price",
+            "rule",
+            "journey",
+            "local",
+            "prefer",
+            "range",
+            "domestic"
+          ],
+          "answer": 0,
+          "accepted": [
+            "price"
+          ],
+          "placeholder": "type the word for the definition…"
+        },
+        {
+          "id": "g10-l79-4",
+          "n": 4,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Like one thing or person better than another:",
+          "options": [
+            "continent",
+            "price",
+            "rule",
+            "journey",
+            "local",
+            "prefer",
+            "range",
+            "domestic",
+            "traveler"
+          ],
+          "answer": 0,
+          "accepted": [
+            "prefer"
+          ],
+          "placeholder": "type the word for the definition…"
+        },
+        {
+          "id": "g10-l79-5",
+          "n": 5,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Going from one place to another:",
+          "options": [
+            "price",
+            "rule",
+            "journey",
+            "local",
+            "prefer",
+            "range",
+            "domestic",
+            "traveler",
+            "continent"
+          ],
+          "answer": 0,
+          "accepted": [
+            "journey"
+          ],
+          "placeholder": "type the word for the definition…"
+        },
+        {
+          "id": "g10-l79-6",
+          "n": 6,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Relating to one country:",
+          "options": [
+            "rule",
+            "journey",
+            "local",
+            "prefer",
+            "range",
+            "domestic",
+            "traveler",
+            "continent",
+            "price"
+          ],
+          "answer": 0,
+          "accepted": [
+            "domestic"
+          ],
+          "placeholder": "type the word for the definition…"
+        },
+        {
+          "id": "g10-l79-7",
+          "n": 7,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "A set of similar things:",
+          "options": [
+            "journey",
+            "local",
+            "prefer",
+            "range",
+            "domestic",
+            "traveler",
+            "continent",
+            "price",
+            "rule"
+          ],
+          "answer": 0,
+          "accepted": [
+            "range"
+          ],
+          "placeholder": "type the word for the definition…"
+        },
+        {
+          "id": "g10-l79-8",
+          "n": 8,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Of a place near you:",
+          "options": [
+            "local",
+            "prefer",
+            "range",
+            "domestic",
+            "traveler",
+            "continent",
+            "price",
+            "rule",
+            "journey"
+          ],
+          "answer": 0,
+          "accepted": [
+            "local"
+          ],
+          "placeholder": "type the word for the definition…"
+        }
+      ]
+    },
+    {
+      "lesson": 80,
+      "title": "تشریحی درس چهارم — تست چهارگزینه‌ای (ص۱۴۹-۱۵۰)",
+      "level": "تشریحی — چهارگزینه‌ای",
+      "count": 25,
+      "questions": [
+        {
+          "id": "g10-l80-1",
+          "n": 1,
+          "category": "vocab",
+          "question": "My friend couldn’t come to the meeting because of ------------------.",
+          "options": [
+            "souvenir",
+            "destination",
+            "entertainment",
+            "illness"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l80-2",
+          "n": 2,
+          "category": "vocab",
+          "question": "Sometimes fast food is called ------------------ food because it’s not always good for you.",
+          "options": [
+            "easy",
+            "junk",
+            "ready",
+            "high"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l80-3",
+          "n": 3,
+          "category": "vocab",
+          "question": "He was late for work, so he walked quickly to the train ------------------.",
+          "options": [
+            "shrine",
+            "ceremony",
+            "station",
+            "ancient"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l80-4",
+          "n": 4,
+          "category": "vocab",
+          "question": "In my ------------------, very few people really understand the problem.",
+          "options": [
+            "experience",
+            "activity",
+            "suggestion",
+            "choice"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l80-5",
+          "n": 5,
+          "category": "vocab",
+          "question": "If you look at these two carpets carefully, you will see that the patterns are very ------------------.",
+          "options": [
+            "generous",
+            "similar",
+            "homemade",
+            "wide"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l80-6",
+          "n": 6,
+          "category": "vocab",
+          "question": "We must take our shoes off before entering a mosque or other ------------------ places.",
+          "options": [
+            "comfortable",
+            "main",
+            "local",
+            "holy"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l80-7",
+          "n": 7,
+          "category": "vocab",
+          "question": "When you are traveling in the ------------------, you should take a lot of water.",
+          "options": [
+            "culture",
+            "desert",
+            "range",
+            "paradise"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l80-8",
+          "n": 8,
+          "category": "vocab",
+          "question": "The north of Iran is a ------------------ holiday destination.",
+          "options": [
+            "probable",
+            "hospitable",
+            "historical",
+            "popular"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l80-9",
+          "n": 9,
+          "category": "vocab",
+          "question": "Do you know anything about the ------------------ space station?",
+          "options": [
+            "embassy",
+            "tourism",
+            "international",
+            "traditional"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l80-10",
+          "n": 10,
+          "category": "vocab",
+          "question": "Since ------------------ times, people have dreamed of leaving our planet and knowing about other worlds.",
+          "options": [
+            "ancient",
+            "possible",
+            "across",
+            "similar"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l80-11",
+          "n": 11,
+          "category": "vocab",
+          "question": "You will show ------------------ to your host if you wear formal clothes.",
+          "options": [
+            "behavior",
+            "image",
+            "respect",
+            "domestic"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l80-12",
+          "n": 12,
+          "category": "vocab",
+          "question": "Nobody knows ------------------ what happened on the night my uncle died.",
+          "options": [
+            "bravely",
+            "quietly",
+            "rudely",
+            "exactly"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l80-13",
+          "n": 13,
+          "category": "vocab",
+          "question": "Asia is the largest ------------------ in the world.",
+          "options": [
+            "paradise",
+            "continent",
+            "country",
+            "ceremony"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l80-14",
+          "n": 14,
+          "category": "vocab",
+          "question": "I’d like to hear your ------------------ for ways of improving English.",
+          "options": [
+            "suggestion",
+            "preposition",
+            "attraction",
+            "entertainment"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l80-15",
+          "n": 15,
+          "category": "vocab",
+          "question": "I was ------------------ the net looking for information on pop music.",
+          "options": [
+            "respecting",
+            "locating",
+            "choosing",
+            "surfing"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l80-16",
+          "n": 16,
+          "category": "vocab",
+          "question": "If you eat less sugar, you may feel ------------------.",
+          "options": [
+            "obligation",
+            "healthier",
+            "similar",
+            "more popular"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l80-17",
+          "n": 17,
+          "category": "vocab",
+          "question": "I wouldn’t want to be a teacher because I’m not very ------------------.",
+          "options": [
+            "traditional",
+            "cruel",
+            "patient",
+            "hospitable"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l80-18",
+          "n": 18,
+          "category": "vocab",
+          "question": "A: What are you going to do?   B: I don’t know. I ------------------ won’t go anywhere.",
+          "options": [
+            "probably",
+            "exactly",
+            "wonderfully",
+            "suitably"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l80-19",
+          "n": 19,
+          "category": "vocab",
+          "question": "There aren’t enough buses. We need more public ------------------.",
+          "options": [
+            "attraction",
+            "vacation",
+            "destination",
+            "transportation"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l80-20",
+          "n": 20,
+          "category": "vocab",
+          "question": "Camels can travel through the ------------------ for long distances.",
+          "options": [
+            "booklet",
+            "embassy",
+            "desert",
+            "pyramid"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l80-21",
+          "n": 21,
+          "category": "vocab",
+          "question": "He gave up smoking for ------------------ reasons.",
+          "options": [
+            "familiar",
+            "health",
+            "loud",
+            "culture"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l80-22",
+          "n": 22,
+          "category": "vocab",
+          "question": "Some countries are famous for their ------------------ history and amazing nature.",
+          "options": [
+            "ancient",
+            "domestic",
+            "homemade",
+            "contrastive"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l80-23",
+          "n": 23,
+          "category": "vocab",
+          "question": "We should respect the languages and ------------------ of other countries.",
+          "options": [
+            "ranges",
+            "suggestions",
+            "cultures",
+            "activities"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l80-24",
+          "n": 24,
+          "category": "vocab",
+          "question": "We had wonderful weather when we were on ------------------.",
+          "options": [
+            "continent",
+            "paradise",
+            "vacation",
+            "experience"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l80-25",
+          "n": 25,
+          "category": "vocab",
+          "question": "It is ------------------ that the disease has a genetic element.",
+          "options": [
+            "obligation",
+            "probable",
+            "popular",
+            "comfortable"
+          ],
+          "answer": 1
+        }
+      ]
     }
   ],
   "source": {
@@ -16322,6 +17407,27 @@
         "گزینه‌های درونِ پرانتز سرمه‌ای با اسلشِ سرخ و شماره‌های سرخ — رنگِ تزئینی است (برخلافِ r342-B71 کلیدِ رنگ‌نشانه‌ای نیست)؛ حاکم: Answer Keyِ جدولی",
         "Answer Key: جدولِ ۲×۵ با سربرگِ سبزِ «Answer Key:» در همان صفحه — کلیدِ درون‌متنی (نه صفحاتِ انتهایی): seems/am having/love/tastes/is studying/don’t you remember/watched/need/likes/were cooking — 10/10 هم‌رأی",
         "«15» لاتین در Q10 «we had 15 people coming for lunch» — عینِ چاپ (لایه هم لاتین)؛ آپاستروف‌های تایپوگرافیکِ don’t/aren’t در Q1/Q6"
+      ]
+    },
+    "tashrihi4": {
+      "exam": "آزمون تشریحی واژگان درس چهارم (ص۱۴۸-۱۵۰)",
+      "header": "سربرگِ ص۱۴۸ (رندرِ ۱۲۰۰dpi): «آزمون تشریحی واژگان درس چهارم» سرخ در گیومه (پاسخنامه صفحه: ۲۸۷) — لایهٔ OCR «تسی یچ» (نهمین تکرارِ لایه‌غلطِ تشریحی: r318/r331/r333/r336/r338/r340/r342/r344 — رندر حاکم: تمیز)؛ دستورِ سکشن‌۱ «با استفاده از کلمات داده شده، جملات زیر را کامل کنید. (یک کلمه اضافه می باشد)» (لایه «جمالت/اضاقن یم» = جملات/اضافه می)؛ سکشن‌۲ «جملات زیر را با نوشتن یک کلمه مناسب کامل کنید.» (لایه «نوشی ن» = نوشتن)؛ سکشن‌۳ «کلمات زیر را با تعاریف داده شده مطابقت دهید. (یک کلمه اضافه می باشد)»؛ سکشن‌۴ «بهترین گزینه را انتخاب کنید.» (لایه «بهی ین» = بهترین)؛ زیرخطِ سبزِ خط‌چین در سکشن‌۱ و حرفِ اولِ سرمه‌ایِ توپُر در سکشن‌۲؛ گزینه‌های MCQ در سلول‌های زردِ ایتالیکِ سرمه‌ای؛ پاصفحهٔ ص۱۵۰ بدونِ خطِ Telegram (برخلافِ ص۱۲۲ خانوادهٔ درس سوم)",
+      "keyPages": "287",
+      "extractedRound": "r345",
+      "keyVerification": "چهار گریدِ چاپِ ص۲۸۷ «پاسخنامه آزمون تشریحی واژگان درس چهارم (آزمون: صفحه ۱۴۸ تا ۱۵۰)» — ارقامِ فارسیِ ۱۴۸/۱۵۰ با واصفِ «تا» (لایه لاتین 148/150 داده بود — رندر ۱۲۰۰dpi حاکم)؛ گریدِ سکشن‌۱ (۴×۴، «1. holidays» با فاصله بعدِ نقطه) + سکشن‌۲ (۴×۲) + سکشن‌۳ (۴×۲) + سکشن‌۴ (۳×۸+۱، «1.illness» بدونِ فاصله بعدِ نقطه — ناسازگاریِ سبکِ خودِ چاپ) — ۱۶+۸+۸+۲۵ کلید که همگی با واژه‌های سؤال‌ها می‌خوانند — ۵۷/۵۷ با پیش‌پرکردنِ معنایی هم‌رأی، صفر واگرایی؛ جعبهٔ «Note:» خالیِ خط‌چینِ بنفش در پایینِ ص۲۸۷ (الگوی r334/r338)",
+      "pattern": "r323/r326/r338 — چهار بانک به ازای چهار سکشن: بانک‌واژه ۱۶ تایپی از دو زیربانکِ ۹کلمه‌ای چاپ + حرفِ اول ۸ تایپی + تعریف‌ها ۸ تایپی + ۲۵ MCQ",
+      "printQuirks": [
+        "بخش ۱ — جای‌خالیِ چسبیده به واژهٔ بعدی بدونِ فاصله: Q5 «------------------in my ear.»، Q9 «------------------food?»، Q11 «------------------of travel.» — عینِ چاپ (رندر ۶۰۰dpi)؛ بقیهٔ جای‌خالی‌ها فاصله‌دار",
+        "بخش ۱ Q3 «language in all over the world» — «in» از نظرِ دستورِ انگلیسی اضافه اما عینِ چاپ",
+        "بخش ۲ — نقطهٔ فاصله‌دار «) .» در Q2 تا Q7 در برابرِ نقطهٔ چسبیده در Q1 (به business.) و Q8 («(f _ _ _).») — ناسازگاریِ میکروی خودِ چاپ؛ حفظِ عینِ چاپ",
+        "بخش ۲ — زیرخطِ چاپ در Q2 کوتاه‌تر از کلید است: (t + ۶ تیره) در برابرِ traveler هشت‌حرفی (رندرِ ۳۰۰۰dpi حاکم — عینِ r323-Q7/r338)؛ ساقه عینِ چاپ، کلید از گریدِ ص۲۸۷؛ بقیهٔ ۷ آیتم دقیقاً هم‌طول‌اند: i+12=international، l+5=louder، a+6=airport، s+6=sunrise، s+5=sunset، p+7=pyramids، f+3=fall",
+        "بخش ۴ Q10 جای‌خالیِ کوتاهِ ۲۱تیره‌ای («Since --------------------- times») در برابرِ ۳۱تیرهٔ بقیه — ناهماهنگیِ خودِ چاپ؛ نرمال‌شده به تیرهٔ استانداردِ خانواده (قاعدهٔ r338-MCQ14)",
+        "بخش ۴ Q18 دیالوگِ A/B با گپِ سه‌فاصله‌ایِ چاپ («do?   B:») — عینِ چاپ",
+        "بخش ۴ Q16 گزینهٔ d دوسخت‌واژه‌ایِ «more popular» — عینِ چاپ",
+        "تیره‌شماریِ لایه: بخش ۱ = ۱۶ جای‌خالی ×۲۶ تیره (۳ لایه-شکسته: Q3/Q9/Q14 به‌صورت ۸+۱۸)؛ بخش ۳ = ۸ پرانتز ×۲۴ (Q2/Q7 شکسته، Q8 چندسطری)؛ بخش ۴ = ۲۳×۳۱ + Q2 شکسته (۱۱+۲۰) + Q10×۲۱ — جمعِ سه صفحه ۱۴۹۸ تیره",
+        "اضافه‌های بانک‌واژه (یک کلمه اضافه می باشد): بخش ۱ زیربانکِ اول = embassy، زیربانکِ دوم = journey، بخش ۳ = traveler",
+        "پاصفحهٔ ص۱۵۰ بدونِ خطِ «Telegram Channel: @PracticalEnglishInKonkour» — برخلافِ پاصفحهٔ ص۱۲۲ خانوادهٔ درس سوم (r338)",
+        "جعبهٔ «Note:» خالیِ خط‌چینِ بنفش در پایینِ ص۲۸۷ — همان الگویِ r334/r338"
       ]
     }
   }
