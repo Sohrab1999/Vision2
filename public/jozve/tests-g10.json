@@ -9668,6 +9668,1240 @@
           "answer": 1
         }
       ]
+    },
+    {
+      "lesson": 39,
+      "title": "بخش A — کلمات ناقص با بانک واژه (ص۱۰۸)",
+      "level": "تشریحی — تایپی با بانک واژه",
+      "count": 8,
+      "questions": [
+        {
+          "id": "g10-l39-1",
+          "n": 1,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "A healthy ---------------- can give you more energy. [bank: future - famous - moon - hunters - breakfast - collects - instead - carry - microscope]",
+          "options": [
+            "breakfast",
+            "future",
+            "collects",
+            "moon"
+          ],
+          "answer": 0,
+          "accepted": [
+            "breakfast"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l39-2",
+          "n": 2,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Monkeys ---------------- their babies all day long. [bank: future - famous - moon - hunters - breakfast - collects - instead - carry - microscope]",
+          "options": [
+            "carry",
+            "collects",
+            "famous",
+            "future"
+          ],
+          "answer": 0,
+          "accepted": [
+            "carry"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l39-3",
+          "n": 3,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "The school bus ---------------- the children each morning. [bank: future - famous - moon - hunters - breakfast - collects - instead - carry - microscope]",
+          "options": [
+            "collects",
+            "carry",
+            "famous",
+            "moon"
+          ],
+          "answer": 0,
+          "accepted": [
+            "collects"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l39-4",
+          "n": 4,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Gahar Lake is ---------------- for its clear water. [bank: future - famous - moon - hunters - breakfast - collects - instead - carry - microscope]",
+          "options": [
+            "famous",
+            "future",
+            "moon",
+            "carry"
+          ],
+          "answer": 0,
+          "accepted": [
+            "famous"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l39-5",
+          "n": 5,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "The sky is cloudy. We cannot see the ---------------- tonight. [bank: future - famous - moon - hunters - breakfast - collects - instead - carry - microscope]",
+          "options": [
+            "moon",
+            "breakfast",
+            "famous",
+            "future"
+          ],
+          "answer": 0,
+          "accepted": [
+            "moon"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l39-6",
+          "n": 6,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "The ---------------- killed the tiger and destroyed its home. [bank: future - famous - moon - hunters - breakfast - collects - instead - carry - microscope]",
+          "options": [
+            "hunters",
+            "collects",
+            "future",
+            "instead"
+          ],
+          "answer": 0,
+          "accepted": [
+            "hunters"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l39-7",
+          "n": 7,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "There’s no coffee. Would you like a cup of tea ----------------? [bank: future - famous - moon - hunters - breakfast - collects - instead - carry - microscope]",
+          "options": [
+            "instead",
+            "famous",
+            "hunters",
+            "moon"
+          ],
+          "answer": 0,
+          "accepted": [
+            "instead"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l39-8",
+          "n": 8,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "You need a powerful ---------------- to see something so small. [bank: future - famous - moon - hunters - breakfast - collects - instead - carry - microscope]",
+          "options": [
+            "microscope",
+            "breakfast",
+            "future",
+            "famous"
+          ],
+          "answer": 0,
+          "accepted": [
+            "microscope"
+          ],
+          "placeholder": "type your answer…"
+        }
+      ]
+    },
+    {
+      "lesson": 40,
+      "title": "بخش B — متعلقِ متفاوت (ص۱۰۸)",
+      "level": "چهارگزینه‌ای — متعلقِ متفاوت",
+      "count": 6,
+      "questions": [
+        {
+          "id": "g10-l40-1",
+          "n": 1,
+          "category": "vocab",
+          "question": "کدام گزینه با سایر گزینه‌ها متفاوت است؟ (۱) — boring / amazing / wonderful / interesting",
+          "options": [
+            "boring",
+            "amazing",
+            "wonderful",
+            "interesting"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l40-2",
+          "n": 2,
+          "category": "vocab",
+          "question": "کدام گزینه با سایر گزینه‌ها متفاوت است؟ (۲) — heart / brain / blood / moon",
+          "options": [
+            "heart",
+            "brain",
+            "blood",
+            "moon"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l40-3",
+          "n": 3,
+          "category": "vocab",
+          "question": "کدام گزینه با سایر گزینه‌ها متفاوت است؟ (۳) — Mars / Saturn / Jupiter / Sun",
+          "options": [
+            "Mars",
+            "Saturn",
+            "Jupiter",
+            "Sun"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l40-4",
+          "n": 4,
+          "category": "vocab",
+          "question": "کدام گزینه با سایر گزینه‌ها متفاوت است؟ (۴) — zookeepers / lakes / teachers / farmers",
+          "options": [
+            "zookeepers",
+            "lakes",
+            "teachers",
+            "farmers"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l40-5",
+          "n": 5,
+          "category": "vocab",
+          "question": "کدام گزینه با سایر گزینه‌ها متفاوت است؟ (۵) — sheep / cat / lion / goat",
+          "options": [
+            "sheep",
+            "cat",
+            "lion",
+            "goat"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l40-6",
+          "n": 6,
+          "category": "vocab",
+          "question": "کدام گزینه با سایر گزینه‌ها متفاوت است؟ (۶) — hunt / kill / die out / live",
+          "options": [
+            "hunt",
+            "kill",
+            "die out",
+            "live"
+          ],
+          "answer": 3
+        }
+      ]
+    },
+    {
+      "lesson": 41,
+      "title": "بخش C — تعریف با حرفِ اول (ص۱۰۸)",
+      "level": "تشریحی — تایپی با حرفِ اول",
+      "count": 6,
+      "questions": [
+        {
+          "id": "g10-l41-1",
+          "n": 1,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "A large and round body of rock or gas that moves around the Sun is (p _ _ _ _ _ ).",
+          "options": [
+            "planet",
+            "plain",
+            "place",
+            "plate"
+          ],
+          "answer": 0,
+          "accepted": [
+            "planet"
+          ],
+          "placeholder": "complete the word (first letter is given)…"
+        },
+        {
+          "id": "g10-l41-2",
+          "n": 2,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "An (o _ _ _ _ _ _ _ _ _ _ ) is a place from which people can watch the planets and stars.",
+          "options": [
+            "observatory",
+            "orbit",
+            "observer",
+            "office"
+          ],
+          "answer": 0,
+          "accepted": [
+            "observatory"
+          ],
+          "placeholder": "complete the word (first letter is given)…"
+        },
+        {
+          "id": "g10-l41-3",
+          "n": 3,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "The fattiest organ inside your head that controls your body is your (b _ _ _ _ ).",
+          "options": [
+            "brain",
+            "body",
+            "blood",
+            "bone"
+          ],
+          "answer": 0,
+          "accepted": [
+            "brain"
+          ],
+          "placeholder": "complete the word (first letter is given)…"
+        },
+        {
+          "id": "g10-l41-4",
+          "n": 4,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Viruses usually (a _ _ _ _ _ ) your body and make you sick!",
+          "options": [
+            "attack",
+            "appear",
+            "argue",
+            "arrive"
+          ],
+          "answer": 0,
+          "accepted": [
+            "attack"
+          ],
+          "placeholder": "complete the word (first letter is given)…"
+        },
+        {
+          "id": "g10-l41-5",
+          "n": 5,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "One easy way to protect wildlife is learning about endangered (a _ _ _ _ _ _ ).",
+          "options": [
+            "animals",
+            "areas",
+            "attacks",
+            "amounts"
+          ],
+          "answer": 0,
+          "accepted": [
+            "animals"
+          ],
+          "placeholder": "complete the word (first letter is given)…"
+        },
+        {
+          "id": "g10-l41-6",
+          "n": 6,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "The brave soldiers (d _ _ _ _ _ ) our country in war.",
+          "options": [
+            "defend",
+            "damage",
+            "drop",
+            "destroy"
+          ],
+          "answer": 0,
+          "accepted": [
+            "defend"
+          ],
+          "placeholder": "complete the word (first letter is given)…"
+        }
+      ]
+    },
+    {
+      "lesson": 42,
+      "title": "بخش D — مفرد/جمعِ واژه‌های پرانتز (ص۱۰۸)",
+      "level": "تشریحی — تایپی دوجای‌خالیِ اسلش‌دار",
+      "count": 3,
+      "questions": [
+        {
+          "id": "g10-l42-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "I saw a -------------- ( bag ) and four-------------- ( box ) on the table.",
+          "options": [
+            "bag / boxes",
+            "bags / box",
+            "bag / box",
+            "bags / boxes"
+          ],
+          "answer": 0,
+          "accepted": [
+            "bag / boxes"
+          ],
+          "placeholder": "complete both blanks (use / between the two answers)…"
+        },
+        {
+          "id": "g10-l42-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "We keep some -------------- ( wolf ) and -------------- ( lion ) in our zoo.",
+          "options": [
+            "wolves / lions",
+            "wolfs / lions",
+            "wolves / lion",
+            "wolf / lion"
+          ],
+          "answer": 0,
+          "accepted": [
+            "wolves / lions"
+          ],
+          "placeholder": "complete both blanks (use / between the two answers)…"
+        },
+        {
+          "id": "g10-l42-3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "There are many -------------- ( tree ) in this -------------- ( city ).",
+          "options": [
+            "trees / city",
+            "tree / city",
+            "trees / citys",
+            "tree / citys"
+          ],
+          "answer": 0,
+          "accepted": [
+            "trees / city"
+          ],
+          "placeholder": "complete both blanks (use / between the two answers)…"
+        }
+      ]
+    },
+    {
+      "lesson": 43,
+      "title": "بخش E — آهنگِ افتان یا خیزان (ص۱۰۸)",
+      "level": "چهارگزینه‌ای — آهنگ",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g10-l43-1",
+          "n": 1,
+          "category": "grammar",
+          "question": "لحن صدای جملهٔ زیر را مشخص کنید (۱) — His brother was injured in the car accident.",
+          "options": [
+            "falling",
+            "rising"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l43-2",
+          "n": 2,
+          "category": "grammar",
+          "question": "لحن صدای جملهٔ زیر را مشخص کنید (۲) — It is fantastic!",
+          "options": [
+            "falling",
+            "rising"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l43-3",
+          "n": 3,
+          "category": "grammar",
+          "question": "لحن صدای جملهٔ زیر را مشخص کنید (۳) — Will they go hunting next week?",
+          "options": [
+            "falling",
+            "rising"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l43-4",
+          "n": 4,
+          "category": "grammar",
+          "question": "لحن صدای جملهٔ زیر را مشخص کنید (۴) — What are you going to do this weekend?",
+          "options": [
+            "falling",
+            "rising"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "lesson": 44,
+      "title": "بخش F — چهارگزینه‌ای واژگان (ص۱۰۹)",
+      "level": "چهارگزینه‌ای — واژگان",
+      "count": 6,
+      "questions": [
+        {
+          "id": "g10-l44-1",
+          "n": 1,
+          "category": "vocab",
+          "question": "Pay attention! Don’t swim in this river. It’s very ------------------.",
+          "options": [
+            "natural",
+            "dangerous",
+            "safe",
+            "alive"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l44-2",
+          "n": 2,
+          "category": "vocab",
+          "question": "Everyone needs to ------------------- for the future.",
+          "options": [
+            "cut",
+            "destroy",
+            "hurt",
+            "plan"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l44-3",
+          "n": 3,
+          "category": "vocab",
+          "question": "Please wash your shirt. There are some --------------- on it.",
+          "options": [
+            "events",
+            "hills",
+            "texts",
+            "drops"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l44-4",
+          "n": 4,
+          "category": "vocab",
+          "question": "Some of our kind relatives --------------- their blood to those who need it.",
+          "options": [
+            "pump",
+            "draw",
+            "decide",
+            "donate"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l44-5",
+          "n": 5,
+          "category": "vocab",
+          "question": "--------------- always try to save people’s lives and put out the fire quickly.",
+          "options": [
+            "zookeepers",
+            "Firefighters",
+            "doctors",
+            "hunters"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l44-6",
+          "n": 6,
+          "category": "vocab",
+          "question": "If you pay ---------------- to your teacher in class, you will learn a lot.",
+          "options": [
+            "attention",
+            "hope",
+            "danger",
+            "future"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "lesson": 45,
+      "title": "بخش G — وصلِ ستون A به B (ص۱۰۹)",
+      "level": "چهارگزینه‌ای — وصلِ کردنی (۷ گزینه)",
+      "count": 6,
+      "questions": [
+        {
+          "id": "g10-l45-1",
+          "n": 1,
+          "category": "vocab",
+          "question": "واژهٔ ستون A را به معنای درست آن در ستون B وصل کنید (یک معنا اضافی است) — healthy",
+          "options": [
+            "the time after now",
+            "in place of someone or something else",
+            "good for your body",
+            "to protect somebody or something",
+            "not many; a small number of things or people",
+            "things that are true or that really happened",
+            "to go and get somebody or something"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l45-2",
+          "n": 2,
+          "category": "vocab",
+          "question": "واژهٔ ستون A را به معنای درست آن در ستون B وصل کنید (یک معنا اضافی است) — collect",
+          "options": [
+            "the time after now",
+            "in place of someone or something else",
+            "good for your body",
+            "to protect somebody or something",
+            "not many; a small number of things or people",
+            "things that are true or that really happened",
+            "to go and get somebody or something"
+          ],
+          "answer": 6
+        },
+        {
+          "id": "g10-l45-3",
+          "n": 3,
+          "category": "vocab",
+          "question": "واژهٔ ستون A را به معنای درست آن در ستون B وصل کنید (یک معنا اضافی است) — fact",
+          "options": [
+            "the time after now",
+            "in place of someone or something else",
+            "good for your body",
+            "to protect somebody or something",
+            "not many; a small number of things or people",
+            "things that are true or that really happened",
+            "to go and get somebody or something"
+          ],
+          "answer": 5
+        },
+        {
+          "id": "g10-l45-4",
+          "n": 4,
+          "category": "vocab",
+          "question": "واژهٔ ستون A را به معنای درست آن در ستون B وصل کنید (یک معنا اضافی است) — a few",
+          "options": [
+            "the time after now",
+            "in place of someone or something else",
+            "good for your body",
+            "to protect somebody or something",
+            "not many; a small number of things or people",
+            "things that are true or that really happened",
+            "to go and get somebody or something"
+          ],
+          "answer": 4
+        },
+        {
+          "id": "g10-l45-5",
+          "n": 5,
+          "category": "vocab",
+          "question": "واژهٔ ستون A را به معنای درست آن در ستون B وصل کنید (یک معنا اضافی است) — instead",
+          "options": [
+            "the time after now",
+            "in place of someone or something else",
+            "good for your body",
+            "to protect somebody or something",
+            "not many; a small number of things or people",
+            "things that are true or that really happened",
+            "to go and get somebody or something"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l45-6",
+          "n": 6,
+          "category": "vocab",
+          "question": "واژهٔ ستون A را به معنای درست آن در ستون B وصل کنید (یک معنا اضافی است) — future",
+          "options": [
+            "the time after now",
+            "in place of someone or something else",
+            "good for your body",
+            "to protect somebody or something",
+            "not many; a small number of things or people",
+            "things that are true or that really happened",
+            "to go and get somebody or something"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "lesson": 46,
+      "title": "بخش H — پاسخ با تصویر (ص۱۰۹)",
+      "level": "تشریحی — تایپی با تصویر",
+      "count": 1,
+      "questions": [
+        {
+          "id": "g10-l46-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "( picture: two children playing football ) — What are the children going to do tomorrow?",
+          "options": [
+            "They are going to play football.",
+            "They are going to play volleyball.",
+            "They are going to swim.",
+            "They played football yesterday."
+          ],
+          "answer": 0,
+          "accepted": [
+            "They are going to play football.",
+            "They’re going to play football.",
+            "They are going to play football tomorrow.",
+            "They’re going to play football tomorrow."
+          ],
+          "placeholder": "answer using the picture cues…"
+        }
+      ]
+    },
+    {
+      "lesson": 47,
+      "title": "بخش I — شکلِ صحیحِ واژه‌های پرانتز (ص۱۰۹)",
+      "level": "تشریحی — تایپی",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g10-l47-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Mr. Smith’s house is ------------------------ of all in the village. (beautiful)",
+          "options": [
+            "the most beautiful",
+            "more beautiful",
+            "as beautiful as",
+            "the more beautiful"
+          ],
+          "answer": 0,
+          "accepted": [
+            "the most beautiful"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l47-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "My mother will ------------------ fish and rice tomorrow night. (to cook)",
+          "options": [
+            "cook",
+            "cooks",
+            "cooking",
+            "to cook"
+          ],
+          "answer": 0,
+          "accepted": [
+            "cook"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l47-3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Where -------- the tourists ------------------ next Friday? (be going to / to visit)",
+          "options": [
+            "are going to / visit",
+            "is going to / visit",
+            "are going to / visiting",
+            "goes to / visit"
+          ],
+          "answer": 0,
+          "accepted": [
+            "are going to / visit"
+          ],
+          "placeholder": "complete both blanks (use / between the two answers)…"
+        },
+        {
+          "id": "g10-l47-4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "This city is ------------------------ city in the west of our country. (far)",
+          "options": [
+            "the farthest",
+            "farther than",
+            "as far as",
+            "the most far"
+          ],
+          "answer": 0,
+          "accepted": [
+            "the farthest",
+            "the furthest"
+          ],
+          "placeholder": "type your answer…"
+        }
+      ]
+    },
+    {
+      "lesson": 48,
+      "title": "بخش J — چهارگزینه‌ای گرامر (ص۱۱۰)",
+      "level": "چهارگزینه‌ای — گرامر",
+      "count": 6,
+      "questions": [
+        {
+          "id": "g10-l48-1",
+          "n": 1,
+          "category": "grammar",
+          "question": "There are a lot of beautiful -------------- in the plains of Iran.",
+          "options": [
+            "zebra",
+            "a zebras",
+            "an zebra",
+            "zebras"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l48-2",
+          "n": 2,
+          "category": "grammar",
+          "question": "It’s Helen’s birthday next week. We are going --------------- her a gift.",
+          "options": [
+            "give",
+            "to give",
+            "giving",
+            "will give"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l48-3",
+          "n": 3,
+          "category": "grammar",
+          "question": "Now we know that Jupiter is the --------------- planet.",
+          "options": [
+            "large",
+            "larger than",
+            "as large as",
+            "largest"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l48-4",
+          "n": 4,
+          "category": "grammar",
+          "question": "Are sharks --------------- animals in the sea?",
+          "options": [
+            "more dangerous",
+            "dangerouser",
+            "the most dangerous",
+            "dangerous"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l48-5",
+          "n": 5,
+          "category": "grammar",
+          "question": "This part of the river is as----------------- that part.",
+          "options": [
+            "deeper",
+            "deep",
+            "deep as",
+            "the deepest"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l48-6",
+          "n": 6,
+          "category": "grammar",
+          "question": "That day was ------------------ day of the firefighter’s life.",
+          "options": [
+            "the worst",
+            "bad",
+            "worse than",
+            "as bad as"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "lesson": 49,
+      "title": "بخش K — مرتب‌سازیِ جمله‌ها (ص۱۱۰)",
+      "level": "تشریحی — تایپی جمله‌سازی",
+      "count": 2,
+      "questions": [
+        {
+          "id": "g10-l49-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "the best / the class / his brother / in / student / is / ?",
+          "options": [
+            "Is his brother the best student in the class?",
+            "His brother the best student in the class is?",
+            "Is the best his brother student in the class?",
+            "His brother is the best in the class student?"
+          ],
+          "answer": 0,
+          "accepted": [
+            "Is his brother the best student in the class?"
+          ],
+          "placeholder": "make a sentence with the given words…"
+        },
+        {
+          "id": "g10-l49-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "in the bank / are / some money / save / they / going to / .",
+          "options": [
+            "They are going to save some money in the bank.",
+            "They are going to save in the bank some money.",
+            "They going to are save some money in the bank.",
+            "They are going to save some money on the bank."
+          ],
+          "answer": 0,
+          "accepted": [
+            "They are going to save some money in the bank."
+          ],
+          "placeholder": "make a sentence with the given words…"
+        }
+      ]
+    },
+    {
+      "lesson": 50,
+      "title": "بخش L — کلوزِ دیالوگ با بانک واژه (ص۱۱۰)",
+      "level": "تشریحی — تایپی با بانک واژه",
+      "count": 8,
+      "questions": [
+        {
+          "id": "g10-l50-1",
+          "n": 1,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Raman: Yeah! Well, my family and I are going to ---(53)--- a Museum of Nature and Wildlife on the weekend. [bank: plains - protect - alive - cheetahs - destroy - endangered - visit - die out - increasing]",
+          "options": [
+            "visit",
+            "protect",
+            "destroy",
+            "die out"
+          ],
+          "answer": 0,
+          "accepted": [
+            "visit"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l50-2",
+          "n": 2,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Raman: …and I really like to know more about ---(54)--- animals. [bank: plains - protect - alive - cheetahs - destroy - endangered - visit - die out - increasing]",
+          "options": [
+            "endangered",
+            "alive",
+            "increasing",
+            "plains"
+          ],
+          "answer": 0,
+          "accepted": [
+            "endangered"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l50-3",
+          "n": 3,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Arshan: …for example, I watched a movie about Iranian ---(55)--- last night. [bank: plains - protect - alive - cheetahs - destroy - endangered - visit - die out - increasing]",
+          "options": [
+            "cheetahs",
+            "alive",
+            "visit",
+            "protect"
+          ],
+          "answer": 0,
+          "accepted": [
+            "cheetahs"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l50-4",
+          "n": 4,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Raman: Nice! I heard that very few of them are ---(56)---. [bank: plains - protect - alive - cheetahs - destroy - endangered - visit - die out - increasing]",
+          "options": [
+            "alive",
+            "increasing",
+            "protect",
+            "cheetahs"
+          ],
+          "answer": 0,
+          "accepted": [
+            "alive"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l50-5",
+          "n": 5,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Arshan: Right, but their number is ---(57)--- because people are taking care of them. [bank: plains - protect - alive - cheetahs - destroy - endangered - visit - die out - increasing]",
+          "options": [
+            "increasing",
+            "die out",
+            "alive",
+            "visit"
+          ],
+          "answer": 0,
+          "accepted": [
+            "increasing"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l50-6",
+          "n": 6,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Raman: We should learn to ---(58)--- them. [bank: plains - protect - alive - cheetahs - destroy - endangered - visit - die out - increasing]",
+          "options": [
+            "protect",
+            "destroy",
+            "die out",
+            "visit"
+          ],
+          "answer": 0,
+          "accepted": [
+            "protect"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l50-7",
+          "n": 7,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Raman: If we don’t pay attention to them, they will ---(59)---. [bank: plains - protect - alive - cheetahs - destroy - endangered - visit - die out - increasing]",
+          "options": [
+            "die out",
+            "protect",
+            "increasing",
+            "alive"
+          ],
+          "answer": 0,
+          "accepted": [
+            "die out"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l50-8",
+          "n": 8,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Raman: They live on the ---(60)--- of our country like Moghan. [bank: plains - protect - alive - cheetahs - destroy - endangered - visit - die out - increasing]",
+          "options": [
+            "plains",
+            "cheetahs",
+            "destroy",
+            "endangered"
+          ],
+          "answer": 0,
+          "accepted": [
+            "plains"
+          ],
+          "placeholder": "type your answer…"
+        }
+      ]
+    },
+    {
+      "lesson": 51,
+      "title": "بخش M — کلوزِ مریخ (ص۱۱۱)",
+      "level": "چهارگزینه‌ای — کلوز",
+      "count": 6,
+      "questions": [
+        {
+          "id": "g10-l51-1",
+          "n": 1,
+          "category": "vocab",
+          "question": "In the future people from different ---(61)--- such as Asia, Africa, or America can live on Mars.",
+          "options": [
+            "nations",
+            "churches",
+            "offices",
+            "planets"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l51-2",
+          "n": 2,
+          "category": "vocab",
+          "question": "But there are many ---(62)--- that make it hard to live there.",
+          "options": [
+            "emergencies",
+            "problems",
+            "exercises",
+            "attention"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l51-3",
+          "n": 3,
+          "category": "vocab",
+          "question": "For example, on Mars we don’t have ---(63)--- or water to live.",
+          "options": [
+            "roads",
+            "wars",
+            "oxygen",
+            "qualities"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l51-4",
+          "n": 4,
+          "category": "vocab",
+          "question": "And our blood can’t ---(64)--- around our body easily.",
+          "options": [
+            "burn",
+            "move",
+            "collect",
+            "protect"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l51-5",
+          "n": 5,
+          "category": "vocab",
+          "question": "There is no ---(65)--- on Mars so it is really dark.",
+          "options": [
+            "cell",
+            "microbe",
+            "circle",
+            "light"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l51-6",
+          "n": 6,
+          "category": "vocab",
+          "question": "And something really wonderful is the difference in your ---(66)--- on Mars: You are younger than that time on earth.",
+          "options": [
+            "age",
+            "heart",
+            "fact",
+            "part"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "lesson": 52,
+      "title": "بخش N — درک مطلبِ پنگوئن‌ها (ص۱۱۱)",
+      "level": "مخلوط — تایپی + درست/نادرست",
+      "count": 6,
+      "questions": [
+        {
+          "id": "g10-l52-1",
+          "n": 1,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Penguins are amazing birds. […] Hundreds of penguins get together and walk more than 100 kilometers. They walk to find a safe place for the mothers to lay eggs. Fathers take care of the eggs and mothers walk to the sea to find food for their chicks. […] — Why do mothers walk to the sea?",
+          "options": [
+            "To find food for their chicks.",
+            "To lay eggs in the sea.",
+            "To take care of the eggs.",
+            "To hatch the eggs."
+          ],
+          "answer": 0,
+          "accepted": [
+            "To find food for their chicks.",
+            "They walk to the sea to find food for their chicks.",
+            "To find food for the chicks.",
+            "Because they want to find food for their chicks."
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l52-2",
+          "n": 2,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Penguins are amazing birds. They go on a very long trip every year. […] — Why do penguins make a long trip every year?",
+          "options": [
+            "To find a safe place for the mothers to lay eggs.",
+            "To find food for their chicks.",
+            "To take care of the eggs.",
+            "To walk more than 100 kilometers."
+          ],
+          "answer": 0,
+          "accepted": [
+            "To find a safe place for the mothers to lay eggs.",
+            "They walk to find a safe place for the mothers to lay eggs.",
+            "Because they want to find a safe place for the mothers to lay eggs.",
+            "They go on a very long trip to find a safe place for the mothers to lay eggs."
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l52-3",
+          "n": 3,
+          "category": "vocab",
+          "question": "The underlined word “them” in line six refers to ---------------.",
+          "options": [
+            "parents",
+            "chicks",
+            "penguins",
+            "fathers"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l52-4",
+          "n": 4,
+          "category": "vocab",
+          "question": "When an egg hatches, a chick ---------------.",
+          "options": [
+            "comes out",
+            "leaves its parent",
+            "find a safe place",
+            "goes on a long trip"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l52-5",
+          "n": 5,
+          "category": "vocab",
+          "question": "Penguins walk to find safe place just to take care of their chicks.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l52-6",
+          "n": 6,
+          "category": "vocab",
+          "question": "Fathers keep the eggs on their feet because it’s too cold on the ice.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 0
+        }
+      ]
     }
   ],
   "source": {
@@ -10053,6 +11287,29 @@
         "پرانتزهای پاسخِ سبزِ S13: «(-----------------)» ۱۷ تیره — عینِ چاپ در صورتِ سؤال‌ها نیست (فقط جایگاه)؛ سؤال‌ها عیناً از لایه",
         "مرزِ پایانی: ص۱۰۸ سربرگِ «آزمون نیمسال اول ۹۸-۹۹» (آزمونِ واقعیِ آموزش‌وپرورشِ بوکان — «بررسی سؤالات (توجه: این آزمون پاسخنامه ندارد)»، سؤال‌های A-N) است — خارج از محتوای این راند؛ مادهٔ راندِ بعد (کلیدِ چاپی ندارد — نیازمندِ خودکلیدیِ کامل)",
         "جعبهٔ Note خالی در ص۱۱۲ (الگوی r330/r334)"
+      ]
+    },
+    "nimsal": {
+      "exam": "آزمون نیمسال اول ۹۸-۹۹ — آموزش‌وپرورش شهرستان بوکان (ص۱۰۸-۱۱۱؛ ص۱۱۲ برگهٔ Noteٔ خالیِ خط‌چین)",
+      "header": "سربرگِ رسمیِ ص۱۰۸ (رندرِ ۶۰۰dpi): «ماده درسی : زبان انگلیسی دهم» + «اداره کل آموزش و پرورش آذربایجان غربی / آموزش و پرورش شهرستان بوکان» + «شعبه کلاس : تجربی / ریاضی / انسانی» + «مدت آزمون : ۷۰ دقیقه» + «آزمون نیمسال اول / سال تحصیلی ۹۸-۹۹» + «تعداد سؤال: A - N» + «تعداد صفحه: ۴ صفحه» + نوارِ زردِ «شرح سؤالات (توجه: این آزمون پاسخنامه ندارد)» — چهارده سکشنِ A تا N با بارمِ چاپیِ ۴+۳+۳+۳+۲+۳+۳+۱+۲+۳+۲+۴+۳+۴ = ۴۰ نمره («جمع بارم: 40 نمره» پاصفحهٔ ص۱۱۱ + «موفق و مؤید باشید»)",
+      "keyPages": "—",
+      "keyVerification": "هیچ کلیدِ چاپی وجود ندارد («توجه: این آزمون پاسخنامه ندارد» — نخستین آزمونِ بی‌کلیدِ خانوادهٔ دهم) — خودکلیدیِ کاملِ ۷۲/۷۲ آیتم (۷۶ اسلات) با دو گذرِ مستقل: (۱) پیش‌پرکردنِ معناییِ همهٔ اسلات‌ها، (۲) داوریِ گرامریِ مستقلِ به ازای هر آیتم با قاعده‌نویسیِ صریح — الگویِ r300-r307 (آزمون‌های رسمیِ دوازدهم)؛ واگراییِ بینِ دو گذر: صفر؛ بانکِ A و L هر دو ۹واژه‌ای با یک اضافی (future / destroy) — سازگار با تعدادِ اسلات‌ها؛ بارمِ چاپیِ هر سکشن در سربرگِ خودِ سکشن (مجموع ۴۰/۴۰)",
+      "selfKeying": "A: ۸ اسلات از ۹ واژه — extra = future (تنها واژهٔ بی‌اسلات پس از پرکردنِ معناییِ همهٔ جمله‌ها: breakfast/carry/collects/famous/moon/hunters/instead/microscope)؛ B: استدلالِ هر ردیف — ۹: boring منفی در برابر ۳ صفتِ مثبت؛ ۱۰: moon غیرِ اندامِ بدن؛ ۱۱: Sun ستاره نه سیاره؛ ۱۲: lakes مکان نه شغل؛ ۱۳: sheep جمع (شکلِ بی‌تغییر) در برابر ۳ مفرد؛ ۱۴: live نقطهٔ مقابلِ hunt/kill/die out؛ C: تعریف‌های مستقیم با حرفِ اولِ چاپی سازگار (planet/observatory/brain/attack/animals/defend)؛ D: قاعدهٔ مفرد/جمعِ بعد از a/four/some/many/this؛ E: ۲۴ خبری→افتان، ۲۵ تعجبی→افتان، ۲۶ پرسشِ بله/خیر→خیزان، ۲۷ پرسشِ Wh→افتان؛ F: واژگانِ درسی؛ G: تطبیقِ معناییِ ۶ واژه از ۷ معنا — extra = d (to protect somebody or something)؛ H: تصویرِ دو کودک در حالِ فوتبال؛ I: عالیِ the most beautiful + will + مصدرِ ساده + are going to / visit + عالیِ the farthest (furthest نیز پذیرفته)؛ J: ۴۵ جمعِ zebra→zebras (a/an + جمعِ نادرست)؛ ۴۶ going + to + مصدر؛ ۴۷/۴۸ عالی؛ ۴۹ ساختارِ as…as (as اول در ساقه — گزینهٔ c دومین as را می‌دهد)؛ ۵۰ عالیِ the worst؛ K: مرتب‌سازی با نشانهٔ پایانی (؟/.→ پرسشِ Is…؟ و خبریِ They are…)؛ L: کلوزِ دیالوگ (visit/endangered/cheetahs/alive/increasing/protect/die out/plains — extra = destroy)؛ M: کلوزِ مریخ (nations/problems/oxygen/move/light/age)؛ N: پاسخِ کاملِ چرا (۶۷/۶۸) + ارجاعِ ضمیرِ them→chicks (متن: parents leave them to take care of themselves — مرجعِ نزدیکِ chicks) + comes out (hatch = جوجه از تخم درآمدن — واژه‌نامهٔ چاپی) + ۷۱ نادرست («just to take care of their chicks» عینِ متن نیست — هدفِ اصلی مکانِ امن برای تخم‌گذاری) + ۷۲ درست (عینِ جملهٔ متن)",
+      "extractedRound": "r337",
+      "pattern": "r331/r336 (بانک به ازای خانوادهٔ سکشن — ۱۴ بانک) + r300-r307 (خودکلیدیِ آزمون‌های رسمی) + r323/r326 (حرفِ اولِ تایپی) + r333-S3/r336-S8 (کلیدِ اسلش‌دارِ دوجای‌خالی) + r322-l22 (آهنگ) + r331-S12 (وصلِ ستونی با گزینه‌های ستون) + r331-S9 (تصویر) + r336-l38 (مخلوطِ T-F + تایپی) + r303",
+      "printQuirks": [
+        "سربرگِ رسمی: «تعداد سؤال: A - N» + «مدت آزمون : ۷۰ دقیقه» + «آزمون نیمسال اول / سال تحصیلی ۹۸-۹۹» + «آموزش و پرورش شهرستان بوکان» + نوارِ زردِ «شرح سؤالات (توجه: این آزمون پاسخنامه ندارد)» — نخستین آزمونِ بی‌کلیدِ این خانواده",
+        "سربرگِ بخش H: «look at the picture and then answer the fallowing question:» — چاپِ «fallowing» (رندر ۹۰۰x — غلطِ تایپیِ چاپ برای following)؛ عینِ چاپ محفوظ ماند",
+        "Q21: «four--------------» چسبیده به تیره‌ها (بدون فاصله) در حالی‌که «a ---» فاصله‌دار — ناهماهنگیِ فاصلهٔ چاپ؛ عینِ چاپ",
+        "Q49: «as-----------------» چسبیده به تیره‌ها — «as» اول داخلِ ساقه است و گزینهٔ c «deep as» دومین as را می‌دهد — کلیدِ c",
+        "Q71: «Penguins walk to find safe place just to take care of their chicks.» — «a» قبل از safe place چاپ نشده؛ عینِ چاپ؛ خودکلیدی = False (قیدِ just ادعای متن را نادرست می‌کند)",
+        "Q70 گزینهٔ c: «find a safe place» بدونِ s (فعلِ سوم‌شخصِ ناهماهنگ) — عینِ چاپ",
+        "بانکِ L: جداکنندهٔ آخر «die out — increasing» با خطِ تیرهٔ بلند (em-dash) برخلافِ بقیهٔ جداکننده‌ها (hyphen) — عینِ چاپ؛ واژهٔ اضافی = destroy",
+        "K-51 توکنِ پایانی «is / ?» و K-52 «going to / .» — نشانهٔ پایانی بعد از اسلش، جدا از جمله — عینِ چاپ",
+        "سربرگِ G: «there’s 1 extra meaning» با زیرخطِ زیرِ ۱ — هفت معنا برای شش واژه (ستون B حروفِ a-g دارد)",
+        "پاصفحهٔ ص۱۱۱: «موفق و مؤید باشید» + «جمع بارم: 40 نمره» — و ص۱۱۲ تماماً برگهٔ «Note:» خالیِ خط‌چین (بدونِ سؤال)",
+        "جغرافیای بومی: Gahar Lake (Q4) و Moghan (Q60) — همان رویکردِ بومی‌گرایِ جزوهٔ بوکان (قرینهٔ r336)؛ «zookeepers» جمع در Q12 (خانوادهٔ zookeeperِ r336)",
+        "تیره‌های جای خالی ۱۶-۳۰ متغیر در چاپ؛ در بازسازی یکنواخت شد (BL) — طولِ تیره محتوایی نیست"
       ]
     }
   }
