@@ -155,6 +155,6 @@ describe("jozve tests-g10 gram5 (r334 ۲۰ تست دستگریمی گرامر و
 
   it("ids unique across the whole 502-item family (r334 gram5 appended)", () => {
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(new Set(ids).size).toBe(1586);
+    expect(new Set(ids).size).toBe(1706);
   });
 });

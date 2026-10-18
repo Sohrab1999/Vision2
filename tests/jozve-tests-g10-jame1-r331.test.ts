@@ -60,7 +60,7 @@ describe("jozve tests-g10 (r331 آزمون جامع تشریحی درس اول �
   });
 
   it("file shape: 29 banks (r333 gram4 appended), new counts [16,12,6,7,14,6,6], levels and titles", () => {
-    expect(bank.lessons).toHaveLength(99);
+    expect(bank.lessons).toHaveLength(100);
     expect(bank.lessons.slice(17, 24).map((l) => l.lesson)).toEqual([18, 19, 20, 21, 22, 23, 24]);
     expect(bank.lessons.slice(17, 24).map((l) => l.count)).toEqual([16, 12, 6, 7, 14, 6, 6]);
     expect(bank.lessons[17].title).toContain("کلمات ناقص، بانک واژه و تعریف‌ها (ص۶۸)");
@@ -72,7 +72,7 @@ describe("jozve tests-g10 (r331 آزمون جامع تشریحی درس اول �
     expect(bank.lessons[22].title).toContain("کلوز — استرالیا (ص۷۱)");
     expect(bank.lessons[23].title).toContain("درک مطلب — دلفین (ص۷۱)");
     expect(bank.lessons[23].level).toBe("تشریحی — درست/نادرست و تایپی");
-    expect(bank.lessons.reduce((s, l) => s + l.count, 0)).toBe(1586);
+    expect(bank.lessons.reduce((s, l) => s + l.count, 0)).toBe(1706);
   });
 
   it("MCQ keys locked to print: L19 (12) + L22 (14) + L23 (6) + L24 T/F (4) = 36 indices", () => {
@@ -170,8 +170,8 @@ describe("jozve tests-g10 (r331 آزمون جامع تشریحی درس اول �
 
   it("ids unique across the whole 482-item family (r333 gram4 appended)", () => {
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(ids.length).toBe(1586);
-    expect(new Set(ids).size).toBe(1586);
+    expect(ids.length).toBe(1706);
+    expect(new Set(ids).size).toBe(1706);
     expect(ids.filter((id) => id.startsWith("g10-l18-"))).toHaveLength(16);
     expect(ids.filter((id) => id.startsWith("g10-l24-"))).toHaveLength(6);
   });

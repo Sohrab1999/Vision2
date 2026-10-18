@@ -24640,6 +24640,1574 @@
           "answer": 3
         }
       ]
+    },
+    {
+      "lesson": 100,
+      "title": "آموزشی/متوسط — ۳۶۰ تست واژگان درس ۱ تا ۴ — بخش ۳ از ۳ (ص۱۸۹-۱۹۴)",
+      "level": "آموزشی/متوسط — چهارگزینه‌ای",
+      "count": 120,
+      "questions": [
+        {
+          "id": "g10-l100-241",
+          "n": 241,
+          "category": "vocab",
+          "question": "A: “In which ------------------- can we visit the ancient pyramids?” B: “I think Africa.”",
+          "options": [
+            "suggestion",
+            "entertainment",
+            "continent",
+            "country"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-242",
+          "n": 242,
+          "category": "vocab",
+          "question": "A: “What’s your advice about the nature?” B: “Never ------------------- wildlife.”",
+          "options": [
+            "protect",
+            "put out",
+            "hunt",
+            "destroy"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l100-243",
+          "n": 243,
+          "category": "vocab",
+          "question": "Red blood cells ---------------------- carbon dioxide from body parts.",
+          "options": [
+            "carry",
+            "collect",
+            "defend",
+            "keep"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l100-244",
+          "n": 244,
+          "category": "vocab",
+          "question": "White cells in our blood defend our body ---------------------- microbes.",
+          "options": [
+            "like",
+            "without",
+            "around",
+            "against"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l100-245",
+          "n": 245,
+          "category": "vocab",
+          "question": "If you don’t have an accident on the snowy roads, you should be able to return -------------------.",
+          "options": [
+            "loudly",
+            "bravely",
+            "safely",
+            "neatly"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-246",
+          "n": 246,
+          "category": "vocab",
+          "question": "His family had a terrible accident, all of them are ---------------------.",
+          "options": [
+            "natural",
+            "special",
+            "injured",
+            "domestic"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-247",
+          "n": 247,
+          "category": "vocab",
+          "question": "Yesterday a careless driver ------------------ me and hurt my hand.",
+          "options": [
+            "put",
+            "hit",
+            "lost",
+            "grew"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l100-248",
+          "n": 248,
+          "category": "vocab",
+          "question": "You should make a / an ------------------- between your family and your job.",
+          "options": [
+            "choice",
+            "trip",
+            "vacation",
+            "pyramid"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l100-249",
+          "n": 249,
+          "category": "vocab",
+          "question": "I work in a company that --------------------- children's books.",
+          "options": [
+            "publishes",
+            "believes",
+            "observes",
+            "behaves"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l100-250",
+          "n": 250,
+          "category": "vocab",
+          "question": "My older brother wants to go to ------------------- to study medicine when he finishes high school.",
+          "options": [
+            "laboratory",
+            "university",
+            "drugstore",
+            "hospital"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l100-251",
+          "n": 251,
+          "category": "vocab",
+          "question": "---------------------, fire destroyed most of their house in 1928.",
+          "options": [
+            "Fortunately",
+            "Especially",
+            "Sadly",
+            "Naturally"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-252",
+          "n": 252,
+          "category": "vocab",
+          "question": "The ------------------- of the French novel into Chinese took him more than three months.",
+          "options": [
+            "research",
+            "translation",
+            "knowledge",
+            "success"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l100-253",
+          "n": 253,
+          "category": "vocab",
+          "question": "My friend is very upset because her father --------------------- in a car accident last week.",
+          "options": [
+            "forgot",
+            "attended",
+            "passed away",
+            "put aside"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-254",
+          "n": 254,
+          "category": "vocab",
+          "question": "The earth is -------------------- to an orange in shape.",
+          "options": [
+            "familiar",
+            "attractive",
+            "similar",
+            "actual"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-255",
+          "n": 255,
+          "category": "vocab",
+          "question": "He never lost his interest for making new things. Finally, he became a great ---------------------.",
+          "options": [
+            "translate",
+            "inventor",
+            "experiment",
+            "knowledge"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l100-256",
+          "n": 256,
+          "category": "vocab",
+          "question": "“Is this film appropriate for small children?” The underlined word means --------------------.",
+          "options": [
+            "amazing",
+            "weak",
+            "suitable",
+            "successful"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-257",
+          "n": 257,
+          "category": "vocab",
+          "question": "When I went to Egypt, I kept my ticket as a --------------------- of my trip.",
+          "options": [
+            "booklet",
+            "rule",
+            "souvenir",
+            "suggestion"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-258",
+          "n": 258,
+          "category": "vocab",
+          "question": "Blood is an amazing ----------------------- from Allah. We really thank Allah.",
+          "options": [
+            "drop",
+            "gift",
+            "cell",
+            "type"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l100-259",
+          "n": 259,
+          "category": "vocab",
+          "question": "I love the animals and I always take care of the ---------------------.",
+          "options": [
+            "humans",
+            "present",
+            "wildlife",
+            "plains"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-260",
+          "n": 260,
+          "category": "vocab",
+          "question": "The key to scientists’ success is their ------------------ in themselves.",
+          "options": [
+            "research",
+            "experiment",
+            "belief",
+            "invention"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-261",
+          "n": 261,
+          "category": "vocab",
+          "question": "I have a bad headache. I want to buy some ---------------------.",
+          "options": [
+            "research",
+            "medicine",
+            "experiment",
+            "invention"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l100-262",
+          "n": 262,
+          "category": "vocab",
+          "question": "We can ------------------- our body healthy by doing exercise.",
+          "options": [
+            "keep",
+            "collect",
+            "defend",
+            "seem"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l100-263",
+          "n": 263,
+          "category": "vocab",
+          "question": "We can thank Allah by keeping our body ---------------------.",
+          "options": [
+            "different",
+            "interesting",
+            "healthy",
+            "daily"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-264",
+          "n": 264,
+          "category": "vocab",
+          "question": "We had an exam but we couldn’t ------------------- on time and failed it.",
+          "options": [
+            "arrive",
+            "value",
+            "feel",
+            "need"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l100-265",
+          "n": 265,
+          "category": "vocab",
+          "question": "A: “What’s your favorite hobby?” B: “Going to the ---------------- and looking at the flowers.”",
+          "options": [
+            "future",
+            "earth",
+            "nature",
+            "spring"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-266",
+          "n": 266,
+          "category": "vocab",
+          "question": "If anyone has a better --------------------, let's hear it.",
+          "options": [
+            "choice",
+            "culture",
+            "suggestion",
+            "image"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-267",
+          "n": 267,
+          "category": "vocab",
+          "question": "She thought a lot about how to --------------------- this winter vacation.",
+          "options": [
+            "spend",
+            "wait",
+            "save",
+            "attract"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l100-268",
+          "n": 268,
+          "category": "vocab",
+          "question": "Ancient places of Iran are -------------------- for the tourists.",
+          "options": [
+            "rapid",
+            "attractive",
+            "religious",
+            "kind"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l100-269",
+          "n": 269,
+          "category": "vocab",
+          "question": "Tom usually eats --------------------- fruits and vegetables, and doesn’t eat meat.",
+          "options": [
+            "fresh",
+            "actual",
+            "familiar",
+            "local"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l100-270",
+          "n": 270,
+          "category": "vocab",
+          "question": "I watched a film about the ---------------------- of the blood stream.",
+          "options": [
+            "exercise",
+            "body",
+            "system",
+            "part"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-271",
+          "n": 271,
+          "category": "vocab",
+          "question": "When you can’t do something the first time you should try ---------------------.",
+          "options": [
+            "again",
+            "little",
+            "before",
+            "one time"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l100-272",
+          "n": 272,
+          "category": "vocab",
+          "question": "My friend is really brave. She plays with --------------------- animals in the jungle.",
+          "options": [
+            "wild",
+            "domestic",
+            "helpful",
+            "important"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l100-273",
+          "n": 273,
+          "category": "vocab",
+          "question": "Culture is the special belief and ------------------ of a group of people.",
+          "options": [
+            "behavior",
+            "journey",
+            "experiment",
+            "fun"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l100-274",
+          "n": 274,
+          "category": "vocab",
+          "question": "My mother uses --------------------- vegetables for cooking so our dinner is always great.",
+          "options": [
+            "true",
+            "clear",
+            "medium",
+            "fresh"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l100-275",
+          "n": 275,
+          "category": "vocab",
+          "question": "The students should wear ------------------ clothes for attending the classes.",
+          "options": [
+            "dirty",
+            "metal",
+            "appropriate",
+            "old"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-276",
+          "n": 276,
+          "category": "vocab",
+          "question": "It was too late to save the sick woman, and she ---------------------.",
+          "options": [
+            "attacked",
+            "died",
+            "worried",
+            "swam"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l100-277",
+          "n": 277,
+          "category": "vocab",
+          "question": "I was ------------------ to show my bad marks in math to my parents.",
+          "options": [
+            "happy",
+            "ashamed",
+            "running",
+            "glad"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l100-278",
+          "n": 278,
+          "category": "vocab",
+          "question": "She always --------------------- herself with the best students of the class.",
+          "options": [
+            "surf",
+            "respect",
+            "compare",
+            "invite"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-279",
+          "n": 279,
+          "category": "vocab",
+          "question": "The French word “bonjour” ---------------------- as “hello” in English.",
+          "options": [
+            "publishes",
+            "develops",
+            "translates",
+            "believes"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-280",
+          "n": 280,
+          "category": "vocab",
+          "question": "What did people do for ---------------- at home before inventing TV?",
+          "options": [
+            "behavior",
+            "entertainment",
+            "culture",
+            "attraction"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l100-281",
+          "n": 281,
+          "category": "vocab",
+          "question": "Some people do not ---------------------- to the nature and they cut the trees in the jungles.",
+          "options": [
+            "pay attention",
+            "put out",
+            "die out",
+            "protect"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l100-282",
+          "n": 282,
+          "category": "vocab",
+          "question": "Humans change some metals into ----------------------- by making them hot.",
+          "options": [
+            "sign",
+            "liquid",
+            "fact",
+            "cell"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l100-283",
+          "n": 283,
+          "category": "vocab",
+          "question": "If you water this plant too much, you will ---------------------- it.",
+          "options": [
+            "kill",
+            "quit",
+            "create",
+            "hunt"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l100-284",
+          "n": 284,
+          "category": "vocab",
+          "question": "A: “How are they -------------------- the jungles?” B: “By putting out the fire.”",
+          "options": [
+            "destroying",
+            "burning",
+            "saving",
+            "cutting"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-285",
+          "n": 285,
+          "category": "vocab",
+          "question": "Our knowledge -------------------- by studying new books.",
+          "options": [
+            "develops",
+            "cleans",
+            "invents",
+            "drops"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l100-286",
+          "n": 286,
+          "category": "vocab",
+          "question": "Children usually learn foreign languages very --------------------.",
+          "options": [
+            "suddenly",
+            "recently",
+            "finally",
+            "quickly"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l100-287",
+          "n": 287,
+          "category": "vocab",
+          "question": "Telescopes and microscopes are every ----------------- machines for working on different creations.",
+          "options": [
+            "daily",
+            "true",
+            "useful",
+            "medium"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-288",
+          "n": 288,
+          "category": "vocab",
+          "question": "Everybody should respect other people’s ------------------.",
+          "options": [
+            "site",
+            "pain",
+            "flight",
+            "culture"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l100-289",
+          "n": 289,
+          "category": "vocab",
+          "question": "To get a visa, you should go to the Swedish ------------------.",
+          "options": [
+            "embassy",
+            "history",
+            "culture",
+            "museum"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l100-290",
+          "n": 290,
+          "category": "vocab",
+          "question": "You can go to the ------------------------ to see planets or stars.",
+          "options": [
+            "systems",
+            "wonders",
+            "villages",
+            "observatories"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l100-291",
+          "n": 291,
+          "category": "vocab",
+          "question": "“How can you help --------------------- animals like Iranian cheetahs?”",
+          "options": [
+            "natural",
+            "favorite",
+            "terrible",
+            "endangered"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l100-292",
+          "n": 292,
+          "category": "vocab",
+          "question": "The police --------------------- a man leaving the house this morning.",
+          "options": [
+            "attended",
+            "behaved",
+            "observed",
+            "developed"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-293",
+          "n": 293,
+          "category": "vocab",
+          "question": "Schools here put -------------------- on listening and speaking.",
+          "options": [
+            "health",
+            "care",
+            "emphasis",
+            "medicine"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-294",
+          "n": 294,
+          "category": "vocab",
+          "question": "Wonders of creation like our blood or our bones are --------------------- of God’s power.",
+          "options": [
+            "signs",
+            "rings",
+            "nature",
+            "rocks"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l100-295",
+          "n": 295,
+          "category": "vocab",
+          "question": "A: “What’s your --------------------- for the future?” B: “I would like to be a good teacher.”",
+          "options": [
+            "safe",
+            "danger",
+            "wildlife",
+            "plan"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l100-296",
+          "n": 296,
+          "category": "vocab",
+          "question": "My sister studied ---------------- at one of the best universities in the country. She is a famous doctor.",
+          "options": [
+            "translation",
+            "medicine",
+            "science",
+            "disease"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l100-297",
+          "n": 297,
+          "category": "vocab",
+          "question": "They ------------------ all the employees before starting their job.",
+          "options": [
+            "interview",
+            "ask",
+            "answer",
+            "develop"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l100-298",
+          "n": 298,
+          "category": "vocab",
+          "question": "He will easily find a job with his knowledge and ---------------------- soon.",
+          "options": [
+            "beliefs",
+            "values",
+            "skills",
+            "facts"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-299",
+          "n": 299,
+          "category": "vocab",
+          "question": "In summer, its ---------------------- until about eight o’clock.",
+          "options": [
+            "power",
+            "light",
+            "deep",
+            "fresh"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l100-300",
+          "n": 300,
+          "category": "vocab",
+          "question": "Everybody should be careful about his behavior in a ------------------ country.",
+          "options": [
+            "proper",
+            "wonderful",
+            "probable",
+            "foreign"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l100-301",
+          "n": 301,
+          "category": "vocab",
+          "question": "Honey is a ----------------------- and yellow liquid that is really useful for our health.",
+          "options": [
+            "medium",
+            "true",
+            "clear",
+            "alike"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-302",
+          "n": 302,
+          "category": "vocab",
+          "question": "A: “How can you help the endangered animals? B: “By --------------------- their homes.”",
+          "options": [
+            "protecting",
+            "destroying",
+            "cutting",
+            "putting out"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l100-303",
+          "n": 303,
+          "category": "vocab",
+          "question": "Doctors try to find new ------------------ to save the lives of the people.",
+          "options": [
+            "hospitals",
+            "places",
+            "tests",
+            "medicines"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l100-304",
+          "n": 304,
+          "category": "vocab",
+          "question": "Her parents are really generous. The synonym of the underlined word means -------------------.",
+          "options": [
+            "mean",
+            "kind",
+            "hospitable",
+            "angry"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l100-305",
+          "n": 305,
+          "category": "vocab",
+          "question": "A --------------------- is a person who does experiment to find answers to the problems.",
+          "options": [
+            "scientist",
+            "sportsman",
+            "driver",
+            "policeman"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l100-306",
+          "n": 306,
+          "category": "vocab",
+          "question": "It’s so ----------------------- that all the parts of our body are wonders of creation.",
+          "options": [
+            "alike",
+            "clear",
+            "alive",
+            "next"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l100-307",
+          "n": 307,
+          "category": "vocab",
+          "question": "A: “Are they --------------------- animals?” B: “Yes, they are Iranian cheetahs.”",
+          "options": [
+            "injured",
+            "endangered",
+            "domestic",
+            "lost"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l100-308",
+          "n": 308,
+          "category": "vocab",
+          "question": "I wanted to take my friend's ---------------------- to take pictures of tom's new house.",
+          "options": [
+            "cradle",
+            "shelf",
+            "lens",
+            "camera"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l100-309",
+          "n": 309,
+          "category": "vocab",
+          "question": "-------------------, the firefighters put out the fire before it became too serious.",
+          "options": [
+            "Especially",
+            "Fortunately",
+            "Patiently",
+            "Sadly"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l100-310",
+          "n": 310,
+          "category": "vocab",
+          "question": "If you look at the sky at night, you can see ---------------------- of stars easily.",
+          "options": [
+            "beliefs",
+            "science",
+            "values",
+            "thousands"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l100-311",
+          "n": 311,
+          "category": "vocab",
+          "question": "Do not worry about winning or losing, think of what you will ----------------------.",
+          "options": [
+            "quit",
+            "attend",
+            "gain",
+            "seek"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-312",
+          "n": 312,
+          "category": "vocab",
+          "question": "My doctor told me to stay in bed ---------------------- I feel better.",
+          "options": [
+            "against",
+            "like",
+            "during",
+            "until"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l100-313",
+          "n": 313,
+          "category": "vocab",
+          "question": "Do you believe that computer is one of the most important --------------------- of the human?",
+          "options": [
+            "translation",
+            "invention",
+            "knowledge",
+            "research"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l100-314",
+          "n": 314,
+          "category": "vocab",
+          "question": "We waited for him until two o’clock and ----------------------, we went home.",
+          "options": [
+            "suddenly",
+            "easily",
+            "finally",
+            "hopefully"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-315",
+          "n": 315,
+          "category": "vocab",
+          "question": "You must always have the ---------------------- that you can be successful.",
+          "options": [
+            "interest",
+            "skill",
+            "belief",
+            "power"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-316",
+          "n": 316,
+          "category": "vocab",
+          "question": "He didn’t want to be left on his own. The underlined part means -------------------.",
+          "options": [
+            "strong",
+            "worried",
+            "alive",
+            "alone"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l100-317",
+          "n": 317,
+          "category": "vocab",
+          "question": "My older brother is able to ----------------------- Persian into English very easily.",
+          "options": [
+            "translate",
+            "take",
+            "send",
+            "turn"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l100-318",
+          "n": 318,
+          "category": "vocab",
+          "question": "Chips and cookies are not ---------------------- foods for little children.",
+          "options": [
+            "healthy",
+            "ancient",
+            "cultural",
+            "local"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l100-319",
+          "n": 319,
+          "category": "vocab",
+          "question": "The doctor gave my younger sister some ------------------- to take for her cough this morning.",
+          "options": [
+            "medicine",
+            "liquid",
+            "metal",
+            "experiment"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l100-320",
+          "n": 320,
+          "category": "vocab",
+          "question": "Tom told me that Mary was good at playing the piano, but I didn’t really ----------------- him until I heard her play.",
+          "options": [
+            "observe",
+            "stop",
+            "believe",
+            "remember"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-321",
+          "n": 321,
+          "category": "vocab",
+          "question": "He drove so fast that I really felt my life was in ------------------------.",
+          "options": [
+            "care",
+            "danger",
+            "health",
+            "hope"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l100-322",
+          "n": 322,
+          "category": "vocab",
+          "question": "My uncle brought some nice ---------------------- from his holiday in Shiraz.",
+          "options": [
+            "souvenirs",
+            "winds",
+            "pilgrims",
+            "flights"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l100-323",
+          "n": 323,
+          "category": "vocab",
+          "question": "My friend was ---------------------- in math so I helped him a lot.",
+          "options": [
+            "weak",
+            "strong",
+            "angry",
+            "happy"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l100-324",
+          "n": 324,
+          "category": "vocab",
+          "question": "Don’t ---------------------- if you can’t finish all the questions.",
+          "options": [
+            "defend",
+            "worry",
+            "fight",
+            "attack"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l100-325",
+          "n": 325,
+          "category": "vocab",
+          "question": "Something you keep to help you remember a place is called a -----------------------.",
+          "options": [
+            "shop",
+            "souvenir",
+            "booklet",
+            "pyramid"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l100-326",
+          "n": 326,
+          "category": "vocab",
+          "question": "My friend didn’t come on time and wanted me to ---------------------- for him a long time.",
+          "options": [
+            "wait",
+            "count",
+            "invent",
+            "waste"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l100-327",
+          "n": 327,
+          "category": "vocab",
+          "question": "Viruses need to be inside a ---------------------- cell to live and grow.",
+          "options": [
+            "deaf",
+            "liquid",
+            "clean",
+            "living"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l100-328",
+          "n": 328,
+          "category": "vocab",
+          "question": "Tom had a --------------------- in his stomach, so he went to the hospital.",
+          "options": [
+            "pain",
+            "cell",
+            "wall",
+            "pen"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l100-329",
+          "n": 329,
+          "category": "vocab",
+          "question": "Suddenly, she ---------------------- laughing and looked serious.",
+          "options": [
+            "forgot",
+            "stopped",
+            "gained",
+            "behaved"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l100-330",
+          "n": 330,
+          "category": "vocab",
+          "question": "Tradition and ----------------------- are sometimes different with the needs of modern living.",
+          "options": [
+            "culture",
+            "nature",
+            "program",
+            "information"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l100-331",
+          "n": 331,
+          "category": "vocab",
+          "question": "These animals sleep in the day and --------------------- at night.",
+          "options": [
+            "burn",
+            "hunt",
+            "run",
+            "plant"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l100-332",
+          "n": 332,
+          "category": "vocab",
+          "question": "Bacteria and viruses are two important ----------------------- of microbes.",
+          "options": [
+            "types",
+            "elements",
+            "drops",
+            "areas"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l100-333",
+          "n": 333,
+          "category": "vocab",
+          "question": "A small bed for a baby, especially one that moves from side to side is a / an -----------------------.",
+          "options": [
+            "grave",
+            "shelf",
+            "cradle",
+            "orbit"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-334",
+          "n": 334,
+          "category": "vocab",
+          "question": "Finally, after many years of war, people on both sides wanted ----------------------.",
+          "options": [
+            "fight",
+            "peace",
+            "attack",
+            "value"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l100-335",
+          "n": 335,
+          "category": "vocab",
+          "question": "The teacher ----------------------- the importance of education and hard working.",
+          "options": [
+            "collected",
+            "donated",
+            "dropped",
+            "emphasized"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l100-336",
+          "n": 336,
+          "category": "vocab",
+          "question": "The Hubble Telescope ----------------------- the Earth every 97 minutes.",
+          "options": [
+            "defends",
+            "protects",
+            "pumps",
+            "orbits"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l100-337",
+          "n": 337,
+          "category": "vocab",
+          "question": "When I have a ---------------------- I ask my father to help me.",
+          "options": [
+            "gain",
+            "notice",
+            "device",
+            "problem"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l100-338",
+          "n": 338,
+          "category": "vocab",
+          "question": "I don’t want to ---------------------- when I don’t know the answer to a problem.",
+          "options": [
+            "give up",
+            "pass away",
+            "look for",
+            "turn on"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l100-339",
+          "n": 339,
+          "category": "vocab",
+          "question": "I asked him a simple question but he gave me a long and boring ----------------------.",
+          "options": [
+            "test",
+            "knowledge",
+            "answer",
+            "experiment"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-340",
+          "n": 340,
+          "category": "vocab",
+          "question": "She does --------------------- work for the Red Cross two days a week.",
+          "options": [
+            "hopeless",
+            "voluntary",
+            "harmful",
+            "soft"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l100-341",
+          "n": 341,
+          "category": "vocab",
+          "question": "The national football team will --------------------- in Madrid tomorrow afternoon.",
+          "options": [
+            "keep",
+            "bore",
+            "arrive",
+            "move"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-342",
+          "n": 342,
+          "category": "vocab",
+          "question": "The bomb will probably ------------------- the soldiers and destroy the bridge.",
+          "options": [
+            "water",
+            "find",
+            "kill",
+            "cut"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-343",
+          "n": 343,
+          "category": "vocab",
+          "question": "We ------------------- out of the class when we heard the loud noise.",
+          "options": [
+            "searched",
+            "needed",
+            "visited",
+            "jumped"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l100-344",
+          "n": 344,
+          "category": "vocab",
+          "question": "I’m sure my uncle hasn’t gone -------------------- since 2010. He has always been in Iran.",
+          "options": [
+            "across",
+            "abroad",
+            "above",
+            "inside"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l100-345",
+          "n": 345,
+          "category": "vocab",
+          "question": "Every year, we ------------------- our blood to those who need it.",
+          "options": [
+            "donate",
+            "protect",
+            "take care of",
+            "pump"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l100-346",
+          "n": 346,
+          "category": "vocab",
+          "question": "I feel ------------------- that I brought to you so much trouble.",
+          "options": [
+            "ashamed",
+            "happy",
+            "cold",
+            "safe"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l100-347",
+          "n": 347,
+          "category": "vocab",
+          "question": "My grandfather remembered the names from seventy years ago - isn’t that very -------------------?",
+          "options": [
+            "natural",
+            "boring",
+            "amazing",
+            "tiring"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-348",
+          "n": 348,
+          "category": "vocab",
+          "question": "My older brother was thirsty so he asked me -------------------- for a glass of water.",
+          "options": [
+            "safely",
+            "patiently",
+            "politely",
+            "probably"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-349",
+          "n": 349,
+          "category": "vocab",
+          "question": "He wants to do ------------------- into the nature of human cells.",
+          "options": [
+            "science",
+            "knowledge",
+            "research",
+            "interest"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-350",
+          "n": 350,
+          "category": "vocab",
+          "question": "We don’t exactly know if he is ------------------ or dead.",
+          "options": [
+            "suitable",
+            "famous",
+            "fake",
+            "alive"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l100-351",
+          "n": 351,
+          "category": "vocab",
+          "question": "The film was so --------------------- that I left the cinema in the middle of it.",
+          "options": [
+            "dry",
+            "correct",
+            "boring",
+            "new"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-352",
+          "n": 352,
+          "category": "vocab",
+          "question": "The Great Wall of China is one of the seven -------------------- of the world.",
+          "options": [
+            "signs",
+            "details",
+            "abilities",
+            "wonders"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l100-353",
+          "n": 353,
+          "category": "vocab",
+          "question": "I can’t ---------------------- the meeting but I’ll send my friend instead.",
+          "options": [
+            "attempt",
+            "focus",
+            "attend",
+            "destroy"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-354",
+          "n": 354,
+          "category": "vocab",
+          "question": "Don’t ---------------------- all your money on the first day of your holiday!",
+          "options": [
+            "spend",
+            "check",
+            "gain",
+            "shop"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l100-355",
+          "n": 355,
+          "category": "vocab",
+          "question": "Tom has the flu and he's feeling --------------------- now.",
+          "options": [
+            "poor",
+            "energetic",
+            "weak",
+            "fresh"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-356",
+          "n": 356,
+          "category": "vocab",
+          "question": "Keeping the house ----------------------- and clean is a very difficult work.",
+          "options": [
+            "heavy",
+            "common",
+            "neat",
+            "deep"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l100-357",
+          "n": 357,
+          "category": "vocab",
+          "question": "The book was written in a style --------------------- to the age of the children.",
+          "options": [
+            "rocky",
+            "late",
+            "fresh",
+            "appropriate"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l100-358",
+          "n": 358,
+          "category": "vocab",
+          "question": "In the ---------------------, camels are more important than cars for travelling.",
+          "options": [
+            "embassy",
+            "desert",
+            "pyramid",
+            "airport"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l100-359",
+          "n": 359,
+          "category": "vocab",
+          "question": "A: “Where the Milad Tower is ---------------------?” B: “In Tehran.”",
+          "options": [
+            "prepared",
+            "located",
+            "attracted",
+            "planned"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l100-360",
+          "n": 360,
+          "category": "vocab",
+          "question": "Did you know that Hamadan has many interesting historical --------------------?",
+          "options": [
+            "price",
+            "agents",
+            "hosts",
+            "sites"
+          ],
+          "answer": 3
+        }
+      ]
     }
   ],
   "source": {
@@ -25418,6 +26986,24 @@
         "پنج سؤالِ دورانِ چندگانهٔ لایه = یک خطِ خط‌چینِ پیوسته در رندرِ ۱۲۰۰dpi → ادغام (قانونِ r349-Q2/r351-Q24): Q143: ۱۰+۱۱=۲۱ (نقطه‌چسبیده) | Q146: ۱۲+۴=۱۶ | Q152: ۹+۱۰=۱۹ | Q158: ۱۰+۱۱=۲۱ (نقطه‌چسبیده) | Q213: ۱۰+۸=۱۸ — بعدِ ادغام هر ۱۲۰ سؤال دقیقاً یک ران (سنز: ۱۲۰ ران/۲۴۳۲ تیره)",
         "چاپ‌غلط‌های عینِ چاپ در stem (حفظِ verbatim): Q152 «different idea» (باید ideas) | Q213 «It's not health to eat» (باید healthy) | Q221 «It's important to became» (باید become) — گزینهٔ «quitted» در Q224-b هم شکلِ چاپیِ جزوه است (حفظِ عینِ چاپ)",
         "بدونِ هیچ ترجمهٔ چاپی در محدوده («ترجمه» ×۰ در ص۱۸۳-۱۸۸ — قرینهٔ بخشِ ۱)؛ آپستروفِ مستقیمِ لایه در سه سؤال (Q144/Q179/Q202 «she's») عینِ لایه حفظ شد — بقیهٔ آپستروف‌ها curlyِ چاپ"
+      ]
+    },
+    "vocab360c": {
+      "exam": "۳۶۰ تست واژگان درس ۱ تا ۴ - پایه دهم — بخش ۳ (ص۱۸۹-۱۹۴) — پایانِ آزمون",
+      "header": "بدونِ سربرگِ جدید — ادامهٔ «۳۶۰ تست آموزشی واژگان \"درس ۱ تا ۴ - پایه دهم\" (پاسخنامه کلیدی صفحه: ۳۰۱)» از ص۱۷۸ (r351) — ۱۲۰ MCQ (سؤال ۲۴۱-۳۶۰ از ۳۶۰)؛ جعبهٔ «Note:» خالی در پاصفحهٔ ص۱۹۴ = پایانِ آزمون",
+      "keyPages": "301",
+      "keyVerification": "print key p301 — بازتولیدِ برنامه‌ایِ حرف-اول (360/360 unique) + AGREE با رکوردِ r351: 360/360، صفر واگرایی (سومین استخراجِ مستقل)؛ spot checks معنایی: Q241 continent / Q242 destroy / Q244 against / Q264 arrive / Q265 nature / Q266 suggestion / Q300 foreign / Q351 boring / Q352 wonders / Q360 sites",
+      "extractedRound": "r353",
+      "pattern": "r352 (بخشِ ۲ — همان پارسرِ دورفرمتِ «a[.)]» و فرفرجهٔ پنجره‌دار) + r351 (بخشِ ۱) + r349/r351 (ادغامِ ران‌های تیرهٔ لایه — در این محدوده اعمال‌نشده چون صفر سؤالِ چندران)",
+      "printQuirks": [
+        "این بانک = سؤال‌های ۲۴۱-۳۶۰ از همان آزمونِ ص۱۷۸-۱۹۴ (بخشِ ۳ از ۳؛ پایانِ آزمون) — بدونِ سربرگِ جدید؛ سربرگِ آزمون در ص۱۷۸ است (r351) و کلیدِ همان جدولِ یک‌صفحه‌ایِ ص۳۰۱ برای هر ۳۶۰ سؤال. لوکاتورِ برنامهٔ r351/r352 «ص۱۸۸-۱۹۴» بود ولی Q241 در ص۱۸۹ آغاز می‌شود (ص۱۸۸ به‌تمامیِ بخشِ ۲ تعلق دارد: Q219-240) — عنوانِ بانک از محدودهٔ دقیقِ «ص۱۸۹-۱۹۴» استفاده می‌کند (درسِ r351: لوکاتورِ دقیق)",
+        "گریدِ کلیدِ ص۳۰۱ سومین بار به‌صورت برنامه‌ای بازتولید شد (regex حرف-اول) و با رکوردِ KEY_RAWِ r351 مقایسه شد: 360/360 AGREE، صفر واگرایی — سومین استخراجِ مستقل از همان جدولِ چاپی",
+        "فرمتِ گزینه‌ها در ۲۴۱-۳۶۰: همگی پرانتزدار «a) b) c) d)» (پیچشِ سوم در این محدوده نیست)",
+        "صفر سؤالِ چندران در این محدوده (برخلافِ پنج‌تاییِ r352 و یکیِ r351) — سنزِ کامل: ۱۲۰ ران/۲۴۷۳ تیره، هر سؤال دقیقاً یک رانِ ۱۶-۲۴ تیره؛ داوریِ رندرِ ۱۲۰۰dpi برای Q241/Q300/Q359/Q360: تک‌رانِ پیوسته",
+        "لبهٔ «آخرین سؤالِ کلِ آزمون»: گزینهٔ d سؤال Q360 در لایهٔ متنی جعبهٔ «Note:» خالیِ پاصفحهٔ ص۱۹۴ و خطوطِ خط‌چینِ تزئینی را می‌بلعید (lookahead بدونِ سؤالِ بعدی) — برش با لنگرِ Note فقط بعد از موقعیتِ Q360؛ خودِ جعبهٔ «Note:» خالی با خط‌های خط‌چینِ بنفش (الگوی r334/r338) در چاپ حفظ شد و به داده راه نیافت",
+        "Q359/Q360: گزینه‌ها در لایهٔ متنی عمودی‌اند (هر گزینه یک خط) ولی در چاپِ ۱۲۰۰dpi هم‌ردیف‌اند — پارسرِ دورفرمت هر دو چیدمان را می‌گیرد؛ داده فقط متنِ گزینه‌ها را نگه می‌دارد (options رندرِ Q360: price/agents/hosts/sites با کلیدِ d «sites» تأیید شد)",
+        "کلیدِ چاپیِ Q243 «collect» (b) برای «Red blood cells ___ carbon dioxide» — از منظرِ معنایی «carry» انتظار می‌رفت؛ کلیدِ چاپ حاکم است (قانون: کلید هرگز تغییر نمی‌کند)",
+        "چاپ‌غلطِ عینِ چاپ در stemِ Q308: «tom's new house» با tِ کوچک (باید Tom's) — حفظِ verbatim؛ آپستروفِ مستقیمِ لایه در چهار سؤال (Q249/Q266/Q308/Q355) عینِ لایه حفظ شد — بقیهٔ آپستروف‌ها curlyِ چاپ؛ بدونِ هیچ ترجمهٔ چاپی («ترجمه» ×۰ در ص۱۸۹-۱۹۴)"
       ]
     }
   }
