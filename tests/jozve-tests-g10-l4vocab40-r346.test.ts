@@ -141,19 +141,19 @@ describe("jozve tests-g10 l4vocab40 translations verbatim (r346 — printed key 
   });
 });
 
-describe("jozve tests-g10 file shape after r346 (97 banks / 1346 items)", () => {
-  it("file shape: 97 banks, 1346 items, unique ids", () => {
-    expect(bank.lessons.length).toBe(97);
-    expect(bank.lessons.reduce((s: number, l: { count: number }) => s + l.count, 0)).toBe(1346);
+describe("jozve tests-g10 file shape after r346 (98 banks / 1466 items)", () => {
+  it("file shape: 98 banks, 1466 items, unique ids", () => {
+    expect(bank.lessons.length).toBe(98);
+    expect(bank.lessons.reduce((s: number, l: { count: number }) => s + l.count, 0)).toBe(1466);
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(ids.length).toBe(1346);
-    expect(new Set(ids).size).toBe(1346);
+    expect(ids.length).toBe(1466);
+    expect(new Set(ids).size).toBe(1466);
   });
 
-  it("family shape vector extended: r326/r338 +9 members (8,10,10,5,5,10,20,57,100) — 91 members", () => {
+  it("family shape vector extended: r326/r338 +10 members (8,10,10,5,5,10,20,57,100,120) — 92 members", () => {
     const tail = bank.lessons.slice(6).map((l) => l.count);
-    expect(tail.length).toBe(91);
-    expect(tail.slice(-10, -9)).toEqual([20]); // بانکِ ۸۸ — آخرین عضو
-    expect(tail.slice(-21, -17)).toEqual([16, 8, 8, 25]); // خانوادهٔ tashrihi4 درسِ چهارم (پیش از r347)
+    expect(tail.length).toBe(92);
+    expect(tail.slice(-11, -10)).toEqual([20]); // بانکِ ۸۸ — آخرین عضو
+    expect(tail.slice(-22, -18)).toEqual([16, 8, 8, 25]); // خانوادهٔ tashrihi4 درسِ چهارم (پیش از r347)
   });
 });

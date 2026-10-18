@@ -234,13 +234,13 @@ describe("jozve tests-g10 jame4 (r348 آزمون جامع تشریحی درس چ
     expect(B95.questions[5].question).toBe("In Hong Kong: Most young married couples have enough money to live in their own apartments.");
   });
 
-  it("file shape: 97 banks, 1346 items, unique ids", () => {
+  it("file shape: 98 banks, 1466 items, unique ids", () => {
     expect(bank.grade).toBe(10);
-    expect(bank.lessons).toHaveLength(97);
-    expect(bank.lessons.reduce((s: number, l: { count: number }) => s + l.count, 0)).toBe(1346);
+    expect(bank.lessons).toHaveLength(98);
+    expect(bank.lessons.reduce((s: number, l: { count: number }) => s + l.count, 0)).toBe(1466);
     const ids = bank.lessons.flatMap((l: TL) => l.questions.map((q: TQ) => q.id));
-    expect(ids.length).toBe(1346);
-    expect(new Set(ids).size).toBe(1346);
+    expect(ids.length).toBe(1466);
+    expect(new Set(ids).size).toBe(1466);
     // هفت آیتمِ جدید با الگویِ idِ خانواده
     ["g10-l89-1", "g10-l90-12", "g10-l91-13", "g10-l92-2", "g10-l93-4", "g10-l94-6", "g10-l95-6"].forEach((id) =>
       expect(ids).toContain(id)
