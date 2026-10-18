@@ -15843,6 +15843,1183 @@
           "placeholder": "build the sentence with the infinitive from the jumbled words…"
         }
       ]
+    },
+    {
+      "lesson": 79,
+      "title": "تشریحی جامع — کلمات ناقص (ص۱۰۹)",
+      "level": "تشریحی — تایپی",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g11-l79-1",
+          "n": 1,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "The island has more d__ver__ity in plant life than other islands nearby.",
+          "options": [
+            "diversity",
+            "pottery",
+            "imagination",
+            "reflects"
+          ],
+          "answer": 0,
+          "accepted": [
+            "diversity"
+          ],
+          "placeholder": "complete the word…"
+        },
+        {
+          "id": "g11-l79-2",
+          "n": 2,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "She was a painter for years before she discovered p__tt__ry.",
+          "options": [
+            "pottery",
+            "diversity",
+            "imagination",
+            "reflects"
+          ],
+          "answer": 0,
+          "accepted": [
+            "pottery"
+          ],
+          "placeholder": "complete the word…"
+        },
+        {
+          "id": "g11-l79-3",
+          "n": 3,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Is it just my ima__inati__n, or is it getting warm in here?",
+          "options": [
+            "imagination",
+            "diversity",
+            "pottery",
+            "reflects"
+          ],
+          "answer": 0,
+          "accepted": [
+            "imagination"
+          ],
+          "placeholder": "complete the word…"
+        },
+        {
+          "id": "g11-l79-4",
+          "n": 4,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "His book clearly r__fl__cts his beliefs.",
+          "options": [
+            "reflects",
+            "diversity",
+            "pottery",
+            "imagination"
+          ],
+          "answer": 0,
+          "accepted": [
+            "reflects"
+          ],
+          "placeholder": "complete the word…"
+        }
+      ]
+    },
+    {
+      "lesson": 80,
+      "title": "تشریحی جامع — کلمات داده‌شده (ص۱۰۹)",
+      "level": "تشریحی — تایپی",
+      "count": 8,
+      "questions": [
+        {
+          "id": "g11-l80-1",
+          "n": 1,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Recently there has been some movement away from ------------------------------- methods of teaching. [bank: excited / wellness / handicrafts / traditional / custom / bored / sociable / included / ashamed]",
+          "options": [
+            "traditional",
+            "excited",
+            "wellness",
+            "custom"
+          ],
+          "answer": 0,
+          "accepted": [
+            "traditional"
+          ],
+          "placeholder": "complete with the given words…"
+        },
+        {
+          "id": "g11-l80-2",
+          "n": 2,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Iranian hosts mostly make rice and kebab for their guests as -------------------------------. [bank: excited / wellness / handicrafts / traditional / custom / bored / sociable / included / ashamed]",
+          "options": [
+            "custom",
+            "excited",
+            "wellness",
+            "traditional"
+          ],
+          "answer": 0,
+          "accepted": [
+            "custom"
+          ],
+          "placeholder": "complete with the given words…"
+        },
+        {
+          "id": "g11-l80-3",
+          "n": 3,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "They are very ------------------------------- and regularly invite people to their house. [bank: excited / wellness / handicrafts / traditional / custom / bored / sociable / included / ashamed]",
+          "options": [
+            "sociable",
+            "excited",
+            "wellness",
+            "traditional"
+          ],
+          "answer": 0,
+          "accepted": [
+            "sociable"
+          ],
+          "placeholder": "complete with the given words…"
+        },
+        {
+          "id": "g11-l80-4",
+          "n": 4,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "I was so ------------------------------- that I slept through the second half of the film. [bank: excited / wellness / handicrafts / traditional / custom / bored / sociable / included / ashamed]",
+          "options": [
+            "bored",
+            "excited",
+            "wellness",
+            "traditional"
+          ],
+          "answer": 0,
+          "accepted": [
+            "bored"
+          ],
+          "placeholder": "complete with the given words…"
+        },
+        {
+          "id": "g11-l80-5",
+          "n": 5,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Doctors believe that daily exercise can improve your -------------------------------. [bank: excited / wellness / handicrafts / traditional / custom / bored / sociable / included / ashamed]",
+          "options": [
+            "wellness",
+            "excited",
+            "traditional",
+            "custom"
+          ],
+          "answer": 0,
+          "accepted": [
+            "wellness"
+          ],
+          "placeholder": "complete with the given words…"
+        },
+        {
+          "id": "g11-l80-6",
+          "n": 6,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "He asked to be ------------------------------- among the people going on the tour. [bank: excited / wellness / handicrafts / traditional / custom / bored / sociable / included / ashamed]",
+          "options": [
+            "included",
+            "excited",
+            "wellness",
+            "traditional"
+          ],
+          "answer": 0,
+          "accepted": [
+            "included"
+          ],
+          "placeholder": "complete with the given words…"
+        },
+        {
+          "id": "g11-l80-7",
+          "n": 7,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "I haven’t finished my essay, I’m ------------------------------- to say. [bank: excited / wellness / handicrafts / traditional / custom / bored / sociable / included / ashamed]",
+          "options": [
+            "ashamed",
+            "excited",
+            "wellness",
+            "traditional"
+          ],
+          "answer": 0,
+          "accepted": [
+            "ashamed"
+          ],
+          "placeholder": "complete with the given words…"
+        },
+        {
+          "id": "g11-l80-8",
+          "n": 8,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "I’m ------------------------------- about going on holiday tomorrow. [bank: excited / wellness / handicrafts / traditional / custom / bored / sociable / included / ashamed]",
+          "options": [
+            "excited",
+            "wellness",
+            "traditional",
+            "custom"
+          ],
+          "answer": 0,
+          "accepted": [
+            "excited"
+          ],
+          "placeholder": "complete with the given words…"
+        }
+      ]
+    },
+    {
+      "lesson": 81,
+      "title": "تشریحی جامع — کلمهٔ مناسب با حروف ناقص (ص۱۰۹)",
+      "level": "تشریحی — تایپی",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g11-l81-1",
+          "n": 1,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Believe me, I’m telling the t _ _ _ _.",
+          "options": [
+            "truth",
+            "skill",
+            "economy",
+            "value"
+          ],
+          "answer": 0,
+          "accepted": [
+            "truth"
+          ],
+          "placeholder": "write the word that fits the blanks…"
+        },
+        {
+          "id": "g11-l81-2",
+          "n": 2,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Art is what people create with imagination and s _ _ _ _.",
+          "options": [
+            "skill",
+            "truth",
+            "economy",
+            "value"
+          ],
+          "answer": 0,
+          "accepted": [
+            "skill"
+          ],
+          "placeholder": "write the word that fits the blanks…"
+        },
+        {
+          "id": "g11-l81-3",
+          "n": 3,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Making and selling handicrafts help a country’s e _ _ _ _ _ _.",
+          "options": [
+            "economy",
+            "truth",
+            "skill",
+            "value"
+          ],
+          "answer": 0,
+          "accepted": [
+            "economy"
+          ],
+          "placeholder": "write the word that fits the blanks…"
+        },
+        {
+          "id": "g11-l81-4",
+          "n": 4,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Many people in the world v _ _ _ _ the art and skill of Iranian artists.",
+          "options": [
+            "value",
+            "truth",
+            "skill",
+            "economy"
+          ],
+          "answer": 0,
+          "accepted": [
+            "value"
+          ],
+          "placeholder": "write the word that fits the blanks…"
+        }
+      ]
+    },
+    {
+      "lesson": 82,
+      "title": "تشریحی جامع — گزینهٔ متفاوت (ص۱۰۹)",
+      "level": "تشریحی — تایپی",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g11-l82-1",
+          "n": 1,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "totally / completely / certainly / entirely",
+          "options": [
+            "totally",
+            "completely",
+            "certainly",
+            "entirely"
+          ],
+          "answer": 2,
+          "accepted": [
+            "certainly"
+          ],
+          "placeholder": "type the option that is different…"
+        },
+        {
+          "id": "g11-l82-2",
+          "n": 2,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "sad / cheerful / glad / happy",
+          "options": [
+            "sad",
+            "cheerful",
+            "glad",
+            "happy"
+          ],
+          "answer": 0,
+          "accepted": [
+            "sad"
+          ],
+          "placeholder": "type the option that is different…"
+        },
+        {
+          "id": "g11-l82-3",
+          "n": 3,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "usual / normal / well-known / common",
+          "options": [
+            "usual",
+            "normal",
+            "well-known",
+            "common"
+          ],
+          "answer": 2,
+          "accepted": [
+            "well-known"
+          ],
+          "placeholder": "type the option that is different…"
+        },
+        {
+          "id": "g11-l82-4",
+          "n": 4,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "pretty / lovely / beautiful / ugly",
+          "options": [
+            "pretty",
+            "lovely",
+            "beautiful",
+            "ugly"
+          ],
+          "answer": 3,
+          "accepted": [
+            "ugly"
+          ],
+          "placeholder": "type the option that is different…"
+        }
+      ]
+    },
+    {
+      "lesson": 83,
+      "title": "تشریحی جامع — وصل کردن تعریف‌ها (ص۱۰۹)",
+      "level": "تشریحی — تایپی",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g11-l83-1",
+          "n": 1,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Very big and large: (--------) [bank: pack / appreciate / earn / vast]",
+          "options": [
+            "vast",
+            "pack",
+            "appreciate",
+            "earn"
+          ],
+          "answer": 0,
+          "accepted": [
+            "vast"
+          ],
+          "placeholder": "write the matching word…"
+        },
+        {
+          "id": "g11-l83-2",
+          "n": 2,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "To get money by working: (---------) [bank: pack / appreciate / earn / vast]",
+          "options": [
+            "earn",
+            "pack",
+            "appreciate",
+            "vast"
+          ],
+          "answer": 0,
+          "accepted": [
+            "earn"
+          ],
+          "placeholder": "write the matching word…"
+        },
+        {
+          "id": "g11-l83-3",
+          "n": 3,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Put things into a box, bag, etc: (---------) [bank: pack / appreciate / earn / vast]",
+          "options": [
+            "pack",
+            "appreciate",
+            "earn",
+            "vast"
+          ],
+          "answer": 0,
+          "accepted": [
+            "pack"
+          ],
+          "placeholder": "write the matching word…"
+        },
+        {
+          "id": "g11-l83-4",
+          "n": 4,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "To value somebody or something: (---------) [bank: pack / appreciate / earn / vast]",
+          "options": [
+            "appreciate",
+            "pack",
+            "earn",
+            "vast"
+          ],
+          "answer": 0,
+          "accepted": [
+            "appreciate"
+          ],
+          "placeholder": "write the matching word…"
+        }
+      ]
+    },
+    {
+      "lesson": 84,
+      "title": "تشریحی جامع — تست چهارگزینه‌ای (ص۱۰۹)",
+      "level": "تشریحی — چهارگزینه‌ای",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g11-l84-1",
+          "n": 1,
+          "category": "vocab",
+          "question": "Spending six months in India was a ------------------------------- experience.",
+          "options": [
+            "calligraphic",
+            "present",
+            "unique",
+            "decorative"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g11-l84-2",
+          "n": 2,
+          "category": "vocab",
+          "question": "That’s a ------------------------------- mistake so don’t worry about it.",
+          "options": [
+            "pleasure",
+            "common",
+            "traditional",
+            "satisfied"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l84-3",
+          "n": 3,
+          "category": "vocab",
+          "question": "I ------------------------------- him from photographs I’ve seen.",
+          "options": [
+            "expect",
+            "promise",
+            "depend on",
+            "recognize"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l84-4",
+          "n": 4,
+          "category": "vocab",
+          "question": "We should know that social ------------------------------- vary from country to country.",
+          "options": [
+            "materials",
+            "combinations",
+            "customs",
+            "products"
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "lesson": 85,
+      "title": "تشریحی جامع — تست چهارگزینه‌ای (ص۱۱۰)",
+      "level": "تشریحی — چهارگزینه‌ای",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g11-l85-1",
+          "n": 1,
+          "category": "grammar",
+          "question": "I’ll ------------------------------- alone if you don’t come here.",
+          "options": [
+            "will be",
+            "am",
+            "be",
+            "may be"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g11-l85-2",
+          "n": 2,
+          "category": "grammar",
+          "question": "Will you be successful in your life if you ------------------------------- hard?",
+          "options": [
+            "don’t work",
+            "won’t work",
+            "didn’t work",
+            "wouldn’t work"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l85-3",
+          "n": 3,
+          "category": "grammar",
+          "question": "They try ------------------------------- the building in a few weeks.",
+          "options": [
+            "completed",
+            "completing",
+            "complete",
+            "to complete"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l85-4",
+          "n": 4,
+          "category": "grammar",
+          "question": "My father asked me ------------------------------- about my future plans.",
+          "options": [
+            "don’t speak",
+            "to not speak",
+            "not to speak",
+            "not speak"
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "lesson": 86,
+      "title": "تشریحی جامع — جمله‌سازی (ص۱۱۰)",
+      "level": "تشریحی — جمله‌سازی",
+      "count": 2,
+      "questions": [
+        {
+          "id": "g11-l86-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "football / not / him / play / in / I / to / the yard / told.",
+          "options": [
+            "I told him not to play football in the yard.",
+            "You will hurt yourself if you jump into the river."
+          ],
+          "answer": 0,
+          "accepted": [
+            "I told him not to play football in the yard."
+          ],
+          "placeholder": "make a sentence with the given words…"
+        },
+        {
+          "id": "g11-l86-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "the river / hurt / if / jump / you / will / you / into / yourself.",
+          "options": [
+            "You will hurt yourself if you jump into the river.",
+            "I told him not to play football in the yard."
+          ],
+          "answer": 0,
+          "accepted": [
+            "You will hurt yourself if you jump into the river."
+          ],
+          "placeholder": "make a sentence with the given words…"
+        }
+      ]
+    },
+    {
+      "lesson": 87,
+      "title": "تشریحی جامع — متضاد (ص۱۱۰)",
+      "level": "تشریحی — تایپی",
+      "count": 8,
+      "questions": [
+        {
+          "id": "g11-l87-1",
+          "n": 1,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "expensive ≠",
+          "options": [
+            "cheap",
+            "find or win",
+            "buy",
+            "quickly or rapidly"
+          ],
+          "answer": 0,
+          "accepted": [
+            "cheap"
+          ],
+          "placeholder": "write the antonym (≠)…"
+        },
+        {
+          "id": "g11-l87-2",
+          "n": 2,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "lose ≠",
+          "options": [
+            "find or win",
+            "cheap",
+            "buy",
+            "quickly or rapidly"
+          ],
+          "answer": 0,
+          "accepted": [
+            "find or win"
+          ],
+          "placeholder": "write the antonym (≠)…"
+        },
+        {
+          "id": "g11-l87-3",
+          "n": 3,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "sell ≠",
+          "options": [
+            "buy",
+            "cheap",
+            "find or win",
+            "quickly or rapidly"
+          ],
+          "answer": 0,
+          "accepted": [
+            "buy"
+          ],
+          "placeholder": "write the antonym (≠)…"
+        },
+        {
+          "id": "g11-l87-4",
+          "n": 4,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "slowly ≠",
+          "options": [
+            "quickly or rapidly",
+            "cheap",
+            "find or win",
+            "buy"
+          ],
+          "answer": 0,
+          "accepted": [
+            "quickly or rapidly"
+          ],
+          "placeholder": "write the antonym (≠)…"
+        },
+        {
+          "id": "g11-l87-5",
+          "n": 5,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "hot ≠",
+          "options": [
+            "cold",
+            "cheap",
+            "find or win",
+            "buy"
+          ],
+          "answer": 0,
+          "accepted": [
+            "cold"
+          ],
+          "placeholder": "write the antonym (≠)…"
+        },
+        {
+          "id": "g11-l87-6",
+          "n": 6,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "cheerful ≠",
+          "options": [
+            "cheerless or gloomy",
+            "cheap",
+            "find or win",
+            "buy"
+          ],
+          "answer": 0,
+          "accepted": [
+            "cheerless or gloomy"
+          ],
+          "placeholder": "write the antonym (≠)…"
+        },
+        {
+          "id": "g11-l87-7",
+          "n": 7,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "increase ≠",
+          "options": [
+            "decrease",
+            "cheap",
+            "find or win",
+            "buy"
+          ],
+          "answer": 0,
+          "accepted": [
+            "decrease"
+          ],
+          "placeholder": "write the antonym (≠)…"
+        },
+        {
+          "id": "g11-l87-8",
+          "n": 8,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "falling ≠",
+          "options": [
+            "rising",
+            "cheap",
+            "find or win",
+            "buy"
+          ],
+          "answer": 0,
+          "accepted": [
+            "rising"
+          ],
+          "placeholder": "write the antonym (≠)…"
+        }
+      ]
+    },
+    {
+      "lesson": 88,
+      "title": "تشریحی جامع — وصل دوستونی (ص۱۱۰)",
+      "level": "تشریحی — تایپی",
+      "count": 6,
+      "questions": [
+        {
+          "id": "g11-l88-1",
+          "n": 1,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "vast: (---------) [bank: people / customs / values / country / chairs / products]",
+          "options": [
+            "country",
+            "people",
+            "customs",
+            "values",
+            "chairs",
+            "products"
+          ],
+          "answer": 0,
+          "accepted": [
+            "country"
+          ],
+          "placeholder": "write the matching word from column B…"
+        },
+        {
+          "id": "g11-l88-2",
+          "n": 2,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "hand-made: (---------) [bank: people / customs / values / country / chairs / products]",
+          "options": [
+            "products",
+            "people",
+            "customs",
+            "values",
+            "country",
+            "chairs"
+          ],
+          "answer": 0,
+          "accepted": [
+            "products"
+          ],
+          "placeholder": "write the matching word from column B…"
+        },
+        {
+          "id": "g11-l88-3",
+          "n": 3,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "local (---------) [bank: people / customs / values / country / chairs / products]",
+          "options": [
+            "customs",
+            "people",
+            "values",
+            "country",
+            "chairs",
+            "products"
+          ],
+          "answer": 0,
+          "accepted": [
+            "customs"
+          ],
+          "placeholder": "write the matching word from column B…"
+        },
+        {
+          "id": "g11-l88-4",
+          "n": 4,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "hard-working (---------) [bank: people / customs / values / country / chairs / products]",
+          "options": [
+            "people",
+            "customs",
+            "values",
+            "country",
+            "chairs",
+            "products"
+          ],
+          "answer": 0,
+          "accepted": [
+            "people"
+          ],
+          "placeholder": "write the matching word from column B…"
+        },
+        {
+          "id": "g11-l88-5",
+          "n": 5,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "moral: (---------) [bank: people / customs / values / country / chairs / products]",
+          "options": [
+            "values",
+            "people",
+            "customs",
+            "country",
+            "chairs",
+            "products"
+          ],
+          "answer": 0,
+          "accepted": [
+            "values"
+          ],
+          "placeholder": "write the matching word from column B…"
+        },
+        {
+          "id": "g11-l88-6",
+          "n": 6,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "metal: (---------) [bank: people / customs / values / country / chairs / products]",
+          "options": [
+            "chairs",
+            "people",
+            "customs",
+            "values",
+            "country",
+            "products"
+          ],
+          "answer": 0,
+          "accepted": [
+            "chairs"
+          ],
+          "placeholder": "write the matching word from column B…"
+        }
+      ]
+    },
+    {
+      "lesson": 89,
+      "title": "تشریحی جامع — خط زیر گزینهٔ صحیح (ص۱۱۰)",
+      "level": "تشریحی — تایپی",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g11-l89-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "I will be sad if my football team (lose / loses) the match.",
+          "options": [
+            "lose",
+            "loses"
+          ],
+          "answer": 1,
+          "accepted": [
+            "loses"
+          ],
+          "placeholder": "type the correct option in parentheses…"
+        },
+        {
+          "id": "g11-l89-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "What will you (watched / watch) if you go to the cinema?",
+          "options": [
+            "watched",
+            "watch"
+          ],
+          "answer": 1,
+          "accepted": [
+            "watch"
+          ],
+          "placeholder": "type the correct option in parentheses…"
+        },
+        {
+          "id": "g11-l89-3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "(To have / Have) a healthier lifestyle, people need to do certain things.",
+          "options": [
+            "To have",
+            "Have"
+          ],
+          "answer": 0,
+          "accepted": [
+            "To have"
+          ],
+          "placeholder": "type the correct option in parentheses…"
+        },
+        {
+          "id": "g11-l89-4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "The teacher told us (don’t answer / not to answer) the questions orally.",
+          "options": [
+            "don’t answer",
+            "not to answer"
+          ],
+          "answer": 1,
+          "accepted": [
+            "not to answer"
+          ],
+          "placeholder": "type the correct option in parentheses…"
+        }
+      ]
+    },
+    {
+      "lesson": 90,
+      "title": "تشریحی جامع — فشار صوت (ص۱۱۰)",
+      "level": "تشریحی — تایپی",
+      "count": 1,
+      "questions": [
+        {
+          "id": "g11-l90-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "If you don’t wash fruits before eating them, (--------) you will get sick. (--------)",
+          "options": [
+            "rising / falling"
+          ],
+          "answer": 0,
+          "accepted": [
+            "rising / falling"
+          ],
+          "placeholder": "type the two intonation marks in order…"
+        }
+      ]
+    },
+    {
+      "lesson": 91,
+      "title": "تشریحی جامع — کلوز فرهنگ (ص۱۱۰-۱۱۱)",
+      "level": "تشریحی — چهارگزینه‌ای",
+      "count": 6,
+      "questions": [
+        {
+          "id": "g11-l91-1",
+          "n": 1,
+          "category": "vocab",
+          "question": "Cultures are what make countries ---1---.",
+          "options": [
+            "uncertain",
+            "unique",
+            "familiar",
+            "respectful"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l91-2",
+          "n": 2,
+          "category": "vocab",
+          "question": "Each country has different cultural ---2---.",
+          "options": [
+            "reasons",
+            "identities",
+            "activities",
+            "regions"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g11-l91-3",
+          "n": 3,
+          "category": "vocab",
+          "question": "Culture includes material goods, the things the people use and ---3---.",
+          "options": [
+            "produce",
+            "disagree",
+            "mention",
+            "recognize"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l91-4",
+          "n": 4,
+          "category": "vocab",
+          "question": "Culture is also the beliefs and ---4--- of the people and the ways they think about and understand the world and their own lives.",
+          "options": [
+            "values",
+            "incomes",
+            "artworks",
+            "invitations"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l91-5",
+          "n": 5,
+          "category": "vocab",
+          "question": "The culture of Iran has been ---5--- by many different things, by religion and by its ---6--- history.",
+          "options": [
+            "chosen",
+            "suggested",
+            "attempted",
+            "influenced"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l91-6",
+          "n": 6,
+          "category": "vocab",
+          "question": "The culture of Iran has been ---5--- by many different things, by religion and by its ---6--- history.",
+          "options": [
+            "medical",
+            "common",
+            "ancient",
+            "present"
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "lesson": 92,
+      "title": "تشریحی جامع — درک مطلب عکاسی (ص۱۱۱)",
+      "level": "تشریحی — درست/نادرست و تایپی",
+      "count": 6,
+      "questions": [
+        {
+          "id": "g11-l92-1",
+          "n": 1,
+          "category": "vocab",
+          "question": "A picture made using a camera is called a photo.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l92-2",
+          "n": 2,
+          "category": "vocab",
+          "question": "The shutter covers the hole in the camera box.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l92-3",
+          "n": 3,
+          "category": "vocab",
+          "question": "A lens in camera doesn’t work like a lens in glasses.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l92-4",
+          "n": 4,
+          "category": "vocab",
+          "question": "A video camera is a device that takes pictures.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l92-5",
+          "n": 5,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "What does a photographer do?",
+          "options": [
+            "A photographer takes photographs, especially as a job.",
+            "The amount of time the shutter stays open for is called the shutter speed."
+          ],
+          "answer": 0,
+          "accepted": [
+            "A photographer takes photographs, especially as a job."
+          ],
+          "placeholder": "answer according to the reading passage…"
+        },
+        {
+          "id": "g11-l92-6",
+          "n": 6,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "What is the shutter speed?",
+          "options": [
+            "The amount of time the shutter stays open for is called the shutter speed.",
+            "A photographer takes photographs, especially as a job."
+          ],
+          "answer": 0,
+          "accepted": [
+            "The amount of time the shutter stays open for is called the shutter speed."
+          ],
+          "placeholder": "answer according to the reading passage…"
+        }
+      ]
     }
   ],
   "source": {
@@ -16209,6 +17386,27 @@
         "سکشن۴/۵: ساقه‌ها گروه‌های واژه‌ایِ جدا با / هستند (شاملِ گروه‌های چندواژه‌ایِ چاپی: «a sandwich» «my homework» «in time» «at home» «to learn» «the plane» «comes out» «all night» «computer games» «3000 tomans») — قفلِ چندمجموعهٔ واژگانِ ساقه⇄کلید (مصرفِ کاملِ همهٔ واژه‌ها) برای هر ۱۹ آیتم برقرار است؛ خط‌های پاسخِ نقطه‌چینِ ~۱۱۷تیره در ساقه نیامده‌اند (فقط ساقه)",
         "بدونِ ترجمهٔ چاپی («ترجمه» ×۰ در ص۱۰۰-۱۰۲) — فیلدِ translation ساخته نشده؛ هر پنج بانک category=grammar (آزمونِ جملاتِ شرطیِ نوع اول و مصدر)",
         "هم‌پوشانی‌سنجی: ساقه‌های این خانواده با بانک‌های پیشینِ tests-g11 (r275/r277/r278/r308/r309/r311/r312/r354/r355/r356/r357) اشتراک ندارند"
+      ]
+    },
+    "g11l3jame": {
+      "extractedRound": "r359",
+      "examPages": "109-111",
+      "keyPages": "201-202",
+      "sections": 14,
+      "items": 65,
+      "printQuirkCount": 11,
+      "printQuirks": [
+        "لوکاتورِ دوطرفهٔ خوداعلام: آزمونِ ص۱۰۹ «(پاسخنامه صفحه: ۲۰۱ تا ۲۰۲)» ⇠ کلیدِ ص۲۰۱ «(آزمون صفحه: ۱۰۹ تا ۱۱۱)»",
+        "خانوادهٔ scrambleِ سربرگ‌ها: «امالبی» (املایی)، «جمالت» (جملات)، «بهی  ین» (بهترین)، «خایل» (خالی)، «سؤاالت» (سؤالات)، «می» (متن)",
+        "کلیدِ چاپی سکشن۴ را «۵» برچسب زده (۵ دوبار، بدونِ ۴) — سکشن‌بندی با ترتیبِ محتوا تطبیق شد نه با شمارهٔ چاپیِ سربرگِ کلید",
+        "سکشن۹ (متضاد): ترتیبِ چاپِ کلید به‌هم‌ریختهٔ لایهٔ RTL (1,3,5,7,2,4,6,8) — با شمارهٔ مدخل‌ها به ۱..۸ بازچینی شد؛ هر دو ستونِ آزمون و کلید همین scramble را دارند",
+        "سکشن۱۲ (فشار صوت): کلیدِ چاپی تک‌آیتمی هر دو نشانهٔ آهنگ را درج می‌کند — «…eating them, → (rising)» و «…get sick. → (falling)» — ساقه با دو جای‌خالیِ پرانتزی در همان مواضع رندر شد؛ پاسخِ تایپی «rising / falling» به ترتیبِ چاپ",
+        "ص۱۱۲ فقط جعبهٔ «Note:» است (پاسخِ آزاد) — آزمون در ص۱۱۱ تمام می‌شود؛ ضمیمه از ص۱۱۳",
+        "کلیدهای حرفیِ سکشن۵/۱۰ با نگاشتِ مستقیمِ ستونِ چاپی واژه شدند: a=pack b=appreciate c=earn d=vast؛ a=people b=customs c=values d=country e=chairs f=products",
+        "بانکِ واژهٔ سکشن۲: ۹واژه با اضافیِ «handicrafts» (هرگز در کلید نیامد)",
+        "سکشن۱۰: چاپ پس از آیتم‌های ۳ و ۴ دوّنقطهٔ «:» را جا انداخته («local (---------)» بی‌colon در برابرِ «vast:») — استخراج با رجکسِ دوواقعی",
+        "بلنک‌های dash (تکی یا شکستهٔ بین‌خطی) به عرضِ یکنواختِ ۳۱ تیره نرمال شدند (قراردادِ r311/r357)؛ ساقه‌های پرانتزِ نقطه‌چینِ سکشن۵/۱۰ verbatim نگه داشته شدند",
+        "بدونِ ترجمهٔ چاپی (خانوادهٔ تشریحی)؛ متنِ کاملِ درک مطلب («Culture»، «Photography») در رسیدِ این بانک‌ها فقط به‌صورتِ جمله‌های حاویِ بلنک (کلوز) و سؤال‌ها استخراج شد"
       ]
     }
   }
