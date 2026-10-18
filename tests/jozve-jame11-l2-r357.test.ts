@@ -91,7 +91,7 @@ describe("r357 — bank shapes (l60..l73)", () => {
     expect(counts).toEqual([4, 8, 4, 4, 4, 4, 3, 4, 4, 4, 4, 6, 6, 6]);
   });
 
-  it("ids: g11-l60..l73-N unique across the whole bank — total 1184 items in 94 banks", () => {
+  it("ids: g11-l60..l73-N unique across the whole bank — total 1223 items in 108 banks", () => {
     const sizes: Record<number, number> = { 60: 4, 61: 8, 62: 4, 63: 4, 64: 4, 65: 4, 66: 3, 67: 4, 68: 4, 69: 4, 70: 4, 71: 6, 72: 6, 73: 6 };
     for (const les of [l60, l61, l62, l63, l64, l65, l66, l67, l68, l69, l70, l71, l72, l73]) {
       expect(les.questions.map((q) => q.id), `l${les.lesson}`).toEqual(
@@ -100,13 +100,13 @@ describe("r357 — bank shapes (l60..l73)", () => {
     }
     const all = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
     expect(new Set(all).size).toBe(all.length);
-    expect(all).toHaveLength(893 + 65 + 61 + 65 + 100); // ۸۹۳ (تا r356) + ۶۵ (r357) + ۶۱ (r358) + ۶۵ (r359) + ۱۰۰ (r360 — گرامر و نگارش د۳)
-    expect(bank.lessons).toHaveLength(94);
+    expect(all).toHaveLength(893 + 65 + 61 + 65 + 100 + 39); // ۸۹۳ (تا r356) + ۶۵ (r357) + ۶۱ (r358) + ۶۵ (r359) + ۱۰۰ (r360 — گرامر و نگارش د۳) + ۳۹ (r361 — پایان‌ترم تشریحی)
+    expect(bank.lessons).toHaveLength(108);
   });
 
-  it("file shape: last thirty-five banks are l60..l94 in order (r358 appended l74..l78، r359 appended l79..l92، r360 appended l93..l94)", () => {
-    const tail = bank.lessons.slice(-35).map((l) => l.lesson);
-    expect(tail).toEqual([60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94]);
+  it("file shape: last forty-nine banks are l60..l108 in order (r358 appended l74..l78، r359 appended l79..l92، r360 appended l93..l94، r361 appended l95..l108)", () => {
+    const tail = bank.lessons.slice(-49).map((l) => l.lesson);
+    expect(tail).toEqual([60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108]);
   });
 
   it("no stem carries a Persian fragment (سربرگِ سکشن جعلی نمی‌سازد — درسِ r354)", () => {

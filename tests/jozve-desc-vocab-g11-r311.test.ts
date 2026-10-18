@@ -61,7 +61,7 @@ const norm = (s: string) => s.trim().toLowerCase().replace(/\s+/g, " ");
 describe("jozve descriptive vocab g11 lesson-1 (r311 extraction receipt)", () => {
   it("bank shape: lessons 25..28 appended after r309's l24 — counts 16/8/8/25", () => {
     expect(bank.grade).toBe(11);
-    expect(bank.lessons.map((l) => l.lesson).slice(-52)).toEqual([43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94]); // r356: l56..l59، r357: l60..l73، r358: l74..l78، r359: l79..l92، r360: l93..l94 الحاق شدند — دنبالهٔ l25..l28 در برابر [-53:-45] می‌ماند (پنجرهٔ ۵۲ محاسبه‌شده)
+    expect(bank.lessons.map((l) => l.lesson).slice(-66)).toEqual([43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108]); // r356: l56..l59، r357: l60..l73، r358: l74..l78، r359: l79..l92، r360: l93..l94، r361: l95..l108 الحاق شدند — دنبالهٔ l25..l28 در برابر [-67:-59] می‌ماند (پنجرهٔ ۶۶ محاسبه‌شده)
     expect(l25.count).toBe(16);
     expect(l26.count).toBe(8);
     expect(l27.count).toBe(8);
@@ -78,7 +78,7 @@ describe("jozve descriptive vocab g11 lesson-1 (r311 extraction receipt)", () =>
     expect(l28.level).toBe("تشریحی — چهارگزینه‌ای");
   });
 
-  it("ids: g11-l25-1..16, g11-l26/27-1..8, g11-l28-1..25 — unique across the whole bank, total 1184", () => {
+  it("ids: g11-l25-1..16, g11-l26/27-1..8, g11-l28-1..25 — unique across the whole bank, total 1223", () => {
     for (const [les, size] of [[l25, 16], [l26, 8], [l27, 8], [l28, 25]] as const) {
       expect(les.questions.map((q) => q.id), `l${les.lesson}`).toEqual(
         Array.from({ length: size }, (_, i) => `g11-l${les.lesson}-${i + 1}`)
@@ -86,7 +86,7 @@ describe("jozve descriptive vocab g11 lesson-1 (r311 extraction receipt)", () =>
     }
     const all = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
     expect(new Set(all).size).toBe(all.length);
-    expect(all).toHaveLength(40 + 40 + 40 + 22 + 20 + 20 + 361 + 57 + 114 + 68 + 57 + 54 + 65 + 61 + 65 + 100); // +۵۷: تشریحی درس اول (r311)؛ +۱۱۴: تشریحی درس دوم/سوم (r312)؛ +۶۸: تشریحی گرامر د۱ (r354)؛ +۵۷: جامع تشریحی د۱ (r355)؛ +۵۴: تشریحی گرامر د۲ (r356)؛ +۶۵: جامع تشریحی د۲ (r357)؛ +۶۱: تشریحی گرامر د۳ (r358)؛ +۶۵: جامع تشریحی د۳ (r359)؛ +۱۰۰: گرامر و نگارش د۳ (r360)
+    expect(all).toHaveLength(40 + 40 + 40 + 22 + 20 + 20 + 361 + 57 + 114 + 68 + 57 + 54 + 65 + 61 + 65 + 100 + 39); // +۵۷: تشریحی درس اول (r311)؛ +۱۱۴: تشریحی درس دوم/سوم (r312)؛ +۶۸: تشریحی گرامر د۱ (r354)؛ +۵۷: جامع تشریحی د۱ (r355)؛ +۵۴: تشریحی گرامر د۲ (r356)؛ +۶۵: جامع تشریحی د۲ (r357)؛ +۶۱: تشریحی گرامر د۳ (r358)؛ +۶۵: جامع تشریحی د۳ (r359)؛ +۱۰۰: گرامر و نگارش د۳ (r360)؛ +۳۹: پایان‌ترم تشریحی (r361)
   });
 
   it("typed purity (l25/l26/l27): kind=typed, accepted[0]=options[answer], answer=0, placeholder set, English purity, healthy blank/hint", () => {

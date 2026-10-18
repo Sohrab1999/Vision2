@@ -80,7 +80,7 @@ describe("r356 — bank shapes (l56..l59)", () => {
     expect([l56.count, l57.count, l58.count, l59.count]).toEqual([10, 12, 12, 20]);
   });
 
-  it("ids: g11-l56..l59-N unique across the whole bank — total 1184 items in 94 banks", () => {
+  it("ids: g11-l56..l59-N unique across the whole bank — total 1223 items in 108 banks", () => {
     const sizes = [10, 12, 12, 20];
     for (const les of [l56, l57, l58, l59]) {
       const size = sizes[les.lesson - 56];
@@ -90,13 +90,13 @@ describe("r356 — bank shapes (l56..l59)", () => {
     }
     const all = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
     expect(new Set(all).size).toBe(all.length);
-    expect(all).toHaveLength(839 + 54 + 65 + 61 + 65 + 100); // ۸۳۹ (تا r355) + ۵۴ (r356) + ۶۵ (r357) + ۶۱ (r358) + ۶۵ (r359) + ۱۰۰ (r360 — گرامر و نگارش د۳)
-    expect(bank.lessons).toHaveLength(94);
+    expect(all).toHaveLength(839 + 54 + 65 + 61 + 65 + 100 + 39); // ۸۳۹ (تا r355) + ۵۴ (r356) + ۶۵ (r357) + ۶۱ (r358) + ۶۵ (r359) + ۱۰۰ (r360 — گرامر و نگارش د۳)؛ +۳۹: پایان‌ترم تشریحی (r361)
+    expect(bank.lessons).toHaveLength(108);
   });
 
-  it("file shape: last thirty-nine banks are l56..l94 in order (r357 appended l60..l73، r358 appended l74..l78، r359 appended l79..l92، r360 appended l93..l94)", () => {
-    const tail = bank.lessons.slice(-39).map((l) => l.lesson);
-    expect(tail).toEqual([56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94]);
+  it("file shape: last fifty-three banks are l56..l108 in order (r357 appended l60..l73، r358 appended l74..l78، r359 appended l79..l92، r360 appended l93..l94، r361 appended l95..l108)", () => {
+    const tail = bank.lessons.slice(-53).map((l) => l.lesson);
+    expect(tail).toEqual([56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108]);
   });
 
   it("all questions are grammar-categorized", () => {

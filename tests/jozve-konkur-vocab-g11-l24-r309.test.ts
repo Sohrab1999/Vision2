@@ -95,6 +95,8 @@ describe("jozve konkur-vocab lesson-2 g11 (r309 extraction receipt)", () => {
       79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92,
       // r360 — «تست های گرامر و نگارش درس3 - پایه11» (ص۱۰۳-۱۰۸، کلیدهای ص۱۹۸-۲۰۰) — l93..l94 الحاق شد
       93, 94,
+      // r361 — «آزمون تشریحی پایان ترم دوم» (ص۱۱۴-۱۱۶، کلید ص۲۰۳) — l95..l108 الحاق شد
+    95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108,
     ]);
     expect(l24.count).toBe(20);
     expect(l24.questions).toHaveLength(20);
@@ -102,13 +104,13 @@ describe("jozve konkur-vocab lesson-2 g11 (r309 extraction receipt)", () => {
     expect(l24.title).toBe("واژگان کنکوری درس دوم (ص۵۹)");
   });
 
-  it("ids: g11-l24-1..20, unique across the whole bank — total 1184", () => {
+  it("ids: g11-l24-1..20, unique across the whole bank — total 1223", () => {
     expect(l24.questions.map((q) => q.id)).toEqual(
       Array.from({ length: 20 }, (_, i) => `g11-l24-${i + 1}`)
     );
     const all = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
     expect(new Set(all).size).toBe(all.length);
-    expect(all).toHaveLength(40 + 40 + 40 + 22 + 20 + 20 + 361 + 57 + 114 + 68 + 57 + 54 + 65 + 61 + 65 + 100); // +۲۰: واژگان کنکوری درس دوم (r309)؛ +۶۸: تشریحی گرامر د۱ (r354)؛ +۵۷: جامع تشریحی د۱ (r355)؛ +۵۴: تشریحی گرامر د۲ (r356)؛ +۶۵: جامع تشریحی د۲ (r357)؛ +۶۱: تشریحی گرامر د۳ (r358)؛ +۶۵: جامع تشریحی د۳ (r359)؛ +۱۰۰: گرامر و نگارش د۳ (r360)
+    expect(all).toHaveLength(40 + 40 + 40 + 22 + 20 + 20 + 361 + 57 + 114 + 68 + 57 + 54 + 65 + 61 + 65 + 100 + 39); // +۲۰: واژگان کنکوری درس دوم (r309)؛ +۶۸: تشریحی گرامر د۱ (r354)؛ +۵۷: جامع تشریحی د۱ (r355)؛ +۵۴: تشریحی گرامر د۲ (r356)؛ +۶۵: جامع تشریحی د۲ (r357)؛ +۶۱: تشریحی گرامر د۳ (r358)؛ +۶۵: جامع تشریحی د۳ (r359)؛ +۱۰۰: گرامر و نگارش د۳ (r360)؛ +۳۹: پایان‌ترم تشریحی (r361)
   });
 
   it("every p59 question: 4 unique options, valid answer, healthy blank, English purity, no translation", () => {

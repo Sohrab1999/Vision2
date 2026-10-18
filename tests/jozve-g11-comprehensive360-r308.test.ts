@@ -91,7 +91,7 @@ describe("jozve comprehensive360 g11 (r308 extraction receipt)", () => {
   it("bank shape: grade 11 now has 24 lessons — 18 comprehensive banks of 20 (bank 12 has 21) + r309 konkur vocab", () => {
     expect(bank.grade).toBe(11);
     expect(bank.lessons.map((l) => l.lesson)).toEqual(
-      Array.from({ length: 94 }, (_, i) => i + 1) // r360: ۹۲ → ۹۴ با دو بانکِ «تست های گرامر و نگارش درس3» l93..l94 (r359: ۷۸ → ۹۲ با چهارده سکشنِ «آزمون جامع تشریحی درس سوم» l79..l92 (r358: ۷۳ → ۷۸ با پنج سکشنِ «آزمون تشریحی گرامر درس سوم» l74..l78 (r357: l60..l73، r356: l56..l59، r355: l43..l55، r354: l37..l42، r312: l29..l36، r311: l25..l28)
+      Array.from({ length: 108 }, (_, i) => i + 1) // r361: ۹۴ → ۱۰۸ (r360: ۹۲ → ۹۴ با دو بانکِ «تست های گرامر و نگارش درس3» l93..l94 (r359: ۷۸ → ۹۲ با چهارده سکشنِ «آزمون جامع تشریحی درس سوم» l79..l92 (r358: ۷۳ → ۷۸ با پنج سکشنِ «آزمون تشریحی گرامر درس سوم» l74..l78 (r357: l60..l73، r356: l56..l59، r355: l43..l55، r354: l37..l42، r312: l29..l36، r311: l25..l28)
     );
     for (const l of newLessons) {
       const want = l.lesson === 17 ? 21 : 20;
@@ -104,10 +104,10 @@ describe("jozve comprehensive360 g11 (r308 extraction receipt)", () => {
     }
   });
 
-  it("ids: g11-l6-1 .. g11-l23-20 unique across the whole bank — total 1184 (r309 added l24، r360 added l93..l94)", () => {
+  it("ids: g11-l6-1 .. g11-l23-20 unique across the whole bank — total 1223 (r309 added l24، r360 added l93..l94، r361 added l95..l108)", () => {
     const all = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
     expect(new Set(all).size).toBe(all.length);
-    expect(all).toHaveLength(40 + 40 + 40 + 22 + 20 + 20 + 361 + 57 + 114 + 68 + 57 + 54 + 65 + 61 + 65 + 100); // +۲۰: واژگان کنکوری درس دوم (r309)؛ +۶۸: تشریحی گرامر د۱ (r354)؛ +۵۷: جامع تشریحی د۱ (r355)؛ +۵۴: تشریحی گرامر د۲ (r356)؛ +۶۵: جامع تشریحی د۲ (r357)؛ +۶۱: تشریحی گرامر د۳ (r358)؛ +۶۵: جامع تشریحی د۳ (r359)؛ +۱۰۰: گرامر و نگارش د۳ (r360)
+    expect(all).toHaveLength(40 + 40 + 40 + 22 + 20 + 20 + 361 + 57 + 114 + 68 + 57 + 54 + 65 + 61 + 65 + 100 + 39); // +۲۰: واژگان کنکوری درس دوم (r309)؛ +۶۸: تشریحی گرامر د۱ (r354)؛ +۵۷: جامع تشریحی د۱ (r355)؛ +۵۴: تشریحی گرامر د۲ (r356)؛ +۶۵: جامع تشریحی د۲ (r357)؛ +۶۱: تشریحی گرامر د۳ (r358)؛ +۶۵: جامع تشریحی د۳ (r359)؛ +۱۰۰: گرامر و نگارش د۳ (r360)؛ +۳۹: پایان‌ترم تشریحی (r361)
     for (const l of newLessons) {
       expect(l.questions.map((q) => q.id)).toEqual(
         Array.from({ length: l.questions.length }, (_, i) => `g11-l${l.lesson}-${i + 1}`)

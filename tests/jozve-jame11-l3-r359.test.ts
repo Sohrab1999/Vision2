@@ -114,7 +114,7 @@ describe("r359 — bank shapes (l79..l92)", () => {
     ]);
   });
 
-  it("ids: g11-l79..l92-N unique across the whole bank — total 1184 items in 94 banks", () => {
+  it("ids: g11-l79..l92-N unique across the whole bank — total 1223 items in 108 banks", () => {
     const sizes: Record<number, number> = { 79: 4, 80: 8, 81: 4, 82: 4, 83: 4, 84: 4, 85: 4, 86: 2, 87: 8, 88: 6, 89: 4, 90: 1, 91: 6, 92: 6 };
     for (const les of bank.lessons.filter((b) => b.lesson >= 79 && b.lesson <= 92)) { // r360 بانک‌های ۹۳/۹۴ را اضافه کرد — قلمروِ این گارد تا l92 است
       expect(les.questions.map((q) => q.id), `l${les.lesson}`).toEqual(
@@ -123,13 +123,13 @@ describe("r359 — bank shapes (l79..l92)", () => {
     }
     const all = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
     expect(new Set(all).size).toBe(all.length);
-    expect(all).toHaveLength(1019 + 65 + 100); // ۱۰۱۹ (تا r358) + ۶۵ (r359) + ۱۰۰ (r360 — گرامر و نگارش د۳)
-    expect(bank.lessons).toHaveLength(94);
+    expect(all).toHaveLength(1019 + 65 + 100 + 39); // ۱۰۱۹ (تا r358) + ۶۵ (r359) + ۱۰۰ (r360 — گرامر و نگارش د۳) + ۳۹ (r361 — پایان‌ترم تشریحی)
+    expect(bank.lessons).toHaveLength(108);
   });
 
-  it("file shape: last thirty-five banks are l60..l94 in order (r359 appended l79..l92، r360 appended l93..l94)", () => {
-    const tail = bank.lessons.slice(-35).map((l) => l.lesson);
-    expect(tail).toEqual([60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94]);
+  it("file shape: last forty-nine banks are l60..l108 in order (r359 appended l79..l92، r360 appended l93..l94، r361 appended l95..l108)", () => {
+    const tail = bank.lessons.slice(-49).map((l) => l.lesson);
+    expect(tail).toEqual([60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108]);
   });
 
   it("all new questions are Persian-free", () => {

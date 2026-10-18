@@ -159,18 +159,19 @@ describe("jozve tests-g11 l3gwr (r360 — تست های گرامر و نگارش
     expect(q4.answer).toBe(q3.answer);
   });
 
-  it("file shape after r360: 94 banks, 1184 items, unique ids, tail vector ends [30, 70]", () => {
-    expect(bank.lessons).toHaveLength(94);
+  it("file shape after r361: 108 banks, 1223 items, unique ids, tail vector l93..l108", () => {
+    expect(bank.lessons).toHaveLength(108);
     const counts = bank.lessons.map((l) => l.count);
-    expect(counts.reduce((a, b) => a + b, 0)).toBe(1184);
+    expect(counts.reduce((a, b) => a + b, 0)).toBe(1223);
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(new Set(ids).size).toBe(1184);
-    // وکتورِ دنباله: دو بانکِ جدید در انتها؛ پیش از آن جامعِ د۳ (r359) با [4,8,4,4,4,4,4,2,8,6,4,1,6,6]
-    expect(counts.slice(-2)).toEqual([30, 70]);
-    expect(counts.slice(-16, -2)).toEqual([4, 8, 4, 4, 4, 4, 4, 2, 8, 6, 4, 1, 6, 6]);
-    // دنبالهٔ کاملِ شناسه‌های l60..l94 از r357/r358/r359/r360
-    const lastIds = bank.lessons.slice(-35).flatMap((l) => l.questions.map((q) => q.id));
+    expect(new Set(ids).size).toBe(1223);
+    // وکتورِ دنباله: چهارده بانکِ جدیدِ r361 در انتها؛ پیش از آن گرامر/نگارشِ د۳ (l93/l94) و جامعِ د۳ (r359)
+    expect(counts.slice(-14)).toEqual([6, 2, 2, 2, 1, 4, 4, 4, 4, 4, 3, 1, 1, 1]);
+    expect(counts.slice(-30, -16)).toEqual([4, 8, 4, 4, 4, 4, 4, 2, 8, 6, 4, 1, 6, 6]);
+    expect(counts.slice(-16, -14)).toEqual([30, 70]);
+    // دنبالهٔ کاملِ شناسه‌های l60..l108 از r357/r358/r359/r360/r361
+    const lastIds = bank.lessons.slice(-49).flatMap((l) => l.questions.map((q) => q.id));
     expect(lastIds.slice(0, 4)).toEqual(["g11-l60-1", "g11-l60-2", "g11-l60-3", "g11-l60-4"]);
-    expect(lastIds.slice(-4)).toEqual(["g11-l94-67", "g11-l94-68", "g11-l94-69", "g11-l94-70"]);
+    expect(lastIds.slice(-4)).toEqual(["g11-l105-3", "g11-l106-1", "g11-l107-1", "g11-l108-1"]);
   });
 });

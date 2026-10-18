@@ -90,7 +90,7 @@ describe("r358 — bank shapes (l74..l78)", () => {
     expect([l74.count, l75.count, l76.count, l77.count, l78.count]).toEqual([10, 12, 20, 10, 9]);
   });
 
-  it("ids: g11-l74..l78-N unique across the whole bank — total 1184 items in 94 banks", () => {
+  it("ids: g11-l74..l78-N unique across the whole bank — total 1223 items in 108 banks", () => {
     const sizes: Record<number, number> = { 74: 10, 75: 12, 76: 20, 77: 10, 78: 9 };
     for (const les of [l74, l75, l76, l77, l78]) {
       expect(les.questions.map((q) => q.id), `l${les.lesson}`).toEqual(
@@ -99,13 +99,13 @@ describe("r358 — bank shapes (l74..l78)", () => {
     }
     const all = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
     expect(new Set(all).size).toBe(all.length);
-    expect(all).toHaveLength(958 + 61 + 65 + 100); // ۹۵۸ (تا r357) + ۶۱ (r358) + ۶۵ (r359) + ۱۰۰ (r360 — گرامر و نگارش د۳)
-    expect(bank.lessons).toHaveLength(94);
+    expect(all).toHaveLength(958 + 61 + 65 + 100 + 39); // ۹۵۸ (تا r357) + ۶۱ (r358) + ۶۵ (r359) + ۱۰۰ (r360 — گرامر و نگارش د۳)؛ +۳۹: پایان‌ترم تشریحی (r361)
+    expect(bank.lessons).toHaveLength(108);
   });
 
-  it("file shape: last thirty-five banks are l60..l94 in order (r358 appended l74..l78، r359 appended l79..l92، r360 appended l93..l94)", () => {
-    const tail = bank.lessons.slice(-35).map((l) => l.lesson);
-    expect(tail).toEqual([60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94]);
+  it("file shape: last forty-nine banks are l60..l108 in order (r358 appended l74..l78، r359 appended l79..l92، r360 appended l93..l94، r361 appended l95..l108)", () => {
+    const tail = bank.lessons.slice(-49).map((l) => l.lesson);
+    expect(tail).toEqual([60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108]);
   });
 
   it("all questions are grammar-categorized and Persian-free", () => {

@@ -93,7 +93,7 @@ describe("r355 — bank shapes (l43..l55)", () => {
     expect([l43.count, l44.count, l45.count, l46.count, l47.count, l48.count, l49.count, l50.count, l51.count, l52.count, l53.count, l54.count, l55.count]).toEqual([4, 8, 4, 4, 4, 4, 4, 2, 4, 3, 4, 6, 6]);
   });
 
-  it("ids: g11-l43..l55-N unique across the whole bank — total 1184 items in 94 banks", () => {
+  it("ids: g11-l43..l55-N unique across the whole bank — total 1223 items in 108 banks", () => {
     const sizes = [4, 8, 4, 4, 4, 4, 4, 2, 4, 3, 4, 6, 6];
     for (const les of [l43, l44, l45, l46, l47, l48, l49, l50, l51, l52, l53, l54, l55]) {
       const size = sizes[les.lesson - 43];
@@ -103,13 +103,13 @@ describe("r355 — bank shapes (l43..l55)", () => {
     }
     const all = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
     expect(new Set(all).size).toBe(all.length);
-    expect(all).toHaveLength(782 + 57 + 54 + 65 + 61 + 65 + 100); // ۷۸۲ (تا r354) + ۵۷ (r355) + ۵۴ (r356) + ۶۵ (r357) + ۶۱ (r358) + ۶۵ (r359) + ۱۰۰ (r360 — گرامر و نگارش د۳)
-    expect(bank.lessons).toHaveLength(94);
+    expect(all).toHaveLength(782 + 57 + 54 + 65 + 61 + 65 + 100 + 39); // ۷۸۲ (تا r354) + ۵۷ (r355) + ۵۴ (r356) + ۶۵ (r357) + ۶۱ (r358) + ۶۵ (r359) + ۱۰۰ (r360 — گرامر و نگارش د۳) + ۳۹ (r361 — پایان‌ترم تشریحی)
+    expect(bank.lessons).toHaveLength(108);
   });
 
-  it("file shape: last fifty-two banks are l43..l94 in order (r357 appended l60..l73، r358 appended l74..l78، r359 appended l79..l92، r360 appended l93..l94)", () => {
-    const tail = bank.lessons.slice(-52).map((l) => l.lesson);
-    expect(tail).toEqual([43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94]);
+  it("file shape: last sixty-six banks are l43..l108 in order (r357 appended l60..l73، r358 appended l74..l78، r359 appended l79..l92، r360 appended l93..l94، r361 appended l95..l108)", () => {
+    const tail = bank.lessons.slice(-66).map((l) => l.lesson);
+    expect(tail).toEqual([43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108]);
   });
 });
 
