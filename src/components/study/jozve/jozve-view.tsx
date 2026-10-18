@@ -204,6 +204,12 @@ const GRADE_TESTS: Record<number, { lessons: { lesson: number; title: string; co
       { lesson: 27, title: "تشریحی گرامر — جمله‌سازی با کلمات داده شده (ص۹۷)", count: 7, group: "آزمون تشریحی گرامر درس دوم" },
       { lesson: 28, title: "تشریحی گرامر — کامل کردن با دانش گرامری (ص۹۸)", count: 10, group: "آزمون تشریحی گرامر درس دوم" },
       { lesson: 29, title: "تشریحی گرامر — تست چهارگزینه‌ای (ص۹۸)", count: 12, group: "آزمون تشریحی گرامر درس دوم" },
+      // r334 — «۲۰ تست دستگریمی گرامر و نگارش» درس دوم (ص۹۹-۱۰۰، کلیدِ توضیح‌دار و ترجمهٔ چاپی ص۲۶۵-۲۶۶) — ۲۰ MCQ؛
+      // عینِ الگوی r332: هر آیتم ترجمهٔ چاپیِ «ترجمه تست» خود جزوه را دارد؛ سربرگِ آزمون عنوانِ چاپی ندارد
+      // (فقط «سطح تستها: "صرفاً آموزشی" ، "ساده"») — عنوان از فهرستِ ص۷۵ (چاپ: «دستگریمی» با یِ اضافه)؛
+      // کلیدِ Q12=a با رندر حاکم شد (لایه «b» شناور نویز)؛ Q13-c و Q14-a در لایه خراب بودند — چاپ حاکم؛
+      // بالانویس‌های چاپ (زندگی/قرمز/سیاه/قدیمی/آلمانی/less than) با گپِ لایه جای‌گذاری شدند — دوازدهمین گروه (۳۰ دکمه)
+      { lesson: 30, title: "صرفاً آموزشی/ساده — ۲۰ تست دستگرمی گرامر و نگارش درس دوم (ص۹۹-۱۰۰)", count: 20, group: "۲۰ تست دستگرمی گرامر و نگارش" },
     ],
   },
   11: {
@@ -864,9 +870,12 @@ export default function JozveView() {
         const bank = await fetchTests(g);
         const l = bank?.lessons.find((x) => x.lesson === les.lesson);
         if (!l || l.questions.length === 0) return;
+        // r334 — دسته/عنوان از خودِ بانک: بانک‌های گرامرِ درس‌محور (r329-r334، جامع ۱۸-۲۴)
+        // دیگر «آزمون واژگان جزوه» نمایش داده نمی‌شوند و در آمار هم category=grammar می‌گیرند
+        const isGrammar = l.questions[0]?.category === "grammar";
         const questions: QuizQuestion[] = l.questions.map((q) => ({
           id: q.id,
-          category: "vocab",
+          category: isGrammar ? "grammar" : "vocab",
           question: q.question,
           options: q.options,
           answer: q.answer,
@@ -876,10 +885,10 @@ export default function JozveView() {
           ...(q.placeholder ? { placeholder: q.placeholder } : {}),
         }));
         setTestSession({
-          title: `آزمون واژگان جزوه — ${les.title} پایهٔ ${GRADE_LABEL[g]}`,
+          title: `${isGrammar ? "آزمون گرامر جزوه" : "آزمون واژگان جزوه"} — ${les.title} پایهٔ ${GRADE_LABEL[g]}`,
           questions,
           resultKey: `jozve-g${g}-l${les.lesson}`,
-          category: "vocab",
+          category: isGrammar ? "grammar" : "vocab",
         });
       } finally {
         setTestLoadingLesson(null);

@@ -7787,6 +7787,294 @@
           "answer": 2
         }
       ]
+    },
+    {
+      "lesson": 30,
+      "title": "صرفاً آموزشی/ساده — ۲۰ تست دستگرمی گرامر و نگارش درس دوم (ص۹۹-۱۰۰)",
+      "level": "صرفاً آموزشی/ساده — چهارگزینه‌ای",
+      "count": 20,
+      "questions": [
+        {
+          "id": "g10-l30-1",
+          "n": 1,
+          "category": "grammar",
+          "question": "Her handwriting is not as --------------------- as my handwriting.",
+          "options": [
+            "worse",
+            "the worst",
+            "the best",
+            "bad"
+          ],
+          "answer": 3,
+          "translation": "دستخط او به اندازه دستخط من بد نیست."
+        },
+        {
+          "id": "g10-l30-2",
+          "n": 2,
+          "category": "grammar",
+          "question": "His car was very cheap. I expected is to be --------------------- than my car.",
+          "options": [
+            "the most expensive",
+            "more expensive",
+            "expensive",
+            "as expensive as"
+          ],
+          "answer": 1,
+          "translation": "ماشین او ارزان بود. انتظار داشتم از ماشین من گران تر باشد."
+        },
+        {
+          "id": "g10-l30-3",
+          "n": 3,
+          "category": "grammar",
+          "question": "It’s a very good room. It is --------------------- room in this hotel.",
+          "options": [
+            "the worst",
+            "the best",
+            "better",
+            "worst"
+          ],
+          "answer": 1,
+          "translation": "اتاق خیلی خوبیه، بهترین اتاق در این هتل است."
+        },
+        {
+          "id": "g10-l30-4",
+          "n": 4,
+          "category": "grammar",
+          "question": "It’s a terrible hospital. It’s --------------------- hospital in the city.",
+          "options": [
+            "the worst",
+            "the best",
+            "better",
+            "worse"
+          ],
+          "answer": 0,
+          "translation": "بیمارستان خیلی افتضاحیه. بدترین بیمارستان در این شهر است."
+        },
+        {
+          "id": "g10-l30-5",
+          "n": 5,
+          "category": "grammar",
+          "question": "Don’t worry. The exam was very difficult. Your mark isn’t so bad. It could be ---------------- than this.",
+          "options": [
+            "better",
+            "worse",
+            "well",
+            "the best"
+          ],
+          "answer": 1,
+          "translation": "نگران نباش. امتحان خیلی سخت بود. نمره تو خیلی بد نبود. میتوانست از این هم بدتر باشد."
+        },
+        {
+          "id": "g10-l30-6",
+          "n": 6,
+          "category": "grammar",
+          "question": "It’s a very delicious food. It’s ----------------- food in the restaurant.",
+          "options": [
+            "better",
+            "the best",
+            "the worst",
+            "worse"
+          ],
+          "answer": 1,
+          "translation": "غذای خیلی خوشمزه ایه، بهترین غذا در این رستوران است."
+        },
+        {
+          "id": "g10-l30-7",
+          "n": 7,
+          "category": "grammar",
+          "question": "Our hotel was ----------------- than all the others in the town.",
+          "options": [
+            "the cheapest",
+            "as cheap as",
+            "cheaper",
+            "cheap"
+          ],
+          "answer": 2,
+          "translation": "هتل ما از همه هتل های دیگر شهر ارزان تر است."
+        },
+        {
+          "id": "g10-l30-8",
+          "n": 8,
+          "category": "grammar",
+          "question": "It was a terrible experience. It was ----------------- experience of my life.",
+          "options": [
+            "the worst",
+            "the best",
+            "better",
+            "worse"
+          ],
+          "answer": 0,
+          "translation": "تجربه خیلی بدی بود. بدترین تجربه زندگی‌ام بود."
+        },
+        {
+          "id": "g10-l30-9",
+          "n": 9,
+          "category": "grammar",
+          "question": "The red car is -------------------- than the black car.",
+          "options": [
+            "expensive",
+            "more expensive",
+            "as expensive as",
+            "the most expensive"
+          ],
+          "answer": 1,
+          "translation": "ماشین قرمز از ماشین سیاه گران تر است."
+        },
+        {
+          "id": "g10-l30-10",
+          "n": 10,
+          "category": "grammar",
+          "question": "The man is 70 kilos. The woman is 67 kilos. The man is ------------------- the woman.",
+          "options": [
+            "the heaviest",
+            "as heavy as",
+            "heavier than",
+            "heavier"
+          ],
+          "answer": 2,
+          "translation": "مرد ۷۰ کیلو وزن دارد. زن ۶۷ کیلو وزن دارد. مرد از زن سنگین وزن تر است."
+        },
+        {
+          "id": "g10-l30-11",
+          "n": 11,
+          "category": "grammar",
+          "question": "Robert does not write well. He has ------------------ handwriting in our class.",
+          "options": [
+            "bad",
+            "worse",
+            "the worst",
+            "as bad as"
+          ],
+          "answer": 2,
+          "translation": "رابرت به خوبی نمی نویسد. او بدترین دستخط کلاس را دارد."
+        },
+        {
+          "id": "g10-l30-12",
+          "n": 12,
+          "category": "grammar",
+          "question": "My brother has a --------------- cat.",
+          "options": [
+            "pretty big brown Asian",
+            "pretty big Asian brown",
+            "big pretty brown Asian",
+            "big brown pretty Asian"
+          ],
+          "answer": 0,
+          "translation": "برادرم یک گربه آسیای قهوه ای بزرگ قشنگ داره."
+        },
+        {
+          "id": "g10-l30-13",
+          "n": 13,
+          "category": "grammar",
+          "question": "There’s a ----------------- box in our house.",
+          "options": [
+            "small nice metal black",
+            "small nice black metal",
+            "nice black small metal",
+            "nice small black metal"
+          ],
+          "answer": 3,
+          "translation": "در خانه ما یک جعبه فلزی سیاه کوچک زیبا وجود دارد."
+        },
+        {
+          "id": "g10-l30-14",
+          "n": 14,
+          "category": "grammar",
+          "question": "They live in a ----------------- house.",
+          "options": [
+            "beautiful wooden old",
+            "beautiful old wooden",
+            "old beautiful wooden",
+            "wooden beautiful old"
+          ],
+          "answer": 1,
+          "translation": "آنها در یک خانه چوبی قدیمی زیبا زندگی میکنند."
+        },
+        {
+          "id": "g10-l30-15",
+          "n": 15,
+          "category": "grammar",
+          "question": "My friend never lets his little brother drive his ----------------- car.",
+          "options": [
+            "old expensive big",
+            "big old expensive",
+            "big expensive old",
+            "expensive big old"
+          ],
+          "answer": 3,
+          "translation": "دوستم هرگز به برادرش اجازه نمیدهد که ماشین قدیمی بزرگ گران قیمتش را براند."
+        },
+        {
+          "id": "g10-l30-16",
+          "n": 16,
+          "category": "grammar",
+          "question": "Which sport is --------------------- dangerous of all the sports in the Olympics?",
+          "options": [
+            "least",
+            "more",
+            "the most",
+            "many"
+          ],
+          "answer": 2,
+          "translation": "کدام ورزش به نسبت همه ورزش های دیگر المپیک خطرناکترین است؟"
+        },
+        {
+          "id": "g10-l30-17",
+          "n": 17,
+          "category": "grammar",
+          "question": "Did the tall young woman look in that ----------------- dress?",
+          "options": [
+            "long green silk",
+            "green long silk",
+            "silk long green",
+            "long silk green"
+          ],
+          "answer": 0,
+          "translation": "آیا آن خانم قدبلند به آن پیراهن ابریشیمی سبز نگاه کرد؟"
+        },
+        {
+          "id": "g10-l30-18",
+          "n": 18,
+          "category": "grammar",
+          "question": "That --------------- bicycle is ----------------- expensive than this motorcycle.",
+          "options": [
+            "German nice / most",
+            "nice German / most",
+            "German nice / more",
+            "nice German / more"
+          ],
+          "answer": 3,
+          "translation": "آن دوچرخه آلمانی قشنگ از آن موتور سیکلت گران تر است."
+        },
+        {
+          "id": "g10-l30-19",
+          "n": 19,
+          "category": "grammar",
+          "question": "There are many cheap things in the shop, but the cake is ---------------- thing of all.",
+          "options": [
+            "cheap",
+            "cheaper than",
+            "cheaper",
+            "the cheapest"
+          ],
+          "answer": 3,
+          "translation": "وسایل ارزان زیادی در این مغازه وجود دارد اما کیک ارزانترین آنهاست."
+        },
+        {
+          "id": "g10-l30-20",
+          "n": 20,
+          "category": "grammar",
+          "question": "I had ------------------ time than I needed to finish that work.",
+          "options": [
+            "little",
+            "less",
+            "the least",
+            "many"
+          ],
+          "answer": 1,
+          "translation": "من وقت کمتری از اون چیزی که برای تمام کردن آن کار لازمه، را دارم."
+        }
+      ]
     }
   ],
   "source": {
@@ -8085,6 +8373,37 @@
         "جدول‌های کلید (S1/S3) با شماره‌های قرمز و ردیف‌های خاکستریِ یک‌درمیان؛ S2 کلیدها جمله‌کامل زیر هم",
         "S2-Q3 کلید: «He was the best friend I had for years.» — از بانک «was / for years / the best / had / he / I / friend.»",
         "بدونِ ترجمهٔ چاپی در کلید (تشریحیِ واژه‌محور — مثل r329)؛ جعبهٔ Note در این آزمون دیده نشد"
+      ]
+    },
+    "gram5": {
+      "exam": "۲۰ تست دستگرمی گرامر و نگارش — درس دوم (ص۹۹-۱۰۰)",
+      "header": "سربرگِ چاپیِ ص۹۹ عنوانِ آزمون ندارد: «سطح تستها: \"صرفاً آموزشی\" ، \"ساده\" (پاسخنامه صفحه: ۲۶۵-۲۶۶)» — عنوان از فهرستِ ص۷۵: «۲۰ تست دستگریمی گرامر و نگارش» — ۲۰ MCQ",
+      "keyPages": "265-266",
+      "keyVerification": "print key pp265-266 «شیوه کلی حل تستهای گرامر صفات» + 20 مدخلِ توضیح‌دار (گزینه + شیوهٔ حل + ترجمهٔ چاپی) — 20/20 agree with semantic pre-fill, zero divergence (Q12=a با رندرِ ص۲۶۶ حاکم شد — لایه «b» شناور نویز)",
+      "extractedRound": "r334",
+      "pattern": "r332 (کلیدِ توضیح‌دار + ترجمهٔ چاپی در هر آیتم) + r330 (روشِ گپِ لایه) + r333 (رندرِ حاکم بر گزینه‌های چندکلمه‌ای)",
+      "printQuirks": [
+        "سربرگِ آزمونِ ص۹۹ عنوانِ چاپی ندارد — فقط «سطح تستها: \"صرفاً آموزشی\" ، \"ساده\" (پاسخنامه صفحه: ۲۶۵-۲۶۶)» با متنِ قرمز؛ لایه «رصفأ» = scramblingِ «صرفاً» و «آموزیس» = «آموزشی» (چهارمین درسِ سربرگِ رنگیِ r318/r331/r333)",
+        "عنوانِ فهرستِ ص۷۵: «۲۰ تست دستگریمی گرامر و نگارش» — چاپ «دستگریمی» با یِ اضافه (تحریفِ چاپیِ «دستگرمی»؛ برخلافِ «دستگری» ص۲۴۹ که لایه‌ای بود) — عنوانِ گروهِ UI تمیز شده، تحریف در همین رسید مستند است",
+        "کلیدِ ص۲۶۵ با جعبهٔ «شیوه کلی حل تستهای گرامر صفات» آغاز می‌شود: «هرگاه به گزینه‌های یک تست نگاه کردید و گزینه‌ها، \"انواع صفت، کاربردهای آن و یا ترتیب صفات در جمله\" بودند، گرامر مربوطه معلوم شده...» (لایه «کیل» = کلی) — مادهٔ آموزشیِ ص۲۶۵",
+        "رمزِ ترتیبِ صفات در کلید (Q12-15/17/18): «جم رساک» = جنس+ملیت+رنگ+سن+اندازه+کیفیت از سمت راست به چپ — عبارتِ صحیحِ هر تست زیرش با برچسبِ فارسیِ هر صفت زیرخط‌دار چاپ شده (pretty big brown Asian ← کیفیت/اندازه/رنگ/ملیت)",
+        "Q2 ساقه: «I expected is to be --------------------- than my car.» — لغزشِ چاپیِ «is to be» (باید it to be می‌بود) — عینِ چاپ؛ لایه آن را نداده بود",
+        "Q6/Q3 ساقه: «It’s a very delicious food» / «It’s a very good room» — food غیرقابل‌شمارش با حرف تعریف a — لغزشِ چاپی؛ ترجمه‌ها محاوره‌ای چاپ: «خوبیه/افتضاحیه/ایه/داره/میتوانست» (r330-Q11 الگو)",
+        "Q12 کلید = (a) «pretty big brown Asian» — رندرِ ۷x ص۲۶۶ حاکم؛ لایه یک «b» شناور بالای مدخل داشت که نویز بود؛ توضیحِ چاپ: «جایگاه صفت ملیت (Asian) در گزینه b درست نیست. محل صفت رنگ (brown) در گزینه d اشتباهه...»",
+        "Q13 گزینه‌های c/d در لایه یکسان شده بودند (nice small black metal ×۲) — رندرِ ۶x حاکم: c) nice black small metal | d) nice small black metal — کلید d؛ Q14 گزینهٔ a در لایه جابه‌جا (لایه: old wooden beautiful — چاپ: beautiful wooden old)",
+        "Q15/Q14 «قدیمی» لایه «قدییم» (جابه‌جاییِ ی/م — رندرِ ۱۶x حاکم)؛ «چوبی» لایه «چوب» (یِ آخر حذف)؛ «ماشین» لایه «ماشیر» (Q2/Q9/Q15 — رندرِ ۱۶x: نِ کاسه‌دار با نقطهٔ بالا) — همگی نویزِ لایه، چاپ تمیز",
+        "Q12 ترجمه: «برادرم یک گربه آسیای قهوه ای بزرگ قشنگ داره.» — «آسیای» با یِ واحد (رندرِ ۲۲x: آ-س-ی-ا-ی؛ لایه «آسیاب») + «داره» محاوره (رندرِ ۱۶x) — عینِ چاپ",
+        "Q8 ترجمه: «بدترین تجربه زندگی‌ام بود.» — «زندگی» بالانویس (y0=590.4 در برابرِ سطرِ 598.5) بینِ «تجربه» و «ام» چاپ شده؛ «ام» در لایه دو توکنِ جدا (ا/م)؛ Q14 همین الگو با «زندگی» بالانویس بینِ «زیبا» و «میکند»",
+        "Q9 ترجمه: «ماشین قرمز از ماشین سیاه گران تر است.» — «قرمز» و «سیاه» بالانویس (y0=642.9 در برابرِ 646.3) در شکافِ پس از هر «ماشین»",
+        "Q15 ترجمه: «ماشین قدیمی بزرگ گران قیمتش را براند» — «قدیمی» بالانویس بینِ «ماشین» و «بزرگ» (y0=392.9 در برابرِ 396.3)",
+        "Q18 ترجمه: «آن دوچرخه آلمانی قشنگ از آن موتور سیکلت گران تر است.» — «آلمانی» بالانویس (y0=603.6 در برابرِ 609.6) در شکافِ ۲۸pt بینِ «دوچرخه» و «قشنگ» — جای‌گذاری بر اساسِ اسلایزِ افقی (الگوی Q8/Q9/Q14/Q15)؛ لایه «آلمابن» (رندرِ ۱۶x: نِ کاسه‌دار)؛ «سیکلت» لایه یک‌بار «سیکلرت» داد — چاپ «سیکلت»",
+        "Q20 توضیحِ کلید: «حالت برتری صفت little چون بی قاعده است، less than میباشد.» — «less than» با هم بالانویس (y0=702.3 در برابرِ 705.4؛ لایه «than less» جدا)؛ ترجمه: «من وقت کمتری از اون چیزی که برای تمام کردن آن کار لازمه، را دارم.» — «اون/لازمه/کمتری» محاوره، عینِ چاپ (لایه «کمی ی/چیر نی/الزمه»)",
+        "Q17 ترجمه: «آیا آن خانم قدبلند به آن پیراهن ابریشیمی سبز نگاه کرد؟» — لایه «ابریشیم سی» + توکنِ جدا «بلند» = scramblingِ «ابریشیمی سبز» (رندرِ ۹x حاکم)؛ ساقه: «dress?» چسبیده در لایه (رندر گپِ ریز نشان می‌داد — توکنِ واحدِ لایه حاکم، الگوی r333 «the?»)",
+        "Q10 ترجمه با ارقامِ فارسی: «مرد ۷۰ کیلو... زن ۶۷ کیلو...» — لایه «7 زن۶» بهم‌ریخته بود (رندرِ ۹x حاکم) + گیومهٔ بالارفتهٔ پایان‌سطر (الگوی r332-Q21)",
+        "Q11 ترجمه: «رابرت به خوبی نمی نویسد.» — لایه «به خوب نیم نویسد» (نیم = نمی + جابه‌جایی)؛ Q16 ترجمه: «خطرناکترین» چسبیده (لایه «خطرناکی ین»)؛ Q19: «ارزانترین» چسبیده (لایه «ارزانی ین»)",
+        "جای‌خالی‌های سبزِ خط‌چین با طولِ متغیر (۱۵ تا ۲۱ خط‌تیره) — طولِ هر ساقه عیناً از لایه؛ Q18 دو جای‌خالی (۱۵ و ۱۷)؛ Q4 جای‌خالیِ ۲۱تایی در لایه رویِ سطرِ جدا افتاده بود ولی x آن (174.02) بینِ «It’s»(153.34) و «hospital»(254.33) = درون‌خطی",
+        "گزینه‌ها با قابِ آبیِ حاشیه‌دار و برچسبِ a/b/c/d ایتالیکِ آبی (سبکِ MCQِ این جزوه)؛ سؤال‌های ۱۷-۲۰ در ص۱۰۰؛ جعبهٔ Note خالیِ زرد با خطوطِ نوشتار در ص۱۰۰ (خارج از محتوا — الگوی r330)",
+        "بدونِ برچسبِ «کنکور» در این آزمون (برخلافِ r330-Q19/20) — سطحِ چاپ: «صرفاً آموزشی» ، «ساده»"
       ]
     }
   }
