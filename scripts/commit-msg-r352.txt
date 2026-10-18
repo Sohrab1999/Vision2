@@ -1,0 +1,9 @@
+r352: extract part 2 (Q121-240) of the grade-10 combined four-lesson 360-item vocabulary test (pp183-188, same printed one-page table key p301) into tests-g10.json as bank 99 — second member of group 32 on the grade-10 card
+
+- programmatically re-derived the 360-pair p301 key grid (letter-first regex; the number-first pattern only caught 359/360) and cross-checked it against the r351 KEY_RAW record: 360/360 AGREE, zero divergence — the r351 lesson ("never rebuild the key from memory") honored
+- discovered and render-arbitrated (1200dpi) the Q174 option-sheet print erratum: the 4th option is printed as "b) suitably" in the booklet itself (duplicated letter b and duplicated content) — this anomaly had made the parser swallow Q175 (c/d captured up to the next "d)"); data stores option text only: [suitably, probably, honestly, suitably], key c unaffected; pre-parse surgery re-letters the 4th option for parsing
+- merged five multi-run layer dashes into single continuous blanks per render arbitration (Q143=21/Q146=16/Q152=19/Q158=21/Q213=18) — post-merge census: exactly 120 runs / 2432 dashes across the bank
+- kept three stem print errors verbatim (Q152 "different idea", Q213 "not health", Q221 "to became") plus booklet spellings "quitted"/"shelfs" and straight apostrophes in Q144/Q179/Q202
+- idempotent extract (second run NO-OP); receipt source.vocab360b with 7 print quirks
+- guard suite: new 5-check r352 guard; surgery 51 steps — 1466→1586 across 29 files, 98→99 shapes in 15 files, full vectors +1 member (120), five relative slices re-anchored
+- gates: tsc=0, lint=0, 2249/2249 in 192 files; E2E single-session: purple card 99 buttons / 32 groups, bank-99 driver 120/120 OK zero MISS/DESYNC, 100% champion, mobile 390px no overflow, console clean; DB cleaned to baseline (attempts=0, app_open=2)
