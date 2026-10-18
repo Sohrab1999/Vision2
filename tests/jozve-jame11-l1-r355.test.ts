@@ -93,7 +93,7 @@ describe("r355 — bank shapes (l43..l55)", () => {
     expect([l43.count, l44.count, l45.count, l46.count, l47.count, l48.count, l49.count, l50.count, l51.count, l52.count, l53.count, l54.count, l55.count]).toEqual([4, 8, 4, 4, 4, 4, 4, 2, 4, 3, 4, 6, 6]);
   });
 
-  it("ids: g11-l43..l55-N unique across the whole bank — total 958 items in 73 banks", () => {
+  it("ids: g11-l43..l55-N unique across the whole bank — total 1019 items in 78 banks", () => {
     const sizes = [4, 8, 4, 4, 4, 4, 4, 2, 4, 3, 4, 6, 6];
     for (const les of [l43, l44, l45, l46, l47, l48, l49, l50, l51, l52, l53, l54, l55]) {
       const size = sizes[les.lesson - 43];
@@ -103,13 +103,13 @@ describe("r355 — bank shapes (l43..l55)", () => {
     }
     const all = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
     expect(new Set(all).size).toBe(all.length);
-    expect(all).toHaveLength(782 + 57 + 54 + 65); // ۷۸۲ (تا r354) + ۵۷ (r355) + ۵۴ (r356) + ۶۵ (r357 — جامع تشریحی د۲)
-    expect(bank.lessons).toHaveLength(73);
+    expect(all).toHaveLength(782 + 57 + 54 + 65 + 61); // ۷۸۲ (تا r354) + ۵۷ (r355) + ۵۴ (r356) + ۶۵ (r357) + ۶۱ (r358 — تشریحی گرامر د۳)
+    expect(bank.lessons).toHaveLength(78);
   });
 
-  it("file shape: last thirty-one banks are l43..l73 in order (r356 appended l56..l59، r357 appended l60..l73)", () => {
-    const tail = bank.lessons.slice(-31).map((l) => l.lesson);
-    expect(tail).toEqual([43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73]);
+  it("file shape: last thirty-six banks are l43..l78 in order (r357 appended l60..l73، r358 appended l74..l78)", () => {
+    const tail = bank.lessons.slice(-36).map((l) => l.lesson);
+    expect(tail).toEqual([43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78]);
   });
 });
 

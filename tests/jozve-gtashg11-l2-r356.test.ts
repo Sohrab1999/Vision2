@@ -80,7 +80,7 @@ describe("r356 — bank shapes (l56..l59)", () => {
     expect([l56.count, l57.count, l58.count, l59.count]).toEqual([10, 12, 12, 20]);
   });
 
-  it("ids: g11-l56..l59-N unique across the whole bank — total 958 items in 73 banks", () => {
+  it("ids: g11-l56..l59-N unique across the whole bank — total 1019 items in 78 banks", () => {
     const sizes = [10, 12, 12, 20];
     for (const les of [l56, l57, l58, l59]) {
       const size = sizes[les.lesson - 56];
@@ -90,13 +90,13 @@ describe("r356 — bank shapes (l56..l59)", () => {
     }
     const all = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
     expect(new Set(all).size).toBe(all.length);
-    expect(all).toHaveLength(839 + 54 + 65); // ۸۳۹ (تا r355) + ۵۴ (r356) + ۶۵ (r357 — جامع تشریحی د۲)
-    expect(bank.lessons).toHaveLength(73);
+    expect(all).toHaveLength(839 + 54 + 65 + 61); // ۸۳۹ (تا r355) + ۵۴ (r356) + ۶۵ (r357) + ۶۱ (r358 — تشریحی گرامر د۳)
+    expect(bank.lessons).toHaveLength(78);
   });
 
-  it("file shape: last eighteen banks are l56..l73 in order (r357 appended l60..l73)", () => {
-    const tail = bank.lessons.slice(-18).map((l) => l.lesson);
-    expect(tail).toEqual([56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73]);
+  it("file shape: last twenty-three banks are l56..l78 in order (r357 appended l60..l73، r358 appended l74..l78)", () => {
+    const tail = bank.lessons.slice(-23).map((l) => l.lesson);
+    expect(tail).toEqual([56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78]);
   });
 
   it("all questions are grammar-categorized", () => {
