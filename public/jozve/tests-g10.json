@@ -13884,6 +13884,1029 @@
           "translation": "اون پسری که نزدیک برادرت ایستاده بود، به نظر خیلی خسته می رسید."
         }
       ]
+    },
+    {
+      "lesson": 67,
+      "title": "کلمات ناقص، بانک واژه و کلمهٔ مناسب (ص۱۳۵)",
+      "level": "تشریحی — تایپی (ناقص/بانک/حرفِ اول)",
+      "count": 16,
+      "questions": [
+        {
+          "id": "g10-l67-1",
+          "n": 1,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Some (s__ient__sts) become very famous and rich.",
+          "options": [
+            "scientists",
+            "scientist",
+            "sciences",
+            "scientific"
+          ],
+          "answer": 0,
+          "accepted": [
+            "scientists"
+          ],
+          "placeholder": "complete the missing letters…"
+        },
+        {
+          "id": "g10-l67-2",
+          "n": 2,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "When children (gr__w) up their (person__lity) changes.",
+          "options": [
+            "grow up / personality",
+            "grew up / personal",
+            "grow up / personally",
+            "grew / personality"
+          ],
+          "answer": 0,
+          "accepted": [
+            "grow up / personality",
+            "grow / personality"
+          ],
+          "placeholder": "complete both blanks (use / between the two answers)…"
+        },
+        {
+          "id": "g10-l67-3",
+          "n": 3,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "This book can (d__v__lop) your speaking well.",
+          "options": [
+            "develop",
+            "development",
+            "developing",
+            "developed"
+          ],
+          "answer": 0,
+          "accepted": [
+            "develop"
+          ],
+          "placeholder": "complete the missing letters…"
+        },
+        {
+          "id": "g10-l67-4",
+          "n": 4,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "My sister (t__i__s) hard to learn English.",
+          "options": [
+            "tries",
+            "tried",
+            "trying",
+            "tries hard"
+          ],
+          "answer": 0,
+          "accepted": [
+            "tries"
+          ],
+          "placeholder": "complete the missing letters…"
+        },
+        {
+          "id": "g10-l67-5",
+          "n": 5,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Dogs have a good ---------- of smell. [bank: ashamed / strongly / possible / thousands / weak / sense / energetic / invented]",
+          "options": [
+            "sense",
+            "scent",
+            "sensible",
+            "sentence"
+          ],
+          "answer": 0,
+          "accepted": [
+            "sense"
+          ],
+          "placeholder": "type a word from the bank…"
+        },
+        {
+          "id": "g10-l67-6",
+          "n": 6,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "The World Wide Web was ---------- in 1989. [bank: ashamed / strongly / possible / thousands / weak / sense / energetic / invented]",
+          "options": [
+            "invented",
+            "invited",
+            "invention",
+            "inventor"
+          ],
+          "answer": 0,
+          "accepted": [
+            "invented"
+          ],
+          "placeholder": "type a word from the bank…"
+        },
+        {
+          "id": "g10-l67-7",
+          "n": 7,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "She was ---------- to ask her brother for money. [bank: ashamed / strongly / possible / thousands / weak / sense / energetic / invented]",
+          "options": [
+            "ashamed",
+            "ashame",
+            "shamed",
+            "surprised"
+          ],
+          "answer": 0,
+          "accepted": [
+            "ashamed"
+          ],
+          "placeholder": "type a word from the bank…"
+        },
+        {
+          "id": "g10-l67-8",
+          "n": 8,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "He’s very ----------, isn’t he, for a man of his age? [bank: ashamed / strongly / possible / thousands / weak / sense / energetic / invented]",
+          "options": [
+            "energetic",
+            "energy",
+            "energetically",
+            "active"
+          ],
+          "answer": 0,
+          "accepted": [
+            "energetic"
+          ],
+          "placeholder": "type a word from the bank…"
+        },
+        {
+          "id": "g10-l67-9",
+          "n": 9,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "The team has a strong attack, but its defense is ----------. [bank: ashamed / strongly / possible / thousands / weak / sense / energetic / invented]",
+          "options": [
+            "weak",
+            "week",
+            "weakness",
+            "strongly"
+          ],
+          "answer": 0,
+          "accepted": [
+            "weak"
+          ],
+          "placeholder": "type a word from the bank…"
+        },
+        {
+          "id": "g10-l67-10",
+          "n": 10,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "With today’s technology almost anything seems ----------. [bank: ashamed / strongly / possible / thousands / weak / sense / energetic / invented]",
+          "options": [
+            "possible",
+            "possibly",
+            "impossible",
+            "possibility"
+          ],
+          "answer": 0,
+          "accepted": [
+            "possible"
+          ],
+          "placeholder": "type a word from the bank…"
+        },
+        {
+          "id": "g10-l67-11",
+          "n": 11,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "They ---------- believe their children should make choices for themselves. [bank: ashamed / strongly / possible / thousands / weak / sense / energetic / invented]",
+          "options": [
+            "strongly",
+            "strong",
+            "strength",
+            "stronger"
+          ],
+          "answer": 0,
+          "accepted": [
+            "strongly"
+          ],
+          "placeholder": "type a word from the bank…"
+        },
+        {
+          "id": "g10-l67-12",
+          "n": 12,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Edison was famous for doing ---------- of experiments to find answers to problems. [bank: ashamed / strongly / possible / thousands / weak / sense / energetic / invented]",
+          "options": [
+            "thousands",
+            "thousand",
+            "thousandth",
+            "hundreds"
+          ],
+          "answer": 0,
+          "accepted": [
+            "thousands"
+          ],
+          "placeholder": "type a word from the bank…"
+        },
+        {
+          "id": "g10-l67-13",
+          "n": 13,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "My brother has the flu and feels (w _ _ _).",
+          "options": [
+            "weak",
+            "wake",
+            "weakly",
+            "weaker"
+          ],
+          "answer": 0,
+          "accepted": [
+            "weak"
+          ],
+          "placeholder": "type the word (initial letter is given)…"
+        },
+        {
+          "id": "g10-l67-14",
+          "n": 14,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "A person who translates is a (t _ _ _ _ _ _ _ _).",
+          "options": [
+            "translator",
+            "translate",
+            "translation",
+            "translating"
+          ],
+          "answer": 0,
+          "accepted": [
+            "translator"
+          ],
+          "placeholder": "type the word (initial letter is given)…"
+        },
+        {
+          "id": "g10-l67-15",
+          "n": 15,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "If you want to find an answer to a problem, you must (s _ _ _ _) it.",
+          "options": [
+            "solve",
+            "sold",
+            "solved",
+            "solution"
+          ],
+          "answer": 0,
+          "accepted": [
+            "solve"
+          ],
+          "placeholder": "type the word (initial letter is given)…"
+        },
+        {
+          "id": "g10-l67-16",
+          "n": 16,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "A book that tells a story about people and things that are not real is a (n _ _ _ _).",
+          "options": [
+            "novel",
+            "noval",
+            "newel",
+            "noun"
+          ],
+          "answer": 0,
+          "accepted": [
+            "novel"
+          ],
+          "placeholder": "type the word (initial letter is given)…"
+        }
+      ]
+    },
+    {
+      "lesson": 68,
+      "title": "چهارگزینه‌ای واژگان و گرامر (ص۱۳۵-۱۳۶)",
+      "level": "تشریحی — چهارگزینه‌ای",
+      "count": 12,
+      "questions": [
+        {
+          "id": "g10-l68-1",
+          "n": 1,
+          "category": "vocab",
+          "question": "کدام گزینه با سایر گزینه‌ها متفاوت است؟ (۱) — winter / summer / holy / fall",
+          "options": [
+            "winter",
+            "summer",
+            "holy",
+            "fall"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l68-2",
+          "n": 2,
+          "category": "vocab",
+          "question": "کدام گزینه با سایر گزینه‌ها متفاوت است؟ (۲) — patient / cradle / sick / ill",
+          "options": [
+            "patient",
+            "cradle",
+            "sick",
+            "ill"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l68-3",
+          "n": 3,
+          "category": "vocab",
+          "question": "کدام گزینه با سایر گزینه‌ها متفاوت است؟ (۳) — inventor / hospital / library / laboratory",
+          "options": [
+            "inventor",
+            "hospital",
+            "library",
+            "laboratory"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l68-4",
+          "n": 4,
+          "category": "vocab",
+          "question": "کدام گزینه با سایر گزینه‌ها متفاوت است؟ (۴) — hearing / smell / eyesight / emotion",
+          "options": [
+            "hearing",
+            "smell",
+            "eyesight",
+            "emotion"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l68-5",
+          "n": 5,
+          "category": "vocab",
+          "question": "The key to our -------------------------- is our hard work and belief in ourselves.",
+          "options": [
+            "description",
+            "behavior",
+            "success",
+            "language"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l68-6",
+          "n": 6,
+          "category": "vocab",
+          "question": "Scientists find -------------------------- and invent things.",
+          "options": [
+            "peace",
+            "medicines",
+            "facts",
+            "situation"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l68-7",
+          "n": 7,
+          "category": "vocab",
+          "question": "They are going to -------------------------- a laboratory in our school soon.",
+          "options": [
+            "attend",
+            "build",
+            "become",
+            "change into"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l68-8",
+          "n": 8,
+          "category": "vocab",
+          "question": "I -------------------------- working to be at home with the kids.",
+          "options": [
+            "emphasized",
+            "meant",
+            "noticed",
+            "quitted"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l68-9",
+          "n": 9,
+          "category": "grammar",
+          "question": "My parents -------------------------- lots of photographs of us when we were small.",
+          "options": [
+            "took",
+            "were taking",
+            "take",
+            "are taking"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l68-10",
+          "n": 10,
+          "category": "grammar",
+          "question": "At 4 pm last Tuesday, I -------------------------- in the office.",
+          "options": [
+            "am working",
+            "was working",
+            "worked",
+            "work"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l68-11",
+          "n": 11,
+          "category": "grammar",
+          "question": "She made -------------------------- a cup of tea and sat down in front of the television.",
+          "options": [
+            "yourself",
+            "herself",
+            "myself",
+            "himself"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l68-12",
+          "n": 12,
+          "category": "grammar",
+          "question": "I -------------------------- the name of the street.",
+          "options": [
+            "am not knowing",
+            "wasn’t knowing",
+            "knows",
+            "don’t know"
+          ],
+          "answer": 3
+        }
+      ]
+    },
+    {
+      "lesson": 69,
+      "title": "جمله‌سازی، دانش گرامری و ضمایر تأکیدی (ص۱۳۶)",
+      "level": "تشریحی — تایپی",
+      "count": 9,
+      "questions": [
+        {
+          "id": "g10-l69-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "glass / he / on the / himself / broken / cut.",
+          "options": [
+            "He cut himself on the broken glass.",
+            "He cut the broken glass on himself.",
+            "He himself cut on the broken glass.",
+            "The broken glass cut himself on he."
+          ],
+          "answer": 0,
+          "accepted": [
+            "He cut himself on the broken glass."
+          ],
+          "placeholder": "make a sentence with the given words…"
+        },
+        {
+          "id": "g10-l69-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "to school / the accident / Lisa / she / when / saw / was going.",
+          "options": [
+            "Lisa saw the accident when she was going to school.",
+            "Lisa was going the accident when she saw to school.",
+            "She saw Lisa when the accident was going to school.",
+            "Lisa saw the accident when she was going school."
+          ],
+          "answer": 0,
+          "accepted": [
+            "Lisa saw the accident when she was going to school."
+          ],
+          "placeholder": "make a sentence with the given words…"
+        },
+        {
+          "id": "g10-l69-3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "It was funny. They ------------------- staying in the hotel next to ours.",
+          "options": [
+            "were",
+            "was",
+            "are",
+            "did"
+          ],
+          "answer": 0,
+          "accepted": [
+            "were"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l69-4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Someone phoned him when he ------------------- working in his office.",
+          "options": [
+            "was",
+            "were",
+            "is",
+            "did"
+          ],
+          "answer": 0,
+          "accepted": [
+            "was"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l69-5",
+          "n": 5,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "They lost the match and were ashamed of -------------------.",
+          "options": [
+            "themselves",
+            "them",
+            "their",
+            "they"
+          ],
+          "answer": 0,
+          "accepted": [
+            "themselves"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l69-6",
+          "n": 6,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "The door opens ------------------- when someone comes near it.",
+          "options": [
+            "itself",
+            "himself",
+            "herself",
+            "its"
+          ],
+          "answer": 0,
+          "accepted": [
+            "itself"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l69-7",
+          "n": 7,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Who bought you this umbrella? — Nobody, I ---------------.",
+          "options": [
+            "myself bought it",
+            "myself bought them",
+            "me bought it",
+            "myself did bought it"
+          ],
+          "answer": 0,
+          "accepted": [
+            "myself bought it"
+          ],
+          "placeholder": "complete the answer (emphatic pronoun)…"
+        },
+        {
+          "id": "g10-l69-8",
+          "n": 8,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Did you buy a newspaper for your brother? — No, he ---------------.",
+          "options": [
+            "himself bought it",
+            "himself bought them",
+            "him bought it",
+            "hisself bought it"
+          ],
+          "answer": 0,
+          "accepted": [
+            "himself bought it"
+          ],
+          "placeholder": "complete the answer (emphatic pronoun)…"
+        },
+        {
+          "id": "g10-l69-9",
+          "n": 9,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Did the guests wash the dishes last night? — No, my mother ---------------.",
+          "options": [
+            "herself washed them",
+            "herself washed it",
+            "her washed them",
+            "herself wash them"
+          ],
+          "answer": 0,
+          "accepted": [
+            "herself washed them"
+          ],
+          "placeholder": "complete the answer (emphatic pronoun)…"
+        }
+      ]
+    },
+    {
+      "lesson": 70,
+      "title": "شکل صحیح افعال داخل پرانتز (ص۱۳۶)",
+      "level": "تشریحی — تایپیِ دوجای‌خالیِ اسلش‌دار",
+      "count": 5,
+      "questions": [
+        {
+          "id": "g10-l70-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "I --------------- (see) you in the park yesterday. You were sitting on the grass and you --------------- (read) a book.",
+          "options": [
+            "saw / were reading",
+            "was seeing / read",
+            "saw / read",
+            "seen / were reading"
+          ],
+          "answer": 0,
+          "accepted": [
+            "saw / were reading"
+          ],
+          "placeholder": "complete both blanks (use / between the two answers)…"
+        },
+        {
+          "id": "g10-l70-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "I --------------- (hurt) my back while I --------------- (work) in the garden.",
+          "options": [
+            "hurt / was working",
+            "was hurting / worked",
+            "hurt / worked",
+            "hurts / was working"
+          ],
+          "answer": 0,
+          "accepted": [
+            "hurt / was working"
+          ],
+          "placeholder": "complete both blanks (use / between the two answers)…"
+        },
+        {
+          "id": "g10-l70-3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "The television was on, but nobody --------------- (watch) it.",
+          "options": [
+            "was watching",
+            "watched",
+            "were watching",
+            "is watching"
+          ],
+          "answer": 0,
+          "accepted": [
+            "was watching"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l70-4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "My sister --------------- (take) a photograph of me while I --------------- (not/look).",
+          "options": [
+            "took / wasn’t looking",
+            "was taking / didn’t look",
+            "took / didn’t looked",
+            "taken / wasn’t looking"
+          ],
+          "answer": 0,
+          "accepted": [
+            "took / wasn’t looking"
+          ],
+          "placeholder": "complete both blanks (use / between the two answers)…"
+        },
+        {
+          "id": "g10-l70-5",
+          "n": 5,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "When I was young, I --------------- (want) to be a doctor.",
+          "options": [
+            "wanted",
+            "was wanting",
+            "want",
+            "was wanted"
+          ],
+          "answer": 0,
+          "accepted": [
+            "wanted"
+          ],
+          "placeholder": "type your answer…"
+        }
+      ]
+    },
+    {
+      "lesson": 71,
+      "title": "تأکید تلفظ (ص۱۳۷)",
+      "level": "تشریحی — تایپیِ تأکیدِ تلفظ",
+      "count": 2,
+      "questions": [
+        {
+          "id": "g10-l71-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "A: Was your brother washing the dishes? — B: No, I was.",
+          "options": [
+            "I",
+            "was",
+            "brother",
+            "dishes"
+          ],
+          "answer": 0,
+          "accepted": [
+            "I"
+          ],
+          "placeholder": "type the word with the stronger stress…"
+        },
+        {
+          "id": "g10-l71-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "A: Is it your pencil? — B: No, my pencil is red.",
+          "options": [
+            "red",
+            "pencil",
+            "my",
+            "is"
+          ],
+          "answer": 0,
+          "accepted": [
+            "red"
+          ],
+          "placeholder": "type the word with the stronger stress…"
+        }
+      ]
+    },
+    {
+      "lesson": 72,
+      "title": "کلوز — طاهره صفارزاده (ص۱۳۷)",
+      "level": "تشریحی — تایپیِ کلوزِ بانک‌واژه",
+      "count": 6,
+      "questions": [
+        {
+          "id": "g10-l72-1",
+          "n": 1,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Tahereh Saffarzadeh was an Iranian poet, writer, ---(1)--- and university professor. [bank: hard / reciting / passed / published / translator / first]",
+          "options": [
+            "translator",
+            "translation",
+            "translating",
+            "translate"
+          ],
+          "answer": 0,
+          "accepted": [
+            "translator"
+          ],
+          "placeholder": "type a word from the bank…"
+        },
+        {
+          "id": "g10-l72-2",
+          "n": 2,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "When she was a child, she learned reading and ---(2)--- the Holy Quran. [bank: hard / reciting / passed / published / translator / first]",
+          "options": [
+            "reciting",
+            "recite",
+            "recited",
+            "recitation"
+          ],
+          "answer": 0,
+          "accepted": [
+            "reciting"
+          ],
+          "placeholder": "type a word from the bank…"
+        },
+        {
+          "id": "g10-l72-3",
+          "n": 3,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "She was working very ---(3)--- to learn new things. [bank: hard / reciting / passed / published / translator / first]",
+          "options": [
+            "hard",
+            "hardly",
+            "harder",
+            "hardest"
+          ],
+          "answer": 0,
+          "accepted": [
+            "hard"
+          ],
+          "placeholder": "type a word from the bank…"
+        },
+        {
+          "id": "g10-l72-4",
+          "n": 4,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "She ---(4)--- her translation of the Quran in Persian and English in 2001. [bank: hard / reciting / passed / published / translator / first]",
+          "options": [
+            "published",
+            "publishing",
+            "publisher",
+            "passes"
+          ],
+          "answer": 0,
+          "accepted": [
+            "published"
+          ],
+          "placeholder": "type a word from the bank…"
+        },
+        {
+          "id": "g10-l72-5",
+          "n": 5,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "It is the ---(5)--- translation of the Quran into English by a woman. [bank: hard / reciting / passed / published / translator / first]",
+          "options": [
+            "first",
+            "fast",
+            "firstly",
+            "worst"
+          ],
+          "answer": 0,
+          "accepted": [
+            "first"
+          ],
+          "placeholder": "type a word from the bank…"
+        },
+        {
+          "id": "g10-l72-6",
+          "n": 6,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "She ---(6)--- away in 2008 in Tehran. [bank: hard / reciting / passed / published / translator / first]",
+          "options": [
+            "passed",
+            "passed away",
+            "passing",
+            "past"
+          ],
+          "answer": 0,
+          "accepted": [
+            "passed"
+          ],
+          "placeholder": "type a word from the bank…"
+        }
+      ]
+    },
+    {
+      "lesson": 73,
+      "title": "کلوز — دانش قدرت است (ص۱۳۷)",
+      "level": "تشریحی — تایپیِ کلوزِ بانک‌واژه",
+      "count": 7,
+      "questions": [
+        {
+          "id": "g10-l73-1",
+          "n": 1,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Knowledge is power. Without knowledge humans cannot ---(1)---. [bank: strong / success / skills / power / action / develop / fast / useful]",
+          "options": [
+            "develop",
+            "developing",
+            "development",
+            "developed"
+          ],
+          "answer": 0,
+          "accepted": [
+            "develop"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l73-2",
+          "n": 2,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "It is very important to stay up to dated. Knowledge is important to improve and get ---(2)--- in life. [bank: strong / success / skills / power / action / develop / fast / useful]",
+          "options": [
+            "success",
+            "successful",
+            "succeed",
+            "successfully"
+          ],
+          "answer": 0,
+          "accepted": [
+            "success"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l73-3",
+          "n": 3,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "We get knowledge not only by reading books but also by ---(3)--- experience in life. [bank: strong / success / skills / power / action / develop / fast / useful]",
+          "options": [
+            "useful",
+            "use",
+            "useless",
+            "usefully"
+          ],
+          "answer": 0,
+          "accepted": [
+            "useful"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l73-4",
+          "n": 4,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "One can get anything in life with the ---(4)--- of knowledge. [bank: strong / success / skills / power / action / develop / fast / useful]",
+          "options": [
+            "power",
+            "powerful",
+            "powered",
+            "powder"
+          ],
+          "answer": 0,
+          "accepted": [
+            "power"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l73-5",
+          "n": 5,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Humans are not as ---(5)--- as tigers or cannot run as ---(6)--- as horses nor can they fly as birds, yet they are the most powerful kinds on earth because of knowledge. [bank: strong / success / skills / power / action / develop / fast / useful]",
+          "options": [
+            "strong / fast",
+            "strongly / fastly",
+            "strong / fastly",
+            "strongly / fast"
+          ],
+          "answer": 0,
+          "accepted": [
+            "strong / fast"
+          ],
+          "placeholder": "complete both blanks (use / between the two answers)…"
+        },
+        {
+          "id": "g10-l73-6",
+          "n": 6,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Knowledge helps us change our ideas into ---(7)---. [bank: strong / success / skills / power / action / develop / fast / useful]",
+          "options": [
+            "action",
+            "act",
+            "active",
+            "actively"
+          ],
+          "answer": 0,
+          "accepted": [
+            "action"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l73-7",
+          "n": 7,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Humans can get, learn, understand, analyze, experiment, research, perform, share and multiply their ---(8)--- and knowledge. [bank: strong / success / skills / power / action / develop / fast / useful]",
+          "options": [
+            "skills",
+            "skilled",
+            "skillful",
+            "skill"
+          ],
+          "answer": 0,
+          "accepted": [
+            "skills"
+          ],
+          "placeholder": "type your answer…"
+        }
+      ]
     }
   ],
   "source": {
@@ -14389,6 +15412,29 @@
         "جای‌خالی‌های سبزِ خط‌چین: Q1-8/Q12-18 هجده‌تیره، Q9 بیست‌ودو، Q11 بیست، Q19/Q20 هفده، Q10 دوجای‌خالیِ ۱۸+۱۸ — طولِ هر ساقه عیناً از لایه (شمارشِ لایه حاکم — r338)؛ آپاستروف‌های تایپوگرافیکِ ساقه‌ها: father’s/o’clock/Let’s/It’s/Pari’s/can’t",
         "بدونِ برچسبِ «کنکور» — سطحِ چاپ: «آموزشی»؛ سؤال‌های ۱-۲۰ همه در ص۱۳۴؛ جعبهٔ Note خالیِ ص۲۸۰ (۱۷ خط)"
       ]
+    },
+    "jame3": {
+      "exam": "آزمون جامع تشریحی درس سوم (ص۱۳۵-۱۳۷)",
+      "header": "سربرگِ ص۱۳۵ (رندرِ ۶۰۰dpi): «\"آزمون جامع تشریحی درس سوم\"» + «(پاسخنامه صفحه: ۲۸۱ و ۲۸۲)» — ارقامِ فارسی با واصفِ «و» (برخلافِ r340 «۲۷۷ - ۲۷۸» با تیره)؛ سربرگِ کلیدِ ص۲۸۱: «\"پاسخنامه آزمون جامع تشریحی درس سوم\"» + «(آزمون: صفحه ۱۳۵ تا ۱۳۷)» — فارسی با «تا»؛ لایهٔ «تسی یچ» = هفتمین تحریفِ «تشریحی» (r318/r331/r333/r336/r338/r340؛ رندر: تمیز)؛ ۱۳ سکشن / ۵۷ آیتم برای ۵۸ کلیدِ چاپی (S13 جای‌های ۵و۶ در یک جمله → یک آیتمِ اسلش‌دار)؛ بارمِ چاپی: ۱+۲+۱+۱+۱+۱+۱+۱+۱/۵+۲+۰/۵+۳+۴ = ۲۰ نمره",
+      "keyPages": "281-282",
+      "keyVerification": "کلیدِ چاپیِ کاملِ ص۲۸۱-۲۸۲ — ۵۸/۵۸ کلید با پیش‌پرکردنِ معنایی هم‌رأی — صفر واگرایی؛ S11: کلیدِ چاپی پاسخ را با رنگِ قرمزِ درونِ دیالوگِ تکرارشده نشان می‌دهد (Q1 «No, I was.» با I قرمز / Q2 «No, my pencil is red.» با red قرمز) — نخستین کلیدِ رنگ‌نشانه‌ایِ این خانواده (رندرِ ۱۲۰۰dpi)؛ کلیدهای اسلش‌دارِ چاپ («saw/were reading»، «hurt/was working»، «took/wasn’t looking»، «grow up / personality»، «strong/fast») با فاصلهٔ یکنواختِ « / » بازسازی شدند (الگوی r337-D/r340-S1)؛ S1-Q2 «up» بیرونِ پرانتزِ چاپ است پس accepted دو شکلی است: کلیدِ چاپیِ «grow up / personality» + محتوای تیرهٔ «grow / personality»؛ S9 کلیدها فقط محتوای تیره‌اند («myself bought it» و غیره)",
+      "pattern": "r336 (جامعِ مخلوط — بانک به ازای خانوادهٔ سکشن) + r337-D/r340-L58 (کلیدِ اسلش‌دارِ دوجای‌خالی و ادغامِ دو اسلاتِ هم‌جمله) + r336-L32 ([bank:] روی آیتم‌های بانک‌واژه) + r329 (options[0]=کلید چاپ) + r337-L39 (کلوزِ تایپیِ بانک‌واژه) + r303",
+      "printQuirks": [
+        "سربرگ‌ها با ارقامِ فارسی: «(پاسخنامه صفحه: ۲۸۱ و ۲۸۲)» با واصفِ «و» (یگانه در خانواده — r336 تیره داشت) و «(آزمون: صفحه ۱۳۵ تا ۱۳۷)» با «تا»",
+        "دستورِ S2 ادعای «(یک کلمه اضافه می باشد)» دارد اما بانک دقیقاً ۸ واژه برای ۸ جای خالی دارد و کلید هر ۸ را مصرف می‌کند — ناسازگاریِ درونیِ چاپ (برخلافِ r336: ۹واژه/۸جای‌خالی با «heavens» اضافیِ واقعی)",
+        "S1-Q2 «When children (gr__w) up their (person__lity) changes.» — «up» بیرونِ پرانتز اما کلیدِ چاپیِ «grow up / personality» عبارتِ کامل را می‌دهد — accepted دو شکل دارد",
+        "S6-Q3 لایه گزینه‌ها را به‌هم‌ریخته می‌داد («. m yself c» و «imself d. h») — رندرِ ۹۰۰dpi: a. yourself / b. herself / c. myself / d. himself",
+        "S9 ساقه‌ها خطِ پاسخِ شماره‌دارِ چاپ دارند («1. Nobody, I ---.») — در داده با فرمِ خانواده («— Nobody, I ---.») بازسازی شد؛ کلید = محتوای تیره",
+        "S11 کلیدِ رنگ‌نشانه‌ای: دیالوگِ تکرارشده با واژهٔ قرمزِ پاسخ (I / red) — بدونِ هیچ گریدِ حرفی/واژه‌ای",
+        "S12 دستور «با گزینه های داده شده» و S13 «با کلمات داده شده» — هر دو بانکِ کاملِ بی‌اضافی (۶/۶ و ۸/۸)؛ بانکِ S12 زیرخطِ ایتالیکِ بولدِ چاپ",
+        "S13 کوئیرک‌های عینِ چاپ: «stay up to dated» (به‌جای up to date) و «the most powerful kinds on earth» (kinds نه kings) — تاییدِ رندرِ ۱۲۰۰dpi؛ نشانگرِ ---(4)--- در چاپ بینِ دو خط شکسته (with the --- / (4)---) — در داده پیوسته",
+        "S13 جای‌های ۵و۶ در یک جمله‌اند («as --- as tigers … as --- as horses») با دو کلیدِ چاپیِ جداگانه (5. strong / 6. fast) — یک آیتمِ اسلش‌دارِ «strong / fast» (الگوی r337-D؛ ۷ آیتم برای ۸ اسلات)",
+        "جعبه‌های پاسخِ S12 (۳+۳) و S13 (۴+۴) با پرانتزِ خط‌چینِ سبز — نمایشی (در داده نیستند)؛ لایهٔ S12 «15.» = چسبندگیِ «1».prefix با «5.» — آرتیفکتِ لایه",
+        "جعبهٔ Noteٔ خالی در پاصفحهٔ ص۱۳۷ (۹ خطِ خط‌چین) و ص۲۸۲ (۱۲ خط) — الگوی r330/r334/r337",
+        "لایهٔ «جمالت/خایل/بیشی/پرانی ن/س ؤ.االت» — تحریف‌های استانداردِ لایه؛ رندر همه را تمیز می‌کند؛ «سؤاالت» = تجزیهٔ لایگ‌چر (نهمین تکرار)",
+        "سکشن‌های چاپ با ارقامِ فارسیِ سرمه‌ای در سربرگِ هلوئی (۱ تا ۱۳) و آیتم‌ها با ارقامِ قرمزِ لاتین؛ S6 با سربرگِ «۶.» فارسی و آیتم‌های 1-4 لاتین"
+      ],
+      "extractedRound": "r342"
     }
   }
 }
