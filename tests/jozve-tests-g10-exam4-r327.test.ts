@@ -164,8 +164,8 @@ describe("jozve tests-g10 exam4 (r327 متوسط — p87-88, key+translations pp
     expect(byN(16).translation).toContain("کره ی");
   });
 
-  it("ids unique across the whole 438-item family (r332 gram3 appended)", () => {
+  it("ids unique across the whole 482-item family (r333 gram4 appended)", () => {
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(new Set(ids).size).toBe(438);
+    expect(new Set(ids).size).toBe(482);
   });
 });

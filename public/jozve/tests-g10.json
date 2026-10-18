@@ -7023,6 +7023,770 @@
           "translation": "هلن یک معلم خیلی خوب انگلیسی است که من مطمئنم تو از او راضی خواهی بود."
         }
       ]
+    },
+    {
+      "lesson": 26,
+      "title": "تشریحی گرامر — شکل صحیح صفات داخل پرانتز (ص۹۷)",
+      "level": "تشریحی — تایپی",
+      "count": 15,
+      "questions": [
+        {
+          "id": "g10-l26-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Rain in the wet season is --------------------------------------- (heavy) than during the rest of the year.",
+          "options": [
+            "heavier",
+            "heavy",
+            "the most heavy",
+            "as heavy as"
+          ],
+          "answer": 0,
+          "accepted": [
+            "heavier"
+          ],
+          "placeholder": "write the correct form of the adjective (comparative or superlative)…"
+        },
+        {
+          "id": "g10-l26-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Oh fine, it was raining yesterday but today the weather is --------------------------------------- (good).",
+          "options": [
+            "better",
+            "good",
+            "the most good",
+            "as good as"
+          ],
+          "answer": 0,
+          "accepted": [
+            "better"
+          ],
+          "placeholder": "write the correct form of the adjective (comparative or superlative)…"
+        },
+        {
+          "id": "g10-l26-3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Kish island is --------------------------------------- (interesting) island I have ever visited.",
+          "options": [
+            "the most interesting",
+            "interesting",
+            "more interesting",
+            "most interesting"
+          ],
+          "answer": 0,
+          "accepted": [
+            "the most interesting"
+          ],
+          "placeholder": "write the correct form of the adjective (comparative or superlative)…"
+        },
+        {
+          "id": "g10-l26-4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Travelling by plane is --------------------------------------- (fast) than travelling by train.",
+          "options": [
+            "faster",
+            "fast",
+            "the most fast",
+            "as fast as"
+          ],
+          "answer": 0,
+          "accepted": [
+            "faster"
+          ],
+          "placeholder": "write the correct form of the adjective (comparative or superlative)…"
+        },
+        {
+          "id": "g10-l26-5",
+          "n": 5,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "She thinks that Chinese is --------------------------------------- (difficult) than English.",
+          "options": [
+            "more difficult",
+            "difficult",
+            "the most difficult",
+            "as difficult as"
+          ],
+          "answer": 0,
+          "accepted": [
+            "more difficult"
+          ],
+          "placeholder": "write the correct form of the adjective (comparative or superlative)…"
+        },
+        {
+          "id": "g10-l26-6",
+          "n": 6,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "A: Do you feel better today?  B: No, I feel --------------------------------------- (bad).",
+          "options": [
+            "worse",
+            "bad",
+            "the most bad",
+            "as bad as"
+          ],
+          "answer": 0,
+          "accepted": [
+            "worse"
+          ],
+          "placeholder": "write the correct form of the adjective (comparative or superlative)…"
+        },
+        {
+          "id": "g10-l26-7",
+          "n": 7,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Ali is 8 and Reza is 10. Ali is --------------------------------------- (young) Reza.",
+          "options": [
+            "younger than",
+            "young",
+            "younger than",
+            "the most young"
+          ],
+          "answer": 0,
+          "accepted": [
+            "younger than"
+          ],
+          "placeholder": "write the correct form of the adjective (comparative or superlative)…"
+        },
+        {
+          "id": "g10-l26-8",
+          "n": 8,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Chile has a --------------------------------------- (small) population than China.",
+          "options": [
+            "smaller",
+            "small",
+            "the most small",
+            "as small as"
+          ],
+          "answer": 0,
+          "accepted": [
+            "smaller"
+          ],
+          "placeholder": "write the correct form of the adjective (comparative or superlative)…"
+        },
+        {
+          "id": "g10-l26-9",
+          "n": 9,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Greenland is --------------------------------------- (large) island in the world.",
+          "options": [
+            "the largest",
+            "large",
+            "the most large",
+            "as large as"
+          ],
+          "answer": 0,
+          "accepted": [
+            "the largest"
+          ],
+          "placeholder": "write the correct form of the adjective (comparative or superlative)…"
+        },
+        {
+          "id": "g10-l26-10",
+          "n": 10,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Don’t write a letter. It’s --------------------------------------- (easy) to call.",
+          "options": [
+            "easier",
+            "easy",
+            "the most easy",
+            "as easy as"
+          ],
+          "answer": 0,
+          "accepted": [
+            "easier"
+          ],
+          "placeholder": "write the correct form of the adjective (comparative or superlative)…"
+        },
+        {
+          "id": "g10-l26-11",
+          "n": 11,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "The Amazon is --------------------------------------- (wide) than the Nile.",
+          "options": [
+            "wider",
+            "wide",
+            "the most wide",
+            "as wide as"
+          ],
+          "answer": 0,
+          "accepted": [
+            "wider"
+          ],
+          "placeholder": "write the correct form of the adjective (comparative or superlative)…"
+        },
+        {
+          "id": "g10-l26-12",
+          "n": 12,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Jamaica is --------------------------------------- (sunny) than Norway.",
+          "options": [
+            "sunnier",
+            "sunny",
+            "the most sunny",
+            "as sunny as"
+          ],
+          "answer": 0,
+          "accepted": [
+            "sunnier"
+          ],
+          "placeholder": "write the correct form of the adjective (comparative or superlative)…"
+        },
+        {
+          "id": "g10-l26-13",
+          "n": 13,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Speak --------------------------------------- (loud), I can’t hear you.",
+          "options": [
+            "louder",
+            "loud",
+            "the most loud",
+            "as loud as"
+          ],
+          "answer": 0,
+          "accepted": [
+            "louder"
+          ],
+          "placeholder": "write the correct form of the adjective (comparative or superlative)…"
+        },
+        {
+          "id": "g10-l26-14",
+          "n": 14,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "The school is --------------------------------------- (far) the bank.",
+          "options": [
+            "farther than",
+            "far",
+            "farther than",
+            "the most far"
+          ],
+          "answer": 0,
+          "accepted": [
+            "farther than"
+          ],
+          "placeholder": "write the correct form of the adjective (comparative or superlative)…"
+        },
+        {
+          "id": "g10-l26-15",
+          "n": 15,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Canada is --------------------------------------- (big) France.",
+          "options": [
+            "bigger than",
+            "big",
+            "bigger than",
+            "the most big"
+          ],
+          "answer": 0,
+          "accepted": [
+            "bigger than"
+          ],
+          "placeholder": "write the correct form of the adjective (comparative or superlative)…"
+        }
+      ]
+    },
+    {
+      "lesson": 27,
+      "title": "تشریحی گرامر — جمله‌سازی با کلمات داده شده (ص۹۷)",
+      "level": "تشریحی — تایپی",
+      "count": 7,
+      "questions": [
+        {
+          "id": "g10-l27-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "beautiful / is / than / more / this scarf / in the window / the one.",
+          "options": [
+            "This scarf is more beautiful than the one in the window.",
+            "Winter is the coldest season of the year.",
+            "He was the best friend I had for years.",
+            "She walks faster than her brother."
+          ],
+          "answer": 0,
+          "accepted": [
+            "This scarf is more beautiful than the one in the window."
+          ],
+          "placeholder": "make a sentence with the given words…"
+        },
+        {
+          "id": "g10-l27-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "year / season / winter / coldest / of / the / the / is.",
+          "options": [
+            "Winter is the coldest season of the year.",
+            "He was the best friend I had for years.",
+            "She walks faster than her brother.",
+            "Are the gloves cheaper than the shirt?"
+          ],
+          "answer": 0,
+          "accepted": [
+            "Winter is the coldest season of the year."
+          ],
+          "placeholder": "make a sentence with the given words…"
+        },
+        {
+          "id": "g10-l27-3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "was / for years / the best / had / he / I / friend.",
+          "options": [
+            "He was the best friend I had for years.",
+            "She walks faster than her brother.",
+            "Are the gloves cheaper than the shirt?",
+            "What is the longest river in the world?"
+          ],
+          "answer": 0,
+          "accepted": [
+            "He was the best friend I had for years."
+          ],
+          "placeholder": "make a sentence with the given words…"
+        },
+        {
+          "id": "g10-l27-4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "walks / brother / she / her / faster / than.",
+          "options": [
+            "She walks faster than her brother.",
+            "Are the gloves cheaper than the shirt?",
+            "What is the longest river in the world?",
+            "They are not going to the worst hotel."
+          ],
+          "answer": 0,
+          "accepted": [
+            "She walks faster than her brother."
+          ],
+          "placeholder": "make a sentence with the given words…"
+        },
+        {
+          "id": "g10-l27-5",
+          "n": 5,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "are / the shirt / than / cheaper / the gloves ?",
+          "options": [
+            "Are the gloves cheaper than the shirt?",
+            "What is the longest river in the world?",
+            "They are not going to the worst hotel.",
+            "This scarf is more beautiful than the one in the window."
+          ],
+          "answer": 0,
+          "accepted": [
+            "Are the gloves cheaper than the shirt?"
+          ],
+          "placeholder": "make a sentence with the given words…"
+        },
+        {
+          "id": "g10-l27-6",
+          "n": 6,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "river / the / in / what / world / longest / is / the?",
+          "options": [
+            "What is the longest river in the world?",
+            "They are not going to the worst hotel.",
+            "This scarf is more beautiful than the one in the window.",
+            "Winter is the coldest season of the year."
+          ],
+          "answer": 0,
+          "accepted": [
+            "What is the longest river in the world?"
+          ],
+          "placeholder": "make a sentence with the given words…"
+        },
+        {
+          "id": "g10-l27-7",
+          "n": 7,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "hotel / are / worst / they / going to / the / not.",
+          "options": [
+            "They are not going to the worst hotel.",
+            "This scarf is more beautiful than the one in the window.",
+            "Winter is the coldest season of the year.",
+            "He was the best friend I had for years."
+          ],
+          "answer": 0,
+          "accepted": [
+            "They are not going to the worst hotel."
+          ],
+          "placeholder": "make a sentence with the given words…"
+        }
+      ]
+    },
+    {
+      "lesson": 28,
+      "title": "تشریحی گرامر — کامل کردن با دانش گرامری (ص۹۸)",
+      "level": "تشریحی — تایپی دوجای‌خالی",
+      "count": 10,
+      "questions": [
+        {
+          "id": "g10-l28-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "I am 20 years old. My brother is 25 years old. I am ----------------- him. He is ----------------- than me.",
+          "options": [
+            "younger than / older",
+            "more / than",
+            "the tallest",
+            "the farthest"
+          ],
+          "answer": 0,
+          "accepted": [
+            "younger than / older"
+          ],
+          "placeholder": "complete both blanks (use / between the two answers)…"
+        },
+        {
+          "id": "g10-l28-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "We have a poor family. They have a rich family. They have ------------------ money ------------------ us.",
+          "options": [
+            "more / than",
+            "the tallest",
+            "the farthest",
+            "bigger than / smaller"
+          ],
+          "answer": 0,
+          "accepted": [
+            "more / than"
+          ],
+          "placeholder": "complete both blanks (use / between the two answers)…"
+        },
+        {
+          "id": "g10-l28-3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Ali is 170 cm. Reza is 175 cm. Hamid is 180 cm. Actually, Hamid is ------------------ of all.",
+          "options": [
+            "the tallest",
+            "the farthest",
+            "bigger than / smaller",
+            "the smallest / the closest"
+          ],
+          "answer": 0,
+          "accepted": [
+            "the tallest"
+          ],
+          "placeholder": "complete both blanks (use / between the two answers)…"
+        },
+        {
+          "id": "g10-l28-4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Neptune is the eighth and ------------------ known planet from the Sun in the Solar System.",
+          "options": [
+            "the farthest",
+            "bigger than / smaller",
+            "the smallest / the closest",
+            "the largest"
+          ],
+          "answer": 0,
+          "accepted": [
+            "the farthest"
+          ],
+          "placeholder": "complete both blanks (use / between the two answers)…"
+        },
+        {
+          "id": "g10-l28-5",
+          "n": 5,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "A village is very small. A town is ------------------ a village, but ------------------ than a city.",
+          "options": [
+            "bigger than / smaller",
+            "the smallest / the closest",
+            "the largest",
+            "as old as"
+          ],
+          "answer": 0,
+          "accepted": [
+            "bigger than / smaller"
+          ],
+          "placeholder": "complete both blanks (use / between the two answers)…"
+        },
+        {
+          "id": "g10-l28-6",
+          "n": 6,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Mercury is ------------------ planet in the Solar System and ------------------ to the Sun.",
+          "options": [
+            "the smallest / the closest",
+            "the largest",
+            "as old as",
+            "tall"
+          ],
+          "answer": 0,
+          "accepted": [
+            "the smallest / the closest"
+          ],
+          "placeholder": "complete both blanks (use / between the two answers)…"
+        },
+        {
+          "id": "g10-l28-7",
+          "n": 7,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Jupiter is the fifth planet from the Sun and ------------------ in the Solar System.",
+          "options": [
+            "the largest",
+            "as old as",
+            "tall",
+            "the hottest"
+          ],
+          "answer": 0,
+          "accepted": [
+            "the largest"
+          ],
+          "placeholder": "complete both blanks (use / between the two answers)…"
+        },
+        {
+          "id": "g10-l28-8",
+          "n": 8,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "My parents are 60 years old. My father is ----------------- my mother.",
+          "options": [
+            "as old as",
+            "tall",
+            "the hottest",
+            "younger than / older"
+          ],
+          "answer": 0,
+          "accepted": [
+            "as old as"
+          ],
+          "placeholder": "complete both blanks (use / between the two answers)…"
+        },
+        {
+          "id": "g10-l28-9",
+          "n": 9,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "My uncle is very ------------------. He’s about 2 meters.",
+          "options": [
+            "tall",
+            "the hottest",
+            "younger than / older",
+            "more / than"
+          ],
+          "answer": 0,
+          "accepted": [
+            "tall"
+          ],
+          "placeholder": "complete both blanks (use / between the two answers)…"
+        },
+        {
+          "id": "g10-l28-10",
+          "n": 10,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Summer is ------------------ season of the year.",
+          "options": [
+            "the hottest",
+            "younger than / older",
+            "more / than",
+            "the tallest"
+          ],
+          "answer": 0,
+          "accepted": [
+            "the hottest"
+          ],
+          "placeholder": "complete both blanks (use / between the two answers)…"
+        }
+      ]
+    },
+    {
+      "lesson": 29,
+      "title": "تشریحی گرامر — تست چهارگزینه‌ای (ص۹۸)",
+      "level": "تشریحی — چهارگزینه‌ای",
+      "count": 12,
+      "questions": [
+        {
+          "id": "g10-l29-1",
+          "n": 1,
+          "category": "grammar",
+          "question": "The Eiffel tower is ------------------ the Statue of Liberty.",
+          "options": [
+            "the highest",
+            "higher than",
+            "highest",
+            "higher"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l29-2",
+          "n": 2,
+          "category": "grammar",
+          "question": "Spring is ------------------ than fall, but summer is the ------------------ of all.",
+          "options": [
+            "hotter / hottest",
+            "hottest / hotter",
+            "hotter / hotter",
+            "the hottest / hottest"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l29-3",
+          "n": 3,
+          "category": "grammar",
+          "question": "These tomatoes don’t taste very good. The other ones tasted ------------------.",
+          "options": [
+            "worse",
+            "good",
+            "better",
+            "bad"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l29-4",
+          "n": 4,
+          "category": "grammar",
+          "question": "People today aren’t very polite. In the past, they were ------------------.",
+          "options": [
+            "polite",
+            "more polite",
+            "the most polite",
+            "as polite as"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l29-5",
+          "n": 5,
+          "category": "grammar",
+          "question": "They’ve got ------------------ money than they need.",
+          "options": [
+            "the most",
+            "much",
+            "more",
+            "many"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l29-6",
+          "n": 6,
+          "category": "grammar",
+          "question": "Einstein was ------------------ man of the 20th century.",
+          "options": [
+            "intelligent",
+            "more intelligent",
+            "most intelligent",
+            "the most intelligent"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l29-7",
+          "n": 7,
+          "category": "grammar",
+          "question": "Tigers are as ------------------ as lions.",
+          "options": [
+            "more dangerous",
+            "the most dangerous",
+            "dangerous",
+            "most dangerous"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l29-8",
+          "n": 8,
+          "category": "grammar",
+          "question": "Sharks are ------------------ dangerous animals of the sea.",
+          "options": [
+            "more",
+            "much",
+            "many",
+            "the most"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l29-9",
+          "n": 9,
+          "category": "grammar",
+          "question": "Your parents are ------------------ friends for you.",
+          "options": [
+            "better",
+            "good",
+            "the best",
+            "worse"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l29-10",
+          "n": 10,
+          "category": "grammar",
+          "question": "She told me the ------------------ story I had ever heard.",
+          "options": [
+            "strangest",
+            "stranger than",
+            "the strangest",
+            "strange"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l29-11",
+          "n": 11,
+          "category": "grammar",
+          "question": "I know he is not very good at math but David is ------------------.",
+          "options": [
+            "worse than",
+            "bad",
+            "worst",
+            "worse"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l29-12",
+          "n": 12,
+          "category": "grammar",
+          "question": "The turtle is ------------------ animal I have ever known.",
+          "options": [
+            "slowest",
+            "slower",
+            "the slowest",
+            "slower than"
+          ],
+          "answer": 2
+        }
+      ]
     }
   ],
   "source": {
@@ -7291,6 +8055,36 @@
         "Q31 گزینه‌ها به سبک «a.» نقطه‌دار می‌آیند (تا Q30 سبک «a)») — تغییرِ سبکِ چاپ در میانهٔ آزمون؛ استثناهای roof/belief در توضیحِ کلید",
         "جعبهٔ اصطلاحِ پس از Q40: «اصطلاح به کار رفته در تست فوق توجه بکنید: To be happy with sb — از دست کسی راضی بودن:» — ترتیبِ وارونهٔ چاپی حفظ شد",
         "Note خالیِ خط‌چین در پایین ص۷۴ (جعبهٔ خالی)؛ جداسازِ خط‌چینِ قرمز پیش از Q39"
+      ]
+    },
+    "gram4": {
+      "exam": "آزمون تشریحی گرامر درس دوم — انواع صفات (ص۹۷-۹۸)",
+      "header": "«آزمون تشریحی گرامر درس دوم» (پاسخنامه صفحه: ۲۶۴) — ۴ بخش: ۱ شکلِ صحیحِ صفات (۱۵) + ۲ جمله‌سازی (۷) + ۳ کامل‌کردنِ دوجای‌خالی (۱۰) + ۴ چهارگزینه‌ای (۱۲) = ۴۴ آیتم در ۴ بانک",
+      "keyPages": "264",
+      "keyVerification": "print key p264 «آزمون تشریحی گرامر درس دوم — (آزمون: صفحه ۹۷ و ۹۸)» — 44/44 agree with semantic pre-fill (S1 گریدِ ۱۵تایی + S2 جمله‌های کامل + S3 گریدِ اسلش‌دار + S4 واژه→اندیس), zero divergence",
+      "extractedRound": "r333",
+      "pattern": "r329 (تشریحیِ گرامرِ درس‌محور: تایپی با options[0]=کلیدِ چاپ + MCQ با نگاشتِ واژه→اندیس) + r333 (رندرِ حاکم بر لایه در S3/S4)",
+      "printQuirks": [
+        "سربرگِ ص۹۷ و ص۲۶۴ هر دو با یک زومِ ۲۶۰۰dpi حاکم شدند: «آزمون تشریحی گرامر درس دوم» — لایه «تسی یچ» سومین تکرارِ درسِ r318/r331 است (سربرگ‌های رنگی این جزوه در لایه بی‌اعتماد)؛ کلید: «(آزمون: صفحه ۹۷ و ۹۸)»",
+        "TOCِ ص۷۵ این آزمون را «آزمون تشریحی گرامر «انواع صفات»» می‌نامید — سربرگِ چاپی خود آزمون «تشریحی گرامر درس دوم» است؛ عنوانِ TOC حاکم نشد چون سربرگِ خودِ آزمون ملاک است (درسِ r318)",
+        "S1 دستورِ بخش: «شکل صحیح صفات داخل پرانتز (تفضیلی یا عالی) را بنویسید.» — لایه «تفضییل یا عایل» نویز؛ صفت‌های داخل پرانتز با رنگِ آبی و بولد چاپ شده‌اند",
+        "S1 کلیدهای Q7/14/15 با «than» هستند (younger than/farther than/bigger than) در حالی که Q1/4/8/11/12 «than» را درونِ ساقه دارند — ناهماهنگیِ خودِ چاپ؛ Q13 کلید «louder» بدون than (Speak --- (loud),)",
+        "S1-Q2: «Oh fine, it was raining yesterday…» — «Oh fine,» آغازِ غیرمعمول، عینِ چاپ",
+        "S1-Q6: «A: Do you feel better today?  B: No, I feel --- (bad).» — دو فاصله بین A و B",
+        "S3-Q1: لایه دو جمله را جابه‌جا داده بود («My brother is 20… I am 25») — رندرِ ۲۲۰۰dpi حاکم: «I am 20 years old. My brother is 25 years old.» → کلید «younger than / older» با ترتیبِ جای خالی‌ها هم‌راستا شد",
+        "S3-Q2: «They have --- money --- us.» — دو جای خالی ۱۸تایی؛ کلید «more / than»",
+        "S3-Q9: لایه «------------- -----» شکسته — یک جای خالیِ ۱۸تایی؛ کلید «tall» (صفتِ مثبت — تنها مورد)",
+        "S4-Q2: ترتیبِ گزینه‌های a/b در لایه جابه‌جا بود — چاپ: a. hotter / hottest | b. hottest / hotter | c. hotter / hotter | d. the hottest / hottest → کلید «hotter / hottest» = a؛ «the» درونِ ساقه پیش از جای خالی دوم است",
+        "S4-Q6: «20th» با th بالانویس چاپ؛ گزینه‌ها a. intelligent b. more intelligent c. most intelligent d. the most intelligent",
+        "S4-Q7: لایه «as» نخست را حذف کرده بود — چاپ: «Tigers are as --- as lions.»",
+        "S4-Q10: لایه گزینه‌ها را «a. strangest b. stranger than c. the strangest d. strange» — عینِ چاپ؛ کلید a (strangest) — «the» در ساقه",
+        "S4-Q11: گزینه‌ها a. worse than b. bad c. worst d. worse — کلید d (worse)",
+        "S4 گزینه‌ها در قاب‌های زردِ حاشیه‌دار با a/b/c/d ایتالیکِ آبی — سبکِ MCQِ این جزوه",
+        "دستورِ S4: «بهترین گزینه را انتخاب کنید ..» — لایه «بهی ین» نویز",
+        "S2 bank 5: «the gloves ?» فاصله پیش از ؟؛ bank 6: «the?» چسبیده — ناهماهنگیِ خودِ چاپ",
+        "جدول‌های کلید (S1/S3) با شماره‌های قرمز و ردیف‌های خاکستریِ یک‌درمیان؛ S2 کلیدها جمله‌کامل زیر هم",
+        "S2-Q3 کلید: «He was the best friend I had for years.» — از بانک «was / for years / the best / had / he / I / friend.»",
+        "بدونِ ترجمهٔ چاپی در کلید (تشریحیِ واژه‌محور — مثل r329)؛ جعبهٔ Note در این آزمون دیده نشد"
       ]
     }
   }

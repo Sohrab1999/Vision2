@@ -173,8 +173,8 @@ describe("jozve tests-g10 exam5 (r328 استاندارد درس دوم — p89-9
     expect(byN(28).translation).toContain("می کردم");
   });
 
-  it("ids unique across the whole 438-item family (r332 gram3 appended)", () => {
+  it("ids unique across the whole 482-item family (r333 gram4 appended)", () => {
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(new Set(ids).size).toBe(438);
+    expect(new Set(ids).size).toBe(482);
   });
 });

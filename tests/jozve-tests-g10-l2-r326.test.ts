@@ -22,11 +22,11 @@ describe("tests-g10 tashrihi2 — تشریحی واژگان درس دوم (r326)
     expect(src.printQuirks.some((q: string) => q.includes("to keeps"))).toBe(true);
   });
 
-  it("file shape: 25 banks, family 438 items (40 gram3 appended)", () => {
+  it("file shape: 29 banks, family 482 items (44 gram4 appended)", () => {
     expect(doc.grade).toBe(10);
-    expect(doc.lessons).toHaveLength(25);
-    expect(doc.lessons.slice(6).map((l: { count: number }) => l.count)).toEqual([16, 8, 8, 25, 40, 40, 15, 7, 5, 10, 20, 16, 12, 6, 7, 14, 6, 6, 40]);
-    expect(doc.lessons.reduce((s: number, l: { count: number }) => s + l.count, 0)).toBe(438);
+    expect(doc.lessons).toHaveLength(29);
+    expect(doc.lessons.slice(6).map((l: { count: number }) => l.count)).toEqual([16, 8, 8, 25, 40, 40, 15, 7, 5, 10, 20, 16, 12, 6, 7, 14, 6, 6, 40, 15, 7, 10, 12]);
+    expect(doc.lessons.reduce((s: number, l: { count: number }) => s + l.count, 0)).toBe(482);
   });
 
   it("bank 7 (بانک واژه): 16 typed keys locked to p258, extras disease/element never the accepted key", () => {
@@ -93,6 +93,6 @@ describe("tests-g10 tashrihi2 — تشریحی واژگان درس دوم (r326)
 
   it("ids unique across the whole 438-item family", () => {
     const ids = doc.lessons.flatMap((l: { questions: { id: string }[] }) => l.questions.map((q) => q.id));
-    expect(new Set(ids).size).toBe(438);
+    expect(new Set(ids).size).toBe(482);
   });
 });
