@@ -11987,6 +11987,574 @@
           "answer": 0
         }
       ]
+    },
+    {
+      "lesson": 57,
+      "title": "متوسط — تست واژگان درس سوم (ص۱۲۳-۱۲۴)",
+      "level": "متوسط — چهارگزینه‌ای",
+      "count": 40,
+      "questions": [
+        {
+          "id": "g10-l57-1",
+          "n": 1,
+          "category": "vocab",
+          "question": "Jack arrived home while his father was watching his ------------------- film at the living room.",
+          "options": [
+            "interested",
+            "famous",
+            "favorite",
+            "energetic"
+          ],
+          "answer": 2,
+          "translation": "جک در حالیکه پدرش مشغول تماشای فیلم مورد علاقهاش در اتاق نشیمن بود، به خانه رسید."
+        },
+        {
+          "id": "g10-l57-2",
+          "n": 2,
+          "category": "vocab",
+          "question": "We’re planning to travel to Russian by ------------------- this summer. I like flying.",
+          "options": [
+            "airplane",
+            "boat",
+            "ship",
+            "train"
+          ],
+          "answer": 0,
+          "translation": "ما قصد داریم تابستان امسال با هواپیما به روسیه مسافرت کنیم. من پرواز کردن را دوست دارم."
+        },
+        {
+          "id": "g10-l57-3",
+          "n": 3,
+          "category": "vocab",
+          "question": "I’m reading a book which is about ----------------- Iranian great scientists such as Avecina and Razi.",
+          "options": [
+            "favorite",
+            "famous",
+            "energetic",
+            "possible"
+          ],
+          "answer": 1,
+          "translation": "من درحال خواندن کتابی هستم که در مورد دانشمندان بزرگ ایرانی مشهور مانند ابوعلی سینا و رازی هست."
+        },
+        {
+          "id": "g10-l57-4",
+          "n": 4,
+          "category": "vocab",
+          "question": "That novel was so ------------------- that I learned a lot of interesting things from it.",
+          "options": [
+            "useful",
+            "natural",
+            "famous",
+            "energetic"
+          ],
+          "answer": 0,
+          "translation": "آن رمان چنان مفید بود که من چیزهای جالب زیادی از آن یاد گرفتم."
+        },
+        {
+          "id": "g10-l57-5",
+          "n": 5,
+          "category": "vocab",
+          "question": "She studies ------------------- at Tehran university. She likes to be a doctor.",
+          "options": [
+            "invention",
+            "novels",
+            "research",
+            "medicine"
+          ],
+          "answer": 3,
+          "translation": "او در دانشگاه تهران پزشکی می خواند. او دوست دارد، دکتر بشود."
+        },
+        {
+          "id": "g10-l57-6",
+          "n": 6,
+          "category": "vocab",
+          "question": "A: “Who came to the school -------------------, you or your friend?”                         B: “I came first.”",
+          "options": [
+            "later",
+            "sooner",
+            "at last",
+            "finally"
+          ],
+          "answer": 1,
+          "translation": "الف: \"چه کسی زودتر به مدرسه آمد، تو یا دوستت؟\" ب: \"من اول آمدم.\""
+        },
+        {
+          "id": "g10-l57-7",
+          "n": 7,
+          "category": "vocab",
+          "question": "My brother is really -------------------. He's always exercising.",
+          "options": [
+            "successful",
+            "useful",
+            "famous",
+            "energetic"
+          ],
+          "answer": 3,
+          "translation": "برادرم خیلی پر انرژی است. او همیشه ورزش می کند."
+        },
+        {
+          "id": "g10-l57-8",
+          "n": 8,
+          "category": "vocab",
+          "question": "They do ------------------- in the laboratory on blood cells.",
+          "options": [
+            "knowledge",
+            "experiment",
+            "science",
+            "success"
+          ],
+          "answer": 1,
+          "translation": "آنها در آزمایشگاه روی سلولهای خونی آزمایش انجام می دهند."
+        },
+        {
+          "id": "g10-l57-9",
+          "n": 9,
+          "category": "vocab",
+          "question": "Hard-work and love of God bring ------------------- for everyone.",
+          "options": [
+            "success",
+            "belief",
+            "pain",
+            "failure"
+          ],
+          "answer": 0,
+          "translation": "پشتکار و توکل بر خدا برای همه موفقیت می آورد."
+        },
+        {
+          "id": "g10-l57-10",
+          "n": 10,
+          "category": "vocab",
+          "question": "Tomas Edison ------------------- the first light bulb and then became famous.",
+          "options": [
+            "invented",
+            "solved",
+            "quitted",
+            "developed"
+          ],
+          "answer": 0,
+          "translation": "توماس ادیسون اولین لامپ را اختراع کرد و بعد از آن مشهور شد."
+        },
+        {
+          "id": "g10-l57-11",
+          "n": 11,
+          "category": "vocab",
+          "question": "My teacher is so helpful. He helps me in ------------------- physics problems.",
+          "options": [
+            "developing",
+            "solving",
+            "growing",
+            "building"
+          ],
+          "answer": 1,
+          "translation": "معلمم خیلی یاری رسان است. او در حل مسائل فیزیک به من کمک می کند."
+        },
+        {
+          "id": "g10-l57-12",
+          "n": 12,
+          "category": "vocab",
+          "question": "My father reads some ------------------- of Hafez on Yalda night every year.",
+          "options": [
+            "poets",
+            "poems",
+            "translations",
+            "researches"
+          ],
+          "answer": 1,
+          "translation": "پدرم هر سال چند شعر حافظ را در شب یلدا می خواند."
+        },
+        {
+          "id": "g10-l57-13",
+          "n": 13,
+          "category": "vocab",
+          "question": "My uncle’s ------------------- is in Behesht Zahra and I sometimes go there.",
+          "options": [
+            "cradle",
+            "grave",
+            "death",
+            "belief"
+          ],
+          "answer": 1,
+          "translation": "قبر عمویم در بهشت زهرا است و من بعضی اوقات به آنجا می روم."
+        },
+        {
+          "id": "g10-l57-14",
+          "n": 14,
+          "category": "vocab",
+          "question": "He ------------------- his work sadly and went out at once.",
+          "options": [
+            "gave up",
+            "felt",
+            "went out",
+            "solved"
+          ],
+          "answer": 0,
+          "translation": "او کارش را با ناراحتی ترک کرد و فوراً بیرون رفت."
+        },
+        {
+          "id": "g10-l57-15",
+          "n": 15,
+          "category": "vocab",
+          "question": "A ------------------- is a someone who spends a lot of time thinking about ideas and important problems.",
+          "options": [
+            "thinker",
+            "farmer",
+            "translator",
+            "reader"
+          ],
+          "answer": 0,
+          "translation": "یک متفکر شخصی است که وقت زیادی به فکر کردن در مورد ایده ها و مسائل مهم صرف می کند."
+        },
+        {
+          "id": "g10-l57-16",
+          "n": 16,
+          "category": "vocab",
+          "question": "Many people try hard to find ------------------- about the world.",
+          "options": [
+            "novels",
+            "facts",
+            "problems",
+            "cradles"
+          ],
+          "answer": 1,
+          "translation": "بسیاری از مردم سخت تلاش می کنند که حقایق در مورد جهان را پیدا کنند."
+        },
+        {
+          "id": "g10-l57-17",
+          "n": 17,
+          "category": "vocab",
+          "question": "I never give up doing research. “Give up” is the synonym of -------------------.",
+          "options": [
+            "develop",
+            "quit",
+            "invent",
+            "solve"
+          ],
+          "answer": 1,
+          "translation": "من هرگز تحقیق کردن را رها نمی کنم. \"رها کردن\" مترادف \"ترک کردن\" است."
+        },
+        {
+          "id": "g10-l57-18",
+          "n": 18,
+          "category": "vocab",
+          "question": "He finally ------------------- much money from his great invention.",
+          "options": [
+            "lost",
+            "gained",
+            "found",
+            "solved"
+          ],
+          "answer": 1,
+          "translation": "او سرانجام پول زیادی از اختراع بزرگش بدست آورد."
+        },
+        {
+          "id": "g10-l57-19",
+          "n": 19,
+          "category": "vocab",
+          "question": "My younger sister is interested in medicine and helping -------------------.",
+          "options": [
+            "patients",
+            "nurses",
+            "speakers",
+            "writers"
+          ],
+          "answer": 0,
+          "translation": "خواهر کوچکترم به پزشکی و کمک به بیماران علاقه مند است."
+        },
+        {
+          "id": "g10-l57-20",
+          "n": 20,
+          "category": "vocab",
+          "question": "The ------------------- of science is clear for everyone. It makes our lives get better.",
+          "options": [
+            "value",
+            "pain",
+            "light",
+            "belief"
+          ],
+          "answer": 0,
+          "translation": "ارزش علم برای همه واضح است. آن (علم) باعث می شود زندگی مان بهتر شود."
+        },
+        {
+          "id": "g10-l57-21",
+          "n": 21,
+          "category": "vocab",
+          "question": "“------------------- knowledge from cradle to the grave.” The Holy Prophet (PBHU) said.",
+          "options": [
+            "Give up",
+            "Seek",
+            "Solve",
+            "Use"
+          ],
+          "answer": 1,
+          "translation": "پیامبر اکرم (درود خدا بر او باد) اینچنین فرمود: \"زگهواره تا گور دانش بجوی.\""
+        },
+        {
+          "id": "g10-l57-22",
+          "n": 22,
+          "category": "vocab",
+          "question": "It’s a fact that children usually ------------------- rapidly and everyone likes it.",
+          "options": [
+            "look after",
+            "grow up",
+            "put aside",
+            "take off"
+          ],
+          "answer": 1,
+          "translation": "این حقیقتی است که بچه ها معمولاً به سرعت رشد می کنند و همه این (حقیقت) را دوست دارند."
+        },
+        {
+          "id": "g10-l57-23",
+          "n": 23,
+          "category": "vocab",
+          "question": "Taking photos with a ------------------- camera is so enjoyable.",
+          "options": [
+            "energetic",
+            "modern",
+            "successful",
+            "easy"
+          ],
+          "answer": 1,
+          "translation": "عکس گرفتن با دوربین مدرن خیلی لذت بخش است."
+        },
+        {
+          "id": "g10-l57-24",
+          "n": 24,
+          "category": "vocab",
+          "question": "Sadly, John lost one of his eyes in Charshanbeh Souri last year. \"Sadly\" means -------------------.",
+          "options": [
+            "unsuccessfully",
+            "unfortunately",
+            "fortunately",
+            "rapidly"
+          ],
+          "answer": 1,
+          "translation": "متاسفانه، جان پارسال یکی از چشمهایش را در 4شنبه سوری از دست داد. \"متاسفانه\" هم معنی: بطور تاسف بار."
+        },
+        {
+          "id": "g10-l57-25",
+          "n": 25,
+          "category": "vocab",
+          "question": "My friend didn’t ------------------- at school for three months last year because of his sickness.",
+          "options": [
+            "quit",
+            "solve",
+            "attend",
+            "invent"
+          ],
+          "answer": 2,
+          "translation": "دوستم پارسال به خاطر بیماریش به مدت سه ماه در مدرسه حضور نیافت."
+        },
+        {
+          "id": "g10-l57-26",
+          "n": 26,
+          "category": "vocab",
+          "question": "Hard-work is the ------------------- to everyone’s success in the world.",
+          "options": [
+            "key",
+            "aim",
+            "pain",
+            "gain"
+          ],
+          "answer": 0,
+          "translation": "پشتکار کلید موفقیت همه در جهان است."
+        },
+        {
+          "id": "g10-l57-27",
+          "n": 27,
+          "category": "vocab",
+          "question": "Corona Virus is ------------------- the world rapidly and a lot of people are getting sick.",
+          "options": [
+            "putting side",
+            "getting around",
+            "going up",
+            "filling in"
+          ],
+          "answer": 1,
+          "translation": "ویروس کرونا به سرعت در جهان در حال گسترش است و افراد زیادی مریض می شوند."
+        },
+        {
+          "id": "g10-l57-28",
+          "n": 28,
+          "category": "vocab",
+          "question": "Reading and ------------------- the Holy Quran is really important and necessary for us in any age.",
+          "options": [
+            "publishing",
+            "reciting",
+            "speaking",
+            "writing"
+          ],
+          "answer": 1,
+          "translation": "خواندن و تلاوت قرآن کریم برای ما در هر سنی خیلی مهم و ضروری است"
+        },
+        {
+          "id": "g10-l57-29",
+          "n": 29,
+          "category": "vocab",
+          "question": "Some great writers ------------------- their books every year.",
+          "options": [
+            "solve",
+            "publish",
+            "give up",
+            "develop"
+          ],
+          "answer": 1,
+          "translation": "بعضی از نویسندگان بزرگ، هر سال کتابهایشان را منتشر می کنند."
+        },
+        {
+          "id": "g10-l57-30",
+          "n": 30,
+          "category": "vocab",
+          "question": "By learning a new language we can ------------------- some books into that language.",
+          "options": [
+            "write",
+            "publish",
+            "translate",
+            "attend"
+          ],
+          "answer": 2,
+          "translation": "با یادگیری یک زبان جدید ما می توانیم بعضی کتابها را به آن زبان ترجمه کنیم."
+        },
+        {
+          "id": "g10-l57-31",
+          "n": 31,
+          "category": "vocab",
+          "question": "The firefighters always ------------------- of their car rapidly for putting out the fire.",
+          "options": [
+            "jump out",
+            "put aside",
+            "fill out",
+            "grow up"
+          ],
+          "answer": 0,
+          "translation": "آتش نشانان برای خاموش کردن آتش، همیشه به سرعت از ماشین هایشان بیرون می پرند."
+        },
+        {
+          "id": "g10-l57-32",
+          "n": 32,
+          "category": "vocab",
+          "question": "For my backache, I must take some -------------------.",
+          "options": [
+            "experiments",
+            "medicine",
+            "researches",
+            "inventions"
+          ],
+          "answer": 1,
+          "translation": "من برای کمر دردم باید مقداری دارو بخورم."
+        },
+        {
+          "id": "g10-l57-33",
+          "n": 33,
+          "category": "vocab",
+          "question": "The key to students’ success is having ------------------- in themselves.",
+          "options": [
+            "research",
+            "experiment",
+            "belief",
+            "invention"
+          ],
+          "answer": 2,
+          "translation": "کلید موفقیت دانش آموزان، داشتن اعتقاد به خودشان است."
+        },
+        {
+          "id": "g10-l57-34",
+          "n": 34,
+          "category": "vocab",
+          "question": "My grandfather ------------------- in 1397 because of his illness.",
+          "options": [
+            "developed",
+            "grew up",
+            "passed away",
+            "attended"
+          ],
+          "answer": 2,
+          "translation": "پدر بزرگم در سال 1397 به علت بیماری اش به رحمت خدا رفت."
+        },
+        {
+          "id": "g10-l57-35",
+          "n": 35,
+          "category": "vocab",
+          "question": "With a ------------------- heart I have some problems in running.",
+          "options": [
+            "powerful",
+            "weak",
+            "heavy",
+            "healthy"
+          ],
+          "answer": 1,
+          "translation": "من با یک قلب ضعیف، مشکلاتی در دویدن دارم."
+        },
+        {
+          "id": "g10-l57-36",
+          "n": 36,
+          "category": "vocab",
+          "question": "The little baby sleeping in the ------------------- is so pretty.",
+          "options": [
+            "grave",
+            "cradle",
+            "shelf",
+            "table"
+          ],
+          "answer": 1,
+          "translation": "این بچه کوچک که در گهواره خوابیده، خیلی زیباست."
+        },
+        {
+          "id": "g10-l57-37",
+          "n": 37,
+          "category": "vocab",
+          "question": "While I was sleeping in my bedroom at 11 last night, ------------------- I heard a loud noise and woke up rapidly.",
+          "options": [
+            "daily",
+            "slowly",
+            "suddenly",
+            "recently"
+          ],
+          "answer": 2,
+          "translation": "دیشب هنگامیک ساعت 11 در اتاق خوابم خوابیده بودم، ناگهان یک صدای بلندی شنیدم و به سرعت بیدار شدم."
+        },
+        {
+          "id": "g10-l57-38",
+          "n": 38,
+          "category": "vocab",
+          "question": "As an English teacher I have great ------------------- in teaching English.",
+          "options": [
+            "fact",
+            "drop",
+            "interest",
+            "size"
+          ],
+          "answer": 2,
+          "translation": "به عنوان یک معلم انگلیسی، من علاقه زیادی به تدریس انگلیسی دارم."
+        },
+        {
+          "id": "g10-l57-39",
+          "n": 39,
+          "category": "vocab",
+          "question": "He doesn’t have any ------------------- about space. He is going to learn some things about it soon.",
+          "options": [
+            "knowledge",
+            "belief",
+            "creation",
+            "sign"
+          ],
+          "answer": 0,
+          "translation": "او هیچ دانشی در مورد فضا ندارد. او می خواهد بزودی چیزهایی در مورد آن را یاد بگیرد."
+        },
+        {
+          "id": "g10-l57-40",
+          "n": 40,
+          "category": "vocab",
+          "question": "Our country needs to ------------------- a new kind of energy for the future.",
+          "options": [
+            "develop",
+            "answer",
+            "solve",
+            "believe"
+          ],
+          "answer": 0,
+          "translation": "کشورمان به توسعه نوع جدیدی از انرژی برای آینده نیاز دارد."
+        }
+      ]
     }
   ],
   "source": {
@@ -12413,6 +12981,34 @@
         "MCQ-14: جای خالیِ چاپِ ساقه فقط ۴ تیره است («----») برخلافِ ۱۸-۲۵ تیرهٔ بقیه — ناهماهنگیِ خودِ چاپ؛ نرمال‌شده به تیرهٔ استانداردِ خانواده",
         "سکشن‌۱ Q1: کاما چسبیده به جای خالی («------------------, we got home») — عینِ چاپ",
         "جعبهٔ «Note:» خالیِ خط‌چین در پایینِ ص۲۷۴ (۴ خط — همان الگویِ r334)"
+      ]
+    },
+    "l3vocab": {
+      "exam": "متوسط — تست واژگان درس سوم (ص۱۲۳-۱۲۴)",
+      "header": "سربرگِ ص۱۲۳ (رندرِ ۶۰۰dpi): «تست واژگان \"درس سوم - پایه دهم\" سطح: \"متوسط\" (پاسخنامه صفحه: ۲۷۵-۲۷۶؛ عینِ چاپ با رقمِ لاتین 275-276)» — سربرگِ رنگیِ سالم؛ سربرگِ کلیدِ ص۲۷۵: «کلید و ترجمه تستهای واژگان \"درس سوم- پایه دهم\" (سؤالات: صفحه 123 و 124)» — لایهٔ «سؤاالت» = تجزیهٔ لایگِچرِ «سؤالات» (رندر حاکم: تمیز)؛ قالبِ گریدِ کلید: «.N گزینه (X) ترجمه تست: ...» با چیپِ زردِ حرف و کلیدواژه‌های قرمز درونِ ترجمه‌ها (۲۸ واژهٔ قرمز — در داده متنِ ساده ذخیره شد)",
+      "keyPages": "275-276",
+      "extractedRound": "r339",
+      "keyVerification": "گریدِ حرفیِ چاپِ ص۲۷۵-۲۷۶ (Q1-28 در ص۲۷۵، Q29-40 در ص۲۷۶): cabadbdbaa/bbbaabbbaa/bbbbcabbbc/abccbbccaa — ۴۰/۴۰ با پیش‌پرکردنِ معنایی هم‌رأی (مثال‌های حاکم: Q6 «sooner» با «زودتر»، Q10 «اختراع»، Q22 «رشد می کنند»، Q25 «حضور نیافت»، Q27 «در حال گسترش»، Q31 «بیرون می پرند»، Q34 «به رحمت خدا رفت»، Q37 «ناگهان»، Q40 «توسعه») — صفر واگرایی؛ هر کلید هم به واژهٔ گزینه قفل شد",
+      "pattern": "r324/r325 — یک بانک ۴۰MCQ به ازای آزمون؛ هر آیتم ترجمهٔ چاپیِ «ترجمه تست» در فیلد translation؛ هفدهمین گروهِ کارتِ دهم",
+      "translations": "۴۰ ترجمهٔ چاپی — رونویسیِ رندر (۳۰۰dpi کامل ×۴ صفحه + ۳۶۰۰-۵۲۰۰dpi جراحی)؛ قاعدهٔ خانوادهٔ واژگان (r324/r325): بدونِ نیم‌فاصله (می کنند/می خواند فاصله‌دار)، اعرابِ چاپ حذف (آتشِ/کردنِ/کِلید)، تحریف‌های لایه ترمیم (عالقه→علاقه، معموآل→معمولاً، تالوت→تلاوت، تالش→تلاش، مشکالتی→مشکلاتی، منتسی یم→منتشر می، گسی ش→گسترش، بیر ون یم پرند→بیرون می پرند، ی دانیس→دانشی، المپ→لامپ، اخی اع→اختراع، رزش ا→ارزش، سؤاالت→سؤالات) و چاپ‌غلط‌های رندر-تأیید عیناً محفوظ (هنگامیک، 4شنبه، آمدم، زگهواره چسبیده)",
+      "printQuirks": [
+        "Q21: «(PBHU)» عینِ چاپ (PBUH انتظار می‌رفت — چاپ‌غلطِ مستند؛ قرینهٔ fallowingِ r337)",
+        "Q2: «travel to Russian» عینِ چاپ (Russia انتظار می‌رفت)؛ Q1: «film at the living room» با at (in انتظار می‌رفت)",
+        "Q15: «A ------ is a someone who...» — «a someone» عینِ چاپ (a اضافه)",
+        "Q37: جای خالیِ چاپ فقط ۷ تیره در برابرِ ۱۹ تیرهٔ استاندارد (Q3 = ۱۷) — نرمال‌شده به تیرهٔ استانداردِ خانواده (الگوی r338 MCQ-14)؛ ساقه‌های دیگر عینِ چاپ",
+        "Q7: آپاستروفِ مستقیمِ He's (U+0027) در برابرِ تایپوگرافیکِ ۹ آیتمِ دیگر (We’re/I’m/uncle’s/It’s/didn’t/everyone’s/students’/doesn’t) — ناسازگاریِ خودِ چاپ",
+        "Q24: «\"Sadly\"» با گیومهٔ مستقیم (U+0022) در برابرِ گیومهٔ تایپوگرافیکِ Q6/Q17/Q21 — ناسازگاریِ خودِ چاپ؛ Sadly در ساقه ایتالیک",
+        "Q17: «give up» ایتالیک+زیرخط‌دار در ساقه؛ در ترجمه هر دو اصطلاح گیومه‌دار: \"رها کردن\" مترادف \"ترک کردن\" (لایه فقط اولی را گیومه‌دار داشت — رندرِ ۴۲۰۰dpi حاکم)",
+        "Q6: دیالوگِ A/B با شکافِ ستونیِ ~۲۵ فاصله‌ای در چاپ (در داده تک‌فاصله شد)؛ ترجمه با «الف:/ب:» — «آمد،» کامادار و «من اول آمدم.»",
+        "Q5: «دوست دارد، دکتر بشود.» — کامای چاپ بعدِ دارد؛ Q1: «بود، به خانه رسید.» کامادار",
+        "Q21: «فرمود: \"زگهواره...\"» کولون+گیومه (لایهٔ خام کولون را بلعیده بود — رندرِ ۳۶۰۰dpi حاکم)؛ «زگهواره» چسبیده عینِ چاپ (اصطلاحِ «ز گهواره تا گور دانش بجوی»)",
+        "Q22: «حقیقتی است» (لایه «حقیقت ی است» — رندرِ ۳۶۰۰dpi چسبیده) + «بچه ها» فاصله‌دار؛ Q24: «در 4شنبه سوری» رقمِ لاتینِ ۴ چسبیده به شنبه (لایه «در4» — رندر: فاصله بعدِ در)؛ Q34: «سال 1397» فاصله‌دار با رقمِ لاتین",
+        "Q33: «اعتقاد» نه «اعتماد» — لایه + رندرِ ۵۲۰۰dpi حاکم (خوانشِ اولیهٔ ۳۰۰dpi من غلط بود)؛ با نقطهٔ پایانی «است.» در حالیکه Q28 بدونِ نقطه «ضروری است» پایان می‌پذیرد — ناسازگاریِ خودِ چاپ",
+        "Q37: «هنگامیک» چاپ‌غلطِ عینِ چاپ (هنگامی که انتظار می‌رفت؛ لایه «هنگام یکه» — رندرِ ۳۶۰۰dpi: یک واژهٔ چسبیده) — قرینهٔ دو-زیادِ راندِ r338",
+        "Q26/Q27: کلیدواژهٔ قرمزِ «کلید»/«در حال گسترش» در گریدِ چاپ روی سطرِ برچسب جدا افتاده بود — در متنِ ترجمه سرِ جایِ درستش بازسازی شد",
+        "Q31: «ماشین هایشان» فاصله‌دار با ی (لایهٔ واژه‌محور حاکم بر تردیدِ رندر)؛ اعرابِ چاپ («آتشِ نشانان»/«کردنِ») طبق قاعدهٔ خانواده حذف شد",
+        "جعبهٔ «Note:» خالیِ پاصفحهٔ ص۲۷۶ با عنوانِ قرمز و ۱۶ خطِ خط‌چین (بزرگ‌تر از جعبهٔ ۴خطیِ r334/r338)",
+        "پاصفحهٔ ص۱۲۳/۱۲۴: «جزوه جامع زبان انگلیسی پایه دهم» + «تألیف و گردآوری: جمال احمدی و همکاران» + «Vision One» (سربرگِ مشترکِ هر دو صفحه)"
       ]
     }
   }

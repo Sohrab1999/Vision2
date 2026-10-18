@@ -232,7 +232,7 @@ describe("jozve tests-g10 gram6 (r335 کنکوری/تألیف گرامر و نگ
 
   it("no duplicate ids across the whole family (547)", () => {
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(ids.length).toBe(734);
-    expect(new Set(ids).size).toBe(734);
+    expect(ids.length).toBe(774);
+    expect(new Set(ids).size).toBe(774);
   });
 });
