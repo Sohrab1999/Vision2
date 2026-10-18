@@ -16841,7 +16841,8 @@
      "kind": "typed",
      "question": "If you don’t wash fruits before eating them, (--------) you will get sick. (--------)",
      "options": [
-      "rising / falling"
+      "rising / falling",
+      "falling / rising"
      ],
      "answer": 0,
      "accepted": [
@@ -18586,7 +18587,8 @@
      "kind": "typed",
      "question": "enough / without / yours / I / my own / about / problems / have / to worry / of / having/ .",
      "options": [
-      "I have enough problems of my own without having to worry about yours."
+      "I have enough problems of my own without having to worry about yours.",
+      "enough / without / yours / I / my own / about / problems / have / to worry / of / having/ ."
      ],
      "answer": 0,
      "accepted": [
@@ -19031,7 +19033,8 @@
      "kind": "typed",
      "question": "How many people use social media?",
      "options": [
-      "Millions of people use social media."
+      "Millions of people use social media.",
+      "Few people use social media."
      ],
      "answer": 0,
      "accepted": [
@@ -19096,7 +19099,8 @@
      "kind": "typed",
      "question": "Which word in the text is the synonym of “make”? (-----------------------------)",
      "options": [
-      "create"
+      "create",
+      "do"
      ],
      "answer": 0,
      "accepted": [
@@ -19542,6 +19546,11 @@
     "بلنک‌های dash (۳۰تاییِ سبزِ sz9) به عرضِ یکنواختِ ۳۱ نرمال شدند (قراردادِ r311/r357/r359)؛ خطوطِ پاسخِ بلندِ ~۱۰۷/۱۴۳تاییِ سکشن‌های ۴/۵ صدورِ چاپ‌اند و در ساقه‌ها نیامدند؛ پرانتزِ نقطه‌چینِ س۳۹ verbatim",
     "بدونِ ترجمهٔ چاپی (خانوادهٔ تشریحی)؛ متنِ ریدینگِ سکشن۱۱ فقط در گزاره‌های درست/نادرست و سؤالِ ۳۶ حضور دارد (قراردادِ کتابخانه)"
    ]
+  },
+  "typedFixR363": {
+   "round": "r363",
+   "fixed": 4,
+   "rule": "l90: جفتِ برعکسِ اسلش‌دار؛ l99: سطرِ به‌هم‌ریختهٔ چاپ؛ l105: جملهٔ ناهمدیسی؛ l108: «do» — توضیحِ کامل در tests-g9.json → source.g9tamarin.typedSingleOptionFix"
   }
  }
 }

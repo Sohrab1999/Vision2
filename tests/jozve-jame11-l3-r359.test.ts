@@ -242,7 +242,8 @@ describe("r359 — l89/l90 پرانتزی و فشار صوت", () => {
     expect(l90.count).toBe(1);
     expect(l90.questions[0]!.question).toBe("If you don’t wash fruits before eating them, (--------) you will get sick. (--------)");
     expect(l90.questions[0]!.accepted![0]).toBe("rising / falling");
-    expect(l90.questions[0]!.options).toEqual(["rising / falling"]);
+    // r363 — اسکافولدِ غلطِ برعکس (اصلاحِ باگِ تک‌گزینه‌ای؛ گزینهٔ دوم هرگز برای تایپی رندر نمی‌شود)
+    expect(l90.questions[0]!.options).toEqual(["rising / falling", "falling / rising"]);
   });
 });
 

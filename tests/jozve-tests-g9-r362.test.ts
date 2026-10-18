@@ -58,13 +58,14 @@ describe("r362 — receipt & shape", () => {
     expect(rec.printQuirks[2]).toContain("r358");
   });
 
-  it("file shape: grade 9, two banks (7+50), unique ids, no cross-bank duplicates", () => {
+  it("file shape: grade 9, two native r362 banks + six r363 tamarin banks, unique ids", () => {
     expect(bank.grade).toBe(9);
-    expect(bank.lessons).toHaveLength(2);
-    expect(bank.lessons.map((l) => l.count)).toEqual([7, 50]);
+    // r363 — شش بانکِ «تمرین‌های مکالمه» اضافه شدند (۸ بانک در کل)
+    expect(bank.lessons).toHaveLength(8);
+    expect(bank.lessons.map((l) => l.count)).toEqual([7, 50, 11, 9, 8, 10, 9, 8]);
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(ids).toHaveLength(57);
-    expect(new Set(ids).size).toBe(57);
+    expect(ids).toHaveLength(112);
+    expect(new Set(ids).size).toBe(112);
     expect(ids.slice(0, 7)).toEqual([
       "g9-l1-1", "g9-l1-2", "g9-l1-3", "g9-l1-4", "g9-l1-5", "g9-l1-6", "g9-l1-7",
     ]);
@@ -112,7 +113,10 @@ describe("r362 — bank 1: تست گرامری ص۲۸", () => {
     const typed = L(1).questions.filter((q) => q.kind === "typed");
     const answers = typed.map((t) => t.options[t.answer]);
     expect(answers).toEqual(["is", "are", "is", "are"]);
-    expect(typed.every((t) => t.accepted?.length === 1 && t.accepted[0] === t.options[0])).toBe(true);
+    // r363 — باگِ تک‌گزینه‌ای: options حالا [is، are] است و answer اندیسِ کلید؛
+    // accepted[0] باید با options[answer] بخواند نه options[0]
+    expect(typed.every((t) => t.accepted?.length === 1 && t.accepted[0] === t.options[t.answer])).toBe(true);
+    expect(typed.every((t) => t.options.length === 2 && t.options[0] === "is" && t.options[1] === "are")).toBe(true);
     expect(typed.every((t) => t.placeholder === "is or are…")).toBe(true);
     expect(typed[0].question).toBe("There ------- a whiteboard on the wall.");
     expect(typed[1].question).toBe("There ------- 8 chairs in the classroom.");

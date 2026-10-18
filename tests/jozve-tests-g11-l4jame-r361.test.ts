@@ -226,7 +226,8 @@ describe("r361 — keys locked to the printed key (p203)", () => {
     const q = L(108).questions[0];
     expect(q.question).toMatch(/^Which word in the text is the synonym of “make”\? \(-{29}\)$/);
     expect(q.accepted).toEqual([KEY39]);
-    expect(q.options).toEqual(["create"]);
+    // r363 — اسکافولدِ غلطِ «do» (هم‌آشوبِ کلاسیکِ make؛ اصلاحِ باگِ تک‌گزینه‌ای)
+    expect(q.options).toEqual(["create", "do"]);
   });
 });
 

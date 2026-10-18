@@ -1,829 +1,1927 @@
 {
-  "grade": 9,
-  "title": "جزوه دکتر حسن لطفی — پایه نهم",
-  "lessons": [
+ "grade": 9,
+ "title": "جزوه دکتر حسن لطفی — پایه نهم",
+ "lessons": [
+  {
+   "lesson": 1,
+   "title": "تست گرامری (ص۲۸) — there is/are",
+   "level": "چهارگزینه‌ای و تایپی",
+   "count": 7,
+   "questions": [
     {
-      "lesson": 1,
-      "title": "تست گرامری (ص۲۸) — there is/are",
-      "level": "چهارگزینه‌ای و تایپی",
-      "count": 7,
-      "questions": [
-        {
-          "id": "g9-l1-1",
-          "n": 1,
-          "category": "grammar",
-          "question": "February normally has twenty-eight days, but every four years…............ twenty-nine.",
-          "options": [
-            "There is",
-            "it is",
-            "it has",
-            "there are"
-          ],
-          "answer": 3
-        },
-        {
-          "id": "g9-l1-2",
-          "n": 2,
-          "category": "grammar",
-          "question": "The sun, the moon, and earth have magnetic fields, and ……………. Evidence that the stellar galaxy has fields that extend through vast regions of space.",
-          "options": [
-            "There are",
-            "is",
-            "are",
-            "there is"
-          ],
-          "answer": 3
-        },
-        {
-          "id": "g9-l1-3",
-          "n": 3,
-          "category": "grammar",
-          "question": "……………. Fish in the Dead Sea because of the high salt content of the water.",
-          "options": [
-            "it is not",
-            "there are not",
-            "there doesn’t",
-            "they are not"
-          ],
-          "answer": 1
-        },
-        {
-          "id": "g9-l1-4",
-          "n": 4,
-          "category": "grammar",
-          "kind": "typed",
-          "question": "There ------- a whiteboard on the wall.",
-          "options": [
-            "is"
-          ],
-          "answer": 0,
-          "accepted": [
-            "is"
-          ],
-          "placeholder": "is or are…"
-        },
-        {
-          "id": "g9-l1-5",
-          "n": 5,
-          "category": "grammar",
-          "kind": "typed",
-          "question": "There ------- 8 chairs in the classroom.",
-          "options": [
-            "are"
-          ],
-          "answer": 0,
-          "accepted": [
-            "are"
-          ],
-          "placeholder": "is or are…"
-        },
-        {
-          "id": "g9-l1-6",
-          "n": 6,
-          "category": "grammar",
-          "kind": "typed",
-          "question": "There ------- a computer on the desk.",
-          "options": [
-            "is"
-          ],
-          "answer": 0,
-          "accepted": [
-            "is"
-          ],
-          "placeholder": "is or are…"
-        },
-        {
-          "id": "g9-l1-7",
-          "n": 7,
-          "category": "grammar",
-          "kind": "typed",
-          "question": "There ------- two windows in the room.",
-          "options": [
-            "are"
-          ],
-          "answer": 0,
-          "accepted": [
-            "are"
-          ],
-          "placeholder": "is or are…"
-        }
-      ]
+     "id": "g9-l1-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "February normally has twenty-eight days, but every four years…............ twenty-nine.",
+     "options": [
+      "There is",
+      "it is",
+      "it has",
+      "there are"
+     ],
+     "answer": 3
     },
     {
-      "lesson": 2,
-      "title": "تست واژگان ۵۰تایی (ص۹۸-۱۰۱)",
-      "level": "چهارگزینه‌ای",
-      "count": 50,
-      "questions": [
-        {
-          "id": "g9-l2-1",
-          "n": 1,
-          "category": "vocab",
-          "question": "Our class ………... at 8:00 and finished at 10:00 yesterday.",
-          "options": [
-            "began",
-            "set",
-            "raised",
-            "held"
-          ],
-          "answer": 0
-        },
-        {
-          "id": "g9-l2-2",
-          "n": 2,
-          "category": "vocab",
-          "question": "“The money you have to pay to use a particular road, bridge etc”",
-          "options": [
-            "baggage claim",
-            "toll",
-            "boarding",
-            "voyage"
-          ],
-          "answer": 1
-        },
-        {
-          "id": "g9-l2-3",
-          "n": 3,
-          "category": "vocab",
-          "question": "His feet were ……………… from standing so long.",
-          "options": [
-            "falling",
-            "aching",
-            "holding",
-            "turning"
-          ],
-          "answer": 1
-        },
-        {
-          "id": "g9-l2-4",
-          "n": 4,
-          "category": "vocab",
-          "question": "The man in front of the taxi……...…... me with a knife.",
-          "options": [
-            "attacked",
-            "called",
-            "hired",
-            "raised"
-          ],
-          "answer": 0
-        },
-        {
-          "id": "g9-l2-5",
-          "n": 5,
-          "category": "vocab",
-          "question": "The teacher wanted the students to write their names in………...…….",
-          "options": [
-            "churches",
-            "bruises",
-            "anthems",
-            "capitals"
-          ],
-          "answer": 3
-        },
-        {
-          "id": "g9-l2-6",
-          "n": 6,
-          "category": "vocab",
-          "question": "Iranians have the fajr film ……………. each year.",
-          "options": [
-            "culture",
-            "martyr",
-            "festival",
-            "reclaim"
-          ],
-          "answer": 2
-        },
-        {
-          "id": "g9-l2-7",
-          "n": 7,
-          "category": "vocab",
-          "question": "They believe that they should ………………. their website weekly.",
-          "options": [
-            "interview",
-            "participate",
-            "updates",
-            "download"
-          ],
-          "answer": 2
-        },
-        {
-          "id": "g9-l2-8",
-          "n": 8,
-          "category": "vocab",
-          "question": "The ……….…. in our city are open to the public.",
-          "options": [
-            "parades",
-            "palaces",
-            "plows",
-            "plasters"
-          ],
-          "answer": 1
-        },
-        {
-          "id": "g9-l2-9",
-          "n": 9,
-          "category": "vocab",
-          "question": "We all try to keep our apartment clean, so its ususlly ………………...",
-          "options": [
-            "neat",
-            "relevant",
-            "generous",
-            "military"
-          ],
-          "answer": 0
-        },
-        {
-          "id": "g9-l2-10",
-          "n": 10,
-          "category": "vocab",
-          "question": "I don’t know what his ...........…. in the project was.",
-          "options": [
-            "role",
-            "media",
-            "interview",
-            "charity"
-          ],
-          "answer": 0
-        },
-        {
-          "id": "g9-l2-11",
-          "n": 11,
-          "category": "vocab",
-          "question": "“Show your child how to use a simple ………to take the temperature of the water.”",
-          "options": [
-            "reservation",
-            "thermometer",
-            "tractor",
-            "fireworks"
-          ],
-          "answer": 1
-        },
-        {
-          "id": "g9-l2-12",
-          "n": 12,
-          "category": "vocab",
-          "question": "Some people from our country ……………for health reasons.",
-          "options": [
-            "feel",
-            "fast",
-            "fill",
-            "find"
-          ],
-          "answer": 1
-        },
-        {
-          "id": "g9-l2-13",
-          "n": 13,
-          "category": "vocab",
-          "question": "The doctor asked the sick woman to lie down on her………...…. .",
-          "options": [
-            "skin",
-            "hair",
-            "teeth",
-            "stomach"
-          ],
-          "answer": 3
-        },
-        {
-          "id": "g9-l2-14",
-          "n": 14,
-          "category": "vocab",
-          "question": "“To fill a battery with electricity so that it can work again.”",
-          "options": [
-            "recharge",
-            "celebrate",
-            "board",
-            "stick <<<PAGE 99>>>"
-          ],
-          "answer": 0
-        },
-        {
-          "id": "g9-l2-15",
-          "n": 15,
-          "category": "vocab",
-          "question": "Iran is a country, but ………………is a continent.",
-          "options": [
-            "American",
-            "Asia",
-            "England",
-            "European"
-          ],
-          "answer": 1
-        },
-        {
-          "id": "g9-l2-16",
-          "n": 16,
-          "category": "vocab",
-          "question": "Ted says he has a(n) ………………. with the new manager.",
-          "options": [
-            "passport",
-            "environment",
-            "culture",
-            "interview"
-          ],
-          "answer": 3
-        },
-        {
-          "id": "g9-l2-17",
-          "n": 17,
-          "category": "vocab",
-          "question": "Our teacher always ……………a book from the Internet every week.",
-          "options": [
-            "installs",
-            "download",
-            "upload",
-            "brings"
-          ],
-          "answer": 1
-        },
-        {
-          "id": "g9-l2-18",
-          "n": 18,
-          "category": "vocab",
-          "question": "My cousin …………….me a map of how to get there.",
-          "options": [
-            "taught",
-            "wrote",
-            "drew",
-            "held"
-          ],
-          "answer": 2
-        },
-        {
-          "id": "g9-l2-19",
-          "n": 19,
-          "category": "vocab",
-          "question": "His blue eyes shine in the …………...",
-          "options": [
-            "spotlights",
-            "shrines",
-            "newsstands",
-            "timetabels"
-          ],
-          "answer": 0
-        },
-        {
-          "id": "g9-l2-20",
-          "n": 20,
-          "category": "vocab",
-          "question": "We are going to …………. those who lost their lives in the great war.",
-          "options": [
-            "set",
-            "save",
-            "commemorate",
-            "twist"
-          ],
-          "answer": 2
-        },
-        {
-          "id": "g9-l2-21",
-          "n": 21,
-          "category": "vocab",
-          "question": "Arent you going to do……………………work for the Red Crescent? I think you have free time for that, son.",
-          "options": [
-            "voluntary",
-            "military",
-            "pleasant",
-            "relevant"
-          ],
-          "answer": 0
-        },
-        {
-          "id": "g9-l2-22",
-          "n": 22,
-          "category": "vocab",
-          "question": "The Smith are …………. English, but they live in France.",
-          "options": [
-            "orally",
-            "originally",
-            "internationally",
-            "nearly"
-          ],
-          "answer": 1
-        },
-        {
-          "id": "g9-l2-23",
-          "n": 23,
-          "category": "vocab",
-          "question": "The meeting is on the fifth, and we are hopping everyone will…………...",
-          "options": [
-            "attend",
-            "attack",
-            "browse",
-            "hold"
-          ],
-          "answer": 0
-        },
-        {
-          "id": "g9-l2-24",
-          "n": 24,
-          "category": "vocab",
-          "question": "Because of his ……………throat, my grandfather went to the doctor at 2 a.m.",
-          "options": [
-            "pain",
-            "ache",
-            "bloody",
-            "sore"
-          ],
-          "answer": 3
-        },
-        {
-          "id": "g9-l2-25",
-          "n": 25,
-          "category": "vocab",
-          "question": "It took several months for his ……………….to healthy.",
-          "options": [
-            "members",
-            "events",
-            "wounds",
-            "arms"
-          ],
-          "answer": 2
-        },
-        {
-          "id": "g9-l2-26",
-          "n": 26,
-          "category": "vocab",
-          "question": "The children ………………. their prayers and got into bed.",
-          "options": [
-            "told",
-            "said",
-            "read",
-            "gave"
-          ],
-          "answer": 1
-        },
-        {
-          "id": "g9-l2-27",
-          "n": 27,
-          "category": "vocab",
-          "question": "I don’t want to ……………... the voyage alone.",
-          "options": [
-            "build",
-            "make",
-            "get",
-            "go"
-          ],
-          "answer": 1
-        },
-        {
-          "id": "g9-l2-28",
-          "n": 28,
-          "category": "vocab",
-          "question": "Someone …………...posters all over the walls.",
-          "options": [
-            "drew",
-            "climbed",
-            "stuck",
-            "booked <<<PAGE 100>>>"
-          ],
-          "answer": 2
-        },
-        {
-          "id": "g9-l2-29",
-          "n": 29,
-          "category": "vocab",
-          "question": "After the accident, the nurse tried to give the injured first…………...",
-          "options": [
-            "aid",
-            "help",
-            "both 1&2",
-            "need"
-          ],
-          "answer": 0
-        },
-        {
-          "id": "g9-l2-30",
-          "n": 30,
-          "category": "vocab",
-          "question": "When we arrived at the station, the driver asked us to get ……. the train",
-          "options": [
-            "back",
-            "up",
-            "off",
-            "to"
-          ],
-          "answer": 2
-        },
-        {
-          "id": "g9-l2-31",
-          "n": 31,
-          "category": "vocab",
-          "question": "Minas father want to meet the tall dark man with a ………...on his left hand.",
-          "options": [
-            "blood",
-            "shrine",
-            "turn",
-            "scare"
-          ],
-          "answer": 3
-        },
-        {
-          "id": "g9-l2-32",
-          "n": 32,
-          "category": "vocab",
-          "question": "My uncle ……...enough to buy a small house for his family.",
-          "options": [
-            "gave",
-            "took",
-            "learned",
-            "saved"
-          ],
-          "answer": 3
-        },
-        {
-          "id": "g9-l2-33",
-          "n": 33,
-          "category": "vocab",
-          "question": "Do you know what the …….” pick up the oil” means?",
-          "options": [
-            "word",
-            "phrase",
-            "letter",
-            "sentence"
-          ],
-          "answer": 1
-        },
-        {
-          "id": "g9-l2-34",
-          "n": 34,
-          "category": "vocab",
-          "question": "How can a person stop running …………….very fast?",
-          "options": [
-            "nose",
-            "mouth",
-            "eye",
-            "ear"
-          ],
-          "answer": 0
-        },
-        {
-          "id": "g9-l2-35",
-          "n": 35,
-          "category": "vocab",
-          "question": "The word “sore” NOT go with……………",
-          "options": [
-            "eye",
-            "knee",
-            "throat",
-            "head"
-          ],
-          "answer": 3
-        },
-        {
-          "id": "g9-l2-36",
-          "n": 36,
-          "category": "vocab",
-          "question": "I opened the ……. on which there was a(n) …………, pulled out the letter and read it.",
-          "options": [
-            "stamp / envelope",
-            "stamp / interview",
-            "envelope / stamp",
-            "envelope / interview"
-          ],
-          "answer": 2
-        },
-        {
-          "id": "g9-l2-37",
-          "n": 37,
-          "category": "vocab",
-          "question": "His son, who was usually quit and shy, was very ……………. that morning.",
-          "options": [
-            "favorite",
-            "pleseant",
-            "military",
-            "talkative"
-          ],
-          "answer": 3
-        },
-        {
-          "id": "g9-l2-38",
-          "n": 38,
-          "category": "vocab",
-          "question": "my friends……………boating on the lake every other day.",
-          "options": [
-            "go",
-            "come",
-            "do",
-            "play"
-          ],
-          "answer": 0
-        },
-        {
-          "id": "g9-l2-39",
-          "n": 39,
-          "category": "vocab",
-          "question": "Alice s father had been very …………...to her when she was a child.",
-          "options": [
-            "cruel",
-            "correct",
-            "voulantry",
-            "talkative"
-          ],
-          "answer": 0
-        },
-        {
-          "id": "g9-l2-40",
-          "n": 40,
-          "category": "vocab",
-          "question": "Make a left ……………...at the station.",
-          "options": [
-            "scar",
-            "turn",
-            "hand",
-            "leg"
-          ],
-          "answer": 1
-        },
-        {
-          "id": "g9-l2-41",
-          "n": 41,
-          "category": "vocab",
-          "question": "The receptionist says places are fully …………. for the Summer Camp.",
-          "options": [
-            "acted",
-            "booked",
-            "got off",
-            "filled out"
-          ],
-          "answer": 1
-        },
-        {
-          "id": "g9-l2-42",
-          "n": 42,
-          "category": "vocab",
-          "question": "I was still sitting; he was standing, his arms ………. behind his back.",
-          "options": [
-            "hurt",
-            "stuck",
-            "twisted",
-            "turned <<<PAGE 101>>>"
-          ],
-          "answer": 2
-        },
-        {
-          "id": "g9-l2-43",
-          "n": 43,
-          "category": "vocab",
-          "question": "Let your child help with meals by choosing foods, ..........…food and………the table.",
-          "options": [
-            "preparing / setting",
-            "setting / preparing",
-            "preparing / sitting",
-            "eating / sitting at"
-          ],
-          "answer": 0
-        },
-        {
-          "id": "g9-l2-44",
-          "n": 44,
-          "category": "vocab",
-          "question": "Which word does NOT go with “bleeding”?",
-          "options": [
-            "severe",
-            "heavy",
-            "both1&2",
-            "generouse"
-          ],
-          "answer": 3
-        },
-        {
-          "id": "g9-l2-45",
-          "n": 45,
-          "category": "vocab",
-          "question": "How much would you like to ………out? B: I want to ………. $20.",
-          "options": [
-            "take / fill out",
-            "boring / withdraw",
-            "bring / fill out",
-            "take / withdraw"
-          ],
-          "answer": 3
-        },
-        {
-          "id": "g9-l2-46",
-          "n": 46,
-          "category": "vocab",
-          "question": "This time I was back for a ceremony of ………………...",
-          "options": [
-            "pronounciation",
-            "commemoration",
-            "reservation",
-            "connection"
-          ],
-          "answer": 1
-        },
-        {
-          "id": "g9-l2-47",
-          "n": 47,
-          "category": "vocab",
-          "question": "Penicillin was a(n)……………in medicine.",
-          "options": [
-            "information",
-            "attention",
-            "celebration",
-            "reveloution"
-          ],
-          "answer": 3
-        },
-        {
-          "id": "g9-l2-48",
-          "n": 48,
-          "category": "vocab",
-          "question": "The old farmers know how to …………...the land.",
-          "options": [
-            "plow",
-            "plant",
-            "grow",
-            "raise"
-          ],
-          "answer": 0
-        },
-        {
-          "id": "g9-l2-49",
-          "n": 49,
-          "category": "vocab",
-          "question": "The good news is that we ……………. all the ……………information.",
-          "options": [
-            "got / kind",
-            "reported / cruel",
-            "made / holy",
-            "received /relevant"
-          ],
-          "answer": 3
-        },
-        {
-          "id": "g9-l2-50",
-          "n": 50,
-          "category": "vocab",
-          "question": "The baby was crawling around on its …………………. .",
-          "options": [
-            "hands and knee",
-            "hands and finger",
-            "stomach and nose",
-            "feet and leg"
-          ],
-          "answer": 0
-        }
-      ]
+     "id": "g9-l1-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "The sun, the moon, and earth have magnetic fields, and ……………. Evidence that the stellar galaxy has fields that extend through vast regions of space.",
+     "options": [
+      "There are",
+      "is",
+      "are",
+      "there is"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g9-l1-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "……………. Fish in the Dead Sea because of the high salt content of the water.",
+     "options": [
+      "it is not",
+      "there are not",
+      "there doesn’t",
+      "they are not"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g9-l1-4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "There ------- a whiteboard on the wall.",
+     "options": [
+      "is",
+      "are"
+     ],
+     "answer": 0,
+     "accepted": [
+      "is"
+     ],
+     "placeholder": "is or are…"
+    },
+    {
+     "id": "g9-l1-5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "There ------- 8 chairs in the classroom.",
+     "options": [
+      "is",
+      "are"
+     ],
+     "answer": 1,
+     "accepted": [
+      "are"
+     ],
+     "placeholder": "is or are…"
+    },
+    {
+     "id": "g9-l1-6",
+     "n": 6,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "There ------- a computer on the desk.",
+     "options": [
+      "is",
+      "are"
+     ],
+     "answer": 0,
+     "accepted": [
+      "is"
+     ],
+     "placeholder": "is or are…"
+    },
+    {
+     "id": "g9-l1-7",
+     "n": 7,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "There ------- two windows in the room.",
+     "options": [
+      "is",
+      "are"
+     ],
+     "answer": 1,
+     "accepted": [
+      "are"
+     ],
+     "placeholder": "is or are…"
     }
-  ],
-  "source": {
-    "g9tests": {
-      "extractedRound": "r362",
-      "families": 2,
-      "examPages": "گرامری 28؛ واژگان 98-101",
-      "keyPages": "گرامری: ستارهٔ دنبالهٔ گزینه در خودِ ص۲۸؛ واژگان: 101 («N-x» تک‌ستونه)",
-      "sections": 2,
-      "items": 57,
-      "orphanStems": 3,
-      "printQuirkCount": 12,
-      "printQuirks": [
-        "لوکاتورِ ناهم‌خوان: سربرگِ کلیدِ ص۱۰۱ «پاسخنامه تست های واژگان هفتم تا نهم» است ولی فهرستِ زیرش دقیقاً ۵۰ مدخلِ همین آزمونِ نهم را می‌دهد (۱-a … ۵۰-a) — سربرگ، سریِ سه‌پایهٔ نویسنده را نام می‌برد نه محتوای صفحه",
-        "سربرگِ بیضیِ زردِ «تست گرامری» در رندر بالای ص۲۸ است ولی لایهٔ متنی آن را در انتهای صفحه می‌دهد (ترتیبِ لایه)",
-        "کلیدِ MCQهای «تست گرامری» ستارهٔ دنبالهٔ گزینه است («d) there are*») — فقط سه سؤالِ نخست ستاره دارند؛ سه MCQِ آخرِ ص۲۸ بی‌کلیدِ چاپی‌اند → ساقه‌های یتیمِ مستند در orphanStems (قراردادِ r358: ساقه وارد بانک نمی‌شود و کلید ساخته نمی‌شود)",
-        "چهار آیتمِ تایپیِ is/are: کلید از خودِ دستورِ چاپی («درجاهای خالی فعل مناسب is یا are قرار دهید») و توافقِ there is/are با مفرد/جمع به‌طورِ ساختاری یکتاست (الگوی خوداعتبارسنجیِ r357) — is/are/is/are",
-        "بلنکِ چاپیِ آیتم‌های تایپی کادرِ خالی (فرم) است؛ در ساقه با رانِ تیره بازنمایی شده",
-        "شکستِ کلمهٔ hyphen‌دارِ چاپی در MCQ1 ص۲۸: «twenty-»/«nine.» — پیوسته و بدونِ فاصله بازسازی شد",
-        "scrambleِ دستورِ تایپی در لایه: «.قرار دهید» با نقطهٔ سرگردان + شکستِ «is / are» بین دو خط",
-        "تایپوهای چاپیِ verbatim در واژگان: ususlly (ق۹)، timetabels (ق۱۹)، hopping (ق۲۳)، pleseant و quit (ق۳۷)، voulantry (ق۳۹)، reveloution (ق۴۷)، generouse (ق۴۴)، scare (ق۳۱) + آپاستروف‌های جاافتاده (Arent ق۲۱، Minas ق۳۱، Alice s ق۳۹، The Smith ق۲۲)",
-        "شماره‌گذاریِ بدونِ فاصله در واژگان: «5.The»، «15.Iran»، «16.Ted»، «17.Our»",
-        "گزینه‌های چندجای‌خالیِ اسلش‌دار verbatim: ق۳۶/۴۳/۴۵/۴۹ («envelope / stamp»، «preparing / setting»، «take / withdraw»، «received /relevant») + «c)envelope» بدونِ فاصله (ق۳۶) و «both 1&2» (ق۲۹) در برابرِ «both1&2» (ق۴۴)",
-        "MCQهای «تست گرامری» شمارهٔ چاپی ندارند (بولتِ o) — شماره‌گذاریِ ۱-۷ به ترتیبِ چاپ توسط برنامه؛ حرفِ گزینهٔ نخستِ MCQ1 بزرگِ چاپی است («A) There is»)",
-        "سربرگِ هر صفحه: «دکت ر حسن لطفی» — تجزیهٔ «دکتر» با فاصله در لایه"
-      ],
-      "orphanStemList": [
-        {
-          "question": "He is an …………………. Student.",
-          "options": [
-            "Rude",
-            "brave",
-            "quit",
-            "angry"
-          ],
-          "note": "بی‌کلیدِ چاپی — از بانک مستثنی"
-        },
-        {
-          "question": "…………….. are not in the classroom.",
-          "options": [
-            "A student",
-            "a student",
-            "students",
-            "students."
-          ],
-          "note": "بی‌کلیدِ چاپی — از بانک مستثنی"
-        },
-        {
-          "question": "There ………………. A picture in the classroom.",
-          "options": [
-            "are",
-            "is",
-            "are many",
-            "many"
-          ],
-          "note": "بی‌کلیدِ چاپی — از بانک مستثنی"
-        }
-      ]
+   ]
+  },
+  {
+   "lesson": 2,
+   "title": "تست واژگان ۵۰تایی (ص۹۸-۱۰۱)",
+   "level": "چهارگزینه‌ای",
+   "count": 50,
+   "questions": [
+    {
+     "id": "g9-l2-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "Our class ………... at 8:00 and finished at 10:00 yesterday.",
+     "options": [
+      "began",
+      "set",
+      "raised",
+      "held"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g9-l2-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "“The money you have to pay to use a particular road, bridge etc”",
+     "options": [
+      "baggage claim",
+      "toll",
+      "boarding",
+      "voyage"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g9-l2-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "His feet were ……………… from standing so long.",
+     "options": [
+      "falling",
+      "aching",
+      "holding",
+      "turning"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g9-l2-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "The man in front of the taxi……...…... me with a knife.",
+     "options": [
+      "attacked",
+      "called",
+      "hired",
+      "raised"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g9-l2-5",
+     "n": 5,
+     "category": "vocab",
+     "question": "The teacher wanted the students to write their names in………...…….",
+     "options": [
+      "churches",
+      "bruises",
+      "anthems",
+      "capitals"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g9-l2-6",
+     "n": 6,
+     "category": "vocab",
+     "question": "Iranians have the fajr film ……………. each year.",
+     "options": [
+      "culture",
+      "martyr",
+      "festival",
+      "reclaim"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g9-l2-7",
+     "n": 7,
+     "category": "vocab",
+     "question": "They believe that they should ………………. their website weekly.",
+     "options": [
+      "interview",
+      "participate",
+      "updates",
+      "download"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g9-l2-8",
+     "n": 8,
+     "category": "vocab",
+     "question": "The ……….…. in our city are open to the public.",
+     "options": [
+      "parades",
+      "palaces",
+      "plows",
+      "plasters"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g9-l2-9",
+     "n": 9,
+     "category": "vocab",
+     "question": "We all try to keep our apartment clean, so its ususlly ………………...",
+     "options": [
+      "neat",
+      "relevant",
+      "generous",
+      "military"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g9-l2-10",
+     "n": 10,
+     "category": "vocab",
+     "question": "I don’t know what his ...........…. in the project was.",
+     "options": [
+      "role",
+      "media",
+      "interview",
+      "charity"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g9-l2-11",
+     "n": 11,
+     "category": "vocab",
+     "question": "“Show your child how to use a simple ………to take the temperature of the water.”",
+     "options": [
+      "reservation",
+      "thermometer",
+      "tractor",
+      "fireworks"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g9-l2-12",
+     "n": 12,
+     "category": "vocab",
+     "question": "Some people from our country ……………for health reasons.",
+     "options": [
+      "feel",
+      "fast",
+      "fill",
+      "find"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g9-l2-13",
+     "n": 13,
+     "category": "vocab",
+     "question": "The doctor asked the sick woman to lie down on her………...…. .",
+     "options": [
+      "skin",
+      "hair",
+      "teeth",
+      "stomach"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g9-l2-14",
+     "n": 14,
+     "category": "vocab",
+     "question": "“To fill a battery with electricity so that it can work again.”",
+     "options": [
+      "recharge",
+      "celebrate",
+      "board",
+      "stick <<<PAGE 99>>>"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g9-l2-15",
+     "n": 15,
+     "category": "vocab",
+     "question": "Iran is a country, but ………………is a continent.",
+     "options": [
+      "American",
+      "Asia",
+      "England",
+      "European"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g9-l2-16",
+     "n": 16,
+     "category": "vocab",
+     "question": "Ted says he has a(n) ………………. with the new manager.",
+     "options": [
+      "passport",
+      "environment",
+      "culture",
+      "interview"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g9-l2-17",
+     "n": 17,
+     "category": "vocab",
+     "question": "Our teacher always ……………a book from the Internet every week.",
+     "options": [
+      "installs",
+      "download",
+      "upload",
+      "brings"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g9-l2-18",
+     "n": 18,
+     "category": "vocab",
+     "question": "My cousin …………….me a map of how to get there.",
+     "options": [
+      "taught",
+      "wrote",
+      "drew",
+      "held"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g9-l2-19",
+     "n": 19,
+     "category": "vocab",
+     "question": "His blue eyes shine in the …………...",
+     "options": [
+      "spotlights",
+      "shrines",
+      "newsstands",
+      "timetabels"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g9-l2-20",
+     "n": 20,
+     "category": "vocab",
+     "question": "We are going to …………. those who lost their lives in the great war.",
+     "options": [
+      "set",
+      "save",
+      "commemorate",
+      "twist"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g9-l2-21",
+     "n": 21,
+     "category": "vocab",
+     "question": "Arent you going to do……………………work for the Red Crescent? I think you have free time for that, son.",
+     "options": [
+      "voluntary",
+      "military",
+      "pleasant",
+      "relevant"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g9-l2-22",
+     "n": 22,
+     "category": "vocab",
+     "question": "The Smith are …………. English, but they live in France.",
+     "options": [
+      "orally",
+      "originally",
+      "internationally",
+      "nearly"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g9-l2-23",
+     "n": 23,
+     "category": "vocab",
+     "question": "The meeting is on the fifth, and we are hopping everyone will…………...",
+     "options": [
+      "attend",
+      "attack",
+      "browse",
+      "hold"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g9-l2-24",
+     "n": 24,
+     "category": "vocab",
+     "question": "Because of his ……………throat, my grandfather went to the doctor at 2 a.m.",
+     "options": [
+      "pain",
+      "ache",
+      "bloody",
+      "sore"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g9-l2-25",
+     "n": 25,
+     "category": "vocab",
+     "question": "It took several months for his ……………….to healthy.",
+     "options": [
+      "members",
+      "events",
+      "wounds",
+      "arms"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g9-l2-26",
+     "n": 26,
+     "category": "vocab",
+     "question": "The children ………………. their prayers and got into bed.",
+     "options": [
+      "told",
+      "said",
+      "read",
+      "gave"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g9-l2-27",
+     "n": 27,
+     "category": "vocab",
+     "question": "I don’t want to ……………... the voyage alone.",
+     "options": [
+      "build",
+      "make",
+      "get",
+      "go"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g9-l2-28",
+     "n": 28,
+     "category": "vocab",
+     "question": "Someone …………...posters all over the walls.",
+     "options": [
+      "drew",
+      "climbed",
+      "stuck",
+      "booked <<<PAGE 100>>>"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g9-l2-29",
+     "n": 29,
+     "category": "vocab",
+     "question": "After the accident, the nurse tried to give the injured first…………...",
+     "options": [
+      "aid",
+      "help",
+      "both 1&2",
+      "need"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g9-l2-30",
+     "n": 30,
+     "category": "vocab",
+     "question": "When we arrived at the station, the driver asked us to get ……. the train",
+     "options": [
+      "back",
+      "up",
+      "off",
+      "to"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g9-l2-31",
+     "n": 31,
+     "category": "vocab",
+     "question": "Minas father want to meet the tall dark man with a ………...on his left hand.",
+     "options": [
+      "blood",
+      "shrine",
+      "turn",
+      "scare"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g9-l2-32",
+     "n": 32,
+     "category": "vocab",
+     "question": "My uncle ……...enough to buy a small house for his family.",
+     "options": [
+      "gave",
+      "took",
+      "learned",
+      "saved"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g9-l2-33",
+     "n": 33,
+     "category": "vocab",
+     "question": "Do you know what the …….” pick up the oil” means?",
+     "options": [
+      "word",
+      "phrase",
+      "letter",
+      "sentence"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g9-l2-34",
+     "n": 34,
+     "category": "vocab",
+     "question": "How can a person stop running …………….very fast?",
+     "options": [
+      "nose",
+      "mouth",
+      "eye",
+      "ear"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g9-l2-35",
+     "n": 35,
+     "category": "vocab",
+     "question": "The word “sore” NOT go with……………",
+     "options": [
+      "eye",
+      "knee",
+      "throat",
+      "head"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g9-l2-36",
+     "n": 36,
+     "category": "vocab",
+     "question": "I opened the ……. on which there was a(n) …………, pulled out the letter and read it.",
+     "options": [
+      "stamp / envelope",
+      "stamp / interview",
+      "envelope / stamp",
+      "envelope / interview"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g9-l2-37",
+     "n": 37,
+     "category": "vocab",
+     "question": "His son, who was usually quit and shy, was very ……………. that morning.",
+     "options": [
+      "favorite",
+      "pleseant",
+      "military",
+      "talkative"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g9-l2-38",
+     "n": 38,
+     "category": "vocab",
+     "question": "my friends……………boating on the lake every other day.",
+     "options": [
+      "go",
+      "come",
+      "do",
+      "play"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g9-l2-39",
+     "n": 39,
+     "category": "vocab",
+     "question": "Alice s father had been very …………...to her when she was a child.",
+     "options": [
+      "cruel",
+      "correct",
+      "voulantry",
+      "talkative"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g9-l2-40",
+     "n": 40,
+     "category": "vocab",
+     "question": "Make a left ……………...at the station.",
+     "options": [
+      "scar",
+      "turn",
+      "hand",
+      "leg"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g9-l2-41",
+     "n": 41,
+     "category": "vocab",
+     "question": "The receptionist says places are fully …………. for the Summer Camp.",
+     "options": [
+      "acted",
+      "booked",
+      "got off",
+      "filled out"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g9-l2-42",
+     "n": 42,
+     "category": "vocab",
+     "question": "I was still sitting; he was standing, his arms ………. behind his back.",
+     "options": [
+      "hurt",
+      "stuck",
+      "twisted",
+      "turned <<<PAGE 101>>>"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g9-l2-43",
+     "n": 43,
+     "category": "vocab",
+     "question": "Let your child help with meals by choosing foods, ..........…food and………the table.",
+     "options": [
+      "preparing / setting",
+      "setting / preparing",
+      "preparing / sitting",
+      "eating / sitting at"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g9-l2-44",
+     "n": 44,
+     "category": "vocab",
+     "question": "Which word does NOT go with “bleeding”?",
+     "options": [
+      "severe",
+      "heavy",
+      "both1&2",
+      "generouse"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g9-l2-45",
+     "n": 45,
+     "category": "vocab",
+     "question": "How much would you like to ………out? B: I want to ………. $20.",
+     "options": [
+      "take / fill out",
+      "boring / withdraw",
+      "bring / fill out",
+      "take / withdraw"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g9-l2-46",
+     "n": 46,
+     "category": "vocab",
+     "question": "This time I was back for a ceremony of ………………...",
+     "options": [
+      "pronounciation",
+      "commemoration",
+      "reservation",
+      "connection"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g9-l2-47",
+     "n": 47,
+     "category": "vocab",
+     "question": "Penicillin was a(n)……………in medicine.",
+     "options": [
+      "information",
+      "attention",
+      "celebration",
+      "reveloution"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g9-l2-48",
+     "n": 48,
+     "category": "vocab",
+     "question": "The old farmers know how to …………...the land.",
+     "options": [
+      "plow",
+      "plant",
+      "grow",
+      "raise"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g9-l2-49",
+     "n": 49,
+     "category": "vocab",
+     "question": "The good news is that we ……………. all the ……………information.",
+     "options": [
+      "got / kind",
+      "reported / cruel",
+      "made / holy",
+      "received /relevant"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g9-l2-50",
+     "n": 50,
+     "category": "vocab",
+     "question": "The baby was crawling around on its …………………. .",
+     "options": [
+      "hands and knee",
+      "hands and finger",
+      "stomach and nose",
+      "feet and leg"
+     ],
+     "answer": 0
     }
+   ]
+  },
+  {
+   "lesson": 3,
+   "title": "تمرین مکالمه درس اول (ص۱۷) — صحبت کردن در مورد شخصیت",
+   "level": "تمرین مکالمه — تایپی",
+   "count": 11,
+   "questions": [
+    {
+     "id": "g9-l3-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Are you hard-working?",
+     "options": [
+      "Yes, I am.",
+      "Yes, he is."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Yes, I am.",
+      "Yes I am."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا تو سخت کوش هستی؟ بله، من هستم"
+    },
+    {
+     "id": "g9-l3-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Is he clever?",
+     "options": [
+      "Yes, he is.",
+      "No, she isn’t."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Yes, he is.",
+      "Yes he is."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا او باهوش هست؟ بله، او هست"
+    },
+    {
+     "id": "g9-l3-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Is Zahra talkative?",
+     "options": [
+      "No, she isn’t.",
+      "Yes, they are."
+     ],
+     "answer": 0,
+     "accepted": [
+      "No, she isn’t.",
+      "No she isn’t.",
+      "No, she is not.",
+      "No she is not."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا زهرا پرحرف است؟ نه، او نیست"
+    },
+    {
+     "id": "g9-l3-4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Are they neat?",
+     "options": [
+      "Yes, they are.",
+      "No, they’re not."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Yes, they are.",
+      "Yes they are."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا آنها مرتب هستند؟ بله، آنها هستند"
+    },
+    {
+     "id": "g9-l3-5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Are they upset?",
+     "options": [
+      "No, they’re not.",
+      "He’s very funny."
+     ],
+     "answer": 0,
+     "accepted": [
+      "No, they’re not.",
+      "No they’re not.",
+      "No, they are not.",
+      "No they are not."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا آنها غمگین هستند؟ نه آنها نیستند"
+    },
+    {
+     "id": "g9-l3-6",
+     "n": 6,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What’s your friend like?",
+     "options": [
+      "He’s very funny.",
+      "She’s very kind and patient."
+     ],
+     "answer": 0,
+     "accepted": [
+      "He’s very funny.",
+      "He is very funny."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "دوست تو چطور آدمی هست؟ او خیلی بامزه هست"
+    },
+    {
+     "id": "g9-l3-7",
+     "n": 7,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What’s your mother like?",
+     "options": [
+      "She’s very kind and patient.",
+      "He is quiet."
+     ],
+     "answer": 0,
+     "accepted": [
+      "She’s very kind and patient.",
+      "She is very kind and patient."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "مادرت چطوریه؟ او خیلی مهربان و صبور هست."
+    },
+    {
+     "id": "g9-l3-8",
+     "n": 8,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What’s he like?",
+     "options": [
+      "He is quiet.",
+      "She is clever."
+     ],
+     "answer": 0,
+     "accepted": [
+      "He is quiet."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "او چگونه هست؟ او (پسر) خیلی آرام هست."
+    },
+    {
+     "id": "g9-l3-9",
+     "n": 9,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What’s she like?",
+     "options": [
+      "She is clever.",
+      "I’m a bit serious."
+     ],
+     "answer": 0,
+     "accepted": [
+      "She is clever."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "او (دختر) چگونه است؟ او باهوش است."
+    },
+    {
+     "id": "g9-l3-10",
+     "n": 10,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What are you like?",
+     "options": [
+      "I’m a bit serious.",
+      "They are very kind."
+     ],
+     "answer": 0,
+     "accepted": [
+      "I’m a bit serious.",
+      "I am a bit serious."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "تو چگونه هستی؟ من کمی جدی هستم."
+    },
+    {
+     "id": "g9-l3-11",
+     "n": 11,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What are they like?",
+     "options": [
+      "They are very kind.",
+      "Yes, I am."
+     ],
+     "answer": 0,
+     "accepted": [
+      "They are very kind."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آنها چگونه هستند؟ آنها خیلی مهربان هستند."
+    }
+   ]
+  },
+  {
+   "lesson": 4,
+   "title": "تمرین مکالمه درس دوم (ص۳۱) — صحبت کردن در مورد سفر",
+   "level": "تمرین مکالمه — تایپی",
+   "count": 9,
+   "questions": [
+    {
+     "id": "g9-l4-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Are you visiting Tehran?",
+     "options": [
+      "Yes, I am.",
+      "No, they aren’t."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Yes, I am.",
+      "Yes I am."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا تو در حال بازدید از تهران هستی؟ بله، من هستم"
+    },
+    {
+     "id": "g9-l4-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Are they traveling around the world?",
+     "options": [
+      "No, they aren’t.",
+      "Yes, he is."
+     ],
+     "answer": 0,
+     "accepted": [
+      "No, they aren’t.",
+      "No they aren’t.",
+      "No, they are not.",
+      "No they are not."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا آنها در حال سفر دور دنیا هستند؟ نه، آنها نیستند"
+    },
+    {
+     "id": "g9-l4-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Is Paul booking a room?",
+     "options": [
+      "Yes, he is.",
+      "No, she’s reading the guide book."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Yes, he is.",
+      "Yes he is."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا پاول در حال رزرو اتاق است؟ بله، او هست"
+    },
+    {
+     "id": "g9-l4-4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Is Kate checking the map?",
+     "options": [
+      "No, she’s reading the guide book.",
+      "Sara."
+     ],
+     "answer": 0,
+     "accepted": [
+      "No, she’s reading the guide book.",
+      "No she’s reading the guide book.",
+      "No, she is reading the guide book.",
+      "No she is reading the guide book."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا کیت در حال چک کردن نقشه است؟ نه، او در حال مطالعه کتاب راهنما است"
+    },
+    {
+     "id": "g9-l4-5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Who is speaking English now?",
+     "options": [
+      "Sara.",
+      "He is buying a ticket."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Sara."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "چه کسی در حال انگلیسی صحبت کردن است؟ سارا"
+    },
+    {
+     "id": "g9-l4-6",
+     "n": 6,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What is he doing?",
+     "options": [
+      "He is buying a ticket.",
+      "He’s going to Mehrabad Airport."
+     ],
+     "answer": 0,
+     "accepted": [
+      "He is buying a ticket."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "او در حال انجام چه کاری است؟ او در حال خرید بلیط است."
+    },
+    {
+     "id": "g9-l4-7",
+     "n": 7,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Where is Ali going?",
+     "options": [
+      "He’s going to Mehrabad Airport.",
+      "I’m filling out the reservation form."
+     ],
+     "answer": 0,
+     "accepted": [
+      "He’s going to Mehrabad Airport.",
+      "He is going to Mehrabad Airport."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "علی در حال رفتن به کجاست؟ او در حال رفتن به فرودگاه مهر آباد هست ."
+    },
+    {
+     "id": "g9-l4-8",
+     "n": 8,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What are you doing?",
+     "options": [
+      "I’m filling out the reservation form.",
+      "They are traveling by train."
+     ],
+     "answer": 0,
+     "accepted": [
+      "I’m filling out the reservation form.",
+      "I am filling out the reservation form."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "تو در حال انجام چه کاری هستی؟ من در حال پر کردن فرم رزرو هستم ."
+    },
+    {
+     "id": "g9-l4-9",
+     "n": 9,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "How are they traveling?",
+     "options": [
+      "They are traveling by train.",
+      "Yes, I am."
+     ],
+     "answer": 0,
+     "accepted": [
+      "They are traveling by train."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آنها چطور سفر میکنند؟ آنها در حال سفر با قطار هستند."
+    }
+   ]
+  },
+  {
+   "lesson": 5,
+   "title": "تمرین مکالمه درس سوم (ص۵۱) — صحبت کردن در مورد جشن ها و مراسمات",
+   "level": "تمرین مکالمه — تایپی",
+   "count": 8,
+   "questions": [
+    {
+     "id": "g9-l5-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Do you buy new clothes for the New Year?",
+     "options": [
+      "Yes, I do.",
+      "No, we don’t"
+     ],
+     "answer": 0,
+     "accepted": [
+      "Yes, I do.",
+      "Yes I do."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا برای این نوروز لباس جدید میخری ؟ بله.میخرم"
+    },
+    {
+     "id": "g9-l5-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Do you and your cousins set the Haft Seen table?",
+     "options": [
+      "No, we don’t",
+      "Yes, they usually color them"
+     ],
+     "answer": 0,
+     "accepted": [
+      "No, we don’t",
+      "No we don’t",
+      "No, we do not",
+      "No we do not"
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا تو و عمو زاده هایت سفره هفت سین را می چینید؟ نه ، ما نمی چینیم"
+    },
+    {
+     "id": "g9-l5-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Do young children color the eggs?",
+     "options": [
+      "Yes, they usually color them",
+      "Yes, they don’t buy goldfish"
+     ],
+     "answer": 0,
+     "accepted": [
+      "Yes, they usually color them",
+      "Yes they usually color them"
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا بچه های کوچک تخم مرغ ها را رنگ میکنند؟ بله، آنها معموال آنها را رنگ می کنند ."
+    },
+    {
+     "id": "g9-l5-4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Do Chinese people buy gold fish for the New Year?",
+     "options": [
+      "Yes, they don’t buy goldfish",
+      "Yes, he does."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Yes, they don’t buy goldfish",
+      "Yes they don’t buy goldfish",
+      "Yes, they do not buy goldfish",
+      "Yes they do not buy goldfish",
+      "No, they don’t buy goldfish",
+      "No, they do not buy goldfish"
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا افراد چینی برای نوروز ماهی قرمز میخرند؟ نه، آنها ماهی قرمز نمیخرند"
+    },
+    {
+     "id": "g9-l5-5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Does he recite the Holy Quran at the turn of the year?",
+     "options": [
+      "Yes, he does.",
+      "No, he doesn’t."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Yes, he does.",
+      "Yes he does."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "ایا او در تحویل سال قران را قراءت میکند؟ بله او قرائت میکند ."
+    },
+    {
+     "id": "g9-l5-6",
+     "n": 6,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Does your father give you New Year gifts?",
+     "options": [
+      "No, he doesn’t.",
+      "Yes, she has many friends."
+     ],
+     "answer": 0,
+     "accepted": [
+      "No, he doesn’t.",
+      "No he doesn’t.",
+      "No, he does not.",
+      "No he does not."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا پدر تو به تو کادوی عید می دهد؟ نه ، او نمی دهد ."
+    },
+    {
+     "id": "g9-l5-7",
+     "n": 7,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Does she have many friends?",
+     "options": [
+      "Yes, she has many friends.",
+      "No, she doesn’t make a special food."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Yes, she has many friends.",
+      "Yes she has many friends."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا او دوستان زیادی دارد؟ بله او دوستان زیادی دارد"
+    },
+    {
+     "id": "g9-l5-8",
+     "n": 8,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Does your mom make a special food for Norooz?",
+     "options": [
+      "No, she doesn’t make a special food.",
+      "Yes, I do."
+     ],
+     "answer": 0,
+     "accepted": [
+      "No, she doesn’t make a special food.",
+      "No she doesn’t make a special food.",
+      "No, she does not make a special food.",
+      "No she does not make a special food."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا مادر تو برای نوروز غذای خاصی درست می کند؟ نه او غذای خاصی درست نمی کند ."
+    }
+   ]
+  },
+  {
+   "lesson": 6,
+   "title": "تمرین مکالمه درس چهارم (ص۶۵) — صحبت کردن در مورد خدمات",
+   "level": "تمرین مکالمه — تایپی",
+   "count": 10,
+   "questions": [
+    {
+     "id": "g9-l6-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What is her job?",
+     "options": [
+      "She’s an employee.",
+      "It’s over there."
+     ],
+     "answer": 0,
+     "accepted": [
+      "She’s an employee.",
+      "She is an employee."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "شغل او چیست؟ او کارمند است."
+    },
+    {
+     "id": "g9-l6-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Where is the post office?",
+     "options": [
+      "It’s over there.",
+      "He is a postman."
+     ],
+     "answer": 0,
+     "accepted": [
+      "It’s over there.",
+      "It is over there."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "اداره پست کجاست؟ آن جا است."
+    },
+    {
+     "id": "g9-l6-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Who’s that man?",
+     "options": [
+      "He is a postman.",
+      "It’s at 9:30."
+     ],
+     "answer": 0,
+     "accepted": [
+      "He is a postman."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آن مرد کیست؟ او پستچی است."
+    },
+    {
+     "id": "g9-l6-4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "When is the break?",
+     "options": [
+      "It’s at 9:30.",
+      "It opens at 8 in the morning."
+     ],
+     "answer": 0,
+     "accepted": [
+      "It’s at 9:30.",
+      "It is at 9:30."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "زنگ تفریح چه موقع است؟ ساعت نه و نیم ."
+    },
+    {
+     "id": "g9-l6-5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What time does it open?",
+     "options": [
+      "It opens at 8 in the morning.",
+      "They work from Saturday to Wednesday."
+     ],
+     "answer": 0,
+     "accepted": [
+      "It opens at 8 in the morning."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "چه ساعتی باز میکند؟ ساعت ۸ صبح باز میکند."
+    },
+    {
+     "id": "g9-l6-6",
+     "n": 6,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "When do they work?",
+     "options": [
+      "They work from Saturday to Wednesday.",
+      "The police help them."
+     ],
+     "answer": 0,
+     "accepted": [
+      "They work from Saturday to Wednesday."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آنها چه زمانی کار میکنند؟ آنها از شنبه تا چهارشنبه کار میکنند."
+    },
+    {
+     "id": "g9-l6-7",
+     "n": 7,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Who helps lost children?",
+     "options": [
+      "The police help them.",
+      "She buys them from a post office."
+     ],
+     "answer": 0,
+     "accepted": [
+      "The police help them."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "چه کسی به کودکان گم شده کمک میکند؟ پلیس به آنها کمک میکند ."
+    },
+    {
+     "id": "g9-l6-8",
+     "n": 8,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Where does she buy stamps?",
+     "options": [
+      "She buys them from a post office.",
+      "Because it’s fast and cheap."
+     ],
+     "answer": 0,
+     "accepted": [
+      "She buys them from a post office."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "او از کجا تمبر میخرد؟ از اداره پست آنها را میخرد ."
+    },
+    {
+     "id": "g9-l6-9",
+     "n": 9,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Why does he go to work by bus?",
+     "options": [
+      "Because it’s fast and cheap.",
+      "I take a bus."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Because it’s fast and cheap.",
+      "Because it is fast and cheap."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "چرا با اتوبوس به سر کار می رود؟ چون سریع و ارزان است."
+    },
+    {
+     "id": "g9-l6-10",
+     "n": 10,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "How do you come to school?",
+     "options": [
+      "I take a bus.",
+      "She’s an employee."
+     ],
+     "answer": 0,
+     "accepted": [
+      "I take a bus."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "شما چه طور به مدرسه می آیید؟ من اتوبوس سوار می شوم ."
+    }
+   ]
+  },
+  {
+   "lesson": 7,
+   "title": "تمرین مکالمه درس پنجم (ص۸۳) — صحبت کردن در مورد رسانه",
+   "level": "تمرین مکالمه — تایپی",
+   "count": 9,
+   "questions": [
+    {
+     "id": "g9-l7-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Did the girls listen to the radio?",
+     "options": [
+      "Yes, they did.",
+      "No, she didn’t."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Yes, they did.",
+      "Yes they did."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا آن دخترها به رادیو گوش دادند؟ بله گوش دادند"
+    },
+    {
+     "id": "g9-l7-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Did Mina surf the Internet?",
+     "options": [
+      "No, she didn’t.",
+      "Yes, we watched it."
+     ],
+     "answer": 0,
+     "accepted": [
+      "No, she didn’t.",
+      "No she didn’t.",
+      "No, she did not.",
+      "No she did not."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا مینا در اینترنت جست و جو کرد؟ نه جستجو نکرد"
+    },
+    {
+     "id": "g9-l7-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Did you watch the cartoon?",
+     "options": [
+      "Yes, we watched it.",
+      "No, he worked with his mobile."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Yes, we watched it.",
+      "Yes we watched it."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا شما کارتون تماشا کردید؟ بله ما تماشا کردیم"
+    },
+    {
+     "id": "g9-l7-4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Did Amir work with his computer?",
+     "options": [
+      "No, he worked with his mobile.",
+      "My sister."
+     ],
+     "answer": 0,
+     "accepted": [
+      "No, he worked with his mobile.",
+      "No he worked with his mobile."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا امیر با کامپیوترش کار کرد؟ نه او با موبایلش کار کرد"
+    },
+    {
+     "id": "g9-l7-5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Who watched the movie last night?",
+     "options": [
+      "My sister.",
+      "I attended Fajr International Film Festival."
+     ],
+     "answer": 0,
+     "accepted": [
+      "My sister."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "شب گذشته چه کسی فیلم تماشا کرد؟ خواهر من"
+    },
+    {
+     "id": "g9-l7-6",
+     "n": 6,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What did you do last week?",
+     "options": [
+      "I attended Fajr International Film Festival.",
+      "He received an email."
+     ],
+     "answer": 0,
+     "accepted": [
+      "I attended Fajr International Film Festival."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "هفته گذشته چه کاری انجام دادی؟ من در جشنواره بین المللی فیلم فجر شرکت کردم"
+    },
+    {
+     "id": "g9-l7-7",
+     "n": 7,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What did Ali receive?",
+     "options": [
+      "He received an email.",
+      "They downloaded it yesterday."
+     ],
+     "answer": 0,
+     "accepted": [
+      "He received an email."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "علی چه چیزی دریافت کرد؟ او یک ایمیل دریافت کرد ."
+    },
+    {
+     "id": "g9-l7-8",
+     "n": 8,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "When did they download the book?",
+     "options": [
+      "They downloaded it yesterday.",
+      "She connected to the Internet at school."
+     ],
+     "answer": 0,
+     "accepted": [
+      "They downloaded it yesterday."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آنها چه زمانی کتاب را دانلود کردند؟ آنها دیروز آن را دانلود کردند"
+    },
+    {
+     "id": "g9-l7-9",
+     "n": 9,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Where did she connect to the Internet?",
+     "options": [
+      "She connected to the Internet at school.",
+      "Yes, they did."
+     ],
+     "answer": 0,
+     "accepted": [
+      "She connected to the Internet at school."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "او کجا به اینترنت متصل شد؟ او در مدرسه به اینترنت متصل شد"
+    }
+   ]
+  },
+  {
+   "lesson": 8,
+   "title": "تمرین مکالمه درس ششم (ص۹۶) — صحبت کردن در مورد سالمتی و آسیب ها",
+   "level": "تمرین مکالمه — تایپی",
+   "count": 8,
+   "questions": [
+    {
+     "id": "g9-l8-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Did Mina have an accident?",
+     "options": [
+      "Yes, she did.",
+      "No, he didn’t."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Yes, she did.",
+      "Yes she did."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا مینا تصادف کرد؟ بله تصادف کرد ."
+    },
+    {
+     "id": "g9-l8-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Did Ali cut his finger?",
+     "options": [
+      "No, he didn’t.",
+      "Yes, I broke my leg."
+     ],
+     "answer": 0,
+     "accepted": [
+      "No, he didn’t.",
+      "No he didn’t.",
+      "No, he did not.",
+      "No he did not."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا علی انگشت خود را برید؟ نه نبرید ."
+    },
+    {
+     "id": "g9-l8-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Did you break your leg?",
+     "options": [
+      "Yes, I broke my leg.",
+      "No, I didn’t hurt my back."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Yes, I broke my leg.",
+      "Yes I broke my leg."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا پای شما شکست؟ بله پای من شکست."
+    },
+    {
+     "id": "g9-l8-4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Did you hurt your back?",
+     "options": [
+      "No, I didn’t hurt my back.",
+      "Reza."
+     ],
+     "answer": 0,
+     "accepted": [
+      "No, I didn’t hurt my back.",
+      "No I didn’t hurt my back.",
+      "No, I did not hurt my back.",
+      "No I did not hurt my back."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا پشت شما آسیب دید؟ نه پشت من آسیب دید."
+    },
+    {
+     "id": "g9-l8-5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Who had an accident?",
+     "options": [
+      "Reza.",
+      "She broke her leg in the park."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Reza."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "چه کسی تصادف کرد؟ رضا"
+    },
+    {
+     "id": "g9-l8-6",
+     "n": 6,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Where did she break her leg?",
+     "options": [
+      "She broke her leg in the park.",
+      "He hit his head on the door."
+     ],
+     "answer": 0,
+     "accepted": [
+      "She broke her leg in the park."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "پای او کجا شکست؟ او پایش را در پارک شکست."
+    },
+    {
+     "id": "g9-l8-7",
+     "n": 7,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "How did Amir hurt his head?",
+     "options": [
+      "He hit his head on the door.",
+      "Because they drove fast."
+     ],
+     "answer": 0,
+     "accepted": [
+      "He hit his head on the door."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "سر امیر چطور آسیب دید؟ سرش به در خورد ."
+    },
+    {
+     "id": "g9-l8-8",
+     "n": 8,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Why did they have an accident?",
+     "options": [
+      "Because they drove fast.",
+      "Yes, she did."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Because they drove fast."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "چرا آنها تصادف کردند؟ چون که با سرعت رانندگی کردند."
+    }
+   ]
   }
+ ],
+ "source": {
+  "g9tests": {
+   "extractedRound": "r362",
+   "families": 2,
+   "examPages": "گرامری 28؛ واژگان 98-101",
+   "keyPages": "گرامری: ستارهٔ دنبالهٔ گزینه در خودِ ص۲۸؛ واژگان: 101 («N-x» تک‌ستونه)",
+   "sections": 2,
+   "items": 57,
+   "orphanStems": 3,
+   "printQuirkCount": 12,
+   "printQuirks": [
+    "لوکاتورِ ناهم‌خوان: سربرگِ کلیدِ ص۱۰۱ «پاسخنامه تست های واژگان هفتم تا نهم» است ولی فهرستِ زیرش دقیقاً ۵۰ مدخلِ همین آزمونِ نهم را می‌دهد (۱-a … ۵۰-a) — سربرگ، سریِ سه‌پایهٔ نویسنده را نام می‌برد نه محتوای صفحه",
+    "سربرگِ بیضیِ زردِ «تست گرامری» در رندر بالای ص۲۸ است ولی لایهٔ متنی آن را در انتهای صفحه می‌دهد (ترتیبِ لایه)",
+    "کلیدِ MCQهای «تست گرامری» ستارهٔ دنبالهٔ گزینه است («d) there are*») — فقط سه سؤالِ نخست ستاره دارند؛ سه MCQِ آخرِ ص۲۸ بی‌کلیدِ چاپی‌اند → ساقه‌های یتیمِ مستند در orphanStems (قراردادِ r358: ساقه وارد بانک نمی‌شود و کلید ساخته نمی‌شود)",
+    "چهار آیتمِ تایپیِ is/are: کلید از خودِ دستورِ چاپی («درجاهای خالی فعل مناسب is یا are قرار دهید») و توافقِ there is/are با مفرد/جمع به‌طورِ ساختاری یکتاست (الگوی خوداعتبارسنجیِ r357) — is/are/is/are",
+    "بلنکِ چاپیِ آیتم‌های تایپی کادرِ خالی (فرم) است؛ در ساقه با رانِ تیره بازنمایی شده",
+    "شکستِ کلمهٔ hyphen‌دارِ چاپی در MCQ1 ص۲۸: «twenty-»/«nine.» — پیوسته و بدونِ فاصله بازسازی شد",
+    "scrambleِ دستورِ تایپی در لایه: «.قرار دهید» با نقطهٔ سرگردان + شکستِ «is / are» بین دو خط",
+    "تایپوهای چاپیِ verbatim در واژگان: ususlly (ق۹)، timetabels (ق۱۹)، hopping (ق۲۳)، pleseant و quit (ق۳۷)، voulantry (ق۳۹)، reveloution (ق۴۷)، generouse (ق۴۴)، scare (ق۳۱) + آپاستروف‌های جاافتاده (Arent ق۲۱، Minas ق۳۱، Alice s ق۳۹، The Smith ق۲۲)",
+    "شماره‌گذاریِ بدونِ فاصله در واژگان: «5.The»، «15.Iran»، «16.Ted»، «17.Our»",
+    "گزینه‌های چندجای‌خالیِ اسلش‌دار verbatim: ق۳۶/۴۳/۴۵/۴۹ («envelope / stamp»، «preparing / setting»، «take / withdraw»، «received /relevant») + «c)envelope» بدونِ فاصله (ق۳۶) و «both 1&2» (ق۲۹) در برابرِ «both1&2» (ق۴۴)",
+    "MCQهای «تست گرامری» شمارهٔ چاپی ندارند (بولتِ o) — شماره‌گذاریِ ۱-۷ به ترتیبِ چاپ توسط برنامه؛ حرفِ گزینهٔ نخستِ MCQ1 بزرگِ چاپی است («A) There is»)",
+    "سربرگِ هر صفحه: «دکت ر حسن لطفی» — تجزیهٔ «دکتر» با فاصله در لایه"
+   ],
+   "orphanStemList": [
+    {
+     "question": "He is an …………………. Student.",
+     "options": [
+      "Rude",
+      "brave",
+      "quit",
+      "angry"
+     ],
+     "note": "بی‌کلیدِ چاپی — از بانک مستثنی"
+    },
+    {
+     "question": "…………….. are not in the classroom.",
+     "options": [
+      "A student",
+      "a student",
+      "students",
+      "students."
+     ],
+     "note": "بی‌کلیدِ چاپی — از بانک مستثنی"
+    },
+    {
+     "question": "There ………………. A picture in the classroom.",
+     "options": [
+      "are",
+      "is",
+      "are many",
+      "many"
+     ],
+     "note": "بی‌کلیدِ چاپی — از بانک مستثنی"
+    }
+   ]
+  },
+  "g9tamarin": {
+   "extractedRound": "r363",
+   "families": 6,
+   "sections": 11,
+   "items": 55,
+   "bankCounts": [
+    11,
+    9,
+    8,
+    10,
+    9,
+    8
+   ],
+   "examPages": "تمرین‌ها ص۱۷/۳۱/۵۱/۶۵/۸۳/۹۶ (برچسبِ چاپیِ خودِ سربرگ‌ها؛ «۳۱» با ارقامِ آمیختهٔ ۳1)",
+   "keySource": "پرسش و پاسخ هر دو چاپیِ درون‌صفحه (جفتِ دیالوگ) — بی‌پاسخنامهٔ جدا؛ کلید = پاسخِ چاپیِ همان صفحه + واریانت‌های روادار (بی‌ویرگول/بازشدنِ مخفف)",
+   "printErrata": [
+    "تمرین۱ درس سوم ق۴: «Yes, they don’t buy goldfish» در برابرِ ترجمهٔ چاپیِ «نه، آنها ماهی قرمز نمیخرند» — شکلِ چاپی verbatim اولِ accepted، شکل‌های «No, …» روادار"
+   ],
+   "printQuirkCount": 14,
+   "printQuirks": [
+    "ساختارِ لایه در این جزوه: هر آیتم = [بلوکِ پاسخ EN][پاسخ FA][بلوکِ سؤال EN][سؤال FA] — پاسخ در لایه پیش از سؤال می‌آید (ترتیبِ استخراج، نه ترتیبِ بصری چاپ)",
+    "جفتِ ۱ تمرین۱ درس اول: شکستِ RTL — قطعهٔ «م ؟» جدا از «بله، من هست»؛ بازسازیِ «هستم» با فهرستِ FIXUPS (لنگر: مقدارِ پارس‌شده)",
+    "ترجمهٔ پاسخِ جفت‌های ۲-۵ تمرین۱ درس اول با «؟» سرگردانِ چاپی پایان می‌یابد (۴ مورد) — در فیلدِ ترجمه پاک‌سازی و اینجا مستند شد",
+    "«بله، او هس ت» (تمرین۱ درس دوم جفت ۳) — فاصلهٔ درون‌کلمه‌ایِ لایه؛ بازسازیِ «هست» با FIXUPS",
+    "چاپ‌خطای محتوایی (printErrata): تمرین۱ درس سوم ق۴ — پاسخِ EN با «Yes,» آغاز می‌شود («Yes, they don’t buy goldfish») ولی ترجمهٔ چاپیِ FA با «نه» و منطقِ جمله منفی است؛ شکلِ چاپی verbatim اولِ accepted و شکل‌های اصلاح‌شده («No, …») در accepted به‌عنوانِ واریانتِ روادار",
+    "«No, we don’t» و «Yes, they usually color them» (تمرین۱ درس سوم ق۲/ق۳) بدونِ نقطهٔ پایانیِ چاپی — verbatim؛ نرمال‌سازِ موتور نقطهٔ پایانی را بی‌اثر می‌کند",
+    "«بله.میخرم» (تمرین۱ درس سوم جفت ۱) — نقطه به‌جای ویرگول و بدونِ فاصله در چاپ — verbatim در ترجمه",
+    "لایه «معموال» = چاپ «معمول» (تجزیهٔ لِگاتورِ لا در استخراجِ متن) — ترجمه با شکلِ چاپیِ خوانا",
+    "سربرگِ «تمرین1» درس چهارم دو بار در لایه می‌آید (دو بلوکِ ۴+۶ جفتیِ یک سکشنِ چاپی) — بانک ۶ با ادغامِ هر دو بلوک ساخته شد",
+    "سربرگِ درس ششم «تم رین1» با فاصله و «صفحه۳1» درس دوم با ارقامِ آمیختهٔ فارسی/لاتین — scrambleهای سربرگ",
+    "عنوانِ چاپیِ درس ششم «صحبت کردن در مورد سالمتی و آسیب ها» — «سالمتی» غلطِ چاپیِ «سلامتی» (در عنوانِ بانک verbatim نگه داشته شد)",
+    "سطرهای نقطه‌چینِ فرمِ پاسخِ آزاد در تمرین۲ درس دوم/تمرین۱ درس سوم/تمرین۱ و ۲ درس ششم — فضای خالیِ چاپ‌اند و استخراج نمی‌شوند",
+    "قطعه‌های شکستهٔ Q-FA (مثل «آیا آنها در حال سفر دور دنیا»+«هستند؟») و A-EN (مثل «Yes, she has many»+«friends.») با فاصله بازپیوسته شدند — خودکار با قفلِ شمارشِ هر سکشن",
+    "دو جفتِ پایانیِ تمرین۲ درس اول پس از سربرگِ صفحهٔ بعد در لایه می‌آیند (شکستِ صفحهٔ چاپ) — در همان بانک ادامه یافتند"
+   ],
+   "acceptedVariantsPolicy": "accepted[0] عینِ پاسخِ چاپی است؛ واریانت‌های بعدی فقط رواداریِ تایپ‌اند (بی‌ویرگولِ Yes/No، بازشدنِ مخفف، شکل‌های اصلاح‌شدهٔ چاپ‌خطا) — کلیدِ چاپی هرگز جابه‌جا نمی‌شود",
+   "distractorPolicy": "options=[پاسخِ چاپی، پاسخِ آیتمِ بعدیِ همان بانک] — اسکافولدِ غلطِ درون‌بانکی؛ برای آیتم تایپی هرگز رندر نمی‌شود (کارنامه متنِ خامِ تایپ‌شده را نشان می‌دهد) و فقط نقشِ اندیسِ نادرست را دارد",
+   "examMap": {
+    "note": "نقشهٔ «سؤالات امتحانی» هر شش درس برای راندهای بعدی — شماره‌ها صفحهٔ PDF؛ سکشن‌های تصویری/آهنگی استخراج‌ناپذیر؛ هیچ پاسخنامهٔ چاپی در جزوه برای این خانواده وجود ندارد (تنها پاسخنامهٔ جزوه: کلید واژگان ص۱۰۱ — r362)",
+    "lesson1": "pdf-p31-33 — ۱۵ سکشن؛ تصویری: ۱/۳/۱۲؛ آهنگی: ۱۰ (افتان/خیزان)؛ تولیدِ آزاد: ۵/۱۵",
+    "lesson2": "pdf-p47+ — سربرگِ «سواالت امتحانی درس دوم»",
+    "lesson3": "pdf-p61+ — سربرگِ «سواالت امتحانی درس سوم»",
+    "lesson4": "pdf-p73+ — سربرگِ «سواالت امتحانی درس چهارم»",
+    "lesson5": "pdf-p85+ — سربرگِ «سواالت امتحانی درس پنجم»",
+    "lesson6": "pdf-p95+ — سربرگِ «سواالت امتحانی درس ششم»"
+   },
+   "typedSingleOptionFix": {
+    "bug": "typedAnswerIndex برای ورودیِ ناهم‌سان با accepted و options، (answer+1) % options.length را برمی‌گرداند — با options.length=1 این همیشه خودِ answer است: هر ورودیِ غلطی «درست» امتیاز می‌گرفت",
+    "scope": "۴۳ آیتمِ تایپیِ تک‌گزینه‌ای: tests-g9 (۴: g9-l1-4..7)، tests-g10 (۳۵: l89-1..16، l91-3..13، l92-1..2، l94-1..6)، tests-g11 (۴: l90-1، l99-1، l105-3، l108-1)",
+    "fix": "افزودنِ اسکافولدِ غلطِ خانواده‌محور به options — g9: جفتِ ساختاری [is، are] با answer=اندیسِ کلید؛ l89/l91: شکلِ خالیِ چاپیِ خودِ سؤال (فام__لی__ر / رانِ dash)؛ l92/l90: جفتِ برعکسِ اسلش‌دار؛ l94: چرخشِ at/in/on؛ l99: سطرِ به‌هم‌ریختهٔ چاپ؛ l105: جملهٔ ناهمدیسی؛ l108: «do»",
+    "guard": "tests/jozve-tests-g9-tamarin-r363.test.ts — هیچ آیتمِ تایپی در هیچ tests-gN.json نباید options.length<2 داشته باشد"
+   }
+  }
+ }
 }
