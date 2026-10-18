@@ -14907,6 +14907,658 @@
           "placeholder": "type your answer…"
         }
       ]
+    },
+    {
+      "lesson": 74,
+      "title": "متوسط و استاندارد — تست گرامر و نگارش درس سوم (ص۱۳۸-۱۴۰)",
+      "level": "متوسط و استاندارد — چهارگزینه‌ای",
+      "count": 46,
+      "questions": [
+        {
+          "id": "g10-l74-1",
+          "n": 1,
+          "category": "grammar",
+          "question": "While Kimia and her friends ---------------------- football in the yard of the school, it ---------------------- raining.",
+          "options": [
+            "were playing / was starting",
+            "played / started",
+            "were playing / started",
+            "played / was starting"
+          ],
+          "answer": 2,
+          "translation": "هنگامی که کیمیا و دوستانش در حیاط مدرسه داشتند فوتبال بازی می کردند باران شروع به باریدن کرد."
+        },
+        {
+          "id": "g10-l74-2",
+          "n": 2,
+          "category": "grammar",
+          "question": "When I arrived Soma and Jessica ---------------------- dinner.",
+          "options": [
+            "making",
+            "made",
+            "were making",
+            "was making"
+          ],
+          "answer": 2,
+          "translation": "وقتی که من رسیدم سوما و جسیکا داشتند شام درست می کردند."
+        },
+        {
+          "id": "g10-l74-3",
+          "n": 3,
+          "category": "grammar",
+          "question": "Yesterday at this time, I ---------------------- to attend an English course but I didn’t.",
+          "options": [
+            "want",
+            "will want",
+            "was wanting",
+            "wanted"
+          ],
+          "answer": 3,
+          "translation": "دیروز همین موقع می خواستم که در یک دوره انگلیسی شرکت بکنم اما منصرف شدم."
+        },
+        {
+          "id": "g10-l74-4",
+          "n": 4,
+          "category": "grammar",
+          "question": "---------------------- I was studying English, my father ---------------------- TV.",
+          "options": [
+            "While /was watching",
+            "When / watched",
+            "As / watched",
+            "While / were watching"
+          ],
+          "answer": 0,
+          "translation": "هنگامی که من مشغول مطالعه کردن انگلیسی بودم پدرم داشت تلویزیون نگاه می کرد."
+        },
+        {
+          "id": "g10-l74-5",
+          "n": 5,
+          "category": "grammar",
+          "question": "---------------------- you cutting the grass when Morteza ---------------------- back?",
+          "options": [
+            "Were / came",
+            "Was / came",
+            "Were / comes",
+            "Was / comes"
+          ],
+          "answer": 0,
+          "translation": "آیا داشتی علف ها را قطع می کردی وقتی که مرتضی برگشت؟"
+        },
+        {
+          "id": "g10-l74-6",
+          "n": 6,
+          "category": "grammar",
+          "question": "My friend, Hannaneh, ---------------------- two brothers, Ali and Reza. They ---------------------- lunch right now.",
+          "options": [
+            "has / have",
+            "has / are having",
+            "is having / have",
+            "is having / are having"
+          ],
+          "answer": 1,
+          "translation": "دوست من حنانه دو برادر دارد . علی و رضا، (آنها) الان دارند ناهار می خورند."
+        },
+        {
+          "id": "g10-l74-7",
+          "n": 7,
+          "category": "grammar",
+          "question": "She --------------- the soup continuously, I thought it ---------------------- very good.",
+          "options": [
+            "was tasting / was tasting",
+            "was tasting / tasted",
+            "tasted / was tasting",
+            "tasted / tasted"
+          ],
+          "answer": 1,
+          "translation": "او دائما داشت سوپ را مزه می کرد فکر می کنم مزه خیلی خوبی داشت."
+        },
+        {
+          "id": "g10-l74-8",
+          "n": 8,
+          "category": "grammar",
+          "question": "Yesterday, a cat with its kitties ---------------------- everywhere to find something to eat.",
+          "options": [
+            "are searching",
+            "is searching",
+            "were searching",
+            "was searching"
+          ],
+          "answer": 2,
+          "translation": "دیروز یک گربه با توله هایش داشتند همه جا را زیر و رو می کردند تا چیزی را برای خوردن پیدا بکنند."
+        },
+        {
+          "id": "g10-l74-9",
+          "n": 9,
+          "category": "grammar",
+          "question": "While I ---------------------- a dream the alarm ---------------------- off.",
+          "options": [
+            "was having / went",
+            "had / went",
+            "was having / was going",
+            "had / was going"
+          ],
+          "answer": 0,
+          "translation": "وقتی که داشتم خواب می دیدم ساعت زنگ خورد."
+        },
+        {
+          "id": "g10-l74-10",
+          "n": 10,
+          "category": "grammar",
+          "question": "The singer ---------------------- very beautifully ---------------------- suddenly the power went out.",
+          "options": [
+            "sings / while",
+            "was singing / when",
+            "sang / while",
+            "is singing / when"
+          ],
+          "answer": 1,
+          "translation": "آن خواننده داشت خیلی زیبا آواز می خواند وقتی که ناگهان برق رفت."
+        },
+        {
+          "id": "g10-l74-11",
+          "n": 11,
+          "category": "grammar",
+          "question": "Their new friend is very fat. She ---------------------- 120 kilograms.",
+          "options": [
+            "is weighing",
+            "weighs",
+            "weighed",
+            "was weighing"
+          ],
+          "answer": 1,
+          "translation": "دوست جدید آنها خیلی چاق است. او صد و بیست کیلو وزن دارد."
+        },
+        {
+          "id": "g10-l74-12",
+          "n": 12,
+          "category": "grammar",
+          "question": "I believe that Sam ---------------------- when we ---------------------- him the day before yesterday.",
+          "options": [
+            "was working not / were calling",
+            "was not work / called",
+            "wasn’t working / called",
+            "was not working / were calling"
+          ],
+          "answer": 2,
+          "translation": "من باور دارم که پریروز وقتی که به سام زنگ زدیم او مشغول کار کردن نبود."
+        },
+        {
+          "id": "g10-l74-13",
+          "n": 13,
+          "category": "grammar",
+          "question": "We ---------------------- our country and we ---------------------- to stop fighting against our enemies.",
+          "options": [
+            "are loving / aren’t wanting",
+            "are loving / don’t want",
+            "love / aren’t wanting",
+            "love / don’t want"
+          ],
+          "answer": 3,
+          "translation": "ما کشورمان را دوست داریم و نمی خواهیم از جنگیدن در مقابل دشمنانمان امتناع بورزیم."
+        },
+        {
+          "id": "g10-l74-14",
+          "n": 14,
+          "category": "grammar",
+          "question": "I ---------------------- to him and his spouse many times not to go on a trip in this situation, but they wouldn’t listen to me.",
+          "options": [
+            "was talking",
+            "talked",
+            "will talk",
+            "am talking"
+          ],
+          "answer": 1,
+          "translation": "من دفعات زیادی با او و همسرش صحبت کردم که در چنین شرایطی به مسافرت نروند اما آنها به حرف من گوش نکردند."
+        },
+        {
+          "id": "g10-l74-15",
+          "n": 15,
+          "category": "grammar",
+          "question": "When a speedy car ---------------------- my little brother, he ---------------------- with his friends in the alley.",
+          "options": [
+            "was hitting / played",
+            "was hitting / was playing",
+            "hit / played",
+            "hit / was playing"
+          ],
+          "answer": 3,
+          "translation": "وقتی که یک ماشین پرسرعت به برادر کوچکم زد ، او مشغول بازی کردن با دوستانش در کوچه بود."
+        },
+        {
+          "id": "g10-l74-16",
+          "n": 16,
+          "category": "grammar",
+          "question": "Thank you Fatemeh, I ---------------------- any help .I can do my homework ----------------------.",
+          "options": [
+            "don’t need / on myself",
+            "am not needing / on myself",
+            "don’t need / on my own",
+            "am not needing / on my own"
+          ],
+          "answer": 2,
+          "translation": "مچکرم فاطمه نیازی به کمک ندارم.خودم به تنهایی می توانم تکلیفم را انجام بدهم."
+        },
+        {
+          "id": "g10-l74-17",
+          "n": 17,
+          "category": "grammar",
+          "question": "Shiva and Shima were able to clean all of the rooms ----------------------.",
+          "options": [
+            "herself",
+            "themselves",
+            "on her own",
+            "with themselves"
+          ],
+          "answer": 1,
+          "translation": "شیوا و شیما توانستند همه اتاق ها را خودشان تمیز بکنند."
+        },
+        {
+          "id": "g10-l74-18",
+          "n": 18,
+          "category": "grammar",
+          "question": "I can take care of ----------------------, so don’t be worried about me.",
+          "options": [
+            "me",
+            "mine",
+            "my",
+            "myself"
+          ],
+          "answer": 3,
+          "translation": "من می توانم از خودم مراقبت بکنم بنابراین نگران من نباشید."
+        },
+        {
+          "id": "g10-l74-19",
+          "n": 19,
+          "category": "grammar",
+          "question": "She is always talking to ---------------------- and this makes everybody annoyed.",
+          "options": [
+            "her",
+            "herself",
+            "on her own",
+            "by herself"
+          ],
+          "answer": 1,
+          "translation": "او همیشه با خودش صحبت می کند و این همه را آزرده خاطر می کند."
+        },
+        {
+          "id": "g10-l74-20",
+          "n": 20,
+          "category": "grammar",
+          "question": "Catherine, you should take the umbrella with ---------------------- because it may rain later.",
+          "options": [
+            "yourself",
+            "you",
+            "yours",
+            "yourselves"
+          ],
+          "answer": 1,
+          "translation": "کاترین بهتر است که چتر را با خودت ببری زیرا ممکن است بعدا باران ببارد."
+        },
+        {
+          "id": "g10-l74-21",
+          "n": 21,
+          "category": "grammar",
+          "question": "As I---------------------- a jacket for my son, my husband ---------------------- his car in the garage.",
+          "options": [
+            "wove / fixed",
+            "was weaving / was fixing",
+            "wove / was fixing",
+            "was weaving / fixed"
+          ],
+          "answer": 1,
+          "translation": "هنگامی که داشتم یک ژاکت را برای پسرم می بافتم شوهرم در گاراژ داشت ماشینش را تعمیر می کرد."
+        },
+        {
+          "id": "g10-l74-22",
+          "n": 22,
+          "category": "grammar",
+          "question": "A: “Can we have this delicious sweet?” B: “Yes sure, please help ----------------------.”",
+          "options": [
+            "yourself",
+            "yourselves",
+            "ourselves",
+            "by yourselves"
+          ],
+          "answer": 1,
+          "translation": "الف: می توانیم از این شیرینی های خوشمزه بخوریم؟ ب: بله .البته، لطفا از خودتان پذیرایی کنید."
+        },
+        {
+          "id": "g10-l74-23",
+          "n": 23,
+          "category": "grammar",
+          "question": "Each time, she ---------------------- the day of the accident, she ---------------------- very depressed.",
+          "options": [
+            "remembers / looks",
+            "is remembering / is looking",
+            "remembers / is looking",
+            "is remembering / looks"
+          ],
+          "answer": 0,
+          "translation": "هر بار که روز تصادف را به خاطر می آورد خیلی افسرده و ناراحت به نظر می آید."
+        },
+        {
+          "id": "g10-l74-24",
+          "n": 24,
+          "category": "grammar",
+          "question": "Two people ---------------------- loudly in the library yesterday, so we asked them to leave immediately.",
+          "options": [
+            "talked",
+            "were talking",
+            "are talking",
+            "will talk"
+          ],
+          "answer": 1,
+          "translation": "دیروز دو نفر در کتابخانه داشتند با صدای بلند صحبت می کردند بنابراین ما از آنها خواستیم که فورا کتابخانه را ترک بکنند."
+        },
+        {
+          "id": "g10-l74-25",
+          "n": 25,
+          "category": "grammar",
+          "question": "I and ---------------------- completed the project two days ago.",
+          "options": [
+            "he",
+            "himself",
+            "he himself",
+            "him ourselves"
+          ],
+          "answer": 0,
+          "translation": "من و او پروژه را دو روز پیش تکمیل کردیم."
+        },
+        {
+          "id": "g10-l74-26",
+          "n": 26,
+          "category": "grammar",
+          "question": "---------------------- what has happened? Jane ---------------------- very happy today.",
+          "options": [
+            "Are you knowing / is appearing",
+            "Do you know / appears",
+            "Are you knowing / appears",
+            "Do you know / is appearing"
+          ],
+          "answer": 1,
+          "translation": "می دانی چه اتفاقی افتاده است؟ جین امروز خیلی خوشحال به نظر می رسد."
+        },
+        {
+          "id": "g10-l74-27",
+          "n": 27,
+          "category": "grammar",
+          "question": "The father ---------------------- baked a cake on his son’s birthday.",
+          "options": [
+            "he",
+            "himself",
+            "on her own",
+            "by him"
+          ],
+          "answer": 1,
+          "translation": "پدر خودش در روز تولد پسرش کیک پخت."
+        },
+        {
+          "id": "g10-l74-28",
+          "n": 28,
+          "category": "grammar",
+          "question": "I tried to make ---------------------- understand that there was a problem, but ---------------------- didn’t pay any attention to ----------------------.",
+          "options": [
+            "them / themselves / me",
+            "theirs / they / myself",
+            "them / they / me",
+            "their / them / myself"
+          ],
+          "answer": 2,
+          "translation": "من سعی کردم که به آنها بفهمانم که مشکلی وجود دارد اما آنها توجهی به من نکردند."
+        },
+        {
+          "id": "g10-l74-29",
+          "n": 29,
+          "category": "grammar",
+          "question": "She ---------------------- for a trip when ---------------------- mother went shopping.",
+          "options": [
+            "was packing / herself",
+            "packed / her",
+            "was packing / her",
+            "packed / herself"
+          ],
+          "answer": 2,
+          "translation": "او داشت وسایلش را برای سفر آماده می کرد وقتی که مادرش به خرید رفت."
+        },
+        {
+          "id": "g10-l74-30",
+          "n": 30,
+          "category": "grammar",
+          "question": "I took my little nephew with ---------------------- to the gym.",
+          "options": [
+            "mine",
+            "me",
+            "myself",
+            "my"
+          ],
+          "answer": 1,
+          "translation": "من برادر زاده کوچکم را با خودم به باشگاه بردم."
+        },
+        {
+          "id": "g10-l74-31",
+          "n": 31,
+          "category": "grammar",
+          "question": "To be honest, this subject ---------------------- for me a lot and I will try my best to solve it.",
+          "options": [
+            "is mattering",
+            "mattered",
+            "was mattering",
+            "matters"
+          ],
+          "answer": 3,
+          "translation": "راستش را بخواهید این موضوع برای من خیلی مهم است و من تمام تلاشم را می کنم تا آن را حل بکنم."
+        },
+        {
+          "id": "g10-l74-32",
+          "n": 32,
+          "category": "grammar",
+          "question": "He is smelling ----------------------. I think he ---------------------- very bad.",
+          "options": [
+            "him / is smelling",
+            "himself / is smelling",
+            "him / smells",
+            "himself / smells"
+          ],
+          "answer": 3,
+          "translation": "او دارد خودش را بو می کشد و من فکر می کنم او بوی خیلی بدی می دهد."
+        },
+        {
+          "id": "g10-l74-33",
+          "n": 33,
+          "category": "grammar",
+          "question": "“---------------------- Ali and Roya playing badminton when we ---------------------- toward the park?”",
+          "options": [
+            "Was / were walking",
+            "Were / were walking",
+            "Was / walked",
+            "Were / walked"
+          ],
+          "answer": 3,
+          "translation": "آیا علی و رویا داشتند بدمینتون بازی می کردند وقتی که ما از کنار پارک رد شدیم؟"
+        },
+        {
+          "id": "g10-l74-34",
+          "n": 34,
+          "category": "grammar",
+          "question": "I don’t know why Ellina ---------------------- very selfish now.",
+          "options": [
+            "is",
+            "is being",
+            "was",
+            "was being"
+          ],
+          "answer": 1,
+          "translation": "من نمی دانم که چرا الینا الان آنقدر خودخواهانه رفتار می کند."
+        },
+        {
+          "id": "g10-l74-35",
+          "n": 35,
+          "category": "grammar",
+          "question": "The car you ----------------- to buy next month ----------------- very much, so I don’t think you can afford it.",
+          "options": [
+            "are wanting / is costing",
+            "want / costs",
+            "are wanting / costs",
+            "want / is costing"
+          ],
+          "answer": 1,
+          "translation": "ماشینی که ماه بعد می خواهی آن را بخری خیلی هزینه اش بالاست بنابراین من فکر نمی کنم استطاعتش را داشته باشی."
+        },
+        {
+          "id": "g10-l74-36",
+          "n": 36,
+          "category": "grammar",
+          "question": "A: “Where is Mina now?” B: “She is very busy and ---------------------- at her desk.”",
+          "options": [
+            "sits",
+            "is sitting",
+            "was sitting",
+            "sat"
+          ],
+          "answer": 1,
+          "translation": "الف: مینا الان کجا است ؟ ب: او خیلی مشغول است و پشت میز نشسته است ."
+        },
+        {
+          "id": "g10-l74-37",
+          "n": 37,
+          "category": "grammar",
+          "question": "While all of the students -------------------- to each other loudly, the principal ------------------- in to warn them.",
+          "options": [
+            "were talking / came",
+            "talked / came",
+            "were talking / was coming",
+            "talked / was coming"
+          ],
+          "answer": 0,
+          "translation": "هنگامی که همه دانش آموزان داشتند بلند با هم صحبت می کردند مدیر وارد شد تا به آنها اخطار بدهد."
+        },
+        {
+          "id": "g10-l74-38",
+          "n": 38,
+          "category": "grammar",
+          "question": "They ---------------------- the whole month to prepare ---------------------- for the contest.",
+          "options": [
+            "practiced / them",
+            "practiced / themselves",
+            "were practicing / them",
+            "were practicing / themselves"
+          ],
+          "answer": 3,
+          "translation": "آنها همه ماه داشتند تمرین می کردند تا خودشان را برای مسابقه آماده بکنند."
+        },
+        {
+          "id": "g10-l74-39",
+          "n": 39,
+          "category": "grammar",
+          "question": "She ---------------------- to go abroad and visit a foreign country, but she ---------------------- very little money.",
+          "options": [
+            "is wishing / is having",
+            "wishes / has",
+            "is wishing / has",
+            "wishes / is having"
+          ],
+          "answer": 1,
+          "translation": "او می خواهد به خارج برود و از یک کشور خارجی دیدن بکند اما او پول خیلی کمی دارد."
+        },
+        {
+          "id": "g10-l74-40",
+          "n": 40,
+          "category": "grammar",
+          "question": "As soon as he ---------------------- that mistake all of the students ---------------------- at him.",
+          "options": [
+            "was making / was laughing",
+            "made / laughed",
+            "was making / laughed",
+            "made / was laughing"
+          ],
+          "answer": 1,
+          "translation": "به محض اینکه او آن اشتباه را کرد همه دانش آموزان مسخره اش کردند."
+        },
+        {
+          "id": "g10-l74-41",
+          "n": 41,
+          "category": "grammar",
+          "question": "Jack and Jorge bought --------------- two beautiful jumpers and they are looking at ------------- in the mirror.",
+          "options": [
+            "themselves/ themselves",
+            "them / them",
+            "themselves / them",
+            "them / themselves"
+          ],
+          "answer": 0,
+          "translation": "جک و جورج برای خودشان دو پلیور زیبا خریدند و الان هم دارند در آیینه به خودشان نگاه می کنند."
+        },
+        {
+          "id": "g10-l74-42",
+          "n": 42,
+          "category": "grammar",
+          "question": "She ------------------- for something to buy for ------------------- little sister but she hasn’t found anything yet.",
+          "options": [
+            "is looking / herself",
+            "looks / herself",
+            "is looking/ her",
+            "looks / her"
+          ],
+          "answer": 2,
+          "translation": "او دنبال چیزی می گردد تا برای خواهر کوچکش بخرد اما هنوز چیزی را پیدا نکرده است."
+        },
+        {
+          "id": "g10-l74-43",
+          "n": 43,
+          "category": "grammar",
+          "question": "My parents will forward my mail to Italy while ---------------------- there. (زبان ۹۳)",
+          "options": [
+            "I am teaching",
+            "I was teaching",
+            "I have been teaching",
+            "I had been teaching"
+          ],
+          "answer": 0,
+          "translation": "درحایل که در ایتالیا تدریس می کنم پدر و مادرم نامه هایم را به آنجا ارسال خواهند کرد."
+        },
+        {
+          "id": "g10-l74-44",
+          "n": 44,
+          "category": "grammar",
+          "question": "It ---------------------- so hard that none of us wished to go out even for a short walk. (هنر ۹۴)",
+          "options": [
+            "was raining",
+            "rained",
+            "had rained",
+            "rains"
+          ],
+          "answer": 0,
+          "translation": "آنقدر شدید باران می بارید که هیچ کدام از ما تمایلی نداشتیم حتی برای یک پیاده روی کوتاه بیرون برویم."
+        },
+        {
+          "id": "g10-l74-45",
+          "n": 45,
+          "category": "grammar",
+          "question": "You and ---------------------- brother need to take time to prepare ---------------------- for the long journey which will start next month. (تجربی ۹۶ - با تغییر)",
+          "options": [
+            "your / yourself",
+            "her / themselves",
+            "her / yourself",
+            "your / yourselves"
+          ],
+          "answer": 3,
+          "translation": "تو و برادرت باید خودتان را برای سفر طولانی که ماه بعد شروع می شود آماده کنید."
+        },
+        {
+          "id": "g10-l74-46",
+          "n": 46,
+          "category": "grammar",
+          "question": "As soon as the teacher turned her back to write a question on the board, the children ---------------------- talking with one another at the same very moment. (هنر ۱۴۰۰)",
+          "options": [
+            "started",
+            "had started",
+            "were starting",
+            "have started"
+          ],
+          "answer": 0,
+          "translation": "به محض اینکه معلم روی برگرداند تا سوالات را بر روی تخته بنویسد بچه ها در همان لحظه شروع به صحبت کردن با همدیگر کردند."
+        }
+      ]
     }
   ],
   "source": {
@@ -15435,6 +16087,30 @@
         "سکشن‌های چاپ با ارقامِ فارسیِ سرمه‌ای در سربرگِ هلوئی (۱ تا ۱۳) و آیتم‌ها با ارقامِ قرمزِ لاتین؛ S6 با سربرگِ «۶.» فارسی و آیتم‌های 1-4 لاتین"
       ],
       "extractedRound": "r342"
+    },
+    "gram8": {
+      "exam": "تست گرامر و نگارش درس سوم - پایه دهم (ص۱۳۸-۱۴۰)",
+      "header": "سربرگِ چاپیِ ص۱۳۸: «تست گرامر و نگارش \"درس سوم- پایه دهم\" (پاسخنامه صفحه: ۲۸۳ تا ۲۸۶)» + سطرِ سطحِ «سطح تستها: \"متوسط\" و \"استاندارد\"» — ۴۶ MCQ",
+      "keyPages": "283-286",
+      "keyVerification": "print key pp283-286 «پاسخنامه تستهای استاندارد گرامر و نگارش درس سوم» + ۴۶ مدخلِ توضیح‌دار (گزینه + نکتهٔ مروری + ترجمهٔ چاپی) — 46/46 agree with semantic pre-fill, zero divergence",
+      "extractedRound": "r343",
+      "pattern": "r341/r339 (کلیدِ توضیح‌دار + ترجمهٔ چاپی در هر آیتم) + r322 (برچسبِ کنکورِ درون‌ساقه) + r338 (شمارشِ لایهٔ تیره‌ها)",
+      "printQuirks": [
+        "سربرگِ چاپیِ ص۱۳۸: «تست گرامر و نگارش \"درس سوم- پایه دهم\" (پاسخنامه صفحه: ۲۸۳ تا ۲۸۶)» — ارقامِ فارسی با واصفِ «تا» (r342 «۲۸۱ و ۲۸۲» با «و»، r336 «۲۷۲ - ۲۷۳» تیره)؛ سطرِ سطح: «سطح تستها: \"متوسط\" و \"استاندارد\"» — دو سطحِ نقل‌قولیِ قرمز (یگانه در خانواده: r339 فقط «متوسط»، r341 فقط «آموزشی»)",
+        "سربرگِ کلیدِ ص۲۸۳: «پاسخنامه تستهای استاندارد گرامر و نگارش \"درس سوم- پایه دهم\" (سؤالات: صفحه ۱۳۸ تا ۱۴۰)» — «سؤاالت» لایه = نهمین تجزیهٔ لیگاتورِ «سؤالات» (رندر تمیز)؛ ارقامِ فارسیِ ۱۳۸/۱۴۰ (لایه لاتین می‌داد)",
+        "چاپ‌غلطِ «درحایل» (ترجمهٔ Q43): یِ بلندِ بی‌نقطه در رندرِ ۱۲۰۰۰dpi + لایه هم «درحایل» — دومین عضوِ خانوادهٔ «حایل» (r341 سه موردِ «در حایل» در ص۲۷۹-۲۸۰)؛ در برابرِ «ایتالیا» و «هایم» همان خط با یِ نقطه‌دار",
+        "نویزهای لایه که رندرِ ۱۶۰۰-۹۰۰۰dpi همه را چاپِ تمیز نشان داد: «هنگایم»→هنگامی (×۴: Q1/Q4/Q21/Q37)، «مرتیص»→مرتضی، «سیع»→سعی، «جیر ن»→جین، «پسش»→پسرش، «افسده»→افسرده، «عیل»→علی، «پسم»→پسرم، «کیم»→کمی، «حت»→حتی، «یماشیتن»→ماشینی، «چیر نی»→چیزی، «بیر ون»→بیرون، «تمیر ن»→تمیز، «وقت»→وقتی (×۷)، «می دابن»→می دانی، «نشنشسته»→نشسته، «میر»→میز — برخلافِ r339 «هنگامیک» و r341 «حایل» که چاپ‌غلطِ واقعی بودند",
+        "خانوادهٔ لا→الِ لایه: «االن»→الان (×۳)، «باالست»→بالاست، «تالشم»→تلاشم، «تماییل»→تمایلی، «طوالبن»→طولانی، «سوایل»→سوالات، «خاریح»→خارج — و یی→ب: «تنهاب»→تنهایی، «پذیراب»→پذیرایی (کشفِ r341)",
+        "«رسی وع» لایه = «شروع» چاپ — سه‌نقطهٔ ش در رندرِ ۸۰۰۰dpi (Q1/Q45/Q46)؛ «رسی کت» = «شرکت» (Q3)؛ «بایس» = «باشی» (Q35)؛ «پررسعت» = «پرسرعت» — تحلیلِ مؤلفه‌های همبندِ رندرِ ۹۰۰۰dpi: سه بدنهٔ مرکب (پر/سر/عت) نه دو بدنه",
+        "Q4-a «While /was watching» — اسلشِ چسبیده به راست (فاصله قبل، بدونِ فاصله بعد) در برابرِ Q4-b «When / watched» — ناسازگاریِ خودِ چاپ؛ Q41-a «themselves/ themselves» و Q42-c «is looking/ her» هم اسلشِ چسبیده",
+        "Q7-d: حرفِ «d» با کادرِ سبزِ بدونِ پرانتز — یگانه در آزمون (بقیه «a)» تا «d)») — لایه «        d » و رندرِ ۴۰۰۰dpi هم‌رأی",
+        "Q16 ساقه: «any help .I can do my homework» — نقطه پیش از I با فاصله و بدونِ فاصله پس از آن — عینِ چاپ (لایه هم‌رأی)؛ Q21 «As I-----» و Q34 «34-I» و Q45 «45-You» شماره‌های چسبیده",
+        "ترجمهٔ Q6 «دوست من حنانه دو برادر دارد . علی و رضا، (آنها) الان دارند ناهار می خورند.» — نقطهٔ فاصله‌دارِ «دارد .»؛ ترجمهٔ Q16 «...ندارم.خودم...» نقطهٔ چسبیده؛ Q22 «ب: بله .البته، لطفا...»؛ Q36 «الف: مینا الان کجا است ؟ ب: ... پشت میز نشسته است .» — دو واژهٔ «کجا است» + فاصلهٔ پیش از «؟» و «.» (ناسازگاریِ نقطه‌گذاریِ خودِ چاپ در هر چهار مورد)",
+        "ترجمهٔ Q15 «...به برادر کوچکم زد ، او مشغول...» — ویرگولِ فارسیِ فاصله‌دارِ «زد ، او»؛ ترجمهٔ Q8 فعلِ جمع برای نهادِ مفرد «گربه...داشتند» (قرینهٔ انگلیسیِ were searching — عینِ چاپ)؛ Q46 «the same very moment» عینِ چاپ",
+        "برچسب‌های قرمزِ منبعِ کنکور با ارقامِ فارسی — نخستین خانوادهٔ شاخه+سال در کارتِ دهم: Q43 «(زبان ۹۳)»، Q44 «(هنر ۹۴)»، Q45 «(تجربی ۹۶ - با تغییر)»، Q46 «(هنر ۱۴۰۰)» — لایه «هین94/هین1400» = «هنر» (رندر حاکم)؛ الگویِ درون‌ساقه مثل r322 «(کنکور منحصراً زبان)»",
+        "تیره‌ها: ۷۳ رانِ لایه / ۴۶ ساقه / ۷۳ جای‌خالی — استانداردِ ۲۲ با استثناهای عینِ چاپ: Q7=۱۵+۲۲، Q35=۱۷+۱۷، Q37=۲۰+۱۹، Q41=۱۵+۱۳، Q42=۱۹+۱۹، Q28 سه‌جای‌خالی (شمارشِ لایه حاکم — r338)؛ آپاستروف‌های تایپوگرافیک: didn’t/wouldn’t/son’s/don’t/wasn’t/can’t/aren’t/hasn’t",
+        "گفتمانِ A/B در Q22 و Q36 با گیومهٔ تایپوگرافیک؛ فاصلهٔ ستونیِ چاپ بین «الف/ب» به یک فاصله فروپاشید (قرینهٔ r339-Q6)؛ بدونِ جعبهٔ Note در ص۲۸۶ (برخلافِ r334/r338/r341) — کلید در چهار صفحهٔ ۲۸۳-۲۸۶ پخش است"
+      ]
     }
   }
 }
