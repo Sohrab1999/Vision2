@@ -69,7 +69,7 @@ const norm = (s: string) => s.trim().toLowerCase().replace(/\s+/g, " ");
 describe("jozve descriptive vocab g11 lessons 2+3 (r312 extraction receipt)", () => {
   it("bank shape: lessons 29..36 appended after r311's l28 — counts 16/8/8/25 × 2", () => {
     expect(bank.grade).toBe(11);
-    expect(bank.lessons.map((l) => l.lesson).slice(-50)).toEqual([43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92]); // r356: l56..l59، r357: l60..l73، r358: l74..l78، r359: l79..l92 الحاق شدند — دنبالهٔ l29..l36 در برابر [-51:-43] می‌ماند (پنجرهٔ ۵۰ = ۹۲-۴۳+۱ محاسبه‌شده)
+    expect(bank.lessons.map((l) => l.lesson).slice(-52)).toEqual([43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94]); // r356: l56..l59، r357: l60..l73، r358: l74..l78، r359: l79..l92، r360: l93..l94 الحاق شدند — دنبالهٔ l29..l36 در برابر [-53:-45] می‌ماند (پنجرهٔ ۵۲ = ۹۴-۴۳+۱ محاسبه‌شده)
     for (const [les, size] of [[l29, 16], [l30, 8], [l31, 8], [l32, 25], [l33, 16], [l34, 8], [l35, 8], [l36, 25]] as const) {
       expect(les.count, `l${les.lesson}`).toBe(size);
       expect(les.questions, `l${les.lesson}`).toHaveLength(size);
@@ -83,7 +83,7 @@ describe("jozve descriptive vocab g11 lessons 2+3 (r312 extraction receipt)", ()
     expect(l32.level).toBe("تشریحی — چهارگزینه‌ای");
   });
 
-  it("ids: g11-l29..l36-N unique across the whole bank — total 1084 items", () => {
+  it("ids: g11-l29..l36-N unique across the whole bank — total 1184 items", () => {
     for (const [les, size] of [[l29, 16], [l30, 8], [l31, 8], [l32, 25], [l33, 16], [l34, 8], [l35, 8], [l36, 25]] as const) {
       expect(les.questions.map((q) => q.id), `l${les.lesson}`).toEqual(
         Array.from({ length: size }, (_, i) => `g11-l${les.lesson}-${i + 1}`)
@@ -91,8 +91,8 @@ describe("jozve descriptive vocab g11 lessons 2+3 (r312 extraction receipt)", ()
     }
     const all = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
     expect(new Set(all).size).toBe(all.length);
-    expect(all).toHaveLength(600 + 114 + 68 + 57 + 54 + 65 + 61 + 65); // ۶۰۰ (r311) + ۱۱۴ (r312) + ۶۸ (r354) + ۵۷ (r355) + ۵۴ (r356) + ۶۵ (r357) + ۶۱ (r358) + ۶۵ (r359 — جامع تشریحی د۳)
-    expect(bank.lessons).toHaveLength(92);
+    expect(all).toHaveLength(600 + 114 + 68 + 57 + 54 + 65 + 61 + 65 + 100); // ۶۰۰ (r311) + ۱۱۴ (r312) + ۶۸ (r354) + ۵۷ (r355) + ۵۴ (r356) + ۶۵ (r357) + ۶۱ (r358) + ۶۵ (r359) + ۱۰۰ (r360 — گرامر و نگارش د۳)
+    expect(bank.lessons).toHaveLength(94);
   });
 
   it("typed purity (six typed banks): kind=typed, accepted[0]=options[0], answer=0, placeholder, English purity", () => {

@@ -17020,6 +17020,1322 @@
           "placeholder": "answer according to the reading passage…"
         }
       ]
+    },
+    {
+      "lesson": 93,
+      "title": "کنکوری/استاندارد — بخش اول: ۳۰ تست گرامر و نگارش د۳ (ص۱۰۳-۱۰۴)",
+      "level": "کنکوری/استاندارد — چهارگزینه‌ای",
+      "count": 30,
+      "questions": [
+        {
+          "id": "g11-l93-1",
+          "n": 1,
+          "category": "grammar",
+          "question": "If I find a book that is popular among all children, I -------------- it for my brother as a birthday present.",
+          "options": [
+            "buy",
+            "will buy",
+            "bought",
+            "would have bought"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l93-2",
+          "n": 2,
+          "category": "grammar",
+          "question": "You won’t ---------------- to the theater on time if you ----------------- home at six.",
+          "options": [
+            "got / didn’t leave",
+            "get / don’t leave",
+            "got / don’t leave",
+            "get / didn’t leave"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l93-3",
+          "n": 3,
+          "category": "grammar",
+          "question": "If you ----------------- to bed early tonight, you ------------------ better in the morning.",
+          "options": [
+            "went / will feel",
+            "go / would feel",
+            "go / will feel",
+            "went / would feel"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g11-l93-4",
+          "n": 4,
+          "category": "grammar",
+          "question": "I think I left my watch at your house. If you ------------------- it, can you call me?",
+          "options": [
+            "found",
+            "find",
+            "will find",
+            "finding"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l93-5",
+          "n": 5,
+          "category": "grammar",
+          "question": "I -------------------- poor people in the future if I -------------------- a doctor.",
+          "options": [
+            "will help / became",
+            "would help / become",
+            "will help / become",
+            "help / became"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g11-l93-6",
+          "n": 6,
+          "category": "grammar",
+          "question": "We ----------------- go out today, if it ---------------- heavily.",
+          "options": [
+            "can’t / will rain",
+            "can’t / rains",
+            "couldn’t / will rain",
+            "couldn’t / rains"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l93-7",
+          "n": 7,
+          "category": "grammar",
+          "question": "I think everything will be fine, but if ----------------- any problem, ----------------- you, OK?",
+          "options": [
+            "there is / I’ll call",
+            "there was / I call",
+            "there will be / I call",
+            "there was / I called"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l93-8",
+          "n": 8,
+          "category": "grammar",
+          "question": "I think if we ------------------- Ben to the party, we’ll have to invite his friends, too.",
+          "options": [
+            "will decide inviting",
+            "decide to invite",
+            "will decide to invite",
+            "decide inviting"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l93-9",
+          "n": 9,
+          "category": "grammar",
+          "question": "We --------------- go to Paris on vacation next week if our parents -------------- to travel.",
+          "options": [
+            "might / agree",
+            "may / agreed",
+            "might / agrees",
+            "may / agree"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l93-10",
+          "n": 10,
+          "category": "grammar",
+          "question": "Please, eat your lunch. If you ------------------- your soup now, it ---------------- cold.",
+          "options": [
+            "didn’t have / would go",
+            "had / got",
+            "can eat / doesn’t go",
+            "don’t have / will go"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l93-11",
+          "n": 11,
+          "category": "grammar",
+          "question": "He felt extremely ----------------------- after staying up very late to finish his school project.",
+          "options": [
+            "tiring",
+            "to tire",
+            "tired",
+            "was tired"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g11-l93-12",
+          "n": 12,
+          "category": "grammar",
+          "question": "After 10 hours of hard work, Tom did not look -----------------, so I let him go ahead and finish the job.",
+          "options": [
+            "tired",
+            "tiring",
+            "to tire",
+            "to be tiring"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l93-13",
+          "n": 13,
+          "category": "grammar",
+          "question": "I was very ------------------ at the results of exams when I saw that I got high grades.",
+          "options": [
+            "tired",
+            "surprising",
+            "tiring",
+            "surprised"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l93-14",
+          "n": 14,
+          "category": "grammar",
+          "question": "It is a difficult job. I’m so ----------------- of doing the same job, day after day.",
+          "options": [
+            "interested",
+            "tiring",
+            "interesting",
+            "tired"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l93-15",
+          "n": 15,
+          "category": "grammar",
+          "question": "He is getting -------------------- with doing his job after 26 years.",
+          "options": [
+            "boring",
+            "surprised",
+            "bored",
+            "surprising"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g11-l93-16",
+          "n": 16,
+          "category": "grammar",
+          "question": "It was a hard decision but at the end, I decided -------------------- to the university.",
+          "options": [
+            "going",
+            "goes",
+            "went",
+            "to go"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l93-17",
+          "n": 17,
+          "category": "grammar",
+          "question": "The police seem certain -------------------- the people who are responsible for the attack.",
+          "options": [
+            "find",
+            "finding",
+            "found",
+            "to find"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l93-18",
+          "n": 18,
+          "category": "grammar",
+          "question": "I wanted -------------------- it but it cost too much and I didn’t have enough money.",
+          "options": [
+            "to bought",
+            "to buy",
+            "buying",
+            "for buying"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l93-19",
+          "n": 19,
+          "category": "grammar",
+          "question": "This program is completely new and I don’t know how ------------------- it.",
+          "options": [
+            "uses",
+            "to use",
+            "will use",
+            "using <<<PAGE 104>>> 104"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l93-20",
+          "n": 20,
+          "category": "grammar",
+          "question": "Do you expect ----------------- this course? If so, you had better work harder.",
+          "options": [
+            "to pass",
+            "pass",
+            "passing",
+            "that pass"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l93-21",
+          "n": 21,
+          "category": "grammar",
+          "question": "It was a long and dangerous journey. We were glad ----------------- home safely.",
+          "options": [
+            "getting",
+            "got",
+            "that get",
+            "to get"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l93-22",
+          "n": 22,
+          "category": "grammar",
+          "question": "You haven’t phoned me for a month. You promised ------------------ me every week.",
+          "options": [
+            "to call",
+            "called",
+            "call",
+            "calling"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l93-23",
+          "n": 23,
+          "category": "grammar",
+          "question": "He is a sociable person. I believe he is fortunate -------------------- a lot of good friends.",
+          "options": [
+            "of having",
+            "to have",
+            "have",
+            "that have"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l93-24",
+          "n": 24,
+          "category": "grammar",
+          "question": "We don’t want you ------------------ Mahdi about going ------------------ tomorrow.",
+          "options": [
+            "telling / swimming",
+            "to tell / to swim",
+            "telling / to swim",
+            "to tell / swimming"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l93-25",
+          "n": 25,
+          "category": "grammar",
+          "question": "It was a nice day, so we decided ---------------- for a walk instead of -------------- the TV.",
+          "options": [
+            "going / watching",
+            "to go / watch",
+            "going / to watch",
+            "to go / watching"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l93-26",
+          "n": 26,
+          "category": "grammar",
+          "question": "Just imagine ---------- thirsty in a vast desert and --------- no water. What will you do to save your life?",
+          "options": [
+            "to be / having",
+            "being / having",
+            "being / to have",
+            "to be / to have"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l93-27",
+          "n": 27,
+          "category": "grammar",
+          "question": "Did you remember ------------------- the doors before ------------------ the house?",
+          "options": [
+            "locking / leaving",
+            "locking / to leave",
+            "to lock / leaving",
+            "to lock / to leave"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g11-l93-28",
+          "n": 28,
+          "category": "grammar",
+          "question": "It is impossible ------------------- a poem.",
+          "options": [
+            "that the memorizing",
+            "that his memorizing",
+            "for him to memorize",
+            "for him memorizing"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g11-l93-29",
+          "n": 29,
+          "category": "grammar",
+          "question": "The man thought that it was absolutely important for everyone in the hotel ------------------ the lobby as quickly as possible.",
+          "options": [
+            "leave",
+            "to leave",
+            "who leave",
+            "is leaving"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l93-30",
+          "n": 30,
+          "category": "grammar",
+          "question": "The final English exam questions were too difficult for most of the students in the class ---------------.",
+          "options": [
+            "answered",
+            "to answer",
+            "for answering",
+            "that they answer"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "lesson": 94,
+      "title": "متوسط/کنکوری — بخش دوم: ۷۰ تست گرامر و نگارش د۳ (ص۱۰۵-۱۰۸)",
+      "level": "متوسط/کنکوری — چهارگزینه‌ای",
+      "count": 70,
+      "questions": [
+        {
+          "id": "g11-l94-1",
+          "n": 1,
+          "category": "grammar",
+          "question": "If you ---------------- more than 100 dollars, you’ll get a 20 percent discount.",
+          "options": [
+            "bought",
+            "buy",
+            "will buy",
+            "are going to buy"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l94-2",
+          "n": 2,
+          "category": "grammar",
+          "question": "He was surprised ------------------ me sitting behind his desk.",
+          "options": [
+            "saw",
+            "see",
+            "to see",
+            "seeing"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g11-l94-3",
+          "n": 3,
+          "category": "grammar",
+          "question": "I think I left my watch at your house. If you ---------------- it, can you call me?",
+          "options": [
+            "found",
+            "find",
+            "will find",
+            "finding"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l94-4",
+          "n": 4,
+          "category": "grammar",
+          "question": "We were amazed ---------------- that no one was hurt in that accident.",
+          "options": [
+            "finding",
+            "to find",
+            "find",
+            "to found"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l94-5",
+          "n": 5,
+          "category": "grammar",
+          "question": "It is sometimes necessary for Peter ------------ his parent’s car before they give him any pocket money.",
+          "options": [
+            "to clean",
+            "cleaning",
+            "cleans",
+            "cleaned"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l94-6",
+          "n": 6,
+          "category": "grammar",
+          "question": "The math teacher ----------- let the students leave the class if they don’t finish their homework carefully.",
+          "options": [
+            "will not",
+            "do not",
+            "would",
+            "will"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l94-7",
+          "n": 7,
+          "category": "grammar",
+          "question": "Hamid has never been in Shiraz. He is very --------------------- about going there.",
+          "options": [
+            "to excite",
+            "excite",
+            "excited",
+            "exciting"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g11-l94-8",
+          "n": 8,
+          "category": "grammar",
+          "question": "You -------------------- a brilliant and successful teacher in the future if you study hard. To be a good teacher, you also need to be patient and kind enough.",
+          "options": [
+            "are become",
+            "would become",
+            "will become",
+            "have become"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g11-l94-9",
+          "n": 9,
+          "category": "grammar",
+          "question": "Reza and Arash promised ------------- me with math. I’m really lucky -------------- such good friends.",
+          "options": [
+            "helping / having",
+            "to help / to have",
+            "helping / to have",
+            "to help / having"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l94-10",
+          "n": 10,
+          "category": "grammar",
+          "question": "He was very careful -------------------- both ways when he crosses the road.",
+          "options": [
+            "look",
+            "looking",
+            "to looking",
+            "to look"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l94-11",
+          "n": 11,
+          "category": "grammar",
+          "question": "My little son was very ----------------------- when he saw a lion at the zoo.",
+          "options": [
+            "frighten",
+            "frightening",
+            "frightened",
+            "frighteningly"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g11-l94-12",
+          "n": 12,
+          "category": "grammar",
+          "question": "You can’t buy this car if you -------------------- have enough money.",
+          "options": [
+            "can",
+            "will",
+            "didn’t",
+            "don’t"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l94-13",
+          "n": 13,
+          "category": "grammar",
+          "question": "I think you are really fortunate ----------------- in one of the most beautiful towns in the country.",
+          "options": [
+            "to live",
+            "living",
+            "to living",
+            "live"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l94-14",
+          "n": 14,
+          "category": "grammar",
+          "question": "Your mother won’t buy that beautiful bicycle you showed us yesterday for you if you ---------------- your exams. So, study your lessons as much as possible.",
+          "options": [
+            "will fail",
+            "are failing",
+            "failed",
+            "fail"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l94-15",
+          "n": 15,
+          "category": "grammar",
+          "question": "We’re planning ---------------- this afternoon. Would you like to join us?",
+          "options": [
+            "to go to jog",
+            "to go jogging",
+            "going jogging",
+            "going to jog"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l94-16",
+          "n": 16,
+          "category": "grammar",
+          "question": "If we ------------------- machines, we ------------------- the work much more easily.",
+          "options": [
+            "used / will finish",
+            "uses / finish",
+            "were using / may finish",
+            "use / can finish"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l94-17",
+          "n": 17,
+          "category": "grammar",
+          "question": "Jane hasn’t been in a good mood recently because of her father’s death. I believe she ---------------- happy if we ------------------- her to the party.",
+          "options": [
+            "becomes / invited",
+            "will become / invited",
+            "will be / invite",
+            "is / invited"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g11-l94-18",
+          "n": 18,
+          "category": "grammar",
+          "question": "We enjoy ---------------- parties so we invited Jim and Robert ---------------- lunch with us.",
+          "options": [
+            "to give / to have",
+            "to give / having",
+            "giving / to have",
+            "giving/ having <<<PAGE 106>>> 106"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g11-l94-19",
+          "n": 19,
+          "category": "grammar",
+          "question": "It was dark in the room and she got -------------------- when he shouted at her suddenly.",
+          "options": [
+            "surprised",
+            "frightening",
+            "surprising",
+            "frightened"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l94-20",
+          "n": 20,
+          "category": "grammar",
+          "question": "We must leave right now if we ------------------- to get there on time.",
+          "options": [
+            "want",
+            "wanted",
+            "will want",
+            "would want"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l94-21",
+          "n": 21,
+          "category": "grammar",
+          "question": "She felt hurt and ---------------- when they didn’t call to invite her to the party.",
+          "options": [
+            "confusing",
+            "confused",
+            "confuse",
+            "confusingly"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l94-22",
+          "n": 22,
+          "category": "grammar",
+          "question": "His achievement surprised everyone, because we all expected his business ----------------- within the first few months.",
+          "options": [
+            "fail",
+            "of failing",
+            "failing",
+            "to fail"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l94-23",
+          "n": 23,
+          "category": "grammar",
+          "question": "They were careful ---------------- people who the winner of the prize was until the end.",
+          "options": [
+            "don’t tell",
+            "not tell",
+            "not telling",
+            "not to tell"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l94-24",
+          "n": 24,
+          "category": "grammar",
+          "question": "The interview went very well. She is certain ---------------- the job.",
+          "options": [
+            "getting",
+            "get",
+            "to get",
+            "gets"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g11-l94-25",
+          "n": 25,
+          "category": "grammar",
+          "question": "He was deeply shocked ---------------- the truth about his mom’s disease.",
+          "options": [
+            "discovering",
+            "to discovering",
+            "discover",
+            "to discover"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l94-26",
+          "n": 26,
+          "category": "grammar",
+          "question": "It was nice of you ---------------- me to the airport. Thank you very much.",
+          "options": [
+            "taking",
+            "take",
+            "to take",
+            "to taking"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g11-l94-27",
+          "n": 27,
+          "category": "grammar",
+          "question": "---------------- Maryam get a prize if she answers the question correctly?",
+          "options": [
+            "Does",
+            "Did",
+            "Would",
+            "Will"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l94-28",
+          "n": 28,
+          "category": "grammar",
+          "question": "They are attempting ------------------- the first to climb Mt. Everest without oxygen tanks.",
+          "options": [
+            "to becoming",
+            "to become",
+            "becoming",
+            "become"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l94-29",
+          "n": 29,
+          "category": "grammar",
+          "question": "Mom wanted me ---------------- to the library ---------------- some books.",
+          "options": [
+            "to go / to borrow",
+            "to go / borrow",
+            "go / borrow",
+            "go / to borrow"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l94-30",
+          "n": 30,
+          "category": "grammar",
+          "question": "I wonder why the students got ---------------- by the simple explanation I gave about the problem. It seems I have to put it another way.",
+          "options": [
+            "confusing",
+            "to confuse",
+            "have confused",
+            "confused"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l94-31",
+          "n": 31,
+          "category": "grammar",
+          "question": "If you -------------------- to have a healthy body, you ------------------- do a lot of exercise.",
+          "options": [
+            "want / should",
+            "will / may",
+            "have wanted / could",
+            "want / will"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l94-32",
+          "n": 32,
+          "category": "grammar",
+          "question": "My father was the first person --------------- a school in our village --------------- our children educated in our village. They used to go to the neighboring village to study.",
+          "options": [
+            "imagine to build / to get",
+            "to imagine to build / getting",
+            "to imagine building / getting",
+            "to imagine building / to get"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l94-33",
+          "n": 33,
+          "category": "grammar",
+          "question": "Our father told us ------------------- by bus because it was very slow.",
+          "options": [
+            "didn’t travel",
+            "not to travel",
+            "not travelled",
+            "not travelling"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l94-34",
+          "n": 34,
+          "category": "grammar",
+          "question": "I think everything will be fine, but if ---------------- any problem, ---------------- you, OK?",
+          "options": [
+            "there is / I’ll call",
+            "there was / I call",
+            "there will be / I call",
+            "there was / I called"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l94-35",
+          "n": 35,
+          "category": "grammar",
+          "question": "The famous writer hopes ---------------------- his novel next month.",
+          "options": [
+            "publishing",
+            "published",
+            "publish",
+            "to publish"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l94-36",
+          "n": 36,
+          "category": "grammar",
+          "question": "I think if we ---------------- to invite Ben to the party, we’ll have to invite his friends, too.",
+          "options": [
+            "will decide",
+            "decide",
+            "decided",
+            "had decided <<<PAGE 107>>> 107"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l94-37",
+          "n": 37,
+          "category": "grammar",
+          "question": "I live in England, so I have learned -------------------- English easily.",
+          "options": [
+            "speak",
+            "speaking",
+            "spoke",
+            "to speak"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l94-38",
+          "n": 38,
+          "category": "grammar",
+          "question": "He is ashamed -------------------- his father that he didn’t get a high grade in the exam.",
+          "options": [
+            "telling",
+            "tell",
+            "told",
+            "to tell"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l94-39",
+          "n": 39,
+          "category": "grammar",
+          "question": "If the weather is good, we -------------------- to have a picnic tomorrow.",
+          "options": [
+            "had gone",
+            "went",
+            "were going",
+            "are going"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l94-40",
+          "n": 40,
+          "category": "grammar",
+          "question": "We were all ---------------- at my grandfather’s stories. I always find his stories very ----------------.",
+          "options": [
+            "amused / interested",
+            "amusing / interesting",
+            "amused / interesting",
+            "amusing / interested"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g11-l94-41",
+          "n": 41,
+          "category": "grammar",
+          "question": "A: “Would you like ---------------- with us?” B: “No thank you. I’ve just had lunch.”",
+          "options": [
+            "eating",
+            "to eating",
+            "eat",
+            "to eat"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l94-42",
+          "n": 42,
+          "category": "grammar",
+          "question": "I think the air will be clean if people --------------------.",
+          "options": [
+            "used public transportation",
+            "will walk to work",
+            "would cycle to work",
+            "stop driving their own cars"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l94-43",
+          "n": 43,
+          "category": "grammar",
+          "question": "There will be an important meeting ------------------- the problems of country’s economy tomorrow.",
+          "options": [
+            "discussing",
+            "to discuss",
+            "discuss",
+            "discussed"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l94-44",
+          "n": 44,
+          "category": "grammar",
+          "question": "They didn’t play well, but they were lucky ------------------- the match.",
+          "options": [
+            "to win",
+            "won",
+            "of winning",
+            "winning"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l94-45",
+          "n": 45,
+          "category": "grammar",
+          "question": "If you decide to go to the central department store, --------------------- some shopping for me?",
+          "options": [
+            "will you do",
+            "you will do",
+            "do you do",
+            "you can do"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l94-46",
+          "n": 46,
+          "category": "grammar",
+          "question": "The research is almost over and they hope ------------------ the results next week.",
+          "options": [
+            "publishing",
+            "published",
+            "publish",
+            "to publish"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l94-47",
+          "n": 47,
+          "category": "grammar",
+          "question": "If it rains, --------------------.",
+          "options": [
+            "I’d get wet",
+            "he needed an umbrella",
+            "I’ll go to Jane's house",
+            "Mike met his friends"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g11-l94-48",
+          "n": 48,
+          "category": "grammar",
+          "question": "We’ll be late --------------------.",
+          "options": [
+            "if you don’t hurry",
+            "if the train didn’t come",
+            "if we won’t take a taxi",
+            "if you woke up late"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l94-49",
+          "n": 49,
+          "category": "grammar",
+          "question": "If you are studying your final exams, you --------------------- use your cell phone.",
+          "options": [
+            "couldn’t",
+            "didn’t",
+            "wouldn’t",
+            "shouldn’t"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l94-50",
+          "n": 50,
+          "category": "grammar",
+          "question": "Don’t forget ------------------- all of the doors before you go to bed.",
+          "options": [
+            "locking",
+            "of locking",
+            "lock",
+            "to lock"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l94-51",
+          "n": 51,
+          "category": "grammar",
+          "question": "He worked hard ------------------ a successful member of the national football team, but he was not successful at all.",
+          "options": [
+            "to become",
+            "become",
+            "became",
+            "becoming"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l94-52",
+          "n": 52,
+          "category": "grammar",
+          "question": "It is necessary for every student ---------------------- a foreign language.",
+          "options": [
+            "knew",
+            "knowing",
+            "to know",
+            "know"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g11-l94-53",
+          "n": 53,
+          "category": "grammar",
+          "question": "Ali works very hard. It is not ---------------------- that he has a lot of money.",
+          "options": [
+            "surprise",
+            "surprised",
+            "surprising",
+            "surprisingly"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g11-l94-54",
+          "n": 54,
+          "category": "grammar",
+          "question": "The questions in the exam were very difficult. It was impossible ------------------- them.",
+          "options": [
+            "answering",
+            "to answer",
+            "answer",
+            "answered"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l94-55",
+          "n": 55,
+          "category": "grammar",
+          "question": "Do you really think this water is safe --------------------?",
+          "options": [
+            "to drink",
+            "drinking",
+            "drink",
+            "to drinking <<<PAGE 108>>> 108"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l94-56",
+          "n": 56,
+          "category": "grammar",
+          "question": "If you ------------------- to know a country or a nation well, you ------------------- study its art.",
+          "options": [
+            "want / should",
+            "will want / may",
+            "have wanted / could",
+            "want / will"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l94-57",
+          "n": 57,
+          "category": "grammar",
+          "question": "We were ---------------- to hear that they were coming to see us.",
+          "options": [
+            "excitingly",
+            "excite",
+            "excited",
+            "exciting"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g11-l94-58",
+          "n": 58,
+          "category": "grammar",
+          "question": "I surfed the net ---------------- the information I was looking for.",
+          "options": [
+            "to find",
+            "for find",
+            "finding",
+            "find"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l94-59",
+          "n": 59,
+          "category": "grammar",
+          "question": "To tell the truth, I’m ---------------- of walking home alone in the dark.",
+          "options": [
+            "frighten",
+            "frightening",
+            "frightened",
+            "frighteningly"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g11-l94-60",
+          "n": 60,
+          "category": "grammar",
+          "question": "A: “Would you like ---------------------- pizza for dinner?” B: “No, thanks.”",
+          "options": [
+            "eating",
+            "to eating",
+            "eat",
+            "to eat"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l94-61",
+          "n": 61,
+          "category": "grammar",
+          "question": "----------------------, I have no idea where I would like to vacation this summer.",
+          "options": [
+            "I am honest",
+            "Be honest",
+            "To be honest",
+            "Honest I am"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g11-l94-62",
+          "n": 62,
+          "category": "grammar",
+          "question": "Kate is going to miss the bus if she ------------------- hurry up.",
+          "options": [
+            "doesn’t",
+            "won’t",
+            "didn’t",
+            "couldn’t"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l94-63",
+          "n": 63,
+          "category": "grammar",
+          "question": "The company is now planning ------------------ two new stores in the western’s region of the town.",
+          "options": [
+            "to build",
+            "building",
+            "to building",
+            "build"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l94-64",
+          "n": 64,
+          "category": "grammar",
+          "question": "He spoke English with great ---------------- and he promised --------------- the secret of his success.",
+          "options": [
+            "fluently / learning",
+            "fluency / learning",
+            "fluently / to learn",
+            "fluency / to learn"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l94-65",
+          "n": 65,
+          "category": "grammar",
+          "question": "If ------------------- healthy food, you will live longer.",
+          "options": [
+            "you ate",
+            "you’ll eat",
+            "you’d eat",
+            "you eat"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l94-66",
+          "n": 66,
+          "category": "grammar",
+          "question": "I think you are really fortunate ---------------- in one of the most beautiful towns in the country.",
+          "options": [
+            "to live",
+            "living",
+            "to living",
+            "live"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l94-67",
+          "n": 67,
+          "category": "grammar",
+          "question": "These researchers are attempting ---------------- the first scientists to cure cancer with this medicine.",
+          "options": [
+            "to becoming",
+            "to become",
+            "becoming",
+            "become"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l94-68",
+          "n": 68,
+          "category": "grammar",
+          "question": "How many times have I told you ---------------- football in the street?",
+          "options": [
+            "not playing",
+            "don’t play",
+            "not play",
+            "not to play"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l94-69",
+          "n": 69,
+          "category": "grammar",
+          "question": "It is impossible for an elephant ---------------- faster than a horse.",
+          "options": [
+            "to go",
+            "go",
+            "goes",
+            "going"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l94-70",
+          "n": 70,
+          "category": "grammar",
+          "question": "The children were so -------------------- to hear that their father wanted to bring them to the zoo.",
+          "options": [
+            "excitingly",
+            "excite",
+            "excited",
+            "exciting"
+          ],
+          "answer": 2
+        }
+      ]
     }
   ],
   "source": {
@@ -17408,6 +18724,34 @@
         "بلنک‌های dash (تکی یا شکستهٔ بین‌خطی) به عرضِ یکنواختِ ۳۱ تیره نرمال شدند (قراردادِ r311/r357)؛ ساقه‌های پرانتزِ نقطه‌چینِ سکشن۵/۱۰ verbatim نگه داشته شدند",
         "بدونِ ترجمهٔ چاپی (خانوادهٔ تشریحی)؛ متنِ کاملِ درک مطلب («Culture»، «Photography») در رسیدِ این بانک‌ها فقط به‌صورتِ جمله‌های حاویِ بلنک (کلوز) و سؤال‌ها استخراج شد"
       ]
+    },
+    "g11l3gwr": {
+      "extractedRound": "r360",
+      "examPages": "بخش اول 103-104؛ بخش دوم 105-108",
+      "keyPages": "بخش اول 198-199 (تشریحی)؛ بخش دوم 200 (گریدِ مختصاتی 7×10)",
+      "sections": 2,
+      "items": 100,
+      "printQuirkCount": 12,
+      "printQuirks": [
+        "لوکاتورِ دوطرفهٔ خوداعلام (بخش اول): آزمونِ ص۱۰۳ «(پاسخنامه صفحه198 و 199)» ⇠ کلیدِ ص۱۹۸ «(سؤاالت صفحه103 و 104)»",
+        "لوکاتورِ دوطرفهٔ خوداعلام (بخش دوم): آزمونِ ص۱۰۵ «پاسخنامه صفحه200» ⇠ کلیدِ ص۲۰۰ «(سواالات صفحه105 تا108)»",
+        "دو تجزیهٔ متفاوتِ لیگاتورِ «سؤالات» در دو سربرگِ کلید: «سؤاالت» (ص۱۹۸) در برابرِ «سواالات» (ص۲۰۰)",
+        "سربرگِ کلیدِ بخش اول: «پاسخنامه تستهای دستگریمی گرامر و نگارش» — لایهٔ متنی «دستگریم» بدونِ «ی» آخر می‌دهد (رندرِ ۸x: چاپ «دستگریمی» دارد)؛ خویشاوندِ معناییِ «تست‌های گرم‌کردنی»",
+        "سربرگِ کلیدِ بخش اول: «شیوه کیل حل تستهای گرامر» — چاپ‌غلطِ «کیل» به‌جای «کلید» (رندر تأیید)",
+        "ارقامِ لوکاتور در چاپِ ص۱۹۸ فارسی‌اند («۱۰۳ و ۱۰۴») ولی لایهٔ متنی لاتین می‌دهد («103 و 104») — ناهم‌خوانیِ رقمیِ چاپ/لایه",
+        "گریدِ کلیدِ ص۲۰۰: ۷ ستون × ۱۰ ردیف (سطرها ۱-۱۰، ستون‌ها ده‌تایی؛ ستونِ آخر ۶۱-۷۰) — ارقامِ سیاه و حروفِ سرخِ c#c00000؛ ستونِ ۶۱-۷۰ با سایزِ ۱۵ چاپ شده در برابرِ سایزِ ۱۴ بقیه (ناهم‌سایزیِ ستونی)",
+        "سربرگِ ص۲۰۰ «پاسخنامه کلیدی 70 تست گرامر و نگارش درس سوم» با «۷۰» سرخِ c#ff0000 — سرخِ متفاوت از سرخیِ حروفِ گرید (c#c00000)؛ انگلیسیِ زیرِ آن: «Grammar / Writing Tests (lesson 3)»",
+        "لکهٔ «cc» با قلمِ ۳پوینتیِ نامرئی‌چاپ در بالایِ گریدِ ص۲۰۰ (x≈22) — آرتیفکتِ چاپ؛ گرید را نمی‌شکند",
+        "عنوانِ سربرگِ ص۱۰۳ در لایه به‌هم‌ریخته است: «ست تهای گرامر\" و نگارش درس3 - پایه11» — «تست» به «ست ت»+«های» شکسته (خانوادهٔ scramble)",
+        "سطحِ چاپیِ دو بخش متفاوت است: بخش اول «سطح تستها: \"کنکوری\" – \"استاندارد\"» و بخش دوم «سطح: \"متوسط\" - \"کنکوری\"» — سرتیترِ ص۱۰۵ («۷۰ تست گرامر و نگارش») فقط بخش دوم را می‌پوشاند نه کلِ ۱۰۰تایی",
+        "تکرارِ چاپیِ درون‌بانکیِ بخش دوم: Q13 = Q66 (ساقه و گزینه‌های یکسان با نرمال‌سازیِ عرضِ تیره — ۱۷ در برابرِ ۱۶ تیره؛ هر دو کلیدِ a) و تکرارِ بین‌بخشیِ Q4 بخش اول = Q3 بخش دوم — طبقِ قراردادِ r308 نگه داشته شد، نه حذف/ادغام"
+      ],
+      "keyVerification": {
+        "sec1_explanatory": "30/30 مدخلِ «N - گزینه (X)» از ص۱۹۸-۱۹۹ با کاملِ ۱..۳۰",
+        "sec2_grid": "70/70 جفتِ (عددِ سیاه، حرفِ سرخ) از گریدِ مختصاتیِ ص۲۰۰ — ۱۰ ردیف × ۷ ستونِ بی‌نقص",
+        "semanticSpotChecks": "بخش اول Q1=b/Q2=b/Q4=b/Q24=d/Q30=b؛ بخش دوم Q1=b/Q2=c/Q3=b/Q60=d/Q68=d",
+        "duplicates": "Q66=Q13 درونِ بخش دوم (فقط عرضِ تیره متفاوت)؛ Q4 بخش اول = Q3 بخش دوم — کلیدها هم‌ارز"
+      }
     }
   }
 }

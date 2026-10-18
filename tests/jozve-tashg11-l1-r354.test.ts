@@ -76,7 +76,7 @@ describe("r354 — bank shapes (l37..l42)", () => {
     expect([l37.count, l38.count, l39.count, l40.count, l41.count, l42.count]).toEqual([10, 10, 20, 8, 10, 10]);
   });
 
-  it("ids: g11-l37..l42-N unique across the whole bank — total 1084 items in 92 banks", () => {
+  it("ids: g11-l37..l42-N unique across the whole bank — total 1184 items in 94 banks", () => {
     for (const [les, size] of [[l37, 10], [l38, 10], [l39, 20], [l40, 8], [l41, 10], [l42, 10]] as const) {
       expect(les.questions.map((q) => q.id), `l${les.lesson}`).toEqual(
         Array.from({ length: size }, (_, i) => `g11-l${les.lesson}-${i + 1}`)
@@ -84,13 +84,13 @@ describe("r354 — bank shapes (l37..l42)", () => {
     }
     const all = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
     expect(new Set(all).size).toBe(all.length);
-    expect(all).toHaveLength(714 + 68 + 57 + 54 + 65 + 61 + 65); // ۷۱۴ (تا r312) + ۶۸ (r354) + ۵۷ (r355) + ۵۴ (r356) + ۶۵ (r357) + ۶۱ (r358) + ۶۵ (r359 — جامع تشریحی د۳)
-    expect(bank.lessons).toHaveLength(92);
+    expect(all).toHaveLength(714 + 68 + 57 + 54 + 65 + 61 + 65 + 100); // ۷۱۴ (تا r312) + ۶۸ (r354) + ۵۷ (r355) + ۵۴ (r356) + ۶۵ (r357) + ۶۱ (r358) + ۶۵ (r359) + ۱۰۰ (r360 — گرامر و نگارش د۳)
+    expect(bank.lessons).toHaveLength(94);
   });
 
-  it("file shape: last fifty-six banks are l37..l92 in order (r357 appended l60..l73، r358 appended l74..l78، r359 appended l79..l92)", () => {
-    const tail = bank.lessons.slice(-56).map((l) => l.lesson);
-    expect(tail).toEqual([37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92]);
+  it("file shape: last fifty-eight banks are l37..l94 in order (r357 appended l60..l73، r358 appended l74..l78، r359 appended l79..l92، r360 appended l93..l94)", () => {
+    const tail = bank.lessons.slice(-58).map((l) => l.lesson);
+    expect(tail).toEqual([37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94]);
   });
 });
 
