@@ -17390,6 +17390,1115 @@
           "translation": "او تقاضای ویزای تحصیلی سه ماهه کرد."
         }
       ]
+    },
+    {
+      "lesson": 82,
+      "title": "تشریحی — تمرین حروف اضافه مکان و زمان (ص۱۵۸)",
+      "level": "سه‌گزینه‌ایِ تایپی — کلیدِ درون‌صفحه‌ای",
+      "count": 8,
+      "questions": [
+        {
+          "id": "g10-l82-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "My cousin lives -------------- (on / in / at) a small village -------------- (on / in / at) the mountains.",
+          "options": [
+            "in / in",
+            "on / in",
+            "in / on",
+            "at / on"
+          ],
+          "answer": 0,
+          "accepted": [
+            "in / in"
+          ],
+          "placeholder": "choose from (on / in / at) for each blank (use / between two answers)…"
+        },
+        {
+          "id": "g10-l82-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "I work -------------- (on / in / at) a bank but my sister works -------------- (on / in / at) a store.",
+          "options": [
+            "in / in",
+            "at / in",
+            "in / at",
+            "on / at"
+          ],
+          "answer": 0,
+          "accepted": [
+            "in / in"
+          ],
+          "placeholder": "choose from (on / in / at) for each blank (use / between two answers)…"
+        },
+        {
+          "id": "g10-l82-3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "My grandfather was born -------------- (on / in / at) Tehran -------------- (on / in / at) 1320.",
+          "options": [
+            "in / in",
+            "on / in",
+            "in / at",
+            "at / in"
+          ],
+          "answer": 0,
+          "accepted": [
+            "in / in"
+          ],
+          "placeholder": "choose from (on / in / at) for each blank (use / between two answers)…"
+        },
+        {
+          "id": "g10-l82-4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "-------------- (On / In / At) Friday night I went to bed -------------- (on / in / at) midnight.",
+          "options": [
+            "On / at",
+            "In / at",
+            "On / in",
+            "At / on"
+          ],
+          "answer": 0,
+          "accepted": [
+            "On / at"
+          ],
+          "placeholder": "choose from (on / in / at) for each blank (use / between two answers)…"
+        },
+        {
+          "id": "g10-l82-5",
+          "n": 5,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "What’s the longest river -------------- (on / in / at) the world?",
+          "options": [
+            "in",
+            "on",
+            "at"
+          ],
+          "answer": 0,
+          "accepted": [
+            "in"
+          ],
+          "placeholder": "choose from (on / in / at) for each blank (use / between two answers)…"
+        },
+        {
+          "id": "g10-l82-6",
+          "n": 6,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "It was a lovely day. There wasn’t a cloud -------------- (on / in / at) the sky.",
+          "options": [
+            "in",
+            "at",
+            "on"
+          ],
+          "answer": 0,
+          "accepted": [
+            "in"
+          ],
+          "placeholder": "choose from (on / in / at) for each blank (use / between two answers)…"
+        },
+        {
+          "id": "g10-l82-7",
+          "n": 7,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "It’s difficult to carry a lot of things -------------- (on / in / at) a bicycle.",
+          "options": [
+            "on",
+            "in",
+            "at"
+          ],
+          "answer": 0,
+          "accepted": [
+            "on"
+          ],
+          "placeholder": "choose from (on / in / at) for each blank (use / between two answers)…"
+        },
+        {
+          "id": "g10-l82-8",
+          "n": 8,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Did you go anywhere interesting -------------- (on / in / at) vacation?",
+          "options": [
+            "on",
+            "at",
+            "in"
+          ],
+          "answer": 0,
+          "accepted": [
+            "on"
+          ],
+          "placeholder": "choose from (on / in / at) for each blank (use / between two answers)…"
+        }
+      ]
+    },
+    {
+      "lesson": 83,
+      "title": "تشریحی گرامر — بخش ۱: زیر گزینه صحیح خط بکشید (ص۱۶۱)",
+      "level": "دونگزینه‌ای — can/could",
+      "count": 10,
+      "questions": [
+        {
+          "id": "g10-l83-1",
+          "n": 1,
+          "category": "grammar",
+          "question": "He is speaking very quietly. I --------------------------------- him. (can’t hear / couldn’t hear)",
+          "options": [
+            "can’t hear",
+            "couldn’t hear"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l83-2",
+          "n": 2,
+          "category": "grammar",
+          "question": "I wanted to speak to you yesterday, but I --------------------------------- you. (can’t find / couldn’t find)",
+          "options": [
+            "can’t find",
+            "couldn’t find"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l83-3",
+          "n": 3,
+          "category": "grammar",
+          "question": "Ali is a good translator because he --------------------------------- three languages. (can speak / could speak)",
+          "options": [
+            "can speak",
+            "could speak"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l83-4",
+          "n": 4,
+          "category": "grammar",
+          "question": "I was tired, but I ---------------------------------. (can’t sleep / couldn’t sleep)",
+          "options": [
+            "can’t sleep",
+            "couldn’t sleep"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l83-5",
+          "n": 5,
+          "category": "grammar",
+          "question": "I’m sorry but we --------------------------------- to your party next Friday. (can’t come / couldn’t come)",
+          "options": [
+            "can’t come",
+            "couldn’t come"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l83-6",
+          "n": 6,
+          "category": "grammar",
+          "question": "I like this hotel room. You --------------------------------- the mountains from the window. (can see / could see)",
+          "options": [
+            "can see",
+            "could see"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l83-7",
+          "n": 7,
+          "category": "grammar",
+          "question": "Ali --------------------------------- to school last week. He was sick. (can’t go / couldn’t go)",
+          "options": [
+            "can’t go",
+            "couldn’t go"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l83-8",
+          "n": 8,
+          "category": "grammar",
+          "question": "I had a party last night, but two of my friends ---------------------------------. (can’t come / couldn’t come)",
+          "options": [
+            "can’t come",
+            "couldn’t come"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l83-9",
+          "n": 9,
+          "category": "grammar",
+          "question": "Ali doesn’t know what to do. He ---------------------------------. (can’t decide / couldn’t decide)",
+          "options": [
+            "can’t decide",
+            "couldn’t decide"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l83-10",
+          "n": 10,
+          "category": "grammar",
+          "question": "I wasn’t hungry yesterday. I --------------------------------- my dinner. (can’t eat / couldn’t eat)",
+          "options": [
+            "can’t eat",
+            "couldn’t eat"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "lesson": 84,
+      "title": "تشریحی گرامر — بخش ۲: پرکردن با افعال ناقص (ص۱۶۱)",
+      "level": "تایپی — بانکِ can / may / should / must",
+      "count": 10,
+      "questions": [
+        {
+          "id": "g10-l84-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "People in the front seat of a car ------------------ wear a seat belt. [bank: can / may / should / must]",
+          "options": [
+            "must",
+            "can",
+            "may",
+            "should"
+          ],
+          "answer": 0,
+          "accepted": [
+            "must"
+          ],
+          "placeholder": "fill in with can / may / should / must…"
+        },
+        {
+          "id": "g10-l84-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "That coat is too big for you. I don’t think you ------------------ buy it. [bank: can / may / should / must]",
+          "options": [
+            "should",
+            "must",
+            "can",
+            "may"
+          ],
+          "answer": 0,
+          "accepted": [
+            "should"
+          ],
+          "placeholder": "fill in with can / may / should / must…"
+        },
+        {
+          "id": "g10-l84-3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "A: How are you going to get home tonight?           B: I’m not sure. I ------------------ take a taxi. [bank: can / may / should / must]",
+          "options": [
+            "may",
+            "should",
+            "must",
+            "can"
+          ],
+          "answer": 0,
+          "accepted": [
+            "may"
+          ],
+          "placeholder": "fill in with can / may / should / must…"
+        },
+        {
+          "id": "g10-l84-4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Ali ------------------ speak French, but he can’t speak English. [bank: can / may / should / must]",
+          "options": [
+            "can",
+            "may",
+            "should",
+            "must"
+          ],
+          "answer": 0,
+          "accepted": [
+            "can"
+          ],
+          "placeholder": "fill in with can / may / should / must…"
+        },
+        {
+          "id": "g10-l84-5",
+          "n": 5,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "It’s a very good novel. You ------------------ read it. [bank: can / may / should / must]",
+          "options": [
+            "should",
+            "may",
+            "must",
+            "can"
+          ],
+          "answer": 0,
+          "accepted": [
+            "should"
+          ],
+          "placeholder": "fill in with can / may / should / must…"
+        },
+        {
+          "id": "g10-l84-6",
+          "n": 6,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "The phone is ringing. I know it’s not for me. It ------------------ be for you. [bank: can / may / should / must]",
+          "options": [
+            "must",
+            "should",
+            "may",
+            "can"
+          ],
+          "answer": 0,
+          "accepted": [
+            "must"
+          ],
+          "placeholder": "fill in with can / may / should / must…"
+        },
+        {
+          "id": "g10-l84-7",
+          "n": 7,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "You worked ten hours today. You ------------------ be tired. [bank: can / may / should / must]",
+          "options": [
+            "must",
+            "may",
+            "can",
+            "should"
+          ],
+          "answer": 0,
+          "accepted": [
+            "must"
+          ],
+          "placeholder": "fill in with can / may / should / must…"
+        },
+        {
+          "id": "g10-l84-8",
+          "n": 8,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "I ------------------ come and see you tomorrow if you like. [bank: can / may / should / must]",
+          "options": [
+            "can",
+            "must",
+            "may",
+            "should"
+          ],
+          "answer": 0,
+          "accepted": [
+            "can"
+          ],
+          "placeholder": "fill in with can / may / should / must…"
+        },
+        {
+          "id": "g10-l84-9",
+          "n": 9,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "A: Where’s your brother?                     B: I don’t know. He ------------------ be in his office. [bank: can / may / should / must]",
+          "options": [
+            "may",
+            "can",
+            "must",
+            "should"
+          ],
+          "answer": 0,
+          "accepted": [
+            "may"
+          ],
+          "placeholder": "fill in with can / may / should / must…"
+        },
+        {
+          "id": "g10-l84-10",
+          "n": 10,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "We haven’t got much time. We ------------------ hurry. [bank: can / may / should / must]",
+          "options": [
+            "must",
+            "can",
+            "should",
+            "may"
+          ],
+          "answer": 0,
+          "accepted": [
+            "must"
+          ],
+          "placeholder": "fill in with can / may / should / must…"
+        }
+      ]
+    },
+    {
+      "lesson": 85,
+      "title": "تشریحی گرامر — بخش ۳: اصلاح خطا (ص۱۶۱)",
+      "level": "تایپی — پیدا و تصحیح کن",
+      "count": 5,
+      "questions": [
+        {
+          "id": "g10-l85-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "I don’t want anyone to know about our plan. You mustn’t told anyone. (-------------------------)",
+          "options": [
+            "tell",
+            "told"
+          ],
+          "answer": 0,
+          "accepted": [
+            "tell"
+          ],
+          "placeholder": "write the correction…"
+        },
+        {
+          "id": "g10-l85-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "He mustn’t does more exercises. His heart is very weak. (-------------------------)",
+          "options": [
+            "do",
+            "does"
+          ],
+          "answer": 0,
+          "accepted": [
+            "do"
+          ],
+          "placeholder": "write the correction…"
+        },
+        {
+          "id": "g10-l85-3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "You should listen to loud music. It hurts your ears. (-------------------------)",
+          "options": [
+            "shouldn’t",
+            "should"
+          ],
+          "answer": 0,
+          "accepted": [
+            "shouldn’t"
+          ],
+          "placeholder": "write the correction…"
+        },
+        {
+          "id": "g10-l85-4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "I was sitting at the back of the theatre and can’t hear very well. (-------------------------)",
+          "options": [
+            "couldn’t",
+            "can’t"
+          ],
+          "answer": 0,
+          "accepted": [
+            "couldn’t"
+          ],
+          "placeholder": "write the correction…"
+        },
+        {
+          "id": "g10-l85-5",
+          "n": 5,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "As a tourist, we be should careful about our behavior in a foreign country. (-------------------------)",
+          "options": [
+            "should be",
+            "be should"
+          ],
+          "answer": 0,
+          "accepted": [
+            "should be"
+          ],
+          "placeholder": "write the correction…"
+        }
+      ]
+    },
+    {
+      "lesson": 86,
+      "title": "تشریحی گرامر — بخش ۴: جمله‌سازی (ص۱۶۲)",
+      "level": "تایپی — با کلماتِ داده شده",
+      "count": 5,
+      "questions": [
+        {
+          "id": "g10-l86-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "should / wildlife / students / about / learn / saving.",
+          "options": [
+            "students should learn about saving wildlife.",
+            "students should learn saving about wildlife.",
+            "students should saving learn about wildlife.",
+            "wildlife should learn about saving students."
+          ],
+          "answer": 0,
+          "accepted": [
+            "students should learn about saving wildlife."
+          ],
+          "placeholder": "make a sentence with the given words…"
+        },
+        {
+          "id": "g10-l86-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "buy / next year / may / new / our family / car / a.",
+          "options": [
+            "Our family may buy a new car next year.",
+            "Our family may buy next year a new car.",
+            "Our new family may buy a car next year.",
+            "A new family may buy our car next year."
+          ],
+          "answer": 0,
+          "accepted": [
+            "Our family may buy a new car next year."
+          ],
+          "placeholder": "make a sentence with the given words…"
+        },
+        {
+          "id": "g10-l86-3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "without / long / a / camels / water / can / time / live / for.",
+          "options": [
+            "Camels can live without water for a long time.",
+            "Camels can live without for water a long time.",
+            "Camels can water without live for a long time.",
+            "Camels can live a long water without for time."
+          ],
+          "answer": 0,
+          "accepted": [
+            "Camels can live without water for a long time."
+          ],
+          "placeholder": "make a sentence with the given words…"
+        },
+        {
+          "id": "g10-l86-4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "successful / mustn’t / if / weak / you / you / feel / want to be.",
+          "options": [
+            "You mustn’t feel weak if you want to be successful.",
+            "You mustn’t feel successful if you want to be weak.",
+            "You mustn’t want to feel weak if you be successful.",
+            "You mustn’t be feel weak if you want to successful."
+          ],
+          "answer": 0,
+          "accepted": [
+            "You mustn’t feel weak if you want to be successful."
+          ],
+          "placeholder": "make a sentence with the given words…"
+        },
+        {
+          "id": "g10-l86-5",
+          "n": 5,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "to / music / not / we / listen / should / loud.",
+          "options": [
+            "We should not listen to loud music.",
+            "We should listen not to loud music.",
+            "We should not to listen loud music.",
+            "We not should listen to loud music."
+          ],
+          "answer": 0,
+          "accepted": [
+            "We should not listen to loud music."
+          ],
+          "placeholder": "make a sentence with the given words…"
+        }
+      ]
+    },
+    {
+      "lesson": 87,
+      "title": "تشریحی گرامر — بخش ۵: حروف اضافه زمان (ص۱۶۲)",
+      "level": "تایپی — in / at / on",
+      "count": 10,
+      "questions": [
+        {
+          "id": "g10-l87-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "I’m taking a trip ---------- April. [bank: in / at / on]",
+          "options": [
+            "in",
+            "at",
+            "on"
+          ],
+          "answer": 0,
+          "accepted": [
+            "in"
+          ],
+          "placeholder": "fill in with in / at / on (use / between two answers)…"
+        },
+        {
+          "id": "g10-l87-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "We’re having a party ---------- Friday. [bank: in / at / on]",
+          "options": [
+            "on",
+            "in",
+            "at"
+          ],
+          "answer": 0,
+          "accepted": [
+            "on"
+          ],
+          "placeholder": "fill in with in / at / on (use / between two answers)…"
+        },
+        {
+          "id": "g10-l87-3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "My birthday is ---------- the end of January. [bank: in / at / on]",
+          "options": [
+            "at",
+            "on",
+            "in"
+          ],
+          "answer": 0,
+          "accepted": [
+            "at"
+          ],
+          "placeholder": "fill in with in / at / on (use / between two answers)…"
+        },
+        {
+          "id": "g10-l87-4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "This street is always busy, even ---------- night. [bank: in / at / on]",
+          "options": [
+            "at",
+            "in",
+            "on"
+          ],
+          "answer": 0,
+          "accepted": [
+            "at"
+          ],
+          "placeholder": "fill in with in / at / on (use / between two answers)…"
+        },
+        {
+          "id": "g10-l87-5",
+          "n": 5,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "It’s difficult to listen if everyone is speaking ---------- the same time. [bank: in / at / on]",
+          "options": [
+            "at",
+            "on",
+            "in"
+          ],
+          "answer": 0,
+          "accepted": [
+            "at"
+          ],
+          "placeholder": "fill in with in / at / on (use / between two answers)…"
+        },
+        {
+          "id": "g10-l87-6",
+          "n": 6,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "My father usually wakes up ---------- 5 o’clock ---------- the morning. [bank: in / at / on]",
+          "options": [
+            "at / in",
+            "in / at",
+            "on / in",
+            "at / on"
+          ],
+          "answer": 0,
+          "accepted": [
+            "at / in"
+          ],
+          "placeholder": "fill in with in / at / on (use / between two answers)…"
+        },
+        {
+          "id": "g10-l87-7",
+          "n": 7,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "When we were ---------- vacation, we visited some very interesting places. [bank: in / at / on]",
+          "options": [
+            "on",
+            "at",
+            "in"
+          ],
+          "answer": 0,
+          "accepted": [
+            "on"
+          ],
+          "placeholder": "fill in with in / at / on (use / between two answers)…"
+        },
+        {
+          "id": "g10-l87-8",
+          "n": 8,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Neil Armstrong was the first man to walk on the moon ---------- 21 July 1969. [bank: in / at / on]",
+          "options": [
+            "on",
+            "in",
+            "at"
+          ],
+          "answer": 0,
+          "accepted": [
+            "on"
+          ],
+          "placeholder": "fill in with in / at / on (use / between two answers)…"
+        },
+        {
+          "id": "g10-l87-9",
+          "n": 9,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "My favorite restaurant is open ---------- the evening. It closes ---------- midnight. [bank: in / at / on]",
+          "options": [
+            "in / at",
+            "at / in",
+            "in / on",
+            "on / at"
+          ],
+          "answer": 0,
+          "accepted": [
+            "in / at"
+          ],
+          "placeholder": "fill in with in / at / on (use / between two answers)…"
+        },
+        {
+          "id": "g10-l87-10",
+          "n": 10,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "I’ve got an interview tomorrow. It’s ---------- ten o’clock ---------- Monday morning. [bank: in / at / on]",
+          "options": [
+            "at / on",
+            "on / at",
+            "at / in",
+            "in / on"
+          ],
+          "answer": 0,
+          "accepted": [
+            "at / on"
+          ],
+          "placeholder": "fill in with in / at / on (use / between two answers)…"
+        }
+      ]
+    },
+    {
+      "lesson": 88,
+      "title": "آموزشی — تست گرامر و نگارش درس چهارم (ص۱۶۳)",
+      "level": "آموزشی — چهارگزینه‌ای با ترجمهٔ چاپی",
+      "count": 20,
+      "questions": [
+        {
+          "id": "g10-l88-1",
+          "n": 1,
+          "category": "grammar",
+          "question": "When I was a child I ------------------- climb the trees easily but now I can’t.",
+          "options": [
+            "might",
+            "should",
+            "can",
+            "could"
+          ],
+          "answer": 3,
+          "translation": "وقتیکه بچه بودم میتوانستم به آسان از درختان بالا بروم اما الان نمیتوانم."
+        },
+        {
+          "id": "g10-l88-2",
+          "n": 2,
+          "category": "grammar",
+          "question": "A: “Why isn’t Ali in class?”                               B: “I don’t know. He  ----------------- be sick today.”",
+          "options": [
+            "can",
+            "should",
+            "may",
+            "must"
+          ],
+          "answer": 2,
+          "translation": "- چرا علی در کلاس نیست؟   - نمیدونم. شاید امروز مریض باشد."
+        },
+        {
+          "id": "g10-l88-3",
+          "n": 3,
+          "category": "grammar",
+          "question": "Don’t touch my school things. When I’m not at home, you  ------------------ use my books.",
+          "options": [
+            "should",
+            "could",
+            "might",
+            "can"
+          ],
+          "answer": 3,
+          "translation": "به وسائل مدرسه ام دست نزن. وقتی در خانه نیستم، تو اجازه داری از کتابهای من استفاده کنی."
+        },
+        {
+          "id": "g10-l88-4",
+          "n": 4,
+          "category": "grammar",
+          "question": "I don’t allow you to leave the class. You ----------------- go out after doing your homework.",
+          "options": [
+            "should",
+            "must",
+            "may",
+            "will"
+          ],
+          "answer": 2,
+          "translation": "من به تو اجازه نمیدهم که کلاس را ترک کنی. وقتی که تکالیفت را انجام دادی، اجازه داری بیرون بروی."
+        },
+        {
+          "id": "g10-l88-5",
+          "n": 5,
+          "category": "grammar",
+          "question": "A: “I’m going to be late for the bus, what  ------------------- I do?”                   B: “You can take a taxi.”",
+          "options": [
+            "can",
+            "may",
+            "should",
+            "must"
+          ],
+          "answer": 2,
+          "translation": "- داره برای اتوبوس دیرم میشه. چکار باید بکنم؟   - تو میتوانی تاکسی بگیری."
+        },
+        {
+          "id": "g10-l88-6",
+          "n": 6,
+          "category": "grammar",
+          "question": "All foreign passengers  --------------------- present their passports at the airport.",
+          "options": [
+            "should",
+            "must",
+            "can",
+            "could"
+          ],
+          "answer": 1,
+          "translation": "همه مسافران خارج باید پاسپورت هایشان را در فرودگاه ارائه دهند."
+        },
+        {
+          "id": "g10-l88-7",
+          "n": 7,
+          "category": "grammar",
+          "question": "A: “Why isn’t Raman at home?”                        B: “I’m not sure. He  ----------------- be in the library.”",
+          "options": [
+            "can",
+            "must",
+            "may",
+            "should"
+          ],
+          "answer": 2,
+          "translation": "– چرا رامان در خانه نیست؟   - مطمئن نیستم. شاید در کتابخانه باشد."
+        },
+        {
+          "id": "g10-l88-8",
+          "n": 8,
+          "category": "grammar",
+          "question": "A: “ ----------------- I borrow your pen?”                 B: “Yes, of course.”",
+          "options": [
+            "Should",
+            "Would",
+            "Must",
+            "Can"
+          ],
+          "answer": 3,
+          "translation": "- میتونم (اجازه دارم) خودکارت را قرض بگیرم؟   - بله، البته."
+        },
+        {
+          "id": "g10-l88-9",
+          "n": 9,
+          "category": "grammar",
+          "question": "She’s a good writer. She writes interesting novels  -----------------.",
+          "options": [
+            "good",
+            "well",
+            "quiet",
+            "worse"
+          ],
+          "answer": 1,
+          "translation": "او نویسنده خوب است. او رمان های جالب را به خوبی مینویسد."
+        },
+        {
+          "id": "g10-l88-10",
+          "n": 10,
+          "category": "grammar",
+          "question": "My brother is a fast driver. He always drives  -----------------.",
+          "options": [
+            "fast",
+            "good",
+            "slowly",
+            "polite"
+          ],
+          "answer": 0,
+          "translation": "برادرم راننده سریعی است. او همیشه به سرعت رانندگی میکند."
+        },
+        {
+          "id": "g10-l88-11",
+          "n": 11,
+          "category": "grammar",
+          "question": "The teacher didn’t ask an easy question. I answered it  -----------------.",
+          "options": [
+            "quick",
+            "good",
+            "easy",
+            "hard"
+          ],
+          "answer": 3,
+          "translation": "معلم سوال آسانی را نیپرسید. من آن را به سختی جواب دادم."
+        },
+        {
+          "id": "g10-l88-12",
+          "n": 12,
+          "category": "grammar",
+          "question": "Ali spoke with the tourists well. Actually, he answered all their questions  -----------------.",
+          "options": [
+            "good",
+            "polite",
+            "politely",
+            "carelessly"
+          ],
+          "answer": 2,
+          "translation": "علی با گردشگران به خوبی صحبت کرد. در واقع او همه سؤالات آنها را مؤدبانه جواب داد."
+        },
+        {
+          "id": "g10-l88-13",
+          "n": 13,
+          "category": "grammar",
+          "question": "I always go to the park  --------------- the sunset to walk and do exercise.",
+          "options": [
+            "in",
+            "at",
+            "to",
+            "on"
+          ],
+          "answer": 1,
+          "translation": "من همیشه در هنگام غروب آفتاب برای قدم زدن و ورزش کردن به پارک میروم."
+        },
+        {
+          "id": "g10-l88-14",
+          "n": 14,
+          "category": "grammar",
+          "question": "When I was ------------ work yesterday, I had an important phone call.",
+          "options": [
+            "in",
+            "at",
+            "on",
+            "to"
+          ],
+          "answer": 1,
+          "translation": "دیروز هنگامیکه در سرکار بودم، یک تماس تلفنی مهم داشتم."
+        },
+        {
+          "id": "g10-l88-15",
+          "n": 15,
+          "category": "grammar",
+          "question": "The children were  ---------------- home this morning.",
+          "options": [
+            "to",
+            "in",
+            "at",
+            "on"
+          ],
+          "answer": 2,
+          "translation": "امروز صبح بچه ها در خانه بودند."
+        },
+        {
+          "id": "g10-l88-16",
+          "n": 16,
+          "category": "grammar",
+          "question": "We are going to visit Mazandaran  ---------------- Shahrivar 22, 1400.",
+          "options": [
+            "on",
+            "in",
+            "to",
+            "at"
+          ],
+          "answer": 0,
+          "translation": "ما قصد داریم در ۲۲ شهریورماه ماه ۹۹ از مازندران دیدن کنیم."
+        },
+        {
+          "id": "g10-l88-17",
+          "n": 17,
+          "category": "grammar",
+          "question": "They will visit their cousins  -------------- the holiday  -------------- spring.",
+          "options": [
+            "on / in",
+            "in / in",
+            "on / at",
+            "at / in"
+          ],
+          "answer": 0,
+          "translation": "آنها در تعطیلات در فصل بهار عموزاده های خود را ملاقات خواهند کرد."
+        },
+        {
+          "id": "g10-l88-18",
+          "n": 18,
+          "category": "grammar",
+          "question": "Are you going to invite your friends  --------------- your birthday  -------------- Khordad?",
+          "options": [
+            "in / in",
+            "in / on",
+            "on / in",
+            "at / in"
+          ],
+          "answer": 2,
+          "translation": "آیا قصد داری که دوستانت را در روز تولدت در خرداد ماه دعوت کنی؟"
+        },
+        {
+          "id": "g10-l88-19",
+          "n": 19,
+          "category": "grammar",
+          "question": "I always go to the gym  --------------- bus  ------------- the afternoon.",
+          "options": [
+            "by / in",
+            "at / in",
+            "at / at",
+            "by / on"
+          ],
+          "answer": 0,
+          "translation": "من همیشه در بعد از ظهرها با اتوبوس به باشگاه میروم."
+        },
+        {
+          "id": "g10-l88-20",
+          "n": 20,
+          "category": "grammar",
+          "question": "Next year, we will be  -------------- Korea  ------------- holiday.",
+          "options": [
+            "in / in",
+            "in / on",
+            "in / at",
+            "at / in"
+          ],
+          "answer": 1,
+          "translation": "سال آینده در تعطیلات ما در کشور کره خواهیم بود."
+        }
+      ]
     }
   ],
   "source": {
@@ -18018,6 +19127,40 @@
         "کشف‌های تجزیهٔ لایه (رندر حاکم): «جلوئی»→جلوی؛ «سنت،،»→سنت، اعتقاد، رسوم؛ «بین ما شان»→تفاوت های مابین شان؛ «بیشی»→بیشتر؛ «رسگریم»→سرگرمی (جابجاییِ ن/م)؛ «احی ام»→احترام؛ «داخیل»→داخلی؛ «مؤ جهی»→موجهی؛ «دالر/دالیل»→دلار/دلیل؛ «احتمایل»→احتمال؛ «آموزشگاهای»→آموزشگاههای؛ «مد نر»→مدرن؛ «سؤ االتی»→سؤالاتی؛ «بی ادب انه»→بی ادبانه؛ «مشکالت/تعطیالت»→مشکلات/تعطیلات؛ «بیر ن»→بین؛ «الملیل»→المللی؛ «مسئوالنه»→مسئولانه؛ «معموالً»→معمولاً؛ «اصالً»→اصلاً؛ «ب ارزش»→بی ارزش؛ «پرواز.کند»→پرواز کند.",
         "«می کند، در حقیقت» در Q25 ویرگولِ چاپ (لایه نقطه داده بود — رندر ۹۰۰dpi حاکم)؛ «آنجا» در Q4 چسبیده (لایه «آن جا»)؛ نقطه‌های پایانیِ همهٔ گریدها داخل گیومه (لایه بی‌نقطه در Q11/Q21/Q35 تجزیه)",
         "«تخت جمشید» Q22 — دو نقطهٔ چاپ در ۳۰۰۰dpi (شبههٔ «نخت» رد شد)؛ پاصفحهٔ ص۲۸۸ استاندارد («جزوه جامع زبان انگلیسی، پایه دهم» / Vision One / تألیف و گردآوری) بدونِ Telegram"
+      ]
+    },
+    "g10l4c": {
+      "exam": "ادامهٔ خانوادهٔ درس چهارم — تمرین حروف اضافه ص۱۵۸ + آزمون تشریحی گرامر ص۱۶۱-۱۶۲ + ۲۰ تست آموزشی ص۱۶۳",
+      "header": "ص۱۵۸: تمرینِ «تمرین حروف اضافه \"مکان\" و \"زمان\": زیر گزینه ی صحیح خط بکشید.» — باندِ زرد، «مکان» و «زمان» سرخ در گیومه، جاهای خالیِ سبزِ خط‌چین، گزینه‌های سرمه‌ایِ «(on / in / at)»، عبارت‌های کلیدیِ زیرخط‌دار، Answer Key جدولیِ ۲×۴ «Answer Key:» سرخِ ایتالیک روی باند سبز با ارقام سرخ — کلیدِ درون‌صفحه‌ای. ص۱۶۱ (رندر ۹۰۰dpi): سربرگِ «آزمون تشریحی گرامر درس چهارم» سرخ در گیومه روی باند سبز + «(پاسخنامه صفحه: ۲۹۰)» با ارقامِ فارسیِ سرخ و دونقطه بعدِ «صفحه:» (دهمین «تسی یچ» لایه — رندر تمیز). ص۱۶۳: سربرگِ «۲۰ تست آموزشی گرامر و نگارش \"درس چهارم - پایه دهم\"» — «۲۰ تست آموزشی گرامر و نگارش» سرخ + نقل‌قولِ سیاهِ خط‌تیره‌فاصله‌دار + «(پاسخنامه صفحه ۲۹۱ - ۲۹۲)» ارقامِ فارسیِ سرخ با خط‌تیره و بدونِ دونقطه (ناسازگاریِ درونیِ چاپ با ص۱۶۱). کلیدِ ص۲۹۰: «\"پاسخنامه آزمون تشریحی گرامر درس چهارم\"» سرخ در گیومه + «(آزمون: صفحه ۱۶۱ و ۱۶۲)» ارقامِ فارسی با واصفِ «و» و دونقطه بعدِ «آزمون:» (لایه «1۶1 و1۶2» مخلوط — رندر همه‌فارسی). کلیدِ ص۲۹۱: «پاسخنامه تستهای دستگریمی گرامر و نگارش \"درس چهارم – پایه دهم\"» — سیاهِ توپُر + نقل‌قولِ سرخ با خطِ «–» + «(سؤالات: صفحه ۱۶۳)» ارقامِ فارسی؛ «دستگریمی» در برابرِ «آموزشی» سربرگِ آزمون — ناسازگاریِ درونیِ چاپ (رندرِ ۳۰۰۰dpi حاکم). گریدهای ص۲۹۱-۲۹۲: «N- گزینه(x)» با chipِ زرد + حرفِ کادردار + توضیحِ گرامری + مثال‌های نمونه‌دار (Q9/Q10/Q11 با خطِ «He always drives fast.» زیرخط‌دار و برچسبِ قید حالت/فعل) + chipِ سبزِ «ترجمه تست:» + ترجمهٔ آبیِ توپُر در گیومه + جداکنندهٔ خط‌چینِ سرخ؛ کلیدواژه‌های can/may/should/must/on/in/at/by سرخِ توپُرِ زیرخط‌دار.",
+      "keyPages": "158 (درون‌صفحه‌ای), 290, 291-292",
+      "extractedRound": "r347",
+      "keyVerification": "S1: ده گریدِ فهرستیِ ص۲۹۰ (can’t hear/…/couldn’t eat) → گریدِ ababaabbab — ۱۰/۱۰ هم‌رأی. S2: ده گریدِ فهرستی (must/should/may/can/should/must/must/can/may/must) — ۱۰/۱۰. S3: پنج گریدِ جمله‌دار با تصحیحِ سرخِ پرانتزی: (tell)/(do)/(shouldn’t)/(couldn’t)/(should be) — ۵/۵. S4: پنج جملهٔ کلیدیِ چاپی (students should…/Our family may…/Camels can…/You mustn’t…/We should not…) — ۵/۵. S5: ده گرید (in/on/at/at/at/at-in/on/on/in-at/at-on) — ۱۰/۱۰. MCQ: بیست گریدِ توضیح‌دارِ «N- گزینه(x) … :ترجمه تست» → گریدِ dcdccbcdbadcbbcaacab — ۲۰/۲۰ با پیش‌پرکردنِ معنایی — صفر واگرایی. تمرینِ ص۱۵۸: Answer Key جدولیِ خودِ صفحه (in-in/in-in/in-in/On-at/in/in/on/on) — ۸/۸؛ کلیدِ ص۲۹۰ بخشِ ۶ همان تمرین را ۱۲سطری می‌زند (چاپ‌خطا — پایین).",
+      "pattern": "r344 (دونگزینه‌ای) + r345 (تایپیِ بانک‌واژه) + r340 (سکشن‌محور) + r346 (MCQ ترجمه‌دار) — بیست‌وششم تا بیست‌وهشتمین گروهِ کارتِ دهم",
+      "printErrata": [
+        "چاپ‌خطایِ کلیدی: «پاسخنامه آزمون تشریحی گرامر» ص۲۹۰ برای تمرینِ ص۱۵۸ یک «بخش ۶» ۱۲سطری می‌زند (جدول ۳×۴: in/in، in/in، in/in، On/at، on، in، on، on، on، in، on، at) در حالی که تمرین ۸ آیتمی است و Answer Keyِ درون‌صفحه‌ای خودش ۸ سطر دارد — سطرهای ۹-۱۲ (on/in/on/at) شبح‌اند و آیتمِ ۵ واگراست (ص۲۹۰: on؛ ص۱۵۸: in — «in the world» درست است) → کلیدِ درون‌صفحه‌ای حاکم (قاعدهٔ r344)؛ ص۲۹۰ املایِ بی‌فاصلهٔ «in/in» و ص۱۵۸ «in / in» فاصله‌دار",
+        "غلطِ چاپیِ ترجمهٔ Q11: «نیپرسید» (دندانِ اضافی — نپرسید درست است) — داوریِ ۴۵۰۰-۸۰۰۰dpi: دو دندانِ میانِ ن و پ + تجزیهٔ لایهٔ «نی  سید» (افتِ پ) — سومین عضوِ خانوادهٔ غلطِ چاپ (درحایل r343، حایل r341)؛ عینِ چاپ نگه داشته شد",
+        "«آسانی» Q11 با یِ نکره — داوریِ ۸۰۰۰dpi (لایه «آسابن» گمراه‌کننده)؛ «سوال» بی‌یِ نکره در همان جمله — عینِ چاپ",
+        "سربرگِ کلیدِ ص۲۹۱ «تستهای دستگریمی» در برابرِ سربرگِ آزمونِ ص۱۶۳ «۲۰ تست آموزشی» — ناسازگاریِ درونیِ چاپ (عضوِ سومِ خانوادهٔ r344: حالتی/حالت)",
+        "«(پاسخنامه صفحه: ۲۹۰)» ص۱۶۱ با دونقطه، «(پاسخنامه صفحه ۲۹۱ - ۲۹۲)» ص۱۶۳ بی‌دونقطه — ناسازگاریِ درونیِ چاپ",
+        "ترجمهٔ Q16 «در ۲۲ شهریورماه ماه ۹۹» — «ماه» تکراری عینِ چاپ (رندرِ ۱۸۰۰dpi) + ارقامِ فارسی (لایه لاتین 22/99)",
+        "ترجمهٔ Q7 با خطِ «–» بلند (نیم‌فاصله‌ای متفاوت از «-» کوتاهِ Q2/Q5/Q8) — عینِ چاپ؛ داوریِ رندر",
+        "S4 آیتمِ ۵ چاپ: «5------…------.» شمارهٔ چسبیده به تیره‌ها (عینِ الگویِ «11.The» r346 — رسید)؛ سطرهای پاسخ ۱۰۶تیره‌ای — فقط رسید",
+        "جداکننده‌های سرخِ ۹۸تیره‌ایِ ص۱۶۳ پس از Q8 و Q12 (مرزِ سه بلوکِ ناقص/قید/حرف اضافه) — رسید",
+        "جعبهٔ «Note:» خالیِ ص۱۶۲ (سرخِ ایتالیکِ زیرخط‌دار + خط‌های بنفشِ خط‌چین — الگوی r345/r346) و پاصفحه‌های ص۱۵۸/۱۶۱/۱۶۲/۱۶۳/۲۹۰/۲۹۱/۲۹۲ بدونِ Telegram"
+      ],
+      "printQuirks": [
+        "تیره‌شماریِ لایه: S1 ده ران × ۳۳؛ S2 ده ران × ۱۸؛ S3 پنج پرانتز × ۲۵؛ S5 تک‌ران‌ها ۱۰ (دوتایی‌ها ۱۰+۱۰)؛ تمرین ص۱۵۸: ۱۴ (دوتایی ۱۴+۱۴)؛ ص۱۶۳: Q1=۱۹ (سه رانِ لایه‌ای ۷+۲+۱۰ — یک خالیِ پیوسته در رندر)، Q2/Q7/Q8/Q9/Q10/Q11/Q12=۱۷، Q3=۱۸، Q4=۱۷، Q5=۱۹، Q6=۲۱، Q13=۱۵، Q14=۱۲، Q15/Q16=۱۶، Q17=۱۴+۱۴، Q18=۱۵+۱۴، Q19=۱۵+۱۳، Q20=۱۴+۱۳",
+        "فاصلهٔ دوگانهٔ سیستماتیکِ پیش از خالی در ص۱۶۳: Q2/Q3/Q5/Q6/Q7/Q9/Q10/Q11/Q12/Q13/Q15/Q16/Q17/Q18/Q19/Q20 — عینِ چاپ؛ Q1 و Q4 تک‌فاصله",
+        "گپ‌های گفتگوی چاپی (لایه، لاتین — بدونِ خطای bidi): ص۱۶۱ S2-Q3=۱۱ و Q9=۲۱ (اندازه‌گیریِ span)؛ ص۱۶۳ Q2=۳۱، Q5=۱۹، Q7=۲۴، Q8=۱۷ — عینِ چاپ در ساقه‌ها",
+        "گپ‌های گفتگوی ترجمه‌ها (ص۲۹۱) به سه فاصله تکییف شد — آرتیفکتِ ترازبندیِ bidi در لایه (۱۶/۱۲/۳/۷ فاصله)؛ خطِ آغازینِ «-» و «–» عینِ چاپ ماند",
+        "فاصله‌های ترازِ پیش از پرانتزِ پاسخ در S3 (۱۵-۴۴ فاصله در لایه) به یک فاصله تکییف شد — ستون‌بندیِ حاشیه، نه محتوا",
+        "محاورهٔ چاپیِ ترجمه‌ها نگه داشته شد: Q5 «داره»/«دیرم میشه»/«بکنم؟»، Q8 «میتونم» با پرانتزِ «(اجازه دارم)»، Q2 «نمیدونم»",
+        "پسوندهای فاصله‌دارِ سیستماتیک: «مدرسه ام»/«پاسپورت هایشان»/«رمان های»/«بچه ها»/«عموزاده های»/«ماه ها»/«خرداد ماه»؛ «کتابهای»/«تکالیفت»/«خودکارت»/«قسمتهای»/«فصلها» چسبیده — عینِ چاپ",
+        "کوئیرک‌های انگلیسی: Q16 «Shahrivar 22, 1400» ارقام لاتین؛ Q1 «can’t» خمیده؛ Q24… — آپاستروف‌ها عینِ لایه/رندر؛ S4 کلیدِ ۱ با s کوچکِ «students» (عینِ چاپ ص۲۹۰)",
+        "مثال‌های درون‌گریدِ Q9/Q10/Q11 (He always drives fast. / I answered it hard.) با زیرخط و برچسبِ «قید حالت/فعل» — رسیدِ گرید، خارج از دیتا"
+      ],
+      "layerDecompositions": [
+        "لایه→چاپ (رندر حاکم): «تسی یچ»→تشریحی (دهمین)؛ «آموزیس»→آموزشی؛ «دستگریم ـگ رامر»→دستگریمی گرامر؛ «سؤاالت»→سؤالات؛ «خاریح»→خارج؛ «تعطیالت»→تعطیلات؛ «مطمیی ن»→مطمئن (همزه)؛ «میر وم»→میروم (چسبیده)؛ «رس کار»→سرکار؛ «رسگریم» خانوادهٔ جابجایی؛ «تلفتن»→تلفنی؛ «مهیم»→مهم؛ «جالت»→جالب؛ «رسییع»→سریعی؛ «رسعت»→سرعت؛ «آسابن»→آسان/آسانی؛ «باال»→بالا؛ «االن»→الان؛ «کتن»→کنی؛ «بگیر م»→بگیرم؛ «بگیر ی»→بگیری؛ «میتوابن»→میتوانی؛ «تاکیس»→تاکسی؛ «عموزاده ها» فاصله‌دار؛ «شهریورماه ماه ۹۹» عینِ چاپ"
       ]
     }
   }

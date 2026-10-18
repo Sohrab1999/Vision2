@@ -155,13 +155,13 @@ describe("jozve tests-g10 gwr8 (r343 تست گرامر و نگارش درس سو
     });
   });
 
-  it("file shape: 81 banks, 1062 items, unique ids", () => {
+  it("file shape: 88 banks, 1130 items, unique ids", () => {
     expect(bank.grade).toBe(10);
-    expect(bank.lessons).toHaveLength(81);
-    expect(bank.lessons.reduce((s: number, l: { count: number }) => s + l.count, 0)).toBe(1062);
+    expect(bank.lessons).toHaveLength(88);
+    expect(bank.lessons.reduce((s: number, l: { count: number }) => s + l.count, 0)).toBe(1130);
     const ids = bank.lessons.flatMap((l: TL) => l.questions.map((q: TQ) => q.id));
-    expect(ids.length).toBe(1062);
-    expect(new Set(ids).size).toBe(1062);
+    expect(ids.length).toBe(1130);
+    expect(new Set(ids).size).toBe(1130);
     expect(ids).toContain("g10-l74-1");
     expect(ids).toContain("g10-l74-46");
   });
