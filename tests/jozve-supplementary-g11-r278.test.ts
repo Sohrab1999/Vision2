@@ -61,6 +61,8 @@ describe("jozve supplementary g11 (r278 extraction receipt)", () => {
     29, 30, 31, 32, 33, 34, 35, 36,
       // r354 — «آزمون تشریحی گرامر درس اول» (ص۲۹-۳۱) — l37..l42 الحاق شد
     37, 38, 39, 40, 41, 42,
+      // r355 — «آزمون جامع تشریحی درس اول» (ص۴۰-۴۲) — l43..l55 الحاق شد
+    43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
     ]);
     expect(l4.count).toBe(22);
     expect(l4.questions).toHaveLength(22);
@@ -81,7 +83,7 @@ describe("jozve supplementary g11 (r278 extraction receipt)", () => {
     }
     const all = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
     expect(new Set(all).size).toBe(all.length);
-    expect(all).toHaveLength(40 + 40 + 40 + 22 + 20 + 20 + 361 + 57 + 114 + 68); // +۳۶۱: جامع ۳۶۰ (r308) — با دو «۲۲۸» چاپی؛ +۲۰: واژگان کنکوری درس دوم (r309)؛ +۶۸: تشریحی گرامر د۱ (r354)
+    expect(all).toHaveLength(40 + 40 + 40 + 22 + 20 + 20 + 361 + 57 + 114 + 68 + 57); // +۳۶۱: جامع ۳۶۰ (r308) — با دو «۲۲۸» چاپی؛ +۲۰: واژگان کنکوری درس دوم (r309)؛ +۶۸: تشریحی گرامر د۱ (r354)؛ +۵۷: جامع تشریحی د۱ (r355)
   });
 
   it("every supplementary question: 4 unique options, valid answer, healthy blank, English purity", () => {

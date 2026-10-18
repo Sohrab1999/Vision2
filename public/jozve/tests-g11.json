@@ -11755,6 +11755,1019 @@
           "placeholder": "make a sentence with the given words…"
         }
       ]
+    },
+    {
+      "lesson": 43,
+      "title": "تشریحی جامع — کلمات ناقص (ص۴۰)",
+      "level": "تشریحی — تایپی",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g11-l43-1",
+          "n": 1,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "After a long and emotional expl__n__tion they were friends again.",
+          "options": [
+            "explanation",
+            "communication",
+            "loaves",
+            "candles"
+          ],
+          "answer": 0,
+          "accepted": [
+            "explanation"
+          ],
+          "placeholder": "complete the word…"
+        },
+        {
+          "id": "g11-l43-2",
+          "n": 2,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Language is a system of com__unic__tion.",
+          "options": [
+            "communication",
+            "explanation",
+            "loaves",
+            "candles"
+          ],
+          "answer": 0,
+          "accepted": [
+            "communication"
+          ],
+          "placeholder": "complete the word…"
+        },
+        {
+          "id": "g11-l43-3",
+          "n": 3,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Please buy three l__a__es of bread.",
+          "options": [
+            "loaves",
+            "explanation",
+            "communication",
+            "candles"
+          ],
+          "answer": 0,
+          "accepted": [
+            "loaves"
+          ],
+          "placeholder": "complete the word…"
+        },
+        {
+          "id": "g11-l43-4",
+          "n": 4,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "How many can__l__s do we need?",
+          "options": [
+            "candles",
+            "explanation",
+            "communication",
+            "loaves"
+          ],
+          "answer": 0,
+          "accepted": [
+            "candles"
+          ],
+          "placeholder": "complete the word…"
+        }
+      ]
+    },
+    {
+      "lesson": 44,
+      "title": "تشریحی جامع — کلمات داده‌شده (ص۴۰)",
+      "level": "تشریحی — تایپی",
+      "count": 8,
+      "questions": [
+        {
+          "id": "g11-l44-1",
+          "n": 1,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "It’s the good weather that makes Iran such a ---------------------------- tourist destination. [bank: despite / society / region / native / make up / range / access / ability / popular]",
+          "options": [
+            "popular",
+            "access",
+            "make up",
+            "society"
+          ],
+          "answer": 0,
+          "accepted": [
+            "popular"
+          ],
+          "placeholder": "complete with the given words…"
+        },
+        {
+          "id": "g11-l44-2",
+          "n": 2,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "People now can ---------------------------- information from the internet as never before. [bank: despite / society / region / native / make up / range / access / ability / popular]",
+          "options": [
+            "access",
+            "popular",
+            "make up",
+            "society"
+          ],
+          "answer": 0,
+          "accepted": [
+            "access"
+          ],
+          "placeholder": "complete with the given words…"
+        },
+        {
+          "id": "g11-l44-3",
+          "n": 3,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Could you ---------------------------- a list of what we need at the supermarket? [bank: despite / society / region / native / make up / range / access / ability / popular]",
+          "options": [
+            "make up",
+            "popular",
+            "access",
+            "society"
+          ],
+          "answer": 0,
+          "accepted": [
+            "make up"
+          ],
+          "placeholder": "complete with the given words…"
+        },
+        {
+          "id": "g11-l44-4",
+          "n": 4,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Those who clean the streets have a great role in our ---------------------------- . [bank: despite / society / region / native / make up / range / access / ability / popular]",
+          "options": [
+            "society",
+            "popular",
+            "access",
+            "make up"
+          ],
+          "answer": 0,
+          "accepted": [
+            "society"
+          ],
+          "placeholder": "complete with the given words…"
+        },
+        {
+          "id": "g11-l44-5",
+          "n": 5,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "If he studies harder, he has the ---------------------------- to pass his exams. [bank: despite / society / region / native / make up / range / access / ability / popular]",
+          "options": [
+            "ability",
+            "popular",
+            "access",
+            "make up"
+          ],
+          "answer": 0,
+          "accepted": [
+            "ability"
+          ],
+          "placeholder": "complete with the given words…"
+        },
+        {
+          "id": "g11-l44-6",
+          "n": 6,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Her ---------------------------- language is French, but she speaks Spanish. [bank: despite / society / region / native / make up / range / access / ability / popular]",
+          "options": [
+            "native",
+            "popular",
+            "access",
+            "make up"
+          ],
+          "answer": 0,
+          "accepted": [
+            "native"
+          ],
+          "placeholder": "complete with the given words…"
+        },
+        {
+          "id": "g11-l44-7",
+          "n": 7,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Do you know the best farming ---------------------------- of our country? [bank: despite / society / region / native / make up / range / access / ability / popular]",
+          "options": [
+            "region",
+            "popular",
+            "access",
+            "make up"
+          ],
+          "answer": 0,
+          "accepted": [
+            "region"
+          ],
+          "placeholder": "complete with the given words…"
+        },
+        {
+          "id": "g11-l44-8",
+          "n": 8,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "They decided to go out ---------------------------- the bad weather. [bank: despite / society / region / native / make up / range / access / ability / popular]",
+          "options": [
+            "despite",
+            "popular",
+            "access",
+            "make up"
+          ],
+          "answer": 0,
+          "accepted": [
+            "despite"
+          ],
+          "placeholder": "complete with the given words…"
+        }
+      ]
+    },
+    {
+      "lesson": 45,
+      "title": "تشریحی جامع — کلمهٔ مناسب با حروف ناقص (ص۴۰)",
+      "level": "تشریحی — تایپی",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g11-l45-1",
+          "n": 1,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "She cannot hear. You must try to explain by m _ _ _ _ of sign language.",
+          "options": [
+            "means",
+            "percent",
+            "imagine",
+            "meets"
+          ],
+          "answer": 0,
+          "accepted": [
+            "means"
+          ],
+          "placeholder": "write the word that fits the blanks…"
+        },
+        {
+          "id": "g11-l45-2",
+          "n": 2,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Eighteen p _ _ _ _ _ _ of the world’s population live in China.",
+          "options": [
+            "percent",
+            "means",
+            "imagine",
+            "meets"
+          ],
+          "answer": 0,
+          "accepted": [
+            "percent"
+          ],
+          "placeholder": "write the word that fits the blanks…"
+        },
+        {
+          "id": "g11-l45-3",
+          "n": 3,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "It is impossible to i _ _ _ _ _ _ the world without language.",
+          "options": [
+            "imagine",
+            "means",
+            "percent",
+            "meets"
+          ],
+          "answer": 0,
+          "accepted": [
+            "imagine"
+          ],
+          "placeholder": "write the word that fits the blanks…"
+        },
+        {
+          "id": "g11-l45-4",
+          "n": 4,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Our school m _ _ _ _ the needs of all students.",
+          "options": [
+            "meets",
+            "means",
+            "percent",
+            "imagine"
+          ],
+          "answer": 0,
+          "accepted": [
+            "meets"
+          ],
+          "placeholder": "write the word that fits the blanks…"
+        }
+      ]
+    },
+    {
+      "lesson": 46,
+      "title": "تشریحی جامع — تست چهارگزینه‌ای (ص۴۰)",
+      "level": "تشریحی — چهارگزینه‌ای",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g11-l46-1",
+          "n": 1,
+          "category": "vocab",
+          "question": "In some parts of Asia and Africa, milk is not a ---------------------------- drink.",
+          "options": [
+            "loaf",
+            "native",
+            "popular",
+            "countable"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g11-l46-2",
+          "n": 2,
+          "category": "vocab",
+          "question": "Does life ---------------------------- on other planets.",
+          "options": [
+            "explain",
+            "range",
+            "exchange",
+            "exist"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l46-3",
+          "n": 3,
+          "category": "vocab",
+          "question": "All languages are really valuable, ---------------------------- their differences.",
+          "options": [
+            "despite",
+            "through",
+            "therefore",
+            "by means"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l46-4",
+          "n": 4,
+          "category": "vocab",
+          "question": "I’m worried about my daughter’s physical and ---------------------------- development.",
+          "options": [
+            "specific",
+            "interest",
+            "mental",
+            "cultural"
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "lesson": 47,
+      "title": "تشریحی جامع — گزینهٔ متفاوت (ص۴۰)",
+      "level": "تشریحی — تایپی",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g11-l47-1",
+          "n": 1,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "lots of / many / a lot of / a little",
+          "options": [
+            "lots of",
+            "many",
+            "a lot of",
+            "a little"
+          ],
+          "answer": 3,
+          "accepted": [
+            "a little"
+          ],
+          "placeholder": "type the option that is different…"
+        },
+        {
+          "id": "g11-l47-2",
+          "n": 2,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Italy / England / Africa / Germany",
+          "options": [
+            "Italy",
+            "England",
+            "Africa",
+            "Germany"
+          ],
+          "answer": 2,
+          "accepted": [
+            "Africa"
+          ],
+          "placeholder": "type the option that is different…"
+        },
+        {
+          "id": "g11-l47-3",
+          "n": 3,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "piece / cup / glass / bottle",
+          "options": [
+            "piece",
+            "cup",
+            "glass",
+            "bottle"
+          ],
+          "answer": 0,
+          "accepted": [
+            "piece"
+          ],
+          "placeholder": "type the option that is different…"
+        },
+        {
+          "id": "g11-l47-4",
+          "n": 4,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "juice / rice / coffee / milk",
+          "options": [
+            "juice",
+            "rice",
+            "coffee",
+            "milk"
+          ],
+          "answer": 1,
+          "accepted": [
+            "rice"
+          ],
+          "placeholder": "type the option that is different…"
+        }
+      ]
+    },
+    {
+      "lesson": 48,
+      "title": "تشریحی جامع — وصل کردن تعریف‌ها (ص۴۰)",
+      "level": "تشریحی — تایپی",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g11-l48-1",
+          "n": 1,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "A person who comes from another country: (--------------) [bank: specific / vary / foreigner / society]",
+          "options": [
+            "foreigner",
+            "specific",
+            "vary",
+            "society"
+          ],
+          "answer": 0,
+          "accepted": [
+            "foreigner"
+          ],
+          "placeholder": "write the matching word…"
+        },
+        {
+          "id": "g11-l48-2",
+          "n": 2,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Relating to one thing and not others: (--------------) [bank: specific / vary / foreigner / society]",
+          "options": [
+            "specific",
+            "vary",
+            "foreigner",
+            "society"
+          ],
+          "answer": 0,
+          "accepted": [
+            "specific"
+          ],
+          "placeholder": "write the matching word…"
+        },
+        {
+          "id": "g11-l48-3",
+          "n": 3,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "A large group of people who live together: (--------------) [bank: specific / vary / foreigner / society]",
+          "options": [
+            "society",
+            "specific",
+            "vary",
+            "foreigner"
+          ],
+          "answer": 0,
+          "accepted": [
+            "society"
+          ],
+          "placeholder": "write the matching word…"
+        },
+        {
+          "id": "g11-l48-4",
+          "n": 4,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "To be different from each other: (--------------) [bank: specific / vary / foreigner / society]",
+          "options": [
+            "vary",
+            "specific",
+            "foreigner",
+            "society"
+          ],
+          "answer": 0,
+          "accepted": [
+            "vary"
+          ],
+          "placeholder": "write the matching word…"
+        }
+      ]
+    },
+    {
+      "lesson": 49,
+      "title": "تشریحی جامع — تست چهارگزینه‌ای (ص۴۱)",
+      "level": "تشریحی — چهارگزینه‌ای",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g11-l49-1",
+          "n": 1,
+          "category": "grammar",
+          "question": "There are too ---------------------------- cars on the road. More people should use public transport.",
+          "options": [
+            "little",
+            "much",
+            "some",
+            "many"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l49-2",
+          "n": 2,
+          "category": "grammar",
+          "question": "A: Would you like some cheese? B: Yes, please but not too ----------------------------.",
+          "options": [
+            "many",
+            "much",
+            "some",
+            "very"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l49-3",
+          "n": 3,
+          "category": "grammar",
+          "question": "How ---------------------------- is there in the kitchen?",
+          "options": [
+            "many bread",
+            "many breads",
+            "much bread",
+            "much breads"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g11-l49-4",
+          "n": 4,
+          "category": "grammar",
+          "question": "Ali has so ---------------------------- friends that I couldn’t invite them all.",
+          "options": [
+            "many",
+            "much",
+            "little",
+            "few"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "lesson": 50,
+      "title": "تشریحی جامع — جمله‌سازی (ص۴۱)",
+      "level": "تشریحی — جمله‌سازی",
+      "count": 2,
+      "questions": [
+        {
+          "id": "g11-l50-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "students / there / the / in / many / are / class / how?",
+          "options": [
+            "How many students are there in the class?",
+            "Children should drink a lot of milk every day."
+          ],
+          "answer": 0,
+          "accepted": [
+            "How many students are there in the class?"
+          ],
+          "placeholder": "make a sentence with the given words…"
+        },
+        {
+          "id": "g11-l50-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "should / milk / day / a lot of / every / drink / children.",
+          "options": [
+            "Children should drink a lot of milk every day.",
+            "How many students are there in the class?"
+          ],
+          "answer": 0,
+          "accepted": [
+            "Children should drink a lot of milk every day."
+          ],
+          "placeholder": "make a sentence with the given words…"
+        }
+      ]
+    },
+    {
+      "lesson": 51,
+      "title": "تشریحی جامع — اجزای جمله (فاعل/فعل/مفعول/قید) (ص۴۱)",
+      "level": "تشریحی — تایپی",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g11-l51-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "They study English at school every day.",
+          "options": [
+            "S: they | V: study | O: English | AI: at school | AI: every day",
+            "S: my father | V: can speak | O: English | AI: fluently",
+            "S: my sister | V: made | O: cookies | AI: at home | AI: last night",
+            "S: my cousin | V: started | O: his new job | AI: last week"
+          ],
+          "answer": 0,
+          "accepted": [
+            "S: they | V: study | O: English | AI: at school | AI: every day"
+          ],
+          "placeholder": "label the parts: S: … | V: … | O: … | AI: …"
+        },
+        {
+          "id": "g11-l51-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "My father can speak English fluently.",
+          "options": [
+            "S: my father | V: can speak | O: English | AI: fluently",
+            "S: they | V: study | O: English | AI: at school | AI: every day",
+            "S: my sister | V: made | O: cookies | AI: at home | AI: last night",
+            "S: my cousin | V: started | O: his new job | AI: last week"
+          ],
+          "answer": 0,
+          "accepted": [
+            "S: my father | V: can speak | O: English | AI: fluently"
+          ],
+          "placeholder": "label the parts: S: … | V: … | O: … | AI: …"
+        },
+        {
+          "id": "g11-l51-3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Last night, my sister made cookies at home.",
+          "options": [
+            "S: my sister | V: made | O: cookies | AI: at home | AI: last night",
+            "S: they | V: study | O: English | AI: at school | AI: every day",
+            "S: my father | V: can speak | O: English | AI: fluently",
+            "S: my cousin | V: started | O: his new job | AI: last week"
+          ],
+          "answer": 0,
+          "accepted": [
+            "S: my sister | V: made | O: cookies | AI: at home | AI: last night"
+          ],
+          "placeholder": "label the parts: S: … | V: … | O: … | AI: …"
+        },
+        {
+          "id": "g11-l51-4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "My cousin started his new job last week.",
+          "options": [
+            "S: my cousin | V: started | O: his new job | AI: last week",
+            "S: they | V: study | O: English | AI: at school | AI: every day",
+            "S: my father | V: can speak | O: English | AI: fluently",
+            "S: my sister | V: made | O: cookies | AI: at home | AI: last night"
+          ],
+          "answer": 0,
+          "accepted": [
+            "S: my cousin | V: started | O: his new job | AI: last week"
+          ],
+          "placeholder": "label the parts: S: … | V: … | O: … | AI: …"
+        }
+      ]
+    },
+    {
+      "lesson": 52,
+      "title": "تشریحی جامع — تصاویر و پرانتز (ص۴۱)",
+      "level": "تشریحی — تایپی",
+      "count": 3,
+      "questions": [
+        {
+          "id": "g11-l52-1",
+          "n": 1,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "I eat three ------------------------------------------ for breakfast. (loaf)",
+          "options": [
+            "loaves of bread",
+            "cups of coffee",
+            "slices of pizza"
+          ],
+          "answer": 0,
+          "accepted": [
+            "loaves of bread"
+          ],
+          "placeholder": "write the phrase with the plural counting unit…"
+        },
+        {
+          "id": "g11-l52-2",
+          "n": 2,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "My father drank two ------------------------------------------ this morning. (cup)",
+          "options": [
+            "cups of coffee",
+            "loaves of bread",
+            "slices of pizza"
+          ],
+          "answer": 0,
+          "accepted": [
+            "cups of coffee"
+          ],
+          "placeholder": "write the phrase with the plural counting unit…"
+        },
+        {
+          "id": "g11-l52-3",
+          "n": 3,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "My little brother ate four ------------------------------------------ last night. (slice)",
+          "options": [
+            "slices of pizza",
+            "loaves of bread",
+            "cups of coffee"
+          ],
+          "answer": 0,
+          "accepted": [
+            "slices of pizza"
+          ],
+          "placeholder": "write the phrase with the plural counting unit…"
+        }
+      ]
+    },
+    {
+      "lesson": 53,
+      "title": "تشریحی جامع — خط زیر گزینهٔ صحیح (ص۴۱)",
+      "level": "تشریحی — تایپی",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g11-l53-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Sometimes the prices in the local shop are (many / much) better than the supermarket’s prices.",
+          "options": [
+            "many",
+            "much"
+          ],
+          "answer": 1,
+          "accepted": [
+            "much"
+          ],
+          "placeholder": "type the correct option in parentheses…"
+        },
+        {
+          "id": "g11-l53-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "He spoke (a little / little) English, so it was difficult to communicate with him.",
+          "options": [
+            "a little",
+            "little"
+          ],
+          "answer": 1,
+          "accepted": [
+            "little"
+          ],
+          "placeholder": "type the correct option in parentheses…"
+        },
+        {
+          "id": "g11-l53-3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "I’m really hungry now. I didn’t have (a lot of / a lot) for breakfast.",
+          "options": [
+            "a lot of",
+            "a lot"
+          ],
+          "answer": 1,
+          "accepted": [
+            "a lot"
+          ],
+          "placeholder": "type the correct option in parentheses…"
+        },
+        {
+          "id": "g11-l53-4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "I went shopping and spent (a lot of / many) money.",
+          "options": [
+            "a lot of",
+            "many"
+          ],
+          "answer": 0,
+          "accepted": [
+            "a lot of"
+          ],
+          "placeholder": "type the correct option in parentheses…"
+        }
+      ]
+    },
+    {
+      "lesson": 54,
+      "title": "تشریحی جامع — کلوز قاره‌ها (ص۴۲)",
+      "level": "تشریحی — چهارگزینه‌ای",
+      "count": 6,
+      "questions": [
+        {
+          "id": "g11-l54-1",
+          "n": 1,
+          "category": "vocab",
+          "question": "A continent is a large area of the land on Earth that is ---(1)--- together.",
+          "options": [
+            "appeared",
+            "imagined",
+            "joined",
+            "scanned"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g11-l54-2",
+          "n": 2,
+          "category": "vocab",
+          "question": "In general it is agreed there are seven ---(2)--- in the world: Africa, Antarctica, Asia, Europe, North America, Australia or Oceania, and South America.",
+          "options": [
+            "regions",
+            "continents",
+            "centuries",
+            "societies"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l54-3",
+          "n": 3,
+          "category": "vocab",
+          "question": "Some sources say that Australia is one of the ---(3)--- continents.",
+          "options": [
+            "five",
+            "six",
+            "seven",
+            "eight"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g11-l54-4",
+          "n": 4,
+          "category": "vocab",
+          "question": "Oceania is a ---(4)--- which includes Australia, New Zealand and the Pacific Islands.",
+          "options": [
+            "part",
+            "country",
+            "institute",
+            "region"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l54-5",
+          "n": 5,
+          "category": "vocab",
+          "question": "North America and South America are often ---(5)--- as “the Americans”.",
+          "options": [
+            "described",
+            "escaped",
+            "matched",
+            "suggested"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l54-6",
+          "n": 6,
+          "category": "vocab",
+          "question": "Otherwise, Central America is counted as ---(6)--- of North America.",
+          "options": [
+            "part",
+            "candle",
+            "point",
+            "percent"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "lesson": 55,
+      "title": "تشریحی جامع — درک مطلب زبان اشاره (ص۴۲)",
+      "level": "تشریحی — درست/نادرست و تایپی",
+      "count": 6,
+      "questions": [
+        {
+          "id": "g11-l55-1",
+          "n": 1,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "How do deaf people learn a sign language?",
+          "options": [
+            "Deaf people learn a sign language from their family or other deaf people.",
+            "Deaf people often use sign languages."
+          ],
+          "answer": 0,
+          "accepted": [
+            "Deaf people learn a sign language from their family or other deaf people."
+          ],
+          "placeholder": "answer according to the reading passage…"
+        },
+        {
+          "id": "g11-l55-2",
+          "n": 2,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Which group of people often use sign languages?",
+          "options": [
+            "Deaf people often use sign languages.",
+            "Deaf people learn a sign language from their family or other deaf people."
+          ],
+          "answer": 0,
+          "accepted": [
+            "Deaf people often use sign languages."
+          ],
+          "placeholder": "answer according to the reading passage…"
+        },
+        {
+          "id": "g11-l55-3",
+          "n": 3,
+          "category": "vocab",
+          "question": "Hearing people cannot learn a sign language.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l55-4",
+          "n": 4,
+          "category": "vocab",
+          "question": "Sign languages are not important for deaf people.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l55-5",
+          "n": 5,
+          "category": "vocab",
+          "question": "Sign languages use hands and other parts of the body.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l55-6",
+          "n": 6,
+          "category": "vocab",
+          "question": "Hearing people can use spoken languages more easily than sign languages.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 0
+        }
+      ]
     }
   ],
   "source": {
@@ -12035,6 +13048,26 @@
         "جمله‌سازی (بانک ۴۲): گزینه‌ها = پاسخِ خودِ سؤال + سه پاسخِ دیگرِ همین سکشن (الگوی g10-l14/l15)؛ سؤال = فهرستِ واژه‌های چاپی با «؟» یا «.» پایانیِ عینِ چاپ؛ علامت‌های «؟» چاپی در فهرست‌های واژه (Q1/Q3/Q5/Q7/Q9) عینِ لایه",
         "بدونِ ترجمهٔ چاپی («ترجمه» ×۰ در ص۲۹-۳۱) — آزمونِ تشریحیِ گرامرِ جزوهٔ یازدهم مانندِ خانواده‌های گرامریِ دهم (r326-r349) ترجمهٔ چاپی ندارد؛ فیلدِ translation ساخته نشد",
         "هم‌پوشانی‌سنجی: ساقه‌های این خانواده با بانک‌های پیشینِ tests-g11 (r275/r277/r278/r308/r309/r311/r312) و grammar-g11 (r276) اشتراک ندارند — «تست دستگریمی» ص۳۴-۳۵ و «۶۰تست جمع بندی» ص۳۶-۳۹ خانواده‌های جدا هستند"
+      ]
+    },
+    "g11l1jame": {
+      "exam": "آزمون جامع تشریحی درس اول - پایه یازدهم (ص۴۰-۴۲)",
+      "header": "«آزمون جامع تشریحی درس اول (پاسخنامه صفحه ۱۸۳)» — سیزده سکشن / ۵۷ آیتم (۴+۸+۴+۴+۴+۴+۴+۲+۴+۳+۴+۶+۶)",
+      "keyPages": "183",
+      "keyVerification": "کلیدِ ص۱۸۳ — ۵۷ مدخلِ شماره‌دار با شماره‌گذاریِ بازشوندهِ هر سکشن (۴/۸/۴/۴/۴/۴/۴/۲/۴/۳/۴/۶/۶)؛ سکشن۴/۷/۱۲ → نگاشتِ یکتای متنِ کلید→گزینه (۱۴/۱۴)؛ سکشن۵ → کلید ∈ چهار گزینهٔ چاپی (۴/۴)؛ سکشن۶/۱۱ → عضویت در استخر (۸/۸)؛ سکشن۱/۳ → قفلِ الگوی حروفِ ناقص (regexِ ساقه ≈ کلید: expl.tion≈explanation و…)؛ سکشن۹ → قالبِ برچسب‌دارِ S/V/O/AI؛ سکشن۱۳ → {true,false}",
+      "extractedRound": "r355",
+      "pattern": "r354 (برشِ سکشن با لنگرِ اولین سؤال + گاردِ فارسی) + r351 (کلیدِ پارس‌شده از لایه، نه از حفظ) + r311 ([bank: …] در ساقه + ادغامِ رانِ شکسته) + g10-l23 (کلوزِ بلنکِ شماره‌دار) + g10-l24 (درست/نادرست) + g10-l14/l15 (قراردادِ typed)",
+      "printQuirks": [
+        "سیزده سکشنِ خودِ آزمون سیزده بانک شدند (الگوی r354): سکشن۱ کلمات ناقص (۴ تایپی)، سکشن۲ کلمات داده‌شده (۸ تایپی با بانکِ ۹واژه‌ای و واژهٔ اضافیِ «range»)، سکشن۳ کلمهٔ مناسب با حروفِ ناقص (۴ تایپی)، سکشن۴ بهترین گزینه (۴ MCQ)، سکشن۵ گزینهٔ متفاوت (۴ تایپی)، سکشن۶ وصل کردنِ تعریف (۴ تایپی)، سکشن۷ بهترین گزینه (۴ MCQ)، سکشن۸ جمله‌سازی (۲ تایپی)، سکشن۹ اجزای جمله S/V/O/AI (۴ تایپی)، سکشن۱۰ تصاویر و پرانتز (۳ تایپی)، سکشن۱۱ خط زیر گزینهٔ صحیح (۴ تایپی)، سکشن۱۲ کلوزِ قاره‌ها (۶ MCQ)، سکشن۱۳ درک مطلب (۲ تایپی + ۴ درست/نادرست) — کلیدِ ص۱۸۳ هر سیزده سکشن را در یک صفحه دارد («پاسخنامه آزمون جامع تشریحی درس اول (آزمون صفحه ۴۰ تا ۴۲)») و سربرگِ آزمون به «پاسخنامه صفحه ۱۸۳» ارجاع می‌دهد — لوکاتورِ «ص۱۸۰-۱۸۲» در «کار اول جلسه بعد» r354 نادرست بود؛ پاسخنامه در ص۱۸۳ است",
+        "سربرگِ لایه به‌هم‌ریخته است: «آزمون جامع تش  ییح» (حروفِ ر/حِ «تشریحی» در لایه غایب) — همان خانوادهٔ scrambleِ r331 («تسی یچ»)؛ داوری: ساختارِ «جامع + تشریحی + درس اول» با سربرگِ پاسخنامهٔ ص۱۸۳ («پاسخنامه آزمون جامع تش  ییح درس اول») و الگوی همتای دهم (r331) حاکم شد؛ scrambleهای مشابه در سربرگ‌های سکشن‌ها: «جمالت» (جملات)، «بهی  ین» (بهترین)، «نوی  » (نوشتن)، «خایل» (خوانید)، «پرانی  » (پرانتز)",
+        "ساقهٔ Q2 سکشن۴ «Does life ------------ on other planets.» با نقطهٔ چاپی به‌جای علامت سؤال — عینِ چاپ حفظ شد (کلید: exist)",
+        "آیتم۴ سکشن۲: رانِ خط‌تیرهٔ جای‌خالی در لایه بینِ سه خط شکسته است («…role in our ⏎ ----------------------- ⏎ ----- ⏎ .») — در یک جای‌خالیِ ۲۸تیره با نقطهٔ پایانی ادغام شد (قراردادِ r311)؛ نقطهٔ مجزای پس از ران عینِ لایه است",
+        "کلیدِ سکشن۹ (اجزای جمله) آیتم۳: «Last night» از آغازِ جمله به قیدِ پایانی منتقل شده («S: my sister … AI: last night») — عینِ کلیدِ چاپی (کلید هرگز تغییر نمی‌کند)؛ قالبِ برچسب‌دارِ accepted با جداکنندهٔ «|» از متنِ پیوستهٔ کلید بازسازی شد (نرمال‌سازیِ موتورِ تایپ فاصله‌ها را یکسان می‌کند)",
+        "سکشن۱۰: تصاویرِ چاپی (سه کاشیِ شماره‌دار ۱/۲/۳) از لایهٔ متنی استخراج‌ناپذیرند — واژهٔ پرانتزیِ چاپی (loaf/cup/slice) و کلیدِ چاپی (loaves of bread / cups of coffee / slices of pizza) لنگرِ خودبسندهٔ هر سؤال‌اند (جمعِ غیرقاعده‌محورِ واحدهای شمارش)",
+        "کلیدِ درست/نادرستِ سکشن۱۳ با حروفِ کوچکِ چاپ («false/false/true/true») — گزینه‌های بانک استانداردِ کتابخانه («True»/«False») است و نگاشت با نرمال‌سازیِ حساس‌نبودن به حروف انجام شد",
+        "متنِ ریدینگِ سکشن۱۳ (زبان اشاره) و متنِ کلوزِ سکشن۱۲ (قاره‌ها) طبقِ قراردادِ کتابخانه در ساقه‌ها تکرار نشد (الگوی g10-l23/l24 و l35 گ12)؛ کلوز با جملهٔ حاویِ بلنکِ شماره‌دار خودبسنده شد",
+        "بدونِ ترجمهٔ چاپی («ترجمه» ×۰ در ص۴۰-۴۲) — فیلدِ translation ساخته نشده",
+        "هم‌پوشانی‌سنجی: ساقه‌های این خانواده با بانک‌های پیشینِ tests-g11 (r275/r277/r278/r308/r309/r311/r312/r354) اشتراک ندارند — «۶۰/۷۰/۷۰ تست جمع بندی» ص۳۶-۳۹ (r276) و «تست دستگریمی» خانوادهٔ جدا هستند"
       ]
     }
   }

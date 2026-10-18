@@ -76,7 +76,7 @@ describe("r354 — bank shapes (l37..l42)", () => {
     expect([l37.count, l38.count, l39.count, l40.count, l41.count, l42.count]).toEqual([10, 10, 20, 8, 10, 10]);
   });
 
-  it("ids: g11-l37..l42-N unique across the whole bank — total 782 items in 42 banks", () => {
+  it("ids: g11-l37..l42-N unique across the whole bank — total 839 items in 55 banks", () => {
     for (const [les, size] of [[l37, 10], [l38, 10], [l39, 20], [l40, 8], [l41, 10], [l42, 10]] as const) {
       expect(les.questions.map((q) => q.id), `l${les.lesson}`).toEqual(
         Array.from({ length: size }, (_, i) => `g11-l${les.lesson}-${i + 1}`)
@@ -84,13 +84,13 @@ describe("r354 — bank shapes (l37..l42)", () => {
     }
     const all = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
     expect(new Set(all).size).toBe(all.length);
-    expect(all).toHaveLength(714 + 68); // ۷۱۴ (تا r312) + ۶۸ (r354)
-    expect(bank.lessons).toHaveLength(42);
+    expect(all).toHaveLength(714 + 68 + 57); // ۷۱۴ (تا r312) + ۶۸ (r354) + ۵۷ (r355 — جامع تشریحی د۱)
+    expect(bank.lessons).toHaveLength(55);
   });
 
-  it("file shape: last six banks are l37..l42 in order", () => {
-    const tail = bank.lessons.slice(-6).map((l) => l.lesson);
-    expect(tail).toEqual([37, 38, 39, 40, 41, 42]);
+  it("file shape: last nineteen banks are l37..l55 in order", () => {
+    const tail = bank.lessons.slice(-19).map((l) => l.lesson);
+    expect(tail).toEqual([37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55]);
   });
 });
 
