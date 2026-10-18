@@ -156,8 +156,8 @@ describe("jozve tests-g10 l3vocab (r339 متوسط — p123-124, key+translation
     expect(byN(21).translation).toContain("فرمود:");
   });
 
-  it("ids unique across the whole 774-item family (r339 l3vocab appended)", () => {
+  it("ids unique across the whole 828-item family (r339 l3vocab appended)", () => {
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(new Set(ids).size).toBe(774);
+    expect(new Set(ids).size).toBe(828);
   });
 });

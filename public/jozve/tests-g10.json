@@ -12555,6 +12555,1047 @@
           "translation": "کشورمان به توسعه نوع جدیدی از انرژی برای آینده نیاز دارد."
         }
       ]
+    },
+    {
+      "lesson": 58,
+      "title": "بخش ۱ — شکلِ صحیحِ افعال داخل پرانتز (ص۱۳۱)",
+      "level": "تشریحی — تایپیِ دوجای‌خالیِ اسلش‌دار",
+      "count": 10,
+      "questions": [
+        {
+          "id": "g10-l58-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Ali ------------------------ (talk) to Reza when I ------------------------ (arrive) at the party.",
+          "options": [
+            "was talking / arrived",
+            "talked / was arriving",
+            "was talking / was arriving",
+            "talked / arrived"
+          ],
+          "answer": 0,
+          "accepted": [
+            "was talking / arrived"
+          ],
+          "placeholder": "complete both blanks (use / between the two answers)…"
+        },
+        {
+          "id": "g10-l58-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "When the phone ------------------------ (ring), she ------------------------ (write) a letter.",
+          "options": [
+            "rang / was writing",
+            "rang / wrote",
+            "was ringing / was writing",
+            "was ringing / wrote"
+          ],
+          "answer": 0,
+          "accepted": [
+            "rang / was writing"
+          ],
+          "placeholder": "complete both blanks (use / between the two answers)…"
+        },
+        {
+          "id": "g10-l58-3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "While John ------------------------ (sleep) last night, someone ------------------------ (steal) his car.",
+          "options": [
+            "was sleeping / stole",
+            "slept / was stealing",
+            "was sleeping / was stealing",
+            "slept / stole"
+          ],
+          "answer": 0,
+          "accepted": [
+            "was sleeping / stole"
+          ],
+          "placeholder": "complete both blanks (use / between the two answers)…"
+        },
+        {
+          "id": "g10-l58-4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "The computer suddenly ------------------------ (go) off while he ------------------------ (wait) for an e-mail.",
+          "options": [
+            "went / was waiting",
+            "was going / waited",
+            "was going / was waiting",
+            "went / waited"
+          ],
+          "answer": 0,
+          "accepted": [
+            "went / was waiting"
+          ],
+          "placeholder": "complete both blanks (use / between the two answers)…"
+        },
+        {
+          "id": "g10-l58-5",
+          "n": 5,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "It ------------------------ (start) to rain when we ------------------------ (have) dinner.",
+          "options": [
+            "started / were having",
+            "was starting / had",
+            "was starting / were having",
+            "started / had"
+          ],
+          "answer": 0,
+          "accepted": [
+            "started / were having"
+          ],
+          "placeholder": "complete both blanks (use / between the two answers)…"
+        },
+        {
+          "id": "g10-l58-6",
+          "n": 6,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Yesterday at this time, I ------------------------ (sit) at my desk at work.",
+          "options": [
+            "was sitting",
+            "sat",
+            "were sitting",
+            "sit"
+          ],
+          "answer": 0,
+          "accepted": [
+            "was sitting"
+          ],
+          "placeholder": "complete both blanks (use / between the two answers)…"
+        },
+        {
+          "id": "g10-l58-7",
+          "n": 7,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "You ------------------------ (not/listen) to me when I ------------------------ (tell) you to turn the TV off.",
+          "options": [
+            "weren’t listening / told",
+            "didn’t listen / was telling",
+            "weren’t listening / was telling",
+            "didn’t listen / told"
+          ],
+          "answer": 0,
+          "accepted": [
+            "weren’t listening / told"
+          ],
+          "placeholder": "complete both blanks (use / between the two answers)…"
+        },
+        {
+          "id": "g10-l58-8",
+          "n": 8,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "You ------------------------ (study) when she ------------------------ (call) for dinner.",
+          "options": [
+            "were studying / called",
+            "studied / was calling",
+            "were studying / was calling",
+            "studied / called"
+          ],
+          "answer": 0,
+          "accepted": [
+            "were studying / called"
+          ],
+          "placeholder": "complete both blanks (use / between the two answers)…"
+        },
+        {
+          "id": "g10-l58-9",
+          "n": 9,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "What were you ------------------------ (do) at 11:30 yesterday? Were you ------------------------ (work)?",
+          "options": [
+            "doing / working",
+            "do / work",
+            "did / worked",
+            "doing / work"
+          ],
+          "answer": 0,
+          "accepted": [
+            "doing / working"
+          ],
+          "placeholder": "complete both blanks (use / between the two answers)…"
+        },
+        {
+          "id": "g10-l58-10",
+          "n": 10,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "A: What did he say? B: I don’t know. I ------------------------ (not/listen).",
+          "options": [
+            "wasn’t listening",
+            "didn’t listen",
+            "don’t listen",
+            "am not listening"
+          ],
+          "answer": 0,
+          "accepted": [
+            "wasn’t listening"
+          ],
+          "placeholder": "complete both blanks (use / between the two answers)…"
+        }
+      ]
+    },
+    {
+      "lesson": 59,
+      "title": "بخش ۲ — جمله‌سازی با کلماتِ داده شده (ص۱۳۱)",
+      "level": "تشریحی — تایپی جمله‌سازی",
+      "count": 7,
+      "questions": [
+        {
+          "id": "g10-l59-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "studying / playing / while / outside / he / were / was / we / his lessons.",
+          "options": [
+            "We were playing outside while he was studying his lessons.",
+            "We were studying his lessons while he was playing outside.",
+            "He was playing outside while we were studying his lessons.",
+            "While he was studying his lessons we were playing outside."
+          ],
+          "answer": 0,
+          "accepted": [
+            "We were playing outside while he was studying his lessons."
+          ],
+          "placeholder": "make a sentence with the given words…"
+        },
+        {
+          "id": "g10-l59-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "were / hard / to / bird / trying / save / they / the injured.",
+          "options": [
+            "They were trying hard to save the injured bird.",
+            "They were hard trying to save the injured bird.",
+            "They trying hard were to save the injured bird.",
+            "The injured bird were trying hard to save they."
+          ],
+          "answer": 0,
+          "accepted": [
+            "They were trying hard to save the injured bird."
+          ],
+          "placeholder": "make a sentence with the given words…"
+        },
+        {
+          "id": "g10-l59-3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "reading / my father / I / when / was / came in / a book.",
+          "options": [
+            "I was reading a book when my father came in.",
+            "My father was reading a book when I came in.",
+            "I was reading when a book my father came in.",
+            "When my father came in I was a book reading."
+          ],
+          "answer": 0,
+          "accepted": [
+            "I was reading a book when my father came in."
+          ],
+          "placeholder": "make a sentence with the given words…"
+        },
+        {
+          "id": "g10-l59-4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "didn’t / it / so / raining / we / was / go out.",
+          "options": [
+            "It was raining so we didn’t go out.",
+            "It was raining so we didn’t went out.",
+            "It raining was so we didn’t go out.",
+            "We was raining so it didn’t go out."
+          ],
+          "answer": 0,
+          "accepted": [
+            "It was raining so we didn’t go out."
+          ],
+          "placeholder": "make a sentence with the given words…"
+        },
+        {
+          "id": "g10-l59-5",
+          "n": 5,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "snowing / when / it / got up / you / was?",
+          "options": [
+            "Was it snowing when you got up?",
+            "Was you snowing when it got up?",
+            "It was snowing when you got up?",
+            "Was it got up when you snowing?"
+          ],
+          "answer": 0,
+          "accepted": [
+            "Was it snowing when you got up?"
+          ],
+          "placeholder": "make a sentence with the given words…"
+        },
+        {
+          "id": "g10-l59-6",
+          "n": 6,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "doing / at / yesterday / were / you / three o’clock / what?",
+          "options": [
+            "What were you doing at three o’clock yesterday?",
+            "What were you doing yesterday at three o’clock yesterday?",
+            "What you were doing at three o’clock yesterday?",
+            "What were doing you at three o’clock yesterday?"
+          ],
+          "answer": 0,
+          "accepted": [
+            "What were you doing at three o’clock yesterday?"
+          ],
+          "placeholder": "make a sentence with the given words…"
+        },
+        {
+          "id": "g10-l59-7",
+          "n": 7,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "the window/ football / were / the boys / they / playing / broke / when.",
+          "options": [
+            "The boys broke the window when they were playing football.",
+            "The boys were breaking the window when they played football.",
+            "They broke the window when the boys were playing football.",
+            "The boys broke the window when they playing were football."
+          ],
+          "answer": 0,
+          "accepted": [
+            "The boys broke the window when they were playing football."
+          ],
+          "placeholder": "make a sentence with the given words…"
+        }
+      ]
+    },
+    {
+      "lesson": 60,
+      "title": "بخش ۳ — کامل‌کردن با دانشِ گرامری (ص۱۳۱-۱۳۲)",
+      "level": "تشریحی — تایپی (تا سه‌جای‌خالیِ اسلش‌دار)",
+      "count": 7,
+      "questions": [
+        {
+          "id": "g10-l60-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "It was a beautiful morning. The sun ------------------------ shining, and the birds ------------------------ singing.",
+          "options": [
+            "was / were",
+            "is / are",
+            "were / was",
+            "was / is"
+          ],
+          "answer": 0,
+          "accepted": [
+            "was / were"
+          ],
+          "placeholder": "complete all blanks (use / between answers)…"
+        },
+        {
+          "id": "g10-l60-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "I didn’t see you yesterday. Where ------------------------ you?",
+          "options": [
+            "were",
+            "was",
+            "are",
+            "did"
+          ],
+          "answer": 0,
+          "accepted": [
+            "were"
+          ],
+          "placeholder": "complete all blanks (use / between answers)…"
+        },
+        {
+          "id": "g10-l60-3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "I ------------------------ having a shower. That’s why I ------------------------ answer the phone.",
+          "options": [
+            "was / didn’t",
+            "was / don’t",
+            "were / didn’t",
+            "was / wasn’t"
+          ],
+          "answer": 0,
+          "accepted": [
+            "was / didn’t"
+          ],
+          "placeholder": "complete all blanks (use / between answers)…"
+        },
+        {
+          "id": "g10-l60-4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "I was writing a report ------------------------ she was playing the piano.",
+          "options": [
+            "while",
+            "when",
+            "so",
+            "but"
+          ],
+          "answer": 0,
+          "accepted": [
+            "while"
+          ],
+          "placeholder": "complete all blanks (use / between answers)…"
+        },
+        {
+          "id": "g10-l60-5",
+          "n": 5,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "A: ------------------------ you watching the film at nine o’clock last night? B: No, I------------------------. I ------------------------ reading a book.",
+          "options": [
+            "Were / wasn’t / was",
+            "Was / wasn’t / were",
+            "Were / wasn’t / were",
+            "Was / wasn’t / was"
+          ],
+          "answer": 0,
+          "accepted": [
+            "Were / wasn’t / was"
+          ],
+          "placeholder": "complete all blanks (use / between answers)…"
+        },
+        {
+          "id": "g10-l60-6",
+          "n": 6,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "A: ------------------------ you go out last night? B: No, I ------------------------ too tired",
+          "options": [
+            "Did / was",
+            "Were / was",
+            "Did / were",
+            "Was / was"
+          ],
+          "answer": 0,
+          "accepted": [
+            "Did / was"
+          ],
+          "placeholder": "complete all blanks (use / between answers)…"
+        },
+        {
+          "id": "g10-l60-7",
+          "n": 7,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "This time last year I ------------------------ living in Dubai.",
+          "options": [
+            "was",
+            "am",
+            "were",
+            "is"
+          ],
+          "answer": 0,
+          "accepted": [
+            "was"
+          ],
+          "placeholder": "complete all blanks (use / between answers)…"
+        }
+      ]
+    },
+    {
+      "lesson": 61,
+      "title": "بخش ۴ — was/were + وصلِ ستون B (ص۱۳۲)",
+      "level": "تشریحی — تایپی دوبخشی (فعل + حرفِ ستون B)",
+      "count": 5,
+      "questions": [
+        {
+          "id": "g10-l61-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "سؤالِ ستون A را با was یا were کامل کنید و جوابِ مناسب را از ستون B انتخاب کنید — Where ------------------------ they living in 1995? (a. Because he was late. / b. I was asleep. / c. In Shiraz. / d. No, it was sunny. / e. No, he wasn’t.)",
+          "options": [
+            "were / c",
+            "Was / e",
+            "Was / d",
+            "was / b"
+          ],
+          "answer": 0,
+          "accepted": [
+            "were / c"
+          ],
+          "placeholder": "type the verb and the B-letter (e.g. were / c)…"
+        },
+        {
+          "id": "g10-l61-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "سؤالِ ستون A را با was یا were کامل کنید و جوابِ مناسب را از ستون B انتخاب کنید — ------------------------ your father wearing a suit yesterday? (a. Because he was late. / b. I was asleep. / c. In Shiraz. / d. No, it was sunny. / e. No, he wasn’t.)",
+          "options": [
+            "Was / e",
+            "were / c",
+            "Was / d",
+            "was / b"
+          ],
+          "answer": 0,
+          "accepted": [
+            "Was / e"
+          ],
+          "placeholder": "type the verb and the B-letter (e.g. were / c)…"
+        },
+        {
+          "id": "g10-l61-3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "سؤالِ ستون A را با was یا were کامل کنید و جوابِ مناسب را از ستون B انتخاب کنید — ------------------------ it raining when you got up? (a. Because he was late. / b. I was asleep. / c. In Shiraz. / d. No, it was sunny. / e. No, he wasn’t.)",
+          "options": [
+            "Was / d",
+            "were / c",
+            "Was / e",
+            "was / b"
+          ],
+          "answer": 0,
+          "accepted": [
+            "Was / d"
+          ],
+          "placeholder": "type the verb and the B-letter (e.g. were / c)…"
+        },
+        {
+          "id": "g10-l61-4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "سؤالِ ستون A را با was یا were کامل کنید و جوابِ مناسب را از ستون B انتخاب کنید — What ------------------------ you doing at 3 o’clock? (a. Because he was late. / b. I was asleep. / c. In Shiraz. / d. No, it was sunny. / e. No, he wasn’t.)",
+          "options": [
+            "were / b",
+            "Was / e",
+            "Was / d",
+            "was / a"
+          ],
+          "answer": 0,
+          "accepted": [
+            "were / b"
+          ],
+          "placeholder": "type the verb and the B-letter (e.g. were / c)…"
+        },
+        {
+          "id": "g10-l61-5",
+          "n": 5,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "سؤالِ ستون A را با was یا were کامل کنید و جوابِ مناسب را از ستون B انتخاب کنید — Why ------------------------ your brother driving so fast? (a. Because he was late. / b. I was asleep. / c. In Shiraz. / d. No, it was sunny. / e. No, he wasn’t.)",
+          "options": [
+            "was / a",
+            "Were / c",
+            "Was / e",
+            "was / b"
+          ],
+          "answer": 0,
+          "accepted": [
+            "was / a"
+          ],
+          "placeholder": "type the verb and the B-letter (e.g. were / c)…"
+        }
+      ]
+    },
+    {
+      "lesson": 62,
+      "title": "بخش ۵ — پاسخِ کامل با کلماتِ پرانتز (ص۱۳۲)",
+      "level": "تشریحی — تایپی پاسخِ کامل",
+      "count": 5,
+      "questions": [
+        {
+          "id": "g10-l62-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "What were they doing when you arrived? (have / dinner)",
+          "options": [
+            "They were having dinner when we arrived.",
+            "They were having dinner when I arrived.",
+            "They was having dinner when we arrived.",
+            "They were having dinner when you arrived."
+          ],
+          "answer": 0,
+          "accepted": [
+            "They were having dinner when we arrived.",
+            "They were having dinner when I arrived."
+          ],
+          "placeholder": "answer in a full sentence…"
+        },
+        {
+          "id": "g10-l62-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "What were the students doing when the teacher came in? (do / homework)",
+          "options": [
+            "The students were doing their homework when the teacher came in.",
+            "The students were doing their homework when the teacher comes in.",
+            "They were doing their homework when the teacher came in.",
+            "The students was doing their homework when the teacher came in."
+          ],
+          "answer": 0,
+          "accepted": [
+            "The students were doing their homework when the teacher came in.",
+            "They were doing their homework when the teacher came in."
+          ],
+          "placeholder": "answer in a full sentence…"
+        },
+        {
+          "id": "g10-l62-3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "What were you doing at 19 yesterday evening? (listen / music)",
+          "options": [
+            "I was listening to the music at 19 yesterday evening.",
+            "I was listening to music at 19 yesterday evening.",
+            "I listened to the music at 19 yesterday evening.",
+            "I was listening to the music in 19 yesterday evening."
+          ],
+          "answer": 0,
+          "accepted": [
+            "I was listening to the music at 19 yesterday evening."
+          ],
+          "placeholder": "answer in a full sentence…"
+        },
+        {
+          "id": "g10-l62-4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "What time was your brother studying English yesterday? (8:00)",
+          "options": [
+            "My brother was studying English at 8:00 o’clock yesterday.",
+            "My brother was studying English in 8:00 o’clock yesterday.",
+            "He was studying English at 8:00 o’clock yesterday.",
+            "My brother studied English at 8:00 o’clock yesterday."
+          ],
+          "answer": 0,
+          "accepted": [
+            "My brother was studying English at 8:00 o’clock yesterday.",
+            "He was studying English at 8:00 o’clock yesterday."
+          ],
+          "placeholder": "answer in a full sentence…"
+        },
+        {
+          "id": "g10-l62-5",
+          "n": 5,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Did you break your leg while you were playing football? (yes)",
+          "options": [
+            "Yes, I broke my leg while I was playing football.",
+            "Yes, I break my leg while I was playing football.",
+            "Yes, I was breaking my leg while I played football.",
+            "No, I broke my leg while I was playing football."
+          ],
+          "answer": 0,
+          "accepted": [
+            "Yes, I broke my leg while I was playing football."
+          ],
+          "placeholder": "answer in a full sentence…"
+        }
+      ]
+    },
+    {
+      "lesson": 63,
+      "title": "بخش ۶ — ضمیرِ انعکاسی و تأکیدی (ص۱۳۲)",
+      "level": "تشریحی — تایپی",
+      "count": 10,
+      "questions": [
+        {
+          "id": "g10-l63-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "My brother cut ------------------------ with a knife in the kitchen.",
+          "options": [
+            "himself",
+            "herself",
+            "themselves",
+            "itself"
+          ],
+          "answer": 0,
+          "accepted": [
+            "himself"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l63-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Her classmate fell off her bicycle yesterday, but she didn’t hurt ------------------------.",
+          "options": [
+            "herself",
+            "himself",
+            "themselves",
+            "yourself"
+          ],
+          "answer": 0,
+          "accepted": [
+            "herself"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l63-3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "They had a nice time. They enjoyed ------------------------.",
+          "options": [
+            "themselves",
+            "themself",
+            "ourselves",
+            "himself"
+          ],
+          "answer": 0,
+          "accepted": [
+            "themselves"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l63-4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "We had a good vacation. We enjoyed ------------------------.",
+          "options": [
+            "ourselves",
+            "themselves",
+            "ourself",
+            "myself"
+          ],
+          "answer": 0,
+          "accepted": [
+            "ourselves"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l63-5",
+          "n": 5,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "I went on vacation by ------------------------.",
+          "options": [
+            "myself",
+            "himself",
+            "themselves",
+            "me"
+          ],
+          "answer": 0,
+          "accepted": [
+            "myself"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l63-6",
+          "n": 6,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Let’s paint the house ------------------------. It will be much cheaper.",
+          "options": [
+            "ourselves",
+            "ourself",
+            "themselves",
+            "us"
+          ],
+          "answer": 0,
+          "accepted": [
+            "ourselves"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l63-7",
+          "n": 7,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Asghar Farhadi’s new film ------------------------ was very good, but I didn’t like the music.",
+          "options": [
+            "itself",
+            "himself",
+            "themself",
+            "oneself"
+          ],
+          "answer": 0,
+          "accepted": [
+            "itself"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l63-8",
+          "n": 8,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "What I did was really bad. I’m ashamed of ------------------------.",
+          "options": [
+            "myself",
+            "meself",
+            "itself",
+            "himself"
+          ],
+          "answer": 0,
+          "accepted": [
+            "myself"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l63-9",
+          "n": 9,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "I gave them a key to our house so that they could let ------------------------in.",
+          "options": [
+            "themselves",
+            "them",
+            "ourself",
+            "himself"
+          ],
+          "answer": 0,
+          "accepted": [
+            "themselves"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l63-10",
+          "n": 10,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "A: Can I take another biscuit? B: Of course. Help ------------------------!",
+          "options": [
+            "yourself",
+            "yourselves",
+            "himself",
+            "you"
+          ],
+          "answer": 0,
+          "accepted": [
+            "yourself"
+          ],
+          "placeholder": "type your answer…"
+        }
+      ]
+    },
+    {
+      "lesson": 64,
+      "title": "بخش ۷ — پاسخ با ضمایرِ تأکیدی (ص۱۳۳)",
+      "level": "تشریحی — تایپی",
+      "count": 5,
+      "questions": [
+        {
+          "id": "g10-l64-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Who fixed the bicycle for you? — Nobody. I ------------------------.",
+          "options": [
+            "myself fixed it",
+            "myself fixed them",
+            "me fixed it",
+            "myself did it"
+          ],
+          "answer": 0,
+          "accepted": [
+            "myself fixed it"
+          ],
+          "placeholder": "complete the answer (emphatic pronoun)…"
+        },
+        {
+          "id": "g10-l64-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Who cuts his hair for him? — Nobody. He cuts ------------------------.",
+          "options": [
+            "his hair himself",
+            "his hair hisself",
+            "him hair himself",
+            "his hair him"
+          ],
+          "answer": 0,
+          "accepted": [
+            "his hair himself"
+          ],
+          "placeholder": "complete the answer (emphatic pronoun)…"
+        },
+        {
+          "id": "g10-l64-3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Do you want me to post that letter for you? — No, I’ll ------------------------.",
+          "options": [
+            "post (do) it myself",
+            "post it youself",
+            "you post it myself",
+            "post it itself"
+          ],
+          "answer": 0,
+          "accepted": [
+            "post it myself",
+            "do it myself",
+            "post (do) it myself"
+          ],
+          "placeholder": "complete the answer (emphatic pronoun)…"
+        },
+        {
+          "id": "g10-l64-4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Who told you that Ali was going away? — Ali ------------------------.",
+          "options": [
+            "himself told me",
+            "told me himself did",
+            "himself told you",
+            "told me him"
+          ],
+          "answer": 0,
+          "accepted": [
+            "himself told me"
+          ],
+          "placeholder": "complete the answer (emphatic pronoun)…"
+        },
+        {
+          "id": "g10-l64-5",
+          "n": 5,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Can you phone Reza for me? — Why can’t you ------------------------?",
+          "options": [
+            "phone him yourself",
+            "phone him your self",
+            "phone you himself",
+            "phone you yourself"
+          ],
+          "answer": 0,
+          "accepted": [
+            "phone him yourself"
+          ],
+          "placeholder": "complete the answer (emphatic pronoun)…"
+        }
+      ]
+    },
+    {
+      "lesson": 65,
+      "title": "بخش ۸ — جمله‌سازی با ضمایرِ تأکیدی (ص۱۳۳)",
+      "level": "تشریحی — تایپی جمله‌سازی",
+      "count": 5,
+      "questions": [
+        {
+          "id": "g10-l65-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "themselves / did / scientists / experiment / the / the.",
+          "options": [
+            "The scientists themselves did the experiment.",
+            "The scientists did the experiment themselves the.",
+            "The experiment themselves did the scientists.",
+            "Scientists the themselves did the experiment."
+          ],
+          "answer": 0,
+          "accepted": [
+            "The scientists themselves did the experiment."
+          ],
+          "placeholder": "make a sentence with the given words…"
+        },
+        {
+          "id": "g10-l65-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "cleaned / mother / herself / my / room / by / the.",
+          "options": [
+            "My mother cleaned the room by herself.",
+            "My mother cleaned herself the room by.",
+            "The mother cleaned my room by herself.",
+            "My mother cleaned the room by herselves."
+          ],
+          "answer": 0,
+          "accepted": [
+            "My mother cleaned the room by herself."
+          ],
+          "placeholder": "make a sentence with the given words…"
+        },
+        {
+          "id": "g10-l65-3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "myself / my / I / homework / did.",
+          "options": [
+            "I did my homework myself.",
+            "I did myself my homework.",
+            "My homework did I myself.",
+            "I my homework did meself."
+          ],
+          "answer": 0,
+          "accepted": [
+            "I did my homework myself."
+          ],
+          "placeholder": "make a sentence with the given words…"
+        },
+        {
+          "id": "g10-l65-4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "a / for / baked / we / cake / ourselves / big.",
+          "options": [
+            "We baked a big cake for ourselves.",
+            "We baked ourselves a big cake for.",
+            "We baked a big cake for ourself.",
+            "A big cake baked we for ourselves the."
+          ],
+          "answer": 0,
+          "accepted": [
+            "We baked a big cake for ourselves."
+          ],
+          "placeholder": "make a sentence with the given words…"
+        },
+        {
+          "id": "g10-l65-5",
+          "n": 5,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "the / they / painted / walls / themselves.",
+          "options": [
+            "They themselves painted the walls.",
+            "They painted themselves the walls.",
+            "The walls painted they themselves.",
+            "They themselves painted walls the."
+          ],
+          "answer": 0,
+          "accepted": [
+            "They themselves painted the walls."
+          ],
+          "placeholder": "make a sentence with the given words…"
+        }
+      ]
     }
   ],
   "source": {
@@ -13010,6 +14051,30 @@
         "جعبهٔ «Note:» خالیِ پاصفحهٔ ص۲۷۶ با عنوانِ قرمز و ۱۶ خطِ خط‌چین (بزرگ‌تر از جعبهٔ ۴خطیِ r334/r338)",
         "پاصفحهٔ ص۱۲۳/۱۲۴: «جزوه جامع زبان انگلیسی پایه دهم» + «تألیف و گردآوری: جمال احمدی و همکاران» + «Vision One» (سربرگِ مشترکِ هر دو صفحه)"
       ]
+    },
+    "l3gram": {
+      "exam": "آزمون تشریحی گرامر درس سوم (ص۱۳۱-۱۳۳)",
+      "header": "سربرگِ ص۱۳۱ (رندرِ ۶۰۰dpi): «آزمون تشریحی گرامر درس سوم» رنگی + «(پاسخنامه صفحه ۲۷۷ - ۲۷۸)» — ارقامِ فارسیِ چاپ (برخلافِ r339 با «275-276» لاتین)؛ سربرگِ کلیدِ ص۲۷۷: «پاسخنامه آزمون تشریحی گرامر درس سوم» + «(آزمون: صفحه ۱۳۱ تا ۱۳۳)» — لایهٔ «تسی یچ» = ششمین تحریفِ «تشریحی» (رندر: تمیز)؛ هشت سکشنِ ۱-۸ با سربرگِ رنگیِ هلوئی و ارقامِ قرمزِ فارسی؛ پاصفحهٔ ص۱۳۳: «جزوه جامع زبان انگلیسی پایه دهم» + «تألیف و گردآوری: جمال احمدی و همکاران» + «Vision One»",
+      "keyPages": "277-278",
+      "keyVerification": "کلیدِ چاپیِ کاملِ ص۲۷۷-۲۷۸ — ۵۴/۵۴ آیتم (۵۸: ۱۰، ۵۹: ۷، ۶۰: ۷، ۶۱: ۵، ۶۲: ۵، ۶۳: ۱۰، ۶۴: ۵، ۶۵: ۵) با پیش‌پرکردنِ معنایی هم‌رأی — صفر واگرایی؛ کلیدهای اسلش‌دارِ چاپ («was talking/arrived»، «was/were»، «Were/wasn’t/was»، «were/c») با فاصلهٔ یکنواختِ « / » بازسازی شدند (ناسازگاریِ اسلشِ خودِ چاپ: Q1 چسبیده در برابرِ Q3/Q7 فاصله‌دار)؛ حروفِ بزرگِ «Was» در S4-Q2/Q3 عینِ چاپ در accepted (نرمال‌سازِ موتور کوچک‌سازی می‌کند)؛ واریانت‌های پرانتزیِ چاپِ S5 (we (I)/students (They)/brother (He)) و S7-3 «post (do)» در accepted — الگوی r336-S9",
+      "pattern": "r337 (بانک به ازای خانوادهٔ سکشن — ۸ بانک) + r337-D/r333-S3 (کلیدِ اسلش‌دارِ دوجای‌خالی) + r337-L52 (ساقهٔ خودبسنده با ستونِ درون‌خطی برای S4) + r336-S9 (واریانت‌های چاپی در accepted) + r337-K (جمله‌سازی) + r323/r326 (تایپی)",
+      "printQuirks": [
+        "سربرگ‌ها با ارقامِ فارسی: «(پاسخنامه صفحه ۲۷۷ - ۲۷۸)» و «(آزمون: صفحه ۱۳۱ تا ۱۳۳)» — برخلافِ r339 (لاتین)",
+        "S1 کلید: Q1 «was talking/arrived» چسبیده در برابرِ Q3 «was sleeping/ stole» و Q7 «weren’t listening/ told» فاصله‌دار — ناسازگاریِ اسلشِ خودِ چاپ (۶۰۰dpi)؛ در داده فاصلهٔ یکنواخت",
+        "S1-Q9 دو تیره با طولِ متفاوت در چاپ (اولی ~۱۹، دومی ~۲۴) + «11:30» با رقمِ لاتین و دونقطه — تیره‌ها یکنواخت شدند (BL؛ الگوی r337)",
+        "S2-Q7 «the window/» بدونِ فاصله قبل از اسلش — عینِ چاپ (سایر توکن‌ها فاصله‌دار)",
+        "S3-Q5 «B: No, I----.» تیرهٔ اول چسبیده به I بدونِ فاصله (۶۰۰dpi) — عینِ چاپ؛ کلیدِ سه‌جای‌خالیِ «Were/wasn’t/was» با فاصله بعد از «5.» در گرید — یکتا در گرید",
+        "S3-Q6 «B: No, I --- too tired» بدونِ نقطهٔ پایانی — عینِ چاپ (برخلافِ سایر آیتم‌ها)",
+        "S4 جدولِ دوستونیِ A/B (A سبزِ سربرگ، B سایه‌های زردِ یکی‌درمیان)؛ کلیدِ دوبخشیِ چاپی «were/c، Was/e، Was/d، were/b، was/a» — در داده ستونِ B درونِ ساقه می‌آید (موتورِ تایپی گزینه رندر نمی‌کند — ساقهٔ خودبسنده؛ الگوی r337-L52) و accepted دوبخشی است",
+        "S5-Q3 «at 19» رقمِ لاتین (یعنی ساعت ۱۹:۰۰) — عینِ چاپ؛ Q4 کلیدِ «at 8:00 o’clock» با دونقطه؛ سطرِ پاسخِ Q2 «2-------.» بدونِ نقطه بعد از شماره",
+        "S6-Q9 «let ----in.» تیره چسبیده به in بدونِ فاصله (۶۰۰dpi) — عینِ چاپ؛ Q10 دیالوگِ دوخطیِ A/B با «!»",
+        "S7 کلیدها فقط محتوای تیره‌اند (خودِ جمله در ساقه): «myself fixed it» و غیره؛ Q3 «post (do) it myself» با واریانتِ پرانتزیِ چاپ — هر سه شکل در accepted؛ Q5 ساقه با «?» پایانی (برخلافِ Q1-4 با «.»)",
+        "S6-Q7 «Asghar Farhadi’s new film ---» کلیدِ «itself» — اشاره به خودِ فیلم (غیرِ انسان)؛ نامِ خاصِ بومی (قرینهٔ رویکردِ بوکانیِ جزوه)",
+        "جعبهٔ «Note:» زردِ پاصفحهٔ ص۱۳۳ با عنوانِ قرمز و ۱۰ خطِ خط‌چین (پاصفحهٔ ص۲۷۸ با ۱۳ خط) — بینِ جعبه‌های ۴خطیِ r334/r338 و ۱۶خطیِ r339",
+        "لایهٔ «تسی یچ» (ششمین تکرار) + «جمالت/خایل/انعکایس/پرانی ن» — تحریف‌های استانداردِ لایه؛ رندر همه را تمیز می‌کند",
+        "سکشن‌های چاپ با ارقامِ فارسیِ قرمز (۱ تا ۸) و سربرگِ هلوئیِ خطِ آبی؛ آیتم‌ها با ارقامِ قرمزِ لاتین (1 تا 10)"
+      ],
+      "extractedRound": "r340"
     }
   }
 }
