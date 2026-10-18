@@ -142,6 +142,16 @@ interface JozveTestBank {
   lessons: { lesson: number; title: string; level: string; count: number; questions: JozveTestQuestion[] }[];
 }
 const GRADE_TESTS: Record<number, { lessons: { lesson: number; title: string; count: number; group?: string }[] }> = {
+  // r362 — گ۹ (لطفی بوکان): نخستین پایه‌ای که غیرِ ۱۰-۱۲ به کارتِ تست‌ها می‌آید — دو خانوادهٔ بومیِ جزوه:
+  // «تست گرامری» ص۲۸ (۳ MCQ با کلیدِ ستارهٔ چاپی + ۴ تایپیِ is/are با کلیدِ ساختاری؛ ۳ MCQِ بی‌کلید
+  // به‌عنوان ساقهٔ یتیم در رسیدِ g9tests مستند شد — قراردادِ r358) و «تست واژگان» ۵۰تاییِ ص۹۸-۱۰۱
+  // با کلیدِ «N-x» ص۱۰۱ (سربرگِ «هفتم تا نهم» ولی محتوا = همین ۵۰تایی — کوئیرکِ مستند)
+  9: {
+    lessons: [
+      { lesson: 1, title: "تست گرامری (ص۲۸) — there is/are", count: 7, group: "تست گرامری" },
+      { lesson: 2, title: "تست واژگان ۵۰تایی (ص۹۸-۱۰۱)", count: 50, group: "تست واژگان" },
+    ],
+  },
   10: {
     lessons: [
       // r323 — «آزمون تشریحی واژگان درس اول» (ص۴۹-۵۱، کلید چاپی ص۲۴۲) — ۴ بانک/۵۷ آیتم؛
