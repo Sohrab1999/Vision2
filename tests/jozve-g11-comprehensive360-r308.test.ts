@@ -91,7 +91,7 @@ describe("jozve comprehensive360 g11 (r308 extraction receipt)", () => {
   it("bank shape: grade 11 now has 24 lessons — 18 comprehensive banks of 20 (bank 12 has 21) + r309 konkur vocab", () => {
     expect(bank.grade).toBe(11);
     expect(bank.lessons.map((l) => l.lesson)).toEqual(
-      Array.from({ length: 59 }, (_, i) => i + 1) // r356: ۵۵ → ۵۹ با بانک‌های تشریحیِ گرامرِ د۲ l56..l59 (r355: l43..l55، r354: l37..l42، r312: l29..l36، r311: l25..l28)
+      Array.from({ length: 73 }, (_, i) => i + 1) // r357: ۵۹ → ۷۳ با چهارده سکشنِ «آزمون جامع تشریحی درس دوم» l60..l73 (r356: l56..l59، r355: l43..l55، r354: l37..l42، r312: l29..l36، r311: l25..l28)
     );
     for (const l of newLessons) {
       const want = l.lesson === 17 ? 21 : 20;
@@ -104,10 +104,10 @@ describe("jozve comprehensive360 g11 (r308 extraction receipt)", () => {
     }
   });
 
-  it("ids: g11-l6-1 .. g11-l23-20 unique across the whole bank — total 839 (r309 added l24)", () => {
+  it("ids: g11-l6-1 .. g11-l23-20 unique across the whole bank — total 958 (r309 added l24)", () => {
     const all = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
     expect(new Set(all).size).toBe(all.length);
-    expect(all).toHaveLength(40 + 40 + 40 + 22 + 20 + 20 + 361 + 57 + 114 + 68 + 57 + 54); // +۲۰: واژگان کنکوری درس دوم (r309)؛ +۶۸: تشریحی گرامر د۱ (r354)؛ +۵۷: جامع تشریحی د۱ (r355)؛ +۵۴: تشریحی گرامر د۲ (r356)
+    expect(all).toHaveLength(40 + 40 + 40 + 22 + 20 + 20 + 361 + 57 + 114 + 68 + 57 + 54 + 65); // +۲۰: واژگان کنکوری درس دوم (r309)؛ +۶۸: تشریحی گرامر د۱ (r354)؛ +۵۷: جامع تشریحی د۱ (r355)؛ +۵۴: تشریحی گرامر د۲ (r356)؛ +۶۵: جامع تشریحی د۲ (r357)
     for (const l of newLessons) {
       expect(l.questions.map((q) => q.id)).toEqual(
         Array.from({ length: l.questions.length }, (_, i) => `g11-l${l.lesson}-${i + 1}`)

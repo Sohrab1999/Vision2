@@ -13628,6 +13628,1183 @@
           "answer": 3
         }
       ]
+    },
+    {
+      "lesson": 60,
+      "title": "تشریحی جامع — کلمات ناقص (ص۷۴)",
+      "level": "تشریحی — تایپی",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g11-l60-1",
+          "n": 1,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "My mother often w__k__s up early. But today she’s still asleep.",
+          "options": [
+            "wakes",
+            "influenced",
+            "condition",
+            "heartbeat"
+          ],
+          "answer": 0,
+          "accepted": [
+            "wakes"
+          ],
+          "placeholder": "complete the word…"
+        },
+        {
+          "id": "g11-l60-2",
+          "n": 2,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Technology has infl__en__ed the lives of people in this century.",
+          "options": [
+            "influenced",
+            "wakes",
+            "condition",
+            "heartbeat"
+          ],
+          "answer": 0,
+          "accepted": [
+            "influenced"
+          ],
+          "placeholder": "complete the word…"
+        },
+        {
+          "id": "g11-l60-3",
+          "n": 3,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Daily exercises improve people’s health c__nditi__n.",
+          "options": [
+            "condition",
+            "wakes",
+            "influenced",
+            "heartbeat"
+          ],
+          "answer": 0,
+          "accepted": [
+            "condition"
+          ],
+          "placeholder": "complete the word…"
+        },
+        {
+          "id": "g11-l60-4",
+          "n": 4,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "The doctor is listening to my h__artb__at.",
+          "options": [
+            "heartbeat",
+            "wakes",
+            "influenced",
+            "condition"
+          ],
+          "answer": 0,
+          "accepted": [
+            "heartbeat"
+          ],
+          "placeholder": "complete the word…"
+        }
+      ]
+    },
+    {
+      "lesson": 61,
+      "title": "تشریحی جامع — کلمات داده‌شده (ص۷۴)",
+      "level": "تشریحی — تایپی",
+      "count": 8,
+      "questions": [
+        {
+          "id": "g11-l61-1",
+          "n": 1,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Take more exercise at your age and eat less red meat or you’ll die of a/an ---------------------------- attack. [bank: avoiding / balanced / goal / decreased / serving / relationships / emotional / heart / emergency]",
+          "options": [
+            "heart",
+            "relationships",
+            "emotional",
+            "avoiding"
+          ],
+          "answer": 0,
+          "accepted": [
+            "heart"
+          ],
+          "placeholder": "complete with the given words…"
+        },
+        {
+          "id": "g11-l61-2",
+          "n": 2,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "An effective way to enjoy a better lifestyle is having healthy ---------------------------- with others. [bank: avoiding / balanced / goal / decreased / serving / relationships / emotional / heart / emergency]",
+          "options": [
+            "relationships",
+            "heart",
+            "emotional",
+            "avoiding"
+          ],
+          "answer": 0,
+          "accepted": [
+            "relationships"
+          ],
+          "placeholder": "complete with the given words…"
+        },
+        {
+          "id": "g11-l61-3",
+          "n": 3,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Children’s ---------------------------- needs are more important than their physical needs. [bank: avoiding / balanced / goal / decreased / serving / relationships / emotional / heart / emergency]",
+          "options": [
+            "emotional",
+            "heart",
+            "relationships",
+            "avoiding"
+          ],
+          "answer": 0,
+          "accepted": [
+            "emotional"
+          ],
+          "placeholder": "complete with the given words…"
+        },
+        {
+          "id": "g11-l61-4",
+          "n": 4,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Do you think Sarah is ---------------------------- me? I haven’t seen her all day. [bank: avoiding / balanced / goal / decreased / serving / relationships / emotional / heart / emergency]",
+          "options": [
+            "avoiding",
+            "heart",
+            "relationships",
+            "emotional"
+          ],
+          "answer": 0,
+          "accepted": [
+            "avoiding"
+          ],
+          "placeholder": "complete with the given words…"
+        },
+        {
+          "id": "g11-l61-5",
+          "n": 5,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "The price of apartments has ---------------------------- in recent months. [bank: avoiding / balanced / goal / decreased / serving / relationships / emotional / heart / emergency]",
+          "options": [
+            "decreased",
+            "heart",
+            "relationships",
+            "emotional"
+          ],
+          "answer": 0,
+          "accepted": [
+            "decreased"
+          ],
+          "placeholder": "complete with the given words…"
+        },
+        {
+          "id": "g11-l61-6",
+          "n": 6,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "A/An ---------------------------- diet is necessary for healthy growth. [bank: avoiding / balanced / goal / decreased / serving / relationships / emotional / heart / emergency]",
+          "options": [
+            "balanced",
+            "heart",
+            "relationships",
+            "emotional"
+          ],
+          "answer": 0,
+          "accepted": [
+            "balanced"
+          ],
+          "placeholder": "complete with the given words…"
+        },
+        {
+          "id": "g11-l61-7",
+          "n": 7,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "My ---------------------------- is to lose ten kilos before the summer. [bank: avoiding / balanced / goal / decreased / serving / relationships / emotional / heart / emergency]",
+          "options": [
+            "goal",
+            "heart",
+            "relationships",
+            "emotional"
+          ],
+          "answer": 0,
+          "accepted": [
+            "goal"
+          ],
+          "placeholder": "complete with the given words…"
+        },
+        {
+          "id": "g11-l61-8",
+          "n": 8,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "You can land a plane on water in a/an ----------------------------. [bank: avoiding / balanced / goal / decreased / serving / relationships / emotional / heart / emergency]",
+          "options": [
+            "emergency",
+            "heart",
+            "relationships",
+            "emotional"
+          ],
+          "answer": 0,
+          "accepted": [
+            "emergency"
+          ],
+          "placeholder": "complete with the given words…"
+        }
+      ]
+    },
+    {
+      "lesson": 62,
+      "title": "تشریحی جامع — کلمهٔ مناسب با حروف ناقص (ص۷۴)",
+      "level": "تشریحی — تایپی",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g11-l62-1",
+          "n": 1,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "I need someone to look a _ _ _ _ the children while I’m at work.",
+          "options": [
+            "after",
+            "gained",
+            "blood",
+            "cure"
+          ],
+          "answer": 0,
+          "accepted": [
+            "after"
+          ],
+          "placeholder": "write the word that fits the blanks…"
+        },
+        {
+          "id": "g11-l62-2",
+          "n": 2,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "I’ve g _ _ _ _ _ weight, and I’m going on a diet.",
+          "options": [
+            "gained",
+            "after",
+            "blood",
+            "cure"
+          ],
+          "answer": 0,
+          "accepted": [
+            "gained"
+          ],
+          "placeholder": "write the word that fits the blanks…"
+        },
+        {
+          "id": "g11-l62-3",
+          "n": 3,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "My mother has high b _ _ _ _ pressure.",
+          "options": [
+            "blood",
+            "after",
+            "gained",
+            "cure"
+          ],
+          "answer": 0,
+          "accepted": [
+            "blood"
+          ],
+          "placeholder": "write the word that fits the blanks…"
+        },
+        {
+          "id": "g11-l62-4",
+          "n": 4,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "There’s still no c _ _ _ for cancer.",
+          "options": [
+            "cure",
+            "after",
+            "gained",
+            "blood"
+          ],
+          "answer": 0,
+          "accepted": [
+            "cure"
+          ],
+          "placeholder": "write the word that fits the blanks…"
+        }
+      ]
+    },
+    {
+      "lesson": 63,
+      "title": "تشریحی جامع — گزینهٔ متفاوت (ص۷۴)",
+      "level": "تشریحی — تایپی",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g11-l63-1",
+          "n": 1,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "carrot / tomato / banana / potato",
+          "options": [
+            "carrot",
+            "tomato",
+            "banana",
+            "potato"
+          ],
+          "answer": 2,
+          "accepted": [
+            "banana"
+          ],
+          "placeholder": "type the option that is different…"
+        },
+        {
+          "id": "g11-l63-2",
+          "n": 2,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "meat / candy / fish / chicken",
+          "options": [
+            "meat",
+            "candy",
+            "fish",
+            "chicken"
+          ],
+          "answer": 1,
+          "accepted": [
+            "candy"
+          ],
+          "placeholder": "type the option that is different…"
+        },
+        {
+          "id": "g11-l63-3",
+          "n": 3,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "unhealthy / harmful / not good / useful",
+          "options": [
+            "unhealthy",
+            "harmful",
+            "not good",
+            "useful"
+          ],
+          "answer": 3,
+          "accepted": [
+            "useful"
+          ],
+          "placeholder": "type the option that is different…"
+        },
+        {
+          "id": "g11-l63-4",
+          "n": 4,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "sailing / jogging / walking / running",
+          "options": [
+            "sailing",
+            "jogging",
+            "walking",
+            "running"
+          ],
+          "answer": 0,
+          "accepted": [
+            "sailing"
+          ],
+          "placeholder": "type the option that is different…"
+        }
+      ]
+    },
+    {
+      "lesson": 64,
+      "title": "تشریحی جامع — تست چهارگزینه‌ای (ص۷۴)",
+      "level": "تشریحی — چهارگزینه‌ای",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g11-l64-1",
+          "n": 1,
+          "category": "vocab",
+          "question": "It’s a ------------------------- nobody died in the accident.",
+          "options": [
+            "relationship",
+            "disorder",
+            "proportion",
+            "miracle"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g11-l64-2",
+          "n": 2,
+          "category": "vocab",
+          "question": "Praying ------------------------- stress and gives people a calm and balanced life.",
+          "options": [
+            "decreases",
+            "retires",
+            "influences",
+            "increases"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l64-3",
+          "n": 3,
+          "category": "vocab",
+          "question": "You need to have vitamins and ------------------------- in your diet.",
+          "options": [
+            "hobbies",
+            "minerals",
+            "habits",
+            "topics"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l64-4",
+          "n": 4,
+          "category": "vocab",
+          "question": "This is the third medal she’s ------------------------- this season.",
+          "options": [
+            "prevented",
+            "identified",
+            "won",
+            "limited"
+          ],
+          "answer": 2
+        }
+      ]
+    },
+    {
+      "lesson": 65,
+      "title": "تشریحی جامع — تست چهارگزینه‌ای (ص۷۵)",
+      "level": "تشریحی — چهارگزینه‌ای",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g11-l65-1",
+          "n": 1,
+          "category": "grammar",
+          "question": "She told me her name, but I’ve ------------------------- it.",
+          "options": [
+            "forget",
+            "forgot",
+            "forgotten",
+            "have forgotten"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g11-l65-2",
+          "n": 2,
+          "category": "grammar",
+          "question": "My brother enjoys ------------------------- his bike through the park in the summer.",
+          "options": [
+            "to ride",
+            "riding",
+            "rode",
+            "to riding"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l65-3",
+          "n": 3,
+          "category": "grammar",
+          "question": "For years he’s ------------------------- that he will be a successful businessman.",
+          "options": [
+            "believe",
+            "believed",
+            "to believe",
+            "has believed"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l65-4",
+          "n": 4,
+          "category": "grammar",
+          "question": "We can improve our English skills by ------------------------- this site.",
+          "options": [
+            "used",
+            "have used",
+            "use",
+            "using"
+          ],
+          "answer": 3
+        }
+      ]
+    },
+    {
+      "lesson": 66,
+      "title": "تشریحی جامع — جمله‌سازی (ص۷۵)",
+      "level": "تشریحی — جمله‌سازی",
+      "count": 3,
+      "questions": [
+        {
+          "id": "g11-l66-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "written / letters / have / today / they / three.",
+          "options": [
+            "They have written three letters today.",
+            "Smoking is bad for your health.",
+            "Has he finished doing his homework?"
+          ],
+          "answer": 0,
+          "accepted": [
+            "They have written three letters today."
+          ],
+          "placeholder": "make a sentence with the given words…"
+        },
+        {
+          "id": "g11-l66-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "bad / health / for / smoking / your / is.",
+          "options": [
+            "Smoking is bad for your health.",
+            "They have written three letters today.",
+            "Has he finished doing his homework?"
+          ],
+          "answer": 0,
+          "accepted": [
+            "Smoking is bad for your health."
+          ],
+          "placeholder": "make a sentence with the given words…"
+        },
+        {
+          "id": "g11-l66-3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "his / doing / has / homework / he / finished?",
+          "options": [
+            "Has he finished doing his homework?",
+            "They have written three letters today.",
+            "Smoking is bad for your health."
+          ],
+          "answer": 0,
+          "accepted": [
+            "Has he finished doing his homework?"
+          ],
+          "placeholder": "make a sentence with the given words…"
+        }
+      ]
+    },
+    {
+      "lesson": 67,
+      "title": "تشریحی جامع — پسوندها و پیشوندها (ص۷۵)",
+      "level": "تشریحی — تایپی",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g11-l67-1",
+          "n": 1,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "correct: [bank: al / un / or / in]",
+          "options": [
+            "incorrect",
+            "natural",
+            "translator",
+            "unimportant"
+          ],
+          "answer": 0,
+          "accepted": [
+            "incorrect"
+          ],
+          "placeholder": "add a prefix or suffix to make a meaningful word…"
+        },
+        {
+          "id": "g11-l67-2",
+          "n": 2,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "nature: [bank: al / un / or / in]",
+          "options": [
+            "natural",
+            "incorrect",
+            "translator",
+            "unimportant"
+          ],
+          "answer": 0,
+          "accepted": [
+            "natural"
+          ],
+          "placeholder": "add a prefix or suffix to make a meaningful word…"
+        },
+        {
+          "id": "g11-l67-3",
+          "n": 3,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "translate: [bank: al / un / or / in]",
+          "options": [
+            "translator",
+            "incorrect",
+            "natural",
+            "unimportant"
+          ],
+          "answer": 0,
+          "accepted": [
+            "translator"
+          ],
+          "placeholder": "add a prefix or suffix to make a meaningful word…"
+        },
+        {
+          "id": "g11-l67-4",
+          "n": 4,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "important: [bank: al / un / or / in]",
+          "options": [
+            "unimportant",
+            "incorrect",
+            "natural",
+            "translator"
+          ],
+          "answer": 0,
+          "accepted": [
+            "unimportant"
+          ],
+          "placeholder": "add a prefix or suffix to make a meaningful word…"
+        }
+      ]
+    },
+    {
+      "lesson": 68,
+      "title": "تشریحی جامع — متضاد یا هم‌معنی (ص۷۵)",
+      "level": "تشریحی — تایپی",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g11-l68-1",
+          "n": 1,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "quit =",
+          "options": [
+            "give up",
+            "stop",
+            "turn off",
+            "finish"
+          ],
+          "answer": 0,
+          "accepted": [
+            "give up"
+          ],
+          "placeholder": "write a synonym (=) or an antonym (≠)…"
+        },
+        {
+          "id": "g11-l68-2",
+          "n": 2,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "prevent =",
+          "options": [
+            "stop",
+            "give up",
+            "turn off",
+            "finish"
+          ],
+          "answer": 0,
+          "accepted": [
+            "stop"
+          ],
+          "placeholder": "write a synonym (=) or an antonym (≠)…"
+        },
+        {
+          "id": "g11-l68-3",
+          "n": 3,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "turn on ≠",
+          "options": [
+            "turn off",
+            "give up",
+            "stop",
+            "finish"
+          ],
+          "answer": 0,
+          "accepted": [
+            "turn off"
+          ],
+          "placeholder": "write a synonym (=) or an antonym (≠)…"
+        },
+        {
+          "id": "g11-l68-4",
+          "n": 4,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "begin ≠",
+          "options": [
+            "finish",
+            "give up",
+            "stop",
+            "turn off"
+          ],
+          "answer": 0,
+          "accepted": [
+            "finish"
+          ],
+          "placeholder": "write a synonym (=) or an antonym (≠)…"
+        }
+      ]
+    },
+    {
+      "lesson": 69,
+      "title": "تشریحی جامع — شکل صحیح افعال (ص۷۵)",
+      "level": "تشریحی — تایپی",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g11-l69-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "He ---------------------------------------- the guitar since he was a child. (play)",
+          "options": [
+            "has played",
+            "living",
+            "have seen",
+            "travelling"
+          ],
+          "answer": 0,
+          "accepted": [
+            "has played"
+          ],
+          "placeholder": "write the correct form of the verb in parentheses…"
+        },
+        {
+          "id": "g11-l69-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "I can’t imagine ---------------------------------------- in that big house. (live)",
+          "options": [
+            "living",
+            "has played",
+            "have seen",
+            "travelling"
+          ],
+          "answer": 0,
+          "accepted": [
+            "living"
+          ],
+          "placeholder": "write the correct form of the verb in parentheses…"
+        },
+        {
+          "id": "g11-l69-3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "They ---------------------------------------- that film five times. (see)",
+          "options": [
+            "have seen",
+            "has played",
+            "living",
+            "travelling"
+          ],
+          "answer": 0,
+          "accepted": [
+            "have seen"
+          ],
+          "placeholder": "write the correct form of the verb in parentheses…"
+        },
+        {
+          "id": "g11-l69-4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "My aunt is afraid of ---------------------------------------- by plane. (travel)",
+          "options": [
+            "travelling",
+            "has played",
+            "living",
+            "have seen"
+          ],
+          "answer": 0,
+          "accepted": [
+            "travelling"
+          ],
+          "placeholder": "write the correct form of the verb in parentheses…"
+        }
+      ]
+    },
+    {
+      "lesson": 70,
+      "title": "تشریحی جامع — افعال دوکلمه‌ای (ص۷۵)",
+      "level": "تشریحی — تایپی",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g11-l70-1",
+          "n": 1,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Passengers are requested to check ------------------------ two hours before the flight.",
+          "options": [
+            "in",
+            "up",
+            "out",
+            "on"
+          ],
+          "answer": 0,
+          "accepted": [
+            "in"
+          ],
+          "placeholder": "complete the two-word verb…"
+        },
+        {
+          "id": "g11-l70-2",
+          "n": 2,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "After ten minutes trying to get the answer I gave ------------------------.",
+          "options": [
+            "up",
+            "in",
+            "out",
+            "on"
+          ],
+          "answer": 0,
+          "accepted": [
+            "up"
+          ],
+          "placeholder": "complete the two-word verb…"
+        },
+        {
+          "id": "g11-l70-3",
+          "n": 3,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "I just need to get ------------------------ for a few days.",
+          "options": [
+            "out",
+            "in",
+            "up",
+            "on"
+          ],
+          "answer": 0,
+          "accepted": [
+            "out"
+          ],
+          "placeholder": "complete the two-word verb…"
+        },
+        {
+          "id": "g11-l70-4",
+          "n": 4,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Watch ------------------------ for thieves round here.",
+          "options": [
+            "out",
+            "in",
+            "up",
+            "on"
+          ],
+          "answer": 0,
+          "accepted": [
+            "out"
+          ],
+          "placeholder": "complete the two-word verb…"
+        }
+      ]
+    },
+    {
+      "lesson": 71,
+      "title": "تشریحی جامع — اسم مصدر، جدول سه‌ستونه (ص۷۶)",
+      "level": "تشریحی — تایپی",
+      "count": 6,
+      "questions": [
+        {
+          "id": "g11-l71-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "I’m tired of doing the same job, day after day.",
+          "options": [
+            "doing",
+            "Playing",
+            "walking",
+            "Travelling"
+          ],
+          "answer": 0,
+          "accepted": [
+            "doing"
+          ],
+          "placeholder": "type the gerund used in the sentence…"
+        },
+        {
+          "id": "g11-l71-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Playing chess for two hours made her tired.",
+          "options": [
+            "Playing",
+            "doing",
+            "walking",
+            "Travelling"
+          ],
+          "answer": 0,
+          "accepted": [
+            "Playing"
+          ],
+          "placeholder": "type the gerund used in the sentence…"
+        },
+        {
+          "id": "g11-l71-3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "My father enjoys walking in the park.",
+          "options": [
+            "walking",
+            "doing",
+            "Playing",
+            "Travelling"
+          ],
+          "answer": 0,
+          "accepted": [
+            "walking"
+          ],
+          "placeholder": "type the gerund used in the sentence…"
+        },
+        {
+          "id": "g11-l71-4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Travelling by train made us happy last summer.",
+          "options": [
+            "Travelling",
+            "doing",
+            "Playing",
+            "walking"
+          ],
+          "answer": 0,
+          "accepted": [
+            "Travelling"
+          ],
+          "placeholder": "type the gerund used in the sentence…"
+        },
+        {
+          "id": "g11-l71-5",
+          "n": 5,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "We thanked him for answering our questions.",
+          "options": [
+            "answering",
+            "doing",
+            "Playing",
+            "walking"
+          ],
+          "answer": 0,
+          "accepted": [
+            "answering"
+          ],
+          "placeholder": "type the gerund used in the sentence…"
+        },
+        {
+          "id": "g11-l71-6",
+          "n": 6,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "My sister likes reading story books.",
+          "options": [
+            "reading",
+            "doing",
+            "Playing",
+            "walking"
+          ],
+          "answer": 0,
+          "accepted": [
+            "reading"
+          ],
+          "placeholder": "type the gerund used in the sentence…"
+        }
+      ]
+    },
+    {
+      "lesson": 72,
+      "title": "تشریحی جامع — کلوز اعتیاد (ص۷۶)",
+      "level": "تشریحی — چهارگزینه‌ای",
+      "count": 6,
+      "questions": [
+        {
+          "id": "g11-l72-1",
+          "n": 1,
+          "category": "vocab",
+          "question": "Addiction is when the body or mind ---(1)--- wants or needs something in order to work right.",
+          "options": [
+            "well",
+            "slowly",
+            "badly",
+            "happily"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g11-l72-2",
+          "n": 2,
+          "category": "vocab",
+          "question": "When you have addiction to something it is ---(2)--- being addicted or being an addict.",
+          "options": [
+            "avoided",
+            "called",
+            "taken",
+            "thought"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l72-3",
+          "n": 3,
+          "category": "vocab",
+          "question": "When somebody is addicted to something, they can become ---(3)--- if they do not get the thing they are addicted to.",
+          "options": [
+            "calm",
+            "excellent",
+            "sick",
+            "effective"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g11-l72-4",
+          "n": 4,
+          "category": "vocab",
+          "question": "But taking more of the thing they are addicted to can also ---(4)--- their health.",
+          "options": [
+            "hurt",
+            "improve",
+            "increase",
+            "measure"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l72-5",
+          "n": 5,
+          "category": "vocab",
+          "question": "Some people who are addicts need to go to a doctor or hospital to ---(5)--- the addiction.",
+          "options": [
+            "socialize",
+            "enable",
+            "cure",
+            "contain"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g11-l72-6",
+          "n": 6,
+          "category": "vocab",
+          "question": "This means that they get into a ---(6)--- of enjoying that thing, so if they have to go without it for a while, they miss it a lot.",
+          "options": [
+            "hobby",
+            "manner",
+            "topic",
+            "habit"
+          ],
+          "answer": 3
+        }
+      ]
+    },
+    {
+      "lesson": 73,
+      "title": "تشریحی جامع — درک مطلب تغذیه (ص۷۶-۷۷)",
+      "level": "تشریحی — درست/نادرست و تایپی",
+      "count": 6,
+      "questions": [
+        {
+          "id": "g11-l73-1",
+          "n": 1,
+          "category": "vocab",
+          "question": "Fruits often have more calories and sugar than vegetables.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l73-2",
+          "n": 2,
+          "category": "vocab",
+          "question": "Protein is an element that helps build strong bones.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l73-3",
+          "n": 3,
+          "category": "vocab",
+          "question": "A healthy diet and a balanced diet are the same.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g11-l73-4",
+          "n": 4,
+          "category": "vocab",
+          "question": "An imbalanced diet is good for our bodies.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g11-l73-5",
+          "n": 5,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "What do grains give our bodies?",
+          "options": [
+            "Grains give carbohydrates and some vitamins and minerals.",
+            "It is a chart that can be used to see how many servings of each food should be eaten each day."
+          ],
+          "answer": 0,
+          "accepted": [
+            "Grains give carbohydrates and some vitamins and minerals."
+          ],
+          "placeholder": "answer according to the reading passage…"
+        },
+        {
+          "id": "g11-l73-6",
+          "n": 6,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "What is a food pyramid?",
+          "options": [
+            "It is a chart that can be used to see how many servings of each food should be eaten each day.",
+            "Grains give carbohydrates and some vitamins and minerals."
+          ],
+          "answer": 0,
+          "accepted": [
+            "It is a chart that can be used to see how many servings of each food should be eaten each day."
+          ],
+          "placeholder": "answer according to the reading passage…"
+        }
+      ]
     }
   ],
   "source": {
@@ -13950,6 +15127,30 @@
         "عرضِ بلنک‌های سکشن۳ در لایه ناهمگون است (۴۱ تیره در همهٔ آیتم‌ها به‌جز آیتم۱۲ با ۳۲ تیره) — به ۴۰ تیره نرمال شد؛ بلنک‌های سکشن۴ به ۲۰ تیره",
         "بدونِ ترجمهٔ چاپی («ترجمه» ×۰ در ص۶۳-۶۴) — فیلدِ translation ساخته نشده؛ هر چهار بانک category=grammar (آزمونِ گرامرِ حال کامل/گذشته ساده)",
         "هم‌پوشانی‌سنجی: ساقه‌های این خانواده با بانک‌های پیشینِ tests-g11 (r275/r277/r278/r308/r309/r311/r312/r354/r355) اشتراک ندارند"
+      ]
+    },
+    "g11l2jame": {
+      "exam": "آزمون جامع تشریحی درس دوم - پایه یازدهم (ص۷۴-۷۷)",
+      "header": "«آزمون تشریحی درس دوم (پاسخنامه صفحه ۱۹۱ و ۱۹۲)» — چهارده سکشن / ۶۵ آیتم",
+      "keyPages": "191-192",
+      "keyVerification": "کلیدِ ص۱۹۱-۱۹۲ — ۵۹ مدخلِ شماره‌دار با شماره‌گذاریِ بازشوندهٔ هر سکشن (۴/۸/۴/۴/۴/۴/۳/۴/۴/۴/۴/۶/۶ — سکشن۷ دوستونیِ چاپی) + جدولِ اسم مصدرِ سکشن۱۲ (شش مصدر در سه ستون)؛ سکشن۱ → قفلِ الگوی حروفِ ناقص (۴/۴)؛ سکشن۲ → کلید ∈ بانکِ ۹واژه‌ای با اضافیِ «serving»؛ سکشن۳ → قفلِ حرفِ آغازین+تعدادِ خانه (۴/۴)؛ سکشن۴ → کلید ∈ چهار چاپ (۴/۴)؛ سکشن۵/۶ → نگاشتِ یکتای متنِ کلید→گزینه (۸/۸)؛ سکشن۸ → ریشهٔ ۴حرفی+وندِ استخر (۴/۴)؛ سکشن۱۰ → قفلِ رادیکالِ فعلِ پرانتزی (۴/۴)؛ سکشن۱۲ → مصدر ∈ جمله + جدول (۶/۶ خودتأیید)؛ سکشن۱۳ → نگاشتِ یکتا (۶/۶)؛ سکشن۱۴ → T/F ∈ {true,false} + کلیدِ تایپیِ عینِ گذرنامه (۶/۶)",
+      "extractedRound": "r357",
+      "pattern": "r355 (سیزده سکشن = سیزده بانک؛ کلوزِ بلنکِ شماره‌دار؛ T/F استاندارد؛ بانکِ واژه [bank: …]) + r354 (برشِ سکشن با لنگرِ اولین سؤال + یکتاییِ لنگر + گاردِ فارسی + ماشینِ MCQ) + r351 (کلیدِ پارس‌شده از لایه، نه از حفظ) + r356 (لنگرِ متقابلِ دوطرفه؛ chunk-محور؛ عرضِ بلنکِ نرمال؛ typed: accepted+placeholder)",
+      "printQuirks": [
+        "چهارده سکشنِ خودِ آزمون چهارده بانک شدند (الگوی r355): کلمات ناقص (۴ تایپی)، کلمات داده‌شده (۸ تایپی با بانکِ ۹واژه‌ای و واژهٔ اضافیِ «serving»)، کلمهٔ مناسب با حروفِ ناقص (۴ تایپی)، گزینهٔ متفاوت (۴ تایپی)، بهترین گزینهٔ واژگان (۴ MCQ)، بهترین گزینهٔ گرامر (۴ MCQ)، جمله‌سازی (۳ تایپی)، پسوند/پیشوند (۴ تایپی)، متضاد یا هم‌معنی (۴ تایپی)، شکلِ صحیحِ افعال (۴ تایپی)، افعال دوکلمه‌ای (۴ تایپی)، اسم مصدرِ جدولِ سه‌ستونه (۶ تایپی)، کلوزِ اعتیاد (۶ MCQ)، درک مطلبِ تغذیه (۴ درست/نادرست + ۲ تایپی) — کلیدِ ص۱۹۱-۱۹۲ هر چهارده سکشن را در دو صفحه دارد و سربرگِ خودِ آزمون لوکاتور را اعلام می‌کند: «پاسخنامه صفحه ۱۹۱ و ۱۹۲»",
+        "لنگرِ متقابلِ دوطرفه (درسِ r356 عملی شد): سربرگِ آزمونِ ص۷۴ «(پاسخنامه صفحه ۱۹۱ و ۱۹۲)» ⇠ و سربرگِ کلیدِ ص۱۹۱ «پاسخنامه آزمون تش  ییح درس دوم (آزمون صفحه ۷۴ تا ۷۷)» ⇠ — خوداعلامیِ دوطرفه جایگزینِ حدس شد",
+        "سربرگِ لایه به‌هم‌ریخته است: «آزمون تش  ییح درس دوم» (حروفِ ر/حِ «تشریحی» در لایه غایب) — همان خانوادهٔ scrambleِ r331/r355/r356؛ scrambleهای مشابه در سربرگِ کلید و سکشن‌ها: «بهی  ین» (بهترین)، «نوشی  » (نوشتن)، «خایل» (خالی)، «می  » (متن)، «امالبی» (املایی)، «اضاق  یم» (اضاقی)، «پرانی  » (پرانتز)، «جمالت» (جملات)، «می  ادف» (هم‌معنی)، «س ؤاالت» (سؤالات)",
+        "پرانتزِ RTL-واژگونِ لایه در سکشن۱: «)w__k__s(» «)infl__en__ed(» «)c__nditi__n(» «)h__artb__at(» — به توکنِ برهنه («w__k__s») تبدیل شد (قراردادِ r355-l43)؛ خودِ الگوی حروفِ ناقص دست‌نخورده و کلید با regexِ «هر رانِ __ = یک حرف» قفل شد",
+        "سکشن۷ (جمله‌سازی) در چاپ نمرهٔ «۵/۱» دارد که در لایه سه‌خطی شکسته است («5⏎/⏎1») و مدخل‌های ۱ و ۲ِ کلیدِ چاپی در یک خطِ دوستونی چاپ شده‌اند («1. They have written three letters today.     2. Smoking is bad for your health.») — پارسِ دوستونیِ کلید (نوآوریِ این راند)",
+        "سکشن۸ (پسوند/پیشوند): ترتیبِ آیتم‌ها در لایه RTL-شکسته است (۱،۳،۲،۴: «correct:» «translate:» «nature:» «important:») — با مرتب‌سازیِ شماره‌دار به ترتیبِ چاپیِ منطقی بازآمد؛ مشابهِ همان در سکشن۹ («quit =» «turn on ≠» «prevent =» «begin ≠»)؛ استخرِ وندها «al / un / or / in» verbatim در ساقه با نشانِ [bank: …]؛ «nature→natural» و «translate→translator» رادیکالِ آخرشان در اشتقاق حذف می‌شود — قفل با «۴حرفِ آغازینِ ساقه در کلید + وندِ چسبیده از استخر» ساخته شد",
+        "سکشن۹: علامت‌های چاپی «=» (هم‌معنی) و «≠» (متضاد) verbatim در ساقه‌ها حفظ شدند؛ «quit→give up» و «prevent→stop» هم‌معنی، «turn on→turn off» و «begin→finish» متضاد — عینِ کلیدِ چاپی",
+        "سکشن۱۰ آیتم۱: رانِ خط‌تیره در لایه بینِ سه خط شکسته است (۶+۲۰+۱۱ تیره) — پارسِ chunk-محور (درسِ r355/r356) و ادغام در یک جای‌خالیِ ۴۰تیره؛ عرضِ همهٔ بلنک‌های سکشن۱۰ به ۴۰ تیره و سکشن۱۱ به ۲۴ تیره نرمال شد؛ قفلِ رادیکالِ فعلِ پرانتزی این‌جا سالم است (play→has played، live→living، see→have seen، travel→travelling — برخلافِ win→wonِ r356)",
+        "سکشن۱۱: کلیدِ چاپی دو «out» تکراری دارد (Q3 «gave …» → up؟ نه — «I gave up» و Q3 «get …» → out) — مدخل‌های «in/up/out/out» عینِ چاپ؛ داربستِ ذرات از {in, up, out, on, off, down} بی‌تکرار",
+        "سکشن۱۲ (اسم مصدر): کلیدِ چاپی جدولی است نه شماره‌دار — جدولِ سه‌ستونه (Subject/Object/after Preposition × ۲ سطر) که در لایه سطر-محور خوانده می‌شود («Playing walking doing⏎Travelling reading answering»)؛ اعتبارسنجیِ خودتأییدکننده: هر مصدر باید عیناً داخلِ جمله‌اش باشد (شناساییِ ستون‌خوانیِ سطر-محور در برابرِ ستون-محور) — «doing» فقط در Q1 («tired of doing»)، «Playing» فقط در Q2 و… ؛ شش مصدر verbatim در داربستِ گزینه‌ها",
+        "سکشن۱۳ (کلوزِ اعتیاد): شش بلنکِ شماره‌دارِ «---(N)---» با گروه‌های گزینهٔ شماره‌دار که در لایه رقمِ گروه در خطی جدا از گزینه‌هاست («1⏎a. well⏎b. slowly…») — پارسرِ جدا-خطی (تفاوت با r355 که رقمِ گروه هم‌خطِ گزینهٔ a بود)؛ گذرِ متنِ آزمون از «بهترین گزینه» (ص۷۴→۷۵) و گذرِ گذرنامهٔ سکشن۱۴ از مرزِ صفحه (ص۷۶→۷۷) با نرمال‌سازیِ whitespace هندل شد",
+        "سکشن۱۴: چهار جملهٔ درست/نادرست با پسوندِ چاپیِ «( True or False )» — پسوند حذف و options=[\"True\",\"False\"] استاندارد شد؛ کلیدهای تایپیِ Q5/Q6 عینِ متنِ گذرنامه‌اند («Grains give carbohydrates and some vitamins and minerals.») و Q6 با دنبالهٔ مشترکِ «chart that can be used to see…» قفل شد؛ ص۷۸ (خطوطِ Note و جای نوشتن) محتوای آزمون‌پذیر ندارد و استخراج نشد",
+        "بدونِ ترجمهٔ چاپی («ترجمه» ×۰ در ص۷۴-۷۷) — فیلدِ translation ساخته نشده؛ دسته‌ها: واژگان (سکشن‌های ۱-۵، ۸، ۹، ۱۳، ۱۴) و گرامر (سکشن‌های ۶، ۷، ۱۰، ۱۲)",
+        "هم‌پوشانی‌سنجی: ساقه‌های این خانواده با بانک‌های پیشینِ tests-g11 (r275/r277/r278/r308/r309/r311/r312/r354/r355/r356) اشتراک ندارند"
       ]
     }
   }
