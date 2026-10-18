@@ -8712,6 +8712,962 @@
           "translation": "محمد علی یکی از قدرمندترین بوکسورها بود. او از بیشتر رقیبانش قوی تر بود."
         }
       ]
+    },
+    {
+      "lesson": 32,
+      "title": "کلمات ناقص، بانک واژه و تعریف‌ها (ص۱۰۵)",
+      "level": "تشریحی — تایپی",
+      "count": 16,
+      "questions": [
+        {
+          "id": "g10-l32-1",
+          "n": 1,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "An obs__rvat__ry is a building from which scientists can watch the planets and the stars.",
+          "options": [
+            "observatory",
+            "observation",
+            "observer",
+            "observe"
+          ],
+          "answer": 0,
+          "accepted": [
+            "observatory"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l32-2",
+          "n": 2,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "School days are said to be the h__pp__est days of your life.",
+          "options": [
+            "happiest",
+            "happy",
+            "happier",
+            "happiness"
+          ],
+          "answer": 0,
+          "accepted": [
+            "happiest"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l32-3",
+          "n": 3,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "I have a t__ous__nd things to do before we go away.",
+          "options": [
+            "thousand",
+            "thought",
+            "through",
+            "though"
+          ],
+          "answer": 0,
+          "accepted": [
+            "thousand"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l32-4",
+          "n": 4,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Do you have any info__mat__on about train times?",
+          "options": [
+            "information",
+            "inform",
+            "informative",
+            "informational"
+          ],
+          "answer": 0,
+          "accepted": [
+            "information"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l32-5",
+          "n": 5,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "I was looking for a birthday present for my mother but I didn’t find anything --------------------------. [bank: wonder / expensive / compare / interested / heavens / suitable / happened / microscope / healthy]",
+          "options": [
+            "suitable",
+            "wonder",
+            "compare",
+            "healthy"
+          ],
+          "answer": 0,
+          "accepted": [
+            "suitable"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l32-6",
+          "n": 6,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "If you -------------------------- house prices in the two areas, it’s amazing how different they are. [bank: wonder / expensive / compare / interested / heavens / suitable / happened / microscope / healthy]",
+          "options": [
+            "compare",
+            "wonder",
+            "suitable",
+            "happened"
+          ],
+          "answer": 0,
+          "accepted": [
+            "compare"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l32-7",
+          "n": 7,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "It just -------------------------- that we went to see that new film last night. [bank: wonder / expensive / compare / interested / heavens / suitable / happened / microscope / healthy]",
+          "options": [
+            "happened",
+            "compare",
+            "interested",
+            "expensive"
+          ],
+          "answer": 0,
+          "accepted": [
+            "happened"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l32-8",
+          "n": 8,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Eating fruit and vegetables is part of a -------------------------- lifestyle. [bank: wonder / expensive / compare / interested / heavens / suitable / happened / microscope / healthy]",
+          "options": [
+            "healthy",
+            "happened",
+            "microscope",
+            "wonder"
+          ],
+          "answer": 0,
+          "accepted": [
+            "healthy"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l32-9",
+          "n": 9,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "He wasn’t very -------------------------- in what his father was saying. [bank: wonder / expensive / compare / interested / heavens / suitable / happened / microscope / healthy]",
+          "options": [
+            "interested",
+            "expensive",
+            "suitable",
+            "compare"
+          ],
+          "answer": 0,
+          "accepted": [
+            "interested"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l32-10",
+          "n": 10,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "They looked at the blood samples under the --------------------------. [bank: wonder / expensive / compare / interested / heavens / suitable / happened / microscope / healthy]",
+          "options": [
+            "microscope",
+            "interested",
+            "healthy",
+            "heavens"
+          ],
+          "answer": 0,
+          "accepted": [
+            "microscope"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l32-11",
+          "n": 11,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "If you didn’t study, no -------------------------- you failed the test. [bank: wonder / expensive / compare / interested / heavens / suitable / happened / microscope / healthy]",
+          "options": [
+            "wonder",
+            "microscope",
+            "suitable",
+            "happened"
+          ],
+          "answer": 0,
+          "accepted": [
+            "wonder"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l32-12",
+          "n": 12,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "A large house like this must be -------------------------- to heat. [bank: wonder / expensive / compare / interested / heavens / suitable / happened / microscope / healthy]",
+          "options": [
+            "expensive",
+            "wonder",
+            "interested",
+            "compare"
+          ],
+          "answer": 0,
+          "accepted": [
+            "expensive"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l32-13",
+          "n": 13,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "A s _ _ _ _ is a big fish that lives in the sea and is very dangerous.",
+          "options": [
+            "shark",
+            "whale",
+            "seal",
+            "dolphin"
+          ],
+          "answer": 0,
+          "accepted": [
+            "shark"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l32-14",
+          "n": 14,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "You use it to look at things that are a long way from you. It is a t _ _ _ _ _ _ _ _ .",
+          "options": [
+            "telescope",
+            "microscope",
+            "telescopic",
+            "periscope"
+          ],
+          "answer": 0,
+          "accepted": [
+            "telescope"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l32-15",
+          "n": 15,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "The red liquid that is sent around the body by the heart is b _ _ _ _ .",
+          "options": [
+            "blood",
+            "brain",
+            "heart",
+            "breath"
+          ],
+          "answer": 0,
+          "accepted": [
+            "blood"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l32-16",
+          "n": 16,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "The Sun is a star but the Earth is a p _ _ _ _ _ .",
+          "options": [
+            "planet",
+            "plant",
+            "plane",
+            "plastic"
+          ],
+          "answer": 0,
+          "accepted": [
+            "planet"
+          ],
+          "placeholder": "type your answer…"
+        }
+      ]
+    },
+    {
+      "lesson": 33,
+      "title": "چهارگزینه‌ای واژگان و گرامر (ص۱۰۵-۱۰۶)",
+      "level": "تشریحی — چهارگزینه‌ای",
+      "count": 12,
+      "questions": [
+        {
+          "id": "g10-l33-1",
+          "n": 1,
+          "category": "vocab",
+          "question": "کدام گزینه با سایر گزینه‌ها متفاوت است؟ (۱) — Uranus / Mercury / Oxygen / Saturn",
+          "options": [
+            "Uranus",
+            "Mercury",
+            "Oxygen",
+            "Saturn"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l33-2",
+          "n": 2,
+          "category": "vocab",
+          "question": "کدام گزینه با سایر گزینه‌ها متفاوت است؟ (۲) — heart / moon / blood / brain",
+          "options": [
+            "heart",
+            "moon",
+            "blood",
+            "brain"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l33-3",
+          "n": 3,
+          "category": "vocab",
+          "question": "کدام گزینه با سایر گزینه‌ها متفاوت است؟ (۳) — rocky / wooden / boring / silk",
+          "options": [
+            "rocky",
+            "wooden",
+            "boring",
+            "silk"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l33-4",
+          "n": 4,
+          "category": "vocab",
+          "question": "کدام گزینه با سایر گزینه‌ها متفاوت است؟ (۴) — cloudy / sunny / rainy / funny",
+          "options": [
+            "cloudy",
+            "sunny",
+            "rainy",
+            "funny"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l33-5",
+          "n": 5,
+          "category": "vocab",
+          "question": "I was standing just ----------------- enough to hear what they were saying.",
+          "options": [
+            "far",
+            "even",
+            "near",
+            "such"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l33-6",
+          "n": 6,
+          "category": "vocab",
+          "question": "Red blood cells carry oxygen round the body and ----------------- carbon dioxide from body parts.",
+          "options": [
+            "donate",
+            "collect",
+            "lose",
+            "create"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l33-7",
+          "n": 7,
+          "category": "vocab",
+          "question": "If you need any ----------------- help, just call me.",
+          "options": [
+            "without",
+            "round",
+            "drop",
+            "extra"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l33-8",
+          "n": 8,
+          "category": "vocab",
+          "question": "We can keep our body ----------------- by doing daily exercises.",
+          "options": [
+            "upward",
+            "difficult",
+            "dangerous",
+            "healthy"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l33-9",
+          "n": 9,
+          "category": "grammar",
+          "question": "It was ----------------- holiday than the one we had last year.",
+          "options": [
+            "a long",
+            "a longer",
+            "longest",
+            "the longest"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l33-10",
+          "n": 10,
+          "category": "grammar",
+          "question": "This food is ----------------- than the food we had yesterday.",
+          "options": [
+            "better much",
+            "much better",
+            "the best",
+            "good"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l33-11",
+          "n": 11,
+          "category": "grammar",
+          "question": "They have three boys. Ali is the ----------------- and Reza is the -----------------.",
+          "options": [
+            "oldest / youngest",
+            "older / younger",
+            "tall / short",
+            "taller / shorter"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l33-12",
+          "n": 12,
+          "category": "grammar",
+          "question": "Which sentence is wrong?",
+          "options": [
+            "That is a really ugly wooden chair.",
+            "I carried a very small black suitcase.",
+            "They have some old French paintings.",
+            "She was wearing a red new silk dress."
+          ],
+          "answer": 3
+        }
+      ]
+    },
+    {
+      "lesson": 34,
+      "title": "جمله‌سازی و کامل‌سازی گرامری (ص۱۰۶)",
+      "level": "تشریحی — تایپی",
+      "count": 5,
+      "questions": [
+        {
+          "id": "g10-l34-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "the cheapest / in China / is / what / of travelling / way?",
+          "options": [
+            "What is the cheapest way of travelling in China?",
+            "What is a cheapest way of travelling in China?",
+            "What is the most cheap way of travelling in China?",
+            "What is cheaper way of travelling in China?"
+          ],
+          "answer": 0,
+          "accepted": [
+            "What is the cheapest way of travelling in China?"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l34-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "in music / am / sport / I / interested / than / more.",
+          "options": [
+            "I am more interested in music than sport.",
+            "I am more interested in sport than music.",
+            "I am interested in music more than sport.",
+            "I am the most interested in music than sport."
+          ],
+          "answer": 0,
+          "accepted": [
+            "I am more interested in music than sport."
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l34-3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Gold is expensive. Gold is ----------------- silver. Gold is ----------------- metal of the world.",
+          "options": [
+            "more expensive than / the most expensive",
+            "more expensive / the most expensive",
+            "the most expensive than / more expensive",
+            "more expensive than / the more expensive"
+          ],
+          "answer": 0,
+          "accepted": [
+            "more expensive than / the most expensive"
+          ],
+          "placeholder": "type both blanks separated by / …"
+        },
+        {
+          "id": "g10-l34-4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "My handwriting is bad. Your handwriting is worse ----------------- my handwriting.",
+          "options": [
+            "than",
+            "then",
+            "that",
+            "as"
+          ],
+          "answer": 0,
+          "accepted": [
+            "than"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l34-5",
+          "n": 5,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Neptune is ----------------- planet from the Sun in our solar system.",
+          "options": [
+            "the farthest",
+            "farthest",
+            "the farther",
+            "farther"
+          ],
+          "answer": 0,
+          "accepted": [
+            "the farthest"
+          ],
+          "placeholder": "type your answer…"
+        }
+      ]
+    },
+    {
+      "lesson": 35,
+      "title": "پاسخ کامل و شکل صفات (ص۱۰۶)",
+      "level": "تشریحی — تایپی",
+      "count": 7,
+      "questions": [
+        {
+          "id": "g10-l35-1",
+          "n": 1,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Is your mother older than your father? (no)",
+          "options": [
+            "No, my father is older than my mother.",
+            "No, my mother is older than my father.",
+            "No, my father is younger than my mother.",
+            "Yes, my mother is younger than my father."
+          ],
+          "answer": 0,
+          "accepted": [
+            "No, my father is older than my mother.",
+            "No, my mother is younger than my father."
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l35-2",
+          "n": 2,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Are tigers more dangerous than lions? (as)",
+          "options": [
+            "No, tigers are as dangerous as lions.",
+            "No, tigers are more dangerous as lions.",
+            "No, tigers are as more dangerous as lions.",
+            "Yes, tigers are as dangerous as lions."
+          ],
+          "answer": 0,
+          "accepted": [
+            "No, tigers are as dangerous as lions."
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l35-3",
+          "n": 3,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Is Europe bigger than Asia? (no)",
+          "options": [
+            "No, Asia is bigger than Europe.",
+            "No, Europe is bigger than Asia.",
+            "No, Asia is smaller than Europe.",
+            "Yes, Europe is bigger than Asia."
+          ],
+          "answer": 0,
+          "accepted": [
+            "No, Asia is bigger than Europe.",
+            "No, Europe is smaller than Asia."
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l35-4",
+          "n": 4,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "He is as ----------------- as his cousin. He also takes care of things. (careful)",
+          "options": [
+            "careful",
+            "carefully",
+            "care",
+            "careless"
+          ],
+          "answer": 0,
+          "accepted": [
+            "careful"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l35-5",
+          "n": 5,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "Why don’t you call the doctor? He looks ----------------- than last night. (bad)",
+          "options": [
+            "worse",
+            "worst",
+            "bad",
+            "badder"
+          ],
+          "answer": 0,
+          "accepted": [
+            "worse"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l35-6",
+          "n": 6,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "A cat is big, a dog is bigger, an elephant is ----------------- of all. (big)",
+          "options": [
+            "the biggest",
+            "biggest",
+            "bigger",
+            "the bigger"
+          ],
+          "answer": 0,
+          "accepted": [
+            "the biggest"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l35-7",
+          "n": 7,
+          "category": "grammar",
+          "kind": "typed",
+          "question": "He always goes shopping on Fridays and he buys his clothes in ----------------- shops. (expensive)",
+          "options": [
+            "the most expensive",
+            "most expensive",
+            "more expensive",
+            "the more expensive"
+          ],
+          "answer": 0,
+          "accepted": [
+            "the most expensive"
+          ],
+          "placeholder": "type your answer…"
+        }
+      ]
+    },
+    {
+      "lesson": 36,
+      "title": "آهنگ خیزان (ص۱۰۷)",
+      "level": "تشریحی — چهارگزینه‌ای",
+      "count": 4,
+      "questions": [
+        {
+          "id": "g10-l36-1",
+          "n": 1,
+          "category": "grammar",
+          "question": "آهنگ کدام جمله خیزان است؟ (۱) — Is this city the smallest city in the world?",
+          "options": [
+            "falling",
+            "rising"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l36-2",
+          "n": 2,
+          "category": "grammar",
+          "question": "آهنگ کدام جمله خیزان است؟ (۲) — He is the best student in our school.",
+          "options": [
+            "falling",
+            "rising"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l36-3",
+          "n": 3,
+          "category": "grammar",
+          "question": "آهنگ کدام جمله خیزان است؟ (۳) — Your dress is awful darling!",
+          "options": [
+            "falling",
+            "rising"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l36-4",
+          "n": 4,
+          "category": "grammar",
+          "question": "آهنگ کدام جمله خیزان است؟ (۴) — What’s your favorite season of the year?",
+          "options": [
+            "falling",
+            "rising"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "lesson": 37,
+      "title": "کلوز — یوزپلنگ (ص۱۰۷)",
+      "level": "تشریحی — چهارگزینه‌ای",
+      "count": 6,
+      "questions": [
+        {
+          "id": "g10-l37-1",
+          "n": 1,
+          "category": "vocab",
+          "question": "A cheetah is a large cat that lives in Africa. It is the fastest ---(1)--- animal and can run up to 112 kilometers per hour for a short time.",
+          "options": [
+            "past",
+            "future",
+            "land",
+            "sea"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l37-2",
+          "n": 2,
+          "category": "vocab",
+          "question": "Most cheetahs live in Africa. There are a ---(2)--- in Asia.",
+          "options": [
+            "much",
+            "lot",
+            "few",
+            "many"
+          ],
+          "answer": 2
+        },
+        {
+          "id": "g10-l37-3",
+          "n": 3,
+          "category": "vocab",
+          "question": "Cheetahs are active during the day, and hunt in the early morning or late evening. When the cheetah hunts, it ---(3)--- and secretly moves toward its prey.",
+          "options": [
+            "recently",
+            "carelessly",
+            "hardly",
+            "slowly"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l37-4",
+          "n": 4,
+          "category": "vocab",
+          "question": "When it is close to the prey (about 10–30 meters), it ---(4)--- after it very quickly.",
+          "options": [
+            "sleeps",
+            "protects",
+            "helps",
+            "runs"
+          ],
+          "answer": 3
+        },
+        {
+          "id": "g10-l37-5",
+          "n": 5,
+          "category": "vocab",
+          "question": "Hunters may or may not kill their prey ---(5)--- eating them. But the act of hunting always causes the death of its prey.",
+          "options": [
+            "during",
+            "before",
+            "between",
+            "after"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l37-6",
+          "n": 6,
+          "category": "vocab",
+          "question": "The cheetah cannot ---(6)--- itself against lions that would take the cheetah's prey away.",
+          "options": [
+            "hear",
+            "defend",
+            "move",
+            "carry"
+          ],
+          "answer": 1
+        }
+      ]
+    },
+    {
+      "lesson": 38,
+      "title": "درک مطلب — منظومهٔ شمسی (ص۱۰۷)",
+      "level": "تشریحی — درست/نادرست و تایپی",
+      "count": 8,
+      "questions": [
+        {
+          "id": "g10-l38-1",
+          "n": 1,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "The Solar System is the Sun and all the objects in orbit around it. […] From closest to farthest from the Sun, they are: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus and Neptune. […] — Which planet is the closest from the Sun?",
+          "options": [
+            "Mercury",
+            "Venus",
+            "Earth",
+            "Mars"
+          ],
+          "answer": 0,
+          "accepted": [
+            "Mercury"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l38-2",
+          "n": 2,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Which planet is the farthest from the Sun?",
+          "options": [
+            "Neptune",
+            "Uranus",
+            "Saturn",
+            "Jupiter"
+          ],
+          "answer": 0,
+          "accepted": [
+            "Neptune"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l38-3",
+          "n": 3,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Which planet is the sixth planet from the Sun?",
+          "options": [
+            "Saturn",
+            "Jupiter",
+            "Uranus",
+            "Neptune"
+          ],
+          "answer": 0,
+          "accepted": [
+            "Saturn"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l38-4",
+          "n": 4,
+          "category": "vocab",
+          "kind": "typed",
+          "question": "Which planet is the fourth planet from the Sun?",
+          "options": [
+            "Mars",
+            "Earth",
+            "Venus",
+            "Mercury"
+          ],
+          "answer": 0,
+          "accepted": [
+            "Mars"
+          ],
+          "placeholder": "type your answer…"
+        },
+        {
+          "id": "g10-l38-5",
+          "n": 5,
+          "category": "vocab",
+          "question": "Mars is a red planet because it isn’t rocky and cold.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 1
+        },
+        {
+          "id": "g10-l38-6",
+          "n": 6,
+          "category": "vocab",
+          "question": "The temperatures on Earth are warmer than on Mars.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l38-7",
+          "n": 7,
+          "category": "vocab",
+          "question": "Mars has two small moons, called Phobos and Deimos.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 0
+        },
+        {
+          "id": "g10-l38-8",
+          "n": 8,
+          "category": "vocab",
+          "question": "The Sun is a planet because the other objects are pulled into orbit around it.",
+          "options": [
+            "True",
+            "False"
+          ],
+          "answer": 1
+        }
+      ]
     }
   ],
   "source": {
@@ -9074,6 +10030,29 @@
         "مدخل‌های کوتاهِ ۱۴تایی (Q10/14-16/18-22/28/31/33/42/44): «\"ترتیب صفات\" (رجوع به توضیحات تست شماره ۸)» — عددِ ۸ رندرِ ۱۲x حاکم؛ توضیحِ جم رساک در مدخلِ ۲ است — ارجاعِ ناهماهنگِ خودِ چاپ، عینِ چاپ ذخیره شد",
         "نوارِ رمز در مدخل‌های ۲/۴/۶: «اســم + جنس + مــلیت + رنــگ + ســن + اندازه + کیفیت» (حروفِ کشیده) — تکِ «ملیت»؛ خوانشِ ۳۰۰dpiِ «دو ملیت» خطای من بود (درسِ رندرِ ۵x+)",
         "جعبهٔ Note خالیِ زرد در ص۱۰۴ (الگوی r330/r334) + کانالِ تلگرامِ @PracticalEnglishInKonkour در پابرگِ ص۱۰۴/۲۷۱"
+      ]
+    },
+    "jame2": {
+      "exam": "آزمون جامع تشریحی درس دوم (ص۱۰۵-۱۰۷)",
+      "header": "سربرگِ چاپیِ ص۱۰۵: «\"آزمون جامع تشریحی درس دوم\" (پاسخنامه صفحه: ۲۷۲ - ۲۷۳)» — ششمین «تسی یچ»ِ لایه (رندرِ ۱۰x: تشریحی تمیز)؛ سربرگِ کلیدِ ص۲۷۲: «\"پاسخنامه آزمون جامع تشریحی درس دوم\" (آزمون صفحه: ۱۰۵ تا ۱۰۷)» — ۱۳ سکشن / ۵۸ آیتم (۴+۸+۴+۴+۴+۴+۲+۳+۳+۴+۴+۶+۸)",
+      "keyPages": "272-273",
+      "keyVerification": "print key pp272-273 «پاسخنامه آزمون جامع تشریحی درس دوم» — گریدهای ۱۳ سکشن — 58/58 agree with semantic pre-fill, zero divergence؛ S9 مدخل‌های ۱/۳ دو واریانتِ چاپی دارند (هر دو در accepted: «No, my father is older than my mother.» / «No, my mother is younger than my father.» و «No, Asia is bigger than Europe.» / «No, Europe is smaller than Asia.»)؛ S11 کلیدِ دوگانهٔ ۱و۳ = خیزان (باقی افتان)",
+      "extractedRound": "r336",
+      "pattern": "r331 (جامعِ مخلوط — بانک به ازای خانوادهٔ سکشن) + r311/r323 (تایپی) + r329 (options[0]=کلید چاپ) + r333-S3 (کلیدِ اسلش‌دارِ دوجای‌خالی) + r322-l22 (آهنگ با کلیدِ دوگانهٔ چاپ) + r318 (سربرگِ رندر حاکم) + r303",
+      "printQuirks": [
+        "سربرگِ آزمون: «\"آزمون جامع تشریحی درس دوم\" (پاسخنامه صفحه: ۲۷۲ - ۲۷۳)» — لایه «تسی یچ» = scramblingِ «تشریحی» (ششمین تکرارِ درسِ r318/r331/r333/r334)؛ رندرِ ۱۰x هر دو سربرگِ ص۱۰۵ و ص۲۷۲",
+        "S11 عنوان: «آهنگ کدام جمله خیزان است؟ (Rising Intonation) (نمره ۰/۵)» — لایه «ر ن / خیان» = scramblingِ «خیزان» (رندرِ ۱۲x)؛ درسِ r331 «افتان» بود",
+        "S9 عنوان: «از کلمات داخل پرانتز استفاده کنید و به سؤالات زیر پاسخ کامل دهید. (نمره ۱/۵)» — لایه «پر ن/انی» = «پرانتز» + «سؤاالت» = تجزیهٔ لایگِچرِ «سؤالات» (رندر ۱۲x)",
+        "بانکِ واژهٔ S2: «wonder / expensive / compare / interested / heavens / suitable / happened / microscope / healthy» — ۹ واژه برای ۸ جای خالی؛ «heavens» واژهٔ اضافیِ چاپی (رندر ۱۲x: h-e-a-v-e-n-s) — عینِ چاپ",
+        "S6-Q3 گزینه‌ها با فرمِ «a. oldest / youngest» (اسلشِ داخلِ گزینه) — چاپِ ردیفِ فشرده در لایه، محتوا تمیز",
+        "S7 دو تمرین با ساختارِ «واژه‌ها + خطِ پاسخِ شماره‌دار» — کلیدِ چاپیِ جمله‌ها در ص۲۷۲: «What is the cheapest way of travelling in China?» و «I am more interested in music than sport.»",
+        "S8-1 دوجای‌خالی با کلیدِ اسلش‌دارِ چاپی «more expensive than / the most expensive» (الگوی r333-S3)",
+        "S9-1/3 کلیدِ دوواریانته: ص۲۷۳ هر دو فرم را چاپ کرده («No, my father is older than my mother.» یا «No, my mother is younger than my father.» / «No, Asia is bigger than Europe.» یا «No, Europe is smaller than Asia.») — هر دو در accepted؛ نخستین مدخلِ دوواریانتهٔ کاملِ این خانواده",
+        "S12 متنِ کلوزِ یوزپلنگ با نشانگرهای چاپیِ «---(N)---» + بازهٔ «(about 10–30 meters)» با خطِ تیرهٔ en؛ گزینه‌ها در جدولِ ۶ردیفیِ زیرِ متن",
+        "S13 ریدینگِ منظومهٔ شمسی — ۴ پرسشِ کوتاه‌نویس با پرانتزِ پاسخِ سبزِ «(-----------------)» + ۴ درست/نادرست با «(True or False)» — الگوی r331-l24",
+        "پرانتزهای پاسخِ سبزِ S13: «(-----------------)» ۱۷ تیره — عینِ چاپ در صورتِ سؤال‌ها نیست (فقط جایگاه)؛ سؤال‌ها عیناً از لایه",
+        "مرزِ پایانی: ص۱۰۸ سربرگِ «آزمون نیمسال اول ۹۸-۹۹» (آزمونِ واقعیِ آموزش‌وپرورشِ بوکان — «بررسی سؤالات (توجه: این آزمون پاسخنامه ندارد)»، سؤال‌های A-N) است — خارج از محتوای این راند؛ مادهٔ راندِ بعد (کلیدِ چاپی ندارد — نیازمندِ خودکلیدیِ کامل)",
+        "جعبهٔ Note خالی در ص۱۱۲ (الگوی r330/r334)"
       ]
     }
   }
