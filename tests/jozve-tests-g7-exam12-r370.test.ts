@@ -87,26 +87,27 @@ describe("r370 — رسیدهای g7exam1 / g7exam2 / g7familyMap", () => {
     expect(rec2.printQuirks.some((s) => s.includes("فقط در رندرند"))).toBe(true);
   });
 
-  it("receiptMap: نقشهٔ ۸ خانوادهٔ g7 + دو خانوادهٔ r370 + یادداشتِ g8", () => {
+  it("receiptMap: نقشهٔ ۸ خانوادهٔ g7 + چهار خانوادهٔ r370/r371 + یادداشتِ g8", () => {
     expect(map.families).toHaveLength(8);
     expect(map.families.map((f) => f.pdfPage)).toEqual([50, 56, 65, 74, 84, 90, 97, 103]);
     expect(map.families.filter((f) => f.round === "r370")).toHaveLength(2);
-    // r371 — خانواده‌های سوم/چهارم هم استخراج شدند (۶۵/۷۴) — چهار خانواده باقی
+    // r371 — خانواده‌های سوم/چهارم (۶۵/۷۴)؛ r372 — خانواده‌های پنجم/ششم (۸۴/۹۰) — دو خانواده باقی
     expect(map.families.filter((f) => f.round === "r371")).toHaveLength(2);
-    expect(map.families.filter((f) => f.round === null)).toHaveLength(4);
+    expect(map.families.filter((f) => f.round === "r372")).toHaveLength(2);
+    expect(map.families.filter((f) => f.round === null)).toHaveLength(2);
     expect(map.g8Note).toContain("۷ خانواده");
     expect(map.note).toContain("دوخطی");
   });
 });
 
 describe("r370 — شکلِ فایلِ tests-g7.json", () => {
-  it("file shape: grade 7، ده بانک، شمارها [11,1,3,5,4,4,4,1,4,7]، ۴۴ آیتمِ یکتا (r371: +۶ بانک/۲۴)", () => {
+  it("file shape: grade 7، پانزده بانک، شمارها [11,1,3,5,4,4,4,1,4,7,4,4,4,4,6]، ۶۶ آیتمِ یکتا (r372: +۵ بانک/۲۲)", () => {
     expect(g7.grade).toBe(7);
-    expect(g7.lessons).toHaveLength(10);
-    expect(g7.lessons.map((l) => l.count)).toEqual([11, 1, 3, 5, 4, 4, 4, 1, 4, 7]);
+    expect(g7.lessons).toHaveLength(15);
+    expect(g7.lessons.map((l) => l.count)).toEqual([11, 1, 3, 5, 4, 4, 4, 1, 4, 7, 4, 4, 4, 4, 6]);
     const ids = g7.lessons.flatMap((l) => l.questions.map((x) => x.id));
-    expect(ids).toHaveLength(44);
-    expect(new Set(ids).size).toBe(44);
+    expect(ids).toHaveLength(66);
+    expect(new Set(ids).size).toBe(66);
     expect(ids[0]).toBe("g7-l1-1");
     expect(ids[11]).toBe("g7-l2-1");
     expect(ids[12]).toBe("g7-l3-1");
@@ -117,6 +118,12 @@ describe("r370 — شکلِ فایلِ tests-g7.json", () => {
     expect(ids[32]).toBe("g7-l8-1");
     expect(ids[33]).toBe("g7-l9-1");
     expect(ids[37]).toBe("g7-l10-1");
+    // r372 — پنج بانکِ تازه (لکسوگرافیکِ lesson: 11..15 پس از 10)
+    expect(ids[44]).toBe("g7-l11-1");
+    expect(ids[48]).toBe("g7-l12-1");
+    expect(ids[52]).toBe("g7-l13-1");
+    expect(ids[56]).toBe("g7-l14-1");
+    expect(ids[60]).toBe("g7-l15-1");
   });
 
   it("بدونِ آیتمِ تایپی در کلِ g7 — سکشنِ حروف عمداً MCQ است (engineNote)", () => {

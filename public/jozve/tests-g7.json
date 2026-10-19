@@ -635,6 +635,360 @@
      "answer": 0
     }
    ]
+  },
+  {
+   "lesson": 11,
+   "title": "امتحانی درس پنجم — پاسخ از ستون B (س۱، ص۸۴)",
+   "level": "پنج‌گزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g7-l11-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "1. How are you today? (-------)",
+     "options": [
+      "Great, thanks",
+      "She is my teacher, Mrs Amini.",
+      "He is sixteen years old.",
+      "It's in Farvardin.",
+      "He is a worker."
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l11-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "2. What is his Job? (-------)",
+     "options": [
+      "She is my teacher, Mrs Amini.",
+      "It's in Farvardin.",
+      "Great, thanks",
+      "He is a worker.",
+      "He is sixteen years old."
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g7-l11-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "3. Who is that woman? (-------)",
+     "options": [
+      "He is sixteen years old.",
+      "Great, thanks",
+      "She is my teacher, Mrs Amini.",
+      "He is a worker.",
+      "It's in Farvardin."
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g7-l11-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "4. How old isyour uncle? (-------)",
+     "options": [
+      "It's in Farvardin.",
+      "He is sixteen years old.",
+      "Great, thanks",
+      "He is a worker.",
+      "She is my teacher, Mrs Amini."
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 12,
+   "title": "امتحانی درس پنجم — کامل‌کردن فرم (س۲، ص۸۴)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g7-l12-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "First name: -------",
+     "options": [
+      "Reza",
+      "Pakzad",
+      "Azar",
+      "waiter"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l12-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "Last name: -------",
+     "options": [
+      "Reza",
+      "Azar",
+      "waiter",
+      "Pakzad"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g7-l12-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "Month of birth: -------",
+     "options": [
+      "Pakzad",
+      "Reza",
+      "Azar",
+      "waiter"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g7-l12-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "Job: -------",
+     "options": [
+      "Pakzad",
+      "waiter",
+      "Reza",
+      "Azar"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 13,
+   "title": "امتحانی درس پنجم — رنگ‌ها به انگلیسی (س۴، ص۸۴)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g7-l13-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "زرد به انگلیسی: -------",
+     "options": [
+      "yellow",
+      "blue",
+      "black",
+      "brown"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l13-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "آبی به انگلیسی: -------",
+     "options": [
+      "yellow",
+      "black",
+      "brown",
+      "blue"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g7-l13-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "سیاه به انگلیسی: -------",
+     "options": [
+      "blue",
+      "brown",
+      "black",
+      "yellow"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g7-l13-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "قهوه ای به انگلیسی: -------",
+     "options": [
+      "blue",
+      "brown",
+      "yellow",
+      "black"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 14,
+   "title": "امتحانی درس پنجم — پوشاک به انگلیسی (س۵، ص۸۴)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g7-l14-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "کفش به انگلیسی: -------",
+     "options": [
+      "shoes",
+      "chador",
+      "suit",
+      "scarf"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l14-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "چادر به انگلیسی: -------",
+     "options": [
+      "shoes",
+      "suit",
+      "scarf",
+      "chador"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g7-l14-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "کت و شلوار به انگلیسی: -------",
+     "options": [
+      "chador",
+      "scarf",
+      "suit",
+      "shoes"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g7-l14-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "روسری به انگلیسی: -------",
+     "options": [
+      "chador",
+      "scarf",
+      "shoes",
+      "suit"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 15,
+   "title": "امتحانی درس ششم — کامل‌کردن با بانک واژه (س۱، ص۹۰)",
+   "level": "هشت‌گزینه‌ای",
+   "count": 6,
+   "questions": [
+    {
+     "id": "g7-l15-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "I am in the -------",
+     "options": [
+      "where",
+      "bedroom",
+      "reading",
+      "she's",
+      "washing",
+      "what",
+      "doing",
+      "watching"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g7-l15-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "What are you -------?",
+     "options": [
+      "where",
+      "bedroom",
+      "doing",
+      "reading",
+      "she's",
+      "washing",
+      "what",
+      "watching"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g7-l15-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "------- Is he?",
+     "options": [
+      "bedroom",
+      "reading",
+      "she's",
+      "where",
+      "washing",
+      "what",
+      "doing",
+      "watching"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g7-l15-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "------- in the living room.",
+     "options": [
+      "where",
+      "bedroom",
+      "reading",
+      "washing",
+      "she's",
+      "what",
+      "doing",
+      "watching"
+     ],
+     "answer": 4
+    },
+    {
+     "id": "g7-l15-5",
+     "n": 5,
+     "category": "vocab",
+     "question": "------- is he doing.",
+     "options": [
+      "where",
+      "bedroom",
+      "reading",
+      "she's",
+      "washing",
+      "what",
+      "doing",
+      "watching"
+     ],
+     "answer": 5
+    },
+    {
+     "id": "g7-l15-6",
+     "n": 6,
+     "category": "vocab",
+     "question": "she is ------- TV.",
+     "options": [
+      "where",
+      "bedroom",
+      "reading",
+      "she's",
+      "washing",
+      "what",
+      "doing",
+      "watching"
+     ],
+     "answer": 7
+    }
+   ]
   }
  ],
  "source": {
@@ -764,14 +1118,14 @@
     {
      "lesson": "درس پنجم",
      "pdfPage": 84,
-     "round": null,
-     "status": "در انتظار راند بعد"
+     "round": "r372",
+     "status": "استخراج شد — ۴ بانک/۱۶ آیتم از ۵ سکشن (س۳ تصویری مستثنی)"
     },
     {
      "lesson": "درس ششم",
      "pdfPage": 90,
-     "round": null,
-     "status": "در انتظار راند بعد"
+     "round": "r372",
+     "status": "استخراج شد — ۱ بانک/۶ آیتم از ۳ سکشن (س۲ تصویری-تولیدی و س۳ تصویری-کلید مستثنی؛ b-B حذفِ آیتمیِ نقصِ چاپ)"
     },
     {
      "lesson": "درس هفتم",
@@ -902,6 +1256,121 @@
     "«My moter is a …» غلطِ تایپیِ چاپ برایِ My mother — در ساقهٔ حذف‌شده (ثبت)",
     "«Day …, Esfand.» جملهٔ ناقصِ چاپ است (الگویِ «ماهِ …، اسفند») — Day = دی از جدولِ تبدیلِ ماهِ ص۶۴",
     "سکشن‌های ص۷۴ دوصفحه‌ای نیستند؛ خانوادهٔ چهارم تنها خانوادهٔ دومصفحه‌ایِ g7 تا اینجای جزوه است (ص۷۴+ص۷۵)"
+   ]
+  },
+  "g7exam5": {
+   "extractedRound": "r372",
+   "section": "نمونه سؤالات امتحانی درس پنجم پایه هفتم",
+   "examPages": "pdf-p84 (فوترِ خودِ اسکن: ۸۴) — خانوادهٔ یک‌صفحه‌ای با ۵ سکشن؛ ص۸۵ جدولِ واژگان/تمرین (مرزِ پایانی)",
+   "keyPages": "هیچ پاسخنامهٔ چاپی در جزوهٔ هفتم نیست؛ کلیدها استنتاجیِ مستند — لنگرِ واژگانی از جدولِ درس پنجمِ خودِ جزوه (ص۷۶-۷۷)",
+   "sectionsTotal": 5,
+   "sectionsExtracted": 4,
+   "sectionsSkipped": 1,
+   "items": 16,
+   "bankCounts": [
+    4,
+    4,
+    4,
+    4
+   ],
+   "columnA": [
+    "1.How are you today?",
+    "2. What is his Job?",
+    "3.Who is that woman?",
+    "4.How old isyour uncle?"
+   ],
+   "columnB": [
+    "She is my teacher, Mrs Amini.",
+    "He is sixteen years old.",
+    "Great, thanks",
+    "It's in Farvardin.",
+    "He is a worker."
+   ],
+   "extraAnswer": "It's in Farvardin. (اضافیِ چاپیِ ستون B — هرگز-کلید؛ گارد)",
+   "derivedKeys": {
+    "S1": [
+     "How are you today? → Great, thanks (تنها پاسخِ احوال‌پرسی)",
+     "What is his Job? → He is a worker. (تنها پاسخِ شغلی)",
+     "Who is that woman? → She is my teacher, Mrs Amini. (تنها معرفیِ زن)",
+     "How old isyour uncle? → He is sixteen years old. (تنها پاسخِ سن)"
+    ],
+    "S2": [
+     "First name → Reza (My name is Reza Pakzad)",
+     "Last name → Pakzad (نامِ خانوادگیِ چاپی)",
+     "Month of birth → Azar (My birthday is in Azar)",
+     "Job → waiter (I am a waiter)"
+    ],
+    "S4": [
+     "زرد → yellow*",
+     "آبی → blue*",
+     "سیاه → black*",
+     "قهوه ای → brown* — هر چهار کلید در جدولِ ص۷۶ چاپی‌اند"
+    ],
+    "S5": [
+     "کفش → shoes* (ص۷۷ — جمعِ چاپ)",
+     "چادر → chador* (ص۷۷)",
+     "کت و شلوار → suit* (ص۷۶ «یکدست لباس»؛ همتایِ ص۸۱ «three-piece suit | کت و …»)",
+     "روسری → scarf* (ص۷۷)"
+    ]
+   },
+   "skippedSections": [
+    "س۳ «هر کلمه را زیر تصویر مربوط به خود بنویسید. (یک کلمه اضافی است)» — بانکِ چاپی Backpack-Thirteen-Engineer-Thirty-Nurse؛ رندر: ۴ تصویر (معمارِ کلاه‌زرد با نقشه → Engineer / پرستار → Nurse / تابلوی عددِ ۱۳ → Thirteen / کوله‌پشتی → Backpack) و اضافی = Thirty — کلید از تصویر است نه ساقه؛ QuizQuestion فیلدِ تصویر ندارد و پاسخ‌دهنده تصویر را نمی‌بیند (الگویِ r370/r371)"
+   ],
+   "printQuirks": [
+    "ساقهٔ «4.How old isyour uncle?» — غلطِ فاصله‌گذاریِ چاپ (is your → isyour) — verbatim؛ اسکریپت آن را از لایه می‌خواند و اظهار می‌کند",
+    "پرانتزِ بلنکِ ساقه‌های س۱ با نقطه‌چینِ چاپ (……..) — در ساقهٔ MCQ به (-------) نرمال شد (الگویِ r371)",
+    "«Great, thanks» بدونِ نقطهٔ چاپی — verbatim؛ سه پاسخِ دیگرِ ستون B نقطه‌دار",
+    "«قهوه ای» با فاصلهٔ کامل چاپ (نه نیم‌فاصله) — verbatim در ساقه",
+    "ساقه‌های س۱/س۲ از خودِ لایهٔ متنی ص۸۴ استخراج شدند (پیمانِ assert در اسکریپت و گارد) نه بازنویسیِ دستی",
+    "بانک‌های ۱۳/۱۴ ساقهٔ فارسی دارند — دستورِ چاپیِ سکشن («رنگ های زیر را به انگلیسی بنویسید» / «کلمات زیر را به انگلیسی بنویسید») در رسید حفظ شد؛ خلوصِ لاتینِ گارد به بانک‌های ۱۱/۱۲/۱۵ scope می‌شود",
+    "«کت و شلوار → suit»: trousers* در ص۷۶ تنها «شلوار» است پس معادلِ یکدستِ کت‌وشلوار حذف می‌شود؛ suit* = «یکدست لباس،جامه» + ص۸۱ «three-piece suit | کت و …» — استنتاجِ دوشاخه‌ایِ مستند"
+   ]
+  },
+  "g7exam6": {
+   "extractedRound": "r372",
+   "section": "نمونه سؤالات امتحانی درس ششم پایه هفتم",
+   "examPages": "pdf-p90 (فوترِ خودِ اسکن: ۹۰) — خانوادهٔ یک‌صفحه‌ای با ۳ سکشن؛ ص۹۱ تمرین (مرزِ پایانی)",
+   "keyPages": "هیچ پاسخنامهٔ چاپی در جزوهٔ هفتم نیست؛ کلیدها استنتاجیِ مستند",
+   "sectionsTotal": 3,
+   "sectionsExtracted": 1,
+   "sectionsSkipped": 2,
+   "items": 6,
+   "bankCounts": [
+    6
+   ],
+   "wordBank": [
+    "where",
+    "bedroom",
+    "reading",
+    "she's",
+    "washing",
+    "what",
+    "doing",
+    "watching"
+   ],
+   "wordBankSource": "کادرِ بنفشِ بالای سکشن — فقط در رندر؛ لایهٔ ص۹۰ این کادر را ندارد (الگویِ r370-بانک۴)",
+   "keyPolicy": "کلیدِ گرامری/معناییِ یکتا: I am in the … فقط مکانِ (bedroom)؛ What are you …? فعلِ استمراریِ پرسشی (doing)؛ … Is he? پرسش‌واژهٔ مکان (where — پرسشِ What در d مصرف شده و she's به‌سؤال نمی‌نشیند)؛ … in the living room. ضمیرِ سوم‌شخصِ مونث (she's — بقیهٔ ستون B آن‌جا I am است)؛ … is he doing. پرسش‌واژهٔ What (where در c مصرف شده)؛ she is … TV. فعلِ مشاهده (watching)",
+   "engineNote": "هشت‌گزینه‌ایِ دومِ کارتِ هفتم (همتایِ r371-بانک۹)؛ گزینه‌های هر آیتم = کلِ بانکِ ۸ واژه‌ایِ چاپی به چینشِ چرخشیِ per-item (کلیدها [1,2,3,4,5,7])؛ شکلِ گزینه‌ها عینِ کادرِ چاپی (lowercase حتی در جایگاهِ آغازین جمله — چاپ‌وفادار به بانک)",
+   "derivedKeys": {
+    "S1": [
+     "I am in the … → bedroom",
+     "What are you …? → doing",
+     "… Is he? → where",
+     "… in the living room. → she's",
+     "… is he doing. → what",
+     "she is … TV. → watching"
+    ]
+   },
+   "skippedSections": [
+    "س۱ ب-B حذفِ آیتمی: «I am … the bank.» هیچ واژه‌ای از بانک نمی‌پذیرد — washing/reading هر دو بی‌معنا و prepositionِ گم‌شده (at/near) در بانک نیست — نقصِ چاپ (الگویِ r370-ردیف۴/r371-دوکلیدی)؛ شش بلنکِ کلیددار در برابرِ هشت واژه = دو اضافی (reading/washing) و دستورِ چاپی تعدادِ اضافی نگفته",
+    "س۲ «با توجه به تصاویر به سوالات زیر پاسخ دهید؟» — سه تصویر (فوتبال‌بازی/خوردنِ صبحانه/تعمیرِ ماشین) با ساقه‌های چاپی (What are they doing? / What is she doing? / what is he doing?) ولی پاسخِ آزادِ توصیفی از تصویر — تصویری-تولیدی",
+    "س۳ «با توجه به تصاویر کلمه مناسب را انتخاب کنید» — سه گروهِ چهارگزینه‌ایِ چاپی (clock/television/computer/radio؛ clock/table/comb/computer؛ newspaper/television/mirror/comb) ولی کلید از تصویر است (کامپیوتر→computer / میز→table / روزنامه→newspaper) — تصویری-کلید (الگویِ r371-p74)"
+   ],
+   "printQuirks": [
+    "«------- Is he?» با Is بزرگِ چاپی در میانه — verbatim؛ «------- is he doing.» با نقطهٔ چاپیِ پایانی (سؤالِ بی‌علامت) — verbatim",
+    "«she is … TV.» با s کوچکِ چاپی — verbatim؛ بلنکِ چسبیده به TV با قاعدهٔ نرمالِ اسکریپت جدا شد",
+    "«she's» با آپاستروفِ چاپی (she’s در کادرِ رندر) — در گزینه‌ها به شکلِ آپاستروفِ مستقیم (') نرمال شد (هم‌خوان با لایهٔ JSON و موتور)",
+    "ساقه‌های شش‌گانه از لایهٔ ص۹۰ استخراج و با assert اظهار شدند؛ حروفِ a)/B) پیشوندِ ستون‌اند و در ساقه نمی‌آیند"
    ]
   }
  }

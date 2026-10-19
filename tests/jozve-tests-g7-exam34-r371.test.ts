@@ -262,27 +262,27 @@ describe("r371 — پیمان‌های سراسریِ بانک‌های تازه
       }
   });
 
-  it("خلوصِ لاتینِ بانک‌های ۵/۶/۷/۹/۱۰ — بانکِ ۸ (فارسیِ چاپ) تنها استثناست", () => {
+  it("خلوصِ لاتینِ بانک‌های ۵/۶/۷/۹/۱۰ — بانکِ ۸ (فارسیِ چاپ) تنها استثناست (r372: بانک‌های ۱۳/۱۴ ساقهٔ فارسی دارند — گاردِ خودش)", () => {
     const latinPunct = /^[\x20-\x7E\u200c…–—\u2192]+$/;
-    for (const b of g7.lessons.filter((x) => x.lesson >= 5 && x.lesson !== 8))
+    for (const b of g7.lessons.filter((x) => x.lesson >= 5 && x.lesson <= 10 && x.lesson !== 8))
       for (const it of b.questions) {
         expect(latinPunct.test(it.question), `question of ${it.id}: ${it.question}`).toBe(true);
         for (const o of it.options) expect(latinPunct.test(o), `option of ${it.id}`).toBe(true);
       }
   });
 
-  it("هیچ آیتمی از سکشن‌های مستثنی (تصویری/تولیدی) نشت نکرده است", () => {
-    const all = g7.lessons.filter((x) => x.lesson >= 5).flatMap((b) => b.questions);
-    for (const forbidden of ["Sunday", "Four", "تصویر", "Azar", "Painter", "Pilot", "farmer", "Akbari", "Amani", "Mina", "Football", "nurse"])
+  it("هیچ آیتمی از سکشن‌های مستثنیِ r371 (تصویری/تولیدی) نشت نکرده است — بانک‌های ۵-۱۰ (r372: Azar در بانک ۱۲ لنگرِ چاپیِ ص۸۴ دارد)", () => {
+    const all = g7.lessons.filter((x) => x.lesson >= 5 && x.lesson <= 10).flatMap((b) => b.questions);
+    for (const forbidden of ["Sunday", "Four", "تصویر", "Painter", "Pilot", "farmer", "Akbari", "Amani", "Mina", "Football", "nurse"])
       for (const it of all) {
         expect(it.question.includes(forbidden), `${it.id} stem contains ${forbidden}`).toBe(false);
         expect(it.options.some((o) => o.includes(forbidden)), `${it.id} option contains ${forbidden}`).toBe(false);
       }
   });
 
-  it("شمارشِ نهاییِ فایل: ۱۰ بانک/۴۴ آیتم — ۲۴ آیتمِ r371", () => {
-    expect(g7.lessons).toHaveLength(10);
-    const newItems = g7.lessons.filter((b) => b.lesson >= 5).flatMap((b) => b.questions);
+  it("شمارشِ نهاییِ فایل: ۱۵ بانک (r372: +۵) — ۲۴ آیتمِ r371 در بانک‌های ۵-۱۰", () => {
+    expect(g7.lessons).toHaveLength(15);
+    const newItems = g7.lessons.filter((b) => b.lesson >= 5 && b.lesson <= 10).flatMap((b) => b.questions);
     expect(newItems).toHaveLength(24);
     const ids = newItems.map((it) => it.id);
     expect(new Set(ids).size).toBe(24);
