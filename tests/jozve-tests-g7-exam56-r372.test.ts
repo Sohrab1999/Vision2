@@ -141,7 +141,9 @@ describe("r372 — رسیدهای g7exam5 / g7exam6", () => {
     expect(f6?.round).toBe("r372");
     expect(f6?.status).toContain("حذفِ آیتمی");
     expect(map.families.filter((f) => f.round === "r372")).toHaveLength(2);
-    expect(map.families.filter((f) => f.round === null)).toHaveLength(2);
+    // r373 — هفتم/هشتم (۹۷/۱۰۳) — نقشه ۸/۸ تکمیل شد
+    expect(map.families.filter((f) => f.round === "r373")).toHaveLength(2);
+    expect(map.families.filter((f) => f.round === null)).toHaveLength(0);
   });
 
   it("لنگرِ لایه: کلیدهای بانک‌های ۱۳/۱۴ در جدولِ واژگانِ درس پنجم (ص۷۶-۷۷) چاپی‌اند", () => {
@@ -290,8 +292,8 @@ describe("r372 — بانکِ ۱۵: کامل‌کردن با بانک واژه (
 });
 
 describe("r372 — پیمان‌های سراسریِ بانک‌های تازه", () => {
-  it("بدونِ آیتمِ تایپی در بانک‌های ۱۱-۱۵ (قراردادِ r363 در g7)", () => {
-    for (const b of g7.lessons.filter((x) => x.lesson >= 11))
+  it("بدونِ آیتمِ تایپی در بانک‌های ۱۱-۱۵ (قراردادِ r363 در g7 — r373: بانک‌های ۱۶-۲۰ گاردِ خودش)", () => {
+    for (const b of g7.lessons.filter((x) => x.lesson >= 11 && x.lesson <= 15))
       for (const it of b.questions) {
         expect(it.kind, `${it.id} must be MCQ`).toBeUndefined();
         expect(it.accepted, `${it.id} must not carry accepted`).toBeUndefined();
@@ -299,17 +301,17 @@ describe("r372 — پیمان‌های سراسریِ بانک‌های تازه
       }
   });
 
-  it("خلوصِ لاتینِ بانک‌های ۱۱/۱۲/۱۵ — بانک‌های ۱۳/۱۴ (ساقهٔ فارسیِ دستورِ چاپ) تنها استثنا", () => {
+  it("خلوصِ لاتینِ بانک‌های ۱۱/۱۲/۱۵ — بانک‌های ۱۳/۱۴ (ساقهٔ فارسیِ دستورِ چاپ) تنها استثنا (r373: بانکِ ۱۶ برچسبِ فارسی دارد — گاردِ خودش)", () => {
     const latinPunct = /^[\x20-\x7E\u200c…–—\u2192]+$/;
-    for (const b of g7.lessons.filter((x) => x.lesson >= 11 && x.lesson !== 13 && x.lesson !== 14))
+    for (const b of g7.lessons.filter((x) => x.lesson >= 11 && x.lesson <= 15 && x.lesson !== 13 && x.lesson !== 14))
       for (const it of b.questions) {
         expect(latinPunct.test(it.question), `question of ${it.id}: ${it.question}`).toBe(true);
         for (const o of it.options) expect(latinPunct.test(o), `option of ${it.id}`).toBe(true);
       }
   });
 
-  it("هیچ آیتمی از سکشن‌های مستثنی (تصویری/تولیدی) نشت نکرده است", () => {
-    const all = g7.lessons.filter((x) => x.lesson >= 11).flatMap((b) => b.questions);
+  it("هیچ آیتمی از سکشن‌های مستثنی (تصویری/تولیدی) نشت نکرده است — r373: scope به ۱۱-۱۵", () => {
+    const all = g7.lessons.filter((x) => x.lesson >= 11 && x.lesson <= 15).flatMap((b) => b.questions);
     for (const forbidden of [
       "Backpack", "Thirteen", "Engineer", "Thirty", "Nurse", // خ۵-س۳ (تصویری)
       "clock", "table", "comb", "mirror", "newspaper", "television", "radio", "computer", // خ۶-س۳ (تصویری-کلید)
@@ -321,8 +323,8 @@ describe("r372 — پیمان‌های سراسریِ بانک‌های تازه
       }
   });
 
-  it("شمارشِ نهایی: ۲۲ آیتمِ r372 با idهای یکتا و الگویِ g7-l11..15", () => {
-    const newItems = g7.lessons.filter((b) => b.lesson >= 11).flatMap((b) => b.questions);
+  it("شمارشِ نهایی: ۲۲ آیتمِ r372 با idهای یکتا و الگویِ g7-l11..15 — r373: scope به ۱۱-۱۵", () => {
+    const newItems = g7.lessons.filter((b) => b.lesson >= 11 && b.lesson <= 15).flatMap((b) => b.questions);
     expect(newItems).toHaveLength(22);
     const ids = newItems.map((it) => it.id);
     expect(new Set(ids).size).toBe(22);

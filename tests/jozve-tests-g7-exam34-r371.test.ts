@@ -280,8 +280,8 @@ describe("r371 — پیمان‌های سراسریِ بانک‌های تازه
       }
   });
 
-  it("شمارشِ نهاییِ فایل: ۱۵ بانک (r372: +۵) — ۲۴ آیتمِ r371 در بانک‌های ۵-۱۰", () => {
-    expect(g7.lessons).toHaveLength(15);
+  it("شمارشِ نهاییِ فایل: ۲۰ بانک (r373: +۵ — پایانِ g7) — ۲۴ آیتمِ r371 در بانک‌های ۵-۱۰", () => {
+    expect(g7.lessons).toHaveLength(20);
     const newItems = g7.lessons.filter((b) => b.lesson >= 5 && b.lesson <= 10).flatMap((b) => b.questions);
     expect(newItems).toHaveLength(24);
     const ids = newItems.map((it) => it.id);

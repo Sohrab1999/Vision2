@@ -989,6 +989,275 @@
      "answer": 7
     }
    ]
+  },
+  {
+   "lesson": 16,
+   "title": "امتحانی درس هفتم — تکمیل با بانک واژه (س۱، ص۹۷)",
+   "level": "پنج‌گزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g7-l16-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "What ------- are you going? (نمونهٔ پاسخِ چاپی: at 4:40 pm)",
+     "options": [
+      "address",
+      "live",
+      "time",
+      "phone number",
+      "e-mail address"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g7-l16-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "What is your -------? (نمونهٔ پاسخِ چاپی: 545-7845)",
+     "options": [
+      "phone number",
+      "address",
+      "live",
+      "time",
+      "e-mail address"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l16-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "And your -------. (نمونهٔ پاسخِ چاپی: hasanlotfi1392@gmail.come)",
+     "options": [
+      "address",
+      "live",
+      "phone number",
+      "e-mail address",
+      "time"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g7-l16-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "Where do you -------? (نمونهٔ پاسخِ چاپی: 32 mahan street)",
+     "options": [
+      "address",
+      "live",
+      "phone number",
+      "time",
+      "e-mail address"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 17,
+   "title": "امتحانی درس هفتم — کامل‌کردن حروف (س۲، ص۹۷)",
+   "level": "چهارگزینه‌ای",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g7-l17-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "-------ffice",
+     "options": [
+      "a",
+      "o",
+      "e",
+      "u"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g7-l17-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "m-------bile",
+     "options": [
+      "a",
+      "e",
+      "o",
+      "i"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g7-l17-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "str------- ------- t",
+     "options": [
+      "a",
+      "o",
+      "i",
+      "e"
+     ],
+     "answer": 3
+    }
+   ]
+  },
+  {
+   "lesson": 18,
+   "title": "امتحانی درس هفتم — کلمهٔ ناهماهنگ (س۳، ص۹۷)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g7-l18-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "Garden – bedroom – reading – living room",
+     "options": [
+      "Garden",
+      "bedroom",
+      "reading",
+      "living room"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g7-l18-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "Stair – studing – working – reading",
+     "options": [
+      "Stair",
+      "studing",
+      "working",
+      "reading"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l18-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "Friend – teacher – classmate – notebook",
+     "options": [
+      "Friend",
+      "teacher",
+      "classmate",
+      "notebook"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g7-l18-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "Visit – hungry – fix – cook",
+     "options": [
+      "Visit",
+      "hungry",
+      "fix",
+      "cook"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 19,
+   "title": "امتحانی درس هشتم — پاسخ از ستون راست (س۳، ص۱۰۳)",
+   "level": "پنج‌گزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g7-l19-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "I feel hungry -------",
+     "options": [
+      "how about some cake.",
+      "tea",
+      "that is my favorite",
+      "lets have something to drink",
+      "rice and kebab"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l19-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "What is your favorite drink?-------",
+     "options": [
+      "that is my favorite",
+      "how about some cake.",
+      "tea",
+      "lets have something to drink",
+      "rice and kebab"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g7-l19-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "I am thirsty. -------",
+     "options": [
+      "tea",
+      "that is my favorite",
+      "how about some cake.",
+      "rice and kebab",
+      "lets have something to drink"
+     ],
+     "answer": 4
+    },
+    {
+     "id": "g7-l19-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "What is your favorite food?-------",
+     "options": [
+      "tea",
+      "rice and kebab",
+      "that is my favorite",
+      "how about some cake.",
+      "lets have something to drink"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 20,
+   "title": "امتحانی درس هشتم — کلمهٔ ناهماهنگ (س۴، ص۱۰۳)",
+   "level": "چهارگزینه‌ای",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g7-l20-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "favorite – carrot – quince – jelly",
+     "options": [
+      "favorite",
+      "carrot",
+      "quince",
+      "jelly"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l20-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "Kebab – fish – cocount – spaghetti",
+     "options": [
+      "Kebab",
+      "fish",
+      "cocount",
+      "spaghetti"
+     ],
+     "answer": 1
+    }
+   ]
   }
  ],
  "source": {
@@ -1089,7 +1358,7 @@
   },
   "g7familyMap": {
    "extractedRound": "r370",
-   "note": "نقشهٔ ۸ خانوادهٔ «نمونه سؤالات امتحانی» جزوهٔ هفتم — از جست‌وجوی لایه؛ سربرگ‌های دوخطی (مثل «درس\nدوم») با جست‌وجوی دوسطری یافت شدند",
+   "note": "نقشهٔ ۸ خانوادهٔ «نمونه سؤالات امتحانی» جزوهٔ هفتم — از جست‌وجوی لایه؛ سربرگ‌های دوخطی (مثل «درس\ndوم») با جست‌وجوی دوسطری یافت شدند؛ همهٔ ۸ خانواده استخراج شد (r370-r373)",
    "families": [
     {
      "lesson": "درس اول",
@@ -1130,14 +1399,14 @@
     {
      "lesson": "درس هفتم",
      "pdfPage": 97,
-     "round": null,
-     "status": "در انتظار راند بعد"
+     "round": "r373",
+     "status": "استخراج شد — ۳ بانک/۱۱ آیتم از ۴ سکشن (س۴ تصویری-کلید: ساعتِ ۹:۱۵ مستثنی)"
     },
     {
      "lesson": "درس هشتم",
      "pdfPage": 103,
-     "round": null,
-     "status": "در انتظار راند بعد — نزدیکِ انتهای جزوه (۱۰۴ صفحه)"
+     "round": "r373",
+     "status": "استخراج شد — ۲ بانک/۶ آیتم از ۵ سکشن (۳ سکشنِ تصویری مستثنی) — پایانِ خانواده‌های g7 (۸/۸)"
     }
    ],
    "g8Note": "جزوهٔ هشتم هم ۷ خانواده دارد (pdf-p18/27/35/41/50/60/72) — کارتِ تستِ هشتم پس از g7؛ همتایانِ کامل‌اند، نه غایب (پاسخِ پروبِ r369)"
@@ -1371,6 +1640,106 @@
     "«she is … TV.» با s کوچکِ چاپی — verbatim؛ بلنکِ چسبیده به TV با قاعدهٔ نرمالِ اسکریپت جدا شد",
     "«she's» با آپاستروفِ چاپی (she’s در کادرِ رندر) — در گزینه‌ها به شکلِ آپاستروفِ مستقیم (') نرمال شد (هم‌خوان با لایهٔ JSON و موتور)",
     "ساقه‌های شش‌گانه از لایهٔ ص۹۰ استخراج و با assert اظهار شدند؛ حروفِ a)/B) پیشوندِ ستون‌اند و در ساقه نمی‌آیند"
+   ]
+  },
+  "g7exam7": {
+   "extractedRound": "r373",
+   "section": "نمونه سؤالات امتحانی درس هفتم پایه هفتم",
+   "examPages": "pdf-p97 (تک‌صفحه‌ای) — ص۹۸ جدولِ واژگانِ درس هشتم است و مرزِ پایینیِ خانواده",
+   "keyPages": "هیچ پاسخنامهٔ چاپی نیست — کلیدِ س۱ از بانکِ آبی + ستونِ نمونه‌پاسخِ چاپی؛ س۲ از یکتاییِ فرگمنت؛ س۳ از معناشناسیِ دسته‌ای",
+   "sectionsTotal": 4,
+   "sectionsExtracted": 3,
+   "sectionsSkipped": 1,
+   "items": 11,
+   "bankCounts": [
+    4,
+    3,
+    4
+   ],
+   "wordBank": [
+    "address",
+    "live",
+    "phone number",
+    "time",
+    "e-mail address"
+   ],
+   "wordBankSource": "کادرِ آبیِ رندر-فقطِ ص۹۷-top (۳۰۰dpi) — لایه ندارد (الگویِ r370-بانک۴/r372-بانک۱۵)؛ ستونِ چاپیِ a-d ستونِ نمونه‌پاسخ است نه گزینه",
+   "keyPolicy": "س۱: ردیف‌های ۲/۳ بدونِ ستونِ نمونه‌پاسخ دوکلیدی‌اند (phone number/e-mail address/address هر سه گرامری‌اند) — برچسبِ «(نمونهٔ پاسخِ چاپی: …)» با محتوای verbatimِ ستون به ساقه چسبید و یکتایی را چاپ‌لنگر کرد؛ ردیفِ ۴ با گرامرِ فعل هم یکتاست (تنها فعلِ بانک = live)؛ س۲: واژه از فرگمنت یکتاست (office/mobile/street) و تصویر فقط تزئین است — کلیدِ حروفی o/o/e (هر دو بلنکِ street یک e)؛ س۳: کلیدِ دسته‌ای (جای‌ها vs کنش / کنش vs غیرِ کنش / انسان‌ها vs شیء / فعل‌ها vs صفت)",
+   "engineNote": "سکشنِ حروف MCQ چهارگزینه‌ای است نه تایپی (قراردادِ r363 — موتورِ تایپ case-insensitive است و پاسخِ تک‌حرفی ارزشِ تایپ ندارد)؛ گزینه‌های س۲ = حروفِ مزاحم",
+   "derivedKeys": {
+    "S1": [
+     "time",
+     "phone number",
+     "e-mail address",
+     "live"
+    ],
+    "S2": [
+     "o",
+     "o",
+     "e"
+    ],
+    "S3": [
+     "reading",
+     "Stair",
+     "notebook",
+     "hungry"
+    ]
+   },
+   "skippedSections": [
+    "ص۹۷-س۴ «با توجه به تصویر داده شده… (اعداد را بصورت حروف بنویسید)» — ساعتِ تصویر ۹:۱۵ (ساعت‌شمار روی ۹، دقیقه‌شمار روی ۳ — رندرِ ۳۰۰dpi ص۹۷-bottom) → «It's quarter past nine.»؛ تصویری-کلید — بدونِ تصویر بی‌پاسخ (الگویِ r371-س۵/r372)"
+   ],
+   "printQuirks": [
+    "«What ……………are you going?» — بلنکِ چسبیده به are در چاپ؛ norm به «------- are» تبدیل کرد (قراردادِ فاصله‌دارِ بانک‌های g7)",
+    "«Where do you ……………...?» — سه‌نقطهٔ پس از بلنک در چاپ verbatim ماند («-------...?»)",
+    "«str…… ……t» — دو بلنکِ جدا با tِ پایانی در چاپ (رندرِ ۳۰۰dpi: str…… …… t)؛ هر دو بلنک e می‌گیرند — گزینه‌ها تک‌حرفی‌اند نه جفت",
+    "تیترِ خانواده دوبخطی است («نمونه سواالت امتحانی درس\nهفتم») — جست‌وجوی دوسطری (پروبِ r373)"
+   ]
+  },
+  "g7exam8": {
+   "extractedRound": "r373",
+   "section": "نمونه سؤالات امتحانی درس هشتم پایه هفتم",
+   "examPages": "pdf-p103 (تک‌صفحه‌ای) — ص۱۰۴ پایانِ جزوه است (۴ خط)؛ خانوادهٔ آخرِ g7",
+   "keyPages": "هیچ پاسخنامهٔ چاپی نیست — جز علامتِ سرگردانِ «b.» س۴ (کلیدِ اعلامیِ خودِ چاپ برای ردیفِ دوم)؛ بقیه استنتاجی",
+   "sectionsTotal": 5,
+   "sectionsExtracted": 2,
+   "sectionsSkipped": 3,
+   "items": 6,
+   "bankCounts": [
+    4,
+    2
+   ],
+   "wordBank": [
+    "tea",
+    "that is my favorite",
+    "how about some cake.",
+    "lets have something to drink",
+    "rice and kebab"
+   ],
+   "wordBankSource": "ستونِ چاپیِ a-e س۳ ص۱۰۳ (لایه) — اضافیِ چاپی = b «that is my favorite»",
+   "keyPolicy": "س۳: هر ساقه دقیقاً یک پاسخِ دستوری/معنایی دارد (گرسنه→پیشنهادِ غذا / تشنه→پیشنهادِ نوشیدنی / favorite drink→tea / favorite food→rice and kebab)؛ س۴-ردیف۱: favorite تنها صفت است؛ س۴-ردیف۲: fish تنها جاندار + علامتِ «b.» چاپ؛ اضافیِ هر دو ستون مشترکِ پنج‌گزینه‌ای/چهارگزینه‌ای است",
+   "engineNote": "ساقه‌ها نقطه‌چینِ انتهاییِ چاپ را verbatim دارند («favorite drink?-------»)؛ گزینه‌ها verbatimِ ستون (شاملِ نقطهٔ پایانیِ «how about some cake.» و «lets» بدونِ آپاستروف)",
+   "derivedKeys": {
+    "S3": [
+     "how about some cake.",
+     "tea",
+     "lets have something to drink",
+     "rice and kebab"
+    ],
+    "S4": [
+     "favorite",
+     "fish"
+    ]
+   },
+   "skippedSections": [
+    "ص۱۰۳-س۱ «با توجه به تصاویر داده شده به سواالت زیر پاسخ دهید؟» — تصویرِ مرغِ بریان → «Rice and chicken.» و تصویرِ آب‌نارنج → «Orange juice.» (رندرِ ۳۰۰dpi ص۱۰۳-top)؛ تصویری-کلید و بدونِ تصویرِ یکتا نیست («Rice and -------» با saladِ جدولِ ص۹۸ هم سازگار است)",
+    "ص۱۰۳-س۲ «نام مربوط به هر تصویر را زیر آن بنویسید» — چهار تصویرِ [خرما/موز/گوجه/بستنی] + بانکِ زردِ چاپیِ [Potato - banana - dates - ice cream - tomato] (اضافی = Potato)؛ بانکِ زرد در لایه هست ولی خارجِ موقعیت (انتهای لایهٔ ص۱۰۳ — کوئیرکِ استخراج)؛ تطبیقِ واژه‌به‌تصویر بدونِ تصویر بی‌معناست — تصویری-کلید",
+    "ص۱۰۳-س۵ «……… به انگلیسی چه می شود؟» — تصویرِ تخم‌مرغ (سه تخم‌مرغ در رندرِ ص۱۰۳-bottom) → egg (لنگرِ جدولِ ص۹۸: egg*)؛ تصویری-کلید — الگویِ ساقه‌فارسیِ r371-س۶ ولی با تصویر به‌جای واژهٔ فارسی"
+   ],
+   "printQuirks": [
+    "«cocount» غلطِ تایپیِ چاپ برای coconut — verbatim (الگویِ grangmoter/studing)",
+    "«lets have something to drink» بدونِ آپاستروفِ چاپ — verbatim",
+    "علامتِ «b.» سرگردانِ زیرِ ردیفِ دومِ س۴ = کلیدِ اعلامیِ خودِ جزوه (fish) — نخستین کلیدِ چاپیِ کارتِ هفتم",
+    "«What is your favorite food?.........» در لایه دوخطی شکسته بود («What is your favorite / food?…») — بازجوش شد"
    ]
   }
  }
