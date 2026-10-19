@@ -1134,6 +1134,60 @@
    ],
    "futureNote": "بخشِ ۴: ۱۲ برگه از ۱۷ استخراج شد، ۵ برگه باقی است (نزدیک‌ترین: برگهٔ لایه‌خرابِ ص۲۷۷-۲۸۴ که OCR/رندر می‌خواهد؛ سپس چهار برگهٔ ۱۳۹۷/۱۳۹۸ با کلیدِ سربرگِ قدیمی: دی ۱۳۹۷ ص۲۲۹-۲۳۶/خرداد ۱۳۹۸ ص۲۳۷-۲۴۳/شهریور ۱۳۹۸ ص۲۴۴-۲۵۰/دی ۱۳۹۸ ص۲۵۱-۲۵۸)؛ کاندیدهای تایپیِ این برگه (س۸: increasingly/collect/has been discovered/were invented/were) به کاندیدهای r380-r388 اضافه شدند — مخزنِ بانکِ تایپیِ نهایی‌ها اکنون ۶۹ ردیف است (۶۴ِ r388 + ۵ ردیفِ تازه)؛ l74 نخستین بانکِ تایپیِ شپ‌شدهٔ بخشِ نهایی‌هاست (الگویِ بانک‌های تایپیِ آینده)",
    "bookletFile": "جزوه_جامع_پایه_دوازدهم_با_امتحانات_نهایی_.pdf"
+  },
+  "g12nahaie12": {
+   "extractedRound": "r390",
+   "section": "بخش چهارمِ جزوه: «آزمونهای از دی ماه 1397 تا شهریور 1401 نهابی با کلید» — برگهٔ دوازدهم: «سؤالات امتحان نهایی» زبان انگلیسی (۳) نوبتِ دی ۱۳۹۷ — کلیهٔ رشته‌ها، ویژهٔ داوطلبان آزاد و بزرگسال",
+   "examPages": "pdf-p229-233 (پنج صفحهٔ آزمون) + کلیدِ رسمیِ سربرگِ قدیمی: pdf-p234-236 «راهنماي تصحيح امتحان نهایی درس زبان»؛ مرزِ برگه‌ها = p228 (سربرگِ بخشِ ۴) → p229 و p236 → p237 (خرداد ۱۳۹۸)",
+   "examMeta": "امتحان نهاییِ سراسریِ وزارت — درس: زبان انگلیسی (۳) — پایه دوازدهم دورهٔ دوم متوسطه — رشته: کلیهٔ رشته‌ها — نوبت دیماه ۱۳۹۷ (تاریخِ چاپی: ۹۷/۱۰/۱۲) — ویژهٔ داوطلبان آزاد و بزرگسال سراسر کشور در دیماه ۹۷ — نخستین و تنها برگهٔ پیش از عصرِ presentation-forms (سربرگِ ساده، بدونِ «مركز سنجش و پايش كيفيت آموزشي») — ۱۶ سکشن/۶۴ ردیف — یادداشتِ سربرگ: «سوالات پاسخنامه ندارد.» (چاپِ ثابتِ هر دو سربرگِ سؤال و کلید) — پانویسِ QR: «Audio file (MP3) / Audio script (PDF)» برای شنیداری",
+   "keyPages": "pdf-p234-236 راهنمای تصحیح — قالبِ قدیمیِ «1 .a/ next week» و «33 .(c) who» و «25: d» — ۳۲ کلیدِ چاپی در گارد پیمان می‌شود؛ ۳۲ کلید از ۳۲ آیتمِ بانک‌ها عینِ چاپ است",
+   "keyVerification": "کلیدِ چاپی عیناً نقل شد: «1 .a/ next week» «2. b/ No» «3 . It was red. / red» «4 .Yes, She did. / Yes» «5 . a/ True» «6 .b/ False» «7 . water» «8. healthy» / س۹-۱۶ speaking (بی‌کلیدِ ثابت) / «17 . convert 18. generate 19 .effect 20 . Turbine» (۲۰ با T بزرگِ چاپ) / «21. (b) 22. (a)» (پایانِ ص۲۳۴) «23. (e) 24. (c)» «25: d 26 :c 27 :e 28 :a» (دونقطه‌های ناهمگونِ چاپ) / «29 . can open 30. would sell 31 .be paid 32 . had not washed» / «33 .(c) who 34.( a ) was posted 35. (d)didn't she 36 .(b) out» (پرانتزهای ناهمگون) / «37» «My brother always carries (.25) a bag which seems very heavy. (0/25)» و «38» «Mina has an exam tomorrow, (.25)so she should study well tonight. (0/25)» با نمره‌های زیربخشِ چاپی / «39: but 40: so 41 .and 42: or» / س۴۳-۴۸ topic sentence (به‌صرفهٔ داور) / مدلِ پاراگرافِ ص۲۳۶: Topic «Horses are farm animals.» + Supportingهای ۵۳/۵۱/۵۰/۵۲ + Concluding «They are very useful farm animals.» / «55 . Bilingual dictionary is useful for them.» «.56 It contains the English word along with their meaning in another language.» «.57 One language is used in it.» «.58 (a) True» «.59 (a) True» (دوبلِ Trueِ چاپ) / «60 .They attend conference and training sessions...» «.61 c / necessary» «.62 d /the students' names» «.63 (b) False» «64 .(b) False»",
+   "sectionsTotal": 64,
+   "sectionsExtracted": 32,
+   "sectionsSkipped": 32,
+   "items": 32,
+   "bankCounts": [
+    2,
+    4,
+    4,
+    4,
+    4,
+    4,
+    4,
+    2,
+    4
+   ],
+   "keyPolicy": "همهٔ کلیدهای ۳۲ آیتم از راهنمای تصحیحِ چاپی می‌آیند (عینِ چاپ)؛ بانکِ ۵واژه‌ایِ l85 به ترتیبِ چاپِ خودِ برگه (generate/renewable/convert/turbine/effect) و «renewable» اضافیِ چاپیِ هرگز-کلید؛ l84 با استخرِ دومکلیدیِ خودِ کلید (water/healthy)؛ l88 دومین بانکِ تایپیِ بخشِ نهایی‌ها (بعدِ l74ِ r389) با accepted عینِ کلیدِ چاپی — شکلِ کشیده؛ صورت‌های منقبض (مثل hadn't washed) پذیرفته نیست؛ l90 به ترتیبِ چاپِ سطرِ راهنما (and/or/but/so)",
+   "paperMap": "نقشهٔ کاملِ بخشِ ۴ (ص۲۲۸-۳۴۹، ۱۷ برگه) — به‌روزِ r390: دی ۱۳۹۷ ص۲۲۹-۲۳۳ + کلیدِ سربرگِ قدیمیِ ص۲۳۴-۲۳۶ ← این راند؛ خرداد ۱۳۹۸ ص۲۳۷-۲۴۱ + کلید ص۲۴۲-۲۴۳ (۱۳/۳/۱۳۹۸)؛ شهریور ۱۳۹۸ ص۲۴۴-۲۴۸ + کلید ص۲۴۹-۲۵۰ (۱۲/۶/۱۳۹۸)؛ دی ۱۳۹۸ ص۲۵۱-۲۵۶ + کلید ص۲۵۷-۲۵۸ (۲۲/۱۰/۹۸)؛ خرداد ۱۳۹۹ ریاضی-تجربی ص۲۵۹-۲۶۵ + کلید ص۲۶۶-۲۶۷ [r388]؛ خرداد ۱۳۹۹ انسانی ص۲۶۸-۲۷۴ + کلید ص۲۷۵-۲۷۶ (۰۷/۰۴/۹۹) [r389]؛ برگهٔ لایه‌خراب ص۲۷۷-۲۸۴ (نیازمند OCR/رندر)؛ شهریور ۱۳۹۹ ص۲۸۵-۲۹۰ + کلید ص۲۹۱-۲۹۲ [r387]؛ شهریور ۱۳۹۹ ویژهٔ ناشنوایان ص۲۹۳-۲۹۸ + کلید ص۲۹۹-۳۰۰ [r388]؛ دی ۱۳۹۹ ص۳۰۱-۳۰۵ + کلید ص۳۰۶-۳۰۷ [r386]؛ خرداد ۱۴۰۰ ریاضی-تجربی ص۳۰۸-۳۱۴ [r385]؛ خرداد ۱۴۰۰ انسانی ص۳۱۵-۳۲۱ [r384]؛ شهریور ۱۴۰۰ ص۳۲۲-۳۲۸ [r383]؛ دی ۱۴۰۰ ص۳۲۹-۳۳۵ [r382]؛ دی ۱۴۰۱ ص۳۳۶-۳۴۲ [r380]؛ شهریور ۱۴۰۱ ص۳۴۳-۳۴۹ [r381] — ۱۳ برگه استخراج شد، ۴ برگه باقی است",
+   "skippedSections": [
+    "س۱-س۳ شنیداریِ صوتی (ق۱-۶: تاریخ تولد/مهمانی/رنگِ لباس) — محتوای صوتی خارج از برگه (QR)",
+    "س۵ speaking (ق۹-۱۶: وظایفِ فرزندان/دفترچهٔ خاطرات/ورزشِ انفرادی-تیمی/انرژیِ پاک/انتخابِ فرهنگ‌لغت/منابعِ زمین/درسِ موردعلاقه) — پاسخِ دلخواه",
+    "س۱۰ جمله‌سازی (ق۳۷-۳۸) — کلیدِ مدلِ چاپی به مخزنِ تایپی رفت",
+    "س۱۲ topic sentence (ق۴۳-۴۸: sport/Forest/smoking/Language/bad habits/Art) — «به‌صرفهٔ داور»",
+    "س۱۳ پاراگرافِ اسب‌ها (ق۴۹-۵۴) — کلیدِ کاملِ ترتیب/نقش در ص۲۳۶ چاپ شده؛ کاندیدِ مرتب‌سازی ثبت شد (در gt-l66 رندرِ نقش‌محور دارد)",
+    "خوانداریِ بازِ ق۵۵-۵۷ و ۶۰ — کلیدهای مدلِ چاپی به مخزنِ تایپی رفتند (در gt-l67/gt-l68 رندرِ تایپی دارند)"
+   ],
+   "printQuirks": [
+    "سربرگِ سؤال و کلید هر دو: «سوالات پاسخنامه ندارد.» — یادداشتِ چاپیِ نسخهٔ داوطلبِ آزاد [z1]",
+    "«... 7........ .When» — دنبالهٔ نقطه + نقطهٔ چسبیده به When در لایه [p229]",
+    "«'birds» — آپاستروفِ سرگردانِ چاپ پیش از birds [z7]",
+    "«a. well-known .» — نقطهٔ سرگردانِ چاپ پس از well-known در ستون B تعریف‌یابی [z3]",
+    "«e d. no pains» — eِ سرگردانِ چاپ رویِ سطرِ d در ستون B هم‌نشین‌ها [z8]",
+    "«d: which» و «d: didn't she» — دونقطه به‌جای نقطه در گزینه‌های dِ ق۳۳/۳۵ [z4]",
+    "«I couldn't figure .......... What» — W بزرگِ میانهٔ جمله (چاپ) [z4]",
+    "«very heavy / a bag I always / which...» — Iِ سرگردانِ چاپ در ق۳۷ [z4]",
+    "«in the first lime mean?» — lime غلطِ حروف‌چینیِ چاپ برای line [z5]",
+    "«the word \"then” refer to?» — کوتیشنِ مخلوطِ چاپ (بازِ مستقیم، بستهٔ خمیده) [z5]",
+    "«responsibilities, 'Teachers need» — آپاستروفِ سرگردانِ چاپ در متنِ معلمان [z9]",
+    "«you see you teachers» — you به‌جای your (چاپ) [z5]",
+    "«attend conference» — بی‌حرف تعریف (چاپ؛ عینِ آن در کلیدِ مدلِ ۶۰)",
+    "«20 . Turbine» — T بزرگِ چاپ در کلید",
+    "دوبلِ Trueِ چاپ در کلیدِ ۵۸/۵۹ (الگویِ l56ِ r387)",
+    "کلیدهای ۲۹-۳۲ و ۳۷-۳۸ با نمره‌های زیربخشِ چاپی (.25)/(0/25)"
+   ],
+   "twinCensus": "هم‌خانوادگیِ بین‌خانواده‌ای — r292 همین برگه را در grammar-g12-topic.json (l59-68، ۴۲ آیتم) هم رندر کرده: l85↔gt-l59 (تایپیِ همان چهارخانه)، l86↔gt-l60، l87↔gt-l61، l88↔gt-l62 (تایپی)، l89↔gt-l63، l90↔gt-l65 (تایپیِ آنجا/چهارگزینه‌ایِ اینجا)، l91/l92↔gt-l67/gt-l68 (آنجا تایپی+MCQ؛ اینجا فقط ردیف‌های کلیددارِ MCQ)؛ l84 (کلوژِ شنیداریِ مغز) هیچ‌جای مخزن نیست — نخستین رندرِ دی۹۷-شنیداری در کل پروژه؛ جفت‌های تعریفیِ وزارت بین‌برگه‌ای: «calmly→in a quiet way» (gt-l60/گاردِ r292 و r382-l29)، «Distinguished→well-known»، «Demand→the amount of...» (r386-l45 و r389-l82)، «Use up→to finish something» (r387-l58-4) — عینِ جفت‌های چاپِ برگه‌های ۹۹؛ «spared no pains» در r298-س۵ و «no pains» در r388-l68 خوانداری — هم‌نشینِ اینجا مستقل است",
+   "futureNote": "کاندیدهای تایپیِ این برگه (ق۳۷: My brother always carries...، ق۳۸: Mina has an exam...، ق۵۵: Bilingual dictionary...، ق۵۶: It contains the English word...، ق۵۷: One language is used...، ق۶۰: They attend conference...) به کاندیدهای r380-r389 اضافه شدند — مخزنِ بانکِ تایپیِ نهایی‌ها اکنون ۷۵ ردیف است (۶۹ِ r389 + ۶ ردیفِ تازه؛ این شش کاندید در gt-l64/gt-l67/gt-l68 رندرِ تایپیِ بین‌خانواده‌ای دارند)؛ یک کاندیدِ مرتب‌سازیِ پاراگرافی (ق۴۹-۵۴ اسب‌ها) با کلیدِ کاملِ چاپیِ ص۲۳۶ (Topic/Supporting/Concluding) ثبت شد؛ l88 الگویِ بانکِ تایپیِ آیندهٔ برگه‌های ۱۳۹۷/۹۸ است (gt نشان می‌دهد هر چهار برگهٔ قدیمی شکلِ فعلِ تایپی دارند)؛ ۴ برگه باقی است (نزدیک‌ترین: خرداد ۱۳۹۸ ص۲۳۷-۲۴۱)؛ در gt از l69 به بعد خرداد/شهریور/دی ۹۸ هم رندر دارند — سرشماریِ دوقلو برایشان الزامی",
+   "engineNote": "l88 دومین بانکِ تایپیِ بخشِ نهایی‌ها — موتور ورودیِ متنی می‌رندرد (opts=0/typedInput=true) و با نرمال‌سازیِ lib/typed-answer.ts مقایسه می‌کند؛ l88 از حلقهٔ MCQ-خالصِ گاردها مستثنی است (مثلِ l74)؛ l85/l86/l87 پنج‌گزینه‌ای‌اند (الگویِ l58/l59/l80)؛ l84 دوبخشیِ استخرِ دومکلیدی (الگویِ چرخشِ l44 با استخرِ کوچک)"
   }
  },
  "answerArbitration": [
@@ -10479,6 +10533,498 @@
       "You have to practice a skill a lot to become good at it."
      ],
      "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 84,
+   "title": "نهایی دی ۱۳۹۷ — کلوژِ شنیداریِ مغز (س۴، ص۲۲۹)",
+   "level": "چهارگزینه‌ای",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g12-l84-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "The brain is more active at night than during the day. Most part of the brain is ------- (7) -------. When the brain does not have good and ------- (8) ------- food, it becomes smaller. — پاسخِ خانهٔ (7): -------",
+     "options": [
+      "water",
+      "healthy"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l84-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "The brain is more active at night than during the day. Most part of the brain is ------- (7) -------. When the brain does not have good and ------- (8) ------- food, it becomes smaller. — پاسخِ خانهٔ (8): -------",
+     "options": [
+      "healthy",
+      "water"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 85,
+   "title": "نهایی دی ۱۳۹۷ — واژگانِ کلوژِ توربینِ بادی (س۵، ص۲۳۰)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l85-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "Engineers design and make machines that measure wind and ------- (17) ------- wind into energy. They develop wind turbines that ------- (18) ------- electricity by considering the Earth's surface, wind direction, average outside temperature, the ------- (19) ------- by and on 'birds and insects, and the great forces on the ------- (20) ------- — پاسخِ خانهٔ (17): -------",
+     "options": [
+      "generate",
+      "renewable",
+      "convert",
+      "turbine",
+      "effect"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l85-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "Engineers design and make machines that measure wind and ------- (17) ------- wind into energy. They develop wind turbines that ------- (18) ------- electricity by considering the Earth's surface, wind direction, average outside temperature, the ------- (19) ------- by and on 'birds and insects, and the great forces on the ------- (20) ------- — پاسخِ خانهٔ (18): -------",
+     "options": [
+      "generate",
+      "renewable",
+      "convert",
+      "turbine",
+      "effect"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l85-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "Engineers design and make machines that measure wind and ------- (17) ------- wind into energy. They develop wind turbines that ------- (18) ------- electricity by considering the Earth's surface, wind direction, average outside temperature, the ------- (19) ------- by and on 'birds and insects, and the great forces on the ------- (20) ------- — پاسخِ خانهٔ (19): -------",
+     "options": [
+      "generate",
+      "renewable",
+      "convert",
+      "turbine",
+      "effect"
+     ],
+     "answer": 4
+    },
+    {
+     "id": "g12-l85-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "Engineers design and make machines that measure wind and ------- (17) ------- wind into energy. They develop wind turbines that ------- (18) ------- electricity by considering the Earth's surface, wind direction, average outside temperature, the ------- (19) ------- by and on 'birds and insects, and the great forces on the ------- (20) ------- — پاسخِ خانهٔ (20): -------",
+     "options": [
+      "generate",
+      "renewable",
+      "convert",
+      "turbine",
+      "effect"
+     ],
+     "answer": 3
+    }
+   ]
+  },
+  {
+   "lesson": 86,
+   "title": "نهایی دی ۱۳۹۷ — تعریف‌یابی (س۶، ص۲۳۰)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l86-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "تعریفِ ستون B برای واژهٔ «calmly»: -------",
+     "options": [
+      "well-known .",
+      "in a quiet way",
+      "to finish something",
+      "to take something in, especially gradually",
+      "the amount of a product or service that people want"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l86-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "تعریفِ ستون B برای واژهٔ «Distinguished»: -------",
+     "options": [
+      "well-known .",
+      "in a quiet way",
+      "to finish something",
+      "to take something in, especially gradually",
+      "the amount of a product or service that people want"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l86-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "تعریفِ ستون B برای واژهٔ «Demand»: -------",
+     "options": [
+      "well-known .",
+      "in a quiet way",
+      "to finish something",
+      "to take something in, especially gradually",
+      "the amount of a product or service that people want"
+     ],
+     "answer": 4
+    },
+    {
+     "id": "g12-l86-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "تعریفِ ستون B برای واژهٔ «Use up»: -------",
+     "options": [
+      "well-known .",
+      "in a quiet way",
+      "to finish something",
+      "to take something in, especially gradually",
+      "the amount of a product or service that people want"
+     ],
+     "answer": 2
+    }
+   ]
+  },
+  {
+   "lesson": 87,
+   "title": "نهایی دی ۱۳۹۷ — هم‌نشین‌ها (س۷، ص۲۳۰)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l87-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "هم‌نشینِ ستون B برای واژهٔ «spare»: -------",
+     "options": [
+      "temperature",
+      "the train",
+      "a mistake",
+      "no pains",
+      "the needs"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l87-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "هم‌نشینِ ستون B برای واژهٔ «make»: -------",
+     "options": [
+      "temperature",
+      "the train",
+      "a mistake",
+      "no pains",
+      "the needs"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l87-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "هم‌نشینِ ستون B برای واژهٔ «meet»: -------",
+     "options": [
+      "temperature",
+      "the train",
+      "a mistake",
+      "no pains",
+      "the needs"
+     ],
+     "answer": 4
+    },
+    {
+     "id": "g12-l87-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "هم‌نشینِ ستون B برای واژهٔ «take»: -------",
+     "options": [
+      "temperature",
+      "the train",
+      "a mistake",
+      "no pains",
+      "the needs"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 88,
+   "title": "نهایی دی ۱۳۹۷ — گرامرِ شکلِ صحیحِ فعل — تایپی (س۸، ص۲۳۰)",
+   "level": "تایپی",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l88-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "The little boy ------- the box, can't he? (to open )",
+     "options": [
+      "can open"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "can open"
+     ]
+    },
+    {
+     "id": "g12-l88-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "If I were you, I ------- the old house. (to sell )",
+     "options": [
+      "would sell"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "would sell"
+     ]
+    },
+    {
+     "id": "g12-l88-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "The bill must ------- before leaving the restaurant. (to pay )",
+     "options": [
+      "be paid"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "be paid"
+     ]
+    },
+    {
+     "id": "g12-l88-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "My mother was very angry with my sister because she ------- the dishes. (not to wash)",
+     "options": [
+      "had not washed"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "had not washed"
+     ]
+    }
+   ]
+  },
+  {
+   "lesson": 89,
+   "title": "نهایی دی ۱۳۹۷ — گرامرِ چهارگزینه‌ای (س۹، ص۲۳۰-۲۳۱)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l89-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "The man ------- is wearing glasses is Reza's uncle.",
+     "options": [
+      "whom",
+      "whose",
+      "who",
+      "which"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l89-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "The letter ------- by my father two hours ago.",
+     "options": [
+      "was posted",
+      "posted",
+      "was posting",
+      "has posted"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l89-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "Ali's sister had an accident last week, -------?",
+     "options": [
+      "did he",
+      "did she",
+      "didn't he",
+      "didn't she"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l89-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "I couldn't figure ------- What they were talking about.",
+     "options": [
+      "off",
+      "out",
+      "at",
+      "on"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 90,
+   "title": "نهایی دی ۱۳۹۷ — حروفِ ربط (س۱۱، ص۲۳۱)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l90-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Mrs. Tehrani likes fish, ------- her grandmother hates it.",
+     "options": [
+      "and",
+      "or",
+      "but",
+      "so"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l90-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "These shoes aren't comfortable, ------- I rarely wear them.",
+     "options": [
+      "and",
+      "or",
+      "but",
+      "so"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l90-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "The woman washed the dishes, ------- her daughter dried them.",
+     "options": [
+      "and",
+      "or",
+      "but",
+      "so"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l90-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "You can check this booklet, ------- you may see our website.",
+     "options": [
+      "and",
+      "or",
+      "but",
+      "so"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 91,
+   "title": "نهایی دی ۱۳۹۷ — خوانداریِ فرهنگ‌لغت‌ها (س۱۴، ص۲۳۲)",
+   "level": "چهارگزینه‌ای",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g12-l91-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Just imagine how many English dictionaries there are in the world. How do you know which one is the best for you? Let's look at three types of English dictionaries: Bilingual dictionaries: This is probably the first type of dictionary that you bought when you started to study English. Usually, the first half gives the English word along with their meaning in another language, and the second half gives the words in the other language first and then their meanings in English. This kind of dictionary is suitable for those who have just started learning. You can quickly find how to translate a word from your language into English. But sometimes the meaning of the English word is a bit different from the word in the other language. Also this kind of dictionary encourages the students to translate instead of thinking in English. Monolingual dictionaries: These dictionaries use just one language to explain the meanings of the words. These dictionaries are good for students with a more advanced level of English. Monolingual dictionary encourages people to think in English and help them practice their English reading skills. Electronic dictionaries: Both monolingual and bilingual dictionaries are available in electronic format. Electronic dictionaries can be really useful if they are properly used. This is especially true with regard to pronunciation, as they often have an audio feature that lets you hear the word spoken. This lets you check your own pronunciation. — A monolingual dictionary improves your English reading skills.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l91-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "Just imagine how many English dictionaries there are in the world. How do you know which one is the best for you? Let's look at three types of English dictionaries: Bilingual dictionaries: This is probably the first type of dictionary that you bought when you started to study English. Usually, the first half gives the English word along with their meaning in another language, and the second half gives the words in the other language first and then their meanings in English. This kind of dictionary is suitable for those who have just started learning. You can quickly find how to translate a word from your language into English. But sometimes the meaning of the English word is a bit different from the word in the other language. Also this kind of dictionary encourages the students to translate instead of thinking in English. Monolingual dictionaries: These dictionaries use just one language to explain the meanings of the words. These dictionaries are good for students with a more advanced level of English. Monolingual dictionary encourages people to think in English and help them practice their English reading skills. Electronic dictionaries: Both monolingual and bilingual dictionaries are available in electronic format. Electronic dictionaries can be really useful if they are properly used. This is especially true with regard to pronunciation, as they often have an audio feature that lets you hear the word spoken. This lets you check your own pronunciation. — You can correct your pronunciation by using an electronic dictionary.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 92,
+   "title": "نهایی دی ۱۳۹۷ — خوانداریِ معلمان (س۱۵، ص۲۳۳)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l92-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Teachers are an essential part of our lives. They teach us much more than reading and writing. They teach us life lessons and help us discover who we are and how to succeed. It's important to appreciate the teachers who are dedicated to their jobs. Even if you feel you have too much homework and too many exams, take a moment to think how important your teachers are. Without them, you wouldn't be where you are today. Teaching requires a lot of time, preparation, and effort. Outside of the class, teachers write lesson plans, create exams and grade tests. They also attend conference and training sessions to find tools and ways to help students succeed. Teachers are very knowledgeable on the specific subjects they teach. However, it takes a helpful and dedicated individual to be able to teach effectively. Teaching requires them to stay up-to-date on advances in their field of study. They are busy with a wide variety of responsibilities, 'Teachers need to make sure that they know all their students' names and they must learn them quickly. One way of having a productive class is learning students' names. This article has given you some insight of the hard work and dedication that your teachers use each day at school. Then next time that you see you teachers, tell them you appreciate their help. — What does the word essential in the first lime mean?",
+     "options": [
+      "dedicated",
+      "knowledgeable",
+      "necessary",
+      "productive"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l92-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "Teachers are an essential part of our lives. They teach us much more than reading and writing. They teach us life lessons and help us discover who we are and how to succeed. It's important to appreciate the teachers who are dedicated to their jobs. Even if you feel you have too much homework and too many exams, take a moment to think how important your teachers are. Without them, you wouldn't be where you are today. Teaching requires a lot of time, preparation, and effort. Outside of the class, teachers write lesson plans, create exams and grade tests. They also attend conference and training sessions to find tools and ways to help students succeed. Teachers are very knowledgeable on the specific subjects they teach. However, it takes a helpful and dedicated individual to be able to teach effectively. Teaching requires them to stay up-to-date on advances in their field of study. They are busy with a wide variety of responsibilities, 'Teachers need to make sure that they know all their students' names and they must learn them quickly. One way of having a productive class is learning students' names. This article has given you some insight of the hard work and dedication that your teachers use each day at school. Then next time that you see you teachers, tell them you appreciate their help. — What does the word \"then” refer to?",
+     "options": [
+      "subjects",
+      "classes",
+      "teachers",
+      "students' names"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l92-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "Teachers are an essential part of our lives. They teach us much more than reading and writing. They teach us life lessons and help us discover who we are and how to succeed. It's important to appreciate the teachers who are dedicated to their jobs. Even if you feel you have too much homework and too many exams, take a moment to think how important your teachers are. Without them, you wouldn't be where you are today. Teaching requires a lot of time, preparation, and effort. Outside of the class, teachers write lesson plans, create exams and grade tests. They also attend conference and training sessions to find tools and ways to help students succeed. Teachers are very knowledgeable on the specific subjects they teach. However, it takes a helpful and dedicated individual to be able to teach effectively. Teaching requires them to stay up-to-date on advances in their field of study. They are busy with a wide variety of responsibilities, 'Teachers need to make sure that they know all their students' names and they must learn them quickly. One way of having a productive class is learning students' names. This article has given you some insight of the hard work and dedication that your teachers use each day at school. Then next time that you see you teachers, tell them you appreciate their help. — Teachers are just busy when they are at school.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l92-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "Teachers are an essential part of our lives. They teach us much more than reading and writing. They teach us life lessons and help us discover who we are and how to succeed. It's important to appreciate the teachers who are dedicated to their jobs. Even if you feel you have too much homework and too many exams, take a moment to think how important your teachers are. Without them, you wouldn't be where you are today. Teaching requires a lot of time, preparation, and effort. Outside of the class, teachers write lesson plans, create exams and grade tests. They also attend conference and training sessions to find tools and ways to help students succeed. Teachers are very knowledgeable on the specific subjects they teach. However, it takes a helpful and dedicated individual to be able to teach effectively. Teaching requires them to stay up-to-date on advances in their field of study. They are busy with a wide variety of responsibilities, 'Teachers need to make sure that they know all their students' names and they must learn them quickly. One way of having a productive class is learning students' names. This article has given you some insight of the hard work and dedication that your teachers use each day at school. Then next time that you see you teachers, tell them you appreciate their help. — The only things that students learn at school are reading and writing.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 1
     }
    ]
   }
