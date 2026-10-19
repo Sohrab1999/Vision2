@@ -18,16 +18,16 @@ const TABLES = [
   { g: 10, key: "لغات کلیدی پایه هفتم", rows: 200, notes: 11 },
   { g: 10, key: "لغات کلیدی پایه هشتم", rows: 180, notes: 14 }, // r399: +a.m./fall=autumn −Note
   { g: 10, key: "لغات کلیدی پایه نهم", rows: 323, notes: 123 }, // r399: +Here you are./well done!/lion
-  { g: 10, key: "لغات کلیدی و تکمییل درس یکم", rows: 152, notes: 23 }, // r399: −knives/−mouse، ترمیمِ knife
-  { g: 10, key: "لغات کلیدی و تکمییل درس دوم", rows: 249, notes: 35 }, // r399: +many/+half −halves
-  { g: 10, key: "لغات کلیدی و تکمییل درس سوم", rows: 179, notes: 32 },
-  { g: 10, key: "لغات کلیدی و تکمییل درس چهارم", rows: 187, notes: 28 },
-  { g: 11, key: "لغات کلیدی و تکمییل درس اول", rows: 201, notes: 19 },
-  { g: 11, key: "لغات کلیدی و تکمییل درس دوم", rows: 231, notes: 31 },
-  { g: 11, key: "لغات کلیدی و تکمییل درس سوم", rows: 199, notes: 25 },
-  { g: 12, key: "لغات کلیدی و تکمییل درس اول", rows: 273, notes: 44 }, // r399: +A.D./+the Caspian Sea/+sit on lap
-  { g: 12, key: "لغات کلیدی و تکمییل درس دوم", rows: 359, notes: 51 },
-  { g: 12, key: "لغات کلیدی و تکمییل درس سوم", rows: 268, notes: 165 },
+  { g: 10, key: "لغات کلیدی و تکمیلی درس یکم", rows: 152, notes: 23 }, // r399: −knives/−mouse، ترمیمِ knife
+  { g: 10, key: "لغات کلیدی و تکمیلی درس دوم", rows: 249, notes: 35 }, // r399: +many/+half −halves
+  { g: 10, key: "لغات کلیدی و تکمیلی درس سوم", rows: 179, notes: 32 },
+  { g: 10, key: "لغات کلیدی و تکمیلی درس چهارم", rows: 187, notes: 28 },
+  { g: 11, key: "لغات کلیدی و تکمیلی درس اول", rows: 201, notes: 19 },
+  { g: 11, key: "لغات کلیدی و تکمیلی درس دوم", rows: 231, notes: 31 },
+  { g: 11, key: "لغات کلیدی و تکمیلی درس سوم", rows: 199, notes: 25 },
+  { g: 12, key: "لغات کلیدی و تکمیلی درس اول", rows: 273, notes: 44 }, // r399: +A.D./+the Caspian Sea/+sit on lap
+  { g: 12, key: "لغات کلیدی و تکمیلی درس دوم", rows: 359, notes: 51 },
+  { g: 12, key: "لغات کلیدی و تکمیلی درس سوم", rows: 268, notes: 165 },
 ];
 
 const findVocab = (g: number, key: string) => {
@@ -64,7 +64,7 @@ describe("r398 — جفت‌سازیِ کورپوس‌محورِ جداولِ و
   });
 
   it("ردیف‌های رسید — سخت‌ترین جفت‌هایِ r397 درست شدند", () => {
-    const g10l1 = findVocab(10, "لغات کلیدی و تکمییل درس یکم");
+    const g10l1 = findVocab(10, "لغات کلیدی و تکمیلی درس یکم");
     const map = new Map(g10l1.lines.map((l: string) => [l.split(" — ")[0], l]));
     // در r397: «based on بر اساس ،بر طبق go hunting ر / به شکار ز / رفت» — معنیِ شکسته
     expect(map.get("go hunting")).toBe("go hunting — به شکار رفتن");
@@ -74,12 +74,12 @@ describe("r398 — جفت‌سازیِ کورپوس‌محورِ جداولِ و
     expect(map.get("graph")).toContain("نمودار");
     expect(map.get("average")).toContain("میانگین"); // پالایشِ «میانگیر ن»
 
-    const g12l3 = findVocab(12, "لغات کلیدی و تکمییل درس سوم");
+    const g12l3 = findVocab(12, "لغات کلیدی و تکمیلی درس سوم");
     const m12 = new Map(g12l3.lines.map((l: string) => [l.split(" — ")[0], l]));
     expect(m12.get("absence")).toBe("absence — غیبت - فقدان");
     expect(m12.get("fond")).toContain("علاقمند"); // پالایشِ «عالقمند»
 
-    const g10l4 = findVocab(10, "لغات کلیدی و تکمییل درس چهارم");
+    const g10l4 = findVocab(10, "لغات کلیدی و تکمیلی درس چهارم");
     const m10 = new Map(g10l4.lines.map((l: string) => [l.split(" — ")[0], l]));
     expect(m10.get("Egypt")).toBe("Egypt — کشور مصر"); // پالایشِ «مرص»
   });
