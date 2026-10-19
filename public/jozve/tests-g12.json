@@ -394,6 +394,107 @@
    ],
    "futureNote": "بخشِ چهارم ~۱۱ برگهٔ دیگر دارد (ص۲۲۸-۳۲۱) — الگویِ همین رسید؛ کاندیدهای تایپیِ این برگه (س۱۰ «had got/gotten» + ردیف‌های ۳۳/۳۴/۴۰/۴۷/۴۸) به کاندیدهای r380/r381/r382 اضافه شدند — مخزنِ بانکِ تایپیِ نهایی‌ها اکنون ۲۷ ردیف است (۲۱ِ r382 + ۶ ردیفِ تازه)",
    "bookletFile": "جزوه_جامع_پایه_دوازدهم_با_امتحانات_نهایی_.pdf"
+  },
+  "g12nahaie5": {
+   "extractedRound": "r384",
+   "section": "بخش چهارمِ جزوه: «آزمونهای از دی ماه 1397 تا شهریور 1401 نهابی با کلید» — برگهٔ پنجم: «سؤالات امتحان نهایی» زبان انگلیسی (۳) نوبتِ خرداد ۱۴۰۰ (واریانتِ رشتهٔ ادبیات و علوم انسانی-علوم و معارف اسلامی)",
+   "examPages": "pdf-p315-319 (پنج صفحهٔ آزمون) + کلیدِ رسمی: pdf-p320-321 «راهنماي تصحيح»؛ مرزِ برگه‌ها = p314→p315 (پایانِ کلیدِ برگهٔ قبل) و p321→p322 (آغازِ شهریور ۱۴۰۰ِ r383)",
+   "examMeta": "امتحان نهاییِ سراسریِ وزارت — درس: زبان انگلیسی (۳) — پایه دوازدهم دورهٔ دوم متوسطه — رشته: ادبیات و علوم انسانی-علوم و معارف اسلامی — نوبت خرداد ماه سال ۱۴۰۰ (تاریخِ چاپی: ۱۸/۰۳/۱۴۰۰) — مدت ۱۲۰ دقیقه — ساعت شروع ۸ صبح — ۱۹ سکشن/۵۷ ردیف/بارم ۴۰ — روزانه/بزرگسال/داوطلب آزاد — مركز سنجش و پايش كيفيت آموزشي (aee.medu.ir) — «GOOD LUCK / جمع نمره ۴٠» — برگهٔ خواهرِ ریاضی-تجربی (ص۳۰۸-۳۱۴) جداگانه چاپ شده",
+   "keyPages": "pdf-p320-321 راهنمای تصحیحِ رسمی — «هر پاسخ صحيح (5/.) نمره» — ۵۰ فرگمنتِ کلیدِ چاپی در گارد پیمان می‌شود؛ ۲۹ کلید از ۲۹ آیتمِ بانک‌ها عینِ چاپ است",
+   "keyVerification": "کلیدِ چاپی عیناً نقل شد: «1. True (a) 2. False (b) 3. sister» / «4. (b) 5. (c) 6. (b) 7. (a)» / «8. famous 9. final 10. taken 11. lived» / «12. False (b) 13.True (a) 14. False (b) 15. True (a)» / «16. (d) 17. (e) 18. (c) 19. (b)» / «20. absorb 21. introduction 22. hugged» / «23. (d) 24. (c) 25. (b)» / «26. come» / «27. (c) 28. (a) 29. (c) 30. (b)» / «31. was broken» / «35. (a) True 36. (b) False 37. ( b )» / «38. They feel honored.» / «39. (b) False 40. (a) True 41. (b) 42. entry 43. collocations» / «44. (a) True 45. (a) True 46. (c) 47.(a)» / «48. and 49. but» — بلوکِ درهمِ لایه برای س۱۱ (۳۲/۳۳) با داوریِ رندرِ ۳۰۰dpi (/tmp/qa-r384/p320-300.png): «32. Roya was upset because she had gotten a bad score.» / «33. John could fix the car if he were at home.» — پنجمین تکرارِ درسِ r380-ق۳۲",
+   "sectionsTotal": 57,
+   "sectionsExtracted": 29,
+   "sectionsSkipped": 28,
+   "items": 29,
+   "bankCounts": [
+    7,
+    4,
+    3,
+    3,
+    4,
+    2,
+    6
+   ],
+   "keyPolicy": "همهٔ کلیدهای ۲۹ آیتم از راهنمای تصحیحِ چاپی می‌آیند (عینِ چاپ)؛ گزینه‌های مهندسی‌شده: بانکِ واژگانِ l29-ق۱-۳ به ترتیبِ چاپِ خودِ برگه (hugged, introduction, absorb, effectively) با اضافیِ چاپیِ هرگز-کلید (effectively) و چهارِ اصطلاحِ l29-ق۷ (شکلِ حروفِ چاپ c---- محترم: come در برابرِ cost/care/calm — هر چهار ۴حرفیِ c-دار)؛ تعریف‌یابیِ l29-ق۴-۶ به ترتیبِ چاپِ ستون B با اضافیِ «cry suddenly» هرگز-کلید؛ کلیدهای درست/غلطِ l31/l32/l33 سمانتیک‌اند و چرخش نمی‌پذیرند؛ گرامرِ l30 و حروفِ ربطِ l34 به ترتیبِ چاپ؛ بانکِ مرتب‌سازیِ l35 گزینه‌هایش را به ترتیبِ چاپِ a-f می‌چیند با کلیدهای چاپی [d,a,c,b,f,e] در اندیس‌های [3,0,2,1,5,4]",
+   "engineNote": "هر ۲۹ آیتم MCQ (قراردادِ کارتِ g12)؛ l35 نخستین بانکِ شش‌گزینه‌ایِ مرتب‌سازیِ مخزن (الگویِ l9ِ r381 برای شش‌گزینه‌ای) — هر جایگاهِ ۵۱-۵۶ یک آیتم با هر شش جمله به‌عنوان گزینه؛ ساقه‌های خوانداریِ l31/l32/l33 هر سه متنِ کاملِ چاپی را در خود دارند (بزرگ‌ترها/فرهنگِ لغت/آبی‌برق)؛ ساقه‌های تعریف‌یابی دوبخشیِ فارسی (الگویِ r380-l5)؛ ساقه‌های A/B گرامر (ق۲۸/۳۰) دوبخطیِ بازجوش؛ ترجمه عمداً غایب (نهایی‌ها ترجمهٔ چاپی ندارند)؛ نقطه‌چینِ چاپ → «-------» چسبیده",
+   "derivedKeys": {
+    "S6": [
+     "absorb",
+     "introduction",
+     "hugged"
+    ],
+    "S7": [
+     "in a quiet way",
+     "the rise and fall of the sea",
+     "for all time"
+    ],
+    "S8": [
+     "come"
+    ],
+    "S9": [
+     "didn’t they",
+     "whom",
+     "had eaten",
+     "must be obeyed"
+    ],
+    "S13": [
+     "True",
+     "False",
+     "parents"
+    ],
+    "S14": [
+     "False",
+     "True",
+     "guide words"
+    ],
+    "S15": [
+     "True",
+     "True",
+     "clean",
+     "saved"
+    ],
+    "S16": [
+     "and",
+     "but"
+    ],
+    "S18": [
+     "Ants are hardworking insects.",
+     "Throughout the summer, they collect food for the winter season.",
+     "Whenever they find sweet lying on the floor,",
+     "they stick to the sweet and carry it to their home.",
+     "Thus, in this way, they clean the floor.",
+     "As a result, they are known as helpful and active insects."
+    ]
+   },
+   "paperMap": "کشفِ این راند — نقشهٔ کاملِ بخشِ ۴ (ص۲۲۸-۳۴۹، ۱۷ برگه): دی ۱۳۹۷ ص۲۲۹-۲۳۳ + کلیدِ سربرگِ قدیمیِ ص۲۳۴-۲۳۶ (پیش از presentation-forms؛ کلید با پاسخ‌های مدلِ نگارشِ Horses)؛ خرداد ۱۳۹۸ ص۲۳۷-۲۴۱ + کلید ص۲۴۲-۲۴۳ (۱۳/۳/۱۳۹۸)؛ شهریور ۱۳۹۸ ص۲۴۴-۲۴۸ + کلید ص۲۴۹-۲۵۰ (۱۲/۶/۱۳۹۸)؛ دی ۱۳۹۸ ص۲۵۱-۲۵۶ + کلید ص۲۵۷-۲۵۸ (۲۲/۱۰/۹۸)؛ خرداد ۱۳۹۹ ریاضی-تجربی ص۲۵۹-۲۶۵ + کلید ص۲۶۶-۲۶۷ (۰۵/۰۴/۹۹)؛ خرداد ۱۳۹۹ انسانی ص۲۶۸-۲۷۴ + کلید ص۲۷۵-۲۷۶ (۰۷/۰۴/۹۹)؛ برگهٔ لایه‌خراب ص۲۷۷-۲۸۴ (نیازمند OCR/رندر)؛ شهریور ۱۳۹۹ ص۲۸۵-۲۹۰ + کلید ص۲۹۱-۲۹۲ (۱۳/۰۶/۹۹)؛ شهریور ۱۳۹۹ ویژهٔ ناشنوایان ص۲۹۳-۲۹۸ + کلید ص۲۹۹-۳۰۰ (۱۳/۰۶/۹۹)؛ دی ۱۳۹۹ ص۳۰۱-۳۰۵ + کلید ص۳۰۶-۳۰۷ (۰۱/۱۱/۹۹)؛ خرداد ۱۴۰۰ ریاضی-تجربی ص۳۰۸-۳۱۲ + کلید ص۳۱۳-۳۱۴ (۱۹/۰۳/۱۴۰۰)؛ خرداد ۱۴۰۰ انسانی ص۳۱۵-۳۲۱ ← این راند؛ شهریور ۱۴۰۰ ص۳۲۲-۳۲۸ [r383]؛ دی ۱۴۰۰ ص۳۲۹-۳۳۵ [r382]؛ دی ۱۴۰۱ ص۳۳۶-۳۴۲ [r380]؛ شهریور ۱۴۰۱ ص۳۴۳-۳۴۹ [r381] — ۵ برگه استخراج شد، ۱۲ برگه باقی است",
+   "skippedSections": [
+    "س۱ (ردیف ۱-۳، شنیداریِ درست/غلط + کلوژ): مکالمهٔ زهره/مریم (مهمانیِ مینا) — صوتی-کلید (متنِ شنیداری چاپ نیست؛ پاورقیِ «Audio script (PDF) / Audio file (MP3)» در ص۳۱۵)؛ کلیدهای چاپی: 1.True(a)/2.False(b)/3.sister — در رسید حفظ شد",
+    "س۲ (ردیف ۴-۷، شنیداری): مکالمهٔ شیلا/سمیرا (موزهٔ هنرهای مدرن/حرم/دفاع مقدس) — صوتی-کلید با گزینه‌های چاپی؛ کلیدهای چاپی: 4.(b)/5.(c)/6.(b)/7.(a)",
+    "س۳ (ردیف ۸-۱۱، شنیداریِ کلوژ): متنِ فرهنگِ لغتِ اسادی توسی (لغت‌نامهٔ کهنِ پنجم‌قرنی) — صوتی-کلید؛ کلیدهای چاپی: 8.famous/9.final/10.taken/11.lived",
+    "س۴ (ردیف ۱۲-۱۵، شنیداریِ درست/غلط): طاهره صفارزاده (شیراز/قرآن/ترجمهٔ ۱۳۸۰) — صوتی-کلید؛ کلیدهای چاپی: 12.False(b)/13.True(a)/14.False(b)/15.True(a)",
+    "س۵ (ردیف ۱۶-۱۹، تصویری): «با توجه به تصاویر... یک جمله اضافی است» — چهار تصویر با داوریِ کاملِ رندر (ص۳۱۶): (16) پدرِ عصبانی به پسر (برگهٔ امتحان)→d، (17) توربین‌های بادی→e، (18) غذای چربِ خط‌خورده→c، (19) مردِ بالکن‌نشین با فنجان و کتاب→b؛ اضافیِ چاپی: a) Iran is rich in oil resources — هم‌خوانِ کلیدِ رسمی",
+    "س۱۰ (ردیف ۳۱، شکلِ فعلِ باز): «The window ………. by that boy yesterday. (break)» — کلیدِ چاپیِ دقیق «was broken» (مجازیِ ماضی) — بدونِ گزینهٔ چاپی؛ کاندیدِ بانکِ تایپی",
+    "س۱۱-س۱۲ (ردیف ۳۲-۳۴): جمله‌سازیِ درهم (پاسخِ مدل: «Roya was upset because she had gotten a bad score.» و «John could fix the car if he were at home.» — بلوکِ درهمِ لایه با داوریِ رندر) و ضمیرِ موصولی (کلیدِ بند-رأیی: which + جملهٔ دارای فعل، بارم ۰.۵+۰.۵) — کاندیدِ تایپی/تولیدی",
+    "ردیف ۳۸ (پاسخِ مدلِ بزرگ‌ترها: «They feel honored.» بارم ۱) و ۴۲ («entry») و ۴۳ («collocations») — کاندیدِ تایپی",
+    "س۱۷ (ردیف ۵۰، حرفِ ربط با تصویر): کلیدِ چاپیِ کامل «50. …..or you should wash the dishes.» (تخته‌شویی) ولی دستورِ سکشن «با استفاده از تصویر» است — تصویری-کلید (الگویِ r380-ردیف۱۶/r381/r382/r383-س۱۷)؛ کلید حفظ شد",
+    "س۱۹ (ردیف ۵۷، نگارشِ تولیدی): پاراگرافِ Forests با چیپ‌های چاپی (Natural home of animals / Source of fresh air / Source of necessary things for man) — تولیدی با کلیدِ بند-رأیی"
+   ],
+   "printQuirks": [
+    "سومین برگهٔ presentation-forms (ﺳﺆاﻻت/اﻣ ﺘﺤﺎن با شکستگیِ «اﻣ ﺘﺤﺎن» — برخلافِ اﻣﺘﺤﺎنِ چسبیدهٔ r382/r383) — متنِ انگلیسی و کلیدها لاتینِ سالم",
+    "تاریخِ چاپیِ ۱۸/۰۳/۱۴۰۰ با «نوبت خرداد ماه سال 1400» — نخستین برگه از جفتِ خرداد ۱۴۰۰ (خواهرِ ریاضی-تجربی در ص۳۰۸-۳۱۲)",
+    "نشانگرهای فارسیِ «١/٢/٣/٤/٥» در ستونِ ردیفِ سربرگ، جدا از نشانگرهای لاتینِ ق۱-۵۷",
+    "بارمِ کسریِ «5/1» و «5/.» با خطِ موربِ چاپ (الگویِ r383)",
+    "کلیدِ «13.True (a)» چسبیده بدونِ فاصله (برخلافِ «12. False (b)») در همان سطر",
+    "کلیدِ «47.(a)» چسبیده بدونِ فاصله در برابرِ «46. (c)» با فاصله",
+    "ق۴۶ «cities.………… .» — نقطهٔ چسبیده به واژه + نقطه‌چین + نقطهٔ پایانیِ جدا — پس از norm به «cities------- .» رسید",
+    "«37. ( b )» — فاصله‌های چاپیِ داخلِ پرانتزِ کلید (چهارمین بار: r380-q38/r382-q38/r383-ق۳۸)",
+    "پیشوندِ چاپیِ «a).» (پرانتز + نقطه) در جملاتِ س۱۸ — شش‌گزینه‌ایِ نخستینِ مخزن",
+    "ق۳۵/۳۶ «a) True    b) False» هم‌سطرِ ساقه در ص۳۱۷ ولی ق۳۹ «a)True» بدونِ فاصله در ص۳۱۸",
+    "آپاستروفِ خمیدهٔ یکدست در کلِ برگه (didn’t we/didn’t they/it’s) — عینِ چاپ حفظ شد",
+    "بلوکِ کلیدِ RTLِ درهمِ س۱۱ («Roya/was upset/score/a bad» سطرشکن) — داوریِ رندرِ ۳۰۰dpi"
+   ],
+   "futureNote": "بخشِ ۴ اکنون نقشهٔ کاملِ ۱۷برگه‌ای دارد (ص۲۲۸-۳۴۹) — ۵ برگه استخراج شد، ۱۲ برگه باقی است (نزدیک‌ترین‌ها: خرداد ۱۴۰۰ ریاضی-تجربی ص۳۰۸-۳۱۴ و دی ۱۳۹۹ ص۳۰۱-۳۰۷؛ به‌علاوهٔ برگهٔ لایه‌خرابِ ص۲۷۷-۲۸۴ که OCR/رندر می‌خواهد و جفتِ ۱۳۹۷ با کلیدِ سربرگِ قدیمی)؛ کاندیدهای تایپیِ این برگه (س۱۰ «was broken» + ردیف‌های ۳۲/۳۳/۳۴/۳۸/۴۲/۴۳) به کاندیدهای r380/r381/r382/r383 اضافه شدند — مخزنِ بانکِ تایپیِ نهایی‌ها اکنون ۳۴ ردیف است (۲۷ِ r383 + ۷ ردیفِ تازه)",
+   "bookletFile": "جزوه_جامع_پایه_دوازدهم_با_امتحانات_نهایی_.pdf"
   }
  },
  "answerArbitration": [
@@ -6530,6 +6631,439 @@
       "or"
      ],
      "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 29,
+   "title": "نهایی خرداد ۱۴۰۰ — واژگان و تعریف و اصطلاح (س۶-س۸، ص۳۱۶)",
+   "level": "چهارگزینه‌ای",
+   "count": 7,
+   "questions": [
+    {
+     "id": "g12-l29-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "Plants ------- carbon dioxide.",
+     "options": [
+      "hugged",
+      "introduction",
+      "absorb",
+      "effectively"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l29-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "This book has only a two-page ------- .",
+     "options": [
+      "hugged",
+      "introduction",
+      "absorb",
+      "effectively"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l29-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "My uncle went to his son and ------- him.",
+     "options": [
+      "hugged",
+      "introduction",
+      "absorb",
+      "effectively"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l29-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "«He always speaks slowly and calmly.» — تعریفِ ستون B برای واژهٔ «calmly»: -------",
+     "options": [
+      "cry suddenly",
+      "for all time",
+      "the rise and fall of the sea",
+      "in a quiet way"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l29-5",
+     "n": 5,
+     "category": "vocab",
+     "question": "«Here you can see two high and two low tides each day.» — تعریفِ ستون B برای واژهٔ «tides»: -------",
+     "options": [
+      "cry suddenly",
+      "for all time",
+      "the rise and fall of the sea",
+      "in a quiet way"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l29-6",
+     "n": 6,
+     "category": "vocab",
+     "question": "«No one can live forever.» — تعریفِ ستون B برای واژهٔ «forever»: -------",
+     "options": [
+      "cry suddenly",
+      "for all time",
+      "the rise and fall of the sea",
+      "in a quiet way"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l29-7",
+     "n": 7,
+     "category": "vocab",
+     "question": "A: When you get money quickly, it’s easy to spend it or lose it quickly as well. B: You know that “Easy c - - - , easy go”.",
+     "options": [
+      "come",
+      "cost",
+      "care",
+      "calm"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 30,
+   "title": "نهایی خرداد ۱۴۰۰ — گرامر (س۹، ص۳۱۷)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l30-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "They invited you to their party, ------- ?",
+     "options": [
+      "do they",
+      "didn’t we",
+      "didn’t they",
+      "don’t you"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l30-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "A: What did the students want to do? B: They wanted to talk to the teacher ------- Ali met before.",
+     "options": [
+      "whom",
+      "when",
+      "where",
+      "which"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l30-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "I ------- lunch before I went out.",
+     "options": [
+      "am eating",
+      "will eat",
+      "had eaten",
+      "eat"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l30-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "A: How can we have better streets? B: The traffic rules ------- by everyone.",
+     "options": [
+      "may obey",
+      "must be obeyed",
+      "obeyed",
+      "has obeyed"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 31,
+   "title": "نهایی خرداد ۱۴۰۰ — خوانداریِ احترام به بزرگ‌ترها (س۱۳، ص۳۱۷)",
+   "level": "چهارگزینه‌ای",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g12-l31-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "It is very important for us to respect our elders. It is also important to note that elders were not born elders; they were kids like us and now have grown old. A few years hence we will also grow older. If today we respect them, our present and future generations will carry those values and will learn to respect us as well when we grow old. Elders have a lot to share with us: their life experiences, their failures, their successes and many more. Thus, we need to care for them because they deserve to be cared for. Respect and care for elders start with our parents, as they are our first teachers in our life. No matter what we do in our lives, who we are, and where we live, we must love them as they love us unconditionally. They feel honored when we appreciate their love and respect them. — It is important to remember that elders were not born elders.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l31-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "It is very important for us to respect our elders. It is also important to note that elders were not born elders; they were kids like us and now have grown old. A few years hence we will also grow older. If today we respect them, our present and future generations will carry those values and will learn to respect us as well when we grow old. Elders have a lot to share with us: their life experiences, their failures, their successes and many more. Thus, we need to care for them because they deserve to be cared for. Respect and care for elders start with our parents, as they are our first teachers in our life. No matter what we do in our lives, who we are, and where we live, we must love them as they love us unconditionally. They feel honored when we appreciate their love and respect them. — The passage says that elders have nothing to share with us.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l31-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "It is very important for us to respect our elders. It is also important to note that elders were not born elders; they were kids like us and now have grown old. A few years hence we will also grow older. If today we respect them, our present and future generations will carry those values and will learn to respect us as well when we grow old. Elders have a lot to share with us: their life experiences, their failures, their successes and many more. Thus, we need to care for them because they deserve to be cared for. Respect and care for elders start with our parents, as they are our first teachers in our life. No matter what we do in our lives, who we are, and where we live, we must love them as they love us unconditionally. They feel honored when we appreciate their love and respect them. — What does “they” in the third line of paragraph 2 refer to?",
+     "options": [
+      "future generations",
+      "parents",
+      "teachers",
+      "lives"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 32,
+   "title": "نهایی خرداد ۱۴۰۰ — خوانداریِ فرهنگِ لغت (س۱۴، ص۳۱۸)",
+   "level": "چهارگزینه‌ای",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g12-l32-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "A good dictionary gives the user information about words such as spellings, pronunciations and definitions. It also gives examples of how to use the words in sentences correctly. Therefore, it is essential to know how to use a dictionary. In this text, we provide you with some helpful tips on how to use a dictionary effectively. 1. Read the Guide Words. These are the two words at the top of each page that show the first and last entries on the page. These words will help you find the word you are looking for in the right letter section. 2. Read the Definitions. Once you find an entry, you can find the exact meaning of the word, its pronunciation, part of speech, synonyms, antonyms, and probably its origin. 3. Look for Collocations. Learning the meaning of a single word is not usually enough. Through sentence examples, try to learn collocations to expand your vocabulary. — The passage says that good dictionaries give information about how to buy a dictionary.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l32-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "A good dictionary gives the user information about words such as spellings, pronunciations and definitions. It also gives examples of how to use the words in sentences correctly. Therefore, it is essential to know how to use a dictionary. In this text, we provide you with some helpful tips on how to use a dictionary effectively. 1. Read the Guide Words. These are the two words at the top of each page that show the first and last entries on the page. These words will help you find the word you are looking for in the right letter section. 2. Read the Definitions. Once you find an entry, you can find the exact meaning of the word, its pronunciation, part of speech, synonyms, antonyms, and probably its origin. 3. Look for Collocations. Learning the meaning of a single word is not usually enough. Through sentence examples, try to learn collocations to expand your vocabulary. — It is necessary to know how to use a dictionary.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l32-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "A good dictionary gives the user information about words such as spellings, pronunciations and definitions. It also gives examples of how to use the words in sentences correctly. Therefore, it is essential to know how to use a dictionary. In this text, we provide you with some helpful tips on how to use a dictionary effectively. 1. Read the Guide Words. These are the two words at the top of each page that show the first and last entries on the page. These words will help you find the word you are looking for in the right letter section. 2. Read the Definitions. Once you find an entry, you can find the exact meaning of the word, its pronunciation, part of speech, synonyms, antonyms, and probably its origin. 3. Look for Collocations. Learning the meaning of a single word is not usually enough. Through sentence examples, try to learn collocations to expand your vocabulary. — According to the passage, ------- are the two words at the top of each page that show the first and last entries on the page.",
+     "options": [
+      "definitions",
+      "guide words",
+      "pronunciations",
+      "spellings"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 33,
+   "title": "نهایی خرداد ۱۴۰۰ — خوانداریِ آبی‌برق (س۱۵، ص۳۱۸)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l33-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Hydropower is a type of renewable energy. It uses water to make electricity. Water moves in a large cycle and then goes back to the ocean. The energy of this water cycle produces electricity. Because the water cycle is an endless system, hydropower is a renewable energy. When falling or running water is turned into electricity, it is called hydroelectric power or hydropower. Turbines convert the water energy into electricity which is then used for houses and businesses. This clean renewable energy is used in some countries to keep their cities and villages clean. In this way, fewer fossil fuels are consumed each year, and they are saved for future. — A type of renewable energy is called hydropower.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l33-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "Hydropower is a type of renewable energy. It uses water to make electricity. Water moves in a large cycle and then goes back to the ocean. The energy of this water cycle produces electricity. Because the water cycle is an endless system, hydropower is a renewable energy. When falling or running water is turned into electricity, it is called hydroelectric power or hydropower. Turbines convert the water energy into electricity which is then used for houses and businesses. This clean renewable energy is used in some countries to keep their cities and villages clean. In this way, fewer fossil fuels are consumed each year, and they are saved for future. — Turbines convert the water energy into electricity.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l33-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "Hydropower is a type of renewable energy. It uses water to make electricity. Water moves in a large cycle and then goes back to the ocean. The energy of this water cycle produces electricity. Because the water cycle is an endless system, hydropower is a renewable energy. When falling or running water is turned into electricity, it is called hydroelectric power or hydropower. Turbines convert the water energy into electricity which is then used for houses and businesses. This clean renewable energy is used in some countries to keep their cities and villages clean. In this way, fewer fossil fuels are consumed each year, and they are saved for future. — The passage says that clean energy is used in some of countries to keep the cities------- .",
+     "options": [
+      "hot",
+      "renewable",
+      "clean",
+      "endless"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l33-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "Hydropower is a type of renewable energy. It uses water to make electricity. Water moves in a large cycle and then goes back to the ocean. The energy of this water cycle produces electricity. Because the water cycle is an endless system, hydropower is a renewable energy. When falling or running water is turned into electricity, it is called hydroelectric power or hydropower. Turbines convert the water energy into electricity which is then used for houses and businesses. This clean renewable energy is used in some countries to keep their cities and villages clean. In this way, fewer fossil fuels are consumed each year, and they are saved for future. — When fewer fossil fuels are used each year, they are ------- for future.",
+     "options": [
+      "saved",
+      "consumed",
+      "used up",
+      "decreased"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 34,
+   "title": "نهایی خرداد ۱۴۰۰ — حروفِ ربط (س۱۶، ص۳۱۹)",
+   "level": "چهارگزینه‌ای",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g12-l34-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "I get up early in the morning, ------- I make an omelet myself.",
+     "options": [
+      "but",
+      "and",
+      "so",
+      "or"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l34-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "There is snow in the street, ------- it’s not too cold.",
+     "options": [
+      "but",
+      "and",
+      "so",
+      "or"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 35,
+   "title": "نهایی خرداد ۱۴۰۰ — مرتب‌سازیِ پاراگرافِ مورچه‌ها (س۱۸، ص۳۱۹)",
+   "level": "شش‌گزینه‌ای",
+   "count": 6,
+   "questions": [
+    {
+     "id": "g12-l35-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "مرتب‌سازیِ پاراگرافِ مورچه‌ها (س۱۸، ص۳۱۹) — جملاتِ درهم‌ریختهٔ a تا f؛ جایگاهِ ۵۱ (جملهٔ آغازینِ پاراگراف): -------",
+     "options": [
+      "Throughout the summer, they collect food for the winter season.",
+      "they stick to the sweet and carry it to their home.",
+      "Whenever they find sweet lying on the floor,",
+      "Ants are hardworking insects.",
+      "As a result, they are known as helpful and active insects.",
+      "Thus, in this way, they clean the floor."
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l35-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "مرتب‌سازیِ پاراگرافِ مورچه‌ها (س۱۸، ص۳۱۹) — جملاتِ درهم‌ریختهٔ a تا f؛ جایگاهِ ۵۲ در پاراگراف: -------",
+     "options": [
+      "Throughout the summer, they collect food for the winter season.",
+      "they stick to the sweet and carry it to their home.",
+      "Whenever they find sweet lying on the floor,",
+      "Ants are hardworking insects.",
+      "As a result, they are known as helpful and active insects.",
+      "Thus, in this way, they clean the floor."
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l35-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "مرتب‌سازیِ پاراگرافِ مورچه‌ها (س۱۸، ص۳۱۹) — جملاتِ درهم‌ریختهٔ a تا f؛ جایگاهِ ۵۳ در پاراگراف: -------",
+     "options": [
+      "Throughout the summer, they collect food for the winter season.",
+      "they stick to the sweet and carry it to their home.",
+      "Whenever they find sweet lying on the floor,",
+      "Ants are hardworking insects.",
+      "As a result, they are known as helpful and active insects.",
+      "Thus, in this way, they clean the floor."
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l35-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "مرتب‌سازیِ پاراگرافِ مورچه‌ها (س۱۸، ص۳۱۹) — جملاتِ درهم‌ریختهٔ a تا f؛ جایگاهِ ۵۴ در پاراگراف: -------",
+     "options": [
+      "Throughout the summer, they collect food for the winter season.",
+      "they stick to the sweet and carry it to their home.",
+      "Whenever they find sweet lying on the floor,",
+      "Ants are hardworking insects.",
+      "As a result, they are known as helpful and active insects.",
+      "Thus, in this way, they clean the floor."
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l35-5",
+     "n": 5,
+     "category": "grammar",
+     "question": "مرتب‌سازیِ پاراگرافِ مورچه‌ها (س۱۸، ص۳۱۹) — جملاتِ درهم‌ریختهٔ a تا f؛ جایگاهِ ۵۵ در پاراگراف: -------",
+     "options": [
+      "Throughout the summer, they collect food for the winter season.",
+      "they stick to the sweet and carry it to their home.",
+      "Whenever they find sweet lying on the floor,",
+      "Ants are hardworking insects.",
+      "As a result, they are known as helpful and active insects.",
+      "Thus, in this way, they clean the floor."
+     ],
+     "answer": 5
+    },
+    {
+     "id": "g12-l35-6",
+     "n": 6,
+     "category": "grammar",
+     "question": "مرتب‌سازیِ پاراگرافِ مورچه‌ها (س۱۸، ص۳۱۹) — جملاتِ درهم‌ریختهٔ a تا f؛ جایگاهِ ۵۶ (پایان‌بندیِ پاراگراف): -------",
+     "options": [
+      "Throughout the summer, they collect food for the winter season.",
+      "they stick to the sweet and carry it to their home.",
+      "Whenever they find sweet lying on the floor,",
+      "Ants are hardworking insects.",
+      "As a result, they are known as helpful and active insects.",
+      "Thus, in this way, they clean the floor."
+     ],
+     "answer": 4
     }
    ]
   }

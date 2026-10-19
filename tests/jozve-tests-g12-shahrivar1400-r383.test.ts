@@ -311,14 +311,14 @@ describe("r383 — بانک l28 (س۱۶): حروفِ ربط با بانکِ چا
 });
 
 describe("r383 — پیمان‌های سراسریِ فایل", () => {
-  it("شکلِ فایل: ۲۸ بانک/[100,100,100,6,7,6,10,4,6,8,4,4,4,4,4,5,7,4,4,4,2,5,7,4,4,4,2,2]/۴۲۱ id یکتا — الگویِ g12-l1..l28", () => {
-    expect(bank.lessons).toHaveLength(28);
+  it("شکلِ فایل: ۳۵ بانک/[…,2,2,7,4,3,3,4,2,6]/۴۵۰ id یکتا — الگویِ g12-l1..l35 (r384 هفت بانکِ خرداد ۱۴۰۰ را افزود)", () => {
+    expect(bank.lessons).toHaveLength(35);
     expect(bank.lessons.map((l) => l.count)).toEqual(
-      [100, 100, 100, 6, 7, 6, 10, 4, 6, 8, 4, 4, 4, 4, 4, 5, 7, 4, 4, 4, 2, 5, 7, 4, 4, 4, 2, 2],
+      [100, 100, 100, 6, 7, 6, 10, 4, 6, 8, 4, 4, 4, 4, 4, 5, 7, 4, 4, 4, 2, 5, 7, 4, 4, 4, 2, 2, 7, 4, 3, 3, 4, 2, 6],
     );
     const ids = bank.lessons.flatMap((b2) => b2.questions.map((q) => q.id));
-    expect(ids).toHaveLength(421);
-    expect(new Set(ids).size).toBe(421);
+    expect(ids).toHaveLength(450);
+    expect(new Set(ids).size).toBe(450);
     expect(ids[393]).toBe("g12-l22-1");
     expect(ids[398]).toBe("g12-l23-1");
     expect(ids[405]).toBe("g12-l24-1");
@@ -331,7 +331,7 @@ describe("r383 — پیمان‌های سراسریِ فایل", () => {
   });
 
   it("بانک‌های نهایی ترجمه ندارند (غیبتِ صادقانه) و MCQِ خالص‌اند (قراردادِ کارتِ g12)", () => {
-    for (const bn of [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28])
+    for (const bn of [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35])
       for (const it of L(bn).questions) {
         expect(it.translation, `${it.id} must have no translation`).toBeUndefined();
         expect(it.kind, `${it.id} must be MCQ`).toBeUndefined();
@@ -341,7 +341,10 @@ describe("r383 — پیمان‌های سراسریِ فایل", () => {
   });
 
   it("نشت‌سنجِ ردیف‌های مستثنی: شنیداریِ صوتیِ س۱-س۳، تصویریِ س۵، بازِ تایپیِ س۱۰-س۱۲ و ۴۰/۴۷/۴۸، تصویریِ س۱۷ و تولیدیِ س۱۸-س۱۹ غایب‌اند", () => {
-    const all = bank.lessons.flatMap((b2) => b2.questions);
+    // r384 درسِ مهم: جملهٔ «make an omelet» در برگهٔ خواهرِ خرداد ۱۴۰۰ (l34) سؤالِ متنیِ
+    // عادی با کلیدِ چاپی است و درست استخراج شده — پس نشت‌سنجِ r383 فقط بانک‌های خودِ
+    // این راند (۲۲-۲۸) را می‌پیماید
+    const all = bank.lessons.filter((b2) => b2.lesson >= 22 && b2.lesson <= 28).flatMap((b2) => b2.questions);
     for (const forbidden of [
       "A friend in need, is a friend indeed", // س۳ (شنیداریِ صوتی)
       "flew kites", // س۲ (شنیداریِ صوتی)
