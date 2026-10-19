@@ -343,14 +343,14 @@ describe("r381 — بانک l15 (س۱۷): حروفِ ربط با بانکِ چا
 });
 
 describe("r381 — پیمان‌های سراسریِ فایل", () => {
-  it("شکلِ فایل: ۲۱ بانک/[100,100,100,6,7,6,10,4,6,8,4,4,4,4,4,5,7,4,4,4,2]/۳۹۳ id یکتا — الگویِ g12-l1..l21 (r382 شش بانکِ دی ۱۴۰۰ را افزود)", () => {
-    expect(bank.lessons).toHaveLength(21);
+  it("شکلِ فایل: ۲۸ بانک/[…,5,7,4,4,4,2,5,7,4,4,4,2,2]/۴۲۱ id یکتا — الگویِ g12-l1..l28 (r382 شش بانکِ دی ۱۴۰۰ و r383 هفت بانکِ شهریور ۱۴۰۰ را افزود)", () => {
+    expect(bank.lessons).toHaveLength(28);
     expect(bank.lessons.map((l) => l.count)).toEqual(
-      [100, 100, 100, 6, 7, 6, 10, 4, 6, 8, 4, 4, 4, 4, 4, 5, 7, 4, 4, 4, 2],
+      [100, 100, 100, 6, 7, 6, 10, 4, 6, 8, 4, 4, 4, 4, 4, 5, 7, 4, 4, 4, 2, 5, 7, 4, 4, 4, 2, 2],
     );
     const ids = bank.lessons.flatMap((b2) => b2.questions.map((q) => q.id));
-    expect(ids).toHaveLength(393);
-    expect(new Set(ids).size).toBe(393);
+    expect(ids).toHaveLength(421);
+    expect(new Set(ids).size).toBe(421);
     expect(ids[329]).toBe("g12-l8-1");
     expect(ids[333]).toBe("g12-l9-1");
     expect(ids[339]).toBe("g12-l10-1");
@@ -364,7 +364,7 @@ describe("r381 — پیمان‌های سراسریِ فایل", () => {
   });
 
   it("بانک‌های نهایی ترجمه ندارند (غیبتِ صادقانه) و MCQِ خالص‌اند (قراردادِ کارتِ g12)", () => {
-    for (const bn of [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21])
+    for (const bn of [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28])
       for (const it of L(bn).questions) {
         expect(it.translation, `${it.id} must have no translation`).toBeUndefined();
         expect(it.kind, `${it.id} must be MCQ`).toBeUndefined();

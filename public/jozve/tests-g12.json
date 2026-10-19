@@ -293,6 +293,107 @@
    ],
    "futureNote": "بخشِ چهارم ~۱۲ برگهٔ دیگر دارد (ص۲۲۸-۳۲۱ + ص۳۲۲-۳۲۸ شهریور ۱۴۰۰ تأییدشده) — الگویِ همین رسید؛ کاندیدهای تایپیِ این برگه (س۱۰ «had seen» + ردیف‌های ۳۳/۳۴/۴۰/۴۳/۴۴/۴۷/۴۸) به کاندیدهای r380/r381 اضافه شدند — مخزنِ بانکِ تایپیِ نهایی‌ها اکنون ۲۱ ردیف است",
    "bookletFile": "جزوه_جامع_پایه_دوازدهم_با_امتحانات_نهایی_.pdf"
+  },
+  "g12nahaie4": {
+   "extractedRound": "r383",
+   "section": "بخش چهارمِ جزوه: «آزمونهای از دی ماه 1397 تا شهریور 1401 نهابی با کلید» — برگهٔ چهارم: «سؤالات امتحان نهایی» زبان انگلیسی (۳) نوبتِ شهریور ۱۴۰۰",
+   "examPages": "pdf-p322-326 (پنج صفحهٔ آزمون) + کلیدِ رسمی: pdf-p327-328 «راهنماي تصحيح»؛ مرزِ برگه‌ها = p321→p322 (پایانِ کلیدِ برگهٔ قبل) و p328→p329 (آغازِ دی ۱۴۰۰ِ r382)",
+   "examMeta": "امتحان نهاییِ سراسریِ وزارت — درس: زبان انگلیسی (۳) — پایه دوازدهم دورهٔ دوم متوسطه — رشته: کلیه رشته‌ها — نوبت شهریور ۱۴۰۰ (تاریخِ چاپی: ۲۴/۰۶/۱۴۰۰ — ارقامِ چاپیِ سالم، برخلافِ r380) — مدت ۱۲۰ دقیقه — ساعت شروع ۸ صبح — ۱۹ سکشن/۵۵ ردیف/بارم ۴۰ — روزانه/بزرگسال/داوطلب آزاد — مركز سنجش و پايش كيفيت آموزشي (aee.medu.ir) — «GOOD LUCK / نمره 40»",
+   "keyPages": "pdf-p327-328 راهنمای تصحیحِ رسمی — «هر پاسخ صحيح (5/.) نمره» — ۴۸ فرگمنتِ کلیدِ چاپی در گارد پیمان می‌شود؛ ۲۸ کلید از ۲۸ آیتمِ بانک‌ها عینِ چاپ است",
+   "keyVerification": "کلیدِ چاپی عیناً نقل شد: «1. False (b) 2.True (a) 3. False (b) 4. True (a)» / «5. (b) 6. (a) 7. (c)» / «8. (b) 9. (b) 10. (a) 11. (c)» / «12. medicine 13.history 14. Persian 15. life 16. take» / «17. (c) 18. (a) 19. (d) 20. (e)» / «21. variety 22. arrange 23. absorb» / «24. (a) 25. (d) 26. (b)» / «27. spoil» / «28. (d) 29. (a) 30. (c) 31. (c)» / «36. (a) True 37. (b) False 38. ( c ) 39. (b)» / «41. (b) False 42. (a) True 43. (b) 44. (a)» / «45. (b) False 46. (a) True» / «49. or 50. but» — بلوک‌های درهمِ لایه برای س۱۱ (۳۳/۳۴) و س۱۵ (۴۷/۴۸) با داوریِ رندرِ ۳۰۰dpi (/tmp/qa-r383/p327-s11-key.png و p328-s15-key.png): «33. Sara had never seen a bear before she went to the zoo.» / «34. My sister would clean her room if she were at home.» / «47. You can do this in your yard or in your favorite park.» / «48. You should remind your children that all living creatures are parts of our world and are valuable in the natural environment.»",
+   "sectionsTotal": 55,
+   "sectionsExtracted": 28,
+   "sectionsSkipped": 27,
+   "items": 28,
+   "bankCounts": [
+    5,
+    7,
+    4,
+    4,
+    4,
+    2,
+    2
+   ],
+   "keyPolicy": "همهٔ کلیدهای ۲۸ آیتم از راهنمای تصحیحِ چاپی می‌آیند (عینِ چاپ)؛ گزینه‌های مهندسی‌شده: بانکِ کلوژِ l22 (استخرِ پنج‌واژه‌ایِ خودِ کلید — پنجمین چینشِ متمایز [2,4,0,3,1] پس از r380-l4/r381-l8-l9/r382-l16) و چهارِ اصطلاحِ l23-ق۷ (شکلِ حروفِ چاپ s---- محترم: spoil در برابرِ spice/spare/shine — هر چهار ۵حرفیِ s-دار)؛ کلیدهای درست/غلطِ l25/l26/l27 سمانتیک‌اند و چرخش نمی‌پذیرند؛ گرامرِ l24 دو cِ پیاپی در ۳۰/۳۱ دارد — ترتیبِ چاپ حفظ شد؛ بانکِ l28 به ترتیبِ دستورِ چاپ (but, and, so, or) با کلیدهای [or, but] در [3,0]",
+   "engineNote": "هر ۲۸ آیتم MCQ (قراردادِ کارتِ g12)؛ ساقه‌های خوانداریِ l25/l26/l27 هر سه متنِ کاملِ چاپی را در خود دارند (خودرویِ برقی/فرهنگِ لغت/احترام به طبیعت)؛ ساقه‌های کلوژِ س۴ متنِ چاپی + «پاسخِ خانهٔ (N)» (الگویِ r380-l4/r381-l8-l9/r382-l16)؛ ساقه‌های تعریف‌یابی دوبخشیِ فارسی (الگویِ r380-l5)؛ ساقه‌های A/B گرامر (ق۲۹/۳۰/۳۱) دوبخطیِ بازجوش؛ ترجمه عمداً غایب (نهایی‌ها ترجمهٔ چاپی ندارند)؛ نقطه‌چینِ چاپ → «-------» چسبیده",
+   "derivedKeys": {
+    "S4": [
+     "medicine",
+     "history",
+     "Persian",
+     "life",
+     "take"
+    ],
+    "S6": [
+     "variety",
+     "arrange",
+     "absorb"
+    ],
+    "S7": [
+     "the part at the beginning of a book that gives a general idea of what it is about",
+     "in a way that is successful and achieves what you want",
+     "a book in which you record your thoughts or feelings or what has happened every day"
+    ],
+    "S8": [
+     "spoil"
+    ],
+    "S9": [
+     "have you",
+     "which",
+     "should be called",
+     "could ask"
+    ],
+    "S13": [
+     "True",
+     "False",
+     "stored on",
+     "roll"
+    ],
+    "S14": [
+     "False",
+     "True",
+     "entry",
+     "confusing"
+    ],
+    "S15": [
+     "False",
+     "True"
+    ],
+    "S16": [
+     "or",
+     "but"
+    ]
+   },
+   "paperMap": "نقشهٔ paperMapِ r382 تأیید و گسترش یافت: برگهٔ چهارم (شهریور ۱۴۰۰، ص۳۲۲-۳۲۸) استخراج شد — تاریخِ چاپی ۲۴/۰۶/۱۴۰۰ و «نوبت شهریور ماه سال 1400» در سربرگ؛ کلیدِ ص۳۲۷-۳۲۸ با همان تاریخ؛ باقیِ برگه‌های ص۲۲۸-۳۲۱ هنوز پروبِ سال نشده‌اند (kandidatِ راندهای بعدی — p320-321 کلیدِ برگهٔ پیشین است)",
+   "skippedSections": [
+    "س۱ (ردیف ۱-۴، شنیداریِ درست/غلط): متنِ «فرهنگِ لغت» — صوتی-کلید (متنِ شنیداری چاپ نیست)؛ کلیدهای چاپی: 1.False(b)/2.True(a)/3.False(b)/4.True(a) — در رسید حفظ شد",
+    "س۲ (ردیف ۵-۷، شنیداری): مکالمهٔ پدر و پسر (پیک‌نیک/والیبال/بادبادک) — صوتی-کلید با گزینه‌های چاپی؛ کلیدهای چاپی: 5.(b)/6.(a)/7.(c)",
+    "س۳ (ردیف ۸-۱۱، شنیداری): مکالمهٔ مهران/بیژن («A friend in need, is a friend indeed») — صوتی-کلید؛ کلیدهای چاپی: 8.(b)/9.(b)/10.(a)/11.(c)",
+    "س۵ (ردیف ۱۷-۲۰، تصویری): «با توجه به تصاویر... یک جمله اضافی است» — چهار تصویر با داوریِ کاملِ رندر (ص۳۲۳): (17) زغالِ گاری+بشکه+کپسولِ گاز→c، (18) پدرِ سالخورده در آغوشِ پسر→a، (19) ترسیمِ توربین‌های بادی→d، (20) پسرِ گیج با انگشت بر شقیقه→e؛ اضافیِ چاپی: b) Hamid sits on the sofa and watches TV all the time — هم‌خوانِ کلیدِ رسمی",
+    "س۱۰ (ردیف ۳۲، شکلِ فعلِ باز): کلیدِ چاپیِ دقیق «had got/gotten» (دو شکلِ مجازِ چاپ — برخلافِ «had seen» تک‌شکلیِ r382) — بدونِ گزینهٔ چاپی؛ کاندیدِ بانکِ تایپی",
+    "س۱۱-س۱۲ (ردیف ۳۳-۳۵): جمله‌سازیِ درهم (پاسخِ مدل: «Sara had never seen a bear before she went to the zoo.» و «My sister would clean her room if she were at home.» — بلوکِ درهمِ لایه با داوریِ رندر) و ضمیرِ موصولی (کلیدِ بند-رأیی: which + جملهٔ دارای فعل، بارم ۰.۵+۰.۵) — کاندیدِ تایپی/تولیدی",
+    "ردیف ۴۰ (پاسخِ مدلِ خودروی برقی: «portable device» بارم ۱) — کاندیدِ تایپی؛ ردیف ۴۷ («You can do this in your yard or in your favorite park.» — عبارتِ زیرخط‌دارِ چاپ) و ۴۸ («You should remind your children that all living creatures are parts of our world and are valuable in the natural environment.» — بلوکِ درهم، داوریِ رندر) — کاندیدِ تایپی",
+    "س۱۷ (ردیف ۵۱، حرفِ ربط با تصویر): کلیدِ چاپیِ کامل «51.. …..and I make an omelet.» (نشانگرِ دودانهٔ چاپ «51..») ولی دستورِ سکشن «با استفاده از تصویر» است — تصویری-کلید (الگویِ r380-ردیف۱۶/r381/r382-س۱۷)؛ کلید حفظ شد",
+    "س۱۸-س۱۹ (ردیف ۵۲-۵۵، نگارشِ تولیدی): سه جملهٔ موضوعی (Smoking/Hafez/Technology) و پاراگرافِ Wind towers با چیپ‌های چاپی (In Yazd’s buildings / Natural air cooling system / Source of clean energy) — تولیدی با کلیدِ بند-رأیی"
+   ],
+   "printQuirks": [
+    "دومین برگهٔ presentation-forms (ﺳﺆاﻻت/اﻣﺘﺤﺎن/ﭘﺎﯾﻪ) — همان تایپوگرافیِ r382؛ متنِ انگلیسی و کلیدها لاتینِ سالم",
+    "نشانگرِ «21.They» چسبیده بدونِ فاصله (برخلافِ «22. » با فاصله) در همان سکشن",
+    "کلیدِ «13.history» چسبیده بدونِ فاصله (برخلافِ «12. medicine»)",
+    "«38. ( c )» — فاصله‌های چاپیِ داخلِ پرانتزِ کلید (همان کوئیرکِ r380-q38 و r382-q38)",
+    "ق۵۰ «Mary studies a lot , ……….» — فاصلهٔ پیش از ویرگول — عینِ چاپ",
+    "ق۲۹ «I lost yesterday..» — دونقطهٔ پایانیِ چاپ — verbatim در ساقه",
+    "«51.. …..and I make an omelet.» — نشانگرِ دودانهٔ «51..» در کلید",
+    "آپاستروفِ مخلوط در یک جمله: «That's» مستقیم در کنارِ «I’ll» خمیده (س۴) — عینِ چاپ حفظ شد",
+    "ق۳۶ «replaced  by» — فاصلهٔ دوبلِ چاپی (پس از collapse به تک‌فاصله رسید)",
+    "گزینهٔ «c)surprising» چسبیده بدونِ فاصله (ق۴۴)",
+    "ق۴۳ بدونِ نقطهٔ پایانیِ چاپ — ساقه با خودِ نقطه‌چین تمام می‌شود («…its -------»)",
+    "«a)True      b) False» چسبیده به ساقه در ق۳۶/۴۵/۴۶ ولی سطرِ جدا در ق۳۷/۴۱/۴۲",
+    "نقطه‌چین‌های چسبیده به واژهٔ بعدی: «………..the chairs» / «……….carbon dioxide» / «……………..I take» / «……….she can’t»",
+    "بلوک‌های کلیدِ RTLِ درهم: س۱۱ («fore/be» و «oom/r» شکسته) و س۱۵ («You can do th/is» و «are part/s») — داوریِ رندرِ ۳۰۰dpi"
+   ],
+   "futureNote": "بخشِ چهارم ~۱۱ برگهٔ دیگر دارد (ص۲۲۸-۳۲۱) — الگویِ همین رسید؛ کاندیدهای تایپیِ این برگه (س۱۰ «had got/gotten» + ردیف‌های ۳۳/۳۴/۴۰/۴۷/۴۸) به کاندیدهای r380/r381/r382 اضافه شدند — مخزنِ بانکِ تایپیِ نهایی‌ها اکنون ۲۷ ردیف است (۲۱ِ r382 + ۶ ردیفِ تازه)",
+   "bookletFile": "جزوه_جامع_پایه_دوازدهم_با_امتحانات_نهایی_.pdf"
   }
  },
  "answerArbitration": [
@@ -6016,6 +6117,419 @@
       "or"
      ],
      "answer": 3
+    }
+   ]
+  },
+  {
+   "lesson": 22,
+   "title": "نهایی شهریور ۱۴۰۰ — کلوژِ مکالمهٔ پزشکان (س۴، ص۳۲۲)",
+   "level": "پنج‌گزینه‌ای",
+   "count": 5,
+   "questions": [
+    {
+     "id": "g12-l22-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "Sara: It is so good that there are famous physicians in your hospital. Nurse: Do you know Iran has always had great physicians and doctors and has been rich in-------(12)------- . Sara: It sounds interesting. Can you name some of them? I’d like to know them. Nurse: Back in -------(13)-------, we can mention Avicenna. Sara: Avicenna! Can you tell me more about him? Nurse: Yeah, of course! He was a great -------(14)------- physician. He has written two great books. His -------(15)------- is a source of inspiration for many people. Sara: That's so nice. I think I’ll ask my dad to -------(16)------- us to Hamedan this summer. Nurse: Yeah, I think that will be an exciting trip! — پاسخِ خانهٔ (12): -------",
+     "options": [
+      "history",
+      "life",
+      "medicine",
+      "Persian",
+      "take"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l22-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "Sara: It is so good that there are famous physicians in your hospital. Nurse: Do you know Iran has always had great physicians and doctors and has been rich in-------(12)------- . Sara: It sounds interesting. Can you name some of them? I’d like to know them. Nurse: Back in -------(13)-------, we can mention Avicenna. Sara: Avicenna! Can you tell me more about him? Nurse: Yeah, of course! He was a great -------(14)------- physician. He has written two great books. His -------(15)------- is a source of inspiration for many people. Sara: That's so nice. I think I’ll ask my dad to -------(16)------- us to Hamedan this summer. Nurse: Yeah, I think that will be an exciting trip! — پاسخِ خانهٔ (13): -------",
+     "options": [
+      "Persian",
+      "medicine",
+      "take",
+      "life",
+      "history"
+     ],
+     "answer": 4
+    },
+    {
+     "id": "g12-l22-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "Sara: It is so good that there are famous physicians in your hospital. Nurse: Do you know Iran has always had great physicians and doctors and has been rich in-------(12)------- . Sara: It sounds interesting. Can you name some of them? I’d like to know them. Nurse: Back in -------(13)-------, we can mention Avicenna. Sara: Avicenna! Can you tell me more about him? Nurse: Yeah, of course! He was a great -------(14)------- physician. He has written two great books. His -------(15)------- is a source of inspiration for many people. Sara: That's so nice. I think I’ll ask my dad to -------(16)------- us to Hamedan this summer. Nurse: Yeah, I think that will be an exciting trip! — پاسخِ خانهٔ (14): -------",
+     "options": [
+      "Persian",
+      "take",
+      "life",
+      "history",
+      "medicine"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l22-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "Sara: It is so good that there are famous physicians in your hospital. Nurse: Do you know Iran has always had great physicians and doctors and has been rich in-------(12)------- . Sara: It sounds interesting. Can you name some of them? I’d like to know them. Nurse: Back in -------(13)-------, we can mention Avicenna. Sara: Avicenna! Can you tell me more about him? Nurse: Yeah, of course! He was a great -------(14)------- physician. He has written two great books. His -------(15)------- is a source of inspiration for many people. Sara: That's so nice. I think I’ll ask my dad to -------(16)------- us to Hamedan this summer. Nurse: Yeah, I think that will be an exciting trip! — پاسخِ خانهٔ (15): -------",
+     "options": [
+      "take",
+      "history",
+      "Persian",
+      "life",
+      "medicine"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l22-5",
+     "n": 5,
+     "category": "vocab",
+     "question": "Sara: It is so good that there are famous physicians in your hospital. Nurse: Do you know Iran has always had great physicians and doctors and has been rich in-------(12)------- . Sara: It sounds interesting. Can you name some of them? I’d like to know them. Nurse: Back in -------(13)-------, we can mention Avicenna. Sara: Avicenna! Can you tell me more about him? Nurse: Yeah, of course! He was a great -------(14)------- physician. He has written two great books. His -------(15)------- is a source of inspiration for many people. Sara: That's so nice. I think I’ll ask my dad to -------(16)------- us to Hamedan this summer. Nurse: Yeah, I think that will be an exciting trip! — پاسخِ خانهٔ (16): -------",
+     "options": [
+      "life",
+      "take",
+      "medicine",
+      "Persian",
+      "history"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 23,
+   "title": "نهایی شهریور ۱۴۰۰ — واژگان و تعریف و اصطلاح (س۶-س۸، ص۳۲۳)",
+   "level": "چهارگزینه‌ای",
+   "count": 7,
+   "questions": [
+    {
+     "id": "g12-l23-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "They do a ------- of fitness activities.",
+     "options": [
+      "absorb",
+      "variety",
+      "forgive",
+      "arrange"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l23-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "We’ll need to -------the chairs around the table.",
+     "options": [
+      "absorb",
+      "variety",
+      "forgive",
+      "arrange"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l23-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "Plants -------carbon dioxide.",
+     "options": [
+      "absorb",
+      "variety",
+      "forgive",
+      "arrange"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l23-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "«This book has only a two-page introduction.» — تعریفِ ستون B برای واژهٔ «introduction»: -------",
+     "options": [
+      "the part at the beginning of a book that gives a general idea of what it is about",
+      "a book in which you record your thoughts or feelings or what has happened every day",
+      "cry suddenly",
+      "in a way that is successful and achieves what you want"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l23-5",
+     "n": 5,
+     "category": "vocab",
+     "question": "«If you know how to study more effectively, you’ll be able to learn more.» — تعریفِ ستون B برای واژهٔ «effectively»: -------",
+     "options": [
+      "the part at the beginning of a book that gives a general idea of what it is about",
+      "a book in which you record your thoughts or feelings or what has happened every day",
+      "cry suddenly",
+      "in a way that is successful and achieves what you want"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l23-6",
+     "n": 6,
+     "category": "vocab",
+     "question": "«I have kept a diary for twelve years.» — تعریفِ ستون B برای واژهٔ «diary»: -------",
+     "options": [
+      "the part at the beginning of a book that gives a general idea of what it is about",
+      "a book in which you record your thoughts or feelings or what has happened every day",
+      "cry suddenly",
+      "in a way that is successful and achieves what you want"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l23-7",
+     "n": 7,
+     "category": "vocab",
+     "question": "When there are too many people trying to lead, it’s confusing and leads to bad results. You know that “too many cooks s - - - - the broth”.",
+     "options": [
+      "spoil",
+      "spice",
+      "spare",
+      "shine"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 24,
+   "title": "نهایی شهریور ۱۴۰۰ — گرامر (س۹، ص۳۲۴)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l24-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "You haven’t done your homework, -------?",
+     "options": [
+      "haven’t you",
+      "haven’t I",
+      "does your homework",
+      "have you"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l24-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "A: What did you find? B: I found the keys ------- I lost yesterday..",
+     "options": [
+      "which",
+      "who",
+      "where",
+      "whom"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l24-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "A: How can the teachers talk to the parents? B: The parents ------- by the principal.",
+     "options": [
+      "may call",
+      "have called",
+      "should be called",
+      "are calling"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l24-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "A: This question is very hard, and I can’t solve it. B: If our friends came here, we ------- them for help.",
+     "options": [
+      "may ask",
+      "were asked",
+      "could ask",
+      "were asking"
+     ],
+     "answer": 2
+    }
+   ]
+  },
+  {
+   "lesson": 25,
+   "title": "نهایی شهریور ۱۴۰۰ — خوانداریِ خودروی برقی (س۱۳، ص۳۲۴-۳۲۵)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l25-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Many countries now think that cars that burn fossil fuels should be replaced by electric cars. Electric cars don’t burn gasoline in the engine, so they don’t pollute the air. They use electricity stored on the car in batteries. Sometimes, 12 or 24 batteries, or more, are needed to power the car. Just like a remote-controlled car, an electric car has an electric motor that turns the wheels and a battery to run the motor. Electricity, the same energy that lights your lamps and runs your TV, is stored in batteries on an electric car. The batteries can be like the batteries you find in flashlights or in regular gasoline cars. To get the battery ready to roll, you have to charge it. This process isn’t much different from the way you charge the portable devices you carry around every day: your cell phone, MP3 player, or digital camera. The difference is that you deal with a much bigger gadget that carries you around instead. — According to the passage, many countries think that cars that use fossil fuels should be replaced by electric cars.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l25-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "Many countries now think that cars that burn fossil fuels should be replaced by electric cars. Electric cars don’t burn gasoline in the engine, so they don’t pollute the air. They use electricity stored on the car in batteries. Sometimes, 12 or 24 batteries, or more, are needed to power the car. Just like a remote-controlled car, an electric car has an electric motor that turns the wheels and a battery to run the motor. Electricity, the same energy that lights your lamps and runs your TV, is stored in batteries on an electric car. The batteries can be like the batteries you find in flashlights or in regular gasoline cars. To get the battery ready to roll, you have to charge it. This process isn’t much different from the way you charge the portable devices you carry around every day: your cell phone, MP3 player, or digital camera. The difference is that you deal with a much bigger gadget that carries you around instead. — Electric cars always burn gasoline in the engine.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l25-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "Many countries now think that cars that burn fossil fuels should be replaced by electric cars. Electric cars don’t burn gasoline in the engine, so they don’t pollute the air. They use electricity stored on the car in batteries. Sometimes, 12 or 24 batteries, or more, are needed to power the car. Just like a remote-controlled car, an electric car has an electric motor that turns the wheels and a battery to run the motor. Electricity, the same energy that lights your lamps and runs your TV, is stored in batteries on an electric car. The batteries can be like the batteries you find in flashlights or in regular gasoline cars. To get the battery ready to roll, you have to charge it. This process isn’t much different from the way you charge the portable devices you carry around every day: your cell phone, MP3 player, or digital camera. The difference is that you deal with a much bigger gadget that carries you around instead. — Electric cars use electricity ------- the car in batteries.",
+     "options": [
+      "consumed by",
+      "replaced in",
+      "stored on",
+      "polluted"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l25-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "Many countries now think that cars that burn fossil fuels should be replaced by electric cars. Electric cars don’t burn gasoline in the engine, so they don’t pollute the air. They use electricity stored on the car in batteries. Sometimes, 12 or 24 batteries, or more, are needed to power the car. Just like a remote-controlled car, an electric car has an electric motor that turns the wheels and a battery to run the motor. Electricity, the same energy that lights your lamps and runs your TV, is stored in batteries on an electric car. The batteries can be like the batteries you find in flashlights or in regular gasoline cars. To get the battery ready to roll, you have to charge it. This process isn’t much different from the way you charge the portable devices you carry around every day: your cell phone, MP3 player, or digital camera. The difference is that you deal with a much bigger gadget that carries you around instead. — The passage says to get the battery in electric cars ready to -------, you have to charge it.",
+     "options": [
+      "produce",
+      "roll",
+      "carry",
+      "deal"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 26,
+   "title": "نهایی شهریور ۱۴۰۰ — خوانداریِ فرهنگِ لغت (س۱۴، ص۳۲۵)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l26-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "It is very important for students to know how to use a dictionary because a dictionary gives the users a lot of information. Here you can find some helpful tips to use a dictionary well. Choose the Right Dictionary. There are many different types of dictionaries such as learner’s dictionaries, general dictionaries and etc. Therefore, first identify your needs. Without choosing the right one you cannot meet your language needs. Read the Definitions. Once you find an entry, you can find the exact meaning of the word, its pronunciation, part of speech, synonyms, antonyms, and probably its origin. Learn the Abbreviations. Different types of abbreviations are often used in the definitions for a word. This can be confusing if you do not know what the abbreviations stand for. — According to the passage, there is only one type of good dictionary.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l26-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "It is very important for students to know how to use a dictionary because a dictionary gives the users a lot of information. Here you can find some helpful tips to use a dictionary well. Choose the Right Dictionary. There are many different types of dictionaries such as learner’s dictionaries, general dictionaries and etc. Therefore, first identify your needs. Without choosing the right one you cannot meet your language needs. Read the Definitions. Once you find an entry, you can find the exact meaning of the word, its pronunciation, part of speech, synonyms, antonyms, and probably its origin. Learn the Abbreviations. Different types of abbreviations are often used in the definitions for a word. This can be confusing if you do not know what the abbreviations stand for. — Dictionary users should know their needs.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l26-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "It is very important for students to know how to use a dictionary because a dictionary gives the users a lot of information. Here you can find some helpful tips to use a dictionary well. Choose the Right Dictionary. There are many different types of dictionaries such as learner’s dictionaries, general dictionaries and etc. Therefore, first identify your needs. Without choosing the right one you cannot meet your language needs. Read the Definitions. Once you find an entry, you can find the exact meaning of the word, its pronunciation, part of speech, synonyms, antonyms, and probably its origin. Learn the Abbreviations. Different types of abbreviations are often used in the definitions for a word. This can be confusing if you do not know what the abbreviations stand for. — You can find the exact meaning of a word when you find its -------",
+     "options": [
+      "learner’s dictionary",
+      "entry",
+      "part of speech",
+      "origin"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l26-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "It is very important for students to know how to use a dictionary because a dictionary gives the users a lot of information. Here you can find some helpful tips to use a dictionary well. Choose the Right Dictionary. There are many different types of dictionaries such as learner’s dictionaries, general dictionaries and etc. Therefore, first identify your needs. Without choosing the right one you cannot meet your language needs. Read the Definitions. Once you find an entry, you can find the exact meaning of the word, its pronunciation, part of speech, synonyms, antonyms, and probably its origin. Learn the Abbreviations. Different types of abbreviations are often used in the definitions for a word. This can be confusing if you do not know what the abbreviations stand for. — If the user does not know what the abbreviations stand for, it will be ------- to understand it.",
+     "options": [
+      "confusing",
+      "boring",
+      "surprising",
+      "easy"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 27,
+   "title": "نهایی شهریور ۱۴۰۰ — خوانداریِ احترام به طبیعت (س۱۵، ص۳۲۵)",
+   "level": "چهارگزینه‌ای",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g12-l27-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Respect is not only for people, you also need to respect nature. You should learn to respect nature and also teach it to your next generation. There are some good ways to improve the sense of respect for nature among society. When you are outside with your children, take the time to show them the beauty of nature. Show them the blueness of the sky on a clear, bright day, or grey sky on a cloudy day. Ask your child to touch trees, rocks and leaves to feel the temperatures. You can also teach your kids the names of different plants, trees, and animals and practice identifying them. You can do these and show the beauty of nature in your yard or in your favorite park. You may buy a plant for each child that they can take care of inside or outside of the house. You should remind your children that all living creatures are parts of our world and are valuable in the natural environment. — According to the passage, people should only respect other people.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l27-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "Respect is not only for people, you also need to respect nature. You should learn to respect nature and also teach it to your next generation. There are some good ways to improve the sense of respect for nature among society. When you are outside with your children, take the time to show them the beauty of nature. Show them the blueness of the sky on a clear, bright day, or grey sky on a cloudy day. Ask your child to touch trees, rocks and leaves to feel the temperatures. You can also teach your kids the names of different plants, trees, and animals and practice identifying them. You can do these and show the beauty of nature in your yard or in your favorite park. You may buy a plant for each child that they can take care of inside or outside of the house. You should remind your children that all living creatures are parts of our world and are valuable in the natural environment. — Our next generations need to know about nature and its value.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 28,
+   "title": "نهایی شهریور ۱۴۰۰ — حروفِ ربط (س۱۶، ص۳۲۶)",
+   "level": "چهارگزینه‌ای",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g12-l28-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "I go out tonight, -------I take a rest at home.",
+     "options": [
+      "but",
+      "and",
+      "so",
+      "or"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l28-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "Mary studies a lot , -------she can’t pass the exam.",
+     "options": [
+      "but",
+      "and",
+      "so",
+      "or"
+     ],
+     "answer": 0
     }
    ]
   }

@@ -290,14 +290,14 @@ describe("r382 — بانک l21 (س۱۶): حروفِ ربط با بانکِ چا
 });
 
 describe("r382 — پیمان‌های سراسریِ فایل", () => {
-  it("شکلِ فایل: ۲۱ بانک/[100,100,100,6,7,6,10,4,6,8,4,4,4,4,4,5,7,4,4,4,2]/۳۹۳ id یکتا — الگویِ g12-l1..l21", () => {
-    expect(bank.lessons).toHaveLength(21);
+  it("شکلِ فایل: ۲۸ بانک/[…,5,7,4,4,4,2,5,7,4,4,4,2,2]/۴۲۱ id یکتا — الگویِ g12-l1..l28 (r383 هفت بانکِ شهریور ۱۴۰۰ را افزود)", () => {
+    expect(bank.lessons).toHaveLength(28);
     expect(bank.lessons.map((l) => l.count)).toEqual(
-      [100, 100, 100, 6, 7, 6, 10, 4, 6, 8, 4, 4, 4, 4, 4, 5, 7, 4, 4, 4, 2],
+      [100, 100, 100, 6, 7, 6, 10, 4, 6, 8, 4, 4, 4, 4, 4, 5, 7, 4, 4, 4, 2, 5, 7, 4, 4, 4, 2, 2],
     );
     const ids = bank.lessons.flatMap((b2) => b2.questions.map((q) => q.id));
-    expect(ids).toHaveLength(393);
-    expect(new Set(ids).size).toBe(393);
+    expect(ids).toHaveLength(421);
+    expect(new Set(ids).size).toBe(421);
     expect(ids[367]).toBe("g12-l16-1");
     expect(ids[372]).toBe("g12-l17-1");
     expect(ids[379]).toBe("g12-l18-1");
@@ -305,11 +305,19 @@ describe("r382 — پیمان‌های سراسریِ فایل", () => {
     expect(ids[387]).toBe("g12-l20-1");
     expect(ids[391]).toBe("g12-l21-1");
     expect(ids[392]).toBe("g12-l21-2");
+    expect(ids[393]).toBe("g12-l22-1");
+    expect(ids[398]).toBe("g12-l23-1");
+    expect(ids[405]).toBe("g12-l24-1");
+    expect(ids[409]).toBe("g12-l25-1");
+    expect(ids[413]).toBe("g12-l26-1");
+    expect(ids[417]).toBe("g12-l27-1");
+    expect(ids[419]).toBe("g12-l28-1");
+    expect(ids[420]).toBe("g12-l28-2");
     for (const b2 of bank.lessons) expect(b2.count).toBe(b2.questions.length);
   });
 
   it("بانک‌های نهایی ترجمه ندارند (غیبتِ صادقانه) و MCQِ خالص‌اند (قراردادِ کارتِ g12)", () => {
-    for (const bn of [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21])
+    for (const bn of [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28])
       for (const it of L(bn).questions) {
         expect(it.translation, `${it.id} must have no translation`).toBeUndefined();
         expect(it.kind, `${it.id} must be MCQ`).toBeUndefined();
