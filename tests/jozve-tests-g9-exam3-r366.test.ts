@@ -79,8 +79,8 @@ describe("r366 — شکلِ شش بانکِ امتحانی درس سوم", () =>
   it("counts: [4,6,6,2,4,6] — id یکتا در کلِ فایل (۲۱۷)", () => {
     expect([23, 24, 25, 26, 27, 28].map((n) => L(n).count)).toEqual([4, 6, 6, 2, 4, 6]);
     const ids = g9.lessons.flatMap((b) => b.questions.map((x) => x.id));
-    expect(ids).toHaveLength(217);
-    expect(new Set(ids).size).toBe(217);
+    expect(ids).toHaveLength(248);
+    expect(new Set(ids).size).toBe(248);
   });
 
   it("س۲ سوالی و منفی: وارونگی/منفی‌سازیِ یکتا + داربستِ جملهٔ ساده", () => {
@@ -158,8 +158,8 @@ describe("r366 — شکلِ شش بانکِ امتحانی درس سوم", () =>
     expect([1, 2, 3, 4, 5, 6].map((n) => q(28, n).answer)).toEqual([2, 3, 3, 3, 1, 1]);
   });
 
-  it("مستثنی‌ها وارد بانک نشده‌اند: Fitr-Eid و Fajr و افتان/خیزان غایب‌اند", () => {
-    const stems = g9.lessons.flatMap((b) => b.questions.map((x) => x.question)).join("\n");
+  it("مستثنی‌ها وارد بانک نشده‌اند: Fitr-Eid و Fajr و افتان/خیزان غایب‌اند (scoped به بانک‌های ۲۳-۲۸ — درسِ r367: فایل-wide سقوط می‌کند؛ Fajrِ درس پنجمِ r368 مشروع است)", () => {
+    const stems = [23, 24, 25, 26, 27, 28].flatMap((bn) => L(bn).questions.map((x) => x.question)).join("\n");
     expect(stems).not.toContain("Fitr-Eid");
     expect(stems).not.toContain("Fajr");
     expect(stems).not.toContain("rainy weather"); // س۶ِ آهنگی

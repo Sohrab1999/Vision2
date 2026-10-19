@@ -3712,6 +3712,572 @@
      "keyWhy": "واژهٔ درس «Fire station*» (ص۶۵) + پاسخِ c س۱۰ («At a fire station.») + متنِ س۴ همان صفحه («There is a fire station in my city.»)؛ خانه‌های چاپی یکی کم‌تر از حروفِ fire station — کوئیرکِ مستند"
     }
    ]
+  },
+  {
+   "lesson": 36,
+   "title": "امتحانی درس پنجم — بانک واژهٔ مکالمهٔ جشنوارهٔ فجر (س۲، ص۸۵)",
+   "level": "تمرین تایپی (بانک واژه)",
+   "count": 10,
+   "questions": [
+    {
+     "id": "g9-l36-1",
+     "n": 1,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "A: Did you enjoy your -------?",
+     "options": [
+      "weekend",
+      "watched"
+     ],
+     "answer": 0,
+     "accepted": [
+      "weekend"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ verbatim درس: «Mina: Did you enjoy your weekend?» (لایه p78:032)"
+    },
+    {
+     "id": "g9-l36-2",
+     "n": 2,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "B: Yes, it was -------.",
+     "options": [
+      "wonderful",
+      "interested"
+     ],
+     "answer": 0,
+     "accepted": [
+      "wonderful"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ verbatim: «Mahsa: Yes, it was wonderful! …» (لایه p78:035) + Wonderful* (p77:096)"
+    },
+    {
+     "id": "g9-l36-3",
+     "n": 3,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "A: What ------- you do?",
+     "options": [
+      "did",
+      "didn’t"
+     ],
+     "answer": 0,
+     "accepted": [
+      "did"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "ساختاری: did-پرسشِ گذشته + شکلِ سادهٔ فعل؛ همتای تمرینِ درس: «What did you do last week?» (لایه p80:017)"
+    },
+    {
+     "id": "g9-l36-4",
+     "n": 4,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "B: I ------- Fajr International Film Festival.",
+     "options": [
+      "attended",
+      "watched"
+     ],
+     "answer": 0,
+     "accepted": [
+      "attended"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ verbatim: «I attended Fajr International Film Festival.» (لایه p78:035) + Attend* (p77:034)"
+    },
+    {
+     "id": "g9-l36-5",
+     "n": 5,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "A: I’m also ------- in its movies.",
+     "options": [
+      "interested",
+      "wonderful"
+     ],
+     "answer": 0,
+     "accepted": [
+      "interested"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ verbatim: «I am also interested in its events and movies.» (لایه p78:043)؛ ساختارِ interested in"
+    },
+    {
+     "id": "g9-l36-6",
+     "n": 6,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "B: Did you ------- the reports on TV last night?",
+     "options": [
+      "watch",
+      "watched"
+     ],
+     "answer": 0,
+     "accepted": [
+      "watch"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ verbatim: «did you watch the reports on TV last night?» (لایه p78:051)؛ Did + شکلِ سادهٔ فعل — «watched» اضافیِ چاپیِ بانک"
+    },
+    {
+     "id": "g9-l36-7",
+     "n": 7,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "A: No, I -------. I like to read about them.",
+     "options": [
+      "didn’t",
+      "did"
+     ],
+     "answer": 0,
+     "accepted": [
+      "didn’t",
+      "did not"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "پاسخِ کوتاهِ منفیِ did-پرسش: «No, I didn’t.» — الگوی تمرینِ درس: «No, she didn’t.» (لایه p79:050)؛ درسِ خودش «Yes, I did» دارد ولی ساقهٔ چاپیِ «No» حاکم است؛ بازشدنِ مخفف روادار"
+    },
+    {
+     "id": "g9-l36-8",
+     "n": 8,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "B: You can ------- its website.",
+     "options": [
+      "surf",
+      "text"
+     ],
+     "answer": 0,
+     "accepted": [
+      "surf"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ verbatim: «you can surf its website if you like» (لایه p79:005)؛ سطرِ B چهارم دو بلنک دارد — نیمهٔ نخست"
+    },
+    {
+     "id": "g9-l36-9",
+     "n": 9,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "I can give you the website -------.",
+     "options": [
+      "address",
+      "text"
+     ],
+     "answer": 0,
+     "accepted": [
+      "address"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ verbatim: «Could you please give me the website address?» (لایه p79:015) — نیمهٔ دومِ همان سطر"
+    },
+    {
+     "id": "g9-l36-10",
+     "n": 10,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "A: Thanks a lot. You can ------- It.",
+     "options": [
+      "text",
+      "surf"
+     ],
+     "answer": 0,
+     "accepted": [
+      "text"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ verbatim: «I just texted it.» (لایه p79:021) + text a message* (p78:013)؛ حرفِ بزرگِ چاپیِ «It» verbatim"
+    }
+   ]
+  },
+  {
+   "lesson": 37,
+   "title": "امتحانی درس پنجم — وصل‌کردنیِ پرسش/پاسخ (س۳، ص۸۵)",
+   "level": "چهارگزینه‌ای (پنج‌گزینه‌ایِ چاپی)",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g9-l37-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Who watch the cartoon yesterday? ( ------- )",
+     "options": [
+      "No, he worked with his mobile.",
+      "They downloaded it last week.",
+      "He searched the Internet.",
+      "My brother.",
+      "She connected at school."
+     ],
+     "answer": 3,
+     "keyWhy": "پرسشِ Who → تنها پاسخِ شخصی: «My brother.» (a منفیِ did-پرسش، b زمانی، c مکانیِ بی‌پرسشِ مکانی، e مکانی)؛ «Who watch» افتادِ -edِ چاپ است — verbatim"
+    },
+    {
+     "id": "g9-l37-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "Did your father work with the computer? ( ------- )",
+     "options": [
+      "No, he worked with his mobile.",
+      "They downloaded it last week.",
+      "He searched the Internet.",
+      "My brother.",
+      "She connected at school."
+     ],
+     "answer": 0,
+     "keyWhy": "did-پرسشِ بله/نه → پاسخِ منفیِ علت‌دار: a) — جفتِ verbatimِ تمرینِ درس: «Did Amir work with his computer? → No, he worked with his mobile.» (لایه p79:068/064)"
+    },
+    {
+     "id": "g9-l37-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "Where did Zahra connect to the Internet? ( ------- )",
+     "options": [
+      "No, he worked with his mobile.",
+      "They downloaded it last week.",
+      "He searched the Internet.",
+      "My brother.",
+      "She connected at school."
+     ],
+     "answer": 4,
+     "keyWhy": "پرسشِ Where → مکان: e) — تمرینِ درس: «Where did she connect to the Internet? → She connected to the Internet at school.» (لایه p80:052/044)"
+    },
+    {
+     "id": "g9-l37-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "When did they download the book from the Internet? ( ------- )",
+     "options": [
+      "No, he worked with his mobile.",
+      "They downloaded it last week.",
+      "He searched the Internet.",
+      "My brother.",
+      "She connected at school."
+     ],
+     "answer": 1,
+     "keyWhy": "پرسشِ When → زمان: b) — تمرینِ درس همان جفت با «yesterday»: «When did they download the book? → They downloaded it yesterday.» (لایه p80:039/033)"
+    }
+   ]
+  },
+  {
+   "lesson": 38,
+   "title": "امتحانی درس پنجم — کلمهٔ ناهماهنگ (س۴، ص۸۶)",
+   "level": "چهارگزینه‌ای",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g9-l38-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "amazing – wonderful – fantastic – cinema",
+     "options": [
+      "amazing",
+      "wonderful",
+      "fantastic",
+      "cinema"
+     ],
+     "answer": 3,
+     "keyWhy": "سه صفتِ ستایشی، همگی واژهٔ درس: Amazing* (p77:026)/Wonderful* (p77:096)/Fantastic* (p77:090)؛ cinema مکان است نه صفت"
+    },
+    {
+     "id": "g9-l38-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "Internet – connect – fruit – download",
+     "options": [
+      "Internet",
+      "connect",
+      "fruit",
+      "download"
+     ],
+     "answer": 2,
+     "keyWhy": "سه واژهٔ خانوادهٔ رسانه/فناوری (Connect* p77:066/Download* p77:082 و اینترنت)؛ fruit خوراکی است نه رسانه"
+    }
+   ]
+  },
+  {
+   "lesson": 39,
+   "title": "امتحانی درس پنجم — مرتب‌کردن جملات (س۵، ص۸۶)",
+   "level": "تمرین تایپی (مرتب‌کردن)",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g9-l39-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "are, things, many, there, interesting, there.",
+     "options": [
+      "There are many interesting things there.",
+      "are, things, many, there, interesting, there."
+     ],
+     "answer": 0,
+     "accepted": [
+      "There are many interesting things there."
+     ],
+     "placeholder": "write the sentence…",
+     "keyWhy": "مکالمهٔ verbatim درس: «There are many interesting things there.» (لایه p79:005-006) — تنها چینشِ دستوریِ شش واژه"
+    },
+    {
+     "id": "g9-l39-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "not, watch, show, we, a, quiz, did, yesterday.",
+     "options": [
+      "We did not watch a quiz show yesterday.",
+      "not, watch, show, we, a, quiz, did, yesterday."
+     ],
+     "answer": 0,
+     "accepted": [
+      "We did not watch a quiz show yesterday.",
+      "Yesterday we did not watch a quiz show."
+     ],
+     "placeholder": "write the sentence…",
+     "keyWhy": "عبارتِ photo dictionary: «watch a quiz show*» (لایه p78:019)؛ دو جایگاهِ قیدِ زمانِ پایان/آغاز هر دو دستوری‌اند — هر دو شکل accepted"
+    },
+    {
+     "id": "g9-l39-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "can, match, on, tonight, you, watch, TV, football.",
+     "options": [
+      "You can watch a football match on TV tonight.",
+      "can, match, on, tonight, you, watch, TV, football."
+     ],
+     "answer": 0,
+     "accepted": [
+      "You can watch a football match on TV tonight.",
+      "You can watch football match on TV tonight."
+     ],
+     "placeholder": "write the sentence…",
+     "keyWhy": "چینشِ یکتا؛ بانکِ چاپی حرفِ تعریفِ «a» را ندارد (چاپ‌خطای مستند) — شکلِ مقصود با «a» و شکلِ سخت‌گیرانهٔ واژه‌به‌واژه هر دو روادار؛ «football» در واژگانِ چاپیِ درس نیست (فقط Match* لایه p77:040)"
+    }
+   ]
+  },
+  {
+   "lesson": 40,
+   "title": "امتحانی درس پنجم — گزینهٔ صحیح (س۷، ص۸۶)",
+   "level": "چهارگزینه‌ای",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g9-l40-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "They ------- happy last summer.",
+     "options": [
+      "was not",
+      "didn’t",
+      "were",
+      "didn’t were"
+     ],
+     "answer": 2,
+     "keyWhy": "جمع + مسندِ صفتِ گذشته → «They were happy»؛ «was not» مفرد است و «didn’t were» ساختارِ ناممکن (did + شکلِ سادهٔ فعل)"
+    },
+    {
+     "id": "g9-l40-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "A: ------- did Amir install? B: He installed a computer dictionary.",
+     "options": [
+      "Where",
+      "What",
+      "When",
+      "Who"
+     ],
+     "answer": 1,
+     "keyWhy": "پاسخِ B شیءِ نصب‌شده را نام می‌برد → شیءخواهی: What؛ عبارتِ photo dictionary: «install a computer dictionary*» (لایه p78:016)"
+    },
+    {
+     "id": "g9-l40-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "She ------- upset yesterday.",
+     "options": [
+      "am",
+      "am not",
+      "wasn’t",
+      "were"
+     ],
+     "answer": 2,
+     "keyWhy": "سوم‌شخص + «yesterday» → wasn’t؛ «were» جمع است و «am» حالِ اول‌شخص — ساختاری"
+    }
+   ]
+  },
+  {
+   "lesson": 41,
+   "title": "امتحانی درس پنجم — کامل با کلماتِ پرانتز (س۸، ص۸۶)",
+   "level": "چهارگزینه‌ای (سه‌گزینه‌ایِ چاپی)",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g9-l41-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "You are really nice this month. But you ------- nice last month.",
+     "options": [
+      "aren’t",
+      "were",
+      "weren’t"
+     ],
+     "answer": 2,
+     "keyWhy": "تقابلِ «this month / last month» با «But» → منفیِ گذشته: weren’t؛ «were» مثبتِ ناسازگار و «aren’t» حال است"
+    },
+    {
+     "id": "g9-l41-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "My favorite player ------- a TV program 2 days ago.",
+     "options": [
+      "Attend",
+      "attended",
+      "attends"
+     ],
+     "answer": 1,
+     "keyWhy": "قیدِ گذشتهٔ «2 days ago» → attended؛ عبارتِ photo dictionary: «attend a TV program*» (لایه p78:008) و مکالمه: «I attended Fajr International Film Festival.»"
+    }
+   ]
+  },
+  {
+   "lesson": 42,
+   "title": "امتحانی درس پنجم — درک مطلب: درست/غلط (س۱۱، ص۸۷)",
+   "level": "چهارگزینه‌ای (درست/غلط)",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g9-l42-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "a) Something happened to her TV last Saturday. ( ------- )",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "keyWhy": "متنِ verbatim: «Last weekend, something happened to my TV.» (لایه p87:012) — Saturday نیست، weekend است → False"
+    },
+    {
+     "id": "g9-l42-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "b) Her grandfather came to her home. ( ------- )",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "keyWhy": "متنِ verbatim: «I called my grandmother. She came to our home.» (لایه p87:013-014) — مادربزرگ آمد نه پدربزرگ → False"
+    }
+   ]
+  },
+  {
+   "lesson": 43,
+   "title": "امتحانی درس پنجم — پاسخ به سؤالِ متن (س۱۱، ص۸۷)",
+   "level": "تمرین تایپی (درک مطلب)",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g9-l43-1",
+     "n": 1,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "Was Parisa happy at first?",
+     "options": [
+      "No, she wasn’t.",
+      "Yes, she was."
+     ],
+     "answer": 0,
+     "accepted": [
+      "No, she wasn’t.",
+      "No she wasn’t.",
+      "No, she was not.",
+      "No she was not."
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "متنِ verbatim: «At first, I wasn’t happy.» (لایه p87:013) — تبدیلِ ضمیرِ I→she؛ چهار شکلِ accepted (ویرگول × انقباض)"
+    },
+    {
+     "id": "g9-l43-2",
+     "n": 2,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "What did she do?",
+     "options": [
+      "She cleaned her room and called her grandmother.",
+      "She watched TV all day."
+     ],
+     "answer": 0,
+     "accepted": [
+      "She cleaned her room and called her grandmother.",
+      "She cleaned her room and she called her grandmother.",
+      "She called her grandmother and cleaned her room."
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "متنِ verbatim: «But then I cleaned my room and I called my grandmother.» (لایه p87:013-014) — تبدیلِ ضمیرِ I→she؛ حذف/نگه‌داشتنِ ضمیرِ دوم و ترتیبِ دو کنش روادار"
+    }
+   ]
+  },
+  {
+   "lesson": 44,
+   "title": "امتحانی درس پنجم — دیکتهٔ ناقص (دنبالهٔ بی‌شمارهٔ س۱۱، ص۸۷)",
+   "level": "تمرین تایپی (دیکتهٔ ناقص)",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g9-l44-1",
+     "n": 1,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "_nterview someb_dy",
+     "options": [
+      "interview somebody",
+      "attend a TV program"
+     ],
+     "answer": 0,
+     "accepted": [
+      "interview somebody"
+     ],
+     "placeholder": "complete the words…",
+     "keyWhy": "عبارتِ photo dictionary درس: «interview somebody*» (لایه p78:020) + Interview* (p77:020)؛ عبارتِ ناقص از رندرِ p87 خوانده شد (در لایه نیست — کوئیرکِ ۸)"
+    },
+    {
+     "id": "g9-l44-2",
+     "n": 2,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "Upd_te a blog",
+     "options": [
+      "update a blog",
+      "text a message"
+     ],
+     "answer": 0,
+     "accepted": [
+      "update a blog"
+     ],
+     "placeholder": "complete the words…",
+     "keyWhy": "عبارتِ photo dictionary درس: «update a blog*» (لایه p78:015) + Blog* (p77:042)؛ عبارتِ ناقص از رندرِ p87"
+    },
+    {
+     "id": "g9-l44-3",
+     "n": 3,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "use technol_gy",
+     "options": [
+      "use technology",
+      "watch a quiz show"
+     ],
+     "answer": 0,
+     "accepted": [
+      "use technology"
+     ],
+     "placeholder": "complete the words…",
+     "keyWhy": "کامل‌شدنیِ یکتا: technol_gy → technology؛ هم‌ارزِ مفهومیِ «use IT*» (لایه p78:017) — «technology» در لایه فقط در ضمیمهٔ تلفظِ ch (لایه p105) هست؛ لنگرِ واژگانیِ ضعیف‌تر از دو آیتمِ دیگر — مستند"
+    }
+   ]
   }
  ],
  "source": {
@@ -4252,6 +4818,138 @@
     "keep the city clean": "شهر را تمیز نگه‌داشتن — گزینهٔ س۹/س۶ (عبارتِ چاپی)"
    },
    "typedNote": "همهٔ ۱۴ آیتمِ تایپیِ تازه دو گزینه‌ای‌اند (کلید + داربستِ غلط) — قفلِ سراسریِ r363 (ممنوعیتِ تایپیِ تک‌گزینه‌ای) حفظ شد؛ داربست‌ها خانواده‌محور: چرخشِ عبارت‌های هم‌بانک (س۵/س۷/س۱۱)، ردیفِ به‌هم‌ریختهٔ چاپی (س۶)، جملهٔ سادهٔ خودِ ساقه (س۸)"
+  },
+  "g9exam5": {
+   "extractedRound": "r368",
+   "section": "سؤالات امتحانی درس پنجم پایه نهم",
+   "examPages": "pdf-p85-87 (برچسبِ فوتر: ۸۵/۸۶/۸۷)؛ p88 جلدِ «Lesson 6 — Health and Injuries» است و خانواده همان‌جا بسته می‌شود؛ درس ششم از pdf-p89 با واژگانِ «سلامتی و آسیب‌ها»",
+   "keyPages": "هیچ پاسخنامهٔ چاپی در جزوه برای این خانواده نیست (تنها پاسخنامهٔ جزوه: کلید واژگان ص۱۰۱ — r362)؛ کلیدها استنتاجیِ مستندند",
+   "sectionsTotal": 11,
+   "sectionsExtracted": 7,
+   "sectionsSkipped": 4,
+   "items": 31,
+   "bankCounts": [
+    10,
+    4,
+    2,
+    3,
+    3,
+    2,
+    2,
+    2,
+    3
+   ],
+   "wordBank": [
+    "watched",
+    "wonderful",
+    "did",
+    "weekend",
+    "text",
+    "interested",
+    "watch",
+    "didn’t",
+    "surf",
+    "attended",
+    "address"
+   ],
+   "extraWords": [
+    "watched"
+   ],
+   "keyPolicy": "کلیدِ استنتاجیِ مکالمه‌محور: این خانواده بازآراییِ خودِ مکالمه/تمرین‌های درس پنجم است — س۲ ده بلنکش نه‌به‌نه در مکالمهٔ verbatim درس (لایه p78-79) لنگر دارد؛ س۳ دو جفتش verbatimِ تمرین‌های درس (لایه p79-80) و دو جفتش با نوعِ پرسش‌واژه (Who→شخص، When→زمان) یکتاست؛ س۵ق۱ جملهٔ verbatim مکالمه است؛ س۷/س۸ ساختاری (توافقِ be/did + قیدِ زمان + نوعِ پاسخ)؛ دیکته از photo dictionary درس (لایه p78) — دو آیتمِ «use technology» و «football match» لنگرِ واژگانیِ ضعیف‌تر دارند و در keyWhy مستندند؛ هیچ کلیدی از خارجِ متنِ جزوه نیامده",
+   "derivedKeys": {
+    "S2": [
+     "مکالمهٔ verbatim درس: «Mina: Did you enjoy your weekend?» (لایه p78:032)",
+     "مکالمهٔ verbatim: «Mahsa: Yes, it was wonderful! …» (لایه p78:035) + Wonderful* (p77:096)",
+     "ساختاری: did-پرسشِ گذشته + شکلِ سادهٔ فعل؛ همتای تمرینِ درس: «What did you do last week?» (لایه p80:017)",
+     "مکالمهٔ verbatim: «I attended Fajr International Film Festival.» (لایه p78:035) + Attend* (p77:034)",
+     "مکالمهٔ verbatim: «I am also interested in its events and movies.» (لایه p78:043)؛ ساختارِ interested in",
+     "مکالمهٔ verbatim: «did you watch the reports on TV last night?» (لایه p78:051)؛ Did + شکلِ سادهٔ فعل — «watched» اضافیِ چاپیِ بانک",
+     "پاسخِ کوتاهِ منفیِ did-پرسش: «No, I didn’t.» — الگوی تمرینِ درس: «No, she didn’t.» (لایه p79:050)؛ درسِ خودش «Yes, I did» دارد ولی ساقهٔ چاپیِ «No» حاکم است؛ بازشدنِ مخفف روادار",
+     "مکالمهٔ verbatim: «you can surf its website if you like» (لایه p79:005)؛ سطرِ B چهارم دو بلنک دارد — نیمهٔ نخست",
+     "مکالمهٔ verbatim: «Could you please give me the website address?» (لایه p79:015) — نیمهٔ دومِ همان سطر",
+     "مکالمهٔ verbatim: «I just texted it.» (لایه p79:021) + text a message* (p78:013)؛ حرفِ بزرگِ چاپیِ «It» verbatim"
+    ],
+    "S3": [
+     "پرسشِ Who → تنها پاسخِ شخصی: «My brother.» (a منفیِ did-پرسش، b زمانی، c مکانیِ بی‌پرسشِ مکانی، e مکانی)؛ «Who watch» افتادِ -edِ چاپ است — verbatim",
+     "did-پرسشِ بله/نه → پاسخِ منفیِ علت‌دار: a) — جفتِ verbatimِ تمرینِ درس: «Did Amir work with his computer? → No, he worked with his mobile.» (لایه p79:068/064)",
+     "پرسشِ Where → مکان: e) — تمرینِ درس: «Where did she connect to the Internet? → She connected to the Internet at school.» (لایه p80:052/044)",
+     "پرسشِ When → زمان: b) — تمرینِ درس همان جفت با «yesterday»: «When did they download the book? → They downloaded it yesterday.» (لایه p80:039/033)"
+    ],
+    "S4": [
+     "سه صفتِ ستایشی، همگی واژهٔ درس: Amazing* (p77:026)/Wonderful* (p77:096)/Fantastic* (p77:090)؛ cinema مکان است نه صفت",
+     "سه واژهٔ خانوادهٔ رسانه/فناوری (Connect* p77:066/Download* p77:082 و اینترنت)؛ fruit خوراکی است نه رسانه"
+    ],
+    "S5": [
+     "مکالمهٔ verbatim درس: «There are many interesting things there.» (لایه p79:005-006) — تنها چینشِ دستوریِ شش واژه",
+     "عبارتِ photo dictionary: «watch a quiz show*» (لایه p78:019)؛ دو جایگاهِ قیدِ زمانِ پایان/آغاز هر دو دستوری‌اند — هر دو شکل accepted",
+     "چینشِ یکتا؛ بانکِ چاپی حرفِ تعریفِ «a» را ندارد (چاپ‌خطای مستند) — شکلِ مقصود با «a» و شکلِ سخت‌گیرانهٔ واژه‌به‌واژه هر دو روادار؛ «football» در واژگانِ چاپیِ درس نیست (فقط Match* لایه p77:040)"
+    ],
+    "S7": [
+     "جمع + مسندِ صفتِ گذشته → «They were happy»؛ «was not» مفرد است و «didn’t were» ساختارِ ناممکن (did + شکلِ سادهٔ فعل)",
+     "پاسخِ B شیءِ نصب‌شده را نام می‌برد → شیءخواهی: What؛ عبارتِ photo dictionary: «install a computer dictionary*» (لایه p78:016)",
+     "سوم‌شخص + «yesterday» → wasn’t؛ «were» جمع است و «am» حالِ اول‌شخص — ساختاری"
+    ],
+    "S8": [
+     "تقابلِ «this month / last month» با «But» → منفیِ گذشته: weren’t؛ «were» مثبتِ ناسازگار و «aren’t» حال است",
+     "قیدِ گذشتهٔ «2 days ago» → attended؛ عبارتِ photo dictionary: «attend a TV program*» (لایه p78:008) و مکالمه: «I attended Fajr International Film Festival.»"
+    ],
+    "S11-TF": [
+     "متنِ verbatim: «Last weekend, something happened to my TV.» (لایه p87:012) — Saturday نیست، weekend است → False",
+     "متنِ verbatim: «I called my grandmother. She came to our home.» (لایه p87:013-014) — مادربزرگ آمد نه پدربزرگ → False"
+    ],
+    "S11-QA": [
+     "متنِ verbatim: «At first, I wasn’t happy.» (لایه p87:013) — تبدیلِ ضمیرِ I→she؛ چهار شکلِ accepted (ویرگول × انقباض)",
+     "متنِ verbatim: «But then I cleaned my room and I called my grandmother.» (لایه p87:013-014) — تبدیلِ ضمیرِ I→she؛ حذف/نگه‌داشتنِ ضمیرِ دوم و ترتیبِ دو کنش روادار"
+    ],
+    "SDictation": [
+     "عبارتِ photo dictionary درس: «interview somebody*» (لایه p78:020) + Interview* (p77:020)؛ عبارتِ ناقص از رندرِ p87 خوانده شد (در لایه نیست — کوئیرکِ ۸)",
+     "عبارتِ photo dictionary درس: «update a blog*» (لایه p78:015) + Blog* (p77:042)؛ عبارتِ ناقص از رندرِ p87",
+     "کامل‌شدنیِ یکتا: technol_gy → technology؛ هم‌ارزِ مفهومیِ «use IT*» (لایه p78:017) — «technology» در لایه فقط در ضمیمهٔ تلفظِ ch (لایه p105) هست؛ لنگرِ واژگانیِ ضعیف‌تر از دو آیتمِ دیگر — مستند"
+    ]
+   },
+   "skippedSections": [
+    "س۱ (ص۸۵): «با توجه به تصاویر جاهای خالی را با عبارات مناسب پر کنید» — تصویری (میکروفون/ابرِ UPDATE/موبایل) — الگوی س۱ِ r364/r365/r366",
+    "س۶ (ص۸۶): «افتان یا خیزان جملات زیر را مشخص کنید» — آهنگی (That's brilliant. / What a beautiful flower.) — الگوی س۶ِ r366/س۳ِ r367",
+    "س۹ (ص۸۶): «به سوالات زیر پاسخ کامل دهید» — تولیدِ آزاد با پاسخِ شخصی (Did you receive an email yesterday? / What did you do last week?) — الگوی س۵/س۱۵ِ r364",
+    "س۱۰ (ص۸۷): «شماره هر عبارت را زیر تصویر مربوط به آن بنویسید» — تصویری (text a message/see a war movie/look at the newsstand/attend a TV program/interview somebody)"
+   ],
+   "printQuirkCount": 8,
+   "printQuirks": [
+    "شماره‌گذاریِ آمیختهٔ چاپی: ارقامِ فارسیِ «۳» و «۸» در میانِ ارقامِ لاتینِ سکشن‌ها (1/2/۳/4/5/6/7/۸/9)/10/11) — برخلافِ درس چهارم، پیوستِ و یکتاست",
+    "دنبالهٔ «دیکته کلمات ناقص زیر را کامل کنید» پس از س۱۱ بی‌شمارهٔ چاپی است — س۱۲ در چاپ وجود ندارد؛ به‌عنوان بانکِ ۴۴ استخراج شد",
+    "س۲ق۱۰: حرفِ بزرگِ چاپیِ «It» («You can ……. It.») — verbatim در ساقه",
+    "س۳ق۱: «Who watch the cartoon yesterday?» — افتادِ -edِ چاپ (در برابرِ تمرینِ درس: «Who watched the movie last night؟» لایه p80:008) — verbatim",
+    "س۵ق۳: بانکِ واژهٔ چاپی حرفِ تعریفِ «a» ندارد — جملهٔ مقصود «You can watch a football match on TV tonight.»؛ هر دو شکل accepted",
+    "س۲: سطرِ چهارمِ B دو بلنک دارد («You can ……. its website. I can give you the website ………….») — به دو آیتمِ ۸/۹ شکسته شد",
+    "س۱۱: هر دو گزارهٔ درست/غلط False است (a: «last Saturday»↔متنِ «Last weekend»؛ b: grandfather↔متنِ grandmother) — کوئیرکِ دوبلِ False مستند",
+    "لایهٔ p88 خالی است ولی رندرش جلدِ «Lesson 6» است؛ عبارت‌های دیکتهٔ انتهای p87 در لایه نمی‌آیند (در تصویرِ نشسته‌اند) و از رندر خوانده شدند — assertionِ غیبت در اسکریپت ثبت است"
+   ],
+   "lessonLexicon": {
+    "text a message": "پیام دادن — photo dictionary درس (لایه p78:013) + Message* (p77:048) — لنگرِ س۲ق۱۰",
+    "attend a TV program": "شرکت‌کردن در برنامهٔ تلویزیونی — photo dictionary (p78:008) + Attend* (p77:034) — لنگرِ س۸ق۲/دیکته",
+    "interview somebody": "مصاحبه‌کردن — photo dictionary (p78:020) + Interview* (p77:020) — لنگرِ دیکتهٔ ۱",
+    "update a blog": "به‌روزرسانیِ وبلاگ — photo dictionary (p78:015) + Blog* (p77:042) — لنگرِ دیکتهٔ ۲",
+    "watch a quiz show": "تماشای مسابقهٔ تلویزیونی — photo dictionary (p78:019) + Quiz show* (p77:072) — لنگرِ س۵ق۲",
+    "look at the newsstand": "نگاه‌کردن به دکهٔ روزنامه — photo dictionary (p78:014) + Newsstand* (p77:056)",
+    "see a war movie": "دیدنِ فیلم جنگی — photo dictionary (p78:011)",
+    "connect to the internet": "وصل‌شدن به اینترنت — photo dictionary (p78:012) + Connect* (p77:066) — لنگرِ س۳ق۳/س۴ق۲",
+    "download something from the internet": "دانلودکردن از اینترنت — photo dictionary (p78:021) + Download* (p77:082) — لنگرِ س۳ق۴",
+    "install a computer dictionary": "نصبِ دیکشنریِ رایانه‌ای — photo dictionary (p78:016) + Install* (p77:098) — لنگرِ س۷ق۲",
+    "use IT": "استفاده از فناوریِ اطلاعات — photo dictionary (p78:017) — هم‌ارزِ مفهومیِ دیکتهٔ ۳",
+    "receive an e-mail": "دریافتِ ایمیل — photo dictionary (p78:009)",
+    "participate in an online course": "شرکت‌کردن در دورهٔ برخط — photo dictionary (p78:007)",
+    "change the TV channels": "عوض‌کردن کانال‌های تلویزیون — photo dictionary (p78:010)",
+    "surf the website": "جست‌وجوی وبسایت — مکالمهٔ درس verbatim: «you can surf its website if you like» (p79:005) — لنگرِ س۲ق۸",
+    "website address": "نشانیِ وبسایت — مکالمهٔ درس: «Could you please give me the website address?» (p79:015) — لنگرِ س۲ق۹",
+    "Amazing / Wonderful / Fantastic": "سه صفتِ ستایشیِ درس (p77:026/096/090) — لنگرِ س۴ق۱",
+    "Did you enjoy your weekend?": "مکالمهٔ درس verbatim (Mina، p78:032) — لنگرِ س۲ق۱",
+    "Yes, it was wonderful! I attended Fajr International Film Festival.": "مکالمهٔ درس verbatim (Mahsa، p78:035) — لنگرِ س۲ق۲/ق۴",
+    "Did Amir work with his computer? → No, he worked with his mobile.": "تمرینِ ۱ درس verbatim (p79:068/064) — لنگرِ س۳ق۲",
+    "Where did she connect to the Internet? → She connected to the Internet at school.": "تمرینِ ۲ درس verbatim (p80:052/044) — لنگرِ س۳ق۳",
+    "When did they download the book? → They downloaded it yesterday.": "تمرینِ ۲ درس verbatim (p80:039/033) — لنگرِ س۳ق۴",
+    "readingText": "متنِ Parisa (p87:012-015): Hello. My name is Parisa. Last weekend, something happened to my TV. It didn’t work. At first, I wasn’t happy. But then I cleaned my room and I called my grandmother. She came to our home. She showed me how to play an old game. It was really fun and I enjoyed it. All day I was busy."
+   },
+   "typedNote": "هر ۱۸ آیتمِ تایپیِ تازه (س۲:۱۰، س۵:۳، س۱۱QA:۲، دیکته:۳) داربستِ اندیسِ نادرست دارند — قفلِ سراسریِ r363 (ممنوعیتِ تایپیِ تک‌گزینه‌ای) حفظ شد؛ داربست‌ها خانواده‌محور: چرخشِ واژه‌های هم‌بانکِ چاپی (س۲)، ردیفِ به‌هم‌ریختهٔ چاپی (س۵)، پاسخِ نادرستِ ناهم‌سو (س۱۱QA) و عبارت‌های هم‌خانوادهٔ photo dictionary (دیکته)"
   }
  }
 }

@@ -75,8 +75,8 @@ describe("r367 — شکلِ هفت بانکِ امتحانی درس چهارم",
   it("counts: [3,2,3,2,4,6,4] — id یکتا در کلِ فایل (۲۱۷)", () => {
     expect([29, 30, 31, 32, 33, 34, 35].map((n) => L(n).count)).toEqual([3, 2, 3, 2, 4, 6, 4]);
     const ids = g9.lessons.flatMap((b) => b.questions.map((x) => x.id));
-    expect(ids).toHaveLength(217);
-    expect(new Set(ids).size).toBe(217);
+    expect(ids).toHaveLength(248);
+    expect(new Set(ids).size).toBe(248);
   });
 
   it("س۵ دیکتهٔ ناقص: کلید از photo dictionary + داربستِ چرخشیِ هم‌بانک", () => {
