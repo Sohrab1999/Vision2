@@ -827,6 +827,83 @@
    ],
    "futureNote": "بخشِ ۴: ۸ برگه از ۱۷ استخراج شد، ۹ برگه باقی است (نزدیک‌ترین‌ها: ناشنوایانِ ص۲۹۳-۳۰۰ و جفتِ خرداد ۱۳۹۹ ص۲۵۹-۲۷۶؛ به‌علاوهٔ برگهٔ لایه‌خرابِ ص۲۷۷-۲۸۴ که OCR/رندر می‌خواهد و سه برگهٔ ۱۳۹۷/۱۳۹۸ با کلیدِ سربرگِ قدیمی)؛ کاندیدهای تایپیِ این برگه (ردیفِ ۴۳ «means» + ردیفِ ۴۴ «founding» + ردیفِ ۵۹ «There are some workers and teachers who work in the village.» + ردیفِ ۶۰ «The girl wrote a letter, didn`t she?» + ردیفِ ۶۱ «Everything in the garden was brown because it hadn`t rained.» + ردیفِ ۶۲ «The parents should be called by the teacher.») به کاندیدهای r380-r386 اضافه شدند — مخزنِ بانکِ تایپیِ نهایی‌ها اکنون ۵۲ ردیف است (۴۶ِ r386 + ۶ ردیفِ تازه)",
    "bookletFile": "جزوه_جامع_پایه_دوازدهم_با_امتحانات_نهایی_.pdf"
+  },
+  "g12nahaie9": {
+   "extractedRound": "r388",
+   "section": "بخش چهارمِ جزوه: «آزمونهای از دی ماه 1397 تا شهریور 1401 نهابی با کلید» — برگهٔ نهم: «سؤالات امتحان نهایی» زبان انگلیسی (۳) نوبتِ شهریور ۱۳۹۹ ویژهٔ ناشنوایان (کلیهٔ رشته‌ها)",
+   "examPages": "pdf-p293-298 (شش صفحهٔ آزمون؛ ششمی فقط پایان‌بندی/جمع‌بندی) + کلیدِ رسمی: pdf-p299-300 «راهنماي تصحيح»؛ مرزِ برگه‌ها = p292→p293 (پس از r387) و p300→p301 (آغازِ دی ۱۳۹۹)",
+   "examMeta": "امتحان نهاییِ سراسریِ وزارت — درس: زبان انگلیسی (۳) — پایه دوازدهم دورهٔ دوم متوسطه — رشته: کلیهٔ رشته‌ها — ویژهٔ ناشنوایان — نوبت شهریورماه سال ۱۳۹۹ (تاریخِ چاپی: ۱۳/۰۶/۹۹) — مدت ۱۲۰ دقیقه — ساعت شروع ۸ صبح — ۱۸ سکشن/۶۷ ردیف/بارم ۴۸ — روزانه/بزرگسال/داوطلب آزاد — مركز سنجش و پايش كيفيت آموزشي (aee.medu.ir) — نخستین برگهٔ ناشنوا-محورِ مخزن: بدونِ هر سه سکشنِ شنیداری، با شماره‌گذاریِ دوبارهٔ سکشن‌ها",
+   "keyPages": "pdf-p299-300 راهنمای تصحیحِ رسمی — «هر پاسخ صحیح (5/.) نمره» — ۵۸ فرگمنتِ کلیدِ چاپی در گارد پیمان می‌شود؛ ۶ کلید از ۶ آیتمِ بانک‌ها عینِ چاپ است",
+   "keyVerification": "کلیدِ چاپی عیناً نقل شد: «1. ( b ) 2.( d ) 3. ( a ) 4. ( c )» (ردیفِ تصویریِ عینِ r387-س۵) / «5. arrange 6. demand 7. repeatedly 8. burst 9. variety» / «10. ( b ) 11. ( c )» (ناهماهنگ) / «12. hearing 13. smart 14. pollute» / «15. ( b) 16. ( c ) 17. ( b ) 18. ( d ) 19. ( c ) 20. ( a )» / «21. was found 22. forgets 23. got 24. been made» / «27. (a) True 28. (a) True» (دوبلِ True) «29. ( b ) 30. ( d )» / «31. means 32. founding» / «33. (a) True 34. (b) False 35. ( d ) 36. ( a )» / «37. The easiest way to show your love and respect is to tell them that you appreciate who they are and what they do.» / «39. (a) True 40. (a) True» (دوبلِ True) / «41. The word “truth” usually goes with tell.» (گیومهٔ خمیدهٔ چاپ) / «42. You/I can easily copy them to make your/my own sentences seem more natural.» / «43. and 44. or 45. but 46. so» / «47. …so he passed it.» (عینِ کلیدِ س۱۴ِ r387) / «51- c 52- a 53- d 54- e 55- j 56- h 57- f 58- g» / «59-62» چهار پاسخِ مدل با بک‌تیکِ چاپ — کلیدِ ۲۵ (which) در لایه از «25» جدا افتاده و کلیدِ ۳۸ (Yes, it can, for example, washing the dishes/ cleaning the kitchen/ cleaning the room) فرگمنت‌فرگمنت آشفته است — پیمان روی فرگمنت‌ها",
+   "sectionsTotal": 67,
+   "sectionsExtracted": 6,
+   "sectionsSkipped": 61,
+   "items": 6,
+   "bankCounts": [
+    1,
+    2,
+    1,
+    2
+   ],
+   "twinPolicy": "درسِ r386-«John» به شکلِ کامل اجرا شد: س۵/۶/۷ دوقلویِ بایتیِ l52-1/2/3؛ ۹ دوقلویِ بایتیِ l23-1؛ ۱۲-۱۴ دوقلویِ بایتیِ l53-1/2/3؛ ۱۵/۱۶/۱۸/۱۹/۲۰ دوقلویِ بایتیِ l54-1/2/4/5/6؛ ۲۷-۳۰ نزدیک‌دوقلویِ l56 (تنها تفاوتِ متن: یک ویرگولِ چاپی — داوریِ رندر) با کلیدهای هم‌محتوا؛ ۳۳-۳۶ دوقلویِ بایتیِ l55 (متنِ بازجوش = بایتی)؛ ۴۳-۴۶ دوقلویِ بایتیِ l57-1..4؛ س۱۶ الف/ب در رندرِ دوبخشیِ فارسی دوقلویِ l58/l59؛ س۱۷ عینِ چارگانهٔ ثبت‌شدهٔ r387 — همگی با پیمانِ درونِ اسکریپت مستند و مستثنی شدند؛ گاردِ سراسریِ ضدتکرار هم می‌پیماند هیچ ساقهٔ شپ‌شده‌ای عینِ بایتیِ ساقهٔ موجود نیست",
+   "keyPolicy": "همهٔ کلیدهای ۶ آیتم از راهنمای تصحیحِ چاپی می‌آیند (عینِ چاپ)؛ بانکِ ۶واژه‌ایِ l60 به ترتیبِ چاپِ خودِ برگه (repeatedly, forever, burst, demand, variety, arrange) با کلیدِ چاپیِ burst و اضافیِ چاپیِ هرگز-کلید (forever)؛ ناهماهنگِ l61 به ترتیبِ چاپِ گزینه‌ها (a-d)؛ گرامرِ l62 به ترتیبِ چاپ؛ T/Fهای l63 دوبلِ Trueِ چاپ (سمانتیک — وفادارانه ماند)",
+   "engineNote": "هر ۶ آیتم MCQ (قراردادِ کارتِ g12)؛ l61 نخستین بانکِ «کلمهٔ ناهماهنگ» در مخزن — ساقهٔ دوبخشیِ فارسی (الگویِ تعریف‌یابیِ l58) چون چاپِ برگه فقط ردیفِ چهارگزینه‌ای دارد؛ ساقه‌های l63 متنِ کاملِ چاپی را در خود دارند — بازجوشِ صریحِ بی‌نُرم چون «….» درونِ گیومهٔ ˝دوتاییِ چاپ است و نباید به خانه تبدیل شود؛ «much clear» مفردِ چاپ وفادارانه ماند؛ ترجمه عمداً غایب (نهایی‌ها ترجمهٔ چاپی ندارند)؛ نقطه‌چینِ چاپ → «-------» چسبیده؛ این برگه کلوژِ شنیداری و مرتب‌سازیِ شش‌گزینه‌ای ندارد",
+   "derivedKeys": {
+    "S2": [
+     "arrange",
+     "demand",
+     "repeatedly",
+     "burst",
+     "variety"
+    ],
+    "S3": [
+     "look up",
+     "coal"
+    ],
+    "S5": [
+     "is known"
+    ],
+    "S6": [
+     "was found",
+     "forgets",
+     "got",
+     "been made"
+    ]
+   },
+   "paperMap": "نقشهٔ کاملِ بخشِ ۴ (ص۲۲۸-۳۴۹، ۱۷ برگه) — کشفِ r384، تأییدِ دوباره در این راند: دی ۱۳۹۷ ص۲۲۹-۲۳۳ + کلیدِ سربرگِ قدیمیِ ص۲۳۴-۲۳۶ (پیش از presentation-forms)؛ خرداد ۱۳۹۸ ص۲۳۷-۲۴۱ + کلید ص۲۴۲-۲۴۳ (۱۳/۳/۱۳۹۸)؛ شهریور ۱۳۹۸ ص۲۴۴-۲۴۸ + کلید ص۲۴۹-۲۵۰ (۱۲/۶/۱۳۹۸)؛ دی ۱۳۹۸ ص۲۵۱-۲۵۶ + کلید ص۲۵۷-۲۵۸ (۲۲/۱۰/۹۸)؛ خرداد ۱۳۹۹ ریاضی-تجربی ص۲۵۹-۲۶۵ + کلید ص۲۶۶-۲۶۷ (۰۵/۰۴/۹۹) ← همین راند؛ خرداد ۱۳۹۹ انسانی ص۲۶۸-۲۷۴ + کلید ص۲۷۵-۲۷۶ (۰۷/۰۴/۹۹)؛ برگهٔ لایه‌خراب ص۲۷۷-۲۸۴ (نیازمند OCR/رندر)؛ شهریور ۱۳۹۹ ص۲۸۵-۲۹۰ + کلید ص۲۹۱-۲۹۲ [r387]؛ شهریور ۱۳۹۹ ویژهٔ ناشنوایان ص۲۹۳-۲۹۸ + کلید ص۲۹۹-۳۰۰ (۱۳/۰۶/۹۹) ← این راند؛ دی ۱۳۹۹ ص۳۰۱-۳۰۵ + کلید ص۳۰۶-۳۰۷ [r386]؛ خرداد ۱۴۰۰ ریاضی-تجربی ص۳۰۸-۳۱۴ [r385]؛ خرداد ۱۴۰۰ انسانی ص۳۱۵-۳۲۱ [r384]؛ شهریور ۱۴۰۰ ص۳۲۲-۳۲۸ [r383]؛ دی ۱۴۰۰ ص۳۲۹-۳۳۵ [r382]؛ دی ۱۴۰۱ ص۳۳۶-۳۴۲ [r380]؛ شهریور ۱۴۰۱ ص۳۴۳-۳۴۹ [r381] — ۱۰ برگه استخراج شد، ۷ برگه باقی است",
+   "skippedSections": [
+    "س۱ (ردیف ۱-۴، تصویری): «یک جمله اضافی است» — پنج جملهٔ چاپی a-e: a) The mother is hugging her little child. → 3 / b) My sister often sits in the balcony and studies her lessons. → 1 / c) The student circled the dictionary entry for the new word. → 4 / d) Solar panels change solar power into electricity. → 2 / e) The sofa converts into bed. (اضافیِ چاپی)؛ داوریِ رندرِ ۳۰۰dpi (p293-s1-pictures.png): (1)بالکن (2)پنلِ خورشیدی (3)در آغوش‌گرفتن (4)لغت‌نامهٔ دایره‌کشیده — عینِ ردیفِ ۱۵-۱۸ِ r387-س۵؛ استخراج نیازمندِ تصویر",
+    "س۲ ردیف‌های ۵/۶/۷ (دوقلویِ بایتیِ l52-1/2/3) و ردیفِ ۹ (دوقلویِ بایتیِ l23-1): فقط ردیفِ ۸ (burst) تازه بود و در l60 شپ",
+    "س۴ (ردیف ۱۲-۱۴، حرفِ اول): ساقه‌ها عینِ بایتیِ l53-1/2/3 (hearing/smart/pollute) — دوقلو",
+    "س۵ ردیف‌های ۱۵/۱۶/۱۸/۱۹/۲۰ (دوقلویِ بایتیِ l54): فقط ردیفِ ۱۷ (Hafez بدونِ «to be») تازه بود و در l62 شپ",
+    "س۶ (ردیف ۲۱-۲۴، افعال): «21. was found» / «22. forgets» / «23. got» / «24. been made» — تولیدیِ تایپی؛ کاندیدِ تایپی (۴ ردیفِ تازه به مخزن)",
+    "س۷ (ردیف ۲۵، تولیدیِ موصولی): «A cheetah is an animal…….» — کلیدِ چاپی: which (در لایهٔ کلید از «25» جدا افتاده) — تولیدی",
+    "س۸ (ردیف ۲۶، تولیدیِ شرطی): «If I had wings, I…….» — کلیدِ چاپی: (would ,could ,might) — تولیدی",
+    "س۹ (ردیف ۲۷-۳۲): نزدیک‌دوقلویِ l56 — لایهٔ آشفته با همان ران‌ها؛ داوریِ رندرِ ۳۰۰dpi (p294-s9-passage.png): تنها تفاوتِ متنِ دو برگه یک ویرگول است («To provide themselves, with fuel they cut trees» ناشنوایان در برابرِ «To provide themselves with fuel, they cut trees» r387)؛ ۲۷-۳۰ هم‌محتوای l56 با کلیدهای True/True/humans/the-life-of-early-humans (۲۹ «line 2» در برابرِ «line 3»ِ l56)؛ ۳۱=means و ۳۲=founding (ردیف‌های ۴۳/۴۴ِ r387 — قبلاً در مخزن ثبت — شمرده نشد؛ درسِ John)",
+    "س۱۰ (ردیف ۳۳-۳۸): ۳۳-۳۶ دوقلویِ بایتیِ l55؛ ۳۷/۳۸ پاسخِ مدلِ چاپی («38.Yes, it can, for example, washing the dishes/ cleaning the kitchen/ cleaning the room» — آشفته در لایهٔ کلید)",
+    "س۱۱ (ردیف ۳۹-۴۲، خوانداریِ فرهنگِ لغتِ «There are many things...»): متنِ تازه (متفاوت از l47ِ r386) → ۳۹/۴۰ دوبلِ Trueِ چاپ در l63 شپ؛ ۴۱ «The word “truth” usually goes with tell.??» (دوبلِ علامتِ سؤالِ چاپ) و ۴۲ «You/I can easily copy them to make your/my own sentences seem more natural.» — پاسخ‌های مشتقِ خودِ متن — مستثنی",
+    "س۱۲ (ردیف ۴۳-۴۶، حروفِ ربط): هر ۴ دوقلویِ بایتیِ l57-1..4 (omelet/restaurant/call/dictionary-expensive — سه‌گانهٔ دوقلوها با r384/r385/r387 اکنون چهارمین تکرارِ بایتی)",
+    "س۱۳ (ردیف ۴۷، تصویری-ربط): «Saeed studied hard for the exam,…….» — کلیدِ چاپی: «47. …so he passed it.» (عینِ کلیدِ س۱۴ِ r387) — استخراج نیازمندِ تصویر",
+    "س۱۴ (ردیف ۴۸، تولیدی): Topic Sentence برای «Smoking» — تولیدی",
+    "س۱۵ (ردیف ۴۹-۵۰، ساختارِ پاراگراف — نخستین بار در مخزن): جدولِ Topic/explanation/Irrelevant — کوسه‌ها (Topic: «Sharks are fast-swimming fishes»؛ Irrelevant: «Tigers live on the ground, and in the trees.») و ستاره‌ها (Topic: «The stars are tiny points of light in the space.»؛ Irrelevant: «We live on the Earth.») — قالبِ جدولیِ پاسخ‌نامه به موتور وفادار نمی‌ماند",
+    "س۱۶ (ردیف ۵۱-۵۸، انتخابیِ الف/ب): الف تعریف‌یابی (۵۱=diary→c، ۵۲=absorb→a، ۵۳=jumped into→d، ۵۴=use up→e؛ اضافیِ چاپیِ b «cry suddenly») و ب اصطلاحات (۵۵=Out of sight→j، ۵۶=Practice→h، ۵۷=Easy come→f، ۵۸=Two heads→g؛ اضافیِ چاپیِ i) — عینِ ستون‌های r387-l58/l59 → دوقلویِ بایتی در رندرِ دوبخشیِ فارسی",
+    "س۱۷ (ردیف ۵۹-۶۲، جمله‌سازیِ انتخابی): عینِ چارگانهٔ r387 (کارگران-روستا/نامهٔ دختر/باغِ قهوه‌ای/والدین-خوانده‌شدن؛ بک‌تیکِ چاپ در ۶۰/۶۱) — قبلاً در مخزن ثبت — شمرده نشد",
+    "س۱۸ (ردیف ۶۳-۶۷، نگارشِ انتخابیِ تصویری): الف) Topic Sentence برای چهار عنوانِ تصویری (63. a) Ferdowsi / 64. b) Watching TV / 65. c) Sport / 66. d) Clean energy) و ب) پاراگرافِ «Having a healthy lifestyle» با چیپ‌های چاپی — عینِ r387-س۱۸"
+   ],
+   "printQuirks": [
+    "هفتمین برگهٔ presentation-forms با سربرگِ «ﺳﺆاﻻت  اﻣﺘﺤﺎن» دوفاصله‌ای (الگویِ r383/r386/r387) — متنِ انگلیسی و کلیدها لاتینِ سالم؛ نخستین برگهٔ بدونِ سکشنِ شنیداری (ویژهٔ ناشنوایان)",
+    "سربرگِ دو-سطریِ «(ویژهٔ ناشنوایان)» با شکستگیِ «)وﯾﮋه/ﻧﺎﺷﻨﻮاﯾﺎن(» در لایه؛ «رﺷﺘﻪ:ﮐﻠﯿﻪ رﺷﺘﻪ ﻫﺎ» تکرارِ چاپیِ سربرگ",
+    "کلیدِ چاپیِ ردیفِ تصویری «1. ( b ) 2.( d ) 3. ( a ) 4. ( c )» با پرانتزهای ناهمگون («2.(» بدونِ فاصله) — عینِ چاپ پس از collapse",
+    "دوبلِ Trueِ چاپ دو بار در کلید (۲۷/۲۸ و ۳۹/۴۰) — الگویِ r384-l32/r385-l38/r387-l56",
+    "بک‌تیکِ چاپ در کلیدهای مدلِ ۶۰/۶۱ (didn`t she / hadn`t rained) — عینِ r387",
+    "کلیدِ ۲۵ (which) در لایهٔ کلید از شماره‌اش جدا افتاده («which» سطرِ مستقل، «25» سطرِ دیگر) — پیمانِ گسیختگی",
+    "کلیدِ ۳۸ در لایهٔ کلید آشفته است (فرگمنت‌های «Yes,» / «it can, for example,» / «washing the dishes/ cleaning the kitchen/ cleaning the room» جدا) — پیمانِ فرگمنتی",
+    "«41. The word “truth” usually goes with tell.??» — دوبلِ علامتِ سؤالِ چاپ در ساقهٔ ۴۱ و گیومهٔ خمیدهٔ چاپ در کلید",
+    "لایهٔ متنِ خوانداریِ انسان‌های نخستین (ص۲۹۴) مانندِ r387 آشفته است («they»/«e, however,»/«fir»/«live» ران‌های جدا) — داوریِ رندر: تنها تفاوتِ متن با r387 یک ویرگولِ چاپی است («themselves, with fuel») — نزدیک‌دوقلو؛ متنِ لغت‌نامه (ص۲۹۵) تمیز است ولی «….» درونِ گیومهٔ ˝دوتایی دارد («˝ It is important to …. ˝») که norm نمی‌شود — بازجوشِ صریح با پیمانِ فرگمنتی؛ «much clear» مفردِ چاپ",
+    "پاورقیِ صفحات: شمارهٔ چاپیِ ۱۹۶-۲۰۳"
+   ],
+   "futureNote": "بخشِ ۴: ۱۰ برگه از ۱۷ استخراج شد، ۷ برگه باقی است (نزدیک‌ترین‌ها: جفتِ خرداد ۱۳۹۹ ص۲۵۹-۲۷۶ که ریاضی-تجربی‌اش همین راند شپ؛ به‌علاوهٔ برگهٔ لایه‌خرابِ ص۲۷۷-۲۸۴ که OCR/رندر می‌خواهد و سه برگهٔ ۱۳۹۷/۱۳۹۸ با کلیدِ سربرگِ قدیمی)؛ کاندیدهای تایپیِ این برگه (س۶: «was found»/«forgets»/«got»/«been made») به کاندیدهای r380-r387 اضافه شدند — مخزنِ بانکِ تایپیِ نهایی‌ها اکنون ۵۶ ردیف است (۵۲ِ r387 + ۴ ردیفِ تازه؛ means/founding و چارگانهٔ س۱۷ عینِ ثبت‌های r387 بودند و شمرده نشدند — درسِ John)",
+   "bookletFile": "جزوه_جامع_پایه_دوازدهم_با_امتحانات_نهایی_.pdf"
   }
  },
  "answerArbitration": [
@@ -9021,6 +9098,114 @@
       "You soon forget people or things that are no longer visible or present."
      ],
      "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 60,
+   "title": "نهایی شهریور ۱۳۹۹ ناشنوایان — واژگانِ بانکِ چاپ (س۲، ص۲۹۳)",
+   "level": "چهارگزینه‌ای",
+   "count": 1,
+   "questions": [
+    {
+     "id": "g12-l60-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "Aida ------- into tears when she saw her score.",
+     "options": [
+      "repeatedly",
+      "forever",
+      "burst",
+      "demand",
+      "variety",
+      "arrange"
+     ],
+     "answer": 2
+    }
+   ]
+  },
+  {
+   "lesson": 61,
+   "title": "نهایی شهریور ۱۳۹۹ ناشنوایان — کلمهٔ ناهماهنگ (س۳، ص۲۹۳)",
+   "level": "چهارگزینه‌ای",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g12-l61-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "کلمهٔ ناهماهنگ با بقیهٔ گزینه‌ها (ردیفِ ۱۰): -------",
+     "options": [
+      "take care of",
+      "look up",
+      "care for",
+      "look after"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l61-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "کلمهٔ ناهماهنگ با بقیهٔ گزینه‌ها (ردیفِ ۱۱): -------",
+     "options": [
+      "water",
+      "wind",
+      "coal",
+      "sun"
+     ],
+     "answer": 2
+    }
+   ]
+  },
+  {
+   "lesson": 62,
+   "title": "نهایی شهریور ۱۳۹۹ ناشنوایان — گرامر (س۵، ص۲۹۳)",
+   "level": "چهارگزینه‌ای",
+   "count": 1,
+   "questions": [
+    {
+     "id": "g12-l62-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Hafez ------- as one of the most famous Persian poet of all time.",
+     "options": [
+      "knows",
+      "is known",
+      "knowing",
+      "has known"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 63,
+   "title": "نهایی شهریور ۱۳۹۹ ناشنوایان — خوانداریِ فرهنگِ لغت (س۱۱، ص۲۹۵)",
+   "level": "چهارگزینه‌ای",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g12-l63-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "There are many things that a dictionary can provide for the users, but a good dictionary must always give example sentences for every word. An example sentence is an English sentence which contains the new word. Example sentences are actually more important than definitions. A definition tells you the meaning of a word and (sometimes) gives you some grammatical information. Example sentences have more to say. They have at least two good points: First, they let you check if you have understood the definition correctly. The meaning of a word can become much clear if you read a few sentences with the new word. Second, they show you how to use a word in different sentences (for example, the word “important” is often used in the phrase ˝ It is important to …. ˝) or words in combination (for example, you may know that “tell” and “say” are synonyms, but the word ˝ truth˝ goes with ˝ tell˝ and not with ˝ say˝). Example sentences present this information in a clear way. You can easily copy them to make your own sentences seem more natural. — You can see the new word in its example sentence.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l63-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "There are many things that a dictionary can provide for the users, but a good dictionary must always give example sentences for every word. An example sentence is an English sentence which contains the new word. Example sentences are actually more important than definitions. A definition tells you the meaning of a word and (sometimes) gives you some grammatical information. Example sentences have more to say. They have at least two good points: First, they let you check if you have understood the definition correctly. The meaning of a word can become much clear if you read a few sentences with the new word. Second, they show you how to use a word in different sentences (for example, the word “important” is often used in the phrase ˝ It is important to …. ˝) or words in combination (for example, you may know that “tell” and “say” are synonyms, but the word ˝ truth˝ goes with ˝ tell˝ and not with ˝ say˝). Example sentences present this information in a clear way. You can easily copy them to make your own sentences seem more natural. — Definitions sometimes give you grammatical information.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
     }
    ]
   }
