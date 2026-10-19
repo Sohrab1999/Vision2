@@ -94,6 +94,113 @@
    ],
    "futureNote": "بخشِ چهارم چند برگهٔ نهاییِ دیگر دارد (دی/شهریور سال‌های ۱۳۹۷-۱۴۰۱) — الگویِ همین رسید؛ ق۴۳/۴۴/۴۷/۴۸ با پاسخِ مدلِ چاپی کاندیدِ نخستین بانکِ تایپیِ نهایی‌اند (kind=typed با accepted)",
    "bookletFile": "جزوه_جامع_پایه_دوازدهم_با_امتحانات_نهایی_.pdf"
+  },
+  "g12nahaie2": {
+   "extractedRound": "r381",
+   "section": "بخش چهارمِ جزوه: «آزمونهای از دی ماه 1397 تا شهریور 1401 نهابی با کلید» — برگهٔ دوم (و آخرین برگهٔ کتاب): «سؤالات امتحان نهایی» زبان انگلیسی (۳) نوبتِ شهریور ۱۴۰۱",
+   "examPages": "pdf-p343-347 (پنج صفحهٔ آزمون) + کلیدِ رسمی: pdf-p348-349 «راهنمای تصحیح امتحان نها :يي» (سربرگِ شکستهٔ لایه)؛ مرزِ برگه‌ها = p342→p343؛ p349 آخرین صفحهٔ جزوه است (۳۴۹ صفحه)",
+   "examMeta": "امتحان نهاییِ سراسریِ وزارت — درس: زبان انگلیسی (۳) — پایه دوازدهم دورهٔ دوم متوسطه — رشته: کلیه رشته‌ها — نوبت شهریور ۱۴۰۱ (تاریخِ چاپی: ۲۱/۰۶/۱۴۰۱ — این‌بار ارقامِ لایه سالم) — مدت ۱۲۰ دقیقه — ۱۹ سکشن/۶۶ ردیف/بارم ۴۰ — ساعت شروع ۸ صبح — روزانه/بزرگسال/داوطلب آزاد — مركز سنجش و پايش كيفيت آموزشي (aee.medu.ir) — «نمره موفق باشید40»",
+   "keyPages": "pdf-p348-349 راهنمای تصحیحِ رسمی — «هر پاسخ صحیح (5/.) نمره» (عددِ اعشاریِ معکوسِ چاپ) — ۵۵ فرگمنتِ کلیدِ چاپی در گارد پیمان می‌شود؛ ۳۶ کلید از ۳۸ آیتمِ بانک‌ها عینِ چاپ است",
+   "keyVerification": "کلیدِ چاپی عیناً نقل شد: «9. recommend 10. monolingual 11. elementary 12. pocket» / «13. late 14. office 15. quiet 16. walking 17. wondered 18. suddenly» / «23. turbine 24. identify 25. shouted» / «26. (b) 27. (d) 28. (c)» / «29. burst 30. flock» / «31. (b) whom 32. (c) is spoken 33. (a) does she 34. (d) hadn’t played» / «41. (b) False 42. (b) False 43. (a) True 44. (b) False» / «48. (a) True 49. (b) False 50. (c) 6.5 51. (b) lives less» / «53. (b) False 54. (a) True 55. (d) to improve reading understanding 56. (a) word» / «59. so 60. or 61. and 62. but» — بلوکِ درهمِ لایه برای س۱۰ («kep/ould/t/be» پراکنده) و ق۵۸ با داوریِ رندرِ ۳۰۰dpi (/tmp/qa-r381/p348-s10-key.png و p349-s16-key.png): «35. be kept 36. had studied 37. would tell» و «58. we are still confused or think we are missing important information.»",
+   "sectionsTotal": 66,
+   "sectionsExtracted": 38,
+   "sectionsSkipped": 28,
+   "items": 38,
+   "bankCounts": [
+    4,
+    6,
+    8,
+    4,
+    4,
+    4,
+    4,
+    4
+   ],
+   "keyPolicy": "همهٔ کلیدهای ۳۸ آیتم از راهنمای تصحیحِ چاپی می‌آیند (۳۶ عینِ چاپ؛ فقط ترتیبِ گزینه‌های بانک‌های کلوژِ l8/l9 و جفتِ حرفِ اولِ l10 مهندسی‌شده‌اند — استخرِ واژگانی از خودِ کلیدِ رسمی، الگویِ r380-l4؛ چرخش‌های تازه: l8=[2,1,0,3] و l9=[3,1,5,0,2,4] — غیر از [0,2,4,1,3,5]ِ r380)؛ کلیدهای درست/غلطِ l12/l13/l14 سمانتیک‌اند و چرخش نمی‌پذیرند (چاپِ l12 دو کلیدِ Falseِ پیاپی دارد — حفظِ وفادار)؛ حروفِ ربطِ l15 بانکِ چاپیِ خودش را دارد (keys [3,1,0,2] — هر واژه دقیقاً یک‌بار)",
+   "engineNote": "هر ۳۸ آیتم MCQ (قراردادِ کارتِ g12)؛ ساقه‌های خوانداری هر سه متنِ کاملِ چاپی را در خود دارند (الگویِ r380-l7 در سه متن)؛ ساقه‌های کلوژِ س۳/س۴ متنِ چاپی + «پاسخِ خانهٔ (N)» (الگویِ r380-l4)؛ ساقه‌های تعریف‌یابی دوبخشیِ فارسی (الگویِ r380-l5)؛ ترجمه عمداً غایب (نهایی‌ها ترجمهٔ چاپی ندارند — الگویِ r278/r279)؛ نقطه‌چینِ چاپ → «-------» چسبیده؛ آپاستروف/گیومهٔ خمیده و مستقیمِ مختلط verbatim",
+   "derivedKeys": {
+    "S3": [
+     "recommend",
+     "monolingual",
+     "elementary",
+     "pocket"
+    ],
+    "S4": [
+     "late",
+     "office",
+     "quiet",
+     "walking",
+     "wondered",
+     "suddenly"
+    ],
+    "S6": [
+     "turbine",
+     "identify",
+     "shouted"
+    ],
+    "S7": [
+     "to be grateful for",
+     "to think and believe",
+     "to have something inside"
+    ],
+    "S8": [
+     "burst",
+     "flock"
+    ],
+    "S9": [
+     "whom",
+     "is spoken",
+     "does she",
+     "hadn’t played"
+    ],
+    "S14": [
+     "False",
+     "False",
+     "True",
+     "False"
+    ],
+    "S15": [
+     "True",
+     "False",
+     "6.5",
+     "lives less"
+    ],
+    "S16": [
+     "False",
+     "True",
+     "to improve reading understanding",
+     "word"
+    ],
+    "S17": [
+     "so",
+     "or",
+     "and",
+     "but"
+    ]
+   },
+   "paperMap": "نقشهٔ سرانگشتیِ بخشِ چهارم (کشفِ این راند — r380 فقط نخستین برگه را دیده بود): بخش از ص۲۲۷ (جلدِ «آزمونهای از دی ماه1397») تا ص۳۴۹؛ ~۱۵ برگهٔ نهاییِ دارایِ لایه + کلیدِ چاپی: خرداد (ص۲۳۷-۲۴۳)، شهریور (ص۲۴۴-۲۵۰)، دی (ص۲۵۱-۲۵۸)، خرداد (ص۲۵۹-۲۶۷)، خرداد (ص۲۶۸-۲۷۴)، دو برگهٔ ص۲۷۵-۲۸۴، شهریور (ص۲۸۵-۲۹۲)، شهریور (ص۲۹۳-۳۰۰)، دی (ص۳۰۱-۳۰۷)، خرداد (ص۳۰۸-۳۱۴)، خرداد (ص۳۱۵-۳۲۱)، شهریور (ص۳۲۲-۳۲۸)، دی (ص۳۲۹-۳۳۵)، خرداد ۱۴۰۲ (ص۳۳۶-۳۴۲ = r380)، شهریور ۱۴۰۱ (ص۳۴۳-۳۴۹ = r381) — سالِ دقیقِ هر برگه در پروبِ راندِ بعدی تأیید می‌شود",
+   "skippedSections": [
+    "س۱ (ردیف ۱-۴، شنیداریِ درست/غلط): مکالمهٔ پدر/پسر — صوتی-کلید (متنِ مکالمه چاپ نیست)؛ کلیدهای چاپی: 1.(b) False / 2.(a) True / 3.(a) True / 4.(b) False — در رسید حفظ شد",
+    "س۲ (ردیف ۵-۸، شنیداریِ MCQ): مکالمهٔ خانم گزارشگر/ورزشکار — صوتی-کلید؛ کلیدهای چاپی: 5.(c) badminton / 6.(a) popular / 7.(b) weekend / 8.(c) offline and online",
+    "س۵ (ردیف ۱۹-۲۲، تصویری): «با توجه به تصاویر... یک جمله اضافی است» — چهار تصویر با داوریِ کاملِ رندر (ص۳۴۴): (19) بادگیرِ یزد→d، (20) دودکش‌های کارخانه با علامتِ پرتوزایی→e، (21) ذره‌بین رویِ روزنامه→a، (22) نوجوانِ کمک‌کننده به سالمند→c؛ اضافیِ چاپی: b) Absence makes the heart grow fonder — هم‌خوانِ کلیدِ رسمی",
+    "س۱۰ (ردیف ۳۵-۳۷، شکلِ فعلِ باز): کلیدِ چاپی «be kept / had studied / would tell» — بدونِ گزینهٔ چاپی؛ کاندیدِ نخستِ بانکِ تایپی (کلیدِ رشته‌ایِ دقیق)",
+    "س۱۱-س۱۳ (ردیف ۳۸-۴۰): جمله‌سازیِ درهم (پاسخِ مدلِ دوترتیب: «When the teacher came to the class, the students had done their homework.» یا وارونش) و جملهٔ شرطی («I would travel to the future.» بارم ۰.۲۵/۰.۲۵/۰.۵) و ضمیرِ موصولی (کلیدِ بند-رأیی: which + جملهٔ دارای فعل) — کاندیدِ تایپی/تولیدی",
+    "ردیف ۴۵-۴۷ (تکمیلِ خورشیدی): کلیدِ چاپیِ ثابت «solar energy / panels» و پاسخِ مدلِ ۴۷ — کاندیدِ تایپی؛ ردیف ۵۲ (پاسخِ مدلِ خواب: «We / You spend about one-third (1/3) of our lives in sleep.») — کاندیدِ تایپی؛ ردیف ۵۷-۵۸ (پاسخِ مدلِ واژه‌نامه: «the meaning of the word.» و «we are still confused or think we are missing important information.») — کاندیدِ تایپی",
+    "س۱۸-س۱۹ (ردیف ۶۳-۶۶، نگارشِ تولیدی): سه جملهٔ موضوعی (Iran/Books/Computer) و پاراگرافِ Water با (Topic/Supporting/Concluding Sentence) — تولیدی؛ کلیدِ بند-رأییِ رسمی («با توجه به رعایت اصول جمله موضوعی»)"
+   ],
+   "printQuirks": [
+    "«سؤاﻻت» با لام‌الفِ شکسته در سربرگِ آزمون (همان الگویِ r380) و «راهنمای تصحیح امتحان نها :يي» با دونقطهٔ جابه‌جا در سربرگِ کلید",
+    "بلوک‌های کلیدِ RTLِ درهم: س۱۰ به قطعاتِ «tell/ould/w/t/kep/be» و ق۵۸ به «still conf/used or think/e w» شکسته — فقط رندرِ ۳۰۰dpi کلیدِ کامل را می‌دهد (درسِ r380-ق۳۲ تکرار شد)",
+    "عددِ اعشاریِ معکوسِ چاپ: «5/.» = ۰.۵ در سربرگِ هر سکشنِ کلید",
+    "مخلوطِ آپاستروفِ خمیده و مستقیم در یک متنِ واحد: واژه‌نامه با don't/won'tِ مستقیم ولی learner’s خمیده (برخلافِ متنِ مکالمهٔ س۳ که کاملاً خمیده است: I’d/learner’s)",
+    "«not only in access but» در متنِ خورشیدی — عبارتِ عجیبِ چاپ (انتظار: in reach) — verbatim حفظ شد",
+    "گیومهٔ خمیدهٔ چاپ در اصطلاحِ «“Birds of a feather, f - - - - together.”» و گیومهٔ مستقیمِ چاپ در «What does \"it\" in paragraph one» — هر دو verbatim",
+    "«the students had done their homework when the teacher came to the class,» — ویرگولِ پایانیِ چاپیِ وارونشِ ۳۸ در خودِ کلید",
+    "سربرگِ پنج‌صفحه‌ایِ آزمون (ردیف/نمره/تعداد صفحات5) در هر پنج صفحه تکرار می‌شود — فیلترِ سرحدیِ گارد",
+    "«نمره موفق باشید40» و «جمع نمره40» — دو امضای پایانیِ چاپیِ آزمون و کلید"
+   ],
+   "futureNote": "بخشِ چهارم ~۱۳ برگهٔ دیگر دارد (ص۲۲۸-۳۳۵ — نقشهٔ paperMap) که همه کلیدِ چاپی دارند — الگویِ همین رسید؛ کاندیدهای تایپیِ این برگه (س۱۰ و ردیف‌های ۳۸/۳۹/۴۵-۴۷/۵۲/۵۷-۵۸) به‌همراهِ شش پاسخِ مدلِ r380 = بانکِ تایپیِ آینده؛ ص۳۴۹ = آخرین صفحهٔ جزوه دوازدهم — بخشِ نهایی‌ها با این برگه بسته شد",
+   "bookletFile": "جزوه_جامع_پایه_دوازدهم_با_امتحانات_نهایی_.pdf"
   }
  },
  "answerArbitration": [
@@ -4888,6 +4995,556 @@
       "Integrated Phonetic Lettering"
      ],
      "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 8,
+   "title": "نهایی شهریور ۱۴۰۱ — کلوژِ مکالمهٔ واژه‌نامه (س۳، ص۳۴۳)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l8-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "Majid: Excuse me Mr. Iranmehr, I’d like some information about a good English dictionary. 9) Mr. Iranmehr: First, I ------- a learner’s dictionary. Majid: What type do you suggest? 10) Mr. Iranmehr: I suppose a ------- dictionary is more suitable for you. Majid: And what about levels? 11) Mr. Iranmehr: For you as a high school student, an ------- one is OK. Majid: Do I need a small size one? 12) Mr. Iranmehr: Yes, a ------- dictionary. Majid: Thanks. — پاسخِ خانهٔ (9): -------",
+     "options": [
+      "monolingual",
+      "pocket",
+      "recommend",
+      "elementary"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l8-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "Majid: Excuse me Mr. Iranmehr, I’d like some information about a good English dictionary. 9) Mr. Iranmehr: First, I ------- a learner’s dictionary. Majid: What type do you suggest? 10) Mr. Iranmehr: I suppose a ------- dictionary is more suitable for you. Majid: And what about levels? 11) Mr. Iranmehr: For you as a high school student, an ------- one is OK. Majid: Do I need a small size one? 12) Mr. Iranmehr: Yes, a ------- dictionary. Majid: Thanks. — پاسخِ خانهٔ (10): -------",
+     "options": [
+      "recommend",
+      "monolingual",
+      "pocket",
+      "elementary"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l8-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "Majid: Excuse me Mr. Iranmehr, I’d like some information about a good English dictionary. 9) Mr. Iranmehr: First, I ------- a learner’s dictionary. Majid: What type do you suggest? 10) Mr. Iranmehr: I suppose a ------- dictionary is more suitable for you. Majid: And what about levels? 11) Mr. Iranmehr: For you as a high school student, an ------- one is OK. Majid: Do I need a small size one? 12) Mr. Iranmehr: Yes, a ------- dictionary. Majid: Thanks. — پاسخِ خانهٔ (11): -------",
+     "options": [
+      "elementary",
+      "pocket",
+      "monolingual",
+      "recommend"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l8-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "Majid: Excuse me Mr. Iranmehr, I’d like some information about a good English dictionary. 9) Mr. Iranmehr: First, I ------- a learner’s dictionary. Majid: What type do you suggest? 10) Mr. Iranmehr: I suppose a ------- dictionary is more suitable for you. Majid: And what about levels? 11) Mr. Iranmehr: For you as a high school student, an ------- one is OK. Majid: Do I need a small size one? 12) Mr. Iranmehr: Yes, a ------- dictionary. Majid: Thanks. — پاسخِ خانهٔ (12): -------",
+     "options": [
+      "recommend",
+      "monolingual",
+      "elementary",
+      "pocket"
+     ],
+     "answer": 3
+    }
+   ]
+  },
+  {
+   "lesson": 9,
+   "title": "نهایی شهریور ۱۴۰۱ — متنِ شنیداریِ چاپ (س۴، ص۳۴۳)",
+   "level": "شش‌گزینه‌ای",
+   "count": 6,
+   "questions": [
+    {
+     "id": "g12-l9-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "Last night, I left work ------- (13) ------- at around 9 p.m. When I came out of the -------(14) ------- , most people had already gone home. The street was very dark and ------- (15) ------- I hadn’t experienced such a thing before. While I was ------- (16) ------- , a car pulled over. I looked at the driver. I was sure, I had seen this man before. I ------- (17) ------- who can it be? He waved at me and came out of the car. He asked if he could drive me home. ------- (18) ------- , I remembered. — پاسخِ خانهٔ (13): -------",
+     "options": [
+      "quiet",
+      "wondered",
+      "suddenly",
+      "late",
+      "office",
+      "walking"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l9-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "Last night, I left work ------- (13) ------- at around 9 p.m. When I came out of the -------(14) ------- , most people had already gone home. The street was very dark and ------- (15) ------- I hadn’t experienced such a thing before. While I was ------- (16) ------- , a car pulled over. I looked at the driver. I was sure, I had seen this man before. I ------- (17) ------- who can it be? He waved at me and came out of the car. He asked if he could drive me home. ------- (18) ------- , I remembered. — پاسخِ خانهٔ (14): -------",
+     "options": [
+      "late",
+      "office",
+      "suddenly",
+      "walking",
+      "quiet",
+      "wondered"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l9-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "Last night, I left work ------- (13) ------- at around 9 p.m. When I came out of the -------(14) ------- , most people had already gone home. The street was very dark and ------- (15) ------- I hadn’t experienced such a thing before. While I was ------- (16) ------- , a car pulled over. I looked at the driver. I was sure, I had seen this man before. I ------- (17) ------- who can it be? He waved at me and came out of the car. He asked if he could drive me home. ------- (18) ------- , I remembered. — پاسخِ خانهٔ (15): -------",
+     "options": [
+      "late",
+      "office",
+      "walking",
+      "wondered",
+      "suddenly",
+      "quiet"
+     ],
+     "answer": 5
+    },
+    {
+     "id": "g12-l9-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "Last night, I left work ------- (13) ------- at around 9 p.m. When I came out of the -------(14) ------- , most people had already gone home. The street was very dark and ------- (15) ------- I hadn’t experienced such a thing before. While I was ------- (16) ------- , a car pulled over. I looked at the driver. I was sure, I had seen this man before. I ------- (17) ------- who can it be? He waved at me and came out of the car. He asked if he could drive me home. ------- (18) ------- , I remembered. — پاسخِ خانهٔ (16): -------",
+     "options": [
+      "walking",
+      "late",
+      "office",
+      "quiet",
+      "wondered",
+      "suddenly"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l9-5",
+     "n": 5,
+     "category": "vocab",
+     "question": "Last night, I left work ------- (13) ------- at around 9 p.m. When I came out of the -------(14) ------- , most people had already gone home. The street was very dark and ------- (15) ------- I hadn’t experienced such a thing before. While I was ------- (16) ------- , a car pulled over. I looked at the driver. I was sure, I had seen this man before. I ------- (17) ------- who can it be? He waved at me and came out of the car. He asked if he could drive me home. ------- (18) ------- , I remembered. — پاسخِ خانهٔ (17): -------",
+     "options": [
+      "late",
+      "suddenly",
+      "wondered",
+      "office",
+      "quiet",
+      "walking"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l9-6",
+     "n": 6,
+     "category": "vocab",
+     "question": "Last night, I left work ------- (13) ------- at around 9 p.m. When I came out of the -------(14) ------- , most people had already gone home. The street was very dark and ------- (15) ------- I hadn’t experienced such a thing before. While I was ------- (16) ------- , a car pulled over. I looked at the driver. I was sure, I had seen this man before. I ------- (17) ------- who can it be? He waved at me and came out of the car. He asked if he could drive me home. ------- (18) ------- , I remembered. — پاسخِ خانهٔ (18): -------",
+     "options": [
+      "quiet",
+      "late",
+      "office",
+      "walking",
+      "suddenly",
+      "wondered"
+     ],
+     "answer": 4
+    }
+   ]
+  },
+  {
+   "lesson": 10,
+   "title": "نهایی شهریور ۱۴۰۱ — واژگان و تعریف و حرفِ اول (س۶-س۸، ص۳۴۴)",
+   "level": "چهارگزینه‌ای",
+   "count": 8,
+   "questions": [
+    {
+     "id": "g12-l10-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "This wind ------- is able to generate a lot of electricity each day.",
+     "options": [
+      "identify",
+      "shouted",
+      "diary",
+      "turbine"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l10-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "To choose the best dictionary, first ------- your needs.",
+     "options": [
+      "identify",
+      "shouted",
+      "diary",
+      "turbine"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l10-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "When my mother saw my score, she ------- at me angrily.",
+     "options": [
+      "identify",
+      "shouted",
+      "diary",
+      "turbine"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l10-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "«I really appreciate the culture and art of Iran.» — تعریفِ ستون B برای واژهٔ «appreciate»: -------",
+     "options": [
+      "to change in a form",
+      "to be grateful for",
+      "to have something inside",
+      "to think and believe"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l10-5",
+     "n": 5,
+     "category": "vocab",
+     "question": "«I suppose we shouldn’t give up trying after a failure.» — تعریفِ ستون B برای واژهٔ «suppose»: -------",
+     "options": [
+      "to change in a form",
+      "to be grateful for",
+      "to have something inside",
+      "to think and believe"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l10-6",
+     "n": 6,
+     "category": "vocab",
+     "question": "«Pizza contains a lot of fat.» — تعریفِ ستون B برای واژهٔ «contains»: -------",
+     "options": [
+      "to change in a form",
+      "to be grateful for",
+      "to have something inside",
+      "to think and believe"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l10-7",
+     "n": 7,
+     "category": "vocab",
+     "question": "When Amir saw the film, he b - - - - into tears.",
+     "options": [
+      "burst",
+      "flock"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l10-8",
+     "n": 8,
+     "category": "vocab",
+     "question": "People like to spend time with others who are similar to them. Therefore, “Birds of a feather, f - - - - together.”",
+     "options": [
+      "burst",
+      "flock"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 11,
+   "title": "نهایی شهریور ۱۴۰۱ — گرامر (س۹، ص۳۴۵)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l11-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "The boy ------- you invited arrived very late.",
+     "options": [
+      "which",
+      "whom",
+      "who",
+      "whose"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l11-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "English ------- in many countries.",
+     "options": [
+      "speaks",
+      "is speaking",
+      "is spoken",
+      "has spoken"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l11-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "His sister never behaves politely, -------?",
+     "options": [
+      "does she",
+      "doesn’t she",
+      "does he",
+      "doesn’t he"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l11-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "Zahra ------- chess before, so I showed her what to do.",
+     "options": [
+      "didn’t play",
+      "wasn’t playing",
+      "hasn’t played",
+      "hadn’t played"
+     ],
+     "answer": 3
+    }
+   ]
+  },
+  {
+   "lesson": 12,
+   "title": "نهایی شهریور ۱۴۰۱ — خوانداریِ انرژیِ خورشیدی (س۱۴، ص۳۴۵-۳۴۶)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l12-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Solar energy is the most effective of all energy resources and it can even be available in cloudy weather. The solar energy which comes to the Earth is about 10,000 times greater than the amount which humankind consumes. Solar technologies can deliver heat, cooling, natural lighting, electricity, and fuels. Solar technologies convert sunlight into electrical energy through solar panels or mirrors. Although not all countries use solar energy, it is possible for every country. The cost of producing solar panels has surprisingly decreased in the last few years, making them not only in access but often the cheapest form of electricity. Depending on the type of material used in their production, solar panels can work for around 30 years. — Solar energy comes from the Earth.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l12-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "Solar energy is the most effective of all energy resources and it can even be available in cloudy weather. The solar energy which comes to the Earth is about 10,000 times greater than the amount which humankind consumes. Solar technologies can deliver heat, cooling, natural lighting, electricity, and fuels. Solar technologies convert sunlight into electrical energy through solar panels or mirrors. Although not all countries use solar energy, it is possible for every country. The cost of producing solar panels has surprisingly decreased in the last few years, making them not only in access but often the cheapest form of electricity. Depending on the type of material used in their production, solar panels can work for around 30 years. — Solar panels cost a lot in the last few years.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l12-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "Solar energy is the most effective of all energy resources and it can even be available in cloudy weather. The solar energy which comes to the Earth is about 10,000 times greater than the amount which humankind consumes. Solar technologies can deliver heat, cooling, natural lighting, electricity, and fuels. Solar technologies convert sunlight into electrical energy through solar panels or mirrors. Although not all countries use solar energy, it is possible for every country. The cost of producing solar panels has surprisingly decreased in the last few years, making them not only in access but often the cheapest form of electricity. Depending on the type of material used in their production, solar panels can work for around 30 years. — Solar panels convert sunlight into electrical energy.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l12-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "Solar energy is the most effective of all energy resources and it can even be available in cloudy weather. The solar energy which comes to the Earth is about 10,000 times greater than the amount which humankind consumes. Solar technologies can deliver heat, cooling, natural lighting, electricity, and fuels. Solar technologies convert sunlight into electrical energy through solar panels or mirrors. Although not all countries use solar energy, it is possible for every country. The cost of producing solar panels has surprisingly decreased in the last few years, making them not only in access but often the cheapest form of electricity. Depending on the type of material used in their production, solar panels can work for around 30 years. — All countries use solar energy to generate electricity.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 13,
+   "title": "نهایی شهریور ۱۴۰۱ — خوانداریِ خواب (س۱۵، ص۳۴۶)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l13-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Sleep is essential for all people. Did you know that sleep is more important than food? A person, who does not sleep, dies at a younger age than one who does not eat. Let’s say you sleep 12 hours later than you usually do. It will take your body about three weeks to return to normal. We spend about one-third (1/3) of our lives in sleep. That’s about 121 days a year! How much sleep do we require? We are all different. A baby needs 16 hours of sleep every day. Children 6 to 12 years old need an average of 10 to 12 hours of sleep. A teenager needs 9 to 10 hours, and an adult needs an average of 7 to 8 hours of sleep a night. Of course, some people need only 3 hours of sleep each night. Others need 10 hours of sleep. After age 50, the average sleep time goes down to 6.5 hours a night. We need less sleep as we get older. — Food is less important than sleep.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l13-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "Sleep is essential for all people. Did you know that sleep is more important than food? A person, who does not sleep, dies at a younger age than one who does not eat. Let’s say you sleep 12 hours later than you usually do. It will take your body about three weeks to return to normal. We spend about one-third (1/3) of our lives in sleep. That’s about 121 days a year! How much sleep do we require? We are all different. A baby needs 16 hours of sleep every day. Children 6 to 12 years old need an average of 10 to 12 hours of sleep. A teenager needs 9 to 10 hours, and an adult needs an average of 7 to 8 hours of sleep a night. Of course, some people need only 3 hours of sleep each night. Others need 10 hours of sleep. After age 50, the average sleep time goes down to 6.5 hours a night. We need less sleep as we get older. — There is no difference in sleep time among people.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l13-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "Sleep is essential for all people. Did you know that sleep is more important than food? A person, who does not sleep, dies at a younger age than one who does not eat. Let’s say you sleep 12 hours later than you usually do. It will take your body about three weeks to return to normal. We spend about one-third (1/3) of our lives in sleep. That’s about 121 days a year! How much sleep do we require? We are all different. A baby needs 16 hours of sleep every day. Children 6 to 12 years old need an average of 10 to 12 hours of sleep. A teenager needs 9 to 10 hours, and an adult needs an average of 7 to 8 hours of sleep a night. Of course, some people need only 3 hours of sleep each night. Others need 10 hours of sleep. After age 50, the average sleep time goes down to 6.5 hours a night. We need less sleep as we get older. — Old people need ------- hours of sleep each night.",
+     "options": [
+      "9 to 10",
+      "10 to 12",
+      "6.5",
+      "16"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l13-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "Sleep is essential for all people. Did you know that sleep is more important than food? A person, who does not sleep, dies at a younger age than one who does not eat. Let’s say you sleep 12 hours later than you usually do. It will take your body about three weeks to return to normal. We spend about one-third (1/3) of our lives in sleep. That’s about 121 days a year! How much sleep do we require? We are all different. A baby needs 16 hours of sleep every day. Children 6 to 12 years old need an average of 10 to 12 hours of sleep. A teenager needs 9 to 10 hours, and an adult needs an average of 7 to 8 hours of sleep a night. Of course, some people need only 3 hours of sleep each night. Others need 10 hours of sleep. After age 50, the average sleep time goes down to 6.5 hours a night. We need less sleep as we get older. — A person, who does not sleep, ------- than one who does not eat.",
+     "options": [
+      "lives longer",
+      "lives less",
+      "eats more",
+      "gets older"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 14,
+   "title": "نهایی شهریور ۱۴۰۱ — خوانداریِ واژه‌نامه (س۱۶، ص۳۴۶-۳۴۷)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l14-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Looking up words you don't know can be difficult, especially if you don't know which definition to choose when you open a dictionary. When to look up a word, how an English dictionary is compiled, and which description to choose will help you effectively use the dictionary to improve your understanding of the reading texts. First, decide when to use the dictionary. Guess the meaning of the word based on the context before looking it up. Read the whole sentence, and continue to read the paragraph to see if you can guess the meaning of the word based on the information surrounding it. Identify the part of speech, if you can, to help you find the meaning of the word. Look for prefixes, suffixes or roots that suggest the word meaning. If you are still confused or think you are missing important information, now it is the time to take out the dictionary. Decide which type of dictionary to use. There are different types of dictionaries available. They are called online dictionaries, learner’s dictionaries, bilingual dictionaries, and monolingual dictionaries. 4 — After looking the word up, try to guess it.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l14-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "Looking up words you don't know can be difficult, especially if you don't know which definition to choose when you open a dictionary. When to look up a word, how an English dictionary is compiled, and which description to choose will help you effectively use the dictionary to improve your understanding of the reading texts. First, decide when to use the dictionary. Guess the meaning of the word based on the context before looking it up. Read the whole sentence, and continue to read the paragraph to see if you can guess the meaning of the word based on the information surrounding it. Identify the part of speech, if you can, to help you find the meaning of the word. Look for prefixes, suffixes or roots that suggest the word meaning. If you are still confused or think you are missing important information, now it is the time to take out the dictionary. Decide which type of dictionary to use. There are different types of dictionaries available. They are called online dictionaries, learner’s dictionaries, bilingual dictionaries, and monolingual dictionaries. 4 — The information around the words helps you guess their meanings.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l14-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "Looking up words you don't know can be difficult, especially if you don't know which definition to choose when you open a dictionary. When to look up a word, how an English dictionary is compiled, and which description to choose will help you effectively use the dictionary to improve your understanding of the reading texts. First, decide when to use the dictionary. Guess the meaning of the word based on the context before looking it up. Read the whole sentence, and continue to read the paragraph to see if you can guess the meaning of the word based on the information surrounding it. Identify the part of speech, if you can, to help you find the meaning of the word. Look for prefixes, suffixes or roots that suggest the word meaning. If you are still confused or think you are missing important information, now it is the time to take out the dictionary. Decide which type of dictionary to use. There are different types of dictionaries available. They are called online dictionaries, learner’s dictionaries, bilingual dictionaries, and monolingual dictionaries. 4 — Dictionary helps you-------",
+     "options": [
+      "to miss important information",
+      "to guess the meaning of the word",
+      "to read the whole sentence",
+      "to improve reading understanding"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l14-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "Looking up words you don't know can be difficult, especially if you don't know which definition to choose when you open a dictionary. When to look up a word, how an English dictionary is compiled, and which description to choose will help you effectively use the dictionary to improve your understanding of the reading texts. First, decide when to use the dictionary. Guess the meaning of the word based on the context before looking it up. Read the whole sentence, and continue to read the paragraph to see if you can guess the meaning of the word based on the information surrounding it. Identify the part of speech, if you can, to help you find the meaning of the word. Look for prefixes, suffixes or roots that suggest the word meaning. If you are still confused or think you are missing important information, now it is the time to take out the dictionary. Decide which type of dictionary to use. There are different types of dictionaries available. They are called online dictionaries, learner’s dictionaries, bilingual dictionaries, and monolingual dictionaries. 4 — What does \"it\" in paragraph one refer to------- ",
+     "options": [
+      "word",
+      "dictionary",
+      "context",
+      "meaning"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 15,
+   "title": "نهایی شهریور ۱۴۰۱ — حروفِ ربط (س۱۷، ص۳۴۷)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l15-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "You lost the game! ------- if you want to succeed, you have to practice more.",
+     "options": [
+      "and",
+      "or",
+      "but",
+      "so"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l15-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "You can take a bus, ------- you can take a taxi.",
+     "options": [
+      "and",
+      "or",
+      "but",
+      "so"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l15-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "I went to the whiteboard, ------- I wrote the topic of the new lesson.",
+     "options": [
+      "and",
+      "or",
+      "but",
+      "so"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l15-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "My brother is a rich man, ------- my sister is poor.",
+     "options": [
+      "and",
+      "or",
+      "but",
+      "so"
+     ],
+     "answer": 2
     }
    ]
   }
