@@ -713,6 +713,120 @@
    ],
    "futureNote": "بخشِ ۴: ۷ برگه از ۱۷ استخراج شد، ۱۰ برگه باقی است (نزدیک‌ترین‌ها: شهریور ۱۳۹۹ ص۲۸۵-۲۹۲ و جفتِ خرداد ۱۳۹۹ ص۲۵۹-۲۷۶؛ به‌علاوهٔ برگهٔ لایه‌خرابِ ص۲۷۷-۲۸۴ که OCR/رندر می‌خواهد، ناشنوایانِ ص۲۹۳-۳۰۰ و جفتِ ۱۳۹۷/۱۳۹۸ با کلیدِ سربرگِ قدیمی)؛ کاندیدهای تایپیِ این برگه (س۱۱ «had studied»/«is spoken» + ردیفِ ۳۸ «Mina was upset because she had gotten a bad score.» + ردیفِ ۴۴ «Quickly before they jump into to the next lesson.» + ردیفِ ۴۵ «They must have a native language dictionary.» + ردیفِ ۵۰ «world» + ردیفِ ۵۱ «creating») به کاندیدهای r380-r385 اضافه شدند — مخزنِ بانکِ تایپیِ نهایی‌ها اکنون ۴۶ ردیف است (۳۹ِ r385 + ۷ ردیفِ تازه؛ ردیفِ ۳۹/John عینِ r384 است و ردیفِ تازه شمرده نشد)",
    "bookletFile": "جزوه_جامع_پایه_دوازدهم_با_امتحانات_نهایی_.pdf"
+  },
+  "g12nahaie8": {
+   "extractedRound": "r387",
+   "section": "بخش چهارمِ جزوه: «آزمونهای از دی ماه 1397 تا شهریور 1401 نهابی با کلید» — برگهٔ هشتم: «سؤالات امتحان نهایی» زبان انگلیسی (۳) نوبتِ شهریور ۱۳۹۹ (تمام رشته‌ها)",
+   "examPages": "pdf-p285-290 (شش صفحهٔ آزمون؛ ششمی فقط پایان‌بندی/جمع‌بندی) + کلیدِ رسمی: pdf-p291-292 «راهنماي تصحيح»؛ مرزِ برگه‌ها = p284→p285 (پایانِ برگهٔ لایه‌خراب) و p292→p293 (آغازِ ناشنوایان)",
+   "examMeta": "امتحان نهاییِ سراسریِ وزارت — درس: زبان انگلیسی (۳) — پایه دوازدهم دورهٔ دوم متوسطه — رشته: تمام رشته‌ها — نوبت شهریورماه سال ۱۳۹۹ (تاریخِ چاپی: ۱۳/۰۶/۹۹) — مدت ۱۲۰ دقیقه — ساعت شروع ۸ صبح — ۱۸ سکشن/۶۷ ردیف/بارم ۴۸ — روزانه/بزرگسال/داوطلب آزاد — مركز سنجش و پايش كيفيت آموزشي (aee.medu.ir) — «Good luck / جمع نمره ۴٨»",
+   "keyPages": "pdf-p291-292 راهنمای تصحیحِ رسمی — «هر پاسخ صحيح (5/.) نمره» — ۶۴ فرگمنتِ کلیدِ چاپی در گارد پیمان می‌شود؛ ۳۸ کلید از ۳۸ آیتمِ بانک‌ها عینِ چاپ است",
+   "keyVerification": "کلیدِ چاپی عیناً نقل شد: «1. ( a ) 2. ( c ) 3. ( c )» (چهارمین سه‌تاییِ پرانتز-فاصله‌دارِ پیاپی) / «4. He left his jacket on the bus. 5. False ( b) 6. True (a)» / «7. It is at 6:30. 8. She may bring a birthday card.» / «9. volleyball 10. team 11. fun 12. play 13. twice 14. games» / «15. ( b  ) 16.(  d  ) 17. ( a  ) 18. ( c )» (پرانتزهای دوفاصله‌ایِ چاپ) / «19. arrange 20. demand 21. repeatedly» / «22. hearing 23. smart 24. pollute» / «25. ( b) 26. ( c ) 27. ( b ) 28. ( d ) 29. ( c ) 30. ( a )» / «33. (a) True 34. (b) False 35. ( d ) 36. ( a )» / «39. (a) True 40. (a) True» (دوبلِ True) «41. ( b ) 42. ( d )» / «43. means 44. founding» / «45. and 46. or 47. but 48. so» (با دوفاصلهٔ چاپ در ۴۷) / «49. …so he passed it.» / «51- c 52- a 53- d 54- e 55- j 56- h 57- f 58- g» (جفت‌های خط‌پیوندیِ پراکنده) / «59. There are some workers and teachers who work in the village. 60. The girl wrote a letter, didn`t she? 61. Everything in the garden was brown because it hadn`t rained. 62. The parents should be called by the teacher.» (بک‌تیکِ چاپ در ۶۰/۶۱) — س۹ «which» در لایهٔ کلید آشفته است («w»+«hich») و س۱۰ «(would ,could ,might)»",
+   "sectionsTotal": 67,
+   "sectionsExtracted": 38,
+   "sectionsSkipped": 29,
+   "items": 38,
+   "bankCounts": [
+    6,
+    3,
+    3,
+    6,
+    4,
+    4,
+    4,
+    4,
+    4
+   ],
+   "keyPolicy": "همهٔ کلیدهای ۳۸ آیتم از راهنمای تصحیحِ چاپی می‌آیند (عینِ چاپ)؛ کلوژِ شنیداریِ l51 از استخرِ خودِ کلیدِ رسمی (volleyball/team/fun/play/twice/games) با چرخشِ تازهٔ [2,0,3,1,2,0] (بدونِ تکرارِ مجاور، دنبالکنندهٔ r380-l4/r381-l8-l9/r382-l16/r383-l22/r386-l43-l44)؛ بانکِ واژگانِ l52 به ترتیبِ چاپِ خودِ برگه (repeatedly, forever, demand, arrange) با اضافیِ چاپیِ هرگز-کلید (forever)؛ حرفِ اولِ l53 با سه سه‌تاییِ هم‌شکلِ مهندسی‌شده (h+++++/s++++/p+++++)؛ گرامرِ l54 و حروفِ ربطِ l57 به ترتیبِ چاپ؛ کلیدهای درست/غلطِ l55/l56 سمانتیک‌اند (چاپ: True/False و True/True — دوبلِ Trueِ چاپ وفادارانه ماند)؛ تعریف‌یابیِ l58 و اصطلاحاتِ l59 به ترتیبِ چاپِ ستون B با اضافی‌های چاپیِ هرگز-کلید (b/i)",
+   "engineNote": "هر ۳۸ آیتم MCQ (قراردادِ کارتِ g12)؛ کلوژِ شنیداریِ چاپِ l51 با خانه‌های «------- (N) -------» و دنبالهٔ «پاسخِ خانهٔ (N)» (الگویِ r381-l9/r383-l22/r386-l43-l44) — خانه‌های چاپِ این برگه بدونِ پرانتزند («…9…….») و gapify به الگویِ استاندارد تبدیل کرد (شاملِ دنبالهٔ مختلطِ «…13..….»)؛ ساقه‌های خوانداریِ l55/l56 متنِ کاملِ چاپی را در خود دارند؛ متنِ l56 لایهٔ آشفته دارد و بازجوشِ داوری‌شدهٔ ۳۰۰dpi است (گاردِ فرگمنت‌های خام + «متنِ پیوسته در لایه نیست»)؛ ساقه‌های تعریف‌یابی/اصطلاح دوبخشیِ فارسی (الگویِ r380-l5/r386-l45)؛ ترجمه عمداً غایب (نهایی‌ها ترجمهٔ چاپی ندارند)؛ نقطه‌چینِ چاپ → «-------» چسبیده؛ این برگه سکشنِ مرتب‌سازیِ شش‌گزینه‌ای ندارد",
+   "derivedKeys": {
+    "S4": [
+     "volleyball",
+     "team",
+     "fun",
+     "play",
+     "twice",
+     "games"
+    ],
+    "S6": [
+     "arrange",
+     "demand",
+     "repeatedly"
+    ],
+    "S7": [
+     "hearing",
+     "smart",
+     "pollute"
+    ],
+    "S8": [
+     "won`t they",
+     "which",
+     "is known",
+     "have been broken",
+     "could read",
+     "increasingly"
+    ],
+    "S11": [
+     "True",
+     "False",
+     "respect",
+     "reflects"
+    ],
+    "S12": [
+     "True",
+     "True",
+     "humans",
+     "the life of early humans"
+    ],
+    "S13": [
+     "and",
+     "or",
+     "but",
+     "so"
+    ],
+    "S16-الف": [
+     "a book in which you record your thoughts or feelings or what has happened every day",
+     "to take something in, especially gradually",
+     "to suddenly decide to do something",
+     "to finish something"
+    ],
+    "S16-ب": [
+     "You soon forget people or things that are no longer visible or present.",
+     "You have to practice a skill a lot to become good at it.",
+     "When you get money quickly, like by winning it, it’s easy to spend it or lose it quickly as well.",
+     "When two people cooperate with each other, they come up with better ideas."
+    ]
+   },
+   "paperMap": "نقشهٔ کاملِ بخشِ ۴ (ص۲۲۸-۳۴۹، ۱۷ برگه) — کشفِ r384، تأییدِ دوباره در این راند: دی ۱۳۹۷ ص۲۲۹-۲۳۳ + کلیدِ سربرگِ قدیمیِ ص۲۳۴-۲۳۶ (پیش از presentation-forms)؛ خرداد ۱۳۹۸ ص۲۳۷-۲۴۱ + کلید ص۲۴۲-۲۴۳ (۱۳/۳/۱۳۹۸)؛ شهریور ۱۳۹۸ ص۲۴۴-۲۴۸ + کلید ص۲۴۹-۲۵۰ (۱۲/۶/۱۳۹۸)؛ دی ۱۳۹۸ ص۲۵۱-۲۵۶ + کلید ص۲۵۷-۲۵۸ (۲۲/۱۰/۹۸)؛ خرداد ۱۳۹۹ ریاضی-تجربی ص۲۵۹-۲۶۵ + کلید ص۲۶۶-۲۶۷ (۰۵/۰۴/۹۹)؛ خرداد ۱۳۹۹ انسانی ص۲۶۸-۲۷۴ + کلید ص۲۷۵-۲۷۶ (۰۷/۰۴/۹۹)؛ برگهٔ لایه‌خراب ص۲۷۷-۲۸۴ (نیازمند OCR/رندر)؛ شهریور ۱۳۹۹ ص۲۸۵-۲۹۰ + کلید ص۲۹۱-۲۹۲ (۱۳/۰۶/۹۹) ← این راند؛ شهریور ۱۳۹۹ ویژهٔ ناشنوایان ص۲۹۳-۲۹۸ + کلید ص۲۹۹-۳۰۰ (۱۳/۰۶/۹۹)؛ دی ۱۳۹۹ ص۳۰۱-۳۰۵ + کلید ص۳۰۶-۳۰۷ [r386]؛ خرداد ۱۴۰۰ ریاضی-تجربی ص۳۰۸-۳۱۴ [r385]؛ خرداد ۱۴۰۰ انسانی ص۳۱۵-۳۲۱ [r384]؛ شهریور ۱۴۰۰ ص۳۲۲-۳۲۸ [r383]؛ دی ۱۴۰۰ ص۳۲۹-۳۳۵ [r382]؛ دی ۱۴۰۱ ص۳۳۶-۳۴۲ [r380]؛ شهریور ۱۴۰۱ ص۳۴۳-۳۴۹ [r381] — ۸ برگه استخراج شد، ۹ برگه باقی است",
+   "skippedSections": [
+    "س۱ (ردیف ۱-۳، شنیداریِ MCQ): Amin/Behzad — صوتی-کلید؛ کلیدهای چاپی: 1.( a )/2.( c )/3.( c ) — چهارمین سه‌تاییِ پرانتز-فاصله‌دارِ پیاپی — در رسید حفظ شد",
+    "س۲ (ردیف ۴-۶، شنیداریِ کوتاه): کتابِ الکس — صوتی-کلید؛ کلیدهای چاپی: 4. He left his jacket on the bus. / 5. False ( b)/6. True (a)",
+    "س۳ (ردیف ۷-۸، شنیداریِ کوتاه): جشنِ تولد — صوتی-کلید؛ کلیدهای چاپی: 7. It is at 6:30. / 8. She may bring a birthday card.",
+    "س۵ (ردیف ۱۵-۱۸، تصویری): «یک جمله اضافی است» — پنج جملهٔ چاپی a-e: a) The mother is hugging her little child. → 17 / b) My sister often sits in the balcony and studies her lessons. → 15 / c) The student circled the dictionary entry for the new word. → 18 / d) Solar panels change solar power into electricity. → 16 / e) The sofa converts into bed. (اضافیِ چاپی)؛ داوریِ رندرِ ۳۰۰dpi (p286-s5-pictures.png): بالکن ۱۵/پنلِ خورشیدی ۱۶/در آغوش‌گرفتن ۱۷/لغت‌نامهٔ دایره‌کشیده ۱۸؛ استخراج نیازمندِ تصویر",
+    "س۹ (ردیف ۳۱، تولیدیِ موصولی): «A cheetah is an animal…….» — کلیدِ چاپی: which + جمله‌ای دارای فعل (در لایهٔ کلید آشفته: «w»+«hich») — تولیدی",
+    "س۱۰ (ردیف ۳۲، تولیدیِ شرطی): «If I had wings, I…….» — کلیدِ چاپی: (would ,could ,might) + جمله‌ای که مفهوم را برساند — تولیدی",
+    "ردیف ۳۷-۳۸ (پاسخِ مدلِ خوانداریِ احترام): «37. The easiest way to show your love and respect is to tell them that you appreciate who they are and what they do.» (عینِ جملهٔ متنِ چاپی — از نشت‌سنج شمول ندارد) و «38.Yes, it can, for example, washing the dishes/ cleaning the kitchen/ cleaning the room» (بدونِ فاصلهٔ چاپ در ۳۸.Yes)",
+    "ردیف ۴۳-۴۴ (تکمیلِ جملهٔ انسان‌های نخستین): «43. means» و «44. founding» — کلیدهای تک‌واژه‌ایِ چاپی؛ کاندیدِ تایپی (ساقه‌ها: «Fire provided the …………… for cooking plants» و «other goals such as ………… the cities» — هر دو در متنِ چاپیِ l56 هم هست)",
+    "س۱۴ (ردیف ۴۹، تصویری-ربط): «Saeed studied hard for the exam,…….» با دو تصویر (پسرِ درس‌خوان + برگهٔ A+) — کلیدِ چاپی: «49. …so he passed it.» — استخراج نیازمندِ تصویر",
+    "س۱۵ (ردیف ۵۰، تولیدی): Topic Sentence برای «Smoking» — پاراگرافِ چاپیِ سه‌جمله‌ای (It increases the risk of death... / The risk of dying from smoking has increased over the last 50 years... / So, if people want to be healthy...) — تولیدی",
+    "س۱۷ (ردیف ۵۹-۶۲، جمله‌سازیِ انتخابی): چهار پاسخِ مدلِ چاپی: 59. There are some workers and teachers who work in the village. / 60. The girl wrote a letter, didn`t she? (بک‌تیکِ چاپ) / 61. Everything in the garden was brown because it hadn`t rained. (بک‌تیک) / 62. The parents should be called by the teacher. — کاندیدِ تایپی (چارگانهٔ ۵۹-۶۲ به دلخواهِ دو-از-چهار)",
+    "س۱۸ (ردیف ۶۳-۶۷، نگارشِ انتخابیِ تصویری): الف) Topic Sentence برای چهار عنوانِ تصویری (63. a) Ferdowsi / 64. b) Watching TV / 65. c) Sport / 66. d) Clean energy) و ب) پاراگرافِ «Having a healthy lifestyle» با چیپ‌های چاپی (Eat fewer snacks / Eat more fruit and vegies / Be more active) — تولیدی با تصویر"
+   ],
+   "printQuirks": [
+    "ششمین برگهٔ presentation-forms با سربرگِ «ﺳﺆاﻻت  اﻣﺘﺤﺎن» دوفاصله‌ای (الگویِ r383/r386) — متنِ انگلیسی و کلیدها لاتینِ سالم",
+    "خانه‌های کلوژِ شنیداری بدونِ پرانتزِ چاپی با دنباله‌های مختلط («…9…….»، «……10…… .?»، «…11…... .»، «…13..….») — gapify به «------- (N) -------» استاندارد تبدیل کرد؛ « .?» چاپیِ خانهٔ ۱۰ وفادارانه ماند",
+    "شش کلیدِ پرانتز-فاصله‌دار: سه‌تاییِ پیاپیِ «1. ( a ) 2. ( c ) 3. ( c )» + «35. ( d )»/«36. ( a )»/«41. ( b )»/«42. ( d )» — یازدهم تا چهاردهمین بارِ درسِ r380-ق۳۸؛ «25. ( b)» بدونِ فاصله؛ «15. ( b  )»/«16.(  d  )»/«17. ( a  )» دوفاصله‌ای",
+    "بک‌تیکِ چاپ در گزینه‌های ق۲۵ (won`t he / won`t they) و در پاسخ‌های مدلِ ۶۰/۶۱ (didn`t she / hadn`t rained) — عینِ چاپ حفظ شد",
+    "تاریخِ چاپیِ دو رقمیِ سربرگ «13 / 06 / 99» در برابرِ تاریخِ کلید «13 / 06 / 1399»؛ ساعتِ شروعِ ۸ صبح (در اکثرِ برگه‌های پیشین ۱۰ صبح بود)",
+    "لایهٔ متنِ خوانداریِ س۱۲ آشفته است (ران‌های توپُر/زیرخط‌دار جدا: «becam»+«e» و «they» بین‌شان گم) — رندرِ ۳۰۰dpi ترتیبِ واقعی را داوری کرد؛ «they» در چاپ توپُر/زیرخط‌دار است (مرجعِ ق۴۱ «in line 3»)",
+    "ق۲۷ «one of the most famous Persian poet» — مفردِ چاپ؛ ق۳۰ خانهٔ نقطه‌ایِ خالص («..................») برخلافِ نقطه‌چینِ بقیه؛ ق۳۵ «our……………….by» چسبیده به دو سو؛ ق۲۸ «…………..by» چسبیده به واژهٔ بعد",
+    "ق۴۵-۴۸ ویرگول + نقطه‌چینِ چسبیده به ویرگول («morning,…….» → «morning,-------») — دوقلویِ r384-l34-1 (omelet با فاصله) و r385-l41-2 (dictionary با اتصال به I) با چینشِ متفاوتِ همان جمله‌ها — هر سه رندرِ وفادارِ برگهٔ خود",
+    "دوبلِ Trueِ چاپ در کلیدِ ۳۹/۴۰ («39. (a) True 40. (a) True») — الگویِ r384-l32/r385-l38",
+    "کلیدِ س۱۶ با جفت‌های خط‌پیوندیِ پراکنده («51-» سطرِ جدا از «c»؛ ترتیبِ چاپِ کلید: ۵۱/۵۵/۵۲/۵۶/۵۳/۵۷/۵۴/۵۸) — پس از collapse جفت‌ها پیوسته‌اند",
+    "«38.Yes» بدونِ فاصله و «47.  but» دوفاصله در کلید — عینِ چاپ",
+    "پاورقیِ صفحات: «Audio file (MP3) / Audio script (PDF)» در ص۲۸۵ + شمارهٔ چاپیِ ۱۸۸-۱۹۳"
+   ],
+   "futureNote": "بخشِ ۴: ۸ برگه از ۱۷ استخراج شد، ۹ برگه باقی است (نزدیک‌ترین‌ها: ناشنوایانِ ص۲۹۳-۳۰۰ و جفتِ خرداد ۱۳۹۹ ص۲۵۹-۲۷۶؛ به‌علاوهٔ برگهٔ لایه‌خرابِ ص۲۷۷-۲۸۴ که OCR/رندر می‌خواهد و سه برگهٔ ۱۳۹۷/۱۳۹۸ با کلیدِ سربرگِ قدیمی)؛ کاندیدهای تایپیِ این برگه (ردیفِ ۴۳ «means» + ردیفِ ۴۴ «founding» + ردیفِ ۵۹ «There are some workers and teachers who work in the village.» + ردیفِ ۶۰ «The girl wrote a letter, didn`t she?» + ردیفِ ۶۱ «Everything in the garden was brown because it hadn`t rained.» + ردیفِ ۶۲ «The parents should be called by the teacher.») به کاندیدهای r380-r386 اضافه شدند — مخزنِ بانکِ تایپیِ نهایی‌ها اکنون ۵۲ ردیف است (۴۶ِ r386 + ۶ ردیفِ تازه)",
+   "bookletFile": "جزوه_جامع_پایه_دوازدهم_با_امتحانات_نهایی_.pdf"
   }
  },
  "answerArbitration": [
@@ -8341,6 +8455,572 @@
       "first, Canada has an excellent health care system"
      ],
      "answer": 4
+    }
+   ]
+  },
+  {
+   "lesson": 51,
+   "title": "نهایی شهریور ۱۳۹۹ — کلوژِ شنیداریِ گفت‌وگو (س۴، ص۲۸۵)",
+   "level": "چهارگزینه‌ای",
+   "count": 6,
+   "questions": [
+    {
+     "id": "g12-l51-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "A: Do you play any sports, Nick? B: Yes, I love playing sports. But my favorite sport is------- (9) ------- A: Really? Are you on a ------- (10) ------- .? B: Yes, I am. It is a lot of ------- (11) ------- . A: How often do you ------- (12) -------? B: Oh, about ------- (13) ------- a week. So, how about you? Do you play sports? A: Well it depends. Do you think playing video ------- (14) ------- is a sport? B: Umm, I am not sure about that. — پاسخِ خانهٔ (9): -------",
+     "options": [
+      "team",
+      "fun",
+      "volleyball",
+      "twice"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l51-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "A: Do you play any sports, Nick? B: Yes, I love playing sports. But my favorite sport is------- (9) ------- A: Really? Are you on a ------- (10) ------- .? B: Yes, I am. It is a lot of ------- (11) ------- . A: How often do you ------- (12) -------? B: Oh, about ------- (13) ------- a week. So, how about you? Do you play sports? A: Well it depends. Do you think playing video ------- (14) ------- is a sport? B: Umm, I am not sure about that. — پاسخِ خانهٔ (10): -------",
+     "options": [
+      "team",
+      "games",
+      "volleyball",
+      "play"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l51-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "A: Do you play any sports, Nick? B: Yes, I love playing sports. But my favorite sport is------- (9) ------- A: Really? Are you on a ------- (10) ------- .? B: Yes, I am. It is a lot of ------- (11) ------- . A: How often do you ------- (12) -------? B: Oh, about ------- (13) ------- a week. So, how about you? Do you play sports? A: Well it depends. Do you think playing video ------- (14) ------- is a sport? B: Umm, I am not sure about that. — پاسخِ خانهٔ (11): -------",
+     "options": [
+      "play",
+      "twice",
+      "games",
+      "fun"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l51-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "A: Do you play any sports, Nick? B: Yes, I love playing sports. But my favorite sport is------- (9) ------- A: Really? Are you on a ------- (10) ------- .? B: Yes, I am. It is a lot of ------- (11) ------- . A: How often do you ------- (12) -------? B: Oh, about ------- (13) ------- a week. So, how about you? Do you play sports? A: Well it depends. Do you think playing video ------- (14) ------- is a sport? B: Umm, I am not sure about that. — پاسخِ خانهٔ (12): -------",
+     "options": [
+      "twice",
+      "play",
+      "volleyball",
+      "fun"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l51-5",
+     "n": 5,
+     "category": "vocab",
+     "question": "A: Do you play any sports, Nick? B: Yes, I love playing sports. But my favorite sport is------- (9) ------- A: Really? Are you on a ------- (10) ------- .? B: Yes, I am. It is a lot of ------- (11) ------- . A: How often do you ------- (12) -------? B: Oh, about ------- (13) ------- a week. So, how about you? Do you play sports? A: Well it depends. Do you think playing video ------- (14) ------- is a sport? B: Umm, I am not sure about that. — پاسخِ خانهٔ (13): -------",
+     "options": [
+      "games",
+      "play",
+      "twice",
+      "team"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l51-6",
+     "n": 6,
+     "category": "vocab",
+     "question": "A: Do you play any sports, Nick? B: Yes, I love playing sports. But my favorite sport is------- (9) ------- A: Really? Are you on a ------- (10) ------- .? B: Yes, I am. It is a lot of ------- (11) ------- . A: How often do you ------- (12) -------? B: Oh, about ------- (13) ------- a week. So, how about you? Do you play sports? A: Well it depends. Do you think playing video ------- (14) ------- is a sport? B: Umm, I am not sure about that. — پاسخِ خانهٔ (14): -------",
+     "options": [
+      "games",
+      "volleyball",
+      "team",
+      "play"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 52,
+   "title": "نهایی شهریور ۱۳۹۹ — واژگانِ بانکِ چاپ (س۶، ص۲۸۶)",
+   "level": "چهارگزینه‌ای",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g12-l52-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "We’ll need to------- the chairs around the table.",
+     "options": [
+      "repeatedly",
+      "forever",
+      "demand",
+      "arrange"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l52-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "The -------for organic food is increasing these days.",
+     "options": [
+      "repeatedly",
+      "forever",
+      "demand",
+      "arrange"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l52-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "I have told Mohsen-------to talk politely to his teacher.",
+     "options": [
+      "repeatedly",
+      "forever",
+      "demand",
+      "arrange"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 53,
+   "title": "نهایی شهریور ۱۳۹۹ — حرفِ اول (س۷، ص۲۸۶)",
+   "level": "چهارگزینه‌ای",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g12-l53-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "They have to speak louder, because their grandmother is hard of h- - - - - -.",
+     "options": [
+      "hopeful",
+      "hearing",
+      "hurting",
+      "helping"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l53-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "There are some free dictionaries for PCs and apps for s - - - - phones.",
+     "options": [
+      "smart",
+      "small",
+      "spare",
+      "stand"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l53-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "We should not build factories near rivers because they p - - - - - - the rivers.",
+     "options": [
+      "prevent",
+      "protect",
+      "pollute",
+      "plaster"
+     ],
+     "answer": 2
+    }
+   ]
+  },
+  {
+   "lesson": 54,
+   "title": "نهایی شهریور ۱۳۹۹ — گرامر (س۸، ص۲۸۶)",
+   "level": "چهارگزینه‌ای",
+   "count": 6,
+   "questions": [
+    {
+     "id": "g12-l54-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "They will buy a new house, -------?",
+     "options": [
+      "won`t he",
+      "won`t they",
+      "will they",
+      "will he"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l54-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "My mother found the keys ------- I lost last week.",
+     "options": [
+      "when",
+      "whom",
+      "which",
+      "who"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l54-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "Hafez ------- to be as one of the most famous Persian poet of all time.",
+     "options": [
+      "knows",
+      "is known",
+      "knowing",
+      "has known"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l54-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "A: What is the problem? B: The windows -------by the boys.",
+     "options": [
+      "are breaking",
+      "have broken",
+      "broke",
+      "have been broken"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l54-5",
+     "n": 5,
+     "category": "grammar",
+     "question": "If the old man had his glasses, he ------- the paper easily.",
+     "options": [
+      "can read",
+      "was reading",
+      "could read",
+      "read"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l54-6",
+     "n": 6,
+     "category": "grammar",
+     "question": "My job has become ------- difficult because of my illness.",
+     "options": [
+      "increasingly",
+      "increase",
+      "increasing",
+      "increases"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 55,
+   "title": "نهایی شهریور ۱۳۹۹ — خوانداریِ احترام (س۱۱، ص۲۸۷)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l55-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Respect is a way of acting well or thinking highly about something or someone. You respect those who are important to you. You show your respect by being polite and kind. When you are impolite or act badly toward people, they may feel sad or angry. But whom should you respect the most? You must care for those who always care for you. You know that your parents care for you for every little thing. You must love them, respect them, and care for them. Besides bringing you into the world, your parents spend their time, energy, and strength to make sure that you have what you need or want. Telling them that you thank them reflects the level of your respect for them. The easiest way to show your love and respect is to tell them that you appreciate who they are and what they do. You can also do something small but meaningful, for example, wash the dishes, clean the kitchen after dinner or clean the rooms. Your parents will pay attention to and appreciate your acts of kindness. You may also tell your mom how well she cooks, or tell your dad how great he is at his job. For most of parents, any of these small things can be a sign of respect. — We respect those who are important to us for some reasons.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l55-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "Respect is a way of acting well or thinking highly about something or someone. You respect those who are important to you. You show your respect by being polite and kind. When you are impolite or act badly toward people, they may feel sad or angry. But whom should you respect the most? You must care for those who always care for you. You know that your parents care for you for every little thing. You must love them, respect them, and care for them. Besides bringing you into the world, your parents spend their time, energy, and strength to make sure that you have what you need or want. Telling them that you thank them reflects the level of your respect for them. The easiest way to show your love and respect is to tell them that you appreciate who they are and what they do. You can also do something small but meaningful, for example, wash the dishes, clean the kitchen after dinner or clean the rooms. Your parents will pay attention to and appreciate your acts of kindness. You may also tell your mom how well she cooks, or tell your dad how great he is at his job. For most of parents, any of these small things can be a sign of respect. — If you are impolite or act badly toward people, they feel important.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l55-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "Respect is a way of acting well or thinking highly about something or someone. You respect those who are important to you. You show your respect by being polite and kind. When you are impolite or act badly toward people, they may feel sad or angry. But whom should you respect the most? You must care for those who always care for you. You know that your parents care for you for every little thing. You must love them, respect them, and care for them. Besides bringing you into the world, your parents spend their time, energy, and strength to make sure that you have what you need or want. Telling them that you thank them reflects the level of your respect for them. The easiest way to show your love and respect is to tell them that you appreciate who they are and what they do. You can also do something small but meaningful, for example, wash the dishes, clean the kitchen after dinner or clean the rooms. Your parents will pay attention to and appreciate your acts of kindness. You may also tell your mom how well she cooks, or tell your dad how great he is at his job. For most of parents, any of these small things can be a sign of respect. — We show our-------by being polite to those we care for.",
+     "options": [
+      "need",
+      "strength",
+      "happiness",
+      "respect"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l55-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "Respect is a way of acting well or thinking highly about something or someone. You respect those who are important to you. You show your respect by being polite and kind. When you are impolite or act badly toward people, they may feel sad or angry. But whom should you respect the most? You must care for those who always care for you. You know that your parents care for you for every little thing. You must love them, respect them, and care for them. Besides bringing you into the world, your parents spend their time, energy, and strength to make sure that you have what you need or want. Telling them that you thank them reflects the level of your respect for them. The easiest way to show your love and respect is to tell them that you appreciate who they are and what they do. You can also do something small but meaningful, for example, wash the dishes, clean the kitchen after dinner or clean the rooms. Your parents will pay attention to and appreciate your acts of kindness. You may also tell your mom how well she cooks, or tell your dad how great he is at his job. For most of parents, any of these small things can be a sign of respect. — Telling your parents that you thank them ------- the level of your respect for them.",
+     "options": [
+      "reflects",
+      "invents",
+      "imagines",
+      "shouts"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 56,
+   "title": "نهایی شهریور ۱۳۹۹ — خوانداریِ انسان‌های نخستین (س۱۲، ص۲۸۷)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l56-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "When early humans hunted and collected food, they could not control their environment. They could live in their environment like other animals. When humans learned to make fire, however, they became skillful at changing their environment. To provide themselves with fuel, they cut trees and made fires. Parts of forests were changed to lands to increase the growth of grass and to provide a greater area for the animals that humans ate as their food. This improvement ended in farming and also keeping animals as sources of human food. Fire also provided the means for cooking plants which were not used before. After meeting the simple need for food, early humans began to follow other goals such as founding the cities and living in larger groups. — Early humans killed the animals and ate them as their food.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l56-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "When early humans hunted and collected food, they could not control their environment. They could live in their environment like other animals. When humans learned to make fire, however, they became skillful at changing their environment. To provide themselves with fuel, they cut trees and made fires. Parts of forests were changed to lands to increase the growth of grass and to provide a greater area for the animals that humans ate as their food. This improvement ended in farming and also keeping animals as sources of human food. Fire also provided the means for cooking plants which were not used before. After meeting the simple need for food, early humans began to follow other goals such as founding the cities and living in larger groups. — Early humans discovered how to make fire.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l56-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "When early humans hunted and collected food, they could not control their environment. They could live in their environment like other animals. When humans learned to make fire, however, they became skillful at changing their environment. To provide themselves with fuel, they cut trees and made fires. Parts of forests were changed to lands to increase the growth of grass and to provide a greater area for the animals that humans ate as their food. This improvement ended in farming and also keeping animals as sources of human food. Fire also provided the means for cooking plants which were not used before. After meeting the simple need for food, early humans began to follow other goals such as founding the cities and living in larger groups. — What does “they” in line 3 refer to?",
+     "options": [
+      "environments",
+      "humans",
+      "fires",
+      "animals"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l56-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "When early humans hunted and collected food, they could not control their environment. They could live in their environment like other animals. When humans learned to make fire, however, they became skillful at changing their environment. To provide themselves with fuel, they cut trees and made fires. Parts of forests were changed to lands to increase the growth of grass and to provide a greater area for the animals that humans ate as their food. This improvement ended in farming and also keeping animals as sources of human food. Fire also provided the means for cooking plants which were not used before. After meeting the simple need for food, early humans began to follow other goals such as founding the cities and living in larger groups. — What is this passage mostly about? It is about------- .",
+     "options": [
+      "how animals were hunted",
+      "the plants early humans ate",
+      "how to make fire",
+      "the life of early humans"
+     ],
+     "answer": 3
+    }
+   ]
+  },
+  {
+   "lesson": 57,
+   "title": "نهایی شهریور ۱۳۹۹ — حروفِ ربط (س۱۳، ص۲۸۸)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l57-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "I get up early in the morning,------- I make an omelet myself.",
+     "options": [
+      "but",
+      "and",
+      "so",
+      "or"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l57-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "We can eat our lunch at the restaurant,------- we can have it at home.",
+     "options": [
+      "but",
+      "and",
+      "so",
+      "or"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l57-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "They wanted to call you,------- they did not have your phone number.",
+     "options": [
+      "but",
+      "and",
+      "so",
+      "or"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l57-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "That dictionary is expensive,------- I can’t buy it.",
+     "options": [
+      "but",
+      "and",
+      "so",
+      "or"
+     ],
+     "answer": 2
+    }
+   ]
+  },
+  {
+   "lesson": 58,
+   "title": "نهایی شهریور ۱۳۹۹ — تعریف‌یابی (س۱۶-الف، ص۲۸۹)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l58-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "«I have kept a diary for twelve years.» — تعریفِ ستون B برای واژهٔ «diary»: -------",
+     "options": [
+      "to take something in, especially gradually",
+      "cry suddenly",
+      "a book in which you record your thoughts or feelings or what has happened every day",
+      "to suddenly decide to do something",
+      "to finish something"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l58-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "«Plants absorb carbon dioxide.» — تعریفِ ستون B برای واژهٔ «absorb»: -------",
+     "options": [
+      "to take something in, especially gradually",
+      "cry suddenly",
+      "a book in which you record your thoughts or feelings or what has happened every day",
+      "to suddenly decide to do something",
+      "to finish something"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l58-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "«I did not read the introduction and jumped into the next part.» — تعریفِ ستون B برای واژهٔ «jumped into»: -------",
+     "options": [
+      "to take something in, especially gradually",
+      "cry suddenly",
+      "a book in which you record your thoughts or feelings or what has happened every day",
+      "to suddenly decide to do something",
+      "to finish something"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l58-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "«Don’t use up all the milk - we need some for breakfast.» — تعریفِ ستون B برای واژهٔ «use up»: -------",
+     "options": [
+      "to take something in, especially gradually",
+      "cry suddenly",
+      "a book in which you record your thoughts or feelings or what has happened every day",
+      "to suddenly decide to do something",
+      "to finish something"
+     ],
+     "answer": 4
+    }
+   ]
+  },
+  {
+   "lesson": 59,
+   "title": "نهایی شهریور ۱۳۹۹ — اصطلاحات (س۱۶-ب، ص۲۸۹)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l59-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "مفهوم و تعریفِ ضرب‌المثلِ «Out of sight, out of mind»: -------",
+     "options": [
+      "When you get money quickly, like by winning it, it’s easy to spend it or lose it quickly as well.",
+      "When two people cooperate with each other, they come up with better ideas.",
+      "You have to practice a skill a lot to become good at it.",
+      "People like to spend time with those who are similar to them.",
+      "You soon forget people or things that are no longer visible or present."
+     ],
+     "answer": 4
+    },
+    {
+     "id": "g12-l59-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "مفهوم و تعریفِ ضرب‌المثلِ «Practice makes perfect»: -------",
+     "options": [
+      "When you get money quickly, like by winning it, it’s easy to spend it or lose it quickly as well.",
+      "When two people cooperate with each other, they come up with better ideas.",
+      "You have to practice a skill a lot to become good at it.",
+      "People like to spend time with those who are similar to them.",
+      "You soon forget people or things that are no longer visible or present."
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l59-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "مفهوم و تعریفِ ضرب‌المثلِ «Easy come, easy go»: -------",
+     "options": [
+      "When you get money quickly, like by winning it, it’s easy to spend it or lose it quickly as well.",
+      "When two people cooperate with each other, they come up with better ideas.",
+      "You have to practice a skill a lot to become good at it.",
+      "People like to spend time with those who are similar to them.",
+      "You soon forget people or things that are no longer visible or present."
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l59-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "مفهوم و تعریفِ ضرب‌المثلِ «Two heads are better than one»: -------",
+     "options": [
+      "When you get money quickly, like by winning it, it’s easy to spend it or lose it quickly as well.",
+      "When two people cooperate with each other, they come up with better ideas.",
+      "You have to practice a skill a lot to become good at it.",
+      "People like to spend time with those who are similar to them.",
+      "You soon forget people or things that are no longer visible or present."
+     ],
+     "answer": 1
     }
    ]
   }
