@@ -16,16 +16,16 @@ const index = jozve("index.json");
 
 const TABLES = [
   { g: 10, key: "لغات کلیدی پایه هفتم", rows: 200, notes: 11 },
-  { g: 10, key: "لغات کلیدی پایه هشتم", rows: 179, notes: 14 },
-  { g: 10, key: "لغات کلیدی پایه نهم", rows: 320, notes: 123 },
-  { g: 10, key: "لغات کلیدی و تکمییل درس یکم", rows: 154, notes: 23 },
-  { g: 10, key: "لغات کلیدی و تکمییل درس دوم", rows: 248, notes: 35 },
+  { g: 10, key: "لغات کلیدی پایه هشتم", rows: 180, notes: 14 }, // r399: +a.m./fall=autumn −Note
+  { g: 10, key: "لغات کلیدی پایه نهم", rows: 323, notes: 123 }, // r399: +Here you are./well done!/lion
+  { g: 10, key: "لغات کلیدی و تکمییل درس یکم", rows: 152, notes: 23 }, // r399: −knives/−mouse، ترمیمِ knife
+  { g: 10, key: "لغات کلیدی و تکمییل درس دوم", rows: 249, notes: 35 }, // r399: +many/+half −halves
   { g: 10, key: "لغات کلیدی و تکمییل درس سوم", rows: 179, notes: 32 },
   { g: 10, key: "لغات کلیدی و تکمییل درس چهارم", rows: 187, notes: 28 },
   { g: 11, key: "لغات کلیدی و تکمییل درس اول", rows: 201, notes: 19 },
   { g: 11, key: "لغات کلیدی و تکمییل درس دوم", rows: 231, notes: 31 },
   { g: 11, key: "لغات کلیدی و تکمییل درس سوم", rows: 199, notes: 25 },
-  { g: 12, key: "لغات کلیدی و تکمییل درس اول", rows: 270, notes: 44 },
+  { g: 12, key: "لغات کلیدی و تکمییل درس اول", rows: 273, notes: 44 }, // r399: +A.D./+the Caspian Sea/+sit on lap
   { g: 12, key: "لغات کلیدی و تکمییل درس دوم", rows: 359, notes: 51 },
   { g: 12, key: "لغات کلیدی و تکمییل درس سوم", rows: 268, notes: 165 },
 ];

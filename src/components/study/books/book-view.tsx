@@ -578,7 +578,7 @@ export default function BookView({ grade }: { grade: number }) {
                   <button
                     key={c.id}
                     onClick={() => openInLibrary(c.id)}
-                    className="flex items-center justify-between gap-2 rounded-xl border border-stone-200 bg-white px-3.5 py-2.5 text-right shadow-sm transition hover:border-amber-300 hover:bg-amber-50/60 active:scale-[0.99]"
+                    className="flex w-full min-w-0 items-center justify-between gap-2 rounded-xl border border-stone-200 bg-white px-3.5 py-2.5 text-right shadow-sm transition hover:border-amber-300 hover:bg-amber-50/60 active:scale-[0.99]"
                   >
                     <span className="min-w-0 flex-1 truncate text-[12px] font-extrabold text-stone-700">{c.title}</span>
                     <span className="shrink-0 text-[10.5px] font-bold text-stone-400">{faNum(c.sections)} سکشن</span>

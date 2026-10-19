@@ -390,7 +390,10 @@ def collocation_pass(doc):
                     if m and m.start() == 0:
                         rest = l[m.end():].strip()
                         if RE_FA.search(rest):
-                            new_lines.append(f"{m.group().strip()} — {rest}")
+                            # r399: ایدمپوتنسی — جداکنندهٔ «—»ی موجود و میراثِ چندتیرهٔ
+                            # اجراهایِ مکرر پاک می‌شود تا هر بار یک تیره اضافه نشود
+                            core = re.sub(r"^(?:[=\-–—]+\s*)+", "", rest)
+                            new_lines.append(f"{m.group().strip()} — {core}")
                             converted += 1
                             continue
                     new_lines.append(l)
@@ -399,24 +402,50 @@ def collocation_pass(doc):
     return changed
 
 
+PUNCT = "،؛:.!؟()«»\"'-"  # r399: خطِ تیره هم اضافه شد — «رورسی-»/«یافی-» را از کار می‌انداخت
+
+
+def _core(tok):
+    return tok.strip(PUNCT)
+
+
+def _tail(tok):
+    return tok[len(tok.rstrip(PUNCT)):]
+
+
+def _head(tok):
+    return tok[:len(tok) - len(tok.lstrip(PUNCT))]
+
+
 def apply_fixes(meaning, fixes):
+    """r399: توکنیزه با split() (فاصلهٔ دوتاییِ کورپوس توکنِ خالی می‌ساخت و بیگرام را
+    از کار می‌انداخت) + تطبیقِ بی‌پایانگذاریِ نشانه‌گذاری برای بیگرام/تری‌گرام + تری‌گرام."""
     if not meaning:
         return meaning
-    toks = [t for t in meaning.split(" ") if t]
+    toks = meaning.split()
+    trigrams = fixes.get("trigrams") or {}
     out = []
     i = 0
     while i < len(toks):
-        if i + 1 < len(toks):
-            bg = fixes["bigrams"].get(toks[i] + " " + toks[i + 1])
-            if bg:
-                out.append(bg)
-                i += 2
+        matched = False
+        for n in (3, 2):
+            if i + n > len(toks):
                 continue
-        core = toks[i].strip("،؛:.!؟()")
-        tail = toks[i][len(toks[i].rstrip("،؛:.!؟()")):]
+            group = toks[i:i + n]
+            table = trigrams if n == 3 else fixes["bigrams"]
+            key = " ".join(_core(t) for t in group)
+            fixed = table.get(key)
+            if fixed:
+                out.append(_head(group[0]) + fixed + _tail(group[-1]))
+                i += n
+                matched = True
+                break
+        if matched:
+            continue
+        core = _core(toks[i])
         if core in fixes["unigrams"]:
-            out.append(fixes["unigrams"][core] + tail)
-        elif core in fixes["dropSingles"] and not tail:
+            out.append(_head(toks[i]) + fixes["unigrams"][core] + _tail(toks[i]))
+        elif core in fixes["dropSingles"] and not _tail(toks[i]):
             pass
         else:
             out.append(toks[i])
@@ -428,10 +457,18 @@ def apply_fixes(meaning, fixes):
 
 
 def load_fixes():
-    path = os.path.join(ROOT, "scripts", "r398-token-fixes.json")
-    if not os.path.exists(path):
-        return {"bigrams": {}, "unigrams": {}, "dropSingles": []}
-    return json.load(open(path, encoding="utf-8"))
+    """r399: نقشهٔ r398 + نقشهٔ r399 (در صورتِ وجود) — ر398 مبناست، r399 رویش سوار می‌شود."""
+    merged = {"bigrams": {}, "trigrams": {}, "unigrams": {}, "dropSingles": []}
+    for name in ("r398-token-fixes.json", "r399-token-fixes.json"):
+        path = os.path.join(ROOT, "scripts", name)
+        if not os.path.exists(path):
+            continue
+        data = json.load(open(path, encoding="utf-8"))
+        merged["bigrams"].update(data.get("bigrams") or {})
+        merged["trigrams"].update(data.get("trigrams") or {})
+        merged["unigrams"].update(data.get("unigrams") or {})
+        merged["dropSingles"].extend(data.get("dropSingles") or [])
+    return merged
 
 
 def main():
