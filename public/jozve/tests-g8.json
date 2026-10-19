@@ -574,6 +574,160 @@
      "answer": 0
     }
    ]
+  },
+  {
+   "lesson": 13,
+   "title": "امتحانی درس پنجم — کامل‌کردن حروف (س۲، ص۵۰)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g8-l13-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "Airp – rt",
+     "options": [
+      "cinema",
+      "shrine",
+      "airport",
+      "palace"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g8-l13-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "cin – ma",
+     "options": [
+      "cinema",
+      "airport",
+      "shrine",
+      "palace"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g8-l13-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "shr – ne",
+     "options": [
+      "airport",
+      "cinema",
+      "palace",
+      "shrine"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g8-l13-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "pal - ce",
+     "options": [
+      "airport",
+      "palace",
+      "cinema",
+      "shrine"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 14,
+   "title": "امتحانی درس پنجم — تلفظ th (س۴، ص۵۰)",
+   "level": "چهارگزینه‌ای",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g8-l14-1",
+     "n": 1,
+     "category": "pron",
+     "question": "در کدام کلمه حرف th صدای \"ذ\" می دهد.",
+     "options": [
+      "South",
+      "math",
+      "brother",
+      "three"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g8-l14-2",
+     "n": 2,
+     "category": "pron",
+     "question": "در کدام کلمه حرف th صدای \"ذ\" می دهد.",
+     "options": [
+      "this",
+      "toothache",
+      "thirty",
+      "South"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 15,
+   "title": "امتحانی درس ششم — کلمهٔ ناهماهنگ (س۳، ص۶۰)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g8-l15-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "Father – mother – brother – weather",
+     "options": [
+      "Father",
+      "mother",
+      "brother",
+      "weather"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g8-l15-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "River – summer – einter – fall",
+     "options": [
+      "River",
+      "summer",
+      "einter",
+      "fall"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g8-l15-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "Wet – rainy – snowy – story",
+     "options": [
+      "Wet",
+      "rainy",
+      "snowy",
+      "story"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g8-l15-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "Icy – snowy – cold – hot",
+     "options": [
+      "Icy",
+      "snowy",
+      "cold",
+      "hot"
+     ],
+     "answer": 3
+    }
+   ]
   }
  ],
  "source": {
@@ -661,14 +815,14 @@
     {
      "lesson": "درس پنجم",
      "pdfPage": 50,
-     "round": null,
-     "status": "در انتظار راند بعد"
+     "round": "r377",
+     "status": "استخراج شد — ۲ بانک/۶ آیتم از ۴ سکشن (س۱ و س۳ تصویری مستثنی؛ داوریِ قطب‌نما در رسید)"
     },
     {
      "lesson": "درس ششم",
      "pdfPage": 60,
-     "round": null,
-     "status": "در انتظار راند بعد"
+     "round": "r377",
+     "status": "استخراج شد — ۱ بانک/۴ آیتم از ۳ سکشن (س۱ و س۲ تصویری مستثنی؛ داوریِ تصاویر در رسید)"
     },
     {
      "lesson": "درس هفتم",
@@ -677,7 +831,7 @@
      "status": "در انتظار راند بعد"
     }
    ],
-   "lastUpdatedRound": "r376"
+   "lastUpdatedRound": "r377"
   },
   "g8exam2": {
    "extractedRound": "r375",
@@ -808,6 +962,65 @@
     "«امالی» در تیترِ س۴ ص۳۵ (بدونِ «ء») — verbatim در لایه، در رسید و گارد بازتولید می‌شود",
     "نقطه‌های چسبیدهٔ «……………a hard puzzle»/«……………………English» پس از بلنک در لایه — norm فاصله را بازگرداند (قراردادِ r373)",
     "فرگمنت‌های چاپیِ س۴ ص۳۵ با خط‌تیره‌های جداکنندهٔ دور («m - ke») چاپ شده‌اند — در کارت به قراردادِ بلنکِ درون‌واژهٔ «m-------ke» نرمال شدند (الگویِ r375 «go sh-------ing»)"
+   ]
+  },
+  "g8exam56": {
+   "extractedRound": "r377",
+   "section": "نمونه سؤالات امتحانی درس پنجم پایه هشتم (pdf-p50) + درس ششم (pdf-p60)",
+   "examPages": "pdf-p50 و pdf-p60 (تک‌صفحه‌ای) — ص۴۲-۴۳ واژگانِ درس پنجم، ص۵۱ واژگانِ درس ششم؛ ص۶۱ لغاتِ درس هفتم = مرزِ پایینیِ خانوادهٔ ششم",
+   "keyPages": "هیچ پاسخنامهٔ چاپی در جزوهٔ هشتم نیست — کلیدها استنتاجی؛ لنگرهای تلفظیِ چاپی: دیالوگِ ص۵۶ («in ‘there’, ‘this’, and ‘they’, it’s /ð/.» و «In ‘north’, ‘south’, ‘thank’, and ‘three’, it’s /θ/.») + فهرستِ ذِ ص۵۹ (mother–father–brother–…–weather)",
+   "sectionsTotal": 7,
+   "sectionsExtracted": 3,
+   "sectionsSkipped": 4,
+   "items": 10,
+   "bankCounts": [
+    4,
+    2,
+    4
+   ],
+   "wordBank": [
+    "South",
+    "brother",
+    "math",
+    "three",
+    "toothache",
+    "thirty",
+    "this"
+   ],
+   "wordBankSource": "فهرستِ چاپیِ س۴ ص۵۰ (استخرِ گزینه‌های تلفظی — ۵ ص‌دار /θ/ و ۲ ذ‌دار /ð/)؛ سکشن‌های بانک‌واژه‌دارِ س۱ ص۵۰ و س۱/س۲ ص۶۰ تصویری و مستثنی‌اند",
+   "keyPolicy": "س۲ ص۵۰: شکلِ هر فرگمنت در سراسر واژگانِ جزوه یگانه است (قفلِ regexیِ گارد) پس بدونِ تصویر کلیدپذیر — الگویِ r376-بانک۱۰ ولی لایه‌ای نه رندر-فقط؛ س۴ ص۵۰: پرسشِ صِ چاپی از ۷ واژه تک‌کلیدی نمی‌شود (فقط ۲ واژهٔ غیرِ ص‌اند) → وارونه‌سازیِ مستند به «ذ» با کلیدهای چاپ‌لنگردار (brother ص۵۹؛ this ص۵۶+ص۵۹)؛ س۳ ص۶۰: ناهماهنگِ دسته‌ایِ هر ردیف با لنگرِ ستاره‌دارِ واژگان (weather/river/story/hot)",
+   "engineNote": "همهٔ بانک‌ها MCQ چهارگزینه‌ای (قراردادِ r363)؛ ساقه‌های فارسیِ بانک ۱۴ بازساختهٔ ساقهٔ سه‌خطیِ بریدهٔ RTL («حرفth / صدای« ص» / .می دهد») با فاصله‌بندیِ یکدست — الگویِ r376-بانک۱۲؛ فرگمنتِ «Airp» با A بزرگ و «pal - ce» با خطِ تیرهٔ ساده verbatim چاپ؛ گزینه‌های بانک ۱۳ واژه‌های شکلِ واژگانیِ ستاره‌دار (airport/cinema/shrine/palace)",
+   "derivedKeys": {
+    "S2-l5": [
+     "airport",
+     "cinema",
+     "shrine",
+     "palace"
+    ],
+    "S4-l5": [
+     "brother",
+     "this"
+    ],
+    "S3-l6": [
+     "weather",
+     "River",
+     "story",
+     "hot"
+    ]
+   },
+   "skippedSections": [
+    "ص۵۰-س۱ (تصویری): کلماتِ مربوط به تصاویر از بانکِ چاپی (mosque/bridge/stadium/metro/zoo) — داوریِ رندر برای پشتیبانیِ تصویریِ آینده: سی‌وسه‌پل=bridge، ورزشگاهِ آزادی=stadium، شاه‌چراغ=mosque، خرس‌ها=zoo؛ تصویرِ پنجمی (metro) پایینِ ردیف",
+    "ص۵۰-س۳ (تصویری): قطب‌نمای هشت‌پر با ۴ جعبهٔ شماره‌دار — داوریِ رندر: ۱=شمال‌غرب (بالا-چپ)، ۲=شمال‌شرق (بالا-راست)، ۳=جنوب‌غرب (پایین-چپ)، ۴=جنوب‌شرق (پایین-راست)؛ بانکِ چاپی (south west/north west/south east/north east)",
+    "ص۶۰-س۱ (تصویری): ۴ تصویرِ آب‌وهوا از بانکِ چاپی (Suuny/hot/rainy/windy) — داوریِ رندر: ۱=بارانی(rainy)، ۲=آفتابی(Suuny/sunny)، ۳=بادی(windy)، ۴=گرم(hot)",
+    "ص۶۰-س۲ (تصویری): ۶ تصویر از بانکِ چاپی (farm/stadium/mosque/bridge/palace/metro system) — داوریِ رندر به ترتیبِ چاپ: قطار=metro system، پل=bridge، قصر=palace، مسجد=mosque، ورزشگاه=stadium، مزرعه=farm"
+   ],
+   "printQuirks": [
+    "«Suuny» تایپوی چاپیِ س۱ ص۶۰ (sunny) — در رسیدِ مستثنی ثبت شد نه در آیتم‌ها",
+    "«einter» تایپوی چاپیِ ردیفِ دومِ س۳ ص۶۰ (winter) — verbatim در ساقه حفظ شد",
+    "فرگمنتِ اولِ س۲ ص۵۰ با A بزرگ چاپ («Airp – rt») و آخری با خطِ تیرهٔ ساده («pal - ce») — هر دو verbatim",
+    "فهرستِ س۴ ص۵۰ جداکنندهٔ مختلط دارد: «South – brother - math – three…» (en-dash و hyphen درهم)",
+    "ساقهٔ س۴ ص۵۰ سه‌خطیِ بریدهٔ RTL: «در کدام یک از کلمات زیر حرفth» / « صدای\" ص\"» / «.می دهد» — نقطهٔ پایانی در ابتدای خطِ سوم",
+    "تیترِ س۳ ص۶۰: «کلمه ناهماهنگ از نظر معنی را مشخص کنید و در.نقطه چین بنویسید» — نقطهٔ وسطِ جمله (RTL quirk)"
    ]
   }
  }
