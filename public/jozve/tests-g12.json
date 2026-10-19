@@ -1458,6 +1458,35 @@
    },
    "engineNote": "یکهزاردرصدِ تایپی (kind=typed) — مستثنی از حلقهٔ MCQ؛ ساقه = چیپ‌های خامِ چاپ با « / » (الگویِ l110/l137)؛ options=[مدلِ نخست] به‌عنوانِ داربستِ بازبینی؛ دوتاییِ چاپیِ r381-ق۳۸ در accepted؛ ترتیبِ برگه‌ها همان ترتیبِ استخراجِ r380-r394",
    "futureNote": "مخزن از ۶۷ به ۵۱ ردیف رسید — قسطِ سوم (پایانی): ۵۱ پاسخِ مدل؛ دو فرصتِ دیگرِ ثبت‌شدهٔ بخش: فیلدِ تصویرِ QuizQuestion (REQUIRES-APPROVAL) و case-sensitive mode"
+  },
+  "g12typedres3": {
+   "extractedRound": "r400",
+   "section": "بانکِ تایپیِ نهایی‌ها — قسمتِ سوم (پایانی): پاسخ‌هایِ مدل (l144) — سومین بانکِ گردآوریِ درون‌خانوادگی؛ ۵۱ ردیفِ «پاسخِ مدلِ» خوانداری/واژه‌نامه/شنیداری از ۱۲ برگه (r380-r393) — با این بانک مخزنِ جزئیِ ۹۱ ردیفی (۲۲ افعال + ۱۸ جمله‌سازی + ۵۱ مدل) به‌طورِ کامل مصرف شد",
+   "examPages": "بدونِ صفحهٔ آزمونِ تازه؛ ساقه‌ها و مدل‌ها از لایهٔ متنیِ booklet-extract/g12.txt — کلیدها: r380 ص۳۴۱-۳۴۲، r381 ص۳۴۸-۳۴۹، r382 ص۳۳۴-۳۳۵، r383 ص۳۲۷-۳۲۸، r384 ص۳۲۰-۳۲۱، r385 ص۳۱۳-۳۱۴، r386 ص۳۰۶-۳۰۷، r387 ص۲۹۱-۲۹۲، r390 ص۲۳۴-۲۳۶، r391 ص۲۴۲-۲۴۳، r392 ص۲۴۹-۲۵۰، r393 ص۲۵۷-۲۵۸",
+   "keyPolicy": "مدل‌ها عینِ چاپ؛ کلیدهای عمودیِ سربرگِ قدیمی با خوانشِ پایین-به-بالای چیپ‌های RTL بازسازی شدند (r380-۴۸ «A dictionary which / explain / s / the meanings…»، r381-۳۹ «I/would/travel/to/the/future»، r381-۵۸، r382-۴۷ «televisions, computers, online games, phones»، r383-۴۷ «You can do th+is»، r383-۴۸ با «part+s=parts» بر پشتوانهٔ خطِ کورپوس ص۳۲۵، r391-۴۹/۵۳/۵۴ با «con+text=context»، r392-۴۹) و هر بازسازی با خطِ خودِ خوانداریِ برگه راستی‌آزمایی شد؛ r391-۳۵/۳۶ دو ترتیبِ چاپیِ «یا»دار → accepted دومَعضوی؛ r381-۵۲ «We / You spend…» چاپی → دو شکلِ accepted (الگویِ had got/gotten)؛ r380-۴۴ چاپِ «(John was upset ) because…» → دو شکلِ (جملهٔ کامل + بن‌مایهٔ because)؛ ردیف‌های «which» (r384/385-ق۳۴) مدلِ چاپیِ تک‌واژه‌ای دارند و ساقه‌شان دستورِ فارسیِ چاپیِ همان بخش را نقل می‌کند؛ tایپوی چاپ وفادار ماند (r386-۴۴ «jump into to»، r386-۵۰ «Picasso’ first paining»، r391-۵۵ ویرگول‌های بی‌فاصله)؛ شنیداری‌های r393 ق۱-۶ ساقهٔ چاپی ندارند (ساقه فقط صوتی است) — ساقه = توصیفِ صادقانهٔ فارسیِ منبع + درخواستِ تایپِ مدلِ چاپیِ کلید؛ هیچ ساقهٔ انگلیسیِ جعلی ساخته نشد",
+   "items": 51,
+   "bankCounts": {
+    "l144": 51
+   },
+   "reservoirCensus": {
+    "consumedHere": {
+     "r380-khordad1402": "ق۴۳/۴۴/۴۷/۴۸ (۴)",
+     "r381-shahrivar1401": "ق۳۹/۴۵/۴۶/۴۷/۵۲/۵۷/۵۸ (۷)",
+     "r382-dey1400": "ق۴۰/۴۳/۴۴/۴۷/۴۸ (۵)",
+     "r383-shahrivar1400": "ق۴۰/۴۷/۴۸ (۳)",
+     "r384-khordad1400h": "ق۳۴/۳۸/۴۲/۴۳ (۴)",
+     "r385-khordad1400m": "ق۳۴/۴۳ (۲)",
+     "r386-dey1399": "ق۴۴/۴۵/۵۰/۵۱ (۴)",
+     "r387-shahrivar1399": "ق۴۳/۴۴ means/founding (۲)",
+     "r390-dey1397": "ق۳۷/۳۸/۵۵/۵۶/۵۷/۶۰ (۶)",
+     "r391-khordad1398": "ق۳۵/۳۶/۴۸/۴۹/۵۳/۵۴/۵۵ (۷)",
+     "r392-shahrivar1398": "ق۴۹ (۱)",
+     "r393-dey1398": "ق۱-۶ شنیداری (۶)"
+    },
+    "remaining": "صفر — مخزنِ جزئیِ ۹۱ ردیفی (۲۲+۱۸+۵۱) کامل مصرف شد؛ بانکِ تایپیِ نهایی‌ها در سه بانکِ l142/l143/l144 بسته است"
+   },
+   "engineNote": "یکهزاردرصدِ تایپی (kind=typed) — مستثنی از حلقهٔ MCQ؛ ساقه = متنِ چاپیِ سؤال با نقطه‌چینِ چاپ؛ چیپ‌های مرتب‌کردنی (r390-۳۷/۳۸ و r391-۳۵/۳۶) با « / » (الگویِ l143)؛ options=[مدلِ نخست] به‌عنوانِ داربستِ بازبینی؛ دسته‌ها در دامنهٔ بانک (vocab برای خوانداری/واژگان/شنیداری — الگویِ بانک‌های خوانداریِ l138/139 — و grammar برای ردیف‌هایِ ساختِ جمله و which)؛ ساقه‌های شنیداری فارسی‌اند — نخستین ساقه‌های فارسیِ tests-g12 (صداقتِ منبع بر ساختگی‌سازی مقدم است)؛ ترتیبِ آیتم‌ها = ترتیبِ استخراجِ r380-r394",
+   "futureNote": "مخزنِ بانکِ تایپیِ نهایی‌ها با این قسط بسته شد: ۲۲ افعال (l142) + ۱۸ جمله‌سازی (l143) + ۵۱ پاسخِ مدل (l144) = ۹۱ ردیفِ جزئی — بخشِ نهایی‌ها (۱۷/۱۷ برگه) اکنون هم بانک‌دار است هم مخزنش خالی؛ فرصت‌هایِ باقیِ ثبت‌شدهٔ بخش: فیلدِ تصویرِ QuizQuestion (REQUIRES-APPROVAL) و case-sensitive mode"
   }
  },
  "answerArbitration": [
@@ -14753,6 +14782,732 @@
      "kind": "typed",
      "accepted": [
       "Can water be converted into ice in cold weather?"
+     ]
+    }
+   ]
+  },
+  {
+   "lesson": 144,
+   "title": "مرورِ تایپیِ نهایی‌ها — پاسخ‌هایِ مدل (قسمتِ سومِ مخزنِ ۸۹ ردیفی)",
+   "level": "تایپی",
+   "count": 51,
+   "questions": [
+    {
+     "id": "g12-l144-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "What did John ask Mike when he came out of the car?",
+     "options": [
+      "He asked him if he could drive him home."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "He asked him if he could drive him home."
+     ]
+    },
+    {
+     "id": "g12-l144-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "Why was John upset and worried the last time he was in the office?",
+     "options": [
+      "John was upset because he had lost his documents."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "John was upset because he had lost his documents.",
+      "because he had lost his documents."
+     ]
+    },
+    {
+     "id": "g12-l144-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "What does “them” in the first line of paragraph 3 refer to?",
+     "options": [
+      "It refers to words."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "It refers to words."
+     ]
+    },
+    {
+     "id": "g12-l144-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "What is a technical dictionary?",
+     "options": [
+      "A dictionary which explains the meanings of technical words."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "A dictionary which explains the meanings of technical words."
+     ]
+    },
+    {
+     "id": "g12-l144-5",
+     "n": 5,
+     "category": "grammar",
+     "question": "If I had a time machine, ……………………………………….",
+     "options": [
+      "I would travel to the future."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "I would travel to the future."
+     ]
+    },
+    {
+     "id": "g12-l144-6",
+     "n": 6,
+     "category": "vocab",
+     "question": "In cloudy weather …………………. is available.",
+     "options": [
+      "solar energy"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "solar energy"
+     ]
+    },
+    {
+     "id": "g12-l144-7",
+     "n": 7,
+     "category": "vocab",
+     "question": "Solar ……………….. are produced to work for a long time.",
+     "options": [
+      "panels"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "panels"
+     ]
+    },
+    {
+     "id": "g12-l144-8",
+     "n": 8,
+     "category": "vocab",
+     "question": "What do solar technologies deliver to us?",
+     "options": [
+      "Solar technologies can deliver heat, cooling, natural lighting, electricity, and fuels."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "Solar technologies can deliver heat, cooling, natural lighting, electricity, and fuels."
+     ]
+    },
+    {
+     "id": "g12-l144-9",
+     "n": 9,
+     "category": "vocab",
+     "question": "How much do we sleep in our lives?",
+     "options": [
+      "We spend about one-third (1/3) of our lives in sleep."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "We spend about one-third (1/3) of our lives in sleep.",
+      "You spend about one-third (1/3) of our lives in sleep."
+     ]
+    },
+    {
+     "id": "g12-l144-10",
+     "n": 10,
+     "category": "vocab",
+     "question": "The part of speech helps you find …………………….",
+     "options": [
+      "the meaning of the word."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "the meaning of the word."
+     ]
+    },
+    {
+     "id": "g12-l144-11",
+     "n": 11,
+     "category": "vocab",
+     "question": "According to the passage, we use a dictionary when…………………",
+     "options": [
+      "We are still confused or think we are missing important information."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "We are still confused or think we are missing important information."
+     ]
+    },
+    {
+     "id": "g12-l144-12",
+     "n": 12,
+     "category": "vocab",
+     "question": "What do Iranians use to get the most sunshine? ……. .",
+     "options": [
+      "Iranians use special designs and arrangements of windows, balconies and yards to get the most sunshine."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "Iranians use special designs and arrangements of windows, balconies and yards to get the most sunshine."
+     ]
+    },
+    {
+     "id": "g12-l144-13",
+     "n": 13,
+     "category": "vocab",
+     "question": "Students can show their respect to teachers by ……. .",
+     "options": [
+      "paying attention during lessons and following classroom rules."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "paying attention during lessons and following classroom rules."
+     ]
+    },
+    {
+     "id": "g12-l144-14",
+     "n": 14,
+     "category": "vocab",
+     "question": "Dedicated teachers become a model for students because they …… .",
+     "options": [
+      "go far beyond their duties."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "go far beyond their duties."
+     ]
+    },
+    {
+     "id": "g12-l144-15",
+     "n": 15,
+     "category": "vocab",
+     "question": "What are some examples of technology?",
+     "options": [
+      "televisions, computers, online games, phones."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "televisions, computers, online games, phones."
+     ]
+    },
+    {
+     "id": "g12-l144-16",
+     "n": 16,
+     "category": "vocab",
+     "question": "Why should you use your mobile phone for limited time? ……. .",
+     "options": [
+      "Because they can cause brain problems."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "Because they can cause brain problems."
+     ]
+    },
+    {
+     "id": "g12-l144-17",
+     "n": 17,
+     "category": "vocab",
+     "question": "Your cell phone is a ……… that you can carry around every day.",
+     "options": [
+      "portable device"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "portable device"
+     ]
+    },
+    {
+     "id": "g12-l144-18",
+     "n": 18,
+     "category": "vocab",
+     "question": "Where can you show your children the beauty of nature?",
+     "options": [
+      "You can do this in your yard or in your favorite park."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "You can do this in your yard or in your favorite park."
+     ]
+    },
+    {
+     "id": "g12-l144-19",
+     "n": 19,
+     "category": "vocab",
+     "question": "What should you remind to kids?",
+     "options": [
+      "You should remind your children that all living creatures are parts of our world and are valuable in the natural environment."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "You should remind your children that all living creatures are parts of our world and are valuable in the natural environment."
+     ]
+    },
+    {
+     "id": "g12-l144-20",
+     "n": 20,
+     "category": "grammar",
+     "question": "«جمله را با ضمیرِ موصولیِ مناسب whom, who یا which کامل کنید» — An ostrich is a bird ………. .",
+     "options": [
+      "which"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "which"
+     ]
+    },
+    {
+     "id": "g12-l144-21",
+     "n": 21,
+     "category": "vocab",
+     "question": "How do elders feel when we appreciate their love? ……. .",
+     "options": [
+      "They feel honored."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "They feel honored."
+     ]
+    },
+    {
+     "id": "g12-l144-22",
+     "n": 22,
+     "category": "vocab",
+     "question": "When you find a/an …………, you can find the exact meaning of the word, pronunciation, part of speech and many other things.",
+     "options": [
+      "entry"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "entry"
+     ]
+    },
+    {
+     "id": "g12-l144-23",
+     "n": 23,
+     "category": "vocab",
+     "question": "The passage says that you should try to learn ………….. to expand your vocabulary.",
+     "options": [
+      "collocations"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "collocations"
+     ]
+    },
+    {
+     "id": "g12-l144-24",
+     "n": 24,
+     "category": "grammar",
+     "question": "«جمله را با ضمیرِ موصولیِ مناسب whom, who یا which کامل کنید» — A horse is an animal ………. .",
+     "options": [
+      "which"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "which"
+     ]
+    },
+    {
+     "id": "g12-l144-25",
+     "n": 25,
+     "category": "vocab",
+     "question": "How can solar collectors collect heat? ……. .",
+     "options": [
+      "Solar collectors collect heat by absorbing sunlight."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "Solar collectors collect heat by absorbing sunlight."
+     ]
+    },
+    {
+     "id": "g12-l144-26",
+     "n": 26,
+     "category": "vocab",
+     "question": "When should teachers clear up students’ confusion?",
+     "options": [
+      "Quickly before they jump into to the next lesson."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "Quickly before they jump into to the next lesson."
+     ]
+    },
+    {
+     "id": "g12-l144-27",
+     "n": 27,
+     "category": "vocab",
+     "question": "What must the students have when they enter a more advanced level",
+     "options": [
+      "They must have a native language dictionary."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "They must have a native language dictionary."
+     ]
+    },
+    {
+     "id": "g12-l144-28",
+     "n": 28,
+     "category": "vocab",
+     "question": "Artists from everywhere in the …... came to Paris to see Picasso’ first paining in modern Art.",
+     "options": [
+      "world"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "world"
+     ]
+    },
+    {
+     "id": "g12-l144-29",
+     "n": 29,
+     "category": "vocab",
+     "question": "Picasso is famous for …... the Cubism Style.",
+     "options": [
+      "creating"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "creating"
+     ]
+    },
+    {
+     "id": "g12-l144-30",
+     "n": 30,
+     "category": "vocab",
+     "question": "Fire provided the …………… for cooking plants which were not eaten before.",
+     "options": [
+      "means"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "means"
+     ]
+    },
+    {
+     "id": "g12-l144-31",
+     "n": 31,
+     "category": "vocab",
+     "question": "Finally, early humans began to follow other goals such as ………… the cities.",
+     "options": [
+      "founding"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "founding"
+     ]
+    },
+    {
+     "id": "g12-l144-32",
+     "n": 32,
+     "category": "grammar",
+     "question": "very heavy / a bag I always / which / my brother / seems / carries .",
+     "options": [
+      "My brother always carries a bag which seems very heavy."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "My brother always carries a bag which seems very heavy."
+     ]
+    },
+    {
+     "id": "g12-l144-33",
+     "n": 33,
+     "category": "grammar",
+     "question": "well,/ should/ so /has /study / tonight / tomorrow / an exam / she Mina.",
+     "options": [
+      "Mina has an exam tomorrow, so she should study well tonight."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "Mina has an exam tomorrow, so she should study well tonight."
+     ]
+    },
+    {
+     "id": "g12-l144-34",
+     "n": 34,
+     "category": "vocab",
+     "question": "Which kind of dictionary is useful for beginners?",
+     "options": [
+      "Bilingual dictionary is useful for them."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "Bilingual dictionary is useful for them."
+     ]
+    },
+    {
+     "id": "g12-l144-35",
+     "n": 35,
+     "category": "vocab",
+     "question": "What does the first half of a bilingual dictionary contain?",
+     "options": [
+      "It contains the English word along with their meaning in another language."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "It contains the English word along with their meaning in another language."
+     ]
+    },
+    {
+     "id": "g12-l144-36",
+     "n": 36,
+     "category": "vocab",
+     "question": "How many languages are used in a monolingual dictionary to explain the word meanings?",
+     "options": [
+      "One language is used in it."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "One language is used in it."
+     ]
+    },
+    {
+     "id": "g12-l144-37",
+     "n": 37,
+     "category": "vocab",
+     "question": "What do teachers do to find tools and ways to help their students become successful?",
+     "options": [
+      "They attend conference and training sessions to find tools and ways to help their students become successful."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "They attend conference and training sessions to find tools and ways to help their students become successful."
+     ]
+    },
+    {
+     "id": "g12-l144-38",
+     "n": 38,
+     "category": "grammar",
+     "question": "rained / brown / for months / everything / because / hadn't / in the garden / was / it.",
+     "options": [
+      "Everything in the garden was brown because it hadn't rained for months."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "Everything in the garden was brown because it hadn't rained for months.",
+      "Everything is brown in the garden because it hadn't rained for months."
+     ]
+    },
+    {
+     "id": "g12-l144-39",
+     "n": 39,
+     "category": "grammar",
+     "question": "famous / lives / the woman / professor / next door / is / who / a.",
+     "options": [
+      "The woman who lives next door is a famous professor."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "The woman who lives next door is a famous professor.",
+      "The woman who is a famous professor lives next door."
+     ]
+    },
+    {
+     "id": "g12-l144-40",
+     "n": 40,
+     "category": "vocab",
+     "question": "What can it lead to when you see the impacts on those you are helping?",
+     "options": [
+      "It can lead not only to great personal happiness but also to respect from others who appreciate the work you do."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "It can lead not only to great personal happiness but also to respect from others who appreciate the work you do."
+     ]
+    },
+    {
+     "id": "g12-l144-41",
+     "n": 41,
+     "category": "vocab",
+     "question": "What is the important point in helping others?",
+     "options": [
+      "The important point is that we continue to give to those who are more in need than ourselves."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "The important point is that we continue to give to those who are more in need than ourselves."
+     ]
+    },
+    {
+     "id": "g12-l144-42",
+     "n": 42,
+     "category": "vocab",
+     "question": "How can a talking dictionary help us?",
+     "options": [
+      "By using a talking dictionary, we are able to look the words up in a few minutes."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "By using a talking dictionary, we are able to look the words up in a few minutes."
+     ]
+    },
+    {
+     "id": "g12-l144-43",
+     "n": 43,
+     "category": "vocab",
+     "question": "What is the use of example sentences?",
+     "options": [
+      "Seeing specific words used in a sentence can provide more context and help you better understand proper usage."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "Seeing specific words used in a sentence can provide more context and help you better understand proper usage."
+     ]
+    },
+    {
+     "id": "g12-l144-44",
+     "n": 44,
+     "category": "vocab",
+     "question": "When is a dictionary a great help for us?",
+     "options": [
+      "When reading or writing a story,an essay,a paragraph or even a sentence, using a dictionary is a great help."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "When reading or writing a story,an essay,a paragraph or even a sentence, using a dictionary is a great help."
+     ]
+    },
+    {
+     "id": "g12-l144-45",
+     "n": 45,
+     "category": "vocab",
+     "question": "How does having a good vocabulary influence your reading habit?",
+     "options": [
+      "If we have a good vocabulary, we are more interested in reading."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "If we have a good vocabulary, we are more interested in reading."
+     ]
+    },
+    {
+     "id": "g12-l144-46",
+     "n": 46,
+     "category": "vocab",
+     "question": "شنیداری ۱ (برگهٔ نهاییِ دی ۱۳۹۸) — ساقه فقط در فایلِ صوتی است و در برگه چاپ نشده؛ مدلِ پاسخِ چاپ‌شدهٔ کلیدِ رسمی را تایپ کنید:",
+     "options": [
+      "do exercise"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "do exercise"
+     ]
+    },
+    {
+     "id": "g12-l144-47",
+     "n": 47,
+     "category": "vocab",
+     "question": "شنیداری ۲ (برگهٔ نهاییِ دی ۱۳۹۸) — ساقه فقط در فایلِ صوتی است و در برگه چاپ نشده؛ مدلِ پاسخِ چاپ‌شدهٔ کلیدِ رسمی را تایپ کنید:",
+     "options": [
+      "dishwasher"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "dishwasher"
+     ]
+    },
+    {
+     "id": "g12-l144-48",
+     "n": 48,
+     "category": "vocab",
+     "question": "شنیداری ۳ (برگهٔ نهاییِ دی ۱۳۹۸) — ساقه فقط در فایلِ صوتی است و در برگه چاپ نشده؛ مدلِ پاسخِ چاپ‌شدهٔ کلیدِ رسمی را تایپ کنید:",
+     "options": [
+      "renewable energy"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "renewable energy"
+     ]
+    },
+    {
+     "id": "g12-l144-49",
+     "n": 49,
+     "category": "vocab",
+     "question": "شنیداری ۴ (برگهٔ نهاییِ دی ۱۳۹۸) — ساقه فقط در فایلِ صوتی است و در برگه چاپ نشده؛ مدلِ پاسخِ چاپ‌شدهٔ کلیدِ رسمی را تایپ کنید:",
+     "options": [
+      "at the top of each page"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "at the top of each page"
+     ]
+    },
+    {
+     "id": "g12-l144-50",
+     "n": 50,
+     "category": "vocab",
+     "question": "شنیداری ۵ (برگهٔ نهاییِ دی ۱۳۹۸) — ساقه فقط در فایلِ صوتی است و در برگه چاپ نشده؛ مدلِ پاسخِ چاپ‌شدهٔ کلیدِ رسمی را تایپ کنید:",
+     "options": [
+      "sun or sunshine"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "sun or sunshine"
+     ]
+    },
+    {
+     "id": "g12-l144-51",
+     "n": 51,
+     "category": "vocab",
+     "question": "شنیداری ۶ (برگهٔ نهاییِ دی ۱۳۹۸) — ساقه فقط در فایلِ صوتی است و در برگه چاپ نشده؛ مدلِ پاسخِ چاپ‌شدهٔ کلیدِ رسمی را تایپ کنید:",
+     "options": [
+      "You can carry it everywhere."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "You can carry it everywhere."
      ]
     }
    ]

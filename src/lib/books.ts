@@ -152,7 +152,7 @@ export const BOOKS_PAGES_TOTAL = BOOKS.reduce((a, b) => a + b.pages, 0); // ۱۱
  * شمار بانک‌های آزمونِ هر پایه در tests-gN.json — کارت‌های خانه بدونِ شبکه
  * این عدد را نشان می‌دهند؛ در tests/books-derive.test.ts با خودِ فایل‌ها پین شده.
  */
-export const BOOK_BANK_COUNTS: Record<number, number> = { 7: 20, 8: 19, 9: 50, 10: 100, 11: 108, 12: 143 };
+export const BOOK_BANK_COUNTS: Record<number, number> = { 7: 20, 8: 19, 9: 50, 10: 100, 11: 108, 12: 144 }; // r400 — +l144 (پاسخ‌هایِ مدلِ مخزن)
 
 export const GRADE_LABELS: Record<number, string> = {
   7: "هفتم",

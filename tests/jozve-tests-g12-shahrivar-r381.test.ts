@@ -1,3 +1,5 @@
+// R400-LEGIT — رشته‌هایِ مصرفیِ l144 از نشت‌سنج حذف شدند (الگویِ Solar power)
+// R400-WIDENED — l144 (۵۱ آیتمِ پاسخِ مدلِ مخزن): 143→144 بانک / 891→942 id / دمِ counts +51
 // R396-WIDENED — l143 (۱۸ آیتمِ جمله‌سازیِ مخزن): 142→143 بانک / 873→891 id / دمِ counts +18
 // R395-WIDENED — l142 (۲۲ آیتمِ تایپیِ مخزنِ افعال): 141→142 بانک / 851→873 id / دمِ counts +22
 /**
@@ -346,13 +348,13 @@ describe("r381 — بانک l15 (س۱۷): حروفِ ربط با بانکِ چا
 
 describe("r381 — پیمان‌های سراسریِ فایل", () => {
   it("شکلِ فایل: ۳۵ بانک/[…,2,2,7,4,3,3,4,2,6]/۴۵۰ id یکتا — الگویِ g12-l1..l35 (r382/r383/r384 بانک‌های دی ۱۴۰۰ و شهریور ۱۴۰۰ و خرداد ۱۴۰۰ را افزودند)", () => {
-    expect(bank.lessons)./* R395-WIDENED */ /* R396-WIDENED */ toHaveLength(143);
+    expect(bank.lessons)./* R395-WIDENED */ /* R396-WIDENED */ /* R400-WIDENED */ toHaveLength(144);
     expect(bank.lessons.map((l) => l.count)).toEqual(
-      [100, 100, 100, 6, 7, 6, 10, 4, 6, 8, 4, 4, 4, 4, 4, 5, 7, 4, 4, 4, 2, 5, 7, 4, 4, 4, 2, 2, 7, 4, 3, 3, 4, 2, 6, 7, 4, 4, 4, 4, 2, 6, 4, 6, 8, 4, 4, 4, 4, 6, 6, 3, 3, 6, 4, 4, 4, 4, 4, 1, 2, 1, 2, 3, 3, 4, 4, 4, 4, 4, 3, 1, 3, 2, 3, 3, 5, 4, 4, 4, 4, 4, 2, 2, 4, 4, 4, 4, 4, 4, 2, 4, 8, 2, 4, 3, 3, 4, 4, 4, 3, 3, 8, 2, 4, 3, 3, 4, 4, 2, 4, 6, 4, 4, 3, 2, 3, 2, 4, 4, 4, 4, 4, 2, 4, 1, 5, 4, 4, 4, 4, 4, 3, 3, 4, 4, 2, 6, 6, 4, 6, 22, 18],
+      [100, 100, 100, 6, 7, 6, 10, 4, 6, 8, 4, 4, 4, 4, 4, 5, 7, 4, 4, 4, 2, 5, 7, 4, 4, 4, 2, 2, 7, 4, 3, 3, 4, 2, 6, 7, 4, 4, 4, 4, 2, 6, 4, 6, 8, 4, 4, 4, 4, 6, 6, 3, 3, 6, 4, 4, 4, 4, 4, 1, 2, 1, 2, 3, 3, 4, 4, 4, 4, 4, 3, 1, 3, 2, 3, 3, 5, 4, 4, 4, 4, 4, 2, 2, 4, 4, 4, 4, 4, 4, 2, 4, 8, 2, 4, 3, 3, 4, 4, 4, 3, 3, 8, 2, 4, 3, 3, 4, 4, 2, 4, 6, 4, 4, 3, 2, 3, 2, 4, 4, 4, 4, 4, 2, 4, 1, 5, 4, 4, 4, 4, 4, 3, 3, 4, 4, 2, 6, 6, 4, 6, 22, 18, 51],
     );
     const ids = bank.lessons.flatMap((b2) => b2.questions.map((q) => q.id));
-    expect(ids).toHaveLength(891);
-    expect(new Set(ids).size).toBe(891);
+    expect(ids).toHaveLength(942);
+    expect(new Set(ids).size).toBe(942);
     expect(ids[329]).toBe("g12-l8-1");
     expect(ids[333]).toBe("g12-l9-1");
     expect(ids[339]).toBe("g12-l10-1");
@@ -385,11 +387,12 @@ describe("r381 — پیمان‌های سراسریِ فایل", () => {
       // l112 (نخستین بانکِ نقش‌محورِ tests-g12) مشروع شدند — حذف از نشت‌سنج (الگویِ Solar power در r391)
       "He likes to play", "badminton", "offline and online", // س۲ (شنیداریِ صوتی)
       "Absence makes the heart grow fonder", "magnifying glass", "Teenagers who help", // س۵ (تصویری)
-      "time machine", "A Forest is a place", // س۱۰-س۱۳ (باز)
+      "A Forest is a place", // س۱۰-س۱۳ (باز)
+      // R400-LEGIT — 1 رشته با بانکِ l144 (پاسخ‌هایِ مدلِ مخزن) مشروع شد: "time machine"→g12-l144-5
       // س۱۱ (چیپ‌های درهم)
-      "are produced to work for a long time", "What do solar technologies deliver", // ردیف ۴۵-۴۷
+      // R400-LEGIT — 2 رشته با بانکِ l144 (پاسخ‌هایِ مدلِ مخزن) مشروع شدند: "are produced to work for a long time"→g12-l144-7، "What do solar technologies deliver"→g12-l144-8
       "We / You spend", // ردیف ۵۲
-      "The part of speech helps you find", // ردیف ۵۷
+      // R400-LEGIT — "The part of speech helps you find"→g12-l144-10
       // r392 — "Topic sentence"/"Concluding" با l112 مشروع شدند (الگویِ Solar power)
     ])
       for (const it of all) {

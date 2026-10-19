@@ -1,3 +1,5 @@
+// R400-LEGIT — رشته‌هایِ مصرفیِ l144 از نشت‌سنج حذف شدند (الگویِ Solar power)
+// R400-WIDENED — l144 (۵۱ آیتمِ پاسخِ مدلِ مخزن): 143→144 بانک / 891→942 id / دمِ counts +51
 // R396-WIDENED — l143 (۱۸ آیتمِ جمله‌سازیِ مخزن): 142→143 بانک / 873→891 id / دمِ counts +18
 // R395-WIDENED — l142 (۲۲ آیتمِ تایپیِ مخزنِ افعال): 141→142 بانک / 851→873 id / دمِ counts +22
 import { describe, expect, it } from "vitest";
@@ -410,7 +412,7 @@ describe("r393 — ترازیابیِ کلیدِ رسمیِ بین‌خانوا�
 
 describe("r393 — پیمان‌های سراسریِ فایل", () => {
   it("شکلِ فایل: ۱۲۸ بانک/[…,4,6,4,4,3,2,3,2,4,4,4,4,4,2,4,1,5,4]/۷۹۷ id یکتا — الگویِ g12-l1..l128", () => {
-    expect(bank.lessons)./* R395-WIDENED */ /* R396-WIDENED */ toHaveLength(143);
+    expect(bank.lessons)./* R395-WIDENED */ /* R396-WIDENED */ /* R400-WIDENED */ toHaveLength(144);
     expect(bank.lessons.map((l) => l.count)).toEqual([
       100, 100, 100, 6, 7, 6, 10, 4, 6, 8, 4, 4, 4, 4, 4, 5, 7, 4, 4, 4, 2, 5, 7, 4, 4, 4, 2, 2, 7,
       4, 3, 3, 4, 2, 6, 7, 4, 4, 4, 4, 2, 6, 4, 6, 8, 4, 4, 4, 4, 6, 6, 3, 3, 6, 4, 4, 4, 4, 4, 1,
@@ -419,10 +421,11 @@ describe("r393 — پیمان‌های سراسریِ فایل", () => {
       3, 2, 3, 2, 4, 4, 4, 4, 4, 2, 4, 1, 5, 4, 4, 4, 4, 4, 3, 3, 4, 4, 2, 6, 6, 4, 6,
       22,
       18,
+      51,
     ]);
     const ids = bank.lessons.flatMap((b2) => b2.questions.map((q) => q.id));
-    expect(ids).toHaveLength(891);
-    expect(new Set(ids).size).toBe(891);
+    expect(ids).toHaveLength(942);
+    expect(new Set(ids).size).toBe(942);
     expect(ids[751]).toBe("g12-l115-1");
     expect(ids[754]).toBe("g12-l116-1");
     expect(ids[756]).toBe("g12-l117-1");
@@ -467,12 +470,9 @@ describe("r393 — پیمان‌های سراسریِ فایل", () => {
 
   it("نشت‌سنجِ ردیف‌های مستثنیِ راند: مدل‌های صوتیِ ق۱-۶/stemهای ق۴۴-۴۷ غایب‌اند", () => {
     const forbidden = [
-      "do exercise", // مدلِ صوتیِ ق۱
-      "dishwasher", // مدلِ صوتیِ ق۲
+      // R400-LEGIT — 4 مدلِ صوتیِ ق۱-۶ با بانکِ l144 (پاسخ‌هایِ مدلِ مخزن — ساقهٔ فارسیِ صادقانه) مشروع شدند (الگویِ Solar power): "do exercise"→g12-l144-46، "dishwasher"→g12-l144-47، "sun or sunshine"→g12-l144-50، "You can carry it everywhere"→g12-l144-51
       // «renewable energy» و «at the top of each page» از نشت‌سنجِ این راند حذف شدند — در l33/l32 موجودند
       // (الگویِ «Solar power» در r391/ر392)
-      "sun or sunshine", // مدلِ صوتیِ ق۵
-      "You can carry it everywhere", // مدلِ صوتیِ ق۶
       "They lead a hard life", // stemِ چاپِ ق۴۴ (Doctors)
       "Examples of fruits are apples", // stemِ چاپِ ق۴۵
       "We depend on forests for our survival", // stemِ چاپِ ق۴۶

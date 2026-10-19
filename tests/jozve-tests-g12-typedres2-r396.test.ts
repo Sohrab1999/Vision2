@@ -1,3 +1,4 @@
+// R400-WIDENED — l144 (۵۱ آیتمِ پاسخِ مدلِ مخزن): 143→144 بانک / 891→942 id / دمِ counts +51
 import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
 import path from "node:path";
@@ -33,13 +34,13 @@ const L = (n: number): TLesson => {
 
 describe("r396 — شکلِ فایل پس از بانکِ l143", () => {
   it("۱۴۳ بانک / ۸۹۱ id یکتا / دمِ counts +18 / همخوانیِ count با questions", () => {
-    expect(bank.lessons).toHaveLength(143);
+    expect(bank.lessons)./* R400-WIDENED */ toHaveLength(144);
     const counts = bank.lessons.map((l) => l.count);
-    expect(counts).toHaveLength(143);
-    expect(counts.slice(-2)).toEqual([22, 18]);
+    expect(counts)./* R400-WIDENED */ toHaveLength(144);
+    expect(counts.slice(-3)).toEqual([22, 18, 51]);
     const ids = bank.lessons.flatMap((b2) => b2.questions.map((q) => q.id));
-    expect(ids).toHaveLength(891);
-    expect(new Set(ids).size).toBe(891);
+    expect(ids).toHaveLength(942);
+    expect(new Set(ids).size).toBe(942);
     expect(ids[872]).toBe("g12-l142-22");
     expect(ids[873]).toBe("g12-l143-1");
     expect(ids[890]).toBe("g12-l143-18");

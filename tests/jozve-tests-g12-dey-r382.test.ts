@@ -1,3 +1,5 @@
+// R400-LEGIT — رشته‌هایِ مصرفیِ l144 از نشت‌سنج حذف شدند (الگویِ Solar power)
+// R400-WIDENED — l144 (۵۱ آیتمِ پاسخِ مدلِ مخزن): 143→144 بانک / 891→942 id / دمِ counts +51
 // R396-WIDENED — l143 (۱۸ آیتمِ جمله‌سازیِ مخزن): 142→143 بانک / 873→891 id / دمِ counts +18
 // R395-WIDENED — l142 (۲۲ آیتمِ تایپیِ مخزنِ افعال): 141→142 بانک / 851→873 id / دمِ counts +22
 /**
@@ -293,13 +295,13 @@ describe("r382 — بانک l21 (س۱۶): حروفِ ربط با بانکِ چا
 
 describe("r382 — پیمان‌های سراسریِ فایل", () => {
   it("شکلِ فایل: ۳۵ بانک/[…,2,2,7,4,3,3,4,2,6]/۴۵۰ id یکتا — الگویِ g12-l1..l35 (r383 هفت بانکِ شهریور ۱۴۰۰ و r384 هفت بانکِ خرداد ۱۴۰۰ را افزودند)", () => {
-    expect(bank.lessons)./* R395-WIDENED */ /* R396-WIDENED */ toHaveLength(143);
+    expect(bank.lessons)./* R395-WIDENED */ /* R396-WIDENED */ /* R400-WIDENED */ toHaveLength(144);
     expect(bank.lessons.map((l) => l.count)).toEqual(
-      [100, 100, 100, 6, 7, 6, 10, 4, 6, 8, 4, 4, 4, 4, 4, 5, 7, 4, 4, 4, 2, 5, 7, 4, 4, 4, 2, 2, 7, 4, 3, 3, 4, 2, 6, 7, 4, 4, 4, 4, 2, 6, 4, 6, 8, 4, 4, 4, 4, 6, 6, 3, 3, 6, 4, 4, 4, 4, 4, 1, 2, 1, 2, 3, 3, 4, 4, 4, 4, 4, 3, 1, 3, 2, 3, 3, 5, 4, 4, 4, 4, 4, 2, 2, 4, 4, 4, 4, 4, 4, 2, 4, 8, 2, 4, 3, 3, 4, 4, 4, 3, 3, 8, 2, 4, 3, 3, 4, 4, 2, 4, 6, 4, 4, 3, 2, 3, 2, 4, 4, 4, 4, 4, 2, 4, 1, 5, 4, 4, 4, 4, 4, 3, 3, 4, 4, 2, 6, 6, 4, 6, 22, 18],
+      [100, 100, 100, 6, 7, 6, 10, 4, 6, 8, 4, 4, 4, 4, 4, 5, 7, 4, 4, 4, 2, 5, 7, 4, 4, 4, 2, 2, 7, 4, 3, 3, 4, 2, 6, 7, 4, 4, 4, 4, 2, 6, 4, 6, 8, 4, 4, 4, 4, 6, 6, 3, 3, 6, 4, 4, 4, 4, 4, 1, 2, 1, 2, 3, 3, 4, 4, 4, 4, 4, 3, 1, 3, 2, 3, 3, 5, 4, 4, 4, 4, 4, 2, 2, 4, 4, 4, 4, 4, 4, 2, 4, 8, 2, 4, 3, 3, 4, 4, 4, 3, 3, 8, 2, 4, 3, 3, 4, 4, 2, 4, 6, 4, 4, 3, 2, 3, 2, 4, 4, 4, 4, 4, 2, 4, 1, 5, 4, 4, 4, 4, 4, 3, 3, 4, 4, 2, 6, 6, 4, 6, 22, 18, 51],
     );
     const ids = bank.lessons.flatMap((b2) => b2.questions.map((q) => q.id));
-    expect(ids).toHaveLength(891);
-    expect(new Set(ids).size).toBe(891);
+    expect(ids).toHaveLength(942);
+    expect(new Set(ids).size).toBe(942);
     expect(ids[367]).toBe("g12-l16-1");
     expect(ids[372]).toBe("g12-l17-1");
     expect(ids[379]).toBe("g12-l18-1");
@@ -336,8 +338,7 @@ describe("r382 — پیمان‌های سراسریِ فایل", () => {
       "Zahra has caught a terrible flu", "Health is more important", // س۳ (شنیداریِ صوتی)
       "C is the symbol for carbon", "My little sister sits", // س۵ (تصویری)
       "They bought a house", // س۱۰-س۱۲ (بازِ تایپی)
-      "What do Iranians use", // ردیف ۴۰
-      "Because they can cause brain problems", // ردیف ۴۸
+      // R400-LEGIT — 2 رشته با بانکِ l144 (پاسخ‌هایِ مدلِ مخزن) مشروع شدند (الگویِ Solar power): "What do Iranians use"→g12-l144-12، "Because they can cause brain problems"→g12-l144-16
       "he had to read it", "Electric Cars", "Saadi Shirazi", // س۱۷-س۱۹
     ])
       for (const it of all) {

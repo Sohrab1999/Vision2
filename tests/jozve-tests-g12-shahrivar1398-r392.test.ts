@@ -1,3 +1,5 @@
+// R400-LEGIT — رشته‌هایِ مصرفیِ l144 از نشت‌سنج حذف شدند (الگویِ Solar power)
+// R400-WIDENED — l144 (۵۱ آیتمِ پاسخِ مدلِ مخزن): 143→144 بانک / 891→942 id / دمِ counts +51
 // R396-WIDENED — l143 (۱۸ آیتمِ جمله‌سازیِ مخزن): 142→143 بانک / 873→891 id / دمِ counts +18
 // R395-WIDENED — l142 (۲۲ آیتمِ تایپیِ مخزنِ افعال): 141→142 بانک / 851→873 id / دمِ counts +22
 import { describe, expect, it } from "vitest";
@@ -385,7 +387,7 @@ describe("r392 — ترازیابیِ کلیدِ رسمیِ بین‌خانوا�
 
 describe("r392 — پیمان‌های سراسریِ فایل", () => {
   it("شکلِ فایل: ۱۱۴ بانک/[…,4,8,2,4,3,3,4,4,4,3,3,8,2,4,3,3,4,4,2,4,6,4,4]/۷۵۱ id یکتا — الگویِ g12-l1..l114", () => {
-    expect(bank.lessons)./* R395-WIDENED */ /* R396-WIDENED */ toHaveLength(143);
+    expect(bank.lessons)./* R395-WIDENED */ /* R396-WIDENED */ /* R400-WIDENED */ toHaveLength(144);
     expect(bank.lessons.map((l) => l.count)).toEqual([
       100, 100, 100, 6, 7, 6, 10, 4, 6, 8, 4, 4, 4, 4, 4, 5, 7, 4, 4, 4, 2, 5, 7, 4, 4, 4, 2, 2, 7,
       4, 3, 3, 4, 2, 6, 7, 4, 4, 4, 4, 2, 6, 4, 6, 8, 4, 4, 4, 4, 6, 6, 3, 3, 6, 4, 4, 4, 4, 4, 1,
@@ -393,10 +395,11 @@ describe("r392 — پیمان‌های سراسریِ فایل", () => {
       4, 8, 2, 4, 3, 3, 4, 4, 4, 3, 3, 8, 2, 4, 3, 3, 4, 4, 2, 4, 6, 4, 4, 3, 2, 3, 2, 4, 4, 4, 4, 4, 2, 4, 1, 5, 4, 4, 4, 4, 4, 3, 3, 4, 4, 2, 6, 6, 4, 6,
       22,
       18,
+      51,
     ]);
     const ids = bank.lessons.flatMap((b2) => b2.questions.map((q) => q.id));
-    expect(ids).toHaveLength(891);
-    expect(new Set(ids).size).toBe(891);
+    expect(ids).toHaveLength(942);
+    expect(new Set(ids).size).toBe(942);
     expect(ids[703]).toBe("g12-l103-1");
     expect(ids[711]).toBe("g12-l104-1");
     expect(ids[713]).toBe("g12-l105-1");
@@ -446,8 +449,7 @@ describe("r392 — پیمان‌های سراسریِ فایل", () => {
       "The foods which contain fat", // مدلِ صوتیِ ق۶
       "causing diseases such as lung cancer", // bulletِ چاپِ ق۴۱ (smoking)
       "increasing stress and depression", // bulletِ چاپِ ق۴۱
-      "If we have a good vocabulary", // مدلِ چاپِ ق۴۹ — مخزن (متنِ ساقه «If you have» دارد)
-      "how does having a good vocabulary influence", // ساقهٔ ق۴۹
+      // R400-LEGIT — 2 رشته با بانکِ l144 (پاسخ‌هایِ مدلِ مخزن) مشروع شدند (الگویِ Solar power): "If we have a good vocabulary"→g12-l144-45، "how does having a good vocabulary influence"→g12-l144-45 (ساقه)
     ];
     const all = bank.lessons
       .flatMap((b2) => b2.questions)

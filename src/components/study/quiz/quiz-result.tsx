@@ -337,7 +337,7 @@ export default function QuizResult({
                   <>
                     پاسخ شما:{" "}
                     <span className={`${faOptions?.(qq) ? "" : "en-text "}font-bold`} dir={faOptions?.(qq) ? "rtl" : "ltr"}>
-                      {my !== undefined ? `${letters[my]}) ${qq.options[my]}` : "—"}
+                      {my !== undefined && my >= 0 ? `${letters[my]}) ${qq.options[my]}` : "—"}
                     </span>
                   </>
                 )}
