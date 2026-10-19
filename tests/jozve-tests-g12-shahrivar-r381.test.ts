@@ -1,3 +1,4 @@
+// R395-WIDENED — l142 (۲۲ آیتمِ تایپیِ مخزنِ افعال): 141→142 بانک / 851→873 id / دمِ counts +22
 /**
  * r381 — گاردِ برگهٔ دومِ بخشِ نهایی‌ها:
  * «سؤالات امتحان نهایی» زبان انگلیسی (۳) — نوبتِ شهریور ۱۴۰۱ (pdf-p343-347)
@@ -344,13 +345,13 @@ describe("r381 — بانک l15 (س۱۷): حروفِ ربط با بانکِ چا
 
 describe("r381 — پیمان‌های سراسریِ فایل", () => {
   it("شکلِ فایل: ۳۵ بانک/[…,2,2,7,4,3,3,4,2,6]/۴۵۰ id یکتا — الگویِ g12-l1..l35 (r382/r383/r384 بانک‌های دی ۱۴۰۰ و شهریور ۱۴۰۰ و خرداد ۱۴۰۰ را افزودند)", () => {
-    expect(bank.lessons).toHaveLength(141);
+    expect(bank.lessons)./* R395-WIDENED */ toHaveLength(142);
     expect(bank.lessons.map((l) => l.count)).toEqual(
-      [100, 100, 100, 6, 7, 6, 10, 4, 6, 8, 4, 4, 4, 4, 4, 5, 7, 4, 4, 4, 2, 5, 7, 4, 4, 4, 2, 2, 7, 4, 3, 3, 4, 2, 6, 7, 4, 4, 4, 4, 2, 6, 4, 6, 8, 4, 4, 4, 4, 6, 6, 3, 3, 6, 4, 4, 4, 4, 4, 1, 2, 1, 2, 3, 3, 4, 4, 4, 4, 4, 3, 1, 3, 2, 3, 3, 5, 4, 4, 4, 4, 4, 2, 2, 4, 4, 4, 4, 4, 4, 2, 4, 8, 2, 4, 3, 3, 4, 4, 4, 3, 3, 8, 2, 4, 3, 3, 4, 4, 2, 4, 6, 4, 4, 3, 2, 3, 2, 4, 4, 4, 4, 4, 2, 4, 1, 5, 4, 4, 4, 4, 4, 3, 3, 4, 4, 2, 6, 6, 4, 6],
+      [100, 100, 100, 6, 7, 6, 10, 4, 6, 8, 4, 4, 4, 4, 4, 5, 7, 4, 4, 4, 2, 5, 7, 4, 4, 4, 2, 2, 7, 4, 3, 3, 4, 2, 6, 7, 4, 4, 4, 4, 2, 6, 4, 6, 8, 4, 4, 4, 4, 6, 6, 3, 3, 6, 4, 4, 4, 4, 4, 1, 2, 1, 2, 3, 3, 4, 4, 4, 4, 4, 3, 1, 3, 2, 3, 3, 5, 4, 4, 4, 4, 4, 2, 2, 4, 4, 4, 4, 4, 4, 2, 4, 8, 2, 4, 3, 3, 4, 4, 4, 3, 3, 8, 2, 4, 3, 3, 4, 4, 2, 4, 6, 4, 4, 3, 2, 3, 2, 4, 4, 4, 4, 4, 2, 4, 1, 5, 4, 4, 4, 4, 4, 3, 3, 4, 4, 2, 6, 6, 4, 6, 22],
     );
     const ids = bank.lessons.flatMap((b2) => b2.questions.map((q) => q.id));
-    expect(ids).toHaveLength(851);
-    expect(new Set(ids).size).toBe(851);
+    expect(ids).toHaveLength(873);
+    expect(new Set(ids).size).toBe(873);
     expect(ids[329]).toBe("g12-l8-1");
     expect(ids[333]).toBe("g12-l9-1");
     expect(ids[339]).toBe("g12-l10-1");
@@ -375,13 +376,14 @@ describe("r381 — پیمان‌های سراسریِ فایل", () => {
 
   it("نشت‌سنجِ ردیف‌های مستثنی: شنیداریِ صوتیِ س۱/س۲، تصویریِ س۵، بازِ تایپیِ س۱۰-س۱۳ و ۴۵-۴۷/۵۲/۵۷، تولیدیِ س۱۸-س۱۹ غایب‌اند", () => {
     const all = bank.lessons.flatMap((b2) => b2.questions);
-    for (const forbidden of [
+    for (const forbidden of [    // R395-LEGIT — 2 رشته با بانکِ l142 (مخزنِ افعالِ نهایی‌ها) مشروع شد و از نشت‌سنج حذف شد (الگویِ Solar power): "The meat must"→g12-l142-1، "If I knew the answer"→g12-l142-3
+
       "They played volleyball and had a sandwich", // س۱ (شنیداریِ صوتی)
       // r392 — سه رشتهٔ زیر با استخراجِ مشروعِ l103-3 (کلیدِ رسمیِ «They flew their kites.») و
       // l112 (نخستین بانکِ نقش‌محورِ tests-g12) مشروع شدند — حذف از نشت‌سنج (الگویِ Solar power در r391)
       "He likes to play", "badminton", "offline and online", // س۲ (شنیداریِ صوتی)
       "Absence makes the heart grow fonder", "magnifying glass", "Teenagers who help", // س۵ (تصویری)
-      "The meat must", "If I knew the answer", "time machine", "A Forest is a place", // س۱۰-س۱۳ (باز)
+      "time machine", "A Forest is a place", // س۱۰-س۱۳ (باز)
       "the teacher / had done", // س۱۱ (چیپ‌های درهم)
       "are produced to work for a long time", "What do solar technologies deliver", // ردیف ۴۵-۴۷
       "We / You spend", // ردیف ۵۲

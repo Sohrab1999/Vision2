@@ -1,3 +1,4 @@
+// R395-WIDENED — l142 (۲۲ آیتمِ تایپیِ مخزنِ افعال): 141→142 بانک / 851→873 id / دمِ counts +22
 /**
  * r389 — گاردِ برگهٔ یازدهمِ بخشِ نهایی‌ها:
  * «سؤالات امتحان نهایی» زبان انگلیسی (۳) نوبتِ خرداد ۱۳۹۹ انسانی-معارف (pdf-p268-274)
@@ -392,13 +393,13 @@ describe("r389 — بانک‌های l82-l83 (تعریف‌یابی/اصطلاح
 
 describe("r389 — پیمان‌های سراسریِ فایل", () => {
   it("شکلِ فایل: ۸۳ بانک/[…,4,4,1,2,1,2,3,3,4,4,4,4,4,3,1,3,2,3,3,5,4,4,4,4,4,2]/۶۳۳ id یکتا — الگویِ g12-l1..l83", () => {
-    expect(bank.lessons).toHaveLength(141);
+    expect(bank.lessons)./* R395-WIDENED */ toHaveLength(142);
     expect(bank.lessons.map((l) => l.count)).toEqual(
-      [100, 100, 100, 6, 7, 6, 10, 4, 6, 8, 4, 4, 4, 4, 4, 5, 7, 4, 4, 4, 2, 5, 7, 4, 4, 4, 2, 2, 7, 4, 3, 3, 4, 2, 6, 7, 4, 4, 4, 4, 2, 6, 4, 6, 8, 4, 4, 4, 4, 6, 6, 3, 3, 6, 4, 4, 4, 4, 4, 1, 2, 1, 2, 3, 3, 4, 4, 4, 4, 4, 3, 1, 3, 2, 3, 3, 5, 4, 4, 4, 4, 4, 2, 2, 4, 4, 4, 4, 4, 4, 2, 4, 8, 2, 4, 3, 3, 4, 4, 4, 3, 3, 8, 2, 4, 3, 3, 4, 4, 2, 4, 6, 4, 4, 3, 2, 3, 2, 4, 4, 4, 4, 4, 2, 4, 1, 5, 4, 4, 4, 4, 4, 3, 3, 4, 4, 2, 6, 6, 4, 6],
+      [100, 100, 100, 6, 7, 6, 10, 4, 6, 8, 4, 4, 4, 4, 4, 5, 7, 4, 4, 4, 2, 5, 7, 4, 4, 4, 2, 2, 7, 4, 3, 3, 4, 2, 6, 7, 4, 4, 4, 4, 2, 6, 4, 6, 8, 4, 4, 4, 4, 6, 6, 3, 3, 6, 4, 4, 4, 4, 4, 1, 2, 1, 2, 3, 3, 4, 4, 4, 4, 4, 3, 1, 3, 2, 3, 3, 5, 4, 4, 4, 4, 4, 2, 2, 4, 4, 4, 4, 4, 4, 2, 4, 8, 2, 4, 3, 3, 4, 4, 4, 3, 3, 8, 2, 4, 3, 3, 4, 4, 2, 4, 6, 4, 4, 3, 2, 3, 2, 4, 4, 4, 4, 4, 2, 4, 1, 5, 4, 4, 4, 4, 4, 3, 3, 4, 4, 2, 6, 6, 4, 6, 22],
     );
     const ids = bank.lessons.flatMap((b2) => b2.questions.map((q) => q.id));
-    expect(ids).toHaveLength(851);
-    expect(new Set(ids).size).toBe(851);
+    expect(ids).toHaveLength(873);
+    expect(new Set(ids).size).toBe(873);
     expect(ids[594]).toBe("g12-l72-1");
     expect(ids[595]).toBe("g12-l73-1");
     expect(ids[598]).toBe("g12-l74-1");
@@ -434,7 +435,8 @@ describe("r389 — پیمان‌های سراسریِ فایل", () => {
   it("نشت‌سنجِ راندی (دامنه: بانک‌های ۷۲-۸۳): صوتی/تصویری/تایپی/تولیدیِ برگهٔ انسانی غایب‌اند", () => {
     const mine = bank.lessons.filter((b2) => b2.lesson >= 72 && b2.lesson <= 83).flatMap((b2) => b2.questions);
     expect(mine).toHaveLength(39);
-    for (const forbidden of [
+    for (const forbidden of [    // R395-LEGIT — 5 رشته با بانکِ l142 (مخزنِ افعالِ نهایی‌ها) مشروع شد و از نشت‌سنج حذف شد (الگویِ Solar power): "His job became"→g12-l142-18، "increasingly"→g12-l142-18، "has been discovered"→g12-l142-20، "were invented"→g12-l142-21، "waste every night"→g12-l142-19
+
       "should see a doctor", // س۱ ردیفِ ۲ (صوتی)
       "repeat themselves", // س۱ ردیفِ ۳
       "simple as an infection", // س۱ کلیدِ ۴
@@ -447,11 +449,11 @@ describe("r389 — پیمان‌های سراسریِ فایل", () => {
       "Teenagers who help others", // س۴ اضافیِ چاپی
       "Hydropower is produced", // س۴ تصویری
       "Tides can usually happen", // س۴ تصویری
-      "His job became", // س۸ تایپیِ ۳۰
-      "increasingly", // س۸ تایپی
-      "has been discovered", // س۸ تایپی
-      "were invented", // س۸ تایپی
-      "waste every night", // س۸ تایپیِ ۳۱
+      // س۸ تایپیِ ۳۰
+      // س۸ تایپی
+      // س۸ تایپی
+      // س۸ تایپی
+      // س۸ تایپیِ ۳۱
       "There are some plants which grow", // س۱۳ تولیدیِ Plants
       "Vitamin D", // س۱۳ تولیدی
       "sunshine vitamin", // س۱۳ تولیدی

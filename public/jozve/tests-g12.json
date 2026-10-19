@@ -1407,6 +1407,32 @@
    "twinCensus": "هم‌خانوادگیِ بین‌خانواده‌ای — r292 همین برگه را در grammar-g12-topic.json با عنوانِ نادرستِ «نهایی شهریور ۹۹» (gt-l138-l153، ۱۶ بانک/۵۴ آیتم) رندر کرده — عنوانِ درست از سربرگِ دیداری: خرداد ۱۳۹۹ داوطلبانِ آزادِ خارجِ از کشور؛ نقشهٔ تناظر: l129↔gt-l138 (با بازگردانیِ گزینهٔ dِ ق۲/۳)، l130↔gt-l139، l131↔gt-l140، l132↔gt-l142، l133↔gt-l143، l134↔gt-l144، l135↔gt-l145، l136↔gt-l146، l137↔gt-l147، l138↔gt-l148+gt-l149 (دو بانکِ دوقلو در یک بانکِ ترکیبی)، l139↔gt-l150+gt-l151، l140↔gt-l152، l141↔gt-l153 (نقش‌ها: [2,1,0,1,1,1] همسان)؛ ق۱۳-۱۶: دوقلو با ساقهٔ فارسی و گزینه‌های جمله‌ای رندر کرده (gt-l141) — ما مستثنی کردیم (تصویریِ حرف-کلید؛ خلوصِ لاتین + بی‌پاسخیِ متنی)؛ جفت‌های بین‌برگه‌ای: «spared no pains» (ق۲۲ ↔ l96-3 ↔ r388-l68 ↔ r298 ↔ r390-l87 — پنجمین تکرار)، «Wind towers are natural air --------------- systems» (ق۲۱ ↔ l120-4ِ دی ۹۸ — همان ساقه با فاصله‌گذاریِ متفاوت)، «Nowadays d------- for organic food» (ق۲۵ ↔ l107-3ِ شهریور ۱۳۹۸ — همان ساقه)، «diary» (ق۲۴ ↔ l107-1 ↔ تعریفِ l95-2ِ خرداد ۱۳۹۸ — تعریفِ مشترکِ وزارت این‌بار به‌صورتِ جمله)، «burst into tears» (ق۲۰ ↔ l109-4ِ شهریور ۱۳۹۸ «Aida burst into tears»)، خودروهای برقی (ق۹-۱۲ ↔ l127ِ دی ۹۸ + متنِ انرژیِ l114 — تمِ پایدار؛ «batteries» ق۱۰ ↔ متنِ l127)، «She loves apples, --------------- she hates bananas.» (ق۵۲ ↔ l125-3ِ دی ۹۸ «My sister loves apples…» — ساقهٔ نزدیک، کلیدِ یکسانِ but)، «You can buy a car, --------------- you can save your money.» (ق۵۱ ↔ l111-1ِ شهریور «You can buy a shirt…» — واریانتِ shirt→car، کلیدِ یکسانِ or)، شرطیِ نوعِ دوم (ق۳۳ و ق۳۵ ↔ خانوادهٔ شرطی‌های نهایی‌ها: l108-4 و l85)، «Dr. Gharib» (س۱۵ ↔ l96-2/l96-3 ↔ مدلِ صوتیِ l103)، پاراگرافِ آب (س۱۴ ↔ کاندیدِ آبِ r391 ↔ نقش‌های r387 — سومین پاراگرافِ آب و دومینِ دارایِ کلیدِ چاپی)، «absorb carbon dioxide» (ق۲۶ ↔ متنِ درخت‌های l126ِ دی ۹۸)",
    "futureNote": "مخزنِ بانکِ تایپیِ نهایی بدونِ تغییر در ۸۹ ردیف ماند (مدل‌های تایپیِ ق۴۱/۴۲/۴۷/۴۸ همین راند در بانک‌های ترکیبیِ l138/l139 رندر شدند)؛ **بخشِ نهایی‌های دارایِ لایه کامل شد: ۱۷ از ۱۷ برگه** — آیندهٔ بخش فقط: (۱) فیلدِ تصویرِ QuizQuestion (REQUIRES-APPROVAL) برای س۴ِ همین برگه و سکشن‌های تصویریِ داوری‌شدهٔ قبلی، (۲) بانکِ تایپیِ نهایی از مخزنِ ۸۹ ردیفی، (۳) case-sensitive mode؛ پس از این راند «استخراجِ جزوه‌های آزمونی» همهٔ کارت‌ها + بخشِ نهایی‌ها بسته است",
    "engineNote": "هشت بانکِ تایپی/ترکیبیِ تازه: l130 (کلوژ با متنِ کامل و جای خالیِ نشانه‌گذاری‌شده — الگویِ جدید برای کلوژهای چندبخشی)، l131، l133، l134 (حرف‌اولِ «a d-------»)، l136 (مکالمه با پیشوندِ گوینده)، l137، l140، + دو بانکِ ترکیبیِ خوانداری: l138/l139 (هر یک: ۲ mcq + ۲ True/False + ۲ تایپیِ مدل‌دار)؛ دومین بانکِ نقش‌محورِ استخراج‌شده (l141 — بعد از l112 فوتبال) با کلیدِ جدولیِ چاپ؛ سومین توالیِ ربطِ متمایزِ نهایی‌ها (and/so/or/but — بعدِ so/and/but/orِ خرداد ۹۸ و or/so/but/andِ شهریور/دی ۹۸)؛ l129/l132/l135/l141 در حلقهٔ MCQ-خالص؛ l130/l131/l133/l134/l136/l137/l140 تایپی؛ l138/l139 ترکیبی و مستثنی از حلقه"
+  },
+  "g12typedres1": {
+   "extractedRound": "r395",
+   "section": "بانکِ تایپیِ نهایی‌ها — قسمتِ نخست: شکلِ فعل (l142) — نخستین بانکِ گردآوریِ درون‌خانوادگی؛ ساخته‌شده از ۲۲ ردیفِ افعالیِ «مخزنِ بانکِ تایپیِ نهایی‌ها» (۸۹ ردیفِ ثبت‌شده در futureNoteهای g12nahaie1..16) بدونِ صفحهٔ تازه — تکمیلِ فرصتِ ثبت‌شدهٔ راندهای r380-r394",
+   "examPages": "بدونِ صفحهٔ آزمونِ تازه؛ ساقه‌ها از لایهٔ متنیِ booklet-extract/g12.txt (ص۳۴۵/۳۳۱/۳۲۴/۳۱۷/۳۱۰/۳۰۳/۲۹۴/۲۶۱/۲۷۰) و کلیدها از رسیدهای راستی‌آزمایی‌شدهٔ g12nahaie2/3/4/5/6/7/9/10/11 + پروبِ صفحاتِ کلیدِ چاپی (ص۲۹۹/۲۶۶/۲۷۵ — «21. was found … 24. been made»، «31. have been invited … 34. might/would /could choose»، «30. increasingly … 34. were»)؛ کلیدهای سه‌گانهٔ r381 (be kept/had studied/would tell) داوریِ رندر ۳۰۰dpiِ همان r381 است",
+   "keyPolicy": "همهٔ ۲۲ کلید عینِ چاپ‌اند؛ دوتاییِ چاپیِ r383 «had got/gotten» → accepted دومَعضوی؛ سه‌گانهٔ چاپیِ r388m «might/would /could choose» → accepted سهمَعضوی (الگویِ l108-4)؛ بک‌تیکِ چاپ (haven`t/doesn`t) به آپوستروفِ ASCII نرمال شد — الگویِ l136ِ r394؛ «china» کوچکِ چاپِ r386-36 وفادارانه ماند",
+   "items": 22,
+   "bankCounts": {
+    "l142": 22
+   },
+   "reservoirCensus": {
+    "consumedHere": {
+     "r381-shahrivar1401": "س۱۰: ق۳۵-۳۷ (۳)",
+     "r382-dey1400": "ق۳۲ (۱)",
+     "r383-shahrivar1400": "ق۳۲ (۱)",
+     "r384-khordad1400h": "ق۳۱ (۱)",
+     "r385-khordad1400m": "ق۳۱ (۱)",
+     "r386-dey1399": "س۱۱: ق۳۶-۳۷ (۲)",
+     "r388-deaf": "س۶: ق۲۱-۲۴ (۴)",
+     "r388m-khordad1399m": "س۹: ق۳۱-۳۴ (۴)",
+     "r389-khordad1399h": "س۸: ق۳۰-۳۴ (۵)"
+    },
+    "remaining": "۶۷ ردیف: ۱۷ جمله‌سازی (r381-ق۳۸؛ r382-ق۳۳/۳۴؛ r383-ق۳۳/۳۴؛ r384-ق۳۲/۳۳؛ r386-ق۳۸؛ r387-ق۵۹-۶۲؛ r388m-س۱۶ چهارگانه) + ۵۰ پاسخِ مدلِ خوانداری/شنیداری/واژه‌نامه (r380-ق۴۳/۴۴/۴۷/۴۸؛ r381-ق۳۹/۴۵-۴۷/۵۲/۵۷-۵۸؛ r382-ق۴۰/۴۳/۴۴/۴۷/۴۸؛ r383-ق۴۰/۴۷/۴۸؛ r384-ق۳۴/۳۸/۴۲/۴۳؛ r385-ق۳۲/۳۳/۳۴/۴۳؛ r386-ق۴۴/۴۵/۵۰/۵۱؛ r387-ق۴۳/۴۴؛ r390-ق۳۷/۳۸/۵۵-۵۷/۶۰؛ r391-ق۳۵/۳۶/۴۸/۴۹/۵۳-۵۵؛ r392-ق۴۹؛ r393-ق۱-۶ شنیداری) — قسطِ دوم/سومِ بانکِ تایپی"
+   },
+   "engineNote": "یکهزاردرصدِ تایپی (kind=typed، options=[کلیدِ نخست] به‌عنوانِ داربست) — مستثنی از حلقهٔ MCQ؛ خانهٔ ۱۵خطِ چسبیده به الگویِ l136؛ پیشوندِ گویندهٔ Ali:/Babak:/A:-B: به الگویِ مکالمهٔ l136؛ راهنمای مصدرِ داخلِ پرانتز وفادار به چاپ (فقط نیم‌فاصلهٔ درونی نرمال شد)؛ دو acceptedِ چندعضوی: l142-5 (had got/had gotten) و l142-17 (might/would/could choose)",
+   "futureNote": "مخزن از ۸۹ به ۶۷ ردیف رسید — قسطِ دوم: ۱۷ جمله‌سازی، قسطِ سوم: ۵۰ پاسخِ مدل؛ دو فرصتِ دیگرِ ثبت‌شدهٔ بخش: فیلدِ تصویرِ QuizQuestion (REQUIRES-APPROVAL) و case-sensitive mode"
   }
  },
  "answerArbitration": [
@@ -14123,6 +14149,325 @@
       "Concluding sentence"
      ],
      "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 142,
+   "title": "مرورِ تایپیِ نهایی‌ها — شکلِ فعل (قسمتِ افعالِ مخزنِ ۸۹ ردیفی)",
+   "level": "تایپی",
+   "count": 22,
+   "questions": [
+    {
+     "id": "g12-l142-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "The meat must --------------- in a freezer. (to keep)",
+     "options": [
+      "be kept"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "be kept"
+     ]
+    },
+    {
+     "id": "g12-l142-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "I passed my final exam because I --------------- well. (to study)",
+     "options": [
+      "had studied"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "had studied"
+     ]
+    },
+    {
+     "id": "g12-l142-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "I don't know the answer. If I knew the answer, I --------------- you. (to tell)",
+     "options": [
+      "would tell"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "would tell"
+     ]
+    },
+    {
+     "id": "g12-l142-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "I knew I --------------- that man somewhere before. (see)",
+     "options": [
+      "had seen"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "had seen"
+     ]
+    },
+    {
+     "id": "g12-l142-5",
+     "n": 5,
+     "category": "grammar",
+     "question": "She was upset because she --------------- a bad score. (get)",
+     "options": [
+      "had got"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "had got",
+      "had gotten"
+     ]
+    },
+    {
+     "id": "g12-l142-6",
+     "n": 6,
+     "category": "grammar",
+     "question": "The window --------------- by that boy yesterday. (break)",
+     "options": [
+      "was broken"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "was broken"
+     ]
+    },
+    {
+     "id": "g12-l142-7",
+     "n": 7,
+     "category": "grammar",
+     "question": "They gave me some money back because I --------------- too much. (pay)",
+     "options": [
+      "had paid"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "had paid"
+     ]
+    },
+    {
+     "id": "g12-l142-8",
+     "n": 8,
+     "category": "grammar",
+     "question": "Joe --------------- Chinese before he moved to china. (study)",
+     "options": [
+      "had studied"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "had studied"
+     ]
+    },
+    {
+     "id": "g12-l142-9",
+     "n": 9,
+     "category": "grammar",
+     "question": "Persian --------------- in Iran, Tajikistan and Afghanistan. (speak)",
+     "options": [
+      "is spoken"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "is spoken"
+     ]
+    },
+    {
+     "id": "g12-l142-10",
+     "n": 10,
+     "category": "grammar",
+     "question": "The robber --------------- by the police last week. (to find)",
+     "options": [
+      "was found"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "was found"
+     ]
+    },
+    {
+     "id": "g12-l142-11",
+     "n": 11,
+     "category": "grammar",
+     "question": "Kate --------------- to feed the chickens, doesn't he? (to forget)",
+     "options": [
+      "forgets"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "forgets"
+     ]
+    },
+    {
+     "id": "g12-l142-12",
+     "n": 12,
+     "category": "grammar",
+     "question": "If it --------------- warmer, they would travel to the north. (to get)",
+     "options": [
+      "got"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "got"
+     ]
+    },
+    {
+     "id": "g12-l142-13",
+     "n": 13,
+     "category": "grammar",
+     "question": "A new medicine has --------------- by doctors to cure cancer. (to make)",
+     "options": [
+      "been made"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "been made"
+     ]
+    },
+    {
+     "id": "g12-l142-14",
+     "n": 14,
+     "category": "grammar",
+     "question": "Ali: You --------------- (invite) to his birthday party, haven't you?",
+     "options": [
+      "have been invited"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "have been invited"
+     ]
+    },
+    {
+     "id": "g12-l142-15",
+     "n": 15,
+     "category": "grammar",
+     "question": "Babak: No, nothing --------------- (say) about it while I was talking to him.",
+     "options": [
+      "was said"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "was said"
+     ]
+    },
+    {
+     "id": "g12-l142-16",
+     "n": 16,
+     "category": "grammar",
+     "question": "Ali: He may call you tomorrow. He always --------------- (decide) to do things at the last moment, doesn't he?",
+     "options": [
+      "decides"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "decides"
+     ]
+    },
+    {
+     "id": "g12-l142-17",
+     "n": 17,
+     "category": "grammar",
+     "question": "Babak: You are right! But if he told us sooner we --------------- (choose) a better gift to buy.",
+     "options": [
+      "might choose"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "might choose",
+      "would choose",
+      "could choose"
+     ]
+    },
+    {
+     "id": "g12-l142-18",
+     "n": 18,
+     "category": "grammar",
+     "question": "His job became --------------- difficult because of his illness. (increase)",
+     "options": [
+      "increasingly"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "increasingly"
+     ]
+    },
+    {
+     "id": "g12-l142-19",
+     "n": 19,
+     "category": "grammar",
+     "question": "They --------------- the waste every night and send it to the landfill, don't they? (collect)",
+     "options": [
+      "collect"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "collect"
+     ]
+    },
+    {
+     "id": "g12-l142-20",
+     "n": 20,
+     "category": "grammar",
+     "question": "A: Is there any medicine for the disease? B: A new medicine --------------- by the doctors to cure it since last month. (discover)",
+     "options": [
+      "has been discovered"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "has been discovered"
+     ]
+    },
+    {
+     "id": "g12-l142-21",
+     "n": 21,
+     "category": "grammar",
+     "question": "Smart phones and tablets --------------- by lots of hard work some years ago. (invent)",
+     "options": [
+      "were invented"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "were invented"
+     ]
+    },
+    {
+     "id": "g12-l142-22",
+     "n": 22,
+     "category": "grammar",
+     "question": "They would travel all over the world if they --------------- rich. (be)",
+     "options": [
+      "were"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "were"
+     ]
     }
    ]
   }
