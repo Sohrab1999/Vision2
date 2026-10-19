@@ -76,11 +76,11 @@ describe("r366 — رسیدِ g9exam3", () => {
 });
 
 describe("r366 — شکلِ شش بانکِ امتحانی درس سوم", () => {
-  it("counts: [4,6,6,2,4,6] — id یکتا در کلِ فایل (۱۹۳)", () => {
+  it("counts: [4,6,6,2,4,6] — id یکتا در کلِ فایل (۲۱۷)", () => {
     expect([23, 24, 25, 26, 27, 28].map((n) => L(n).count)).toEqual([4, 6, 6, 2, 4, 6]);
     const ids = g9.lessons.flatMap((b) => b.questions.map((x) => x.id));
-    expect(ids).toHaveLength(193);
-    expect(new Set(ids).size).toBe(193);
+    expect(ids).toHaveLength(217);
+    expect(new Set(ids).size).toBe(217);
   });
 
   it("س۲ سوالی و منفی: وارونگی/منفی‌سازیِ یکتا + داربستِ جملهٔ ساده", () => {

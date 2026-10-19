@@ -58,15 +58,16 @@ describe("r362 — receipt & shape", () => {
     expect(rec.printQuirks[2]).toContain("r358");
   });
 
-  it("file shape: grade 9, r362+r363+r364+r365+r366 banks, unique ids", () => {
+  it("file shape: grade 9, r362..r367 banks, unique ids", () => {
     expect(bank.grade).toBe(9);
     // r363 — شش بانکِ «تمرین‌های مکالمه»؛ r364 — هفت بانکِ «سؤالات امتحانی درس اول»؛
-    // r365 — هفت بانکِ «سؤالات امتحانی درس دوم»؛ r366 — شش بانکِ «سؤالات امتحانی درس سوم» (۲۸ بانک در کل)
-    expect(bank.lessons).toHaveLength(28);
-    expect(bank.lessons.map((l) => l.count)).toEqual([7, 50, 11, 9, 8, 10, 9, 8, 4, 2, 4, 3, 7, 5, 4, 8, 2, 4, 2, 3, 3, 2, 4, 6, 6, 2, 4, 6]);
+    // r365 — هفت بانکِ «درس دوم»؛ r366 — شش بانکِ «درس سوم»؛
+    // r367 — هفت بانکِ «سؤالات امتحانی درس چهارم» (۳۵ بانک در کل)
+    expect(bank.lessons).toHaveLength(35);
+    expect(bank.lessons.map((l) => l.count)).toEqual([7, 50, 11, 9, 8, 10, 9, 8, 4, 2, 4, 3, 7, 5, 4, 8, 2, 4, 2, 3, 3, 2, 4, 6, 6, 2, 4, 6, 3, 2, 3, 2, 4, 6, 4]);
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(ids).toHaveLength(193);
-    expect(new Set(ids).size).toBe(193);
+    expect(ids).toHaveLength(217);
+    expect(new Set(ids).size).toBe(217);
     expect(ids.slice(0, 7)).toEqual([
       "g9-l1-1", "g9-l1-2", "g9-l1-3", "g9-l1-4", "g9-l1-5", "g9-l1-6", "g9-l1-7",
     ]);

@@ -3258,6 +3258,460 @@
      "keyWhy": "تنها b دستوریِ سالم است — a: Does…exchanges (باید exchange باشد)، c: Do her aunt buys (دو خطا)، d: She don’t (باید doesn’t)"
     }
    ]
+  },
+  {
+   "lesson": 29,
+   "title": "امتحانی درس چهارم — دیکتهٔ ناقص (س۵، ص۷۴)",
+   "level": "تمرین تایپی (دیکتهٔ ناقص)",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g9-l29-1",
+     "n": 1,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "R_charge the e t_cket",
+     "options": [
+      "Recharge the e-ticket",
+      "information desk"
+     ],
+     "answer": 0,
+     "accepted": [
+      "Recharge the e-ticket",
+      "Recharge the e ticket"
+     ],
+     "placeholder": "complete the words…",
+     "keyWhy": "عبارتِ خودِ درس: «recharge your E-ticket*» (ص۶۶) + Recharge* (ص۶۵)؛ «e t_cket» شکستِ چاپیِ «e-ticket»"
+    },
+    {
+     "id": "g9-l29-2",
+     "n": 2,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "inform_tion desk",
+     "options": [
+      "information desk",
+      "help charity"
+     ],
+     "answer": 0,
+     "accepted": [
+      "information desk"
+     ],
+     "placeholder": "complete the words…",
+     "keyWhy": "عبارتِ خودِ درس: «ask the information desk*» (ص۶۶) + Information* (ص۶۵)"
+    },
+    {
+     "id": "g9-l29-3",
+     "n": 3,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "help ch_rity",
+     "options": [
+      "help charity",
+      "Recharge the e-ticket"
+     ],
+     "answer": 0,
+     "accepted": [
+      "help charity"
+     ],
+     "placeholder": "complete the words…",
+     "keyWhy": "عبارتِ خودِ درس: «help charity*» (ص۶۶) + Charity* (ص۶۵)"
+    }
+   ]
+  },
+  {
+   "lesson": 30,
+   "title": "امتحانی درس چهارم — مرتب‌کردن جملات (س۶، ص۷۴)",
+   "level": "تمرین تایپی (مرتب‌کردن)",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g9-l30-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "work / every / voluntary / do / we / weekend",
+     "options": [
+      "We do voluntary work every weekend.",
+      "work / every / voluntary / do / we / weekend"
+     ],
+     "answer": 0,
+     "accepted": [
+      "We do voluntary work every weekend."
+     ],
+     "placeholder": "write the sentence…",
+     "keyWhy": "تنها یک چینشِ دستوریِ ممکن از شش واژه — داربست: ردیفِ به‌هم‌ریختهٔ چاپی (خانوادهٔ r365)"
+    },
+    {
+     "id": "g9-l30-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "always / clean / keep / they / city / the",
+     "options": [
+      "They always keep the city clean.",
+      "always / clean / keep / they / city / the"
+     ],
+     "answer": 0,
+     "accepted": [
+      "They always keep the city clean."
+     ],
+     "placeholder": "write the sentence…",
+     "keyWhy": "تنها یک چینشِ دستوریِ ممکن از شش واژه — داربست: ردیفِ به‌هم‌ریختهٔ چاپی (خانوادهٔ r365)"
+    }
+   ]
+  },
+  {
+   "lesson": 31,
+   "title": "امتحانی درس چهارم — بانک واژهٔ پرسش‌واژه‌ها (س۷، ص۷۴)",
+   "level": "تمرین تایپی (بانک واژه)",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g9-l31-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "A: ------- does take bus? B: because it's cheap.",
+     "options": [
+      "Why",
+      "How"
+     ],
+     "answer": 0,
+     "accepted": [
+      "Why"
+     ],
+     "placeholder": "question word…",
+     "keyWhy": "پاسخِ B با «because» آغاز می‌شود → علت‌خواهی: Why"
+    },
+    {
+     "id": "g9-l31-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "A: ------- makes a cake for us? B: My sister.",
+     "options": [
+      "Who",
+      "When"
+     ],
+     "answer": 0,
+     "accepted": [
+      "Who"
+     ],
+     "placeholder": "question word…",
+     "keyWhy": "پاسخِ B نامِ شخص است → شخص‌خواهی: Who"
+    },
+    {
+     "id": "g9-l31-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "A: ------- do you live? B: I live in Paveh.",
+     "options": [
+      "Where",
+      "When"
+     ],
+     "answer": 0,
+     "accepted": [
+      "Where"
+     ],
+     "placeholder": "question word…",
+     "keyWhy": "پاسخِ B مکان است → مکان‌خواهی: Where"
+    }
+   ]
+  },
+  {
+   "lesson": 32,
+   "title": "امتحانی درس چهارم — بازنویسی با قیدِ تکرار (س۸، ص۷۴)",
+   "level": "تمرین تایپی (بازنویسی)",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g9-l32-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "They come late. (never)",
+     "options": [
+      "They never come late.",
+      "They come late."
+     ],
+     "answer": 0,
+     "accepted": [
+      "They never come late."
+     ],
+     "placeholder": "rewrite the sentence…",
+     "keyWhy": "قیدِ تکرار در جملهٔ مثبت پیش از فعلِ اصلی می‌نشیند: They never come late. — داربست: جملهٔ سادهٔ خودِ ساقه"
+    },
+    {
+     "id": "g9-l32-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "She studies hard. (always)",
+     "options": [
+      "She always studies hard.",
+      "She studies hard."
+     ],
+     "answer": 0,
+     "accepted": [
+      "She always studies hard."
+     ],
+     "placeholder": "rewrite the sentence…",
+     "keyWhy": "قیدِ تکرار پیش از فعلِ اصلی: She always studies hard. — داربست: جملهٔ سادهٔ خودِ ساقه"
+    }
+   ]
+  },
+  {
+   "lesson": 33,
+   "title": "امتحانی درس چهارم — جواب صحیح (س۹، ص۷۵)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g9-l33-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "A: Excuse me, I want to donate blood, where should I go?\nB: I don’t know. You can -------",
+     "options": [
+      "save people’ lives",
+      "ask information desk",
+      "call the emergency",
+      "keep the city clean"
+     ],
+     "answer": 1,
+     "keyWhy": "عبارتِ خودِ درس: «ask the information desk*» (ص۶۶) — پاسخِ «where should I go» با پرسیدن از میزِ اطلاعات سازگار است"
+    },
+    {
+     "id": "g9-l33-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "A: I want to -------\nB: ok, fill out this form. How much money do you have?",
+     "options": [
+      "send an email",
+      "hire a taxi",
+      "recharge my E-ticket",
+      "open an account"
+     ],
+     "answer": 3,
+     "keyWhy": "عبارتِ خودِ درس: «open an account*» (ص۶۶) — فرمِ بانکی و «How much money» فقط با افتتاحِ حساب سازگار است"
+    },
+    {
+     "id": "g9-l33-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "A: I need money\nB: you can -------",
+     "options": [
+      "open an account",
+      "call the emergency",
+      "take out money from an ATM",
+      "recharge your E-ticket"
+     ],
+     "answer": 2,
+     "keyWhy": "عبارتِ خودِ درس: «take out money from an ATM*» (ص۶۶) — «I need money» → برداشتِ پولِ نقد از خودپرداز"
+    },
+    {
+     "id": "g9-l33-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "My uncle is very generous. He always -------",
+     "options": [
+      "buy ticket",
+      "help charity",
+      "keep the city clean",
+      "hire a taxi"
+     ],
+     "answer": 1,
+     "keyWhy": "عبارتِ خودِ درس: «help charity*» (ص۶۶) — generous (بخشنده) → کمک به خیریه"
+    }
+   ]
+  },
+  {
+   "lesson": 34,
+   "title": "امتحانی درس چهارم — وصل‌کردنیِ ستون‌ها (س۱۰، ص۷۵)",
+   "level": "چهارگزینه‌ای (هفت‌گزینه‌ایِ چاپی)",
+   "count": 6,
+   "questions": [
+    {
+     "id": "g9-l34-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Who's that man? ( ------- )",
+     "options": [
+      "He works on shifts",
+      "He is Mr. Amaini",
+      "At a fire station.",
+      "Yes, there’s one over there.",
+      "He is fire fighter.",
+      "from a post office",
+      "He puts out fire and saves people’s lives"
+     ],
+     "answer": 1,
+     "keyWhy": "پرسشِ Who → تنها نامِ شخص: b) He is Mr. Amaini (الگوی س۴ِ r365/س۱۴ِ r364)"
+    },
+    {
+     "id": "g9-l34-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "What s his job? ( ------- )",
+     "options": [
+      "He works on shifts",
+      "He is Mr. Amaini",
+      "At a fire station.",
+      "Yes, there’s one over there.",
+      "He is fire fighter.",
+      "from a post office",
+      "He puts out fire and saves people’s lives"
+     ],
+     "answer": 4,
+     "keyWhy": "پرسشِ be («What is his job?») → پاسخِ be-ساختار: e) He is fire fighter. — سؤال و جواب آینهٔ ساختاری‌اند"
+    },
+    {
+     "id": "g9-l34-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "What does he do? ( ------- )",
+     "options": [
+      "He works on shifts",
+      "He is Mr. Amaini",
+      "At a fire station.",
+      "Yes, there’s one over there.",
+      "He is fire fighter.",
+      "from a post office",
+      "He puts out fire and saves people’s lives"
+     ],
+     "answer": 6,
+     "keyWhy": "پرسشِ do → پاسخِ فعل‌محور: g) He puts out fire and saves people’s lives — آینه‌سازیِ do"
+    },
+    {
+     "id": "g9-l34-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "Where does he work? ( ------- )",
+     "options": [
+      "He works on shifts",
+      "He is Mr. Amaini",
+      "At a fire station.",
+      "Yes, there’s one over there.",
+      "He is fire fighter.",
+      "from a post office",
+      "He puts out fire and saves people’s lives"
+     ],
+     "answer": 2,
+     "keyWhy": "پرسشِ Where → مکان: c) At a fire station. (+ واژهٔ درس «Fire station*» ص۶۵)"
+    },
+    {
+     "id": "g9-l34-5",
+     "n": 5,
+     "category": "grammar",
+     "question": "When does he work? ( ------- )",
+     "options": [
+      "He works on shifts",
+      "He is Mr. Amaini",
+      "At a fire station.",
+      "Yes, there’s one over there.",
+      "He is fire fighter.",
+      "from a post office",
+      "He puts out fire and saves people’s lives"
+     ],
+     "answer": 0,
+     "keyWhy": "پرسشِ When → با حذفِ متقاطع تنها پاسخِ زمان‌نما: a) He works on shifts (f مکان/منبع است نه زمان)"
+    },
+    {
+     "id": "g9-l34-6",
+     "n": 6,
+     "category": "grammar",
+     "question": "Is there a fire station near here ( ------- )",
+     "options": [
+      "He works on shifts",
+      "He is Mr. Amaini",
+      "At a fire station.",
+      "Yes, there’s one over there.",
+      "He is fire fighter.",
+      "from a post office",
+      "He puts out fire and saves people’s lives"
+     ],
+     "answer": 3,
+     "keyWhy": "پرسشِ there → d) Yes, there’s one over there. — توافقِ there؛ علامتِ پرسشِ چاپی در ق۶ نیست (verbatim)"
+    }
+   ]
+  },
+  {
+   "lesson": 35,
+   "title": "امتحانی درس چهارم — تکمیل با معلومات (س۱۱، ص۷۵)",
+   "level": "تمرین تایپی (تکمیلِ حرف‌به‌حرف)",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g9-l35-1",
+     "n": 1,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "You can t_ _ _ _ _ _ money from that ATM.",
+     "options": [
+      "take out",
+      "hire"
+     ],
+     "answer": 0,
+     "accepted": [
+      "take out"
+     ],
+     "placeholder": "complete the word…",
+     "keyWhy": "عبارتِ خودِ درس: «take out money from an ATM*» (ص۶۶) و گزینهٔ c س۹؛ t + ۶ خانه = takeout (هفت حرف)"
+    },
+    {
+     "id": "g9-l35-2",
+     "n": 2,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "The post office is just r_ _ _ _ the corner.",
+     "options": [
+      "round",
+      "take out"
+     ],
+     "answer": 0,
+     "accepted": [
+      "round"
+     ],
+     "placeholder": "complete the word…",
+     "keyWhy": "مکالمهٔ خودِ درس verbatim: «It’s just round the corner.» (ص۶۶، Pedram)؛ r + ۴ خانه = round"
+    },
+    {
+     "id": "g9-l35-3",
+     "n": 3,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "They h _ _ _ a taxi to school every day.",
+     "options": [
+      "hire",
+      "round"
+     ],
+     "answer": 0,
+     "accepted": [
+      "hire"
+     ],
+     "placeholder": "complete the word…",
+     "keyWhy": "عبارتِ خودِ درس: «hire a taxi*» (ص۶۶)؛ h + ۳ خانه = hire"
+    },
+    {
+     "id": "g9-l35-4",
+     "n": 4,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "The fire fighter works in a f _ _ _ _ _ _ _ _ _.",
+     "options": [
+      "fire station",
+      "hire"
+     ],
+     "answer": 0,
+     "accepted": [
+      "fire station",
+      "firestation"
+     ],
+     "placeholder": "complete the word…",
+     "keyWhy": "واژهٔ درس «Fire station*» (ص۶۵) + پاسخِ c س۱۰ («At a fire station.») + متنِ س۴ همان صفحه («There is a fire station in my city.»)؛ خانه‌های چاپی یکی کم‌تر از حروفِ fire station — کوئیرکِ مستند"
+    }
+   ]
   }
  ],
  "source": {
@@ -3688,6 +4142,116 @@
     "relatives": "بستگان — بانکِ واژهٔ س۵/مکالمهٔ درس"
    },
    "typedNote": "همهٔ ۲۲ آیتمِ تایپیِ تازه دو گزینه‌ای‌اند (کلید + داربستِ غلط) — قفلِ سراسریِ r363 (ممنوعیتِ تایپیِ تک‌گزینه‌ای) حفظ شد؛ داربست‌ها خانواده‌محور: جملهٔ سادهٔ خودِ ساقه (س۲)، گزینهٔ دیگرِ جفتِ چاپی (س۳/س۴)، عینِ پرانتزِ چاپی (س۴ب)، چرخشِ واژهٔ بانک (س۵)"
+  },
+  "g9exam4": {
+   "extractedRound": "r367",
+   "section": "سؤالات امتحانی درس چهارم پایه نهم",
+   "examPages": "ص۷۳-۷۵ (برچسبِ فوترِ خودِ اسکن با شمارهٔ PDF برابر)؛ ص۷۶ تقریباً خالی و درس پنجم از ص۷۷ با واژگانِ «رسانه» شروع می‌شود",
+   "keyPages": "هیچ پاسخنامهٔ چاپی در جزوه برای این خانواده نیست (تنها پاسخنامهٔ جزوه: کلید واژگان ص۱۰۱ — r362)؛ کلیدها استنتاجیِ مستندند",
+   "sectionsTotal": 11,
+   "sectionsExtracted": 7,
+   "sectionsSkipped": 4,
+   "items": 24,
+   "bankCounts": [
+    3,
+    2,
+    3,
+    2,
+    4,
+    6,
+    4
+   ],
+   "wordBank": [
+    "Where",
+    "How",
+    "When",
+    "Who",
+    "Why"
+   ],
+   "extraWords": [
+    "How",
+    "When"
+   ],
+   "keyPolicy": "کلیدِ استنتاجیِ عبارت‌محور/ساختاری: هر کلید یا با photo dictionary خودِ درس چهارم («open an account*»/«take out money from an ATM*»/«ask the information desk*»/«help charity*»/«hire a taxi*»/«recharge your E-ticket*» ص۶۶، «Fire station*» ص۶۵) یا با مکالمهٔ verbatim درس («It’s just round the corner.» ص۶۶) یا با نوعِ پاسخِ B (س۷) یا آینه‌سازیِ ساختاریِ پرسش/پاسخ (س۱۰) یا جایگاهِ قیدِ تکرار (س۸) یکتا می‌شود — الگوی g9exam1/2/3؛ هیچ کلیدی از خارجِ متنِ درس نیامده",
+   "derivedKeys": {
+    "S5": [
+     "عبارتِ خودِ درس: «recharge your E-ticket*» (ص۶۶) + Recharge* (ص۶۵)؛ «e t_cket» شکستِ چاپیِ «e-ticket»",
+     "عبارتِ خودِ درس: «ask the information desk*» (ص۶۶) + Information* (ص۶۵)",
+     "عبارتِ خودِ درس: «help charity*» (ص۶۶) + Charity* (ص۶۵)"
+    ],
+    "S6": [
+     "تنها یک چینشِ دستوریِ ممکن از شش واژه — داربست: ردیفِ به‌هم‌ریختهٔ چاپی (خانوادهٔ r365)",
+     "تنها یک چینشِ دستوریِ ممکن از شش واژه — داربست: ردیفِ به‌هم‌ریختهٔ چاپی (خانوادهٔ r365)"
+    ],
+    "S7": [
+     "پاسخِ B با «because» آغاز می‌شود → علت‌خواهی: Why",
+     "پاسخِ B نامِ شخص است → شخص‌خواهی: Who",
+     "پاسخِ B مکان است → مکان‌خواهی: Where"
+    ],
+    "S8": [
+     "قیدِ تکرار در جملهٔ مثبت پیش از فعلِ اصلی می‌نشیند: They never come late. — داربست: جملهٔ سادهٔ خودِ ساقه",
+     "قیدِ تکرار پیش از فعلِ اصلی: She always studies hard. — داربست: جملهٔ سادهٔ خودِ ساقه"
+    ],
+    "S9": [
+     "عبارتِ خودِ درس: «ask the information desk*» (ص۶۶) — پاسخِ «where should I go» با پرسیدن از میزِ اطلاعات سازگار است",
+     "عبارتِ خودِ درس: «open an account*» (ص۶۶) — فرمِ بانکی و «How much money» فقط با افتتاحِ حساب سازگار است",
+     "عبارتِ خودِ درس: «take out money from an ATM*» (ص۶۶) — «I need money» → برداشتِ پولِ نقد از خودپرداز",
+     "عبارتِ خودِ درس: «help charity*» (ص۶۶) — generous (بخشنده) → کمک به خیریه"
+    ],
+    "S10": [
+     "پرسشِ Who → تنها نامِ شخص: b) He is Mr. Amaini (الگوی س۴ِ r365/س۱۴ِ r364)",
+     "پرسشِ be («What is his job?») → پاسخِ be-ساختار: e) He is fire fighter. — سؤال و جواب آینهٔ ساختاری‌اند",
+     "پرسشِ do → پاسخِ فعل‌محور: g) He puts out fire and saves people’s lives — آینه‌سازیِ do",
+     "پرسشِ Where → مکان: c) At a fire station. (+ واژهٔ درس «Fire station*» ص۶۵)",
+     "پرسشِ When → با حذفِ متقاطع تنها پاسخِ زمان‌نما: a) He works on shifts (f مکان/منبع است نه زمان)",
+     "پرسشِ there → d) Yes, there’s one over there. — توافقِ there؛ علامتِ پرسشِ چاپی در ق۶ نیست (verbatim)"
+    ],
+    "S11": [
+     "عبارتِ خودِ درس: «take out money from an ATM*» (ص۶۶) و گزینهٔ c س۹؛ t + ۶ خانه = takeout (هفت حرف)",
+     "مکالمهٔ خودِ درس verbatim: «It’s just round the corner.» (ص۶۶، Pedram)؛ r + ۴ خانه = round",
+     "عبارتِ خودِ درس: «hire a taxi*» (ص۶۶)؛ h + ۳ خانه = hire",
+     "واژهٔ درس «Fire station*» (ص۶۵) + پاسخِ c س۱۰ («At a fire station.») + متنِ س۴ همان صفحه («There is a fire station in my city.»)؛ خانه‌های چاپی یکی کم‌تر از حروفِ fire station — کوئیرکِ مستند"
+    ]
+   },
+   "skippedSections": [
+    "س۱ (ص۷۳): «با توجه به تصاویر پاسخ صحیح را انتخاب کنید» — تصویری؛ گزینه‌های سه ستون (a-d ×۳) چاپی‌اند ولی انتخاب با تصویر است — الگوی س۱ِ r365/r366",
+    "س۲ (ص۷۳): «با توجه به هر تصویر درستی یا نادرستی عبارات زیر را مشخص کنید» — تصویری (Take out money / Send an email / donate the blood)",
+    "س۳ (ص۷۳): افتان و خیزان با فلشِ رو به بالا/پایین — آهنگی؛ الگوی س۶ِ r366/س۱۰ِ r364",
+    "س۴ (ص۷۴): «در متن زیر چهار اشتباه گرامری وجود دارد» — سه خطای یکتا: Its→It's، They job→Their job، They always helping→They always help؛ خطای چهارمِ نایکتا: «to be ready in emergency events» هم با for هم در دو شمارهٔ دیگر قابلِ تصحیح است و شمارشِ چهارگانه تکمیل نمی‌شود — سقوطِ الگوی س۹ِ r365 (قراردادِ r358)"
+   ],
+   "printQuirkCount": 13,
+   "printQuirks": [
+    "گلیفِ لام-الِ لایه: «جمالت»→جملات، «باال»→بالا، «رو به باال و یا پایین تن» (س۳) — عنوان‌های بانک بازسازیِ خوانا (الگوی r362/r365)",
+    "شماره‌گذاریِ چاپیِ سالم: ۱-۱۱ پیوسته و یکتا (برخلافِ درس سوم با «۴» تکراری)؛ ارقامِ آمیخته: «۱)»/«۳)»/«۸» فارسی و بقیه لاتین",
+    "س۱: سه ستونِ MCQِ تصویری در یک سطرِ لایه (a-d ×۳ با COLSPLIT ۴+ فاصله)؛ سکشنِ مستثنی",
+    "س۵: «R_charge the e t_cket» — شکستِ «e-ticket» با فاصله در چاپ/لایه؛ عبارتِ کامل‌شده از photo dictionary درس بازسازی شد",
+    "س۷: دستورِ چاپی «یک کلمه اضافی است» ولی بانک ۵ واژه برای ۳ جای خالی دارد — دو اضافی (How/When)؛ کوئیرکِ شمارشی مستند",
+    "س۷ق۱: «does take bus» — افتادِ فاعل در چاپ (verbatim در ساقه)؛ کلید با پاسخِ B (because) یکتا می‌ماند",
+    "س۷ بانک: «(Where – How – When – Who –- Why)» — خطِ تیرهٔ دوبلِ چاپی؛ پنج واژه بازچینی شد",
+    "س۹: «save people' lives» — آپاستروفِ بی‌s چاپی (در برابرِ people’s درست در گزینهٔ g س۱۰)؛ «buy ticket» بی‌حرفِ تعریف — هر دو verbatim",
+    "س۹: گزینه‌های a/c در ستونِ چپ و b/d در ستونِ راست (دوستونی) — بازچینی به ترتیبِ a/b/c/d",
+    "س۱۰: «What s his job?» — افتادِ آپاستروفِ چاپی (verbatim)؛ ق۶ «Is there a fire station near here» بی‌علامتِ پرسش؛ گزینهٔ f با حرفِ کوچکِ آغازین و بی‌نقطه",
+    "س۱۰: ۷ گزینه برای ۶ سطر — f) from a post office اضافیِ چاپ؛ هفت گزینه در موتور (letters تا g) بومی پشتیبانی می‌شود",
+    "س۱۱ق۴: خانه‌های چاپی یکی کم‌تر از حروفِ «fire station» (f + ۹ در برابرِ ۱۰ حرفِ باقی‌مانده) — همان افتادِ خانه‌های «Express train» (r365)؛ کلید از لنگرهای سه‌گانه (واژنامه/س۱۰ق۴/متنِ س۴) یکتاست",
+    "آپاستروف‌های آمیخته: «It's cheap» راست (س۷) و «there’s/people’s/don’t» خمیده (س۹/س۱۰) — verbatim؛ نرمال‌سازِ موتور یکسان می‌کند"
+   ],
+   "lessonLexicon": {
+    "open an account": "حساب بازکردن — photo dictionary درس («open an account*» ص۶۶) — لنگرِ س۹ق۲",
+    "take out money from an ATM": "برداشتِ پول از خودپرداز — photo dictionary درس (ص۶۶) — لنگرِ س۹ق۳/س۱۱ق۱",
+    "ask the information desk": "پرسیدن از میزِ اطلاعات — photo dictionary درس (ص۶۶) — لنگرِ س۹ق۱/س۵ق۲",
+    "help charity": "کمک به خیریه — photo dictionary درس (ص۶۶) — لنگرِ س۹ق۴/س۵ق۳",
+    "donate blood": "اهدای خون — photo dictionary درس («donate blood*» ص۶۶) + Donate* (ص۶۵)",
+    "hire a taxi": "تاکسی گرفتن — photo dictionary درس (ص۶۶) — لنگرِ س۱۱ق۳",
+    "recharge your E-ticket": "شارژکردنِ بلیتِ الکترونیکی — photo dictionary درس (ص۶۶) + Recharge* (ص۶۵) — لنگرِ س۵ق۱",
+    "Fire station": "آتش‌نشانی — واژهٔ درس (ص۶۵) — لنگرِ س۱۱ق۴",
+    "round the corner": "دورِ گوشهٔ خیابان — مکالمهٔ درس verbatim: «It’s just round the corner.» (ص۶۶، Pedram) — لنگرِ س۱۱ق۲",
+    "Charity": "خیریه — واژهٔ درس (ص۶۵)",
+    "Information": "اطلاعات — واژهٔ درس (ص۶۵)",
+    "Recharge": "شارژکردن — واژهٔ درس (ص۶۵)",
+    "voluntary work": "کارِ داوطلبانه — س۶ (عبارتِ مرتب‌کردنیِ چاپی)",
+    "keep the city clean": "شهر را تمیز نگه‌داشتن — گزینهٔ س۹/س۶ (عبارتِ چاپی)"
+   },
+   "typedNote": "همهٔ ۱۴ آیتمِ تایپیِ تازه دو گزینه‌ای‌اند (کلید + داربستِ غلط) — قفلِ سراسریِ r363 (ممنوعیتِ تایپیِ تک‌گزینه‌ای) حفظ شد؛ داربست‌ها خانواده‌محور: چرخشِ عبارت‌های هم‌بانک (س۵/س۷/س۱۱)، ردیفِ به‌هم‌ریختهٔ چاپی (س۶)، جملهٔ سادهٔ خودِ ساقه (س۸)"
   }
  }
 }

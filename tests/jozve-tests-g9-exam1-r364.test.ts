@@ -70,11 +70,11 @@ describe("r364 — رسیدِ g9exam1", () => {
 });
 
 describe("r364 — شکلِ هفت بانکِ امتحانی", () => {
-  it("counts: [4,2,4,3,7,5,4] — id یکتا در کلِ فایل (۱۹۳)", () => {
+  it("counts: [4,2,4,3,7,5,4] — id یکتا در کلِ فایل (۲۱۷)", () => {
     expect([9, 10, 11, 12, 13, 14, 15].map((n) => L(n).count)).toEqual([4, 2, 4, 3, 7, 5, 4]);
     const ids = g9.lessons.flatMap((b) => b.questions.map((x) => x.id));
-    expect(ids).toHaveLength(193);
-    expect(new Set(ids).size).toBe(193);
+    expect(ids).toHaveLength(217);
+    expect(new Set(ids).size).toBe(217);
   });
 
   it("س۲ متضاد: کلیدها از واژنامهٔ درس — lazy سه‌واریانتی، Happy دوگانه", () => {
