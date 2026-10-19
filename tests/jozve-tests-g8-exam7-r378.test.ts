@@ -89,15 +89,16 @@ describe("r378 — رسیدِ g8exam7 و نقشهٔ خانواده‌ها (۷/۷
     expect(rec.printQuirks.some((s) => s.includes("نقطهٔ پیش از متن"))).toBe(true);
   });
 
-  it("نقشهٔ ۷ خانوادهٔ g8 کامل شد: r378=۱ و null=۰ — families[6] (pdf-p72) راندِ r378", () => {
-    expect(map.families).toHaveLength(7);
-    expect(map.families.map((f) => f.pdfPage)).toEqual([18, 27, 35, 41, 50, 60, 72]);
+  it("نقشهٔ ۸ خانوادهٔ g8: r378=۱ و r379=۱ (جامعِ ص۷۳ — گاردِ خودش) و null=۰ — families[6] (pdf-p72) راندِ r378", () => {
+    expect(map.families).toHaveLength(8);
+    expect(map.families.map((f) => f.pdfPage)).toEqual([18, 27, 35, 41, 50, 60, 72, 73]);
     expect(map.families.filter((f) => f.round === "r378")).toHaveLength(1);
+    expect(map.families.filter((f) => f.round === "r379")).toHaveLength(1);
     expect(map.families.filter((f) => f.round === null)).toHaveLength(0);
     expect(map.families[6].round).toBe("r378");
     expect(map.families[6].status).toContain("۱ بانک/۶ آیتم");
     expect(map.families[6].status).toContain("۷/۷");
-    expect(map.lastUpdatedRound).toBe("r378");
+    expect(map.lastUpdatedRound).toBe("r379");
     expect(map.note).toContain("r369");
   });
 });
@@ -198,12 +199,12 @@ describe("r378 — بانک ۱۶ (خ۷/س۲ دوم): جدولِ ترجمهٔ د�
 });
 
 describe("r378 — پیمان‌های سراسریِ فایل (پس از الحاقِ بانکِ ۱۶)", () => {
-  it("شکلِ فایل: ۱۶ بانک/[4,3,3,2,5,3,1,4,4,4,2,1,4,2,4,6]/۵۲ id یکتا — ids[46]=g8-l16-1", () => {
-    expect(g8.lessons).toHaveLength(16);
-    expect(g8.lessons.map((l) => l.count)).toEqual([4, 3, 3, 2, 5, 3, 1, 4, 4, 4, 2, 1, 4, 2, 4, 6]);
+  it("شکلِ فایل: ۱۹ بانک/[4,3,3,2,5,3,1,4,4,4,2,1,4,2,4,6,8,5,5]/۷۰ id یکتا — ids[46]=g8-l16-1", () => {
+    expect(g8.lessons).toHaveLength(19);
+    expect(g8.lessons.map((l) => l.count)).toEqual([4, 3, 3, 2, 5, 3, 1, 4, 4, 4, 2, 1, 4, 2, 4, 6, 8, 5, 5]);
     const ids = g8.lessons.flatMap((b) => b.questions.map((q) => q.id));
-    expect(ids).toHaveLength(52);
-    expect(new Set(ids).size).toBe(52);
+    expect(ids).toHaveLength(70);
+    expect(new Set(ids).size).toBe(70);
     expect(ids[46]).toBe("g8-l16-1");
     expect(ids[51]).toBe("g8-l16-6");
   });

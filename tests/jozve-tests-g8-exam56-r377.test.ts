@@ -89,16 +89,17 @@ describe("r377 — رسیدِ g8exam56 و نقشهٔ خانواده‌ها", () 
     expect(rec.printQuirks.some((s) => s.includes("Suuny"))).toBe(true);
   });
 
-  it("نقشهٔ ۷ خانوادهٔ g8 کامل (۷/۷) — r377=۲ (درس پنجم/ششم) و r378=۱ (درس هفتم — گاردِ خودش) و null=۰", () => {
-    expect(map.families).toHaveLength(7);
-    expect(map.families.map((f) => f.pdfPage)).toEqual([18, 27, 35, 41, 50, 60, 72]);
+  it("نقشهٔ ۸ خانوادهٔ g8 کامل (۸/۸) — r377=۲ (درس پنجم/ششم) و r378=۱ (درس هفتم) و r379=۱ (جامع — گاردِ خودش) و null=۰", () => {
+    expect(map.families).toHaveLength(8);
+    expect(map.families.map((f) => f.pdfPage)).toEqual([18, 27, 35, 41, 50, 60, 72, 73]);
     expect(map.families.filter((f) => f.round === "r377")).toHaveLength(2);
     expect(map.families.filter((f) => f.round === "r378")).toHaveLength(1);
+    expect(map.families.filter((f) => f.round === "r379")).toHaveLength(1);
     expect(map.families.filter((f) => f.round === null)).toHaveLength(0);
     expect(map.families[4].round).toBe("r377");
     expect(map.families[5].round).toBe("r377");
     expect(map.families[6].round).toBe("r378");
-    expect(map.lastUpdatedRound).toBe("r378");
+    expect(map.lastUpdatedRound).toBe("r379");
     expect(map.families[4].status).toContain("۲ بانک/۶ آیتم");
     expect(map.families[5].status).toContain("۱ بانک/۴ آیتم");
     expect(map.note).toContain("r369");
@@ -215,9 +216,9 @@ describe("r377 — بانک ۱۵ (خ۶/س۳): چهار ناهماهنگِ verbat
     expect(after60).toMatch(/story\*/);
   });
 
-  it("تایپوی «einter» در ساقه verbatim است اما «winter» در کلِ فایل نیست (رونویسیِ خیرِ اصلاح‌شده ممنوع)", () => {
+  it("تایپوی «einter» در ساقه verbatim است اما «winter» در بانک‌های تا ۱۶ نیست (رونویسیِ خیرِ اصلاح‌شده ممنوع) — آزمونِ جامعِ r379 «winter» چاپیِ مشروع دارد (ل۱۸ق۲)", () => {
     expect(bank.questions[1].question).toContain("einter");
-    const all = g8.lessons.flatMap((b) => b.questions);
+    const all = g8.lessons.flatMap((b) => b.questions).filter((it) => Number(it.id.split("-")[1]) < 17);
     for (const it of all) {
       expect(it.question.includes("winter"), `${it.id}`).toBe(false);
       expect(it.options.some((o) => o.includes("winter")), `${it.id}`).toBe(false);
@@ -235,8 +236,8 @@ describe("r377 — پیمان‌های سراسریِ فایل (پس از الح
     expect(L(15).title).toContain("ص۶۰");
   });
 
-  it("هیچ آیتمی از سکشن‌های تصویریِ مستثنی نشت نکرده است (بانکِ س۱ ص۵۰، قطب‌نما، بانک‌های س۱/س۲ ص۶۰)", () => {
-    const all = g8.lessons.flatMap((b) => b.questions);
+  it("هیچ آیتمی از سکشن‌های تصویریِ مستثنی نشت نکرده است (بانکِ س۱ ص۵۰، قطب‌نما، بانک‌های س۱/س۲ ص۶۰) — بانک‌های ۱۷+ جامعِ r379 مستثنی‌اند («metro system» خودِ آزمونِ چاپیِ ص۸۹ است)", () => {
+    const all = g8.lessons.flatMap((b) => b.questions).filter((it) => Number(it.id.split("-")[1]) < 17);
     for (const forbidden of [
       "zoo", "metro system", // بانکِ س۱ ص۵۰ + س۲ ص۶۰
       "south west", "north west", "south east", "north east", // بانکِ قطب‌نمای س۳ ص۵۰

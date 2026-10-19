@@ -814,6 +814,266 @@
      "answer": 2
     }
    ]
+  },
+  {
+   "lesson": 17,
+   "title": "امتحانی جامع — بهترین پاسخِ مکالمه (س۲، ص۸۹)",
+   "level": "سه‌گزینه‌ای",
+   "count": 8,
+   "questions": [
+    {
+     "id": "g8-l17-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "How is the weather?-------",
+     "options": [
+      "It is hot",
+      "It is in the west",
+      "It is over there"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g8-l17-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "What's the matter?-------",
+     "options": [
+      "I am from Tehran",
+      "I have a headache",
+      "I go to school"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g8-l17-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "Where is Ahvaz?-------",
+     "options": [
+      "It is hot in summer",
+      "It is rainy",
+      "It is in the South."
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g8-l17-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "Where is he from?-------",
+     "options": [
+      "He is a mechanic",
+      "He is from England",
+      "He can draw"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g8-l17-5",
+     "n": 5,
+     "category": "vocab",
+     "question": "Can you play chess?-------",
+     "options": [
+      "Yes, I can",
+      "Yes, I am",
+      "Yes, he is"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g8-l17-6",
+     "n": 6,
+     "category": "vocab",
+     "question": "What's your hobby?-------",
+     "options": [
+      "I am good",
+      "I can search the web",
+      "I play football as a hobby"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g8-l17-7",
+     "n": 7,
+     "category": "vocab",
+     "question": "What days do you go to the library?-------",
+     "options": [
+      "On Mondays",
+      "At 06.00 o'clock",
+      "In the morning"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g8-l17-8",
+     "n": 8,
+     "category": "vocab",
+     "question": "Is there a metro system in your city? Yes-------",
+     "options": [
+      "It is",
+      "there is",
+      "there are"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 18,
+   "title": "امتحانی جامع — تکمیل متن با بانک تصویری (س۴، ص۹۰)",
+   "level": "پنج‌گزینه‌ای",
+   "count": 5,
+   "questions": [
+    {
+     "id": "g8-l18-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "Hello. I am Ali. I am a ------- and I am from Iran.",
+     "options": [
+      "chess",
+      "rainy",
+      "mechanic",
+      "fields",
+      "backache"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g8-l18-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "It is a ------- and cloudy country in winter.",
+     "options": [
+      "rainy",
+      "mechanic",
+      "backache",
+      "chess",
+      "fields"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g8-l18-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "there are many -------, restaurant and famous buildings.",
+     "options": [
+      "mechanic",
+      "chess",
+      "rainy",
+      "backache",
+      "fields"
+     ],
+     "answer": 4
+    },
+    {
+     "id": "g8-l18-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "I walk in a park in my free time. I play ------- as a hobby.",
+     "options": [
+      "fields",
+      "chess",
+      "backache",
+      "rainy",
+      "mechanic"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g8-l18-5",
+     "n": 5,
+     "category": "vocab",
+     "question": "Today, I have a ------- and I should rest at home.",
+     "options": [
+      "rainy",
+      "fields",
+      "chess",
+      "backache",
+      "mechanic"
+     ],
+     "answer": 3
+    }
+   ]
+  },
+  {
+   "lesson": 19,
+   "title": "امتحانی جامع — جدولِ درک‌متن (س۵، ص۹۱)",
+   "level": "پنج‌گزینه‌ای",
+   "count": 5,
+   "questions": [
+    {
+     "id": "g8-l19-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "Hi. My name is Tom Anderson. I am 12 years old. I am Spanish. I am a student. I can search the Web very well. I usually read books in my free time. I like swimming as my hobby. — «Name» در جدولِ متن: -------",
+     "options": [
+      "Tom Anderson",
+      "Spanish",
+      "swimming",
+      "12",
+      "read books"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g8-l19-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "Hi. My name is Tom Anderson. I am 12 years old. I am Spanish. I am a student. I can search the Web very well. I usually read books in my free time. I like swimming as my hobby. — «Nationality» در جدولِ متن: -------",
+     "options": [
+      "swimming",
+      "12",
+      "read books",
+      "Tom Anderson",
+      "Spanish"
+     ],
+     "answer": 4
+    },
+    {
+     "id": "g8-l19-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "Hi. My name is Tom Anderson. I am 12 years old. I am Spanish. I am a student. I can search the Web very well. I usually read books in my free time. I like swimming as my hobby. — «Hobby» در جدولِ متن: -------",
+     "options": [
+      "12",
+      "read books",
+      "Tom Anderson",
+      "swimming",
+      "Spanish"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g8-l19-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "Hi. My name is Tom Anderson. I am 12 years old. I am Spanish. I am a student. I can search the Web very well. I usually read books in my free time. I like swimming as my hobby. — «age» در جدولِ متن: -------",
+     "options": [
+      "read books",
+      "Tom Anderson",
+      "12",
+      "Spanish",
+      "swimming"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g8-l19-5",
+     "n": 5,
+     "category": "vocab",
+     "question": "Hi. My name is Tom Anderson. I am 12 years old. I am Spanish. I am a student. I can search the Web very well. I usually read books in my free time. I like swimming as my hobby. — «Free time» در جدولِ متن: -------",
+     "options": [
+      "Tom Anderson",
+      "read books",
+      "swimming",
+      "Spanish",
+      "12"
+     ],
+     "answer": 1
+    }
+   ]
   }
  ],
  "source": {
@@ -872,7 +1132,7 @@
   },
   "g8familyMap": {
    "extractedRound": "r374",
-   "note": "نقشهٔ ۷ خانوادهٔ «نمونه سؤالات امتحانی» جزوهٔ هشتم — از جست‌وجوی لایه (پروبِ r369: همتایان کامل‌اند)؛ سربرگ‌های دوبخطی با جست‌وجوی دوسطری",
+   "note": "نقشهٔ ۸ خانوادهٔ «نمونه سؤالات امتحانی» جزوهٔ هشتم — از جست‌وجوی لایه (پروبِ r369: همتایانِ درس‌به‌درس کامل‌اند؛ پروبِ r379 خانوادهٔ هشتمِ «ترم اول و دوم» را در ص۷۳ یافت — سربرگِ تک‌خطی که جست‌وجوی دوسطریِ درس‌ها آن را نمی‌گرفت)",
    "families": [
     {
      "lesson": "درس اول",
@@ -915,9 +1175,15 @@
      "pdfPage": 72,
      "round": "r378",
      "status": "استخراج شد — ۱ بانک/۶ آیتم از ۳ سکشن (س۱ و س۲ تصویری مستثنی؛ داوریِ ۶+۴ تصویر در رسید) — کارتِ هشتم کامل شد (۷/۷)"
+    },
+    {
+     "lesson": "جامعِ ترم اول و دوم",
+     "pdfPage": 73,
+     "round": "r379",
+     "status": "استخراج شد — ۳ بانک/۱۸ آیتم از آزمونِ چاپیِ «آزمون پایانی نیمسال دوم» ص۸۹-۹۱ (۵ سکشن: س۲/س۴/س۵ استخراج؛ س۱/س۳ تصویری مستثنی با داوری) — ص۷۴-۸۸ اسکنِ تصویریِ بیرونِ لایه (رسیدِ g8jame)"
     }
    ],
-   "lastUpdatedRound": "r378"
+   "lastUpdatedRound": "r379"
   },
   "g8exam2": {
    "extractedRound": "r375",
@@ -1153,6 +1419,76 @@
     "«مجله شعر» در لایه یک خطِ ادغامی است (دو خانهٔ جدول در هم تنیده — RTL quirk)",
     "سرخطِ جدولِ ترجمه در لایه با نقطهٔ پیش از متن می‌آید: « .کلمات زیر را به انگلیسی و فارسی ترجمه کنید»"
    ]
+  },
+  "g8jame": {
+   "extractedRound": "r379",
+   "section": "نمونه سؤالات امتحانی ترم اول و دوم پایه هشتم — آزمونِ چاپیِ «آزمون پایانی نیمسال دوم» (خانوادهٔ هشتمِ بیرونِ نقشهٔ درس‌به‌درس)",
+   "examPages": "جلدِ خانواده pdf-p73 (تنها سربرگِ «نمونه سواالت امتحانی ترم اول و دوم»)؛ ص۷۴-۸۸ اسکنِ تصویریِ خارجِ لایه (پروبِ r379: صفر خطِ غیرِ فوتر)؛ آزمونِ چاپیِ دارایِ لایه: pdf-p89-91 (فوترِ خودِ اسکن: ۸۹/۹۰/۹۱)؛ ص۹۲ «ضمائم» = مرزِ پایانی (ص۹۳-۱۰۱ جداولِ مرجع‌اند نه آزمون)",
+   "examMeta": "آزمون پایانی نیمسال دوم — زبان انگلیسی پایه هشتم — سال تحصیلی ۱۴۰۱-۱۴۰۰ (تاریخ: ۱۴۰۱/۳) — مدت ۶۰ دقیقه — ۵ سوال — بارم ۱۰ نمره — ۲ صفحه — طراح: حسن لطفی — دبیرستان: هشت شهریور — اداره آموزش و پرورش شهرستان بوکان / اداره کل آذربایجان غربی",
+   "keyPages": "هیچ پاسخنامهٔ چاپی نیست — کلیدها استنتاجیِ ساختاری؛ لنگرهای واژگانیِ بانکِ س۴ در جدولِ anchorPages؛ بانکِ س۵ گزینه‌ها را از پنج سلولِ خودِ متن می‌گیرد (یک‌نقش‌به‌خانه — الگویِ r378-بانک۱۶)",
+   "sectionsTotal": 5,
+   "sectionsExtracted": 3,
+   "sectionsSkipped": 2,
+   "items": 18,
+   "bankCounts": [
+    8,
+    5,
+    5
+   ],
+   "optionRotation": "ل۱۷: ترتیبِ چاپِ A/B/C حفظ شد به‌جز q4/q5/q6 — چاپ سه کلیدِ پیاپیِ C/C/C داشت (South/England/can) که با چرخشِ همین سه‌تایی‌های چاپی منحل شد؛ کلیدها [0,1,2,1,0,2,0,1] بدونِ دوکلیدِ پیاپی. ل۱۸: پنج‌چینشِ متمایز از خودِ بانکِ ۵واژه‌ای، کلیدها [2,0,4,1,3]. ل۱۹: گزینه‌ها = کلِ پنج سلولِ جدول، کلیدها [0,4,3,2,1]",
+   "keyPolicy": "س۲: پاسخِ مکالمه‌ایِ یکتا (هوا→It is hot؛ matter→headache؛ Ahvaz→the South؛ from→England؛ can→Yes, I can؛ hobby→I play football؛ days→On Mondays؛ there-be→there is)؛ س۴: هر بلنک دقیقاً یک واژهٔ بانک را می‌پذیرد (شغل a/mechanic؛ آب‌وهوای وصفی rainy؛ مکانِ many/fields؛ بازیِ play/chess؛ بیماریِ have a/backache)؛ س۵: پنج سلولِ جدول از متن (Name=Tom Anderson؛ Nationality=Spanish؛ Hobby=swimming؛ age=12؛ Free time=read books از «I usually read books in my free time.»)",
+   "engineNote": "هر ۱۸ آیتم MCQ بدونِ تایپی (قراردادِ r363)؛ l17 سه‌گزینه‌ای و l18/l19 پنج‌گزینه‌ای — نخستین بانکِ پنج‌گزینه‌ایِ خالصِ کارت با بانکِ چاپیِ ۵تایی؛ ساقه‌های l19 ترکیبیِ لاتین(متن)+فارسی(درخواستِ خانه) — استثنایِ ششمِ خلوصِ لاتینِ کارت (بانک‌های ۳/۶/۱۲/۱۴/۱۶/۱۹)؛ ساقه‌های l17/l18 نقطه‌چینِ چاپ به «-------» نرمال شد (چسبیده به واژهٔ پیشین — الگویِ g7exam8)",
+   "derivedKeys": {
+    "S2": [
+     "It is hot",
+     "I have a headache",
+     "It is in the South.",
+     "He is from England",
+     "Yes, I can",
+     "I play football as a hobby",
+     "On Mondays",
+     "there is"
+    ],
+    "S4": [
+     "mechanic",
+     "rainy",
+     "fields",
+     "chess",
+     "backache"
+    ],
+    "S5": [
+     "Tom Anderson",
+     "Spanish",
+     "swimming",
+     "12",
+     "read books"
+    ]
+   },
+   "anchorPages": {
+    "mechanic": 40,
+    "chess": 35,
+    "fields": 54,
+    "backache": 36,
+    "rainy": 51
+   },
+   "skippedSections": [
+    "ص۸۹-س۱ (تصویری، بارم ۱): «باتوجه به تصاویر جملات درست را با تیک و جملات نادرست را با ضربدر مشخص کنید» — چهار جملهٔ چاپی (There is a bridge/He can take photos/I watch TV in my free time/He is good at plying football) و چهار تصویرِ رندر (چپ→راست): ۱=هواپیمای فرودگاه ۲=پسرِ عکاس با دوربین ۳=مردِ نشسته جلوی تلویزیون ۴=سوار بر اسب — داوری: ق۱ غلط (هواپیما نه پل ✗)، ق۲ درست (✓)، ق۳ درست (✓)، ق۴ غلط (اسب‌سواری ✗) — کلید در تصویر است نه ساقه؛ QuizQuestion فیلدِ تصویر ندارد (الگویِ r370+)",
+    "ص۹۰-س۳ (تصویری، بارم ۳): «با استفاده از تصاویر داده شده به سوالات زیر جواب دهید» — چهار ساقهٔ چاپی و چهار تصویرِ رندر (چپ→راست): ۱=خانهٔ برفی ۲=پسرِ جلوی TV ۳=آشپز ۴=پزشک — داوری: 1→snowy، 2→watch TV، 3→cooking، 4→see a doctor — تصویری-تولیدی و بدونِ تصویر بی‌پاسخ",
+    "ص۷۴-۸۸ (اسکنِ تصویری): پانزده صفحهٔ «نمونه سؤالات امتحانی ترم اول و دوم» کاملاً بیرونِ لایهٔ متنی‌اند (پروبِ r379: فقط فوتر) — نوبتِ اول/دومِ اسکن‌شده؛ نیازمندِ پشتیبانیِ تصویری/OCR — خارجِ ظرفیتِ بانکِ متنی"
+   ],
+   "printQuirks": [
+    "«جمالت» در سربرگِ س۱ (شکستنِ لام‌الف — کوئیرکِ لایه‌ایِ شناخته‌شدهٔ r376/r378) و «باتوجه» چسبیده (با توجه)",
+    "تایپوی چاپی «plying» برای playing در س۱ق۴ — verbatim در ساقهٔ مستثنی",
+    "«1-There is a bridge.» بی‌فاصله پس از خط‌تیره (س۱) در برابرِ «1- How» فاصله‌دار (س۲/س۳/س۴) — هر دو verbatim لایه",
+    "«4-I walk» بی‌فاصله پس از شماره در س۴ق۴؛ «3- there are many» با حرفِ کوچکِ آغازین — verbatim",
+    "ساقه‌های س۲ نقطه‌چینِ انتهاییِ چاپی دارند («?................») و ساقهٔ ق۸ «Yes…………….» — هر دو به «-------» نرمال شدند (چسبیده به واژهٔ پیشین)",
+    "سربرگ‌های سکشن با نقطهٔ آغازینِ RTL (« .با استفاده از…»، « .متن زیر…»، «. جدول زیر…»، « .بنویسید») — کوئیرکِ لایه",
+    "جدولِ س۵: «age» با a کوچکِ چاپی در برابرِ Name/Nationality/Hobby/Free time بزرگ — verbatim در ساقه‌ها",
+    "«At 06.00 o'clock» آپاستروفِ مستقیمِ چاپ — verbatim در گزینه",
+    "سربرگِ آزمون: «سال ی تول د،دانش ان ی بن و اشتغال آفر ی ن» و «ویژه دانش آموزان حضــــوری» — شکستگی‌های لایه (رندر درست است)",
+    "«تعداد سوال5» و «: تعداد صفحه2» — چسبندگیِ دونقطه/عدد در لایه"
+   ],
+   "scansNote": "خانوادهٔ جامع دو لایه دارد: ۱۵ صفحهٔ اسکنِ تصویری (ص۷۴-۸۸) + یک آزمونِ چاپیِ لایه‌دار (ص۸۹-۹۱). فقط دومی بانک گرفت؛ فهرستِ اسکن‌ها برای پشتیبانیِ تصویریِ آینده در این رسید ثبت شد"
   }
  }
 }
