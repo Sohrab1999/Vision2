@@ -344,13 +344,13 @@ describe("r381 — بانک l15 (س۱۷): حروفِ ربط با بانکِ چا
 
 describe("r381 — پیمان‌های سراسریِ فایل", () => {
   it("شکلِ فایل: ۳۵ بانک/[…,2,2,7,4,3,3,4,2,6]/۴۵۰ id یکتا — الگویِ g12-l1..l35 (r382/r383/r384 بانک‌های دی ۱۴۰۰ و شهریور ۱۴۰۰ و خرداد ۱۴۰۰ را افزودند)", () => {
-    expect(bank.lessons).toHaveLength(102);
+    expect(bank.lessons).toHaveLength(114);
     expect(bank.lessons.map((l) => l.count)).toEqual(
-      [100, 100, 100, 6, 7, 6, 10, 4, 6, 8, 4, 4, 4, 4, 4, 5, 7, 4, 4, 4, 2, 5, 7, 4, 4, 4, 2, 2, 7, 4, 3, 3, 4, 2, 6, 7, 4, 4, 4, 4, 2, 6, 4, 6, 8, 4, 4, 4, 4, 6, 6, 3, 3, 6, 4, 4, 4, 4, 4, 1, 2, 1, 2, 3, 3, 4, 4, 4, 4, 4, 3, 1, 3, 2, 3, 3, 5, 4, 4, 4, 4, 4, 2, 2, 4, 4, 4, 4, 4, 4, 2, 4, 8, 2, 4, 3, 3, 4, 4, 4, 3, 3],
+      [100, 100, 100, 6, 7, 6, 10, 4, 6, 8, 4, 4, 4, 4, 4, 5, 7, 4, 4, 4, 2, 5, 7, 4, 4, 4, 2, 2, 7, 4, 3, 3, 4, 2, 6, 7, 4, 4, 4, 4, 2, 6, 4, 6, 8, 4, 4, 4, 4, 6, 6, 3, 3, 6, 4, 4, 4, 4, 4, 1, 2, 1, 2, 3, 3, 4, 4, 4, 4, 4, 3, 1, 3, 2, 3, 3, 5, 4, 4, 4, 4, 4, 2, 2, 4, 4, 4, 4, 4, 4, 2, 4, 8, 2, 4, 3, 3, 4, 4, 4, 3, 3, 8, 2, 4, 3, 3, 4, 4, 2, 4, 6, 4, 4],
     );
     const ids = bank.lessons.flatMap((b2) => b2.questions.map((q) => q.id));
-    expect(ids).toHaveLength(703);
-    expect(new Set(ids).size).toBe(703);
+    expect(ids).toHaveLength(751);
+    expect(new Set(ids).size).toBe(751);
     expect(ids[329]).toBe("g12-l8-1");
     expect(ids[333]).toBe("g12-l9-1");
     expect(ids[339]).toBe("g12-l10-1");
@@ -364,7 +364,7 @@ describe("r381 — پیمان‌های سراسریِ فایل", () => {
   });
 
   it("بانک‌های نهایی ترجمه ندارند (غیبتِ صادقانه) و MCQِ خالص‌اند (قراردادِ کارتِ g12)", () => {
-    for (const bn of [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 89, 90, 91, 92, 93, 95, 96, 99, 100, 101, 102])
+    for (const bn of [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 89, 90, 91, 92, 93, 95, 96, 99, 100, 101, 102, 105, 109, 112, 114])
       for (const it of L(bn).questions) {
         expect(it.translation, `${it.id} must have no translation`).toBeUndefined();
         expect(it.kind, `${it.id} must be MCQ`).toBeUndefined();
@@ -377,7 +377,8 @@ describe("r381 — پیمان‌های سراسریِ فایل", () => {
     const all = bank.lessons.flatMap((b2) => b2.questions);
     for (const forbidden of [
       "They played volleyball and had a sandwich", // س۱ (شنیداریِ صوتی)
-      "flew their kites", // س۱
+      // r392 — سه رشتهٔ زیر با استخراجِ مشروعِ l103-3 (کلیدِ رسمیِ «They flew their kites.») و
+      // l112 (نخستین بانکِ نقش‌محورِ tests-g12) مشروع شدند — حذف از نشت‌سنج (الگویِ Solar power در r391)
       "He likes to play", "badminton", "offline and online", // س۲ (شنیداریِ صوتی)
       "Absence makes the heart grow fonder", "magnifying glass", "Teenagers who help", // س۵ (تصویری)
       "The meat must", "If I knew the answer", "time machine", "A Forest is a place", // س۱۰-س۱۳ (باز)
@@ -385,7 +386,7 @@ describe("r381 — پیمان‌های سراسریِ فایل", () => {
       "are produced to work for a long time", "What do solar technologies deliver", // ردیف ۴۵-۴۷
       "We / You spend", // ردیف ۵۲
       "The part of speech helps you find", // ردیف ۵۷
-      "Topic sentence", "Concluding", // س۱۸-س۱۹ (تولیدی)
+      // r392 — "Topic sentence"/"Concluding" با l112 مشروع شدند (الگویِ Solar power)
     ])
       for (const it of all) {
         expect(it.question.includes(forbidden), `${it.id} stem contains ${forbidden}`).toBe(false);
