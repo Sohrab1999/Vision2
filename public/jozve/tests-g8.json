@@ -158,6 +158,183 @@
      "answer": 2
     }
    ]
+  },
+  {
+   "lesson": 4,
+   "title": "امتحانی درس دوم — کامل‌کردن حروف (س۱، ص۲۷)",
+   "level": "چهارگزینه‌ای",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g8-l4-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "go sh-------ing",
+     "options": [
+      "shopping",
+      "weekend",
+      "relative",
+      "mountain"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g8-l4-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "go to l-------br-------y",
+     "options": [
+      "Saturday",
+      "pronunciation",
+      "library",
+      "weekend"
+     ],
+     "answer": 2
+    }
+   ]
+  },
+  {
+   "lesson": 5,
+   "title": "امتحانی درس دوم — تکمیل با بانک واژه (س۲، ص۲۷)",
+   "level": "پنج‌گزینه‌ای",
+   "count": 5,
+   "questions": [
+    {
+     "id": "g8-l5-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "1) I stay at home and ------- on Fridays.",
+     "options": [
+      "Mountain",
+      "relax",
+      "know",
+      "pronunciation",
+      "relative"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g8-l5-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "2) What is the correct ------- for \" study\"?",
+     "options": [
+      "Mountain",
+      "know",
+      "relax",
+      "pronunciation",
+      "relative"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g8-l5-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "3) I climb a ------- on Sunday’s morning.",
+     "options": [
+      "Mountain",
+      "know",
+      "pronunciation",
+      "relax",
+      "relative"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g8-l5-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "4) We visit our ------- on thursday.",
+     "options": [
+      "Mountain",
+      "know",
+      "relative",
+      "pronunciation",
+      "relax"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g8-l5-5",
+     "n": 5,
+     "category": "vocab",
+     "question": "5) That is fine. I will let her -------",
+     "options": [
+      "Mountain",
+      "pronunciation",
+      "relax",
+      "relative",
+      "know"
+     ],
+     "answer": 4
+    }
+   ]
+  },
+  {
+   "lesson": 6,
+   "title": "امتحانی درس دوم — گزینهٔ صحیح (س۳، ص۲۷)",
+   "level": "سه‌گزینه‌ای",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g8-l6-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "1) ------- is the weekend.",
+     "options": [
+      "Saturday",
+      "wednesday",
+      "Friday"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g8-l6-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "2) I study my ------- in the morning.",
+     "options": [
+      "Lessons",
+      "well",
+      "library"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g8-l6-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "3) What is شروع کردن in English? It is -------",
+     "options": [
+      "help",
+      "start",
+      "stay"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 7,
+   "title": "امتحانی درس دوم — کلمهٔ ناهماهنگ (س۴، ص۲۷)",
+   "level": "چهارگزینه‌ای",
+   "count": 1,
+   "questions": [
+    {
+     "id": "g8-l7-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "Monday – Sunday – midday – Friday",
+     "options": [
+      "Monday",
+      "Sunday",
+      "midday",
+      "Friday"
+     ],
+     "answer": 2
+    }
+   ]
   }
  ],
  "source": {
@@ -227,8 +404,8 @@
     {
      "lesson": "درس دوم",
      "pdfPage": 27,
-     "round": null,
-     "status": "در انتظار راند بعد"
+     "round": "r375",
+     "status": "استخراج شد — ۴ بانک/۱۱ آیتم از ۵ سکشن (س۵ تصویری مستثنی؛ آیتمِ Tuesday س۱ و ردیفِ اولِ س۴ دوکلیدیِ آیتمی مستثنی)"
     },
     {
      "lesson": "درس سوم",
@@ -260,6 +437,67 @@
      "round": null,
      "status": "در انتظار راند بعد"
     }
+   ],
+   "lastUpdatedRound": "r375"
+  },
+  "g8exam2": {
+   "extractedRound": "r375",
+   "section": "نمونه سؤالات امتحانی درس دوم پایه هشتم",
+   "examPages": "pdf-p27 (تک‌صفحه‌ای) — ص۲۸ واژگانِ درس سوم است و مرزِ پایینیِ خانواده",
+   "keyPages": "هیچ پاسخنامهٔ چاپی در جزوهٔ هشتم نیست — کلیدها استنتاجی؛ لنگرهای س۲ همگی از خودِ درسِ دوم (جدولِ واژگانِ ص۱۹ + دیالوگ‌های ص۱۹-۲۳) و س۳-۱ از «نکته۲» ص۲۶",
+   "sectionsTotal": 5,
+   "sectionsExtracted": 4,
+   "sectionsSkipped": 1,
+   "items": 11,
+   "bankCounts": [
+    2,
+    5,
+    3,
+    1
+   ],
+   "wordBank": [
+    "Mountain",
+    "know",
+    "pronunciation",
+    "relax",
+    "relative"
+   ],
+   "wordBankSource": "پرانتزِ چاپیِ سکشنِ س۲ ص۲۷ (لایه) — ۵ واژه برای ۵ بلنک بدونِ اضافی (برخلافِ r374-بانک۲ دواضعی)؛ کلیدِ «pronunciation» بیرونِ جدولِ واژگان ولی در دیالوگِ ص۲۳ چاپ است",
+   "keyPolicy": "س۱: واژه از خودِ فرگمنت + اصطلاحِ درسِ دوم یکتا (تصویر تأیید) با لنگرِ Go shopping*/library*؛ س۲: نگاشتِ یکتای بانک-به-بلنک با پنج لنگرِ درس‌درون؛ س۳: Friday تنها روزِ آخرِ هفته در گزینه‌ها (نکته۲ ص۲۶)، Lessons لنگردارِ study lesson*، start لنگردارِ «شروع» ص۱۹؛ س۴: midday تنها غیرِ روزِ هفته (noon (midday) ص۲۵)",
+   "engineNote": "بانکِ ۶ آیتمِ ۳ ساقهٔ فارسیِ چاپ دارد (شروع کردن — الگویِ g7-بانک۸/r374-بانک۳) و استثنای خلوصِ لاتین است؛ فرگمنت‌های س۱ رندر-فقط‌اند (لایه خالی — الگویِ r372-بانک۱۵/r373-بانک۱۶) و گزینه‌ها واژهٔ کامل‌اند نه حرف (برخلافِ g7-بانک۱۷) چون بلنکِ میانیِ چندحرفی است؛ شماره‌گذاریِ «1)» چاپیِ س۲/س۳ verbatim ماند",
+   "derivedKeys": {
+    "S1": [
+     "shopping",
+     "library"
+    ],
+    "S2": [
+     "relax",
+     "pronunciation",
+     "Mountain",
+     "relative",
+     "know"
+    ],
+    "S3": [
+     "Friday",
+     "Lessons",
+     "start"
+    ],
+    "S4": [
+     "midday"
+    ]
+   },
+   "skippedSections": [
+    "ص۲۷-س۱-آیتمِ «T____sd__y» — دوکلیدی: Tuesday/Thursday هر دو در فهرستِ واژگانِ درس دوم (Tuesday* ص۱۹ / Thursday* ص۱۹) و فرگمنت هر دو را می‌پذیرد؛ فقط تصویرِ تقویمِ «سه شنبه ۲۲ آبان» در رندر تعیین می‌کند → تصویری-کلید (مستثنیِ آیتمی — الگویِ r374-س۵-آیتمِ چهارم)",
+    "ص۲۷-س۴-ردیفِ ۱ «Midday – midnight – sunset – noon» — دوکلیدی: midnight (تنها واژهٔ شب) و sunset (تنها واژهٔ بدونِ زمانِ ثابتِ ساعت‌شمار؛ midday=noon از خودِ جزوه ص۲۵) هر دو قابلِ دفاع و بدونِ لنگرِ تعیین‌کننده (مستثنیِ آیتمی)",
+    "ص۲۷-س۵ «درستی یا نادرستی هر عبارت را با استفاده از [تصاویر] مشخص نمایید» — دو آیتمِ تصویری: «He's relaxing.» [پسرِ در حالِ بالا رفتن از درخت] → غ؛ «Sam is watching TV» [پسرِ تماشاچیِ تلویزیون] → ص — حکم فقط از تصویر (تصویری-کلید)"
+   ],
+   "printQuirks": [
+    "«thursday» با t کوچک در ساقهٔ ۴ س۲ و «wednesday» با w کوچک در گزینه‌های س۳ — verbatim",
+    "«Mountain» با M بزرگ در بانکِ چاپی س۲ — verbatim",
+    "کوتیشنِ «\" study\"» در ساقهٔ ۲ س۲ فاصله‌دارِ چاپ — verbatim",
+    "«Sunday’s» با آپاستروفِ خمیدهٔ چاپ در ساقهٔ ۳ س۲ — verbatim",
+    "نقطه‌های چسبیدهٔ «...on Fridays»/«...for» پس از بلنک در لایه — norm فاصله را بازگرداند (قراردادِ r373 «And your -------.»)",
+    "خط‌تیره‌های مخلوطِ چاپ در س۳ («–» در ردیفِ ۱/۲ و «-» در ردیفِ ۳) — گزینه‌سازی مستقل از خط‌تیره؛ ردیف‌های س۴ با «–» قراردادِ کارت"
    ]
   }
  }

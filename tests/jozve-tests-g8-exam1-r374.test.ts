@@ -96,11 +96,11 @@ describe("r374 — رسیدِ g8exam1 + نقشهٔ g8familyMap", () => {
     expect(rec.printQuirks.some((s) => s.includes("از دیدن شما خوشحالم"))).toBe(true);
   });
 
-  it("نقشهٔ ۷ خانوادهٔ g8 — r374=۱ و null=۶ (pdf-p18/27/35/41/50/60/72)", () => {
+  it("نقشهٔ ۷ خانوادهٔ g8 — r374=۱ (r375 خانوادهٔ دوم را برد — گاردِ خودش) و null=۵ (pdf-p18/27/35/41/50/60/72)", () => {
     expect(map.families).toHaveLength(7);
     expect(map.families.map((f) => f.pdfPage)).toEqual([18, 27, 35, 41, 50, 60, 72]);
     expect(map.families.filter((f) => f.round === "r374")).toHaveLength(1);
-    expect(map.families.filter((f) => f.round === null)).toHaveLength(6);
+    expect(map.families.filter((f) => f.round === null)).toHaveLength(5);
     expect(map.families[0].status).toContain("۳ بانک/۱۰ آیتم");
     expect(map.note).toContain("r369");
   });
@@ -190,14 +190,14 @@ describe("r374 — بانکِ ۳: خ۱/س۵ ترجمهٔ جدول (چهارگز�
 });
 
 describe("r374 — پیمان‌های سراسریِ فایلِ تازه", () => {
-  it("file shape: grade 8، سه بانک، شمارها [4,3,3]، ۱۰ آیتمِ یکتا با الگویِ g8-l1..3", () => {
+  it("file shape: grade 8، هفت بانک (r374=۳ بانکِ نخست)، شمارها [4,3,3,2,5,3,1]، ۲۱ آیتمِ یکتا با الگویِ g8-l1..7", () => {
     expect(g8.grade).toBe(8);
     expect(g8.title).toContain("پایه هشتم");
-    expect(g8.lessons).toHaveLength(3);
-    expect(g8.lessons.map((l) => l.count)).toEqual([4, 3, 3]);
+    expect(g8.lessons).toHaveLength(7);
+    expect(g8.lessons.slice(0, 3).map((l) => l.count)).toEqual([4, 3, 3]);
     const ids = g8.lessons.flatMap((b) => b.questions.map((x) => x.id));
-    expect(ids).toHaveLength(10);
-    expect(new Set(ids).size).toBe(10);
+    expect(ids).toHaveLength(21);
+    expect(new Set(ids).size).toBe(21);
     expect(ids[0]).toBe("g8-l1-1");
     expect(ids[4]).toBe("g8-l2-1");
     expect(ids[7]).toBe("g8-l3-1");
@@ -213,9 +213,9 @@ describe("r374 — پیمان‌های سراسریِ فایلِ تازه", () =
       }
   });
 
-  it("خلوصِ لاتینِ بانک‌های ۱/۲ — بانکِ ۳ (ساقهٔ فارسیِ چاپ) تنها استثناست", () => {
+  it("خلوصِ لاتینِ بانک‌های ۱/۲ — بانکِ ۳ (ساقهٔ فارسیِ چاپ) تنها استثنایِ بانک‌های r374 (بانک‌های ۴-۷ گاردِ r375 خودش را دارد)", () => {
     const latinPunct = /^[\x20-\x7E\u200c…–—\u2192]+$/;
-    for (const b of g8.lessons.filter((x) => x.lesson !== 3))
+    for (const b of g8.lessons.filter((x) => x.lesson === 1 || x.lesson === 2))
       for (const it of b.questions) {
         expect(latinPunct.test(it.question), `question of ${it.id}: ${it.question}`).toBe(true);
         for (const o of it.options) expect(latinPunct.test(o), `option of ${it.id}`).toBe(true);
