@@ -278,6 +278,363 @@
      "answer": 2
     }
    ]
+  },
+  {
+   "lesson": 5,
+   "title": "امتحانی درس سوم — تکمیل اعداد با en/ten (س۱، ص۶۵)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g7-l5-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "Sev……….",
+     "options": [
+      "Seven",
+      "Eleven",
+      "Nineteen",
+      "Sixteen"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l5-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "Elev……….",
+     "options": [
+      "Seven",
+      "Nineteen",
+      "Sixteen",
+      "Eleven"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g7-l5-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "Nine……….",
+     "options": [
+      "Eleven",
+      "Sixteen",
+      "Nineteen",
+      "Seven"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g7-l5-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "Six………...",
+     "options": [
+      "Seven",
+      "Sixteen",
+      "Eleven",
+      "Nineteen"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 6,
+   "title": "امتحانی درس سوم — عدد به حروف (س۲، ص۶۵)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g7-l6-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "10 → -------",
+     "options": [
+      "Ten",
+      "Five",
+      "Twenty",
+      "Forty-one"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l6-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "5 → -------",
+     "options": [
+      "Ten",
+      "Twenty",
+      "Forty-one",
+      "Five"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g7-l6-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "20 → -------",
+     "options": [
+      "Ten",
+      "Forty-one",
+      "Twenty",
+      "Five"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g7-l6-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "41 → -------",
+     "options": [
+      "Twenty",
+      "Forty-one",
+      "Ten",
+      "Five"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 7,
+   "title": "امتحانی درس سوم — پاسخ از ستون راست (س۳، ص۶۵)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g7-l7-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "What is your first name? ( ------- )",
+     "options": [
+      "I am 13 years old.",
+      "my name is saro.",
+      "it is in Bahman.",
+      "my last name is lotfi."
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g7-l7-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "What is your last name? ( ------- )",
+     "options": [
+      "I am 13 years old.",
+      "my name is saro.",
+      "it is in Bahman.",
+      "my last name is lotfi."
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g7-l7-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "Hoe old are you? ( ------- )",
+     "options": [
+      "I am 13 years old.",
+      "my name is saro.",
+      "it is in Bahman.",
+      "my last name is lotfi."
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l7-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "What is your birthday? ( ------- )",
+     "options": [
+      "I am 13 years old.",
+      "my name is saro.",
+      "it is in Bahman.",
+      "my last name is lotfi."
+     ],
+     "answer": 2
+    }
+   ]
+  },
+  {
+   "lesson": 8,
+   "title": "امتحانی درس سوم — جمعه به انگلیسی (س۶، ص۶۵)",
+   "level": "سه‌گزینه‌ای",
+   "count": 1,
+   "questions": [
+    {
+     "id": "g7-l8-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "جمعه به انگلیسی چه می شود؟ ( ------- )",
+     "options": [
+      "Friday",
+      "Saturday",
+      "Tuesday"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 9,
+   "title": "امتحانی درس چهارم — تکمیل جمله با بانک واژه (س۲، ص۷۵)",
+   "level": "هفت‌گزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g7-l9-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "She is ( ------- ) Ahmadi.",
+     "options": [
+      "Mechanic",
+      "birthday",
+      "Mrs",
+      "florist",
+      "housewife",
+      "Bahman",
+      "meet"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g7-l9-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "Happy ( ------- ) to you.",
+     "options": [
+      "Mechanic",
+      "birthday",
+      "Mrs",
+      "florist",
+      "housewife",
+      "Bahman",
+      "meet"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g7-l9-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "Day ( ------- ), Esfand.",
+     "options": [
+      "Mechanic",
+      "birthday",
+      "Mrs",
+      "florist",
+      "housewife",
+      "Bahman",
+      "meet"
+     ],
+     "answer": 5
+    },
+    {
+     "id": "g7-l9-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "Nice to ( ------- ) you.",
+     "options": [
+      "Mechanic",
+      "birthday",
+      "Mrs",
+      "florist",
+      "housewife",
+      "Bahman",
+      "meet"
+     ],
+     "answer": 6
+    }
+   ]
+  },
+  {
+   "lesson": 10,
+   "title": "امتحانی درس چهارم — مذکر و مونث (س۳، ص۷۵)",
+   "level": "دوگزینه‌ای",
+   "count": 7,
+   "questions": [
+    {
+     "id": "g7-l10-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Father → -------",
+     "options": [
+      "He",
+      "She"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l10-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "mother → -------",
+     "options": [
+      "He",
+      "She"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g7-l10-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "sister → -------",
+     "options": [
+      "He",
+      "She"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g7-l10-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "brother → -------",
+     "options": [
+      "He",
+      "She"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l10-5",
+     "n": 5,
+     "category": "grammar",
+     "question": "grandfather → -------",
+     "options": [
+      "He",
+      "She"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l10-6",
+     "n": 6,
+     "category": "grammar",
+     "question": "grangmoter → -------",
+     "options": [
+      "He",
+      "She"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g7-l10-7",
+     "n": 7,
+     "category": "grammar",
+     "question": "uncle → -------",
+     "options": [
+      "He",
+      "She"
+     ],
+     "answer": 0
+    }
+   ]
   }
  ],
  "source": {
@@ -395,14 +752,14 @@
     {
      "lesson": "درس سوم",
      "pdfPage": 65,
-     "round": null,
-     "status": "در انتظار راند بعد"
+     "round": "r371",
+     "status": "استخراج شد — ۴ بانک/۱۳ آیتم از ۶ سکشن (س۴ و س۵ِ تصویری مستثنی)"
     },
     {
      "lesson": "درس چهارم",
      "pdfPage": 74,
-     "round": null,
-     "status": "در انتظار راند بعد"
+     "round": "r371",
+     "status": "استخراج شد — ۲ بانک/۱۱ آیتم از ۷ سکشنِ دوصفحه‌ای (۵ سکشنِ تصویری/تولیدی مستثنی)"
     },
     {
      "lesson": "درس پنجم",
@@ -430,6 +787,122 @@
     }
    ],
    "g8Note": "جزوهٔ هشتم هم ۷ خانواده دارد (pdf-p18/27/35/41/50/60/72) — کارتِ تستِ هشتم پس از g7؛ همتایانِ کامل‌اند، نه غایب (پاسخِ پروبِ r369)"
+  },
+  "g7exam3": {
+   "extractedRound": "r371",
+   "section": "نمونه سؤالات امتحانی درس سوم پایه هفتم",
+   "examPages": "pdf-p65 (فوترِ خودِ اسکن: ۶۵) — خانوادهٔ یک‌صفحه‌ای؛ ص۶۶ جدولِ واژگانِ درس سوم است (مرزِ پایانی)",
+   "keyPages": "هیچ پاسخنامهٔ چاپی در جزوهٔ هفتم نیست؛ کلیدها استنتاجیِ مستندند",
+   "sectionsTotal": 6,
+   "sectionsExtracted": 4,
+   "sectionsSkipped": 2,
+   "items": 13,
+   "bankCounts": [
+    4,
+    4,
+    4,
+    1
+   ],
+   "keyPolicy": "کلیدِ استنتاجیِ ساختاری: س۱/س۲ = ستونِ مشترکِ مشتقِ چاپی (پاسخِ هر آیتم از ساقهٔ چاپی + دستورِ «en/ten» یا «اعداد به حروف»، حواس‌پرت‌ها = پاسخ‌های دیگرِ همان سکشن — الگویِ ستونِ مشترکِ r370-بانک۴)؛ س۳ = جورِ یک‌به‌یکِ سؤال/پاسخ از ستونِ چاپیِ a-d (my name is saro فقط به first name می‌نشیند و…)؛ س۶ = کلیدِ ترجمه‌ایِ یکتا (جمعه = Friday — الگویِ کلیدِ عینیِ r369)",
+   "engineNote": "س۱/س۲ عمداً MCQ شدند نه تایپی: قراردادِ r363 (بدونِ آیتمِ تایپی در g7 — موتورِ تایپ case-insensitive است) و افزون بر آن، افزودنِ حرفِ «ten» به «Nine» از نظرِ املایی «Nineteen» می‌شود نه «Nineten» — MCQ با گزینه‌های کلمهٔ کامل این ابهامِ چاپی را منحل می‌کند. چینشِ گزینه‌های س۱/س۲ per-item است (کلیدها 0,3,2,1) تا الگویِ «جوابِ قطرِ اصلی» حدس‌زدنی نباشد",
+   "derivedKeys": {
+    "S1": [
+     "Sev………. → Seven (دستورِ چاپ: با en یا ten)",
+     "Elev………. → Eleven (دستورِ چاپ: با en یا ten)",
+     "Nine………. → Nineteen (املایِ چاپِ «ten» ابهام دارد؛ MCQ کلمهٔ کامل را می‌سنجد)",
+     "Six………... → Sixteen (دستورِ چاپ: با en یا ten)"
+    ],
+    "S2": [
+     "10 → Ten",
+     "5 → Five",
+     "20 → Twenty",
+     "41 → Forty-one (با خطِ پیوند)"
+    ],
+    "S3": [
+     "What is your first name? → my name is saro. (تنها «نامِ کوچک»)",
+     "What is your last name? → my last name is lotfi. (تنها «نامِ خانوادگی»)",
+     "Hoe old are you? → I am 13 years old. (تنها «سن»)",
+     "What is your birthday? → it is in Bahman. (تنها «ماه»)"
+    ],
+    "S6": [
+     "جمعه → Friday؛ حواس‌پرت‌ها Saturday/Tuesday از روزهایِ چاپیِ س۴"
+    ]
+   },
+   "skippedSections": [
+    "س۴ «جاهای خالی را با کلمات مناسب پر کنید»: Saturday … Monday, Tuesday / One, two, three, …, five, …, seven — کلیدها (Sunday/four) در هیچ‌جایِ خانواده چاپی نیستند و «six» هم فقط در س۱ هست؛ تبدیلِ MCQ نیازمندِ کلیدِ غیرچاپی — تولیدِ توالی (الگویِ r370-س۴)",
+    "سکشنِ بی‌شمارهٔ چاپی (میانِ ۴ و ۶) «با توجه به تصاویر پاسخ ها را کامل کنید»: How old is your sister? She is … (کیکِ ۶-شمعه) / When's her birthday? It's in … (تقویمِ آذر) — کلید در تصویر است نه ساقه؛ QuizQuestion فیلدِ تصویر ندارد و پاسخ‌دهنده تصویر را نمی‌بیند (الگویِ مستثنیِ r370) — شمارشِ شمع‌ها/خوانشِ تقویم در رسید ثبت شد (۶ شمع؛ آذر)",
+    "شماره‌گذاریِ چاپ: سکشنِ پنجم در چاپ بی‌شماره است (۱/۲/۳/۴ سپس ۶) — به‌عنوانِ س۵ شمرده شد"
+   ],
+   "printQuirks": [
+    "ساقهٔ «Hoe old are you?» — غلطِ تایپیِ چاپ (How → Hoe) — verbatim حفظ شد",
+    "پاسخ‌های ستونِ س۳ lowercase چاپ‌اند (my name is saro. / my last name is lotfi.) — verbatim؛ «c)it» فاصلهٔ چاپی ندارد (پیشوندِ حرفِ گزینه در UI است، متنِ گزینه از it آغاز می‌شود)",
+    "ساقه‌های س۱ از خودِ لایهٔ متنی استخراج شدند (p65: خطِ Sev/Elev/Nine/Six) نه بازنویسیِ دستی — اسکریپت، توکن‌ها را از لایه می‌خواند و اظهار می‌کند",
+    "نقطه‌چینِ ساقه‌ها با نویسهٔ … چاپ است — verbatim",
+    "س۶: نخستین ساقهٔ فارسیِ کارتِ هفتم (عینِ خطِ چاپ) — گاردِ خلوصِ لاتینِ r370 به بانک‌های ۱-۴ scope شد"
+   ]
+  },
+  "g7exam4": {
+   "extractedRound": "r371",
+   "section": "نمونه سؤالات امتحانی درس چهارم پایه هفتم (دو صفحه)",
+   "examPages": "pdf-p74 (سربرگ + ۳ سکشنِ تصویری) + pdf-p75 (ادامه با ۴ سکشن)؛ ص۷۶ جدولِ واژگان (مرزِ پایانی)",
+   "keyPages": "هیچ پاسخنامهٔ چاپی در جزوهٔ هفتم نیست؛ کلیدها استنتاجیِ مستندند",
+   "sectionsTotal": 7,
+   "sectionsExtracted": 2,
+   "sectionsSkipped": 5,
+   "items": 11,
+   "bankCounts": [
+    4,
+    7
+   ],
+   "wordBank": [
+    "Mechanic",
+    "birthday",
+    "Mrs",
+    "florist",
+    "housewife",
+    "Bahman",
+    "meet"
+   ],
+   "extraWords": [
+    "Mechanic",
+    "florist",
+    "housewife"
+   ],
+   "keyPolicy": "کلیدِ استنتاجیِ ساختاری: ص۷۵-س۲ = تکمیلِ یکتایِ جمله (Happy … to you فقط birthday؛ Nice to … you فقط meet؛ Day …, Esfand = توالیِ ماه‌های دی/بهمن/اسفند — Day = دی از جدولِ ص۶۴؛ She is … Ahmadi فقط Mrs)؛ ص۷۵-س۳ = مذکر/مونثِ واژگانِ خانواده (دانشِ واژگانیِ عینی)",
+   "engineNote": "هفت‌گزینه‌ایِ بانکِ ۹ نخستینِ کارتِ هفتم است (همتایِ r367 در کارتِ نهم)؛ ستونِ مشترکِ چاپی با ۳ هرگز-کلیدِ مستند (Mechanic/florist/housewife) — گارد قفل می‌کند. بانکِ ۱۰ دوگزینه‌ایِ ثابتِ [He, She] است با ترتیبِ چاپ (He پیش از She در سربرگِ گروه‌ها)",
+   "derivedKeys": {
+    "P75-S2": [
+     "She is … Ahmadi. → Mrs (لقبِ رسمیِ پیش از نامِ خانوادگی)",
+     "Happy … to you. → birthday (فقط birthday تبریک می‌سازد)",
+     "Day …, Esfand. → Bahman (دی، بهمن، اسفند — توالیِ ماه‌ها)",
+     "Nice to … you. → meet (اصطلاحِ آشناسازیِ درس)"
+    ],
+    "P75-S3": [
+     "Father → He (مذکر)",
+     "mother → She (مونث)",
+     "sister → She (مونث)",
+     "brother → He (مذکر)",
+     "grandfather → He (مذکر)",
+     "grangmoter → She (مونث — غلطِ تایپیِ چاپ برایِ grandmother)",
+     "uncle → He (مذکر)"
+    ]
+   },
+   "skippedSections": [
+    "ص۷۴-س۱ «با توجه به تصاویر مشخص کنید هر وسیله مربوط به چه شغلی می باشد. یک شغل اضافی است» — بانکِ چاپی Painter/Dentist/Florist/Pilot/farmer ولی ساقه‌ها تصویرند (هواپیما/سطل‌وموِ نقاشی/تراکتور/یونیتِ دندان‌پزشکی) — کلید در تصویر است نه ساقه (الگویِ r370)؛ تحلیلِ رندر: ۴ تصویر → Pilot/Painter/farmer/Dentist و Florist اضافی است (ثبت‌شده برایِ آینده)",
+    "ص۷۴-س۲ «هرجمله را با نوشتن نام صحیح کنار تصاویر کامل کنید» — نام‌ها چاپی‌اند (Mina/Mr. Amini/Mr. Karimi/Mr. Akbari/Mrs. Amani) ولی کلید از نوارِ تصویر می‌آید (راننده در خودرو = Karimi و…) — تصویری-کلید",
+    "ص۷۴-س۳ «با توجه به تصاویر جمله های صحیح را با ✓ و جملات غلط را با ✗ مشخص کنید» — شش ساقهٔ چاپی (My first name is Ali/Hello, Mrs Amini/This is my son/Mina is thirteen years old/He is a boy/My brother is a driver) ولی درستی از تصویر سنجیده می‌شود — تصویری-کلید",
+    "ص۷۵-س۱ «کلمات را به تصاویر وصل کنید» — Football/bus/father/nurse/dentist/sister به تصاویر — تصویری-کلید",
+    "ص۷۵-س۴ «شغل های زیر را به فارسی و انگلیسی بنویسید» (Teacher/pilot/آشپز/کارگر) — کلیدِ فارسی چاپی نیست — تولید (فقط cook در ص۷۴-س۲ چاپی است؛ ناهمگون)",
+    "ص۷۵-س۲ س۳ حذفِ آیتمی: «My uncle is a …» دوکلیدیِ معنایی (mechanic/florist هر دو مجاز؛ چاپ «یک اضافی» گزینش‌گر نیست)",
+    "ص۷۵-س۲ س۵ حذفِ آیتمی: «My moter is a …» دوکلیدیِ معنایی (housewife/florist هر دو مجاز — با حذفِ س۳ قیدِ «یک اضافی» دیگر مفید نیست)؛ غلطِ تایپیِ چاپ «moter» در ساقهٔ حذف‌شده ثبت شد"
+   ],
+   "printQuirks": [
+    "بانکِ ص۷۵-س۲ با خط‌های مختلطِ چاپ: (Mechanic – birthday - Mrs – florist – housewife – Bahman – meet) — ترتیبِ چاپ حفظ شد",
+    "«grangmoter» غلطِ تایپیِ چاپ برایِ grandmother — verbatim در ساقه (بانکِ ۱۰)",
+    "«My moter is a …» غلطِ تایپیِ چاپ برایِ My mother — در ساقهٔ حذف‌شده (ثبت)",
+    "«Day …, Esfand.» جملهٔ ناقصِ چاپ است (الگویِ «ماهِ …، اسفند») — Day = دی از جدولِ تبدیلِ ماهِ ص۶۴",
+    "سکشن‌های ص۷۴ دوصفحه‌ای نیستند؛ خانوادهٔ چهارم تنها خانوادهٔ دومصفحه‌ایِ g7 تا اینجای جزوه است (ص۷۴+ص۷۵)"
+   ]
   }
  }
 }

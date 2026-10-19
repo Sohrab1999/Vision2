@@ -91,24 +91,32 @@ describe("r370 — رسیدهای g7exam1 / g7exam2 / g7familyMap", () => {
     expect(map.families).toHaveLength(8);
     expect(map.families.map((f) => f.pdfPage)).toEqual([50, 56, 65, 74, 84, 90, 97, 103]);
     expect(map.families.filter((f) => f.round === "r370")).toHaveLength(2);
-    expect(map.families.filter((f) => f.round === null)).toHaveLength(6);
+    // r371 — خانواده‌های سوم/چهارم هم استخراج شدند (۶۵/۷۴) — چهار خانواده باقی
+    expect(map.families.filter((f) => f.round === "r371")).toHaveLength(2);
+    expect(map.families.filter((f) => f.round === null)).toHaveLength(4);
     expect(map.g8Note).toContain("۷ خانواده");
     expect(map.note).toContain("دوخطی");
   });
 });
 
 describe("r370 — شکلِ فایلِ tests-g7.json", () => {
-  it("file shape: grade 7، چهار بانک، شمارها [11,1,3,5]، ۲۰ آیتمِ یکتا", () => {
+  it("file shape: grade 7، ده بانک، شمارها [11,1,3,5,4,4,4,1,4,7]، ۴۴ آیتمِ یکتا (r371: +۶ بانک/۲۴)", () => {
     expect(g7.grade).toBe(7);
-    expect(g7.lessons).toHaveLength(4);
-    expect(g7.lessons.map((l) => l.count)).toEqual([11, 1, 3, 5]);
+    expect(g7.lessons).toHaveLength(10);
+    expect(g7.lessons.map((l) => l.count)).toEqual([11, 1, 3, 5, 4, 4, 4, 1, 4, 7]);
     const ids = g7.lessons.flatMap((l) => l.questions.map((x) => x.id));
-    expect(ids).toHaveLength(20);
-    expect(new Set(ids).size).toBe(20);
+    expect(ids).toHaveLength(44);
+    expect(new Set(ids).size).toBe(44);
     expect(ids[0]).toBe("g7-l1-1");
     expect(ids[11]).toBe("g7-l2-1");
     expect(ids[12]).toBe("g7-l3-1");
     expect(ids[15]).toBe("g7-l4-1");
+    expect(ids[20]).toBe("g7-l5-1");
+    expect(ids[24]).toBe("g7-l6-1");
+    expect(ids[28]).toBe("g7-l7-1");
+    expect(ids[32]).toBe("g7-l8-1");
+    expect(ids[33]).toBe("g7-l9-1");
+    expect(ids[37]).toBe("g7-l10-1");
   });
 
   it("بدونِ آیتمِ تایپی در کلِ g7 — سکشنِ حروف عمداً MCQ است (engineNote)", () => {
@@ -120,9 +128,11 @@ describe("r370 — شکلِ فایلِ tests-g7.json", () => {
       }
   });
 
-  it("خلوصِ لاتین: ساقه‌ها و گزینه‌های هر چهار بانک (→ = پیکانِ پرامپتِ مجاز)", () => {
+  it("خلوصِ لاتین: ساقه‌ها و گزینه‌های بانک‌های r370 (→ = پیکانِ پرامپتِ مجاز) — از r371 به بانک‌های ۱-۴ scope شد", () => {
+    // r371 — بانکِ ۸ ساقهٔ فارسیِ چاپی دارد («جمعه به انگلیسی چه می شود؟» — عینِ خطِ چاپ؛
+    // سابقه: g9-l10 ساقه‌های فارسی دارد)؛ گاردِ r371 خلوصِ بانک‌های ۵-۱۰ را خودش بررسید می‌کند
     const latinPunct = /^[\x20-\x7E\u200c…–—\u2192]+$/;
-    for (const b of g7.lessons)
+    for (const b of g7.lessons.filter((x) => x.lesson <= 4))
       for (const it of b.questions) {
         expect(latinPunct.test(it.question), `question of ${it.id}`).toBe(true);
         for (const o of it.options) expect(latinPunct.test(o), `option of ${it.id}`).toBe(true);
