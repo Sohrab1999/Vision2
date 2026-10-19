@@ -335,6 +335,245 @@
      "answer": 2
     }
    ]
+  },
+  {
+   "lesson": 8,
+   "title": "امتحانی درس سوم — تکمیل با بانک واژه (س۲، ص۳۵)",
+   "level": "پنج‌گزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g8-l8-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "1) How do you ------- a hard puzzle?",
+     "options": [
+      "Cook",
+      "do",
+      "type",
+      "speak",
+      "take"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g8-l8-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "2) All my classmate can ------- English well.",
+     "options": [
+      "Cook",
+      "do",
+      "type",
+      "speak",
+      "take"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g8-l8-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "3) What do you need to ------- some food?",
+     "options": [
+      "Cook",
+      "do",
+      "type",
+      "speak",
+      "take"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g8-l8-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "4) I like to learn how to ------- fast.",
+     "options": [
+      "Cook",
+      "do",
+      "type",
+      "speak",
+      "take"
+     ],
+     "answer": 2
+    }
+   ]
+  },
+  {
+   "lesson": 9,
+   "title": "امتحانی درس سوم — کلمهٔ ناهماهنگ (س۳، ص۳۵)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g8-l9-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "Swimming – running – buying – riding",
+     "options": [
+      "Swimming",
+      "running",
+      "buying",
+      "riding"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g8-l9-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "Badminton – ping pong – draw – tennis",
+     "options": [
+      "Badminton",
+      "ping pong",
+      "draw",
+      "tennis"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g8-l9-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "Speak – read – type – chess",
+     "options": [
+      "Speak",
+      "read",
+      "type",
+      "chess"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g8-l9-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "Playing – doing – speaking – morning",
+     "options": [
+      "Playing",
+      "doing",
+      "speaking",
+      "morning"
+     ],
+     "answer": 3
+    }
+   ]
+  },
+  {
+   "lesson": 10,
+   "title": "امتحانی درس سوم — کامل‌کردن حروف (س۴، ص۳۵)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g8-l10-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "m-------ke t-------a",
+     "options": [
+      "take photos",
+      "make tea",
+      "make a cake",
+      "tell stories"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g8-l10-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "dr-------w a pict-------re",
+     "options": [
+      "do a puzzle",
+      "make tea",
+      "ride a horse",
+      "draw a picture"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g8-l10-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "r-------de a h-------rse",
+     "options": [
+      "do a puzzle",
+      "make tea",
+      "ride a horse",
+      "tell stories"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g8-l10-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "t-------p-------",
+     "options": [
+      "type",
+      "make",
+      "take",
+      "tell"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 11,
+   "title": "امتحانی درس چهارم — کلمهٔ ناهماهنگ (س۳، ص۴۱)",
+   "level": "چهارگزینه‌ای",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g8-l11-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "Health – sore eyes – headache – measles",
+     "options": [
+      "Health",
+      "sore eyes",
+      "headache",
+      "measles"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g8-l11-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "Sneeze – cough – mumps – nurse",
+     "options": [
+      "Sneeze",
+      "cough",
+      "mumps",
+      "nurse"
+     ],
+     "answer": 3
+    }
+   ]
+  },
+  {
+   "lesson": 12,
+   "title": "امتحانی درس چهارم — تلفظ ch (س۵، ص۴۱)",
+   "level": "چهارگزینه‌ای",
+   "count": 1,
+   "questions": [
+    {
+     "id": "g8-l12-1",
+     "n": 1,
+     "category": "pron",
+     "question": "در کدام کلمه حرف ch صدای \"ک\" می دهد.",
+     "options": [
+      "school",
+      "chair",
+      "teacher",
+      "toothache"
+     ],
+     "answer": 0
+    }
+   ]
   }
  ],
  "source": {
@@ -410,14 +649,14 @@
     {
      "lesson": "درس سوم",
      "pdfPage": 35,
-     "round": null,
-     "status": "در انتظار راند بعد"
+     "round": "r376",
+     "status": "استخراج شد — ۳ بانک/۱۲ آیتم از ۵ سکشن (س۱ و س۵ تصویری مستثنی)"
     },
     {
      "lesson": "درس چهارم",
      "pdfPage": 41,
-     "round": null,
-     "status": "در انتظار راند بعد"
+     "round": "r376",
+     "status": "استخراج شد — ۲ بانک/۳ آیتم از ۵ سکشن (س۱/س۲/س۴ تصویری مستثنی)"
     },
     {
      "lesson": "درس پنجم",
@@ -438,7 +677,7 @@
      "status": "در انتظار راند بعد"
     }
    ],
-   "lastUpdatedRound": "r375"
+   "lastUpdatedRound": "r376"
   },
   "g8exam2": {
    "extractedRound": "r375",
@@ -498,6 +737,77 @@
     "«Sunday’s» با آپاستروفِ خمیدهٔ چاپ در ساقهٔ ۳ س۲ — verbatim",
     "نقطه‌های چسبیدهٔ «...on Fridays»/«...for» پس از بلنک در لایه — norm فاصله را بازگرداند (قراردادِ r373 «And your -------.»)",
     "خط‌تیره‌های مخلوطِ چاپ در س۳ («–» در ردیفِ ۱/۲ و «-» در ردیفِ ۳) — گزینه‌سازی مستقل از خط‌تیره؛ ردیف‌های س۴ با «–» قراردادِ کارت"
+   ]
+  },
+  "g8exam3": {
+   "extractedRound": "r376",
+   "section": "نمونه سؤالات امتحانی درس سوم + درس چهارم پایه هشتم (جفتِ دو خانواده)",
+   "examPages": "pdf-p35 (درس سوم، تک‌صفحه‌ای) + pdf-p41 (درس چهارم، تک‌صفحه‌ای) — ص۳۶/۳۷ واژگانِ درس چهارم و ص۴۲ واژگانِ درس پنجم = مرزها",
+   "keyPages": "هیچ پاسخنامهٔ چاپی در جزوهٔ هشتم نیست — کلیدها استنتاجی؛ لنگرهای خ۳ از جدولِ واژگانِ ص۲۸/۲۹ و تمرین‌های ص۲۹-۳۴؛ لنگرهای خ۴ از جدولِ واژگانِ ص۳۶/۳۷؛ کلیدِ type (بانک ۸ آیتم ۴) مشتقِ چاپی است (بیرونِ واژگان، دو بار چاپ در خودِ ص۳۵)",
+   "sectionsTotal": 10,
+   "sectionsExtracted": 5,
+   "sectionsSkipped": 5,
+   "items": 15,
+   "bankCounts": [
+    4,
+    4,
+    4,
+    2,
+    1
+   ],
+   "wordBank": [
+    "Cook",
+    "do",
+    "type",
+    "speak",
+    "take"
+   ],
+   "wordBankSource": "پرانتزِ چاپیِ سکشنِ س۲ ص۳۵ (لایه) — ۵ واژه برای ۴ بلنک با تک‌اضافیِ چاپیِ «take» (الگویِ r374-بانک۲ دواضعی، این‌جا تک‌اضافی)؛ take با photo* ص۲۸ جفتِ چاپ دارد و هیچ بلنکی آن را نمی‌خواهد — هرگز-کلیدِ قفل‌شده",
+   "keyPolicy": "س۲: سه کلید لنگرِ جدولیِ درس‌درون (Do a puzzle* ص۲۸، speak ص۲۹، cook ص۲۸) + type مشتقِ چاپی؛ س۳: کلیدِ دسته‌ای (تنها غیرِ ورزشِ حرکتی/تنها فعلِ غیرِ راکتی/تنها اسم/تنها زمان) با لنگرهای swim*/play badminton*/chess/morning*؛ س۴: قفلِ شکلِ فرگمنت + لنگرهای Make tea*/draw*/horse؛ خ۴-س۳: تنها غیرِ بیماری (Health) و تنها شغل (nurse) با جدولِ چاپیِ ص۳۶/۳۷؛ خ۴-س۵: ch=/k/ تنها در school (دانشِ تلفظیِ قطعی + Go to school* ص۱۹)",
+   "engineNote": "بانک ۱۰ فرگمنت‌های رندر-فقط دارد (لایه بینِ تیترِ س۴ و س۵ خالی — پنجمین نمونهٔ رندر-فقط) با گزینه‌های اصطلاحِ کامل (الگویِ r375-بانک۴)؛ «tape» با شکلِ t-------p------- می‌سازد اما بیرونِ محدودهٔ واژگانِ جزوه است و عمداً گزینه نشد؛ بانک ۱۲ ساقهٔ تمام‌فارسیِ چاپ دارد (سومین ساقه‌فارسیِ کارت — الگویِ r374-بانک۳/r375-بانک۶) و استثنای خلوصِ لاتین است؛ شماره‌گذاریِ «1)» چاپیِ س۲ verbatim ماند",
+   "derivedKeys": {
+    "S2": [
+     "do",
+     "speak",
+     "Cook",
+     "type"
+    ],
+    "S3-l3": [
+     "buying",
+     "draw",
+     "chess",
+     "morning"
+    ],
+    "S4": [
+     "make tea",
+     "draw a picture",
+     "ride a horse",
+     "type"
+    ],
+    "S3-l4": [
+     "Health",
+     "nurse"
+    ],
+    "S5-l4": [
+     "school"
+    ]
+   },
+   "skippedSections": [
+    "ص۳۵-س۱ «اصطلاح مربوط به هر تصویر را زیر آن بنویسید» — چهار تصویرِ اصطلاحی: تنیس‌باز→play tennis (Ali can play tennis well. ص۳۱)، وب→search the Web (Are you good at searching the Web? ص۳۰)، کتری→make tea (Make tea* ص۲۸)، کتاب‌خوان→read a book (بیرونِ لایه) — تولیدِ اصطلاح از تصویر؛ بدونِ تصویر سؤال بی‌معناست → تصویری-کلید (الگویِ r374-س۱)",
+    "ص۳۵-س۵ «با توجه به تصاویر به سوالات پاسخ کامل دهید» — دو سؤالِ تصویری: «Are you good at swimming?» [دو شناگر] → Yes, I am و «Can he ride a bicycle?» [دوچرخه‌سوارِ ساقط] → No, he can't — جهتِ Yes/No فقط از تصویر (لنگرِ پاسخ‌کوتاهِ چاپی: Yes, I am./No, I'm not. ص۳۰ و Yes, he can./No, he can't. ص۳۱) → تصویری-کلید (الگویِ r374-س۴)",
+    "ص۴۱-س۱ «با توجه به تصاویر داده شده به سواالت پاسخ کامل دهید» — تصاویرِ محض، ستونِ سؤال هم در لایه نیست → تصویری-کلید",
+    "ص۴۱-س۲ «اصطلاح مربوط به هر تصویر را زیر آن بنویسید» — تولیدِ اصطلاح از تصویر → تصویری-کلید",
+    "ص۴۱-س۴ «برای هر تصویر یک کلمه انتخاب کنید» (sore eyes – fever – cough – running nose – mumps) — نگاشتِ واژه→تصویر بدونِ تصویر ناممکن؛ fever* ص۳۶ و Running nose* ص۳۶ چاپ‌اند اما جفت‌سازیِ تصویری → تصویری-کلید"
+   ],
+   "printQuirks": [
+    "«All my classmate» در ساقهٔ ۲ س۲ — جمعِ بدونِ s در چاپ — verbatim",
+    "«Cook» با C بزرگ در بانکِ چاپی س۲ (و کلیدِ آیتمِ ۳) — verbatim برخلافِ do/type/speak/take",
+    "نقطهٔ پایانیِ چاپیِ ردیفِ ۲ س۳ ص۴۱ («nurse.») در کارت حذف شد — قراردادِ ردیف‌های ناهماهنگِ کارت (هر ۸ ردیفِ قبلی بدونِ نقطه؛ الگویِ r374/r375)",
+    "خط‌تیرهٔ مخلوطِ چاپ در ستونِ س۵ ص۴۱ («school – chair – teacher - toothache»، سومین «-» ساده) — گزینه‌سازی مستقل از خط‌تیره؛ ردیف‌ها با «–» قراردادِ کارت",
+    "ساقهٔ س۵ ص۴۱ در لایه سه‌خطیِ بریده است («در کدام کلمه حرفch» / «صدای\" ک\"» / «.می دهد» — جابجاییِ RTL)؛ ساقهٔ کارت با فاصله‌بندیِ بازساخته و مقایسهٔ گارد بدونِ فاصله/نقطه (الگویِ r373 re-join)",
+    "«امالی» در تیترِ س۴ ص۳۵ (بدونِ «ء») — verbatim در لایه، در رسید و گارد بازتولید می‌شود",
+    "نقطه‌های چسبیدهٔ «……………a hard puzzle»/«……………………English» پس از بلنک در لایه — norm فاصله را بازگرداند (قراردادِ r373)",
+    "فرگمنت‌های چاپیِ س۴ ص۳۵ با خط‌تیره‌های جداکنندهٔ دور («m - ke») چاپ شده‌اند — در کارت به قراردادِ بلنکِ درون‌واژهٔ «m-------ke» نرمال شدند (الگویِ r375 «go sh-------ing»)"
    ]
   }
  }

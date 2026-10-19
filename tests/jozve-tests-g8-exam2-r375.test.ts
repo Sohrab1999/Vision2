@@ -114,13 +114,14 @@ describe("r375 — رسیدِ g8exam2 + نقشهٔ g8familyMap", () => {
     expect(rec.printQuirks.some((s) => s.includes("Sunday’s"))).toBe(true);
   });
 
-  it("نقشهٔ ۷ خانوادهٔ g8 — r374=۱ و r375=۱ و null=۵؛ درس دوم به‌روز شد", () => {
+  it("نقشهٔ ۷ خانوادهٔ g8 — r374=۱ و r375=۱ و r376=۲ (درس سوم/چهارم — گاردِ خودش) و null=۳؛ درس دوم به‌روز شد", () => {
     expect(map.families).toHaveLength(7);
     expect(map.families.map((f) => f.pdfPage)).toEqual([18, 27, 35, 41, 50, 60, 72]);
     expect(map.families.filter((f) => f.round === "r374")).toHaveLength(1);
     expect(map.families.filter((f) => f.round === "r375")).toHaveLength(1);
-    expect(map.families.filter((f) => f.round === null)).toHaveLength(5);
-    expect(map.lastUpdatedRound).toBe("r375");
+    expect(map.families.filter((f) => f.round === "r376")).toHaveLength(2);
+    expect(map.families.filter((f) => f.round === null)).toHaveLength(3);
+    expect(map.lastUpdatedRound).toBe("r376");
     expect(map.families[1].status).toContain("۴ بانک/۱۱ آیتم");
     expect(map.note).toContain("r369");
   });
@@ -283,14 +284,14 @@ describe("r375 — بانکِ ۷: خ۲/س۴ کلمهٔ ناهماهنگ (ردی�
 });
 
 describe("r375 — پیمان‌های سراسریِ فایل (پس از الحاقِ ۴ بانک)", () => {
-  it("file shape: grade 8، هفت بانک، شمارها [4,3,3,2,5,3,1]، ۲۱ آیتمِ یکتا با الگویِ g8-l1..7", () => {
+  it("file shape: grade 8، دوازده بانک (r375=بانک‌های ۴-۷)، شمارها [4,3,3,2,5,3,1,4,4,4,2,1]، ۳۶ آیتمِ یکتا با الگویِ g8-l1..12", () => {
     expect(g8.grade).toBe(8);
     expect(g8.title).toContain("پایه هشتم");
-    expect(g8.lessons).toHaveLength(7);
-    expect(g8.lessons.map((l) => l.count)).toEqual([4, 3, 3, 2, 5, 3, 1]);
+    expect(g8.lessons).toHaveLength(12);
+    expect(g8.lessons.slice(0, 7).map((l) => l.count)).toEqual([4, 3, 3, 2, 5, 3, 1]);
     const ids = g8.lessons.flatMap((b) => b.questions.map((x) => x.id));
-    expect(ids).toHaveLength(21);
-    expect(new Set(ids).size).toBe(21);
+    expect(ids).toHaveLength(36);
+    expect(new Set(ids).size).toBe(36);
     expect(ids[0]).toBe("g8-l1-1");
     expect(ids[3]).toBe("g8-l1-4");
     expect(ids[4]).toBe("g8-l2-1");
@@ -318,7 +319,7 @@ describe("r375 — پیمان‌های سراسریِ فایل (پس از الح
     for (const b of g8.lessons)
       for (const it of b.questions) {
         for (const o of it.options) expect(latinPunct.test(o), `option of ${it.id}`).toBe(true);
-        if (b.lesson !== 3 && b.lesson !== 6) {
+        if (b.lesson !== 3 && b.lesson !== 6 && b.lesson !== 12) {
           expect(latinPunct.test(it.question), `question of ${it.id}: ${it.question}`).toBe(true);
         }
       }
