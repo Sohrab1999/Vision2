@@ -159,11 +159,14 @@ for kf in KEY_FRAGS:
 # کلیدِ ۴۶ با ارقامِ فارسیِ وارونه در لایه («٦٤.») — شمارهٔ لاتینِ ۴۶ در کلید نیست
 assert "It will keep the environment clean." in keyjoin, "کلیدِ ۴۶"
 assert "46." not in keyjoin, "کلیدِ ۴۶ باید با ارقامِ فارسی بماند (بدونِ «46.» لاتین)"
-assert any(l.strip() == "٦٤." for l in p267), "فرگمنتِ ارقامِ فارسیِ ۴۶"
-# کلیدِ ۱۰ آشفته است (ران‌های جدا) — پیمانِ فرگمنتی
+# داوریِ دوبارهٔ لایهٔ خام: «٦٤.» خطِ مستقل نیست — با متنِ جوابِ ۴۶ در یک سطر چاپ شده است
+assert any(l.strip().startswith("٦٤.") for l in p267), "کلیدِ ۴۶ با پیشوندِ ارقامِ فارسیِ «٦٤.» در لایه"
+# کلیدِ ۱۰ آشفته است (ران‌های جدا) — پیمانِ فرگمنتی؛ داوریِ دوبارهٔ لایهٔ خام:
+# بک‌تیک‌ها خودشان دو خطِ مستقل‌اند («`» سطر ۵۱ و ۵۳) و فرگمنتِ شغلی «s job» است بدونِ بک‌تیک
 assert "10. No, he doesn`t appreciate" not in keyjoin, "کلیدِ ۱۰ باید آشفته بماند"
-for frag in ["No", "he doesn", "t appreciate the woman", "`s job"]:
+for frag in ["No", "he doesn", "t appreciate the woman", "s job"]:
     assert any(l.strip() == frag for l in p266), f"فرگمنتِ آشفتهٔ کلیدِ ۱۰: {frag}"
+assert sum(1 for l in p266 if l.strip() == "`") >= 2, "دو بک‌تیکِ مستقلِ کلیدِ ۱۰"
 # س۸: پاسخِ مدلِ «which» از «30» جدا افتاده (الگویِ r387/r388-deaf)
 assert "30. which" not in keyjoin
 assert any(l.strip() == "hich" for l in p266) and any(l.strip() == "w" for l in p266), "فرگمنت‌های آشفتهٔ which"
@@ -206,7 +209,7 @@ for o in Q_L65[0]["options"]:
 for o in Q_L65[1]["options"]:
     assert re.fullmatch(r"r[a-z]{6}", o), o    # r + ۶ خطِ چاپ → ۷حرفی (replace)
 for o in Q_L65[2]["options"]:
-    assert re.fullmatch(r"g[a-z]{3}", o), o    # g + ۴ خطِ چاپ → ۵حرفی (guide words)
+    assert re.fullmatch(r"g[a-z]{4}", o), o    # g + ۴ خطِ چاپ → ۵حرفی (great/group/grand/guide)
 assert [it["options"][it["answer"]] for it in Q_L65] == ["intermediate", "replace", "guide"]
 
 # ————— س۷: گرامر MCQ (ص۲۶۰-۲۶۱) → بانک l66 —————
@@ -237,7 +240,7 @@ assert [it["options"][it["answer"]] for it in Q_L66] == ["whom", "endangering", 
 # ————— س۱۰: خوانداریِ سختیِ زبان (ص۲۶۱-۲۶۲) → بانک l67 —————
 LANGS = join_inclusive(p261, "There are many languages in the world", "to day life.")
 for frag in ["There are many languages in the world, some of which may seem harder to learn for second or",
-             "foreign learners. But which is the most difficult language to learn? Well, it’s not easy to reply",
+             "foreign learners. But which is the most difficult language to learn?  Well, it’s not easy to reply",
              "because there are many factors to discuss.",
              "A native speaker of French, for example, will find English easier to learn than Chinese, because",
              "English is very similar to French, while Chinese is very different. As a result, first Language can",
@@ -324,7 +327,8 @@ Q_L68 = [
 assert [it["answer"] for it in Q_L68] == [1, 2, 1, 0]
 
 # ————— س۱۲: حروفِ ربطِ پاراگراف (ص۲۶۳) → بانک l69 — نخستین رندرِ پاراگرافی —————
-TEACH = join_inclusive(p263, "Teachers work hard every day", "you will be sorry")
+# داوریِ لایهٔ خام: جملهٔ ۵۰ با «one day.» در سطرِ بعدی ادامه می‌یابد — انتهایِ join تا «one day.»
+TEACH = join_inclusive(p263, "Teachers work hard every day", "one day.")
 assert "(47)" in TEACH and "(50)" in TEACH, "نشانه‌های چاپیِ خانه‌ها"
 # نشانهٔ چاپیِ «(N)......» داخلِ جمله → خانهٔ ساده (عددِ سؤال خودِ قید است)
 TEACH_NORM = norm_stem(re.sub(r"\s*\((?:4[789]|50)\)\s*[….]+", "-------", TEACH))
@@ -381,7 +385,12 @@ IDMS71 = ["Just saying that you will do something doesn`t mean much. Actually, d
           "People like to spend time with others who are similar to them.",                           # i — اضافیِ چاپیِ هرگز-کلید
           "When two people cooperate with each other, they come up with better idea."]                # j — دوقلویِ ساقه با «idea.» بدونِ s
 for df in IDMS71:
-    assert df in full, df
+    # داوریِ لایهٔ خام: تعریفِ h در چاپ دو خطی است («…making the» / «same mistake.») — بازجوش با فاصله
+    if df.startswith("Someone who has experienced"):
+        assert any(l.strip() == "h. Someone who has experienced some kind of negative situation will try to avoid making the" for l in p264), "فرگمنتِ h سطرِ اول"
+        assert any(l.strip() == "same mistake." for l in p264), "فرگمنتِ h سطرِ دوم"
+    else:
+        assert df in full, df
 Q_L71 = [
     q("g12-l71-1", 1, "vocab", "مفهوم و تعریفِ ضرب‌المثلِ «God helps those who help themselves»: -------", IDMS71, 1),
     q("g12-l71-2", 2, "vocab", "مفهوم و تعریفِ ضرب‌المثلِ «Action speak louder than words»: -------", IDMS71, 0),

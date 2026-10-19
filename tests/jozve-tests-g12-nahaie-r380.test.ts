@@ -277,13 +277,13 @@ describe("r380 — بانک l7 (ردیف‌های ۱۳-۱۵): خوانداری �
 
 describe("r380 — پیمان‌های سراسریِ فایل", () => {
   it("شکلِ فایل: ۳۵ بانک/[…,2,2,7,4,3,3,4,2,6]/۴۵۰ id یکتا — الگویِ g12-l1..l35 (r381-r384 بانک‌های شهریور ۱۴۰۱ و دی ۱۴۰۰ و شهریور ۱۴۰۰ و خرداد ۱۴۰۰ را افزودند)", () => {
-    expect(bank.lessons).toHaveLength(59);
+    expect(bank.lessons).toHaveLength(71);
     expect(bank.lessons.map((l) => l.count)).toEqual(
-      [100, 100, 100, 6, 7, 6, 10, 4, 6, 8, 4, 4, 4, 4, 4, 5, 7, 4, 4, 4, 2, 5, 7, 4, 4, 4, 2, 2, 7, 4, 3, 3, 4, 2, 6, 7, 4, 4, 4, 4, 2, 6, 4, 6, 8, 4, 4, 4, 4, 6, 6, 3, 3, 6, 4, 4, 4, 4, 4],
+      [100, 100, 100, 6, 7, 6, 10, 4, 6, 8, 4, 4, 4, 4, 4, 5, 7, 4, 4, 4, 2, 5, 7, 4, 4, 4, 2, 2, 7, 4, 3, 3, 4, 2, 6, 7, 4, 4, 4, 4, 2, 6, 4, 6, 8, 4, 4, 4, 4, 6, 6, 3, 3, 6, 4, 4, 4, 4, 4, 1, 2, 1, 2, 3, 3, 4, 4, 4, 4, 4, 3],
     );
     const ids = bank.lessons.flatMap((b2) => b2.questions.map((q) => q.id));
-    expect(ids).toHaveLength(559);
-    expect(new Set(ids).size).toBe(559);
+    expect(ids).toHaveLength(594);
+    expect(new Set(ids).size).toBe(594);
     expect(ids[300]).toBe("g12-l4-1");
     expect(ids[305]).toBe("g12-l4-6");
     expect(ids[306]).toBe("g12-l5-1");
@@ -296,7 +296,7 @@ describe("r380 — پیمان‌های سراسریِ فایل", () => {
   });
 
   it("بانک‌های نهایی ترجمه ندارند (غیبتِ صادقانه) و MCQِ خالص‌اند (قراردادِ کارتِ g12)", () => {
-    for (const bn of [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59])
+    for (const bn of [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71])
       for (const it of L(bn).questions) {
         expect(it.translation, `${it.id} must have no translation`).toBeUndefined();
         expect(it.kind, `${it.id} must be MCQ`).toBeUndefined();
@@ -305,8 +305,10 @@ describe("r380 — پیمان‌های سراسریِ فایل", () => {
       }
   });
 
-  it("نشت‌سنجِ ردیف‌های مستثنی: ساقه‌های شنیداریِ محض و تولیدی و تصویری غایب‌اند", () => {
-    const all = bank.lessons.flatMap((b2) => b2.questions);
+  it("نشت‌سنجِ ردیف‌های مستثنی (دامنه‌راندی: بانک‌های ۴-۷): ساقه‌های شنیداریِ محض و تولیدی و تصویری غایب‌اند", () => {
+    // تعمیلِ درسِ omelet (r384/r387): «Try to avoid foods that contain» اکنون عینِ ساقهٔ چاپیِ
+    // l70-4 برگهٔ خرداد ۱۳۹۹ [r388] است — نشت‌سنجِ r380 به بانک‌های خودش محدود می‌شود
+    const all = bank.lessons.filter((b2) => b2.lesson >= 4 && b2.lesson <= 7).flatMap((b2) => b2.questions);
     for (const forbidden of [
       "They went to the museum", "Samira has been to the museum", // ردیف ۱ (شنیداری)
       "What did Mehran want to buy", "A friend in need", // ردیف ۲ (شنیداری)

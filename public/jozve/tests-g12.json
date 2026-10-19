@@ -904,6 +904,109 @@
    ],
    "futureNote": "بخشِ ۴: ۱۰ برگه از ۱۷ استخراج شد، ۷ برگه باقی است (نزدیک‌ترین‌ها: جفتِ خرداد ۱۳۹۹ ص۲۵۹-۲۷۶ که ریاضی-تجربی‌اش همین راند شپ؛ به‌علاوهٔ برگهٔ لایه‌خرابِ ص۲۷۷-۲۸۴ که OCR/رندر می‌خواهد و سه برگهٔ ۱۳۹۷/۱۳۹۸ با کلیدِ سربرگِ قدیمی)؛ کاندیدهای تایپیِ این برگه (س۶: «was found»/«forgets»/«got»/«been made») به کاندیدهای r380-r387 اضافه شدند — مخزنِ بانکِ تایپیِ نهایی‌ها اکنون ۵۶ ردیف است (۵۲ِ r387 + ۴ ردیفِ تازه؛ means/founding و چارگانهٔ س۱۷ عینِ ثبت‌های r387 بودند و شمرده نشدند — درسِ John)",
    "bookletFile": "جزوه_جامع_پایه_دوازدهم_با_امتحانات_نهایی_.pdf"
+  },
+  "g12nahaie10": {
+   "extractedRound": "r388",
+   "section": "بخش چهارمِ جزوه: «آزمونهای از دی ماه 1397 تا شهریور 1401 نهابی با کلید» — برگهٔ دهم: «سؤالات امتحان نهایی» زبان انگلیسی (۳) نوبتِ خرداد ۱۳۹۹ (ریاضی فیزیک–علوم تجربی)",
+   "examPages": "pdf-p259-265 (هفت صفحهٔ آزمون؛ هفتمی فقط نگارش/جمع‌بندی) + کلیدِ رسمی: pdf-p266-267 «راهنماي تصحيح»؛ مرزِ برگه‌ها = p258→p259 (پس از دی ۱۳۹۸) و p267→p268 (آغازِ انسانی)",
+   "examMeta": "امتحان نهاییِ سراسریِ وزارت — درس: زبان انگلیسی (۳) — پایه دوازدهم دورهٔ دوم متوسطه — رشته: ریاضی فیزیک–علوم تجربی — نوبت خردادماه سال ۱۳۹۹ (تاریخِ چاپی: ۰۵/۰۴/۹۹) — مدت ۱۲۰ دقیقه — ساعت شروع ۸ صبح (با فاصلهٔ چاپ — برخلافِ r387) — ۱۷ سکشن/۶۰ ردیف/جمعِ نمرهٔ ۴۰ — روزانه/بزرگسال/داوطلب آزاد — مركز سنجش و پايش كيفيت آموزشي (aee.medu.ir)",
+   "keyPages": "pdf-p266-267 راهنمای تصحیحِ رسمی — «هر پاسخ صحيح (5/.) نمره» — ۶۰ فرگمنتِ کلیدِ چاپی در گارد پیمان می‌شود؛ ۲۹ کلید از ۲۹ آیتمِ بانک‌ها عینِ چاپ است",
+   "keyVerification": "کلیدِ چاپی عیناً نقل شد: «1. False ( b) 2. False ( b)» (دوبلِ Falseِ چاپ) «3. she had the money. 4. Because it is so slow.» / «5. (c) 6. (c)» (دوبلِ c) «7. True (a) 8. False (b)» / کلیدِ ۹ «No, he doesn`t like it.» با دوفاصلهٔ چاپ / کلیدِ ۱۰ آشفته (ران‌های جدا: No/he doesn/`s job/t appreciate the woman) / «11. False ( b) 12. True (a)» / «13. creative» با یادداشتِ معلمِ «در این بخش هرکلمه‌ای هم که به نوعی به پاسخ اشاره کند صحیح است.» / «14. respect each other`s abilities. 15. He didn`t enjoy working in a team environment a year ago.» (بک‌تیکِ چاپ) / «16. ( d ) 17. ( e ) 18. ( b ) 19. ( a )» / «20. honored 21. overcome 22. suppose» / «23. intermediate 24. replace 25. guide» / «26. ( c ) 27. ( b ) 28. ( d ) 29. ( b)» / س۸ «which» آشفته (w+hich) / «31. have been invited 32. was said 33. decides 34. might/would /could choose» (کلیدِ سه‌گانهٔ چاپ با فاصله‌های ناهمگون) / «35. (b) 36. (a) 37. ( b) False 38. (a) True» / «39. English is easier for French people to learn because it is very similar to French» (دوفاصلهٔ چاپ پیش از because) «40. Because they already use Chinese letters in their own language.» / «41. ( b ) 42. (c) 43. (b) False 44. (a) True» / «45. It is produced from streams and rivers/oceans/water.» / کلیدِ ۴۶ با ارقامِ فارسیِ وارونه («٦٤.») — شمارهٔ لاتینِ ۴۶ در کلید نیست / «47. so 48. and 49. but 50. or» (دوفاصله‌های چاپ) / «51. …they should stay at home. 52. ..he has to do his homework.» / «55. b g 56. e j 57. a f 58. c h» (جفت‌های درهمِ الف/ب) / «59-60» چهار پاسخِ مدل با بک‌تیکِ چاپ در hadn`t",
+   "sectionsTotal": 60,
+   "sectionsExtracted": 29,
+   "sectionsSkipped": 31,
+   "items": 29,
+   "bankCounts": [
+    3,
+    3,
+    4,
+    4,
+    4,
+    4,
+    4,
+    3
+   ],
+   "keyPolicy": "همهٔ کلیدهای ۲۹ آیتم از راهنمای تصحیحِ چاپی می‌آیند (عینِ چاپ)؛ بانکِ ۴واژه‌ایِ l64 به ترتیبِ چاپِ خودِ برگه (suppose, honored, demand, overcome) با اضافیِ چاپیِ هرگز-کلید (demand)؛ حرفِ اولِ l65 با سه سه‌تاییِ هم‌شکلِ مهندسی‌شده (i+++++++++++/r++++++/g++++ — ۱۲/۷/۵حرفی)؛ گرامرِ l66 و حروفِ ربطِ پاراگرافیِ l69 به ترتیبِ چاپ (دستورِ but, and, so, or)؛ کلیدهای درست/غلطِ l67/l68 سمانتیک‌اند (چاپ: False/True و False/True)؛ تعریف‌یابیِ l70 و اصطلاحاتِ l71 به ترتیبِ چاپِ ستون B با اضافی‌های چاپیِ هرگز-کلید (d/i)",
+   "engineNote": "هر ۲۹ آیتم MCQ (قراردادِ کارتِ g12)؛ ساقه‌های خوانداریِ l67/l68 متنِ کاملِ چاپی را در خود دارند (بازجوشِ joinِ بی‌نُرمِ فرگمنتی — دو متنِ تمیز)؛ l69 نخستین رندرِ پاراگرافیِ حروفِ ربط در مخزن — نشانهٔ چاپیِ «(N)......» داخلِ جمله به خانهٔ ساده تبدیل شد (عددِ سؤال خودِ قید است؛ خانه‌های چسبیده به واژهٔ بعد وفادارانه ماندند)؛ ساقه‌های تعریف‌یابی/اصطلاح دوبخشیِ فارسی (الگویِ r380-l5/r386-l45/r387-l58)؛ ترجمه عمداً غایب (نهایی‌ها ترجمهٔ چاپی ندارند)؛ نقطه‌چینِ چاپ → «-------» چسبیده؛ این برگه کلوژِ شنیداری و مرتب‌سازیِ شش‌گزینه‌ای ندارد",
+   "derivedKeys": {
+    "S5": [
+     "honored",
+     "overcome",
+     "suppose"
+    ],
+    "S6": [
+     "intermediate",
+     "replace",
+     "guide"
+    ],
+    "S7": [
+     "whom",
+     "endangering",
+     "does she",
+     "were saved"
+    ],
+    "S10": [
+     "second language",
+     "how different it is from one’s mother tongue",
+     "False",
+     "True"
+    ],
+    "S11": [
+     "The search for new sources of energy",
+     "Nuclear energy",
+     "False",
+     "True"
+    ],
+    "S12": [
+     "so",
+     "and",
+     "but",
+     "or"
+    ],
+    "S15-الف": [
+     "lack of success in doing something",
+     "many different types of things or people",
+     "to make water, air, etc. dirty",
+     "have something inside"
+    ],
+    "S15-ب": [
+     "Don`t just wait for good things to happen to you. Work hard to achieve your goals.",
+     "Just saying that you will do something doesn`t mean much. Actually, doing it is harder.",
+     "Someone who has experienced some kind of negative situation will try to avoid making the same mistake."
+    ]
+   },
+   "paperMap": "نقشهٔ کاملِ بخشِ ۴ (ص۲۲۸-۳۴۹، ۱۷ برگه) — کشفِ r384، تأییدِ دوباره در این راند: دی ۱۳۹۷ ص۲۲۹-۲۳۳ + کلیدِ سربرگِ قدیمیِ ص۲۳۴-۲۳۶ (پیش از presentation-forms)؛ خرداد ۱۳۹۸ ص۲۳۷-۲۴۱ + کلید ص۲۴۲-۲۴۳ (۱۳/۳/۱۳۹۸)؛ شهریور ۱۳۹۸ ص۲۴۴-۲۴۸ + کلید ص۲۴۹-۲۵۰ (۱۲/۶/۱۳۹۸)؛ دی ۱۳۹۸ ص۲۵۱-۲۵۶ + کلید ص۲۵۷-۲۵۸ (۲۲/۱۰/۹۸)؛ خرداد ۱۳۹۹ ریاضی-تجربی ص۲۵۹-۲۶۵ + کلید ص۲۶۶-۲۶۷ (۰۵/۰۴/۹۹) ← این راند؛ خرداد ۱۳۹۹ انسانی ص۲۶۸-۲۷۴ + کلید ص۲۷۵-۲۷۶ (۰۷/۰۴/۹۹)؛ برگهٔ لایه‌خراب ص۲۷۷-۲۸۴ (نیازمند OCR/رندر)؛ شهریور ۱۳۹۹ ص۲۸۵-۲۹۰ + کلید ص۲۹۱-۲۹۲ [r387]؛ شهریور ۱۳۹۹ ویژهٔ ناشنوایان ص۲۹۳-۲۹۸ + کلید ص۲۹۹-۳۰۰ [r388]؛ دی ۱۳۹۹ ص۳۰۱-۳۰۵ + کلید ص۳۰۶-۳۰۷ [r386]؛ خرداد ۱۴۰۰ ریاضی-تجربی ص۳۰۸-۳۱۴ [r385]؛ خرداد ۱۴۰۰ انسانی ص۳۱۵-۳۲۱ [r384]؛ شهریور ۱۴۰۰ ص۳۲۲-۳۲۸ [r383]؛ دی ۱۴۰۰ ص۳۲۹-۳۳۵ [r382]؛ دی ۱۴۰۱ ص۳۳۶-۳۴۲ [r380]؛ شهریور ۱۴۰۱ ص۳۴۳-۳۴۹ [r381] — ۱۱ برگه استخراج شد، ۶ برگه باقی است",
+   "skippedSections": [
+    "س۱ (ردیف ۱-۴، شنیداریِ لپ‌تاپ): صوتی-کلید؛ کلیدهای چاپی: 1. False ( b)/2. False ( b)/3. she had the money./4. Because it is so slow. — دوبلِ Falseِ چاپ",
+    "س۲ (ردیف ۵-۱۰، شنیداریِ اختراع): صوتی-کلید؛ کلیدهای چاپی: 5.(c)/6.(c)/7. True (a)/8. False (b)/9. No, he doesn`t like it./10. No, he doesn`t appreciate the woman`s job. — کلیدِ ۱۰ در لایهٔ کلید آشفته است (ران‌های جدا)",
+    "س۳ (ردیف ۱۱-۱۵، شنیداریِ تیم): صوتی-کلید؛ کلیدهای چاپی: 11. False ( b)/12. True (a)/13. creative («در این بخش هرکلمه‌ای هم که به نوعی به پاسخ اشاره کند صحیح است.»)/14. respect each other`s abilities./15. He didn`t enjoy working in a team environment a year ago.",
+    "س۴ (ردیف ۱۶-۱۹، تصویری): «یک جمله اضافی است» — پنج جملهٔ چاپی a-e: a) Taking people’s temperature can help them fight the coronavirus. → 19 / b) If you focus the sun`s rays through a magnifying glass on a dry leaf, it will start to burn. → 18 / c) Teenagers who help others are more successful in life. (اضافیِ چاپی) / d) Wind tower is a type of natural air cooling system. → 16 / e) John couldn’t figure out what the teacher was talking about. → 17؛ داوریِ رندرِ ۳۰۰dpi (p260-s4-pictures.png): بادگیرِ سنتی ۱۶/مردِ گیج ۱۷/ذره‌بین روی متن ۱۸/دماسنج ۱۹؛ استخراج نیازمندِ تصویر",
+    "س۸ (ردیف ۳۰، تولیدیِ موصولی): «A pigeon is a bird…….» — کلیدِ چاپی: which (در لایهٔ کلید آشفته: «w»+«hich») — تولیدی",
+    "س۹ (ردیف ۳۱-۳۴، افعالِ مکالمه‌ایِ بابک/علی): «31. have been invited» / «32. was said» / «33. decides» / «34. might/would /could choose» (کلیدِ سه‌گانهٔ چاپ) — تولیدیِ تایپی؛ کاندیدِ تایپی (۴ ردیفِ تازه به مخزن)",
+    "س۱۰ ردیف‌های ۳۹-۴۰ (پاسخِ مدلِ خوانداریِ سختیِ زبان): «39. English is easier for French people to learn because it is very similar to French» و «40. Because they already use Chinese letters in their own language.» — پاسخ‌های مشتقِ خودِ متن (درسِ r387: از ثبتِ مخزن معاف)",
+    "س۱۱ ردیف‌های ۴۵-۴۶ (پاسخِ مدلِ خوانداریِ انرژی): «45. It is produced from streams and rivers/oceans/water.» و «46. It will keep the environment clean.» (با ارقامِ فارسیِ وارونهٔ «٦٤.» در لایه) — پاسخ‌های مشتقِ خودِ متن",
+    "س۱۳ (ردیف ۵۱-۵۲، تصویری-ربط): «51. Many people are still becoming sick because of the COVID 19, so…….» و «52. Jimmy seems very tired, but……………….» با تصویر — کلیدهای چاپی: «51. …they should stay at home.» / «52. ..he has to do his homework.» — استخراج نیازمندِ تصویر",
+    "س۱۴ (ردیف ۵۳-۵۴، تولیدی): Topic Sentence برای «Reading» و «Nature» — تولیدی",
+    "س۱۵-ب ردیفِ ۵۶ (Two heads are better than one → j): دوقلویِ بایتیِ ساقهٔ l59-4 — ستونِ B این برگه متفاوت است («When two people cooperate with each other, they come up with better idea.» بدونِ s) ولی ساقه یکسان است — طبق درسِ John شمرده نشد و کلیدِ چاپیِ j در رسید حفظ شد",
+    "س۱۶ (ردیف ۵۹-۶۰، جمله‌سازیِ انتخابیِ a/b): چهار پاسخِ مدلِ چاپی: 59a. Mina would help you with your homework if she had more free time. / 59b. My mother was angry with my brother because he hadn`t washed his hands. (بک‌تیکِ چاپ) / 60a. The students bought some useful books which their teacher suggested. / 60b. Can water be converted into ice in cold weather? — کاندیدِ تایپی (۴ ردیفِ تازه به مخزن)",
+    "س۱۷ (نگارشِ انتخابیِ c/d): ج) Topic Sentence برای چهار عنوانِ تصویری (a) Water / b) Damavand / c) Perspolis (Takht-e-Jamshid) / d) Tahereh Saffarzadeh) و د) پاراگرافِ شهید محمدحسین فهمیده با چیپ‌های چاپی (Birth: May 6, 1967, Qom / Death: (Martyred) October 30, 1980, Khorramshahr / Job: Student / War: Iran–Iraq War, in Khorramshahr) — تولیدی با تصویر"
+   ],
+   "printQuirks": [
+    "هشتمین برگهٔ presentation-forms با سربرگِ «ﺳﺆاﻻت  اﻣﺘﺤﺎن ﻧﻬﺎﯾﯽ» (نهایی همان‌سطر — برخلافِ r387 که جدا بود) — متنِ انگلیسی و کلیدها لاتینِ سالم",
+    "«8 ﺻﺒﺢ» با فاصلهٔ چاپ (r387: «8ﺻﺒﺢ» چسبیده)؛ «درس :» با فاصلهٔ پیش از دونقطه",
+    "شکستِ سطریِ «Vocabula/ry» در سکشنِ ۴ (سربرگِ واژگان دو-تکه در لایه) — بازجوش نشد؛ فقط ثبت شد",
+    "بک‌تیکِ چاپ در گزینهٔ b س۴ (sun`s rays) و در کلیدهای مدلِ ۱۴/۱۵/۵۹b (other`s / didn`t / hadn`t) — عینِ چاپ",
+    "«the corps» مفردِ چاپ در ق۲۷ (برای crops) — وفادارانه ماند",
+    "آپاستروفِ مخلوطِ چاپ در گزینه‌های ق۲۸: «isn’t  she» (خمیده + دوفاصله) کنارِ «doesn't she» (مستقیم) — عینِ چاپ؛ دوفاصلهٔ چاپ در «could  save» ق۲۹",
+    "خانهٔ حرفِ اولِ ق۲۴ به واژهٔ بعد چسبیده است («r - - - - - -most») و ق۲۳ دوفاصلهٔ چاپ پیش از and دارد — عینِ چاپ",
+    "نشانه‌های خانه‌های س۱۲ داخلِ جمله‌اند: «(47)......they» چسبیده به واژهٔ بعد، «(48)…… tell» و «(50) ……. you» با فاصله — به خانهٔ ساده تبدیل شد (عددِ سؤال خودِ قید است)",
+    "کلیدِ ۴۶ با ارقامِ فارسیِ وارونه در لایه («٦٤.») — شمارهٔ لاتینِ ۴۶ در کلید نیست؛ پیمانِ گارد",
+    "کلیدِ ۳۴ سه‌گانه است با فاصله‌های ناهمگونِ چاپ («might/would /could choose») — عینِ چاپ",
+    "«57. Action speak louder than words» — مفردِ چاپ (speak)؛ «56.   I really like» دوفاصلهٔ پس از شماره",
+    "پاورقیِ صفحات: شمارهٔ چاپیِ ۱۶۴-۱۷۲ + پاورقیِ «Audio file (MP3) / Audio text (PDF) / Audio script (PDF)» در ص۲۵۹"
+   ],
+   "futureNote": "بخشِ ۴: ۱۱ برگه از ۱۷ استخراج شد، ۶ برگه باقی است (نزدیک‌ترین: انسانیِ خرداد ۱۳۹۹ ص۲۶۸-۲۷۶؛ به‌علاوهٔ برگهٔ لایه‌خرابِ ص۲۷۷-۲۸۴ که OCR/رندر می‌خواهد و چهار برگهٔ ۱۳۹۷/۱۳۹۸ با کلیدِ سربرگِ قدیمی)؛ کاندیدهای تایپیِ این برگه (س۹: «have been invited»/«was said»/«decides»/«might-would-could choose» + س۱۶: Mina/My-mother/The-students/Can-water) به کاندیدهای r380-r387 اضافه شدند — مخزنِ بانکِ تایپیِ نهایی‌ها اکنون ۶۴ ردیف است (۵۶ِ r388-deaf + ۸ ردیفِ تازه)",
+   "bookletFile": "جزوه_جامع_پایه_دوازدهم_با_امتحانات_نهایی_.pdf"
   }
  },
  "answerArbitration": [
@@ -9206,6 +9309,446 @@
       "False"
      ],
      "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 64,
+   "title": "نهایی خرداد ۱۳۹۹ ریاضی-تجربی — واژگانِ بانکِ چاپ (س۵، ص۲۶۰)",
+   "level": "چهارگزینه‌ای",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g12-l64-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "Elders feel ------- when we appreciate them.",
+     "options": [
+      "suppose",
+      "honored",
+      "demand",
+      "overcome"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l64-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "People use hybrid cars to ------- the problem of charging electric cars.",
+     "options": [
+      "suppose",
+      "honored",
+      "demand",
+      "overcome"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l64-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "Let us ------- for a moment that the news is really true.",
+     "options": [
+      "suppose",
+      "honored",
+      "demand",
+      "overcome"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 65,
+   "title": "نهایی خرداد ۱۳۹۹ ریاضی-تجربی — حرفِ اول (س۶، ص۲۶۰)",
+   "level": "چهارگزینه‌ای",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g12-l65-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "Dictionaries are usually in three levels: elementary, i - - - - - - - - - - -  and advanced.",
+     "options": [
+      "intermediate",
+      "interruption",
+      "interference",
+      "intimidating"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l65-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "The factory could r - - - - - -most of its workers with robots two years ago.",
+     "options": [
+      "request",
+      "replace",
+      "respect",
+      "recover"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l65-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "The two words at the top of each page of a dictionary are called g - - - - words.",
+     "options": [
+      "great",
+      "group",
+      "grand",
+      "guide"
+     ],
+     "answer": 3
+    }
+   ]
+  },
+  {
+   "lesson": 66,
+   "title": "نهایی خرداد ۱۳۹۹ ریاضی-تجربی — گرامر (س۷، ص۲۶۰-۲۶۱)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l66-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "She was the person ------- everyone regarded as trustworthy.",
+     "options": [
+      "which",
+      "when",
+      "whom",
+      "whose"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l66-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "Scientists believe that hot weather is often ------- the corps.",
+     "options": [
+      "endanger",
+      "endangering",
+      "endangered",
+      "dangers"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l66-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "Zhila never says a word when she is sad,-------?",
+     "options": [
+      "isn’t  she",
+      "did she",
+      "doesn't she",
+      "does she"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l66-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "My father might buy a new car if some more dollars------- by the family.",
+     "options": [
+      "could  save",
+      "were saved",
+      "had saved",
+      "were saving"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 67,
+   "title": "نهایی خرداد ۱۳۹۹ ریاضی-تجربی — خوانداریِ سختیِ زبان (س۱۰، ص۲۶۱-۲۶۲)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l67-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "There are many languages in the world, some of which may seem harder to learn for second or foreign learners. But which is the most difficult language to learn? Well, it’s not easy to reply because there are many factors to discuss. A native speaker of French, for example, will find English easier to learn than Chinese, because English is very similar to French, while Chinese is very different. As a result, first Language can affect learning a second language. The greater the differences between the second language and the first, the harder it will be to learn. Many people answer that Chinese is the hardest language to learn, possibly influenced by the thought of learning the Chinese writing system. Besides, the pronunciation of Chinese does appear to be very difficult for many foreign learners. However, for Japanese speakers, who already use Chinese letters in their own language, learning writing will be less difficult than for speakers of languages using the Roman alphabet. Teachers and the conditions in which the language is learned also play an important role, as well as each learner’s motivation for learning. If people learn a language because they need to use it for a living, they often learn it faster than people who study a language that has no direct use in their day to day life. — The word “it” in paragraph 2 line 4 refers to------- .",
+     "options": [
+      "learning first language",
+      "second language",
+      "difference of languages",
+      "Chinese language"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l67-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "There are many languages in the world, some of which may seem harder to learn for second or foreign learners. But which is the most difficult language to learn? Well, it’s not easy to reply because there are many factors to discuss. A native speaker of French, for example, will find English easier to learn than Chinese, because English is very similar to French, while Chinese is very different. As a result, first Language can affect learning a second language. The greater the differences between the second language and the first, the harder it will be to learn. Many people answer that Chinese is the hardest language to learn, possibly influenced by the thought of learning the Chinese writing system. Besides, the pronunciation of Chinese does appear to be very difficult for many foreign learners. However, for Japanese speakers, who already use Chinese letters in their own language, learning writing will be less difficult than for speakers of languages using the Roman alphabet. Teachers and the conditions in which the language is learned also play an important role, as well as each learner’s motivation for learning. If people learn a language because they need to use it for a living, they often learn it faster than people who study a language that has no direct use in their day to day life. — Hardness of learning a language can depend on------- .",
+     "options": [
+      "how different it is from one’s mother tongue",
+      "whether it is French or English",
+      "whether you are learning Japanese or Chinese",
+      "how long it takes to master pronunciation"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l67-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "There are many languages in the world, some of which may seem harder to learn for second or foreign learners. But which is the most difficult language to learn? Well, it’s not easy to reply because there are many factors to discuss. A native speaker of French, for example, will find English easier to learn than Chinese, because English is very similar to French, while Chinese is very different. As a result, first Language can affect learning a second language. The greater the differences between the second language and the first, the harder it will be to learn. Many people answer that Chinese is the hardest language to learn, possibly influenced by the thought of learning the Chinese writing system. Besides, the pronunciation of Chinese does appear to be very difficult for many foreign learners. However, for Japanese speakers, who already use Chinese letters in their own language, learning writing will be less difficult than for speakers of languages using the Roman alphabet. Teachers and the conditions in which the language is learned also play an important role, as well as each learner’s motivation for learning. If people learn a language because they need to use it for a living, they often learn it faster than people who study a language that has no direct use in their day to day life. — Being familiar with writing system of the second language makes it harder to learn.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l67-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "There are many languages in the world, some of which may seem harder to learn for second or foreign learners. But which is the most difficult language to learn? Well, it’s not easy to reply because there are many factors to discuss. A native speaker of French, for example, will find English easier to learn than Chinese, because English is very similar to French, while Chinese is very different. As a result, first Language can affect learning a second language. The greater the differences between the second language and the first, the harder it will be to learn. Many people answer that Chinese is the hardest language to learn, possibly influenced by the thought of learning the Chinese writing system. Besides, the pronunciation of Chinese does appear to be very difficult for many foreign learners. However, for Japanese speakers, who already use Chinese letters in their own language, learning writing will be less difficult than for speakers of languages using the Roman alphabet. Teachers and the conditions in which the language is learned also play an important role, as well as each learner’s motivation for learning. If people learn a language because they need to use it for a living, they often learn it faster than people who study a language that has no direct use in their day to day life. — The reason behind learning a language can slow down or speed up learning.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 68,
+   "title": "نهایی خرداد ۱۳۹۹ ریاضی-تجربی — خوانداریِ منابعِ انرژی (س۱۱، ص۲۶۲-۲۶۳)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l68-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "The research for new sources of energy has led into various ways. To produce any type of energy, the resources of the earth are used. The main resources of the earth are fossil fuels such as natural gas, oil and coal. Electricity is generated from coal, oil and natural gas, but the process has been proven to be expensive. Experimental works are in progress to produce energy from other resources. Scientists and experts spared no pains to search for new ways of producing new source of energy. For instance, electricity has been produced with giant wind turbines. Geothermal power or the heat from the earth is also being tested to produce energy. Many societies are burning rubbish and other biological waste products to generate electricity. Not only changing unwanted products to gas or oil is a cheap way to produce energy, but also it is an effective way to get rid of waste. Some experts expect service companies to expand hydroelectric power generated from streams and rivers. As an example, 50 years ago hydroelectric power provided one-third of the electricity used in the United States but today it includes only 4%. The oceans are another possible source of energy. Scientists are studying ways to change the energy of oceans’ tides and waves into electricity. Experiments are also underway to make use of temperature differences in ocean water to produce energy. Clean energy resources are vastly respected, valued, and used all over the world to keep the environment clean. As a result, scientists try to introduce new types of energy resources called clean energy resources to nations of the world. — Which is the best title for this passage?",
+     "options": [
+      "The use of waste products for energy",
+      "The search for new sources of energy",
+      "Effective ways of producing hydropower",
+      "New discoveries in geothermal power"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l68-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "The research for new sources of energy has led into various ways. To produce any type of energy, the resources of the earth are used. The main resources of the earth are fossil fuels such as natural gas, oil and coal. Electricity is generated from coal, oil and natural gas, but the process has been proven to be expensive. Experimental works are in progress to produce energy from other resources. Scientists and experts spared no pains to search for new ways of producing new source of energy. For instance, electricity has been produced with giant wind turbines. Geothermal power or the heat from the earth is also being tested to produce energy. Many societies are burning rubbish and other biological waste products to generate electricity. Not only changing unwanted products to gas or oil is a cheap way to produce energy, but also it is an effective way to get rid of waste. Some experts expect service companies to expand hydroelectric power generated from streams and rivers. As an example, 50 years ago hydroelectric power provided one-third of the electricity used in the United States but today it includes only 4%. The oceans are another possible source of energy. Scientists are studying ways to change the energy of oceans’ tides and waves into electricity. Experiments are also underway to make use of temperature differences in ocean water to produce energy. Clean energy resources are vastly respected, valued, and used all over the world to keep the environment clean. As a result, scientists try to introduce new types of energy resources called clean energy resources to nations of the world. — Which of the following is not offered in the passage as a source of energy?",
+     "options": [
+      "Electrical power",
+      "Clean energy",
+      "Nuclear energy",
+      "Hydroelectric power"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l68-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "The research for new sources of energy has led into various ways. To produce any type of energy, the resources of the earth are used. The main resources of the earth are fossil fuels such as natural gas, oil and coal. Electricity is generated from coal, oil and natural gas, but the process has been proven to be expensive. Experimental works are in progress to produce energy from other resources. Scientists and experts spared no pains to search for new ways of producing new source of energy. For instance, electricity has been produced with giant wind turbines. Geothermal power or the heat from the earth is also being tested to produce energy. Many societies are burning rubbish and other biological waste products to generate electricity. Not only changing unwanted products to gas or oil is a cheap way to produce energy, but also it is an effective way to get rid of waste. Some experts expect service companies to expand hydroelectric power generated from streams and rivers. As an example, 50 years ago hydroelectric power provided one-third of the electricity used in the United States but today it includes only 4%. The oceans are another possible source of energy. Scientists are studying ways to change the energy of oceans’ tides and waves into electricity. Experiments are also underway to make use of temperature differences in ocean water to produce energy. Clean energy resources are vastly respected, valued, and used all over the world to keep the environment clean. As a result, scientists try to introduce new types of energy resources called clean energy resources to nations of the world. — Changing waste products to gas or oil is an expensive way to generate energy, but it is very effective.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l68-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "The research for new sources of energy has led into various ways. To produce any type of energy, the resources of the earth are used. The main resources of the earth are fossil fuels such as natural gas, oil and coal. Electricity is generated from coal, oil and natural gas, but the process has been proven to be expensive. Experimental works are in progress to produce energy from other resources. Scientists and experts spared no pains to search for new ways of producing new source of energy. For instance, electricity has been produced with giant wind turbines. Geothermal power or the heat from the earth is also being tested to produce energy. Many societies are burning rubbish and other biological waste products to generate electricity. Not only changing unwanted products to gas or oil is a cheap way to produce energy, but also it is an effective way to get rid of waste. Some experts expect service companies to expand hydroelectric power generated from streams and rivers. As an example, 50 years ago hydroelectric power provided one-third of the electricity used in the United States but today it includes only 4%. The oceans are another possible source of energy. Scientists are studying ways to change the energy of oceans’ tides and waves into electricity. Experiments are also underway to make use of temperature differences in ocean water to produce energy. Clean energy resources are vastly respected, valued, and used all over the world to keep the environment clean. As a result, scientists try to introduce new types of energy resources called clean energy resources to nations of the world. — Geothermal power is the heat from the Earth.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 69,
+   "title": "نهایی خرداد ۱۳۹۹ ریاضی-تجربی — حروفِ ربطِ پاراگراف (س۱۲، ص۲۶۳)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l69-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Teachers work hard every day to make sure you have learnt your lessons,-------they deserve your respect.",
+     "options": [
+      "but",
+      "and",
+      "so",
+      "or"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l69-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "You should know their values,------- tell them that you are grateful to them for their help.",
+     "options": [
+      "but",
+      "and",
+      "so",
+      "or"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l69-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "You may sometimes forget their kindness,-------you need to remember that they shape your lives like your parents.",
+     "options": [
+      "but",
+      "and",
+      "so",
+      "or"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l69-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "Treat them well when they are still around,------- you will be sorry one day.",
+     "options": [
+      "but",
+      "and",
+      "so",
+      "or"
+     ],
+     "answer": 3
+    }
+   ]
+  },
+  {
+   "lesson": 70,
+   "title": "نهایی خرداد ۱۳۹۹ ریاضی-تجربی — تعریف‌یابی (س۱۵-الف، ص۲۶۴)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l70-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "«Our parents have a lot to share with us like their experiences and failures.» — تعریفِ ستون B برای واژهٔ «failures»: -------",
+     "options": [
+      "to make water, air, etc. dirty",
+      "lack of success in doing something",
+      "have something inside",
+      "an arrangement in a particular order",
+      "many different types of things or people"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l70-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "«I really like the variety the store has to offer.» — تعریفِ ستون B برای واژهٔ «variety»: -------",
+     "options": [
+      "to make water, air, etc. dirty",
+      "lack of success in doing something",
+      "have something inside",
+      "an arrangement in a particular order",
+      "many different types of things or people"
+     ],
+     "answer": 4
+    },
+    {
+     "id": "g12-l70-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "«The factory polluted the river.» — تعریفِ ستون B برای واژهٔ «polluted»: -------",
+     "options": [
+      "to make water, air, etc. dirty",
+      "lack of success in doing something",
+      "have something inside",
+      "an arrangement in a particular order",
+      "many different types of things or people"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l70-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "«Try to avoid foods that contain a lot of fat.» — تعریفِ ستون B برای واژهٔ «contain»: -------",
+     "options": [
+      "to make water, air, etc. dirty",
+      "lack of success in doing something",
+      "have something inside",
+      "an arrangement in a particular order",
+      "many different types of things or people"
+     ],
+     "answer": 2
+    }
+   ]
+  },
+  {
+   "lesson": 71,
+   "title": "نهایی خرداد ۱۳۹۹ ریاضی-تجربی — اصطلاحات (س۱۵-ب، ص۲۶۴)",
+   "level": "چهارگزینه‌ای",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g12-l71-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "مفهوم و تعریفِ ضرب‌المثلِ «God helps those who help themselves»: -------",
+     "options": [
+      "Just saying that you will do something doesn`t mean much. Actually, doing it is harder.",
+      "Don`t just wait for good things to happen to you. Work hard to achieve your goals.",
+      "Someone who has experienced some kind of negative situation will try to avoid making the same mistake.",
+      "People like to spend time with others who are similar to them.",
+      "When two people cooperate with each other, they come up with better idea."
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l71-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "مفهوم و تعریفِ ضرب‌المثلِ «Action speak louder than words»: -------",
+     "options": [
+      "Just saying that you will do something doesn`t mean much. Actually, doing it is harder.",
+      "Don`t just wait for good things to happen to you. Work hard to achieve your goals.",
+      "Someone who has experienced some kind of negative situation will try to avoid making the same mistake.",
+      "People like to spend time with others who are similar to them.",
+      "When two people cooperate with each other, they come up with better idea."
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l71-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "مفهوم و تعریفِ ضرب‌المثلِ «A burnt child dreads the fire»: -------",
+     "options": [
+      "Just saying that you will do something doesn`t mean much. Actually, doing it is harder.",
+      "Don`t just wait for good things to happen to you. Work hard to achieve your goals.",
+      "Someone who has experienced some kind of negative situation will try to avoid making the same mistake.",
+      "People like to spend time with others who are similar to them.",
+      "When two people cooperate with each other, they come up with better idea."
+     ],
+     "answer": 2
     }
    ]
   }
