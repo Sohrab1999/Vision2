@@ -69,11 +69,11 @@ describe("r365 — رسیدِ g9exam2", () => {
 });
 
 describe("r365 — شکلِ هفت بانکِ امتحانی درس دوم", () => {
-  it("counts: [8,2,4,2,3,3,2] — id یکتا در کلِ فایل (۱۶۵)", () => {
+  it("counts: [8,2,4,2,3,3,2] — id یکتا در کلِ فایل (۱۹۳)", () => {
     expect([16, 17, 18, 19, 20, 21, 22].map((n) => L(n).count)).toEqual([8, 2, 4, 2, 3, 3, 2]);
     const ids = g9.lessons.flatMap((b) => b.questions.map((x) => x.id));
-    expect(ids).toHaveLength(165);
-    expect(new Set(ids).size).toBe(165);
+    expect(ids).toHaveLength(193);
+    expect(new Set(ids).size).toBe(193);
   });
 
   it("س۲ بانک‌واژهٔ هتل: هر داربست از واژه‌های خودِ بانک چاپی + کلیدهای مکالمه‌محور", () => {
