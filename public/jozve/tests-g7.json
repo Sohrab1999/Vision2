@@ -1,0 +1,435 @@
+{
+ "grade": 7,
+ "title": "جزوه دکتر حسن لطفی — پایه هفتم",
+ "lessons": [
+  {
+   "lesson": 1,
+   "title": "امتحانی درس اول — شکل کوچک و بزرگ حروف (س۱، ص۵۰)",
+   "level": "دوگزینه‌ای",
+   "count": 11,
+   "questions": [
+    {
+     "id": "g7-l1-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "A → -------",
+     "options": [
+      "a",
+      "A"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l1-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "b → -------",
+     "options": [
+      "b",
+      "B"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g7-l1-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "K → -------",
+     "options": [
+      "k",
+      "K"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l1-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "q → -------",
+     "options": [
+      "q",
+      "Q"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g7-l1-5",
+     "n": 5,
+     "category": "vocab",
+     "question": "R → -------",
+     "options": [
+      "r",
+      "R"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l1-6",
+     "n": 6,
+     "category": "vocab",
+     "question": "m → -------",
+     "options": [
+      "m",
+      "M"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g7-l1-7",
+     "n": 7,
+     "category": "vocab",
+     "question": "X → -------",
+     "options": [
+      "x",
+      "X"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l1-8",
+     "n": 8,
+     "category": "vocab",
+     "question": "o → -------",
+     "options": [
+      "o",
+      "O"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g7-l1-9",
+     "n": 9,
+     "category": "vocab",
+     "question": "D → -------",
+     "options": [
+      "d",
+      "D"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l1-10",
+     "n": 10,
+     "category": "vocab",
+     "question": "v → -------",
+     "options": [
+      "v",
+      "V"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g7-l1-11",
+     "n": 11,
+     "category": "vocab",
+     "question": "G → -------",
+     "options": [
+      "g",
+      "G"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 2,
+   "title": "امتحانی درس اول — کلمهٔ ناهماهنگ (س۳، ص۵۰)",
+   "level": "چهارگزینه‌ای",
+   "count": 1,
+   "questions": [
+    {
+     "id": "g7-l2-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "green – blue – black – book",
+     "options": [
+      "green",
+      "blue",
+      "black",
+      "book"
+     ],
+     "answer": 3
+    }
+   ]
+  },
+  {
+   "lesson": 3,
+   "title": "امتحانی درس دوم — نام‌سازی از حروفِ داده‌شده (س۲، ص۵۶)",
+   "level": "سه‌گزینه‌ای",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g7-l3-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "a n a h m → ?",
+     "options": [
+      "Mahsa",
+      "Mahin",
+      "Mahan"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g7-l3-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "a b a r k → ?",
+     "options": [
+      "Arash",
+      "Armin",
+      "Akbar"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g7-l3-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "n a o m → ?",
+     "options": [
+      "Mina",
+      "Mona",
+      "Amin"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 4,
+   "title": "امتحانی درس دوم — وصل‌کردنیِ پایانِ جمله (س۵، ص۵۶)",
+   "level": "شش‌گزینه‌ای",
+   "count": 5,
+   "questions": [
+    {
+     "id": "g7-l4-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "My name is ……. . ( ------- )",
+     "options": [
+      "morning.",
+      "Thanks.",
+      "is Majidi.",
+      "your name?",
+      "Hello.",
+      "Ali Karimi."
+     ],
+     "answer": 5
+    },
+    {
+     "id": "g7-l4-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "What's ……… . ( ------- )",
+     "options": [
+      "morning.",
+      "Thanks.",
+      "is Majidi.",
+      "your name?",
+      "Hello.",
+      "Ali Karimi."
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g7-l4-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "Fine, …… ( ------- )",
+     "options": [
+      "morning.",
+      "Thanks.",
+      "is Majidi.",
+      "your name?",
+      "Hello.",
+      "Ali Karimi."
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g7-l4-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "Good ……. . ( ------- )",
+     "options": [
+      "morning.",
+      "Thanks.",
+      "is Majidi.",
+      "your name?",
+      "Hello.",
+      "Ali Karimi."
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l4-5",
+     "n": 5,
+     "category": "vocab",
+     "question": "My last name ……. . ( ------- )",
+     "options": [
+      "morning.",
+      "Thanks.",
+      "is Majidi.",
+      "your name?",
+      "Hello.",
+      "Ali Karimi."
+     ],
+     "answer": 2
+    }
+   ]
+  }
+ ],
+ "source": {
+  "g7exam1": {
+   "extractedRound": "r370",
+   "section": "نمونه سؤالات امتحانی درس اول پایه هفتم",
+   "examPages": "pdf-p50 (فوترِ خودِ اسکن: ۵۰) — خانوادهٔ یک‌صفحه‌ای؛ ص۵۱ جدولِ واژگانِ درس اول است و پایینِ آن سربرگِ «واژگان و نکات دستوری درس دوم» — مرزِ پایینیِ خانواده",
+   "keyPages": "هیچ پاسخنامهٔ چاپی در جزوهٔ هفتم نیست (کل جزوه پاسخنامه ندارد — جست‌وجوی کلِ لایه: صفر hit «پاسخنامه»)؛ کلیدها استنتاجیِ مستندند",
+   "sectionsTotal": 5,
+   "sectionsExtracted": 2,
+   "sectionsSkipped": 3,
+   "items": 12,
+   "bankCounts": [
+    11,
+    1
+   ],
+   "keyPolicy": "کلیدِ استنتاجیِ ساختاری: س۱ = تبدیلِ کوچک/بزرگِ خودِ حرفِ چاپی (خوداعتبارسنجی — الگوی r357/r364 س۶/س۱۱)؛ س۳ = odd-one-outِ موضوعی (رنگ در برابرِ اشیاء)",
+   "engineNote": "س۱ عمداً MCQ دوگزینه‌ای شد نه تایپی: موتورِ پاسخِ تایپی case-insensitive است (src/lib/typed-answer.ts → normalizeTypedAnswer با toLowerCase) و تبدیلِ کوچک/بزرگ را سنجش‌ناپذیر می‌کند؛ در MCQ انتخابِ کلیکیِ اندیس‌محور است و تفاوتِ a/A دقیق دیده می‌شود. گزینهٔ دومِ هر آیتم = خودِ حرفِ چاپی (تلهٔ «همان‌حرفی‌نوشتن»)؛ چینشِ یک‌درمیان (فرد: هدف اول/جواب 0، زوج: حرفِ چاپی اول/جواب 1) تا الگوی «جوابِ همیشه‌اول» حدس‌زدنی نباشد",
+   "derivedKeys": {
+    "S1": [
+     "A → a (تبدیلِ حرفِ چاپی به شکلِ دیگر)",
+     "b → B (تبدیلِ حرفِ چاپی به شکلِ دیگر)",
+     "K → k (تبدیلِ حرفِ چاپی به شکلِ دیگر)",
+     "q → Q (تبدیلِ حرفِ چاپی به شکلِ دیگر)",
+     "R → r (تبدیلِ حرفِ چاپی به شکلِ دیگر)",
+     "m → M (تبدیلِ حرفِ چاپی به شکلِ دیگر)",
+     "X → x (تبدیلِ حرفِ چاپی به شکلِ دیگر)",
+     "o → O (تبدیلِ حرفِ چاپی به شکلِ دیگر)",
+     "D → d (تبدیلِ حرفِ چاپی به شکلِ دیگر)",
+     "v → V (تبدیلِ حرفِ چاپی به شکلِ دیگر)",
+     "G → g (تبدیلِ حرفِ چاپی به شکلِ دیگر)"
+    ],
+    "S3": [
+     "book = تنها غیرِ رنگ میانِ green/blue/black — سه رنگ از واژگانِ خودِ درس اول"
+    ]
+   },
+   "skippedSections": [
+    "س۲ تصویری: «واژه انگلیسی کدام یک از تصاویر زیر با حرف B شروع می شود» — چهار تصویر (کتاب/کیف/وایت‌برد/پاک‌کن) و چندپاسخِ چاپی هم هست (book/bag/blackboard هر سه با B آغاز می‌شوند) — الگوی r364-369",
+    "س۴ تولیدِ آزاد: «مشخصات خود را بصورت صحیح در جای خالی به انگلیسی بنویسید» (First name/last name) — بی‌کلیدِ چاپی",
+    "س۵ تصویری: کامل‌کردن با (Mr. - Miss) با دو عکس (پسر/دخترِ محجبه)"
+   ],
+   "printQuirks": [
+    "خانوادهٔ امتحانیِ g7 یک‌صفحه‌ای است (در برابرِ ۳-صفحه‌ای‌های g9) — امتحانِ درسِ الفباست",
+    "ساقه‌های س۱ در لایهٔ متنی verbatim است (p50:028: «A……     b……    K……    q……   R……    m……    X……    o……   D……    v……    G……») و با رندرِ ۱۵۰dpi راستی‌آزمایی شد"
+   ]
+  },
+  "g7exam2": {
+   "extractedRound": "r370",
+   "section": "نمونه سؤالات امتحانی درس دوم پایه هفتم",
+   "examPages": "pdf-p56 (فوترِ خودِ اسکن: ۵۶) — خانوادهٔ یک‌صفحه‌ای؛ ص۵۷ جدولِ واژگانِ درس دوم است (مرز)",
+   "keyPages": "هیچ پاسخنامهٔ چاپی در جزوهٔ هفتم نیست؛ کلیدها استنتاجیِ مستندند",
+   "sectionsTotal": 5,
+   "sectionsExtracted": 2,
+   "sectionsSkipped": 3,
+   "items": 8,
+   "bankCounts": [
+    3,
+    5
+   ],
+   "wordBank": [
+    "morning.",
+    "Thanks.",
+    "is Majidi.",
+    "your name?",
+    "Hello.",
+    "Ali Karimi."
+   ],
+   "extraWords": [
+    "Hello."
+   ],
+   "keyPolicy": "کلیدِ استنتاجیِ ساختاری/مکالمه‌محور: س۲ = تنها نامی که دقیقاً از حروفِ چیپ‌های چاپی ساخته می‌شود (آنالیزِ چندمجموعه‌ای)؛ س۵ = تکمیلِ جفتِ ساقه/پایان با انسجامِ مکالمه‌ایِ درسِ معرفی و احوال‌پرسی",
+   "derivedKeys": {
+    "S2": [
+     "(a n a h m) → Mahan: m,a,h,a,n — Mahsa حرفِ s اضافه دارد و Mahin حرفِ i",
+     "(a b a r k) → Akbar: a,k,b,a,r — Arash حرفِ s/h دارد و Armin حرفِ i/m/n",
+     "(n a o m) → Mona: m,o,n,a — Mina و Amin حرفِ i دارند که در چیپ‌ها نیست"
+    ],
+    "S5": [
+     "My name is → Ali Karimi. (تنها «نامِ کامل»؛ is Majidi ساختارِ نامِ خانوادگی دارد)",
+     "What's → your name? (تنها دنباله‌ای که پرسشِ «اسمت چیه؟» می‌سازد)",
+     "Fine, → Thanks. (پاسخِ احوال‌پرسیِ درس)",
+     "Good → morning. (تنها بخشِ روز)",
+     "My last name → is Majidi. (فعلِ is + نامِ خانوادگی)"
+    ]
+   },
+   "skippedSections": [
+    "س۱ علامت‌گذاریِ دایره/زیرخطِ نام/نام‌خانوادگی (Kamali/Mobina/Mahsa/Mohammadi/Majidi/Ayda/Hani/Saro) — تبدیلِ MCQ نیازمندِ گزینهٔ غیرچاپی یا نخستینِ گزینهٔ فارسیِ کارت است؛ مستثنی + فرصتِ مستقلِ ثبت‌شده",
+    "س۳ تصویری-وابسته: ص/غ با چهار تصویر (classroom/teacher/eraser/backpack) — ساقه‌های چاپی‌اند (it is a classroom/She is a teacher/It is an eraser/It is a backpack) ولی کلید در تصویر است نه در ساقه",
+    "س۴ تصویری-وابسته: کامل‌کردن با she/he با دو عکس (Mina/معلمِ پای تخته)",
+    "س۲ردیفِ ۴ حذفِ آیتمی: چیپ‌های چاپی «a n a h m» (کپیِ ردیفِ ۱) هیچ‌یک از Akbar/Kobra/Kasra را نمی‌سازد — نقصِ چاپ (الگویِ بی‌اعتباریِ r366 س۷ق۷)"
+   ],
+   "printQuirks": [
+    "چیپ‌های ردیفِ ۴ = کپیِ ردیفِ ۱ (a n a h m) — نقصِ چاپ",
+    "ستونِ چپ ۵ ساقه و ستونِ راست ۶ پاسخ — «Hello.» اضافیِ چاپی است؛ در گارد never-key قفل شد",
+    "ستون‌های س۵ فقط در رندرند (لایهٔ متنیِ ص۵۶ سکشنِ ۵ را ندارد) — خوانده از رندرِ ۱۵۰/۲۲۰dpi",
+    "What's با آپاستروفِ راست‌سادهٔ چاپ (') — verbatim"
+   ]
+  },
+  "g7familyMap": {
+   "extractedRound": "r370",
+   "note": "نقشهٔ ۸ خانوادهٔ «نمونه سؤالات امتحانی» جزوهٔ هفتم — از جست‌وجوی لایه؛ سربرگ‌های دوخطی (مثل «درس\nدوم») با جست‌وجوی دوسطری یافت شدند",
+   "families": [
+    {
+     "lesson": "درس اول",
+     "pdfPage": 50,
+     "round": "r370",
+     "status": "استخراج شد — ۲ بانک/۱۲ آیتم از ۵ سکشن"
+    },
+    {
+     "lesson": "درس دوم",
+     "pdfPage": 56,
+     "round": "r370",
+     "status": "استخراج شد — ۲ بانک/۸ آیتم از ۵ سکشن"
+    },
+    {
+     "lesson": "درس سوم",
+     "pdfPage": 65,
+     "round": null,
+     "status": "در انتظار راند بعد"
+    },
+    {
+     "lesson": "درس چهارم",
+     "pdfPage": 74,
+     "round": null,
+     "status": "در انتظار راند بعد"
+    },
+    {
+     "lesson": "درس پنجم",
+     "pdfPage": 84,
+     "round": null,
+     "status": "در انتظار راند بعد"
+    },
+    {
+     "lesson": "درس ششم",
+     "pdfPage": 90,
+     "round": null,
+     "status": "در انتظار راند بعد"
+    },
+    {
+     "lesson": "درس هفتم",
+     "pdfPage": 97,
+     "round": null,
+     "status": "در انتظار راند بعد"
+    },
+    {
+     "lesson": "درس هشتم",
+     "pdfPage": 103,
+     "round": null,
+     "status": "در انتظار راند بعد — نزدیکِ انتهای جزوه (۱۰۴ صفحه)"
+    }
+   ],
+   "g8Note": "جزوهٔ هشتم هم ۷ خانواده دارد (pdf-p18/27/35/41/50/60/72) — کارتِ تستِ هشتم پس از g7؛ همتایانِ کامل‌اند، نه غایب (پاسخِ پروبِ r369)"
+  }
+ }
+}
