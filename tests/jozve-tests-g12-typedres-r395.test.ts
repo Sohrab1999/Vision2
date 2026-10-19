@@ -32,14 +32,14 @@ const L = (n: number): TLesson => {
 };
 
 describe("r395 — شکلِ فایل پس از بانکِ l142", () => {
-  it("۱۴۲ بانک / ۸۷۳ id یکتا / دمِ counts +22 / همخوانیِ count با questions", () => {
-    expect(bank.lessons).toHaveLength(142);
+  it("۱۴۲ بانک / ۸۷۳ id یکتا / دمِ counts +22 / همخوانیِ count با questions — r396 آن را به ۱۴۳/۸۹۱ گستراند", () => {
+    expect(bank.lessons).toHaveLength(143);
     const counts = bank.lessons.map((l) => l.count);
-    expect(counts).toHaveLength(142);
-    expect(counts.slice(-1)).toEqual([22]);
+    expect(counts).toHaveLength(143);
+    expect(counts.slice(-2)).toEqual([22, 18]);
     const ids = bank.lessons.flatMap((b2) => b2.questions.map((q) => q.id));
-    expect(ids).toHaveLength(873);
-    expect(new Set(ids).size).toBe(873);
+    expect(ids).toHaveLength(891);
+    expect(new Set(ids).size).toBe(891);
     expect(ids[850]).toBe("g12-l141-6");
     expect(ids[851]).toBe("g12-l142-1");
     expect(ids[872]).toBe("g12-l142-22");

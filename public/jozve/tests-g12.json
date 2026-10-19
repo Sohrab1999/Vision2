@@ -1433,6 +1433,31 @@
    },
    "engineNote": "یکهزاردرصدِ تایپی (kind=typed، options=[کلیدِ نخست] به‌عنوانِ داربست) — مستثنی از حلقهٔ MCQ؛ خانهٔ ۱۵خطِ چسبیده به الگویِ l136؛ پیشوندِ گویندهٔ Ali:/Babak:/A:-B: به الگویِ مکالمهٔ l136؛ راهنمای مصدرِ داخلِ پرانتز وفادار به چاپ (فقط نیم‌فاصلهٔ درونی نرمال شد)؛ دو acceptedِ چندعضوی: l142-5 (had got/had gotten) و l142-17 (might/would/could choose)",
    "futureNote": "مخزن از ۸۹ به ۶۷ ردیف رسید — قسطِ دوم: ۱۷ جمله‌سازی، قسطِ سوم: ۵۰ پاسخِ مدل؛ دو فرصتِ دیگرِ ثبت‌شدهٔ بخش: فیلدِ تصویرِ QuizQuestion (REQUIRES-APPROVAL) و case-sensitive mode"
+  },
+  "g12typedres2": {
+   "extractedRound": "r396",
+   "section": "بانکِ تایپیِ نهایی‌ها — قسمتِ دوم: جمله‌سازی (l143) — دومین بانکِ گردآوریِ درون‌خانوادگی؛ ۱۸ ردیفِ مرتب‌کردنِ کلمات از ۸ برگه — با این بانک همهٔ ردیف‌های جمله‌سازیِ مخزن مصرف شد و فقط ۵۱ ردیفِ «پاسخِ مدل» باقی ماند (قسطِ سوم)",
+   "examPages": "بدونِ صفحهٔ آزمونِ تازه؛ چیپ‌ها از لایهٔ متنیِ g12.txt (ص۳۴۵/۳۳۱/۳۲۴/۳۱۷/۳۱۰/۳۰۳/۲۸۹/۲۶۵) و مدل‌ها از کلیدهای چاپی: r381 ص۳۴۸ (دو ترتیب با «یا»)، r386 ص۳۰۷ (سالم)، r387 ص۲۹۲، r388m ص۲۶۷؛ بازسازیِ کلیدهای عمودیِ قدیمیِ r382/r383/r384 (ص۳۳۴/۳۲۷/۳۲۰) با خوانشِ پایین-به-بالای چیپ‌های RTL + تأییدِ سه‌سویه با کلیدِ تمیزِ دوقلو (r386-ق۳۸ = نسخهٔ Minaِ r384-ق۳۲) و یکتاییِ گرامریِ چیپ‌ها؛ r385-ق۳۲/۳۳ از مدلِ جملهٔ کاملِ چاپیِ رسیدِ همان راند",
+   "keyPolicy": "مدل‌ها عینِ چاپ؛ بک‌تیک/کوتیشنِ خمیدهٔ چاپ (didn`t/hadn’t) به آپوستروفِ ASCII نرمال شد (الگویِ l136/r393)؛ حرفِ بزرگِ آغازِ جمله در مدل‌ها از چاپ؛ دو ترتیبِ چاپیِ r381-ق۳۸ → accepted دومَعضوی (ویرگولِ انتهاییِ نسخهٔ دومِ چاپ به نقطه نرمال شد)؛ چسب‌ها و دوفاصله‌های چیپ‌ها («who /and»، «could rest  /./»، «John  /. /») وفادارانه ماند",
+   "items": 18,
+   "bankCounts": {
+    "l143": 18
+   },
+   "reservoirCensus": {
+    "consumedHere": {
+     "r381-shahrivar1401": "ق۳۸ (۱)",
+     "r382-dey1400": "ق۳۳/۳۴ (۲)",
+     "r383-shahrivar1400": "ق۳۳/۳۴ (۲)",
+     "r384-khordad1400h": "ق۳۲/۳۳ (۲)",
+     "r385-khordad1400m": "ق۳۲/۳۳ (۲ — با کشفِ این راند: این دو ردیف جمله‌سازی‌اند نه پاسخِ مدل)",
+     "r386-dey1399": "ق۳۸ (۱)",
+     "r387-shahrivar1399": "ق۵۹-۶۲ (۴)",
+     "r388m-khordad1399m": "س۱۶ چهارگانهٔ a/b (۴)"
+    },
+    "remaining": "۵۱ ردیفِ پاسخِ مدلِ خوانداری/شنیداری/واژه‌نامه (قسطِ سوم): r380-ق۴۳/۴۴/۴۷/۴۸؛ r381-ق۳۹/۴۵-۴۷/۵۲/۵۷-۵۸؛ r382-ق۴۰/۴۳/۴۴/۴۷/۴۸؛ r383-ق۴۰/۴۷/۴۸؛ r384-ق۳۴/۳۸/۴۲/۴۳؛ r385-ق۳۴/۴۳؛ r386-ق۴۴/۴۵/۵۰/۵۱؛ r387-ق۴۳/۴۴ (means/founding)؛ r390-ق۳۷/۳۸/۵۵-۵۷/۶۰؛ r391-ق۳۵/۳۶/۴۸/۴۹/۵۳-۵۵؛ r392-ق۴۹؛ r393-ق۱-۶ شنیداری — یادداشتِ تعدیل: سرشمارِ جزئیِ ۹۱ (=۲۲+۱۸+۵۱) با جمعِ متحرکِ تاریخیِ رسیدها (۸۹) ±۲ اختلاف دارد؛ ابهام در ردیف‌های ۴۵-۴۷ِ r381 و یکی از ردیف‌های r382 — فهرستِ جزئیِ همین رسید ملاکِ قسطِ سوم است"
+   },
+   "engineNote": "یکهزاردرصدِ تایپی (kind=typed) — مستثنی از حلقهٔ MCQ؛ ساقه = چیپ‌های خامِ چاپ با « / » (الگویِ l110/l137)؛ options=[مدلِ نخست] به‌عنوانِ داربستِ بازبینی؛ دوتاییِ چاپیِ r381-ق۳۸ در accepted؛ ترتیبِ برگه‌ها همان ترتیبِ استخراجِ r380-r394",
+   "futureNote": "مخزن از ۶۷ به ۵۱ ردیف رسید — قسطِ سوم (پایانی): ۵۱ پاسخِ مدل؛ دو فرصتِ دیگرِ ثبت‌شدهٔ بخش: فیلدِ تصویرِ QuizQuestion (REQUIRES-APPROVAL) و case-sensitive mode"
   }
  },
  "answerArbitration": [
@@ -14467,6 +14492,267 @@
      "kind": "typed",
      "accepted": [
       "were"
+     ]
+    }
+   ]
+  },
+  {
+   "lesson": 143,
+   "title": "مرورِ تایپیِ نهایی‌ها — جمله‌سازی (قسمتِ دومِ مخزنِ ۸۹ ردیفی)",
+   "level": "تایپی",
+   "count": 18,
+   "questions": [
+    {
+     "id": "g12-l143-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "the teacher / had done / the students / their homework / when / came to the class /. /",
+     "options": [
+      "When the teacher came to the class, the students had done their homework."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "When the teacher came to the class, the students had done their homework.",
+      "The students had done their homework when the teacher came to the class."
+     ]
+    },
+    {
+     "id": "g12-l143-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "got home / had fallen/ The baby/ asleep/ when /I/. /",
+     "options": [
+      "The baby had fallen asleep when I got home."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "The baby had fallen asleep when I got home."
+     ]
+    },
+    {
+     "id": "g12-l143-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "John/ he/ if / more time / had / could rest  /./",
+     "options": [
+      "John could rest if he had more time."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "John could rest if he had more time."
+     ]
+    },
+    {
+     "id": "g12-l143-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "went to the zoo / had never seen/ Sara/ a bear/ before /she/. /",
+     "options": [
+      "Sara had never seen a bear before she went to the zoo."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "Sara had never seen a bear before she went to the zoo."
+     ]
+    },
+    {
+     "id": "g12-l143-5",
+     "n": 5,
+     "category": "grammar",
+     "question": "My sister/ she/ if / her room / were at home / would clean /. /",
+     "options": [
+      "My sister would clean her room if she were at home."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "My sister would clean her room if she were at home."
+     ]
+    },
+    {
+     "id": "g12-l143-6",
+     "n": 6,
+     "category": "grammar",
+     "question": "had gotten/ was upset/ because/ a bad score/ she/ Roya /. /",
+     "options": [
+      "Roya was upset because she had gotten a bad score."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "Roya was upset because she had gotten a bad score."
+     ]
+    },
+    {
+     "id": "g12-l143-7",
+     "n": 7,
+     "category": "grammar",
+     "question": "the car / were at home /if / he / could fix/ John  /. /",
+     "options": [
+      "John could fix the car if he were at home."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "John could fix the car if he were at home."
+     ]
+    },
+    {
+     "id": "g12-l143-8",
+     "n": 8,
+     "category": "grammar",
+     "question": "moved to China / had already learned/ Chinese/ Joe/ he/ when /. /",
+     "options": [
+      "Joe had already learned Chinese when he moved to China."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "Joe had already learned Chinese when he moved to China."
+     ]
+    },
+    {
+     "id": "g12-l143-9",
+     "n": 9,
+     "category": "grammar",
+     "question": "you /if / They / a house /  would buy / they were /./",
+     "options": [
+      "They would buy a house if they were you."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "They would buy a house if they were you."
+     ]
+    },
+    {
+     "id": "g12-l143-10",
+     "n": 10,
+     "category": "grammar",
+     "question": "had gotten/ was/ a bad score/ she/ Mina/ upset/ because /. /",
+     "options": [
+      "Mina was upset because she had gotten a bad score."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "Mina was upset because she had gotten a bad score."
+     ]
+    },
+    {
+     "id": "g12-l143-11",
+     "n": 11,
+     "category": "grammar",
+     "question": "work / some workers / who /and teachers/ in the village / there are /.",
+     "options": [
+      "There are some workers and teachers who work in the village."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "There are some workers and teachers who work in the village."
+     ]
+    },
+    {
+     "id": "g12-l143-12",
+     "n": 12,
+     "category": "grammar",
+     "question": "wrote / didn't / a letter / the girl / she / , /?",
+     "options": [
+      "The girl wrote a letter, didn't she?"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "The girl wrote a letter, didn't she?"
+     ]
+    },
+    {
+     "id": "g12-l143-13",
+     "n": 13,
+     "category": "grammar",
+     "question": "because / hadn't rained / everything in the garden / it / was brown /.",
+     "options": [
+      "Everything in the garden was brown because it hadn't rained."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "Everything in the garden was brown because it hadn't rained."
+     ]
+    },
+    {
+     "id": "g12-l143-14",
+     "n": 14,
+     "category": "grammar",
+     "question": "be / by the teacher / the parents / called / should /.",
+     "options": [
+      "The parents should be called by the teacher."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "The parents should be called by the teacher."
+     ]
+    },
+    {
+     "id": "g12-l143-15",
+     "n": 15,
+     "category": "grammar",
+     "question": "more free time / Mina / would / had / help / you / if / she / with your homework /.",
+     "options": [
+      "Mina would help you with your homework if she had more free time."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "Mina would help you with your homework if she had more free time."
+     ]
+    },
+    {
+     "id": "g12-l143-16",
+     "n": 16,
+     "category": "grammar",
+     "question": "was / because / he / my mother / hadn't / angry / my brother / washed / with / his hands /.",
+     "options": [
+      "My mother was angry with my brother because he hadn't washed his hands."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "My mother was angry with my brother because he hadn't washed his hands."
+     ]
+    },
+    {
+     "id": "g12-l143-17",
+     "n": 17,
+     "category": "grammar",
+     "question": "bought / the students / which / their teacher / some / useful / suggested / books /.",
+     "options": [
+      "The students bought some useful books which their teacher suggested."
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "The students bought some useful books which their teacher suggested."
+     ]
+    },
+    {
+     "id": "g12-l143-18",
+     "n": 18,
+     "category": "grammar",
+     "question": "cold weather / into / converted / water / in / ice / be / can / ?",
+     "options": [
+      "Can water be converted into ice in cold weather?"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "Can water be converted into ice in cold weather?"
      ]
     }
    ]

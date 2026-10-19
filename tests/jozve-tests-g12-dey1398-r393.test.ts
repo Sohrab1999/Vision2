@@ -1,3 +1,4 @@
+// R396-WIDENED — l143 (۱۸ آیتمِ جمله‌سازیِ مخزن): 142→143 بانک / 873→891 id / دمِ counts +18
 // R395-WIDENED — l142 (۲۲ آیتمِ تایپیِ مخزنِ افعال): 141→142 بانک / 851→873 id / دمِ counts +22
 import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
@@ -409,7 +410,7 @@ describe("r393 — ترازیابیِ کلیدِ رسمیِ بین‌خانوا�
 
 describe("r393 — پیمان‌های سراسریِ فایل", () => {
   it("شکلِ فایل: ۱۲۸ بانک/[…,4,6,4,4,3,2,3,2,4,4,4,4,4,2,4,1,5,4]/۷۹۷ id یکتا — الگویِ g12-l1..l128", () => {
-    expect(bank.lessons)./* R395-WIDENED */ toHaveLength(142);
+    expect(bank.lessons)./* R395-WIDENED */ /* R396-WIDENED */ toHaveLength(143);
     expect(bank.lessons.map((l) => l.count)).toEqual([
       100, 100, 100, 6, 7, 6, 10, 4, 6, 8, 4, 4, 4, 4, 4, 5, 7, 4, 4, 4, 2, 5, 7, 4, 4, 4, 2, 2, 7,
       4, 3, 3, 4, 2, 6, 7, 4, 4, 4, 4, 2, 6, 4, 6, 8, 4, 4, 4, 4, 6, 6, 3, 3, 6, 4, 4, 4, 4, 4, 1,
@@ -417,10 +418,11 @@ describe("r393 — پیمان‌های سراسریِ فایل", () => {
       4, 8, 2, 4, 3, 3, 4, 4, 4, 3, 3, 8, 2, 4, 3, 3, 4, 4, 2, 4, 6, 4, 4,
       3, 2, 3, 2, 4, 4, 4, 4, 4, 2, 4, 1, 5, 4, 4, 4, 4, 4, 3, 3, 4, 4, 2, 6, 6, 4, 6,
       22,
+      18,
     ]);
     const ids = bank.lessons.flatMap((b2) => b2.questions.map((q) => q.id));
-    expect(ids).toHaveLength(873);
-    expect(new Set(ids).size).toBe(873);
+    expect(ids).toHaveLength(891);
+    expect(new Set(ids).size).toBe(891);
     expect(ids[751]).toBe("g12-l115-1");
     expect(ids[754]).toBe("g12-l116-1");
     expect(ids[756]).toBe("g12-l117-1");

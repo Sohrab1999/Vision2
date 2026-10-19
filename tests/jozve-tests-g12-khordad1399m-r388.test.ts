@@ -1,3 +1,4 @@
+// R396-WIDENED — l143 (۱۸ آیتمِ جمله‌سازیِ مخزن): 142→143 بانک / 873→891 id / دمِ counts +18
 // R395-WIDENED — l142 (۲۲ آیتمِ تایپیِ مخزنِ افعال): 141→142 بانک / 851→873 id / دمِ counts +22
 /**
  * r388 — گاردِ برگه‌های نهم/دهمِ بخشِ نهایی‌ها:
@@ -491,13 +492,13 @@ describe("r388 — بانک‌های خرداد ۱۳۹۹ ریاضی-تجربی (
 
 describe("r388 — پیمان‌های سراسریِ فایل", () => {
   it("شکلِ فایل: ۷۱ بانک/[…,4,4,1,2,1,2,3,3,4,4,4,4,4,3]/۵۹۴ id یکتا — الگویِ g12-l1..l71", () => {
-    expect(bank.lessons)./* R395-WIDENED */ toHaveLength(142);
+    expect(bank.lessons)./* R395-WIDENED */ /* R396-WIDENED */ toHaveLength(143);
     expect(bank.lessons.map((l) => l.count)).toEqual(
-      [100, 100, 100, 6, 7, 6, 10, 4, 6, 8, 4, 4, 4, 4, 4, 5, 7, 4, 4, 4, 2, 5, 7, 4, 4, 4, 2, 2, 7, 4, 3, 3, 4, 2, 6, 7, 4, 4, 4, 4, 2, 6, 4, 6, 8, 4, 4, 4, 4, 6, 6, 3, 3, 6, 4, 4, 4, 4, 4, 1, 2, 1, 2, 3, 3, 4, 4, 4, 4, 4, 3, 1, 3, 2, 3, 3, 5, 4, 4, 4, 4, 4, 2, 2, 4, 4, 4, 4, 4, 4, 2, 4, 8, 2, 4, 3, 3, 4, 4, 4, 3, 3, 8, 2, 4, 3, 3, 4, 4, 2, 4, 6, 4, 4, 3, 2, 3, 2, 4, 4, 4, 4, 4, 2, 4, 1, 5, 4, 4, 4, 4, 4, 3, 3, 4, 4, 2, 6, 6, 4, 6, 22],
+      [100, 100, 100, 6, 7, 6, 10, 4, 6, 8, 4, 4, 4, 4, 4, 5, 7, 4, 4, 4, 2, 5, 7, 4, 4, 4, 2, 2, 7, 4, 3, 3, 4, 2, 6, 7, 4, 4, 4, 4, 2, 6, 4, 6, 8, 4, 4, 4, 4, 6, 6, 3, 3, 6, 4, 4, 4, 4, 4, 1, 2, 1, 2, 3, 3, 4, 4, 4, 4, 4, 3, 1, 3, 2, 3, 3, 5, 4, 4, 4, 4, 4, 2, 2, 4, 4, 4, 4, 4, 4, 2, 4, 8, 2, 4, 3, 3, 4, 4, 4, 3, 3, 8, 2, 4, 3, 3, 4, 4, 2, 4, 6, 4, 4, 3, 2, 3, 2, 4, 4, 4, 4, 4, 2, 4, 1, 5, 4, 4, 4, 4, 4, 3, 3, 4, 4, 2, 6, 6, 4, 6, 22, 18],
     );
     const ids = bank.lessons.flatMap((b2) => b2.questions.map((q) => q.id));
-    expect(ids).toHaveLength(873);
-    expect(new Set(ids).size).toBe(873);
+    expect(ids).toHaveLength(891);
+    expect(new Set(ids).size).toBe(891);
     expect(ids[559]).toBe("g12-l60-1");
     expect(ids[564]).toBe("g12-l63-2");
     expect(ids[565]).toBe("g12-l64-1");
@@ -521,7 +522,8 @@ describe("r388 — پیمان‌های سراسریِ فایل", () => {
   it("نشت‌سنجِ راندیِ ردیف‌های مستثنی (دامنه: بانک‌های ۶۰-۷۱): تصویری/تولیدی/شنیداریِ هر دو برگه غایب‌اند", () => {
     const mine = bank.lessons.filter((b2) => b2.lesson >= 60 && b2.lesson <= 71).flatMap((b2) => b2.questions);
     expect(mine).toHaveLength(35); // ۶ + ۲۹
-    for (const forbidden of [    // R395-LEGIT — 2 رشته با بانکِ l142 (مخزنِ افعالِ نهایی‌ها) مشروع شد و از نشت‌سنج حذف شد (الگویِ Solar power): "have been invited"→g12-l142-14، "was said"→g12-l142-15
+    for (const forbidden of [    // R396-LEGIT — 6 رشته با بانکِ l143 (جمله‌سازیِ مخزن) مشروع شد و از نشت‌سنج حذف شد (الگویِ Solar power): "There are some workers and teachers"→g12-l143-11، "The girl wrote a letter"→g12-l143-12، "Mina would help you with your homework"→g12-l143-15، "My mother was angry with my brother"→g12-l143-16، "The students bought some useful books"→g12-l143-17، "Can water be converted into ice"→g12-l143-18
+    // R395-LEGIT — 2 رشته با بانکِ l142 (مخزنِ افعالِ نهایی‌ها) مشروع شد و از نشت‌سنج حذف شد (الگویِ Solar power): "have been invited"→g12-l142-14، "was said"→g12-l142-15
 
       "The mother is hugging", // ناشنوایان س۱ (تصویری)
       "sits in the balcony", // ناشنوایان س۱ (تصویری)
@@ -536,8 +538,8 @@ describe("r388 — پیمان‌های سراسریِ فایل", () => {
       "Sharks are fast-swimming", // ناشنوایان س۱۵ (جدولِ پاراگراف)
       "Tigers live on the ground", // ناشنوایان س۱۵ (جدولِ پاراگراف)
       "The stars are tiny points", // ناشنوایان س۱۵ (جدولِ پاراگراف)
-      "There are some workers and teachers", // ناشنوایان س۱۷ (تایپی)
-      "The girl wrote a letter", // ناشنوایان س۱۷ (تایپی)
+      // ناشنوایان س۱۷ (تایپی)
+      // ناشنوایان س۱۷ (تایپی)
       "Ferdowsi", // ناشنوایان س۱۸ (تولیدیِ تصویری)
       "healthy lifestyle", // ناشنوایان س۱۸ چیپ
       "No, he doesn`t appreciate", // خرداد کلیدِ ۱۰ (آشفته — باید آشفته بماند)
@@ -549,10 +551,10 @@ describe("r388 — پیمان‌های سراسریِ فایل", () => {
       // خرداد س۹ (تایپی)
       // خرداد س۹ (تایپی)
       "might/would /could choose", // خرداد س۹ (تایپی)
-      "Mina would help you with your homework", // خرداد س۱۶ (تایپی)
-      "My mother was angry with my brother", // خرداد س۱۶ (تایپی)
-      "The students bought some useful books", // خرداد س۱۶ (تایپی)
-      "Can water be converted into ice", // خرداد س۱۶ (تایپی)
+      // خرداد س۱۶ (تایپی)
+      // خرداد س۱۶ (تایپی)
+      // خرداد س۱۶ (تایپی)
+      // خرداد س۱۶ (تایپی)
       "they should stay at home", // خرداد س۱۳ کلیدِ ۵۱ (تصویری-ربط)
       "Jimmy seems very tired", // خرداد س۱۳ کلیدِ ۵۲ (تصویری-ربط)
       "Damavand", // خرداد س۱۷ (تولیدیِ تصویری)

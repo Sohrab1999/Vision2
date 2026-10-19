@@ -1,3 +1,4 @@
+// R396-WIDENED — l143 (۱۸ آیتمِ جمله‌سازیِ مخزن): 142→143 بانک / 873→891 id / دمِ counts +18
 // R395-WIDENED — l142 (۲۲ آیتمِ تایپیِ مخزنِ افعال): 141→142 بانک / 851→873 id / دمِ counts +22
 /**
  * r387 — گاردِ برگهٔ هشتمِ بخشِ نهایی‌ها:
@@ -351,13 +352,13 @@ describe("r387 — بازتولیدِ لایه (ضدِ رونویسیِ دستی
 
 describe("r387 — پیمان‌های سراسریِ فایل", () => {
   it("شکلِ فایل: ۵۹ بانک/[…,4,6,8,4,4,4,4,6,6,3,3,6,4,4,4,4,4]/۵۵۹ id یکتا — الگویِ g12-l1..l59", () => {
-    expect(bank.lessons)./* R395-WIDENED */ toHaveLength(142);
+    expect(bank.lessons)./* R395-WIDENED */ /* R396-WIDENED */ toHaveLength(143);
     expect(bank.lessons.map((l) => l.count)).toEqual(
-      [100, 100, 100, 6, 7, 6, 10, 4, 6, 8, 4, 4, 4, 4, 4, 5, 7, 4, 4, 4, 2, 5, 7, 4, 4, 4, 2, 2, 7, 4, 3, 3, 4, 2, 6, 7, 4, 4, 4, 4, 2, 6, 4, 6, 8, 4, 4, 4, 4, 6, 6, 3, 3, 6, 4, 4, 4, 4, 4, 1, 2, 1, 2, 3, 3, 4, 4, 4, 4, 4, 3, 1, 3, 2, 3, 3, 5, 4, 4, 4, 4, 4, 2, 2, 4, 4, 4, 4, 4, 4, 2, 4, 8, 2, 4, 3, 3, 4, 4, 4, 3, 3, 8, 2, 4, 3, 3, 4, 4, 2, 4, 6, 4, 4, 3, 2, 3, 2, 4, 4, 4, 4, 4, 2, 4, 1, 5, 4, 4, 4, 4, 4, 3, 3, 4, 4, 2, 6, 6, 4, 6, 22],
+      [100, 100, 100, 6, 7, 6, 10, 4, 6, 8, 4, 4, 4, 4, 4, 5, 7, 4, 4, 4, 2, 5, 7, 4, 4, 4, 2, 2, 7, 4, 3, 3, 4, 2, 6, 7, 4, 4, 4, 4, 2, 6, 4, 6, 8, 4, 4, 4, 4, 6, 6, 3, 3, 6, 4, 4, 4, 4, 4, 1, 2, 1, 2, 3, 3, 4, 4, 4, 4, 4, 3, 1, 3, 2, 3, 3, 5, 4, 4, 4, 4, 4, 2, 2, 4, 4, 4, 4, 4, 4, 2, 4, 8, 2, 4, 3, 3, 4, 4, 4, 3, 3, 8, 2, 4, 3, 3, 4, 4, 2, 4, 6, 4, 4, 3, 2, 3, 2, 4, 4, 4, 4, 4, 2, 4, 1, 5, 4, 4, 4, 4, 4, 3, 3, 4, 4, 2, 6, 6, 4, 6, 22, 18],
     );
     const ids = bank.lessons.flatMap((b2) => b2.questions.map((q) => q.id));
-    expect(ids).toHaveLength(873);
-    expect(new Set(ids).size).toBe(873);
+    expect(ids).toHaveLength(891);
+    expect(new Set(ids).size).toBe(891);
     expect(ids[521]).toBe("g12-l51-1");
     expect(ids[527]).toBe("g12-l52-1");
     expect(ids[530]).toBe("g12-l53-1");
@@ -384,7 +385,8 @@ describe("r387 — پیمان‌های سراسریِ فایل", () => {
   it("نشت‌سنجِ راندیِ ردیف‌های مستثنی (دامنه: بانک‌های ۵۱-۵۹ — درسِ omelet): شنیداریِ س۱-س۳، تصویریِ س۵، تولیدیِ س۹-س۱۰ و ۳۷/۳۸ و س۱۴-س۱۵ و س۱۷-س۱۸ غایب‌اند", () => {
     const mine = bank.lessons.filter((b2) => b2.lesson >= 51 && b2.lesson <= 59).flatMap((b2) => b2.questions);
     expect(mine).toHaveLength(38);
-    for (const forbidden of [
+    for (const forbidden of [    // R396-LEGIT — 4 رشته با بانکِ l143 (جمله‌سازیِ مخزن) مشروع شد و از نشت‌سنج حذف شد (الگویِ Solar power): "There are some workers and teachers"→g12-l143-11، "The girl wrote a letter"→g12-l143-12، "Everything in the garden"→g12-l143-13، "The parents should be called"→g12-l143-14
+
       "Amin is really tired", // س۱ (شنیداریِ صوتی)
       "Where did Alex leave his jacket", // س۲ (شنیداریِ صوتی)
       "It is at 6:30", // س۳ کلیدِ مدل
@@ -401,10 +403,10 @@ describe("r387 — پیمان‌های سراسریِ فایل", () => {
       "so he passed it", // س۱۴ کلیدِ چاپی
       "Smoking", // س۱۵ (تولیدی)
       "risk of death", // س۱۵ (تولیدی)
-      "There are some workers and teachers", // س۱۷ پاسخِ مدل (تایپی)
-      "The girl wrote a letter", // س۱۷ پاسخِ مدل (تایپی)
-      "Everything in the garden", // س۱۷ پاسخِ مدل (تایپی)
-      "The parents should be called", // س۱۷ پاسخِ مدل (تایپی)
+      // س۱۷ پاسخِ مدل (تایپی)
+      // س۱۷ پاسخِ مدل (تایپی)
+      // س۱۷ پاسخِ مدل (تایپی)
+      // س۱۷ پاسخِ مدل (تایپی)
       "Ferdowsi", // س۱۸ (تولیدیِ تصویری)
       "Watching TV", // س۱۸ (تولیدیِ تصویری)
       "Clean energy", // س۱۸ (تولیدیِ تصویری)
