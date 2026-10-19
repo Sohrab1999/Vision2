@@ -72,8 +72,8 @@ describe("r365 — شکلِ هفت بانکِ امتحانی درس دوم", () 
   it("counts: [8,2,4,2,3,3,2] — id یکتا در کلِ فایل (۲۱۷)", () => {
     expect([16, 17, 18, 19, 20, 21, 22].map((n) => L(n).count)).toEqual([8, 2, 4, 2, 3, 3, 2]);
     const ids = g9.lessons.flatMap((b) => b.questions.map((x) => x.id));
-    expect(ids).toHaveLength(248);
-    expect(new Set(ids).size).toBe(248);
+    expect(ids).toHaveLength(269);
+    expect(new Set(ids).size).toBe(269);
   });
 
   it("س۲ بانک‌واژهٔ هتل: هر داربست از واژه‌های خودِ بانک چاپی + کلیدهای مکالمه‌محور", () => {

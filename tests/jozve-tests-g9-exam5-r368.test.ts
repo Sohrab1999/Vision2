@@ -78,8 +78,8 @@ describe("r368 — شکلِ نه بانکِ امتحانی درس پنجم", () 
   it("counts: [10,4,2,3,3,2,2,2,3] — id یکتا در کلِ فایل (۲۴۸)", () => {
     expect([36, 37, 38, 39, 40, 41, 42, 43, 44].map((n) => L(n).count)).toEqual([10, 4, 2, 3, 3, 2, 2, 2, 3]);
     const ids = g9.lessons.flatMap((b) => b.questions.map((x) => x.id));
-    expect(ids).toHaveLength(248);
-    expect(new Set(ids).size).toBe(248);
+    expect(ids).toHaveLength(269);
+    expect(new Set(ids).size).toBe(269);
   });
 
   it("س۲ بانک واژه: ده بلنک با کلیدِ مکالمه‌محور — داربست هم‌بانکِ چاپی", () => {

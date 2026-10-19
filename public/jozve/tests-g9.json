@@ -4278,6 +4278,378 @@
      "keyWhy": "کامل‌شدنیِ یکتا: technol_gy → technology؛ هم‌ارزِ مفهومیِ «use IT*» (لایه p78:017) — «technology» در لایه فقط در ضمیمهٔ تلفظِ ch (لایه p105) هست؛ لنگرِ واژگانیِ ضعیف‌تر از دو آیتمِ دیگر — مستند"
     }
    ]
+  },
+  {
+   "lesson": 45,
+   "title": "امتحانی درس ششم — بانک واژهٔ مکالمهٔ سلامتی و آسیب (س۲، ص۹۵)",
+   "level": "تمرین تایپی (بانک واژه)",
+   "count": 8,
+   "questions": [
+    {
+     "id": "g9-l45-1",
+     "n": 1,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "A: ------- you like school trips?",
+     "options": [
+      "do",
+      "did"
+     ],
+     "answer": 0,
+     "accepted": [
+      "do"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ verbatim درس: «I don’t like school trips.» (لایه p90:042) + Trip* (p89:082)؛ عادتِ حال («like») → Do + شکلِ ساده؛ «did» تلهٔ زمانِ گذشته است"
+    },
+    {
+     "id": "g9-l45-2",
+     "n": 2,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "B: No, I don’t. Last winter I fell and ------- my leg.",
+     "options": [
+      "broke",
+      "stayed"
+     ],
+     "answer": 0,
+     "accepted": [
+      "broke"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ درس: «Last summer I fell and broke my leg.» (لایه p90:042-043 — امتحان قیدِ زمان را winter کرده) + photo dictionary: «He broke his leg*» (p90:008) و Fall*/Break* (p89)؛ «stayed my leg» بی‌معنا"
+    },
+    {
+     "id": "g9-l45-3",
+     "n": 3,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "A: really? I ------- my ankle last summer.",
+     "options": [
+      "twisted",
+      "stayed"
+     ],
+     "answer": 0,
+     "accepted": [
+      "twisted"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ درس: «I twisted my ankle last winter.» (لایه p90:051 — امتحان قیدِ زمان را summer کرده) + Twist*/Ankle* (p89:086/033)؛ «stayed my ankle» بی‌معنا"
+    },
+    {
+     "id": "g9-l45-4",
+     "n": 4,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "A: Yes, I ------- home for 10 days.",
+     "options": [
+      "stayed",
+      "stay"
+     ],
+     "answer": 0,
+     "accepted": [
+      "stayed"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ درس: «I stayed home for two weeks!» (لایه p90:051-052 — امتحان: 10 days)؛ گذشته با «for 10 days» → stayed؛ «stay» واژهٔ اضافیِ چاپی است و در ساقهٔ خودِ امتحان هم هست («Did you stay home?» — p95:022)"
+    },
+    {
+     "id": "g9-l45-5",
+     "n": 5,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "B: But after that, I ------- in Helal-e-Ahmar first aid classes.",
+     "options": [
+      "participated",
+      "twisted"
+     ],
+     "answer": 0,
+     "accepted": [
+      "participated"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ verbatim درس: «Yeah…, but after that, I participated in Helal-e-Ahmar first aid classes.» (لایه p91:005) + First aid* (p89:088)؛ «twisted in … classes» بی‌معنا"
+    },
+    {
+     "id": "g9-l45-6",
+     "n": 6,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "A: I like that. Did you ------- how to take care of yourself?",
+     "options": [
+      "learn",
+      "stayed"
+     ],
+     "answer": 0,
+     "accepted": [
+      "learn"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ درس: «I learned how to take care of myself.» (لایه p91:006) + Take care of* (p89:078)؛ Did + شکلِ سادهٔ فعل → learn نه stayed"
+    },
+    {
+     "id": "g9-l45-7",
+     "n": 7,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "B: Yes, I -------.",
+     "options": [
+      "did",
+      "do"
+     ],
+     "answer": 0,
+     "accepted": [
+      "did"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "پاسخِ کوتاهِ did-پرسش: پرسشِ پیشینِ خودِ امتحان «Did you … how to take care of yourself?» است؛ الگوی تمرینِ ۱ درس: «Did Mina have an accident? → Yes, she did.» (لایه p91:039/035)"
+    },
+    {
+     "id": "g9-l45-8",
+     "n": 8,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "I can give you some ------- if you like.",
+     "options": [
+      "advice",
+      "do"
+     ],
+     "answer": 0,
+     "accepted": [
+      "advice"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ درس: «Can you give me some advice?» (لایه p91:016) + Advice* (p89:026)؛ «some» + اسم → advice؛ «some do» بی‌معنا"
+    }
+   ]
+  },
+  {
+   "lesson": 46,
+   "title": "امتحانی درس ششم — کلمهٔ ناهماهنگ (س۳، ص۹۵)",
+   "level": "چهارگزینه‌ای",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g9-l46-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "her – my – them – him",
+     "options": [
+      "her",
+      "my",
+      "them",
+      "him"
+     ],
+     "answer": 1,
+     "keyWhy": "گرامرِ خودِ درس: ضمایر مفعولی (Object Pronouns، لایه p94) — her/them/him هر سه ضمیرِ مفعولی‌اند؛ my فقط صفتِ ملکی است و هرگز نقشِ مفعولی ندارد"
+    },
+    {
+     "id": "g9-l46-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "cut – hurt – break – health",
+     "options": [
+      "cut",
+      "hurt",
+      "break",
+      "health"
+     ],
+     "answer": 3,
+     "keyWhy": "سه فعلِ آسیبِ درس: Cut* (p89:065)/Hurt* (p89:032)/Break* (p89:044)؛ health اسمِ وضعیتِ سلامتی است نه فعلِ آسیب (health* p89:095)"
+    }
+   ]
+  },
+  {
+   "lesson": 47,
+   "title": "امتحانی درس ششم — مرتب‌کردن جملات (س۴، ص۹۵)",
+   "level": "تمرین تایپی (مرتب‌کردن)",
+   "count": 1,
+   "questions": [
+    {
+     "id": "g9-l47-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "saw, the, in, him, they, park.",
+     "options": [
+      "They saw him in the park.",
+      "saw, the, in, him, they, park."
+     ],
+     "answer": 0,
+     "accepted": [
+      "They saw him in the park.",
+      "In the park they saw him.",
+      "In the park, they saw him."
+     ],
+     "placeholder": "write the sentence…",
+     "keyWhy": "چینشِ یکتای شش واژه؛ جایگاهِ آغازینِ قیدِ مکان روادار است (الگوی acceptedِ r368)؛ verbs: saw از خودِ ردیفِ چاپی — هیچ واژه‌ای اضافی نیست"
+    }
+   ]
+  },
+  {
+   "lesson": 48,
+   "title": "امتحانی درس ششم — وصل‌کردنیِ پرسش/پاسخ (س۵، ص۹۶)",
+   "level": "چهارگزینه‌ای (پنج‌گزینه‌ایِ چاپی)",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g9-l48-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Where did she hurt her back? ( ------- )",
+     "options": [
+      "I took care of my father last year.",
+      "She hit it in the park.",
+      "Yes, she did.",
+      "Because they drove fast.",
+      "My sister."
+     ],
+     "answer": 1,
+     "keyWhy": "پرسشِ Where → مکان: b) «She hit it in the park.» («it» = back؛ Hit* p89:024)؛ همتای تمرینِ ۲ درس: «Where did she break her leg? → She broke her leg in the park.» (لایه p92:021/019)"
+    },
+    {
+     "id": "g9-l48-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "Why did they have an accident? ( ------- )",
+     "options": [
+      "I took care of my father last year.",
+      "She hit it in the park.",
+      "Yes, she did.",
+      "Because they drove fast.",
+      "My sister."
+     ],
+     "answer": 3,
+     "keyWhy": "پرسشِ Why → علت: d) «Because they drove fast.» — جفتِ verbatimِ تمرینِ ۲ درس (لایه p92:034/029) + Accident* (p89:022)"
+    },
+    {
+     "id": "g9-l48-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "Who cut her finger? ( ------- )",
+     "options": [
+      "I took care of my father last year.",
+      "She hit it in the park.",
+      "Yes, she did.",
+      "Because they drove fast.",
+      "My sister."
+     ],
+     "answer": 4,
+     "keyWhy": "پرسشِ Who → تنها پاسخِ شخصی: e) «My sister.»؛ همتای تمرینِ ۲ درس: «Who had an accident? → Reza.» (لایه p92:014/012)؛ Cut* (p89:065) + photo dictionary: «She cut her finger*» (p90:013)"
+    },
+    {
+     "id": "g9-l48-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "When did you take care of your father? ( ------- )",
+     "options": [
+      "I took care of my father last year.",
+      "She hit it in the park.",
+      "Yes, she did.",
+      "Because they drove fast.",
+      "My sister."
+     ],
+     "answer": 0,
+     "keyWhy": "پرسشِ When → زمان: a) «I took care of my father last year.»؛ Take care of* (p89:078) + photo dictionary: «She takes care of her child*» (p90:017)"
+    }
+   ]
+  },
+  {
+   "lesson": 49,
+   "title": "امتحانی درس ششم — کامل با کلماتِ پرانتز (س۶، ص۹۶)",
+   "level": "چهارگزینه‌ای (سه‌گزینه‌ایِ چاپی)",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g9-l49-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "We went to the party, because they invited -------.",
+     "options": [
+      "them",
+      "us",
+      "our"
+     ],
+     "answer": 1,
+     "keyWhy": "گرامرِ درس: ضمایر مفعولی (p94) بعد از invite + انسجامِ گفتاریِ «We went …» → they invited us؛ «our» صفتِ ملکی است و «them» با فاعلِ «they» ناسازگار (بازتابِ همان شخص)؛ Invite* (p89:038)"
+    },
+    {
+     "id": "g9-l49-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "A: ------- did he burn his hand? B: He burnt his hand last Monday.",
+     "options": [
+      "When",
+      "Where",
+      "How"
+     ],
+     "answer": 0,
+     "keyWhy": "پاسخِ B زمانی است («last Monday») → When؛ Burn* (p89:052) + photo dictionary: «She burned her hand.*» (p90:011)؛ چاپ هم «burn» و هم «burnt» (بریتانیایی) در همین آیتم دارد — واریانسِ املاییِ مستند"
+    },
+    {
+     "id": "g9-l49-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "A: Why did you hurt your knee? B: ------- I fell.",
+     "options": [
+      "hurry up",
+      "yeah",
+      "because"
+     ],
+     "answer": 2,
+     "keyWhy": "پرسشِ Why → پاسخِ علت با because (الگوی تمرینِ ۲ درس: «Why did they have an accident? → Because they drove fast.» لایه p92)؛ photo dictionary: «I hurt my knee*» (p90:021)؛ Hurry up* واژهٔ درس است اما پاسخِ علت نیست"
+    }
+   ]
+  },
+  {
+   "lesson": 50,
+   "title": "امتحانی درس ششم — گزینهٔ صحیح (س۷، ص۹۶)",
+   "level": "چهارگزینه‌ای",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g9-l50-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "A: Did you read the books? B: Yes, I enjoyed ------- very much.",
+     "options": [
+      "them",
+      "us",
+      "its",
+      "it"
+     ],
+     "answer": 0,
+     "keyWhy": "«the books» جمع است → ضمیرِ مفعولیِ جمعِ them (گرامرِ درس: Object Pronouns p94)؛ it/its مفردند و us اول‌شخصِ جمع با books ناسازگار"
+    },
+    {
+     "id": "g9-l50-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "A: Did she ------- a scar? B: Yes, she had a scar on her face.",
+     "options": [
+      "has",
+      "had",
+      "have",
+      "her"
+     ],
+     "answer": 2,
+     "keyWhy": "Did + شکلِ سادهٔ فعل → have؛ photo dictionary: «He has a scar*» (p90:014) + Scar* (p89:071)؛ پاسخِ B «had» را در گذشته تأیید می‌کند"
+    },
+    {
+     "id": "g9-l50-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "He ------- his coat yesterday.",
+     "options": [
+      "finded",
+      "founded",
+      "found",
+      "did found"
+     ],
+     "answer": 2,
+     "keyWhy": "گذشتهٔ سادهٔ بی‌قاعدهٔ find → found (Find p89:080 + قیدِ گذشتهٔ «yesterday»)؛ «finded» شکلِ ناموجود، «founded» به‌معنای تأسیس‌کردن است و «did found» ساختارِ ناممکن (did + شکلِ ساده)"
+    }
+   ]
   }
  ],
  "source": {
@@ -4950,6 +5322,103 @@
     "readingText": "متنِ Parisa (p87:012-015): Hello. My name is Parisa. Last weekend, something happened to my TV. It didn’t work. At first, I wasn’t happy. But then I cleaned my room and I called my grandmother. She came to our home. She showed me how to play an old game. It was really fun and I enjoyed it. All day I was busy."
    },
    "typedNote": "هر ۱۸ آیتمِ تایپیِ تازه (س۲:۱۰، س۵:۳، س۱۱QA:۲، دیکته:۳) داربستِ اندیسِ نادرست دارند — قفلِ سراسریِ r363 (ممنوعیتِ تایپیِ تک‌گزینه‌ای) حفظ شد؛ داربست‌ها خانواده‌محور: چرخشِ واژه‌های هم‌بانکِ چاپی (س۲)، ردیفِ به‌هم‌ریختهٔ چاپی (س۵)، پاسخِ نادرستِ ناهم‌سو (س۱۱QA) و عبارت‌های هم‌خانوادهٔ photo dictionary (دیکته)"
+  },
+  "g9exam6": {
+   "extractedRound": "r369",
+   "section": "سؤالات امتحانی درس ششم پایه نهم",
+   "examPages": "pdf-p95-97 (برچسبِ فوتر: ۹۵/۹۶/۹۷)؛ p98 «تست واژگان» است — خانوادهٔ جدا که r362 استخراجش کرده و مرزِ پایینیِ خانواده‌های امتحانیِ کارتِ نهم؛ با این راند کارتِ نهم شش‌درسِ امتحانی کامل شد",
+   "keyPages": "هیچ پاسخنامهٔ چاپی در جزوه برای این خانواده نیست (تنها پاسخنامهٔ جزوه: کلید واژگان ص۱۰۱ — r362)؛ کلیدها استنتاجیِ مستندند",
+   "sectionsTotal": 10,
+   "sectionsExtracted": 6,
+   "sectionsSkipped": 4,
+   "items": 21,
+   "bankCounts": [
+    8,
+    2,
+    1,
+    4,
+    3,
+    3
+   ],
+   "wordBank": [
+    "broke",
+    "did",
+    "stay",
+    "twisted",
+    "participated",
+    "advice",
+    "do",
+    "learn",
+    "stayed"
+   ],
+   "extraWords": [
+    "stay"
+   ],
+   "keyPolicy": "کلیدِ استنتاجیِ مکالمه‌محور: این خانواده هم بازآراییِ خودِ مکالمه/تمرین‌های درس ششم است — هشت بلنکِ س۲ در مکالمهٔ verbatim درس (لایه p90-91) لنگر دارند (با تبادلِ چاپیِ قیدهای زمان: امتحان «Last winter I fell» ↔ درس «Last summer I fell» و بالعکس برای ankle)؛ س۵ دو جفتش verbatimِ تمرینِ ۲ درس (لایه p92: Why→Because و همتای Where) و دو جفتش با نوعِ پرسش‌واژه (Who→شخص، When→زمان) یکتاست؛ گزینهٔ اضافیِ س۵ («Yes, she did.») خودِ تمرینِ ۱ درس است (p91:035)؛ س۳ از گرامرِ خودِ درس (ضمایر مفعولی p94) و خانوادهٔ فعل‌های آسیب (p89)؛ س۶/س۷ ساختاری + photo dictionary (p90)؛ هیچ کلیدی از خارجِ متنِ جزوه نیامده",
+   "derivedKeys": {
+    "S2": [
+     "مکالمهٔ verbatim درس: «I don’t like school trips.» (لایه p90:042) + Trip* (p89:082)؛ عادتِ حال («like») → Do + شکلِ ساده؛ «did» تلهٔ زمانِ گذشته است",
+     "مکالمهٔ درس: «Last summer I fell and broke my leg.» (لایه p90:042-043 — امتحان قیدِ زمان را winter کرده) + photo dictionary: «He broke his leg*» (p90:008) و Fall*/Break* (p89)؛ «stayed my leg» بی‌معنا",
+     "مکالمهٔ درس: «I twisted my ankle last winter.» (لایه p90:051 — امتحان قیدِ زمان را summer کرده) + Twist*/Ankle* (p89:086/033)؛ «stayed my ankle» بی‌معنا",
+     "مکالمهٔ درس: «I stayed home for two weeks!» (لایه p90:051-052 — امتحان: 10 days)؛ گذشته با «for 10 days» → stayed؛ «stay» واژهٔ اضافیِ چاپی است و در ساقهٔ خودِ امتحان هم هست («Did you stay home?» — p95:022)",
+     "مکالمهٔ verbatim درس: «Yeah…, but after that, I participated in Helal-e-Ahmar first aid classes.» (لایه p91:005) + First aid* (p89:088)؛ «twisted in … classes» بی‌معنا",
+     "مکالمهٔ درس: «I learned how to take care of myself.» (لایه p91:006) + Take care of* (p89:078)؛ Did + شکلِ سادهٔ فعل → learn نه stayed",
+     "پاسخِ کوتاهِ did-پرسش: پرسشِ پیشینِ خودِ امتحان «Did you … how to take care of yourself?» است؛ الگوی تمرینِ ۱ درس: «Did Mina have an accident? → Yes, she did.» (لایه p91:039/035)",
+     "مکالمهٔ درس: «Can you give me some advice?» (لایه p91:016) + Advice* (p89:026)؛ «some» + اسم → advice؛ «some do» بی‌معنا"
+    ],
+    "S3": [
+     "گرامرِ خودِ درس: ضمایر مفعولی (Object Pronouns، لایه p94) — her/them/him هر سه ضمیرِ مفعولی‌اند؛ my فقط صفتِ ملکی است و هرگز نقشِ مفعولی ندارد",
+     "سه فعلِ آسیبِ درس: Cut* (p89:065)/Hurt* (p89:032)/Break* (p89:044)؛ health اسمِ وضعیتِ سلامتی است نه فعلِ آسیب (health* p89:095)"
+    ],
+    "S4": [
+     "چینشِ یکتای شش واژه؛ جایگاهِ آغازینِ قیدِ مکان روادار است (الگوی acceptedِ r368)؛ verbs: saw از خودِ ردیفِ چاپی — هیچ واژه‌ای اضافی نیست"
+    ],
+    "S5": [
+     "پرسشِ Where → مکان: b) «She hit it in the park.» («it» = back؛ Hit* p89:024)؛ همتای تمرینِ ۲ درس: «Where did she break her leg? → She broke her leg in the park.» (لایه p92:021/019)",
+     "پرسشِ Why → علت: d) «Because they drove fast.» — جفتِ verbatimِ تمرینِ ۲ درس (لایه p92:034/029) + Accident* (p89:022)",
+     "پرسشِ Who → تنها پاسخِ شخصی: e) «My sister.»؛ همتای تمرینِ ۲ درس: «Who had an accident? → Reza.» (لایه p92:014/012)؛ Cut* (p89:065) + photo dictionary: «She cut her finger*» (p90:013)",
+     "پرسشِ When → زمان: a) «I took care of my father last year.»؛ Take care of* (p89:078) + photo dictionary: «She takes care of her child*» (p90:017)"
+    ],
+    "S6": [
+     "گرامرِ درس: ضمایر مفعولی (p94) بعد از invite + انسجامِ گفتاریِ «We went …» → they invited us؛ «our» صفتِ ملکی است و «them» با فاعلِ «they» ناسازگار (بازتابِ همان شخص)؛ Invite* (p89:038)",
+     "پاسخِ B زمانی است («last Monday») → When؛ Burn* (p89:052) + photo dictionary: «She burned her hand.*» (p90:011)؛ چاپ هم «burn» و هم «burnt» (بریتانیایی) در همین آیتم دارد — واریانسِ املاییِ مستند",
+     "پرسشِ Why → پاسخِ علت با because (الگوی تمرینِ ۲ درس: «Why did they have an accident? → Because they drove fast.» لایه p92)؛ photo dictionary: «I hurt my knee*» (p90:021)؛ Hurry up* واژهٔ درس است اما پاسخِ علت نیست"
+    ],
+    "S7": [
+     "«the books» جمع است → ضمیرِ مفعولیِ جمعِ them (گرامرِ درس: Object Pronouns p94)؛ it/its مفردند و us اول‌شخصِ جمع با books ناسازگار",
+     "Did + شکلِ سادهٔ فعل → have؛ photo dictionary: «He has a scar*» (p90:014) + Scar* (p89:071)؛ پاسخِ B «had» را در گذشته تأیید می‌کند",
+     "گذشتهٔ سادهٔ بی‌قاعدهٔ find → found (Find p89:080 + قیدِ گذشتهٔ «yesterday»)؛ «finded» شکلِ ناموجود، «founded» به‌معنای تأسیس‌کردن است و «did found» ساختارِ ناممکن (did + شکلِ ساده)"
+    ]
+   },
+   "skippedSections": [
+    "س۱ (ص۹۵): «با توجه به تصاویر جملات زیر را کامل کنید» — تصویری (انگشتِ خون‌ریزی‌کننده/تصادفِ دو ماشین/کبودیِ دست) با لنگرهای photo dictionary («It is bleeding*»/«He had a car crash*»/«He has some bruises*» p90) — الگوی س۱ِ r364-368",
+    "س۴ق۱ (ص۹۵): «learnt, last, English, summer, I. year.» — دوکلیدی: «I learnt English last year.» با «summer» اضافی و «I learnt English last summer.» با «year» اضافی هر دو دستوری‌اند و دستورِ چاپی «کلمهٔ اضافی» هم نمی‌گوید — الگوی دو-کلیدِ r358/r365/r366",
+    "س۸ (ص۹۶): «با استفاده از فلش افتان و خیزان جملات زیر را مشخص کنید» — آهنگی با آیکنِ فلشِ تصویری در رندر (Do you have your lunch at school? / Please hurry up! / Hamid cut his finger.) — الگوی س۶ِ r366-368",
+    "س۹ (ص۹۷): «با توجه به تصاویر به سوالات پاسخ دهید» — تصویری با دستورِ دوگانهٔ چاپی «کوتاه/کامل» (Did she take care of the baby? / Did you break your leg? / When did Mr. Hamidi get up? با ساعتِ ۶:۳۰ / How did Amir hurt his head?) — الگوی س۱۰ِ r368",
+    "س۱۰ (ص۹۷): «با توجه به تصاویر گزینه صحیح را انتخاب کنید» — تصویری (His hand is … (bleeding) / It … a lot (hurts) / We attended in Helal-e-Ahmar … classes (first aid) / He has some … on his face (scars))"
+   ],
+   "printQuirkCount": 10,
+   "printQuirks": [
+    "شماره‌گذاریِ آمیختهٔ چاپی: ارقامِ لاتینِ 1-7 سپس «۸» فارسی (لایه p96:032) سپس 9/10 لاتین — الگوی exam-5",
+    "تبادلِ قیدهای زمانِ س۲ نسبت به درس: امتحان «Last winter I fell and broke my leg» دارد و مکالمهٔ درس «Last summer I fell and broke my leg» (p90:042)؛ متقابلاً امتحان «my ankle last summer» و درس «I twisted my ankle last winter» (p90:051) — لنگرها هم‌جمله‌اند نه هم-قید",
+    "واژهٔ اضافیِ س۲ («stay») در خودِ ساقهٔ چاپی هم می‌آید («Did you stay home?» p95:022) — اضافیِ خود-فاش‌شونده؛ با این حال کلیدِ هیچ بلنکی نیست و در گارد قفل شد",
+    "س۲: سطرِ آخرِ B دو بلنک دارد («Yes, I ……. I can give you some ………… if you like.») — به دو آیتمِ ۷/۸ شکسته شد (الگوی r368)",
+    "س۴ق۱: شش واژه با دو چینشِ دستوریِ مستقل و دو اضافیِ متفاوت — دوکلیدی → مستثنی با دلیل (بندِ مستثنی‌ها)",
+    "س۴ق۱: نقطهٔ سرگردانِ چاپی پس از «I» («learnt, last, English, summer, I. year.»)",
+    "س۶ق۲: چاپ هم «burn» (در پرسش) و هم «burnt» (بریتانیایی — در پاسخِ B) در یک آیتم دارد — واریانسِ املاییِ چاپی",
+    "س۵: جدولِ چاپی پاسخ‌ها را در ستونِ راست با حروفِ a-e و پرسش‌ها را در ستونِ چپ با پرانتزِ حرف می‌دهد؛ لایه ترتیبِ پرسش/جواب را درهم می‌دهد — ترتیبِ منطقی بازسازی و با رندر راستی‌آزمایی شد",
+    "س۹: دستورِ چاپی برای هر تصویر دو پاسخ می‌خواهد («کوتاه:» و «کامل:») — خودِ ساختارِ دوپاسخی هم تصویری و مستثنی است",
+    "س۲: «really?» با حرفِ کوچکِ چاپی پس از A (بازآراییِ نقش‌ها نسبت به درس: «That’s too bad» که در درس از Ehsan است در امتحان در سطرِ B می‌آید) — verbatimِ چاپ حفظ شد"
+   ],
+   "lessonLexicon": {
+    "Heart attack / Accident / Hit / Advice / Hurry up / Hurt / Ankle / Injury / Back / Invite / Bleed / Knee / Break / Lake / Bruise / Leg / Burn / Cast / Cut / Put / Scar / Stick / Fall / Take care of / Find / Trip / Finger / Twist / First aid / Wound / Head / yard / health": "واژگان کاملِ «سلامتی و آسیب‌ها» (لایه p89:020-095) — سنگ‌بنای لنگرهای س۲/س۳/س۵/س۶/س۷",
+    "It hurts a lot / He broke his leg / It is bleeding / He had a car crash / She burned her hand / He has a black eye / She cut her finger / He has a scar / She had a heart attack / He has his leg in a cast / She takes care of her child / He has some bruises / Stick put a plaster on the wound / He hit his head on the door / I hurt my knee": "photo dictionary کاملِ درس (لایه p90:007-021) — لنگرهای س۱ (مستثنی) تا س۷",
+    "conversation": "مکالمهٔ درس ششم (لایه p90:034-p91:022): Reza «We plan to go to the lake.» → Ehsan «I don’t think so. I don’t like school trips. Last summer I fell and broke my leg.» → Reza «It sometimes happens. I twisted my ankle last winter. I stayed home for two weeks!» → Reza «Yeah…, but after that, I participated in Helal-e-Ahmar first aid classes. I learned how to take care of myself.» → Ehsan «I like that. Can you give me some advice?» — سنگ‌بنای س۲",
+    "tamarin1": "تمرینِ ۱ درس (p91): Did Mina have an accident? → Yes, she did. / Did Ali cut his finger? → No, he didn’t. / Did you break your leg? → Yes, I broke my leg. / Did you hurt your back? → No, I didn’t hurt my back. — الگوی پاسخِ کوتاهِ س۲ق۷ + گزینهٔ اضافیِ س۵",
+    "tamarin2": "تمرینِ ۲ درس (p92): Who had an accident? → Reza. / Where did she break her leg? → She broke her leg in the park. / How did Amir hurt his head? → He hit his head on the door. / Why did they have an accident? → Because they drove fast. — سنگ‌بنای س۵",
+    "grammar": "گرامرِ درس: ضمایر مفعولی (Object Pronouns، p94) — me/you/him/her/it/us/them — سنگ‌بنای س۳ق۱/س۶ق۱/س۷ق۱"
+   },
+   "typedNote": "هر ۹ آیتمِ تایپیِ تازه (س۲:۸، س۴:۱) داربستِ اندیسِ نادرست از خودِ بانکِ چاپی دارند — قفلِ سراسریِ r363 (ممنوعیتِ تایپیِ تک‌گزینه‌ای) حفظ شد؛ داربست‌های س۲ خانواده‌محور با تلهٔ صرفی/زمانی (do/did، stayed/stay، learn/stayed) و داربستِ س۴ ردیفِ به‌هم‌ریختهٔ چاپی است؛ واژهٔ اضافیِ چاپیِ «stay» هرگز کلید/داربست نیست (assertion در اسکریپت)"
   }
  }
 }

@@ -79,8 +79,8 @@ describe("r366 — شکلِ شش بانکِ امتحانی درس سوم", () =>
   it("counts: [4,6,6,2,4,6] — id یکتا در کلِ فایل (۲۱۷)", () => {
     expect([23, 24, 25, 26, 27, 28].map((n) => L(n).count)).toEqual([4, 6, 6, 2, 4, 6]);
     const ids = g9.lessons.flatMap((b) => b.questions.map((x) => x.id));
-    expect(ids).toHaveLength(248);
-    expect(new Set(ids).size).toBe(248);
+    expect(ids).toHaveLength(269);
+    expect(new Set(ids).size).toBe(269);
   });
 
   it("س۲ سوالی و منفی: وارونگی/منفی‌سازیِ یکتا + داربستِ جملهٔ ساده", () => {

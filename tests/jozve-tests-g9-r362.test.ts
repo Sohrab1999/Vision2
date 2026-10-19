@@ -62,12 +62,12 @@ describe("r362 — receipt & shape", () => {
     expect(bank.grade).toBe(9);
     // r363 — شش بانکِ «تمرین‌های مکالمه»؛ r364 — هفت بانکِ «سؤالات امتحانی درس اول»؛
     // r365 — هفت بانکِ «درس دوم»؛ r366 — شش بانکِ «درس سوم»؛
-    // r367 — هفت بانکِ «درس چهارم»؛ r368 — نه بانکِ «درس پنجم» (۴۴ بانک در کل)
-    expect(bank.lessons).toHaveLength(44);
-    expect(bank.lessons.map((l) => l.count)).toEqual([7, 50, 11, 9, 8, 10, 9, 8, 4, 2, 4, 3, 7, 5, 4, 8, 2, 4, 2, 3, 3, 2, 4, 6, 6, 2, 4, 6, 3, 2, 3, 2, 4, 6, 4, 10, 4, 2, 3, 3, 2, 2, 2, 3]);
+    // r367 — هفت بانکِ «درس چهارم»؛ r368 — نه بانکِ «درس پنجم»؛ r369 — شش بانکِ «درس ششم» (۵۰ بانک در کل — کارتِ نهم شش‌درسِ امتحانی)
+    expect(bank.lessons).toHaveLength(50);
+    expect(bank.lessons.map((l) => l.count)).toEqual([7, 50, 11, 9, 8, 10, 9, 8, 4, 2, 4, 3, 7, 5, 4, 8, 2, 4, 2, 3, 3, 2, 4, 6, 6, 2, 4, 6, 3, 2, 3, 2, 4, 6, 4, 10, 4, 2, 3, 3, 2, 2, 2, 3, 8, 2, 1, 4, 3, 3]);
     const ids = bank.lessons.flatMap((l) => l.questions.map((q) => q.id));
-    expect(ids).toHaveLength(248);
-    expect(new Set(ids).size).toBe(248);
+    expect(ids).toHaveLength(269);
+    expect(new Set(ids).size).toBe(269);
     expect(ids.slice(0, 7)).toEqual([
       "g9-l1-1", "g9-l1-2", "g9-l1-3", "g9-l1-4", "g9-l1-5", "g9-l1-6", "g9-l1-7",
     ]);
