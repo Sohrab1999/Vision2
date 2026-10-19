@@ -598,6 +598,121 @@
    ],
    "futureNote": "بخشِ ۴: ۶ برگه از ۱۷ استخراج شد، ۱۱ برگه باقی است (نزدیک‌ترین‌ها: دی ۱۳۹۹ ص۳۰۱-۳۰۷ و شهریور ۱۳۹۹ ص۲۸۵-۲۹۲؛ به‌علاوهٔ برگهٔ لایه‌خرابِ ص۲۷۷-۲۸۴ که OCR/رندر می‌خواهد و جفتِ ۱۳۹۷ با کلیدِ سربرگِ قدیمی)؛ کاندیدهای تایپیِ این برگه (س۱۰ «had paid» + ردیف‌های ۳۲ «Joe had already learned Chinese when he moved to China.» / ۳۳ «They would buy a house if they were you.» / ۳۴ which-اسب / ۴۳ «Solar collectors collect heat by absorbing sunlight.») به کاندیدهای r380-r384 اضافه شدند — مخزنِ بانکِ تایپیِ نهایی‌ها اکنون ۳۹ ردیف است (۳۴ِ r384 + ۵ ردیفِ تازه)",
    "bookletFile": "جزوه_جامع_پایه_دوازدهم_با_امتحانات_نهایی_.pdf"
+  },
+  "g12nahaie7": {
+   "extractedRound": "r386",
+   "section": "بخش چهارمِ جزوه: «آزمونهای از دی ماه 1397 تا شهریور 1401 نهابی با کلید» — برگهٔ هفتم: «سؤالات امتحان نهایی» زبان انگلیسی (۳) نوبتِ دی ۱۳۹۹ (کلیهٔ رشته‌ها)",
+   "examPages": "pdf-p301-305 (پنج صفحهٔ آزمون) + کلیدِ رسمی: pdf-p306-307 «راهنماي تصحيح»؛ مرزِ برگه‌ها = p300→p301 (پایانِ کلیدِ ناشنوایان) و p307→p308 (آغازِ خرداد ۱۴۰۰ ریاضی-تجربیِ r385)",
+   "examMeta": "امتحان نهاییِ سراسریِ وزارت — درس: زبان انگلیسی (۳) — پایه دوازدهم دورهٔ دوم متوسطه — رشته: کلیهٔ رشته‌ها — نوبت دی ماه سال ۱۳۹۹ (تاریخِ چاپی: ۰۱/۱۱/۹۹) — مدت ۱۲۰ دقیقه — ساعت شروع ۱۰ صبح — ۱۷ سکشن/۶۲ ردیف/بارم ۴۰ — روزانه/بزرگسال/داوطلب آزاد — مركز سنجش و پايش كيفيت آموزشي (aee.medu.ir) — «Good luck / جمع نمره ۴٠»",
+   "keyPages": "pdf-p306-307 راهنمای تصحیحِ رسمی — «هر پاسخ صحيح (5/.) نمره» — ۶۱ فرگمنتِ کلیدِ چاپی در گارد پیمان می‌شود؛ ۴۰ کلید از ۴۰ آیتمِ بانک‌ها عینِ چاپ است",
+   "keyVerification": "کلیدِ چاپی عیناً نقل شد: «1. ( a ) 2. ( b ) 3. ( d )» (سه پرانتزِ فاصله‌دارِ پیاپی) / «4. False (B) 5. True (A) 6. False (B) 7. False (B)» / «8. generated 9. opposite 10. clean 11. remind» / «12. worst 13. choose 14. terrible 15. right 16. teenagers 17. enjoy» / «18. He would go to the park. 19. They can play one of their thinking games.» / «20. (b) 21.(e) 22. (d) 23. (c)» / «24. dedicated 25. recommend 26. replaced» / «27. (c) 28. (d) 29. (a)» / «30. symbol 31. worm» / «32. (b) 33. (c) 34. (a) 35. (b)» / «36. had studied 37. is spoken» / «38. Mina was upset because she had gotten a bad score. 39. John could fix the car if he were at home.» / «40. (a) True 41. (b) False 42. ( a ) 43. ( d )» / «44. Quickly before they jump into to the next lesson. 45. They must have a native language dictionary.» / «46. (b) False 47. (a) True 48. ( c ) 49. ( d )» / «50. world 51. creating» / «52. but 53. so 54. and 55. or» / «56 (c)…57 (f)…58 (a)…59 (b)…60 (d)…61 (e)» — هفتمین تکرارِ درسِ r380-ق۳۲ در بلوکِ ۳۸/۳۹ (Mina≈Royaِ r384؛ John عینِ r384)",
+   "sectionsTotal": 62,
+   "sectionsExtracted": 40,
+   "sectionsSkipped": 22,
+   "items": 40,
+   "bankCounts": [
+    4,
+    6,
+    8,
+    4,
+    4,
+    4,
+    4,
+    6
+   ],
+   "keyPolicy": "همهٔ کلیدهای ۴۰ آیتم از راهنمای تصحیحِ چاپی می‌آیند (عینِ چاپ)؛ کلوژهای شنیداریِ l43/l44 از استخرِ خودِ کلیدِ رسمی (generated/opposite/clean/remind و worst/choose/terrible/right/teenagers/enjoy) با چرخش‌های تازهٔ [1,2,3,2] و [0,2,4,0,3,5] (بدونِ تکرارِ مجاور، دنبالکنندهٔ r380-l4/r381-l8-l9/r382-l16/r383-l22)؛ بانکِ واژگانِ l45-ق۱-۳ به ترتیبِ چاپِ خودِ برگه (dedicated, replaced, forgive, recommend) با اضافیِ چاپیِ هرگز-کلید (forgive)؛ تعریف‌یابیِ l45-ق۴-۶ به ترتیبِ چاپِ ستون B با اضافیِ «the part at the beginning of a book...» هرگز-کلید؛ حرفِ اولِ l45-ق۷-۸ با چهارِ هم‌شکلِ مهندسی‌شده (s+++++/w+++)؛ گرامرِ l46 و حروفِ ربطِ l49 به ترتیبِ چاپ؛ کلیدهای درست/غلطِ l47/l48 سمانتیک‌اند (چاپ: True/False/False/True و False/True)؛ بانکِ مرتب‌سازیِ l50 گزینه‌هایش را به ترتیبِ چاپِ a-f می‌چیند با کلیدهای چاپی [c,f,a,b,d,e] در اندیس‌های [2,5,0,1,3,4]",
+   "engineNote": "هر ۴۰ آیتم MCQ (قراردادِ کارتِ g12)؛ کلوژهای شنیداریِ چاپِ l43/l44 با خانه‌های «------- (N) -------» و دنبالهٔ «پاسخِ خانهٔ (N)» (الگویِ r381-l9/r383-l22) — خانه‌های چاپِ این برگه بدونِ پرانتزند («……8…..») و gapify به الگویِ استاندارد تبدیل کرد؛ ساقه‌های خوانداریِ l47/l48 متنِ کاملِ چاپی را در خود دارند؛ ساقه‌های تعریف‌یابی دوبخشیِ فارسی (الگویِ r380-l5)؛ ترجمه عمداً غایب (نهایی‌ها ترجمهٔ چاپی ندارند)؛ نقطه‌چینِ چاپ → «-------» چسبیده؛ l50 سومین بانکِ شش‌گزینه‌ایِ مرتب‌سازیِ مخزن (الگویِ l35-r384/l42-r385)",
+   "derivedKeys": {
+    "S3": [
+     "generated",
+     "opposite",
+     "clean",
+     "remind"
+    ],
+    "S4": [
+     "worst",
+     "choose",
+     "terrible",
+     "right",
+     "teenagers",
+     "enjoy"
+    ],
+    "S7": [
+     "dedicated",
+     "recommend",
+     "replaced"
+    ],
+    "S8": [
+     "be grateful for",
+     "take something in, especially gradually",
+     "the amount of a product or service that people want"
+    ],
+    "S9": [
+     "symbol",
+     "worm"
+    ],
+    "S10": [
+     "hasn’t she",
+     "which",
+     "must be obeyed",
+     "would be"
+    ],
+    "S13": [
+     "True",
+     "False",
+     "Dictionaries are essential for language learning.",
+     "students"
+    ],
+    "S14": [
+     "False",
+     "True",
+     "Picasso’s father",
+     "one day"
+    ],
+    "S15": [
+     "but",
+     "so",
+     "and",
+     "or"
+    ],
+    "S16": [
+     "there are several reasons why Canada is one of the best countries in the world",
+     "first, Canada has an excellent health care system",
+     "therefore, many patients are easily cured in hospitals in Canada",
+     "second, it has a high standard of education for young people",
+     "in addition there are many chances for them to get a good job",
+     "as a result, many people like to live in Canada"
+    ]
+   },
+   "paperMap": "نقشهٔ کاملِ بخشِ ۴ (ص۲۲۸-۳۴۹، ۱۷ برگه) — کشفِ r384، تأییدِ دوباره در این راند: دی ۱۳۹۷ ص۲۲۹-۲۳۳ + کلیدِ سربرگِ قدیمیِ ص۲۳۴-۲۳۶ (پیش از presentation-forms)؛ خرداد ۱۳۹۸ ص۲۳۷-۲۴۱ + کلید ص۲۴۲-۲۴۳ (۱۳/۳/۱۳۹۸)؛ شهریور ۱۳۹۸ ص۲۴۴-۲۴۸ + کلید ص۲۴۹-۲۵۰ (۱۲/۶/۱۳۹۸)؛ دی ۱۳۹۸ ص۲۵۱-۲۵۶ + کلید ص۲۵۷-۲۵۸ (۲۲/۱۰/۹۸)؛ خرداد ۱۳۹۹ ریاضی-تجربی ص۲۵۹-۲۶۵ + کلید ص۲۶۶-۲۶۷ (۰۵/۰۴/۹۹)؛ خرداد ۱۳۹۹ انسانی ص۲۶۸-۲۷۴ + کلید ص۲۷۵-۲۷۶ (۰۷/۰۴/۹۹)؛ برگهٔ لایه‌خراب ص۲۷۷-۲۸۴ (نیازمند OCR/رندر)؛ شهریور ۱۳۹۹ ص۲۸۵-۲۹۰ + کلید ص۲۹۱-۲۹۲ (۱۳/۰۶/۹۹)؛ شهریور ۱۳۹۹ ویژهٔ ناشنوایان ص۲۹۳-۲۹۸ + کلید ص۲۹۹-۳۰۰ (۱۳/۰۶/۹۹)؛ دی ۱۳۹۹ ص۳۰۱-۳۰۵ + کلید ص۳۰۶-۳۰۷ (۰۱/۱۱/۹۹) ← این راند؛ خرداد ۱۴۰۰ ریاضی-تجربی ص۳۰۸-۳۱۴ [r385]؛ خرداد ۱۴۰۰ انسانی ص۳۱۵-۳۲۱ [r384]؛ شهریور ۱۴۰۰ ص۳۲۲-۳۲۸ [r383]؛ دی ۱۴۰۰ ص۳۲۹-۳۳۵ [r382]؛ دی ۱۴۰۱ ص۳۳۶-۳۴۲ [r380]؛ شهریور ۱۴۰۱ ص۳۴۳-۳۴۹ [r381] — ۷ برگه استخراج شد، ۱۰ برگه باقی است",
+   "skippedSections": [
+    "س۱ (ردیف ۱-۳، شنیداریِ MCQ): پرسشِ چاپیِ «Who are our elders?» با چهار گزینهٔ چاپی — صوتی-کلید؛ کلیدهای چاپی: 1.( a )/2.( b )/3.( d ) — سه پرانتزِ فاصله‌دارِ پیاپی — در رسید حفظ شد",
+    "س۲ (ردیف ۴-۷، شنیداریِ True/False): پرواز/گذرنامه (He could get in the plane on time / He had left his passport at home) — صوتی-کلید؛ کلیدهای چاپی: 4.False (B)/5.True (A)/6.False (B)/7.False (B)",
+    "س۵ (ردیف ۱۸-۱۹، شنیداریِ تولیدی): «Where would he go if it were sunny?» — کلیدهای مدلِ چاپی: 18. He would go to the park. / 19. They can play one of their thinking games. — صوتی-کلید",
+    "س۶ (ردیف ۲۰-۲۳، تصویری): «با توجه به تصاویر... یک جمله اضافی است» — پنج جملهٔ چاپی a-e: a) My little sister sits on my mother’s lap all the time. (اضافیِ چاپی) / b) Hamid sits on the sofa and watches TV all the time. → 20 / c) Try to avoid foods that contain a lot of fat. → 23 / d) Oil, coal and natural gas are three common fossil fuels. → 22 (عینِ ساقهٔ r385-l36-1 — برخوردِ بین‌برگه‌ایِ مشروع) / e) I have kept a diary for twelve years. → 21 (در r385 اضافیِ چاپی بود و اینجا کلید است — چرخشِ بین‌برگه‌ای)؛ استخراج نیازمندِ تصویر",
+    "س۱۰ (ردیف ۳۶-۳۷، شکلِ فعلِ باز): «Joe ………..Chinese before he moved to china. (study)» → had studied و «Persian ………………in Iran, Tajikistan and Afghanistan. (speak)» → is spoken — بدونِ گزینهٔ چاپی؛ کاندیدِ بانکِ تایپی",
+    "س۱۱ (ردیف ۳۸-۳۹، جمله‌سازیِ درهم): 38. had gotten/ was/ a bad score/ she/ Mina/ upset/ because → «Mina was upset because she had gotten a bad score.» (دوقلویِ r384-«Roya» با نامِ متفاوت — ردیفِ تازه شمرده شد) و 39. fix / the car /if / were / John/ at home/ could / he → «John could fix the car if he were at home.» (عینِ r384 — ردیفِ تازه شمرده نشد) — هفتمین تکرارِ درسِ r380-ق۳۲",
+    "ردیف ۴۴-۴۵ (پاسخِ مدلِ خوانداریِ فرهنگِ لغت): «44. Quickly before they jump into to the next lesson.» (jump into to — عینِ چاپ) و «45. They must have a native language dictionary.» — کاندیدِ تایپی (هر دو عبارت در متنِ چاپیِ l47 هم هست — از نشت‌سنج شمول ندارد)",
+    "ردیف ۵۰-۵۱ (تکمیلِ جملهٔ پیکاسو): «50. world» و «51. creating» — کلیدهای تک‌واژه‌ایِ چاپی؛ کاندیدِ تایپی (ساقه‌ها: «Artists from everywhere in the …... came to Paris to see Picasso’ first paining in modern Art.» و «Picasso is famous for …... the Cubism Style.»)",
+    "س۱۷ (ردیف ۶۲، نگارشِ تولیدی): پاراگرافِ Solar system با چیپ‌های چاپی (The number of the planets / The order of distance from the Sun / The center of the solar system: The sun / The largest and smallest planets) — تولیدی با کلیدِ بند-رأیی"
+   ],
+   "printQuirks": [
+    "پنجمین برگهٔ presentation-forms با سربرگِ «ﺳﺆاﻻت  اﻣﺘﺤﺎن» دوفاصله‌ای (الگویِ r383؛ چسبیدگیِ r385 اینجا نیست) — متنِ انگلیسی و کلیدها لاتینِ سالم",
+    "خانه‌های کلوژِ شنیداری بدونِ پرانتزِ چاپی («……8…..»/«…10…..») — برخلافِ r381/r383 با «(N)» — gapify به «------- (N) -------» استاندارد تبدیل کرد؛ خانه‌های سه‌نقطه‌ایِ کوتاه («…15….») هم پوشش داده شد",
+    "هفت کلیدِ پرانتز-فاصله‌دار: «1. ( a ) 2. ( b ) 3. ( d )» (سه‌تاییِ پیاپی — نو) و «42. ( a )»/«43. ( d )»/«48. ( c )»/«49. ( d )» — هفتم تا دهمین بارِ درسِ r380-ق۳۸",
+    "«21.(e)» بدونِ فاصله و «22.  (d)» دوفاصله‌ای در یک سطرِ کلید (س۶)",
+    "تاریخِ چاپیِ دو رقمیِ سربرگ «01 / 11 / 99» در برابرِ تاریخِ کلید «01 / 11 / 1399»",
+    "نقطه‌چینِ چسبیده: ق۲۵ «do you…………….?» و ق۲۶ «………..the china plate» و ق۳۷ «Persian ………………in» و ق۴۸ «to……………. .» و ق۴۹ «took ………………for» — پس از norm «-------» چسبیده",
+    "ق۳۳ «B: No, My brother» — M بزرگِ بعد از ویرگول (عینِ چاپ)؛ ق۳۵ «My parents………………healthier» بدونِ فاصله",
+    "ق۴۷ گزینه‌های «a)True/b)False» بدونِ فاصله؛ ق۴۹ «a)  a few years» دوفاصلهٔ بعدِ حرف (الگویِ r385-«a)  success»)",
+    "ق۴۵ بدونِ علامتِ سؤالِ چاپی («...a more advanced level») و ق۵۰ «Picasso’ first paining» (آپاستروفِ تنها + paining به‌جای painting) — عینِ چاپ",
+    "متنِ پیکاسو: «his family move to Barcelona» (move بدونِ d) و «the old Teachings of Art School» (T بزرگ) و «Picasso' first paining» — عینِ چاپ حفظ شد",
+    "کلیدِ مرتب‌سازی با حروفِ بزرگِ آغازین («First,...»/«In addition,»/«Therefore,...») در برابرِ گزینه‌های چاپیِ کوچک («first,...»/«in addition there are») — گزینه‌های چاپ وفادارانه ماندند؛ سطرهای کلیدِ ۵۶-۶۱ شماره در سطرِ جدا",
+    "آپاستروفِ مخلوط: «You're» و «That's» مستقیم در شنیداری، «mother’s/learner’s/hasn’t/Yazd’s/Picasso’s» خمیده — عینِ چاپ",
+    "پاورقیِ هر پنج صفحه: «Audio file (MP3) / Audio file (PDF) / script (PDF)» + شمارهٔ چاپیِ ۲۰۴-۲۰۸"
+   ],
+   "futureNote": "بخشِ ۴: ۷ برگه از ۱۷ استخراج شد، ۱۰ برگه باقی است (نزدیک‌ترین‌ها: شهریور ۱۳۹۹ ص۲۸۵-۲۹۲ و جفتِ خرداد ۱۳۹۹ ص۲۵۹-۲۷۶؛ به‌علاوهٔ برگهٔ لایه‌خرابِ ص۲۷۷-۲۸۴ که OCR/رندر می‌خواهد، ناشنوایانِ ص۲۹۳-۳۰۰ و جفتِ ۱۳۹۷/۱۳۹۸ با کلیدِ سربرگِ قدیمی)؛ کاندیدهای تایپیِ این برگه (س۱۱ «had studied»/«is spoken» + ردیفِ ۳۸ «Mina was upset because she had gotten a bad score.» + ردیفِ ۴۴ «Quickly before they jump into to the next lesson.» + ردیفِ ۴۵ «They must have a native language dictionary.» + ردیفِ ۵۰ «world» + ردیفِ ۵۱ «creating») به کاندیدهای r380-r385 اضافه شدند — مخزنِ بانکِ تایپیِ نهایی‌ها اکنون ۴۶ ردیف است (۳۹ِ r385 + ۷ ردیفِ تازه؛ ردیفِ ۳۹/John عینِ r384 است و ردیفِ تازه شمرده نشد)",
+   "bookletFile": "جزوه_جامع_پایه_دوازدهم_با_امتحانات_نهایی_.pdf"
   }
  },
  "answerArbitration": [
@@ -7626,6 +7741,606 @@
       "Cell phones are important in these changes."
      ],
      "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 43,
+   "title": "نهایی دی ۱۳۹۹ — کلوژِ شنیداریِ توربینِ بادی (س۳، ص۳۰۱)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l43-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "Emad: Daddy, look at those big fans! Father: They are actually wind turbines. Emad: Wind turbines? Father: Yes, wind turbines are used to produce electricity from wind power. Emad: I know electricity can be produced from water and sunlight. How might it be ------- (8) ------- from wind? Father: Well, a wind turbine works the ------- (9) ------- of a fan. Instead of using electricity to make wind, a turbine uses wind to make electricity. It is a type of ------- (10) ------- energy. Emad: These wind turbines ------- (11) ------- me of what I read about using wind power in Yazd’s buildings. — پاسخِ خانهٔ (8): -------",
+     "options": [
+      "opposite",
+      "generated",
+      "clean",
+      "remind"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l43-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "Emad: Daddy, look at those big fans! Father: They are actually wind turbines. Emad: Wind turbines? Father: Yes, wind turbines are used to produce electricity from wind power. Emad: I know electricity can be produced from water and sunlight. How might it be ------- (8) ------- from wind? Father: Well, a wind turbine works the ------- (9) ------- of a fan. Instead of using electricity to make wind, a turbine uses wind to make electricity. It is a type of ------- (10) ------- energy. Emad: These wind turbines ------- (11) ------- me of what I read about using wind power in Yazd’s buildings. — پاسخِ خانهٔ (9): -------",
+     "options": [
+      "clean",
+      "remind",
+      "opposite",
+      "generated"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l43-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "Emad: Daddy, look at those big fans! Father: They are actually wind turbines. Emad: Wind turbines? Father: Yes, wind turbines are used to produce electricity from wind power. Emad: I know electricity can be produced from water and sunlight. How might it be ------- (8) ------- from wind? Father: Well, a wind turbine works the ------- (9) ------- of a fan. Instead of using electricity to make wind, a turbine uses wind to make electricity. It is a type of ------- (10) ------- energy. Emad: These wind turbines ------- (11) ------- me of what I read about using wind power in Yazd’s buildings. — پاسخِ خانهٔ (10): -------",
+     "options": [
+      "remind",
+      "generated",
+      "opposite",
+      "clean"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l43-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "Emad: Daddy, look at those big fans! Father: They are actually wind turbines. Emad: Wind turbines? Father: Yes, wind turbines are used to produce electricity from wind power. Emad: I know electricity can be produced from water and sunlight. How might it be ------- (8) ------- from wind? Father: Well, a wind turbine works the ------- (9) ------- of a fan. Instead of using electricity to make wind, a turbine uses wind to make electricity. It is a type of ------- (10) ------- energy. Emad: These wind turbines ------- (11) ------- me of what I read about using wind power in Yazd’s buildings. — پاسخِ خانهٔ (11): -------",
+     "options": [
+      "generated",
+      "clean",
+      "remind",
+      "opposite"
+     ],
+     "answer": 2
+    }
+   ]
+  },
+  {
+   "lesson": 44,
+   "title": "نهایی دی ۱۳۹۹ — متنِ شنیداریِ چاپ (س۴، ص۳۰۱)",
+   "level": "شش‌گزینه‌ای",
+   "count": 6,
+   "questions": [
+    {
+     "id": "g12-l44-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "A: The programs on TV these days are the ------- (12) ------- . Even with the hundred channels to ------- (13) ------- from, everything is ------- (14) ------- . B: You're ------- (15) ------- about that! I think it is because most TV programs are written for ------- (16) ------- . There is nothing for older people to ------- (17) ------- . — پاسخِ خانهٔ (12): -------",
+     "options": [
+      "worst",
+      "choose",
+      "terrible",
+      "right",
+      "teenagers",
+      "enjoy"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l44-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "A: The programs on TV these days are the ------- (12) ------- . Even with the hundred channels to ------- (13) ------- from, everything is ------- (14) ------- . B: You're ------- (15) ------- about that! I think it is because most TV programs are written for ------- (16) ------- . There is nothing for older people to ------- (17) ------- . — پاسخِ خانهٔ (13): -------",
+     "options": [
+      "terrible",
+      "right",
+      "choose",
+      "worst",
+      "enjoy",
+      "teenagers"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l44-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "A: The programs on TV these days are the ------- (12) ------- . Even with the hundred channels to ------- (13) ------- from, everything is ------- (14) ------- . B: You're ------- (15) ------- about that! I think it is because most TV programs are written for ------- (16) ------- . There is nothing for older people to ------- (17) ------- . — پاسخِ خانهٔ (14): -------",
+     "options": [
+      "enjoy",
+      "worst",
+      "right",
+      "choose",
+      "terrible",
+      "teenagers"
+     ],
+     "answer": 4
+    },
+    {
+     "id": "g12-l44-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "A: The programs on TV these days are the ------- (12) ------- . Even with the hundred channels to ------- (13) ------- from, everything is ------- (14) ------- . B: You're ------- (15) ------- about that! I think it is because most TV programs are written for ------- (16) ------- . There is nothing for older people to ------- (17) ------- . — پاسخِ خانهٔ (15): -------",
+     "options": [
+      "right",
+      "enjoy",
+      "worst",
+      "teenagers",
+      "choose",
+      "terrible"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l44-5",
+     "n": 5,
+     "category": "vocab",
+     "question": "A: The programs on TV these days are the ------- (12) ------- . Even with the hundred channels to ------- (13) ------- from, everything is ------- (14) ------- . B: You're ------- (15) ------- about that! I think it is because most TV programs are written for ------- (16) ------- . There is nothing for older people to ------- (17) ------- . — پاسخِ خانهٔ (16): -------",
+     "options": [
+      "choose",
+      "enjoy",
+      "terrible",
+      "teenagers",
+      "worst",
+      "right"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l44-6",
+     "n": 6,
+     "category": "vocab",
+     "question": "A: The programs on TV these days are the ------- (12) ------- . Even with the hundred channels to ------- (13) ------- from, everything is ------- (14) ------- . B: You're ------- (15) ------- about that! I think it is because most TV programs are written for ------- (16) ------- . There is nothing for older people to ------- (17) ------- . — پاسخِ خانهٔ (17): -------",
+     "options": [
+      "worst",
+      "right",
+      "choose",
+      "terrible",
+      "teenagers",
+      "enjoy"
+     ],
+     "answer": 5
+    }
+   ]
+  },
+  {
+   "lesson": 45,
+   "title": "نهایی دی ۱۳۹۹ — واژگان و تعریف و حرفِ اول (س۷-س۹، ص۳۰۲)",
+   "level": "چهارگزینه‌ای",
+   "count": 8,
+   "questions": [
+    {
+     "id": "g12-l45-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "A: Mrs. Ahmadi is very friendly and helpful. B: I know! She is known as a ------- teacher, too.",
+     "options": [
+      "dedicated",
+      "replaced",
+      "forgive",
+      "recommend"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l45-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "A: What kind of dictionary do you-------? B: A learner’s dictionary.",
+     "options": [
+      "dedicated",
+      "replaced",
+      "forgive",
+      "recommend"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l45-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "Her sister carefully -------the china plate on the shelf.",
+     "options": [
+      "dedicated",
+      "replaced",
+      "forgive",
+      "recommend"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l45-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "«Students should appreciate their teachers for their help and kindness.» — تعریفِ ستون B برای واژهٔ «appreciate»: -------",
+     "options": [
+      "the amount of a product or service that people want",
+      "the part at the beginning of a book that gives a general idea of what it is about",
+      "be grateful for",
+      "take something in, especially gradually"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l45-5",
+     "n": 5,
+     "category": "vocab",
+     "question": "«Plants absorb carbon dioxide.» — تعریفِ ستون B برای واژهٔ «absorb»: -------",
+     "options": [
+      "the amount of a product or service that people want",
+      "the part at the beginning of a book that gives a general idea of what it is about",
+      "be grateful for",
+      "take something in, especially gradually"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l45-6",
+     "n": 6,
+     "category": "vocab",
+     "question": "«Demand for organic food is increasing.» — تعریفِ ستون B برای واژهٔ «Demand»: -------",
+     "options": [
+      "the amount of a product or service that people want",
+      "the part at the beginning of a book that gives a general idea of what it is about",
+      "be grateful for",
+      "take something in, especially gradually"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l45-7",
+     "n": 7,
+     "category": "vocab",
+     "question": "I think O is the s - - - - - for Oxygen. I am not sure!",
+     "options": [
+      "symbol",
+      "system",
+      "simply",
+      "single"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l45-8",
+     "n": 8,
+     "category": "vocab",
+     "question": "I always try to wake up and start work early because I know that “the early bird catches the w- - -.”",
+     "options": [
+      "worm",
+      "warm",
+      "wind",
+      "wave"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 46,
+   "title": "نهایی دی ۱۳۹۹ — گرامر (س۱۰، ص۳۰۳)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l46-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Your sister has passed the exam, -------?",
+     "options": [
+      "didn’t she",
+      "hasn’t she",
+      "didn’t you",
+      "has she"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l46-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "A: Are you writing the letter to your father? B: No, My brother is writing the letter ------- I will send to my father tomorrow.",
+     "options": [
+      "where",
+      "who",
+      "which",
+      "whom"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l46-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "The traffic rules ------- very carefully by everyone.",
+     "options": [
+      "must be obeyed",
+      "should obey",
+      "are obeying",
+      "has been obeyed"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l46-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "My parents-------healthier if they lived in a village.",
+     "options": [
+      "can be",
+      "would be",
+      "are",
+      "must be"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 47,
+   "title": "نهایی دی ۱۳۹۹ — خوانداریِ فرهنگِ لغت (س۱۳، ص۳۰۳)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l47-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "For English teachers, a dictionary is essential for any teaching program and needs to be used carefully. A dictionary is the basic thing for any language class. The most important thing that a student should know is how to use it. A student needs to have at least three dictionaries available to learn English properly. The first one should be a bilingual dictionary that covers words in the native language as well as in English. The second one should be a monolingual dictionary that gives word information in English. The third one should be a native language dictionary. When teaching begins, learners will use a bilingual dictionary for simple translations. Monolingual dictionaries are also necessary pieces of language learning studies, because they provide learners with definitions, pronunciations, etc. The problem becomes hard with studies when the students do not fully understand the words they are translating, and they get confused. Teachers know that they should clear up the confusion quickly before they jump into to the next lesson. When the students enter a more advanced level, they must have a native language dictionary that relates to their own language. When they do not understand the meaning of a translated word in their own native language, they can use this dictionary to figure it out. — A dictionary is the basic thing for any language class.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l47-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "For English teachers, a dictionary is essential for any teaching program and needs to be used carefully. A dictionary is the basic thing for any language class. The most important thing that a student should know is how to use it. A student needs to have at least three dictionaries available to learn English properly. The first one should be a bilingual dictionary that covers words in the native language as well as in English. The second one should be a monolingual dictionary that gives word information in English. The third one should be a native language dictionary. When teaching begins, learners will use a bilingual dictionary for simple translations. Monolingual dictionaries are also necessary pieces of language learning studies, because they provide learners with definitions, pronunciations, etc. The problem becomes hard with studies when the students do not fully understand the words they are translating, and they get confused. Teachers know that they should clear up the confusion quickly before they jump into to the next lesson. When the students enter a more advanced level, they must have a native language dictionary that relates to their own language. When they do not understand the meaning of a translated word in their own native language, they can use this dictionary to figure it out. — Students must have more than four dictionaries to learn English",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l47-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "For English teachers, a dictionary is essential for any teaching program and needs to be used carefully. A dictionary is the basic thing for any language class. The most important thing that a student should know is how to use it. A student needs to have at least three dictionaries available to learn English properly. The first one should be a bilingual dictionary that covers words in the native language as well as in English. The second one should be a monolingual dictionary that gives word information in English. The third one should be a native language dictionary. When teaching begins, learners will use a bilingual dictionary for simple translations. Monolingual dictionaries are also necessary pieces of language learning studies, because they provide learners with definitions, pronunciations, etc. The problem becomes hard with studies when the students do not fully understand the words they are translating, and they get confused. Teachers know that they should clear up the confusion quickly before they jump into to the next lesson. When the students enter a more advanced level, they must have a native language dictionary that relates to their own language. When they do not understand the meaning of a translated word in their own native language, they can use this dictionary to figure it out. — What is the main idea of the text?",
+     "options": [
+      "Dictionaries are essential for language learning.",
+      "Bilingual dictionaries are the most important types of dictionaries.",
+      "All of the students cannot figure out what they read.",
+      "Monolingual dictionaries are the most expensive dictionaries."
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l47-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "For English teachers, a dictionary is essential for any teaching program and needs to be used carefully. A dictionary is the basic thing for any language class. The most important thing that a student should know is how to use it. A student needs to have at least three dictionaries available to learn English properly. The first one should be a bilingual dictionary that covers words in the native language as well as in English. The second one should be a monolingual dictionary that gives word information in English. The third one should be a native language dictionary. When teaching begins, learners will use a bilingual dictionary for simple translations. Monolingual dictionaries are also necessary pieces of language learning studies, because they provide learners with definitions, pronunciations, etc. The problem becomes hard with studies when the students do not fully understand the words they are translating, and they get confused. Teachers know that they should clear up the confusion quickly before they jump into to the next lesson. When the students enter a more advanced level, they must have a native language dictionary that relates to their own language. When they do not understand the meaning of a translated word in their own native language, they can use this dictionary to figure it out. — What does the underlined word “they” in paragraph 2 refer to?",
+     "options": [
+      "problems",
+      "teachers",
+      "dictionaries",
+      "students"
+     ],
+     "answer": 3
+    }
+   ]
+  },
+  {
+   "lesson": 48,
+   "title": "نهایی دی ۱۳۹۹ — خوانداریِ پیکاسو (س۱۴، ص۳۰۴)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l48-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Pablo Picasso was a distinguished artist. He was born in Spain on October 25, 1881. His father was a painter and art teacher. He helped his son to improve his artistic ability. When Picasso was 10 years old, his family move to Barcelona, Spain where Picasso took an exam to attend a popular Art School. The exam was going to take one month, however it was very surprising that Picasso finished it in one day. A few years later, he went to another school in Madrid. He was bored with the old Teachings of Art School, and he did not want to paint like people hundreds of years ago. He really wanted to create something new. He moved to Paris where he worked as an artist and created his wonderful drawings. During this time, he created his famous Blue period works. In 1907, Picasso painted a painting that is known as the first painting in the modern art movement. Artists from all over the world travelled there to see this painting. In 1907, Picasso began to experiment with a new style of painting. He is well-known for creating the Cubism Style. One of the most interesting things about Picasso is that he was the first artist to be famous during his own lifetime. He was one of the most important artists of the 20th century. He died on April 8, 1973. — Picasso was a famous French artist during the 18th century.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l48-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "Pablo Picasso was a distinguished artist. He was born in Spain on October 25, 1881. His father was a painter and art teacher. He helped his son to improve his artistic ability. When Picasso was 10 years old, his family move to Barcelona, Spain where Picasso took an exam to attend a popular Art School. The exam was going to take one month, however it was very surprising that Picasso finished it in one day. A few years later, he went to another school in Madrid. He was bored with the old Teachings of Art School, and he did not want to paint like people hundreds of years ago. He really wanted to create something new. He moved to Paris where he worked as an artist and created his wonderful drawings. During this time, he created his famous Blue period works. In 1907, Picasso painted a painting that is known as the first painting in the modern art movement. Artists from all over the world travelled there to see this painting. In 1907, Picasso began to experiment with a new style of painting. He is well-known for creating the Cubism Style. One of the most interesting things about Picasso is that he was the first artist to be famous during his own lifetime. He was one of the most important artists of the 20th century. He died on April 8, 1973. — Picasso was also very skillful in painting when he was young.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l48-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "Pablo Picasso was a distinguished artist. He was born in Spain on October 25, 1881. His father was a painter and art teacher. He helped his son to improve his artistic ability. When Picasso was 10 years old, his family move to Barcelona, Spain where Picasso took an exam to attend a popular Art School. The exam was going to take one month, however it was very surprising that Picasso finished it in one day. A few years later, he went to another school in Madrid. He was bored with the old Teachings of Art School, and he did not want to paint like people hundreds of years ago. He really wanted to create something new. He moved to Paris where he worked as an artist and created his wonderful drawings. During this time, he created his famous Blue period works. In 1907, Picasso painted a painting that is known as the first painting in the modern art movement. Artists from all over the world travelled there to see this painting. In 1907, Picasso began to experiment with a new style of painting. He is well-known for creating the Cubism Style. One of the most interesting things about Picasso is that he was the first artist to be famous during his own lifetime. He was one of the most important artists of the 20th century. He died on April 8, 1973. — The underlined word “He” in the second line refers to------- .",
+     "options": [
+      "Picasso",
+      "his son",
+      "Picasso’s father",
+      "the teacher"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l48-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "Pablo Picasso was a distinguished artist. He was born in Spain on October 25, 1881. His father was a painter and art teacher. He helped his son to improve his artistic ability. When Picasso was 10 years old, his family move to Barcelona, Spain where Picasso took an exam to attend a popular Art School. The exam was going to take one month, however it was very surprising that Picasso finished it in one day. A few years later, he went to another school in Madrid. He was bored with the old Teachings of Art School, and he did not want to paint like people hundreds of years ago. He really wanted to create something new. He moved to Paris where he worked as an artist and created his wonderful drawings. During this time, he created his famous Blue period works. In 1907, Picasso painted a painting that is known as the first painting in the modern art movement. Artists from all over the world travelled there to see this painting. In 1907, Picasso began to experiment with a new style of painting. He is well-known for creating the Cubism Style. One of the most interesting things about Picasso is that he was the first artist to be famous during his own lifetime. He was one of the most important artists of the 20th century. He died on April 8, 1973. — It took -------for Picasso to finish his exam to attend the Art school in Barcelona.",
+     "options": [
+      "a few years",
+      "more than a day",
+      "only one month",
+      "one day"
+     ],
+     "answer": 3
+    }
+   ]
+  },
+  {
+   "lesson": 49,
+   "title": "نهایی دی ۱۳۹۹ — حروفِ ربط (س۱۵، ص۳۰۵)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l49-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Sepideh likes spaghetti,------- her grandmother hates spaghetti.",
+     "options": [
+      "but",
+      "and",
+      "so",
+      "or"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l49-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "These shoes are not comfortable , ------- I will not buy them.",
+     "options": [
+      "but",
+      "and",
+      "so",
+      "or"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l49-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "He went to the restaurant ------- ordered food.",
+     "options": [
+      "but",
+      "and",
+      "so",
+      "or"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l49-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "We can go by bus, ------- we can take a taxi.",
+     "options": [
+      "but",
+      "and",
+      "so",
+      "or"
+     ],
+     "answer": 3
+    }
+   ]
+  },
+  {
+   "lesson": 50,
+   "title": "نهایی دی ۱۳۹۹ — مرتب‌سازیِ پاراگرافِ کانادا (س۱۶، ص۳۰۵)",
+   "level": "شش‌گزینه‌ای",
+   "count": 6,
+   "questions": [
+    {
+     "id": "g12-l50-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "مرتب‌سازیِ پاراگرافِ کانادا (س۱۶، ص۳۰۵) — جملاتِ درهم‌ریختهٔ a تا f؛ جایگاهِ ۵۶ (جملهٔ آغازینِ پاراگراف): -------",
+     "options": [
+      "therefore, many patients are easily cured in hospitals in Canada",
+      "second, it has a high standard of education for young people",
+      "there are several reasons why Canada is one of the best countries in the world",
+      "in addition there are many chances for them to get a good job",
+      "as a result, many people like to live in Canada",
+      "first, Canada has an excellent health care system"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l50-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "مرتب‌سازیِ پاراگرافِ کانادا (س۱۶، ص۳۰۵) — جملاتِ درهم‌ریختهٔ a تا f؛ جایگاهِ ۵۷ در پاراگراف: -------",
+     "options": [
+      "therefore, many patients are easily cured in hospitals in Canada",
+      "second, it has a high standard of education for young people",
+      "there are several reasons why Canada is one of the best countries in the world",
+      "in addition there are many chances for them to get a good job",
+      "as a result, many people like to live in Canada",
+      "first, Canada has an excellent health care system"
+     ],
+     "answer": 5
+    },
+    {
+     "id": "g12-l50-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "مرتب‌سازیِ پاراگرافِ کانادا (س۱۶، ص۳۰۵) — جملاتِ درهم‌ریختهٔ a تا f؛ جایگاهِ ۵۸ در پاراگراف: -------",
+     "options": [
+      "therefore, many patients are easily cured in hospitals in Canada",
+      "second, it has a high standard of education for young people",
+      "there are several reasons why Canada is one of the best countries in the world",
+      "in addition there are many chances for them to get a good job",
+      "as a result, many people like to live in Canada",
+      "first, Canada has an excellent health care system"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l50-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "مرتب‌سازیِ پاراگرافِ کانادا (س۱۶، ص۳۰۵) — جملاتِ درهم‌ریختهٔ a تا f؛ جایگاهِ ۵۹ در پاراگراف: -------",
+     "options": [
+      "therefore, many patients are easily cured in hospitals in Canada",
+      "second, it has a high standard of education for young people",
+      "there are several reasons why Canada is one of the best countries in the world",
+      "in addition there are many chances for them to get a good job",
+      "as a result, many people like to live in Canada",
+      "first, Canada has an excellent health care system"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l50-5",
+     "n": 5,
+     "category": "grammar",
+     "question": "مرتب‌سازیِ پاراگرافِ کانادا (س۱۶، ص۳۰۵) — جملاتِ درهم‌ریختهٔ a تا f؛ جایگاهِ ۶۰ در پاراگراف: -------",
+     "options": [
+      "therefore, many patients are easily cured in hospitals in Canada",
+      "second, it has a high standard of education for young people",
+      "there are several reasons why Canada is one of the best countries in the world",
+      "in addition there are many chances for them to get a good job",
+      "as a result, many people like to live in Canada",
+      "first, Canada has an excellent health care system"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l50-6",
+     "n": 6,
+     "category": "grammar",
+     "question": "مرتب‌سازیِ پاراگرافِ کانادا (س۱۶، ص۳۰۵) — جملاتِ درهم‌ریختهٔ a تا f؛ جایگاهِ ۶۱ (پایان‌بندیِ پاراگراف): -------",
+     "options": [
+      "therefore, many patients are easily cured in hospitals in Canada",
+      "second, it has a high standard of education for young people",
+      "there are several reasons why Canada is one of the best countries in the world",
+      "in addition there are many chances for them to get a good job",
+      "as a result, many people like to live in Canada",
+      "first, Canada has an excellent health care system"
+     ],
+     "answer": 4
     }
    ]
   }
