@@ -96,12 +96,13 @@ describe("r374 — رسیدِ g8exam1 + نقشهٔ g8familyMap", () => {
     expect(rec.printQuirks.some((s) => s.includes("از دیدن شما خوشحالم"))).toBe(true);
   });
 
-  it("نقشهٔ ۷ خانوادهٔ g8 — r374=۱ (r375/r376/r377 خانواده‌های بعد را بردند — گاردهای خودشان) و null=۱ (pdf-p72 پس از r377)", () => {
+  it("نقشهٔ ۷ خانوادهٔ g8 — r374=۱ (r375/r376/r377/r378 خانواده‌های بعد را بردند — گاردهای خودشان) و null=۰ (کارت کامل — ۷/۷)", () => {
     expect(map.families).toHaveLength(7);
     expect(map.families.map((f) => f.pdfPage)).toEqual([18, 27, 35, 41, 50, 60, 72]);
     expect(map.families.filter((f) => f.round === "r374")).toHaveLength(1);
     expect(map.families.filter((f) => f.round === "r377")).toHaveLength(2);
-    expect(map.families.filter((f) => f.round === null)).toHaveLength(1);
+    expect(map.families.filter((f) => f.round === "r378")).toHaveLength(1);
+    expect(map.families.filter((f) => f.round === null)).toHaveLength(0);
     expect(map.families[0].status).toContain("۳ بانک/۱۰ آیتم");
     expect(map.note).toContain("r369");
   });
@@ -191,14 +192,14 @@ describe("r374 — بانکِ ۳: خ۱/س۵ ترجمهٔ جدول (چهارگز�
 });
 
 describe("r374 — پیمان‌های سراسریِ فایلِ تازه", () => {
-  it("file shape: grade 8، پانزده بانک (r374=۳ بانکِ نخست)، شمارها [4,3,3] برای بانک‌های ۱-۳، ۴۶ آیتمِ یکتا با الگویِ g8-l1..15", () => {
+  it("file shape: grade 8، شانزده بانک (r374=۳ بانکِ نخست)، شمارها [4,3,3] برای بانک‌های ۱-۳، ۵۲ آیتمِ یکتا با الگویِ g8-l1..16", () => {
     expect(g8.grade).toBe(8);
     expect(g8.title).toContain("پایه هشتم");
-    expect(g8.lessons).toHaveLength(15);
+    expect(g8.lessons).toHaveLength(16);
     expect(g8.lessons.slice(0, 3).map((l) => l.count)).toEqual([4, 3, 3]);
     const ids = g8.lessons.flatMap((b) => b.questions.map((x) => x.id));
-    expect(ids).toHaveLength(46);
-    expect(new Set(ids).size).toBe(46);
+    expect(ids).toHaveLength(52);
+    expect(new Set(ids).size).toBe(52);
     expect(ids[0]).toBe("g8-l1-1");
     expect(ids[4]).toBe("g8-l2-1");
     expect(ids[7]).toBe("g8-l3-1");

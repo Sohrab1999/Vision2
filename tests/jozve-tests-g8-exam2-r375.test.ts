@@ -114,15 +114,16 @@ describe("r375 — رسیدِ g8exam2 + نقشهٔ g8familyMap", () => {
     expect(rec.printQuirks.some((s) => s.includes("Sunday’s"))).toBe(true);
   });
 
-  it("نقشهٔ ۷ خانوادهٔ g8 — r374=۱ و r375=۱ و r376=۲ و r377=۲ (درس پنجم/ششم — گاردِ خودش) و null=۱؛ درس دوم به‌روز شد", () => {
+  it("نقشهٔ ۷ خانوادهٔ g8 — r374=۱ و r375=۱ و r376=۲ و r377=۲ و r378=۱ (گاردِ خودش) و null=۰ (کارت کامل ۷/۷)؛ درس دوم به‌روز شد", () => {
     expect(map.families).toHaveLength(7);
     expect(map.families.map((f) => f.pdfPage)).toEqual([18, 27, 35, 41, 50, 60, 72]);
     expect(map.families.filter((f) => f.round === "r374")).toHaveLength(1);
     expect(map.families.filter((f) => f.round === "r375")).toHaveLength(1);
     expect(map.families.filter((f) => f.round === "r376")).toHaveLength(2);
     expect(map.families.filter((f) => f.round === "r377")).toHaveLength(2);
-    expect(map.families.filter((f) => f.round === null)).toHaveLength(1);
-    expect(map.lastUpdatedRound).toBe("r377");
+    expect(map.families.filter((f) => f.round === "r378")).toHaveLength(1);
+    expect(map.families.filter((f) => f.round === null)).toHaveLength(0);
+    expect(map.lastUpdatedRound).toBe("r378");
     expect(map.families[1].status).toContain("۴ بانک/۱۱ آیتم");
     expect(map.note).toContain("r369");
   });
@@ -285,14 +286,14 @@ describe("r375 — بانکِ ۷: خ۲/س۴ کلمهٔ ناهماهنگ (ردی�
 });
 
 describe("r375 — پیمان‌های سراسریِ فایل (پس از الحاقِ ۴ بانک)", () => {
-  it("file shape: grade 8، پانزده بانک (r375=بانک‌های ۴-۷)، شمارهای بانک‌های ۱-۷ [4,3,3,2,5,3,1]، ۴۶ آیتمِ یکتا با الگویِ g8-l1..15", () => {
+  it("file shape: grade 8، شانزده بانک (r375=بانک‌های ۴-۷)، شمارهای بانک‌های ۱-۷ [4,3,3,2,5,3,1]، ۵۲ آیتمِ یکتا با الگویِ g8-l1..16", () => {
     expect(g8.grade).toBe(8);
     expect(g8.title).toContain("پایه هشتم");
-    expect(g8.lessons).toHaveLength(15);
+    expect(g8.lessons).toHaveLength(16);
     expect(g8.lessons.slice(0, 7).map((l) => l.count)).toEqual([4, 3, 3, 2, 5, 3, 1]);
     const ids = g8.lessons.flatMap((b) => b.questions.map((x) => x.id));
-    expect(ids).toHaveLength(46);
-    expect(new Set(ids).size).toBe(46);
+    expect(ids).toHaveLength(52);
+    expect(new Set(ids).size).toBe(52);
     expect(ids[0]).toBe("g8-l1-1");
     expect(ids[3]).toBe("g8-l1-4");
     expect(ids[4]).toBe("g8-l2-1");
@@ -314,11 +315,12 @@ describe("r375 — پیمان‌های سراسریِ فایل (پس از الح
       }
   });
 
-  it("خلوصِ لاتین: همهٔ گزینه‌ها لاتین‌اند؛ ساقه‌ها لاتین به‌جز بانک‌های ۳ و ۶ و ۱۲ و ۱۴ (ساقهٔ فارسیِ چاپ)", () => {
+  it("خلوصِ لاتین: همهٔ گزینه‌ها لاتین‌اند؛ ساقه‌ها لاتین به‌جز بانک‌های ۳ و ۶ و ۱۲ و ۱۴ (ساقهٔ فارسیِ چاپ) — بانکِ ۱۶ دورویی است (پوششِ اختصاصی در گاردِ r378)", () => {
     // \u2019 = آپاستروفِ خمیدهٔ «Sunday’s» — کوئیرکِ verbatimِ چاپ (رسید: printQuirks)
     const latinPunct = /^[\x20-\x7E\u200c…–—\u2192\u2019]+$/;
     for (const b of g8.lessons)
       for (const it of b.questions) {
+        if (b.lesson === 16) continue; // بانکِ دوطرفهٔ جدولِ ترجمه: ساقه/گزینهٔ فارسی و لاتینِ هم‌زمان — گاردِ r378
         for (const o of it.options) expect(latinPunct.test(o), `option of ${it.id}`).toBe(true);
         if (b.lesson !== 3 && b.lesson !== 6 && b.lesson !== 12 && b.lesson !== 14) {
           expect(latinPunct.test(it.question), `question of ${it.id}: ${it.question}`).toBe(true);

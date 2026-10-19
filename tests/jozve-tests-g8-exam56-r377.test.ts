@@ -89,15 +89,16 @@ describe("r377 — رسیدِ g8exam56 و نقشهٔ خانواده‌ها", () 
     expect(rec.printQuirks.some((s) => s.includes("Suuny"))).toBe(true);
   });
 
-  it("نقشهٔ ۷ خانوادهٔ g8 — r377=۲ (درس پنجم/ششم) و null=۱ (فقط درس هفتم pdf-p72)", () => {
+  it("نقشهٔ ۷ خانوادهٔ g8 کامل (۷/۷) — r377=۲ (درس پنجم/ششم) و r378=۱ (درس هفتم — گاردِ خودش) و null=۰", () => {
     expect(map.families).toHaveLength(7);
     expect(map.families.map((f) => f.pdfPage)).toEqual([18, 27, 35, 41, 50, 60, 72]);
     expect(map.families.filter((f) => f.round === "r377")).toHaveLength(2);
-    expect(map.families.filter((f) => f.round === null)).toHaveLength(1);
+    expect(map.families.filter((f) => f.round === "r378")).toHaveLength(1);
+    expect(map.families.filter((f) => f.round === null)).toHaveLength(0);
     expect(map.families[4].round).toBe("r377");
     expect(map.families[5].round).toBe("r377");
-    expect(map.families[6].round).toBe(null);
-    expect(map.lastUpdatedRound).toBe("r377");
+    expect(map.families[6].round).toBe("r378");
+    expect(map.lastUpdatedRound).toBe("r378");
     expect(map.families[4].status).toContain("۲ بانک/۶ آیتم");
     expect(map.families[5].status).toContain("۱ بانک/۴ آیتم");
     expect(map.note).toContain("r369");
