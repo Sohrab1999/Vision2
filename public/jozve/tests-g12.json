@@ -495,6 +495,109 @@
    ],
    "futureNote": "بخشِ ۴ اکنون نقشهٔ کاملِ ۱۷برگه‌ای دارد (ص۲۲۸-۳۴۹) — ۵ برگه استخراج شد، ۱۲ برگه باقی است (نزدیک‌ترین‌ها: خرداد ۱۴۰۰ ریاضی-تجربی ص۳۰۸-۳۱۴ و دی ۱۳۹۹ ص۳۰۱-۳۰۷؛ به‌علاوهٔ برگهٔ لایه‌خرابِ ص۲۷۷-۲۸۴ که OCR/رندر می‌خواهد و جفتِ ۱۳۹۷ با کلیدِ سربرگِ قدیمی)؛ کاندیدهای تایپیِ این برگه (س۱۰ «was broken» + ردیف‌های ۳۲/۳۳/۳۴/۳۸/۴۲/۴۳) به کاندیدهای r380/r381/r382/r383 اضافه شدند — مخزنِ بانکِ تایپیِ نهایی‌ها اکنون ۳۴ ردیف است (۲۷ِ r383 + ۷ ردیفِ تازه)",
    "bookletFile": "جزوه_جامع_پایه_دوازدهم_با_امتحانات_نهایی_.pdf"
+  },
+  "g12nahaie6": {
+   "extractedRound": "r385",
+   "section": "بخش چهارمِ جزوه: «آزمونهای از دی ماه 1397 تا شهریور 1401 نهابی با کلید» — برگهٔ ششم: «سؤالات امتحان نهایی» زبان انگلیسی (۳) نوبتِ خرداد ۱۴۰۰ (واریانتِ رشتهٔ ریاضی-فیزیک و علوم تجربی)",
+   "examPages": "pdf-p308-312 (پنج صفحهٔ آزمون) + کلیدِ رسمی: pdf-p313-314 «راهنماي تصحيح»؛ مرزِ برگه‌ها = p307→p308 (پایانِ کلیدِ برگهٔ قبل) و p314→p315 (آغازِ خرداد ۱۴۰۰ انسانیِ r384)",
+   "examMeta": "امتحان نهاییِ سراسریِ وزارت — درس: زبان انگلیسی (۳) — پایه دوازدهم دورهٔ دوم متوسطه — رشته: ریاضی-فیزیک و علوم تجربی — نوبت خرداد ماه سال ۱۴۰۰ (تاریخِ چاپی: ۱۹/۰۳/۱۴۰۰) — مدت ۱۲۰ دقیقه — ساعت شروع ۸ صبح — ۱۹ سکشن/۵۷ ردیف/بارم ۴۰ — روزانه/بزرگسال/داوطلب آزاد — مركز سنجش و پايش كيفيت آموزشي (aee.medu.ir) — «GOOD LUCK / جمع نمره ۴٠» — برگهٔ خواهرِ انسانی (ص۳۱۵-۳۲۱، یک روز قبل: ۱۸/۰۳) جداگانه چاپ شده",
+   "keyPages": "pdf-p313-314 راهنمای تصحیحِ رسمی — «هر پاسخ صحيح (5/.) نمره» — ۵۵ فرگمنتِ کلیدِ چاپی در گارد پیمان می‌شود؛ ۳۱ کلید از ۳۱ آیتمِ بانک‌ها عینِ چاپ است",
+   "keyVerification": "کلیدِ چاپی عیناً نقل شد: «1. False (b) 2. False (b) 3. True (a) 4. True (a)» / «5. (b) 6. (c) 7. (c) 8. (a)» / «9. around 10. social 11. land 12. protect» / «13. False (b) 14. True (a) 15. listen» / «16. (e) 17.(d) 18. (a) 19. (c)» / «20. fossil 21. use up 22. distinguished» / «23. (d) 24. (c) 25. (b)» / «26. speak» / «27. (b) 28. (d) 29. (a) 30. (d)» / «31. had paid» / «35. (a) True 36. (a) True 37. ( c ) 38. ( b)» / «39. (a) True 40. (b) False 41. ( b) 42. ( a )» / «43. Solar collectors collect heat by absorbing sunlight.» / «44. (a) True 45. (b) False 46. (c) 47 .(d)» / «48. and 49. so» — بلوکِ درهمِ لایه برای س۱۱ (۳۲/۳۳) با داوریِ رندرِ ۳۰۰dpi (/tmp/qa-r385/p313-s11-zoom.png): «32. Joe had already learned Chinese when he moved to China.» / «33. They would buy a house if they were you.» — ششمین تکرارِ درسِ r380-ق۳۲",
+   "sectionsTotal": 57,
+   "sectionsExtracted": 31,
+   "sectionsSkipped": 26,
+   "items": 31,
+   "bankCounts": [
+    7,
+    4,
+    4,
+    4,
+    4,
+    2,
+    6
+   ],
+   "keyPolicy": "همهٔ کلیدهای ۳۱ آیتم از راهنمای تصحیحِ چاپی می‌آیند (عینِ چاپ)؛ گزینه‌های مهندسی‌شده: بانکِ واژگانِ l36-ق۱-۳ به ترتیبِ چاپِ خودِ برگه (suppose, use up, distinguished, fossil) با اضافیِ چاپیِ هرگز-کلید (suppose) و چهارِ اصطلاحِ l36-ق۷ (شکلِ حروفِ چاپ s---- محترم: speak در برابرِ spend/sound/stand — هر چهار ۵حرفیِ s-دار)؛ تعریف‌یابیِ l36-ق۴-۶ به ترتیبِ چاپِ ستون B با اضافیِ «to put things in a neat, attractive, or useful order» هرگز-کلید؛ کلیدهای درست/غلطِ l38/l39/l40 سمانتیک‌اند و چرخش نمی‌پذیرند (دوبلِ Trueِ چاپ در ۳۵/۳۶ وفادارانه حفظ شد)؛ گرامرِ l37 و حروفِ ربطِ l41 به ترتیبِ چاپ؛ بانکِ مرتب‌سازیِ l42 گزینه‌هایش را به ترتیبِ چاپِ a-f می‌چیند با کلیدهای چاپی [c,f,b,d,e,a] در اندیس‌های [2,5,1,3,4,0]",
+   "engineNote": "هر ۳۱ آیتم MCQ (قراردادِ کارتِ g12)؛ l42 دومین بانکِ شش‌گزینه‌ایِ مرتب‌سازیِ مخزن (الگویِ l35ِ r384) — هر جایگاهِ ۵۱-۵۶ یک آیتم با هر شش جمله به‌عنوان گزینه؛ d و e در چاپ دو نیمهٔ یک جمله‌اند ولی وفادارانه دو گزینهٔ جدا ماندند (کلیدهای چاپی ۵۴=d و ۵۵=e)؛ ساقه‌های خوانداریِ l38/l39/l40 متنِ کاملِ چاپی را در خود دارند؛ ساقه‌های تعریف‌یابی دوبخشیِ فارسی (الگویِ r380-l5)؛ ساقه‌های A/B گرامر (ق۲۸/۲۹/۳۰) دوبخطیِ بازجوش؛ ترجمه عمداً غایب (نهایی‌ها ترجمهٔ چاپی ندارند)؛ نقطه‌چینِ چاپ → «-------» چسبیده",
+   "derivedKeys": {
+    "S6": [
+     "fossil",
+     "use up",
+     "distinguished"
+    ],
+    "S7": [
+     "to suddenly decide to do something",
+     "to stop being angry with someone",
+     "to take the place of somebody or something"
+    ],
+    "S8": [
+     "speak"
+    ],
+    "S9": [
+     "does he",
+     "which",
+     "may be made",
+     "could earn"
+    ],
+    "S13": [
+     "True",
+     "True",
+     "They tell about famous people.",
+     "words"
+    ],
+    "S14": [
+     "True",
+     "False",
+     "get the most sunshine",
+     "materials"
+    ],
+    "S15": [
+     "True",
+     "False",
+     "teenagers",
+     "support"
+    ],
+    "S16": [
+     "and",
+     "so"
+    ],
+    "S18": [
+     "The new century has brought big changes in communication.",
+     "Cell phones are important in these changes.",
+     "Most of these cell phones can help you have video calls.",
+     "But some people do not have such phones",
+     "because they are very expensive.",
+     "In short, communication can depend on technology."
+    ]
+   },
+   "paperMap": "نقشهٔ کاملِ بخشِ ۴ (ص۲۲۸-۳۴۹، ۱۷ برگه) — کشفِ r384، تأییدِ دوباره در این راند: دی ۱۳۹۷ ص۲۲۹-۲۳۳ + کلیدِ سربرگِ قدیمیِ ص۲۳۴-۲۳۶ (پیش از presentation-forms)؛ خرداد ۱۳۹۸ ص۲۳۷-۲۴۱ + کلید ص۲۴۲-۲۴۳ (۱۳/۳/۱۳۹۸)؛ شهریور ۱۳۹۸ ص۲۴۴-۲۴۸ + کلید ص۲۴۹-۲۵۰ (۱۲/۶/۱۳۹۸)؛ دی ۱۳۹۸ ص۲۵۱-۲۵۶ + کلید ص۲۵۷-۲۵۸ (۲۲/۱۰/۹۸)؛ خرداد ۱۳۹۹ ریاضی-تجربی ص۲۵۹-۲۶۵ + کلید ص۲۶۶-۲۶۷ (۰۵/۰۴/۹۹)؛ خرداد ۱۳۹۹ انسانی ص۲۶۸-۲۷۴ + کلید ص۲۷۵-۲۷۶ (۰۷/۰۴/۹۹)؛ برگهٔ لایه‌خراب ص۲۷۷-۲۸۴ (نیازمند OCR/رندر)؛ شهریور ۱۳۹۹ ص۲۸۵-۲۹۰ + کلید ص۲۹۱-۲۹۲ (۱۳/۰۶/۹۹)؛ شهریور ۱۳۹۹ ویژهٔ ناشنوایان ص۲۹۳-۲۹۸ + کلید ص۲۹۹-۳۰۰ (۱۳/۰۶/۹۹)؛ دی ۱۳۹۹ ص۳۰۱-۳۰۵ + کلید ص۳۰۶-۳۰۷ (۰۱/۱۱/۹۹)؛ خرداد ۱۴۰۰ ریاضی-تجربی ص۳۰۸-۳۱۴ ← این راند؛ خرداد ۱۴۰۰ انسانی ص۳۱۵-۳۲۱ [r384]؛ شهریور ۱۴۰۰ ص۳۲۲-۳۲۸ [r383]؛ دی ۱۴۰۰ ص۳۲۹-۳۳۵ [r382]؛ دی ۱۴۰۱ ص۳۳۶-۳۴۲ [r380]؛ شهریور ۱۴۰۱ ص۳۴۳-۳۴۹ [r381] — ۶ برگه استخراج شد، ۱۱ برگه باقی است",
+   "skippedSections": [
+    "س۱ (ردیف ۱-۴، شنیداریِ درست/غلط): مکالمهٔ مینا/رویا (باشگاهِ ورزشی) — صوتی-کلید (پاورقیِ «Audio script (PDF) / Audio file (MP3)» در ص۳۰۸)؛ کلیدهای چاپی: 1.False(b)/2.False(b)/3.True(a)/4.True(a) — در رسید حفظ شد",
+    "س۲ (ردیف ۵-۸، شنیداری): مکالمهٔ امیر/رسول (رستورانِ نو، غذای ماهی/مرغ) — صوتی-کلید با گزینه‌های چاپیِ کامل (it was expensive/they didn’t want to/the restaurant was too far و...)؛ کلیدهای چاپی: 5.(b)/6.(c)/7.(c)/8.(a)",
+    "س۳ (ردیف ۹-۱۲، شنیداریِ کلوژ): متنِ محیطِ زیست (The environment means different things...) — صوتی-کلید؛ کلیدهای چاپی: 9.around/10.social/11.land/12.protect",
+    "س۴ (ردیف ۱۳-۱۵، شنیداری): معلم/دانش‌آموز (قول دادن/احترام) — صوتی-کلید؛ کلیدهای چاپی: 13.False(b)/14.True(a)/15.listen",
+    "س۵ (ردیف ۱۶-۱۹، تصویری): «با توجه به تصاویر... یک جمله اضافی است» — چهار تصویر با داوریِ کاملِ رندر (ص۳۰۹، ۳۰۰dpi): (16) کارخانهٔ آلاینده با رودخانهٔ آلوده و بشکهٔ سم→e، (17) کبوترهای پارک→d، (18) سه لامپِ روشن→a، (19) صفحهٔ لغت‌نامه با مدادِ دایره‌کشیده→c؛ اضافیِ چاپی: b) I have kept a diary for twelve years — هم‌خوانِ کلیدِ رسمی؛ استخرِ جمله‌های س۵ در r382 نیز هست (لامپ/دایره‌کشی) با اضافیِ متفاوت (خواهر-برادریِ برگه‌ها)",
+    "س۱۰ (ردیف ۳۱، شکلِ فعلِ باز): «They gave me some money back because I …….. too much. (pay)» — کلیدِ چاپیِ دقیق «had paid» (ماضیِ بعید) — بدونِ گزینهٔ چاپی؛ کاندیدِ بانکِ تایپی",
+    "س۱۱-س۱۲ (ردیف ۳۲-۳۴): جمله‌سازیِ درهم (پاسخِ مدل: «Joe had already learned Chinese when he moved to China.» و «They would buy a house if they were you.» — بلوکِ درهمِ لایه با داوریِ رندرِ ص۳۱۳) و ضمیرِ موصولی (A horse is an animal + which + جملهٔ دارای فعل) — کاندیدِ تایپی/تولیدی",
+    "ردیف ۴۳ (پاسخِ مدلِ خورشیدی: «Solar collectors collect heat by absorbing sunlight.» بارم ۱) — کاندیدِ تایپی (عینِ جمله در متنِ خوانداریِ l39 هست — نشت‌سنج شمول ندارد)",
+    "س۱۷ (ردیف ۵۰، حرفِ ربط با تصویر): «The book was boring ……………………………… . (read)» — کلیدِ چاپیِ کامل «50. …..but he had to read it.» — عینِ کلیدِ r382-س۱۷ (برخوردِ بین‌برگه‌ایِ بی‌خطر؛ هر دو مستثنی) — تصویری-کلید؛ کلید حفظ شد",
+    "س۱۹ (ردیف ۵۷، نگارشِ تولیدی): پاراگرافِ Sport با چیپ‌های چاپی (Different types of sport / Good physical shape (the body) / Healthier heart) — تولیدی با کلیدِ بند-رأیی"
+   ],
+   "printQuirks": [
+    "چهارمین برگهٔ presentation-forms (ﺳﺆاﻻت/اﻣﺘﺤﺎنِ چسبیده — الگویِ r382/r383) — متنِ انگلیسی و کلیدها لاتینِ سالم",
+    "تاریخِ چاپیِ ۱۹/۰۳/۱۴۰۰ با «نوبت خرداد ماه سال 1400» — دومین برگه از جفتِ خرداد ۱۴۰۰ (خواهرِ انسانی یک روز قبل: ۱۸/۰۳)",
+    "دو کلیدِ پرانتز-فاصله‌دارِ چاپی در یک صفحه: «37. ( c )» و «42. ( a )» — پنجمین و ششمین بار (الگویِ r380-q38/r382-q38/r383-ق۳۸/r384-ق۳۷)",
+    "«47 .(d)» — نقطهٔ قبل از شماره (فاصله+نقطه) — کوئیرکِ نو؛ در برابرِ «46. (c)» عادی در همان سطر",
+    "«41. ( b)» و «38. ( b)» — پرانتزِ بازِ چسبیده به حرف بدونِ فاصله‌ی بعدی",
+    "ق۴۲ «different ………..in building» — نقطه‌چینِ چسبیده به واژهٔ بعدی → پس از norm «-------in»؛ ق۴۷ «the best…………for teenagers.» و ق۴۹ «expensive, ……….I can’t buy it.» همین الگو",
+    "ق۴۱ «to….............» — ترکیبِ سه‌نقطه+نقطه‌چینِ بلند + نقطهٔ پایانیِ جدا → پس از norm «to------- .»",
+    "دوبلِ Trueِ چاپ در ۳۵/۳۶ (سومین رخدادِ بعدِ r384-ق۴۴/۴۵) و «(a)True» بدونِ فاصله در ق۳۹/۴۰",
+    "گزینهٔ «a)  success» با دوفاصلهٔ چاپی بعدِ حرف (ص۳۱۲، س۱۵-ق۴۷)",
+    "پیشوندِ چاپیِ «a).» در جملاتِ س۱۸ — همان الگویِ مورچه‌های r384؛ جملهٔ d بدونِ نقطهٔ پایانیِ چاپ (But some people do not have such phones) و e با نقطه (because they are very expensive.) — دو نیمهٔ یک جمله",
+    "آپاستروفِ خمیدهٔ یکدست در کلِ برگه (doesn’t/Don’t/it’s/‘purpose’) — عینِ چاپ حفظ شد",
+    "بلوکِ کلیدِ RTLِ درهمِ س۱۱ («Joe/moved to China/when/Chinese» سطرشکن) — داوریِ رندرِ ۳۰۰dpi ص۳۱۳"
+   ],
+   "futureNote": "بخشِ ۴: ۶ برگه از ۱۷ استخراج شد، ۱۱ برگه باقی است (نزدیک‌ترین‌ها: دی ۱۳۹۹ ص۳۰۱-۳۰۷ و شهریور ۱۳۹۹ ص۲۸۵-۲۹۲؛ به‌علاوهٔ برگهٔ لایه‌خرابِ ص۲۷۷-۲۸۴ که OCR/رندر می‌خواهد و جفتِ ۱۳۹۷ با کلیدِ سربرگِ قدیمی)؛ کاندیدهای تایپیِ این برگه (س۱۰ «had paid» + ردیف‌های ۳۲ «Joe had already learned Chinese when he moved to China.» / ۳۳ «They would buy a house if they were you.» / ۳۴ which-اسب / ۴۳ «Solar collectors collect heat by absorbing sunlight.») به کاندیدهای r380-r384 اضافه شدند — مخزنِ بانکِ تایپیِ نهایی‌ها اکنون ۳۹ ردیف است (۳۴ِ r384 + ۵ ردیفِ تازه)",
+   "bookletFile": "جزوه_جامع_پایه_دوازدهم_با_امتحانات_نهایی_.pdf"
   }
  },
  "answerArbitration": [
@@ -7064,6 +7167,465 @@
       "Thus, in this way, they clean the floor."
      ],
      "answer": 4
+    }
+   ]
+  },
+  {
+   "lesson": 36,
+   "title": "نهایی خرداد ۱۴۰۰ — واژگان و تعریف و اصطلاح (س۶-س۸، ص۳۰۹)",
+   "level": "چهارگزینه‌ای",
+   "count": 7,
+   "questions": [
+    {
+     "id": "g12-l36-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "Oil, coal and natural gas are three common ------- fuels.",
+     "options": [
+      "suppose",
+      "use up",
+      "distinguished",
+      "fossil"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l36-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "Don’t ------- all the milk, we need some for breakfast.",
+     "options": [
+      "suppose",
+      "use up",
+      "distinguished",
+      "fossil"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l36-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "Dr. Gharib was known as a ------- university professor in our country.",
+     "options": [
+      "suppose",
+      "use up",
+      "distinguished",
+      "fossil"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l36-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "«I did not read the introduction and jumped into the next part.» — تعریفِ ستون B برای واژهٔ «jumped into»: -------",
+     "options": [
+      "to put things in a neat, attractive, or useful order",
+      "to take the place of somebody or something",
+      "to stop being angry with someone",
+      "to suddenly decide to do something"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l36-5",
+     "n": 5,
+     "category": "vocab",
+     "question": "«Mom forgave me for breaking the vase.» — تعریفِ ستون B برای واژهٔ «forgave»: -------",
+     "options": [
+      "to put things in a neat, attractive, or useful order",
+      "to take the place of somebody or something",
+      "to stop being angry with someone",
+      "to suddenly decide to do something"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l36-6",
+     "n": 6,
+     "category": "vocab",
+     "question": "«The factory will replace most of its workers with robots.» — تعریفِ ستون B برای واژهٔ «replace»: -------",
+     "options": [
+      "to put things in a neat, attractive, or useful order",
+      "to take the place of somebody or something",
+      "to stop being angry with someone",
+      "to suddenly decide to do something"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l36-7",
+     "n": 7,
+     "category": "vocab",
+     "question": "Just saying that you will do something doesn’t mean much. You know that “Actions s - - - - louder than words”.",
+     "options": [
+      "speak",
+      "spend",
+      "sound",
+      "stand"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 37,
+   "title": "نهایی خرداد ۱۴۰۰ — گرامر (س۹، ص۳۱۰)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l37-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Hamid doesn’t say a bad word, -------?",
+     "options": [
+      "did Hamid",
+      "does he",
+      "doesn’t Hamid",
+      "isn’t he"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l37-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "A: What did she do last Friday? B: She watched the film ------- was very interesting.",
+     "options": [
+      "whom",
+      "who",
+      "where",
+      "which"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l37-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "A: Guess what we have for dinner! B: A fish salad ------- for dinner by the cook.",
+     "options": [
+      "may be made",
+      "will make",
+      "is making",
+      "has made"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l37-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "A: I do not have a good job and cannot earn enough money. B: If you had a good job, you ------- a lot of money.",
+     "options": [
+      "will earn",
+      "were earned",
+      "earned",
+      "could earn"
+     ],
+     "answer": 3
+    }
+   ]
+  },
+  {
+   "lesson": 38,
+   "title": "نهایی خرداد ۱۴۰۰ — خوانداریِ لغت‌نامه (س۱۳، ص۳۱۰)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l38-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "A dictionary is a book that explains the meanings of words and expressions. You can find words easily because dictionaries put them in alphabetical order. The word ‘dictionary’ comes from the Latin ‘dictio’ (‘saying’). There are several kinds of dictionaries. Dictionaries that explain words and how they are used; dictionaries that translate words from one language to another; dictionaries of biography that tell about famous people; and technical dictionaries that explain the meanings of technical words. Dictionaries that explain what words mean give a clear ‘definition’ of them. A good dictionary also gives more information about words. For instance, it explains how they are pronounced. Usually the International Phonetic Alphabet (IPA) is used for this purpose. A complete dictionary also tells you about the origin of words and the story behind them. For example, the words like ‘pajamas’, ‘bazaar’ and ‘paradise’ entered English from Persian. — Words are easily found in dictionaries because dictionaries put them in alphabetical order.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l38-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "A dictionary is a book that explains the meanings of words and expressions. You can find words easily because dictionaries put them in alphabetical order. The word ‘dictionary’ comes from the Latin ‘dictio’ (‘saying’). There are several kinds of dictionaries. Dictionaries that explain words and how they are used; dictionaries that translate words from one language to another; dictionaries of biography that tell about famous people; and technical dictionaries that explain the meanings of technical words. Dictionaries that explain what words mean give a clear ‘definition’ of them. A good dictionary also gives more information about words. For instance, it explains how they are pronounced. Usually the International Phonetic Alphabet (IPA) is used for this purpose. A complete dictionary also tells you about the origin of words and the story behind them. For example, the words like ‘pajamas’, ‘bazaar’ and ‘paradise’ entered English from Persian. — The word ‘dictionary’ comes from the Latin ‘dictio’.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l38-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "A dictionary is a book that explains the meanings of words and expressions. You can find words easily because dictionaries put them in alphabetical order. The word ‘dictionary’ comes from the Latin ‘dictio’ (‘saying’). There are several kinds of dictionaries. Dictionaries that explain words and how they are used; dictionaries that translate words from one language to another; dictionaries of biography that tell about famous people; and technical dictionaries that explain the meanings of technical words. Dictionaries that explain what words mean give a clear ‘definition’ of them. A good dictionary also gives more information about words. For instance, it explains how they are pronounced. Usually the International Phonetic Alphabet (IPA) is used for this purpose. A complete dictionary also tells you about the origin of words and the story behind them. For example, the words like ‘pajamas’, ‘bazaar’ and ‘paradise’ entered English from Persian. — What do dictionaries of biography explain?",
+     "options": [
+      "These dictionaries explain the meanings of technical words.",
+      "Dictionaries of biography explain IPA.",
+      "They tell about famous people.",
+      "They translate words from one language to another."
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l38-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "A dictionary is a book that explains the meanings of words and expressions. You can find words easily because dictionaries put them in alphabetical order. The word ‘dictionary’ comes from the Latin ‘dictio’ (‘saying’). There are several kinds of dictionaries. Dictionaries that explain words and how they are used; dictionaries that translate words from one language to another; dictionaries of biography that tell about famous people; and technical dictionaries that explain the meanings of technical words. Dictionaries that explain what words mean give a clear ‘definition’ of them. A good dictionary also gives more information about words. For instance, it explains how they are pronounced. Usually the International Phonetic Alphabet (IPA) is used for this purpose. A complete dictionary also tells you about the origin of words and the story behind them. For example, the words like ‘pajamas’, ‘bazaar’ and ‘paradise’ entered English from Persian. — What does “them” in the first line of paragraph 3 refer to?",
+     "options": [
+      "pronunciations",
+      "words",
+      "dictionaries",
+      "spellings"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 39,
+   "title": "نهایی خرداد ۱۴۰۰ — خوانداریِ انرژیِ خورشیدی (س۱۴، ص۳۱۱)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l39-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "The most common type of clean energy is the solar power. Solar energy is produced by the radiation that reaches the earth. People have used the sun as a heat source for thousands of years. Iranians, for instance, use special designs and arrangements of windows, balconies and yards to get the most sunshine. Different kinds of materials might also be used in building the houses. This keeps people warm during cold seasons and cool during hot days of the year. Nowadays, solar energy can be converted into other forms of energy, such as heat and electricity. Solar energy might be used for heating water and air in homes, buildings, or swimming pools. Maybe you’ve seen buildings or houses with big shiny panels on the roof. These solar collectors collect heat by absorbing sunlight. Solar energy is used in generating electricity for watches, highway signs, houses and even space stations. — According to the passage, solar power is the most common type of clean energy.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l39-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "The most common type of clean energy is the solar power. Solar energy is produced by the radiation that reaches the earth. People have used the sun as a heat source for thousands of years. Iranians, for instance, use special designs and arrangements of windows, balconies and yards to get the most sunshine. Different kinds of materials might also be used in building the houses. This keeps people warm during cold seasons and cool during hot days of the year. Nowadays, solar energy can be converted into other forms of energy, such as heat and electricity. Solar energy might be used for heating water and air in homes, buildings, or swimming pools. Maybe you’ve seen buildings or houses with big shiny panels on the roof. These solar collectors collect heat by absorbing sunlight. Solar energy is used in generating electricity for watches, highway signs, houses and even space stations. — People have used the sun as a source of heat for few years.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l39-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "The most common type of clean energy is the solar power. Solar energy is produced by the radiation that reaches the earth. People have used the sun as a heat source for thousands of years. Iranians, for instance, use special designs and arrangements of windows, balconies and yards to get the most sunshine. Different kinds of materials might also be used in building the houses. This keeps people warm during cold seasons and cool during hot days of the year. Nowadays, solar energy can be converted into other forms of energy, such as heat and electricity. Solar energy might be used for heating water and air in homes, buildings, or swimming pools. Maybe you’ve seen buildings or houses with big shiny panels on the roof. These solar collectors collect heat by absorbing sunlight. Solar energy is used in generating electricity for watches, highway signs, houses and even space stations. — Iranians use special designs of windows and balconies to------- .",
+     "options": [
+      "generate electricity",
+      "get the most sunshine",
+      "keep themselves strong",
+      "heat water"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l39-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "The most common type of clean energy is the solar power. Solar energy is produced by the radiation that reaches the earth. People have used the sun as a heat source for thousands of years. Iranians, for instance, use special designs and arrangements of windows, balconies and yards to get the most sunshine. Different kinds of materials might also be used in building the houses. This keeps people warm during cold seasons and cool during hot days of the year. Nowadays, solar energy can be converted into other forms of energy, such as heat and electricity. Solar energy might be used for heating water and air in homes, buildings, or swimming pools. Maybe you’ve seen buildings or houses with big shiny panels on the roof. These solar collectors collect heat by absorbing sunlight. Solar energy is used in generating electricity for watches, highway signs, houses and even space stations. — The passage says people use different -------in building the houses to keep them warm in winter and cool in summer.",
+     "options": [
+      "materials",
+      "seasons",
+      "pools",
+      "signs"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 40,
+   "title": "نهایی خرداد ۱۴۰۰ — خوانداریِ نوجوانان (س۱۵، ص۳۱۱-۳۱۲)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l40-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "For many people, their teenage years – from 13 to 19 – are sometimes the best or worst years of their lives. Sometimes some teenagers feel that there are many differences between them and their parents. Teenagers often want to show that what they do is correct. They want to wear different clothes to show that they are free. In some countries, they can drive when they are only 16. Many young people work at part – time jobs after school and on weekends, so they can buy their own cars. After finishing high school, some of them live in their own apartments. Still teenagers must know that their parents have a lot to share with them: their life experiences, their failures, their successes. They should respect and care for their parents as parents are the best support in their lives. — According to the passage, teenagers are between thirteen and nineteen years old.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l40-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "For many people, their teenage years – from 13 to 19 – are sometimes the best or worst years of their lives. Sometimes some teenagers feel that there are many differences between them and their parents. Teenagers often want to show that what they do is correct. They want to wear different clothes to show that they are free. In some countries, they can drive when they are only 16. Many young people work at part – time jobs after school and on weekends, so they can buy their own cars. After finishing high school, some of them live in their own apartments. Still teenagers must know that their parents have a lot to share with them: their life experiences, their failures, their successes. They should respect and care for their parents as parents are the best support in their lives. — Teenagers at the age 16 can drive in all countries.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l40-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "For many people, their teenage years – from 13 to 19 – are sometimes the best or worst years of their lives. Sometimes some teenagers feel that there are many differences between them and their parents. Teenagers often want to show that what they do is correct. They want to wear different clothes to show that they are free. In some countries, they can drive when they are only 16. Many young people work at part – time jobs after school and on weekends, so they can buy their own cars. After finishing high school, some of them live in their own apartments. Still teenagers must know that their parents have a lot to share with them: their life experiences, their failures, their successes. They should respect and care for their parents as parents are the best support in their lives. — The passage says that parents have a lot to share with-------",
+     "options": [
+      "people",
+      "high schools",
+      "teenagers",
+      "adults"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l40-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "For many people, their teenage years – from 13 to 19 – are sometimes the best or worst years of their lives. Sometimes some teenagers feel that there are many differences between them and their parents. Teenagers often want to show that what they do is correct. They want to wear different clothes to show that they are free. In some countries, they can drive when they are only 16. Many young people work at part – time jobs after school and on weekends, so they can buy their own cars. After finishing high school, some of them live in their own apartments. Still teenagers must know that their parents have a lot to share with them: their life experiences, their failures, their successes. They should respect and care for their parents as parents are the best support in their lives. — Teenagers should respect their parents because they are the best-------for teenagers.",
+     "options": [
+      "success",
+      "generation",
+      "experience",
+      "support"
+     ],
+     "answer": 3
+    }
+   ]
+  },
+  {
+   "lesson": 41,
+   "title": "نهایی خرداد ۱۴۰۰ — حروفِ ربط (س۱۶، ص۳۱۲)",
+   "level": "چهارگزینه‌ای",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g12-l41-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "We went to the restaurant ------- ordered food.",
+     "options": [
+      "but",
+      "and",
+      "so",
+      "or"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l41-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "That dictionary is expensive, -------I can’t buy it.",
+     "options": [
+      "but",
+      "and",
+      "so",
+      "or"
+     ],
+     "answer": 2
+    }
+   ]
+  },
+  {
+   "lesson": 42,
+   "title": "نهایی خرداد ۱۴۰۰ — مرتب‌سازیِ پاراگرافِ ارتباطات (س۱۸، ص۳۱۲)",
+   "level": "شش‌گزینه‌ای",
+   "count": 6,
+   "questions": [
+    {
+     "id": "g12-l42-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "مرتب‌سازیِ پاراگرافِ ارتباطات (س۱۸، ص۳۱۲) — جملاتِ درهم‌ریختهٔ a تا f؛ جایگاهِ ۵۱ (جملهٔ آغازینِ پاراگراف): -------",
+     "options": [
+      "In short, communication can depend on technology.",
+      "Most of these cell phones can help you have video calls.",
+      "The new century has brought big changes in communication.",
+      "But some people do not have such phones",
+      "because they are very expensive.",
+      "Cell phones are important in these changes."
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l42-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "مرتب‌سازیِ پاراگرافِ ارتباطات (س۱۸، ص۳۱۲) — جملاتِ درهم‌ریختهٔ a تا f؛ جایگاهِ ۵۲ در پاراگراف: -------",
+     "options": [
+      "In short, communication can depend on technology.",
+      "Most of these cell phones can help you have video calls.",
+      "The new century has brought big changes in communication.",
+      "But some people do not have such phones",
+      "because they are very expensive.",
+      "Cell phones are important in these changes."
+     ],
+     "answer": 5
+    },
+    {
+     "id": "g12-l42-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "مرتب‌سازیِ پاراگرافِ ارتباطات (س۱۸، ص۳۱۲) — جملاتِ درهم‌ریختهٔ a تا f؛ جایگاهِ ۵۳ در پاراگراف: -------",
+     "options": [
+      "In short, communication can depend on technology.",
+      "Most of these cell phones can help you have video calls.",
+      "The new century has brought big changes in communication.",
+      "But some people do not have such phones",
+      "because they are very expensive.",
+      "Cell phones are important in these changes."
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l42-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "مرتب‌سازیِ پاراگرافِ ارتباطات (س۱۸، ص۳۱۲) — جملاتِ درهم‌ریختهٔ a تا f؛ جایگاهِ ۵۴ در پاراگراف: -------",
+     "options": [
+      "In short, communication can depend on technology.",
+      "Most of these cell phones can help you have video calls.",
+      "The new century has brought big changes in communication.",
+      "But some people do not have such phones",
+      "because they are very expensive.",
+      "Cell phones are important in these changes."
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l42-5",
+     "n": 5,
+     "category": "grammar",
+     "question": "مرتب‌سازیِ پاراگرافِ ارتباطات (س۱۸، ص۳۱۲) — جملاتِ درهم‌ریختهٔ a تا f؛ جایگاهِ ۵۵ در پاراگراف: -------",
+     "options": [
+      "In short, communication can depend on technology.",
+      "Most of these cell phones can help you have video calls.",
+      "The new century has brought big changes in communication.",
+      "But some people do not have such phones",
+      "because they are very expensive.",
+      "Cell phones are important in these changes."
+     ],
+     "answer": 4
+    },
+    {
+     "id": "g12-l42-6",
+     "n": 6,
+     "category": "grammar",
+     "question": "مرتب‌سازیِ پاراگرافِ ارتباطات (س۱۸، ص۳۱۲) — جملاتِ درهم‌ریختهٔ a تا f؛ جایگاهِ ۵۶ (پایان‌بندیِ پاراگراف): -------",
+     "options": [
+      "In short, communication can depend on technology.",
+      "Most of these cell phones can help you have video calls.",
+      "The new century has brought big changes in communication.",
+      "But some people do not have such phones",
+      "because they are very expensive.",
+      "Cell phones are important in these changes."
+     ],
+     "answer": 0
     }
    ]
   }
