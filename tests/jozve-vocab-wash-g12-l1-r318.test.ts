@@ -182,8 +182,8 @@ describe("jozve vocab wash g12-l1 (r318 print-verbatim wash receipt)", () => {
     expect(bank.answerArbitration).toBeTruthy();
   });
 
-  it("vocabulary family now 300/300 print-verbatim (l1/l2/l3 all washed)", () => {
-    for (const les of bank.lessons) {
+  it("vocabulary family 300/300 print-verbatim (l1/l2/l3 all washed) — بانک‌های نهاییِ r380 ترجمهٔ چاپی ندارند (غیبتِ صادقانه)", () => {
+    for (const les of bank.lessons.filter((x) => x.lesson <= 3)) {
       expect(les.source.translationsWashed, `wash receipt of l${les.lesson}`).toBeTruthy();
       expect(les.questions.every((q) => q.translation && q.translation.length > 10)).toBe(true);
     }

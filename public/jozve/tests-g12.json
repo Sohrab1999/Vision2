@@ -4,7 +4,97 @@
   "file": "جزوه_جامع_پایه_دوازدهم_با_امتحانات_نهایی_.pdf",
   "questionPages": "21-25",
   "keyGrid": "c13/sec1 (p.181) — شبکهٔ ۱۰۰تایی چاپی",
-  "translations": "c13/sec0 پاسخنامهٔ سریع (۹۹/۱۰۰ — ترجمهٔ Q75 در خود جزوه نیست)"
+  "translations": "c13/sec0 پاسخنامهٔ سریع (۹۹/۱۰۰ — ترجمهٔ Q75 در خود جزوه نیست)",
+  "g12nahaie1": {
+   "extractedRound": "r380",
+   "section": "بخش چهارمِ جزوه: «آزمونهای از دی ماه 1397 تا شهریور 1401 نهابی با کلید» — نخستین برگه: «سؤالات امتحان نهایی» زبان انگلیسی (۳) نوبتِ خرداد ۱۴۰۲",
+   "examPages": "pdf-p336-340 (پنج صفحهٔ آزمون، فوترِ خودِ اسکن ۲۳۸-۲۴۲) + کلیدِ رسمی: pdf-p341-342 «راهنماي تصحيح امتحان نهايي» (فوتر ۲۴۳-۲۴۵)؛ ص۳۴۳ آغازِ برگهٔ بعدی = مرز",
+   "examMeta": "امتحان نهاییِ سراسریِ وزارت — درس: زبان انگلیسی (۳) — پایه دوازدهم دورهٔ دوم متوسطه — رشته: کلیه رشته‌ها — نوبت خرداد ۱۴۰۲ (تاریخِ لایه: «٥٢/٣٠/١٠٤١» — ارقامِ معکوسِ RTL) — مدت ۱۲۰ دقیقه — ۲۰ ردیف/بارم ۴۰ — ساعت شروع ۸ صبح — روزانه/بزرگسال/داوطلب آزاد — مركز سنجش و پايش كيفيت آموزشي (aee.medu.ir)",
+   "keyPages": "pdf-p341-342 راهنمای تصحیحِ رسمی — «هر پاسخ صحيح (٠.٥) نمره» — نخستین کلیدِ رسمیِ وزارتیِ پروژه؛ ۲۶ کلید از ۲۸ آیتمِ بانک‌ها عینِ چاپ است (تنها ق۳۵ استنتاجی و ق۳۲ کلیدِ خلاصه‌نویسی‌شدهٔ رسمی)",
+   "keyVerification": "کلیدِ چاپی عیناً نقل شد: «21. effectively 22. communicative 23. replaced» / «24. (c) 25. (d) 26. (a)» / «27. early, worm» / «28. (d) 29. (b) 30. (a) 31. (c)» / «fallen» (ق۳۲) / «36. (a) True 37. (running) water, electricity 38. (c) 39. (b) 40. (d)» / «41. (d) 42. (a)» / «45. (a) True 46. (b) False» / «49. International Phonetic Alphabet.» — گاردِ r380 هر ۴۳ فرگمنتِ کلیدِ چاپی را روی لایه پیمان می‌کند",
+   "sectionsTotal": 20,
+   "sectionsExtracted": 10,
+   "sectionsSkipped": 8,
+   "items": 29,
+   "bankCounts": [
+    6,
+    7,
+    6,
+    10
+   ],
+   "keyPolicy": "همهٔ کلیدها از راهنمای تصحیحِ چاپی می‌آیند به‌جز: ق۳۵ (کلیدِ ردیف ۱۲ در لایه نیفتاده — who با استنتاجِ ساختاری: شخص+جای خالیِ فاعلی؛ whom مفعولی و which غیرِشخص است — الگویِ مستندِ قدیمی) و ق۳۲ (کلیدِ چاپیِ «fallen» = شکلِ کاملِ «had fallen» — خلاصه‌نویسیِ رسمی؛ گزینه‌ها مهندسی‌شده با همین قفل)؛ گزینه‌های مهندسی‌شدهٔ دیگر: جفت‌های ق۲۷ (شکلِ حروفِ چاپ e----/w---- محترم) و ق۳۷ (جفت‌ها فقط از واژگانِ خودِ متنِ hydro) و ق۴۹",
+   "engineNote": "هر ۲۹ آیتم MCQ (قراردادِ کارتِ g12)؛ بانک l4 شش‌گزینه‌ای با استخرِ شش‌واژه‌ایِ کلیدِ چاپی (هر واژه دقیقاً یک خانه)؛ ساقه‌های خوانداری متنِ کاملِ چاپی را در خود دارند (الگویِ r379-بانک۱۹ در مقیاسِ بزرگ‌تر)؛ ترجمه عمداً غایب است (غیبتِ صادقانه — الگویِ r278/r279: نهایی‌ها ترجمهٔ چاپی ندارند)؛ ساقه‌ها نقطه‌چینِ چاپ → «-------» چسبیده (الگویِ r379)؛ آپاستروف/گیومهٔ خمیدهٔ چاپ (’ “ ” ‘) verbatim ماند",
+   "derivedKeys": {
+    "S4": [
+     "forgive",
+     "knowledge",
+     "faced",
+     "respecting",
+     "feel",
+     "appreciate"
+    ],
+    "S6": [
+     "effectively",
+     "communicative",
+     "replaced"
+    ],
+    "S7": [
+     "put things in a neat, attractive, or useful order",
+     "tell somebody that something is good",
+     "the rise and fall of the sea"
+    ],
+    "S8": [
+     "early / worm"
+    ],
+    "S9-10": [
+     "is he",
+     "whom",
+     "has been translated",
+     "should be done",
+     "had fallen"
+    ],
+    "S12": [
+     "who"
+    ],
+    "S13": [
+     "True",
+     "running water / electricity",
+     "hydropower",
+     "water",
+     "Hydropower"
+    ],
+    "S14": [
+     "experienced",
+     "waved"
+    ],
+    "S15": [
+     "True",
+     "False",
+     "International Phonetic Alphabet"
+    ]
+   },
+   "skippedSections": [
+    "ردیف ۱-۳ (شنیداریِ محض): مکالمه‌های شنیداریِ شیلا/سمیرا، بیژن/مهران، مریم/سارا — ساقه‌ها به صدای شنیداری گره خورده‌اند (صوتی-کلید — همتایِ تصویری-کلید)؛ کلیدهای چاپی‌شان برای آینده: 1.False(b)/2.True(a)/3.False(b)، 4.(c)/5.(c)/6.(b)/7.(a)، 8.(good) dictionary/9.online,smart/10.word,search — کلیدِ رسمی در رسید حفظ شد",
+    "ردیف ۵ (تصویری): «با توجه به تصاویر... یک جمله اضافی است» — پنج جملهٔ چاپی (a-e) و کلید چاپی 17.(c)/18.(e)/19.(d)/20.(a) — کلید در تصویر است نه ساقه؛ جملات a-e برای پشتیبانیِ تصویری حفظ شدند (fat/plants/light bulbs/wind towers/hard of hearing)",
+    "ردیف ۱۱ (جمله‌سازی 33-34): چیپ‌های چاپی دارند («They / their son / the driving test / were excited / had passed / because / . /») ولی کلیدِ این ردیف در لایهٔ راهنمای تصحیح نیفتاده (نمونه‌پاسخِ دست‌نویسِ رندر-فقط) — بی‌کلیدِ لایه؛ فرصتِ آینده با داوریِ رندر",
+    "ردیف ۱۶ (حرفِ ربط با تصویر، 50-51): کلید چاپی (50. so / 51. but) ولی دستورِ سکشن «با توجه به تصویر» است — تصویری-کلید (الگویِ r370+)؛ کلیدها حفظ شد",
+    "ردیف ۱۷-۲۰ (نگارشِ تولیدی): 52 جمله با تصویر (کلیدِ مدل: «…but these/those shoes (they) are big.»)، 53 جمله‌سازی از تصویر («Yesterday, my sister saw an ant.»)، 19-20 topic sentence و پاراگرافِ Solar energy — تولیدی با پاسخِ مدلِ چاپی؛ فرصتِ بانکِ تایپیِ آینده (accepted = پاسخِ مدل) — به‌همراه ق۴۳/۴۴/۴۷/۴۸ که پاسخِ مدلِ چاپی دارند"
+   ],
+   "printQuirks": [
+    "تاریخِ امتحان در لایه با ارقامِ معکوسِ RTL: «٥٢/٣٠/١٠٤١» = ۱۴۰۲/۰۳/۲۵ (رندر درست است)",
+    "«سؤاﻻت» با لام‌الفِ شکسته در لایه (سربرگِ «سؤاﻻت امتحان نهايي» و «رديف سؤاﻻت)پاسخ نامه دارد»)",
+    "«Oh ,yes» — فاصلهٔ چاپی پیش از ویرگول (س۹ق۲۸) — verbatim در ساقه",
+    "بلنک‌های چسبیده: «…………….into» (ق۳۰)، «…………..about» (ق۳۱)، «baby………… asleep» (ق۳۲)، «John……………at» (ق۴۲) — به «-------» چسبیده نرمال شد",
+    "مخلوطِ گیومهٔ خمیده و مستقیم در یک متن: «“hydroelectric power” یا “hydropower”» خمیده ولی «The Water Cycle» با گیومهٔ مستقیمِ چاپ (متنِ hydro) — verbatim",
+    "«Different  sources of energy» با دوفاصلهٔ چاپی در گزینهٔ ق۴۰ — verbatim",
+    "آپاستروف‌های خمیدهٔ چاپ: they’ll/wasn’t/learner’s/I’ve/hadn’t/‘dictionary’/‘dictio’ — verbatim (ق۳۵ ساقه‌اش با مستقیم در دستورِ فارسی)",
+    "سربرگِ پنج‌صفحه‌ایِ آزمون تکرار می‌شود و فوترِ عددیِ اسکن (۲۳۸-۲۴۵) جدا از شمارهٔ PDF است",
+    "کلیدِ ق۳۸ با فاصله‌های چاپیِ عجیب: «38. ( c )» — در پیمانِ گارد با همین شکل",
+    "«نهابی» غلطِ تایپیِ چاپ برای نهایی در تیترِ بخشِ چهارم — verbatim در رسید"
+   ],
+   "futureNote": "بخشِ چهارم چند برگهٔ نهاییِ دیگر دارد (دی/شهریور سال‌های ۱۳۹۷-۱۴۰۱) — الگویِ همین رسید؛ ق۴۳/۴۴/۴۷/۴۸ با پاسخِ مدلِ چاپی کاندیدِ نخستین بانکِ تایپیِ نهایی‌اند (kind=typed با accepted)",
+   "bookletFile": "جزوه_جامع_پایه_دوازدهم_با_امتحانات_نهایی_.pdf"
+  }
  },
  "answerArbitration": [
   {
@@ -4384,6 +4474,420 @@
      ],
      "answer": 0,
      "translation": "او فقیر نیست؛ او در واقع پول بیشتری از آن چه برای حمایت از یک خانواده نیاز باشد دارد."
+    }
+   ]
+  },
+  {
+   "lesson": 4,
+   "title": "نهایی خرداد ۱۴۰۲ — کامل‌کردن متن (س۴، ص۳۳۶)",
+   "level": "شش‌گزینه‌ای",
+   "count": 6,
+   "questions": [
+    {
+     "id": "g12-l4-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "Do you know why it is important to care for our elders? Because they are our mothers and fathers, and our first teachers. They teach us how to love, how to care, and how to ……(11)……others. Elders have more ……. (12)…… and wisdom than any one of us. They’ve come so far and they’ve learned so much, that’s why we should learn from that wisdom. But the most important thing is their experience. We may or may not know of all the ups and downs they’ve …….(13)……. in life but they have a lot of experience that is worth ……(14)…… and learning from. Our elders may hide much pain from us because they don’t want us to ……(15)…….. the pain, the least we can do is to ……(16)….. them for all that they’ve gone through and learn from their experience. — پاسخِ خانهٔ (11): -------",
+     "options": [
+      "forgive",
+      "respecting",
+      "feel",
+      "knowledge",
+      "faced",
+      "appreciate"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l4-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "Do you know why it is important to care for our elders? Because they are our mothers and fathers, and our first teachers. They teach us how to love, how to care, and how to ……(11)……others. Elders have more ……. (12)…… and wisdom than any one of us. They’ve come so far and they’ve learned so much, that’s why we should learn from that wisdom. But the most important thing is their experience. We may or may not know of all the ups and downs they’ve …….(13)……. in life but they have a lot of experience that is worth ……(14)…… and learning from. Our elders may hide much pain from us because they don’t want us to ……(15)…….. the pain, the least we can do is to ……(16)….. them for all that they’ve gone through and learn from their experience. — پاسخِ خانهٔ (12): -------",
+     "options": [
+      "respecting",
+      "feel",
+      "knowledge",
+      "appreciate",
+      "forgive",
+      "faced"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l4-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "Do you know why it is important to care for our elders? Because they are our mothers and fathers, and our first teachers. They teach us how to love, how to care, and how to ……(11)……others. Elders have more ……. (12)…… and wisdom than any one of us. They’ve come so far and they’ve learned so much, that’s why we should learn from that wisdom. But the most important thing is their experience. We may or may not know of all the ups and downs they’ve …….(13)……. in life but they have a lot of experience that is worth ……(14)…… and learning from. Our elders may hide much pain from us because they don’t want us to ……(15)…….. the pain, the least we can do is to ……(16)….. them for all that they’ve gone through and learn from their experience. — پاسخِ خانهٔ (13): -------",
+     "options": [
+      "feel",
+      "appreciate",
+      "forgive",
+      "knowledge",
+      "faced",
+      "respecting"
+     ],
+     "answer": 4
+    },
+    {
+     "id": "g12-l4-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "Do you know why it is important to care for our elders? Because they are our mothers and fathers, and our first teachers. They teach us how to love, how to care, and how to ……(11)……others. Elders have more ……. (12)…… and wisdom than any one of us. They’ve come so far and they’ve learned so much, that’s why we should learn from that wisdom. But the most important thing is their experience. We may or may not know of all the ups and downs they’ve …….(13)……. in life but they have a lot of experience that is worth ……(14)…… and learning from. Our elders may hide much pain from us because they don’t want us to ……(15)…….. the pain, the least we can do is to ……(16)….. them for all that they’ve gone through and learn from their experience. — پاسخِ خانهٔ (14): -------",
+     "options": [
+      "appreciate",
+      "respecting",
+      "forgive",
+      "faced",
+      "feel",
+      "knowledge"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l4-5",
+     "n": 5,
+     "category": "vocab",
+     "question": "Do you know why it is important to care for our elders? Because they are our mothers and fathers, and our first teachers. They teach us how to love, how to care, and how to ……(11)……others. Elders have more ……. (12)…… and wisdom than any one of us. They’ve come so far and they’ve learned so much, that’s why we should learn from that wisdom. But the most important thing is their experience. We may or may not know of all the ups and downs they’ve …….(13)……. in life but they have a lot of experience that is worth ……(14)…… and learning from. Our elders may hide much pain from us because they don’t want us to ……(15)…….. the pain, the least we can do is to ……(16)….. them for all that they’ve gone through and learn from their experience. — پاسخِ خانهٔ (15): -------",
+     "options": [
+      "faced",
+      "knowledge",
+      "appreciate",
+      "feel",
+      "respecting",
+      "forgive"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l4-6",
+     "n": 6,
+     "category": "vocab",
+     "question": "Do you know why it is important to care for our elders? Because they are our mothers and fathers, and our first teachers. They teach us how to love, how to care, and how to ……(11)……others. Elders have more ……. (12)…… and wisdom than any one of us. They’ve come so far and they’ve learned so much, that’s why we should learn from that wisdom. But the most important thing is their experience. We may or may not know of all the ups and downs they’ve …….(13)……. in life but they have a lot of experience that is worth ……(14)…… and learning from. Our elders may hide much pain from us because they don’t want us to ……(15)…….. the pain, the least we can do is to ……(16)….. them for all that they’ve gone through and learn from their experience. — پاسخِ خانهٔ (16): -------",
+     "options": [
+      "respecting",
+      "forgive",
+      "feel",
+      "faced",
+      "knowledge",
+      "appreciate"
+     ],
+     "answer": 5
+    }
+   ]
+  },
+  {
+   "lesson": 5,
+   "title": "نهایی خرداد ۱۴۰۲ — واژگان و تعریف و اصطلاح (س۶-س۸، ص۳۳۷)",
+   "level": "چهارگزینه‌ای",
+   "count": 7,
+   "questions": [
+    {
+     "id": "g12-l5-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "If students know how to study more -------, they’ll be able to learn more.",
+     "options": [
+      "communicative",
+      "effectively",
+      "suppose",
+      "replaced"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l5-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "He wasn’t very ------- and kept to himself.",
+     "options": [
+      "replaced",
+      "suppose",
+      "effectively",
+      "communicative"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l5-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "Mina carefully ------- the glasses on the shelf.",
+     "options": [
+      "replaced",
+      "suppose",
+      "communicative",
+      "effectively"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l5-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "«They have to arrange the chairs around the table for the party.» — تعریفِ ستون B برای واژهٔ «arrange»: -------",
+     "options": [
+      "put things in a neat, attractive, or useful order",
+      "the rise and fall of the sea",
+      "take something in, especially gradually",
+      "tell somebody that something is good"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l5-5",
+     "n": 5,
+     "category": "vocab",
+     "question": "«The teacher recommended a learner’s dictionary to his students.» — تعریفِ ستون B برای واژهٔ «recommended»: -------",
+     "options": [
+      "the rise and fall of the sea",
+      "take something in, especially gradually",
+      "put things in a neat, attractive, or useful order",
+      "tell somebody that something is good"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l5-6",
+     "n": 6,
+     "category": "vocab",
+     "question": "«Here you can see two high and two low tides each day.» — تعریفِ ستون B برای واژهٔ «tides»: -------",
+     "options": [
+      "take something in, especially gradually",
+      "the rise and fall of the sea",
+      "tell somebody that something is good",
+      "put things in a neat, attractive, or useful order"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l5-7",
+     "n": 7,
+     "category": "vocab",
+     "question": "You should wake up and start work sooner if you want to succeed. You know that “the e - - - - bird catches the w - - - ”.",
+     "options": [
+      "eager / work",
+      "earth / wind",
+      "early / worm",
+      "earn / warm"
+     ],
+     "answer": 2
+    }
+   ]
+  },
+  {
+   "lesson": 6,
+   "title": "نهایی خرداد ۱۴۰۲ — گرامر (س۹-س۱۰ و س۱۲، ص۳۳۸)",
+   "level": "چهارگزینه‌ای",
+   "count": 6,
+   "questions": [
+    {
+     "id": "g12-l6-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "A: Hamid has not come to school. I’ve heard he is not well, ------- ? B: Oh ,yes. He has got a flu.",
+     "options": [
+      "has he",
+      "have I",
+      "hasn’t Hamid",
+      "is he"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l6-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "The woman ------- my sister met in the hospital is a nurse.",
+     "options": [
+      "which",
+      "whom",
+      "whose",
+      "where"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l6-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "This book -------into countless languages including German, English and French.",
+     "options": [
+      "has been translated",
+      "had translated",
+      "may translate",
+      "were translated"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l6-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "A: This summer is really hot and lots of animals are in danger. B: Something -------about global warming, or some types of animals will die out.",
+     "options": [
+      "must do",
+      "were done",
+      "should be done",
+      "are doing"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l6-5",
+     "n": 5,
+     "category": "grammar",
+     "question": "When I got home, the baby------- asleep. (fall)",
+     "options": [
+      "fell",
+      "was falling",
+      "had fallen",
+      "falls"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l6-6",
+     "n": 6,
+     "category": "grammar",
+     "question": "جمله را با ضمیرِ موصولیِ مناسب (whom / who / which) کامل کنید: A doctor is a person------- .",
+     "options": [
+      "whom",
+      "who",
+      "which"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 7,
+   "title": "نهایی خرداد ۱۴۰۲ — خوانداری (س۱۳-س۱۵، ص۳۳۹-۳۴۰)",
+   "level": "چهارگزینه‌ای",
+   "count": 10,
+   "questions": [
+    {
+     "id": "g12-l7-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Many countries have used the energy in moving water for thousands of years. And today, it's still a powerful resource that can generate clean, renewable, and cheap electricity. They produce energy from running water and convert it to electricity. The power that is produced as a result of falling or running water is called “hydroelectric power” or “hydropower”. Turbines and generators convert this power into electricity. Today, about 19% of all our electricity is generated from hydropower, making it one of the largest sources of renewable power. So what makes hydropower renewable? It's simple: water. Water is converted into clouds and recycles back to earth as rain. This process is called \"The Water Cycle\". The water cycle is continuously recharging and can be used to produce electricity along the way. — According to the passage, the energy in moving water can generate clean, renewable, and cheap electricity.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l7-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "Many countries have used the energy in moving water for thousands of years. And today, it's still a powerful resource that can generate clean, renewable, and cheap electricity. They produce energy from running water and convert it to electricity. The power that is produced as a result of falling or running water is called “hydroelectric power” or “hydropower”. Turbines and generators convert this power into electricity. Today, about 19% of all our electricity is generated from hydropower, making it one of the largest sources of renewable power. So what makes hydropower renewable? It's simple: water. Water is converted into clouds and recycles back to earth as rain. This process is called \"The Water Cycle\". The water cycle is continuously recharging and can be used to produce electricity along the way. — Many countries produce energy from ------- and convert it to ------- .",
+     "options": [
+      "running water / electricity",
+      "clouds / rain",
+      "turbines / generators",
+      "water cycle / electricity"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l7-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "Many countries have used the energy in moving water for thousands of years. And today, it's still a powerful resource that can generate clean, renewable, and cheap electricity. They produce energy from running water and convert it to electricity. The power that is produced as a result of falling or running water is called “hydroelectric power” or “hydropower”. Turbines and generators convert this power into electricity. Today, about 19% of all our electricity is generated from hydropower, making it one of the largest sources of renewable power. So what makes hydropower renewable? It's simple: water. Water is converted into clouds and recycles back to earth as rain. This process is called \"The Water Cycle\". The water cycle is continuously recharging and can be used to produce electricity along the way. — The power produced from falling or running water is called------- .",
+     "options": [
+      "water cycle",
+      "turbine",
+      "hydropower",
+      "generator"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l7-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "Many countries have used the energy in moving water for thousands of years. And today, it's still a powerful resource that can generate clean, renewable, and cheap electricity. They produce energy from running water and convert it to electricity. The power that is produced as a result of falling or running water is called “hydroelectric power” or “hydropower”. Turbines and generators convert this power into electricity. Today, about 19% of all our electricity is generated from hydropower, making it one of the largest sources of renewable power. So what makes hydropower renewable? It's simple: water. Water is converted into clouds and recycles back to earth as rain. This process is called \"The Water Cycle\". The water cycle is continuously recharging and can be used to produce electricity along the way. — The passage says------- makes hydropower renewable.",
+     "options": [
+      "electricity",
+      "water",
+      "earth",
+      "cloud"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l7-5",
+     "n": 5,
+     "category": "grammar",
+     "question": "Many countries have used the energy in moving water for thousands of years. And today, it's still a powerful resource that can generate clean, renewable, and cheap electricity. They produce energy from running water and convert it to electricity. The power that is produced as a result of falling or running water is called “hydroelectric power” or “hydropower”. Turbines and generators convert this power into electricity. Today, about 19% of all our electricity is generated from hydropower, making it one of the largest sources of renewable power. So what makes hydropower renewable? It's simple: water. Water is converted into clouds and recycles back to earth as rain. This process is called \"The Water Cycle\". The water cycle is continuously recharging and can be used to produce electricity along the way. — What is the best title for this text?",
+     "options": [
+      "Different  sources of energy",
+      "Converting electricity",
+      "Electrical air conditioner",
+      "Hydropower"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l7-6",
+     "n": 6,
+     "category": "grammar",
+     "question": "Last night Mike left work late at around 9 p.m. Most people had already gone home before he came out of the office. The street was very dark and quiet. He hadn’t experienced such a thing before. While he was walking, a car pulled over. He looked at the driver. He was sure he had seen this man before. He wondered who he could be. The driver waved at him and came out of the car. He asked Mike if he could drive him home. Suddenly Mike remembered he was one of his clients. His name was John. John had come to his office two or three times before. The last time he was in the office, he was so upset. He was worried because he had lost his documents. Everyone in the office tried to help him. They started to look for his suitcase. Finally, he remembered that he had left his suitcase in his car! He apologized for his anger and left. — According to the passage, Mike hadn’t ------- such a dark and quiet street before.",
+     "options": [
+      "pulled over",
+      "gone",
+      "come out of",
+      "experienced"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l7-7",
+     "n": 7,
+     "category": "grammar",
+     "question": "Last night Mike left work late at around 9 p.m. Most people had already gone home before he came out of the office. The street was very dark and quiet. He hadn’t experienced such a thing before. While he was walking, a car pulled over. He looked at the driver. He was sure he had seen this man before. He wondered who he could be. The driver waved at him and came out of the car. He asked Mike if he could drive him home. Suddenly Mike remembered he was one of his clients. His name was John. John had come to his office two or three times before. The last time he was in the office, he was so upset. He was worried because he had lost his documents. Everyone in the office tried to help him. They started to look for his suitcase. Finally, he remembered that he had left his suitcase in his car! He apologized for his anger and left. — John-------at Mike and came out of the car.",
+     "options": [
+      "waved",
+      "wondered",
+      "remembered",
+      "apologized"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l7-8",
+     "n": 8,
+     "category": "grammar",
+     "question": "A dictionary is a book which explains the meanings of words and expressions. You can find words easily because dictionaries put them in alphabetical order. The word ‘dictionary’ comes from the Latin ‘dictio’ (‘saying’). There are several types of dictionaries. Dictionaries which explain words and how they are used; dictionaries which translate words from one language to another; dictionaries of biography which tell about famous people; and technical dictionaries which explain the meanings of technical words. Dictionaries which explain what words mean give a clear ‘definition’ of them. A good dictionary also gives more information about words. For instance, it explains how they are pronounced. Usually the International Phonetic Alphabet (IPA) is used for this purpose. There are also dictionaries which translate words into other languages. When using a dictionary to find out how to say something in another language, one has to be careful to choose the right meaning. — Since dictionaries put words in alphabetical order, you can find them easily.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l7-9",
+     "n": 9,
+     "category": "grammar",
+     "question": "A dictionary is a book which explains the meanings of words and expressions. You can find words easily because dictionaries put them in alphabetical order. The word ‘dictionary’ comes from the Latin ‘dictio’ (‘saying’). There are several types of dictionaries. Dictionaries which explain words and how they are used; dictionaries which translate words from one language to another; dictionaries of biography which tell about famous people; and technical dictionaries which explain the meanings of technical words. Dictionaries which explain what words mean give a clear ‘definition’ of them. A good dictionary also gives more information about words. For instance, it explains how they are pronounced. Usually the International Phonetic Alphabet (IPA) is used for this purpose. There are also dictionaries which translate words into other languages. When using a dictionary to find out how to say something in another language, one has to be careful to choose the right meaning. — The word ‘dictionary’ comes from the French ‘dictio’.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l7-10",
+     "n": 10,
+     "category": "grammar",
+     "question": "IPA stands for ------- .",
+     "options": [
+      "International Phonetic Alphabet",
+      "International Pronunciation Alphabet",
+      "Inner Phonetic Alphabet",
+      "Integrated Phonetic Lettering"
+     ],
+     "answer": 0
     }
    ]
   }
