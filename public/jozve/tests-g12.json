@@ -1188,6 +1188,61 @@
    "twinCensus": "هم‌خانوادگیِ بین‌خانواده‌ای — r292 همین برگه را در grammar-g12-topic.json (l59-68، ۴۲ آیتم) هم رندر کرده: l85↔gt-l59 (تایپیِ همان چهارخانه)، l86↔gt-l60، l87↔gt-l61، l88↔gt-l62 (تایپی)، l89↔gt-l63، l90↔gt-l65 (تایپیِ آنجا/چهارگزینه‌ایِ اینجا)، l91/l92↔gt-l67/gt-l68 (آنجا تایپی+MCQ؛ اینجا فقط ردیف‌های کلیددارِ MCQ)؛ l84 (کلوژِ شنیداریِ مغز) هیچ‌جای مخزن نیست — نخستین رندرِ دی۹۷-شنیداری در کل پروژه؛ جفت‌های تعریفیِ وزارت بین‌برگه‌ای: «calmly→in a quiet way» (gt-l60/گاردِ r292 و r382-l29)، «Distinguished→well-known»، «Demand→the amount of...» (r386-l45 و r389-l82)، «Use up→to finish something» (r387-l58-4) — عینِ جفت‌های چاپِ برگه‌های ۹۹؛ «spared no pains» در r298-س۵ و «no pains» در r388-l68 خوانداری — هم‌نشینِ اینجا مستقل است",
    "futureNote": "کاندیدهای تایپیِ این برگه (ق۳۷: My brother always carries...، ق۳۸: Mina has an exam...، ق۵۵: Bilingual dictionary...، ق۵۶: It contains the English word...، ق۵۷: One language is used...، ق۶۰: They attend conference...) به کاندیدهای r380-r389 اضافه شدند — مخزنِ بانکِ تایپیِ نهایی‌ها اکنون ۷۵ ردیف است (۶۹ِ r389 + ۶ ردیفِ تازه؛ این شش کاندید در gt-l64/gt-l67/gt-l68 رندرِ تایپیِ بین‌خانواده‌ای دارند)؛ یک کاندیدِ مرتب‌سازیِ پاراگرافی (ق۴۹-۵۴ اسب‌ها) با کلیدِ کاملِ چاپیِ ص۲۳۶ (Topic/Supporting/Concluding) ثبت شد؛ l88 الگویِ بانکِ تایپیِ آیندهٔ برگه‌های ۱۳۹۷/۹۸ است (gt نشان می‌دهد هر چهار برگهٔ قدیمی شکلِ فعلِ تایپی دارند)؛ ۴ برگه باقی است (نزدیک‌ترین: خرداد ۱۳۹۸ ص۲۳۷-۲۴۱)؛ در gt از l69 به بعد خرداد/شهریور/دی ۹۸ هم رندر دارند — سرشماریِ دوقلو برایشان الزامی",
    "engineNote": "l88 دومین بانکِ تایپیِ بخشِ نهایی‌ها — موتور ورودیِ متنی می‌رندرد (opts=0/typedInput=true) و با نرمال‌سازیِ lib/typed-answer.ts مقایسه می‌کند؛ l88 از حلقهٔ MCQ-خالصِ گاردها مستثنی است (مثلِ l74)؛ l85/l86/l87 پنج‌گزینه‌ای‌اند (الگویِ l58/l59/l80)؛ l84 دوبخشیِ استخرِ دومکلیدی (الگویِ چرخشِ l44 با استخرِ کوچک)"
+  },
+  "g12nahaie13": {
+   "extractedRound": "r391",
+   "section": "بخش چهارمِ جزوه: «آزمونهای از دی ماه 1397 تا شهریور 1401 نهابی با کلید» — برگهٔ سیزدهم: «سؤالات امتحان نهایی» زبان انگلیسی (۳) نوبتِ خرداد ۱۳۹۸ — کلیهٔ رشته‌ها",
+   "examPages": "pdf-p237-241 (پنج صفحهٔ آزمون) + کلیدِ رسمی: pdf-p242-243 «راهنماي تصحيح امتحان نهایی درس: زبان انگلیسی (۳)»؛ مرزِ برگه‌ها = p236 → p237 (پس از دی ۱۳۹۷ِ r390) و p243 → p244 (شهریور ۱۳۹۸)",
+   "examMeta": "امتحان نهاییِ سراسریِ وزارت — درس: زبان انگلیسی (۳) — پایه دوازدهم دورهٔ دوم متوسطه — رشته: کلیهٔ رشته‌ها — نوبت خردادماه ۱۳۹۸ (تاریخِ چاپی: ۱۳/۳/۱۳۹۸) — ساعت شروع ۸ صبح (فاصلهٔ چاپ؛ الگویِ r388/r389) — مدت ۱۲۰ دقیقه — ۵ صفحه/۵۸ ردیف/جمعِ نمرهٔ ۴۰ — روزانه/بزرگسال/داوطلب آزاد — مركز سنجش و پايش كيفيت آموزشي (aee.medu.ir) — سربرگِ presentation-forms با «ﺳﺆاﻻت  اﻣﺘﺤﺎن ﻧﻬﺎﯾﯽ» دوفاصله‌ای (الگویِ r383/r386/r387) و یادداشتِ «سؤالات (پاسخ نامه دارد)»؛ شنیداریِ ۶سؤالیِ صوتی (ق۱-۶) + سه سکشنِ شنیداریِ متن‌چاپ (ق۷-۱۴)",
+   "keyPages": "pdf-p242-243 راهنمای تصحیح — قالبِ «8. a/ do not pollute the earth» و «17. ( e )» و «21. consume» — ۳۸ کلیدِ چاپی در گارد پیمان می‌شود؛ ۳۸ کلید از ۳۸ آیتمِ بانک‌ها عینِ چاپ است (تنها استثنا: ق۲۶ با کلیدِ بریدهٔ چاپ)",
+   "keyVerification": "کلیدِ چاپی عیناً نقل شد: ق۱-۶ مدل‌های شنیداریِ بازِ «1. take temperature 2. Dr. Gharib 3. Solar power 4. English 5. Natural gas, oil ,and coal (ذکر دو مورد کافی است) 6. I would take a photo / photos» / «7. wind» «8. a/ do not pollute the earth» «9. c/ is reduced» «10. b / it was a secret» «11. d/ to buy a new mobile phone» «12. c/ air pollution» «13. a/ big cities» «14. b/ diseases» / «15. hard» «16. Wind turbines/ turbines» / «17. ( e ) 18. ( c ) 19. ( a ) 20. ( d )» (پرانتزهای ناهمگونِ چاپ) / «21. consume 22. combination 23. dedicated» / «24. absorb 25. symbol /sign 26. hu» — کلیدِ ۲۶ بریدهٔ چاپ است (تکمیلِ معناییِ hug هم‌سو با gt-l73) / «27. seems 28. had decided 29. would/ could go 30. are served» (جفتِ کلیدِ چاپیِ ۲۹) / «31. b/ which 32. d/ may be produced 33. c/ communicative 34. a/ into» / «35. Everything in the garden was brown or everything is brown in the garden because it hadn't rained for months. (0/5)(0/5)» «36. The woman who lives next door is a famous professor or The woman who is a famous professor lives next door. (0/5)(0/5)» / «37. so 38. and 39. but 40. or» / س۱۳ open (ق۴۱ با صرفهٔ داور) / جدولِ س۱۴: Topic=44، Supporting=42، 43، 47، 46 (ترتیب مهم نیست)، Concluding=45 با یادداشتِ «ترتیب قرار گرفتن جملات supporting مهم نیست» / «48. It can lead not only to great personal happiness but also to respect from others who appreciate the work you do (0.5/0.5)» «49. The important point is that we continue to give to those who are more in need than ourselves (0.25/0.75)» / «50. b/ advantage» «51. (a) True» «52. (a) True» (دوبلِ Trueِ چاپ — الگویِ l91/l56) / «53. By using a talking dictionary, we are able to look the words up in a few minutes (0.25/0.75)» «54. Seeing specific words used in a sentence can provide more context and help you better understand proper usage (0.5/0.5)» «55. When reading or writing a story, an essay, a paragraph or even a sentence, using a dictionary is a great help (0.75/0.25)» / «56. c/ part of speech» «57. a / out of reach» «58. b / False»",
+   "sectionsTotal": 58,
+   "sectionsExtracted": 38,
+   "sectionsSkipped": 20,
+   "items": 38,
+   "bankCounts": [
+    8,
+    2,
+    4,
+    3,
+    3,
+    4,
+    4,
+    4,
+    3,
+    3
+   ],
+   "keyPolicy": "همهٔ کلیدهای ۳۸ آیتم از راهنمای تصحیحِ چاپی می‌آیند (عینِ چاپ)؛ سه استثنایِ ساختاری: (۱) ق۷ بدونِ گزینهٔ چاپی — دو کاندیدای درون‌ساقه‌ایِ چاپ (Wind/Coal) به گزینهٔ MCQ بدل شد (gt همان را تایپی رندر کرده)؛ (۲) ق۲۶ با کلیدِ بریدهٔ چاپِ «hu» — تکمیلِ معناییِ hug هم‌سو با gt-l73؛ (۳) جفت‌کلیدهای چاپیِ ۱۶ (Wind turbines/turbines) و ۲۵ (symbol/sign) و ۲۹ (would/could go) به accepted دوبخشی بدل شدند؛ بانکِ ۴واژه‌ایِ l96 به ترتیبِ چاپِ خودِ برگه (combination/compile/dedicated/consume) و «compile» اضافیِ چاپیِ هرگز-کلید؛ gزینه‌های گرامرِ l99 به چینشِ دیداریِ چاپ (a-d تک‌ردیفی — ترتیبِ لایه d,c,b,a آرتیفکتِ RTL بود)؛ سه‌گزینه‌ای‌های چاپیِ ق۱۲-۱۴ (الف-ج) وفادار حفظ شدند",
+   "paperMap": "نقشهٔ کاملِ بخشِ ۴ (ص۲۲۸-۳۴۹، ۱۷ برگه) — به‌روزِ r391: دی ۱۳۹۷ ص۲۲۹-۲۳۳ + کلیدِ سربرگِ قدیمیِ ص۲۳۴-۲۳۶ [r390]؛ خرداد ۱۳۹۸ ص۲۳۷-۲۴۱ + کلید ص۲۴۲-۲۴۳ (۱۳/۳/۱۳۹۸) ← این راند؛ شهریور ۱۳۹۸ ص۲۴۴-۲۴۸ + کلید ص۲۴۹-۲۵۰ (۱۲/۶/۱۳۹۸)؛ دی ۱۳۹۸ ص۲۵۱-۲۵۶ + کلید ص۲۵۷-۲۵۸ (۲۲/۱۰/۹۸)؛ خرداد ۱۳۹۹ ریاضی-تجربی ص۲۵۹-۲۶۵ + کلید ص۲۶۶-۲۶۷ [r388]؛ خرداد ۱۳۹۹ انسانی ص۲۶۸-۲۷۴ + کلید ص۲۷۵-۲۷۶ (۰۷/۰۴/۹۹) [r389]؛ برگهٔ لایه‌خراب ص۲۷۷-۲۸۴ (نیازمند OCR/رندر)؛ شهریور ۱۳۹۹ ص۲۸۵-۲۹۰ + کلید ص۲۹۱-۲۹۲ [r387]؛ شهریور ۱۳۹۹ ویژهٔ ناشنوایان ص۲۹۳-۲۹۸ + کلید ص۲۹۹-۳۰۰ [r388]؛ دی ۱۳۹۹ ص۳۰۱-۳۰۵ + کلید ص۳۰۶-۳۰۷ [r386]؛ خرداد ۱۴۰۰ ریاضی-تجربی ص۳۰۸-۳۱۴ [r385]؛ خرداد ۱۴۰۰ انسانی ص۳۱۵-۳۲۱ [r384]؛ شهریور ۱۴۰۰ ص۳۲۲-۳۲۸ [r383]؛ دی ۱۴۰۰ ص۳۲۹-۳۳۵ [r382]؛ دی ۱۴۰۱ ص۳۳۶-۳۴۲ [r380]؛ شهریور ۱۴۰۱ ص۳۴۳-۳۴۹ [r381] — ۱۴ برگه استخراج شد، ۳ برگه باقی است",
+   "skippedSections": [
+    "س۱ شنیداریِ صوتیِ باز (ق۱-۶: دمای بدن/دکتر غریب/انرژیِ خورشیدی/زبان/سوختِ فسیلی/عکاسی) — ساقه‌ها فقط صوتی‌اند (بدونِ متنِ چاپی)؛ مدل‌های کلید در گارد پیمان شد",
+    "س۱۱ جمله‌سازی (ق۳۵-۳۶) — دو مدلِ چاپیِ دوبخشی به مخزنِ تایپی رفت (gt-l76 رندرِ تایپی دارد)",
+    "س۱۳ پاراگرافِ «save our Earth» (ق۴۱) — با صرفهٔ داور (گزاره‌های bullet چاپ)",
+    "س۱۴ پاراگرافِ آب (ق۴۲-۴۷) — کلیدِ جدولیِ کاملِ Descriptor در ص۲۴۳؛ کاندیدِ نقش‌محور ثبت شد (gt-l78 رندرِ نقش‌محور دارد)",
+    "خوانداریِ بازِ نیکوکاری (ق۴۸-۴۹) — مدل‌های چاپی به مخزن رفت (gt-l79 رندرِ تایپی دارد)",
+    "خوانداریِ بازِ فرهنگ‌لغت (ق۵۳-۵۵) — سه مدلِ چاپی با زیرنمره‌های (0.25/0.75)(0.5/0.5)(0.75/0.25) به مخزن رفت (gt-l80 رندرِ تایپی دارد)"
+   ],
+   "printQuirks": [
+    "کلیدِ بریدهٔ چاپیِ «26. hu» — ناقصِ حروف‌چینی؛ تکمیلِ معناییِ hug (هم‌سو با gt-l73) [z4]",
+    "ق۷ بدونِ گزینهٔ چاپی — «Wind or Coal؟» درونِ ساقه؛ MCQِ درون‌ساقه‌ای [p237]",
+    "ق۱۲-۱۴ سه‌گزینه‌ای‌اند (الف-ج) — وفادار حفظ شد",
+    "چینشِ گزینه‌های ق۳۱-۳۴ در لایه d,c,b,a اما در چاپِ دیداری تک‌ردیفیِ a-d [z2] — ترتیبِ لایه آرتیفکتِ RTL",
+    "دوبلِ Trueِ چاپ در کلیدِ ۵۱/۵۲ (سومین تکرارِ الگو بعدِ l56 و l91)",
+    "«18. ( c )» و «19. (  a  )» پرانتزهای ناهمگونِ چاپ در کلید",
+    "«5. Natural gas, oil ,and coal» ویرگولِ چسبیدهٔ چاپ + یادداشتِ «(ذکر دو مورد کافی است)»",
+    "«25. symbol /sign» و «29. would/ could go» و «16. Wind turbines/ turbines» — سه جفت‌کلیدِ چاپی → accepted دوبخشی",
+    "«( to seem)» و «( to serve)» فاصلهٔ اولِ پرانتز در ساقه‌های مکالمه + نقطهٔ « ------- . ( to serve)» پیش از پرانتز",
+    "«a……….» حرفِ اولِ چسبیده به نقطه‌چین در ق۲۴-۲۶ (a------- پیوند خورد)",
+    "«is ………of hearing» نقطه‌چینِ چسبیده به of در ق۱۵",
+    "«\"benefit\"» و «\"available\"» کوتیشنِ مستقیمِ چاپ در ساقه‌های خوانداری",
+    "«the woman / professor / next door / is / who / a.» خامِ ق۳۶ با «a.» پایانیِ چاپ",
+    "پانویسِ QR «Audio file (MP3) / Audio script (PDF)» در ص۲۳۷ + شماره‌گذاریِ چاپیِ ۱۴۲-۱۴۸ پایینِ صفحات",
+    "«We cannot think of life without water.» به‌عنوانِ Supporting (نه Topic) در کلیدِ جدولی — Topic = 44 «Water is the most essential element...» [z3]",
+    "«hadn't» و «didn't» و «friend's» آپاستروف‌های خمیدهٔ لایه در ق۳۵/۳۶ و ق۱۰/ق۱۱"
+   ],
+   "twinCensus": "هم‌خانوادگیِ بین‌خانواده‌ای — r292 همین برگه را در grammar-g12-topic.json (l69-l80، ۵۲ آیتم) هم رندر کرده: l93↔gt-l69 (ق۷: ما MCQِ درون‌ساقه‌ای/آنها تایپی با accepted wind)، l94↔gt-l70، l95↔gt-l71، l96↔gt-l72 (تایپیِ آنجا)، l97↔gt-l73 (hug تکمیل‌شدهٔ هر دو)، l98↔gt-l74، l99↔gt-l75، l100↔gt-l77، l101↔gt-l79، l102↔gt-l80؛ پاراگرافِ آب ↔ gt-l78 (کاندیدِ نقش‌محور)؛ جفت‌های بین‌برگه‌ای: «spared no pains to help sick people» (l96-3 ↔ r388-l68 خوانداریِ خرداد ۹۹ ↔ r298-س۵ شهریور ۹۹ ↔ r390-l87 هم‌نشینِ no pains) — چهارمین تکرار؛ «convert... sofas into a bed» (l95-4 ↔ اضافیِ چاپیِ r387-س۵ «The sofa converts into bed.» ↔ l1-60)؛ «in a quiet way» (ستون B این برگه ↔ r390-l86 ↔ gt-l60)؛ «rise and fall of the sea» (↔ l5-4..6 و l29-4..6 و gt-l71)؛ «communicative» (l99-3 ↔ r389-l77-5 «He is not very communicative»)؛ «jumped ------- the next part» (l99-4 ↔ r387-l58-3 تعریفِ jumped into)؛ «wind turbines» (l94-2 ↔ l43/l68/l79/l85 — تمِ پایدارِ وزارت)؛ «diary» تعریف (l95-2 ↔ r387-l58-1/gt-l60)",
+   "futureNote": "کاندیدهای تایپیِ این برگه (ق۳۵: Everything in the garden...، ق۳۶: The woman who lives next door...، ق۴۸: It can lead not only...، ق۴۹: The important point is that...، ق۵۳: By using a talking dictionary...، ق۵۴: Seeing specific words...، ق۵۵: When reading or writing a story...) به کاندیدهای r380-r390 اضافه شدند — مخزنِ بانکِ تایپیِ نهایی‌ها اکنون ۸۲ ردیف است (۷۵ِ r390 + ۷ ردیفِ تازه؛ همگی در gt-l76/gt-l79/gt-l80 رندرِ تایپیِ بین‌خانواده‌ای دارند)؛ یک کاندیدِ نقش‌محورِ پاراگرافِ آب (ق۴۲-۴۷) با کلیدِ جدولیِ کاملِ چاپی (Topic=44/Supporting=42,43,47,46/Concluding=45) ثبت شد؛ ق۱-۶ شنیداریِ بازِ بی‌ساقهٔ چاپی — قابلِ بانک‌شدن نیستند؛ ۳ برگه باقی است (نزدیک‌ترین: شهریور ۱۳۹۸ ص۲۴۴-۲۴۸؛ سپس دی ۱۳۹۸ ص۲۵۱-۲۵۶ و برگهٔ لایه‌خراب ص۲۷۷-۲۸۴)؛ gt از l81 به بعد شهریور ۹۸ را هم دارد — سرشماریِ دوقلو برایشان الزامی",
+   "engineNote": "سه بانکِ تایپیِ تازه: l94 (با accepted دوبخشیِ wind turbines/turbines)، l97 (اولین بانکِ حرف‌اولِ تایپیِ بخشِ نهایی‌ها — ساقه‌های a-------/s-------/h------- با حرفِ اولِ چسبیده)، l98 (مکالمه با accepted دوبخشیِ would/could go) — مجموعِ بانک‌های تایپیِ بخشِ نهایی‌ها اکنون پنج‌تاست (l74، l88، l94، l97، l98)؛ l93 شاملِ نخستین گزینهٔ درون‌ساقه‌ایِ (Wind/Coal) مخزن است؛ l101/l102 متنِ کامل در ساقه (الگویِ l91/l92)؛ l95 پنج‌گزینه‌ای با ساقه‌های جمله‌دار (الگویِ l58)؛ بانک‌های تایپی از حلقهٔ MCQ-خالصِ گاردها مستثنی‌اند"
   }
  },
  "answerArbitration": [
@@ -11020,6 +11075,585 @@
      "n": 4,
      "category": "grammar",
      "question": "Teachers are an essential part of our lives. They teach us much more than reading and writing. They teach us life lessons and help us discover who we are and how to succeed. It's important to appreciate the teachers who are dedicated to their jobs. Even if you feel you have too much homework and too many exams, take a moment to think how important your teachers are. Without them, you wouldn't be where you are today. Teaching requires a lot of time, preparation, and effort. Outside of the class, teachers write lesson plans, create exams and grade tests. They also attend conference and training sessions to find tools and ways to help students succeed. Teachers are very knowledgeable on the specific subjects they teach. However, it takes a helpful and dedicated individual to be able to teach effectively. Teaching requires them to stay up-to-date on advances in their field of study. They are busy with a wide variety of responsibilities, 'Teachers need to make sure that they know all their students' names and they must learn them quickly. One way of having a productive class is learning students' names. This article has given you some insight of the hard work and dedication that your teachers use each day at school. Then next time that you see you teachers, tell them you appreciate their help. — The only things that students learn at school are reading and writing.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 93,
+   "title": "نهایی خرداد ۱۳۹۸ — شنیداریِ متن‌چاپ (س۲-س۴، ص۲۳۷)",
+   "level": "چهارگزینه‌ای",
+   "count": 8,
+   "questions": [
+    {
+     "id": "g12-l93-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "Which one is clean energy? Wind or Coal? -------.",
+     "options": [
+      "wind",
+      "coal"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l93-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "Scientists try to use clean energy because -------.",
+     "options": [
+      "do not pollute the earth",
+      "are harmful to the environment",
+      "cannot be replaced",
+      "cannot be turned into other forms of energy"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l93-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "When renewable energy is used, the demand for fossil fuels -------.",
+     "options": [
+      "is produced",
+      "is made",
+      "is reduced",
+      "is provided"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l93-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "Bijan didn't tell Mehran about the problem because -------.",
+     "options": [
+      "it was an emergency",
+      "it was a secret",
+      "he didn't need any money",
+      "he had no mobile phone"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l93-5",
+     "n": 5,
+     "category": "grammar",
+     "question": "Why has Bijan saved some money?",
+     "options": [
+      "to buy a new pair of shoes",
+      "to solve his friend's problem",
+      "to help Mehran",
+      "to buy a new mobile phone"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l93-6",
+     "n": 6,
+     "category": "grammar",
+     "question": "Ali is doing research on -------.",
+     "options": [
+      "heart attack",
+      "human's life",
+      "air pollution"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l93-7",
+     "n": 7,
+     "category": "grammar",
+     "question": "Where does air pollution mostly happen?",
+     "options": [
+      "big cities",
+      "roads",
+      "highways"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l93-8",
+     "n": 8,
+     "category": "grammar",
+     "question": "Polluted air causes different ------- to human.",
+     "options": [
+      "reasons",
+      "diseases",
+      "ways"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 94,
+   "title": "نهایی خرداد ۱۳۹۸ — واژگانِ تصویری — تایپی (س۵، ص۲۳۸)",
+   "level": "تایپی",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g12-l94-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "We have to speak louder, because my grandfather is ------- of hearing.",
+     "options": [
+      "hard"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "hard"
+     ]
+    },
+    {
+     "id": "g12-l94-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "In opposite to fans, ------- (s) use wind to generate electricity.",
+     "options": [
+      "wind turbines"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "wind turbines",
+      "turbines"
+     ]
+    }
+   ]
+  },
+  {
+   "lesson": 95,
+   "title": "نهایی خرداد ۱۳۹۸ — تعریف‌یابی (س۶، ص۲۳۸)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l95-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "«There are some helpful tips on how to use a dictionary more effectively.» — تعریفِ ستون B برای واژهٔ «effectively»: -------",
+     "options": [
+      "the rise and fall of the sea",
+      "in a quiet way",
+      "a book in which you record your thoughts and feelings",
+      "to change in form or character",
+      "in a way that is successful and achieves what you want"
+     ],
+     "answer": 4
+    },
+    {
+     "id": "g12-l95-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "«She agreed some parts of her personal diary to be published.» — تعریفِ ستون B برای واژهٔ «diary»: -------",
+     "options": [
+      "the rise and fall of the sea",
+      "in a quiet way",
+      "a book in which you record your thoughts and feelings",
+      "to change in form or character",
+      "in a way that is successful and achieves what you want"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l95-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "«Strong tides make swimming dangerous.» — تعریفِ ستون B برای واژهٔ «tides»: -------",
+     "options": [
+      "the rise and fall of the sea",
+      "in a quiet way",
+      "a book in which you record your thoughts and feelings",
+      "to change in form or character",
+      "in a way that is successful and achieves what you want"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l95-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "«We can convert some sofas into a bed.» — تعریفِ ستون B برای واژهٔ «convert»: -------",
+     "options": [
+      "the rise and fall of the sea",
+      "in a quiet way",
+      "a book in which you record your thoughts and feelings",
+      "to change in form or character",
+      "in a way that is successful and achieves what you want"
+     ],
+     "answer": 3
+    }
+   ]
+  },
+  {
+   "lesson": 96,
+   "title": "نهایی خرداد ۱۳۹۸ — واژگانِ بانکِ چاپ (س۷، ص۲۳۸)",
+   "level": "چهارگزینه‌ای",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g12-l96-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "Nowadays the new light bulbs ------- less electricity.",
+     "options": [
+      "combination",
+      "compile",
+      "dedicated",
+      "consume"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l96-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "As a great artist, he has used a ------- of paints in his works.",
+     "options": [
+      "combination",
+      "compile",
+      "dedicated",
+      "consume"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l96-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "Dr. Gharib was regarded as a ------- physician and he spared no pains to help sick people.",
+     "options": [
+      "combination",
+      "compile",
+      "dedicated",
+      "consume"
+     ],
+     "answer": 2
+    }
+   ]
+  },
+  {
+   "lesson": 97,
+   "title": "نهایی خرداد ۱۳۹۸ — دانشِ خودِ حرف‌اول — تایپی (س۸، ص۲۳۹)",
+   "level": "تایپی",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g12-l97-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "Plants a------- carbon dioxide from the air.",
+     "options": [
+      "absorb"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "absorb"
+     ]
+    },
+    {
+     "id": "g12-l97-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "H is the chemical s------- for hydrogen.",
+     "options": [
+      "symbol"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "symbol",
+      "sign"
+     ]
+    },
+    {
+     "id": "g12-l97-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "In Germany people usually h------- each other when they meet.",
+     "options": [
+      "hug"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "hug"
+     ]
+    }
+   ]
+  },
+  {
+   "lesson": 98,
+   "title": "نهایی خرداد ۱۳۹۸ — شکلِ صحیحِ فعلِ مکالمه — تایپی (س۹، ص۲۳۹)",
+   "level": "تایپی",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l98-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "It ------- rather cold today, doesn't it? ( to seem)",
+     "options": [
+      "seems"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "seems"
+     ]
+    },
+    {
+     "id": "g12-l98-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "I ------- to go swimming before I left home. ( to decide)",
+     "options": [
+      "had decided"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "had decided"
+     ]
+    },
+    {
+     "id": "g12-l98-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "If it were fine, We ------- swimming today. ( to go)",
+     "options": [
+      "would go"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "would go",
+      "could go"
+     ]
+    },
+    {
+     "id": "g12-l98-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "I know a restaurant in which a variety of sea foods ------- . ( to serve)",
+     "options": [
+      "are served"
+     ],
+     "answer": 0,
+     "kind": "typed",
+     "accepted": [
+      "are served"
+     ]
+    }
+   ]
+  },
+  {
+   "lesson": 99,
+   "title": "نهایی خرداد ۱۳۹۸ — گرامرِ چهارگزینه‌ای (س۱۰، ص۲۳۹)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l99-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "The train ------- he catches early in the morning is not very crowded.",
+     "options": [
+      "whom",
+      "which",
+      "who",
+      "whose"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l99-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "Some dangerous gases ------- when we burn garbage.",
+     "options": [
+      "was produced",
+      "produce",
+      "may produce",
+      "may be produced"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l99-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "The old man wasn't very ------- and kept to himself.",
+     "options": [
+      "communicate",
+      "communication",
+      "communicative",
+      "to communicate"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l99-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "I did not read the introduction and jumped ------- the next part.",
+     "options": [
+      "into",
+      "on",
+      "up",
+      "over"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 100,
+   "title": "نهایی خرداد ۱۳۹۸ — حروفِ ربط (س۱۲، ص۲۳۹)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g12-l100-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "The early bird catches the worm, ------- if you want to succeed, wake up and start work early.",
+     "options": [
+      "and",
+      "or",
+      "but",
+      "so"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g12-l100-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "He bought a house, found a job, ------- chose a school for his children last year.",
+     "options": [
+      "and",
+      "or",
+      "but",
+      "so"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l100-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "The glass fell down to the floor, ------- it didn't break.",
+     "options": [
+      "and",
+      "or",
+      "but",
+      "so"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l100-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "You can pay now, ------- when I finish your painting.",
+     "options": [
+      "and",
+      "or",
+      "but",
+      "so"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 101,
+   "title": "نهایی خرداد ۱۳۹۸ — خوانداریِ نیکوکاری (س۱۵، ص۲۴۰)",
+   "level": "چهارگزینه‌ای",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g12-l101-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Some people prefer to provide help and support directly to those in need. However, others prefer to give money to national and international charity organizations. Giving money to those in need can be a personally good experience, but there is a choice between donating nationally and internationally through charities or giving directly to those around you. One of the advantages of providing direct support is that you can know exactly how your money is spent. Another benefit is that you can see the impacts on those you are helping, which can lead not only to great personal happiness but also to respect from others who appreciate the work you do. There are advantages in giving to charities that are national and international. First and the best is helping in problems of global importance, such as curing diseases and human rights or helping those who are in bad environmental events like earthquakes and floods. In conclusion a person should make their own choice in helping others. The important point is that we continue to give to those who are more in need than ourselves. — What is the closest synonym for the word \"benefit\"?",
+     "options": [
+      "experience",
+      "advantage",
+      "choice",
+      "effect"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g12-l101-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "Some people prefer to provide help and support directly to those in need. However, others prefer to give money to national and international charity organizations. Giving money to those in need can be a personally good experience, but there is a choice between donating nationally and internationally through charities or giving directly to those around you. One of the advantages of providing direct support is that you can know exactly how your money is spent. Another benefit is that you can see the impacts on those you are helping, which can lead not only to great personal happiness but also to respect from others who appreciate the work you do. There are advantages in giving to charities that are national and international. First and the best is helping in problems of global importance, such as curing diseases and human rights or helping those who are in bad environmental events like earthquakes and floods. In conclusion a person should make their own choice in helping others. The important point is that we continue to give to those who are more in need than ourselves. — Helping people in bad environmental events has the global importance.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l101-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "Some people prefer to provide help and support directly to those in need. However, others prefer to give money to national and international charity organizations. Giving money to those in need can be a personally good experience, but there is a choice between donating nationally and internationally through charities or giving directly to those around you. One of the advantages of providing direct support is that you can know exactly how your money is spent. Another benefit is that you can see the impacts on those you are helping, which can lead not only to great personal happiness but also to respect from others who appreciate the work you do. There are advantages in giving to charities that are national and international. First and the best is helping in problems of global importance, such as curing diseases and human rights or helping those who are in bad environmental events like earthquakes and floods. In conclusion a person should make their own choice in helping others. The important point is that we continue to give to those who are more in need than ourselves. — All people feel great personal happiness when they help others.",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 102,
+   "title": "نهایی خرداد ۱۳۹۸ — خوانداریِ فرهنگ‌لغت (س۱۶، ص۲۴۱)",
+   "level": "چهارگزینه‌ای",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g12-l102-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "A dictionary is a collection of words ranging from letters A-Z. When reading or writing a story, an essay, a paragraph or even a sentence, using a dictionary is a great help. There are many advantages of using a dictionary. So, using a dictionary is important for students. The first advantage of using a dictionary is pronunciation. We can also listen to the pronunciation of the words if we use an audio dictionary. The second advantage of using a dictionary is checking out a word's right spelling. The third advantage of using it is learning a word's part of speech. It is one of the types into which words are divided in grammar according to their use, such as noun, verb, or adjective. Lastly, example sentences are mostly available. Seeing specific words used in a sentence can provide more context and help you better understand proper usage. However, searching words by using a dictionary takes a lot of time. By using a talking dictionary, we are able to look the words up in a few minutes. As a result, a dictionary is a great help for everyone, especially students who are learning a language and who are interested in language learning. — What does the pronoun (it) in line 7 refer to?",
+     "options": [
+      "pronunciation",
+      "spelling",
+      "part of speech",
+      "example sentence"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g12-l102-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "A dictionary is a collection of words ranging from letters A-Z. When reading or writing a story, an essay, a paragraph or even a sentence, using a dictionary is a great help. There are many advantages of using a dictionary. So, using a dictionary is important for students. The first advantage of using a dictionary is pronunciation. We can also listen to the pronunciation of the words if we use an audio dictionary. The second advantage of using a dictionary is checking out a word's right spelling. The third advantage of using it is learning a word's part of speech. It is one of the types into which words are divided in grammar according to their use, such as noun, verb, or adjective. Lastly, example sentences are mostly available. Seeing specific words used in a sentence can provide more context and help you better understand proper usage. However, searching words by using a dictionary takes a lot of time. By using a talking dictionary, we are able to look the words up in a few minutes. As a result, a dictionary is a great help for everyone, especially students who are learning a language and who are interested in language learning. — What is the opposite of the underlined word \"available\"?",
+     "options": [
+      "out of reach",
+      "valuable",
+      "repetitive",
+      "accessible"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g12-l102-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "A dictionary is a collection of words ranging from letters A-Z. When reading or writing a story, an essay, a paragraph or even a sentence, using a dictionary is a great help. There are many advantages of using a dictionary. So, using a dictionary is important for students. The first advantage of using a dictionary is pronunciation. We can also listen to the pronunciation of the words if we use an audio dictionary. The second advantage of using a dictionary is checking out a word's right spelling. The third advantage of using it is learning a word's part of speech. It is one of the types into which words are divided in grammar according to their use, such as noun, verb, or adjective. Lastly, example sentences are mostly available. Seeing specific words used in a sentence can provide more context and help you better understand proper usage. However, searching words by using a dictionary takes a lot of time. By using a talking dictionary, we are able to look the words up in a few minutes. As a result, a dictionary is a great help for everyone, especially students who are learning a language and who are interested in language learning. — Learning a word's part of speech helps us better understand proper usage of it.",
      "options": [
       "True",
       "False"
