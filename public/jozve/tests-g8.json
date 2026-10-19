@@ -1,0 +1,266 @@
+{
+ "grade": 8,
+ "title": "جزوه دکتر حسن لطفی — پایه هشتم",
+ "lessons": [
+  {
+   "lesson": 1,
+   "title": "امتحانی درس اول — کلمهٔ ناهماهنگ (س۲، ص۱۸)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g8-l1-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "Indonesia – Iraq – Egypt – Spanish",
+     "options": [
+      "Indonesia",
+      "Iraq",
+      "Egypt",
+      "Spanish"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g8-l1-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "Australia – china – Europe – Italy",
+     "options": [
+      "Australia",
+      "china",
+      "Europe",
+      "Italy"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g8-l1-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "Asia – Europe – china – Africa",
+     "options": [
+      "Asia",
+      "Europe",
+      "china",
+      "Africa"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g8-l1-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "Chinese – French – Britain – Brazilian",
+     "options": [
+      "Chinese",
+      "French",
+      "Britain",
+      "Brazilian"
+     ],
+     "answer": 2
+    }
+   ]
+  },
+  {
+   "lesson": 2,
+   "title": "امتحانی درس اول — تکمیل با بانک واژه (س۳، ص۱۸)",
+   "level": "پنج‌گزینه‌ای",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g8-l2-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "1. I speak French, English and ------- Persian.",
+     "options": [
+      "Beautiful",
+      "cousin",
+      "alittle",
+      "originally",
+      "british"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g8-l2-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "2. I am ------- Australian but I live in England.",
+     "options": [
+      "Beautiful",
+      "alittle",
+      "cousin",
+      "british",
+      "originally"
+     ],
+     "answer": 4
+    },
+    {
+     "id": "g8-l2-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "3. Spain is a ------- country. I love it.",
+     "options": [
+      "alittle",
+      "Beautiful",
+      "cousin",
+      "originally",
+      "british"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 3,
+   "title": "امتحانی درس اول — ترجمهٔ جدول (س۵، ص۱۸)",
+   "level": "چهارگزینه‌ای",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g8-l3-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "قاره به انگلیسی: -------",
+     "options": [
+      "country",
+      "continent",
+      "city",
+      "island"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g8-l3-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "کشوری زیبا به انگلیسی: -------",
+     "options": [
+      "a beautiful country",
+      "a beautiful city",
+      "a big country",
+      "a small town"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g8-l3-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "سال به انگلیسی: -------",
+     "options": [
+      "month",
+      "week",
+      "year",
+      "hour"
+     ],
+     "answer": 2
+    }
+   ]
+  }
+ ],
+ "source": {
+  "g8exam1": {
+   "extractedRound": "r374",
+   "section": "نمونه سؤالات امتحانی درس اول پایه هشتم",
+   "examPages": "pdf-p18 (تک‌صفحه‌ای) — ص۱۹ واژگانِ درس دوم است و مرزِ پایینیِ خانواده",
+   "keyPages": "هیچ پاسخنامهٔ چاپی در جزوهٔ هشتم نیست — کلیدها استنتاجی؛ لنگرهای س۵ از خودِ درسِ اول (continent* جدولِ واژگان؛ It’s a beautiful country دیالوگ)",
+   "sectionsTotal": 5,
+   "sectionsExtracted": 3,
+   "sectionsSkipped": 2,
+   "items": 10,
+   "bankCounts": [
+    4,
+    3,
+    3
+   ],
+   "wordBank": [
+    "Beautiful",
+    "alittle",
+    "cousin",
+    "originally",
+    "british"
+   ],
+   "wordBankSource": "پرانتزِ چاپیِ سکشنِ س۳ ص۱۸ (لایه) — ۵ واژه برای ۳ بلنک با «دو کلمه اضافی است» — دومین بانکِ دواضعیِ کارت‌ها (پس از r371-بانک۹ هفت‌گزینه‌ایِ تکاضعی)",
+   "keyPolicy": "س۲: کلیدِ دسته‌ای هر ردیف (زبان/قاره/کشور) با ترتیبِ چاپیِ گزینه‌ها؛ س۳: نگاشتِ یکتای بانک-به-بلنک (alittle/originally/Beautiful) با دو اضافیِ هرگز-کلید؛ س۵: ترجمه‌های یکتا — قاره/کشوری زیبا لنگردارِ درسِ اول، سال به الگویِ کلیدِ ترجمه‌ایِ یکتای r371-جمعه→Friday",
+   "engineNote": "سکشنِ ترجمه MCQ چهارگزینه‌ای است نه تایپی (قراردادِ r363)؛ ساقه‌های فارسیِ س۵ عینِ سلول‌های جدولِ چاپی‌اند (الگویِ r372-بانک‌های ۱۳/۱۴)؛ شماره‌های «1.» ساقه‌های س۳ verbatim چاپ",
+   "derivedKeys": {
+    "S2": [
+     "Spanish",
+     "Europe",
+     "china",
+     "Britain"
+    ],
+    "S3": [
+     "alittle",
+     "originally",
+     "Beautiful"
+    ],
+    "S5": [
+     "continent",
+     "a beautiful country",
+     "year"
+    ]
+   },
+   "skippedSections": [
+    "ص۱۸-س۱ «با توجه به تصویر به سوال پاسخ کامل دهید» — Where are you from? / I -------؛ تصویرِ نقشهٔ خطیِ ایران (برچسبِ دریای خزر در رندرِ ۳۰۰dpi ص۱۸-top) → «I am from Iran.» — تصویری-کلید (الگویِ r371/r373)",
+    "ص۱۸-س۴ «با توجه به تصاویر در مقابل جملات درست ص و غلط غ بگذارید» — چهار آیتمِ تصویری با حکمِ تصویری: 1. She is from England. [تصویرِ 和/لباسِ چینی/معبد] → غ؛ 2. They are French. [برجِ ایفل+نقشهٔ فرانسه] → ص؛ 3. Are they British? Yes, they are. [نقشهٔ بریتانیا+پرچم+گارد سلطنتی] → ص؛ 4. Are you from Spain? Yes, I am. [نقشهٔ ایران+پرچم با برچسبِ ایران] → غ (رندرِ ۳۰۰dpi ص۱۸-bottom) — تصویری-کلید"
+   ],
+   "printQuirks": [
+    "«alittle» یک‌واژه‌نوشتِ چاپ (a little) و «british» با b کوچک و «Beautiful» با B بزرگ — هر سه verbatim در بانک",
+    "«china» با c کوچک در ردیف‌های ۲/۳ س۲ — verbatim",
+    "خط‌تیره‌های مخلوطِ چاپ در س۲ (ردیفِ ۲ با «-» و بقیه با «–») — به «–» قراردادِ کارت یکدست شد",
+    "«از دیدن شما خوشحالم» (سلولِ چهارمِ جدولِ س۵) مستثنیِ آیتمی شد: معادلِ چاپیِ یکتا ندارد (Nice to see you / Glad to see you / Pleased to meet you) — جدول چهار سلولی است و ۳ سلولِ دیگر استخراج شد"
+   ]
+  },
+  "g8familyMap": {
+   "extractedRound": "r374",
+   "note": "نقشهٔ ۷ خانوادهٔ «نمونه سؤالات امتحانی» جزوهٔ هشتم — از جست‌وجوی لایه (پروبِ r369: همتایان کامل‌اند)؛ سربرگ‌های دوبخطی با جست‌وجوی دوسطری",
+   "families": [
+    {
+     "lesson": "درس اول",
+     "pdfPage": 18,
+     "round": "r374",
+     "status": "استخراج شد — ۳ بانک/۱۰ آیتم از ۵ سکشن (س۱ و س۴ تصویری مستثنی؛ س۵ آیتمیِ «از دیدن شما خوشحالم» دوکلیدیِ ترجمه‌ای مستثنی)"
+    },
+    {
+     "lesson": "درس دوم",
+     "pdfPage": 27,
+     "round": null,
+     "status": "در انتظار راند بعد"
+    },
+    {
+     "lesson": "درس سوم",
+     "pdfPage": 35,
+     "round": null,
+     "status": "در انتظار راند بعد"
+    },
+    {
+     "lesson": "درس چهارم",
+     "pdfPage": 41,
+     "round": null,
+     "status": "در انتظار راند بعد"
+    },
+    {
+     "lesson": "درس پنجم",
+     "pdfPage": 50,
+     "round": null,
+     "status": "در انتظار راند بعد"
+    },
+    {
+     "lesson": "درس ششم",
+     "pdfPage": 60,
+     "round": null,
+     "status": "در انتظار راند بعد"
+    },
+    {
+     "lesson": "درس هفتم",
+     "pdfPage": 72,
+     "round": null,
+     "status": "در انتظار راند بعد"
+    }
+   ]
+  }
+ }
+}
