@@ -47,6 +47,7 @@ const KonkurView = lazyView(() => import("./exam/konkur-view"));
 const GrammarView = lazyView(() => import("./grammar/grammar-view"));
 const MyWordsView = lazyView(() => import("./practice/my-words"));
 const JozveView = lazyView(() => import("./jozve/jozve-view"));
+const BookView = lazyView(() => import("./books/book-view"));
 
 // Report modals: heavy (official-report pulls per-lesson stats) and computed
 // while closed (audit finding G-5). They mount only after the first "open"
@@ -177,7 +178,11 @@ export default function StudyApp() {
   }, []);
 
   const viewKey =
-    view.type === "lesson" ? `lesson-${view.id}` : view.type;
+    view.type === "lesson"
+      ? `lesson-${view.id}`
+      : view.type === "book"
+        ? `book-${view.grade}`
+        : view.type;
 
   // report modals: open state lives here (eager) so the heavy modal chunks
   // only download on first use. The window events keep their names —
@@ -239,6 +244,7 @@ export default function StudyApp() {
                 {view.type === "grammar" && <GrammarView />}
                 {view.type === "my-words" && <MyWordsView />}
                 {view.type === "jozve" && <JozveView />}
+                {view.type === "book" && <BookView grade={view.grade} />}
               </motion.div>
             </AnimatePresence>
           ) : (

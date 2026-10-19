@@ -49,6 +49,7 @@ const FOLDERS = [
   "shell", "lesson", "practice", "exam", "grammar",
   "duel", "home", "profile", "quiz", "reports", "shared",
   "jozve", // کتابخانهٔ جزوه‌ها — استخراج کامل ۶ جزوهٔ پایهٔ ۷ تا ۱۲
+  "books", // r397 — کتاب‌های همهٔ پایه‌ها — نمای درس‌به‌درسِ هر جزوه
 ];
 
 function walkTsFiles(dir: string): string[] {
@@ -62,7 +63,7 @@ function walkTsFiles(dir: string): string[] {
 }
 
 describe("component layout §11.2 receipt (Step 10 part 2 — Task 91)", () => {
-  it("study/ root holds ONLY study-app.tsx + the 11 feature folders", () => {
+  it("study/ root holds ONLY study-app.tsx + the 12 feature folders", () => {
     const entries = readdirSync(STUDY).sort();
     const files = entries.filter((e) => statSync(resolve(STUDY, e)).isFile());
     const dirs = entries.filter((e) => statSync(resolve(STUDY, e)).isDirectory()).sort();

@@ -10,6 +10,7 @@ import HomeToday from "./home-today";
 import { ListenBanner, RushBanner } from "./home-banners";
 import HomeStarter from "./home-starter";
 import HomeBookshelf from "./home-bookshelf";
+import HomeGradeBooks from "./home-grade-books";
 import HomeTools from "./home-tools";
 import HomeFeed from "./home-feed";
 import HomeRecent from "./home-recent";
@@ -99,6 +100,7 @@ export default function HomeView() {
       {mounted && !hasProgress && <HomeStarter />}
 
       <HomeBookshelf />
+      <HomeGradeBooks />
       <HomeTools />
       <Badges />
       <Leaderboard />

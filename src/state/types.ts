@@ -35,7 +35,11 @@ export type View =
   // grade/chapterId اختیاری برای deep-link «جزوهٔ همین درس» (مستقیم روی
   // فصلِ جزوهٔ همان درس باز می‌شود؛ همهٔ فراخوانی‌های { type: "jozve" }
   // بدونِ فیلدها هم معتبر می‌مانند)
-  | { type: "jozve"; grade?: number; chapterId?: string };
+  | { type: "jozve"; grade?: number; chapterId?: string }
+  // r397 — «کتاب‌های همهٔ پایه‌ها» — نمای درس‌به‌درسِ هر جزوه (خواستهٔ کاربر:
+  // همان تجربهٔ درس‌های یازدهم برای همهٔ کتاب‌ها)؛ فصل‌های «درس N» + بانک‌های
+  // آزمونِ متصل + پرش به متنِ کامل در کتابخانهٔ جزوه‌ها
+  | { type: "book"; grade: number };
 
 export type LessonTab = "vocab" | "conversation" | "reading" | "grammar" | "writing" | "dictation" | "tests";
 

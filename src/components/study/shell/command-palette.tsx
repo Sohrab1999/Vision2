@@ -38,6 +38,7 @@ import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/compone
 import { useStudy, type LessonTab } from "@/lib/study-store";
 import { LESSONS_META } from "@/data/lesson-meta";
 import { faNum } from "@/lib/study-theme";
+import { BOOKS } from "@/lib/books";
 import {
   COMMAND_GROUPS,
   commandFromParamId,
@@ -190,6 +191,14 @@ export default function CommandPalette() {
       { id: "nav-grammar", label: "متروی گرامر", group: "ناوبری", hint: "نقشهٔ سفر گرامر کتاب", keywords: ["grammar", "metro", "map"] },
       { id: "nav-konkur", label: "گوشهٔ کنکور", group: "ناوبری", hint: "بانک ۳۶۰ تستی با پاسخ تشریحی", keywords: ["konkur", "question bank", "entrance"] },
       { id: "nav-jozve", label: "کتابخانهٔ جزوه‌ها", group: "ناوبری", hint: "استخراج کامل ۶ جزوهٔ پایهٔ ۷ تا ۱۲", keywords: ["jozve", "جزوه", "booklet", "library", "handout"] },
+      // r397 — کتاب‌های پایه‌ها: نمای درس‌به‌درس هر جزوه (درس‌های یازدهم برای همه)
+      ...BOOKS.map((b) => ({
+        id: `nav-book-${b.grade}`,
+        label: `کتاب پایهٔ ${b.label}`,
+        group: "ناوبری",
+        hint: `${b.lessonCount} درس · ${faNum(b.pages)} صفحه`,
+        keywords: ["book", "کتاب", b.label, `grade ${b.grade}`],
+      })),
       // Task 73: برچسب صادقانه — مقصد این فرمان نمای «مرور سریع قبل امتحان» است
       // (بانک غلط‌ها)، نه داشبورد SRS (که بخشی از خانه است)؛ واژه‌نامهٔ SRS به
       // فرمان‌های lesson-smart-<n> و nav-smart منتقل شد.
@@ -294,6 +303,24 @@ export default function CommandPalette() {
         break;
       case "nav-jozve":
         setView({ type: "jozve" });
+        break;
+      case "nav-book-7":
+        setView({ type: "book", grade: 7 });
+        break;
+      case "nav-book-8":
+        setView({ type: "book", grade: 8 });
+        break;
+      case "nav-book-9":
+        setView({ type: "book", grade: 9 });
+        break;
+      case "nav-book-10":
+        setView({ type: "book", grade: 10 });
+        break;
+      case "nav-book-11":
+        setView({ type: "book", grade: 11 });
+        break;
+      case "nav-book-12":
+        setView({ type: "book", grade: 12 });
         break;
       case "nav-review":
         setView({ type: "review" });
