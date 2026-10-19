@@ -34,10 +34,10 @@ const BLANK = /-{5,}/;
 describe("jozve test bank g12-l1 (r273 extraction receipt)", () => {
   it("bank shape: grade 12, three lessons (r273=l1 + r274=l2/l3), exactly 100 questions each", () => {
     expect(bank.grade).toBe(12);
-    // r380 بانک‌های ۴-۷ (نهاییِ خرداد ۱۴۰۲، شمارِ متغیر) و r381 بانک‌های ۸-۱۵ (نهاییِ
-    // شهریور ۱۴۰۱) را افزود — گاردهای خودشان (r380/r381) شمارِ آنها را پیمان می‌کنند
+    // r380 بانک‌های ۴-۷ (نهاییِ خرداد ۱۴۰۲)، r381 بانک‌های ۸-۱۵ (شهریور ۱۴۰۱) و r382
+    // بانک‌های ۱۶-۲۱ (دی ۱۴۰۰) را افزودند — گاردهای خودشان (r380/r381/r382) شمارشان را پیمان می‌کنند
     expect(bank.lessons.map((l) => l.lesson)).toEqual(
-      [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+      [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21],
     );
     for (const l of bank.lessons.filter((x) => x.lesson <= 3)) {
       expect(l.count, `lesson ${l.lesson}`).toBe(100);
