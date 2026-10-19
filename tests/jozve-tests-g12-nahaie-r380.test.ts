@@ -282,7 +282,7 @@ describe("r380 — پیمان‌های سراسریِ فایل", () => {
       [100, 100, 100, 6, 7, 6, 10, 4, 6, 8, 4, 4, 4, 4, 4, 5, 7, 4, 4, 4, 2, 5, 7, 4, 4, 4, 2, 2, 7, 4, 3, 3, 4, 2, 6, 7, 4, 4, 4, 4, 2, 6, 4, 6, 8, 4, 4, 4, 4, 6, 6, 3, 3, 6, 4, 4, 4, 4, 4, 1, 2, 1, 2, 3, 3, 4, 4, 4, 4, 4, 3, 1, 3, 2, 3, 3, 5, 4, 4, 4, 4, 4, 2],
     );
     const ids = bank.lessons.flatMap((b2) => b2.questions.map((q) => q.id));
-    expect(ids).toHaveLength(594);
+    expect(ids).toHaveLength(633);
     expect(new Set(ids).size).toBe(633);
     expect(ids[300]).toBe("g12-l4-1");
     expect(ids[305]).toBe("g12-l4-6");
