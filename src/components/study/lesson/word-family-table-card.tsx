@@ -28,6 +28,11 @@
 // را به خانواده‌هایِ کاربرددار محدود می‌کند — چیپِ «N خانواده» در حالتِ لنز
 // «N از M خانواده» می‌شود و جدولِ بی‌خانوادهٔ کاربرددار ردیفِ خالیِ صادقانه
 // می‌گیرد، نه سکوتِ render.
+// راند ۲۵۷ — بندِ ③ پیشنهادِ ۲۵۶: لنزِ معکوسِ «فقط بی‌کاربردها» — propِ
+// unusedOnly (هم‌سطحِ usedOnly؛ دوتاییِ متقابلاً انحصاری در ضمیمه): ردیف‌ها
+// به خانواده‌هایِ بی‌کاربرد محدود می‌شوند («مطالعهٔ هدفمندِ واژه‌هایی که
+// هنوز در متن نیامده‌اند»)؛ چیپِ «N از M خانوادهٔ بی‌کاربرد» و جدولی که
+// همهٔ خانواده‌هایش در متن زندگی می‌کنند ردیفِ خالیِ صادقانهٔ معکوس می‌گیرد.
 import { useMemo, useState } from "react";
 import type { WordFamilyTable } from "@/data/word-families";
 import { wordFamilyTableId } from "@/data/word-families";
@@ -86,6 +91,10 @@ export default function WordFamilyTableCard({
   relatedLesson,
   onOpenLesson,
   usedOnly = false,
+  /** راند ۲۵۷ — لنزِ معکوسِ «فقط بی‌کاربردها» (فقط بسترِ ضمیمه): ردیف‌ها به
+   *  خانواده‌هایِ بی‌کاربرد محدود می‌شوند؛ با usedOnly متقابلاً انحصاری‌اند
+   *  (ضمیمه هرگز هر دو را هم‌زمان نمی‌فرستد). */
+  unusedOnly = false,
   prevTable,
   nextTable,
   onNavigateTable,
@@ -100,6 +109,9 @@ export default function WordFamilyTableCard({
   /** راند ۲۵۶ — لنزِ «فقط کاربرددارها» (فقط بسترِ ضمیمه): ردیف‌ها به
    *  خانواده‌هایِ کاربرددار محدود می‌شوند؛ پیش‌فرضِ خاموش = همهٔ ردیف‌ها. */
   usedOnly?: boolean;
+  /** راند ۲۵۷ — لنزِ معکوسِ «فقط بی‌کاربردها»: ردیف‌ها به خانواده‌هایِ
+   *  بی‌کاربرد محدود می‌شوند؛ پیش‌فرضِ خاموش = همهٔ ردیف‌ها. */
+  unusedOnly?: boolean;
   /** ناوبریِ پیوسته (r227) — همسایه‌ها از فهرستِ رندرشده (فیلترِ فعال)؛
    * فقط بسترِ ضمیمه؛ برچسب = «<پایه> · <درس>». */
   prevTable?: { id: string; title: string };
@@ -148,7 +160,9 @@ export default function WordFamilyTableCard({
         <span className="c-track-70 ms-auto rounded-full px-2.5 py-1 text-[11px] font-black text-stone-600">
           {usedOnly && census.usedFamilies < table.families.length
             ? `${faNum(census.usedFamilies)} از ${faNum(table.families.length)} خانواده`
-            : `${faNum(table.families.length)} خانواده`}
+            : unusedOnly && census.usedFamilies > 0
+              ? `${faNum(table.families.length - census.usedFamilies)} از ${faNum(table.families.length)} خانوادهٔ بی‌کاربرد`
+              : `${faNum(table.families.length)} خانواده`}
         </span>
       </div>
       <div className="max-h-[52vh] overflow-auto nice-scroll">
@@ -170,8 +184,20 @@ export default function WordFamilyTableCard({
                 </td>
               </tr>
             )}
-            {table.families.map((f, fi) =>
-              usedOnly && !usedIdx.has(fi) ? null : (
+            {/* راند ۲۵۷ — صداقتِ معکوس: جدولی که همهٔ خانواده‌هایش در متن
+                زندگی می‌کنند در لنزِ «بی‌کاربرد» ردیفِ خالیِ صادقانه می‌گیرد. */}
+            {unusedOnly && census.usedFamilies === table.families.length && (
+              <tr>
+                <td colSpan={5} className="px-3 py-4 text-center text-[12.5px] font-bold text-stone-500">
+                  در این جدول همهٔ خانواده‌ها در متنِ مکالمه‌ها و ریدینگ‌های جزوه زندگی می‌کنند
+                </td>
+              </tr>
+            )}
+            {table.families.map((f, fi) => {
+              const isUsed = usedIdx.has(fi);
+              if (usedOnly && !isUsed) return null; // لنزِ کاربرددارها (r256)
+              if (unusedOnly && isUsed) return null; // لنزِ معکوس (r257)
+              return (
               <tr key={`${table.vision}-${table.lesson}-${fi}`} className={fi % 2 === 0 ? "bg-white" : "bg-stone-50"}>
                 <td className="px-3 py-2 text-[12.5px] font-semibold text-stone-700">
                   {f.fa || <span className="font-normal text-stone-300">—</span>}
@@ -193,8 +219,8 @@ export default function WordFamilyTableCard({
                   {f.adverb ? <EnSpeakCell word={f.adverb} onUsage={(en, sites) => setUsage({ en, sites })} /> : <span className="text-stone-300">—</span>}
                 </td>
               </tr>
-              )
-            )}
+              );
+            })}
           </tbody>
         </table>
       </div>

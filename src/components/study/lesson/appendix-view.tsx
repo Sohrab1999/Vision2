@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { ChevronLeft, Library, ListTree, Volume2, SpellCheck2, BookA, Table2, BookOpenCheck, Users, BookOpenText } from "lucide-react";
+import { ChevronLeft, Library, ListTree, Volume2, SpellCheck2, BookA, Table2, BookOpenCheck, Users, BookOpenText, EyeOff } from "lucide-react";
 import { irregularVerbs, partsOfSpeech, vowelPhonemes, consonantPhonemes, abbreviations } from "@/data/appendix";
 import {
   WORD_FAMILY_TABLES,
@@ -67,7 +67,10 @@ export default function AppendixView({
   // راند ۲۵۶ — لنزِ «فقط کاربرددارها» (بندِ ② پیشنهادِ ۲۵۵): وقتی روشن است
   // هر جدول فقط خانواده‌هایی را رندر می‌کند که دست‌کم یک سلولشان در متنِ
   // مکالمه‌ها/ریدینگ‌های جزوه آمده — همان تک‌منبعِ wordFamilyUsageCensus.
-  const [posUsedOnly, setPosUsedOnly] = useState(false);
+  // راند ۲۵۷ — بندِ ③ پیشنهادِ ۲۵۶: لنزِ معکوسِ «فقط بی‌کاربردها» — حالتِ
+  // سه‌حالته (all/used/unused) با دوتاییِ متقابلاً انحصاری: روشن‌کردنِ یکی
+  // دیگری را خاموش می‌کند؛ مطالعهٔ هدفمندِ خانواده‌هایی که هنوز در متن نیامده‌اند.
+  const [posLens, setPosLens] = useState<"all" | "used" | "unused">("all");
   // سرشماریِ هر جدول — در سطحِ کامپوننت (قانونِ هوک‌ها: هوکِ شرطی ممنوع؛
   // IIFEِ pos فقط مصرف‌کننده‌اش است)؛ findWordUsages کشِ ماژول دارد.
   const tableCensus = useMemo(
@@ -235,6 +238,15 @@ export default function AppendixView({
           (s, t) => s + (tableCensus.get(wordFamilyTableId(t))?.usedFamilies ?? 0),
           0,
         );
+        // راند ۲۵۷ — شمارندهٔ لنزِ معکوس، هم‌مقیاسِ خانواده مثلِ r256:
+        // بی‌کاربردهایِ scopeِ فعال = کل − کاربرددارها.
+        const scopeUnusedFam = tables.reduce(
+          (s, t) => {
+            const c = tableCensus.get(wordFamilyTableId(t));
+            return s + (c ? c.totalFamilies - c.usedFamilies : 0);
+          },
+          0,
+        );
         return (
           <div className="space-y-4">
             <div className="grid gap-3 sm:grid-cols-2">
@@ -285,19 +297,22 @@ export default function AppendixView({
                     </button>
                   ))}
                 </div>
-                {/* راند ۲۵۶ — لنزِ «فقط کاربرددارها»: گروهِ خودش را دارد (هرگز
-                    داخلِ گروهِ فیلترِ پایه — قراردادِ r228)؛ aria-pressed و
-                    شمارندهٔ هم‌مقیاسِ خانواده‌هایِ کاربرددارِ scopeِ فعال؛
-                    آسمانیِ فعال = هویتِ خانوادهٔ «کاربرد در جزوه». */}
+                {/* راند ۲۵۶ — لنزِ «فقط کاربرددارها» + راند ۲۵۷ — لنزِ معکوسِ
+                    «فقط بی‌کاربردها»: گروهِ خودش را دارد (هرگز داخلِ گروهِ
+                    فیلترِ پایه — قراردادِ r228)؛ دوتاییِ متقابلاً انحصاری —
+                    روشن‌کردنِ یکی دیگری را خاموش می‌کند. شمارنده‌هایِ هم‌مقیاسِ
+                    خانواده با فیلترِ پایه می‌شمارند (قفلِ r253)؛ آسمانیِ کاربرددار
+                    = هویتِ خانوادهٔ «کاربرد در جزوه»، کهرباییِ بی‌کاربرد =
+                    «هنوز در متن نیامده — برایِ مطالعهٔ هدفمند». */}
                 <div role="group" aria-label="لنز کاربرددار جدول‌های اجزای کلماتی">
                   <button
                     type="button"
                     data-testid="pos-used-only-toggle"
-                    onClick={() => setPosUsedOnly((v) => !v)}
-                    aria-pressed={posUsedOnly}
+                    onClick={() => setPosLens((v) => (v === "used" ? "all" : "used"))}
+                    aria-pressed={posLens === "used"}
                     title="فقط خانواده‌هایی که دست‌کم یک سلولشان در متنِ مکالمه‌ها و ریدینگ‌های جزوه آمده"
-                    className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-2 text-[12px] font-bold transition-[background-color,color,border-color,box-shadow] ${
-                      posUsedOnly
+                    className={`me-1.5 inline-flex items-center gap-1.5 rounded-full border px-3 py-2 text-[12px] font-bold transition-[background-color,color,border-color,box-shadow] ${
+                      posLens === "used"
                         ? "border-sky-200 bg-sky-50 text-sky-700 shadow-sm"
                         : "border-stone-200 bg-white text-stone-500 hover:border-sky-200 hover:bg-sky-50/60 hover:text-sky-700"
                     }`}
@@ -305,6 +320,22 @@ export default function AppendixView({
                     <BookOpenText size={13} aria-hidden />
                     فقط کاربرددارها
                     <span className="text-[10.5px] font-black opacity-80">{faNum(scopeUsedFam)}</span>
+                  </button>
+                  <button
+                    type="button"
+                    data-testid="pos-unused-only-toggle"
+                    onClick={() => setPosLens((v) => (v === "unused" ? "all" : "unused"))}
+                    aria-pressed={posLens === "unused"}
+                    title="فقط خانواده‌هایی که هنوز هیچ سلولشان در متنِ مکالمه‌ها و ریدینگ‌های جزوه نیامده — برایِ مطالعهٔ هدفمند"
+                    className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-2 text-[12px] font-bold transition-[background-color,color,border-color,box-shadow] ${
+                      posLens === "unused"
+                        ? "border-amber-200 bg-amber-50 text-amber-800 shadow-sm"
+                        : "border-stone-200 bg-white text-stone-500 hover:border-amber-200 hover:bg-amber-50/60 hover:text-amber-800"
+                    }`}
+                  >
+                    <EyeOff size={13} aria-hidden />
+                    فقط بی‌کاربردها
+                    <span className="text-[10.5px] font-black opacity-80">{faNum(scopeUnusedFam)}</span>
                   </button>
                 </div>
                 {/* راند ۲۲۸ — فهرستِ پرشِ جدول‌ها (بیرونِ گروهِ فیلتر — قراردادِ گارد) */}
@@ -371,7 +402,8 @@ export default function AppendixView({
                 <WordFamilyTableCard
                   key={`${t.vision}-${t.lesson}`}
                   table={t}
-                  usedOnly={posUsedOnly}
+                  usedOnly={posLens === "used"}
+                  unusedOnly={posLens === "unused"}
                   relatedLesson={lesson}
                   onOpenLesson={lesson !== undefined ? () => openLessonTab(lesson, "vocab") : undefined}
                   prevTable={

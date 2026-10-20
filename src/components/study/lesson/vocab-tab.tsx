@@ -8,7 +8,7 @@ import { useStudy, wordKey } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { posLabel, themeOf, faNum } from "@/lib/study-theme";
 import { buildSynAntIndex, synAntPairsFor } from "@/lib/syn-ant-lookup";
-import { findWordUsages, type WordUsageSite } from "@/lib/word-usage";
+import { findWordUsages, lessonVocabUsageCensus, type WordUsageSite } from "@/lib/word-usage";
 import WordUsageDialog from "./word-usage-dialog";
 import { speak } from "@/lib/speak";
 import { lessons } from "@/data";
@@ -45,6 +45,11 @@ export default function VocabTab({
   }, [startSmart, consumeFlashIntent]);
 
   const t = themeOf(lesson.color);
+
+  // راند ۲۵۷ — سرشماریِ واژگانِ درس (بندِ ② پیشنهادِ ۲۵۴): «چند واژه از
+  // این درس در متنِ جزوه زندگی می‌کنند؟» — از تک‌منبعِ lib، هم‌مقیاسِ کارت
+  // (جمعِ درس‌ها = ۱۹۱۵/۴۰۳۲ دیکشنری)؛ deterministic — بدونِ mismatch.
+  const vocabCensus = useMemo(() => lessonVocabUsageCensus(lesson.vocabulary), [lesson]);
 
   // راند ۲۰۵: جفت‌های مترادف/متضاد جزوه روی کارت‌های تبِ واژگان — همان نمایهٔ
   // مشترک دیکشنری/WOTD/فلش‌کارت (تسک‌های ۲۰۳/۲۰۴)؛ یک‌بار روی همهٔ درس‌ها
@@ -114,6 +119,19 @@ export default function VocabTab({
         {filterBtn("all", "همه", lesson.vocabulary.length, filter === "all")}
         {filterBtn("known", "بلدم", knownCount, filter === "known")}
         {filterBtn("unknown", "یاد نگرفته", lesson.vocabulary.length - knownCount, filter === "unknown")}
+        {/* راند ۲۵۷ — سرشماریِ «کاربرد در جزوه» در سطحِ درس: spanِ اطلاعاتی
+            (کنشِ هر واژه، چیپِ خودِ کارت است — الگویِ wf-usage-censusِ r256)؛
+            فقط با شمارشِ واقعی — بی‌کاربرد، هیچ (صداقتِ r252). */}
+        {vocabCensus.usedWords > 0 && (
+          <span
+            data-testid="vocab-usage-census"
+            title={`واژه‌های این درس که در متنِ مکالمه‌ها و ریدینگ‌های جزوه آمده‌اند: ${faNum(vocabCensus.usedWords)} از ${faNum(vocabCensus.totalWords)}`}
+            className="inline-flex items-center gap-1 rounded-full border border-sky-200 bg-sky-50/60 px-2.5 py-1 text-[11px] font-black text-sky-700"
+          >
+            <BookOpenText size={11} aria-hidden />
+            {faNum(vocabCensus.usedWords)} از {faNum(vocabCensus.totalWords)} واژه در جزوه
+          </span>
+        )}
         <span className="mr-auto hidden text-[11px] text-stone-500 sm:block">
           روی هر واژه کلیک کنید تا «بلدم» علامت بخورد
         </span>

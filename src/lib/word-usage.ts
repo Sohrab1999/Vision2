@@ -189,6 +189,31 @@ export function wordFamilyUsageCensus(
   };
 }
 
+// ------------------------------------------------------------------
+// راند ۲۵۷ — سرشماریِ واژگانِ یک درس (بندِ ② پیشنهادِ ۲۵۴): «چند واژه از
+// واژگانِ این درس در متنِ مکالمه‌ها/ریدینگ‌هایِ جزوه زندگی می‌کنند؟»
+// مقیاسِ شمارش = کارت (هم‌مقیاسِ لنزِ «کاربرددار» دیکشنریِ r253 —
+// هم‌نام‌ها کارت‌هایِ جدا می‌شمارند)؛ جمعِ همهٔ درس‌ها = ۱۹۱۵/۴۰۳۲
+// دقیقاً همان عددِ لنزِ دیکشنری — با پیش‌شمارشِ ترمینالِ r257 قفل است.
+// ------------------------------------------------------------------
+
+export interface LessonVocabUsageCensus {
+  /** کلِ واژه‌هایِ درس */
+  totalWords: number;
+  /** واژه‌هایی که دست‌کم یک جای واقعی در متنِ جزوه دارند */
+  usedWords: number;
+}
+
+export function lessonVocabUsageCensus(
+  vocabulary: readonly { en: string }[],
+): LessonVocabUsageCensus {
+  let usedWords = 0;
+  for (const w of vocabulary) {
+    if (findWordUsages(w.en).length > 0) usedWords++;
+  }
+  return { totalWords: vocabulary.length, usedWords };
+}
+
 /** قطعه‌بندیِ متن برایِ هایلایت — قطعه‌هایِ hit با mark رندر می‌شوند */
 export interface UsageHighlightPart {
   text: string;
