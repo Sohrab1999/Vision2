@@ -337,7 +337,14 @@ export default function QuizResult({
                   <>
                     پاسخ شما:{" "}
                     <span className={`${faOptions?.(qq) ? "" : "en-text "}font-bold`} dir={faOptions?.(qq) ? "rtl" : "ltr"}>
-                      {my !== undefined && my >= 0 ? `${letters[my]}) ${qq.options[my]}` : "—"}
+                      {/* r403 — -1 = پاسخ تایپیِ نادرستِ بی‌گزینه (lib/typed-answer.ts):
+                          دیگر «—»ِ گمراه‌کننده چاپ نمی‌شود؛ وقتی متنِ خام در typedTexts
+                          نیست (سشنِ بازیابی‌شده) برچسبِ صادق می‌آید */}
+                      {my !== undefined && my >= 0
+                        ? `${letters[my]}) ${qq.options[my]}`
+                        : my === -1
+                          ? "پاسخ تایپیِ نادرست"
+                          : "—"}
                     </span>
                   </>
                 )}

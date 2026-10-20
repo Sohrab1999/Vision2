@@ -35,21 +35,23 @@ vi.mock("z-ai-web-dev-sdk", () => ({
   },
 }));
 
-// hermetic question world — the real banks stay out of the test
-vi.mock("@/lib/explain-source", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@/lib/explain-source")>();
-  const world = new Map(
-    [
-      { id: "l1:q1", category: "vocab", question: "She ___ to school every day.", options: ["go", "goes", "going", "gone"], answer: 1 },
-      { id: "l1:q2", category: "grammar", question: "They ___ football now.", options: ["play", "plays", "are playing", "played"], answer: 2 },
-      { id: "l2:q1", category: "vocab-konkuri", question: "The opposite of «arrive» is ___.", options: ["leave", "stay", "come", "wait"], answer: 0 },
-    ].map((q) => [q.id, q])
-  );
-  return {
-    ...actual,
-    findQuestion: (id: string) => world.get(id),
-  };
+// hermetic question world — the real banks stay out of the test.
+// r403 — the route now reads the WIDE index (teacher-bank.server), so the
+// world is pinned into BOTH modules: explain-source.findQuestion (client-safe
+// slice) and teacher-bank.server.findQuestionAny (the route's lookup).
+const world = vi.hoisted(() => {
+  const w = new Map();
+  for (const q of [
+    { id: "l1:q1", category: "vocab", question: "She ___ to school every day.", options: ["go", "goes", "going", "gone"], answer: 1 },
+    { id: "l1:q2", category: "grammar", question: "They ___ football now.", options: ["play", "plays", "are playing", "played"], answer: 2 },
+    { id: "l2:q1", category: "vocab-konkuri", question: "The opposite of «arrive» is ___.", options: ["leave", "stay", "come", "wait"], answer: 0 },
+  ]) w.set(q.id, q);
+  return w;
 });
+
+vi.mock("@/lib/teacher-bank.server", () => ({
+  findQuestionAny: (id: string) => world.get(id),
+}));
 
 import { db } from "@/lib/db";
 import { POST } from "@/app/api/exam-review/route";

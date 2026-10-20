@@ -30,7 +30,8 @@ export interface TeacherQuestionLike {
   answer: number;
 }
 
-/** client-sent pair: question id + chosen index (null = unanswered) */
+/** client-sent pair: question id + chosen index
+ *  (null = unanswered, -1 = typed wrong with no option match — r403) */
 export interface TeacherAnswer {
   id: string;
   ans: number | null;
@@ -47,8 +48,11 @@ export interface TeacherReview {
 export interface WrongDetail {
   /** question text, truncated to WRONG_TEXT_LIMIT */
   text: string;
-  /** the option the learner picked (null = left unanswered) */
+  /** the option the learner picked (null = left unanswered OR typed-wrong) */
   chosen: string | null;
+  /** r403 — the learner TYPED a wrong answer that matched no option
+   *  (machine sentinel -1); answered + wrong, never «بی‌پاسخ» */
+  typedWrong: boolean;
   /** the correct option text */
   correct: string;
   /** raw category key (route maps it to Persian via categoryFa) */
@@ -106,8 +110,13 @@ export function reviewFingerprint(items: TeacherAnswer[]): string {
     .join("|");
 }
 
-/** out-of-range or non-integer answers degrade to "unanswered", never crash */
+/** out-of-range or non-integer answers degrade to "unanswered", never crash.
+ *  r403 — the typed-wrong sentinel -1 (lib/typed-answer.ts) SURVIVES as its
+ *  own state: the learner did answer (typed something wrong), so the digest
+ *  must count it answered+wrong, not «بی‌پاسخ». Any other negative or an
+ *  index ≥ options.length still degrades to null. */
 export function normalizeAnswer(ans: number | null, q: TeacherQuestionLike): number | null {
+  if (ans === -1) return -1;
   if (ans === null || !Number.isInteger(ans) || ans < 0 || ans >= q.options.length) return null;
   return ans;
 }
@@ -146,7 +155,8 @@ export function buildSessionDigest(
             : q.question;
         wrongDetail.push({
           text,
-          chosen: ans !== null ? (q.options[ans] ?? null) : null,
+          chosen: ans !== null && ans >= 0 ? (q.options[ans] ?? null) : null,
+          typedWrong: ans === -1,
           correct: q.options[q.answer] ?? "",
           category: q.category,
         });

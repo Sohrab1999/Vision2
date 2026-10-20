@@ -3,7 +3,8 @@ import { withApi } from "@/lib/api/handler";
 import { ApiError } from "@/lib/api/errors";
 import { BODY_CAPS, explainSchema } from "@/lib/api/validate";
 import { rateLimit } from "@/lib/rate-limit";
-import { findQuestion, categoryFa } from "@/lib/explain-source";
+import { buildExplainPrompt } from "@/lib/explain-source";
+import { findQuestionAny } from "@/lib/teacher-bank.server";
 import { trackEventServer } from "@/lib/analytics-server";
 
 // ------------------------------------------------------------------
@@ -88,7 +89,8 @@ export const POST = withApi(
     const id = parsed.id;
 
     // 1) resolve the question server-side — unknown ids are rejected
-    const q = findQuestion(id);
+    //    (r403 — بانکِ گسترده: درس‌ها + کتابخانهٔ جزوه، ۷٬۰۳۴ سؤال)
+    const q = findQuestionAny(id);
     if (!q) {
       throw ApiError.notFound("سؤالی با این شناسه در بانک وب‌کتاب نیست.");
     }
@@ -109,13 +111,10 @@ export const POST = withApi(
     if (!verdict.ok) return verdict.response!;
 
     const correct = q.options[q.answer] ?? "";
-    const prompt =
-      `یک دانش‌آموز در سؤال چهارگزینه‌ای زیر پاسخ اشتباه داده و می‌خواهد بداند چرا گزینهٔ درست، درست است.\n\n` +
-      `مهارت سؤال: ${categoryFa(q)}\n` +
-      `متن سؤال: ${q.question}\n` +
-      `گزینه‌ها:\n${q.options.map((o, i) => `${"abcd"[i]}) ${o}${i === q.answer ? "  ← کلید درست" : ""}`).join("\n")}\n` +
-      `کلید: گزینهٔ ${"abcd"[q.answer]}) ${correct}\n\n` +
-      `طبق قواعد سیستم توضیح بده که چرا فقط همین گزینه با جمله سازگار است (و نکتهٔ اصلی تفاوتش با گزینه‌های نزدیک چیست).`;
+    // r403 — پرامپت به lib/explain-source کوچید (pure + تست‌پذیر)؛ حروفِ
+    // گزینه پویاست (بانک‌های جزوه تا ۹ گزینه) و سؤالِ تایپی صادقانه
+    // معرفی می‌شود — نسخهٔ قبلی «abcd» و «چهارگزینه‌ای» هاردکد بود.
+    const prompt = buildExplainPrompt(q);
 
     const raw = await askModel(prompt);
     const explanation = raw ? sanitize(raw) : fallbackText(correct);

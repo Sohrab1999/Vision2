@@ -3,7 +3,8 @@ import { withApi } from "@/lib/api/handler";
 import { ApiError } from "@/lib/api/errors";
 import { BODY_CAPS, reviewSchema } from "@/lib/api/validate";
 import { rateLimit } from "@/lib/rate-limit";
-import { findQuestion, categoryFa } from "@/lib/explain-source";
+import { categoryFa } from "@/lib/explain-source";
+import { findQuestionAny } from "@/lib/teacher-bank.server";
 import {
   buildSessionDigest,
   reviewFingerprint,
@@ -85,9 +86,10 @@ export const POST = withApi(
     // 1) resolve EVERY id server-side — all-or-nothing keeps the teacher's
     //    verdict identical to the session the learner actually saw
     const items: TeacherAnswer[] = parsed.ids.map((id, i) => ({ id, ans: parsed.answers[i] ?? null }));
-    const resolved: { q: Exclude<ReturnType<typeof findQuestion>, undefined>; ans: number | null }[] = [];
+    const resolved: { q: Exclude<ReturnType<typeof findQuestionAny>, undefined>; ans: number | null }[] = [];
     for (const it of items) {
-      const q = findQuestion(it.id);
+      // r403 — بانکِ گسترده (۷٬۰۳۴): سشنِ جزوه‌ای هم داوری می‌شود
+      const q = findQuestionAny(it.id);
       if (!q) {
         throw ApiError.bad(
           "این جلسه سؤال‌هایی بیرون از بانکِ وب‌کتاب دارد؛ معلمِ کارنامه فقط جلسه‌های بانکِ خودِ کتاب را داوری می‌کند."
@@ -127,7 +129,11 @@ export const POST = withApi(
     const wrongLines = digest.wrongDetail
       .map(
         (w) =>
-          `- [${catLabel(w.category)}] ${w.text} | پاسخِ او: ${w.chosen ?? "بی‌پاسخ"} | درست: ${w.correct}`
+          `- [${catLabel(w.category)}] ${w.text} | پاسخِ او: ${
+            w.typedWrong
+              ? "تایپ‌شده اما نادرست"
+              : (w.chosen ?? "بی‌پاسخ")
+          } | درست: ${w.correct}`
       )
       .join("\n");
     const promptParts = [

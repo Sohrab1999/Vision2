@@ -48,7 +48,11 @@ describe("normalizeAnswer", () => {
     expect(normalizeAnswer(2, four)).toBe(2);
     expect(normalizeAnswer(null, four)).toBeNull();
     expect(normalizeAnswer(9, four)).toBeNull(); // out of range
-    expect(normalizeAnswer(-1, four)).toBeNull();
+    // r403 WIDENED — -1 is the typed-wrong sentinel (lib/typed-answer.ts):
+    // the learner DID answer, so it survives as its own state instead of
+    // being read as «بی‌پاسخ»; other negatives still degrade to null
+    expect(normalizeAnswer(-1, four)).toBe(-1);
+    expect(normalizeAnswer(-2, four)).toBeNull();
     expect(normalizeAnswer(1.5, four)).toBeNull();
   });
 });

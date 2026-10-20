@@ -9,6 +9,7 @@ import { examBank } from "@/data/exam";
 import lesson1 from "@/data/lesson1";
 import lesson2 from "@/data/lesson2";
 import lesson3 from "@/data/lesson3";
+import { faNum } from "./study-theme";
 import type { QuizQuestion } from "./study-types";
 
 let index: Map<string, QuizQuestion> | null = null;
@@ -23,7 +24,12 @@ function buildIndex(): Map<string, QuizQuestion> {
   return map;
 }
 
-/** All 490 bundled questions (lesson quizzes + the 360-item exam bank). */
+/**
+ * Client-safe bundled index (812 = 142+150+160 lessons + 360 exam).
+ * r403 — the WIDED index (bundled + jozve library, ۷٬۰۳۴) lives in
+ * lib/teacher-bank.server.ts: this module is also imported by client
+ * components (review-view / smart-practice), so node:fs must stay out.
+ */
 export function questionIndex(): Map<string, QuizQuestion> {
   if (!index) index = buildIndex();
   return index;
@@ -45,4 +51,37 @@ export function categoryFa(q: QuizQuestion): string {
     default:
       return q.category;
   }
+}
+
+/** r403 — برچسبِ حرفِ گزینه برای پرامپت: بانک‌های جزوه تا ۹ گزینه دارند
+ *  (خانوادهٔ «جای خالی از بانک واژه») و نسخهٔ قبلی «abcd» برای گزینهٔ
+ *  پنجم به بعد «undefined) …» چاپ می‌کرد. */
+export function optionLetter(i: number): string {
+  return "abcdefghi"[i] ?? `#${i + 1}`;
+}
+
+/** r403 — پرامپتِ «چرا غلط شد؟» از روت به اینجا کوچید (pure، تست‌پذیر).
+ *  شمارِ گزینه‌ها و سؤالِ تایپی صادقانه معرفی می‌شوند — نسخهٔ قبلی
+ *  هر سؤالی را «چهارگزینه‌ای» می‌نامید و برای تایپی‌ها بی‌معنا بود. */
+export function buildExplainPrompt(q: QuizQuestion): string {
+  const header =
+    q.kind === "typed"
+      ? "یک دانش‌آموز در سؤالِ تایپیِ (پاسخِ باز) زیر پاسخ اشتباه داده و می‌خواهد بداند چرا پاسخِ مدل، درست است.\n\n"
+      : `یک دانش‌آموز در سؤالِ ${faNum(q.options.length)}گزینه‌ای زیر پاسخ اشتباه داده و می‌خواهد بداند چرا گزینهٔ درست، درست است.\n\n`;
+  const options =
+    q.kind === "typed"
+      ? `پاسخِ مدل (کلید):\n${optionLetter(0)}) ${q.options[0]}\n`
+      : `گزینه‌ها:\n${q.options.map((o, i) => `${optionLetter(i)}) ${o}${i === q.answer ? "  ← کلید درست" : ""}`).join("\n")}\n`;
+  const tail =
+    q.kind === "typed"
+      ? `طبق قواعد سیستم توضیح بده که پاسخِ مدل چه نکتهٔ گرامری یا واژگانی را می‌خواهد و شکلِ درستِ پاسخ چیست.`
+      : `طبق قواعد سیستم توضیح بده که چرا فقط همین گزینه با جمله سازگار است (و نکتهٔ اصلی تفاوتش با گزینه‌های نزدیک چیست).`;
+  return (
+    header +
+    `مهارت سؤال: ${categoryFa(q)}\n` +
+    `متن سؤال: ${q.question}\n` +
+    options +
+    `کلید: ${optionLetter(q.answer)}) ${q.options[q.answer]}\n\n` +
+    tail
+  );
 }
