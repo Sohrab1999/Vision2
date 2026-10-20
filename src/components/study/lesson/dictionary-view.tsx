@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Search, X, BookMarked, BookOpenText, CheckCircle2, CircleDashed, AlarmClock, SearchX, Download, Star, ArrowLeftRight, Shuffle } from "lucide-react";
+import { Search, X, BookMarked, BookOpenText, CheckCircle2, CircleDashed, AlarmClock, SearchX, Download, Star, ArrowLeftRight, Shuffle, BarChart3, ChevronDown, TrendingUp } from "lucide-react";
 import { lessons } from "@/data";
 import { useStudy, wordKey } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -10,7 +10,7 @@ import { downloadAnkiTsv, buildAnkiTsv } from "@/lib/anki-export";
 import { trackEvent } from "@/lib/analytics";
 import { useToast } from "@/hooks/use-toast";
 import { buildSynAntIndex, synAntPairsFor, matchesViaPairs } from "@/lib/syn-ant-lookup";
-import { findWordUsages } from "@/lib/word-usage";
+import { findWordUsages, lessonsVocabUsageRanking } from "@/lib/word-usage";
 import WordUsageDialog, { type WordUsageTarget } from "./word-usage-dialog";
 import { buildPairsDrillQuiz, SYN_QUIZ_CAP } from "@/lib/syn-ant-quiz";
 import type { QuizQuestion } from "@/lib/study-types";
@@ -106,6 +106,32 @@ export default function DictionaryView() {
   // ثبت می‌شود (پنلِ مهارتِ مترادف/متضاد و فیدِ خانه خودکار می‌فهمند)
   const [drillOpen, setDrillOpen] = useState(false);
   const [drill, setDrill] = useState<{ title: string; questions: QuizQuestion[] } | null>(null);
+
+  // راند ۲۵۸ — نوارِ مقایسه‌ایِ ۱۲ درسی (بندِ ③ پیشنهادِ ۲۵۷، باز از ۲۵۴): «کدام
+  // درس بیشترین واژهٔ کاربرددار را دارد؟» — سطرِ هر درس از تک‌منبعِ
+  // lessonsVocabUsageRanking (مقیاسِ کارت — هم‌مقیاسِ همین لنزِ r253؛
+  // جمع = ۱۹۱۵/۴۰۳۲ با پیش‌شمارشِ قفل). داده ایستاست — deterministic بدونِ
+  // mounted-gate (الگویِ vocab-usage-censusِ r257). نامِ دکمه/سطرها هرگز
+  // «کاربرددار» یا «جزوه»ی برهنه ندارد — فضای نامِ a11yِ لنزِ r253 (درسِ r253).
+  const [rankOpen, setRankOpen] = useState(false);
+  const usageRank = useMemo(() => {
+    const rows = lessonsVocabUsageRanking();
+    return {
+      rows,
+      maxUsed: rows.reduce((m, r) => Math.max(m, r.usedWords), 0),
+      sumUsed: rows.reduce((n, r) => n + r.usedWords, 0),
+      sumTotal: rows.reduce((n, r) => n + r.totalWords, 0),
+    };
+  }, []);
+  // کلیکِ سطر = فیلترِ همان درس + لنزِ «کاربرددار» — مطالعهٔ هدفمندِ دو-کلیکی؛
+  // پنل جمع می‌شود تا «N واژه یافت شد» بلافاصله دیده شود. (دادهٔ دموکراتیک —
+  // فقط دو فیلترِ محلیِ view؛ هیچ رکوردِ یادگیری‌ای ساخته نمی‌شود.)
+  const openRankLesson = (lessonId: number) => {
+    setLessonFilter(lessonId);
+    setStateFilter("usage");
+    setRankOpen(false);
+  };
+
   const startDrill = () => {
     const scope = lessonFilter ? lessons.filter((l) => l.id === lessonFilter) : lessons;
     if (scope.length === 0) return;
@@ -288,6 +314,90 @@ export default function DictionaryView() {
               </span>
             </button>
           ))}
+        </div>
+
+        {/* راند ۲۵۸ — نوارِ مقایسه‌ایِ ۱۲ درسی (بندِ ③ پیشنهادِ ۲۵۷): بخشِ
+            خودش را دارد (بیرونِ ردیفِ «وضعیت یادگیری:» — گاردِ r253 آن ردیف
+            را دقیقاً ۶ دکمه می‌خواهد) و نامش هرگز /کاربرددار/ را تصاحب
+            نمی‌کند؛ پرسشِ کاملِ پیشنهاد، تیترِ غیرتعاملیِ داخلِ پنل است. */}
+        <div className="mt-2.5 border-t border-dashed border-stone-200 pt-3">
+          <button
+            type="button"
+            data-testid="usage-rank-toggle"
+            onClick={() => setRankOpen((v) => !v)}
+            aria-expanded={rankOpen}
+            aria-controls="usage-rank-panel"
+            title="مقایسهٔ ۱۲ درس — واژه‌های هر درس که در مکالمه‌ها و ریدینگ‌های جزوه زندگی می‌کنند"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-white px-2.5 py-1.5 text-[12px] font-extrabold text-stone-600 shadow-sm transition-[background-color,color,border-color,box-shadow] hover:bg-stone-100 dark:bg-violet-900/40 dark:text-violet-200 dark:hover:bg-violet-900/70"
+          >
+            <BarChart3 size={13} />
+            مقایسهٔ پوششِ واژگانِ {faNum(lessons.length)} درس
+            <ChevronDown size={13} aria-hidden className={`transition-transform duration-200 ${rankOpen ? "rotate-180" : ""}`} />
+          </button>
+          {rankOpen && (
+            <div
+              id="usage-rank-panel"
+              data-testid="usage-rank-panel"
+              className="mt-2.5 rounded-xl border border-stone-200 bg-stone-50 p-3 dark:border-stone-700 dark:bg-stone-800/60"
+            >
+              {/* h2 — گاردِ outline (J-6): h1→h3 پرشِ ۲ ممنوع؛ سرفصلِ بخشِ مقایسه */}
+              <h2 className="mb-0.5 flex items-center gap-1.5 text-[12.5px] font-extrabold text-stone-800">
+                <BookOpenText size={13} className="text-sky-600" />
+                کدام درس بیشترین واژهٔ کاربرددار را دارد؟
+              </h2>
+              <p className="mb-2 text-[11px] font-bold leading-5 text-stone-500">
+                نوار = سهمِ واژه‌هایِ هر درس که در مکالمه‌ها و ریدینگ‌های جزوه زندگی می‌کنند؛ عدد = کارت‌ها. کلیک روی هر درس: دیدنِ همان واژه‌ها با لنزِ آسمانی.
+              </p>
+              <div className="grid gap-0.5">
+                {usageRank.rows.map((r) => {
+                  const pct = r.totalWords > 0 ? Math.round((r.usedWords / r.totalWords) * 100) : 0;
+                  return (
+                    <button
+                      key={r.lessonId}
+                      type="button"
+                      data-testid={`usage-rank-row-${r.lessonId}`}
+                      onClick={() => openRankLesson(r.lessonId)}
+                      title={`سهمِ درس ${faNum(r.lessonId)}: ${faNum(pct)}٪ — کلیک: واژه‌های همین درس`}
+                      aria-label={`نمایش واژه‌های درس ${faNum(r.lessonId)} — ${r.titleFa} — که در مکالمه‌ها و ریدینگ‌ها آمده‌اند`}
+                      className="flex min-w-0 items-center gap-2 rounded-lg px-2 py-1.5 text-right transition-[background-color,color] hover:bg-white dark:hover:bg-stone-700/50"
+                    >
+                      <span className="shrink-0 rounded-md bg-violet-100 px-1.5 py-0.5 text-[10.5px] font-black text-violet-700">
+                        درس {faNum(r.lessonId)}
+                      </span>
+                      <span className="w-[7.5rem] min-w-0 shrink truncate text-[11.5px] font-bold text-stone-600">
+                        {r.titleFa}
+                      </span>
+                      <span aria-hidden className="h-2 min-w-0 flex-1 overflow-hidden rounded-full bg-stone-200/80">
+                        <span
+                          className="block h-full rounded-full bg-gradient-to-l from-sky-600 to-sky-400"
+                          style={{ width: `${pct}%` }}
+                        />
+                      </span>
+                      <span className="shrink-0 text-[10.5px] font-black text-stone-600">
+                        {faNum(r.usedWords)} از {faNum(r.totalWords)}
+                      </span>
+                      {usageRank.maxUsed > 0 && r.usedWords === usageRank.maxUsed && (
+                        <span
+                          data-testid="usage-rank-max"
+                          className="inline-flex shrink-0 items-center gap-0.5 rounded-full bg-sky-600 px-1.5 py-0.5 text-[9.5px] font-black text-white"
+                        >
+                          <TrendingUp size={9} aria-hidden />
+                          بیشترین
+                        </span>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+              <p
+                data-testid="usage-rank-sum"
+                className="mt-2 border-t border-dashed border-stone-200 pt-2 text-[11px] font-black text-stone-600"
+              >
+                جمعِ {faNum(usageRank.rows.length)} درس: {faNum(usageRank.sumUsed)} از{" "}
+                {faNum(usageRank.sumTotal)} واژه در جزوه
+              </p>
+            </div>
+          )}
         </div>
 
         {/* نوارِ دریلِ جفت‌ها — فقط وقتی لنزِ جفت‌دار فعال است (راند ۲۰۷) */}

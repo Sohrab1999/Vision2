@@ -214,6 +214,34 @@ export function lessonVocabUsageCensus(
   return { totalWords: vocabulary.length, usedWords };
 }
 
+// ------------------------------------------------------------------
+// راند ۲۵۸ — رتبه‌بندیِ ۱۲ درسی (بندِ ③ پیشنهادِ ۲۵۷): «کدام درس بیشترین
+// واژهٔ کاربرددار را دارد؟» — یک سطر برای هر درس، از همان تک‌منبعِ
+// lessonVocabUsageCensus (مقیاسِ کارت — هم‌مقیاسِ لنزِ «کاربرددار»
+// دیکشنریِ r253)؛ جمعِ ردیف‌ها = ۱۹۱۵/۴۰۳۲ — با پیش‌شمارشِ ترمینالِ
+// r257/r258 قفل است. ترتیبِ ردیف‌ها = ترتیبِ درس‌ها (۱→۱۲)؛ «بیشترین»
+// را مصرف‌کننده با max محلی حساب می‌کند (تساوی = همهٔ صدرنشین‌ها).
+// ------------------------------------------------------------------
+
+export interface LessonUsageRankRow {
+  lessonId: number;
+  titleFa: string;
+  totalWords: number;
+  usedWords: number;
+}
+
+export function lessonsVocabUsageRanking(): LessonUsageRankRow[] {
+  return lessons.map((l) => {
+    const c = lessonVocabUsageCensus(l.vocabulary);
+    return {
+      lessonId: l.id,
+      titleFa: l.titleFa,
+      totalWords: c.totalWords,
+      usedWords: c.usedWords,
+    };
+  });
+}
+
 /** قطعه‌بندیِ متن برایِ هایلایت — قطعه‌هایِ hit با mark رندر می‌شوند */
 export interface UsageHighlightPart {
   text: string;

@@ -33,6 +33,11 @@
 // به خانواده‌هایِ بی‌کاربرد محدود می‌شوند («مطالعهٔ هدفمندِ واژه‌هایی که
 // هنوز در متن نیامده‌اند»)؛ چیپِ «N از M خانوادهٔ بی‌کاربرد» و جدولی که
 // همهٔ خانواده‌هایش در متن زندگی می‌کنند ردیفِ خالیِ صادقانهٔ معکوس می‌گیرد.
+// راند ۲۵۸ — بندِ ① پیشنهادِ ۲۵۷: هدرِ هر جدول هم‌سنگِ سرشماریِ آسمانیِ
+// سلولی، سرشماریِ کهرباییِ «بی‌کاربرد» را هم می‌گیرد («N خانوادهٔ این
+// جدول هنوز در متن نیامده» — spanِ اطلاعاتی، نه دکمه؛ هم‌هویتِ کهرباییِ
+// لنزِ معکوسِ r257: amber-50/60/200/800 با ریمپِ تاریکِ kernel — صفرِ
+// قانونِ CSSِ نو). بی‌خانوادهٔ بی‌کاربرد، هیچ (صداقتِ r252 در سطحِ هدر).
 import { useMemo, useState } from "react";
 import type { WordFamilyTable } from "@/data/word-families";
 import { wordFamilyTableId } from "@/data/word-families";
@@ -42,7 +47,7 @@ import {
   wordFamilyUsageCensus,
   type WordUsageSite,
 } from "@/lib/word-usage";
-import { ChevronLeft, ChevronRight, GraduationCap, BookOpenText } from "lucide-react";
+import { ChevronLeft, ChevronRight, GraduationCap, BookOpenText, EyeOff } from "lucide-react";
 import SpeakButton from "../shared/speak-button";
 import WordUsageDialog, { type WordUsageTarget } from "./word-usage-dialog";
 
@@ -155,6 +160,21 @@ export default function WordFamilyTableCard({
           >
             <BookOpenText size={11} aria-hidden />
             {faNum(census.usedCells)} از {faNum(census.totalCells)} سلول در جزوه
+          </span>
+        )}
+        {/* راند ۲۵۸ — سرشماریِ کهرباییِ «بی‌کاربرد» (بندِ ① پیشنهادِ ۲۵۷):
+            هم‌سنگِ سرشماریِ آسمانیِ سلولی، رویِ هدرِ هر جدول — نیمهٔ پنهانِ
+            همان جمله («مکملِ یک شمارنده، خودش یک ویژگی است» — درسِ r257).
+            spanِ اطلاعاتی است نه دکمه — کنشِ مطالعهٔ هدفمند، لنزِ کهرباییِ
+            ضمیمه است (r257)؛ بی‌خانوادهٔ بی‌کاربرد، هیچ (صداقتِ r252). */}
+        {census.totalFamilies - census.usedFamilies > 0 && (
+          <span
+            data-testid="wf-unused-census"
+            title="خانواده‌هایی که هنوز هیچ سلولشان در متنِ مکالمه‌ها و ریدینگ‌های جزوه نیامده — برایِ مطالعهٔ هدفمند"
+            className="inline-flex items-center gap-1 rounded-full border border-amber-200 bg-amber-50/60 px-2.5 py-1 text-[11px] font-black text-amber-800"
+          >
+            <EyeOff size={11} aria-hidden />
+            {faNum(census.totalFamilies - census.usedFamilies)} خانوادهٔ این جدول هنوز در متن نیامده
           </span>
         )}
         <span className="c-track-70 ms-auto rounded-full px-2.5 py-1 text-[11px] font-black text-stone-600">
