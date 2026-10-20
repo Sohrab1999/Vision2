@@ -2,12 +2,14 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { Search, CheckCircle2, Circle, Layers, X, Star, Users, ChevronDown, ExternalLink } from "lucide-react";
+import { Search, CheckCircle2, Circle, Layers, X, Star, Users, ChevronDown, ExternalLink, BookOpenText } from "lucide-react";
 import type { LessonData } from "@/lib/study-types";
 import { useStudy, wordKey } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { posLabel, themeOf, faNum } from "@/lib/study-theme";
 import { buildSynAntIndex, synAntPairsFor } from "@/lib/syn-ant-lookup";
+import { findWordUsages, type WordUsageSite } from "@/lib/word-usage";
+import WordUsageDialog from "./word-usage-dialog";
 import { speak } from "@/lib/speak";
 import { lessons } from "@/data";
 import { WORD_FAMILY_LESSON_LINKS, wordFamilyTableId } from "@/data/word-families";
@@ -32,6 +34,9 @@ export default function VocabTab({
   const starredWords = useStudy((s) => s.starredWords);
   const consumeFlashIntent = useStudy((s) => s.consumeFlashIntent);
   const mounted = useMounted();
+  // راند ۲۵۳ — «کاربرد در جزوه» به تبِ واژگانِ درس هم رسید (بندِ ① پیشنهادِ ۲۵۲):
+  // همان تک‌منبعِ دیکشنری (findWordUsages) با همان دیالوگِ مشترک
+  const [usage, setUsage] = useState<{ en: string; sites: WordUsageSite[] } | null>(null);
 
   // consume the "smart review" navigation intent once (flashcards open via
   // the flashNonce remount-key in LessonView, so no setState is needed here)
@@ -129,6 +134,11 @@ export default function VocabTab({
               role="button"
               tabIndex={0}
               aria-pressed={isKnown}
+              // راند ۲۵۳ — نامِ دسترس‌پذیریِ صریح: تا امروز نامِ کارت دیوارِ
+              // متنِ کلِ محتوایش بود (واژه + جفت‌ها + چیپ‌ها) و با آمدنِ چیپِ
+              // «در جزوه» با دکمهٔ تبِ «جزوه» تصادم گرفت — و برایِ صفحه‌خوان
+              // هم همیشه یک دیوارِ بی‌شکل بود؛ حالا یک کنشِ تمیز اعلام می‌کند.
+              aria-label={isKnown ? `${w.en} — بلدم؛ کلیک: برداشتنِ علامت` : `${w.en} — کلیک: بلدم‌کردن`}
               onClick={() => toggleKnown(wKey)}
               onKeyDown={(e) => {
                 if (e.key === "Enter" || e.key === " ") {
@@ -202,6 +212,31 @@ export default function VocabTab({
                     </div>
                   );
                 })()}
+                {(() => {
+                  // راند ۲۵۳ — چیپِ «در جزوه» رویِ کارتِ واژگانِ درس: این واژه
+                  // کجای مکالمه/ریدینگِ جزوه آمده؟ فقط با تطبیقِ واقعی —
+                  // بی‌کاربرد، هیچ (صداقتِ همیشگیِ r252). stopPropagation:
+                  // کارتِ کلیکِ خودش را دارد (بلدم‌کردن) — همان قراردادِ
+                  // چیپِ جفت و ستاره.
+                  const sites = mounted ? findWordUsages(w.en) : [];
+                  if (sites.length === 0) return null;
+                  return (
+                    <button
+                      type="button"
+                      data-testid={`usage-chip-${w.en.replace(/\s+/g, "-")}`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setUsage({ en: w.en, sites });
+                      }}
+                      title="کاربرد این واژه در مکالمه‌ها و ریدینگ‌های جزوه"
+                      aria-label={`کاربرد ${w.en} در مکالمه‌ها و ریدینگ‌ها — ${faNum(sites.length)} مورد`}
+                      className="inline-flex items-center gap-1 rounded-md border border-sky-200 bg-sky-50/60 px-1.5 py-0.5 text-[10.5px] font-bold text-sky-700 transition-[background-color,color,border-color,transform] active:scale-[0.96]"
+                    >
+                      <BookOpenText size={11} aria-hidden />
+                      در جزوه · {faNum(sites.length)}
+                    </button>
+                  );
+                })()}
               </div>
               {isKnown ? (
                 <CheckCircle2 size={17} className={`shrink-0 ${t.text}`} />
@@ -219,6 +254,9 @@ export default function VocabTab({
       </div>
 
       <LinkedWordFamilies lesson={lesson} />
+
+      {/* راند ۲۵۳ — دیالوگِ مشترکِ «کاربرد در جزوه» (تک‌منبع با دیکشنری و فلش‌کارت) */}
+      <WordUsageDialog target={usage} onClose={() => setUsage(null)} />
     </div>
   );
 }

@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronRight, ChevronLeft, Check, RefreshCw, Hand, Sparkles, Star, Layers } from "lucide-react";
+import { X, ChevronRight, ChevronLeft, Check, RefreshCw, Hand, Sparkles, Star, Layers, BookOpenText } from "lucide-react";
 import type { LessonData, VocabWord } from "@/lib/study-types";
 import { useStudy, wordKey, SRS_LABELS } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -10,6 +10,8 @@ import { isTypingTarget, useKeydown } from "@/hooks/use-keyboard";
 import { trackEvent } from "@/lib/analytics";
 import { posLabel, themeOf, faNum } from "@/lib/study-theme";
 import { buildSynAntIndex, synAntPairsFor } from "@/lib/syn-ant-lookup";
+import { findWordUsages } from "@/lib/word-usage";
+import WordUsageDialog from "./word-usage-dialog";
 import { speak } from "@/lib/speak";
 import { lessons } from "@/data";
 import SpeakButton from "../shared/speak-button";
@@ -47,6 +49,9 @@ export default function Flashcards({
   const reviewWord = useStudy((s) => s.reviewWord);
   const trackReview = useStudy((s) => s.trackReview);
   const mounted = useMounted();
+  // راند ۲۵۳ — «کاربرد در جزوه» رویِ پشتِ فلش‌کارت (بندِ ① پیشنهادِ ۲۵۲):
+  // همان تک‌منبع + همان دیالوگِ مشترکِ دیکشنری/تبِ واژگان
+  const [usage, setUsage] = useState<{ en: string; sites: ReturnType<typeof findWordUsages> } | null>(null);
 
   const t = themeOf(deck?.color ?? lesson.color);
 
@@ -287,6 +292,30 @@ export default function Flashcards({
                 )}
               </div>
             )}
+            {(() => {
+              // راند ۲۵۳ — چیپِ «در جزوه» کنارِ جفت‌ها رویِ پشتِ کارت، در
+              // همان ایدئومِ سفیدِ رویِ گرادیان؛ فقط با تطبیقِ واقعی —
+              // بی‌کاربرد، هیچ. stopPropagation: کلیکِ کارت flip است و
+              // چیپ نباید کارت را برگرداند — دیالوگِ مشترک را باز می‌کند.
+              const sites = mounted ? findWordUsages(word.en) : [];
+              if (sites.length === 0) return null;
+              return (
+                <button
+                  type="button"
+                  data-testid="flash-usage-chip"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setUsage({ en: word.en, sites });
+                  }}
+                  title="کاربرد این واژه در مکالمه‌ها و ریدینگ‌های جزوه"
+                  aria-label={`کاربرد ${word.en} در مکالمه‌ها و ریدینگ‌ها — ${faNum(sites.length)} مورد`}
+                  className="flip-pair-chip inline-flex items-center gap-1 rounded-md border border-white/35 bg-white/15 px-1.5 py-0.5 text-[10.5px] font-bold text-white transition-[background-color,color,border-color,transform] hover:bg-white/25 active:scale-[0.96]"
+                >
+                  <BookOpenText size={11} aria-hidden />
+                  در جزوه · {faNum(sites.length)}
+                </button>
+              );
+            })()}
           </div>
         </div>
       </div>
@@ -357,6 +386,9 @@ export default function Flashcards({
           </motion.p>
         )}
       </AnimatePresence>
+
+      {/* راند ۲۵۳ — دیالوگِ مشترکِ «کاربرد در جزوه» (تک‌منبع با دیکشنری و تبِ واژگان) */}
+      <WordUsageDialog target={usage} onClose={() => setUsage(null)} />
     </div>
   );
 }

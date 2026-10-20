@@ -10,7 +10,8 @@ import { downloadAnkiTsv, buildAnkiTsv } from "@/lib/anki-export";
 import { trackEvent } from "@/lib/analytics";
 import { useToast } from "@/hooks/use-toast";
 import { buildSynAntIndex, synAntPairsFor, matchesViaPairs } from "@/lib/syn-ant-lookup";
-import { findWordUsages, highlightParts, type WordUsageSite } from "@/lib/word-usage";
+import { findWordUsages } from "@/lib/word-usage";
+import WordUsageDialog, { type WordUsageTarget } from "./word-usage-dialog";
 import { buildPairsDrillQuiz, SYN_QUIZ_CAP } from "@/lib/syn-ant-quiz";
 import type { QuizQuestion } from "@/lib/study-types";
 import { speak } from "@/lib/speak";
@@ -18,8 +19,9 @@ import SpeakButton from "../shared/speak-button";
 import QuizEngine from "../quiz/quiz-engine";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
-// state filter values — «paired» (راند ۲۰۵): فقط واژه‌های جفت‌دارِ جزوه
-type StateFilter = "all" | "known" | "unknown" | "due" | "paired";
+// state filter values — «paired» (r205): فقط واژه‌های جفت‌دارِ جزوه؛
+// «usage» (r253): فقط واژه‌های کاربرددار در متنِ مکالمه/ریدینگِ جزوه
+type StateFilter = "all" | "known" | "unknown" | "due" | "paired" | "usage";
 
 export default function DictionaryView() {
   const [query, setQuery] = useState("");
@@ -32,7 +34,8 @@ export default function DictionaryView() {
   const starredWords = useStudy((s) => s.starredWords);
   const setView = useStudy((s) => s.setView);
   // راند ۲۵۲ — «کاربرد در جزوه»: دیالوگِ جایِ واژه در مکالمه‌ها و ریدینگ‌هایِ جزوه
-  const [usage, setUsage] = useState<{ en: string; sites: WordUsageSite[] } | null>(null);
+  // (r253 — خودِ دیالوگ به تک‌منبعِ مشترکِ word-usage-dialog رفت)
+  const [usage, setUsage] = useState<WordUsageTarget | null>(null);
   const mounted = useMounted();
   const { toast } = useToast();
 
@@ -78,6 +81,26 @@ export default function DictionaryView() {
     [allWords, pairedSet]
   );
 
+  // «کاربرددار» (راند ۲۵۳ — بندِ ② پیشنهادِ ۲۵۲): واژه‌هایی که حداقل یک
+  // کاربردِ واقعی در متنِ مکالمه/ریدینگِ جزوه دارند — همان تک‌منبعِ r252
+  // (findWordUsages) که دیالوگِ جای‌ها می‌خواند؛ لنزِ ششمِ دیکشنری با
+  // شمارندهٔ صادقانه، الگویِ چیپِ جفت‌دار (r205). شمارنده «کارت» می‌شمارد
+  // نه واژهٔ یکتا — هم‌نام‌ها دو کارت‌اند و badge باید با «N واژه یافت شد»
+  // یکی بخواند (همان قراردادِ چیپ‌هایِ وضعیت).
+  const usageSet = useMemo(() => {
+    const set = new Set<string>();
+    for (const w of allWords) {
+      const k = w.en.trim().toLowerCase();
+      if (set.has(k)) continue;
+      if (findWordUsages(w.en).length > 0) set.add(k);
+    }
+    return set;
+  }, [allWords]);
+  const usageCount = useMemo(
+    () => allWords.reduce((n, w) => n + (usageSet.has(w.en.trim().toLowerCase()) ? 1 : 0), 0),
+    [allWords, usageSet]
+  );
+
   // «دریلِ جفت‌ها» (راند ۲۰۷) — از لنزِ جفت‌دار مستقیم به آزمونِ استانداردِ خانه:
   // با فیلترِ درس فقط همان درس، بی‌فیلتر همهٔ درس‌ها؛ نتیجه زیرِ «0:synant»
   // ثبت می‌شود (پنلِ مهارتِ مترادف/متضاد و فیدِ خانه خودکار می‌فهمند)
@@ -110,12 +133,13 @@ export default function DictionaryView() {
         if (!it || it.dueAt > now) return false;
       }
       if (stateFilter === "paired" && !pairedSet.has(w.en.trim().toLowerCase())) return false;
+      if (stateFilter === "usage" && !usageSet.has(w.en.trim().toLowerCase())) return false;
       if (!q) return true;
       if (w.en.toLowerCase().includes(q) || w.fa.includes(query.trim())) return true;
       // جستجوی ازراهِجفت: «lend» کارتِ «borrow» را هم می‌آورد (تسک ۲۰۳)
       return matchesViaPairs(pairIndex, w.en, q);
     });
-  }, [allWords, query, lessonFilter, stateFilter, known, srs, pairIndex, pairedSet]);
+  }, [allWords, query, lessonFilter, stateFilter, known, srs, pairIndex, pairedSet, usageSet]);
 
   const stateChips: { id: StateFilter; label: string; icon?: React.ElementType; cls: string; count: number }[] = [
     {
@@ -151,6 +175,13 @@ export default function DictionaryView() {
       icon: ArrowLeftRight,
       cls: "bg-violet-600",
       count: pairedCount,
+    },
+    {
+      id: "usage",
+      label: "کاربرددار",
+      icon: BookOpenText,
+      cls: "bg-sky-600",
+      count: usageCount,
     },
   ];
 
@@ -387,7 +418,7 @@ export default function DictionaryView() {
                       data-testid={`usage-chip-${w.en.replace(/\s+/g, "-")}`}
                       onClick={() => setUsage({ en: w.en, sites })}
                       title="کاربرد این واژه در مکالمه‌ها و ریدینگ‌های جزوه"
-                      aria-label={`کاربرد ${w.en} در جزوه — ${faNum(sites.length)} مورد`}
+                      aria-label={`کاربرد ${w.en} در مکالمه‌ها و ریدینگ‌ها — ${faNum(sites.length)} مورد`}
                       className="inline-flex items-center gap-1 rounded-md border border-sky-200 bg-sky-50/60 px-1.5 py-0.5 text-[10.5px] font-bold text-sky-700 transition-[background-color,color,border-color,transform] active:scale-[0.96]"
                     >
                       <BookOpenText size={11} aria-hidden />
@@ -445,53 +476,10 @@ export default function DictionaryView() {
           )}
         </DialogContent>
       </Dialog>
-      {/* راند ۲۵۲ — دیالوگِ «کاربرد در جزوه»: هر جایِ واقعیِ واژه در
-          مکالمه‌ها/ریدینگ‌هایِ جزوه با هایلایتِ mark و ترجمهٔ فارسیِ خودِ
-          جزوه — حداکثر ۸ مورد، مابقی با شمارندهٔ صادقانه. */}
-      <Dialog open={!!usage} onOpenChange={(o) => !o && setUsage(null)}>
-        <DialogContent className="max-h-[88vh] max-w-xl overflow-y-auto nice-scroll" data-testid="usage-dialog">
-          <DialogHeader className="text-right">
-            <DialogTitle className="flex flex-wrap items-baseline gap-2 text-base">
-              <BookOpenText size={16} className="shrink-0 self-center text-sky-600" aria-hidden />
-              <span dir="ltr" className="en-text">{usage?.en}</span>
-              <span className="text-[12px] font-bold text-stone-500">
-                در جزوه · {usage ? faNum(usage.sites.length) : ""} کاربرد
-              </span>
-            </DialogTitle>
-          </DialogHeader>
-          <ul className="space-y-2">
-            {usage?.sites.slice(0, 8).map((s, i) => (
-              <li
-                key={`${s.lessonId}-${s.kind}-${i}`}
-                data-testid="usage-site"
-                className="c-card rounded-lg border border-stone-200 p-2.5"
-              >
-                <div className="mb-1 flex flex-wrap items-center gap-1.5">
-                  <span className="inline-flex items-center gap-1 rounded-md border border-sky-200 bg-sky-50 px-1.5 py-0.5 text-[10px] font-black text-sky-700">
-                    {s.kind === "conversation" ? "مکالمه" : "ریدینگ"}
-                  </span>
-                  <span className="text-[10.5px] font-bold text-stone-500">{s.titleFa}</span>
-                </div>
-                <p className="en-text text-[12.5px] font-bold leading-5 text-stone-700" dir="ltr">
-                  {highlightParts(s.en, usage.en).map((part, j) =>
-                    part.hit ? (
-                      <mark key={j} className="rounded-sm bg-amber-50 px-0.5 font-extrabold text-amber-800 underline decoration-amber-800/40 underline-offset-2">{part.text}</mark>
-                    ) : (
-                      <span key={j}>{part.text}</span>
-                    )
-                  )}
-                </p>
-                <p className="mt-1 text-[11.5px] font-bold leading-5 text-stone-500">{s.fa}</p>
-              </li>
-            ))}
-          </ul>
-          {usage && usage.sites.length > 8 && (
-            <p className="text-[11px] font-bold text-stone-500" data-testid="usage-more">
-              + {faNum(usage.sites.length - 8)} موردِ دیگر در جزوه
-            </p>
-          )}
-        </DialogContent>
-      </Dialog>
+      {/* راند ۲۵۲ → ۲۵۳ — دیالوگِ «کاربرد در جزوه» حالا تک‌منبعِ مشترک است:
+          هر جایِ واقعیِ واژه در مکالمه‌ها/ریدینگ‌هایِ جزوه با هایلایتِ mark
+          و ترجمهٔ فارسیِ خودِ جزوه — حداکثر ۸ مورد، مابقی شمارندهٔ صادقانه. */}
+      <WordUsageDialog target={usage} onClose={() => setUsage(null)} />
     </div>
   );
 }
