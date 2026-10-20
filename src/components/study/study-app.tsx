@@ -184,7 +184,7 @@ export default function StudyApp() {
     view.type === "lesson"
       ? `lesson-${view.id}`
       : view.type === "book"
-        ? `book-${view.grade}`
+        ? `book-${view.grade}-${view.bank ?? ""}`
         : view.type;
 
   // report modals: open state lives here (eager) so the heavy modal chunks
@@ -247,7 +247,7 @@ export default function StudyApp() {
                 {view.type === "grammar" && <GrammarView />}
                 {view.type === "my-words" && <MyWordsView />}
                 {view.type === "jozve" && <JozveView />}
-                {view.type === "book" && <BookView grade={view.grade} />}
+                {view.type === "book" && <BookView grade={view.grade} initialBank={view.bank} />}
                 {view.type === "search" && <LibrarySearchView initialGrade={view.grade} />}
               </motion.div>
             </AnimatePresence>

@@ -259,9 +259,9 @@ export interface JozveSearchOptions {
 export function searchJozve(
   q: string,
   opts: JozveSearchOptions = {},
-): { total: number; results: JozveSearchResult[] } {
+): { total: number; results: JozveSearchResult[]; phraseDocs: string[] } {
   const terms = searchTerms(q);
-  if (!terms.length) return { total: 0, results: [] };
+  if (!terms.length) return { total: 0, results: [], phraseDocs: [] };
   const phrase = normSearchText(q);
   // r412 — لایهٔ عبارتِ پیوسته: یک بار در هر پرس‌وجو ساخته می‌شود؛
   // هم برایِ مرکزِ قطعه (snippet) و هم برایِ پرچمِ phraseHit
@@ -364,5 +364,15 @@ export function searchJozve(
     return base;
   });
 
-  return { total, results };
+  // r415 — اسنادِ عبارت‌دار در «کلِ تطبیق‌ها» (نه فقط نتایجِ برگشتیِ
+  // کپ‌خورده): منبعِ صداقتِ چیپِ سرگروه در نما — کتابی که حتی یکی از
+  // تطبیق‌هایش عبارتِ پیوسته دارد «عبارتِ کامل در این کتاب» می‌گیرد،
+  // هرچند خودِ آن رکورد در سقفِ ۱۲تاییِ نمایش نیفتاده باشد. ترتیب:
+  // کورپوس (تعیین‌کننده و پایدار برای پیمان‌ها).
+  const phraseDocs: string[] = [];
+  for (const [doc, arr] of byDoc) {
+    if (arr.some((e) => e.phraseHit)) phraseDocs.push(doc);
+  }
+
+  return { total, results, phraseDocs };
 }

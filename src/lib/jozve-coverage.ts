@@ -28,6 +28,9 @@ export interface JozveBookCoverage {
   sessions: number;
   /** بهترین درصدِ ثبت‌شده در آن کتاب — ۰ اگر هیچ */
   bestPercent: number;
+  /** r415 — کوچک‌ترین بانکِ پوشیده‌نشده (۱..total)؛ null اگر همه پوشیده
+   * یا بی‌بانک — مصرف‌کننده: چیپِ «ادامه از بانک M» در کارنامه */
+  nextBank: number | null;
 }
 
 // کلیدِ بانکِ تست: jozve-g10-l5 — و کلیدِ گرامر: jozve-g11-gram-l3 و
@@ -66,8 +69,20 @@ export function jozveCoverage(results: Record<string, QuizResult>): JozveBookCov
 
   return BOOKS.map(({ grade }) => {
     const total = BOOK_BANK_COUNTS[grade] ?? 0;
-    const attempted = attemptedByGrade.get(grade)?.size ?? 0;
+    const set = attemptedByGrade.get(grade);
+    const attempted = set?.size ?? 0;
     const capped = Math.min(attempted, total); // امانتِ داده: سرریز نمایشی نگیر
+    // r415 — اولین بانکِ پوشیده‌نشده در ۱..total (اندیسِ بانک، نه درس؛
+    // کلیدِ `jozve-gN-lM` با همان شمارنده ساخته می‌شود)
+    let nextBank: number | null = null;
+    if (total > 0 && (set?.size ?? 0) < total) {
+      for (let m = 1; m <= total; m++) {
+        if (!set?.has(m)) {
+          nextBank = m;
+          break;
+        }
+      }
+    }
     return {
       grade,
       attempted,
@@ -75,6 +90,7 @@ export function jozveCoverage(results: Record<string, QuizResult>): JozveBookCov
       percent: total > 0 ? Math.round((capped / total) * 100) : 0,
       sessions: sessionsByGrade.get(grade) ?? 0,
       bestPercent: bestByGrade.get(grade) ?? 0,
+      nextBank,
     };
   });
 }

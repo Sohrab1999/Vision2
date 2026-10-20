@@ -85,3 +85,6 @@
    flow co-render in grammar-view; one view family, one file
    (the wave-13 precedent); the biggest single extraction so far */
 @import "../components/study/grammar/grammar-metro.css";
+/* r415: the bank-flash deep-link highlight — beside its owner
+   (books/book-view.tsx); the wave-N one-family-one-file idiom */
+@import "../components/study/books/book-view.css";

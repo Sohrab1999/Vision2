@@ -8,7 +8,7 @@
 // به متنِ کاملِ فصل در کتابخانهٔ جزوه‌ها. داده از استخراجِ موجود
 // public/jozve/*.json می‌آید (src/lib/books.ts مشتق می‌کند).
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -30,6 +30,7 @@ import { mistakeTargetOf } from "@/lib/jozve-bank.client";
 import QuizEngine from "../quiz/quiz-engine";
 import type { QuizQuestion } from "@/lib/study-types";
 import {
+  bankLessonOrdinalByIndex,
   bookMetaByGrade,
   deriveBook,
   isJunkVocabLine,
@@ -162,7 +163,7 @@ function LessonCard({
 
 // ---------------------------------------------------- نمای اصلی کتاب
 
-export default function BookView({ grade }: { grade: number }) {
+export default function BookView({ grade, initialBank }: { grade: number; initialBank?: number }) {
   const meta = bookMetaByGrade(grade);
   const goHome = useStudy((s) => s.goHome);
   const setView = useStudy((s) => s.setView);
@@ -214,8 +215,37 @@ export default function BookView({ grade }: { grade: number }) {
     [book, active],
   );
 
+  // r415 — deep-linkِ «ادامه از بانک M» از کارنامه: پس از آمادهشدنِ کتاب،
+  // یکبارمصرف؛ بانکِ درس‌دار → آکاردئونِ همان درس + تبِ تست‌ها؛ بانکِ
+  // بی‌درس (تشریحی/نهایی‌ها) → بازشدنِ گروهِ «بخش‌های آزمونِ دیگر» +
+  // اسکرول + فلشِ زمردی روی دکمهٔ خودِ بانک. این اثر باید بعد از memoهای
+  // book/activeLesson بنشیند (به هردو وابسته است).
+  const deepLinkUsed = useRef(false);
+  const forceTestsOnce = useRef(false);
+  useEffect(() => {
+    if (deepLinkUsed.current || !book || !tests || initialBank == null) return;
+    deepLinkUsed.current = true;
+    const ord = bankLessonOrdinalByIndex(tests, initialBank);
+    if (ord != null && book.lessons.some((l) => l.ordinal === ord)) {
+      forceTestsOnce.current = true;
+      setActive(ord);
+      return;
+    }
+    // مسیرِ بی‌درس — درخواستِ رندر بعدی؛ دکمه‌ها هنوز mount نشده‌اند
+    requestAnimationFrame(() => {
+      const el = document.getElementById(`bank-${initialBank}`);
+      if (!el) return;
+      el.closest("details")?.setAttribute("open", "");
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+      el.classList.add("bank-flash");
+      setTimeout(() => el.classList.remove("bank-flash"), 2400);
+    });
+  }, [book, tests, initialBank]);
+
   // تبِ آغازینِ هر درس: نخستین تبِ غیرخالی به ترتیبِ واژگان→گرامر→ترجمه→
-  // متن→تست‌ها (درسِ بی‌متن مثل درس ۷/۸ جزوهٔ هفتم مستقیم روی تست‌ها می‌نشیند)
+  // متن→تست‌ها (درسِ بی‌متن مثل درس ۷/۸ جزوهٔ هفتم مستقیم روی تست‌ها می‌نشیند)؛
+  // r415 — deep-linkِ «ادامه از بانک» با forceTestsOnce این پیش‌فرض را
+  // یک‌بارمصرف بازنویسی می‌کند تا یادگیرنده مستقیم روی بانک‌های تست بنشیند
   useEffect(() => {
     if (!activeLesson) return;
     const c = activeLesson.counts;
@@ -225,6 +255,10 @@ export default function BookView({ grade }: { grade: number }) {
     else if (c.translation > 0) setTab("translation");
     else if (c.other > 0) setTab("text");
     else if (bankCount > 0) setTab("tests");
+    if (forceTestsOnce.current) {
+      forceTestsOnce.current = false;
+      if (activeLesson.banks.some((b) => b.count > 0)) setTab("tests");
+    }
   }, [activeLesson]);
 
   const openLesson = useCallback((ordinal: number) => {
@@ -484,6 +518,7 @@ export default function BookView({ grade }: { grade: number }) {
                       return (
                         <button
                           key={b.lesson}
+                          id={`bank-${b.lesson}`}
                           onClick={() => startBank(b)}
                           disabled={busy}
                           className="flex w-full items-center justify-between gap-2 rounded-xl border border-stone-200 bg-white px-3.5 py-2.5 text-right shadow-sm transition hover:border-stone-300 hover:bg-stone-50 active:scale-[0.99] disabled:opacity-60"
@@ -557,6 +592,7 @@ export default function BookView({ grade }: { grade: number }) {
                         return (
                           <button
                             key={b.lesson}
+                            id={`bank-${b.lesson}`}
                             onClick={() => startBank(b)}
                             disabled={busy}
                             className="flex w-full items-center justify-between gap-2 rounded-xl px-3 py-2 text-right transition hover:bg-stone-50 active:scale-[0.99] disabled:opacity-60"

@@ -24,6 +24,7 @@ import {
   Printer,
   FileText,
   ChevronLeft,
+  RotateCcw,
 } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { useStudy, lastNDays } from "@/lib/study-store";
@@ -255,20 +256,28 @@ export default function ReportCard({ open, onClose }: { open: boolean; onClose: 
                   <ul className="report-books space-y-1">
                     {bookCoverage.map((b) => {
                       const meta = bookMetaByGrade(b.grade);
-                      // r414 — ردیفِ کلیک‌پذیر: پرش به همان جزوه در کتابخانه.
-                      // مودال بسته می‌شود و setView (همان الگوی open-duel در
-                      // study-app) نما را به book-view همان پایه می‌برد.
+                      // r414/r415 — ردیفِ کلیک‌پذیر: پرش به همان جزوه در
+                      // کتابخانه. از r415 اگر یادگیرنده در این کتاب شروع
+                      // کرده و بانکی نمانده باشد، مقصد دقیقِ «ادامه از
+                      // بانک M» است (اندیسِ بانک؛ book-view از عنوانِ بانک
+                      // به درسِ میزبان یا بخشِ بی‌درسها می‌رسد).
+                      const canContinue = b.sessions > 0 && b.nextBank != null;
+                      const nextBank = b.nextBank as number | null;
                       const openBook = () => {
                         onClose();
-                        useStudy.getState().setView({ type: "book", grade: b.grade });
+                        useStudy.getState().setView(
+                          canContinue && nextBank != null
+                            ? { type: "book", grade: b.grade, bank: nextBank }
+                            : { type: "book", grade: b.grade },
+                        );
                       };
                       return (
                         <li key={b.grade}>
                           <button
                             type="button"
                             onClick={openBook}
-                            className="group flex w-full items-center gap-2.5 rounded-lg px-1.5 py-1 text-right transition-colors hover:bg-stone-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 active:bg-stone-100"
-                            aria-label={`باز کردن جزوهٔ ${meta?.label ?? b.grade} در کتابخانه — پوشش ${faNum(b.percent)}٪`}
+                            className="group flex w-full flex-wrap items-center gap-x-2.5 gap-y-1 rounded-lg px-1.5 py-1 text-right transition-colors hover:bg-stone-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 active:bg-stone-100"
+                            aria-label={`باز کردن جزوهٔ ${meta?.label ?? b.grade} در کتابخانه — پوشش ${faNum(b.percent)}٪${canContinue && nextBank != null ? ` — ادامه از بانک ${faNum(nextBank)}` : ""}`}
                             title={`${faNum(b.attempted)} بانک از ${faNum(b.total)} — ${faNum(b.sessions)} سشن، بهترین ${faNum(b.bestPercent)}٪`}
                           >
                             <span
@@ -277,7 +286,7 @@ export default function ReportCard({ open, onClose }: { open: boolean; onClose: 
                             />
                             <span className="w-14 shrink-0 text-[11.5px] font-extrabold text-stone-700">جزوهٔ {meta?.label ?? b.grade}</span>
                             <div
-                              className="report-track h-2 flex-1 overflow-hidden rounded-full bg-stone-100"
+                              className="report-track h-2 min-w-0 flex-1 overflow-hidden rounded-full bg-stone-100"
                               role="meter"
                               aria-valuenow={b.percent}
                               aria-valuemin={0}
@@ -300,6 +309,12 @@ export default function ReportCard({ open, onClose }: { open: boolean; onClose: 
                               className="report-chev h-3.5 w-3.5 shrink-0 text-stone-300 opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100"
                               aria-hidden
                             />
+                            {canContinue && nextBank != null && (
+                              <span className="flex w-full items-center gap-1 pl-[1.625rem] text-[9.5px] font-black text-stone-400">
+                                <RotateCcw size={9} className="shrink-0 text-emerald-600/70" aria-hidden />
+                                ادامه از بانک {faNum(nextBank)}
+                              </span>
+                            )}
                           </button>
                         </li>
                       );

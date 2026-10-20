@@ -35,6 +35,8 @@ interface SearchPayload {
   total: number;
   took: number;
   results: JozveSearchResult[];
+  /** r415 — اسنادِ عبارت‌دار در کلِ تطبیق‌ها (از سرور) — منبعِ چیپِ سرگروه */
+  phraseDocs?: string[];
 }
 
 const SUGGESTIONS = ["حال کامل", "passive", "صفت ملکی", "library", "irregular verbs", "آزمون نهایی"];
@@ -341,7 +343,9 @@ export default function LibrarySearchView({ initialGrade }: { initialGrade?: num
   const phraseRe = useMemo(() => buildPhraseRegex(terms), [terms]);
 
   // گروه‌بندی نتایج بر پایهٔ کتاب/منبع (bookTitle) — جزوه‌ها به رنگِ خودشان،
-  // بانک‌هایِ باندلِ ویژن ۲/کنکور گروه‌هایِ مستقل (r411)
+  // بانک‌هایِ باندلِ ویژن ۲/کنکور گروه‌هایِ مستقل (r411)؛ r415 — هر گروه
+  // اگر حتی یکی از اسنادش در phraseDocsِ سرور باشد «عبارتِ کامل در این
+  // کتاب» می‌گیرد — مستقل از کپِ نمایش، منبعِ صداقتش سرور است
   const grouped = useMemo(() => {
     if (!data?.results.length) return [];
     const order: string[] = [];
@@ -354,7 +358,11 @@ export default function LibrarySearchView({ initialGrade }: { initialGrade?: num
         order.push(r.bookTitle);
       }
     }
-    return order.map((t) => ({ title: t, items: map.get(t)! }));
+    const phraseSet = new Set(data.phraseDocs ?? []);
+    return order.map((t) => {
+      const items = map.get(t)!;
+      return { title: t, items, hasPhrase: items.some((r) => phraseSet.has(r.doc)) };
+    });
   }, [data]);
 
   const hasQuery = debounced.length >= 2;
@@ -559,10 +567,19 @@ export default function LibrarySearchView({ initialGrade }: { initialGrade?: num
                     className={`inline-flex h-1.5 w-1.5 rounded-full bg-gradient-to-b ${spine}`}
                     aria-hidden
                   />
-                  <h3 className="text-[13px] font-black text-stone-700">{g.title}</h3>
-                  <span className="rounded-full bg-stone-100 px-1.5 text-[10px] font-black text-stone-500">
+                  <h3 className="min-w-0 flex-1 truncate text-[13px] font-black text-stone-700">{g.title}</h3>
+                  <span className="shrink-0 rounded-full bg-stone-100 px-1.5 text-[10px] font-black text-stone-500">
                     {faNum(g.items.length)}
                   </span>
+                  {g.hasPhrase && (
+                    <span
+                      className="inline-flex shrink-0 items-center gap-1 rounded-md bg-emerald-50 px-1.5 py-0.5 text-[10px] font-black text-emerald-700 ring-1 ring-emerald-200"
+                      title="دست‌کم یک تطبیقِ این کتاب، عبارتِ شما را پیوسته دارد — حتی اگر در سقفِ نمایش نیفتاده باشد"
+                    >
+                      <Sparkle size={10} aria-hidden />
+                      عبارت کامل در این کتاب
+                    </span>
+                  )}
                 </div>
                 <div className="space-y-2">
                   {g.items.map((r, i) =>

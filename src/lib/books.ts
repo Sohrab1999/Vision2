@@ -208,6 +208,22 @@ export const bankLessonOrdinal = (title: string): number | null => {
   return ORDINAL_WORDS[m[1]] ?? faDigitToNum(m[1]);
 };
 
+/**
+ * r415 — اندیسِ بانک (فیلدِ `lesson` در tests-gN.json — شمارندهٔ ۱..N
+ * که کلیدِ نتیجه `jozve-gN-lM` از آن می‌آید) → ordinalِ درسِ مشتق‌شده
+ * از «عنوانِ» بانک. این دو یکی نیستند: بانک ۳ِ هفتم «امتحانی درس دوم»
+ * است (lesson=۳، ordinal=۲) و بیشترِ بانک‌های دهم اصلاً بی‌درس‌اند
+ * (تشریحی/نهایی‌ها) → null. مصرف‌کننده: deep-linkِ «ادامه از بانک M»
+ * در کارنامه — پرش به درسِ میزبانِ همان بانک.
+ */
+export const bankLessonOrdinalByIndex = (
+  tests: { lessons: { lesson: number; title: string }[] } | null,
+  bank: number,
+): number | null => {
+  const les = tests?.lessons.find((l) => l.lesson === bank);
+  return les ? bankLessonOrdinal(les.title) : null;
+};
+
 /** برچسب فارسیِ ترتیب: 1 → «درس اول» */
 export const lessonOrdinalLabel = (n: number): string => {
   const words = ["", "اول", "دوم", "سوم", "چهارم", "پنجم", "ششم", "هفتم", "هشتم"];
