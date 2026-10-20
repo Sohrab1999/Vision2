@@ -300,8 +300,22 @@ export function searchJozve(
     arr.sort((a, b) => b.score - a.score || Number(b.phraseHit) - Number(a.phraseHit));
   }
 
-  // نوبت‌کشیِ میانِ اسناد تا کپِ هر سند
-  const docs = [...byDoc.keys()];
+  // r414 — رتبه‌بندیِ سراسریِ گروه‌ها پیش از نوبت‌کشی: تاکنون اسناد به
+  // ترتیبِ کورپوس می‌آمدند و یک گروهِ بی‌عبارتِ کم‌امتیاز می‌توانست پیشِ
+  // گروهِ عبارت‌دار بنشیند (QAِ «حال کامل»: tests-g12 با سرِ ۴ جلوتر از
+  // lesson-2 با سرِ ۱۱). کلیدِ رتبه = (سرِ سند عبارتِ پیوسته دارد؟،
+  // بهترینِ امتیازِ سند) — همان روحِ tie-breakِ درون‌سندیِ r413، این بار
+  // میانِ کتاب‌ها؛ تساویِ کامل → ترتیبِ کورپوس (sortِ پایدار). «سرِ سند»
+  // همیشه در دورِ اولِ نوبت‌کشی به نتایج می‌رسد، پس کلیدِ رتبه مستقل از
+  // کپِ هر سند قابلِ بازسازی است — پیمانِ r414 دقیقاً همین را قفل می‌کند.
+  const docs = [...byDoc.entries()]
+    .map(([doc, arr]) => ({ doc, head: arr[0] }))
+    .sort(
+      (a, b) =>
+        Number(b.head.phraseHit) - Number(a.head.phraseHit) || b.head.score - a.head.score,
+    )
+    .map((e) => e.doc);
+
   const perDoc = new Map<string, number>();
   const picked: { rec: SearchRecord; score: number; phraseHit: boolean }[] = [];
   for (let round = 0; picked.length < limit && round < PER_DOC_CAP; round++) {

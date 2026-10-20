@@ -56,3 +56,16 @@
    it lives). */
 .dark .report-print-btn { background-color: #1c1917; border-color: rgb(4 120 87 / 0.6); color: #6ee7b7; }
 .dark .report-print-btn:hover { background-color: rgb(6 44 34 / 0.6); }
+
+/* ---------------- clickable coverage rows (r414) ----------------
+   ردیف‌های «پوشش شش جزوه» اکنون دکمه‌اند: پرش به همان جزوه در کتابخانه.
+   Light mode via tailwind (hover:bg-stone-50 / active:bg-stone-100) on the
+   button itself; these dark painters follow the house idiom (manual .dark
+   painters in this file — tailwind dark: variants are not used in reports/
+   tsx). Specificity (0,3,1) wins over the tailwind hover utility (0,2,0),
+   same byte-order guarantee as every painter above. The chevron retunes
+   from stone-300 (light) to stone-600-grade ink so it stays quiet on the
+   dark paper until hover reveals it. */
+.dark .report-books button:hover { background-color: rgb(41 37 36 / 0.55); }
+.dark .report-books button:active { background-color: rgb(41 37 36 / 0.75); }
+.dark .report-books button .report-chev { color: #57534e; }

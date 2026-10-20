@@ -23,6 +23,7 @@ import {
   Trophy,
   Printer,
   FileText,
+  ChevronLeft,
 } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { useStudy, lastNDays } from "@/lib/study-store";
@@ -251,37 +252,55 @@ export default function ReportCard({ open, onClose }: { open: boolean; onClose: 
                     هنوز از کتاب‌ها تست نزدی — با اولین تستِ هر جزوه، نوارِ همان کتاب اینجا پر می‌شود
                   </div>
                 ) : (
-                  <ul className="report-books space-y-2">
+                  <ul className="report-books space-y-1">
                     {bookCoverage.map((b) => {
                       const meta = bookMetaByGrade(b.grade);
+                      // r414 — ردیفِ کلیک‌پذیر: پرش به همان جزوه در کتابخانه.
+                      // مودال بسته می‌شود و setView (همان الگوی open-duel در
+                      // study-app) نما را به book-view همان پایه می‌برد.
+                      const openBook = () => {
+                        onClose();
+                        useStudy.getState().setView({ type: "book", grade: b.grade });
+                      };
                       return (
-                        <li key={b.grade} className="flex items-center gap-2.5">
-                          <span
-                            className={`inline-flex h-1.5 w-4 shrink-0 rounded-full bg-gradient-to-b ${meta?.spine ?? "from-stone-400 to-stone-600"}`}
-                            aria-hidden
-                          />
-                          <span className="w-14 shrink-0 text-[11.5px] font-extrabold text-stone-700">جزوهٔ {meta?.label ?? b.grade}</span>
-                          <div
-                            className="report-track h-2 flex-1 overflow-hidden rounded-full bg-stone-100"
-                            role="meter"
-                            aria-valuenow={b.percent}
-                            aria-valuemin={0}
-                            aria-valuemax={100}
-                            aria-label={`پوشش جزوهٔ ${meta?.label ?? b.grade}`}
-                          >
-                            <motion.div
-                              className={`h-full rounded-full bg-gradient-to-l ${meta?.spine ?? "from-stone-400 to-stone-600"}`}
-                              initial={{ width: 0 }}
-                              animate={{ width: `${Math.max(b.percent > 0 ? 3 : 0, b.percent)}%` }}
-                              transition={{ duration: 0.6, ease: "easeOut", delay: b.grade * 0.04 }}
-                            />
-                          </div>
-                          <span
-                            className={`w-9 shrink-0 text-left text-[11px] font-black ${b.percent > 0 ? (meta?.accent ?? "text-stone-700") : "text-stone-300"}`}
+                        <li key={b.grade}>
+                          <button
+                            type="button"
+                            onClick={openBook}
+                            className="group flex w-full items-center gap-2.5 rounded-lg px-1.5 py-1 text-right transition-colors hover:bg-stone-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600 active:bg-stone-100"
+                            aria-label={`باز کردن جزوهٔ ${meta?.label ?? b.grade} در کتابخانه — پوشش ${faNum(b.percent)}٪`}
                             title={`${faNum(b.attempted)} بانک از ${faNum(b.total)} — ${faNum(b.sessions)} سشن، بهترین ${faNum(b.bestPercent)}٪`}
                           >
-                            {faNum(b.percent)}٪
-                          </span>
+                            <span
+                              className={`inline-flex h-1.5 w-4 shrink-0 rounded-full bg-gradient-to-b ${meta?.spine ?? "from-stone-400 to-stone-600"}`}
+                              aria-hidden
+                            />
+                            <span className="w-14 shrink-0 text-[11.5px] font-extrabold text-stone-700">جزوهٔ {meta?.label ?? b.grade}</span>
+                            <div
+                              className="report-track h-2 flex-1 overflow-hidden rounded-full bg-stone-100"
+                              role="meter"
+                              aria-valuenow={b.percent}
+                              aria-valuemin={0}
+                              aria-valuemax={100}
+                              aria-label={`پوشش جزوهٔ ${meta?.label ?? b.grade}`}
+                            >
+                              <motion.div
+                                className={`h-full rounded-full bg-gradient-to-l ${meta?.spine ?? "from-stone-400 to-stone-600"}`}
+                                initial={{ width: 0 }}
+                                animate={{ width: `${Math.max(b.percent > 0 ? 3 : 0, b.percent)}%` }}
+                                transition={{ duration: 0.6, ease: "easeOut", delay: b.grade * 0.04 }}
+                              />
+                            </div>
+                            <span
+                              className={`w-9 shrink-0 text-left text-[11px] font-black ${b.percent > 0 ? (meta?.accent ?? "text-stone-700") : "text-stone-300"}`}
+                            >
+                              {faNum(b.percent)}٪
+                            </span>
+                            <ChevronLeft
+                              className="report-chev h-3.5 w-3.5 shrink-0 text-stone-300 opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100"
+                              aria-hidden
+                            />
+                          </button>
                         </li>
                       );
                     })}
