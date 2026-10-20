@@ -255,7 +255,7 @@ export default function DangerWords() {
 
       {/* targeted flashcards dialog */}
       <Dialog open={flashOpen} onOpenChange={setFlashOpen}>
-        <DialogContent className="max-h-[92vh] max-w-2xl overflow-y-auto nice-scroll">
+        <DialogContent aria-describedby={undefined} className="max-h-[92vh] max-w-2xl overflow-y-auto nice-scroll">
           <DialogHeader className="text-right">
             <DialogTitle className="flex items-center gap-2 text-base">
               <Sparkles size={16} className="text-violet-600" />
@@ -285,7 +285,7 @@ export default function DangerWords() {
 
       {/* targeted dictation dialog — spell the ranked mistakes by ear */}
       <Dialog open={dictOpen} onOpenChange={setDictOpen}>
-        <DialogContent className="max-h-[92vh] max-w-2xl overflow-y-auto nice-scroll">
+        <DialogContent aria-describedby={undefined} className="max-h-[92vh] max-w-2xl overflow-y-auto nice-scroll">
           <DialogHeader className="text-right">
             <DialogTitle className="flex items-center gap-2 text-base">
               <Ear size={16} className="text-rose-600" />
@@ -298,7 +298,7 @@ export default function DangerWords() {
 
       {/* targeted practice dialog */}
       <Dialog open={practiceOpen} onOpenChange={setPracticeOpen}>
-        <DialogContent className="max-h-[92vh] max-w-2xl overflow-y-auto nice-scroll">
+        <DialogContent aria-describedby={undefined} className="max-h-[92vh] max-w-2xl overflow-y-auto nice-scroll">
           <DialogHeader className="text-right">
             <DialogTitle className="flex items-center gap-2 text-base">
               <Zap size={16} className="text-rose-600" />

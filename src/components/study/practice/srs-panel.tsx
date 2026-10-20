@@ -401,7 +401,7 @@ export default function SrsPanel() {
           else closeDueDictation();
         }}
       >
-        <DialogContent className="max-h-[92vh] max-w-2xl overflow-y-auto nice-scroll">
+        <DialogContent aria-describedby={undefined} className="max-h-[92vh] max-w-2xl overflow-y-auto nice-scroll">
           <DialogHeader className="text-right">
             <DialogTitle className="flex items-center gap-2 text-base">
               <Ear size={16} className="text-rose-600" />

@@ -32,7 +32,7 @@ export default function WordUsageDialog({
 }) {
   return (
     <Dialog open={!!target} onOpenChange={(o) => !o && onClose()}>
-      <DialogContent className="max-h-[88vh] max-w-xl overflow-y-auto nice-scroll" data-testid="usage-dialog">
+      <DialogContent aria-describedby={undefined} className="max-h-[88vh] max-w-xl overflow-y-auto nice-scroll" data-testid="usage-dialog">
         <DialogHeader className="text-right">
           <DialogTitle className="flex flex-wrap items-baseline gap-2 text-base">
             <BookOpenText size={16} className="shrink-0 self-center text-sky-600" aria-hidden />

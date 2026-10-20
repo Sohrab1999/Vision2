@@ -328,7 +328,7 @@ export default function ExamView() {
               scope chips swap the source; key={dictScope} remounts the tab so
               a deliberate scope switch never resumes a half-played round */}
           <Dialog open={dictOpen} onOpenChange={setDictOpen}>
-            <DialogContent className="max-h-[92vh] max-w-2xl overflow-y-auto nice-scroll">
+            <DialogContent aria-describedby={undefined} className="max-h-[92vh] max-w-2xl overflow-y-auto nice-scroll">
               <DialogHeader className="text-right">
                 <DialogTitle className="flex items-center gap-2 text-base">
                   <Ear size={16} className="text-emerald-600" />

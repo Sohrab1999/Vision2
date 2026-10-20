@@ -452,7 +452,7 @@ export default function DictionaryView() {
       {/* دریلِ جفت‌ها — آزمونِ استانداردِ خانه روی جفت‌های همان دامنه؛ نتیجه
           زیرِ «0:synant» ثبت می‌شود (فید، پنلِ مهارت و بانکِ اشتباهات می‌فهمند) */}
       <Dialog open={drillOpen} onOpenChange={(o) => (o ? setDrillOpen(true) : closeDrill())}>
-        <DialogContent className="max-h-[92vh] max-w-2xl overflow-y-auto nice-scroll">
+        <DialogContent aria-describedby={undefined} className="max-h-[92vh] max-w-2xl overflow-y-auto nice-scroll">
           <DialogHeader className="text-right">
             <DialogTitle className="flex items-center gap-2 text-base">
               <ArrowLeftRight size={16} className="text-violet-600" />
