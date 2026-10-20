@@ -1,7 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
-import { ChevronLeft, Library, ListTree, Volume2, SpellCheck2, BookA, Table2, BookOpenCheck, Users } from "lucide-react";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { ChevronLeft, Library, ListTree, Volume2, SpellCheck2, BookA, Table2, BookOpenCheck, Users, BookOpenText } from "lucide-react";
 import { irregularVerbs, partsOfSpeech, vowelPhonemes, consonantPhonemes, abbreviations } from "@/data/appendix";
 import {
   WORD_FAMILY_TABLES,
@@ -11,6 +11,7 @@ import {
 } from "@/data/word-families";
 import { useStudy } from "@/lib/study-store";
 import { faNum } from "@/lib/study-theme";
+import { wordFamilyUsageCensus } from "@/lib/word-usage";
 import { writeAppendixResume, type AppendixScope } from "@/lib/bg-reading";
 import BookletGrammarView from "./booklet-grammar-view";
 import IrregularVerbsTable from "./irregular-verbs-table";
@@ -63,6 +64,16 @@ export default function AppendixView({
   // «فهرستِ رندرشده» (فیلترِ فعال) — همان قراردادِ ناوبریِ r227؛ کلیک =
   // اسکرولِ محلی به لنگر + بستنِ پنل، بدونِ چرخشِ استور.
   const [posJumpOpen, setPosJumpOpen] = useState(false);
+  // راند ۲۵۶ — لنزِ «فقط کاربرددارها» (بندِ ② پیشنهادِ ۲۵۵): وقتی روشن است
+  // هر جدول فقط خانواده‌هایی را رندر می‌کند که دست‌کم یک سلولشان در متنِ
+  // مکالمه‌ها/ریدینگ‌های جزوه آمده — همان تک‌منبعِ wordFamilyUsageCensus.
+  const [posUsedOnly, setPosUsedOnly] = useState(false);
+  // سرشماریِ هر جدول — در سطحِ کامپوننت (قانونِ هوک‌ها: هوکِ شرطی ممنوع؛
+  // IIFEِ pos فقط مصرف‌کننده‌اش است)؛ findWordUsages کشِ ماژول دارد.
+  const tableCensus = useMemo(
+    () => new Map(WORD_FAMILY_TABLES.map((t) => [wordFamilyTableId(t), wordFamilyUsageCensus(t.families)])),
+    [],
+  );
   // لنگرِ عمیقِ «درسنامهٔ جامع» (راند ۲۲۱) — یک‌بارِ مصرف: BookletGrammarView
   // پس از نخستین تلاشِ اسکرول (موفق یا شناسهٔ نامعتبر) onFocusDone را صدا
   // می‌زند و لنگر پاک می‌شود؛ جابه‌جاییِ بعدیِ بینِ زیرتاب‌ها دوباره پرش نمی‌کند.
@@ -218,6 +229,12 @@ export default function AppendixView({
         const gradeCounts = { همه: WORD_FAMILY_TOTAL, دهم: 0, یازدهم: 0, دوازدهم: 0 } as Record<string, number>;
         for (const t of WORD_FAMILY_TABLES) gradeCounts[t.grade] += t.families.length;
         const tables = posGrade === "همه" ? WORD_FAMILY_TABLES : WORD_FAMILY_TABLES.filter((t) => t.grade === posGrade);
+        // راند ۲۵۶ — شمارندهٔ لنز هم‌مقیاسِ «N خانواده» است و با فیلترِ پایه
+        // می‌شمارَد (مثلِ قفلِ هم‌مقیاسیِ r253).
+        const scopeUsedFam = tables.reduce(
+          (s, t) => s + (tableCensus.get(wordFamilyTableId(t))?.usedFamilies ?? 0),
+          0,
+        );
         return (
           <div className="space-y-4">
             <div className="grid gap-3 sm:grid-cols-2">
@@ -267,6 +284,28 @@ export default function AppendixView({
                       <span className="ms-1.5 text-[10.5px] font-black opacity-80">{faNum(gradeCounts[g])}</span>
                     </button>
                   ))}
+                </div>
+                {/* راند ۲۵۶ — لنزِ «فقط کاربرددارها»: گروهِ خودش را دارد (هرگز
+                    داخلِ گروهِ فیلترِ پایه — قراردادِ r228)؛ aria-pressed و
+                    شمارندهٔ هم‌مقیاسِ خانواده‌هایِ کاربرددارِ scopeِ فعال؛
+                    آسمانیِ فعال = هویتِ خانوادهٔ «کاربرد در جزوه». */}
+                <div role="group" aria-label="لنز کاربرددار جدول‌های اجزای کلماتی">
+                  <button
+                    type="button"
+                    data-testid="pos-used-only-toggle"
+                    onClick={() => setPosUsedOnly((v) => !v)}
+                    aria-pressed={posUsedOnly}
+                    title="فقط خانواده‌هایی که دست‌کم یک سلولشان در متنِ مکالمه‌ها و ریدینگ‌های جزوه آمده"
+                    className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-2 text-[12px] font-bold transition-[background-color,color,border-color,box-shadow] ${
+                      posUsedOnly
+                        ? "border-sky-200 bg-sky-50 text-sky-700 shadow-sm"
+                        : "border-stone-200 bg-white text-stone-500 hover:border-sky-200 hover:bg-sky-50/60 hover:text-sky-700"
+                    }`}
+                  >
+                    <BookOpenText size={13} aria-hidden />
+                    فقط کاربرددارها
+                    <span className="text-[10.5px] font-black opacity-80">{faNum(scopeUsedFam)}</span>
+                  </button>
                 </div>
                 {/* راند ۲۲۸ — فهرستِ پرشِ جدول‌ها (بیرونِ گروهِ فیلتر — قراردادِ گارد) */}
                 <button
@@ -332,6 +371,7 @@ export default function AppendixView({
                 <WordFamilyTableCard
                   key={`${t.vision}-${t.lesson}`}
                   table={t}
+                  usedOnly={posUsedOnly}
                   relatedLesson={lesson}
                   onOpenLesson={lesson !== undefined ? () => openLessonTab(lesson, "vocab") : undefined}
                   prevTable={

@@ -131,6 +131,64 @@ export function findWordUsages(word: string): WordUsageSite[] {
   return sites;
 }
 
+// ------------------------------------------------------------------
+// راند ۲۵۶ — سرشماریِ «کاربرد در جزوه» برایِ خانواده‌های واژه (بندِ ①
+// پیشنهادِ ۲۵۵): یک پیاده‌سازیِ واحد برایِ هم چیپِ سرشماریِ هدرِ هر جدول
+// و هم لنزِ «فقط کاربرددارها»ی ضمیمه — سلول = خانهٔ انگلیسیِ غیرتهی؛
+// خانواده = کاربرددار اگر دست‌کم یک سلولش در متن زندگی کند.
+// ------------------------------------------------------------------
+
+/** ردیفِ خانواده — ساختاری از WordFamily (خانهٔ خالی = رشتهٔ تهی) */
+export interface WordFamilyUsageRow {
+  noun?: string;
+  verb?: string;
+  adjective?: string;
+  adverb?: string;
+}
+
+export interface WordFamilyUsageCensus {
+  /** کلِ خانواده‌هایِ جدول */
+  totalFamilies: number;
+  /** خانواده‌هایِ کاربرددار — دست‌کم یک سلولشان در متنِ جزوه آمده */
+  usedFamilies: number;
+  /** کلِ سلول‌هایِ انگلیسیِ غیرتهی */
+  totalCells: number;
+  /** سلول‌هایِ کاربرددار */
+  usedCells: number;
+  /** اندیسِ خانواده‌هایِ کاربرددار در آرایهٔ families — برایِ فیلترِ لنز */
+  usedFamilyIdx: number[];
+}
+
+const FAMILY_CELLS = ["noun", "verb", "adjective", "adverb"] as const;
+
+export function wordFamilyUsageCensus(
+  families: readonly WordFamilyUsageRow[],
+): WordFamilyUsageCensus {
+  const usedFamilyIdx: number[] = [];
+  let totalCells = 0;
+  let usedCells = 0;
+  families.forEach((f, fi) => {
+    let famUsed = false;
+    for (const key of FAMILY_CELLS) {
+      const en = f[key];
+      if (!en) continue;
+      totalCells++;
+      if (findWordUsages(en).length > 0) {
+        usedCells++;
+        famUsed = true;
+      }
+    }
+    if (famUsed) usedFamilyIdx.push(fi);
+  });
+  return {
+    totalFamilies: families.length,
+    usedFamilies: usedFamilyIdx.length,
+    totalCells,
+    usedCells,
+    usedFamilyIdx,
+  };
+}
+
 /** قطعه‌بندیِ متن برایِ هایلایت — قطعه‌هایِ hit با mark رندر می‌شوند */
 export interface UsageHighlightPart {
   text: string;

@@ -22,11 +22,21 @@
 // تبِ واژگانِ درس رندر می‌شود، هر دو سطح با یک رندر واردِ خانواده شدند —
 // و aria-label همان قراردادِ r253 را دارد: «مکالمه‌ها و ریدینگ‌ها»، هرگز
 // «جزوه»ی برهنه (کلاسِ تصادمِ کوئریِ تبِ جزوه بسته می‌ماند).
-import { useState } from "react";
+// راند ۲۵۶ — بندِ ①+② پیشنهادِ ۲۵۵: هدرِ هر جدول چیپِ سرشماریِ آسمانی
+// «N از M سلول در جزوه» دارد (داده از تک‌منبعِ wordFamilyUsageCensus؛
+// بی‌کاربرد، هیچ) و propِ usedOnly (لنزِ «فقط کاربرددارها»ی ضمیمه) ردیف‌ها
+// را به خانواده‌هایِ کاربرددار محدود می‌کند — چیپِ «N خانواده» در حالتِ لنز
+// «N از M خانواده» می‌شود و جدولِ بی‌خانوادهٔ کاربرددار ردیفِ خالیِ صادقانه
+// می‌گیرد، نه سکوتِ render.
+import { useMemo, useState } from "react";
 import type { WordFamilyTable } from "@/data/word-families";
 import { wordFamilyTableId } from "@/data/word-families";
 import { faNum } from "@/lib/study-theme";
-import { findWordUsages, type WordUsageSite } from "@/lib/word-usage";
+import {
+  findWordUsages,
+  wordFamilyUsageCensus,
+  type WordUsageSite,
+} from "@/lib/word-usage";
 import { ChevronLeft, ChevronRight, GraduationCap, BookOpenText } from "lucide-react";
 import SpeakButton from "../shared/speak-button";
 import WordUsageDialog, { type WordUsageTarget } from "./word-usage-dialog";
@@ -75,6 +85,7 @@ export default function WordFamilyTableCard({
   table,
   relatedLesson,
   onOpenLesson,
+  usedOnly = false,
   prevTable,
   nextTable,
   onNavigateTable,
@@ -86,6 +97,9 @@ export default function WordFamilyTableCard({
    * در برنامه جای ندارد؛ صفرِ صادقانه). فقط بسترِ ضمیمه پرش می‌کند. */
   relatedLesson?: number;
   onOpenLesson?: () => void;
+  /** راند ۲۵۶ — لنزِ «فقط کاربرددارها» (فقط بسترِ ضمیمه): ردیف‌ها به
+   *  خانواده‌هایِ کاربرددار محدود می‌شوند؛ پیش‌فرضِ خاموش = همهٔ ردیف‌ها. */
+  usedOnly?: boolean;
   /** ناوبریِ پیوسته (r227) — همسایه‌ها از فهرستِ رندرشده (فیلترِ فعال)؛
    * فقط بسترِ ضمیمه؛ برچسب = «<پایه> · <درس>». */
   prevTable?: { id: string; title: string };
@@ -96,6 +110,10 @@ export default function WordFamilyTableCard({
 }) {
   // راند ۲۵۵ — هدفِ دیالوگِ مشترکِ «کاربرد در جزوه» برایِ همین جدول
   const [usage, setUsage] = useState<WordUsageTarget | null>(null);
+  // راند ۲۵۶ — سرشماریِ جدول از تک‌منبعِ lib (همان پیاده‌سازی که لنزِ ضمیمه
+  // می‌خورد)؛ findWordUsages کشِ ماژول دارد — memo فقط از محاسبهٔ دوباره می‌کاهد
+  const census = useMemo(() => wordFamilyUsageCensus(table.families), [table]);
+  const usedIdx = useMemo(() => new Set(census.usedFamilyIdx), [census]);
   return (
     // لنگرِ اسکرولِ عمیق (r224) — scroll-mt برای فاصلهٔ هدرِ چسبان
     <div id={`wf-table-${wordFamilyTableId(table)}`} className="scroll-mt-24 overflow-hidden rounded-2xl border c-card shadow-sm">
@@ -113,8 +131,24 @@ export default function WordFamilyTableCard({
             درسِ مرتبط: درسِ {faNum(relatedLesson)}
           </button>
         )}
+        {/* راند ۲۵۶ — سرشماریِ «کاربرد در جزوه» (بندِ ① پیشنهادِ ۲۵۵):
+            همان ایدئومِ آسمانیِ چیپ‌هایِ r255 (ریمپِ تاریکِ kernel)؛
+            spanِ اطلاعاتی است نه دکمه — کنشِ هر سلول، چیپِ خودِ سلول است؛
+            بی‌کاربرد، هیچ (صداقتِ r252 در سطحِ جدول). */}
+        {census.usedCells > 0 && (
+          <span
+            data-testid="wf-usage-census"
+            title={`سلول‌های این جدول که در متنِ مکالمه‌ها و ریدینگ‌های جزوه آمده‌اند: ${faNum(census.usedCells)} از ${faNum(census.totalCells)}`}
+            className="inline-flex items-center gap-1 rounded-full border border-sky-200 bg-sky-50/60 px-2.5 py-1 text-[11px] font-black text-sky-700"
+          >
+            <BookOpenText size={11} aria-hidden />
+            {faNum(census.usedCells)} از {faNum(census.totalCells)} سلول در جزوه
+          </span>
+        )}
         <span className="c-track-70 ms-auto rounded-full px-2.5 py-1 text-[11px] font-black text-stone-600">
-          {faNum(table.families.length)} خانواده
+          {usedOnly && census.usedFamilies < table.families.length
+            ? `${faNum(census.usedFamilies)} از ${faNum(table.families.length)} خانواده`
+            : `${faNum(table.families.length)} خانواده`}
         </span>
       </div>
       <div className="max-h-[52vh] overflow-auto nice-scroll">
@@ -129,7 +163,15 @@ export default function WordFamilyTableCard({
             </tr>
           </thead>
           <tbody>
-            {table.families.map((f, fi) => (
+            {usedOnly && census.usedFamilies === 0 && (
+              <tr>
+                <td colSpan={5} className="px-3 py-4 text-center text-[12.5px] font-bold text-stone-500">
+                  در این جدول هیچ خانواده‌ای در متنِ مکالمه‌ها و ریدینگ‌های جزوه زندگی نمی‌کند
+                </td>
+              </tr>
+            )}
+            {table.families.map((f, fi) =>
+              usedOnly && !usedIdx.has(fi) ? null : (
               <tr key={`${table.vision}-${table.lesson}-${fi}`} className={fi % 2 === 0 ? "bg-white" : "bg-stone-50"}>
                 <td className="px-3 py-2 text-[12.5px] font-semibold text-stone-700">
                   {f.fa || <span className="font-normal text-stone-300">—</span>}
@@ -151,7 +193,8 @@ export default function WordFamilyTableCard({
                   {f.adverb ? <EnSpeakCell word={f.adverb} onUsage={(en, sites) => setUsage({ en, sites })} /> : <span className="text-stone-300">—</span>}
                 </td>
               </tr>
-            ))}
+              )
+            )}
           </tbody>
         </table>
       </div>
