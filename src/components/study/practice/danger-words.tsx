@@ -6,11 +6,17 @@
 // then closes the loop with two targeted CTAs:
 //   • فلش‌کارت همین‌ها  → Flashcards restricted to the dangerous subset
 //   • تمرین همین‌ها     → generated drill (real bank Qs when possible)
+//   • (r255) چیپِ «در جزوه · N» در ردیفِ هر واژه — ششمین مصرف‌کنندهٔ
+//     دیالوگِ مشترکِ word-usage-dialog (بندِ ① پیشنهادِ ۲۵۴): خطایِ
+//     مکرر رویِ یک واژه حالا یک کلیک تا متنِ واقعیِ جزوه فاصله دارد؛
+//     بی‌کاربرد، هیچ (صداقتِ r252). ردیف کلیکِ خودش را ندارد پس
+//     stopPropagation لازم نیست؛ aria-label همان قراردادِ «مکالمه‌ها
+//     و ریدینگ‌ها» است.
 // ------------------------------------------------------------------
 
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { AlertTriangle, Sparkles, Zap, TrendingDown, Star, Ear } from "lucide-react";
+import { AlertTriangle, BookOpenText, Sparkles, Zap, TrendingDown, Star, Ear } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { dangerWords, buildDangerQuiz, type DangerWord } from "@/lib/word-risk";
@@ -22,9 +28,11 @@ import { buildSynAntIndex, synAntPairsFor } from "@/lib/syn-ant-lookup";
 import { speak } from "@/lib/speak";
 import { trackEvent } from "@/lib/analytics";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { findWordUsages, type WordUsageSite } from "@/lib/word-usage";
 import Flashcards from "../lesson/flashcards";
 import QuizEngine from "../quiz/quiz-engine";
 import DictationTab from "../lesson/dictation-tab";
+import WordUsageDialog from "../lesson/word-usage-dialog";
 
 const lessonFa = lessonNameFa;
 
@@ -42,6 +50,10 @@ export default function DangerWords() {
   const [practiceOpen, setPracticeOpen] = useState(false);
   const [dictOpen, setDictOpen] = useState(false);
   const [flashLesson, setFlashLesson] = useState<number | null>(null);
+
+  // راند ۲۵۵ — ششمین مصرف‌کنندهٔ «کاربرد در جزوه»: ردیفِ خطاها هم یک کلیک
+  // تا متنِ واقعیِ جزوه فاصله دارد (تک‌منبع با پنج مصرف‌کنندهٔ پیشین)
+  const [usage, setUsage] = useState<{ en: string; sites: WordUsageSite[] } | null>(null);
 
   const list = useMemo<DangerWord[]>(
     () => (mounted ? dangerWords(wordMistakes, wordSeen, 10) : []),
@@ -152,6 +164,26 @@ export default function DangerWords() {
                         <span className="hidden rounded-md bg-stone-100 px-1.5 py-0.5 text-[10px] font-bold text-stone-500 sm:inline">
                           {lessonFa(d.lessonId)}
                         </span>
+                        {(() => {
+                          // راند ۲۵۵ — چیپِ «در جزوه» رویِ ردیفِ خطا: واژه‌ای که
+                          // بیشترین غلط را از یادگیرنده گرفته، باید ببیند کجای
+                          // جزوه زندگی می‌کند — بی‌کاربرد، هیچ (صداقتِ r252).
+                          const sites = findWordUsages(d.en);
+                          if (sites.length === 0) return null;
+                          return (
+                            <button
+                              type="button"
+                              data-testid={`danger-usage-chip-${d.en.replace(/\s+/g, "-")}`}
+                              onClick={() => setUsage({ en: d.en, sites })}
+                              title="کاربرد این واژه در مکالمه‌ها و ریدینگ‌های جزوه"
+                              aria-label={`کاربرد ${d.en} در مکالمه‌ها و ریدینگ‌ها — ${faNum(sites.length)} مورد`}
+                              className="inline-flex items-center gap-1 rounded-md border border-sky-200 bg-sky-50/60 px-1.5 py-0.5 text-[10.5px] font-bold text-sky-700 transition-[background-color,color,border-color,transform] active:scale-[0.96]"
+                            >
+                              <BookOpenText size={11} aria-hidden />
+                              در جزوه · {faNum(sites.length)}
+                            </button>
+                          );
+                        })()}
                         {(() => {
                           // چیپ‌های فشردهٔ جفت — حداکثر ۲ تا؛ کلیک همتا را روخوانی می‌کند
                           const pairs = synAntPairsFor(pairIndex, d.en);
@@ -325,6 +357,9 @@ export default function DangerWords() {
           )}
         </DialogContent>
       </Dialog>
+
+      {/* راند ۲۵۵ — دیالوگِ مشترکِ «کاربرد در جزوه» (تک‌منبع) — از ردیفِ خطا */}
+      <WordUsageDialog target={usage} onClose={() => setUsage(null)} />
     </section>
   );
 }

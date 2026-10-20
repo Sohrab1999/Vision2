@@ -14,14 +14,37 @@
 // آکاردئون ندارد و همیشه باز است؛ ناوبری = اسکرولِ محلی به لنگرِ هدف، بدونِ
 // چرخشِ استور). همسایه‌ها از فهرستِ رندرشده (فیلترِ فعال) می‌آیند — برچسبِ
 // همسایه پایه را هم می‌گوید تا مرزِ بین‌پایه‌ای (دهم·چهارم ← یازدهم·اول) روشن بماند.
+// راند ۲۵۵ — پنجمین مصرف‌کنندهٔ «کاربرد در جزوه» (بندِ ① پیشنهادِ ۲۵۴):
+// هر سلولِ انگلیسیِ غیرتهی که در متنِ مکالمه‌ها/ریدینگ‌هایِ جزوه واقعاً آمده
+// باشد چیپِ فشردهٔ آسمانی (آیکن + شمارش — جدولِ پنج‌ستونه متر است، متنِ کامل
+// چیپ در title/aria-label) می‌گیرد و کلیکش دیالوگِ مشترکِ خانواده را باز
+// می‌کند؛ بی‌کاربرد، هیچ (صداقتِ r252). چون این کارت هم در ضمیمه و هم در
+// تبِ واژگانِ درس رندر می‌شود، هر دو سطح با یک رندر واردِ خانواده شدند —
+// و aria-label همان قراردادِ r253 را دارد: «مکالمه‌ها و ریدینگ‌ها»، هرگز
+// «جزوه»ی برهنه (کلاسِ تصادمِ کوئریِ تبِ جزوه بسته می‌ماند).
+import { useState } from "react";
 import type { WordFamilyTable } from "@/data/word-families";
 import { wordFamilyTableId } from "@/data/word-families";
 import { faNum } from "@/lib/study-theme";
-import { ChevronLeft, ChevronRight, GraduationCap } from "lucide-react";
+import { findWordUsages, type WordUsageSite } from "@/lib/word-usage";
+import { ChevronLeft, ChevronRight, GraduationCap, BookOpenText } from "lucide-react";
 import SpeakButton from "../shared/speak-button";
+import WordUsageDialog, { type WordUsageTarget } from "./word-usage-dialog";
 
-/** سلولِ انگلیسیِ غیرتهی: واژه + دکمهٔ تلفظ (راند ۲۲۳ — بندِ ② نقشهٔ ۲۲۲). */
-function EnSpeakCell({ word, bold }: { word: string; bold?: boolean }) {
+/** سلولِ انگلیسیِ غیرتهی: واژه + دکمهٔ تلفظ (راند ۲۲۳ — بندِ ② نقشهٔ ۲۲۲)
+ *  + چیپِ فشردهٔ «کاربرد در جزوه» (راند ۲۵۵) — فقط با تطبیقِ واقعی؛
+ *  در جدولِ متر، آیکن + شمارش کافی است و نامِ کاملِ چیپ در title/aria-label
+ *  با قراردادِ «مکالمه‌ها و ریدینگ‌ها» زندگی می‌کند. */
+function EnSpeakCell({
+  word,
+  bold,
+  onUsage,
+}: {
+  word: string;
+  bold?: boolean;
+  onUsage: (en: string, sites: WordUsageSite[]) => void;
+}) {
+  const sites = findWordUsages(word);
   return (
     <span className="flex items-center gap-1.5">
       <span
@@ -31,6 +54,19 @@ function EnSpeakCell({ word, bold }: { word: string; bold?: boolean }) {
         {word}
       </span>
       <SpeakButton text={word} size="sm" />
+      {sites.length > 0 && (
+        <button
+          type="button"
+          data-testid={`wf-usage-chip-${word.replace(/\s+/g, "-")}`}
+          onClick={() => onUsage(word, sites)}
+          title="کاربرد این واژه در مکالمه‌ها و ریدینگ‌های جزوه"
+          aria-label={`کاربرد ${word} در مکالمه‌ها و ریدینگ‌ها — ${faNum(sites.length)} مورد`}
+          className="inline-flex items-center gap-0.5 rounded-md border border-sky-200 bg-sky-50/60 px-1 py-0.5 text-[10px] font-black text-sky-700 transition-[background-color,color,border-color,transform] active:scale-[0.96]"
+        >
+          <BookOpenText size={10} aria-hidden />
+          {faNum(sites.length)}
+        </button>
+      )}
     </span>
   );
 }
@@ -58,6 +94,8 @@ export default function WordFamilyTableCard({
   tablePosition?: number;
   tableTotal?: number;
 }) {
+  // راند ۲۵۵ — هدفِ دیالوگِ مشترکِ «کاربرد در جزوه» برایِ همین جدول
+  const [usage, setUsage] = useState<WordUsageTarget | null>(null);
   return (
     // لنگرِ اسکرولِ عمیق (r224) — scroll-mt برای فاصلهٔ هدرِ چسبان
     <div id={`wf-table-${wordFamilyTableId(table)}`} className="scroll-mt-24 overflow-hidden rounded-2xl border c-card shadow-sm">
@@ -98,19 +136,19 @@ export default function WordFamilyTableCard({
                 </td>
                 <td className="px-3 py-2">
                   {f.noun ? (
-                    <EnSpeakCell word={f.noun} bold />
+                    <EnSpeakCell word={f.noun} bold onUsage={(en, sites) => setUsage({ en, sites })} />
                   ) : (
                     <span className="text-stone-300">—</span>
                   )}
                 </td>
                 <td className="px-3 py-2">
-                  {f.verb ? <EnSpeakCell word={f.verb} /> : <span className="text-stone-300">—</span>}
+                  {f.verb ? <EnSpeakCell word={f.verb} onUsage={(en, sites) => setUsage({ en, sites })} /> : <span className="text-stone-300">—</span>}
                 </td>
                 <td className="px-3 py-2">
-                  {f.adjective ? <EnSpeakCell word={f.adjective} /> : <span className="text-stone-300">—</span>}
+                  {f.adjective ? <EnSpeakCell word={f.adjective} onUsage={(en, sites) => setUsage({ en, sites })} /> : <span className="text-stone-300">—</span>}
                 </td>
                 <td className="px-3 py-2">
-                  {f.adverb ? <EnSpeakCell word={f.adverb} /> : <span className="text-stone-300">—</span>}
+                  {f.adverb ? <EnSpeakCell word={f.adverb} onUsage={(en, sites) => setUsage({ en, sites })} /> : <span className="text-stone-300">—</span>}
                 </td>
               </tr>
             ))}
@@ -153,6 +191,11 @@ export default function WordFamilyTableCard({
           )}
         </div>
       )}
+
+      {/* راند ۲۵۵ — دیالوگِ مشترکِ «کاربرد در جزوه» (تک‌منبع با چهار
+          مصرف‌کنندهٔ پیشین): هر چیپِ جدول، جایِ واژه در متنِ واقعیِ جزوه
+          را با mark و ترجمهٔ فارسیِ خودِ جزوه نشان می‌دهد. */}
+      <WordUsageDialog target={usage} onClose={() => setUsage(null)} />
     </div>
   );
 }
