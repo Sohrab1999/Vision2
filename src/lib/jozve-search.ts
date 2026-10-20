@@ -120,15 +120,49 @@ export function buildHighlightRegex(terms: string[]): RegExp | null {
 }
 
 /**
+ * r412 — regex عبارتِ پیوسته: همهٔ جملات «به‌ترتیب و پشت‌سرهم» —
+ * بینِ نویسه‌های هر واژه \u200c اختیاری (همان قراردادِ هایلایتِ تکی)
+ * و بینِ واژه‌ها فاصله/نیم‌فاصلهٔ خالص (بدونِ نقطه‌گذاری — «پیوسته»
+ * یعنی هیچ واژهٔ دیگری میان‌شان نباشد). پرس‌وجوی تک‌واژه‌ای یا
+ * واژه‌هایِ بدونِ حرف، null برمی‌گرداند (لایهٔ عبارت معنا ندارد).
+ * مثال: ["حال","کامل"] روی «حالِ کامل» و «حال کامل» و «حالكامل» می‌نشیند.
+ */
+export function buildPhraseRegex(terms: string[]): RegExp | null {
+  if (terms.length < 2) return null;
+  const wordParts: string[] = [];
+  for (const t of terms) {
+    const cls: string[] = [];
+    for (const ch of Array.from(t)) {
+      const c = charClass(ch);
+      if (c) cls.push(c);
+    }
+    if (!cls.length) return null; // واژهٔ بی‌حرف — عبارتِ قابلِ اطمینان نیست
+    wordParts.push(`(?:${cls.join("\u200c?")})`);
+  }
+  return new RegExp(`(?:${wordParts.join("[\\u200c ]+")})`, "gi");
+}
+
+/**
  * قطعهٔ زمینه از متنِ خام: نخستین نشستِ هر جمله ± radius نویسه،
  * با «…» در برش‌ها. بی‌نشست → برشِ سادهٔ ابتدای متن.
+ * r412 — اگر regex عبارتِ پیوسته داده شود، نشستِ عبارت اولویتِ
+ * مرکزِ قطعه را دارد تا «کلِ عبارتِ پرس‌وجو» در زمینه دیده شود.
  */
-export function makeSnippet(text: string, terms: string[], radius = 70): string {
-  const re = buildHighlightRegex(terms);
-  if (!re) return text.length > radius * 2 ? `${text.slice(0, radius * 2)}…` : text;
-  const m = re.exec(text);
-  if (!m || m.index == null) {
-    return text.length > radius * 2 ? `${text.slice(0, radius * 2)}…` : text;
+export function makeSnippet(text: string, terms: string[], radius = 70, phrase?: RegExp | null): string {
+  const fallback = (): string =>
+    text.length > radius * 2 ? `${text.slice(0, radius * 2)}…` : text;
+  let m: RegExpExecArray | null = null;
+  if (phrase) {
+    const pre = new RegExp(phrase.source, "gi"); // نمونهٔ تازه — lastIndexِ مستقل
+    const pm = pre.exec(text);
+    if (pm && pm[0].length > 0) m = pm;
+  }
+  if (!m) {
+    const re = buildHighlightRegex(terms);
+    if (!re) return fallback();
+    const tm = re.exec(text);
+    if (!tm || tm.index == null) return fallback();
+    m = tm;
   }
   const start = Math.max(0, m.index - radius);
   const end = Math.min(text.length, m.index + m[0].length + radius);
@@ -158,6 +192,8 @@ export interface JozveSearchResult {
   text: string;
   snippet: string;
   score: number;
+  /** r412 — کلِ عبارتِ پرس‌وجو به‌صورتِ پیوسته در رکورد نشسته است */
+  phraseHit?: boolean;
   // فقط متنِ جزوه
   chapterId?: string;
   chapterTitle?: string;

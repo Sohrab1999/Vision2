@@ -4,6 +4,7 @@ import { Sparkles, BookMarked, ClipboardCheck, GraduationCap, TrainFront, Swords
 import { TOTAL_VOCABULARY, EXAM_BANK_SIZE } from "@/data/lesson-meta";
 import { useStudy, summarize, srsDueTotal, firstLessonWithDue } from "@/lib/study-store";
 import { hardIdsOf } from "@/lib/konkur";
+import { percent } from "@/lib/domain/percent";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
 
@@ -17,6 +18,8 @@ export default function HomeTools() {
   const srs = useStudy((s) => s.srs);
   const mistakes = useStudy((s) => s.mistakes);
   const konkurWrong = useStudy((s) => s.konkurWrong);
+  // r412 — پوششِ بانکِ آزمون روی کارتِ خانه: چند سؤالِ x- تاکنون دیده شده؟
+  const konkurSeen = useStudy((s) => s.konkurSeen);
   const starredCount = useStudy((s) => s.starredWords.length);
   const mounted = useMounted();
 
@@ -27,6 +30,15 @@ export default function HomeTools() {
     ? Object.values(mistakes).filter((c) => c > 0).length
     : 0;
   const konkurHardCount = mounted ? hardIdsOf(mistakes, konkurWrong).size : 0;
+  // فقط شناسه‌هایِ بانکِ آزمون (x-) — سؤال‌هایِ جزوه/کنکور سطلِ دیگری دارند
+  const konkurSeenCount = mounted
+    ? Object.keys(konkurSeen).filter((id) => id.startsWith("x-")).length
+    : 0;
+  const konkurCoveragePct = percent(konkurSeenCount, EXAM_BANK_SIZE);
+  const konkurFoot =
+    konkurSeenCount > 0
+      ? `پوشش ${faNum(konkurCoveragePct)}٪ · ${faNum(konkurSeenCount)} از ${faNum(EXAM_BANK_SIZE)} دیده‌شده`
+      : undefined;
 
   return (
     <section aria-label="ابزارهای یادگیری">
@@ -40,7 +52,7 @@ export default function HomeTools() {
           { icon: BookMarked, title: "دیکشنری جستجو", desc: `${faNum(TOTAL_VOCABULARY)} واژهٔ سه درس با جستجوی فارسی و انگلیسی`, view: { type: "dictionary" as const }, color: "text-sky-600 bg-sky-50 border-sky-200" },
           { icon: Star, title: "واژه‌های من", desc: "واژه‌نامهٔ شخصی: ستاره‌هایت را مرور کن، تلفظ بشنو و بلدها را علامت بزن", view: { type: "my-words" as const }, color: "text-amber-600 bg-amber-50 border-amber-200", badge: starredCount },
           { icon: ClipboardCheck, title: "آزمون جامع", desc: `${faNum(EXAM_BANK_SIZE)} تست گردآوری از بانک ۳۶۰ تستی جزوه با تایمر`, view: { type: "exam" as const }, color: "text-emerald-600 bg-emerald-50 border-emerald-200" },
-          { icon: GraduationCap, title: "گوشهٔ کنکور", desc: "سامانهٔ پوشش و تسلط بانک ۳۶۰تایی: نقشهٔ پیشرفت، شبیه‌ساز و تست‌های سخت", view: { type: "konkur" as const }, color: "text-orange-600 bg-orange-50 border-orange-200", badge: konkurHardCount },
+          { icon: GraduationCap, title: "گوشهٔ کنکور", desc: "سامانهٔ پوشش و تسلط بانک ۳۶۰تایی: نقشهٔ پیشرفت، شبیه‌ساز و تست‌های سخت", view: { type: "konkur" as const }, color: "text-orange-600 bg-orange-50 border-orange-200", badge: konkurHardCount, foot: konkurFoot },
           { icon: TrainFront, title: "متروی گرامر", desc: "نقشهٔ سفر گرامر کتاب: ۶ خط و ۱۵ ایستگاه واقعی؛ هر قاعده یک ایستگاه با درس، ترفند و آزمونک", onClick: () => setView({ type: "grammar" as const }), color: "text-teal-600 bg-teal-50 border-teal-200" },
           { icon: Swords, title: "نبرد دودنفره", desc: "مصاف زندهٔ واژگانی با یادگیرندهٔ دیگر: ۱۰ سؤال، ۱۵ ثانیه، داوری روی سرور", onClick: () => setView({ type: "duel" as const }), color: "text-fuchsia-600 bg-fuchsia-50 border-fuchsia-200" },
           { icon: Ear, title: "آزمون دیکته", desc: "املای شنیداری با روخوانی هوش مصنوعی و ثبت در SRS", onClick: () => openLessonTab(reviewLesson ?? 1, "dictation"), color: "text-violet-600 bg-violet-50 border-violet-200" },
@@ -69,6 +81,9 @@ export default function HomeTools() {
               <p className="mt-2 text-[12px] font-bold text-emerald-700">
                 {faNum(summary.knownCount)} واژه بلدم · میانگین {faNum(summary.totalPercent)}٪
               </p>
+            )}
+            {"foot" in tool && typeof tool.foot === "string" && (
+              <p className="mt-2 text-[12px] font-bold text-orange-700">{tool.foot}</p>
             )}
           </button>
         ))}

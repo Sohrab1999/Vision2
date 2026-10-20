@@ -21,11 +21,12 @@ import {
   RefreshCw,
   Search,
   SearchX,
+  Sparkle,
 } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { faNum } from "@/lib/study-theme";
 import { BOOKS, bookMetaByGrade } from "@/lib/books";
-import { buildHighlightRegex, searchGroupKind, type JozveSearchResult } from "@/lib/jozve-search";
+import { buildHighlightRegex, buildPhraseRegex, searchGroupKind, type JozveSearchResult } from "@/lib/jozve-search";
 import { LIBSEARCH_Q_KEY, clearStringPrefill, readStringPrefill } from "@/lib/nav-prefill";
 
 type KindFilter = "text" | "question" | null;
@@ -40,25 +41,64 @@ const SUGGESTIONS = ["حال کامل", "passive", "صفت ملکی", "library",
 
 // ---------------------------------------------------------- هایلایت
 
-function Highlight({ text, regex }: { text: string; regex: RegExp | null }) {
+type HitKind = 0 | 1 | 2; // 0 عادی · 1 واژه · 2 عبارتِ پیوسته (r412)
+
+function Highlight({ text, phrase, terms }: { text: string; phrase: RegExp | null; terms: RegExp | null }) {
   const parts = useMemo(() => {
-    if (!regex) return [{ hit: false, s: text }];
-    const out: { hit: boolean; s: string }[] = [];
-    let last = 0;
-    const re = new RegExp(regex.source, "gi"); // نمونهٔ تازه — lastIndexِ مستقل
-    for (let m = re.exec(text); m; m = re.exec(text)) {
-      if (m.index > last) out.push({ hit: false, s: text.slice(last, m.index) });
-      out.push({ hit: true, s: m[0] });
-      last = m.index + m[0].length;
-      if (m[0].length === 0) re.lastIndex += 1; // گاردِ تطبیقِ صفر
+    const out: { hit: HitKind; s: string }[] = [];
+    // عبارت‌هایِ پیوسته یک‌بارِ کلِ متن را می‌پیمایند و بازه‌ها را
+    // اشغال می‌کنند؛ لایهٔ واژه فقط رویِ شکاف‌ها زندگی می‌کند تا
+    // هایلایتِ درونِ عبارت دوباره رنگی نشود.
+    const spans: [number, number][] = [];
+    if (phrase) {
+      const pre = new RegExp(phrase.source, "gi");
+      for (let m = pre.exec(text); m; m = pre.exec(text)) {
+        if (m[0].length === 0) {
+          pre.lastIndex += 1;
+          continue;
+        }
+        spans.push([m.index, m.index + m[0].length]);
+      }
     }
-    if (last < text.length) out.push({ hit: false, s: text.slice(last) });
+    const pushTerms = (slice: string) => {
+      if (!terms) {
+        if (slice) out.push({ hit: 0 as HitKind, s: slice });
+        return;
+      }
+      const re = new RegExp(terms.source, "gi");
+      let last = 0;
+      for (let m = re.exec(slice); m; m = re.exec(slice)) {
+        if (m[0].length === 0) {
+          re.lastIndex += 1;
+          continue;
+        }
+        if (m.index > last) out.push({ hit: 0 as HitKind, s: slice.slice(last, m.index) });
+        out.push({ hit: 1 as HitKind, s: m[0] });
+        last = m.index + m[0].length;
+      }
+      if (last < slice.length) out.push({ hit: 0 as HitKind, s: slice.slice(last) });
+    };
+    let cursor = 0;
+    for (const [a, b] of spans) {
+      if (a > cursor) pushTerms(text.slice(cursor, a));
+      out.push({ hit: 2 as HitKind, s: text.slice(a, b) });
+      cursor = b;
+    }
+    pushTerms(text.slice(cursor));
+    if (!out.length) out.push({ hit: 0 as HitKind, s: text });
     return out;
-  }, [text, regex]);
+  }, [text, phrase, terms]);
   return (
     <>
       {parts.map((p, i) =>
-        p.hit ? (
+        p.hit === 2 ? (
+          <mark
+            key={i}
+            className="rounded-[4px] bg-emerald-300/90 px-1 text-emerald-950 ring-1 ring-emerald-600/50"
+          >
+            {p.s}
+          </mark>
+        ) : p.hit === 1 ? (
           <mark key={i} className="rounded-[3px] bg-amber-200/80 px-0.5 font-black text-stone-900">
             {p.s}
           </mark>
@@ -72,7 +112,7 @@ function Highlight({ text, regex }: { text: string; regex: RegExp | null }) {
 
 // ------------------------------------------------------ کارت نتیجه
 
-function TextResultCard({ r, regex }: { r: JozveSearchResult; regex: RegExp | null }) {
+function TextResultCard({ r, phrase, terms }: { r: JozveSearchResult; phrase: RegExp | null; terms: RegExp | null }) {
   const setView = useStudy((s) => s.setView);
   return (
     <motion.div
@@ -85,12 +125,18 @@ function TextResultCard({ r, regex }: { r: JozveSearchResult; regex: RegExp | nu
           <BookOpen size={10} />
           متن
         </span>
+        {r.phraseHit && (
+          <span className="inline-flex shrink-0 items-center gap-1 rounded-md bg-emerald-50 px-1.5 py-0.5 text-[10px] font-black text-emerald-700 ring-1 ring-emerald-200">
+            <Sparkle size={10} />
+            عبارت کامل
+          </span>
+        )}
         <span className="min-w-0 flex-1 truncate text-[10.5px] font-bold text-stone-400">
           {[r.chapterTitle, r.sectionTitle].filter(Boolean).join(" › ")}
         </span>
       </div>
       <p dir="auto" className="text-[13px] font-bold leading-6 text-stone-800">
-        <Highlight text={r.snippet} regex={regex} />
+        <Highlight text={r.snippet} phrase={phrase} terms={terms} />
       </p>
       {r.chapterId && (
         <div className="mt-2 flex justify-start">
@@ -109,7 +155,7 @@ function TextResultCard({ r, regex }: { r: JozveSearchResult; regex: RegExp | nu
 
 const OPTION_LETTERS = ["a", "b", "c", "d", "e", "f", "g", "h", "i"];
 
-function QuestionResultCard({ r, regex }: { r: JozveSearchResult; regex: RegExp | null }) {
+function QuestionResultCard({ r, phrase, terms }: { r: JozveSearchResult; phrase: RegExp | null; terms: RegExp | null }) {
   const [open, setOpen] = useState(false);
   const safeAnswer =
     typeof r.answer === "number" && r.answer >= 0 && r.answer < (r.options?.length ?? 0) ? r.answer : null;
@@ -124,11 +170,17 @@ function QuestionResultCard({ r, regex }: { r: JozveSearchResult; regex: RegExp 
           <ListChecks size={10} />
           تست
         </span>
+        {r.phraseHit && (
+          <span className="inline-flex shrink-0 items-center gap-1 rounded-md bg-emerald-50 px-1.5 py-0.5 text-[10px] font-black text-emerald-700 ring-1 ring-emerald-200">
+            <Sparkle size={10} />
+            عبارت کامل
+          </span>
+        )}
         <span className="min-w-0 flex-1 truncate text-[10.5px] font-bold text-stone-400">{r.bankTitle}</span>
       </div>
       <button onClick={() => setOpen((v) => !v)} className="block w-full text-right" aria-expanded={open}>
         <p dir="auto" className="text-[13px] font-bold leading-6 text-stone-800">
-          <Highlight text={r.snippet} regex={regex} />
+          <Highlight text={r.snippet} phrase={phrase} terms={terms} />
         </p>
       </button>
       {open && r.options && (
@@ -283,8 +335,10 @@ export default function LibrarySearchView({ initialGrade }: { initialGrade?: num
     [debounced],
   );
 
-  // regex هم با terms همگام است — هویتِ پایدار تا هایلایتِ memo بی‌دلیل دوباره نسازد
+  // regexِ واژه‌ها و عبارتِ پیوسته — هر دو همگام با terms تا هایلایتِ
+  // memo بی‌دلیل دوباره نسازد؛ عبارت لایهٔ قوی‌تر و اولویت‌دارِ رنگ است
   const regex = useMemo(() => buildHighlightRegex(terms), [terms]);
+  const phraseRe = useMemo(() => buildPhraseRegex(terms), [terms]);
 
   // گروه‌بندی نتایج بر پایهٔ کتاب/منبع (bookTitle) — جزوه‌ها به رنگِ خودشان،
   // بانک‌هایِ باندلِ ویژن ۲/کنکور گروه‌هایِ مستقل (r411)
@@ -513,9 +567,9 @@ export default function LibrarySearchView({ initialGrade }: { initialGrade?: num
                 <div className="space-y-2">
                   {g.items.map((r, i) =>
                     r.kind === "text" ? (
-                      <TextResultCard key={`t-${r.doc}-${r.lineIdx ?? i}-${i}`} r={r} regex={regex} />
+                      <TextResultCard key={`t-${r.doc}-${r.lineIdx ?? i}-${i}`} r={r} phrase={phraseRe} terms={regex} />
                     ) : (
-                      <QuestionResultCard key={`q-${r.questionId ?? i}`} r={r} regex={regex} />
+                      <QuestionResultCard key={`q-${r.questionId ?? i}`} r={r} phrase={phraseRe} terms={regex} />
                     ),
                   )}
                 </div>

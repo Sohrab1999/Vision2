@@ -20,6 +20,7 @@ import lesson1 from "@/data/lesson1";
 import lesson2 from "@/data/lesson2";
 import lesson3 from "@/data/lesson3";
 import {
+  buildPhraseRegex,
   makeSnippet,
   normSearchText,
   scoreHaystack,
@@ -262,6 +263,9 @@ export function searchJozve(
   const terms = searchTerms(q);
   if (!terms.length) return { total: 0, results: [] };
   const phrase = normSearchText(q);
+  // r412 — لایهٔ عبارتِ پیوسته: یک بار در هر پرس‌وجو ساخته می‌شود؛
+  // هم برایِ مرکزِ قطعه (snippet) و هم برایِ پرچمِ phraseHit
+  const phraseRe = buildPhraseRegex(terms);
   const limit = Math.min(Math.max(opts.limit ?? 30, 1), 60);
 
   // امتیازدهی + گروه‌بندیِ تطبیق‌ها بر پایهٔ سند — برای پراکنده‌سازیِ متنوع
@@ -310,9 +314,13 @@ export function searchJozve(
       doc: r.doc,
       bookTitle: r.bookTitle,
       text: raw,
-      snippet: makeSnippet(raw, terms),
+      snippet: makeSnippet(raw, terms, 70, phraseRe),
       score,
     };
+    // r412 — عبارتِ پیوسته در «متنِ خامِ» رکورد نشسته است؟ (نه فقط در
+    // haystackِ نرمال — هایلایتِ کلاینت روی متنِ خام زندگی می‌کند).
+    // نمونهٔ تازه — regexِ سراسری lastIndex را بینِ رکوردها نگه می‌دارد.
+    if (phraseRe && new RegExp(phraseRe.source, "gi").test(raw)) base.phraseHit = true;
     if (r.kind === "text") {
       base.chapterId = r.chapterId;
       base.chapterTitle = r.chapterTitle;
