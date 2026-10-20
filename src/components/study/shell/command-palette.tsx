@@ -54,8 +54,10 @@ import {
 import {
   EXAM_TIMED_KEY,
   KONKUR_TIMED_KEY,
+  LIBSEARCH_Q_KEY,
   writeCountPrefill,
   writeFlagPrefill,
+  writeStringPrefill,
 } from "@/lib/nav-prefill";
 import { Kbd } from "./shortcut-guide";
 
@@ -97,6 +99,7 @@ const ICONS: Record<string, React.ElementType> = {
   Settings,
   UserCog,
   Smartphone,
+  Search,
 };
 
 // ------------------------------------------------------------------
@@ -191,6 +194,8 @@ export default function CommandPalette() {
       { id: "nav-grammar", label: "متروی گرامر", group: "ناوبری", hint: "نقشهٔ سفر گرامر کتاب", keywords: ["grammar", "metro", "map"] },
       { id: "nav-konkur", label: "گوشهٔ کنکور", group: "ناوبری", hint: "بانک ۳۶۰ تستی با پاسخ تشریحی", keywords: ["konkur", "question bank", "entrance"] },
       { id: "nav-jozve", label: "کتابخانهٔ جزوه‌ها", group: "ناوبری", hint: "استخراج کامل ۶ جزوهٔ پایهٔ ۷ تا ۱۲", keywords: ["jozve", "جزوه", "booklet", "library", "handout"] },
+      // r410 — جست‌وجوی متنیِ سراسریِ کتابخانه (۶ جزوه + ۹ بانک)
+      { id: "nav-search", label: "جست‌وجو در کتاب‌ها", group: "ناوبری", hint: "جست‌وجوی متنی ۶ جزوه و ۷٬۸۹۶ سؤال", keywords: ["search", "جست‌وجو", "find", "fulltext"] },
       // r397 — کتاب‌های پایه‌ها: نمای درس‌به‌درس هر جزوه (درس‌های یازدهم برای همه)
       ...BOOKS.map((b) => ({
         id: `nav-book-${b.grade}`,
@@ -259,16 +264,31 @@ export default function CommandPalette() {
       const rest = baseCommands.filter((c) => !recentIds.includes(c.id));
       return recentCmds.length ? [...recentCmds.map((c) => ({ ...c, group: "اخیر" })), ...rest] : rest;
     }
-    return filterCommands(commands, query, 12);
+    // r410 — پلِ «جست‌وجوی «X» در کتاب‌ها» همیشه آخرِ فهرست با پرس‌وجوی
+    // آزاد (≥۲ نویسه): حتی وقتی هیچ فرمانی نمی‌خورد، همان متنِ تایپ‌شده
+    // در کتاب‌ها جست‌وجو می‌شود (در filtered می‌نشیند تا شمارش/کیبورد/Enter
+    // همه یک منبعِ حقیقت داشته باشند).
+    const q = query.trim();
+    if (q.length < 2) return filterCommands(commands, query, 12);
+    return [
+      ...filterCommands(commands, query, 12),
+      {
+        id: "libsearch-run",
+        label: `جست‌وجوی «${q}» در کتاب‌ها`,
+        group: "کتابخانه",
+        hint: "جست‌وجوی متنی در متنِ شش جزوه و بانک‌های تست",
+        keywords: [],
+      },
+    ];
   }, [baseCommands, commands, recentCmds, recentIds, query]);
 
   // گروه‌بندی نتیجه‌ها با ترتیب ثابت گروه‌ها؛ «اخیر» همیشه اول
   const grouped = useMemo(() => {
     const buckets = new Map<string, CommandDef[]>();
     for (const cmd of filtered) {
-      const list = buckets.get(cmd.group) ?? [];
-      list.push(cmd);
-      buckets.set(cmd.group, list);
+      const items = buckets.get(cmd.group) ?? [];
+      items.push(cmd);
+      buckets.set(cmd.group, items);
     }
     const known = COMMAND_GROUPS.filter((g) => buckets.has(g));
     const rest = [...buckets.keys()].filter((g) => !COMMAND_GROUPS.includes(g as never));
@@ -276,7 +296,7 @@ export default function CommandPalette() {
     const ri = out.findIndex((g) => g.group === "اخیر");
     if (ri > 0) out.unshift(...out.splice(ri, 1));
     return out;
-  }, [filtered]);
+  }, [filtered, query]);
 
   const run = (cmd: CommandDef | undefined) => {
     if (!cmd) return;
@@ -304,6 +324,18 @@ export default function CommandPalette() {
       case "nav-jozve":
         setView({ type: "jozve" });
         break;
+      case "nav-search":
+        setView({ type: "search" });
+        break;
+      case "libsearch-run": {
+        // r410 — پلِ «جست‌وجوی «X» در کتاب‌ها»: پرس‌وجوی پالت به
+        // نمای جست‌وجوی کتابخانه منتقل می‌شود (prefill برای نمایِ lazy
+        // + رویداد برای وقتی که نما همین حالا باز است)
+        writeStringPrefill(LIBSEARCH_Q_KEY, query.trim());
+        setView({ type: "search" });
+        window.dispatchEvent(new CustomEvent("library-search-open", { detail: { q: query.trim() } }));
+        break;
+      }
       case "nav-book-7":
         setView({ type: "book", grade: 7 });
         break;
@@ -592,6 +624,9 @@ function cmdIconKey(id: string, isDark: boolean): string {
       return "ClipboardCheck";
     case "nav-appendix":
       return "Library";
+    case "nav-search":
+    case "libsearch-run":
+      return "Search";
     case "nav-grammar":
       return "Route";
     case "nav-konkur":

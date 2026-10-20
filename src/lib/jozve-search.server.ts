@@ -1,0 +1,283 @@
+// ------------------------------------------------------------------
+// r410 — «جست‌وجو در کتاب‌ها» — کورپوسِ سرور (فقط runtime nodejs).
+//
+// همان الگوی jozve-bank.ts: فایل‌های عمومیِ public/jozve/*.json با
+// node:fs خوانده می‌شوند؛ تنبل و یک‌بارمصرف؛ خرابیِ یک فایل هرگز کل
+// لودر را نمی‌اندازد. رکوردهای جست‌وجو یک‌بار ساخته و با haystackِ
+// نرمال‌شده پیش‌محاسبه می‌شوند تا هر پرس‌وجو یک اسکنِ خطیِ ارزان باشد:
+//   • ۶ کتابِ g7-g12 → رکوردِ «text» (خط‌به‌خط، با سکشن/فصل)
+//   • ۹ بانکِ tests-*/grammar-* → رکوردِ «question» (سؤال + گزینه‌ها + ترجمه)
+// رتبه‌بندی با scoreHaystack (lib/jozve-search) و پراکنده‌سازیِ
+// متنوع: نتایج از همهٔ اسناد نوبتی می‌آیند تا یک کتاب نتایج را
+// انحصار نگیرد (رفتارِ جست‌وجوی کتاب‌به‌کتاب، نه ریزشِ سیلابِ یک بانک).
+// ------------------------------------------------------------------
+
+import { readFileSync } from "node:fs";
+import path from "node:path";
+import {
+  makeSnippet,
+  normSearchText,
+  scoreHaystack,
+  searchTerms,
+  type JozveSearchResult,
+} from "./jozve-search";
+
+const BOOK_TITLES: Record<number, string> = {
+  7: "جزوه کامل زبان انگلیسی پایه هفتم",
+  8: "جزوه کامل زبان انگلیسی پایه هشتم",
+  9: "جزوه کامل زبان انگلیسی پایه نهم",
+  10: "جزوه جامع زبان انگلیسی پایه دهم",
+  11: "جزوه جامع کمک‌آموزشی زبان انگلیسی پایه یازدهم",
+  12: "جزوه جامع پایه دوازدهم همراه با امتحانات نهایی",
+};
+
+const BANK_META: { file: string; doc: string; grade: number }[] = [
+  { file: "tests-g7.json", doc: "tests-g7", grade: 7 },
+  { file: "tests-g8.json", doc: "tests-g8", grade: 8 },
+  { file: "tests-g9.json", doc: "tests-g9", grade: 9 },
+  { file: "tests-g10.json", doc: "tests-g10", grade: 10 },
+  { file: "tests-g11.json", doc: "tests-g11", grade: 11 },
+  { file: "tests-g12.json", doc: "tests-g12", grade: 12 },
+  { file: "grammar-g11.json", doc: "grammar-g11", grade: 11 },
+  { file: "grammar-g11-konkur.json", doc: "grammar-g11-konkur", grade: 11 },
+  { file: "grammar-g12-topic.json", doc: "grammar-g12-topic", grade: 12 },
+];
+
+/** سقفِ نتیجه در هر سند در پاسخ نهایی — متنوع‌سازیِ نتایج */
+const PER_DOC_CAP = 12;
+
+interface SearchRecord {
+  kind: "text" | "question";
+  grade: number;
+  doc: string;
+  bookTitle: string;
+  titleHay: string; // عنوانِ فصل+سکشن یا بانک — نرمال‌شده
+  haystack: string; // متنِ نرمال‌شده
+  // text
+  chapterId?: string;
+  chapterTitle?: string;
+  sectionTitle?: string;
+  sectionType?: string;
+  lineIdx?: number;
+  lineText?: string;
+  // question
+  bankLesson?: number;
+  bankTitle?: string;
+  questionId?: string;
+  question?: string;
+  options?: string[];
+  answer?: number;
+  translation?: string;
+}
+
+/** سطرهای زبالهٔ سربرگِ جدول واژگان — هم‌قراردادِ books.ts */
+const isJunk = (t: string): boolean =>
+  !t.trim() || /^کلمه\s*\(\)\s*\d/.test(t) || /^Persian Meanings/i.test(t);
+
+function loadDoc(grade: number): SearchRecord[] {
+  try {
+    const filePath = path.join(process.cwd(), "public", "jozve", `g${grade}.json`);
+    const parsed: unknown = JSON.parse(readFileSync(filePath, "utf8"));
+    const chapters =
+      typeof parsed === "object" && parsed !== null && Array.isArray((parsed as { chapters?: unknown }).chapters)
+        ? ((parsed as { chapters: { id?: string; title?: string; sections?: unknown }[] }).chapters)
+        : [];
+    const bookTitle = BOOK_TITLES[grade] ?? `جزوه پایه ${grade}`;
+    const out: SearchRecord[] = [];
+    for (const ch of chapters) {
+      const chapterTitle = typeof ch.title === "string" ? ch.title : "";
+      const chapterId = typeof ch.id === "string" ? ch.id : "";
+      if (!Array.isArray(ch.sections)) continue;
+      for (const sec of ch.sections) {
+        if (!sec || !Array.isArray((sec as { lines?: unknown }).lines)) continue;
+        const sectionTitle = typeof (sec as { title?: unknown }).title === "string" ? ((sec as { title: string }).title) : "";
+        const sectionType = typeof (sec as { type?: unknown }).type === "string" ? ((sec as { type: string }).type) : "other";
+        const titleHay = normSearchText(`${chapterTitle} ${sectionTitle}`);
+        const lines = (sec as { lines: unknown[] }).lines;
+        for (let li = 0; li < lines.length; li++) {
+          const raw = typeof lines[li] === "string" ? (lines[li] as string) : "";
+          if (isJunk(raw)) continue;
+          out.push({
+            kind: "text",
+            grade,
+            doc: `g${grade}`,
+            bookTitle,
+            titleHay,
+            haystack: normSearchText(raw),
+            chapterId,
+            chapterTitle,
+            sectionTitle,
+            sectionType,
+            lineIdx: li,
+            lineText: raw,
+          });
+        }
+      }
+    }
+    return out;
+  } catch {
+    return [];
+  }
+}
+
+function loadBank(meta: { file: string; doc: string; grade: number }): SearchRecord[] {
+  try {
+    const filePath = path.join(process.cwd(), "public", "jozve", meta.file);
+    const parsed: unknown = JSON.parse(readFileSync(filePath, "utf8"));
+    const lessons =
+      typeof parsed === "object" && parsed !== null && Array.isArray((parsed as { lessons?: unknown }).lessons)
+        ? ((parsed as { lessons: unknown[] }).lessons)
+        : [];
+    const bookTitle = BOOK_TITLES[meta.grade] ?? `جزوه پایه ${meta.grade}`;
+    const out: SearchRecord[] = [];
+    for (const les of lessons) {
+      if (!les || !Array.isArray((les as { questions?: unknown }).questions)) continue;
+      const bankLesson = typeof (les as { lesson?: unknown }).lesson === "number" ? ((les as { lesson: number }).lesson) : 0;
+      const bankTitle = typeof (les as { title?: unknown }).title === "string" ? ((les as { title: string }).title) : "";
+      const titleHay = normSearchText(bankTitle);
+      for (const raw of (les as { questions: unknown[] }).questions) {
+        if (!raw || typeof raw !== "object") continue;
+        const q = raw as {
+          id?: unknown; question?: unknown; options?: unknown; answer?: unknown; translation?: unknown;
+        };
+        if (typeof q.question !== "string" || !q.question.trim()) continue;
+        const options = Array.isArray(q.options)
+          ? q.options.filter((o): o is string => typeof o === "string")
+          : [];
+        const answer = typeof q.answer === "number" ? q.answer : undefined;
+        const translation = typeof q.translation === "string" && q.translation.trim() ? q.translation : undefined;
+        out.push({
+          kind: "question",
+          grade: meta.grade,
+          doc: meta.doc,
+          bookTitle,
+          titleHay,
+          haystack: normSearchText([q.question, ...options, translation ?? ""].join(" ")),
+          bankLesson,
+          bankTitle,
+          questionId: typeof q.id === "string" ? q.id : undefined,
+          question: q.question,
+          options,
+          answer,
+          translation,
+        });
+      }
+    }
+    return out;
+  } catch {
+    return [];
+  }
+}
+
+let corpus: SearchRecord[] | null = null;
+
+/** کلِ رکوردهای قابلِ جست‌وجو (تنبل، کشِ یک‌بارمصرف؛ هرگز throw نمی‌کند) */
+export function jozveSearchCorpus(): SearchRecord[] {
+  if (!corpus) {
+    const all: SearchRecord[] = [];
+    for (let g = 7; g <= 12; g++) all.push(...loadDoc(g));
+    for (const m of BANK_META) all.push(...loadBank(m));
+    corpus = all;
+  }
+  return corpus;
+}
+
+/** شمارِ رکوردهای ایندکس‌شده — برای تست پیمان‌ها و برچسبِ نما */
+export function jozveSearchCorpusSize(): { text: number; question: number } {
+  let text = 0;
+  let question = 0;
+  for (const r of jozveSearchCorpus()) {
+    if (r.kind === "text") text += 1;
+    else question += 1;
+  }
+  return { text, question };
+}
+
+export interface JozveSearchOptions {
+  grade?: number;
+  kind?: "text" | "question";
+  limit?: number;
+}
+
+/**
+ * جست‌وجوی سراسری: AND سختِ جملات، امتیازِ scoreHaystack، سپس
+ * نوبت‌کشیِ میانِ اسناد (هر سند تا PER_DOC_CAP) تا limit.
+ * total = شمارِ کلِ تطبیق‌ها (پیش از کپ) برای «و …».
+ */
+export function searchJozve(
+  q: string,
+  opts: JozveSearchOptions = {},
+): { total: number; results: JozveSearchResult[] } {
+  const terms = searchTerms(q);
+  if (!terms.length) return { total: 0, results: [] };
+  const phrase = normSearchText(q);
+  const limit = Math.min(Math.max(opts.limit ?? 30, 1), 60);
+
+  // امتیازدهی + گروه‌بندیِ تطبیق‌ها بر پایهٔ سند — برای پراکنده‌سازیِ متنوع
+  const byDoc = new Map<string, { rec: SearchRecord; score: number }[]>();
+  let total = 0;
+  for (const r of jozveSearchCorpus()) {
+    if (opts.grade != null && r.grade !== opts.grade) continue;
+    if (opts.kind != null && r.kind !== opts.kind) continue;
+    const score = scoreHaystack(r.haystack, r.titleHay, terms, phrase);
+    if (score == null) continue;
+    total += 1;
+    if (total > 2000) break; // سقفِ ایمنیِ پیمایش
+    const arr = byDoc.get(r.doc);
+    if (arr) arr.push({ rec: r, score });
+    else byDoc.set(r.doc, [{ rec: r, score }]);
+  }
+
+  // هر سند: نزولیِ امتیاز
+  for (const arr of byDoc.values()) {
+    arr.sort((a, b) => b.score - a.score);
+  }
+
+  // نوبت‌کشیِ میانِ اسناد تا کپِ هر سند
+  const docs = [...byDoc.keys()];
+  const perDoc = new Map<string, number>();
+  const picked: { rec: SearchRecord; score: number }[] = [];
+  for (let round = 0; picked.length < limit && round < PER_DOC_CAP; round++) {
+    let advanced = false;
+    for (const doc of docs) {
+      const arr = byDoc.get(doc)!;
+      if (round >= arr.length) continue;
+      if ((perDoc.get(doc) ?? 0) >= PER_DOC_CAP) continue;
+      picked.push(arr[round]);
+      perDoc.set(doc, round + 1);
+      advanced = true;
+      if (picked.length >= limit) break;
+    }
+    if (!advanced) break;
+  }
+
+  const results = picked.map(({ rec: r, score }) => {
+    const raw = r.kind === "text" ? (r.lineText ?? "") : (r.question ?? "");
+    const base: JozveSearchResult = {
+      kind: r.kind,
+      grade: r.grade,
+      doc: r.doc,
+      bookTitle: r.bookTitle,
+      text: raw,
+      snippet: makeSnippet(raw, terms),
+      score,
+    };
+    if (r.kind === "text") {
+      base.chapterId = r.chapterId;
+      base.chapterTitle = r.chapterTitle;
+      base.sectionTitle = r.sectionTitle;
+      base.sectionType = r.sectionType;
+      base.lineIdx = r.lineIdx;
+    } else {
+      base.bankLesson = r.bankLesson;
+      base.bankTitle = r.bankTitle;
+      base.questionId = r.questionId;
+      base.options = r.options;
+      base.answer = r.answer;
+      base.translation = r.translation;
+    }
+    return base;
+  });
+
+  return { total, results };
+}

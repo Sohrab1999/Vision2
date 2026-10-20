@@ -55,14 +55,14 @@ describe("پالت فرمان — کامپوننت (Task 79)", () => {
     });
   });
 
-  it("بسته به‌صورت پیش‌فرض؛ رویداد پنجره‌ای باز می‌کند — ۲۹ گزینهٔ سطح‌بالا (r397: ۶ کتابِ پایه‌ها)", () => {
+  it("بسته به‌صورت پیش‌فرض؛ رویداد پنجره‌ای باز می‌کند — ۳۰ گزینهٔ سطح‌بالا (r410: + جست‌وجوی کتابخانه)", () => {
     const { container } = render(<CommandPalette />);
     expect(container.querySelector(".command-palette")).toBeNull();
     openPalette();
     const input = screen.getByRole("combobox");
     expect(input).toBeInTheDocument();
     const opts = screen.getAllByRole("option");
-    expect(opts.length).toBe(29);
+    expect(opts.length).toBe(30);
     // گروه‌بندی: «ناوبری» اول است
     expect(screen.getAllByRole("group")[0]?.getAttribute("aria-label")).toBe("ناوبری");
   });
@@ -75,19 +75,21 @@ describe("پالت فرمان — کامپوننت (Task 79)", () => {
     expect(screen.getAllByRole("option").length).toBeGreaterThan(0);
     fireEvent.keyDown(window, { ctrlKey: true, code: "KeyK" });
     expect(screen.queryByRole("combobox")).toBeNull();
-    // بازِ دوباره: پرس‌وجوی کهنه نمانده — نمای خالیِ ۲۹گزینه
+    // بازِ دوباره: پرس‌وجوی کهنه نمانده — نمای خالیِ ۳۰گزینه
     fireEvent.keyDown(window, { ctrlKey: true, code: "KeyK" });
-    expect(screen.getAllByRole("option").length).toBe(29);
+    expect(screen.getAllByRole("option").length).toBe(30);
   });
 
-  it("«آزمون ۱۵» → دقیقاً ۱ گزینه با مقدار اسنپ‌شده به [۱۰/۲۰/۳۰] (قرارداد واقعی)", () => {
+  it("«آزمون ۱۵» → پارامتریکِ نزدیک‌ترین + پلِ جست‌وجوی کتابخانه در انتها (قرارداد r410)", () => {
     render(<CommandPalette />);
     openPalette();
     typeQuery("آزمون ۱۵");
     const opts = screen.getAllByRole("option");
-    expect(opts.length).toBe(1);
     // ۱۵ عضو خانواده نیست → نزدیک‌ترین ۱۰ (تساویِ فاصله اولی را می‌برد)
     expect(opts[0]).toHaveTextContent("آزمون جامع ۱۰ سؤالی");
+    // r410 — پلِ «جست‌وجوی «X» در کتاب‌ها» همیشه آخرِ فهرست با پرس‌وجوی آزاد
+    expect(opts.length).toBe(2);
+    expect(opts[1]).toHaveTextContent("جست‌وجوی «آزمون ۱۵» در کتاب‌ها");
   });
 
   it("اجرای پارامتری: Enter → نمای آزمون واقعی + prefill «۱۰» + رویداد open-exam-with", () => {
@@ -107,12 +109,12 @@ describe("پالت فرمان — کامپوننت (Task 79)", () => {
     window.removeEventListener("open-exam-with", spy);
   });
 
-  it("ناوبری ساده: «ضمیمه» → ۱ گزینه → Enter → store واقعی به appendix می‌رود", () => {
+  it("ناوبری ساده: «ضمیمه» → تطبیقِ کتاب + پلِ کتابخانه → Enter → store واقعی به appendix می‌رود", () => {
     render(<CommandPalette />);
     openPalette();
     typeQuery("ضمیمه");
     const opts = screen.getAllByRole("option");
-    expect(opts.length).toBe(1);
+    // تطبیقِ اصلی اول است؛ پلِ r410 آخرِ فهرست می‌نشیند
     expect(opts[0]).toHaveTextContent("ضمیمهٔ کتاب");
     fireEvent.keyDown(screen.getByRole("combobox"), { key: "Enter" });
     expect(useStudy.getState().view.type).toBe("appendix");

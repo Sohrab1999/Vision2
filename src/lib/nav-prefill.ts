@@ -85,3 +85,42 @@ export function clearFlagPrefill(key: string): void {
     /* نادیده */
   }
 }
+
+// ------------------------------------------------------------------
+// prefillِ رشته‌ای (r410) — «جست‌وجوی «X» در کتاب‌ها» از فرمان‌یاب:
+// پرس‌وجوی آزادِ کاربر باید به نمایِ جست‌وجوی کتابخانه برسد؛ هم‌قراردادِ
+// بولی/عددی: initializerِ غیرمخرب می‌خواند، مصرف یک‌بارمصرف است.
+// ------------------------------------------------------------------
+
+/** کلیدِ prefillِ پرس‌وجوی کتابخانه — مرکزی تا پالت و نما هم‌کلید بمانند */
+export const LIBSEARCH_Q_KEY = "vision2-libsearch-prefill";
+
+/** خواندن رشته از کلید prefill؛ نبود → null (node-safe) */
+export function readStringPrefill(key: string): string | null {
+  if (typeof window === "undefined") return null;
+  try {
+    return window.sessionStorage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+
+/** نوشتن رشته در کلید prefill (پالت، هنگام اجرای فرمان) */
+export function writeStringPrefill(key: string, v: string): void {
+  if (typeof window === "undefined") return;
+  try {
+    window.sessionStorage.setItem(key, v);
+  } catch {
+    /* حالت خصوصی مرورگر — نادیده */
+  }
+}
+
+/** پاک‌کردن prefill رشته‌ای پس از مصرف (نما، در اولین اثر) */
+export function clearStringPrefill(key: string): void {
+  if (typeof window === "undefined") return;
+  try {
+    window.sessionStorage.removeItem(key);
+  } catch {
+    /* نادیده */
+  }
+}

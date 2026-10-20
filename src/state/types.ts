@@ -39,7 +39,10 @@ export type View =
   // r397 — «کتاب‌های همهٔ پایه‌ها» — نمای درس‌به‌درسِ هر جزوه (خواستهٔ کاربر:
   // همان تجربهٔ درس‌های یازدهم برای همهٔ کتاب‌ها)؛ فصل‌های «درس N» + بانک‌های
   // آزمونِ متصل + پرش به متنِ کامل در کتابخانهٔ جزوه‌ها
-  | { type: "book"; grade: number };
+  | { type: "book"; grade: number }
+  // r410 — «جست‌وجو در کتاب‌ها» — جست‌وجوی متنیِ سراسریِ کتابخانه (۶ جزوه +
+  // ۹ بانک)؛ grade اختیاری برای «جست‌وجو در این کتاب» از نمایِ کتاب
+  | { type: "search"; grade?: number };
 
 export type LessonTab = "vocab" | "conversation" | "reading" | "grammar" | "writing" | "dictation" | "tests";
 

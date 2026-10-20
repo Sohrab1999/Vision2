@@ -48,6 +48,9 @@ const GrammarView = lazyView(() => import("./grammar/grammar-view"));
 const MyWordsView = lazyView(() => import("./practice/my-words"));
 const JozveView = lazyView(() => import("./jozve/jozve-view"));
 const BookView = lazyView(() => import("./books/book-view"));
+// r410 — جست‌وجوی متنیِ سراسریِ کتابخانه (chunkِ سنگین نیست ولی از
+// خانوادهٔ کتابخانه است — lazy تا نقشهٔ کدِ خانه دست‌نخورده بماند)
+const LibrarySearchView = lazyView(() => import("./search/library-search-view"));
 
 // Report modals: heavy (official-report pulls per-lesson stats) and computed
 // while closed (audit finding G-5). They mount only after the first "open"
@@ -245,6 +248,7 @@ export default function StudyApp() {
                 {view.type === "my-words" && <MyWordsView />}
                 {view.type === "jozve" && <JozveView />}
                 {view.type === "book" && <BookView grade={view.grade} />}
+                {view.type === "search" && <LibrarySearchView initialGrade={view.grade} />}
               </motion.div>
             </AnimatePresence>
           ) : (

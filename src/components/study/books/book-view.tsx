@@ -19,6 +19,7 @@ import {
   LibraryBig,
   ListChecks,
   Loader2,
+  Search,
   Volume2,
   X,
 } from "lucide-react";
@@ -362,6 +363,14 @@ export default function BookView({ grade }: { grade: number }) {
           >
             <LibraryBig size={13} />
             متنِ کامل در کتابخانهٔ جزوه‌ها
+          </button>
+          {/* r410 — جست‌وجوی متنیِ درونِ همین کتاب (فیلترِ پایه از پیش فعال) */}
+          <button
+            onClick={() => setView({ type: "search", grade })}
+            className="inline-flex items-center gap-1.5 rounded-xl border border-cyan-200 bg-cyan-50 px-3 py-1.5 text-[11.5px] font-extrabold text-cyan-800 transition hover:border-cyan-300 hover:bg-cyan-100 active:scale-95"
+          >
+            <Search size={13} />
+            جست‌وجو در این کتاب
           </button>
         </div>
       </header>

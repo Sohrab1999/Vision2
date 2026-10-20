@@ -230,6 +230,28 @@ export const duelTicketSchema = z.object({
     .max(100, "امضای ارسالی نامعتبر است."),
 });
 
+/** /api/jozve-search GET (r410) — جست‌وجوی متنیِ سراسریِ کتابخانهٔ جزوه */
+export const jozveSearchQuerySchema = z.object({
+  q: z
+    .string({ message: "پرس‌وجوی جست‌وجو نامعتبر است." })
+    .trim()
+    .min(2, "پرس‌وجو باید دست‌کم ۲ نویسه باشد.")
+    .max(80, "پرس‌وجو بیش از حد بلند است."),
+  grade: z.coerce
+    .number({ message: "پایهٔ نامعتبر است." })
+    .int()
+    .min(7, "پایهٔ نامعتبر است.")
+    .max(12, "پایهٔ نامعتبر است.")
+    .optional(),
+  kind: z.enum(["text", "question"], { message: "نوعِ نتیجهٔ نامعتبر است." }).optional(),
+  limit: z.coerce
+    .number({ message: "سقفِ نتیجه نامعتبر است." })
+    .int()
+    .min(1, "سقفِ نتیجه نامعتبر است.")
+    .max(60, "سقفِ نتیجه نامعتبر است.")
+    .default(30),
+});
+
 /** per-route body caps in bytes (POST only; GET routes need none) */
 export const BODY_CAPS = {
   register: 4 * 1024,
