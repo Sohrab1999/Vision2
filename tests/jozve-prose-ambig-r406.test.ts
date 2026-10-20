@@ -108,7 +108,8 @@ describe("r406 — حکمِ بافتیِ خانواده‌هایِ مبهمِ ن
     expect(proseBlob(10)).toMatch(/صحبت نمی کنند/);
     expect(proseBlob(11)).toMatch(/بکار نمی روند/);
     expect(proseBlob(12)).toMatch(/اگه باران نمی بارید/);
-    expect(proseBlob(10)).toMatch(/نابرده رنج گنج میس نمی شود/);
+    // r407: میس/میش نیمشود → میسر نمی‌شود (ضرب‌المثل با شکلِ درست)
+    expect(proseBlob(10)).toMatch(/نابرده رنج گنج میسر نمی شود/);
     // شیر (حذفِ الف)
     expect(proseBlob(10)).toContain("شیر - شیر دوشیدن");
     expect(proseBlob(11)).toMatch(/شیر میل دارید/);
