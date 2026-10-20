@@ -5,15 +5,17 @@
 // Same word for everyone on the same day; changes at midnight.
 // ------------------------------------------------------------------
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { CalendarDays, BookOpen, Sparkles } from "lucide-react";
+import { CalendarDays, BookOpen, Sparkles, BookOpenText } from "lucide-react";
 import { lessons } from "@/data";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum, posLabel } from "@/lib/study-theme";
 import { lessonOrdinalFa } from "@/data/lesson-meta";
 import { buildSynAntIndex, synAntPairsFor } from "@/lib/syn-ant-lookup";
+import { findWordUsages } from "@/lib/word-usage";
+import WordUsageDialog from "./word-usage-dialog";
 import { speak } from "@/lib/speak";
 import SpeakButton from "../shared/speak-button";
 
@@ -26,6 +28,9 @@ export default function WordOfDay() {
   const known = useStudy((s) => s.known);
   const toggleKnown = useStudy((s) => s.toggleKnown);
   const mounted = useMounted();
+  // راند ۲۵۴ — «کاربرد در جزوه» رویِ کارتِ واژهٔ روز (بندِ ① پیشنهادِ ۲۵۳):
+  // چهارمین مصرف‌کنندهٔ خانواده، همان تک‌منبع + همان دیالوگِ مشترک
+  const [usage, setUsage] = useState<{ en: string; sites: ReturnType<typeof findWordUsages> } | null>(null);
 
   const pick = useMemo(() => {
     // build flat vocab list with lesson ref
@@ -114,6 +119,27 @@ export default function WordOfDay() {
               )}
             </div>
           )}
+          {(() => {
+            // راند ۲۵۴ — چیپِ «در جزوه» کنارِ جفت‌ها: این واژهٔ امروز کجای
+            // مکالمه/ریدینگِ جزوه آمده؟ فقط با تطبیقِ واقعی — بی‌کاربرد، هیچ
+            // (صداقتِ همیشگیِ خانواده). کارتِ خودش را دارد — no
+            // stopPropagation لازم نیست (برخلافِ کارتِ بلدمِ تبِ واژگان).
+            const sites = mounted ? findWordUsages(pick.en) : [];
+            if (sites.length === 0) return null;
+            return (
+              <button
+                type="button"
+                data-testid={`usage-chip-${pick.en.replace(/\s+/g, "-")}`}
+                onClick={() => setUsage({ en: pick.en, sites })}
+                title="کاربرد این واژه در مکالمه‌ها و ریدینگ‌های جزوه"
+                aria-label={`کاربرد ${pick.en} در مکالمه‌ها و ریدینگ‌ها — ${faNum(sites.length)} مورد`}
+                className="mt-1.5 inline-flex items-center gap-1 rounded-md border border-sky-200 bg-sky-50/60 px-1.5 py-0.5 text-[10.5px] font-bold text-sky-700 transition-[background-color,color,border-color,transform] active:scale-[0.96]"
+              >
+                <BookOpenText size={11} aria-hidden />
+                در جزوه · {faNum(sites.length)}
+              </button>
+            );
+          })()}
         </div>
 
         {/* actions */}
@@ -153,6 +179,9 @@ export default function WordOfDay() {
           واژهٔ امروز از {lesson.titleFa} انتخاب شده است. مجموع واژگان {faNum(lesson.vocabulary.length)} واژه.
         </span>
       )}
+
+      {/* راند ۲۵۴ — دیالوگِ مشترکِ «کاربرد در جزوه» (تک‌منبع با دیکشنری/تبِ واژگان/فلش‌کارت) */}
+      <WordUsageDialog target={usage} onClose={() => setUsage(null)} />
     </motion.section>
   );
 }
