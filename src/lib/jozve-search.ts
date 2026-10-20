@@ -137,6 +137,17 @@ export function makeSnippet(text: string, terms: string[], radius = 70): string 
 
 // ------------------------------------------------------ قراردادِ سیم
 
+/**
+ * نوعِ گروهِ نمایشیِ یک سند (r411) — بانک‌هایِ باندلِ ویژن ۲ و کنکور
+ * گروه‌هایِ خودشان را می‌گیرند و بقیه (جزوه‌های g7-g12) به رنگِ کتاب
+ * می‌روند. خالص و بی‌import تا پیمانِ client-safe سالم بماند.
+ */
+export function searchGroupKind(doc: string): "vision2" | "konkur" | "booklet" {
+  if (doc === "konkur-g10") return "konkur";
+  if (doc.startsWith("lesson-") || doc === "exam-360") return "vision2";
+  return "booklet";
+}
+
 /** یک نتیجهٔ جست‌وجو (شکلِ سیمِ /api/jozze-search — بدونِ فیلدهای داخلی) */
 export interface JozveSearchResult {
   kind: "text" | "question";

@@ -14,6 +14,11 @@
 
 import { readFileSync } from "node:fs";
 import path from "node:path";
+import { examBank } from "@/data/exam";
+import { examBankG10 } from "@/data/exam-g10";
+import lesson1 from "@/data/lesson1";
+import lesson2 from "@/data/lesson2";
+import lesson3 from "@/data/lesson3";
 import {
   makeSnippet,
   normSearchText,
@@ -45,6 +50,27 @@ const BANK_META: { file: string; doc: string; grade: number }[] = [
 
 /** سقفِ نتیجه در هر سند در پاسخ نهایی — متنوع‌سازیِ نتایج */
 const PER_DOC_CAP = 12;
+
+// r411 — بانک‌هایِ باندلِ کتابِ ویژن ۲ (همان ۱٬۶۷۴ سؤالِ teacher-bank):
+// سه درس (۴۵۲) + آزمونِ جامع (۳۶۰) + بانکِ کنکورِ دهم (۸۶۲). اینها آخرین
+// حلقهٔ کورِ جست‌وجو بودند — نتایجِ جست‌وجو اکنون کلِ محتوایِ اپ را پوشش می‌دهد
+// (۶٬۲۲۲ جزوه + ۱٬۶۷۴ باندل = ۷٬۸۹۶ سؤال — هم‌عددِ ایندکسِ گستردهٔ معلم).
+const VISION2_BOOK = "کتاب ویژن ۲ — پایهٔ یازدهم";
+const KONKUR_BOOK = "بانک کنکور دهم";
+
+const BUNDLED_QUESTIONS: {
+  doc: string;
+  grade: number;
+  bookTitle: string;
+  bankTitle: string;
+  questions: { id?: unknown; question?: unknown; options?: unknown; answer?: unknown; translation?: unknown }[];
+}[] = [
+  { doc: "lesson-1", grade: 11, bookTitle: VISION2_BOOK, bankTitle: "درس ۱ — Understanding People", questions: lesson1.quizzes },
+  { doc: "lesson-2", grade: 11, bookTitle: VISION2_BOOK, bankTitle: "درس ۲ — A Healthy Lifestyle", questions: lesson2.quizzes },
+  { doc: "lesson-3", grade: 11, bookTitle: VISION2_BOOK, bankTitle: "درس ۳ — Art and Culture", questions: lesson3.quizzes },
+  { doc: "exam-360", grade: 11, bookTitle: VISION2_BOOK, bankTitle: "آزمون جامع — بانک ۳۶۰ تستی", questions: examBank },
+  { doc: "konkur-g10", grade: 10, bookTitle: KONKUR_BOOK, bankTitle: "بانک کنکور دهم (۸۶۲ تست)", questions: examBankG10 },
+];
 
 interface SearchRecord {
   kind: "text" | "question";
@@ -120,6 +146,42 @@ function loadDoc(grade: number): SearchRecord[] {
   }
 }
 
+/** سازندهٔ مشترکِ رکوردِ سؤال — بانکِ جزوه و باندل یک‌شکل ایندکس می‌شوند */
+function questionRecord(input: {
+  raw: unknown;
+  doc: string;
+  grade: number;
+  bookTitle: string;
+  bankTitle: string;
+  bankLesson?: number;
+}): SearchRecord | null {
+  if (!input.raw || typeof input.raw !== "object") return null;
+  const q = input.raw as {
+    id?: unknown; question?: unknown; options?: unknown; answer?: unknown; translation?: unknown;
+  };
+  if (typeof q.question !== "string" || !q.question.trim()) return null;
+  const options = Array.isArray(q.options)
+    ? q.options.filter((o): o is string => typeof o === "string")
+    : [];
+  const answer = typeof q.answer === "number" ? q.answer : undefined;
+  const translation = typeof q.translation === "string" && q.translation.trim() ? q.translation : undefined;
+  return {
+    kind: "question",
+    grade: input.grade,
+    doc: input.doc,
+    bookTitle: input.bookTitle,
+    titleHay: normSearchText(input.bankTitle),
+    haystack: normSearchText([q.question, ...options, translation ?? ""].join(" ")),
+    bankLesson: input.bankLesson,
+    bankTitle: input.bankTitle,
+    questionId: typeof q.id === "string" ? q.id : undefined,
+    question: q.question,
+    options,
+    answer,
+    translation,
+  };
+}
+
 function loadBank(meta: { file: string; doc: string; grade: number }): SearchRecord[] {
   try {
     const filePath = path.join(process.cwd(), "public", "jozve", meta.file);
@@ -134,39 +196,27 @@ function loadBank(meta: { file: string; doc: string; grade: number }): SearchRec
       if (!les || !Array.isArray((les as { questions?: unknown }).questions)) continue;
       const bankLesson = typeof (les as { lesson?: unknown }).lesson === "number" ? ((les as { lesson: number }).lesson) : 0;
       const bankTitle = typeof (les as { title?: unknown }).title === "string" ? ((les as { title: string }).title) : "";
-      const titleHay = normSearchText(bankTitle);
       for (const raw of (les as { questions: unknown[] }).questions) {
-        if (!raw || typeof raw !== "object") continue;
-        const q = raw as {
-          id?: unknown; question?: unknown; options?: unknown; answer?: unknown; translation?: unknown;
-        };
-        if (typeof q.question !== "string" || !q.question.trim()) continue;
-        const options = Array.isArray(q.options)
-          ? q.options.filter((o): o is string => typeof o === "string")
-          : [];
-        const answer = typeof q.answer === "number" ? q.answer : undefined;
-        const translation = typeof q.translation === "string" && q.translation.trim() ? q.translation : undefined;
-        out.push({
-          kind: "question",
-          grade: meta.grade,
-          doc: meta.doc,
-          bookTitle,
-          titleHay,
-          haystack: normSearchText([q.question, ...options, translation ?? ""].join(" ")),
-          bankLesson,
-          bankTitle,
-          questionId: typeof q.id === "string" ? q.id : undefined,
-          question: q.question,
-          options,
-          answer,
-          translation,
-        });
+        const rec = questionRecord({ raw, doc: meta.doc, grade: meta.grade, bookTitle, bankTitle, bankLesson });
+        if (rec) out.push(rec);
       }
     }
     return out;
   } catch {
     return [];
   }
+}
+
+/** بانک‌هایِ باندلِ کلاینت-امن (دادهٔ درس‌ها/آزمون/کنکور) — بدونِ fs */
+function loadBundled(): SearchRecord[] {
+  const out: SearchRecord[] = [];
+  for (const b of BUNDLED_QUESTIONS) {
+    for (const raw of b.questions) {
+      const rec = questionRecord({ raw, doc: b.doc, grade: b.grade, bookTitle: b.bookTitle, bankTitle: b.bankTitle });
+      if (rec) out.push(rec);
+    }
+  }
+  return out;
 }
 
 let corpus: SearchRecord[] | null = null;
@@ -177,6 +227,7 @@ export function jozveSearchCorpus(): SearchRecord[] {
     const all: SearchRecord[] = [];
     for (let g = 7; g <= 12; g++) all.push(...loadDoc(g));
     for (const m of BANK_META) all.push(...loadBank(m));
+    all.push(...loadBundled()); // r411 — آخرین حلقهٔ کورِ جست‌وجو
     corpus = all;
   }
   return corpus;

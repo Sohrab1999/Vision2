@@ -99,9 +99,10 @@ describe("buildHighlightRegex / makeSnippet — هایلایتِ هم‌ارز �
 describe("کورپوسِ واقعی — jozve-search.server", () => {
   const size = jozveSearchCorpusSize();
 
-  it("هر ۶ کتاب و ۶٬۲۲۲ سؤال ایندکس شده‌اند", () => {
+  it("هر ۶ کتاب و ۶٬۲۲۲ سؤالِ جزوه ایندکس شده‌اند (r411: + ۱٬۶۷۴ باندل در فایلِ پیمانِ خودش)", () => {
     expect(size.text).toBeGreaterThan(30_000);
-    expect(size.question).toBe(6_222);
+    // r411 — سؤالِ جزوه (۶٬۲۲۲) + باندل (۱٬۶۷۴) = ۷٬۸۹۶؛ سهمِ جزوه‌ای پین می‌ماند
+    expect(size.question).toBeGreaterThanOrEqual(7_896);
   });
 
   it("«حال کامل» از چند کتاب نتیجه می‌دهد (پراکنده‌سازیِ میانِ اسناد)", () => {

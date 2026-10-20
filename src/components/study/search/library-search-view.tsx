@@ -25,7 +25,7 @@ import {
 import { useStudy } from "@/lib/study-store";
 import { faNum } from "@/lib/study-theme";
 import { BOOKS, bookMetaByGrade } from "@/lib/books";
-import { buildHighlightRegex, type JozveSearchResult } from "@/lib/jozve-search";
+import { buildHighlightRegex, searchGroupKind, type JozveSearchResult } from "@/lib/jozve-search";
 import { LIBSEARCH_Q_KEY, clearStringPrefill, readStringPrefill } from "@/lib/nav-prefill";
 
 type KindFilter = "text" | "question" | null;
@@ -286,20 +286,21 @@ export default function LibrarySearchView({ initialGrade }: { initialGrade?: num
   // regex هم با terms همگام است — هویتِ پایدار تا هایلایتِ memo بی‌دلیل دوباره نسازد
   const regex = useMemo(() => buildHighlightRegex(terms), [terms]);
 
-  // گروه‌بندی نتایج بر پایهٔ کتاب (پایه)
+  // گروه‌بندی نتایج بر پایهٔ کتاب/منبع (bookTitle) — جزوه‌ها به رنگِ خودشان،
+  // بانک‌هایِ باندلِ ویژن ۲/کنکور گروه‌هایِ مستقل (r411)
   const grouped = useMemo(() => {
     if (!data?.results.length) return [];
-    const order: number[] = [];
-    const map = new Map<number, JozveSearchResult[]>();
+    const order: string[] = [];
+    const map = new Map<string, JozveSearchResult[]>();
     for (const r of data.results) {
-      const arr = map.get(r.grade);
+      const arr = map.get(r.bookTitle);
       if (arr) arr.push(r);
       else {
-        map.set(r.grade, [r]);
-        order.push(r.grade);
+        map.set(r.bookTitle, [r]);
+        order.push(r.bookTitle);
       }
     }
-    return order.map((g) => ({ grade: g, items: map.get(g)! }));
+    return order.map((t) => ({ title: t, items: map.get(t)! }));
   }, [data]);
 
   const hasQuery = debounced.length >= 2;
@@ -321,7 +322,7 @@ export default function LibrarySearchView({ initialGrade }: { initialGrade?: num
                 </span>
                 <h1 className="text-lg font-black leading-7 text-stone-800">جست‌وجو در کتاب‌ها</h1>
                 <p className="mt-1 text-[12px] leading-6 text-stone-500">
-                  {faNum(36791)} خطِ متنِ شش جزوه + {faNum(6222)} سؤالِ نُه بانک — با هم‌ارزِ ی/ک/آ و نیم‌فاصله
+                  {faNum(36791)} خطِ متن و {faNum(7896)} سؤال — شش جزوه، سه درسِ ویژن ۲، آزمونِ جامع و بانکِ کنکور
                 </p>
               </div>
             </div>
@@ -488,15 +489,23 @@ export default function LibrarySearchView({ initialGrade }: { initialGrade?: num
             {faNum(data.took)} میلی‌ثانیه
           </p>
           {grouped.map((g) => {
-            const meta = bookMetaByGrade(g.grade);
+            // سرگروه: جزوه → رنگِ کتاب؛ باندلِ ویژن ۲/کنکور → تمِ مستقل
+            const kind = searchGroupKind(g.items[0]?.doc ?? "");
+            const meta = bookMetaByGrade(g.items[0]?.grade ?? 7);
+            const spine =
+              kind === "vision2"
+                ? "from-violet-500 to-purple-700"
+                : kind === "konkur"
+                  ? "from-orange-500 to-amber-700"
+                  : (meta?.spine ?? "from-stone-400 to-stone-600");
             return (
-              <section key={g.grade} aria-label={`نتایج پایه ${meta?.label ?? g.grade}`} className="mb-5">
+              <section key={g.title} aria-label={`نتایج ${g.title}`} className="mb-5">
                 <div className="mb-2 flex items-center gap-2">
                   <span
-                    className={`inline-flex h-1.5 w-1.5 rounded-full bg-gradient-to-b ${meta?.spine ?? "from-stone-400 to-stone-600"}`}
+                    className={`inline-flex h-1.5 w-1.5 rounded-full bg-gradient-to-b ${spine}`}
                     aria-hidden
                   />
-                  <h3 className="text-[13px] font-black text-stone-700">{meta?.title ?? g.grade}</h3>
+                  <h3 className="text-[13px] font-black text-stone-700">{g.title}</h3>
                   <span className="rounded-full bg-stone-100 px-1.5 text-[10px] font-black text-stone-500">
                     {faNum(g.items.length)}
                   </span>
