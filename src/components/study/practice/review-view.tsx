@@ -7,22 +7,23 @@ import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
 import { findQuestion } from "@/lib/explain-source";
-import { jozveFileOf, mistakeTargetOf, loadJozveQuestionsFor, JOZVE_BUCKET_LABELS } from "@/lib/jozve-bank.client";
+import { jozveFileOf, mistakeTargetOf, loadJozveQuestionsFor, JOZVE_BUCKET_LABELS, sortBucketChips } from "@/lib/jozve-bank.client";
 import { trackEvent } from "@/lib/analytics";
 import type { QuizQuestion } from "@/lib/study-types";
 import QuizEngine from "../quiz/quiz-engine";
 
 /**
  * «مرور سریع قبل امتحان» — a mixed quiz built ONLY from the learner's own
- * mistake bank (lessons 1-3 + the 360-item exam bank + r404: the WHOLE
- * jozve library g7-g12). Answering a question correctly removes it from
- * the bank (QuizEngine does that via mistakesOf).
+ * mistake bank (lessons 1-3 + the 360-item exam bank + the 862-item konkur
+ * bank g10 (r405) + the WHOLE jozve library g7-g12 (r404)). Answering a
+ * question correctly removes it from the bank (QuizEngine does that via
+ * mistakesOf).
  */
 
 interface ResolvedMistake {
   q: QuizQuestion;
   count: number; // times answered wrong
-  bucket: string; // "0" exam bank | "1".."3" lessons | "g7".."g12" jozve grades
+  bucket: string; // "0" exam bank | "1".."3" lessons | "kg10" konkur bank | "g7".."g12" jozve grades
 }
 
 const BUCKET_LABELS: Record<string, string> = {
@@ -122,15 +123,9 @@ export default function ReviewView() {
   const buckets = useMemo(() => {
     const map = new Map<string, number>();
     for (const r of resolved) map.set(r.bucket, (map.get(r.bucket) ?? 0) + 1);
-    // numeric buckets (0..3) first in order; grade buckets (g7..g12) after, by grade
-    return [...map.entries()].sort((a, b) => {
-      const na = Number(a[0]);
-      const nb = Number(b[0]);
-      if (!Number.isNaN(na) && !Number.isNaN(nb)) return na - nb;
-      if (!Number.isNaN(na)) return -1;
-      if (!Number.isNaN(nb)) return 1;
-      return Number(a[0].slice(1)) - Number(b[0].slice(1));
-    });
+    // r405 — ordering lives in sortBucketChips (numerics → grades → konkur);
+    // the old inline numeric sort turned "kg10" into NaN territory.
+    return sortBucketChips([...map.entries()]);
   }, [resolved]);
 
   /* --------------------------- active session --------------------------- */

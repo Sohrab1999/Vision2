@@ -89,7 +89,7 @@ export const POST = withApi(
     const id = parsed.id;
 
     // 1) resolve the question server-side — unknown ids are rejected
-    //    (r403 — بانکِ گسترده: درس‌ها + کتابخانهٔ جزوه، ۷٬۰۳۴ سؤال)
+    //    (r405 — بانکِ گسترده: درس‌ها + کنکور + کتابخانهٔ جزوه، ۷٬۸۹۶ سؤال)
     const q = findQuestionAny(id);
     if (!q) {
       throw ApiError.notFound("سؤالی با این شناسه در بانک وب‌کتاب نیست.");

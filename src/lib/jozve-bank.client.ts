@@ -44,13 +44,25 @@ export function jozveBucketOf(id: string): string | null {
   return m ? `g${m[1]}` : null;
 }
 
+/** r405 — سطلِ مستقلِ بانکِ کنکورِ دهم (examBankG10، شناسه‌های g10-1..g10-862) */
+export const KONKUR_BUCKET = "kg10";
+
+/** بانکِ کنکورِ دهم — exam-view خطاها را با سطلِ همین ثابت ثبت/پاک می‌کند */
+export function isKonkurG10(id: string): boolean {
+  return /^g10-\d+$/.test(id);
+}
+
 /**
  * سطلِ ثبتِ خطا برای هر سؤال: سؤال‌های جزوه به پایهٔ خودشان می‌روند
- * (g7..g12)، بقیه به همان سطلِ همیشگیِ درس‌ها/آزمون (0..3).
+ * (g7..g12)، بانکِ کنکورِ دهم به سطلِ مستقلِ kg10 (r405 — تا پیش از این
+ * همه به سطلِ 0 می‌رفتند در حالی که exam-view با سطلِ دیگری می‌نوشت،
+ * یعنی پاسخِ درستِ بعدی هرگز خطا را از بانک بیرون نمی‌آورد)، بقیه به
+ * همان سطلِ همیشگیِ درس‌ها/آزمون (0..3).
  * ثبت و پاک‌کردنِ بانک خطا هر دو باید از همین تابع بخوانند وگرنه
  * سؤالی که «درست» پاسخ می‌شود هرگز از بانک بیرون نمی‌آید.
  */
 export function mistakeTargetOf(q: { id: string }): number | string {
+  if (isKonkurG10(q.id)) return KONKUR_BUCKET;
   return jozveBucketOf(q.id) ?? questionSourceLesson(q);
 }
 
@@ -124,4 +136,19 @@ export const JOZVE_BUCKET_LABELS: Record<string, string> = {
   g10: "جزوهٔ پایهٔ دهم",
   g11: "جزوهٔ پایهٔ یازدهم",
   g12: "جزوهٔ پایهٔ دوازدهم",
+  [KONKUR_BUCKET]: "بانک کنکور دهم",
 };
+
+/**
+ * r405 — ترتیبِ چیپ‌های سطل: عددی‌ها (0..3) اول، پایه‌ها g7..g12 بعد،
+ * سطلِ کنکور (kg10) در انتها؛ سطل‌هایِ ناشناخته پس از آن. قبل از این
+ * «kg10» در sortِ عددیِ slice(1) به NaN می‌افتاد و ترتیبِ چیپ‌ها نامطمئن بود.
+ */
+export function sortBucketChips(entries: [string, number][]): [string, number][] {
+  const order = ["0", "1", "2", "3", "g7", "g8", "g9", "g10", "g11", "g12", KONKUR_BUCKET];
+  const rank = (b: string): number => {
+    const i = order.indexOf(b);
+    return i === -1 ? order.length : i;
+  };
+  return [...entries].sort((a, b) => rank(a[0]) - rank(b[0]));
+}

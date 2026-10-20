@@ -108,8 +108,16 @@ describe("r404 — jozve id routing (file + mistake bucket)", () => {
     expect(checked).toBeGreaterThan(6000);
   });
 
-  it("grade buckets sort labels exist for all six grades", () => {
-    expect(Object.keys(JOZVE_BUCKET_LABELS)).toEqual(["g7", "g8", "g9", "g10", "g11", "g12"]);
+  it("grade buckets sort labels exist for all six grades (+ r405 konkur bucket)", () => {
+    expect(Object.keys(JOZVE_BUCKET_LABELS)).toEqual([
+      "g7",
+      "g8",
+      "g9",
+      "g10",
+      "g11",
+      "g12",
+      "kg10", // r405 — بانک کنکور دهم (WIDENED)
+    ]);
     expect(JOZVE_BUCKET_LABELS.g12).toBe("جزوهٔ پایهٔ دوازدهم");
   });
 });

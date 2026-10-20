@@ -88,7 +88,7 @@ export const POST = withApi(
     const items: TeacherAnswer[] = parsed.ids.map((id, i) => ({ id, ans: parsed.answers[i] ?? null }));
     const resolved: { q: Exclude<ReturnType<typeof findQuestionAny>, undefined>; ans: number | null }[] = [];
     for (const it of items) {
-      // r403 — بانکِ گسترده (۷٬۰۳۴): سشنِ جزوه‌ای هم داوری می‌شود
+      // r405 — بانکِ گسترده (۷٬۸۹۶): سشنِ جزوه‌ای و کنکور هم داوری می‌شود
       const q = findQuestionAny(it.id);
       if (!q) {
         throw ApiError.bad(

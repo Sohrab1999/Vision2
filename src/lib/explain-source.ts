@@ -6,6 +6,7 @@
 // ------------------------------------------------------------------
 
 import { examBank } from "@/data/exam";
+import { examBankG10 } from "@/data/exam-g10";
 import lesson1 from "@/data/lesson1";
 import lesson2 from "@/data/lesson2";
 import lesson3 from "@/data/lesson3";
@@ -21,12 +22,19 @@ function buildIndex(): Map<string, QuizQuestion> {
   };
   for (const lesson of [lesson1, lesson2, lesson3]) for (const q of lesson.quizzes) push(q);
   for (const q of examBank) push(q);
+  // r405 — بانک کنکور دهم (g10-1..g10-862) هم اکنون بخشی از ایندکسِ باندل است؛
+  // پیش از این خطاهایِ کنکور در مرورِ سریع ناپدید می‌شدند و /api/explain
+  // و /api/exam-review روی این شناسه‌ها 404/400 می‌دادند.
+  for (const q of examBankG10) push(q);
   return map;
 }
 
 /**
- * Client-safe bundled index (812 = 142+150+160 lessons + 360 exam).
- * r403 — the WIDED index (bundled + jozve library, ۷٬۰۳۴) lives in
+ * Client-safe bundled index (1674 = 142+150+160 lessons + 360 exam + 862 konkur g10).
+ * r405 — examBankG10 joined the bundle: quick review now resolves konkur
+ * mistake keys (g10:N) synchronously and the exam corner's own review
+ * sessions stop being invisible to the mistake bank.
+ * r403 — the WIDE index (bundled + jozve library, ۷٬۸۹۶) lives in
  * lib/teacher-bank.server.ts: this module is also imported by client
  * components (review-view / smart-practice), so node:fs must stay out.
  */

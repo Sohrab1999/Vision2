@@ -6,6 +6,7 @@ import { examBank, examBankG10, lessons } from "@/data";
 import type { QuizQuestion } from "@/lib/study-types";
 import { useStudy, mistakesOfLesson } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
+import { KONKUR_BUCKET } from "@/lib/jozve-bank.client";
 import { themeOf, faNum } from "@/lib/study-theme";
 import { trackEvent } from "@/lib/analytics";
 import { buildExamDictation, DICTATION_MIN_EXAM } from "@/lib/exam-dictation";
@@ -101,7 +102,8 @@ export default function ExamView() {
   const examDictCount = examDictPool.words.length;
 
   const examMistakeCount = mounted ? mistakesOfLesson(mistakes, 0) : 0;
-  const konkurMistakeCount = mounted ? mistakesOfLesson(mistakes, "g10") : 0;
+  // r405 — سطلِ مستقلِ بانکِ کنکور (kg10)؛ پیش از این سطلِ "g10" با جزوهٔ دهم مشترک بود
+  const konkurMistakeCount = mounted ? mistakesOfLesson(mistakes, KONKUR_BUCKET) : 0;
   const totalMistakesAll = mounted
     ? mistakesOfLesson(mistakes, 0) + mistakesOfLesson(mistakes, 1) + mistakesOfLesson(mistakes, 2) + mistakesOfLesson(mistakes, 3)
     : 0;
@@ -398,7 +400,7 @@ export default function ExamView() {
                 timed: konkurTimed,
                 kind: "exam",
                 resultKey: "exam-g10",
-                mistakesBucket: "g10",
+                mistakesBucket: KONKUR_BUCKET,
               })
             }
             className="w-full rounded-xl bg-teal-600 py-3.5 text-[15px] font-black text-white shadow-lg shadow-teal-900/25 transition-[background-color,transform] hover:bg-teal-700 active:scale-[0.98]"
@@ -411,11 +413,11 @@ export default function ExamView() {
               onClick={() =>
                 setSession({
                   title: "مرور اشتباهات بانک دهم",
-                  questions: shuffle(examBankG10.filter((q) => (mistakes[`g10:${q.id}`] ?? 0) > 0)),
+                  questions: shuffle(examBankG10.filter((q) => (mistakes[`${KONKUR_BUCKET}:${q.id}`] ?? 0) > 0)),
                   timed: false,
                   kind: "exam-mistakes",
                   resultKey: "exam-g10",
-                  mistakesBucket: "g10",
+                  mistakesBucket: KONKUR_BUCKET,
                 })
               }
               className="mistakes-cta mt-4 flex w-full items-center justify-between gap-3 rounded-2xl border border-rose-300 bg-gradient-to-l from-rose-50 to-red-50 p-4 text-right shadow-sm transition-[box-shadow,transform] hover:shadow-md active:scale-[0.99]"
