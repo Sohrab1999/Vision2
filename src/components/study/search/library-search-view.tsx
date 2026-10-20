@@ -27,6 +27,7 @@ import { useStudy } from "@/lib/study-store";
 import { faNum } from "@/lib/study-theme";
 import { BOOKS, bookMetaByGrade } from "@/lib/books";
 import { buildHighlightRegex, buildPhraseRegex, searchGroupKind, type JozveSearchResult } from "@/lib/jozve-search";
+import { practiceLabelOf, practiceTargetOf } from "@/lib/practice-target";
 import { LIBSEARCH_Q_KEY, clearStringPrefill, readStringPrefill } from "@/lib/nav-prefill";
 
 type KindFilter = "text" | "question" | null;
@@ -159,6 +160,12 @@ const OPTION_LETTERS = ["a", "b", "c", "d", "e", "f", "g", "h", "i"];
 
 function QuestionResultCard({ r, phrase, terms }: { r: JozveSearchResult; phrase: RegExp | null; terms: RegExp | null }) {
   const [open, setOpen] = useState(false);
+  const setView = useStudy((s) => s.setView);
+  // r416 — «تمرینِ همین‌جا»: هر کارتِ سؤالی که از بانکی آمده، یک کلیک
+  // تا خودِ همان بانک فاصله دارد (بانک‌هایِ جزوه → deep-linkِ بانکِ
+  // book-view؛ باندل → درس/آزمون/کنکور). null → بدونِ دکمه — صداقتِ UI.
+  const target = practiceTargetOf(r);
+  const label = practiceLabelOf(r);
   const safeAnswer =
     typeof r.answer === "number" && r.answer >= 0 && r.answer < (r.options?.length ?? 0) ? r.answer : null;
   return (
@@ -225,13 +232,25 @@ function QuestionResultCard({ r, phrase, terms }: { r: JozveSearchResult; phrase
         </div>
       )}
       {!open && (
-        <button
-          onClick={() => setOpen(true)}
-          className="mt-1.5 inline-flex items-center gap-1 text-[11px] font-black text-violet-600 transition hover:text-violet-800"
-        >
-          <ChevronDown size={13} />
-          گزینه‌ها و پاسخ
-        </button>
+        <div className="mt-1.5 flex items-center gap-2">
+          <button
+            onClick={() => setOpen(true)}
+            className="inline-flex items-center gap-1 text-[11px] font-black text-violet-600 transition hover:text-violet-800"
+          >
+            <ChevronDown size={13} />
+            گزینه‌ها و پاسخ
+          </button>
+          {target && label && (
+            <button
+              onClick={() => setView(target)}
+              className="inline-flex items-center gap-1 rounded-lg border border-violet-200 bg-violet-50 px-2 py-1 text-[10.5px] font-black text-violet-700 transition hover:bg-violet-100 active:scale-95"
+              title="پرش به خودِ همین بانک تست — از کارنامه هم قابلِ رسیدن است"
+            >
+              <ListChecks size={12} aria-hidden />
+              {label}
+            </button>
+          )}
+        </div>
       )}
     </motion.div>
   );

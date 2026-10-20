@@ -312,7 +312,16 @@ export default function ReportCard({ open, onClose }: { open: boolean; onClose: 
                             {canContinue && nextBank != null && (
                               <span className="flex w-full items-center gap-1 pl-[1.625rem] text-[9.5px] font-black text-stone-400">
                                 <RotateCcw size={9} className="shrink-0 text-emerald-600/70" aria-hidden />
-                                ادامه از بانک {faNum(nextBank)}
+                                <span>ادامه از بانک {faNum(nextBank)}</span>
+                                {/* r416 — طولِ دویدنِ بانک‌هایِ پشت‌سرهم؛ فقط برای
+                                    ردیفِ بانک‌شروع‌شده (percent>0) و دویِ >۱ —
+                                    spanهای جدا تا نامِ پایه در دسترس دست‌نخورده بماند */}
+                                {b.percent > 0 && b.nextRun > 1 && (
+                                  <>
+                                    <span className="text-stone-300" aria-hidden>·</span>
+                                    <span className="text-stone-500">{faNum(b.nextRun)} بانکِ پیاپی</span>
+                                  </>
+                                )}
                               </span>
                             )}
                           </button>

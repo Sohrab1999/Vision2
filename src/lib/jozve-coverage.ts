@@ -31,6 +31,9 @@ export interface JozveBookCoverage {
   /** r415 — کوچک‌ترین بانکِ پوشیده‌نشده (۱..total)؛ null اگر همه پوشیده
    * یا بی‌بانک — مصرف‌کننده: چیپِ «ادامه از بانک M» در کارنامه */
   nextBank: number | null;
+  /** r416 — طولِ دویدنِ پشت‌سرهمِ بانک‌هایِ پوشیده‌نشده از nextBank
+   * (شاملِ خودش)؛ ۰ اگر nextBank null — مصرف‌کننده: «K بانکِ پیاپی» */
+  nextRun: number;
 }
 
 // کلیدِ بانکِ تست: jozve-g10-l5 — و کلیدِ گرامر: jozve-g11-gram-l3 و
@@ -83,6 +86,16 @@ export function jozveCoverage(results: Record<string, QuizResult>): JozveBookCov
         }
       }
     }
+    // r416 — چند بانکِ پشت‌سرهم از همین‌جا باز مانده؟ (چیپِ «K بانکِ
+    // پیاپی» فقط وقتی معنا دارد که یادگیرنده بانک‌ها را شروع کرده باشد —
+    // گیتِ نمایش با percent در مصرف‌کننده است، نه اینجا)
+    let nextRun = 0;
+    if (nextBank != null) {
+      for (let m = nextBank; m <= total; m++) {
+        if (set?.has(m)) break;
+        nextRun += 1;
+      }
+    }
     return {
       grade,
       attempted,
@@ -91,6 +104,7 @@ export function jozveCoverage(results: Record<string, QuizResult>): JozveBookCov
       sessions: sessionsByGrade.get(grade) ?? 0,
       bestPercent: bestByGrade.get(grade) ?? 0,
       nextBank,
+      nextRun,
     };
   });
 }
