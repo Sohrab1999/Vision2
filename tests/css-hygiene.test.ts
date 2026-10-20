@@ -1000,7 +1000,7 @@ describe("globals.css stone veil phase 6 (bg-stone-50/60|70 — Task 89)", () =>
     ]);
   });
 
-  it("consumer matrix pinned — 28 migrations in exact file split (18× /60 + 10× /70)", () => {
+  it("consumer matrix pinned — 29 migrations in exact file split (19× /60 + 10× /70)", () => {
     let n60 = 0;
     let n70 = 0;
     const walk = (d: string): void => {
@@ -1019,7 +1019,7 @@ describe("globals.css stone veil phase 6 (bg-stone-50/60|70 — Task 89)", () =>
       }
     };
     walk(resolve(process.cwd(), "src"));
-    expect(n60, "c-stone-60 consumers").toBe(18);
+    expect(n60, "c-stone-60 consumers").toBe(19); // r413 +1: report-card پوشش شش جزوه (empty state)
     expect(n70, "c-stone-70 consumers").toBe(10);
   });
 

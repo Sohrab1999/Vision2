@@ -30,6 +30,9 @@ import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
 import { BADGES, buildEvalInput, unlockedBadgeIds } from "@/lib/achievements";
 import { skillBreakdown, barColorFor, skillGradeFa } from "@/lib/skill-stats";
+import { jozveCoverage, jozveCoverageHasAny } from "@/lib/jozve-coverage";
+import { bookMetaByGrade } from "@/lib/books";
+import { LibraryBig } from "lucide-react";
 import WeeklyReportSection from "./weekly-report";
 
 // ------------------------------------------------------------------
@@ -102,6 +105,9 @@ export default function ReportCard({ open, onClose }: { open: boolean; onClose: 
     [evalInput]
   );
   const skills = useMemo(() => (mounted ? skillBreakdown(results) : []), [mounted, results]);
+  // r413 — پوششِ شش جزوه: بانکِ متمایزِ دیده‌شدهٔ هر کتاب ÷ کلِ بانک‌هایش
+  const bookCoverage = useMemo(() => (mounted ? jozveCoverage(results) : []), [mounted, results]);
+  const showBookCoverage = jozveCoverageHasAny(bookCoverage);
   const week = useMemo(() => (mounted ? lastNDays(7, history) : []), [mounted, history]);
   const month = useMemo(() => (mounted ? lastNDays(30, history) : []), [mounted, history]);
 
@@ -225,6 +231,63 @@ export default function ReportCard({ open, onClose }: { open: boolean; onClose: 
 
               {/* Task-37 — هفته‌نامهٔ پیشرفت: week-over-week digest */}
               <WeeklyReportSection />
+
+              {/* r413 — پوشش شش جزوه: هر کتاب تا کجا پوشیده شده */}
+              <div>
+                <div className="mb-2 flex items-center justify-between">
+                  <div className="flex items-center gap-1.5 text-[12px] font-extrabold text-stone-700">
+                    <LibraryBig size={13} className="text-emerald-600" />
+                    پوشش شش جزوه
+                  </div>
+                  {showBookCoverage && (
+                    <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-black text-emerald-700 ring-1 ring-emerald-200">
+                      {faNum(bookCoverage.reduce((s, b) => s + b.attempted, 0))} بانک از {" "}
+                      {faNum(bookCoverage.reduce((s, b) => s + b.total, 0))}
+                    </span>
+                  )}
+                </div>
+                {!showBookCoverage ? (
+                  <div className="rounded-xl border-2 border-dashed border-stone-200 c-stone-60 px-3 py-4 text-center text-[11.5px] font-bold text-stone-400">
+                    هنوز از کتاب‌ها تست نزدی — با اولین تستِ هر جزوه، نوارِ همان کتاب اینجا پر می‌شود
+                  </div>
+                ) : (
+                  <ul className="report-books space-y-2">
+                    {bookCoverage.map((b) => {
+                      const meta = bookMetaByGrade(b.grade);
+                      return (
+                        <li key={b.grade} className="flex items-center gap-2.5">
+                          <span
+                            className={`inline-flex h-1.5 w-4 shrink-0 rounded-full bg-gradient-to-b ${meta?.spine ?? "from-stone-400 to-stone-600"}`}
+                            aria-hidden
+                          />
+                          <span className="w-14 shrink-0 text-[11.5px] font-extrabold text-stone-700">جزوهٔ {meta?.label ?? b.grade}</span>
+                          <div
+                            className="report-track h-2 flex-1 overflow-hidden rounded-full bg-stone-100"
+                            role="meter"
+                            aria-valuenow={b.percent}
+                            aria-valuemin={0}
+                            aria-valuemax={100}
+                            aria-label={`پوشش جزوهٔ ${meta?.label ?? b.grade}`}
+                          >
+                            <motion.div
+                              className={`h-full rounded-full bg-gradient-to-l ${meta?.spine ?? "from-stone-400 to-stone-600"}`}
+                              initial={{ width: 0 }}
+                              animate={{ width: `${Math.max(b.percent > 0 ? 3 : 0, b.percent)}%` }}
+                              transition={{ duration: 0.6, ease: "easeOut", delay: b.grade * 0.04 }}
+                            />
+                          </div>
+                          <span
+                            className={`w-9 shrink-0 text-left text-[11px] font-black ${b.percent > 0 ? (meta?.accent ?? "text-stone-700") : "text-stone-300"}`}
+                            title={`${faNum(b.attempted)} بانک از ${faNum(b.total)} — ${faNum(b.sessions)} سشن، بهترین ${faNum(b.bestPercent)}٪`}
+                          >
+                            {faNum(b.percent)}٪
+                          </span>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
+              </div>
 
               {/* monthly band */}
               {monthBuckets.length > 0 && (

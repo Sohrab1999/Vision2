@@ -268,8 +268,17 @@ export function searchJozve(
   const phraseRe = buildPhraseRegex(terms);
   const limit = Math.min(Math.max(opts.limit ?? 30, 1), 60);
 
+  // r413 — پرچمِ عبارتِ پیوسته روی «متنِ خام» یک‌بار در حلقهٔ امتیازدهی
+  // محاسبه می‌شود و هم به رتبه‌بندی و هم به شکلِ سیم می‌رسد — پیش‌تر پرچم
+  // فقط پس از انتخابِ نتایج دوباره‌آزمایی می‌شد و در ترتیب هیچ نقشی نداشت.
+  const rawHit = (r: SearchRecord): boolean => {
+    if (!phraseRe) return false;
+    const raw = r.kind === "text" ? (r.lineText ?? "") : (r.question ?? "");
+    return new RegExp(phraseRe.source, "gi").test(raw); // نمونهٔ تازه — lastIndexِ مستقل
+  };
+
   // امتیازدهی + گروه‌بندیِ تطبیق‌ها بر پایهٔ سند — برای پراکنده‌سازیِ متنوع
-  const byDoc = new Map<string, { rec: SearchRecord; score: number }[]>();
+  const byDoc = new Map<string, { rec: SearchRecord; score: number; phraseHit: boolean }[]>();
   let total = 0;
   for (const r of jozveSearchCorpus()) {
     if (opts.grade != null && r.grade !== opts.grade) continue;
@@ -278,20 +287,23 @@ export function searchJozve(
     if (score == null) continue;
     total += 1;
     if (total > 2000) break; // سقفِ ایمنیِ پیمایش
+    const entry = { rec: r, score, phraseHit: rawHit(r) };
     const arr = byDoc.get(r.doc);
-    if (arr) arr.push({ rec: r, score });
-    else byDoc.set(r.doc, [{ rec: r, score }]);
+    if (arr) arr.push(entry);
+    else byDoc.set(r.doc, [entry]);
   }
 
-  // هر سند: نزولیِ امتیاز
+  // هر سند: نزولیِ امتیاز؛ هم‌امتیازها → عبارتِ پیوسته اول (tie-breakِ صریحِ r413 —
+  // پیش‌تر +۶ غیرمستقیمِ scoreHaystack فقط روی haystackِ نرمال بود و رکوردی که
+  // عبارت در متنِ خامِ‌شان نشسته اما در گزینه‌ها/ترجمه پراکنده است می‌ماند عقب)
   for (const arr of byDoc.values()) {
-    arr.sort((a, b) => b.score - a.score);
+    arr.sort((a, b) => b.score - a.score || Number(b.phraseHit) - Number(a.phraseHit));
   }
 
   // نوبت‌کشیِ میانِ اسناد تا کپِ هر سند
   const docs = [...byDoc.keys()];
   const perDoc = new Map<string, number>();
-  const picked: { rec: SearchRecord; score: number }[] = [];
+  const picked: { rec: SearchRecord; score: number; phraseHit: boolean }[] = [];
   for (let round = 0; picked.length < limit && round < PER_DOC_CAP; round++) {
     let advanced = false;
     for (const doc of docs) {
@@ -306,7 +318,7 @@ export function searchJozve(
     if (!advanced) break;
   }
 
-  const results = picked.map(({ rec: r, score }) => {
+  const results = picked.map(({ rec: r, score, phraseHit }) => {
     const raw = r.kind === "text" ? (r.lineText ?? "") : (r.question ?? "");
     const base: JozveSearchResult = {
       kind: r.kind,
@@ -317,10 +329,9 @@ export function searchJozve(
       snippet: makeSnippet(raw, terms, 70, phraseRe),
       score,
     };
-    // r412 — عبارتِ پیوسته در «متنِ خامِ» رکورد نشسته است؟ (نه فقط در
-    // haystackِ نرمال — هایلایتِ کلاینت روی متنِ خام زندگی می‌کند).
-    // نمونهٔ تازه — regexِ سراسری lastIndex را بینِ رکوردها نگه می‌دارد.
-    if (phraseRe && new RegExp(phraseRe.source, "gi").test(raw)) base.phraseHit = true;
+    // r412/r413 — عبارتِ پیوسته در «متنِ خامِ» رکورد نشسته است؟ (نه فقط در
+    // haystackِ نرمال — هایلایتِ کلاینت روی متنِ خام زندگی می‌کند)؛
+    // پرچمِ محاسبه‌شده در حلقهٔ امتیازدهی همان‌جا مصرف می‌شود — بدونِ دوباره‌آزمایی.
     if (r.kind === "text") {
       base.chapterId = r.chapterId;
       base.chapterTitle = r.chapterTitle;
@@ -335,6 +346,7 @@ export function searchJozve(
       base.answer = r.answer;
       base.translation = r.translation;
     }
+    if (phraseHit) base.phraseHit = true;
     return base;
   });
 
