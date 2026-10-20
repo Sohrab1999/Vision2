@@ -25,6 +25,7 @@ import {
 import { faNum } from "@/lib/study-theme";
 import { speak } from "@/lib/speak";
 import { useStudy } from "@/lib/study-store";
+import { mistakeTargetOf } from "@/lib/jozve-bank.client";
 import QuizEngine from "../quiz/quiz-engine";
 import type { QuizQuestion } from "@/lib/study-types";
 import {
@@ -172,8 +173,8 @@ export default function BookView({ grade }: { grade: number }) {
   const [tab, setTab] = useState<BookTab>("vocab");
   const [copied, setCopied] = useState<string | null>(null);
 
-  // سشن آزمون — الگوی کتابخانهٔ جزوه‌ها؛ trackMistakes=false (محتوای
-  // جزوه‌ای، بانک خطای سه درسِ Vision 2 را آلوده نمی‌کند)
+  // سشن آزمون — الگوی کتابخانهٔ جزوه‌ها؛ r404 — خطاها با سطلِ پایه‌ایِ
+  // مستقل (g7..g12) ثبت می‌شوند و بانکِ سه درسِ Vision 2 دست‌نخورده می‌ماند.
   const [testSession, setTestSession] = useState<{
     title: string;
     questions: QuizQuestion[];
@@ -313,7 +314,7 @@ export default function BookView({ grade }: { grade: number }) {
           lessonId="jozve"
           category={testSession.category}
           immediate
-          trackMistakes={false}
+          mistakesOf={mistakeTargetOf}
           onExit={() => setTestSession(null)}
         />
       </div>

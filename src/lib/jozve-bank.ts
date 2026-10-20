@@ -16,7 +16,8 @@
 
 import { readFileSync } from "node:fs";
 import path from "node:path";
-import type { QuizCategory, QuizQuestion } from "./study-types";
+import { asQuestion } from "./quiz-question-guard";
+import type { QuizQuestion } from "./study-types";
 
 /** nine quiz-bearing files of the jozve library (id prefixes are unique) */
 export const JOZVE_BANK_FILES = [
@@ -31,32 +32,8 @@ export const JOZVE_BANK_FILES = [
   "grammar-g12-topic.json",
 ] as const;
 
-/** minimal runtime shape-check — a row must look like a real question */
-function asQuestion(raw: unknown): QuizQuestion | null {
-  if (typeof raw !== "object" || raw === null) return null;
-  const q = raw as Record<string, unknown>;
-  const { id, question, options, answer } = q as Record<string, unknown>;
-  if (typeof id !== "string" || id.length === 0 || id.length > 60) return null;
-  if (typeof question !== "string" || question.trim().length === 0) return null;
-  if (!Array.isArray(options) || options.length === 0) return null;
-  if (!options.every((o) => typeof o === "string")) return null;
-  if (typeof answer !== "number" || !Number.isInteger(answer) || answer < 0 || answer >= options.length) return null;
-  const rawCat = typeof q.category === "string" ? q.category : "vocab";
-  const category: QuizCategory = rawCat === "grammar" || rawCat === "vocab-konkuri" ? rawCat : "vocab";
-  const out: QuizQuestion = {
-    id,
-    category,
-    question,
-    options: options as string[],
-    answer,
-  };
-  if (q.kind === "typed") out.kind = "typed";
-  if (Array.isArray(q.accepted) && q.accepted.every((a) => typeof a === "string")) {
-    out.accepted = q.accepted as string[];
-  }
-  if (typeof q.translation === "string" && q.translation.length > 0) out.translation = q.translation;
-  return out;
-}
+// r404 — اعتبارسنجِ شکلِ سؤال به lib/quiz-question-guard.ts (مشترکِ
+// سرور/کلاینت) کوچید؛ این ماژول همان گارد را مصرف می‌کند.
 
 interface LessonLike {
   questions?: unknown;

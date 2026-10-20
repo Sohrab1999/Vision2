@@ -1,26 +1,28 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { Zap, Eraser, ArrowLeft, PartyPopper, CheckCircle2, Info, ClipboardCheck } from "lucide-react";
-import { useStudy, questionSourceLesson } from "@/lib/study-store";
+import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
 import { findQuestion } from "@/lib/explain-source";
+import { jozveFileOf, mistakeTargetOf, loadJozveQuestionsFor, JOZVE_BUCKET_LABELS } from "@/lib/jozve-bank.client";
 import { trackEvent } from "@/lib/analytics";
 import type { QuizQuestion } from "@/lib/study-types";
 import QuizEngine from "../quiz/quiz-engine";
 
 /**
  * «مرور سریع قبل امتحان» — a mixed quiz built ONLY from the learner's own
- * mistake bank (lessons 1-3 + the 360-item exam bank). Answering a question
- * correctly removes it from the bank (QuizEngine does that via mistakesOf).
+ * mistake bank (lessons 1-3 + the 360-item exam bank + r404: the WHOLE
+ * jozve library g7-g12). Answering a question correctly removes it from
+ * the bank (QuizEngine does that via mistakesOf).
  */
 
 interface ResolvedMistake {
   q: QuizQuestion;
   count: number; // times answered wrong
-  bucket: string; // "0" exam bank | "1".."3" lessons
+  bucket: string; // "0" exam bank | "1".."3" lessons | "g7".."g12" jozve grades
 }
 
 const BUCKET_LABELS: Record<string, string> = {
@@ -28,20 +30,38 @@ const BUCKET_LABELS: Record<string, string> = {
   "1": "درس اول",
   "2": "درس دوم",
   "3": "درس سوم",
+  ...JOZVE_BUCKET_LABELS,
 };
 
-/** resolve mistake-bank keys ("bucket:questionId") back to bundled questions */
-function resolveMistakes(mistakes: Record<string, number>): ResolvedMistake[] {
+/**
+ * resolve mistake-bank keys ("bucket:questionId") back to questions.
+ * Bundled questions resolve synchronously (explain-source index);
+ * jozve-library questions resolve from the on-demand cache the
+ * effect below fills by fetching the owning public/jozve files.
+ */
+function resolveMistakes(
+  mistakes: Record<string, number>,
+  jozveCache: Map<string, QuizQuestion>
+): { resolved: ResolvedMistake[]; pendingIds: string[] } {
   const out: ResolvedMistake[] = [];
+  const pending = new Set<string>();
   for (const [key, count] of Object.entries(mistakes)) {
     if (!count || count <= 0) continue;
     const sep = key.indexOf(":");
     if (sep <= 0) continue;
-    const q = findQuestion(key.slice(sep + 1));
-    if (q) out.push({ q, count, bucket: key.slice(0, sep) });
+    const id = key.slice(sep + 1);
+    const q = findQuestion(id) ?? jozveCache.get(id);
+    if (q) {
+      out.push({ q, count, bucket: key.slice(0, sep) });
+    } else if (jozveFileOf(id) && !pending.has(id)) {
+      pending.add(id);
+    }
   }
   // most-missed first; ties shuffled so repeated sessions vary
-  return out.sort((a, b) => b.count - a.count || (Math.random() < 0.5 ? -1 : 1));
+  return {
+    resolved: out.sort((a, b) => b.count - a.count || (Math.random() < 0.5 ? -1 : 1)),
+    pendingIds: [...pending],
+  };
 }
 
 function cheerFor(total: number): { emoji: string; text: string } {
@@ -59,14 +79,58 @@ export default function ReviewView() {
   const mounted = useMounted();
   const [session, setSession] = useState<QuizQuestion[] | null>(null);
   const [size, setSize] = useState<number>(10);
+  // r404 — jozve questions fetched on demand from public/jozve files
+  const [jozveCache, setJozveCache] = useState<Map<string, QuizQuestion>>(new Map());
+
+  // fill the jozve cache for any not-yet-resolved library mistakes;
+  // re-runs once after the cache fills and then finds nothing pending
+  useEffect(() => {
+    if (!mounted) return;
+    const ids = new Set<string>();
+    for (const [key, count] of Object.entries(mistakes)) {
+      if (!count || count <= 0) continue;
+      const sep = key.indexOf(":");
+      if (sep <= 0) continue;
+      const id = key.slice(sep + 1);
+      if (!findQuestion(id) && !jozveCache.has(id) && jozveFileOf(id)) ids.add(id);
+    }
+    if (ids.size === 0) return;
+    let alive = true;
+    loadJozveQuestionsFor([...ids])
+      .then((map) => {
+        if (!alive || map.size === 0) return;
+        setJozveCache((prev) => {
+          const next = new Map(prev);
+          for (const [id, q] of map) next.set(id, q);
+          return next;
+        });
+      })
+      .catch(() => {
+        /* loader never rejects; belt-and-suspenders */
+      });
+    return () => {
+      alive = false;
+    };
+  }, [mounted, mistakes, jozveCache]);
 
   // re-derives after every quiz finish (right answers shrink the bank)
-  const resolved = useMemo(() => (mounted ? resolveMistakes(mistakes) : []), [mounted, mistakes]);
+  const { resolved, pendingIds } = useMemo(
+    () => (mounted ? resolveMistakes(mistakes, jozveCache) : { resolved: [], pendingIds: [] }),
+    [mounted, mistakes, jozveCache]
+  );
 
   const buckets = useMemo(() => {
     const map = new Map<string, number>();
     for (const r of resolved) map.set(r.bucket, (map.get(r.bucket) ?? 0) + 1);
-    return [...map.entries()].sort((a, b) => Number(a[0]) - Number(b[0]));
+    // numeric buckets (0..3) first in order; grade buckets (g7..g12) after, by grade
+    return [...map.entries()].sort((a, b) => {
+      const na = Number(a[0]);
+      const nb = Number(b[0]);
+      if (!Number.isNaN(na) && !Number.isNaN(nb)) return na - nb;
+      if (!Number.isNaN(na)) return -1;
+      if (!Number.isNaN(nb)) return 1;
+      return Number(a[0].slice(1)) - Number(b[0].slice(1));
+    });
   }, [resolved]);
 
   /* --------------------------- active session --------------------------- */
@@ -79,7 +143,7 @@ export default function ReviewView() {
         lessonId="review"
         category="review"
         immediate={true}
-        mistakesOf={(q) => questionSourceLesson(q)}
+        mistakesOf={mistakeTargetOf}
         onExit={() => setSession(null)}
       />
     );
@@ -110,7 +174,7 @@ export default function ReviewView() {
         </div>
       </motion.div>
 
-      {mounted && total === 0 ? (
+      {mounted && total === 0 && pendingIds.length === 0 ? (
         /* ---------------------------- empty state ---------------------------- */
         <motion.div
           initial={{ opacity: 0, scale: 0.97 }}
@@ -133,6 +197,22 @@ export default function ReviewView() {
             آزمون جامع واژگان
             <ArrowLeft size={15} />
           </button>
+        </motion.div>
+      ) : mounted && total === 0 && pendingIds.length > 0 ? (
+        /* ------------------- loading jozve mistakes (transient) ------------------- */
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="rounded-2xl border border-stone-200 bg-white p-8 text-center"
+          role="status"
+        >
+          <span className="mx-auto mb-4 flex h-14 w-14 animate-pulse items-center justify-center rounded-full bg-amber-100 text-amber-600">
+            <Eraser size={24} />
+          </span>
+          <h2 className="mb-1.5 text-base font-extrabold text-stone-800">در حال آماده‌سازیِ خطاهای جزوه…</h2>
+          <p className="mx-auto max-w-md text-[12.5px] leading-6 text-stone-500">
+            {faNum(pendingIds.length)} سؤالِ غلط از کتابخانهٔ جزوه‌ها پیدا شده — لحظه‌ای بعد سؤال‌ها می‌آیند.
+          </p>
         </motion.div>
       ) : (
         <>
@@ -224,7 +304,7 @@ export default function ReviewView() {
 
           {/* ------------------------------ per-lesson pointer ------------------------------ */}
           <p className="rounded-xl bg-stone-50 px-4 py-3 text-[12px] leading-6 text-stone-500">
-            برای دیدنِ متن و جزئیاتِ سؤال‌های غلطِ هر درس، به تب «تست» همان درس برو —
+            برای دیدنِ متنِ کاملِ سؤال‌های غلط، به تب «تست» هر درس یا کتابخانهٔ جزوه‌ها برو —
             مرورِ سریع فقط برای تمرینِ ترکیبیِ قبل از امتحان است.
           </p>
         </>

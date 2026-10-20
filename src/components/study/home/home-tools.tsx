@@ -2,7 +2,7 @@
 
 import { Sparkles, BookMarked, ClipboardCheck, GraduationCap, TrainFront, Swords, Ear, Eraser, Library, LibraryBig, Trophy, Star } from "lucide-react";
 import { TOTAL_VOCABULARY, EXAM_BANK_SIZE } from "@/data/lesson-meta";
-import { useStudy, summarize, srsDueTotal, firstLessonWithDue, mistakesOfLesson } from "@/lib/study-store";
+import { useStudy, summarize, srsDueTotal, firstLessonWithDue } from "@/lib/study-store";
 import { hardIdsOf } from "@/lib/konkur";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
@@ -22,8 +22,9 @@ export default function HomeTools() {
 
   const summary = mounted ? summarize(known, results) : { knownCount: 0, totalPercent: 0, doneCategories: 0, bestExam: null };
   const reviewLesson = mounted ? firstLessonWithDue(srs) : null;
+  // r404 — badge «مرور سریع» حالا خطاهای کتابخانهٔ جزوه (سطل‌های g7..g12) را هم می‌شمارد
   const totalMistakes = mounted
-    ? mistakesOfLesson(mistakes, 0) + mistakesOfLesson(mistakes, 1) + mistakesOfLesson(mistakes, 2) + mistakesOfLesson(mistakes, 3)
+    ? Object.values(mistakes).filter((c) => c > 0).length
     : 0;
   const konkurHardCount = mounted ? hardIdsOf(mistakes, konkurWrong).size : 0;
 
@@ -43,7 +44,7 @@ export default function HomeTools() {
           { icon: TrainFront, title: "متروی گرامر", desc: "نقشهٔ سفر گرامر کتاب: ۶ خط و ۱۵ ایستگاه واقعی؛ هر قاعده یک ایستگاه با درس، ترفند و آزمونک", onClick: () => setView({ type: "grammar" as const }), color: "text-teal-600 bg-teal-50 border-teal-200" },
           { icon: Swords, title: "نبرد دودنفره", desc: "مصاف زندهٔ واژگانی با یادگیرندهٔ دیگر: ۱۰ سؤال، ۱۵ ثانیه، داوری روی سرور", onClick: () => setView({ type: "duel" as const }), color: "text-fuchsia-600 bg-fuchsia-50 border-fuchsia-200" },
           { icon: Ear, title: "آزمون دیکته", desc: "املای شنیداری با روخوانی هوش مصنوعی و ثبت در SRS", onClick: () => openLessonTab(reviewLesson ?? 1, "dictation"), color: "text-violet-600 bg-violet-50 border-violet-200" },
-          { icon: Eraser, title: "مرور سریع قبل امتحان", desc: "ترکیبی از غلط‌های اخیر ۳ درس و بانک ۳۶۰تا؛ پاسخ درست = حذف از بانک خطا", onClick: () => setView({ type: "review" as const }), color: "text-rose-600 bg-rose-50 border-rose-200", badge: totalMistakes },
+          { icon: Eraser, title: "مرور سریع قبل امتحان", desc: "ترکیبی از غلط‌های اخیر — از سه درس و بانک ۳۶۰تا تا هر شش جزوه؛ پاسخ درست = حذف از بانک خطا", onClick: () => setView({ type: "review" as const }), color: "text-rose-600 bg-rose-50 border-rose-200", badge: totalMistakes },
           { icon: LibraryBig, title: "کتابخانهٔ جزوه‌ها", desc: "استخراج کامل ۶ جزوهٔ پایهٔ ۷ تا ۱۲: واژگان، ترجمه، گرامر، تست و پاسخنامه — با جست‌وجو", onClick: () => setView({ type: "jozve" as const }), color: "text-amber-700 bg-amber-50 border-amber-200" },
           { icon: Library, title: "ضمیمهٔ کتاب", desc: "افعال بی‌قاعده، جدول تلفظ IPA و اجزای کلام", view: { type: "appendix" as const }, color: "text-amber-600 bg-amber-50 border-amber-200" },
           { icon: Trophy, title: "کارنامهٔ من", desc: "گزارش کامل پیشرفت: رکوردها، مهارت‌ها و فعالیت هفته", onClick: () => window.dispatchEvent(new CustomEvent("open-report")), color: "text-stone-600 bg-stone-50 border-stone-200", custom: true },

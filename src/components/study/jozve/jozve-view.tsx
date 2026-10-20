@@ -25,6 +25,7 @@ import {
 import { faNum } from "@/lib/study-theme";
 import { speak } from "@/lib/speak";
 import { useStudy } from "@/lib/study-store";
+import { mistakeTargetOf } from "@/lib/jozve-bank.client";
 import QuizEngine from "../quiz/quiz-engine";
 import type { QuizQuestion } from "@/lib/study-types";
 
@@ -1605,8 +1606,10 @@ export default function JozveView() {
   }, []);
 
   // اجرای تست واژگان جزوه — سشن QuizEngine مستقل (خارج از بانک ۳ درس):
-  // trackMistakes=false چون این محتوا جزوهٔ پایه‌های دیگر است و نباید بانک
-  // خطای درس‌های Vision 2 را آلوده کند؛ نتیجه زیر کلید مستقل خودش می‌رود.
+  // r404 — خطاها اکنون با سطلِ مستقلِ پایه‌ای (g7..g12) ثبت می‌شوند؛
+  // بانکِ خطای درس‌های Vision 2 دست‌نخورده می‌ماند و «مرورِ سریع» با
+  // لودرِ on-demand کلیدهای جزوه‌ای را هم حل می‌کند. نتیجه زیر کلید
+  // مستقل خودش می‌رود.
   const [testSession, setTestSession] = useState<{
     title: string;
     questions: QuizQuestion[];
@@ -1791,7 +1794,7 @@ export default function JozveView() {
           lessonId="jozve"
           category={testSession.category}
           immediate
-          trackMistakes={false}
+          mistakesOf={mistakeTargetOf}
           onExit={() => setTestSession(null)}
         />
       )}

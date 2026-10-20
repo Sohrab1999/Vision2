@@ -102,6 +102,9 @@ describe("jozve test bank g12-l1 (r273 extraction receipt)", () => {
     expect(src).toContain('lesson: 1, title: "درس اول", count: 100');
     expect(src).toContain('lesson: 2, title: "درس دوم", count: 100');
     expect(src).toContain('lesson: 3, title: "درس سوم", count: 100');
-    expect(src).toContain("trackMistakes={false}"); // بانک خطای سه درس دست‌نخورده می‌ماند
+    // r404 — خطاهای جزوه با سطلِ پایه‌ایِ مستقل (g7..g12) ثبت می‌شوند؛
+    // بانکِ خطای سه درسِ Vision 2 همچنان دست‌نخورده می‌ماند (بدونِ آلودگی).
+    expect(src).toContain("mistakesOf={mistakeTargetOf}");
+    expect(src).not.toContain("trackMistakes={false}");
   });
 });
