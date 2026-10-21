@@ -53,10 +53,10 @@ function seedWeekly() {
   // هفتهٔ جاری: امروز ۸ مرور + دیروز ۲ آزمون + ۳ روز پیش ۵ واژه؛ هفتهٔ پیش کمتر
   useStudy.setState({
     dayHistory: {
-      [daysAgoKey(0)]: { day: daysAgoKey(0), reviews: 8, quizzes: 0, words: 0, dictation: 0, rush: 0 },
-      [daysAgoKey(1)]: { day: daysAgoKey(1), reviews: 0, quizzes: 2, words: 0, dictation: 0, rush: 0 },
-      [daysAgoKey(3)]: { day: daysAgoKey(3), reviews: 0, quizzes: 0, words: 5, dictation: 0, rush: 0 },
-      [daysAgoKey(9)]: { day: daysAgoKey(9), reviews: 1, quizzes: 1, words: 1, dictation: 1, rush: 1 },
+      [daysAgoKey(0)]: { day: daysAgoKey(0), reviews: 8, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 },
+      [daysAgoKey(1)]: { day: daysAgoKey(1), reviews: 0, quizzes: 2, words: 0, dictation: 0, rush: 0, stories: 0 },
+      [daysAgoKey(3)]: { day: daysAgoKey(3), reviews: 0, quizzes: 0, words: 5, dictation: 0, rush: 0, stories: 0 },
+      [daysAgoKey(9)]: { day: daysAgoKey(9), reviews: 1, quizzes: 1, words: 1, dictation: 1, rush: 1, stories: 0 },
     },
     goalMetDays: [daysAgoKey(0), daysAgoKey(1)],
     streak: 4,

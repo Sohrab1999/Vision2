@@ -100,7 +100,7 @@ describe("parseBackup — sanitization", () => {
     const payload = parseBackup(
       validPayload({
         dayHistory: {
-          "2026-10-09": { day: "2026-10-09", reviews: 5, quizzes: -3, words: 1.7, dictation: "x", rush: 99999 },
+          "2026-10-09": { day: "2026-10-09", reviews: 5, quizzes: -3, words: 1.7, dictation: "x", rush: 99999, stories: 0 },
           "20261010": { day: "20261010", reviews: 50 }, // invalid key → dropped
           "2026-10-11": "garbage", // non-object → dropped
         },
@@ -115,13 +115,14 @@ describe("parseBackup — sanitization", () => {
       words: 2, // rounded
       dictation: 0, // non-number clamped
       rush: 9999, // clamped to 9999
+      stories: 0, // Task 299 — legacy payloads without the field read zero
     });
 
     // 40 valid days → only the 35 newest survive
     const many: Record<string, unknown> = {};
     for (let i = 1; i <= 40; i += 1) {
       const k = `2026-09-${String(i).padStart(2, "0")}`;
-      many[k] = { day: k, reviews: i, quizzes: 0, words: 0, dictation: 0, rush: 0 };
+      many[k] = { day: k, reviews: i, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 };
     }
     const capped = parseBackup(validPayload({ dayHistory: many }));
     const keys = Object.keys(capped.data.dayHistory ?? {}).sort();

@@ -29,7 +29,7 @@ describe("نقطهٔ نشان تازه — کامپوننت (Task 82)", () => {
       mistakes: {},
       streak: 0,
       bestStreak: 0,
-      dayStat: { day: "", reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0 },
+      dayStat: { day: "", reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 },
       rushBest: 0,
       rushBestCorrect: 0,
       rushGames: 0,

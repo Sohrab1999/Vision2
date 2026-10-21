@@ -33,12 +33,13 @@ export function normDayStat(d: Partial<DayStat> | undefined): DayStat {
     words: d?.words ?? 0,
     dictation: d?.dictation ?? 0,
     rush: d?.rush ?? 0,
+    stories: d?.stories ?? 0,
   };
 }
 
 /** fresh zeroed DayStat for a given day key */
 export function emptyDayStat(day: string): DayStat {
-  return { day, reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0 };
+  return { day, reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 };
 }
 
 /**

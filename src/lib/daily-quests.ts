@@ -1,8 +1,8 @@
 // ------------------------------------------------------------------
-// اهداف روزانه (Daily Quests) — five small, auto-tracked missions that
+// اهداف روزانه (Daily Quests) — six small, auto-tracked missions that
 // reset every day. Progress is derived from the store's DayStat which
 // is incremented by real user actions (reviews, quizzes, new words,
-// dictation rounds, rush rounds). Pure functions only.
+// dictation rounds, rush rounds, library stories). Pure functions only.
 // ------------------------------------------------------------------
 
 import type { DayStat, LessonTab } from "./study-store";
@@ -25,7 +25,8 @@ export interface QuestDef {
     | { kind: "exam" }
     | { kind: "flashcards" }
     | { kind: "dictation" }
-    | { kind: "rush" };
+    | { kind: "rush" }
+    | { kind: "library" }; // Task 299 — ورود مستقیم به داستانِ بعدیِ نخوانده
 }
 
 export const QUESTS: QuestDef[] = [
@@ -83,6 +84,17 @@ export const QUESTS: QuestDef[] = [
     bar: "from-orange-400 to-orange-600",
     value: (d) => d.rush,
     jump: { kind: "rush" },
+  },
+  {
+    id: "story",
+    title: "داستان کتابخانه",
+    hint: "یک داستانِ دکتر هیل بخوان و جواب بزن",
+    target: 1,
+    icon: "BookOpen",
+    accent: "bg-sky-100 text-sky-700",
+    bar: "from-sky-400 to-sky-600",
+    value: (d) => d.stories,
+    jump: { kind: "library" },
   },
 ];
 

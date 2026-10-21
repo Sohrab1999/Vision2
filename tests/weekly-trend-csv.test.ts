@@ -59,7 +59,7 @@ describe("weekly-trend-csv — شکل", () => {
 describe("weekly-trend-csv — مقدارها", () => {
   it("تجمیعِ ۷روزه: شمارنده‌ها + مجموع + روزهایِ فعال — پنجرهٔ هر سطر [پایان-۶..پایان]", () => {
     const dayHistory = {
-      "2026-10-14": { reviews: 10, quizzes: 2, words: 3, dictation: 1, rush: 1 },
+      "2026-10-14": { reviews: 10, quizzes: 2, words: 3, dictation: 1, rush: 1, stories: 0 },
       "2026-10-12": { reviews: 4 },
       "2026-10-08": { reviews: 100 }, // ابتدایِ پنجرهٔ هفتهٔ آخر (10-08..10-14)
       "2026-10-07": { reviews: 9 },   // در پنجرهٔ هفتهٔ میانی (10-01..10-07)

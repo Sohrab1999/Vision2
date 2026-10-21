@@ -106,9 +106,9 @@ const duelRec = (id: string, day: string, outcome: "win" | "loss" | "tie", oppon
 function seedFlagged() {
   useStudy.setState({
     dayHistory: {
-      [daysAgoKey(0)]: { day: daysAgoKey(0), reviews: 8, quizzes: 0, words: 0, dictation: 0, rush: 0 },
+      [daysAgoKey(0)]: { day: daysAgoKey(0), reviews: 8, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 },
     },
-    dayStat: { day: daysAgoKey(0), reviews: 8, quizzes: 0, words: 0, dictation: 0, rush: 0 },
+    dayStat: { day: daysAgoKey(0), reviews: 8, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 },
     streak: 0,
     userName: "مینا",
     seenBadges: [FIRST_VISIBLE_BADGE_ID],
@@ -123,7 +123,7 @@ function seedFlagged() {
 function seedEmpty() {
   useStudy.setState({
     dayHistory: {},
-    dayStat: { day: "", reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0 },
+    dayStat: { day: "", reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 },
     streak: 0,
     userName: "مینا",
     seenBadges: [],
@@ -145,7 +145,7 @@ describe("نشانها در کارتِ نبرد (r287)", () => {
     useStudy.setState({
       dayHistory: {},
       history: {},
-      dayStat: { day: "", reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0 },
+      dayStat: { day: "", reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 },
       streak: 0,
       bestStreak: 0,
       userName: "",

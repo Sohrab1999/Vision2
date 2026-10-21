@@ -108,7 +108,7 @@ describe("sanitizeAll — defaults and idempotence", () => {
     expect(d.streak).toBe(0);
     expect(d.bestStreak).toBe(0);
     expect(d.lastActiveDay).toBe("");
-    expect(d.dayStat).toEqual({ day: "", reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0 });
+    expect(d.dayStat).toEqual({ day: "", reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 });
     expect(d.history).toEqual({});
     expect(d.dayHistory).toEqual({});
     expect(d.mistakes).toEqual({});
@@ -136,7 +136,7 @@ describe("sanitizeAll — defaults and idempotence", () => {
       bestStreak: "x",
       dayStat: { day: 5, reviews: 1.7, quizzes: -3, dictation: "x" },
       history: { "2026-10-09": { reviews: 2, quizzes: "x" }, bad: { reviews: 1, quizzes: 1 } },
-      dayHistory: { "2026-10-09": { reviews: -1, rush: 99999 }, "nonsense": "junk" },
+      dayHistory: { "2026-10-09": { reviews: -1, rush: 99999, stories: 0 }, "nonsense": "junk" },
       mistakes: { "1:l1-v3": 5000, "2:x": 0.4 },
       seenBadges: ["first-quiz", 7],
       rushBest: 5_000_000,
@@ -183,9 +183,9 @@ describe("backup ↔ restore ↔ cloud-merge round-trip", () => {
       streak: 7,
       bestStreak: 12,
       lastActiveDay: "2026-10-09",
-      dayStat: { day: "2026-10-09", reviews: 4, quizzes: 2, words: 3, dictation: 1, rush: 1 },
+      dayStat: { day: "2026-10-09", reviews: 4, quizzes: 2, words: 3, dictation: 1, rush: 1, stories: 0 },
       history: { "2026-10-09": { reviews: 4, quizzes: 2 } },
-      dayHistory: { "2026-10-09": { day: "2026-10-09", reviews: 4, quizzes: 2, words: 3, dictation: 1, rush: 1 } },
+      dayHistory: { "2026-10-09": { day: "2026-10-09", reviews: 4, quizzes: 2, words: 3, dictation: 1, rush: 1, stories: 0 } },
       mistakes: { "1:l1-v3": 2 },
       seenBadges: ["first-quiz", "streak-7"],
       rushBest: 120,

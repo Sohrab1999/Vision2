@@ -23,7 +23,7 @@ import {
 const T = "2026-10-14"; // چهارشنبه
 
 const day = (n: number, reviews: number, quizzes = 0) =>
-  ({ day: n, reviews, quizzes, words: 0, dictation: 0, rush: 0 });
+  ({ day: n, reviews, quizzes, words: 0, dictation: 0, rush: 0, stories: 0 });
 
 describe("progress-csv — شکل (rebuilt task-169 contract)", () => {
   it("سطرِ سرِ یخ‌زده: ترتیبِ ۸ستونیِ منجمد", () => {
@@ -63,7 +63,7 @@ describe("progress-csv — شکل (rebuilt task-169 contract)", () => {
 
 describe("progress-csv — مقدارها", () => {
   it("شمارنده‌ها سرِ جای خود + مجموع", () => {
-    const history = { [T]: { day: T, reviews: 12, quizzes: 3, words: 4, dictation: 2, rush: 1 } } as never;
+    const history = { [T]: { day: T, reviews: 12, quizzes: 3, words: 4, dictation: 2, rush: 1, stories: 0 } } as never;
     const rows = buildProgressCsv(history, T, 1).trimEnd().split("\r\n");
     expect(rows[1]).toBe(`${T},چهارشنبه,12,3,4,2,1,22`);
   });

@@ -5,6 +5,7 @@
 
 import type { StateCreator } from "zustand";
 import { trackEvent } from "@/lib/analytics";
+import { activityPatch } from "../effects"; // Task 299 — خواندنِ داستان واردِ شمارندهٔ روز میشود
 import type { StudyStore } from "../types";
 import type { LibraryDoneEntry } from "../types";
 
@@ -29,6 +30,9 @@ export const createLibrarySlice: StateCreator<StudyStore, [], [], LibrarySlice> 
         ...s.libraryDone,
         [storyId]: { score, total, day: todayKey() },
       },
+      // Task 299 — هر اتمامِ داستان (حتی بازخوانی) یک واحدِ فعالیتِ امروز است:
+      // زنجیره را نگه میدارد (سیاستِ دیکته) ولی واردِ هدف روزانه نمیشود.
+      ...activityPatch(s, "stories"),
     }));
     trackEvent("library_story_done");
   },

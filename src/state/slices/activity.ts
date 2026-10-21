@@ -24,7 +24,7 @@ export const createActivitySlice: StateCreator<StudyStore, [], [], ActivitySlice
   streak: 0,
   bestStreak: 0,
   lastActiveDay: "",
-  dayStat: { day: "", reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0 },
+  dayStat: { day: "", reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 },
   history: {},
   dayHistory: {},
 

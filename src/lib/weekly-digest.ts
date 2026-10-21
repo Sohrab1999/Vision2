@@ -54,7 +54,7 @@ export interface DigestInput {
 const WEEK = 7;
 
 /** zeroed DayStat for a day key */
-const zeroDay = (day: string): DayStat => ({ day, reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0 });
+const zeroDay = (day: string): DayStat => ({ day, reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 });
 
 /** ISO day key of `n` days before the given key (all math is key-string based). */
 export function dayKeyBefore(key: string, n: number): string {
@@ -77,6 +77,7 @@ export function statOfDay(day: string, input: DigestInput): DayStat {
       words: dh.words ?? 0,
       dictation: dh.dictation ?? 0,
       rush: dh.rush ?? 0,
+      stories: dh.stories ?? 0, // legacy dayHistory entries — صفرِ صادق
     };
   }
   const legacy = input.history?.[day];

@@ -272,7 +272,7 @@ const BASE_DEFAULTS = {
   known: {},
   results: {},
   history: {},
-  dayStat: { day: "", reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0 },
+  dayStat: { day: "", reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 },
   streak: 0,
   bestStreak: 0,
   mistakes: {},

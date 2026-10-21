@@ -256,10 +256,11 @@ const sanitizeDayStat = (v: unknown): DayStat => {
     words: c(d["words"]),
     dictation: c(d["dictation"]),
     rush: c(d["rush"]),
+    stories: c(d["stories"]), // Task 299 — legacy payloads بدونِ این فیلد صفرِ صادق می‌گیرند
   };
 };
 
-const dayTotal = (d: DayStat): number => d.reviews + d.quizzes + d.words + d.dictation + d.rush;
+const dayTotal = (d: DayStat): number => d.reviews + d.quizzes + d.words + d.dictation + d.rush + d.stories;
 
 /** same-day → per-counter max; different days → the busier side wins */
 const mergeDayStat = (l: DayStat, r: DayStat): DayStat => {
@@ -273,6 +274,7 @@ const mergeDayStat = (l: DayStat, r: DayStat): DayStat => {
       words: maxNum(l.words, r.words),
       dictation: maxNum(l.dictation, r.dictation),
       rush: maxNum(l.rush, r.rush),
+      stories: maxNum(l.stories, r.stories),
     };
   }
   return dayTotal(l) >= dayTotal(r) ? l : r;
@@ -319,6 +321,7 @@ const sanitizeDayHistory = (v: unknown): DayHistoryMap => {
       words: clamp(d["words"]),
       dictation: clamp(d["dictation"]),
       rush: clamp(d["rush"]),
+      stories: clamp(d["stories"]),
     };
   }
   return out;
@@ -337,6 +340,7 @@ const mergeDayHistory = (l: DayHistoryMap | undefined, r: DayHistoryMap | undefi
           words: maxNum(cur.words, d.words),
           dictation: maxNum(cur.dictation, d.dictation),
           rush: maxNum(cur.rush, d.rush),
+          stories: maxNum(cur.stories, d.stories),
         }
       : d;
   }

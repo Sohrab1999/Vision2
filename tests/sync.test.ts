@@ -20,7 +20,7 @@ const base = (): SyncData => ({
   streak: 0,
   bestStreak: 0,
   lastActiveDay: "",
-  dayStat: { day: "", reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0 },
+  dayStat: { day: "", reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 },
   history: {},
   mistakes: {},
   seenBadges: [],
@@ -143,15 +143,15 @@ describe("mergeSyncData — progress safety", () => {
     const local = {
       ...base(),
       dayHistory: {
-        "2026-10-09": { day: "2026-10-09", reviews: 5, quizzes: 0, words: 2, dictation: 0, rush: 0 },
-        "2026-10-01": { day: "2026-10-01", reviews: 1, quizzes: 1, words: 0, dictation: 0, rush: 0 },
+        "2026-10-09": { day: "2026-10-09", reviews: 5, quizzes: 0, words: 2, dictation: 0, rush: 0, stories: 0 },
+        "2026-10-01": { day: "2026-10-01", reviews: 1, quizzes: 1, words: 0, dictation: 0, rush: 0, stories: 0 },
       },
     };
     const remote = {
       ...base(),
       dayHistory: {
-        "2026-10-09": { day: "2026-10-09", reviews: 2, quizzes: 3, words: 0, dictation: 1, rush: 1 },
-        "2026-10-05": { day: "2026-10-05", reviews: 0, quizzes: 2, words: 0, dictation: 0, rush: 0 },
+        "2026-10-09": { day: "2026-10-09", reviews: 2, quizzes: 3, words: 0, dictation: 1, rush: 1, stories: 0 },
+        "2026-10-05": { day: "2026-10-05", reviews: 0, quizzes: 2, words: 0, dictation: 0, rush: 0, stories: 0 },
       },
     };
     const merged = mergeSyncData(local, remote);
@@ -162,15 +162,16 @@ describe("mergeSyncData — progress safety", () => {
       words: 2,
       dictation: 1,
       rush: 1,
+      stories: 0,
     });
     // union of days from both sides
     expect(Object.keys(merged.dayHistory ?? {}).sort()).toEqual(["2026-10-01", "2026-10-05", "2026-10-09"]);
 
     // cap: 36 distinct days → oldest (smallest key) dropped
-    const many: Record<string, { day: string; reviews: number; quizzes: number; words: number; dictation: number; rush: number }> = {};
+    const many: Record<string, { day: string; reviews: number; quizzes: number; words: number; dictation: number; rush: number; stories: number }> = {};
     for (let i = 1; i <= 36; i += 1) {
       const k = `2026-09-${String(i).padStart(2, "0")}`;
-      many[k] = { day: k, reviews: i, quizzes: 0, words: 0, dictation: 0, rush: 0 };
+      many[k] = { day: k, reviews: i, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 };
     }
     const capped = mergeSyncData({ ...base(), dayHistory: many }, base());
     const keys = Object.keys(capped.dayHistory ?? {}).sort();
@@ -210,11 +211,11 @@ describe("mergeSyncData — progress safety", () => {
   it("same-day stats merge per-field max; different days keep the busier side", () => {
     const local = {
       ...base(),
-      dayStat: { day: "2026-10-09", reviews: 5, quizzes: 0, words: 3, dictation: 0, rush: 0 },
+      dayStat: { day: "2026-10-09", reviews: 5, quizzes: 0, words: 3, dictation: 0, rush: 0, stories: 0 },
     };
     const remote = {
       ...base(),
-      dayStat: { day: "2026-10-09", reviews: 2, quizzes: 4, words: 0, dictation: 1, rush: 0 },
+      dayStat: { day: "2026-10-09", reviews: 2, quizzes: 4, words: 0, dictation: 1, rush: 0, stories: 0 },
     };
     const merged = mergeSyncData(local, remote);
     expect(merged.dayStat).toEqual({
@@ -224,10 +225,11 @@ describe("mergeSyncData — progress safety", () => {
       words: 3,
       dictation: 1,
       rush: 0,
+      stories: 0,
     });
 
-    const olderLocal = { ...base(), dayStat: { day: "2026-10-08", reviews: 1, quizzes: 1, words: 1, dictation: 1, rush: 1 } };
-    const newerRemote = { ...base(), dayStat: { day: "2026-10-09", reviews: 2, quizzes: 0, words: 0, dictation: 0, rush: 0 } };
+    const olderLocal = { ...base(), dayStat: { day: "2026-10-08", reviews: 1, quizzes: 1, words: 1, dictation: 1, rush: 1, stories: 0 } };
+    const newerRemote = { ...base(), dayStat: { day: "2026-10-09", reviews: 2, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 } };
     // older side has bigger total (5 vs 2) → older wins even though newer
     expect(mergeSyncData(olderLocal, newerRemote).dayStat.day).toBe("2026-10-08");
     // newer side has bigger total → newer wins

@@ -36,6 +36,7 @@ const ZERO_DAY: DayStat = {
   words: 0,
   dictation: 0,
   rush: 0,
+  stories: 0,
 };
 
 export default function GoalChip() {

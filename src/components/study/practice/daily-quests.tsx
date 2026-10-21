@@ -8,6 +8,7 @@ import {
   ListChecks,
   Ear,
   Zap,
+  BookOpen,
   Target,
   Trophy,
   Check,
@@ -16,14 +17,15 @@ import {
 import { useStudy, firstLessonWithDue, todayStr, type DayStat } from "@/lib/study-store";
 import { percent } from "@/lib/domain/percent";
 import { questProgress } from "@/lib/daily-quests";
+import { libraryProgress } from "@/lib/library-progress";
 import { faNum } from "@/lib/study-theme";
 import { useMounted } from "@/lib/use-mounted";
 import { useToast } from "@/hooks/use-toast";
 import { uiColors } from "@/lib/ui-colors";
 
 // ------------------------------------------------------------------
-// اهداف روزانه — five auto-tracked daily missions. Each row jumps to
-// the exact place the user can make progress. Completing all five
+// اهداف روزانه — six auto-tracked daily missions. Each row jumps to
+// the exact place the user can make progress. Completing all six
 // fires a celebration toast + keeps the streak meaningful.
 // ------------------------------------------------------------------
 
@@ -33,6 +35,7 @@ const QUEST_ICONS: Record<string, React.ElementType> = {
   ListChecks,
   Ear,
   Zap,
+  BookOpen,
 };
 
 export default function DailyQuests() {
@@ -43,13 +46,16 @@ export default function DailyQuests() {
   const openLesson = useStudy((s) => s.openLesson);
   const openLessonTab = useStudy((s) => s.openLessonTab);
   const setView = useStudy((s) => s.setView);
+  const openLibraryStory = useStudy((s) => s.openLibraryStory);
+  // گاردِ ?? بیرونِ سلکتور — هم‌الگوی Task 292 در library-view
+  const libraryDoneRaw = useStudy((s) => s.libraryDone) ?? {};
 
   const quests = useMemo(() => questProgress(dayStat), [dayStat]);
   const doneCount = quests.filter((q) => q.done).length;
   const allDone = doneCount === quests.length;
   const overallPct = percent(doneCount, quests.length);
 
-  // celebrate when the fifth quest completes *live in this session*
+  // celebrate when the sixth quest completes *live in this session*
   // (ref-guarded: no toast on mere page loads with a finished day)
   const seenRef = useRef<{ day: string; count: number } | null>(null);
   const dayKey = mounted ? dayStat.day : "";
@@ -61,7 +67,7 @@ export default function DailyQuests() {
     if (doneCount > seenRef.current.count && allDone) {
       toast({
         title: "🎉 همهٔ اهداف امروز کامل شد!",
-        description: "پنج‌گانهٔ امروز را گرفتی — زنجیره‌ات امن است. فردا هم منتظرتیم!",
+        description: "شش‌گانهٔ امروز را گرفتی — زنجیره‌ات امن است. فردا هم منتظرتیم!",
       });
     }
     seenRef.current.count = doneCount;
@@ -86,11 +92,19 @@ export default function DailyQuests() {
       case "rush":
         setView({ type: "rush" });
         break;
+      case "library": {
+        // Task 299 — هم‌نیتِ کارتِ «ادامهٔ خواندن» (r297): ورودِ مستقیم به
+        // داستانِ بعدیِ نخوانده، بی‌فلشِ فهرست؛ سه‌گانهٔ تمام = بازخوانی از کتاب‌خانه.
+        const prog = libraryProgress(libraryDoneRaw);
+        if (prog.nextStory) openLibraryStory(prog.nextStory.id);
+        else setView({ type: "library" });
+        break;
+      }
     }
   };
 
   const today = todayStr();
-  const stat: DayStat = mounted && dayStat.day === today ? dayStat : { day: today, reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0 };
+  const stat: DayStat = mounted && dayStat.day === today ? dayStat : { day: today, reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 };
   const title = allDone
     ? "اهداف امروز کامل شد!"
     : doneCount === 0
@@ -200,7 +214,7 @@ export default function DailyQuests() {
           <div className="reward-shimmer absolute inset-0" aria-hidden />
           <p className="relative flex items-center justify-center gap-2 text-[12.5px] font-black text-white">
             <Trophy size={15} />
-            پاداش روزانه گرفتی — {faNum(stat.reviews + stat.quizzes + stat.words)} فعالیت امروز ثبت شد. زنجیره‌ات امن است!
+            پاداش روزانه گرفتی — {faNum(stat.reviews + stat.quizzes + stat.words + stat.stories)} فعالیت امروز ثبت شد. زنجیره‌ات امن است!
           </p>
         </motion.div>
       )}

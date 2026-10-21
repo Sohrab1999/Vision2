@@ -32,7 +32,7 @@ const resetAll = () =>
     streak: 0,
     bestStreak: 0,
     lastActiveDay: "",
-    dayStat: { day: "", reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0 },
+    dayStat: { day: "", reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 },
     history: {},
     dayHistory: {},
     mistakes: {},
@@ -165,6 +165,24 @@ describe("activity policy matrix", () => {
     expect(s.dayStat.rush).toBe(2);
   });
 
+  it("stories (markStoryDone) advance the streak but NEVER count toward the goal — Task 299", () => {
+    useStudy.setState({ dailyGoal: 1 });
+    state().markStoryDone("s1-1", 6, 12);
+    let s = state();
+    expect(s.libraryDone["s1-1"]).toEqual({ score: 6, total: 12, day: todayStr() });
+    expect(s.dayStat.stories).toBe(1);
+    expect(s.streak).toBe(1); // reading a real story keeps the chain alive (dictation policy)
+    expect(s.lastActiveDay).toBe(todayStr());
+    expect(s.goalMetDays).not.toContain(todayStr()); // goal/freeze bypassed
+    expect(s.history[todayStr()]).toEqual({ reviews: 0, quizzes: 0 });
+    expect(s.dayHistory[todayStr()]?.stories).toBe(1);
+    // re-reading counts as another story activity; the record keeps the newest score
+    state().markStoryDone("s1-1", 10, 12);
+    s = state();
+    expect(s.dayStat.stories).toBe(2);
+    expect(s.libraryDone["s1-1"]).toEqual({ score: 10, total: 12, day: todayStr() });
+  });
+
   it("grants a freeze after 3 goal-days inside the 7-day window (reviews path)", () => {
     const twoDaysAgo = daysAgoKey(2);
     const threeDaysAgo = daysAgoKey(3);
@@ -204,7 +222,7 @@ describe("activity policy matrix", () => {
 
   it("day rollover: stale yesterday dayStat does not leak into today", () => {
     useStudy.setState({
-      dayStat: { day: daysAgoKey(1), reviews: 9, quizzes: 9, words: 9, dictation: 9, rush: 9 },
+      dayStat: { day: daysAgoKey(1), reviews: 9, quizzes: 9, words: 9, dictation: 9, rush: 9, stories: 0 },
     });
     state().trackReview();
     const s = state();
@@ -254,12 +272,12 @@ describe("streak continuation and freeze rescue", () => {
 
 describe("dayHistory window and konkur SRS entry", () => {
   it("pushDayHistory caps at 35 days and keeps the NEWEST days", () => {
-    let map: Record<string, { day: string; reviews: number; quizzes: number; words: number; dictation: number; rush: number }> = {};
+    let map: Record<string, { day: string; reviews: number; quizzes: number; words: number; dictation: number; rush: number; stories: number }> = {};
     for (let i = 40; i >= 0; i--) {
       const d = new Date();
       d.setDate(d.getDate() - i);
       const day = todayStr(d);
-      map = pushDayHistory(map, { day, reviews: i, quizzes: 0, words: 0, dictation: 0, rush: 0 });
+      map = pushDayHistory(map, { day, reviews: i, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 });
     }
     const keys = Object.keys(map).sort();
     expect(keys).toHaveLength(35);

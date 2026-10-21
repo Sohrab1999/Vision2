@@ -50,10 +50,10 @@ const seedEventWeek = () => {
     d.setDate(d.getDate() - n);
     return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
   };
-  const dayHistory: Record<string, { day: string; reviews: number; quizzes: number; words: number; dictation: number; rush: number }> = {};
+  const dayHistory: Record<string, { day: string; reviews: number; quizzes: number; words: number; dictation: number; rush: number; stories: number }> = {};
   const goalMetDays: string[] = [];
   for (let n = 0; n <= 6; n++) {
-    dayHistory[key(n)] = { day: key(n), reviews: 6, quizzes: 0, words: 0, dictation: 0, rush: 0 };
+    dayHistory[key(n)] = { day: key(n), reviews: 6, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 };
     goalMetDays.push(key(n));
   }
   useStudy.setState({ goalMetDays, dayHistory, streak: 7, seenBadges: [] });
@@ -65,9 +65,9 @@ const seedDictationRun = () => {
     d.setDate(d.getDate() - n);
     return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
   };
-  const dayHistory: Record<string, { day: string; reviews: number; quizzes: number; words: number; dictation: number; rush: number }> = {};
+  const dayHistory: Record<string, { day: string; reviews: number; quizzes: number; words: number; dictation: number; rush: number; stories: number }> = {};
   for (let n = 0; n <= 6; n++) {
-    dayHistory[key(n)] = { day: key(n), reviews: 0, quizzes: 0, words: 0, dictation: 1, rush: 0 };
+    dayHistory[key(n)] = { day: key(n), reviews: 0, quizzes: 0, words: 0, dictation: 1, rush: 0, stories: 0 };
   }
   useStudy.setState({ dayHistory, seenBadges: [] });
 };
@@ -79,9 +79,9 @@ const seedExamRun = () => {
     d.setDate(d.getDate() - n);
     return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
   };
-  const dayHistory: Record<string, { day: string; reviews: number; quizzes: number; words: number; dictation: number; rush: number }> = {};
+  const dayHistory: Record<string, { day: string; reviews: number; quizzes: number; words: number; dictation: number; rush: number; stories: number }> = {};
   for (let n = 0; n <= 6; n++) {
-    dayHistory[key(n)] = { day: key(n), reviews: 0, quizzes: 1, words: 0, dictation: 0, rush: 0 };
+    dayHistory[key(n)] = { day: key(n), reviews: 0, quizzes: 1, words: 0, dictation: 0, rush: 0, stories: 0 };
   }
   useStudy.setState({ dayHistory, seenBadges: [] });
 };
@@ -93,9 +93,9 @@ const seedDoubleRun = () => {
     d.setDate(d.getDate() - n);
     return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
   };
-  const dayHistory: Record<string, { day: string; reviews: number; quizzes: number; words: number; dictation: number; rush: number }> = {};
+  const dayHistory: Record<string, { day: string; reviews: number; quizzes: number; words: number; dictation: number; rush: number; stories: number }> = {};
   for (let n = 0; n <= 6; n++) {
-    dayHistory[key(n)] = { day: key(n), reviews: 0, quizzes: 1, words: 0, dictation: 1, rush: 0 };
+    dayHistory[key(n)] = { day: key(n), reviews: 0, quizzes: 1, words: 0, dictation: 1, rush: 0, stories: 0 };
   }
   useStudy.setState({ dayHistory, seenBadges: [] });
 };
@@ -107,9 +107,9 @@ const seedReviewRun = () => {
     d.setDate(d.getDate() - n);
     return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
   };
-  const dayHistory: Record<string, { day: string; reviews: number; quizzes: number; words: number; dictation: number; rush: number }> = {};
+  const dayHistory: Record<string, { day: string; reviews: number; quizzes: number; words: number; dictation: number; rush: number; stories: number }> = {};
   for (let n = 0; n <= 6; n++) {
-    dayHistory[key(n)] = { day: key(n), reviews: 1, quizzes: 0, words: 0, dictation: 0, rush: 0 };
+    dayHistory[key(n)] = { day: key(n), reviews: 1, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 };
   }
   useStudy.setState({ dayHistory, seenBadges: [] });
 };
@@ -120,9 +120,9 @@ const seedTripleRun = () => {
     d.setDate(d.getDate() - n);
     return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
   };
-  const dayHistory: Record<string, { day: string; reviews: number; quizzes: number; words: number; dictation: number; rush: number }> = {};
+  const dayHistory: Record<string, { day: string; reviews: number; quizzes: number; words: number; dictation: number; rush: number; stories: number }> = {};
   for (let n = 0; n <= 6; n++) {
-    dayHistory[key(n)] = { day: key(n), reviews: 1, quizzes: 1, words: 0, dictation: 1, rush: 0 };
+    dayHistory[key(n)] = { day: key(n), reviews: 1, quizzes: 1, words: 0, dictation: 1, rush: 0, stories: 0 };
   }
   useStudy.setState({ dayHistory, seenBadges: [] });
 };
@@ -134,9 +134,9 @@ const seedMarathon = () => {
     d.setDate(d.getDate() - n);
     return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
   };
-  const dayHistory: Record<string, { day: string; reviews: number; quizzes: number; words: number; dictation: number; rush: number }> = {};
+  const dayHistory: Record<string, { day: string; reviews: number; quizzes: number; words: number; dictation: number; rush: number; stories: number }> = {};
   for (let n = 0; n <= 13; n++) {
-    dayHistory[key(n)] = { day: key(n), reviews: 1, quizzes: 1, words: 0, dictation: 1, rush: 0 };
+    dayHistory[key(n)] = { day: key(n), reviews: 1, quizzes: 1, words: 0, dictation: 1, rush: 0, stories: 0 };
   }
   useStudy.setState({ dayHistory, seenBadges: [] });
 };
@@ -151,9 +151,9 @@ const seedPresence = () => {
     d.setDate(d.getDate() - n);
     return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
   };
-  const dayHistory: Record<string, { day: string; reviews: number; quizzes: number; words: number; dictation: number; rush: number }> = {};
+  const dayHistory: Record<string, { day: string; reviews: number; quizzes: number; words: number; dictation: number; rush: number; stories: number }> = {};
   for (let n = 0; n <= 24; n++) {
-    dayHistory[key(n)] = { day: key(n), reviews: 0, quizzes: 0, words: 1, dictation: 0, rush: 0 };
+    dayHistory[key(n)] = { day: key(n), reviews: 0, quizzes: 0, words: 1, dictation: 0, rush: 0, stories: 0 };
   }
   useStudy.setState({ dayHistory, goalMetDays: [], seenBadges: [] });
 };
@@ -166,13 +166,14 @@ const seedFiveSkills = () => {
     d.setDate(d.getDate() - n);
     return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
   };
-  const mk = (over: Partial<{ reviews: number; quizzes: number; words: number; dictation: number; rush: number }>) => ({
+  const mk = (over: Partial<{ reviews: number; quizzes: number; words: number; dictation: number; rush: number; stories: number }>) => ({
     day: "",
     reviews: 0,
     quizzes: 0,
     words: 0,
     dictation: 0,
     rush: 0,
+    stories: 0,
     ...over,
   });
   const dayHistory: Record<string, ReturnType<typeof mk>> = {
@@ -180,7 +181,7 @@ const seedFiveSkills = () => {
     [key(1)]: mk({ quizzes: 1 }),
     [key(2)]: mk({ dictation: 1 }),
     [key(4)]: mk({ words: 1 }),
-    [key(6)]: mk({ rush: 1 }),
+    [key(6)]: mk({ rush: 1, stories: 0 }),
   };
   useStudy.setState({ dayHistory, goalMetDays: [], seenBadges: [] });
 };
@@ -209,7 +210,7 @@ describe("نشان‌ها و دستاوردها — کامپوننت (Task 81)",
       mistakes: {},
       streak: 0,
       bestStreak: 0,
-      dayStat: { day: "", reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0 },
+      dayStat: { day: "", reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 },
       rushBest: 0,
       rushBestCorrect: 0,
       rushGames: 0,

@@ -29,7 +29,7 @@ const BASE_DEFAULTS = {
   known: {},
   results: {},
   history: {},
-  dayStat: { day: "", reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0 },
+  dayStat: { day: "", reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 },
   streak: 0,
   bestStreak: 0,
   mistakes: {},
@@ -134,7 +134,7 @@ describe("گاردهای buildEvalInput — ورودی خرابِ persist", () =
       known: {},
       results: {},
       history: {},
-      dayStat: { day: "", reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0 },
+      dayStat: { day: "", reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 },
       streak: 0,
       bestStreak: 0,
       mistakes: {},
@@ -238,7 +238,7 @@ describe("خانوادهٔ هدف — دقیقاً دادهٔ goalMetDays", () =
       known: {},
       results: {},
       history: {},
-      dayStat: { day: "", reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0 },
+      dayStat: { day: "", reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 },
       streak: 0,
       bestStreak: 0,
       mistakes: {},
@@ -306,7 +306,7 @@ describe("هفتهٔ بی‌قفسه — پنجرهٔ موتور (Task 83)", () 
       known: {},
       results: {},
       history: {},
-      dayStat: { day: "", reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0 },
+      dayStat: { day: "", reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 },
       streak: 0,
       bestStreak: 0,
       mistakes: {},
@@ -327,6 +327,7 @@ describe("نشان‌های رویدادیِ هفته — dayHistory پنجره�
     words: 0,
     dictation: 0,
     rush: 0,
+    stories: 0,
     ...over,
   });
 
@@ -397,7 +398,7 @@ describe("نشان‌های رویدادیِ هفته — dayHistory پنجره�
     const todayFallback = base({
       goalMetDays: fullWeek(),
       dayHistory: { [w(2)]: dh({ day: w(2), dictation: 1 }) },
-      dayStat: { day: w(0), reviews: 0, quizzes: 0, words: 0, dictation: 2, rush: 0 },
+      dayStat: { day: w(0), reviews: 0, quizzes: 0, words: 0, dictation: 2, rush: 0, stories: 0 },
     });
     expect(todayFallback.dictation7).toBe(3);
     expect(ids(todayFallback)).not.toContain("week-no-dictation");
@@ -405,7 +406,7 @@ describe("نشان‌های رویدادیِ هفته — dayHistory پنجره�
     const todayPresent = base({
       goalMetDays: fullWeek(),
       dayHistory: { [w(0)]: dh({ day: w(0), dictation: 1 }) },
-      dayStat: { day: w(0), reviews: 0, quizzes: 0, words: 0, dictation: 5, rush: 0 },
+      dayStat: { day: w(0), reviews: 0, quizzes: 0, words: 0, dictation: 5, rush: 0, stories: 0 },
     });
     expect(todayPresent.dictation7).toBe(1);
   });
@@ -445,6 +446,7 @@ describe("رانِ ترکیبی — هفتهٔ دیکتهٔ پیوسته (Task 8
     words: 0,
     dictation: 0,
     rush: 0,
+    stories: 0,
     ...over,
   });
   const dictWeek = () =>
@@ -494,13 +496,13 @@ describe("رانِ ترکیبی — هفتهٔ دیکتهٔ پیوسته (Task 8
     const sixDays = Object.fromEntries([1, 2, 3, 4, 5, 6].map((n) => [w(n), dh({ day: w(n), dictation: 1 })]));
     const viaStat = base({
       dayHistory: sixDays,
-      dayStat: { day: w(0), reviews: 0, quizzes: 0, words: 0, dictation: 1, rush: 0 },
+      dayStat: { day: w(0), reviews: 0, quizzes: 0, words: 0, dictation: 1, rush: 0, stories: 0 },
     });
     expect(viaStat.dictationDays7).toBe(7);
     expect(ids(viaStat)).toContain("dictation-run");
     const viaHistory = base({
       dayHistory: { ...sixDays, [w(0)]: dh({ day: w(0), dictation: 1 }) },
-      dayStat: { day: w(0), reviews: 0, quizzes: 0, words: 0, dictation: 9, rush: 0 },
+      dayStat: { day: w(0), reviews: 0, quizzes: 0, words: 0, dictation: 9, rush: 0, stories: 0 },
     });
     expect(viaHistory.dictationDays7).toBe(7);
     expect(ids(viaHistory)).toContain("dictation-run");
@@ -535,6 +537,7 @@ describe("رانِ ترکیبی دوم — هفتهٔ آزمون‌دار (Task 
     words: 0,
     dictation: 0,
     rush: 0,
+    stories: 0,
     ...over,
   });
   const quizWeek = (perDay = 1) =>
@@ -588,13 +591,13 @@ describe("رانِ ترکیبی دوم — هفتهٔ آزمون‌دار (Task 
     const sixDays = Object.fromEntries([1, 2, 3, 4, 5, 6].map((n) => [w(n), dh({ day: w(n), quizzes: 1 })]));
     const viaStat = base({
       dayHistory: sixDays,
-      dayStat: { day: w(0), reviews: 0, quizzes: 1, words: 0, dictation: 0, rush: 0 },
+      dayStat: { day: w(0), reviews: 0, quizzes: 1, words: 0, dictation: 0, rush: 0, stories: 0 },
     });
     expect(viaStat.quizDays7).toBe(7);
     expect(ids(viaStat)).toContain("exam-run");
     const viaHistory = base({
       dayHistory: { ...sixDays, [w(0)]: dh({ day: w(0), quizzes: 1 }) },
-      dayStat: { day: w(0), reviews: 0, quizzes: 9, words: 0, dictation: 0, rush: 0 },
+      dayStat: { day: w(0), reviews: 0, quizzes: 9, words: 0, dictation: 0, rush: 0, stories: 0 },
     });
     // امروز در dayHistory هست → dayStat (۹ آزمون) نادیده گرفته می‌شود: ۷ روز، جمع ۷
     expect(viaHistory.quizDays7).toBe(7);
@@ -633,6 +636,7 @@ describe("رانِ دوتایی — هفتهٔ دوبل (Task 87)", () => {
     words: 0,
     dictation: 0,
     rush: 0,
+    stories: 0,
     ...over,
   });
   const doubleWeek = (dictPerDay = 1, quizPerDay = 1) =>
@@ -740,6 +744,7 @@ describe("رانِ مرور — هفتهٔ مرور (Task 88)", () => {
     words: 0,
     dictation: 0,
     rush: 0,
+    stories: 0,
     ...over,
   });
   const reviewWeek = (perDay = 1) =>
@@ -788,13 +793,13 @@ describe("رانِ مرور — هفتهٔ مرور (Task 88)", () => {
     const sixDays = Object.fromEntries([1, 2, 3, 4, 5, 6].map((n) => [w(n), dh({ day: w(n), reviews: 1 })]));
     const viaStat = base({
       dayHistory: sixDays,
-      dayStat: { day: w(0), reviews: 1, quizzes: 0, words: 0, dictation: 0, rush: 0 },
+      dayStat: { day: w(0), reviews: 1, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 },
     });
     expect(viaStat.reviewsDays7).toBe(7);
     expect(ids(viaStat)).toContain("review-run");
     const viaHistory = base({
       dayHistory: { ...sixDays, [w(0)]: dh({ day: w(0), reviews: 1 }) },
-      dayStat: { day: w(0), reviews: 9, quizzes: 0, words: 0, dictation: 0, rush: 0 },
+      dayStat: { day: w(0), reviews: 9, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 },
     });
     expect(viaHistory.reviewsDays7).toBe(7);
     expect(ids(viaHistory)).toContain("review-run");
@@ -829,6 +834,7 @@ describe("رانِ سه‌گانه — هفتهٔ سه‌گانه (Task 89)", ()
     words: 0,
     dictation: 0,
     rush: 0,
+    stories: 0,
     ...over,
   });
   const tripleWeek = (perDay = 1) =>
@@ -886,13 +892,13 @@ describe("رانِ سه‌گانه — هفتهٔ سه‌گانه (Task 89)", ()
     const sixDays = Object.fromEntries([1, 2, 3, 4, 5, 6].map((n) => [w(n), dh({ day: w(n), reviews: 1, quizzes: 1, dictation: 1 })]));
     const viaStat = base({
       dayHistory: sixDays,
-      dayStat: { day: w(0), reviews: 1, quizzes: 1, dictation: 1, words: 0, rush: 0 },
+      dayStat: { day: w(0), reviews: 1, quizzes: 1, dictation: 1, words: 0, rush: 0, stories: 0 },
     });
     expect(viaStat.dictationDays7).toBe(7);
     expect(ids(viaStat)).toContain("triple-run");
     const viaHistory = base({
       dayHistory: { ...sixDays, [w(0)]: dh({ day: w(0), reviews: 1, quizzes: 1, dictation: 1 }) },
-      dayStat: { day: w(0), reviews: 9, quizzes: 9, dictation: 9, words: 0, rush: 0 },
+      dayStat: { day: w(0), reviews: 9, quizzes: 9, dictation: 9, words: 0, rush: 0, stories: 0 },
     });
     expect(viaHistory.reviewsDays7).toBe(7);
     expect(ids(viaHistory)).toContain("triple-run");
@@ -928,6 +934,7 @@ describe("ماراتن — رانِ دوهفته‌ای (Task 90)", () => {
     words: 0,
     dictation: 0,
     rush: 0,
+    stories: 0,
     ...over,
   });
   const marathonDays = (ns: number[]) =>
@@ -1000,13 +1007,13 @@ describe("ماراتن — رانِ دوهفته‌ای (Task 90)", () => {
     const thirteen = marathonDays([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]);
     const viaStat = base({
       dayHistory: thirteen,
-      dayStat: { day: w(0), reviews: 1, quizzes: 1, dictation: 1, words: 0, rush: 0 },
+      dayStat: { day: w(0), reviews: 1, quizzes: 1, dictation: 1, words: 0, rush: 0, stories: 0 },
     });
     expect(viaStat.dictationDays14).toBe(14);
     expect(ids(viaStat)).toContain("marathon-run");
     const viaHistory = base({
       dayHistory: { ...thirteen, [w(0)]: dh({ day: w(0), reviews: 1, quizzes: 1, dictation: 1 }) },
-      dayStat: { day: w(0), reviews: 9, quizzes: 9, dictation: 9, words: 0, rush: 0 },
+      dayStat: { day: w(0), reviews: 9, quizzes: 9, dictation: 9, words: 0, rush: 0, stories: 0 },
     });
     expect(viaHistory.quizDays14).toBe(14);
     expect(ids(viaHistory)).toContain("marathon-run");
@@ -1041,6 +1048,7 @@ describe("خانوادهٔ حضور — ماهِ حاضر و ماهِ درخشا
     words: 0,
     dictation: 0,
     rush: 0,
+    stories: 0,
     ...over,
   });
   const presenceDays = (ns: number[], fill: Record<string, unknown> = {}) =>
@@ -1061,7 +1069,7 @@ describe("خانوادهٔ حضور — ماهِ حاضر و ماهِ درخشا
   });
 
   it("قراردادِ روز ≠ جمع: پنج فعالیت در یک روز هنوز یک روزِ حاضره — و شرطِ گسترده با ران‌ها قاطی نیست", () => {
-    const one = base({ dayHistory: { [w(2)]: dh({ day: w(2), reviews: 4, quizzes: 3, words: 2, dictation: 2, rush: 1 }) } });
+    const one = base({ dayHistory: { [w(2)]: dh({ day: w(2), reviews: 4, quizzes: 3, words: 2, dictation: 2, rush: 1, stories: 0 }) } });
     expect(one.activeDays35).toBe(1);
     expect(ids(one)).not.toContain("presence-month");
     // شرطِ گسترده: فقط واژه → روزِ حاضره ولی هیچ رانی باز نمی‌شود
@@ -1071,7 +1079,7 @@ describe("خانوادهٔ حضور — ماهِ حاضر و ماهِ درخشا
     expect(ids(wordsOnly)).not.toContain("exam-run");
     expect(ids(wordsOnly)).not.toContain("review-run");
     // برق‌آسا هم روز را ثبت می‌کند (پنجمین شمارندهٔ DayStat)
-    const rushOnly = base({ dayHistory: { [w(1)]: dh({ day: w(1), rush: 2 }) } });
+    const rushOnly = base({ dayHistory: { [w(1)]: dh({ day: w(1), rush: 2, stories: 0 }) } });
     expect(rushOnly.activeDays35).toBe(1);
   });
 
@@ -1097,13 +1105,13 @@ describe("خانوادهٔ حضور — ماهِ حاضر و ماهِ درخشا
     const twentyFour = presenceDays([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]);
     const viaStat = base({
       dayHistory: twentyFour,
-      dayStat: { day: w(0), reviews: 0, quizzes: 0, words: 3, dictation: 0, rush: 0 },
+      dayStat: { day: w(0), reviews: 0, quizzes: 0, words: 3, dictation: 0, rush: 0, stories: 0 },
     });
     expect(viaStat.activeDays35).toBe(25);
     expect(ids(viaStat)).toContain("presence-month");
     const viaHistory = base({
       dayHistory: { ...twentyFour, [w(0)]: dh({ day: w(0), words: 1 }) },
-      dayStat: { day: w(0), reviews: 9, quizzes: 9, words: 9, dictation: 9, rush: 9 },
+      dayStat: { day: w(0), reviews: 9, quizzes: 9, words: 9, dictation: 9, rush: 9, stories: 0 },
     });
     expect(viaHistory.activeDays35).toBe(25);
   });
@@ -1137,6 +1145,7 @@ describe("ماهِ بی‌وقفه — پلهٔ نهاییِ خانوادهٔ ح
     words: 0,
     dictation: 0,
     rush: 0,
+    stories: 0,
     ...over,
   });
   const presenceDays = (ns: number[]) =>
@@ -1181,12 +1190,12 @@ describe("ماهِ بی‌وقفه — پلهٔ نهاییِ خانوادهٔ ح
     // امروز در dayHistory نیست ولی buildEvalInput آن از dayStat fallback می‌کند (قرارداد ۹۲)
     const todayFallback = base({
       dayHistory: presenceDays([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34]),
-      dayStat: { day: w(0), reviews: 0, quizzes: 0, words: 3, dictation: 0, rush: 0 },
+      dayStat: { day: w(0), reviews: 0, quizzes: 0, words: 3, dictation: 0, rush: 0, stories: 0 },
     });
     expect(todayFallback.activeDays35).toBe(35);
     expect(ids(todayFallback)).toContain("presence-month-perfect");
     // پنج فعالیت در یک روز = یک روزِ حضور (نه پنج)
-    const mega = base({ dayHistory: { [w(0)]: dh({ day: w(0), reviews: 4, quizzes: 3, words: 2, dictation: 2, rush: 1 }) } });
+    const mega = base({ dayHistory: { [w(0)]: dh({ day: w(0), reviews: 4, quizzes: 3, words: 2, dictation: 2, rush: 1, stories: 0 }) } });
     expect(mega.activeDays35).toBe(1);
     expect(ids(mega)).not.toContain("presence-month-perfect");
     // سلولِ خراب هیچ‌گاه روز نمی‌شود
@@ -1212,6 +1221,7 @@ describe("هفتهٔ پنج‌گانه — خانوادهٔ تنوع (Task 93)",
     words: 0,
     dictation: 0,
     rush: 0,
+    stories: 0,
     ...over,
   });
 
@@ -1235,7 +1245,7 @@ describe("هفتهٔ پنج‌گانه — خانوادهٔ تنوع (Task 93)",
   });
 
   it("قراردادِ تنوع-در-پنجره: حتی یک روزِ پنج‌فعالیه شرط را برآورده می‌کند — معیار حضورِ هر پنج مهارت در پنجره است نه پراکندگی", () => {
-    const mega = base({ dayHistory: { [w(3)]: dh({ day: w(3), reviews: 1, quizzes: 1, dictation: 1, words: 1, rush: 1 }) } });
+    const mega = base({ dayHistory: { [w(3)]: dh({ day: w(3), reviews: 1, quizzes: 1, dictation: 1, words: 1, rush: 1, stories: 0 }) } });
     expect(mega.reviewsDays7).toBe(1);
     expect(mega.quizDays7).toBe(1);
     expect(mega.dictationDays7).toBe(1);
@@ -1250,7 +1260,7 @@ describe("هفتهٔ پنج‌گانه — خانوادهٔ تنوع (Task 93)",
         [w(1)]: dh({ day: w(1), quizzes: 1 }),
         [w(2)]: dh({ day: w(2), dictation: 1 }),
         [w(4)]: dh({ day: w(4), words: 1 }),
-        [w(6)]: dh({ day: w(6), rush: 1 }),
+        [w(6)]: dh({ day: w(6), rush: 1, stories: 0 }),
       },
     });
     expect(ids(spread)).toContain("five-skill-week");
@@ -1263,7 +1273,7 @@ describe("هفتهٔ پنج‌گانه — خانوادهٔ تنوع (Task 93)",
         [w(1)]: dh({ day: w(1), quizzes: 1 }),
         [w(2)]: dh({ day: w(2), dictation: 1 }),
         [w(4)]: dh({ day: w(4), words: 1 }),
-        [w(6)]: dh({ day: w(6), rush: 1 }),
+        [w(6)]: dh({ day: w(6), rush: 1, stories: 0 }),
       },
     });
     expect(ids(five)).toContain("five-skill-week");
@@ -1278,7 +1288,7 @@ describe("هفتهٔ پنج‌گانه — خانوادهٔ تنوع (Task 93)",
         [w(1)]: dh({ day: w(1), quizzes: 1 }),
         [w(2)]: dh({ day: w(2), dictation: 1 }),
         [w(4)]: dh({ day: w(4), words: 1 }),
-        [w(6)]: dh({ day: w(6), rush: 1 }),
+        [w(6)]: dh({ day: w(6), rush: 1, stories: 0 }),
       },
     });
     expect(ids(five)).toContain("five-skill-week");
@@ -1297,14 +1307,14 @@ describe("هفتهٔ پنج‌گانه — خانوادهٔ تنوع (Task 93)",
         [w(2)]: dh({ day: w(2), dictation: 1 }),
         [w(4)]: dh({ day: w(4), words: 1 }),
       },
-      dayStat: { day: w(0), reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 2 },
+      dayStat: { day: w(0), reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 2, stories: 0 },
     });
     expect(withEdge.reviewsDays7).toBe(1);
     expect(withEdge.rushDays7).toBe(1);
     expect(ids(withEdge)).toContain("five-skill-week");
     const beyond = base({
       dayHistory: {
-        [w(7)]: dh({ day: w(7), rush: 1 }),
+        [w(7)]: dh({ day: w(7), rush: 1, stories: 0 }),
         [w(1)]: dh({ day: w(1), reviews: 1, quizzes: 1, dictation: 1, words: 1 }),
       },
     });

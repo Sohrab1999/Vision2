@@ -49,6 +49,7 @@ export interface DayStat {
   words: number; // words marked known today (new learning)
   dictation: number; // dictation rounds finished today
   rush: number; // 60s challenge rounds finished today
+  stories: number; // Task 299 — Hill library stories finished today
 }
 
 // Task 290 «کتاب‌خانهٔ داستان‌ها» — رکوردِ اتمامِ یک داستانِ L.A. Hill.

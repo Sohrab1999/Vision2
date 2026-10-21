@@ -29,7 +29,7 @@ describe("چیپ هدف امروز — کامپوننت (Task 76)", () => {
     vi.mocked(trackEvent).mockClear();
     useStudy.setState({
       dailyGoal: 10,
-      dayStat: { day: today(), reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0 },
+      dayStat: { day: today(), reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 },
       view: { type: "exam" },
     });
   });
@@ -44,7 +44,7 @@ describe("چیپ هدف امروز — کامپوننت (Task 76)", () => {
 
   it("پیشرفت زنده: ۳+۴=۷ از ۱۰؛ واژهٔ نو=۹ آلوده نمی‌کند (قرارداد زنجیره)", () => {
     useStudy.setState({
-      dayStat: { day: today(), reviews: 3, quizzes: 4, words: 9, dictation: 2, rush: 1 },
+      dayStat: { day: today(), reviews: 3, quizzes: 4, words: 9, dictation: 2, rush: 1, stories: 0 },
     });
     render(<GoalChip />);
     const chip = screen.getByRole("button");
@@ -58,7 +58,7 @@ describe("چیپ هدف امروز — کامپوننت (Task 76)", () => {
 
   it("برآورده: ۶+۴ → کسر ۱۰/۱۰ و عنوان پاداش", () => {
     useStudy.setState({
-      dayStat: { day: today(), reviews: 6, quizzes: 4, words: 0, dictation: 0, rush: 0 },
+      dayStat: { day: today(), reviews: 6, quizzes: 4, words: 0, dictation: 0, rush: 0, stories: 0 },
     });
     render(<GoalChip />);
     const chip = screen.getByRole("button");
@@ -68,7 +68,7 @@ describe("چیپ هدف امروز — کامپوننت (Task 76)", () => {
 
   it("روز کهنه: dayStat دیروز صفر دیده می‌شود (گارد امروز)", () => {
     useStudy.setState({
-      dayStat: { day: daysAgoKey(1), reviews: 9, quizzes: 9, words: 0, dictation: 0, rush: 0 },
+      dayStat: { day: daysAgoKey(1), reviews: 9, quizzes: 9, words: 0, dictation: 0, rush: 0, stories: 0 },
     });
     render(<GoalChip />);
     expect(screen.getByRole("button").textContent).toContain("۰/۱۰");
@@ -76,7 +76,7 @@ describe("چیپ هدف امروز — کامپوننت (Task 76)", () => {
 
   it("کلیک → رویداد goal_chip + بازگشت واقعی به خانه", () => {
     useStudy.setState({
-      dayStat: { day: today(), reviews: 1, quizzes: 0, words: 0, dictation: 0, rush: 0 },
+      dayStat: { day: today(), reviews: 1, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 },
     });
     render(<GoalChip />);
     fireEvent.click(screen.getByRole("button"));

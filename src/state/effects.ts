@@ -7,13 +7,16 @@
 //   dictation → شمارش روز + زنجیره (هدف/یخ ندارد — رفتار تاریخی)
 //   words     → شمارش روز فقط (بای‌پس زنجیره — واژهٔ تازه، رفتار تاریخی)
 //   rush      → شمارش روز فقط (بای‌پس زنجیره — راند سریع، رفتار تاریخی)
+//   stories   → شمارش روز + زنجیره (هدف/یخ ندارد — رفتار دیکته؛ خواندنِ
+//               یک داستانِ واقعی زنجیره را نگه میدارد ولی واردِ هدف نمی‌شود)
+//               (Task 299 — کیوستِ «داستانِ کتاب‌خانه»)
 //
 // همه چیزِ cross-domain که روزی جابه‌جا شود فقط همین‌جا تغییر می‌کند.
 
 import { applyStreak, emptyDayStat, goalAndFreezePatch, normDayStat, pushDayHistory, todayStr } from "./day-engine";
 import type { DayStat, StudyState } from "./types";
 
-export type ActivityKind = "reviews" | "quizzes" | "dictation" | "words" | "rush";
+export type ActivityKind = "reviews" | "quizzes" | "dictation" | "words" | "rush" | "stories";
 
 const ACTIVITY_FIELD: Record<ActivityKind, keyof Omit<DayStat, "day">> = {
   reviews: "reviews",
@@ -21,15 +24,17 @@ const ACTIVITY_FIELD: Record<ActivityKind, keyof Omit<DayStat, "day">> = {
   dictation: "dictation",
   words: "words",
   rush: "rush",
+  stories: "stories",
 };
 
-/** آیا این شمارش زنجیره را جلو می‌برد؟ (dictation زنجیره دارد اما هدف/یخ ندارد) */
+/** آیا این شمارش زنجیره را جلو می‌برد؟ (dictation/stories زنجیره دارند اما هدف/یخ ندارند) */
 const APPLIES_STREAK: Record<ActivityKind, boolean> = {
   reviews: true,
   quizzes: true,
   dictation: true,
   words: false,
   rush: false,
+  stories: true,
 };
 
 /** آیا کامل‌شدن هدفِ امروز (و اعطای یخ F9) با این شمارش حساب می‌شود؟ */
@@ -39,6 +44,7 @@ const COUNTS_TOWARD_GOAL: Record<ActivityKind, boolean> = {
   dictation: false,
   words: false,
   rush: false,
+  stories: false,
 };
 
 /** زیرمجموعهٔ استوری که activityPatch لازم دارد */
@@ -74,7 +80,7 @@ export function activityPatch(s: ActivityDeps, kind: ActivityKind): Partial<Stud
 
   const base = applyStreak(s, bumped);
   if (!COUNTS_TOWARD_GOAL[kind]) {
-    return base; // dictation — زنجیره دارد، هدف/یخ ندارد
+    return base; // dictation/stories — زنجیره دارد، هدف/یخ ندارد
   }
   return { ...base, ...goalAndFreezePatch(s, base.dayStat, base.freezeCount) };
 }

@@ -78,7 +78,7 @@ describe("نوار نشان‌های هفته‌نامه (r284)", () => {
 
   it("شمارنده با فعالیتِ واقعی هم جواب میدهد — یک quiz امروز → «اولین قدم» هم باز میشود", () => {
     useStudy.setState({
-      dayStat: { day: daysAgoKey(0), quizzes: 2, reviews: 0, words: 0, dictation: 0, rush: 0 } as never,
+      dayStat: { day: daysAgoKey(0), quizzes: 2, reviews: 0, words: 0, dictation: 0, rush: 0, stories: 0 } as never,
     });
     render(<WeeklyReportSection />);
     const band = document.querySelector(".badge-band")!;

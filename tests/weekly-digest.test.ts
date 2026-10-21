@@ -11,13 +11,14 @@ import {
 
 const T = "2026-10-14"; // a Wednesday — fixed "today" for deterministic tests
 
-const day = (dayKey: string, over: Partial<{ reviews: number; quizzes: number; words: number; dictation: number; rush: number }> = {}) => ({
+const day = (dayKey: string, over: Partial<{ reviews: number; quizzes: number; words: number; dictation: number; rush: number; stories: number }> = {}) => ({
   day: dayKey,
   reviews: over.reviews ?? 0,
   quizzes: over.quizzes ?? 0,
   words: over.words ?? 0,
   dictation: over.dictation ?? 0,
   rush: over.rush ?? 0,
+  stories: over.stories ?? 0,
 });
 
 const input = (over: Partial<DigestInput> = {}): DigestInput => ({
@@ -44,10 +45,10 @@ describe("dayKeyBefore / labels", () => {
 describe("statOfDay", () => {
   it("prefers dayHistory, falls back to legacy history, then zeros", () => {
     const inp = input({
-      dayHistory: { [T]: { day: T, reviews: 5, quizzes: 1, words: 2, dictation: 0, rush: 1 } },
+      dayHistory: { [T]: { day: T, reviews: 5, quizzes: 1, words: 2, dictation: 0, rush: 1, stories: 0 } },
       history: { [T]: { reviews: 99, quizzes: 99 } }, // must be ignored when dayHistory has the day
     });
-    expect(statOfDay(T, inp)).toEqual(day(T, { reviews: 5, quizzes: 1, words: 2, rush: 1 }));
+    expect(statOfDay(T, inp)).toEqual(day(T, { reviews: 5, quizzes: 1, words: 2, rush: 1, stories: 0 }));
     const legacyDay = "2026-10-01";
     expect(statOfDay(legacyDay, input({ history: { [legacyDay]: { reviews: 3, quizzes: 4 } } }))).toEqual(
       day(legacyDay, { reviews: 3, quizzes: 4 })
@@ -60,11 +61,11 @@ describe("computeWeeklyDigest — windows", () => {
   it("treats today-6..today as this week and today-13..today-7 as last week", () => {
     const inp = input({
       dayHistory: {
-        [dayKeyBefore(T, 0)]: { day: "", reviews: 10, quizzes: 0, words: 0, dictation: 0, rush: 0 },
-        [dayKeyBefore(T, 6)]: { day: "", reviews: 1, quizzes: 0, words: 0, dictation: 0, rush: 0 },
-        [dayKeyBefore(T, 7)]: { day: "", reviews: 50, quizzes: 0, words: 0, dictation: 0, rush: 0 },
-        [dayKeyBefore(T, 13)]: { day: "", reviews: 7, quizzes: 0, words: 0, dictation: 0, rush: 0 },
-        [dayKeyBefore(T, 14)]: { day: "", reviews: 999, quizzes: 0, words: 0, dictation: 0, rush: 0 }, // outside window
+        [dayKeyBefore(T, 0)]: { day: "", reviews: 10, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 },
+        [dayKeyBefore(T, 6)]: { day: "", reviews: 1, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 },
+        [dayKeyBefore(T, 7)]: { day: "", reviews: 50, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 },
+        [dayKeyBefore(T, 13)]: { day: "", reviews: 7, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 },
+        [dayKeyBefore(T, 14)]: { day: "", reviews: 999, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 }, // outside window
       },
     });
     const d = computeWeeklyDigest(inp, T);
@@ -81,8 +82,8 @@ describe("computeWeeklyDigest — totals and deltas", () => {
   it("sums every counter and derives diffs with percent", () => {
     const inp = input({
       dayHistory: {
-        [dayKeyBefore(T, 1)]: { day: "", reviews: 8, quizzes: 2, words: 3, dictation: 1, rush: 1 },
-        [dayKeyBefore(T, 10)]: { day: "", reviews: 4, quizzes: 1, words: 1, dictation: 0, rush: 1 },
+        [dayKeyBefore(T, 1)]: { day: "", reviews: 8, quizzes: 2, words: 3, dictation: 1, rush: 1, stories: 0 },
+        [dayKeyBefore(T, 10)]: { day: "", reviews: 4, quizzes: 1, words: 1, dictation: 0, rush: 1, stories: 0 },
       },
     });
     const d = computeWeeklyDigest(inp, T);
@@ -98,9 +99,9 @@ describe("computeWeeklyDigest — totals and deltas", () => {
   it("counts active days and goal days inside each window only", () => {
     const inp = input({
       dayHistory: {
-        [dayKeyBefore(T, 0)]: { day: "", reviews: 2, quizzes: 0, words: 0, dictation: 0, rush: 0 },
-        [dayKeyBefore(T, 2)]: { day: "", reviews: 2, quizzes: 0, words: 0, dictation: 0, rush: 0 },
-        [dayKeyBefore(T, 8)]: { day: "", reviews: 2, quizzes: 0, words: 0, dictation: 0, rush: 0 },
+        [dayKeyBefore(T, 0)]: { day: "", reviews: 2, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 },
+        [dayKeyBefore(T, 2)]: { day: "", reviews: 2, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 },
+        [dayKeyBefore(T, 8)]: { day: "", reviews: 2, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 },
       },
       goalMetDays: [dayKeyBefore(T, 0), dayKeyBefore(T, 2), dayKeyBefore(T, 8)],
     });
@@ -113,9 +114,9 @@ describe("computeWeeklyDigest — totals and deltas", () => {
   it("picks the strongest day of this week as bestDay", () => {
     const inp = input({
       dayHistory: {
-        [dayKeyBefore(T, 1)]: { day: "", reviews: 3, quizzes: 0, words: 0, dictation: 0, rush: 0 },
-        [dayKeyBefore(T, 3)]: { day: "", reviews: 1, quizzes: 4, words: 2, dictation: 0, rush: 2 }, // 9 → best
-        [dayKeyBefore(T, 9)]: { day: "", reviews: 50, quizzes: 0, words: 0, dictation: 0, rush: 0 }, // last week, ignored
+        [dayKeyBefore(T, 1)]: { day: "", reviews: 3, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 },
+        [dayKeyBefore(T, 3)]: { day: "", reviews: 1, quizzes: 4, words: 2, dictation: 0, rush: 2, stories: 0 }, // 9 → best
+        [dayKeyBefore(T, 9)]: { day: "", reviews: 50, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 }, // last week, ignored
       },
     });
     expect(computeWeeklyDigest(inp, T).bestDay).toEqual({ day: dayKeyBefore(T, 3), total: 9 });
@@ -133,8 +134,8 @@ describe("computeWeeklyDigest — highlights", () => {
   it("celebrates growth with a Persian percent", () => {
     const inp = input({
       dayHistory: {
-        [dayKeyBefore(T, 0)]: { day: "", reviews: 6, quizzes: 2, words: 2, dictation: 0, rush: 0 },
-        [dayKeyBefore(T, 7)]: { day: "", reviews: 2, quizzes: 1, words: 0, dictation: 0, rush: 0 },
+        [dayKeyBefore(T, 0)]: { day: "", reviews: 6, quizzes: 2, words: 2, dictation: 0, rush: 0, stories: 0 },
+        [dayKeyBefore(T, 7)]: { day: "", reviews: 2, quizzes: 1, words: 0, dictation: 0, rush: 0, stories: 0 },
       },
     });
     const d = computeWeeklyDigest(inp, T);
@@ -146,8 +147,8 @@ describe("computeWeeklyDigest — highlights", () => {
   it("encourages when activity dropped", () => {
     const inp = input({
       dayHistory: {
-        [dayKeyBefore(T, 0)]: { day: "", reviews: 1, quizzes: 0, words: 0, dictation: 0, rush: 0 },
-        [dayKeyBefore(T, 7)]: { day: "", reviews: 9, quizzes: 0, words: 0, dictation: 0, rush: 0 },
+        [dayKeyBefore(T, 0)]: { day: "", reviews: 1, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 },
+        [dayKeyBefore(T, 7)]: { day: "", reviews: 9, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 },
       },
     });
     expect(computeWeeklyDigest(inp, T).highlights.some((h) => h.includes("۸ فعالیت کمتر"))).toBe(true);
@@ -155,7 +156,7 @@ describe("computeWeeklyDigest — highlights", () => {
 
   it("greets a first active week without previous data", () => {
     const inp = input({
-      dayHistory: { [dayKeyBefore(T, 0)]: { day: "", reviews: 4, quizzes: 0, words: 0, dictation: 0, rush: 0 } },
+      dayHistory: { [dayKeyBefore(T, 0)]: { day: "", reviews: 4, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 } },
     });
     expect(computeWeeklyDigest(inp, T).highlights.some((h) => h.includes("شروع پرانرژی"))).toBe(true);
   });
@@ -272,7 +273,7 @@ describe("خطِ هایلایتِ نبرد در computeWeeklyDigest (Task 103)",
   it("با نبردِ این هفته، خطِ فارسی با ارقامِ فارسی و برشِ نتیجه‌ها می‌آید", () => {
     const d = computeWeeklyDigest(
       input({
-        dayHistory: { [T]: { day: T, reviews: 3, quizzes: 0, words: 0, dictation: 0, rush: 0 } },
+        dayHistory: { [T]: { day: T, reviews: 3, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 } },
         duelHistory: [
           rec({ id: "a", day: dayKeyBefore(T, 0), outcome: "win" }),
           rec({ id: "b", day: dayKeyBefore(T, 1), outcome: "win" }),
