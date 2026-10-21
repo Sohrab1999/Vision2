@@ -446,13 +446,19 @@ export default function DictionaryView() {
                   // r261 ② — رتبهٔ سهمِ در-متن در همان tooltip (رتبه‌بندیِ رقابتیِ
                   // نسبتِ شناور — هم‌کسرها هم‌رتبه)
                   const rank = usageRank.rankOf.get(r.lessonId) ?? 0;
+                  // r265 ③ — بندِ ③ پیشنهادِ ۲۶۴: مقیاسِ مطلقِ پیکره در همان
+                  // tooltip — «۴۹۰ از ۱۹۱۵ کاربردِ در-متنِ پیکره · ۴۹۸ از
+                  // ۲۱۱۷ بی‌کاربردِ پیکره». مخرج = جمعِ کلِ ۱۲ درس (نه اندازهٔ
+                  // خودِ درس — آن «N از M» مرئیِ سطر است)؛ واژهٔ «بی‌کاربرد»
+                  // همان پانویسِ پنل است. پیش‌شمارشِ r265: جمع‌ها ۱۹۱۵/۲۱۱۷/۴۰۳۲؛
+                  // لنگرها درسِ ۱۰ = ۴۹۰+۴۹۸ · درسِ ۷ = ۷۳+۳۲.
                   return (
                     <button
                       key={r.lessonId}
                       type="button"
                       data-testid={`usage-rank-row-${r.lessonId}`}
                       onClick={(e) => openRankLesson(r.lessonId, e.shiftKey)}
-                      title={`درسِ ${faNum(r.lessonId)}: ٪${faNum(pct)} در متن · ٪${faNum(unusedPct)} بیرون از متن · رتبهٔ ${faNum(rank)} از ${faNum(usageRank.rows.length)} در سهمِ در-متن — کلیک: واژه‌های در-متن · Shift+کلیک: بیرون-از-متن`}
+                      title={`درسِ ${faNum(r.lessonId)}: ٪${faNum(pct)} در متن · ٪${faNum(unusedPct)} بیرون از متن · رتبهٔ ${faNum(rank)} از ${faNum(usageRank.rows.length)} در سهمِ در-متن · ${faNum(r.usedWords)} از ${faNum(usageRank.sumUsed)} کاربردِ در-متنِ پیکره · ${faNum(r.totalWords - r.usedWords)} از ${faNum(usageRank.sumTotal - usageRank.sumUsed)} بی‌کاربردِ پیکره — کلیک: واژه‌های در-متن · Shift+کلیک: بیرون-از-متن`}
                       aria-label={`نمایش واژه‌های درس ${faNum(r.lessonId)} — ${r.titleFa} — که در مکالمه‌ها و ریدینگ‌ها آمده‌اند؛ با Shift: واژه‌هایی که نیامده‌اند`}
                       className="flex min-w-0 items-center gap-2 rounded-lg px-2 py-1.5 text-right transition-[background-color,color] hover:bg-white dark:hover:bg-stone-700/50"
                     >

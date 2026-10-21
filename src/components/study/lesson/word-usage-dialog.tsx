@@ -88,6 +88,20 @@ function WordUsageDialogBody({
   const leaderLessons = lessonCounts
     .filter(([, c]) => c === maxLessonCount)
     .map(([l]) => l);
+  // r265 ① — بندِ ① پیشنهادِ ۲۶۴: شمارِ هم-بیشینه‌ها در tooltipِ خودِ
+  // شمارندهٔ صدرنشین — متنِ مرئی نامشان را می‌گوید، tooltip حالا «چندتا» را
+  // هم می‌گوید: زیرِ تساوی «اینجا K درسِ هم-بیشینه‌اند: ...» و بی-تساوی
+  // «اینجا صدرنشینِ یگانه است: ...» — از همان leaderLessonsِ تک‌منبعِ لنزِ
+  // جاری، هرگز رشتهٔ منجمد (پیش‌شمارشِ r265: از ۵۴۹ نوارِ بازِ پیکره ۳۱۸
+  // یگانه و ۲۳۱ مساوی‌اند — هر دو حالت زنده‌اند و باید صادق بمانند؛
+  // بیشینهٔ تساوی ۱۰ هم-بیشینه). عبارتِ آموزشیِ «همهٔ درس‌هایِ هم-بیشینه
+  // نامیده می‌شوند» قفلِ r264 دست‌نخورده می‌ماند — افزوده می‌شود نه جایگزین.
+  const leaderTieNote =
+    leaderLessons.length > 1
+      ? `اینجا ${faNum(leaderLessons.length)} درسِ هم-بیشینه‌اند: ${leadersFa(leaderLessons)}`
+      : leaderLessons.length === 1
+        ? `اینجا صدرنشینِ یگانه است: ${leadersFa(leaderLessons)}`
+        : "";
   // r263 ③ — تفکیکِ نوع (مکالمه/ریدینگ) در همان نوار — فقط وقتی هر دو نوع
   // موجودند (تک-نوع چیزی فراتر از چیپِ نوعِ خودِ کارت‌ها نمی‌گوید — صداقتِ
   // r252؛ پیش‌شمارشِ r263: change = ریدینگِ ۱۱ + مکالمهٔ ۲ · communication و
@@ -140,6 +154,7 @@ function WordUsageDialogBody({
                 (kindFilter
                   ? `صدرنشینِ ${activeKindLabel} — همهٔ درس‌هایِ هم-بیشینه نامیده می‌شوند`
                   : "صدرنشینِ توزیعِ درس‌ها — همهٔ درس‌هایِ هم-بیشینه نامیده می‌شوند") +
+                (leaderTieNote ? ` · ${leaderTieNote}` : "") +
                 ` · ${faNum(maxLessonCount)} از ${faNum(visibleSites.length)}`
               }
               className="text-[10.5px] font-bold text-stone-500"
