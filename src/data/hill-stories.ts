@@ -1332,6 +1332,222 @@ A few days later he went to the same city, but again he did not find the office,
       { en: "surprised", fa: "متعجب" },
     ],
   },
+  {
+    id: "s2-7",
+    book: "s2",
+    num: 7,
+    title: "Billy's Blackboard",
+    text: `When Billy was very small, he loved pictures. His mother often drew some for him on old pieces of paper. She was very bad at drawing, but Billy enjoyed her pictures and always wanted more.
+
+Then, when he was a little older, Billy's mother gave him some pencils and a drawing book, and he began drawing pictures too, but they were never good.
+
+When Billy was five years old, his mother gave him a small blackboard, some pieces of chalk and a duster. He liked those very much. One day he was trying to draw a picture of his father on the blackboard. He drew lines and rubbed them out, drew more and rubbed those out too for ten minutes, but when he looked at his picture he was not happy.
+
+'Well,' he said at last to his mother, 'I'll put a tail on it and make it a monkey.'`,
+    tf: [
+      { q: "Billy's mother often drew pictures for him when he was small.", a: true },
+      { q: "Billy's mother was very good at drawing.", a: false },
+      { q: "Billy's drawings were never good.", a: true },
+      { q: "Billy liked his blackboard very much.", a: true },
+      { q: "Billy drew a good picture of his father.", a: false },
+      { q: "Billy wanted to make his picture into a monkey.", a: true },
+    ],
+    bq: [
+      "What did Billy love very much when he was small?",
+      "What did his mother often draw for him?",
+      "What did Billy's mother give him when he was a little older?",
+      "What did she give him when he was five years old?",
+      "What was Billy trying to draw on the blackboard one day?",
+      "What did Billy say to his mother at last?",
+    ],
+    glossary: [
+      { en: "blackboard", fa: "تخته‌سیاه" },
+      { en: "chalk", fa: "گچ" },
+      { en: "duster", fa: "پاک‌کنِ تخته" },
+      { en: "tail", fa: "دُم" },
+    ],
+  },
+  {
+    id: "s2-8",
+    book: "s2",
+    num: 8,
+    title: "Captain Jones's Choir",
+    text: `There were men soldiers and women soldiers in an army camp, and every Sunday morning they all went to church, but a lot of the soldiers did not like it much. There was a choir of men soldiers, and Captain Jones was trying to find women soldiers to sing in it too, but none of the ones in the camp offered to do this.
+
+Then one day Captain Jones saw a new girl soldier. She was a tall, very beautiful girl. Captain Jones went to her and said, 'Will you come and sing in the choir at our church, please?'
+
+The girl was very surprised and said, 'But, sir, I can't sing at all!'
+
+'Oh, that's all right,' answered Captain Jones. 'That doesn't matter at all. You don't need to sing. I only want someone to keep the men soldiers looking in front of them when they are in the church.'`,
+    tf: [
+      { q: "There were only men soldiers in the camp.", a: false },
+      { q: "A lot of the soldiers did not like going to church much.", a: true },
+      { q: "The choir was for men soldiers.", a: true },
+      { q: "None of the women soldiers in the camp offered to sing in the choir.", a: true },
+      { q: "The new girl soldier said she sang well.", a: false },
+      { q: "Captain Jones wanted the new girl to sing in the choir.", a: true },
+    ],
+    bq: [
+      "What did the soldiers do every Sunday morning?",
+      "Did they all enjoy doing this?",
+      "What was Captain Jones trying to find?",
+      "What was the new girl soldier like?",
+      "What did Captain Jones say to her?",
+      "What did she answer?",
+      "Why did Captain Jones really want her in the choir?",
+    ],
+    glossary: [
+      { en: "army camp", fa: "اردوگاهِ ارتش" },
+      { en: "choir", fa: "گروهِ سرود" },
+      { en: "church", fa: "کلیسا" },
+      { en: "offer", fa: "پیشنهاد دادن" },
+    ],
+  },
+  {
+    id: "s2-9",
+    book: "s2",
+    num: 9,
+    title: "Len's Long Hair",
+    text: `Len was thirty years old, and he had very long hair. He lived in a big city, but one year he did not find any work there, so he went to a small town and began looking for work there. He went to a lot of places, but nobody wanted him.
+
+Then he met an old friend, and this man said to him, 'People in this town don't like long hair. Why don't you go to a barber? He can cut a lot of it off, and then you can get some work.'
+
+Len went to a barber and said, 'Please cut most of my hair off.'
+
+The barber began. He cut and cut for a long time and then he said to Len, 'Were you in the army a few years ago?'
+
+'Yes, I was,' Len answered. 'Why did you ask that?'
+
+'Because I've found your cap,' the barber said.`,
+    tf: [
+      { q: "Len was twenty years old.", a: false },
+      { q: "Len had very long hair.", a: true },
+      { q: "Nobody in the small town wanted Len for work at first.", a: true },
+      { q: "Len met an old friend in the town.", a: true },
+      { q: "The barber cut off a lot of Len's hair.", a: true },
+      { q: "The barber found Len's army cap in his hair.", a: true },
+    ],
+    bq: [
+      "Why did Len go to a small town?",
+      "Did he find work there at once?",
+      "What did his old friend say to him?",
+      "What did Len say to the barber?",
+      "What did the barber ask Len?",
+      "Why did the barber ask that?",
+    ],
+    glossary: [
+      { en: "barber", fa: "آرایشگرِ مرد" },
+      { en: "cap", fa: "کلاهِ نقاب‌دار" },
+      { en: "army", fa: "ارتش" },
+      { en: "look for", fa: "دنبالِ چیزی گشتن" },
+    ],
+  },
+  {
+    id: "s2-10",
+    book: "s2",
+    num: 10,
+    title: "Mrs Robinson's Class",
+    text: `Mrs Robinson was a teacher in a big school in a city in America. She had boys and girls in her class, and she always enjoyed teaching them, because they were quick, and because they thought about everything carefully.
+
+One day she said to the children, 'People in a lot of countries in Asia wear white clothes at funerals, but people in America and in Europe wear white clothes when they're happy. What colour does a woman wear in this country when she marries, Mary?'
+
+Mary said, 'White, Miss, because she's happy.'
+
+'That's good, Mary,' Mrs Robinson said. 'You're quite right. She wears white because she's happy.'
+
+But then one of the boys in the class put his hand up.
+
+'Yes, Dick!' Mrs Robinson said. 'Do you want to ask something?'
+
+'Yes, please, Miss,' Dick said. 'Why do men wear black in this country when they marry, Miss?'`,
+    tf: [
+      { q: "Mrs Robinson's class had boys and girls in it.", a: true },
+      { q: "Mrs Robinson enjoyed teaching her class.", a: true },
+      { q: "The children thought about everything carefully.", a: true },
+      { q: "People in a lot of countries in Asia wear black clothes at funerals.", a: false },
+      { q: "Mary answered Mrs Robinson's question well.", a: true },
+      { q: "Men wear white in America when they marry.", a: false },
+    ],
+    bq: [
+      "Where did Mrs Robinson teach?",
+      "Why did she enjoy teaching her class?",
+      "What do people in a lot of countries in Asia wear at funerals?",
+      "What did Mary answer?",
+      "What did Dick want to ask at the end?",
+    ],
+    glossary: [
+      { en: "funeral", fa: "مراسمِ خاکسپاری" },
+      { en: "marry", fa: "ازدواج کردن" },
+      { en: "put his hand up", fa: "دستش را بالا برد" },
+      { en: "carefully", fa: "با دقت" },
+    ],
+  },
+  {
+    id: "s2-11",
+    book: "s2",
+    num: 11,
+    title: "Mrs Smith's Scissors",
+    text: `A few years ago, there were a lot of hijackings on aeroplanes, so now people always search passengers and their luggage at airports before they let them get into an aeroplane, because they do not want them to take guns or bombs or other dangerous things on to the plane with them.
+
+Mr and Mrs Smith were singers, and they travelled a lot. Whenever they went by plane, people searched them and their luggage, of course.
+
+One day, Mr Smith came to the airport, and the men searched him and his luggage first. He was ready to get on the plane. Then Mrs Smith arrived. She was late and in a hurry, but the people searched her and her bag carefully. Then Mr Smith heard her laugh and say to the men happily, 'Oh, that's very good! I've looked for those scissors for several days, and now you've found them for me! Thank you very much!'`,
+    tf: [
+      { q: "Mr Smith sometimes carried guns and bombs on to planes.", a: false },
+      { q: "Mrs Smith arrived at the airport after her husband.", a: true },
+      { q: "She was late and in a hurry.", a: true },
+      { q: "The people searched Mrs Smith and her bag carefully.", a: true },
+      { q: "Mrs Smith was happy when the men found her scissors.", a: true },
+      { q: "The men stole Mrs Smith's scissors.", a: false },
+    ],
+    bq: [
+      "Why do people always search passengers and their luggage at airports now?",
+      "What was Mr and Mrs Smith's work?",
+      "What happened whenever they went by plane?",
+      "Who arrived when Mr Smith was ready to get on the plane?",
+      "Why was she in a hurry?",
+      "What did she say to the men?",
+    ],
+    glossary: [
+      { en: "hijacking", fa: "ربودنِ هواپیما" },
+      { en: "scissors", fa: "قیچی" },
+      { en: "luggage", fa: "بارِ مسافر" },
+      { en: "search", fa: "بازرسی کردن" },
+    ],
+  },
+  {
+    id: "s2-12",
+    book: "s2",
+    num: 12,
+    title: "Mick and the Fence",
+    text: `Mick lived in the country, and he had quite a big garden. He grew vegetables, and he had some nice, fat chickens too. He sold the eggs and the meat, and got quite a lot of money for them.
+
+His neighbour had a big garden too, and he also had vegetables and nice, fat chickens in it. There was a wire fence between the gardens, but it was very old, and the chickens often found holes in it and went through.
+
+Now Mick wanted a new fence between his garden and his neighbour's, so Mr Biggs came to build it. Mick said to him, 'Please make the fence out of strong wood. And I want a hole in it. Make it big enough for my chickens to get into my neighbour's garden and eat his vegetables, but too small for his to get into mine and eat mine.'`,
+    tf: [
+      { q: "Mick lived in the country.", a: true },
+      { q: "Mick grew vegetables and had some chickens.", a: true },
+      { q: "Mick was very poor.", a: false },
+      { q: "The wire fence between the gardens was old, and it had holes in it.", a: true },
+      { q: "Mick wanted a new fence made of strong wood.", a: true },
+      { q: "Mick wanted his neighbour's chickens to come into his garden.", a: false },
+    ],
+    bq: [
+      "Where did Mick live?",
+      "What did he have in his garden?",
+      "What did he do with the eggs and the meat?",
+      "What was there between the two gardens?",
+      "Why did the chickens often get through it?",
+      "What did Mick want Mr Biggs to do?",
+    ],
+    glossary: [
+      { en: "fence", fa: "حصار، نرده" },
+      { en: "wire", fa: "سیم" },
+      { en: "chicken", fa: "مرغ" },
+      { en: "hole", fa: "سوراخ" },
+    ],
+  },
 
   // ================= s3 — Intermediate (1,500) =================
   {

@@ -17,14 +17,14 @@ describe("Task 290 — hill library data contract", () => {
     expect(HILL_BOOKS.map((b) => b.level)).toEqual(["750 headwords", "1,000 headwords", "1,500 headwords"]);
   });
 
-  it("۳۹ داستان: s1×27 (r294: ۲۰–۲۷ از PDF بازنویسی شد — کتابِ اول تمام)، s2×6، s3×6 — همهٔ کلیدها یکتا و با الگوی id", () => {
-    expect(HILL_STORIES.length).toBe(39);
-    expect(HILL_TOTAL_STORIES).toBe(39);
+  it("۴۵ داستان: s1×27 s2×12 (r295: ۷–۱۲ از PDF بازنویسی شد — کتابِ دوم تمام)، s3×6 — همهٔ کلیدها یکتا و با الگوی id", () => {
+    expect(HILL_STORIES.length).toBe(45);
+    expect(HILL_TOTAL_STORIES).toBe(45);
     const ids = HILL_STORIES.map((s) => s.id);
-    expect(new Set(ids).size).toBe(39);
+    expect(new Set(ids).size).toBe(45);
     for (const id of ids) expect(id).toMatch(/^s[123]-\d{1,3}$/);
     expect(storiesOfBook("s1").length).toBe(27);
-    expect(storiesOfBook("s2").length).toBe(6);
+    expect(storiesOfBook("s2").length).toBe(12);
     expect(storiesOfBook("s3").length).toBe(6);
     for (const s of HILL_STORIES) {
       expect(s.num).toBeGreaterThan(0);
