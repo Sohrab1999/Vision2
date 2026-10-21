@@ -39,6 +39,8 @@ export default function Flashcards({
   deck?: { color: string; cards: FlashcardDeckCard[] };
 }) {
   const [smartMode, setSmartMode] = useState(startSmart);
+  // راند ۲۷۴ — اندازهٔ پاسِ مرورِ هوشمند در لحظهٔ روشن‌شدن (نوارِ پیشرفتِ صادق)
+  const [passTotal, setPassTotal] = useState(0);
   const [index, setIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
   const known = useStudy((s) => s.known);
@@ -67,16 +69,22 @@ export default function Flashcards({
       }));
   const keyOf = (c: FlashcardDeckCard) => c.key;
 
+  // راند ۲۷۴ — بازمحاسبه رویِ خودِ وضعیتِ srs نه رویِ index. وابستگیِ index دو
+  // خطایِ زنده می‌ساخت: [الف] پرشِ مو — جلوبردنِ index همزمان با کوچک‌شدنِ
+  // آرایه، جانشینِ کارتِ پاسخ‌داده‌شده را یک‌جا رد می‌کرد (اندازه‌گیریِ
+  // زنده: ترتیبِ ۰←۲←۴←۶←۸ رویِ دِکِ ۲۰۴تایی)؛ [ب] انجمادِ پایانِ پاس — با
+  // خالی‌شدنِ سررسیدها و indexِ تغییرنکرده، memo دیگر بازمحاسبه نمی‌کرد و کارتِ
+  // تازه-پاسخ‌داده‌شده برایِ همیشه رویِ صفحه می‌ماند. بازگشت به base هم حذف شد:
+  // سررسیدِ خالی در مرورِ هوشمند یعنی «پاس تمام شد»، نه دِکِ کاملِ تازه.
   const dueCards = useMemo(() => {
     if (!mounted) return base;
     const now = Date.now();
-    const due = base.filter((c) => {
+    return base.filter((c) => {
       const item = srs[keyOf(c)];
       if (!item) return true; // never reviewed → due
       return item.dueAt <= now;
     });
-    return due.length > 0 ? due : base;
-  }, [smartMode, mounted, index]); // recompute as user advances
+  }, [smartMode, mounted, srs]); // recompute when the SRS state itself moves
 
   const cards = smartMode ? dueCards : base;
   const card = cards[Math.min(index, cards.length - 1)];
@@ -106,18 +114,34 @@ export default function Flashcards({
   }, [smartMode]);
 
   const go = (dir: 1 | -1) => {
+    if (cards.length === 0) return; // پاسِ تمام‌شده — ناوبری معنا ندارد
     setFlipped(false);
     setIndex((i) => (i + dir + cards.length) % cards.length);
   };
 
   const answer = (knownIt: boolean) => {
+    if (!key) return; // بی‌کارت (پاسِ تمام‌شده) — آلودگیِ srs با کلیدِ تهی ممنوع
     reviewWord(key, knownIt);
     if (knownIt && !isKnown) toggleKnown(key);
     trackReview(); // daily streak + goal progress
     // F10: one full pass of the deck = a finished flashcard round
     if (index >= cards.length - 1) trackEvent("flashcard_done");
-    go(1);
+    if (smartMode) {
+      // راند ۲۷۴ — کارتِ پاسخ‌داده‌شده خودش از دستِ سررسید خارج می‌شود و جانشین
+      // در همان index می‌نشیند؛ جلوبردنِ index اینجا یعنی پرشِ مو. اگر آخرین
+      // موقعیت بود، به سرِ باقی‌مانده برمی‌گردیم (چرخشِ صادقِ دِکِ در حالِ آب‌شدن).
+      setFlipped(false);
+      if (index >= cards.length - 1) setIndex(0);
+    } else {
+      go(1);
+    }
   };
+
+  // راند ۲۷۴ — startSmart: اندازهٔ پاس پس از زنده‌شدنِ srs ثبت شود (فقطِ یک‌بار؛
+  // با اولین شمارِ سررسیدِ غیرصفر). روشن‌کردنِ دستی هم در خودِ دکمه ثبت می‌کند.
+  useEffect(() => {
+    if (smartMode && mounted && passTotal === 0 && dueCount > 0) setPassTotal(dueCount);
+  }, [smartMode, mounted, passTotal, dueCount]);
 
   // keyboard shortcuts: Space flip, ← next (RTL), → previous, K known, R repeat
   // (re-registered each render so closures stay fresh)
@@ -142,13 +166,26 @@ export default function Flashcards({
   // empty-deck guard (defensive: a dangling snapshot or an empty lesson subset
   // must render a friendly state, never crash on card.word) — after all hooks
   if (!card || !word) {
+    // راند ۲۷۴ — سررسیدِ خالیِ مرورِ هوشمند یعنی «پاس تمام شد» نه «دِک خالی است»:
+    // پیامِ صادق + مسیرِ ادامهٔ دستی؛ دِکِ واقعاً خالی پیامِ خودش را دارد.
+    const passDone = smartMode && mounted && base.length > 0;
     return (
-      <div className="rounded-2xl border border-dashed border-stone-300 bg-white p-8 text-center">
-        <Layers className="mx-auto mb-2 text-stone-300" size={28} />
-        <p className="text-sm font-bold text-stone-600">کارتی برای مرور نیست</p>
+      <div className="rounded-2xl border border-dashed border-stone-300 bg-white p-8 text-center dark:border-stone-700 dark:bg-stone-800">
+        <Layers className="mx-auto mb-2 text-stone-300 dark:text-stone-600" size={28} />
+        <p className="text-sm font-bold text-stone-600 dark:text-stone-300">
+          {passDone ? "پاسِ مرورِ هوشمند تمام شد — همهٔ کارت‌هایِ سررسید مرور شدند" : "کارتی برای مرور نیست"}
+        </p>
+        {passDone && (
+          <button
+            onClick={() => setSmartMode(false)}
+            className="mt-3 rounded-lg border border-violet-200 bg-violet-50 px-4 py-2 text-[12.5px] font-bold text-violet-700 hover:bg-violet-100 dark:border-violet-500/30 dark:bg-violet-500/10 dark:text-violet-300 dark:hover:bg-violet-500/20"
+          >
+            ادامهٔ مرورِ دستی — همهٔ کارت‌ها
+          </button>
+        )}
         <button
           onClick={onExit}
-          className="mt-3 rounded-lg border border-stone-200 px-4 py-2 text-[12.5px] font-bold text-stone-600 hover:bg-stone-50"
+          className={`mt-3 rounded-lg border border-stone-200 px-4 py-2 text-[12.5px] font-bold text-stone-600 hover:bg-stone-50 dark:border-stone-700 dark:text-stone-300 dark:hover:bg-stone-700 ${passDone ? "ms-2" : ""}`}
         >
           بازگشت
         </button>
@@ -160,27 +197,34 @@ export default function Flashcards({
     <div className="space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div className="flex items-center gap-2 text-sm">
-          <span className="rounded-lg bg-stone-100 px-2.5 py-1 font-bold text-stone-700">
-            کارت {Math.min(index + 1, cards.length)} از {cards.length}
+          <span className="rounded-lg bg-stone-100 px-2.5 py-1 font-bold text-stone-700 dark:bg-stone-800 dark:text-stone-200">
+            {smartMode
+              ? `${faNum(cards.length)} کارتِ باقی‌مانده`
+              : `کارت ${faNum(Math.min(index + 1, cards.length))} از ${faNum(cards.length)}`}
           </span>
           <span className={`rounded-lg ${t.chipBg} px-2.5 py-1 text-[12px] font-bold`}>
-            {knownCount} بلدم
+            {faNum(knownCount)} بلدم
           </span>
         </div>
         <div className="flex items-center gap-2">
           {/* smart review toggle */}
           <button
-            onClick={() => setSmartMode((v) => !v)}
+            onClick={() => {
+              // راند ۲۷۴ — اندازهٔ پاس در لحظهٔ روشن‌شدن ثبت می‌شود تا نوارِ
+              // پیشرفت، کسرِ واقعیِ «پاسخ‌داده از سررسیدِ آغازِ پاس» را بگوید.
+              if (!smartMode) setPassTotal(dueCount);
+              setSmartMode((v) => !v);
+            }}
             className={`inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-[12px] font-bold transition-colors ${
               smartMode
-                ? "border-violet-300 bg-violet-50 text-violet-700"
-                : "border-stone-200 bg-white text-stone-500 hover:text-violet-600"
+                ? "border-violet-300 bg-violet-50 text-violet-700 dark:border-violet-500/40 dark:bg-violet-500/15 dark:text-violet-300"
+                : "border-stone-200 bg-white text-stone-500 hover:text-violet-600 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-300 dark:hover:text-violet-300"
             }`}
           >
             <Sparkles size={13} />
             مرور هوشمند
             {smartMode && dueCount > 0 && (
-              <span className="rounded-full bg-violet-600 px-1.5 text-[10px] text-white">{dueCount}</span>
+              <span className="rounded-full bg-violet-600 px-1.5 text-[10px] text-white">{faNum(dueCount)}</span>
             )}
           </button>
           <button
@@ -193,11 +237,20 @@ export default function Flashcards({
         </div>
       </div>
 
-      {/* progress bar */}
-      <div className="h-1.5 overflow-hidden rounded-full bg-stone-200">
+      {/* progress bar — راند ۲۷۴: در مرورِ هوشمند، پیشرفتِ پاس (پاسخ‌داده از سررسیدِ آغاز)؛
+          در حالتِ دستی، جایگاه در دِکِ ثابت */}
+      <div className="h-1.5 overflow-hidden rounded-full bg-stone-200 dark:bg-stone-700">
         <div
           className={`h-full ${t.bg} transition-[background-color,color,border-color,box-shadow,transform] duration-300`}
-          style={{ width: `${((Math.min(index + 1, cards.length)) / cards.length) * 100}%` }}
+          style={{
+            width: `${
+              smartMode
+                ? passTotal > 0
+                  ? Math.min(100, Math.max(0, ((passTotal - cards.length) / passTotal) * 100))
+                  : 0
+                : (Math.min(index + 1, cards.length) / cards.length) * 100
+            }%`,
+          }}
         />
       </div>
 
@@ -338,7 +391,7 @@ export default function Flashcards({
         </button>
         <button
           onClick={() => answer(false)}
-          className="inline-flex items-center gap-1.5 rounded-xl border border-rose-200 bg-rose-50 px-5 py-2.5 text-sm font-bold text-rose-600 transition-[background-color,color,border-color,transform] hover:bg-rose-100 active:scale-[0.96]"
+          className="inline-flex items-center gap-1.5 rounded-xl border border-rose-200 bg-rose-50 px-5 py-2.5 text-sm font-bold text-rose-600 transition-[background-color,color,border-color,transform] hover:bg-rose-100 active:scale-[0.96] dark:border-rose-500/30 dark:bg-rose-500/10 dark:text-rose-300 dark:hover:bg-rose-500/20"
         >
           <RefreshCw size={15} />
           تکرار
@@ -382,7 +435,7 @@ export default function Flashcards({
             className="text-center text-[12px] text-stone-500"
           >
             {isKnown && <span className="text-emerald-600">✓ بلدم · </span>}
-            مرور بعدی: <b className="text-violet-600">{SRS_LABELS[srsItem.level]} دیگر</b> (سطح {srsItem.level + 1} از ۶)
+            مرور بعدی: <b className="text-violet-600">{SRS_LABELS[srsItem.level]} دیگر</b> (سطح {faNum(srsItem.level + 1)} از ۶)
           </motion.p>
         )}
       </AnimatePresence>
