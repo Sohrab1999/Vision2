@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Search, X, BookMarked, BookOpenText, CheckCircle2, CircleDashed, AlarmClock, SearchX, Download, Star, ArrowLeftRight, Shuffle, BarChart3, ChevronDown, TrendingUp, Percent } from "lucide-react";
+import { Search, X, BookMarked, BookOpenText, CheckCircle2, CircleDashed, AlarmClock, SearchX, Download, Star, ArrowLeftRight, Shuffle, BarChart3, ChevronDown, TrendingUp, Percent, EyeOff } from "lucide-react";
 import { lessons } from "@/data";
 import { useStudy, wordKey } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -20,8 +20,14 @@ import QuizEngine from "../quiz/quiz-engine";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 // state filter values — «paired» (r205): فقط واژه‌های جفت‌دارِ جزوه؛
-// «usage» (r253): فقط واژه‌های کاربرددار در متنِ مکالمه/ریدینگِ جزوه
-type StateFilter = "all" | "known" | "unknown" | "due" | "paired" | "usage";
+// «usage» (r253): فقط واژه‌های کاربرددار در متنِ مکالمه/ریدینگِ جزوه؛
+// «unused» (r260): قرینهٔ کهرباییِ «usage» — فقط از مسیرِ Shift+کلیکِ سطرِ نوارِ
+// مقایسه‌ای می‌آید و هرگز در stateChips نیست (ردیفِ وضعیت دقیقاً ۶ دکمه — گاردِ r253)
+type StateFilter = "all" | "known" | "unknown" | "due" | "paired" | "usage" | "unused";
+
+// r260 — سهمِ درصدیِ یک‌رقمِ اعشار با ممیزِ فارسی (همان ایدئومِ study-theme)؛
+// هرگز رشتهٔ ثابت — همیشه از تقسیمِ لایهٔ داده
+const pctFa = (ratio: number) => faNum((Math.round(ratio * 1000) / 10).toFixed(1)).replace(".", "٫");
 
 export default function DictionaryView() {
   const [query, setQuery] = useState("");
@@ -124,14 +130,23 @@ export default function DictionaryView() {
       maxRatio: rows.reduce((m, r) => Math.max(m, r.totalWords > 0 ? r.usedWords / r.totalWords : 0), 0),
       sumUsed: rows.reduce((n, r) => n + r.usedWords, 0),
       sumTotal: rows.reduce((n, r) => n + r.totalWords, 0),
+      // r260 ① — میانگینِ سادهٔ ۱۲ نسبت (بدونِ وزن‌دهیِ اندازهٔ درس) — مقیاسی
+      // متفاوت از سهمِ کلِ پیکره (sumUsed/sumTotal): درسِ ۱۰۵تایی و ۹۸۸تایی
+      // اینجا هم‌وزن‌اند. پیش‌شمارشِ r260: میانگین ۴۹٫۷٪ در برابرِ پیکره ۴۷٫۵٪.
+      avgRatio:
+        rows.length > 0
+          ? rows.reduce((n, r) => n + (r.totalWords > 0 ? r.usedWords / r.totalWords : 0), 0) / rows.length
+          : 0,
     };
   }, []);
   // کلیکِ سطر = فیلترِ همان درس + لنزِ «کاربرددار» — مطالعهٔ هدفمندِ دو-کلیکی؛
-  // پنل جمع می‌شود تا «N واژه یافت شد» بلافاصله دیده شود. (دادهٔ دموکراتیک —
-  // فقط دو فیلترِ محلیِ view؛ هیچ رکوردِ یادگیری‌ای ساخته نمی‌شود.)
-  const openRankLesson = (lessonId: number) => {
+  // Shift+کلیک (r260 ②) = همان درس با لنزِ کهرباییِ «بیرون-از-متن» — مطالعهٔ
+  // هدفمندِ معکوس (قهرمانِ نسبت برایِ دیدنِ حفره‌ها). پنل جمع می‌شود تا
+  // «N واژه یافت شد» بلافاصله دیده شود. (دادهٔ دموکراتیک — فقط دو فیلترِ
+  // محلیِ view؛ هیچ رکوردِ یادگیری‌ای ساخته نمی‌شود.)
+  const openRankLesson = (lessonId: number, reverse = false) => {
     setLessonFilter(lessonId);
-    setStateFilter("usage");
+    setStateFilter(reverse ? "unused" : "usage");
     setRankOpen(false);
   };
 
@@ -163,6 +178,7 @@ export default function DictionaryView() {
       }
       if (stateFilter === "paired" && !pairedSet.has(w.en.trim().toLowerCase())) return false;
       if (stateFilter === "usage" && !usageSet.has(w.en.trim().toLowerCase())) return false;
+      if (stateFilter === "unused" && usageSet.has(w.en.trim().toLowerCase())) return false;
       if (!q) return true;
       if (w.en.toLowerCase().includes(q) || w.fa.includes(query.trim())) return true;
       // جستجوی ازراهِجفت: «lend» کارتِ «borrow» را هم می‌آورد (تسک ۲۰۳)
@@ -319,6 +335,38 @@ export default function DictionaryView() {
           ))}
         </div>
 
+        {/* راند ۲۶۰ ② — نوارِ شناسهٔ لنزِ کهرباییِ «بیرون-از-متن»: فیلترِ
+            «unused» فقط از مسیرِ Shift+کلیکِ سطرِ نوار می‌آید و چیپِ قابلِ
+            کلیکی در ردیفِ وضعیت ندارد — این نوار هویتش را اعلام می‌کند و
+            بازگشتِ یک‌کلیکی می‌دهد (هویتِ کهرباییِ r257/259 — amber-50/200/800
+            ریمپِ موجود؛ صفرِ قانونِ CSSِ نو). بیرونِ ردیفِ وضعیت — گاردِ ۶ دکمه. */}
+        {stateFilter === "unused" && (
+          <div
+            data-testid="usage-reverse-bar"
+            className="mt-2.5 flex flex-wrap items-center gap-2 rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 dark:border-amber-800 dark:bg-amber-900/30"
+          >
+            <EyeOff size={14} aria-hidden className="shrink-0 text-amber-700 dark:text-amber-300" />
+            <p className="min-w-0 flex-1 text-[11.5px] font-bold leading-5 text-amber-800 dark:text-amber-200">
+              لنزِ کهربایی: فقط واژه‌های بیرون-از-متن{" "}
+              {lessonFilter ? `درسِ ${faNum(lessonFilter)}` : "همهٔ درس‌ها"} — واژه‌هایی که در مکالمه‌ها و ریدینگ‌های جزوه نیامده‌اند
+            </p>
+            <button
+              type="button"
+              data-testid="usage-reverse-clear"
+              onClick={() => {
+                // بازگشتِ کامل به همهٔ واژه‌ها — هم لنزِ کهربایی هم فیلترِ درس
+                // (قراردادِ aria-label: «به همهٔ واژه‌ها»)
+                setStateFilter("all");
+                setLessonFilter(null);
+              }}
+              aria-label="بازگشت از لنزِ کهربایی به همهٔ واژه‌ها"
+              className="shrink-0 rounded-full bg-amber-600 px-3 py-1 text-[11px] font-black text-white transition-[background-color] hover:bg-amber-700 dark:bg-amber-500 dark:text-amber-950 dark:hover:bg-amber-400"
+            >
+              بازگشت
+            </button>
+          </div>
+        )}
+
         {/* راند ۲۵۸ — نوارِ مقایسه‌ایِ ۱۲ درسی (بندِ ③ پیشنهادِ ۲۵۷): بخشِ
             خودش را دارد (بیرونِ ردیفِ «وضعیت یادگیری:» — گاردِ r253 آن ردیف
             را دقیقاً ۶ دکمه می‌خواهد) و نامش هرگز /کاربرددار/ را تصاحب
@@ -348,20 +396,30 @@ export default function DictionaryView() {
                 <BookOpenText size={13} className="text-sky-600" />
                 کدام درس بیشترین واژهٔ کاربرددار را دارد؟
               </h2>
+              {/* r260 ① — دو مقیاسِ یک پیکره در یک سطر: میانگینِ سادهٔ نسبت‌های
+                  ۱۲گانه (درس‌ها هم‌وزن) در برابرِ سهمِ کلِ پیکره (وزن‌دار به اندازهٔ
+                  درس). پیش‌شمارشِ r260: ٪۴۹٫۷ در برابرِ ٪۴۷٫۵ — تفاوتی که فقط با
+                  هم‌نشینی‌شان دیده می‌شود. spanِ اطلاعاتی نه دکمه (فضای نامِ a11y). */}
+              <p data-testid="usage-rank-avg" className="mb-1 text-[11px] font-black text-stone-600">
+                میانگینِ سهمِ درس‌ها: ٪{pctFa(usageRank.avgRatio)} · سهمِ کلِ پیکره: ٪{pctFa(usageRank.sumUsed / usageRank.sumTotal)}
+              </p>
               <p className="mb-2 text-[11px] font-bold leading-5 text-stone-500">
-                نوار = سهمِ واژه‌هایِ هر درس که در مکالمه‌ها و ریدینگ‌های جزوه زندگی می‌کنند؛ عدد = کارت‌ها. کلیک روی هر درس: دیدنِ همان واژه‌ها با لنزِ آسمانی.
+                نوار = سهمِ واژه‌هایِ هر درس که در مکالمه‌ها و ریدینگ‌های جزوه زندگی می‌کنند؛ عدد = کارت‌ها. کلیک روی هر درس: واژه‌های در-متن با لنزِ آسمانی · با کلید Shift: واژه‌های بیرون-از-متن با لنزِ کهربایی.
               </p>
               <div className="grid gap-0.5">
                 {usageRank.rows.map((r) => {
                   const pct = r.totalWords > 0 ? Math.round((r.usedWords / r.totalWords) * 100) : 0;
+                  // r260 ③ — نیمهٔ پنهانِ همان سهم: بیرون-از-متن (مکملِ گردشده،
+                  // مستقل محاسبه می‌شود نه ۱۰۰−pct — صداقتِ گردکردن)
+                  const unusedPct = r.totalWords > 0 ? Math.round(((r.totalWords - r.usedWords) / r.totalWords) * 100) : 0;
                   return (
                     <button
                       key={r.lessonId}
                       type="button"
                       data-testid={`usage-rank-row-${r.lessonId}`}
-                      onClick={() => openRankLesson(r.lessonId)}
-                      title={`سهمِ درس ${faNum(r.lessonId)}: ${faNum(pct)}٪ — کلیک: واژه‌های همین درس`}
-                      aria-label={`نمایش واژه‌های درس ${faNum(r.lessonId)} — ${r.titleFa} — که در مکالمه‌ها و ریدینگ‌ها آمده‌اند`}
+                      onClick={(e) => openRankLesson(r.lessonId, e.shiftKey)}
+                      title={`درسِ ${faNum(r.lessonId)}: ٪${faNum(pct)} در متن · ٪${faNum(unusedPct)} بیرون از متن — کلیک: واژه‌های در-متن · Shift+کلیک: بیرون-از-متن`}
+                      aria-label={`نمایش واژه‌های درس ${faNum(r.lessonId)} — ${r.titleFa} — که در مکالمه‌ها و ریدینگ‌ها آمده‌اند؛ با Shift: واژه‌هایی که نیامده‌اند`}
                       className="flex min-w-0 items-center gap-2 rounded-lg px-2 py-1.5 text-right transition-[background-color,color] hover:bg-white dark:hover:bg-stone-700/50"
                     >
                       <span className="shrink-0 rounded-md bg-violet-100 px-1.5 py-0.5 text-[10.5px] font-black text-violet-700">
