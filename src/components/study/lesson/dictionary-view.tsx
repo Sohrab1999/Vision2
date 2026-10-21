@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Search, X, BookMarked, BookOpenText, CheckCircle2, CircleDashed, AlarmClock, SearchX, Download, Star, ArrowLeftRight, Shuffle, BarChart3, ChevronDown, TrendingUp } from "lucide-react";
+import { Search, X, BookMarked, BookOpenText, CheckCircle2, CircleDashed, AlarmClock, SearchX, Download, Star, ArrowLeftRight, Shuffle, BarChart3, ChevronDown, TrendingUp, Percent } from "lucide-react";
 import { lessons } from "@/data";
 import { useStudy, wordKey } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -119,6 +119,9 @@ export default function DictionaryView() {
     return {
       rows,
       maxUsed: rows.reduce((m, r) => Math.max(m, r.usedWords), 0),
+      // راند ۲۵۹ — قهرمانِ مقیاسِ دوم: بیشترینِ «سهمِ نسبی» (تقسیمِ شناور —
+      // کسرهایِ مساویِ ریاضی به doubleِ یکسان می‌رسند؛ تساویِ مستقیم ایمن است)
+      maxRatio: rows.reduce((m, r) => Math.max(m, r.totalWords > 0 ? r.usedWords / r.totalWords : 0), 0),
       sumUsed: rows.reduce((n, r) => n + r.usedWords, 0),
       sumTotal: rows.reduce((n, r) => n + r.totalWords, 0),
     };
@@ -385,6 +388,21 @@ export default function DictionaryView() {
                           بیشترین
                         </span>
                       )}
+                      {/* راند ۲۵۹ — بندِ ② پیشنهادِ ۲۵۸: قهرمانِ مقیاسِ دوم —
+                          «بیشترینِ نسبت» (درسِ ۷: ۶۹٫۵٪) کنارِ «بیشترینِ شمارش»
+                          (درسِ ۱۰: ۴۹۰)؛ هویتِ آسمانیِ خانواده با خطِ دورِ ملایم
+                          (border-sky-200/bg-sky-50 — ریمپِ تاریکِ kernel) تا از
+                          badgeِ پرِ شمارش تفکیک شود؛ تساوی = همهٔ صدرنشین‌ها. */}
+                      {usageRank.maxRatio > 0 && r.usedWords / r.totalWords === usageRank.maxRatio && (
+                        <span
+                          data-testid="usage-rank-max-ratio"
+                          title="بیشترین سهمِ نسبی واژه‌های در-متن از واژگانِ همان درس"
+                          className="inline-flex shrink-0 items-center gap-0.5 rounded-full border border-sky-200 bg-sky-50 px-1.5 py-0.5 text-[9.5px] font-black text-sky-700"
+                        >
+                          <Percent size={9} aria-hidden />
+                          بیشترینِ نسبت
+                        </span>
+                      )}
                     </button>
                   );
                 })}
@@ -394,7 +412,8 @@ export default function DictionaryView() {
                 className="mt-2 border-t border-dashed border-stone-200 pt-2 text-[11px] font-black text-stone-600"
               >
                 جمعِ {faNum(usageRank.rows.length)} درس: {faNum(usageRank.sumUsed)} از{" "}
-                {faNum(usageRank.sumTotal)} واژه در جزوه
+                {faNum(usageRank.sumTotal)} واژه در جزوه · بی‌کاربردها: {faNum(usageRank.sumTotal - usageRank.sumUsed)}{" "}
+                واژه
               </p>
             </div>
           )}

@@ -398,6 +398,8 @@ export default function AppendixView({
             {tables.map((t, ti) => {
               const tid = wordFamilyTableId(t);
               const lesson = WF_TABLE_ID_TO_LESSON[tid];
+              // راند ۲۵۹ — بندِ ③ پیشنهادِ ۲۵۸: چیپِ کهرباییِ هدر حالا
+              // چرخانندهٔ همین لنز است (قرینهٔ کلیکِ سطرِ نوارِ r258)
               return (
                 <WordFamilyTableCard
                   key={`${t.vision}-${t.lesson}`}
@@ -406,6 +408,8 @@ export default function AppendixView({
                   unusedOnly={posLens === "unused"}
                   relatedLesson={lesson}
                   onOpenLesson={lesson !== undefined ? () => openLessonTab(lesson, "vocab") : undefined}
+                  onToggleUnusedLens={() => setPosLens((v) => (v === "unused" ? "all" : "unused"))}
+                  unusedLensOn={posLens === "unused"}
                   prevTable={
                     ti > 0
                       ? { id: wordFamilyTableId(tables[ti - 1]), title: `${tables[ti - 1].grade} · ${tables[ti - 1].lesson}` }

@@ -38,6 +38,12 @@
 // جدول هنوز در متن نیامده» — spanِ اطلاعاتی، نه دکمه؛ هم‌هویتِ کهرباییِ
 // لنزِ معکوسِ r257: amber-50/60/200/800 با ریمپِ تاریکِ kernel — صفرِ
 // قانونِ CSSِ نو). بی‌خانوادهٔ بی‌کاربرد، هیچ (صداقتِ r252 در سطحِ هدر).
+// راند ۲۵۹ — بندِ ③ پیشنهادِ ۲۵۸: چیپِ کهربایی در بسترِ میزبانِ لنزدار
+// (ضمیمه) دکمه می‌شود — کلیکش همان لنزِ «فقط بی‌کاربردها»ی r257 را
+// می‌چرخاند (قرینهٔ کلیکِ سطرِ نوارِ مقایسه‌ایِ r258) با aria-pressed و
+// حالتِ پرشدهٔ فعال (bg-amber-100 — ریمپِ تاریکِ kernel موجود)؛ در بسترِ
+// بی‌لنز (آکاردئونِ درس) همان spanِ اطلاعاتیِ r258 می‌ماند — الگویِ
+// relatedLesson/onOpenLesson: میزبان تصمیم می‌گیرد کنش چیپ چیست.
 import { useMemo, useState } from "react";
 import type { WordFamilyTable } from "@/data/word-families";
 import { wordFamilyTableId } from "@/data/word-families";
@@ -105,6 +111,8 @@ export default function WordFamilyTableCard({
   onNavigateTable,
   tablePosition,
   tableTotal,
+  onToggleUnusedLens,
+  unusedLensOn,
 }: {
   table: WordFamilyTable;
   /** درسِ مرتبط از WF_TABLE_ID_TO_LESSON — نبودش = بی‌چیپ («درس چهارمِ دهم»
@@ -124,6 +132,14 @@ export default function WordFamilyTableCard({
   onNavigateTable?: (id: string) => void;
   tablePosition?: number;
   tableTotal?: number;
+  /** راند ۲۵۹ — بندِ ③ پیشنهادِ ۲۵۸: میزبانِ لنزدار (ضمیمه) این callback را
+   *  می‌دهد و چیپِ کهربایی به دکمهٔ چرخانندهٔ لنزِ «فقط بی‌کاربردها» بدل
+   *  می‌شود (قرینهٔ کلیکِ سطرِ نوارِ مقایسه‌ایِ r258)؛ بی‌callback
+   *  (آکاردئونِ درس) چیپ spanِ اطلاعاتیِ r258 می‌ماند — الگویِ
+   *  relatedLesson/onOpenLesson: میزبان تصمیم می‌گیرد کنشِ چیپ چیست. */
+  onToggleUnusedLens?: () => void;
+  /** وضعیتِ فعلیِ لنزِ معکوس در میزبان — aria-pressed و حالتِ پرشدهٔ فعال. */
+  unusedLensOn?: boolean;
 }) {
   // راند ۲۵۵ — هدفِ دیالوگِ مشترکِ «کاربرد در جزوه» برایِ همین جدول
   const [usage, setUsage] = useState<WordUsageTarget | null>(null);
@@ -131,6 +147,8 @@ export default function WordFamilyTableCard({
   // می‌خورد)؛ findWordUsages کشِ ماژول دارد — memo فقط از محاسبهٔ دوباره می‌کاهد
   const census = useMemo(() => wordFamilyUsageCensus(table.families), [table]);
   const usedIdx = useMemo(() => new Set(census.usedFamilyIdx), [census]);
+  // راند ۲۵۹ — نیمهٔ پنهانِ سرشماری؛ هم در spanِ r258 و هم در دکمهٔ نو
+  const unusedFamilies = census.totalFamilies - census.usedFamilies;
   return (
     // لنگرِ اسکرولِ عمیق (r224) — scroll-mt برای فاصلهٔ هدرِ چسبان
     <div id={`wf-table-${wordFamilyTableId(table)}`} className="scroll-mt-24 overflow-hidden rounded-2xl border c-card shadow-sm">
@@ -162,21 +180,41 @@ export default function WordFamilyTableCard({
             {faNum(census.usedCells)} از {faNum(census.totalCells)} سلول در جزوه
           </span>
         )}
-        {/* راند ۲۵۸ — سرشماریِ کهرباییِ «بی‌کاربرد» (بندِ ① پیشنهادِ ۲۵۷):
-            هم‌سنگِ سرشماریِ آسمانیِ سلولی، رویِ هدرِ هر جدول — نیمهٔ پنهانِ
-            همان جمله («مکملِ یک شمارنده، خودش یک ویژگی است» — درسِ r257).
-            spanِ اطلاعاتی است نه دکمه — کنشِ مطالعهٔ هدفمند، لنزِ کهرباییِ
-            ضمیمه است (r257)؛ بی‌خانوادهٔ بی‌کاربرد، هیچ (صداقتِ r252). */}
-        {census.totalFamilies - census.usedFamilies > 0 && (
-          <span
-            data-testid="wf-unused-census"
-            title="خانواده‌هایی که هنوز هیچ سلولشان در متنِ مکالمه‌ها و ریدینگ‌های جزوه نیامده — برایِ مطالعهٔ هدفمند"
-            className="inline-flex items-center gap-1 rounded-full border border-amber-200 bg-amber-50/60 px-2.5 py-1 text-[11px] font-black text-amber-800"
-          >
-            <EyeOff size={11} aria-hidden />
-            {faNum(census.totalFamilies - census.usedFamilies)} خانوادهٔ این جدول هنوز در متن نیامده
-          </span>
-        )}
+        {/* راند ۲۵۸/۲۵۹ — سرشماریِ کهرباییِ «بی‌کاربرد» (بندِ ① پیشنهادِ ۲۵۷ +
+            بندِ ③ پیشنهادِ ۲۵۸): در بسترِ لنزدار (ضمیمه) دکمهٔ چرخانندهٔ لنزِ
+            «فقط بی‌کاربردها» با aria-pressed و حالتِ پرشدهٔ فعال؛ در بسترِ
+            بی‌لنز (آکاردئونِ درس) spanِ اطلاعاتیِ r258 — بی‌خانوادهٔ
+            بی‌کاربرد، هیچ (صداقتِ r252). */}
+        {unusedFamilies > 0 &&
+          (onToggleUnusedLens ? (
+            <button
+              type="button"
+              data-testid="wf-unused-census"
+              onClick={onToggleUnusedLens}
+              aria-pressed={!!unusedLensOn}
+              title={
+                unusedLensOn
+                  ? "لنزِ «فقط بی‌کاربردها» روشن است — کلیک: بازگشت به همهٔ خانواده‌ها"
+                  : "خانواده‌هایی که هنوز هیچ سلولشان در متنِ مکالمه‌ها و ریدینگ‌های جزوه نیامده — کلیک: نمایشِ همین خانواده‌ها"
+              }
+              aria-label={`${faNum(unusedFamilies)} خانوادهٔ این جدول هنوز در متن نیامده — کلیک: ${unusedLensOn ? "بازگشت به همهٔ خانواده‌ها" : "نمایشِ همین خانواده‌ها"}`}
+              className={`inline-flex items-center gap-1 rounded-full border border-amber-200 px-2.5 py-1 text-[11px] font-black text-amber-800 transition-[background-color,color,border-color,box-shadow] ${
+                unusedLensOn ? "bg-amber-100 shadow-sm" : "bg-amber-50/60"
+              }`}
+            >
+              <EyeOff size={11} aria-hidden />
+              {faNum(unusedFamilies)} خانوادهٔ این جدول هنوز در متن نیامده
+            </button>
+          ) : (
+            <span
+              data-testid="wf-unused-census"
+              title="خانواده‌هایی که هنوز هیچ سلولشان در متنِ مکالمه‌ها و ریدینگ‌های جزوه نیامده — برایِ مطالعهٔ هدفمند"
+              className="inline-flex items-center gap-1 rounded-full border border-amber-200 bg-amber-50/60 px-2.5 py-1 text-[11px] font-black text-amber-800"
+            >
+              <EyeOff size={11} aria-hidden />
+              {faNum(unusedFamilies)} خانوادهٔ این جدول هنوز در متن نیامده
+            </span>
+          ))}
         <span className="c-track-70 ms-auto rounded-full px-2.5 py-1 text-[11px] font-black text-stone-600">
           {usedOnly && census.usedFamilies < table.families.length
             ? `${faNum(census.usedFamilies)} از ${faNum(table.families.length)} خانواده`
