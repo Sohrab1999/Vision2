@@ -68,6 +68,18 @@ function WordUsageDialogBody({
   // بازگشت؛ کلیکِ نوعِ دیگر = تعویضِ متقابل (الگویِ زوجِ r257).
   const [kindFilter, setKindFilter] = useState<KindFilter>(null);
 
+  // r268 ① — بندِ نوِ این راند: گشایندهٔ «+ N موردِ دیگر» — تا r26۷ این خط
+  // فقط متنِ مرده بود و کاربردهایِ نهم به بعد «هیچ‌راه» بودند (پیش‌شمارشِ
+  // r268: از ۲۶۴۰ واژه، ۱۵۳ واژه بیش از ۸ سایت دارند — بیشینه «of» با ۹۱
+  // سایت و ۸۳ پنهان!). حالا دکمه‌ای دوسطحی است (ایدئومِ togglingِ r259):
+  // aria-expanded صداقتِ وضعیت را می‌گوید و بازگشتِ کاملِ r260 را دارد.
+  // نامِ دسترس‌پذیر از خودِ متنِ مرئی می‌آید (بدونِ aria-label — WCAG 2.5.3
+  // خودکار)، tooltip رفتار را می‌آموزد و شمارش‌ها از visibleSites.length
+  // تک‌منبعِ r264 می‌آیند — هرگز رشتهٔ منجمد. remount با keyِ واژه
+  // (r264) showAll را هم از نو می‌کند — لنزِ یک واژه به واژهٔ بعدی
+  // نشت نمی‌کند.
+  const [showAll, setShowAll] = useState(false);
+
   // راند ۲۶۲ — بندِ ② پیشنهادِ ۲۶۱: پراکندگیِ درس‌ها — وقتی واژه در ≥۲ درس
   // زندگی می‌کند، یک نوارِ فشرده زیرِ تیتر نشان می‌دهد هر درس چند کاربرد دارد
   // (پیش‌شمارشِ r262: change = ۱۳ کاربرد در ۶ درس با صدرنشینِ درسِ ۵؛
@@ -271,7 +283,7 @@ function WordUsageDialogBody({
           </div>
         )}
         <ul className="space-y-2">
-          {visibleSites.slice(0, 8).map((s, i) => (
+          {(showAll ? visibleSites : visibleSites.slice(0, 8)).map((s, i) => (
             <li
               key={`${s.lessonId}-${s.kind}-${i}`}
               data-testid="usage-site"
@@ -282,6 +294,19 @@ function WordUsageDialogBody({
                   {s.kind === "conversation" ? "مکالمه" : "ریدینگ"}
                 </span>
                 <span className="text-[10.5px] font-bold text-stone-500">{s.titleFa}</span>
+                {/* r268 ② — نشانِ درسِ هر کارت — از s.lessonId تک‌منبع: titleFa
+                    درس را در نثر می‌گوید («مکالمهٔ درس ۱ — ...» یا «... — درس ۱»)
+                    ولی برای چشمِ جوینده گم است؛ چیپِ خنثایِ سنگی آن را در یک
+                    نگاه می‌دهد و با چیپ‌هایِ نوارِ پراکندگی یک زبان می‌شود.
+                    spanِ بی-هندلر: سفرِ درس کارِ چیپ‌هایِ نوار است (r263) —
+                    دو مقصدِ یکسان رویِ یک کارت شلوغی است نه سادگی. */}
+                <span
+                  data-testid="usage-site-lesson"
+                  title={`این کاربرد از واژگانِ درسِ ${faNum(s.lessonId)} است`}
+                  className="ms-auto inline-flex items-center rounded-md border border-stone-200 bg-stone-100 px-1.5 py-0.5 text-[10px] font-black text-stone-600 dark:border-stone-600 dark:bg-stone-700 dark:text-stone-300"
+                >
+                  درس {faNum(s.lessonId)}
+                </span>
               </div>
               <p className="en-text text-[12.5px] font-bold leading-5 text-stone-700" dir="ltr">
                 {highlightParts(s.en, targetEn).map((part, j) =>
@@ -297,9 +322,28 @@ function WordUsageDialogBody({
           ))}
         </ul>
         {target && visibleSites.length > 8 && (
-          <p className="text-[11px] font-bold text-stone-500" data-testid="usage-more">
-            + {faNum(visibleSites.length - 8)} موردِ دیگر در جزوه
-          </p>
+          // r268 ① — دکمهٔ دوسطحیِ گشاینده: متنِ مرئیِ جمع‌شده («+ N موردِ
+          // دیگر در جزوه») بایت‌به‌بایت همانِ قفل‌هایِ r264 است — تغییرِ
+          // عنصر از p به button هیچ toContainی را نمی‌شکند؛ aria-expanded
+          // وضعیت را صادقانه می‌گوید و بازگشتِ کاملِ r260 را دارد. نامِ
+          // دسترس‌پذیر از خودِ متنِ مرئی می‌آید — خطِ aria-label وجود ندارد
+          // تا فضای نامِ a11yِ r253 (هرگز «جزوه» در aria) بی‌استثنا بماند.
+          <button
+            type="button"
+            data-testid="usage-more"
+            aria-expanded={showAll}
+            onClick={() => setShowAll((v) => !v)}
+            title={
+              showAll
+                ? "کلیک: بازگشت به فهرستِ فشرده"
+                : `کلیک: نمایشِ همهٔ ${faNum(visibleSites.length)} کاربردِ جزوه`
+            }
+            className="mx-auto flex w-fit items-center gap-1 rounded-md border border-stone-200 bg-stone-50 px-2.5 py-1 text-[11px] font-bold text-stone-500 transition-colors duration-150 hover:border-stone-300 hover:bg-stone-100 hover:text-stone-700 dark:border-stone-700 dark:bg-stone-800/60 dark:hover:border-stone-600 dark:hover:bg-stone-800 dark:hover:text-stone-300"
+          >
+            {showAll
+              ? `نمایشِ کمتر — همهٔ ${faNum(visibleSites.length)} کاربرد در جزوه`
+              : `+ ${faNum(visibleSites.length - 8)} موردِ دیگر در جزوه`}
+          </button>
         )}
       </DialogContent>
     </Dialog>
