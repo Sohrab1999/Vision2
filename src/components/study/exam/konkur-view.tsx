@@ -344,11 +344,14 @@ export default function KonkurView() {
             شبیه‌ساز کنکور
           </h2>
           <p className="mb-2 text-[13px] font-bold text-stone-600">تعداد تست:</p>
-          <div className="mb-5 flex flex-wrap gap-2">
+          {/* راند ۲۷۳ — خانوادهٔ انتخابگرها کامل شد (قراردادِ r272/posGrade):
+              گروهِ نام‌دار + وضعیتِ اعلام‌شده رویِ هر دکمه — نه فقط رنگ */}
+          <div className="mb-5 flex flex-wrap gap-2" role="group" aria-label="تعداد تستِ شبیه‌ساز کنکور">
             {SIM_COUNTS.map((n) => (
               <button
                 key={n}
                 onClick={() => setSimCount(n)}
+                aria-pressed={simCount === n}
                 className={`rounded-xl border-2 px-5 py-2.5 text-sm font-black transition-[background-color,color,border-color,transform] active:scale-[0.96] ${
                   simCount === n
                     ? "border-amber-500 bg-amber-50 text-amber-700"
@@ -360,9 +363,10 @@ export default function KonkurView() {
             ))}
           </div>
           <p className="mb-2 text-[13px] font-bold text-stone-600">حالت جلسه:</p>
-          <div className="mb-6 flex flex-wrap gap-2">
+          <div className="mb-6 flex flex-wrap gap-2" role="group" aria-label="حالت جلسهٔ شبیه‌ساز">
             <button
               onClick={() => setSimTimed(true)}
+              aria-pressed={simTimed}
               className={`inline-flex items-center gap-1.5 rounded-xl border-2 px-4 py-2.5 text-[13px] font-bold transition-[background-color,color,border-color,transform] active:scale-[0.96] ${
                 simTimed
                   ? "border-amber-500 bg-amber-50 text-amber-700"
@@ -374,6 +378,7 @@ export default function KonkurView() {
             </button>
             <button
               onClick={() => setSimTimed(false)}
+              aria-pressed={!simTimed}
               className={`inline-flex items-center gap-1.5 rounded-xl border-2 px-4 py-2.5 text-[13px] font-bold transition-[background-color,color,border-color,transform] active:scale-[0.96] ${
                 !simTimed
                   ? "border-amber-500 bg-amber-50 text-amber-700"
@@ -457,7 +462,7 @@ export default function KonkurView() {
               <p className="mb-2 text-[13px] font-bold text-stone-600">
                 تعداد تست تازه ({faNum(unseen.length)} دیده‌نشده موجود):
               </p>
-              <div className="mb-5 flex flex-wrap gap-2">
+              <div className="mb-5 flex flex-wrap gap-2" role="group" aria-label="تعداد تستِ تازهٔ پوشش بانک">
                 {[10, 15, 20].map((n) => {
                   const disabled = n > unseen.length;
                   return (
@@ -465,6 +470,7 @@ export default function KonkurView() {
                       key={n}
                       onClick={() => setCoverCount(n)}
                       disabled={disabled}
+                      aria-pressed={coverCount === n}
                       className={`rounded-xl border-2 px-5 py-2.5 text-sm font-black transition-[background-color,color,border-color,transform] active:scale-[0.96] ${
                         disabled
                           ? "cursor-not-allowed border-stone-100 bg-stone-50 text-stone-300"

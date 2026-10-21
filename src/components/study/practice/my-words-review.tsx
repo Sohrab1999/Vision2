@@ -90,6 +90,7 @@ export default function MyWordsReview({ stars }: { stars: ResolvedStar[] }) {
                 key={n}
                 onClick={() => setSize(n)}
                 disabled={n > stars.length}
+                aria-pressed={clamped === n}
                 className={`rounded-lg border px-2.5 py-1.5 text-[11.5px] font-black transition-[background-color,color,border-color,transform,opacity] active:scale-[0.96] disabled:cursor-not-allowed disabled:opacity-35 ${
                   clamped === n
                     ? "border-amber-400 bg-amber-100 text-amber-700"

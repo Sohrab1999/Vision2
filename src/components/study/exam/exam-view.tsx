@@ -206,11 +206,14 @@ export default function ExamView() {
           </div>
 
           <p className="mb-2 text-[13px] font-bold text-stone-600">۱. تعداد سؤالات را انتخاب کنید:</p>
-          <div className="mb-5 flex flex-wrap gap-2">
+          {/* راند ۲۷۳ — خانوادهٔ انتخابگرها کامل شد (قراردادِ r272/posGrade):
+              گروهِ نام‌دار + وضعیتِ اعلام‌شده رویِ هر دکمه — نه فقط رنگ */}
+          <div className="mb-5 flex flex-wrap gap-2" role="group" aria-label="تعداد سؤال‌های آزمون جامع">
             {EXAM_COUNTS.map((n) => (
               <button
                 key={n}
                 onClick={() => setExamCount(n)}
+                aria-pressed={examCount === n}
                 className={`rounded-xl border-2 px-5 py-2.5 text-sm font-black transition-[background-color,color,border-color,transform] active:scale-[0.96] ${
                   examCount === n
                     ? "border-emerald-500 bg-emerald-50 text-emerald-700"
@@ -223,9 +226,10 @@ export default function ExamView() {
           </div>
 
           <p className="mb-2 text-[13px] font-bold text-stone-600">۲. حالت آزمون:</p>
-          <div className="mb-6 flex flex-wrap gap-2">
+          <div className="mb-6 flex flex-wrap gap-2" role="group" aria-label="حالت آزمون جامع">
             <button
               onClick={() => setExamTimed(true)}
+              aria-pressed={examTimed}
               className={`inline-flex items-center gap-1.5 rounded-xl border-2 px-4 py-2.5 text-[13px] font-bold transition-[background-color,color,border-color,transform] active:scale-[0.96] ${
                 examTimed
                   ? "border-emerald-500 bg-emerald-50 text-emerald-700"
@@ -237,6 +241,7 @@ export default function ExamView() {
             </button>
             <button
               onClick={() => setExamTimed(false)}
+              aria-pressed={!examTimed}
               className={`inline-flex items-center gap-1.5 rounded-xl border-2 px-4 py-2.5 text-[13px] font-bold transition-[background-color,color,border-color,transform] active:scale-[0.96] ${
                 !examTimed
                   ? "border-emerald-500 bg-emerald-50 text-emerald-700"
