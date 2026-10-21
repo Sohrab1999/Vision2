@@ -150,6 +150,7 @@ export default function Badges() {
   const dayHistory = useStudy((s) => s.dayHistory);
   const duelHistory = useStudy((s) => s.duelHistory);
   const seenBadges = useStudy((s) => s.seenBadges);
+  const userName = useStudy((s) => s.userName); // r282 — خانوادهٔ هویت
   const markBadgesSeen = useStudy((s) => s.markBadgesSeen);
   const mounted = useMounted();
   const { toast } = useToast();
@@ -174,8 +175,10 @@ export default function Badges() {
         goalMetDays,
         dayHistory,
         duelHistory,
+        seenBadges,
+        userName,
       }),
-    [known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, freezeCount, freezeUsedDays, freezeEarnedDay, goalMetDays, dayHistory, duelHistory]
+    [known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, freezeCount, freezeUsedDays, freezeEarnedDay, goalMetDays, dayHistory, duelHistory, seenBadges, userName]
   );
 
   const unlocked = useMemo(() => unlockedBadgeIds(input), [input]);

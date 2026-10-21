@@ -121,6 +121,7 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
   const rushGames = useStudy((s) => s.rushGames);
   const dayStat = useStudy((s) => s.dayStat);
   const userName = useStudy((s) => s.userName);
+  const seenBadges = useStudy((s) => s.seenBadges); // r282 — خانوادهٔ هویت
   const userId = useStudy((s) => s.userId);
 
   // opener lives in study-app (Task 44: lazy-mount on first use) — this
@@ -219,9 +220,9 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
   const evalInput = useMemo(
     () =>
       mounted
-        ? buildEvalInput({ known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames })
+        ? buildEvalInput({ known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, seenBadges, userName })
         : null,
-    [mounted, known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames]
+    [mounted, known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, seenBadges, userName]
   );
   const unlocked = useMemo<Set<string>>(
     () => (evalInput ? unlockedBadgeIds(evalInput) : new Set<string>()),

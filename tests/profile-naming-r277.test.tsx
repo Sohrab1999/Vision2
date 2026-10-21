@@ -25,7 +25,7 @@ import ProfilePopover from "@/components/study/profile/profile-popover";
 import { sendProfile } from "@/lib/identity";
 
 vi.mock("@/lib/analytics", () => ({ trackEvent: vi.fn() }));
-vi.mock("@/lib/identity", () => ({ sendProfile: vi.fn().mockResolvedValue({}) }));
+vi.mock("@/lib/identity", async (importOriginal) => ({ ...(await importOriginal<typeof import("@/lib/identity")>()), sendProfile: vi.fn().mockResolvedValue({}) }));
 const toastSpy = vi.fn();
 vi.mock("@/hooks/use-toast", () => ({ useToast: () => ({ toast: toastSpy }) }));
 

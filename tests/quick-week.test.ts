@@ -8,7 +8,7 @@
 //      وزن‌دار بر seen (هم‌وزنِ فکرِ هفتهٔ ۱۰۹)؛ نرخِ درستی از همهٔ
 //      پاسخ‌های پنجره (هفتهٔ سریعِ بی‌دقت گیت را نمی‌گذراند)؛ مرزهای
 //      دقیقِ ≤۱۵۰۰/≤۱۰۰۰/≥۰٫۸/≥۳/≥۹/≥۱۵ تست-قفل
-//   ③ سیم‌کشیِ buildEvalInput + دو نشانِ جدید در رجیستریِ ۵۲تایی —
+//   ③ سیم‌کشیِ buildEvalInput + دو نشانِ جدید در رجیستریِ ۵۳تایی —
 //      زیرمجموعهٔ ریاضیِ طلا⇒نقره در هر دو جهت
 // ------------------------------------------------------------------
 import { describe, it, expect } from "vitest";
@@ -337,9 +337,9 @@ const BASE_DEFAULTS = {
 } as unknown as BuildArgs;
 const base = (over: Partial<BuildArgs> = {}) => buildEvalInput({ ...BASE_DEFAULTS, ...over });
 
-describe("سیم‌کشیِ خانوادهٔ هفتهٔ چابک — رجیستریِ ۵۲تایی", () => {
-  it("دو نشانِ جدید با آیکن/تیر/قراردادِ پیشرفت — رجیستری ۵۰→۵۲", () => {
-    expect(BADGES.length).toBe(52);
+describe("سیم‌کشیِ خانوادهٔ هفتهٔ چابک — رجیستریِ ۵۳تایی", () => {
+  it("دو نشانِ جدید با آیکن/تیر/قراردادِ پیشرفت — رجیستری ۵۰→۵۳", () => {
+    expect(BADGES.length).toBe(53);
     const ids = new Set(BADGES.map((b) => b.id));
     expect(ids.has("quick-week")).toBe(true);
     expect(ids.has("lightning-week")).toBe(true);

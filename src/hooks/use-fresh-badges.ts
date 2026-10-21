@@ -29,6 +29,7 @@ export function useFreshBadges(): string[] {
   const goalMetDays = useStudy((s) => s.goalMetDays);
   const dayHistory = useStudy((s) => s.dayHistory);
   const seenBadges = useStudy((s) => s.seenBadges);
+  const userName = useStudy((s) => s.userName); // r282 — خانوادهٔ هویت
   const mounted = useMounted();
 
   return useMemo(() => {
@@ -49,7 +50,9 @@ export function useFreshBadges(): string[] {
       freezeEarnedDay,
       goalMetDays,
       dayHistory,
+      seenBadges,
+      userName,
     });
     return newBadgeIds(input, seenBadges);
-  }, [mounted, known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, freezeCount, freezeUsedDays, freezeEarnedDay, goalMetDays, dayHistory, seenBadges]);
+  }, [mounted, known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, freezeCount, freezeUsedDays, freezeEarnedDay, goalMetDays, dayHistory, seenBadges, userName]);
 }

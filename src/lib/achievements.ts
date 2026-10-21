@@ -10,6 +10,7 @@ import { faNum, secFa } from "./study-theme";
 import { completedQuestCount } from "./daily-quests";
 import { duelTopRival, duelSpeedStats, duelVerifiedWins, duelQuickThinkers } from "./duel-history";
 import { duelQuickWeekReport, DUEL_QUICK_WEEK, type QuickWeekReport } from "./weekly-digest";
+import { FIRST_VISIBLE_BADGE_ID } from "./identity";
 import { FREEZE_WINDOW } from "@/state/types";
 
 export type BadgeTier = "bronze" | "silver" | "gold";
@@ -70,6 +71,11 @@ export interface BadgeEvalInput {
   duelTopRivalName: string; // نامِ نمایشیِ همان رقیب (برای پیشرفتِ صادق)
   duelSpeedAvg: number; // میانگینِ پاداشِ سرعت بر پاسخِ درست (۰..۱۰۰ — Task 100)
   duelSpeedCorrect: number; // جمعِ پاسخ‌های درستِ دفترچه — نمونهٔ آماریِ سرعت
+  // r282 — خانوادهٔ هویت: نشانِ «اولین دیده‌شدن» پرچمِ خودش را از seenBadges
+  // میخواند (همان خطِ لولهٔ r279 — بدونِ schema تازه) و نامِ فعلی برای
+  // پیشرفتِ صادقِ دوشاخه (نام‌دار/بی‌نام) لازم است.
+  seenBadges: string[]; // نشان‌های جشن‌گرفته — پرچمِ first-visible این‌جاست
+  userName: string; // نامِ فعلی — «یادگیرندهٔ ناشناس» یعنی خالی
 }
 
 function historyTotals(history: StudyState["history"]): { quizzes: number; reviews: number; days: number } {
@@ -102,6 +108,8 @@ export function buildEvalInput(s: {
   goalMetDays?: string[];
   dayHistory?: StudyState["dayHistory"];
   duelHistory?: StudyState["duelHistory"]; // خانوادهٔ نبرد (Task 99) — دفترچهٔ ۱۵تایی
+  seenBadges?: StudyState["seenBadges"]; // r282 — خانوادهٔ هویت
+  userName?: string; // r282 — خانوادهٔ هویت
 }): BadgeEvalInput {
   const knownCount = Object.values(s.known).filter(Boolean).length;
   const rs = Object.values(s.results);
@@ -144,6 +152,11 @@ export function buildEvalInput(s: {
   const usedList = Array.isArray(s.freezeUsedDays)
     ? s.freezeUsedDays.filter((d): d is string => typeof d === "string")
     : [];
+  // r282 — گاردِ ورودیِ خرابِ خانوادهٔ هویت: آرایهٔ غیرآرایه → خالی، نامِ غیررشته → خالی
+  const seenList = Array.isArray(s.seenBadges)
+    ? s.seenBadges.filter((b): b is string => typeof b === "string")
+    : [];
+  const nameStr = typeof s.userName === "string" ? s.userName : "";
   return {
     knownCount,
     resultsCount,
@@ -218,6 +231,10 @@ export function buildEvalInput(s: {
     duelQuickWeek: quickWeek,
     duelSpeedAvg: speed.avgBonus,
     duelSpeedCorrect: speed.totalCorrect,
+    // r282 — خانوادهٔ هویت: پرچمِ ر279 در همان خطِ لولهٔ نشان‌ها سفر میکند؛
+    // ورودیِ خراب (آرایهٔ شکسته/نامِ غیررشته) صادقانه خالی میماند.
+    seenBadges: seenList,
+    userName: nameStr,
   };
 }
 
@@ -301,6 +318,23 @@ export const BADGES: BadgeDef[] = [
     icon: "Footprints",
     tier: "bronze",
     check: (s) => s.totalQuizzes + s.totalReviews > 0,
+  },
+  {
+    // r282 — نشانِ واقعیِ خانوادهٔ هویت: پرچمِ «first-visible» از ر279 تا امروز
+    // در seenBadges سفر میکرد ولی در رجیستری بی‌خانه بود — کاشیِ گرید هرگز
+    // نشانش نمیداد. check همان پرچم را میخواند، پس: کاربری که جشنِ ر279 را
+    // گرفته (حتی ماه‌ها پیش) نشانش خودکار باز است؛ newBadgeIds هرگز آن را
+    // دوباره جشن نمیگیرد (باز−دیده = تهی به‌ساخت) و بی‌نامِ محض هیچ‌وقت بازش نمیکند.
+    id: FIRST_VISIBLE_BADGE_ID,
+    title: "اولین دیده‌شدن",
+    desc: "نامت را بگذار و با نخستین فعالیتت در جدول کلاس و فید دیده شو",
+    icon: "Eye",
+    tier: "bronze",
+    progress: (s) =>
+      s.userName
+        ? "نخستین فعالیتِ نام‌دارِ تو این نشان را باز میکند"
+        : "اول نامت را انتخاب کن؛ نخستین فعالیتِ نام‌دار بازش میکند",
+    check: (s) => s.seenBadges.includes(FIRST_VISIBLE_BADGE_ID),
   },
   {
     id: "word-starter",

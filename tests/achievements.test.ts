@@ -454,7 +454,7 @@ describe("رانِ ترکیبی — هفتهٔ دیکتهٔ پیوسته (Task 8
     expect(byId("dictation-run").title).toBe("هفتهٔ دیکتهٔ پیوسته");
     expect(byId("dictation-run").tier).toBe("gold");
     expect(byId("dictation-run").icon).toBe("SpellCheck2");
-    expect(BADGES.length).toBe(52);
+    expect(BADGES.length).toBe(53); // r282 — نشانِ هویتیِ «اولین دیده‌شدن» (first-visible) به رجیستری پیوست
   });
 
   it("قراردادِ شمارِ روز ≠ جمع: دو دیکته در یک روز هنوز یک روزِ دیکته‌دار است", () => {
@@ -749,7 +749,7 @@ describe("رانِ مرور — هفتهٔ مرور (Task 88)", () => {
     expect(byId("review-run").title).toBe("هفتهٔ مرور");
     expect(byId("review-run").tier).toBe("silver");
     expect(byId("review-run").icon).toBe("History");
-    expect(BADGES.length).toBe(52);
+    expect(BADGES.length).toBe(53); // r282 — نشانِ هویتیِ «اولین دیده‌شدن» (first-visible) به رجیستری پیوست
     const one = base({ dayHistory: { [w(2)]: dh({ day: w(2), reviews: 1 }) } });
     expect(byId("review-run").progress!(one)).toBe("۱ از ۷ روزِ این هفته");
   });
@@ -840,7 +840,7 @@ describe("رانِ سه‌گانه — هفتهٔ سه‌گانه (Task 89)", ()
     expect(byId("triple-run").title).toBe("هفتهٔ سه‌گانه");
     expect(byId("triple-run").tier).toBe("gold");
     expect(byId("triple-run").icon).toBe("Crown");
-    expect(BADGES.length).toBe(52);
+    expect(BADGES.length).toBe(53); // r282 — نشانِ هویتیِ «اولین دیده‌شدن» (first-visible) به رجیستری پیوست
     const mixed = base({ dayHistory: { ...tripleWeek(), [w(3)]: dh({ day: w(3), reviews: 1, quizzes: 1, dictation: 0 }) } });
     // دیکته ۶ روز / آزمون ۷ / مرور ۷ — ضعیف‌ترین حلقه پیشرفت را می‌گوید
     expect(byId("triple-run").progress!(mixed)).toBe("۶ از ۷ روزِ سه‌گانهٔ این هفته");
@@ -938,7 +938,7 @@ describe("ماراتن — رانِ دوهفته‌ای (Task 90)", () => {
     expect(byId("marathon-run").title).toBe("ماراتنِ دوهفته‌ای");
     expect(byId("marathon-run").tier).toBe("gold");
     expect(byId("marathon-run").icon).toBe("Trophy");
-    expect(BADGES.length).toBe(52);
+    expect(BADGES.length).toBe(53); // r282 — نشانِ هویتیِ «اولین دیده‌شدن» (first-visible) به رجیستری پیوست
     // دیکته ۱۳ روز / آزمون ۱۴ / مرور ۱۴ — ضعیف‌ترین حلقه پیشرفت را می‌گوید
     const thirteen = base({
       dayHistory: {
@@ -1053,7 +1053,7 @@ describe("خانوادهٔ حضور — ماهِ حاضر و ماهِ درخشا
     expect(byId("presence-month-full").title).toBe("ماهِ درخشان");
     expect(byId("presence-month-full").tier).toBe("gold");
     expect(byId("presence-month-full").icon).toBe("Sparkles");
-    expect(BADGES.length).toBe(52);
+    expect(BADGES.length).toBe(53); // r282 — نشانِ هویتیِ «اولین دیده‌شدن» (first-visible) به رجیستری پیوست
     const twentyFour = base({ dayHistory: presenceDays([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]) });
     expect(twentyFour.activeDays35).toBe(25);
     expect(byId("presence-month").progress!(twentyFour)).toBe("۲۵ از ۲۵ روزِ فعال");
@@ -1147,7 +1147,7 @@ describe("ماهِ بی‌وقفه — پلهٔ نهاییِ خانوادهٔ ح
     expect(byId("presence-month-perfect").title).toBe("ماهِ بی‌وقفه");
     expect(byId("presence-month-perfect").tier).toBe("gold");
     expect(byId("presence-month-perfect").icon).toBe("Gem");
-    expect(BADGES.length).toBe(52);
+    expect(BADGES.length).toBe(53); // r282 — نشانِ هویتیِ «اولین دیده‌شدن» (first-visible) به رجیستری پیوست
     const thirtyFour = base({ dayHistory: presenceDays([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33]) });
     expect(thirtyFour.activeDays35).toBe(34);
     expect(byId("presence-month-perfect").progress!(thirtyFour)).toBe("۳۴ از ۳۵ روزِ فعال");
@@ -1219,7 +1219,7 @@ describe("هفتهٔ پنج‌گانه — خانوادهٔ تنوع (Task 93)",
     expect(byId("five-skill-week").title).toBe("هفتهٔ پنج‌گانه");
     expect(byId("five-skill-week").tier).toBe("gold");
     expect(byId("five-skill-week").icon).toBe("Puzzle");
-    expect(BADGES.length).toBe(52);
+    expect(BADGES.length).toBe(53); // r282 — نشانِ هویتیِ «اولین دیده‌شدن» (first-visible) به رجیستری پیوست
     // سه مهارت حاضر → «۳ از ۵ مهارت»
     const three = base({
       dayHistory: {
@@ -1343,14 +1343,14 @@ describe("خانوادهٔ سرعت — صاعقه و سرعتِ صوت (Task 10
     ...over,
   });
 
-  it("wording و تیر و آیکن: صاعقه نقره/Zap، سرعتِ صوت طلا/Rocket؛ رجیستری ۵۲", () => {
+  it("wording و تیر و آیکن: صاعقه نقره/Zap، سرعتِ صوت طلا/Rocket؛ رجیستری ۵۳", () => {
     expect(byId("speed-bolt").title).toBe("صاعقه");
     expect(byId("speed-bolt").tier).toBe("silver");
     expect(byId("speed-bolt").icon).toBe("Zap");
     expect(byId("speed-sound").title).toBe("سرعتِ صوت");
     expect(byId("speed-sound").tier).toBe("gold");
     expect(byId("speed-sound").icon).toBe("Rocket");
-    expect(BADGES.length).toBe(52);
+    expect(BADGES.length).toBe(53); // r282 — نشانِ هویتیِ «اولین دیده‌شدن» (first-visible) به رجیستری پیوست
   });
 
   it("دو گیتِ صادق: نمونهٔ کم با میانگینِ بالا باز نمی‌کند و پیشرفت روی گیتِ نمونه می‌ماند", () => {
@@ -1433,14 +1433,14 @@ describe("خانوادهٔ اعتماد — گواه‌گرفته و سندِ ز
     ],
   });
 
-  it("wording و تیر و آیکن: گواه‌گرفته نقره/ShieldCheck، سندِ زنده طلا/Stamp؛ رجیستری ۵۲", () => {
+  it("wording و تیر و آیکن: گواه‌گرفته نقره/ShieldCheck، سندِ زنده طلا/Stamp؛ رجیستری ۵۳", () => {
     expect(byId("receipt-trust").title).toBe("گواه‌گرفته");
     expect(byId("receipt-trust").tier).toBe("silver");
     expect(byId("receipt-trust").icon).toBe("ShieldCheck");
     expect(byId("receipt-oath").title).toBe("سندِ زنده");
     expect(byId("receipt-oath").tier).toBe("gold");
     expect(byId("receipt-oath").icon).toBe("Stamp");
-    expect(BADGES.length).toBe(52);
+    expect(BADGES.length).toBe(53); // r282 — نشانِ هویتیِ «اولین دیده‌شدن» (first-visible) به رجیستری پیوست
   });
 
   it("سیم‌کشیِ buildEvalInput: فقط بردِ رسیددار می‌شمارد — باختِ رسیددار و بردِ بی‌رسید نه", () => {
