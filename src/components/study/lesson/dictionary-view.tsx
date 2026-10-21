@@ -137,11 +137,33 @@ export default function DictionaryView() {
         rows.length > 0
           ? rows.reduce((n, r) => n + (r.totalWords > 0 ? r.usedWords / r.totalWords : 0), 0) / rows.length
           : 0,
+      // r261 ① — قهرمانِ مسیرِ معکوس: بیشترینِ شمارشِ بیرون-از-متن (مکملِ
+      // آسمانیِ «بیشترین» در مقیاسِ شمارش). مقایسهٔ صحیحی — همیشه صفر ممکن
+      // نیست چون هیچ درسی کاملاً در-متن نیست، ولی گاردِ صفرِ شرط می‌ماند.
+      maxUnused: rows.reduce((m, r) => Math.max(m, r.totalWords - r.usedWords), 0),
+      // r261 ② — رتبهٔ سهمِ در-متنِ هر درس (نسبتِ شناور، نزولی؛ رتبه‌بندیِ
+      // رقابتی: اولین جایگاهِ هر کسرِ متمایز = رتبه‌اش، هم‌کسرها هم‌رتبه —
+      // همان منطقِ تساویِ امنِ maxRatioِ r259). پیش‌شمارشِ r261: بدونِ تساوی؛
+      // درسِ ۷ = رتبهٔ ۱ (۶۹٫۵٪) · درسِ ۱ = رتبهٔ ۲ · درسِ ۱۰ = رتبهٔ ۷.
+      rankOf: (() => {
+        const fracs = rows.map((r) => ({
+          id: r.lessonId,
+          frac: r.totalWords > 0 ? r.usedWords / r.totalWords : -1,
+        }));
+        const sorted = [...fracs].sort((a, b) => b.frac - a.frac);
+        const fracRank = new Map<number, number>();
+        sorted.forEach((r, i) => {
+          if (!fracRank.has(r.frac)) fracRank.set(r.frac, i + 1);
+        });
+        const rank = new Map<number, number>();
+        fracs.forEach((r) => rank.set(r.id, fracRank.get(r.frac) ?? 0));
+        return rank;
+      })(),
     };
   }, []);
   // کلیکِ سطر = فیلترِ همان درس + لنزِ «کاربرددار» — مطالعهٔ هدفمندِ دو-کلیکی؛
   // Shift+کلیک (r260 ②) = همان درس با لنزِ کهرباییِ «بیرون-از-متن» — مطالعهٔ
-  // هدفمندِ معکوس (قهرمانِ نسبت برایِ دیدنِ حفره‌ها). پنل جمع می‌شود تا
+  // هدفمندِ معکوس (قهرمانِ «بیرونی‌ترینِ» r261 برایِ دیدنِ حفره‌ها). پنل جمع می‌شود تا
   // «N واژه یافت شد» بلافاصله دیده شود. (دادهٔ دموکراتیک — فقط دو فیلترِ
   // محلیِ view؛ هیچ رکوردِ یادگیری‌ای ساخته نمی‌شود.)
   const openRankLesson = (lessonId: number, reverse = false) => {
@@ -412,13 +434,16 @@ export default function DictionaryView() {
                   // r260 ③ — نیمهٔ پنهانِ همان سهم: بیرون-از-متن (مکملِ گردشده،
                   // مستقل محاسبه می‌شود نه ۱۰۰−pct — صداقتِ گردکردن)
                   const unusedPct = r.totalWords > 0 ? Math.round(((r.totalWords - r.usedWords) / r.totalWords) * 100) : 0;
+                  // r261 ② — رتبهٔ سهمِ در-متن در همان tooltip (رتبه‌بندیِ رقابتیِ
+                  // نسبتِ شناور — هم‌کسرها هم‌رتبه)
+                  const rank = usageRank.rankOf.get(r.lessonId) ?? 0;
                   return (
                     <button
                       key={r.lessonId}
                       type="button"
                       data-testid={`usage-rank-row-${r.lessonId}`}
                       onClick={(e) => openRankLesson(r.lessonId, e.shiftKey)}
-                      title={`درسِ ${faNum(r.lessonId)}: ٪${faNum(pct)} در متن · ٪${faNum(unusedPct)} بیرون از متن — کلیک: واژه‌های در-متن · Shift+کلیک: بیرون-از-متن`}
+                      title={`درسِ ${faNum(r.lessonId)}: ٪${faNum(pct)} در متن · ٪${faNum(unusedPct)} بیرون از متن · رتبهٔ ${faNum(rank)} از ${faNum(usageRank.rows.length)} در سهمِ در-متن — کلیک: واژه‌های در-متن · Shift+کلیک: بیرون-از-متن`}
                       aria-label={`نمایش واژه‌های درس ${faNum(r.lessonId)} — ${r.titleFa} — که در مکالمه‌ها و ریدینگ‌ها آمده‌اند؛ با Shift: واژه‌هایی که نیامده‌اند`}
                       className="flex min-w-0 items-center gap-2 rounded-lg px-2 py-1.5 text-right transition-[background-color,color] hover:bg-white dark:hover:bg-stone-700/50"
                     >
@@ -459,6 +484,24 @@ export default function DictionaryView() {
                         >
                           <Percent size={9} aria-hidden />
                           بیشترینِ نسبت
+                        </span>
+                      )}
+                      {/* راند ۲۶۱ — بندِ ① پیشنهادِ ۲۶۰: قرینهٔ کهرباییِ «بیشترین» —
+                          قهرمانِ مسیرِ معکوس (Shift+کلیک): درسی با بیشترین واژهٔ
+                          بیرون-از-متن (پیش‌شمارشِ r261: درسِ ۱۰ با ۴۹۸ — یگانه؛
+                          Σ=۲۱۱۷ قفلِ r259). هویتِ کهرباییِ خانواده — همان ایدئومِ
+                          سرشماریِ r258 (border-amber-200/bg-amber-50/60/text-amber-800 —
+                          ریمپِ تاریکِ kernel؛ صفرِ قانونِ CSSِ نو) و آیکونِ EyeOffِ
+                          بیرون-از-متنِ r257 — badgeِ پیش‌نمایِ همان مقصدِ Shift+کلیک.
+                          مقایسهٔ صحیحی — هم‌شمارها همه badge می‌گیرند. */}
+                      {usageRank.maxUnused > 0 && r.totalWords - r.usedWords === usageRank.maxUnused && (
+                        <span
+                          data-testid="usage-rank-max-unused"
+                          title="بیشترین واژهٔ بیرون-از-متن از واژگانِ همان درس — با Shift+کلیک همان واژه‌ها را ببین"
+                          className="inline-flex shrink-0 items-center gap-0.5 rounded-full border border-amber-200 bg-amber-50/60 px-1.5 py-0.5 text-[9.5px] font-black text-amber-800"
+                        >
+                          <EyeOff size={9} aria-hidden />
+                          بیرونی‌ترین
                         </span>
                       )}
                     </button>
