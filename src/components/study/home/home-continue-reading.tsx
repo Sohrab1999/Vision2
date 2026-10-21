@@ -6,14 +6,22 @@
 // کلیک وارد خواننده می‌شود. تازه‌وارد (صفر داستان) این کارت را نمی‌بیند —
 // کشفِ کتاب‌خانه با ابزارِ خانه است؛ و هر ۵۱ داستانِ تمام = کارتِ جشن.
 // شمارش فقط از libraryProgress (منبعِ یگانه با هفته‌نامه و نمودار).
+//
+// راند ۳۰۱ «استریکِ کتابخوانی» — چیپِ زنجیرهٔ روزهای پیوستهٔ خواندن
+// (منبعِ یگانه: dayHistory.stories از r299؛ قراردادِ خالصِ library-streak)
+// + چیپِ واژه/دقیقهٔ داستانِ بعدی (همان توابعِ library-filter که فهرستِ
+// r300 میخواند — هیچ شمارشِ موازی‌ای).
 
 import { motion } from "framer-motion";
-import { BookMarked, BookOpen, ChevronLeft, PartyPopper, RotateCcw } from "lucide-react";
+import { BookMarked, BookOpen, ChevronLeft, Flame, PartyPopper, RotateCcw } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
 import { bookById, type HillBookId } from "@/data/hill-stories";
 import { libraryProgress } from "@/lib/library-progress";
+import { storyStreak } from "@/lib/library-streak";
+import { readingMinutes, wordCount } from "@/lib/library-filter";
+import { todayStr } from "@/state/day-engine";
 
 // تمِ کتاب‌خانه — کلاس‌های کامل و ثابت (هم‌الگوی THEME در library-view؛
 // پاک‌سازِ Tailwind امن می‌ماند)
@@ -44,6 +52,7 @@ export default function HomeContinueReading() {
   const mounted = useMounted();
   // گاردِ ?? بیرونِ سلکتور — هم‌الگوی Task 292 در library-view
   const done = useStudy((s) => s.libraryDone) ?? {};
+  const dayHistory = useStudy((s) => s.dayHistory) ?? {};
 
   // تازه‌وارد: هیچ. کارتِ شروعِ خانه راه را نشان میدهد؛ ابزارِ خانه کتاب‌خانه را.
   if (!mounted) return null;
@@ -94,6 +103,25 @@ export default function HomeContinueReading() {
   const next = prog.nextStory!;
   const book = bookById(next.book);
   const t = THEME[next.book];
+  // استریکِ کتابخوانی — هم‌قراردادِ زنجیرهٔ اصلی: امروز خوانده = ادامهٔ
+  // امروز؛ فقطِ دیروز = زنجیرهٔ زنده (امروز بخوان تا ننشیند)؛ شکاف = صفر.
+  const streak = storyStreak(dayHistory, todayStr());
+  // متادیتای خواندنِ داستانِ بعدی — همان توابعِ فهرستِ کتاب‌خانه (r300)
+  const words = wordCount(next.text);
+  const mins = readingMinutes(words);
+
+  const streakChipClass =
+    streak.current > 0
+      ? streak.readToday
+        ? "border-amber-300 bg-amber-50 text-amber-700"
+        : "border-stone-300 bg-stone-100 text-stone-600"
+      : "border-stone-200 bg-stone-50 text-stone-500";
+  const streakLabel =
+    streak.current > 0
+      ? streak.readToday
+        ? `زنجیرهٔ خواندن — ${faNum(streak.current)} روز`
+        : `${faNum(streak.current)} روز پیوسته — امروز بخوان`
+      : "شروعِ زنجیرهٔ خواندن";
 
   return (
     <motion.section
@@ -105,13 +133,22 @@ export default function HomeContinueReading() {
     >
       <div className={`h-1.5 w-full bg-gradient-to-l ${t.grad}`} />
       <div className="p-5 sm:p-6">
-        <div className="mb-3 flex items-center gap-2">
+        {/* سطرِ سربرگ تضمین‌دوخطی نیست — h2 و چیپ‌ها با flex-wrap میراقند
+            (درسِ له‌شدگیِ r300: هیچ flex-1 با basisِ صفر هم‌سطرِ چیپ‌ها) */}
+        <div className="mb-3 flex flex-wrap items-center gap-2">
           <BookMarked size={16} className="text-teal-600" aria-hidden />
           <h2 className="text-[13px] font-black text-stone-700">ادامهٔ خواندن</h2>
           <span
             className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-black ${t.chip}`}
           >
             {book?.levelFa ?? "Stories for Reproduction"}
+          </span>
+          <span
+            className={`ms-auto inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-black ${streakChipClass}`}
+            aria-label={streakLabel}
+          >
+            <Flame size={11} aria-hidden className={streak.readToday && streak.current > 0 ? "text-amber-500" : "text-stone-500"} />
+            {streakLabel}
           </span>
         </div>
 
@@ -128,6 +165,10 @@ export default function HomeContinueReading() {
             </p>
             <p className="mt-0.5 text-[11.5px] font-bold text-stone-500">
               {book?.faTitle} · داستان {faNum(next.num)} — داستانِ بعدیِ تو
+            </p>
+            <p className="mt-1 flex items-center gap-1 text-[10.5px] font-bold text-stone-500">
+              <BookOpen size={11} aria-hidden />
+              {faNum(words)} واژه · حدود {faNum(mins)} دقیقه
             </p>
           </div>
           {/* موبایل: دکمهٔ تمام‌عرض زیرِ عنوان — دسکتاپ: هم‌ردیفِ آن؛
