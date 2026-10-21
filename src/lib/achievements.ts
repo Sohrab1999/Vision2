@@ -954,6 +954,15 @@ export const TIER_STYLE: Record<BadgeTier, { ring: string; grad: string; chip: s
   },
 };
 
+// r284 — the tier CHIPS used by the report surfaces (or-chip-* classes are
+// global CSS in globals.css:1205). Single source: the official paper and the
+// weekly digest must never drift apart on tier colors.
+export const TIER_CHIP: Record<BadgeTier, string> = {
+  bronze: "or-chip-bronze",
+  silver: "or-chip-silver",
+  gold: "or-chip-gold",
+};
+
 /** ids of badges currently unlocked */
 export function unlockedBadgeIds(s: BadgeEvalInput): Set<string> {
   const out = new Set<string>();

@@ -33,7 +33,7 @@ import { useMounted } from "@/lib/use-mounted";
 import { useEscape } from "@/hooks/use-keyboard";
 import { faNum } from "@/lib/study-theme";
 import { LESSONS_META, TOTAL_VOCABULARY } from "@/data/lesson-meta";
-import { BADGES, buildEvalInput, unlockedBadgeIds } from "@/lib/achievements";
+import { BADGES, buildEvalInput, unlockedBadgeIds, TIER_CHIP } from "@/lib/achievements";
 import { skillBreakdown, barColorFor, skillGradeFa } from "@/lib/skill-stats";
 import { buildCoverageMap, COVERAGE_SKILLS } from "@/lib/coverage-map";
 import { COVERAGE_SKILL_SHORT, heatSummary } from "@/lib/coverage-heat";
@@ -42,7 +42,6 @@ import { buildPairsCoverage } from "@/lib/pairs-coverage";
 import { lessons } from "@/data";
 import { useToast } from "@/hooks/use-toast";
 import { trackEvent } from "@/lib/analytics";
-import type { BadgeTier } from "@/lib/achievements";
 
 // ------------------------------------------------------------------
 // گزارش رسمی چاپی (PDF) — A4 paper for the teacher / parents.
@@ -89,12 +88,6 @@ function printOfficial() {
     document.body.classList.remove("print-official");
   }
 }
-
-const TIER_CHIP: Record<BadgeTier, string> = {
-  bronze: "or-chip-bronze",
-  silver: "or-chip-silver",
-  gold: "or-chip-gold",
-};
 
 function gradeChipCls(avg: number): string {
   if (avg >= 85) return "or-chip-green";

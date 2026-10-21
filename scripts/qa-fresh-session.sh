@@ -139,10 +139,14 @@ sleep 2
 
 # پاسخ‌دهندهٔ خودکار + نمونه‌بردارِ جشن: هر ۱٫۳ث اولین گزینهٔ فعال (نرخِ درستِ
 # تصادفی ~۲۵٪ کافی است؛ فاصله از حداکثرِ پیشرویِ ۸۵۰ms بزرگ‌تر است)؛ و یک
-# نمونه‌بردارِ ۴۰۰ms که حضورِ toastِ «وعده برقرار شد» را در [role=status] پیوسته
-# میسنجد — درسِ همین راند: toast در لحظهٔ poll ممکن نیست، نمونه‌بردارِ مستمر قطعی است.
+# نمونه‌بردارِ ۴۰۰ms با دو سیگنالِ مستقل:
+#   __celebrated  ← «وعده برقرار شد» (جشنِ r279)
+#   __ftoast      ← «پاسخ درست از» (toastِ پایانِ راند — همیشه، مستقل از امتیاز)
+# درسِ راندِ ۲۸۴: در گلیچِ ۱-در-۵ (فقط اولینِ دستِ مرورگرِ سرد) جشن نیامد ولی
+# پرچم نشست — این دوجمله‌ای حکمِ ریشه را میدهد: جشن-نیامد+پایان-آمد = شکافِ
+# dispatch→handler؛ هر-دو-نیامد = مرگِ لولهٔ toast در همان لحظه.
 agent-browser eval "(()=>{
-  window.__rushClicks=0; window.__celebrated=false;
+  window.__rushClicks=0; window.__celebrated=false; window.__ftoast=false;
   if(window.__rushTimer) clearInterval(window.__rushTimer);
   if(window.__celebTimer) clearInterval(window.__celebTimer);
   window.__rushTimer=setInterval(()=>{
@@ -150,26 +154,29 @@ agent-browser eval "(()=>{
     if(opts.length){ opts[0].click(); window.__rushClicks++; }
   },1300);
   window.__celebTimer=setInterval(()=>{
-    if(window.__celebrated) return;
-    const hit=[...document.querySelectorAll('[role=status]')].find(d=>(d.textContent||'').includes('وعده برقرار شد'));
-    if(hit) window.__celebrated=true;
+    const rs=()=>[...document.querySelectorAll('[role=status]')].map(d=>d.textContent||'').join(' ');
+    const all=rs();
+    if(!window.__celebrated && all.includes('وعده برقرار شد')) window.__celebrated=true;
+    if(!window.__ftoast && all.includes('پاسخ درست از')) window.__ftoast=true;
   },400);
   return 'AUTO-ANSWERER-ON';
 })()" > /dev/null 2>&1
 
 # راند ۶۰ ثانیه است — از ثانیهٔ ۵۸ هر ۲ث پیمایش تا done؛ toastِ جشن در همان پیمایشِ done یا یک پله بعدش گرفته میشود.
 sleep 58
-TOAST="no"; DONE="no"; SCORE="?"; CLICKS="?"
+TOAST="no"; FTOAST="no"; DONE="no"; SCORE="?"; CLICKS="?"
 for i in 1 2 3 4 5 6 7 8; do
   P=$(agent-browser eval "(()=>{
     const done=!!document.querySelector('.rush-done');
-    const live=[...document.querySelectorAll('[role=status]')].find(d=>(d.textContent||'').includes('وعده برقرار شد'));
-    const toast=(live||window.__celebrated)?'yes':'no';
+    const all=[...document.querySelectorAll('[role=status]')].map(d=>d.textContent||'').join(' ');
+    const toast=(all.includes('وعده برقرار شد')||window.__celebrated)?'yes':'no';
+    const ft=(all.includes('پاسخ درست از')||window.__ftoast)?'yes':'no';
     const score=document.querySelector('.rush-score')?.textContent?.trim()||'?';
-    return (done?'DONE':'PLAYING')+' toast='+toast+' clicks='+(window.__rushClicks||0)+' score='+score;
+    return (done?'DONE':'PLAYING')+' toast='+toast+' ftoast='+ft+' clicks='+(window.__rushClicks||0)+' score='+score;
   })()" 2>/dev/null)
   P="${P//\"/}"
   case "$P" in *toast=yes*) TOAST="yes" ;; esac
+  case "$P" in *ftoast=yes*) FTOAST="yes" ;; esac
   CLICKS=$(echo "$P" | sed -n 's/.*clicks=\([0-9]*\).*/\1/p')
   SC=$(echo "$P" | sed -n 's/.*score=\([^ ]*\).*/\1/p')
   [ -n "$SC" ] && [ "$SC" != "?" ] && SCORE="$SC"
@@ -177,8 +184,9 @@ for i in 1 2 3 4 5 6 7 8; do
     DONE*)
       DONE="yes"
       if [ "$TOAST" != "yes" ]; then sleep 2; # جشن بلافاصله پس از res.ok میآید — یک پله صبر
-        T2=$(agent-browser eval "(()=>{const t=window.__celebrated||[...document.querySelectorAll('[role=status]')].find(d=>(d.textContent||'').includes('وعده برقرار شد')); return t?'yes':'no';})()" 2>/dev/null)
-        [ "$T2" = "yes" ] && TOAST="yes"
+        T2=$(agent-browser eval "(()=>{const all=[...document.querySelectorAll('[role=status]')].map(d=>d.textContent||'').join(' ');return ((window.__celebrated||all.includes('وعده برقرار شد'))?'yes':'no')+' '+((window.__ftoast||all.includes('پاسخ درست از'))?'yes':'no');})()" 2>/dev/null)
+      case "$T2" in yes*) TOAST="yes" ;; esac
+      case "$T2" in *yes) FTOAST="yes" ;; esac
       fi
       break ;;
   esac
@@ -202,13 +210,15 @@ FEED="${FEED//\"/}"
 SELFN=$(echo "$FEED" | sed -n 's/.*SELF-ROWS=\([0-9]*\).*/\1/p')
 [ -z "$SELFN" ] && SELFN="0"
 
-echo "result=PLAYED name=${NAME} toast=${TOAST} feed-self=${SELFN} clicks=${CLICKS:-?} score=${SCORE}"
+echo "result=PLAYED name=${NAME} toast=${TOAST} ftoast=${FTOAST} feed-self=${SELFN} clicks=${CLICKS:-?} score=${SCORE}"
 if [ "$TOAST" = "yes" ] && [ "$SELFN" -ge 1 ]; then
   echo "PLAYED: real hand closed the full chain — r279 celebration + feed self-row (userId from server)"
-elif [ "$TOAST" = "no" ] && [ "$SELFN" -ge 1 ]; then
-  echo "PLAYED (partial): server identity + self-row ok, but NO celebration toast — inspect seenBadges/name chain"
+elif [ "$TOAST" = "no" ] && [ "$FTOAST" = "yes" ] && [ "$SELFN" -ge 1 ]; then
+  echo "PLAYED (known-anomaly): finish toast fired but celebration did NOT — dispatch→handler gap (r279 1-in-N, see worklog 284)"
+elif [ "$TOAST" = "no" ] && [ "$FTOAST" = "no" ]; then
+  echo "PLAYED (degraded): NO toast at all — the toast pipeline itself dropped at finish"
 elif [ "$TOAST" = "yes" ] && [ "$SELFN" = "0" ]; then
   echo "PLAYED (partial): celebration ok but feed self-row missing — inspect /api/stats recent payload"
 else
-  echo "PLAYED (degraded): round finished but neither celebration nor self-row — inspect identity/server"
+  echo "PLAYED (degraded): round finished but chain incomplete — inspect identity/server"
 fi

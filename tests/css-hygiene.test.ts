@@ -588,7 +588,8 @@ describe("globals.css translucent veil layer (Step 9 tranche 4 phase 4 — Task 
     }
     // Task 103: weekly-report +۱ — بلوکِ «نبردهای واژگانی» هم‌خانوادهٔ ردیف‌های گزارش
     // Task 186: weekly-report +۱ دیگر — نوارِ «گامِ بعدی» (پیشنهادِ کانونی، بالایِ دایجست)
-    expect(total).toBe(20);
+    // r284: weekly-report +۱ سوم — نوارِ «نشان‌های من» (هم‌باندِ c-veil-60، زیرِ گامِ بعدی)
+    expect(total).toBe(21);
   });
 });
 

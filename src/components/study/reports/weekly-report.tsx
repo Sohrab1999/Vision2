@@ -10,9 +10,10 @@
 
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { Sparkles, TrendingDown, TrendingUp, Minus, CalendarHeart, Check, Compass, Snowflake, Swords, Timer, ImageDown, Loader2, CalendarClock, Gauge, FileDown, BarChart3 } from "lucide-react";
+import { Sparkles, TrendingDown, TrendingUp, Minus, CalendarHeart, Check, Compass, Snowflake, Swords, Timer, ImageDown, Loader2, CalendarClock, Gauge, FileDown, BarChart3, Award } from "lucide-react";
 import { useStudy, daysAgoKey } from "@/lib/study-store";
 import { faNum, secFa } from "@/lib/study-theme";
+import { BADGES, buildEvalInput, unlockedBadgeIds, TIER_CHIP } from "@/lib/achievements";
 import { buildCoverageMap } from "@/lib/coverage-map";
 import { LESSONS_META } from "@/data/lesson-meta";
 import { computeWeeklyDigest, faWeekday, faDayLabel, DUEL_QUICK_WEEK, type Delta, type QuickWeekProfile } from "@/lib/weekly-digest";
@@ -111,6 +112,17 @@ export default function WeeklyReportSection() {
   const freezeUsedDays = useStudy((s) => s.freezeUsedDays);
   const freezeEarnedDay = useStudy((s) => s.freezeEarnedDay);
   const duelHistory = useStudy((s) => s.duelHistory);
+  // r284 — the badge band: the weekly digest answers «این هفته چطور بود؟»؛
+  // نشان‌ها جوابِ «تا کجا رسیده‌ام؟»اند — همان ارزیابیِ واحدِ رجیستری (buildEvalInput)
+  // که گرید و کارنامهٔ رسمی مصرف میکنند؛ منبعِ یگانه، هیچ ارزیابیِ موازی‌ای.
+  const dayStat = useStudy((s) => s.dayStat);
+  const bestStreak = useStudy((s) => s.bestStreak);
+  const mistakes = useStudy((s) => s.mistakes);
+  const rushBest = useStudy((s) => s.rushBest);
+  const rushBestCorrect = useStudy((s) => s.rushBestCorrect);
+  const rushGames = useStudy((s) => s.rushGames);
+  const seenBadges = useStudy((s) => s.seenBadges);
+  const userName = useStudy((s) => s.userName);
   const [imgBusy, setImgBusy] = useState(false);
   const { toast } = useToast();
 
@@ -158,6 +170,32 @@ export default function WeeklyReportSection() {
 
   // Task 186 — گامِ بعدی: خالص و بی‌useMemo (کامنتِ findNextStep)
   const nextStep = findNextStep(results, known);
+
+  // r284 — ارزیابیِ نشان‌ها با همان ورودیِ سرشماری‌شده؛ useMemo هم‌قراردادِ
+  // کارنامهٔ رسمی ( deps کامل — نه کم نه زیاد)
+  const evalInput = useMemo(
+    () =>
+      buildEvalInput({
+        known,
+        results,
+        history,
+        dayStat,
+        streak,
+        bestStreak,
+        mistakes,
+        rushBest,
+        rushBestCorrect,
+        rushGames,
+        seenBadges,
+        userName,
+      }),
+    [known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, seenBadges, userName]
+  );
+  const unlocked = useMemo(() => unlockedBadgeIds(evalInput), [evalInput]);
+  const unlockedBadges = useMemo(
+    () => (unlocked.size > 0 ? BADGES.filter((b) => unlocked.has(b.id)) : []),
+    [unlocked]
+  );
 
   const maxTotal = Math.max(1, ...digest.perDay.map((p) => p.stat.reviews + p.stat.quizzes + p.stat.words + p.stat.dictation + p.stat.rush));
   const today = daysAgoKey(0);
@@ -274,6 +312,39 @@ export default function WeeklyReportSection() {
             </span>
           )}
         </div>
+      </div>
+
+      {/* r284 — نوار نشان‌ها: پاسخِ «تا کجا رسیده‌ام؟» در هفته‌نامه — هم‌ارزیابیِ
+          رسمی (buildEvalInputِ واحد) و هم‌چیپِ تیر با کارنامه (TIER_CHIPِ واحد).
+          بی‌نشان هم صادق: یک خطِ خنثی، نه حذفِ نوار — هم‌قراردادِ گامِ بعدی. */}
+      <div className="badge-band mb-3 rounded-lg c-veil-60 px-2.5 py-2">
+        <div className="flex flex-wrap items-center justify-between gap-1.5">
+          <div className="flex items-center gap-1.5 text-[10.5px] font-extrabold text-stone-600">
+            <Award size={12} className="text-emerald-600" aria-hidden />
+            نشان‌های من
+          </div>
+          <span className="c-chip-goal inline-flex items-center gap-0.5 rounded-full border px-1.5 py-0.5 text-[9.5px] font-black">
+            {`${faNum(unlockedBadges.length)} از ${faNum(BADGES.length)}`}
+          </span>
+        </div>
+        {unlockedBadges.length === 0 ? (
+          <p className="mt-1 text-[10px] font-bold leading-5 text-stone-500">
+            هنوز نشانی باز نشده — با ادامهٔ تمرین روزانه نشان‌ها همین‌جا هم می‌آیند.
+          </p>
+        ) : (
+          <div className="mt-1.5 flex flex-wrap gap-1">
+            {unlockedBadges.map((b) => (
+              <span
+                key={b.id}
+                title={b.desc}
+                className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[9.5px] font-black ${TIER_CHIP[b.tier]}`}
+              >
+                <Award size={10} aria-hidden />
+                {b.title}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* 14-day strip: last week outlined, this week solid */}
