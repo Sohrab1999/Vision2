@@ -125,6 +125,14 @@ export const feedLabel: Record<string, string> = {
   konkur: "شبیه‌ساز کنکور",
   "konkur-hard": "تست‌های سخت",
   "konkur-cover": "پوشش بانک ۳۶۰",
+  // راند ۲۸۰ — چهار دستهٔ واقعاً ارسالی که تا امروز با کلیدِ خامِ انگلیسی
+  // روی فید رندر می‌شدند (سرشماریِ منبع: categoryهای sendStats/QuizEngine
+  // در برابرِ همین map) — گاردِ سرشماری در tests/feed-label-census-r280
+  // هر دستهٔ تازهٔ بی-برچسب را می‌گیرد.
+  smart: "تمرین هوشمند",
+  "spell-rush": "املا برق‌آسا",
+  review: "مرور سریع",
+  "my-words": "مرور نشان‌شده‌ها",
 };
 
 export interface RecentAttempt {
@@ -136,4 +144,8 @@ export interface RecentAttempt {
   createdAt: string;
   name?: string | null;
   color?: string | null;
+  /** r280 — the row owner's identity; the server already sent it (stats GET
+   *  select + spread) and the feed now uses it to mark YOUR own rows with
+   *  «(شما)» — exact match, immune to same-name collisions in a class. */
+  userId?: string | null;
 }

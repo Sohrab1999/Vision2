@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Users, Radio } from "lucide-react";
 import { lessonMetaById, lessonNumFa } from "@/data/lesson-meta";
 import { faNum, timeAgoFa } from "@/lib/study-theme";
+import { useStudy } from "@/lib/study-store";
 import { useGlobalStats } from "./use-global-stats";
 import { feedLabel } from "./home-constants";
 
@@ -11,6 +12,11 @@ import { feedLabel } from "./home-constants";
 
 export default function HomeFeed() {
   const globalStats = useGlobalStats();
+  // r280 — self-recognition in the live feed: the leaderboard already marks
+  // your rows; the feed (where the r278 promise says the name becomes
+  // visible) stayed anonymous to you. Exact userId match — immune
+  // to same-name collisions in a class.
+  const myUserId = useStudy((s) => s.userId);
 
   if (!globalStats || globalStats.total <= 0) return null;
 
@@ -65,13 +71,16 @@ export default function HomeFeed() {
                     ? cat
                     : `${cat} · درس ${lessonNumFa(lesson.id)}`;
                 const barColor = a.percent >= 70 ? "bg-emerald-500" : a.percent >= 50 ? "bg-amber-500" : "bg-rose-400";
+                const isYou = Boolean(myUserId && a.userId && a.userId === myUserId);
                 return (
                   <motion.li
                     key={`${a.createdAt}-${i}`}
                     initial={{ opacity: 0, x: 10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.05 }}
-                    className="flex items-center gap-2 rounded-lg bg-white px-2.5 py-1.5 shadow-sm"
+                    className={`flex items-center gap-2 rounded-lg px-2.5 py-1.5 shadow-sm ${
+                      isYou ? "bg-emerald-50 ring-1 ring-emerald-200" : "bg-white"
+                    }`}
                   >
                     <span className="shrink-0 text-[11px] font-bold text-stone-500">{timeAgoFa(a.createdAt)}</span>
                     {a.name && (
@@ -84,7 +93,13 @@ export default function HomeFeed() {
                     )}
                     <span className="min-w-0 flex-1 truncate text-[12px] font-bold text-stone-700">
                       {a.name ? (
-                        <span className="text-emerald-700">{a.name} — </span>
+                        <span className="text-emerald-700">
+                          {a.name}
+                          {isYou && (
+                            <span className="mr-1 text-[10px] font-black text-emerald-800">(شما)</span>
+                          )}
+                          {" — "}
+                        </span>
                       ) : (
                         <span className="text-stone-500">یادگیرندهٔ ناشناس — </span>
                       )}
