@@ -39,7 +39,10 @@ const p = new PrismaClient();
         "dictation_done", "freeze_badge",
         // task 283: the qa-fresh-session --play mode completes a REAL 60s rush
         // hand end-to-end — every scripted play leaves one rush_done aggregate
-        "rush_done"].includes(e.name)) {
+        "rush_done",
+        // task 286: the official-report PNG card QA click fires the share event —
+        // same QA-only construction as print_report's siblings in this loopback env
+        "official_image"].includes(e.name)) {
         await p.eventDay.delete({ where: { day_name: { day: e.day, name: e.name } } });
         console.log("QA event row removed:", e.name, "=", e.count);
       }
