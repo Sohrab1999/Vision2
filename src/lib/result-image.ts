@@ -7,7 +7,7 @@
 // ------------------------------------------------------------------
 
 import { faNum } from "./study-theme";
-import { BADGES, type BadgeTier } from "./achievements";
+import { BADGES, DUEL_BADGE_IDS, type BadgeTier } from "./achievements";
 import type { DuelLedgerStats } from "./duel-history";
 import { uiColors } from "./ui-colors";
 
@@ -468,6 +468,12 @@ async function openBattleCard(family: string, h = 640): Promise<CanvasRenderingC
 export interface DuelLedgerImageOpts {
   stats: DuelLedgerStats;
   userName?: string;
+  /** r288 — باندِ «نشان‌های نبردی»: فقط خانوادهٔ نبرد (DUEL_BADGE_IDS) از
+   * همان ارزیابیِ واحدِ رجیستری (duelFamilyBadges روی unlockedBadgeIds) —
+   * شمارندهٔ خودسازگار «X از ۱۰»؛ دامِ r287 (شمارندهٔ جهانیِ «از ۵۳» کنار
+   * آرایهٔ فیلترشده) اینجا به‌ساخت ناممکن است. سرشماریِ زمان-کامپایل مجریِ
+   * تغذیه است (الگویِ الزامیِ r285/286/287). */
+  badges: { title: string; tier: BadgeTier }[];
 }
 
 /** رسمِ کارتِ کارنامه — Task 102: از دانلود جدا شد تا blob هم ساخته شود */
@@ -480,10 +486,13 @@ async function duelLedgerCanvas(opts: DuelLedgerImageOpts): Promise<HTMLCanvasEl
       typeof document !== "undefined"
         ? getComputedStyle(document.body).fontFamily || "sans-serif"
         : "sans-serif";
-    const ctx = await openBattleCard(family);
+    const ctx = await openBattleCard(family, 760);
     if (!ctx) return null;
     const W = 1080;
-    const H = 640;
+    // r288 — 640→760: ناحیهٔ نو برایِ باندِ «نشان‌های نبردی» (همان الگویِ
+    // r287 برای کارتِ نبرد) — چیپهایِ آمار تا 530 میمانند، باند 544..642،
+    // خطِ پانویس 652 — هیچ همپوشانی.
+    const H = 760;
     const s = opts.stats;
 
     // ---------- win-rate ring (right side) — اول کشیده می‌شود تا نام/رقیب روی آن بنشیند ----------
@@ -563,6 +572,23 @@ async function duelLedgerCanvas(opts: DuelLedgerImageOpts): Promise<HTMLCanvasEl
       ctx.fillText(c.value, 104, chy + 24);
       chy += 58;
     }
+
+    // ---------- r288: باندِ خانوادهٔ نبرد — «کدام نشانهای نبردی دارم؟» ----------
+    // همان نقاشِ مشترکِ drawBadgeBand (هیچ کارتی باندِ خودش را نمیکشد) با
+    // سرصفه/شمارندهٔ خانواده. drawBadgeBand با baselineِ alphabetic کالیبره
+    // شده — کارتِ دفترچه middle دارد؛ همان سوییچِ موضعیِ r287 و بازگشتِ دقیق.
+    ctx.textBaseline = "alphabetic";
+    drawBadgeBand(ctx, {
+      badges: opts.badges,
+      family,
+      x: 70,
+      y: 544,
+      w: W - 140,
+      header: "نشان‌های نبردی",
+      total: DUEL_BADGE_IDS.length,
+      emptyLine: "هنوز نشانی نبردی باز نشده — نخستین پیروزی، نخستین نشان را میآورد.",
+    });
+    ctx.textBaseline = "middle";
 
     // ---------- footer ----------
     ctx.strokeStyle = uiColors.stone[200];
@@ -788,9 +814,28 @@ export const WEEKLY_TIER_CHIP: Record<
  * tests; no card may draw its own band. */
 function drawBadgeBand(
   ctx: CanvasRenderingContext2D,
-  o: { badges: { title: string; tier: BadgeTier }[]; family: string; x: number; y: number; w: number }
+  o: {
+    badges: { title: string; tier: BadgeTier }[];
+    family: string;
+    x: number;
+    y: number;
+    w: number;
+    /** r288 — سرصفهٔ باند؛ پیشفرض «نشان‌های من» — باندِ خانوادهٔ دفترچه
+     * «نشان‌های نبردی» میفرستد. هر سه فراخوانِ قدیمی بدونِ این پارامتر
+     * عیناً رندرِ قبل را میگیرند (سازگاریِ با عقبِ نقاشِ واحد). */
+    header?: string;
+    /** r288 — شمارندهٔ «X از total»؛ پیشفرض BADGES.length (کلِ رجیستری).
+     * باندِ خانواده DUEL_BADGE_IDS.length میفرستد — برچسب و چیپها هر دو
+     * از یک لیست، دامِ گمراهیِ شمارندهٔ r287 به‌ساخت ناممکن. */
+    total?: number;
+    /** r288 — خطِ صادقِ بی‌نشان؛ پیشفرض همان خطِ همگانیِ ۲۸۵. */
+    emptyLine?: string;
+  }
 ): void {
   const { family, x, y, w } = o;
+  const header = o.header ?? "نشان‌های من";
+  const total = o.total ?? BADGES.length;
+  const emptyLine = o.emptyLine ?? "هنوز نشانی باز نشده — با ادامهٔ تمرین روزانه نشان‌ها همین‌جا هم می‌آیند.";
   ctx.fillStyle = uiColors.stone[100];
   roundRect(ctx, x, y, w, 98, 16);
   ctx.fill();
@@ -799,10 +844,10 @@ function drawBadgeBand(
   ctx.textAlign = "right";
   ctx.fillStyle = uiColors.stone[900];
   ctx.font = `800 20px ${family}`;
-  const hdrW = ctx.measureText("نشان‌های من").width;
-  ctx.fillText("نشان‌های من", x + w - 30, y + 27);
+  const hdrW = ctx.measureText(header).width;
+  ctx.fillText(header, x + w - 30, y + 27);
 
-  const countLabel = `${faNum(o.badges.length)} از ${faNum(BADGES.length)}`;
+  const countLabel = `${faNum(o.badges.length)} از ${faNum(total)}`;
   ctx.font = `700 15px ${family}`;
   const cw = ctx.measureText(countLabel).width;
   const pillR = x + w - 30 - hdrW - 14;
@@ -817,7 +862,7 @@ function drawBadgeBand(
     ctx.fillStyle = uiColors.stone[500];
     ctx.font = `700 17px ${family}`;
     ctx.textAlign = "center";
-    ctx.fillText("هنوز نشانی باز نشده — با ادامهٔ تمرین روزانه نشان‌ها همین‌جا هم می‌آیند.", x + w / 2, y + 68);
+    ctx.fillText(emptyLine, x + w / 2, y + 68);
     return;
   }
   ctx.font = `700 16px ${family}`;

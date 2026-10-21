@@ -219,11 +219,12 @@ describe("نشانها در کارتِ نبرد (r287)", () => {
     expect(trackSpy).toHaveBeenCalledTimes(1);
   });
 
-  it("قفلِ ساختاری: سه کارت از یک نقاش میخوانند و duel-done ارزیابیِ موازی ندارد", () => {
+  it("قفلِ ساختاری: چهار کارت از یک نقاش میخوانند و duel-done ارزیابیِ موازی ندارد", () => {
     const painter = readFileSync(join(process.cwd(), "src/lib/result-image.ts"), "utf8");
-    // drawBadgeBand: یک تعریف + دقیقاً سه کارت (هفته‌نامه · رسمی · نبرد r287)
+    // drawBadgeBand: یک تعریف + دقیقاً چهار کارت (هفته‌نامه · رسمی · نبرد r287 ·
+    // کارنامهٔ دفترچه r288 — خانوادهٔ نبردی با سرصفهٔ خودش، همان نقاش)
     const calls = painter.match(/drawBadgeBand\(ctx/g) ?? [];
-    expect(calls.length).toBe(3);
+    expect(calls.length).toBe(4);
     // تعریفِ نقاشِ مشترک موجود است
     expect(painter).toContain("function drawBadgeBand(");
     const comp = readFileSync(join(process.cwd(), "src/components/study/duel/duel-done.tsx"), "utf8");

@@ -24,7 +24,13 @@ const stats: DuelLedgerStats = {
 
 describe("کارت‌های نبرد — مسیرِ بی‌کانواس (Task 101)", () => {
   it("downloadDuelLedgerImage در محیطِ بی‌کانواس false برمی‌گرداند", async () => {
-    await expect(downloadDuelLedgerImage({ stats, userName: "میلاد" })).resolves.toBe(false);
+    await expect(
+      downloadDuelLedgerImage({
+        stats,
+        userName: "میلاد",
+        badges: [{ title: "شکارچیِ رقیب", tier: "silver" }], // r288 — فیلدِ الزامیِ قرارداد
+      })
+    ).resolves.toBe(false);
   });
 
   it("downloadDuelDoneImage در محیطِ بی‌کانواس false برمی‌گرداند", async () => {

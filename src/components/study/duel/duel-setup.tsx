@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { Sparkles, Swords, Users, Timer, Zap, Wifi, WifiOff, Loader2, Target, ShieldCheck, History, Flame, Percent, Search, X, ChevronDown, ChevronUp, ImageDown, Share2 } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
@@ -8,6 +8,8 @@ import { useMounted } from "@/lib/use-mounted";
 import { faNum, timeAgoFa, avatarClasses, secFa } from "@/lib/study-theme";
 import { percent } from "@/lib/domain/percent";
 import { useToast } from "@/hooks/use-toast";
+import { trackEvent } from "@/lib/analytics";
+import { buildEvalInput, unlockedBadgeIds, duelFamilyBadges } from "@/lib/achievements";
 import { downloadDuelLedgerImage, buildDuelLedgerBlob } from "@/lib/result-image";
 import { canShareImageFiles, blobToFile, shareImageFile, type ShareOutcome } from "@/lib/share-card";
 import {
@@ -52,6 +54,45 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
   const duelHistory = useStudy((s) => s.duelHistory);
   const [imgBusy, setImgBusy] = useState(false);
   const [shareBusy, setShareBusy] = useState(false);
+
+  // r288 — باندِ «نشان‌های نبردی» روی کارتِ کارنامهٔ دفترچه: همان ارزیابیِ
+  // واحدِ رجیستری (buildEvalInput) که گرید و گزارشها و کارتِ نبرد مصرف
+  // میکنند — هیچ ارزیابیِ دومی. درسِ r287: فیلدِ duelHistory باید داخلِ
+  // ورودیِ ارزیابی باشد وگرنه خانوادهٔ نبرد روی دفترچهٔ خالی میدود؛ depsِ
+  // کامل — نه کم نه زیاد (هم‌قراردادِ duel-done/هفته‌نامه/رسمی).
+  const known = useStudy((s) => s.known);
+  const results = useStudy((s) => s.results);
+  const history = useStudy((s) => s.history);
+  const dayStat = useStudy((s) => s.dayStat);
+  const evalStreak = useStudy((s) => s.streak);
+  const bestStreak = useStudy((s) => s.bestStreak);
+  const mistakes = useStudy((s) => s.mistakes);
+  const rushBest = useStudy((s) => s.rushBest);
+  const rushBestCorrect = useStudy((s) => s.rushBestCorrect);
+  const rushGames = useStudy((s) => s.rushGames);
+  const seenBadges = useStudy((s) => s.seenBadges);
+  const userName = useStudy((s) => s.userName);
+  const evalInput = useMemo(
+    () =>
+      buildEvalInput({
+        known,
+        results,
+        history,
+        dayStat,
+        streak: evalStreak,
+        bestStreak,
+        mistakes,
+        rushBest,
+        rushBestCorrect,
+        rushGames,
+        seenBadges,
+        userName,
+        duelHistory, // درسِ r287 — بدونِ دفترچه، نشانِ نبردی هرگز باز نمیشود
+      }),
+    [known, results, history, dayStat, evalStreak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, seenBadges, userName, duelHistory]
+  );
+  const unlocked = useMemo(() => unlockedBadgeIds(evalInput), [evalInput]);
+  const duelBadges = useMemo(() => duelFamilyBadges(unlocked), [unlocked]);
 
   const winRate = percent(duelWins, duelWins + duelLosses + duelTies);
   const streak = duelWinStreak(duelHistory);
@@ -107,8 +148,14 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
     const ok = await downloadDuelLedgerImage({
       stats: duelLedgerStats(duelHistory),
       userName: useStudy.getState().userName || undefined,
+      // r288 — باندِ خانوادهٔ نبرد از همان ارزیابیِ واحد؛ دانلود و هم‌رسانی
+      // دو دروازهٔ یک ارزیابی‌اند (قراردادِ r287).
+      badges: duelBadges.map((b) => ({ title: b.title, tier: b.tier })),
     });
     setImgBusy(false);
+    // r288 — رویدادِ کارتِ کارنامه فقط وقتی کارت واقعاً ساخته شد
+    // (قراردادِ official_image/duel_image)
+    if (ok) trackEvent("duel_ledger_image");
     toast(
       ok
         ? { title: "🖼 عکسِ کارنامهٔ نبردها ذخیره شد", description: "حالا می‌توانی آن را برای دوستانت بفرستی.", duration: 3000 }
@@ -126,9 +173,13 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
     const blob = await buildDuelLedgerBlob({
       stats,
       userName: useStudy.getState().userName || undefined,
+      // r288 — همان آرایه؛ دانلود و هم‌رسانی دو دروازهٔ یک ارزیابی‌اند.
+      badges: duelBadges.map((b) => ({ title: b.title, tier: b.tier })),
     });
     let outcome: ShareOutcome = "failed";
     if (blob) {
+      // r288 — رویداد با ساختِ واقعیِ کارت، نه موفقیتِ شیتِ سیستم (قراردادِ r287)
+      trackEvent("duel_ledger_image");
       outcome = await shareImageFile({
         file: blobToFile(blob, "vision2-duels.png"),
         title: "کارنامهٔ نبردها — وب‌کتاب ویژن ۲",

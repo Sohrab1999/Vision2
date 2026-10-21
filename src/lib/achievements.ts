@@ -969,3 +969,28 @@ export function unlockedBadgeIds(s: BadgeEvalInput): Set<string> {
   for (const b of BADGES) if (b.check(s)) out.add(b.id);
   return out;
 }
+
+// r288 — خانوادهٔ نبرد (Tasks 99–110): ده نشانِ نبردیِ رجیستری، منبعِ یگانهٔ
+// «کدام نشانها خانوادهٔ نبردها». کارتِ کارنامهٔ دفترچه (duelLedgerCanvas) باندِ
+// همین خانواده را میکشد: شمارندهٔ خودسازگار «X از ۱۰» با چیپهایِ فقط-خانواده —
+// درسِ r287: شمارندهٔ جهانیِ «از ۵۳» کنارِ آرایهٔ فیلترشده گمراهکننده است؛
+// اینجا برچسب و چیپها هر دو از یک لیست میخوانند و واگرایی به‌ساخت ناممکن است.
+// پردهٔ رگرسیونیِ r288 یکتایی/عضویتِ این لیست در BADGES را قفل میکند.
+export const DUEL_BADGE_IDS: readonly string[] = [
+  "rival-hunter",
+  "rival-nightmare",
+  "speed-bolt",
+  "speed-sound",
+  "receipt-trust",
+  "receipt-oath",
+  "quick-think",
+  "flash-mind",
+  "quick-week",
+  "lightning-week",
+];
+
+/** نشانهایِ خانوادهٔ نبرد که همین حالا بازند — آرایه از خودِ رجیستری (نه کپیِ
+ * شیء) تا عنوان/پله همیشه با گرید و گزارشها یکی بماند. */
+export function duelFamilyBadges(unlocked: Set<string>): BadgeDef[] {
+  return BADGES.filter((b) => DUEL_BADGE_IDS.includes(b.id) && unlocked.has(b.id));
+}

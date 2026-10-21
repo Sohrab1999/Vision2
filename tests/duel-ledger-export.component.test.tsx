@@ -6,6 +6,9 @@
 //     (نه یافته‌های فیلترشده) + نامِ کاربر از store
 //   ③ حینِ کارِ ناتمام دکمهٔ معلول است؛ پس از پایان آزاد
 //   ④ شکستِ کانواس (false) → مسیرِ خطا بدونِ انفجار
+// r288 — باندِ «نشان‌های نبردی»: آرگومانِ badges از همان ارزیابیِ واحدِ
+// رجیستری میآید (duelFamilyBadges) — فقط خانوادهٔ نبرد با شمارندهٔ
+// خودسازگار؛ نشانِ همگانیِ باز (اولین قدم) هرگز واردِ آرایه نمیشود.
 // ------------------------------------------------------------------
 
 import { describe, it, expect, beforeEach, vi } from "vitest";
@@ -13,9 +16,12 @@ import "@testing-library/jest-dom/vitest";
 import { cleanup, render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { DUEL_PACES, DEFAULT_PACE_MS } from "@/lib/duel-pace";
 
-const ledgerImage = vi.fn();
+const { ledgerImage, trackSpy } = vi.hoisted(() => ({ ledgerImage: vi.fn(), trackSpy: vi.fn() }));
 vi.mock("@/lib/result-image", () => ({
   downloadDuelLedgerImage: (...args: unknown[]) => ledgerImage(...args),
+}));
+vi.mock("@/lib/analytics", () => ({
+  trackEvent: (...args: unknown[]) => trackSpy(...args),
 }));
 
 import DuelSetup from "@/components/study/duel/duel-setup";
@@ -62,6 +68,7 @@ describe("عکسِ کارنامهٔ نبردها (Task 101)", () => {
   beforeEach(() => {
     cleanup();
     ledgerImage.mockReset();
+    trackSpy.mockReset();
     window.localStorage.clear();
     useStudy.setState({ duelWins: 0, duelLosses: 0, duelTies: 0, duelHistory: [], userName: "" });
   });
@@ -81,6 +88,8 @@ describe("عکسِ کارنامهٔ نبردها (Task 101)", () => {
         rec({ id: "d2", outcome: "loss", myScore: 600, opponent: "سینا" }),
         rec({ id: "d3", outcome: "win", myScore: 900, opponent: "امیر محمد" }),
       ],
+      // نشانِ همگانیِ باز — باید در گرید بیاید ولی هرگز در باندِ خانوادهٔ نبرد نه
+      history: { "2026-10-13": { quizzes: 2, reviews: 1 } },
     });
     renderSetup();
 
@@ -95,14 +104,20 @@ describe("عکسِ کارنامهٔ نبردها (Task 101)", () => {
     expect(arg.stats.totalPoints).toBe(1200 + 600 + 900);
     expect(arg.stats.topRival).toEqual({ opponent: "امیرمحمد", wins: 2 });
     expect(arg.userName).toBe("میلاد");
+    // r288 — باندِ خانواده: دو بردِ رسیددار؟ نه — دو برد مقابلِ یک حریفِ واحد
+    // یعنی «شکارچیِ رقیب» (نقره) — و «اولین قدمِ» همگانیِ باز غایب است.
+    expect(arg.badges).toEqual([{ title: "شکارچیِ رقیب", tier: "silver" }]);
 
-    // حینِ کارِ ناتمام: معلول
+    // حینِ کارِ ناتمام: معلول + رویداد هنوز نیامده (کارت ساخته نشده)
     expect(btn()).toBeDisabled();
+    expect(trackSpy).not.toHaveBeenCalled();
     resolve(true);
     await waitFor(() => expect(btn()).not.toBeDisabled());
+    // r288 — رویدادِ duel_ledger_image فقط با کارتِ واقعاً ساختهشده (قراردادِ r286/287)
+    expect(trackSpy).toHaveBeenCalledWith("duel_ledger_image");
   });
 
-  it("پاسخِ false (محیطِ بی‌کانواس) → مسیرِ خطا بدونِ انفجار و دکمه آزاد می‌شود", async () => {
+  it("پاسخِ false (محیطِ بی‌کانواس) → مسیرِ خطا بدونِ انفجار و دکمه آزاد می‌شود؛ رویداد هرگز نیامده", async () => {
     ledgerImage.mockResolvedValue(false);
     useStudy.setState({ duelHistory: [rec({ id: "d1" })] });
     renderSetup();
@@ -110,5 +125,6 @@ describe("عکسِ کارنامهٔ نبردها (Task 101)", () => {
     fireEvent.click(btn());
     await waitFor(() => expect(btn()).not.toBeDisabled());
     expect(ledgerImage).toHaveBeenCalledTimes(1);
+    expect(trackSpy).not.toHaveBeenCalled();
   });
 });
