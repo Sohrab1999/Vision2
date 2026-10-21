@@ -22,6 +22,7 @@ import {
   RotateCcw,
   Search,
   Sparkles,
+  Flame,
 } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -36,6 +37,8 @@ import {
   type HillStory,
 } from "@/data/hill-stories";
 import { libraryProgress } from "@/lib/library-progress";
+import { storyStreak } from "@/lib/library-streak";
+import { daysAgoKey } from "@/state/day-engine";
 import {
   filterStoryIds,
   readingMinutes,
@@ -88,6 +91,11 @@ export default function LibraryView() {
   // (با ?? خالیِ هر رندر، حفظِ memo رد میشد — درسِ lint)
   const libraryDoneRaw = useStudy((s) => s.libraryDone);
   const libraryDone = useMemo(() => libraryDoneRaw ?? {}, [libraryDoneRaw]);
+  const dayHistoryRaw = useStudy((s) => s.dayHistory);
+  const dayHistory = useMemo(() => dayHistoryRaw ?? {}, [dayHistoryRaw]);
+  // r302 — سطحِ سومِ عرضهٔ استریک: چیپِ سربرگِ کتابخانه — همان قراردادِ
+  // سه‌حالتهٔ r301 (منبعِ یگانه: dayHistory.stories از r299)
+  const readStreak = useMemo(() => storyStreak(dayHistory, daysAgoKey(0)), [dayHistory]);
   const markStoryDone = useStudy((s) => s.markStoryDone);
   // r297 — نیتِ «ادامهٔ خواندن»: کارتِ خانه میتواند مستقیم یک داستان را بخواهد؛
   // lazy-init بدونِ فلشِ فهرست، و مصرفِ نیت در یک اثرِ یک‌بار (هم‌الگوی flashIntent)
@@ -136,13 +144,40 @@ export default function LibraryView() {
           </p>
         </div>
         {mounted && (
-          <span
-            className="inline-flex shrink-0 items-center gap-1.5 rounded-xl border border-teal-200 bg-teal-50 px-3 py-2 text-[12px] font-black text-teal-700"
-            aria-label="پیشرفت کل کتاب‌خانه"
-          >
-            <BookMarked size={14} aria-hidden />
-            {faNum(prog.doneCount)} از {faNum(HILL_TOTAL_STORIES)} داستان
-          </span>
+          <div className="flex shrink-0 flex-col items-end gap-1.5">
+            <span
+              className="inline-flex items-center gap-1.5 rounded-xl border border-teal-200 bg-teal-50 px-3 py-2 text-[12px] font-black text-teal-700"
+              aria-label="پیشرفت کل کتاب‌خانه"
+            >
+              <BookMarked size={14} aria-hidden />
+              {faNum(prog.doneCount)} از {faNum(HILL_TOTAL_STORIES)} داستان
+            </span>
+            {/* r302 — چیپِ استریک: فقط با سابقه (current>0 || longest>0) تا
+                سربرگِ تازه‌وارد شلوغ نشود؛ برچسب‌ها عینِ کارتِ خانه */}
+            {(readStreak.current > 0 || readStreak.longest > 0) && (
+              <span
+                className={`inline-flex items-center gap-1 rounded-xl border px-3 py-1.5 text-[11px] font-black ${
+                  readStreak.current > 0
+                    ? readStreak.readToday
+                      ? "border-amber-200 bg-amber-50 text-amber-700"
+                      : "border-stone-300 bg-stone-100 text-stone-600"
+                    : "border-stone-200 bg-stone-50 text-stone-500"
+                }`}
+                aria-label="زنجیرهٔ روزهای خواندن داستان"
+              >
+                <Flame
+                  size={12}
+                  aria-hidden
+                  className={readStreak.readToday && readStreak.current > 0 ? "text-amber-500" : "text-stone-500"}
+                />
+                {readStreak.current > 0
+                  ? readStreak.readToday
+                    ? `زنجیرهٔ خواندن — ${faNum(readStreak.current)} روز`
+                    : `${faNum(readStreak.current)} روز پیوسته — امروز بخوان`
+                  : "شروعِ زنجیرهٔ خواندن"}
+              </span>
+            )}
+          </div>
         )}
       </div>
 

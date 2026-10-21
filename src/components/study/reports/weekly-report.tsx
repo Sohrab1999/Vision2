@@ -10,7 +10,7 @@
 
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { Sparkles, TrendingDown, TrendingUp, Minus, CalendarHeart, Check, Compass, Snowflake, Swords, Timer, ImageDown, Loader2, CalendarClock, Gauge, FileDown, BarChart3, Award, BookMarked } from "lucide-react";
+import { Sparkles, TrendingDown, TrendingUp, Minus, CalendarHeart, Check, Compass, Snowflake, Swords, Timer, ImageDown, Loader2, CalendarClock, Gauge, FileDown, BarChart3, Award, BookMarked, Flame } from "lucide-react";
 import { useStudy, daysAgoKey } from "@/lib/study-store";
 import { faNum, secFa } from "@/lib/study-theme";
 import { BADGES, buildEvalInput, unlockedBadgeIds, TIER_CHIP } from "@/lib/achievements";
@@ -21,6 +21,7 @@ import { freezeDayMark, freezeLedgerMeta } from "@/lib/freeze-badge";
 import { downloadWeeklyImage } from "@/lib/result-image";
 import { downloadProgressCsv, downloadWeeklyTrendCsv } from "@/lib/progress-csv";
 import { storiesReadSince } from "@/lib/library-progress";
+import { storyStreak } from "@/lib/library-streak";
 import { storyById, HILL_TOTAL_STORIES } from "@/data/hill-stories";
 import { useToast } from "@/hooks/use-toast";
 
@@ -119,6 +120,9 @@ export default function WeeklyReportSection() {
   // (با ?? خالیِ هر رندر، حفظِ memoِ evalInput رد می‌شد — درسِ lint)
   const libraryDoneRaw = useStudy((s) => s.libraryDone);
   const libraryDone = useMemo(() => libraryDoneRaw ?? {}, [libraryDoneRaw]);
+  // r302 — دومین مصرفِ library-streak: رکوردِ زنجیره در کنارِ شمارشِ هفته
+  // (منبعِ یگانه با چیپِ کارتِ ادامهٔ خواندن؛ longestِ r301 بالاخره مصرف)
+  const readStreak = useMemo(() => storyStreak(dayHistory, daysAgoKey(0)), [dayHistory]);
   // r284 — the badge band: the weekly digest answers «این هفته چطور بود؟»؛
   // نشان‌ها جوابِ «تا کجا رسیده‌ام؟»اند — همان ارزیابیِ واحدِ رجیستری (buildEvalInput)
   // که گرید و کارنامهٔ رسمی مصرف میکنند؛ منبعِ یگانه، هیچ ارزیابیِ موازی‌ای.
@@ -381,6 +385,25 @@ export default function WeeklyReportSection() {
             {`${faNum(weekReads.count)} داستان این هفته · ${faNum(Object.keys(libraryDone).length)} از ${faNum(HILL_TOTAL_STORIES)} کل`}
           </span>
         </div>
+        {/* r302 — سطرِ زنجیره: سه حالتِ صادقِ هم‌معنایِ کارتِ خانه؛ بی‌سابقه
+            نمایش داده نمیشود تا خطِ نخستِ بی‌داده شلوغ نشود */}
+        {(readStreak.current > 0 || readStreak.longest > 0) && (
+          <div className="mt-1 flex items-center gap-1.5 text-[10px] font-bold leading-5 text-stone-500">
+            <Flame
+              size={11}
+              aria-hidden
+              className={readStreak.readToday ? "text-amber-500" : "text-stone-500"}
+            />
+            <span>
+              {readStreak.current > 0
+                ? `زنجیرهٔ خواندن — ${faNum(readStreak.current)} روز${readStreak.readToday ? "" : " — امروز بخوان تا ننشیند"}`
+                : `زنجیرهٔ خواندن قطع شده${readStreak.longest > 1 ? ` — رکورد: ${faNum(readStreak.longest)} روز` : " — با یک داستان از نو شروع کن"}`}
+              {readStreak.current > 0 && readStreak.longest > readStreak.current
+                ? ` · رکورد: ${faNum(readStreak.longest)} روز`
+                : ""}
+            </span>
+          </div>
+        )}
         {weekReads.count === 0 ? (
           <p className="mt-1 text-[10px] font-bold leading-5 text-stone-500">
             {Object.keys(libraryDone).length === 0
