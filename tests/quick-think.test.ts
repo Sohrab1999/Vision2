@@ -311,8 +311,8 @@ describe("نشان‌های چابکیِ ذهن — سیم‌کشی و زیرم�
     expect(unlocked).not.toContain("flash-mind");
   });
 
-  it("wording و تیر و آیکن: نیم‌نگاه نقره/Eye، برقِ فکر طلا/BrainCircuit؛ رجیستری ۵۳", () => {
-    expect(BADGES.length).toBe(53);
+  it("wording و تیر و آیکن: نیم‌نگاه نقره/Eye، برقِ فکر طلا/BrainCircuit؛ رجیستری ۵۶", () => {
+    expect(BADGES.length).toBe(56); // r298 — خانوادهٔ کتاب‌خوان (story-5/12/51) به رجیستری پیوست
     expect(byId("quick-think").tier).toBe("silver");
     expect(byId("quick-think").icon).toBe("Eye");
     expect(byId("flash-mind").tier).toBe("gold");

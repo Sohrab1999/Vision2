@@ -2,11 +2,11 @@
 // ------------------------------------------------------------------
 // r284 — نوار نشان‌ها در هفته‌نامه («نشان‌های من») — پاسخِ «تا کجا رسیده‌ام؟».
 // قراردادهایی که قفل می‌شوند:
-//  ① نوار همیشه حاضر است — تازه‌واردِ بی‌نشان: «۰ از ۵۳» + خطِ صادقِ خالی،
+//  ① نوار همیشه حاضر است — تازه‌واردِ بی‌نشان: «۰ از ۵۶» + خطِ صادقِ خالی،
 //     نه حذفِ نوار (هم‌قراردادِ نوارِ «گام بعدی»)
 //  ② نشانِ پرچم‌دارِ هویت («اولین دیده‌شدن») با seenBadges مستقیم باز میشود —
 //     همان ارزیابیِ واحدِ buildEvalInput؛ چیپ با کلاسِ تیرِ برنز و title=desc
-//  ③ شمارنده با ارقامِ فارسی و قالبِ «X از ۵۳»
+//  ③ شمارنده با ارقامِ فارسی و قالبِ «X از ۵۶»
 //  ④ منبعِ یگانه: TIER_CHIP فقط در lib/achievements — هیچ گزارشی رنگِ تیر را
 //     دوباره تعریف نمیکند (کارنامهٔ رسمی هم import میکند، نه کپی)
 //  ⑤ نوار در بی‌نشان‌ترین حالت هم ساختارِ ثابت دارد (badge-band یک‌بار)
@@ -47,23 +47,23 @@ describe("نوار نشان‌های هفته‌نامه (r284)", () => {
     });
   });
 
-  it("تازه‌واردِ بی‌نشان: نوار حاضر — «۰ از ۵۳» + خطِ صادق، بی‌چیپِ تیر", () => {
+  it("تازه‌واردِ بی‌نشان: نوار حاضر — «۰ از ۵۶» + خطِ صادق، بی‌چیپِ تیر", () => {
     render(<WeeklyReportSection />);
     const band = document.querySelector(".badge-band");
     expect(band).not.toBeNull();
     expect(band).toHaveTextContent("نشان‌های من");
-    expect(band).toHaveTextContent("۰ از ۵۳");
+    expect(band).toHaveTextContent("۰ از ۵۶");
     expect(band).toHaveTextContent("هنوز نشانی باز نشده");
     // هیچ چیپ تیری رندر نشده — فقط شمارنده
     const tierChips = band!.querySelectorAll("span[class*='or-chip-']");
     expect(tierChips.length).toBe(0);
   });
 
-  it("پرچمِ «اولین دیده‌شدن» در seenBadges → چیپِ برنزیِ «اولین دیده‌شدن» + «۱ از ۵۳» + title=desc", () => {
+  it("پرچمِ «اولین دیده‌شدن» در seenBadges → چیپِ برنزیِ «اولین دیده‌شدن» + «۱ از ۵۶» + title=desc", () => {
     useStudy.setState({ seenBadges: ["first-visible"] });
     render(<WeeklyReportSection />);
     const band = document.querySelector(".badge-band")!;
-    expect(band).toHaveTextContent("۱ از ۵۳");
+    expect(band).toHaveTextContent("۱ از ۵۶");
     const chip = [...band.querySelectorAll("span")].find((s) =>
       s.textContent?.includes("اولین دیده‌شدن")
     );

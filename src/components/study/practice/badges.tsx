@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import {
   Footprints,
   BookA,
+  BookOpen,
   BookOpenCheck,
   GraduationCap,
   ListChecks,
@@ -49,6 +50,7 @@ import {
   BrainCircuit,
   CalendarClock,
   Gauge,
+  Library,
 } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -69,6 +71,7 @@ import {
 export const BADGE_ICONS: Record<string, React.ElementType> = {
   Footprints,
   BookA,
+  BookOpen, // خانوادهٔ کتاب‌خوان (r298)
   BookOpenCheck,
   GraduationCap,
   ListChecks,
@@ -120,6 +123,8 @@ export const BADGE_ICONS: Record<string, React.ElementType> = {
   // خانوادهٔ هفتهٔ چابک (Task 110) — گیتِ ترکیبیِ هفتگی
   CalendarClock,
   Gauge,
+  // خانوادهٔ کتاب‌خوان (r298) — سه‌گانهٔ دکتر هیل
+  Library,
 };
 
 const tierFa: Record<string, string> = {
@@ -151,6 +156,7 @@ export default function Badges() {
   const duelHistory = useStudy((s) => s.duelHistory);
   const seenBadges = useStudy((s) => s.seenBadges);
   const userName = useStudy((s) => s.userName); // r282 — خانوادهٔ هویت
+  const libraryDone = useStudy((s) => s.libraryDone) ?? {}; // r298 — خانوادهٔ کتاب‌خوان
   const markBadgesSeen = useStudy((s) => s.markBadgesSeen);
   const mounted = useMounted();
   const { toast } = useToast();
@@ -177,8 +183,9 @@ export default function Badges() {
         duelHistory,
         seenBadges,
         userName,
+        libraryDone, // r298 — نشان‌های کتاب‌خوان از همان ارزیابیِ واحد
       }),
-    [known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, freezeCount, freezeUsedDays, freezeEarnedDay, goalMetDays, dayHistory, duelHistory, seenBadges, userName]
+    [known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, freezeCount, freezeUsedDays, freezeEarnedDay, goalMetDays, dayHistory, duelHistory, seenBadges, userName, libraryDone]
   );
 
   const unlocked = useMemo(() => unlockedBadgeIds(input), [input]);

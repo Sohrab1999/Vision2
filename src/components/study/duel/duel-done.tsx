@@ -62,6 +62,7 @@ export default function DuelDone({ endData, mySid, myFinishAt, oppConnected, rem
   const rushBestCorrect = useStudy((s) => s.rushBestCorrect);
   const rushGames = useStudy((s) => s.rushGames);
   const seenBadges = useStudy((s) => s.seenBadges);
+  const libraryDone = useStudy((s) => s.libraryDone) ?? {}; // r298 — خانوادهٔ کتاب‌خوان
   const userName = useStudy((s) => s.userName);
   const evalInput = useMemo(
     () =>
@@ -78,9 +79,10 @@ export default function DuelDone({ endData, mySid, myFinishAt, oppConnected, rem
         rushGames,
         seenBadges,
         userName,
+        libraryDone, // r298 — ارزیابیِ واحد در تمامِ سطوح
         duelHistory, // r287 — خانوادهٔ نبرد: بدونِ دفترچه، نشانِ نبردی هرگز باز نمیشد
       }),
-    [known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, seenBadges, userName, duelHistory]
+    [known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, seenBadges, userName, duelHistory, libraryDone]
   );
   const unlocked = useMemo(() => unlockedBadgeIds(evalInput), [evalInput]);
   const unlockedBadges = useMemo(

@@ -789,6 +789,9 @@ export interface WeeklyImageOpts {
   bestDay?: { label: string; total: number } | null;
   /** خطِ نبردها — متنِ فارسیِ آماده از بلوکِ هفته‌نامه (ارقامِ فارسی) */
   duelLine?: string;
+  /** r298 — داستان‌های خوانده‌شدهٔ این هفته (شمارشِ storiesReadSince).
+   * فقط وقتی کتاب‌خانه فعال است فرستاده می‌شود — بی‌کتاب‌خانه چیپِ صفرِ ساختگی نیست. */
+  storiesWeek?: number;
   /** r285 — نشانهای بازِ همان ارزیابیِ واحدِ هفتهنامه (title+tier) — الزامی:
    * کارتِ هم‌رسانی هم باید به «تا کجا رسیده‌ام؟» جواب بدهد؛ سرشماریِ
    * زمان-کامپایل مجریِ تغذیه است (الگویِ buildEvalInputِ r282). */
@@ -982,14 +985,19 @@ async function weeklyCanvas(opts: WeeklyImageOpts): Promise<HTMLCanvasElement | 
     ctx.fillText(`${faNum(opts.goalDays)} از ${faNum(7)} روزِ هدف`, cx, cy + 38);
 
     // ---------- activity chips (خانواده‌های واقعیِ DayStat) ----------
+    // r298 — چیپِ ششمِ «داستان» فقط با کتاب‌خانهٔ فعال می‌آید؛ با ۶ چیپ،
+    // ستون از y=190 شروع میشود تا زیرِ نوارِ نشانها (y=524) نجنجد.
     const chips: { label: string; value: number }[] = [
       { label: "مرور", value: opts.reviews },
       { label: "آزمون", value: opts.quizzes },
       { label: "واژهٔ نو", value: opts.words },
       { label: "دیکته", value: opts.dictation },
       { label: "برق‌آسا", value: opts.rush },
+      ...(typeof opts.storiesWeek === "number"
+        ? [{ label: "داستان", value: opts.storiesWeek }]
+        : []),
     ];
-    let chy = 246;
+    let chy = chips.length > 5 ? 190 : 246;
     for (const c of chips) {
       ctx.fillStyle = uiColors.green[50];
       roundRect(ctx, 90, chy, 300, 46, 12);

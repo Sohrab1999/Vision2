@@ -115,7 +115,10 @@ export default function WeeklyReportSection() {
   const freezeEarnedDay = useStudy((s) => s.freezeEarnedDay);
   const duelHistory = useStudy((s) => s.duelHistory);
   // r297 «کتاب‌خانه همه‌جا» — نوارِ کتاب‌خانه در هفته‌نامه (هم‌پنجرهٔ ۷روزهٔ دایجست)
-  const libraryDone = useStudy((s) => s.libraryDone) ?? {};
+  // r298 — گاردِ ?? داخلِ memo: مرجعِ پایدار برای کامپایلرِ react
+  // (با ?? خالیِ هر رندر، حفظِ memoِ evalInput رد می‌شد — درسِ lint)
+  const libraryDoneRaw = useStudy((s) => s.libraryDone);
+  const libraryDone = useMemo(() => libraryDoneRaw ?? {}, [libraryDoneRaw]);
   // r284 — the badge band: the weekly digest answers «این هفته چطور بود؟»؛
   // نشان‌ها جوابِ «تا کجا رسیده‌ام؟»اند — همان ارزیابیِ واحدِ رجیستری (buildEvalInput)
   // که گرید و کارنامهٔ رسمی مصرف میکنند؛ منبعِ یگانه، هیچ ارزیابیِ موازی‌ای.
@@ -176,7 +179,10 @@ export default function WeeklyReportSection() {
   const nextStep = findNextStep(results, known);
 
   // r297 — داستان‌های این هفته (هم‌پنجرهٔ دایجست: ۷روزِ اخیر، امروز شامل)
-  const weekReads = storiesReadSince(libraryDone, daysAgoKey(6), daysAgoKey(0));
+  const weekReads = useMemo(
+    () => storiesReadSince(libraryDone, daysAgoKey(6), daysAgoKey(0)),
+    [libraryDone],
+  );
 
   // r284 — ارزیابیِ نشان‌ها با همان ورودیِ سرشماری‌شده؛ useMemo هم‌قراردادِ
   // کارنامهٔ رسمی ( deps کامل — نه کم نه زیاد)
@@ -195,8 +201,9 @@ export default function WeeklyReportSection() {
         rushGames,
         seenBadges,
         userName,
+        libraryDone, // r298 — نشان‌های کتاب‌خوان در همان ارزیابیِ واحدِ نوارِ نشان‌ها
       }),
-    [known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, seenBadges, userName]
+    [known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, seenBadges, userName, libraryDone]
   );
   const unlocked = useMemo(() => unlockedBadgeIds(evalInput), [evalInput]);
   const unlockedBadges = useMemo(
@@ -224,6 +231,9 @@ export default function WeeklyReportSection() {
       goalDays: digest.thisWeek.goalDays,
       streak,
       bestDay: digest.bestDay ? { label: faDayLabel(digest.bestDay.day), total: digest.bestDay.total } : null,
+      // r298 — چیپِ داستان روی کارتِ PNG: فقط با کتاب‌خانهٔ فعال (صفرِ صادق
+      // برای خوانندهٔ این‌هفته‌بی‌داستان؛ غایب برای بی‌کتاب‌خانه)
+      storiesWeek: Object.keys(libraryDone).length > 0 ? weekReads.count : undefined,
       duelLine:
         d && d.thisWeek > 0
           ? `${faNum(d.thisWeek)}${d.truncated ? "+" : ""} نبرد واژگانی این هفته — ${faNum(d.win)} برد، ${faNum(d.loss)} باخت${d.tie > 0 ? `، ${faNum(d.tie)} مساوی` : ""}`

@@ -30,6 +30,7 @@ export function useFreshBadges(): string[] {
   const dayHistory = useStudy((s) => s.dayHistory);
   const seenBadges = useStudy((s) => s.seenBadges);
   const userName = useStudy((s) => s.userName); // r282 — خانوادهٔ هویت
+  const libraryDone = useStudy((s) => s.libraryDone) ?? {}; // r298 — خانوادهٔ کتاب‌خوان
   const mounted = useMounted();
 
   return useMemo(() => {
@@ -52,7 +53,8 @@ export function useFreshBadges(): string[] {
       dayHistory,
       seenBadges,
       userName,
+      libraryDone, // r298 — جشنِ نشانِ کتاب‌خوان از همان ارزیابیِ واحد
     });
     return newBadgeIds(input, seenBadges);
-  }, [mounted, known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, freezeCount, freezeUsedDays, freezeEarnedDay, goalMetDays, dayHistory, seenBadges, userName]);
+  }, [mounted, known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, freezeCount, freezeUsedDays, freezeEarnedDay, goalMetDays, dayHistory, seenBadges, userName, libraryDone]);
 }

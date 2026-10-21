@@ -117,6 +117,7 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
   const rushGames = useStudy((s) => s.rushGames);
   const dayStat = useStudy((s) => s.dayStat);
   const userName = useStudy((s) => s.userName);
+  const libraryDone = useStudy((s) => s.libraryDone) ?? {}; // r298 — خانوادهٔ کتاب‌خوان
   const seenBadges = useStudy((s) => s.seenBadges); // r282 — خانوادهٔ هویت
   const userId = useStudy((s) => s.userId);
 
@@ -219,9 +220,9 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
   const evalInput = useMemo(
     () =>
       mounted
-        ? buildEvalInput({ known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, seenBadges, userName })
+        ? buildEvalInput({ known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, seenBadges, userName, libraryDone })
         : null,
-    [mounted, known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, seenBadges, userName]
+    [mounted, known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, seenBadges, userName, libraryDone]
   );
   const unlocked = useMemo<Set<string>>(
     () => (evalInput ? unlockedBadgeIds(evalInput) : new Set<string>()),

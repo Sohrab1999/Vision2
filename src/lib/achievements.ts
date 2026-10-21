@@ -12,6 +12,7 @@ import { duelTopRival, duelSpeedStats, duelVerifiedWins, duelQuickThinkers } fro
 import { duelQuickWeekReport, DUEL_QUICK_WEEK, type QuickWeekReport } from "./weekly-digest";
 import { FIRST_VISIBLE_BADGE_ID } from "./identity";
 import { FREEZE_WINDOW } from "@/state/types";
+import { libraryProgress } from "./library-progress"; // r298 — خانوادهٔ کتاب‌خوان
 
 export type BadgeTier = "bronze" | "silver" | "gold";
 
@@ -76,6 +77,9 @@ export interface BadgeEvalInput {
   // پیشرفتِ صادقِ دوشاخه (نام‌دار/بی‌نام) لازم است.
   seenBadges: string[]; // نشان‌های جشن‌گرفته — پرچمِ first-visible این‌جاست
   userName: string; // نامِ فعلی — «یادگیرندهٔ ناشناس» یعنی خالی
+  // r298 — خانوادهٔ کتاب‌خوان: داستان‌های تمام‌شدهٔ کتاب‌خانه (فقط کلیدهای
+  // معتبرِ سه‌گانهٔ هیل — گاردِ payloadِ خراب صفر میشمارد، هرگز نمیترکاند)
+  storiesDone: number;
 }
 
 function historyTotals(history: StudyState["history"]): { quizzes: number; reviews: number; days: number } {
@@ -110,6 +114,7 @@ export function buildEvalInput(s: {
   duelHistory?: StudyState["duelHistory"]; // خانوادهٔ نبرد (Task 99) — دفترچهٔ ۱۵تایی
   seenBadges?: StudyState["seenBadges"]; // r282 — خانوادهٔ هویت
   userName?: string; // r282 — خانوادهٔ هویت
+  libraryDone?: StudyState["libraryDone"]; // r298 — خانوادهٔ کتاب‌خوان
 }): BadgeEvalInput {
   const knownCount = Object.values(s.known).filter(Boolean).length;
   const rs = Object.values(s.results);
@@ -235,6 +240,12 @@ export function buildEvalInput(s: {
     // ورودیِ خراب (آرایهٔ شکسته/نامِ غیررشته) صادقانه خالی میماند.
     seenBadges: seenList,
     userName: nameStr,
+    // r298 — خانوادهٔ کتاب‌خوان: شمارش از قراردادِ یگانهٔ libraryProgress
+    // (کلیدِ بیگانه/روزِ خراب هرگز شمرده نمیشود؛ payloadِ غیرآبجکت → صفر)
+    storiesDone:
+      s.libraryDone && typeof s.libraryDone === "object"
+        ? libraryProgress(s.libraryDone as Record<string, { score: number; total: number; day: string }>).doneCount
+        : 0,
   };
 }
 
@@ -930,6 +941,36 @@ export const BADGES: BadgeDef[] = [
     check: (s) =>
       s.duelQuickWeek.qualifying !== null &&
       s.duelQuickWeek.qualifying.avgMs <= DUEL_QUICK_WEEK.goldMs,
+  },
+  // r298 — خانوادهٔ کتاب‌خوان: سه‌گانهٔ داستان‌های دکتر هیل (کتاب‌خانهٔ r290،
+  // کامل‌شده در r296). شمارشِ صادق از libraryProgress — فقط کلیدهایِ معتبر؛
+  // پیشرفتِ باز هم دیده می‌شود (progress) تا کاشیِ قفل هم راه نشان بدهد.
+  {
+    id: "story-5",
+    title: "کتاب‌خوان",
+    desc: "۵ داستانِ کتاب‌خانه را بخوان و بخشِ درست/نادرستشان را جواب بزن",
+    icon: "BookOpen",
+    tier: "bronze",
+    progress: (s) => `${faNum(Math.min(s.storiesDone, 5))} از ۵ داستان`,
+    check: (s) => s.storiesDone >= 5,
+  },
+  {
+    id: "story-12",
+    title: "داستان‌دان",
+    desc: "۱۲ داستان تمام کن — به اندازهٔ یک کتابِ کاملِ Stories for Reproduction",
+    icon: "BookMarked",
+    tier: "silver",
+    progress: (s) => `${faNum(Math.min(s.storiesDone, 12))} از ۱۲ داستان`,
+    check: (s) => s.storiesDone >= 12,
+  },
+  {
+    id: "story-51",
+    title: "سه‌گانهٔ هیل",
+    desc: "هر ۵۱ داستانِ سه کتابِ دکتر هیل را تمام کن — خوانندهٔ تمام‌عیار",
+    icon: "Library",
+    tier: "gold",
+    progress: (s) => `${faNum(Math.min(s.storiesDone, 51))} از ۵۱ داستان`,
+    check: (s) => s.storiesDone >= 51,
   },
 ];
 

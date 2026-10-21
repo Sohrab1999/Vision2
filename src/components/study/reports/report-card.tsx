@@ -93,15 +93,16 @@ export default function ReportCard({ open, onClose }: { open: boolean; onClose: 
   const rushGames = useStudy((s) => s.rushGames);
   const userName = useStudy((s) => s.userName);
   const seenBadges = useStudy((s) => s.seenBadges); // r282 — خانوادهٔ هویت
+  const libraryDone = useStudy((s) => s.libraryDone) ?? {}; // r298 — خانوادهٔ کتاب‌خوان
 
   // opener lives in study-app (Task 44: lazy-mount on first use) — this
   // component is mounted only after the first "open-report" event.
   const evalInput = useMemo(
     () =>
       mounted
-        ? buildEvalInput({ known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, seenBadges, userName })
+        ? buildEvalInput({ known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, seenBadges, userName, libraryDone })
         : null,
-    [mounted, known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, seenBadges, userName]
+    [mounted, known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, seenBadges, userName, libraryDone]
   );
   const unlocked = useMemo<Set<string>>(
     () => (evalInput ? unlockedBadgeIds(evalInput) : new Set<string>()),

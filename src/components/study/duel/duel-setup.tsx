@@ -72,6 +72,7 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
   const rushBestCorrect = useStudy((s) => s.rushBestCorrect);
   const rushGames = useStudy((s) => s.rushGames);
   const seenBadges = useStudy((s) => s.seenBadges);
+  const libraryDone = useStudy((s) => s.libraryDone) ?? {}; // r298 — خانوادهٔ کتاب‌خوان
   const userName = useStudy((s) => s.userName);
   const evalInput = useMemo(
     () =>
@@ -88,9 +89,10 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
         rushGames,
         seenBadges,
         userName,
+        libraryDone, // r298 — ارزیابیِ واحد در تمامِ سطوح
         duelHistory, // درسِ r287 — بدونِ دفترچه، نشانِ نبردی هرگز باز نمیشود
       }),
-    [known, results, history, dayStat, evalStreak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, seenBadges, userName, duelHistory]
+    [known, results, history, dayStat, evalStreak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, seenBadges, userName, duelHistory, libraryDone]
   );
   const unlocked = useMemo(() => unlockedBadgeIds(evalInput), [evalInput]);
   const duelBadges = useMemo(() => duelFamilyBadges(unlocked), [unlocked]);
