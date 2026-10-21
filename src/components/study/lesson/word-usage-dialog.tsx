@@ -30,6 +30,20 @@ export default function WordUsageDialog({
   target: WordUsageTarget | null;
   onClose: () => void;
 }) {
+  // راند ۲۶۲ — بندِ ② پیشنهادِ ۲۶۱: پراکندگیِ درس‌ها — وقتی واژه در ≥۲ درس
+  // زندگی می‌کند، یک نوارِ فشرده زیرِ تیتر نشان می‌دهد هر درس چند کاربرد دارد
+  // (پیش‌شمارشِ r262: change = ۱۳ کاربرد در ۶ درس با صدرنشینِ درسِ ۵؛
+  // ability = ۱ کاربرد در ۱ درس → نوار مخفی — صداقتِ r252). مرتب‌سازی:
+  // شمارشِ نزولی سپس شناسهٔ درسِ صعودی — قطعی؛ صدرنشین = هر سطرِ هم‌شمارِ
+  // بیشینه (ایدئومِ تساویِ امنِ r258/259). چیپ‌های اطلاعاتیِ بنفش — همان
+  // خانوادهٔ چیپِ درسِ ردیف‌هایِ مقایسه؛ صدرنشینِ پر (bg-violet-600) به
+  // ایدئومِ badgeِ «بیشترین»؛ span نه دکمه — فضای نامِ a11yِ r253.
+  const lessonCounts = (() => {
+    const m = new Map<number, number>();
+    target?.sites.forEach((s) => m.set(s.lessonId, (m.get(s.lessonId) ?? 0) + 1));
+    return [...m.entries()].sort((a, b) => b[1] - a[1] || a[0] - b[0]);
+  })();
+  const maxLessonCount = lessonCounts[0]?.[1] ?? 0;
   return (
     <Dialog open={!!target} onOpenChange={(o) => !o && onClose()}>
       <DialogContent aria-describedby={undefined} className="max-h-[88vh] max-w-xl overflow-y-auto nice-scroll" data-testid="usage-dialog">
@@ -42,6 +56,35 @@ export default function WordUsageDialog({
             </span>
           </DialogTitle>
         </DialogHeader>
+        {lessonCounts.length >= 2 && (
+          <div
+            data-testid="usage-lessons-bar"
+            className="flex flex-wrap items-center gap-1.5 rounded-lg border border-stone-200 bg-stone-50 px-2.5 py-2 dark:border-stone-700 dark:bg-stone-800/60"
+          >
+            <span className="text-[10.5px] font-black text-stone-500">پراکندگیِ درس‌ها:</span>
+            {lessonCounts.map(([lessonId, count]) => {
+              const leading = count === maxLessonCount;
+              return (
+                <span
+                  key={lessonId}
+                  data-testid={`usage-lesson-chip-${lessonId}`}
+                  title={
+                    leading
+                      ? `بیشترینِ کاربردهایِ این واژه در درسِ ${faNum(lessonId)} است`
+                      : undefined
+                  }
+                  className={
+                    leading
+                      ? "inline-flex items-center rounded-md bg-violet-600 px-1.5 py-0.5 text-[10px] font-black text-white"
+                      : "inline-flex items-center rounded-md bg-violet-100 px-1.5 py-0.5 text-[10px] font-black text-violet-700"
+                  }
+                >
+                  درس {faNum(lessonId)} · {faNum(count)}
+                </span>
+              );
+            })}
+          </div>
+        )}
         <ul className="space-y-2">
           {target?.sites.slice(0, 8).map((s, i) => (
             <li

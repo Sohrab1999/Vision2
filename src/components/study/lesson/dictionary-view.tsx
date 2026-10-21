@@ -141,6 +141,15 @@ export default function DictionaryView() {
       // آسمانیِ «بیشترین» در مقیاسِ شمارش). مقایسهٔ صحیحی — همیشه صفر ممکن
       // نیست چون هیچ درسی کاملاً در-متن نیست، ولی گاردِ صفرِ شرط می‌ماند.
       maxUnused: rows.reduce((m, r) => Math.max(m, r.totalWords - r.usedWords), 0),
+      // r262 ① — قهرمانِ چهارمِ ماتریسِ ۲×۲: بیشترینِ «نسبتِ» بیرون-از-متن
+      // از واژگانِ خودِ درس (تقسیمِ شناور — تساویِ مستقیم ایمن، همان منطقِ
+      // maxRatioِ r259). پیش‌شمارشِ r262: درسِ ۴ با ۲۳۶/۳۴۱ = ٪۶۹٫۲ — یگانه؛
+      // ماتریسِ کامل: شمارشِ در-متن→۱۰ · نسبتِ در-متن→۷ · شمارشِ بیرون→۱۰ ·
+      // نسبتِ بیرون→۴.
+      maxUnusedRatio: rows.reduce(
+        (m, r) => Math.max(m, r.totalWords > 0 ? (r.totalWords - r.usedWords) / r.totalWords : 0),
+        0
+      ),
       // r261 ② — رتبهٔ سهمِ در-متنِ هر درس (نسبتِ شناور، نزولی؛ رتبه‌بندیِ
       // رقابتی: اولین جایگاهِ هر کسرِ متمایز = رتبه‌اش، هم‌کسرها هم‌رتبه —
       // همان منطقِ تساویِ امنِ maxRatioِ r259). پیش‌شمارشِ r261: بدونِ تساوی؛
@@ -504,6 +513,25 @@ export default function DictionaryView() {
                           بیرونی‌ترین
                         </span>
                       )}
+                      {/* راند ۲۶۲ — بندِ ① پیشنهادِ ۲۶۱: قهرمانِ چهارم — قرینهٔ
+                          کهرباییِ «بیشترینِ نسبت»: بیشترینِ نسبتِ بیرون-از-متن
+                          از واژگانِ خودِ درس (پیش‌شمارشِ r262: درسِ ۴ با ٪۶۹٫۲ —
+                          یگانه؛ درسِ ۴ پیشتر بی-badge بود و حالا تاجِ مسیرِ
+                          معکوس در مقیاسِ نسبت را می‌گیرد). هویتِ کهرباییِ خانواده
+                          (همان ایدئومِ r258/261 — صفرِ قانونِ CSSِ نو) + آیکونِ
+                          Percentِ مقیاسِ نسبتِ r259؛ تساوی = همهٔ صدرنشین‌ها. */}
+                      {usageRank.maxUnusedRatio > 0 &&
+                        r.totalWords > 0 &&
+                        (r.totalWords - r.usedWords) / r.totalWords === usageRank.maxUnusedRatio && (
+                          <span
+                            data-testid="usage-rank-max-unused-ratio"
+                            title="بیشترین سهمِ نسبی واژه‌های بیرون-از-متن از واژگانِ همان درس — با Shift+کلیک همان واژه‌ها را ببین"
+                            className="inline-flex shrink-0 items-center gap-0.5 rounded-full border border-amber-200 bg-amber-50/60 px-1.5 py-0.5 text-[9.5px] font-black text-amber-800"
+                          >
+                            <Percent size={9} aria-hidden />
+                            بیرونی‌ترینِ نسبت
+                          </span>
+                        )}
                     </button>
                   );
                 })}
