@@ -70,7 +70,7 @@ beforeEach(() => {
 });
 
 const openProfile = () => {
-  const trigger = screen.getByRole("button", { name: "پروفایل من" });
+  const trigger = screen.getByRole("button", { name: /پروفایل من/ });
   act(() => {
     fireEvent.pointerDown(trigger);
     fireEvent.click(trigger);

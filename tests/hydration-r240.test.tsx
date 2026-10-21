@@ -223,7 +223,7 @@ describe("B — هیدریشنِ تمیزِ درهایِ «ادامه»", () => 
     const { container, errors } = await hydrateForTest(<ProfilePopover />);
     expect(hydrationNoise(errors), errors.join("\n---\n")).toHaveLength(0);
     expect(errors, `خطایِ غیرِهیدریشن: ${errors.join(" | ")}`).toHaveLength(0);
-    expect(container.querySelector('[aria-label="پروفایل من"]')).not.toBeNull();
+    expect(container.querySelector('[aria-label^="پروفایل من"]')).not.toBeNull();
   });
 
   it("⑦ درسنامهٔ جامع: مجموعهٔ موضوع‌هایِ پایدارِ r231 — پیش‌فرض در سرور، seedِ کلاینت بعد از هیدریشن — صفرِ هشدار", async () => {

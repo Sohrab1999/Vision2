@@ -193,7 +193,7 @@ describe("B — حلقهٔ کیبوردِ واحدِ درهایِ «ادامه»
       writeAppendixResume(grammarRec); // فعلی
     });
     render(<ProfilePopover />);
-    const trigger = screen.getByRole("button", { name: "پروفایل من" });
+    const trigger = screen.getByRole("button", { name: /پروفایل من/ });
     act(() => {
       fireEvent.pointerDown(trigger);
       fireEvent.click(trigger);

@@ -163,7 +163,7 @@ describe("B — هدرِ سراسری: کلیکِ راست = پاک‌کردن",
 
 describe("C — پروفایل: بخشِ «ادامهٔ مطالعه»", () => {
   const openProfile = () => {
-    const trigger = screen.getByRole("button", { name: "پروفایل من" });
+    const trigger = screen.getByRole("button", { name: /پروفایل من/ });
     act(() => {
       fireEvent.pointerDown(trigger);
       fireEvent.click(trigger);
@@ -349,7 +349,7 @@ describe("E — تاریخچهٔ «ادامه»ها (راند ۲۳۷ — بند�
       writeAppendixResume(rec2); // آخرین نوشتن = رکوردِ فعلی
     });
     render(<ProfilePopover />);
-    const trigger = screen.getByRole("button", { name: "پروفایل من" });
+    const trigger = screen.getByRole("button", { name: /پروفایل من/ });
     act(() => {
       fireEvent.pointerDown(trigger);
       fireEvent.click(trigger);
@@ -372,7 +372,7 @@ describe("E — تاریخچهٔ «ادامه»ها (راند ۲۳۷ — بند�
       writeAppendixResume(rec2);
     });
     render(<ProfilePopover />);
-    const trigger = screen.getByRole("button", { name: "پروفایل من" });
+    const trigger = screen.getByRole("button", { name: /پروفایل من/ });
     act(() => {
       fireEvent.pointerDown(trigger);
       fireEvent.click(trigger);
@@ -393,7 +393,7 @@ describe("E — تاریخچهٔ «ادامه»ها (راند ۲۳۷ — بند�
       writeAppendixResume(rec);
     });
     render(<ProfilePopover />);
-    const trigger = screen.getByRole("button", { name: "پروفایل من" });
+    const trigger = screen.getByRole("button", { name: /پروفایل من/ });
     act(() => {
       fireEvent.pointerDown(trigger);
       fireEvent.click(trigger);

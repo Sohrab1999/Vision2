@@ -32,6 +32,11 @@ export default function ProfilePopover() {
   const userName = useStudy((s) => s.userName);
   const avatarColor = useStudy((s) => s.avatarColor);
   const setProfile = useStudy((s) => s.setProfile);
+  // راند ۲۷۷ — نام‌گذاریِ دیرهنگام: کاربرِ «رد کردن»-کرده بی‌نام می‌ماند و
+  // تا امروز هیچ لایه‌ای دوباره دعوتش نمی‌کرد؛ حالا دکمهٔ trigger و
+  // متنِ پاپ‌آور و دکمهٔ ذخیره حالتِ بی-نامی را صادقانه می‌گویند.
+  const ANON_PROFILE_HINT =
+    "پروفایل من — هنوز ناشناسی؛ با انتخابِ نام در جدول امتیازات دیده می‌شوی";
   const syncCode = useStudy((s) => s.syncCode);
   const setSyncCode = useStudy((s) => s.setSyncCode);
   // راند ۲۴۵ — مینی‌کارتِ درهایِ حلقه: ناوبریِ درها + گِیتِ درِ هدر (رویِ ضمیمه مستور است)
@@ -39,6 +44,7 @@ export default function ProfilePopover() {
   const openLessonTab = useStudy((s) => s.openLessonTab);
   const view = useStudy((s) => s.view);
   const mounted = useMounted();
+  const named = Boolean(mounted && userName);
   const { toast } = useToast();
   const fileRef = useRef<HTMLInputElement>(null);
   // قهرمان‌سازیِ دستاورد (Task 82) — نشان‌های تازه → حلقهٔ طلایی + نقطهٔ شمارنده
@@ -360,10 +366,10 @@ export default function ProfilePopover() {
         <button
           suppressHydrationWarning
           className="flex min-h-11 shrink-0 items-center gap-2 rounded-full border c-card py-1 pl-1 pr-2.5 transition-[background-color,color,border-color,box-shadow,transform] hover:border-emerald-300 hover:shadow-sm active:scale-[0.96]"
-          aria-label="پروفایل من"
-          title="پروفایل من"
+          aria-label={named ? "پروفایل من" : ANON_PROFILE_HINT}
+          title={named ? "پروفایل من" : ANON_PROFILE_HINT}
         >
-          {mounted && userName ? (
+          {named ? (
             <>
               <span className="hidden max-w-[90px] truncate text-[12px] font-extrabold text-stone-700 sm:block">
                 {userName}
@@ -401,7 +407,9 @@ export default function ProfilePopover() {
         <div className="mb-3">
           <h3 className="text-sm font-extrabold text-stone-800">پروفایل یادگیرنده</h3>
           <p className="mt-0.5 text-[11.5px] leading-5 text-stone-500">
-            نام خود را وارد کنید تا در جدول امتیازات کلاس و فید فعالیت دیده شوید.
+            {named
+              ? "نام خود را وارد کنید تا در جدول امتیازات کلاس و فید فعالیت دیده شوید."
+              : "هنوز ناشناسی — با انتخابِ یک نام در جدول امتیازات کلاس و فید فعالیت دیده می‌شوی."}
           </p>
         </div>
         <input
@@ -440,7 +448,7 @@ export default function ProfilePopover() {
           disabled={nameDraft.trim().length < 2}
           className="w-full rounded-xl bg-emerald-600 py-2.5 text-sm font-bold text-white transition-[background-color,color,border-color,transform,opacity] hover:bg-emerald-700 active:scale-[0.96] disabled:cursor-not-allowed disabled:opacity-40"
         >
-          {saved ? "✓ ذخیره شد!" : "ذخیرهٔ پروفایل"}
+          {saved ? "✓ ذخیره شد!" : named ? "ذخیرهٔ پروفایل" : "شروع با این نام"}
         </button>
 
         {/* ------------------- ادامهٔ مطالعه (راند ۲۳۷) ------------------- */}
