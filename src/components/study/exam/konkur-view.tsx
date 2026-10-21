@@ -235,16 +235,45 @@ export default function KonkurView() {
         </div>
 
         <div className="relative mt-5 grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-5">
-          <HeroKpi icon={Layers} label="پوشش بانک" value={`${faNum(stats.seenCount)} از ${faNum(examBank.length)}`} hint={`${faNum(stats.coveragePct)}٪ دیده‌شده`} />
-          <HeroKpi icon={Target} label="تسلط" value={`${faNum(stats.masteryPct)}٪`} hint="درست از دیده‌شده‌ها" />
-          <HeroKpi icon={Eraser} label="خطای باز" value={faNum(stats.wrongCount)} hint="نیازمند مرور" />
+          {/* راند ۲۷۵ — گذرِ صداقتِ KPIها: هر پنج کارت تولتیپِ فرمولِ صادق با
+              اعدادِ زنده دارند (پیش‌تر بی-title بودند) و «تسلط» دیگر «درستِ
+              دیده‌شده» را وعده نمی‌دهد — بانک کنکور «درست» جداگانه ثبت
+              نمی‌کند؛ مسلط یعنی دیده‌شده‌ای که خطایِ باز ندارد. */}
+          <HeroKpi
+            icon={Layers}
+            label="پوشش بانک"
+            value={`${faNum(stats.seenCount)} از ${faNum(examBank.length)}`}
+            hint={`${faNum(stats.coveragePct)}٪ دیده‌شده`}
+            title={`هر تستی که حداقل یک‌بار دیده‌ای — درست یا غلط، در هر حالتِ جلسه؛ الان ${faNum(stats.seenCount)} از ${faNum(examBank.length)}`}
+          />
+          <HeroKpi
+            icon={Target}
+            label="تسلط"
+            value={`${faNum(stats.masteryPct)}٪`}
+            hint="بی-خطایِ باز از دیده‌شده‌ها"
+            title={`مسلط یعنی دیده‌شده‌ای که خطایِ باز ندارد — بانک «درست» جداگانه ثبت نمی‌کند؛ الان ${faNum(stats.masteredCount)} از ${faNum(stats.seenCount)} دیده‌شده`}
+          />
+          <HeroKpi
+            icon={Eraser}
+            label="خطای باز"
+            value={faNum(stats.wrongCount)}
+            hint="نیازمند مرور"
+            title="غلط‌هایی که هنوز پاک نشده‌اند — با «تست‌های سخت من» مرورشان کن"
+          />
           <HeroKpi
             icon={AlarmClock}
             label="مرور سررسید"
             value={faNum(dueCount)}
             hint={dueCount > 0 ? "الان وقت مرور است!" : "زمان‌بندی SRS"}
+            title="تست‌هایی که طبق زمان‌بندی SRS الان وقتِ مرورشان است"
           />
-          <HeroKpi icon={Trophy} label="رکورد شبیه‌ساز" value={bestSim ? `${faNum(bestSim.percent)}٪` : "—"} hint={bestSim ? `${faNum(bestSim.correct)} از ${faNum(bestSim.total)}` : "هنوز جلسه‌ای نداری"} />
+          <HeroKpi
+            icon={Trophy}
+            label="رکورد شبیه‌ساز"
+            value={bestSim ? `${faNum(bestSim.percent)}٪` : "—"}
+            hint={bestSim ? `${faNum(bestSim.correct)} از ${faNum(bestSim.total)}` : "هنوز جلسه‌ای نداری"}
+            title={bestSim ? "بهترین درصدِ جلسه‌هایِ شبیه‌ساز تا امروز" : "اولین جلسهٔ شبیه‌سازت را بزن تا رکورد ثبت شود"}
+          />
         </div>
       </section>
 
@@ -267,19 +296,22 @@ export default function KonkurView() {
           </div>
         )}
 
+        {/* راند ۲۷۵ — ارقامِ لیبلِ a11y هم مثلِ همهٔ متنِ مرئی از faNum می‌گذرد
+            (پیش‌تر «0 دیده‌شده از 360» می‌گفت — بی‌سروصدا لاتین) */}
         <div
           className="grid grid-cols-10 gap-[3px] sm:grid-cols-15 lg:grid-cols-20"
           role="img"
-          aria-label={`نقشهٔ پیشرفت بانک کنکور: ${stats.seenCount} دیده‌شده از ${examBank.length}، ${stats.wrongCount} خطای باز`}
+          aria-label={`نقشهٔ پیشرفت بانک کنکور: ${faNum(stats.seenCount)} دیده‌شده از ${faNum(examBank.length)}، ${faNum(stats.wrongCount)} خطای باز`}
         >
           {examBank.map((q) => {
             const seen = stats.seenSet.has(q.id);
             const wrong = stats.wrongSet.has(q.id);
             const cls = !seen ? "bg-stone-200" : wrong ? "bg-rose-500" : "bg-emerald-500";
+            // راند ۲۷۵ — تولتیپِ خانه‌ها هم فارسی‌رقم شد (پیش‌تر «تست 12» لاتین می‌گفت)
             return (
               <div
                 key={q.id}
-                title={`${q.id.replace("x-", "تست ")} — ${!seen ? "دیده‌نشده" : wrong ? "غلط اخیر" : "مسلط"}`}
+                title={`تست ${faNum(q.id.slice(2))} — ${!seen ? "دیده‌نشده" : wrong ? "غلط اخیر" : "مسلط"}`}
                 aria-hidden
                 className={`aspect-square rounded-[3px] transition-transform duration-150 hover:scale-[1.35] ${cls}`}
               />
@@ -528,14 +560,16 @@ function HeroKpi({
   label,
   value,
   hint,
+  title,
 }: {
   icon: React.ElementType;
   label: string;
   value: string;
   hint: string;
+  title?: string;
 }) {
   return (
-    <div className="rounded-xl bg-black/25 px-3 py-2.5 backdrop-blur-sm">
+    <div title={title} className="rounded-xl bg-black/25 px-3 py-2.5 backdrop-blur-sm">
       <div className="mb-1 flex items-center gap-1.5 text-[11px] font-black text-white/95">
         <Icon size={13} />
         {label}
