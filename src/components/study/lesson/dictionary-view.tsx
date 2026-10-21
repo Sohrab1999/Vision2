@@ -737,7 +737,20 @@ export default function DictionaryView() {
       {/* راند ۲۵۲ → ۲۵۳ — دیالوگِ «کاربرد در جزوه» حالا تک‌منبعِ مشترک است:
           هر جایِ واقعیِ واژه در مکالمه‌ها/ریدینگ‌هایِ جزوه با هایلایتِ mark
           و ترجمهٔ فارسیِ خودِ جزوه — حداکثر ۸ مورد، مابقی شمارندهٔ صادقانه. */}
-      <WordUsageDialog target={usage} onClose={() => setUsage(null)} />
+      {/* r263 ① — پیوندِ دوسویه: کلیکِ چیپِ درسِ نوارِ پراکندگی = وعدهٔ aria-label
+          («رفتن به واژه‌هایِ درسِ N») — فیلترِ درس + لنزِ آسمانی + پاک‌کردنِ
+          جستجو (جستجو برایِ یافتنِ همین واژه بود؛ وعدهٔ دکمه، واژه‌هایِ کلِ درس
+          است) + بستنِ دیالوگ. بقیهٔ مصرف‌کننده‌هایِ دیالوگ بی-هندلر می‌مانند. */}
+      <WordUsageDialog
+        target={usage}
+        onClose={() => setUsage(null)}
+        onOpenLesson={(lessonId) => {
+          setLessonFilter(lessonId);
+          setStateFilter("usage");
+          setQuery("");
+          setUsage(null);
+        }}
+      />
     </div>
   );
 }

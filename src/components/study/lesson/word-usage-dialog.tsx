@@ -26,9 +26,17 @@ export interface WordUsageTarget {
 export default function WordUsageDialog({
   target,
   onClose,
+  onOpenLesson,
 }: {
   target: WordUsageTarget | null;
   onClose: () => void;
+  // r263 ① — بندِ ① پیشنهادِ ۲۶۲: پیوندِ دوسویه — وقتی میزبان می‌دهد، چیپ‌های
+  // درسِ نوارِ پراکندگی دکمه می‌شوند و کلیکشان همان درس را به میزبان
+  // برمی‌گرداند (دیکشنری: فیلترِ همان درس + لنزِ آسمانی + بستنِ دیالوگ —
+  // همان مسیرِ کلیکِ سطرِ مقایسهٔ r258). میزبانِ بی-هندلر (تبِ واژگان،
+  // فلش‌کارت، واژهٔ روز، جدولِ خانواده، داورِ خطر) چیپِ spanِ اطلاعاتیِ r262
+  // را می‌گیرد — الگویِ host-decidesِ relatedLesson/onOpenLessonِ r259.
+  onOpenLesson?: (lessonId: number) => void;
 }) {
   // راند ۲۶۲ — بندِ ② پیشنهادِ ۲۶۱: پراکندگیِ درس‌ها — وقتی واژه در ≥۲ درس
   // زندگی می‌کند، یک نوارِ فشرده زیرِ تیتر نشان می‌دهد هر درس چند کاربرد دارد
@@ -44,6 +52,21 @@ export default function WordUsageDialog({
     return [...m.entries()].sort((a, b) => b[1] - a[1] || a[0] - b[0]);
   })();
   const maxLessonCount = lessonCounts[0]?.[1] ?? 0;
+  // r263 ③ — تفکیکِ نوع (مکالمه/ریدینگ) در همان نوار — فقط وقتی هر دو نوع
+  // موجودند (تک-نوع چیزی فراتر از چیپِ نوعِ خودِ کارت‌ها نمی‌گوید — صداقتِ
+  // r252؛ پیش‌شمارشِ r263: change = ریدینگِ ۱۱ + مکالمهٔ ۲ · communication و
+  // ability تک-نوع). ترتیبِ ثابتِ مکالمه سپس ریدینگ — همان ترتیبِ canonicalِ
+  // badgeهایِ نوعِ خودِ سایت‌ها؛ ایدئومِ آسمانیِ خانواده (border-sky-200/
+  // bg-sky-50/text-sky-700 — صفرِ قانونِ CSSِ نو).
+  const kindCounts = (() => {
+    const m = new Map<string, number>();
+    target?.sites.forEach((s) => m.set(s.kind, (m.get(s.kind) ?? 0) + 1));
+    return [
+      { kind: "conversation", label: "مکالمه", count: m.get("conversation") ?? 0 },
+      { kind: "reading", label: "ریدینگ", count: m.get("reading") ?? 0 },
+    ].filter((k) => k.count > 0);
+  })();
+  const kindsBoth = kindCounts.length === 2;
   return (
     <Dialog open={!!target} onOpenChange={(o) => !o && onClose()}>
       <DialogContent aria-describedby={undefined} className="max-h-[88vh] max-w-xl overflow-y-auto nice-scroll" data-testid="usage-dialog">
@@ -64,6 +87,30 @@ export default function WordUsageDialog({
             <span className="text-[10.5px] font-black text-stone-500">پراکندگیِ درس‌ها:</span>
             {lessonCounts.map(([lessonId, count]) => {
               const leading = count === maxLessonCount;
+              // r263 ① — الگویِ host-decides: با هندلر، دکمهٔ واقعی با نامِ
+              // دسترس‌پذیریِ صریح (هرگز «کاربرددار» یا «جزوه»ی برهنه — فضای
+              // نامِ a11yِ r253)؛ بی‌هندلر، spanِ اطلاعاتیِ r262 دست‌نخورده.
+              const cls = leading
+                ? "inline-flex items-center rounded-md bg-violet-600 px-1.5 py-0.5 text-[10px] font-black text-white"
+                : "inline-flex items-center rounded-md bg-violet-100 px-1.5 py-0.5 text-[10px] font-black text-violet-700";
+              if (onOpenLesson) {
+                return (
+                  <button
+                    key={lessonId}
+                    type="button"
+                    data-testid={`usage-lesson-chip-${lessonId}`}
+                    title={
+                      (leading ? `بیشترینِ کاربردهایِ این واژه در درسِ ${faNum(lessonId)} است — ` : "") +
+                      `کلیک: واژه‌هایِ در-متنِ درسِ ${faNum(lessonId)}`
+                    }
+                    aria-label={`رفتن به واژه‌هایِ درسِ ${faNum(lessonId)} — ${faNum(count)} کاربردِ این واژه در مکالمه‌ها و ریدینگ‌هایِ آن`}
+                    onClick={() => onOpenLesson(lessonId)}
+                    className={cls}
+                  >
+                    درس {faNum(lessonId)} · {faNum(count)}
+                  </button>
+                );
+              }
               return (
                 <span
                   key={lessonId}
@@ -73,16 +120,26 @@ export default function WordUsageDialog({
                       ? `بیشترینِ کاربردهایِ این واژه در درسِ ${faNum(lessonId)} است`
                       : undefined
                   }
-                  className={
-                    leading
-                      ? "inline-flex items-center rounded-md bg-violet-600 px-1.5 py-0.5 text-[10px] font-black text-white"
-                      : "inline-flex items-center rounded-md bg-violet-100 px-1.5 py-0.5 text-[10px] font-black text-violet-700"
-                  }
+                  className={cls}
                 >
                   درس {faNum(lessonId)} · {faNum(count)}
                 </span>
               );
             })}
+            {kindsBoth && (
+              <>
+                <span aria-hidden className="mx-0.5 h-4 w-px shrink-0 bg-stone-300 dark:bg-stone-600" />
+                {kindCounts.map((k) => (
+                  <span
+                    key={k.kind}
+                    data-testid={`usage-kind-chip-${k.kind}`}
+                    className="inline-flex items-center rounded-md border border-sky-200 bg-sky-50 px-1.5 py-0.5 text-[10px] font-black text-sky-700"
+                  >
+                    {k.label} {faNum(k.count)}
+                  </span>
+                ))}
+              </>
+            )}
           </div>
         )}
         <ul className="space-y-2">
