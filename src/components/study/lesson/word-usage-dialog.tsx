@@ -181,8 +181,16 @@ function WordUsageDialogBody({
           <DialogTitle className="flex flex-wrap items-baseline gap-2 text-base">
             <BookOpenText size={16} className="shrink-0 self-center text-sky-600" aria-hidden />
             <span dir="ltr" className="en-text">{target?.en}</span>
+            {/* r271 ② — مقیاسِ هم-لنزِ تیتر: زیرِ لنز، تیتر تنها عنصرِ بی-مقیاسِ
+                دیالوگ بود — فهرست ۷۱ کارت می‌داد و تیتر می‌گفت ۹۱. حالا مثلِ
+                چیپ‌هایِ r267 خودش مخرج می‌گیرد: «در جزوه · ۷۱ کاربردِ ریدینگ از ۹۱»
+                — از تک‌منبع‌هایِ visibleSites.length و target.sites.length.
+                شاخهٔ بی-لنز بایت‌به‌بایتِ قبلی است (قفلِ «در جزوه · ۶ کاربرد»ی
+                r255 و دوقلوهایش در هر ۴ میزبان سبز می‌مانند). */}
             <span className="text-[12px] font-bold text-stone-500">
-              در جزوه · {target ? faNum(target.sites.length) : ""} کاربرد
+              {kindFilter && activeKindLabel && target
+                ? `در جزوه · ${faNum(visibleSites.length)} کاربردِ ${activeKindLabel} از ${faNum(target.sites.length)}`
+                : `در جزوه · ${target ? faNum(target.sites.length) : ""} کاربرد`}
             </span>
           </DialogTitle>
         </DialogHeader>
@@ -208,12 +216,21 @@ function WordUsageDialogBody({
             درونِ همان ۳۹۰px اسکرول شود. در انتها — قطعهٔ قفل‌شدهٔ r269
             پیوسته می‌ماند. */}
         <div className="flex flex-col gap-4 min-w-0">
+            {/* r271 ① — سرفِ لنز در ردیفِ موبایل: در ردیفِ تک-ردیفیِ r270،
+                چیپ‌هایِ لنز — تنها کنترل‌هایِ واقعیِ نوار — تهِ ۹۷۸px بودند و
+                نخستین تعویضِ لنز یک سوایپِ کامل می‌خواست. orderهایِ واکنش‌گرا
+                (فقط max-sm) کنترل‌ها را به سرِ ردیف می‌آورند: لنز (۱) ← چیپ‌هایِ
+                درس (۲) ← برچسب و رهبر (۳ — اطلاعاتی‌اند، چیپ‌ها خودشان همان
+                داده را در «درس ۵ · ۵ از ۱۳» می‌گویند). DOM و ترتیبِ tab و
+                همهٔ testidها دست‌نخورده — فقط ترتیبِ بصریِ فلکس در موبایل؛
+                جداکنندهٔ تزئینیِ بینِ دو گروه در موبایل پنهان می‌شود —
+                معنایش را گم می‌کند. دسکتاپ wrap: همهٔ orderها خاموش. */}
         {(lessonCounts.length >= 2 || kindFilter) && (
           <div
             data-testid="usage-lessons-bar"
             className="sticky top-0 flex flex-wrap items-center gap-1.5 rounded-lg border border-stone-200 bg-stone-50 px-2.5 py-2 dark:border-stone-700 dark:bg-stone-800 max-sm:flex-nowrap max-sm:overflow-x-auto max-sm:scrollbar-none"
           >
-            <span className="shrink-0 whitespace-nowrap text-[10.5px] font-black text-stone-500">
+            <span className="shrink-0 whitespace-nowrap max-sm:order-3 text-[10.5px] font-black text-stone-500">
               {kindFilter ? `پراکندگیِ ${activeKindLabel}` : "پراکندگیِ درس‌ها"}:
             </span>
             <span
@@ -225,7 +242,7 @@ function WordUsageDialogBody({
                 (leaderTieNote ? ` · ${leaderTieNote}` : "") +
                 ` · ${faNum(maxLessonCount)} از ${faNum(visibleSites.length)}`
               }
-              className="shrink-0 whitespace-nowrap text-[10.5px] font-bold text-stone-500"
+              className="shrink-0 whitespace-nowrap max-sm:order-3 text-[10.5px] font-bold text-stone-500"
             >
               {leaderStat}
             </span>
@@ -248,8 +265,8 @@ function WordUsageDialogBody({
                 ? `${faNum(count)} از ${faNum(visibleSites.length)} کاربردِ ${activeKindLabel}ِ این واژه در آن`
                 : `${faNum(count)} از ${faNum(visibleSites.length)} کاربردِ این واژه در مکالمه‌ها و ریدینگ‌هایِ آن`;
               const cls = leading
-                ? "inline-flex items-center shrink-0 whitespace-nowrap rounded-md bg-violet-600 px-1.5 py-0.5 text-[10px] font-black text-white"
-                : "inline-flex items-center shrink-0 whitespace-nowrap rounded-md bg-violet-100 px-1.5 py-0.5 text-[10px] font-black text-violet-700";
+                ? "inline-flex items-center shrink-0 whitespace-nowrap max-sm:order-2 rounded-md bg-violet-600 px-1.5 py-0.5 text-[10px] font-black text-white"
+                : "inline-flex items-center shrink-0 whitespace-nowrap max-sm:order-2 rounded-md bg-violet-100 px-1.5 py-0.5 text-[10px] font-black text-violet-700";
               const chipLabel = `درس ${faNum(lessonId)} · ${faNum(count)} از ${faNum(visibleSites.length)}`;
               const leadTitle = leading
                 ? kindFilter
@@ -290,7 +307,7 @@ function WordUsageDialogBody({
             })}
             {kindsBoth && (
               <>
-                <span aria-hidden className="mx-0.5 h-4 w-px shrink-0 bg-stone-300 dark:bg-stone-600" />
+                <span aria-hidden className="mx-0.5 h-4 w-px shrink-0 bg-stone-300 dark:bg-stone-600 max-sm:hidden" />
                 {kindCounts.map((k) => {
                   const active = kindFilter === k.kind;
                   // r264 ① — دکمهٔ دوسطحی: فعال = پرِ آسمانیِ bg-sky-600
@@ -316,8 +333,8 @@ function WordUsageDialogBody({
                       onClick={() => setKindFilter(active ? null : (k.kind as KindFilter))}
                       className={
                         active
-                          ? "inline-flex items-center shrink-0 whitespace-nowrap rounded-md border border-sky-600 bg-sky-600 px-1.5 py-0.5 text-[10px] font-black text-white"
-                          : "inline-flex items-center shrink-0 whitespace-nowrap rounded-md border border-sky-200 bg-sky-50 px-1.5 py-0.5 text-[10px] font-black text-sky-700"
+                          ? "inline-flex items-center shrink-0 whitespace-nowrap max-sm:order-1 rounded-md border border-sky-600 bg-sky-600 px-1.5 py-0.5 text-[10px] font-black text-white"
+                          : "inline-flex items-center shrink-0 whitespace-nowrap max-sm:order-1 rounded-md border border-sky-200 bg-sky-50 px-1.5 py-0.5 text-[10px] font-black text-sky-700"
                       }
                     >
                       {k.label} {faNum(k.count)}

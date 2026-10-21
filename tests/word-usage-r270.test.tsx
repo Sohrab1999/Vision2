@@ -119,8 +119,8 @@ describe("بارِ فشردهٔ موبایل (r270 ①)", () => {
     // با له‌شدگی ۱۱۳px، با shrink-0 دقیقاً ۳۹pxِ تک-ردیف) — ۶ جا: برچسب +
     // رهبر + دو شاخهٔ clsِ چیپِ درس + دو شاخهٔ چیپِ نوع
     expect(dlgSrc.match(/shrink-0 whitespace-nowrap/g)?.length).toBe(6);
-    // سه max-sm دقیقاً رویِ نوار — هیچ نشتی به دیالوگ/فهرست/کارت‌ها
-    expect(dlgSrc.match(/max-sm:/g)?.length).toBe(3);
+    // ده max-sm — سه‌تایِ r270 رویِ نوار + هفت‌تایِ r271 (orderها و hidden)
+    expect(dlgSrc.match(/max-sm:/g)?.length).toBe(10);
     // دیالوگ اسکرولِ عمودیِ خودش را دارد (r252) — افقی نمی‌شود
     expect(dlgSrc).toContain("overflow-y-auto nice-scroll");
     // utilityِ نو در globals.css — بی-نوار، فقط برایِ همین نوار
