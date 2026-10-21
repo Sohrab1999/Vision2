@@ -57,7 +57,7 @@ const THEME: Record<
   violet: {
     border: "border-violet-200",
     chip: "bg-violet-50 text-violet-700 border-violet-200",
-    grad: "from-violet-500 to-fuchsia-700",
+    grad: "from-violet-500 to-purple-700",
     soft: "bg-violet-50",
     text: "text-violet-700",
   },
@@ -165,7 +165,7 @@ function BookCard({
         </span>
         <div className="min-w-0 flex-1">
           <h2 className="text-[15px] font-black text-stone-800">{book.faTitle}</h2>
-          <p dir="ltr" className="text-left text-[11px] font-bold text-stone-400">
+          <p dir="ltr" className="text-left text-[11px] font-bold text-stone-500">
             {book.enTitle}
           </p>
         </div>
@@ -188,7 +188,7 @@ function BookCard({
               <button
                 type="button"
                 onClick={() => onOpen(s.id)}
-                className={`flex w-full items-center gap-3 rounded-xl border border-stone-100 bg-stone-50/60 px-3 py-2.5 text-right transition-[background-color,border-color,transform] hover:border-stone-200 hover:bg-stone-100 active:scale-[0.99] ${
+                className={`flex w-full items-center gap-3 rounded-xl border border-stone-100 bg-stone-50 px-3 py-2.5 text-right transition-[background-color,border-color,transform] hover:border-stone-200 hover:bg-stone-100 active:scale-[0.96] ${
                   done ? t.soft : ""
                 }`}
                 aria-label={`داستان ${faNum(s.num)}: ${s.title}`}
@@ -274,7 +274,7 @@ function StoryReader({
         <button
           type="button"
           onClick={onBack}
-          className="inline-flex items-center gap-1.5 rounded-xl border border-stone-200 bg-white/70 px-3 py-2 text-[12px] font-bold text-stone-600 shadow-sm transition-[background-color,color,transform] hover:bg-stone-100 active:scale-[0.96]"
+          className="inline-flex items-center gap-1.5 rounded-xl border border-stone-200 c-veil-70 px-3 py-2 text-[12px] font-bold text-stone-600 shadow-sm transition-[background-color,color,transform] hover:bg-stone-100 active:scale-[0.96]"
         >
           <ChevronDown size={14} className="rotate-90" aria-hidden />
           بازگشت به فهرست
@@ -300,7 +300,7 @@ function StoryReader({
         {/* متنِ داستان — انگلیسی، چپ‌به‌راست */}
         <div
           dir="ltr"
-          className="rounded-xl bg-stone-50/80 p-4 text-left font-serif text-[15px] leading-8 text-stone-700"
+          className="rounded-xl bg-stone-50 p-4 text-left font-serif text-[15px] leading-8 text-stone-700"
         >
           {story.text.split("\n\n").map((p, i) => (
             <p key={i} className={i > 0 ? "mt-4" : ""}>
@@ -362,15 +362,15 @@ function StoryReader({
                 key={i}
                 className={`rounded-xl border p-3 transition-[border-color,background-color] ${
                   !isAnswered
-                    ? "border-stone-100 bg-stone-50/60"
+                    ? "border-stone-100 bg-stone-50"
                     : isCorrect
-                      ? "border-emerald-200 bg-emerald-50/70"
-                      : "border-rose-200 bg-rose-50/70"
+                      ? "border-emerald-200 bg-emerald-50"
+                      : "border-rose-200 bg-rose-50"
                 }`}
               >
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                   <p dir="ltr" className="flex-1 text-left text-[13.5px] font-bold text-stone-700">
-                    <span className="mr-1 font-black text-stone-400">{i + 1}.</span> {q.q}
+                    <span className="mr-1 font-black text-stone-500">{i + 1}.</span> {q.q}
                   </p>
                   <div
                     className="flex shrink-0 gap-1.5"
@@ -418,7 +418,7 @@ function StoryReader({
             initial={{ opacity: 0, scale: 0.97 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-teal-200 bg-teal-50/80 p-4"
+            className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-teal-200 bg-teal-50 p-4"
             role="status"
           >
             <p className="text-[13px] font-black text-teal-800">
@@ -463,12 +463,12 @@ function StoryReader({
           className="flex w-full items-center justify-between gap-2 p-5 text-right"
         >
           <span className="flex items-center gap-2 text-[13.5px] font-extrabold text-stone-700">
-            <BookOpen size={15} className="text-stone-400" aria-hidden />
+            <BookOpen size={15} className="text-stone-500" aria-hidden />
             بخشِ B — پرسش‌های تشریحی (تمرینِ گفتاری با خودت)
           </span>
           <ChevronDown
             size={16}
-            className={`text-stone-400 transition-transform ${showB ? "rotate-180" : ""}`}
+            className={`text-stone-500 transition-transform ${showB ? "rotate-180" : ""}`}
             aria-hidden
           />
         </button>
@@ -518,7 +518,7 @@ function TfButton({
       onClick={onClick}
       disabled={disabled}
       aria-pressed={active}
-      className={`min-w-[64px] rounded-lg border px-3 py-2 text-[12px] font-black transition-[background-color,border-color,color,transform] active:scale-[0.95] disabled:cursor-default ${cls}`}
+      className={`min-w-[64px] rounded-lg border px-3 py-2 text-[12px] font-black transition-[background-color,border-color,color,transform] active:scale-[0.96] disabled:cursor-default ${cls}`}
     >
       {label}
     </button>

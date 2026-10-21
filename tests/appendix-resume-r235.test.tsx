@@ -258,7 +258,7 @@ describe("command palette «ادامهٔ مطالعه» (r235)", () => {
     expect(screen.getByRole("combobox")).toBeInTheDocument();
     const opts = screen.getAllByRole("option");
     // نقطهٔ شروعِ پایه = ۳۱ فرمانِ کهنه + ۴ درِ حلقه (r246: درِ ششم پیوست) — فرمانِ «ادامهٔ مطالعه» در ناوبری نیست
-    expect(opts.length).toBe(35);
+    expect(opts.length).toBe(36); // r290: + nav-library (کتاب‌خانهٔ داستان‌ها)
     // فرمانِ «ادامهٔ مطالعه» (nav-resume) فقط با رکورد می‌آید — گروهِ ناوبریِ بی‌رکورد
     // هیچ ردیفِ «ادامهٔ مطالعه»ای ندارد (hintِ درِ ضمیمهٔ r244 چنین واژه‌ای دارد؛
     // مقصودِ گارد، فرمانِ ناوبری است نه هر رشته‌ای که ورداشت)
@@ -280,7 +280,7 @@ describe("command palette «ادامهٔ مطالعه» (r235)", () => {
     openPalette();
     // ۳۱ فرمانِ پایه + ۵ درِ حلقه (r246: درِ ششم پیوست) + فرمانِ «ادامهٔ مطالعه»
     const opts = screen.getAllByRole("option");
-    expect(opts.length).toBe(37);
+    expect(opts.length).toBe(38); // r290: + nav-library
     const cmd = opts.find((o) => o.textContent?.includes("ادامهٔ مطالعه"));
     expect(cmd).toBeDefined();
     expect(cmd!.textContent).toContain(`از «/${p0.symbol}/`);

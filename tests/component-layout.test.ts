@@ -1,6 +1,6 @@
 // Step 10 part 2 (folder regroup §11.2) — Task 91 receipt guard.
 // The §11.2 target tree is now ACHIEVED: src/components/study/ holds exactly
-// ONE root orchestrator (study-app.tsx) + 11 feature folders. This guard pins
+// ONE root orchestrator (study-app.tsx) + 12 feature folders. This guard pins
 // the full placement map so no future file may regress to the flat root, and
 // no bare "@/components/study/<name>" alias may return for a moved module.
 // Run: bun run test
@@ -47,6 +47,7 @@ const PLACEMENT: Record<string, string> = {
 const FOLDERS = [
   "shell", "lesson", "practice", "exam", "grammar",
   "duel", "home", "profile", "quiz", "reports", "shared",
+  "library", // Task 290 — hill stories library
 ];
 
 function walkTsFiles(dir: string): string[] {
@@ -60,7 +61,7 @@ function walkTsFiles(dir: string): string[] {
 }
 
 describe("component layout §11.2 receipt (Step 10 part 2 — Task 91)", () => {
-  it("study/ root holds ONLY study-app.tsx + the 11 feature folders", () => {
+  it("study/ root holds ONLY study-app.tsx + the 12 feature folders", () => {
     const entries = readdirSync(STUDY).sort();
     const files = entries.filter((e) => statSync(resolve(STUDY, e)).isFile());
     const dirs = entries.filter((e) => statSync(resolve(STUDY, e)).isDirectory()).sort();

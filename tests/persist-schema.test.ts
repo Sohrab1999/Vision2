@@ -54,6 +54,8 @@ const CANONICAL_SYNC_KEYS = [
   "wordSeen",
   "konkurSeen",
   "konkurWrong",
+  // Task 290 «کتاب‌خانهٔ داستان‌ها» — story completion records (best-score merge)
+  "libraryDone",
   "starredWords",
   "userId",
   "userSecret",
@@ -202,6 +204,8 @@ describe("backup ↔ restore ↔ cloud-merge round-trip", () => {
       wordSeen: { "1:ability": 9 },
       konkurSeen: { "x-21": true },
       konkurWrong: { "x-26": true },
+      // Task 290 — story completion record travels like the other domains
+      libraryDone: { "s1-1": { score: 6, total: 6, day: "2026-10-09" } },
       starredWords: ["1:ability", "2:zone"],
       userId: "learner-12345",
       userSecret: "ab".repeat(24),

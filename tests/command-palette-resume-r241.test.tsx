@@ -66,14 +66,14 @@ describe("«مسیرهای اخیر» در فرمان‌یاب (r241)", () => {
     render(<CommandPalette />);
     openPalette();
     const opts = screen.getAllByRole("option");
-    expect(opts.length).toBe(35); // ۳۱ کهنه + ۴ درِ حلقه (r246 — بی‌رکورد)
+    expect(opts.length).toBe(36); // r290: + nav-library (کتاب‌خانهٔ داستان‌ها) // ۳۱ کهنه + ۴ درِ حلقه (r246 — بی‌رکورد)
     expect(screen.queryByRole("group", { name: "ادامه‌های اخیر" })).toBeNull();
     // حتی با رکورد، بدونِ تاریخچه فقط فرمانِ اصلی هست (۳۷ = ۳۱ + nav-resume + ۵ در) و گروهِ اخیر نیست
     writeAppendixResume(phonRec);
     cleanup();
     render(<CommandPalette />);
     openPalette();
-    expect(screen.getAllByRole("option").length).toBe(37);
+    expect(screen.getAllByRole("option").length).toBe(38); // r290: + nav-library
     expect(screen.queryByRole("group", { name: "ادامه‌های اخیر" })).toBeNull();
   });
 

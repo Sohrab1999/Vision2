@@ -56,14 +56,14 @@ describe("پالت فرمان — کامپوننت (Task 79)", () => {
     });
   });
 
-  it("بسته به‌صورت پیش‌فرض؛ رویداد پنجره‌ای باز می‌کند — ۳۵ گزینهٔ سطح‌بالا (۳۱ کهنه + ۴ درِ حلقه؛ r246: درِ ششم پیوست)", () => {
+  it("بسته به‌صورت پیش‌فرض؛ رویداد پنجره‌ای باز می‌کند — ۳۶ گزینهٔ سطح‌بالا (۳۱ کهنه + ۴ درِ حلقه + nav-library؛ r290)", () => {
     const { container } = render(<CommandPalette />);
     expect(container.querySelector(".command-palette")).toBeNull();
     openPalette();
     const input = screen.getByRole("combobox");
     expect(input).toBeInTheDocument();
     const opts = screen.getAllByRole("option");
-    expect(opts.length).toBe(35); // ۳۱ کهنه + ۴ درِ حلقه (بی‌رکورد: درِ هدر هم غیب است)
+    expect(opts.length).toBe(36); // r290: + nav-library (کتاب‌خانهٔ داستان‌ها) // ۳۱ کهنه + ۴ درِ حلقه (بی‌رکورد: درِ هدر هم غیب است)
     // گروه‌بندی: «ناوبری» اول است
     expect(screen.getAllByRole("group")[0]?.getAttribute("aria-label")).toBe("ناوبری");
   });
@@ -76,9 +76,9 @@ describe("پالت فرمان — کامپوننت (Task 79)", () => {
     expect(screen.getAllByRole("option").length).toBeGreaterThan(0);
     fireEvent.keyDown(window, { ctrlKey: true, code: "KeyK" });
     expect(screen.queryByRole("combobox")).toBeNull();
-    // بازِ دوباره: پرس‌وجوی کهنه نمانده — نمای خالیِ ۳۵گزینه‌ای (۳۱ + ۴ در)
+    // بازِ دوباره: پرس‌وجوی کهنه نمانده — نمای خالیِ ۳۶گزینه‌ای (۳۱ + ۴ در + nav-library)
     fireEvent.keyDown(window, { ctrlKey: true, code: "KeyK" });
-    expect(screen.getAllByRole("option").length).toBe(35);
+    expect(screen.getAllByRole("option").length).toBe(36); // r290: + nav-library
   });
 
   it("«آزمون ۱۵» → دقیقاً ۱ گزینه با مقدار اسنپ‌شده به [۱۰/۲۰/۳۰] (قرارداد واقعی)", () => {

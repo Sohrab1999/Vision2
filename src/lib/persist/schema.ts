@@ -384,11 +384,12 @@ const sanitizeLibraryDone = (
   return Object.keys(out).length ? out : undefined;
 };
 
-/** per-story merge — the better score wins; ties go to the newer day */
+/** per-story merge — the better score wins; ties go to the newer day.
+ *  Absent on BOTH sides stays absent (round-trip contract of trusted() fixtures). */
 const mergeLibraryDone = (
   l: Record<string, LibraryDoneEntry> | undefined,
   r: Record<string, LibraryDoneEntry> | undefined,
-): Record<string, LibraryDoneEntry> => {
+): Record<string, LibraryDoneEntry> | undefined => {
   const out: Record<string, LibraryDoneEntry> = { ...(l ?? {}) };
   for (const [k, rv] of Object.entries(r ?? {})) {
     const lv = out[k];
@@ -396,7 +397,7 @@ const mergeLibraryDone = (
       out[k] = rv;
     }
   }
-  return out;
+  return Object.keys(out).length ? out : undefined;
 };
 
 // ---------------- the SyncField table ----------------
