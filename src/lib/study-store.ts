@@ -15,6 +15,7 @@ export type {
   DayStat,
   FlashIntent,
   HistoryMap,
+  LibraryDoneEntry,
   LessonTab,
   MistakeMap,
   SrsItem,

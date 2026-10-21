@@ -47,6 +47,7 @@ const SmartPracticeView = lazyView(() => import("./practice/smart-practice-view"
 const KonkurView = lazyView(() => import("./exam/konkur-view"));
 const GrammarView = lazyView(() => import("./grammar/grammar-view"));
 const MyWordsView = lazyView(() => import("./practice/my-words"));
+const LibraryView = lazyView(() => import("./library/library-view")); // Task 290 — کتاب‌خانهٔ داستان‌ها
 
 // Report modals: heavy (official-report pulls per-lesson stats) and computed
 // while closed (audit finding G-5). They mount only after the first "open"
@@ -242,6 +243,7 @@ export default function StudyApp() {
               {view.type === "konkur" && <KonkurView />}
               {view.type === "grammar" && <GrammarView />}
               {view.type === "my-words" && <MyWordsView />}
+              {view.type === "library" && <LibraryView />}
             </motion.div>
           </AnimatePresence>
         ) : (

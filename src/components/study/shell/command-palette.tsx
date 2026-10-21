@@ -320,6 +320,7 @@ export default function CommandPalette() {
       // فرمان‌های lesson-smart-<n> و nav-smart منتقل شد.
       { id: "nav-review", label: "مرور سریع خطاها", group: "ناوبری", hint: "بانک غلط‌های اخیر — مرور قبل امتحان", keywords: ["review", "mistakes", "مرور خطا"] },
       { id: "nav-my-words", label: "واژه‌های من", group: "ناوبری", hint: "نشان‌شده‌ها و وضعیت یادگیری", keywords: ["my words", "starred", "favorites"] },
+      { id: "nav-library", label: "کتاب‌خانهٔ داستان‌ها", group: "ناوبری", hint: "داستان‌های کلاسیک Hill در سه سطح", keywords: ["library", "stories", "hill", "reading", "کتاب", "داستان"] },
       { id: "nav-smart", label: "تمرین هوشمند", group: "ناوبری", hint: "دور ترکیبی متناسب با تو", keywords: ["smart practice", "mixed"] },
       { id: "nav-listen", label: "آموخته‌های شنیداری", group: "ناوبری", hint: "تمرین گوش و روخوانی", keywords: ["listen", "audio", "ear"] },
       // راند ۲۴۴ — درهایِ حلقه بعد از بلوکِ ناوبری: در تساویِ امتیازِ جست‌وجو،
@@ -437,6 +438,9 @@ export default function CommandPalette() {
         break;
       case "nav-my-words":
         setView({ type: "my-words" });
+        break;
+      case "nav-library":
+        setView({ type: "library" });
         break;
       case "nav-smart":
         setView({ type: "smart" });
@@ -753,6 +757,8 @@ function cmdIconKey(id: string, isDark: boolean): string {
       return "History";
     case "nav-my-words":
       return "Star";
+    case "nav-library":
+      return "BookOpen";
     case "nav-smart":
       return "Sparkles";
     case "nav-listen":

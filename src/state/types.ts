@@ -10,6 +10,7 @@ import type { FreezeSlice } from "./slices/freeze";
 import type { IdentitySlice } from "./slices/identity";
 import type { KonkurSlice } from "./slices/konkur";
 import type { LearningSlice } from "./slices/learning";
+import type { LibrarySlice } from "./slices/library";
 import type { MistakesSlice } from "./slices/mistakes";
 import type { NavigationSlice } from "./slices/navigation";
 import type { PrefsSlice } from "./slices/prefs";
@@ -35,7 +36,8 @@ export type View =
   | { type: "smart" }
   | { type: "konkur" }
   | { type: "grammar" } // متروی گرامر — Task 39
-  | { type: "my-words" }; // واژه‌های نشان‌شده — واژه‌نامهٔ شخصی
+  | { type: "my-words" } // واژه‌های نشان‌شده — واژه‌نامهٔ شخصی
+  | { type: "library" }; // Task 290 — کتاب‌خانهٔ داستان‌های L.A. Hill
 
 export type LessonTab = "vocab" | "conversation" | "reading" | "grammar" | "writing" | "dictation" | "tests" | "synant" | "booklet";
 
@@ -47,6 +49,14 @@ export interface DayStat {
   words: number; // words marked known today (new learning)
   dictation: number; // dictation rounds finished today
   rush: number; // 60s challenge rounds finished today
+}
+
+// Task 290 «کتاب‌خانهٔ داستان‌ها» — رکوردِ اتمامِ یک داستانِ L.A. Hill.
+// کلید = شناسهٔ داستان ("s1-1")؛ day = روزِ آخرین اتمام (فرمتِ todayStr).
+export interface LibraryDoneEntry {
+  score: number; // پاسخ‌های درستِ بخشِ صحیح/غلط
+  total: number; // کل پرسش‌های صحیح/غلط
+  day: string; // "2026-10-21"
 }
 
 // error bank: mistakes["1:l1-v3"] = number of wrong answers
@@ -109,6 +119,7 @@ export type StudyState = ActivitySlice &
   IdentitySlice &
   KonkurSlice &
   LearningSlice &
+  LibrarySlice &
   MistakesSlice &
   NavigationSlice &
   PrefsSlice &

@@ -15,6 +15,7 @@ import { createFreezeSlice } from "./slices/freeze";
 import { createIdentitySlice } from "./slices/identity";
 import { createKonkurSlice } from "./slices/konkur";
 import { createLearningSlice } from "./slices/learning";
+import { createLibrarySlice } from "./slices/library";
 import { createMistakesSlice } from "./slices/mistakes";
 import { createNavigationSlice } from "./slices/navigation";
 import { createPrefsSlice } from "./slices/prefs";
@@ -38,6 +39,7 @@ export const useStudy = create<StudyStore>()(
       ...createFreezeSlice(...a),
       ...createArcadeSlice(...a),
       ...createStarredSlice(...a),
+      ...createLibrarySlice(...a),
     }),
     {
       name: "vision2-study-v1",

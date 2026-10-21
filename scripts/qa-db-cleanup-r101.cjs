@@ -48,7 +48,10 @@ const p = new PrismaClient();
         "duel_image",
         // task 288: the duel-ledger career-card PNG QA click fires duel_ledger_image
         // — same QA-only construction as its two siblings above
-        "duel_ledger_image"].includes(e.name)) {
+        "duel_ledger_image",
+        // task 290: the hill-library QA flow completes a real story quiz —
+        // every scripted read leaves one library_story_done aggregate
+        "library_story_done"].includes(e.name)) {
         await p.eventDay.delete({ where: { day_name: { day: e.day, name: e.name } } });
         console.log("QA event row removed:", e.name, "=", e.count);
       }

@@ -27,6 +27,7 @@ import type {
   DayHistoryMap,
   DayStat,
   HistoryMap,
+  LibraryDoneEntry,
   MistakeMap,
   SrsItem,
   StudyState,
@@ -76,6 +77,9 @@ export interface SyncData {
   /** F7 word-level risk maps — legacy payloads may omit them */
   wordMistakes?: WordStatMap;
   wordSeen?: WordStatMap;
+  /** Task 290 «کتاب‌خانهٔ داستان‌ها» — story completion records; legacy
+   *  payloads may omit them (opt-in since r290) */
+  libraryDone?: Record<string, LibraryDoneEntry>;
   /** گوشهٔ کنکور coverage maps — legacy payloads may omit them */
   konkurSeen?: Record<string, boolean>;
   konkurWrong?: Record<string, boolean>;
@@ -358,6 +362,43 @@ const sanitizeUserId = (v: unknown): string | undefined =>
 const sanitizeUserSecret = (v: unknown): string | undefined =>
   typeof v === "string" && /^[0-9a-f]{24,100}$/.test(v) ? v : undefined;
 
+// Task 290 — story-completion records: keys are hill story ids ("s1-1"),
+// values are {score,total,day}. Cap 300 keys (the series stays < 100). The
+// regex below doubles as the id contract for the data file.
+const HILL_STORY_KEY_RE = /^s[123]-\d{1,3}$/;
+
+const sanitizeLibraryDone = (
+  v: unknown,
+): Record<string, LibraryDoneEntry> | undefined => {
+  const out: Record<string, LibraryDoneEntry> = {};
+  for (const [k, val] of Object.entries(asRecord(v))) {
+    if (!HILL_STORY_KEY_RE.test(k)) continue;
+    const e = asRecord(val);
+    const score = cnt(e["score"], 999);
+    const total = cnt(e["total"], 999);
+    if (score === null || total === null || score > total) continue;
+    const day = typeof e["day"] === "string" && /^\d{4}-\d{2}-\d{2}$/.test(e["day"]) ? e["day"] : "";
+    out[k] = { score, total, day };
+    if (Object.keys(out).length >= 300) break;
+  }
+  return Object.keys(out).length ? out : undefined;
+};
+
+/** per-story merge — the better score wins; ties go to the newer day */
+const mergeLibraryDone = (
+  l: Record<string, LibraryDoneEntry> | undefined,
+  r: Record<string, LibraryDoneEntry> | undefined,
+): Record<string, LibraryDoneEntry> => {
+  const out: Record<string, LibraryDoneEntry> = { ...(l ?? {}) };
+  for (const [k, rv] of Object.entries(r ?? {})) {
+    const lv = out[k];
+    if (!lv || rv.score > lv.score || (rv.score === lv.score && rv.day > lv.day)) {
+      out[k] = rv;
+    }
+  }
+  return out;
+};
+
 // ---------------- the SyncField table ----------------
 
 /**
@@ -408,6 +449,8 @@ export const SYNC_FIELDS: SyncFieldMap = {
   wordSeen: { sanitize: sanitizeWordStat, merge: mergeMaxMap },
   konkurSeen: { sanitize: sanitizeFlagMap, merge: flagUnion },
   konkurWrong: { sanitize: sanitizeFlagMap, merge: flagUnion },
+  // Task 290 «کتاب‌خانهٔ داستان‌ها» — union with best-score-wins per story
+  libraryDone: { sanitize: sanitizeLibraryDone, merge: mergeLibraryDone },
   // starred word keys — union keeps both devices' stars, cap 2000 (newest survive)
   starredWords: { sanitize: stringList(2000), merge: unionCapped(2000) },
   userId: { sanitize: sanitizeUserId },

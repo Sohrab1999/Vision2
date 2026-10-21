@@ -1,7 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { Sparkles, BookMarked, ClipboardCheck, GraduationCap, TrainFront, Swords, Ear, Eraser, Library, Trophy, Star, Play } from "lucide-react";
+import { Sparkles, BookMarked, ClipboardCheck, GraduationCap, TrainFront, Swords, Ear, Eraser, Library, Trophy, Star, Play, BookOpen } from "lucide-react";
 import { TOTAL_VOCABULARY, EXAM_BANK_SIZE } from "@/data/lesson-meta";
 import { GRAMMAR_LINES, GRAMMAR_STATION_TOTAL } from "@/data/grammar-map";
 import { useStudy, summarize, srsDueTotal, firstLessonWithDue, mistakesOfLesson } from "@/lib/study-store";
@@ -78,6 +78,7 @@ export default function HomeTools() {
           { icon: Ear, title: "آزمون دیکته", desc: "املای شنیداری با روخوانی هوش مصنوعی و ثبت در SRS", onClick: () => openLessonTab(reviewLesson ?? 1, "dictation"), color: "text-violet-600" },
           { icon: Eraser, title: "مرور سریع قبل امتحان", desc: "ترکیبی از غلط‌های اخیر ۳ درس و بانک ۳۶۰تا؛ پاسخ درست = حذف از بانک خطا", onClick: () => setView({ type: "review" as const }), color: "text-rose-600", badge: totalMistakes },
           { icon: Library, title: "ضمیمهٔ کتاب", desc: "افعال بی‌قاعده، جدول تلفظ IPA و اجزای کلام", view: { type: "appendix" as const }, color: "text-amber-600", resume },
+          { icon: BookOpen, title: "کتاب‌خانهٔ داستان‌ها", desc: "داستان‌های کلاسیک Stories for Reproduction در سه سطح؛ بخوان، گوش کن و درست/غلط جواب بزن", onClick: () => setView({ type: "library" as const }), color: "text-teal-600" },
           { icon: Trophy, title: "کارنامهٔ من", desc: "گزارش کامل پیشرفت: رکوردها، مهارت‌ها و فعالیت هفته", onClick: () => window.dispatchEvent(new CustomEvent("open-report")), color: "text-stone-600", custom: true },
         ].map((tool) => {
           const card = (
