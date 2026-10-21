@@ -14,7 +14,7 @@
 // ------------------------------------------------------------------
 
 import { BookOpenText } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { faNum } from "@/lib/study-theme";
 import { highlightParts, type WordUsageSite } from "@/lib/word-usage";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -79,6 +79,30 @@ function WordUsageDialogBody({
   // (r264) showAll را هم از نو می‌کند — لنزِ یک واژه به واژهٔ بعدی
   // نشت نمی‌کند.
   const [showAll, setShowAll] = useState(false);
+
+  // r269 ② — بازگشتِ اسکرولِ صادقانه: فروپاشیِ گشاینده و تعویضِ لنز هر دو
+  // «درجا»اند — و دیدِ طراحیِ هر دو از بالایِ فهرست است (تیتر + نوار + آغازِ
+  // کارت‌ها). فروپاشی از دیوارِ ۹۱ کارتیِ «of» کاربر را نیمه‌راه رها می‌کرد
+  // و تعویضِ لنز او را تهِ فهرستِ کوتاه‌شده می‌گذاشت. پس scrollTop به صفر
+  // برمی‌گردد — ایدئومِ «بازگشتِ کاملِ» r260 حالا اسکرول را هم در بر
+  // می‌گیرد. گشودن هرگز نمی‌کشد (لیست به پایین می‌روید، جایِ کاربر محفوظ
+  // است) و mount هم نه (prevها آگاهانه از خودِ stateهایِ اولیه آغاز
+  // می‌شوند). ref رویِ ul + closest به ظرفِ اسکرول — بدونِ پرس‌وجویِ
+  // سراسری؛ scrollTop (نه scrollTo) — همه‌جا پشتیبانی می‌شود و در jsdom
+  // بی-خطر است.
+  const listRef = useRef<HTMLUListElement>(null);
+  const prevShowAll = useRef(showAll);
+  const prevKind = useRef<KindFilter>(null);
+  useEffect(() => {
+    const collapsed = prevShowAll.current && !showAll;
+    const lensChanged = prevKind.current !== kindFilter;
+    prevShowAll.current = showAll;
+    prevKind.current = kindFilter;
+    if (collapsed || lensChanged) {
+      const scroller = listRef.current?.closest('[data-testid="usage-dialog"]');
+      if (scroller) scroller.scrollTop = 0;
+    }
+  }, [showAll, kindFilter]);
 
   // راند ۲۶۲ — بندِ ② پیشنهادِ ۲۶۱: پراکندگیِ درس‌ها — وقتی واژه در ≥۲ درس
   // زندگی می‌کند، یک نوارِ فشرده زیرِ تیتر نشان می‌دهد هر درس چند کاربرد دارد
@@ -162,10 +186,20 @@ function WordUsageDialogBody({
             </span>
           </DialogTitle>
         </DialogHeader>
+        {/* r269 ① — نوارِ چسبان: در دیوارِ بلندِ گشاینده («of» با ۹۱ کارت)،
+            کنترل‌هایِ لنز و شمارندهٔ صدرنشین نباید با اسکرول گم شوند. نکتهٔ
+            چیدمان: DialogContent یک grid است و در grid، محدودهٔ سفرِ sticky
+            همان grid-areaِ خودِ آیتم است (به بلندیِ خودش → سفرِ صفر) — پس
+            نوار و فهرست در یک wrapperِ بلند زندگی می‌کنند تا نوار کلِ
+            wrapper را سفر کند. بدونِ z-10: نوارِ positioned بالایِ کارت‌هایِ
+            غیر-positioned می‌نشیند و دکمهٔ بستنِ absolute (بعد در DOM)
+            بالایِ نوار می‌ماند — هیچ z جعلی‌ای لازم نیست. bgِ opaque: در
+            dark حالتِ نیمه‌شفافِ /60 کارت‌هایِ ردشده را نشان می‌داد. */}
+        <div className="flex flex-col gap-4">
         {(lessonCounts.length >= 2 || kindFilter) && (
           <div
             data-testid="usage-lessons-bar"
-            className="flex flex-wrap items-center gap-1.5 rounded-lg border border-stone-200 bg-stone-50 px-2.5 py-2 dark:border-stone-700 dark:bg-stone-800/60"
+            className="sticky top-0 flex flex-wrap items-center gap-1.5 rounded-lg border border-stone-200 bg-stone-50 px-2.5 py-2 dark:border-stone-700 dark:bg-stone-800"
           >
             <span className="text-[10.5px] font-black text-stone-500">
               {kindFilter ? `پراکندگیِ ${activeKindLabel}` : "پراکندگیِ درس‌ها"}:
@@ -282,7 +316,7 @@ function WordUsageDialogBody({
             )}
           </div>
         )}
-        <ul className="space-y-2">
+        <ul ref={listRef} className="space-y-2">
           {(showAll ? visibleSites : visibleSites.slice(0, 8)).map((s, i) => (
             <li
               key={`${s.lessonId}-${s.kind}-${i}`}
@@ -345,6 +379,7 @@ function WordUsageDialogBody({
               : `+ ${faNum(visibleSites.length - 8)} موردِ دیگر در جزوه`}
           </button>
         )}
+        </div>
       </DialogContent>
     </Dialog>
   );
