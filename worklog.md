@@ -5467,3 +5467,5 @@ Work Log:
 Stage Summary:
 - راند ۲۹۴ کتابِ اول را کامل بست: کتابخانهٔ داستان‌ها حالا ۳۹ داستانِ واقعی دارد (s1×۲۷ — تمامِ «Introductory Stories»، s2×۶، s3×۶) با همان قراردادِ داده، صفر تغییرِ معماری، و QAِ سرتاسریِ سبز.
 - گیت‌ها (واقعی): tsc=0 · lint=0 · 2108/2108 (223 فایل). main محلی = [feat هشت داستانِ پایانیِ s1 + مهاجرتِ قفلِ شمارشی]؛ شاخهٔ آینهٔ r294 آماده؛ push — پایین.
+
+- تکمیلِ ثبتِ راند (پس از push): پاک‌سازیِ پایانی سبز — attempts=0 · app_open=2 (میراث: flashcard_done=4 · konkur_start=1 دست‌نخورده؛ library_story_done/quiz_done/rush_done با whitelist حذف شدند). push (کدِ خروجیِ واقعی): `main` = **۱** — ردِ non-fast-forward، و درست است (remote main روی خطِ r416 است؛ force = عقبگردِ ممنوع؛ داوریِ دوخطی REQUIRES-APPROVAL)؛ `local-line-r294` (fd41204) = **۰** — راندِ ۲۹۴ روی گیت‌هاب فرود آمد.
