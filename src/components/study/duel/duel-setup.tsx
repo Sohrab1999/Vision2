@@ -2,14 +2,15 @@
 
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
-import { Sparkles, Swords, Users, Timer, Zap, Wifi, WifiOff, Loader2, Target, ShieldCheck, History, Flame, Percent, Search, X, ChevronDown, ChevronUp, ImageDown, Share2 } from "lucide-react";
+import { Sparkles, Swords, Users, Timer, Zap, Wifi, WifiOff, Loader2, Target, ShieldCheck, History, Flame, Percent, Search, X, ChevronDown, ChevronUp, ImageDown, Share2, Medal, Lock } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum, timeAgoFa, avatarClasses, secFa } from "@/lib/study-theme";
 import { percent } from "@/lib/domain/percent";
 import { useToast } from "@/hooks/use-toast";
 import { trackEvent } from "@/lib/analytics";
-import { buildEvalInput, unlockedBadgeIds, duelFamilyBadges } from "@/lib/achievements";
+import { buildEvalInput, unlockedBadgeIds, duelFamilyBadges, BADGES, DUEL_BADGE_IDS, TIER_STYLE } from "@/lib/achievements";
+import { BADGE_ICONS } from "@/components/study/practice/badges";
 import { downloadDuelLedgerImage, buildDuelLedgerBlob } from "@/lib/result-image";
 import { canShareImageFiles, blobToFile, shareImageFile, type ShareOutcome } from "@/lib/share-card";
 import {
@@ -93,6 +94,9 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
   );
   const unlocked = useMemo(() => unlockedBadgeIds(evalInput), [evalInput]);
   const duelBadges = useMemo(() => duelFamilyBadges(unlocked), [unlocked]);
+  // r289 — تعریفِ کاملِ ده عضوِ خانواده (باز + قفل) برای نوارِ DOM؛ آرایه از
+  // خودِ رجیستری با همان DUEL_BADGE_IDS — پایدار و ثابت (deps خالی)
+  const duelFamilyDefs = useMemo(() => BADGES.filter((b) => DUEL_BADGE_IDS.includes(b.id)), []);
 
   const winRate = percent(duelWins, duelWins + duelLosses + duelTies);
   const streak = duelWinStreak(duelHistory);
@@ -342,6 +346,51 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
           </div>
         </div>
       </motion.div>
+
+      {/* r289 — نوارِ «نشان‌های نبردی» در DOMِ صفحهٔ نبرد: انگیزهٔ در-بستر —
+      کدام نشانهای نبردی دارم و کدام در راه است؟ همان ارزیابیِ واحدِ r288
+      (evalInput/duelBadges/duelFamilyBadges) و همان رجیستری — هیچ ارزیابیِ دومی.
+      هر ۱۰ عضو همیشه حاضرند: باز = چیپِ پلهایِ TIER_STYLE، قفل = سکوتِ سنگی با
+      تِلِ پیشرفت (progress) در title — نشانهایِ همگانیِ باز هرگز اینجا راه ندارند
+      (منفیِ «اولین قدم» — همان خودسازگاریِ کارتِ PNG). فقط بعد از mount — هیچ
+      عددی دووجهی نمیشود (قراردادِ شمارنده‌ها). */}
+      {mounted && (
+        <section
+          className="duel-card rounded-2xl border border-stone-200 c-card-elevated p-5 shadow-sm"
+          aria-label="نشان‌های نبردی"
+        >
+          <div className="mb-3 flex items-center justify-between">
+            <h2 className="flex items-center gap-2 text-[14px] font-extrabold text-stone-700">
+              <Medal size={17} className="text-fuchsia-600" />
+              نشان‌های نبردی
+              <span className="rounded-md bg-fuchsia-50 px-1.5 py-0.5 text-[10px] font-black text-fuchsia-700">
+                {faNum(duelBadges.length)} از {faNum(DUEL_BADGE_IDS.length)}
+              </span>
+            </h2>
+          </div>
+          <ul role="list" className="flex flex-wrap gap-1.5">
+            {duelFamilyDefs.map((b) => {
+              const isOpen = unlocked.has(b.id);
+              const Icon = BADGE_ICONS[b.icon] ?? Medal;
+              const hint = isOpen ? b.desc : b.progress?.(evalInput) ?? b.desc;
+              return (
+                <li
+                  key={b.id}
+                  title={hint}
+                  className={
+                    isOpen
+                      ? `inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-[11px] font-bold ${TIER_STYLE[b.tier].chip} ${TIER_STYLE[b.tier].ring}`
+                      : "inline-flex items-center gap-1 rounded-full border border-stone-200 bg-stone-100 text-stone-500"
+                  }
+                >
+                  {isOpen ? <Icon size={12} aria-hidden /> : <Lock size={10} aria-hidden />}
+                  {b.title}
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      )}
 
       {/* Task 65 — تاریخچهٔ نبردها: خلاصه + فرم + ۵ رکورد آخر */}
       {mounted && duelHistory.length > 0 && (
