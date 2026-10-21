@@ -520,6 +520,282 @@ The officer did not look at Fred's hair. He looked at his boots and said, 'Yes, 
     ],
   },
 
+  // ---- r291: داستان‌های ۱۳–۱۹ از PDFِ اسکن‌شدهٔ s1 بازنویسی شد (همان قراردادِ Task 290) ----
+  {
+    id: "s1-13",
+    book: "s1",
+    num: 13,
+    title: "Mrs Harris's Son",
+    text: `Mrs Harris lives in a small village. Her husband is dead, but she has one son. He is twenty-one, and his name is Geoff. He worked in the shop in the village and lived with his mother, but then he got work in a town and went and lived there. Its name was Greensea. It was quite a long way from his mother's village, and she was not happy about this. But Geoff said, 'There isn't any good work for me in the country, Mother, and I can get a lot of money in Greensea, and I'll send you some every week.'
+
+Mrs Harris was very angry last Sunday. She got in a train and went to her son's house in Greensea. Then she said to him, 'Geoff, why do you never phone me?'
+
+Geoff laughed. 'But, Mother,' he said, 'you haven't got a phone.'
+
+'No,' she answered, 'I haven't — but YOU'VE got one!'`,
+    tf: [
+      { q: "Mrs Harris's husband was dead.", a: true },
+      { q: "Geoff went to live in Greensea.", a: true },
+      { q: "Geoff got less money in Greensea.", a: false },
+      { q: "Geoff had a phone.", a: true },
+      { q: "Geoff's mother had a phone.", a: false },
+      { q: "Geoff never phoned his mother.", a: true },
+    ],
+    bq: [
+      "Where did Mrs Harris live?",
+      "Where did her son work first?",
+      "Where did her son go to work after that?",
+      "Was Mrs Harris happy about this?",
+      "What did Geoff say to her?",
+      "Where did Mrs Harris go last Sunday?",
+      "What did she say to Geoff?",
+      "What was Geoff's answer?",
+    ],
+    glossary: [
+      { en: "phone", fa: "تلفن؛ تلفن زدن" },
+      { en: "village", fa: "روستا" },
+      { en: "angry", fa: "خشمگین" },
+      { en: "train", fa: "قطار" },
+    ],
+  },
+  {
+    id: "s1-14",
+    book: "s1",
+    num: 14,
+    title: "Mr Robinson and the Dentist",
+    text: `Mr Robinson never went to a dentist, because he was afraid, but then his tooth began aching, and he went to a dentist. The dentist did a lot of work in his mouth for a long time. On the last day Mr Robinson said to him, 'How much is all this work going to cost?' The dentist said, 'Twenty-five pounds,' but he did not ask him for the money.
+
+After a month Mr Robinson phoned the dentist and said, 'You haven't asked me for any money for your work last month.'
+
+'Oh,' the dentist answered, 'I never ask a man for money for his work.'
+
+'Then how do you live?' Mr Robinson asked.
+
+'Most people pay me quickly,' the dentist said, 'but some don't. I wait for my money for two months, and then I say, "That man isn't going to pay me", and then I ask him for the money.'`,
+    tf: [
+      { q: "Mr Robinson went to the dentist because his tooth hurt.", a: true },
+      { q: "The dentist wanted twenty-five pounds from Mr Robinson.", a: true },
+      { q: "Mr Robinson paid the money quickly.", a: false },
+      { q: "Mr Robinson phoned the dentist after a month.", a: true },
+      { q: "Most people paid the dentist quickly.", a: true },
+      { q: "The dentist waited for the money for three months.", a: false },
+    ],
+    bq: [
+      "Why did Mr Robinson never go to a dentist?",
+      "Why did he go to one after a long time?",
+      "What did the dentist do?",
+      "What did Mr Robinson ask him then?",
+      "What did the dentist answer?",
+      "What did Mr Robinson say to the dentist after a month?",
+      "What was the dentist's answer?",
+      "And what did the dentist say to him then?",
+    ],
+    glossary: [
+      { en: "dentist", fa: "دندان‌پزشک" },
+      { en: "afraid", fa: "ترسان" },
+      { en: "cost", fa: "بها داشتن" },
+      { en: "pound", fa: "پوند — واحد پول" },
+    ],
+  },
+  {
+    id: "s1-15",
+    book: "s1",
+    num: 15,
+    title: "Bill and the Football Match",
+    text: `Bill likes football very much, and he often goes to matches in our town on Saturdays. He does not go to the best seats, because they are very expensive and he does not see his friends there.
+
+There was a big football match in our town last Saturday. First it was very cold and cloudy, but then the sun shone, and it was very hot. There were a lot of people on the benches round Bill at the match. Bill was on one bench, and there was a fat man on a bench behind him. First the fat man was cold, but then he was very hot. He took his coat off and put it in front of him, but it fell on Bill's head.
+
+Bill was not angry. He took the coat off his head, looked at it and then smiled and said, 'Thank you — but where are the trousers?'`,
+    tf: [
+      { q: "Bill plays in football matches in our town.", a: false },
+      { q: "He sits in the cheaper seats.", a: true },
+      { q: "His friends sit in the expensive seats.", a: false },
+      { q: "Last Saturday the weather was very hot, and then it was very cold and cloudy.", a: false },
+      { q: "The benches round Bill were almost empty.", a: false },
+      { q: "A fat man's coat fell on Bill's head.", a: true },
+    ],
+    bq: [
+      "Where does Bill go on Saturdays?",
+      "Why does he not sit in the best seats?",
+      "What weather did they have at the match last Saturday?",
+      "Who was behind Bill?",
+      "Why did the man take his coat off?",
+      "What happened to the coat?",
+      "Was Bill angry?",
+      "What did he say?",
+    ],
+    glossary: [
+      { en: "match", fa: "مسابقه" },
+      { en: "bench", fa: "نیمکت" },
+      { en: "expensive", fa: "گران" },
+      { en: "coat", fa: "پالتو" },
+    ],
+  },
+  {
+    id: "s1-16",
+    book: "s1",
+    num: 16,
+    title: "Peter and the Glue",
+    text: `Peter was eight and a half years old, and he went to a school near his house. He always went there on foot, and he usually got back on time, but last Friday he came home from school late. His mother was in the kitchen, and she said, 'Why are you late today, Peter?'
+
+'My teacher was angry and sent me to the headmaster after our lessons,' Peter answered.
+
+'To the headmaster?' his mother said. 'Why did she send you to him?'
+
+'Because she asked a question in the class,' Peter said, 'and none of the children gave her the answer except me.'
+
+His mother was angry. 'But why did the teacher send you to the headmaster then? Why didn't she send all the other stupid children?' she asked Peter.
+
+'Because her question was, "Who put glue on my chair?"' Peter said.`,
+    tf: [
+      { q: "Peter was seven years old.", a: false },
+      { q: "Peter usually came home late.", a: false },
+      { q: "Only Peter answered the teacher's question.", a: true },
+      { q: "All the children put glue on the teacher's chair.", a: false },
+      { q: "Peter put glue on the teacher's chair.", a: true },
+      { q: "The teacher was angry about the glue.", a: true },
+    ],
+    bq: [
+      "Where was Peter's school?",
+      "How did he come home?",
+      "What did his mother say to him when he came home last Friday?",
+      "What was Peter's answer?",
+      "What did his mother ask then?",
+      "What did Peter answer?",
+      "What did his mother ask him then?",
+      "And what was his answer?",
+    ],
+    glossary: [
+      { en: "glue", fa: "چسب" },
+      { en: "headmaster", fa: "مدیرِ مدرسه" },
+      { en: "except", fa: "به‌جز" },
+      { en: "on foot", fa: "پیاده" },
+    ],
+  },
+  {
+    id: "s1-17",
+    book: "s1",
+    num: 17,
+    title: "George and the Whisky",
+    text: `George was sixty years old, and he was always ill. He was always tired, and his face was always very red. He did not like doctors, but last month his wife said to him, 'Don't be stupid, George. Go and see Doctor Brown.'
+
+George said, 'No,' but last week he was worse, and he went to the doctor.
+
+Dr Brown examined him and then said to him, 'You drink too much. Stop drinking whisky, and drink milk.'
+
+George liked whisky, and he did not like milk. 'I'm not a baby!' he always said to his wife.
+
+Now he looked at Dr Brown and said, 'But drinking milk is dangerous, doctor.'
+
+The doctor laughed and said, 'Dangerous? How can drinking milk be dangerous?'
+
+'Well, doctor,' George said, 'it killed one of my friends last year.'
+
+The doctor laughed again and said, 'How did it do that?'
+
+'The cow fell on him,' George said.`,
+    tf: [
+      { q: "George was always tired.", a: true },
+      { q: "George did not like going to doctors.", a: true },
+      { q: "George preferred drinking milk.", a: false },
+      { q: "George said, 'Drinking milk is dangerous.'", a: true },
+      { q: "George's friend died because he drank too much milk.", a: false },
+      { q: "Dr Brown told George to drink milk.", a: true },
+    ],
+    bq: [
+      "Was George old, or young?",
+      "Why did he go to the doctor last week?",
+      "What did the doctor say to him?",
+      "What did George say to the doctor?",
+      "What did the doctor answer?",
+      "What did George say then?",
+      "And what did the doctor ask him?",
+      "What was George's answer?",
+    ],
+    glossary: [
+      { en: "whisky", fa: "ویسکی" },
+      { en: "examine", fa: "معاینه‌کردن" },
+      { en: "dangerous", fa: "خطرناک" },
+      { en: "cow", fa: "گاو" },
+    ],
+  },
+  {
+    id: "s1-18",
+    book: "s1",
+    num: 18,
+    title: "Mr White's Pictures",
+    text: `Mr White has a small shop in the middle of our town, and he sells pictures in it. They are not expensive ones, but some of them are quite pretty. Last Saturday a woman came into the shop and looked at a lot of pictures. Then she took Mr White to one of them and said, 'How much do you want for this one?' It was a picture of horses in a field.
+
+Mr White looked at it for a few seconds and then went and brought his book. He opened it, looked at the first page and then said, 'I want twenty pounds for that one.'
+
+The woman shut her eyes for a few seconds and then said, 'I can give you two pounds for it.'
+
+'Two pounds?' Mr White said angrily. 'Two pounds? But the canvas cost more than two pounds.'
+
+'Oh, but it was clean then,' the woman said.`,
+    tf: [
+      { q: "The pictures in Mr White's shop were expensive.", a: false },
+      { q: "Last Saturday a woman came into the shop.", a: true },
+      { q: "She wanted a picture of flowers.", a: false },
+      { q: "Mr White wanted twenty pounds for the picture.", a: true },
+      { q: "The woman said, 'I'll give you four pounds for it.'", a: false },
+      { q: "Mr White was angry.", a: true },
+    ],
+    bq: [
+      "What does Mr White sell in his shop?",
+      "What pictures does he sell?",
+      "What did a woman say to him last Saturday?",
+      "What did he do then?",
+      "And what did he say to the woman?",
+      "What did she answer?",
+      "What did Mr White say then?",
+      "And what did the woman say?",
+    ],
+    glossary: [
+      { en: "canvas", fa: "بومِ نقاشی" },
+      { en: "pretty", fa: "زیبا" },
+      { en: "angrily", fa: "با خشم" },
+      { en: "field", fa: "دشت، مزرعه" },
+    ],
+  },
+  {
+    id: "s1-19",
+    book: "s1",
+    num: 19,
+    title: "Miss Green's Cupboard",
+    text: `Miss Green had a heavy cupboard in her bedroom. Last Sunday she said, 'I don't like this cupboard in my bedroom. The bedroom's very small, and the cupboard's very big. I'm going to put it in a bigger room.' But the cupboard was very heavy, and Miss Green was not very strong. She went to two of her neighbours and said, 'Please carry the cupboard for me.' Then she went and made some tea for them.
+
+The two men carried the heavy cupboard out of Miss Green's bedroom and came to the stairs. One of them was in front of the cupboard, and the other was behind it. They pushed and pulled for a long time, and then they put the cupboard down.
+
+'Well,' one of the men said to the other, 'we're never going to get this cupboard upstairs.'
+
+'Upstairs?' the other man said. 'Aren't we taking it downstairs?'`,
+    tf: [
+      { q: "Miss Green's bedroom was very small.", a: true },
+      { q: "She wanted the cupboard in a smaller room.", a: false },
+      { q: "Miss Green was not very strong.", a: true },
+      { q: "Two men carried the cupboard.", a: true },
+      { q: "They carried the cupboard upstairs.", a: false },
+      { q: "They carried the cupboard downstairs.", a: false },
+    ],
+    bq: [
+      "Why didn't Miss Green like the cupboard in her bedroom?",
+      "Where did she want it?",
+      "Why didn't she carry it there?",
+      "What did she say to two of her neighbours?",
+      "What did the neighbours do?",
+      "What did one of them say?",
+      "And what did the other man say?",
+    ],
+    glossary: [
+      { en: "cupboard", fa: "کمد، بوفه" },
+      { en: "neighbour", fa: "همسایه" },
+      { en: "heavy", fa: "سنگین" },
+      { en: "stairs", fa: "پله‌ها" },
+    ],
+  },
+
   // ================= s2 — Elementary (1,000) =================
   {
     id: "s2-1",
