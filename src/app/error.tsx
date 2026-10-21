@@ -6,6 +6,7 @@
 
 import { useEffect, useState } from "react";
 import { BookX, Home, RotateCcw } from "lucide-react";
+import { reportClientError } from "@/lib/client-error-reporter";
 
 export default function ErrorPage({
   error,
@@ -18,6 +19,16 @@ export default function ErrorPage({
 
   useEffect(() => {
     console.error("Webbook view error:", error);
+    // Task 292 — the crash also becomes a breadcrumb on the server:
+    // the QA loop only runs fresh seeded sessions, so a real learner's
+    // long-lived state can crash in ways we can never reproduce. Now
+    // the next occurrence carries its own message/stack/view.
+    reportClientError({
+      kind: "boundary",
+      message: error.message || "unknown boundary error",
+      stack: error.stack,
+      digest: error.digest,
+    });
   }, [error]);
 
   return (

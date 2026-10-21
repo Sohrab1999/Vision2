@@ -11,6 +11,7 @@ import { stopSpeaking, setSpeakRateScale } from "@/lib/speak";
 import { maybeAutoBackup, collectData, countsOf } from "@/lib/backup";
 import { pushSync } from "@/lib/sync";
 import { trackEventOncePerSession } from "@/lib/analytics";
+import { installClientErrorReporter } from "@/lib/client-error-reporter";
 import Header from "./shell/header";
 import Footer from "./shell/footer";
 import HomeView from "./home/home-view";
@@ -68,6 +69,14 @@ export default function StudyApp() {
   // rehydrate persisted progress from localStorage (zustand -> external system)
   useEffect(() => {
     useStudy.persist.rehydrate();
+  }, []);
+
+  // Task 292 — global crash nets (window error + unhandledrejection):
+  // the QA loop only sees fresh seeded sessions, so a crash that needs a
+  // real learner's long-lived state otherwise dies unheard. The boundary
+  // reports its own errors separately.
+  useEffect(() => {
+    installClientErrorReporter();
   }, []);
 
   // Task-36 «جدول نبرد»: global opener — the leaderboard's duel standings

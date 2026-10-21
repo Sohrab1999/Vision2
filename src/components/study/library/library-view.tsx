@@ -29,6 +29,7 @@ import {
   HILL_TOTAL_STORIES,
   storiesOfBook,
   storyById,
+  bookById,
   type HillBook,
   type HillStory,
 } from "@/data/hill-stories";
@@ -65,14 +66,15 @@ const THEME: Record<
 
 export default function LibraryView() {
   const mounted = useMounted();
-  const libraryDone = useStudy((s) => s.libraryDone);
+  // Task 292 — defensive `?? {}`: hydration of a corrupted/legacy payload
+  // must degrade to «zero progress», never crash the whole app.
+  const libraryDone = useStudy((s) => s.libraryDone) ?? {};
   const markStoryDone = useStudy((s) => s.markStoryDone);
   const [openStoryId, setOpenStoryId] = useState<string | null>(null);
   const { toast } = useToast();
 
   const doneCount = mounted ? Object.keys(libraryDone).length : 0;
   const story = openStoryId ? storyById(openStoryId) : undefined;
-
   return (
     <div className="mx-auto max-w-4xl px-4 pb-10 pt-4">
       {/* ---------- سرِ صفحه ---------- */}
@@ -240,8 +242,9 @@ function StoryReader({
   onFinish: (score: number, total: number) => void;
   doneEntry?: { score: number; total: number; day: string };
 }) {
-  const book = HILL_BOOKS.find((b) => b.id === story.book)!;
-  const t = THEME[book.theme];
+  const book = bookById(story.book); // Task 292: no `!` — fallback below
+  const t = THEME[book?.theme ?? "emerald"];
+  const bookChip = book ? `${book.faTitle} · داستان ${faNum(story.num)}` : `داستان ${faNum(story.num)}`;
 
   // پاسخ‌های کاربر — index جمله → true(درست)/false(نادرست)
   // آپدیتِ تابعی (نه snapshot): کلیکِ هم‌زمان/سریع هرگز روی هم نمی‌نویسد —
@@ -280,7 +283,7 @@ function StoryReader({
           بازگشت به فهرست
         </button>
         <span className={`rounded-full border px-2.5 py-1 text-[10.5px] font-black ${t.chip}`}>
-          {book.faTitle} · داستان {faNum(story.num)}
+          {bookChip}
         </span>
       </div>
 

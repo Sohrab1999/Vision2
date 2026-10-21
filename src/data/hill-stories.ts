@@ -1247,4 +1247,10 @@ export const storiesOfBook = (book: HillBookId): HillStory[] =>
 export const storyById = (id: string): HillStory | undefined =>
   HILL_STORIES.find((s) => s.id === id);
 
+/** Task 292 — defensive lookup for render paths: the view must never
+ *  assert on this find; an unknown book id renders a fallback instead
+ *  of killing the whole app into the error boundary. */
+export const bookById = (id: HillBookId): HillBook | undefined =>
+  HILL_BOOKS.find((b) => b.id === id);
+
 export const HILL_TOTAL_STORIES = HILL_STORIES.length;

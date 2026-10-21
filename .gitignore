@@ -68,3 +68,4 @@ tool-results/
 # the stats API share it; leaking it would let anyone forge match receipts
 mini-services/challenge-service/.receipt-secret
 mini-services/challenge-service/.ticket-secret
+client-errors.log

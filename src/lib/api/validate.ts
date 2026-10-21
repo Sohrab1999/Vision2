@@ -145,6 +145,24 @@ export const duelTicketSchema = z.object({
     .max(100, "امضای ارسالی نامعتبر است."),
 });
 
+/** /api/client-error POST (Task 292) — crash telemetry from the learner's
+ *  device. The error boundary + global hooks report here so a crash that
+ *  only happens with a REAL learner's long-lived state becomes diagnosable
+ *  (the QA sessions can never reproduce those). Stack is bounded hard —
+ *  this is a diagnostic breadcrumb, not a log dump. */
+export const clientErrorSchema = z.object({
+  kind: z.enum(["boundary", "error", "rejection"], { message: "نوع گزارش نامعتبر است." }),
+  message: z
+    .string({ message: "پیام خطا نامعتبر است." })
+    .trim()
+    .min(1, "پیام خطا نامعتبر است.")
+    .max(500, "پیام خطا نامعتبر است."),
+  stack: z.string().max(4_000, "ردپای خطا نامعتبر است.").optional(),
+  digest: z.string().max(120, "شناسهٔ خطا نامعتبر است.").optional(),
+  view: z.string().max(60, "نمای جاری نامعتبر است.").optional(),
+  path: z.string().max(200, "مسیر نامعتبر است.").optional(),
+});
+
 /** per-route body caps in bytes (POST only; GET routes need none) */
 export const BODY_CAPS = {
   register: 4 * 1024,
@@ -155,4 +173,5 @@ export const BODY_CAPS = {
   tts: 8 * 1024,
   sync: 700 * 1024, // 600 KB snapshot ceiling + envelope slack
   duelTicket: 1 * 1024, // { userId, secret } — tiny
+  clientError: 6 * 1024, // bounded breadcrumb — message+stack caps above
 } as const;
