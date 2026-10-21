@@ -62,6 +62,14 @@ export type DayHistoryMap = Record<string, DayStat>;
 
 export const AVATAR_COLORS = ["emerald", "amber", "rose", "violet", "sky"] as const;
 export type AvatarColor = (typeof AVATAR_COLORS)[number];
+// برچسبِ فارسیِ هر رنگ برایِ aria — screen-reader «رنگ emerald» نمی‌گوید
+export const AVATAR_COLOR_LABELS: Record<AvatarColor, string> = {
+  emerald: "زمردی",
+  amber: "کهربایی",
+  rose: "گلگلی",
+  violet: "بنفش",
+  sky: "آسمانی",
+};
 
 // user-tunable preferences (settings hub) — fontScale multiplies root font-size,
 // ttsRate multiplies every speak() speed, reduceMotion kills heavy animations

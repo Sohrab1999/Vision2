@@ -441,7 +441,7 @@ export default function ListenView() {
               ) : null}
               <Volume2 size={30} />
             </motion.button>
-            <div className="flex items-center gap-1.5" aria-label={`فرصت پخش باقی‌مانده: ${playsLeft}`}>
+            <div className="flex items-center gap-1.5" aria-label={`فرصت پخش باقی‌مانده: ${faNum(playsLeft)}`}>
               {Array.from({ length: MAX_PLAYS }).map((_, i) => (
                 <span key={i} className={`h-2 w-6 rounded-full transition-colors ${i < playsLeft ? "bg-teal-500" : "bg-stone-200"}`} />
               ))}

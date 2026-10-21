@@ -9,7 +9,7 @@
 import { useState, useSyncExternalStore } from "react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Sparkles, ChevronLeft, PartyPopper, User, Target, Play, EyeOff } from "lucide-react";
-import { useStudy, AVATAR_COLORS, DAILY_GOAL_OPTIONS } from "@/lib/study-store";
+import { useStudy, AVATAR_COLORS, AVATAR_COLOR_LABELS, DAILY_GOAL_OPTIONS } from "@/lib/study-store";
 import { sendProfile } from "@/lib/identity";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
@@ -172,7 +172,7 @@ export default function Onboarding() {
                     <button
                       key={c}
                       onClick={() => setColorDraft(c)}
-                      aria-label={`رنگ ${c}`}
+                      aria-label={`رنگ ${AVATAR_COLOR_LABELS[c]}`}
                       className={`h-11 w-11 rounded-full shadow-md transition-[background-color,color,border-color,box-shadow,transform,opacity] ${avatarClasses[c] ?? avatarClasses.emerald} ${
                         colorDraft === c ? "scale-110 ring-2 ring-stone-700 ring-offset-2" : "opacity-70 hover:opacity-100"
                       }`}

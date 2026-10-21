@@ -2,7 +2,7 @@
 
 import { User, Download, Upload, ShieldCheck, History, RotateCcw, Laptop, CloudUpload, CloudDownload, Copy, Link2Off, RefreshCw, BookmarkCheck, Play, Trash2, Route, ChevronLeft } from "lucide-react";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
-import { useStudy, AVATAR_COLORS } from "@/lib/study-store";
+import { useStudy, AVATAR_COLORS, AVATAR_COLOR_LABELS } from "@/lib/study-store";
 import { avatarClasses } from "@/lib/study-theme";
 import { sendProfile } from "@/lib/identity";
 import { useMounted } from "@/lib/use-mounted";
@@ -425,7 +425,7 @@ export default function ProfilePopover() {
                   setColorDraft(c);
                   setSaved(false);
                 }}
-                aria-label={`رنگ ${c}`}
+                aria-label={`رنگ ${AVATAR_COLOR_LABELS[c]}`}
                 className={`h-11 w-11 rounded-full shadow-md transition-[background-color,color,border-color,box-shadow,transform,opacity] ${avatarClasses[c]} ${
                   colorDraft === c
                     ? "scale-110 ring-2 ring-stone-700 ring-offset-2"

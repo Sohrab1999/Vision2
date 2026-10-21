@@ -75,7 +75,7 @@ export default function VocabDonut() {
         <div className="flex flex-col items-center gap-5 sm:flex-row sm:items-center">
           {/* ---------------- donut ---------------- */}
           <div className="relative shrink-0" dir="ltr">
-            <svg width="150" height="150" viewBox="0 0 130 130" role="img" aria-label={`دونات پیشرفت واژگان: ${percent} درصد`}>
+            <svg width="150" height="150" viewBox="0 0 130 130" role="img" aria-label={`دونات پیشرفت واژگان: ${faNum(percent)} درصد`}>
               {/* track */}
               <circle cx="65" cy="65" r={R} fill="none" stroke={uiColors.stone[200]} strokeWidth="15" />
               {/* arcs */}
@@ -129,7 +129,7 @@ export default function VocabDonut() {
                 <button
                   onClick={() => openFirstTab(a.id)}
                   className="group flex w-full items-center gap-2.5 rounded-xl px-2 py-1.5 text-right transition-colors hover:bg-stone-50"
-                  aria-label={`رفتن به واژگان درس ${a.id}`}
+                  aria-label={`رفتن به واژگان درس ${faNum(a.id)}`}
                 >
                   <span className="h-3 w-3 shrink-0 rounded-sm shadow-sm" style={{ backgroundColor: a.color }} />
                   <span className="min-w-0 flex-1">

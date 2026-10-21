@@ -293,7 +293,7 @@ export default function DictionaryView() {
               });
             }}
             className="inline-flex items-center gap-1.5 rounded-xl border border-emerald-200 bg-emerald-50 px-3 py-2 text-[12px] font-bold text-emerald-700 transition-[background-color,color,border-color,transform] hover:bg-emerald-100 active:scale-[0.96]"
-            aria-label={`صادرات ${ankiCount} واژه به صورت فایل Anki`}
+            aria-label={`صادرات ${faNum(ankiCount)} واژه به صورت فایل Anki`}
           >
             <Download size={14} />
             خروجی Anki ({faNum(ankiCount)} کارت)

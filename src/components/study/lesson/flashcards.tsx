@@ -277,7 +277,7 @@ export default function Flashcards({
           {/* front: English */}
           <div className={`flip-face flex flex-col items-center justify-center gap-3 rounded-2xl border-2 ${t.border} bg-white p-6 shadow-lg`}>
             {srsItem && (
-              <div className="absolute left-4 top-4 flex gap-1" title={`سطح مرور: ${srsItem.level + 1} — بعدی: ${SRS_LABELS[srsItem.level]}`}>
+              <div className="absolute left-4 top-4 flex gap-1" title={`سطح مرور: ${faNum(srsItem.level + 1)} — بعدی: ${SRS_LABELS[srsItem.level]}`}>
                 {Array.from({ length: 6 }).map((_, i) => (
                   <span
                     key={i}

@@ -6,6 +6,7 @@ import { BarChart3, Flame, ListChecks, Grid3X3 } from "lucide-react";
 import { useStudy, lastNDays } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
+import { faDayLabel } from "@/lib/weekly-digest";
 
 /**
  * نمودار فعالیت — نوارهای انباشتهٔ ۷ روز اخیر + نقشهٔ حرارتی ۳۰ روزه
@@ -180,7 +181,7 @@ export default function WeeklyChart() {
               {monthDays.map((d) => (
                 <div
                   key={d.day}
-                  title={`${d.weekday} ${d.day} — ${faNum(d.quizzes)} آزمون · ${faNum(d.reviews)} مرور`}
+                  title={`${d.weekday} ${faDayLabel(d.day)} — ${faNum(d.quizzes)} آزمون · ${faNum(d.reviews)} مرور`}
                   className={`heat-cell relative aspect-square w-full rounded-md transition-transform hover:scale-110 ${heat(d.total)} ${
                     d.isToday ? "ring-2 ring-cyan-500 ring-offset-1 ring-offset-white" : ""
                   }`}

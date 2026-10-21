@@ -25,6 +25,7 @@ export type {
 } from "@/state/types";
 export {
   AVATAR_COLORS,
+  AVATAR_COLOR_LABELS,
   DEFAULT_SETTINGS,
   DAILY_GOAL_OPTIONS,
   FREEZE_CAP,
