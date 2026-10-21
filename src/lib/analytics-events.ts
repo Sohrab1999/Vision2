@@ -45,6 +45,7 @@ export const EVENT_NAMES = [
   "print_report", // official printable progress report
   "coverage_csv", // coverage CSV export from the official report (Task 180)
   "official_image", // official report share-card PNG (r286)
+  "duel_image", // duel-done share-card PNG — download or native share (r287)
 ] as const;
 
 export type EventName = (typeof EVENT_NAMES)[number];
@@ -90,6 +91,7 @@ export const EVENT_LABELS_FA: Record<EventName, string> = {
   print_report: "گزارش چاپی رسمی",
   coverage_csv: "خروجی CSV پوشش مهارت‌ها",
   official_image: "عکسِ کارنامهٔ رسمی",
+  duel_image: "عکسِ کارتِ نبرد",
 };
 
 export function isEventName(v: unknown): v is EventName {

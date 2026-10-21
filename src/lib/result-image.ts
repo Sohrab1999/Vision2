@@ -449,15 +449,17 @@ async function downloadCanvasBlob(canvas: HTMLCanvasElement, name: string): Prom
   return downloadBlob(blob, name);
 }
 
-/** آماده‌سازی فونت + کانواسِ ۱۰۸۰×۶۴۰ با پوستهٔ نبرد — null در محیطِ بی‌کانواس */
-async function openBattleCard(family: string): Promise<CanvasRenderingContext2D | null> {
+/** آماده‌سازی فونت + کانواسِ ۱۰۸۰×H با پوستهٔ نبرد — null در محیطِ بی‌کانواس.
+ * r287 — ارتفاعِ پارامتری شد: دفترچه ۶۴۰ می‌ماند، کارتِ نبردِ ۷۴۰ میخواهد
+ * (ناحیهٔ نو برایِ باندِ نشانها — هم‌خانوادهٔ هفته‌نامه/رسمی). */
+async function openBattleCard(family: string, h = 640): Promise<CanvasRenderingContext2D | null> {
   if (typeof document === "undefined") return null;
   const canvas = document.createElement("canvas");
   canvas.width = 1080;
-  canvas.height = 640;
+  canvas.height = h;
   const ctx = canvas.getContext("2d");
   if (!ctx) return null;
-  battleShell(ctx, 1080, 640, family);
+  battleShell(ctx, 1080, h, family);
   return ctx;
 }
 
@@ -619,6 +621,11 @@ export interface DuelDoneImageOpts {
   bonus: number;
   /** رسیدِ امضاشدهٔ داور (Task 94) */
   receipt: boolean;
+  /** r287 — نوارِ «نشان‌های من»: همان ارزیابیِ واحدِ رجیستری از unlockedBadgesِ
+   * همان رندر میآید — کارتِ نبرد هم از نقاشِ مشترکِ drawBadgeBand میخواند؛
+   * هیچ کارتی باندِ خودش را نمیکشد (الگویِ الزامیِ r285/286 — سرشماریِ
+   * زمان‌کامپایل مجریِ تغذیه است). */
+  badges: { title: string; tier: BadgeTier }[];
 }
 
 /** رسمِ کارتِ نبردِ تکی — Task 102: از دانلود جدا شد تا blob هم ساخته شود */
@@ -631,10 +638,11 @@ async function duelDoneCanvas(opts: DuelDoneImageOpts): Promise<HTMLCanvasElemen
       typeof document !== "undefined"
         ? getComputedStyle(document.body).fontFamily || "sans-serif"
         : "sans-serif";
-    const ctx = await openBattleCard(family);
+    const ctx = await openBattleCard(family, 740);
     if (!ctx) return null;
     const W = 1080;
-    const H = 640;
+    // r287 — 640→740: ناحیهٔ نو برایِ باندِ نشانها (هم‌خانوادهٔ هفته‌نامه/رسمی)
+    const H = 740;
     const win = opts.outcome === "win";
     const tie = opts.outcome === "tie";
     const accent = win ? uiColors.emerald[600] : tie ? uiColors.amber[600] : uiColors.rose[600];
@@ -690,6 +698,13 @@ async function duelDoneCanvas(opts: DuelDoneImageOpts): Promise<HTMLCanvasElemen
     ctx.fillStyle = uiColors.stone[500];
     ctx.font = `700 20px ${family}`;
     ctx.fillText(details.join(" · "), W / 2, 505);
+
+    // ---------- r287: نوارِ نشانها — «تا کجا رسیده‌ام؟» در لحظهٔ برد هم ----------
+    // drawBadgeBand با baselineِ alphabetic کالیبره شده — کارتِ نبرد middle
+    // دارد؛ سوییچِ موضعی و بازگشتِ دقیق (footer با middle طراحی شده).
+    ctx.textBaseline = "alphabetic";
+    drawBadgeBand(ctx, { badges: opts.badges, family, x: 70, y: 524, w: W - 140 });
+    ctx.textBaseline = "middle";
 
     // ---------- footer ----------
     ctx.strokeStyle = uiColors.stone[200];

@@ -43,6 +43,7 @@ describe("کارت‌های نبرد — مسیرِ بی‌کانواس (Task 10
         base: 800,
         bonus: 199,
         receipt: false,
+        badges: [{ title: "اولین قدم", tier: "bronze" }], // r287 — فیلدِ الزامیِ قرارداد
       })
     ).resolves.toBe(false);
   });

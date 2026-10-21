@@ -1,15 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { Trophy, Swords, Users, RotateCcw, Crown, Handshake, Loader2, ShieldCheck, ImageDown, Share2, Timer, Flame } from "lucide-react";
 import { faNum, secFa } from "@/lib/study-theme";
 import { decomposeDuelScore, duelHeadToHead, duelWinStreak } from "@/lib/duel-history";
 import { useStudy } from "@/lib/study-store";
+import { BADGES, buildEvalInput, unlockedBadgeIds } from "@/lib/achievements";
 import { duelThinkStats } from "@/lib/duel-think";
 import { downloadDuelDoneImage, buildDuelDoneBlob } from "@/lib/result-image";
 import { canShareImageFiles, blobToFile, shareImageFile, type ShareOutcome } from "@/lib/share-card";
 import { useToast } from "@/hooks/use-toast";
+import { trackEvent } from "@/lib/analytics";
 import type { EndPayload } from "./duel-types";
 
 // فاز DONE — کارنامهٔ نبرد، مقایسهٔ دو بازیکن و دکمه‌های پس از نبرد
@@ -44,6 +46,48 @@ export default function DuelDone({ endData, mySid, myFinishAt, oppConnected, rem
   // بردِ متوالی رو می‌شود — یک بردِ واحد «زنجیره» نیست.
   const winStreak = duelWinStreak(duelHistory);
 
+  // r287 — نوارِ نشانها در کارتِ نبرد: همان ارزیابیِ واحدِ رجیستری
+  // (buildEvalInput) که گرید و دو گزارش مصرف میکنند — هیچ ارزیابیِ دومی.
+  // useMemo با deps کامل — نه کم نه زیاد (هم‌قراردادِ هفته‌نامه/رسمی).
+  // هندلرهایِ image پایین به این memos ارجاع میدهند — بعد از آنها تعریف
+  // شده‌اند (درسِ r286: حفظِ ممویزیشنِ کامپایلر).
+  const known = useStudy((s) => s.known);
+  const results = useStudy((s) => s.results);
+  const history = useStudy((s) => s.history);
+  const dayStat = useStudy((s) => s.dayStat);
+  const streak = useStudy((s) => s.streak);
+  const bestStreak = useStudy((s) => s.bestStreak);
+  const mistakes = useStudy((s) => s.mistakes);
+  const rushBest = useStudy((s) => s.rushBest);
+  const rushBestCorrect = useStudy((s) => s.rushBestCorrect);
+  const rushGames = useStudy((s) => s.rushGames);
+  const seenBadges = useStudy((s) => s.seenBadges);
+  const userName = useStudy((s) => s.userName);
+  const evalInput = useMemo(
+    () =>
+      buildEvalInput({
+        known,
+        results,
+        history,
+        dayStat,
+        streak,
+        bestStreak,
+        mistakes,
+        rushBest,
+        rushBestCorrect,
+        rushGames,
+        seenBadges,
+        userName,
+        duelHistory, // r287 — خانوادهٔ نبرد: بدونِ دفترچه، نشانِ نبردی هرگز باز نمیشد
+      }),
+    [known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, seenBadges, userName, duelHistory]
+  );
+  const unlocked = useMemo(() => unlockedBadgeIds(evalInput), [evalInput]);
+  const unlockedBadges = useMemo(
+    () => (unlocked.size > 0 ? BADGES.filter((b) => unlocked.has(b.id)) : []),
+    [unlocked]
+  );
+
   // Task 106 → ۱۰۹ — secFa به study-theme مهاجرت کرد (یک قراردادِ مشترک؛
   // هفته‌نامه هم از امروز همین را می‌خواند). null → «—» همان‌جا حل شده.
 
@@ -71,8 +115,13 @@ export default function DuelDone({ endData, mySid, myFinishAt, oppConnected, rem
       base: d.base,
       bonus: d.bonus,
       receipt: !!endData.receipt,
+      // r287 — همان ارزیابیِ واحدِ نوارِ نشانها به کارتِ PNG هم میرسد؛
+      // هیچ ارزیابیِ دومی وجود ندارد — آرایه از unlockedBadgesِ همین رندر میآید.
+      badges: unlockedBadges.map((b) => ({ title: b.title, tier: b.tier })),
     });
     setImgBusy(false);
+    // r287 — رویدادِ کارتِ نبرد فقط وقتی کارت واقعاً ساخته شد (قراردادِ official_image)
+    if (ok) trackEvent("duel_image");
     toast(
       ok
         ? { title: "🖼 عکسِ این نبرد ذخیره شد", description: "حالا می‌توانی نتیجه‌ات را برای دوستانت بفرستی.", duration: 3000 }
@@ -103,9 +152,12 @@ export default function DuelDone({ endData, mySid, myFinishAt, oppConnected, rem
       base: d.base,
       bonus: d.bonus,
       receipt: !!endData.receipt,
+      // r287 — همان آرایه؛ دانلود و هم‌رسانی دو دروازهٔ یک ارزیابی‌اند.
+      badges: unlockedBadges.map((b) => ({ title: b.title, tier: b.tier })),
     });
     let outcome2: ShareOutcome = "failed";
     if (blob) {
+      trackEvent("duel_image");
       const ribbon =
         outcome === "win"
           ? forfeit
