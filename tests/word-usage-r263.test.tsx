@@ -135,14 +135,17 @@ describe("چیپ‌هایِ تفکیکِ نوع (r263 ③)", () => {
       />
     );
 
-  it("change (دو نوع): مکالمهٔ ۲ سپس ریدینگِ ۱۱ — ایدئومِ آسمانی، span نه دکمه، جداکنندهٔ در میان", () => {
+  it("change (دو نوع): مکالمهٔ ۲ سپس ریدینگِ ۱۱ — ایدئومِ آسمانی، دکمهٔ دوسطحیِ بی-فشارِ آغازین (تحولِ r264)، جداکنندهٔ در میان", () => {
     renderDialog("change");
     const conv = screen.getByTestId("usage-kind-chip-conversation");
     const read = screen.getByTestId("usage-kind-chip-reading");
     expect(conv.textContent).toContain(`مکالمه ${faNum(2)}`);
     expect(read.textContent).toContain(`ریدینگ ${faNum(11)}`);
     for (const c of [conv, read]) {
-      expect(c.tagName).toBe("SPAN");
+      // r264 ①: چیپِ نوع دکمهٔ toggle شد (بندِ ① پیشنهادِ ۲۶۳) — آغازین
+      // بی-فشار با ایدئومِ آسمانیِ خانواده؛ حالتِ فعال در r264 قفل می‌شود.
+      expect(c.tagName).toBe("BUTTON");
+      expect(c.getAttribute("aria-pressed")).toBe("false");
       expect(c.className).toContain("border-sky-200");
       expect(c.className).toContain("bg-sky-50");
       expect(c.className).toContain("text-sky-700");
