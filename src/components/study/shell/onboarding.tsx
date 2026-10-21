@@ -54,6 +54,13 @@ export default function Onboarding() {
   const [colorDraft, setColorDraft] = useState<string>("emerald");
   const [goalDraft, setGoalDraft] = useState<number>(10);
 
+  // r281 — the completion step speaks TO the learner who just named
+  // themselves. One predicate, three layers (title greeting, avatar
+  // initial, name row) — the r277 single-truth idiom; anonymous users
+  // keep the byte-identical generic copy.
+  const summaryName = nameDraft.trim();
+  const namedHere = summaryName.length >= 2;
+
   const open = mounted && persistHydrated && !onboarded;
 
   const saveProfileNow = (name: string, color: string) => {
@@ -139,7 +146,7 @@ export default function Onboarding() {
             <>
               <DialogTitle className="flex items-center justify-center gap-2 text-center text-lg font-black text-stone-800">
                 <PartyPopper size={18} className="text-amber-500" />
-                همه‌چیز آماده است!
+                {namedHere ? `همه‌چیز آماده است، ${summaryName}!` : "همه‌چیز آماده است!"}
               </DialogTitle>
               <DialogDescription className="mt-1 text-center text-[12.5px] leading-5 text-stone-500">
                 کتاب شخصی‌سازی شد — بیا اولین قدم را برداریم.
@@ -271,9 +278,9 @@ export default function Onboarding() {
                   <span className="font-bold text-stone-500">پروفایل</span>
                   <span className="flex items-center gap-2 font-black text-stone-800">
                     <span className={`flex h-6 w-6 items-center justify-center rounded-full text-[11px] font-black text-white shadow ${avatarClasses[colorDraft] ?? avatarClasses.emerald}`}>
-                      {nameDraft.trim().length >= 2 ? nameDraft.trim().charAt(0) : "?"}
+                      {namedHere ? summaryName.charAt(0) : "?"}
                     </span>
-                    {nameDraft.trim().length >= 2 ? nameDraft.trim() : "یادگیرندهٔ ناشناس"}
+                    {namedHere ? summaryName : "یادگیرندهٔ ناشناس"}
                   </span>
                 </div>
                 <div className="h-px bg-emerald-200/70" />
