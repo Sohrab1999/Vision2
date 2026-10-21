@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import {
   Printer,
@@ -8,6 +8,7 @@ import {
   FileText,
   GraduationCap,
   Flame,
+  ImageDown,
   BookOpenCheck,
   Activity,
   Award,
@@ -20,6 +21,7 @@ import {
   Target,
   FileSpreadsheet,
   ArrowLeftRight,
+  Loader2,
 } from "lucide-react";
 import {
   useStudy,
@@ -42,6 +44,7 @@ import { buildPairsCoverage } from "@/lib/pairs-coverage";
 import { lessons } from "@/data";
 import { useToast } from "@/hooks/use-toast";
 import { trackEvent } from "@/lib/analytics";
+import { downloadOfficialImage } from "@/lib/result-image";
 
 // ------------------------------------------------------------------
 // گزارش رسمی چاپی (PDF) — A4 paper for the teacher / parents.
@@ -210,6 +213,9 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
     );
   };
 
+  // r286 — عکسِ کارنامهٔ رسمی: هندلر بعد از memoهایِ وابسته (unlockedBadges/avgPercent)
+  // تعریف میشود — ترتیبِ حفظِ ممویزیشنِ کامپایلرِ ری‌اکت (درسِ lintِ همین راند).
+
   const evalInput = useMemo(
     () =>
       mounted
@@ -248,6 +254,33 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
     const rs = Object.values(results);
     return rs.length ? Math.round(rs.reduce((s, r) => s + r.percent, 0) / rs.length) : 0;
   }, [results]);
+
+  // r286 — عکسِ کارنامهٔ رسمی: همان KPIها + نوارِ نشانها (نقاشِ مشترکِ بوم)
+  // در یک کارتِ PNGِ سبک برایِ هم‌رسانیِ موبایلی — داستانِ «کلِ مسیر».
+  const [imgBusy, setImgBusy] = useState(false);
+  const saveOfficialImage = async () => {
+    if (imgBusy) return;
+    setImgBusy(true);
+    trackEvent("official_image");
+    const ok = await downloadOfficialImage({
+      userName: userName || undefined,
+      knownCount,
+      totalVocabulary: TOTAL_VOCABULARY,
+      avgPercent,
+      monthTotal,
+      bestStreak,
+      streak,
+      learnerCode: userId ? userId.slice(0, 8).toUpperCase() : undefined,
+      // همان ارزیابیِ واحدِ بدنهٔ کارنامه — هیچ ارزیابیِ دومی وجود ندارد.
+      badges: unlockedBadges.map((b) => ({ title: b.title, tier: b.tier })),
+    });
+    setImgBusy(false);
+    toast(
+      ok
+        ? { title: "📸 عکسِ کارنامه ذخیره شد", description: "کارتِ رسمیت آمادهٔ فرستادن است.", duration: 3000 }
+        : { title: "خطا در ساخت تصویر", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
+    );
+  };
 
   // one-line teacher-facing recommendation
   const advice = useMemo(() => {
@@ -291,6 +324,16 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
             برای گرفتن PDF، در پنجرهٔ چاپ مقصد را «Save as PDF» انتخاب کنید.
           </div>
           <div className="flex shrink-0 items-center gap-2">
+            <button
+              onClick={saveOfficialImage}
+              disabled={imgBusy}
+              aria-label="گرفتن عکس کارنامهٔ رسمی"
+              title="عکسِ کارنامه — یک کارت PNG برای هم‌رسانی"
+              className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-white/20 bg-white/10 px-3 py-2 text-[12px] font-black text-stone-100 transition-[background-color,color,border-color,box-shadow,transform] hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 active:scale-[0.96] disabled:opacity-60"
+            >
+              {imgBusy ? <Loader2 size={14} className="animate-spin" /> : <ImageDown size={14} />}
+              {imgBusy ? "در حال ساخت…" : "عکسِ کارنامه"}
+            </button>
             <button
               onClick={saveCoverageCsv}
               aria-label="دانلود CSV پوشش مهارت‌ها"

@@ -44,6 +44,7 @@ export const EVENT_NAMES = [
   "freeze_badge", // tapped the streak-freeze badge in the header (Task 77)
   "print_report", // official printable progress report
   "coverage_csv", // coverage CSV export from the official report (Task 180)
+  "official_image", // official report share-card PNG (r286)
 ] as const;
 
 export type EventName = (typeof EVENT_NAMES)[number];
@@ -88,6 +89,7 @@ export const EVENT_LABELS_FA: Record<EventName, string> = {
   freeze_badge: "پیگیری یخِ زنجیره از هدر",
   print_report: "گزارش چاپی رسمی",
   coverage_csv: "خروجی CSV پوشش مهارت‌ها",
+  official_image: "عکسِ کارنامهٔ رسمی",
 };
 
 export function isEventName(v: unknown): v is EventName {

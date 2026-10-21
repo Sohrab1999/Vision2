@@ -754,9 +754,9 @@ export interface WeeklyImageOpts {
   badges: { title: string; tier: BadgeTier }[];
 }
 
-// r285 — tier chips of the badge band on the weekly canvas card. Same hexes as
-// or-chip-bronze|silver|gold (globals.css) — the weekly-badge-image test locks
-// the mirror so canvas and DOM can never drift apart.
+// r285 — tier chips of the badge band on the canvas cards (weekly + official).
+// Same hexes as or-chip-bronze|silver|gold (globals.css) — the weekly-badge-image
+// test locks the mirror so canvas and DOM can never drift apart.
 export const WEEKLY_TIER_CHIP: Record<
   BadgeTier,
   { bg: string; ring: string; text: string }
@@ -765,6 +765,83 @@ export const WEEKLY_TIER_CHIP: Record<
   silver: { bg: uiColors.slate[100], ring: uiColors.slate[300], text: uiColors.slate[600] },
   gold: { bg: uiColors.yellow[100], ring: uiColors.yellow[300], text: uiColors.yellow[700] },
 };
+
+/** r286 — the badge band painter shared by EVERY canvas card (weekly + official):
+ * veil + «نشان‌های من» header + counter pill + tier chips (RTL, +N cap) or the
+ * honest zero line — drawn at (x, y) with width w and the family-fixed 98px
+ * height. Single source: the DOM band copy and the tier colors are locked by
+ * tests; no card may draw its own band. */
+function drawBadgeBand(
+  ctx: CanvasRenderingContext2D,
+  o: { badges: { title: string; tier: BadgeTier }[]; family: string; x: number; y: number; w: number }
+): void {
+  const { family, x, y, w } = o;
+  ctx.fillStyle = uiColors.stone[100];
+  roundRect(ctx, x, y, w, 98, 16);
+  ctx.fill();
+
+  ctx.direction = "rtl";
+  ctx.textAlign = "right";
+  ctx.fillStyle = uiColors.stone[900];
+  ctx.font = `800 20px ${family}`;
+  const hdrW = ctx.measureText("نشان‌های من").width;
+  ctx.fillText("نشان‌های من", x + w - 30, y + 27);
+
+  const countLabel = `${faNum(o.badges.length)} از ${faNum(BADGES.length)}`;
+  ctx.font = `700 15px ${family}`;
+  const cw = ctx.measureText(countLabel).width;
+  const pillR = x + w - 30 - hdrW - 14;
+  ctx.fillStyle = uiColors.green[50];
+  roundRect(ctx, pillR - cw - 24, y + 14, cw + 24, 26, 13);
+  ctx.fill();
+  ctx.fillStyle = uiColors.emerald[700];
+  ctx.textAlign = "center";
+  ctx.fillText(countLabel, pillR - cw / 2 - 12, y + 27);
+
+  if (o.badges.length === 0) {
+    ctx.fillStyle = uiColors.stone[500];
+    ctx.font = `700 17px ${family}`;
+    ctx.textAlign = "center";
+    ctx.fillText("هنوز نشانی باز نشده — با ادامهٔ تمرین روزانه نشان‌ها همین‌جا هم می‌آیند.", x + w / 2, y + 68);
+    return;
+  }
+  ctx.font = `700 16px ${family}`;
+  ctx.textAlign = "center";
+  let cxr = x + w - 30;
+  let drawn = 0;
+  for (const b of o.badges) {
+    const bw = ctx.measureText(b.title).width + 28;
+    if (cxr - bw < x + 20) break;
+    const st = WEEKLY_TIER_CHIP[b.tier];
+    ctx.fillStyle = st.bg;
+    roundRect(ctx, cxr - bw, y + 50, bw, 34, 17);
+    ctx.fill();
+    ctx.strokeStyle = st.ring;
+    ctx.lineWidth = 1;
+    roundRect(ctx, cxr - bw, y + 50, bw, 34, 17);
+    ctx.stroke();
+    ctx.fillStyle = st.text;
+    ctx.fillText(b.title, cxr - bw / 2, y + 68);
+    cxr -= bw + 10;
+    drawn++;
+  }
+  const hidden = o.badges.length - drawn;
+  if (hidden > 0) {
+    const label = `+${faNum(hidden)}`;
+    const bw = ctx.measureText(label).width + 28;
+    if (cxr - bw >= x + 20) {
+      ctx.fillStyle = uiColors.white;
+      roundRect(ctx, cxr - bw, y + 50, bw, 34, 17);
+      ctx.fill();
+      ctx.strokeStyle = uiColors.stone[300];
+      ctx.lineWidth = 1;
+      roundRect(ctx, cxr - bw, y + 50, bw, 34, 17);
+      ctx.stroke();
+      ctx.fillStyle = uiColors.stone[500];
+      ctx.fillText(label, cxr - bw / 2, y + 68);
+    }
+  }
+}
 
 export async function downloadWeeklyImage(opts: WeeklyImageOpts): Promise<boolean> {
   const c = await weeklyCanvas(opts);
@@ -885,73 +962,9 @@ async function weeklyCanvas(opts: WeeklyImageOpts): Promise<HTMLCanvasElement | 
     }
 
     // ---------- r285: نوارِ نشانها — «تا کجا رسیده‌ام؟» در کارتِ هم‌رسانی هم ----------
-    // نشانها با همان ارزیابیِ واحدِ هفتهنامه از call site میآیند؛ چیپها دقیقاً
-    // رنگِ or-chip-*ِ DOM را میکشند (WEEKLY_TIER_CHIP — تستِ قفلِ تطبیق).
-    ctx.fillStyle = uiColors.stone[100];
-    roundRect(ctx, 70, 524, W - 140, 98, 16);
-    ctx.fill();
-
-    ctx.direction = "rtl";
-    ctx.textAlign = "right";
-    ctx.fillStyle = uiColors.stone[900];
-    ctx.font = `800 20px ${family}`;
-    const hdrW = ctx.measureText("نشان‌های من").width;
-    ctx.fillText("نشان‌های من", W - 100, 551);
-
-    const countLabel = `${faNum(opts.badges.length)} از ${faNum(BADGES.length)}`;
-    ctx.font = `700 15px ${family}`;
-    const cw = ctx.measureText(countLabel).width;
-    const pillR = W - 100 - hdrW - 14;
-    ctx.fillStyle = uiColors.green[50];
-    roundRect(ctx, pillR - cw - 24, 538, cw + 24, 26, 13);
-    ctx.fill();
-    ctx.fillStyle = uiColors.emerald[700];
-    ctx.textAlign = "center";
-    ctx.fillText(countLabel, pillR - cw / 2 - 12, 551);
-
-    if (opts.badges.length === 0) {
-      ctx.fillStyle = uiColors.stone[500];
-      ctx.font = `700 17px ${family}`;
-      ctx.textAlign = "center";
-      ctx.fillText("هنوز نشانی باز نشده — با ادامهٔ تمرین روزانه نشان‌ها همین‌جا هم می‌آیند.", W / 2, 592);
-    } else {
-      ctx.font = `700 16px ${family}`;
-      ctx.textAlign = "center";
-      let cxr = W - 100;
-      let drawn = 0;
-      for (const b of opts.badges) {
-        const w = ctx.measureText(b.title).width + 28;
-        if (cxr - w < 90) break;
-        const st = WEEKLY_TIER_CHIP[b.tier];
-        ctx.fillStyle = st.bg;
-        roundRect(ctx, cxr - w, 574, w, 34, 17);
-        ctx.fill();
-        ctx.strokeStyle = st.ring;
-        ctx.lineWidth = 1;
-        roundRect(ctx, cxr - w, 574, w, 34, 17);
-        ctx.stroke();
-        ctx.fillStyle = st.text;
-        ctx.fillText(b.title, cxr - w / 2, 592);
-        cxr -= w + 10;
-        drawn++;
-      }
-      const hidden = opts.badges.length - drawn;
-      if (hidden > 0) {
-        const label = `+${faNum(hidden)}`;
-        const w = ctx.measureText(label).width + 28;
-        if (cxr - w >= 90) {
-          ctx.fillStyle = uiColors.white;
-          roundRect(ctx, cxr - w, 574, w, 34, 17);
-          ctx.fill();
-          ctx.strokeStyle = uiColors.stone[300];
-          ctx.lineWidth = 1;
-          roundRect(ctx, cxr - w, 574, w, 34, 17);
-          ctx.stroke();
-          ctx.fillStyle = uiColors.stone[500];
-          ctx.fillText(label, cxr - w / 2, 592);
-        }
-      }
-    }
+    // r286: کشیدنِ باند به drawBadgeBand منتقل شد — کارتِ رسمی هم از همان
+    // نقاش میخواند؛ هیچ کارتی باندِ خودش را نمیکشد.
+    drawBadgeBand(ctx, { badges: opts.badges, family, x: 70, y: 524, w: W - 140 });
 
     // ---------- footer ----------
     ctx.strokeStyle = uiColors.stone[200];
@@ -974,6 +987,156 @@ async function weeklyCanvas(opts: WeeklyImageOpts): Promise<HTMLCanvasElement | 
       90,
       H - 74
     );
+
+    return ctx.canvas;
+  } catch {
+    return null;
+  }
+}
+
+// ---------------- کارتِ کارنامهٔ رسمی (r286 — عکسِ هم‌رسانیِ «کلِ مسیر») ----------------
+// داستانِ کاغذ (چاپ/PDF) مالِ مودالِ رسمی است؛ این کارت همان داستان را سبک
+// میبرد: KPIهایِ همان کارنامه + نوارِ نشانها (drawBadgeBandِ مشترک) —
+// برایِ والس/تلگرام که عکس میفهمند نه PDF.
+
+export interface OfficialImageOpts {
+  userName?: string;
+  /** واژگان آموخته‌شده — همان KPIِ کارنامه (knownCount) */
+  knownCount: number;
+  /** مخرجِ همان کسرِ DOM — از TOTAL_VOCABULARY */
+  totalVocabulary: number;
+  /** میانگین نمرات — ۰ وقتی نتیجهای نیست (صادق) */
+  avgPercent: number;
+  /** فعالیت ۳۰ روز اخیر */
+  monthTotal: number;
+  /** بهترین زنجیرهٔ فعالیت */
+  bestStreak: number;
+  /** زنجیرهٔ فعلی — فقط با عددِ مثبت نمایش میآید */
+  streak: number;
+  /** کدِ یادگیرنده — ۸ نویسهٔ اولِ userId مثلِ DOM */
+  learnerCode?: string;
+  /** r285/286 — نشانهای بازِ همان ارزیابیِ واحد (الزامی — الگویِ هفته‌نامه؛
+   * سرشماریِ زمان-کامپایل مجریِ تغذیه است) */
+  badges: { title: string; tier: BadgeTier }[];
+}
+
+export async function downloadOfficialImage(opts: OfficialImageOpts): Promise<boolean> {
+  const c = await officialCanvas(opts);
+  if (!c) return false;
+  return downloadCanvasBlob(c, "vision2-official.png");
+}
+
+async function officialCanvas(opts: OfficialImageOpts): Promise<HTMLCanvasElement | null> {
+  try {
+    if (typeof document !== "undefined" && document.fonts?.ready) {
+      await document.fonts.ready;
+    }
+    const family =
+      typeof document !== "undefined"
+        ? getComputedStyle(document.body).fontFamily || "sans-serif"
+        : "sans-serif";
+    if (typeof document === "undefined") return null;
+    const canvas = document.createElement("canvas");
+    canvas.width = 1080;
+    canvas.height = 740;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return null;
+    const W = 1080;
+    const H = 740;
+    studyShell(ctx, W, H, family, false);
+
+    // ---------- title + letterhead ----------
+    ctx.direction = "rtl";
+    ctx.textBaseline = "middle";
+    ctx.textAlign = "right";
+    ctx.fillStyle = uiColors.stone[900];
+    ctx.font = `800 34px ${family}`;
+    ctx.fillText("گزارش پیشرفت درسی", W - 90, 192);
+    ctx.fillStyle = uiColors.stone[400];
+    ctx.font = `700 16px ${family}`;
+    ctx.fillText(
+      truncate(ctx, "وب‌کتاب آموزشی ویژن ۲ — زبان انگلیسی ۲ (پایهٔ یازدهم)", 640),
+      W - 90,
+      228
+    );
+
+    // ---------- learner ----------
+    if (opts.userName) {
+      ctx.fillStyle = uiColors.stone[900];
+      ctx.font = `800 32px ${family}`;
+      ctx.fillText(truncate(ctx, opts.userName, 280), W - 90, 285);
+      ctx.fillStyle = uiColors.stone[400];
+      ctx.font = `700 18px ${family}`;
+      ctx.fillText("یادگیرندهٔ وب‌کتاب", W - 90, 318);
+    } else {
+      ctx.fillStyle = uiColors.stone[400];
+      ctx.font = `700 20px ${family}`;
+      ctx.fillText("یادگیرندهٔ وب‌کتاب", W - 90, 285);
+    }
+    if (opts.learnerCode) {
+      // دو بخشیِ تمیز: برچسبِ RTL و کدِ LTR جدا کشیده میشوند — میکسِ bidi در
+      // یک رشته، مرزِ جهت را با خطِ تیرهٔ مصنوعی نشان میداد (QAِ بصریِ r286).
+      ctx.direction = "rtl";
+      ctx.textAlign = "left";
+      ctx.fillStyle = uiColors.stone[400];
+      ctx.font = `700 16px ${family}`;
+      ctx.fillText("کد یادگیرنده:", 90, 318);
+      const lblW = ctx.measureText("کد یادگیرنده:").width;
+      ctx.direction = "ltr";
+      ctx.fillText(opts.learnerCode, 90 + lblW + 8, 318);
+    }
+    if (opts.streak > 0) {
+      ctx.direction = "rtl";
+      ctx.textAlign = "right";
+      ctx.fillStyle = uiColors.emerald[600];
+      ctx.font = `900 22px ${family}`;
+      ctx.fillText(`زنجیرهٔ فعلی ${faNum(opts.streak)} روزه`, W - 90, 356);
+    }
+
+    // ---------- KPI row (همان ۴ KPIِ کارنامهٔ رسمی — همان برچسبها) ----------
+    const kpis: { label: string; value: string }[] = [
+      { label: "واژگان آموخته‌شده", value: `${faNum(opts.knownCount)} / ${faNum(opts.totalVocabulary)}` },
+      { label: "میانگین نمرات", value: `${faNum(opts.avgPercent)}٪` },
+      { label: "فعالیت ۳۰ روز اخیر", value: faNum(opts.monthTotal) },
+      { label: "بهترین زنجیرهٔ فعالیت", value: `${faNum(opts.bestStreak)} روز` },
+    ];
+    let kx = W - 90 - 210; // RTL — نخستین KPI از راست
+    for (const k of kpis) {
+      ctx.fillStyle = uiColors.stone[100];
+      roundRect(ctx, kx, 420, 210, 84, 14);
+      ctx.fill();
+      ctx.fillStyle = uiColors.stone[900];
+      ctx.font = `900 24px ${family}`;
+      ctx.textAlign = "center";
+      ctx.fillText(k.value, kx + 105, 456);
+      ctx.fillStyle = uiColors.stone[500];
+      ctx.font = `700 14px ${family}`;
+      ctx.fillText(k.label, kx + 105, 488);
+      kx -= 230;
+    }
+
+    // ---------- badge band (نقاشِ مشترکِ خانواده — r286) ----------
+    drawBadgeBand(ctx, { badges: opts.badges, family, x: 70, y: 524, w: W - 140 });
+
+    // ---------- footer ----------
+    ctx.strokeStyle = uiColors.stone[200];
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(90, H - 108);
+    ctx.lineTo(W - 90, H - 108);
+    ctx.stroke();
+    ctx.direction = "rtl";
+    ctx.textAlign = "right";
+    ctx.fillStyle = uiColors.stone[400];
+    ctx.font = `700 19px ${family}`;
+    ctx.fillText(`گزارش رسمی · ${faDate()}`, W - 90, H - 74);
+    ctx.textAlign = "left";
+    ctx.direction = "ltr";
+    ctx.fillStyle = uiColors.emerald[600];
+    ctx.font = `900 20px ${family}`;
+    const tag =
+      opts.avgPercent >= 85 ? "EXCELLENT RECORD ★" : opts.avgPercent >= 70 ? "STRONG RECORD" : opts.avgPercent >= 50 ? "GOOD PROGRESS" : "KEEP GOING!";
+    ctx.fillText(tag, 90, H - 74);
 
     return ctx.canvas;
   } catch {
