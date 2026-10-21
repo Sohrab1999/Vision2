@@ -7,6 +7,7 @@
 // ------------------------------------------------------------------
 
 import { faNum } from "./study-theme";
+import { BADGES, type BadgeTier } from "./achievements";
 import type { DuelLedgerStats } from "./duel-history";
 import { uiColors } from "./ui-colors";
 
@@ -747,9 +748,31 @@ export interface WeeklyImageOpts {
   bestDay?: { label: string; total: number } | null;
   /** خطِ نبردها — متنِ فارسیِ آماده از بلوکِ هفته‌نامه (ارقامِ فارسی) */
   duelLine?: string;
+  /** r285 — نشانهای بازِ همان ارزیابیِ واحدِ هفتهنامه (title+tier) — الزامی:
+   * کارتِ هم‌رسانی هم باید به «تا کجا رسیده‌ام؟» جواب بدهد؛ سرشماریِ
+   * زمان-کامپایل مجریِ تغذیه است (الگویِ buildEvalInputِ r282). */
+  badges: { title: string; tier: BadgeTier }[];
 }
 
+// r285 — tier chips of the badge band on the weekly canvas card. Same hexes as
+// or-chip-bronze|silver|gold (globals.css) — the weekly-badge-image test locks
+// the mirror so canvas and DOM can never drift apart.
+export const WEEKLY_TIER_CHIP: Record<
+  BadgeTier,
+  { bg: string; ring: string; text: string }
+> = {
+  bronze: { bg: uiColors.orange[100], ring: uiColors.orange[300], text: uiColors.orange[800] },
+  silver: { bg: uiColors.slate[100], ring: uiColors.slate[300], text: uiColors.slate[600] },
+  gold: { bg: uiColors.yellow[100], ring: uiColors.yellow[300], text: uiColors.yellow[700] },
+};
+
 export async function downloadWeeklyImage(opts: WeeklyImageOpts): Promise<boolean> {
+  const c = await weeklyCanvas(opts);
+  if (!c) return false;
+  return downloadCanvasBlob(c, "vision2-weekly.png");
+}
+
+async function weeklyCanvas(opts: WeeklyImageOpts): Promise<HTMLCanvasElement | null> {
   try {
     if (typeof document !== "undefined" && document.fonts?.ready) {
       await document.fonts.ready;
@@ -758,14 +781,14 @@ export async function downloadWeeklyImage(opts: WeeklyImageOpts): Promise<boolea
       typeof document !== "undefined"
         ? getComputedStyle(document.body).fontFamily || "sans-serif"
         : "sans-serif";
-    if (typeof document === "undefined") return false;
+    if (typeof document === "undefined") return null;
     const canvas = document.createElement("canvas");
     canvas.width = 1080;
-    canvas.height = 640;
+    canvas.height = 740;
     const ctx = canvas.getContext("2d");
-    if (!ctx) return false;
+    if (!ctx) return null;
     const W = 1080;
-    const H = 640;
+    const H = 740;
     studyShell(ctx, W, H, family, false);
 
     // ---------- title ----------
@@ -861,6 +884,75 @@ export async function downloadWeeklyImage(opts: WeeklyImageOpts): Promise<boolea
       );
     }
 
+    // ---------- r285: نوارِ نشانها — «تا کجا رسیده‌ام؟» در کارتِ هم‌رسانی هم ----------
+    // نشانها با همان ارزیابیِ واحدِ هفتهنامه از call site میآیند؛ چیپها دقیقاً
+    // رنگِ or-chip-*ِ DOM را میکشند (WEEKLY_TIER_CHIP — تستِ قفلِ تطبیق).
+    ctx.fillStyle = uiColors.stone[100];
+    roundRect(ctx, 70, 524, W - 140, 98, 16);
+    ctx.fill();
+
+    ctx.direction = "rtl";
+    ctx.textAlign = "right";
+    ctx.fillStyle = uiColors.stone[900];
+    ctx.font = `800 20px ${family}`;
+    const hdrW = ctx.measureText("نشان‌های من").width;
+    ctx.fillText("نشان‌های من", W - 100, 551);
+
+    const countLabel = `${faNum(opts.badges.length)} از ${faNum(BADGES.length)}`;
+    ctx.font = `700 15px ${family}`;
+    const cw = ctx.measureText(countLabel).width;
+    const pillR = W - 100 - hdrW - 14;
+    ctx.fillStyle = uiColors.green[50];
+    roundRect(ctx, pillR - cw - 24, 538, cw + 24, 26, 13);
+    ctx.fill();
+    ctx.fillStyle = uiColors.emerald[700];
+    ctx.textAlign = "center";
+    ctx.fillText(countLabel, pillR - cw / 2 - 12, 551);
+
+    if (opts.badges.length === 0) {
+      ctx.fillStyle = uiColors.stone[500];
+      ctx.font = `700 17px ${family}`;
+      ctx.textAlign = "center";
+      ctx.fillText("هنوز نشانی باز نشده — با ادامهٔ تمرین روزانه نشان‌ها همین‌جا هم می‌آیند.", W / 2, 592);
+    } else {
+      ctx.font = `700 16px ${family}`;
+      ctx.textAlign = "center";
+      let cxr = W - 100;
+      let drawn = 0;
+      for (const b of opts.badges) {
+        const w = ctx.measureText(b.title).width + 28;
+        if (cxr - w < 90) break;
+        const st = WEEKLY_TIER_CHIP[b.tier];
+        ctx.fillStyle = st.bg;
+        roundRect(ctx, cxr - w, 574, w, 34, 17);
+        ctx.fill();
+        ctx.strokeStyle = st.ring;
+        ctx.lineWidth = 1;
+        roundRect(ctx, cxr - w, 574, w, 34, 17);
+        ctx.stroke();
+        ctx.fillStyle = st.text;
+        ctx.fillText(b.title, cxr - w / 2, 592);
+        cxr -= w + 10;
+        drawn++;
+      }
+      const hidden = opts.badges.length - drawn;
+      if (hidden > 0) {
+        const label = `+${faNum(hidden)}`;
+        const w = ctx.measureText(label).width + 28;
+        if (cxr - w >= 90) {
+          ctx.fillStyle = uiColors.white;
+          roundRect(ctx, cxr - w, 574, w, 34, 17);
+          ctx.fill();
+          ctx.strokeStyle = uiColors.stone[300];
+          ctx.lineWidth = 1;
+          roundRect(ctx, cxr - w, 574, w, 34, 17);
+          ctx.stroke();
+          ctx.fillStyle = uiColors.stone[500];
+          ctx.fillText(label, cxr - w / 2, 592);
+        }
+      }
+    }
+
     // ---------- footer ----------
     ctx.strokeStyle = uiColors.stone[200];
     ctx.lineWidth = 1.5;
@@ -883,8 +975,8 @@ export async function downloadWeeklyImage(opts: WeeklyImageOpts): Promise<boolea
       H - 74
     );
 
-    return downloadCanvasBlob(ctx.canvas, "vision2-weekly.png");
+    return ctx.canvas;
   } catch {
-    return false;
+    return null;
   }
 }

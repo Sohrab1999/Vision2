@@ -55,14 +55,27 @@ export const uiColors = {
     500: "#ef4444",
   },
   orange: {
+    100: "#ffedd5",
+    300: "#fdba74",
     500: "#f97316",
     600: "#ea580c",
+    800: "#9a3412",
   },
   fuchsia: {
     50: "#fdf4ff",
     500: "#d946ef",
     600: "#c026d3",
     700: "#a21caf",
+  },
+  slate: {
+    100: "#f1f5f9",
+    300: "#cbd5e1",
+    600: "#475569",
+  },
+  yellow: {
+    100: "#fef9c3",
+    300: "#fde047",
+    700: "#854d0e",
   },
   violet: {
     500: "#8b5cf6",
@@ -98,13 +111,18 @@ export type UiColors = typeof uiColors;
 /**
  * راند ۱۹۴ — رنگِ ۶۰۰یِ هر خانوادهٔ درسی برای پینترهای بوم (حلقهٔ پیشرفت،
  * دوناتِ واژگان). پیش‌تر lesson-view و home-bookshelf هر واژهٔ ناشناخته را
- * به زمردی می‌انداختند (violet/sky/teal lessons حلقهٔ زمردی می‌گرفتند —
+ * به زمردی می‌انداشتند (violet/sky/teal lessons حلقهٔ زمردی می‌گرفتند —
  * تقریبِ ناصادقانه)؛ اکنون هر خانواده رنگِ خودش را می‌خواند.
  *
  * پیاده‌سازیِ آگاهانه بدونِ هیچ رشتهٔ غیر-hex: برگِ ۶۰۰ همان خانواده مستقیم
  * از درختِ uiColors خوانده می‌شود — قراردادِ تستِ ui-colors («هر string داخلِ
  * ماژول باید hex باشد») دست‌نخورده می‌ماند. تازه‌واردِ ناشناخته → زمردی
  * (پیش‌فرضِ تاریخی، همان رفتارِ themeOf).
+ *
+ * راند ۲۸۵ — خانوادههای slate/yellow و برگهای 100/300/800ِ orange برای
+ * چیپهای تیرِ نوارِ نشانها روی کارتهای بوم (WEEKLY_TIER_CHIP در result-image):
+ * همان ۹hexِ `or-chip-bronze|silver|gold` در globals.css:1205 — تست
+ * weekly-badge-image-r285 تطبیقِ دوطرف را قفل میکند تا بوم و DOM هرگز واگرا نشوند.
  */
 export function ring600(color: string): string {
   const fam = (uiColors as Record<string, Record<number, string | undefined> | undefined>)[color];

@@ -221,6 +221,9 @@ export default function WeeklyReportSection() {
         d && d.thisWeek > 0
           ? `${faNum(d.thisWeek)}${d.truncated ? "+" : ""} نبرد واژگانی این هفته — ${faNum(d.win)} برد، ${faNum(d.loss)} باخت${d.tie > 0 ? `، ${faNum(d.tie)} مساوی` : ""}`
           : undefined,
+      // r285 — همان ارزیابیِ واحدِ نوارِ نشانها به کارتِ PNG هم میرسد؛
+      // هیچ ارزیابیِ دومی وجود ندارد — آرایه از unlockedBadgesِ همین رندر میآید.
+      badges: unlockedBadges.map((b) => ({ title: b.title, tier: b.tier })),
     });
     setImgBusy(false);
     toast(
