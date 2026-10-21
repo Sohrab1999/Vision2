@@ -44,10 +44,21 @@ export function mergeSyncData(local: SyncData, remote: SyncData): SyncData {
  * Apply a merged snapshot through the live store (persist middleware writes
  * it atomically — no localStorage race with concurrent set() calls).
  * Device-owned fields (settings / dailyGoal / onboarded) are untouched.
+ *
+ * Task 293 — «absent means absent»: a merge may legitimately yield
+ * `undefined` for a field (mergeLibraryDone returns undefined when both
+ * sides are empty — the round-trip contract), but zustand's setState
+ * treats an explicit undefined as a VALUE: Object.assign would overwrite
+ * the slice default `{}` with it and any later reader of that field
+ * crashes on Object.keys(undefined). Undefined entries are dropped here,
+ * so a live store never loses a slice default through a merge.
  */
 export function applyMergedSnapshot(merged: SyncData): boolean {
   try {
-    useStudy.setState(merged);
+    const clean = Object.fromEntries(
+      Object.entries(merged).filter(([, v]) => v !== undefined),
+    ) as Partial<SyncData>;
+    useStudy.setState(clean);
     return true;
   } catch {
     return false;

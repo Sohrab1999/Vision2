@@ -229,14 +229,21 @@ export function maybeAutoBackup(force = false): "written" | "skipped" | "unchang
   }
 }
 
-/** Read the automatic snapshot (null when absent/corrupt). */
+/** Read the automatic snapshot (null when absent/corrupt).
+ *  Task 293 — the data is UNTRUSTED here: months-old auto-backup blobs
+ *  were written by an older collectData() that returned parsed state
+ *  unsanitized, and the profile popover renders this snapshot directly
+ *  (autoSnap.data.known). Every field now goes through the same
+ *  SyncField sanitize the file-import path already uses — a legacy or
+ *  corrupt blob degrades to field defaults instead of crashing the
+ *  popover render (and restoreAutoBackup inherits the same guarantee). */
 export function readAutoBackup(): AutoBackup | null {
   try {
     const raw = localStorage.getItem(AUTO_KEY);
     if (!raw) return null;
     const parsed = JSON.parse(raw) as AutoBackup;
     if (!parsed || typeof parsed.savedAt !== "string" || !parsed.data) return null;
-    return parsed;
+    return { ...parsed, data: sanitizeAll(parsed.data) };
   } catch {
     return null;
   }

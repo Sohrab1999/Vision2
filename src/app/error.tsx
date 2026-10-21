@@ -7,6 +7,7 @@
 import { useEffect, useState } from "react";
 import { BookX, Home, RotateCcw } from "lucide-react";
 import { reportClientError } from "@/lib/client-error-reporter";
+import { healChunkFailure, isChunkLoadFailure } from "@/lib/chunk-heal";
 
 export default function ErrorPage({
   error,
@@ -29,6 +30,17 @@ export default function ErrorPage({
       stack: error.stack,
       digest: error.digest,
     });
+    // Task 293 — the captured real-world case is a stale-chunk crash:
+    // the tab stays open across redeploys, old HTML asks for old chunks,
+    // a lazy view dies with ChunkLoadError. Evidence first (keepalive
+    // survives), then ONE hard reload per 60s window — fresh HTML ships
+    // the fresh chunk map and the page comes back on its own. A second
+    // failure inside the window keeps the manual buttons in charge.
+    // (No local state: the heal IS a navigation — the reload renders
+    // whatever it renders; setState here would only cascade.)
+    if (isChunkLoadFailure(`${error.message ?? ""}\n${error.stack ?? ""}`)) {
+      healChunkFailure();
+    }
   }, [error]);
 
   return (

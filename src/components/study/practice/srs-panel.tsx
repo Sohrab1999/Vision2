@@ -53,6 +53,10 @@ export default function SrsPanel() {
     const forecast = new Array<number>(7).fill(0);
     const items = Object.values(srs) as SrsItem[];
     for (const it of items) {
+      // Task 293 — a null entry in a raw-hydrated map (legacy/corrupt
+      // blob) must skip, not crash the whole panel; totals stay honest
+      // because `total` still counts every key.
+      if (!it || typeof it.dueAt !== "number" || typeof it.level !== "number") continue;
       if (it.dueAt <= now) due++;
       else {
         const dayOffset = Math.floor((it.dueAt - now) / DAY_MS);
