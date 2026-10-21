@@ -36,7 +36,10 @@ const p = new PrismaClient();
         "exam_dictation_start",
         // task 190: the dictation-tab QA path (tile + streak bar probes) leaves
         // dictation_done completions and the freeze_badge grant behind
-        "dictation_done", "freeze_badge"].includes(e.name)) {
+        "dictation_done", "freeze_badge",
+        // task 283: the qa-fresh-session --play mode completes a REAL 60s rush
+        // hand end-to-end — every scripted play leaves one rush_done aggregate
+        "rush_done"].includes(e.name)) {
         await p.eventDay.delete({ where: { day_name: { day: e.day, name: e.name } } });
         console.log("QA event row removed:", e.name, "=", e.count);
       }
