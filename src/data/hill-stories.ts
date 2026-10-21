@@ -1763,6 +1763,217 @@ He ran behind the wall anxiously, but Peter was all right. 'I'm sorry, sir,' he 
       { en: "to miss", fa: "خطا رفتن، نزدن" },
     ],
   },
+  {
+    id: "s3-7",
+    book: "s3",
+    num: 7,
+    title: "The Summer Visitors",
+    text: `Mr Richards worked in a small seaside town, and he and his wife had a comfortable house near the sea. During the winter they were quite happy there, but every summer a lot of their relatives used to want to come and stay with them, because it was a nice place for a holiday, and it was much cheaper than staying in a hotel.
+
+Finally one June Mr Richards complained to an intelligent friend of his who lived in the same place. 'One of my wife's cousins intends to bring her husband and children and spend ten days with us next month again. How do you prevent all your relatives coming to live with you in the summer?'
+
+'Oh,' the friend answered, 'that isn't difficult. I just borrow money from all the rich ones, and lend it to all the poor ones. After that, none of them come again.'`,
+    tf: [
+      { q: "Mr and Mrs Richards did not have many relatives.", a: false },
+      { q: "Mr and Mrs Richards often went to stay with their relatives in the summer.", a: false },
+      { q: "Mrs Richards's cousin decided to visit them.", a: true },
+      { q: "Mr Richards was not at all happy about this.", a: true },
+      { q: "A friend of his told him how to stop the visitors.", a: true },
+      { q: "The friend borrowed money from his poor relatives and lent money to his rich ones.", a: false },
+    ],
+    bq: [
+      "Where did Mr and Mrs Richards live?",
+      "What was their house like?",
+      "Why were they happier in winter than in summer?",
+      "Why did their relatives want to visit them?",
+      "Who did Mr Richards ask for advice then?",
+      "What did his friend answer?",
+      "Why did the friend's relatives not want to visit him again?",
+    ],
+    glossary: [
+      { en: "relative", fa: "بستگان، فامیل" },
+      { en: "complain", fa: "شکایت کردن" },
+      { en: "borrow", fa: "قرض گرفتن" },
+      { en: "lend", fa: "قرض دادن" },
+    ],
+  },
+  {
+    id: "s3-8",
+    book: "s3",
+    num: 8,
+    title: "Mrs Scott's Curtains",
+    text: `Mrs Scott bought a new house last year. The walls of the rooms had been painted a short time before, and Mrs Scott liked the colours, but the person who had sold her the house had taken the curtains with him, so Mrs Scott had to buy new ones, and of course she wanted to buy ones whose colours would go with the walls of her rooms. She discovered that her comb was exactly the same colour as these walls, so she always took it with her whenever she went to look for cloth for curtains.
+
+In one shop she showed the shopkeeper the comb and then looked at various cloths for curtains for half an hour with him, until he got tired and said to her, 'Madam, wouldn't it be easier just to buy some cloth you like, and then find a new comb to go with that?'`,
+    tf: [
+      { q: "When Mrs Scott bought her new house, she did not have the walls painted.", a: true },
+      { q: "She kept the curtains which the last owner had had.", a: false },
+      { q: "She wanted curtains whose colour would go with the walls.", a: true },
+      { q: "Her comb and the walls were the same colour.", a: true },
+      { q: "Her comb and the curtains were the same colour.", a: false },
+      { q: "The shopkeeper found the right cloth in half an hour.", a: false },
+    ],
+    bq: [
+      "Why did Mrs Scott not want to have the walls of her new house painted?",
+      "Why did she have to buy new curtains?",
+      "What kind of curtains did she want?",
+      "Why did she take her comb with her when she went looking for cloth?",
+      "What did she do in one shop?",
+      "What did the shopkeeper say to her at last?",
+    ],
+    glossary: [
+      { en: "curtain", fa: "پرده" },
+      { en: "comb", fa: "شانه" },
+      { en: "cloth", fa: "پارچه" },
+      { en: "paint", fa: "رنگ کردن" },
+    ],
+  },
+  {
+    id: "s3-9",
+    book: "s3",
+    num: 9,
+    title: "The Policeman's Whistle",
+    text: `Helen lived with her sister Mary. Both of them were about seventy-five years old, and neither of them had ever married. They had a small, old car, and when they wanted to go somewhere, which they did very rarely, Mary always drove, because her eyes were better.
+
+One weekend they drove to a large town to look at some things which they had read about in the newspaper. Neither of them had been to that town before.
+
+They were driving along in a lot of traffic when they turned right into a street which cars were not allowed to go into. There was a policeman there, and he blew his whistle, but Mary did not stop, so he got on to his motor-cycle and followed them. After he had ordered them to stop, he said, 'Didn't you hear me blow my whistle?'
+
+'Yes, we did,' admitted Mary politely, 'but Mummy told us never to stop when men whistle at us.'`,
+    tf: [
+      { q: "Helen and Mary were sisters.", a: true },
+      { q: "Both of them were quite young.", a: false },
+      { q: "Neither of the sisters had ever married.", a: true },
+      { q: "Mary always drove, because her eyes were better.", a: true },
+      { q: "A policeman tried to stop their car one day.", a: true },
+      { q: "Mary did not stop, because she did not hear his whistle.", a: false },
+    ],
+    bq: [
+      "Who did Helen live with?",
+      "How old were the two sisters?",
+      "Why did Mary always drive?",
+      "Where did they drive one weekend?",
+      "What did the policeman do when Mary did not stop?",
+      "What did Mary answer at last?",
+    ],
+    glossary: [
+      { en: "motor-cycle", fa: "موتورسیکلت" },
+      { en: "admit", fa: "اعتراف کردن" },
+      { en: "traffic", fa: "ترافیک" },
+      { en: "politely", fa: "با ادب" },
+    ],
+  },
+  {
+    id: "s3-10",
+    book: "s3",
+    num: 10,
+    title: "Mr Thompson's Useful Lesson",
+    text: `In England nobody under the age of eighteen is allowed to drink in a public bar.
+
+Mr Thompson used to go to a bar near his house quite often, but he never took his son, Tom, because he was too young. Then when Tom had his eighteenth birthday, Mr Thompson took him to his usual bar for the first time. They drank for half an hour, and then Mr Thompson said to his son, 'Now, Tom, I want to teach you a useful lesson. You must always be careful not to drink too much. And how do you know when you've had enough? Well, I'll tell you. Do you see those two lights at the end of the bar? When they seem to have become four, you've had enough and should go home.'
+
+'But, Dad,' said Tom, 'I can only see one light at the end of the bar.'`,
+    tf: [
+      { q: "When Tom was under eighteen, his father took him to a public bar.", a: false },
+      { q: "Tom's eighteenth birthday was the first time his father took him to his usual bar.", a: true },
+      { q: "There were two lights at the end of the bar.", a: true },
+      { q: "Mr Thompson wanted to teach Tom not to drink too much.", a: true },
+      { q: "Mr Thompson thought he was seeing four lights.", a: false },
+      { q: "Tom could see only one light at the end of the bar.", a: true },
+    ],
+    bq: [
+      "Who can drink in public bars in England?",
+      "Why did Mr Thompson not take Tom to his usual bar for a long time?",
+      "When did he take him there?",
+      "What did Mr Thompson want to teach his son?",
+      "When should one go home, according to Mr Thompson?",
+      "What did Tom answer?",
+    ],
+    glossary: [
+      { en: "public bar", fa: "میخانهٔ عمومی" },
+      { en: "be careful", fa: "محتاط بودن" },
+      { en: "seem", fa: "به نظر رسیدن" },
+      { en: "had enough", fa: "به اندازهٔ کافی مصرف کرده بود" },
+    ],
+  },
+  {
+    id: "s3-11",
+    book: "s3",
+    num: 11,
+    title: "Mr Davis at the Fun-Fair",
+    text: `Mr and Mrs Davis had four children. One Saturday Mrs Davis said to her husband, 'The children haven't got any lessons today, and you're free too. There's a fun-fair in the park. Let's all go.'
+
+Her husband was doubtful about this. 'I want to finish some work,' he said.
+
+'Oh, forget about it and come to the fair!' his wife said.
+
+So Mr and Mrs Davis took the children to the fun-fair. Mr Davis was forty-five years old, but he enjoyed the fun-fair more than the children. He hurried from one thing to another, and ate lots of sweets and nuts.
+
+One of the children said to her mother, 'Daddy's behaving just like a small child, isn't he, Mummy?'
+
+Mrs Davis was quite tired of following her husband around by now, and she answered, 'He's worse than a small child, Mary, because he's got his own money!'`,
+    tf: [
+      { q: "Mr Davis and his children did not work on Saturdays.", a: true },
+      { q: "Mr Davis was eager to go to the fun-fair, but his wife was not.", a: false },
+      { q: "Mr Davis enjoyed the fun-fair more than the children did.", a: true },
+      { q: "He behaved just like a small child.", a: true },
+      { q: "Mrs Davis got quite tired of following her husband around.", a: true },
+      { q: "Mr Davis did not like the fun-fair.", a: false },
+    ],
+    bq: [
+      "How many children did Mr and Mrs Davis have?",
+      "Where did Mrs Davis suggest that they should take them?",
+      "How did Mr Davis feel about this at first?",
+      "What did Mr Davis do at the fair?",
+      "What did one of the children say about him?",
+      "What did Mrs Davis answer?",
+    ],
+    glossary: [
+      { en: "fun-fair", fa: "شهربازی، بوستانِ بازی" },
+      { en: "behave", fa: "رفتار کردن" },
+      { en: "doubtful", fa: "مردد" },
+      { en: "sweets", fa: "شیرینی‌ها" },
+    ],
+  },
+  {
+    id: "s3-12",
+    book: "s3",
+    num: 12,
+    title: "Mr Jones and the Accounts Department",
+    text: `Mr Jones bought some things from a big shop last month, and when he got the bill a few days ago, he thought that there was a mistake in it, so he telephoned the shop and asked to speak to the Accounts Department. 'Who do you want to speak to in the Accounts Department?' the telephone operator asked.
+
+'It doesn't matter to me,' Mr Jones answered. He did not know the names of any of the people who worked there. He heard nothing for a few seconds and then the operator said, 'Hullo, you wanted to speak to someone in the Accounts Department, didn't you?'
+
+'Yes, that's right,' Mr Jones answered.
+
+'Would you like to speak to Mr Hankinson?' the operator said.
+
+'Yes, that'll be all right,' Mr Jones said patiently. 'It doesn't matter who I speak to.'
+
+'I'm sorry,' the operator answered, 'but Mr Hankinson isn't in today.'`,
+    tf: [
+      { q: "Mr Jones got a bill from a big shop.", a: true },
+      { q: "He believed that there was a mistake in the bill.", a: true },
+      { q: "Mr Jones did not know the names of any of the people in the Accounts Department.", a: true },
+      { q: "Mr Jones said it did not matter who he spoke to.", a: true },
+      { q: "Mr Hankinson was not in the Accounts Department that day.", a: true },
+      { q: "The operator connected Mr Jones to Mr Hankinson.", a: false },
+    ],
+    bq: [
+      "Why did Mr Jones telephone the big shop?",
+      "What did the telephone operator ask him?",
+      "What did he answer?",
+      "What did the operator say after a few seconds?",
+      "Whom did the operator offer to connect him to?",
+      "What did the operator say at the end?",
+    ],
+    glossary: [
+      { en: "bill", fa: "صورت‌حساب" },
+      { en: "accounts department", fa: "بخشِ حساب‌ها" },
+      { en: "operator", fa: "اپراتورِ تلفن" },
+      { en: "patiently", fa: "با صبر" },
+    ],
+  },
 ];
 
 // ---------------- پرسش‌گرهای خالص (تست‌پذیر بدون DOM) ----------------
