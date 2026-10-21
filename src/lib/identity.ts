@@ -46,6 +46,30 @@ export async function ensureIdentity(): Promise<Identity | null> {
 
 export type DuelOutcome = "win" | "loss" | "tie";
 
+/** r279 «وعده برقرار شد» — pseudo-badge id in seenBadges (no schema change:
+ *  the badges pipeline already persists, merges and travels this array). */
+export const FIRST_VISIBLE_BADGE_ID = "first-visible";
+
+/**
+ * r279 — the fulfillment of r278's deferred promise. The naming toast said
+ * «با اولین فعالیتت … دیده میشوی»; the moment a NAMED stats row is actually
+ * accepted by the server IS that moment (feed rows and leaderboard rows both
+ * come from /api/stats). Fires exactly once ever — the one-shot flag reuses
+ * the seenBadges pipeline. Never let a celebration break the stats path.
+ */
+function celebrateFirstVisible(): void {
+  try {
+    const s = useStudy.getState();
+    if (!s.userName || s.seenBadges.includes(FIRST_VISIBLE_BADGE_ID)) return;
+    s.markBadgesSeen([FIRST_VISIBLE_BADGE_ID]);
+    window.dispatchEvent(
+      new CustomEvent("first-visible", { detail: { name: s.userName } })
+    );
+  } catch {
+    /* celebration is best-effort by contract */
+  }
+}
+
 export interface StatsPayload {
   lesson: number;
   category: string;
@@ -70,6 +94,8 @@ export async function sendStats(payload: StatsPayload): Promise<boolean> {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ ...payload, ...ident }),
     });
+    // r279 — a server-accepted row from a named learner = the promise moment
+    if (res.ok) celebrateFirstVisible();
     return res.ok;
   } catch {
     return false;

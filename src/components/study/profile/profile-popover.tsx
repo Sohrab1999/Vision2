@@ -111,6 +111,24 @@ export default function ProfilePopover() {
     return () => window.removeEventListener("open-profile", handler);
   }, [userName, avatarColor]);
 
+  // r279 «وعده برقرار شد» — the fulfillment toast for r278's deferred promise:
+  // identity.ts fires "first-visible" when the server accepts the FIRST named
+  // stats row (exactly once ever, flag = seenBadges pseudo-badge). This view
+  // is the naming-UX home, so the celebration lives here too.
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const name = (e as CustomEvent<{ name?: string }>).detail?.name;
+      if (!name) return;
+      toast({
+        title: "✓ وعده برقرار شد",
+        description: `اولین فعالیتت با نام «${name}» ثبت شد — حالا در جدول امتیازات کلاس و فید فعالیت دیده میشوی.`,
+        duration: 6000,
+      });
+    };
+    window.addEventListener("first-visible", handler);
+    return () => window.removeEventListener("first-visible", handler);
+  }, [toast]);
+
   const saveProfile = () => {
     const name = nameDraft.trim();
     if (name.length < 2) return;
