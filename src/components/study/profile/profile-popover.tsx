@@ -114,10 +114,22 @@ export default function ProfilePopover() {
   const saveProfile = () => {
     const name = nameDraft.trim();
     if (name.length < 2) return;
+    // r278 — the anonymous→named transition is the payoff moment of the
+    // deferred invitation: until the first activity the name appears nowhere
+    // (leaderboard rows and feed entries both require activity), so the toast
+    // must promise visibility HONESTLY — deferred to the first activity.
+    const firstNaming = !named;
     setProfile(name, colorDraft);
     // Phase-0: signed profile update (server-side claim for legacy rows too)
     sendProfile({ name, color: colorDraft }).catch(() => {});
     setSaved(true);
+    if (firstNaming) {
+      toast({
+        title: "✓ نامت ثبت شد",
+        description: `با اولین فعالیتت، «${name}» در جدول امتیازات کلاس و فید فعالیت دیده میشود.`,
+        duration: 5000,
+      });
+    }
     setTimeout(() => setOpen(false), 900);
   };
 
