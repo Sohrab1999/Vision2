@@ -162,7 +162,7 @@ agent-browser eval "(()=>{
   return 'AUTO-ANSWERER-ON';
 })()" > /dev/null 2>&1
 
-# راند ۶۰ ثانیه است — از ثانیهٔ ۵۸ هر ۲ث پیمایش تا done؛ toastِ جشن در همان پیمایشِ done یا یک پله بعدش گرفته میشود.
+# راند ۶۰ ثانیه است — از ثانیهٔ ۵۸ هر ۲ث پیمایش تا done؛ بعدش پنجرهٔ بخششِ پیوستهٔ ۸ثانیه‌ای (ر285) toastِ تأخیری را هم میگیرد.
 sleep 58
 TOAST="no"; FTOAST="no"; DONE="no"; SCORE="?"; CLICKS="?"
 for i in 1 2 3 4 5 6 7 8; do
@@ -180,18 +180,28 @@ for i in 1 2 3 4 5 6 7 8; do
   CLICKS=$(echo "$P" | sed -n 's/.*clicks=\([0-9]*\).*/\1/p')
   SC=$(echo "$P" | sed -n 's/.*score=\([^ ]*\).*/\1/p')
   [ -n "$SC" ] && [ "$SC" != "?" ] && SCORE="$SC"
-  case "$P" in
-    DONE*)
-      DONE="yes"
-      if [ "$TOAST" != "yes" ]; then sleep 2; # جشن بلافاصله پس از res.ok میآید — یک پله صبر
-        T2=$(agent-browser eval "(()=>{const all=[...document.querySelectorAll('[role=status]')].map(d=>d.textContent||'').join(' ');return ((window.__celebrated||all.includes('وعده برقرار شد'))?'yes':'no')+' '+((window.__ftoast||all.includes('پاسخ درست از'))?'yes':'no');})()" 2>/dev/null)
-      case "$T2" in yes*) TOAST="yes" ;; esac
-      case "$T2" in *yes) FTOAST="yes" ;; esac
-      fi
-      break ;;
-  esac
+  case "$P" in DONE*) DONE="yes"; break ;; esac
   sleep 2
 done
+
+# پنجرهٔ بخششِ پیوسته (r285): جشن فقط پس از res.okِ sendStats میآید و رویِ سرورِ سردِ
+# آغازِ راند (کامپایلِ مسیر پس از بیکاری) همان fetch میتواند ۱-۳ث طول بکشد —
+# تک‌خوانیِ ۲ثانیهایِ پیشین درست در همین پنجره کور میشد؛ هر سه فاشیلیِ تاریخ
+# (run1ِ راندهای ۲۸۳/۲۸۴/۲۸۵) با امضایِ toast=no ftoast=no feed-self=1 از همینجا میآمد
+# در حالی که نشانِ «اولین دیده‌شدن» ماندگار باز شده بود (محصول سالم، سنجش کور).
+# حالا ۸ثانیه × ۵۰۰ms میخوانیم؛ تأخیرِ واقعی در TOAST_DELAY ثبت میشود و اگر پس از
+# ۸ثانیه هم هیچ نرسید، حکمِ «مرگِ لوله» با شواهدِ هوادار صادر میشود.
+TOAST_DELAY="0"
+if [ "$DONE" = "yes" ] && [ "$TOAST" != "yes" ]; then
+  for j in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16; do
+    sleep 0.5
+    G=$(agent-browser eval "(()=>{const all=[...document.querySelectorAll('[role=status]')].map(d=>d.textContent||'').join(' ');return ((window.__celebrated||all.includes('وعده برقرار شد'))?'yes':'no')+' '+((window.__ftoast||all.includes('پاسخ درست از'))?'yes':'no');})()" 2>/dev/null)
+    G="${G//\"/}"
+    case "$G" in yes*) TOAST="yes"; TOAST_DELAY="$(awk "BEGIN{printf \"%.1f\", $j*0.5}")s" ;; esac
+    case "$G" in *yes) FTOAST="yes" ;; esac
+    [ "$TOAST" = "yes" ] && break
+  done
+fi
 
 agent-browser eval "(()=>{ if(window.__rushTimer) clearInterval(window.__rushTimer); if(window.__celebTimer) clearInterval(window.__celebTimer); return 'ok'; })()" > /dev/null 2>&1
 
@@ -210,13 +220,13 @@ FEED="${FEED//\"/}"
 SELFN=$(echo "$FEED" | sed -n 's/.*SELF-ROWS=\([0-9]*\).*/\1/p')
 [ -z "$SELFN" ] && SELFN="0"
 
-echo "result=PLAYED name=${NAME} toast=${TOAST} ftoast=${FTOAST} feed-self=${SELFN} clicks=${CLICKS:-?} score=${SCORE}"
+echo "result=PLAYED name=${NAME} toast=${TOAST} toastDelay=${TOAST_DELAY} ftoast=${FTOAST} feed-self=${SELFN} clicks=${CLICKS:-?} score=${SCORE}"
 if [ "$TOAST" = "yes" ] && [ "$SELFN" -ge 1 ]; then
   echo "PLAYED: real hand closed the full chain — r279 celebration + feed self-row (userId from server)"
 elif [ "$TOAST" = "no" ] && [ "$FTOAST" = "yes" ] && [ "$SELFN" -ge 1 ]; then
   echo "PLAYED (known-anomaly): finish toast fired but celebration did NOT — dispatch→handler gap (r279 1-in-N, see worklog 284)"
 elif [ "$TOAST" = "no" ] && [ "$FTOAST" = "no" ]; then
-  echo "PLAYED (degraded): NO toast at all — the toast pipeline itself dropped at finish"
+  echo "PLAYED (degraded): NO toast even after the 8s continuous grace window — real pipeline death (r285-grade evidence; see worklog 284/285)"
 elif [ "$TOAST" = "yes" ] && [ "$SELFN" = "0" ]; then
   echo "PLAYED (partial): celebration ok but feed self-row missing — inspect /api/stats recent payload"
 else
