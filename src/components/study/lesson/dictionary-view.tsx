@@ -547,8 +547,9 @@ export default function DictionaryView() {
                 className="mt-2 border-t border-dashed border-stone-200 pt-2 text-[11px] font-black text-stone-600"
               >
                 جمعِ {faNum(usageRank.rows.length)} درس: {faNum(usageRank.sumUsed)} از{" "}
-                {faNum(usageRank.sumTotal)} واژه در جزوه · بی‌کاربردها: {faNum(usageRank.sumTotal - usageRank.sumUsed)}{" "}
-                واژه
+                {faNum(usageRank.sumTotal)} واژه در جزوه (٪{pctFa(usageRank.sumUsed / usageRank.sumTotal)}) ·
+                بی‌کاربردها: {faNum(usageRank.sumTotal - usageRank.sumUsed)}{" "}
+                واژه (٪{pctFa((usageRank.sumTotal - usageRank.sumUsed) / usageRank.sumTotal)})
               </p>
             </div>
           )}
