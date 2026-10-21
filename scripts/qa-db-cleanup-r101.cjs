@@ -42,7 +42,10 @@ const p = new PrismaClient();
         "rush_done",
         // task 286: the official-report PNG card QA click fires the share event —
         // same QA-only construction as print_report's siblings in this loopback env
-        "official_image"].includes(e.name)) {
+        "official_image",
+        // task 287: the duel-done PNG card QA click fires duel_image (download or
+        // native share) — same QA-only construction as official_image above
+        "duel_image"].includes(e.name)) {
         await p.eventDay.delete({ where: { day_name: { day: e.day, name: e.name } } });
         console.log("QA event row removed:", e.name, "=", e.count);
       }
