@@ -242,11 +242,15 @@ export default function SmartPracticeView() {
       {/* ------------------------------ session config ------------------------------ */}
       <div className="rounded-2xl border c-card p-5 shadow-sm sm:p-6">
         <p className="mb-2 text-[13px] font-bold text-stone-600">طول جلسه:</p>
-        <div className="mb-5 flex flex-wrap gap-2">
+        {/* راند ۲۷۲ — انتخابگرِ طولِ جلسه a11y گرفت: گروهِ نام‌دار + aria-pressed
+            (قراردادِ فیلترِ پایهٔ ضمیمه — همان ایدئومِ posGrade)؛ سه دکمه پیشتر
+            فقط با رنگ انتخاب را اعلام می‌کردند. */}
+        <div className="mb-5 flex flex-wrap gap-2" role="group" aria-label="طول جلسهٔ تمرین هوشمند">
           {SIZE_OPTIONS.map((n) => (
             <button
               key={n}
               onClick={() => setSize(n)}
+              aria-pressed={size === n}
               className={`rounded-xl border-2 px-5 py-2.5 text-sm font-black transition-[background-color,color,border-color,transform] active:scale-[0.96] ${
                 size === n
                   ? "border-violet-500 bg-violet-50 text-violet-700"
