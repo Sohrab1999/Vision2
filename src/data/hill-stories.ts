@@ -795,6 +795,316 @@ The two men carried the heavy cupboard out of Miss Green's bedroom and came to t
       { en: "stairs", fa: "پله‌ها" },
     ],
   },
+  {
+    id: "s1-20",
+    book: "s1",
+    num: 20,
+    title: "Mr Edwards and the Crying Guest",
+    text: `Mr Edwards likes singing very much, but he is very bad at it. He went to dinner at a friend's house last week, and there were some other guests there too.
+
+They had a good dinner, and then the hostess went to Mr Edwards and said, 'You can sing, Peter. Please sing us something.'
+
+Mr Edwards was very happy, and he began to sing an old song about the mountains of Spain. The guests listened to it for a few minutes, and then one of the guests began to cry. She was a small woman, and she had dark hair and very dark eyes.
+
+One of the other guests went to her, put his hand on her back and said, 'Please don't cry. Are you Spanish?'
+
+Another young man asked, 'Do you love Spain?'
+
+'No,' she answered, 'I'm not Spanish, and I've never been to Spain. I'm a singer, and I love music!'`,
+    tf: [
+      { q: "Mr Edwards likes singing very much.", a: true },
+      { q: "He sang before dinner.", a: false },
+      { q: "He sang a song about England.", a: false },
+      { q: "The woman cried because she was Spanish.", a: false },
+      { q: "The woman cried because she loved Spain.", a: false },
+      { q: "The woman was a singer.", a: true },
+    ],
+    bq: [
+      "Can Mr Edwards sing well?",
+      "Where did he go last week?",
+      "Who else was there?",
+      "What did his hostess ask Mr Edwards after dinner?",
+      "What did Mr Edwards sing about?",
+      "What did one of the other guests do?",
+      "What did another guest ask her?",
+      "And what did she say then?",
+    ],
+    glossary: [
+      { en: "hostess", fa: "میزبان" },
+      { en: "guest", fa: "مهمان" },
+      { en: "sing", fa: "آواز‌خواندن" },
+      { en: "cry", fa: "گریه‌کردن" },
+    ],
+  },
+  {
+    id: "s1-21",
+    book: "s1",
+    num: 21,
+    title: "Hans and the Brussels Hotel",
+    text: `Hans said to his friend Kurt, 'I'm going to take my car and drive to London.'
+
+Kurt said, 'Driving to London is very difficult. You aren't going to find your hotel.'
+
+But Hans was not afraid. He drove to Calais, put his car on the ship, took it off at Dover, and drove to London.
+
+He stopped near the city and looked at his map. Then he drove into London, but he did not find his hotel. He drove round and round for an hour, and then he stopped and got out of his car. A taxi came, and Hans stopped it. 'Take me to the Brussels Hotel,' he said. But he did not get into the taxi: he got back into his car. The taxi man laughed, but then he drove to the Brussels Hotel, and Hans followed him in his car. They reached the hotel in two minutes.`,
+    tf: [
+      { q: "Hans drove to London.", a: true },
+      { q: "He went from Calais to Dover in an aeroplane.", a: false },
+      { q: "He found his hotel easily.", a: false },
+      { q: "He drove round for an hour.", a: true },
+      { q: "He got into the taxi.", a: false },
+      { q: "He followed the taxi to the hotel.", a: true },
+    ],
+    bq: [
+      "What did Hans say to Kurt?",
+      "What did Kurt answer?",
+      "What did Hans do then?",
+      "What did he do when he was near the city?",
+      "What did he not find?",
+      "What did he do then?",
+      "What did he say to the taxi man?",
+      "How did he get to the hotel?",
+    ],
+    glossary: [
+      { en: "taxi", fa: "تاکسی" },
+      { en: "map", fa: "نقشه" },
+      { en: "afraid", fa: "ترسان" },
+      { en: "reach", fa: "رسیدن به" },
+    ],
+  },
+  {
+    id: "s1-22",
+    book: "s1",
+    num: 22,
+    title: "George and the Wrong Car",
+    text: `George is a young man. He does not have a wife, but he has a very big dog—and he has a very small car too. He likes playing tennis. Last Monday he played tennis for an hour at his club, and then he ran out and jumped into a car. His dog came after him, but it did not jump into the same car; it jumped into the next one.
+
+'Come here, silly dog!' George shouted at it, but the dog stayed in the other car.
+
+George put his key into the lock of the car, but the key did not turn. Then he looked at the car again. It was not his! He was in the wrong car! And the dog was in the right one! 'He's sitting and laughing at me!' George said angrily. But then he smiled and got into his car with the dog.`,
+    tf: [
+      { q: "George has a wife and a very big dog.", a: false },
+      { q: "His car is quite small.", a: true },
+      { q: "He belongs to a football club.", a: false },
+      { q: "After his tennis last Monday, his dog did not get into the car with him.", a: true },
+      { q: "George shouted, and the dog came to him.", a: false },
+      { q: "The dog was in the right car, and George was in the wrong one.", a: true },
+    ],
+    bq: [
+      "What did George do at his club last Monday?",
+      "And what did he do when he finished?",
+      "What did his dog do?",
+      "What did George shout to the dog?",
+      "What did the dog do?",
+      "Why did the key not turn in the lock of the car?",
+      "What did George say?",
+      "What did he do then?",
+    ],
+    glossary: [
+      { en: "silly", fa: "احمق" },
+      { en: "shout", fa: "دادزدن" },
+      { en: "lock", fa: "قفل" },
+      { en: "wrong", fa: "اشتباه" },
+    ],
+  },
+  {
+    id: "s1-23",
+    book: "s1",
+    num: 23,
+    title: "Fred and Betty's Newspaper",
+    text: `Fred Williams worked in a factory with a lot of other men. They talked and laughed a lot, and at lunch time they sat together and read newspapers and laughed about the pictures in them.
+
+Then Fred married. His wife was Betty. She was very nice, but she liked better newspapers than Fred. Every day a boy brought Fred's newspaper and Betty's newspaper to the house, and Fred took his to the factory and left Betty's in the hall. Once or twice he looked at hers, but he did not like it, and sometimes in the evening he said to Betty, 'Why do you read that paper? I hate it.'
+
+But last Monday Fred said to his wife, 'There was something very nice in that newspaper yesterday.'
+
+Betty was happy. 'Oh!' she said. 'That's good, Fred. What was that?'
+
+Fred laughed and said, 'My friend Bill's lunch. He brought it to work in the newspaper!'`,
+    tf: [
+      { q: "Fred's wife, Betty, liked better newspapers than Fred.", a: true },
+      { q: "Every day a boy brought two newspapers to Fred's house.", a: true },
+      { q: "Fred took Betty's newspaper to work.", a: false },
+      { q: "Fred hated Betty's newspaper.", a: true },
+      { q: "Fred read a nice story in Betty's newspaper.", a: false },
+      { q: "Fred saw a nice picture in Betty's newspaper.", a: false },
+    ],
+    bq: [
+      "Where did Fred work?",
+      "What did the men do at lunch time?",
+      "Whom did Fred marry?",
+      "What did Betty like?",
+      "What did Fred sometimes say about her newspaper?",
+      "What did he say to her last Monday?",
+      "What did Betty answer?",
+      "And what did Fred say then?",
+    ],
+    glossary: [
+      { en: "factory", fa: "کارخانه" },
+      { en: "newspaper", fa: "روزنامه" },
+      { en: "marry", fa: "ازدواج‌کردن" },
+      { en: "hate", fa: "متنفر‌بودن از" },
+    ],
+  },
+  {
+    id: "s1-24",
+    book: "s1",
+    num: 24,
+    title: "The Runners After the Cinema",
+    text: `Mr and Mrs Jones very seldom go out in the evening, but last Saturday Mrs Jones said to her husband, 'There's a good film at the cinema tonight. Can we go and see it?'
+
+Mr Jones was quite happy about it, so they went, and both of them enjoyed the film.
+
+They came out of the cinema at 11 o'clock, got into their car and began driving home. It was quite dark. Then Mrs Jones said, 'Look, Bill. A woman's running along the road very fast, and a man's running after her. Can you see them?'
+
+Mr Jones said, 'Yes, I can.' He drove the car slowly near the woman and said to her, 'Can we help you?'
+
+'No, thank you,' the woman said, but she did not stop running. 'My husband and I always run home after the cinema, and the last one washes the dishes at home!'`,
+    tf: [
+      { q: "Mr and Mrs Jones often stayed at home.", a: true },
+      { q: "They went to the cinema last Saturday.", a: true },
+      { q: "They enjoyed the film.", a: true },
+      { q: "It was dark when they went home.", a: true },
+      { q: "A man ran after a woman.", a: true },
+      { q: "Mr and Mrs Jones took the woman home.", a: false },
+    ],
+    bq: [
+      "Do Mr and Mrs Jones go out often in the evening?",
+      "Where did they go last Saturday evening?",
+      "What did they do when they came out of the cinema?",
+      "What did Mrs Jones say to her husband in the car?",
+      "What did Mr Jones answer?",
+      "What did he do?",
+      "What did he say to the woman?",
+      "What was her answer?",
+    ],
+    glossary: [
+      { en: "seldom", fa: "به‌ندرت" },
+      { en: "cinema", fa: "سینما" },
+      { en: "dark", fa: "تاریک" },
+      { en: "dishes", fa: "ظرف‌ها" },
+    ],
+  },
+  {
+    id: "s1-25",
+    book: "s1",
+    num: 25,
+    title: "Mr Grace the Doorman",
+    text: `There were a lot of men's clubs in London a few years ago. Men went there and read their newspapers quietly, or drank or had meals with their friends.
+
+All of these men's clubs had a lot of very good servants. At every club one of the servants was a doorman. Mr Grace was the doorman of one of these clubs. He was fifty-five years old, and he had grey hair and a big grey moustache. The telephone rang in his office at six o'clock in the evening, and a woman spoke to him. She said, 'Are you the doorman of the George Club?'
+
+'Yes, I am,' Mr Grace answered.
+
+'Please give my husband a message,' the woman said.
+
+'Your husband isn't at the club this evening,' Mr Grace answered.
+
+'But I haven't told you his name!' the woman said angrily.
+
+'That isn't necessary,' Mr Grace answered. 'No husband is ever at the club.'`,
+    tf: [
+      { q: "There were a lot of men's clubs in London.", a: true },
+      { q: "The men's clubs had very good servants.", a: true },
+      { q: "Mr Grace was a young man.", a: false },
+      { q: "The name of the club was the George Club.", a: true },
+      { q: "Mr Grace took a message from the woman.", a: false },
+      { q: "The woman gave Mr Grace her husband's name.", a: false },
+    ],
+    bq: [
+      "What did men do in their clubs in London a few years ago?",
+      "What was Mr Grace?",
+      "What did a woman say to him when she telephoned him?",
+      "What did Mr Grace answer?",
+      "What did the woman say then?",
+      "What did Mr Grace say?",
+      "What did the woman say to him then?",
+      "And what was his answer?",
+    ],
+    glossary: [
+      { en: "doorman", fa: "دوردار" },
+      { en: "servant", fa: "خدمتکار" },
+      { en: "moustache", fa: "سبیل" },
+      { en: "message", fa: "پیغام" },
+    ],
+  },
+  {
+    id: "s1-26",
+    book: "s1",
+    num: 26,
+    title: "Jimmy and the Sea",
+    text: `Jimmy lives in London and he began swimming a few months ago. He likes swimming, and he often goes to the swimming-pool near his house with his mother and swims there for an hour or two.
+
+He was six years old last week, and his mother said, 'You swim quite well now, Jimmy, but you've never seen the sea, have you? Your father and I are going to take you there on Sunday, and you're going to swim in the sea. It isn't cold now, and it's much nicer than a swimming-pool.'
+
+Jimmy's father and mother took him to the sea in their car on Sunday, and they stopped at the side of a small harbour. Jimmy got out and looked at the sea for a long time, but he was not very happy. Then he said to his mother, 'Which is the shallow end?'`,
+    tf: [
+      { q: "Jimmy is eight years old.", a: false },
+      { q: "Jimmy often goes to the swimming-pool with his mother.", a: true },
+      { q: "Jimmy does not swim well.", a: false },
+      { q: "Jimmy had never been to the sea before.", a: true },
+      { q: "Jimmy, his father and mother went to the sea in their car.", a: true },
+      { q: "Jimmy jumped into the sea.", a: false },
+    ],
+    bq: [
+      "Where does Jimmy live?",
+      "What does he like?",
+      "Where does he swim?",
+      "What did his mother say to him last week?",
+      "Where did his parents take him on Sunday?",
+      "What did Jimmy do there?",
+      "Was he happy?",
+      "What did he say to his mother?",
+    ],
+    glossary: [
+      { en: "swimming-pool", fa: "استخر" },
+      { en: "harbour", fa: "بندرگاه" },
+      { en: "shallow", fa: "کم‌عمق" },
+      { en: "sea", fa: "دریا" },
+    ],
+  },
+  {
+    id: "s1-27",
+    book: "s1",
+    num: 27,
+    title: "Mrs Green at the Traffic Lights",
+    text: `Mrs Green was eighty, but she had a small car, and she always drove to the shops in it on Saturday and bought her food.
+
+She did not drive fast, because she was old, but she drove well and never hit anything. Sometimes her grandchildren said to her, 'Please don't drive your car, Grandmother. We can take you to the shops.'
+
+But she always said, 'No, I like driving. I've driven for fifty years, and I'm not going to stop now.'
+
+Last Saturday she stopped her car at some traffic-lights because they were red, and then it did not start again. The lights were green, then yellow, then red, then green again, but her car did not start.
+
+'What am I going to do now?' she said.
+
+But then a policeman came and said to her kindly, 'Good morning. Don't you like any of our colours today?'`,
+    tf: [
+      { q: "Mrs Green had a small car.", a: true },
+      { q: "She always bought her food on Saturday.", a: true },
+      { q: "She did not drive well.", a: false },
+      { q: "She has driven for fifty years.", a: true },
+      { q: "Her grandchildren were happy when she drove her car.", a: false },
+      { q: "Mrs Green's car did not start again.", a: true },
+    ],
+    bq: [
+      "Was Mrs Green old, or young?",
+      "How did she go to the shops?",
+      "Why did she drive slowly?",
+      "Why did she not go to the shops in her grandchildren's cars?",
+      "Why did she stop at the traffic-lights?",
+      "What did her car do then?",
+      "Who came and spoke to her?",
+      "What did he say?",
+    ],
+    glossary: [
+      { en: "traffic-lights", fa: "چراغِ راهنما" },
+      { en: "grandchildren", fa: "نوه‌ها" },
+      { en: "engine", fa: "موتور" },
+      { en: "kindly", fa: "با مهربانی" },
+    ],
+  },
 
   // ================= s2 — Elementary (1,000) =================
   {
