@@ -7,6 +7,7 @@ import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import HomeHero from "./home-hero";
 import HomeToday from "./home-today";
+import HomeContinueReading from "./home-continue-reading";
 import { ListenBanner, RushBanner } from "./home-banners";
 import HomeStarter from "./home-starter";
 import HomeBookshelf from "./home-bookshelf";
@@ -55,6 +56,9 @@ export default function HomeView() {
   const known = useStudy((s) => s.known);
   const results = useStudy((s) => s.results);
   const srs = useStudy((s) => s.srs);
+  // r297 «کتاب‌خانه همه‌جا» — خوانندهٔ داستان هم «یادگیرندهٔ دارای پیشرفت» است
+  // و نمودارها را می‌بیند (گاردِ ?? بیرونِ سلکتور — هم‌الگوی Task 292)
+  const libraryDone = useStudy((s) => s.libraryDone) ?? {};
   const mounted = useMounted();
 
   // Phase-2 «تجربه»: fresh learners get a focused starter path instead of six
@@ -62,7 +66,10 @@ export default function HomeView() {
   // (هم‌ارز summarize().knownCount — فقط valueهای true شمرده می‌شوند)
   const hasProgress =
     mounted &&
-    (Object.values(known).some(Boolean) || Object.keys(results).length > 0 || Object.keys(srs).length > 0);
+    (Object.values(known).some(Boolean) ||
+      Object.keys(results).length > 0 ||
+      Object.keys(srs).length > 0 ||
+      Object.keys(libraryDone).length > 0);
 
   // شعار نقل‌قولی پایین صفحه — بیدارشدن تدریجی (fade)
   const [quoteIn, setQuoteIn] = useState(false);
@@ -75,6 +82,8 @@ export default function HomeView() {
     <div className="space-y-10">
       <HomeHero />
       <HomeToday />
+      {/* r297 «کتاب‌خانه همه‌جا» — حلقهٔ بازگشت به خواندن؛ تازه‌وارد آن را نمی‌بیند */}
+      <HomeContinueReading />
       <DailyQuests />
       <WordOfDay />
       <ListenBanner />

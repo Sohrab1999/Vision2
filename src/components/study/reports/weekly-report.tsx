@@ -10,7 +10,7 @@
 
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { Sparkles, TrendingDown, TrendingUp, Minus, CalendarHeart, Check, Compass, Snowflake, Swords, Timer, ImageDown, Loader2, CalendarClock, Gauge, FileDown, BarChart3, Award } from "lucide-react";
+import { Sparkles, TrendingDown, TrendingUp, Minus, CalendarHeart, Check, Compass, Snowflake, Swords, Timer, ImageDown, Loader2, CalendarClock, Gauge, FileDown, BarChart3, Award, BookMarked } from "lucide-react";
 import { useStudy, daysAgoKey } from "@/lib/study-store";
 import { faNum, secFa } from "@/lib/study-theme";
 import { BADGES, buildEvalInput, unlockedBadgeIds, TIER_CHIP } from "@/lib/achievements";
@@ -20,6 +20,8 @@ import { computeWeeklyDigest, faWeekday, faDayLabel, DUEL_QUICK_WEEK, type Delta
 import { freezeDayMark, freezeLedgerMeta } from "@/lib/freeze-badge";
 import { downloadWeeklyImage } from "@/lib/result-image";
 import { downloadProgressCsv, downloadWeeklyTrendCsv } from "@/lib/progress-csv";
+import { storiesReadSince } from "@/lib/library-progress";
+import { storyById, HILL_TOTAL_STORIES } from "@/data/hill-stories";
 import { useToast } from "@/hooks/use-toast";
 
 const DELTA_META: { field: Delta["field"]; label: string; cls: string }[] = [
@@ -112,6 +114,8 @@ export default function WeeklyReportSection() {
   const freezeUsedDays = useStudy((s) => s.freezeUsedDays);
   const freezeEarnedDay = useStudy((s) => s.freezeEarnedDay);
   const duelHistory = useStudy((s) => s.duelHistory);
+  // r297 «کتاب‌خانه همه‌جا» — نوارِ کتاب‌خانه در هفته‌نامه (هم‌پنجرهٔ ۷روزهٔ دایجست)
+  const libraryDone = useStudy((s) => s.libraryDone) ?? {};
   // r284 — the badge band: the weekly digest answers «این هفته چطور بود؟»؛
   // نشان‌ها جوابِ «تا کجا رسیده‌ام؟»اند — همان ارزیابیِ واحدِ رجیستری (buildEvalInput)
   // که گرید و کارنامهٔ رسمی مصرف میکنند؛ منبعِ یگانه، هیچ ارزیابیِ موازی‌ای.
@@ -170,6 +174,9 @@ export default function WeeklyReportSection() {
 
   // Task 186 — گامِ بعدی: خالص و بی‌useMemo (کامنتِ findNextStep)
   const nextStep = findNextStep(results, known);
+
+  // r297 — داستان‌های این هفته (هم‌پنجرهٔ دایجست: ۷روزِ اخیر، امروز شامل)
+  const weekReads = storiesReadSince(libraryDone, daysAgoKey(6), daysAgoKey(0));
 
   // r284 — ارزیابیِ نشان‌ها با همان ورودیِ سرشماری‌شده؛ useMemo هم‌قراردادِ
   // کارنامهٔ رسمی ( deps کامل — نه کم نه زیاد)
@@ -346,6 +353,45 @@ export default function WeeklyReportSection() {
                 {b.title}
               </span>
             ))}
+          </div>
+        )}
+      </div>
+
+      {/* r297 — نوار کتاب‌خانه: داستان‌های این هفته + پیشرفت کل سه‌گانه.
+          هم‌پنجرهٔ ۷روزهٔ دایجست؛ شمارش از storiesReadSince (منبعِ یگانه با
+          کارتِ «ادامهٔ خواندن» و چیپِ نمودار) — بی‌داده هم صادق: خطِ خنثی،
+          نه حذفِ نوار — هم‌قراردادِ نوارِ نشان‌ها. */}
+      <div className="library-band mb-3 rounded-lg c-veil-60 px-2.5 py-2">
+        <div className="flex flex-wrap items-center justify-between gap-1.5">
+          <div className="flex items-center gap-1.5 text-[10.5px] font-extrabold text-stone-600">
+            <BookMarked size={12} className="text-teal-600" aria-hidden />
+            کتاب‌خانهٔ داستان‌ها
+          </div>
+          <span className="c-chip-goal inline-flex items-center gap-0.5 rounded-full border px-1.5 py-0.5 text-[9.5px] font-black">
+            {`${faNum(weekReads.count)} داستان این هفته · ${faNum(Object.keys(libraryDone).length)} از ${faNum(HILL_TOTAL_STORIES)} کل`}
+          </span>
+        </div>
+        {weekReads.count === 0 ? (
+          <p className="mt-1 text-[10px] font-bold leading-5 text-stone-500">
+            {Object.keys(libraryDone).length === 0
+              ? "هنوز داستانی نخوانده‌ای — کتاب‌خانهٔ داستان‌های دکتر هیل از ابزارهای خانه در دسترس است."
+              : "این هفته داستانِ تازه‌ای نخوانده‌ای — داستانِ بعدیِ تو منتظر است."}
+          </p>
+        ) : (
+          <div className="mt-1.5 flex flex-wrap gap-1">
+            {weekReads.ids.map((id) => {
+              const st = storyById(id);
+              return (
+                <span
+                  key={id}
+                  title={st ? st.title : id}
+                  className="inline-flex items-center gap-1 rounded-full bg-teal-50 px-2 py-0.5 text-[9.5px] font-black text-teal-700"
+                >
+                  <BookMarked size={10} aria-hidden />
+                  <span dir="ltr">{st ? st.title : id}</span>
+                </span>
+              );
+            })}
           </div>
         )}
       </div>

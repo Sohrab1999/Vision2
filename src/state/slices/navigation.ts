@@ -10,6 +10,9 @@ export interface NavigationSlice {
   lessonTab: LessonTab;
   flashIntent: FlashIntent;
   flashNonce: number; // bumped on every "smart" intent so VocabTab remounts into flashcards
+  /** راند ۲۹۷ — نیتِ «این داستان را باز کن»: کارتِ «ادامهٔ خواندن» خانه با آن
+   * خوانندهٔ کتاب‌خانه را مستقیم روی داستانِ بعدی باز می‌کند (هم‌الگوی flashIntent) */
+  libraryIntent: string | null;
 
   goHome: () => void;
   openLesson: (id: number, flashIntent?: FlashIntent) => void;
@@ -32,6 +35,9 @@ export interface NavigationSlice {
   setView: (v: View) => void;
   setLessonTab: (t: LessonTab) => void;
   consumeFlashIntent: () => void;
+  /** راند ۲۹۷ — رفتن به کتاب‌خانه با نیتِ بازکردنِ یک داستانِ مشخص */
+  openLibraryStory: (storyId: string) => void;
+  consumeLibraryIntent: () => void;
 }
 
 export const createNavigationSlice: StateCreator<StudyStore, [], [], NavigationSlice> = (set) => ({
@@ -39,6 +45,7 @@ export const createNavigationSlice: StateCreator<StudyStore, [], [], NavigationS
   lessonTab: "vocab",
   flashIntent: "none",
   flashNonce: 0,
+  libraryIntent: null,
 
   goHome: () => set({ view: { type: "home" }, flashIntent: "none" }),
   openLesson: (id, flashIntent = "none") =>
@@ -66,4 +73,7 @@ export const createNavigationSlice: StateCreator<StudyStore, [], [], NavigationS
   setView: (v) => set({ view: v, flashIntent: "none" }),
   setLessonTab: (t) => set({ lessonTab: t }),
   consumeFlashIntent: () => set({ flashIntent: "none" }),
+  openLibraryStory: (storyId) =>
+    set({ view: { type: "library" }, libraryIntent: storyId, flashIntent: "none" }),
+  consumeLibraryIntent: () => set({ libraryIntent: null }),
 });

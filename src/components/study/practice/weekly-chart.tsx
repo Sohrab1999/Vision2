@@ -2,11 +2,13 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { BarChart3, Flame, ListChecks, Grid3X3 } from "lucide-react";
+import { BarChart3, BookMarked, Flame, ListChecks, Grid3X3 } from "lucide-react";
 import { useStudy, lastNDays } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
 import { faDayLabel } from "@/lib/weekly-digest";
+import { daysAgoKey } from "@/state/day-engine";
+import { storiesReadSince } from "@/lib/library-progress";
 
 /**
  * نمودار فعالیت — نوارهای انباشتهٔ ۷ روز اخیر + نقشهٔ حرارتی ۳۰ روزه
@@ -14,10 +16,17 @@ import { faDayLabel } from "@/lib/weekly-digest";
 export default function WeeklyChart() {
   const history = useStudy((s) => s.history);
   const dailyGoal = useStudy((s) => s.dailyGoal);
+  // r297 «کتاب‌خانه همه‌جا» — چیپِ داستانِ خوانده‌شده در همان پنجره‌ها
+  // (گاردِ ?? بیرونِ سلکتور — هم‌الگوی Task 292 در library-view)
+  const libraryDone = useStudy((s) => s.libraryDone) ?? {};
   const mounted = useMounted();
   const [range, setRange] = useState<"week" | "month">("week");
   const days = mounted ? lastNDays(7, history) : [];
   const monthDays = mounted ? lastNDays(30, history) : [];
+
+  const today = daysAgoKey(0);
+  const weekStories = mounted ? storiesReadSince(libraryDone, daysAgoKey(6), today).count : 0;
+  const monthStories = mounted ? storiesReadSince(libraryDone, daysAgoKey(29), today).count : 0;
 
   const weekTotal = days.reduce((s, d) => s + d.total, 0);
   const activeDays = days.filter((d) => d.total > 0).length;
@@ -149,7 +158,7 @@ export default function WeeklyChart() {
             </div>
 
             {/* summary chips */}
-            <div className="mt-4 grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
               <div className="rounded-xl bg-emerald-50 p-2.5 text-center">
                 <ListChecks size={15} className="mx-auto mb-1 text-emerald-600" />
                 <div className="text-base font-black text-stone-800">
@@ -163,6 +172,11 @@ export default function WeeklyChart() {
                   {faNum(days.reduce((s, d) => s + d.reviews, 0))}
                 </div>
                 <div className="text-[10px] text-stone-500">مرور این هفته</div>
+              </div>
+              <div className="rounded-xl bg-teal-50 p-2.5 text-center">
+                <BookMarked size={15} className="mx-auto mb-1 text-teal-600" />
+                <div className="text-base font-black text-stone-800">{faNum(weekStories)}</div>
+                <div className="text-[10px] text-stone-500">داستان این هفته</div>
               </div>
               <div className="rounded-xl bg-sky-50 p-2.5 text-center">
                 <BarChart3 size={15} className="mx-auto mb-1 text-sky-600" />
@@ -213,7 +227,7 @@ export default function WeeklyChart() {
             </div>
 
             {/* summary chips */}
-            <div className="mt-4 grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
               <div className="rounded-xl bg-emerald-50 p-2.5 text-center">
                 <ListChecks size={15} className="mx-auto mb-1 text-emerald-600" />
                 <div className="text-base font-black text-stone-800">
@@ -227,6 +241,11 @@ export default function WeeklyChart() {
                   {faNum(monthDays.reduce((s, d) => s + d.reviews, 0))}
                 </div>
                 <div className="text-[10px] text-stone-500">مرور این ماه</div>
+              </div>
+              <div className="rounded-xl bg-teal-50 p-2.5 text-center">
+                <BookMarked size={15} className="mx-auto mb-1 text-teal-600" />
+                <div className="text-base font-black text-stone-800">{faNum(monthStories)}</div>
+                <div className="text-[10px] text-stone-500">داستان ۳۰روزه</div>
               </div>
               <div className="rounded-xl bg-sky-50 p-2.5 text-center">
                 <BarChart3 size={15} className="mx-auto mb-1 text-sky-600" />

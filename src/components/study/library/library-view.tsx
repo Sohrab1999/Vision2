@@ -70,7 +70,14 @@ export default function LibraryView() {
   // must degrade to «zero progress», never crash the whole app.
   const libraryDone = useStudy((s) => s.libraryDone) ?? {};
   const markStoryDone = useStudy((s) => s.markStoryDone);
-  const [openStoryId, setOpenStoryId] = useState<string | null>(null);
+  // r297 — نیتِ «ادامهٔ خواندن»: کارتِ خانه میتواند مستقیم یک داستان را بخواهد؛
+  // lazy-init بدونِ فلشِ فهرست، و مصرفِ نیت در یک اثرِ یک‌بار (هم‌الگوی flashIntent)
+  const [openStoryId, setOpenStoryId] = useState<string | null>(
+    () => useStudy.getState().libraryIntent ?? null,
+  );
+  useEffect(() => {
+    if (useStudy.getState().libraryIntent) useStudy.getState().consumeLibraryIntent();
+  }, []);
   const { toast } = useToast();
 
   const doneCount = mounted ? Object.keys(libraryDone).length : 0;
