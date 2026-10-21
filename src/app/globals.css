@@ -321,6 +321,16 @@ body {
   background: transparent;
 }
 
+/* r270 — نوارِ فشردهٔ موبایل: اسکرولِ افقیِ بی-نوار — چیپِ بریده در لبه
+   خودِ نشانهٔ سوایپ است؛ نوارِ اسکرول‌بار فقط فضا می‌گیرد. فقط رویِ
+   نوارِ پراکندگیِ دیالوگِ کاربرد (max-sm) — دسکتاپ wrap می‌ماند. */
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
 /* Flashcard 3D flip */
 .flip-scene {
   perspective: 1400px;

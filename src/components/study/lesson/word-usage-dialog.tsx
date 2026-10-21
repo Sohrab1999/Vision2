@@ -194,14 +194,26 @@ function WordUsageDialogBody({
             wrapper را سفر کند. بدونِ z-10: نوارِ positioned بالایِ کارت‌هایِ
             غیر-positioned می‌نشیند و دکمهٔ بستنِ absolute (بعد در DOM)
             بالایِ نوار می‌ماند — هیچ z جعلی‌ای لازم نیست. bgِ opaque: در
-            dark حالتِ نیمه‌شفافِ /60 کارت‌هایِ ردشده را نشان می‌داد. */}
-        <div className="flex flex-col gap-4">
+            dark حالتِ نیمه‌شفافِ /60 کارت‌هایِ ردشده را نشان می‌داد.
+            r270 ① — بارِ فشردهٔ موبایل: در ۳۹۰px چیپ‌ها به ۴ ردیف پیچیده
+            و نوار ۱۶۱px می‌شد — یک‌پنجمِ ویوپورت فقط برایِ کنترل‌ها. زیرِ
+            sm یک ردیفِ افقیِ سوایپ‌شدنی می‌گیرد (flex-nowrap + overflow-x)
+            با scrollbar-none — چیپِ بریده در لبه خودِ نشانهٔ سوایپ است؛
+            کاربرِ کیبورد هم با tab داخلِ چیپ‌ها به همه می‌رسد (فوکوس
+            خودکارِ offscreen را scroll می‌کند). دسکتاپ دست‌نخورده: wrap
+            برایِ ≥sm می‌ماند — جفتِ واکنش‌گرا در همان className. */}
+        {/* min-w-0 (r270): بدونِ آن، min-contentِ نوارِ nowrap از wrapperِ
+            overflow-visible به trackِ gridِ دیالوگ نشت می‌کند و track به
+            ۴۸۰px می‌رو — wrapper اجازهٔ انقباض می‌خواهد تا نوارِ افقی
+            درونِ همان ۳۹۰px اسکرول شود. در انتها — قطعهٔ قفل‌شدهٔ r269
+            پیوسته می‌ماند. */}
+        <div className="flex flex-col gap-4 min-w-0">
         {(lessonCounts.length >= 2 || kindFilter) && (
           <div
             data-testid="usage-lessons-bar"
-            className="sticky top-0 flex flex-wrap items-center gap-1.5 rounded-lg border border-stone-200 bg-stone-50 px-2.5 py-2 dark:border-stone-700 dark:bg-stone-800"
+            className="sticky top-0 flex flex-wrap items-center gap-1.5 rounded-lg border border-stone-200 bg-stone-50 px-2.5 py-2 dark:border-stone-700 dark:bg-stone-800 max-sm:flex-nowrap max-sm:overflow-x-auto max-sm:scrollbar-none"
           >
-            <span className="text-[10.5px] font-black text-stone-500">
+            <span className="shrink-0 whitespace-nowrap text-[10.5px] font-black text-stone-500">
               {kindFilter ? `پراکندگیِ ${activeKindLabel}` : "پراکندگیِ درس‌ها"}:
             </span>
             <span
@@ -213,7 +225,7 @@ function WordUsageDialogBody({
                 (leaderTieNote ? ` · ${leaderTieNote}` : "") +
                 ` · ${faNum(maxLessonCount)} از ${faNum(visibleSites.length)}`
               }
-              className="text-[10.5px] font-bold text-stone-500"
+              className="shrink-0 whitespace-nowrap text-[10.5px] font-bold text-stone-500"
             >
               {leaderStat}
             </span>
@@ -236,8 +248,8 @@ function WordUsageDialogBody({
                 ? `${faNum(count)} از ${faNum(visibleSites.length)} کاربردِ ${activeKindLabel}ِ این واژه در آن`
                 : `${faNum(count)} از ${faNum(visibleSites.length)} کاربردِ این واژه در مکالمه‌ها و ریدینگ‌هایِ آن`;
               const cls = leading
-                ? "inline-flex items-center rounded-md bg-violet-600 px-1.5 py-0.5 text-[10px] font-black text-white"
-                : "inline-flex items-center rounded-md bg-violet-100 px-1.5 py-0.5 text-[10px] font-black text-violet-700";
+                ? "inline-flex items-center shrink-0 whitespace-nowrap rounded-md bg-violet-600 px-1.5 py-0.5 text-[10px] font-black text-white"
+                : "inline-flex items-center shrink-0 whitespace-nowrap rounded-md bg-violet-100 px-1.5 py-0.5 text-[10px] font-black text-violet-700";
               const chipLabel = `درس ${faNum(lessonId)} · ${faNum(count)} از ${faNum(visibleSites.length)}`;
               const leadTitle = leading
                 ? kindFilter
@@ -304,8 +316,8 @@ function WordUsageDialogBody({
                       onClick={() => setKindFilter(active ? null : (k.kind as KindFilter))}
                       className={
                         active
-                          ? "inline-flex items-center rounded-md border border-sky-600 bg-sky-600 px-1.5 py-0.5 text-[10px] font-black text-white"
-                          : "inline-flex items-center rounded-md border border-sky-200 bg-sky-50 px-1.5 py-0.5 text-[10px] font-black text-sky-700"
+                          ? "inline-flex items-center shrink-0 whitespace-nowrap rounded-md border border-sky-600 bg-sky-600 px-1.5 py-0.5 text-[10px] font-black text-white"
+                          : "inline-flex items-center shrink-0 whitespace-nowrap rounded-md border border-sky-200 bg-sky-50 px-1.5 py-0.5 text-[10px] font-black text-sky-700"
                       }
                     >
                       {k.label} {faNum(k.count)}
@@ -370,7 +382,9 @@ function WordUsageDialogBody({
             title={
               showAll
                 ? "کلیک: بازگشت به فهرستِ فشرده"
-                : `کلیک: نمایشِ همهٔ ${faNum(visibleSites.length)} کاربردِ جزوه`
+                : kindFilter && activeKindLabel
+                  ? `کلیک: نمایشِ همهٔ ${faNum(visibleSites.length)} کاربردِ ${activeKindLabel} در جزوه`
+                  : `کلیک: نمایشِ همهٔ ${faNum(visibleSites.length)} کاربردِ جزوه`
             }
             className="mx-auto flex w-fit items-center gap-1 rounded-md border border-stone-200 bg-stone-50 px-2.5 py-1 text-[11px] font-bold text-stone-500 transition-colors duration-150 hover:border-stone-300 hover:bg-stone-100 hover:text-stone-700 dark:border-stone-700 dark:bg-stone-800/60 dark:hover:border-stone-600 dark:hover:bg-stone-800 dark:hover:text-stone-300"
           >

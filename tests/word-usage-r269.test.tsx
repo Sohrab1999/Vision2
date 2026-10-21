@@ -167,10 +167,14 @@ describe("قفل‌هایِ سطحِ منبع (r269)", () => {
   );
 
   it("نوار: sticky top-0 بدونِ z — wrapperِ سفرِ sticky حاضر است", () => {
+    // r270: پسوندِ واکنش‌گرا (بارِ فشردهٔ موبایل) به انتهایِ همان className
+    // افزوده شد — همهٔ قطعه‌هایِ قفل‌شدهٔ r269 پیوسته می‌مانند
     expect(dlgSrc).toContain(
-      'className="sticky top-0 flex flex-wrap items-center gap-1.5 rounded-lg border border-stone-200 bg-stone-50 px-2.5 py-2 dark:border-stone-700 dark:bg-stone-800"'
+      'className="sticky top-0 flex flex-wrap items-center gap-1.5 rounded-lg border border-stone-200 bg-stone-50 px-2.5 py-2 dark:border-stone-700 dark:bg-stone-800 max-sm:flex-nowrap max-sm:overflow-x-auto max-sm:scrollbar-none"'
     );
-    expect(dlgSrc).toContain('<div className="flex flex-col gap-4">');
+    // r270: min-w-0 به wrapper افزوده شد — بدونِ آن min-contentِ نوارِ
+    // nowrap به trackِ grid نشت می‌کرد؛ قطعه‌هایِ r269 پیوسته می‌مانند
+    expect(dlgSrc).toContain('<div className="flex flex-col gap-4 min-w-0">');
     expect(dlgSrc).not.toContain("sticky top-0 z-");
     // نیمه‌شفافیِ کهنه در کلِ فایل نمی‌ماند — نوار opaque است
     expect(dlgSrc).not.toContain('dark:bg-stone-800/60"');
