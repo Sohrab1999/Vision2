@@ -7,7 +7,7 @@
 // پیشرفت در اسلایسِ library (markStoryDone) ذخیره و با سطرِ SyncField
 // «libraryDone» در پشتیبان/همگام‌سازی سفر می‌کند.
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import {
   BookOpen,
@@ -20,6 +20,8 @@ import {
   ListChecks,
   Languages,
   RotateCcw,
+  Search,
+  Sparkles,
 } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -33,6 +35,13 @@ import {
   type HillBook,
   type HillStory,
 } from "@/data/hill-stories";
+import { libraryProgress } from "@/lib/library-progress";
+import {
+  filterStoryIds,
+  readingMinutes,
+  wordCount,
+  type StoryFilter,
+} from "@/lib/library-filter";
 import SpeakButton from "../shared/speak-button";
 import { useToast } from "@/hooks/use-toast";
 
@@ -64,11 +73,21 @@ const THEME: Record<
   },
 };
 
+// r300 — چیپ‌های صافیِ وضعیتِ خواندن؛ شمارش‌ها از منبعِ یگانه (libraryProgress)
+const FILTER_CHIPS: { id: StoryFilter; label: string }[] = [
+  { id: "all", label: "همه" },
+  { id: "unread", label: "نخوانده" },
+  { id: "read", label: "خوانده‌شده" },
+];
+
 export default function LibraryView() {
   const mounted = useMounted();
   // Task 292 — defensive `?? {}`: hydration of a corrupted/legacy payload
   // must degrade to «zero progress», never crash the whole app.
-  const libraryDone = useStudy((s) => s.libraryDone) ?? {};
+  // r298 — گاردِ ?? داخلِ memo: مرجعِ پایدار برای کامپایلرِ react
+  // (با ?? خالیِ هر رندر، حفظِ memo رد میشد — درسِ lint)
+  const libraryDoneRaw = useStudy((s) => s.libraryDone);
+  const libraryDone = useMemo(() => libraryDoneRaw ?? {}, [libraryDoneRaw]);
   const markStoryDone = useStudy((s) => s.markStoryDone);
   // r297 — نیتِ «ادامهٔ خواندن»: کارتِ خانه میتواند مستقیم یک داستان را بخواهد؛
   // lazy-init بدونِ فلشِ فهرست، و مصرفِ نیت در یک اثرِ یک‌بار (هم‌الگوی flashIntent)
@@ -80,7 +99,27 @@ export default function LibraryView() {
   }, []);
   const { toast } = useToast();
 
-  const doneCount = mounted ? Object.keys(libraryDone).length : 0;
+  // r300 «کتابخانهٔ هوشمند» — جست‌وجو و صافیِ فهرست؛ منبعِ یگانهٔ پیشرفت
+  // همان libraryProgress است (هم‌قراردادِ کارتِ خانه/نمودار/هفته‌نامه).
+  const [query, setQuery] = useState("");
+  const [filter, setFilter] = useState<StoryFilter>("all");
+  const prog = libraryProgress(libraryDone);
+  const visibleIds = useMemo(() => {
+    const ids = new Set<string>();
+    for (const book of HILL_BOOKS) {
+      for (const id of filterStoryIds(storiesOfBook(book.id), libraryDone, query, filter)) {
+        ids.add(id);
+      }
+    }
+    return ids;
+  }, [libraryDone, query, filter]);
+  const totalVisible = visibleIds.size;
+  const queryActive = query.trim() !== "" || filter !== "all";
+  const chipCounts: Record<StoryFilter, number> = {
+    all: prog.total,
+    unread: Math.max(0, prog.total - prog.doneCount),
+    read: prog.doneCount,
+  };
   const story = openStoryId ? storyById(openStoryId) : undefined;
   return (
     <div className="mx-auto max-w-4xl px-4 pb-10 pt-4">
@@ -102,7 +141,7 @@ export default function LibraryView() {
             aria-label="پیشرفت کل کتاب‌خانه"
           >
             <BookMarked size={14} aria-hidden />
-            {faNum(doneCount)} از {faNum(HILL_TOTAL_STORIES)} داستان
+            {faNum(prog.doneCount)} از {faNum(HILL_TOTAL_STORIES)} داستان
           </span>
         )}
       </div>
@@ -121,18 +160,92 @@ export default function LibraryView() {
           doneEntry={mounted ? libraryDone[story.id] : undefined}
         />
       ) : (
-        <div className="flex flex-col gap-4">
-          {HILL_BOOKS.map((book, i) => (
-            <BookCard
-              key={book.id}
-              book={book}
-              index={i}
-              mounted={mounted}
-              doneOf={libraryDone}
-              onOpen={setOpenStoryId}
-            />
-          ))}
-        </div>
+        <>
+          {/* r300 — نوارِ جست‌وجو و صافیِ وضعیتِ خواندن */}
+          <div className="mb-4 flex flex-wrap items-center gap-2">
+            <div className="relative min-w-52 flex-1">
+              <Search
+                size={15}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-500"
+                aria-hidden
+              />
+              <input
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="جست‌وجوی عنوانِ انگلیسی یا شمارهٔ داستان…"
+                aria-label="جست‌وجو در داستان‌های کتاب‌خانه"
+                className="w-full rounded-xl border border-stone-200 bg-stone-50 py-2.5 pl-9 pr-9 text-[12.5px] font-bold text-stone-700 outline-none transition-colors placeholder:font-normal placeholder:text-stone-500 focus:border-teal-400 focus:bg-white focus:ring-2 focus:ring-teal-100"
+              />
+              {query && (
+                <button
+                  type="button"
+                  onClick={() => setQuery("")}
+                  className="absolute left-2.5 top-1/2 -translate-y-1/2 text-stone-500 transition-colors hover:text-stone-600"
+                  aria-label="پاک‌کردن جست‌وجو"
+                >
+                  <X size={14} aria-hidden />
+                </button>
+              )}
+            </div>
+            {FILTER_CHIPS.map((f) => (
+              <button
+                key={f.id}
+                type="button"
+                onClick={() => setFilter(f.id)}
+                aria-pressed={filter === f.id}
+                className={`inline-flex items-center gap-1.5 rounded-xl border px-3 py-2 text-[11.5px] font-black transition-colors ${
+                  filter === f.id
+                    ? "border-teal-600 bg-teal-600 text-white shadow-sm"
+                    : "border-stone-200 bg-stone-50 text-stone-500 hover:border-stone-300 hover:text-stone-600"
+                }`}
+              >
+                {f.label}
+                <span className="text-[10px] font-bold opacity-75">
+                  {mounted ? faNum(chipCounts[f.id]) : "–"}
+                </span>
+              </button>
+            ))}
+          </div>
+
+          {totalVisible === 0 ? (
+            /* r300 — حالتِ خالیِ صادق: هیچ داستانی با این جست‌وجو/صافی */
+            <div className="rounded-2xl border border-dashed border-stone-300 bg-stone-50 p-8 text-center">
+              <Search size={22} className="mx-auto mb-2 text-stone-300" aria-hidden />
+              <p className="text-[13px] font-black text-stone-600">داستانی پیدا نشد</p>
+              <p className="mt-1 text-[11.5px] leading-5 text-stone-500">
+                عنوانِ انگلیسی را کامل‌تر بنویس یا شمارهٔ داستان را امتحان کن — مثلاً{" "}
+                <span dir="ltr" className="font-bold">jones</span> یا{" "}
+                <span className="font-bold">۱۲</span>.
+              </p>
+              <button
+                type="button"
+                onClick={() => {
+                  setQuery("");
+                  setFilter("all");
+                }}
+                className="mt-3 rounded-xl border border-stone-200 bg-white px-3 py-1.5 text-[11.5px] font-black text-stone-600 transition-colors hover:bg-stone-100"
+              >
+                پاک‌کردن جست‌وجو و صافی
+              </button>
+            </div>
+          ) : (
+            <div className="flex flex-col gap-4">
+              {HILL_BOOKS.map((book, i) => (
+                <BookCard
+                  key={book.id}
+                  book={book}
+                  index={i}
+                  mounted={mounted}
+                  doneOf={libraryDone}
+                  onOpen={setOpenStoryId}
+                  visible={visibleIds}
+                  nextId={prog.nextStory?.id ?? null}
+                  queryActive={queryActive}
+                />
+              ))}
+            </div>
+          )}
+        </>
       )}
     </div>
   );
@@ -146,16 +259,28 @@ function BookCard({
   mounted,
   doneOf,
   onOpen,
+  visible,
+  nextId,
+  queryActive,
 }: {
   book: HillBook;
   index: number;
   mounted: boolean;
   doneOf: Record<string, { score: number; total: number; day: string }>;
   onOpen: (storyId: string) => void;
+  /** r300 — شناسه‌های هم‌نوا از منبعِ یگانه (filterStoryIds) */
+  visible: Set<string>;
+  /** r300 — نخستین داستانِ نخوانده (libraryProgress) — چیپِ «بعدیِ تو» */
+  nextId: string | null;
+  /** r300 — جست‌وجو یا صافی فعال است؟ (نمایشِ «یافته‌شده» به‌جای نوارِ پیشرفت) */
+  queryActive: boolean;
 }) {
   const t = THEME[book.theme];
   const stories = storiesOfBook(book.id);
   const doneN = mounted ? stories.filter((s) => doneOf[s.id]).length : 0;
+  // r300 — سطرهای هم‌نوا؛ کتابِ خالی در حالتِ جست‌وجو اصلاً رندر نمیشود
+  const shown = stories.filter((s) => visible.has(s.id));
+  if (shown.length === 0) return null;
 
   return (
     <motion.section
@@ -165,33 +290,61 @@ function BookCard({
       aria-label={book.faTitle}
       className={`rounded-2xl border ${t.border} c-card-elevated p-5 shadow-sm`}
     >
-      <div className="mb-3 flex flex-wrap items-center gap-2">
-        <span
-          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${t.grad} text-white shadow-md`}
-          aria-hidden
-        >
-          <BookOpen size={19} />
-        </span>
-        <div className="min-w-0 flex-1">
-          <h2 className="text-[15px] font-black text-stone-800">{book.faTitle}</h2>
-          <p dir="ltr" className="text-left text-[11px] font-bold text-stone-500">
-            {book.enTitle}
-          </p>
-        </div>
-        <span className={`rounded-full border px-2.5 py-1 text-[10.5px] font-black ${t.chip}`}>
-          {book.levelFa}
-        </span>
-        {mounted && (
-          <span className="rounded-full bg-stone-100 px-2.5 py-1 text-[10.5px] font-black text-stone-600">
-            {faNum(doneN)} از {faNum(stories.length)} خوانده‌شده
+      {/* r300 — رفعِ فشردگیِ سرِ کتاب در موبایل: عنوان و چیپ‌ها دو سطرِ جدای
+          تضمین‌شده‌اند (قبلاً flex-1 با basisِ صفر در یک سطرِ flex-wrap با
+          چیپ‌ها تا ۱۴px له میشد — کشفِ هندسهٔ زندهٔ QA). */}
+      <div className="mb-3">
+        <div className="flex items-center gap-3">
+          <span
+            className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${t.grad} text-white shadow-md`}
+            aria-hidden
+          >
+            <BookOpen size={19} />
           </span>
-        )}
+          <div className="min-w-0 flex-1">
+            <h2 className="text-[15px] font-black text-stone-800">{book.faTitle}</h2>
+            <p dir="ltr" className="text-left text-[11px] font-bold text-stone-500">
+              {book.enTitle}
+            </p>
+          </div>
+        </div>
+        <div className="mt-2.5 flex flex-wrap items-center gap-1.5">
+          <span className={`rounded-full border px-2.5 py-1 text-[10.5px] font-black ${t.chip}`}>
+            {book.levelFa}
+          </span>
+          {mounted && (
+            <span className="rounded-full bg-stone-100 px-2.5 py-1 text-[10.5px] font-black text-stone-600">
+              {faNum(doneN)} از {faNum(stories.length)} خوانده‌شده
+            </span>
+          )}
+          {mounted && queryActive && (
+            <span className="rounded-full border border-teal-200 bg-teal-50 px-2.5 py-1 text-[10.5px] font-black text-teal-700">
+              {faNum(shown.length)} داستانِ یافته‌شده
+            </span>
+          )}
+        </div>
       </div>
       <p className="mb-3 text-[12px] leading-6 text-stone-500">{book.desc}</p>
 
+      {/* r300 — نوارِ پیشرفتِ نازکِ هر کتاب (فقط حالتِ مرور) — با scaleXِ
+          paint-only (درسِ قفلِ scoped-transitions: پهنا = reflow، transform = paint) */}
+      {mounted && !queryActive && (
+        <div className="mb-3 h-1.5 w-full overflow-hidden rounded-full bg-stone-100" aria-hidden>
+          <div
+            className={`h-full w-full origin-right rounded-full bg-gradient-to-r ${t.grad} transition-transform duration-500`}
+            style={{
+              transform: `scaleX(${Math.min(1, Math.max(0, doneN / Math.max(1, stories.length)))})`,
+            }}
+          />
+        </div>
+      )}
+
       <ul role="list" className="flex flex-col gap-1.5">
-        {stories.map((s) => {
+        {shown.map((s) => {
           const done = mounted ? doneOf[s.id] : undefined;
+          // r300 — برچسبِ واژه/دقیقه از متنِ واقعی (wordCount/readingMinutes)
+          const wc = wordCount(s.text);
+          const mins = readingMinutes(wc);
           return (
             <li key={s.id}>
               <button
@@ -218,12 +371,23 @@ function BookCard({
                 >
                   {s.title}
                 </span>
+                {/* r300 — متادیتای خواندن؛ در موبایل مخفی تا سطر شلوغ نشود */}
+                <span className="hidden shrink-0 text-[10px] font-bold text-stone-500 sm:inline">
+                  {faNum(wc)} واژه · {faNum(mins)} دقیقه
+                </span>
                 {done && (
                   <span
                     className={`inline-flex shrink-0 items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-black ${t.chip}`}
                   >
                     <Check size={11} aria-hidden />
                     {faNum(done.score)} از {faNum(done.total)}
+                  </span>
+                )}
+                {/* r300 — نشانگرِ «بعدیِ تو» از libraryProgress.nextStory (منبعِ یگانه) */}
+                {s.id === nextId && (
+                  <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-teal-600 px-2 py-0.5 text-[10px] font-black text-white shadow-sm">
+                    <Sparkles size={11} aria-hidden />
+                    بعدیِ تو
                   </span>
                 )}
                 <ChevronLeft size={15} className="shrink-0 text-stone-300" aria-hidden />

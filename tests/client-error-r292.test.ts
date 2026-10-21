@@ -182,7 +182,10 @@ describe("hill library — defensive book lookup (task 292)", () => {
     const src = readFileSync(join(process.cwd(), "src/components/study/library/library-view.tsx"), "utf8");
     expect(src).not.toMatch(/HILL_BOOKS\.find\([^)]*\)!/);
     expect(src).toContain("bookById(story.book)");
-    // the hydration guard: null/undefined libraryDone degrades, never crashes
-    expect(src).toContain("s.libraryDone) ?? {}");
+    // the hydration guard: null/undefined libraryDone degrades, never crashes.
+    // r300 — the guard moved into the stable-memo form (r298 lesson: a bare
+    // `?? {}` per render breaks preserve-manual-memoization); the guard's
+    // intent is unchanged, so the lock follows the blessed pattern.
+    expect(src).toContain("libraryDoneRaw ?? {}");
   });
 });
