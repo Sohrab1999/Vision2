@@ -178,12 +178,21 @@ function WordUsageDialogBody({
               // نامِ a11yِ r253)؛ بی-هندلر، spanِ اطلاعاتیِ r262 دست‌نخورده.
               // r264: زیرِ لنزِ نوع، شمارش و وعدهٔ چیپ هم-لنز می‌شود —
               // «۳ کاربردِ ریدینگِ این واژه در آن»، نه شمارشِ کهنهٔ همه-نوعه.
+              // r267 ① — بندِ ① پیشنهادِ ۲۶۶: مقیاسِ دوتاییِ چیپ‌ها — هر چیپ
+              // حالا خودکفاست: «درس ۵ · ۵ از ۱۳» (زیرِ لنز: «· ۴ از ۱۱») —
+              // مخرج = اندازهٔ همان توزیعِ جاری (visibleSites.length — تک‌منبعِ
+              // r264؛ زیرِ لنز مخرجِ هم-لنز). وعدهٔ aria هم همان مقیاس می‌گیرد
+              // (دو-و-نیمِ WCAG: نامِ دسترس‌پذیری متنِ مرئی را در بر دارد) —
+              // دنبالهٔ وعدهٔ r263 («کاربردِ این واژه در ...») پیوسته می‌ماند
+              // و قفل‌هایِ منبعِ r263/264 سبز می‌مانند؛ فقط دو toBeِ دقیقِ
+              // r264 با مخرج به‌روز شدند.
+              const countNote = kindFilter
+                ? `${faNum(count)} از ${faNum(visibleSites.length)} کاربردِ ${activeKindLabel}ِ این واژه در آن`
+                : `${faNum(count)} از ${faNum(visibleSites.length)} کاربردِ این واژه در مکالمه‌ها و ریدینگ‌هایِ آن`;
               const cls = leading
                 ? "inline-flex items-center rounded-md bg-violet-600 px-1.5 py-0.5 text-[10px] font-black text-white"
                 : "inline-flex items-center rounded-md bg-violet-100 px-1.5 py-0.5 text-[10px] font-black text-violet-700";
-              const countNote = kindFilter
-                ? `${faNum(count)} کاربردِ ${activeKindLabel}ِ این واژه در آن`
-                : `${faNum(count)} کاربردِ این واژه در مکالمه‌ها و ریدینگ‌هایِ آن`;
+              const chipLabel = `درس ${faNum(lessonId)} · ${faNum(count)} از ${faNum(visibleSites.length)}`;
               const leadTitle = leading
                 ? kindFilter
                   ? `بیشترینِ کاربردهایِ ${activeKindLabel} در درسِ ${faNum(lessonId)} است — `
@@ -200,7 +209,7 @@ function WordUsageDialogBody({
                     onClick={() => onOpenLesson(lessonId)}
                     className={cls}
                   >
-                    درس {faNum(lessonId)} · {faNum(count)}
+                    {chipLabel}
                   </button>
                 );
               }
@@ -217,7 +226,7 @@ function WordUsageDialogBody({
                   }
                   className={cls}
                 >
-                  درس {faNum(lessonId)} · {faNum(count)}
+                  {chipLabel}
                 </span>
               );
             })}

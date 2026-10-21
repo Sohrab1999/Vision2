@@ -236,8 +236,9 @@ describe("لنزِ نوع — چیپ‌هایِ دوسطحیِ در-جا (r264 �
     });
     const chip6 = screen.getByTestId("usage-lesson-chip-6");
     const inReading = READING_LENS.filter((s) => s.lessonId === 6).length;
+    // r267: وعدهٔ aria مقیاسِ دوتایی می‌گیرد — «۳ از ۱۱» (مخرجِ هم-لنز)
     expect(chip6.getAttribute("aria-label")).toBe(
-      `رفتن به واژه‌هایِ درسِ ${faNum(6)} — ${faNum(inReading)} کاربردِ ریدینگِ این واژه در آن`
+      `رفتن به واژه‌هایِ درسِ ${faNum(6)} — ${faNum(inReading)} از ${faNum(READING_LENS.length)} کاربردِ ریدینگِ این واژه در آن`
     );
     act(() => {
       fireEvent.click(chip6);
@@ -248,7 +249,7 @@ describe("لنزِ نوع — چیپ‌هایِ دوسطحیِ در-جا (r264 �
       fireEvent.click(screen.getByTestId("usage-kind-chip-reading"));
     });
     expect(screen.getByTestId("usage-lesson-chip-6").getAttribute("aria-label")).toBe(
-      `رفتن به واژه‌هایِ درسِ ${faNum(6)} — ${faNum(3)} کاربردِ این واژه در مکالمه‌ها و ریدینگ‌هایِ آن`
+      `رفتن به واژه‌هایِ درسِ ${faNum(6)} — ${faNum(3)} از ${faNum(CHANGE.length)} کاربردِ این واژه در مکالمه‌ها و ریدینگ‌هایِ آن`
     );
   });
 });

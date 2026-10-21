@@ -480,6 +480,7 @@ export default function DictionaryView() {
                       {usageRank.maxUsed > 0 && r.usedWords === usageRank.maxUsed && (
                         <span
                           data-testid="usage-rank-max"
+                          title="بیشترین واژهٔ در-متن از واژگانِ همان درس — کلیکِ سطر همان واژه‌ها را می‌آورد"
                           className="inline-flex shrink-0 items-center gap-0.5 rounded-full bg-sky-600 px-1.5 py-0.5 text-[9.5px] font-black text-white"
                         >
                           <TrendingUp size={9} aria-hidden />
