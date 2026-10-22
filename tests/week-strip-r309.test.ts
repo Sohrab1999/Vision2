@@ -1,15 +1,17 @@
 // ------------------------------------------------------------------
-// r309/r310/r311 — قفلِ منبعِ نوارِ ۱۴روزه (الگویِ r284 برایِ باندِ نشانها):
+// r309/r310/r311/r312 — قفلِ منبعِ نوارِ ۱۴روزه (الگویِ r284 برایِ باندِ نشانها):
 //   ① نقاشِ drawWeekStrip14 دقیقاً یک‌بار در lib تعریف میشود —
 //     هیچ کارتی نوارِ خودش را نمیکشد
 //   ② دو فراخوانِ رسمی: هفته‌نامه (ستونِ چیپ، ۹۰/۳۰۰) و کارنامهٔ
-//     رسمی (تمام-عرضِ ۹۴۰ زیرِ KPIها) — هندسهها مکتوب
+//     رسمی (تمام-عرضِ ۹۴۰ زیرِ KPIها) — هندسه‌ها مکتوب
 //   ③ گرادیانِ این‌هفته فقط داخلِ نقاشِ واحد ساخته میشود
 //   ④ کارتِ رسمی تغذیه میشود (weekPerDay در officialImageOpts)
 //   ⑤ ارتفاعِ کارتِ رسمی (۸۵۴) و باندِ جابجاشده (۶۳۸) قفلند
 //   ⑥ سطرِ مقایسه داخلِ نقاش است — r311: جملهٔ جهتیِ خواندنی
 //     (بیشتر/کمتر/هم‌پا) از weekStripSums.delta — سه رنگِ قفلشده
 //   ⑦ weekStripSums منبعِ یگانهٔ هر دو جمع و delta است — واحدِ مستقیم دارد
+//   ⑧ r312 — فلشِ جهتیِ مسیر-دستی پیش از جمله (مثلثِ رو به بالا/پایین،
+//     هم‌رنگِ جمله؛ هم‌پا بی‌فلش) — هرگز نویسهٔ گلیفیِ خارج از فونت
 // ------------------------------------------------------------------
 import { describe, it, expect } from "vitest";
 import { readFileSync } from "node:fs";
@@ -86,6 +88,65 @@ describe("نوارِ ۱۴روزه — نقاشِ واحدِ drawWeekStrip14 (r30
     expect(s.prev).toBe(1 + 2 + 3 + 4 + 5 + 6 + 7); // ۲۸
     expect(s.current).toBe(8 + 9 + 10 + 11 + 12 + 13 + 14); // ۷۷
     expect(s.delta).toBe(49); // رشد
+  });
+
+  // r312 — فلشِ جهتیِ مسیر-دستی: مثلثِ canvas، نه نویسهٔ گلیفی
+  it("فلشِ جهتی داخلِ نقاشِ واحد با مسیرِ دستیِ نقاطی است — هر دو جهتِ مثلث", () => {
+    const body = lib().slice(
+      lib().indexOf("function drawWeekStrip14"),
+      lib().indexOf("export function weekStripSums")
+    );
+    // مسیرِ دستی: beginPath → سه رأس → closePath → fill
+    expect(body).toContain("ctx.beginPath()");
+    expect(body).toContain("ctx.moveTo(cx, cy - 5)"); // رأس در بالا — رشد
+    expect(body).toContain("ctx.lineTo(cx + 5, cy + 4)");
+    expect(body).toContain("ctx.moveTo(cx, cy + 5)"); // رأس در پایین — افت
+    expect(body).toContain("ctx.lineTo(cx + 5, cy - 4)");
+    expect(body).toContain("ctx.closePath()");
+    expect(body).toContain("ctx.fill()");
+  });
+
+  it("فلش هرگز نویسهٔ گلیفیِ خارج از فونت نیست — کلِ lib بی‌نویسهٔ ▲▼", () => {
+    const src = lib();
+    expect(src).not.toContain("\u25B2"); // ▲ — جایگزینِ مسیرِ دستی شد
+    expect(src).not.toContain("\u25BC"); // ▼ — جایگزینِ مسیرِ دستی شد
+  });
+
+  it("هندسهٔ فلش قفلست: پهنای ۱۰ + گپِ ۵؛ هم‌پا بی‌فلش و هندسهٔ r311 دست‌نخورده", () => {
+    const body = lib().slice(
+      lib().indexOf("function drawWeekStrip14"),
+      lib().indexOf("export function weekStripSums")
+    );
+    expect(body).toContain("const ARROW_W = 10;");
+    expect(body).toContain("const ARROW_GAP = 5;");
+    // سهحالتهِ صادق: delta صفر → هیچ فلشی کشیده نمیشود و جابجایی صفر است
+    expect(body).toContain("const arrowShift = sums.delta === 0 ? 0 : ARROW_W + ARROW_GAP;");
+    expect(body).toContain("if (sums.delta !== 0) {");
+    // جمله و لنگرِ «این هفته» با همان جابجایی حرکت میکنند
+    expect(body).toContain("startX + arrowShift");
+    expect(body).toContain("startX + arrowShift + dirW + 6");
+  });
+
+  it("رنگِ فلش همان رنگِ جمله است — زمردیِ ۷۰۰/rose-۶۰۰ پیش از مسیر ست میشود", () => {
+    const body = lib().slice(
+      lib().indexOf("function drawWeekStrip14"),
+      lib().indexOf("export function weekStripSums")
+    );
+    // ترتیبِ واقعیِ عملیات در سطرِ مقایسه: رنگ → مسیرِ مثلث → پرشدن →
+    // جملهٔ هم‌رنگ → لنگرِ زمردیِ بعدی. برش از شروعِ سطرِ مقایسه تا
+    // آخرِ نقاش — تا پرشدنِ خانههایِ نوار بالا گمراه‌کننده نشود.
+    const line = body.slice(body.indexOf("const sums = weekStripSums"));
+    const fillStylePos = line.indexOf("ctx.fillStyle =");
+    const beginPathPos = line.indexOf("ctx.beginPath()");
+    const fillPos = line.indexOf("ctx.fill()");
+    const sentencePos = line.indexOf("dirTxt, startX");
+    const fillStyleResetPos = line.indexOf("ctx.fillStyle", fillPos);
+    expect(fillStylePos).toBeGreaterThan(-1);
+    expect(beginPathPos).toBeGreaterThan(fillStylePos); // رنگ پیش از مثلث
+    expect(fillPos).toBeGreaterThan(beginPathPos); // پرشدن پس از مسیر
+    expect(sentencePos).toBeGreaterThan(fillPos); // جمله با همان رنگ — بدونِ fillStyleِ میانی
+    // زمردیِ دوم بعد از جمله میآید (متنِ لنگر خودش بعد از آن در تملپیت است)
+    expect(fillStyleResetPos).toBeGreaterThan(sentencePos);
   });
 
   it("weekStripSums — صفرِ صادق، افتِ منفی، و آرایهٔ تهی", () => {

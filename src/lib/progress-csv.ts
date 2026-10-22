@@ -188,12 +188,27 @@ export function downloadWeeklyTrendCsv(
 // برشِ ۳۰روزه از همان قراردادِ خالصِ monthReads (r304) میآید — هیچ
 // شمارشِ موازی‌ای. «جمعِ فزاینده» شیبِ ماه را برایِ معلم میسازد؛ سطرِ
 // آخرش خودِ جمعِ ماه است — بدونِ سطرِ خلاصهٔ خارجِ جدول.
+//
+// r312 — دو ستونِ هفت‌روزه — کامل‌شدنِ مقایسهٔ دوهفته‌ای در هر سه سطح
+// (بوم: جملهٔ جهتیِ کارتِ PNG / اکسلِ هفتگی: «تفاوت با هفتهٔ پیش» r311 /
+// اکسلِ ماهانه: همین‌جا):
+//   · «جمعِ هفت‌روزه» = جمعِ لغزانِ ۷روزِ منتهی به سطر — فقط از سطرهای
+//     همین جدول (هم‌قراردادِ جمعِ فزاینده)؛ تا ششمین سطر پنجرهٔ کامل
+//     ندارد → خانهٔ تهیِ صادق (نه صفرِ دروغین — همان تمایزِ r311).
+//   · «تفاوت با هفت‌روزهٔ پیش» = جمعِ همین ۷روز منهایِ جمعِ ۷روزِ قبلش
+//     (دو پنجرهٔ غیرهمپوشان — سطر i در برابرِ سطر i−۷)؛ از چهاردهمین
+//     سطر دو پنجرهٔ کاملِ درون-فایلی هست → اولین تفاوتِ صادق. مینوسِ
+//     ASCII برایِ افت.
+//   · سطرِ آخر (امروز) = دقیقاً «جمعِ ۷روزِ آخر در برابرِ ۷روزِ قبلش» —
+//     همان حکایتی که جملهٔ جهتیِ کارت میگوید؛ یک منبع، سه سطح.
 
 export const MONTH_CSV_COLUMNS = [
   "تاریخ",
   "روز هفته",
   "داستان‌ها",
   "جمعِ فزاینده",
+  "جمعِ هفت‌روزه",
+  "تفاوت با هفت‌روزهٔ پیش",
 ] as const;
 
 export const MONTH_CSV_DAYS = 30;
@@ -202,9 +217,19 @@ export function buildMonthCsv(history: DayHistoryMap, today: string): string {
   const m = monthReads(history, today); // منبعِ یگانه — همان نوارِ ماه‌نامهٔ DOM
   const lines: string[] = [MONTH_CSV_COLUMNS.join(",")];
   let running = 0;
-  for (const d of m.perDay) {
+  // r312 — جمعِ لغزانِ ۷روزه برایِ هر سطر؛ null تا وقتی پنجرهٔ کاملِ
+  // درون-پنجرهای نیست (خانهٔ تهیِ صادق — نه صفرِ دروغین).
+  const trailing7: (number | null)[] = m.perDay.map((_, i) =>
+    i >= 6 ? m.perDay.slice(i - 6, i + 1).reduce((s, d) => s + d.count, 0) : null
+  );
+  for (let i = 0; i < m.perDay.length; i += 1) {
+    const d = m.perDay[i];
     running += d.count;
-    lines.push([d.day, faWeekday(d.day), d.count, running].join(","));
+    const w7 = trailing7[i];
+    const prevW7 = w7 === null ? null : trailing7[i - 7] ?? null;
+    const w7Cell = w7 === null ? "" : String(w7);
+    const deltaCell = w7 === null || prevW7 === null ? "" : String(w7 - prevW7);
+    lines.push([d.day, faWeekday(d.day), d.count, running, w7Cell, deltaCell].join(","));
   }
   return lines.join(NL) + NL;
 }

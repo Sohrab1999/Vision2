@@ -1007,11 +1007,43 @@ function drawWeekStrip14(
   ctx.fillStyle =
     sums.delta > 0 ? uiColors.emerald[700] : sums.delta < 0 ? uiColors.rose[600] : uiColors.stone[500];
   ctx.font = `700 13px ${family}`;
-  ctx.fillText(dirTxt, startX, baseline + 42);
+  // r312 — فلشِ جهتیِ پیش از جمله: مثلثِ کوچک با مسیرِ دستیِ canvas — رو به
+  // بالا = رشد (زمردیِ ۷۰۰، هم‌رنگِ جمله) / رو به پایین = افت (rose-۶۰۰) /
+  // هم‌پا = بی‌فلش (جهتِ صفر نشان ندارد — صادقِ سهحالته). عمداً نویسهٔ
+  // گلیفیِ فلش از فونت نمیآید: پوششِ گلیفِ فلشهایِ هندسی در فونتِ کارت رویِ
+  // هر دستگاهی تضمین نیست و جایگزینیِ فونت، شکلِ فلش را خراب میکند؛ مسیرِ
+  // دستیِ نقاطی رویِ هر رندرکنندهای عینِ همان مثلث است. هندسه: پهنای ۱۰،
+  // بلندی ۹، مرکزِ عمودیِ cy = baseline+37 هم‌مرکزِ باندِ بصریِ متنِ ۱۳px
+  // (کپهٔ ~۳۲.۵..۴۲)؛ جمله ۱۵px به راست میرود و لنگرِ «· این هفته» هم
+  // هم‌فاصله دنبالش — در حالتِ بی‌فلش هندسه دقیقاً r311 میماند.
+  const ARROW_W = 10;
+  const ARROW_GAP = 5;
+  const arrowShift = sums.delta === 0 ? 0 : ARROW_W + ARROW_GAP;
+  if (sums.delta !== 0) {
+    const cx = startX + ARROW_W / 2;
+    const cy = baseline + 37;
+    ctx.beginPath();
+    if (sums.delta > 0) {
+      ctx.moveTo(cx, cy - 5); // رأس در بالا — رشد
+      ctx.lineTo(cx + 5, cy + 4);
+      ctx.lineTo(cx - 5, cy + 4);
+    } else {
+      ctx.moveTo(cx, cy + 5); // رأس در پایین — افت
+      ctx.lineTo(cx + 5, cy - 4);
+      ctx.lineTo(cx - 5, cy - 4);
+    }
+    ctx.closePath();
+    ctx.fill();
+  }
+  ctx.fillText(dirTxt, startX + arrowShift, baseline + 42);
   const dirW = ctx.measureText(dirTxt).width;
   ctx.fillStyle = uiColors.emerald[700];
   ctx.font = `900 13px ${family}`;
-  ctx.fillText(`· این هفته: ${faNum(sums.current)} فعالیت`, startX + dirW + 6, baseline + 42);
+  ctx.fillText(
+    `· این هفته: ${faNum(sums.current)} فعالیت`,
+    startX + arrowShift + dirW + 6,
+    baseline + 42
+  );
   ctx.direction = prevDir;
 }
 
