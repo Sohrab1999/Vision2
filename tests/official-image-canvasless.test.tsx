@@ -32,4 +32,15 @@ describe("downloadOfficialImage — بی‌کانواس (r286)", () => {
     });
     expect(ok).toBe(false);
   });
+
+  // r306 — فیلدِ اختیاریِ storiesMonth (سطرِ ماه‌نامه روی کارتِ رسمی) هم از
+  // همان گاردِ بی‌کانواس میگذرد — هر افزودهٔ اختیاریِ کارت این‌جا قفل میشود
+  it("falseِ صادق با storiesMonth (r306) — بی‌انفجار", async () => {
+    const ok = await downloadOfficialImage({
+      ...base,
+      storiesMonth: { total: 6, activeDays: 5, bestCount: 2 },
+      badges: [],
+    });
+    expect(ok).toBe(false);
+  });
 });

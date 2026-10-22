@@ -921,6 +921,14 @@ export async function downloadWeeklyImage(opts: WeeklyImageOpts): Promise<boolea
   return downloadCanvasBlob(c, "vision2-weekly.png");
 }
 
+/** r306 — همان کارت به‌صورت blob برایِ هم‌رسانیِ بومیِ share-card — بدونِ دانلود.
+ * الگویِ buildDuelDoneBlob: دانلود و هم‌رسانی دو دروازهٔ یک ارزیابی‌اند. */
+export async function buildWeeklyBlob(opts: WeeklyImageOpts): Promise<Blob | null> {
+  const c = await weeklyCanvas(opts);
+  if (!c) return null;
+  return canvasToBlob(c);
+}
+
 async function weeklyCanvas(opts: WeeklyImageOpts): Promise<HTMLCanvasElement | null> {
   try {
     if (typeof document !== "undefined" && document.fonts?.ready) {
@@ -1125,6 +1133,10 @@ export interface OfficialImageOpts {
   streak: number;
   /** کدِ یادگیرنده — ۸ نویسهٔ اولِ userId مثلِ DOM */
   learnerCode?: string;
+  /** r306 — سطرِ ماه‌نامهٔ خواندن روی کارتِ رسمی (همان قراردادِ weekly).
+   * فقط با سابقهٔ پنجره فرستاده میشود (empty=false — سیاستِ بوم‌محور)؛
+   * بینِ خطِ زنجیره (۳۵۶) و ردیفِ KPI (۴۲۰) می‌نشیند — بدونِ جابجاییِ هندسه. */
+  storiesMonth?: { total: number; activeDays: number; bestCount: number };
   /** r285/286 — نشانهای بازِ همان ارزیابیِ واحد (الزامی — الگویِ هفته‌نامه؛
    * سرشماریِ زمان-کامپایل مجریِ تغذیه است) */
   badges: { title: string; tier: BadgeTier }[];
@@ -1201,6 +1213,20 @@ async function officialCanvas(opts: OfficialImageOpts): Promise<HTMLCanvasElemen
       ctx.fillStyle = uiColors.emerald[600];
       ctx.font = `900 22px ${family}`;
       ctx.fillText(`زنجیرهٔ فعلی ${faNum(opts.streak)} روزه`, W - 90, 356);
+    }
+
+    // ---------- r306: سطرِ ماه‌نامهٔ خواندن — بینِ زنجیره و ردیفِ KPI،
+    // همان سبکِ کارتِ هفته‌نامه (سنگِ ۵۰۰ · وزنِ ۷۰۰) — هندسه دست‌نخورده
+    if (opts.storiesMonth && opts.storiesMonth.total > 0) {
+      const sm = opts.storiesMonth;
+      const line =
+        `ماهِ گذشته: ${faNum(sm.total)} داستان در ${faNum(sm.activeDays)} روز` +
+        (sm.bestCount > 1 ? ` · پرکارترین: ${faNum(sm.bestCount)} داستان` : "");
+      ctx.direction = "rtl";
+      ctx.textAlign = "right";
+      ctx.fillStyle = uiColors.stone[500];
+      ctx.font = `700 17px ${family}`;
+      ctx.fillText(truncate(ctx, line, 560), W - 90, 392);
     }
 
     // ---------- KPI row (همان ۴ KPIِ کارنامهٔ رسمی — همان برچسبها) ----------

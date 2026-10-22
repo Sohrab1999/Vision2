@@ -33,6 +33,7 @@ import {
 } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { storyStreak } from "@/lib/library-streak"; // r303 — استریکِ کتابخوانی (قراردادِ r301)
+import { monthReads } from "@/lib/library-month"; // r306 — ماه‌نامه روی کارتِ رسمی (قراردادِ r304)
 import { useEscape } from "@/hooks/use-keyboard";
 import { faNum } from "@/lib/study-theme";
 import { LESSONS_META, TOTAL_VOCABULARY } from "@/data/lesson-meta";
@@ -124,6 +125,9 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
   const dayHistoryRaw = useStudy((s) => s.dayHistory);
   const dayHistory = useMemo(() => dayHistoryRaw ?? {}, [dayHistoryRaw]);
   const readStreak = useMemo(() => storyStreak(dayHistory, daysAgoKey(0)), [dayHistory]);
+  // r306 — ماه‌نامهٔ خواندن برایِ کارتِ PNGِ رسمی: همان قراردادِ خالصِ monthReads
+  // که نوارِ هفته‌نامه و CSV میخوانند — ششمین مصرفِ یک منبع
+  const monthReadsMemo = useMemo(() => monthReads(dayHistory, daysAgoKey(0)), [dayHistory]);
   const seenBadges = useStudy((s) => s.seenBadges); // r282 — خانوادهٔ هویت
   const userId = useStudy((s) => s.userId);
 
@@ -278,6 +282,11 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
       bestStreak,
       streak,
       learnerCode: userId ? userId.slice(0, 8).toUpperCase() : undefined,
+      // r306 — سطرِ ماه‌نامه روی کارتِ رسمی: فقط با سابقهٔ پنجره (سیاستِ بوم‌محورِ r302)
+      storiesMonth:
+        !monthReadsMemo.empty
+          ? { total: monthReadsMemo.total, activeDays: monthReadsMemo.activeDays, bestCount: monthReadsMemo.best?.count ?? 0 }
+          : undefined,
       // همان ارزیابیِ واحدِ بدنهٔ کارنامه — هیچ ارزیابیِ دومی وجود ندارد.
       badges: unlockedBadges.map((b) => ({ title: b.title, tier: b.tier })),
     });

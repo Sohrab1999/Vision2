@@ -10,7 +10,7 @@
 
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { Sparkles, TrendingDown, TrendingUp, Minus, CalendarHeart, Check, Compass, Snowflake, Swords, Timer, ImageDown, Loader2, CalendarClock, CalendarDays, Gauge, FileDown, BarChart3, Award, BookMarked, Flame } from "lucide-react";
+import { Sparkles, TrendingDown, TrendingUp, Minus, CalendarHeart, Check, Compass, Snowflake, Swords, Timer, ImageDown, Share2, Loader2, CalendarClock, CalendarDays, Gauge, FileDown, BarChart3, Award, BookMarked, Flame } from "lucide-react";
 import { useStudy, daysAgoKey } from "@/lib/study-store";
 import { faNum, secFa } from "@/lib/study-theme";
 import { BADGES, buildEvalInput, unlockedBadgeIds, TIER_CHIP } from "@/lib/achievements";
@@ -18,7 +18,9 @@ import { buildCoverageMap } from "@/lib/coverage-map";
 import { LESSONS_META } from "@/data/lesson-meta";
 import { computeWeeklyDigest, faWeekday, faDayLabel, DUEL_QUICK_WEEK, type Delta, type QuickWeekProfile } from "@/lib/weekly-digest";
 import { freezeDayMark, freezeLedgerMeta } from "@/lib/freeze-badge";
-import { downloadWeeklyImage } from "@/lib/result-image";
+import { downloadWeeklyImage, buildWeeklyBlob, type WeeklyImageOpts } from "@/lib/result-image";
+import { blobToFile, shareImageFile, type ShareOutcome } from "@/lib/share-card";
+import { trackEvent } from "@/lib/analytics";
 import { downloadProgressCsv, downloadWeeklyTrendCsv, downloadMonthCsv } from "@/lib/progress-csv";
 import { storiesReadSince } from "@/lib/library-progress";
 import { storyStreak } from "@/lib/library-streak";
@@ -232,49 +234,78 @@ export default function WeeklyReportSection() {
   const today = daysAgoKey(0);
 
   // Task 104 — عکسِ هفته‌نامه: همان دایجستِ روی صفحه به یک کارتِ PNGِ خانوادهٔ
-  // سبز تبدیل می‌شود — ورودیِ کاهش‌یافته فقط از اعدادِ واقعیِ همین دایجست پر می‌شود
+  // سبز تبدیل می‌شود — ورودیِ کاهش‌یافته فقط از اعدادِ واقعیِ همین دایجست پر می‌شود.
+  // r306 — دانلود و هم‌رسانی دو دروازهٔ «یک» ارزیابی‌اند (الگویِ duel-done):
+  // ورودیِ کارت یک‌بار ساخته میشود و هر دو دروازه از همان میخوانند.
+  const weeklyImageOpts = (): WeeklyImageOpts => ({
+    userName: useStudy.getState().userName || undefined,
+    activities: digest.thisWeek.activities,
+    reviews: digest.thisWeek.reviews,
+    quizzes: digest.thisWeek.quizzes,
+    words: digest.thisWeek.words,
+    dictation: digest.thisWeek.dictation,
+    rush: digest.thisWeek.rush,
+    goalDays: digest.thisWeek.goalDays,
+    streak,
+    bestDay: digest.bestDay ? { label: faDayLabel(digest.bestDay.day), total: digest.bestDay.total } : null,
+    // r298 — چیپِ داستان روی کارتِ PNG: فقط با کتاب‌خانهٔ فعال (صفرِ صادق
+    // برای خوانندهٔ این‌هفته‌بی‌داستان؛ غایب برای بی‌کتاب‌خانه)
+    storiesWeek: Object.keys(libraryDone).length > 0 ? weekReads.count : undefined,
+    // r303 — استریکِ کتابخوانی روی کارت: فقط با سابقه (سیاستِ بوم‌محورِ r302)
+    storiesStreak:
+      readStreak.current > 0 || readStreak.longest > 0
+        ? { current: readStreak.current, longest: readStreak.longest }
+        : undefined,
+    // r305 — سطرِ ماه‌نامه روی کارت: فقط با سابقهٔ پنجره (سیاستِ بوم‌محور)
+    storiesMonth:
+      !month.empty
+        ? { total: month.total, activeDays: month.activeDays, bestCount: month.best?.count ?? 0 }
+        : undefined,
+    duelLine:
+      digest.duels && digest.duels.thisWeek > 0
+        ? `${faNum(digest.duels.thisWeek)}${digest.duels.truncated ? "+" : ""} نبرد واژگانی این هفته — ${faNum(digest.duels.win)} برد، ${faNum(digest.duels.loss)} باخت${digest.duels.tie > 0 ? `، ${faNum(digest.duels.tie)} مساوی` : ""}`
+        : undefined,
+    // r285 — همان ارزیابیِ واحدِ نوارِ نشانها به کارتِ PNG هم میرسد؛
+    // هیچ ارزیابیِ دومی وجود ندارد — آرایه از unlockedBadgesِ همین رندر میآید.
+    badges: unlockedBadges.map((b) => ({ title: b.title, tier: b.tier })),
+  });
+
   const saveWeeklyImage = async () => {
     if (imgBusy) return;
     setImgBusy(true);
-    const d = digest.duels;
-    const ok = await downloadWeeklyImage({
-      userName: useStudy.getState().userName || undefined,
-      activities: digest.thisWeek.activities,
-      reviews: digest.thisWeek.reviews,
-      quizzes: digest.thisWeek.quizzes,
-      words: digest.thisWeek.words,
-      dictation: digest.thisWeek.dictation,
-      rush: digest.thisWeek.rush,
-      goalDays: digest.thisWeek.goalDays,
-      streak,
-      bestDay: digest.bestDay ? { label: faDayLabel(digest.bestDay.day), total: digest.bestDay.total } : null,
-      // r298 — چیپِ داستان روی کارتِ PNG: فقط با کتاب‌خانهٔ فعال (صفرِ صادق
-      // برای خوانندهٔ این‌هفته‌بی‌داستان؛ غایب برای بی‌کتاب‌خانه)
-      storiesWeek: Object.keys(libraryDone).length > 0 ? weekReads.count : undefined,
-      // r303 — استریکِ کتابخوانی روی کارت: فقط با سابقه (سیاستِ بوم‌محورِ r302)
-      storiesStreak:
-        readStreak.current > 0 || readStreak.longest > 0
-          ? { current: readStreak.current, longest: readStreak.longest }
-          : undefined,
-      // r305 — سطرِ ماه‌نامه روی کارت: فقط با سابقهٔ پنجره (سیاستِ بوم‌محور)
-      storiesMonth:
-        !month.empty
-          ? { total: month.total, activeDays: month.activeDays, bestCount: month.best?.count ?? 0 }
-          : undefined,
-      duelLine:
-        d && d.thisWeek > 0
-          ? `${faNum(d.thisWeek)}${d.truncated ? "+" : ""} نبرد واژگانی این هفته — ${faNum(d.win)} برد، ${faNum(d.loss)} باخت${d.tie > 0 ? `، ${faNum(d.tie)} مساوی` : ""}`
-          : undefined,
-      // r285 — همان ارزیابیِ واحدِ نوارِ نشانها به کارتِ PNG هم میرسد؛
-      // هیچ ارزیابیِ دومی وجود ندارد — آرایه از unlockedBadgesِ همین رندر میآید.
-      badges: unlockedBadges.map((b) => ({ title: b.title, tier: b.tier })),
-    });
+    const ok = await downloadWeeklyImage(weeklyImageOpts());
     setImgBusy(false);
     toast(
       ok
         ? { title: "🖼 عکسِ هفته‌نامه ذخیره شد", description: "کارتِ هفتگیت آمادهٔ فرستادن است.", duration: 3000 }
         : { title: "خطا در ساخت تصویر", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
     );
+  };
+
+  // r306 — هم‌رسانیِ بومیِ کارتِ هفته‌نامه با قراردادِ share-card (r102):
+  // فقط با canShare({files}) واقعی؛ لغوِ کاربر خطا نیست (ساکت)؛
+  // پشتیبانی‌نشدن پیامِ صادقانهِ «ذخیره کن و خودت بفرست» دارد.
+  const [shareBusy, setShareBusy] = useState(false);
+  const shareWeeklyImage = async () => {
+    if (shareBusy || imgBusy) return;
+    setShareBusy(true);
+    const blob = await buildWeeklyBlob(weeklyImageOpts());
+    let outcome: ShareOutcome = "failed";
+    if (blob) {
+      trackEvent("weekly_image");
+      outcome = await shareImageFile({
+        file: blobToFile(blob, "vision2-weekly.png"),
+        title: "هفته‌نامهٔ پیشرفت — وب‌کتاب ویژن ۲",
+        text: `هفته‌نامهٔ پیشرفتم: ${faNum(digest.thisWeek.activities)} فعالیت این هفته`,
+      });
+    }
+    setShareBusy(false);
+    if (outcome === "shared") {
+      toast({ title: "📨 هفته‌نامه هم‌رسانی شد", description: "کارت با شیتِ خودِ سیستم فرستاده شد.", duration: 3000 });
+    } else if (outcome === "failed") {
+      toast({ title: "هم‌رسانی ممکن نشد", description: "می‌توانی عکس را ذخیره کنی و خودت بفرستی.", duration: 3000 });
+    }
+    // cancelled — کاربر لغو کرد؛ خطا نیست، ساکت (قراردادِ share-card)
   };
 
   return (
@@ -297,6 +328,17 @@ export default function WeeklyReportSection() {
             className="rounded-lg p-1.5 text-stone-500 transition-colors hover:bg-stone-100 hover:text-teal-600 disabled:opacity-50"
           >
             {imgBusy ? <Loader2 size={15} className="animate-spin" aria-hidden /> : <ImageDown size={15} aria-hidden />}
+          </button>
+          {/* r306 — هم‌رسانیِ بومیِ همان کارت: دو دروازهٔ یک ارزیابی (duel-done الگو)؛
+              لغوِ کاربر ساکت، پشتیبانی‌نشدن پیامِ صادقانه */}
+          <button
+            onClick={shareWeeklyImage}
+            disabled={shareBusy || imgBusy}
+            aria-label="هم‌رسانی عکس هفته‌نامهٔ پیشرفت"
+            title="هم‌رسانیِ کارتِ هفته‌نامه با شیتِ خودِ سیستم"
+            className="rounded-lg p-1.5 text-stone-500 transition-colors hover:bg-stone-100 hover:text-teal-600 disabled:opacity-50"
+          >
+            {shareBusy ? <Loader2 size={15} className="animate-spin" aria-hidden /> : <Share2 size={15} aria-hidden />}
           </button>
           {/* تسک ۱۷۸ — خروجیِ CSVِ ۳۵روزه (بازسازیِ ۱۶۹) — هم‌الگوی عکس؛ بدونِ busy چون همگام است */}
           <button

@@ -4,7 +4,7 @@
 // r285 — فیلدِ الزامیِ badges: هم بی‌نشان ([]) و هم نشان‌دار باید falseِ صادق
 // بدهند — ساختِ کارت هرگز به‌خاطرِ نوارِ نشانها نمی‌شکند.
 import { describe, it, expect } from "vitest";
-import { downloadWeeklyImage } from "@/lib/result-image";
+import { downloadWeeklyImage, buildWeeklyBlob } from "@/lib/result-image";
 
 describe("downloadWeeklyImage — بی‌کانواس (Task 104 + r285)", () => {
   it("falseِ صادق بدونِ انفجار — بی‌نشان", async () => {
@@ -81,5 +81,23 @@ describe("downloadWeeklyImage — بی‌کانواس (Task 104 + r285)", () => 
       badges: [],
     });
     expect(ok).toBe(false);
+  });
+
+  // r306 — دروازهٔ دوم (هم‌رسانیِ بومی): buildWeeklyBlob در بی‌کانواس nullِ
+  // صادق بدهد — بدونِ انفجار؛ سازندهٔ blob هم همان قراردادِ خانواده را دارد
+  it("blobِ nullِ صادق از buildWeeklyBlob (r306) — بی‌انفجار", async () => {
+    const blob = await buildWeeklyBlob({
+      activities: 15,
+      reviews: 8,
+      quizzes: 2,
+      words: 5,
+      dictation: 0,
+      rush: 0,
+      goalDays: 2,
+      streak: 4,
+      storiesMonth: { total: 6, activeDays: 5, bestCount: 2 },
+      badges: [],
+    });
+    expect(blob).toBe(null);
   });
 });
