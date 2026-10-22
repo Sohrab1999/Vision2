@@ -769,7 +769,7 @@ export default function WeeklyReportSection() {
             <div className="flex items-center gap-1">
               {([
                 ["برد", digest.duels.win, "bg-emerald-500"],
-                ["باخت", digest.duels.loss, "bg-rose-500"],
+                ["باخت", digest.duels.loss, "bg-rose-700"],
                 ["مساوی", digest.duels.tie, "bg-amber-500"],
               ] as const).map(([label, n, dot]) => (
                 <span

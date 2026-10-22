@@ -161,7 +161,7 @@ export default function DangerWords() {
                       <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1">
                         <span className="h-1.5 w-16 overflow-hidden rounded-full bg-stone-200">
                           <motion.span
-                            className={`block h-full rounded-full ${hot ? "bg-rose-500" : "bg-amber-500"}`}
+                            className={`block h-full rounded-full ${hot ? "bg-rose-700" : "bg-amber-500"}`}
                             initial={{ width: 0 }}
                             animate={{ width: `${Math.max(12, ratePct)}%` }}
                             transition={{ duration: 0.6, delay: 0.1 + i * 0.04 }}

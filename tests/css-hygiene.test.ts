@@ -83,8 +83,12 @@ describe("globals.css surface-token kernel (Step 9 tranche-2)", () => {
     const CANON: Record<string, string[]> = {
       "300": ["#57534e"],
       "400": ["#716b63", "#78716c", "#8a8580", "#a8a29e"],
-      "500": ["#8a8580", "#a8a29e"],
-      "600": ["#a8a29e", "#c9c2bb"],
+      // r328: kernel 500 روشنتر شد (#9c958c — خانوادهٔ مرزیِ تینتِ تاریک ≥۵٫۰)
+      // و پینِ کاغذِ رسمی #78716c آمد (کاغذِ همیشهروشن نباید جوهرِ تاریکِ
+      // کرنل را بگیرد — رتبهٔ ۰-۳-۰ رویِ ۰-۲-۰)
+      "500": ["#78716c", "#9c958c", "#a8a29e"],
+      // r328: پینِ کاغذ برایِ 600 هم (#57534e — سلولهایِ «—» رویِ زبرا ۶٫۹۹)
+      "600": ["#57534e", "#a8a29e", "#c9c2bb"],
       "700": ["#d6d3cf", "#d6d3d1", "#e7e5e4"],
       "800": ["#f5f5f4"],
     };
@@ -171,7 +175,7 @@ describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
     }
   });
 
-  it("keeps the selector budget honest (tranche-3b part 2 ceiling 500, re-based 505 r89, 510 r196, 513 r198, 514 r325)", () => {
+  it("keeps the selector budget honest (tranche-3b part 2 ceiling 500, re-based 505 r89, 510 r196, 513 r198, 514 r325, 520 r328)", () => {
     // soft ceiling: the file may not regrow past the consolidation floor. History:
     // 535 pre-kernel → 519 pre-part-2 → 500 (roadmap §12 goal). r89 re-based to
     // 505 for phase 6: the LAST veil family (c-stone) entered with net +4 lines
@@ -189,8 +193,13 @@ describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
     // 90% ink on emerald-200/400 = 1.24/1.79 light; the dark kernel remap
     // turns 600/800 light = 2.95/2.09) entered as ONE 2-selector rule beside
     // the band remaps it pairs with, net +2 → 514.
+    // r328: the O2 tail — six 0-3-0 paper pins inside .dark .official-report
+    // (emerald-700/stone-600/stone-500 inks + bg-stone-50/border-stone-100/
+    // border-emerald-300 surfaces), each pinning one utility the 0-2-0 kernel
+    // class-rules steal on the always-light print paper (31→0 fails),
+    // net +6 → 520.
     const sel = lines.filter((l) => /^\s*\.[a-z]/.test(l) && !l.includes("→")).length;
-    expect(sel).toBeLessThanOrEqual(514);
+    expect(sel).toBeLessThanOrEqual(520);
     expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(490);
   });
 });

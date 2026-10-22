@@ -476,7 +476,7 @@ export default function ProfilePopover() {
         <button
           onClick={saveProfile}
           disabled={nameDraft.trim().length < 2}
-          className="w-full rounded-xl bg-emerald-600 py-2.5 text-sm font-bold text-white transition-[background-color,color,border-color,transform,opacity] hover:bg-emerald-700 active:scale-[0.96] disabled:cursor-not-allowed disabled:opacity-40"
+          className="w-full rounded-xl bg-emerald-700 py-2.5 text-sm font-bold text-white transition-[background-color,color,border-color,transform,opacity] hover:bg-emerald-800 active:scale-[0.96] disabled:cursor-not-allowed disabled:opacity-40"
         >
           {saved ? "✓ ذخیره شد!" : named ? "ذخیرهٔ پروفایل" : "شروع با این نام"}
         </button>
@@ -505,7 +505,7 @@ export default function ProfilePopover() {
               <div className="mt-2 grid grid-cols-2 gap-2">
                 <button
                   onClick={handleResumeGo}
-                  className={`inline-flex items-center justify-center gap-1 rounded-lg bg-emerald-600 px-2 py-1.5 text-[10.5px] font-black text-white transition-[background-color,color,border-color,transform] hover:bg-emerald-700 active:scale-[0.96] ${RESUME_FOCUS_RING}`}
+                  className={`inline-flex items-center justify-center gap-1 rounded-lg bg-emerald-700 px-2 py-1.5 text-[10.5px] font-black text-white transition-[background-color,color,border-color,transform] hover:bg-emerald-800 active:scale-[0.96] ${RESUME_FOCUS_RING}`}
                   title="رفتن به همان‌جا در ضمیمه"
                 >
                   <Play size={11} className="shrink-0" />
@@ -730,7 +730,7 @@ export default function ProfilePopover() {
               <button
                 onClick={handleCreateCode}
                 disabled={syncing !== ""}
-                className="flex w-full items-center justify-center gap-1.5 rounded-xl bg-emerald-600 py-2.5 text-[12px] font-black text-white transition-[background-color,color,border-color,transform,opacity] hover:bg-emerald-700 active:scale-[0.96] disabled:opacity-50"
+                className="flex w-full items-center justify-center gap-1.5 rounded-xl bg-emerald-700 py-2.5 text-[12px] font-black text-white transition-[background-color,color,border-color,transform,opacity] hover:bg-emerald-800 active:scale-[0.96] disabled:opacity-50"
               >
                 <CloudUpload size={14} />
                 {syncing === "create" ? "در حال ساخت کد…" : "ساخت کد یادگیرنده"}

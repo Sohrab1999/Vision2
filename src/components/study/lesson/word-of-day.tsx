@@ -149,7 +149,7 @@ export default function WordOfDay() {
             onClick={() => toggleKnown(pick.key)}
             className={`inline-flex items-center gap-1.5 rounded-xl border px-3 py-2 text-[12px] font-bold transition-[background-color,color,border-color,box-shadow,transform] active:scale-[0.96] ${
               isKnown
-                ? "border-emerald-600 bg-emerald-600 text-white shadow-md shadow-emerald-600/25"
+                ? "border-emerald-600 bg-emerald-700 text-white shadow-md shadow-emerald-600/25"
                 : "border-emerald-300 bg-white text-emerald-700 hover:bg-emerald-50"
             }`}
             aria-pressed={isKnown}

@@ -77,7 +77,7 @@ export default function OptionButton({
           ? a.chosen
           : `border-stone-200 bg-white ${a.hover}`;
   const badgeCls =
-    state === "correct" ? "bg-emerald-500 text-white" : state === "wrong" ? "bg-rose-500 text-white" : "bg-stone-100 text-stone-600";
+    state === "correct" ? "bg-emerald-500 text-white" : state === "wrong" ? "bg-rose-700 text-white" : "bg-stone-100 text-stone-600";
   const Icon: LucideIcon | null =
     state === "correct" ? (icon === "circle" ? CheckCircle2 : Check) : state === "wrong" ? (icon === "circle" ? XCircle : X) : null;
   const dimCls = !dim ? "" : dimOpacity === "50" ? "opacity-50" : "opacity-60";

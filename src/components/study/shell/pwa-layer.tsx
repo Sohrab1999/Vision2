@@ -264,7 +264,7 @@ export default function PwaLayer() {
                           setShowGuide(true);
                         }
                       }}
-                      className="pointer-events-auto inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-3 py-1.5 text-[12px] font-black text-white shadow-md shadow-emerald-900/20 transition-[background-color,color,border-color,box-shadow,transform] hover:bg-emerald-700 active:scale-[0.96]"
+                      className="pointer-events-auto inline-flex items-center gap-1.5 rounded-lg bg-emerald-700 px-3 py-1.5 text-[12px] font-black text-white shadow-md shadow-emerald-900/20 transition-[background-color,color,border-color,box-shadow,transform] hover:bg-emerald-800 active:scale-[0.96]"
                     >
                       <Download size={13} />
                       نصب رایگان
@@ -308,21 +308,21 @@ export default function PwaLayer() {
             {isIos() ? (
               <>
                 <li className="flex items-start gap-2.5 rounded-xl border border-stone-200 c-stone-60 p-3 text-[12.5px] leading-6 text-stone-700">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-600 text-[11px] font-black text-white">۱</span>
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-700 text-[11px] font-black text-white">۱</span>
                   <span className="flex flex-1 items-center justify-between gap-2">
                     در سافاری دکمهٔ اشتراک را بزن
                     <Share2 size={16} className="shrink-0 text-emerald-600" />
                   </span>
                 </li>
                 <li className="flex items-start gap-2.5 rounded-xl border border-stone-200 c-stone-60 p-3 text-[12.5px] leading-6 text-stone-700">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-600 text-[11px] font-black text-white">۲</span>
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-700 text-[11px] font-black text-white">۲</span>
                   <span className="flex flex-1 items-center justify-between gap-2">
                     «افزودن به صفحهٔ اصلی» را انتخاب کن
                     <PlusSquare size={16} className="shrink-0 text-emerald-600" />
                   </span>
                 </li>
                 <li className="flex items-start gap-2.5 rounded-xl border border-stone-200 c-stone-60 p-3 text-[12.5px] leading-6 text-stone-700">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-600 text-[11px] font-black text-white">۳</span>
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-700 text-[11px] font-black text-white">۳</span>
                   <span>«افزودن» را بزن — آیکون ویژن ۲ کنار بقیهٔ اپ‌ها می‌نشیند.</span>
                 </li>
               </>

@@ -60,12 +60,12 @@ describe("ستونِ وضعیت در جدولِ درس‌به‌درس — کا�
     const headers = [...section.querySelectorAll("th")].map((th) => th.textContent);
     const avgIdx = headers.indexOf("میانگین");
     expect(headers[avgIdx + 1]).toBe("وضعیت");
-    // هر سه درسِ بی‌نتیجه: «—» با توکنِ مجازِ stone-500 (قراردادِ ۱۷۲)
+    // هر سه درسِ بی‌نتیجه: «—» با توکنِ مجازِ stone-600 (قراردادِ ۱۷۲؛ r328: ۵۰۰→۶۰۰ برایِ زبرایِ ۴٫۴۰یِ مرزی)
     for (const id of [1, 2, 3]) {
       const row = within(section).getByText(`درس ${["۱", "۲", "۳"][id - 1]}`).closest("tr")!;
       const cell = statusCellOf(row);
       expect(cell).toHaveTextContent("—");
-      expect(cell.querySelector("span.text-stone-500")).not.toBeNull();
+      expect(cell.querySelector("span.text-stone-600")).not.toBeNull();
       expect(cell.textContent).not.toContain("۰");
     }
   });

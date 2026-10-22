@@ -129,7 +129,7 @@ export default function ReviewView() {
           </p>
           <button
             onClick={() => setView({ type: "exam" })}
-            className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-6 py-2.5 text-sm font-bold text-white transition-[background-color,color,border-color,transform,opacity] hover:opacity-90 active:scale-[0.96]"
+            className="inline-flex items-center gap-2 rounded-xl bg-emerald-700 px-6 py-2.5 text-sm font-bold text-white transition-[background-color,color,border-color,transform,opacity] hover:opacity-90 active:scale-[0.96]"
           >
             <ClipboardCheck size={16} />
             آزمون جامع واژگان
@@ -144,7 +144,7 @@ export default function ReviewView() {
               <div className="mb-3 flex items-center gap-2">
                 <Eraser size={17} className="text-rose-500" />
                 <h2 className="text-sm font-extrabold text-stone-800">بانک خطای تو</h2>
-                <span className="rounded-full bg-rose-500 px-2.5 py-0.5 text-[11px] font-black text-white shadow-sm shadow-rose-500/30">
+                <span className="rounded-full bg-rose-700 px-2.5 py-0.5 text-[11px] font-black text-white shadow-sm shadow-rose-500/30">
                   {faNum(total)} سؤال
                 </span>
               </div>

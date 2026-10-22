@@ -28,7 +28,7 @@ export function ListenBanner() {
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
             <h2 className="text-base font-black text-stone-800">تمرین شنیداری — بشنو و انتخاب کن</h2>
-            <span className="rounded-full bg-teal-600 px-2 py-0.5 text-[10px] font-black text-white shadow-sm">جدید</span>
+            <span className="rounded-full bg-teal-700 px-2 py-0.5 text-[10px] font-black text-white shadow-sm">جدید</span>
           </div>
           <p className="mt-1 text-[12.5px] leading-6 text-stone-600">
             مثل امتحان واقعی Vision: جمله و واژه را می‌شنوی و گزینهٔ درست را انتخاب می‌کنی — با ۳ نوع تمرین (واژه، ترجمهٔ جمله، ادامهٔ مکالمه) و حداکثر ۲ بار پخش.

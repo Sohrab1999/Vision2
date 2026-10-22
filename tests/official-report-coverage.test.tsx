@@ -137,11 +137,11 @@ describe("پوشش مهارت‌ها رویِ کاغذِ رسمی — کامپو
     expect(row1.querySelector("td.text-emerald-700")).not.toBeNull();
   });
 
-  it("متنِ کم‌رنگِ بخش stone-500 است — توکنِ منسوخِ stone-400 در هیچ سلولی نمی‌آید (قراردادِ ۱۷۲)", () => {
+  it("متنِ کم‌رنگِ بخش stone-600 است — توکنِ منسوخِ stone-400 در هیچ سلولی نمی‌آید (قراردادِ ۱۷۲؛ r328: از ۵۰۰ به ۶۰۰ عمیق شد چون جوهرِ ۵۰۰ رویِ زبرایِ #f5f5f4 فقط ۴٫۴۰ می‌داد)", () => {
     seedResults({ "1:vocab": { percent: 85, at: "2026-10-10" } });
     render(<OfficialReport open onClose={() => {}} />);
     const section = document.querySelector("section.or-coverage")! as HTMLElement;
     expect(section.innerHTML).not.toContain("text-stone-400");
-    expect(section.innerHTML).toContain("text-stone-500");
+    expect(section.innerHTML).toContain("text-stone-600");
   });
 });

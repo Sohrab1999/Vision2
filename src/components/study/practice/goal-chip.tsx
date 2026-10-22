@@ -67,7 +67,7 @@ export default function GoalChip() {
       onClick={open}
       className={`goal-chip relative inline-flex min-h-11 shrink-0 items-center gap-1.5 overflow-hidden rounded-full border px-2.5 py-1.5 text-[12px] font-black transition-transform hover:-translate-y-px active:scale-[0.96] ${
         meta.done
-          ? "border-emerald-600 bg-emerald-600 text-white shadow-sm shadow-emerald-900/20"
+          ? "border-emerald-600 bg-emerald-700 text-white shadow-sm shadow-emerald-900/20"
           : "border c-chip-goal"
       }`}
       aria-label={meta.title}
@@ -84,7 +84,7 @@ export default function GoalChip() {
       <span className="absolute inset-x-0 bottom-0 h-[3px] c-track-70" aria-hidden>
         <span
           className={`block h-full transition-[background-color,color,border-color,box-shadow,transform] duration-500 ${
-            meta.done ? "bg-white/90" : "bg-emerald-600"
+            meta.done ? "bg-white/90" : "bg-emerald-700"
           }`}
           style={{ width: `${meta.pct}%` }}
         />

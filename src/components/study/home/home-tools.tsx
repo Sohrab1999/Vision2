@@ -113,7 +113,7 @@ export default function HomeTools() {
             }`}
           >
             {"badge" in tool && typeof tool.badge === "number" && tool.badge > 0 && (
-              <span className="absolute left-3 top-3 flex h-6 min-w-6 items-center justify-center rounded-full bg-rose-500 px-1.5 text-[11px] font-black text-white shadow-md shadow-rose-500/30">
+              <span className="absolute left-3 top-3 flex h-6 min-w-6 items-center justify-center rounded-full bg-rose-700 px-1.5 text-[11px] font-black text-white shadow-md shadow-rose-500/30">
                 {faNum(tool.badge)}
               </span>
             )}

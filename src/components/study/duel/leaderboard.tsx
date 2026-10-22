@@ -304,7 +304,7 @@ export default function Leaderboard() {
           className="name-cta mt-3 flex w-full items-center justify-between gap-3 rounded-2xl border border-emerald-300 bg-gradient-to-l from-emerald-50 to-teal-50 p-4 text-right shadow-sm transition-[background-color,color,border-color,box-shadow,transform] hover:shadow-md active:scale-[0.96]"
         >
           <span className="flex items-center gap-3">
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-600 text-white shadow-md shadow-emerald-900/25">
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-700 text-white shadow-md shadow-emerald-900/25">
               <UserRound size={18} />
             </span>
             <span>
@@ -316,7 +316,7 @@ export default function Leaderboard() {
               </span>
             </span>
           </span>
-          <span className="shrink-0 rounded-xl bg-emerald-600 px-4 py-2 text-[12px] font-bold text-white shadow-md shadow-emerald-600/25">
+          <span className="shrink-0 rounded-xl bg-emerald-700 px-4 py-2 text-[12px] font-bold text-white shadow-md shadow-emerald-600/25">
             انتخاب نام
           </span>
         </button>

@@ -283,7 +283,7 @@ export default function QuizResult({
           </button>
           <button
             onClick={onRestart}
-            className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-bold text-white transition-[background-color,color,border-color,transform] hover:bg-emerald-700 active:scale-[0.96]"
+            className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-700 px-4 py-2.5 text-sm font-bold text-white transition-[background-color,color,border-color,transform] hover:bg-emerald-800 active:scale-[0.96]"
           >
             <RotateCcw size={15} />
             تلاش مجدد
@@ -344,7 +344,7 @@ export default function QuizResult({
         </button>
         <button
           onClick={onRestart}
-          className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-600 px-4 py-2.5 text-sm font-bold text-white transition-[background-color,color,border-color,transform] hover:bg-emerald-700 active:scale-[0.96]"
+          className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-700 px-4 py-2.5 text-sm font-bold text-white transition-[background-color,color,border-color,transform] hover:bg-emerald-800 active:scale-[0.96]"
         >
           <RotateCcw size={15} />
           تلاش مجدد
@@ -385,7 +385,7 @@ export default function QuizResult({
               <div className="mb-1.5 flex items-start gap-2">
                 <span
                   className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-white ${
-                    ok ? "bg-emerald-500" : "bg-rose-500"
+                    ok ? "bg-emerald-500" : "bg-rose-700"
                   }`}
                 >
                   {ok ? <Check size={12} /> : <X size={12} />}

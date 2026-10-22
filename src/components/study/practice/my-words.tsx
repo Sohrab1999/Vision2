@@ -123,7 +123,7 @@ export default function MyWordsView() {
               onClick={armClear}
               className={`ms-auto inline-flex items-center gap-1.5 rounded-xl border px-3 py-2 text-[12px] font-bold transition-[background-color,color,border-color,transform] active:scale-[0.96] ${
                 armedClear
-                  ? "animate-pulse border-rose-300 bg-rose-500 text-white"
+                  ? "animate-pulse border-rose-300 bg-rose-700 text-white"
                   : "border-rose-200 bg-rose-50 text-rose-600 hover:bg-rose-100"
               }`}
               aria-label={armedClear ? "تأیید پاک‌کردن همهٔ واژه‌های نشان‌شده" : "پاک‌کردن همهٔ واژه‌های نشان‌شده"}

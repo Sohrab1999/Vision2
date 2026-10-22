@@ -128,7 +128,7 @@ export default function DailyQuests() {
           <div>
             <div className="flex flex-wrap items-center gap-2">
               <h2 className="text-[15px] font-black text-stone-800">اهداف روزانه</h2>
-              <span className={`rounded-full px-2 py-0.5 text-[10px] font-black ${allDone ? "bg-emerald-600 text-white" : "bg-emerald-100 text-emerald-800"}`}>
+              <span className={`rounded-full px-2 py-0.5 text-[10px] font-black ${allDone ? "bg-emerald-700 text-white" : "bg-emerald-100 text-emerald-800"}`}>
                 {faNum(doneCount)} از {faNum(quests.length)}
               </span>
             </div>

@@ -691,7 +691,7 @@ export default function CommandPalette() {
                     >
                       <span
                         className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${
-                          active ? "bg-emerald-600 text-white shadow-sm shadow-emerald-900/20" : "bg-stone-100 text-stone-500"
+                          active ? "bg-emerald-700 text-white shadow-sm shadow-emerald-900/20" : "bg-stone-100 text-stone-500"
                         }`}
                       >
                         <Icon size={15} />

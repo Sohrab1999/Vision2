@@ -41,7 +41,7 @@ export const lessonTheme: Record<string, LessonTheme> = {
     gradient: "from-rose-500 to-rose-800",
     softText: "text-rose-600",
     chipBg: "bg-rose-100 text-rose-800 dark:bg-rose-950/60 dark:text-rose-300",
-    bar: "bg-rose-500",
+    bar: "bg-rose-700",
   },
   violet: {
     text: "text-violet-700",

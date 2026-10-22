@@ -46,7 +46,7 @@ export default function HomeStarter() {
       className="rounded-2xl border border-emerald-200 bg-gradient-to-l from-emerald-50/90 via-teal-50/60 to-emerald-50/40 p-5 shadow-sm sm:p-6"
     >
       <div className="mb-1 flex items-center gap-2">
-        <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-600 text-white shadow-md shadow-emerald-900/20">
+        <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-700 text-white shadow-md shadow-emerald-900/20">
           <Sparkles size={17} />
         </span>
         <h2 className="text-base font-black text-stone-800">از کجا شروع کنم؟</h2>

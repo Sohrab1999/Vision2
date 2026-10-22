@@ -75,7 +75,7 @@ function todayFa(): string {
 // signal (or-bad red / emerald die in a mono copy), and the untried row
 // keeps the honest "—" instead of a fabricated zero.
 function lessonStatusNode(avg: number | null) {
-  if (avg === null) return <span className="font-bold text-stone-500">—</span>;
+  if (avg === null) return <span className="font-bold text-stone-600">—</span>;
   const st = coverageStatus(avg);
   if (st === "عالی") return <span className="font-black text-emerald-700">عالی</span>;
   if (st === "ضعیف") return <span className="or-bad font-black">ضعیف</span>;
@@ -404,7 +404,7 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
             </button>
             <button
               onClick={printOfficial}
-              className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-emerald-600 px-4 py-2 text-[12px] font-black text-white shadow-sm transition-[background-color,color,border-color,box-shadow,transform] hover:bg-emerald-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 active:scale-[0.96]"
+              className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-emerald-700 px-4 py-2 text-[12px] font-black text-white shadow-sm transition-[background-color,color,border-color,box-shadow,transform] hover:bg-emerald-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 active:scale-[0.96]"
             >
               <Printer size={14} />
               چاپ / ذخیرهٔ PDF
@@ -425,12 +425,12 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
           {/* letterhead */}
           <header className="or-band relative mb-5 flex items-start justify-between gap-3 overflow-hidden rounded-xl px-5 py-4">
             <div>
-              <div className="flex items-center gap-2 text-[11px] font-bold opacity-85">
+              <div className="flex items-center gap-2 text-[11px] font-bold opacity-95">
                 <GraduationCap size={14} />
                 وب‌کتاب آموزشی ویژن ۲ — زبان انگلیسی ۲ (پایهٔ یازدهم)
               </div>
               <h2 className="mt-1.5 text-xl font-black">گزارش پیشرفت درسی</h2>
-              <p className="mt-0.5 text-[11.5px] font-bold opacity-85">
+              <p className="mt-0.5 text-[11.5px] font-bold opacity-95">
                 کارنامهٔ رسمی دانش‌آموز برای معلم و والدین
               </p>
             </div>
@@ -441,7 +441,7 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
                 <br />
                 وب‌کتاب
               </span>
-              <span className="rounded-full bg-white/15 px-2.5 py-1 text-[10px] font-black">
+              <span className="rounded-full bg-black/15 px-2.5 py-1 text-[10px] font-black">
                 {todayFa()}
               </span>
             </div>
@@ -544,7 +544,7 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
                   <tr key={r.id}>
                     <td className="px-2 py-1.5 font-black">
                       درس {faNum(r.id)}
-                      <span className="mr-1 block text-[9.5px] font-bold opacity-70" dir="ltr">
+                      <span className="mr-1 block text-[9.5px] font-bold opacity-80" dir="ltr">
                         {r.titleEn}
                       </span>
                     </td>
@@ -684,7 +684,7 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
                                 <td
                                   key={c.key}
                                   title={`${c.label} — هنوز تلاش نشده`}
-                                  className="px-2 py-1.5 text-center font-bold text-stone-500"
+                                  className="px-2 py-1.5 text-center font-bold text-stone-600"
                                 >
                                   —
                                 </td>
@@ -710,7 +710,7 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
                             )}
                             <td
                               className={`px-2 py-1.5 text-[10.5px] font-black ${
-                                L.covered ? "text-emerald-700" : "text-stone-500"
+                                L.covered ? "text-emerald-700" : "text-stone-600"
                               }`}
                             >
                               {L.covered ? "کامل" : L.gap?.label ?? "—"}
@@ -778,11 +778,11 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
                               <td className="px-2 py-1.5 font-black">درس {faNum(L.lessonId)}</td>
                               <td className="px-2 py-1.5 text-center font-bold">{faNum(L.rows)}</td>
                               <td className="px-2 py-1.5 text-center font-black">
-                                {L.seen > 0 ? faNum(L.seen) : <span className="font-bold text-stone-500">—</span>}
+                                {L.seen > 0 ? faNum(L.seen) : <span className="font-bold text-stone-600">—</span>}
                               </td>
                               <td
                                 className={`px-2 py-1.5 text-center font-black ${
-                                  L.seen === 0 ? "text-stone-500" : ""
+                                  L.seen === 0 ? "text-stone-600" : ""
                                 }`}
                               >
                                 {L.seen > 0 ? `${faNum(pct)}٪` : "—"}

@@ -126,7 +126,7 @@ export default function Header() {
                   onClick={() => setView(item.view)}
                   className={`flex h-11 min-w-11 shrink-0 items-center justify-center gap-1.5 rounded-full px-3 text-[13px] font-semibold transition-[background-color,color,border-color,box-shadow] ${
                     active
-                      ? "bg-emerald-600 text-white shadow-sm shadow-emerald-900/20"
+                      ? "bg-emerald-700 text-white shadow-sm shadow-emerald-900/20"
                       : "text-stone-600 hover:bg-stone-200/70"
                   }`}
                 >

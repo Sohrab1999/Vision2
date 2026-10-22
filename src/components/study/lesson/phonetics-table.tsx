@@ -51,7 +51,7 @@ const GROUP_META: Record<
   "صدادار": {
     title: "حروف صدادار (Vowels)",
     data: vowelPhonemes,
-    dot: "bg-emerald-600",
+    dot: "bg-emerald-700",
     badge: "bg-emerald-100 text-emerald-700",
     example: "text-emerald-700 dark:text-emerald-300",
     hoverBorder: "hover:border-emerald-300",

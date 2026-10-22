@@ -258,7 +258,7 @@ export default function ListenView() {
                   onClick={() => setCount(n)}
                   className={`rounded-xl px-4 py-2 text-sm font-bold transition-[background-color,color,border-color,box-shadow,transform] active:scale-[0.96] ${
                     count === n
-                      ? "bg-teal-600 text-white shadow-md shadow-teal-500/25"
+                      ? "bg-teal-700 text-white shadow-md shadow-teal-500/25"
                       : "border c-card text-stone-600 hover:border-teal-300 hover:text-teal-600"
                   }`}
                 >
@@ -334,7 +334,7 @@ export default function ListenView() {
           <div className="flex flex-wrap justify-center gap-2.5">
             <button
               onClick={startRound}
-              className="inline-flex items-center gap-1.5 rounded-xl bg-teal-600 px-4 py-2.5 text-sm font-bold text-white transition-[background-color,color,border-color,transform] hover:bg-teal-700 active:scale-[0.96]"
+              className="inline-flex items-center gap-1.5 rounded-xl bg-teal-700 px-4 py-2.5 text-sm font-bold text-white transition-[background-color,color,border-color,transform] hover:bg-teal-700 active:scale-[0.96]"
             >
               <RotateCcw size={15} />
               یک دور دیگر
@@ -363,7 +363,7 @@ export default function ListenView() {
             return (
               <div key={it.id} className={`rounded-xl border p-3.5 ${ok ? "border-emerald-200 bg-emerald-50/60" : "border-rose-200 bg-rose-50/60"}`}>
                 <div className="mb-1.5 flex items-center gap-2">
-                  <span className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-white ${ok ? "bg-emerald-500" : "bg-rose-500"}`}>
+                  <span className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-white ${ok ? "bg-emerald-500" : "bg-rose-700"}`}>
                     {ok ? <Check size={12} /> : <X size={12} />}
                   </span>
                   <KindIcon size={13} className="shrink-0 text-stone-500" />
@@ -498,7 +498,7 @@ export default function ListenView() {
                     else finishRound(answers);
                   }}
                   data-listen-next
-                  className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-teal-600 px-4 py-2 text-[13px] font-bold text-white transition-[background-color,color,border-color,transform] hover:bg-teal-700 active:scale-[0.96]"
+                  className="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-teal-700 px-4 py-2 text-[13px] font-bold text-white transition-[background-color,color,border-color,transform] hover:bg-teal-700 active:scale-[0.96]"
                 >
                   {idx < total - 1 ? "آیتم بعدی" : "دیدن نتیجه"}
                   <ChevronLeft size={14} />

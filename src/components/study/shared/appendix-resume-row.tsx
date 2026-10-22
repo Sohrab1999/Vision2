@@ -49,7 +49,7 @@ export default function AppendixResumeRow() {
       className={`flex w-full items-center justify-between gap-3 rounded-2xl border border-emerald-200 bg-emerald-50/60 p-4 text-right shadow-sm transition-[background-color,color,border-color,box-shadow,transform] hover:bg-emerald-50 hover:shadow-md active:scale-[0.96] dark:border-emerald-800 dark:bg-emerald-900/25 dark:hover:bg-emerald-900/40 ${RESUME_FOCUS_RING}`}
     >
       <span className="flex min-w-0 items-center gap-3">
-        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-600 text-white shadow-md shadow-emerald-600/25">
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-700 text-white shadow-md shadow-emerald-600/25">
           <Play size={18} />
         </span>
         <span className="min-w-0">
@@ -62,7 +62,7 @@ export default function AppendixResumeRow() {
           </span>
         </span>
       </span>
-      <span className="flex shrink-0 items-center gap-1.5 rounded-xl bg-emerald-600 px-4 py-2.5 text-[13px] font-bold text-white shadow-md shadow-emerald-600/25">
+      <span className="flex shrink-0 items-center gap-1.5 rounded-xl bg-emerald-700 px-4 py-2.5 text-[13px] font-bold text-white shadow-md shadow-emerald-600/25">
         <BookOpen size={15} />
         ادامه
       </span>

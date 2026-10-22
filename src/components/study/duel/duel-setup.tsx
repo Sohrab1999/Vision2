@@ -138,7 +138,7 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
   };
   const outcomeChip: Record<DuelOutcome, string> = {
     win: "bg-emerald-500",
-    loss: "bg-rose-500",
+    loss: "bg-rose-700",
     tie: "bg-amber-500",
   };
   const outcomeLabel: Record<DuelOutcome, string> = { win: "برد", loss: "باخت", tie: "مساوی" };

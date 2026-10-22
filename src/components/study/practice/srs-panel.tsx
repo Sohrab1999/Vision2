@@ -222,7 +222,7 @@ export default function SrsPanel() {
               <div className="mb-2 flex items-center gap-1.5">
                 <span className="relative flex h-2 w-2">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-rose-400 opacity-75" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-rose-500" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-rose-700" />
                 </span>
                 <span className="flex items-center gap-1 text-[11px] font-bold text-stone-500">
                   <AlarmClock size={12} className="text-rose-500" />
@@ -385,7 +385,7 @@ export default function SrsPanel() {
         <div className="flex flex-col items-stretch gap-2.5 lg:w-52">
           <button
             onClick={startSmartReview}
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-l from-teal-600 to-emerald-600 px-5 py-3 text-[13px] font-black text-white shadow-lg shadow-emerald-900/20 transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-95 active:scale-[0.96]"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-l from-teal-700 to-emerald-700 px-5 py-3 text-[13px] font-black text-white shadow-lg shadow-emerald-900/20 transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-95 active:scale-[0.96]"
           >
             <Sparkles size={16} />
             {dueTotal > 0 ? `مرور ${faNum(dueTotal)} واژهٔ سررسید` : "شروع مرور هوشمند"}

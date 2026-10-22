@@ -41,7 +41,7 @@ export const spineColors: Record<string, string> = {
   // stone-600 میافتادند — راندهای r198 کلیدشان را به نقشه اضافه نکردند.
   emerald: "bg-gradient-to-b from-emerald-700 to-emerald-950",
   amber: "bg-gradient-to-b from-amber-700 to-amber-950",
-  rose: "bg-gradient-to-b from-rose-600 to-rose-950",
+  rose: "bg-gradient-to-b from-rose-700 to-rose-950",
   violet: "bg-gradient-to-b from-violet-600 to-violet-950",
   sky: "bg-gradient-to-b from-sky-900 to-sky-950",
   teal: "bg-gradient-to-b from-teal-700 to-teal-950",

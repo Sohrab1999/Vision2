@@ -55,7 +55,8 @@ describe("نمایِ حرارتیِ پوشش — کامپوننت (Task 175)", (
     render(<CoverageHeatmapSection />);
     const elite = screen.getAllByRole("cell").find((c) => c.textContent === "۹۵");
     expect(elite).toBeDefined();
-    expect(elite!.className).toContain("bg-emerald-600");
+    // r328: از ۶۰۰ به ۷۰۰ عمیق شد — سفید روی ۶۰۰ فقط ۳٫۶۵ (سویپِ کنتراست)
+    expect(elite!.className).toContain("bg-emerald-700");
     expect(screen.getByText(/میانگینِ بهترین‌ها: ۹۰٪/)).toBeInTheDocument();
   });
 

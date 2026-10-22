@@ -162,7 +162,7 @@ export default function SettingsPopover() {
             />
             <button
               onClick={preview}
-              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-emerald-600 text-white shadow-sm transition-[background-color,color,border-color,box-shadow,transform] hover:bg-emerald-700 active:scale-[0.96]"
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-emerald-700 text-white shadow-sm transition-[background-color,color,border-color,box-shadow,transform] hover:bg-emerald-800 active:scale-[0.96]"
               aria-label={previewing ? "توقف پخش نمونه" : "پخش نمونهٔ روخوانی"}
               title={previewing ? "توقف" : "بشنو"}
             >

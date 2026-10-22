@@ -86,7 +86,7 @@ export default function WritingTab({ lesson }: { lesson: LessonData }) {
         </p>
         <button
           onClick={restart}
-          className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-600 px-5 py-2.5 text-sm font-bold text-white transition-[background-color,color,border-color,transform] hover:bg-emerald-700 active:scale-[0.96]"
+          className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-700 px-5 py-2.5 text-sm font-bold text-white transition-[background-color,color,border-color,transform] hover:bg-emerald-800 active:scale-[0.96]"
         >
           <RotateCcw size={15} />
           تمرین مجدد
@@ -175,7 +175,7 @@ export default function WritingTab({ lesson }: { lesson: LessonData }) {
                           ? "bg-stone-800 text-white hover:bg-stone-700"
                           : correctHere
                             ? "bg-emerald-500 text-white"
-                            : "bg-rose-500 text-white"
+                            : "bg-rose-700 text-white"
                       }`}
                     >
                       {word}
@@ -213,7 +213,7 @@ export default function WritingTab({ lesson }: { lesson: LessonData }) {
                 onClick={check}
                 disabled={!isComplete}
                 className={`inline-flex items-center gap-1.5 rounded-xl px-5 py-2.5 text-sm font-bold text-white transition-[background-color,color,border-color,transform] active:scale-[0.96] ${
-                  isComplete ? "bg-emerald-600 hover:bg-emerald-700" : "cursor-not-allowed bg-stone-300"
+                  isComplete ? "bg-emerald-700 hover:bg-emerald-800" : "cursor-not-allowed bg-stone-300"
                 }`}
               >
                 <Check size={16} />
@@ -244,7 +244,7 @@ export default function WritingTab({ lesson }: { lesson: LessonData }) {
                 <SpeakButton text={ex.answer.join(" ").replace(/ ,/g, ",")} label="روخوانی" />
                 <button
                   onClick={next}
-                  className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2 text-[13px] font-bold text-white transition-[background-color,color,border-color,transform] hover:bg-emerald-700 active:scale-[0.96]"
+                  className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-700 px-4 py-2 text-[13px] font-bold text-white transition-[background-color,color,border-color,transform] hover:bg-emerald-800 active:scale-[0.96]"
                 >
                   {idx < lesson.writing.length - 1 ? "تمرین بعدی" : "دیدن نتیجه"}
                   <ArrowLeft size={14} />

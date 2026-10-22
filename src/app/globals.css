@@ -421,7 +421,12 @@ body {
 .dark .text-stone-800 { color: #eceae6; }
 .dark .text-stone-700 { color: #d6d3cf; }
 .dark .text-stone-600 { color: #a8a29b; }
-.dark .text-stone-500 { color: #8c857d; }
+/* r328 — kernel stone-500 روشنتر شد: ۴٫۱۷ رویِ تینتِ #292524 (خانوادهٔ
+   مرزیِ ~۱۰۰ عنصریِ r327) زیرِ ۴٫۵ میماند؛ #9c958c رویِ همهٔ تینتهایِ
+   تیرهٔ خانواده ≥۵٫۰ میدهد (زندهسنجیده در r328-palette-probe) و سلسله
+   مراتبِ 500<600<700 حفظ میشود. کاغذِ کارنامهٔ رسمی پایین، جوهرِ خودش را
+   با قاعدهٔ specificityدارِ جداگانه پین میکند تا از این تغییر اثر نپذیرد. */
+.dark .text-stone-500 { color: #9c958c; }
 .dark .text-stone-400 { color: #716b63; }
 .dark .text-stone-300 { color: #57534c; }
 
@@ -689,7 +694,7 @@ body {
 .dark .word-day .border-emerald-600 { border-color: #059669; }
 .dark .word-day .bg-emerald-600 { background-color: #047857; }
 /* ink tone text-stone-500 → #8a8580 — canonical group (Step 9 tranche-2; was 3 drifted per-panel copies) */
-.dark .word-day .text-stone-500,.dark .badge-popover .text-stone-500,.dark .shortcuts-dialog .text-stone-500 { color: #8a8580; }
+.dark .word-day .text-stone-500,.dark .badge-popover .text-stone-500,.dark .shortcuts-dialog .text-stone-500 { color: #9c958c; }
 /* ink tone text-stone-400 → #78716c — canonical group (Step 9 tranche-2; was 4 drifted per-panel copies) */
 .dark .word-day .text-stone-400,.dark .shortcuts-dialog .text-stone-400,.dark .rush-hud .text-stone-400,
 .dark .report-digest .text-stone-400 { color: #78716c; }
@@ -1173,6 +1178,18 @@ html.user-reduce-motion .streak-flame {
   --color-amber-50: #fffbeb;
   --color-rose-50: #fff1f2;
 }
+/* r328 — دنبالهٔ O2: توکنِ بازنگشته در برابرِ «قواعدِ کلاسِ کرنل» بیدفاع است
+   (.dark .text-emerald-700→#6ee7b7 و .dark .text-stone-500 و .dark .bg-stone-50
+   با specificity ۰-۲-۰ مستقیم مقدار میدهند و از توکن میچرخند). درمان:
+   پینِ کلاسِ هماراسته با رتبهٔ ۰-۳-۰ داخلِ کاغذ — مقدارِ روشنِ همیشهچاپ.
+   هر جفت زندهسنجیده شده (r328-palette-probe): em700-on-white ۵٫۴۸ ·
+   em700-on-em50 ۵٫۲۱ · stone-600 رویِ زبرا ۶٫۹۹ · chart50 پینشده ۴٫۵۹. */
+.dark .official-report .text-emerald-700 { color: #047857; }
+.dark .official-report .text-stone-600 { color: #57534e; }
+.dark .official-report .text-stone-500 { color: #78716c; }
+.dark .official-report .bg-stone-50 { background-color: #fafaf9; }
+.dark .official-report .border-stone-100 { border-color: #f5f5f4; }
+.dark .official-report .border-emerald-300 { border-color: #6ee7b7; }
 /* the screen-only toolbar sits OUTSIDE the paper on its own dark band — its
    stone-100/200 text must stay light (print-official hides this chrome) */
 .dark .official-chrome {
@@ -1180,8 +1197,10 @@ html.user-reduce-motion .streak-flame {
   --color-stone-200: #e7e5e4;
 }
 
-/* letterhead band + stamp */
-.or-band { background-image: linear-gradient(115deg, #064e3b 0%, #047857 55%, #0d9488 100%); color: #ffffff; }
+/* letterhead band + stamp — r328: استاپِ آخرِ باند از teal-600 به teal-700
+   عمیق شد (سفیدِ کوچکِ fs=9–11 رویِ #0d9488 = ۳٫۰۴–۳٫۴۲، رویِ #0f766e
+   ≥۴٫۷ زندهسنجیده) — همان درمانِ نقشهٔ gradِ داستان در r327 */
+.or-band { background-image: linear-gradient(115deg, #064e3b 0%, #047857 55%, #0f766e 100%); color: #ffffff; }
 .or-stamp { border: 2px dashed rgb(255 255 255 / 0.55); color: rgb(255 255 255 / 0.92); }
 
 /* section title accent */
@@ -1225,7 +1244,9 @@ html.user-reduce-motion .streak-flame {
 /* signature boxes */
 .or-sign { background-color: #fafaf9; border: 1px solid #e7e5e4; color: #44403c; }
 .or-sign-line { border-bottom: 2px dotted #a8a29e; }
-.or-foot { color: #a8a29e; }
+/* r328 — or-foot از #a8a29e (۲٫۵۲ رویِ سفید — در هر دو تم) به stone-500
+   عمیق شد: ۴٫۸ رویِ سفید و خواناتر رویِ کاغذِ لیزری هم (درسِ r179) */
+.or-foot { color: #78716c; }
 
 /* weekly bars (static, print-safe) */
 .or-weekbar { background-image: linear-gradient(to top, #047857, #34d399); }

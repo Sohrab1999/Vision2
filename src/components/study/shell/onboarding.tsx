@@ -96,7 +96,7 @@ export default function Onboarding() {
         <span
           key={i}
           className={`h-1.5 rounded-full transition-[background-color,color,border-color,box-shadow,transform] duration-300 ${
-            i === step ? "w-6 bg-emerald-600" : i < step ? "w-1.5 bg-emerald-400" : "w-1.5 bg-stone-200"
+            i === step ? "w-6 bg-emerald-700" : i < step ? "w-1.5 bg-emerald-400" : "w-1.5 bg-stone-200"
           }`}
         />
       ))}
@@ -192,7 +192,7 @@ export default function Onboarding() {
               </div>
               <button
                 onClick={goStep2}
-                className="flex w-full items-center justify-center gap-1.5 rounded-xl bg-emerald-600 py-3 text-sm font-black text-white shadow-md shadow-emerald-900/20 transition-[background-color,color,border-color,box-shadow,transform] hover:bg-emerald-700 active:scale-[0.96]"
+                className="flex w-full items-center justify-center gap-1.5 rounded-xl bg-emerald-700 py-3 text-sm font-black text-white shadow-md shadow-emerald-900/20 transition-[background-color,color,border-color,box-shadow,transform] hover:bg-emerald-800 active:scale-[0.96]"
               >
                 ادامه
                 <ChevronLeft size={16} />
@@ -236,7 +236,7 @@ export default function Onboarding() {
                             {faNum(g)} فعالیت
                           </span>
                           {g === 10 && (
-                            <span className="rounded-full bg-emerald-600 px-2 py-0.5 text-[10px] font-black text-white">
+                            <span className="rounded-full bg-emerald-700 px-2 py-0.5 text-[10px] font-black text-white">
                               پیشنهادی
                             </span>
                           )}
@@ -245,7 +245,7 @@ export default function Onboarding() {
                       </span>
                       <span
                         className={`h-4.5 w-4.5 shrink-0 rounded-full border-2 transition-[background-color,color,border-color,box-shadow] ${
-                          active ? "border-emerald-600 bg-emerald-600 shadow-inner" : "border-stone-300 bg-white"
+                          active ? "border-emerald-600 bg-emerald-700 shadow-inner" : "border-stone-300 bg-white"
                         }`}
                       />
                     </button>
@@ -261,7 +261,7 @@ export default function Onboarding() {
                 </button>
                 <button
                   onClick={goStep3}
-                  className="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-emerald-600 py-3 text-sm font-black text-white shadow-md shadow-emerald-900/20 transition-[background-color,color,border-color,box-shadow,transform] hover:bg-emerald-700 active:scale-[0.96]"
+                  className="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-emerald-700 py-3 text-sm font-black text-white shadow-md shadow-emerald-900/20 transition-[background-color,color,border-color,box-shadow,transform] hover:bg-emerald-800 active:scale-[0.96]"
                 >
                   ثبت هدف
                   <ChevronLeft size={16} />
@@ -296,7 +296,7 @@ export default function Onboarding() {
               </div>
               <button
                 onClick={startFirstExercise}
-                className="flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-600 py-3.5 text-sm font-black text-white shadow-md shadow-emerald-900/20 transition-[background-color,color,border-color,box-shadow,transform] hover:bg-emerald-700 active:scale-[0.96]"
+                className="flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-700 py-3.5 text-sm font-black text-white shadow-md shadow-emerald-900/20 transition-[background-color,color,border-color,box-shadow,transform] hover:bg-emerald-800 active:scale-[0.96]"
               >
                 <Play size={16} />
                 شروع اولین تمرین

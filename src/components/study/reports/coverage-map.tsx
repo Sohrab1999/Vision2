@@ -21,7 +21,7 @@ import { buildCoverageMap, type CoverageLesson } from "@/lib/coverage-map";
 const DOT: Record<string, string> = {
   emerald: "bg-emerald-500",
   amber: "bg-amber-500",
-  rose: "bg-rose-500",
+  rose: "bg-rose-700",
 };
 
 function LessonRow({ L }: { L: CoverageLesson }) {

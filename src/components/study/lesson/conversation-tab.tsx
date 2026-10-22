@@ -56,7 +56,7 @@ export default function ConversationTab({ lesson }: { lesson: LessonData }) {
         <button
           onClick={playAll}
           className={`inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-bold text-white shadow-sm transition-[background-color,color,border-color,box-shadow,transform] active:scale-[0.96] ${
-            playingAll ? "bg-rose-600" : "bg-emerald-600 hover:bg-emerald-700"
+            playingAll ? "bg-rose-600" : "bg-emerald-700 hover:bg-emerald-800"
           }`}
         >
           {playingAll ? <Square size={15} /> : <Play size={15} />}

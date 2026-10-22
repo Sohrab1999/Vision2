@@ -25,7 +25,7 @@ export default function HomeFeed() {
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-[auto_1fr]">
         <div>
           <div className="mb-4 flex items-center gap-3">
-            <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-600 text-white shadow-md shadow-emerald-900/20">
+            <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-emerald-700 text-white shadow-md shadow-emerald-900/20">
               <Users size={20} />
             </span>
             <div>
@@ -86,7 +86,7 @@ export default function HomeFeed() {
                     {a.name && (
                       <span
                         className={`h-2 w-2 shrink-0 rounded-full ${
-                          a.color === "amber" ? "bg-amber-500" : a.color === "rose" ? "bg-rose-500" : a.color === "violet" ? "bg-violet-500" : a.color === "sky" ? "bg-sky-500" : "bg-emerald-500"
+                          a.color === "amber" ? "bg-amber-500" : a.color === "rose" ? "bg-rose-700" : a.color === "violet" ? "bg-violet-500" : a.color === "sky" ? "bg-sky-500" : "bg-emerald-500"
                         }`}
                         title={a.name}
                       />

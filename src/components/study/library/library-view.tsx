@@ -233,7 +233,7 @@ export default function LibraryView() {
                 aria-pressed={filter === f.id}
                 className={`inline-flex items-center gap-1.5 rounded-xl border px-3 py-2 text-[11.5px] font-black transition-colors ${
                   filter === f.id
-                    ? "border-teal-600 bg-teal-600 text-white shadow-sm"
+                    ? "border-teal-600 bg-teal-700 text-white shadow-sm"
                     : "border-stone-200 bg-stone-50 text-stone-500 hover:border-stone-300 hover:text-stone-600"
                 }`}
               >
@@ -423,7 +423,7 @@ function BookCard({
                 )}
                 {/* r300 — نشانگرِ «بعدیِ تو» از libraryProgress.nextStory (منبعِ یگانه) */}
                 {s.id === nextId && (
-                  <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-teal-600 px-2 py-0.5 text-[10px] font-black text-white shadow-sm">
+                  <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-teal-700 px-2 py-0.5 text-[10px] font-black text-white shadow-sm">
                     <Sparkles size={11} aria-hidden />
                     بعدیِ تو
                   </span>
@@ -718,7 +718,7 @@ function TfButton({
 }) {
   const cls =
     tone === "good"
-      ? "bg-emerald-600 border-emerald-600 text-white shadow-sm"
+      ? "bg-emerald-700 border-emerald-600 text-white shadow-sm"
       : tone === "bad"
         ? "bg-rose-600 border-rose-600 text-white shadow-sm"
         : active

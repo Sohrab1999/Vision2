@@ -113,7 +113,7 @@ export default function LessonTestsTab({ lesson }: { lesson: LessonData }) {
           className="lesson-mistakes-cta flex w-full items-center justify-between gap-3 rounded-2xl border border-rose-300 bg-gradient-to-l from-rose-50 to-red-50 p-4 text-right shadow-sm transition-[background-color,color,border-color,box-shadow,transform] hover:shadow-md hover:shadow-rose-200/50 active:scale-[0.96]"
         >
           <span className="flex items-center gap-3">
-            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-rose-500 text-white shadow-md shadow-rose-500/30">
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-rose-700 text-white shadow-md shadow-rose-500/30">
               <Eraser size={20} />
             </span>
             <span>

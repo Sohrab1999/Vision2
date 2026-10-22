@@ -32,7 +32,7 @@ const THEME: Record<HillBookId, { grad: string; chip: string; text: string; ring
     grad: "from-emerald-700 to-emerald-900",
     chip: "bg-emerald-50 text-emerald-700 border-emerald-200",
     text: "text-emerald-700",
-    ring: "bg-emerald-600",
+    ring: "bg-emerald-700",
   },
   s2: {
     // r327 — همان جراحی: ۴۰۰/۶۰۰ → ۷۰۰/۹۵۰ — تهِ -۷۰۰ در تاریک به

@@ -66,7 +66,7 @@ export default function HomeHero() {
         <motion.div {...rise(0.21, reduceMotion)} className="flex flex-wrap items-center gap-3">
           <button
             onClick={() => openLesson(1)}
-            className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-emerald-900/25 transition-[background-color,color,border-color,box-shadow,transform] hover:bg-emerald-700 hover:shadow-emerald-900/30 active:scale-[0.96]"
+            className="inline-flex items-center gap-2 rounded-xl bg-emerald-700 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-emerald-900/25 transition-[background-color,color,border-color,box-shadow,transform] hover:bg-emerald-800 hover:shadow-emerald-900/30 active:scale-[0.96]"
           >
             <BookOpen size={17} />
             شروع یادگیری — درس اول
@@ -145,7 +145,7 @@ export default function HomeHero() {
               }}
               aria-hidden
             />
-            <div className="pt-4 text-[11px] font-bold tracking-widest text-emerald-200/90">
+            <div className="pt-4 text-[11px] font-bold tracking-widest text-emerald-100">
               ENGLISH FOR 11TH GRADE
             </div>
             <div className="en-text mt-6 text-5xl font-bold italic" dir="ltr">
@@ -190,12 +190,12 @@ export default function HomeHero() {
               </svg>
               <div className="text-right leading-4">
                 <div className="text-[11px] font-bold text-emerald-100">گنجینهٔ واژگانِ تو</div>
-                <div className="text-[10px] text-emerald-200/80">
+                <div className="text-[10px] text-emerald-100">
                   {cp.countFa} از {faNum(TOTAL_VOCABULARY)} واژه
                 </div>
               </div>
             </div>
-            <div className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-[11px] font-semibold">
+            <div className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-black/15 px-3 py-1 text-[11px] font-semibold">
               <Volume2 size={12} /> با روخوانی هوش مصنوعی
             </div>
           </motion.button>

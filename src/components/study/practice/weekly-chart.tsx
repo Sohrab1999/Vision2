@@ -43,7 +43,7 @@ export default function WeeklyChart() {
     if (n <= 0) return "bg-stone-100";
     if (n <= 3) return "bg-emerald-200";
     if (n <= 7) return "bg-emerald-400";
-    if (n <= 12) return "bg-emerald-600";
+    if (n <= 12) return "bg-emerald-700";
     return "bg-emerald-800";
   };
 
@@ -105,7 +105,7 @@ export default function WeeklyChart() {
                 onClick={() => setRange(r.key)}
                 className={`rounded-lg px-3.5 py-1.5 text-[12px] font-black transition-[background-color,color,border-color,box-shadow,transform] active:scale-[0.96] ${
                   range === r.key
-                    ? "bg-white text-cyan-700 shadow-sm ring-1 ring-cyan-200"
+                    ? "bg-white text-cyan-700 shadow-sm ring-1 ring-cyan-200 dark:bg-cyan-950 dark:text-cyan-300 dark:ring-cyan-800"
                     : "text-stone-500 hover:text-stone-700"
                 }`}
               >
@@ -178,7 +178,7 @@ export default function WeeklyChart() {
                         title={d.isToday ? undefined : d.weekday}
                         className={`mt-2 max-w-full shrink-0 truncate rounded-full px-1 py-0.5 text-[10px] font-bold ${
                           d.isToday
-                            ? "bg-emerald-600 text-white shadow-sm"
+                            ? "bg-emerald-700 text-white shadow-sm"
                             : "text-stone-500"
                         }`}
                       >
@@ -255,7 +255,7 @@ export default function WeeklyChart() {
                 <Grid3X3 size={12} />
                 کم
                 <span className="flex gap-1">
-                  {["bg-stone-100", "bg-emerald-200", "bg-emerald-400", "bg-emerald-600", "bg-emerald-800"].map((c) => (
+                  {["bg-stone-100", "bg-emerald-200", "bg-emerald-400", "bg-emerald-700", "bg-emerald-800"].map((c) => (
                     <span key={c} className={`h-3 w-3 rounded-sm ${c}`} />
                   ))}
                 </span>

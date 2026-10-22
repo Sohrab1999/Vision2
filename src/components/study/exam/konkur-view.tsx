@@ -306,7 +306,7 @@ export default function KonkurView() {
           {examBank.map((q) => {
             const seen = stats.seenSet.has(q.id);
             const wrong = stats.wrongSet.has(q.id);
-            const cls = !seen ? "bg-stone-200" : wrong ? "bg-rose-500" : "bg-emerald-500";
+            const cls = !seen ? "bg-stone-200" : wrong ? "bg-rose-700" : "bg-emerald-500";
             // راند ۲۷۵ — تولتیپِ خانه‌ها هم فارسی‌رقم شد (پیش‌تر «تست 12» لاتین می‌گفت)
             return (
               <div
@@ -325,7 +325,7 @@ export default function KonkurView() {
             مسلط ({faNum(stats.masteredCount)})
           </span>
           <span className="flex items-center gap-1.5">
-            <span className="h-3 w-3 rounded-[3px] bg-rose-500" aria-hidden />
+            <span className="h-3 w-3 rounded-[3px] bg-rose-700" aria-hidden />
             غلط اخیر ({faNum(stats.wrongCount)})
           </span>
           <span className="flex items-center gap-1.5">
@@ -518,7 +518,7 @@ export default function KonkurView() {
               </div>
               <button
                 onClick={startCover}
-                className="w-full rounded-xl bg-emerald-600 py-3.5 text-[15px] font-black text-white shadow-lg shadow-emerald-900/25 transition-[background-color,color,border-color,box-shadow,transform] hover:bg-emerald-700 active:scale-[0.96]"
+                className="w-full rounded-xl bg-emerald-700 py-3.5 text-[15px] font-black text-white shadow-lg shadow-emerald-900/25 transition-[background-color,color,border-color,box-shadow,transform] hover:bg-emerald-800 active:scale-[0.96]"
               >
                 شروع پوشش بانک ({faNum(Math.min(coverCount, unseen.length))} تست)
                 <ArrowLeft size={17} className="mr-2 inline" />
@@ -614,7 +614,7 @@ function ModeCard({
       }`}
     >
       {typeof badge === "number" && badge > 0 && (
-        <span className="absolute left-3 top-3 flex h-6 min-w-6 items-center justify-center rounded-full bg-rose-500 px-1.5 text-[11px] font-black text-white shadow-md shadow-rose-500/30">
+        <span className="absolute left-3 top-3 flex h-6 min-w-6 items-center justify-center rounded-full bg-rose-700 px-1.5 text-[11px] font-black text-white shadow-md shadow-rose-500/30">
           {faNum(badge)}
         </span>
       )}

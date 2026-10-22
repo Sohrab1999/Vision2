@@ -33,7 +33,7 @@ const CELL: Record<HeatBandId, string> = {
   faint: "border border-stone-200 bg-stone-100 text-stone-600",
   warming: "border border-amber-200 bg-amber-50 text-amber-700",
   strong: "border border-teal-200 bg-teal-50 text-teal-700",
-  elite: "border border-emerald-700 bg-emerald-600 text-white shadow-sm",
+  elite: "border border-emerald-700 bg-emerald-700 text-white shadow-sm",
 };
 
 function HeatCell({ c, delay, reduce }: { c: CoverageCell; delay: number; reduce: boolean }) {

@@ -47,7 +47,7 @@ export default function HomeBookshelf() {
             <span className="en-text text-sm font-bold" dir="ltr">
               L{l.id}
             </span>
-            <span className="mt-1 max-w-full truncate px-1 text-[10px] opacity-90">
+            <span className="mt-1 max-w-full truncate px-1 text-[10px]">
               {l.titleFa}
             </span>
           </motion.button>

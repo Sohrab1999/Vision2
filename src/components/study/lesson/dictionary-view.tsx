@@ -228,7 +228,7 @@ export default function DictionaryView() {
       id: "known",
       label: "بلدم",
       icon: CheckCircle2,
-      cls: "bg-emerald-600",
+      cls: "bg-emerald-700",
       count: mounted ? allWords.filter((w) => known[wordKey(w.lessonId, w.en)]).length : 0,
     },
     {
@@ -242,7 +242,7 @@ export default function DictionaryView() {
       id: "due",
       label: "سررسید مرور",
       icon: AlarmClock,
-      cls: "bg-rose-500",
+      cls: "bg-rose-700",
       count: dueCount,
     },
     {

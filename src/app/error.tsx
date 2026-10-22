@@ -64,7 +64,7 @@ export default function ErrorPage({
               // guard: if reset silently fails, offer home after a beat
               setTimeout(() => setCounting(false), 600);
             }}
-            className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-emerald-600 px-5 py-2.5 text-sm font-bold text-white shadow-sm transition-[background-color,color,border-color,box-shadow,transform] hover:bg-emerald-700 active:scale-[0.96]"
+            className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-emerald-700 px-5 py-2.5 text-sm font-bold text-white shadow-sm transition-[background-color,color,border-color,box-shadow,transform] hover:bg-emerald-800 active:scale-[0.96]"
           >
             <RotateCcw size={15} />
             تلاش دوباره

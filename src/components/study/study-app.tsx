@@ -295,7 +295,7 @@ export default function StudyApp() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="fixed bottom-5 left-5 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-emerald-600 text-white shadow-lg shadow-emerald-900/30 transition-transform hover:bg-emerald-700 active:scale-[0.96]"
+            className="fixed bottom-5 left-5 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-emerald-700 text-white shadow-lg shadow-emerald-900/30 transition-transform hover:bg-emerald-800 active:scale-[0.96]"
             aria-label="بازگشت به بالای صفحه"
           >
             <ArrowUp size={19} />

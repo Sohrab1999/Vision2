@@ -39,7 +39,7 @@ agent-browser eval "(()=>{const st=JSON.parse(localStorage.getItem('vision2-stud
   badgesSection: !!document.querySelector('[aria-label=\"نشان‌ها و دستاوردها\"]'),
   srsPanel: !!document.querySelector('.srs-panel'),
   dangerPanel: !!document.querySelector('[aria-label=\"واژه‌های خطرناک من\"]'),
-  goalChipDone: !!document.querySelector('.goal-chip.bg-emerald-600'),
+  goalChipDone: !!document.querySelector('.goal-chip.bg-emerald-700'),
   unlockedBadgeCards: document.querySelectorAll('.badge-card.bg-gradient-to-b').length,
 });})()" 2>&1 | tee -a "$OUT"
 
