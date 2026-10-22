@@ -79,7 +79,7 @@ export default function VocabTab({
         active ? `${t.bg} text-white shadow-sm` : "bg-stone-100 text-stone-600 hover:bg-stone-200"
       }`}
     >
-      {label} <span className="opacity-70">({count})</span>
+      {label} <span>({count})</span>
     </button>
   );
 

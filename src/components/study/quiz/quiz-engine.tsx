@@ -200,7 +200,7 @@ export default function QuizEngine({
             >
               <p
                 className={`mb-1 text-[13px] font-black ${
-                  selected === q.answer ? "text-emerald-700" : "text-rose-600"
+                  selected === q.answer ? "text-emerald-700" : "text-rose-700"
                 }`}
               >
                 {selected === q.answer ? "✓ پاسخ درست!" : `✗ پاسخ درست: ${letters[q.answer]}) ${q.options[q.answer]}`}

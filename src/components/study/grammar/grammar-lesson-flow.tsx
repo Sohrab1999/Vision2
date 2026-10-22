@@ -290,11 +290,11 @@ function MirrorStep({ lesson }: { lesson: GrammarMicroLesson }) {
 
           {/* غلط کلاسیک ایرانی */}
           <div className="glesson-mistake rounded-xl border border-rose-200 bg-rose-50/70 p-3">
-            <p className="glesson-mistake-title mb-1.5 flex items-center gap-1 text-[11px] font-black text-rose-500">
+            <p className="glesson-mistake-title mb-1.5 flex items-center gap-1 text-[11px] font-black text-rose-700">
               <MessageCircleQuestion size={13} /> غلط کلاسیک ما ایرانی‌ها
             </p>
             <div className="space-y-1.5 font-mono text-[12.5px] font-bold" dir="ltr">
-              <p className="glesson-wrong text-rose-600 line-through decoration-rose-400/70 decoration-2">{m.mistake.wrong}</p>
+              <p className="glesson-wrong text-rose-700 line-through decoration-rose-400/70 decoration-2">{m.mistake.wrong}</p>
               <p className="glesson-right flex items-center gap-1.5 text-emerald-700">
                 <Check size={14} strokeWidth={3} /> {m.mistake.right}
               </p>

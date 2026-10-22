@@ -318,7 +318,7 @@ export default function QuizResult({
       <p className={`mb-5 text-sm font-bold ${grade.cls}`}>{grade.msg}</p>
       <div className="mb-4 flex flex-wrap items-center justify-center gap-2">
         {trackMistakes && wrongIds.length > 0 && (
-          <span className="rounded-full border border-rose-200 bg-rose-50 px-3 py-1 text-[12px] font-bold text-rose-600">
+          <span className="rounded-full border border-rose-200 bg-rose-50 px-3 py-1 text-[12px] font-bold text-rose-700">
             {wrongIds.length} سؤال به بانک مرور اشتباهات اضافه شد
           </span>
         )}

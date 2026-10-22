@@ -228,7 +228,7 @@ export default function KonkurView() {
           </span>
           <div className="min-w-0 flex-1">
             <h1 className="text-xl font-black sm:text-2xl">گوشهٔ کنکور</h1>
-            <p className="mt-1 text-[13px] font-bold leading-6 text-white/90">
+            <p className="mt-1 text-[13px] font-bold leading-6 text-white">
               اتاق فرمان بانک «۳۶۰ تست واژگان» جزوه — پوشش بده، تسلط پیدا کن، برای کنکور آماده شو.
             </p>
           </div>

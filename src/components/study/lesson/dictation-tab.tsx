@@ -613,7 +613,7 @@ export default function DictationTab({
                         transition={{ delay: i * 0.03 }}
                         className={`en-text flex h-9 w-8 items-center justify-center rounded-lg border text-lg font-bold ${
                           wrong
-                            ? "border-rose-300 bg-white text-rose-500 line-through decoration-rose-400"
+                            ? "border-rose-300 bg-white text-rose-700 line-through decoration-rose-400"
                             : revealed
                               ? "border-amber-300 bg-amber-50 text-amber-700"
                               : isCorrect
@@ -628,7 +628,7 @@ export default function DictationTab({
                 </div>
 
                 {state === "wrong" && userChars.length > 0 && norm(input) !== norm(word.en) && (
-                  <p className="mb-3 text-[12px] text-rose-500" dir="ltr">
+                  <p className="mb-3 text-[12px] text-rose-700" dir="ltr">
                     you typed: <b>{input.trim()}</b>
                   </p>
                 )}

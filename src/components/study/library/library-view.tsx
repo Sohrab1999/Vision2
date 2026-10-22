@@ -238,7 +238,7 @@ export default function LibraryView() {
                 }`}
               >
                 {f.label}
-                <span className="text-[10px] font-bold opacity-75">
+                <span className="text-[10px] font-bold">
                   {mounted ? faNum(chipCounts[f.id]) : "–"}
                 </span>
               </button>

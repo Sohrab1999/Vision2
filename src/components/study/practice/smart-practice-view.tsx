@@ -191,7 +191,7 @@ export default function SmartPracticeView() {
                     >
                       <Icon size={13} />
                       {action!.label}
-                      <span className="text-[10px] font-black text-rose-500">{faNum(skill.avg)}٪</span>
+                      <span className="text-[10px] font-black text-rose-700">{faNum(skill.avg)}٪</span>
                     </button>
                   );
                 })}
@@ -269,7 +269,7 @@ export default function SmartPracticeView() {
             setSession(plan.pool);
           }}
           disabled={!plan || plan.pool.length === 0}
-          className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-l from-arcade-from-soft to-arcade-to py-3 text-sm font-black text-white shadow-lg shadow-violet-500/25 transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-95 active:scale-[0.96] disabled:opacity-40 sm:w-auto sm:px-10"
+          className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-l from-arcade-from to-arcade-to py-3 text-sm font-black text-white shadow-lg shadow-violet-500/25 transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-95 active:scale-[0.96] disabled:opacity-40 sm:w-auto sm:px-10"
         >
           <Sparkles size={17} />
           شروع تمرین هوشمند ({faNum(plan?.pool.length ?? 0)} سؤال)
