@@ -124,7 +124,7 @@ export default function MyWordsView() {
               className={`ms-auto inline-flex items-center gap-1.5 rounded-xl border px-3 py-2 text-[12px] font-bold transition-[background-color,color,border-color,transform] active:scale-[0.96] ${
                 armedClear
                   ? "animate-pulse border-rose-300 bg-rose-700 text-white"
-                  : "border-rose-200 bg-rose-50 text-rose-600 hover:bg-rose-100"
+                  : "border-rose-200 bg-rose-50 text-rose-700 hover:bg-rose-100"
               }`}
               aria-label={armedClear ? "تأیید پاک‌کردن همهٔ واژه‌های نشان‌شده" : "پاک‌کردن همهٔ واژه‌های نشان‌شده"}
             >
@@ -145,8 +145,10 @@ export default function MyWordsView() {
               <div className="text-[10.5px] font-bold text-emerald-600/80">بلدم</div>
             </div>
             <div className="rounded-xl border border-sky-100 bg-sky-50/70 px-3 py-2 text-center">
-              <div className="text-lg font-black text-sky-600">{faNum(lessonCounts.size)}</div>
-              <div className="text-[10.5px] font-bold text-sky-600/80">درس درگیر</div>
+              {/* r329 — sky-600 رویِ سفید = ۴٫۰۲ (زنده)؛ -۷۰۰ = ۵٫۸۶ —
+                  برچسب هم به -۷۰۰ کامل (sky-700/80 مرزیِ ۴٫۵ می‌ماند) */}
+              <div className="text-lg font-black text-sky-700">{faNum(lessonCounts.size)}</div>
+              <div className="text-[10.5px] font-bold text-sky-700">درس درگیر</div>
             </div>
             <div className="rounded-xl border border-violet-200 bg-violet-50/70 px-3 py-2 text-center">
               <div className="text-lg font-black text-violet-600">{faNum(pairCount)}</div>

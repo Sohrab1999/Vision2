@@ -197,7 +197,10 @@ export default function ReportCard({ open, onClose }: { open: boolean; onClose: 
                   <div key={r.label} className={`rounded-xl border p-2.5 text-center ${r.cls}`}>
                     <r.icon size={16} className="mx-auto mb-1" />
                     <div className="text-[15px] font-black leading-5">{r.value}</div>
-                    <div className="text-[10px] font-bold opacity-75">{r.label}</div>
+                    {/* r329 — آلفایِ ۷۵٪ جوهرِ -۷۰۰ را زیرِ ۴٫۵ می‌برد (رزِ ۴٫۱۰،
+                        کهربایِ ۳٫۱۸ — زنده با بوم)؛ آلفا حذف — جوهرهای -۷۰۰ رویِ
+                        تینت‌های -۵۰ در آلفایِ کامل ≥۴٫۷ زندهسنجیده */}
+                    <div className="text-[10px] font-bold">{r.label}</div>
                   </div>
                 ))}
               </div>

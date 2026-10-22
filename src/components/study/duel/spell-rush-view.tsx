@@ -341,7 +341,8 @@ export default function SpellRushView({ onExit }: { onExit?: () => void }) {
                 { icon: Timer, text: "غلط یا رد کردن کمبو را صفر می‌کند؛ پایان زمان = ثبت رکورد" },
               ].map((r, i) => (
                 <div key={i} className="flex items-center gap-2.5 rounded-xl border border-orange-100 c-veil-80 px-3.5 py-2.5">
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-sky-100 text-sky-600">
+                  {/* r329 — sky-600 رویِ sky-100 = ۳٫۷۷ خانوادهٔ c-chip-freeze (زنده)؛ -۷۰۰ = ۵٫۸۶ */}
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-sky-100 text-sky-700">
                     <r.icon size={16} />
                   </span>
                   <span className="text-[13px] font-bold text-stone-700">{r.text}</span>
@@ -476,7 +477,7 @@ export default function SpellRushView({ onExit }: { onExit?: () => void }) {
               strokeDashoffset={ring * (1 - progress)}
             />
           </svg>
-          <span className={`absolute inset-0 flex items-center justify-center text-lg font-black ${totalSeconds <= 10 ? "text-rose-600" : "text-sky-600"}`}>
+          <span className={`absolute inset-0 flex items-center justify-center text-lg font-black ${totalSeconds <= 10 ? "text-rose-600" : "text-sky-700"}`}>
             {faNum(totalSeconds)}
           </span>
         </div>

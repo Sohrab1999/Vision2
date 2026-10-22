@@ -123,5 +123,6 @@ export function skillGradeFa(avg: number): { label: string; cls: string } {
   if (avg >= 85) return { label: "عالی", cls: "bg-emerald-100 text-emerald-700" };
   if (avg >= 70) return { label: "خوب", cls: "bg-teal-100 text-teal-700" };
   if (avg >= 50) return { label: "در حال تلاش", cls: "bg-amber-100 text-amber-700" };
-  return { label: "نیازمند تمرین", cls: "bg-rose-100 text-rose-600" };
+  // r329 — رزِ -۶۰۰ رویِ rose-100 = ۳٫۷۷ (زنده)؛ -۸۰۰ = ۶٫۵۹ زندهسنجیده
+  return { label: "نیازمند تمرین", cls: "bg-rose-100 text-rose-800" };
 }

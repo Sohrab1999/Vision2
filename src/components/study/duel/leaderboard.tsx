@@ -156,7 +156,9 @@ export default function Leaderboard() {
         aria-label="انتخاب نوع جدول"
         className="mb-4 flex w-full rounded-full border border-stone-200 bg-stone-100/80 p-1"
       >
-        {tabBtn("exams", "نمرات آزمون", Trophy, "text-amber-600")}
+        {/* r329 — کهربایِ ۶۰۰ رویِ سفید = ۳٫۲ (زنده)؛ -۸۰۰ ≥۶ و در تاریک
+            توکنِ کرنل (--color-amber-800) همان جوهرِ روشن را می‌دهد */}
+        {tabBtn("exams", "نمرات آزمون", Trophy, "text-amber-800")}
         {tabBtn("duels", "نبردهای دودنفره", Swords, "text-fuchsia-700")}
       </div>
 

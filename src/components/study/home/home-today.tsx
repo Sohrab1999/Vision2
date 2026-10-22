@@ -86,7 +86,7 @@ export default function HomeToday() {
                     />
                   ))}
                 </span>
-                <span className="text-[10.5px] font-bold text-sky-600">{earn.label}</span>
+                <span className="text-[10.5px] font-bold text-sky-700">{earn.label}</span>
               </div>
             )}
           </div>

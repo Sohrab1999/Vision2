@@ -100,7 +100,9 @@ export default function DangerWords() {
                   میمرد (کرنلِ متنِ rose-600 → #fda4af رویِ گلیِ روشن = ۱٫۵۸)؛
                   زمینهٔ تیرهٔ خانواده جوهرِ کرنل را سالم نگه میدارد (۹٫۴۵) */}
               {list.length > 0 && (
-                <span className="rounded-full bg-rose-100 px-2 py-0.5 text-[10px] font-black text-rose-600 dark:bg-rose-950/60">
+                /* r329 — روشن: رزِ -۶۰۰ رویِ rose-100 = ۳٫۷۷ (زنده)؛ -۸۰۰ = ۶٫۵۹.
+                   تاریک: هم‌ارزشِ کرنل (#fda4af) — قاعدهٔ r327 پابرجا */
+                <span className="rounded-full bg-rose-100 px-2 py-0.5 text-[10px] font-black text-rose-800 dark:bg-rose-950/60">
                   {faNum(list.length)} واژه
                 </span>
               )}
@@ -167,10 +169,12 @@ export default function DangerWords() {
                             transition={{ duration: 0.6, delay: 0.1 + i * 0.04 }}
                           />
                         </span>
-                        <span className={`text-[10.5px] font-black ${hot ? "text-rose-600" : "text-amber-600"}`}>
+                        {/* r329 — ردیفِ خطا: رزِ -۶۰۰ رویِ ردیفِ نقابِ سنگی = ۴٫۳۸ و
+                            کهربایِ -۶۰۰ = ۳٫۳ (زنده با بوم)؛ -۷۰۰/-۸۰۰ ≥۵٫۵ */}
+                        <span className={`text-[10.5px] font-black ${hot ? "text-rose-700" : "text-amber-800"}`}>
                           {faNum(ratePct)}٪ خطا
                         </span>
-                        <span className="rounded-md bg-rose-50 px-1.5 py-0.5 text-[10px] font-bold text-rose-500">
+                        <span className="rounded-md bg-rose-50 px-1.5 py-0.5 text-[10px] font-bold text-rose-700">
                           {faNum(d.mistakes)} بار غلط
                         </span>
                         <span className="hidden rounded-md bg-stone-100 px-1.5 py-0.5 text-[10px] font-bold text-stone-500 sm:inline">

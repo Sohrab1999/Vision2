@@ -69,7 +69,9 @@ export default function WordOfDay() {
             <CalendarDays size={26} />
           </div>
           <div>
-            <div className="flex items-center gap-1 text-[12px] font-black text-emerald-700">
+            {/* r329 — جوهرِ -۷۰۰ رویِ گرادیانِ word-day (کاپوزیتِ #dfece7)
+                = ۴٫۴۲/۴٫۴۱ (زنده)؛ -۸۰۰ ≥۶٫۳ — دوقلویِ -۸۰۰ در قاعدهٔ scoped تاریک */}
+            <div className="flex items-center gap-1 text-[12px] font-black text-emerald-800">
               <Sparkles size={12} />
               واژهٔ امروز
             </div>
@@ -165,7 +167,7 @@ export default function WordOfDay() {
           </button>
           <button
             onClick={() => setView({ type: "dictionary" })}
-            className="hidden items-center gap-1.5 rounded-xl px-2 py-2 text-[12px] font-bold text-teal-700 transition-[background-color,color,border-color,transform] hover:text-teal-900 active:scale-[0.96] sm:inline-flex"
+            className="hidden items-center gap-1.5 rounded-xl px-2 py-2 text-[12px] font-bold text-teal-800 transition-[background-color,color,border-color,transform] hover:text-teal-900 active:scale-[0.96] sm:inline-flex"
           >
             در دیکشنری ↗
           </button>

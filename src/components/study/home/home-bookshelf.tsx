@@ -94,7 +94,8 @@ export default function HomeBookshelf() {
                 <span className="rounded-lg bg-stone-100 px-2 py-1">{faNum(l.quizCount)} تست</span>
                 <span className="rounded-lg bg-stone-100 px-2 py-1">{faNum(l.grammarCount)} بخش گرامر</span>
                 <span
-                  className="inline-flex items-center gap-1 rounded-lg bg-rose-50 px-2 py-1 font-bold text-rose-600"
+                  // r329 — رزِ -۶۰۰ رویِ rose-50 = ۴٫۱۲-۴٫۴ (زنده با بوم)؛ -۷۰۰ = ۵٫۶
+                  className="inline-flex items-center gap-1 rounded-lg bg-rose-50 px-2 py-1 font-bold text-rose-700"
                   title="ردیف‌های مترادف و متضاد این درس در جزوه — تبِ «مترادف و متضاد»"
                 >
                   <ArrowLeftRight size={11} aria-hidden />

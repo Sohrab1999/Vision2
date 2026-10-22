@@ -29,9 +29,12 @@ import { storyById, HILL_TOTAL_STORIES } from "@/data/hill-stories";
 import { useToast } from "@/hooks/use-toast";
 
 const DELTA_META: { field: Delta["field"]; label: string; cls: string }[] = [
-  { field: "reviews", label: "مرور", cls: "text-amber-600" },
-  { field: "quizzes", label: "آزمون", cls: "text-emerald-600" },
-  { field: "words", label: "واژهٔ نو", cls: "text-teal-600" },
+  // r329 — مقیاسِ -۶۰۰ رویِ ظرفِ نقابِ کاشیها زیرِ ۴٫۵ می‌ماند (کهربایِ ۳٫۱۷ ·
+  // زمردِ ۳٫۶۲ · فیروزهایِ ۳٫۶۴ — زنده با بوم)؛ -۸۰۰ در هر دو تم ≥۶ —
+  // تاریک با توکنِ کرنل (--color-*-800) خودش جوهرِ روشن می‌دهد
+  { field: "reviews", label: "مرور", cls: "text-amber-800" },
+  { field: "quizzes", label: "آزمون", cls: "text-emerald-800" },
+  { field: "words", label: "واژهٔ نو", cls: "text-teal-800" },
   { field: "activities", label: "مجموع", cls: "text-stone-700" },
 ];
 
@@ -69,11 +72,11 @@ function QuickWeekLine({ qw }: { qw: QuickWeekProfile }) {
       title={`گیتِ هفته: میانگینِ فکر ≤ ${secFa(DUEL_QUICK_WEEK.silverMs)} ثانیه و نرخِ درستی ≥ ${faNum(Math.round(DUEL_QUICK_WEEK.correctRate * 100))}٪ در پنجرهٔ ۷روزه · ${faNum(qw.thinkful)} نبردِ فکردار، ${faNum(qw.answered)} پاسخ`}
     >
       {gold ? (
-        <Gauge size={11} className="text-amber-600" aria-hidden />
+        <Gauge size={11} className="text-amber-800" aria-hidden />
       ) : (
         <CalendarClock size={11} className="text-emerald-700" aria-hidden />
       )}
-      <span className={gold ? "text-amber-600" : "text-emerald-700"}>
+      <span className={gold ? "text-amber-800" : "text-emerald-700"}>
         {`${gold ? "هفتهٔ برق!" : "هفتهٔ چابک!"} — میانگینِ فکر ${secFa(qw.avgMs)} ثانیه با نرخِ درستی ${faNum(Math.round(qw.rate * 100))}٪`}
       </span>
     </div>
@@ -701,7 +704,7 @@ export default function WeeklyReportSection() {
       >
         <div className="flex flex-wrap items-center justify-between gap-1.5">
           <div className="flex items-center gap-1.5 text-[10.5px] font-extrabold text-stone-600">
-            <Snowflake size={12} className="text-sky-600" aria-hidden />
+            <Snowflake size={12} className="text-sky-700" aria-hidden />
             دفتر یخ
           </div>
           <div className="flex items-center gap-1">
@@ -743,7 +746,7 @@ export default function WeeklyReportSection() {
                 ))}
               </span>
             )}
-            <span className="text-[9.5px] font-bold text-sky-600">{ledger.earn.label}</span>
+            <span className="text-[9.5px] font-bold text-sky-700">{ledger.earn.label}</span>
           </div>
         </div>
       </div>

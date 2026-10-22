@@ -275,7 +275,9 @@ export default function Badges() {
               <span className={`text-[12.5px] font-black ${isUnlocked ? "text-white" : "text-stone-600"}`}>
                 {b.title}
               </span>
-              <span className={`mt-1 hidden text-[10.5px] leading-4 sm:block ${isUnlocked ? "text-white/85" : "text-stone-500"}`}>
+              {/* r329 — سفیدِ ۸۵٪ ضربِ جوهر رویِ گرادیانِ نشان شد (۴٫۰۴/۴٫۰۷
+                  زنده — همان درسِ spine)؛ سفیدِ کامل: ۴٫۷۴/۵٫۰۳ زندهسنجیده */}
+              <span className={`mt-1 hidden text-[10.5px] leading-4 sm:block ${isUnlocked ? "text-white" : "text-stone-500"}`}>
                 {b.desc}
               </span>
               {isUnlocked ? (

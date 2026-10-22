@@ -125,7 +125,7 @@ export default function SrsPanel() {
   // پنل تمامعرض است و برچسبِ کامل جا میشود — الگویِ r316: یک منبع، دو سطح،
   // نامِ کامل در tooltip. بقیهٔ برچسبها در مرزهای عرضی خود جا میشوند/شکسته میشوند.
   const chips: { icon: typeof CalendarClock; label: string; short?: string; value: number; cls: string }[] = [
-    { icon: CalendarClock, label: "سررسید الآن", value: stats?.due ?? 0, cls: "bg-rose-50 text-rose-600" },
+    { icon: CalendarClock, label: "سررسید الآن", value: stats?.due ?? 0, cls: "bg-rose-50 text-rose-700" },
     { icon: Sprout, label: "در حال یادگیری", value: stats?.learning ?? 0, cls: "bg-amber-50 text-amber-700" },
     { icon: TrendingUp, label: "مستحکم‌شده", short: "مستحکم", value: stats?.strong ?? 0, cls: "bg-emerald-50 text-emerald-700" },
     { icon: BookOpenCheck, label: "وارفته", value: stats?.mastered ?? 0, cls: "bg-teal-50 text-teal-700" },
@@ -207,7 +207,10 @@ export default function SrsPanel() {
                 <div key={c.label} className={`min-w-0 rounded-xl border border-white/60 p-2.5 text-center shadow-sm ${c.cls}`}>
                   <c.icon size={15} className="mx-auto mb-1" />
                   <div className="text-lg font-black leading-none">{faNum(c.value)}</div>
-                  <div className="mt-1 text-[10.5px] font-bold opacity-80" title={c.label}>
+                  {/* r329 — آلفایِ ۸۰٪ رویِ برچسب ضربِ جوهر می‌ساخت: کهربایِ -۷۰۰
+                      رویِ amber-50 با آلفا = ۳٫۴۷ (زنده با بوم)؛ حذفِ آلفا —
+                      سلسله‌مراتب با سایز/وزن می‌ماند (درسِ spine راند ۳۲۸) */}
+                  <div className="mt-1 text-[10.5px] font-bold" title={c.label}>
                     <span className="lg:hidden">{c.label}</span>
                     <span className="hidden lg:inline">{c.short ?? c.label}</span>
                   </div>
@@ -228,7 +231,7 @@ export default function SrsPanel() {
                   <AlarmClock size={12} className="text-rose-500" />
                   سررسید الآن — با یک ضربه مرور کن:
                 </span>
-                <span className="mr-auto rounded-full bg-rose-50 px-2 py-0.5 text-[10px] font-black text-rose-600">
+                <span className="mr-auto rounded-full bg-rose-50 px-2 py-0.5 text-[10px] font-black text-rose-700">
                   {faNum(dueInfo.dueTotal)} واژه
                 </span>
                 <button
@@ -393,7 +396,7 @@ export default function SrsPanel() {
           {stats && stats.total > 0 && (
             <div className="rounded-xl border border-teal-100 c-veil-70 px-3 py-2 text-center text-[11px] font-bold leading-5 text-stone-500">
               {dueTotal > 0 ? (
-                <span className="text-rose-600">{faNum(dueTotal)} واژه منتظر مرور است — الان بهترین وقت است!</span>
+                <span className="text-rose-700">{faNum(dueTotal)} واژه منتظر مرور است — الان بهترین وقت است!</span>
               ) : (
                 <span className="inline-flex items-center gap-1 text-emerald-700">
                   <CheckCircle2 size={12} />

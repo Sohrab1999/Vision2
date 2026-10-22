@@ -391,7 +391,8 @@ export default function Flashcards({
         </button>
         <button
           onClick={() => answer(false)}
-          className="inline-flex items-center gap-1.5 rounded-xl border border-rose-200 bg-rose-50 px-5 py-2.5 text-sm font-bold text-rose-600 transition-[background-color,color,border-color,transform] hover:bg-rose-100 active:scale-[0.96] dark:border-rose-500/30 dark:bg-rose-500/10 dark:text-rose-300 dark:hover:bg-rose-500/20"
+          // r329 — روشن: رزِ -۶۰۰ رویِ rose-50 = ۴٫۱۲ (زنده)؛ -۷۰۰ = ۵٫۶. تاریک: دست‌نخورده
+          className="inline-flex items-center gap-1.5 rounded-xl border border-rose-200 bg-rose-50 px-5 py-2.5 text-sm font-bold text-rose-700 transition-[background-color,color,border-color,transform] hover:bg-rose-100 active:scale-[0.96] dark:border-rose-500/30 dark:bg-rose-500/10 dark:text-rose-300 dark:hover:bg-rose-500/20"
         >
           <RefreshCw size={15} />
           تکرار

@@ -423,7 +423,9 @@ describe("خطِ هفتهٔ چابک در بلوکِ نبردها (Task 113)", (
     const line = screen.getByText(/هفتهٔ برق!/);
     expect(line).toHaveTextContent("میانگینِ فکر ۰٫۷ ثانیه با نرخِ درستی ۹۰٪");
     const wrap = line.closest("div")!;
-    expect(wrap.querySelector("svg.text-amber-600")).not.toBeNull();
+    // r329 — the quick-week gold ink deepened to the tone band (amber-600 on
+    // the paper measured 3.2); dark rides the kernel --color-amber-800 token
+    expect(wrap.querySelector("svg.text-amber-800")).not.toBeNull();
     expect(wrap.querySelector("svg.text-emerald-700")).toBeNull();
   });
 

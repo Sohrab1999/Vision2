@@ -151,7 +151,9 @@ describe("r327 — قفلهایِ ترمیمِ دُمِ سویپِ کنتراس�
 
   it("چیپهایِ تاریک: رز زمینهٔ تیره گرفت و بنفش از تلهٔ توکنِ violet-300 بیرون آمد", () => {
     const dw = read("src/components/study/practice/danger-words.tsx");
-    expect(dw).toContain("text-rose-600 dark:bg-rose-950/60");
+    // r329: the light-side ink deepened to the tone band (-800 rides the same
+    // dark kernel value #fda4af) — the dark tinted background contract holds
+    expect(dw).toContain("text-rose-800 dark:bg-rose-950/60");
     const st = read("src/lib/study-theme.ts");
     expect(st).toContain("dark:bg-violet-950/60 dark:text-[#c4b5fd]");
     // تلهٔ توکن: هیچ مصرفی نمیتواند dark:text-violet-300 بخورد — توکنِ

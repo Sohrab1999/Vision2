@@ -455,8 +455,10 @@ body {
 /* tinted text accents that sit on those tints (review rows, result badges) */
 .dark .text-rose-600 { color: #fda4af; }
 /* rose-700 ink rides the same light-rose rule — every consumer sits on a
-   darkened rose tint (danger CTA, wrong-count chips, timer chip, duel L badge) */
+   darkened rose tint (danger CTA, wrong-count chips, timer chip, duel L badge).
+   r329: rose-800 joins (skill «نیازمند تمرین» chip deepened light-side). */
 .dark .text-rose-700 { color: #fda4af; }
+.dark .text-rose-800 { color: #fda4af; }
 .dark .text-amber-600 { color: #fcd34d; }
 .dark .text-emerald-700 { color: #6ee7b7; }
 /* teal-700/800 ink joins the tone band (tranche-3b part 2 — was 5 per-panel
@@ -561,7 +563,9 @@ body {
 .dark .text-amber-700 { color: #fbbf24; }
 .dark .border-teal-500 { border-color: rgba(20, 130, 120, 0.6); }
 .dark .bg-orange-500 { background-image: linear-gradient(to bottom left, #c2410c, #9a3412); }
-.dark .from-amber-400,.dark .from-amber-300 { --tw-gradient-from: #b45309; }
+/* r329 — ازِ کهربایِ سکو/رِیل در تاریک عمیق‌تر: سفید/۹۰ رویِ #b45309 = ۴٫۳۹
+   (مرزیِ مردود — سکویِ قهرمانِ رتبه‌بندی، زنده با بوم)؛ رویِ #92400e ≥۵ */
+.dark .from-amber-400,.dark .from-amber-300 { --tw-gradient-from: #92400e; }
 .dark .to-orange-500 { --tw-gradient-to: #c2410c; }
 /* r87: the .bg-white\/60 dark default retired — every /60 consumer migrated to
    c-veil-60 (tranche 4 phase 4); the utility carries the same dark value. */
@@ -676,7 +680,7 @@ body {
    an honest skip, same as cyan-50 */
 .dark .word-day .bg-teal-100 { background-color: rgba(19, 78, 74, 0.45); }
 .dark .word-day .bg-emerald-100 { background-color: rgba(6, 55, 40, 0.55); }
-.dark .word-day .text-emerald-700 { color: #34d399; }
+.dark .word-day .text-emerald-700,.dark .word-day .text-emerald-800 { color: #34d399; }
 .dark .word-day .border-emerald-300 { border-color: rgba(52, 211, 153, 0.45); }
 .dark .word-day .bg-white { background-color: rgba(28, 25, 23, 0.75); }
 .dark .word-day .border-stone-200 { border-color: #44403c; }
@@ -983,8 +987,11 @@ body {
 /* ---------------- report card dialog dark ---------------- */
 .dark .report-dialog { background-color: #1c1917; border-color: #44403c; }
 .dark .report-paper { background-color: #1c1917; }
+/* r329 — استاپِ آخرِ باندِ هفتگی در تاریک از #0d9488 به #0f766e عمیق شد
+   (سفیدِ کوچک رویِ #0d9488 = ۳٫۵۴، رویِ #0f766e ≥۴٫۷ — همان درمانِ
+   or-band در r328 و نقشهٔ grad داستان در r327) */
 .dark .report-band {
-  background-image: linear-gradient(to left, #065f46, #047857, #0d9488);
+  background-image: linear-gradient(to left, #065f46, #047857, #0f766e);
 }
 .dark .report-week,.dark .report-digest { background-color: rgb(28 25 23 / 0.7); border-color: #44403c; }
 .dark .report-week .bg-stone-200 { background-color: #44403c; }
@@ -1543,7 +1550,8 @@ html.user-reduce-motion .streak-flame {
 .c-chip-freeze {
   border-color: lab(88.6983 -11.3978 -16.8488); /* sky-200 */
   background-color: lab(97.3623 -2.33802 -4.13098); /* sky-50 */
-  color: lab(51.7754 -11.4712 -49.8349); /* sky-600 */
+  /* r329 — sky-600 رویِ sky-50 = ۳٫۷۷ (زنده با بوم)؛ sky-700 = ۵٫۸۶ */
+  color: lab(41.6013 -9.10804 -42.5647); /* sky-700 */
 }
 .dark .c-chip-freeze {
   border-color: rgba(7, 66, 84, 0.7);

@@ -431,7 +431,7 @@ export default function DictationTab({
                   </button>
                   <button
                     onClick={() => playSpelled(w.en, false)}
-                    className="flex h-11 w-11 items-center justify-center rounded-lg border border-sky-200 bg-white text-sky-600 transition-colors hover:bg-sky-50"
+                    className="flex h-11 w-11 items-center justify-center rounded-lg border border-sky-200 bg-white text-sky-700 transition-colors hover:bg-sky-50"
                     aria-label={`املای حرف‌به‌حرف ${w.en}`}
                     title="املای حرف‌به‌حرف"
                   >

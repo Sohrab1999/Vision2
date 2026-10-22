@@ -265,7 +265,8 @@ export default function DictionaryView() {
     <div className="space-y-4">
       <div className="rounded-2xl border c-card p-5 shadow-sm">
         <div className="mb-4 flex flex-wrap items-center gap-2">
-          <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-50 text-sky-600">
+          {/* r329 — sky-600 رویِ sky-50 = ۳٫۷۷ (زنده)؛ -۷۰۰ = ۵٫۸۶ */}
+          <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-50 text-sky-700">
             <BookMarked size={19} />
           </span>
           <div>
