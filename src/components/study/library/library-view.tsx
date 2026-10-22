@@ -56,21 +56,24 @@ const THEME: Record<
   emerald: {
     border: "border-emerald-200",
     chip: "bg-emerald-50 text-emerald-700 border-emerald-200",
-    grad: "from-emerald-500 to-emerald-700",
+    // r327 — سفیدِ متن رویِ استاپِ -۵۰۰ میمرد (۲٫۴۷) → جفتِ عمیق (۵٫۳۶/۹٫۶۳)
+    grad: "from-emerald-700 to-emerald-900",
     soft: "bg-emerald-50",
     text: "text-emerald-700",
   },
   amber: {
     border: "border-amber-200",
     chip: "bg-amber-50 text-amber-700 border-amber-200",
-    grad: "from-amber-400 to-orange-600",
+    // r327 — ۴۰۰/۶۰۰ → ۷۰۰/۹۵۰ — تهِ -۷۰۰ در تاریک بازنگشتِ توکن است
+    grad: "from-amber-700 to-orange-950",
     soft: "bg-amber-50",
     text: "text-amber-700",
   },
   violet: {
     border: "border-violet-200",
     chip: "bg-violet-50 text-violet-700 border-violet-200",
-    grad: "from-violet-500 to-purple-700",
+    // r327 — بنفشِ ۵۰۰ سفید را ۴٫۲۳ میگیرد → ۶۰۰/۷۰۰ (۵٫۸۹/۷٫۰۷)
+    grad: "from-violet-600 to-purple-700",
     soft: "bg-violet-50",
     text: "text-violet-700",
   },

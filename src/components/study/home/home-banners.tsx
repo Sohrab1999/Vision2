@@ -83,9 +83,13 @@ export function RushBanner() {
               🏆 رکورد: {faNum(rushBest)}
             </span>
           )}
+          {/* r327 — سفید رویِ from-amber-500 میمرد (۲٫۱۳ در هر دو تم)؛
+              جفتِ عمیق در هر دو تم ≥۵٫۰ — تهِ گرادیان باید -۹۵۰ باشد نه
+              -۷۰۰: توکنِ --color-orange-700 در تاریک به #fdba74 بازمیگردد
+              (globals:201) و سفید رویِ آن ۱٫۶۹ میشد — سنجشِ زنده پسااصلاح */}
           <button
             onClick={() => setView({ type: "rush" })}
-            className="inline-flex flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-gradient-to-l from-amber-500 to-orange-600 px-5 py-3 text-[13px] font-black text-white shadow-lg shadow-orange-600/25 transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-95 active:scale-[0.96] sm:flex-none"
+            className="inline-flex flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-gradient-to-l from-amber-700 to-orange-950 px-5 py-3 text-[13px] font-black text-white shadow-lg shadow-orange-600/25 transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-95 active:scale-[0.96] sm:flex-none"
           >
             <Zap size={16} />
             شروع چالش

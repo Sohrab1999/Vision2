@@ -72,7 +72,11 @@ export const PODIUM_VARIANTS = {
     metricCls: "mb-2 text-[11px] font-bold text-emerald-700",
     labelCls: null,
     podiumCls: "flex w-full items-start justify-center rounded-t-xl bg-gradient-to-b pt-2 shadow-inner",
-    rankCls: "text-lg font-black text-white/90",
+    // r327 — رتبهٔ سفید/۹۰ رویِ استاپِ روشنِ سکو در تمِ روشن میمرد
+    // (کهربایِ ۳۰۰ = ۱٫۴۵)؛ جوهرِ سنگیِ تیره رویِ هر چهار سکویِ روشن ≥۵٫۸ —
+    // تاریک سکوها را خودِ کرنل تیره میکند پس سفید/۹۰ برمیگردد (کلاسِ
+    // arbitrary از بازنگشتِ هستهِ متن مصون است — درسِ r325)
+    rankCls: "text-lg font-black text-[#44403c] dark:text-white/90",
     delay: 0.1,
     rise: 20,
   },
@@ -93,7 +97,7 @@ export const PODIUM_VARIANTS = {
     metricCls: "mb-2 text-[11px] font-bold text-fuchsia-700",
     labelCls: null,
     podiumCls: "flex w-full items-start justify-center rounded-t-xl bg-gradient-to-b pt-2 shadow-inner",
-    rankCls: "text-lg font-black text-white/90",
+    rankCls: "text-lg font-black text-[#44403c] dark:text-white/90",
     delay: 0.1,
     rise: 20,
   },
@@ -114,7 +118,7 @@ export const PODIUM_VARIANTS = {
     metricCls: "flex items-center gap-1 text-[12px] font-black text-orange-600",
     labelCls: "mb-1.5 text-[10px] font-bold text-stone-500",
     podiumCls: "flex w-full items-start justify-center rounded-t-xl bg-gradient-to-b pt-1.5 shadow-inner",
-    rankCls: "text-base font-black text-white/90",
+    rankCls: "text-base font-black text-[#44403c] dark:text-white/90",
     delay: 0.09,
     rise: 16,
   },

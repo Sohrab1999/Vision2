@@ -27,19 +27,24 @@ import { todayStr } from "@/state/day-engine";
 // پاک‌سازِ Tailwind امن می‌ماند)
 const THEME: Record<HillBookId, { grad: string; chip: string; text: string; ring: string }> = {
   s1: {
-    grad: "from-emerald-500 to-emerald-700",
+    // r327 — سفیدِ CTA/آواتار رویِ استاپِ -۵۰۰ میمرد (زمرد ۵۰۰ = ۲٫۴۷)؛
+    // جفتِ عمیق تا سفید رویِ هر دو استاپ ≥۴٫۵ بماند (زنده: ۵٫۳۶/۹٫۶۳)
+    grad: "from-emerald-700 to-emerald-900",
     chip: "bg-emerald-50 text-emerald-700 border-emerald-200",
     text: "text-emerald-700",
     ring: "bg-emerald-600",
   },
   s2: {
-    grad: "from-amber-400 to-orange-600",
+    // r327 — همان جراحی: ۴۰۰/۶۰۰ → ۷۰۰/۹۵۰ — تهِ -۷۰۰ در تاریک به
+    // #fdba74 بازمیگردد (توکنِ orange-700، globals:201) پس -۹۵۰
+    grad: "from-amber-700 to-orange-950",
     chip: "bg-amber-50 text-amber-700 border-amber-200",
     text: "text-amber-700",
     ring: "bg-amber-500",
   },
   s3: {
-    grad: "from-violet-500 to-purple-700",
+    // r327 — بنفشِ ۵۰۰ سفید را ۴٫۲۳ میگیرد → ۶۰۰/۷۰۰ (زنده: ۵٫۸۹/۷٫۰۷)
+    grad: "from-violet-600 to-purple-700",
     chip: "bg-violet-50 text-violet-700 border-violet-200",
     text: "text-violet-700",
     ring: "bg-violet-600",

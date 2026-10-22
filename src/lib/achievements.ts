@@ -974,18 +974,26 @@ export const BADGES: BadgeDef[] = [
   },
 ];
 
-export const TIER_STYLE: Record<BadgeTier, { ring: string; grad: string; chip: string; glow: string; ink?: string; dim?: string }> = {
-  // r326 — جوهرِ سفید رویِ گرادیانِ نشانهایِ بازشده می‌درخشید: برنزِ
-  // from-amber-400 = ۱٫۶۳ و طلایِ from-yellow-400 = ۱٫۵۷ (سویپِ r326).
-  // درمانِ همان الگویِ heatInkِ r325: جوهرِ تیرهٔ هم‌خانوادهٔ تیر رویِ
-  // گرادیانِ روشنِ آفتابی؛ نقره گرادیانِ عمیقتر گرفت تا سفید بماند.
+export const TIER_STYLE: Record<BadgeTier, { ring: string; grad: string; chip: string; glow: string }> = {
+  // r326 سویپِ کنتراست جوهرِ سفید را رویِ گرادیانِ آفتابیِ برنز/طلا محکوم کرد
+  // (۱٫۶۳/۱٫۵۷). نخستین درمانِ همان راند جوهرِ تیره (ink/dim) بود ولی ناقص
+  // ماند: کرنلِ تاریک (globals:559) from-amber-400 را به #b45309 بازمیگرداند
+  // و جوهرِ تیره رویِ استاپِ بازنگشتهشده میمرد (زنده: ۲٫۹۶) — هیچ تک‌جوهری
+  // رویِ هر دو استاپِ بازنگشتهِ تاریک سالم نمی‌ماند. r327 درمانِ نقره را
+  // تعمیم داد: گرادیانِ عمیق برایِ هر سه رتبه تا سفید رویِ هر دو استاپ در
+  // هر دو تم ≥۴٫۵ بماند (زنده با رزولورِ بوم: برنز ۵٫۰۳/۵٫۲۲ · طلا ۴٫۹۳/۵٫۰۳ ·
+  // نقره ۵٫۹/۱۱٫۵) — چیپِ رتبه هم bg-white/20 سطحِ خودش را روشن میکرد
+  // (۳٫۵۵) → bg-black/20 (۷٫۰۷). توجهِ ریز: استاپهایِ پسزمینه همیشه
+  // امن نیستند — استاپهایِ orange-700/800 در تاریک با توکنِ #fdba74
+  // بازمیگردند (globals:201)؛ به همین دلیل تهِ برنز -۹۵۰ است
+  // (درسِ پسااصلاحِ زنده).
   bronze: {
     ring: "border-amber-300",
-    grad: "from-amber-400 to-orange-600",
+    // تهِ -۹۵۰ نه -۷۰۰: توکنِ --color-orange-700 در تاریک به #fdba74
+    // بازمیگردد (globals:201) — الگویِ spineColors (s2/s3 همان جراحی)
+    grad: "from-amber-700 to-orange-950",
     chip: "bg-amber-100 text-amber-800",
     glow: "shadow-amber-500/30",
-    ink: "text-amber-950",
-    dim: "text-amber-950/80",
   },
   silver: {
     ring: "border-slate-300",
@@ -997,11 +1005,9 @@ export const TIER_STYLE: Record<BadgeTier, { ring: string; grad: string; chip: s
   },
   gold: {
     ring: "border-yellow-400",
-    grad: "from-yellow-400 to-amber-600",
+    grad: "from-yellow-700 to-amber-700",
     chip: "bg-yellow-100 text-yellow-800",
     glow: "shadow-yellow-500/40",
-    ink: "text-yellow-950",
-    dim: "text-yellow-950/80",
   },
 };
 

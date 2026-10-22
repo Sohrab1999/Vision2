@@ -174,7 +174,9 @@ export default function SkillPanel() {
                     </span>
                   </span>
                 </span>
-                <span className="flex shrink-0 items-center gap-1 rounded-lg bg-amber-500 px-3 py-1.5 text-[11.5px] font-black text-white shadow-sm">
+                {/* r327 — سفید رویِ bg-amber-500 میمرد (۲٫۱۳)؛ کهربایِ ۷۰۰
+                    سفید را ۵٫۰۳ میدهد و در تاریک بازنگشته میماند */}
+                <span className="flex shrink-0 items-center gap-1 rounded-lg bg-amber-700 px-3 py-1.5 text-[11.5px] font-black text-white shadow-sm">
                   تمرین هدفمند
                   <ArrowLeft size={13} />
                 </span>

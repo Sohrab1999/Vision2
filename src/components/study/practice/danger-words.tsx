@@ -96,8 +96,11 @@ export default function DangerWords() {
           <div className="min-w-0 flex-1">
             <h2 className="flex items-center gap-2 text-sm font-extrabold text-stone-800">
               واژه‌های خطرناک من
+              {/* r327 — چیپِ شمارنده در تاریک رویِ bg-rose-100ِ بازنگشته
+                  میمرد (کرنلِ متنِ rose-600 → #fda4af رویِ گلیِ روشن = ۱٫۵۸)؛
+                  زمینهٔ تیرهٔ خانواده جوهرِ کرنل را سالم نگه میدارد (۹٫۴۵) */}
               {list.length > 0 && (
-                <span className="rounded-full bg-rose-100 px-2 py-0.5 text-[10px] font-black text-rose-600">
+                <span className="rounded-full bg-rose-100 px-2 py-0.5 text-[10px] font-black text-rose-600 dark:bg-rose-950/60">
                   {faNum(list.length)} واژه
                 </span>
               )}
@@ -134,7 +137,10 @@ export default function DangerWords() {
                   >
                     <span
                       className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-[11.5px] font-black text-white ${
-                        hot ? "bg-gradient-to-br from-rose-500 to-orange-500" : "bg-gradient-to-br from-amber-400 to-orange-500"
+                        /* r327 — سفید رویِ استاپهایِ ۵۰۰/۴۰۰ میمرد (۲٫۸۹)؛
+                           جفتهایِ عمیق در هر دو تم ≥۴٫۵ — تهِ -۷۰۰ در تاریک
+                           به #fdba74 بازمیگردد (توکنِ orange-700) پس -۹۵۰ */
+                        hot ? "bg-gradient-to-br from-rose-700 to-orange-950" : "bg-gradient-to-br from-amber-700 to-orange-950"
                       }`}
                     >
                       {faNum(i + 1)}
@@ -263,7 +269,7 @@ export default function DangerWords() {
               </button>
               <button
                 onClick={() => (setPracticeOpen(true), trackEvent("danger_practice"))}
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-l from-rose-500 to-orange-500 px-4 py-2.5 text-[13px] font-black text-white shadow-md shadow-rose-500/25 transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-95 active:scale-[0.96]"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-l from-rose-700 to-orange-950 px-4 py-2.5 text-[13px] font-black text-white shadow-md shadow-rose-500/25 transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-95 active:scale-[0.96]"
               >
                 <Zap size={15} />
                 تمرین همین‌ها

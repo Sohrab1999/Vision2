@@ -50,7 +50,11 @@ export const lessonTheme: Record<string, LessonTheme> = {
     border: "border-violet-200",
     gradient: "from-violet-500 to-violet-800",
     softText: "text-violet-600",
-    chipBg: "bg-violet-100 text-violet-800 dark:bg-violet-950/60 dark:text-violet-300",
+    // r327 — dark:text-violet-300 تلهٔ توکن داشت: --color-violet-300 در
+    // تاریک به rgba(130,100,190,.55) سنجاق است (تنها -۳۰۰ با پینِ توکن —
+    // globals:243) و جوهرِ نیمشفافِ میانی رویِ چیپِ تیره ۱٫۹۶ میشد. مقدارِ
+    // literalِ استوکِ violet-300 (#c4b5fd) از بازنگشتِ توکن مصون است — زنده ۹٫۴۹.
+    chipBg: "bg-violet-100 text-violet-800 dark:bg-violet-950/60 dark:text-[#c4b5fd]",
     bar: "bg-violet-500",
   },
   sky: {

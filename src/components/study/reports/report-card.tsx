@@ -138,10 +138,14 @@ export default function ReportCard({ open, onClose }: { open: boolean; onClose: 
   }, [results]);
 
   const records = [
-    { icon: BookOpenCheck, label: "واژهٔ آموخته", value: faNum(knownCount), cls: "text-emerald-600 bg-emerald-50 border-emerald-200" },
-    { icon: Award, label: "نشان کسب‌شده", value: `${faNum(unlocked.size)} از ${faNum(BADGES.length)}`, cls: "text-amber-600 bg-amber-50 border-amber-200" },
-    { icon: Flame, label: "بهترین زنجیره", value: `${faNum(bestStreak)} روز`, cls: "text-orange-600 bg-orange-50 border-orange-200" },
-    { icon: Zap, label: "رکورد چالش", value: `${faNum(rushBest)} امتیاز`, cls: "text-rose-600 bg-rose-50 border-rose-200" },
+    // r327 — جوهرهایِ -۶۰۰ رویِ زمینهٔ -۵۰ زیرِ ۴٫۵ میماندند (زنده با بوم:
+    // زمرد ۲٫۵۲ · کهربا ۲٫۳۱ · نارنجی ۲٫۶ · رز ۴٫۱۲)؛ -۷۰۰ همه را بالایِ
+    // ۴٫۸ میبرد و در تاریک کرنلِ متن (text-*-700 → روشن) خودش جوهرِ تاریک
+    // را رویِ زمینهٔ تیرهٔ خانواده جابهجا میکند
+    { icon: BookOpenCheck, label: "واژهٔ آموخته", value: faNum(knownCount), cls: "text-emerald-700 bg-emerald-50 border-emerald-200" },
+    { icon: Award, label: "نشان کسب‌شده", value: `${faNum(unlocked.size)} از ${faNum(BADGES.length)}`, cls: "text-amber-700 bg-amber-50 border-amber-200" },
+    { icon: Flame, label: "بهترین زنجیره", value: `${faNum(bestStreak)} روز`, cls: "text-orange-700 bg-orange-50 border-orange-200" },
+    { icon: Zap, label: "رکورد چالش", value: `${faNum(rushBest)} امتیاز`, cls: "text-rose-700 bg-rose-50 border-rose-200" },
   ];
 
   const grade =

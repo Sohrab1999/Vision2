@@ -279,7 +279,10 @@ export default function Badges() {
                 {b.desc}
               </span>
               {isUnlocked ? (
-                <span className="mt-2 rounded-full bg-white/20 px-2 py-0.5 text-[10px] font-bold text-white">
+                // r327 — bg-white/20 سطحِ خودش را روشن میکرد و سفید رویِ
+                // آن میمرد (رویِ برنزِ عمیق ۳٫۵۵)؛ bg-black/20 سطح را
+                // تیره نگه میدارد — زنده ۷٫۰۷ رویِ استاپِ برنز
+                <span className="mt-2 rounded-full bg-black/20 px-2 py-0.5 text-[10px] font-bold text-white">
                   نشان {tierFa[b.tier]}
                 </span>
               ) : (
