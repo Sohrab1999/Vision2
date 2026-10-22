@@ -61,4 +61,25 @@ describe("downloadWeeklyImage — بی‌کانواس (Task 104 + r285)", () => 
     });
     expect(ok).toBe(false);
   });
+
+  // r305 — فیلدِ اختیاریِ storiesMonth (سطرِ ماه‌نامه) هم از همان گارد میگذرد؛
+  // کارتِ بلندترِ ۷۷۶px هم نباید در بی‌کانواس بترکد
+  it("falseِ صادق با storiesMonth (r305) — بی‌انفجار", async () => {
+    const ok = await downloadWeeklyImage({
+      activities: 15,
+      reviews: 8,
+      quizzes: 2,
+      words: 5,
+      dictation: 0,
+      rush: 0,
+      goalDays: 2,
+      streak: 4,
+      bestDay: { label: "۱۴/۱۰", total: 8 },
+      storiesWeek: 3,
+      storiesStreak: { current: 2, longest: 4 },
+      storiesMonth: { total: 6, activeDays: 5, bestCount: 2 },
+      badges: [],
+    });
+    expect(ok).toBe(false);
+  });
 });

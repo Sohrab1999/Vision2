@@ -796,6 +796,11 @@ export interface WeeklyImageOpts {
    * فقط با سابقه فرستاده میشود (current>0 || longest>0 — سیاستِ بوم‌محورِ r302)؛
    * بی‌سابقه خطِ صفرِ ساختگی زیرِ حلقه نمی‌نشیند. */
   storiesStreak?: { current: number; longest: number };
+  /** r305 — سطرِ ماه‌نامهٔ خواندن روی کارت (قراردادِ خالصِ library-monthِ r304).
+   * فقط با سابقهٔ پنجره فرستاده میشود (empty=false — سیاستِ بوم‌محور)؛
+   * بی‌سابقه خطِ «ماهِ گذشته» صفرِ ساختگی نیست. رنگِ سنگی — آینهٔ سطرِ
+   * سربرگِ ماه‌نامه در DOM که خودش stone-500 است و کهربا فقط خانه‌ها را میسازد. */
+  storiesMonth?: { total: number; activeDays: number; bestCount: number };
   /** r285 — نشانهای بازِ همان ارزیابیِ واحدِ هفتهنامه (title+tier) — الزامی:
    * کارتِ هم‌رسانی هم باید به «تا کجا رسیده‌ام؟» جواب بدهد؛ سرشماریِ
    * زمان-کامپایل مجریِ تغذیه است (الگویِ buildEvalInputِ r282). */
@@ -928,11 +933,11 @@ async function weeklyCanvas(opts: WeeklyImageOpts): Promise<HTMLCanvasElement | 
     if (typeof document === "undefined") return null;
     const canvas = document.createElement("canvas");
     canvas.width = 1080;
-    canvas.height = 740;
+    canvas.height = 776; // r305 — کارت +۳۶px برایِ سطرِ ماه‌نامه (مرکز/باند/پانوشت پایین رفتند)
     const ctx = canvas.getContext("2d");
     if (!ctx) return null;
     const W = 1080;
-    const H = 740;
+    const H = 776;
     studyShell(ctx, W, H, family, false);
 
     // ---------- title ----------
@@ -977,6 +982,21 @@ async function weeklyCanvas(opts: WeeklyImageOpts): Promise<HTMLCanvasElement | 
       ctx.fillStyle = uiColors.amber[600];
       ctx.font = `900 21px ${family}`;
       ctx.fillText(truncate(ctx, line, 360), W - 90, 482);
+    }
+
+    // ---------- r305: سطرِ ماه‌نامهٔ خواندن — زیرِ خطِ استریک، آینهٔ سربرگِ DOM
+    // فقط با سابقهٔ پنجره (storiesMonth فقط وقتی empty=false فرستاده میشود)؛
+    // سنگِ ۵۰۰ با وزنِ ۷۰۰ — از خطِ کهرباییِ استریک متمایز، هم‌خانوادهٔ DOM
+    if (opts.storiesMonth && opts.storiesMonth.total > 0) {
+      const sm = opts.storiesMonth;
+      const line =
+        `ماهِ گذشته: ${faNum(sm.total)} داستان در ${faNum(sm.activeDays)} روز` +
+        (sm.bestCount > 1 ? ` · پرکارترین: ${faNum(sm.bestCount)} داستان` : "");
+      ctx.direction = "rtl";
+      ctx.textAlign = "right";
+      ctx.fillStyle = uiColors.stone[500];
+      ctx.font = `700 17px ${family}`;
+      ctx.fillText(truncate(ctx, line, 560), W - 90, 512);
     }
 
     // ---------- goal ring (روزهای هدف از ۷) ----------
@@ -1038,22 +1058,23 @@ async function weeklyCanvas(opts: WeeklyImageOpts): Promise<HTMLCanvasElement | 
     ctx.textAlign = "center";
     ctx.direction = "rtl";
     ctx.font = `700 20px ${family}`;
+    // r305 — مرکزِ کارت ۳۶px پایین رفت تا سطرِ ماه‌نامه نفس بکشد
     if (opts.duelLine) {
       ctx.fillStyle = uiColors.fuchsia[700];
-      ctx.fillText(truncate(ctx, opts.duelLine, 640), W / 2, 508);
+      ctx.fillText(truncate(ctx, opts.duelLine, 640), W / 2, 544);
     } else if (opts.bestDay && opts.bestDay.total > 0) {
       ctx.fillStyle = uiColors.stone[500];
       ctx.fillText(
         `پرجانب‌ترین روز: ${opts.bestDay.label} — ${faNum(opts.bestDay.total)} فعالیت`,
         W / 2,
-        508
+        544
       );
     }
 
     // ---------- r285: نوارِ نشانها — «تا کجا رسیده‌ام؟» در کارتِ هم‌رسانی هم ----------
     // r286: کشیدنِ باند به drawBadgeBand منتقل شد — کارتِ رسمی هم از همان
     // نقاش میخواند؛ هیچ کارتی باندِ خودش را نمیکشد.
-    drawBadgeBand(ctx, { badges: opts.badges, family, x: 70, y: 524, w: W - 140 });
+    drawBadgeBand(ctx, { badges: opts.badges, family, x: 70, y: 560, w: W - 140 });
 
     // ---------- footer ----------
     ctx.strokeStyle = uiColors.stone[200];

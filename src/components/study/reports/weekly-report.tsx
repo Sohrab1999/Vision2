@@ -10,7 +10,7 @@
 
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { Sparkles, TrendingDown, TrendingUp, Minus, CalendarHeart, Check, Compass, Snowflake, Swords, Timer, ImageDown, Loader2, CalendarClock, Gauge, FileDown, BarChart3, Award, BookMarked, Flame } from "lucide-react";
+import { Sparkles, TrendingDown, TrendingUp, Minus, CalendarHeart, Check, Compass, Snowflake, Swords, Timer, ImageDown, Loader2, CalendarClock, CalendarDays, Gauge, FileDown, BarChart3, Award, BookMarked, Flame } from "lucide-react";
 import { useStudy, daysAgoKey } from "@/lib/study-store";
 import { faNum, secFa } from "@/lib/study-theme";
 import { BADGES, buildEvalInput, unlockedBadgeIds, TIER_CHIP } from "@/lib/achievements";
@@ -19,7 +19,7 @@ import { LESSONS_META } from "@/data/lesson-meta";
 import { computeWeeklyDigest, faWeekday, faDayLabel, DUEL_QUICK_WEEK, type Delta, type QuickWeekProfile } from "@/lib/weekly-digest";
 import { freezeDayMark, freezeLedgerMeta } from "@/lib/freeze-badge";
 import { downloadWeeklyImage } from "@/lib/result-image";
-import { downloadProgressCsv, downloadWeeklyTrendCsv } from "@/lib/progress-csv";
+import { downloadProgressCsv, downloadWeeklyTrendCsv, downloadMonthCsv } from "@/lib/progress-csv";
 import { storiesReadSince } from "@/lib/library-progress";
 import { storyStreak } from "@/lib/library-streak";
 import { monthReads } from "@/lib/library-month";
@@ -159,6 +159,15 @@ export default function WeeklyReportSection() {
         : { title: "خطا در ساخت فایل", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
     );
   };
+  // r305 — ماه‌نامهٔ خواندن: برشِ ۳۰روزهٔ داستان‌ها از همان monthReads — CSVِ معلم‌نگر
+  const saveMonthCsv = () => {
+    const ok = downloadMonthCsv(dayHistory, daysAgoKey(0));
+    toast(
+      ok
+        ? { title: "🗓 ماه‌نامهٔ خواندن ذخیره شد", description: "۳۰ سطرِ روزانه با جمعِ فزاینده — آمادهٔ اکسل.", duration: 3000 }
+        : { title: "خطا در ساخت فایل", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
+    );
+  };
 
   const digest = useMemo(
     // the digest window ends "today"; daysAgoKey(0) is the exported wall-clock
@@ -247,6 +256,11 @@ export default function WeeklyReportSection() {
         readStreak.current > 0 || readStreak.longest > 0
           ? { current: readStreak.current, longest: readStreak.longest }
           : undefined,
+      // r305 — سطرِ ماه‌نامه روی کارت: فقط با سابقهٔ پنجره (سیاستِ بوم‌محور)
+      storiesMonth:
+        !month.empty
+          ? { total: month.total, activeDays: month.activeDays, bestCount: month.best?.count ?? 0 }
+          : undefined,
       duelLine:
         d && d.thisWeek > 0
           ? `${faNum(d.thisWeek)}${d.truncated ? "+" : ""} نبرد واژگانی این هفته — ${faNum(d.win)} برد، ${faNum(d.loss)} باخت${d.tie > 0 ? `، ${faNum(d.tie)} مساوی` : ""}`
@@ -301,6 +315,15 @@ export default function WeeklyReportSection() {
             className="rounded-lg p-1.5 text-stone-500 transition-colors hover:bg-stone-100 hover:text-teal-600"
           >
             <BarChart3 size={15} aria-hidden />
+          </button>
+          {/* r305 — ماه‌نامهٔ خواندن CSV: ستونِ داستان‌ها تا امروز در هیچ خروجی‌ای نبود */}
+          <button
+            onClick={saveMonthCsv}
+            aria-label="دانلود ماه‌نامهٔ خواندن CSV"
+            title="ماه‌نامهٔ خواندن CSV — ۳۰ سطرِ روزانهٔ داستان با جمعِ فزاینده"
+            className="rounded-lg p-1.5 text-stone-500 transition-colors hover:bg-stone-100 hover:text-teal-600"
+          >
+            <CalendarDays size={15} aria-hidden />
           </button>
         </div>
       </div>

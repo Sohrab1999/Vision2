@@ -20,6 +20,7 @@ import {
   statOfDay,
   type DigestInput,
 } from "./weekly-digest";
+import { monthReads } from "./library-month";
 import type { DayHistoryMap } from "./study-store";
 
 export const CSV_BOM = "\uFEFF";
@@ -163,6 +164,52 @@ export function downloadWeeklyTrendCsv(
     const a = document.createElement("a");
     a.href = url;
     a.download = `vision2-weekly-${today}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+// ---------------- r305 — ماه‌نامهٔ خواندن (CSVِ معلم‌نگر) ----------------
+// ستونِ داستان‌ها (dayHistory.stories — منبعِ r299) تا امروز در هیچ CSVیی
+// نبود؛ جدولِ ۳۵روزهٔ ۱۶۹ فقط خانواده‌های statOfDay را میبرد. این‌جا
+// برشِ ۳۰روزه از همان قراردادِ خالصِ monthReads (r304) میآید — هیچ
+// شمارشِ موازی‌ای. «جمعِ فزاینده» شیبِ ماه را برایِ معلم میسازد؛ سطرِ
+// آخرش خودِ جمعِ ماه است — بدونِ سطرِ خلاصهٔ خارجِ جدول.
+
+export const MONTH_CSV_COLUMNS = [
+  "تاریخ",
+  "روز هفته",
+  "داستان‌ها",
+  "جمعِ فزاینده",
+] as const;
+
+export const MONTH_CSV_DAYS = 30;
+
+export function buildMonthCsv(history: DayHistoryMap, today: string): string {
+  const m = monthReads(history, today); // منبعِ یگانه — همان نوارِ ماه‌نامهٔ DOM
+  const lines: string[] = [MONTH_CSV_COLUMNS.join(",")];
+  let running = 0;
+  for (const d of m.perDay) {
+    running += d.count;
+    lines.push([d.day, faWeekday(d.day), d.count, running].join(","));
+  }
+  return lines.join(NL) + NL;
+}
+
+export function downloadMonthCsv(history: DayHistoryMap, today: string): boolean {
+  if (typeof document === "undefined") return false; // SSR guard
+  try {
+    const csv = CSV_BOM + buildMonthCsv(history, today);
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `vision2-month-reading-${today}.csv`;
     document.body.appendChild(a);
     a.click();
     a.remove();
