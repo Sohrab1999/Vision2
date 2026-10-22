@@ -146,7 +146,13 @@ export default function DangerWords() {
                         </span>
                         <span className="truncate text-[11.5px] text-stone-500">{d.fa}</span>
                       </div>
-                      <div className="mt-1 flex items-center gap-2">
+                      {/* r322 — ردیفِ متایِ ردیف: چهار chip (نوار + درصد + شمارش +
+                          در جزوه + مترادف) بدونِ wrap در ۳۹۰ تا ۹px از کادرِ
+                          min-w-0 بیرون میزدند (سنجشِ زندهٔ شخصیتِ قهرمان —
+                          اولین suspectِ واقعیِ دامِ basis-صفر در حالتِ پُر).
+                          flex-wrap: در دسکتاپ همه جا میشود (رندرِ عیناً همان)،
+                          در موبایل chipِ اضافی به سطرِ دوم میرود نه رویِ دکمهها. */}
+                      <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1">
                         <span className="h-1.5 w-16 overflow-hidden rounded-full bg-stone-200">
                           <motion.span
                             className={`block h-full rounded-full ${hot ? "bg-rose-500" : "bg-amber-500"}`}

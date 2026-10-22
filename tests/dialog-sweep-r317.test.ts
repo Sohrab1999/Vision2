@@ -11,6 +11,8 @@ import { join } from "node:path";
  *    با سرریزِ عمدیِ متن (عنوانِ فرمان‌یاب) — کلاسهایِ ۱-۳ میراثِ r316 است.
  * ۲) پسآزمونِ بستن باید لایهٔ radix را بسنجد نه trigger را — trigger همیشه در DOM است
  *    (popoverها با Escape بسته میشوند: wrapperِ radix از DOM میرود، data-state خالی میشود).
+ * r322 — طبقهبند حالا شش کلاسِ مشروع میداند: پنجمِ deco_bleed (r318) و ششمِ
+ * sheen_bleed (درخشِ متحرکِ badge-shine — ناپایدارِ زمانی با امضای قطعیِ پزودو).
  */
 
 const sweepJs = readFileSync(join(process.cwd(), "scripts", "r317-sweep.js"), "utf8");
@@ -21,12 +23,15 @@ const palette = readFileSync(
 );
 
 describe("dialog sweep r317 — the clean-paper contract reaches every dialog", () => {
-  it("classifier knows all four legitimate horizontal overflow classes", () => {
+  it("classifier knows all six legitimate horizontal overflow classes", () => {
     // ۱ scroller (r316) · ۲ truncate (r316) · ۳ transform (r316) · ۴ sr_only (r317)
+    // ۵ deco_bleed (r318) · ۶ sheen_bleed (r322 — درخشِ متحرک)
     expect(sweepJs).toContain('"scroller"');
     expect(sweepJs).toContain('"truncate"');
     expect(sweepJs).toContain('"transform"');
     expect(sweepJs).toContain('"sr_only"');
+    expect(sweepJs).toContain('"deco_bleed"');
+    expect(sweepJs).toContain('"sheen_bleed"');
   });
 
   it("vertical classifier separates designed hiding from invisible clipping", () => {

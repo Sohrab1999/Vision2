@@ -119,10 +119,15 @@ export default function SrsPanel() {
     return `${fa(two(d.getHours()))}:${fa(two(d.getMinutes()))}`;
   };
 
-  const chips = [
+  // r322 — short فقط برای برچسبِ نیمفاصلهدار: «مستحکم‌شده» مرزِ شکستِ سطر ندارد
+  // (U+200C فرصتِ شکست نمیسازد) و در دسکتاپ که خانه با lg:grid-cols-2 نیمعرض
+  // میشود تا ۱۱px بیرون میزد (سنجشِ زندهٔ شخصیتِ قهرمان — over=11)؛ در موبایل
+  // پنل تمامعرض است و برچسبِ کامل جا میشود — الگویِ r316: یک منبع، دو سطح،
+  // نامِ کامل در tooltip. بقیهٔ برچسبها در مرزهای عرضی خود جا میشوند/شکسته میشوند.
+  const chips: { icon: typeof CalendarClock; label: string; short?: string; value: number; cls: string }[] = [
     { icon: CalendarClock, label: "سررسید الآن", value: stats?.due ?? 0, cls: "bg-rose-50 text-rose-600" },
     { icon: Sprout, label: "در حال یادگیری", value: stats?.learning ?? 0, cls: "bg-amber-50 text-amber-700" },
-    { icon: TrendingUp, label: "مستحکم‌شده", value: stats?.strong ?? 0, cls: "bg-emerald-50 text-emerald-700" },
+    { icon: TrendingUp, label: "مستحکم‌شده", short: "مستحکم", value: stats?.strong ?? 0, cls: "bg-emerald-50 text-emerald-700" },
     { icon: BookOpenCheck, label: "وارفته", value: stats?.mastered ?? 0, cls: "bg-teal-50 text-teal-700" },
   ];
 
@@ -197,10 +202,15 @@ export default function SrsPanel() {
 
             <div className="grid flex-1 grid-cols-2 gap-2">
               {chips.map((c) => (
-                <div key={c.label} className={`rounded-xl border border-white/60 p-2.5 text-center shadow-sm ${c.cls}`}>
+                // min-w-0 — کفِ عرضیِ آیتمِ گرید: بدونِ آن برچسبِ بلندِ آینده ستونِ
+                // minmax(auto,1fr) را باز میکند و همان سرریزِ ۱۱px برمیگردد
+                <div key={c.label} className={`min-w-0 rounded-xl border border-white/60 p-2.5 text-center shadow-sm ${c.cls}`}>
                   <c.icon size={15} className="mx-auto mb-1" />
                   <div className="text-lg font-black leading-none">{faNum(c.value)}</div>
-                  <div className="mt-1 text-[10.5px] font-bold opacity-80">{c.label}</div>
+                  <div className="mt-1 text-[10.5px] font-bold opacity-80" title={c.label}>
+                    <span className="lg:hidden">{c.label}</span>
+                    <span className="hidden lg:inline">{c.short ?? c.label}</span>
+                  </div>
                 </div>
               ))}
             </div>

@@ -80,6 +80,20 @@
     }
     return "flow";
   };
+  // r322 — کلاسِ مشروعِ ششم: sheen_bleed. درخشِ متحرکِ درونِ کارتِ قفلشده
+  // (badge-shine): پزودوییِ ::after با inset:0 و translateX(-120%→120%) بی‌نهایت؛
+  // scrollWidthِ والدِ overflow:hidden محتوایِ بریدهشده را هم میشمارد، پس در
+  // لحظهٔ میانهٔ انیمیشن تا ~1.2× عرضِ کارت inflated میشود (سنجشِ زنده: over=203
+  // در یک ران، صفر در رانِ دیگر — ناپایدارِ زمانی، ولی امضایش قطعی است:
+  // پزودوِ مطلقِ متحرک رویِ والدِ overflow:hidden = تزئینِ بریدهشده به عمد).
+  // querySelectorAll("*") پزودو را نمیبیند (transformBleed کور است)؛ امضا از
+  // getComputedStyle(el, "::after") خوانده میشود — قطعی و مستقل از فازِ انیمیشن.
+  const sheenBleed = (el) => {
+    const cs = getComputedStyle(el);
+    if (cs.overflowX !== "hidden" && cs.overflow !== "hidden") return false;
+    const ps = getComputedStyle(el, "::after");
+    return ps.position === "absolute" && ps.animationName !== "none";
+  };
   const hOff = [], hLegit = [], vCand = [], vLegit = [];
   for (const el of root.querySelectorAll("*")) {
     const sw = el.scrollWidth, cw = el.clientWidth;
@@ -95,6 +109,7 @@
         else if (truncates(el)) { item.why = "truncate"; hLegit.push(item); }
         else if (transformBleed(el)) { item.why = "transform"; hLegit.push(item); }
         else if (decoBleed(el)) { item.why = "deco_bleed"; hLegit.push(item); }
+        else if (sheenBleed(el)) { item.why = "sheen_bleed"; hLegit.push(item); }
         else hOff.push(item);
       }
     }

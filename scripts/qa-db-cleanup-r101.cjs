@@ -44,6 +44,10 @@ const p = new PrismaClient();
         // every scripted spell round leaves one spell_rush_done aggregate
         // (the event shipped in task 61, after this allowlist's early siblings)
         "spell_rush_done",
+        // r322: the personas audit opens the danger-words flashcards dialog
+        // with a seeded learner — every scripted open leaves one
+        // danger_flashcards funnel row (same QA-only construction)
+        "danger_flashcards",
         // task 286: the official-report PNG card QA click fires the share event —
         // same QA-only construction as print_report's siblings in this loopback env
         "official_image",
