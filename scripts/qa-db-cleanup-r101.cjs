@@ -1,13 +1,20 @@
 // Task 101 — DB hygiene: inspect QA deltas then restore baselines. Read-only unless --clean.
+// r325 — گزینهٔ --since-hours=N (پیشنهادِ ③ِ r324): پنجرهٔ QA به ساعتِ راند
+//   وابسته بود — راندهای بلندتر از ۶۰دقیقه رخدادهایِ خودشان را بیرونِ پنجره
+//   جا میگذاشتند (r324 مجبور به حذفِ جراحی شد). پیشفرض همان ۱ ساعت؛
+//   راندِ بلند با --since-hours=2 (یا بیشتر) کلِ بازهٔ خودش را میپوشاند.
 const { PrismaClient } = require("@prisma/client");
 const p = new PrismaClient();
 (async () => {
-  const since = new Date(Date.now() - 60 * 60 * 1000);
+  const sinceArg = process.argv.find((a) => a.startsWith("--since-hours="));
+  const hours = sinceArg ? Math.max(0.1, parseFloat(sinceArg.split("=")[1])) || 1 : 1;
+  const since = new Date(Date.now() - hours * 60 * 60 * 1000);
+  const windowLabel = hours === 1 ? "<60m" : `<${hours}h`;
   const rows = await p.quizAttempt.findMany({
     where: { createdAt: { gte: since } },
     select: { id: true, userId: true, category: true, outcome: true, score: true, createdAt: true },
   });
-  console.log("attempts <60m:", JSON.stringify(rows.map((r) => ({ c: r.category, o: r.outcome }))));
+  console.log(`attempts ${windowLabel}:`, JSON.stringify(rows.map((r) => ({ c: r.category, o: r.outcome }))));
   const profs = await p.learnerProfile.findMany({ where: { createdAt: { gte: since } }, select: { userId: true, name: true } });
   console.log("profiles <60m:", JSON.stringify(profs.map((x) => x.name)));
   const todayKey = new Date().toISOString().slice(0, 10);

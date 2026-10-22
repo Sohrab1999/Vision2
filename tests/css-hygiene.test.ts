@@ -171,7 +171,7 @@ describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
     }
   });
 
-  it("keeps the selector budget honest (tranche-3b part 2 ceiling 500, re-based 505 r89, 510 r196, 513 r198)", () => {
+  it("keeps the selector budget honest (tranche-3b part 2 ceiling 500, re-based 505 r89, 510 r196, 513 r198, 514 r325)", () => {
     // soft ceiling: the file may not regrow past the consolidation floor. History:
     // 535 pre-kernel → 519 pre-part-2 → 500 (roadmap §12 goal). r89 re-based to
     // 505 for phase 6: the LAST veil family (c-stone) entered with net +4 lines
@@ -185,8 +185,12 @@ describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
     // rules (pre-consolidated across .gmetro-line + .glesson-head), net +5.
     // r198: six-grade shelf (Prospect 10-12) — 3 more metro families
     // (pink/blue/purple) entered the same COMPOUND shape, net +3 → 513.
+    // r325: heat-cell ink pairs with its band — the measured WCAG fix (white
+    // 90% ink on emerald-200/400 = 1.24/1.79 light; the dark kernel remap
+    // turns 600/800 light = 2.95/2.09) entered as ONE 2-selector rule beside
+    // the band remaps it pairs with, net +2 → 514.
     const sel = lines.filter((l) => /^\s*\.[a-z]/.test(l) && !l.includes("→")).length;
-    expect(sel).toBeLessThanOrEqual(513);
+    expect(sel).toBeLessThanOrEqual(514);
     expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(490);
   });
 });

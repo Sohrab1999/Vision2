@@ -47,6 +47,25 @@ export default function WeeklyChart() {
     return "bg-emerald-800";
   };
 
+  /** r325 — جوهرِ رقمِ درونِ خانه، جفتی با باندِ خودش (یکمنبع، کنارِ heat).
+   *  سفیدِ ثابت (text-white/90) در حالتِ پُرِ ۳۰خانه نامرئی بود — سنجشِ زندهٔ
+   *  WCAG با رزولورِ بومی (بومِ 1×1، چون Tailwind v4 رنگها را lab()/oklch()
+   *  میدهد): روشنِ emerald-200 = ۱٫۲۴ و emerald-400 = ۱٫۷۹ (۱۵ خانه از ۳۰ —
+   *  کمفعالیتها که رایجترینِ یادگیرندهٔ واقعیاند) و در تاریک، نگاشتِ وارونهٔ
+   *  باندها emerald-800 را به #22c55e روشن میبرد → ۲٫۰۹ و emerald-600 → ۲٫۹۵.
+   *  باندهایِ ≤7: روشن emerald-900 (۷٫۵۳/۴٫۹۷)؛ تاریک سفیدِ خالص — قاعدهٔ
+   *  `.dark .heat-cell.bg-emerald-{200,400} span` در globals.css کنارِ
+   *  بازنگشتهایِ همین باندهاست (۹٫۱/۴٫۹) — چون هستهٔ .dark متنِ
+   *  emerald-900 را به emerald-300 (#6ee7b7) بازنگاشت میکند (globals.css:430)
+   *  و با specificitiِ ۰,۲,۰ بر `dark:text-white` غلبه میکرد (سنجشِ زنده:
+   *  rgb(110,231,183) با وجودِ dark:text-white — تلهٔ واقعیِ این راند).
+   *  باندهایِ >7: روشن سفید (۳٫۶۵/۷٫۶۱) · تاریک emerald-950 (۴٫۶۱/۶٫۶۶). */
+  const heatInk = (n: number): string => {
+    if (n <= 0) return "";
+    if (n <= 7) return "text-emerald-900";
+    return "text-white dark:text-emerald-950";
+  };
+
   return (
     <section
       aria-label="فعالیت هفتگی"
@@ -222,7 +241,7 @@ export default function WeeklyChart() {
                   }`}
                 >
                   {d.total > 0 && (
-                    <span className="absolute inset-0 flex items-center justify-center text-[9px] font-black text-white/90">
+                    <span className={`absolute inset-0 flex items-center justify-center text-[9px] font-black ${heatInk(d.total)}`}>
                       {faNum(d.total)}
                     </span>
                   )}

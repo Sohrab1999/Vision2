@@ -646,6 +646,15 @@ body {
 .dark .heat-cell.bg-emerald-400 { background-color: #15803d; }
 .dark .heat-cell.bg-emerald-600 { background-color: #16a34a; }
 .dark .heat-cell.bg-emerald-800 { background-color: #22c55e; }
+/* r325 — جوهرِ سفیدِ رقمِ باندهایِ پایینِ حرارتی در تاریک: جوهرِ JSX
+   (text-emerald-900) توسطِ هستهٔ .dark به emerald-300 (#6ee7b7) بازنگاشت
+   میشود (سطرِ ~430) که رویِ #15803d فقط ۳٫۲۹ میدهد؛ `dark:text-white` هم با
+   specificitiِ 0,1,0 نمیتوانست بر 0,2,0ِ هسته غلبه کند. قاعدهٔ زیر (0,3,0،
+   همجوار با بازنگشتهایِ همین باندها) سفیدِ خالص میدهد — سنجشِ زنده:
+   emerald-200 → ۹٫۱ و emerald-400 → ۴٫۹. باندهایِ بالا (600/800) جوهرِ
+   تیرهٔ خودشان را از dark:text-emerald-950 در JSX دارند (۴٫۶۱/۶٫۶۶). */
+.dark .heat-cell.bg-emerald-200 span,
+.dark .heat-cell.bg-emerald-400 span { color: #ffffff; }
 .dark .ring-offset-white { --tw-ring-offset-color: #1c1917; }
 
 /* ---------------- word of the day ---------------- */
@@ -1754,3 +1763,5 @@ html.user-reduce-motion .streak-flame {
   background-color: color-mix(in oklab, var(--color-stone-200) 80%, transparent);
 }
 
+
+/* r325 — heat-cell ink companion rule lives above (bg-emerald-200/400 span) */
