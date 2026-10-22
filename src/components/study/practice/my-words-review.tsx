@@ -75,7 +75,11 @@ export default function MyWordsReview({ stars }: { stars: ResolvedStar[] }) {
         <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 text-white shadow-md shadow-amber-900/20">
           <GraduationCap size={20} />
         </span>
-        <div className="min-w-0 flex-1">
+        {/* r318 — بدونِ min-w-0: با flex-basisِ صفرِ flex-1، الگوریتمِ wrap
+            سطر را نمی‌شکند و متن تا زیرِ min-content له میشد (h2 «مرور
+            نشان‌شده‌ها» = ۸۲px در خانهٔ ۴۸px). کفِ خودکارِ min-content
+            («نشان‌شده‌ها») دکمهها را به سطرِ دومِ flex-wrap میفرستد. */}
+        <div className="flex-1">
           <h2 className="text-sm font-extrabold text-stone-800">مرور نشان‌شده‌ها</h2>
           <p className="text-[11.5px] leading-5 text-stone-500">
             {eligible

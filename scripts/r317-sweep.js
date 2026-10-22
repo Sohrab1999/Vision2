@@ -49,6 +49,28 @@
     const cs = getComputedStyle(el);
     return cs.webkitLineClamp && cs.webkitLineClamp !== "none";
   };
+  // r318 — legit class 5: deco bleed. Watermark/bolt/glow decorations sit at
+  // negative offsets (-left-6, -inset-4); in RTL their left bleed inflates
+  // scrollWidth (and bottom bleed inflates scrollHeight) even though
+  // overflow:hidden clips them by design. Stable signal = aria-hidden subtree;
+  // pointer-events is INHERITED and framer-motion toggles it inline on the
+  // animating view wrapper — non-deterministic between runs, so never used
+  // here. A bleeding in-flow text child outside aria-hidden stays a real bug.
+  const silenced = (k, stop) => {
+    for (let n = k; n && n !== stop; n = n.parentElement)
+      if (n.getAttribute && n.getAttribute("aria-hidden") === "true") return true;
+    return false;
+  };
+  const decoBleed = (el) => {
+    if (el.getAttribute("aria-hidden") === "true") return true; // leaf decoration itself (watermark glyph)
+    const er = el.getBoundingClientRect();
+    const bleeds = [...el.querySelectorAll("*")].filter((k) => {
+      if (getComputedStyle(k).display === "none") return false; // invisible: a zero rect crosses edges but never bleeds
+      const kr = k.getBoundingClientRect();
+      return kr.right > er.right + 1 || kr.left < er.left - 1 || kr.bottom > er.bottom + 1 || kr.top < er.top - 1;
+    });
+    return bleeds.length > 0 && bleeds.every((k) => silenced(k, el));
+  };
   const nearestVCliip = (el) => {
     // نزدیکترین جدّی که در محورِ عمودی مرئی نیست: hidden/clip؛ اگر auto/scroll = پیمایشگر
     for (let n = el.parentElement; n && n !== root.parentElement; n = n.parentElement) {
@@ -72,6 +94,7 @@
         else if (srOnly(el)) { item.why = "sr_only"; hLegit.push(item); }
         else if (truncates(el)) { item.why = "truncate"; hLegit.push(item); }
         else if (transformBleed(el)) { item.why = "transform"; hLegit.push(item); }
+        else if (decoBleed(el)) { item.why = "deco_bleed"; hLegit.push(item); }
         else hOff.push(item);
       }
     }
@@ -84,6 +107,7 @@
       if (scrollsY(el)) { item.why = "vscroller"; vLegit.push(item); }
       else if (srOnly(el)) { item.why = "sr_only"; vLegit.push(item); }
       else if (lineClamp(el)) { item.why = "clamp"; vLegit.push(item); }
+      else if (decoBleed(el)) { item.why = "deco_bleed"; vLegit.push(item); }
       else {
         const near = nearestVCliip(el);
         if (near === "scroller") { item.why = "vscroller-ancestor"; vLegit.push(item); }

@@ -38,7 +38,9 @@ export default function MyWordsDictation({ stars }: { stars: ResolvedStar[] }) {
         <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-arcade-from-soft to-arcade-to-soft text-white shadow-md shadow-violet-900/20">
           <Ear size={20} />
         </span>
-        <div className="min-w-0 flex-1">
+        {/* r318 — همان قراردادِ سهراه‌اندازِ «واژه‌های من»: کفِ min-content
+            بهجایِ min-w-0 تا h2 در ۳۹۰px بریده نشود (دامِ flex-basis صفر). */}
+        <div className="flex-1">
           <h2 className="text-sm font-extrabold text-stone-800">دیکتهٔ ستاره‌ها</h2>
           <p className="text-[11.5px] leading-5 text-stone-500">
             {eligible
