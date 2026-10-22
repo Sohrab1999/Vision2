@@ -77,7 +77,7 @@ export function RushModeTabs({ mode, onChange }: { mode: "quiz" | "spell"; onCha
             onClick={() => onChange(t.id)}
             className={`inline-flex items-center gap-1.5 rounded-xl px-4 py-2 text-[13px] font-black transition-[background-color,color,border-color,box-shadow,transform] active:scale-[0.96] ${
               mode === t.id
-                ? "bg-gradient-to-l from-amber-500 to-orange-600 text-white shadow-md shadow-orange-500/25"
+                ? "bg-gradient-to-l from-amber-700 to-orange-700 text-white shadow-md shadow-orange-500/25"
                 : "text-stone-500 hover:text-orange-700"
             }`}
           >
@@ -319,7 +319,7 @@ export default function SpellRushView({ onExit }: { onExit?: () => void }) {
             <Ear size={220} />
           </div>
           <div className="relative">
-            <span className="rush-icon mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-sky-500 to-cyan-600 text-white shadow-xl shadow-sky-500/30">
+            <span className="rush-icon mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-sky-700 to-cyan-700 text-white shadow-xl shadow-sky-500/30">
               <Ear size={38} />
             </span>
             <span className="spell-chip mb-3 inline-flex items-center gap-1.5 rounded-full border border-sky-200 c-veil-70 px-3 py-1 text-xs font-bold text-sky-700">
@@ -363,7 +363,7 @@ export default function SpellRushView({ onExit }: { onExit?: () => void }) {
 
             <button
               onClick={start}
-              className="rush-start inline-flex items-center gap-2.5 rounded-2xl bg-gradient-to-l from-sky-500 to-cyan-600 px-9 py-4 text-base font-black text-white shadow-xl shadow-sky-600/30 transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-95 active:scale-[0.96]"
+              className="rush-start inline-flex items-center gap-2.5 rounded-2xl bg-gradient-to-l from-sky-700 to-cyan-700 px-9 py-4 text-base font-black text-white shadow-xl shadow-sky-600/30 transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-95 active:scale-[0.96]"
             >
               <Play size={20} />
               شروع دیکتهٔ برق‌آسا
@@ -389,12 +389,12 @@ export default function SpellRushView({ onExit }: { onExit?: () => void }) {
       <div className="space-y-4">
         <div className="rush-done relative overflow-hidden rounded-2xl border border-orange-200 bg-gradient-to-b from-orange-50 to-amber-50 p-8 text-center shadow-sm">
           {isNewRecord && <Confetti />}
-          <span className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-500 to-cyan-600 text-white shadow-lg shadow-sky-500/30">
+          <span className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-700 to-cyan-700 text-white shadow-lg shadow-sky-500/30">
             <Trophy size={28} />
           </span>
           <h2 className="mb-1 text-xl font-black text-stone-800">دیکتهٔ برق‌آسا تمام شد!</h2>
           {isNewRecord && (
-            <span className="spell-chip mb-2 inline-block rounded-full bg-gradient-to-l from-sky-500 to-cyan-600 px-3.5 py-1 text-[12px] font-black text-white shadow-md shadow-sky-500/30">
+            <span className="spell-chip mb-2 inline-block rounded-full bg-gradient-to-l from-sky-700 to-cyan-700 px-3.5 py-1 text-[12px] font-black text-white shadow-md shadow-sky-500/30">
               ⚡ رکورد جدید!
             </span>
           )}
@@ -404,7 +404,8 @@ export default function SpellRushView({ onExit }: { onExit?: () => void }) {
           <div className="mb-6 flex flex-wrap justify-center gap-2 text-[12px] font-bold">
             <span className="rounded-full bg-emerald-50 px-3 py-1 text-emerald-700">بی‌راهنما: {faNum(correct)}</span>
             <span className="rounded-full bg-sky-50 px-3 py-1 text-sky-700">با راهنما: {faNum(hintCorrect)}</span>
-            <span className="rounded-full bg-rose-50 px-3 py-1 text-rose-600">غلط/رد: {faNum(answered - correct - hintCorrect)}</span>
+            {/* r330 — رزِ -۶۰۰ رویِ rose-50 = ۴٫۱۲ (زنده)؛ -۷۰۰ = ۵٫۶ */}
+            <span className="rounded-full bg-rose-50 px-3 py-1 text-rose-700">غلط/رد: {faNum(answered - correct - hintCorrect)}</span>
             <span className="rounded-full bg-amber-50 px-3 py-1 text-amber-700">بیشترین کمبو: {faNum(maxCombo)}×</span>
             <span className="rounded-full border border-stone-200 bg-white px-3 py-1 text-stone-600">رکورد: {faNum(spellRushBest)}</span>
           </div>
@@ -412,7 +413,7 @@ export default function SpellRushView({ onExit }: { onExit?: () => void }) {
           <div className="flex flex-wrap justify-center gap-3">
             <button
               onClick={start}
-              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-l from-sky-500 to-cyan-600 px-6 py-3 text-sm font-black text-white shadow-lg shadow-sky-600/25 transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-95 active:scale-[0.96]"
+              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-l from-sky-700 to-cyan-700 px-6 py-3 text-sm font-black text-white shadow-lg shadow-sky-600/25 transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-95 active:scale-[0.96]"
             >
               <RotateCcw size={16} />
               دیکتهٔ دوباره
@@ -504,8 +505,10 @@ export default function SpellRushView({ onExit }: { onExit?: () => void }) {
             </div>
           </div>
           <div className={`flex items-center gap-1 rounded-xl px-2.5 py-1.5 ${combo >= 2 ? "bg-amber-50" : "bg-stone-50"}`}>
-            <Flame size={15} className={combo >= 2 ? "text-orange-500" : "text-stone-300"} />
-            <span className={`text-lg font-black ${combo >= 2 ? "text-orange-600" : "text-stone-300"}`}>{faNum(combo)}×</span>
+            {/* r330 — جوهرِ کمبویِ غیرفعال رویِ stone-50 = ۱٫۴۳ (زنده)؛
+                stone-500 = ۵٫۳ — فعالِ -۷۰۰ هم = ۵٫۲۲ (زنده) */}
+            <Flame size={15} className={combo >= 2 ? "text-orange-500" : "text-stone-500"} />
+            <span className={`text-lg font-black ${combo >= 2 ? "text-orange-700" : "text-stone-500"}`}>{faNum(combo)}×</span>
           </div>
         </div>
       </div>

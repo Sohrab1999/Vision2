@@ -109,7 +109,7 @@ export default function MyWordsReview({ stars }: { stars: ResolvedStar[] }) {
         {eligible ? (
           <button
             onClick={start}
-            className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-l from-amber-500 to-orange-500 px-4 py-2.5 text-[13px] font-black text-white shadow-md shadow-amber-500/25 transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-95 active:scale-[0.96]"
+            className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-l from-amber-700 to-orange-700 px-4 py-2.5 text-[13px] font-black text-white shadow-md shadow-amber-500/25 transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-95 active:scale-[0.96]"
           >
             <Play size={14} />
             شروع مرور ({faNum(clamped)} سؤال)

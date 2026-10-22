@@ -566,7 +566,14 @@ body {
 /* r329 — ازِ کهربایِ سکو/رِیل در تاریک عمیق‌تر: سفید/۹۰ رویِ #b45309 = ۴٫۳۹
    (مرزیِ مردود — سکویِ قهرمانِ رتبه‌بندی، زنده با بوم)؛ رویِ #92400e ≥۵ */
 .dark .from-amber-400,.dark .from-amber-300 { --tw-gradient-from: #92400e; }
-.dark .to-orange-500 { --tw-gradient-to: #c2410c; }
+/* r330 — تلهٔ توکنِ جوهر رویِ استاپِ گرادیان: توکنهایِ -۷۰۰ سنجاقشده در
+   تاریک (#fdba74/#7dd3fc) برایِ «متنِ» تاریک روشناند ولی استاپِ همان سایه
+   زیرِ متنِ سفید را میکشد (سفید رویِ ازِ sky-700 تاریک = ۱٫۹، رویِ toِ
+   orange-700 = ۱٫۶۹ — سنجشِ زنده). بازپینِ فقطِ from/to در تاریک؛ متنِ
+   text-orange-700/text-sky-700 دستنخورده (خاصیتِ color جدا است). */
+.dark .from-sky-700 { --tw-gradient-from: #0369a1; }
+/* merged with the r87 to-orange-500 repin — same dark value (#c2410c) */
+.dark .to-orange-500,.dark .to-orange-700 { --tw-gradient-to: #c2410c; }
 /* r87: the .bg-white\/60 dark default retired — every /60 consumer migrated to
    c-veil-60 (tranche 4 phase 4); the utility carries the same dark value. */
 

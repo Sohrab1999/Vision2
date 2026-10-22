@@ -107,7 +107,9 @@ describe("r327 — قفلهایِ ترمیمِ دُمِ سویپِ کنتراس�
     const hits = src.match(/rankCls: "[^"]+"/g) ?? [];
     expect(hits).toHaveLength(3);
     for (const h of hits) {
-      expect(h).toContain("text-[#44403c]");
+      // r330 — #44403c رویِ استاپِ آخرِ سکوهایِ سنگ/نارنجی مردود بود
+      // (۳٫۹۷/۴٫۳۲ زنده با بوم)؛ سنگِ ۹۰۰ (#1c1917) رویِ هر شش استاپِ روشن ≥۶٫۸
+      expect(h).toContain("text-[#1c1917]");
       expect(h).toContain("dark:text-white/90");
       // هیچ رتبهای جوهرِ برهنهٔ سفید/۹۰ ندارد (فقط نسخهٔ dark: مجاز است)
       expect(h).not.toMatch(/(?<!dark:)text-white\/90/);
@@ -117,8 +119,16 @@ describe("r327 — قفلهایِ ترمیمِ دُمِ سویپِ کنتراس�
 
   it("CTAها و چیپها: جفتهایِ ۷۰۰/۹۵۰ جای ۵۰۰/۴۰۰ را گرفتهاند", () => {
     // تلهٔ توکنِ r327: to-orange-700/800 در تاریک به #fdba74 بازمیگردد
-    // (globals:201) — هیچ ترمیمی از این دو استاپ نباید استفاده کند
+    // (globals:201) — r330 برایِ استاپِ گرادیانیِ همان سایه بازپینِ تاریک گذاشت
+    // (.dark .to-orange-700 → #c2410c = ۵٫۱۸ زنده) ولی این پنج فایل رویِ
+    // جفتِ عمیقترِ ۹۵۰ میمانند (قراردادِ ثبتشده؛ جوهرِ متنِ -۷۰۰ جدا و سالم)
     expect(read("src/app/globals.css")).toContain("--color-orange-700: #fdba74");
+    expect(read("src/app/globals.css")).toContain(
+      ".dark .to-orange-700 { --tw-gradient-to: #c2410c; }",
+    );
+    expect(read("src/app/globals.css")).toContain(
+      ".dark .from-sky-700 { --tw-gradient-from: #0369a1; }",
+    );
     const swept = [
       "src/components/study/home/home-banners.tsx",
       "src/components/study/home/home-continue-reading.tsx",

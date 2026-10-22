@@ -312,7 +312,7 @@ export default function RushView() {
 
             <button
               onClick={start}
-              className="rush-start inline-flex items-center gap-2.5 rounded-2xl bg-gradient-to-l from-amber-500 to-orange-600 px-9 py-4 text-base font-black text-white shadow-xl shadow-orange-600/30 transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-95 active:scale-[0.96]"
+              className="rush-start inline-flex items-center gap-2.5 rounded-2xl bg-gradient-to-l from-amber-700 to-orange-700 px-9 py-4 text-base font-black text-white shadow-xl shadow-orange-600/30 transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-95 active:scale-[0.96]"
             >
               <Play size={20} />
               شروع چالش
@@ -345,7 +345,7 @@ export default function RushView() {
           </span>
           <h2 className="mb-1 text-xl font-black text-stone-800">چالش تمام شد!</h2>
           {isNewRecord && (
-            <span className="mb-2 inline-block rounded-full bg-gradient-to-l from-amber-500 to-orange-600 px-3.5 py-1 text-[12px] font-black text-white shadow-md shadow-orange-500/30">
+            <span className="mb-2 inline-block rounded-full bg-gradient-to-l from-amber-700 to-orange-700 px-3.5 py-1 text-[12px] font-black text-white shadow-md shadow-orange-500/30">
               ⚡ رکورد جدید!
             </span>
           )}
@@ -354,7 +354,7 @@ export default function RushView() {
 
           <div className="mb-6 flex flex-wrap justify-center gap-2 text-[12px] font-bold">
             <span className="rounded-full bg-emerald-50 px-3 py-1 text-emerald-700">درست: {faNum(correct)}</span>
-            <span className="rounded-full bg-rose-50 px-3 py-1 text-rose-600">کل پاسخ‌ها: {faNum(answered)}</span>
+            <span className="rounded-full bg-rose-50 px-3 py-1 text-rose-700">کل پاسخ‌ها: {faNum(answered)}</span>
             <span className="rounded-full bg-sky-50 px-3 py-1 text-sky-700">دقت: {faNum(accuracy)}٪</span>
             <span className="rounded-full bg-amber-50 px-3 py-1 text-amber-700">بیشترین کمبو: {faNum(maxCombo)}×</span>
             <span className="rounded-full border border-stone-200 bg-white px-3 py-1 text-stone-600">رکورد: {faNum(rushBest)}</span>
@@ -363,7 +363,7 @@ export default function RushView() {
           <div className="flex flex-wrap justify-center gap-3">
             <button
               onClick={start}
-              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-l from-amber-500 to-orange-600 px-6 py-3 text-sm font-black text-white shadow-lg shadow-orange-600/25 transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-95 active:scale-[0.96]"
+              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-l from-amber-700 to-orange-700 px-6 py-3 text-sm font-black text-white shadow-lg shadow-orange-600/25 transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-95 active:scale-[0.96]"
             >
               <RotateCcw size={16} />
               چالش دوباره
@@ -419,7 +419,8 @@ export default function RushView() {
               strokeDashoffset={ring * (1 - progress)}
             />
           </svg>
-          <span className={`absolute inset-0 flex items-center justify-center text-lg font-black ${totalSeconds <= 10 ? "text-rose-600" : "text-orange-600"}`}>
+          {/* r330 — تایمرِ کوچکِ -۶۰۰ رویِ سفید = ۳٫۵۸ (زنده)؛ -۷۰۰ = ۵٫۲۲ */}
+          <span className={`absolute inset-0 flex items-center justify-center text-lg font-black ${totalSeconds <= 10 ? "text-rose-600" : "text-orange-700"}`}>
             {faNum(totalSeconds)}
           </span>
         </div>
