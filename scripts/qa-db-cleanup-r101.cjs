@@ -40,6 +40,10 @@ const p = new PrismaClient();
         // task 283: the qa-fresh-session --play mode completes a REAL 60s rush
         // hand end-to-end — every scripted play leaves one rush_done aggregate
         "rush_done",
+        // r320: the rush-family audit completes REAL 60s spell sprints —
+        // every scripted spell round leaves one spell_rush_done aggregate
+        // (the event shipped in task 61, after this allowlist's early siblings)
+        "spell_rush_done",
         // task 286: the official-report PNG card QA click fires the share event —
         // same QA-only construction as print_report's siblings in this loopback env
         "official_image",
