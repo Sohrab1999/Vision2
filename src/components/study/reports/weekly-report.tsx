@@ -233,6 +233,14 @@ export default function WeeklyReportSection() {
 
   const maxTotal = Math.max(1, ...digest.perDay.map((p) => p.stat.reviews + p.stat.quizzes + p.stat.words + p.stat.dictation + p.stat.rush));
   const today = daysAgoKey(0);
+  // r315 — عددِ «فعالیتِ امروز» از همان perDay (منبعِ یگانهٔ نوار): چیپِ زیرِ نوار
+  // همان خانهٔ حلقهٔ زمردی را عدد می‌کند — عددهای چیپها با نوار سنجیده میشوند
+  // (درسِ r309، حالا مستقیم زیرِ خودِ نوار). صفرِ صادق: امروزِ بیفعالیت هم
+  // دیده میشود ولی خنثی — نه زمردیِ تشویقِ ساختگی (هم‌قراردادِ «بی‌داده هم صادق»).
+  const todayEntry = digest.perDay.find((p) => p.day === today);
+  const todayTotal = todayEntry
+    ? todayEntry.stat.reviews + todayEntry.stat.quizzes + todayEntry.stat.words + todayEntry.stat.dictation + todayEntry.stat.rush
+    : 0;
 
   // Task 104 — عکسِ هفته‌نامه: همان دایجستِ روی صفحه به یک کارتِ PNGِ خانوادهٔ
   // سبز تبدیل می‌شود — ورودیِ کاهش‌یافته فقط از اعدادِ واقعیِ همین دایجست پر می‌شود.
@@ -321,7 +329,10 @@ export default function WeeklyReportSection() {
 
   return (
     <div className="report-digest rounded-xl border border-stone-200 c-stone-70 p-3.5">
-      <div className="mb-2.5 flex items-center justify-between">
+      {/* r315 — flex-wrap: سنجشِ واقعیِ ۳۹۰px قبل از تغییر ۱۱px سرریزِ پنهان داشت
+          (سرستونِ sw=297 در برابرِ cw=286 — دکمهٔ آخر ۱۱px داخلِ پدینگ میرفت)؛
+          خوشهٔ دکمه‌ها در موبایل به سطرِ دوم می‌رود — دسکتاپ بی‌تغییر (۳۹۲ < ۴۴۰). */}
+      <div className="mb-2.5 flex flex-wrap items-center justify-between gap-x-2 gap-y-1.5">
         <div className="flex items-center gap-1.5 text-[12px] font-extrabold text-stone-700">
           <Sparkles size={13} className="text-teal-600" />
           هفته‌نامهٔ پیشرفت
@@ -633,7 +644,18 @@ export default function WeeklyReportSection() {
       <div className="mb-3 flex justify-between text-[9px] font-bold text-stone-500" dir="ltr">
         <span>{faDayLabel(digest.perDay[0].day)}</span>
         <span>هفتهٔ پیش | این هفته</span>
-        <span>امروز</span>
+        {/* r315 — چیپِ «فعالیتِ امروز» جایِ برچسبِ خالیِ «امروز»: دقیقاً زیرِ
+            خانهٔ آخرِ نوار (امروز در جریانِ LTRِ نوار راست‌ترین است) — عددش
+            از همان perDay می‌آید و صفرِ صادق هم دیده میشود؛ فعال بودنش با
+            زمردیِ خانوادهٔ حلقهٔ امروز (زبانِ دستورِ رنگها) و بیفعالیتش خنثی. */}
+        <span
+          title="فعالیتِ امروز تا این لحظه — همان خانهٔ آخرِ نوار با حلقهٔ زمردی"
+          className={`inline-flex items-center rounded-full px-1.5 py-0.5 text-[9px] font-black ${
+            todayTotal > 0 ? "bg-emerald-50 text-emerald-700" : "bg-stone-100 text-stone-500"
+          }`}
+        >
+          {`${faNum(todayTotal)} فعالیت امروز`}
+        </span>
       </div>
 
       {/* goal dots — one per day of this week */}
