@@ -1,6 +1,7 @@
 // r317 dialog sweep — horizontal (r316 three-way classifier) + vertical classifier
-// h: scroller | truncate | transform  -> legit;  else real bug
-// v: vscroller | clamp | vscroller-ancestor | flow -> legit;  hidden_clip -> candidate (invisible clipping)
+// h: scroller | truncate | transform | sr_only | deco_bleed | sheen_bleed -> legit; else real bug
+// v: vscroller | clamp | vscroller-ancestor | flow | sr_only | deco_bleed | truncate_slack | leading_none | ping_wave | transform -> legit;
+//    hidden_clip -> candidate (invisible clipping)
 // body-level horizontal check appended
 ((sel) => {
   const root = document.querySelector(sel);
@@ -71,6 +72,66 @@
     });
     return bleeds.length > 0 && bleeds.every((k) => silenced(k, el));
   };
+  // r324 — کلاسِ مشروعِ عمودیِ ششم: truncate_slack. پیلِ تکخطیِ truncate
+  // (روزِ نمودارِ هفتگی — ترمیمِ r321): overflowYِ خودِ عنصر hidden است و
+  // کسریِ عمودیِ ≤3px فضایِ خالیِ line-box است — متریکِ ascent/descentِ
+  // بلندِ فونتِ فارسی از line-heightِ کوچکتر (۱۵px) بیرون میزند ولی آن
+  // حاشیه بیجوهر است؛ برشِ افقیِ همین عنصر طراحی است (ellipsis). کلاسِ
+  // بنجلِ ثبتشدهٔ r323 (hidden_clipهایِ over≤3) با امضایِ قطعیِ همین خانواده
+  // به قرارداد بدل شد — چهار پیل در هر زبانهٔ رتبهبندی، پایدار در دو ران.
+  // کسریِ >3 (چندخطیِ تحمیلشده) کاندیدا میماند.
+  const truncateSlack = (el, over) => {
+    const cs = getComputedStyle(el);
+    return (
+      over <= 3 &&
+      cs.textOverflow === "ellipsis" &&
+      cs.whiteSpace === "nowrap" &&
+      (cs.overflowY === "hidden" || cs.overflowY === "clip")
+    );
+  };
+  // r324 — کلاسِ مشروعِ عمودیِ هفتم: leading_none. عددِ درشتِ leading-none
+  // (Podium/درصدها): line-height=1 عمداً تنگ است؛ کسریِ ≤3px اسلکِ متریکِ
+  // فونت است (ascent/descent از em بیرون میزند) و رقم میانهٔ em نشسته —
+  // جوهرِ بریده نمیشود (تصدیقِ زنده: fs=24/lh=24 · over=2، پایدار در r322/r324).
+  // کسریِ >3 = چندخطی یا فونتِ غیرمعمول — کاندیدا میماند.
+  const leadingNone = (el, over) => {
+    const cs = getComputedStyle(el);
+    const fs = parseFloat(cs.fontSize);
+    const lh = parseFloat(cs.lineHeight);
+    return (
+      over <= 3 &&
+      Number.isFinite(fs) && Number.isFinite(lh) &&
+      Math.abs(lh - fs) <= 0.5
+    );
+  };
+  // r324 — کلاسِ مشروعِ عمودیِ هشتم: ping_wave. نقطهٔ شاخصِ کوچک (h-2 w-2)
+  // با بچهٔ مطلقِ animate-ping: موجِ انیمیشنیِ عمدی تا ۲× جعبه و clip آن
+  // طراحی است (تصدیقِ زنده: kids=[absolute/ping/16x16] در جعبهٔ 8px · over=4).
+  const pingWave = (el) => {
+    const r = el.getBoundingClientRect();
+    if (r.width > 14 || r.height > 14) return false;
+    return [...el.children].some((k) => {
+      const kc = getComputedStyle(k);
+      return kc.position === "absolute" && kc.animationName !== "none";
+    });
+  };
+  // r324 — دوقلوی عمودیِ کلاسِ transform (r316): framer-motionِ whileInView
+  // ستونهایِ سکو را با translateY از پایینِ خطِ پایه بالا میآورد؛ در فازِ
+  // پیش از دید، جابجاییِ مثبتِ y ستون را از کارتِ overflow-hidden بیرون
+  // میبرد (سنجشِ زنده: bottom=3 رویِ سرپودومِ فوشیا) — حرکتِ طراحی‌شده است
+  // نه برشِ محتوا؛ همان قاعدهٔ محورِ افقی، این بار برایِ محورِ عمودی.
+  // تفاوت با transformBleedِ افقی: translateY عرض/قد را عوض نمیکند —
+  // جابجاییِ موضع است، پس امضا از rect است نه offset.
+  const transformDisplacedY = (el) => {
+    const er = el.getBoundingClientRect();
+    return [...el.querySelectorAll("*")].some((d) => {
+      const cs = getComputedStyle(d);
+      if (cs.display === "none") return false;
+      if (cs.transform === "none" && (!cs.rotate || cs.rotate === "none")) return false;
+      const dr = d.getBoundingClientRect();
+      return dr.bottom > er.bottom + 1 || dr.top < er.top - 1;
+    });
+  };
   const nearestVCliip = (el) => {
     // نزدیکترین جدّی که در محورِ عمودی مرئی نیست: hidden/clip؛ اگر auto/scroll = پیمایشگر
     for (let n = el.parentElement; n && n !== root.parentElement; n = n.parentElement) {
@@ -123,6 +184,10 @@
       else if (srOnly(el)) { item.why = "sr_only"; vLegit.push(item); }
       else if (lineClamp(el)) { item.why = "clamp"; vLegit.push(item); }
       else if (decoBleed(el)) { item.why = "deco_bleed"; vLegit.push(item); }
+      else if (truncateSlack(el, item.over)) { item.why = "truncate_slack"; vLegit.push(item); }
+      else if (leadingNone(el, item.over)) { item.why = "leading_none"; vLegit.push(item); }
+      else if (pingWave(el)) { item.why = "ping_wave"; vLegit.push(item); }
+      else if (transformDisplacedY(el)) { item.why = "transform"; vLegit.push(item); }
       else {
         const near = nearestVCliip(el);
         if (near === "scroller") { item.why = "vscroller-ancestor"; vLegit.push(item); }

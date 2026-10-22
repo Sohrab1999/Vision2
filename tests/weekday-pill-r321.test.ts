@@ -50,7 +50,9 @@ describe("weekday pill r321 — the weekly chart axis stops bleeding at 390px", 
   it("the pill finally has a width floor — truncate can engage as the safety net", () => {
     // ریشهٔ باگ: truncate بدونِ max-w-full در flex-col با items-center هیچ
     // جعبه‌ای برای بریدن ندارد — جعبه تا عرضِ متن باز میشد
-    expect(chart).toContain("mt-2 max-w-full truncate rounded-full px-1 py-0.5");
+    // r324 — shrink-0 هم اضافه شد: دامِ این بار عمودی بود (روزِ اوجِ هفته
+    // پیل را تا ۴px له میکرد) — لیبلِ روز دیگر هیچگز جذب‌کنندهٔ flex نیست
+    expect(chart).toContain("mt-2 max-w-full shrink-0 truncate rounded-full px-1 py-0.5");
     // px-1 نه px-1.5: «امروز»یِ ۴۰px در ستونِ ۳۹px بیکلمپ جا شود
     expect(chart).not.toContain("rounded-full px-1.5 py-0.5 text-[10px]");
   });

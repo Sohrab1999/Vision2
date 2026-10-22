@@ -99,11 +99,18 @@ export default function WeeklyChart() {
         {range === "week" ? (
           <>
             {/* chart area */}
+            {/* r324 — بودجهٔ صادقِ ستون: قدما ۱۱۶ بود و ستون به ۱۶۳px نیاز
+                داشت (16+4+116+8+19) در ظرفِ ۱۴۸px؛ در روزِ اوجِ هفته میلهها
+                با min-content=116 جمعنشدنی بودند و کلِ کسریِ ۱۵px رویِ پیلِ
+                روز میریخت — لهشدن به ۴px و برچسبِ نامرئیِ روزِ اوج (سنجشِ
+                زنده: kids=[16,116,4]). میلهها ۹۶ شد (بودجهٔ کامل ۱۴۳ ≤ ۱۴۸)
+                و پیل shrink-0 گرفت — دیگر هیچ ستونی کسری ندارد و لیبلِ روز
+                محافظت شده است. هدفِ روزانه هم با همان یکمنبع (۹۶) مقیاس شد. */}
             <div className="relative" style={{ height: 148 }}>
               {/* goal line */}
               <div
                 className="absolute inset-x-0 border-t border-dashed border-stone-300"
-                style={{ bottom: `${(goalPct / 100) * 116 + 26}px` }}
+                style={{ bottom: `${(goalPct / 100) * 96 + 26}px` }}
               >
                 <span className="absolute -top-2.5 left-0 rounded-full bg-stone-100 px-1.5 py-0.5 text-[9.5px] font-bold text-stone-500">
                   هدف روزانه
@@ -112,7 +119,7 @@ export default function WeeklyChart() {
 
               <div className="absolute inset-0 flex items-end justify-between gap-1.5 px-0.5 sm:gap-3">
                 {days.map((d, i) => {
-                  const totalH = (d.total / maxVal) * 116;
+                  const totalH = (d.total / maxVal) * 96;
                   const quizH = d.total ? (d.quizzes / d.total) * totalH : 0;
                   const reviewH = totalH - quizH;
                   return (
@@ -122,7 +129,7 @@ export default function WeeklyChart() {
                         {d.total > 0 ? faNum(d.total) : ""}
                       </div>
                       {/* bars */}
-                      <div className="relative flex w-full max-w-[38px] flex-col justify-end" style={{ height: 116 }}>
+                      <div className="relative flex w-full max-w-[38px] flex-col justify-end" style={{ height: 96 }}>
                         <motion.div
                           initial={{ height: 0 }}
                           animate={{ height: Math.max(quizH, 0) }}
@@ -150,7 +157,7 @@ export default function WeeklyChart() {
                           هم بیکلمپ جا شود. */}
                       <div
                         title={d.isToday ? undefined : d.weekday}
-                        className={`mt-2 max-w-full truncate rounded-full px-1 py-0.5 text-[10px] font-bold ${
+                        className={`mt-2 max-w-full shrink-0 truncate rounded-full px-1 py-0.5 text-[10px] font-bold ${
                           d.isToday
                             ? "bg-emerald-600 text-white shadow-sm"
                             : "text-stone-500"

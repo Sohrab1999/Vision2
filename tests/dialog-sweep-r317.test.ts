@@ -13,6 +13,11 @@ import { join } from "node:path";
  *    (popoverها با Escape بسته میشوند: wrapperِ radix از DOM میرود، data-state خالی میشود).
  * r322 — طبقهبند حالا شش کلاسِ مشروع میداند: پنجمِ deco_bleed (r318) و ششمِ
  * sheen_bleed (درخشِ متحرکِ badge-shine — ناپایدارِ زمانی با امضای قطعیِ پزودو).
+ * r324 — طبقهٔ عمودی هم بزرگ شد: کاندیداهایِ بنجلِ over≤3 که در رانهایِ r322/r323
+ * ثبت و در r324 پایدار شدند، هرکدام امضایِ قطعی گرفتند — truncate_slack (پیلِ
+ * تکخطیِ truncate: اسلکِ line-box)، leading_none (عددِ leading-none: اسلکِ
+ * متریکِ فونت)، ping_wave (نقطهٔ شاخصِ 8px با موجِ مطلقِ متحرک) — و دوقلویِ
+ * عمودیِ transform (جابجاییِ translateYِ whileInViewِ سکو) هم شناخته شد.
  */
 
 const sweepJs = readFileSync(join(process.cwd(), "scripts", "r317-sweep.js"), "utf8");
@@ -42,6 +47,26 @@ describe("dialog sweep r317 — the clean-paper contract reaches every dialog", 
     expect(sweepJs).toContain('"hidden_clip"');
     // sr_only در هر دو محور شناخته میشود — دو شاخه
     expect(sweepJs.split('"sr_only"').length - 1).toBe(2);
+    // r324 — چهار کلاسِ عمودیِ تازه (بنجلهایِ over≤3 حالا قراردادند)
+    expect(sweepJs).toContain('"truncate_slack"');
+    expect(sweepJs).toContain('"leading_none"');
+    expect(sweepJs).toContain('"ping_wave"');
+    // transform در هر دو محور: افقی (scale — r316) + عمودی (translateYِ سکو — r324)
+    expect(sweepJs.split('"transform"').length - 1).toBe(2);
+    // امضاهایِ قطعیِ کلاسهایِ r324
+    expect(sweepJs).toContain("cs.textOverflow === \"ellipsis\" &&");
+    expect(sweepJs).toContain("Math.abs(lh - fs) <= 0.5");
+    expect(sweepJs).toContain("kc.position === \"absolute\" && kc.animationName !== \"none\"");
+    expect(sweepJs).toContain("transformDisplacedY");
+    // زنجیره: کلاسهایِ r324 پیش از fallbackِ hidden_clip میآیند
+    const slack = sweepJs.indexOf('"truncate_slack"');
+    const none = sweepJs.indexOf('"leading_none"');
+    const wave = sweepJs.indexOf('"ping_wave"');
+    const clip = sweepJs.indexOf('"hidden_clip"', sweepJs.indexOf("nearestVCliip(el)"));
+    expect(slack).toBeGreaterThan(-1);
+    expect(none).toBeGreaterThan(slack);
+    expect(wave).toBeGreaterThan(none);
+    expect(clip).toBeGreaterThan(wave);
   });
 
   it("sweep covers all seven dialog surfaces across three phases", () => {
