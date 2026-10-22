@@ -843,8 +843,12 @@ describe("globals.css track semantic layer (stone-200 alphas — Task 90)", () =
     // راند ۲۲۳: همان چیپ با کارتِ مشترکِ جدول به word-family-table-card مهاجرت کرد — جمع ثابت ۶
     // راند ۲۲۶: نوارِ ناوبریِ «قبلی/بعدی» کارت‌های ضمیمه +۱ — جمع ۷
     // راند ۲۲۷: پانوشتِ ناوبریِ جدول‌های «اجزای کلماتی» در word-family-table-card +۱ — جمع ۸
-    expect(n60, "c-track-60 consumers").toBe(2);
-    expect(n70, "c-track-70 consumers").toBe(8);
+    // راند ۳۰۴: خانه‌های خالیِ نوارِ ماه‌نامهٔ خواندن در نوارِ کتاب‌خانهٔ هفته‌نامه +۱
+    //   (سطحِ صفرِ گریدِ ۳۰روزه؛ تاریکش با painterِ report-digest موجود — جمع ۳)
+    expect(n60, "c-track-60 consumers").toBe(3);
+    // راند ۳۰۴: trackِ نوارِ رکوردِ زنجیره در کارتِ «ادامهٔ خواندن»ِ خانه +۱
+    //   (جایگزینِ raw bg-stone-200/70 که ماتریسِ استثنا میبرد — جمع ۹)
+    expect(n70, "c-track-70 consumers").toBe(9);
     expect(n80, "c-track-80 consumers").toBe(2);
   });
 

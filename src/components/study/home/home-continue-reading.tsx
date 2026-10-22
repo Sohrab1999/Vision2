@@ -207,6 +207,45 @@ export default function HomeContinueReading() {
             />
           </div>
         </div>
+
+        {/* r304 — نوارِ رکوردِ زنجیره: جاری در برابرِ رکورد (چالشِ «به رکورد برس»).
+            از ۲ روزِ سابقه ظاهر میشود (یک روز = نویز)؛ مسدودِ بلوکی زیرِ نوارِ
+            پیشرفت است — هیچ flex-1 با آن هم‌سطر نیست (درسِ هندسهٔ r300).
+            ۰ از N هم صادق است: زنجیرهٔ شکسته دعوتِ بازگشت میشود. */}
+        {streak.longest >= 2 && (
+          <div className="mt-2.5">
+            <div className="mb-1 flex items-center gap-1 text-[10px] font-black text-stone-500">
+              <Flame
+                size={10}
+                aria-hidden
+                className={streak.current > 0 && streak.current >= streak.longest ? "text-amber-500" : "text-stone-500"}
+              />
+              <span aria-label={`رکوردِ زنجیرهٔ خواندن: ${faNum(streak.longest)} روز`}>
+                {streak.current >= streak.longest
+                  ? `به رکورد رسیدی — ${faNum(streak.longest)} روز`
+                  : `${faNum(streak.current)} از ${faNum(streak.longest)} روزِ رکورد`}
+              </span>
+            </div>
+            <div
+              className="c-track-70 h-1.5 overflow-hidden rounded-full"
+              role="progressbar"
+              aria-valuenow={streak.current}
+              aria-valuemin={0}
+              aria-valuemax={streak.longest}
+            >
+              <motion.div
+                initial={{ width: 0 }}
+                animate={{ width: `${Math.min(100, Math.round((streak.current / streak.longest) * 100))}%` }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: 0.15 }}
+                className={`h-full rounded-full ${
+                  streak.current >= streak.longest
+                    ? "bg-gradient-to-l from-amber-400 to-amber-500"
+                    : "bg-amber-400"
+                }`}
+              />
+            </div>
+          </div>
+        )}
       </div>
     </motion.section>
   );

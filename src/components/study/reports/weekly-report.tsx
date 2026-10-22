@@ -22,6 +22,7 @@ import { downloadWeeklyImage } from "@/lib/result-image";
 import { downloadProgressCsv, downloadWeeklyTrendCsv } from "@/lib/progress-csv";
 import { storiesReadSince } from "@/lib/library-progress";
 import { storyStreak } from "@/lib/library-streak";
+import { monthReads } from "@/lib/library-month";
 import { storyById, HILL_TOTAL_STORIES } from "@/data/hill-stories";
 import { useToast } from "@/hooks/use-toast";
 
@@ -123,6 +124,9 @@ export default function WeeklyReportSection() {
   // r302 — دومین مصرفِ library-streak: رکوردِ زنجیره در کنارِ شمارشِ هفته
   // (منبعِ یگانه با چیپِ کارتِ ادامهٔ خواندن؛ longestِ r301 بالاخره مصرف)
   const readStreak = useMemo(() => storyStreak(dayHistory, daysAgoKey(0)), [dayHistory]);
+  // r304 — ماه‌نامهٔ خواندن: نگاهِ ۳۰روزه به داستان‌ها (همان منبعِ یگانه؛
+  // dayHistory.stories) — نوارِ ۳۰خانه‌ای داخلِ نوارِ کتاب‌خانه
+  const month = useMemo(() => monthReads(dayHistory, daysAgoKey(0)), [dayHistory]);
   // r284 — the badge band: the weekly digest answers «این هفته چطور بود؟»؛
   // نشان‌ها جوابِ «تا کجا رسیده‌ام؟»اند — همان ارزیابیِ واحدِ رجیستری (buildEvalInput)
   // که گرید و کارنامهٔ رسمی مصرف میکنند؛ منبعِ یگانه، هیچ ارزیابیِ موازی‌ای.
@@ -407,6 +411,52 @@ export default function WeeklyReportSection() {
                 ? ` · رکورد: ${faNum(readStreak.longest)} روز`
                 : ""}
             </span>
+          </div>
+        )}
+        {/* r304 — ماه‌نامهٔ خواندن: نوارِ ۳۰روزه (شاملِ امروز)؛ کهنه در راست
+            (جریانِ زمانِ RTL)، امروز در چپ با حلقه؛ بی‌سابقه مخفی (سیاستِ r302).
+            گریدِ ۳۰ستونیِ minmax(0,1fr) — در ۳۹۰px هر خانه ~۹px، بی‌سرریز.
+            خانه‌ها با utilitiesِ همین‌جا (درسِ بودجهٔ سلکتورِ r304: خانوادهٔ
+            تازه = CSSِ تازه نیست؛ سطحِ خالی از کلاسِ trackِ معنایی است و
+            تاریکش با kernel)؛ data-level صرفاً قلابِ QA است. */}
+        {!month.empty && (
+          <div className="mt-1.5">
+            <div className="flex flex-wrap items-center gap-1.5 text-[10px] font-bold leading-5 text-stone-500">
+              <CalendarClock size={11} aria-hidden className="text-amber-600" />
+              <span>
+                {`ماهِ گذشته: ${faNum(month.total)} داستان در ${faNum(month.activeDays)} روز`}
+                {month.best && month.best.count > 1
+                  ? ` · پرکارترین: ${faNum(month.best.count)} داستان`
+                  : ""}
+              </span>
+            </div>
+            <div
+              className="mt-1 grid h-2 gap-[2px]"
+              style={{ gridTemplateColumns: "repeat(30, minmax(0, 1fr))" }}
+              role="img"
+              aria-label={`ماه‌نامهٔ خواندن: ${faNum(month.total)} داستان در ${faNum(month.activeDays)} روزِ فعال`}
+            >
+              {month.perDay.map((d) => {
+                const today = d.day === daysAgoKey(0);
+                return (
+                  <span
+                    key={d.day}
+                    title={`${d.day} · ${faNum(d.count)} داستان`}
+                    data-level={d.count >= 3 ? "3" : String(d.count)}
+                    data-today={today ? "1" : undefined}
+                    className={`rounded-[2px] ${
+                      d.count >= 3
+                        ? "bg-amber-600 dark:bg-amber-500"
+                        : d.count === 2
+                          ? "bg-amber-400 dark:bg-amber-400/60"
+                          : d.count === 1
+                            ? "bg-amber-200 dark:bg-amber-200/35"
+                            : "c-track-60"
+                    }${today ? " ring-1 ring-inset ring-amber-700/55 dark:ring-amber-300/70" : ""}`}
+                  />
+                );
+              })}
+            </div>
           </div>
         )}
         {weekReads.count === 0 ? (
