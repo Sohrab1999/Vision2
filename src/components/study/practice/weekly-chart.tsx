@@ -7,7 +7,7 @@ import { useStudy, lastNDays } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
 import { faDayLabel } from "@/lib/weekly-digest";
-import { daysAgoKey } from "@/state/day-engine";
+import { daysAgoKey, FA_WEEKDAY_INITIAL } from "@/state/day-engine";
 import { storiesReadSince } from "@/lib/library-progress";
 
 /**
@@ -142,14 +142,28 @@ export default function WeeklyChart() {
                         )}
                       </div>
                       {/* weekday */}
+                      {/* r321 — پیلِ روز: در ۳۹۰px ستونها ۳۹pxاند و پیلِ نامِ کامل
+                          (بدونِ کفِ عرضی در flex-col + items-center) تا ۴۹px باز
+                          میشد و با همسایه تصادف میکرد (سنجشِ زنده). موبایل حرفِ
+                          ابتدایِ رسمیِ تقویمها؛ دسکتاپ با sm: نامِ کامل؛ کفِ
+                          max-w-full + tooltipِ نامِ کامل؛ px-1 تا «امروز»یِ ۴۰px
+                          هم بیکلمپ جا شود. */}
                       <div
-                        className={`mt-2 truncate rounded-full px-1.5 py-0.5 text-[10px] font-bold ${
+                        title={d.isToday ? undefined : d.weekday}
+                        className={`mt-2 max-w-full truncate rounded-full px-1 py-0.5 text-[10px] font-bold ${
                           d.isToday
                             ? "bg-emerald-600 text-white shadow-sm"
                             : "text-stone-500"
                         }`}
                       >
-                        {d.isToday ? "امروز" : d.weekday}
+                        {d.isToday ? (
+                          "امروز"
+                        ) : (
+                          <>
+                            <span className="sm:hidden">{FA_WEEKDAY_INITIAL[d.weekday] ?? d.weekday}</span>
+                            <span className="hidden sm:inline">{d.weekday}</span>
+                          </>
+                        )}
                       </div>
                     </div>
                   );

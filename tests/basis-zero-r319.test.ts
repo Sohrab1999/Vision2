@@ -19,9 +19,11 @@ import { join } from "node:path";
 //   جزوهٔ L10        | ۱                     | ۱      | ۰
 //   نبرد (setup)     | ۱                     | ۱      | ۰
 //
-//   مرزِ پوشش (صادقانه): نماهایِ میانهٔ نبرد (rush/spell/done) و کارتِ نصبِ pwa
-//   بهشرطِ رخدادِ مرورگر رندر میشوند؛ اولی زیرِ پوششِ طبقهبندِ عمومیِ r317 است،
+//   مرزِ پوششِ صادقانه (به‌روزِ r321): نماهایِ میانهٔ نبرد (rush/spell/done) و کارتِ نصبِ pwa
+//   بهشرطِ رخدادِ مرورگر رندر میشوند؛ اولی زیرِ پوششِ طبقهبندِ عمومیِ r317/ممیزیِ زندهٔ r320 است،
 //   دومی هندسیاً سالم است (تنها یک خواهرِ shrink-0 — فضایِ آزادِ منفی ناممکن).
+//   r321: بازدیدِ دوازدهم اضافه شد — home با پیشرفت (پنلهایِ hasProgress با seedِ تازه
+//   رندر نمیشوند؛ نمودارِ هفتگیِ همان پنل دامِ پیلِ روز را پنهان کرده بود).
 
 const auditJs = readFileSync(join(process.cwd(), "scripts", "r319-basis-zero-audit.js"), "utf8");
 const driverSh = readFileSync(join(process.cwd(), "scripts", "qa-r319-basis-zero.sh"), "utf8");
@@ -48,10 +50,11 @@ describe("basis-zero audit r319 — the flex-basis-zero trap is contained app-wi
     expect(auditJs).not.toContain(".min-w-0.flex-1");
   });
 
-  it("driver visits 11 measured surfaces with real navigation in one session", () => {
+  it("driver visits 12 measured surfaces with real navigation in one session", () => {
     // my-words برچسبِ بلند دارد — پیشوندی قفل میشود؛ بقیه exact
     const needles = [
       'audit "home"',
+      'audit "home-progress"',
       'audit "duel"',
       'audit "palette"',
       'audit "profile"',
@@ -64,6 +67,9 @@ describe("basis-zero audit r319 — the flex-basis-zero trap is contained app-wi
       'audit "home-dark"',
     ];
     for (const v of needles) expect(driverSh).toContain(v);
+    // درسِ r321: نسخهٔ home با پیشرفت، دوباره یادگیرندهٔ ساده برمیگرداند
+    expect(driverSh).toContain("known:{book:true}");
+    expect(driverSh).toContain("delete s.state.known");
     // ناوبریِ واقعیِ همان ابزارهای r318 (کلیکِ کارت/قفسه) — نه dispatchِ خام
     expect(driverSh).toContain("click_tool");
     expect(driverSh).toContain("open_spine");

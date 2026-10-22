@@ -45,6 +45,16 @@ echo "########## LIGHT 390 ##########" | tee -a "$OUT"
 audit "home"
 shot r319-home-390.png
 
+# --- home با پیشرفت (درسِ r321: پنلهایِ hasProgress با seedِ تازه رندر نمیشوند —
+# نمودارِ هفتگی فقط برایِ یادگیرندهٔ دارایِ پیشرفت میآید و r319 آن را ندیده بود؛
+# همان پنل دامِ پیلِ روز را پنهان کرده بود) ---
+agent-browser eval "(()=>{const s=JSON.parse(localStorage.getItem('vision2-study-v1')||'{}');s.state={...(s.state||{}),known:{book:true}};localStorage.setItem('vision2-study-v1',JSON.stringify(s));location.reload();return 'progress-seeded';})()" >/dev/null 2>&1
+sleep 3.5
+audit "home-progress"
+shot r319-home-progress-390.png
+agent-browser eval "(()=>{const s=JSON.parse(localStorage.getItem('vision2-study-v1')||'{}');delete s.state.known;localStorage.setItem('vision2-study-v1',JSON.stringify(s));location.reload();return 'plain-again';})()" >/dev/null 2>&1
+sleep 3
+
 dispatch "open-duel"; sleep 1.8
 audit "duel"
 reload
