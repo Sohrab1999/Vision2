@@ -32,6 +32,7 @@ import {
   daysAgoKey,
 } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
+import { storyStreak } from "@/lib/library-streak"; // r303 — استریکِ کتابخوانی (قراردادِ r301)
 import { useEscape } from "@/hooks/use-keyboard";
 import { faNum } from "@/lib/study-theme";
 import { LESSONS_META, TOTAL_VOCABULARY } from "@/data/lesson-meta";
@@ -118,6 +119,11 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
   const dayStat = useStudy((s) => s.dayStat);
   const userName = useStudy((s) => s.userName);
   const libraryDone = useStudy((s) => s.libraryDone) ?? {}; // r298 — خانوادهٔ کتاب‌خوان
+  // r303 — استریکِ کتابخوانی در سربرگِ کارنامهٔ رسمی (سطحِ چهارمِ عرضه؛
+  // گاردِ ?? داخلِ memo — مرجعِ پایدار، درسِ r298)
+  const dayHistoryRaw = useStudy((s) => s.dayHistory);
+  const dayHistory = useMemo(() => dayHistoryRaw ?? {}, [dayHistoryRaw]);
+  const readStreak = useMemo(() => storyStreak(dayHistory, daysAgoKey(0)), [dayHistory]);
   const seenBadges = useStudy((s) => s.seenBadges); // r282 — خانوادهٔ هویت
   const userId = useStudy((s) => s.userId);
 
@@ -405,6 +411,26 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
               <Flame size={13} className="text-orange-500" />
               زنجیرهٔ فعلی: <span className="font-black">{faNum(streak)} روز</span>
             </span>
+            {/* r303 — زنجیرهٔ خواندن: فقط با سابقه (سیاستِ بوم‌محورِ r302)؛
+                هم‌خانوادهٔ چیپِ خانه، سطرِ هفته‌نامه و خطِ کارتِ PNG */}
+            {(readStreak.current > 0 || readStreak.longest > 0) && (
+              <span className="flex items-center gap-1.5">
+                <Flame
+                  size={13}
+                  className={readStreak.current > 0 && readStreak.readToday ? "text-amber-500" : "text-stone-500"}
+                />
+                {readStreak.current > 0 ? (
+                  <>
+                    زنجیرهٔ خواندن: <span className="font-black">{faNum(readStreak.current)} روز</span>
+                    {readStreak.longest > readStreak.current && (
+                      <span className="font-bold text-stone-500">(رکورد: {faNum(readStreak.longest)})</span>
+                    )}
+                  </>
+                ) : (
+                  <span className="font-bold text-stone-500">رکوردِ خواندن: {faNum(readStreak.longest)} روز</span>
+                )}
+              </span>
+            )}
           </div>
 
           {/* performance summary */}

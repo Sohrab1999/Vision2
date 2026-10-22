@@ -792,6 +792,10 @@ export interface WeeklyImageOpts {
   /** r298 — داستان‌های خوانده‌شدهٔ این هفته (شمارشِ storiesReadSince).
    * فقط وقتی کتاب‌خانه فعال است فرستاده می‌شود — بی‌کتاب‌خانه چیپِ صفرِ ساختگی نیست. */
   storiesWeek?: number;
+  /** r303 — استریکِ کتابخوانی روی کارت (قراردادِ خالصِ library-streakِ r301).
+   * فقط با سابقه فرستاده میشود (current>0 || longest>0 — سیاستِ بوم‌محورِ r302)؛
+   * بی‌سابقه خطِ صفرِ ساختگی زیرِ حلقه نمی‌نشیند. */
+  storiesStreak?: { current: number; longest: number };
   /** r285 — نشانهای بازِ همان ارزیابیِ واحدِ هفتهنامه (title+tier) — الزامی:
    * کارتِ هم‌رسانی هم باید به «تا کجا رسیده‌ام؟» جواب بدهد؛ سرشماریِ
    * زمان-کامپایل مجریِ تغذیه است (الگویِ buildEvalInputِ r282). */
@@ -956,6 +960,23 @@ async function weeklyCanvas(opts: WeeklyImageOpts): Promise<HTMLCanvasElement | 
       ctx.fillStyle = uiColors.emerald[600];
       ctx.font = `900 22px ${family}`;
       ctx.fillText(`زنجیرهٔ ${faNum(opts.streak)} روزه`, W - 90, 350);
+    }
+
+    // ---------- r303: استریکِ کتابخوانی — زیرِ حلقهٔ هدف، راست‌چینِ همان ستون
+    // بی‌سابقه مخفی (سیاستِ r302)؛ رنگِ کهربایی هم‌خانوادهٔ چیپِ کارتِ خانه
+    if (opts.storiesStreak && (opts.storiesStreak.current > 0 || opts.storiesStreak.longest > 0)) {
+      const ss = opts.storiesStreak;
+      const line =
+        ss.current > 0
+          ? `زنجیرهٔ خواندن — ${faNum(ss.current)} روز${ss.longest > ss.current ? ` · رکورد: ${faNum(ss.longest)} روز` : ""}`
+          : ss.longest > 1
+            ? `زنجیرهٔ خواندن قطع شده · رکورد: ${faNum(ss.longest)} روز`
+            : "با یک داستان، زنجیرهٔ خواندن را بساز";
+      ctx.direction = "rtl";
+      ctx.textAlign = "right";
+      ctx.fillStyle = uiColors.amber[600];
+      ctx.font = `900 21px ${family}`;
+      ctx.fillText(truncate(ctx, line, 360), W - 90, 482);
     }
 
     // ---------- goal ring (روزهای هدف از ۷) ----------

@@ -238,6 +238,11 @@ export default function WeeklyReportSection() {
       // r298 — چیپِ داستان روی کارتِ PNG: فقط با کتاب‌خانهٔ فعال (صفرِ صادق
       // برای خوانندهٔ این‌هفته‌بی‌داستان؛ غایب برای بی‌کتاب‌خانه)
       storiesWeek: Object.keys(libraryDone).length > 0 ? weekReads.count : undefined,
+      // r303 — استریکِ کتابخوانی روی کارت: فقط با سابقه (سیاستِ بوم‌محورِ r302)
+      storiesStreak:
+        readStreak.current > 0 || readStreak.longest > 0
+          ? { current: readStreak.current, longest: readStreak.longest }
+          : undefined,
       duelLine:
         d && d.thisWeek > 0
           ? `${faNum(d.thisWeek)}${d.truncated ? "+" : ""} نبرد واژگانی این هفته — ${faNum(d.win)} برد، ${faNum(d.loss)} باخت${d.tie > 0 ? `، ${faNum(d.tie)} مساوی` : ""}`
