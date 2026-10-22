@@ -70,7 +70,10 @@ describe("دونات پیشرفت واژگان — قفسهٔ دوازده‌د�
     expect(ring600("amber")).toBe("#d97706");
     expect(ring600("rose")).toBe("#e11d48");
     expect(ring600("emerald")).toBe("#059669");
-    expect(ring600("stone")).toBe("#059669"); // پیش‌فرضِ تاریخی
-    expect(ring600("unknown-family")).toBe("#059669");
+    // r308 — سنگ دیگر «خانوادهٔ ناشناخته» نیست: برچسبِ «ماه‌نامهٔ خواندن»
+    // روی کارتِ PNG آینهٔ text-stone-600 است و ۶۰۰یِ سنگ به پالتِ بوم
+    // سنجاق شد — ring600 دیگر زمردیِ پیشفرض را برایش نمیسازد.
+    expect(ring600("stone")).toBe("#57534e");
+    expect(ring600("unknown-family")).toBe("#059669"); // پیشفرضِ تاریخی — فقط برایِ ناشناختهٔ واقعی
   });
 });

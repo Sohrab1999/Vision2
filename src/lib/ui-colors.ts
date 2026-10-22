@@ -24,9 +24,11 @@ export const uiColors = {
     300: "#d6d3d1",
     400: "#a8a29e",
     500: "#78716c",
+    600: "#57534e",
     900: "#1c1917",
   },
   emerald: {
+    200: "#a7f3d0",
     500: "#10b981",
     600: "#059669",
     700: "#047857",
@@ -102,6 +104,7 @@ export const uiColors = {
     600: "#0891b2",
   },
   lime: {
+    400: "#a3e635",
     700: "#4d7c0f",
   },
 } as const;
@@ -123,6 +126,12 @@ export type UiColors = typeof uiColors;
  * چیپهای تیرِ نوارِ نشانها روی کارتهای بوم (WEEKLY_TIER_CHIP در result-image):
  * همان ۹hexِ `or-chip-bronze|silver|gold` در globals.css:1205 — تست
  * weekly-badge-image-r285 تطبیقِ دوطرف را قفل میکند تا بوم و DOM هرگز واگرا نشوند.
+ *
+ * راند ۳۰۸ — نوارِ ۱۴روزهٔ هفته روی کارتِ PNGِ هفته‌نامه (آینهٔ نوارِ DOMِ
+ * weekly-report): lime[400] و emerald[200] دو سرِ همان کلاسهای DOM —
+ * گرادیانِ `from-teal-600 via-emerald-500 to-lime-400` و خالیِ این‌هفتهٔ
+ * `bg-emerald-200/60` (روی بوم با globalAlpha 0.6). hexها عینِ مقیاسِ
+ * تیلویندند — کپیِ کور ممنوع، سنجاقِ آگاهه.
  */
 export function ring600(color: string): string {
   const fam = (uiColors as Record<string, Record<number, string | undefined> | undefined>)[color];

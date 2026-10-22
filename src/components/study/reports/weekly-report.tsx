@@ -264,6 +264,13 @@ export default function WeeklyReportSection() {
     // r307 — نوارِ ۳۰خانه‌ای روی کارت: همان perDayِ ماه‌نامه (کهنه→امروز)؛
     // فقط همراهِ storiesMonth — بدونِ سابقه نوارِ صفرِ ساختگی نیست
     storiesMonthPerDay: !month.empty ? month.perDay.map((d) => d.count) : undefined,
+    // r308 — نوارِ ۱۴روزهٔ هفته روی کارت: همان فرمولِ نوارِ DOM (جمعِ ۵
+    // خانواده؛ داستان جدا در چیپ) با inThisWeekِ صریح — همیشه تغذیه میشود
+    // (فعالیتِ صفرِ صادق، هم‌قراردادِ چیپها)
+    weekPerDay: digest.perDay.map((p) => ({
+      total: p.stat.reviews + p.stat.quizzes + p.stat.words + p.stat.dictation + p.stat.rush,
+      inThisWeek: p.inThisWeek,
+    })),
     duelLine:
       digest.duels && digest.duels.thisWeek > 0
         ? `${faNum(digest.duels.thisWeek)}${digest.duels.truncated ? "+" : ""} نبرد واژگانی این هفته — ${faNum(digest.duels.win)} برد، ${faNum(digest.duels.loss)} باخت${digest.duels.tie > 0 ? `، ${faNum(digest.duels.tie)} مساوی` : ""}`

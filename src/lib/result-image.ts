@@ -805,6 +805,13 @@ export interface WeeklyImageOpts {
    * آینهٔ نوارِ DOMِ r304 با همان رنگ‌هایِ سطحی و جریانِ زمانِ RTL.
    * فقط همراهِ storiesMonth فرستاده میشود؛ بدونِ آن نوارِ صفرِ ساختگی نیست. */
   storiesMonthPerDay?: number[];
+  /** r308 — نوارِ ۱۴روزهٔ هفته (خودِ perDayِ دایجست — جمعِ ۵ خانواده؛ داستان
+   * جدا در چیپِ خودش): کهنه→امروز. inThisWeek مرزِ دو هفته را صریح میگوید —
+   * هیچ حسابِ ایندیکسِ هفتگی روی کارت نیست. برخلافِ خانوادهٔ داستان همیشه
+   * تغذیه میشود: فعالیتِ صفرِ صادق هم‌قراردادِ چیپهاست (سیاستِ بوم‌محورِ r302
+   * مخصوصِ داستانهاست — بی‌کتاب‌خانه با بی‌فعالیت یکی نیست). گاردِ length===14:
+   * یا نوارِ کامل یا هیچ (درسِ r307 — دادهٔ ناقص نوارِ نصفه‌نیمه نمیسازد). */
+  weekPerDay?: { total: number; inThisWeek: boolean }[];
   /** r285 — نشانهای بازِ همان ارزیابیِ واحدِ هفتهنامه (title+tier) — الزامی:
    * کارتِ هم‌رسانی هم باید به «تا کجا رسیده‌ام؟» جواب بدهد؛ سرشماریِ
    * زمان-کامپایل مجریِ تغذیه است (الگویِ buildEvalInputِ r282). */
@@ -945,11 +952,11 @@ async function weeklyCanvas(opts: WeeklyImageOpts): Promise<HTMLCanvasElement | 
     if (typeof document === "undefined") return null;
     const canvas = document.createElement("canvas");
     canvas.width = 1080;
-    canvas.height = 796; // r307 — +۲۰px دیگر برایِ نوارِ ۳۰خانه‌ایِ ماه‌نامه
+    canvas.height = 920; // r308 — +۱۲۴px: نوارِ ۱۴روزهٔ هفته زیرِ چیپها + برچسبِ «ماه‌نامهٔ خواندن» بالایِ نوارِ ۳۰خانه‌ای
     const ctx = canvas.getContext("2d");
     if (!ctx) return null;
     const W = 1080;
-    const H = 796;
+    const H = 920;
     studyShell(ctx, W, H, family, false);
 
     // ---------- title ----------
@@ -959,6 +966,34 @@ async function weeklyCanvas(opts: WeeklyImageOpts): Promise<HTMLCanvasElement | 
     ctx.fillStyle = uiColors.stone[900];
     ctx.font = `800 34px ${family}`;
     ctx.fillText("هفته‌نامهٔ پیشرفت", W - 90, 192);
+
+    // ---------- goal ring (روزهای هدف از ۷) ----------
+    // r308 — ترتیبِ رنگ: حلقه پیش از نام/زیرعنوان کشیده میشود — کمانِ سنگِ ۱۰۰
+    // رویِ متنِ تیره نمی‌نشیند (نقصِ بصریِ پیشینیِ r285؛ صفرِ تغییرِ هندسه).
+    const cx = W - 90 - 105;
+    const cy = 350;
+    const r = 105;
+    ctx.lineWidth = 20;
+    ctx.lineCap = "round";
+    ctx.strokeStyle = uiColors.stone[100];
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.stroke();
+    const pct = Math.max(0, Math.min(7, opts.goalDays)) / 7;
+    const ring = ctx.createLinearGradient(cx - r, cy - r, cx + r, cy + r);
+    ring.addColorStop(0, uiColors.emerald[500]);
+    ring.addColorStop(1, uiColors.teal[600]);
+    ctx.strokeStyle = ring;
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, Math.PI / 2, Math.PI / 2 + Math.PI * 2 * pct);
+    ctx.stroke();
+    ctx.textAlign = "center";
+    ctx.fillStyle = uiColors.stone[900];
+    ctx.font = `900 52px ${family}`;
+    ctx.fillText(`${faNum(Math.round(pct * 100))}٪`, cx, cy - 10);
+    ctx.fillStyle = uiColors.stone[500];
+    ctx.font = `700 21px ${family}`;
+    ctx.fillText(`${faNum(opts.goalDays)} از ${faNum(7)} روزِ هدف`, cx, cy + 38);
 
     // ---------- learner + streak ----------
     if (opts.userName) {
@@ -996,21 +1031,78 @@ async function weeklyCanvas(opts: WeeklyImageOpts): Promise<HTMLCanvasElement | 
       ctx.fillText(truncate(ctx, line, 360), W - 90, 482);
     }
 
-    // ---------- r305: سطرِ ماه‌نامهٔ خواندن — زیرِ خطِ استریک، آینهٔ سربرگِ DOM
+    // ---------- r308: نوارِ ۱۴روزهٔ هفته — زیرِ چیپها، آینهٔ نوارِ DOMِ هفته‌نامه ----------
+    // جریانِ LTRِ خودِ DOM (کهنه در چپ، امروز در راست با حلقهٔ زمردی) — نوارِ
+    // ماه‌نامه RTL است و این یکی LTR؛ هر دو از DOM کپی شدهاند نه از سلیقه.
+    // همان ارتفاعهای DOM: فعال ≥۱۰، خالی ۳، سقفِ ۴۴ بر پایهٔ بیشینهٔ پنجره؛
+    // رنگها: این‌هفته = گرادیانِ teal-600→emerald-500→lime-400، هفتهٔ پیش =
+    // سنگِ ۳۰۰، خالی = همان کلاسهای DOM با آلفا (emerald-200/60 · c-track-60).
+    if (opts.weekPerDay && opts.weekPerDay.length === 14) {
+      const x0 = 90;
+      const bandW = 300; // هم‌ستونِ چیپها — نوارِ هفته پهنایِ ستونِ فعالیت را دارد
+      const gap = 3; // DOM: gap-[3px]
+      const cellW = Math.floor((bandW - 13 * gap) / 14); // ۱۸px — باقیمانده وسطِ نوار
+      const totalCellsW = 14 * cellW + 13 * gap;
+      const startX = x0 + Math.floor((bandW - totalCellsW) / 2);
+      const baseline = 572;
+      const maxTotal = Math.max(1, ...opts.weekPerDay.map((p) => p.total));
+      const grad = ctx.createLinearGradient(0, baseline, 0, baseline - 44);
+      grad.addColorStop(0, uiColors.teal[600]);
+      grad.addColorStop(0.5, uiColors.emerald[500]);
+      grad.addColorStop(1, uiColors.lime[400]);
+      for (let i = 0; i < 14; i++) {
+        const p = opts.weekPerDay[i] ?? { total: 0, inThisWeek: i >= 7 };
+        const h = Math.max(p.total > 0 ? 10 : 3, (p.total / maxTotal) * 44);
+        const cx2 = startX + i * (cellW + gap);
+        ctx.globalAlpha = p.total > 0 || p.inThisWeek ? 1 : 0.6;
+        ctx.fillStyle = p.inThisWeek
+          ? p.total > 0
+            ? grad
+            : uiColors.emerald[200]
+          : p.total > 0
+            ? uiColors.stone[300]
+            : uiColors.stone[200];
+        roundRect(ctx, cx2, baseline - h, cellW, h, h >= 8 ? 3 : 2);
+        ctx.fill();
+        ctx.globalAlpha = 1;
+        if (i === 13) {
+          // امروز — حلقهٔ زمردی (هم‌قراردادِ ring-emerald-500/60 در DOM)
+          ctx.strokeStyle = uiColors.emerald[500];
+          ctx.lineWidth = 1.5;
+          roundRect(ctx, cx2 - 0.75, baseline - h - 0.75, cellW + 1.5, h + 1.5, h >= 8 ? 3.5 : 2.5);
+          ctx.stroke();
+        }
+      }
+      // سطرِ برچسبِ DOM (۱۱px سنگِ ۵۰۰): چپ = پنجره، وسط = مرزِ دو هفته، راست = امروز
+      ctx.fillStyle = uiColors.stone[500];
+      ctx.font = `700 11px ${family}`;
+      ctx.textAlign = "left";
+      ctx.fillText("۱۴ روز اخیر", startX, 590);
+      ctx.textAlign = "center";
+      ctx.fillText("هفتهٔ پیش | این هفته", startX + totalCellsW / 2, 590);
+      ctx.textAlign = "right";
+      ctx.fillText("امروز", x0 + bandW, 590);
+    }
+
+    // ---------- r305/r308: برچسبِ «ماه‌نامهٔ خواندن» + سطرِ خلاصه + نوارِ ۳۰خانه‌ای ----------
     // فقط با سابقهٔ پنجره (storiesMonth فقط وقتی empty=false فرستاده میشود)؛
-    // سنگِ ۵۰۰ با وزنِ ۷۰۰ — از خطِ کهرباییِ استریک متمایز، هم‌خانوادهٔ DOM
+    // r308 — برچسبِ کوچکِ سربرگ (آینهٔ نامِ خانواده در aria و CSV) بالایِ سطرِ
+    // خلاصه نشست و هر سه با هم به زیرِ نوارِ هفته رفتند — گروهِ ماه‌نامه حالا
+    // یک بلوکِ کامل است: نام → عدد → خانهها.
     if (opts.storiesMonth && opts.storiesMonth.total > 0) {
       const sm = opts.storiesMonth;
+      ctx.direction = "rtl";
+      ctx.textAlign = "right";
+      ctx.fillStyle = uiColors.stone[600];
+      ctx.font = `800 15px ${family}`;
+      ctx.fillText("ماه‌نامهٔ خواندن", W - 90, 614);
       const line =
         `ماهِ گذشته: ${faNum(sm.total)} داستان در ${faNum(sm.activeDays)} روز` +
         (sm.bestCount > 1 ? ` · پرکارترین: ${faNum(sm.bestCount)} داستان` : "");
-      ctx.direction = "rtl";
-      ctx.textAlign = "right";
       ctx.fillStyle = uiColors.stone[500];
       ctx.font = `700 17px ${family}`;
-      ctx.fillText(truncate(ctx, line, 560), W - 90, 512);
+      ctx.fillText(truncate(ctx, line, 560), W - 90, 638);
     }
-
     // ---------- r307: نوارِ ۳۰خانه‌ایِ ماه‌نامه — آینهٔ نوارِ DOMِ r304 ----------
     // جریانِ زمانِ RTL: کهنه‌ترین خانه در راست، امروز در چپ با حلقهٔ کهربایی؛
     // همان رنگ‌هایِ سطحیِ DOM (۳=کهربا۶۰۰، ۲=کهربا۴۰۰، ۱=کهربا۲۰۰، خالی=سنگ۲۰۰)
@@ -1022,7 +1114,7 @@ async function weeklyCanvas(opts: WeeklyImageOpts): Promise<HTMLCanvasElement | 
       const cellW = Math.floor((bandW - 29 * gap) / 30); // ۲۹px — باقیمانده وسطِ نوار
       const totalCellsW = 30 * cellW + 29 * gap;
       const startX = x0 + Math.floor((bandW - totalCellsW) / 2);
-      const yStrip = 526;
+      const yStrip = 654;
       for (let i = 0; i < 30; i++) {
         // RTL: کهنه در راست — خانهٔ iام (کهنه→امروز) از راستِ نوار می‌شماریم
         const cx2 = startX + totalCellsW - (i + 1) * cellW - i * gap;
@@ -1041,35 +1133,10 @@ async function weeklyCanvas(opts: WeeklyImageOpts): Promise<HTMLCanvasElement | 
       }
     }
 
-    // ---------- goal ring (روزهای هدف از ۷) ----------
-    const cx = W - 90 - 105;
-    const cy = 350;
-    const r = 105;
-    ctx.lineWidth = 20;
-    ctx.lineCap = "round";
-    ctx.strokeStyle = uiColors.stone[100];
-    ctx.beginPath();
-    ctx.arc(cx, cy, r, 0, Math.PI * 2);
-    ctx.stroke();
-    const pct = Math.max(0, Math.min(7, opts.goalDays)) / 7;
-    const ring = ctx.createLinearGradient(cx - r, cy - r, cx + r, cy + r);
-    ring.addColorStop(0, uiColors.emerald[500]);
-    ring.addColorStop(1, uiColors.teal[600]);
-    ctx.strokeStyle = ring;
-    ctx.beginPath();
-    ctx.arc(cx, cy, r, Math.PI / 2, Math.PI / 2 + Math.PI * 2 * pct);
-    ctx.stroke();
-    ctx.textAlign = "center";
-    ctx.fillStyle = uiColors.stone[900];
-    ctx.font = `900 52px ${family}`;
-    ctx.fillText(`${faNum(Math.round(pct * 100))}٪`, cx, cy - 10);
-    ctx.fillStyle = uiColors.stone[500];
-    ctx.font = `700 21px ${family}`;
-    ctx.fillText(`${faNum(opts.goalDays)} از ${faNum(7)} روزِ هدف`, cx, cy + 38);
-
     // ---------- activity chips (خانواده‌های واقعیِ DayStat) ----------
     // r298 — چیپِ ششمِ «داستان» فقط با کتاب‌خانهٔ فعال می‌آید؛ با ۶ چیپ،
-    // ستون از y=190 شروع میشود تا زیرِ نوارِ نشانها (y=524) نجنجد.
+    // ستون از y=190 شروع میشود و r308 نوارِ ۱۴روزه (y=528..590) دقیقا
+    // زیرِ پایانهٔ چیپها (~۵۰۶) می‌نشیند — ستونِ فعالیت یک‌پارچه ماند.
     const chips: { label: string; value: number }[] = [
       { label: "مرور", value: opts.reviews },
       { label: "آزمون", value: opts.quizzes },
@@ -1100,23 +1167,24 @@ async function weeklyCanvas(opts: WeeklyImageOpts): Promise<HTMLCanvasElement | 
     ctx.textAlign = "center";
     ctx.direction = "rtl";
     ctx.font = `700 20px ${family}`;
-    // r307 — مرکزِ کارت ۱۶px دیگر پایین رفت (۵۴۴→۵۶۰) تا نوارِ ۳۰خانه‌ای نفس بکشد
+    // r308 — مرکزِ کارت ۱۲۴px پایین رفت (۵۶۰→۶۸۴) با دو لایهٔ تازه: نوارِ
+    // ۱۴روزه زیرِ چیپها و گروهِ برچسب+سطر+نوارِ ماه‌نامه
     if (opts.duelLine) {
       ctx.fillStyle = uiColors.fuchsia[700];
-      ctx.fillText(truncate(ctx, opts.duelLine, 640), W / 2, 560);
+      ctx.fillText(truncate(ctx, opts.duelLine, 640), W / 2, 684);
     } else if (opts.bestDay && opts.bestDay.total > 0) {
       ctx.fillStyle = uiColors.stone[500];
       ctx.fillText(
         `پرجانب‌ترین روز: ${opts.bestDay.label} — ${faNum(opts.bestDay.total)} فعالیت`,
         W / 2,
-        560
+        684
       );
     }
 
     // ---------- r285: نوارِ نشانها — «تا کجا رسیده‌ام؟» در کارتِ هم‌رسانی هم ----------
     // r286: کشیدنِ باند به drawBadgeBand منتقل شد — کارتِ رسمی هم از همان
     // نقاش میخواند؛ هیچ کارتی باندِ خودش را نمیکشد.
-    drawBadgeBand(ctx, { badges: opts.badges, family, x: 70, y: 576, w: W - 140 });
+    drawBadgeBand(ctx, { badges: opts.badges, family, x: 70, y: 700, w: W - 140 });
 
     // ---------- footer ----------
     ctx.strokeStyle = uiColors.stone[200];
