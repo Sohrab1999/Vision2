@@ -93,7 +93,7 @@ export default function CoverageHeatmapSection() {
       <div
         role="table"
         aria-label="ماتریسِ حرارتِ درس × مهارت"
-        className="grid grid-cols-[auto_repeat(6,minmax(0,1fr))] items-center gap-1 rounded-xl border border-stone-200 bg-white p-2.5 shadow-sm"
+        className="grid grid-cols-[minmax(0,64px)_repeat(6,minmax(0,1fr))] items-center gap-1 rounded-xl border border-stone-200 bg-white p-2.5 shadow-sm sm:grid-cols-[auto_repeat(6,minmax(0,1fr))]"
       >
         <div role="row" className="contents">
           <div role="columnheader" className="text-right text-[9.5px] font-black text-stone-500">

@@ -23,13 +23,22 @@ export type HeatBandId = (typeof HEAT_BANDS)[number]["id"] | "cold";
 /** سلولِ سرد — مستقل از نوارها چون عددی پشتِ آن نیست */
 export const HEAT_COLD = { id: "cold", label: "تلاش نشده" } as const;
 
-/** برچسبِ کوتاهِ سرستونِ ماتریس — کلیدها باید با COVERAGE_SKILLS یکی باشند */
+/**
+ * برچسبِ کوتاهِ سرستونِ ماتریس — کلیدها باید با COVERAGE_SKILLS یکی باشند.
+ * r316 — سنجشِ واقعیِ ۳۹۰px (اسکریپتِ qa-r316-overflow-sweep): خانهٔ سرستون
+ * در موبایل ۲۶px بود و چهار برچسبِ بلند (واژگان ۳۲ / شنیداری ۴۰ / نگارش ۳۱ /
+ * کنکوری ۳۵) سرریزِ چسبان داشتند — سرستونها در تصویرِ واقعی به هم میچسبیدند.
+ * با کپِ ستونِ عنوان (minmax(0,64px) در موبایل) بودجهٔ هر خانه به ۳۴px رسید؛
+ * «شنیداری» (۴۰) و «کنکوری» (۳۵) در ۳۴ جا نمی‌شوند → فرمِ کوتاهِ واقعی:
+ * شنوا و کنکور. نامِ کامل همیشه در tooltipِ همان سرستون است (title={sk.label})
+ * و برچسبهای کامل در COVERAGE_SKILLS دست‌نخورده‌اند.
+ */
 export const COVERAGE_SKILL_SHORT: Readonly<Record<string, string>> = {
   vocab: "واژگان",
   dictation: "دیکته",
-  listening: "شنیداری",
+  listening: "شنوا",
   writing: "نگارش",
-  "vocab-konkuri": "کنکوری",
+  "vocab-konkuri": "کنکور",
   grammar: "گرامر",
 };
 

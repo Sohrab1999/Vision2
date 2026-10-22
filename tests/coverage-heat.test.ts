@@ -84,6 +84,23 @@ describe("HEAT_BANDS و COVERAGE_SKILL_SHORT — ساختارِ یخ‌زده", 
     }
     expect(Object.keys(COVERAGE_SKILL_SHORT).length).toBe(COVERAGE_SKILLS.length);
   });
+
+  it("r316 — بودجهٔ ۳۴pxِ سرستونِ موبایل: هر شش مقدار قفلِ دقیق است (واحدِ بودجه پیکسل است نه نویسه)", () => {
+    // سنجشِ qa-r316-overflow-sweep: خانهٔ سرستون در ۳۹۰ با کپِ عنوانِ ۶۴px = ۳۴px؛
+    // پهنایِ سنجیدهشده در ۹.۵pxِ font-black: واژگان ۳۲ ✓ · دیکته ۲۶ ✓ ·
+    // شنیداری ۴۰ ✗ → شنوا · نگارش ۳۱ ✓ · کنکوری ۳۵ ✗ → کنکور · گرامر ۲۶ ✓
+    // (نکتهٔ بودجه: شمارشِ نویسه گمراه‌کننده است — واژگان ۶ نویسه ولی ۳۲px
+    // جا میشود، کنکوری ۶ نویسه و ۳۵px بیرون میزند؛ واحدِ درست پیکسل است و
+    // تغییرِ هر برچسبی باید با سنجشِ دوباره همراه شود)
+    expect(COVERAGE_SKILL_SHORT).toEqual({
+      vocab: "واژگان",
+      dictation: "دیکته",
+      listening: "شنوا",
+      writing: "نگارش",
+      "vocab-konkuri": "کنکور",
+      grammar: "گرامر",
+    });
+  });
 });
 
 describe("heatSummary — خلاصهٔ ماتریس", () => {

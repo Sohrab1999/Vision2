@@ -66,9 +66,9 @@ describe("پوشش مهارت‌ها رویِ کاغذِ رسمی — کامپو
     expect(cells85.length).toBeGreaterThanOrEqual(1);
     const cells95 = [...section.querySelectorAll("td")].filter((td) => td.textContent?.startsWith("۹۵٪"));
     expect(cells95.length).toBeGreaterThanOrEqual(1);
-    // سرستون‌هایِ کوتاه از قراردادِ دوطرفه
+    // سرستون‌هایِ کوتاه از قراردادِ دوطرفه — r316: «کنکور» فرمِ کوتاهِ واقعی (بودجهٔ ۳۴pxِ موبایل؛ کامل در tooltip)
     expect(within(section).getByText("واژگان")).toBeInTheDocument();
-    expect(within(section).getByText("کنکوری")).toBeInTheDocument();
+    expect(within(section).getByText("کنکور")).toBeInTheDocument();
     // گامِ بعدیِ درس ۱: نخستینِ خالی پسِ واژگان/دیکته = شنیداری
     const row1 = within(section).getByText("درس ۱").closest("tr")!;
     expect(row1).toHaveTextContent("شنیداری");

@@ -22,7 +22,7 @@ describe("نمایِ حرارتیِ پوشش — کامپوننت (Task 175)", (
     expect(screen.getByLabelText("نمایِ حرارتیِ پوشش مهارت‌ها")).toBeInTheDocument();
     expect(screen.getAllByRole("columnheader")).toHaveLength(7);
     expect(screen.getByRole("columnheader", { name: "درس" })).toBeInTheDocument();
-    expect(screen.getByRole("columnheader", { name: "کنکوری" })).toBeInTheDocument();
+    expect(screen.getByRole("columnheader", { name: "کنکور" })).toBeInTheDocument(); // r316 — فرمِ کوتاهِ واقعی (بودجهٔ ۳۴pxِ سرستونِ موبایل؛ کامل در tooltip)
     const cells = screen.getAllByRole("cell");
     expect(cells).toHaveLength(72);
     expect(cells.every((c) => c.textContent === "—")).toBe(true);

@@ -163,7 +163,10 @@ export default function ReportCard({ open, onClose }: { open: boolean; onClose: 
           <div className="report-paper relative overflow-hidden">
             {/* letterhead band */}
             <div className="report-band relative bg-gradient-to-l from-emerald-800 via-emerald-700 to-teal-700 px-5 pb-5 pt-5 text-white">
-              <div className="flex items-start justify-between gap-3">
+              {/* r316 — gap-2: سنجشِ qa-r316-overflow-sweep این ردیف را ۳px سرریزِ
+                  لبه-به-لبه نشان داد (min-contentِ متن + مهرِ ۶۴px + گپِ ۱۲ = عرضِ کانتینر
+                  — برندهٔ تیغه)؛ ۴px نفسِ اضافه در هر دو viewport — مهرِ تزئینی با ۸px گپ سالم */}
+              <div className="flex items-start justify-between gap-2">
                 <div>
                   <div className="flex items-center gap-1.5 text-[10.5px] font-bold opacity-95">
                     <CalendarDays size={11} />
