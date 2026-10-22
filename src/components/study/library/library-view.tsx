@@ -536,7 +536,11 @@ function StoryReader({
                 <span dir="ltr" className="font-black text-stone-800">
                   {g.en}
                 </span>
-                <span aria-hidden className="text-stone-300">
+                {/* r332 — جداکنندهٔ متنِ «|» جوهرِ stone-300 میگرفت (۱٫۴۹ روی
+                    سفیدِ چیپ؛ تاریکِ #57534c روی #1c1917 = ۲٫۲۹) — تنها عضوِ
+                    متنیِ خانوادهٔ stone-300 (بقیه آیکنِ SVGاند، غیرمتنِ ۳:۱)؛
+                    stone-500 = ۴٫۷۴ روشن و ۵٫۹۱ تاریک (نگاشتِ #9c958c). */}
+                <span aria-hidden className="text-stone-500">
                   |
                 </span>
                 {g.fa}
