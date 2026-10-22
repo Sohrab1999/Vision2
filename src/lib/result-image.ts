@@ -988,7 +988,31 @@ function drawWeekStrip14(
   ctx.fillText("هفتهٔ پیش | این هفته", startX + totalCellsW / 2, baseline + 18);
   ctx.textAlign = "right";
   ctx.fillText("امروز", x + bandW, baseline + 18);
+  // r310 — سطرِ مقایسهٔ دوهفته‌ای (baseline+42): جمعِ هر نیمه از همان آرایهٔ
+  // نوار (weekStripSums — نقاش و آزمون یک منبع) — هفتهٔ پیش سنگِ ۵۰۰ (رنگِ
+  // میلههایِ هفتهٔ پیش)، این هفته زمردیِ ۷۰۰ (خانوادهٔ گرادیان/چیپهایِ همین
+  // هفتهای). فعال بودنِ نوار یعنی این سطر هم هست — صفرِ صادق چاپ میشود.
+  const sums = weekStripSums(weekPerDay);
+  ctx.textAlign = "left";
+  ctx.fillStyle = uiColors.stone[500];
+  ctx.font = `700 13px ${family}`;
+  const prevTxt = `هفتهٔ پیش: ${faNum(sums.prev)}`;
+  ctx.fillText(prevTxt, startX, baseline + 42);
+  const prevW = ctx.measureText(prevTxt).width;
+  ctx.fillStyle = uiColors.emerald[700];
+  ctx.font = `900 13px ${family}`;
+  ctx.fillText(`· این هفته: ${faNum(sums.current)} فعالیت`, startX + prevW + 6, baseline + 42);
   ctx.direction = prevDir;
+}
+
+/** r310 — جمعِ دو نیمهٔ نوارِ ۱۴روزه — مقایسهٔ دوهفته‌ای از یک منبعِ یگانه:
+ * نقاشِ drawWeekStrip14 و آزمون‌ها هر دو همین را میخوانند — هیچ جمعِ موازیای
+ * در هیچ کارتی حساب نمیشود. ورودی همان weekPerDay (کهنه→امروز، ۱۴تایی). */
+export function weekStripSums(weekPerDay: { total: number }[]): { prev: number; current: number } {
+  return {
+    prev: weekPerDay.slice(0, 7).reduce((s, p) => s + p.total, 0),
+    current: weekPerDay.slice(7).reduce((s, p) => s + p.total, 0),
+  };
 }
 
 export async function downloadWeeklyImage(opts: WeeklyImageOpts): Promise<boolean> {
@@ -1096,20 +1120,14 @@ async function weeklyCanvas(opts: WeeklyImageOpts): Promise<HTMLCanvasElement | 
       ctx.fillText(truncate(ctx, line, 360), W - 90, 482);
     }
 
-    // ---------- r308/r309: نوارِ ۱۴روزهٔ هفته — زیرِ چیپها، آینهٔ نوارِ DOM ----------
+    // ---------- r308/r309/r310: نوارِ ۱۴روزهٔ هفته — زیرِ چیپها، آینهٔ نوارِ DOM ----------
     // جریانِ LTRِ خودِ DOM (کهنه در چپ، امروز در راست) — از DOM کپی شده نه از
     // سلیقه. r309 — کشیدنِ نوار به drawWeekStrip14 منتقل شد (نقاشِ مشترک با
     // کارتِ رسمی — هیچ کارتی نوارِ خودش را نمیکشد)؛ هندسه و رنگها دست‌نخورده.
+    // r310 — سطرِ «هفتهٔ پیش/این هفته» هم داخلِ نقاشِ واحد رفت (هر دو کارت
+    // یک سطر دارند — r309 فقط هفته‌نامه داشت)؛ فراخوانیِ اینجا دوسطر ندارد.
     if (opts.weekPerDay && opts.weekPerDay.length === 14) {
       drawWeekStrip14(ctx, { weekPerDay: opts.weekPerDay, family, x: 90, y: 572, bandW: 300 });
-      // r309 — مقدارِ «این هفته» زیرِ نوار: جمعِ ۷روزِ آخر از همان آرایهای
-      // که نوار میکشد — عددهای چیپها حالا با نوار سنجیده میشوند (منبعِ یگانه).
-      const sum7 = opts.weekPerDay.reduce((s, p, i) => (i >= 7 ? s + p.total : s), 0);
-      ctx.direction = "rtl";
-      ctx.textAlign = "left";
-      ctx.fillStyle = uiColors.emerald[700];
-      ctx.font = `900 13px ${family}`;
-      ctx.fillText(`این هفته: ${faNum(sum7)} فعالیت`, 94, 614);
     }
 
     // ---------- r305/r308: برچسبِ «ماه‌نامهٔ خواندن» + سطرِ خلاصه + نوارِ ۳۰خانه‌ای ----------
@@ -1303,11 +1321,11 @@ async function officialCanvas(opts: OfficialImageOpts): Promise<HTMLCanvasElemen
     if (typeof document === "undefined") return null;
     const canvas = document.createElement("canvas");
     canvas.width = 1080;
-    canvas.height = 832; // r309 — +۹۲px: نوارِ ۱۴روزه زیرِ KPIها (هم‌قراردادِ هفته‌نامه)
+    canvas.height = 854; // r310 — +۲۲px دیگر: سطرِ مقایسهٔ دوهفته‌ایِ نقاشِ واحد
     const ctx = canvas.getContext("2d");
     if (!ctx) return null;
     const W = 1080;
-    const H = 832;
+    const H = 854;
     studyShell(ctx, W, H, family, false);
 
     // ---------- title + letterhead ----------
@@ -1394,17 +1412,19 @@ async function officialCanvas(opts: OfficialImageOpts): Promise<HTMLCanvasElemen
       kx -= 230;
     }
 
-    // ---------- r309: نوارِ ۱۴روزهٔ فعالیت — زیرِ KPIها، هم‌قراردادِ هفته‌نامه ----------
+    // ---------- r309/r310: نوارِ ۱۴روزهٔ فعالیت — زیرِ KPIها، هم‌قراردادِ هفته‌نامه ----------
     // گپِ زیرِ KPIها (پایانِ جعبهها ۵۰۴ تا باندِ نشانها ۵۲۴) فقط ۲۰px بود —
     // کارت +۹۲px بلند شد: نوار (baseline ۵۷۶، پهنایِ تمام-عرضِ ۹۴۰ مثلِ باند
     // نشانها) + برچسبها (۵۹۴)؛ باندِ نشانها ۵۲۴→۶۱۶ رفت (+۹۲ — همان
     // انضباطِ جابجاییِ r305: هندسهٔ ثابت ترجمه میشود، نه تاب برمی‌دارد).
+    // r310 — سطرِ مقایسهٔ دوهفته‌ایِ نقاش (baseline+42=618) هم آمد — باندِ
+    // نشانها یک ترجمهٔ دیگر برد: ۶۱۶→۶۳۸ (+۲۲) و کارت ۸۳۲→۸۵۴.
     if (opts.weekPerDay && opts.weekPerDay.length === 14) {
       drawWeekStrip14(ctx, { weekPerDay: opts.weekPerDay, family, x: 70, y: 576, bandW: W - 140 });
     }
 
     // ---------- badge band (نقاشِ مشترکِ خانواده — r286) ----------
-    drawBadgeBand(ctx, { badges: opts.badges, family, x: 70, y: 616, w: W - 140 });
+    drawBadgeBand(ctx, { badges: opts.badges, family, x: 70, y: 638, w: W - 140 });
 
     // ---------- footer ----------
     ctx.strokeStyle = uiColors.stone[200];
