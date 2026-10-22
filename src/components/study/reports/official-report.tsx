@@ -22,6 +22,7 @@ import {
   FileSpreadsheet,
   ArrowLeftRight,
   Loader2,
+  Share2,
 } from "lucide-react";
 import {
   useStudy,
@@ -46,7 +47,8 @@ import { buildPairsCoverage } from "@/lib/pairs-coverage";
 import { lessons } from "@/data";
 import { useToast } from "@/hooks/use-toast";
 import { trackEvent } from "@/lib/analytics";
-import { downloadOfficialImage } from "@/lib/result-image";
+import { downloadOfficialImage, buildOfficialBlob, type OfficialImageOpts } from "@/lib/result-image";
+import { blobToFile, shareImageFile, type ShareOutcome } from "@/lib/share-card"; // r307 — هم‌رسانیِ بومیِ کارتِ رسمی
 
 // ------------------------------------------------------------------
 // گزارش رسمی چاپی (PDF) — A4 paper for the teacher / parents.
@@ -273,29 +275,53 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
     if (imgBusy) return;
     setImgBusy(true);
     trackEvent("official_image");
-    const ok = await downloadOfficialImage({
-      userName: userName || undefined,
-      knownCount,
-      totalVocabulary: TOTAL_VOCABULARY,
-      avgPercent,
-      monthTotal,
-      bestStreak,
-      streak,
-      learnerCode: userId ? userId.slice(0, 8).toUpperCase() : undefined,
-      // r306 — سطرِ ماه‌نامه روی کارتِ رسمی: فقط با سابقهٔ پنجره (سیاستِ بوم‌محورِ r302)
-      storiesMonth:
-        !monthReadsMemo.empty
-          ? { total: monthReadsMemo.total, activeDays: monthReadsMemo.activeDays, bestCount: monthReadsMemo.best?.count ?? 0 }
-          : undefined,
-      // همان ارزیابیِ واحدِ بدنهٔ کارنامه — هیچ ارزیابیِ دومی وجود ندارد.
-      badges: unlockedBadges.map((b) => ({ title: b.title, tier: b.tier })),
-    });
+    // r307 — ورودیِ مشترکِ دو دروازه (دانلود/هم‌رسانی) — officialImageOpts()
+    const ok = await downloadOfficialImage(officialImageOpts());
     setImgBusy(false);
     toast(
       ok
         ? { title: "📸 عکسِ کارنامه ذخیره شد", description: "کارتِ رسمیت آمادهٔ فرستادن است.", duration: 3000 }
         : { title: "خطا در ساخت تصویر", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
     );
+  };
+
+  // r307 — هم‌رسانیِ بومیِ کارتِ رسمی: الگویِ r306ِ هفته‌نامه — دو دروازهٔ یک ارزیابی
+  const officialImageOpts = (): OfficialImageOpts => ({
+    userName: userName || undefined,
+    knownCount,
+    totalVocabulary: TOTAL_VOCABULARY,
+    avgPercent,
+    monthTotal,
+    bestStreak,
+    streak,
+    learnerCode: userId ? userId.slice(0, 8).toUpperCase() : undefined,
+    storiesMonth:
+      !monthReadsMemo.empty
+        ? { total: monthReadsMemo.total, activeDays: monthReadsMemo.activeDays, bestCount: monthReadsMemo.best?.count ?? 0 }
+        : undefined,
+    badges: unlockedBadges.map((b) => ({ title: b.title, tier: b.tier })),
+  });
+  const [shareBusy, setShareBusy] = useState(false);
+  const shareOfficialImage = async () => {
+    if (shareBusy || imgBusy) return;
+    setShareBusy(true);
+    const blob = await buildOfficialBlob(officialImageOpts());
+    let outcome: ShareOutcome = "failed";
+    if (blob) {
+      trackEvent("official_image");
+      outcome = await shareImageFile({
+        file: blobToFile(blob, "vision2-official.png"),
+        title: "گزارش پیشرفت درسی — وب‌کتاب ویژن ۲",
+        text: `گزارشِ رسمی من: میانگینِ ${faNum(avgPercent)}٪ · ${faNum(knownCount)} واژهٔ آموخته‌شده`,
+      });
+    }
+    setShareBusy(false);
+    if (outcome === "shared") {
+      toast({ title: "📨 کارنامه هم‌رسانی شد", description: "کارتِ رسمی با شیتِ خودِ سیستم فرستاده شد.", duration: 3000 });
+    } else if (outcome === "failed") {
+      toast({ title: "هم‌رسانی ممکن نشد", description: "می‌توانی عکس را ذخیره کنی و خودت بفرستی.", duration: 3000 });
+    }
+    // cancelled — لغوِ کاربر؛ خطا نیست، ساکت (قراردادِ share-card)
   };
 
   // one-line teacher-facing recommendation
@@ -349,6 +375,17 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
             >
               {imgBusy ? <Loader2 size={14} className="animate-spin" /> : <ImageDown size={14} />}
               {imgBusy ? "در حال ساخت…" : "عکسِ کارنامه"}
+            </button>
+            {/* r307 — هم‌رسانیِ بومیِ همان کارت: دو دروازهٔ یک ارزیابی؛ لغو ساکت، شکست صادق */}
+            <button
+              onClick={shareOfficialImage}
+              disabled={shareBusy || imgBusy}
+              aria-label="هم‌رسانی عکس کارنامهٔ رسمی"
+              title="هم‌رسانیِ کارتِ رسمی با شیتِ خودِ سیستم"
+              className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-white/20 bg-white/10 px-3 py-2 text-[12px] font-black text-stone-100 transition-[background-color,color,border-color,box-shadow,transform] hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 active:scale-[0.96] disabled:opacity-60"
+            >
+              {shareBusy ? <Loader2 size={14} className="animate-spin" /> : <Share2 size={14} />}
+              {shareBusy ? "در حال ارسال…" : "هم‌رسانی"}
             </button>
             <button
               onClick={saveCoverageCsv}

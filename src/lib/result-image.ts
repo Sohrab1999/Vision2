@@ -801,6 +801,10 @@ export interface WeeklyImageOpts {
    * بی‌سابقه خطِ «ماهِ گذشته» صفرِ ساختگی نیست. رنگِ سنگی — آینهٔ سطرِ
    * سربرگِ ماه‌نامه در DOM که خودش stone-500 است و کهربا فقط خانه‌ها را میسازد. */
   storiesMonth?: { total: number; activeDays: number; bestCount: number };
+  /** r307 — ۳۰ شمارشِ روزانهٔ ماه‌نامه (کهنه→امروز) برایِ نوارِ ۳۰خانه‌ایِ روی کارت —
+   * آینهٔ نوارِ DOMِ r304 با همان رنگ‌هایِ سطحی و جریانِ زمانِ RTL.
+   * فقط همراهِ storiesMonth فرستاده میشود؛ بدونِ آن نوارِ صفرِ ساختگی نیست. */
+  storiesMonthPerDay?: number[];
   /** r285 — نشانهای بازِ همان ارزیابیِ واحدِ هفتهنامه (title+tier) — الزامی:
    * کارتِ هم‌رسانی هم باید به «تا کجا رسیده‌ام؟» جواب بدهد؛ سرشماریِ
    * زمان-کامپایل مجریِ تغذیه است (الگویِ buildEvalInputِ r282). */
@@ -941,11 +945,11 @@ async function weeklyCanvas(opts: WeeklyImageOpts): Promise<HTMLCanvasElement | 
     if (typeof document === "undefined") return null;
     const canvas = document.createElement("canvas");
     canvas.width = 1080;
-    canvas.height = 776; // r305 — کارت +۳۶px برایِ سطرِ ماه‌نامه (مرکز/باند/پانوشت پایین رفتند)
+    canvas.height = 796; // r307 — +۲۰px دیگر برایِ نوارِ ۳۰خانه‌ایِ ماه‌نامه
     const ctx = canvas.getContext("2d");
     if (!ctx) return null;
     const W = 1080;
-    const H = 776;
+    const H = 796;
     studyShell(ctx, W, H, family, false);
 
     // ---------- title ----------
@@ -1007,6 +1011,36 @@ async function weeklyCanvas(opts: WeeklyImageOpts): Promise<HTMLCanvasElement | 
       ctx.fillText(truncate(ctx, line, 560), W - 90, 512);
     }
 
+    // ---------- r307: نوارِ ۳۰خانه‌ایِ ماه‌نامه — آینهٔ نوارِ DOMِ r304 ----------
+    // جریانِ زمانِ RTL: کهنه‌ترین خانه در راست، امروز در چپ با حلقهٔ کهربایی؛
+    // همان رنگ‌هایِ سطحیِ DOM (۳=کهربا۶۰۰، ۲=کهربا۴۰۰، ۱=کهربا۲۰۰، خالی=سنگ۲۰۰)
+    if (opts.storiesMonth && opts.storiesMonthPerDay && opts.storiesMonthPerDay.length === 30) {
+      const x0 = 70;
+      const bandW = W - 140;
+      const gap = 2;
+      const cellH = 10;
+      const cellW = Math.floor((bandW - 29 * gap) / 30); // ۲۹px — باقیمانده وسطِ نوار
+      const totalCellsW = 30 * cellW + 29 * gap;
+      const startX = x0 + Math.floor((bandW - totalCellsW) / 2);
+      const yStrip = 526;
+      for (let i = 0; i < 30; i++) {
+        // RTL: کهنه در راست — خانهٔ iام (کهنه→امروز) از راستِ نوار می‌شماریم
+        const cx2 = startX + totalCellsW - (i + 1) * cellW - i * gap;
+        const count = opts.storiesMonthPerDay[i] ?? 0;
+        ctx.fillStyle =
+          count >= 3 ? uiColors.amber[600] : count === 2 ? uiColors.amber[400] : count === 1 ? uiColors.amber[200] : uiColors.stone[200];
+        roundRect(ctx, cx2, yStrip, cellW, cellH, 2);
+        ctx.fill();
+        if (i === 29) {
+          // امروز — حلقهٔ کهرباییِ تیره (هم‌قراردادِ ring-amber-700 در DOM)
+          ctx.strokeStyle = uiColors.amber[700];
+          ctx.lineWidth = 1.5;
+          roundRect(ctx, cx2 - 0.75, yStrip - 0.75, cellW + 1.5, cellH + 1.5, 2.5);
+          ctx.stroke();
+        }
+      }
+    }
+
     // ---------- goal ring (روزهای هدف از ۷) ----------
     const cx = W - 90 - 105;
     const cy = 350;
@@ -1066,23 +1100,23 @@ async function weeklyCanvas(opts: WeeklyImageOpts): Promise<HTMLCanvasElement | 
     ctx.textAlign = "center";
     ctx.direction = "rtl";
     ctx.font = `700 20px ${family}`;
-    // r305 — مرکزِ کارت ۳۶px پایین رفت تا سطرِ ماه‌نامه نفس بکشد
+    // r307 — مرکزِ کارت ۱۶px دیگر پایین رفت (۵۴۴→۵۶۰) تا نوارِ ۳۰خانه‌ای نفس بکشد
     if (opts.duelLine) {
       ctx.fillStyle = uiColors.fuchsia[700];
-      ctx.fillText(truncate(ctx, opts.duelLine, 640), W / 2, 544);
+      ctx.fillText(truncate(ctx, opts.duelLine, 640), W / 2, 560);
     } else if (opts.bestDay && opts.bestDay.total > 0) {
       ctx.fillStyle = uiColors.stone[500];
       ctx.fillText(
         `پرجانب‌ترین روز: ${opts.bestDay.label} — ${faNum(opts.bestDay.total)} فعالیت`,
         W / 2,
-        544
+        560
       );
     }
 
     // ---------- r285: نوارِ نشانها — «تا کجا رسیده‌ام؟» در کارتِ هم‌رسانی هم ----------
     // r286: کشیدنِ باند به drawBadgeBand منتقل شد — کارتِ رسمی هم از همان
     // نقاش میخواند؛ هیچ کارتی باندِ خودش را نمیکشد.
-    drawBadgeBand(ctx, { badges: opts.badges, family, x: 70, y: 560, w: W - 140 });
+    drawBadgeBand(ctx, { badges: opts.badges, family, x: 70, y: 576, w: W - 140 });
 
     // ---------- footer ----------
     ctx.strokeStyle = uiColors.stone[200];
@@ -1146,6 +1180,14 @@ export async function downloadOfficialImage(opts: OfficialImageOpts): Promise<bo
   const c = await officialCanvas(opts);
   if (!c) return false;
   return downloadCanvasBlob(c, "vision2-official.png");
+}
+
+/** r307 — همان کارت به‌صورت blob برایِ هم‌رسانیِ بومی — الگویِ buildWeeklyBlobِ r306:
+ * دانلود و هم‌رسانی دو دروازهٔ یک ارزیابی‌اند؛ بدونِ دانلود. */
+export async function buildOfficialBlob(opts: OfficialImageOpts): Promise<Blob | null> {
+  const c = await officialCanvas(opts);
+  if (!c) return null;
+  return canvasToBlob(c);
 }
 
 async function officialCanvas(opts: OfficialImageOpts): Promise<HTMLCanvasElement | null> {

@@ -261,6 +261,9 @@ export default function WeeklyReportSection() {
       !month.empty
         ? { total: month.total, activeDays: month.activeDays, bestCount: month.best?.count ?? 0 }
         : undefined,
+    // r307 — نوارِ ۳۰خانه‌ای روی کارت: همان perDayِ ماه‌نامه (کهنه→امروز)؛
+    // فقط همراهِ storiesMonth — بدونِ سابقه نوارِ صفرِ ساختگی نیست
+    storiesMonthPerDay: !month.empty ? month.perDay.map((d) => d.count) : undefined,
     duelLine:
       digest.duels && digest.duels.thisWeek > 0
         ? `${faNum(digest.duels.thisWeek)}${digest.duels.truncated ? "+" : ""} نبرد واژگانی این هفته — ${faNum(digest.duels.win)} برد، ${faNum(digest.duels.loss)} باخت${digest.duels.tie > 0 ? `، ${faNum(digest.duels.tie)} مساوی` : ""}`

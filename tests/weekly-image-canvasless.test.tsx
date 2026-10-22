@@ -100,4 +100,23 @@ describe("downloadWeeklyImage — بی‌کانواس (Task 104 + r285)", () => 
     });
     expect(blob).toBe(null);
   });
+
+  // r307 — نوارِ ۳۰خانه‌ای (storiesMonthPerDay) هم از همان گارد میگذرد؛
+  // آرایهٔ ۳۰تاییِ کامل و کوتاهِ ناقص هر دو بی‌انفجار
+  it("falseِ صادق با storiesMonthPerDay (r307) — بی‌انفجار", async () => {
+    const ok = await downloadWeeklyImage({
+      activities: 15,
+      reviews: 8,
+      quizzes: 2,
+      words: 5,
+      dictation: 0,
+      rush: 0,
+      goalDays: 2,
+      streak: 4,
+      storiesMonth: { total: 6, activeDays: 5, bestCount: 2 },
+      storiesMonthPerDay: [0, 1, 2, 3, 0], // طولِ ناقص — گاردِ length===30 می‌گذردش
+      badges: [],
+    });
+    expect(ok).toBe(false);
+  });
 });

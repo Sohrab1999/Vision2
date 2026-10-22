@@ -3,7 +3,7 @@
 // در jsdom (getContext=null) باید false بدهد و هیچ استثنایی پرتاب نکند —
 // همان قراردادِ خانوادهٔ کارت‌ها. هم بی‌نشان و هم نشان‌دار.
 import { describe, it, expect } from "vitest";
-import { downloadOfficialImage } from "@/lib/result-image";
+import { downloadOfficialImage, buildOfficialBlob } from "@/lib/result-image";
 
 describe("downloadOfficialImage — بی‌کانواس (r286)", () => {
   const base = {
@@ -42,5 +42,15 @@ describe("downloadOfficialImage — بی‌کانواس (r286)", () => {
       badges: [],
     });
     expect(ok).toBe(false);
+  });
+
+  // r307 — دروازهٔ دومِ کارتِ رسمی: buildOfficialBlob در بی‌کانواس nullِ صادق
+  it("blobِ nullِ صادق از buildOfficialBlob (r307) — بی‌انفجار", async () => {
+    const blob = await buildOfficialBlob({
+      ...base,
+      storiesMonth: { total: 6, activeDays: 5, bestCount: 2 },
+      badges: [],
+    });
+    expect(blob).toBe(null);
   });
 });
