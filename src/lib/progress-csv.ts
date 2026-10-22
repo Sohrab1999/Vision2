@@ -29,6 +29,18 @@ export const CSV_BOM = "\uFEFF";
 const NL = "\r\n";
 
 // ---------------- ۱۶۹ — جدولِ ۳۵روزهٔ پیشرفت ----------------
+// r314 — زبانِ دوهفته‌ای در هر سه اکسل: جدولِ ۳۵روزه هم صاحبِ دو ستونِ
+// هفت‌روزه شد (۸→۱۰ فیلد) — همان الگویِ r312 در ماه‌نامه، همان خانواده:
+//   · «جمعِ هفت‌روزه» = جمعِ لغزانِ ۷روزِ منتهی به سطر — فقط از سطرهای
+//     همین جدول (هم‌قراردادِ جمعِ فزاینده)؛ تا ششمین سطر پنجرهٔ کامل
+//     ندارد → خانهٔ تهیِ صادق (نه صفرِ دروغین)؛ با daysِ کوتاهِ سفارشی
+//     (مثل ۷ یا ۱) هم از خودِ همان سطرها مشتق می‌شود.
+//   · «تفاوت با هفت‌روزهٔ پیش» = دو پنجرهٔ غیرهمپوشان — سطر i در برابر
+//     سطر i−۷؛ از چهاردهمین سطر دو پنجرهٔ کاملِ درون-فایلی هست؛ افت با
+//     مینوسِ ASCII. سطرِ آخر (امروز) = «جمعِ ۷روزِ آخر در برابرِ ۷روزِ
+//     قبلش» — همین حکایتی که جملهٔ جهتیِ کارتها میگویند؛ و چون واحدِ
+//     این جدول همان پنج شمارندهٔ نوارِ کارتهاست، سطرِ آخرِ همین ستونها
+//     باید با weekStripSums برابر باشد — قفلش در آزمونِ پیوندیِ سه‌سطحی.
 
 export const PROGRESS_CSV_COLUMNS = [
   "تاریخ",
@@ -39,6 +51,8 @@ export const PROGRESS_CSV_COLUMNS = [
   "دیکته",
   "برق‌آسا",
   "مجموع",
+  "جمعِ هفت‌روزه",
+  "تفاوت با هفت‌روزهٔ پیش",
 ] as const;
 
 export const PROGRESS_CSV_DAYS = 35;
@@ -49,14 +63,26 @@ export function buildProgressCsv(
   days: number = PROGRESS_CSV_DAYS
 ): string {
   const lines: string[] = [PROGRESS_CSV_COLUMNS.join(",")];
+  // r314 — سطرها اول ساخته میشوند تا پنجرههایِ هفت‌روزه «از خودِ جدول»
+  // مشتق شوند (هم‌قراردادِ r312 در ماه‌نامه — هیچ شمارشِ موازیای).
+  const rows: [string, string, number, number, number, number, number, number][] = [];
   for (let i = days - 1; i >= 0; i -= 1) {
     const key = dayKeyBefore(today, i);
     const s = statOfDay(key, { dayHistory: history });
     const total = s.reviews + s.quizzes + s.words + s.dictation + s.rush;
-    lines.push(
-      [key, faWeekday(key), s.reviews, s.quizzes, s.words, s.dictation, s.rush, total].join(",")
-    );
+    rows.push([key, faWeekday(key), s.reviews, s.quizzes, s.words, s.dictation, s.rush, total]);
   }
+  const totals = rows.map((r) => r[7]);
+  const trailing7: (number | null)[] = totals.map((_, i) =>
+    i >= 6 ? totals.slice(i - 6, i + 1).reduce((s, n) => s + n, 0) : null
+  );
+  rows.forEach((r, i) => {
+    const w7 = trailing7[i];
+    const prevW7 = w7 === null ? null : trailing7[i - 7] ?? null;
+    const w7Cell = w7 === null ? "" : String(w7);
+    const deltaCell = w7 === null || prevW7 === null ? "" : String(w7 - prevW7);
+    lines.push([...r, w7Cell, deltaCell].join(","));
+  });
   return lines.join(NL) + NL;
 }
 

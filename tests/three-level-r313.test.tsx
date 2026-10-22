@@ -13,6 +13,10 @@
 //   reduceِ نیمهایِ نقاش) باید رویِ همان داده به یک عدد برسند.
 //   مینوسِ ASCII در هر دو سطح از String() میآید — برابریِ رشته‌ای عینِ
 //   قرارداد است.
+// r314 — پیوندِ دوم در واحدِ فعالیت: جدولِ ۳۵روزه (پنج شمارنده — همان
+//   واحدِ نوارِ کارتها) هم صاحبِ دو ستونِ هفت‌روزه شد؛ سطرِ آخرش باید با
+//   weekStripSums رویِ همان statOfDayهایِ ۱۴روزه برابر باشد — «یک منبع،
+//   سه سطح» حالا در هر دو واحد (داستان‌ها r313 / فعالیت r314) عددی قفلست.
 //   + برچسبِ ستونهایِ خروجیهایِ اکسل در UIِ هفته‌نامه (پیشنهادِ ②ِ r312):
 //     باندِ aria==title با سه شمارشِ ستون — و tooltipِ دکمههایِ روند/
 //     ماه‌نامه که ستونهایِ تازهٔ r311/r312 را می‌نامند.
@@ -23,9 +27,10 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import "@testing-library/jest-dom/vitest";
 import { cleanup, render, screen } from "@testing-library/react";
-import { buildMonthCsv } from "@/lib/progress-csv";
+import { buildMonthCsv, buildProgressCsv } from "@/lib/progress-csv";
 import { monthReads } from "@/lib/library-month";
 import { weekStripSums } from "@/lib/result-image";
+import { dayKeyBefore, statOfDay } from "@/lib/weekly-digest";
 import { useStudy } from "@/lib/study-store";
 import WeeklyReportSection from "@/components/study/reports/weekly-report";
 
@@ -120,6 +125,58 @@ describe("پیوندِ سه‌سطحی — یک منبع، یک حکایت (r313
     expect(cells[5]).toBe(String(sums.delta));
   });
 
+  it("r314 — پیوند در واحدِ فعالیت: سطرِ آخرِ جدولِ ۳۵روزه === weekStripSumsِ همان ۱۴روزه", () => {
+    // seedِ فعالیت (مرور/آزمون) — همان واحدِ نوارِ کارتها؛ داستانها در این حکایت بی‌ربط‌اند
+    const act = (d: string, reviews: number, quizzes = 0) =>
+      ({ day: d, reviews, quizzes, words: 0, dictation: 0, rush: 0, stories: 0 }) as never;
+    const seed = {
+      "2026-10-01": act("2026-10-01", 1),
+      "2026-10-03": act("2026-10-03", 0, 3),
+      "2026-10-08": act("2026-10-08", 2),
+      "2026-10-10": act("2026-10-10", 4),
+      [T]: act(T, 0, 1),
+    };
+    // weekPerDayِ کارت با همان عبارتی تغذیه میشود که weekly-report می‌نویسد:
+    // پنج شمارندهٔ statOfDay — رونویسیِ عینِ فراخوانِ کارت، نه شمارشِ موازی
+    const weekPerDay14 = Array.from({ length: 14 }, (_, i) => {
+      const st = statOfDay(dayKeyBefore(T, 13 - i), { dayHistory: seed });
+      return {
+        total: st.reviews + st.quizzes + st.words + st.dictation + st.rush,
+      };
+    });
+    const sums = weekStripSums(weekPerDay14);
+    expect(sums.prev).toBe(4); // ۱۰-۰۱ + ۱۰-۰۳
+    expect(sums.current).toBe(7); // ۱۰-۰۸ + ۱۰-۱۰ + امروز
+    expect(sums.delta).toBe(3);
+    // اکسلِ ۳۵روزه — سطرِ آخر: همان دو عدد، از پنجرههایِ درون-جدولیِ r314
+    const rows = buildProgressCsv(seed, T).trimEnd().split("\r\n");
+    const cells = rows[35].split(",");
+    expect(cells[8]).toBe(String(sums.current));
+    expect(cells[9]).toBe(String(sums.delta));
+  });
+
+  it("r314 — افت در واحدِ فعالیت — مینوسِ ASCII در هر دو سطح", () => {
+    const act = (d: string, reviews: number) =>
+      ({ day: d, reviews, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 }) as never;
+    const seed = {
+      "2026-10-02": act("2026-10-02", 4),
+      "2026-10-04": act("2026-10-04", 6),
+      "2026-10-10": act("2026-10-10", 1),
+      "2026-10-13": act("2026-10-13", 2),
+    };
+    const weekPerDay14 = Array.from({ length: 14 }, (_, i) => {
+      const st = statOfDay(dayKeyBefore(T, 13 - i), { dayHistory: seed });
+      return {
+        total: st.reviews + st.quizzes + st.words + st.dictation + st.rush,
+      };
+    });
+    const sums = weekStripSums(weekPerDay14);
+    expect(sums.delta).toBe(-7); // ۳ − ۱۰
+    const rows = buildProgressCsv(seed, T).trimEnd().split("\r\n");
+    expect(rows[35].split(",")[9]).toBe(String(sums.delta));
+    expect(rows[35].split(",")[9]).toBe("-7");
+  });
+
   it("قفلِ منبع — buildMonthCsv فقط یک monthReads میخورد؛ نقاش فقط یک weekStripSums", () => {
     const csv = csvLib();
     expect(csv.match(/monthReads\(history, today\)/g)?.length).toBe(1);
@@ -155,14 +212,14 @@ describe("باندِ برچسبِ خروجیهایِ اکسل — کامپونن
     render(<WeeklyReportSection />);
     const band = screen.getByLabelText("ستونهایِ خروجیهایِ اکسل");
     expect(band.getAttribute("title")).toBe("ستونهایِ خروجیهایِ اکسل");
-    expect(band).toHaveTextContent("۳۵روزه: ۸ ستون");
+    expect(band).toHaveTextContent("۳۵روزه: ۱۰ ستون (با جمعِ هفت‌روزه و تفاوتش)");
     expect(band).toHaveTextContent("روندِ ۴هفته‌ای: ۱۱ ستون (با تفاوت با هفتهٔ پیش)");
     expect(band).toHaveTextContent("ماه‌نامهٔ خواندن: ۶ ستون (با جمعِ هفت‌روزه و تفاوتش)");
   });
 
   it("tooltipِ هر شمارش نامِ کاملِ ستونها را میگوید — نه فقط تعداد", () => {
     render(<WeeklyReportSection />);
-    expect(screen.getByTitle("جدولِ ۳۵روزه — ۸ ستون: تاریخ، روز هفته، مرور، آزمون، واژهٔ نو، دیکته، برق‌آسا، مجموع")).toBeInTheDocument();
+    expect(screen.getByTitle("جدولِ ۳۵روزه — ۱۰ ستون: تاریخ، روز هفته، پنج شمارنده، مجموع، جمعِ هفت‌روزه، تفاوت با هفت‌روزهٔ پیش")).toBeInTheDocument();
     expect(
       screen.getByTitle("روندِ ۴هفته‌ای — ۱۱ ستون: پنج شمارنده، مجموع، تفاوت با هفتهٔ پیش، روزهای فعال و هدف")
     ).toBeInTheDocument();

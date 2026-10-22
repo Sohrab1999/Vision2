@@ -149,7 +149,7 @@ export default function WeeklyReportSection() {
     const ok = downloadProgressCsv(dayHistory, daysAgoKey(0));
     toast(
       ok
-        ? { title: "📊 جدول CSV ذخیره شد", description: `${faNum(35)} روزِ فعالیت برای اکسل آماده است.`, duration: 3000 }
+        ? { title: "📊 جدول CSV ذخیره شد", description: `${faNum(35)} روزِ فعالیت با ستونهایِ هفت‌روزه — آمادهٔ اکسل.`, duration: 3000 }
         : { title: "خطا در ساخت فایل", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
     );
   };
@@ -351,11 +351,12 @@ export default function WeeklyReportSection() {
           >
             {shareBusy ? <Loader2 size={15} className="animate-spin" aria-hidden /> : <Share2 size={15} aria-hidden />}
           </button>
-          {/* تسک ۱۷۸ — خروجیِ CSVِ ۳۵روزه (بازسازیِ ۱۶۹) — هم‌الگوی عکس؛ بدونِ busy چون همگام است */}
+          {/* تسک ۱۷۸ — خروجیِ CSVِ ۳۵روزه (بازسازیِ ۱۶۹) — هم‌الگوی عکس؛ بدونِ busy چون همگام است؛
+              r314 — tooltip زبانِ ۱۰ستونیِ دو ستونِ هفت‌روزه را می‌نامد */}
           <button
             onClick={saveCsv}
             aria-label="دانلود جدول CSV پیشرفت"
-            title="خروجیِ CSV — جدولِ ۳۵روزهٔ فعالیت برای اکسل"
+            title="خروجیِ CSV — جدولِ ۳۵روزهٔ فعالیت با جمعِ هفت‌روزه و تفاوت با هفت‌روزهٔ پیش"
             className="rounded-lg p-1.5 text-stone-500 transition-colors hover:bg-stone-100 hover:text-teal-600"
           >
             <FileDown size={15} aria-hidden />
@@ -385,7 +386,7 @@ export default function WeeklyReportSection() {
 
       {/* r313 — برچسبِ ستونهایِ خروجیهایِ اکسل همان‌جای دکمهها: معلمِ اکسلخوان
           پیش از دانلود میداند هر فایل چند ستون و چه ستونهای تازهای دارد
-          (r311: تفاوت با هفتهٔ پیش در روند / r312: دو ستونِ هفت‌روزه در ماه‌نامه)؛
+          (r311: تفاوت با هفتهٔ پیش در روند / r312: دو ستونِ هفت‌روزه در ماه‌نامه / r314: دو ستونِ هفت‌روزه در جدولِ ۳۵روزه)؛
           aria==title هم‌قراردادِ دستور رنگ‌ها */}
       <div
         className="report-csv-hint mb-3 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-lg c-veil-60 px-2.5 py-2"
@@ -398,9 +399,9 @@ export default function WeeklyReportSection() {
         </span>
         <span
           className="text-[9.5px] font-bold text-stone-500"
-          title="جدولِ ۳۵روزه — ۸ ستون: تاریخ، روز هفته، مرور، آزمون، واژهٔ نو، دیکته، برق‌آسا، مجموع"
+          title="جدولِ ۳۵روزه — ۱۰ ستون: تاریخ، روز هفته، پنج شمارنده، مجموع، جمعِ هفت‌روزه، تفاوت با هفت‌روزهٔ پیش"
         >
-          ۳۵روزه: ۸ ستون
+          ۳۵روزه: ۱۰ ستون (با جمعِ هفت‌روزه و تفاوتش)
         </span>
         <span
           className="text-[9.5px] font-bold text-stone-500"
