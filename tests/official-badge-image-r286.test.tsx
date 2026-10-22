@@ -102,6 +102,11 @@ describe("عکسِ کارنامهٔ رسمی (r286)", () => {
     expect(arg.streak).toBe(3);
     expect(arg.learnerCode).toBe("ABCD1234");
     expect(arg.userName).toBe("پرنیان ف");
+    // r309 — نوارِ ۱۴روزهٔ فعالیت: همان حسابِ history (مرور+آزمون) — ۱۴ خانه،
+    // امروزِ فعالِ ۱۰ و بقیه صفرِ صادق؛ هفتهٔ این‌روزی (آخرِ آرایه) درست نشاندار
+    expect(arg.weekPerDay).toHaveLength(14);
+    expect(arg.weekPerDay!.map((p) => p.total)).toEqual([...Array(13).fill(0), 10]);
+    expect(arg.weekPerDay!.every((p, i) => p.inThisWeek === i >= 7)).toBe(true);
     const titles = arg.badges.map((b) => b.title);
     expect(titles).toContain("اولین دیده‌شدن");
     expect(titles).toContain("اولین قدم");

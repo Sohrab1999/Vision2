@@ -926,6 +926,71 @@ function drawBadgeBand(
   }
 }
 
+/** r309 — نقاشِ مشترکِ نوارِ ۱۴روزهٔ فعالیت — هیچ کارتی نوارِ خودش را نمیکشد
+ * (همان درسِ r286 که باندِ نشانها را یکدست کرد). هندسه از DOMِ هفته‌نامه
+ * کپی شده (r308): گپِ ۳، بیشینهٔ ۴۴، فعال ≥۱۰، خالی ۳؛ رنگها: این‌هفته =
+ * گرادیانِ teal-600→emerald-500→lime-400، هفتهٔ پیش = سنگِ ۳۰۰، خالی =
+ * emerald-200/60 · c-track-60 با آلفا؛ امروز حلقهٔ زمردی. برچسبِ سطرِ زیر
+ * (y=baseline+18) عینِ DOMِ r308: چپ پنجره، وسط مرزِ دو هفته، راست امروز.
+ * هم‌قرارداد: weekPerDay همیشه ۱۴تایی تغذیه میشود (فعالیتِ صفرِ صادق). */
+function drawWeekStrip14(
+  ctx: CanvasRenderingContext2D,
+  o: {
+    weekPerDay: { total: number; inThisWeek: boolean }[];
+    family: string;
+    x: number;
+    y: number; // baselineِ نوار — پایینِ خانهها
+    bandW: number;
+  }
+): void {
+  const { weekPerDay, family, x, y: baseline, bandW } = o;
+  const gap = 3; // DOM: gap-[3px]
+  const cellW = Math.floor((bandW - 13 * gap) / 14);
+  const totalCellsW = 14 * cellW + 13 * gap;
+  const startX = x + Math.floor((bandW - totalCellsW) / 2);
+  const maxTotal = Math.max(1, ...weekPerDay.map((p) => p.total));
+  const grad = ctx.createLinearGradient(0, baseline, 0, baseline - 44);
+  grad.addColorStop(0, uiColors.teal[600]);
+  grad.addColorStop(0.5, uiColors.emerald[500]);
+  grad.addColorStop(1, uiColors.lime[400]);
+  const prevDir = ctx.direction;
+  for (let i = 0; i < 14; i++) {
+    const p = weekPerDay[i] ?? { total: 0, inThisWeek: i >= 7 };
+    const h = Math.max(p.total > 0 ? 10 : 3, (p.total / maxTotal) * 44);
+    const cx2 = startX + i * (cellW + gap);
+    ctx.globalAlpha = p.total > 0 || p.inThisWeek ? 1 : 0.6;
+    ctx.fillStyle = p.inThisWeek
+      ? p.total > 0
+        ? grad
+        : uiColors.emerald[200]
+      : p.total > 0
+        ? uiColors.stone[300]
+        : uiColors.stone[200];
+    roundRect(ctx, cx2, baseline - h, cellW, h, h >= 8 ? 3 : 2);
+    ctx.fill();
+    ctx.globalAlpha = 1;
+    if (i === 13) {
+      // امروز — حلقهٔ زمردی (هم‌قراردادِ ring-emerald-500/60 در DOM)
+      ctx.strokeStyle = uiColors.emerald[500];
+      ctx.lineWidth = 1.5;
+      roundRect(ctx, cx2 - 0.75, baseline - h - 0.75, cellW + 1.5, h + 1.5, h >= 8 ? 3.5 : 2.5);
+      ctx.stroke();
+    }
+  }
+  // سطرِ برچسبِ DOM (۱۱px سنگِ ۵۰۰) — جهتِ صریحِ RTL تا ترتیبِ «هفتهٔ پیش |
+  // این هفته» رویِ هر کارت، مستقل از حالتِ فراخوان، یکسان بماند.
+  ctx.direction = "rtl";
+  ctx.fillStyle = uiColors.stone[500];
+  ctx.font = `700 11px ${family}`;
+  ctx.textAlign = "left";
+  ctx.fillText("۱۴ روز اخیر", startX, baseline + 18);
+  ctx.textAlign = "center";
+  ctx.fillText("هفتهٔ پیش | این هفته", startX + totalCellsW / 2, baseline + 18);
+  ctx.textAlign = "right";
+  ctx.fillText("امروز", x + bandW, baseline + 18);
+  ctx.direction = prevDir;
+}
+
 export async function downloadWeeklyImage(opts: WeeklyImageOpts): Promise<boolean> {
   const c = await weeklyCanvas(opts);
   if (!c) return false;
@@ -1031,57 +1096,20 @@ async function weeklyCanvas(opts: WeeklyImageOpts): Promise<HTMLCanvasElement | 
       ctx.fillText(truncate(ctx, line, 360), W - 90, 482);
     }
 
-    // ---------- r308: نوارِ ۱۴روزهٔ هفته — زیرِ چیپها، آینهٔ نوارِ DOMِ هفته‌نامه ----------
-    // جریانِ LTRِ خودِ DOM (کهنه در چپ، امروز در راست با حلقهٔ زمردی) — نوارِ
-    // ماه‌نامه RTL است و این یکی LTR؛ هر دو از DOM کپی شدهاند نه از سلیقه.
-    // همان ارتفاعهای DOM: فعال ≥۱۰، خالی ۳، سقفِ ۴۴ بر پایهٔ بیشینهٔ پنجره؛
-    // رنگها: این‌هفته = گرادیانِ teal-600→emerald-500→lime-400، هفتهٔ پیش =
-    // سنگِ ۳۰۰، خالی = همان کلاسهای DOM با آلفا (emerald-200/60 · c-track-60).
+    // ---------- r308/r309: نوارِ ۱۴روزهٔ هفته — زیرِ چیپها، آینهٔ نوارِ DOM ----------
+    // جریانِ LTRِ خودِ DOM (کهنه در چپ، امروز در راست) — از DOM کپی شده نه از
+    // سلیقه. r309 — کشیدنِ نوار به drawWeekStrip14 منتقل شد (نقاشِ مشترک با
+    // کارتِ رسمی — هیچ کارتی نوارِ خودش را نمیکشد)؛ هندسه و رنگها دست‌نخورده.
     if (opts.weekPerDay && opts.weekPerDay.length === 14) {
-      const x0 = 90;
-      const bandW = 300; // هم‌ستونِ چیپها — نوارِ هفته پهنایِ ستونِ فعالیت را دارد
-      const gap = 3; // DOM: gap-[3px]
-      const cellW = Math.floor((bandW - 13 * gap) / 14); // ۱۸px — باقیمانده وسطِ نوار
-      const totalCellsW = 14 * cellW + 13 * gap;
-      const startX = x0 + Math.floor((bandW - totalCellsW) / 2);
-      const baseline = 572;
-      const maxTotal = Math.max(1, ...opts.weekPerDay.map((p) => p.total));
-      const grad = ctx.createLinearGradient(0, baseline, 0, baseline - 44);
-      grad.addColorStop(0, uiColors.teal[600]);
-      grad.addColorStop(0.5, uiColors.emerald[500]);
-      grad.addColorStop(1, uiColors.lime[400]);
-      for (let i = 0; i < 14; i++) {
-        const p = opts.weekPerDay[i] ?? { total: 0, inThisWeek: i >= 7 };
-        const h = Math.max(p.total > 0 ? 10 : 3, (p.total / maxTotal) * 44);
-        const cx2 = startX + i * (cellW + gap);
-        ctx.globalAlpha = p.total > 0 || p.inThisWeek ? 1 : 0.6;
-        ctx.fillStyle = p.inThisWeek
-          ? p.total > 0
-            ? grad
-            : uiColors.emerald[200]
-          : p.total > 0
-            ? uiColors.stone[300]
-            : uiColors.stone[200];
-        roundRect(ctx, cx2, baseline - h, cellW, h, h >= 8 ? 3 : 2);
-        ctx.fill();
-        ctx.globalAlpha = 1;
-        if (i === 13) {
-          // امروز — حلقهٔ زمردی (هم‌قراردادِ ring-emerald-500/60 در DOM)
-          ctx.strokeStyle = uiColors.emerald[500];
-          ctx.lineWidth = 1.5;
-          roundRect(ctx, cx2 - 0.75, baseline - h - 0.75, cellW + 1.5, h + 1.5, h >= 8 ? 3.5 : 2.5);
-          ctx.stroke();
-        }
-      }
-      // سطرِ برچسبِ DOM (۱۱px سنگِ ۵۰۰): چپ = پنجره، وسط = مرزِ دو هفته، راست = امروز
-      ctx.fillStyle = uiColors.stone[500];
-      ctx.font = `700 11px ${family}`;
+      drawWeekStrip14(ctx, { weekPerDay: opts.weekPerDay, family, x: 90, y: 572, bandW: 300 });
+      // r309 — مقدارِ «این هفته» زیرِ نوار: جمعِ ۷روزِ آخر از همان آرایهای
+      // که نوار میکشد — عددهای چیپها حالا با نوار سنجیده میشوند (منبعِ یگانه).
+      const sum7 = opts.weekPerDay.reduce((s, p, i) => (i >= 7 ? s + p.total : s), 0);
+      ctx.direction = "rtl";
       ctx.textAlign = "left";
-      ctx.fillText("۱۴ روز اخیر", startX, 590);
-      ctx.textAlign = "center";
-      ctx.fillText("هفتهٔ پیش | این هفته", startX + totalCellsW / 2, 590);
-      ctx.textAlign = "right";
-      ctx.fillText("امروز", x0 + bandW, 590);
+      ctx.fillStyle = uiColors.emerald[700];
+      ctx.font = `900 13px ${family}`;
+      ctx.fillText(`این هفته: ${faNum(sum7)} فعالیت`, 94, 614);
     }
 
     // ---------- r305/r308: برچسبِ «ماه‌نامهٔ خواندن» + سطرِ خلاصه + نوارِ ۳۰خانه‌ای ----------
@@ -1239,6 +1267,11 @@ export interface OfficialImageOpts {
    * فقط با سابقهٔ پنجره فرستاده میشود (empty=false — سیاستِ بوم‌محور)؛
    * بینِ خطِ زنجیره (۳۵۶) و ردیفِ KPI (۴۲۰) می‌نشیند — بدونِ جابجاییِ هندسه. */
   storiesMonth?: { total: number; activeDays: number; bestCount: number };
+  /** r309 — نوارِ ۱۴روزهٔ فعالیت زیرِ ردیفِ KPI (همان قراردادِ weekly —
+   * نقاشِ مشترکِ drawWeekStrip14). از همان lastNDaysِ کارنامه تغذیه میشود
+   * (reviews+quizzes = همان حسابِ KPIِ «فعالیت ۳۰ روز اخیر»)؛ همیشه ۱۴تایی
+   * با فعالیتِ صفرِ صادق. ارتفاعِ کارت +۹۲px — گپِ زیرِ KPIها سنجیده شد. */
+  weekPerDay?: { total: number; inThisWeek: boolean }[];
   /** r285/286 — نشانهای بازِ همان ارزیابیِ واحد (الزامی — الگویِ هفته‌نامه؛
    * سرشماریِ زمان-کامپایل مجریِ تغذیه است) */
   badges: { title: string; tier: BadgeTier }[];
@@ -1270,11 +1303,11 @@ async function officialCanvas(opts: OfficialImageOpts): Promise<HTMLCanvasElemen
     if (typeof document === "undefined") return null;
     const canvas = document.createElement("canvas");
     canvas.width = 1080;
-    canvas.height = 740;
+    canvas.height = 832; // r309 — +۹۲px: نوارِ ۱۴روزه زیرِ KPIها (هم‌قراردادِ هفته‌نامه)
     const ctx = canvas.getContext("2d");
     if (!ctx) return null;
     const W = 1080;
-    const H = 740;
+    const H = 832;
     studyShell(ctx, W, H, family, false);
 
     // ---------- title + letterhead ----------
@@ -1361,8 +1394,17 @@ async function officialCanvas(opts: OfficialImageOpts): Promise<HTMLCanvasElemen
       kx -= 230;
     }
 
+    // ---------- r309: نوارِ ۱۴روزهٔ فعالیت — زیرِ KPIها، هم‌قراردادِ هفته‌نامه ----------
+    // گپِ زیرِ KPIها (پایانِ جعبهها ۵۰۴ تا باندِ نشانها ۵۲۴) فقط ۲۰px بود —
+    // کارت +۹۲px بلند شد: نوار (baseline ۵۷۶، پهنایِ تمام-عرضِ ۹۴۰ مثلِ باند
+    // نشانها) + برچسبها (۵۹۴)؛ باندِ نشانها ۵۲۴→۶۱۶ رفت (+۹۲ — همان
+    // انضباطِ جابجاییِ r305: هندسهٔ ثابت ترجمه میشود، نه تاب برمی‌دارد).
+    if (opts.weekPerDay && opts.weekPerDay.length === 14) {
+      drawWeekStrip14(ctx, { weekPerDay: opts.weekPerDay, family, x: 70, y: 576, bandW: W - 140 });
+    }
+
     // ---------- badge band (نقاشِ مشترکِ خانواده — r286) ----------
-    drawBadgeBand(ctx, { badges: opts.badges, family, x: 70, y: 524, w: W - 140 });
+    drawBadgeBand(ctx, { badges: opts.badges, family, x: 70, y: 616, w: W - 140 });
 
     // ---------- footer ----------
     ctx.strokeStyle = uiColors.stone[200];

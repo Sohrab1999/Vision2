@@ -299,6 +299,13 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
       !monthReadsMemo.empty
         ? { total: monthReadsMemo.total, activeDays: monthReadsMemo.activeDays, bestCount: monthReadsMemo.best?.count ?? 0 }
         : undefined,
+    // r309 — نوارِ ۱۴روزهٔ فعالیت روی کارتِ رسمی: همان lastNDaysِ ۳۰روزهٔ
+    // همین کارنامه (reviews+quizzes = همان حسابِ KPIِ «فعالیت ۳۰ روز اخیر») —
+    // ۱۴ روزِ آخر با inThisWeekِ صریح؛ همیشه تغذیه (فعالیتِ صفرِ صادق).
+    weekPerDay:
+      mounted && month.length === 30
+        ? month.slice(-14).map((d, i) => ({ total: d.total, inThisWeek: i >= 7 }))
+        : undefined,
     badges: unlockedBadges.map((b) => ({ title: b.title, tier: b.tier })),
   });
   const [shareBusy, setShareBusy] = useState(false);

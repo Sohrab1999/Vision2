@@ -53,4 +53,34 @@ describe("downloadOfficialImage — بی‌کانواس (r286)", () => {
     });
     expect(blob).toBe(null);
   });
+
+  // r309 — نوارِ ۱۴روزه روی کارتِ رسمی: قراردادِ کاملِ ۱۴تایی هم از گاردِ
+  // بی‌کانواس میگذرد — falseِ صادق، بدونِ انفجار (نقاشِ مشترکِ drawWeekStrip14)
+  it("falseِ صادق با weekPerDayِ کاملِ ۱۴تایی (r309) — بی‌انفجار", async () => {
+    const weekPerDay = Array.from({ length: 14 }, (_, i) => ({
+      total: i >= 7 ? (i % 3) + 1 : i % 2,
+      inThisWeek: i >= 7,
+    }));
+    const ok = await downloadOfficialImage({
+      ...base,
+      weekPerDay,
+      storiesMonth: { total: 6, activeDays: 5, bestCount: 2 },
+      badges: [
+        { title: "اولین قدم", tier: "bronze" },
+        { title: "زنجیرهٔ هفتگی", tier: "silver" },
+      ],
+    });
+    expect(ok).toBe(false);
+  });
+
+  // r309 — آرایهٔ ناقص (کوتاهتر از ۱۴): نوار کشیده نمیشود و کارت نمی‌شکند —
+  // گاردِ طولِ ۱۴ همان گاردِ کارتِ هفته‌نامه است
+  it("falseِ صادق با weekPerDayِ ناقص — نوارِ خاموش، بی‌انفجار", async () => {
+    const ok = await downloadOfficialImage({
+      ...base,
+      weekPerDay: [{ total: 3, inThisWeek: true }],
+      badges: [],
+    });
+    expect(ok).toBe(false);
+  });
 });

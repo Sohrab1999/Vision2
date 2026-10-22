@@ -102,6 +102,13 @@ describe("عکسِ هفته‌نامه (Task 104)", () => {
     expect(arg.userName).toBe("میلاد");
     expect(arg.bestDay).toEqual({ label: expect.stringMatching(/۱۴\/۱۰|۳\/۱۰|.../), total: 8 });
     expect(arg.duelLine).toBeUndefined();
+    // r309 — نوارِ ۱۴روزه سنجیده میشود: جمعِ ۷روزِ آخرِ همان آرایه ===
+    // activities (۸+۲+۵) — چیپ و نوار از یک حساب، بدونِ منبعِ موازی
+    const wpd = arg.weekPerDay as { total: number; inThisWeek: boolean }[];
+    expect(wpd).toHaveLength(14);
+    expect(wpd.slice(7).reduce((s, p) => s + p.total, 0)).toBe(15);
+    expect(wpd[13]).toEqual({ total: 8, inThisWeek: true });
+    expect(wpd[4]).toEqual({ total: 5, inThisWeek: false });
     await waitFor(() => expect(btn()).not.toBeDisabled());
     expect(toastSpy.mock.calls[0][0].title).toContain("ذخیره شد");
   });
