@@ -20,7 +20,7 @@ export const lessonTheme: Record<string, LessonTheme> = {
     border: "border-emerald-200",
     gradient: "from-emerald-500 to-emerald-800",
     softText: "text-emerald-600",
-    chipBg: "bg-emerald-100 text-emerald-800",
+    chipBg: "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300",
     bar: "bg-emerald-500",
   },
   amber: {
@@ -30,7 +30,7 @@ export const lessonTheme: Record<string, LessonTheme> = {
     border: "border-amber-200",
     gradient: "from-amber-400 to-amber-700",
     softText: "text-amber-600",
-    chipBg: "bg-amber-100 text-amber-800",
+    chipBg: "bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300",
     bar: "bg-amber-500",
   },
   rose: {
@@ -40,7 +40,7 @@ export const lessonTheme: Record<string, LessonTheme> = {
     border: "border-rose-200",
     gradient: "from-rose-500 to-rose-800",
     softText: "text-rose-600",
-    chipBg: "bg-rose-100 text-rose-800",
+    chipBg: "bg-rose-100 text-rose-800 dark:bg-rose-950/60 dark:text-rose-300",
     bar: "bg-rose-500",
   },
   violet: {
@@ -50,17 +50,20 @@ export const lessonTheme: Record<string, LessonTheme> = {
     border: "border-violet-200",
     gradient: "from-violet-500 to-violet-800",
     softText: "text-violet-600",
-    chipBg: "bg-violet-100 text-violet-800",
+    chipBg: "bg-violet-100 text-violet-800 dark:bg-violet-950/60 dark:text-violet-300",
     bar: "bg-violet-500",
   },
   sky: {
     text: "text-sky-700",
-    bg: "bg-sky-700",
+    // r326 — توکنِ تاریکِ --color-sky-700 به #7dd3fc بازنگشته (برایِ جوهرِ
+    // متن) و همین بازنگشت رویِ CTA هم سوار میشود → سفیدِ CTA در تاریک
+    // رویِ آبیِ روشن می‌نشیند (۱٫۶۷). CTA در تاریک به sky-900 میرود.
+    bg: "bg-sky-700 dark:bg-sky-900",
     bgSoft: "bg-sky-50",
     border: "border-sky-200",
     gradient: "from-sky-500 to-sky-800",
     softText: "text-sky-600",
-    chipBg: "bg-sky-100 text-sky-800",
+    chipBg: "bg-sky-100 text-sky-800 dark:bg-sky-950/60 dark:text-sky-300",
     bar: "bg-sky-500",
   },
   teal: {
@@ -70,69 +73,73 @@ export const lessonTheme: Record<string, LessonTheme> = {
     border: "border-teal-200",
     gradient: "from-teal-500 to-teal-800",
     softText: "text-teal-600",
-    chipBg: "bg-teal-100 text-teal-800",
+    chipBg: "bg-teal-100 text-teal-800 dark:bg-teal-950/60 dark:text-teal-300",
     bar: "bg-teal-500",
   },
   // راند ۱۹۴ — سه خانوادهٔ جزوه‌های دهم (Vision 1)
   orange: {
     text: "text-orange-700",
-    bg: "bg-orange-700",
+    // r326 — همان درسِ sky: توکنِ --color-orange-700 → #fdba74 در تاریک.
+    bg: "bg-orange-700 dark:bg-orange-900",
     bgSoft: "bg-orange-50",
     border: "border-orange-200",
     gradient: "from-orange-500 to-orange-800",
     softText: "text-orange-600",
-    chipBg: "bg-orange-100 text-orange-800",
+    chipBg: "bg-orange-100 text-orange-800 dark:bg-orange-950/60 dark:text-orange-300",
     bar: "bg-orange-500",
   },
   indigo: {
-    text: "text-indigo-700",
+    // r326 — کرنلِ تاریک فقط هفت رنگِ اصلی را بازمیگرداند؛ عنوانهایِ
+    // -700 پنج خانوادهٔ r194/r198 در تاریک تیره میمانند (رویِ کارتِ تیره ۲٫۱-۳٫۰)
+    // — dark: variant مستقیم (توکنِ indigo-700 جوهرِ CTA هم هست — بازنگشتِ توکن اینجا ممنوع).
+    text: "text-indigo-700 dark:text-indigo-300",
     bg: "bg-indigo-700",
     bgSoft: "bg-indigo-50",
     border: "border-indigo-200",
     gradient: "from-indigo-500 to-indigo-800",
     softText: "text-indigo-600",
-    chipBg: "bg-indigo-100 text-indigo-800",
+    chipBg: "bg-indigo-100 text-indigo-800 dark:bg-indigo-950/60 dark:text-indigo-300",
     bar: "bg-indigo-500",
   },
   fuchsia: {
-    text: "text-fuchsia-700",
+    text: "text-fuchsia-700 dark:text-fuchsia-300",
     bg: "bg-fuchsia-700",
     bgSoft: "bg-fuchsia-50",
     border: "border-fuchsia-200",
     gradient: "from-fuchsia-500 to-fuchsia-800",
     softText: "text-fuchsia-600",
-    chipBg: "bg-fuchsia-100 text-fuchsia-800",
+    chipBg: "bg-fuchsia-100 text-fuchsia-800 dark:bg-fuchsia-950/60 dark:text-fuchsia-300",
     bar: "bg-fuchsia-500",
   },
   // راند ۱۹۸ — سه خانوادهٔ جزوه‌های متوسطهٔ اول (Prospect 1-3)
   pink: {
-    text: "text-pink-700",
+    text: "text-pink-700 dark:text-pink-300",
     bg: "bg-pink-700",
     bgSoft: "bg-pink-50",
     border: "border-pink-200",
     gradient: "from-pink-500 to-pink-800",
     softText: "text-pink-600",
-    chipBg: "bg-pink-100 text-pink-800",
+    chipBg: "bg-pink-100 text-pink-800 dark:bg-pink-950/60 dark:text-pink-300",
     bar: "bg-pink-500",
   },
   blue: {
-    text: "text-blue-700",
+    text: "text-blue-700 dark:text-blue-300",
     bg: "bg-blue-700",
     bgSoft: "bg-blue-50",
     border: "border-blue-200",
     gradient: "from-blue-500 to-blue-800",
     softText: "text-blue-600",
-    chipBg: "bg-blue-100 text-blue-800",
+    chipBg: "bg-blue-100 text-blue-800 dark:bg-blue-950/60 dark:text-blue-300",
     bar: "bg-blue-500",
   },
   purple: {
-    text: "text-purple-700",
+    text: "text-purple-700 dark:text-purple-300",
     bg: "bg-purple-700",
     bgSoft: "bg-purple-50",
     border: "border-purple-200",
     gradient: "from-purple-500 to-purple-800",
     softText: "text-purple-700",
-    chipBg: "bg-purple-100 text-purple-800",
+    chipBg: "bg-purple-100 text-purple-800 dark:bg-purple-950/60 dark:text-purple-300",
     bar: "bg-purple-500",
   },
 };
@@ -187,18 +194,21 @@ export function timeAgoFa(iso: string): string {
 // گرادیان آواتار per رنگ — قبلاً در header.tsx زندگی می‌کرد؛ اکنون ثابت مشترک
 // است (header، onboarding، rush-board، avatar-dot) — گام ۷.۲-ج §12
 export const avatarClasses: Record<string, string> = {
-  emerald: "bg-gradient-to-br from-emerald-400 to-emerald-700 shadow-emerald-700/30",
-  amber: "bg-gradient-to-br from-amber-400 to-orange-600 shadow-orange-600/30",
-  rose: "bg-gradient-to-br from-rose-400 to-rose-700 shadow-rose-700/30",
-  violet: "bg-gradient-to-br from-violet-400 to-purple-700 shadow-purple-700/30",
-  sky: "bg-gradient-to-br from-sky-400 to-cyan-700 shadow-cyan-700/30",
-  orange: "bg-gradient-to-br from-orange-400 to-orange-700 shadow-orange-700/30",
-  indigo: "bg-gradient-to-br from-indigo-400 to-indigo-700 shadow-indigo-700/30",
-  fuchsia: "bg-gradient-to-br from-fuchsia-400 to-fuchsia-700 shadow-fuchsia-700/30",
+  // r326 — دایرههایِ آواتار با جوهرِ سفید رویِ استاپِ -400 می‌درخشیدند
+  // (emerald-400 = ۱٫۹۴) — جفتهایِ عمیقِ سنجیدهشده (سفید ≥ 4.5 رویِ هر دو
+  // استاپ، مصون از توکن‌کرنلِ تاریک؛ sky/orange چون 700-800 توکنشان بازنگشته به -900 میرند).
+  emerald: "bg-gradient-to-br from-emerald-700 to-emerald-950 shadow-emerald-900/30",
+  amber: "bg-gradient-to-br from-amber-700 to-orange-900 shadow-orange-900/30",
+  rose: "bg-gradient-to-br from-rose-600 to-rose-950 shadow-rose-900/30",
+  violet: "bg-gradient-to-br from-violet-600 to-purple-900 shadow-purple-900/30",
+  sky: "bg-gradient-to-br from-sky-900 to-cyan-900 shadow-cyan-900/30",
+  orange: "bg-gradient-to-br from-orange-900 to-orange-950 shadow-orange-950/30",
+  indigo: "bg-gradient-to-br from-indigo-600 to-indigo-900 shadow-indigo-900/30",
+  fuchsia: "bg-gradient-to-br from-fuchsia-700 to-fuchsia-900 shadow-fuchsia-900/30",
   // راند ۱۹۸ — متوسطهٔ اول
-  pink: "bg-gradient-to-br from-pink-400 to-pink-700 shadow-pink-700/30",
-  blue: "bg-gradient-to-br from-blue-400 to-blue-700 shadow-blue-700/30",
-  purple: "bg-gradient-to-br from-purple-400 to-purple-700 shadow-purple-700/30",
+  pink: "bg-gradient-to-br from-pink-700 to-pink-900 shadow-pink-900/30",
+  blue: "bg-gradient-to-br from-blue-700 to-blue-900 shadow-blue-900/30",
+  purple: "bg-gradient-to-br from-purple-700 to-purple-900 shadow-purple-900/30",
 };
 
 // راند ۲۳۹ — حلقهٔ کیبوردِ واحدِ درهایِ «ادامهٔ مطالعه» (بندِ ② پیشنهادِ ۲۳۸):

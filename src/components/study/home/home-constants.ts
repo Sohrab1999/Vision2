@@ -31,16 +31,27 @@ const personalDictCategoryLabels: Record<string, string> = {
 };
 
 export const spineColors: Record<string, string> = {
-  emerald: "bg-gradient-to-b from-emerald-500 to-emerald-800",
-  amber: "bg-gradient-to-b from-amber-400 to-amber-700",
-  rose: "bg-gradient-to-b from-rose-500 to-rose-800",
-  violet: "bg-gradient-to-b from-violet-500 to-violet-800",
-  sky: "bg-gradient-to-b from-sky-500 to-sky-800",
-  teal: "bg-gradient-to-b from-teal-500 to-teal-800",
+  // r326 — جفت‌هایِ عمیقِ سنجیده‌شده: جوهرِ سفید باید رویِ «هر دو استاپ»
+  // ≥4.5 بماند و هر دو استاپ باید از بازنگشتِ توکنِ تاریک (
+  // --color-sky-700→#7dd3fc و امثالش) مصون باشند — سویپِ کنتراستِ r326:
+  // سفید رویِ from-amber-400 (عineٔ L2) = ۱٫۶۳ و در تاریکِ to-sky-800 = ۱٫۵۹.
+  // پس tops ≥ -600/-700 (یا -900 برایِ sky/orange که توکنهایشان بازنگشته)
+  // و bottoms همه -950 (مصون از توکن‌کرنل). سنجشِ پسااصلاح در qa-r326.
+  // + سه کلیدِ جاافتادهٔ r198 (pink/blue/purple) که تا امروز به fallbackِ
+  // stone-600 میافتادند — راندهای r198 کلیدشان را به نقشه اضافه نکردند.
+  emerald: "bg-gradient-to-b from-emerald-700 to-emerald-950",
+  amber: "bg-gradient-to-b from-amber-700 to-amber-950",
+  rose: "bg-gradient-to-b from-rose-600 to-rose-950",
+  violet: "bg-gradient-to-b from-violet-600 to-violet-950",
+  sky: "bg-gradient-to-b from-sky-900 to-sky-950",
+  teal: "bg-gradient-to-b from-teal-700 to-teal-950",
   // راند ۱۹۴ — عصب‌های جزوه‌های دهم
-  orange: "bg-gradient-to-b from-orange-500 to-orange-800",
-  indigo: "bg-gradient-to-b from-indigo-500 to-indigo-800",
-  fuchsia: "bg-gradient-to-b from-fuchsia-500 to-fuchsia-800",
+  orange: "bg-gradient-to-b from-orange-900 to-orange-950",
+  indigo: "bg-gradient-to-b from-indigo-600 to-indigo-950",
+  fuchsia: "bg-gradient-to-b from-fuchsia-700 to-fuchsia-950",
+  pink: "bg-gradient-to-b from-pink-700 to-pink-950",
+  blue: "bg-gradient-to-b from-blue-700 to-blue-950",
+  purple: "bg-gradient-to-b from-purple-700 to-purple-950",
 };
 
 // motivational one-liner per lesson card, from the known-vocab percentage

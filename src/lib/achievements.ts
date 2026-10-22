@@ -974,16 +974,24 @@ export const BADGES: BadgeDef[] = [
   },
 ];
 
-export const TIER_STYLE: Record<BadgeTier, { ring: string; grad: string; chip: string; glow: string }> = {
+export const TIER_STYLE: Record<BadgeTier, { ring: string; grad: string; chip: string; glow: string; ink?: string; dim?: string }> = {
+  // r326 — جوهرِ سفید رویِ گرادیانِ نشانهایِ بازشده می‌درخشید: برنزِ
+  // from-amber-400 = ۱٫۶۳ و طلایِ from-yellow-400 = ۱٫۵۷ (سویپِ r326).
+  // درمانِ همان الگویِ heatInkِ r325: جوهرِ تیرهٔ هم‌خانوادهٔ تیر رویِ
+  // گرادیانِ روشنِ آفتابی؛ نقره گرادیانِ عمیقتر گرفت تا سفید بماند.
   bronze: {
     ring: "border-amber-300",
     grad: "from-amber-400 to-orange-600",
     chip: "bg-amber-100 text-amber-800",
     glow: "shadow-amber-500/30",
+    ink: "text-amber-950",
+    dim: "text-amber-950/80",
   },
   silver: {
     ring: "border-slate-300",
-    grad: "from-slate-400 to-slate-600",
+    // r326 — سفید رویِ from-slate-400 = ۲٫۶۳؛ گرادیان به جفتِ ۶۰۰/۸۰۰
+    // رفت تا سفید رویِ هر دو استاپ ≥۴٫۵ بماند (۵٫۹/۱۱٫۵).
+    grad: "from-slate-600 to-slate-800",
     chip: "bg-slate-100 text-slate-700",
     glow: "shadow-slate-500/30",
   },
@@ -992,6 +1000,8 @@ export const TIER_STYLE: Record<BadgeTier, { ring: string; grad: string; chip: s
     grad: "from-yellow-400 to-amber-600",
     chip: "bg-yellow-100 text-yellow-800",
     glow: "shadow-yellow-500/40",
+    ink: "text-yellow-950",
+    dim: "text-yellow-950/80",
   },
 };
 
