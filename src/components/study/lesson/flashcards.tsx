@@ -312,12 +312,14 @@ export default function Flashcards({
               <Hand size={12} /> برای دیدن معنی کلیک کنید
             </span>
           </div>
-          {/* back: Persian */}
-          <div className={`flip-face back flex flex-col items-center justify-center gap-3 rounded-2xl border-2 bg-gradient-to-br p-6 text-white shadow-lg ${t.gradient}`}>
+          {/* back: Persian — r333: جفتِ عمیقِ gradientDeep (زوجهایِ زندهسنجیدهٔ
+              آواتارها، سفید ≥ 4.5 رویِ هر دو استاپ)؛ استاپِ روشنِ gradient
+              زیرِ سفیدِ پشتِ کارت ۲٫۰۵-۲٫۴۷ می‌داد */}
+          <div className={`flip-face back flex flex-col items-center justify-center gap-3 rounded-2xl border-2 bg-gradient-to-br p-6 text-white shadow-lg ${t.gradientDeep}`}>
             <div className="text-center text-2xl font-black leading-relaxed sm:text-3xl">
               {word.fa}
             </div>
-            <div className="en-text text-sm opacity-80" dir="ltr">
+            <div className="en-text text-sm" dir="ltr">
               {word.en}
             </div>
             {pairs.length > 0 && (
@@ -332,14 +334,14 @@ export default function Flashcards({
                     }}
                     title="روخوانی جفت"
                     aria-label={`${p.kind === "syn" ? "مترادف" : "متضاد"}ِ ${word.en}: ${p.other} — روخوانی`}
-                    className="flip-pair-chip inline-flex items-center gap-0.5 rounded-md border border-white/35 bg-white/15 px-1.5 py-0.5 text-[10.5px] font-bold text-white transition-[background-color,color,border-color,transform] hover:bg-white/25 active:scale-[0.96]"
+                    className="flip-pair-chip inline-flex items-center gap-0.5 rounded-md border border-white/30 bg-black/20 px-1.5 py-0.5 text-[10.5px] font-bold text-white transition-[background-color,color,border-color,transform] hover:bg-black/30 active:scale-[0.96]"
                   >
                     <span aria-hidden className="font-black">{p.kind === "syn" ? "≈" : "↔"}</span>
                     <span dir="ltr">{p.other}</span>
                   </button>
                 ))}
                 {pairs.length > 3 && (
-                  <span className="rounded-md bg-white/15 px-1.5 py-0.5 text-[10.5px] font-bold text-white/85">
+                  <span className="rounded-md bg-black/20 px-1.5 py-0.5 text-[10.5px] font-bold text-white/90">
                     +{faNum(pairs.length - 3)}
                   </span>
                 )}
@@ -362,7 +364,7 @@ export default function Flashcards({
                   }}
                   title="کاربرد این واژه در مکالمه‌ها و ریدینگ‌های جزوه"
                   aria-label={`کاربرد ${word.en} در مکالمه‌ها و ریدینگ‌ها — ${faNum(sites.length)} مورد`}
-                  className="flip-pair-chip inline-flex items-center gap-1 rounded-md border border-white/35 bg-white/15 px-1.5 py-0.5 text-[10.5px] font-bold text-white transition-[background-color,color,border-color,transform] hover:bg-white/25 active:scale-[0.96]"
+                  className="flip-pair-chip inline-flex items-center gap-1 rounded-md border border-white/30 bg-black/20 px-1.5 py-0.5 text-[10.5px] font-bold text-white transition-[background-color,color,border-color,transform] hover:bg-black/30 active:scale-[0.96]"
                 >
                   <BookOpenText size={11} aria-hidden />
                   در جزوه · {faNum(sites.length)}

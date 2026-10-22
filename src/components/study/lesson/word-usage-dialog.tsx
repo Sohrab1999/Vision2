@@ -366,7 +366,7 @@ function WordUsageDialogBody({
                 <span
                   data-testid="usage-site-lesson"
                   title={`این کاربرد از واژگانِ درسِ ${faNum(s.lessonId)} است`}
-                  className="ms-auto inline-flex items-center rounded-md border border-stone-200 bg-stone-100 px-1.5 py-0.5 text-[10px] font-black text-stone-600 dark:border-stone-600 dark:bg-stone-700 dark:text-stone-300"
+                  className="ms-auto inline-flex items-center rounded-md border border-stone-200 bg-stone-100 px-1.5 py-0.5 text-[10px] font-black text-stone-600 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-300"
                 >
                   درس {faNum(s.lessonId)}
                 </span>

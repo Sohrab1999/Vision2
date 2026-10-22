@@ -6,6 +6,13 @@ export interface LessonTheme {
   bgSoft: string;
   border: string;
   gradient: string;
+  /** r333 — جفتِ عمیقِ مخصوصِ سطوحی که جوهرِ سفید حمل میکنند (پشتِ
+   * فلشکارت). استاپِ روشنِ gradient (-400/-500) زیرِ سفید ۲٫۰-۲٫۵
+   * می‌داد (پروبِ زندهٔ r333: ۲٫۰۵ متنِ ۱۴px، ۲٫۴۷ عنوانِ بزرگ) —
+   * همان تلهٔ «جوهر-روی-استاپِ گرادیان»ی که r330 در نبرد و r326 در
+   * آواتارها درمان کرد. جفتها عینِ زوجهایِ زندهسنجیدهٔ avatarClasses
+   * هستند: سفید ≥ 4.5 رویِ هر دو استاپ در هر یازده خانواده. */
+  gradientDeep: string;
   softText: string;
   chipBg: string;
   /** نوارِ لِجند/پیشرفتِ توپرِ همان خانواده — راند ۱۹۴ (دوناتِ نه‌درسی) */
@@ -19,6 +26,7 @@ export const lessonTheme: Record<string, LessonTheme> = {
     bgSoft: "bg-emerald-50",
     border: "border-emerald-200",
     gradient: "from-emerald-500 to-emerald-800",
+    gradientDeep: "from-emerald-700 to-emerald-950",
     softText: "text-emerald-600",
     chipBg: "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300",
     bar: "bg-emerald-500",
@@ -29,6 +37,7 @@ export const lessonTheme: Record<string, LessonTheme> = {
     bgSoft: "bg-amber-50",
     border: "border-amber-200",
     gradient: "from-amber-400 to-amber-700",
+    gradientDeep: "from-amber-700 to-orange-900",
     softText: "text-amber-600",
     chipBg: "bg-amber-100 text-amber-800 dark:bg-amber-950/60 dark:text-amber-300",
     bar: "bg-amber-500",
@@ -39,6 +48,7 @@ export const lessonTheme: Record<string, LessonTheme> = {
     bgSoft: "bg-rose-50",
     border: "border-rose-200",
     gradient: "from-rose-500 to-rose-800",
+    gradientDeep: "from-rose-600 to-rose-950",
     softText: "text-rose-600",
     chipBg: "bg-rose-100 text-rose-800 dark:bg-rose-950/60 dark:text-rose-300",
     bar: "bg-rose-700",
@@ -49,6 +59,7 @@ export const lessonTheme: Record<string, LessonTheme> = {
     bgSoft: "bg-violet-50",
     border: "border-violet-200",
     gradient: "from-violet-500 to-violet-800",
+    gradientDeep: "from-violet-600 to-purple-900",
     softText: "text-violet-600",
     // r327 — dark:text-violet-300 تلهٔ توکن داشت: --color-violet-300 در
     // تاریک به rgba(130,100,190,.55) سنجاق است (تنها -۳۰۰ با پینِ توکن —
@@ -66,6 +77,7 @@ export const lessonTheme: Record<string, LessonTheme> = {
     bgSoft: "bg-sky-50",
     border: "border-sky-200",
     gradient: "from-sky-500 to-sky-800",
+    gradientDeep: "from-sky-900 to-cyan-900",
     softText: "text-sky-600",
     chipBg: "bg-sky-100 text-sky-800 dark:bg-sky-950/60 dark:text-sky-300",
     bar: "bg-sky-500",
@@ -76,6 +88,7 @@ export const lessonTheme: Record<string, LessonTheme> = {
     bgSoft: "bg-teal-50",
     border: "border-teal-200",
     gradient: "from-teal-500 to-teal-800",
+    gradientDeep: "from-teal-700 to-teal-900",
     softText: "text-teal-600",
     chipBg: "bg-teal-100 text-teal-800 dark:bg-teal-950/60 dark:text-teal-300",
     bar: "bg-teal-500",
@@ -88,6 +101,7 @@ export const lessonTheme: Record<string, LessonTheme> = {
     bgSoft: "bg-orange-50",
     border: "border-orange-200",
     gradient: "from-orange-500 to-orange-800",
+    gradientDeep: "from-orange-900 to-orange-950",
     softText: "text-orange-600",
     chipBg: "bg-orange-100 text-orange-800 dark:bg-orange-950/60 dark:text-orange-300",
     bar: "bg-orange-500",
@@ -101,6 +115,7 @@ export const lessonTheme: Record<string, LessonTheme> = {
     bgSoft: "bg-indigo-50",
     border: "border-indigo-200",
     gradient: "from-indigo-500 to-indigo-800",
+    gradientDeep: "from-indigo-600 to-indigo-900",
     softText: "text-indigo-600",
     chipBg: "bg-indigo-100 text-indigo-800 dark:bg-indigo-950/60 dark:text-indigo-300",
     bar: "bg-indigo-500",
@@ -111,6 +126,7 @@ export const lessonTheme: Record<string, LessonTheme> = {
     bgSoft: "bg-fuchsia-50",
     border: "border-fuchsia-200",
     gradient: "from-fuchsia-500 to-fuchsia-800",
+    gradientDeep: "from-fuchsia-700 to-fuchsia-900",
     softText: "text-fuchsia-600",
     chipBg: "bg-fuchsia-100 text-fuchsia-800 dark:bg-fuchsia-950/60 dark:text-fuchsia-300",
     bar: "bg-fuchsia-500",
@@ -122,6 +138,7 @@ export const lessonTheme: Record<string, LessonTheme> = {
     bgSoft: "bg-pink-50",
     border: "border-pink-200",
     gradient: "from-pink-500 to-pink-800",
+    gradientDeep: "from-pink-700 to-pink-900",
     softText: "text-pink-600",
     chipBg: "bg-pink-100 text-pink-800 dark:bg-pink-950/60 dark:text-pink-300",
     bar: "bg-pink-500",
@@ -132,6 +149,7 @@ export const lessonTheme: Record<string, LessonTheme> = {
     bgSoft: "bg-blue-50",
     border: "border-blue-200",
     gradient: "from-blue-500 to-blue-800",
+    gradientDeep: "from-blue-700 to-blue-900",
     softText: "text-blue-600",
     chipBg: "bg-blue-100 text-blue-800 dark:bg-blue-950/60 dark:text-blue-300",
     bar: "bg-blue-500",
@@ -142,6 +160,7 @@ export const lessonTheme: Record<string, LessonTheme> = {
     bgSoft: "bg-purple-50",
     border: "border-purple-200",
     gradient: "from-purple-500 to-purple-800",
+    gradientDeep: "from-purple-700 to-purple-900",
     softText: "text-purple-700",
     chipBg: "bg-purple-100 text-purple-800 dark:bg-purple-950/60 dark:text-purple-300",
     bar: "bg-purple-500",

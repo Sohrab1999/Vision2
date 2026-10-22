@@ -153,7 +153,7 @@ describe("«کاربرد در جزوه» — پشتِ فلش‌کارت (r253 �
     const chip = screen.getByTestId("flash-usage-chip");
     expect(chip).toHaveTextContent("در جزوه");
     expect(chip).toHaveTextContent(faNum(1));
-    expect(chip.className).toContain("bg-white/15"); // ایدئومِ سفیدِ پشتِ کارت
+    expect(chip.className).toContain("bg-black/20"); // ایدئومِ حجابِ تیرهٔ r333 (تینتِ سفیدِ کهنه ۲٫۲ می‌داد)
     fireEvent.click(chip);
     // دیالوگِ مشترک با همان قراردادِ r252
     const dialog = screen.getByTestId("usage-dialog");

@@ -56,7 +56,7 @@ export default function BookletTab({ lesson }: { lesson: LessonData }) {
           onClick={() => setFilter("all")}
           aria-pressed={filter === "all"}
           className={`rounded-full px-3.5 py-2 text-[12px] font-bold transition-[background-color,color,box-shadow] ${
-            filter === "all" ? `${t.bg} text-white shadow-sm` : "c-card text-stone-500 hover:text-stone-700"
+            filter === "all" ? `${t.bg} text-white shadow-sm` : "c-card text-stone-600 hover:text-stone-700"
           }`}
         >
           همهٔ بخش‌ها
@@ -71,7 +71,7 @@ export default function BookletTab({ lesson }: { lesson: LessonData }) {
               onClick={() => setFilter(active ? "all" : kind)}
               aria-pressed={active}
               className={`flex items-center gap-1.5 rounded-full px-3.5 py-2 text-[12px] font-bold transition-[background-color,color,box-shadow] ${
-                active ? `${t.bg} text-white shadow-sm` : "c-card text-stone-500 hover:text-stone-700"
+                active ? `${t.bg} text-white shadow-sm` : "c-card text-stone-600 hover:text-stone-700"
               }`}
             >
               <Icon size={13} />
