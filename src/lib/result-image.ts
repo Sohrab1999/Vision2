@@ -988,31 +988,43 @@ function drawWeekStrip14(
   ctx.fillText("هفتهٔ پیش | این هفته", startX + totalCellsW / 2, baseline + 18);
   ctx.textAlign = "right";
   ctx.fillText("امروز", x + bandW, baseline + 18);
-  // r310 — سطرِ مقایسهٔ دوهفته‌ای (baseline+42): جمعِ هر نیمه از همان آرایهٔ
-  // نوار (weekStripSums — نقاش و آزمون یک منبع) — هفتهٔ پیش سنگِ ۵۰۰ (رنگِ
-  // میلههایِ هفتهٔ پیش)، این هفته زمردیِ ۷۰۰ (خانوادهٔ گرادیان/چیپهایِ همین
-  // هفتهای). فعال بودنِ نوار یعنی این سطر هم هست — صفرِ صادق چاپ میشود.
+  // r310/r311 — سطرِ مقایسهٔ دوهفته‌ای (baseline+42): r311 جملهٔ جهتیِ خواندنی
+  // به‌جای دو عددِ خام — «۱۷ بیشتر از هفتهٔ پیش» (زمردیِ ۷۰۰) / «۴ کمتر از
+  // هفتهٔ پیش» (rose-۶۰۰ — توجهِ ملایم) / «هم‌پایِ هفتهٔ پیش» (سنگِ ۵۰۰)،
+  // از همان weekStripSums (delta = current − prev، قدرمطلق در جمله). ترتیبِ
+  // بصری: «این هفته» (لنگرِ زمردی، هم‌وزنِ گرادیان/چیپها) در راست می‌ماند و
+  // جملهٔ جهتی در چپ — خوانندهٔ فارسی (راست→چپ) اولِ این هفته را میخواند
+  // بعد جهت را؛ پیوستگیِ با r310 (لنگر در راست) حفظ شد.
   const sums = weekStripSums(weekPerDay);
   ctx.textAlign = "left";
-  ctx.fillStyle = uiColors.stone[500];
+  const dAbs = Math.abs(sums.delta);
+  const dirTxt =
+    sums.delta > 0
+      ? `${faNum(dAbs)} بیشتر از هفتهٔ پیش`
+      : sums.delta < 0
+        ? `${faNum(dAbs)} کمتر از هفتهٔ پیش`
+        : "هم‌پایِ هفتهٔ پیش";
+  ctx.fillStyle =
+    sums.delta > 0 ? uiColors.emerald[700] : sums.delta < 0 ? uiColors.rose[600] : uiColors.stone[500];
   ctx.font = `700 13px ${family}`;
-  const prevTxt = `هفتهٔ پیش: ${faNum(sums.prev)}`;
-  ctx.fillText(prevTxt, startX, baseline + 42);
-  const prevW = ctx.measureText(prevTxt).width;
+  ctx.fillText(dirTxt, startX, baseline + 42);
+  const dirW = ctx.measureText(dirTxt).width;
   ctx.fillStyle = uiColors.emerald[700];
   ctx.font = `900 13px ${family}`;
-  ctx.fillText(`· این هفته: ${faNum(sums.current)} فعالیت`, startX + prevW + 6, baseline + 42);
+  ctx.fillText(`· این هفته: ${faNum(sums.current)} فعالیت`, startX + dirW + 6, baseline + 42);
   ctx.direction = prevDir;
 }
 
-/** r310 — جمعِ دو نیمهٔ نوارِ ۱۴روزه — مقایسهٔ دوهفته‌ای از یک منبعِ یگانه:
- * نقاشِ drawWeekStrip14 و آزمون‌ها هر دو همین را میخوانند — هیچ جمعِ موازیای
- * در هیچ کارتی حساب نمیشود. ورودی همان weekPerDay (کهنه→امروز، ۱۴تایی). */
-export function weekStripSums(weekPerDay: { total: number }[]): { prev: number; current: number } {
-  return {
-    prev: weekPerDay.slice(0, 7).reduce((s, p) => s + p.total, 0),
-    current: weekPerDay.slice(7).reduce((s, p) => s + p.total, 0),
-  };
+/** r310/r311 — جمعِ دو نیمهٔ نوارِ ۱۴روزه + جهت — مقایسهٔ دوهفته‌ای از یک
+ * منبعِ یگانه: نقاشِ drawWeekStrip14 و آزمون‌ها هر دو همین را میخوانند —
+ * هیچ جمعِ موازیای در هیچ کارتی حساب نمیشود. delta = current − prev:
+ * مثبت = رشد، منفی = افت، صفر = هم‌پا. ورودی همان weekPerDay (۱۴تایی). */
+export function weekStripSums(
+  weekPerDay: { total: number }[]
+): { prev: number; current: number; delta: number } {
+  const prev = weekPerDay.slice(0, 7).reduce((s, p) => s + p.total, 0);
+  const current = weekPerDay.slice(7).reduce((s, p) => s + p.total, 0);
+  return { prev, current, delta: current - prev };
 }
 
 export async function downloadWeeklyImage(opts: WeeklyImageOpts): Promise<boolean> {

@@ -94,6 +94,7 @@ export const WEEKLY_TREND_COLUMNS = [
   "دیکته",
   "برق‌آسا",
   "مجموع",
+  "تفاوت با هفتهٔ پیش",
   "روزهای فعال",
   "روزهای هدف",
 ] as const;
@@ -107,6 +108,10 @@ export function buildWeeklyTrendCsv(
 ): string {
   const goalSet = new Set(input.goalMetDays ?? []);
   const lines: string[] = [WEEKLY_TREND_COLUMNS.join(",")];
+  // r311 — ستونِ «تفاوت با هفتهٔ پیش» — هم‌قراردادِ ستونِ جمعِ فزایندهٔ
+  // ماه‌نامه: عددیِ مشتق از همین سطرها، بدونِ سطرِ خلاصهٔ بیرونِ جدول.
+  // کهنه‌ترین سطر پیشینِ درون-فایلی ندارد → خانهٔ تهیِ صادق (نه صفرِ دروغین).
+  let prevGrand: number | null = null;
   // پنجره‌هایِ ۷روزه‌یِ ناپیوسته که امروزی‌ترینشان امرو کار می‌کند؛
   // قدیمی‌ترین هفته اول می‌آید (خطِ زمانِ اکسل مثل ۱۶۹: قدیم → نو)
   for (let w = weeks - 1; w >= 0; w -= 1) {
@@ -133,6 +138,8 @@ export function buildWeeklyTrendCsv(
       if (goalSet.has(day)) t.goalDays += 1;
     }
     const grand = t.reviews + t.quizzes + t.words + t.dictation + t.rush;
+    const deltaCell = prevGrand === null ? "" : String(grand - prevGrand);
+    prevGrand = grand;
     lines.push(
       [
         endKey,
@@ -143,6 +150,7 @@ export function buildWeeklyTrendCsv(
         t.dictation,
         t.rush,
         grand,
+        deltaCell,
         t.activeDays,
         t.goalDays,
       ].join(",")
