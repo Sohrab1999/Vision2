@@ -565,7 +565,7 @@ describe("globals.css translucent veil layer (Step 9 tranche 4 phase 4 — Task 
     expect(offenders, "translucent surfaces paint via c-veil-60/70, never raw bg-white alphas").toEqual([]);
   });
 
-  it("c-veil consumers exist exactly where the r87 matrix said (20 across 12 files)", () => {
+  it("c-veil consumers exist exactly where the r87 matrix said (23 across 12 files)", () => {
     const files = [
       "src/components/study/home/home-feed.tsx",
       "src/components/study/duel/leaderboard.tsx",
@@ -590,7 +590,8 @@ describe("globals.css translucent veil layer (Step 9 tranche 4 phase 4 — Task 
     // Task 186: weekly-report +۱ دیگر — نوارِ «گامِ بعدی» (پیشنهادِ کانونی، بالایِ دایجست)
     // r284: weekly-report +۱ سوم — نوارِ «نشان‌های من» (هم‌باندِ c-veil-60، زیرِ گامِ بعدی)
     // r297: weekly-report +۱ چهارم — نوارِ «کتاب‌خانهٔ داستان‌ها» (زیرِ نشان‌ها، هم‌باندِ c-veil-60)
-    expect(total).toBe(22);
+    // r313: weekly-report +۱ پنجم — باندِ «ستونهایِ خروجیهایِ اکسل» (هم‌باندِ دستورِ رنگ‌ها)
+    expect(total).toBe(23);
   });
 });
 

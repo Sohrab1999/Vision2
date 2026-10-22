@@ -161,12 +161,13 @@ export default function WeeklyReportSection() {
         : { title: "خطا در ساخت فایل", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
     );
   };
-  // r305 — ماه‌نامهٔ خواندن: برشِ ۳۰روزهٔ داستان‌ها از همان monthReads — CSVِ معلم‌نگر
+  // r305 — ماه‌نامهٔ خواندن: برشِ ۳۰روزهٔ داستان‌ها از همان monthReads — CSVِ معلم‌نگر؛
+  // r313 — toast هم زبانِ ۶ستونیِ r312 را میگوید (هم‌زبانِ برچسبِ دکمه)
   const saveMonthCsv = () => {
     const ok = downloadMonthCsv(dayHistory, daysAgoKey(0));
     toast(
       ok
-        ? { title: "🗓 ماه‌نامهٔ خواندن ذخیره شد", description: "۳۰ سطرِ روزانه با جمعِ فزاینده — آمادهٔ اکسل.", duration: 3000 }
+        ? { title: "🗓 ماه‌نامهٔ خواندن ذخیره شد", description: "۳۰ سطرِ روزانه با جمعِ فزاینده و ستونهایِ هفت‌روزه — آمادهٔ اکسل.", duration: 3000 }
         : { title: "خطا در ساخت فایل", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
     );
   };
@@ -359,25 +360,60 @@ export default function WeeklyReportSection() {
           >
             <FileDown size={15} aria-hidden />
           </button>
-          {/* تسک ۱۷۸ — روندِ ۴هفته‌ای: هر هفته یک سطر برای معلم */}
+          {/* تسک ۱۷۸ — روندِ ۴هفته‌ای: هر هفته یک سطر برای معلم؛
+              r313 — tooltip ستونِ تفاوتِ r311 را هم می‌نامد */}
           <button
             onClick={saveTrendCsv}
             aria-label="دانلود روند ۴هفته‌ای CSV"
-            title="روندِ ۴هفته‌ای CSV — هر هفته یک سطر با روزهای فعال و هدف"
+            title="روندِ ۴هفته‌ای CSV — هر هفته یک سطر با تفاوت با هفتهٔ پیش، روزهای فعال و هدف"
             className="rounded-lg p-1.5 text-stone-500 transition-colors hover:bg-stone-100 hover:text-teal-600"
           >
             <BarChart3 size={15} aria-hidden />
           </button>
-          {/* r305 — ماه‌نامهٔ خواندن CSV: ستونِ داستان‌ها تا امروز در هیچ خروجی‌ای نبود */}
+          {/* r305 — ماه‌نامهٔ خواندن CSV: ستونِ داستان‌ها تا امروز در هیچ خروجی‌ای نبود؛
+              r313 — tooltip هم‌زبانِ ستونهایِ واقعی شد (r311/r312 ستونهای تازه را می‌نامد) */}
           <button
             onClick={saveMonthCsv}
             aria-label="دانلود ماه‌نامهٔ خواندن CSV"
-            title="ماه‌نامهٔ خواندن CSV — ۳۰ سطرِ روزانهٔ داستان با جمعِ فزاینده"
+            title="ماه‌نامهٔ خواندن CSV — ۳۰ سطرِ روزانهٔ داستان با جمعِ فزاینده، جمعِ هفت‌روزه و تفاوت با هفت‌روزهٔ پیش"
             className="rounded-lg p-1.5 text-stone-500 transition-colors hover:bg-stone-100 hover:text-teal-600"
           >
             <CalendarDays size={15} aria-hidden />
           </button>
         </div>
+      </div>
+
+      {/* r313 — برچسبِ ستونهایِ خروجیهایِ اکسل همان‌جای دکمهها: معلمِ اکسلخوان
+          پیش از دانلود میداند هر فایل چند ستون و چه ستونهای تازهای دارد
+          (r311: تفاوت با هفتهٔ پیش در روند / r312: دو ستونِ هفت‌روزه در ماه‌نامه)؛
+          aria==title هم‌قراردادِ دستور رنگ‌ها */}
+      <div
+        className="report-csv-hint mb-3 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-lg c-veil-60 px-2.5 py-2"
+        title="ستونهایِ خروجیهایِ اکسل"
+        aria-label="ستونهایِ خروجیهایِ اکسل"
+      >
+        <span className="flex items-center gap-1 text-[9.5px] font-extrabold text-stone-500">
+          <FileDown size={11} className="text-teal-600" aria-hidden />
+          خروجیهایِ اکسل:
+        </span>
+        <span
+          className="text-[9.5px] font-bold text-stone-500"
+          title="جدولِ ۳۵روزه — ۸ ستون: تاریخ، روز هفته، مرور، آزمون، واژهٔ نو، دیکته، برق‌آسا، مجموع"
+        >
+          ۳۵روزه: ۸ ستون
+        </span>
+        <span
+          className="text-[9.5px] font-bold text-stone-500"
+          title="روندِ ۴هفته‌ای — ۱۱ ستون: پنج شمارنده، مجموع، تفاوت با هفتهٔ پیش، روزهای فعال و هدف"
+        >
+          روندِ ۴هفته‌ای: ۱۱ ستون (با تفاوت با هفتهٔ پیش)
+        </span>
+        <span
+          className="text-[9.5px] font-bold text-stone-500"
+          title="ماه‌نامهٔ خواندن — ۶ ستون: تاریخ، روز هفته، داستانها، جمعِ فزاینده، جمعِ هفت‌روزه، تفاوت با هفت‌روزهٔ پیش"
+        >
+          ماه‌نامهٔ خواندن: ۶ ستون (با جمعِ هفت‌روزه و تفاوتش)
+        </span>
       </div>
 
       {/* delta chips — this week vs the one before */}
