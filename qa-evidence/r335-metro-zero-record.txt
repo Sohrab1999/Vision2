@@ -1,0 +1,36 @@
+### r335 — رکوردِ صفرِ نهاییِ متروی گرامر + جریانِ درس (پس از درمانِ ۳۱ گروه) — هر شش صحنه × دو تم = ۰
+
+########## بذرِ r324 + خانه (روشن ۳۹۰)
+########## MAP-باز (نقشهٔ کامل)
+"ok"
+-- [contrast] map-light
+"{\"probed\":162,\"fails\":0,\"failsList\":[]}"
+
+-- [basis-zero] map-light
+"{\"total\":0,\"rowItems\":0,\"truncated\":0,\"suspects\":[]}"
+
+-- [contrast] map-dark
+"{\"probed\":162,\"fails\":0,\"failsList\":[]}"
+
+########## دیالوگِ ایستگاهِ بازِ نخستین خطِ آسمان (Passive)
+"ok"
+"DIALOG-OPEN"
+-- [contrast] dialog-light
+"{\"probed\":198,\"fails\":0,\"failsList\":[]}"
+
+-- [contrast] dialog-dark
+"{\"probed\":198,\"fails\":0,\"failsList\":[]}"
+
+########## جریانِ درسِ ۹۰ثانیه‌ای (glesson) از همان دیالوگ
+"ok"
+"LESSON-OPEN"
+-- [contrast] glesson-light
+"{\"probed\":24,\"fails\":0,\"failsList\":[]}"
+
+-- [basis-zero] glesson-light
+"{\"total\":0,\"rowItems\":0,\"truncated\":0,\"suspects\":[]}"
+
+-- [contrast] glesson-dark
+"{\"probed\":24,\"fails\":0,\"failsList\":[]}"
+
+########## DONE
