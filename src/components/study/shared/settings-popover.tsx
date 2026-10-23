@@ -11,6 +11,7 @@ import { Slider } from "@/components/ui/slider";
 import { useStudy, DAILY_GOAL_OPTIONS } from "@/lib/study-store";
 import { speak, stopSpeaking, setSpeakRateScale } from "@/lib/speak";
 import { percent } from "@/lib/domain/percent";
+import { budgetPercent, budgetTone } from "@/lib/budget-tone";
 import { faNum } from "@/lib/study-theme";
 import { useWatchtower } from "@/lib/use-watchtower";
 import PulseDashboard from "./pulse-dashboard";
@@ -245,9 +246,12 @@ export default function SettingsPopover() {
 
         {/* ---------- بودجهٔ روخوانیِ ماه (r347) ---------- */}
         {usageState === "ready" && usage && (() => {
-          const pct = Math.min(100, Math.round((usage.used / usage.cap) * 100));
-          const near = pct >= 85;
-          const warm = pct >= 60 && !near;
+          // r355 — ریاضیِ آستانه به تکحقیقتِ budget-tone نقل شد (سه مصرفکننده:
+          // دو ردیفِ تنظیمات + نبض)؛ کلاسهایِ رنگی سمتِ خودِ این ردیف میمانند
+          const pct = budgetPercent(usage.used, usage.cap);
+          const tone = budgetTone(pct);
+          const near = tone === "near";
+          const warm = tone === "warm";
           return (
             <section className="mb-4 rounded-xl border border-stone-200 c-stone-60 p-3" aria-label="بودجهٔ روخوانیِ ماه">
               <div className="mb-1.5 flex items-center justify-between">
@@ -284,9 +288,11 @@ export default function SettingsPopover() {
 
         {/* ---------- بودجهٔ توضیح هوشمند (r348) ---------- */}
         {xUsageState === "ready" && xUsage && (() => {
-          const pct = Math.min(100, Math.round((xUsage.used / xUsage.cap) * 100));
-          const near = pct >= 85;
-          const warm = pct >= 60 && !near;
+          // r355 — همزادِ ردیفِ روخوانی: ریاضی از تکحقیقتِ budget-tone
+          const pct = budgetPercent(xUsage.used, xUsage.cap);
+          const tone = budgetTone(pct);
+          const near = tone === "near";
+          const warm = tone === "warm";
           return (
             <section className="mb-4 rounded-xl border border-stone-200 c-stone-60 p-3" aria-label="بودجهٔ توضیح هوشمند">
               <div className="mb-1.5 flex items-center justify-between">

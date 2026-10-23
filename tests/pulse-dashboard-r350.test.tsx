@@ -251,13 +251,18 @@ describe("PulseDashboard — the human surface", () => {
     updatedAt: `${today()}T12:34:00.000Z`,
   };
 
-  const wire = (eventsBody: unknown = eventsPayload, wtBody: unknown = { ok: true, count: 0 }) => {
+  const wire = (eventsBody: unknown = eventsPayload, wtBody: unknown = { ok: true, count: 0 }, xBody: unknown = { ok: true, used: 0, cap: 3000 }) => {
+    // r355 — قراردادِ نبض بزرگتر شد: load حالا بودجهٔ توضیحِ هوشمند را هم
+    // میخواند (سه واکش بهازایِ هر بازشدن) — پینِ «دو واکش» با اعلان به ۳ نقل شد
     vi.stubGlobal(
       "fetch",
       (fetchMock = vi.fn(async (url: string) => {
         const u = String(url);
         if (u.includes("/api/client-error")) {
           return new Response(JSON.stringify(wtBody), { status: 200 });
+        }
+        if (u.includes("/api/explain/usage")) {
+          return new Response(JSON.stringify(xBody), { status: 200 });
         }
         return new Response(JSON.stringify(eventsBody), { status: 200 });
       }))
@@ -296,7 +301,7 @@ describe("PulseDashboard — the human surface", () => {
     const { trackEvent } = await import("@/lib/analytics");
     const { render, screen, waitFor } = await import("@testing-library/react");
     render(<PulseDashboard open onOpenChange={vi.fn()} />);
-    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(3));
     await waitFor(() => expect(document.querySelectorAll('[data-testid="pulse-row"]').length).toBe(7));
     expect(trackEvent).toHaveBeenCalledWith("pulse_open");
     // خانوادههایِ بدونِ ردیف حذف میشوند (خانوادههایِ خالی جعل نمیشوند)

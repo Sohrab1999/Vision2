@@ -807,7 +807,7 @@ describe("globals.css stone veil phase 6 (bg-stone-50/60|70 — Task 89)", () =>
     walk(resolve(process.cwd(), "src"));
     // task 192: +1 c-stone-60 — the duel-play waiting-card live-progress module
     // joined the family (sanctioned growth, same primitive as the HUD cells)
-    expect(n60, "c-stone-60 consumers").toBe(26); // r347: +1 settings budget row · r348: +1 explain budget row · r350: +1 pulse-dashboard zebra rows · r352: +1 settings teacher row + +1 teacher roster zebra · r353: +2 teacher-detail zebra rows (skills + recent)
+    expect(n60, "c-stone-60 consumers").toBe(27); // r347: +1 settings budget row · r348: +1 explain budget row · r350: +1 pulse-dashboard zebra rows · r352: +1 settings teacher row + +1 teacher roster zebra · r353: +2 teacher-detail zebra rows (skills + recent) · r355: +1 pulse-budget calm strip
     // r251: +1 c-stone-70 — the guide's door-coverage map section (راند ۲۵۱)
     // joined the same primitive as the r89-retargeted guide section itself
     expect(n70, "c-stone-70 consumers").toBe(11);
@@ -924,7 +924,7 @@ describe("globals.css track semantic layer (stone-200 alphas — Task 90)", () =
     // راند ۳۰۴: trackِ نوارِ رکوردِ زنجیره در کارتِ «ادامهٔ خواندن»ِ خانه +۱
     //   (جایگزینِ raw bg-stone-200/70 که ماتریسِ استثنا میبرد — جمع ۹)
     expect(n70, "c-track-70 consumers").toBe(9);
-    expect(n80, "c-track-80 consumers").toBe(7); // r347: +1 budget bar track · r348: +1 explain bar track · r350: +1 pulse strip zero-day track · r352: +1 teacher strip zero-day track · r353: +1 teacher-detail 14-day strip zero-day track
+    expect(n80, "c-track-80 consumers").toBe(8); // r347: +1 budget bar track · r348: +1 explain bar track · r350: +1 pulse strip zero-day track · r352: +1 teacher strip zero-day track · r353: +1 teacher-detail 14-day strip zero-day track · r355: +1 pulse-budget meter track
   });
 
   it("deviating painters retargeted in place (byte-identical elevated tones + opaque band)", () => {

@@ -18,13 +18,14 @@
 // pulse_open fires once per open; Persian digits everywhere.
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { Activity, Loader2, RefreshCw, HeartPulse, ShieldAlert, Download } from "lucide-react";
+import { Activity, Loader2, RefreshCw, HeartPulse, ShieldAlert, Download, Sparkles } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
 import { faNum } from "@/lib/study-theme";
 import { percent } from "@/lib/domain/percent";
 import { trackEvent } from "@/lib/analytics";
 import { EVENT_CATEGORIES, EVENT_CATEGORY_ORDER } from "@/lib/analytics-events";
+import { budgetPercent, budgetTone } from "@/lib/budget-tone";
 import { downloadPulseCsv, type PulseLedgerRow } from "@/lib/pulse-csv";
 
 interface PulseEvent {
@@ -50,6 +51,12 @@ const KIND_LABELS: Record<string, string> = {
   unknown: "نامشخص",
 };
 
+// r355 — خانوادهٔ میزبانِ هشدارِ بودجه، از نگاشتِ تکحقیقت مشتق میشود:
+// خانوادهای که «explain_generated» را مالک است (اگر رجیستری نامِ
+// خانواده را عوض کند، نوار هم دنبالش میرود؛ اگر کلید حذف شود، tsc
+// نمیگذارد — رانشِ بدونِ کامپایل ناممکن است)
+const AI_FAMILY = EVENT_CATEGORIES["explain_generated"];
+
 /** امروز و ۶ روزِ پیشِ آن — برچسبِ فارسیِ هر ستونِ نوارِ هفتروزه */
 function dayLabels(days: number): { key: string; label: string }[] {
   const out: { key: string; label: string }[] = [];
@@ -71,6 +78,11 @@ export default function PulseDashboard({ open, onOpenChange }: { open: boolean; 
   const [updatedAt, setUpdatedAt] = useState<string>("");
   const [wtState, setWtState] = useState<"idle" | "loading" | "ready" | "error">("idle");
   const [watchtower, setWatchtower] = useState<Watchtower | null>(null);
+  // r355 — «هشدارِ بودجه در خانوادهٔ هوش مصنوعی»: مصرفِ واقعیِ توضیحِ
+  // هوشمند (همزادِ ردیفِ r348 تنظیمات)، درونِ خانوادهٔ خودش در نبض.
+  // خطا ⇒ نوار پنهان (دیدبانی، نه درستکاری — خودِ توضیح به نبض وابسته نیست)
+  const [xState, setXState] = useState<"idle" | "loading" | "ready" | "error">("idle");
+  const [xUsage, setXUsage] = useState<{ used: number; cap: number } | null>(null);
 
   const load = useCallback(async () => {
     setState((s) => (s === "ready" ? "ready" : "loading"));
@@ -94,6 +106,16 @@ export default function PulseDashboard({ open, onOpenChange }: { open: boolean; 
       setWtState("ready");
     } catch {
       setWtState("error");
+    }
+    try {
+      const res = await fetch("/api/explain/usage", { cache: "no-store" });
+      if (!res.ok) throw new Error("budget http " + res.status);
+      const data = (await res.json()) as { ok?: boolean; used: number; cap: number };
+      if (!data.ok) throw new Error("bad-shape");
+      setXUsage({ used: data.used, cap: data.cap });
+      setXState("ready");
+    } catch {
+      setXState("error");
     }
   }, []);
 
@@ -301,6 +323,64 @@ export default function PulseDashboard({ open, onOpenChange }: { open: boolean; 
                           </div>
                         ))}
                       </div>
+                      {/* r355 — هشدارِ بودجهٔ توضیحِ هوشمند، سوارِ خانوادهٔ خودش */}
+                      {g.cat === AI_FAMILY && xState === "ready" && xUsage && (() => {
+                        const pct = budgetPercent(xUsage.used, xUsage.cap);
+                        const tone = budgetTone(pct);
+                        const near = tone === "near";
+                        const warm = tone === "warm";
+                        return (
+                          <div
+                            data-testid="pulse-budget"
+                            aria-label="بودجهٔ توضیح هوشمند"
+                            className={`mt-1.5 rounded-2xl border p-3 ${
+                              near
+                                ? "border-rose-200 bg-rose-50/60"
+                                : warm
+                                  ? "border-amber-200 bg-amber-50/60"
+                                  : "border-stone-200 c-stone-60"
+                            }`}
+                          >
+                            <div className="mb-1.5 flex items-center justify-between">
+                              <span className="flex items-center gap-1.5 text-[11px] font-bold text-stone-600">
+                                <Sparkles size={12} className="text-violet-500" />
+                                بودجهٔ توضیحِ هوشمندِ همین ماه
+                              </span>
+                              <span className={`text-[10.5px] font-black ${near ? "text-rose-600" : warm ? "text-amber-600" : "text-emerald-700"}`}>
+                                {faNum(pct)}٪
+                              </span>
+                            </div>
+                            <div className="h-1.5 w-full overflow-hidden rounded-full c-track-80">
+                              {/* بدونِ ترنزیشن — width ویژگیِ layout است (قفلِ scoped-transitions) */}
+                              <div
+                                className={`h-full rounded-full ${
+                                  near
+                                    ? "bg-gradient-to-l from-rose-400 to-rose-600"
+                                    : warm
+                                      ? "bg-gradient-to-l from-amber-400 to-amber-600"
+                                      : "bg-gradient-to-l from-violet-400 to-violet-600"
+                                }`}
+                                style={{ width: `${Math.max(3, pct)}%` }}
+                              />
+                            </div>
+                            <p className="mt-1 text-[9.5px] leading-4 text-stone-500">
+                              {faNum(xUsage.used)} پرسش از {faNum(xUsage.cap)} پرسشِ سقفِ ماه — کشِ پرسوالی رایگان است و این سقف هزینهٔ تولید را مهار میکند.
+                            </p>
+                            {warm && (
+                              <p className="mt-0.5 text-[9.5px] font-black text-amber-600">
+                                ماه نزدیکِ سقف است — مصرف را دنبال کن.
+                              </p>
+                            )}
+                            {near && (
+                              <p className="mt-0.5 text-[9.5px] font-black text-rose-600">
+                                {pct >= 100
+                                  ? "سقفِ این ماه پر شده — تولیدِ توضیح تا ماهِ بعد بسته است؛ کش و روخوانی کار میکنند."
+                                  : "به سقفِ ماه نزدیک شده — تولیدِ توضیح تا پایانِ ماه کار میکند."}
+                              </p>
+                            )}
+                          </div>
+                        );
+                      })()}
                     </div>
                   ))}
                   {updatedAt && (
