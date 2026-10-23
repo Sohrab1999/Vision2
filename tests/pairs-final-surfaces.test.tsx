@@ -53,7 +53,7 @@ describe("MyWords — booklet pair chips (round 206)", () => {
     expect(labels).toContain("متضادِ accept: refuse — روخوانی");
     expect(labels).toContain("متضادِ accept: reject — روخوانی");
     fireEvent.click(screen.getByRole("button", { name: "متضادِ accept: refuse — روخوانی" }));
-    expect(speak).toHaveBeenCalledWith("refuse", 0.95);
+    expect(speak).toHaveBeenCalledWith("refuse", 0.95, undefined, expect.any(Function));
   });
 
   it("a pair-less star stays chipless (no fake zeros)", () => {

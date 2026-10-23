@@ -36,6 +36,7 @@ const chipFiles = [
   "src/components/study/lesson/flashcards.tsx",
   "src/components/study/lesson/vocab-tab.tsx",
   "src/components/study/lesson/dictionary-view.tsx",
+  "src/components/study/lesson/word-of-day.tsx",
 ];
 
 afterEach(() => {
@@ -51,7 +52,7 @@ describe("r345 — زبانِ خانوادهٔ شنیدار رویِ همهٔ د
     expect(src).toContain("duration: 3500");
   });
 
-  it("هر هفت عضوِ تازه همین سهگانهٔ خانواده را دارند", () => {
+  it("هر هشت عضوِ تازه همین سهگانهٔ خانواده را دارند", () => {
     const newMembers = [
       "src/components/study/shared/speak-button.tsx",
       "src/components/study/lesson/conversation-tab.tsx",
@@ -65,7 +66,7 @@ describe("r345 — زبانِ خانوادهٔ شنیدار رویِ همهٔ د
     }
   });
 
-  it("پنج چیپِ «روخوانی جفت»: فراخوانِ بی.onError دیگر وجود ندارد", () => {
+  it("شش چیپِ «روخوانی جفت»: فراخوانِ بی.onError دیگر وجود ندارد", () => {
     for (const f of chipFiles) {
       const src = p(f);
       expect(src, f).toContain("undefined, pairSpeakError");

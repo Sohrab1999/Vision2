@@ -17,6 +17,7 @@ import { buildSynAntIndex, synAntPairsFor } from "@/lib/syn-ant-lookup";
 import { findWordUsages } from "@/lib/word-usage";
 import WordUsageDialog from "./word-usage-dialog";
 import { speak } from "@/lib/speak";
+import { useToast } from "@/hooks/use-toast";
 import SpeakButton from "../shared/speak-button";
 
 // راند ۲۰۵: نقشهٔ عددِ اصلیِ محلی حذف شد — «درس هفتم» و بقیه از کمکیِ مشترکِ
@@ -28,6 +29,15 @@ export default function WordOfDay() {
   const known = useStudy((s) => s.known);
   const toggleKnown = useStudy((s) => s.toggleKnown);
   const mounted = useMounted();
+  const { toast } = useToast();
+  // راندِ ۳۴۵ — چیپِ «روخوانی جفت» در شکستِ صدا ساکت نمی‌ماند
+  // (همزبانِ خانوادهٔ شنیدار — listen-view)؛ هیچ رویدادِ تحلیلی رویِ پایِ شکست.
+  const pairSpeakError = () =>
+    toast({
+      title: "🔇 پخش صدا ممکن نشد",
+      description: "اتصال اینترنت را بررسی کن و دوباره روی دکمهٔ پخش بزن.",
+      duration: 3500,
+    });
   // راند ۲۵۴ — «کاربرد در جزوه» رویِ کارتِ واژهٔ روز (بندِ ① پیشنهادِ ۲۵۳):
   // چهارمین مصرف‌کنندهٔ خانواده، همان تک‌منبع + همان دیالوگِ مشترک
   const [usage, setUsage] = useState<{ en: string; sites: ReturnType<typeof findWordUsages> } | null>(null);
@@ -101,7 +111,7 @@ export default function WordOfDay() {
                 <button
                   key={`${p.kind}-${p.other}-${p.lessonId}`}
                   type="button"
-                  onClick={() => void speak(p.other, 0.95)}
+                  onClick={() => void speak(p.other, 0.95, undefined, pairSpeakError)}
                   title="روخوانی جفت"
                   aria-label={`${p.kind === "syn" ? "مترادف" : "متضاد"}ِ ${pick.en}: ${p.other} — روخوانی`}
                   className={`dict-pair-chip inline-flex items-center gap-0.5 rounded-md border px-1.5 py-0.5 text-[10.5px] font-bold transition-[background-color,color,border-color,transform] active:scale-[0.96] ${

@@ -79,6 +79,6 @@ describe("DictionaryView — جفت‌چیپ‌های جزوه", () => {
     fireEvent.change(screen.getByPlaceholderText(/language یا زبان/), { target: { value: "absolutely" } });
     const chips = await screen.findAllByRole("button", { name: /مترادفِ absolutely: surely — روخوانی/ });
     fireEvent.click(chips[0]);
-    expect(vi.mocked(speak)).toHaveBeenCalledWith("surely", 0.95);
+    expect(vi.mocked(speak)).toHaveBeenCalledWith("surely", 0.95, undefined, expect.any(Function));
   });
 });

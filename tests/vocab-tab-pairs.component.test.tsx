@@ -76,7 +76,7 @@ describe("VocabTab — booklet pair chips (round 205)", () => {
     render(<VocabTab lesson={lesson3Fixture} />);
     const chip = screen.getByRole("button", { name: "متضادِ accept: refuse — روخوانی" });
     fireEvent.click(chip);
-    expect(speak).toHaveBeenCalledWith("refuse", 0.95);
+    expect(speak).toHaveBeenCalledWith("refuse", 0.95, undefined, expect.any(Function));
     // stopPropagation: the card's own onClick (toggleKnown) never fired —
     // the store stays clean
     expect(useStudy.getState().known["3:accept"]).toBeFalsy();

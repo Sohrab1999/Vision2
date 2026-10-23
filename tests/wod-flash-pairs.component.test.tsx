@@ -87,7 +87,7 @@ describe("WordOfDay — booklet pair chips", () => {
       name: `${pairs[0].kind === "syn" ? "مترادف" : "متضاد"}ِ ${pick.en}: ${pairs[0].other} — روخوانی`,
     });
     fireEvent.click(chip);
-    expect(speak).toHaveBeenCalledWith(pairs[0].other, 0.95);
+    expect(speak).toHaveBeenCalledWith(pairs[0].other, 0.95, undefined, expect.any(Function));
   });
 });
 
@@ -124,7 +124,7 @@ describe("Flashcards — pair chips on the answer face", () => {
     const flipCard = document.querySelector('[role="button"][aria-label="برگرداندن کارت"]') as HTMLElement;
     fireEvent.click(flipCard); // flip to back
     fireEvent.click(screen.getByTitle("روخوانی جفت"));
-    expect(speak).toHaveBeenCalledWith("lend", 0.95);
+    expect(speak).toHaveBeenCalledWith("lend", 0.95, undefined, expect.any(Function));
     // stopPropagation kept the card flipped
     expect(flipCard.getAttribute("aria-pressed")).toBe("true");
   });
