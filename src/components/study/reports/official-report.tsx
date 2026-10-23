@@ -217,12 +217,21 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
   // filter/pivot in Excel — the time-series files stay separate.
   const { toast } = useToast();
   const saveCoverageCsv = () => {
-    const ok = coverage ? downloadCoverageCsv(coverage, daysAgoKey(0)) : false;
     trackEvent("coverage_csv");
+    // r343 — دو پا، دو قضاوت (قاعدهٔ r341): «پوششِ هنوز ساختهنشده» و «شکستِ
+    // ساختِ فایل» دو سرنوشتند؛ نسخهٔ پیشین ok=falseِ مسیرِ شکستِ download را
+    // هم با «اول کمی تمرین کن» جواب میداد — دروغِ بازخوردی، همان خانوادهٔ
+    // سکوتِ مخروبهٔ r341. اکنون: نبودِ پوشش = راهنمایِ صادقانه، شکستِ ساخت =
+    // همزبانِ سه CSVِ هفته‌نامه («خطا در ساخت فایل»).
+    if (!coverage) {
+      toast({ title: "گزارش پوشش هنوز آماده نیست", description: "اول کمی تمرین کن تا نقشهٔ پوشش ساخته شود.", duration: 3000 });
+      return;
+    }
+    const ok = downloadCoverageCsv(coverage, daysAgoKey(0));
     toast(
       ok
         ? { title: "🧭 CSV پوشش ذخیره شد", description: "هر سطر = یک مهارتِ یک درس — آمادهٔ فیلتر در اکسل.", duration: 3000 }
-        : { title: "گزارش پوشش هنوز آماده نیست", description: "اول کمی تمرین کن تا نقشهٔ پوشش ساخته شود.", duration: 3000 }
+        : { title: "خطا در ساخت فایل", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
     );
   };
 
