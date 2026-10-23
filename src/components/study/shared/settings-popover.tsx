@@ -4,7 +4,7 @@
 // سرعت روخوانی TTS · اندازهٔ متن · کاهش حرکت · هدف روزانه · دسترسی سریع به پروفایل/پشتیبان
 
 import { useState, useEffect } from "react";
-import { Settings, Volume2, Type, Waves, Target, UserCog, Check, Smartphone, Activity, Loader2, RefreshCw } from "lucide-react";
+import { Settings, Volume2, Type, Waves, Target, UserCog, Check, Smartphone, Activity, Loader2, RefreshCw, Gauge } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Switch } from "@/components/ui/switch";
 import { Slider } from "@/components/ui/slider";
@@ -59,6 +59,26 @@ export default function SettingsPopover() {
   const [pulse, setPulse] = useState<{ name: string; label: string; total: number; week: number }[] | null>(null);
   const [pulseState, setPulseState] = useState<"idle" | "loading" | "ready" | "error">("idle");
 
+  // r347 — «بودجهٔ روخوانیِ ماه»: مصرفِ واقعیِ سرویسِ روخوانی، هر بار که
+  // پنجره باز میشود تازه میشود (سبک است — یک GET کوچک). خطا ⇒ ردیف پنهان
+  // (دیدبانی، نه درستکاری — خودِ روخوانی به این ردیف وابسته نیست).
+  const [usage, setUsage] = useState<{ used: number; cap: number } | null>(null);
+  const [usageState, setUsageState] = useState<"idle" | "loading" | "ready" | "error">("idle");
+
+  const loadUsage = async () => {
+    setUsageState((prev) => (prev === "loading" ? prev : "loading"));
+    try {
+      const res = await fetch("/api/tts/usage", { cache: "no-store" });
+      if (!res.ok) throw new Error(String(res.status));
+      const data = (await res.json()) as { ok: boolean; used: number; cap: number };
+      if (!data.ok) throw new Error("bad-shape");
+      setUsage({ used: data.used, cap: data.cap });
+      setUsageState("ready");
+    } catch {
+      setUsageState("error");
+    }
+  };
+
   const loadPulse = async () => {
     setPulseState((prev) => (prev === "loading" ? prev : "loading"));
     try {
@@ -79,6 +99,7 @@ export default function SettingsPopover() {
       return;
     }
     if (pulseState === "idle") loadPulse();
+    loadUsage(); // r347 — همیشه تازه، چون مصرف با هر روخوانی جلو میرود
   };
 
   // install row: hidden once the app runs standalone (F4)
@@ -178,6 +199,45 @@ export default function SettingsPopover() {
             <span>سریع</span>
           </div>
         </section>
+
+        {/* ---------- بودجهٔ روخوانیِ ماه (r347) ---------- */}
+        {usageState === "ready" && usage && (() => {
+          const pct = Math.min(100, Math.round((usage.used / usage.cap) * 100));
+          const near = pct >= 85;
+          const warm = pct >= 60 && !near;
+          return (
+            <section className="mb-4 rounded-xl border border-stone-200 c-stone-60 p-3" aria-label="بودجهٔ روخوانیِ ماه">
+              <div className="mb-1.5 flex items-center justify-between">
+                <span className="flex items-center gap-1.5 text-[12px] font-bold text-stone-600">
+                  <Gauge size={13} className="text-emerald-600" />
+                  بودجهٔ روخوانیِ ماه
+                </span>
+                <span
+                  className={`text-[11px] font-black ${near ? "text-rose-600" : warm ? "text-amber-600" : "text-emerald-700"}`}
+                >
+                  {faNum(pct)}٪
+                </span>
+              </div>
+              <div className="h-1.5 w-full overflow-hidden rounded-full c-track-80">
+                {/* خانه: بدونِ ترنزیشن — width ویژگیِ layout است (قفلِ scoped-transitions)؛
+                    نوار با هر بازشدنِ پنجره نرم مقدارِ تازه میگیرد، انیمیشنِ لازم نیست */}
+                <div
+                  className={`h-full rounded-full ${
+                    near
+                      ? "bg-gradient-to-l from-rose-400 to-rose-600"
+                      : warm
+                        ? "bg-gradient-to-l from-amber-400 to-amber-600"
+                        : "bg-gradient-to-l from-emerald-400 to-emerald-600"
+                  }`}
+                  style={{ width: `${Math.max(3, pct)}%` }}
+                />
+              </div>
+              <p className="mt-1 text-[10px] leading-4 text-stone-500">
+                {faNum(usage.used)} حرف از {faNum(usage.cap)} حرفِ سقفِ ماه — این سقف هزینهٔ سرویسِ روخوانی را مهار می‌کند.
+              </p>
+            </section>
+          );
+        })()}
 
         {/* ---------- اندازهٔ متن ---------- */}
         <section className="mb-4 rounded-xl border border-stone-200 c-stone-60 p-3">

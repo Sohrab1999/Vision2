@@ -43,6 +43,20 @@ export async function speak(
         if (attempt === 0) await new Promise((r) => setTimeout(r, 700));
       }
       if (!res || !res.ok) {
+        // r347 — the monthly cap is a DIFFERENT failure than a hiccup:
+        // it deserves its own honest message, not just the family toast.
+        // Zero signature churn (the r345 4-arg contract stays frozen):
+        // a window event carries the news, pwa-layer toasts it once/day.
+        if (res && res.status === 429) {
+          try {
+            const data = (await res.json()) as { code?: string };
+            if (data?.code === "tts_quota" && typeof window !== "undefined") {
+              window.dispatchEvent(new CustomEvent("tts-quota"));
+            }
+          } catch {
+            /* unreadable body — the family toast still tells the truth */
+          }
+        }
         onError?.();
         return () => {};
       }

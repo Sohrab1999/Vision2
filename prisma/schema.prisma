@@ -84,3 +84,13 @@ model EventDay {
   @@unique([day, name])
   @@index([name])
 }
+
+// r347 «سقفِ ماهانهٔ روخوانی» — per-UTC-day character meter for the paid
+// TTS backend. Only cache misses (real paid syntheses) increment; the
+// month-to-date sum gates POST /api/tts with an honest 429 and feeds
+// GET /api/tts/usage (the settings budget row). Metering is a cost guard,
+// not correctness: every meter failure fails OPEN (TTS stays available).
+model TtsMeter {
+  day   String @id // YYYY-MM-DD (UTC)
+  chars Int    @default(0)
+}

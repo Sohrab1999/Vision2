@@ -772,7 +772,7 @@ describe("globals.css stone veil phase 6 (bg-stone-50/60|70 — Task 89)", () =>
     ]);
   });
 
-  it("consumer matrix pinned — 28 migrations + sanctioned growth in exact split (19× /60 + 11× /70)", () => {
+  it("consumer matrix pinned — 28 migrations + sanctioned growth in exact split (20× /60 + 11× /70; r347 budget row joins)", () => {
     let n60 = 0;
     let n70 = 0;
     const walk = (d: string): void => {
@@ -793,7 +793,7 @@ describe("globals.css stone veil phase 6 (bg-stone-50/60|70 — Task 89)", () =>
     walk(resolve(process.cwd(), "src"));
     // task 192: +1 c-stone-60 — the duel-play waiting-card live-progress module
     // joined the family (sanctioned growth, same primitive as the HUD cells)
-    expect(n60, "c-stone-60 consumers").toBe(19);
+    expect(n60, "c-stone-60 consumers").toBe(20); // r347: +1 settings budget row
     // r251: +1 c-stone-70 — the guide's door-coverage map section (راند ۲۵۱)
     // joined the same primitive as the r89-retargeted guide section itself
     expect(n70, "c-stone-70 consumers").toBe(11);
@@ -873,7 +873,7 @@ describe("globals.css track semantic layer (stone-200 alphas — Task 90)", () =
     );
   });
 
-  it("consumer matrix pinned — exact track counts per grade (n60=2, n70=8, n80=2), comments excluded", () => {
+  it("consumer matrix pinned — exact track counts per grade (n60=2, n70=8, n80=3; r347 budget bar joins), comments excluded", () => {
     let n60 = 0;
     let n70 = 0;
     let n80 = 0;
@@ -907,7 +907,7 @@ describe("globals.css track semantic layer (stone-200 alphas — Task 90)", () =
     // راند ۳۰۴: trackِ نوارِ رکوردِ زنجیره در کارتِ «ادامهٔ خواندن»ِ خانه +۱
     //   (جایگزینِ raw bg-stone-200/70 که ماتریسِ استثنا میبرد — جمع ۹)
     expect(n70, "c-track-70 consumers").toBe(9);
-    expect(n80, "c-track-80 consumers").toBe(2);
+    expect(n80, "c-track-80 consumers").toBe(3); // r347: +1 budget bar track
   });
 
   it("deviating painters retargeted in place (byte-identical elevated tones + opaque band)", () => {

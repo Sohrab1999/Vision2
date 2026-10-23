@@ -27,6 +27,7 @@ const INSTALL_DISMISS_KEY = "vision2-install-dismissed";
 const DUE_TOAST_KEY = "vision2-due-toast-day";
 const FREEZE_TOAST_KEY = "vision2-freeze-toast-day";
 const EARN_TOAST_KEY = "vision2-earn-toast-day";
+const QUOTA_TOAST_KEY = "vision2-tts-quota-toast-day"; // r347
 const DISMISS_COOLDOWN = 7 * 86_400_000; // «بعداً» → ۷ روز سکوت
 
 type BeforeInstallPromptEvent = Event & {
@@ -83,6 +84,29 @@ export default function PwaLayer() {
       ),
     });
   });
+
+  // r347 — «سقفِ روخوانیِ ماه»: speak.ts رویِ 429ِ tts_quota رویدادِ
+  // window میفرستد؛ توستِ اختصاصی، روزیِ یک‌بار — عینِ الگویِ رویدادهایِ
+  // open-settings/install-app. توستِ خانوادهٔ شنیدار (r345) هم همچنان
+  // صادق است؛ این فقط دلیلِ دقیق را یک‌بار میگوید.
+  useEffect(() => {
+    const onQuota = () => {
+      if (!oncePerDay(QUOTA_TOAST_KEY)) return;
+      // QA r347 lesson: speak.ts dispatches this event BEFORE onError,
+      // so the r345 family toast and this one enqueue in the SAME tick —
+      // TOAST_LIMIT=1 keeps the LAST and the specific reason was eaten
+      // live (quota:false family:true). Yield the stage to the family
+      // leg first, then deliver the SPECIFIC reason a beat later.
+      window.setTimeout(() => {
+        toast({
+          title: "🔊 سقفِ روخوانیِ این ماه پر شد",
+          description: "روخوانی تا ماهِ بعد در دسترس نیست — پیشرفت و متن‌های تو سالم‌اند.",
+        });
+      }, 350);
+    };
+    window.addEventListener("tts-quota", onQuota);
+    return () => window.removeEventListener("tts-quota", onQuota);
+  }, [toast]);
   const [installable, setInstallable] = useState(false);
   const [standalone, setStandalone] = useState(false);
   const [showGuide, setShowGuide] = useState(false);
