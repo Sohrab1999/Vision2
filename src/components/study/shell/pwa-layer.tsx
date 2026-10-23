@@ -22,6 +22,8 @@ import { trackEvent } from "@/lib/analytics";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { ToastAction } from "@/components/ui/toast";
 import { useSwUpdateToast } from "@/components/study/shell/use-sw-update-toast";
+import { useBudgetNearToast } from "@/components/study/shell/use-budget-near-toast"; // r360 — هشدارِ پیشازِسقف
+import { oncePerDay } from "@/lib/once-per-day"; // r360 — تکحقیقتِ استخراج‌شده
 
 const INSTALL_DISMISS_KEY = "vision2-install-dismissed";
 const DUE_TOAST_KEY = "vision2-due-toast-day";
@@ -50,21 +52,12 @@ function isStandaloneNow(): boolean {
   return window.matchMedia("(display-mode: standalone)").matches || nav.standalone === true;
 }
 
-/** true when this key wasn't already recorded today — records it atomically */
-function oncePerDay(key: string): boolean {
-  const today = todayStr();
-  try {
-    if (localStorage.getItem(key) === today) return false;
-    localStorage.setItem(key, today);
-  } catch {
-    /* private mode — allow the toast */
-  }
-  return true;
-}
+/** true when this key wasn't already recorded today — راندِ ۳۶۰: تکحقیقتِ آیدیوم به lib رفت (src/lib/once-per-day.ts) — pwa-layer و قلابِ هشدارِ پیشازِسقف هر دو از همان میخوانند */
 
 export default function PwaLayer() {
   const { toast } = useToast();
   const mounted = useMounted();
+  useBudgetNearToast(); // r360 — توستِ روزیِ یک‌بارِ هر سرویس رویِ تنِ «نزدیک»
 
   // r346 — «نسخهٔ تازه» watcher: وقتی سرویس‌ورکرِ تازه در میانهٔ نشست کنترل
   // را می‌گیرد (استقرارِ تازه روی تبِ باز)، یادگیرنده با یک توستِ خانواده

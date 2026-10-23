@@ -145,6 +145,30 @@ export default function PulseDashboard({ open, onOpenChange }: { open: boolean; 
     void load();
   }, [open, load]);
 
+  // r360 — «هشدارِ پیشازِسقف» (پیشنهادِ ④ِ r358 — دو راند باز): وقتی
+  // نبض باز میشود، مصرفِ واقعیِ هر دو سرویسِ پولی خوانده میشود؛ تنِ
+  // «نزدیک» (از موتورِ تکحقیقت — بدونِ لیترالِ آستانه) رویدادِ window
+  // میفرستد و pwa-layer روزیِ یک‌بار به ازایِ هر سرویس توست میدهد.
+  // سقفِ بسته (۱۰۰٪) اینجا هشدار نمیدهد — آن لحظه مالِ خانوادهٔ توست
+  // هایِ بستهٔ r347/r348 است (دوتاییِ صحنه ممنوع — درسِ TOAST_LIMIT).
+  // خواندنِ ناموفق (state=error) رویدادی نمیفرستد — هشدارِ جعلی ممنوع.
+  useEffect(() => {
+    if (ttsState === "ready" && ttsUsage) {
+      const pct = budgetPercent(ttsUsage.used, ttsUsage.cap);
+      if (budgetTone(pct) === "near" && pct < 100)
+        window.dispatchEvent(
+          new CustomEvent("budget-near", { detail: { service: "tts", pct } })
+        );
+    }
+    if (xState === "ready" && xUsage) {
+      const pct = budgetPercent(xUsage.used, xUsage.cap);
+      if (budgetTone(pct) === "near" && pct < 100)
+        window.dispatchEvent(
+          new CustomEvent("budget-near", { detail: { service: "explain", pct } })
+        );
+    }
+  }, [ttsState, ttsUsage, xState, xUsage]);
+
   // r351 — «دفترِ سی‌روزهٔ نبض»: خروجیِ CSVِ خانواده، از سریِ (روز ×
   // رویداد × تعداد) با days=30 — غنیتر از نوارِ ۷روزهٔ دیالوگ. دو پا،
   // دو قضاوت (قاعدهٔ r341/r343): نخواندنِ دفتر با شکستِ ساختِ فایل
@@ -352,6 +376,7 @@ export default function PulseDashboard({ open, onOpenChange }: { open: boolean; 
                         return (
                           <div
                             data-testid="pulse-budget"
+                            data-near={near ? "true" : undefined}
                             aria-label="بودجهٔ توضیح هوشمند"
                             className={`mt-1.5 rounded-2xl border p-3 ${
                               near
@@ -412,6 +437,7 @@ export default function PulseDashboard({ open, onOpenChange }: { open: boolean; 
                         return (
                           <div
                             data-testid="pulse-tts-budget"
+                            data-near={near ? "true" : undefined}
                             aria-label="بودجهٔ روخوانی"
                             className={`mt-1.5 rounded-2xl border p-3 ${
                               near
