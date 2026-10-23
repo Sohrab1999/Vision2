@@ -123,7 +123,12 @@ export default function DictationTab({
     speakSpell(
       en,
       () => setSpelling(false),
-      () => setSpelling(false)
+      // راندِ ۳۴۵ — هجاکشیِ ساکت دروغ است: همان نشانگرِ درونخطیِ ردیف
+      // («روخوانی در دسترس نیست») که پخشِ عادی دارد، اینجا هم می‌نشیند.
+      () => {
+        setSpelling(false);
+        setAudioErrorFor(idx);
+      }
     );
   }, [idx]);
 

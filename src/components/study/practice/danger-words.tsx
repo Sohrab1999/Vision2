@@ -25,6 +25,7 @@ import { findLesson, lessons } from "@/data";
 import { lessonNameFa } from "@/data/lesson-meta";
 import { faNum } from "@/lib/study-theme";
 import { buildSynAntIndex, synAntPairsFor } from "@/lib/syn-ant-lookup";
+import { useToast } from "@/hooks/use-toast";
 import { speak } from "@/lib/speak";
 import { trackEvent } from "@/lib/analytics";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -43,6 +44,15 @@ export default function DangerWords() {
   const toggleStarred = useStudy((s) => s.toggleStarred);
   const setView = useStudy((s) => s.setView);
   const mounted = useMounted();
+  const { toast } = useToast();
+  // راندِ ۳۴۵ — چیپِ «روخوانی جفت» در شکستِ صدا ساکت نمی‌ماند
+  // (همزبانِ خانوادهٔ شنیدار — listen-view)؛ هیچ رویدادِ تحلیلی رویِ پایِ شکست.
+  const pairSpeakError = () =>
+    toast({
+      title: "🔇 پخش صدا ممکن نشد",
+      description: "اتصال اینترنت را بررسی کن و دوباره روی دکمهٔ پخش بزن.",
+      duration: 3500,
+    });
 
   const starredSet = useMemo(() => new Set(starredWords), [starredWords]);
 
@@ -210,7 +220,7 @@ export default function DangerWords() {
                                 <button
                                   key={`${p.kind}-${p.other}-${p.lessonId}`}
                                   type="button"
-                                  onClick={() => void speak(p.other, 0.95)}
+                                  onClick={() => void speak(p.other, 0.95, undefined, pairSpeakError)}
                                   title="روخوانی جفت"
                                   aria-label={`${p.kind === "syn" ? "مترادف" : "متضاد"}ِ ${d.en}: ${p.other} — روخوانی`}
                                   className={`dict-pair-chip inline-flex items-center gap-0.5 rounded-md border px-1.5 py-0.5 text-[10px] font-bold transition-[background-color,color,border-color,transform] active:scale-[0.96] ${

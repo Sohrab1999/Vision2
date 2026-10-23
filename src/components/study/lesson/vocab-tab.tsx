@@ -11,6 +11,7 @@ import { buildSynAntIndex, synAntPairsFor } from "@/lib/syn-ant-lookup";
 import { findWordUsages, lessonVocabUsageCensus, type WordUsageSite } from "@/lib/word-usage";
 import WordUsageDialog from "./word-usage-dialog";
 import { speak } from "@/lib/speak";
+import { useToast } from "@/hooks/use-toast";
 import { lessons } from "@/data";
 import { WORD_FAMILY_LESSON_LINKS, wordFamilyTableId } from "@/data/word-families";
 import Flashcards from "./flashcards";
@@ -28,6 +29,15 @@ export default function VocabTab({
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState<Filter>("all");
   const [flashMode, setFlashMode] = useState(startSmart);
+  const { toast } = useToast();
+  // راندِ ۳۴۵ — چیپِ «روخوانی جفت» در شکستِ صدا ساکت نمی‌ماند
+  // (همزبانِ خانوادهٔ شنیدار — listen-view)؛ هیچ رویدادِ تحلیلی رویِ پایِ شکست.
+  const pairSpeakError = () =>
+    toast({
+      title: "🔇 پخش صدا ممکن نشد",
+      description: "اتصال اینترنت را بررسی کن و دوباره روی دکمهٔ پخش بزن.",
+      duration: 3500,
+    });
   const known = useStudy((s) => s.known);
   const toggleKnown = useStudy((s) => s.toggleKnown);
   const toggleStarred = useStudy((s) => s.toggleStarred);
@@ -208,7 +218,7 @@ export default function VocabTab({
                           type="button"
                           onClick={(e) => {
                             e.stopPropagation(); // کارت کلیکِ خودش را دارد: بلدم‌کردن
-                            void speak(p.other, 0.95);
+                            void speak(p.other, 0.95, undefined, pairSpeakError);
                           }}
                           title="روخوانی جفت"
                           aria-label={`${p.kind === "syn" ? "مترادف" : "متضاد"}ِ ${w.en}: ${p.other} — روخوانی`}

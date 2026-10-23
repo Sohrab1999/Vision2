@@ -17,6 +17,7 @@ import { posLabel, themeOf, faNum } from "@/lib/study-theme";
 import { buildSynAntIndex, synAntPairsFor } from "@/lib/syn-ant-lookup";
 import { speak } from "@/lib/speak";
 import { trackEvent } from "@/lib/analytics";
+import { useToast } from "@/hooks/use-toast";
 import SpeakButton from "../shared/speak-button";
 import { resolveStar, type ResolvedStar } from "@/lib/my-words-resolve";
 import MyWordsReview from "./my-words-review";
@@ -32,6 +33,15 @@ export default function MyWordsView() {
   const clearStarred = useStudy((s) => s.clearStarred);
   const setView = useStudy((s) => s.setView);
   const mounted = useMounted();
+  const { toast } = useToast();
+  // راندِ ۳۴۵ — چیپِ «روخوانی جفت» در شکستِ صدا ساکت نمی‌ماند
+  // (همزبانِ خانوادهٔ شنیدار — listen-view)؛ هیچ رویدادِ تحلیلی رویِ پایِ شکست.
+  const pairSpeakError = () =>
+    toast({
+      title: "🔇 پخش صدا ممکن نشد",
+      description: "اتصال اینترنت را بررسی کن و دوباره روی دکمهٔ پخش بزن.",
+      duration: 3500,
+    });
 
   const [query, setQuery] = useState("");
   const [lessonFilter, setLessonFilter] = useState<number | null>(null);
@@ -356,7 +366,7 @@ export default function MyWordsView() {
                             <button
                               key={`${p.kind}-${p.other}-${p.lessonId}`}
                               type="button"
-                              onClick={() => void speak(p.other, 0.95)}
+                              onClick={() => void speak(p.other, 0.95, undefined, pairSpeakError)}
                               title="روخوانی جفت"
                               aria-label={`${p.kind === "syn" ? "مترادف" : "متضاد"}ِ ${w.en}: ${p.other} — روخوانی`}
                               className={`dict-pair-chip inline-flex items-center gap-0.5 rounded-md border px-1.5 py-0.5 text-[10.5px] font-bold transition-[background-color,color,border-color,transform] active:scale-[0.96] ${

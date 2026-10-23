@@ -6,12 +6,14 @@ import type { LessonData } from "@/lib/study-types";
 import { themeOf } from "@/lib/study-theme";
 import SpeakButton from "../shared/speak-button";
 import { speak, stopSpeaking } from "@/lib/speak";
+import { useToast } from "@/hooks/use-toast";
 
 export default function ConversationTab({ lesson }: { lesson: LessonData }) {
   const [showFa, setShowFa] = useState(true);
   const [playingIdx, setPlayingIdx] = useState<number | null>(null);
   const [playingAll, setPlayingAll] = useState(false);
   const cancelRef = useRef(false);
+  const { toast } = useToast();
   const t = themeOf(lesson.color);
 
   const playAll = async () => {
@@ -32,7 +34,17 @@ export default function ConversationTab({ lesson }: { lesson: LessonData }) {
           lesson.conversation.lines[i].en,
           0.95,
           () => resolve(),
-          () => resolve()
+          // راندِ ۳۴۵ — خطروخوانیِ ساکت دروغ است: نخستین شکست، توالیِ
+          // «پخش همه» را میایستاند و همزبانِ خانوادهٔ شنیدار میگوید.
+          () => {
+            cancelRef.current = true;
+            toast({
+              title: "🔇 پخش صدا ممکن نشد",
+              description: "اتصال اینترنت را بررسی کن و دوباره روی دکمهٔ پخش بزن.",
+              duration: 3500,
+            });
+            resolve();
+          }
         );
       });
       await new Promise((r) => setTimeout(r, 350));
