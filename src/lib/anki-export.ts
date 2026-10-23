@@ -29,17 +29,24 @@ export function buildAnkiTsv(words?: (VocabWord & { lessonId?: number })[]): { t
   return { tsv: header + rows.join("\n") + "\n", count: rows.length };
 }
 
-/** generate + download the file in the browser; returns the card count */
-export function downloadAnkiTsv(): number {
-  const { tsv, count } = buildAnkiTsv();
-  const blob = new Blob([tsv], { type: "text/tab-separated-values;charset=utf-8" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "vision2-anki.txt";
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  setTimeout(() => URL.revokeObjectURL(url), 4000);
-  return count;
+/** generate + download the file in the browser; returns the card count —
+ *  or null when the blob/download pipeline fails (r344 two-legged honesty:
+ *  the last unguarded member of the download family now reports failure
+ *  instead of leaving the click silent). */
+export function downloadAnkiTsv(): number | null {
+  try {
+    const { tsv, count } = buildAnkiTsv();
+    const blob = new Blob([tsv], { type: "text/tab-separated-values;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "vision2-anki.txt";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 4000);
+    return count;
+  } catch {
+    return null;
+  }
 }

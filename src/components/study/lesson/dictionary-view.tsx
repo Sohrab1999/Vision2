@@ -286,6 +286,12 @@ export default function DictionaryView() {
           <button
             onClick={() => {
               const count = downloadAnkiTsv();
+              if (count === null) {
+                // r344 — آخرین عضوِ بیسنگِ خانوادهٔ دانلود دیگر ساکت نمیماند؛
+                // همزبانِ چهار CSV («خطا در ساخت فایل») و بدونِ trackEventِ دروغین.
+                toast({ title: "خطا در ساخت فایل", description: "لطفاً دوباره تلاش کن.", duration: 3000 });
+                return;
+              }
               trackEvent("anki_export");
               toast({
                 title: "🃏 خروجی Anki آماده شد",
