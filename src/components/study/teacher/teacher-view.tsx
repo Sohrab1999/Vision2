@@ -142,7 +142,8 @@ export default function TeacherView() {
         details.push(data.learner);
       }
       const ok = downloadClassLedgerCsv(
-        { generatedAt: report.generatedAt, roster: report.roster, details },
+        // r362 — هفتهٔ فعال از خودِ گزارش میآید (summary.byDay — همان تکحقیقتِ نوارِ هفتروزی)
+        { generatedAt: report.generatedAt, byDay: report.summary.byDay, roster: report.roster, details },
         new Date().toISOString().slice(0, 10)
       );
       toast(
@@ -266,6 +267,9 @@ export default function TeacherView() {
   const strip = dayLabels(Date.now());
   const stripMax = Math.max(...summary.byDay.map((d) => d.attempts), 1);
   const stripMap = new Map(summary.byDay.map((d) => [d.day, d.attempts]));
+  // r362 — مجموعِ هفتهٔ فعال — همان تجمیعی که سربرگِ دفترِ کامل چاپ میکند؛
+  // از خودِ نوار میخواند (summary.byDay) — نه محاسبهٔ موازی و نه فیلدِ سرورِ نو
+  const weekTotal = summary.byDay.reduce((s, d) => s + d.attempts, 0);
 
   const cards = [
     { icon: Users, label: "یادگیرنده", value: summary.learners },
@@ -333,7 +337,9 @@ export default function TeacherView() {
 
       {/* ---------- نوارِ هفتروزهٔ تلاشها ---------- */}
       <section aria-label="تلاشهای هفت روز گذشته" data-testid="teacher-strip">
-        <h2 className="mb-2 text-[11.5px] font-black text-stone-600">تلاشهایِ هفت روزِ گذشته</h2>
+        <h2 className="mb-2 text-[11.5px] font-black text-stone-600">
+          تلاشهایِ هفت روزِ گذشته · مجموعِ هفته: <span data-testid="teacher-week-total">{faNum(weekTotal)}</span>
+        </h2>
         <div className="rounded-2xl border border-stone-200 p-4">
           <div className="flex h-16 items-end justify-between gap-1.5" dir="ltr">
             {strip.map((s) => {

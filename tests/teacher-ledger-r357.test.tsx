@@ -31,6 +31,18 @@ vi.mock("@/lib/analytics", () => ({ trackEvent: vi.fn() }));
 
 const read = (p: string) => readFileSync(join(process.cwd(), p), "utf8");
 
+// r362 — هفتهٔ فعال اکنون عضوِ الزامیِ ورودیِ دفتر است (حذفش کامپایل را میشکند)
+// روزهایِ ثابتِ ISO — قطعی برایِ سطرِ «پرکارترین»: ۲+۰+۳+۱ = ۶ تلاش، ۳ روزِ فعال
+const weekFixture = [
+  { day: "2026-10-18", attempts: 0 },
+  { day: "2026-10-19", attempts: 2 },
+  { day: "2026-10-20", attempts: 0 },
+  { day: "2026-10-21", attempts: 3 },
+  { day: "2026-10-22", attempts: 1 },
+  { day: "2026-10-23", attempts: 0 },
+  { day: "2026-10-24", attempts: 0 },
+];
+
 // ---------------- فیکسچرها ----------------
 const rosterFixture: RosterRow[] = [
   { name: "آرش", color: "emerald", attempts: 3, avgPercent: 73, bestPercent: 90, lessons: 2, lastActive: "2026-10-24T08:30:00.000Z", weakest: { category: "dictation", avgPercent: 55 }, handle: "aaaa1111bbbb2222" },
@@ -79,18 +91,22 @@ describe("buildClassLedgerCsv — پیوندِ روزنامه و کارنامه"
   const csv = () =>
     buildClassLedgerCsv({
       generatedAt: "2026-10-24T09:15:00.000Z",
+      byDay: weekFixture,
       roster: rosterFixture,
       details: [detailOf("آرش")],
     });
 
-  it("① عنوان + سطرِ صادره + جدولِ کلاسِ قرضی + کارنامهٔ قرضی — به همان ترتیبِ ورودی", () => {
+  it("① عنوان + سطرِ صادره + سطرهایِ هفتهٔ فعال + جدولِ کلاسِ قرضی + کارنامهٔ قرضی — به همان ترتیبِ ورودی", () => {
     const out = csv();
     const lines = out.split("\r\n");
     expect(lines[0]).toBe(LEDGER_TITLE);
     expect(lines[1]).toBe("صادره,2026-10-24");
-    expect(lines[2]).toBe(""); // جداکنندهٔ بخش
+    // r362 — سطرهایِ هفتهٔ فعال بینِ صادره و جدول — ارقامِ ASCIIِ گویشِ خانواده
+    expect(lines[2]).toBe("هفتهٔ فعال,6 تلاش در 7 روزِ اخیر · 3 روزِ فعال");
+    expect(lines[3]).toBe("پرکارترینِ روز,2026-10-21 · 3 تلاش");
+    expect(lines[4]).toBe(""); // جداکنندهٔ بخش
     // جدولِ کلاس از تکحقیقتِ r352 قرض خورده — سرستونِ عینِ روزنامه
-    expect(lines[3]).toBe("نام,رنگ,تلاش,میانگین,بهترین,درس‌ها,آخرین فعالیت,ضعیف‌ترین مهارت");
+    expect(lines[5]).toBe("نام,رنگ,تلاش,میانگین,بهترین,درس‌ها,آخرین فعالیت,ضعیف‌ترین مهارت");
     expect(out).toContain("آرش,emerald,3,73,90,2,");
     // کارنامه از تکحقیقتِ r354 قرض خورده — عنوانِ کارنامه در دفتر هست
     expect(out).toContain("ویژن ۲ — کارنامهٔ یادگیرنده");
@@ -120,6 +136,7 @@ describe("buildClassLedgerCsv — پیوندِ روزنامه و کارنامه"
   it("④ کارنامههایِ چندگانه: هر کدام با سطرِ خالی جدا و به ترتیبِ دادهشده", () => {
     const out = buildClassLedgerCsv({
       generatedAt: "2026-10-24T09:15:00.000Z",
+      byDay: weekFixture,
       roster: rosterFixture,
       details: [detailOf("آرش"), detailOf("نگار ویژه")],
     });
@@ -134,6 +151,7 @@ describe("buildClassLedgerCsv — پیوندِ روزنامه و کارنامه"
   it("⑤ کلاسِ بی‌کارنامه (همه بیتلاش) = فقط عنوان و جدول — صادق، نه جعلی", () => {
     const out = buildClassLedgerCsv({
       generatedAt: "2026-10-24T09:15:00.000Z",
+      byDay: weekFixture,
       roster: rosterFixture,
       details: [],
     });
@@ -216,7 +234,7 @@ describe("downloadClassLedgerCsv — COU و BOM", () => {
     const cap = capture();
     try {
       const ok = downloadClassLedgerCsv(
-        { generatedAt: "2026-10-24T09:15:00.000Z", roster: rosterFixture, details: [detailOf("آرش")] },
+        { generatedAt: "2026-10-24T09:15:00.000Z", byDay: weekFixture, roster: rosterFixture, details: [detailOf("آرش")] },
         "2026-10-24"
       );
       expect(ok).toBe(true);
@@ -246,7 +264,7 @@ describe("downloadClassLedgerCsv — COU و BOM", () => {
     }) as typeof document.body.appendChild;
     try {
       expect(
-        downloadClassLedgerCsv({ generatedAt: "2026-10-24T09:15:00.000Z", roster: rosterFixture, details: [] }, "2026-10-24")
+        downloadClassLedgerCsv({ generatedAt: "2026-10-24T09:15:00.000Z", byDay: weekFixture, roster: rosterFixture, details: [] }, "2026-10-24")
       ).toBe(false);
       expect(appended).toHaveLength(0);
     } finally {
