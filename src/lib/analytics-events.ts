@@ -49,6 +49,7 @@ export const EVENT_NAMES = [
   "duel_ledger_image", // duel ledger career-card PNG — download or native share (r288)
   "library_story_done", // a hill-story finished in the library (r290)
   "weekly_image", // weekly digest share-card PNG — download or native share (r306)
+  "discovery_jump", // jumped from the home discovery-journey card to an untried world (r349)
 ] as const;
 
 export type EventName = (typeof EVENT_NAMES)[number];
@@ -98,6 +99,7 @@ export const EVENT_LABELS_FA: Record<EventName, string> = {
   duel_ledger_image: "عکسِ کارنامهٔ نبردها",
   library_story_done: "پایانِ داستانِ کتاب‌خانه",
   weekly_image: "عکسِ هفته‌نامهٔ پیشرفت",
+  discovery_jump: "پرش از سفرِ کشف",
 };
 
 export function isEventName(v: unknown): v is EventName {

@@ -8,6 +8,7 @@ import { useMounted } from "@/lib/use-mounted";
 import HomeHero from "./home-hero";
 import HomeToday from "./home-today";
 import HomeContinueReading from "./home-continue-reading";
+import HomeDiscoveryJourney from "./home-discovery-journey";
 import { ListenBanner, RushBanner } from "./home-banners";
 import HomeStarter from "./home-starter";
 import HomeBookshelf from "./home-bookshelf";
@@ -84,6 +85,9 @@ export default function HomeView() {
       <HomeToday />
       {/* r297 «کتاب‌خانه همه‌جا» — حلقهٔ بازگشت به خواندن؛ تازه‌وارد آن را نمی‌بیند */}
       <HomeContinueReading />
+      {/* r349 «سفرِ کشف» — آنبوردینگِ هفتهٔ دوم؛ تازه‌واردِ مطلق نمی‌بیند
+          (گیتِ درونی — home-starter صاحبِ لحظهٔ روزِ نخست است) */}
+      <HomeDiscoveryJourney />
       <DailyQuests />
       <WordOfDay />
       <ListenBanner />

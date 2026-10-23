@@ -233,8 +233,15 @@ describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
     // deliberate LIGHT ink in dark — the r334 mixed-consumer lesson), so the
     // wash entered wrapper-scoped beside the existing z-index popper rule:
     // one compound rule, two selector lines, net +2 → 543.
+    // r349: the discovery journey's compass card (week-2 onboarding — the
+    // audit's biggest UX gap). The dark contract CONSOLIDATED instead of
+    // growing: every row/tile/ink value rides the EXISTING kernel compound
+    // lines (daily-quests rows + emerald/teal/amber/orange/violet tiles,
+    // skill-panel rose, spell-buttons sky, glesson lime/indigo) — the block's
+    // net growth is ONE selector line (the sky border, bg via .dark .bg-white).
+    // Re-based 543 → 544 for that single line.
     const sel = lines.filter((l) => /^\s*\.[a-z]/.test(l) && !l.includes("→")).length;
-    expect(sel).toBeLessThanOrEqual(543);
+    expect(sel).toBeLessThanOrEqual(544); // r349: +1 compass-card border — all else consolidated into existing kernel lines
     expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(490);
   });
 });
@@ -745,7 +752,7 @@ describe("globals.css stone veil phase 6 (bg-stone-50/60|70 — Task 89)", () =>
     expect(css89).toContain(".dark .official-report {\n  --color-stone-50: #fafaf9;");
   });
 
-  it("exclusion matrix pinned — raw /60 survives ONLY in daily-quests; raw /70 ONLY in duel-setup (both same-element hover traps)", () => {
+  it("exclusion matrix pinned — raw /60 survives ONLY in daily-quests + discovery-journey; raw /70 ONLY in duel-setup (same-element hover traps)", () => {
     const raw60: string[] = [];
     const raw70: string[] = [];
     const walk = (d: string): void => {
@@ -764,9 +771,16 @@ describe("globals.css stone veil phase 6 (bg-stone-50/60|70 — Task 89)", () =>
       }
     };
     walk(resolve(process.cwd(), "src"));
-    expect(raw60, "bg-stone-50/60 survives ONLY in daily-quests (hover:bg-emerald-50/40 same element)").toEqual([
-      resolve(process.cwd(), "src/components/study/practice/daily-quests.tsx"),
-    ]);
+    // r349: the discovery-journey untried chips replicate the EXACT
+    // daily-quests pattern (raw bg-stone-50/60 + a same-element hover wash —
+    // hover:bg-sky-50/40 — that c-stone-60 cannot express); dark is served by
+    // the consolidated .jrow kernel rule, so no new dark rule exists.
+    expect(new Set(raw60), "bg-stone-50/60 survives ONLY in daily-quests + discovery-journey (same-element hover traps)").toEqual(
+      new Set([
+        resolve(process.cwd(), "src/components/study/practice/daily-quests.tsx"),
+        resolve(process.cwd(), "src/components/study/home/home-discovery-journey.tsx"),
+      ])
+    );
     expect(raw70, "bg-stone-50/70 survives ONLY in duel-setup:167 (hover:bg-stone-100/70 same element)").toEqual([
       resolve(process.cwd(), "src/components/study/duel/duel-setup.tsx"),
     ]);

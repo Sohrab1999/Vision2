@@ -136,8 +136,11 @@ describe("r335 — قفلهایِ منبع", () => {
       ["purple", "#d8b4fe"], ["pink", "#f9a8d4"], ["rose", "#fda4af"],
       ["fuchsia", "#f0abfc"], ["cyan", "#67e8f9"], ["lime", "#bef264"],
     ] as const) {
+      // r349: the discovery-journey card CONSOLIDATED its lime/indigo inks
+      // into these compound kernel lines (an optional 4th scope) — the
+      // three-domain contract itself is unchanged.
       const rule = css.match(
-        new RegExp(`\\.dark \\.gmetro \\.text-${fam}-700, \\.dark \\.gmetro-dialog \\.text-${fam}-700, \\.dark \\.glesson \\.text-${fam}-700 \\{ color: ${ink}; \\}`),
+        new RegExp(`\\.dark \\.gmetro \\.text-${fam}-700, \\.dark \\.gmetro-dialog \\.text-${fam}-700, \\.dark \\.glesson \\.text-${fam}-700(?:, \\.dark \\.discovery-journey \\.text-${fam}-700)? \\{ color: ${ink}; \\}`),
       );
       expect(rule, fam).not.toBeNull();
     }

@@ -84,7 +84,11 @@ const p = new PrismaClient();
         // r348: the explain-budget QA — one real server curl (explain_generated)
         // + one stubbed client click (explain_open); explain_served joins its
         // siblings for future cache-hit probes. QA-only in this loopback env
-        "explain_open", "explain_generated", "explain_served"].includes(e.name)) {
+        "explain_open", "explain_generated", "explain_served",
+        // r349: the discovery-journey QA — one live chip jump from the compass
+        // card in the QA profile (the whole pipeline client→/api/event→EventDay
+        // was the point of the probe). QA-only by the same loopback construction
+        "discovery_jump"].includes(e.name)) {
         await p.eventDay.delete({ where: { day_name: { day: e.day, name: e.name } } });
         console.log("QA event row removed:", e.name, "=", e.count);
       }
