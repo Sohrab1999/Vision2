@@ -707,7 +707,7 @@ export default function CommandPalette() {
                         )}
                       </span>
                       {active && (
-                        <span className="shrink-0 rounded-md bg-emerald-600/10 px-1.5 py-0.5 text-[10px] font-black text-emerald-700">
+                        <span className="shrink-0 rounded-md bg-emerald-600/10 px-1.5 py-0.5 text-[10px] font-black text-emerald-800">
                           Enter ↵
                         </span>
                       )}
@@ -724,7 +724,7 @@ export default function CommandPalette() {
           <span className="flex items-center gap-1.5">
             <Kbd>↑</Kbd>
             <Kbd>↓</Kbd> حرکت
-            <span className="mx-1 text-stone-300">·</span>
+            <span className="mx-1 text-stone-500">·</span>
             <Kbd>Enter</Kbd> اجرا
           </span>
           <span className="hidden items-center gap-1 sm:flex">

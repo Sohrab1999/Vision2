@@ -241,7 +241,7 @@ export default function ShortcutGuide() {
                       <span className="flex shrink-0 items-center gap-1">
                         {r.keys.map((k, i) => (
                           <span key={i} className="flex items-center gap-1">
-                            {i > 0 && <span className="text-[10px] text-stone-300">/</span>}
+                            {i > 0 && <span className="text-[10px] text-stone-500">/</span>}
                             <Kbd>{k}</Kbd>
                           </span>
                         ))}
@@ -300,7 +300,7 @@ export default function ShortcutGuide() {
                         <span className="flex shrink-0 items-center gap-1">
                           {door.keys?.map((k, i) => (
                             <span key={i} className="flex items-center gap-1">
-                              {i > 0 && <span className="text-[10px] text-stone-300">+</span>}
+                              {i > 0 && <span className="text-[10px] text-stone-500">+</span>}
                               <Kbd>{k}</Kbd>
                             </span>
                           ))}
