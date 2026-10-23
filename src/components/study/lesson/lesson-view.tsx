@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, BookOpen, MessageSquareText, BookOpenText, GraduationCap, ListChecks, Layers, PenLine, Ear, ArrowLeftRight, BookMarked } from "lucide-react";
 import { findLesson } from "@/data";
@@ -20,6 +21,7 @@ import SynAntTab from "./syn-ant-tab";
 import BookletTab from "./booklet-tab";
 import LessonJumpIndex from "./lesson-jump-index";
 import { ring600 } from "@/lib/ui-colors";
+import { writeLessonResume } from "@/lib/lesson-resume"; // r361 — نویسندهٔ یکتایِ رکوردِ ادامهٔ خواندن
 
 const tabs: { key: LessonTab; label: string; icon: React.ElementType }[] = [
   { key: "vocab", label: "واژگان", icon: BookOpen },
@@ -43,6 +45,14 @@ export default function LessonView({ id }: { id: number }) {
   const known = useStudy((s) => s.known);
   const flashIntent = useStudy((s) => s.flashIntent);
   const flashNonce = useStudy((s) => s.flashNonce);
+
+  // r361 — «ادامهٔ خواندن» برایِ درسها: هر ورود/تعویضِ تب، محلِ آخرین
+  // مطالعه را تازه میکند — رکورد در localStorage است نه استور (بدونِ
+  // فیلدِ جدیدِ persist؛ هم‌الگویِ رکوردِ ضمیمهٔ r235). نویسندهٔ یکتا
+  // همین‌جاست — هیچ مسیرِ نویسندگیِ دیگری وجود ندارد.
+  useEffect(() => {
+    writeLessonResume(id, tab);
+  }, [id, tab]);
 
   if (!lesson) {
     return <div className="p-10 text-center text-stone-500">درس یافت نشد.</div>;
