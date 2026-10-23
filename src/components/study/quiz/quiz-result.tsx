@@ -181,15 +181,30 @@ export default function QuizResult({
   const shareResult = async () => {
     const breakdown = groups.map((g) => `${g.label}: ${faNum(percentOf(g.correct, g.total))}٪`).join(" · ");
     const text = `🏆 نتیجهٔ من در وب‌کتاب «Vision Two»\n${title}\n⭐ ${faNum(percent)}٪ (${faNum(correctCount)} از ${faNum(total)})${breakdown ? `\n📊 ${breakdown}` : ""}`;
-    try {
-      if (typeof navigator !== "undefined" && typeof navigator.share === "function") {
+    // r341 — دو پا، دو قضاوت: AbortErrorِ share = انصرافِ واقعیِ کاربر (سکوتِ مشروع)؛
+    // اما شکستِ کلیپبورد انصراف نیست — سکوتِ قبلیِ «catchِ فراگیر» در هدلس/وب‌ویوهایِ
+    // بیاجازه زنده ثبت شد (Write permission denied → هیچ بازخوردی). حالا صادقانه میگوید.
+    if (typeof navigator !== "undefined" && typeof navigator.share === "function") {
+      try {
         await navigator.share({ title: "نتیجهٔ وب‌کتاب Vision Two", text });
         return;
+      } catch (e) {
+        if (e && typeof e === "object" && (e as { name?: string }).name === "AbortError") return;
+        /* خطایِ غیرِ انصرافی → fallbackِ کلیپبورد */
+      }
+    }
+    try {
+      if (typeof navigator === "undefined" || !navigator.clipboard || typeof navigator.clipboard.writeText !== "function") {
+        throw new Error("clipboard-unavailable");
       }
       await navigator.clipboard.writeText(text);
       toast({ title: "✓ نتیجه کپی شد", description: "می‌توانی آن را برای دوستانت بفرستی!", duration: 3000 });
     } catch {
-      /* user cancelled share */
+      toast({
+        title: "خطا در کپی نتیجه",
+        description: "کلیپبورد در دسترس نیست — «دانلود تصویر نتیجه» را بزن و همان تصویر را بفرست.",
+        duration: 3000,
+      });
     }
   };
 
