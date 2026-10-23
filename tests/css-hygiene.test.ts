@@ -398,8 +398,15 @@ describe("globals.css semantic chip layer (Step 9 tranche 4 phase 1 — Task 83)
     }
   });
 
-  it("flame gradient stays UNFLIPPED in dark (probe-proven existing behavior, not a regression)", () => {
-    // .dark .c-chip-flame = border + ink only; background-image must NOT be redefined
+  it("flame gradient IS flipped in dark (r336 reversal — the old UNFLIPPED pin encoded an unmeasured assumption)", () => {
+    // The old pin ("probe-proven existing behavior") predates any session where
+    // the chip ever rendered: past personas planted no dayHistory, streak stayed
+    // 0 and the chip was never mounted, so "unflipped" was never actually
+    // probed. r336's desktop-1280 sweep hit it live: light amber-50→orange-50
+    // gradient under amber-400 ink = 1.57 — the ONLY incomplete member of the
+    // c-chip family (goal/freeze/due/duel all remap their surface). The dark
+    // rule now carries the kernel-mirrored washes (amber-50/orange-50 dark
+    // values) — see metro-quiz-gates-r336.test.ts for the live pair math.
     const start = lines83.findIndex((l) => l.trim() === ".dark .c-chip-flame {");
     expect(start).toBeGreaterThanOrEqual(0);
     let depth = 0;
@@ -410,7 +417,9 @@ describe("globals.css semantic chip layer (Step 9 tranche 4 phase 1 — Task 83)
       depth -= (lines83[i].match(/}/g) ?? []).length;
       if (depth <= 0) break;
     }
-    expect(body).not.toContain("background-image");
+    expect(body).toContain(
+      "background-image: linear-gradient(to left, rgba(69, 48, 12, 0.35), rgba(88, 44, 14, 0.4))",
+    );
   });
 });
 
