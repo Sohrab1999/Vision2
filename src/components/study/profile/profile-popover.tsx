@@ -498,7 +498,7 @@ export default function ProfilePopover() {
                 </span>
               </div>
               {resumeItem.hint && (
-                <div className="mt-0.5 truncate text-[10px] font-bold text-emerald-700/70">
+                <div className="mt-0.5 truncate text-[10px] font-bold text-emerald-800">
                   {resumeItem.hint}
                 </div>
               )}
@@ -642,7 +642,7 @@ export default function ProfilePopover() {
                 <History size={13} className="shrink-0 text-emerald-600" />
                 <span>
                   پشتیبان خودکار: {autoBackupAgeFa(autoSnap.savedAt)}
-                  <span className="mx-1 font-normal text-emerald-700/70">
+                  <span className="mx-1 font-normal text-emerald-800">
                     ({faNum(Object.values(autoSnap.data.known).filter(Boolean).length)} واژه)
                   </span>
                 </span>
@@ -691,7 +691,7 @@ export default function ProfilePopover() {
                 </button>
               </div>
               {lastSyncAt && (
-                <div className="mt-1 text-[10px] font-bold text-emerald-700/70">
+                <div className="mt-1 text-[10px] font-bold text-emerald-800">
                   آخرین همگام‌سازی: {autoBackupAgeFa(lastSyncAt)}
                 </div>
               )}

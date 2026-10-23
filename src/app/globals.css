@@ -515,6 +515,18 @@ body {
 /* toast in dark */
 .dark [data-radix-popper-content-wrapper] { z-index: 60; }
 
+/* r338 — popوورها: زمردی۱۰۰ در تاریک شسته میشود — فقط در دامنهٔ wrapperِ
+   پورتالشده (همخانوادهٔ z-indexِ بالا). کرنلِ سراسری (--color-emerald-100)
+   ممنوع: home-hero با text-emerald-100 جوهرِ روشنِ عمدی در تاریک دارد
+   (درسِ r334 — «توکنِ ممنوع»: مصرفکنندگانِ جوهر/سطح ناسازگار).
+   زندهثبتشده: چیپهای «افعال بی‌قاعده»/«جدید» پروفایل روی #d0fae5ِ
+   تیرهنشده = ۱٫۳۴؛ hoverهایِ زمردیِ settings/profile هم همان سرنوشت را
+   در تاریک داشتند. مقدار = همان شستشویِ word-dayِ زمردی۱۰۰. */
+.dark [data-radix-popper-content-wrapper] .bg-emerald-100,
+.dark [data-radix-popper-content-wrapper] .hover\:bg-emerald-100:hover {
+  background-color: rgba(6, 55, 40, 0.55);
+}
+
 /* ---------------- streak flame ---------------- */
 .streak-flame {
   animation: flame-flicker 1.6s ease-in-out infinite;

@@ -175,7 +175,7 @@ describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
     }
   });
 
-  it("keeps the selector budget honest (tranche-3b part 2 ceiling 500, re-based 505 r89, 510 r196, 513 r198, 514 r325, 520 r328, 521 r329, 522 r330, 529 r334, 541 r335)", () => {
+  it("keeps the selector budget honest (tranche-3b part 2 ceiling 500, re-based 505 r89, 510 r196, 513 r198, 514 r325, 520 r328, 521 r329, 522 r330, 529 r334, 541 r335, 543 r338)", () => {
     // soft ceiling: the file may not regrow past the consolidation floor. History:
     // 535 pre-kernel → 519 pre-part-2 → 500 (roadmap §12 goal). r89 re-based to
     // 505 for phase 6: the LAST veil family (c-stone) entered with net +4 lines
@@ -225,8 +225,16 @@ describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
     // misread purple/fuchsia as violet/pink — the first re-record left them
     // failing and settled the true owners; all four now have rules (future
     // coverage). Each ink rule = 3 scopes in one compound line, net +12 → 541.
+    // r338: the FIRST live judgment of the two header popovers (settings +
+    // profile) with full data at desktop-1280. The emerald-100 chips (resume
+    // scope + the sync «جدید» badge) kept their LIGHT surface in dark — ink
+    // #6ee7b7 on #d0fae5 = 1.34 (live-recorded). A kernel remap of
+    // --color-emerald-100 is FORBIDDEN (home-hero speaks text-emerald-100 as a
+    // deliberate LIGHT ink in dark — the r334 mixed-consumer lesson), so the
+    // wash entered wrapper-scoped beside the existing z-index popper rule:
+    // one compound rule, two selector lines, net +2 → 543.
     const sel = lines.filter((l) => /^\s*\.[a-z]/.test(l) && !l.includes("→")).length;
-    expect(sel).toBeLessThanOrEqual(541);
+    expect(sel).toBeLessThanOrEqual(543);
     expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(490);
   });
 });
