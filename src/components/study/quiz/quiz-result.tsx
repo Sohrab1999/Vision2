@@ -69,7 +69,7 @@ const CERT_ACCENTS: Record<
     borderDark: "rgba(180, 130, 20, 0.55)",
     border: "border-amber-300",
     head: "text-amber-700",
-    pill: "from-amber-400 to-orange-500",
+    pill: "from-[#92400e] to-orange-700",
     pillShadow: "shadow-amber-500/30",
     name: "text-amber-800",
   },
@@ -79,7 +79,7 @@ const CERT_ACCENTS: Record<
     borderDark: "rgba(4, 120, 87, 0.5)",
     border: "border-emerald-300",
     head: "text-emerald-700",
-    pill: "from-emerald-400 to-emerald-600",
+    pill: "from-emerald-700 to-emerald-800",
     pillShadow: "shadow-emerald-500/30",
     name: "text-emerald-800",
   },
@@ -89,7 +89,7 @@ const CERT_ACCENTS: Record<
     borderDark: "rgba(154, 52, 18, 0.5)",
     border: "border-orange-300",
     head: "text-orange-700",
-    pill: "from-orange-400 to-orange-600",
+    pill: "from-orange-700 to-orange-800",
     pillShadow: "shadow-orange-500/30",
     name: "text-orange-800",
   },
@@ -99,7 +99,7 @@ const CERT_ACCENTS: Record<
     borderDark: "rgba(91, 33, 182, 0.5)",
     border: "border-violet-300",
     head: "text-violet-700",
-    pill: "from-violet-500 to-violet-600",
+    pill: "from-violet-600 to-violet-700",
     pillShadow: "shadow-violet-500/30",
     name: "text-violet-800",
   },
@@ -268,7 +268,7 @@ export default function QuizResult({
         <div className="flex flex-wrap justify-center gap-2.5">
           <button
             onClick={shareResult}
-            className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-l from-amber-500 to-orange-600 px-4 py-2.5 text-sm font-bold text-white shadow-md shadow-amber-600/25 transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-90 active:scale-[0.96]"
+            className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-l from-[#92400e] to-orange-700 px-4 py-2.5 text-sm font-bold text-white shadow-md shadow-amber-600/25 transition-[background-color,color,border-color,box-shadow,transform,opacity] hover:opacity-90 active:scale-[0.96]"
           >
             <Share2 size={15} />
             اشتراک‌گذاری نتیجه
@@ -385,7 +385,7 @@ export default function QuizResult({
               <div className="mb-1.5 flex items-start gap-2">
                 <span
                   className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-white ${
-                    ok ? "bg-emerald-500" : "bg-rose-700"
+                    ok ? "bg-emerald-700" : "bg-rose-700"
                   }`}
                 >
                   {ok ? <Check size={12} /> : <X size={12} />}
