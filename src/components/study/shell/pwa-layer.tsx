@@ -28,6 +28,7 @@ const DUE_TOAST_KEY = "vision2-due-toast-day";
 const FREEZE_TOAST_KEY = "vision2-freeze-toast-day";
 const EARN_TOAST_KEY = "vision2-earn-toast-day";
 const QUOTA_TOAST_KEY = "vision2-tts-quota-toast-day"; // r347
+const EXPLAIN_QUOTA_TOAST_KEY = "vision2-explain-quota-toast-day"; // r348
 const DISMISS_COOLDOWN = 7 * 86_400_000; // «بعداً» → ۷ روز سکوت
 
 type BeforeInstallPromptEvent = Event & {
@@ -106,6 +107,22 @@ export default function PwaLayer() {
     };
     window.addEventListener("tts-quota", onQuota);
     return () => window.removeEventListener("tts-quota", onQuota);
+  }, [toast]);
+
+  // r348 — «سقفِ توضیحِ هوشمندِ ماه»: ExplainBox رویِ 429ِ explain_quota
+  // رویدادِ window میفرستد؛ توستِ اختصاصی، روزیِ یک‌بار — عینِ الگویِ r347.
+  // بدونِ تأخیرِ ۳۵۰msِ همزادش: توضیحِ هوشمند هیچ توستِ خانوادهای برای
+  // رقابتِ صحنه ندارد (تک مصرفکننده — حالتِ درونخطی، نه توست).
+  useEffect(() => {
+    const onExplainQuota = () => {
+      if (!oncePerDay(EXPLAIN_QUOTA_TOAST_KEY)) return;
+      toast({
+        title: "💡 سقفِ توضیحِ هوشمندِ این ماه پر شد",
+        description: "توضیحِ «چرا غلط شد؟» تا ماهِ بعد در دسترس نیست — تمرین و پیشرفتِ تو سالم‌اند.",
+      });
+    };
+    window.addEventListener("explain-quota", onExplainQuota);
+    return () => window.removeEventListener("explain-quota", onExplainQuota);
   }, [toast]);
   const [installable, setInstallable] = useState(false);
   const [standalone, setStandalone] = useState(false);

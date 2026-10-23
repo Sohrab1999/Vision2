@@ -5,6 +5,7 @@ import { BODY_CAPS, explainSchema } from "@/lib/api/validate";
 import { rateLimit } from "@/lib/rate-limit";
 import { findQuestion, categoryFa } from "@/lib/explain-source";
 import { trackEventServer } from "@/lib/analytics-server";
+import { bumpExplainMeter, explainMonthUsage } from "@/lib/explain-meter";
 
 // ------------------------------------------------------------------
 // F8 «چرا غلط شد؟» — AI explanation of wrong answers.
@@ -20,6 +21,15 @@ import { trackEventServer } from "@/lib/analytics-server";
 // limit stays INSIDE the handler on purpose — cached reads must remain
 // free (a whole classroom shares one NAT IP), only paid generations
 // consume the quota.
+// r348: the paid path also has a MONTHLY generation budget (ExplainMeter,
+// env-tunable — the r347 TTS budget's sibling). Metering fails OPEN — a
+// broken meter never takes the explanation away; the gate only closes
+// the route when the meter itself proves the month is spent. Only REAL
+// ai generations meter (+1 each): cached reads and SDK-down fallback
+// text are free and unmetered. The 429 speaks its own code
+// ('explain_quota') so ExplainBox can tell the learner the SPECIFIC
+// reason (inline monthly state + the once-a-day 'explain-quota'
+// window event → pwa-layer toast).
 // ------------------------------------------------------------------
 
 const QUOTA = 20;
@@ -104,7 +114,24 @@ export const POST = withApi(
       /* cache read failure is non-fatal — continue to generation */
     }
 
-    // 3) hard quota BEFORE any paid call (cached reads above stay free)
+    // 3) r348 — the monthly gate, on the expensive path only, BEFORE the
+    //    paid call (and before the hourly limiter — one small DB read vs
+    //    burning a bucket hour on a month that is already over).
+    //    Metering failure fails OPEN (usage=null ⇒ no gate).
+    let usage: { used: number; cap: number } | null = null;
+    try {
+      usage = await explainMonthUsage();
+    } catch {
+      /* meter unavailable — availability beats accounting */
+    }
+    if (usage && usage.used >= usage.cap) {
+      return json(
+        { ok: false, code: "explain_quota", error: "سقفِ توضیحِ هوشمندِ این ماه پر شده است — ماهِ بعد دوباره در دسترس است" },
+        { status: 429 }
+      );
+    }
+
+    // 4) hard hourly quota BEFORE any paid call (cached reads above stay free)
     const verdict = rateLimit(req, "explain-gen", QUOTA, QUOTA_WINDOW);
     if (!verdict.ok) return verdict.response!;
 
@@ -121,7 +148,7 @@ export const POST = withApi(
     const explanation = raw ? sanitize(raw) : fallbackText(correct);
     const source = raw ? "ai" : "fallback";
 
-    // 4) store once, serve forever (best-effort — races are fine)
+    // 5) store once, serve forever (best-effort — races are fine)
     try {
       await db.explainCache.upsert({
         where: { key: id },
@@ -132,7 +159,24 @@ export const POST = withApi(
       /* concurrent write conflict is harmless */
     }
 
+    // 6) r348 — meter AFTER a real ai generation only (fallback is free);
+    //    a broken meter never fails the answer the learner is holding.
+    let metered: { used: number; cap: number } | undefined;
+    if (raw && usage) {
+      try {
+        await bumpExplainMeter();
+        metered = { used: usage.used + 1, cap: usage.cap };
+      } catch {
+        /* metering is a cost guard, not correctness */
+      }
+    }
+
     trackEventServer("explain_generated");
-    return json({ id, explanation, cached: false, source });
+    return json(
+      { id, explanation, cached: false, source },
+      metered
+        ? { headers: { "X-Explain-Month-Gens": String(metered.used), "X-Explain-Month-Cap": String(metered.cap) } }
+        : undefined
+    );
   }
 );

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Sparkles, Loader2, RotateCcw, Zap } from "lucide-react";
+import { Sparkles, Loader2, RotateCcw, Zap, Gauge } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 
 // ------------------------------------------------------------------
@@ -15,7 +15,7 @@ import { trackEvent } from "@/lib/analytics";
 const EXPLAINABLE_ID = /^(l[123]-|x-)/;
 
 interface ExplainState {
-  status: "idle" | "loading" | "done" | "error";
+  status: "idle" | "loading" | "done" | "error" | "quota";
   text?: string;
   cached?: boolean;
   fallback?: boolean;
@@ -36,6 +36,23 @@ export default function ExplainBox({ questionId }: { questionId: string }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: questionId }),
       });
+      // r348 — the monthly budget is a DIFFERENT failure than a hiccup:
+      // «تلاش دوباره» would be a lie — the month is over, retrying cannot
+      // help. The quota speaks its own inline state and dispatches the
+      // 'explain-quota' window event (pwa-layer toasts it once a day);
+      // every other failure keeps the generic honest error + retry.
+      if (res.status === 429) {
+        try {
+          const data = (await res.json()) as { code?: string };
+          if (data?.code === "explain_quota") {
+            if (typeof window !== "undefined") window.dispatchEvent(new CustomEvent("explain-quota"));
+            setState({ status: "quota" });
+            return;
+          }
+        } catch {
+          /* unreadable body — fall through to the generic error */
+        }
+      }
       if (!res.ok) throw new Error(String(res.status));
       const data = (await res.json()) as { explanation?: string; cached?: boolean; source?: string };
       if (!data.explanation) throw new Error("empty");
@@ -75,6 +92,17 @@ export default function ExplainBox({ questionId }: { questionId: string }) {
           </p>
         )}
       </motion.div>
+    );
+  }
+
+  if (state.status === "quota") {
+    return (
+      <div className="mt-3 flex items-center gap-2 rounded-xl border border-amber-200 bg-amber-50 px-3 py-2.5" data-ai-explain>
+        <Gauge size={14} className="shrink-0 text-amber-600" />
+        <span className="text-[12px] font-bold leading-5 text-amber-700">
+          سقفِ توضیحِ هوشمندِ این ماه پر شده است — ماهِ بعد دوباره در دسترس است.
+        </span>
+      </div>
     );
   }
 

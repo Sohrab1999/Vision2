@@ -94,3 +94,15 @@ model TtsMeter {
   day   String @id // YYYY-MM-DD (UTC)
   chars Int    @default(0)
 }
+
+// r348 «سقفِ ماهانهٔ توضیحِ هوشمند» — per-UTC-day generation meter for the
+// paid AI explain endpoint (same cost family as TtsMeter). Only REAL ai
+// generations increment (+1 each); cached reads and SDK-down fallback text
+// are free and unmetered. The month-to-date sum gates POST /api/explain
+// with an honest 429 (code 'explain_quota') and feeds GET /api/explain/usage
+// (the settings budget row). Fails OPEN exactly like its sibling: a broken
+// meter never takes the explanation away from a learner.
+model ExplainMeter {
+  day  String @id // YYYY-MM-DD (UTC)
+  gens Int    @default(0)
+}

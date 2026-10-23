@@ -75,7 +75,16 @@ const p = new PrismaClient();
         // round's live konkur-simulator drive fired it and survived cleanup
         // (the pre-r342 allowlist predates the konkur corner). QA-only by
         // the same loopback construction as its siblings above
-        "konkur_start"].includes(e.name)) {
+        "konkur_start",
+        // r348: the output/download-family QA drives of r343/r344 left these
+        // four behind — the pre-r348 allowlist predated the anki/backup/CSV/
+        // weekly-card corners. All QA-only by the same loopback construction
+        // (every scripted download fires exactly one aggregate row)
+        "anki_export", "backup_export", "coverage_csv", "weekly_image",
+        // r348: the explain-budget QA — one real server curl (explain_generated)
+        // + one stubbed client click (explain_open); explain_served joins its
+        // siblings for future cache-hit probes. QA-only in this loopback env
+        "explain_open", "explain_generated", "explain_served"].includes(e.name)) {
         await p.eventDay.delete({ where: { day_name: { day: e.day, name: e.name } } });
         console.log("QA event row removed:", e.name, "=", e.count);
       }
