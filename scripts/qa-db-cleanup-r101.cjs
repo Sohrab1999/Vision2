@@ -96,7 +96,11 @@ const p = new PrismaClient();
         // r351: the 30-day pulse-ledger CSV QA — one live dialog download
         // (the days=30 series → vision2-pulse-*.csv was the probe). QA-only
         // by the same loopback construction
-        "pulse_csv"].includes(e.name)) {
+        "pulse_csv",
+        // r352: the teacher-panel QA — one live view mount (teacher_open) +
+        // one live roster CSV download (teacher_csv) from the QA session.
+        // QA-only by the same loopback construction
+        "teacher_open", "teacher_csv"].includes(e.name)) {
         await p.eventDay.delete({ where: { day_name: { day: e.day, name: e.name } } });
         console.log("QA event row removed:", e.name, "=", e.count);
       }

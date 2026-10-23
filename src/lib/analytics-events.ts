@@ -52,6 +52,8 @@ export const EVENT_NAMES = [
   "discovery_jump", // jumped from the home discovery-journey card to an untried world (r349)
   "pulse_open", // opened the full pulse dashboard from settings (r350)
   "pulse_csv", // 30-day event-ledger CSV exported from the pulse dashboard (r351)
+  "teacher_open", // opened the teacher panel (r352)
+  "teacher_csv", // class-roster CSV exported from the teacher panel (r352)
 ] as const;
 
 export type EventName = (typeof EVENT_NAMES)[number];
@@ -104,6 +106,8 @@ export const EVENT_LABELS_FA: Record<EventName, string> = {
   discovery_jump: "پرش از سفرِ کشف",
   pulse_open: "بازکردنِ نبضِ کامل",
   pulse_csv: "خروجی CSV دفترِ نبض",
+  teacher_open: "بازکردنِ پنلِ معلم",
+  teacher_csv: "خروجی CSV روزنامهٔ کلاس",
 };
 
 // ------------------------------------------------------------------
@@ -119,7 +123,9 @@ export const EVENT_CATEGORIES: Record<EventName, string> = {
   freeze_badge: "نشست و ناوبری",
   discovery_jump: "نشست و ناوبری",
   pulse_open: "نشست و ناوبری",
+  teacher_open: "نشست و ناوبری",
   pulse_csv: "خروجی و هم‌رسانی",
+  teacher_csv: "خروجی و هم‌رسانی",
   quiz_done: "یادگیری و تمرین",
   exam_done: "یادگیری و تمرین",
   flashcard_done: "یادگیری و تمرین",

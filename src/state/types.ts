@@ -37,7 +37,8 @@ export type View =
   | { type: "konkur" }
   | { type: "grammar" } // متروی گرامر — Task 39
   | { type: "my-words" } // واژه‌های نشان‌شده — واژه‌نامهٔ شخصی
-  | { type: "library" }; // Task 290 — کتاب‌خانهٔ داستان‌های L.A. Hill
+  | { type: "library" } // Task 290 — کتاب‌خانهٔ داستان‌های L.A. Hill
+  | { type: "teacher" }; // r352 — پنلِ معلم (فهرستِ کلاس، گیتِ کد)
 
 export type LessonTab = "vocab" | "conversation" | "reading" | "grammar" | "writing" | "dictation" | "tests" | "synant" | "booklet";
 

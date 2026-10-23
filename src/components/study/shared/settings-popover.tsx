@@ -4,7 +4,7 @@
 // سرعت روخوانی TTS · اندازهٔ متن · کاهش حرکت · هدف روزانه · دسترسی سریع به پروفایل/پشتیبان
 
 import { useState, useEffect } from "react";
-import { Settings, Volume2, Type, Waves, Target, UserCog, Check, Smartphone, Activity, Loader2, RefreshCw, Gauge, Sparkles, BarChart3 } from "lucide-react";
+import { Settings, Volume2, Type, Waves, Target, UserCog, Check, Smartphone, Activity, Loader2, RefreshCw, Gauge, Sparkles, BarChart3, School } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Switch } from "@/components/ui/switch";
 import { Slider } from "@/components/ui/slider";
@@ -52,6 +52,7 @@ export default function SettingsPopover() {
   const setSettings = useStudy((s) => s.setSettings);
   const dailyGoal = useStudy((s) => s.dailyGoal);
   const setDailyGoal = useStudy((s) => s.setDailyGoal);
+  const setView = useStudy((s) => s.setView);
   const [open, setOpen] = useState(false);
   const [previewing, setPreviewing] = useState(false);
   const [showInstallRow, setShowInstallRow] = useState(false);
@@ -455,6 +456,29 @@ export default function SettingsPopover() {
           {pulseState === "error" && (
             <p className="py-2 text-center text-[11px] text-stone-500">آمار زنده در دسترس نیست.</p>
           )}
+        </section>
+
+        {/* ---------- پنلِ معلم (r352) ---------- */}
+        <section className="mb-4 rounded-xl border border-stone-200 c-stone-60 p-3">
+          <div className="flex items-center justify-between gap-2">
+            <span className="flex min-w-0 items-center gap-1.5 text-[12px] font-bold text-stone-600">
+              <School size={13} className="text-sky-600" />
+              پنلِ معلم
+            </span>
+            <button
+              onClick={() => {
+                setOpen(false);
+                setView({ type: "teacher" });
+              }}
+              className="flex h-6 items-center gap-1 rounded-full px-2 text-[10px] font-black text-emerald-700 transition-[background-color,color,border-color,transform] hover:bg-emerald-100/80 active:scale-[0.96]"
+              aria-label="گشودن پنل معلم — فهرست کلاس"
+            >
+              فهرستِ کلاس
+            </button>
+          </div>
+          <p className="mt-1 text-[10px] leading-4 text-stone-500">
+            پیشرفتِ همهٔ یادگیرندگانِ این سرور — فقط با کدِ دسترسیِ معلم.
+          </p>
         </section>
 
         {/* ---------- نصب روی دستگاه (F4) ---------- */}

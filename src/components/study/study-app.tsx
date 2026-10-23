@@ -49,6 +49,7 @@ const KonkurView = lazyView(() => import("./exam/konkur-view"));
 const GrammarView = lazyView(() => import("./grammar/grammar-view"));
 const MyWordsView = lazyView(() => import("./practice/my-words"));
 const LibraryView = lazyView(() => import("./library/library-view")); // Task 290 — کتاب‌خانهٔ داستان‌ها
+const TeacherView = lazyView(() => import("./teacher/teacher-view")); // r352 — پنلِ معلم
 
 // Report modals: heavy (official-report pulls per-lesson stats) and computed
 // while closed (audit finding G-5). They mount only after the first "open"
@@ -253,6 +254,7 @@ export default function StudyApp() {
               {view.type === "grammar" && <GrammarView />}
               {view.type === "my-words" && <MyWordsView />}
               {view.type === "library" && <LibraryView />}
+              {view.type === "teacher" && <TeacherView />}
             </motion.div>
           </AnimatePresence>
         ) : (
