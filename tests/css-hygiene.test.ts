@@ -175,7 +175,7 @@ describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
     }
   });
 
-  it("keeps the selector budget honest (tranche-3b part 2 ceiling 500, re-based 505 r89, 510 r196, 513 r198, 514 r325, 520 r328, 521 r329, 522 r330, 529 r334)", () => {
+  it("keeps the selector budget honest (tranche-3b part 2 ceiling 500, re-based 505 r89, 510 r196, 513 r198, 514 r325, 520 r328, 521 r329, 522 r330, 529 r334, 541 r335)", () => {
     // soft ceiling: the file may not regrow past the consolidation floor. History:
     // 535 pre-kernel → 519 pre-part-2 → 500 (roadmap §12 goal). r89 re-based to
     // 505 for phase 6: the LAST veil family (c-stone) entered with net +4 lines
@@ -211,8 +211,22 @@ describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
     // band already owns it), net +7 → 529. Kernel tokens were NOT an option:
     // rose-700/emerald-700/amber-700 carry heavy solid-bg consumers (21/61/6
     // sites) that must keep their light-scale values.
+    // r335: the metro record closure (31 groups) + the first-ever glesson
+    // sweep. One hero ink rule (teal-50 → #ccfbf1 — the kernel remaps
+    // --color-teal-50 to a 35% SURFACE wash but the hero used it as TEXT ink,
+    // live 1.11), two solid pins (bg-sky-800/bg-orange-700 are kernel-lightened
+    // to #7dd3fc/#fdba74 for their text consumers but sit UNDER white
+    // badge/CTA text here — live 1.5/1.52/1.67; pinned to the r330-proven deep
+    // stops #0369a1/#c2410c; the portaled .gmetro-dialog joined after its
+    // lesson CTA re-failed 1.67), and NINE line-ink rules (indigo/violet/blue/
+    // purple/pink/rose/fuchsia/cyan/lime-700 — no dark value anywhere; amber-700
+    // has the global 563 rule, these nine do not; live 1.87-3.05 on the probe
+    // cards). Tool lesson of the round: the lab→token mapping of r334's record
+    // misread purple/fuchsia as violet/pink — the first re-record left them
+    // failing and settled the true owners; all four now have rules (future
+    // coverage). Each ink rule = 3 scopes in one compound line, net +12 → 541.
     const sel = lines.filter((l) => /^\s*\.[a-z]/.test(l) && !l.includes("→")).length;
-    expect(sel).toBeLessThanOrEqual(529);
+    expect(sel).toBeLessThanOrEqual(541);
     expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(490);
   });
 });

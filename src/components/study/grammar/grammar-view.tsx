@@ -224,7 +224,10 @@ export default function GrammarView() {
                 className={`gmetro-badge rounded-full ${c.solid} px-3 py-1.5 text-[12px] font-black text-white shadow-sm`}
               >
                 {line.fa}
-                <span className="mr-1.5 font-mono text-[10px] font-bold opacity-80" dir="ltr">
+                {/* r335: پسوندِ انگلیسی هرگز opacity نداشت — آلفایِ ۸۰٪ رویِ
+                    استاپِ توپر یعنی جوهرِ ۳٫۲–۴٫۳ (یازده بجِ هر دو تم)؛
+                    سفیدِ کامل رویِ -۷۰۰ها ≥۵ و رویِ rose/skyِ تازه ۶٫۳/۷٫۵ */}
+                <span className="mr-1.5 font-mono text-[10px] font-bold" dir="ltr">
                   {line.en}
                 </span>
               </span>

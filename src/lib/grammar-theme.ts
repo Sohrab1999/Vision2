@@ -36,7 +36,9 @@ export const LINE_COLORS: Record<GrammarLineColor, LinePalette> = {
     border: "border-teal-200",
   },
   rose: {
-    solid: "bg-rose-600",
+    // r335: -۶۰۰ زیرِ سفیدِ کامل = ۴٫۷۳ (مرزی؛ آلفایِ پسوندِ کهنه ۳٫۱۸)
+    // — یک پله عمیق‌تر مثل توکنِ جوهرِ خانواده (سفید رویِ -۷۰۰ = ۶٫۳).
+    solid: "bg-rose-700",
     rail: "bg-gradient-to-l from-rose-300 via-rose-400 to-rose-600",
     soft: "bg-rose-50",
     text: "text-rose-700",
@@ -57,7 +59,9 @@ export const LINE_COLORS: Record<GrammarLineColor, LinePalette> = {
     border: "border-orange-200",
   },
   sky: {
-    solid: "bg-sky-700",
+    // r335: سفید رویِ -۷۰۰ زنده ≈ ۴٫۳۴ (مردودِ مرزی) — -۸۰۰ = ۷٫۵؛
+    // در تاریک قاعدهٔ scopedِ باندِ گمترو استاپِ کرنلشده را عمیق نگه میدارد.
+    solid: "bg-sky-800",
     rail: "bg-gradient-to-l from-sky-300 via-sky-500 to-sky-700",
     soft: "bg-sky-50",
     text: "text-sky-700",

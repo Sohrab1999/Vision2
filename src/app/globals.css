@@ -1463,7 +1463,10 @@ html.user-reduce-motion .streak-flame {
 .glesson-piece.glesson-role-rest { background-color: #f5f5f4; border-color: #d6d3d1; color: #44403c; }
 
 .dark .gmetro-hero { background-image: linear-gradient(to bottom left, #0f766e, #115e59, #064e3b); }
-.dark .gmetro-step { background-color: rgb(255 255 255 / 0.08); }
+/* r335: شستشویِ white/8 در تاریک روشن‌کننده بود — ترکیبِ رویِ استاپِ
+   میانیِ هیرو = #228179 و جوهرِ teal-100 را به ۴٫۱۶ میکشید؛ شستشویِ
+   تیرهکنندهٔ black/25 (همگامِ چیپهایِ bg-black/20 هیرو) = ۷٫۴. */
+.dark .gmetro-step { background-color: rgb(0 0 0 / 0.25); }
 /* line cards — per-color deep washes */
 .dark .gmetro-line[class*="border-emerald-200"] { border-color: rgb(16 185 129 / 0.3); background-color: rgb(6 78 59 / 0.16); }
 .dark .gmetro-line[class*="border-amber-200"] { border-color: rgb(217 119 6 / 0.35); background-color: rgb(120 53 15 / 0.16); }
@@ -1508,10 +1511,13 @@ html.user-reduce-motion .streak-flame {
 .dark .glesson-head[class*="border-orange-200"] { border-color: rgb(234 88 12 / 0.4); background-color: rgb(124 45 18 / 0.18); }
 .dark .glesson-head .glesson-close { background-color: #292524; border-color: rgb(87 83 78 / 0.5); color: #a8a29e; }
 .dark .glesson-head .glesson-close:hover { color: #e7e5e4; }
-.dark .glesson-step-idle { background-color: rgb(41 37 36 / 0.6); border-color: rgb(87 83 78 / 0.45); color: #8a8580; }
+/* r335: جوهرِ گامِ idle و سرِ «ببین» یکپله عمیق شد (#8a8580 رویِ سطوحِ
+   تاریک = ۴٫۱۵/۴٫۴۷ زنده در نخستین سنجشِ این سطح) — همخانوادهٔ
+   جوهرِ متادیتایِ #a8a29e (glesson-close/timebar همارز). */
+.dark .glesson-step-idle { background-color: rgb(41 37 36 / 0.6); border-color: rgb(87 83 78 / 0.45); color: #a8a29e; }
 .dark .glesson-step-done,.dark .glesson-done .glesson-restart { background-color: #292524; border-color: rgb(87 83 78 / 0.5); color: #c9c2bb; }
 .dark .glesson-see,.dark .glesson-mirror .glesson-mirror-en,.dark .glesson-q { background-color: #292524; border-color: rgb(87 83 78 / 0.45); }
-.dark .glesson-see > p { color: #8a8580; }
+.dark .glesson-see > p { color: #a8a29e; }
 .dark .glesson-piece.glesson-role-subject { background-color: rgb(6 78 59 / 0.35); border-color: rgb(16 185 129 / 0.4); color: #6ee7b7; }
 .dark .glesson-piece.glesson-role-verb { background-color: rgb(136 19 55 / 0.35); border-color: rgb(244 63 94 / 0.4); color: #fda4af; }
 .dark .glesson-piece.glesson-role-object { background-color: rgb(120 53 15 / 0.35); border-color: rgb(217 119 6 / 0.4); color: #fcd34d; }
@@ -1547,6 +1553,38 @@ html.user-reduce-motion .streak-flame {
 .dark .glesson-done .glesson-done-title { color: #f5f5f4; }
 .dark .glesson-done .glesson-done-sub { color: #a8a29e; }
 .dark .gmetro-lesson-badge { background-color: rgb(41 37 36 / 0.6); }
+
+/* ---------------------------------------------------------------------------
+   r335 — بستنِ رکوردِ ۳۱گروهیِ مترو (۲۰ تاریک + ۱۱ روشنِ مشترکِ همان بجها)
+   + نخستین سنجشِ جریانِ درس (.glesson — پالتِ مشترکِ LINE_COLORS):
+   ① جوهرِ هیرو: --color-teal-50 در تاریک به شستشویِ ۳۵٪ (سطح) بازنگاشته
+      شده ولی هیرو از آن بهعنوانِ جوهرِ متن استفاده میکرد — زنده ۱٫۱۱/۱٫۲؛
+      جوهرِ جامدِ teal-100 رویِ روشنترین استاپِ هیرویِ تاریک (#0f766e) = ۴٫۸۶.
+   ② بج/CTAِ آسمان و نارنجی: کرنلِ tranche-3b --color-sky-700/800 و
+      --color-orange-700 را به جوهرِ روشن (#7dd3fc/#fdba74) بازنگاشت — برایِ
+      text-* درست، ولی همین کلاسها در پالتِ گرامر سطحِ توپرِ زیرِ متنِ سفیدند
+      (زنده ۱٫۵/۱٫۵۲/۱٫۶۷) — پینِ عمیقِ زندهثبتشدهٔ r330 (سفید = ۵٫۸۶/۵٫۱۸)
+      فقط داخلِ .gmetro/.glesson؛ در روشن هم solid به sky-800 ارتقا یافت
+      (سفید رویِ sky-700 زنده ۴٫۳۴ مرزی — رویِ -۸۰۰ = ۷٫۵). */
+.dark .gmetro-hero .text-teal-50 { color: #ccfbf1; }
+.dark .gmetro .bg-sky-800, .dark .gmetro-dialog .bg-sky-800, .dark .glesson .bg-sky-800 { background-color: #0369a1; }
+.dark .gmetro .bg-orange-700, .dark .gmetro-dialog .bg-orange-700, .dark .glesson .bg-orange-700 { background-color: #c2410c; }
+/* ③ نه جوهرِ خطِ فاقدِ ارزشِ تاریک (indigo/violet/blue/purple/pink/rose/fuchsia/cyan/lime-700
+      — امبرِ همتا قاعدهٔ سراسری ۵۶۳ دارد) رویِ کارتِ #292524 زنده ۱٫۸۷–۳٫۰۵؛
+      درسِ ابزاریِ همین راند: نگاشتِ lab→توکن خطا داشت — purple/fuchsia مردودِ
+      واقعی بودند و violet/pink سالم؛ هر چهار اکنون قاعده دارند (پوششِ آینده).
+      -۳۰۰هایِ همخانواده با ارزشهایِ کرنلِ موجود (sky=7dd3fc، rose-900=fda4af…) —
+      دیالوگ پورتالشده بیرونِ .gmetro است پس هر سه دامنه. */
+.dark .gmetro .text-indigo-700, .dark .gmetro-dialog .text-indigo-700, .dark .glesson .text-indigo-700 { color: #a5b4fc; }
+.dark .gmetro .text-violet-700, .dark .gmetro-dialog .text-violet-700, .dark .glesson .text-violet-700 { color: #c4b5fd; }
+.dark .gmetro .text-blue-700, .dark .gmetro-dialog .text-blue-700, .dark .glesson .text-blue-700 { color: #93c5fd; }
+.dark .gmetro .text-purple-700, .dark .gmetro-dialog .text-purple-700, .dark .glesson .text-purple-700 { color: #d8b4fe; }
+.dark .gmetro .text-pink-700, .dark .gmetro-dialog .text-pink-700, .dark .glesson .text-pink-700 { color: #f9a8d4; }
+.dark .gmetro .text-rose-700, .dark .gmetro-dialog .text-rose-700, .dark .glesson .text-rose-700 { color: #fda4af; }
+.dark .gmetro .text-fuchsia-700, .dark .gmetro-dialog .text-fuchsia-700, .dark .glesson .text-fuchsia-700 { color: #f0abfc; }
+.dark .gmetro .text-cyan-700, .dark .gmetro-dialog .text-cyan-700, .dark .glesson .text-cyan-700 { color: #67e8f9; }
+.dark .gmetro .text-lime-700, .dark .gmetro-dialog .text-lime-700, .dark .glesson .text-lime-700 { color: #bef264; }
+
 
 /* ------------------------------------------------------------------
    ترانش ۴ فاز ۱ (R-7، Task 83) — کلاس‌های معناییِ سطحِ چیپ هدر.
