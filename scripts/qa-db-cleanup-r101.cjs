@@ -112,7 +112,12 @@ const p = new PrismaClient();
         // r357: the class-ledger CSV QA — one live full-ledger download
         // (teacher_class_csv) from the teacher panel. QA-only by the same
         // loopback construction
-        "teacher_class_csv"].includes(e.name)) {
+        "teacher_class_csv",
+        // r358: the TTS-budget-pulse QA — one real paid synthesis from the
+        // settings preview (tts_spoken) rode the meter+event pipeline into
+        // the pulse. QA-only by the same loopback construction (the meter
+        // chars themselves stay — they are honest cost, not learner data)
+        "tts_spoken"].includes(e.name)) {
         await p.eventDay.delete({ where: { day_name: { day: e.day, name: e.name } } });
         console.log("QA event row removed:", e.name, "=", e.count);
       }

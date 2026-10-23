@@ -239,7 +239,7 @@ describe("PulseDashboard — the AI budget strip", () => {
     expect(document.querySelector('[data-testid="pulse-budget"]')).toBeNull();
   });
 
-  it("تازهسازی — دکمهٔ نبض متر را هم دوباره میخواند (۳+۳ واکش)", async () => {
+  it("تازهسازی — دکمهٔ نبض مترها را هم دوباره میخواند (۴+۴ واکش — r358: بودجهٔ روخوانی هم در بستهٔ واکش)", async () => {
     wire(eventsPayload, { ok: true, used: 900, cap: 3000 });
     const { waitFor, fireEvent } = await import("@testing-library/react");
     await renderPulse();
@@ -247,7 +247,9 @@ describe("PulseDashboard — the AI budget strip", () => {
     const refresh = [...document.querySelectorAll("button")].find((b) => b.getAttribute("aria-label") === "به‌روزرسانی نبض");
     expect(refresh).toBeTruthy();
     fireEvent.click(refresh as HTMLElement);
-    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(6));
+    // r358 — قراردادِ نبض باز بزرگتر شد: load حالا بودجهٔ روخوانی را هم
+    // میخواند (چهار واکش بهازایِ هر بازشدن) — پینِ «۳+۳» با اعلان به ۴+۴ نقل شد
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(8));
     await waitFor(() => expect(document.querySelector('[data-testid="pulse-budget"]')).toBeTruthy());
   });
 });

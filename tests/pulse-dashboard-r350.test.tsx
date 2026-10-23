@@ -301,7 +301,9 @@ describe("PulseDashboard — the human surface", () => {
     const { trackEvent } = await import("@/lib/analytics");
     const { render, screen, waitFor } = await import("@testing-library/react");
     render(<PulseDashboard open onOpenChange={vi.fn()} />);
-    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(3));
+    // r358 — قراردادِ نبض باز بزرگتر شد: بودجهٔ روخوانی هم خوانده میشود
+    // (چهار واکش بهازایِ هر بازشدن) — پینِ «۳» (خودش وارثِ «۲»ی r355) با اعلان به ۴ نقل شد
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(4));
     await waitFor(() => expect(document.querySelectorAll('[data-testid="pulse-row"]').length).toBe(7));
     expect(trackEvent).toHaveBeenCalledWith("pulse_open");
     // خانوادههایِ بدونِ ردیف حذف میشوند (خانوادههایِ خالی جعل نمیشوند)

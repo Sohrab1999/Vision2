@@ -57,6 +57,7 @@ export const EVENT_NAMES = [
   "teacher_detail", // opened one learner's detail dialog in the teacher panel (r353)
   "teacher_learner_csv", // per-learner report-card CSV exported from the detail dialog (r354)
   "teacher_class_csv", // full class-ledger CSV — roster + every learner card stitched (r357)
+  "tts_spoken", // server-side: real paid TTS synthesis (cache miss) in /api/tts (r358)
 ] as const;
 
 export type EventName = (typeof EVENT_NAMES)[number];
@@ -114,6 +115,7 @@ export const EVENT_LABELS_FA: Record<EventName, string> = {
   teacher_detail: "مشاهدهٔ جزئیاتِ یادگیرنده",
   teacher_learner_csv: "خروجی CSV کارنامهٔ یادگیرنده",
   teacher_class_csv: "خروجی دفترِ کاملِ کلاس",
+  tts_spoken: "روخوانیِ تازه",
 };
 
 // ------------------------------------------------------------------
@@ -162,6 +164,9 @@ export const EVENT_CATEGORIES: Record<EventName, string> = {
   explain_open: "هوش مصنوعی",
   explain_served: "هوش مصنوعی",
   explain_generated: "هوش مصنوعی",
+  // r358 — روخوانی هم سرویسِ پولیِ هوش مصنوعی است (همخانوادهٔ توضیحِ هوشمند)؛
+  // نوارِ بودجهٔ TTS در نبض از همین کلیدِ تکحقیقت خانواده را میخواند
+  tts_spoken: "هوش مصنوعی",
   print_report: "خروجی و هم‌رسانی",
   coverage_csv: "خروجی و هم‌رسانی",
   official_image: "خروجی و هم‌رسانی",

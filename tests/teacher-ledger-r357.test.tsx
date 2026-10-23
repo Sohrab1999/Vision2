@@ -261,7 +261,8 @@ describe("downloadClassLedgerCsv — COU و BOM", () => {
 describe("رجیستریِ r357", () => {
   it("⑫ teacher_class_csv پنجاهویکم است — برچسب و خانوادهٔ درست", () => {
     expect(EVENT_NAMES).toContain("teacher_class_csv");
-    expect(EVENT_NAMES).toHaveLength(51); // ۵۰امِ r354 + این عضو
+    // [پینِ بهروزشده با اعلانِ r358]: tts_spoken (روخوانیِ تازه، سمتِ سرور) پنجاهودوم شد
+    expect(EVENT_NAMES).toHaveLength(52); // ۵۰امِ r354 + ۵۱امِ r357 + این عضوِ r358
     expect(EVENT_LABELS_FA.teacher_class_csv).toBe("خروجی دفترِ کاملِ کلاس");
     expect(EVENT_CATEGORIES.teacher_class_csv).toBe("خروجی و هم‌رسانی");
     expect(Object.keys(EVENT_CATEGORIES).length).toBe(EVENT_NAMES.length);

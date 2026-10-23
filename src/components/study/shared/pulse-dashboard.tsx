@@ -18,7 +18,7 @@
 // pulse_open fires once per open; Persian digits everywhere.
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { Activity, Loader2, RefreshCw, HeartPulse, ShieldAlert, Download, Sparkles } from "lucide-react";
+import { Activity, Loader2, RefreshCw, HeartPulse, ShieldAlert, Download, Sparkles, Volume2 } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
 import { faNum } from "@/lib/study-theme";
@@ -57,6 +57,11 @@ const KIND_LABELS: Record<string, string> = {
 // نمیگذارد — رانشِ بدونِ کامپایل ناممکن است)
 const AI_FAMILY = EVENT_CATEGORIES["explain_generated"];
 
+// r358 — نوارِ همزادِ روخوانی، باز از تکحقیقتِ رجیستری مشتق میشود:
+// خانوادهای که «tts_spoken» را مالک است (هر دو سرویسِ پولیِ هوش مصنوعی
+// همخانواده‌اند — نام عوض شود، نوار دنبالش میرود؛ کلید حذف شود، tsc نمیگذارد)
+const TTS_FAMILY = EVENT_CATEGORIES["tts_spoken"];
+
 /** امروز و ۶ روزِ پیشِ آن — برچسبِ فارسیِ هر ستونِ نوارِ هفتروزه */
 function dayLabels(days: number): { key: string; label: string }[] {
   const out: { key: string; label: string }[] = [];
@@ -83,6 +88,11 @@ export default function PulseDashboard({ open, onOpenChange }: { open: boolean; 
   // خطا ⇒ نوار پنهان (دیدبانی، نه درستکاری — خودِ توضیح به نبض وابسته نیست)
   const [xState, setXState] = useState<"idle" | "loading" | "ready" | "error">("idle");
   const [xUsage, setXUsage] = useState<{ used: number; cap: number } | null>(null);
+  // r358 — «هشدارِ بودجهٔ روخوانی در نبض» (پیشنهادِ ②ِ r357): همزادِ نوارِ
+  // r355 — مصرفِ واقعیِ روخوانی (همزادِ ردیفِ r347 تنظیمات)، چهارمین
+  // مصرفکنندهٔ موتورِ budget-tone. خطا ⇒ نوار پنهان (دیدبانی، نه درستکاری).
+  const [ttsState, setTtsState] = useState<"idle" | "loading" | "ready" | "error">("idle");
+  const [ttsUsage, setTtsUsage] = useState<{ used: number; cap: number } | null>(null);
 
   const load = useCallback(async () => {
     setState((s) => (s === "ready" ? "ready" : "loading"));
@@ -116,6 +126,16 @@ export default function PulseDashboard({ open, onOpenChange }: { open: boolean; 
       setXState("ready");
     } catch {
       setXState("error");
+    }
+    try {
+      const res = await fetch("/api/tts/usage", { cache: "no-store" });
+      if (!res.ok) throw new Error("tts-budget http " + res.status);
+      const data = (await res.json()) as { ok?: boolean; used: number; cap: number };
+      if (!data.ok) throw new Error("bad-shape");
+      setTtsUsage({ used: data.used, cap: data.cap });
+      setTtsState("ready");
+    } catch {
+      setTtsState("error");
     }
   }, []);
 
@@ -376,6 +396,66 @@ export default function PulseDashboard({ open, onOpenChange }: { open: boolean; 
                                 {pct >= 100
                                   ? "سقفِ این ماه پر شده — تولیدِ توضیح تا ماهِ بعد بسته است؛ کش و روخوانی کار میکنند."
                                   : "به سقفِ ماه نزدیک شده — تولیدِ توضیح تا پایانِ ماه کار میکند."}
+                              </p>
+                            )}
+                          </div>
+                        );
+                      })()}
+                      {/* r358 — هشدارِ بودجهٔ روخوانی، همزادِ نوارِ توضیحِ هوشمند
+                          در همان خانواده (هردو سرویسِ پولیِ هوش مصنوعی)؛ تنِ آرام
+                          = زمردی (برندِ روخوانیِ ردیفِ تنظیمات) نه بنفشِ توضیح */}
+                      {g.cat === TTS_FAMILY && ttsState === "ready" && ttsUsage && (() => {
+                        const pct = budgetPercent(ttsUsage.used, ttsUsage.cap);
+                        const tone = budgetTone(pct);
+                        const near = tone === "near";
+                        const warm = tone === "warm";
+                        return (
+                          <div
+                            data-testid="pulse-tts-budget"
+                            aria-label="بودجهٔ روخوانی"
+                            className={`mt-1.5 rounded-2xl border p-3 ${
+                              near
+                                ? "border-rose-200 bg-rose-50/60"
+                                : warm
+                                  ? "border-amber-200 bg-amber-50/60"
+                                  : "border-stone-200 c-stone-60"
+                            }`}
+                          >
+                            <div className="mb-1.5 flex items-center justify-between">
+                              <span className="flex items-center gap-1.5 text-[11px] font-bold text-stone-600">
+                                <Volume2 size={12} className="text-emerald-600" />
+                                بودجهٔ روخوانیِ همین ماه
+                              </span>
+                              <span className={`text-[10.5px] font-black ${near ? "text-rose-600" : warm ? "text-amber-600" : "text-emerald-700"}`}>
+                                {faNum(pct)}٪
+                              </span>
+                            </div>
+                            <div className="h-1.5 w-full overflow-hidden rounded-full c-track-80">
+                              {/* بدونِ ترنزیشن — width ویژگیِ layout است (قفلِ scoped-transitions) */}
+                              <div
+                                className={`h-full rounded-full ${
+                                  near
+                                    ? "bg-gradient-to-l from-rose-400 to-rose-600"
+                                    : warm
+                                      ? "bg-gradient-to-l from-amber-400 to-amber-600"
+                                      : "bg-gradient-to-l from-emerald-400 to-emerald-600"
+                                }`}
+                                style={{ width: `${Math.max(3, pct)}%` }}
+                              />
+                            </div>
+                            <p className="mt-1 text-[9.5px] leading-4 text-stone-500">
+                              {faNum(ttsUsage.used)} حرف از {faNum(ttsUsage.cap)} حرفِ سقفِ ماه — کشِ روخوانی رایگان است و این سقف هزینهٔ سرویس را مهار میکند.
+                            </p>
+                            {warm && (
+                              <p className="mt-0.5 text-[9.5px] font-black text-amber-600">
+                                ماه نزدیکِ سقف است — مصرف را دنبال کن.
+                              </p>
+                            )}
+                            {near && (
+                              <p className="mt-0.5 text-[9.5px] font-black text-rose-600">
+                                {pct >= 100
+                                  ? "سقفِ این ماه پر شده — روخوانیِ تازه تا ماهِ بعد بسته است؛ کشِ صدا کار میکند."
+                                  : "به سقفِ ماه نزدیک شده — روخوانیِ تازه تا پایانِ ماه کار میکند."}
                               </p>
                             )}
                           </div>

@@ -355,7 +355,8 @@ describe("قفلهایِ ساختاریِ r356", () => {
   it("⑯ رجیستری دستنخورده — این راند هیچ رویدادِ تازهای ثبت نمیکند (خواندنِ منفعل، ردیابیِ منفعل)", () => {
     // GETِ شمارندهها passive است — مثل برجِ مراقبت، رجیستری را شلوغ نمیکند
     // [پینِ بهروزشده با اعلانِ r357]: teacher_class_csv پنجاهویکم شد
-    expect(EVENT_NAMES).toHaveLength(51);
+    // [پینِ بهروزشده با اعلانِ r358]: tts_spoken (روخوانیِ تازه) پنجاهودوم شد
+    expect(EVENT_NAMES).toHaveLength(52);
     expect(EVENT_NAMES).not.toContain("journey_counts");
   });
 });

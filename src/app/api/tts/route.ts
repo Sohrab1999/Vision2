@@ -3,6 +3,7 @@ import { ApiError } from "@/lib/api/errors";
 import { BODY_CAPS, ttsSchema } from "@/lib/api/validate";
 import { rateLimit } from "@/lib/rate-limit";
 import { bumpTtsMeter, ttsMonthUsage } from "@/lib/tts-meter";
+import { trackEventServer } from "@/lib/analytics-server";
 
 export const runtime = "nodejs";
 
@@ -109,6 +110,11 @@ export const POST = withApi(
         /* metering is a cost guard, not correctness */
       }
     }
+
+    // r358 — the paid-synthesis event (the explain_generated sibling):
+    // cache misses are the only thing that COSTS, so only they count.
+    // Fire-and-forget — analytics must never break the audio response.
+    trackEventServer("tts_spoken");
 
     return audioResponse(buffer, usage ? { used: usage.used + clean.length, cap: usage.cap } : undefined);
   }
