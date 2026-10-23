@@ -56,6 +56,7 @@ export const EVENT_NAMES = [
   "teacher_csv", // class-roster CSV exported from the teacher panel (r352)
   "teacher_detail", // opened one learner's detail dialog in the teacher panel (r353)
   "teacher_learner_csv", // per-learner report-card CSV exported from the detail dialog (r354)
+  "teacher_class_csv", // full class-ledger CSV — roster + every learner card stitched (r357)
 ] as const;
 
 export type EventName = (typeof EVENT_NAMES)[number];
@@ -112,6 +113,7 @@ export const EVENT_LABELS_FA: Record<EventName, string> = {
   teacher_csv: "خروجی CSV روزنامهٔ کلاس",
   teacher_detail: "مشاهدهٔ جزئیاتِ یادگیرنده",
   teacher_learner_csv: "خروجی CSV کارنامهٔ یادگیرنده",
+  teacher_class_csv: "خروجی دفترِ کاملِ کلاس",
 };
 
 // ------------------------------------------------------------------
@@ -132,6 +134,7 @@ export const EVENT_CATEGORIES: Record<EventName, string> = {
   pulse_csv: "خروجی و هم‌رسانی",
   teacher_csv: "خروجی و هم‌رسانی",
   teacher_learner_csv: "خروجی و هم‌رسانی",
+  teacher_class_csv: "خروجی و هم‌رسانی",
   quiz_done: "یادگیری و تمرین",
   exam_done: "یادگیری و تمرین",
   flashcard_done: "یادگیری و تمرین",

@@ -13,13 +13,14 @@
 // ------------------------------------------------------------------
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { School, Loader2, RefreshCw, Download, Users, ClipboardList, Gauge, Activity, KeyRound, ShieldAlert, ChevronLeft } from "lucide-react";
+import { School, Loader2, RefreshCw, Download, Users, ClipboardList, Gauge, Activity, KeyRound, ShieldAlert, ChevronLeft, NotebookText } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { faNum } from "@/lib/study-theme";
 import { trackEvent } from "@/lib/analytics";
 import { COVERAGE_SKILLS } from "@/lib/coverage-map";
-import { lastActiveFa, sortRosterBy, ROSTER_SORT_LABELS, type TeacherReport, type RosterRow, type RosterSortKey } from "@/lib/teacher-report";
+import { lastActiveFa, sortRosterBy, ROSTER_SORT_LABELS, type TeacherReport, type RosterRow, type RosterSortKey, type LearnerDetail } from "@/lib/teacher-report";
 import { downloadClassCsv } from "@/lib/teacher-csv";
+import { downloadClassLedgerCsv } from "@/lib/teacher-class-ledger";
 import TeacherDetailDialog, { learnerDot } from "./teacher-detail";
 import { useToast } from "@/hooks/use-toast";
 
@@ -46,6 +47,8 @@ export default function TeacherView() {
   const [code, setCode] = useState("");
   const [report, setReport] = useState<TeacherReport | null>(null);
   const [csvBusy, setCsvBusy] = useState(false);
+  // r357 — دفترِ کامل: حینِ واکشِ پیاپیِ کارنامهها دکمه قفل است
+  const [ledgerBusy, setLedgerBusy] = useState(false);
   // r353 — مرتبسازیِ دستیِ فهرست + دیالوگِ جزئیاتِ یادگیرنده
   const [sortBy, setSortBy] = useState<RosterSortKey>("attempts");
   const [detailHandle, setDetailHandle] = useState<string | null>(null);
@@ -105,6 +108,53 @@ export default function TeacherView() {
         ? { title: "🎓 روزنامهٔ کلاس ذخیره شد", description: "هر سطر = یک یادگیرنده — آمادهٔ فیلتر در اکسل.", duration: 3000 }
         : { title: "خطا در ساخت فایل", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
     );
+  };
+
+  // ---------------- r357 — «دفترِ کلاسِ کامل» ----------------
+  // پیوندِ روزنامه و کارنامه: برای هر ردیفِ دارایِ تلاش، جزئیات به
+  // ترتیبِ فهرستِ سرور (ترتیبِ آرشیو — نه مرتبسازیِ لحظهایِ نما)
+  // پیاپی واکشی میشود (متوالی — به احترامِ سقفِ نرخِ مسیرِ جزئیات).
+  // دوپا/دوقضاوت (r341/r343): شکستِ خواندنِ یک کارنامه ⇒ هیچ پرونده‌ای
+  // نمیسازد (دفترِ نصفه = آرشیوِ دروغگو) ≠ شکستِ ساخت/دانلود ⇒
+  // توستِ خودش. کدِ منقضی در میانهٔ راه ⇒ گیتِ از نو (همان idiomِ
+  // دیالوگِ r353 — کدِ مرده هیچ کاری دیگر نمی‌تواند بکند).
+  const exportLedger = async () => {
+    if (!report || ledgerBusy) return;
+    trackEvent("teacher_class_csv");
+    setLedgerBusy(true);
+    try {
+      const code = sessionStorage.getItem(CODE_KEY) ?? "";
+      const openable = report.roster.filter((r) => r.attempts > 0 && r.handle);
+      const details: LearnerDetail[] = [];
+      for (const r of openable) {
+        const res = await fetch(`/api/teacher/learner?handle=${encodeURIComponent(r.handle ?? "")}`, {
+          cache: "no-store",
+          headers: { "x-teacher-code": code },
+        });
+        if (res.status === 403 || res.status === 401) {
+          toast({ title: "کدِ دسترسی منقضی شد", description: "برای ادامه، دوباره وارد شو.", duration: 3000 });
+          handleDetailAuthError();
+          return;
+        }
+        if (!res.ok) throw new Error("ledger http " + res.status);
+        const data = (await res.json()) as { ok?: boolean; learner?: LearnerDetail };
+        if (!data.ok || !data.learner) throw new Error("ledger bad-shape");
+        details.push(data.learner);
+      }
+      const ok = downloadClassLedgerCsv(
+        { generatedAt: report.generatedAt, roster: report.roster, details },
+        new Date().toISOString().slice(0, 10)
+      );
+      toast(
+        ok
+          ? { title: "🎓 دفترِ کاملِ کلاس ذخیره شد", description: `${faNum(details.length)} کارنامه در ادامهٔ روزنامهٔ کلاس — آرشیوِ یکپارچه.`, duration: 3000 }
+          : { title: "خطا در ساخت فایل", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
+      );
+    } catch {
+      toast({ title: "خواندنِ کارنامهها ناتمام ماند", description: "دفترِ نصفه ساخته نمیشود — اتصال را بررسی کن و دوباره تلاش کن.", duration: 3500 });
+    } finally {
+      setLedgerBusy(false);
+    }
   };
 
   // ---------------- گیت: درخواستِ کد ----------------
@@ -239,6 +289,16 @@ export default function TeacherView() {
           </div>
         </div>
         <div className="flex items-center gap-1">
+          <button
+            onClick={() => void exportLedger()}
+            disabled={ledgerBusy}
+            className="flex h-8 w-8 items-center justify-center rounded-full text-stone-500 transition-[background-color,color,border-color,transform] hover:bg-stone-200/70 hover:text-sky-600 active:scale-[0.96] disabled:opacity-50"
+            aria-label="دانلود دفترِ کاملِ کلاس (CSV)"
+            title="دفترِ کاملِ کلاس (CSV) — روزنامه + کارنامهٔ همه"
+            data-testid="teacher-ledger"
+          >
+            {ledgerBusy ? <Loader2 size={15} className="animate-spin" /> : <NotebookText size={15} />}
+          </button>
           <button
             onClick={exportCsv}
             className="flex h-8 w-8 items-center justify-center rounded-full text-stone-500 transition-[background-color,color,border-color,transform] hover:bg-stone-200/70 hover:text-sky-600 active:scale-[0.96]"
