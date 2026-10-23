@@ -92,7 +92,11 @@ const p = new PrismaClient();
         // r350: the full-pulse dashboard QA — one live dialog open from the
         // settings row (the watchtower + series + families were the probe).
         // QA-only by the same loopback construction
-        "pulse_open"].includes(e.name)) {
+        "pulse_open",
+        // r351: the 30-day pulse-ledger CSV QA — one live dialog download
+        // (the days=30 series → vision2-pulse-*.csv was the probe). QA-only
+        // by the same loopback construction
+        "pulse_csv"].includes(e.name)) {
         await p.eventDay.delete({ where: { day_name: { day: e.day, name: e.name } } });
         console.log("QA event row removed:", e.name, "=", e.count);
       }

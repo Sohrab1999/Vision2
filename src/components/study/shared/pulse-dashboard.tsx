@@ -18,12 +18,14 @@
 // pulse_open fires once per open; Persian digits everywhere.
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { Activity, Loader2, RefreshCw, HeartPulse, ShieldAlert } from "lucide-react";
+import { Activity, Loader2, RefreshCw, HeartPulse, ShieldAlert, Download } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { useToast } from "@/hooks/use-toast";
 import { faNum } from "@/lib/study-theme";
 import { percent } from "@/lib/domain/percent";
 import { trackEvent } from "@/lib/analytics";
 import { EVENT_CATEGORIES, EVENT_CATEGORY_ORDER } from "@/lib/analytics-events";
+import { downloadPulseCsv, type PulseLedgerRow } from "@/lib/pulse-csv";
 
 interface PulseEvent {
   name: string;
@@ -62,6 +64,7 @@ function dayLabels(days: number): { key: string; label: string }[] {
 }
 
 export default function PulseDashboard({ open, onOpenChange }: { open: boolean; onOpenChange: (v: boolean) => void }) {
+  const { toast } = useToast();
   const [state, setState] = useState<"idle" | "loading" | "ready" | "error">("idle");
   const [events, setEvents] = useState<PulseEvent[]>([]);
   const [series, setSeries] = useState<SeriesRow[]>([]);
@@ -99,6 +102,32 @@ export default function PulseDashboard({ open, onOpenChange }: { open: boolean; 
     trackEvent("pulse_open");
     void load();
   }, [open, load]);
+
+  // r351 — «دفترِ سی‌روزهٔ نبض»: خروجیِ CSVِ خانواده، از سریِ (روز ×
+  // رویداد × تعداد) با days=30 — غنیتر از نوارِ ۷روزهٔ دیالوگ. دو پا،
+  // دو قضاوت (قاعدهٔ r341/r343): نخواندنِ دفتر با شکستِ ساختِ فایل
+  // همسرنوشت نیستند. قصدِ خروجی قبل از تلاش ثبت میشود (idiomِ coverage_csv).
+  const [csvState, setCsvState] = useState<"idle" | "loading">("idle");
+  const exportLedger = async () => {
+    if (csvState === "loading") return;
+    trackEvent("pulse_csv");
+    setCsvState("loading");
+    try {
+      const res = await fetch("/api/event?days=30", { cache: "no-store" });
+      if (!res.ok) throw new Error("ledger http " + res.status);
+      const data = (await res.json()) as { series?: PulseLedgerRow[] };
+      const ok = downloadPulseCsv(data.series ?? [], new Date().toISOString().slice(0, 10));
+      toast(
+        ok
+          ? { title: "📊 دفترِ سی‌روزهٔ نبض ذخیره شد", description: "هر سطر = یک روز × یک رویداد — آمادهٔ فیلتر در اکسل.", duration: 3000 }
+          : { title: "خطا در ساخت فایل", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
+      );
+    } catch {
+      toast({ title: "دفترِ رویدادها خوانده نشد", description: "اتصال را بررسی کن و دوباره تلاش کن.", duration: 3000 });
+    } finally {
+      setCsvState("idle");
+    }
+  };
 
   // نوارِ هفتروزه — جمعِ همهٔ رویدادها بهازایِ هر روز (زیروها واقعیاند)
   const dailyTotals = useMemo(() => {
@@ -141,14 +170,25 @@ export default function PulseDashboard({ open, onOpenChange }: { open: boolean; 
                 </DialogDescription>
               </div>
             </div>
-            <button
-              onClick={() => void load()}
-              className="flex h-7 w-7 items-center justify-center rounded-full text-stone-500 transition-[background-color,color,border-color,transform] hover:bg-stone-200/70 hover:text-emerald-600 active:scale-[0.96]"
-              aria-label="به‌روزرسانی نبض"
-              title="به‌روزرسانی"
-            >
-              {state === "loading" ? <Loader2 size={14} className="animate-spin" /> : <RefreshCw size={14} />}
-            </button>
+            <div className="flex items-center gap-1">
+              {/* r351 — دفترِ سی‌روزه (CSV) — همخانوادهٔ دکمهٔ تازهسازی */}
+              <button
+                onClick={() => void exportLedger()}
+                className="flex h-7 w-7 items-center justify-center rounded-full text-stone-500 transition-[background-color,color,border-color,transform] hover:bg-stone-200/70 hover:text-emerald-600 active:scale-[0.96]"
+                aria-label="دانلود دفترِ سی‌روزهٔ رویدادها (CSV)"
+                title="دفترِ سی‌روزه (CSV)"
+              >
+                {csvState === "loading" ? <Loader2 size={14} className="animate-spin" /> : <Download size={14} />}
+              </button>
+              <button
+                onClick={() => void load()}
+                className="flex h-7 w-7 items-center justify-center rounded-full text-stone-500 transition-[background-color,color,border-color,transform] hover:bg-stone-200/70 hover:text-emerald-600 active:scale-[0.96]"
+                aria-label="به‌روزرسانی نبض"
+                title="به‌روزرسانی"
+              >
+                {state === "loading" ? <Loader2 size={14} className="animate-spin" /> : <RefreshCw size={14} />}
+              </button>
+            </div>
           </div>
         </div>
 

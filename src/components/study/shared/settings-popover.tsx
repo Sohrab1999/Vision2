@@ -12,6 +12,7 @@ import { useStudy, DAILY_GOAL_OPTIONS } from "@/lib/study-store";
 import { speak, stopSpeaking, setSpeakRateScale } from "@/lib/speak";
 import { percent } from "@/lib/domain/percent";
 import { faNum } from "@/lib/study-theme";
+import { useWatchtower } from "@/lib/use-watchtower";
 import PulseDashboard from "./pulse-dashboard";
 
 const FONT_OPTIONS: { scale: number; label: string; cls: string }[] = [
@@ -61,6 +62,12 @@ export default function SettingsPopover() {
   const [pulseState, setPulseState] = useState<"idle" | "loading" | "ready" | "error">("idle");
   // r350 «نبضِ کامل» — داشبوردِ تمامِ رویدادها + برجِ مراقبتِ نان‌های خطا
   const [pulseOpen, setPulseOpen] = useState(false);
+
+  // r351 «برجِ بیدار» — نشانِ فعالِ نانهای خطا رویِ ماشهٔ تنظیمات:
+  // یک خوانش در سوارشدن + تازهسازی با هر بازشدنِ پنجره (کلیدِ رفرش).
+  // تازگی = آخرین نانِ خطا در ۲۴ ساعتِ گذشته ⇒ نقطهٔ کهربایی. خطا ⇒ بی‌نشان.
+  const [wtKey, setWtKey] = useState(0);
+  const watchtower = useWatchtower(wtKey);
 
   // r347 — «بودجهٔ روخوانیِ ماه»: مصرفِ واقعیِ سرویسِ روخوانی، هر بار که
   // پنجره باز میشود تازه میشود (سبک است — یک GET کوچک). خطا ⇒ ردیف پنهان
@@ -123,6 +130,7 @@ export default function SettingsPopover() {
     if (pulseState === "idle") loadPulse();
     loadUsage(); // r347 — همیشه تازه، چون مصرف با هر روخوانی جلو میرود
     loadXUsage(); // r348 — همزادِ توضیح هوشمند
+    setWtKey((k) => k + 1); // r351 — برج هم با هر بازشدن تازه میشود
   };
 
   // install row: hidden once the app runs standalone (F4)
@@ -167,11 +175,22 @@ export default function SettingsPopover() {
       <PopoverTrigger asChild>
         <button
           suppressHydrationWarning
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border c-card text-stone-500 transition-[background-color,color,border-color,transform] hover:text-emerald-600 hover:border-emerald-200 active:scale-[0.96]"
+          className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full border c-card text-stone-500 transition-[background-color,color,border-color,transform] hover:text-emerald-600 hover:border-emerald-200 active:scale-[0.96]"
           aria-label="تنظیمات"
-          title="تنظیمات"
+          title={watchtower.fresh ? "تنظیمات — خطایِ تازه رویِ سرور" : "تنظیمات"}
         >
           <Settings size={16} />
+          {/* r351 «برجِ بیدار» — نقطهٔ کهرباییِ نانِ خطایِ ۲۴ساعته. client-only
+              (بعد از واکشی ظاهر میشود) ⇒ اختلالِ هیدریشن ندارد. animate-pulse
+              = فقط رنگ (idiomِ موجود — duel-play/my-words/home-feed). */}
+          {watchtower.fresh && (
+            <span
+              aria-hidden
+              title="خطایِ تازه در ۲۴ ساعتِ گذشته رویِ سرور"
+              data-testid="watchtower-dot"
+              className="absolute left-1.5 top-1.5 h-2.5 w-2.5 rounded-full bg-amber-500 animate-pulse"
+            />
+          )}
         </button>
       </PopoverTrigger>
       <PopoverContent align="end" className="w-80 rounded-2xl border-stone-200 p-4">
