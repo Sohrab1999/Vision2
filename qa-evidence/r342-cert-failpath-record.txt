@@ -1,0 +1,60 @@
+########## A) گواهیِ پایانترم — روشنِ ۱۲۸۰
+home-ready-1x3s
+-- [seed-guard] SEED-OK
+"ok"
+"card:ok"
+"started"
+q1=opt
+q2=opt
+q3=opt
+q4=opt
+q5=opt
+q6=opt
+q7=opt
+q8=opt
+q9=opt
+q10=opt
+q11=opt
+q12=opt
+q13=opt
+q14=opt
+q15=opt
+q16=opt
+q17=opt
+q18=opt
+q19=opt
+q20=opt
+loop-done
+-- [done-view] CERT
+########## B) شکستِ کدگذاری — روشن: toBlob→null
+"fail-injected"
+"clicked"
+"{\"n\":1,\"dl\":0,\"name\":\"\"}"
+-- [toast-probe] fail-toast-light
+"{\"found\":true,\"count\":1,\"text\":\"خطا در ساخت تصویر | لطفاً دوباره تلاش کن.\",\"cls\":\"bg-background,text-foreground\",\"bg\":\"lab(100 0 0)\",\"ink\":\"lab(2.75381 0 0)\",\"state\":\"open\"}"
+
+-- [contrast] cert-fail-light
+"{\"probed\":290,\"fails\":0,\"failsList\":[]}"
+
+########## C) شکست — تاریکِ درجا: همان دکمه
+"clicked"
+"{\"n\":2,\"dl\":0,\"name\":\"\"}"
+-- [toast-probe] fail-toast-dark
+"{\"found\":true,\"count\":1,\"text\":\"خطا در ساخت تصویر | لطفاً دوباره تلاش کن.\",\"cls\":\"bg-background,text-foreground\",\"bg\":\"lab(2.75381 0 0)\",\"ink\":\"lab(98.26 0 0)\",\"state\":\"open\"}"
+
+-- [contrast] cert-fail-dark
+"{\"probed\":290,\"fails\":0,\"failsList\":[]}"
+
+########## D) negctl — بازگردانیِ toBlob ⇒ موفقیتِ کامل
+"restored:2"
+"clicked"
+"{\"n\":2,\"dl\":1,\"name\":\"vision2-result-18.png\"}"
+-- [toast-probe] success-toast-negctl-light
+"{\"found\":true,\"count\":1,\"text\":\"🖼 تصویر نتیجه ذخیره شد | حالا می‌توانی آن را در هر کجا به اشتراک بگذاری.\",\"cls\":\"bg-background,text-foreground\",\"bg\":\"lab(100 0 0)\",\"ink\":\"lab(2.75381 0 0)\",\"state\":\"open\"}"
+
+-- [contrast] cert-ok-light
+"{\"probed\":290,\"fails\":0,\"failsList\":[]}"
+
+########## E) خانه — basis-zero نهایی
+"{\"total\":1,\"rowItems\":1,\"truncated\":0,\"suspects\":[]}"
+QA-R342-CERT-FAILPATH-DONE

@@ -66,7 +66,16 @@ const p = new PrismaClient();
         "duel_ledger_image",
         // task 290: the hill-library QA flow completes a real story quiz —
         // every scripted read leaves one library_story_done aggregate
-        "library_story_done"].includes(e.name)) {
+        "library_story_done",
+        // r342: the sync-attach E2E (profile popover) fires sync_link on
+        // create-code and sync_restore on every successful join — both
+        // QA-only by construction in this loopback env
+        "sync_link", "sync_restore",
+        // r342: konkur_start joins the allowlist as the r340 catch — that
+        // round's live konkur-simulator drive fired it and survived cleanup
+        // (the pre-r342 allowlist predates the konkur corner). QA-only by
+        // the same loopback construction as its siblings above
+        "konkur_start"].includes(e.name)) {
         await p.eventDay.delete({ where: { day_name: { day: e.day, name: e.name } } });
         console.log("QA event row removed:", e.name, "=", e.count);
       }

@@ -1,0 +1,62 @@
+########## A) seed + اتاقِ نبرد + جوینرِ بلیتی
+room created: 4FGDQ ✓
+"share-stub+dl-recorder installed"
+########## B) جوینرِ بلیتی + پاسخِ خودکار تا done
+DUEL-DONE-REACHED ✓
+"{\"btns\":[\"عکسِ این نبرد\",\"همرسانی\"]}"
+########## C) ماتریسِ اشتراک — سرنوشتِ سرنوشت
+-- [C1] resolve ⇒ shared ⇒ توستِ «📨 نبرد همرسانی شد»
+"clicked"
+"{\"calls\":1,\"last\":{\"n\":1,\"mode\":\"resolve\",\"files\":1,\"title\":\"نبرد واژگان — وب‌کتاب ویژن ۲\",\"text\":\"این دور را باختی ۳۹۶ به ۴۰۰\"}}"
+-- [toast-probe] share-shared-light
+"{\"found\":true,\"count\":1,\"text\":\"📨 نبرد هم‌رسانی شد | کارتِ این نبرد با شیتِ خودِ سیستم فرستاده شد.\",\"cls\":\"bg-background,text-foreground\",\"bg\":\"lab(100 0 0)\",\"ink\":\"lab(2.75381 0 0)\",\"state\":\"open\"}"
+
+-- [C2] AbortError ⇒ cancelled ⇒ سکوتِ مشروع (توستِ صفر)
+"clicked"
+-- [toast-probe] share-abort-silence
+"{\"found\":false,\"count\":0,\"bodyHasToastText\":false}"
+
+-- [C3] NotAllowedError ⇒ cancelled ⇒ سکوتِ مشروع
+"clicked"
+-- [toast-probe] share-notallowed-silence
+"{\"found\":false,\"count\":0,\"bodyHasToastText\":false}"
+
+-- [C4] TypeErrorِ غیرانصرافی ⇒ failed ⇒ توستِ صادقانه
+"clicked"
+-- [toast-probe] share-failed-light
+"{\"found\":true,\"count\":1,\"text\":\"هم‌رسانی ممکن نشد | می‌توانی عکس را ذخیره کنی و خودت بفرستی.\",\"cls\":\"bg-background,text-foreground\",\"bg\":\"lab(100 0 0)\",\"ink\":\"lab(2.75381 0 0)\",\"state\":\"open\"}"
+
+########## D) شکستِ canvasِ کارتِ نبرد — روشن
+"clicked"
+"{\"dl\":{\"n\":0,\"name\":\"\"}}"
+-- [toast-probe] duel-fail-toast-light
+"{\"found\":true,\"count\":1,\"text\":\"خطا در ساخت تصویر | لطفاً دوباره تلاش کن.\",\"cls\":\"bg-background,text-foreground\",\"bg\":\"lab(100 0 0)\",\"ink\":\"lab(2.75381 0 0)\",\"state\":\"open\"}"
+
+-- [contrast] duel-done-light-fail
+"{\"probed\":51,\"fails\":0,\"failsList\":[]}"
+
+########## E) تاریکِ درجا — شکستِ canvas و بازگردانیِ negctl
+"clicked"
+-- [toast-probe] duel-fail-toast-dark
+"{\"found\":true,\"count\":1,\"text\":\"خطا در ساخت تصویر | لطفاً دوباره تلاش کن.\",\"cls\":\"bg-background,text-foreground\",\"bg\":\"lab(2.75381 0 0)\",\"ink\":\"lab(98.26 0 0)\",\"state\":\"open\"}"
+
+"clicked"
+"{\"dl\":{\"n\":1,\"name\":\"vision2-duel-loss.png\"}}"
+-- [toast-probe] duel-success-negctl-light
+"{\"found\":true,\"count\":1,\"text\":\"🖼 عکسِ این نبرد ذخیره شد | حالا می‌توانی نتیجه‌ات را برای دوستانت بفرستی.\",\"cls\":\"bg-background,text-foreground\",\"bg\":\"lab(100 0 0)\",\"ink\":\"lab(2.75381 0 0)\",\"state\":\"open\"}"
+
+########## F) حذفِ استاب ⇒ دروازهٔ صادقِ r102 (دکمه ناپدید میشود)
+"{\"shareBtnStillVisible\":false}"
+########## G) basis-zero رویِ نمایِ واقعیِ done + تاریک
+-- [basis-zero] duel-done-light-real
+"{\"total\":3,\"rowItems\":3,\"truncated\":0,\"suspects\":[]}"
+
+-- [basis-zero] duel-done-dark-real
+"{\"total\":3,\"rowItems\":3,\"truncated\":0,\"suspects\":[]}"
+
+-- [contrast] duel-done-dark
+"{\"probed\":48,\"fails\":0,\"failsList\":[]}"
+
+########## H) ۳۹۰ — نمایِ done در موبایل (DOC-OVERFLOW)
+"{\"DOC-OVERFLOW\":false,\"w\":390,\"sw\":390}"
+QA-R342-DUEL-DONE-SHARE-DONE
