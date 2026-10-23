@@ -1,4 +1,4 @@
-import { statSync, appendFileSync, writeFileSync } from "node:fs";
+import { statSync, appendFileSync, writeFileSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { withApi } from "@/lib/api/handler";
 import { ApiError } from "@/lib/api/errors";
@@ -69,3 +69,44 @@ export const POST = withApi(
     return json({ ok: true });
   }
 );
+
+// ------------------------------------------------------------------
+// r350 «نبضِ کامل» — the watchtower read: how many crash breadcrumbs
+// has this server collected, and what was the LAST one (kind + trimmed
+// message + view). The dual-path lesson (r346): the standalone server
+// chdirs into .next/standalone, so THIS server's live log is the one
+// its own cwd points at — the root log stays the historical archive.
+// No PII beyond what POST already stores (error-shaped data only).
+// ------------------------------------------------------------------
+export const GET = withApi({ key: "client-error-get", limit: { max: 30 } }, async ({ json }) => {
+  try {
+    const p = logPath();
+    let raw = "";
+    try {
+      raw = readFileSync(p, "utf8");
+    } catch {
+      return json({ ok: true, count: 0 }); // missing file — no crash ever recorded
+    }
+    const lines = raw.split("\n").filter((l) => l.trim().length > 0);
+    const count = lines.length;
+    let last: { at: string; kind: string; message: string; view?: string } | undefined;
+    if (count > 0) {
+      try {
+        const parsedLast = JSON.parse(lines[lines.length - 1]) as {
+          at?: string; kind?: string; message?: string; view?: string;
+        };
+        last = {
+          at: typeof parsedLast.at === "string" ? parsedLast.at : "",
+          kind: typeof parsedLast.kind === "string" ? parsedLast.kind : "unknown",
+          message: typeof parsedLast.message === "string" ? parsedLast.message.slice(0, 160) : "",
+          ...(typeof parsedLast.view === "string" ? { view: parsedLast.view } : {}),
+        };
+      } catch {
+        // a torn last line (truncation mid-write) — count stays honest, last stays undefined
+      }
+    }
+    return json({ ok: true, count, ...(last ? { last } : {}) });
+  } catch {
+    throw ApiError.server("خواندنِ نان‌های خطا ناموفق بود.");
+  }
+});

@@ -4,7 +4,7 @@
 // سرعت روخوانی TTS · اندازهٔ متن · کاهش حرکت · هدف روزانه · دسترسی سریع به پروفایل/پشتیبان
 
 import { useState, useEffect } from "react";
-import { Settings, Volume2, Type, Waves, Target, UserCog, Check, Smartphone, Activity, Loader2, RefreshCw, Gauge, Sparkles } from "lucide-react";
+import { Settings, Volume2, Type, Waves, Target, UserCog, Check, Smartphone, Activity, Loader2, RefreshCw, Gauge, Sparkles, BarChart3 } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Switch } from "@/components/ui/switch";
 import { Slider } from "@/components/ui/slider";
@@ -12,6 +12,7 @@ import { useStudy, DAILY_GOAL_OPTIONS } from "@/lib/study-store";
 import { speak, stopSpeaking, setSpeakRateScale } from "@/lib/speak";
 import { percent } from "@/lib/domain/percent";
 import { faNum } from "@/lib/study-theme";
+import PulseDashboard from "./pulse-dashboard";
 
 const FONT_OPTIONS: { scale: number; label: string; cls: string }[] = [
   { scale: 0.94, label: "کوچک", cls: "text-[13px]" },
@@ -58,6 +59,8 @@ export default function SettingsPopover() {
   // learning community (no PII — only whitelisted counters), fetched on open
   const [pulse, setPulse] = useState<{ name: string; label: string; total: number; week: number }[] | null>(null);
   const [pulseState, setPulseState] = useState<"idle" | "loading" | "ready" | "error">("idle");
+  // r350 «نبضِ کامل» — داشبوردِ تمامِ رویدادها + برجِ مراقبتِ نان‌های خطا
+  const [pulseOpen, setPulseOpen] = useState(false);
 
   // r347 — «بودجهٔ روخوانیِ ماه»: مصرفِ واقعیِ سرویسِ روخوانی، هر بار که
   // پنجره باز میشود تازه میشود (سبک است — یک GET کوچک). خطا ⇒ ردیف پنهان
@@ -379,14 +382,28 @@ export default function SettingsPopover() {
               <Activity size={13} className="text-emerald-600" />
               تپش وب‌کتاب (زنده)
             </span>
-            <button
-              onClick={loadPulse}
-              className="flex h-6 w-6 items-center justify-center rounded-full text-stone-500 transition-[background-color,color,border-color,transform] hover:bg-stone-200/70 hover:text-emerald-600 active:scale-[0.96]"
-              aria-label="به‌روزرسانی آمار"
-              title="به‌روزرسانی"
-            >
-              {pulseState === "loading" ? <Loader2 size={12} className="animate-spin" /> : <RefreshCw size={12} />}
-            </button>
+            <div className="flex items-center gap-1">
+              {/* r350 «نبضِ کامل» — داشبوردِ تمامِ رویدادها + برجِ مراقبت */}
+              <button
+                onClick={() => {
+                  setOpen(false); // پاپاورِ روی‌هم‌افتاده نمیماند — دیالوگ صحنه را میگیرد
+                  setPulseOpen(true);
+                }}
+                className="flex h-6 items-center gap-1 rounded-full px-2 text-[10px] font-black text-emerald-700 transition-[background-color,color,border-color,transform] hover:bg-emerald-100/80 active:scale-[0.96]"
+                aria-label="نبضِ کامل — داشبوردِ همهٔ رویدادها"
+              >
+                <BarChart3 size={11} />
+                نبضِ کامل
+              </button>
+              <button
+                onClick={loadPulse}
+                className="flex h-6 w-6 items-center justify-center rounded-full text-stone-500 transition-[background-color,color,border-color,transform] hover:bg-stone-200/70 hover:text-emerald-600 active:scale-[0.96]"
+                aria-label="به‌روزرسانی آمار"
+                title="به‌روزرسانی"
+              >
+                {pulseState === "loading" ? <Loader2 size={12} className="animate-spin" /> : <RefreshCw size={12} />}
+              </button>
+            </div>
           </div>
           <p className="mb-2 text-[10px] leading-4 text-stone-500">
             فعالیت بی‌نامِ همهٔ یادگیرندگان — بدون هیچ اطلاعات شخصی.
@@ -447,6 +464,8 @@ export default function SettingsPopover() {
           نام، رنگ و پشتیبان‌گیری پیشرفت
         </button>
       </PopoverContent>
+      {/* r350 «نبضِ کامل» — بیرونِ PopoverContent تا پورتالِ مستقلِ خودش را داشته باشد */}
+      <PulseDashboard open={pulseOpen} onOpenChange={setPulseOpen} />
     </Popover>
   );
 }

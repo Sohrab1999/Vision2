@@ -1,7 +1,7 @@
 import { db } from "@/lib/db";
 import { withApi } from "@/lib/api/handler";
 import { ApiError } from "@/lib/api/errors";
-import { BODY_CAPS, eventSchema } from "@/lib/api/validate";
+import { BODY_CAPS, eventSchema, eventQuerySchema } from "@/lib/api/validate";
 import { isEventName, EVENT_LABELS_FA } from "@/lib/analytics-events";
 
 // ------------------------------------------------------------------
@@ -67,7 +67,7 @@ export const POST = withApi(
   }
 );
 
-export const GET = withApi({ key: "event-get", limit: { max: 30 } }, async ({ json }) => {
+export const GET = withApi({ key: "event-get", limit: { max: 30 }, query: eventQuerySchema }, async ({ json, parsed }) => {
   // housekeeping — throttled internally, never throws
   void rotateArchive();
 
@@ -93,7 +93,22 @@ export const GET = withApi({ key: "event-get", limit: { max: 30 } }, async ({ js
         week: weekMap.get(r.name) ?? 0,
       }))
       .sort((a, b) => b.total - a.total);
-    return json({ events, updatedAt: new Date().toISOString() });
+
+    // r350 «نبضِ کامل» — the opt-in per-day series. WITHOUT ?days=N the
+    // response shape is byte-identical to the F10 contract (the frozen
+    // settings-pulse consumer); the extra field rides only when asked.
+    // Archive sentinel rows are excluded — a series of real days only.
+    let series: { day: string; name: string; count: number }[] | undefined;
+    if (parsed.days) {
+      const from = new Date(Date.now() - (parsed.days - 1) * 86_400_000).toISOString().slice(0, 10);
+      const rows = await db.eventDay.findMany({
+        where: { day: { gte: from, not: ARCHIVE_DAY } },
+        orderBy: [{ day: "asc" }, { name: "asc" }],
+      });
+      series = rows.map((r) => ({ day: r.day, name: r.name, count: r.count }));
+    }
+
+    return json(series ? { events, series, updatedAt: new Date().toISOString() } : { events, updatedAt: new Date().toISOString() });
   } catch {
     throw ApiError.server("خلاصهٔ آمار در دسترس نیست.");
   }

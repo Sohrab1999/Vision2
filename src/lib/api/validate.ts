@@ -125,6 +125,18 @@ export const eventSchema = z.object({
   name: z.string().max(64, "نام رویداد نامعتبر است."),
 });
 
+/** /api/event GET — r350 «نبضِ کامل»: an OPTIONAL days window for the
+ *  per-day series. Without it the response shape stays byte-identical to
+ *  the F10 contract (the frozen settings-pulse consumer). */
+export const eventQuerySchema = z.object({
+  days: z.coerce
+    .number()
+    .int()
+    .min(1)
+    .max(30)
+    .optional(),
+});
+
 /** /api/explain POST — question id only; content resolves server-side */
 export const explainSchema = z.object({
   id: z.string().trim().min(1, "شناسهٔ سؤال نامعتبر است.").max(40, "شناسهٔ سؤال نامعتبر است."),

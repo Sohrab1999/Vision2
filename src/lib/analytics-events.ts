@@ -50,6 +50,7 @@ export const EVENT_NAMES = [
   "library_story_done", // a hill-story finished in the library (r290)
   "weekly_image", // weekly digest share-card PNG — download or native share (r306)
   "discovery_jump", // jumped from the home discovery-journey card to an untried world (r349)
+  "pulse_open", // opened the full pulse dashboard from settings (r350)
 ] as const;
 
 export type EventName = (typeof EVENT_NAMES)[number];
@@ -100,7 +101,71 @@ export const EVENT_LABELS_FA: Record<EventName, string> = {
   library_story_done: "پایانِ داستانِ کتاب‌خانه",
   weekly_image: "عکسِ هفته‌نامهٔ پیشرفت",
   discovery_jump: "پرش از سفرِ کشف",
+  pulse_open: "بازکردنِ نبضِ کامل",
 };
+
+// ------------------------------------------------------------------
+// r350 — «نبضِ کامل»: the dashboard groups the registry into six human
+// families. Single truth lives HERE so the dashboard, future surfaces
+// and this file never drift apart (the EVENT_LABELS_FA idiom).
+// ------------------------------------------------------------------
+export const EVENT_CATEGORIES: Record<EventName, string> = {
+  app_open: "نشست و ناوبری",
+  lesson_open: "نشست و ناوبری",
+  srs_due_pill: "نشست و ناوبری",
+  goal_chip: "نشست و ناوبری",
+  freeze_badge: "نشست و ناوبری",
+  discovery_jump: "نشست و ناوبری",
+  pulse_open: "نشست و ناوبری",
+  quiz_done: "یادگیری و تمرین",
+  exam_done: "یادگیری و تمرین",
+  flashcard_done: "یادگیری و تمرین",
+  listen_done: "یادگیری و تمرین",
+  dictation_done: "یادگیری و تمرین",
+  smart_practice_start: "یادگیری و تمرین",
+  quick_review_start: "یادگیری و تمرین",
+  konkur_start: "یادگیری و تمرین",
+  srs_due_review: "یادگیری و تمرین",
+  srs_due_dictation_start: "یادگیری و تمرین",
+  exam_dictation_start: "یادگیری و تمرین",
+  danger_practice: "یادگیری و تمرین",
+  danger_flashcards: "یادگیری و تمرین",
+  danger_dictation_start: "یادگیری و تمرین",
+  my_words_open: "یادگیری و تمرین",
+  my_words_review_start: "یادگیری و تمرین",
+  my_words_flashcards_start: "یادگیری و تمرین",
+  my_words_dictation_start: "یادگیری و تمرین",
+  star_word: "یادگیری و تمرین",
+  library_story_done: "یادگیری و تمرین",
+  duel_start: "نبرد و مسابقه",
+  duel_done: "نبرد و مسابقه",
+  rush_done: "نبرد و مسابقه",
+  spell_rush_done: "نبرد و مسابقه",
+  explain_open: "هوش مصنوعی",
+  explain_served: "هوش مصنوعی",
+  explain_generated: "هوش مصنوعی",
+  print_report: "خروجی و هم‌رسانی",
+  coverage_csv: "خروجی و هم‌رسانی",
+  official_image: "خروجی و هم‌رسانی",
+  duel_image: "خروجی و هم‌رسانی",
+  duel_ledger_image: "خروجی و هم‌رسانی",
+  weekly_image: "خروجی و هم‌رسانی",
+  anki_export: "خروجی و هم‌رسانی",
+  backup_export: "خروجی و هم‌رسانی",
+  sync_link: "همگام‌سازی و نصب",
+  sync_restore: "همگام‌سازی و نصب",
+  pwa_install: "همگام‌سازی و نصب",
+};
+
+/** family display order for the dashboard (the map above is the truth) */
+export const EVENT_CATEGORY_ORDER = [
+  "نشست و ناوبری",
+  "یادگیری و تمرین",
+  "نبرد و مسابقه",
+  "هوش مصنوعی",
+  "خروجی و هم‌رسانی",
+  "همگام‌سازی و نصب",
+] as const;
 
 export function isEventName(v: unknown): v is EventName {
   return typeof v === "string" && (EVENT_NAMES as readonly string[]).includes(v);

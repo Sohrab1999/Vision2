@@ -807,7 +807,7 @@ describe("globals.css stone veil phase 6 (bg-stone-50/60|70 — Task 89)", () =>
     walk(resolve(process.cwd(), "src"));
     // task 192: +1 c-stone-60 — the duel-play waiting-card live-progress module
     // joined the family (sanctioned growth, same primitive as the HUD cells)
-    expect(n60, "c-stone-60 consumers").toBe(21); // r347: +1 settings budget row · r348: +1 explain budget row
+    expect(n60, "c-stone-60 consumers").toBe(22); // r347: +1 settings budget row · r348: +1 explain budget row · r350: +1 pulse-dashboard zebra rows
     // r251: +1 c-stone-70 — the guide's door-coverage map section (راند ۲۵۱)
     // joined the same primitive as the r89-retargeted guide section itself
     expect(n70, "c-stone-70 consumers").toBe(11);
@@ -872,10 +872,11 @@ describe("globals.css track semantic layer (stone-200 alphas — Task 90)", () =
     };
     walk(resolve(process.cwd(), "src"));
     expect(raw60, "bg-stone-200/60 fully migrated to c-track-60").toEqual([]);
-    expect(new Set(raw70), "raw /70 = same-element hovers (header + settings icon) + state ink (palette) only").toEqual(
+    expect(new Set(raw70), "raw /70 = same-element hovers (header + settings icon + pulse refresh) + state ink (palette) only").toEqual(
       new Set([
         resolve(process.cwd(), "src/components/study/shell/header.tsx"),
         resolve(process.cwd(), "src/components/study/shared/settings-popover.tsx"),
+        resolve(process.cwd(), "src/components/study/shared/pulse-dashboard.tsx"), // r350: the dashboard's refresh button — the SAME settings-icon idiom (same-element hover)
         resolve(process.cwd(), "src/components/study/shell/command-palette.tsx"),
       ])
     );
@@ -921,7 +922,7 @@ describe("globals.css track semantic layer (stone-200 alphas — Task 90)", () =
     // راند ۳۰۴: trackِ نوارِ رکوردِ زنجیره در کارتِ «ادامهٔ خواندن»ِ خانه +۱
     //   (جایگزینِ raw bg-stone-200/70 که ماتریسِ استثنا میبرد — جمع ۹)
     expect(n70, "c-track-70 consumers").toBe(9);
-    expect(n80, "c-track-80 consumers").toBe(4); // r347: +1 budget bar track · r348: +1 explain bar track
+    expect(n80, "c-track-80 consumers").toBe(5); // r347: +1 budget bar track · r348: +1 explain bar track · r350: +1 pulse strip zero-day track
   });
 
   it("deviating painters retargeted in place (byte-identical elevated tones + opaque band)", () => {

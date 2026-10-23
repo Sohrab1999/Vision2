@@ -88,7 +88,11 @@ const p = new PrismaClient();
         // r349: the discovery-journey QA — one live chip jump from the compass
         // card in the QA profile (the whole pipeline client→/api/event→EventDay
         // was the point of the probe). QA-only by the same loopback construction
-        "discovery_jump"].includes(e.name)) {
+        "discovery_jump",
+        // r350: the full-pulse dashboard QA — one live dialog open from the
+        // settings row (the watchtower + series + families were the probe).
+        // QA-only by the same loopback construction
+        "pulse_open"].includes(e.name)) {
         await p.eventDay.delete({ where: { day_name: { day: e.day, name: e.name } } });
         console.log("QA event row removed:", e.name, "=", e.count);
       }
