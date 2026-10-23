@@ -54,6 +54,7 @@ export const EVENT_NAMES = [
   "pulse_csv", // 30-day event-ledger CSV exported from the pulse dashboard (r351)
   "teacher_open", // opened the teacher panel (r352)
   "teacher_csv", // class-roster CSV exported from the teacher panel (r352)
+  "teacher_detail", // opened one learner's detail dialog in the teacher panel (r353)
 ] as const;
 
 export type EventName = (typeof EVENT_NAMES)[number];
@@ -108,6 +109,7 @@ export const EVENT_LABELS_FA: Record<EventName, string> = {
   pulse_csv: "خروجی CSV دفترِ نبض",
   teacher_open: "بازکردنِ پنلِ معلم",
   teacher_csv: "خروجی CSV روزنامهٔ کلاس",
+  teacher_detail: "مشاهدهٔ جزئیاتِ یادگیرنده",
 };
 
 // ------------------------------------------------------------------
@@ -124,6 +126,7 @@ export const EVENT_CATEGORIES: Record<EventName, string> = {
   discovery_jump: "نشست و ناوبری",
   pulse_open: "نشست و ناوبری",
   teacher_open: "نشست و ناوبری",
+  teacher_detail: "نشست و ناوبری",
   pulse_csv: "خروجی و هم‌رسانی",
   teacher_csv: "خروجی و هم‌رسانی",
   quiz_done: "یادگیری و تمرین",

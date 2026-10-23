@@ -3,6 +3,7 @@ import { db } from "@/lib/db";
 import { withApi } from "@/lib/api/handler";
 import { ApiError } from "@/lib/api/errors";
 import { assembleReport } from "@/lib/teacher-report";
+import { learnerHandle } from "@/lib/teacher-handles";
 
 export const runtime = "nodejs";
 
@@ -62,6 +63,10 @@ export const GET = withApi({ key: "teacher-report", limit: { max: 30 } }, async 
 
     const report = assembleReport({
       profiles,
+      // r353 — هر ردیفِ فهرست شناسهٔ ناموجودالاثرِ خودش را میگیرد
+      // (HMAC(userId, کد)) تا دیالوگِ جزئیات بتواند بدونِ دیدنِ userId
+      // یادگیرنده را آدرس کند.
+      handleOf: (userId: string) => learnerHandle(userId, expected),
       agg: grouped.map((g) => ({
         userId: g.userId,
         count: g._count._all,

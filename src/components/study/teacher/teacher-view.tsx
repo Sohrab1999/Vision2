@@ -12,27 +12,18 @@
 // retry میدهد (اشتباهِ تایپ قابلِ جبران است). dark: کرنلِ سراسری.
 // ------------------------------------------------------------------
 
-import { useCallback, useEffect, useRef, useState } from "react";
-import { School, Loader2, RefreshCw, Download, Users, ClipboardList, Gauge, Activity, KeyRound, ShieldAlert } from "lucide-react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { School, Loader2, RefreshCw, Download, Users, ClipboardList, Gauge, Activity, KeyRound, ShieldAlert, ChevronLeft } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { faNum } from "@/lib/study-theme";
 import { trackEvent } from "@/lib/analytics";
 import { COVERAGE_SKILLS } from "@/lib/coverage-map";
-import { lastActiveFa, type TeacherReport, type RosterRow } from "@/lib/teacher-report";
+import { lastActiveFa, sortRosterBy, ROSTER_SORT_LABELS, type TeacherReport, type RosterRow, type RosterSortKey } from "@/lib/teacher-report";
 import { downloadClassCsv } from "@/lib/teacher-csv";
+import TeacherDetailDialog, { learnerDot } from "./teacher-detail";
 import { useToast } from "@/hooks/use-toast";
 
 const CODE_KEY = "vision2-teacher-code";
-
-const DOT_COLORS: Record<string, string> = {
-  emerald: "bg-emerald-500",
-  sky: "bg-sky-500",
-  violet: "bg-violet-500",
-  rose: "bg-rose-500",
-  amber: "bg-amber-500",
-  teal: "bg-teal-500",
-  orange: "bg-orange-500",
-};
 
 const skillLabel = (key: string): string =>
   COVERAGE_SKILLS.find((s) => s.key === key)?.label ?? key;
@@ -48,8 +39,6 @@ function dayLabels(now: number): { day: string; label: string }[] {
   return out;
 }
 
-const colorDot = (c: string): string => DOT_COLORS[c] ?? "bg-stone-500";
-
 export default function TeacherView() {
   const setView = useStudy((s) => s.setView);
   const { toast } = useToast();
@@ -57,6 +46,9 @@ export default function TeacherView() {
   const [code, setCode] = useState("");
   const [report, setReport] = useState<TeacherReport | null>(null);
   const [csvBusy, setCsvBusy] = useState(false);
+  // r353 — مرتبسازیِ دستیِ فهرست + دیالوگِ جزئیاتِ یادگیرنده
+  const [sortBy, setSortBy] = useState<RosterSortKey>("attempts");
+  const [detailHandle, setDetailHandle] = useState<string | null>(null);
   const openedAt = useRef(Date.now());
 
   const load = useCallback(async (presented: string) => {
@@ -91,6 +83,18 @@ export default function TeacherView() {
     const stored = sessionStorage.getItem(CODE_KEY);
     if (stored) void load(stored);
   }, [load]);
+
+  // r353 — کدِ منقضی در دیالوگِ جزئیات ⇒ گیتِ از نو (هویتِ پایدار برای
+  // وابستگیهایِ دیالوگ — otherwise every render would re-arm its effect)
+  const handleDetailAuthError = useCallback(() => {
+    sessionStorage.removeItem(CODE_KEY);
+    setPhase("auth");
+  }, []);
+
+  // r353 — همهٔ هوکها پیشِ early-returnها (قانونِ هوکها): ترتیبِ نهاییِ
+  // فهرست دستِ معلم است؛ سرور فقط پیشفرضِ قطعی میدهد
+  const roster = report?.roster ?? [];
+  const sortedRoster = useMemo(() => sortRosterBy(roster, sortBy), [roster, sortBy]);
 
   const exportCsv = () => {
     if (!report || csvBusy) return;
@@ -208,7 +212,7 @@ export default function TeacherView() {
   }
 
   // ---------------- پنلِ زنده ----------------
-  const { summary, roster } = report;
+  const { summary } = report;
   const strip = dayLabels(Date.now());
   const stripMax = Math.max(...summary.byDay.map((d) => d.attempts), 1);
   const stripMap = new Map(summary.byDay.map((d) => [d.day, d.attempts]));
@@ -299,9 +303,28 @@ export default function TeacherView() {
 
       {/* ---------- فهرستِ کلاس ---------- */}
       <section aria-label="فهرست یادگیرندگان" data-testid="teacher-roster">
-        <h2 className="mb-2 text-[11.5px] font-black text-stone-600">
-          یادگیرندگان ({faNum(roster.length)}) — بهترتیبِ فعالتترین
-        </h2>
+        <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+          <h2 className="text-[11.5px] font-black text-stone-600">یادگیرندگان ({faNum(roster.length)})</h2>
+          {/* r353 — مرتبسازیِ دستیِ معلم — چهار کلیدِ قطعی، پیشفرض = ترتیبِ سرور */}
+          <div className="flex items-center gap-1" role="group" aria-label="مرتبسازیِ فهرست" data-testid="teacher-sort">
+            {(Object.keys(ROSTER_SORT_LABELS) as RosterSortKey[]).map((k) => (
+              <button
+                key={k}
+                type="button"
+                onClick={() => setSortBy(k)}
+                aria-pressed={sortBy === k}
+                data-testid={`teacher-sort-${k}`}
+                className={
+                  sortBy === k
+                    ? "rounded-full bg-sky-600 px-2.5 py-1 text-[10px] font-black text-white transition-[background-color,transform] active:scale-[0.96]"
+                    : "rounded-full border border-stone-200 px-2.5 py-1 text-[10px] font-black text-stone-500 transition-[color,border-color,transform] hover:border-sky-300 hover:text-sky-600 active:scale-[0.96]"
+                }
+              >
+                {ROSTER_SORT_LABELS[k]}
+              </button>
+            ))}
+          </div>
+        </div>
         <div className="overflow-hidden rounded-2xl border border-stone-200">
           <div className="flex items-center gap-2 border-b border-stone-200 bg-white px-3 py-2 text-[10px] font-black text-stone-500">
             <span className="min-w-0 flex-1">یادگیرنده</span>
@@ -313,42 +336,76 @@ export default function TeacherView() {
             <span className="hidden min-w-0 flex-1 sm:block">ضعیف‌ترین مهارت</span>
           </div>
           <div className="max-h-[420px] overflow-y-auto nice-scroll">
-            {roster.map((r: RosterRow, i: number) => (
-              <div
-                key={`${r.name}-${i}`}
-                data-testid="teacher-row"
-                className={`flex items-center gap-2 px-3 py-2 ${i % 2 === 1 ? "c-stone-60" : ""}`}
-              >
-                <span className="flex min-w-0 flex-1 items-center gap-1.5">
-                  <span aria-hidden className={`h-2 w-2 shrink-0 rounded-full ${colorDot(r.color)}`} />
-                  <span className="truncate text-[11px] font-bold text-stone-600">{r.name}</span>
-                </span>
-                <span className="w-10 shrink-0 text-center text-[11px] font-black text-stone-700" dir="ltr">
-                  {faNum(r.attempts)}
-                </span>
-                <span
-                  className={`w-12 shrink-0 text-center text-[11px] font-black ${r.avgPercent === null ? "text-stone-500" : r.avgPercent < 50 ? "text-rose-600" : "text-emerald-700"}`}
-                  dir="ltr"
+            {sortedRoster.map((r: RosterRow, i: number) => {
+              // r353 — ردیفِ دارایِ تلاش + handle دری از جزئیات است؛ بیتلاش
+              // ردیفِ خواندنی میماند (هیچچیز برای نشان دادن ندارد — همان
+              // idiomِ چیپهایِ کشفشدهٔ سفرِ کشف که دکمه نیستند). هاورِ
+              // پسزمینه ممنوع: زیرایِ unlayeredِ خانوادهٔ سنگی بر hoverِ
+              // layered میچربد — affordance صادق = chevron + title.
+              const zebra = i % 2 === 1 ? "c-stone-60" : "";
+              const openable = r.attempts > 0 && !!r.handle;
+              const body = (
+                <>
+                  <span className="flex min-w-0 flex-1 items-center gap-1.5">
+                    <span aria-hidden className={`h-2 w-2 shrink-0 rounded-full ${learnerDot(r.color)}`} />
+                    <span className="truncate text-[11px] font-bold text-stone-600">{r.name}</span>
+                  </span>
+                  <span className="w-10 shrink-0 text-center text-[11px] font-black text-stone-700" dir="ltr">
+                    {faNum(r.attempts)}
+                  </span>
+                  <span
+                    className={`w-12 shrink-0 text-center text-[11px] font-black ${r.avgPercent === null ? "text-stone-500" : r.avgPercent < 50 ? "text-rose-600" : "text-emerald-700"}`}
+                    dir="ltr"
+                  >
+                    {r.avgPercent === null ? "—" : `${faNum(r.avgPercent)}٪`}
+                  </span>
+                  <span className="w-12 shrink-0 text-center text-[11px] font-bold text-stone-500" dir="ltr">
+                    {r.bestPercent === null ? "—" : `${faNum(r.bestPercent)}٪`}
+                  </span>
+                  <span className="hidden w-14 shrink-0 text-center text-[11px] font-bold text-stone-500 sm:block" dir="ltr">
+                    {faNum(r.lessons)}
+                  </span>
+                  <span className="hidden w-20 shrink-0 truncate text-center text-[10px] font-bold text-stone-500 sm:block">
+                    {lastActiveFa(r.lastActive)}
+                  </span>
+                  <span className="hidden min-w-0 flex-1 truncate text-[10px] font-bold text-stone-500 sm:block">
+                    {r.weakest ? `${skillLabel(r.weakest.category)} · ${faNum(r.weakest.avgPercent)}٪` : "—"}
+                  </span>
+                  {openable && <ChevronLeft size={13} aria-hidden className="hidden shrink-0 text-stone-500 sm:block" />}
+                </>
+              );
+              return openable ? (
+                <button
+                  key={`${r.name}-${i}`}
+                  type="button"
+                  data-testid="teacher-row"
+                  data-teacher-open="true"
+                  title="دیدنِ جزئیاتِ یادگیرنده"
+                  onClick={() => setDetailHandle(r.handle ?? null)}
+                  className={`flex w-full cursor-pointer items-center gap-2 px-3 py-2 text-right ${zebra}`}
                 >
-                  {r.avgPercent === null ? "—" : `${faNum(r.avgPercent)}٪`}
-                </span>
-                <span className="w-12 shrink-0 text-center text-[11px] font-bold text-stone-500" dir="ltr">
-                  {r.bestPercent === null ? "—" : `${faNum(r.bestPercent)}٪`}
-                </span>
-                <span className="hidden w-14 shrink-0 text-center text-[11px] font-bold text-stone-500 sm:block" dir="ltr">
-                  {faNum(r.lessons)}
-                </span>
-                <span className="hidden w-20 shrink-0 truncate text-center text-[10px] font-bold text-stone-500 sm:block">
-                  {lastActiveFa(r.lastActive)}
-                </span>
-                <span className="hidden min-w-0 flex-1 truncate text-[10px] font-bold text-stone-500 sm:block">
-                  {r.weakest ? `${skillLabel(r.weakest.category)} · ${faNum(r.weakest.avgPercent)}٪` : "—"}
-                </span>
-              </div>
-            ))}
+                  {body}
+                </button>
+              ) : (
+                <div key={`${r.name}-${i}`} data-testid="teacher-row" className={`flex items-center gap-2 px-3 py-2 ${zebra}`}>
+                  {body}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
+
+      {/* ---------- r353 — دیالوگِ جزئیاتِ یادگیرنده ---------- */}
+      <TeacherDetailDialog
+        handle={detailHandle ?? ""}
+        code={typeof window !== "undefined" ? sessionStorage.getItem(CODE_KEY) ?? "" : ""}
+        open={detailHandle !== null}
+        onOpenChange={(v) => {
+          if (!v) setDetailHandle(null);
+        }}
+        onAuthError={handleDetailAuthError}
+      />
     </div>
   );
 }

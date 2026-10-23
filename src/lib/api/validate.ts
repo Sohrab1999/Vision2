@@ -137,6 +137,15 @@ export const eventQuerySchema = z.object({
     .optional(),
 });
 
+/** /api/teacher/learner GET — r353 «عمقِ پنلِ معلم»: the opaque HMAC
+ *  handle only (16 lowercase hex chars). No userId ever crosses the
+ *  query line — the handle is re-derived server-side from profiles. */
+export const teacherLearnerQuerySchema = z.object({
+  handle: z
+    .string()
+    .regex(/^[0-9a-f]{16}$/, "شناسهٔ یادگیرنده نامعتبر است."),
+});
+
 /** /api/explain POST — question id only; content resolves server-side */
 export const explainSchema = z.object({
   id: z.string().trim().min(1, "شناسهٔ سؤال نامعتبر است.").max(40, "شناسهٔ سؤال نامعتبر است."),

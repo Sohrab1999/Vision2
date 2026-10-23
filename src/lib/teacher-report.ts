@@ -14,6 +14,9 @@
 
 export const TEACHER_DAYS_WINDOW = 7;
 
+// r353 — «عمقِ پنلِ معلم»: پنجرهٔ نوارِ روندِ تک‌یادگیرنده در دیالوگِ جزئیات
+export const LEARNER_DAYS_WINDOW = 14;
+
 export interface WeakestSkill {
   category: string;
   avgPercent: number;
@@ -28,6 +31,10 @@ export interface RosterRow {
   lessons: number;
   lastActive: string | null; // ISO — null = هنوز هیچ تلاشی ثبت نشده
   weakest: WeakestSkill | null;
+  // r353 — شناسهٔ ناموجودالاثرِ HMAC(userId, کدِ اپراتور) — نه userId است
+  // نه هیچ رازی؛ با چرخشِ کد عوض میشود و از payloadِ گزارش به دیالوگِ
+  // جزئیات میرود. اختیاری: fixturesِ قدیمی و CSV دستنخورده میمانند.
+  handle?: string;
 }
 
 export interface LessonCoverage {
@@ -118,6 +125,37 @@ export function sortRoster(rows: RosterRow[]): RosterRow[] {
   });
 }
 
+// ------------------------------------------------------------------
+// r353 — مرتبسازیِ دستیِ فهرست از سویِ معلم — چهار کلید، همه قطعی با
+// تساویِ «نامِ فارسی» و nullِ آخر (هیچ ردیفی گم نمیشود، هیچ ترتیبی
+// بینِ دو رندر نوسان نمیکند). «attempts» عینِ ترتیبِ سرور است.
+// ------------------------------------------------------------------
+export type RosterSortKey = "attempts" | "avg" | "name" | "recent";
+
+export const ROSTER_SORT_LABELS: Record<RosterSortKey, string> = {
+  attempts: "فعال‌ترین",
+  avg: "میانگین",
+  name: "نام",
+  recent: "آخرین",
+};
+
+export function sortRosterBy(rows: RosterRow[], key: RosterSortKey): RosterRow[] {
+  const s = [...rows];
+  const byName = (a: RosterRow, b: RosterRow) => a.name.localeCompare(b.name, "fa");
+  if (key === "attempts") return sortRoster(s);
+  if (key === "avg")
+    return s.sort(
+      (a, b) =>
+        (b.avgPercent ?? -1) - (a.avgPercent ?? -1) || byName(a, b)
+    );
+  if (key === "name") return s.sort(byName);
+  // recent: ISO نزولی — null («هرگز») همیشه آخر؛ تساوی ⇒ نام
+  return s.sort(
+    (a, b) =>
+      (b.lastActive ?? "").localeCompare(a.lastActive ?? "") || byName(a, b)
+  );
+}
+
 /** «همین حالا / N ساعت پیش / N روز پیش / هرگز» — ارقامِ فارسیِ خودجا */
 const faDigits = (n: number): string =>
   String(n).replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[Number(d)]);
@@ -145,6 +183,9 @@ export function assembleReport(input: {
   userLessonCounts: { userId: string; lesson: number; count: number }[];
   userCategoryAvgs: UserCategoryAvg[];
   lessonAgg: { lesson: number; count: number; avgPercent: number | null }[];
+  // r353 — شناسهٔ ناموجودالاثرِ هر ردیف (HMAC روی userId با کدِ اپراتور)؛
+  // خودِ userId هرگز از مرزِ این تابع بیرون نمیرود.
+  handleOf?: (userId: string) => string;
 }): TeacherReport {
   const now = input.now ?? Date.now();
   const aggMap = new Map(input.agg.map((a) => [a.userId, a]));
@@ -188,6 +229,7 @@ export function assembleReport(input: {
         lessons: lessonsPerUser.get(p.userId)?.size ?? 0,
         lastActive: lastByUser.get(p.userId) ?? null,
         weakest: pickWeakest(catsByUser.get(p.userId) ?? []),
+        handle: input.handleOf?.(p.userId),
       };
     })
   );
@@ -221,5 +263,144 @@ export function assembleReport(input: {
       byLesson,
     },
     roster,
+  };
+}
+
+// ==================================================================
+// r353 — «عمقِ پنلِ معلم»: موتورِ خالصِ جزئیاتِ تک‌یادگیرنده.
+// ورودی فقط پروفایل + تلاشهایِ همان یادگیرنده است — هیچ userId و
+// secret و پاسخِ خامی وارد یا خارج نمیشود (قفلِ حریمِ r352 دستنخورده).
+// صداقت‌ها عینِ گزارشِ کلاس: بیتلاش = null نه صفرِ ساختگی؛ روزهایِ
+// بیرویداد = صفرِ واقعی؛ درسِ لمسنشده = attempts:0 / avg:null.
+// ==================================================================
+
+export interface LearnerAttemptRow {
+  category: string;
+  lesson: number;
+  percent: number;
+  createdAt: Date | string;
+}
+
+export interface LearnerSkillRow {
+  category: string;
+  attempts: number;
+  avgPercent: number;
+  bestPercent: number;
+}
+
+export interface LearnerRecentRow {
+  category: string;
+  lesson: number;
+  percent: number;
+  createdAt: string; // ISO
+}
+
+export interface LearnerDetail {
+  name: string;
+  color: string;
+  joinedAt: string; // ISO — عضویت
+  attempts: number;
+  avgPercent: number | null; // یادگیرندهٔ بیتلاش = null
+  bestPercent: number | null;
+  lessons: number;
+  lastActive: string | null; // ISO
+  byDay: { day: string; attempts: number }[]; // ۱۴ روز، کهنه→امروز، صفرِ واقعی
+  byLesson: LessonCoverage[]; // ۱..۱۲ + خارجیِ دفاعی، صعودی
+  bySkill: LearnerSkillRow[]; // ضعیفترینِ اول (میانگین صعودی، تساوی ⇒ نام)
+  recent: LearnerRecentRow[]; // حداکثر ۶، نو→کهنه
+}
+
+export const LEARNER_RECENT_CAP = 6;
+
+export function assembleLearnerDetail(input: {
+  now?: number;
+  profile: { name: string; color: string; createdAt: Date | string };
+  attempts: LearnerAttemptRow[];
+}): LearnerDetail {
+  const now = input.now ?? Date.now();
+  const rows = input.attempts;
+
+  const percents = rows.map((r) => r.percent);
+  const avg = percents.length ? percents.reduce((s, p) => s + p, 0) / percents.length : null;
+  const best = percents.length ? Math.max(...percents) : null;
+
+  const lastActive = rows
+    .map((r) => (typeof r.createdAt === "string" ? r.createdAt : r.createdAt.toISOString()))
+    .sort()
+    .at(-1) ?? null;
+
+  // شکستِ مهارت‌به‌مهارت — ضعیفترینِ اول
+  const catMap = new Map<string, { attempts: number; sum: number; best: number }>();
+  for (const r of rows) {
+    const c = catMap.get(r.category) ?? { attempts: 0, sum: 0, best: 0 };
+    c.attempts += 1;
+    c.sum += r.percent;
+    c.best = Math.max(c.best, r.percent);
+    catMap.set(r.category, c);
+  }
+  const bySkill: LearnerSkillRow[] = [...catMap.entries()]
+    .map(([category, c]) => ({
+      category,
+      attempts: c.attempts,
+      avgPercent: Math.round(c.sum / c.attempts),
+      bestPercent: Math.round(c.best),
+    }))
+    .sort((a, b) => a.avgPercent - b.avgPercent || a.category.localeCompare(b.category));
+
+  // شکستِ درس‌به‌درس — ۱..۱۲ حقیقتِ جزوه + خارجیِ دفاعی (عینِ گزارشِ کلاس)
+  const lessonAgg = new Map<number, { count: number; sum: number }>();
+  for (const r of rows) {
+    const l = lessonAgg.get(r.lesson) ?? { count: 0, sum: 0 };
+    l.count += 1;
+    l.sum += r.percent;
+    lessonAgg.set(r.lesson, l);
+  }
+  const lessonIds = new Set<number>([...lessonAgg.keys()]);
+  for (let i = 1; i <= 12; i++) lessonIds.add(i);
+  const byLesson: LessonCoverage[] = [...lessonIds]
+    .sort((a, b) => a - b)
+    .map((lesson) => {
+      const row = lessonAgg.get(lesson);
+      return {
+        lesson,
+        attempts: row?.count ?? 0,
+        avgPercent: row && row.count > 0 ? Math.round(row.sum / row.count) : null,
+      };
+    });
+
+  // شش تلاشِ آخر — نو→کهنه (موتور به ترتیبِ ورودی اعتماد نمیکند؛
+  // مقایسه روی ISOی کامل — دو تلاشِ همروز هم درست مرتب میشوند)
+  const isoOf = (c: Date | string): string =>
+    typeof c === "string" ? c : c.toISOString();
+  const recent: LearnerRecentRow[] = [...rows]
+    .sort((a, b) => isoOf(b.createdAt).localeCompare(isoOf(a.createdAt)))
+    .slice(0, LEARNER_RECENT_CAP)
+    .map((r) => ({
+      category: r.category,
+      lesson: r.lesson,
+      percent: r.percent,
+      createdAt: isoOf(r.createdAt),
+    }));
+
+  return {
+    name: input.profile.name,
+    color: input.profile.color,
+    joinedAt:
+      typeof input.profile.createdAt === "string"
+        ? input.profile.createdAt
+        : input.profile.createdAt.toISOString(),
+    attempts: rows.length,
+    avgPercent: avg === null ? null : Math.round(avg),
+    bestPercent: best === null ? null : Math.round(best),
+    lessons: lessonAgg.size,
+    lastActive,
+    byDay: buildByDay(
+      rows.map((r) => r.createdAt),
+      now,
+      LEARNER_DAYS_WINDOW
+    ),
+    byLesson,
+    bySkill,
+    recent,
   };
 }
