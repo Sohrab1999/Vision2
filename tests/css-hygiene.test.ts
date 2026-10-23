@@ -175,7 +175,7 @@ describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
     }
   });
 
-  it("keeps the selector budget honest (tranche-3b part 2 ceiling 500, re-based 505 r89, 510 r196, 513 r198, 514 r325, 520 r328, 521 r329, 522 r330)", () => {
+  it("keeps the selector budget honest (tranche-3b part 2 ceiling 500, re-based 505 r89, 510 r196, 513 r198, 514 r325, 520 r328, 521 r329, 522 r330, 529 r334)", () => {
     // soft ceiling: the file may not regrow past the consolidation floor. History:
     // 535 pre-kernel → 519 pre-part-2 → 500 (roadmap §12 goal). r89 re-based to
     // 505 for phase 6: the LAST veil family (c-stone) entered with net +4 lines
@@ -202,8 +202,17 @@ describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
     // band (skill chip deepened light-side; dark serves the same #fda4af as
     // rose-600/700), net +1 → 521. The report-band/from-amber/c-chip-freeze/
     // word-day edits replaced lines in place (net 0).
+    // r334: the grammar data-layer dark inks — the lesson HTML (lesson*.ts)
+    // speaks light-scale inline classes with no dark variants; slate-700/600
+    // and the family -700/-900 text inks stayed light-scale on kernel-darkened
+    // surfaces (live 1.69/2.16 in the grammar tab + the same disease in the
+    // metro lesson dialog). Seven one-line .g-html-scoped remaps entered (the
+    // eighth — emerald-700 — was rejected by the same-value guard: the global
+    // band already owns it), net +7 → 529. Kernel tokens were NOT an option:
+    // rose-700/emerald-700/amber-700 carry heavy solid-bg consumers (21/61/6
+    // sites) that must keep their light-scale values.
     const sel = lines.filter((l) => /^\s*\.[a-z]/.test(l) && !l.includes("→")).length;
-    expect(sel).toBeLessThanOrEqual(522);
+    expect(sel).toBeLessThanOrEqual(529);
     expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(490);
   });
 });

@@ -65,7 +65,11 @@ export default function SynAntTab({ lesson }: { lesson: LessonData }) {
       <span className={`en-text min-w-[110px] text-[15px] font-bold ${t.text}`} dir="ltr">
         {row.en}
       </span>
-      <span className="text-stone-300" aria-hidden>
+      {/* r334 — جداکنندهٔ ≈/↔ عضوِ متنیِ خانوادهٔ stone-300 بود (۱٫۴۹ روی
+          سفیدِ ردیف؛ همان محکومیتِ جداکنندهٔ واژهنامه در r332) — به جوهرِ
+          ۵۰۰ رفت: ۴٫۸ روشن و نگاشتِ تاریکش رویِ سفیدِ ماندهِ ردیف هم ≥ ۵.
+          نکته: .dark .bg-white سراسری نیست — ردیف در تاریک سفید میماند. */}
+      <span className="text-stone-500" aria-hidden>
         {kind === "syn" ? "≈" : "↔"}
       </span>
       <span className="en-text min-w-[110px] text-[15px] font-extrabold text-stone-800" dir="ltr">

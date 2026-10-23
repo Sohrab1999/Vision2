@@ -396,13 +396,13 @@ const grammar: GrammarSection[] = [
       <p class="text-[15px] leading-8 text-slate-700 mb-2">${EN(
         "I have <b>a pen</b>."
       )} <span class="text-slate-500">«من یک خودکار دارم.»</span> — ${EN(
-        "<s class='text-rose-600'>Not: I have pen.</s>"
+        "<s class='text-rose-700'>Not: I have pen.</s>"
       )}</p>`,
   },
   {
     title: "اسامی غیرقابل شمارش (Uncountable Nouns)",
     html: `
-      <p class="text-[15px] leading-8 text-slate-700 mb-3">اسم غیرقابل شمارش اسمی است که نمی‌توان آن را شمرد (مثل آب و شیر و...) و یا شمردن آن با عقل و منطق آدمی سازگار نیست (مثل شمردن موی سر، برنج و...). بنابراین اسم غیرقابل شمارش همواره به صورت «مفرد» نوشته می‌شود و <b class="text-rose-600">s جمع نمی‌گیرد</b>.</p>
+      <p class="text-[15px] leading-8 text-slate-700 mb-3">اسم غیرقابل شمارش اسمی است که نمی‌توان آن را شمرد (مثل آب و شیر و...) و یا شمردن آن با عقل و منطق آدمی سازگار نیست (مثل شمردن موی سر، برنج و...). بنابراین اسم غیرقابل شمارش همواره به صورت «مفرد» نوشته می‌شود و <b class="text-rose-700">s جمع نمی‌گیرد</b>.</p>
       <div class="bg-amber-50 border border-amber-200 rounded-lg p-3 text-sm leading-7 text-amber-900 mb-3">💡 <b>نکتهٔ بسیار مهم:</b> برای شمارش و اندازه‌گیری اسم غیرقابل شمارش، قبل از آن از «واحدهای شمارش یا اندازه‌گیری» استفاده می‌کنیم که این واحدها «قابل جمع بستن هستند» و s جمع می‌گیرند.</div>
       <div class="overflow-x-auto"><table class="w-full text-sm mb-3 border border-stone-200 rounded-lg overflow-hidden"><thead><tr class="bg-emerald-700 text-white"><th class="px-3 py-2">واحد شمارش</th><th class="px-3 py-2">معنی</th><th class="px-3 py-2">واحد شمارش</th><th class="px-3 py-2">معنی</th></tr></thead><tbody>${[
         ["a kilo of", "یک کیلو از", "a drop of", "یک قطره از"],
@@ -494,7 +494,7 @@ const grammar: GrammarSection[] = [
       )}<br>• ${EN("hundred, thousand, million, billion")} همیشه «مفرد» نوشته می‌شوند: ${EN(
         "three hundred horses / eight thousand dollars"
       )}<br>• بین عدد و اسم، حرف تعریف/ملکی/اشاره و حرف اضافه نمی‌آید: ${EN(
-        "<s class='text-rose-600'>four hundred the dollars</s>"
+        "<s class='text-rose-700'>four hundred the dollars</s>"
       )}<br>• برای مفاهیم کلی: ${EN("hundreds of students / thousands of books / millions of birds")}</div>
       <p class="text-[15px] leading-8 text-slate-700">هرگاه اسم قابل شمارشی که عدد دارد صفت هم بگیرد، «عدد ما بین صفت و اسم» می‌آید: ${EN(
         "She is reading <b>one</b> <b>interesting</b> novel."

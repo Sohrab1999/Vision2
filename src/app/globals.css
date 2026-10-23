@@ -824,6 +824,22 @@ body {
 .dark .rush-banner .text-stone-600,.dark .rush-hero .text-stone-600,.dark .rush-done .text-stone-600,
 .dark .rush-card .text-stone-600,.dark .report-best .text-stone-600,.dark .duel-card .text-stone-600,
 .dark .duel-done .text-stone-600,.dark .gmetro-dialog .text-stone-600 { color: #c9c2bb; }
+/* r334 — لایهٔ HTML داده‌ایِ گرامر (src/data/lesson*.ts) با کلاسهایِ inlineِ
+   مقیاسِ روشن حرف میزند و dark: variant ندارد. سطوحِ سنگی و تینتها و
+   جوهرهایِ -900/-500 با کرنل تاریک میشوند ولی slate-700/600 و جوهرهایِ
+   -700 خانوادهها مقیاسِ روشن ماندند — زنده: ۱٫۶۹ (slate-700 رویِ c-card)
+   و ۲٫۱۶ (slate-600 رویِ stone-50ِ تیرهشده) در تبِ گرامر و همان بیماری
+   در دیالوگِ درسنامهٔ مترو. scope = .g-html (هر دو جایگاهِ رندر: تبِ
+   گرامر + پنلِ مترو — هر دو زنده ثابت شد که در تاریک تیرهاند؛ هیچ
+   سطحِ روشنی داخلِ این scope در تاریک نمیماند). */
+.dark .g-html .text-slate-700 { color: #d6d3cf; }
+.dark .g-html .text-slate-600 { color: #a8a29b; }
+.dark .g-html .text-amber-700 { color: #fcd34d; }
+.dark .g-html .text-rose-700 { color: #fda4af; }
+/* emerald-700 نیازی به قاعده ندارد — باندِ سراسریِ جوهرِ موفقیت پوشش میدهد */
+.dark .g-html .text-sky-900 { color: #7dd3fc; }
+.dark .g-html .text-violet-900 { color: #f5d0fe; }
+.dark .g-html .text-blue-900 { color: #93c5fd; }
 /* r87 retarget: the two hero chips (rush-view + spell-rush-view) migrated onto
    c-veil-70 — the deviating 0.85 painter follows the class, byte-identical. */
 /* r88 retarget: the /80 hero/banner surfaces (instruction rows ×2 + record

@@ -447,7 +447,7 @@ const grammar: GrammarSection[] = [
   {
     title: "افعال دوکلمه‌ای جدا شدنی (Phrasal Verbs)",
     html: `
-      <p class="text-[15px] leading-8 text-slate-700 mb-3">این افعال از دو قسمت «فعل + جزء قیدی» تشکیل شده‌اند؛ حرف اضافه‌ای که بعد از فعل می‌آید باعث تغییر معنای فعل می‌شود. مفعول اسمی می‌تواند «بین فعل و جزء قیدی» یا بعد از آن بیاید؛ اما <b class="text-rose-600">ضمیر مفعولی فقط «ما بین فعل و جزء قیدی»</b> می‌آید و هرگز بعد از حرف اضافه نمی‌آید: ${EN(
+      <p class="text-[15px] leading-8 text-slate-700 mb-3">این افعال از دو قسمت «فعل + جزء قیدی» تشکیل شده‌اند؛ حرف اضافه‌ای که بعد از فعل می‌آید باعث تغییر معنای فعل می‌شود. مفعول اسمی می‌تواند «بین فعل و جزء قیدی» یا بعد از آن بیاید؛ اما <b class="text-rose-700">ضمیر مفعولی فقط «ما بین فعل و جزء قیدی»</b> می‌آید و هرگز بعد از حرف اضافه نمی‌آید: ${EN(
         "Turn <b>it</b> on. (NOT: Turn on it.)"
       )}</p>
       <div class="overflow-x-auto"><table class="w-full text-sm mb-3 border border-stone-200 rounded-lg overflow-hidden"><thead><tr class="bg-amber-600 text-white"><th class="px-3 py-2">فعل</th><th class="px-3 py-2">معنی</th><th class="px-3 py-2">فعل</th><th class="px-3 py-2">معنی</th></tr></thead><tbody>${[
