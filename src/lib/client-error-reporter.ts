@@ -25,6 +25,7 @@ const MAX_REPORTS_PER_SESSION = 20;
 const DEDUPE_KEY_LEN = 120;
 
 import { useStudy } from "@/lib/study-store";
+import { healChunkFailure, isChunkLoadFailure } from "@/lib/chunk-heal";
 
 let installed = false;
 let sent = 0;
@@ -81,6 +82,23 @@ export function reportClientError(report: ClientErrorReport): void {
   send(report);
 }
 
+/** r346 — the captured real-world ChunkLoadError arrived as kind:"error"
+ *  (window hook), NOT kind:"boundary": chunk failures from event-handler
+ *  imports and unhandled promise rejections never reach a React boundary,
+ *  so Task 293's boundary-only heal left them stranded (reported but never
+ *  reloaded). The evidence-first contract is preserved — send() posts the
+ *  keepalive breadcrumb BEFORE the heal navigates away — and the 60s
+ *  sessionStorage window inside healChunkFailure makes every path
+ *  (boundary + both hooks) mutually idempotent, so a storm of hooks firing
+ *  for one crash heals at most once. */
+function maybeHeal(...parts: (string | undefined)[]): void {
+  try {
+    if (isChunkLoadFailure(parts.filter(Boolean).join("\n"))) healChunkFailure();
+  } catch {
+    /* the net never becomes the crash */
+  }
+}
+
 /** install the global nets exactly once (shell mount) */
 export function installClientErrorReporter(): void {
   if (installed || typeof window === "undefined") return;
@@ -88,18 +106,29 @@ export function installClientErrorReporter(): void {
   window.addEventListener("error", (e) => {
     // resource-load failures (img/script) also land here with no error obj
     const err = e.error;
+    const message = err?.message || e.message || "unknown window error";
     send({
       kind: "error",
-      message: err?.message || e.message || "unknown window error",
+      message,
       stack: err?.stack,
     });
+    // r346 — the real captured crash walked exactly this leg: ChunkLoadError
+    // on the preview proxy, kind:"error", view:"home". Report first (the
+    // keepalive breadcrumb survives the reload), then heal.
+    maybeHeal(message, err?.stack);
   });
   window.addEventListener("unhandledrejection", (e) => {
     const r = (e as PromiseRejectionEvent).reason;
+    const message =
+      r instanceof Error ? r.message : String(r ?? "unknown rejection").slice(0, 500);
     send({
       kind: "rejection",
-      message: r instanceof Error ? r.message : String(r ?? "unknown rejection").slice(0, 500),
+      message,
       stack: r instanceof Error ? r.stack : undefined,
     });
+    // r346 — a failed dynamic import() rejects with no boundary in sight
+    // (event-handler imports, prefetch races): same stale-chunk family,
+    // same one-shot heal.
+    maybeHeal(message, r instanceof Error ? r.stack : undefined);
   });
 }

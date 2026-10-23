@@ -20,6 +20,8 @@ import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
 import { trackEvent } from "@/lib/analytics";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { ToastAction } from "@/components/ui/toast";
+import { useSwUpdateToast } from "@/components/study/shell/use-sw-update-toast";
 
 const INSTALL_DISMISS_KEY = "vision2-install-dismissed";
 const DUE_TOAST_KEY = "vision2-due-toast-day";
@@ -61,6 +63,26 @@ function oncePerDay(key: string): boolean {
 export default function PwaLayer() {
   const { toast } = useToast();
   const mounted = useMounted();
+
+  // r346 — «نسخهٔ تازه» watcher: وقتی سرویس‌ورکرِ تازه در میانهٔ نشست کنترل
+  // را می‌گیرد (استقرارِ تازه روی تبِ باز)، یادگیرنده با یک توستِ خانواده
+  // خبردار می‌شود و خودش با «تازه‌سازی» میرسد به کدِ تازه — بدونِ ری‌لودِ
+  // اجباریِ وسطِ آزمون. (نیمهٔ دومِ خانوادهٔ کهنگی؛ نیمهٔ اول: شفایِ
+  // chunk در گوک‌های window — client-error-reporter.)
+  useSwUpdateToast(() => {
+    toast({
+      title: "🔄 نسخهٔ تازهٔ وب‌کتاب فعال شد",
+      description: "همه‌چیزِ تو سرِ جایش است — برای رفتن به نسخهٔ تازه، تازه‌سازی کن.",
+      action: (
+        <ToastAction
+          altText="تازه‌سازی صفحه برای نسخهٔ تازه"
+          onClick={() => window.location.reload()}
+        >
+          تازه‌سازی
+        </ToastAction>
+      ),
+    });
+  });
   const [installable, setInstallable] = useState(false);
   const [standalone, setStandalone] = useState(false);
   const [showGuide, setShowGuide] = useState(false);
