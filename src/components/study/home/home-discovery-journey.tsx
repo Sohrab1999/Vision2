@@ -15,6 +15,13 @@
 //     پیشرفت SVG است (الگوی daily-quests) نه نوارِ width.
 //   • ارقامِ فارسی با faNum؛ aria-label برای هر چیپ؛ data-journey-* برای
 //     کاوشِ زندهٔ پایدار (الگوی data-quiz-option).
+//
+// r356 — «شمارندههای نبض»: چیپِ کشفشده دیگر فقط «کشف شد» نیست — مصرفِ
+// واقعیِ همان دنیا از دفترِ رویدادها (GET /api/event — بدونِ تغییرِ API)
+// رویِ خطِ دوم مینشیند: «N بار این هفته» / «N بار تا امروز». نگاشتِ
+// دنیا→رویداد و ریاضیِ جمع در تکحقیقتِ journey-counts.ts زندگی میکند؛
+// واکشِ شکستخورده یا واگراییِ محلی-سرور ⇒ خطِ ثابتِ r349 — عددِ جعلی
+// ممنوع (قاعدهٔ نبض/بودجه: دیدبانی، نه درستکاری).
 
 import { useMemo } from "react";
 import { motion } from "framer-motion";
@@ -37,9 +44,17 @@ import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
 import { uiColors } from "@/lib/ui-colors";
 import { trackEvent } from "@/lib/analytics";
+import {
+  JOURNEY_WORLD_EVENTS,
+  journeyCounterState,
+  sumJourneyEvents,
+  useJourneyCounts,
+  type JourneyCounterKind,
+  type JourneyWorldKey,
+} from "@/lib/journey-counts";
 
 interface WorldDef {
-  key: string;
+  key: JourneyWorldKey; // تایپشده علیهِ نگاشتِ تکحقیقت — دنیایِ بی‌نگاشت کامپایل نمیشود
   icon: typeof Compass;
   title: string;
   desc: string;
@@ -53,6 +68,9 @@ const TOTAL_WORLDS = 9;
 
 export default function HomeDiscoveryJourney() {
   const mounted = useMounted();
+  // r356 — شمارندههای نبض: یک GET کوچک؛ خطا/واگرایی ⇒ نقشههای خالی ⇒
+  // خطِ ثابت — مسیرِ سقوط با مسیرِ موفقیت یکی است، بدونِ حالتِ میانی
+  const counts = useJourneyCounts();
   const known = useStudy((s) => s.known);
   const results = useStudy((s) => s.results);
   const srs = useStudy((s) => s.srs);
@@ -251,20 +269,14 @@ export default function HomeDiscoveryJourney() {
           return (
             <li key={w.key}>
               {w.discovered ? (
-                <div
-                  data-journey-chip={w.key}
-                  data-journey-state="done"
-                  aria-label={`${w.title} — کشف شده`}
-                  className="jrow flex w-full items-center gap-3 rounded-xl border border-emerald-300 bg-emerald-50/70 p-3"
-                >
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500 text-white">
-                    <Check size={18} strokeWidth={3} />
-                  </span>
-                  <span className="min-w-0 flex-1">
-                    <span className="block truncate text-[12.5px] font-extrabold text-stone-800">{w.title}</span>
-                    <span className="mt-0.5 block text-[10.5px] font-bold text-emerald-600">کشف شد — ادامه بده!</span>
-                  </span>
-                </div>
+                <JourneyDoneChip
+                  title={w.title}
+                  worldKey={w.key}
+                  counter={journeyCounterState(
+                    sumJourneyEvents(counts.week, JOURNEY_WORLD_EVENTS[w.key]),
+                    sumJourneyEvents(counts.total, JOURNEY_WORLD_EVENTS[w.key])
+                  )}
+                />
               ) : (
                 <button
                   data-journey-chip={w.key}
@@ -291,5 +303,63 @@ export default function HomeDiscoveryJourney() {
         })}
       </ul>
     </motion.section>
+  );
+}
+
+// ------------------------------------------------------------------
+// r356 — چیپِ «کشف شد» با شمارندهٔ زنده. سه حالت:
+//   active  ⇒ «N بار این هفته» — زمردی (همان تنِ r349)
+//   dormant ⇒ «N بار تا امروز — برگرد و تمرین کن» — کهرباییِ گرم؛
+//             کلاسِ text-amber-700 از خطِ تاریکِ موجودِ کرنل میگذرد
+//             (قفلِ ⑫ِ r349 — رشدِ صفرِ CSS)
+//   plain   ⇒ خطِ ثابتِ r349 «کشف شد — ادامه بده!» — واگراییِ محلی-سرور
+//             یا شکستِ واکش هرگز عدد جعل نمیکند
+// aria-label فقط وقتی غنی میشود که عددِ واقعی پشتش باشد؛ حالتِ plain
+// همان برچسبِ یخزدهٔ r349 است (قفلِ ⑨ِ r349 با شکستِ واکش سبز میماند).
+// ------------------------------------------------------------------
+function JourneyDoneChip({
+  title,
+  worldKey,
+  counter,
+}: {
+  title: string;
+  worldKey: JourneyWorldKey;
+  counter: { kind: JourneyCounterKind; week: number; total: number };
+}) {
+  const suffix =
+    counter.kind === "active"
+      ? `، ${faNum(counter.week)} بار این هفته`
+      : counter.kind === "dormant"
+        ? `، ${faNum(counter.total)} بار تا امروز`
+        : "";
+  const line =
+    counter.kind === "active"
+      ? `${faNum(counter.week)} بار این هفته — ادامه بده!`
+      : counter.kind === "dormant"
+        ? `${faNum(counter.total)} بار تا امروز — برگرد و تمرین کن`
+        : "کشف شد — ادامه بده!";
+  return (
+    <div
+      data-journey-chip={worldKey}
+      data-journey-state="done"
+      aria-label={`${title} — کشف شده${suffix}`}
+      className="jrow flex w-full items-center gap-3 rounded-xl border border-emerald-300 bg-emerald-50/70 p-3"
+    >
+      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500 text-white">
+        <Check size={18} strokeWidth={3} />
+      </span>
+      <span className="min-w-0 flex-1">
+        <span className="block truncate text-[12.5px] font-extrabold text-stone-800">{title}</span>
+        <span
+          data-journey-counter={worldKey}
+          data-counter-kind={counter.kind}
+          className={`mt-0.5 block truncate text-[10.5px] font-bold ${
+            counter.kind === "dormant" ? "text-amber-700" : "text-emerald-600"
+          }`}
+        >
+          {line}
+        </span>
+      </span>
+    </div>
   );
 }
