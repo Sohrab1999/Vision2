@@ -11,6 +11,18 @@
 // (منبعِ یگانه: dayHistory.stories از r299؛ قراردادِ خالصِ library-streak)
 // + چیپِ واژه/دقیقهٔ داستانِ بعدی (همان توابعِ library-filter که فهرستِ
 // r300 میخواند — هیچ شمارشِ موازی‌ای).
+//
+// راند ۳۵۹ «شمارندهٔ سفر رویِ کارتِ خواندن» — سطحِ دومِ شمارندههایِ r356
+// (پیشنهادِ ③ِ r357/④ِ r358 — دو راند باز): چیپِ «N داستان این هفته» از
+// همان موتورِ تکحقیقتِ journey-counts قرض میشود (JOURNEY_WORLD_EVENTS.library
+// — هیچ نامِ رویدادی اینجا زندگی نمیکند؛ رانشِ بدونِ کامپایل ناممکن).
+// سه قانونِ صادقیتِ کارت:
+//   • واکشِ شکستخورده ⇒ چیپِ شمارنده پنهان — کارت با استریکِ محلی کار
+//     میکند (دیدبانی، نه درستکاری — قاعدهٔ نوارهایِ نبض)
+//   • واگراییِ محلی-سرور (کتابخوانِ واقعی اما دفترِ خالی) ⇒ پنهان —
+//     صفرِ جعلی ممنوع (همان قانونِ journeyCounterState — plain)
+//   • چیپ هرگز رویداد نمیفرستد — خوانندهٔ دفتر است، نه تولیدکننده
+// شاخهٔ «جشن» (هر ۵۱ تمام) شمارنده ندارد — دعوتِ بازخوانی است، نه آمار.
 
 import { motion } from "framer-motion";
 import { BookMarked, BookOpen, ChevronLeft, Flame, PartyPopper, RotateCcw } from "lucide-react";
@@ -21,6 +33,12 @@ import { bookById, type HillBookId } from "@/data/hill-stories";
 import { libraryProgress } from "@/lib/library-progress";
 import { storyStreak } from "@/lib/library-streak";
 import { readingMinutes, wordCount } from "@/lib/library-filter";
+import {
+  JOURNEY_WORLD_EVENTS,
+  journeyCounterState,
+  sumJourneyEvents,
+  useJourneyCounts,
+} from "@/lib/journey-counts";
 import { todayStr } from "@/state/day-engine";
 
 // تمِ کتاب‌خانه — کلاس‌های کامل و ثابت (هم‌الگوی THEME در library-view؛
@@ -58,6 +76,9 @@ export default function HomeContinueReading() {
   // گاردِ ?? بیرونِ سلکتور — هم‌الگوی Task 292 در library-view
   const done = useStudy((s) => s.libraryDone) ?? {};
   const dayHistory = useStudy((s) => s.dayHistory) ?? {};
+  // r359 — شمارندهٔ سفر: یک GETِ مستقل (همان قاعدهٔ واکشهایِ مستقل:
+  // شکستِ این واکش فقط چیپِ شمارنده را میپوشاند، بقیهٔ کارت زنده است)
+  const counts = useJourneyCounts();
 
   // تازه‌وارد: هیچ. کارتِ شروعِ خانه راه را نشان میدهد؛ ابزارِ خانه کتاب‌خانه را.
   if (!mounted) return null;
@@ -111,6 +132,21 @@ export default function HomeContinueReading() {
   // استریکِ کتابخوانی — هم‌قراردادِ زنجیرهٔ اصلی: امروز خوانده = ادامهٔ
   // امروز؛ فقطِ دیروز = زنجیرهٔ زنده (امروز بخوان تا ننشیند)؛ شکاف = صفر.
   const streak = storyStreak(dayHistory, todayStr());
+  // r359 — شمارندهٔ خواندن از موتورِ سفر: هفته/کلِ همان رویدادِ دنیایِ
+  // کتابخانه؛ plain (واگرایی یا خطایِ واکش) ⇒ چیپ اصلاً رندر نمیشود.
+  const counter = journeyCounterState(
+    sumJourneyEvents(counts.week, JOURNEY_WORLD_EVENTS.library),
+    sumJourneyEvents(counts.total, JOURNEY_WORLD_EVENTS.library)
+  );
+  const showCounter = counter.kind !== "plain";
+  const counterClass =
+    counter.kind === "active"
+      ? "border-emerald-300 bg-emerald-50/70 text-emerald-700"
+      : "border-amber-300 bg-amber-50/60 text-amber-700";
+  const counterLabel =
+    counter.kind === "active"
+      ? `${faNum(counter.week)} داستان این هفته خواندی`
+      : `${faNum(counter.total)} داستان تا امروز — برگرد و بخوان`;
   // متادیتای خواندنِ داستانِ بعدی — همان توابعِ فهرستِ کتاب‌خانه (r300)
   const words = wordCount(next.text);
   const mins = readingMinutes(words);
@@ -148,6 +184,19 @@ export default function HomeContinueReading() {
           >
             {book?.levelFa ?? "Stories for Reproduction"}
           </span>
+          {showCounter && (
+            <span
+              data-reading-counter
+              data-counter-kind={counter.kind}
+              aria-label={counterLabel}
+              className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-black ${counterClass}`}
+            >
+              <BookOpen size={11} aria-hidden />
+              {counter.kind === "active"
+                ? `${faNum(counter.week)} داستان این هفته`
+                : `${faNum(counter.total)} داستان تا امروز`}
+            </span>
+          )}
           <span
             className={`ms-auto inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-black ${streakChipClass}`}
             aria-label={streakLabel}
