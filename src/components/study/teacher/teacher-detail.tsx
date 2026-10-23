@@ -11,12 +11,14 @@
 // ------------------------------------------------------------------
 
 import { useCallback, useEffect, useState } from "react";
-import { Loader2, RefreshCw, UserRound, ClipboardList, Gauge, Trophy, Layers, History, SearchX } from "lucide-react";
+import { Loader2, RefreshCw, UserRound, ClipboardList, Gauge, Trophy, Layers, History, SearchX, Download } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { useToast } from "@/hooks/use-toast";
 import { faNum } from "@/lib/study-theme";
 import { trackEvent } from "@/lib/analytics";
 import { COVERAGE_SKILLS } from "@/lib/coverage-map";
 import { lastActiveFa, type LearnerDetail } from "@/lib/teacher-report";
+import { downloadLearnerCardCsv } from "@/lib/teacher-learner-csv";
 
 const DOT_COLORS: Record<string, string> = {
   emerald: "bg-emerald-500",
@@ -61,6 +63,8 @@ export default function TeacherDetailDialog({
   const [phase, setPhase] = useState<DetailPhase>("loading");
   const [detail, setDetail] = useState<LearnerDetail | null>(null);
   const [missingMsg, setMissingMsg] = useState("");
+  const [csvBusy, setCsvBusy] = useState(false);
+  const { toast } = useToast();
 
   const load = useCallback(async () => {
     setPhase("loading");
@@ -96,6 +100,19 @@ export default function TeacherDetailDialog({
     trackEvent("teacher_detail"); // یکبار در هر بازشدنِ دیالوگ — retry اینجا را دوباره نمیافروزد
     void load();
   }, [open, load]);
+
+  // r354 — هفتمین عضوِ خانوادهٔ CSV: کارنامهٔ همین یادگیرنده از
+  // خودِ دیالوگ — idiomِ عینِ exportCsvِ پنل (r352)
+  const exportCard = () => {
+    if (!detail || csvBusy) return;
+    trackEvent("teacher_learner_csv");
+    const ok = downloadLearnerCardCsv(detail, new Date().toISOString().slice(0, 10));
+    toast(
+      ok
+        ? { title: `🎓 کارنامهٔ ${detail.name} ذخیره شد`, description: "روندِ چهارده روز، پوششِ درسها و شکستِ مهارتها — آمادهٔ چاپ.", duration: 3000 }
+        : { title: "خطا در ساخت فایل", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
+    );
+  };
 
   const stripMax = Math.max(...(detail?.byDay.map((d) => d.attempts) ?? [1]), 1);
   // برچسبهایِ نوار — یک `now` برایِ هر دو ردیف (ستونها و زیرنویسها همیشه همخوان)
@@ -160,14 +177,25 @@ export default function TeacherDetailDialog({
                     </DialogDescription>
                   </div>
                 </div>
-                <button
-                  onClick={() => void load()}
-                  className="flex h-7 w-7 items-center justify-center rounded-full text-stone-500 transition-[background-color,color,border-color,transform] hover:bg-stone-200/70 hover:text-sky-600 active:scale-[0.96]"
-                  aria-label="به‌روزرسانی جزئیات"
-                  title="به‌روزرسانی"
-                >
-                  <RefreshCw size={14} />
-                </button>
+                <div className="flex shrink-0 items-center gap-1">
+                  <button
+                    onClick={exportCard}
+                    className="flex h-7 w-7 items-center justify-center rounded-full text-stone-500 transition-[background-color,color,border-color,transform] hover:bg-stone-200/70 hover:text-sky-600 active:scale-[0.96]"
+                    aria-label="دانلود کارنامهٔ این یادگیرنده (CSV)"
+                    title="کارنامهٔ (CSV)"
+                    data-testid="teacher-detail-csv"
+                  >
+                    {csvBusy ? <Loader2 size={14} className="animate-spin" /> : <Download size={14} />}
+                  </button>
+                  <button
+                    onClick={() => void load()}
+                    className="flex h-7 w-7 items-center justify-center rounded-full text-stone-500 transition-[background-color,color,border-color,transform] hover:bg-stone-200/70 hover:text-sky-600 active:scale-[0.96]"
+                    aria-label="به‌روزرسانی جزئیات"
+                    title="به‌روزرسانی"
+                  >
+                    <RefreshCw size={14} />
+                  </button>
+                </div>
               </div>
 
               {/* ---------- کارتهایِ خلاصه ---------- */}

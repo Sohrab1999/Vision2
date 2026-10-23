@@ -104,7 +104,11 @@ const p = new PrismaClient();
         // r353: the teacher-detail QA — one live learner-detail dialog open
         // (teacher_detail) from the QA session. QA-only by the same
         // loopback construction
-        "teacher_detail"].includes(e.name)) {
+        "teacher_detail",
+        // r354: the learner report-card CSV QA — one live per-learner CSV
+        // download from the detail dialog (teacher_learner_csv). QA-only
+        // by the same loopback construction
+        "teacher_learner_csv"].includes(e.name)) {
         await p.eventDay.delete({ where: { day_name: { day: e.day, name: e.name } } });
         console.log("QA event row removed:", e.name, "=", e.count);
       }
