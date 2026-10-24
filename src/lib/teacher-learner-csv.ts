@@ -27,7 +27,7 @@
 import { CSV_BOM, csvSafe } from "./teacher-csv";
 import { activeWeekMeta, activeWeekRows } from "./active-week";
 import { COVERAGE_SKILLS } from "./coverage-map";
-import type { LearnerDetail } from "./teacher-report";
+import type { LearnerDetail, LearnerSkillRow } from "./teacher-report";
 
 /** CRLF per RFC 4180 — same family dialect as all six elders */
 const NL = "\r\n";
@@ -60,6 +60,57 @@ const RECENT_COLUMNS = ["تاریخ", "مهارت", "درس", "درصد"] as con
 /** برچسبِ فارسیِ مهارت از تکحقیقتِ رجیستریِ پوشش؛ ناشناخته = کلیدِ خام */
 export function learnerSkillLabel(key: string): string {
   return COVERAGE_SKILLS.find((s) => s.key === key)?.label ?? key;
+}
+
+// ------------------------------------------------------------------
+// r365 — «ضعیفترینِ مهارت» — متای سربرگِ کارنامه (همزادِ CSVِ نخستین
+// ردیفِ «مهارتها — ضعیفترینِ اول» که دیالوگ از r353 نشان میدهد).
+// قطعیت با قاعدهٔ خودِ سرور (pickWeakestِ teacher-report): کمترینِ
+// میانگین، تساوی ⇒ نامِ صعودی — قفلِ تستیِ همخوانیِ دو موتور در tests.
+// صداقتها:
+//   · bySkillِ تهی/غایب ⇒ null — بی‌مهارت، «ضعیفترین» هم وجود ندارد؛
+//     جعل ممنوع (همان روحِ «هفتهٔ خالی بیپرکارترین»)
+//   · ردیفِ بدنام (تلاشِ صفر/غیرعددی/منفی، میانگینِ غیرعددی/منفی، دستهٔ
+//     تهی) از نامزدی حذف میشود — میانگینِ بیتلاش میانگین نیست؛
+//     شمارندهها هرگز دروغ نمیگویند؛ همهِ بدنام ⇒ null
+//   · میانگینِ صفر واقعی است — چاپ میشود، نه پنهان
+//   · هر سطح به گویشِ خودش: متا کلیدِ خام را برمیگرداند؛ CSV با
+//     learnerSkillLabel و ASCII، دیالوگ با skillLabel/faNumِ خودش
+// ------------------------------------------------------------------
+export interface WeakestSkillMeta {
+  category: string;
+  attempts: number;
+  avgPercent: number;
+}
+
+export function weakestSkillMeta(skills: LearnerSkillRow[] | undefined | null): WeakestSkillMeta | null {
+  if (!Array.isArray(skills)) return null;
+  const sane = skills.filter(
+    (s) =>
+      s &&
+      typeof s === "object" &&
+      typeof s.category === "string" &&
+      s.category.length > 0 &&
+      typeof s.attempts === "number" &&
+      Number.isFinite(s.attempts) &&
+      s.attempts >= 1 &&
+      typeof s.avgPercent === "number" &&
+      Number.isFinite(s.avgPercent) &&
+      s.avgPercent >= 0
+  );
+  if (sane.length === 0) return null;
+  const sorted = [...sane].sort(
+    (a, b) => a.avgPercent - b.avgPercent || a.category.localeCompare(b.category)
+  );
+  const w = sorted[0];
+  return { category: w.category, attempts: w.attempts, avgPercent: Math.round(w.avgPercent) };
+}
+
+/** سطرِ سربرگِ کارنامه — متنِ نهایی با گویشِ CSV (ASCII، برچسبِ رجیستری) */
+export function weakestSkillRow(skills: LearnerSkillRow[] | undefined | null): string | null {
+  const m = weakestSkillMeta(skills);
+  if (!m) return null;
+  return `ضعیفترینِ مهارت,${csvSafe(learnerSkillLabel(m.category))} · میانگین ${m.avgPercent}٪ در ${m.attempts} تلاش`;
 }
 
 /** نامِ فایل: اسلاگِ سالمِ نام (بدونِ مسیر/فاصله) + روز؛ بی‌نام = learner */
@@ -101,6 +152,13 @@ export function buildLearnerCardCsv(d: LearnerDetail): string {
   if (week) {
     for (const row of activeWeekRows(week)) lines.push(row);
   }
+
+  // -- r365 — «ضعیفترینِ مهارت» — همزادِ CSVِ نخستینِ ردیفِ بخشِ مهارتها --
+  // گیتِ مستقلِ خودش (از bySkill) — بیتلاش/بدمهارت ⇒ هیچ سطری (صداقت).
+  // جایگاه: کنارِ «پرکارترینِ روز» در ناحیهٔ متای سربرگ — حجم و کیفیت،
+  // دو بینشِ یکجا پیش از جداکنندهٔ روند.
+  const weakest = weakestSkillRow(d.bySkill);
+  if (weakest) lines.push(weakest);
 
   // -- روندِ ۱۴روزه (صفرهایِ واقعی) — عنوان از طولِ خودِ پنجره --
   lines.push("");

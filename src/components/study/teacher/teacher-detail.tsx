@@ -18,7 +18,7 @@ import { faNum } from "@/lib/study-theme";
 import { trackEvent } from "@/lib/analytics";
 import { COVERAGE_SKILLS } from "@/lib/coverage-map";
 import { lastActiveFa, type LearnerDetail } from "@/lib/teacher-report";
-import { downloadLearnerCardCsv } from "@/lib/teacher-learner-csv";
+import { downloadLearnerCardCsv, weakestSkillMeta } from "@/lib/teacher-learner-csv";
 
 const DOT_COLORS: Record<string, string> = {
   emerald: "bg-emerald-500",
@@ -129,6 +129,20 @@ export default function TeacherDetailDialog({
         onInteractOutside={(e) => e.preventDefault()}
         data-testid="teacher-detail-dialog"
       >
+        {/* r365 — [باگِ نهفتهٔ r353 که داوریِ این راند گرفت]: در فازهایِ
+            loading/missing/auth/net هیچ DialogTitle/Descriptionای رندر
+            نمیشد و رادیکس خطای a11y میگفت (از r353 در کنسولِ تولیدی بود؛
+            داوریهایِ پیشین با خطایِ مثبتِ کاذبِ pipefail در خطِ کنسول
+            CLEAN خوانده میشد). عنوانِ پنهانِ فازها — در فازِ ready عنوانِ
+            دیدنیِ خودش حرف میزند و این هیچ میشود؛ هرگز دوتایی نمیشوند. */}
+        {phase !== "ready" && (
+          <>
+            <DialogTitle className="sr-only">جزئیاتِ یادگیرنده</DialogTitle>
+            <DialogDescription className="sr-only">
+              وضعیتِ خواندنِ کارنامهٔ تک‌یادگیرنده از پنلِ معلم
+            </DialogDescription>
+          </>
+        )}
         <div className="onboard-paper bg-gradient-to-l from-sky-50 via-white to-white px-6 pt-6 pb-4">
           {phase === "loading" && (
             <div className="flex items-center justify-center gap-2 py-14 text-[12px] font-bold text-stone-500" data-testid="teacher-detail-loading">
@@ -278,7 +292,24 @@ export default function TeacherDetailDialog({
               {/* ---------- شکستِ مهارت‌به‌مهارت ---------- */}
               {detail.bySkill.length > 0 && (
                 <section aria-label="مهارت‌ها" className="mt-4" data-testid="teacher-detail-skills">
-                  <h3 className="mb-2 text-[11.5px] font-black text-stone-600">مهارت‌ها — ضعیفترینِ اول</h3>
+                  <h3 className="mb-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-[11.5px] font-black text-stone-600">
+                    <span>مهارت‌ها — ضعیفترینِ اول</span>
+                    {/* r365 — خلاصهٔ executive: نامِ ضعیفترینِ این دوره کنارِ عنوان —
+                        از همان موتورِ سطرِ CSV (weakestSkillMeta) با گویشِ خودِ
+                        دیالوگ (skillLabel + faNum) — هیچ محاسبهٔ موازیای؛ صفرِ CSS */}
+                    {(() => {
+                      const w = weakestSkillMeta(detail.bySkill);
+                      return w ? (
+                        <span
+                          data-testid="teacher-detail-weakest"
+                          title={`ضعیفترینِ مهارتِ این دوره — میانگین ${faNum(w.avgPercent)}٪ در ${faNum(w.attempts)} تلاش`}
+                          className="rounded-md bg-rose-50 px-1.5 py-0.5 text-[9.5px] font-black text-rose-700"
+                        >
+                          ضعیفترین: {skillLabel(w.category)} · {faNum(w.avgPercent)}٪
+                        </span>
+                      ) : null;
+                    })()}
+                  </h3>
                   <div className="overflow-hidden rounded-2xl border border-stone-200">
                     {detail.bySkill.map((s, i) => (
                       <div key={s.category} className={`flex items-center gap-2 px-3 py-2 text-[11px] ${i % 2 === 1 ? "c-stone-60" : ""}`}>
