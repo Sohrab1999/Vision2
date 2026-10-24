@@ -53,6 +53,19 @@ export function ledgerIssuedRow(generatedAt: string): string {
 export { activeWeekMeta, activeWeekRows } from "./active-week";
 export type { ActiveWeekMeta } from "./active-week";
 
+// ------------------------------------------------------------------
+// r373 — «دفترِ کلاسهایِ بزرگ» — سیاستِ سرعتِ واکشی. مسیرِ جزئیات
+// (/api/teacher/learner) با سقفِ ۶۰/دقیقه محافظت میشود؛ دفتری با
+// بیش از LEDGER_RATE_WINDOW_MAX کارنامه حتماً از پنجره عبور میکند —
+// نما با مکثِ محترمانه (Retry-After سرور) ادامه میدهد، تا LEDGER_RATE_WAITS
+// بار. دفترِ نصفه همچنان ممنوع (قراردادِ r357) — یا کامل یا هیچ.
+// ------------------------------------------------------------------
+
+/** سقفِ نرخِ /api/teacher/learner — از این مرز، دانلودِ دفتر حتماً مکث میخواهد */
+export const LEDGER_RATE_WINDOW_MAX = 60;
+/** بیشینهٔ مکثِ ۴۲۹ در یک دانلودِ دفتر — بعدش انصرافِ صادق */
+export const LEDGER_RATE_WAITS = 3;
+
 export interface ClassLedgerInput {
   generatedAt: string; // ISO — از گزارشِ پنل
   byDay: { day: string; attempts: number }[]; // r362 — هفتهٔ فعال از خودِ گزارش (summary.byDay) — حذفش کامپایل را میشکند

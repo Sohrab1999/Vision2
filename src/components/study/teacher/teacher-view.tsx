@@ -20,7 +20,7 @@ import { trackEvent } from "@/lib/analytics";
 import { COVERAGE_SKILLS } from "@/lib/coverage-map";
 import { lastActiveFa, sortRosterBy, ROSTER_SORT_LABELS, type TeacherReport, type RosterRow, type RosterSortKey, type LearnerDetail } from "@/lib/teacher-report";
 import { downloadClassCsv } from "@/lib/teacher-csv";
-import { downloadClassLedgerCsv } from "@/lib/teacher-class-ledger";
+import { downloadClassLedgerCsv, LEDGER_RATE_WINDOW_MAX, LEDGER_RATE_WAITS } from "@/lib/teacher-class-ledger";
 import TeacherDetailDialog, { learnerDot } from "./teacher-detail";
 import { useToast } from "@/hooks/use-toast";
 
@@ -118,6 +118,13 @@ export default function TeacherView() {
   // نمیسازد (دفترِ نصفه = آرشیوِ دروغگو) ≠ شکستِ ساخت/دانلود ⇒
   // توستِ خودش. کدِ منقضی در میانهٔ راه ⇒ گیتِ از نو (همان idiomِ
   // دیالوگِ r353 — کدِ مرده هیچ کاری دیگر نمی‌تواند بکند).
+  //
+  // r373 — «دفترِ کلاسهایِ بزرگ»: ۴۲۹ پایانِ سفر نیست — سرورِ صادق
+  // در Retry-After میگوید چند ثانیه؛ حلقه همان‌قدر مکث میکند و همان
+  // ردیف را دوباره میخواهد (هیچ پیشرویی بدونِ کارنامه — هیچskipِ
+  // خاموشی). تا LEDGER_RATE_WAITS مکث در یک دانلود، بعدش انصرافِ صادق؛
+  // و کلاسِ بزرگتر از LEDGER_RATE_WINDOW_MAX از قبل میداند سفرش طولانی
+  // است. ۴۲۹ جبرانپذیر است و باید حرفش را بزند — نه نقابِ «اتصال».
   const exportLedger = async () => {
     if (!report || ledgerBusy) return;
     trackEvent("teacher_class_csv");
@@ -125,9 +132,17 @@ export default function TeacherView() {
     try {
       const code = sessionStorage.getItem(CODE_KEY) ?? "";
       const openable = report.roster.filter((r) => r.attempts > 0 && r.handle);
+      if (openable.length > LEDGER_RATE_WINDOW_MAX) {
+        toast({
+          title: "کلاسِ بزرگ — سفرِ دفتر طولانی است",
+          description: `کارنامه‌هایِ ${faNum(openable.length)} یادگیرنده با مکث‌هایِ کوتاهِ سرعتی واکشی می‌شوند — چند دقیقه صبر.`,
+          duration: 5000,
+        });
+      }
       const details: LearnerDetail[] = [];
-      for (const r of openable) {
-        const res = await fetch(`/api/teacher/learner?handle=${encodeURIComponent(r.handle ?? "")}`, {
+      let rateWaits = 0;
+      for (let i = 0; i < openable.length; ) {
+        const res = await fetch(`/api/teacher/learner?handle=${encodeURIComponent(openable[i]!.handle ?? "")}`, {
           cache: "no-store",
           headers: { "x-teacher-code": code },
         });
@@ -136,10 +151,30 @@ export default function TeacherView() {
           handleDetailAuthError();
           return;
         }
+        if (res.status === 429) {
+          rateWaits += 1;
+          if (rateWaits > LEDGER_RATE_WAITS) {
+            toast({
+              title: "خواندنِ کارنامه‌ها ناتمام ماند",
+              description: "سقفِ سرعت چندبار پر شد — چند دقیقه بعد دوباره تلاش کن؛ دفترِ نصفه ساخته نمی‌شود.",
+              duration: 4500,
+            });
+            return;
+          }
+          const wait = Math.max(1, Number(res.headers.get("Retry-After")) || 60);
+          toast({
+            title: "سقفِ سرعت — مکثِ کوتاه",
+            description: `کارنامه‌ی ${faNum(details.length)} از ${faNum(openable.length)} خوانده شد؛ ${faNum(wait)} ثانیه صبر می‌کنیم و ادامه میدهیم.`,
+            duration: Math.min(wait * 1000 + 1500, 8000),
+          });
+          await new Promise((ok) => setTimeout(ok, (wait + 1) * 1000));
+          continue; // همان ردیف — هیچ پیشرویی بدونِ کارنامه
+        }
         if (!res.ok) throw new Error("ledger http " + res.status);
         const data = (await res.json()) as { ok?: boolean; learner?: LearnerDetail };
         if (!data.ok || !data.learner) throw new Error("ledger bad-shape");
         details.push(data.learner);
+        i += 1;
       }
       const ok = downloadClassLedgerCsv(
         // r362 — هفتهٔ فعال از خودِ گزارش میآید (summary.byDay — همان تکحقیقتِ نوارِ هفتروزی)
@@ -152,7 +187,8 @@ export default function TeacherView() {
           : { title: "خطا در ساخت فایل", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
       );
     } catch {
-      toast({ title: "خواندنِ کارنامهها ناتمام ماند", description: "دفترِ نصفه ساخته نمیشود — اتصال را بررسی کن و دوباره تلاش کن.", duration: 3500 });
+      // [r373] املا یکدست شد: «کارنامه‌ها»/«نمی‌شود» با نیمفاصله — هم‌ریج با شاخهٔ ۴۲۹ (خطِ ۱۵۸)
+      toast({ title: "خواندنِ کارنامه‌ها ناتمام ماند", description: "دفترِ نصفه ساخته نمی‌شود — اتصال را بررسی کن و دوباره تلاش کن.", duration: 3500 });
     } finally {
       setLedgerBusy(false);
     }

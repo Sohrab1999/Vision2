@@ -297,7 +297,10 @@ describe("قفلهایِ ساختاری — r372 ⑤⑥", () => {
     // قراردادِ نگاشت: بعدِ nav-srs-dashboard، Schoolِ معلم و CalendarClockِ مرور
     expect(palette).toContain('case "nav-srs-dashboard":\n      return "CalendarClock";');
     // ICONS با کلیدِ School — ورودیِ واقعی در نقشه (نه فقط importِ مرده)
-    expect(palette).toMatch(/const ICONS[^{]*\{[^}]*\bSchool\b[^}]*\}/s);
-    expect(palette).toMatch(/const ICONS[^{]*\{[^}]*\bCalendarClock\b[^}]*\}/s);
+    // [r373 درسِ ابزاری] فلگِ s به ES2018+ میخواهد (TS1501 رویِ target=ES2017) —
+    // و در این الگو بیاثر بود هم: نقطهای در کار نیست، کلاسهایِ نقضشده خودشان
+    // newline را میگیرند. حذفِ فلگ = هم سازگاری، هم همان قفلِ قبلی.
+    expect(palette).toMatch(/const ICONS[^{]*\{[^}]*\bSchool\b[^}]*\}/);
+    expect(palette).toMatch(/const ICONS[^{]*\{[^}]*\bCalendarClock\b[^}]*\}/);
   });
 });
