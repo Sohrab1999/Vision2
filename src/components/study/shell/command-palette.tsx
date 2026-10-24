@@ -45,7 +45,7 @@ import { lessonResumeSnapshot, useLessonResume } from "@/lib/lesson-resume";
 import { RETURN_CLUSTER_DOORS, returnCmdId } from "@/lib/return-cluster-doors";
 // r372 — پرشِ فرمانِ «داشبورد مرور»: کتابخانهٔ دامنه مالکِ پرش و پرچم است
 // (تک‌منبع با چیپهایِ r371) — پالت فقط پرنده است (درسِ r243/r244).
-import { requestSrsSpotlight, focusSrsDashboard } from "@/lib/srs-due";
+import { requestSrsSpotlight, focusSrsDashboard, hasProgressOf } from "@/lib/srs-due";
 import { LESSONS_META, TOTAL_VOCABULARY } from "@/data/lesson-meta";
 import { faNum } from "@/lib/study-theme";
 import {
@@ -203,11 +203,8 @@ export default function CommandPalette() {
   // عینِ hasProgressِ home-view (هم‌ارزِ semantics، یک قرارداد):
   // هر پیشرفتِ واقعی — بلدم/آزمون/srs/کتابخانه — پنل را زنده میکند
   // و فرمانِ پالت را هم.
-  const hasProgress =
-    Object.values(known).some(Boolean) ||
-    Object.keys(results).length > 0 ||
-    Object.keys(srsMap).length > 0 ||
-    Object.keys(libraryDone).length > 0;
+  // r381 — گیت از موتورِ تکمنبعِ srs-due میخواند (نسخهٔ موازیِ محلی ممنوع)
+  const hasProgress = hasProgressOf(known, results, srsMap, libraryDone);
   // راند ۲۳۶ — مسیرِ فرمانِ «ادامهٔ مطالعه» از قلابِ مشترکِ سه‌دره
   const navigateResume = useAppendixResumeNav();
   const { theme, setTheme } = useTheme();

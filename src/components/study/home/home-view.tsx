@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { useStudy } from "@/lib/study-store";
+import { hasProgressOf } from "@/lib/srs-due"; // r381 — موتورِ تکمنبعِ گیتِ داشبورد (نسخهٔ محلیِ r297 بازنشسته شد)
 import { useMounted } from "@/lib/use-mounted";
 import HomeHero from "./home-hero";
 import HomeToday from "./home-today";
@@ -68,12 +69,10 @@ export default function HomeView() {
   // Phase-2 «تجربه»: fresh learners get a focused starter path instead of six
   // dashed-empty analytics panels. Any real progress switches the full view on.
   // (هم‌ارز summarize().knownCount — فقط valueهای true شمرده می‌شوند)
+  // r381 — گیت از موتورِ تکمنبعِ srs-due میخواند (نسخهٔ موازیِ محلی ممنوع)
   const hasProgress =
     mounted &&
-    (Object.values(known).some(Boolean) ||
-      Object.keys(results).length > 0 ||
-      Object.keys(srs).length > 0 ||
-      Object.keys(libraryDone).length > 0);
+    hasProgressOf(known, results, srs, libraryDone);
 
   // شعار نقل‌قولی پایین صفحه — بیدارشدن تدریجی (fade)
   const [quoteIn, setQuoteIn] = useState(false);

@@ -813,7 +813,10 @@ describe("globals.css stone veil phase 6 (bg-stone-50/60|70 — Task 89)", () =>
     // r367: +1 c-stone-70 — the guide's return-cluster section (خوشهٔ بازگشت —
     // سومین فهرستِ زنده) joins the same dialog-scoped primitive; the
     // .shortcuts-dialog dark painter covers it with zero new CSS
-    expect(n70, "c-stone-70 consumers").toBe(12);
+    // r381: +1 c-stone-70 — the guide's SRS-dashboard jump section (بندِ ④ِ
+    // r373) joins the same dialog-scoped primitive; the same .shortcuts-dialog
+    // dark painter covers it with zero new CSS
+    expect(n70, "c-stone-70 consumers").toBe(13);
   });
 
   it("deviating painters retargeted in place + exclusion painters pinned", () => {

@@ -198,3 +198,29 @@ export function srsForecastWords(
   words.sort((a, b) => a.dueAt - b.dueAt || a.key.localeCompare(b.key));
   return { words, total };
 }
+
+// ------------------------------------------------------------------
+// r381 «موتورِ تکمنبعِ گیتِ داشبورد» — بندِ ④ِ پیشنهادِ r373 (هشت‌راند
+// معطل): داشبورد به کارتِ راهنمای میان‌برها هم میپیوندد — ولی چهار نسخهٔ
+// موازیِ محلیِ hasProgress (خانه r297، سفرِ کشف، پالت r372) تکرار ممنوع
+// (پیشینهٔ r363: موتور به کتابخانهٔ دامنه میرود و هر مصرفکننده قرض
+// میگیرد — قفلِ تستیِ بی‌دوقلو). گیتِ «پیشرفتِ واقعی» دغدغهٔ دامنهٔ
+// خودِ داشبورد است — پس کنارِ پرش و پالسِ همین پرونده میماند.
+// صداقتِ r236 دستنخورده: بی‌پیشرفتِ واقعی نه پنل رندر میشود نه فرمانِ
+// پالت است نه ردیفِ راهنما — هیچ درِ ساختگی.
+// ------------------------------------------------------------------
+
+/** هر یک از چهار سیگنالِ پیشرفتِ واقعی: بلدم/آزمون/srs/کتابخانه */
+export function hasProgressOf(
+  known: Record<string, unknown>,
+  results: Record<string, unknown>,
+  srs: Record<string, unknown>,
+  libraryDone: Record<string, unknown>,
+): boolean {
+  return (
+    Object.values(known ?? {}).some(Boolean) ||
+    Object.keys(results ?? {}).length > 0 ||
+    Object.keys(srs ?? {}).length > 0 ||
+    Object.keys(libraryDone ?? {}).length > 0
+  );
+}

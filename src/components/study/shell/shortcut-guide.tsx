@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
-import { Keyboard, BookMarked, ClipboardCheck, Sun, Moon, History, ChevronLeft, MousePointerClick, MapPin, House } from "lucide-react";
+import { Keyboard, BookMarked, ClipboardCheck, Sun, Moon, History, ChevronLeft, MousePointerClick, MapPin, House, CalendarClock } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useStudy, type LessonTab } from "@/lib/study-store";
@@ -15,6 +15,9 @@ import { RESUME_DOOR_COVERAGE } from "@/lib/resume-door-coverage";
 import { RETURN_CLUSTER_DOORS, RETURN_HOME_OPEN_LABEL } from "@/lib/return-cluster-doors";
 import { faNum, RESUME_FOCUS_RING } from "@/lib/study-theme";
 import { isTypingTarget, useKeydown } from "@/hooks/use-keyboard";
+// r381 — پرشِ داشبورد از کارتِ راهنما: عینِ قراردادِ پالتِ r372 — کتابخانهٔ
+// دامنه مالکِ پرش و پرچم است؛ و گیتِ پیشرفت هم از موتورِ تکمنبعِ همان‌جا
+import { requestSrsSpotlight, focusSrsDashboard, hasProgressOf } from "@/lib/srs-due";
 
 /**
  * راهنمای میان‌برهای کیبورد + اجرای میان‌برهای سراسری.
@@ -115,6 +118,13 @@ export default function ShortcutGuide() {
   const openLessonTab = useStudy((s) => s.openLessonTab);
   const view = useStudy((s) => s.view);
   const lessonTab = useStudy((s) => s.lessonTab);
+  // r381 — گیتِ ردیفِ داشبورد: عینِ گیتِ خانه/پالت از موتورِ تکمنبع —
+  // بیپیشرفتِ واقعی نه پنل رندر میشود نه این ردیف (صداقتِ r236 — هیچ پرشِ ساختگی)
+  const known = useStudy((s) => s.known) ?? {};
+  const results = useStudy((s) => s.results) ?? {};
+  const srsMap = useStudy((s) => s.srs) ?? {};
+  const libraryDone = useStudy((s) => s.libraryDone) ?? {};
+  const hasProgress = hasProgressOf(known, results, srsMap, libraryDone);
   const { theme, setTheme } = useTheme();
   // راند ۲۴۳ — درِ هدر فقط وقتی «هست» که رکوردی باشد و رویِ خودِ ضمیمه
   // نباشیم (قراردادِ صداقتِ r236: بی‌رکورد هیچ کنشِ ساختگی). همان ایدئومِ
@@ -150,6 +160,25 @@ export default function ShortcutGuide() {
     if (handoffRef.current !== null) window.clearTimeout(handoffRef.current);
     setOpen(false);
     setView({ type: "home" });
+  };
+
+  // r381 — پرشِ داشبورد از کارتِ راهنما (بندِ ④ پیشنهادِ r373 — هشت‌راند معطل):
+  // عینِ dispatchِ پالتِ r372 با افزودنِ بستنِ دیالوگ (درسِ r243 — FocusScopeِ
+  // بستهشونده فوکوس را پس میگیرد، پسِ پرشِ فوکوس‌برِ رویِ خانه بعد از دورهٔ
+  // تحویلِ HANDOFF_DELAY_MS؛ از نمایِ دیگر پرچمِ یک‌بارمصرف + ناوبری —
+  // مالکِ نمایش (srs-panel) بعد از mount مصرفش میکند).
+  const jumpToSrsDashboard = () => {
+    if (handoffRef.current !== null) window.clearTimeout(handoffRef.current);
+    setOpen(false);
+    if (view.type !== "home") {
+      requestSrsSpotlight();
+      setView({ type: "home" });
+    } else {
+      handoffRef.current = window.setTimeout(() => {
+        handoffRef.current = null;
+        focusSrsDashboard();
+      }, HANDOFF_DELAY_MS);
+    }
   };
 
   const runDoorAction = (door: ResumeLoopDoor) => {
@@ -371,6 +400,45 @@ export default function ShortcutGuide() {
                 کلیک روی هر ردیف به خانه می‌برد — هر در فقط وقتی هست که چیزی برایِ برگشتن داشته باشی (بی‌رکورد، هیچ).
               </p>
             </section>
+
+            {/* راند ۳۸۱ — بندِ ④ پیشنهادِ r373 (هشت‌راند معطل): «داشبوردِ مرور» هم
+                به کارتِ راهنما میپیوندد — چهارمین «فهرستِ زنده» نه؛ یک مقصدِ
+                تک‌ردیفی با گیتِ صادقِ موتورِ تکمنبع (hasProgressOfِ srs-due —
+                همان گیتِ خانه/پالت). پرش عینِ dispatchِ پالتِ r372: از نمایِ
+                دیگر پرچمِ یک‌بارمصرف + ناوبری؛ رویِ خودِ خانه پرشِ فوکوس‌بر
+                بعد از دورهٔ تحویلِ فوکوس (درسِ r243). صداقتِ r236: بی‌پیشرفت
+                داشبوردی نیست که به آن پرید — ردیف اصلاً نیست. */}
+            {hasProgress && (
+              <section
+                data-testid="shortcut-guide-srs-dashboard"
+                className="rounded-xl border border-stone-200 c-stone-70 p-3"
+              >
+                <h3 className="mb-2 flex items-center gap-1.5 text-[12.5px] font-extrabold text-stone-700">
+                  <CalendarClock size={14} className="shrink-0 text-emerald-600" aria-hidden />
+                  داشبورد مرور هوشمند — پرش به سررسیدها
+                </h3>
+                <ul className="space-y-1.5">
+                  <li>
+                    <button
+                      type="button"
+                      onClick={jumpToSrsDashboard}
+                      title="پرش به داشبورد مرور"
+                      data-testid="guide-srs-dashboard-row"
+                      className={`flex w-full items-center justify-between gap-3 rounded-lg bg-white px-2.5 py-1.5 text-right shadow-sm transition-[background-color,color] hover:bg-emerald-50 hover:text-emerald-800 ${RESUME_FOCUS_RING}`}
+                    >
+                      <span className="min-w-0 text-[12px] font-bold leading-5 text-stone-600">
+                        <span className="text-emerald-700">سررسیدها:</span> نردبان حافظه و پیش‌بینی هفت‌روزه — همان‌جا که کنشِ مرور زندگی میکند
+                      </span>
+                      <ChevronLeft size={12} className="shrink-0 text-emerald-600" aria-hidden />
+                    </button>
+                  </li>
+                </ul>
+                <p className="mt-2 flex items-start gap-1 text-[10px] font-bold leading-4 text-emerald-800">
+                  <MousePointerClick size={11} className="mt-0.5 shrink-0" aria-hidden />
+                  فقط برایِ یادگیرندهٔ دارایِ پیشرفت هست — بی‌پیشرفت داشبوردی نیست که به آن پرید (بی‌رکورد، هیچ).
+                </p>
+              </section>
+            )}
 
             {/* راند ۲۵۱ — بندِ ② پیشنهادِ ۲۴۹: جدولِ «پوششِ درها» — از
                 RESUME_DOOR_COVERAGE (تک‌منبعِ حقیقتِ src/lib/resume-door-coverage.ts)

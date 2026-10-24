@@ -40,6 +40,7 @@ import {
   ChevronLeft,
 } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
+import { hasProgressOf } from "@/lib/srs-due"; // r381 — موتورِ تکمنبعِ گیتِ داشبورد
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
 import { uiColors } from "@/lib/ui-colors";
@@ -189,11 +190,8 @@ export default function HomeDiscoveryJourney() {
 
   // گیتِ نمایش — همارزِ hasProgressِ home-view: تازهواردِ مطلق (روزِ نخست)
   // کارت را نمیبیند؛ مسیرِ شروع (home-starter) صاحبِ آن لحظه است.
-  const hasProgress =
-    Object.values(known).some(Boolean) ||
-    Object.keys(results).length > 0 ||
-    Object.keys(srs).length > 0 ||
-    Object.keys(libraryDone).length > 0;
+  // r381 — گیت از موتورِ تکمنبعِ srs-due میخواند (نسخهٔ موازیِ محلی ممنوع)
+  const hasProgress = hasProgressOf(known, results, srs, libraryDone);
 
   if (!mounted || !hasProgress) return null;
 
