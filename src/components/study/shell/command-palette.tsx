@@ -37,6 +37,10 @@ import {
 } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { useStudy, type LessonTab } from "@/lib/study-store";
+import { trackEvent } from "@/lib/analytics";
+import { libraryProgress } from "@/lib/library-progress";
+import { lessonResumeSnapshot, useLessonResume } from "@/lib/lesson-resume";
+import { RETURN_CLUSTER_DOORS, returnCmdId } from "@/lib/return-cluster-doors";
 import { LESSONS_META, TOTAL_VOCABULARY } from "@/data/lesson-meta";
 import { faNum } from "@/lib/study-theme";
 import {
@@ -175,6 +179,13 @@ export default function CommandPalette() {
   const openLesson = useStudy((s) => s.openLesson);
   const openLessonTab = useStudy((s) => s.openLessonTab);
   const view = useStudy((s) => s.view); // راند ۲۴۴ — گِیتِ درِ هدر (رویِ ضمیمه مستور است)
+  const lessonTab = useStudy((s) => s.lessonTab);
+  // راند ۳۶۸ — گیتهایِ زندهٔ درهایِ خانه — همان گیتِ کارتهایِ خانه
+  // (r297: گاردِ ?? بیرونِ سلکتور)
+  const lessonRec = useLessonResume();
+  const konkurSeen = useStudy((s) => s.konkurSeen) ?? {};
+  const duelHistory = useStudy((s) => s.duelHistory) ?? [];
+  const libraryDone = useStudy((s) => s.libraryDone) ?? {};
   // راند ۲۳۶ — مسیرِ فرمانِ «ادامهٔ مطالعه» از قلابِ مشترکِ سه‌دره
   const navigateResume = useAppendixResumeNav();
   const { theme, setTheme } = useTheme();
@@ -304,6 +315,35 @@ export default function CommandPalette() {
       }));
   }, [resumeItem, view.type]);
 
+  // راند ۳۶۸ — «درهای خانه» در فرمان‌یاب (بندِ ④ پیشنهادِ r367): چهارمین مصرفِ
+  // فهرستِ زندهٔ RETURN_CLUSTER_DOORS — فرمانِ پرشِ همان‌جایی که کارتِ خانه
+  // میپرد، نه فقط خانه. قراردادها:
+  //   • درِ ضمیمه در پالت نیست — فرمانش از قبل هست (nav-resume r235 + درِ
+  //     خانه r244)؛ دو گویش نباید دو فرمان شوند (قراردادِ palette:null).
+  //   • گیتِ هر در = گیتِ واقعیِ کارتش (r236: بی‌رکورد هیچ فرمانِ ساختگی).
+  //   • رویِ خودِ دنیا هم مستور است — «ادامهٔ کنکور» وسطِ جلسه یعنی remount
+  //     و سوختنِ جلسه؛ غیبتِ صادقانه هم‌زمان محافظِ جلسه است. درس فقط
+  //     رویِ نقطهٔ دقیقِ رزومه مستور است — از درسِ دیگر پرش به مقصدِ رزومه
+  //     همچنان معنادار است.
+  //   • برچسب از خودِ داده (palette.label = عنوانِ کارت) و hint = متنِ در.
+  const returnCmds: CommandDef[] = useMemo(() => {
+    const lessonResumePoint =
+      view.type === "lesson" && lessonRec != null && view.id === lessonRec.lesson && lessonTab === lessonRec.tab;
+    const gates: Record<string, boolean> = {
+      lesson: lessonRec != null && !lessonResumePoint,
+      reading: libraryProgress(libraryDone).doneCount > 0 && view.type !== "library",
+      konkur: Object.keys(konkurSeen).length > 0 && view.type !== "konkur",
+      duel: duelHistory.length > 0 && view.type !== "duel",
+    };
+    return RETURN_CLUSTER_DOORS.filter((d) => d.palette && gates[d.id]).map((d) => ({
+      id: returnCmdId(d.id),
+      label: d.palette!.label,
+      group: "درهای خانه",
+      hint: d.text,
+      keywords: [d.id, "بازگشت", "خانه", d.label, d.text],
+    }));
+  }, [view, lessonTab, lessonRec, konkurSeen, duelHistory, libraryDone]);
+
   const baseCommands: CommandDef[] = useMemo(
     () => [
       ...(resumeCmd ? [resumeCmd] : []),
@@ -328,6 +368,9 @@ export default function CommandPalette() {
       // مقصدِ اصلی (مثل «ضمیمهٔ کتاب») از ترتیبِ آرایه اول می‌آید — گروه‌بندیِ
       // نمایش به ترتیبِ COMMAND_GROUPS است و به این ترتیب کاری ندارد.
       ...doorCmds,
+      // راند ۳۶۸ — درهایِ خانه بعد از درهایِ حلقه: خوشهٔ پنجدرهایِ خانه
+      // در پالت هم زنده — با گیتِ صادقِ خودِ کارتها.
+      ...returnCmds,
       // ── درس‌ها ──
       ...LESSONS_META.map((l) => ({
         id: `lesson-${l.id}`,
@@ -356,7 +399,7 @@ export default function CommandPalette() {
       { id: "tool-profile", label: "پروفایل و پشتیبان", group: "ابزارها", hint: "نام، رنگ، پشتیبان‌گیری و سینک ابری", keywords: ["profile", "backup", "sync", "پروفایل", "ذخیره"] },
       { id: "tool-install", label: "نصب روی دستگاه", group: "ابزارها", hint: "وب‌کتاب مثل اپ — آفلاین و تمام‌صفحه", keywords: ["install", "pwa", "نصب", "اپلیکیشن"] },
     ],
-    [isDark, resumeCmd, resumeRecentCmds, doorCmds],
+    [isDark, resumeCmd, resumeRecentCmds, doorCmds, returnCmds],
   );
 
   // کلیدواژهٔ ناوبری برای همهٔ فرمان‌ها (جست‌وجو) + نگاشت شناسه برای «اخیر»
@@ -478,6 +521,30 @@ export default function CommandPalette() {
           handoffRef.current = null;
           focusHeaderDoor();
         }, DOOR_HANDOFF_DELAY_MS);
+        break;
+      // راند ۳۶۸ — درهایِ خانه: پرشِ همان‌جایی که کارتِ خانه میپرد.
+      // رکوردِ درس در لحظهٔ اجرا دوباره خوانده میشود (صداقتِ nav-resume:
+      // پاکشده در فاصلهٔ باز-تا-اجرا = هیچ جابه‌جاییِ ساختگی)؛ رویدادِ
+      // lesson_open با همان معنایِ کارتِ خانه (r361: پرشِ رزومه = بازکردنِ
+      // واقعیِ درس) — ولی بدونِ رویدادِ نو در رجیستری (۵۲ میماند)؛
+      // کنکور/میدان/کتابخانه بی‌رویداد — konkur_start/duel_start مالِ
+      // جلسهٔ واقعیاند، بازکردنِ نما رویداد ندارد (قراردادِ r364).
+      case "return-lesson": {
+        const rec = lessonResumeSnapshot();
+        if (rec) {
+          trackEvent("lesson_open"); // همان معنایِ کارتِ خانه — بازکردنِ واقعیِ درس
+          openLessonTab(rec.lesson, rec.tab);
+        }
+        break;
+      }
+      case "return-reading":
+        setView({ type: "library" });
+        break;
+      case "return-konkur":
+        setView({ type: "konkur" });
+        break;
+      case "return-duel":
+        setView({ type: "duel" });
         break;
       case "act-rush":
         setView({ type: "rush" });

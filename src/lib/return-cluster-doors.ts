@@ -39,6 +39,13 @@ export interface ReturnClusterDoor {
   file: string;
   /** رشتهٔ ثابتی که فقط در فایلِ registered هست — شناسهٔ درختیِ در */
   probe: string;
+  /**
+   * راند ۳۶۸ — گویشِ چهارمِ فهرستِ زنده: فرمانِ فرمانیاب.
+   * برچسبِ فرمان = همان عنوانِ کارتِ خانه (گویشِ خودِ در)؛ null = درِ
+   * مشترکی که فرمانش از قبل در پالت هست — ضمیمه با nav-resume (r235)
+   * و درِ خانه (r244) خدمت میشود؛ دو گویش نباید دو فرمان شوند
+   * (همان قراردادِ هدرِ این فایل). */
+  palette: { label: string } | null;
 }
 
 /** کنشِ مشترکِ همهٔ ردیفها — درها فقط رویِ خانهاند؛ عنوانِ tooltip هم از همین میآید. */
@@ -52,6 +59,7 @@ export const RETURN_CLUSTER_DOORS: ReturnClusterDoor[] = [
     gateHint: "با نخستین ورق‌زدنِ ضمیمه، خطِ «ادامه از» ساخته می‌شود",
     file: "home/home-tools.tsx",
     probe: "ادامه از «{tool.resume.title}»",
+    palette: null, // فرمانش از قبل هست: nav-resume (r235) + درِ خانه (r244)
   },
   {
     id: "lesson",
@@ -60,6 +68,7 @@ export const RETURN_CLUSTER_DOORS: ReturnClusterDoor[] = [
     gateHint: "با نخستین بازکردنِ یک درس ساخته می‌شود",
     file: "home/home-lesson-resume.tsx",
     probe: "ادامهٔ مطالعهٔ درس",
+    palette: { label: "ادامهٔ مطالعهٔ درس" },
   },
   {
     id: "reading",
@@ -68,6 +77,7 @@ export const RETURN_CLUSTER_DOORS: ReturnClusterDoor[] = [
     gateHint: "با نخستین داستانِ خواندهشده ساخته می‌شود",
     file: "home/home-continue-reading.tsx",
     probe: "ادامهٔ خواندن داستان‌ها",
+    palette: { label: "ادامهٔ خواندن داستان‌ها" },
   },
   {
     id: "konkur",
@@ -76,6 +86,7 @@ export const RETURN_CLUSTER_DOORS: ReturnClusterDoor[] = [
     gateHint: "با نخستین تستِ بانک که ببینی ساخته می‌شود",
     file: "home/home-konkur-resume.tsx",
     probe: "ادامهٔ گوشهٔ کنکور",
+    palette: { label: "ادامهٔ کنکور" },
   },
   {
     id: "duel",
@@ -84,5 +95,10 @@ export const RETURN_CLUSTER_DOORS: ReturnClusterDoor[] = [
     gateHint: "با نخستین مصافِ ثبتشده ساخته می‌شود",
     file: "home/home-duel-resume.tsx",
     probe: "بازگشت به میدانِ نبرد",
+    palette: { label: "بازگشت به میدان" },
   },
 ];
+
+/** شناسهٔ قراردادیِ فرمانِ پالتِ هر در — هم‌خانوادهٔ doorCmdId (r244). */
+export const RETURN_CMD_PREFIX = "return-";
+export const returnCmdId = (id: ReturnClusterDoorId): string => `${RETURN_CMD_PREFIX}${id}`;
