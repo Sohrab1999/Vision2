@@ -250,11 +250,19 @@ describe("سرشماریِ تک‌منبعِ دیالوگ (r255 ④) — چها�
   });
 
   it("دو خانوادهٔ چیپِ نو از یک قراردادِ aria-label حرف می‌زنند — درسِ a11yِ r253 در سطحِ منبع قفل است", () => {
-    for (const [f] of CONSUMERS.slice(4)) {
-      const src = read(f);
-      expect(src, `${f} chip labels must follow the r253 contract`).toContain(
-        "در مکالمه‌ها و ریدینگ‌ها"
-      );
-    }
+    // r389 — قالبِ چیپِ «در جزوه · N» (و ariaِ همسانش) به مالکِ یکتایِ
+    // BookletUsageChip رفت؛ داورِ خطر (عضوِ دومِ این زوجِ r255) حالا از
+    // مالک وام میگیرد و مالکِ وامگیرنده خودش قراردادِ «مکالمه‌ها و
+    // ریدینگ‌ها» را حمل میکند. جدولِ خانواده (عضوِ اول) گویشِ فشردهٔ
+    // سرشماریِ سلول خودش را دارد — حکمِ «نخیر»ِ سرشماریِ r389 (درسِ
+    // r386: فقط زیرگروهِ بایتهمسان یکجا میشود) — مستند در سرصفحهٔ مالک.
+    const danger = read("src/components/study/practice/danger-words.tsx");
+    expect(danger, "danger-words must borrow the r389 chip owner").toContain(
+      "import BookletUsageChip, { useBookletUsageTarget }"
+    );
+    const owner = read("src/components/study/lesson/booklet-usage-chip.tsx");
+    expect(owner, "the r389 owner carries the r253 a11y contract").toContain(
+      "در مکالمه‌ها و ریدینگ‌ها"
+    );
   });
 });

@@ -11,7 +11,8 @@ import { trackEvent } from "@/lib/analytics";
 import { useToast } from "@/hooks/use-toast";
 import { buildSynAntIndex, synAntPairsFor, matchesViaPairs } from "@/lib/syn-ant-lookup";
 import { findWordUsages, lessonsVocabUsageRanking } from "@/lib/word-usage";
-import WordUsageDialog, { type WordUsageTarget } from "./word-usage-dialog";
+import WordUsageDialog from "./word-usage-dialog";
+import BookletUsageChip, { useBookletUsageTarget } from "./booklet-usage-chip";
 import { buildPairsDrillQuiz, SYN_QUIZ_CAP } from "@/lib/syn-ant-quiz";
 import type { QuizQuestion } from "@/lib/study-types";
 import { speak } from "@/lib/speak";
@@ -40,8 +41,9 @@ export default function DictionaryView() {
   const starredWords = useStudy((s) => s.starredWords);
   const setView = useStudy((s) => s.setView);
   // راند ۲۵۲ — «کاربرد در جزوه»: دیالوگِ جایِ واژه در مکالمه‌ها و ریدینگ‌هایِ جزوه
-  // (r253 — خودِ دیالوگ به تک‌منبعِ مشترکِ word-usage-dialog رفت)
-  const [usage, setUsage] = useState<WordUsageTarget | null>(null);
+  // (r253 — خودِ دیالوگ به تک‌منبعِ مشترکِ word-usage-dialog رفت؛
+  // r389 — سیم‌کشیِ state به مالکِ یکتایِ چیپ)
+  const usage = useBookletUsageTarget();
   const mounted = useMounted();
   const { toast } = useToast();
   // راندِ ۳۴۵ — چیپِ «روخوانی جفت» در شکستِ صدا ساکت نمی‌ماند
@@ -685,28 +687,18 @@ export default function DictionaryView() {
                     </div>
                   );
                 })()}
-                {/* راند ۲۵۲ — «کاربرد در جزوه»: این واژه کجای جزوه آمده؟
+                {/* راند ۲۵۲ → ۳۸۹ — «کاربرد در جزوه»: این واژه کجای جزوه آمده؟
                     چیپ فقط با تطبیقِ واقعی در مکالمه/ریدینگِ جزوه می‌آید —
-                    بی‌کاربرد، هیچ (صداقتِ همیشگی). کلیک → دیالوگِ جای‌ها با
-                    هایلایتِ واژه و ترجمهٔ فارسیِ خودِ جزوه. رنگ‌ها رویِ
-                    ایدئومِ kernel — sky-50/200/700 خودشان dark remap دارند. */}
-                {(() => {
-                  const sites = mounted ? findWordUsages(w.en) : [];
-                  if (sites.length === 0) return null;
-                  return (
-                    <button
-                      type="button"
-                      data-testid={`usage-chip-${w.en.replace(/\s+/g, "-")}`}
-                      onClick={() => setUsage({ en: w.en, sites })}
-                      title="کاربرد این واژه در مکالمه‌ها و ریدینگ‌های جزوه"
-                      aria-label={`کاربرد ${w.en} در مکالمه‌ها و ریدینگ‌ها — ${faNum(sites.length)} مورد`}
-                      className="inline-flex items-center gap-1 rounded-md border border-sky-200 bg-sky-50/60 px-1.5 py-0.5 text-[10.5px] font-bold text-sky-700 transition-[background-color,color,border-color,transform] active:scale-[0.96]"
-                    >
-                      <BookOpenText size={11} aria-hidden />
-                      در جزوه · {faNum(sites.length)}
-                    </button>
-                  );
-                })()}
+                    بیکاربرد، هیچ (صداقتِ همیشگی؛ قالب حالا در مالکِ یکتایِ
+                    BookletUsageChip). کلیک → دیالوگِ جاها با هایلایتِ واژه و
+                    ترجمهٔ فارسیِ خودِ جزوه. رنگ‌ها رویِ ایدئومِ kernel —
+                    sky-50/200/700 خودشان dark remap دارند. */}
+                <BookletUsageChip
+                  en={w.en}
+                  mounted={mounted}
+                  testid={`usage-chip-${w.en.replace(/\s+/g, "-")}`}
+                  onOpen={usage.open}
+                />
                 <span className={`mt-1 inline-block rounded-full px-2 py-0.5 text-[10px] font-bold ${t.chipBg}`}>
                   درس {faNum(w.lessonId)}
                 </span>
@@ -765,13 +757,13 @@ export default function DictionaryView() {
           جستجو (جستجو برایِ یافتنِ همین واژه بود؛ وعدهٔ دکمه، واژه‌هایِ کلِ درس
           است) + بستنِ دیالوگ. بقیهٔ مصرف‌کننده‌هایِ دیالوگ بی-هندلر می‌مانند. */}
       <WordUsageDialog
-        target={usage}
-        onClose={() => setUsage(null)}
+        target={usage.target}
+        onClose={usage.close}
         onOpenLesson={(lessonId) => {
           setLessonFilter(lessonId);
           setStateFilter("usage");
           setQuery("");
-          setUsage(null);
+          usage.close();
         }}
       />
     </div>

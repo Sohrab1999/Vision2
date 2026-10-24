@@ -16,7 +16,7 @@
 
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { AlertTriangle, BookOpenText, RefreshCcw, Sparkles, Zap, TrendingDown, Star, Ear } from "lucide-react";
+import { AlertTriangle, RefreshCcw, Sparkles, Zap, TrendingDown, Star, Ear } from "lucide-react";
 import { useStudy, SRS_INTERVALS } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { dangerWords, buildDangerQuiz, type DangerWord } from "@/lib/word-risk";
@@ -31,11 +31,11 @@ import { useToast } from "@/hooks/use-toast";
 import { speak } from "@/lib/speak";
 import { trackEvent } from "@/lib/analytics";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { findWordUsages, type WordUsageSite } from "@/lib/word-usage";
 import Flashcards from "../lesson/flashcards";
 import QuizEngine from "../quiz/quiz-engine";
 import DictationTab from "../lesson/dictation-tab";
 import WordUsageDialog from "../lesson/word-usage-dialog";
+import BookletUsageChip, { useBookletUsageTarget } from "../lesson/booklet-usage-chip";
 
 const lessonFa = lessonNameFa;
 
@@ -67,8 +67,8 @@ export default function DangerWords() {
   const [flashLesson, setFlashLesson] = useState<number | null>(null);
 
   // راند ۲۵۵ — ششمین مصرف‌کنندهٔ «کاربرد در جزوه»: ردیفِ خطاها هم یک کلیک
-  // تا متنِ واقعیِ جزوه فاصله دارد (تک‌منبع با پنج مصرف‌کنندهٔ پیشین)
-  const [usage, setUsage] = useState<{ en: string; sites: WordUsageSite[] } | null>(null);
+  // تا متنِ واقعیِ جزوه فاصله دارد؛ r389 — سیم‌کشی به مالکِ یکتایِ r389
+  const usage = useBookletUsageTarget();
 
   const list = useMemo<DangerWord[]>(
     () => (mounted ? dangerWords(wordMistakes, wordSeen, 10) : []),
@@ -264,26 +264,15 @@ export default function DangerWords() {
                         <span className="hidden rounded-md bg-stone-100 px-1.5 py-0.5 text-[10px] font-bold text-stone-500 sm:inline">
                           {lessonFa(d.lessonId)}
                         </span>
-                        {(() => {
-                          // راند ۲۵۵ — چیپِ «در جزوه» رویِ ردیفِ خطا: واژه‌ای که
-                          // بیشترین غلط را از یادگیرنده گرفته، باید ببیند کجای
-                          // جزوه زندگی می‌کند — بی‌کاربرد، هیچ (صداقتِ r252).
-                          const sites = findWordUsages(d.en);
-                          if (sites.length === 0) return null;
-                          return (
-                            <button
-                              type="button"
-                              data-testid={`danger-usage-chip-${d.en.replace(/\s+/g, "-")}`}
-                              onClick={() => setUsage({ en: d.en, sites })}
-                              title="کاربرد این واژه در مکالمه‌ها و ریدینگ‌های جزوه"
-                              aria-label={`کاربرد ${d.en} در مکالمه‌ها و ریدینگ‌ها — ${faNum(sites.length)} مورد`}
-                              className="inline-flex items-center gap-1 rounded-md border border-sky-200 bg-sky-50/60 px-1.5 py-0.5 text-[10.5px] font-bold text-sky-700 transition-[background-color,color,border-color,transform] active:scale-[0.96]"
-                            >
-                              <BookOpenText size={11} aria-hidden />
-                              در جزوه · {faNum(sites.length)}
-                            </button>
-                          );
-                        })()}
+                        {/* راند ۲۵۵ → ۳۸۹ — چیپِ «در جزوه» رویِ ردیفِ خطا: واژه‌ای که
+                            بیشترین غلط را از یادگیرنده گرفته، باید ببیند کجای جزوه
+                            زندگی می‌کند — بیکاربرد، هیچ؛ قالب و دروازهٔ صداقت حالا
+                            در مالکِ یکتایِ BookletUsageChip زندگی میکند. */}
+                        <BookletUsageChip
+                          en={d.en}
+                          testid={`danger-usage-chip-${d.en.replace(/\s+/g, "-")}`}
+                          onOpen={usage.open}
+                        />
                         {(() => {
                           // چیپ‌های فشردهٔ جفت — حداکثر ۲ تا؛ کلیک همتا را روخوانی می‌کند
                           const pairs = synAntPairsFor(pairIndex, d.en);
@@ -461,7 +450,7 @@ export default function DangerWords() {
       </Dialog>
 
       {/* راند ۲۵۵ — دیالوگِ مشترکِ «کاربرد در جزوه» (تک‌منبع) — از ردیفِ خطا */}
-      <WordUsageDialog target={usage} onClose={() => setUsage(null)} />
+      <WordUsageDialog target={usage.target} onClose={usage.close} />
     </section>
   );
 }

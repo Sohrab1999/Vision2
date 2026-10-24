@@ -8,8 +8,9 @@ import { useStudy, wordKey } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { posLabel, themeOf, faNum } from "@/lib/study-theme";
 import { buildSynAntIndex, synAntPairsFor } from "@/lib/syn-ant-lookup";
-import { findWordUsages, lessonVocabUsageCensus, type WordUsageSite } from "@/lib/word-usage";
+import { lessonVocabUsageCensus } from "@/lib/word-usage";
 import WordUsageDialog from "./word-usage-dialog";
+import BookletUsageChip, { useBookletUsageTarget } from "./booklet-usage-chip";
 import { speak } from "@/lib/speak";
 import { useToast } from "@/hooks/use-toast";
 import { lessons } from "@/data";
@@ -45,8 +46,8 @@ export default function VocabTab({
   const consumeFlashIntent = useStudy((s) => s.consumeFlashIntent);
   const mounted = useMounted();
   // راند ۲۵۳ — «کاربرد در جزوه» به تبِ واژگانِ درس هم رسید (بندِ ① پیشنهادِ ۲۵۲):
-  // همان تک‌منبعِ دیکشنری (findWordUsages) با همان دیالوگِ مشترک
-  const [usage, setUsage] = useState<{ en: string; sites: WordUsageSite[] } | null>(null);
+  // همان تک‌منبع با همان دیالوگِ مشترک؛ r389 — سیم‌کشی به مالکِ یکتایِ چیپ
+  const usage = useBookletUsageTarget();
 
   // consume the "smart review" navigation intent once (flashcards open via
   // the flashNonce remount-key in LessonView, so no setState is needed here)
@@ -240,31 +241,18 @@ export default function VocabTab({
                     </div>
                   );
                 })()}
-                {(() => {
-                  // راند ۲۵۳ — چیپِ «در جزوه» رویِ کارتِ واژگانِ درس: این واژه
-                  // کجای مکالمه/ریدینگِ جزوه آمده؟ فقط با تطبیقِ واقعی —
-                  // بی‌کاربرد، هیچ (صداقتِ همیشگیِ r252). stopPropagation:
-                  // کارتِ کلیکِ خودش را دارد (بلدم‌کردن) — همان قراردادِ
-                  // چیپِ جفت و ستاره.
-                  const sites = mounted ? findWordUsages(w.en) : [];
-                  if (sites.length === 0) return null;
-                  return (
-                    <button
-                      type="button"
-                      data-testid={`usage-chip-${w.en.replace(/\s+/g, "-")}`}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setUsage({ en: w.en, sites });
-                      }}
-                      title="کاربرد این واژه در مکالمه‌ها و ریدینگ‌های جزوه"
-                      aria-label={`کاربرد ${w.en} در مکالمه‌ها و ریدینگ‌ها — ${faNum(sites.length)} مورد`}
-                      className="inline-flex items-center gap-1 rounded-md border border-sky-200 bg-sky-50/60 px-1.5 py-0.5 text-[10.5px] font-bold text-sky-700 transition-[background-color,color,border-color,transform] active:scale-[0.96]"
-                    >
-                      <BookOpenText size={11} aria-hidden />
-                      در جزوه · {faNum(sites.length)}
-                    </button>
-                  );
-                })()}
+                {/* راند ۲۵۳ → ۳۸۹ — چیپِ «در جزوه» رویِ کارتِ واژگانِ درس: این واژه
+                    کجای مکالمه/ریدینگِ جزوه آمده؟ فقط با تطبیقِ واقعی — بیکاربرد،
+                    هیچ (صداقتِ همیشگیِ r252، حالا در مالکِ یکتایِ r389).
+                    stopPropagation: کارتِ کلیکِ خودش را دارد (بلدم‌کردن) — همان
+                    قراردادِ چیپِ جفت و ستاره. */}
+                <BookletUsageChip
+                  en={w.en}
+                  mounted={mounted}
+                  testid={`usage-chip-${w.en.replace(/\s+/g, "-")}`}
+                  onOpen={usage.open}
+                  stopPropagation
+                />
               </div>
               {isKnown ? (
                 <CheckCircle2 size={17} className={`shrink-0 ${t.text}`} />
@@ -284,7 +272,7 @@ export default function VocabTab({
       <LinkedWordFamilies lesson={lesson} />
 
       {/* راند ۲۵۳ — دیالوگِ مشترکِ «کاربرد در جزوه» (تک‌منبع با دیکشنری و فلش‌کارت) */}
-      <WordUsageDialog target={usage} onClose={() => setUsage(null)} />
+      <WordUsageDialog target={usage.target} onClose={usage.close} />
     </div>
   );
 }

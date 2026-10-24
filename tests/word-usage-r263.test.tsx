@@ -184,7 +184,9 @@ describe("قراردادهایِ سطحِ منبع (r263 ④)", () => {
     expect(dict).toContain('onOpenLesson={(lessonId) => {');
     expect(dict).toContain('setStateFilter("usage")');
     expect(dict).toContain('setQuery("")');
-    expect(dict).toContain("setUsage(null)");
+    // r389 — بستنِ دیالوگ حالا از سیم‌کشیِ یکتایِ مالک میآید: usage.close()
+    // (همان قراردادِ «بستن» — قفلِ متنِ هوک در booklet-chip-r389.test.tsx)
+    expect(dict).toContain("usage.close()");
     for (const f of [
       "src/components/study/lesson/vocab-tab.tsx",
       "src/components/study/lesson/flashcards.tsx",
