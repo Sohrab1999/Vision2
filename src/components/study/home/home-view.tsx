@@ -9,6 +9,8 @@ import HomeHero from "./home-hero";
 import HomeToday from "./home-today";
 import HomeContinueReading from "./home-continue-reading";
 import HomeLessonResume from "./home-lesson-resume";
+import HomeKonkurResume from "./home-konkur-resume";
+import HomeDuelResume from "./home-duel-resume";
 import HomeDiscoveryJourney from "./home-discovery-journey";
 import { ListenBanner, RushBanner } from "./home-banners";
 import HomeStarter from "./home-starter";
@@ -88,6 +90,11 @@ export default function HomeView() {
       {/* r361 «ادامهٔ خواندنِ درس» — حلقهٔ بازگشتِ یادگیرندهٔ برگشتی؛ بی‌رکورد هیچ */}
       <HomeLessonResume />
       <HomeContinueReading />
+      {/* r364 «ادامهٔ کنکور» + «بازگشت به میدان» — درهایِ چهارم و پنجمِ
+          خوشهٔ بازگشت؛ هر یک با گیتِ صادقانهٔ خودش (پوششِ بانک / دفترچهٔ
+          نبرد) — تازهوارد و بیتجربه هیچ نمیبیند */}
+      <HomeKonkurResume />
+      <HomeDuelResume />
       {/* r349 «سفرِ کشف» — آنبوردینگِ هفتهٔ دوم؛ تازه‌واردِ مطلق نمی‌بیند
           (گیتِ درونی — home-starter صاحبِ لحظهٔ روزِ نخست است) */}
       <HomeDiscoveryJourney />
