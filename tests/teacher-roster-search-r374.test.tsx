@@ -85,13 +85,38 @@ afterEach(() => {
 
 const openPanel = async (roster: RosterRow[] = fixture()) => {
   sessionStorage.setItem("vision2-teacher-code", "edu-1404");
+  // r377 — [درسِ همین راند]: استابِ دیالوگ باید قراردادِ کاملِ LearnerDetail
+  // را بگوید نه راویِ ناقص — learnerِ تک‌فیلدی («آرش») کرشِ رندرِ
+  // teacher-detail را برمیانگیخت (خروجیِ suite سرخ، رانها سبزخوان).
+  const learnerPayload = () =>
+    JSON.stringify({
+      ok: true,
+      learner: {
+        name: "آرش",
+        color: "emerald",
+        joinedAt: new Date(now - 30 * 86_400_000).toISOString(),
+        attempts: 3,
+        avgPercent: 73,
+        bestPercent: 90,
+        lessons: 2,
+        lastActive: new Date(now - HOUR).toISOString(),
+        byDay: Array.from({ length: 14 }, (_, i) => ({ day: day(13 - i), attempts: i === 13 ? 2 : 0 })),
+        byLesson: Array.from({ length: 12 }, (_, i) => ({
+          lesson: i + 1,
+          attempts: i < 2 ? 2 : 0,
+          avgPercent: i < 2 ? 73 : null,
+        })),
+        bySkill: [{ category: "dictation", attempts: 2, avgPercent: 55, bestPercent: 70 }],
+        recent: [{ category: "quiz", lesson: 2, percent: 80, createdAt: new Date(now - HOUR).toISOString() }],
+      },
+    });
   vi.stubGlobal(
     "fetch",
     vi.fn(async (url: string) => {
       if (String(url).includes("/api/teacher/report")) {
         return new Response(JSON.stringify(reportPayload(roster)), { status: 200 });
       }
-      return new Response(JSON.stringify({ ok: true, learner: { name: "آرش" } }), { status: 200 });
+      return new Response(learnerPayload(), { status: 200 });
     })
   );
   const { default: TeacherView } = await import("@/components/study/teacher/teacher-view");

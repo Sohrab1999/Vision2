@@ -45,6 +45,9 @@ const weekFixture = [
 
 const emptyWeek = Array.from({ length: 7 }, (_, i) => ({ day: `2026-10-${18 + i}`, attempts: 0 }));
 
+// r377 — ساعتِ تزریقیِ «فعال در ۲۴ ساعت»: ۳۰دقیقه بعدِ آخرین فعالیتِ آرش — قطعیِ همیشگی
+const NOW_24H = new Date("2026-10-24T09:00:00.000Z").getTime();
+
 const rosterFixture: RosterRow[] = [
   { name: "آرش", color: "emerald", attempts: 3, avgPercent: 73, bestPercent: 90, lessons: 2, lastActive: "2026-10-24T08:30:00.000Z", weakest: { category: "dictation", avgPercent: 55 }, handle: "aaaa1111bbbb2222" },
   { name: "نگار", color: "violet", attempts: 0, avgPercent: null, bestPercent: null, lessons: 0, lastActive: null, weakest: null },
@@ -140,6 +143,7 @@ describe("buildClassLedgerCsv — هفتهٔ فعال در سربرگِ دفتر
       byDay: weekFixture,
       roster: rosterFixture,
       details: [],
+      now: NOW_24H,
     });
     const lines = out.split("\r\n");
     expect(lines[0]).toBe(LEDGER_TITLE);
@@ -147,7 +151,7 @@ describe("buildClassLedgerCsv — هفتهٔ فعال در سربرگِ دفتر
     expect(lines[2]).toContain("هفتهٔ فعال,6 تلاش در 7 روزِ اخیر");
     expect(lines[3]).toBe("پرکارترینِ روز,2026-10-21 · 3 تلاش");
     expect(lines[4]).toBe("");
-    expect(lines[5]).toBe("نام,رنگ,تلاش,میانگین,بهترین,درس‌ها,آخرین فعالیت,ضعیف‌ترین مهارت");
+    expect(lines[5]).toBe("نام,رنگ,تلاش,میانگین,بهترین,درس‌ها,آخرین فعالیت,فعال در ۲۴ ساعت,ضعیف‌ترین مهارت");
   });
 
   it("⑧ هفتهٔ خالی در دفتر: سطرِ صفر حاضر، پرکارترین غایب — و جدولِ کلاس سالم", () => {
@@ -156,11 +160,12 @@ describe("buildClassLedgerCsv — هفتهٔ فعال در سربرگِ دفتر
       byDay: emptyWeek,
       roster: rosterFixture,
       details: [],
+      now: NOW_24H,
     });
     const lines = out.split("\r\n");
     expect(lines[2]).toBe("هفتهٔ فعال,0 تلاش در 7 روزِ اخیر · 0 روزِ فعال");
     expect(lines[3]).toBe(""); // پرکارترین نیست — مستقیم به جداکننده میرسیم
-    expect(lines[4]).toBe("نام,رنگ,تلاش,میانگین,بهترین,درس‌ها,آخرین فعالیت,ضعیف‌ترین مهارت");
+    expect(lines[4]).toBe("نام,رنگ,تلاش,میانگین,بهترین,درس‌ها,آخرین فعالیت,فعال در ۲۴ ساعت,ضعیف‌ترین مهارت");
     expect(out).not.toContain("پرکارترینِ روز");
   });
 

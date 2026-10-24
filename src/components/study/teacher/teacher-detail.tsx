@@ -113,13 +113,19 @@ export default function TeacherDetailDialog({
     );
   };
 
-  const stripMax = Math.max(...(detail?.byDay.map((d) => d.attempts) ?? [1]), 1);
+  // r377 — [باگِ نهفتهٔ r353 که خروجیِ تستِ suite را سرخ میکرد]: detail
+  // از شبکه میآید و byDayِ غایب (انحرافِ قرارداد) رویِ `.map`/`.length`
+  // کرشِ رندر میداد — سه سطرِ همین نوار سه گویشِ دفاعیِ ناهمگون داشتند
+  // (سطرِ اول گاردِ ناقص، سطرِ دوم بیگارد، سطرِ سوم `?? []`). تکحقیقت:
+  // یک byDayِ نرمالشده برایِ همه — انحراف ⇒ نوارِ خالیِ صادق، نه مرگِ دیالوگ.
+  const byDay = detail?.byDay ?? [];
+  const stripMax = Math.max(...byDay.map((d) => d.attempts), 1);
   // برچسبهایِ نوار — یک `now` برایِ هر دو ردیف (ستونها و زیرنویسها همیشه همخوان)
-  const strip = detail ? stripLabels(Date.now(), detail.byDay.length) : [];
+  const strip = detail ? stripLabels(Date.now(), byDay.length) : [];
   // r363 — مجموعِ دو هفته — از خودِ byDayِ نوار (همان تکحقیقتی که ستونها میخوانند —
   // آیدیومِ r362: «مجموعِ هفته» در نوارِ پنل — هیچ محاسبهٔ موازیای؛
   // همزادِ CSV: سطرِ «هفتهٔ فعال» کارنامه — هر سطح به گویشِ سطحِ خودش)
-  const fortnightTotal = (detail?.byDay ?? []).reduce((s, d) => s + d.attempts, 0);
+  const fortnightTotal = byDay.reduce((s, d) => s + d.attempts, 0);
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -241,7 +247,7 @@ export default function TeacherDetailDialog({
                 <div className="rounded-2xl border border-stone-200 p-3">
                   <div className="flex h-14 items-end justify-between gap-1" dir="ltr">
                     {strip.map((s) => {
-                      const n = detail.byDay.find((d) => d.day === s.day)?.attempts ?? 0;
+                      const n = byDay.find((d) => d.day === s.day)?.attempts ?? 0;
                       return (
                         <div key={s.day} className="flex h-full flex-1 flex-col items-center justify-end gap-1">
                           <span className="text-[8.5px] font-black text-stone-500" dir="rtl">

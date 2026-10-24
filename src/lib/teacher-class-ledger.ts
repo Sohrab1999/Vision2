@@ -71,6 +71,7 @@ export interface ClassLedgerInput {
   byDay: { day: string; attempts: number }[]; // r362 — هفتهٔ فعال از خودِ گزارش (summary.byDay) — حذفش کامپایل را میشکند
   roster: RosterRow[];
   details: LearnerDetail[]; // به ترتیبِ فهرستِ سرور — هم‌ترازِ roster
+  now?: number; // r377 — پنجرهٔ «فعال در ۲۴ ساعت» جدولِ قرضی از لحظهٔ دانلود؛ غایب ⇒ Date.now() — تستها ساعتِ خودشان را تزریق میکنند
 }
 
 export function buildClassLedgerCsv(input: ClassLedgerInput): string {
@@ -85,8 +86,8 @@ export function buildClassLedgerCsv(input: ClassLedgerInput): string {
   }
   // جداکنندهٔ بخش — همان idiomِ سطرِ خالیِ کارنامهٔ r354
   parts.push(NL);
-  // جدولِ کلاس — قرضِ کامل از r352 (سرستون + سطرها، به NL ختم)
-  parts.push(buildClassCsv(input.roster));
+  // جدولِ کلاس — قرضِ کامل از r352 (سرستون + سطرها، به NL ختم)؛ ساعتِ ۲۴ساعته هم قرضیِ همان لحظهٔ دانلود
+  parts.push(buildClassCsv(input.roster, input.now));
   // کارنامهها — قرضِ کامل از r354؛ هر کدام به NL ختم، جداکنندهٔ سطرِ خالی
   for (const d of input.details) {
     parts.push(NL);

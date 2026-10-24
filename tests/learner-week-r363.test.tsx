@@ -211,7 +211,7 @@ describe("TeacherDetailDialog — مجموعِ دو هفته کنارِ عنوا
   it("⑨ قفلِ ساختاری: reduce از خودِ byDayِ نوار + faNum + بی‌رویدادِ نو + بی‌transition-all", () => {
     const detail = read("src/components/study/teacher/teacher-detail.tsx");
     expect(detail).toContain('data-testid="teacher-detail-week-total"');
-    expect(detail).toContain("byDay ?? []).reduce"); // همان تکحقیقتِ ستونها — نه محاسبهٔ موازی
+    expect(detail).toContain("const fortnightTotal = byDay.reduce("); // همان تکحقیقتِ ستونها — نه محاسبهٔ موازی (r377: byDayِ نرمالشده)
     expect(detail).toContain("مجموعِ دو هفته:");
     expect(detail).toContain("faNum(fortnightTotal)");
     expect(detail).not.toContain("transition-all"); // قفلِ scoped-transitions

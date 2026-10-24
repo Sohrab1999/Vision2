@@ -94,6 +94,7 @@ describe("buildClassLedgerCsv — پیوندِ روزنامه و کارنامه"
       byDay: weekFixture,
       roster: rosterFixture,
       details: [detailOf("آرش")],
+      now: new Date("2026-10-24T09:00:00.000Z").getTime(), // r377 — ساعتِ تزریقی: ۳۰دقیقه بعدِ آخرین فعالیتِ آرش — قطعیِ همیشگی
     });
 
   it("① عنوان + سطرِ صادره + سطرهایِ هفتهٔ فعال + جدولِ کلاسِ قرضی + کارنامهٔ قرضی — به همان ترتیبِ ورودی", () => {
@@ -105,9 +106,9 @@ describe("buildClassLedgerCsv — پیوندِ روزنامه و کارنامه"
     expect(lines[2]).toBe("هفتهٔ فعال,6 تلاش در 7 روزِ اخیر · 3 روزِ فعال");
     expect(lines[3]).toBe("پرکارترینِ روز,2026-10-21 · 3 تلاش");
     expect(lines[4]).toBe(""); // جداکنندهٔ بخش
-    // جدولِ کلاس از تکحقیقتِ r352 قرض خورده — سرستونِ عینِ روزنامه
-    expect(lines[5]).toBe("نام,رنگ,تلاش,میانگین,بهترین,درس‌ها,آخرین فعالیت,ضعیف‌ترین مهارت");
-    expect(out).toContain("آرش,emerald,3,73,90,2,");
+    // جدولِ کلاس از تکحقیقتِ r352 قرض خورده — سرستونِ عینِ روزنامه (r377: + فعال در ۲۴ ساعت)
+    expect(lines[5]).toBe("نام,رنگ,تلاش,میانگین,بهترین,درس‌ها,آخرین فعالیت,فعال در ۲۴ ساعت,ضعیف‌ترین مهارت");
+    expect(out).toContain("آرش,emerald,3,73,90,2,2026-10-24T08:30:00.000Z,1,دیکته (55)");
     // کارنامه از تکحقیقتِ r354 قرض خورده — عنوانِ کارنامه در دفتر هست
     expect(out).toContain("ویژن ۲ — کارنامهٔ یادگیرنده");
     // بخشهایِ کارنامه هم داخلِ دفتر زندهاند — با همان ارقامِ ASCIIِ r354 (قرضِ بایت‌به‌بایت)
@@ -122,9 +123,9 @@ describe("buildClassLedgerCsv — پیوندِ روزنامه و کارنامه"
     // نامِ نگار در جدولِ کلاس پالایش شده
     expect(out).toContain("نگار ویژه");
     expect(out).not.toContain('نگار, "ویژه"');
-    // تعدادِ ویرگولِ سطرِ نگار = دقیقاً ۷ (هشت ستون)
+    // تعدادِ ویرگولِ سطرِ نگار = دقیقاً ۸ (نُه ستون — r377: فعال در ۲۴ ساعت رسید)
     const ngLine = out.split("\r\n").find((l) => l.startsWith("نگار"));
-    expect(ngLine?.split(",").length).toBe(8);
+    expect(ngLine?.split(",").length).toBe(9);
   });
 
   it("③ گویشِ خانواده: فقط CRLF — هیچ LFِ برهنه‌ای در کلِ پرونده نیست", () => {
@@ -180,7 +181,7 @@ describe("قفلهایِ قرض — دفتر هیچ ستونی را دوباره
     const engine = read("src/lib/teacher-class-ledger.ts");
     expect(engine).toContain('from "./teacher-csv"');
     expect(engine).toContain('from "./teacher-learner-csv"');
-    expect(engine).toContain("buildClassCsv(input.roster)");
+    expect(engine).toContain("buildClassCsv(input.roster, input.now)"); // r377 — ساعتِ ۲۴ساعته هم قرضیِ همان لحظهٔ دانلود
     expect(engine).toContain("buildLearnerCardCsv(d)");
     // هیچ تعریفِ ستونِ موازی‌ای وجود ندارد
     expect(engine).not.toContain("CLASS_CSV_COLUMNS");
