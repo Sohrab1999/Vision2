@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { Search, CheckCircle2, Circle, Layers, X, Star, Users, ChevronDown, ExternalLink, BookOpenText } from "lucide-react";
 import type { LessonData } from "@/lib/study-types";
-import { useStudy, wordKey } from "@/lib/study-store";
+import { useStudy, wordKey, starToggleAria } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { posLabel, themeOf, faNum } from "@/lib/study-theme";
 import { buildSynAntIndex, synAntPairsFor } from "@/lib/syn-ant-lookup";
@@ -198,7 +198,7 @@ export default function VocabTab({
                       toggleStarred(wKey);
                     }}
                     title={isStarred ? "حذف از واژه‌های من" : "افزودن به واژه‌های من"}
-                    aria-label={isStarred ? `حذف ${w.en} از واژه‌های من` : `افزودن ${w.en} به واژه‌های من`}
+                    aria-label={starToggleAria(w.en, isStarred)}
                     aria-pressed={isStarred}
                     className={`rounded-md p-0.5 transition-[background-color,color,border-color,transform] hover:scale-110 active:scale-[0.96] ${
                       isStarred ? "text-amber-400" : "text-stone-300 hover:text-amber-400"

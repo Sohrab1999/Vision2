@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { RefreshCcw, Sparkles, CalendarClock, CheckCircle2, TrendingUp, Sprout, BookOpenCheck, AlarmClock, ArrowLeft, Star, ChevronDown, Ear } from "lucide-react";
-import { useStudy, srsDueTotal, firstLessonWithDue, type SrsItem } from "@/lib/study-store";
+import { useStudy, srsDueTotal, firstLessonWithDue, starToggleAria, type SrsItem } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
 import { srsDueSummary, srsForecastWords, SRS_PANEL_SPOTLIGHT_EVENT, peekSrsSpotlight, ackSrsSpotlight, focusSrsDashboard } from "@/lib/srs-due";
@@ -310,12 +310,13 @@ export default function SrsPanel() {
                   return (
                     <div key={w.key} className="inline-flex items-center gap-0.5">
                       {/* ستاره — هفتمین سطح ستاره‌گذاری: واژهٔ سررسید مستقیم به «واژه‌های من» */}
+                      {/* r391 — aria/title از مالکِ قراردادِ ستاره (state/slices/starred.ts) */}
                       <motion.button
                         whileTap={{ scale: 0.75 }}
                         onClick={() => toggleStarred(w.key)}
                         aria-pressed={starred}
-                        aria-label={starred ? `حذف ${w.en} از واژه‌های من` : `افزودن ${w.en} به واژه‌های من`}
-                        title={starred ? `حذف ${w.en} از واژه‌های من` : `افزودن ${w.en} به واژه‌های من`}
+                        aria-label={starToggleAria(w.en, starred)}
+                        title={starToggleAria(w.en, starred)}
                         className="srs-due-star flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-md transition-colors hover:bg-amber-50"
                       >
                         <Star size={12} className={starred ? "fill-amber-400 text-amber-500" : "text-stone-300 transition-colors hover:text-amber-400"} />
@@ -403,8 +404,8 @@ export default function SrsPanel() {
                                 whileTap={{ scale: 0.75 }}
                                 onClick={() => toggleStarred(w.key)}
                                 aria-pressed={starred}
-                                aria-label={starred ? `حذف ${w.en} از واژه‌های من` : `افزودن ${w.en} به واژه‌های من`}
-                                title={starred ? `حذف ${w.en} از واژه‌های من` : `افزودن ${w.en} به واژه‌های من`}
+                                aria-label={starToggleAria(w.en, starred)}
+                                title={starToggleAria(w.en, starred)}
                                 className="srs-due-star flex h-[22px] w-[22px] shrink-0 items-center justify-center rounded-md transition-colors hover:bg-amber-50"
                               >
                                 <Star size={12} className={starred ? "fill-amber-400 text-amber-500" : "text-stone-300 transition-colors hover:text-amber-400"} />

@@ -9,7 +9,7 @@ import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { Check, X, RotateCcw, Trophy, Award, Share2, ScrollText, ImageDown, Star } from "lucide-react";
 import type { QuizQuestion } from "@/lib/study-types";
-import { useStudy } from "@/lib/study-store";
+import { useStudy, starToggleAria } from "@/lib/study-store";
 import { starrableWord, type StarrableWord } from "@/lib/starred-from-quiz";
 import { percent as percentOf } from "@/lib/domain/percent";
 import { faNum } from "@/lib/study-theme";
@@ -414,7 +414,7 @@ export default function QuizResult({
                     whileTap={{ scale: 0.75 }}
                     onClick={() => toggleStarred(sw.key)}
                     title={isStarred ? `حذف «${sw.en}» از واژه‌های من` : `افزودن «${sw.en}» به واژه‌های من`}
-                    aria-label={isStarred ? `حذف ${sw.en} از واژه‌های من` : `افزودن ${sw.en} به واژه‌های من`}
+                    aria-label={starToggleAria(sw.en, isStarred)}
                     aria-pressed={isStarred}
                     className="shrink-0 rounded-md p-1 transition-[background-color,color,border-color,transform,fill,stroke] hover:scale-110 active:scale-[0.96]"
                   >

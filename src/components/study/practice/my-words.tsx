@@ -11,7 +11,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Star, Search, X, SearchX, BookMarked, Trash2, CheckCircle2, Circle, ArrowDownAZ, ArrowDownUp, ArrowLeftRight } from "lucide-react";
 import { lessons } from "@/data";
-import { useStudy } from "@/lib/study-store";
+import { useStudy, starToggleAria } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { posLabel, themeOf, faNum } from "@/lib/study-theme";
 import { buildSynAntIndex, synAntPairsFor } from "@/lib/syn-ant-lookup";
@@ -350,7 +350,8 @@ export default function MyWordsView() {
                       <button
                         onClick={() => toggleStarred(w.key)}
                         title="حذف از واژه‌های من"
-                        aria-label={`حذف ${w.en} از واژه‌های من`}
+                        aria-label={starToggleAria(w.en, true)}
+                        aria-pressed={true}
                         className="ms-0.5 rounded-md p-0.5 transition-transform hover:scale-110 active:scale-[0.96]"
                       >
                         <Star size={14} className="fill-amber-400 text-amber-400" />

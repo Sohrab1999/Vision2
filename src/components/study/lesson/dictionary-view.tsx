@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { Search, X, BookMarked, BookOpenText, CheckCircle2, CircleDashed, AlarmClock, SearchX, Download, Star, ArrowLeftRight, Shuffle, BarChart3, ChevronDown, TrendingUp, Percent, EyeOff } from "lucide-react";
 import { lessons } from "@/data";
-import { useStudy, wordKey } from "@/lib/study-store";
+import { useStudy, wordKey, starToggleAria } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { posLabel, themeOf, faNum } from "@/lib/study-theme";
 import { downloadAnkiTsv, buildAnkiTsv } from "@/lib/anki-export";
@@ -647,7 +647,7 @@ export default function DictionaryView() {
                   <button
                     onClick={() => toggleStarred(wordKey(w.lessonId, w.en))}
                     title={isStarred ? "حذف از واژه‌های من" : "افزودن به واژه‌های من"}
-                    aria-label={isStarred ? `حذف ${w.en} از واژه‌های من` : `افزودن ${w.en} به واژه‌های من`}
+                    aria-label={starToggleAria(w.en, isStarred)}
                     aria-pressed={isStarred}
                     className={`rounded-md p-0.5 transition-[background-color,color,border-color,transform,fill,stroke] hover:scale-110 active:scale-[0.96] ${
                       isStarred ? "fill-amber-400 text-amber-400" : "text-stone-300 hover:text-amber-400"

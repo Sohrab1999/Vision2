@@ -70,5 +70,8 @@ export {
   type ProgressSummary,
 } from "@/state/progress";
 
+// اسلایس ستاره‌ها — قراردادِ a11y خانوادهٔ ستاره (r391: ariaِ بی‌گیومِ نامدار + aria-pressed)
+export { starToggleAria } from "@/state/slices/starred";
+
 // لایهٔ اثرهای بین-دامنه‌ای (خط‌مشی فعالیت روزانه)
 export { activityPatch, type ActivityKind } from "@/state/effects";

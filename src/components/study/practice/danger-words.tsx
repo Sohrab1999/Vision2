@@ -17,7 +17,7 @@
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { AlertTriangle, RefreshCcw, Sparkles, Zap, TrendingDown, Star, Ear } from "lucide-react";
-import { useStudy, SRS_INTERVALS } from "@/lib/study-store";
+import { useStudy, SRS_INTERVALS, starToggleAria } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { dangerWords, buildDangerQuiz, type DangerWord } from "@/lib/word-risk";
 import { buildDangerDictation, DICTATION_MIN_DANGER } from "@/lib/danger-dictation";
@@ -302,7 +302,7 @@ export default function DangerWords() {
                           whileTap={{ scale: 0.75 }}
                           onClick={() => toggleStarred(d.key)}
                           title={isStarred ? `حذف «${d.en}» از واژه‌های من` : `افزودن «${d.en}» به واژه‌های من`}
-                          aria-label={isStarred ? `حذف «${d.en}» از واژه‌های من` : `افزودن «${d.en}» به واژه‌های من`}
+                          aria-label={starToggleAria(d.en, isStarred)}
                           aria-pressed={isStarred}
                           className="shrink-0 self-start rounded-md p-1 transition-[background-color,color,border-color,transform] hover:scale-110 active:scale-[0.96]"
                         >
