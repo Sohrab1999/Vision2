@@ -404,3 +404,26 @@ export function assembleLearnerDetail(input: {
     recent,
   };
 }
+
+// ==================================================================
+// r380 — «درِ صداقتِ کهنگیِ گزارش» — موتورِ خالصِ کهنگی.
+// گزارشِ پنل یک snapshot است (generatedAt) و سربرگ لحظهاش را چاپ
+// میکند؛ اما کهنگی را نام نمیداد. این موتور «قدیمیبودن» را با
+// قراردادِ همان خانواده داوری میکند:
+//   · مرزِ strict: only now - t > REPORT_STALE_MS — دقیقاً ۵ دقیقه
+//     هنوز تازه است، ۱ms بیشتر کهنه (داده‌محور، عینِ مرزِ r378)
+//   · generatedAtِ غایب/ناخوانا ⇒ false — بدونِ شاهد ادعای کهنگی
+//     ممنوع (عینِ «خالیِ صادقِ» lastActive)
+//   · ساعتِ مقایسه از فراخوانده میآید — نما با تیکِ محلیِ ۶۰ثانیهای
+//     مؤدب «الان» را نو میکند؛ هیچ واکشِ خودکاری در کار نیست
+//     (پنلِ read-only میماند) و هیچ رویدادِ تحلیلیِ نو ثبت نمیشود.
+// ==================================================================
+
+/** آستانهٔ کهنگیِ گزارشِ پنل — ۵ دقیقه؛ بعدش سربرگ صادقانه هشدار میدهد */
+export const REPORT_STALE_MS = 5 * 60 * 1000;
+
+export function isReportStale(generatedAt: string | null | undefined, now: number): boolean {
+  if (typeof generatedAt !== "string" || generatedAt.length === 0) return false;
+  const t = Date.parse(generatedAt);
+  return Number.isFinite(t) && now - t > REPORT_STALE_MS;
+}

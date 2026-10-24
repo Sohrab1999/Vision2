@@ -13,11 +13,11 @@
 // ------------------------------------------------------------------
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { School, Loader2, RefreshCw, Download, Users, ClipboardList, Gauge, Activity, KeyRound, ShieldAlert, ChevronLeft, NotebookText, Search, SearchX, X } from "lucide-react";
+import { School, Loader2, RefreshCw, Download, Users, ClipboardList, Gauge, Activity, KeyRound, ShieldAlert, ChevronLeft, NotebookText, Search, SearchX, X, History } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { faNum } from "@/lib/study-theme";
 import { trackEvent } from "@/lib/analytics";
-import { lastActiveFa, sortRosterBy, ROSTER_SORT_LABELS, type TeacherReport, type RosterRow, type RosterSortKey, type LearnerDetail } from "@/lib/teacher-report";
+import { lastActiveFa, sortRosterBy, ROSTER_SORT_LABELS, isReportStale, type TeacherReport, type RosterRow, type RosterSortKey, type LearnerDetail } from "@/lib/teacher-report";
 import { teacherSkillLabel } from "@/lib/teacher-skill-label"; // r375 — تکمنبعِ برچسبِ مهارت (نسخهٔ دوقلوی محلی بازنشسته شد)
 import { normalizeFa } from "@/lib/command-palette"; // r374 — تکمنبعِ یکسانسازیِ متن (پالتِ فرمان — کتابخانهٔ خالصِ بیوابستگی)
 import { downloadClassCsv, activeIn24h } from "@/lib/teacher-csv"; // r378 — موتورِ تکحقیقتِ نبضِ ۲۴ساعت (همان که ستونِ روزنامه میخواند)
@@ -26,6 +26,10 @@ import TeacherDetailDialog, { learnerDot } from "./teacher-detail";
 import { useToast } from "@/hooks/use-toast";
 
 const CODE_KEY = "vision2-teacher-code";
+
+// r380 — تیکِ محلیِ مؤدبِ سنجشِ کهنگی: هر ۶۰ث فقط برچسبِ کهنگی نو میشود —
+// هیچ واکشِ خودکاری نیست (پنلِ read-only میماند) و هیچ رویدادِ نوی ثبت نمیشود
+const STALE_TICK_MS = 60_000;
 
 const skillLabel = teacherSkillLabel; // r375 — تکمنبع؛ مصرفِ داخلیِ فایل تغییرنکردنی ماند
 
@@ -56,6 +60,8 @@ export default function TeacherView() {
   const [query, setQuery] = useState("");
   // r378 — چیپِ نبضِ ۲۴ساعت — فیلترِ یادگیرندههایِ فعال؛ پیشفرضِ خاموش = فهرستِ کامل
   const [activeOnly, setActiveOnly] = useState(false);
+  // r380 — کهنگیِ گزارش: برچسبِ هشدارِ سربرگ — با تیکِ محلیِ ۶۰ث نو میشود
+  const [stale, setStale] = useState(false);
   const openedAt = useRef(Date.now());
 
   const load = useCallback(async (presented: string) => {
@@ -90,6 +96,25 @@ export default function TeacherView() {
     const stored = sessionStorage.getItem(CODE_KEY);
     if (stored) void load(stored);
   }, [load]);
+
+  // r380 — «درِ صداقتِ کهنگیِ گزارش» — سربرگ لحظهٔ snapshot را چاپ میکرد
+  // اما کهنگی را نام نمیداد. ساعتِ مقایسه ناگزیر متحرک است (خودِ «اکنون»
+  // موضوعِ سنجش است — برخلافِ پنجرهٔ ۲۴ساعتِ r378 که snapshotِ گزارش بود)
+  // پس تیکِ محلیِ ۶۰ث فقط برچسب را نو میکند: judge هیچ واکشی ندارد و
+  // setStale با ارزشِ برابر ری‌رندر نمیکند — پنل مؤدب و read-only میماند.
+  // ارزیابیِ بیواسطه در سوارشدن/گزارشِ نو — نه منتظرِ اولین تیک؛ رفرشِ
+  // گزارش (شیءِ نو) افکت را از نو مسلح میکند و هشدار فوری خاموش میشود.
+  useEffect(() => {
+    if (!report) {
+      setStale(false);
+      return;
+    }
+    const generatedAt = report.generatedAt;
+    const judge = () => setStale(isReportStale(generatedAt, Date.now()));
+    judge();
+    const id = setInterval(judge, STALE_TICK_MS);
+    return () => clearInterval(id);
+  }, [report]);
 
   // r353 — کدِ منقضی در دیالوگِ جزئیات ⇒ گیتِ از نو (هویتِ پایدار برای
   // وابستگیهایِ دیالوگ — otherwise every render would re-arm its effect)
@@ -371,6 +396,17 @@ export default function TeacherView() {
             <p className="text-[11px] leading-4 text-stone-500">
               فهرستِ کلاسِ این سرور — خواندنی، نه دستکاریشدنی. آخرین به‌روزرسانی: {faNum(report.generatedAt.slice(11, 16))}
             </p>
+            {/* r380 — درِ صداقتِ کهنگی: فقط وقتی کهنگیِ واقعی با شاهدِ ساعت، هشدار میدهد — نه حدس */}
+            {stale && (
+              <p
+                role="status"
+                data-testid="teacher-stale-hint"
+                className="mt-1 flex items-center gap-1 text-[11px] font-bold text-amber-700"
+              >
+                <History size={12} aria-hidden="true" />
+                گزارش کهنه است — دکمهٔ به‌روزرسانی را بزن
+              </p>
+            )}
           </div>
         </div>
         <div className="flex items-center gap-1">
