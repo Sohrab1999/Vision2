@@ -19,6 +19,14 @@ export type DuelEndReason = "finished" | "forfeit";
 
 /** یک نبرد تمام‌شدهٔ ثبت‌شده — id ترتیبِ ساخت را حمل می‌کند (`d${epochMs}`) */
 export interface DuelRecord {
+  /**
+   * r386 — ستونِ فقراتِ ترتیبِ دفترچه. قرارداد: `d` + ارقامِ epoch ms
+   * (۱..۱۴ رقم — ۱۹۷۰..۲۲۸۶؛ رکوردهایِ واقعی ۱۳رقمی‌اند). تنها سازنده
+   * buildDuelRecord است؛ sanitize بر همان قرارداد گیت میگذارد — idِ بیرونِ
+   * قرارداد یعنی رکوردِ خراب (کلاً میافتد) وگرنه مرتبسازیِ رشتهایِ id
+   * دروغِ newest-first میسازد (مثال: «zzz» بالاتر از هر d... میچیند و در
+   * merge با سقفِ ۱۵ جایِ نوترینِ واقعی را میگیرد — اخراجِ داده).
+   */
   id: string;
   /** ISO day key (YYYY-MM-DD) برای نمایش تاریخ */
   day: string;
@@ -419,6 +427,40 @@ export function duelSpeedStats(records: DuelRecord[]): {
   return { totalBonus, totalCorrect, avgBonus: totalCorrect > 0 ? totalBonus / totalCorrect : 0 };
 }
 
+// ---------------- قراردادِ id و ترتیب (r386 — ستونِ فقراتِ ترتیب) ----------------
+// id ترتیبِ ساخت را حمل میکند (`d${epochMs}` — از تولدِ Task 65 تنها سازنده
+// همین است). r386 قرارداد را «نامدار» میکند: گیتِ sanitize فقط idِ درقرارداد
+// را میپذیرد و همهٔ مقایسههایِ ترتیب روی epochِ عددی میچرخند نه رشته —
+// چون مقایسهٔ رشتهای روی طولِ متفاوت دروغ میگوید («d9» > «d1739...»).
+// epochِ بیرون از گیت null است؛ مقایسهٔ دفاعی: null تهِ صف، درونِ خودش رشتهای.
+
+const ID_RE = /^d\d{1,14}$/;
+
+/**
+ * epochِ ترتیب از id — تنها خوانندهٔ مجازِ ساختارِ id.
+ * ورودیِ بیرونِ قرارداد → null (تماسدهنده سیاستِ خودش را دارد؛ مقایسههایِ
+ * این ماژول null را تهِ صف میفرستند تا هرگز «تازهترین» نشود).
+ */
+export function duelIdEpoch(id: string): number | null {
+  if (!ID_RE.test(id)) return null;
+  return Number(id.slice(1));
+}
+
+/**
+ * مقایسهگرِ نزولیِ مشترکِ ترتیب — tuple [epoch, id]: epochِ بزرگتر اول؛
+ * تساویِ epoch با idِ رشتهای میشکند؛ epochِ null (idِ بیقرارداد — فقط از
+ * ورودیِ پالایشنشده ممکن است) تهِ صف میماند و هرگز نمیتواند «تازهترین»
+ * دفترچه را بدزدد. قطعی و متعدی.
+ */
+const byIdDesc = (a: DuelRecord, b: DuelRecord): number => {
+  const ea = duelIdEpoch(a.id);
+  const eb = duelIdEpoch(b.id);
+  if (ea !== null && eb !== null && ea !== eb) return ea < eb ? 1 : -1;
+  if (ea === null && eb !== null) return 1;
+  if (eb === null && ea !== null) return -1;
+  return a.id < b.id ? 1 : a.id > b.id ? -1 : 0;
+};
+
 // ---------------- مرتب‌سازیِ دفترچه (Task 100 — «دفترچهٔ مرتب») ----------------
 // دفترچه همیشه جدید→قدیم ذخیره می‌شود (id حامل epoch ms است)؛ اما «کاویدنِ»
 // کامل (Task 98) مرتب‌سازی را هم می‌خواهد: «سنگین‌ترین بردم کدام بود؟» یا
@@ -438,7 +480,8 @@ export const DUEL_LEDGER_SORTS: readonly DuelLedgerSortKey[] = ["newest", "mySco
  * همیشه درست‌تر از تکیه بر ترتیبِ آرایه است.
  */
 export function sortDuelLedger(records: DuelRecord[], key: DuelLedgerSortKey = "newest"): DuelRecord[] {
-  const byIdDesc = (a: DuelRecord, b: DuelRecord) => (a.id < b.id ? 1 : a.id > b.id ? -1 : 0);
+  // r386 — byIdDesc به بالای ماژول کوچید (قراردادِ epoch-محور، یک مقایسهگر
+  // برایِ هر سه کلید و merge). امضایِ سهکلیدی و کپیِ خالصِ Task 100 دستنخورده.
   const arr = [...records];
   if (key === "myScore") arr.sort((a, b) => b.myScore - a.myScore || byIdDesc(a, b));
   else if (key === "margin")
@@ -520,7 +563,11 @@ export function saneThink(t: unknown): ThinkStats | null {
 export function sanitizeDuelRecord(v: unknown): DuelRecord | null {
   if (!v || typeof v !== "object" || Array.isArray(v)) return null;
   const r = v as Record<string, unknown>;
-  const id = typeof r.id === "string" && r.id.length > 0 && r.id.length <= 40 ? r.id : null;
+  // r386 — گیتِ id روی قراردادِ نامدار (`d` + ارقامِ ۱..۱۴)؛ ۴۰نویسه‌ایِ
+  // بیقیدِ قدیم idهایِ بیرونِ قرارداد را زنده نگه میداشت که مرتبسازیِ
+  // رشتهای/epochیشان بیمعنا بود — «zzz» تازهترین میشد. id ستونِ فقراتِ
+  // ترتیب است نه برچسب؛ بیقرارداد = رکوردِ خراب = کلاً میافتد (همان فلسفه).
+  const id = typeof r.id === "string" && ID_RE.test(r.id) ? r.id : null;
   const day = typeof r.day === "string" && DAY_RE.test(r.day) ? r.day : null;
   const outcome = OUTCOMES.includes(r.outcome as DuelOutcome) ? (r.outcome as DuelOutcome) : null;
   if (!id || !day || !outcome) return null;
@@ -550,7 +597,18 @@ export function sanitizeDuelRecord(v: unknown): DuelRecord | null {
   return out;
 }
 
-/** آرایهٔ دفترچه از ورودی نامطمئن: فقط رکوردهای سالم، بدون تکرارِ id، با سقف */
+/**
+ * آرایهٔ دفترچه از ورودی نامطمئن: فقط رکوردهای سالم، بدون تکرارِ id،
+ * مرتبِ newest-first و سقف‌خورده.
+ * r386 — مرز، «تمامیتِ دفترچه» را هم ترمیم میکند نه فقط شکلِ فیلدها را:
+ * تا دیروز ترتیبِ ورودیِ نامطمئن عیناً حفظ میشد و سقفِ ۱۵ «۱۵تایِ اولِ
+ * ورودی» بود — دفترچهای که ترتیبش درهم باشد (سناریویِ merge سالم،
+ * نوشتهٔ نیمهٔ قدیم، دستکاری) حالا با همِ یک پاس به قراردادِ newest-first
+ * برمیگردد و ۱۵تایِ «نوترین» میمانند نه ۱۵تایِ «اولی». آینهٔ
+ * mergeDuelHistory است (هر دو مرزِ ورودِ داده به استور) و برایِ دادهٔ
+ * سالمِ همیشه-مرتب، idempotent. تکراری: اولین رکورد برنده است (قراردادِ
+ * قدیمی — محلیِ پالایششده مقدم است).
+ */
 export function sanitizeDuelHistory(v: unknown): DuelRecord[] {
   if (!Array.isArray(v)) return [];
   const out: DuelRecord[] = [];
@@ -560,14 +618,14 @@ export function sanitizeDuelHistory(v: unknown): DuelRecord[] {
     if (!rec || seen.has(rec.id)) continue;
     seen.add(rec.id);
     out.push(rec);
-    if (out.length >= DUEL_HISTORY_CAP) break;
   }
-  return out;
+  return out.sort(byIdDesc).slice(0, DUEL_HISTORY_CAP);
 }
 
 /**
  * merge ابری: اتحاد بر اساس id (دفترچهٔ لاگ است، نه شمارنده — هر دو دستگاه ارزش
- * دارند)، مرتب بر اساس id نزولی (id حامل epoch ms است) و سقف‌خورده.
+ * دارند)، مرتب بر اساس epochِ id نزولی (r386 — مقایسهگرِ مشترِک byIdDesc؛
+ * رشتهمحورِ قدیم روی طولِ متفاوت دروغ میگفت) و سقف‌خورده.
  * هر دو طرف optional هستند (فیلد در snapshotهای قدیمی غایب است).
  */
 export function mergeDuelHistory(
@@ -585,5 +643,5 @@ export function mergeDuelHistory(
     // بعد از تسک ۹۴ persist کرده می‌نشیند)؛ ارتقا بیدردسر، هرگز تنزل نه.
     if (!prev.receiptSig && rec.receiptSig) map.set(rec.id, rec);
   }
-  return [...map.values()].sort((a, b) => (a.id < b.id ? 1 : -1)).slice(0, DUEL_HISTORY_CAP);
+  return [...map.values()].sort(byIdDesc).slice(0, DUEL_HISTORY_CAP);
 }

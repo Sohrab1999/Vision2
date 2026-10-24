@@ -189,11 +189,21 @@ describe("sanitizeDuelHistory + mergeDuelHistory", () => {
     expect(r!.opponentColor.length).toBeLessThanOrEqual(24);
   });
 
-  it("تکراریِ id و سقف ۱۵ — قدیمی‌ها می‌افتند", () => {
+  it("تکراریِ id و سقف ۱۵ — نوترین‌ها می‌مانند (r386: مرز، ترتیب را هم ترمیم میکند)", () => {
+    // r386 حکم — رفتارِ قدیم: «۱۵تایِ اولِ ورودی» میماندند؛ با ورودیِ
+    // صعودیِ این آزمون، قدیمی‌ترین‌ها زنده میماندند و نوترین‌ها (d16..d18)
+    // میافتند — دروغِ سقف. مرزِ نو: ۱۵تایِ «نوترین» با epoch. تکراریِ
+    // d1 هم دیگر سقف را رد نمیکند (قدیمی‌ترین است) — اولین-برندهِ dedupe
+    // فقط محتواست، نه بلیتِ ماندن.
     const flood = Array.from({ length: DUEL_HISTORY_CAP + 3 }, (_, i) => rec({ id: `d${i + 1}` }));
     const out = sanitizeDuelHistory([...flood, rec({ id: "d1", myScore: 5 })]);
     expect(out).toHaveLength(DUEL_HISTORY_CAP);
-    expect(out.find((r) => r.id === "d1")!.myScore).toBe(rec().myScore); // اولین برندهٔ dedupe
+    // نوترین‌ها: d18..d4 — و ترتیبِ خروجی newest-first است
+    expect(out[0].id).toBe("d18");
+    expect(out.map((r) => r.id)).toEqual(
+      Array.from({ length: DUEL_HISTORY_CAP }, (_, i) => `d${DUEL_HISTORY_CAP + 3 - i}`)
+    );
+    expect(out.find((r) => r.id === "d1")).toBeUndefined(); // قدیمی‌ترین، افتاده
   });
 
   it("merge ابری: اتحاد بر اساس id، مرتب newest-first، سقف‌خورده", () => {

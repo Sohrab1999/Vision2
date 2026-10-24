@@ -8,7 +8,7 @@
 
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
-import { pickPersisted } from "@/lib/persist/schema";
+import { pickPersisted, rehydrateMerge } from "@/lib/persist/schema";
 import { createActivitySlice } from "./slices/activity";
 import { createArcadeSlice } from "./slices/arcade";
 import { createFreezeSlice } from "./slices/freeze";
@@ -49,6 +49,11 @@ export const useStudy = create<StudyStore>()(
       // from the SyncField table + DEVICE_KEYS (src/lib/persist/schema.ts);
       // adding a field there is the whole change.
       partialize: (s) => pickPersisted(s),
+      // r386 — rehydration هم از همان مرزِ جدول میگذرد. تا دیروز فقط
+      // بکاپ/کلاد sanitize میشدند و مسیرِ پنجم (هر بارِ بارگذاری، همین
+      // mergeِ پیشفرضِ سطحیِ zustand) خام بود — شاهدِ زنده: رکوردِ دستکاری
+      // از hydration گذشت و «آخرین مصاف» دفترچه شد.
+      merge: (persisted, current) => rehydrateMerge(persisted, current),
     }
   )
 );

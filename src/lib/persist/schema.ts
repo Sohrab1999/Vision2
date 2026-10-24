@@ -2,13 +2,15 @@
 // R-1 «پایداری schema-محور» — single source of truth for every
 // persisted learner field (audit 2026-10-12 §10 R-1).
 //
-// One SyncField table drives ALL FOUR persistence paths that used to
+// One SyncField table drives ALL FIVE persistence paths that used to
 // be hand-synced lists (and had already drifted: the duel record was
 // persisted but never travelled in backups or cloud snapshots):
 //   1. partialize    → study-store.ts      (pickPersisted)
 //   2. collectData   → backup.ts export/push (sanitizeAll)
 //   3. parseBackup   → backup.ts import      (sanitizeAll)
 //   4. mergeSyncData → sync.ts cloud merge   (mergeAll)
+//   5. rehydrateMerge → store.ts persist `merge` (r386 — تا دیروز خام
+//      بود؛ hydrationِ هر بارِ بارگذاری از جدول نمیگذشت)
 //
 // Adding a persisted field = one entry in the table (+ its type in
 // SyncData, right above). The mapped SyncFieldMap type makes any
@@ -502,6 +504,27 @@ export function sanitizeAll(input: unknown): SyncData {
     out[key] = TABLE[key].sanitize(rec[key]);
   }
   return out as unknown as SyncData;
+}
+
+/**
+ * r386 — mergeِ rehydration (آپشن `merge`ِ zustand persist در store.ts).
+ * سندِ بالای فایل پنج مسیرِ جدول را میشمارد — تا دیروز مسیرِ پنجمِ
+ * پرمسافرترِ همه، rehydrationِ localStorage در هر بارِ بارگذاری، خام
+ * وارد استور میشد (mergeِ سطحیِ پیشفرضِ zustand) و ادعایِ «ورودیِ نامطمئن
+ * فقط از sanitizeAll» رویِ همان مسیر دروغ بود — شاهدِ زندهٔ r386: رکوردِ
+ * دستکاریِ idِ بیقرارداد («zzz») از hydration گذشت و «آخرین مصاف» شد.
+ * حالا: کلیدهایِ دستگاه (بدونِ سیاستِ خود — قراردادِ قدیمی، همان‌طور خام
+ * میمانند) + کلیدهایِ همگام از همان جدول. فیلدهایِ غایب در snapshot
+ * مقدارِ اولیهٔ اسلایس را نگه میدارند (current).
+ */
+export function rehydrateMerge(persisted: unknown, current: StudyState): StudyState {
+  const rec = asRecord(persisted);
+  const out = { ...current } as Record<string, unknown>;
+  for (const key of DEVICE_KEYS) {
+    if (key in rec) out[key] = rec[key];
+  }
+  Object.assign(out, sanitizeAll(rec));
+  return out as unknown as StudyState;
 }
 
 /**

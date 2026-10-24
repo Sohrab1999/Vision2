@@ -173,8 +173,11 @@ describe("sanitizeDuelRecord — thinkِ خراب می‌افتد، رکورد �
     const bad = { ...JSON.parse(JSON.stringify(rec({ id: "d2" }))), think: { avgMs: "x" } };
     const out = sanitizeDuelHistory([good, bad]);
     expect(out).toHaveLength(2);
-    expect(out[0].think).toBeTruthy();
-    expect(out[1].think).toBeUndefined();
+    // r386 — مرز حالا ترتیب را هم ترمیم میکند: خروجی newest-first است
+    // (d2 تازهتر از d1)؛ قراردادِ think روی خودِ رکورد سنجیده میشود نه جایِ آرایه.
+    expect(out.map((r) => r.id)).toEqual(["d2", "d1"]);
+    expect(out.find((r) => r.id === "d1")!.think).toBeTruthy();
+    expect(out.find((r) => r.id === "d2")!.think).toBeUndefined();
   });
 
   it("merge ابری think را عبور می‌دهد — اتحادِ id محور دست‌نخورده", () => {
