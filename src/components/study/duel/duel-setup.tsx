@@ -5,7 +5,8 @@ import { motion } from "framer-motion";
 import { Sparkles, Swords, Users, Timer, Zap, Wifi, WifiOff, Loader2, Target, ShieldCheck, History, Flame, Percent, Search, X, ChevronDown, ChevronUp, ImageDown, Share2, Medal, Lock } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
-import { faNum, timeAgoFa, avatarClasses, secFa } from "@/lib/study-theme";
+import { faNum, avatarClasses, secFa } from "@/lib/study-theme";
+import { dayKeyAgoFa } from "@/lib/time-fa";
 import { percent } from "@/lib/domain/percent";
 import { useToast } from "@/hooks/use-toast";
 import { trackEvent } from "@/lib/analytics";
@@ -627,7 +628,9 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
                   <div className="text-[13.5px] font-black text-stone-800" dir="ltr">
                     {faNum(r.myScore)}–{faNum(r.oppScore)}
                   </div>
-                  <div className="text-[10.5px] font-bold text-stone-500">{timeAgoFa(r.day)}</div>
+                  {/* r385 — کلیدِ روز فقط «روز» را شاهد است؛ برچسب هم فقط روز
+                      ادعا میکند (دروغِ نیمهشبِ UTC بسته شد) */}
+                  <div className="text-[10.5px] font-bold text-stone-500">{dayKeyAgoFa(r.day)}</div>
                 </div>
               </div>
             ))}

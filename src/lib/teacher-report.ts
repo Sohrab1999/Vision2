@@ -12,6 +12,8 @@
 //   · حریم: هیچ userId/secretی در خروجی نیست — نام و رنگ و آمارِ تجمیعی.
 // ------------------------------------------------------------------
 
+import { relativeAgeFa, TEACHER_HEAD } from "@/lib/time-fa";
+
 export const TEACHER_DAYS_WINDOW = 7;
 
 // r353 — «عمقِ پنلِ معلم»: پنجرهٔ نوارِ روندِ تک‌یادگیرنده در دیالوگِ جزئیات
@@ -156,18 +158,15 @@ export function sortRosterBy(rows: RosterRow[], key: RosterSortKey): RosterRow[]
   );
 }
 
-/** «همین حالا / N ساعت پیش / N روز پیش / هرگز» — ارقامِ فارسیِ خودجا */
-const faDigits = (n: number): string =>
-  String(n).replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[Number(d)]);
-
+/** «همین حالا / N ساعت پیش / N روز پیش / هرگز» — r385: پله‌سِ محاسبه به مالکِ
+ * دامنه (lib/time-fa) کوچید؛ اینجا فقط فالبکِ دامنهایِ معلم («هرگز» برای
+ * بی‌سابقه/ناخوانا) و گویشِ TEACHER_HEAD میماند. محلیِ faDigits (سومین
+ * دوقلوی ارقام) با همان جراحی مرد. */
 export function lastActiveFa(iso: string | null, now: number = Date.now()): string {
   if (!iso) return "هرگز";
   const t = Date.parse(iso);
   if (!Number.isFinite(t)) return "هرگز";
-  const age = Math.max(0, now - t);
-  if (age < 3600_000) return "همین حالا";
-  if (age < 86_400_000) return `${faDigits(Math.floor(age / 3600_000))} ساعت پیش`;
-  return `${faDigits(Math.floor(age / 86_400_000))} روز پیش`;
+  return relativeAgeFa(now - t, TEACHER_HEAD) ?? "هرگز";
 }
 
 // ---------------- مونتاژِ گزارش از خروجیهایِ DB ----------------

@@ -9,6 +9,7 @@
 import { useStudy } from "./study-store";
 import { DEVICE_KEYS, sanitizeAll, asRecord } from "@/lib/persist/schema";
 import type { SyncData } from "@/lib/persist/schema";
+import { relativeAgeFa, BACKUP_HEAD } from "@/lib/time-fa";
 import { readAppendixResume, sanitizeResumeInput, adoptResumeIfAbsent, type AppendixResumeItem } from "./bg-reading";
 import { faNum } from "./study-theme";
 
@@ -264,15 +265,10 @@ export function restoreAutoBackup(): boolean {
   return ok;
 }
 
-/** Persian relative label for the auto-backup age. */
+/** Persian relative label for the auto-backup age.
+ * r385 — پله‌س به مالکِ دامنه (lib/time-fa) کوچید؛ گویشِ BACKUP_HEAD و
+ * فالبکِ «نامشخص» اینجاست — محاسبه دیگر تکرار نمیشود. */
 export function autoBackupAgeFa(iso: string): string {
   const ms = Date.now() - new Date(iso).getTime();
-  if (!Number.isFinite(ms)) return "نامشخص";
-  const min = Math.floor(ms / 60_000);
-  if (min < 1) return "همین حالا";
-  if (min < 60) return `${faNum(min)} دقیقه پیش`;
-  const h = Math.floor(min / 60);
-  if (h < 24) return `${faNum(h)} ساعت پیش`;
-  const d = Math.floor(h / 24);
-  return `${faNum(d)} روز پیش`;
+  return relativeAgeFa(ms, BACKUP_HEAD) ?? "نامشخص";
 }

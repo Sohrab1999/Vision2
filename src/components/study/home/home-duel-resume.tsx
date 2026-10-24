@@ -12,7 +12,9 @@
 //     کارت ترتیب را دوباره مرتب نمیکند (یک حقیقت، یک ترتیب).
 //   • گویشِ نتیجه از خانوادهٔ دودل: برد/باخت/مساوی (همان سه واژهٔ پنل
 //     دفترچه) + امتیاز با الگویِ سطرهایِ دفترچه: faNum با «–» در dir=ltr.
-//     زمان با timeAgoFa(r.day) — دقیقاً همان مصرفِ duel-setup.
+//     زمان با dayKeyAgoFa(r.day) — r385: کلیدِ روز فقط «روز» را شاهد است و
+//     برچسب هم فقط روز ادعا میکند (دروغِ نیمهشبِ UTC بسته شد — پیشتر
+//     مصافِ امشب «۱۷ ساعت پیش» خوانده میشد). همان مصرفِ duel-setup.
 //   • پرش = setView({type:"duel"}) — هیچ رویدادِ تحلیلی: duel_start معنایش
 //     «نبردِ واقعی رویِ داور شروع شد» (در use-duel-socket) است و پرشِ کارت
 //     نبردی شروع نمیکند — رجیستریِ ۵۲ دستنخورده (قانونِ r359).
@@ -26,7 +28,8 @@ import { motion } from "framer-motion";
 import { ChevronLeft, Swords } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
-import { faNum, timeAgoFa } from "@/lib/study-theme";
+import { faNum } from "@/lib/study-theme";
+import { dayKeyAgoFa } from "@/lib/time-fa";
 
 // سه واژهٔ نتیجه — گویشِ نمایشِ خانوادهٔ دودل (همان متونِ فیلترِ دفترچه)
 const OUTCOME_LABEL = {
@@ -77,7 +80,7 @@ export default function HomeDuelResume() {
             بازگشت به میدان — آخرین مصاف با {latest.opponent}
           </span>
           <span className="mt-0.5 block truncate text-[11px] font-bold text-stone-500">
-            {OUTCOME_LABEL[latest.outcome]} · {timeAgoFa(latest.day)}
+            {OUTCOME_LABEL[latest.outcome]} · {dayKeyAgoFa(latest.day)}
           </span>
         </span>
         <span className="shrink-0 text-left">

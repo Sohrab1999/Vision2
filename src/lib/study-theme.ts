@@ -1,5 +1,12 @@
 // Static Tailwind class maps per lesson color (avoid dynamic class names)
 
+// r385 — مالکِ دامنهٔ «قالبِ فارسیِ زمان» (ارقام + نسبی) اکنون lib/time-fa است؛
+// وارداتِ محلی برای مصرفِ داخلی (secFa) و صادرسلولها فقط برای ثباتِ مسیرِ
+// وارداتِ نماها زندگی میکنند (قراردادِ r384 — مسیرهای قدیمی نمیشکنند).
+import { faNum } from "@/lib/time-fa";
+
+export { faNum, timeAgoFa } from "@/lib/time-fa";
+
 export interface LessonTheme {
   text: string;
   bg: string;
@@ -183,12 +190,6 @@ export const posLabel: Record<string, string> = {
   pron: "ضمیر",
 };
 
-/** Convert latin digits to Persian digits */
-export function faNum(v: number | string): string {
-  const fa = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
-  return String(v).replace(/\d/g, (d) => fa[Number(d)]);
-}
-
 /**
  * Task 109 — ثانیه با یک اعشار و ممیزِ فارسی (٫)؛ null → «—».
  * پیش‌تر دو نسخهٔ محلیِ یکسان در duel-done (secFa) و duel-setup (secThinkFa)
@@ -199,19 +200,6 @@ export function faNum(v: number | string): string {
 export function secFa(ms: number | null): string {
   if (ms === null) return "—";
   return faNum((Math.round(ms / 100) / 10).toFixed(1)).replace(".", "٫");
-}
-
-/** Persian relative time ("۳ دقیقه پیش") from an ISO date */
-export function timeAgoFa(iso: string): string {
-  const diff = Date.now() - new Date(iso).getTime();
-  const m = Math.floor(diff / 60_000);
-  if (m < 1) return "لحظاتی پیش";
-  if (m < 60) return `${faNum(m)} دقیقه پیش`;
-  const h = Math.floor(m / 60);
-  if (h < 24) return `${faNum(h)} ساعت پیش`;
-  const d = Math.floor(h / 24);
-  if (d < 30) return `${faNum(d)} روز پیش`;
-  return `${faNum(Math.floor(d / 30))} ماه پیش`;
 }
 
 // گرادیان آواتار per رنگ — قبلاً در header.tsx زندگی می‌کرد؛ اکنون ثابت مشترک
