@@ -870,6 +870,9 @@ function drawBadgeBand(
   const hdrW = ctx.measureText(header).width;
   ctx.fillText(header, x + w - 30, y + 27);
 
+  // r387 — این قالبِ بوم، گویشِ مستندِ خودش است (r288: پارامترِ total برای
+  // باندِ خانوادهٔ نبردی) و به badgeFractionFa وام نمیگیرد — حکمِ مالک در
+  // achievements.ts: قالبهایِ دیگرِ «faNum(x) از faNum(y)» عمدی دامنهایاند.
   const countLabel = `${faNum(o.badges.length)} از ${faNum(total)}`;
   ctx.font = `700 15px ${family}`;
   const cw = ctx.measureText(countLabel).width;

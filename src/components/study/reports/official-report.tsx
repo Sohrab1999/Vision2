@@ -38,7 +38,7 @@ import { monthReads } from "@/lib/library-month"; // r306 — ماه‌نامه 
 import { useEscape } from "@/hooks/use-keyboard";
 import { faNum } from "@/lib/study-theme";
 import { LESSONS_META, TOTAL_VOCABULARY } from "@/data/lesson-meta";
-import { BADGES, TIER_CHIP } from "@/lib/achievements";
+import { TIER_CHIP, badgeFractionFa } from "@/lib/achievements"; // r387 — کسرِ نشان از مالکِ رجیستری؛ BADGES دیگر در این نما لازم نیست
 import { skillBreakdown, barColorFor, skillGradeFa } from "@/lib/skill-stats";
 import { useBadgeCensus } from "@/hooks/use-badge-census";
 import { monthVitalsOf, avgPercentOf } from "@/lib/report-vitals";
@@ -822,7 +822,7 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
               <Award size={14} className="text-emerald-600" />
               نشان‌های کسب‌شده
               <span className="or-chip rounded-full px-2 py-0.5 text-[10px] font-black">
-                {faNum(unlockedBadges.length)} از {faNum(BADGES.length)}
+                {badgeFractionFa(unlockedBadges.length)}
               </span>
             </h3>
             {unlockedBadges.length === 0 ? (

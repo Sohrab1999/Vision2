@@ -54,12 +54,12 @@ import {
 } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
-import { faNum } from "@/lib/study-theme";
 import { useToast } from "@/hooks/use-toast";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import {
   BADGES,
   TIER_STYLE,
+  badgeFractionFa, // r387 — کسرِ «X از ۵۶» از مالکِ رجیستری
   buildEvalInput,
   newBadgeIds,
   unlockedBadgeIds,
@@ -228,7 +228,7 @@ export default function Badges() {
           نشان‌ها و دستاوردها
         </h2>
         <span className="rounded-full bg-amber-100 px-3 py-1 text-[12px] font-black text-amber-800">
-          {faNum(unlockedCount)} از {faNum(BADGES.length)}
+          {badgeFractionFa(unlockedCount)}
         </span>
       </div>
 

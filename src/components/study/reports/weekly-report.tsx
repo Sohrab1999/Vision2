@@ -13,7 +13,7 @@ import { motion } from "framer-motion";
 import { Sparkles, TrendingDown, TrendingUp, Minus, CalendarHeart, Check, Compass, Snowflake, Swords, Timer, ImageDown, Share2, Loader2, CalendarClock, CalendarDays, Gauge, FileDown, BarChart3, Award, BookMarked, Flame } from "lucide-react";
 import { useStudy, daysAgoKey } from "@/lib/study-store";
 import { faNum, secFa } from "@/lib/study-theme";
-import { BADGES, TIER_CHIP } from "@/lib/achievements";
+import { TIER_CHIP, badgeFractionFa } from "@/lib/achievements"; // r387 — کسرِ نشان از مالکِ رجیستری؛ BADGES دیگر در این نما لازم نیست
 import { useBadgeCensus } from "@/hooks/use-badge-census";
 import { buildCoverageMap } from "@/lib/coverage-map";
 import { LESSONS_META } from "@/data/lesson-meta";
@@ -455,7 +455,7 @@ export default function WeeklyReportSection() {
             نشان‌های من
           </div>
           <span className="c-chip-goal inline-flex items-center gap-0.5 rounded-full border px-1.5 py-0.5 text-[9.5px] font-black">
-            {`${faNum(unlockedBadges.length)} از ${faNum(BADGES.length)}`}
+            {badgeFractionFa(unlockedBadges.length)}
           </span>
         </div>
         {unlockedBadges.length === 0 ? (

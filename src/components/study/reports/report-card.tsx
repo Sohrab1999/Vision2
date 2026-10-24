@@ -30,7 +30,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { useStudy, lastNDays } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
-import { BADGES } from "@/lib/achievements";
+import { badgeFractionFa } from "@/lib/achievements"; // r387 — BADGES دیگر در این نما لازم نیست؛ کسر از مالک میآید
 import { skillBreakdown, barColorFor, skillGradeFa } from "@/lib/skill-stats";
 import { useBadgeCensus } from "@/hooks/use-badge-census";
 import { monthVitalsOf, avgPercentOf } from "@/lib/report-vitals";
@@ -119,7 +119,7 @@ export default function ReportCard({ open, onClose }: { open: boolean; onClose: 
     // ۴٫۸ میبرد و در تاریک کرنلِ متن (text-*-700 → روشن) خودش جوهرِ تاریک
     // را رویِ زمینهٔ تیرهٔ خانواده جابهجا میکند
     { icon: BookOpenCheck, label: "واژهٔ آموخته", value: faNum(knownCount), cls: "text-emerald-700 bg-emerald-50 border-emerald-200" },
-    { icon: Award, label: "نشان کسب‌شده", value: `${faNum(unlocked.size)} از ${faNum(BADGES.length)}`, cls: "text-amber-700 bg-amber-50 border-amber-200" },
+    { icon: Award, label: "نشان کسب‌شده", value: badgeFractionFa(unlocked.size), cls: "text-amber-700 bg-amber-50 border-amber-200" },
     { icon: Flame, label: "بهترین زنجیره", value: `${faNum(bestStreak)} روز`, cls: "text-orange-700 bg-orange-50 border-orange-200" },
     { icon: Zap, label: "رکورد چالش", value: `${faNum(rushBest)} امتیاز`, cls: "text-rose-700 bg-rose-50 border-rose-200" },
   ];
