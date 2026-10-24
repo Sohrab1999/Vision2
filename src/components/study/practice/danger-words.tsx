@@ -23,9 +23,9 @@ import { dangerWords, buildDangerQuiz, type DangerWord } from "@/lib/word-risk";
 import { buildDangerDictation, DICTATION_MIN_DANGER } from "@/lib/danger-dictation";
 import { findLesson, lessons } from "@/data";
 import { lessonNameFa } from "@/data/lesson-meta";
-import { faNum } from "@/lib/study-theme";
+import { faNum, RESUME_FOCUS_RING } from "@/lib/study-theme";
 import { buildSynAntIndex, synAntPairsFor } from "@/lib/syn-ant-lookup";
-import { srsWordStatus, type SrsWordStatus } from "@/lib/srs-due";
+import { srsWordStatus, focusSrsDashboard, type SrsWordStatus } from "@/lib/srs-due";
 import { useToast } from "@/hooks/use-toast";
 import { speak } from "@/lib/speak";
 import { trackEvent } from "@/lib/analytics";
@@ -139,14 +139,21 @@ export default function DangerWords() {
                   رنگِ teal = رنگِ خودِ داشبوردِ مرور — دو داشبورد همسایه با
                   یک زبان رنگی حرف میزنند. بیچرخه، هیچ (صداقتِ r252). */}
               {inCycle > 0 && (
-                <span
+                /* r371 — چیپِ پل حالا واقعی پرش میزند (بندِ ④ پیشنهادِ r370):
+                   نه دکمهٔ ساختگیِ مرور — کنشِ مرور با خودِ داشبورد است؛ این
+                   ناوبریِ صادق است: پرش = اسکرول + پالس، مالکِ نمایش خودِ
+                   پنل (focusSrsDashboard از srs-due — تک‌نقطهای مثلِ r244). */
+                <button
+                  type="button"
                   data-testid="danger-srs-bridge"
+                  onClick={focusSrsDashboard}
                   title={`${faNum(inCycle)} واژه از ${faNum(list.length)} واژهٔ خطرناک تو داخلِ چرخهٔ مرور با فاصله است — داشبوردِ مرورِ هوشمند، کارتِ کنارِ این کارت در خانه`}
-                  className="inline-flex items-center gap-1 rounded-full border border-teal-200 bg-teal-50 px-2 py-0.5 text-[10px] font-black text-teal-700"
+                  aria-label={`پرش به داشبوردِ مرور هوشمند — ${faNum(inCycle)} از ${faNum(list.length)} در چرخهٔ مرور`}
+                  className={`inline-flex items-center gap-1 rounded-full border border-teal-200 bg-teal-50 px-2 py-0.5 text-[10px] font-black text-teal-700 transition-[background-color,color,border-color,transform] active:scale-[0.96] ${RESUME_FOCUS_RING}`}
                 >
                   <RefreshCcw size={10} aria-hidden />
                   {faNum(inCycle)} از {faNum(list.length)} در چرخهٔ مرور
-                </span>
+                </button>
               )}
             </h2>
             <p className="text-[12px] text-stone-500">
@@ -220,10 +227,12 @@ export default function DangerWords() {
                           {faNum(d.mistakes)} بار غلط
                         </span>
                         {(() => {
-                          // r370 — چیپِ وضعیتِ SRS رویِ ردیف: واژهٔ خطر یا داخلِ
-                          // چرخهٔ مرور است (پله + حالت) یا سررسید — یا هنوز وارد
-                          // چرخه نشده و چیپِ نداشتن خودش حرف است. نمایشِ محض —
-                          // کنشِ مرور با داشبوردِ همسایه است، نه یک دکمهٔ ساختگی.
+                          // r370 چیپِ وضعیتِ SRS رویِ ردیف — r371 آن را پرشی
+                          // میکند: واژهٔ خطر یا داخلِ چرخهٔ مرور است (پله +
+                          // حالت) یا سررسید — یا هنوز وارد چرخه نشده و چیپِ
+                          // نداشتن خودش حرف است. کلیک = پرش به داشبوردِ
+                          // همسایه (نه دکمهٔ ساختگیِ مرور — ناوبریِ صادق:
+                          // کنشِ مرور همان‌جاست، این فقط راهِ رسیدن است).
                           const st = srsStates.get(d.key);
                           if (!st) return null;
                           const levelTxt = `سطح ${faNum(st.level + 1)} از ${faNum(SRS_INTERVALS.length)}`;
@@ -238,14 +247,17 @@ export default function DangerWords() {
                                   ? "border-emerald-200 bg-emerald-50 text-emerald-700"
                                   : "border-teal-200 bg-teal-50 text-teal-700";
                           return (
-                            <span
+                            <button
+                              type="button"
                               data-testid={`danger-srs-chip-${d.en.replace(/\s+/g, "-")}`}
-                              title={`${d.en} — ${stateWord} · ${levelTxt}؛ جزئیات در داشبوردِ مرورِ هوشمند`}
-                              className={`inline-flex items-center gap-0.5 rounded-md border px-1.5 py-0.5 text-[10px] font-bold ${cls}`}
+                              onClick={focusSrsDashboard}
+                              title={`${d.en} — ${stateWord} · ${levelTxt}؛ کلیک: پرش به داشبوردِ مرورِ هوشمند`}
+                              aria-label={`پرش به داشبوردِ مرور هوشمند — وضعیتِ ${d.en}: ${stateWord}`}
+                              className={`inline-flex items-center gap-0.5 rounded-md border px-1.5 py-0.5 text-[10px] font-bold transition-[background-color,color,border-color,transform] active:scale-[0.96] ${RESUME_FOCUS_RING} ${cls}`}
                             >
                               <RefreshCcw size={10} aria-hidden />
                               {st.state === "due" ? "سررسید" : "در چرخه"} · {levelTxt}
-                            </span>
+                            </button>
                           );
                         })()}
                         <span className="hidden rounded-md bg-stone-100 px-1.5 py-0.5 text-[10px] font-bold text-stone-500 sm:inline">
@@ -368,7 +380,7 @@ export default function DangerWords() {
               <br />
               واژه‌های خطرناک را با <Star size={10} className="inline fill-amber-400 text-amber-400" /> ستاره به «واژه‌های من» بفرست تا در آزمون و فلش‌کارت شخصی مرور شوند.
               <br />
-              چیپِ «در چرخه» از داشبوردِ مرورِ هوشمند می‌آید — ردیفی که چیپ ندارد هنوز وارد برنامهٔ مرور نشده است.
+              چیپِ «در چرخه» از داشبوردِ مرورِ هوشمند می‌آید و کلیکش به خودِ داشبورد پرش میزند — ردیفی که چیپ ندارد هنوز وارد برنامهٔ مرور نشده است.
             </p>
           </>
         )}

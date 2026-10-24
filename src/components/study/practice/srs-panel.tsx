@@ -1,12 +1,12 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { RefreshCcw, Sparkles, CalendarClock, CheckCircle2, TrendingUp, Sprout, BookOpenCheck, AlarmClock, ArrowLeft, Star, ChevronDown, Ear } from "lucide-react";
 import { useStudy, srsDueTotal, firstLessonWithDue, type SrsItem } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
-import { srsDueSummary, srsForecastWords } from "@/lib/srs-due";
+import { srsDueSummary, srsForecastWords, SRS_PANEL_SPOTLIGHT_EVENT } from "@/lib/srs-due";
 import { buildDueDictation, DICTATION_MIN_DUE } from "@/lib/due-dictation";
 import type { DictationSource } from "@/lib/study-types";
 import { trackEvent } from "@/lib/analytics";
@@ -112,6 +112,28 @@ export default function SrsPanel() {
     () => (mounted && openDay !== null ? srsForecastWords(srs, Date.now(), openDay, 8) : null),
     [srs, mounted, openDay]
   );
+  // r371 «پرش به پنلِ همسایه» — مالکِ نمایشِ پالس اینجاست (عینِ پالسِ
+  // دکمهٔ هدر — r244/r245): پرندهها (چیپهایِ کارتِ خطر) فقط رویداد
+  // میفرستند؛ هایلایتِ گذرای ۱٫۶ثانیهای با تایمرِ مُهرِدار که هر
+  // درخواستِ نو، مهلتِ قبلی را باطل میکند — و پاکسازی در unmount.
+  const [spotlit, setSpotlit] = useState(false);
+  const spotTimerRef = useRef<number | null>(null);
+  useEffect(() => {
+    const onSpot = () => {
+      if (spotTimerRef.current !== null) window.clearTimeout(spotTimerRef.current);
+      setSpotlit(true);
+      spotTimerRef.current = window.setTimeout(() => {
+        spotTimerRef.current = null;
+        setSpotlit(false);
+      }, 1600);
+    };
+    window.addEventListener(SRS_PANEL_SPOTLIGHT_EVENT, onSpot);
+    return () => {
+      window.removeEventListener(SRS_PANEL_SPOTLIGHT_EVENT, onSpot);
+      if (spotTimerRef.current !== null) window.clearTimeout(spotTimerRef.current);
+    };
+  }, []);
+
   const faTime = (ts: number) => {
     const d = new Date(ts);
     const two = (n: number) => String(n).padStart(2, "0");
@@ -151,8 +173,21 @@ export default function SrsPanel() {
 
   return (
     <section
+      id="srs-dashboard"
       aria-label="داشبورد مرور هوشمند"
-      className="srs-panel overflow-hidden rounded-2xl border border-teal-200 bg-gradient-to-l from-teal-50/80 to-emerald-50/60 shadow-sm"
+      tabIndex={-1}
+      data-spotlit={spotlit ? "true" : undefined}
+      // r371 — لنگرِ پرش: scroll-mt-24 برای فاصلهٔ هدرِ چسبان (ایدئومِ r221/224)
+      // + فوکوسِ برنامه‌ای (tabIndex=-1 فقط برایِ فوکوسِ دستوری) — بدونِ
+      // outline-none: پالس، نشانهٔ کانونیِ خودش است و قراردادِ Task 177
+      // پابرجا (کلاسِ جهانیِ :focus-visible برایِ پرشِ کیبوردی میماند).
+      // پالس: حلقهٔ درونیِ ۲px زمردی — تیره با سایهٔ صریحِ خودش؛
+      // مرزِ پنل دستِ نگارندهٔ تیرهٔ کرنل است (صفرِ وصلهٔ تیره).
+      className={`srs-panel overflow-hidden rounded-2xl border border-teal-200 bg-gradient-to-l from-teal-50/80 to-emerald-50/60 shadow-sm transition-[box-shadow] duration-300 scroll-mt-24 ${
+        spotlit
+          ? "shadow-[inset_0_0_0_2px] shadow-emerald-300 dark:shadow-emerald-600"
+          : ""
+      }`}
     >
       <div className="h-1.5 w-full bg-gradient-to-l from-teal-500 via-emerald-500 to-lime-400" />
       <div className="grid gap-5 p-5 sm:p-6 lg:grid-cols-[1fr_auto] lg:items-center">

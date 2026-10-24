@@ -177,7 +177,9 @@ describe("DangerWords × SRS — چیپهایِ پیوند — r370", () => {
 describe("قفلهایِ ساختاری — r370", () => {
   it("⑩ تکمنبع: چیپ از srsWordStatus، «از ۶» از SRS_INTERVALS.length — نه رقمِ دستنویس", () => {
     const src = readFileSync("src/components/study/practice/danger-words.tsx", "utf8");
-    expect(src).toContain('import { srsWordStatus, type SrsWordStatus } from "@/lib/srs-due"');
+    // r371: focusSrsDashboard به همین import پیوست — منبعِ چیپ
+    // (srsWordStatus) و پرشِ آن (focusSrsDashboard) یک کتابخانهاند
+    expect(src).toContain('import { srsWordStatus, focusSrsDashboard, type SrsWordStatus } from "@/lib/srs-due"');
     expect(src).toContain("srsWordStatus(srs[d.key]");
     expect(src).toContain("faNum(SRS_INTERVALS.length)");
     expect(src).not.toContain("از ۶");

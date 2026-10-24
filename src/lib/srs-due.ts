@@ -103,6 +103,37 @@ export function srsWordStatus(
   return { state, level: item.level, dueAt: item.dueAt };
 }
 
+// ------------------------------------------------------------------
+// r371 «پرش به پنلِ همسایه» (بندِ ④ پیشنهادِ r370): چیپهایِ «در چرخه/
+// سررسید» و چیپِ پلِ کارتِ خطرها واقعاً کلیک‌پذیر میشوند — نه دکمهٔ
+// ساختگیِ مرور (کنشِ مرور با خودِ داشبورد است)، بلکه ناوبریِ صادق به
+// همان‌جا که کنش زندگی میکند. عینِ ایدئومِ focusHeaderDoor (r243):
+// کتابخانهٔ دامنه مالکِ پرش و نامِ رویداد است — پرنده فقط صدا میزند و
+// منطقِ نمایش با مالکِ پنل است (srs-panel؛ تک‌نقطه‌ای، درسِ r244).
+// ------------------------------------------------------------------
+
+/** رویدادِ پالسِ گذرای داشبوردِ مرور — مالکِ نمایش: خودِ srs-panel */
+export const SRS_PANEL_SPOTLIGHT_EVENT = "srs-panel-spotlight";
+
+/**
+ * پرشِ کارتِ خطرها به داشبوردِ مرورِ هوشمند: اسکرولِ نرم (با احترامِ
+ * prefers-reduced-motion) + فوکوسِ برنامه‌ای + رویدادِ پالس.
+ * پنل هست نیست (خانه با گیتِ hasProgress رندر میشود) = هیچ و false —
+ * صداقتِ r236: هیچ کنشِ ساختگی. true = پنل پیدا شد و پرش انجام شد.
+ */
+export function focusSrsDashboard(): boolean {
+  if (typeof document === "undefined") return false;
+  const panel = document.getElementById("srs-dashboard");
+  if (!panel) return false;
+  const reduce =
+    typeof window.matchMedia === "function" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  panel.scrollIntoView({ block: "start", behavior: reduce ? "auto" : "smooth" });
+  panel.focus({ preventScroll: true });
+  window.dispatchEvent(new CustomEvent(SRS_PANEL_SPOTLIGHT_EVENT));
+  return true;
+}
+
 /**
  * Words landing in the forecast day-window [now + offset*DAY, now + (offset+1)*DAY).
  * offset 0 = the NEXT 24h — the already-overdue words live in srsDueSummary,
