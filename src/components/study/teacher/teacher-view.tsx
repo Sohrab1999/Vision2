@@ -13,12 +13,13 @@
 // ------------------------------------------------------------------
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { School, Loader2, RefreshCw, Download, Users, ClipboardList, Gauge, Activity, KeyRound, ShieldAlert, ChevronLeft, NotebookText } from "lucide-react";
+import { School, Loader2, RefreshCw, Download, Users, ClipboardList, Gauge, Activity, KeyRound, ShieldAlert, ChevronLeft, NotebookText, Search, SearchX, X } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { faNum } from "@/lib/study-theme";
 import { trackEvent } from "@/lib/analytics";
 import { COVERAGE_SKILLS } from "@/lib/coverage-map";
 import { lastActiveFa, sortRosterBy, ROSTER_SORT_LABELS, type TeacherReport, type RosterRow, type RosterSortKey, type LearnerDetail } from "@/lib/teacher-report";
+import { normalizeFa } from "@/lib/command-palette"; // r374 — تکمنبعِ یکسانسازیِ متن (پالتِ فرمان — کتابخانهٔ خالصِ بیوابستگی)
 import { downloadClassCsv } from "@/lib/teacher-csv";
 import { downloadClassLedgerCsv, LEDGER_RATE_WINDOW_MAX, LEDGER_RATE_WAITS } from "@/lib/teacher-class-ledger";
 import TeacherDetailDialog, { learnerDot } from "./teacher-detail";
@@ -52,6 +53,8 @@ export default function TeacherView() {
   // r353 — مرتبسازیِ دستیِ فهرست + دیالوگِ جزئیاتِ یادگیرنده
   const [sortBy, setSortBy] = useState<RosterSortKey>("attempts");
   const [detailHandle, setDetailHandle] = useState<string | null>(null);
+  // r374 — جستوجوی زندهٔ نام — فیلترِ سمتِ کلاینت؛ صفرِ درخواستِ نو
+  const [query, setQuery] = useState("");
   const openedAt = useRef(Date.now());
 
   const load = useCallback(async (presented: string) => {
@@ -98,6 +101,22 @@ export default function TeacherView() {
   // فهرست دستِ معلم است؛ سرور فقط پیشفرضِ قطعی میدهد
   const roster = report?.roster ?? [];
   const sortedRoster = useMemo(() => sortRosterBy(roster, sortBy), [roster, sortBy]);
+
+  // r374 — «جستوجوی زندهٔ فهرستِ کلاس» — فیلتر رویِ فهرستِ مرتبشده؛
+  // normalizeFa (تکمنبعِ پالتِ فرمان) ي/ی و ك/ک و نیمفاصله و ارقامِ
+  // عربی را یکسان میکند تا «سارا» با هر صفحهکلیدی پیدا شود؛ نیمفاصله
+  // حذف میشود تا «بلیت‌آزمای» با «بلیت آزمای» یکی شوند. چندواژگانی:
+  // «سارا ب» یعنی هر دو توکن باید باشند (AND) — و ترتیبِ مرتبسازیِ
+  // فعلیِ معلم دستنخورده میماند (فیلتر، بعدِ مرتبسازی).
+  const visibleRoster = useMemo(() => {
+    const tokens = normalizeFa(query).split(" ").filter(Boolean);
+    if (tokens.length === 0) return sortedRoster;
+    return sortedRoster.filter((r) => {
+      const n = normalizeFa(r.name);
+      return tokens.every((t) => n.includes(t));
+    });
+  }, [sortedRoster, query]);
+  const isFiltering = query.trim().length > 0;
 
   const exportCsv = () => {
     if (!report || csvBusy) return;
@@ -427,6 +446,43 @@ export default function TeacherView() {
             ))}
           </div>
         </div>
+        {/* r374 — جست‌وجوی زندهٔ نام — سمتِ کلاینت رویِ sortedRoster؛ صفرِ درخواستِ نو.
+            همان حلقهٔ فوکوسِ ورودیِ کدِ معلم (sky) — صفرِ رشدِ CSS؛ ترنزیشنهایِ scopeشده. */}
+        <div className="mt-2" role="search" data-testid="teacher-search">
+          <div className="relative">
+            <Search size={14} aria-hidden className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-stone-500" />
+            <input
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Escape") setQuery("");
+              }}
+              autoComplete="off"
+              placeholder="نامِ یادگیرنده…"
+              aria-label="جست‌وجوی یادگیرنده در فهرستِ کلاس"
+              data-testid="teacher-search-input"
+              className={`h-9 w-full rounded-xl border border-stone-200 bg-white pr-9 ${query ? "pl-9" : "pl-3"} text-[12px] font-bold text-stone-700 outline-none transition-[border-color,box-shadow] focus:border-sky-400 focus:ring-2 focus:ring-sky-100`}
+            />
+            {query && (
+              <button
+                type="button"
+                onClick={() => setQuery("")}
+                aria-label="پاک‌کردنِ جست‌وجو"
+                title="پاک‌کردنِ جست‌وجو"
+                data-testid="teacher-search-clear"
+                className="absolute left-1.5 top-1/2 flex h-6 w-6 -translate-y-1/2 items-center justify-center rounded-full text-stone-500 transition-[background-color,color] hover:bg-stone-200/70 hover:text-rose-600"
+              >
+                <X size={13} aria-hidden />
+              </button>
+            )}
+          </div>
+          {isFiltering && (
+            <p className="mt-1 text-[10.5px] font-black text-sky-700" data-testid="teacher-search-count" aria-live="polite">
+              {faNum(visibleRoster.length)} یادگیرنده یافت شد
+            </p>
+          )}
+        </div>
         <div className="overflow-hidden rounded-2xl border border-stone-200">
           <div className="flex items-center gap-2 border-b border-stone-200 bg-white px-3 py-2 text-[10px] font-black text-stone-500">
             <span className="min-w-0 flex-1">یادگیرنده</span>
@@ -438,7 +494,24 @@ export default function TeacherView() {
             <span className="hidden min-w-0 flex-1 sm:block">ضعیف‌ترین مهارت</span>
           </div>
           <div className="max-h-[420px] overflow-y-auto nice-scroll">
-            {sortedRoster.map((r: RosterRow, i: number) => {
+            {/* r374 — دو خالیِ صادقانه: کلاسِ خالی ≠ جست‌وجویِ بیجواب —
+                هیچکدام ردیفِ دروغگو نمیسازند؛ در کلاسِ خالیِ زیرِ فیلتر،
+                جوابِ خودِ جست‌وجو جلوتر است («یافت نشد» — نه «کلاس خالی»). */}
+            {visibleRoster.length === 0 ? (
+              isFiltering ? (
+                <div className="px-3 py-10 text-center" data-testid="teacher-search-empty">
+                  <SearchX size={20} aria-hidden className="mx-auto text-stone-500" />
+                  <p className="mt-1.5 text-[12px] font-black text-stone-600">یادگیری با این نام یافت نشد</p>
+                  <p className="mt-1 text-[10.5px] font-bold text-stone-500">نام دیگری را امتحان کن یا جست‌وجو را پاک کن.</p>
+                </div>
+              ) : (
+                <div className="px-3 py-10 text-center" data-testid="teacher-roster-empty">
+                  <p className="text-[12px] font-black text-stone-600">هنوز یادگیری در این کلاس نیست</p>
+                  <p className="mt-1 text-[10.5px] font-bold text-stone-500">با نخستینِ ورودِ یادگیرنده، فهرست همین‌جا زنده می‌شود.</p>
+                </div>
+              )
+            ) : (
+              visibleRoster.map((r: RosterRow, i: number) => {
               // r353 — ردیفِ دارایِ تلاش + handle دری از جزئیات است؛ بیتلاش
               // ردیفِ خواندنی میماند (هیچچیز برای نشان دادن ندارد — همان
               // idiomِ چیپهایِ کشفشدهٔ سفرِ کشف که دکمه نیستند). هاورِ
@@ -493,7 +566,8 @@ export default function TeacherView() {
                   {body}
                 </div>
               );
-            })}
+              })
+            )}
           </div>
         </div>
       </section>
