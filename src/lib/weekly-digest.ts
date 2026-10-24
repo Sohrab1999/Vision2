@@ -9,7 +9,7 @@
 // that predate it — old learners keep an honest digest from day one.
 
 import type { DayHistoryMap, DayStat, HistoryMap } from "./study-store";
-import { faNum } from "./study-theme";
+import { faNum, percentFa } from "./study-theme"; // r388 — percentFa از مالکِ قالبِ فارسی؛ دوقلویِ محلیِ faPercent مرد
 import { percent } from "./domain/percent";
 import { DUEL_HISTORY_CAP, DUEL_QUICK_THINK, saneThink, type DuelRecord } from "./duel-history";
 
@@ -103,9 +103,7 @@ const sumTotals = (days: DayStat[], goalSet: Set<string>): WeekTotals => {
 
 const DELTA_FIELDS = ["reviews", "quizzes", "words", "dictation", "rush", "activities"] as const;
 
-function faPercent(n: number): string {
-  return `${faNum(n)}٪`;
-}
+// r388 — قالبِ «٪» دیگر اینجا تعریف نمیشود؛ percentFaِ مالک (time-fa) قرض گرفته میشود.
 
 /** Build the digest for the 7-day window ending at todayKey (inclusive). */
 export function computeWeeklyDigest(input: DigestInput, todayKey: string): WeeklyDigest {
@@ -150,7 +148,7 @@ export function computeWeeklyDigest(input: DigestInput, todayKey: string): Weekl
     if (act.previous === 0 && act.current > 0) {
       highlights.push(`شروع پرانرژی — ${faNum(act.current)} فعالیت این هفته ثبت شد`);
     } else if (act.diff > 0) {
-      highlights.push(`${faNum(act.diff)} فعالیت بیشتر از هفتهٔ پیش (${faPercent(act.percent ?? 0)} رشد)`);
+      highlights.push(`${faNum(act.diff)} فعالیت بیشتر از هفتهٔ پیش (${percentFa(act.percent ?? 0)} رشد)`);
     } else if (act.diff < 0) {
       highlights.push(`${faNum(Math.abs(act.diff))} فعالیت کمتر از هفتهٔ پیش — یک تمرین کوچک، فاصله را پر می‌کند`);
     } else {

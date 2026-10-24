@@ -12,7 +12,8 @@ import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { Sparkles, TrendingDown, TrendingUp, Minus, CalendarHeart, Check, Compass, Snowflake, Swords, Timer, ImageDown, Share2, Loader2, CalendarClock, CalendarDays, Gauge, FileDown, BarChart3, Award, BookMarked, Flame } from "lucide-react";
 import { useStudy, daysAgoKey } from "@/lib/study-store";
-import { faNum, secFa } from "@/lib/study-theme";
+import { faNum, secFa, percentFa } from "@/lib/study-theme";
+import { percentFromRate } from "@/lib/domain/percent"; // r388 — نرخ→درصد از مالک؛ هم آستانه و هم نرخِ زنده یک قدم
 import { TIER_CHIP, badgeFractionFa } from "@/lib/achievements"; // r387 — کسرِ نشان از مالکِ رجیستری؛ BADGES دیگر در این نما لازم نیست
 import { useBadgeCensus } from "@/hooks/use-badge-census";
 import { buildCoverageMap } from "@/lib/coverage-map";
@@ -70,7 +71,7 @@ function QuickWeekLine({ qw }: { qw: QuickWeekProfile }) {
   return (
     <div
       className="mt-1 flex flex-wrap items-center gap-1 text-[9.5px] font-black"
-      title={`گیتِ هفته: میانگینِ فکر ≤ ${secFa(DUEL_QUICK_WEEK.silverMs)} ثانیه و نرخِ درستی ≥ ${faNum(Math.round(DUEL_QUICK_WEEK.correctRate * 100))}٪ در پنجرهٔ ۷روزه · ${faNum(qw.thinkful)} نبردِ فکردار، ${faNum(qw.answered)} پاسخ`}
+      title={`گیتِ هفته: میانگینِ فکر ≤ ${secFa(DUEL_QUICK_WEEK.silverMs)} ثانیه و نرخِ درستی ≥ ${percentFa(percentFromRate(DUEL_QUICK_WEEK.correctRate))} در پنجرهٔ ۷روزه · ${faNum(qw.thinkful)} نبردِ فکردار، ${faNum(qw.answered)} پاسخ`}
     >
       {gold ? (
         <Gauge size={11} className="text-amber-800" aria-hidden />
@@ -78,7 +79,7 @@ function QuickWeekLine({ qw }: { qw: QuickWeekProfile }) {
         <CalendarClock size={11} className="text-emerald-700" aria-hidden />
       )}
       <span className={gold ? "text-amber-800" : "text-emerald-700"}>
-        {`${gold ? "هفتهٔ برق!" : "هفتهٔ چابک!"} — میانگینِ فکر ${secFa(qw.avgMs)} ثانیه با نرخِ درستی ${faNum(Math.round(qw.rate * 100))}٪`}
+        {`${gold ? "هفتهٔ برق!" : "هفتهٔ چابک!"} — میانگینِ فکر ${secFa(qw.avgMs)} ثانیه با نرخِ درستی ${percentFa(percentFromRate(qw.rate))}`}
       </span>
     </div>
   );

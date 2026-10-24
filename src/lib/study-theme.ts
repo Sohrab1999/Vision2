@@ -5,7 +5,7 @@
 // وارداتِ نماها زندگی میکنند (قراردادِ r384 — مسیرهای قدیمی نمیشکنند).
 import { faNum } from "@/lib/time-fa";
 
-export { faNum, timeAgoFa } from "@/lib/time-fa";
+export { faNum, timeAgoFa, percentFa } from "@/lib/time-fa";
 
 export interface LessonTheme {
   text: string;

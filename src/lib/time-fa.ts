@@ -31,6 +31,17 @@ export function faNum(v: number | string): string {
   return String(v).replace(/\d/g, (d) => fa[Number(d)]);
 }
 
+/**
+ * r388 — قالبِ «درصدِ فارسی»: «faNum(n)٪» — برادرِ secFa (اعشارِ ثانیه).
+ * سرشماریِ r388: این قالب در ~۹۹ سایت تکرار میشود اما گویشهایِ دامنهای
+ * عمداً جدا ماندهاند (حکمِ کامل در domain/percent) — تنها قراردادهایی که
+ * «شکل»شان قفل شده (کسرِ نشان r387، نرخ→درصد r388) از همین‌جا قرض میگیرند.
+ * ورودیِ نامتناهی نمیگیرد — محاسبه از percentFromRate با گاردِ صفر میآید.
+ */
+export function percentFa(n: number): string {
+  return `${faNum(n)}٪`;
+}
+
 const MIN_MS = 60_000;
 const HOUR_MS = 3_600_000;
 const DAY_MS = 86_400_000;

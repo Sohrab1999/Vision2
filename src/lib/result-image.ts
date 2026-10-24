@@ -1126,6 +1126,10 @@ async function weeklyCanvas(opts: WeeklyImageOpts): Promise<HTMLCanvasElement | 
     ctx.textAlign = "center";
     ctx.fillStyle = uiColors.stone[900];
     ctx.font = `900 52px ${family}`;
+    // r388 — گویشِ بوم میماند (سابقهٔ r288): قدمِ نرخ→درصدِ اینجا زیرِ
+    // پارامترهایِ خودِ تصویرِ اشتراکی است (pct از goalDays/7 بوم ساخته میشود)
+    // و percentFromRate/percentFa قرض نمیگیرد — حکمِ سرشماریِ r388 در
+    // domain/percent این استثنا را ثبت کرده تا گریپِ آینده حکم ببیند نه سهو.
     ctx.fillText(`${faNum(Math.round(pct * 100))}٪`, cx, cy - 10);
     ctx.fillStyle = uiColors.stone[500];
     ctx.font = `700 21px ${family}`;

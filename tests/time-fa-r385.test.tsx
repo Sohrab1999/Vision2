@@ -250,7 +250,9 @@ describe("قفلهایِ منبعِ r385", () => {
 
   it("study-theme صادرسلول است — بدنهٔ faNum/timeAgoFa از آن کوچیده", () => {
     const theme = read("src/lib/study-theme.ts");
-    expect(theme).toContain('export { faNum, timeAgoFa } from "@/lib/time-fa"');
+    // r388 — بازنشرِ حالا percentFa را هم حمل میکند (مالکِ قالبِ «٪» در time-fa)؛
+    // قراردادِ r385 پابرجا: بدنهٔ محلی برای faNum/timeAgoFa وجود ندارد.
+    expect(theme).toContain('export { faNum, timeAgoFa, percentFa } from "@/lib/time-fa"');
     expect(theme).not.toContain("function faNum");
     expect(theme).not.toContain("function timeAgoFa");
   });

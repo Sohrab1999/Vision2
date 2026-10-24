@@ -23,7 +23,8 @@ import { dangerWords, buildDangerQuiz, type DangerWord } from "@/lib/word-risk";
 import { buildDangerDictation, DICTATION_MIN_DANGER } from "@/lib/danger-dictation";
 import { findLesson, lessons } from "@/data";
 import { lessonNameFa } from "@/data/lesson-meta";
-import { faNum, RESUME_FOCUS_RING } from "@/lib/study-theme";
+import { faNum, percentFa, RESUME_FOCUS_RING } from "@/lib/study-theme";
+import { percentFromRate } from "@/lib/domain/percent"; // r388 — نرخ→درصد از مالک؛ قدمِ بایتهمسانِ دستی در سه نما مرد
 import { buildSynAntIndex, synAntPairsFor } from "@/lib/syn-ant-lookup";
 import { srsWordStatus, focusSrsDashboard, type SrsWordStatus } from "@/lib/srs-due";
 import { useToast } from "@/hooks/use-toast";
@@ -176,8 +177,8 @@ export default function DangerWords() {
           <>
             <ul className="max-h-96 space-y-2 overflow-y-auto nice-scroll pl-1">
               {list.map((d, i) => {
-                const ratePct = Math.round(d.rate * 100);
-                const hot = d.rate >= 0.5;
+                const ratePct = percentFromRate(d.rate); // r388 — مالکِ نرخ→درصد (گاردِ نامتناهی + سقفِ ۱۰۰)
+                const hot = d.rate >= 0.5; // آستانهٔ «داغ» رویِ نرخِ ۰..۱ میماند — دامنه، نه نمایش
                 return (
                   <motion.li
                     key={d.key}
@@ -221,7 +222,7 @@ export default function DangerWords() {
                         {/* r329 — ردیفِ خطا: رزِ -۶۰۰ رویِ ردیفِ نقابِ سنگی = ۴٫۳۸ و
                             کهربایِ -۶۰۰ = ۳٫۳ (زنده با بوم)؛ -۷۰۰/-۸۰۰ ≥۵٫۵ */}
                         <span className={`text-[10.5px] font-black ${hot ? "text-rose-700" : "text-amber-800"}`}>
-                          {faNum(ratePct)}٪ خطا
+                          {percentFa(ratePct)} خطا
                         </span>
                         <span className="rounded-md bg-rose-50 px-1.5 py-0.5 text-[10px] font-bold text-rose-700">
                           {faNum(d.mistakes)} بار غلط
