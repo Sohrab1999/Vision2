@@ -20,7 +20,7 @@ import { trackEvent } from "@/lib/analytics";
 import { lastActiveFa, sortRosterBy, ROSTER_SORT_LABELS, type TeacherReport, type RosterRow, type RosterSortKey, type LearnerDetail } from "@/lib/teacher-report";
 import { teacherSkillLabel } from "@/lib/teacher-skill-label"; // r375 — تکمنبعِ برچسبِ مهارت (نسخهٔ دوقلوی محلی بازنشسته شد)
 import { normalizeFa } from "@/lib/command-palette"; // r374 — تکمنبعِ یکسانسازیِ متن (پالتِ فرمان — کتابخانهٔ خالصِ بیوابستگی)
-import { downloadClassCsv } from "@/lib/teacher-csv";
+import { downloadClassCsv, activeIn24h } from "@/lib/teacher-csv"; // r378 — موتورِ تکحقیقتِ نبضِ ۲۴ساعت (همان که ستونِ روزنامه میخواند)
 import { downloadClassLedgerCsv, LEDGER_RATE_WINDOW_MAX, LEDGER_RATE_WAITS } from "@/lib/teacher-class-ledger";
 import TeacherDetailDialog, { learnerDot } from "./teacher-detail";
 import { useToast } from "@/hooks/use-toast";
@@ -54,6 +54,8 @@ export default function TeacherView() {
   const [detailHandle, setDetailHandle] = useState<string | null>(null);
   // r374 — جستوجوی زندهٔ نام — فیلترِ سمتِ کلاینت؛ صفرِ درخواستِ نو
   const [query, setQuery] = useState("");
+  // r378 — چیپِ نبضِ ۲۴ساعت — فیلترِ یادگیرندههایِ فعال؛ پیشفرضِ خاموش = فهرستِ کامل
+  const [activeOnly, setActiveOnly] = useState(false);
   const openedAt = useRef(Date.now());
 
   const load = useCallback(async (presented: string) => {
@@ -101,6 +103,18 @@ export default function TeacherView() {
   const roster = report?.roster ?? [];
   const sortedRoster = useMemo(() => sortRosterBy(roster, sortBy), [roster, sortBy]);
 
+  // r378 — «نبضِ زندهٔ ۲۴ساعت» — ساعتِ پنجره = generatedAtِ گزارش؛ همان
+  // لحظهٔ snapshotِ سرور که کارتِ آمار (summary.last24h) با آن خوانده شده —
+  // نه ساعتِ موبیِ هر رندر؛ رفرشِ گزارش (به‌روزرسانی) ساعت را هم نو میکند.
+  // شمارندهٔ چیپ = یادگیرنده (activeIn24h رویِ سطرها) — همزبانِ ستونِ
+  // روزنامه؛ کارتِ آمار تلاش میشمارد (last24h) — پیشینهٔ r363: هر سطح
+  // به گویشِ خودش حرف میزند.
+  const reportNow = report ? Date.parse(report.generatedAt) : 0;
+  const activeCount = useMemo(
+    () => roster.filter((r) => activeIn24h(r.lastActive, reportNow)).length,
+    [roster, reportNow]
+  );
+
   // r374 — «جستوجوی زندهٔ فهرستِ کلاس» — فیلتر رویِ فهرستِ مرتبشده؛
   // normalizeFa (تکمنبعِ پالتِ فرمان) ي/ی و ك/ک و نیمفاصله و ارقامِ
   // عربی را یکسان میکند تا «سارا» با هر صفحهکلیدی پیدا شود؛ نیمفاصله
@@ -114,14 +128,20 @@ export default function TeacherView() {
   // «سارا گرامر» تقاطعِ هر دو توکن است. عددِ درصد عمداً بیرونِ دامنه
   // است — «۴۰» همیشه نیمهجوابِ مبهم است، نه جوابِ صادق. بیتلاشِ
   // بی‌مهارت فقط با نامش پیدا میشود — نه با چیزی که ندارد.
+  // r378 — ترکیبِ دو فیلترِ نما: چیپِ «فعال» (وضعیت) × جست‌وجو (متن)
+  // تقاطعِ صادق میدهند. مرزِ دوگویشی: هیزمِ جست‌وجو فقط نام + مهارتِ
+  // ضعیف میماند (r375) — «فعال» توکنِ جست‌وجو نیست، وضعیت است؛ درِ
+  // وضعیت فقط همین چیپ است و هیچ محاسبهای موازی نمیسازد.
   const visibleRoster = useMemo(() => {
+    let rows = sortedRoster;
+    if (activeOnly) rows = rows.filter((r) => activeIn24h(r.lastActive, reportNow));
     const tokens = normalizeFa(query).split(" ").filter(Boolean);
-    if (tokens.length === 0) return sortedRoster;
-    return sortedRoster.filter((r) => {
+    if (tokens.length === 0) return rows;
+    return rows.filter((r) => {
       const n = normalizeFa(r.name + (r.weakest ? " " + skillLabel(r.weakest.category) : ""));
       return tokens.every((t) => n.includes(t));
     });
-  }, [sortedRoster, query]);
+  }, [sortedRoster, query, activeOnly, reportNow]);
   const isFiltering = query.trim().length > 0;
 
   const exportCsv = () => {
@@ -431,7 +451,29 @@ export default function TeacherView() {
       {/* ---------- فهرستِ کلاس ---------- */}
       <section aria-label="فهرست یادگیرندگان" data-testid="teacher-roster">
         <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
-          <h2 className="text-[11.5px] font-black text-stone-600">یادگیرندگان ({faNum(roster.length)})</h2>
+          <div className="flex items-center gap-2">
+            <h2 className="text-[11.5px] font-black text-stone-600">یادگیرندگان ({faNum(roster.length)})</h2>
+            {/* r378 — چیپِ نبضِ ۲۴ساعت: شمارنده همیشه صادق (یادگیرنده،
+                همزبانِ ستونِ روزنامه) + aria-pressed؛ ظاهرِ همان ایدیومِ
+                دکمههایِ مرتبسازی — ترنزیشنهایِ scopeشده، صفرِ رشدِ CSS.
+                زیرِ فیلترِ چیپ، سرشماریِ سربرگ همچنان کلِ کلاس میگوید. */}
+            <button
+              type="button"
+              onClick={() => setActiveOnly((v) => !v)}
+              aria-pressed={activeOnly}
+              aria-label="فقط یادگیرنده‌های فعال در ۲۴ ساعتِ گذشته"
+              title={`فعال در ۲۴ ساعت: ${faNum(activeCount)} یادگیرنده — کلیک: فقط همین‌ها`}
+              data-testid="teacher-active-chip"
+              className={
+                activeOnly
+                  ? "flex items-center gap-1 rounded-full bg-sky-600 px-2 py-1 text-[10px] font-black text-white transition-[background-color,transform] active:scale-[0.96]"
+                  : "flex items-center gap-1 rounded-full border border-stone-200 px-2 py-1 text-[10px] font-black text-stone-500 transition-[color,border-color,background-color,transform] hover:border-sky-300 hover:text-sky-600 active:scale-[0.96]"
+              }
+            >
+              <Activity size={12} aria-hidden />
+              <span data-testid="teacher-active-badge" dir="ltr">{faNum(activeCount)}</span>
+            </button>
+          </div>
           {/* r353 — مرتبسازیِ دستیِ معلم — چهار کلیدِ قطعی، پیشفرض = ترتیبِ سرور */}
           <div className="flex items-center gap-1" role="group" aria-label="مرتبسازیِ فهرست" data-testid="teacher-sort">
             {(Object.keys(ROSTER_SORT_LABELS) as RosterSortKey[]).map((k) => (
@@ -509,7 +551,18 @@ export default function TeacherView() {
                 <div className="px-3 py-10 text-center" data-testid="teacher-search-empty">
                   <SearchX size={20} aria-hidden className="mx-auto text-stone-500" />
                   <p className="mt-1.5 text-[12px] font-black text-stone-600">یادگیری با این نام یافت نشد</p>
-                  <p className="mt-1 text-[10.5px] font-bold text-stone-500">نام یا مهارت دیگری را امتحان کن یا جست‌وجو را پاک کن.</p>
+                  {/* r378 — زیرِ چیپِ «فعال»، خالیِ جست‌وجو درِ سوم را هم نام میبرد */}
+                  <p className="mt-1 text-[10.5px] font-bold text-stone-500">
+                    {activeOnly
+                      ? "نام یا مهارت دیگری را امتحان کن، چیپِ «فعال» را بردار، یا جست‌وجو را پاک کن."
+                      : "نام یا مهارت دیگری را امتحان کن یا جست‌وجو را پاک کن."}
+                  </p>
+                </div>
+              ) : activeOnly ? (
+                <div className="px-3 py-10 text-center" data-testid="teacher-active-empty">
+                  <Activity size={20} aria-hidden className="mx-auto text-stone-500" />
+                  <p className="mt-1.5 text-[12px] font-black text-stone-600">در ۲۴ ساعتِ گذشته هیچ یادگیری زنده نیست</p>
+                  <p className="mt-1 text-[10.5px] font-bold text-stone-500">چیپِ «فعال» را بردار تا کلِ فهرست برگردد.</p>
                 </div>
               ) : (
                 <div className="px-3 py-10 text-center" data-testid="teacher-roster-empty">
