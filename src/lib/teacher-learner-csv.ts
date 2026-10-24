@@ -26,7 +26,7 @@
 
 import { CSV_BOM, csvSafe } from "./teacher-csv";
 import { activeWeekMeta, activeWeekRows } from "./active-week";
-import { COVERAGE_SKILLS } from "./coverage-map";
+import { teacherSkillLabel } from "./teacher-skill-label";
 import type { LearnerDetail, LearnerSkillRow } from "./teacher-report";
 
 /** CRLF per RFC 4180 — same family dialect as all six elders */
@@ -57,9 +57,14 @@ const SKILLS_COLUMNS = ["مهارت", "تلاشها", "میانگین", "بهت�
 const RECENT_TITLE = "آخرین تلاشها";
 const RECENT_COLUMNS = ["تاریخ", "مهارت", "درس", "درصد"] as const;
 
-/** برچسبِ فارسیِ مهارت از تکحقیقتِ رجیستریِ پوشش؛ ناشناخته = کلیدِ خام */
+/**
+ * برچسبِ فارسیِ مهارت — r375: از تکمنبعِ teacherSkillLabel (پوشش +
+ * دستههایِ شناختهشدهٔ بیرونِ پوشش مثلِ rush)؛ ناشناخته = کلیدِ خام.
+ * [تاریخچه: اینجا هم نسخهٔ دوقلو بود — سه copyِ همان تابع در سه فایل
+ * با همان نشتِ «rush · ۳۰٪»؛ بازنشسته شد]
+ */
 export function learnerSkillLabel(key: string): string {
-  return COVERAGE_SKILLS.find((s) => s.key === key)?.label ?? key;
+  return teacherSkillLabel(key);
 }
 
 // ------------------------------------------------------------------

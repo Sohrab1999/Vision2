@@ -17,8 +17,8 @@ import { School, Loader2, RefreshCw, Download, Users, ClipboardList, Gauge, Acti
 import { useStudy } from "@/lib/study-store";
 import { faNum } from "@/lib/study-theme";
 import { trackEvent } from "@/lib/analytics";
-import { COVERAGE_SKILLS } from "@/lib/coverage-map";
 import { lastActiveFa, sortRosterBy, ROSTER_SORT_LABELS, type TeacherReport, type RosterRow, type RosterSortKey, type LearnerDetail } from "@/lib/teacher-report";
+import { teacherSkillLabel } from "@/lib/teacher-skill-label"; // r375 — تکمنبعِ برچسبِ مهارت (نسخهٔ دوقلوی محلی بازنشسته شد)
 import { normalizeFa } from "@/lib/command-palette"; // r374 — تکمنبعِ یکسانسازیِ متن (پالتِ فرمان — کتابخانهٔ خالصِ بیوابستگی)
 import { downloadClassCsv } from "@/lib/teacher-csv";
 import { downloadClassLedgerCsv, LEDGER_RATE_WINDOW_MAX, LEDGER_RATE_WAITS } from "@/lib/teacher-class-ledger";
@@ -27,8 +27,7 @@ import { useToast } from "@/hooks/use-toast";
 
 const CODE_KEY = "vision2-teacher-code";
 
-const skillLabel = (key: string): string =>
-  COVERAGE_SKILLS.find((s) => s.key === key)?.label ?? key;
+const skillLabel = teacherSkillLabel; // r375 — تکمنبع؛ مصرفِ داخلیِ فایل تغییرنکردنی ماند
 
 type Phase = "gate" | "checking" | "ready" | "disabled" | "auth" | "net";
 
@@ -108,11 +107,18 @@ export default function TeacherView() {
   // حذف میشود تا «بلیت‌آزمای» با «بلیت آزمای» یکی شوند. چندواژگانی:
   // «سارا ب» یعنی هر دو توکن باید باشند (AND) — و ترتیبِ مرتبسازیِ
   // فعلیِ معلم دستنخورده میماند (فیلتر، بعدِ مرتبسازی).
+  //
+  // r375 — «جست‌وجو از نام فراتر میرود»: دامنهٔ جست‌وجو = نام +
+  // برچسبِ فارسیِ ضعیف‌ترین مهارت (skillLabel — همان که در ردیف دیده
+  // میشود). معلم «شنیداری» تایپ میکند و ضعیف‌هایِ شنیداری را میبیند؛
+  // «سارا گرامر» تقاطعِ هر دو توکن است. عددِ درصد عمداً بیرونِ دامنه
+  // است — «۴۰» همیشه نیمهجوابِ مبهم است، نه جوابِ صادق. بیتلاشِ
+  // بی‌مهارت فقط با نامش پیدا میشود — نه با چیزی که ندارد.
   const visibleRoster = useMemo(() => {
     const tokens = normalizeFa(query).split(" ").filter(Boolean);
     if (tokens.length === 0) return sortedRoster;
     return sortedRoster.filter((r) => {
-      const n = normalizeFa(r.name);
+      const n = normalizeFa(r.name + (r.weakest ? " " + skillLabel(r.weakest.category) : ""));
       return tokens.every((t) => n.includes(t));
     });
   }, [sortedRoster, query]);
@@ -459,8 +465,9 @@ export default function TeacherView() {
                 if (e.key === "Escape") setQuery("");
               }}
               autoComplete="off"
-              placeholder="نامِ یادگیرنده…"
-              aria-label="جست‌وجوی یادگیرنده در فهرستِ کلاس"
+              placeholder="نامِ یادگیرنده یا مهارتِ ضعیف…"
+              aria-label="جست‌وجوی یادگیرنده در فهرستِ کلاس — هم نام، هم ضعیف‌ترین مهارت"
+              title="جست‌وجو هم نام را می‌گردد هم ضعیف‌ترین مهارت — مثلاً «شنیداری» یا «سارا گرامر»"
               data-testid="teacher-search-input"
               className={`h-9 w-full rounded-xl border border-stone-200 bg-white pr-9 ${query ? "pl-9" : "pl-3"} text-[12px] font-bold text-stone-700 outline-none transition-[border-color,box-shadow] focus:border-sky-400 focus:ring-2 focus:ring-sky-100`}
             />
@@ -502,7 +509,7 @@ export default function TeacherView() {
                 <div className="px-3 py-10 text-center" data-testid="teacher-search-empty">
                   <SearchX size={20} aria-hidden className="mx-auto text-stone-500" />
                   <p className="mt-1.5 text-[12px] font-black text-stone-600">یادگیری با این نام یافت نشد</p>
-                  <p className="mt-1 text-[10.5px] font-bold text-stone-500">نام دیگری را امتحان کن یا جست‌وجو را پاک کن.</p>
+                  <p className="mt-1 text-[10.5px] font-bold text-stone-500">نام یا مهارت دیگری را امتحان کن یا جست‌وجو را پاک کن.</p>
                 </div>
               ) : (
                 <div className="px-3 py-10 text-center" data-testid="teacher-roster-empty">

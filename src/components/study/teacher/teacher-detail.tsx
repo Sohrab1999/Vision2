@@ -16,8 +16,8 @@ import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/compone
 import { useToast } from "@/hooks/use-toast";
 import { faNum } from "@/lib/study-theme";
 import { trackEvent } from "@/lib/analytics";
-import { COVERAGE_SKILLS } from "@/lib/coverage-map";
 import { lastActiveFa, type LearnerDetail } from "@/lib/teacher-report";
+import { teacherSkillLabel } from "@/lib/teacher-skill-label"; // r375 — تکمنبعِ برچسبِ مهارت (نسخهٔ دوقلو بازنشسته شد)
 import { downloadLearnerCardCsv, weakestSkillMeta } from "@/lib/teacher-learner-csv";
 
 const DOT_COLORS: Record<string, string> = {
@@ -32,8 +32,7 @@ const DOT_COLORS: Record<string, string> = {
 
 export const learnerDot = (c: string): string => DOT_COLORS[c] ?? "bg-stone-500";
 
-const skillLabel = (key: string): string =>
-  COVERAGE_SKILLS.find((s) => s.key === key)?.label ?? key;
+const skillLabel = teacherSkillLabel; // r375 — تکمنبع؛ مصرفِ داخلیِ فایل تغییرنکردنی ماند
 
 type DetailPhase = "loading" | "ready" | "missing" | "auth" | "net";
 
