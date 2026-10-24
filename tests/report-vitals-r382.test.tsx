@@ -143,8 +143,8 @@ describe("قفلِ منبعِ r382 — تکمنبعیِ موتور و سرشما
     expect(DUEL_SRC).toContain("buildEvalInput");
   });
 
-  it("قلاب: ۱۳ سیگنال + گیتِ هیدریشنِ خانواده + مرجعِ پایدارِ libraryDone", () => {
-    for (const signal of ["rushBestCorrect", "rushGames", "seenBadges", "libraryDone", "dayStat"]) {
+  it("قلاب: ۱۹ سیگنالِ سرشماریِ کامل (r383) + گیتِ هیدریشنِ خانواده + مرجعِ پایدارِ libraryDone", () => {
+    for (const signal of ["rushBestCorrect", "rushGames", "seenBadges", "libraryDone", "dayStat", "freezeCount", "freezeUsedDays", "freezeEarnedDay", "goalMetDays", "dayHistory", "duelHistory"]) {
       expect(HOOK_SRC).toContain(`s.${signal}`);
     }
     expect(HOOK_SRC).toContain("useMounted");
@@ -164,13 +164,13 @@ describe("قفلِ منبعِ r382 — تکمنبعیِ موتور و سرشما
   });
 });
 
-describe("قلابِ سرشماری در jsdom — سرشماریِ واقعیِ سیزده سیگنال", () => {
+describe("قلابِ سرشماری در jsdom — سرشماریِ واقعیِ ۱۹سیگنالیِ r383 (بروزرسانیِ حاشیهٔ r382)", () => {
   // یادداشتِ گیت: useMounted با useSyncExternalStore است — در رندرِ کلاینت
   // همیشه true (گیتِ SSR با سروراسنپشات زنده میشود؛ در jsdom قابلِ مشاهده
   // نیست) — قراردادِ «خروجیِ خالیِ پیش از mount» در قفلِ منبعِ گیتِ
   // mounted؟…:null زنده است، نه در رندرِ jsdom.
 
-  it("پس از mount همان ۱۳ سیگنالِ واقعی را میشمارد — نه کم نه زیاد", async () => {
+  it("پس از mount سرشماریِ کاملِ ۱۹سیگنالی را میشمارد — نه کم نه زیاد (حاشیهٔ r383)", async () => {
     useStudy.setState({
       known: { "3:accept": true, "3:reject": true, "4:abolish": true } as never,
       results: { "3:1": { percent: 80, total: 10 }, "4:1": { percent: 90, total: 10 } } as never,
