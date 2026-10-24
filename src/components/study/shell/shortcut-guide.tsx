@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
-import { Keyboard, BookMarked, ClipboardCheck, Sun, Moon, History, ChevronLeft, MousePointerClick, MapPin } from "lucide-react";
+import { Keyboard, BookMarked, ClipboardCheck, Sun, Moon, History, ChevronLeft, MousePointerClick, MapPin, House } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useStudy, type LessonTab } from "@/lib/study-store";
@@ -12,6 +12,7 @@ import {
 } from "@/lib/bg-reading";
 import { RESUME_LOOP_DOORS, DOOR_HANDOFF_DELAY_MS as HANDOFF_DELAY_MS, focusHeaderDoor, openAppendixDoor, type ResumeLoopDoor } from "@/lib/resume-loop-doors";
 import { RESUME_DOOR_COVERAGE } from "@/lib/resume-door-coverage";
+import { RETURN_CLUSTER_DOORS, RETURN_HOME_OPEN_LABEL } from "@/lib/return-cluster-doors";
 import { faNum, RESUME_FOCUS_RING } from "@/lib/study-theme";
 import { isTypingTarget, useKeydown } from "@/hooks/use-keyboard";
 
@@ -143,12 +144,20 @@ export default function ShortcutGuide() {
   // فوری‌اند (بی‌تعارضِ فوکوس)؛ فرمان‌یاب/پروفایل بعد از بسته‌شدنِ کاملِ
   // راهنما باز می‌شوند (HANDOFF_DELAY_MS) و درِ هدر با اسکرولِ نرم و
   // فوکوس نشان داده می‌شود (حلقهٔ کیبوردِ r239 در focus-visible).
+  // راند ۳۶۷ — رفتنِ خانه از هر دو خانوادهٔ ردیف (درهایِ حلقه و خوشهٔ
+  // بازگشت) از همین یک نقطه می‌گذرد — یک منطق، یک منبع.
+  const goHomeThroughDoor = () => {
+    if (handoffRef.current !== null) window.clearTimeout(handoffRef.current);
+    setOpen(false);
+    setView({ type: "home" });
+  };
+
   const runDoorAction = (door: ResumeLoopDoor) => {
     const a = door.action;
     if (handoffRef.current !== null) window.clearTimeout(handoffRef.current);
     setOpen(false);
     if (a.kind === "goto-home") {
-      setView({ type: "home" });
+      goHomeThroughDoor();
       return;
     }
     if (a.kind === "goto-appendix") {
@@ -316,6 +325,50 @@ export default function ShortcutGuide() {
               <p className="mt-2 flex items-center gap-1 text-[10px] font-bold text-emerald-800">
                 <MousePointerClick size={11} className="shrink-0" aria-hidden />
                 کلیک روی هر ردیف، همان در را باز می‌کند.
+              </p>
+            </section>
+
+            {/* راند ۳۶۷ — بندِ ③ پیشنهادِ r366: «خوشهٔ بازگشت» — خانه به
+                یاد دارد. از RETURN_CLUSTER_DOORS (تک‌منبعِ حقیقتِ
+                src/lib/return-cluster-doors.ts) رندر می‌شود — درِ نو به
+                خانه اضافه شود، این بخش خودش تازه می‌شود (سومین «فهرستِ
+                زنده» پس از درهایِ حلقه و پوشش). ردیفها دکمه‌اند: کلیک به
+                خانه می‌برد — درها فقط آن‌جایند (همان شاخهٔ goto-homeِ
+                runDoorAction). صداقتِ هر در زیرِ خودش است: gateHint
+                می‌گوید «چه‌وقت هست» — بی‌رکورد، هیچ (r236). پالت:
+                همان کلاسهایِ موجودِ همین فایل — صفرِ CSS. */}
+            <section
+              data-testid="shortcut-guide-return-cluster"
+              className="rounded-xl border border-stone-200 c-stone-70 p-3"
+            >
+              <h3 className="mb-2 flex items-center gap-1.5 text-[12.5px] font-extrabold text-stone-700">
+                <House size={14} className="shrink-0 text-emerald-600" aria-hidden />
+                خوشهٔ بازگشت — خانه به یاد دارد — {faNum(RETURN_CLUSTER_DOORS.length)} در
+              </h3>
+              <ul className="space-y-1.5">
+                {RETURN_CLUSTER_DOORS.map((door) => (
+                  <li key={door.id}>
+                    <button
+                      type="button"
+                      onClick={goHomeThroughDoor}
+                      title={RETURN_HOME_OPEN_LABEL}
+                      data-testid={`return-door-${door.id}`}
+                      className={`flex w-full items-center justify-between gap-3 rounded-lg bg-white px-2.5 py-1.5 text-right shadow-sm transition-[background-color,color] hover:bg-emerald-50 hover:text-emerald-800 ${RESUME_FOCUS_RING}`}
+                    >
+                      <span className="min-w-0 text-[12px] font-bold leading-5 text-stone-600">
+                        <span className="text-emerald-700">{door.label}:</span> {door.text}
+                      </span>
+                      <ChevronLeft size={12} className="shrink-0 text-emerald-600" aria-hidden />
+                    </button>
+                    <p className="mt-0.5 pr-3.5 text-[10.5px] font-bold leading-4 text-stone-500">
+                      {door.gateHint}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-2 flex items-start gap-1 text-[10px] font-bold leading-4 text-emerald-800">
+                <MousePointerClick size={11} className="mt-0.5 shrink-0" aria-hidden />
+                کلیک روی هر ردیف به خانه می‌برد — هر در فقط وقتی هست که چیزی برایِ برگشتن داشته باشی (بی‌رکورد، هیچ).
               </p>
             </section>
 

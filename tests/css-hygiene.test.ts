@@ -810,7 +810,10 @@ describe("globals.css stone veil phase 6 (bg-stone-50/60|70 — Task 89)", () =>
     expect(n60, "c-stone-60 consumers").toBe(28); // r347: +1 settings budget row · r348: +1 explain budget row · r350: +1 pulse-dashboard zebra rows · r352: +1 settings teacher row + +1 teacher roster zebra · r353: +2 teacher-detail zebra rows (skills + recent) · r355: +1 pulse-budget calm strip · r358: +1 pulse-tts-budget calm strip
     // r251: +1 c-stone-70 — the guide's door-coverage map section (راند ۲۵۱)
     // joined the same primitive as the r89-retargeted guide section itself
-    expect(n70, "c-stone-70 consumers").toBe(11);
+    // r367: +1 c-stone-70 — the guide's return-cluster section (خوشهٔ بازگشت —
+    // سومین فهرستِ زنده) joins the same dialog-scoped primitive; the
+    // .shortcuts-dialog dark painter covers it with zero new CSS
+    expect(n70, "c-stone-70 consumers").toBe(12);
   });
 
   it("deviating painters retargeted in place + exclusion painters pinned", () => {
