@@ -24,7 +24,7 @@ import { useStudy, starToggleAria } from "@/lib/study-store";
 import { lessons } from "@/data";
 
 vi.mock("@/lib/analytics", () => ({ trackEvent: vi.fn() }));
-vi.mock("@/lib/speak", () => ({ speak: vi.fn() }));
+vi.mock("@/lib/speak", () => ({ speak: vi.fn(), speakFailToast: vi.fn() }));
 
 const read = (p: string) => readFileSync(resolve(process.cwd(), p), "utf8");
 

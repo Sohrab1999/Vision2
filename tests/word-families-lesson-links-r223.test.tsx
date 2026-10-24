@@ -23,7 +23,7 @@ import { lessons } from "@/data";
 import type { LessonData } from "@/lib/study-types";
 
 vi.mock("@/lib/analytics", () => ({ trackEvent: vi.fn() }));
-vi.mock("@/lib/speak", () => ({ speak: vi.fn() }));
+vi.mock("@/lib/speak", () => ({ speak: vi.fn(), speakFailToast: vi.fn() }));
 
 beforeEach(() => {
   cleanup();

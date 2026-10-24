@@ -7,7 +7,7 @@ import type { LessonData, VocabWord } from "@/lib/study-types";
 import { useStudy, wordKey, SRS_LABELS, SRS_INTERVALS, srsLevelFa } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { isTypingTarget, useKeydown } from "@/hooks/use-keyboard";
-import { useToast } from "@/hooks/use-toast";
+import { speakFailToast } from "@/lib/speak";
 import { trackEvent } from "@/lib/analytics";
 import { posLabel, themeOf, faNum } from "@/lib/study-theme";
 import { buildSynAntIndex, synAntPairsFor } from "@/lib/syn-ant-lookup";
@@ -40,15 +40,6 @@ export default function Flashcards({
   deck?: { color: string; cards: FlashcardDeckCard[] };
 }) {
   const [smartMode, setSmartMode] = useState(startSmart);
-  const { toast } = useToast();
-  // راندِ ۳۴۵ — چیپِ «روخوانی جفت» در شکستِ صدا ساکت نمی‌ماند
-  // (همزبانِ خانوادهٔ شنیدار — listen-view)؛ هیچ رویدادِ تحلیلی رویِ پایِ شکست.
-  const pairSpeakError = () =>
-    toast({
-      title: "🔇 پخش صدا ممکن نشد",
-      description: "اتصال اینترنت را بررسی کن و دوباره روی دکمهٔ پخش بزن.",
-      duration: 3500,
-    });
   // راند ۲۷۴ — اندازهٔ پاسِ مرورِ هوشمند در لحظهٔ روشن‌شدن (نوارِ پیشرفتِ صادق)
   const [passTotal, setPassTotal] = useState(0);
   const [index, setIndex] = useState(0);
@@ -339,7 +330,7 @@ export default function Flashcards({
                 <PairSpeakChips
                   pairs={pairs}
                   en={word.en}
-                  onSpeakError={pairSpeakError}
+                  onSpeakError={speakFailToast}
                   stopPropagation
                   tone="flip"
                 />

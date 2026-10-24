@@ -23,7 +23,7 @@ import { WORD_FAMILY_TABLES } from "@/data/word-families";
 import { useStudy } from "@/lib/study-store";
 
 vi.mock("@/lib/analytics", () => ({ trackEvent: vi.fn() }));
-vi.mock("@/lib/speak", () => ({ speak: vi.fn() }));
+vi.mock("@/lib/speak", () => ({ speak: vi.fn(), speakFailToast: vi.fn() }));
 
 const fa = (n: number) => String(n).replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[+d]);
 const GRAMMAR_PANEL = "فهرست پرش موضوع‌های درسنامهٔ جامع";

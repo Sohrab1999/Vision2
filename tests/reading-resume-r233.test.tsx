@@ -25,7 +25,7 @@ import { LESSONS_META } from "@/data/lesson-meta";
 import { wordKey } from "@/state/progress";
 
 vi.mock("@/lib/analytics", () => ({ trackEvent: vi.fn() }));
-vi.mock("@/lib/speak", () => ({ speak: vi.fn() }));
+vi.mock("@/lib/speak", () => ({ speak: vi.fn(), speakFailToast: vi.fn() }));
 
 // IntersectionObserver برای whileInView (فریمرموشنِ خانه/درسنامه)
 class IOStub {

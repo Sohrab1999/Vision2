@@ -31,7 +31,7 @@ import OptionButton from "../shared/option-button";
 import { gradeFor } from "@/lib/domain/grade";
 import { percent as percentOf } from "@/lib/domain/percent";
 import { pickRound, listenBankStats, LISTEN_KIND_LABEL, type RoundItem, type ListenKind } from "@/lib/listen-bank";
-import { speak, stopSpeaking } from "@/lib/speak";
+import { speak, speakFailToast, stopSpeaking } from "@/lib/speak";
 import { faNum } from "@/lib/study-theme";
 import { useToast } from "@/hooks/use-toast";
 import { trackEvent } from "@/lib/analytics";
@@ -77,11 +77,7 @@ export default function ListenView() {
         () => setPlaying(false),
         () => {
           setPlaying(false);
-          toast({
-            title: "🔇 پخش صدا ممکن نشد",
-            description: "اتصال اینترنت را بررسی کن و دوباره روی دکمهٔ پخش بزن.",
-            duration: 3500,
-          });
+          speakFailToast();
         }
       );
     },

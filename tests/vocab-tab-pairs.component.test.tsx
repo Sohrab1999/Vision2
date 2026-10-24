@@ -19,7 +19,7 @@ import { buildSynAntIndex, synAntPairsFor } from "@/lib/syn-ant-lookup";
 import type { LessonData } from "@/lib/study-types";
 
 vi.mock("@/lib/analytics", () => ({ trackEvent: vi.fn() }));
-vi.mock("@/lib/speak", () => ({ speak: vi.fn() }));
+vi.mock("@/lib/speak", () => ({ speak: vi.fn(), speakFailToast: vi.fn() }));
 import { speak } from "@/lib/speak";
 
 // minimal fixture — VocabTab reads id/color/vocabulary of LessonData;

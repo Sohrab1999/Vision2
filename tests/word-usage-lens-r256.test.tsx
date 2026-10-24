@@ -35,7 +35,7 @@ import {
 } from "@/lib/word-usage";
 
 vi.mock("@/lib/analytics", () => ({ trackEvent: vi.fn() }));
-vi.mock("@/lib/speak", () => ({ speak: vi.fn() }));
+vi.mock("@/lib/speak", () => ({ speak: vi.fn(), speakFailToast: vi.fn() }));
 
 import { faNum } from "@/lib/study-theme";
 

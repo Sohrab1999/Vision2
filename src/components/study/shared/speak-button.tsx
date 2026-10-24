@@ -2,8 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Volume2, Loader2, Square } from "lucide-react";
-import { speak } from "@/lib/speak";
-import { useToast } from "@/hooks/use-toast";
+import { speak, speakFailToast } from "@/lib/speak";
 
 interface SpeakButtonProps {
   text: string;
@@ -26,7 +25,6 @@ export default function SpeakButton({
 }: SpeakButtonProps) {
   const [state, setState] = useState<"idle" | "loading" | "playing">("idle");
   const stopRef = useRef<(() => void) | null>(null);
-  const { toast } = useToast();
 
   useEffect(() => {
     return () => {
@@ -50,13 +48,10 @@ export default function SpeakButton({
       () => setState("idle"),
       // راندِ ۳۴۵ — شکستِ صدا دیگر ساکت نیست: همزبانِ خانوادهٔ شنیدار
       // (listen-view) — بدونِ هیچ رویدادِ تحلیلیِ دروغین رویِ پایِ شکست.
+      // r394 — سهگانهٔ خانواده از مالکِ نامدار (speak.ts)
       () => {
         setState("idle");
-        toast({
-          title: "🔇 پخش صدا ممکن نشد",
-          description: "اتصال اینترنت را بررسی کن و دوباره روی دکمهٔ پخش بزن.",
-          duration: 3500,
-        });
+        speakFailToast();
       }
     );
     stopRef.current = () => {

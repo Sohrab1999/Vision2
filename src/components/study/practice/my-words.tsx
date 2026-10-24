@@ -16,7 +16,7 @@ import { useMounted } from "@/lib/use-mounted";
 import { posLabel, themeOf, faNum } from "@/lib/study-theme";
 import { buildSynAntIndex, synAntPairsFor } from "@/lib/syn-ant-lookup";
 import { trackEvent } from "@/lib/analytics";
-import { useToast } from "@/hooks/use-toast";
+import { speakFailToast } from "@/lib/speak";
 import SpeakButton from "../shared/speak-button";
 import PairSpeakChips from "../lesson/pair-speak-chips";
 import { resolveStar, type ResolvedStar } from "@/lib/my-words-resolve";
@@ -33,15 +33,6 @@ export default function MyWordsView() {
   const clearStarred = useStudy((s) => s.clearStarred);
   const setView = useStudy((s) => s.setView);
   const mounted = useMounted();
-  const { toast } = useToast();
-  // راندِ ۳۴۵ — چیپِ «روخوانی جفت» در شکستِ صدا ساکت نمی‌ماند
-  // (همزبانِ خانوادهٔ شنیدار — listen-view)؛ هیچ رویدادِ تحلیلی رویِ پایِ شکست.
-  const pairSpeakError = () =>
-    toast({
-      title: "🔇 پخش صدا ممکن نشد",
-      description: "اتصال اینترنت را بررسی کن و دوباره روی دکمهٔ پخش بزن.",
-      duration: 3500,
-    });
 
   const [query, setQuery] = useState("");
   const [lessonFilter, setLessonFilter] = useState<number | null>(null);
@@ -364,7 +355,7 @@ export default function MyWordsView() {
                       return (
                         <div className="mt-1 flex flex-wrap items-center gap-1">
                           {/* r390 — چیپهایِ «روخوانی جفت» از مالکِ یکتایِ PairSpeakChips */}
-                          <PairSpeakChips pairs={pairs} en={w.en} onSpeakError={pairSpeakError} />
+                          <PairSpeakChips pairs={pairs} en={w.en} onSpeakError={speakFailToast} />
                         </div>
                       );
                     })()}

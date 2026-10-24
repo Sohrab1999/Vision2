@@ -21,7 +21,7 @@ import { BOOKLET_GRAMMAR_TOPICS } from "@/data/booklet-grammar";
 import { useStudy } from "@/lib/study-store";
 
 vi.mock("@/lib/analytics", () => ({ trackEvent: vi.fn() }));
-vi.mock("@/lib/speak", () => ({ speak: vi.fn() }));
+vi.mock("@/lib/speak", () => ({ speak: vi.fn(), speakFailToast: vi.fn() }));
 
 const KEY = "vision2-bg-open-topics";
 const T = (i: number) => BOOKLET_GRAMMAR_TOPICS[i];

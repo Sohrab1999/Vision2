@@ -41,7 +41,7 @@ import { irregularVerbs } from "@/data/appendix";
 vi.mock("@/lib/analytics", () => ({ trackEvent: vi.fn() }));
 // قراردادِ واقعیِ speak همیشه یک تابعِ توقف برمی‌گرداند (حتی در مسیرِ خطا) —
 // mock باید همان وفاداری را داشته باشد وگرنه unmountِ حینِ پخش می‌شکند.
-vi.mock("@/lib/speak", () => ({ speak: vi.fn(async () => () => {}) }));
+vi.mock("@/lib/speak", () => ({ speak: vi.fn(async () => () => {}), speakFailToast: vi.fn() }));
 
 // IntersectionObserver برای whileInView (فریمرموشنِ درسنامه)
 class IOStub {

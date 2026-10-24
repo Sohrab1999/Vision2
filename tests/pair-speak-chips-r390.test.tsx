@@ -31,7 +31,7 @@ import { lessons } from "@/data";
 
 const read = (p: string) => readFileSync(join(process.cwd(), p), "utf8");
 
-vi.mock("@/lib/speak", () => ({ speak: vi.fn() }));
+vi.mock("@/lib/speak", () => ({ speak: vi.fn(), speakFailToast: vi.fn() }));
 vi.mock("@/lib/analytics", () => ({ trackEvent: vi.fn() }));
 
 const SIX_VIEWS = [
@@ -173,11 +173,12 @@ describe("r390 — موافقت با دادهٔ زندهٔ جزوه (تک‌من
 });
 
 describe("r390 — قفلهایِ منبع: شش نما وامگیرند؛ قالبِ دستی منقرض", () => {
-  it("هر شش نما از مالک وام میگیرند و pairSpeakError میزبان را میدهند", () => {
+  it("هر شش نما از مالک وام میگیرند و درگاهِ خطا را میدهند", () => {
+    // r394 — درگاه، مالکِ نامدارِ توستِ خانواده است (speakFailToast در speak.ts)
     for (const v of SIX_VIEWS) {
       const src = read(v);
       expect(src, `importِ PairSpeakChips در ${v}`).toMatch(/import PairSpeakChips from "\.\/pair-speak-chips"|import PairSpeakChips from "\.\.\/lesson\/pair-speak-chips"/);
-      expect(src, `onSpeakError={pairSpeakError} در ${v}`).toContain("onSpeakError={pairSpeakError}");
+      expect(src, `onSpeakError={speakFailToast} در ${v}`).toContain("onSpeakError={speakFailToast}");
     }
   });
 
@@ -194,15 +195,18 @@ describe("r390 — قفلهایِ منبع: شش نما وامگیرند؛ قا�
     expect(owner).toContain("void speak(p.other, 0.95, undefined, onSpeakError)");
   });
 
-  it("زبانِ خانوادهٔ شکستِ r345 سمتِ میزبان پابرجاست (توستِ 🔇)", () => {
-    for (const v of SIX_VIEWS) {
-      expect(read(v), `توستِ خانواده در ${v}`).toContain("پخش صدا ممکن نشد");
-    }
+  it("زبانِ خانوادهٔ شکستِ r345 سمتِ میزبان پابرجاست — از r394 با وامگیریِ مالکِ نامدار", () => {
+    // r394 — توستِ 🔇 دیگر در میزبانها دستکپی نیست؛ هر شش نما speakFailToast
+    // را پاس میدهند و سهگانه در مالکِ یکتا (speak.ts) زنده است.
+    const sp = read("src/lib/speak.ts");
+    expect(sp).toContain("export function speakFailToast");
+    expect(sp).toContain("پخش صدا ممکن نشد");
   });
 
-  it("حکمِ «نخیر»: SpeakButton دستنخورده — و تعریفِ مالک یکجاست", () => {
+  it("حکمِ «نخیر»: SpeakButton در مسیرِ خودش میماند — و تعریفِ مالک یکجاست", () => {
     const sb = read("src/components/study/shared/speak-button.tsx");
-    expect(sb).toContain("پخش صدا ممکن نشد"); // عضوِ پایهٔ r345 دستنخورده
+    // r394 — عضوِ پایهٔ r345 اینک از مالکِ نامدار وام میگیرد (idle + وامگیری)
+    expect(sb).toContain("speakFailToast();");
     const owner = read("src/components/study/lesson/pair-speak-chips.tsx");
     expect(owner.match(/export default function PairSpeakChips/g)?.length).toBe(1);
   });

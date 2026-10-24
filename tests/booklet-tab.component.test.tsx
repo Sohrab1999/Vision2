@@ -16,7 +16,7 @@ import { useStudy } from "@/lib/study-store";
 import { lessons } from "@/data";
 
 vi.mock("@/lib/analytics", () => ({ trackEvent: vi.fn() }));
-vi.mock("@/lib/speak", () => ({ speak: vi.fn() }));
+vi.mock("@/lib/speak", () => ({ speak: vi.fn(), speakFailToast: vi.fn() }));
 // IntersectionObserver برای whileInView
 class IOStub {
   observe() {}

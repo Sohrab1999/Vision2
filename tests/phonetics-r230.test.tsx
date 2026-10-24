@@ -22,7 +22,7 @@ import { vowelPhonemes, consonantPhonemes } from "@/data/appendix";
 import { useStudy } from "@/lib/study-store";
 
 vi.mock("@/lib/analytics", () => ({ trackEvent: vi.fn() }));
-vi.mock("@/lib/speak", () => ({ speak: vi.fn() }));
+vi.mock("@/lib/speak", () => ({ speak: vi.fn(), speakFailToast: vi.fn() }));
 
 const fa = (n: number) => String(n).replace(/\d/g, (d) => "۰۱۲۳۴۵۶۷۸۹"[+d]);
 const TOTAL = vowelPhonemes.length + consonantPhonemes.length;

@@ -23,7 +23,7 @@ import { buildSynAntIndex } from "@/lib/syn-ant-lookup";
 import { lessons } from "@/data";
 
 vi.mock("@/lib/analytics", () => ({ trackEvent: vi.fn() }));
-vi.mock("@/lib/speak", () => ({ speak: vi.fn() }));
+vi.mock("@/lib/speak", () => ({ speak: vi.fn(), speakFailToast: vi.fn() }));
 
 const index = buildSynAntIndex(lessons);
 // data-derived pair-less star (same recipe as the r206 guards)

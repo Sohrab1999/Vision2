@@ -12,7 +12,7 @@ import { lessonVocabUsageCensus } from "@/lib/word-usage";
 import WordUsageDialog from "./word-usage-dialog";
 import BookletUsageChip, { useBookletUsageTarget } from "./booklet-usage-chip";
 import PairSpeakChips from "./pair-speak-chips";
-import { useToast } from "@/hooks/use-toast";
+import { speakFailToast } from "@/lib/speak";
 import { lessons } from "@/data";
 import { WORD_FAMILY_LESSON_LINKS, wordFamilyTableId } from "@/data/word-families";
 import Flashcards from "./flashcards";
@@ -30,15 +30,6 @@ export default function VocabTab({
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState<Filter>("all");
   const [flashMode, setFlashMode] = useState(startSmart);
-  const { toast } = useToast();
-  // راندِ ۳۴۵ — چیپِ «روخوانی جفت» در شکستِ صدا ساکت نمی‌ماند
-  // (همزبانِ خانوادهٔ شنیدار — listen-view)؛ هیچ رویدادِ تحلیلی رویِ پایِ شکست.
-  const pairSpeakError = () =>
-    toast({
-      title: "🔇 پخش صدا ممکن نشد",
-      description: "اتصال اینترنت را بررسی کن و دوباره روی دکمهٔ پخش بزن.",
-      duration: 3500,
-    });
   const known = useStudy((s) => s.known);
   const toggleKnown = useStudy((s) => s.toggleKnown);
   const toggleStarred = useStudy((s) => s.toggleStarred);
@@ -215,7 +206,7 @@ export default function VocabTab({
                     <div className="mt-1 flex flex-wrap items-center gap-1">
                       {/* r390 — چیپهایِ «روخوانی جفت» از مالکِ یکتایِ PairSpeakChips؛
                           stopPropagation: کارتِ کلیکِ خودش را دارد (بلدم‌کردن) */}
-                      <PairSpeakChips pairs={pairs} en={w.en} onSpeakError={pairSpeakError} stopPropagation />
+                      <PairSpeakChips pairs={pairs} en={w.en} onSpeakError={speakFailToast} stopPropagation />
                     </div>
                   );
                 })()}

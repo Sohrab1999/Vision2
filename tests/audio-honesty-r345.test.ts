@@ -24,6 +24,12 @@ import { speak } from "@/lib/speak";
 // رکوردِ زنده: scripts/qa-r345-audio-failpath.sh — تزریقِ fetchِ
 // /api/tts→500، اتمیکِ کلیک+کاوش، تاریکِ درجا، negctlِ بازگردانی.
 // ------------------------------------------------------------------
+// r394 — سهگانهٔ خانواده (عنوان + توصیه + ۳۵۰۰) از ۹ سایتِ دستکپی
+// به مالکِ نامدارِ speakFailToast (speak.ts) رفت — برابری که قفلِ
+// تستی نگه میداشت حالا ساختاری است. این پرونده بهجایِ سهگانه در هر
+// سایت، وامگیریِ مالک را قفل میکند؛ رفتارِ زنده توسطِ
+// scripts/qa-r394-speak-fail.sh بازداوری شد (همان تزریق، همان توست).
+// ------------------------------------------------------------------
 
 const p = (f: string) => readFileSync(join(process.cwd(), f), "utf8");
 
@@ -45,14 +51,15 @@ afterEach(() => {
 });
 
 describe("r345 — زبانِ خانوادهٔ شنیدار رویِ همهٔ درگاههایِ شکست", () => {
-  it("عضوِ پایه (listen-view) دستنخورده: عنوان + توصیه + ۳۵۰۰", () => {
+  it("عضوِ پایه (listen-view) — از r394 از مالکِ نامدار وام میگیرد", () => {
     const src = p("src/components/study/practice/listen-view.tsx");
-    expect(src).toContain(`title: "🔇 ${FAMILY_TITLE}"`);
-    expect(src).toContain(FAMILY_DESC);
-    expect(src).toContain("duration: 3500");
+    // r394 — سهگانه در مالک (speak.ts) است؛ سایت پایه فقط صدا میزند
+    expect(src).toContain("speakFailToast()");
+    expect(src).toContain('import { speak, speakFailToast, stopSpeaking } from "@/lib/speak";');
+    expect(src).not.toContain(`title: "🔇 ${FAMILY_TITLE}"`);
   });
 
-  it("هر هشت عضوِ تازه همین سهگانهٔ خانواده را دارند", () => {
+  it("هر هشت عضوِ تازه از مالکِ نامدار وام میگیرند — سهگانهٔ دستکپی منقرض", () => {
     const newMembers = [
       "src/components/study/shared/speak-button.tsx",
       "src/components/study/lesson/conversation-tab.tsx",
@@ -60,22 +67,26 @@ describe("r345 — زبانِ خانوادهٔ شنیدار رویِ همهٔ د
     ];
     for (const f of newMembers) {
       const src = p(f);
-      expect(src, f).toContain(`title: "🔇 ${FAMILY_TITLE}"`);
-      expect(src, f).toContain(FAMILY_DESC);
-      expect(src, f).toContain("duration: 3500");
+      expect(src, f).toContain("speakFailToast");
+      expect(src, f).toContain("@/lib/speak");
+      // شکلِ دستکپیِ سهگانه دیگر در هیچ عضوی زنده نمیماند
+      expect(src, f).not.toContain(`title: "🔇 ${FAMILY_TITLE}"`);
     }
   });
 
   it("شش چیپِ «روخوانی جفت»: فراخوانِ بی.onError دیگر وجود ندارد", () => {
     // r390 — کلیکِ چیپ به مالکِ یکتایِ PairSpeakChips رفت؛ قفلِ r345 حالا
-    // دوروش میبندد: هر نما onSpeakError={pairSpeakError} به مالک میدهد
-    // (توستِ خانواده سمتِ میزبان پابرجا) و مالکِ وامگیرنده فراخوانِ
-    // چهارآرگومانِ کامل را حمل میکند (undefined, onSpeakError).
+    // دوروش میبندد: هر نما onSpeakError به مالک میدهد و مالکِ وامگیرنده
+    // فراخوانِ چهارآرگومانِ کامل را حمل میکند (undefined, onSpeakError).
+    // r394 — درگاهِ خطا دیگر pairSpeakErrorِ محلی نیست؛ مالکِ نامدارِ
+    // توستِ خانواده (speakFailToast در speak.ts) مستقیم پاس میشود.
     for (const f of chipFiles) {
       const src = p(f);
-      expect(src, f).toContain("onSpeakError={pairSpeakError}");
+      expect(src, f).toContain("onSpeakError={speakFailToast}");
       // شکلِ برهنهٔ ساکت (بدونِ درگاهِ خطا) ممنوع — مرزِ پرانتز/سمیکالن
       expect(src, f).not.toMatch(/\(\s*p\.other,\s*0\.95\s*\)\s*[;}]/);
+      // تعریفِ محلیِ کهنه منقرض — دو نام، خانواده را از گریپ پنهان میکرد
+      expect(src, f).not.toContain("pairSpeakError");
     }
     const owner = p("src/components/study/lesson/pair-speak-chips.tsx");
     expect(owner, "the r390 owner carries the full r345 speak call").toContain(
@@ -90,7 +101,8 @@ describe("r345 — قراردادِ هر درگاه", () => {
     const i = src.indexOf("const stop = await speak(");
     const block = src.slice(i, src.indexOf("stopRef.current = () => {", i));
     expect(block).toContain('setState("idle")');
-    expect(block).toContain(`title: "🔇 ${FAMILY_TITLE}"`);
+    // r394 — توستِ خانواده از مالکِ نامدار صدا زده میشود
+    expect(block).toContain("speakFailToast();");
     // قاعدهٔ r344 — هیچ trackEventی رویِ پایِ شکست
     expect(src).not.toContain("trackEvent");
     // قراردادِ r234 دستنخورده: onSpeak پیش از هر تلاشِ شبکه
@@ -105,7 +117,8 @@ describe("r345 — قراردادِ هر درگاه", () => {
     expect(i).toBeGreaterThan(-1);
     const block = src.slice(i, src.indexOf("resolve();", i) + 10);
     const cancel = block.indexOf("cancelRef.current = true;");
-    const toast = block.indexOf(`title: "🔇 ${FAMILY_TITLE}"`);
+    // r394 — صداى توستِ خانواده از مالکِ نامدار؛ ترتیبِ قرارداد پابرجا
+    const toast = block.indexOf("speakFailToast();");
     const resolve = block.indexOf("resolve();");
     expect(cancel).toBeGreaterThan(-1);
     expect(toast).toBeGreaterThan(cancel);

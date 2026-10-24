@@ -47,7 +47,7 @@ const studyAppSrc = readFileSync(
 );
 
 vi.mock("@/lib/analytics", () => ({ trackEvent: vi.fn() }));
-vi.mock("@/lib/speak", () => ({ speak: vi.fn(async () => () => {}) }));
+vi.mock("@/lib/speak", () => ({ speak: vi.fn(async () => () => {}), speakFailToast: vi.fn() }));
 vi.mock("next-themes", () => ({
   useTheme: () => ({ theme: "light", setTheme: vi.fn() }),
 }));

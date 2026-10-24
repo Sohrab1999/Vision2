@@ -18,7 +18,7 @@ import { buildSynAntIndex, synAntPairsFor } from "@/lib/syn-ant-lookup";
 
 vi.mock("@/lib/analytics", () => ({ trackEvent: vi.fn() }));
 vi.mock("@/hooks/use-toast", () => ({ useToast: () => ({ toast: vi.fn() }) }));
-vi.mock("@/lib/speak", () => ({ speak: vi.fn() }));
+vi.mock("@/lib/speak", () => ({ speak: vi.fn(), speakFailToast: vi.fn() }));
 
 import { speak } from "@/lib/speak";
 

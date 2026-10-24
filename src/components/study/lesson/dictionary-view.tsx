@@ -9,6 +9,7 @@ import { posLabel, themeOf, faNum } from "@/lib/study-theme";
 import { downloadAnkiTsv, buildAnkiTsv } from "@/lib/anki-export";
 import { trackEvent } from "@/lib/analytics";
 import { useToast } from "@/hooks/use-toast";
+import { speakFailToast } from "@/lib/speak";
 import { buildSynAntIndex, synAntPairsFor, matchesViaPairs } from "@/lib/syn-ant-lookup";
 import { findWordUsages, lessonsVocabUsageRanking } from "@/lib/word-usage";
 import WordUsageDialog from "./word-usage-dialog";
@@ -46,14 +47,6 @@ export default function DictionaryView() {
   const usage = useBookletUsageTarget();
   const mounted = useMounted();
   const { toast } = useToast();
-  // راندِ ۳۴۵ — چیپِ «روخوانی جفت» در شکستِ صدا ساکت نمی‌ماند
-  // (همزبانِ خانوادهٔ شنیدار — listen-view)؛ هیچ رویدادِ تحلیلی رویِ پایِ شکست.
-  const pairSpeakError = () =>
-    toast({
-      title: "🔇 پخش صدا ممکن نشد",
-      description: "اتصال اینترنت را بررسی کن و دوباره روی دکمهٔ پخش بزن.",
-      duration: 3500,
-    });
 
   const ankiCount = useMemo(() => buildAnkiTsv().count, []);
 
@@ -663,7 +656,7 @@ export default function DictionaryView() {
                   return (
                     <div className="mt-1 flex flex-wrap items-center gap-1">
                       {/* r390 — چیپهایِ «روخوانی جفت» از مالکِ یکتایِ PairSpeakChips */}
-                      <PairSpeakChips pairs={pairs} en={w.en} onSpeakError={pairSpeakError} />
+                      <PairSpeakChips pairs={pairs} en={w.en} onSpeakError={speakFailToast} />
                     </div>
                   );
                 })()}

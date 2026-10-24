@@ -17,7 +17,7 @@ import { buildSynAntIndex, synAntPairsFor } from "@/lib/syn-ant-lookup";
 import WordUsageDialog from "./word-usage-dialog";
 import BookletUsageChip, { useBookletUsageTarget } from "./booklet-usage-chip";
 import PairSpeakChips from "./pair-speak-chips";
-import { useToast } from "@/hooks/use-toast";
+import { speakFailToast } from "@/lib/speak";
 import SpeakButton from "../shared/speak-button";
 
 // راند ۲۰۵: نقشهٔ عددِ اصلیِ محلی حذف شد — «درس هفتم» و بقیه از کمکیِ مشترکِ
@@ -29,15 +29,6 @@ export default function WordOfDay() {
   const known = useStudy((s) => s.known);
   const toggleKnown = useStudy((s) => s.toggleKnown);
   const mounted = useMounted();
-  const { toast } = useToast();
-  // راندِ ۳۴۵ — چیپِ «روخوانی جفت» در شکستِ صدا ساکت نمی‌ماند
-  // (همزبانِ خانوادهٔ شنیدار — listen-view)؛ هیچ رویدادِ تحلیلی رویِ پایِ شکست.
-  const pairSpeakError = () =>
-    toast({
-      title: "🔇 پخش صدا ممکن نشد",
-      description: "اتصال اینترنت را بررسی کن و دوباره روی دکمهٔ پخش بزن.",
-      duration: 3500,
-    });
   // راند ۲۵۴ — «کاربرد در جزوه» رویِ کارتِ واژهٔ روز (بندِ ① پیشنهادِ ۲۵۳):
   // چهارمین مصرف‌کنندهٔ خانواده، همان تک‌منبع + همان دیالوگِ مشترک؛
   // r389 — سیم‌کشی به مالکِ یکتایِ چیپ
@@ -109,7 +100,7 @@ export default function WordOfDay() {
           {pairs.length > 0 && (
             <div className="mt-1.5 flex flex-wrap items-center gap-1">
               {/* r390 — چیپهایِ «روخوانی جفت» از مالکِ یکتایِ PairSpeakChips */}
-              <PairSpeakChips pairs={pairs} en={pick.en} onSpeakError={pairSpeakError} />
+              <PairSpeakChips pairs={pairs} en={pick.en} onSpeakError={speakFailToast} />
             </div>
           )}
           {/* راند ۲۵۴ → ۳۸۹ — چیپِ «در جزوه» کنارِ جفت‌ها: این واژهٔ امروز کجای

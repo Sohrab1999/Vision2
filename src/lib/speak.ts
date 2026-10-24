@@ -1,6 +1,7 @@
 "use client";
 
 // Shared TTS playback manager (uses backend /api/tts which wraps z-ai-web-dev-sdk)
+import { toast } from "@/hooks/use-toast";
 
 const urlCache = new Map<string, string>();
 let current: HTMLAudioElement | null = null;
@@ -18,6 +19,21 @@ export function getSpeakRateScale(): number {
 }
 
 export type SpeakStop = () => void;
+
+// r394 — the family toast gets ONE name. Since r345 the TTS-failure
+// triple (mute title + connection advice + 3500ms) was hand-copied across
+// NINE call sites and held equal only by source locks; the owner makes the
+// equality structural. Borrowing is a choice, not a side effect: speak()
+// itself never toasts (the r345 4-arg contract stays frozen) and the duel
+// arena keeps its inline dialect (spell-rush renders its own paragraph).
+// Fires no analytics on the failure path (the r344 rule).
+export function speakFailToast(): void {
+  toast({
+    title: "🔇 پخش صدا ممکن نشد",
+    description: "اتصال اینترنت را بررسی کن و دوباره روی دکمهٔ پخش بزن.",
+    duration: 3500,
+  });
+}
 
 export async function speak(
   text: string,

@@ -34,7 +34,7 @@ import { lessons } from "@/data";
 const read = (p: string) => readFileSync(join(process.cwd(), p), "utf8");
 
 vi.mock("@/lib/analytics", () => ({ trackEvent: vi.fn() }));
-vi.mock("@/lib/speak", () => ({ speak: vi.fn() }));
+vi.mock("@/lib/speak", () => ({ speak: vi.fn(), speakFailToast: vi.fn() }));
 
 const FIVE_VIEWS = [
   "src/components/study/lesson/dictionary-view.tsx",

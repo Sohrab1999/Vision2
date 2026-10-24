@@ -28,7 +28,7 @@ import { join } from "node:path";
 import { cleanup, render, fireEvent, waitFor } from "@testing-library/react";
 
 vi.mock("@/lib/analytics", () => ({ trackEvent: vi.fn() }));
-vi.mock("@/lib/speak", () => ({ speak: vi.fn() }));
+vi.mock("@/lib/speak", () => ({ speak: vi.fn(), speakFailToast: vi.fn() }));
 
 import GrammarView from "@/components/study/grammar/grammar-view";
 import { useStudy } from "@/lib/study-store";

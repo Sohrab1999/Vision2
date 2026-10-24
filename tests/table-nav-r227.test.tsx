@@ -24,7 +24,7 @@ import { BOOKLET_GRAMMAR_TOPICS } from "@/data/booklet-grammar";
 import { useStudy } from "@/lib/study-store";
 
 vi.mock("@/lib/analytics", () => ({ trackEvent: vi.fn() }));
-vi.mock("@/lib/speak", () => ({ speak: vi.fn() }));
+vi.mock("@/lib/speak", () => ({ speak: vi.fn(), speakFailToast: vi.fn() }));
 
 // ناوبریِ همسایه از «فهرستِ رندرشده» — برچسب = «<پایه> · <درس>»
 const label = (t: (typeof WORD_FAMILY_TABLES)[number]) => `${t.grade} · ${t.lesson}`;

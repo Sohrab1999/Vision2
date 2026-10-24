@@ -27,7 +27,7 @@ import { faNum, percentFa, RESUME_FOCUS_RING } from "@/lib/study-theme";
 import { percentFromRate } from "@/lib/domain/percent"; // r388 — نرخ→درصد از مالک؛ قدمِ بایتهمسانِ دستی در سه نما مرد
 import { buildSynAntIndex, synAntPairsFor } from "@/lib/syn-ant-lookup";
 import { srsWordStatus, focusSrsDashboard, type SrsWordStatus } from "@/lib/srs-due";
-import { useToast } from "@/hooks/use-toast";
+import { speakFailToast } from "@/lib/speak";
 import { trackEvent } from "@/lib/analytics";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import Flashcards from "../lesson/flashcards";
@@ -49,15 +49,6 @@ export default function DangerWords() {
   // خطر از دیدِ چرخهٔ مرور هم حرف بزند (کلیدِ خطر = کلیدِ واژه در srs)
   const srs = useStudy((s) => s.srs);
   const mounted = useMounted();
-  const { toast } = useToast();
-  // راندِ ۳۴۵ — چیپِ «روخوانی جفت» در شکستِ صدا ساکت نمی‌ماند
-  // (همزبانِ خانوادهٔ شنیدار — listen-view)؛ هیچ رویدادِ تحلیلی رویِ پایِ شکست.
-  const pairSpeakError = () =>
-    toast({
-      title: "🔇 پخش صدا ممکن نشد",
-      description: "اتصال اینترنت را بررسی کن و دوباره روی دکمهٔ پخش بزن.",
-      duration: 3500,
-    });
 
   const starredSet = useMemo(() => new Set(starredWords), [starredWords]);
 
@@ -285,7 +276,7 @@ export default function DangerWords() {
                               <PairSpeakChips
                                 pairs={pairs}
                                 en={d.en}
-                                onSpeakError={pairSpeakError}
+                                onSpeakError={speakFailToast}
                                 max={2}
                                 compact
                                 overflowTitle="ردیف‌های جفت دیگر در تبِ مترادف و متضاد درس"

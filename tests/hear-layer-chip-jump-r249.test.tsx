@@ -32,7 +32,7 @@ import { useStudy } from "@/lib/study-store";
 import { vowelPhonemes, abbreviations } from "@/data/appendix";
 
 vi.mock("@/lib/analytics", () => ({ trackEvent: vi.fn() }));
-vi.mock("@/lib/speak", () => ({ speak: vi.fn(async () => () => {}) }));
+vi.mock("@/lib/speak", () => ({ speak: vi.fn(async () => () => {}), speakFailToast: vi.fn() }));
 
 class IOStub {
   observe() {}

@@ -62,7 +62,7 @@ export default function PairSpeakChips(props: {
   pairs: SynAntPairEntry[];
   /** واژهٔ هدف — مالکِ slotِ aria */
   en: string;
-  /** درگاهِ خطایِ r345 — معمولاً pairSpeakErrorِ میزبان (توستِ خانواده) */
+  /** درگاهِ خطایِ r345 — از r394 مالکِ نامدارِ توستِ خانواده: speakFailToast (speak.ts) */
   onSpeakError: () => void;
   /** سقفِ چیپها — پیشفرضِ ۳؛ ردیفِ خطر ۲ میفرستد (گویشِ فشرده) */
   max?: number;

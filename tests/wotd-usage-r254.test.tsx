@@ -27,7 +27,7 @@ import { findWordUsages } from "@/lib/word-usage";
 import { faNum } from "@/lib/study-theme";
 
 vi.mock("@/lib/analytics", () => ({ trackEvent: vi.fn() }));
-vi.mock("@/lib/speak", () => ({ speak: vi.fn() }));
+vi.mock("@/lib/speak", () => ({ speak: vi.fn(), speakFailToast: vi.fn() }));
 
 // همان فرمولِ قطعیِ کامپوننت — یک منبع، دو دید
 function todayPick(): { en: string; lessonId: number } {
