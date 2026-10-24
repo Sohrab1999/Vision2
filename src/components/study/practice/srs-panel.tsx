@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { RefreshCcw, Sparkles, CalendarClock, CheckCircle2, TrendingUp, Sprout, BookOpenCheck, AlarmClock, ArrowLeft, Star, ChevronDown, Ear } from "lucide-react";
-import { useStudy, srsDueTotal, firstLessonWithDue, starToggleAria, type SrsItem } from "@/lib/study-store";
+import { useStudy, srsDueTotal, firstLessonWithDue, starToggleAria, srsLevelFa, type SrsItem } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
 import { srsDueSummary, srsForecastWords, SRS_PANEL_SPOTLIGHT_EVENT, peekSrsSpotlight, ackSrsSpotlight, focusSrsDashboard } from "@/lib/srs-due";
@@ -324,7 +324,7 @@ export default function SrsPanel() {
                       <motion.button
                         whileTap={{ scale: 0.92 }}
                         onClick={startSmartReview}
-                        title={`${w.en} — سطح ${faNum(w.level + 1)} از ۶`}
+                        title={`${w.en} — ${srsLevelFa(w.level)}`}
                         className="srs-due-chip group flex items-center gap-1.5 rounded-lg border border-rose-100 bg-white px-2 py-1 shadow-sm transition-[background-color,color,border-color,box-shadow,transform] hover:-translate-y-0.5 hover:border-rose-300 hover:shadow active:scale-[0.96]"
                       >
                         <span className="en-text text-[12px] font-bold text-stone-800" dir="ltr">
@@ -411,7 +411,7 @@ export default function SrsPanel() {
                                 <Star size={12} className={starred ? "fill-amber-400 text-amber-500" : "text-stone-300 transition-colors hover:text-amber-400"} />
                               </motion.button>
                               <span
-                                title={`${w.en} — سطح ${faNum(w.level + 1)} از ۶`}
+                                title={`${w.en} — ${srsLevelFa(w.level)}`}
                                 className="srs-fx-chip inline-flex items-center gap-1.5 rounded-lg border border-dashed border-teal-200 bg-white px-2 py-1 text-[11px] shadow-sm"
                               >
                                 <span className="en-text text-[12px] font-bold text-stone-800" dir="ltr">{w.en}</span>

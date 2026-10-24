@@ -17,7 +17,7 @@
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { AlertTriangle, RefreshCcw, Sparkles, Zap, TrendingDown, Star, Ear } from "lucide-react";
-import { useStudy, SRS_INTERVALS, starToggleAria } from "@/lib/study-store";
+import { useStudy, starToggleAria, srsLevelFa } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { dangerWords, buildDangerQuiz, type DangerWord } from "@/lib/word-risk";
 import { buildDangerDictation, DICTATION_MIN_DANGER } from "@/lib/danger-dictation";
@@ -236,7 +236,7 @@ export default function DangerWords() {
                           // کنشِ مرور همان‌جاست، این فقط راهِ رسیدن است).
                           const st = srsStates.get(d.key);
                           if (!st) return null;
-                          const levelTxt = `سطح ${faNum(st.level + 1)} از ${faNum(SRS_INTERVALS.length)}`;
+                          const levelTxt = srsLevelFa(st.level);
                           const stateWord =
                             st.state === "due" ? "سررسیدِ مرور" : st.state === "strong" ? "مستحکم" : st.state === "mastered" ? "وارفته" : "در حال یادگیری";
                           const cls =

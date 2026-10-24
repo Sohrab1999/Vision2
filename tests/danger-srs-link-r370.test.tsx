@@ -181,7 +181,11 @@ describe("قفلهایِ ساختاری — r370", () => {
     // (srsWordStatus) و پرشِ آن (focusSrsDashboard) یک کتابخانهاند
     expect(src).toContain('import { srsWordStatus, focusSrsDashboard, type SrsWordStatus } from "@/lib/srs-due"');
     expect(src).toContain("srsWordStatus(srs[d.key]");
-    expect(src).toContain("faNum(SRS_INTERVALS.length)");
+    // r392 — برچسبِ «سطح N از M» به مالکِ موتور مهاجرت کرد: srsLevelFa
+    // (state/srs-engine.ts) مخرج را از SRS_INTERVALS.length میسازد — همان
+    // تکمنبعیِ این قفل، حالا یک لایه عمیقتر (در مالکِ رجیستری) تضمین است
+    // (tests/srs-level-fa-r392.test.ts).
+    expect(src).toContain("srsLevelFa(st.level)");
     expect(src).not.toContain("از ۶");
     expect(src).not.toContain("transition-all");
     expect(EVENT_NAMES.length).toBe(52);

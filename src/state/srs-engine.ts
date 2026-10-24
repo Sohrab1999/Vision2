@@ -4,6 +4,7 @@
 // (اسلایس konkur در markKonkur مصرفش می‌کند — F11).
 
 import type { SrsItem } from "./types";
+import { faNum } from "@/lib/time-fa";
 
 export const SRS_INTERVALS = [
   15 * 60_000, // 15 دقیقه
@@ -15,6 +16,27 @@ export const SRS_INTERVALS = [
 ];
 
 export const SRS_LABELS = ["۱۵ دقیقه", "۱ روز", "۳ روز", "۱ هفته", "۲ هفته", "۱ ماه"];
+
+// ---------------------------------------------------------------
+// راند ۳۹۲ — قراردادِ «سطح N از ۶» یک نام گرفت (سرشماریِ ۵ متن + ۱ نردبانِ نقطه)
+// ---------------------------------------------------------------
+// سرشماریِ برچسبِ سطحِ مرور: قالبِ «سطح {faNum(level+1)} از ۶» در ۴ متنِ نما
+// تکرار میشد — سه جا با «۶»یِ هاردکد (srs-panel ×۲ و جملهٔ فلش‌کارت) و یکجا
+// با مشتقِ درست از SRS_INTERVALS.length (danger-words). حقیقتِ مخرج همان
+// SRS_INTERVALS.length است (دو گیتِ clamp در srs-engine/srs رویِ length-۱اند)
+// — اگر روزی نردبان بلندتر شود، danger «از ۷» میگفت و بقیه «از ۶»: کلاسِ
+// «سندِ دروغ»ِ حکمِ موافقتِ r383 (مخرج باید یکجا زندگی کند — سابقهٔ
+// badgeFractionFa در r387). نردبانِ نقطههایِ فلش‌کارت هم طولِ ۶ هاردکد داشت.
+// مالک: همین موتور — هم SRS_INTERVALS را می‌مالد هم برچسبش را؛ faNum از
+// مالکِ قالبِ فارسی (r385) میآید — ماژول خالص میماند.
+//
+// حکمهای «نخیر»ِ سرشماری:
+// ① titleِ «سطح مرور: N — بعدی: LABEL» فلش‌کارت گویشِ دیگری است (سطحِ تنها
+//    + سررسیدِ بعدی، بی «از M») — مستند، نه خطا.
+// ② نردبانِ نقطهها از SRS_INTERVALS.length مشتق میشود (نه از srsLevelFa) —
+//    شکلِ آن نقطه است نه برچسب؛ رجیستریِ خودِ موتور کافی است.
+export const srsLevelFa = (level: number): string =>
+  `سطح ${faNum(level + 1)} از ${faNum(SRS_INTERVALS.length)}`;
 
 export function srsDueCount(srs: Record<string, SrsItem>, lessonId: number): number {
   const now = Date.now();

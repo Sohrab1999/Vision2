@@ -169,10 +169,14 @@ describe("flashcards smart review — source locks (r274)", () => {
     expect(src).toContain("faNum(cards.length)} کارتِ باقی‌مانده");
     expect(src).toContain("{faNum(knownCount)} بلدم");
     expect(src).toContain("{faNum(dueCount)}");
-    expect(src).toContain("(سطح {faNum(srsItem.level + 1)} از ۶)");
+    // r392 — قالبِ «سطح N از ۶» به مالکِ srsLevelFa (state/srs-engine.ts) مهاجرت کرد؛
+    // ارقامِ فارسی حالا در مالک تضمین میشود (tests/srs-level-fa-r392.test.ts) و
+    // نردبانِ نقطهها طولش از SRS_INTERVALS.length میآید.
+    expect(src).toContain("({srsLevelFa(srsItem.level)})");
     // رشته‌های خامِ قدیمی نباید برگردند
     expect(src).not.toContain("{knownCount} بلدم");
     expect(src).not.toContain("(سطح {srsItem.level + 1} از ۶)");
+    expect(src).not.toContain("(سطح {faNum(srsItem.level + 1)} از ۶)");
     expect(src).not.toContain("کارت {Math.min(index + 1, cards.length)} از {cards.length}");
   });
 

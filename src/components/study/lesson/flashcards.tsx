@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronRight, ChevronLeft, Check, RefreshCw, Hand, Sparkles, Star, Layers } from "lucide-react";
 import type { LessonData, VocabWord } from "@/lib/study-types";
-import { useStudy, wordKey, SRS_LABELS } from "@/lib/study-store";
+import { useStudy, wordKey, SRS_LABELS, SRS_INTERVALS, srsLevelFa } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { isTypingTarget, useKeydown } from "@/hooks/use-keyboard";
 import { useToast } from "@/hooks/use-toast";
@@ -288,7 +288,7 @@ export default function Flashcards({
           <div className={`flip-face flex flex-col items-center justify-center gap-3 rounded-2xl border-2 ${t.border} bg-white p-6 shadow-lg`}>
             {srsItem && (
               <div className="absolute left-4 top-4 flex gap-1" title={`سطح مرور: ${faNum(srsItem.level + 1)} — بعدی: ${SRS_LABELS[srsItem.level]}`}>
-                {Array.from({ length: 6 }).map((_, i) => (
+                {Array.from({ length: SRS_INTERVALS.length }).map((_, i) => (
                   <span
                     key={i}
                     className={`h-1.5 w-1.5 rounded-full ${i <= srsItem.level ? "bg-violet-500" : "bg-stone-200"}`}
@@ -425,7 +425,7 @@ export default function Flashcards({
             className="text-center text-[12px] text-stone-500"
           >
             {isKnown && <span className="text-emerald-600">✓ بلدم · </span>}
-            مرور بعدی: <b className="text-violet-600">{SRS_LABELS[srsItem.level]} دیگر</b> (سطح {faNum(srsItem.level + 1)} از ۶)
+            مرور بعدی: <b className="text-violet-600">{SRS_LABELS[srsItem.level]} دیگر</b> ({srsLevelFa(srsItem.level)})
           </motion.p>
         )}
       </AnimatePresence>
