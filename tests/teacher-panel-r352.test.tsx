@@ -183,7 +183,9 @@ describe("GET /api/teacher/report — گیت و گزارش", () => {
 // ------------------------------------------------------------------
 describe("موتورِ teacher-report", () => {
   it("buildByDay: صفرهای واقعی، پنجرهٔ دقیق، مرتبِ کهنه→امروز", () => {
-    const rows = [iso(2 * HOUR), iso(3 * 86_400_000), iso(40 * 86_400_000)];
+    // r363 — فیکسچرِ «امروز» قطعی: ظهرِ UTCِ خودِ now — iso(2h) در سوتِ
+    // ۰۰:۰۰–۰۲:۰۰ UTC از نیمه‌شب میگذشت و به دیروز میافتاد (باگِ قطعیت)
+    const rows = [new Date(`${day(0)}T12:00:00Z`), iso(3 * 86_400_000), iso(40 * 86_400_000)];
     const out = buildByDay(rows, now);
     expect(out).toHaveLength(7);
     expect(out[6].day).toBe(day(0));

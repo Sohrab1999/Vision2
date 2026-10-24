@@ -33,6 +33,9 @@ const iso = (msAgo: number) => new Date(now - msAgo).toISOString();
 const day = (n: number) => new Date(now - n * 86_400_000).toISOString().slice(0, 10);
 // روزهایِ قطعی: ظهرِ UTC — درسِ r352 (now-26h لزوماً «دیروز» نیست)
 const noon = (n: number) => new Date(`${day(n)}T12:00:00Z`);
+// r363 — ساعتِ قطعیِ امروز: فیکسچرِ «امروز» که از مرزِ نیمه‌شب عبور نکند —
+// درسِ راندِ r363: سوتِ ۰۰:۰۰–۰۲:۰۰ UTC «iso(N*HOUR)» را به دیروز میفرستد
+const todayAt = (h: number) => new Date(`${day(0)}T${String(h).padStart(2, "0")}:00:00Z`);
 
 // ------------------------------------------------------------------
 // ① handleِ ناموجودالاثر
@@ -100,18 +103,18 @@ describe("assembleLearnerDetail — موتورِ جزئیاتِ یادگیرند
   it("شکستها: مهارت ضعیفترینِ اول (تساوی ⇒ نام)، درس ۱..۱۲ + خارجی، recent سقفِ ۶ با ISOی کامل", () => {
     const attempts = [
       { category: "vocab", lesson: 1, percent: 80, createdAt: noon(3) },
-      { category: "vocab", lesson: 2, percent: 90, createdAt: iso(1 * HOUR) },
-      { category: "dictation", lesson: 2, percent: 50, createdAt: iso(2 * HOUR) },
+      { category: "vocab", lesson: 2, percent: 90, createdAt: noon(0) }, // امروزِ قطعی — نه iso(1h) که از نیمه‌شب میگذرد (درسِ r363)
+      { category: "dictation", lesson: 2, percent: 50, createdAt: todayAt(10) }, // امروزِ قطعی
       { category: "listening", lesson: 1, percent: 40, createdAt: noon(3) },
       // خارجیِ دفاعی (درسِ ۹۹) — عینِ idiomِ گزارشِ کلاس
-      { category: "rush", lesson: 99, percent: 70, createdAt: iso(3 * HOUR) },
+      { category: "rush", lesson: 99, percent: 70, createdAt: todayAt(11) }, // امروزِ قطعی
     ];
     const d = assembleLearnerDetail({ now, profile: { name: "آرش", color: "emerald", createdAt: iso(9 * 86_400_000) }, attempts });
     expect(d.attempts).toBe(5);
     expect(d.avgPercent).toBe(66); // (80+90+50+40+70)/5 = 66
     expect(d.bestPercent).toBe(90);
     expect(d.lessons).toBe(3); // 1، 2، 99
-    expect(d.lastActive).toBe(iso(1 * HOUR));
+    expect(d.lastActive).toBe(noon(0).toISOString()); // جدیدترینِ امروزیها — ۱۲:۰۰ UTC
     // ضعیفترینِ اول: listening 40 → dictation 50 → rush 70 → vocab 85
     expect(d.bySkill.map((s) => s.category)).toEqual(["listening", "dictation", "rush", "vocab"]);
     expect(d.bySkill[3]).toEqual({ category: "vocab", attempts: 2, avgPercent: 85, bestPercent: 90 });

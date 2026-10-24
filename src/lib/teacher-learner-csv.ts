@@ -25,6 +25,7 @@
 // ------------------------------------------------------------------
 
 import { CSV_BOM, csvSafe } from "./teacher-csv";
+import { activeWeekMeta, activeWeekRows } from "./active-week";
 import { COVERAGE_SKILLS } from "./coverage-map";
 import type { LearnerDetail } from "./teacher-report";
 
@@ -90,6 +91,16 @@ export function buildLearnerCardCsv(d: LearnerDetail): string {
       d.lastActive ?? "",
     ].join(",")
   );
+
+  // -- r363 — «هفتهٔ فعال» سربرگِ کارنامه — همزبانِ دفترِ r362 --
+  // از خودِ byDayِ همین کارنامه میخواند (پنجرهٔ ۱۴روزه — طول از خودِ
+  // داده مشتق میشود نه عددِ دستی)؛ موتورِ مشترکِ active-week —
+  // هیچ محاسبهٔ موازیای. هفتهٔ خالی = صفرِ واقعی با شاهد، بیپرکارترین؛
+  // ورودیِ زباله ⇒ غیبتِ صادق — هیچ سطری.
+  const week = activeWeekMeta(d.byDay);
+  if (week) {
+    for (const row of activeWeekRows(week)) lines.push(row);
+  }
 
   // -- روندِ ۱۴روزه (صفرهایِ واقعی) — عنوان از طولِ خودِ پنجره --
   lines.push("");

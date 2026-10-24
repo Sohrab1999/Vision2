@@ -117,6 +117,10 @@ export default function TeacherDetailDialog({
   const stripMax = Math.max(...(detail?.byDay.map((d) => d.attempts) ?? [1]), 1);
   // برچسبهایِ نوار — یک `now` برایِ هر دو ردیف (ستونها و زیرنویسها همیشه همخوان)
   const strip = detail ? stripLabels(Date.now(), detail.byDay.length) : [];
+  // r363 — مجموعِ دو هفته — از خودِ byDayِ نوار (همان تکحقیقتی که ستونها میخوانند —
+  // آیدیومِ r362: «مجموعِ هفته» در نوارِ پنل — هیچ محاسبهٔ موازیای؛
+  // همزادِ CSV: سطرِ «هفتهٔ فعال» کارنامه — هر سطح به گویشِ سطحِ خودش)
+  const fortnightTotal = (detail?.byDay ?? []).reduce((s, d) => s + d.attempts, 0);
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -218,7 +222,9 @@ export default function TeacherDetailDialog({
 
               {/* ---------- نوارِ ۱۴روزه ---------- */}
               <section aria-label="روند چهارده روز گذشته" className="mt-4" data-testid="teacher-detail-strip">
-                <h3 className="mb-2 text-[11.5px] font-black text-stone-600">تلاشهایِ چهارده روزِ گذشته</h3>
+                <h3 className="mb-2 text-[11.5px] font-black text-stone-600">
+                  تلاشهایِ چهارده روزِ گذشته · مجموعِ دو هفته: <span data-testid="teacher-detail-week-total">{faNum(fortnightTotal)}</span>
+                </h3>
                 <div className="rounded-2xl border border-stone-200 p-3">
                   <div className="flex h-14 items-end justify-between gap-1" dir="ltr">
                     {strip.map((s) => {
