@@ -43,6 +43,24 @@ export function emptyDayStat(day: string): DayStat {
 }
 
 /**
+ * r384 — «آمارِ زندهٔ امروز» تکمنبع (ممیزیِ دوقلو — ایدئومِ r363/r381/r382/r383).
+ * سه نما (goal-chip با ZERO_DAYِ محلی، daily-quests با لیترالِ inline،
+ * home-today با گاردِ زیرمجموعهای) همین گارد را بایتبهبایت تکرار میکردند:
+ * «فقط وقتی mount شده و dayStat مالِ امروز است، زنده؛ وگرنه صفرِ امروز».
+ * مالکِ دامنه: موتورِ روز — کنارِ normDayStat/emptyDayStat. قرارداد:
+ *  • mounted=false (پیشِ هیدریشن) ⇒ صفرِ صادقِ امروز — هیچ عددِ جعلیِ دیروز
+ *  • dayStat.day !== today (روزِ کهنه/آینده) ⇒ صفرِ صادقِ امروز
+ *  • زنده ⇒ همان مرجعِ استور (بدونِ کپی — مرجعِ پایدار برایِ memoهایِ نما)
+ * پسرعموهایِ لایهٔ state/کتابخانه قراردادِ خودشان را دارند (قفلِ
+ * دامنهدار): effects.ts بدونِ گیتِ mounted (state پسِ هیدریشن است) و
+ * normDayStat میخواند؛ achievements.ts با fallbackِ day:""ِ
+ * normDayStat(undefined) که فیلدِ dayاش هرگز خوانده نمیشود.
+ */
+export function liveTodayStat(mounted: boolean, dayStat: DayStat, today: string): DayStat {
+  return mounted && dayStat.day === today ? dayStat : emptyDayStat(today);
+}
+
+/**
  * Task-37 «هفته‌نامه» — merge today's full stat into the 35-day window.
  * Day keys sort lexicographically, so dropping the smallest keys keeps the
  * newest days (same policy as the legacy HistoryMap cap in applyStreak).

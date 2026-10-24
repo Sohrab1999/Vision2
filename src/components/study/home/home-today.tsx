@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Flame, Snowflake, Target, RefreshCcw, Ear } from "lucide-react";
-import { useStudy, srsDueTotal, firstLessonWithDue, todayStr, FREEZE_CAP } from "@/lib/study-store";
+import { useStudy, srsDueTotal, firstLessonWithDue, todayStr, liveTodayStat, FREEZE_CAP } from "@/lib/study-store";
 import { freezeEarnMeta } from "@/lib/freeze-badge";
 import { percent } from "@/lib/domain/percent";
 import { useMounted } from "@/lib/use-mounted";
@@ -26,7 +26,11 @@ export default function HomeToday() {
 
   const dueTotal = mounted ? srsDueTotal(srs) : 0;
   const today = todayStr();
-  const todayActivities = mounted && dayStat.day === today ? dayStat.reviews + dayStat.quizzes : 0;
+  // r384 — گاردِ «زندهٔ امروز» تکمنبع شد: liveTodayStat از موتورِ روز
+  // (گاردِ زیرمجموعهایِ دستی مرده — همان دوقلویِ خانواده؛ گویشِ این نما
+  // فقط جمعِ reviews+quizzes است — همان قراردادِ شمارشِ goalAndFreezePatch)
+  const liveToday = liveTodayStat(mounted, dayStat, today);
+  const todayActivities = liveToday.reviews + liveToday.quizzes;
   const goalPercent = percent(todayActivities, dailyGoal);
   const reviewLesson = mounted ? firstLessonWithDue(srs) : null;
   // پیشرفتِ ساختن یخ بعدی — دقیقاً قرارداد goalAndFreezePatch؛ زیرِ سقف خط دارد

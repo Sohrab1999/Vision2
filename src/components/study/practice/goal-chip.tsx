@@ -3,7 +3,7 @@
 import { useMemo } from "react";
 import { motion } from "framer-motion";
 import { Target, Check } from "lucide-react";
-import { useStudy, todayStr, type DayStat } from "@/lib/study-store";
+import { useStudy, todayStr, liveTodayStat } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { goalChipMeta } from "@/lib/goal-chip";
 import { trackEvent } from "@/lib/analytics";
@@ -29,16 +29,6 @@ import { trackEvent } from "@/lib/analytics";
 // هیدراسیون: useMounted کل دروازه است — سرور و کلاینت هر دو «هیچ».
 // ------------------------------------------------------------------
 
-const ZERO_DAY: DayStat = {
-  day: "",
-  reviews: 0,
-  quizzes: 0,
-  words: 0,
-  dictation: 0,
-  rush: 0,
-  stories: 0,
-};
-
 export default function GoalChip() {
   const dayStat = useStudy((s) => s.dayStat);
   const dailyGoal = useStudy((s) => s.dailyGoal);
@@ -46,7 +36,9 @@ export default function GoalChip() {
   const mounted = useMounted();
 
   const today = todayStr();
-  const live = mounted && dayStat.day === today ? dayStat : { ...ZERO_DAY, day: today };
+  // r384 — گاردِ «زندهٔ امروز» تکمنبع شد: liveTodayStat از موتورِ روز
+  // (ثابتِ صفرِ محلی و گاردِ دستی مرده — دوقلویِ بایتبهبایت با daily-quests)
+  const live = liveTodayStat(mounted, dayStat, today);
   const meta = useMemo(
     () => goalChipMeta(live.reviews, live.quizzes, dailyGoal),
     [live.reviews, live.quizzes, dailyGoal]

@@ -14,7 +14,7 @@ import {
   Check,
   ChevronLeft,
 } from "lucide-react";
-import { useStudy, firstLessonWithDue, todayStr, type DayStat } from "@/lib/study-store";
+import { useStudy, firstLessonWithDue, todayStr, liveTodayStat, type DayStat } from "@/lib/study-store";
 import { percent } from "@/lib/domain/percent";
 import { questProgress } from "@/lib/daily-quests";
 import { libraryProgress } from "@/lib/library-progress";
@@ -104,7 +104,9 @@ export default function DailyQuests() {
   };
 
   const today = todayStr();
-  const stat: DayStat = mounted && dayStat.day === today ? dayStat : { day: today, reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 };
+  // r384 — گاردِ «زندهٔ امروز» تکمنبع شد: liveTodayStat از موتورِ روز
+  // (لیترالِ inlineِ صفرِ دستی مرده — دوقلویِ بایتبهبایت با goal-chip)
+  const stat: DayStat = liveTodayStat(mounted, dayStat, today);
   const title = allDone
     ? "اهداف امروز کامل شد!"
     : doneCount === 0

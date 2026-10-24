@@ -13,9 +13,9 @@
 //     زنده میماند) نه زیاد (سیگنالِ ناموجود در استور)
 //   • همارزیِ مجموعه: سرشماری ≡ ارزیابیِ کنونیکِ گریدِ خانه رویِ همان
 //     مخزن — در هر حالتِ بذرشده
-//   • خانوادههایِ دیگر با قراردادِ خودشان: حلقهٔ هدر ۱۸سیگنالیِ عمدی
-//     (بدونِ duelHistory — جشنِ نبردی مالِ duel-done، r287)؛
-//     duel-setup/duel-done چهاردهسیگنالیِ دامنهدار
+//   • خانوادههایِ دیگر با قراردادِ خودشان: حلقهٔ هدر از r384 هم ۱۹سیگنالی
+//     شد (حکمِ شکافِ واقعی — بروزرسانیِ حاشیهٔ همین فایل)؛
+//     duel-setup/duel-done چهاردهسیگنالیِ دامنهدار میمانند
 //   • رجیستری ۵۶ نشان؛ صفرِ رویدادِ تحلیلیِ نو (رجیستری ۵۲)
 // ------------------------------------------------------------------
 
@@ -179,14 +179,13 @@ describe("قفلِ منبعِ r383 — مرزِ خانوادهها", () => {
     expect(HOOK_SRC).toMatch(/useMemo\(\(\) => libraryDoneRaw \?\? \{\}, \[libraryDoneRaw\]\)/);
   });
 
-  it("گریدِ خانه همان کنونیکِ ۱۹سیگنالی است و حلقهٔ هدر ۱۸سیگنالیِ عمدی میماند (بدونِ duelHistory)", () => {
+  it("گریدِ خانه همان کنونیکِ ۱۹سیگنالی است و حلقهٔ هدر هم ۱۹سیگنالیِ r384 شد (حکمِ شکافِ واقعی)", () => {
     for (const field of ["freezeCount", "freezeUsedDays", "freezeEarnedDay", "goalMetDays", "dayHistory", "duelHistory"]) {
       expect(GRID_SRC, field).toContain(`${field},`);
-    }
-    for (const field of ["freezeCount", "freezeUsedDays", "freezeEarnedDay", "goalMetDays", "dayHistory"]) {
       expect(FRESH_SRC, field).toContain(`${field},`);
     }
-    expect(FRESH_SRC).not.toContain("duelHistory");
+    // حکمِ r384 در خودِ قلاب مستند است — قلاب پیشاز Task ۹۹ بود، نه «حذفِ عمدی»
+    expect(FRESH_SRC).toContain("حکمِ شکافِ واقعی");
   });
 
   it("خانوادهٔ نبرد چهاردهسیگنالیِ دامنهدار میماند — duelHistory دارد، یخ/هدف ندارد", () => {

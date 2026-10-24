@@ -41,6 +41,7 @@ export {
   emptyDayStat,
   goalAndFreezePatch,
   lastNDays,
+  liveTodayStat,
   normDayStat,
   pushDayHistory,
   todayStr,
