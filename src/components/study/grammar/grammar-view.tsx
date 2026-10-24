@@ -346,6 +346,21 @@ export default function GrammarView() {
       {/* --------------------- station dialog --------------------- */}
       <Dialog open={dialog !== null} onOpenChange={(o) => !o && setDialog(null)}>
         <DialogContent className="gmetro-dialog max-h-[86vh] overflow-y-auto rounded-2xl p-0 nice-scroll sm:max-w-xl">
+          {/* r366 — [همان شکلِ نهفتهٔ r353 که سوییپِ a11yِ این راند گرفت]:
+              عنوانِ ایستگاه درونِ گیتِ {dialog && …} بود؛ در پنجرهٔ
+              انیمیشنِ بستن (و هر آیندهای که open و گیت از هم بپاشند)
+              DialogContent بیعنوان میشد — همان خطایِ a11yای که r353 تا
+              r365 در teacher-detail میگفت. عنوانِ پنهانِ فازِ بیایستگاه —
+              وقتی ایستگاه هست عنوانِ دیدنیِ خودش حرف میزند و این هیچ
+              میشود؛ هرگز دوتایی نمیشوند (قفلِ تستیِ r366). */}
+          {!dialog && (
+            <>
+              <DialogTitle className="sr-only">ایستگاه گرامر</DialogTitle>
+              <DialogDescription className="sr-only">
+                جزئیاتِ ایستگاه، ترفندِ حفظ و آزمونکِ کوتاه
+              </DialogDescription>
+            </>
+          )}
           {dialog && (
             <div className="p-5 pt-4">
               <DialogHeader className="mb-3 text-right">
