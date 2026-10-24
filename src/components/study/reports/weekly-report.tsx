@@ -13,7 +13,8 @@ import { motion } from "framer-motion";
 import { Sparkles, TrendingDown, TrendingUp, Minus, CalendarHeart, Check, Compass, Snowflake, Swords, Timer, ImageDown, Share2, Loader2, CalendarClock, CalendarDays, Gauge, FileDown, BarChart3, Award, BookMarked, Flame } from "lucide-react";
 import { useStudy, daysAgoKey } from "@/lib/study-store";
 import { faNum, secFa } from "@/lib/study-theme";
-import { BADGES, buildEvalInput, unlockedBadgeIds, TIER_CHIP } from "@/lib/achievements";
+import { BADGES, TIER_CHIP } from "@/lib/achievements";
+import { useBadgeCensus } from "@/hooks/use-badge-census";
 import { buildCoverageMap } from "@/lib/coverage-map";
 import { LESSONS_META } from "@/data/lesson-meta";
 import { computeWeeklyDigest, faWeekday, faDayLabel, DUEL_QUICK_WEEK, type Delta, type QuickWeekProfile } from "@/lib/weekly-digest";
@@ -133,16 +134,9 @@ export default function WeeklyReportSection() {
   // dayHistory.stories) — نوارِ ۳۰خانه‌ای داخلِ نوارِ کتاب‌خانه
   const month = useMemo(() => monthReads(dayHistory, daysAgoKey(0)), [dayHistory]);
   // r284 — the badge band: the weekly digest answers «این هفته چطور بود؟»؛
-  // نشان‌ها جوابِ «تا کجا رسیده‌ام؟»اند — همان ارزیابیِ واحدِ رجیستری (buildEvalInput)
-  // که گرید و کارنامهٔ رسمی مصرف میکنند؛ منبعِ یگانه، هیچ ارزیابیِ موازی‌ای.
-  const dayStat = useStudy((s) => s.dayStat);
-  const bestStreak = useStudy((s) => s.bestStreak);
-  const mistakes = useStudy((s) => s.mistakes);
-  const rushBest = useStudy((s) => s.rushBest);
-  const rushBestCorrect = useStudy((s) => s.rushBestCorrect);
-  const rushGames = useStudy((s) => s.rushGames);
-  const seenBadges = useStudy((s) => s.seenBadges);
-  const userName = useStudy((s) => s.userName);
+  // نشان‌ها جوابِ «تا کجا رسیده‌ام؟»اند — r382: خودِ ارزیابیِ واحد هم به
+  // قلابِ خانواده (use-badge-census) کوچید؛ سیگنالهایِ فقطسرشماری اینجا
+  // دیگر سلکت نمی‌شوند — منبعِ یگانه، هیچ ارزیابیِ موازی‌ای.
   const [imgBusy, setImgBusy] = useState(false);
   const { toast } = useToast();
 
@@ -207,32 +201,10 @@ export default function WeeklyReportSection() {
     [libraryDone],
   );
 
-  // r284 — ارزیابیِ نشان‌ها با همان ورودیِ سرشماری‌شده؛ useMemo هم‌قراردادِ
-  // کارنامهٔ رسمی ( deps کامل — نه کم نه زیاد)
-  const evalInput = useMemo(
-    () =>
-      buildEvalInput({
-        known,
-        results,
-        history,
-        dayStat,
-        streak,
-        bestStreak,
-        mistakes,
-        rushBest,
-        rushBestCorrect,
-        rushGames,
-        seenBadges,
-        userName,
-        libraryDone, // r298 — نشان‌های کتاب‌خوان در همان ارزیابیِ واحدِ نوارِ نشان‌ها
-      }),
-    [known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, seenBadges, userName, libraryDone]
-  );
-  const unlocked = useMemo(() => unlockedBadgeIds(evalInput), [evalInput]);
-  const unlockedBadges = useMemo(
-    () => (unlocked.size > 0 ? BADGES.filter((b) => unlocked.has(b.id)) : []),
-    [unlocked]
-  );
+  // r284→r382 — ارزیابیِ واحدِ نشان‌ها از قلابِ خانواده (قرض از
+  // use-badge-census): همان ۱۳ سیگنال + گیتِ هیدریشنِ خانواده (SSR-safe —
+  // قراردادِ useFreshBadges) — نسخهٔ محلیِ memoهایِ سرشماری مرده است.
+  const { unlockedBadges } = useBadgeCensus();
 
   const maxTotal = Math.max(1, ...digest.perDay.map((p) => p.stat.reviews + p.stat.quizzes + p.stat.words + p.stat.dictation + p.stat.rush));
   const today = daysAgoKey(0);
@@ -474,7 +446,7 @@ export default function WeeklyReportSection() {
       </div>
 
       {/* r284 — نوار نشان‌ها: پاسخِ «تا کجا رسیده‌ام؟» در هفته‌نامه — هم‌ارزیابیِ
-          رسمی (buildEvalInputِ واحد) و هم‌چیپِ تیر با کارنامه (TIER_CHIPِ واحد).
+          رسمی (سرشماریِ واحدِ use-badge-census) و هم‌چیپِ تیر با کارنامه (TIER_CHIPِ واحد).
           بی‌نشان هم صادق: یک خطِ خنثی، نه حذفِ نوار — هم‌قراردادِ گامِ بعدی. */}
       <div className="badge-band mb-3 rounded-lg c-veil-60 px-2.5 py-2">
         <div className="flex flex-wrap items-center justify-between gap-1.5">

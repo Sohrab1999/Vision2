@@ -38,8 +38,10 @@ import { monthReads } from "@/lib/library-month"; // r306 — ماه‌نامه 
 import { useEscape } from "@/hooks/use-keyboard";
 import { faNum } from "@/lib/study-theme";
 import { LESSONS_META, TOTAL_VOCABULARY } from "@/data/lesson-meta";
-import { BADGES, buildEvalInput, unlockedBadgeIds, TIER_CHIP } from "@/lib/achievements";
+import { BADGES, TIER_CHIP } from "@/lib/achievements";
 import { skillBreakdown, barColorFor, skillGradeFa } from "@/lib/skill-stats";
+import { useBadgeCensus } from "@/hooks/use-badge-census";
+import { monthVitalsOf, avgPercentOf } from "@/lib/report-vitals";
 import { buildCoverageMap, COVERAGE_SKILLS } from "@/lib/coverage-map";
 import { COVERAGE_SKILL_SHORT, heatSummary } from "@/lib/coverage-heat";
 import { downloadCoverageCsv, coverageStatus } from "@/lib/coverage-csv";
@@ -116,12 +118,10 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
   const wordSeen = useStudy((s) => s.wordSeen);
   const streak = useStudy((s) => s.streak);
   const bestStreak = useStudy((s) => s.bestStreak);
+  // r382 — ممیزیِ دوقلوها: سیگنالهایِ فقطسرشماری به قلابِ خانواده کوچیدند؛
+  // اینجا فقط سیگنالهایی میمانند که خودِ نما مستقیم میخواند.
   const rushBest = useStudy((s) => s.rushBest);
-  const rushBestCorrect = useStudy((s) => s.rushBestCorrect);
-  const rushGames = useStudy((s) => s.rushGames);
-  const dayStat = useStudy((s) => s.dayStat);
   const userName = useStudy((s) => s.userName);
-  const libraryDone = useStudy((s) => s.libraryDone) ?? {}; // r298 — خانوادهٔ کتاب‌خوان
   // r303 — استریکِ کتابخوانی در سربرگِ کارنامهٔ رسمی (سطحِ چهارمِ عرضه؛
   // گاردِ ?? داخلِ memo — مرجعِ پایدار، درسِ r298)
   const dayHistoryRaw = useStudy((s) => s.dayHistory);
@@ -130,7 +130,6 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
   // r306 — ماه‌نامهٔ خواندن برایِ کارتِ PNGِ رسمی: همان قراردادِ خالصِ monthReads
   // که نوارِ هفته‌نامه و CSV میخوانند — ششمین مصرفِ یک منبع
   const monthReadsMemo = useMemo(() => monthReads(dayHistory, daysAgoKey(0)), [dayHistory]);
-  const seenBadges = useStudy((s) => s.seenBadges); // r282 — خانوادهٔ هویت
   const userId = useStudy((s) => s.userId);
 
   // opener lives in study-app (Task 44: lazy-mount on first use) — this
@@ -238,44 +237,20 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
   // r286 — عکسِ کارنامهٔ رسمی: هندلر بعد از memoهایِ وابسته (unlockedBadges/avgPercent)
   // تعریف میشود — ترتیبِ حفظِ ممویزیشنِ کامپایلرِ ری‌اکت (درسِ lintِ همین راند).
 
-  const evalInput = useMemo(
-    () =>
-      mounted
-        ? buildEvalInput({ known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, seenBadges, userName, libraryDone })
-        : null,
-    [mounted, known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, seenBadges, userName, libraryDone]
-  );
-  const unlocked = useMemo<Set<string>>(
-    () => (evalInput ? unlockedBadgeIds(evalInput) : new Set<string>()),
-    [evalInput]
-  );
-  const unlockedBadges = useMemo(
-    () => (unlocked.size > 0 ? BADGES.filter((b) => unlocked.has(b.id)) : []),
-    [unlocked]
-  );
+  // r382 — ممیزیِ دوقلوها: ارزیابیِ واحدِ نشانها از قلابِ خانواده (قرض از
+  // use-badge-census) و حیاتیِ ماهانه از موتورِ report-vitals — هیچ نسخهٔ
+  // محلیِ سرشماری و ستونبندیِ ۳۰روزه مجاز نیست (قفلِ تستیِ r382).
+  const { unlockedBadges } = useBadgeCensus();
 
   const month = useMemo(() => (mounted ? lastNDays(30, history) : []), [mounted, history]);
-  const monthBuckets = useMemo(() => {
-    if (month.length === 0) return [];
-    const size = Math.ceil(month.length / 4);
-    const out: { total: number; active: number }[] = [];
-    for (let i = 0; i < month.length; i += size) {
-      const chunk = month.slice(i, i + size);
-      out.push({
-        total: chunk.reduce((s, d) => s + d.total, 0),
-        active: chunk.filter((d) => d.total > 0).length,
-      });
-    }
-    return out;
-  }, [month]);
-  const monthMax = Math.max(1, ...monthBuckets.map((b) => b.total));
-  const monthTotal = monthBuckets.reduce((s, b) => s + b.total, 0);
+  const { buckets: monthBuckets, max: monthMax, total: monthTotal } = useMemo(
+    () => monthVitalsOf(month),
+    [month]
+  );
+  // روزهایِ زندهٔ ۳۰روزه تکمصرفیِ همین نما — برشِ خامِ ماه است نه ستونها.
   const activeDays30 = month.filter((d) => d.total > 0).length;
 
-  const avgPercent = useMemo(() => {
-    const rs = Object.values(results);
-    return rs.length ? Math.round(rs.reduce((s, r) => s + r.percent, 0) / rs.length) : 0;
-  }, [results]);
+  const avgPercent = useMemo(() => avgPercentOf(results), [results]);
 
   // r286 — عکسِ کارنامهٔ رسمی: همان KPIها + نوارِ نشانها (نقاشِ مشترکِ بوم)
   // در یک کارتِ PNGِ سبک برایِ هم‌رسانیِ موبایلی — داستانِ «کلِ مسیر».

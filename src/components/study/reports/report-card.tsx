@@ -30,8 +30,10 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { useStudy, lastNDays } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
-import { BADGES, buildEvalInput, unlockedBadgeIds } from "@/lib/achievements";
+import { BADGES } from "@/lib/achievements";
 import { skillBreakdown, barColorFor, skillGradeFa } from "@/lib/skill-stats";
+import { useBadgeCensus } from "@/hooks/use-badge-census";
+import { monthVitalsOf, avgPercentOf } from "@/lib/report-vitals";
 import WeeklyReportSection from "./weekly-report";
 import CoverageMapSection from "./coverage-map";
 import CoverageHeatmapSection from "./coverage-heatmap";
@@ -81,33 +83,19 @@ function printReport() {
 export default function ReportCard({ open, onClose }: { open: boolean; onClose: () => void }) {
   const mounted = useMounted();
 
-  const known = useStudy((s) => s.known);
+  // r382 — ممیزیِ دوقلوها: ۸ سیگنالِ فقطسرشماری به قلابِ خانواده کوچید؛
+  // اینجا فقط سیگنالهایی میمانند که خودِ نما مستقیم میخواند.
   const results = useStudy((s) => s.results);
   const history = useStudy((s) => s.history);
-  const dayStat = useStudy((s) => s.dayStat);
-  const streak = useStudy((s) => s.streak);
   const bestStreak = useStudy((s) => s.bestStreak);
-  const mistakes = useStudy((s) => s.mistakes);
   const rushBest = useStudy((s) => s.rushBest);
-  const rushBestCorrect = useStudy((s) => s.rushBestCorrect);
-  const rushGames = useStudy((s) => s.rushGames);
   const userName = useStudy((s) => s.userName);
-  const seenBadges = useStudy((s) => s.seenBadges); // r282 — خانوادهٔ هویت
-  const libraryDone = useStudy((s) => s.libraryDone) ?? {}; // r298 — خانوادهٔ کتاب‌خوان
 
   // opener lives in study-app (Task 44: lazy-mount on first use) — this
   // component is mounted only after the first "open-report" event.
-  const evalInput = useMemo(
-    () =>
-      mounted
-        ? buildEvalInput({ known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, seenBadges, userName, libraryDone })
-        : null,
-    [mounted, known, results, history, dayStat, streak, bestStreak, mistakes, rushBest, rushBestCorrect, rushGames, seenBadges, userName, libraryDone]
-  );
-  const unlocked = useMemo<Set<string>>(
-    () => (evalInput ? unlockedBadgeIds(evalInput) : new Set<string>()),
-    [evalInput]
-  );
+  // r382 — ارزیابیِ واحدِ نشانها از قلابِ خانواده (قرض از use-badge-census):
+  // همان ۱۳ سیگنال + گیتِ هیدریشن — هیچ نسخهٔ محلیِ سرشماری مجاز نیست.
+  const { evalInput, unlocked } = useBadgeCensus();
   const skills = useMemo(() => (mounted ? skillBreakdown(results) : []), [mounted, results]);
   const week = useMemo(() => (mounted ? lastNDays(7, history) : []), [mounted, history]);
   const month = useMemo(() => (mounted ? lastNDays(30, history) : []), [mounted, history]);
@@ -117,25 +105,13 @@ export default function ReportCard({ open, onClose }: { open: boolean; onClose: 
   const weekReviews = week.reduce((s, d) => s + d.reviews, 0);
   const weekActive = week.filter((d) => d.total > 0).length;
 
-  // 30-day activity grouped into 4 weekly buckets (oldest → newest)
-  const monthBuckets = useMemo(() => {
-    if (month.length === 0) return [];
-    const size = Math.ceil(month.length / 4);
-    const out: { total: number; active: number }[] = [];
-    for (let i = 0; i < month.length; i += size) {
-      const chunk = month.slice(i, i + size);
-      out.push({
-        total: chunk.reduce((s, d) => s + d.total, 0),
-        active: chunk.filter((d) => d.total > 0).length,
-      });
-    }
-    return out;
-  }, [month]);
-  const monthMax = Math.max(1, ...monthBuckets.map((b) => b.total));
-  const avgPercent = useMemo(() => {
-    const rs = Object.values(results);
-    return rs.length ? Math.round(rs.reduce((s, r) => s + r.percent, 0) / rs.length) : 0;
-  }, [results]);
+  // r382 — حیاتیِ ماهانه از موتورِ خانواده (report-vitals): ستونها + سقفِ
+  // امن + جمعِ کل در یک قرارداد — «جمع کل» با ستونها همیشه همخوان میماند.
+  const { buckets: monthBuckets, max: monthMax, total: monthTotal } = useMemo(
+    () => monthVitalsOf(month),
+    [month]
+  );
+  const avgPercent = useMemo(() => avgPercentOf(results), [results]);
 
   const records = [
     // r327 — جوهرهایِ -۶۰۰ رویِ زمینهٔ -۵۰ زیرِ ۴٫۵ میماندند (زنده با بوم:
@@ -252,7 +228,7 @@ export default function ReportCard({ open, onClose }: { open: boolean; onClose: 
                       فعالیت ۳۰ روز اخیر (به تفکیک هفته)
                     </div>
                     <span className="rounded-full bg-teal-50 px-2 py-0.5 text-[10px] font-black text-teal-700">
-                      جمع کل: {faNum(monthBuckets.reduce((s, b) => s + b.total, 0))}
+                      جمع کل: {faNum(monthTotal)}
                     </span>
                   </div>
                   <div className="flex h-24 items-end gap-2.5" dir="ltr">
