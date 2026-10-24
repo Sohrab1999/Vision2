@@ -74,11 +74,23 @@ describe("rehydrateMerge — مسیرِ پنجمِ جدول (استورِ واق
     ]);
   });
 
-  it("کلیدهایِ دستگاه همان‌طور خام میمانند — جدول سیاستی برایشان ندارد", () => {
+  it("کلیدهایِ دستگاه از گیتِ DEVICE_FIELDS میگذرند — r393: مقدارِ قانونی دستنخورده", () => {
+    // r393 — حکمِ سیاستِ دستگاه: تا r386 این قفل «همان‌طور خام» بود («جدول
+    // سیاستی برایشان ندارد»)؛ شاهدِ زندهٔ r393 settings:null را آجری نشان داد —
+    // حالا گیتِ sanitize دارند؛ مقدارِ قانونی از گیت سالم میگذرد.
     seed({ onboarded: true, settings: { reduceMotion: true } });
     useStudy.persist.rehydrate();
     expect(useStudy.getState().onboarded).toBe(true);
     expect(useStudy.getState().settings.reduceMotion).toBe(true);
+  });
+
+  it("r393 — آجریِ شاهدزنده درمان شد: settings:null ⇒ کاملِ پیشفرض، نه TypeError", () => {
+    seed({ settings: null, dailyGoal: "abc" });
+    useStudy.persist.rehydrate();
+    const s = useStudy.getState();
+    expect(s.settings).toEqual({ ttsRate: 1, fontScale: 1, reduceMotion: false });
+    expect(s.dailyGoal).toBe(10);
+    expect(s.settings.reduceMotion).toBe(false);
   });
 
   it("کلیدِ غایب در snapshot مقدارِ اولیهٔ اسلایس را نگه میدارد", () => {

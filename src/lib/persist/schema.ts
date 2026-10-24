@@ -25,6 +25,7 @@
 import type { QuizResult } from "@/lib/study-types";
 import { percent } from "@/lib/domain/percent";
 import { sanitizeDuelHistory, mergeDuelHistory, type DuelRecord } from "@/lib/duel-history";
+import { DEFAULT_SETTINGS, type StudySettings } from "@/state/types";
 import type {
   DayHistoryMap,
   DayStat,
@@ -470,6 +471,53 @@ export const SYNC_KEYS = Object.keys(SYNC_FIELDS) as (keyof SyncData)[];
 export const DEVICE_KEYS = ["dailyGoal", "onboarded", "settings", "syncCode"] as const;
 export type DeviceKey = (typeof DEVICE_KEYS)[number];
 
+// ---------------------------------------------------------------
+// r393 — حکمِ سیاستِ دستگاه (داوریِ زندهٔ راند — بندِ ③ِ ثبتشدهٔ r386)
+// ---------------------------------------------------------------
+// تا دیروز کلیدهایِ دستگاه از hydration «همان‌طور خام» میگذشتند («بیسیاست —
+// قراردادِ قدیم»). شاهدِ زندهٔ این راند: `settings: null` در persisted state
+// ⇒ TypeError «reading 'reduceMotion'» در study-app/home-hero ⇒ مرزِ خطا
+// «این صفحهٔ کتاب باز نشد!» — اپ در هر بارِ بارگذاری آجر میشد تا localStorage
+// دستی پاک شود؛ و `dailyGoal: 'abc'` کارتِ «هدف امروز: abc» را رندر میکرد
+// (سندِ دروغِ کلاسِ r383). حکم: قراردادِ «بیسیاست» مُرد — کلیدهایِ دستگاه هم
+// از گیتِ پاکسازی میگذرند (sanitizeِ فقط، بی merge — مالکیتِ دستگاه پابرجاست؛
+// هرگز در بکاپ/کلاد سفر نمیکنند). کلیدِ غایب = مقدارِ اولیهٔ اسلایس (قراردادِ
+// r386 پابرجا).
+
+/** settings: هر فیلدِ خراب به پیشفرضِ خودش میافتد؛ غیرِآبجکت = کاملِ پیشفرض.
+ *  ttsRate رویِ ۰٫۷..۱٫۳ (قراردادِ نوع)، fontScale از لیستِ سفیدِ FONT_OPTIONS
+ *  (۰٫۹۴/۱/۱٫۱ — گزینههایِ settings-popover)، reduceMotion فقط boolean واقعی. */
+const FONT_SCALES = [0.94, 1, 1.1];
+const sanitizeSettings = (v: unknown): StudySettings => {
+  const d = asRecord(v);
+  const rate = num(d["ttsRate"]);
+  const scale = num(d["fontScale"]);
+  return {
+    ttsRate: rate === null ? DEFAULT_SETTINGS.ttsRate : Math.min(1.3, Math.max(0.7, rate)),
+    fontScale: scale !== null && FONT_SCALES.some((f) => Math.abs(f - scale) < 0.001)
+      ? scale
+      : DEFAULT_SETTINGS.fontScale,
+    reduceMotion: typeof d["reduceMotion"] === "boolean" ? d["reduceMotion"] : DEFAULT_SETTINGS.reduceMotion,
+  };
+};
+
+/** dailyGoal: همان clampِ setDailyGoal (۵..۲۰)؛ غیرِعدد = پیشفرضِ اسلایس (۱۰) */
+const DEFAULT_DAILY_GOAL = 10;
+const sanitizeDailyGoal = (v: unknown): number => {
+  const n = num(v);
+  return n === null ? DEFAULT_DAILY_GOAL : Math.min(20, Math.max(5, Math.round(n)));
+};
+
+/** هر جدولِ گیتِ دستگاه — sanitizeِ فقط (بی merge: مالکیتِ دستگاه) */
+export const DEVICE_FIELDS: { [K in DeviceKey]: SyncFieldDef<StudyState[K & keyof StudyState]> } = {
+  dailyGoal: { sanitize: sanitizeDailyGoal },
+  onboarded: { sanitize: (v) => v === true },
+  settings: { sanitize: sanitizeSettings },
+  syncCode: { sanitize: (v) => (typeof v === "string" ? v.slice(0, 64) : "") },
+};
+
+const DEVICE_TABLE = DEVICE_FIELDS as unknown as Record<string, SyncFieldDef<unknown>>;
+
 export const PERSIST_KEYS = [...SYNC_KEYS, ...DEVICE_KEYS] as (
   | (keyof SyncData)
   | DeviceKey
@@ -508,20 +556,21 @@ export function sanitizeAll(input: unknown): SyncData {
 
 /**
  * r386 — mergeِ rehydration (آپشن `merge`ِ zustand persist در store.ts).
- * سندِ بالای فایل پنج مسیرِ جدول را میشمارد — تا دیروز مسیرِ پنجمِ
+ * سندِ بالای فایل پنج مسیرِ جدول را میشمارد — تا r386 مسیرِ پنجمِ
  * پرمسافرترِ همه، rehydrationِ localStorage در هر بارِ بارگذاری، خام
  * وارد استور میشد (mergeِ سطحیِ پیشفرضِ zustand) و ادعایِ «ورودیِ نامطمئن
  * فقط از sanitizeAll» رویِ همان مسیر دروغ بود — شاهدِ زندهٔ r386: رکوردِ
  * دستکاریِ idِ بیقرارداد («zzz») از hydration گذشت و «آخرین مصاف» شد.
- * حالا: کلیدهایِ دستگاه (بدونِ سیاستِ خود — قراردادِ قدیمی، همان‌طور خام
- * میمانند) + کلیدهایِ همگام از همان جدول. فیلدهایِ غایب در snapshot
- * مقدارِ اولیهٔ اسلایس را نگه میدارند (current).
+ * r393 — نیمهٔ دومِ مرز: کلیدهایِ دستگاه هم دیگر خام نمیگذرند (شاهدِ زندهٔ
+ * r393: settings:null اپ را آجر میکرد) — هر کلید از گیتِ DEVICE_FIELDS
+ * میگذرد. فیلدهایِ غایب در snapshot مقدارِ اولیهٔ اسلایس را نگه میدارند
+ * (current).
  */
 export function rehydrateMerge(persisted: unknown, current: StudyState): StudyState {
   const rec = asRecord(persisted);
   const out = { ...current } as Record<string, unknown>;
   for (const key of DEVICE_KEYS) {
-    if (key in rec) out[key] = rec[key];
+    if (key in rec) out[key] = DEVICE_TABLE[key].sanitize(rec[key]);
   }
   Object.assign(out, sanitizeAll(rec));
   return out as unknown as StudyState;
