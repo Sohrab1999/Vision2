@@ -104,14 +104,16 @@ describe("r333 — چیپهایِ پشتِ کارت: حجابِ تیره بهج�
     expect(flashcards).not.toMatch(/en-text text-sm opacity-80/);
   });
   it("قفلِ منبعِ حجاب: هر سه چیپِ پشتِ کارت bg-black/20 — نه تینتِ سفید", () => {
-    // r389 — چیپِ «در جزوه» (نخستینِ سه چیپِ r333) به مالکِ یکتایِ
-    // BookletUsageChip رفت؛ گویشِ flip (flip-pair-chip + bg-black/20 +
-    // text-white) عیناً همان رشته در مالک زندگی میکند — حجابِ r333
-    // املاکبهامان میماند: یک چیپ در flashcards + یک چیزِ flip در مالک.
-    const owner = read("src/components/study/lesson/booklet-usage-chip.tsx");
-    expect(owner.match(/flip-pair-chip[^\n]*bg-black\/20/g)?.length).toBe(1);
-    expect(flashcards.match(/flip-pair-chip[^\n]*bg-black\/20/g)?.length).toBe(1);
-    expect(flashcards).toMatch(/rounded-md bg-black\/20 px-1\.5 py-0\.5 text-\[10\.5px\] font-bold text-white\/90/);
+    // r389 → r390 — هر دو چیپِ پشتِ کارت («در جزوه» و «روخوانی جفت») به
+    // مالکهایِ یکتا رفتند (BookletUsageChip و PairSpeakChips)؛ گویشِ flip
+    // (flip-pair-chip + bg-black/20 + text-white) عیناً همان رشته در
+    // هر دو مالک زندگی میکند — حجابِ r333 املاکبهامان میماند:
+    // صفرِ درونخطی در flashcards + یک flip در هر مالک.
+    const booklet = read("src/components/study/lesson/booklet-usage-chip.tsx");
+    const pairs = read("src/components/study/lesson/pair-speak-chips.tsx");
+    expect(booklet.match(/flip-pair-chip[^\n]*bg-black\/20/g)?.length).toBe(1);
+    expect(pairs.match(/flip-pair-chip[^\n]*bg-black\/20/g)?.length).toBe(1);
+    expect(flashcards.match(/flip-pair-chip[^\n]*bg-black\/20/g)?.length ?? 0).toBe(0);
     expect(flashcards).not.toMatch(/bg-white\/15/);
   });
 });

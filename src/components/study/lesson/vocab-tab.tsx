@@ -11,7 +11,7 @@ import { buildSynAntIndex, synAntPairsFor } from "@/lib/syn-ant-lookup";
 import { lessonVocabUsageCensus } from "@/lib/word-usage";
 import WordUsageDialog from "./word-usage-dialog";
 import BookletUsageChip, { useBookletUsageTarget } from "./booklet-usage-chip";
-import { speak } from "@/lib/speak";
+import PairSpeakChips from "./pair-speak-chips";
 import { useToast } from "@/hooks/use-toast";
 import { lessons } from "@/data";
 import { WORD_FAMILY_LESSON_LINKS, wordFamilyTableId } from "@/data/word-families";
@@ -213,31 +213,9 @@ export default function VocabTab({
                   if (pairs.length === 0) return null;
                   return (
                     <div className="mt-1 flex flex-wrap items-center gap-1">
-                      {pairs.slice(0, 3).map((p) => (
-                        <button
-                          key={`${p.kind}-${p.other}-${p.lessonId}`}
-                          type="button"
-                          onClick={(e) => {
-                            e.stopPropagation(); // کارت کلیکِ خودش را دارد: بلدم‌کردن
-                            void speak(p.other, 0.95, undefined, pairSpeakError);
-                          }}
-                          title="روخوانی جفت"
-                          aria-label={`${p.kind === "syn" ? "مترادف" : "متضاد"}ِ ${w.en}: ${p.other} — روخوانی`}
-                          className={`dict-pair-chip inline-flex items-center gap-0.5 rounded-md border px-1.5 py-0.5 text-[10.5px] font-bold transition-[background-color,color,border-color,transform] active:scale-[0.96] ${
-                            p.kind === "syn"
-                              ? "border-emerald-200 bg-emerald-50/60 text-emerald-700"
-                              : "border-rose-200 bg-rose-50/60 text-rose-700"
-                          }`}
-                        >
-                          <span aria-hidden className="font-black">{p.kind === "syn" ? "≈" : "↔"}</span>
-                          <span dir="ltr">{p.other}</span>
-                        </button>
-                      ))}
-                      {pairs.length > 3 && (
-                        <span className="rounded-md bg-stone-100 px-1.5 py-0.5 text-[10.5px] font-bold text-stone-500">
-                          +{faNum(pairs.length - 3)}
-                        </span>
-                      )}
+                      {/* r390 — چیپهایِ «روخوانی جفت» از مالکِ یکتایِ PairSpeakChips؛
+                          stopPropagation: کارتِ کلیکِ خودش را دارد (بلدم‌کردن) */}
+                      <PairSpeakChips pairs={pairs} en={w.en} onSpeakError={pairSpeakError} stopPropagation />
                     </div>
                   );
                 })()}

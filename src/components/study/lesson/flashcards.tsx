@@ -13,7 +13,7 @@ import { posLabel, themeOf, faNum } from "@/lib/study-theme";
 import { buildSynAntIndex, synAntPairsFor } from "@/lib/syn-ant-lookup";
 import WordUsageDialog from "./word-usage-dialog";
 import BookletUsageChip, { useBookletUsageTarget } from "./booklet-usage-chip";
-import { speak } from "@/lib/speak";
+import PairSpeakChips from "./pair-speak-chips";
 import { lessons } from "@/data";
 import SpeakButton from "../shared/speak-button";
 
@@ -334,27 +334,15 @@ export default function Flashcards({
             </div>
             {pairs.length > 0 && (
               <div className="mt-1 flex max-w-full flex-wrap items-center justify-center gap-1">
-                {pairs.slice(0, 3).map((p) => (
-                  <button
-                    key={`${p.kind}-${p.other}-${p.lessonId}`}
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      void speak(p.other, 0.95, undefined, pairSpeakError);
-                    }}
-                    title="روخوانی جفت"
-                    aria-label={`${p.kind === "syn" ? "مترادف" : "متضاد"}ِ ${word.en}: ${p.other} — روخوانی`}
-                    className="flip-pair-chip inline-flex items-center gap-0.5 rounded-md border border-white/30 bg-black/20 px-1.5 py-0.5 text-[10.5px] font-bold text-white transition-[background-color,color,border-color,transform] hover:bg-black/30 active:scale-[0.96]"
-                  >
-                    <span aria-hidden className="font-black">{p.kind === "syn" ? "≈" : "↔"}</span>
-                    <span dir="ltr">{p.other}</span>
-                  </button>
-                ))}
-                {pairs.length > 3 && (
-                  <span className="rounded-md bg-black/20 px-1.5 py-0.5 text-[10.5px] font-bold text-white/90">
-                    +{faNum(pairs.length - 3)}
-                  </span>
-                )}
+                {/* r390 — چیپهایِ «روخوانی جفت» از مالکِ یکتایِ PairSpeakChips؛
+                    stopPropagation + tone="flip": سفیدِ رویِ گرادیانِ تیره */}
+                <PairSpeakChips
+                  pairs={pairs}
+                  en={word.en}
+                  onSpeakError={pairSpeakError}
+                  stopPropagation
+                  tone="flip"
+                />
               </div>
             )}
             {/* راند ۲۵۳ → ۳۸۹ — چیپِ «در جزوه» کنارِ جفت‌ها رویِ پشتِ کارت، در

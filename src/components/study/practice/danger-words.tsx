@@ -28,7 +28,6 @@ import { percentFromRate } from "@/lib/domain/percent"; // r388 — نرخ→د�
 import { buildSynAntIndex, synAntPairsFor } from "@/lib/syn-ant-lookup";
 import { srsWordStatus, focusSrsDashboard, type SrsWordStatus } from "@/lib/srs-due";
 import { useToast } from "@/hooks/use-toast";
-import { speak } from "@/lib/speak";
 import { trackEvent } from "@/lib/analytics";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import Flashcards from "../lesson/flashcards";
@@ -36,6 +35,7 @@ import QuizEngine from "../quiz/quiz-engine";
 import DictationTab from "../lesson/dictation-tab";
 import WordUsageDialog from "../lesson/word-usage-dialog";
 import BookletUsageChip, { useBookletUsageTarget } from "../lesson/booklet-usage-chip";
+import PairSpeakChips from "../lesson/pair-speak-chips";
 
 const lessonFa = lessonNameFa;
 
@@ -279,31 +279,17 @@ export default function DangerWords() {
                           if (pairs.length === 0) return null;
                           return (
                             <span className="flex flex-wrap items-center gap-1">
-                              {pairs.slice(0, 2).map((p) => (
-                                <button
-                                  key={`${p.kind}-${p.other}-${p.lessonId}`}
-                                  type="button"
-                                  onClick={() => void speak(p.other, 0.95, undefined, pairSpeakError)}
-                                  title="روخوانی جفت"
-                                  aria-label={`${p.kind === "syn" ? "مترادف" : "متضاد"}ِ ${d.en}: ${p.other} — روخوانی`}
-                                  className={`dict-pair-chip inline-flex items-center gap-0.5 rounded-md border px-1.5 py-0.5 text-[10px] font-bold transition-[background-color,color,border-color,transform] active:scale-[0.96] ${
-                                    p.kind === "syn"
-                                      ? "border-emerald-200 bg-emerald-50/60 text-emerald-700"
-                                      : "border-rose-200 bg-rose-50/60 text-rose-700"
-                                  }`}
-                                >
-                                  <span aria-hidden className="font-black">{p.kind === "syn" ? "≈" : "↔"}</span>
-                                  <span dir="ltr">{p.other}</span>
-                                </button>
-                              ))}
-                              {pairs.length > 2 && (
-                                <span
-                                  className="rounded-md bg-stone-100 px-1.5 py-0.5 text-[10px] font-bold text-stone-500"
-                                  title="ردیف‌های جفت دیگر در تبِ مترادف و متضاد درس"
-                                >
-                                  +{faNum(pairs.length - 2)}
-                                </span>
-                              )}
+                              {/* r390 — چیپهایِ فشردهٔ جفت از مالکِ یکتایِ
+                                  PairSpeakChips: گویشِ compact + max={2} +
+                                  titleِ سرریز — دقیقاً همان رفتارِ r255 */}
+                              <PairSpeakChips
+                                pairs={pairs}
+                                en={d.en}
+                                onSpeakError={pairSpeakError}
+                                max={2}
+                                compact
+                                overflowTitle="ردیف‌های جفت دیگر در تبِ مترادف و متضاد درس"
+                              />
                             </span>
                           );
                         })()}

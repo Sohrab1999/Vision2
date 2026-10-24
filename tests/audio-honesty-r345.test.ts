@@ -67,12 +67,20 @@ describe("r345 — زبانِ خانوادهٔ شنیدار رویِ همهٔ د
   });
 
   it("شش چیپِ «روخوانی جفت»: فراخوانِ بی.onError دیگر وجود ندارد", () => {
+    // r390 — کلیکِ چیپ به مالکِ یکتایِ PairSpeakChips رفت؛ قفلِ r345 حالا
+    // دوروش میبندد: هر نما onSpeakError={pairSpeakError} به مالک میدهد
+    // (توستِ خانواده سمتِ میزبان پابرجا) و مالکِ وامگیرنده فراخوانِ
+    // چهارآرگومانِ کامل را حمل میکند (undefined, onSpeakError).
     for (const f of chipFiles) {
       const src = p(f);
-      expect(src, f).toContain("undefined, pairSpeakError");
+      expect(src, f).toContain("onSpeakError={pairSpeakError}");
       // شکلِ برهنهٔ ساکت (بدونِ درگاهِ خطا) ممنوع — مرزِ پرانتز/سمیکالن
       expect(src, f).not.toMatch(/\(\s*p\.other,\s*0\.95\s*\)\s*[;}]/);
     }
+    const owner = p("src/components/study/lesson/pair-speak-chips.tsx");
+    expect(owner, "the r390 owner carries the full r345 speak call").toContain(
+      "void speak(p.other, 0.95, undefined, onSpeakError)"
+    );
   });
 });
 
