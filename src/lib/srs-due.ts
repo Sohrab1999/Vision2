@@ -63,6 +63,46 @@ export interface SrsForecastSummary {
   total: number;
 }
 
+// ------------------------------------------------------------------
+// r370 «پیوندِ دو داشبورد» — وضعیتِ SRSِ یک واژهٔ مشخص.
+// کارتِ «واژه‌های خطرناک من» هر ردیفش را از دیدِ چرخهٔ مرور هم حرف
+// میزاند: کلیدِ خطر («1:ability») عینِ کلیدِ واژه در نقشهٔ srs است، پس
+// پیوندِ دو داشبورد یک lookupِ مستقیم است — بدونِ هیچ نگاشتِ میانی.
+// همان منطقِ دسته‌بندیِ داشبوردِ مرور (سررسید/یادگیری/مستحکم/وارفته)
+// اما تک‌حالته: سررسید برِ هر سطحی مقدم است (زمان، مقدم برِ پله).
+// ورودیِ خراب/ناقص = null (الگویِ Task 293) — رندرِ نداشتن، نه دروغ.
+// ------------------------------------------------------------------
+
+export type SrsWordState = "due" | "learning" | "strong" | "mastered";
+
+export interface SrsWordStatus {
+  state: SrsWordState;
+  /** 0..5 — پلهٔ واقعی در نردبان (برچسبِ «سطح N از ۶» از همین +۱ ساخته میشود) */
+  level: number;
+  /** epoch ms — «سررسید» یعنی همین حالا ≤ now */
+  dueAt: number;
+}
+
+/** مرزِ پلهها: ۰–۲ یادگیری، ۳–۴ مستحکم، ۵ وارفته — عینِ داشبوردِ مرور */
+export function srsWordStatus(
+  item: { level: number; dueAt: number } | null | undefined,
+  now: number
+): SrsWordStatus | null {
+  if (!item) return null;
+  if (typeof item.dueAt !== "number" || typeof item.level !== "number") return null;
+  if (!Number.isFinite(item.dueAt) || !Number.isFinite(item.level)) return null;
+  if (!Number.isInteger(item.level) || item.level < 0 || item.level > 5) return null;
+  const state: SrsWordState =
+    item.dueAt <= now
+      ? "due"
+      : item.level >= 5
+        ? "mastered"
+        : item.level >= 3
+          ? "strong"
+          : "learning";
+  return { state, level: item.level, dueAt: item.dueAt };
+}
+
 /**
  * Words landing in the forecast day-window [now + offset*DAY, now + (offset+1)*DAY).
  * offset 0 = the NEXT 24h — the already-overdue words live in srsDueSummary,

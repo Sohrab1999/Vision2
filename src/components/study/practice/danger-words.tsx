@@ -16,8 +16,8 @@
 
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { AlertTriangle, BookOpenText, Sparkles, Zap, TrendingDown, Star, Ear } from "lucide-react";
-import { useStudy } from "@/lib/study-store";
+import { AlertTriangle, BookOpenText, RefreshCcw, Sparkles, Zap, TrendingDown, Star, Ear } from "lucide-react";
+import { useStudy, SRS_INTERVALS } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { dangerWords, buildDangerQuiz, type DangerWord } from "@/lib/word-risk";
 import { buildDangerDictation, DICTATION_MIN_DANGER } from "@/lib/danger-dictation";
@@ -25,6 +25,7 @@ import { findLesson, lessons } from "@/data";
 import { lessonNameFa } from "@/data/lesson-meta";
 import { faNum } from "@/lib/study-theme";
 import { buildSynAntIndex, synAntPairsFor } from "@/lib/syn-ant-lookup";
+import { srsWordStatus, type SrsWordStatus } from "@/lib/srs-due";
 import { useToast } from "@/hooks/use-toast";
 import { speak } from "@/lib/speak";
 import { trackEvent } from "@/lib/analytics";
@@ -43,6 +44,9 @@ export default function DangerWords() {
   const starredWords = useStudy((s) => s.starredWords);
   const toggleStarred = useStudy((s) => s.toggleStarred);
   const setView = useStudy((s) => s.setView);
+  // r370 — پیوندِ دو داشبورد: نقشهٔ srs همین‌جا خوانده میشود تا هر ردیفِ
+  // خطر از دیدِ چرخهٔ مرور هم حرف بزند (کلیدِ خطر = کلیدِ واژه در srs)
+  const srs = useStudy((s) => s.srs);
   const mounted = useMounted();
   const { toast } = useToast();
   // راندِ ۳۴۵ — چیپِ «روخوانی جفت» در شکستِ صدا ساکت نمی‌ماند
@@ -72,6 +76,21 @@ export default function DangerWords() {
 
   const lessonsPresent = useMemo(() => [...new Set(list.map((d) => d.lessonId))].sort(), [list]);
   const totalMistakes = useMemo(() => list.reduce((s, d) => s + d.mistakes, 0), [list]);
+
+  // r370 — وضعیتِ SRSِ هر واژهٔ خطر، یک بار برایِ کلِ فهرست و با یک now:
+  // ورودیِ خراب/ناقص اینجا نفسش را نمیگیرد (srsWordStatus = null) و
+  // شمارندهٔ پل هم فقط سالمها را میشمارد — صداقتِ Task 293 ادامه دارد.
+  const srsStates = useMemo(() => {
+    const m = new Map<string, SrsWordStatus>();
+    if (!mounted) return m;
+    const now = Date.now();
+    for (const d of list) {
+      const st = srsWordStatus(srs[d.key], now);
+      if (st) m.set(d.key, st);
+    }
+    return m;
+  }, [list, srs, mounted]);
+  const inCycle = srsStates.size;
 
   // راند ۲۰۶: جفت‌های جزوه در ردیف‌های رتبه‌بندی — فشرده (تا ۲ چیپ)، چون ردیف شلوغ است
   const pairIndex = useMemo(() => buildSynAntIndex(lessons), []);
@@ -104,7 +123,7 @@ export default function DangerWords() {
             <AlertTriangle size={20} />
           </span>
           <div className="min-w-0 flex-1">
-            <h2 className="flex items-center gap-2 text-sm font-extrabold text-stone-800">
+            <h2 className="flex flex-wrap items-center gap-2 text-sm font-extrabold text-stone-800">
               واژه‌های خطرناک من
               {/* r327 — چیپِ شمارنده در تاریک رویِ bg-rose-100ِ بازنگشته
                   میمرد (کرنلِ متنِ rose-600 → #fda4af رویِ گلیِ روشن = ۱٫۵۸)؛
@@ -114,6 +133,19 @@ export default function DangerWords() {
                    تاریک: هم‌ارزشِ کرنل (#fda4af) — قاعدهٔ r327 پابرجا */
                 <span className="rounded-full bg-rose-100 px-2 py-0.5 text-[10px] font-black text-rose-800 dark:bg-rose-950/60">
                   {faNum(list.length)} واژه
+                </span>
+              )}
+              {/* r370 — چیپِ پل: چندتا از همین واژههایِ خطر داخلِ چرخهٔ مرورند؟
+                  رنگِ teal = رنگِ خودِ داشبوردِ مرور — دو داشبورد همسایه با
+                  یک زبان رنگی حرف میزنند. بیچرخه، هیچ (صداقتِ r252). */}
+              {inCycle > 0 && (
+                <span
+                  data-testid="danger-srs-bridge"
+                  title={`${faNum(inCycle)} واژه از ${faNum(list.length)} واژهٔ خطرناک تو داخلِ چرخهٔ مرور با فاصله است — داشبوردِ مرورِ هوشمند، کارتِ کنارِ این کارت در خانه`}
+                  className="inline-flex items-center gap-1 rounded-full border border-teal-200 bg-teal-50 px-2 py-0.5 text-[10px] font-black text-teal-700"
+                >
+                  <RefreshCcw size={10} aria-hidden />
+                  {faNum(inCycle)} از {faNum(list.length)} در چرخهٔ مرور
                 </span>
               )}
             </h2>
@@ -187,6 +219,35 @@ export default function DangerWords() {
                         <span className="rounded-md bg-rose-50 px-1.5 py-0.5 text-[10px] font-bold text-rose-700">
                           {faNum(d.mistakes)} بار غلط
                         </span>
+                        {(() => {
+                          // r370 — چیپِ وضعیتِ SRS رویِ ردیف: واژهٔ خطر یا داخلِ
+                          // چرخهٔ مرور است (پله + حالت) یا سررسید — یا هنوز وارد
+                          // چرخه نشده و چیپِ نداشتن خودش حرف است. نمایشِ محض —
+                          // کنشِ مرور با داشبوردِ همسایه است، نه یک دکمهٔ ساختگی.
+                          const st = srsStates.get(d.key);
+                          if (!st) return null;
+                          const levelTxt = `سطح ${faNum(st.level + 1)} از ${faNum(SRS_INTERVALS.length)}`;
+                          const stateWord =
+                            st.state === "due" ? "سررسیدِ مرور" : st.state === "strong" ? "مستحکم" : st.state === "mastered" ? "وارفته" : "در حال یادگیری";
+                          const cls =
+                            st.state === "due"
+                              ? "border-rose-200 bg-rose-50 text-rose-700"
+                              : st.state === "learning"
+                                ? "border-amber-200 bg-amber-50 text-amber-800"
+                                : st.state === "strong"
+                                  ? "border-emerald-200 bg-emerald-50 text-emerald-700"
+                                  : "border-teal-200 bg-teal-50 text-teal-700";
+                          return (
+                            <span
+                              data-testid={`danger-srs-chip-${d.en.replace(/\s+/g, "-")}`}
+                              title={`${d.en} — ${stateWord} · ${levelTxt}؛ جزئیات در داشبوردِ مرورِ هوشمند`}
+                              className={`inline-flex items-center gap-0.5 rounded-md border px-1.5 py-0.5 text-[10px] font-bold ${cls}`}
+                            >
+                              <RefreshCcw size={10} aria-hidden />
+                              {st.state === "due" ? "سررسید" : "در چرخه"} · {levelTxt}
+                            </span>
+                          );
+                        })()}
                         <span className="hidden rounded-md bg-stone-100 px-1.5 py-0.5 text-[10px] font-bold text-stone-500 sm:inline">
                           {lessonFa(d.lessonId)}
                         </span>
@@ -306,6 +367,8 @@ export default function DangerWords() {
               این تحلیل از تست‌های واژگان، دیکته و تمرین شنیداریِ خودت ساخته می‌شود — هرچه بیشتر تمرین کنی دقیق‌تر می‌شود.
               <br />
               واژه‌های خطرناک را با <Star size={10} className="inline fill-amber-400 text-amber-400" /> ستاره به «واژه‌های من» بفرست تا در آزمون و فلش‌کارت شخصی مرور شوند.
+              <br />
+              چیپِ «در چرخه» از داشبوردِ مرورِ هوشمند می‌آید — ردیفی که چیپ ندارد هنوز وارد برنامهٔ مرور نشده است.
             </p>
           </>
         )}
