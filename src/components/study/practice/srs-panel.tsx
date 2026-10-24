@@ -6,7 +6,7 @@ import { RefreshCcw, Sparkles, CalendarClock, CheckCircle2, TrendingUp, Sprout, 
 import { useStudy, srsDueTotal, firstLessonWithDue, type SrsItem } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum } from "@/lib/study-theme";
-import { srsDueSummary, srsForecastWords, SRS_PANEL_SPOTLIGHT_EVENT } from "@/lib/srs-due";
+import { srsDueSummary, srsForecastWords, SRS_PANEL_SPOTLIGHT_EVENT, peekSrsSpotlight, ackSrsSpotlight, focusSrsDashboard } from "@/lib/srs-due";
 import { buildDueDictation, DICTATION_MIN_DUE } from "@/lib/due-dictation";
 import type { DictationSource } from "@/lib/study-types";
 import { trackEvent } from "@/lib/analytics";
@@ -118,18 +118,39 @@ export default function SrsPanel() {
   // درخواستِ نو، مهلتِ قبلی را باطل میکند — و پاکسازی در unmount.
   const [spotlit, setSpotlit] = useState(false);
   const spotTimerRef = useRef<number | null>(null);
+  // r372 «داشبوردِ مرور در فرمان‌یاب» — مسیرِ دوگانهٔ رسیدن: پرندهٔ
+  // همسایه (چیپِ کارتِ خطر) رویدادِ زنده میفرستد؛ پرندهٔ دور (فرمانِ
+  // پالت از دنیایِ دیگر) پرچم میگذارد و ناوبری میکند — این اثر بعد
+  // از mount پرچم را مصرف میکند و خودش میپرد (ایدئومِ نشانگرِ
+  // ضمیمه، r246: نگاهِ بدونِ عارضه برایِ StrictMode، اقرار فقط در
+  // تایمرِ زندهٔ نهایی). سکونِ ۴۵۰ms: WordOfDay/VocabDonutِ بالای
+  // پنل chunkهای داینامیکاند — اسکلت→واقعی جابهجا میشود؛ اسکرولِ
+  // نرم رویِ چیدمانِ آرام گرفته صادقانهتر فرود میآید.
+  const showSpotlight = () => {
+    if (spotTimerRef.current !== null) window.clearTimeout(spotTimerRef.current);
+    setSpotlit(true);
+    spotTimerRef.current = window.setTimeout(() => {
+      spotTimerRef.current = null;
+      setSpotlit(false);
+    }, 1600);
+  };
   useEffect(() => {
-    const onSpot = () => {
-      if (spotTimerRef.current !== null) window.clearTimeout(spotTimerRef.current);
-      setSpotlit(true);
-      spotTimerRef.current = window.setTimeout(() => {
-        spotTimerRef.current = null;
-        setSpotlit(false);
-      }, 1600);
-    };
+    const SRS_JUMP_SETTLE_MS = 450;
+    let consumeTimer: number | null = null;
+    if (peekSrsSpotlight()) {
+      consumeTimer = window.setTimeout(() => {
+        consumeTimer = null;
+        ackSrsSpotlight();
+        // پرش با خودِ تابعِ کتابخانه — اسکرول + فوکوس + رویدادِ زنده؛
+        // نمایش همان مسیرِ همیشگی (onSpot پایین) رنگ میگیرد.
+        focusSrsDashboard();
+      }, SRS_JUMP_SETTLE_MS);
+    }
+    const onSpot = () => showSpotlight();
     window.addEventListener(SRS_PANEL_SPOTLIGHT_EVENT, onSpot);
     return () => {
       window.removeEventListener(SRS_PANEL_SPOTLIGHT_EVENT, onSpot);
+      if (consumeTimer !== null) window.clearTimeout(consumeTimer);
       if (spotTimerRef.current !== null) window.clearTimeout(spotTimerRef.current);
     };
   }, []);

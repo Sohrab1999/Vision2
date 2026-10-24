@@ -134,6 +134,37 @@ export function focusSrsDashboard(): boolean {
   return true;
 }
 
+// ------------------------------------------------------------------
+// r372 «داشبوردِ مرور در فرمان‌یاب» (بندِ ④ پیشنهادِ r371): پرنده‌ای که
+// از دنیایِ دیگر میآید (فرمانِ پالت از درس/دیکشنری/…) نمیتواند زنده
+// بپرد — پنل هنوز mount نشده و رویدادِ زنده در خلأ گم میشود (درسِ
+// نشانگرِ ضمیمه، r246). عینِ ایدئومِ پرچمِ یک‌بارمصرفِ مُهرِدار همان‌جا:
+// پرنده پرچم را میگذارد و ناوبری میکند؛ مالکِ نمایش (srs-panel) بعد
+// از mount مصرفش میکند. رویِ خودِ خانه پنل سوار است — همان مسیرِ
+// focusSrsDashboard زنده، بیپرچم.
+// ------------------------------------------------------------------
+
+let srsSpotlightAt = 0;
+
+/** درخواستِ پرشِ از جایِ دیگر — قبل از ناوبری به خانه.
+ * یک‌بارمصرف: مصرفکننده فقط پنلِ سوارشده؛ مهلتِ ۲ثانیهای تا درخواستِ
+ * کهنه هرگز دیرتر پالسِ کاذب نسازد (قراردادِ requestAppendixPillHint). */
+export function requestSrsSpotlight(): void {
+  srsSpotlightAt = Date.now();
+}
+
+/** نگاهِ تازه‌بودنِ درخواستِ معلق — بدونِ مصرف (StrictMode دو-بارِ mount
+ * میکند: نگاهِ خواندنیِ بدونِ عارضه از خوردهشدنِ پرچم در mountِ اول
+ * جلوگیری میکند؛ اقرارِ جدا در تایمرِ زندهٔ نهایی است). */
+export function peekSrsSpotlight(): boolean {
+  return srsSpotlightAt !== 0 && Date.now() - srsSpotlightAt < 2000;
+}
+
+/** اقرارِ درخواستِ معلق — فقط در تایمرِ زندهای که واقعاً میپرد. */
+export function ackSrsSpotlight(): void {
+  srsSpotlightAt = 0;
+}
+
 /**
  * Words landing in the forecast day-window [now + offset*DAY, now + (offset+1)*DAY).
  * offset 0 = the NEXT 24h — the already-overdue words live in srsDueSummary,

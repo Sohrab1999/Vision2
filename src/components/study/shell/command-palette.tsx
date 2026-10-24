@@ -7,6 +7,7 @@ import {
   BookMarked,
   BookOpen,
   BookOpenText,
+  CalendarClock,
   ClipboardCheck,
   Ear,
   FileBadge,
@@ -21,6 +22,7 @@ import {
   Moon,
   PenLine,
   Route,
+  School,
   Search,
   SearchX,
   Settings,
@@ -41,6 +43,9 @@ import { trackEvent } from "@/lib/analytics";
 import { libraryProgress } from "@/lib/library-progress";
 import { lessonResumeSnapshot, useLessonResume } from "@/lib/lesson-resume";
 import { RETURN_CLUSTER_DOORS, returnCmdId } from "@/lib/return-cluster-doors";
+// r372 — پرشِ فرمانِ «داشبورد مرور»: کتابخانهٔ دامنه مالکِ پرش و پرچم است
+// (تک‌منبع با چیپهایِ r371) — پالت فقط پرنده است (درسِ r243/r244).
+import { requestSrsSpotlight, focusSrsDashboard } from "@/lib/srs-due";
 import { LESSONS_META, TOTAL_VOCABULARY } from "@/data/lesson-meta";
 import { faNum } from "@/lib/study-theme";
 import {
@@ -119,9 +124,11 @@ const parseResumeRecentCmdId = (id: string): { scope: string; id: string } | nul
 const ICONS: Record<string, React.ElementType> = {
   Home,
   BookMarked,
+  CalendarClock,
   ClipboardCheck,
   Library,
   Route,
+  School,
   GraduationCap,
   History,
   Star,
@@ -186,6 +193,21 @@ export default function CommandPalette() {
   const konkurSeen = useStudy((s) => s.konkurSeen) ?? {};
   const duelHistory = useStudy((s) => s.duelHistory) ?? [];
   const libraryDone = useStudy((s) => s.libraryDone) ?? {};
+  // راند ۳۷۲ — گیتِ صادقانهٔ فرمانِ «داشبورد مرور»: عینِ hasProgressِ
+  // خانه (home-view r297 — گاردِ ?? بیرونِ سلکتور): پنل فقط برایِ
+  // یادگیرندهٔ دارایِ پیشرفت رندر میشود؛ فرمان هم فقط برایِ او هست —
+  // بیپیشرفت هیچ فرمانِ ساختگی (صداقتِ r236).
+  const known = useStudy((s) => s.known) ?? {};
+  const results = useStudy((s) => s.results) ?? {};
+  const srsMap = useStudy((s) => s.srs) ?? {};
+  // عینِ hasProgressِ home-view (هم‌ارزِ semantics، یک قرارداد):
+  // هر پیشرفتِ واقعی — بلدم/آزمون/srs/کتابخانه — پنل را زنده میکند
+  // و فرمانِ پالت را هم.
+  const hasProgress =
+    Object.values(known).some(Boolean) ||
+    Object.keys(results).length > 0 ||
+    Object.keys(srsMap).length > 0 ||
+    Object.keys(libraryDone).length > 0;
   // راند ۲۳۶ — مسیرِ فرمانِ «ادامهٔ مطالعه» از قلابِ مشترکِ سه‌دره
   const navigateResume = useAppendixResumeNav();
   const { theme, setTheme } = useTheme();
@@ -364,6 +386,14 @@ export default function CommandPalette() {
       { id: "nav-teacher", label: "پنل معلم", group: "ناوبری", hint: "فهرست کلاس — فقط با کد دسترسی", keywords: ["teacher", "panel", "class", "معلم", "کلاس", "فهرست", "گزارش"] },
       { id: "nav-smart", label: "تمرین هوشمند", group: "ناوبری", hint: "دور ترکیبی متناسب با تو", keywords: ["smart practice", "mixed"] },
       { id: "nav-listen", label: "آموخته‌های شنیداری", group: "ناوبری", hint: "تمرین گوش و روخوانی", keywords: ["listen", "audio", "ear"] },
+      // راند ۳۷۲ — بندِ ④ پیشنهادِ r371: داشبوردِ مرور هم واردِ فرمان‌یاب
+      // میشود — پرشِ همان‌جایی که کنشِ مرور زندگی میکند (نه فرمانِ مرورِ
+      // ساختگی؛ عینِ قراردادِ چیپهایِ r371). گیت = hasProgressِ خانه؛
+      // رویِ خودِ خانه هم پیداست — پنل زیرِ خطِ لبه است و پرش همان‌جا
+      // معنادار (دقیقاً مثلِ چیپهایِ کارتِ خطر).
+      ...(hasProgress
+        ? [{ id: "nav-srs-dashboard", label: "داشبورد مرور هوشمند", group: "ناوبری", hint: "سررسیدها، نردبان حافظه و پیش‌بینی هفت‌روزه", keywords: ["srs", "review", "dashboard", "مرور", "سررسید", "داشبورد", "حافظه", "فراموشی"] }]
+        : []),
       // راند ۲۴۴ — درهایِ حلقه بعد از بلوکِ ناوبری: در تساویِ امتیازِ جست‌وجو،
       // مقصدِ اصلی (مثل «ضمیمهٔ کتاب») از ترتیبِ آرایه اول می‌آید — گروه‌بندیِ
       // نمایش به ترتیبِ COMMAND_GROUPS است و به این ترتیب کاری ندارد.
@@ -399,7 +429,7 @@ export default function CommandPalette() {
       { id: "tool-profile", label: "پروفایل و پشتیبان", group: "ابزارها", hint: "نام، رنگ، پشتیبان‌گیری و سینک ابری", keywords: ["profile", "backup", "sync", "پروفایل", "ذخیره"] },
       { id: "tool-install", label: "نصب روی دستگاه", group: "ابزارها", hint: "وب‌کتاب مثل اپ — آفلاین و تمام‌صفحه", keywords: ["install", "pwa", "نصب", "اپلیکیشن"] },
     ],
-    [isDark, resumeCmd, resumeRecentCmds, doorCmds, returnCmds],
+    [isDark, resumeCmd, resumeRecentCmds, doorCmds, returnCmds, hasProgress],
   );
 
   // کلیدواژهٔ ناوبری برای همهٔ فرمان‌ها (جست‌وجو) + نگاشت شناسه برای «اخیر»
@@ -495,6 +525,32 @@ export default function CommandPalette() {
       case "nav-listen":
         setView({ type: "listen" });
         break;
+      // راند ۳۷۲ — فرمانِ «داشبورد مرور هوشمند»: چهارمین مصرفِ تابعِ
+      // پرشِ focusSrsDashboard (بعدِ پل و چیپهایِ ردیفِ کارتِ خطر —
+      // r371). دو مسیرِ رسیدن:
+      //   • از دنیایِ دیگر: پرچمِ یک‌بارمصرف + ناوبری — پنل بعد از mount
+      //     پرچم را مصرف میکند و میپرد (سکونِ چیدمان در خودِ پنل؛ ایدئومِ
+      //     نشانگرِ ضمیمه، r246). رویدادِ تحلیلیِ نو ندارد — پرش، کنشِ
+      //     یادگیری نیست (رجیستری ۵۲؛ قراردادِ r368 برایِ درهایِ خانه).
+      //   • رویِ خودِ خانه: پرشِ زنده بعد از دورهٔ تحویلِ فوکوسِ پالت
+      //     (درسِ r243 — FocusScopeِ بستهشونده فوکوس را پس میگیرد) —
+      //     ایدئومِ درِ هدر، عیناً.
+      //   • بیپنل (بیپیشرفت): فرمان اصلاً در پالت نیست (گیتِ hasProgress)
+      //     — و اگر در فاصلهٔ باز-تا-اجرا چیزی عوض شود، focusSrsDashboard
+      //     خودش هیچ و false (صداقتِ r236).
+      case "nav-srs-dashboard": {
+        if (view.type !== "home") {
+          requestSrsSpotlight();
+          setView({ type: "home" });
+        } else {
+          if (handoffRef.current !== null) window.clearTimeout(handoffRef.current);
+          handoffRef.current = window.setTimeout(() => {
+            handoffRef.current = null;
+            focusSrsDashboard();
+          }, DOOR_HANDOFF_DELAY_MS);
+        }
+        break;
+      }
       // راند ۲۴۴ — درهایِ حلقه (بندِ ① پیشنهادِ ۲۴۳): ناوبری‌ها فوری‌اند
       // (بی‌تعارضِ فوکوس)؛ درِ هدر فوکوس‌بر است و بعد از دورهٔ تحویلِ
       // DOOR_HANDOFF_DELAY_MS اجرا می‌شود (درسِ r243 — FocusScopeِ پالتِ
@@ -832,6 +888,8 @@ function cmdIconKey(id: string, isDark: boolean): string {
       return "BookOpen";
     case "nav-teacher":
       return "School";
+    case "nav-srs-dashboard":
+      return "CalendarClock";
     case "nav-smart":
       return "Sparkles";
     case "nav-listen":
