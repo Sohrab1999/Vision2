@@ -1,0 +1,22 @@
+{
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/client-error/route": "app/api/client-error/route.js",
+  "/api/duel-ticket/route": "app/api/duel-ticket/route.js",
+  "/api/event/route": "app/api/event/route.js",
+  "/api/explain/route": "app/api/explain/route.js",
+  "/api/explain/usage/route": "app/api/explain/usage/route.js",
+  "/api/leaderboard/route": "app/api/leaderboard/route.js",
+  "/api/profile/route": "app/api/profile/route.js",
+  "/api/register/route": "app/api/register/route.js",
+  "/api/route": "app/api/route.js",
+  "/api/rush-leaderboard/route": "app/api/rush-leaderboard/route.js",
+  "/api/stats/route": "app/api/stats/route.js",
+  "/api/sync/route": "app/api/sync/route.js",
+  "/api/teacher/learner/route": "app/api/teacher/learner/route.js",
+  "/api/teacher/report/route": "app/api/teacher/report/route.js",
+  "/api/tts/route": "app/api/tts/route.js",
+  "/api/tts/usage/route": "app/api/tts/usage/route.js",
+  "/manifest.webmanifest/route": "app/manifest.webmanifest/route.js",
+  "/page": "app/page.js"
+}

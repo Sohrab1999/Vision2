@@ -1,0 +1,6 @@
+g7: pages=104 chars=127822 avg=1229 empty(<20c)=0 -> /home/z/my-project/booklet-extract/g7.txt
+g8: pages=101 chars=109127 avg=1080 empty(<20c)=0 -> /home/z/my-project/booklet-extract/g8.txt
+g9: pages=118 chars=155765 avg=1320 empty(<20c)=0 -> /home/z/my-project/booklet-extract/g9.txt
+g10: pages=302 chars=1186840 avg=3929 empty(<20c)=0 -> /home/z/my-project/booklet-extract/g10.txt
+g11: pages=204 chars=802014 avg=3931 empty(<20c)=0 -> /home/z/my-project/booklet-extract/g11.txt
+g12: pages=349 chars=1246351 avg=3571 empty(<20c)=0 -> /home/z/my-project/booklet-extract/g12.txt

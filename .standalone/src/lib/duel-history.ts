@@ -1,0 +1,647 @@
+// ------------------------------------------------------------------
+// «تاریخچهٔ نبردها» (Task 65) — موتور خالص دفترچهٔ دودل.
+//
+// تا امروز از یک نبرد فقط سه شمارندهٔ W/L/T روی جا می‌ماند؛ نام حریف،
+// امتیازها، تاریخ و فرمِ بردها برای همیشه گم می‌شدند. این ماژول رکورد
+// استاندارد یک نبرد تمام‌شده را از EndPayload سوکت می‌سازد، نگه‌داری
+// جدیدترین‌اول با سقف دارد و خلاصه‌های آماری (برد متوالی/بهترین امتیاز/فرم)
+// را برای پنل «آخرین نبردها» حساب می‌کند.
+//
+// خالص است — هیچ import از store/React؛ اسلایس arcade و تست‌ها مصرفش می‌کنند.
+// تنها importها: قراردادهایِ خالصِ پایینِ معماری (درصدِ دامنه + آمارِ فکر — pure→pure).
+// ------------------------------------------------------------------
+
+import { percent } from "./domain/percent";
+import { thinkStatsFromSamples, type ThinkStats } from "./duel-think";
+
+export type DuelOutcome = "win" | "loss" | "tie";
+export type DuelEndReason = "finished" | "forfeit";
+
+/** یک نبرد تمام‌شدهٔ ثبت‌شده — id ترتیبِ ساخت را حمل می‌کند (`d${epochMs}`) */
+export interface DuelRecord {
+  /**
+   * r386 — ستونِ فقراتِ ترتیبِ دفترچه. قرارداد: `d` + ارقامِ epoch ms
+   * (۱..۱۴ رقم — ۱۹۷۰..۲۲۸۶؛ رکوردهایِ واقعی ۱۳رقمی‌اند). تنها سازنده
+   * buildDuelRecord است؛ sanitize بر همان قرارداد گیت میگذارد — idِ بیرونِ
+   * قرارداد یعنی رکوردِ خراب (کلاً میافتد) وگرنه مرتبسازیِ رشتهایِ id
+   * دروغِ newest-first میسازد (مثال: «zzz» بالاتر از هر d... میچیند و در
+   * merge با سقفِ ۱۵ جایِ نوترینِ واقعی را میگیرد — اخراجِ داده).
+   */
+  id: string;
+  /** ISO day key (YYYY-MM-DD) برای نمایش تاریخ */
+  day: string;
+  outcome: DuelOutcome;
+  reason: DuelEndReason;
+  /** نام نمایشی حریف (فالبک: «حریف») */
+  opponent: string;
+  /** رنگ آواتار حریف (واژهٔ رنگ) */
+  opponentColor: string;
+  myScore: number;
+  oppScore: number;
+  myCorrect: number;
+  oppCorrect: number;
+  /** تعداد پاسخ‌های من */
+  answered: number;
+  /** تعداد سؤال‌های نبرد */
+  total: number;
+  /** ثانیه‌های من تا پایان (myFinishAt−startedAt؛ فورفیت/تایم‌اوت → ساعتِ پایان) */
+  durationSec: number;
+  /**
+   * Task 96 — رسیدِ امضاشدهٔ داور (۳۰۰۳) برای همین نبرد، فقط وقتی رسیدِ سالم
+   * به دست رسید (Task 94). رکوردهای قدیمی‌تر و نبردهایِ سرورِ قدیمی این فیلد
+   * را ندارند — نمایشِ «داورگواه» باید زیرمجموعهٔ صادق باشد، نه وضعیتِ دودویی.
+   */
+  receiptSig?: string;
+  /**
+   * Task 108 «ماندگاریِ آمارِ فکر» — خلاصهٔ آماریِ زمانِ فکرِ خودی (duel-think)،
+   * فقط وقتی دست‌کم یک نمونهٔ سالم داشت. رکوردهای قدیمی/سرویسِ قدیمی/بی‌نمونه
+   * این فیلد را ندارند — هر خواننده (چیپِ دفترچه، نشانِ چابکی) زیرمجموعهٔ صادق است.
+   */
+  think?: ThinkStats;
+}
+
+/** سقف دفترچه — جدیدترین‌ها می‌مانند (هم‌سقف goalMetDays سبکِ union) */
+export const DUEL_HISTORY_CAP = 15;
+
+const OUTCOMES: readonly DuelOutcome[] = ["win", "loss", "tie"];
+
+const clampInt = (v: unknown, max: number): number => {
+  const n = typeof v === "number" && Number.isFinite(v) ? Math.round(v) : 0;
+  return Math.min(max, Math.max(0, n));
+};
+
+// امضای رسید = hex ۶۴نویسه‌ایِ HMAC-SHA256ِ داور (Task 94). اینجا فقط شکل
+// سنجیده می‌شود — درستیِ امضا کارِ سرور است؛ دفترچه فقط حاملِ سند است.
+const SIG_RE = /^[0-9a-f]{64}$/;
+
+const sigOk = (v: unknown): string | undefined =>
+  typeof v === "string" && SIG_RE.test(v) ? v : undefined;
+
+export const duelDayKey = (d = new Date()): string =>
+  `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+
+/**
+ * رکورد یک نبرد تمام‌شده را از payload پایان سرور بساز.
+ * اگر بازیکنِ خودی بین players نبود null برمی‌گرداند (رکورد ساختنی نیست).
+ * `now` و `myFinishAt` (epoch ms) از بیرون می‌آیند تا تابع در تست‌ها قطعی بماند؛
+ * myFinishAt=0 یعنی خودم تمام نکرده بودم (فورفیت/تایم‌اوت) → ساعتِ همان لحظه.
+ */
+export function buildDuelRecord(
+  end: {
+    reason: DuelEndReason;
+    winner: string | null;
+    total: number;
+    startedAt: number | null;
+    players: { sid: string; name: string; color: string; score: number; correct: number; answered: number }[];
+  },
+  sid: string,
+  now: number,
+  myFinishAt = 0,
+  /** Task 96 — sig رسیدِ داور از EndPayload؛ نامشکل یا غایب → فیلد ثبت نمی‌شود */
+  receiptSig?: string | null,
+  /** Task 108 — نمونه‌های فکرِ خودی (end.think?.[sid])؛ بی‌نمونه → فیلد ثبت نمی‌شود */
+  thinkSamples?: (number | null)[]
+): DuelRecord | null {
+  const mine = end.players.find((p) => p.sid === sid);
+  if (!mine) return null;
+  const opp = end.players.find((p) => p.sid !== sid);
+  const outcome: DuelOutcome = end.winner === null ? "tie" : end.winner === sid ? "win" : "loss";
+  const durationSec =
+    end.startedAt && end.startedAt > 0
+      ? clampInt((Math.max(myFinishAt > 0 ? myFinishAt : now) - end.startedAt) / 1000, 7200)
+      : 0;
+  // Task 108 — آمارِ فکرِ ذخیره‌کردنی؛ بی‌نمونه → خودِ فیلد غایب (صداقتِ زیرمجموعه).
+  // فیلدِ تودرتو — نه پخشِ تخت (پخشِ تخت avgMs را بیرون می‌ریزد و totalِ رکورد را خراب می‌کند)
+  const think = thinkStatsFromSamples(thinkSamples ?? []);
+  return {
+    id: `d${now}`,
+    day: duelDayKey(new Date(now)),
+    outcome,
+    reason: end.reason === "forfeit" ? "forfeit" : "finished",
+    opponent: (opp?.name || "").trim().slice(0, 40) || "حریف",
+    opponentColor: (opp?.color || "stone").slice(0, 24),
+    myScore: clampInt(mine.score, 1_000_000),
+    oppScore: clampInt(opp?.score ?? 0, 1_000_000),
+    myCorrect: clampInt(mine.correct, 999),
+    oppCorrect: clampInt(opp?.correct ?? 0, 999),
+    answered: clampInt(mine.answered, 999),
+    total: clampInt(end.total, 999),
+    durationSec,
+    receiptSig: sigOk(receiptSig),
+    ...(think ? { think } : {}),
+  };
+}
+
+// ------------------------------------------------------------------
+// Task 108 — نهمین خانوادهٔ نشان: «چابکیِ ذهن» (فکرِ کم + درستِ زیاد).
+// زمانِ فکرِ میانگین زیر THINK_QUICK_MS با نرخِ درستیِ بالا روی نمونهٔ
+// معنادار یعنی پاسخ پیش از فکرکردن آماده بود — پروفایلِ «نیم‌نگاه».
+// گیت‌های صادق:
+//  • think باید موجود باشد (رکوردِ قدیمی/بی‌نمونه هرگز نمی‌شمارد)
+//  • seen ≥ ۳ — میانگینِ تک‌نمونه‌ای آمار نیست
+//  • answered ≥ ۵ — نرخِ درستی روی نمونهٔ کوتاه بی‌معناست
+//  • myCorrect/answered ≥ ۰٫۸ — «درستِ زیاد»
+//  • avgMs ≤ THINK_QUICK_MS — «فکرِ کم» (با ≤ نه < — مرزِ دقیق تست-قفل)
+// ------------------------------------------------------------------
+
+/** آستانه‌های نشانِ چابکی — فروزن؛ تست‌ها روی مرزِ دقیق قفل می‌شوند */
+export const DUEL_QUICK_THINK = {
+  quickMs: 1500,
+  minSeen: 3,
+  minAnswered: 5,
+  correctRate: 0.8,
+} as const;
+
+/** آیا این رکورد «چابک» است؟ — هرگز throw نمی‌کند؛ ورودیِ خراب → false */
+export function isQuickThinkRecord(rec: DuelRecord): boolean {
+  const t = rec.think;
+  if (!t || typeof t !== "object") return false;
+  const { quickMs, minSeen, minAnswered, correctRate } = DUEL_QUICK_THINK;
+  if (typeof t.avgMs !== "number" || !Number.isFinite(t.avgMs) || t.avgMs < 0) return false;
+  if (typeof t.seen !== "number" || !Number.isInteger(t.seen) || t.seen < minSeen) return false;
+  const answered = typeof rec.answered === "number" && Number.isFinite(rec.answered) ? rec.answered : 0;
+  const correct = typeof rec.myCorrect === "number" && Number.isFinite(rec.myCorrect) ? rec.myCorrect : 0;
+  if (answered < minAnswered) return false;
+  if (correct / answered < correctRate) return false;
+  return t.avgMs <= quickMs;
+}
+
+/** شمارِ رکوردهای چابکِ دفترچه — ورودیِ خراب بی‌صدا نادیده (الگوی duelVerifiedWins) */
+export function duelQuickThinkers(records: DuelRecord[]): number {
+  if (!Array.isArray(records)) return 0;
+  return records.reduce((n, r) => (r && isQuickThinkRecord(r) ? n + 1 : n), 0);
+}
+
+/** درج newest-first با حذف تکراریِ هم‌id و سقف DUEL_HISTORY_CAP */
+export function pushDuelRecord(records: DuelRecord[], rec: DuelRecord): DuelRecord[] {
+  return [rec, ...records.filter((r) => r.id !== rec.id)].slice(0, DUEL_HISTORY_CAP);
+}
+
+/** بردِ متوالیِ انتهای دفترچه — از جدیدترین رکورد؛ مساوی/باخت زنجیره را می‌شکند */
+export function duelWinStreak(records: DuelRecord[]): number {
+  let n = 0;
+  for (const r of records) {
+    if (r.outcome !== "win") break;
+    n++;
+  }
+  return n;
+}
+
+/** بهترین امتیاز شخصی در دفترچه (۰ اگر خالی) */
+export function duelBestScore(records: DuelRecord[]): number {
+  return records.reduce((m, r) => Math.max(m, r.myScore), 0);
+}
+
+/**
+ * Task 96 — چند رکوردِ دفترچه رسیدِ داور دارند (زیرمجموعهٔ صادق).
+ * الگوی تسک ۹۵: شمارندهٔ زیرمجموعه بهتر از وضعیتِ دودویی است — نیمی‌داورگواه
+ * باید نیمی دیده شود.
+ */
+export function duelVerifiedCount(records: DuelRecord[]): number {
+  return records.reduce((n, r) => (r.receiptSig ? n + 1 : n), 0);
+}
+
+/**
+ * Task 105 — چند «بردِ» دفترچه رسیدِ امضاشدهٔ داور دارد (زیرمجموعهٔ صادقِ
+ * زیرمجموعه: هم برد است هم رسید). خانوادهٔ هشتمِ نشان «اعتماد» روی همین
+ * می‌نشیند — پاداشِ اعتماد به داوریِ متمرکز (Task 94) نه به خوداظهاری؛
+ * رکوردِ بدونِ sig (قدیمی یا دستی) هرگز نمی‌شمارد.
+ */
+export function duelVerifiedWins(records: DuelRecord[]): number {
+  return records.reduce((n, r) => (r.outcome === "win" && r.receiptSig ? n + 1 : n), 0);
+}
+
+/** فرم آخرین n نبرد (جدید→قدیم) برای نشان‌های رنگی */
+export function duelForm(records: DuelRecord[], n = 5): DuelOutcome[] {
+  return records.slice(0, n).map((r) => r.outcome);
+}
+
+// ---------------- جست‌وجو و فیلترِ دفترچه (Task 98 — «دفترچهٔ قابلِ کاویدن») ----------------
+// دفترچه تا ۱۵ رکورد نگه می‌دارد و رابط فقط ۵ تای آخر را نشان می‌داد؛ بقیه پشتِ
+// یک جملهٔ ثابت قفل بود. این قراردادها دفترچه را قابلِ کاویدن می‌کنند: جست‌وجوی
+// نامِ حریف + فیلترِ نتیجه + فقطِ داورگواه — همه AND و حفظِ ترتیبِ جدید→قدیم.
+
+export type DuelLedgerOutcomeFilter = DuelOutcome | "all";
+
+export interface DuelLedgerFilter {
+  /** زیررشتهٔ نامِ حریف — خالی/فقطِ فاصله یعنی بی‌قید */
+  query?: string;
+  outcome?: DuelLedgerOutcomeFilter;
+  /** فقط رکوردهای دارای رسیدِ امضاشدهٔ داور */
+  verifiedOnly?: boolean;
+}
+
+/**
+ * یکسان‌سازیِ عبارتِ جست‌وجو برای «خواندنِ» نامِ فارسی: فاصله و نیم‌فاصلهٔ
+ * (U+200C) کلاً حذف و lowercase می‌شود — «امیر محمد»، «امیرمحمد» و
+ * «امیر‌محمد» هر سه یکی می‌شوند. ابهامِ فاصله/نیم‌فاصله دردِ کلاسیکِ متنِ
+ * فارسی است و روی دفترچهٔ ۱۵تایی، تطبیقِ بی‌فاصله همیشه کمتر سخت‌گیر است.
+ */
+export function normalizeDuelQuery(q: string): string {
+  return (q ?? "")
+    .toLowerCase()
+    .replace(/[\u200c\s]+/g, "");
+}
+
+/** فیلترِ ترکیبیِ AND با حفظِ ترتیب — فیلترِ خالی همان دفترچه را می‌دهد */
+export function filterDuelLedger(records: DuelRecord[], f: DuelLedgerFilter = {}): DuelRecord[] {
+  const q = normalizeDuelQuery(f.query ?? "");
+  return records.filter((r) => {
+    if (f.outcome && f.outcome !== "all" && r.outcome !== f.outcome) return false;
+    if (f.verifiedOnly && !r.receiptSig) return false;
+    if (q && !normalizeDuelQuery(r.opponent).includes(q)) return false;
+    return true;
+  });
+}
+
+/** خلاصهٔ برد/باخت/مساویِ یک مجموعه (برای خطِ نتیجهٔ فیلتر) */
+export function duelLedgerDigest(records: DuelRecord[]): { win: number; loss: number; tie: number } {
+  const d = { win: 0, loss: 0, tie: 0 };
+  for (const r of records) d[r.outcome]++;
+  return d;
+}
+
+// ---------------- امتیازِ نبرد — تفکیکِ پایه/سرعت (Task 99) ----------------
+// قراردادِ داور (mini-services/challenge-service/scoring.ts): هر پاسخِ درست
+// ۱۰۰ امتیازِ پایه + پاداشِ سرعتِ ۰..۱۰۰ (ساعتِ سرور؛ msِ کلاینت خوانده
+// نمی‌شود). تفکیکِ سمتِ کلاینت صرفاً «نمایش» است — اعتبارِ نتیجه کارِ
+// رسیدِ امضاشدهٔ تسک ۹۴ است؛ scoreِ جعلی این‌جا فقط دروغ‌تر دیده می‌شود.
+
+export const DUEL_BASE_POINTS = 100;
+
+/** امتیازِ یک بازیکن را به پایه (درست×۱۰۰) و پاداشِ سرعت می‌شکند */
+export function decomposeDuelScore(score: number, correct: number): { base: number; bonus: number } {
+  const c = Number.isFinite(correct) && correct > 0 ? Math.floor(correct) : 0;
+  const base = c * DUEL_BASE_POINTS;
+  const raw = Number.isFinite(score) ? Math.floor(score) : 0;
+  return { base, bonus: Math.max(0, raw - base) };
+}
+
+// ---------------- رقیبِ نخست (Task 99 — خانوادهٔ نبردِ نشان‌ها) ----------------
+/**
+ * بیشترین بردِ مقابلِ یک حریفِ واحد در دفترچه — گروه‌بندی با نامِ نرمال‌شده
+ * (بی‌فاصله/بی‌نیم‌فاصله) تا «امیر محمد» و «امیرمحمد» یک رقیب باشند. نامِ
+ * نمایشیِ خوداظهار است (SEC-5) — دو «سینا»ی واقعی یکی دیده می‌شوند؛ صادقانه
+ * روی همان نمایش. تساویِ شمار: رقیبی که بردِ Nامش تازه‌تر است (پیمایش
+ * جدید→قدیم، اولینِ رسیده به سقف می‌ماند) — قطعی و معنادار.
+ */
+export function duelTopRival(records: DuelRecord[]): { opponent: string; wins: number } | null {
+  const winsBy = new Map<string, { opponent: string; wins: number }>();
+  let top: { opponent: string; wins: number } | null = null;
+  for (const r of records) {
+    if (r.outcome !== "win") continue;
+    const key = normalizeDuelQuery(r.opponent) || r.opponent.trim();
+    const cur = winsBy.get(key);
+    if (cur) {
+      cur.wins++;
+    } else {
+      winsBy.set(key, { opponent: r.opponent, wins: 1 });
+    }
+    const now = winsBy.get(key)!;
+    if (!top || now.wins > top.wins) top = now;
+  }
+  return top;
+}
+
+// ---------------- کارنامهٔ مقابلِ حریف (Task 191 — head-to-head) ----------------
+/**
+ * صفحهٔ پایانِ نبرد به دفترچه وصل می‌شود: برد/باخت/مساویِ «مقابلِ همین حریف»
+ * از رکوردهای دفترچه، با همان تطبیقِ نرمال‌شدهٔ Task 98 (بی‌فاصله/بی‌نیم‌فاصله —
+ * «امیر محمد» و «امیرمحمد» یک رقیب‌اند).
+ *
+ * صداقتِ قرارداد:
+ *  • فقط رکوردهای واقعیِ دفترچه شمرده می‌شود (سقفِ DUEL_HISTORY_CAP) —
+ *    زیرمجموعهٔ صادق، نه تاریخِ کل؛ برچسبِ UI همین را می‌گوید.
+ *  • نامِ فالبکِ «حریف» هرگز کلیدِ تطبیق نیست — رکوردهای ناشناسِ (نام‌نرسیدهٔ)
+ *    گذشته می‌توانند آدم‌های متفاوتی باشند و یک رقیبِ ساختگی نمی‌سازند؛
+ *    نبردِ مقابلِ حریفی که واقعاً «حریف» نامش است هم طبقِ SEC-5 روی همان
+ *    نمایشِ خوداظهار حساب می‌شود اما رکوردهای فالبکِ قدیمی به او چسپانده
+ *    نمی‌شوند (همین گاردِ صریح، duelTopRival سخت‌گیرتر شده).
+ *  • نامِ غایب/خالی یا دفترچهٔ بی‌رکوردِ مقابلِ او → null (بلوک غایب —
+ *    نه صفرِ ساختگی).
+ *
+ * نبردِ جاری عمداً شامل است: persistResult رکورد را پیش از رندرِ فازِ done
+ * در دفترچه می‌گذارد (use-duel-socket)، پس شمارشِ «تا همین لحظه» خودکار
+ * درست است و UI آن را شفاف می‌گوید.
+ */
+export const DUEL_ANON_OPPONENT = "حریف";
+
+export function duelHeadToHead(
+  records: DuelRecord[],
+  opponent: string | undefined | null
+): { win: number; loss: number; tie: number } | null {
+  if (!Array.isArray(records)) return null;
+  const name = typeof opponent === "string" ? opponent.trim() : "";
+  if (!name || name === DUEL_ANON_OPPONENT) return null;
+  const key = normalizeDuelQuery(name);
+  if (!key) return null;
+  const digest = { win: 0, loss: 0, tie: 0 };
+  let matched = 0;
+  for (const r of records) {
+    if (!r || r.opponent === DUEL_ANON_OPPONENT) continue;
+    if (normalizeDuelQuery(r.opponent) !== key) continue;
+    digest[r.outcome]++;
+    matched++;
+  }
+  return matched > 0 ? digest : null;
+}
+
+// ---------------- رقیبِ همیشگیِ setup نبرد (Task 201 — توصیهٔ ۱۹۴) ----------------
+/**
+ * دفترچه روی صفحهٔ پایان نبرد «کارنامهٔ مقابلِ همین حریف» را نشان می‌دهد
+ * (duelHeadToHead، Task 191) اما صفحهٔ setup هنوز فقط سه شمارندهٔ کلِ W/L/T
+ * دارد — «رقیبِ همیشگی» حلقهٔ گم‌شده است: حریفی که بیشترین نبرد را با او
+ * داشته‌ای، با کارنامهٔ کاملِ مقابلِ او، همین بالای دکمهٔ ساخت اتاق.
+ *
+ * تفاوت با duelTopRival (Task 99): آن‌جا «بیشترین بردِ مقلب» است و نبردهای
+ * باخت/مساوی کلاً بی‌صدا نادیده می‌شوند؛ این‌جا «بیشترین روبه‌روشدنِ کل» است —
+ * حریفی که با او بیشتر مسابقه دادی رقیبِ همیشگی توست حتی اگر بیشتر برندهٔ
+ * تو بوده باشد. کارنامهٔ صادقِ مقابلِ او دقیقاً همان چیزی است که یادگیرنده
+ * پیش از شروعِ نبردِ بعدی می‌خواهد ببیند.
+ *
+ * صداقتِ قرارداد (هم‌خانوادهٔ duelHeadToHead):
+ *  • فقط رکوردهای واقعیِ دفترچه (سقفِ DUEL_HISTORY_CAP) — زیرمجموعهٔ صادق.
+ *  • نامِ فالبکِ «حریف» هرگز کلیدِ تطبیق نیست و رکوردِ ناشناس به هیچ
+ *    رقیبی چسپانده نمی‌شود — دو «حریفِ» گذشته آدم‌های متفاوتی‌اند.
+ *  • گروه‌بندی با normalizeDuelQuery (بی‌فاصله/بی‌نیم‌فاصله) — «امیر محمد»
+ *    و «امیرمحمد» یک رقیب‌اند؛ نامِ نمایشی = اولین دیده‌شده (جدید→قدیم).
+ *  • تساویِ شمارِ نبرد: رقیبی که نبردِ Nامش تازه‌تر است می‌ماند (پیمایشِ
+ *    جدید→قدیم، اولینِ رسیده به سقف — قطعی، همان قاعدهٔ duelTopRival).
+ *  • دفترچهٔ بی‌رکوردِ نام‌دار → null (بلوکِ غایب — نه صفرِ ساختگی).
+ */
+export interface DuelPerennialRival {
+  /** نامِ نمایشیِ رقیب (اولین دیده‌شده در پیمایشِ جدید→قدیم) */
+  opponent: string;
+  /** کلِ نبردهای مقابلِ او در دفترچه (برد+باخت+مساوی) */
+  duels: number;
+  win: number;
+  loss: number;
+  tie: number;
+}
+
+export function duelPerennialRival(records: DuelRecord[]): DuelPerennialRival | null {
+  if (!Array.isArray(records)) return null;
+  let top: DuelPerennialRival | null = null;
+  const byKey = new Map<string, DuelPerennialRival>();
+  for (const r of records) {
+    if (!r || r.opponent === DUEL_ANON_OPPONENT) continue;
+    const key = normalizeDuelQuery(r.opponent);
+    if (!key) continue;
+    const cur = byKey.get(key);
+    if (cur) {
+      cur.duels++;
+      cur[r.outcome]++;
+    } else {
+      byKey.set(key, { opponent: r.opponent, duels: 1, win: r.outcome === "win" ? 1 : 0, loss: r.outcome === "loss" ? 1 : 0, tie: r.outcome === "tie" ? 1 : 0 });
+    }
+    const now = byKey.get(key)!;
+    if (!top || now.duels > top.duels) top = now;
+  }
+  return top;
+}
+
+// ---------------- آمارِ سرعتِ دفترچه (Task 100 — هفتمین خانوادهٔ نشان: «سرعت») ----------------
+// قراردادِ داور (Task 99): امتیاز = درست×۱۰۰ + پاداشِ سرعتِ ۰..۱۰۰ بر پاسخ.
+// پس پاداشِ سرعتِ هر نبرد از همان decomposeDuelScore درمی‌آید — صفر ورودیِ
+// تازه، صفر ری‌استارتِ داور. میانگینِ پاداش بر «پاسخِ درست» معنادار است:
+// رکوردِ بی‌درست (myCorrect=0) هیچ اطلاعاتِ سرعتی ندارد و کلاً کنار گذاشته
+// می‌شود — نه اینکه امتیازِ دروغینش واردِ میانگین شود.
+// سقفِ قراردادی: پاداشِ هر نبرد ≤ درست×۱۰۰ (هر پاسخ حداکثر ۱۰۰) — امتیازِ
+// جعلیِ فراتر از سقف فقط تا همین سقف حساب می‌شود؛ دروغ‌تر دیده نمی‌شود.
+
+export function duelSpeedStats(records: DuelRecord[]): {
+  totalBonus: number;
+  totalCorrect: number;
+  /** میانگینِ پاداشِ سرعت بر پاسخِ درست (۰..۱۰۰) — دفترچهٔ بی‌درست → ۰ نه NaN */
+  avgBonus: number;
+} {
+  let totalBonus = 0;
+  let totalCorrect = 0;
+  for (const r of records) {
+    const c = Number.isFinite(r.myCorrect) ? Math.floor(r.myCorrect) : 0;
+    if (c <= 0) continue; // پاسخِ درستی در کار نیست — سرعتی برای سنجش نیست
+    const { bonus } = decomposeDuelScore(r.myScore, c);
+    totalBonus += Math.min(bonus, c * DUEL_BASE_POINTS);
+    totalCorrect += c;
+  }
+  return { totalBonus, totalCorrect, avgBonus: totalCorrect > 0 ? totalBonus / totalCorrect : 0 };
+}
+
+// ---------------- قراردادِ id و ترتیب (r386 — ستونِ فقراتِ ترتیب) ----------------
+// id ترتیبِ ساخت را حمل میکند (`d${epochMs}` — از تولدِ Task 65 تنها سازنده
+// همین است). r386 قرارداد را «نامدار» میکند: گیتِ sanitize فقط idِ درقرارداد
+// را میپذیرد و همهٔ مقایسههایِ ترتیب روی epochِ عددی میچرخند نه رشته —
+// چون مقایسهٔ رشتهای روی طولِ متفاوت دروغ میگوید («d9» > «d1739...»).
+// epochِ بیرون از گیت null است؛ مقایسهٔ دفاعی: null تهِ صف، درونِ خودش رشتهای.
+
+const ID_RE = /^d\d{1,14}$/;
+
+/**
+ * epochِ ترتیب از id — تنها خوانندهٔ مجازِ ساختارِ id.
+ * ورودیِ بیرونِ قرارداد → null (تماسدهنده سیاستِ خودش را دارد؛ مقایسههایِ
+ * این ماژول null را تهِ صف میفرستند تا هرگز «تازهترین» نشود).
+ */
+export function duelIdEpoch(id: string): number | null {
+  if (!ID_RE.test(id)) return null;
+  return Number(id.slice(1));
+}
+
+/**
+ * مقایسهگرِ نزولیِ مشترکِ ترتیب — tuple [epoch, id]: epochِ بزرگتر اول؛
+ * تساویِ epoch با idِ رشتهای میشکند؛ epochِ null (idِ بیقرارداد — فقط از
+ * ورودیِ پالایشنشده ممکن است) تهِ صف میماند و هرگز نمیتواند «تازهترین»
+ * دفترچه را بدزدد. قطعی و متعدی.
+ */
+const byIdDesc = (a: DuelRecord, b: DuelRecord): number => {
+  const ea = duelIdEpoch(a.id);
+  const eb = duelIdEpoch(b.id);
+  if (ea !== null && eb !== null && ea !== eb) return ea < eb ? 1 : -1;
+  if (ea === null && eb !== null) return 1;
+  if (eb === null && ea !== null) return -1;
+  return a.id < b.id ? 1 : a.id > b.id ? -1 : 0;
+};
+
+// ---------------- مرتب‌سازیِ دفترچه (Task 100 — «دفترچهٔ مرتب») ----------------
+// دفترچه همیشه جدید→قدیم ذخیره می‌شود (id حامل epoch ms است)؛ اما «کاویدنِ»
+// کامل (Task 98) مرتب‌سازی را هم می‌خواهد: «سنگین‌ترین بردم کدام بود؟» یا
+// «بهترین امتیازم توی دفترچه کجاست؟». سه کلید: جدیدترین (پیش‌فرض)، بیشترین
+// امتیازِ خودی، بیشترین اختلافِ امتیاز (myScore−oppScore — هم بردهای سنگین
+// را می‌آورد بالا هم باخت‌های سنگین را می‌فرستد پایین؛ یک طیفِ صادق است).
+
+export type DuelLedgerSortKey = "newest" | "myScore" | "margin";
+
+/** ترتیبِ ثبت‌شدهٔ کلیدها — UI همین را رندر می‌کند */
+export const DUEL_LEDGER_SORTS: readonly DuelLedgerSortKey[] = ["newest", "myScore", "margin"];
+
+/**
+ * مرتب‌سازیِ قطعی: تساویِ امتیاز/اختلاف با idِ نزولی می‌شکند (تازه‌تر اول).
+ * "newest" هم آگاهانه بر اساس id نزول می‌کند — دفترچه‌ای که از ورودیِ نامطمئن
+ * آمده (sanitize/merge) ممکن است ترتیبِ خامش درهم باشد؛ تکیه بر قراردادِ id
+ * همیشه درست‌تر از تکیه بر ترتیبِ آرایه است.
+ */
+export function sortDuelLedger(records: DuelRecord[], key: DuelLedgerSortKey = "newest"): DuelRecord[] {
+  // r386 — byIdDesc به بالای ماژول کوچید (قراردادِ epoch-محور، یک مقایسهگر
+  // برایِ هر سه کلید و merge). امضایِ سهکلیدی و کپیِ خالصِ Task 100 دستنخورده.
+  const arr = [...records];
+  if (key === "myScore") arr.sort((a, b) => b.myScore - a.myScore || byIdDesc(a, b));
+  else if (key === "margin")
+    arr.sort((a, b) => b.myScore - b.oppScore - (a.myScore - a.oppScore) || byIdDesc(a, b));
+  else arr.sort(byIdDesc);
+  return arr;
+}
+
+// ---------------- کارنامهٔ دفترچه (Task 101 — عکسِ قابلِ هم‌رسانی) ----------------
+// تجمیعِ صادقِ کل دفترچه در یک شیء برای کارتِ PNG: هیچ عددِ تازه‌ای محاسبه
+// نمی‌شود — هر فیلد همان قراردادِ قبلی است (digest/streak/best/topRival/
+// verified) که یک‌جا جمع شده تا کانواس و آینده‌ها (گزارشِ هفتگی؟) رقم‌های
+// همسان داشته باشند. winRate با همان percentِ دامنه (گاردِ صفر و سقفِ ۱۰۰).
+// totalPoints از myScoreهای نامعین می‌گذرد (دفاعِ همان‌خطی — رکوردِ سالمِ
+// store همیشه محدود است؛ ورودیِ خامِ خراب حقِ واردشدن به مجموع را ندارد).
+
+export interface DuelLedgerStats {
+  total: number;
+  win: number;
+  loss: number;
+  tie: number;
+  /** درصدِ برد ۰..۱۰۰ — دفترچهٔ خالی → ۰ (percentِ دامنه) */
+  winRate: number;
+  /** بهترین امتیازِ شخصی (duelBestScore) */
+  best: number;
+  /** بردِ متوالیِ انتهای دفترچه (duelWinStreak) */
+  streak: number;
+  /** مجموعِ امتیازهای شخصیِ ثبت‌شده — myScoreِ نامعین حساب نمی‌شود */
+  totalPoints: number;
+  /** رقیبِ همیشگی (duelTopRival) — null در دفترچهٔ بی‌برد */
+  topRival: { opponent: string; wins: number } | null;
+  /** چند نبرد رسیدِ امضاشدهٔ داور دارند (duelVerifiedCount — زیرمجموعهٔ صادق) */
+  verified: number;
+}
+
+export function duelLedgerStats(records: DuelRecord[]): DuelLedgerStats {
+  const d = duelLedgerDigest(records);
+  return {
+    total: records.length,
+    win: d.win,
+    loss: d.loss,
+    tie: d.tie,
+    winRate: percent(d.win, records.length),
+    best: duelBestScore(records),
+    streak: duelWinStreak(records),
+    totalPoints: records.reduce((n, r) => n + (Number.isFinite(r.myScore) ? r.myScore : 0), 0),
+    topRival: duelTopRival(records),
+    verified: duelVerifiedCount(records),
+  };
+}
+
+// ---------------- پایداری (sanitize/merge برای جدول SyncField) ----------------
+
+const DAY_RE = /^\d{4}-\d{2}-\d{2}$/;
+
+/**
+ * Task 109 — اعتبارسنجِ مشترکِ فیلدِ think: اعدادِ متناهیِ نامنفی،
+ * seen صحیحِ ۱..total≤۹۹۹، min≤avg≤max؛ خراب → null (فیلد می‌افتد،
+ * نه صفرِ ساختگی). هم sanitizeDuelRecord و هم duelWeeklyStatsِ هفته‌نامه
+ * از همین یک قاعده می‌خوانند تا «شکلِ سالمِ think» هرگز دووجهی نشود.
+ */
+export function saneThink(t: unknown): ThinkStats | null {
+  if (!t || typeof t !== "object" || Array.isArray(t)) return null;
+  if (typeof (t as Record<string, unknown>).avgMs !== "number") return null;
+  const s = t as ThinkStats;
+  const numsOk = [s.avgMs, s.minMs, s.maxMs].every(
+    (x) => typeof x === "number" && Number.isFinite(x) && x >= 0
+  );
+  const countsOk =
+    typeof s.seen === "number" && Number.isInteger(s.seen) && s.seen >= 1 &&
+    typeof s.total === "number" && Number.isInteger(s.total) && s.total >= s.seen && s.total <= 999;
+  if (numsOk && countsOk && s.minMs <= s.avgMs && s.avgMs <= s.maxMs) {
+    return { avgMs: s.avgMs, minMs: s.minMs, maxMs: s.maxMs, seen: s.seen, total: s.total };
+  }
+  return null;
+}
+
+/** اعتبارسنجی یک رکورد نامطمئن — رکورد خراب کلاً می‌افتد، نه اینکه نصفه بماند */
+export function sanitizeDuelRecord(v: unknown): DuelRecord | null {
+  if (!v || typeof v !== "object" || Array.isArray(v)) return null;
+  const r = v as Record<string, unknown>;
+  // r386 — گیتِ id روی قراردادِ نامدار (`d` + ارقامِ ۱..۱۴)؛ ۴۰نویسه‌ایِ
+  // بیقیدِ قدیم idهایِ بیرونِ قرارداد را زنده نگه میداشت که مرتبسازیِ
+  // رشتهای/epochیشان بیمعنا بود — «zzz» تازهترین میشد. id ستونِ فقراتِ
+  // ترتیب است نه برچسب؛ بیقرارداد = رکوردِ خراب = کلاً میافتد (همان فلسفه).
+  const id = typeof r.id === "string" && ID_RE.test(r.id) ? r.id : null;
+  const day = typeof r.day === "string" && DAY_RE.test(r.day) ? r.day : null;
+  const outcome = OUTCOMES.includes(r.outcome as DuelOutcome) ? (r.outcome as DuelOutcome) : null;
+  if (!id || !day || !outcome) return null;
+  const reason: DuelEndReason = r.reason === "forfeit" ? "forfeit" : "finished";
+  const opponent = typeof r.opponent === "string" ? r.opponent.trim().slice(0, 40) : "";
+  const opponentColor = typeof r.opponentColor === "string" ? r.opponentColor.slice(0, 24) : "stone";
+  const out: DuelRecord = {
+    id,
+    day,
+    outcome,
+    reason,
+    opponent: opponent || "حریف",
+    opponentColor: opponentColor || "stone",
+    myScore: clampInt(r.myScore, 1_000_000),
+    oppScore: clampInt(r.oppScore, 1_000_000),
+    myCorrect: clampInt(r.myCorrect, 999),
+    oppCorrect: clampInt(r.oppCorrect, 999),
+    answered: clampInt(r.answered, 999),
+    total: clampInt(r.total, 999),
+    durationSec: clampInt(r.durationSec, 7200),
+    // Task 96 — sig خراب/جعلی می‌افتد؛ رکوردِ بدونِ sig (قدیمی) سرِ پا می‌ماند
+    receiptSig: sigOk(r.receiptSig),
+  };
+  // Task 108 — think فقط با شکلِ سالم می‌ماند (اعتبارسنجِ مشترکِ ۱۰۹)
+  const t = saneThink(r.think);
+  if (t) out.think = t;
+  return out;
+}
+
+/**
+ * آرایهٔ دفترچه از ورودی نامطمئن: فقط رکوردهای سالم، بدون تکرارِ id،
+ * مرتبِ newest-first و سقف‌خورده.
+ * r386 — مرز، «تمامیتِ دفترچه» را هم ترمیم میکند نه فقط شکلِ فیلدها را:
+ * تا دیروز ترتیبِ ورودیِ نامطمئن عیناً حفظ میشد و سقفِ ۱۵ «۱۵تایِ اولِ
+ * ورودی» بود — دفترچهای که ترتیبش درهم باشد (سناریویِ merge سالم،
+ * نوشتهٔ نیمهٔ قدیم، دستکاری) حالا با همِ یک پاس به قراردادِ newest-first
+ * برمیگردد و ۱۵تایِ «نوترین» میمانند نه ۱۵تایِ «اولی». آینهٔ
+ * mergeDuelHistory است (هر دو مرزِ ورودِ داده به استور) و برایِ دادهٔ
+ * سالمِ همیشه-مرتب، idempotent. تکراری: اولین رکورد برنده است (قراردادِ
+ * قدیمی — محلیِ پالایششده مقدم است).
+ */
+export function sanitizeDuelHistory(v: unknown): DuelRecord[] {
+  if (!Array.isArray(v)) return [];
+  const out: DuelRecord[] = [];
+  const seen = new Set<string>();
+  for (const item of v) {
+    const rec = sanitizeDuelRecord(item);
+    if (!rec || seen.has(rec.id)) continue;
+    seen.add(rec.id);
+    out.push(rec);
+  }
+  return out.sort(byIdDesc).slice(0, DUEL_HISTORY_CAP);
+}
+
+/**
+ * merge ابری: اتحاد بر اساس id (دفترچهٔ لاگ است، نه شمارنده — هر دو دستگاه ارزش
+ * دارند)، مرتب بر اساس epochِ id نزولی (r386 — مقایسهگرِ مشترِک byIdDesc؛
+ * رشتهمحورِ قدیم روی طولِ متفاوت دروغ میگفت) و سقف‌خورده.
+ * هر دو طرف optional هستند (فیلد در snapshotهای قدیمی غایب است).
+ */
+export function mergeDuelHistory(
+  l: DuelRecord[] | undefined,
+  r: DuelRecord[] | undefined
+): DuelRecord[] {
+  const map = new Map<string, DuelRecord>();
+  for (const rec of [...(l ?? []), ...(r ?? [])]) {
+    const prev = map.get(rec.id);
+    if (!prev) {
+      map.set(rec.id, rec);
+      continue;
+    }
+    // Task 96 — هم‌id: رکوردِ رسیددار کامل‌تر است (رسید فقط روی دستگاهی که
+    // بعد از تسک ۹۴ persist کرده می‌نشیند)؛ ارتقا بیدردسر، هرگز تنزل نه.
+    if (!prev.receiptSig && rec.receiptSig) map.set(rec.id, rec);
+  }
+  return [...map.values()].sort(byIdDesc).slice(0, DUEL_HISTORY_CAP);
+}

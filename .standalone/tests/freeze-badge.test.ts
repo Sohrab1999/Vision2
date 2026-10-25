@@ -1,0 +1,251 @@
+// ------------------------------------------------------------------
+// Task 77 — قرارداد خالص نشانگر یخِ زنجیره.
+// دو سطح قفل می‌شود:
+//   ① freezeBadgeMeta — چیپ هدر: مخزن/نجات/گاردها + تساوی wording
+//   ② freezeEarnMeta — پیشرفتِ ساختن یخ: دقیقاً قرارداد goalAndFreezePatch
+//     (پنجرهٔ ۷روزه با مقایسهٔ رشته‌ای، آستانهٔ ۳، سردشدن ۷روزه، سقف ۲)
+//     — مرزها با کلید روزِ ثابت قفل می‌شوند (windowStart/سردشدن/سقف).
+// ------------------------------------------------------------------
+
+import { describe, it, expect } from "vitest";
+import { freezeBadgeMeta, freezeDayMark, freezeEarnMeta, freezeLedgerMeta } from "@/lib/freeze-badge";
+
+const T = "2026-10-13"; // سه‌شنبه — کلید ثابت برای همهٔ مرزها
+const dAgo = (n: number): string => {
+  const [y, m, d] = T.split("-").map(Number);
+  const dt = new Date(y!, (m ?? 1) - 1, d!);
+  dt.setDate(dt.getDate() - n);
+  return `${dt.getFullYear()}-${String(dt.getMonth() + 1).padStart(2, "0")}-${String(dt.getDate()).padStart(2, "0")}`;
+};
+
+describe("freezeBadgeMeta — چیپ هدر (Task 77)", () => {
+  it("بدون یخ و بدون نجات → هیچ (خموشی برای تازه‌وارد)", () => {
+    expect(freezeBadgeMeta({ freezeCount: 0, freezeSavedDay: "", today: T })).toBeNull();
+  });
+
+  it("مخزن: ۲ یخ → mode stock + برچسب «۲ یخ» + عنوانِ پوشش خودکار با سقف", () => {
+    const m = freezeBadgeMeta({ freezeCount: 2, freezeSavedDay: "", today: T })!;
+    expect(m.mode).toBe("stock");
+    expect(m.label).toBe("۲ یخ");
+    expect(m.title).toContain("۲ یخِ زنجیره داری");
+    expect(m.title).toContain("سقف ۲ یخ");
+  });
+
+  it("تک یخ: «۱ یخ» با رقم فارسی", () => {
+    const m = freezeBadgeMeta({ freezeCount: 1, freezeSavedDay: "", today: T })!;
+    expect(m.mode).toBe("stock");
+    expect(m.label).toBe("۱ یخ");
+  });
+
+  it("نجات امروز اولویت دارد: mode saved + «نجات شد» حتی با مخزن خالی", () => {
+    const m = freezeBadgeMeta({ freezeCount: 0, freezeSavedDay: T, today: T })!;
+    expect(m.mode).toBe("saved");
+    expect(m.label).toBe("نجات شد");
+    expect(m.title).toContain("امروز یخ، زنجیره را نجات داد");
+    expect(m.title).toContain("زنجیرهٔ فردا را خودت نگه دار");
+  });
+
+  it("نجات با مخزن پُر: باقی‌مانده در عنوان می‌آید", () => {
+    const m = freezeBadgeMeta({ freezeCount: 2, freezeSavedDay: T, today: T })!;
+    expect(m.mode).toBe("saved");
+    expect(m.title).toContain("۲ یخ دیگر در انبار");
+  });
+
+  it("گارد ورودی: NaN/منفی/کسری → صفر → null (persist خراب نمی‌شکند)", () => {
+    expect(freezeBadgeMeta({ freezeCount: NaN, freezeSavedDay: "", today: T })).toBeNull();
+    expect(freezeBadgeMeta({ freezeCount: -3, freezeSavedDay: "", today: T })).toBeNull();
+    expect(freezeBadgeMeta({ freezeCount: 1.7, freezeSavedDay: "", today: T })!.count).toBe(1);
+  });
+});
+
+describe("freezeEarnMeta — پیشرفتِ ساختن یخ، آینهٔ goalAndFreezePatch (Task 77)", () => {
+  it("progress: ۲ روزِ هدف‌دار داخل پنجره (یکی بیرون) → «۲ از ۳»", () => {
+    const m = freezeEarnMeta({
+      goalMetDays: [dAgo(1), dAgo(3), dAgo(20)], // dAgo(20) بیرون پنجرهٔ ۷روزه
+      freezeEarnedDay: "",
+      freezeCount: 0,
+      today: T,
+    });
+    expect(m.inWindow).toBe(2);
+    expect(m.state).toBe("progress");
+    expect(m.label).toBe("۲ از ۳ روزِ هدف‌دار");
+    expect(m.title).toContain("۱ روزِ هدفِ دیگر");
+  });
+
+  it("مرز پنجره: روزِ دقیقاً windowStart (۶ روز پیش) شمرده می‌شود — شرط >= موتور", () => {
+    const m = freezeEarnMeta({ goalMetDays: [dAgo(6)], freezeEarnedDay: "", freezeCount: 0, today: T });
+    expect(m.inWindow).toBe(1);
+  });
+
+  it("روزِ قبل از پنجره (۷ روز پیش) شمرده نمی‌شود", () => {
+    const m = freezeEarnMeta({ goalMetDays: [dAgo(7)], freezeEarnedDay: "", freezeCount: 0, today: T });
+    expect(m.inWindow).toBe(0);
+  });
+
+  it("eligible: ۳ روز داخل پنجره بدون ساختِ قبلی → «یخ بعدی آماده»", () => {
+    const m = freezeEarnMeta({
+      goalMetDays: [dAgo(1), dAgo(3), dAgo(5)],
+      freezeEarnedDay: "",
+      freezeCount: 0,
+      today: T,
+    });
+    expect(m.inWindow).toBe(3);
+    expect(m.state).toBe("eligible");
+    expect(m.label).toBe("یخ بعدی آماده");
+  });
+
+  it("cooldown: ساختِ ۳ روز پیش → ۴ روز باقی (۷ منزوی فاصله) و دروازه بسته", () => {
+    const m = freezeEarnMeta({
+      goalMetDays: [dAgo(1), dAgo(3), dAgo(5)],
+      freezeEarnedDay: dAgo(3),
+      freezeCount: 1,
+      today: T,
+    });
+    expect(m.state).toBe("cooldown");
+    expect(m.label).toContain("۴ روز تا یخ بعدی");
+  });
+
+  it("مرز سردشدن: ساختِ ۷ روز پیش از دروازه خارج شده → eligible", () => {
+    const m = freezeEarnMeta({
+      goalMetDays: [dAgo(1), dAgo(3), dAgo(5)],
+      freezeEarnedDay: dAgo(7),
+      freezeCount: 1,
+      today: T,
+    });
+    expect(m.state).toBe("eligible");
+  });
+
+  it("cap: ۲ یخ در انبار → state cap فارغ از پنجره", () => {
+    const m = freezeEarnMeta({ goalMetDays: [dAgo(1)], freezeEarnedDay: "", freezeCount: 2, today: T });
+    expect(m.state).toBe("cap");
+    expect(m.label).toBe("سقف یخ‌ها پر است");
+  });
+
+  it("گارد ورودی: goalMetDays خراب → صفرِ امن (progress با ۰ از ۳)", () => {
+    const m = freezeEarnMeta({
+      goalMetDays: "corrupt" as unknown as string[],
+      freezeEarnedDay: "",
+      freezeCount: 0,
+      today: T,
+    });
+    expect(m.inWindow).toBe(0);
+    expect(m.state).toBe("progress");
+    expect(m.label).toBe("۰ از ۳ روزِ هدف‌دار");
+  });
+});
+
+describe("freezeLedgerMeta — دفتر یخِ کارنامه (Task 78)", () => {
+  const base = {
+    freezeCount: 2,
+    freezeSavedDay: "",
+    freezeUsedDays: [] as string[],
+    goalMetDays: [dAgo(1), dAgo(2)] as string[],
+    freezeEarnedDay: "",
+    today: T,
+  };
+
+  it("مخزن پُر: «۲ یخ در انبار» + بدون نجات/نجات امروز", () => {
+    const m = freezeLedgerMeta(base);
+    expect(m.stockLabel).toBe("۲ یخ در انبار");
+    expect(m.rescueLabel).toBeNull();
+    expect(m.savedToday).toBe(false);
+  });
+
+  it("مخزن خالی: «بی‌یخ» — گزارش کامل صفرها را هم نشان می‌دهد", () => {
+    const m = freezeLedgerMeta({ ...base, freezeCount: 0 });
+    expect(m.stockLabel).toBe("بی‌یخ");
+  });
+
+  it("نجات داخل پنجره شمرده می‌شود: یک مصرف در ۳ روز پیش → «۱ نجات…»", () => {
+    const m = freezeLedgerMeta({ ...base, freezeCount: 1, freezeUsedDays: [dAgo(3)] });
+    expect(m.rescueLabel).toBe("۱ نجاتِ زنجیره در ۷ روزِ گذشته");
+  });
+
+  it("نجات بیرون پنجره (۸ روز پیش) شمرده نمی‌شود → null", () => {
+    const m = freezeLedgerMeta({ ...base, freezeUsedDays: [dAgo(8)] });
+    expect(m.rescueLabel).toBeNull();
+  });
+
+  it("دو نجات: رقم فارسی «۲ نجات…»", () => {
+    const m = freezeLedgerMeta({ ...base, freezeCount: 0, freezeUsedDays: [dAgo(2), dAgo(5)] });
+    expect(m.rescueLabel).toBe("۲ نجاتِ زنجیره در ۷ روزِ گذشته");
+  });
+
+  it("نجاتِ امروز: savedToday پرچم + در عنوان می‌نشیند", () => {
+    const m = freezeLedgerMeta({ ...base, freezeSavedDay: T });
+    expect(m.savedToday).toBe(true);
+    expect(m.title).toContain("امروز یخ، زنجیره را نجات داد");
+  });
+
+  it("earn هم‌قرارداد با freezeEarnMeta: ۲ روزِ هدف‌دار → progress «۲ از ۳»", () => {
+    const m = freezeLedgerMeta({ ...base, freezeCount: 1 }); // زیرِ سقف
+    expect(m.earn.state).toBe("progress");
+    expect(m.earn.label).toBe("۲ از ۳ روزِ هدف‌دار");
+  });
+
+  it("earn سقف: ۲ یخ → state cap (و همان «سقف یخ‌ها پر است»)", () => {
+    const m = freezeLedgerMeta(base); // freezeCount: 2 = سقف
+    expect(m.earn.state).toBe("cap");
+  });
+
+  it("عنوان کامل: اجزا با «؛» کنار هم — یک‌جا بودن wording", () => {
+    const m = freezeLedgerMeta({ ...base, freezeUsedDays: [dAgo(3)], freezeSavedDay: T });
+    expect(m.title).toMatch(/^دفتر یخ — /);
+    expect(m.title).toContain("۲ یخ در انبار");
+    expect(m.title).toContain("۱ نجاتِ زنجیره");
+    expect(m.title).toContain("؛");
+  });
+
+  it("گارد ورودی: freezeUsedDays خراب → صفرِ امن؛ امروز خالی → ساعت واقعی", () => {
+    const corrupt = freezeLedgerMeta({
+      ...base,
+      freezeUsedDays: "bad" as unknown as string[],
+    });
+    expect(corrupt.rescueLabel).toBeNull();
+    const live = freezeLedgerMeta({ ...base, today: "" });
+    expect(live.stockLabel).toBe("۲ یخ در انبار");
+  });
+});
+
+describe("freezeDayMark — نشانِ روزهای یخ‌خوردهٔ کارنامه (Task 79)", () => {
+  it("روزِ داخل آرایه → saved + عنوانِ دقیق «روزِ غیبت — با یخ نجات شد»", () => {
+    const m = freezeDayMark(dAgo(3), [dAgo(3), dAgo(10)]);
+    expect(m.saved).toBe(true);
+    expect(m.title).toBe("روزِ غیبت — با یخ نجات شد");
+  });
+
+  it("روزِ بیرون آرایه → خموشی (saved:false + عنوان خالی)", () => {
+    const m = freezeDayMark(dAgo(2), [dAgo(3)]);
+    expect(m.saved).toBe(false);
+    expect(m.title).toBe("");
+  });
+
+  it("آرایهٔ خالی → هیچ روزی نشان ندارد", () => {
+    const m = freezeDayMark(dAgo(3), []);
+    expect(m.saved).toBe(false);
+    expect(m.title).toBe("");
+  });
+
+  it("آرایهٔ خراب (null/عدد/آبجکت) → گارد، نه استثنا", () => {
+    const corrupt = [null, 5, { day: dAgo(3) }, dAgo(3)] as unknown as string[];
+    const m = freezeDayMark(dAgo(3), corrupt);
+    expect(m.saved).toBe(true); // عضو رشته‌ای سالم دیده می‌شود
+    expect(freezeDayMark(dAgo(2), corrupt).saved).toBe(false);
+  });
+
+  it("ورودی روزِ خراب (خالی/غیررشته‌ای) → خموشی امن", () => {
+    expect(freezeDayMark("", [dAgo(3)]).saved).toBe(false);
+    expect(freezeDayMark(undefined as unknown as string, [dAgo(3)]).saved).toBe(false);
+  });
+
+  it("تکرارِ همان روز در آرایه → همان یک نشان (بولی، نه شمارش)", () => {
+    const m = freezeDayMark(dAgo(3), [dAgo(3), dAgo(3), dAgo(3)]);
+    expect(m.saved).toBe(true);
+  });
+
+  it("امروز هم می‌تواند نجاتِ ثبت‌شده باشد (گزارش، صحنهٔ کامل — قید نمایشی در UI است نه دیتا)", () => {
+    // قرارداد موتور: ثبتِ یخ همیشه «دیروز» است؛ ولی خالصِ نشان، دیتا را
+    // صادقانه نشان می‌دهد — اولویتِ حلقهٔ امروز در سطح کامپوننت قفل می‌شود
+    expect(freezeDayMark(T, [T]).saved).toBe(true);
+  });
+});

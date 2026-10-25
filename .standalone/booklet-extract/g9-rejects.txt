@@ -1,0 +1,676 @@
+[0] textbook | معرفی کامل واژگان، هردرس درصفحات
+[0] Grammar | دقیق می باشد. مباحث مهم زبان که در کنکور از آنها سوال مطرح می شود به ترتیب ذیل می باشد، مبحث، تعداد، سوالات، گرامر
+[0] Cloze Test | کلوز تست
+[0] Reading Comprehension | درک مطلب
+[0] Grammar): | ی پیشنهادی و حل گرامر
+[0] Vocabulary) : | روش مطالعه پیشنهادی و حل واژگان(
+[0] Flower, Flour, | )شباهت های ظاهری  مثل(
+[0] Floor ,flier , flyer, …) | و
+[0] Verb, adjective, adverb,) | نقش(
+[0] Careless, | پیشوند و پسوند(
+[0] thoughtless, helpless, jobless, …) | و یا
+[0] Close Test) : | نکات مفید در زمینه ی مطالعه و حل کلوز تست (
+[0] Active or Passive | در حل کلوز تست ها باید ساختار جمله را از نظر فاعلی یا مفعولی بودن(
+[0] Main point) | برای پاسخگویی به سوالات این قسمت توجه به نکته اصلی(
+[0] words) | بسیار مهم و ضروری است
+[0] was | آن گزینه ه   ا را انتخاب کنید، مثال اگر جمله شما با
+[0] were | و
+[0] Reading Comprehension) | روش پیشنهادی :مطالعه و حل تست های درک مطلب
+[0] Personality | مرورکامل واژگان وگرامر پایه نهم
+[0] usually, | معموال
+[1] Ehsan: Who is your best friend at school? | احسان
+[1] Parham: Reza | چه کسی بهترین دوست شما در مدرسه است
+[1] Ehsan: What’s he like? | پرهام، رضا
+[1] Parham: Oh, he is really great! He’s clever and kind | احسان، چه جوری است ؟
+[1] Ehsan: Is he hard-working too? | اوه ، او واقعا عالی است. او زرنگ و مهربان است
+[1] Parham: Yes! And he’s always very helpful | آیا او همچنین سخت کوش و تالشگر است
+[1] Ehsan: How? | بله ، او خیلی یاری رسان است
+[1] Parham: He always helps me with my lessons | احسان، چطور ؟
+[1] Yes, I am | صحبت کردن در مورد شخصیت
+[1] Are you hard-working? | بله، من هست، م ؟
+[1] Yes, he is | آیا تو سخت کوش هستی؟
+[1] Is he clever? | بله، او هست؟
+[1] No, she isn’t | آیا او باهوش هست؟
+[1] Is Zahra talkative? | نه، او نیست؟
+[1] Yes, they are | آیا زهرا پرحرف است؟
+[1] Are they neat? | بله، آنها هستند؟
+[1] No, they’re not | آیا آنها مرتب هستند؟
+[1] Are they upset? | نه آنها نیستند؟
+[1] He’s very funny | صحبت کردن در مورد شخصیت
+[1] What’s your friend like? | او خیلی بامزه هست
+[1] She’s very kind and patient | دوست تو چطور آدمی هست؟
+[1] What’s your mother like? | او خیلی مهربان و صبور هست.
+[1] He is quiet | مادرت چطوریه؟
+[1] What’s he like? | او (پسر) خیلی آرام هست.
+[1] She is clever | او چگونه هست؟
+[1] What’s she like? | او باهوش است.
+[1] I’m a bit serious | پایه، نهم
+[1] What are you like? | من کمی جدی هستم.
+[1] They are very kind | تو چگونه هستی؟
+[1] What are they like? | آنها خیلی مهربان هستند.
+[1] language melody | کلمات عبارات و تصاویر صفحات1۸، و19، کتاب، آهنگ زبان یا
+[1] rising | یعنی آهنگ بالا و پایین رفتن صدا در هنگام صحبت کردن، آهنگ خیزان
+[1] falling | نکته کلیدی : آهنگ صدا در جمالت مثبت و خبری ، افتان، نزولی یا
+[1] am, is, are, was, were, do, does, did, can, could, should, may, might, will, shall, would, | مهمترین و اصلی ترین فعلهای کمکی در زبان انگلیسی که کاربرد بسیاری در زبان انگ:لیسی دارند، عبارتنداز
+[1] have, has, had | نکته مهم2 :
+[1] not | منفی کنیم با یستی به فعل کمکی موردنظر زمان جمله قید منفی ساز
+[1] it | برای اشیاو غیر جانداران از ضمیر فاعلی
+[1] it | استفاده می کنیم. ضمیر
+[1] I | در انگلیسی، می  ش   ود
+[1] second person singular pronoun | ضمیر دوم شخص مفرد
+[1] third person singular pronoun | ضمیر سوم شخص مفرد
+[1] person plural pronoun | ضمیر اول شخص جمع یا
+[1] We | ضمیر دوم شخص جمع یا
+[1] Second person plural pronoun | می میش    ود
+[1] You | ضمیر سوم شخص جمع یا
+[1] Third person plural pronoun | میش      ود
+[1] I study English every night . | هر شب انگلیسی مطالعه میکنم من
+[1] You are very beautiful | خیلی زیبا هستی تو
+[1] Alex is my classmate. He is very clever | همکالسی من است الکس . خیلی باهوش است او
+[1] Sara is absent today. I think she is sick | مریض است  او  امروز غایب است. فکر کنم سارا
+[1] There’s a dog in the yard. It is very big | در حیاط است سگ یک . خیلی بزرگ است آن
+[1] We are going to cinema to night. Do you like to come? | ما امشب قصد داریم به سینما برویم .شما هم دوست دارید بیایید؟
+[1] Reza and Mahdi are wealthy. They work for a famous company | رضا و مهدی
+[1] To be | من (اول شخص مفر د  ) ما، اول شخص جمع، تو، دوم شخص مفرد، شما، دوم شخص جمع، او، سوم شخص مفرد، آنها، سوم شخص جمع، افعال
+[1] be | هستند. وقتی سخن از افعال
+[1] am | معنای «، بودن »، به میان، می آوریم، منظور  ما شکل، های مختلف، این، فعل، یعنی
+[1] is | به معنای «هستم »  و
+[1] are | هست »  و
+[1] to be | هستید هستند» است. (برای زمان حال).، همینطور، شکل، های گذشته، ساده این، مصدر
+[1] am | بودم بود» که شکل گذشته
+[1] is | و
+[1] are | بودید بودند » است شکل گذشته
+[1] am | می باشد. (برای زمان گذشته) .، فعل
+[1] I | اول شخص، مفرد است  و، فقط، برای، ضمیر
+[1] is | به، معنی، من بکار، می رود .فعل
+[1] he | و
+[1] it | بکار می
+[1] are | رود .و
+[1] you | و
+[1] they | استفاده می شود .
+[1] He/She/It is | جمله مثبت
+[1] Are we? | حال ساده
+[1] Is he/she it? | جمله سوالی
+[1] isn’t | جمله منفی
+[1] He/She/It was | گذشته ساده
+[1] re | یا، مخفف، فعل، ضمایر فاعلی، مخفف، فعل، ضمایر فاعلی
+[1] any | است.  این  حروف  تنها  قبل  از  اسامی  عام  می  آیند  و  قبل  از  اسامی  خاص  استفاده  نمیشوند.  حروف  تعریف  نامعین، شامل
+[1] a | می باشند.
+[1] a | کاربرد حروف تعریف نامعین:
+[1] an | و
+[1] an | که آن اسم برای شنونده نامعین است. در فارسی معادل “یک، ی نکره” می باشند. حرف تعریف
+[1] u | میرود که با یک حرف صدادار)
+[1] a | شروع شده باشد.
+[1] We have a big classroom. " | داریم  بزرگ  کلاس یک ما"
+[1] She wants to buy an umbrella. " | بخرد چتر یک او میخواهد که "
+[1] They are working on a project this term." | آن ها این ترم بر روی یک
+[1] Ramin is watching an American movie | پروژه، جدید کار، میکنند .
+[1] a | فیلم آمریکایی تماشا، میکند"، نکته :حروف تعریف
+[1] an | و
+[1] My mother is a doctor. " | هستند. به مثال زیر توجه کنید:
+[1] doctor | مادر من یک دکتر است "، در این جمله اسم
+[1] some | نا معین نیست، بلکه نویسنده میخواهد بگوید که مادرش در طبقه دکترها قرار دارد.، کاربرد حروف، تعریف نامعین
+[1] any | و
+[1] any | جمع و یا اسامی غیر قابل شمارش می آید. کلمه”
+[1] My brother wants to read some books | می آید. با توجه به مثالهای زیر کاربرد این دو را درک خواهید کرد:
+[1] He doesn’t have any money | بخواند( .جمله مثبت)"
+[1] Do you want any water? ) | او هیچ، پولی ندارد.، جمله منفی
+[1] some | نکته :اگر در جمالت سوالی بدانیم جواب مثبت است و یا انتظار جواب مثبت را داشته باشیم از خود”
+[1] I think you are hungry. Do you want some food? | استفاده، میکنیم:
+[1] the | فکر میکنم گرسنه هستید. آیا مقداری غذا میخواهید؟"، حرف تعریف
+[1] the” | استفاده آنها را به درستی نمیدانند و به شکل ناخود آگاه به کار میبرند. حرف تعریف “
+[1] the | زبان انگلیسی میباشد. زمانی از حرف تعریف
+[1] the | چه زمانی باید از حرف تعریف
+[1] Mike was driving a car yesterday. The car was very modern | استفاده میشود:
+[1] I saw my father with a man. I think the man was one of his old friends | آن ماشین (ماشینه) خیلی مدرن بود."
+[1] We went on a walk in the forest yesterday | چیزی که در یک محلی فقط یک، مورد  از آن، وجود، دارد حتی اگر، قبال به آن، اشاره نشده، باشد:
+[1] Where is the bathroom of this house? | فقط یک جنگل وجود دارد"
+[1] Turn left and go to number 45. Our house is across from the Italian | حمام این خانه کجاست؟"
+[1] My father enjoyed the book you gave him | رستوران ایتالیایی است."
+[1] the | هنگامی که شخص یا چیز خاصی را معرفی یا شناسایی میکنیم از
+[1] The writer of this book is famous ." | استفاده میشود:
+[1] I scratched the red car parked outside | این کتاب مشهور است  نویسنده"
+[1] He is the doctor I came to see | من روی ماشین قرمزی که در بیرون پارک شده خط انداختم."
+[1] The sun rose at 6:17 this morning ." | استفاده میشود:
+[1] You can go anywhere in the world. " | دقیقه طلوع کرد 17 و 6 ساعت  خورشید امروز"
+[1] There are millions of stars in the sky. " | به هرجایی میتوانید بروید جهان شما در"
+[1] The president will be speaking on TV tonight | وجود دارند آسمان میلیونها ستاره در"
+[1] the | برترین و اعداد ترتیبی از
+[1] This is the oldest building house in our city | استفاده، میشود:
+[1] She read the last chapter of her new book first | این ساختمان قدیمیترین ساختمان شهرمان است."
+[1] Saeid is the happiest person I’ve ever seen | فصل کتاب جدیدش را خواند."
+[1] This is the third time I have called you today | سعید شادترین فردی است که تابه حال دیده ام."
+[1] The elderly requires special attention | استفاده، میشود:
+[1] She has given a lot of money to the poor | نیازمند توجه ویژه هستند."
+[1] The Americans enjoy fast food | او پول زیادی به، فقرا داده است."
+[1] He was born in the seventies | استفاده میشود.
+[1] This is a painting from the 1820’s | دهه هفتاد متولد شده است."
+[1] only | این نقاشی متعلق به دهه20، سال1800، میباشد."، در جمله ای که با
+[1] You are the only person he will listen to | استفاده میشود:
+[1] The only fast food I like is hamburger | هستی که او به حرفش گوش میدهد."
+[1] Real Madrid is the only team that I watch its matches | تنها فست فودی که دوست دارم همبرگر است."
+[1] Our ship crossed the Atlantic in 7 days | استفاده میشود:
+[1] The Nile is the longest river in the world | اقیانوس اطلس گذشت".
+[1] Hiking across the Rocky Mountains is difficult | نیل طوالنی ترین رود جهان است."
+[1] They are travelling in the Arctic | کوه های راکی مشکل است."
+[1] mount | مشغول مسافرت هستند."، نکته :اگر کلمات
+[1] Mount Everest is the highest mount in the world | استفاده نمی، شود:
+[1] s | با اسم کشورهایی که بصورت جمع هستند، یعنی در آخرشان
+[1] I have never been to the Netherlands. " | استفاده میشود:
+[1] Do you know anyone who lives in the Philippines? | نبوده ام  هلند من هرگز در"
+[1] kingdom | ”
+[1] states | و ”
+[1] They work in the United States | استفاده میشود:
+[1] She is visiting the United Kingdom | آنها در ایالات متحده، کار میکنند."
+[1] James is from the Republic of Ireland | او از، انگلستان، دیدن میکند."
+[1] I read that news in the Guardian | استفاده میشود:
+[1] She works for the New York Times | من آن خبر را در، گاردین خواندم."
+[1] university | او برای نیویورک تایمز، کار میکند."، اگر کلمات
+[1] college | و
+[1] Julia graduated from the University of California last year | استفاده می کنیم:
+[1] My sister is studying music at the College of Modern Arts | جولیا سال قبل از دانشگاه کالیفرنیا فارغ التحصی ل شد."
+[1] Have you been to the Vietnam Memorial? | به، کار میرود:
+[1] We went to the Louvre and saw the Mona Lisa | آیا تا کنون در مراسم یادواره ویتنام بوده ای؟"
+[1] I would like to visit the Milad Tower | تالبوی مونالیزا را دیدیم".
+[1] the | با اسامی کشورها (بجز مواردی که در بالا گفته، شد از حرف تعریف
+[1] Iran is a beautiful country. " | استفاده نمیشود:
+[1] Japan is a modern country." " | یک کشور زیبا است  ایران"
+[1] French is a difficult language to learn | استفاده نمیشود:
+[1] English is taught in many countries | زبان فرانسوی یک زبان سختی برای یادگیری است."
+[1] What do you have for lunch? | استفاده نکنید:
+[1] I drink a glass of milk in breakfast | برای ناهار چی دارید؟"
+[1] John is my best friend | به کار نمیرود:
+[1] Sara works in a modern company | جان بهترین دوست من است."
+[1] President Kennedy was assassinated in dallas | استفاده نمیشود:
+[1] He’ll probably study medicine | به کار نمیرود:
+[1] was a wonderful year for Luka Modric | استفاده نمیشود:
+[1] Rice is an important food in Iran | به کار نمیرود:
+[1] Peace is the most beautiful thing in the world | برنج در ایران یک غذای مهم است."
+[1] Mount Damavand is the highest mountain of Iran | به کار نمی بریم:
+[1] He lives near Lake Zrivar | کوه دماوند بلندترین کوه ایران است."
+[1] the | همراه با اکثر اسامی شهر، ها، خیابانها، ایستگاه ها و، فرودگاه ها
+[1] Can you take me to Azadi street? | استفاده نمیشود:
+[1] She lives in Florence | خیابان آزادی ببری؟"
+[1] Victoria Station is in the center of London | او در شهر، فلورانس، زندگی میکند."
+[1] There is | ایستگاه ویکتوریا در مرکز لندن است."، کاربرد
+[1] There are | و
+[1] there are | و
+[1] is | استفاده می شود. زمانی که می خواهیم وجود یک چیز را نشان دهیم معموال از این عبارت ها استفاده می، کنیم
+[1] are | به کار می رود و به معنی، وجود دارد/ هست، می باشد، و
+[1] be | استفاده سوالی از این عبارت ها بسیار رایج است. برای سوالی کردن آنها کافیست جای فعل
+[1] Are there fifty books in your library? | کنیم. به مثال های زیر توجه کنید
+[1] a) it is not b) there are not c) there doesn’t d) they are not | درجاهای خالی فعل مناسب
+[1] a) are b) is c) are many d) many | تست گرامری
+[1] that | و
+[1] this | به کار می روند. از"
+[1] That money is in my pocket | انگلیسی به این کلمات، صفات اشاره، گفته می شود
+[1] This is a toy car | آن پول در جیبم است
+[1] those | و
+[1] these | شکل جمع کلمات بالا می باشند که هردوی اینها با اسم قابل شمارش جمع .به کار می روند
+[1] These boys are my brothers. " | برای اشاره به دور به کار برده می شود
+[1] Those men play ping pong very well. " | این پسرها برادران من هستند "
+[1] Neat – brave – careful – angry – nervous – clever – kind – careless – | اشخاص ، اشیا و حیوانات را توصیف می کنیم
+[1] patient – selfish – rude – quiet – funny – cruel …… | صفت ها معموال پس از فعل
+[1] to be | در جمله قرار می گیرد
+[1] He is polite. they are clever | صفت قبل از اسم می آید.
+[1] He is a | صفت جمع بسته نمی شود
+[1] a | برای تبدیل کردن یک اسم مفرد به یک اسم جمع ، ابتدا حرف
+[1] an | و
+[1] s | به معنی یک ) را از اول اسم حذف کرده و به، آخر آن ، حرف
+[1] o – s – ss – x – z – sh – ch | را اضافه می کنیم، نکته1، اگر آخر اسم به
+[1] es | اضافه، می کنیم. مثال.
+[1] O | استثنا دارد . مثال (
+[1] p ,t , k , f | اگر حرف آخر کلمه ای یکی از صداهای
+[1] s | باشد
+[1] s | صدای (س) و بعد از صداهای دیگر
+[1] z, x, ch , sh ,s | اگر حرف آخر کلمه ای یکی از صداهای
+[1] iz/ | صدای ( ایز ) می دهد
+[1] Cruel – careless – rude – brave) | صفت مناسب برای هر تصویر را انتخاب کنید
+[1] Kind: ………………… lazy: …………………… | متضاد کلمات زیر را بنویسید
+[1] Happy: …………………. Talkative: …………………… | شماره هر جمله را زیر تصویر مربوط به آن بنویسید. ( یک جمله اضافی است
+[1] That boy is brave. 4) Reza is very neat | جمله زیر را یکبار سوالی و یکبار منفی کنید
+[1] Mina is hard working | سوالی : …………………………………………................    منفی:  ...................................................................................
+[1] What is your father like? ……………………………………………………………… | به سوالات زیر پاسخ کامل دهید
+[1] Are you clever? ……………………………………………………………… | جاهای خالی را با
+[1] there is | و
+[1] there are | کامل کنید
+[1] a) a b) some c) an d) 6 | با توجه به کلمات داده شده جمالت زیر را کامل کنید
+[1] A: How? B: She always helps me with my ……………… | کلمه ناهماهنگ را از نظر معنی مشخص کنید و در نقطه چین بنویسید
+[1] hardworking – clever – careless – careful ……………… | افتان و خیزان جمالت زیر را مشخص کنید
+[1] I do my homework | با شکل مناسب
+[1] am – is – are | جمله ها را کامل کنید
+[1] Zahra careless? | شماره هر جمله را زیر تصویر مربوط به آن .بنویسید
+[1] She is very helpful. 6. I like a pleasant environment | مکالمه زیر را با توجه به عبارات سمت چپ کامل کنید
+[1] e –No, we are not | معلم از فرزانه خواسته  تا در مورد شخصیت اعضای گروه خود توضیح دهداو متن فارسی رانوشته اما در
+[1] Elham is a ……………………….……. student, but she is a bit …………………………… | دارد.فاطمه بهترین دوست من است. او زرنگ و، بخشنده است.
+[1] Timetable | جدول زمانی
+[1] Leg | پا، پایه
+[2] Receptionist: Welcome to our hotel sir, how can I help you? | مسئول پذیرش :
+[2] Tourist: My name is Paul Kress.I’m from Germany. I have a reservation here | به هتل ما خوش آمدی آقا، چطور میتوانم کمکتون کنم؟
+[2] Receptionist: I see! Are you staying here for two nights? | جهانگرد :اسم من پاول کرس است. اهل آلمان هستم. من یک جا رزرو داشتم.
+[2] Tourist: Yes, my wife and I are visiting Tehran for three days | مسئول پذیرش :اطالع دارم! آیا دو شب اینجا میمانید؟
+[2] Receptionist: Where is she now? I need to check her passport | پایه، نهم
+[2] Tourist: She’s standing over there, by the gift shop. Here is her passport | مسئول پذیرش :او الان کجاست؟ من باید گذرنامه اش را بررسی کنم.
+[2] Receptionist: Thank you. This is your key. It’s room 213. Hope you enjoy your stay in | کادویی. گذرنامه اش اینجاست.
+[2] Tehran | مسئول پذیرش :
+[2] Yes, I am | صحبت کردن در مورد سفر
+[2] Are you visiting Tehran? | بله، من هستم
+[2] No, they aren’t | آیا تو در حال بازدید از تهران هستی؟
+[2] Are they traveling around the world? | نه، آنها نیستند
+[2] Yes, he is | آیا آنها در حال سفر دور دنیا، هستند؟
+[2] Is Paul booking a room? | بله، او هس ت
+[2] No, she’s reading the guide book | آیا پاول در حال رزرو اتاق است؟
+[2] Is Kate checking the map? | نه، او در حال مطالعه کتاب راهنما است
+[2] Who is speaking English now? | سارا
+[2] He is buying a ticket | چه کسی در حال انگلیسی صحبت کردن است؟
+[2] What is he doing? | او در حال خرید بلیط است.
+[2] He’s going to Mehrabad Airport | او در حال انجام چه کاری است؟
+[2] Where is Ali going? | فرودگاه مهر آباد هست .
+[2] I’m filling out the reservation form | علی در حال رفتن به کجاست؟
+[2] What are you doing? | من در حال پر کردن فرم رزرو هستم .
+[2] They are traveling by train | تو در حال انجام چه کاری هستی؟
+[2] How are they traveling? | آنها در حال سفر با قطار هستند.
+[2] language melody | کلمات ، عبارات و تصاویر صفحات۳2، و۳۳، کتاب، آهنگ زبان یا
+[2] rising | یعنی آهنگ بالا و پایین رفتن صدا در هنگام صحبت کردن، آهنگ خیزان
+[2] rising | سوالی با استفاده از افعال کمکی ،خیزان ، صعودی، یا
+[2] Present Continuous Tense | زمان حال استمراری
+[2] to be | بعد از فاعل یکی از افعال
+[2] am, is, are | در زمان حال)
+[2] ing | را انتخاب میکنیم و به آخر فعل، اصلی
+[2] is | اضافه میکنیم. برای اسم مفرد و، ضمایر سوم شخص از
+[2] ing | قید زمان قید مکان قیدحالت مفعول، فعل
+[2] am,is,are | دار فعل کمکی
+[2] I am eating dinner | من دارم شام میخورم
+[2] You are eating dinner | تو داری شام میخوری.
+[2] He is eating dinner | او (مذکر) دارد شام میخورد.
+[2] she is eating dinner | او (مونث) دارد شام میخورد.
+[2] It is eating a bone | آن (غیر انسان) دارد یک استخوان میخورد.
+[2] We are eating dinner | ما داریم شام میخوریم.
+[2] You are eating dinner | شما دارید شام میخورید.
+[2] They are eating dinner | آنها دارند شام میخورند.
+[2] Saeid is eating dinner | سعید دارد شام میخورد.
+[2] Saeid and Amin are eating dinner | سعید و امین دارند شام میخورند.
+[2] to be | میتوان فاعل و فعل
+[2] You are writing. → You’re writing | را به شکل اختصاری نوشت. به مثالهای زیر دقت کنید تا متوجه شوید:
+[2] You are writing. → You’re writing | شکل سوالی زمان حال استمراری :
+[2] to be | برای سوالی کردن جمالت زمان حال استمراری کافی است فاعل را با فعل
+[2] Am I running? | جدول زیر دقت کنید:، حالت سوالی، حالت خبری
+[2] They’re singing | شکل منفی زمان حال استمراری
+[2] to be | برای منفی کردن زمان حال استمراری بالفاصله بعد از فعل
+[2] I am | منفی نیز میتوان این جمالت را به شکل اختصاری نوشت بجز جمالتی، که  با
+[2] I am not cooking | حالت اختصاری استفاده میشود. به جمالت زیر دقت کنید:، اختصاری منفی، جمله منفی، جمله خبری
+[2] They are watching TV | نکاتی در مورد افزودن
+[2] ing | به آخر فعل
+[2] e | اگر فعلی به
+[2] e | به آخر آن
+[2] drive → driving ( | حذف می، شود:
+[2] write → writing ( | رانندگی کردن)
+[2] type → typing ( | نوشتن)
+[2] ing | اگر فعلی به یک حرف بیصدا ختم شود و قبل از آن فقط یک حرف صدادار باشد، هنگام اضافه کردن
+[2] sit → sitting ( | حرف آخر تکرار می شود:
+[2] hit → hitting ( | نشستن)
+[2] submit → submitting ( | زدن)
+[2] swim → swimming ( | ثبت کردن)
+[2] Look at those dogs. They are chasing a rabbit | لحظه صحبت در حال انجام است:
+[2] What are you doing? I am doing a puzzle | به آن سگها نگاه کن آنها دارند یک خرگوش را دنبال میکنند."
+[2] They are still working for that company | در حال انجام است و یا کاری که تبدیل به یک گرایش میشود:
+[2] Nowadays, more and more people are becoming vegetarian | آنها هنوز برای آن شرکت کار میکنند".
+[2] I’m meeting my friends tonight . ." | برای بیان کاری که از قبل برنامه ریزی، شده است و در، آینده انجام، خواهد شد:
+[2] Are you visiting us next winter? " | امشب دوستانم را میبینم"
+[2] He usually plays the piano, but he’s playing bass guitar tonight | طور موقت در حال انجام است:
+[2] The weather forecast was good, but it’s raining at the moment | او معموال پیانو می نوازد، اما امشب دارد گیتار میزند".
+[2] always | پیش بینی درباره هوا خوب بود، اما الان دارد باران میبارد."، به همراه، قیدهای تکرار
+[2] constantly | و
+[2] Jack and Julia are always laughing. " | دنباله دار اتفاق می افتد:
+[2] Mr. Brown is leaving here forever ." | هستند ن جک و جولیا همیشه در حال خندید"
+[2] at this moment ( | معموال یکی از عبارتهای زیر در جمالت حال استمراری وجود دارند که در ابتدا یا انتهای جمالت می آیند. این نشانه ها این، ها هستند:
+[2] right now ( | در این لحظه)
+[2] now ( | همین الان)
+[2] look ( | الان)
+[2] at present ( | نگاه کن، ببین)
+[2] at this time ( | در حال حاضر)
+[2] still ( | در این زمان)
+[2] just ( | هنوز)
+[2] listen ( | الساعه، همین الان، در شرف)
+[2] look | گوش کن)، نکته:کلمات
+[2] listen | و
+[2] just | در ابتدای جمله و، کلمات
+[2] still | و
+[2] Look! there is a cat in the kitchen | جمالت حال استمراری بیایند. به مثالهای زیر دقت کنید.
+[2] Listen, someone is talking outside | یک گربه در آشپزخانه است."
+[2] I’m doing my homework right now | گوش کن ، یک نفر دارد در بیرون حرف میزند"
+[2] We are watching a film at this moment | دارم تکالیفم را انجام میدهم."
+[2] At present we are waiting for the taxi | ما در این لحظه در حال تماشای فیلم هستیم."
+[2] Sara is just buying a new purse | در حال حاضر ما منتظر تاکسی هستیم."
+[2] possession) | یکی از مباحث بسیار مهم در گرامر زبان انگلیسی مالکیت (
+[2] pronouns | انگلیسی برای بیان مالکیت وجود دارد مانند استفاده از ضمایر ملکی)
+[2] of | و
+[2] s | به همراه
+[2] s’) apostrophe | آپاستروف.
+[2] of | جا قصد داریم به نحوه استفاده از
+[2] s’ | و
+[2] s’ | در جوامع بیانی قابل استفاده است.، استفاده از
+[2] s’) | سازمان ها می باشد از
+[2] genitive ) | نیز به آن می گویند) استفاده می شود. چند مثال در این خصوص:
+[2] dog+’s) | قالده سگ
+[2] sister+’s) | کوله پشتی خواهر
+[2] car+’s) | موتور ماشین
+[2] s | آپاستروف’) را به انتهای آن اضافه می کنیم
+[2] s | همچنین ممکن است این سوال برایتان پیش بیاید که آیا، اگر یک اسم به
+[2] Charles) | ختم شود (اسمی که جمع نیست، مثل، اسم
+[2] s’ | را به آن اضافه کرد. در این خصوص اکثر افراد از
+[2] apostrophe(’) | خیلی افراد هم فقط از
+[2] Dogs’ collars | برای این گونه اسامی استفاده می کنند.
+[2] dog+s+’) | قالاده های سگ ها
+[2] sister+s+’) | کوله پشتی های خواهران
+[2] car+s+’) | موتورهای ماشین ها
+[2] of | استفاده از
+[2] What is the name of that street? " | استفاده می کنیم. به چند مثال توجه کنید:
+[2] I’m on the roof of the house | اسم اون خیابان چیه؟"
+[2] of | اگر بخواهیم شیء را به شئی دیگر تعلق و مالکیت دهیم ، کافی است حرف اضافه
+[2] The door of the class: " | را بین اسم آن دو شی قرار دهیم، مثل :
+[2] The legs of the table: " | درب کالس"
+[2] of | پایه های میز"، حرف اضافه
+[2] They …………………………………………………………... The plane……………………………………………………… | با توجه به تصاویر داده شده و با استفاده از زمان حال استمراری جمالت زیر را تکمیل کنید
+[2] They…………………………………………….......... She …………………………………………………………… | با توجه به لغات داده شده جمالت زیر را کامل کنید .(یک لغت اضافه است
+[2] A: This is your ………….... Hope you …………. your stay in Isfahan. B) Thank you | جاهای خالی را با استفاده از فعل مناسب ( به صورت زمان حال استمراری ) تکمیل کنید
+[2] I …………………………...the time table | حروف مربوط به هر پاسخ را مقابل سوال بنویسید. (یک مورد اضافی است
+[2] e) No, they are boarding the plane | در هر ردیف دور کلمه ناهماهنگ خط بکشید
+[2] c) the legs of the chair d) the door of the class | با توجه به جمالت زیر سوالات مناسب بنویسید
+[2] Who ………………….………………………………………………………….? | با مرتب کردن .جمالت زیر یک جمله درست بنویسید
+[2] a) is praying b) is checking c) is playing d) is landing | در متن زیر چهار غلط وجود.دارد آن را با دقت بخوانید و اصالح کنید
+[2] Fill out the form (………………….) | اصطالح مربوط به هر تصویر را زیر آن بنویسید
+[2] Festivals and ceremonies | جشن ها و مراسم ها
+[2] Make | درست کردن
+[3] Elham: I just love New Year holidays! | الهام  :من
+[3] Nasrin: Oh, yes, me too. It’s really great | واقعا تعطیالت سال  نو را دوست، دارم
+[3] Elham: We normally visit our relatives in Norooz. It’s fun! | نسرین  :بله، من، هم همین طور، واقعا، عالیه
+[3] Nasrin: Do you get New Year gifts too? | در نوروز به دیدن اقوام، مان، می رویم .، خوش، میگذرد
+[3] Elham: Sure! We usually get money. I really like it | نسرین  :، هدیه، عید، هم، میگیری؟
+[3] Nasrin: Well…, We always go to my grandparents’ houses | پایه، نهم
+[3] Elham: That’s nice! Does your grandmother cook the New Year meal? | خانه پدر بزرگ و مادربزرگم، می، رویم
+[3] Nasrin: Actually, she doesn’t. My mother makes it | الهام  :خیلی خوبه .ایا مادر بزرگت غذای سال نو رو درست، میکنه
+[3] Yes, I do | صحبت کردن در مورد جشن ها و مراسمات
+[3] Do you buy new clothes for the New Year? | بله.میخرم
+[3] No, we don’t | آیا برای این نوروز لباس جدید میخری ؟
+[3] Do you and your cousins set the Haft Seen table? | نه ، ما نمی چینیم
+[3] Yes, they usually color them | آیا تو و عمو زاده هایت سفره هفت سین را می چینید؟
+[3] Do young children color the eggs? | بله، آنها معموال آنها را رنگ می کنند .
+[3] Yes, they don’t buy goldfish | آیا بچه های کوچک تخم مرغ ها را رنگ میکنند؟
+[3] Do Chinese people buy gold fish for the New Year? | نه، آنها ماهی قرمز نمیخرند
+[3] Yes, he does | صحبت کردن در مورد جشن ها و مراسمات
+[3] Does he recite the Holy Quran at the turn of the year? | بله او قرائت میکند .
+[3] No, he doesn’t | ایا او در تحویل سال قران را قراءت میکند؟
+[3] Does your father give you New Year gifts? | نه ، او نمی دهد .
+[3] Yes, she has many | آیا پدر تو به تو کادوی عید می دهد؟
+[3] Does she have many friends? | آیا او دوستان زیادی دارد؟
+[3] special food | نه او غذای خاصی درست نمی
+[3] Does your mom make a special food for Norooz? | کند .
+[3] rising | یعنی آهنگ بالا و پایین رفتن صدا در هنگام صحبت کردن، آهنگ خیزان
+[3] rising | سوالی با استفاده از افعال کمکی ،خیزان ، صعودی، یا
+[3] Simple Present Tense | یعنی میزان صدای ما زمان ی که به انتهای جمله نزدیک می شویم افزایش، می یابد، زمان حال ساده :
+[3] present | از زمان حال، ساده
+[3] simple | برای نشان دادن کاری که در زمان حال یکبار یا چند بار به
+[3] s | فعل باید صرف شده و، یک پسوند
+[3] do | به آن اضافه می شود. در شکل منفی و سوالی باید از فعل کمکی
+[3] I/you/we/they • I speak | سوم شخص مفرد.) جدول زیر ساختار جمالت در این زمان را نشان می دهد.، فاعل، جمالت مثبت، جمالت منفی، جمالت سوالی
+[3] he speaks • he does not speak • Does he speak? | استثناها برای سوم شخص مفرد:
+[3] o | اگر جمله به
+[3] z | و
+[3] ch | ختم شود به جای پسوند
+[3] s | از
+[3] es | استفاده می کنیم. به مثال های زیر
+[3] es | توجه کنید:
+[3] d | اگر یک فعل به حرف
+[3] y | پس از یک
+[3] y | حرف بی صدا ختم شود، حرف
+[3] s | تغییر می دهیم و سپس
+[3] y | می کنیم. (در صورتی که قبل از
+[3] y | حرف صدادار باشد
+[3] ys | تغییری نمی کند.)
+[3] Wo | کاربرد ها:
+[3] always, never, rarely, often) | استفاده می شود. قیدهایی مثل: (
+[3] He plays football every Tuesday. " | به مثال زیر توجه کنید:
+[3] After school Colin goes home, packs his bag, puts on his football shirt and then | اتفاق افتاده اند. به مثال زیر توجه کنید:
+[3] he goes to football training | بعد از مدرسه کالینز به خانه می رود، کیفش را میبندد، لباس فوتبالش را می پوشد و سپس به به تمرین فوتبال می
+[3] A forward tries to score goals for his team | قاعده عمومی . به مثال زیر توجه کنید:
+[3] The bus leaves at half past four. " | شده اند. به مثال زیر توجه کنید:
+[3] His training starts at five o’clock. " | اتوبوس ساعت چهار و نیم حرکت می کند"
+[3] Colin likes football. ( | را نشان می دهند. به مثال های زیر توجه کنید:
+[3] He is a forward. ( | دارد کالین فوتبال را دوست)
+[3] Never rarely sometimes often usually always | گیرند. مهمترین قیدهای تکرار، عبارتند از :
+[3] Sometimes she plays piano for us | صفت ملکی (
+[3] Possessive adjective) | صفات ملکی ضمیر نیستند و جزء تعیین کننده ها)
+[3] determiners | می باشند. اما از آنجایی که شبیه ضمایر
+[3] my | جدول زیر آمده اس .ت، معنی صفت ملکی، صفت ملکی، ضمیر فاعلی، مال من
+[3] I | مال تو
+[3] they | به مثال های زیر در
+[3] My car is in the yard | این خصوص، توجه، کنید:، نی ماش من در ح، اط ی است.
+[3] Your book is so boring | لی ی کسل کننده است.
+[3] His cat is very quiet | گربه او (مذکر) خ، لی ی آرام است.
+[3] Her dog is small | سگ او (مونث) کوچک است.
+[3] Look at that fox. Its tail is short | آن روباه را نگاه کن. دم آن کوتاه است.
+[3] Our house is on main street | ابان ی اصل ی است.
+[3] Your birds are noisy | شما پر سر و صدا هستند.
+[3] Their room is clean | اتاق آنها تمی .ز است
+[3] Their house is very big. ." | خانه آنها خیلی بزرگ است"
+[3] Her car is very expensive. " | ماشین او خیلی گران قیمت است"
+[3] Is it your pen? " | این خودکار مال توئه؟"
+[3] Whose wallet is this? " | این کیف کیه؟ "
+[3] Mr Amini has a car . ……. car is blue | ملکی مناسب به کار، ببرید .
+[3] Military parade | عبارت مناسب هر تصویر را زیر آن بنویسید. یک عبارت اضافی است
+[3] Sing the national anthem | جمالت داده شده را یکبار سوالی و یک بار منفی کنید
+[3] The cat drinks its milk | سوالی
+[3] They listen to their teacher | منفی
+[3] Do/Does) you come to work by bus? …………………… | بهترین جواب را انتخاب کنید.و در نقطه چین بنویسید
+[3] Do/Does) Helen read poems of Khayyam? ………………………… | متن زیر را بخوانید و با انتخاب کلمه مناسب کامل کنید
+[3] and the girls ……………. (clear – clears) the table | شکل صحیح کلمات داخل پرانتز را در جمالت زیر بکار ببرید
+[3] Sahar doesn’t water the garden. She ................. the flowers. (water) | با استفاده از کلمات .) داده شده جاهای خالی را پر کنید.( یک کلمه اضافی است
+[3] They ……………. in the river in the summer | افتان یا خیزان جمالت زیر را مشخص کنید
+[3] Do you like rainy weather? ( …………) | بهترین جواب درست را انتخاب کنید
+[3] E –ticket | بلیط الکترونیکی
+[3] Round the corner | همین نزدیکی
+[4] Tourist: Excuse me sir! Can you help me please? | توریست  :
+[4] Pedram: What can I do for you? | ببخشید آقا !، میتوانید لطفا، مرا کمک، کنید؟
+[4] Tourist: I want a postcard, an envelope and a stamp | کاری میتوانم برایتان، بکنم؟
+[4] Pedram: Umm…, you can get them from a post office | توریست  :من، یک، کارت، پستال یک، پاکت، نامه  و، یک تمبر میخواهم.
+[4] Tourist: Where is the post office? | میتوانید آن ها  را از، اداره پست، بخرید.
+[4] Pedram: Actually it’s near here. It’s just round the corner | توریست  :، اداره پست کجاست؟
+[4] Tourist: Good! Thank you. What time does it open? | واقع نزدیک اینجاست  .اون دقیقا سر، نبش است
+[4] Pedram: It opens at 8 | توریست  :خوب است متشکرم  .چه ساعتی، باز، میکند؟
+[4] Tourist: Thanks a lot! | پدرام  :ساعت هشت باز، میکند
+[4] She’s an employee | صحبت کردن در مورد خدمات
+[4] What is her job? | او، کارمند است.
+[4] It’s over there | شغل او، چیست؟
+[4] Where is the post office? | آن جا است.
+[4] He is a postman | اداره پست کجاست؟
+[4] Who’s that man? | او، پستچی است.
+[4] It’s at 9:30 | آن مرد، کیست؟
+[4] When is the break? | ساعت نه  و نیم .
+[4] It opens at 8 in the morning | صحبت کردن در مورد خدمات
+[4] What time does it open? | ساعت ۸ صبح باز، میکند.
+[4] They work from Saturday to Wednesday | چه ساعتی باز میکند؟
+[4] When do they work? | آنها از، شنبه تا چهارشنبه، کار، میکنند.
+[4] The police help them | آنها چه، زمانی، کار، میکنند؟
+[4] Who helps lost children? | پلیس، به آنها، کمک، میکند .
+[4] She buys them from a post office | چه، کسی به کودکان گم، شده کمک، میکند؟
+[4] Where does she buy stamps? | اداره پست آنها را میخرد .
+[4] Because it’s fast and cheap | او از کجا تمبر، میخرد؟
+[4] Why does he go to work by bus? | چون، سریع  و، ارزان است.
+[4] I take a bus | چرا با، اتوبوس، به سر، کار، می، رود؟
+[4] How do you come to school? | اتوبوس سوار می شوم .
+[4] language melody | پایه، نهم، آهنگ زبان یا
+[4] rising | یعنی آهنگ بالا و پایین رفتن صدا در هنگام صحبت کردن، آهنگ خیزان
+[4] wh-question | نکته کلیدی : آهنگ صدا در جمالت سوالی با استفاده از کلمات پرسشی یا همان
+[4] Wh Question | زمانی که به انتهای جمله نزدیک می شویم کاهش، می یابد، سوال پرسیدن با
+[4] ions | در زبان انگلیسی دو دسته سوال، وجود دارد، دسته اول سوالات
+[4] yes/no quest | هستند. برای پاسخ این دسته از
+[4] s | دسته ی دوم سوالات
+[4] information question | نام دارند. این گونه سوالات را نمی توان با بله یا خیر پاسخ .داد
+[4] two - many - some | بعد از کلمات پرسشی دسته ی اول ابتدا اسم بکار رفته و پس از اسم, جمله به شکل سوالی بکار می رود، مثال برای جواب، کلمه حذفی، معنی، کلم پرسشی، ردیف
+[4] My-his-Ali’s | صفت ملکی
+[4] s | دار
+[4] a book – a doctor | بعد از کلمات پرسشی دسته ی اول همواره جمله به شکل سوالی بکار می رود، مثال برای جواب، کلمه حذفی، معنی، کلمه پرسشی، ردیف
+[4] At 5 o’clock - at 10 | ساعت
+[4] every day - yesterday | قید زمان
+[4] Ali - Mr. Irani | شخص چه کسی
+[4] Six years old | سن
+[4] There is a book on the table. (What) What is there on the table? | مثالهای زیر تفهیم این کلمات را برایتان ساده می سازد
+[4] He is Mr Irani . (Who) Who is he? | قیدهای تکرار
+[4] Adverb of Frequency | از
+[4] Adverb + Main verb | به زبان خیلی ساده قید تکرار قبل، از فعل اصلی، قرار می گیرد
+[4] She never listens to music because she is a real Muslim | بعد از
+[4] To be | فعل
+[4] We were never tired as break layers | اگر از فعل کمکی در جمله استفاده کنیم
+[4] Auxiliary + Adverb + Main verb | اصلی قرار می گیرد
+[4] I have always been tired in my classes | در جمالت سوالی از
+[4] Frequency adverb | بعد از فاعل
+[4] Why do you always get up so early? | استفاده می کنیم
+[4] d) get on a bus d) go to the bank d) clean the room | با توجه به هر تصویر درستی یا نادرستی عبارات زیر را مشخص کنید
+[4] Take out money ……………. Send an email ……………. donate the blood…………… | با استفاده فلش رو به بالا و یا پایین تن افتان و خیزان جمله های زیر را مشخص کنید
+[4] Can you open an account? ………… | در متن زیر چهار اشتباه گرامری وجود دارد. آنها را بیابید و شکل صحیحشان را بنویسید
+[4] work in two shifts. They always helping people | دیکته ناقص کلمات زیر را با توجه به تصاویر آن کامل.کنید
+[4] R_charge the e t_cket inform_tion desk help ch_rity | با مرتب کردن کلمات داده شده جمالت درست بنویسید
+[4] always / clean / keep / they / city / the | مکالمه های زیر را با کلمات مناسب کامل کنید. (یک کلمه اضافی است
+[4] A: ………...…... do you live? B: I live in Paveh | با استفاده از کلمات داخل پرانتز جمالت .زیر را باز نویسی کنید
+[4] She studies hard. (always) | جواب صحیح را در نقطه چین بنویسید
+[4] c) keep the city clean d) hire a taxi | جمالت ناقص ستون چپ را با ستون راست ربط دهید
+[4] g. He puts out fire and saves people’s lives | با استفاده از معلومات خود جمالت زیر را کامل کنید
+[5] Mina: Did you enjoy your weekend? | مینا :آیا  از آخر هفته خود لذت
+[5] Mahsa: Yes, it was wonderful! I attended Fajr International Film Festival | بردی؟
+[5] Mina: Really? I am also interested in its events and movies | فیلم فجر شرکت کردم.
+[5] Mahsa: Oh, did you watch the reports on TV last night? | مینا :، واقعا؟ من هم به، رویداد ها  و، فیلم های آن، عالقه، مند هستم.
+[5] Mina: Yes, I did, but I like to read about them | در تلوزیون تماشا کردی؟
+[5] Mahsa: Well, you can surf its website if you like. There are many interesting things | پایه، نهم
+[5] there | مهسا :خب
+[5] Mina: That’s great! Could you please give me the website address? | جست و جو کنی .آنجا، چیزهای جالب، زیادی وجود دارد.
+[5] Mahsa: Why not! Just a moment. Umm… I just texted it | مینا :عالیه !، میشه، ادرس وبسایت، رو، بدی؟
+[5] Mina: Thanks a lot | که نه !یه لحظه صبر کن .، الان برات، میفرستم.
+[5] Yes, they did | صحبت کردن در مورد رسانه
+[5] Did the girls listen to the radio? | بله، گوش، دادند
+[5] No, she didn’t | آیا آن دخترها به، رادیو، گوش، دادند؟
+[5] Did Mina surf the Internet? | نه، جستجو، نکرد
+[5] Yes, we watched it | آیا مینا در اینترنت جست  و جو، کرد؟
+[5] Did you watch the cartoon? | بله  ما تماشا، کردیم
+[5] No, he worked with his mobile | آیا شما، کارتون تماشا، کردید؟
+[5] Did Amir work with his computer? | کار، کرد
+[5] Who watched the movie last night? | خواهر من
+[5] I attended Fajr International Film | شب گذشته چه کسی فیلم تماشا کرد؟
+[5] What did you do last week? | جشنواره بین المللی فیلم فجر، شرکت، کردم
+[5] He received an email | هفته، گذشته، چه، کاری، انجام، دادی؟
+[5] What did Ali receive? | یک ایمیل دریافت کرد .
+[5] They downloaded it yesterday | علی، چه، چیزی، دریافت، کرد؟
+[5] When did they download the book? | آنها، دیروز، آن را، دانلود، کردند
+[5] She connected to the Internet at | آنها چه، زمانی، کتاب را، دانلود کردند؟
+[5] Where did she connect to the | در، مدرسه، به، اینترنت متصل، شد
+[5] Internet? | او
+[5] language melody | کجا، به، اینترنت، متصل شد؟، آهنگ زبان یا
+[5] rising | یعنی آهنگ بالا و پایین رفتن صدا در هنگام صحبت کردن، آهنگ خیزان
+[5] wh-question | نکته کلیدی : آهنگ صدا در جمالت تعجبی  با استفاده از کلمات پرسشی یا خبری یا
+[5] simple past) | زمان گذشته ساده :
+[5] past | در زبان انگلیسی از زمان گذشته ساده )
+[5] ed | در زمان گذشته ساده فعل اصلی جمله به شکل گذشته در می آید. در صورتی که فعل باقاعده باشد این کار با اضافه، کردن پسوند
+[5] did | کردن جمالت در این زمان باید از فعل کمکی
+[5] She met Sarah three weeks ago. ." | شروع و تمام شده است
+[5] Did I play? | دید سارا را پیش او سه هفته"، جمالتی، سوالی جمالت، منفی جمالت، مثبت
+[5] Did I speak? | قاعده
+[5] I got up early in the morning, washed my face, ate breakfast, got dressed, and | بیان کارهایی که در گذشته، یکی پس از دیگری، اتفاق می افتد
+[5] Mina lived in Japan for seven years. " | گذشته شروع و پایان یافته است .
+[5] always | ها اعمال  و یا واقعیت هایی که در، گذشته، انجام، می، شده، ولی، در حال حاضر، آنها  را، انجام، نمی دهیم .، درچنین، حالتی، معموال  از، قیود، تکراری، نظیر
+[5] used to | استفاده می شود. در این حالت می توان از عبارت
+[5] My father always listened to classical music | هم، استفاده کرد .
+[5] John never stayed home at weekends. . " | پدرم همیشه، به موسیقی سنتی، گوش می داد ."
+[5] be | بودن، فعل
+[5] Was I? | در پایان جزوه فعلهای بی قاعده پرکاربرد جهت استفاده آمده است، جمالتی، سوالی جمالت، منفی جمالت، مثبت
+[5] watched, wonderful, did, weekend, text, interested, watch, | با توجه به لغات داده شده جمالت زیر را تکمیل کنید.( یک کلمه اضافی است
+[5] A: Thanks a lot. You can ………. It. B: Sure | حرف مربوط به هر پاسخ را در نقطه چین ).بنویسید. (یک عبارت اضافی است
+[5] e. She connected at school | در هر ردیف کلمه ناهماهنگ را مشخص کنید
+[5] a) Internet b) connect c) fruit d) download …………………… | با مرتب کردن کلمات زیر جمالت مناسب و با معنایی بنویسید
+[5] can, match, on, tonight, you, watch, TV, football | افتان یا خیزان جمالت زیر را مشخص کنید
+[5] a) am b) am not c) wasn’t d) were | جمالت ناقص زیر را با استفاده از کلمات داخل پرانتز .کامل کنید
+[5] My favorite player ……………… a TV program 2 days ago. (Attend, attended, attends) | به سوالات زیر پاسخ کامل دهید
+[5] What did you do last week? ………………………………………………………… | شماره هر عبارت را زیر تصویر مربوط به آن بنویسید
+[5] attend a TV program 5. interview somebody | متن زیر را با دقت بخوانید و به موارد .خواسته شده جواب دهید
+[5] All day I was busy | جمالت صحیح را با
+[5] T | و جمالت غلط را با
+[5] F | مشخص کنید
+[5] b) Her grandfather came to her home. (…… ) | به سوالات زیر پاسخ دهید
+[5] What did she do? ……………………………………………………………..……… | دیکته کلمات ناقص زیر را کامل کنید
+[5] Health and injuries | سالمتی و آسیب دیدگی ها
+[5] Take care of | مراقبت کردن از
+[6] Reza: We plan to go to the lake. Do you want to come? | رضا :ما
+[6] Ehsan: I don’t think so. I don’t like school trips. Last summer I fell and broke my | برویم  .آیا میخوایی، تو هم بیایی؟
+[6] leg | احسان :
+[6] Reza: It sometimes happens. I twisted my ankle last winter. I stayed home for two | خوردم  و پایم را شکستم.
+[6] weeks! | رضا :گاهی اوقات اتفاق
+[6] Ehsan: That’s too bad! I didn’t know that | دو هفته در خانه ماندم .
+[6] Reza: Yeah…, but after that, I participated in Helal-e-Ahmar first aid classes. I | پایه، نهم
+[6] learned how to take care of myself | رضا :بله… اما
+[6] Ehsan: I like that. Can you give me some advice? | چطور از خودم مراقبت، کنم .
+[6] Reza: Sure! | آن را دوست دارم .میتونی، چندتا توصیه، بهم بکنی.
+[6] Yes, she did | صحبت کردن در مورد سالمتی و، آسیب ها
+[6] Did Mina have an accident? | بله، تصادف کرد .
+[6] No, he didn’t | آیا مینا، تصادف، کرد؟
+[6] Did Ali cut his finger? | نه، نبرید .
+[6] Yes, I broke my leg | آیا علی انگشت، خود را برید؟
+[6] Did you break your leg? | بله، پای من شکست.
+[6] No, I didn’t hurt my back | آیا پای شما شکست؟
+[6] Did you hurt your back? | نه پشت، من آسیب، دید.
+[6] Who had an accident? | رضا
+[6] She broke her leg in the park | چه، کسی، تصادف، کرد؟
+[6] Where did she break her leg? | او پایش را در پارک شکست.
+[6] He hit his head on the door | پای او کجا شکست؟
+[6] How did Amir hurt his head? | سرش به در خورد .
+[6] Because they drove fast | سر امیر چطور، آسیب، دید؟
+[6] Why did they have an accident? | چون که  با سرعت، رانندگی، کردند.
+[6] Object Pronouns | چرا آنها تصادف، کردند؟، ضمایر مفعولی:
+[6] Personal Pronouns | از ضمایر شخصی یا
+[6] Me | باشند پس در جمله عملی توسط فاعل بر روی آنها صورت گرفته است.، معنی فارسی، ضمیر مفعولی، ضمیر فاعلی، به من /مرا
+[6] I | به تو/تورا
+[6] they | الف اگر چه این ضمایر را ضمایر مفعولی می نامیم، اما آنها به جز در جای مفعول در هر جای دیگری هم می توانند قرار
+[6] Our teacher was angry with us. " | بگیرند، مثال، بعد از فعل، یا بعد از، یک حرف اضافه :
+[6] Give me a ring tomorrow. " | معلممان از دست ما عصبانی بود"
+[6] When he comes in, please tell him I phoned | فردا به من زنگ بزن"
+[6] I'm older than you. " | هر وقت آمد، لطفا به او بگویید که من زنگ زدم"
+[6] I'm hungry.' 'Me too.' "» | من از تو بزرگترم"
+[6] I | تر این است که ضمایر
+[6] we | و
+[6] you and I, my father and I, them and us | ضمایر دیگر بکار ببریم :
+[6] you and your wife, you and her | را باید قبل از اسامی و ضمایر دیگر به کار برد
+[6] It is ………………… she had a …………………………………………… he has some ……………………… | با توجه به تصاویر جمالت زیر را کامل کنید
+[6] broke, did, stay, twisted, participated, advice, do, learn, stayed) | با توجه به لغات داده شده جمالت زیر را کامل کنید .(یک عبارت . ) اضافی است
+[6] if you like | در هر ردیف دور کلمه ناهماهنگ خط بکشید
+[6] a) cut b) hurt c) break d) health ………………… | با مرتب کردن کلمات زیر جمالت مناسب و با معنایی بنویسید
+[6] saw, the, in, him, they, park. ………………………………………………………………….... | حرف مربو . ) ط به هر پاسخ را مقابل سوال بنویسید. (یک مورد اضافی است
+[6] e) My sister | جمالت ناقص زیر را با استفاده از کلمات داخل پرانتز کامل کنید
+[6] a) finded b) founded c) found d) did found | با استفاده از فلش افتان و خیزان جمالت زیر .را مشخص کنید
+[6] Hamid cut his finger. ……………… | با توجه به تصاویر به سوالات پاسخ دهید
+[6] Our class ………... at 8:00 and finished at 10:00 yesterday | تست واژگان
+[6] c)stomach and nose d) feet and leg | پاسخنامه تست های واژگان هفتم تا نهم
+[6] a | ضمائم
+[6] First - street | در زبان انگلیسی به ترتیب حروف الفبا، ب)حروف ترکیبی :
+[6] wh | اعداد در زبان انگلیسی  :
+[6] weekdays | آغازین هفته یکشنبه است. روزهای هفته به دودسته تقسیم می شوند؛
+[6] weekends | و
+[6] weekends | روزی است که تعطیل نمی باشند (دوشنبه تا جمعه). از، سوی دیگر
+[6] Saturday | و
+[6] Tuesday | برای برخی از ایام هفته ممکن است با مخفف های دیگری نیز برخورد کنید. مثال برای
+[6] Thursday | نیز استفاده، می شود، یا برای
+[6] Roman Calendar) | اسامی روزهای هفته در بیشتر زبان هایی که ریشه آنها زبان التین است از تقویم رومی (
+[6] planets) | است که براساس نام سیارات (
+[6] letters | نکته :اسامی روزها همیشه با حروف بزرگ)
+[6] capital | نوشته می شوند.
+[6] on | به طور کلی برای ایام هفته از حرف اضافه
+[6] Day of the Sun | استفاده می شود.، ریشه التین، روز، روز خورشید
+[4] Father | دانستن این جزئیات بسیار مهم بوده .)، پدر
+[4] Nephew | پسر خواهر یا برادر–، پسر، برادر زن و خواهر، شوهر
+[4] ed | افعال بی قاعده افعالی هستند که شکل گذشته و سوم آنها
+[4] cut | سه شکل آنها یکسان است. برای مثال:، قسمت سوم، قسمت دوم فعل، معنی
+[4] sat | دو قسمت آنها یکسان، است. مانند:، قسمت سوم، قسمت دوم فعل، معنی
+[4] drunk | فعل های بی قاعده ای که، سه شکل متفاوت، دارند. مثال:، قسمت سوم، قسمت دوم فعل، معنی
+[4] ed | قاعده به کار میروند. یعنی هم
+[4] A | میگیرند و هم شکل آنها تغییر میکند. این افعال در جدول زیر با رنگ، آبی مشخص، شده اند.، قسمت، سوم قسمت، دوم، فعل، معنی
+[4] H | کردن / پرورش دادن
+[4] lie (in bed) | دراز کشیدن
+[4] make | درست کردن / مجبور کردن
+[4] teach | درس دادن

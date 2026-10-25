@@ -1,0 +1,72 @@
+// ------------------------------------------------------------------
+// F8 «چرا غلط شد؟» — server-side question lookup.
+// The explain endpoint accepts ONLY a question id; the question text,
+// options and answer key are resolved here from the bundled banks so
+// that arbitrary content can never be injected into the LLM prompt.
+// ------------------------------------------------------------------
+
+import { examBank } from "@/data/exam";
+import lesson1 from "@/data/lesson1";
+import lesson2 from "@/data/lesson2";
+import lesson3 from "@/data/lesson3";
+import lesson4 from "@/data/lesson4";
+import lesson5 from "@/data/lesson5";
+import lesson6 from "@/data/lesson6";
+import lesson7 from "@/data/lesson7";
+import lesson8 from "@/data/lesson8";
+import lesson9 from "@/data/lesson9";
+import lesson10 from "@/data/lesson10";
+import lesson11 from "@/data/lesson11";
+import lesson12 from "@/data/lesson12";
+import type { QuizQuestion } from "./study-types";
+
+let index: Map<string, QuizQuestion> | null = null;
+
+function buildIndex(): Map<string, QuizQuestion> {
+  const map = new Map<string, QuizQuestion>();
+  const push = (q: QuizQuestion) => {
+    if (!map.has(q.id)) map.set(q.id, q);
+  };
+  for (const lesson of [
+    lesson1,
+    lesson2,
+    lesson3,
+    lesson4,
+    lesson5,
+    lesson6,
+    lesson7,
+    lesson8,
+    lesson9,
+    lesson10,
+    lesson11,
+    lesson12,
+  ])
+    for (const q of lesson.quizzes)
+      push(q);
+  for (const q of examBank) push(q);
+  return map;
+}
+
+/** All bundled questions (lesson quizzes 1-12 + the 360-item exam bank). */
+export function questionIndex(): Map<string, QuizQuestion> {
+  if (!index) index = buildIndex();
+  return index;
+}
+
+export function findQuestion(id: string): QuizQuestion | undefined {
+  return questionIndex().get(id);
+}
+
+/** Persian label of a question category, used in the prompt. */
+export function categoryFa(q: QuizQuestion): string {
+  switch (q.category) {
+    case "vocab":
+      return "واژگان";
+    case "vocab-konkuri":
+      return "واژگان کنکوری";
+    case "grammar":
+      return "گرامر";
+    default:
+      return q.category;
+  }
+}

@@ -1,0 +1,134 @@
+########## A) گواهیِ پایانترم — روشنِ ۱۲۸۰: مسیرِ دانلود/اشتراک
+home-ready-after-1x3s
+-- [seed-guard] SEED-OK
+"clicked"
+"card:ok"
+"started"
+q1/1=opt1
+adv=next
+q2/1=opt2
+adv=next
+q3/1=opt1
+adv=next
+q4/1=opt2
+adv=next
+q5/1=opt1
+adv=next
+q6/1=opt2
+adv=next
+q7/1=opt1
+adv=next
+q8/1=opt2
+adv=next
+q9/1=opt1
+adv=next
+q10/1=opt2
+adv=next
+q11/1=opt1
+adv=next
+q12/1=opt2
+adv=next
+q13/1=opt1
+adv=next
+q14/1=opt2
+adv=next
+q15/1=opt1
+adv=next
+q16/1=opt2
+adv=next
+q17/1=opt1
+adv=next
+q18/1=opt2
+adv=next
+q19/1=opt1
+adv=next
+q20/1=opt2
+adv=next
+loop-done
+CERT
+
+"ok"
+-- [result-probe] cert-done-light
+"{\"cert\":true,\"certName\":\"گواهیِ عملکردِ آرش-قهرمان\",\"finalResult\":false,\"percent\":\"۱۰٪\",\"gradeMsg\":true,\"chips\":72,\"reviewRows\":117,\"ctas\":4,\"isExam\":true,\"isKonkur\":false}"
+
+-- [negctl] cert-light-1280 → "{\"probed\":299,\"fails\":1,\"failsList\":[{\"cr\":1.34,\"need\":4.5,\"n\":1,\"
+-- negctl=OK
+"recorders:false:true"
+-- [A1] دانلودِ پرمیوم (canvasِ تاریک) — روشن
+"clicked:دانلود تصویر نتیجه"
+"{\"dl\":{\"n\":1,\"name\":\"vision2-result-10.png\"},\"sh\":{\"c\":0,\"ok\":0,\"e\":\"\",\"tx\":\"\"}}"
+-- [toast-probe] toast-after-download-light
+"{\"found\":true,\"count\":1,\"text\":\"🖼 تصویر نتیجه ذخیره شد | حالا می‌توانی آن را در هر کجا به اشتراک بگذاری.\",\"cls\":\"bg-background,text-foreground\",\"bg\":\"lab(100 0 0)\",\"ink\":\"lab(2.75381 0 0)\",\"state\":\"open\"}"
+
+-- [contrast] toast-img-saved-light
+"{\"probed\":300,\"fails\":0,\"failsList\":[]}"
+
+-- [A2] اشتراک (fallbackِ کلیپبورد در هدلس) — روشن
+"clicked:اشتراکگذاری نتیجه"
+"{\"dl\":{\"n\":1,\"name\":\"vision2-result-10.png\"},\"sh\":{\"c\":1,\"ok\":0,\"e\":\"Failed to execute 'writeText' on 'Clipboard': Write permission denied.\",\"tx\":\"🏆 نتیجهٔ من در وب‌کتاب «Vision Two»\\nآزمون پایان‌ت\"}}"
+-- [toast-probe] toast-after-share-light
+"{\"found\":false,\"count\":0,\"bodyHasToastText\":false}"
+
+-- [contrast] toast-copied-light
+"{\"probed\":298,\"fails\":0,\"failsList\":[]}"
+
+########## B) گواهی — تاریکِ درجا: همان دو مسیر
+-- [negctl] cert-dark-1280 → "{\"probed\":299,\"fails\":1,\"failsList\":[{\"cr\":1.34,\"need\":4.5,\"n\":1,\"
+-- negctl=OK
+-- [B1] دانلودِ پرمیوم — تاریک
+"clicked:دانلود تصویر نتیجه"
+"{\"dl\":{\"n\":2,\"name\":\"vision2-result-10.png\"},\"sh\":{\"c\":1,\"ok\":0,\"e\":\"Failed to execute 'writeText' on 'Clipboard': Write permission denied.\",\"tx\":\"🏆 نتیجهٔ من در وب‌کتاب «Vision Two»\\nآزمون پایان‌ت\"}}"
+-- [toast-probe] toast-after-download-dark
+"{\"found\":true,\"count\":1,\"text\":\"🖼 تصویر نتیجه ذخیره شد | حالا می‌توانی آن را در هر کجا به اشتراک بگذاری.\",\"cls\":\"bg-background,text-foreground\",\"bg\":\"lab(2.75381 0 0)\",\"ink\":\"lab(98.26 0 0)\",\"state\":\"open\"}"
+
+-- [contrast] toast-img-saved-dark
+"{\"probed\":300,\"fails\":0,\"failsList\":[]}"
+
+-- [B2] اشتراک — تاریک
+"clicked:اشتراکگذاری نتیجه"
+"{\"dl\":{\"n\":2,\"name\":\"vision2-result-10.png\"},\"sh\":{\"c\":2,\"ok\":0,\"e\":\"Failed to execute 'writeText' on 'Clipboard': Write permission denied.\",\"tx\":\"🏆 نتیجهٔ من در وب‌کتاب «Vision Two»\\nآزمون پایان‌ت\"}}"
+-- [toast-probe] toast-after-share-dark
+"{\"found\":false,\"count\":0,\"bodyHasToastText\":false}"
+
+-- [contrast] toast-copied-dark
+"{\"probed\":298,\"fails\":0,\"failsList\":[]}"
+
+########## C) نتیجهٔ استاندارد (واژگان) — روشن: دانلودِ سبک
+"exam-landing"
+"mode:vocab"
+"started:شروع آزمون جامع"
+q1/1=opt1
+adv=next
+q2/1=opt2
+adv=next
+q3/1=opt1
+adv=next
+q4/1=opt2
+adv=next
+q5/1=opt1
+adv=next
+loop-done
+"ok"
+-- [result-probe] std-done-light
+"{\"cert\":false,\"certName\":null,\"finalResult\":true,\"percent\":\"10٪\",\"gradeMsg\":true,\"chips\":19,\"reviewRows\":30,\"ctas\":3,\"isExam\":true,\"isKonkur\":false}"
+
+"recorders:false:true"
+"clicked:دانلود تصویر نتیجه"
+"{\"dl\":{\"n\":2,\"name\":\"vision2-result-10.png\"},\"sh\":{\"c\":0,\"ok\":0,\"e\":\"\",\"tx\":\"\"}}"
+-- [toast-probe] toast-after-download-std-light
+"{\"found\":true,\"count\":1,\"text\":\"🖼 تصویر نتیجه ذخیره شد | حالا می‌توانی آن را در هر کجا به اشتراک بگذاری.\",\"cls\":\"bg-background,text-foreground\",\"bg\":\"lab(100 0 0)\",\"ink\":\"lab(2.75381 0 0)\",\"state\":\"open\"}"
+
+-- [contrast] toast-img-saved-std-light
+"{\"probed\":106,\"fails\":0,\"failsList\":[]}"
+
+########## D) توست در ۳۹۰ — دانلودِ استاندارد رویِ موبایل
+"clicked:دانلود تصویر نتیجه"
+"{\"dl\":{\"n\":4,\"name\":\"vision2-result-10.png\"},\"sh\":{\"c\":0,\"ok\":0,\"e\":\"\",\"tx\":\"\"}}"
+-- [toast-probe] toast-download-390
+"{\"found\":true,\"count\":1,\"text\":\"🖼 تصویر نتیجه ذخیره شد | حالا می‌توانی آن را در هر کجا به اشتراک بگذاری.\",\"cls\":\"bg-background,text-foreground\",\"bg\":\"lab(100 0 0)\",\"ink\":\"lab(2.75381 0 0)\",\"state\":\"open\"}"
+
+########## E) خانه — بازگشت و basis-zero نهایی
+-- [basis-zero] home-after-all
+"{\"total\":1,\"rowItems\":1,\"truncated\":0,\"suspects\":[]}"
+
+########## END

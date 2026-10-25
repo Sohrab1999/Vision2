@@ -1,0 +1,499 @@
+G12L1	accidental	تصادق
+G12L1	at all	اصأل، ابدأ، به هیچ وجه
+G12L1	accidentally	تصادفأ، اتفاق
+G12L1	at last	شانجام، در نهایت
+G12L1	A.D	بعد از میالد مسیح ، میالدی
+G12L1	a set of	مجموعه ای از
+G12L1	abroad	خارج از کشور
+G12L1	authorized	مجاز- مختار
+G12L1	active voice	جمله معلوم ( در دستور زبان )
+G12L1	authority	صالحیت، اختیار - معتیی
+G12L1	addition	جمع، اضافه
+G12L1	babysit	از بچه پرستاری کردن
+G12L1	babysitter	پرستار بچه
+G12L1	advise	نصیحت کردن، توصیه کردن
+G12L1	advisement	مشورت، تأمل
+G12L1	be born	متولد شدن، به دنیا آمدن
+G12L1	advisor	مشاور، ر ا هنما
+G12L1	because of	به خاطر
+G12L1	again and again	بارها، دوباره و دوباره
+G12L1	belonging	تعلق، وابستگ
+G12L1	agreement	توافق، موافقت، قرارداد
+G12L1	after a while	بعد از مدت
+G12L1	blessed	مبارک، سعید، خوشبخت
+G12L1	airbag	کیسه هوا
+G12L1	blessedness	سعادت، برکت، خوشبخن
+G12L1	airplane	هواپیما
+G12L1	blessing	رحمت، برکت، دعای خیر ، نعمت
+G12L1	along with	به عالوه، افزون بر، همراه با
+G12L1	boost	بالابردن، افزایش دادن، تقویت کردن
+G12L1	aloud	بلند، با صدای بلند
+G12L1	booster	تقویت کننده، حایم سیایس
+G12L1	although	اگرچه ، گرچه، با اینکه
+G12L1	bother	آزار، اذیت - اذیت کردن
+G12L1	analyze	برریس کردن، آنالیر کردن
+G12L1	bring up	تربیت کردن، مطرح کردن
+G12L1	analyzer	تحلیل کننده، تحلیل گر
+G12L1	broken-hearted	دلشکسته، نا امید
+G12L1	businessman	تاجر، بازرگان
+G12L1	by heart	از حفظ، از بر، حفظ
+G12L1	by the way	راسن ، بگذریم
+G12L1	calmly	آرام، راحت، به آرایم، آهسته
+G12L1	article	مقاله - شین
+G12L1	cancer	، شطان بال
+G12L1	capable of	قادر به
+G12L1	as follows	، به شر ح زیر همچون زیر
+G12L1	care for	مراقبت کردن از، پرستاری کردن از
+G12L1	a sign of	یک نشانه از
+G12L1	carry	حمل کردن، با خود بردن، منتقل کردن
+G12L1	as well	همچنیر در انتهای جمله یم آید )
+G12L1	carry no risk	خطر نکردن، ریسک نکردن
+G12L1	descriptive	توصیف ، تشر ییح، وصف
+G12L1	detective	کاراگاه پلیس )، بازرس
+G12L1	childhood	بچگ ، کودیک، دوران بچگ
+G12L1	diary	دفی خاطرات، دفی یادداشت
+G12L1	diploma	مدرک تحصییل، دیپلم
+G12L1	close friend	دوست صمییم، دوست نزدیک
+G12L1	collocation	ترکیب، هم آیند هم نشین
+G12L1	distinguish	تشخیص دادن، متمایز کردن
+G12L1	distinguished	برجسته، ممتاز، ششناس
+G12L1	doer	انجام دهنده، اهل عمل
+G12L1	complain	شکایت کردن، گالیه کردن
+G12L1	deserve	استحقاق داشی ، ش اوار بودن
+G12L1	compound	مرکب، ترکینی ، مخلوط، ترکیب
+G12L1	divorce	طالق، جدات
+G12L1	comprehension	درک مطلب، فهم
+G12L1	documentary	مستند، سند دار
+G12L1	concern	دغدغه، نگرات ، تشویش
+G12L1	duty	وظیفه، کار، خدمت، تکلیف
+G12L1	economically	از نظر اقتصادی
+G12L1	confirm	تائید کردن، ثابت کردن
+G12L1	effortless	بدون تالش، آسان، ساده
+G12L1	confirmation	تصدیق، تائید- تثبیت
+G12L1	connecting	رابط، ربط دهنده
+G12L1	elder	بزرگ تر، بزرگ
+G12L1	countless	تی شمار، تی اندازه، بسیار زیاد
+G12L1	elderly	سالخورده، پیر ، قدییم، کهنه
+G12L1	elicit	بیر ون کشیدن، به دست آوردن
+G12L1	critic	منتقد، انتقاد کننده
+G12L1	criticize	نقد کردن ، انتقاد کردن، نکوهش
+G12L1	end in	ختم شدن به، پایان یافی با
+G12L1	enjoyable	لذت بخش، مطبوع، خوشایند
+G12L1	ethics	، اخالق اخالقیات، اصول اخالق
+G12L1	evidence	مدرک، گوایه، دلیل- شاهد
+G12L1	expert	متخصص، کارشناس
+G12L1	feedback	بازخورد، بازده، فیدبک
+G12L1	dear	عزیز، گرانمایه
+G12L1	feeding	تغذیه، خوراک
+G12L1	dedicate	وقف کردن، اختصاص دادن
+G12L1	dedicated	متعهد- وقف شده- ایثارگر
+G12L1	dedication	اهداء، وقف، تخصیص - فداکاری
+G12L1	forgiveness	بخشش، عفو، گذشت ( sit on) lap روی دامن )کیس نشسی
+G12L1	forgiver	بخش نده ، عفو کننده
+G12L1	found	تأسیس کردن، ایجاد کردن
+G12L1	founder	تآسیس کننده، مؤسس، بنیان گذار
+G12L1	location	محل، جا، موقعیت
+G12L1	failure	شکست، سقوط
+G12L1	loving	مهربان، بامحبت، محبت آمیر
+G12L1	fridge	یخچال
+G12L1	lower	، پاییر آوردن کم کردن
+G12L1	lack	فقدان، نبود، کمبود، نداشی
+G12L1	go together	با هم همراه بودن، با هم جور بودن
+G12L1	marketing	بازاریاتی
+G12L1	grandchild	نوه
+G12L1	meaningful	با معن ، معن دار
+G12L1	guideline	رهنمود، توصیه، دستور العمل
+G12L1	most	مهم تر این که، از همه مهمی این که
+G12L1	gulf	خلیج
+G12L1	handle	کنی ل کردن، از عهده برآمدن
+G12L1	muscle	ماهیچه
+G12L1	hard of hearing	گوش کیس ) سنگیر بودن (
+G12L1	the) North Pole	قطب شمال
+G12L1	hate	نفرت داشی از ، متنفر بودن از
+G12L1	Not surprisingly	تعجنی نداره که، معلوم است که
+G12L1	hear of	با خیی بودن از، خیی ی داشی
+G12L1	note	توجه کردن به، دقت کردن - یادداشت
+G12L1	hence	بنابراین- از حالا به بعد، دیگر
+G12L1	pause	مکث کردن، مکث
+G12L1	pay raise	افزایش حقوق
+G12L1	immigration	مهاجرت
+G12L1	immoral	غیر اخالق ، بد اخالق
+G12L1	penalty	جریمه، مجازات، تاوان
+G12L1	inappropriate	نا مناسب
+G12L1	physician	پزشک، طبیب
+G12L1	inspiration	الهام، منبع الهام
+G12L1	pigeon	کبوتر
+G12L1	inspire	الهام بخشیدن
+G12L1	pity	ترحم، دلسوزی، جای تأسف
+G12L1	interestingly	جالب است که ...، شگفت است
+G12L1	inform	مطلع کردن، با خیی کردن
+G12L1	informer	خیی چیر ، جاسوس، اطالع دهنده
+G12L1	present (v)	ارائه کردن - اهدا کردن، تقدیم کردن
+G12L1	principle	اصل، قاعده، اصل اخالق
+G12L1	kindly	با مهربات ، با مالیمت
+G12L1	process	فرآیند، جریان، روش - فرآوری کردن
+G12L1	provide	تامیر کردن، تهیه کردن
+G12L1	sometime	زمات ، روزی، یک روزی
+G12L1	punish	تنبیه کردن، مجازات کردن
+G12L1	spare	کردن ر دری غ کردن، چشم پویس
+G12L1	punisher	تنبیه کننده، مجازات گر
+G12L1	punishment	تنبیه، مجازات
+G12L1	strength	قدرت، توان، استحکام، شدت
+G12L1	qualitative	کیف ، از نظر کیفیت
+G12L1	strict	سخت گیر
+G12L1	quantity	کمیت، مقدار، تعداد
+G12L1	substance	ر ماده اصیل، جنس، جسم، یس
+G12L1	quantitative	از نظر کمیت، کیم
+G12L1	such	چنیر ، اینطور، چنان، آنقدر
+G12L1	rather than	به جای، به جای اینکه
+G12L1	tag question	عبارت الحاق- پرسش تاکیدی
+G12L1	record	ثبت کردن، یادداشت کردن
+G12L1	take a rest	اسی احت کردن
+G12L1	refuse	امتناع، رد کردن، نپذیرفی
+G12L1	tear (n)	اشک
+G12L1	regard	در نظر گرفی ، مالحضه کردن
+G12L1	tear (v)	پاره کردن، گسسی
+G12L1	regarding	در ارتباط با، با توجه به
+G12L1	teenager	نوجوان
+G12L1	release	رها کردن، آزاد کردن
+G12L1	temperature	درجه حرارت، دما، حرارت بدن، تب
+G12L1	religion	مذهب
+G12L1	textbook	کتاب دریس
+G12L1	repeatedly	بارها، بارها و بارها، به کرات
+G12L1	thus	بدین ترتیب، بنابراین، این طور
+G12L1	replace	، جایگزین کردن قرار دادن
+G12L1	tool	ابزار، وسیله
+G12L1	reply	جواب دادن، جواب
+G12L1	responsibility	مسئولیت، وظیفه
+G12L1	trustworthy	قابل اعتماد، درستکار
+G12L1	rub	سائیدن، مالیدن
+G12L1	uncertainty	عدم قطعیت، شک، تردید
+G12L1	robber	سارق، دزد
+G12L1	unnatural	غیر طبییع، غیر عادی، ساختگ
+G12L1	umbrella	چی ، حافظ، پوشش
+G12L1	salary	حقوق، دستمزد
+G12L1	unconditionally	بدون قید و شر ط
+G12L1	score	نمره، امتیاز، نتیجه
+G12L1	unreal	غیر واقیع، باور نکردت
+G12L1	scoreboard	تابلو امتیاز
+G12L1	voluntarily	به طور داوطلبانه
+G12L1	sensation	احساس، حس، شور
+G12L1	warn	، هشدار دادن اخطار دادن
+G12L1	wealthy	ثروتمند، پو ل دار، غن
+G12L1	series	شی، مجموعه
+G12L1	shameful	شر م ، آور ، خجالت آور ننگیر
+G12L1	whereby	که با آن، که از طریق آن
+G12L1	shout	فریاد کشیدن، فریاد
+G12L2	abbreviation	مخفف
+G12L2	basement	زیر زمیر
+G12L2	absent	غائب
+G12L2	battle	نیی د، جدال ، جنگ
+G12L2	BC	قبل از میالد مسیح
+G12L2	accessible	قابل دسی س
+G12L2	behind	پشت، عقب
+G12L2	accessibility	دسی یس
+G12L2	beige	رنگ کریم- بژ
+G12L2	accidentally	به طور تصادق
+G12L2	beings	موجودات زنده
+G12L2	accurately	به درسن ، به دقت، به طور صحیح
+G12L2	bilingual	دو زبانه
+G12L2	biography	زندیک نامه
+G12L2	achievement	دست آورد، موفقیت
+G12L2	biology	زیست شنایس
+G12L2	a couple of	یه چند تات ، تعداد کیم
+G12L2	body building	بدن سازی، پرورش اندام
+G12L2	admission	پذیرش - تصدیق، اجازه ورود
+G12L2	advance	پیشر فت، پیشر فت کردن
+G12L2	browse	جستجو کردن
+G12L2	advanced	پیشر فته
+G12L2	browser	جستجوگر
+G12L2	aid	ک مک، ک مک کردن - دستیار
+G12L2	come to no fruit	تی ثمر بودن، تی فایده بودن
+G12L2	allow	اجازه دادن
+G12L2	can afford	توانات مایل داشی
+G12L2	allowance	اجازه- پول تو جینی
+G12L2	capability	توانات ، قدرت، قابلیت
+G12L2	although	اگرچه - هر چند - با اینکه
+G12L2	cause	علت، دلیل
+G12L2	ancient	باستان، باستات ، کهن، قدییم
+G12L2	changeable	قابل تغییر ، تغییر پذیر
+G12L2	Antarctica	قطب جنوب
+G12L2	circumstance	محیط، پیر امون – شر ایط(در جمع )
+G12L2	anthill	تپه مورچه
+G12L2	claim	ادعا کردن، ادعا- مطالبه
+G12L2	clue	، شنخ، اثر نشان، راهنما
+G12L2	collocation	هم نشین ، هم آوات - ترتیب
+G12L2	application	برنامه- کاربرد
+G12L2	colony	گروه، دسته - مستعمره
+G12L2	argue	جر و بحث کردن، استدالل کردن
+G12L2	arm	بازو
+G12L2	armed	، مسلح، مجهز آماده جنگ
+G12L2	commercial	تجاری- بازرگات
+G12L2	arrange	تنظیم کردن - مرتب کردن - هماهنگ کردن
+G12L2	arrangement	ترتیب، نظم - آرایش - چینش
+G12L2	astronaut	فضانورد
+G12L2	communicative	خوش برخورد ، ارتبایط، اهل معاشر ت
+G12L2	compare	مقایسه کردن
+G12L2	compete	رقابت کردن، مسابقه دادن
+G12L2	attractive	جذاب ، دلربا
+G12L2	competition	رقابت، مسابقه
+G12L2	competitor	رقیب، حریف
+G12L2	average	میانگیر- متوسط - معدل
+G12L2	aware of	آگاه از، مطلع از
+G12L2	complex	پیچیده - مجتمع، مجموعه
+G12L2	entrance	ورود، اجازه ورود
+G12L2	complicated	پیچیده - سخت
+G12L2	entrant	وارد شونده، داوطلب
+G12L2	comprehensible	فهمیدت - قابل فهم
+G12L2	entry	ش واژه - ورود
+G12L2	escaped	فراری
+G12L2	essential	الزم- رص وری
+G12L2	everywhere	همه جا
+G12L2	confusion	گییحی ، دستپاچگ ، پریشات
+G12L2	examine	ا متحان کردن، معاینه کردن
+G12L2	exclamation mark	عالمت تعجب
+G12L2	container	ظرف
+G12L2	expand	گسی ش دادن، توسعه دادن
+G12L2	database	پایگاه داده
+G12L2	deal with	پرداخی به، مشغول بودن به
+G12L2	facial muscles	ماهیچه های صورت
+G12L2	jump into	نادیده گرفی به - پریدن - پریدن
+G12L2	habitat	محل سکونت، مسکن
+G12L2	keep in touch	در تماس بودن، ارتباط داشن
+G12L2	handicraft	صنایع دسن
+G12L2	keep to oneself	در الک خود بودن، ساکت بودن
+G12L2	hardware	سخت افزار
+G12L2	lobster	خرچنگ دریات
+G12L2	lack	فقدان ، کمبود- کمبود داشی
+G12L2	healthful	مفید(برای سالمت)
+G12L2	highlight	برجسته کردن
+G12L2	laugh at	خندیدن به
+G12L2	lead to	منجرشدن به ، منتیه شدن به
+G12L2	huge	عظیم، خییل بزرگ
+G12L2	lecture	سخی ات
+G12L2	ice cap	کوه ییح ، قله ییح
+G12L2	level	سطح
+G12L2	ideal	، ایده آل، رؤیات آرمات ، دلخواه
+G12L2	look for	گشی به دنبال، جستجو کردن برای
+G12L2	imaginary	تخییل- غیر واقیع
+G12L2	look sth up	جستجو کردن(معت لغت در دیکشی ی )
+G12L2	immediate	فوری
+G12L2	modernism	مدرن گرات ، نو گرات
+G12L2	immediately	فورأ
+G12L2	magnet	آهن ربا
+G12L2	in advance	از پیش، از قبل، پیشاپیش
+G12L2	magnify	بزرگنمات کردن - بزرگ کردن
+G12L2	male	مردانه ، مذکر
+G12L2	incomprehensible	غیر قابل فهم
+G12L2	in contrast to	در مقایسه با
+G12L2	increasingly	به طور فزاینده
+G12L2	minor	جزت- کم اهمیت
+G12L2	infection	عفونت، آلودیک( میکروب)
+G12L2	monolingual	یک زبانه
+G12L2	multiple	چندگانه، چندین- متعدد، گوناگون
+G12L2	inner	داخیل
+G12L2	in order to	به منظور، تا اینکه
+G12L2	insist on	پا فشاری کردن بر روی، ارصار
+G12L2	instead	به جای، در عوض
+G12L2	once	یکبار، روزی، زمات که، در گذشته
+G12L2	insulting	توهیر آمیر
+G12L2	intermediate	سطح متوسط
+G12L2	painful	دردناک
+G12L2	pay for	پرداخت کردن برای
+G12L2	race	مسابقه، نژاد
+G12L2	parts of speech	نوع کلمه ( اسم، صفت، قید و)
+G12L2	recommend	توصیه کردن، سفارش کردن
+G12L2	recommendation	توصیه، سفارش
+G12L2	PC	کامپیوتر شخض
+G12L2	permission	اجازه
+G12L2	relaxation	اسی احت، آرامش، شل شدن عضالت
+G12L2	philosophy	فلسفه
+G12L2	rely on	متگ بودن به، وابسته بودن به
+G12L2	phonetic	علم آ، وا شنایس آوات
+G12L2	pocket	جیب- جینی
+G12L2	repair	تعمیر کردن
+G12L2	di i	فرهنگ لغت جینی
+G12L2	reproduce	تولید مثل کردن، تکثیر کردن
+G12L2	understanding	درک- فهم
+G12L2	stand for	نماد چیر ی بودن
+G12L2	unexpectedly	به طور غیر منتظره
+G12L2	station	ایستگاه
+G12L2	stationary	ساکن، تی حرکت، تی تغییر
+G12L2	unknown	نا آشنا، غریبه
+G12L2	steak	باریکه گوشت کباتی ، استیک
+G12L2	upcoming	پیش رو، آت
+G12L2	stick to / in	به چیر ی چسبیدن
+G12L2	unpredictable	غیر ر قابل پیش بین
+G12L2	stick in mind	در ذهن فرو رفی
+G12L2	unsuccessfully	با ناکایم
+G12L2	stick to one’s word	روی حرف خود بودن
+G12L2	unsystematically	بدون قاعده ، بطور غیر سیستماتیک
+G12L2	useable	قابل استفاده، قابل بهره وری
+G12L2	suffer	رنج کشیدن
+G12L2	usefulness	، سودمندی فایده
+G12L2	user	کاربر - استفاده کننده، مرصف کننده
+G12L2	superhuman	ابر انسان - فوق انسات
+G12L2	veterinarian	دامیی شک
+G12L2	support	حمایت کردن
+G12L2	vibration	ارتعاش - لرزش
+G12L2	suppose	فرض کردن- گمان کردن
+G12L2	viewer	بیننده، تماشایحی
+G12L2	surround	احاطه کردن، محارصه کردن
+G12L2	violation	تخلف، تجاوز
+G12L2	surrounding	اطراف- محیط، پیر امون
+G12L2	volume	جلد- حجم- درجه صدا
+G12L2	sweet	شیر ین ، شیر ین
+G12L2	watcher	تماشاگر، ببننده
+G12L2	symbol	نماد، مظهر، نشان
+G12L2	waterway	آبراهه، راه آتی
+G12L2	take action	اقدام کردن
+G12L2	web browser	جستجوگر وب
+G12L2	take note of	توجه کردن به
+G12L2	whatever	هر آنچه که، هر چیر ی که
+G12L2	take notes	یادداشت برداشی
+G12L3	absence	غیبت - فقدان
+G12L3	chemical	شیمیات
+G12L3	absorb	جذب کردن - فهمیدن
+G12L3	chemistry	شییم
+G12L3	air conditioner	دست گ اه تهویه هوا ، کولر
+G12L3	chemist	شیمیدان- دارو ساز
+G12L3	alcoholic	الکیل، حاوی الکل
+G12L3	circulate	چرخش کردن، چرخیدن
+G12L3	circulation	گردش، جریان، دوران
+G12L3	anger	خشم، عصبانیت، غضب
+G12L3	clean energy	انرژی پاک
+G12L3	client	مشی ی - موکل
+G12L3	annual	سالیانه
+G12L3	apologize	معذرت خوایه کردن
+G12L3	cloth	پارچه - دستمال
+G12L3	apology	معذرت خوایه
+G12L3	application	تقاضا، درخواست- کاربرد
+G12L3	apply	درخواست کردن، تقاضا کردن
+G12L3	collective	، مشی ک، جمیع عمویم، اشی ایک
+G12L3	apply for	نام نوییس کردن برای
+G12L3	collector	جمع کننده
+G12L3	argument	جر و بحث، مشاجره
+G12L3	come from	شچشمه گرفی ، اهل جات بودن
+G12L3	arrangement	آرایش، چیدمان، ترتیب
+G12L3	as a result of	در نتیجه- به دلیل
+G12L3	component	جزء سازنده
+G12L3	conclude	نتیجه گرفی- تمام کردن
+G12L3	conflict	کشمکش، نیی د - ناسازگاری، تضاد
+G12L3	awareness	هوشیاری، آگایه
+G12L3	considerable	، قابل توجه، شایان توجه فراوان
+G12L3	background	پس زمینه
+G12L3	consist of	تشکیل شدن از
+G12L3	balcony	ایوان- بالکن
+G12L3	constantly	پیوسته - دائمأ
+G12L3	basis	اساس- اصل
+G12L3	consumer	مرصف کننده
+G12L3	beam	اشعه، پرتو، شعاع - ، تیر سقف ک
+G12L3	cool	خنک - با حال، معرکه، محشر
+G12L3	beloved	محبوب، مورد علاقه
+G12L3	cooling	خنک سازی
+G12L3	benefit	سود، بهره، منفعت – سود بردن
+G12L3	cooler	خنک کننده
+G12L3	bill	صورتحساب - اسکناس
+G12L3	consumption	مرصف، استفاده
+G12L3	convince	کردن، متقاعد کردن قانع کردن، راض
+G12L3	broth	آبگوشت
+G12L3	cooperate	، همیاری کردن همکاری کردن
+G12L3	budget	بودجه
+G12L3	counterpart	همکار، شر یک - همتا
+G12L3	character	شخصیت
+G12L3	couple	زوج، زن و شوهر
+G12L3	charge	شارژ، هزینه- ش ارژ کردن
+G12L3	cross out	چیر ی را خط زدن، اخراج کردن
+G12L3	check	برریس کردن، چک کردن
+G12L3	decade	دهه(ده سال )
+G12L3	delivery	تحویل
+G12L3	deliver	تحویل دادن
+G12L3	digest	هضم کردن - فهمیدن
+G12L3	gasoline	بی ین
+G12L3	disability	معلولیت- نقص
+G12L3	distance	فاصله- مسافت
+G12L3	document	مدرک- سند
+G12L3	give off	ساطع کردن- منتشر کردن
+G12L3	dread	ترس، بیم، وحشت، ترسیدن از
+G12L3	dreadful	ترسناک
+G12L3	Egyptian	مرصی (اهل کشور مرص )
+G12L3	gone	ناپدید- رفته- مرده
+G12L3	electric	برق
+G12L3	gradually	به تدری ج- کم کم
+G12L3	electrical	، برق الکی یگ
+G12L3	energetic	پر انرژی، فعال
+G12L3	energetically	با انرژی، به طور پر انرژی
+G12L3	ensure	، مطمی کردن اطمینان حاصل کردن
+G12L3	herd	گروه- دسته- گله
+G12L3	equivalent	برابر
+G12L3	holder	نگهدارنده
+G12L3	except	به جزء، به غیر از
+G12L3	hole	چاله، سوراخ، گودال
+G12L3	exclamation	حرف ندا
+G12L3	household	، خانوار اعضای خانواده
+G12L3	huge	عظیم- بزرگ
+G12L3	fall asleep	به خواب رفی
+G12L3	hybrid	دوگانه
+G12L3	identifiable	قابل شناسات
+G12L3	idiom	اصطالح
+G12L3	fitness	تناسب اندام - شایستگ
+G12L3	I’m afraid	شر مند ه ا م، متأسفم
+G12L3	flashlight	چراغ قوه
+G12L3	flock	دسته ، گروه- دور هم جمع شدن
+G12L3	incandescent lamp	المپ رشته ای
+G12L3	inform	اطالع دادن - با خیی کردن
+G12L3	fond	عالقمند، مایل، مشتاق، خواهان
+G12L3	initial	ابتدات ، آغازین، نخستیر
+G12L3	force	نیر و، اجبار- مجبور کردن
+G12L3	innovation	نوآوری، ابداع
+G12L3	forever	برای همیشه
+G12L3	kinetic	، حرکن ر جنبیس
+G12L3	organized	سازمان یافته، آرایش داده شده
+G12L3	landfill	محل دفن زباله- گورستان زباله
+G12L3	organization	سازمان، نهاد، ارگان
+G12L3	outlet	پریز)(برق
+G12L3	overcome	غلبه کردن - برتری یافی
+G12L3	lead to	منجر شدن به– منتیه شدن به
+G12L3	particularly	به ویژه، به طور خاص
+G12L3	lettuce	کاهو
+G12L3	permanently	به طور پایدار، ماندگار
+G12L3	likelihood	احتمال
+G12L3	plug in	به برق وصل کردن
+G12L3	load	بار، محموله - بار کردن
+G12L3	politics	سیاست
+G12L3	magic	جادوت - غیر معمویل
+G12L3	mammals	موجودات پستاندار
+G12L3	polluted	آلوده
+G12L3	margin	حاشیه- کناره
+G12L3	provide for	فراهم کردن برای
+G12L3	marketplace	بازار، میدان فروش کالا
+G12L3	portable	قابل حمل
+G12L3	meaningful	معنا دار، با معن - مهم
+G12L3	practical	عمیل - مفید - کاربردی
+G12L3	mechanical	مکانیگ
+G12L3	principal	مدیر، رئیس - اصیل، عمده، مهم
+G12L3	mix up	قایط کردن - گیج شدن
+G12L3	principle	قانون- اصل
+G12L3	mouth	دهان
+G12L3	process	فرآیند- جریان، پروسه - پردازش کردن
+G12L3	multiplication	رص ب، تکثیر ، ازدیاد
+G12L3	namely	یعن - بدین معن
+G12L3	proverb	رص ب المثل
+G12L3	quotation	نقل قول، اقتباس کالم
+G12L3	nephew	پش خواهر، پش برادر
+G12L3	radiation	اشعه- تابش
+G12L3	noise-free	بدون صدا
+G12L3	reach	رسیدن ...به- نائل شدن به
+G12L3	nonrenewable	تجدید ناپذیر
+G12L3	reasonable	منطف ، معقول
+G12L3	nuclear	هسته ای
+G12L3	obey	اطاعت کردن- پیر وی کردن
+G12L3	remind	یادآوری کردن
+G12L3	obedient	مطیع، فرمان بردار
+G12L3	remote	دور- پرت، دور افتاده
+G12L3	other than	به جز، به غیر از
+G12L3	replace	جایگزین کردن - ش جای خود گذاشی
+G12L3	organic	طبییع ، ارگانیک
+G12L3	supporting	قانع کننده- مکمل
+G12L3	revolve	چرخیدن، گردش کردن، دور زدن
+G12L3	sweet	شیر ین، شیر ین
