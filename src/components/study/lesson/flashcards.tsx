@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronRight, ChevronLeft, Check, RefreshCw, Hand, Sparkles, Star, Layers } from "lucide-react";
 import type { LessonData, VocabWord } from "@/lib/study-types";
@@ -16,6 +16,9 @@ import BookletUsageChip, { useBookletUsageTarget } from "./booklet-usage-chip";
 import PairSpeakChips from "./pair-speak-chips";
 import { lessons } from "@/data";
 import SpeakButton from "../shared/speak-button";
+import { setListenSurface } from "@/lib/listen-surface";
+// r410 — سطحِ شنیدار: تا فلش‌کارت باز است، T مالِ آن است (روخوانیِ
+// واژهٔ کارت) نه پوسته (شب/روز) — حکمِ تعارضِ کلیدِ r409 با پرچمِ مالکیت
 
 export interface FlashcardDeckCard {
   key: string; // "1:ability" — absolute store key (may span lessons)
@@ -55,6 +58,11 @@ export default function Flashcards({
   // راند ۲۵۳ — «کاربرد در جزوه» رویِ پشتِ فلش‌کارت (بندِ ① پیشنهادِ ۲۵۲):
   // همان تک‌منبع + همان دیالوگِ مشترک؛ r389 — سیم‌کشی به مالکِ یکتایِ چیپ
   const usage = useBookletUsageTarget();
+
+  // r410 — میانبرِ T: چیپِ روخوانیِ رویِ کارت هدفِ یکتا و همیشهزندهٔ
+  // این سطح است؛ T همان دکمه را کلیک میکند (ایدئومِ refِ امریِ r409 —
+  // استِ روخوانی/توقف و fail-toast همه نزدِ مالکِ چیپ میماند).
+  const frontSpeakRef = useRef<HTMLButtonElement | null>(null);
 
   const t = themeOf(deck?.color ?? lesson.color);
 
@@ -144,7 +152,17 @@ export default function Flashcards({
     if (smartMode && mounted && passTotal === 0 && dueCount > 0) setPassTotal(dueCount);
   }, [smartMode, mounted, passTotal, dueCount]);
 
-  // keyboard shortcuts: Space flip, ← next (RTL), → previous, K known, R repeat
+  // r410 — سطحِ شنیدار فعال است: T مالِ فلش‌کارت، نه شب/روزِ پوسته.
+  // (هیچ نوشتنی به استورِ یادگیری؛ گذرا به اندازهٔ خودِ نما)
+  useEffect(() => {
+    setListenSurface(true);
+    return () => {
+      setListenSurface(false);
+    };
+  }, []);
+
+  // keyboard shortcuts: Space flip, ← next (RTL), → previous, K known, R repeat,
+  // T روخوانیِ واژهٔ کارت (r410 — از مسیرِ خودِ چیپ، است نزدِ مالک)
   // (re-registered each render so closures stay fresh)
   useKeydown((e) => {
     if (isTypingTarget(e)) return;
@@ -161,6 +179,11 @@ export default function Flashcards({
       answer(true);
     } else if (e.code === "KeyR") {
       answer(false);
+    } else if (e.code === "KeyT") {
+      // T هیچ پاسخی ثبت نمیکند و کارت را برنمی‌گرداند — فقط روخوانی/توقفِ
+      // چیپ؛ رویِ پشتِ کارت هم چیپِ روی در DOM است و T همانجا کار میکند.
+      e.preventDefault();
+      frontSpeakRef.current?.click();
     }
   });
 
@@ -308,7 +331,15 @@ export default function Flashcards({
             <div className={`en-text text-center text-4xl font-bold sm:text-5xl ${t.text}`} dir="ltr">
               {word.en}
             </div>
-            <SpeakButton text={word.en} label="روخوانی" />
+            {/* r410 — رفعِ باگِ زنده: کلیکِ چیپِ روخوانی به flip-card میبُرد و کارت
+                برگردانده میشد (شاهد: FLIPPED-AFTER-SPEAK-CLICK=true در پروبِ راند) —
+                همان قراردادِ ستاره/چیپ‌هایِ پشت (r390/r253): کنترلِ رویِ کارت،
+                کارت را برنمی‌گرداند. wrapperِ span مالِ همین مصرفکننده است —
+                دکمهٔ مشترک SpeakButton رفتارِ bubbleیِ همهٔ مصرفکنندگانش را نگه میدارد.
+                میانبرِ T هم از همین مسیر کلیک میشود — پس همان‌جا بی‌فلیپ. */}
+            <span onClick={(e) => e.stopPropagation()}>
+              <SpeakButton text={word.en} label="روخوانی" ref={frontSpeakRef} />
+            </span>
             <span className="mt-2 inline-flex items-center gap-1 text-[11px] text-stone-500">
               <Hand size={12} /> برای دیدن معنی کلیک کنید
             </span>
@@ -403,6 +434,11 @@ export default function Flashcards({
         <span className="flex items-center gap-1">
           <kbd className="rounded-md border border-stone-200 bg-stone-50 px-1.5 py-0.5 font-mono text-[10px] text-stone-500 shadow-sm" dir="ltr">R</kbd>
           تکرار
+        </span>
+        {/* r410 — T با رنگِ خانوادهٔ شنیدار (زمرد) — ایدئومِ نشانگرِ r409 */}
+        <span className="flex items-center gap-1">
+          <kbd className="rounded-md border border-emerald-200 bg-emerald-50 px-1.5 py-0.5 font-mono text-[10px] font-bold text-emerald-700 shadow-sm" dir="ltr">T</kbd>
+          روخوانی
         </span>
       </div>
 

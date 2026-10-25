@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
-import { Keyboard, BookMarked, ClipboardCheck, Sun, Moon, History, ChevronLeft, MousePointerClick, MapPin, House, CalendarClock, GraduationCap } from "lucide-react";
+import { Keyboard, BookMarked, ClipboardCheck, Sun, Moon, History, ChevronLeft, MousePointerClick, MapPin, House, CalendarClock, GraduationCap, Volume2 } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useStudy, type LessonTab } from "@/lib/study-store";
@@ -22,6 +22,13 @@ import {
   drillActiveSnapshot,
   drillActiveServerSnapshot,
 } from "@/lib/drill-active";
+// r410 — پرچمِ «سطحِ شنیدار T را دارد»: فلش‌کارت (تا باز است) و جدولِ
+// افعال ضمیمه (فقط با آخرین شنیده) — تعارضِ دومِ کلیدِ T با پرچمِ مالکیت
+import {
+  subscribeListenSurface,
+  listenSurfaceSnapshot,
+  listenSurfaceServerSnapshot,
+} from "@/lib/listen-surface";
 // r381 — پرشِ داشبورد از کارتِ راهنما: عینِ قراردادِ پالتِ r372 — کتابخانهٔ
 // دامنه مالکِ پرش و پرچم است؛ و گیتِ پیشرفت هم از موتورِ تکمنبعِ همان‌جا
 import { requestSrsSpotlight, focusSrsDashboard, hasProgressOf } from "@/lib/srs-due";
@@ -77,6 +84,8 @@ const GROUPS: { title: string; icon: React.ElementType; rows: Row[] }[] = [
       { keys: ["→"], desc: "کارت قبلی" },
       { keys: ["K"], desc: "بلدم — ثبت در مرور هوشمند" },
       { keys: ["R"], desc: "تکرار — مرور دوبارهٔ همین کارت" },
+      // r410 — ثبتِ صادق: تا فلش‌کارت باز است T مالِ آن است، نه شب/روز
+      { keys: ["T"], desc: "روخوانی واژهٔ کارت — تا فلش‌کارت باز است، T مالِ آن است" },
     ],
   },
   {
@@ -98,6 +107,16 @@ const GROUPS: { title: string; icon: React.ElementType; rows: Row[] }[] = [
       { keys: ["1", "…", "4"], desc: "انتخاب گزینه (ارقام فارسی و لاتین، هر چیدمان)" },
       { keys: ["Enter", "←"], desc: "پرسش بعدی — فقط پس از پاسخ" },
       { keys: ["T"], desc: "روخوانیِ هدفِ پرسش — وقتی پرسش شنیدنی دارد" },
+    ],
+  },
+  {
+    // r410 — سطح‌هایِ شنیدارِ T: تعارضِ دومِ کلیدِ T (شب/روز ↔ روخوانی) با
+    // پرچمِ مالکیتِ فاز حل میشود (درسِ r409) — ثبتِ صادقِ هر دو سطح
+    title: "روخوانی با T — سطح‌های شنیدار",
+    icon: Volume2,
+    rows: [
+      { keys: ["T"], desc: "فلش‌کارت: روخوانی واژهٔ کارت (رویِ هر دو رویِ کارت)" },
+      { keys: ["T"], desc: "جدول افعال ضمیمه: دوباره‌شنیدنِ آخرین فعلِ شنیده — بی‌شنیده، T همان شب/روز میماند" },
     ],
   },
 ];
@@ -154,6 +173,15 @@ export default function ShortcutGuide() {
     subscribeDrillActive,
     drillActiveSnapshot,
     drillActiveServerSnapshot,
+  );
+  // r410 — سطحِ شنیدار (فلش‌کارت/جدولِ افعالِ ضمیمهٔ با شنیده): T مالِ
+  // سطح است نه شب/روز. جراحیِ مهم: فقط شاخهٔ KeyT به این پرچم نگاه
+  // میکند — حروفِ ناوبری و ارقامِ تبِ درس پابرجایند (سطحِ شنیدار
+  // ناوبر نیست، شنیدار است).
+  const listenContext = useSyncExternalStore(
+    subscribeListenSurface,
+    listenSurfaceSnapshot,
+    listenSurfaceServerSnapshot,
   );
   // راند ۲۴۳ — درِ هدر فقط وقتی «هست» که رکوردی باشد و رویِ خودِ ضمیمه
   // نباشیم (قراردادِ صداقتِ r236: بی‌رکورد هیچ کنشِ ساختگی). همان ایدئومِ
@@ -274,7 +302,12 @@ export default function ShortcutGuide() {
     else if (code === "KeyV") setView({ type: "duel" });
     else if (code === "KeyG") setView({ type: "konkur" });
     else if (code === "KeyM") setView({ type: "grammar" });
-    else if (code === "KeyT") setTheme(theme === "dark" ? "light" : "dark");
+    else if (code === "KeyT") {
+      // r410 — تعارضِ دومِ T (شب/روز ↔ روخوانیِ سطحِ شنیدار): با پرچمِ
+      // مالکیت حل میشود، نه با تغییرِ کلید (درسِ r409). بیِ سطحِ
+      // شنیدار، T همان شب/روز میماند.
+      if (!listenContext) setTheme(theme === "dark" ? "light" : "dark");
+    }
     else if (code === "KeyF" && view.type === "lesson") openLesson(view.id, "smart");
     else if (/^(Digit|Numpad)[1-7]$/.test(code) && view.type === "lesson") {
       const tab = LESSON_TABS[Number(code.slice(-1)) - 1];

@@ -56,6 +56,8 @@ const THIRTEENTH_CONSUMER = "scripts/qa-r408-dict-vocab-drill.sh"; // r408 — �
 
 const FOURTEENTH_CONSUMER = "scripts/qa-r409-drill-tts-kbd.sh"; // r409 — میانبرِ T و گاردِ حروفِ سراسری
 
+const FIFTEENTH_CONSUMER = "scripts/qa-r410-listen-tts-kbd.sh"; // r410 — T در سطحهایِ شنیدار + رفعِ فلیپِ چیپ
+
 const LIB_FUNCS = [
   "qa_shot()",
   "qa_rec()",
@@ -150,7 +152,7 @@ describe("r396 — انجمادِ تاریخی (نمونهبرداری)", () => 
     }
   });
 
-  it("هر اسکریپتِ نو به کتابخانه وابسته است — سرشماریِ مصرفکننده (r409: چهاردهمین مصرفکننده)", () => {
+  it("هر اسکریپتِ نو به کتابخانه وابسته است — سرشماریِ مصرفکننده (r410: پانزدهمین مصرفکننده)", () => {
     const hits = execSync(`rg -l 'scripts/qa-lib.sh' scripts/ || true`)
       .toString()
       .trim()
@@ -159,6 +161,6 @@ describe("r396 — انجمادِ تاریخی (نمونهبرداری)", () => 
       .sort();
     // سرشماری، تلهٔ ضدِ دستنویسی است: اسکریپتِ نو یا source میکند
     // (و باید همینجا به ثبت برسد) یا دستنویسِ helper میسازد (و همینجا خودش را میدهد).
-    expect(hits).toEqual([FIRST_CONSUMER, SECOND_CONSUMER, THIRD_CONSUMER, FOURTH_CONSUMER, FIFTH_CONSUMER, SIXTH_CONSUMER, SEVENTH_CONSUMER, EIGHTH_CONSUMER, NINTH_CONSUMER, TENTH_CONSUMER, ELEVENTH_CONSUMER, TWELFTH_CONSUMER, THIRTEENTH_CONSUMER, FOURTEENTH_CONSUMER].sort());
+    expect(hits).toEqual([FIRST_CONSUMER, SECOND_CONSUMER, THIRD_CONSUMER, FOURTH_CONSUMER, FIFTH_CONSUMER, SIXTH_CONSUMER, SEVENTH_CONSUMER, EIGHTH_CONSUMER, NINTH_CONSUMER, TENTH_CONSUMER, ELEVENTH_CONSUMER, TWELFTH_CONSUMER, THIRTEENTH_CONSUMER, FOURTEENTH_CONSUMER, FIFTEENTH_CONSUMER].sort());
   });
 });

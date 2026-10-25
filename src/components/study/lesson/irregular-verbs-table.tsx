@@ -17,16 +17,43 @@
 // صفرِ جست‌وجو صادقانه است.
 // ---------------------------------------------------------------------
 
-import { Fragment, useEffect, useMemo, useRef, useState } from "react";
+import { Fragment, useEffect, useMemo, useCallback, useRef, useState } from "react";
 import { Search, SpellCheck2, X } from "lucide-react";
 import { irregularVerbs, type IrregularVerb } from "@/data/appendix";
 import { faNum } from "@/lib/study-theme";
 import { writeAppendixResume } from "@/lib/bg-reading";
+import { setListenSurface } from "@/lib/listen-surface";
+import { isTypingTarget, useKeydown } from "@/hooks/use-keyboard";
 import SpeakButton from "../shared/speak-button";
 
 /** سلولِ انگلیسیِ غیرتهی: واژه + دکمهٔ تلفظ (ایدئومِ r223)؛ راند ۲۳۴ —
- * شروعِ روخوانی با onSpeak به والد گزارش می‌شود («آخرین فعلِ شنیده‌شده»). */
-function EnSpeakCell({ word, bold, onSpeak }: { word: string; bold?: boolean; onSpeak?: () => void }) {
+ * شروعِ روخوانی با onSpeak به والد گزارش می‌شود («آخرین فعلِ شنیده‌شده»).
+ * r410 — ثبتِ دکمهٔ چیپ در دفترِ والد (chipKey + registerChip) تا میانبرِ
+ * T بتواند «آخرین شنیده» را از مسیرِ خودِ چیپ کلیک کند (استِ روخوانی/توقف
+ * نزدِ مالکِ چیپ میماند — عینِ درسِ r409). */
+function EnSpeakCell({
+  word,
+  bold,
+  onSpeak,
+  chipKey,
+  registerChip,
+}: {
+  word: string;
+  bold?: boolean;
+  onSpeak?: () => void;
+  chipKey?: string;
+  registerChip?: (key: string, el: HTMLButtonElement | null) => void;
+}) {
+  // r410 — درسِ تستِ راند: refِ inline در هر رندر تابعِ تازهای میسازد —
+  // ریاکت refِ پیشین را با null جدا میکند و «آخرین شنیده»ی تازهثبتشده
+  // را پاک میکرد. refِ پایدار (useCallback رویِ chipKey/registerChipِ
+  // پایدار) فقط با خروجِ واقعیِ چیپ از DOM جدا میشود.
+  const chipRef = useCallback(
+    (el: HTMLButtonElement | null) => {
+      if (chipKey && registerChip) registerChip(chipKey, el);
+    },
+    [chipKey, registerChip],
+  );
   return (
     <span className="flex items-center gap-1.5">
       <span
@@ -35,7 +62,12 @@ function EnSpeakCell({ word, bold, onSpeak }: { word: string; bold?: boolean; on
       >
         {word}
       </span>
-      <SpeakButton text={word} size="sm" onSpeak={onSpeak} />
+      <SpeakButton
+        text={word}
+        size="sm"
+        onSpeak={onSpeak}
+        ref={chipKey && registerChip ? chipRef : undefined}
+      />
     </span>
   );
 }
@@ -88,6 +120,56 @@ export default function IrregularVerbsTable({
       hint: v.fa,
     });
   };
+
+  // ---------------------------------------------------------------------
+  // r410 — میانبرِ T در جدول: «دوبارهشنیدنِ آخرین فعلِ شنیده».
+  //  · دفترِ چیپها: chipKey (base|past|pp) ← دکمه؛ ref-callbackها دفتر را
+  //    همیشه تازه نگه میدارند (جست‌وجو سطرها را جابه‌جا میکند) و خروجِ چیپ
+  //    از DOM اگر همان «آخرین شنیده» بود، هدف را صادقانه تهی میکند.
+  //  · lastHeard فقط با «شروعِ روخوانی» ثبت میشود (onSpeak) — کلیکِ توقف
+  //    چیپِ در حالِ پخش، آخرین شنیده را عوض نمیکند.
+  //  · T = کلیکِ امریِ همان چیپ: دکمهٔ در حالِ پخش توقف میشود، دکمهٔ idle
+  //    دوباره میخواند — استِ روخوانی نزدِ مالکِ چیپ (درسِ r409).
+  //  · بی‌شنیده: T اینجا ساکت است و پرچمِ سطحِ شنیدار خاموش — T همان
+  //    شب/روزِ پوسته میماند (صداقتِ r236: بی‌هدف، هیچ).
+  //  · T هیچ ناوبریای نمیکند و چیزی ثبت نمیکند — فقط شنیدار.
+  // ---------------------------------------------------------------------
+  const chipRefs = useRef(new Map<string, HTMLButtonElement>());
+  const [lastHeardKey, setLastHeardKey] = useState<string | null>(null);
+
+  // پایدار (useCallback []) — ناپایداریِ این تابع یعنی detach/reattachِ
+  // همهٔ چیپها در هر رندر (همان درسِ refِ inline)
+  const registerChip = useCallback((key: string, el: HTMLButtonElement | null) => {
+    if (el) {
+      chipRefs.current.set(key, el);
+    } else {
+      chipRefs.current.delete(key);
+      // چیپِ «آخرین شنیده» از DOM رفت (جست‌وجو/فیلتر) — هدفِ T تهی؛
+      // T به پوسته برمی‌گردد (پرچم در effectِ زیر خاموش میشود)
+      setLastHeardKey((k) => (k === key ? null : k));
+    }
+  }, []);
+
+  const markHeard = (key: string) => setLastHeardKey(key);
+
+  // پرچمِ سطحِ شنیدار — فقط با «آخرین شنیدهٔ» زنده روشن؛ خروجِ جدول همیشه خاموش
+  useEffect(() => {
+    setListenSurface(lastHeardKey !== null);
+  }, [lastHeardKey]);
+  useEffect(() => {
+    return () => {
+      setListenSurface(false);
+    };
+  }, []);
+
+  useKeydown((e) => {
+    if (isTypingTarget(e)) return;
+    if (e.code === "KeyT") {
+      if (!lastHeardKey) return; // بی‌شنیده — T مالِ پوسته است (شب/روز)
+      e.preventDefault();
+      chipRefs.current.get(lastHeardKey)?.click();
+    }
+  });
 
   // لنگرِ عمیقِ سطرِ فعل (راند ۲۳۴ — الگویِ focusTopicIdِ r221): اسکرولِ محلی
   // به سطر + پالسِ زمردیِ کوتاه؛ رسیدن با لنگر هم «دیدن» است و ثبت می‌شود.
@@ -146,6 +228,19 @@ export default function IrregularVerbsTable({
             className="rounded-full bg-emerald-100 px-2.5 py-1 text-[11px] font-black text-emerald-700"
           >
             {faNum(rows.length)} نتیجه
+          </span>
+        )}
+        {/* r410 — راهنمایِ صادقِ T: فقط وقتی «آخرین شنیده»ای زنده است؛
+            بی‌شنیده هیچ — همان صداقتِ r236 (بی‌هدف، هیچ وعده) */}
+        {lastHeardKey && (
+          <span
+            data-testid="verbs-t-hint"
+            className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-bold text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300"
+          >
+            <kbd className="rounded-md border border-emerald-200 bg-white px-1.5 py-0.5 font-mono text-[10px] font-bold text-emerald-700 shadow-sm dark:border-emerald-500/40 dark:bg-emerald-500/10 dark:text-emerald-300" dir="ltr">
+              T
+            </kbd>
+            دوبارهشنیدنِ آخرین فعل
           </span>
         )}
       </div>
@@ -267,13 +362,38 @@ export default function IrregularVerbsTable({
                     >
                       <td className="px-3 py-2 text-[12.5px] text-stone-700">{v.fa}</td>
                       <td className="px-3 py-2">
-                        <EnSpeakCell word={v.base} bold onSpeak={() => recordVerbResume(v)} />
+                        <EnSpeakCell
+                          word={v.base}
+                          bold
+                          chipKey={`${v.base}|base`}
+                          registerChip={registerChip}
+                          onSpeak={() => {
+                            recordVerbResume(v);
+                            markHeard(`${v.base}|base`);
+                          }}
+                        />
                       </td>
                       <td className="px-3 py-2">
-                        <EnSpeakCell word={v.past} onSpeak={() => recordVerbResume(v)} />
+                        <EnSpeakCell
+                          word={v.past}
+                          chipKey={`${v.base}|past`}
+                          registerChip={registerChip}
+                          onSpeak={() => {
+                            recordVerbResume(v);
+                            markHeard(`${v.base}|past`);
+                          }}
+                        />
                       </td>
                       <td className="px-3 py-2">
-                        <EnSpeakCell word={v.pp} onSpeak={() => recordVerbResume(v)} />
+                        <EnSpeakCell
+                          word={v.pp}
+                          chipKey={`${v.base}|pp`}
+                          registerChip={registerChip}
+                          onSpeak={() => {
+                            recordVerbResume(v);
+                            markHeard(`${v.base}|pp`);
+                          }}
+                        />
                       </td>
                     </tr>
                   ))}
