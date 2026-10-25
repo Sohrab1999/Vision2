@@ -43,8 +43,12 @@ export type WordDrillKind = "fa" | "adjective" | "adverb" | "verb" | "noun";
  *  معنی (نماد→فارسی) / شکلِ کامل (نماد→انگلیسی) / نمادِ معکوس (انگلیسی→نماد) */
 export type AbbrevDrillKind = "fa" | "full" | "sym";
 
-/** اتحادِ گونههای هر سه دریل — نما فقط با fa/base/speak تصمیم میگیرد */
-export type DrillQuestionKind = DrillKind | WordDrillKind | AbbrevDrillKind;
+/** r405 — گونههای دریلِ تلفظ (بانکِ چهارم) — توصیف (واک→فارسی) /
+ *  واژههای نمونه (واک→انگلیسی) / شنیدنِ واک (واژهها→واک) */
+export type PhonemeDrillKind = "fa" | "example" | "symbol";
+
+/** اتحادِ گونههای هر چهار دریل — نما فقط با fa/base/speak تصمیم میگیرد */
+export type DrillQuestionKind = DrillKind | WordDrillKind | AbbrevDrillKind | PhonemeDrillKind;
 
 export const DRILL_KINDS: DrillKind[] = ["past", "pp", "base", "fa"];
 

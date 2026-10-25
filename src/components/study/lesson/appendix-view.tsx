@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { ChevronLeft, Library, ListTree, Volume2, SpellCheck2, BookA, Table2, BookOpenCheck, Users, BookOpenText, EyeOff, GraduationCap } from "lucide-react";
-import { irregularVerbs, partsOfSpeech, vowelPhonemes, consonantPhonemes, abbreviations } from "@/data/appendix";
+import { irregularVerbs, partsOfSpeech, vowelPhonemes, consonantPhonemes, abbreviations, type Phoneme } from "@/data/appendix";
 import {
   WORD_FAMILY_TABLES,
   WORD_FAMILY_TOTAL,
@@ -15,10 +15,11 @@ import { wordFamilyUsageCensus } from "@/lib/word-usage";
 import { writeAppendixResume, type AppendixScope } from "@/lib/bg-reading";
 import BookletGrammarView from "./booklet-grammar-view";
 import IrregularVerbsTable from "./irregular-verbs-table";
-import AppendixDrillView, { type DrillViewSpec } from "./appendix-drill-view"; // r400 — تمرینِ ضمیمه؛ r403 — نمایِ مشترکِ دو بانک؛ r404 — بانکِ سوم
+import AppendixDrillView, { type DrillViewSpec } from "./appendix-drill-view"; // r400 — تمرینِ ضمیمه؛ r403/r404 — بانکهایِ مشترک؛ r405 — بانکِ چهارم
 import { buildDrillSession, DRILL_SIZE } from "@/lib/appendix-drill";
 import { buildWordDrillSession } from "@/lib/appendix-word-drill";
 import { buildAbbrevDrillSession } from "@/lib/appendix-abbrev-drill"; // r404
+import { buildPhonemeDrillSession } from "@/lib/appendix-phoneme-drill"; // r405
 import PhoneticsTable from "./phonetics-table";
 import AbbreviationsTable from "./abbreviations-table";
 import WordFamilyTableCard from "./word-family-table-card";
@@ -88,6 +89,26 @@ const ABBREV_DRILL_SPEC: DrillViewSpec = {
   cancelAria: "انصراف از تمرین نشانه",
 };
 
+// r405 — specِ بانکِ چهارم: جدول تلفظ — توصیف/واژه‌های نمونه/شنیدنِ واک؛
+// بانکِ ترکیبی عینِ ترتیبِ خودِ جدول (مصوت‌ها سپس صامت‌ها) — هیچ بازچینی.
+const PHONEME_BANK: Phoneme[] = [...vowelPhonemes, ...consonantPhonemes];
+const PHONEME_DRILL_SPEC: DrillViewSpec = {
+  id: "phonemes",
+  title: "تمرین جدول تلفظ",
+  intro: (
+    <>
+      {faNum(DRILL_SIZE)} پرسش از {faNum(PHONEME_BANK.length)} واکِ جدول تلفظ: توصیف، واژه‌های
+      نمونه و شنیدنِ واک. گزینه‌ها همگی از خودِ جدول میآیند — نه ساختهٔ ماشینی؛ و اگر چیزی
+      اشتباه بماند، همان‌ها دوباره پرسیده میشوند.
+    </>
+  ),
+  startAria: "شروع جلسهٔ تمرین تلفظ",
+  exitLabel: "جدول تلفظ",
+  exitAria: "بازگشت به جدول تلفظ",
+  exitResultAria: "بازگشت به جدول تلفظ از نتیجه",
+  cancelAria: "انصراف از تمرین تلفظ",
+};
+
 export default function AppendixView({
   topicId,
   posTableId,
@@ -154,6 +175,8 @@ export default function AppendixView({
   const [wordDrill, setWordDrill] = useState(false);
   // r404 — و بانکِ سوم: زیرتبِ abbrev؛ فقط با کلیک — دیپلینکِ abbrevSym همیشه جدول
   const [abbrevDrill, setAbbrevDrill] = useState(false);
+  // r405 — و بانکِ چهارم: زیرتبِ phonetics؛ فقط با کلیک — دیپلینکِ phonemeId همیشه جدول
+  const [phonemeDrill, setPhonemeDrill] = useState(false);
   // لنگرِ عمیقِ کارتِ واکِ «جدول تلفظ» (راند ۲۳۵) — یک‌بارِ مصرفِ همان الگو
   const [focusPhonemeId, setFocusPhonemeId] = useState<string | undefined>(
     () => (validPhoneme ? phonemeId : undefined),
@@ -305,13 +328,35 @@ export default function AppendixView({
       {/* راند ۲۳۰ — کارت‌های واک به کامپوننتِ خودش مهاجرت کردند
           (الگویِ استخراجِ r223/r229) و جست‌وجوی دوزبانه + فیلترِ گروه
           + روخوانیِ واژهٔ نمونهٔ هر واک گرفتند.
-          راند ۲۳۵ — لنگرِ عمیقِ کارتِ واک + نقطهٔ نوشتنِ TTS. */}
-      {tab === "phonetics" && (
-        <PhoneticsTable
-          focusSymbol={focusPhonemeId}
-          onFocusDone={() => setFocusPhonemeId(undefined)}
-        />
-      )}
+          راند ۲۳۵ — لنگرِ عمیقِ کارتِ واک + نقطهٔ نوشتنِ TTS.
+          r405 — تمرینِ تلفظ با همان نمایِ مشترکِ چهار بانک؛ فقط با
+          کلیکِ کاربر (قراردادِ r234/r400/r403/r404) — دیپلینکِ phonemeId همیشه جدول */}
+      {tab === "phonetics" &&
+        (phonemeDrill ? (
+          <AppendixDrillView
+            spec={PHONEME_DRILL_SPEC}
+            buildSession={() => buildPhonemeDrillSession(PHONEME_BANK, DRILL_SIZE)}
+            onExit={() => setPhonemeDrill(false)}
+          />
+        ) : (
+          <>
+            <div className="mb-2 flex items-center justify-end">
+              <button
+                onClick={() => setPhonemeDrill(true)}
+                aria-label="شروع تمرین جدول تلفظ"
+                title="ده پرسش از جدول تلفظ — توصیف، واژههای نمونه و شنیدنِ واک"
+                className="inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-violet-200 bg-violet-50 px-3 text-[12px] font-black text-violet-700 transition-colors hover:bg-violet-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-200 active:scale-[0.96]"
+              >
+                <GraduationCap size={15} aria-hidden />
+                تمرین
+              </button>
+            </div>
+            <PhoneticsTable
+              focusSymbol={focusPhonemeId}
+              onFocusDone={() => setFocusPhonemeId(undefined)}
+            />
+          </>
+        ))}
 
       {/* r403 — زیرتبِ pos: تمرینِ خانوادهٔ واژه با همان نمایِ مشترک؛
           فقط با کلیکِ کاربر (قراردادِ r234/r400) — دیپلینکِ posTable همیشه جدول */}

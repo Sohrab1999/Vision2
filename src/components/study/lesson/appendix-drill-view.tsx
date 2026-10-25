@@ -48,8 +48,8 @@ import { isTypingTarget, readDigit, useKeydown } from "@/hooks/use-keyboard";
 import SpeakButton from "../shared/speak-button";
 
 export interface DrillViewSpec {
-  /** شناسه — فقط برایِ ثبت و تست (r404: بانکِ سومِ نشانه‌های اختصاری پیوست) */
-  id: "verbs" | "words" | "abbrev";
+  /** شناسه — فقط برایِ ثبت و تست (r405: بانکِ چهارمِ تلفظ پیوست) */
+  id: "verbs" | "words" | "abbrev" | "phonemes";
   /** سرصفحهٔ معرفی + عنوانِ نتیجهٔ تازه */
   title: string;
   /** پاراگرافِ معرفی — کامل از والد (شمارشِ بانک همانجاست) */
