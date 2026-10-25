@@ -44,7 +44,12 @@ const eslintConfig = [...nextCoreWebVitals, ...nextTypescript, {
     "no-useless-escape": "off",
   },
 }, {
-  ignores: ["node_modules/**", ".next/**", "out/**", "build/**", "next-env.d.ts", "examples/**", "skills", "scripts/**"]
+  // r400 — .standalone/ joins the ignores: it is a stale full-project mirror
+  // (394MB, old BUILD_ID, own db/.env copies) that a mirror job refreshed
+  // mid-r399 — the cron auto-committer then shipped 3,172 of its files into
+  // git (retired in r400's hygiene commit). Its compiled .js files must never
+  // be linted; the app runtime runs from .next/standalone, not this copy.
+  ignores: ["node_modules/**", ".next/**", ".standalone/**", "out/**", "build/**", "next-env.d.ts", "examples/**", "skills", "scripts/**"]
 }];
 
 export default eslintConfig;

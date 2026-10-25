@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { ChevronLeft, Library, ListTree, Volume2, SpellCheck2, BookA, Table2, BookOpenCheck, Users, BookOpenText, EyeOff } from "lucide-react";
+import { ChevronLeft, Library, ListTree, Volume2, SpellCheck2, BookA, Table2, BookOpenCheck, Users, BookOpenText, EyeOff, GraduationCap } from "lucide-react";
 import { irregularVerbs, partsOfSpeech, vowelPhonemes, consonantPhonemes, abbreviations } from "@/data/appendix";
 import {
   WORD_FAMILY_TABLES,
@@ -15,6 +15,7 @@ import { wordFamilyUsageCensus } from "@/lib/word-usage";
 import { writeAppendixResume, type AppendixScope } from "@/lib/bg-reading";
 import BookletGrammarView from "./booklet-grammar-view";
 import IrregularVerbsTable from "./irregular-verbs-table";
+import AppendixDrillView from "./appendix-drill-view"; // r400 — تمرینِ افعال بیقاعده
 import PhoneticsTable from "./phonetics-table";
 import AbbreviationsTable from "./abbreviations-table";
 import WordFamilyTableCard from "./word-family-table-card";
@@ -89,6 +90,9 @@ export default function AppendixView({
   const [focusVerbBase, setFocusVerbBase] = useState<string | undefined>(
     () => (validVerb ? verbBase : undefined),
   );
+  // r400 — حالتِ تمرینِ زیرتبِ verbs؛ فقط با کلیکِ کاربر روشن میشود
+  // (لنگرِ عمیقِ r234 همیشه جدول را میآورد — drill هرگز رویِ دیپلینک بالا نمیآید)
+  const [verbDrill, setVerbDrill] = useState(false);
   // لنگرِ عمیقِ کارتِ واکِ «جدول تلفظ» (راند ۲۳۵) — یک‌بارِ مصرفِ همان الگو
   const [focusPhonemeId, setFocusPhonemeId] = useState<string | undefined>(
     () => (validPhoneme ? phonemeId : undefined),
@@ -210,12 +214,28 @@ export default function AppendixView({
           (الگویِ استخراجِ r223) و جست‌وجوی دوزبانه + فهرستِ الفباییِ پرش
           + جداکنندهٔ حرف + تلفظِ هر سه ستونِ انگلیسی گرفت.
           راند ۲۳۴ — لنگرِ عمیقِ سطرِ فعل + ثبتِ «آخرین فعلِ شنیده‌شده». */}
-      {tab === "verbs" && (
-        <IrregularVerbsTable
-          focusBase={focusVerbBase}
-          onFocusDone={() => setFocusVerbBase(undefined)}
-        />
-      )}
+      {tab === "verbs" &&
+        (verbDrill ? (
+          <AppendixDrillView verbs={irregularVerbs} onExit={() => setVerbDrill(false)} />
+        ) : (
+          <>
+            <div className="mb-2 flex items-center justify-end">
+              <button
+                onClick={() => setVerbDrill(true)}
+                aria-label="شروع تمرین افعال بی‌قاعده"
+                title="ده پرسش از فهرست ضمیمه — گذشته، شکل سوم و شکل ساده"
+                className="inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-violet-200 bg-violet-50 px-3 text-[12px] font-black text-violet-700 transition-colors hover:bg-violet-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-200 active:scale-[0.96]"
+              >
+                <GraduationCap size={15} aria-hidden />
+                تمرین
+              </button>
+            </div>
+            <IrregularVerbsTable
+              focusBase={focusVerbBase}
+              onFocusDone={() => setFocusVerbBase(undefined)}
+            />
+          </>
+        ))}
 
       {/* راند ۲۳۰ — کارت‌های واک به کامپوننتِ خودش مهاجرت کردند
           (الگویِ استخراجِ r223/r229) و جست‌وجوی دوزبانه + فیلترِ گروه
