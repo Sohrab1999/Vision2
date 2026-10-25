@@ -22,8 +22,8 @@
 // و نه پاسخِ خام و نه handle (قفلِ r352 دستنخورده).
 // ------------------------------------------------------------------
 
-import { CSV_BOM, buildClassCsv } from "./teacher-csv";
-import { downloadCsvFile } from "./file-download";
+import { buildClassCsv } from "./teacher-csv";
+import { CSV_BOM, downloadCsvFile } from "./file-download"; // r399 — BOM تکخانه (مالک)
 import { buildLearnerCardCsv } from "./teacher-learner-csv";
 import { activeWeekMeta, activeWeekRows } from "./active-week";
 import type { RosterRow, LearnerDetail } from "./teacher-report";

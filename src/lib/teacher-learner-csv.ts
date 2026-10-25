@@ -24,8 +24,8 @@
 // secret و نه پاسخِ خام (قفلِ r352 دستنخورده).
 // ------------------------------------------------------------------
 
-import { CSV_BOM, csvSafe } from "./teacher-csv";
-import { downloadCsvFile } from "./file-download";
+import { csvSafe } from "./teacher-csv";
+import { CSV_BOM, downloadCsvFile } from "./file-download"; // r399 — BOM تکخانه (مالک)
 import { activeWeekMeta, activeWeekRows } from "./active-week";
 import { teacherSkillLabel } from "./teacher-skill-label";
 import type { LearnerDetail, LearnerSkillRow } from "./teacher-report";

@@ -15,9 +15,7 @@
 // ------------------------------------------------------------------
 
 import type { CoverageMapResult } from "./coverage-map";
-import { downloadCsvFile } from "./file-download";
-
-export const CSV_BOM = "\uFEFF";
+import { CSV_BOM, downloadCsvFile } from "./file-download"; // r399 — BOM تکخانه (مالک)؛ کپیِ محلی منقرض
 
 /** CRLF per RFC 4180 — same family dialect as 169/178 */
 const NL = "\r\n";

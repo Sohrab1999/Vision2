@@ -16,8 +16,8 @@
 // ------------------------------------------------------------------
 
 import { describe, it, expect } from "vitest";
+import { CSV_BOM } from "@/lib/file-download"; // r399 — BOM تکخانه شد (مالک)
 import {
-  CSV_BOM,
   MONTH_CSV_COLUMNS,
   MONTH_CSV_DAYS,
   buildMonthCsv,

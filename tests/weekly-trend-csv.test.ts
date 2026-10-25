@@ -15,8 +15,8 @@
 // ------------------------------------------------------------------
 
 import { describe, it, expect } from "vitest";
+import { CSV_BOM } from "@/lib/file-download"; // r399 — BOM تکخانه شد (مالک)
 import {
-  CSV_BOM,
   WEEKLY_TREND_COLUMNS,
   WEEKLY_TREND_WEEKS,
   buildWeeklyTrendCsv,

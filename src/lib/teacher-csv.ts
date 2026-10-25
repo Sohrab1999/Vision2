@@ -12,9 +12,7 @@
 
 import { teacherSkillLabel } from "./teacher-skill-label"; // r377 — تکمنبعِ برچسبِ مهارت (نشتِ خامِ ر352 که ر375 از دید برد)
 import type { RosterRow } from "./teacher-report";
-import { downloadCsvFile } from "./file-download";
-
-export const CSV_BOM = "\uFEFF";
+import { CSV_BOM, downloadCsvFile } from "./file-download"; // r399 — BOM تکخانه (مالک)؛ کپیِ محلی منقرض
 
 const NL = "\r\n";
 

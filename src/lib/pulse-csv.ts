@@ -13,9 +13,7 @@
 // ------------------------------------------------------------------
 
 import { EVENT_LABELS_FA, type EventName } from "./analytics-events";
-import { downloadCsvFile } from "./file-download";
-
-export const CSV_BOM = "\uFEFF";
+import { CSV_BOM, downloadCsvFile } from "./file-download"; // r399 — BOM تکخانه (مالک)؛ کپیِ محلی منقرض
 
 /** CRLF per RFC 4180 — same family dialect as 169/178/180 */
 const NL = "\r\n";

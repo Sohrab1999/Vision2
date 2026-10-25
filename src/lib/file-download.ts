@@ -20,9 +20,14 @@
 //    SSR guard (returns count, not boolean), revoke(4000) window.
 //  · exportProgress (backup.ts) is the JSON family — different mime,
 //    stamped filename, its own catch dialect.
-//  · CSV_BOM («\uFEFF») lives as three module-local copies
-//    (teacher-csv / pulse-csv / progress-csv) — a registered candidate,
-//    not migrated this round.
+//  · CSV_BOM («\uFEFF») — r399: the registered candidate landed. The r398
+//    note said THREE copies (teacher-csv / pulse-csv / progress-csv);
+//    the disk said FOUR (coverage-csv was missed by the census — the
+//    audit lesson: re-grep the estate, don't trust the note). All four
+//    module-local exports are retired; the single home is below, next
+//    to the painter that consumes it. The `CSV_BOM + build()` idiom
+//    stays at call sites (byte-path stability, the r384 lesson) — only
+//    the constant's home changed.
 //  · Analytics semantics differ per family, each documented: image
 //    events are success-gated (ok/blob — r287/288 contract), CSV events
 //    are INTENT-gated (r351: «قصدِ خروجی قبل از تلاش» — teacher_csv /
@@ -32,6 +37,12 @@
 // ------------------------------------------------------------------
 
 import { toast } from "@/hooks/use-toast";
+
+/** The CSV byte-order mark — ONE home since r399 (was four module-local
+ * copies: teacher-csv / pulse-csv / coverage-csv / progress-csv).
+ * Excel-friendliness for Persian CSVs; applied at call sites as
+ * `CSV_BOM + build(...)` so the byte path stays r384-stable. */
+export const CSV_BOM = "\uFEFF";
 
 /** The byte-identical download tail, ONCE. `build` runs inside the
  * try/catch so a throwing builder still resolves to false (the old

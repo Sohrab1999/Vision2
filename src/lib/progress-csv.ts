@@ -21,10 +21,8 @@ import {
   type DigestInput,
 } from "./weekly-digest";
 import { monthReads } from "./library-month";
-import { downloadCsvFile } from "./file-download";
+import { CSV_BOM, downloadCsvFile } from "./file-download"; // r399 — BOM تکخانه (مالک)؛ کپیِ محلی منقرض
 import type { DayHistoryMap } from "./study-store";
-
-export const CSV_BOM = "\uFEFF";
 
 /** CRLF per RFC 4180 — excel-friendly, exactly like the 169 contract */
 const NL = "\r\n";
