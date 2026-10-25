@@ -161,14 +161,16 @@ describe("appendix-drill r401 — قفلهای منبع", () => {
     expect(src).not.toContain("localStorage");
   });
 
-  it("نما: دکمهٔ مرور و سرصفحهٔ صادق زندهاند — و گونهٔ fa شاخهٔ رندرِ خودش را دارد", () => {
+  it("نما: دکمهٔ مرور و سرصفحهٔ صادق زندهاند — و جهتِ گزینهها از faOptions میآید (r406: مالکیتِ جهت به موتور)", () => {
     const src = readFileSync(
       join(process.cwd(), "src/components/study/lesson/appendix-drill-view.tsx"),
       "utf8",
     );
     expect(src).toContain('aria-label="مرور اشتباههای تمرین"');
     expect(src).toContain("نتیجهٔ مرور");
-    expect(src).toContain('q.kind === "fa"');
+    // r406 — شاخهٔ رندرِ fa دیگر از kind حدس نمیزد؛ فیلدِ مالکِ موتور است
+    expect(src).toContain("q.faOptions");
+    expect(src).not.toContain('q.kind === "fa"');
     expect(src).toContain("buildDrillReplay");
   });
 

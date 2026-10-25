@@ -128,6 +128,7 @@ export function buildWordDrillSession(
       options,
       answer: options.indexOf(correct),
       speak: anchor || undefined,
+      faOptions: kind === "fa", // r406 — مالکیتِ جهت به موتور
     });
   }
   // r404 — size = شمارِ واقعیِ پرسشها (گونهٔ بیپیشنهاد جلسه را کوتاه میکند)

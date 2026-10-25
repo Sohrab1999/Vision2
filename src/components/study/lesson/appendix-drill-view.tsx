@@ -17,6 +17,13 @@
 //    خانوادهٔ واژه: موتورِ r403). چیپِ روخوانی از فیلدِ speakِ خودِ پرسش
 //    میآید — موتورِ هر بانک مالکِ تصمیم است، نما حدس نمیزند؛ رندرِ fa
 //    (RTL فارسی) و بقیه (LTR انگلیسی) رویِ همان قراردادِ r401 پابرجاست.
+// r406 — «بانکِ پنجم و تکمیلِ مالکیت»: درسنامهٔ جامع هم به همین نما میآید
+//    (appendix-bg-example-drill) و جهتِ گزینهها هم از حدسِ kind به فیلدِ
+//    faOptionsِ خودِ پرسش کوچید — گونههایِ fa و topicِ درسنامه هر دو
+//    RTLاند و فقط موتورشان این را میداند. چیپِ جملههایِ بلندِ درسنامه
+//    سختسازی شد (max-w-full + break-words) تا در باریکترین عرضِ موبایل
+//    هم بشکند و بیرون نزند — برایِ چیپهایِ کوتاهِ بانکهایِ پیشین هیچ
+//    تغییرِ بصریای رخ نمیدهد.
 //
 // جریان: معرفی → پرسش‌ها (بازخوردِ درجا، بی تایمر — کاربر سرعته) →
 // نتیجهٔ صادق (درصد از مالکِ r388 + بازخوانیِ سؤالبهسؤال: بیپاسخ =
@@ -48,8 +55,8 @@ import { isTypingTarget, readDigit, useKeydown } from "@/hooks/use-keyboard";
 import SpeakButton from "../shared/speak-button";
 
 export interface DrillViewSpec {
-  /** شناسه — فقط برایِ ثبت و تست (r405: بانکِ چهارمِ تلفظ پیوست) */
-  id: "verbs" | "words" | "abbrev" | "phonemes";
+  /** شناسه — فقط برایِ ثبت و تست (r406: بانکِ پنجمِ درسنامهٔ جامع پیوست) */
+  id: "verbs" | "words" | "abbrev" | "phonemes" | "bg-examples";
   /** سرصفحهٔ معرفی + عنوانِ نتیجهٔ تازه */
   title: string;
   /** پاراگرافِ معرفی — کامل از والد (شمارشِ بانک همانجاست) */
@@ -224,7 +231,11 @@ export default function AppendixDrillView({
                   <span className="font-bold text-stone-700">
                     {qq.prompt}
                     {qq.speak && (
-                      <span className="mr-1 inline-flex items-center gap-1 align-middle" dir="ltr">
+                      <span
+                        className="mr-1 inline-flex max-w-full items-center gap-1 align-middle"
+                        dir="ltr"
+                      >
+                        <span className="en-text min-w-0 break-words">{qq.speak}</span>
                         <SpeakButton text={qq.speak} size="sm" />
                       </span>
                     )}
@@ -232,7 +243,7 @@ export default function AppendixDrillView({
                 </span>
                 <span className="mt-1 block pr-5 text-stone-600">
                   {qq.kind === "base" ? "فعل: " : "پاسخ: "}
-                  {qq.kind === "fa" ? (
+                  {qq.faOptions ? (
                     <span className="font-black text-stone-800">{qq.options[qq.answer]}</span>
                   ) : (
                     <span dir="ltr" className="en-text font-black text-stone-800">
@@ -242,7 +253,7 @@ export default function AppendixDrillView({
                   {!ok && (
                     <>
                       {" · "}پاسخِ تو:{" "}
-                      {qq.kind === "fa" ? (
+                      {qq.faOptions ? (
                         <span className="font-bold text-rose-700">
                           {a == null ? "بی‌پاسخ" : qq.options[a]}
                         </span>
@@ -318,8 +329,8 @@ export default function AppendixDrillView({
 
       <h3 className="mt-4 flex flex-wrap items-center gap-1.5 text-[14px] font-black leading-7 text-stone-800">
         {q.speak && (
-          <span className="inline-flex items-center gap-1" dir="ltr">
-            <span className="en-text text-violet-700">{q.speak}</span>
+          <span className="inline-flex max-w-full items-center gap-1" dir="ltr">
+            <span className="en-text min-w-0 break-words text-violet-700">{q.speak}</span>
             <SpeakButton text={q.speak} size="sm" />
           </span>
         )}
@@ -331,9 +342,11 @@ export default function AppendixDrillView({
         {q.options.map((opt, i) => {
           const isCorrect = i === q.answer;
           const isPicked = i === picked;
-          // r401 — گونهٔ fa: گزینهها فارسیاند (RTL، بی en-text)؛
-          // بقیهٔ گونهها انگلیسی (LTR، en-text) — ایدئومِ برعکسِ ستون.
-          const isFa = q.kind === "fa";
+          // r401 — گزینههایِ فارسی: RTL، بی en-text؛ بقیه انگلیسی (LTR،
+          // en-text) — r406: جهت از فیلدِ faOptionsِ خودِ پرسش میآید
+          // (مالکیت نزدِ موتورِ بانک — درسِ r403 تکمیل شد؛ گونههایِ fa و
+          // topicِ درسنامه هر دو فارسیاند و نما حدس نمیزند).
+          const isFa = q.faOptions;
           const cls = !answered
             ? "border-stone-300 bg-white text-stone-700 hover:border-violet-300 hover:bg-violet-50"
             : isCorrect

@@ -29,6 +29,9 @@ import {
   UnfoldVertical,
 } from "lucide-react";
 import SpeakButton from "@/components/study/shared/speak-button";
+import AppendixDrillView, { type DrillViewSpec } from "./appendix-drill-view"; // r406 — بانکِ پنجمِ نمایِ مشترک
+import { buildBgExampleDrillSession } from "@/lib/appendix-bg-example-drill";
+import { DRILL_SIZE } from "@/lib/appendix-drill";
 import {
   BG_TOPIC_TO_LESSON,
   BOOKLET_GRAMMAR_SOURCES,
@@ -111,6 +114,30 @@ const writeBgOpen = (next: Set<string>) => {
 
 /** ترتیبِ سرگروه‌ها + عنوانِ هر جزوهٔ مبدأ */
 const SOURCE_ORDER: ("دهم" | "یازدهم" | "دوازدهم")[] = ["دهم", "یازدهم", "دوازدهم"];
+
+// r406 — بانکِ پنجمِ نمایِ مشترکِ دریل: مثالهایِ ترجمه‌دارِ درسنامه —
+// شمارشِ صادق از خودِ داده (هر فیلدی که جزوه داده) — هیچ دستیِ نویسی
+const BG_EXAMPLE_TOTAL = BOOKLET_GRAMMAR_TOPICS.reduce(
+  (n, t) => n + (t.examples?.length ?? 0),
+  0,
+);
+const BG_EXAMPLE_DRILL_SPEC: DrillViewSpec = {
+  id: "bg-examples",
+  title: "تمرین مثال‌های درسنامهٔ جامع",
+  intro: (
+    <>
+      {faNum(DRILL_SIZE)} پرسش از {faNum(BG_EXAMPLE_TOTAL)} مثالِ{" "}
+      {faNum(BOOKLET_GRAMMAR_TOPICS.length)} درسنامه: ترجمه، یافتنِ جملهٔ انگلیسی و تشخیصِ
+      موضوع. گزینه‌ها همگی از خودِ مثال‌های جزوه میآیند — نه ساختهٔ ماشینی؛ و اگر چیزی
+      اشتباه بماند، همان‌ها دوباره پرسیده میشوند.
+    </>
+  ),
+  startAria: "شروع جلسهٔ تمرین مثال",
+  exitLabel: "درسنامهٔ جامع",
+  exitAria: "بازگشت به درسنامهٔ جامع",
+  exitResultAria: "بازگشت به درسنامهٔ جامع از نتیجه",
+  cancelAria: "انصراف از تمرین مثال",
+};
 
 function TopicTables({ topic }: { topic: BgTopic }) {
   if (!topic.tables?.length) return null;
@@ -242,11 +269,28 @@ export default function BookletGrammarView({
   // کلیک = همان navigateToTopicِ محلی (بازکردنِ هدف + اسکرول) + بستنِ پنل.
   const [jumpOpen, setJumpOpen] = useState(false);
 
+  // r406 — حالتِ تمرینِ مثالها؛ فقط با کلیکِ کاربر روشن میشود (لنگرِ عمیقِ
+  // topicId همیشه آکاردئون را میآورد — drill هرگز رویِ دیپلینک بالا نمیآید،
+  // همان قراردادِ r234/r403/r404/r405).
+  const [exampleDrill, setExampleDrill] = useState(false);
+
   // گروه‌بندی بر اساس جزوهٔ مبدأ — راند ۲۱۵ (شماره‌گذاریِ سراسری = جایگاه در آرایه)
   const groups = SOURCE_ORDER.map((src) => ({
     src,
     topics: BOOKLET_GRAMMAR_TOPICS.filter((t) => t.source === src),
   })).filter((g) => g.topics.length > 0);
+
+  // r406 — دریلِ مثالها کلِ بدنهٔ زیرتاب را میگیرد (ایدئومِ r400..r405:
+  // سرصفحه و آکاردئون میروند، خروجِ سالم برمیگرداند) — همهٔ هوکها بالا زندهاند
+  if (exampleDrill) {
+    return (
+      <AppendixDrillView
+        spec={BG_EXAMPLE_DRILL_SPEC}
+        buildSession={() => buildBgExampleDrillSession(BOOKLET_GRAMMAR_TOPICS, DRILL_SIZE)}
+        onExit={() => setExampleDrill(false)}
+      />
+    );
+  }
 
   return (
     <div className="space-y-3">
@@ -290,7 +334,19 @@ export default function BookletGrammarView({
             <ListTree size={13} />
             فهرست پرش
           </button>
-          </div>
+          {/* r406 — دکمهٔ ورودِ دریل (ایدئومِ r239/r403/r404/r405): بنفشِ
+              خانوادهٔ تمرین؛ عمقِ لینک هرگز دریل را بالا نمیآورد */}
+          <button
+            type="button"
+            onClick={() => setExampleDrill(true)}
+            aria-label="شروع تمرین مثال‌های درسنامه"
+            title={`۱۰ پرسش از ${faNum(BG_EXAMPLE_TOTAL)} مثال ترجمه‌دارِ درسنامه‌ها`}
+            className="inline-flex items-center gap-1.5 rounded-lg bg-violet-600 px-2.5 py-1.5 text-[12px] font-extrabold text-white shadow-sm transition-colors hover:bg-violet-500 dark:bg-violet-500 dark:hover:bg-violet-400"
+          >
+            <GraduationCap size={13} />
+            تمرین مثال‌ها
+          </button>
+        </div>
           {/* راند ۲۲۸ — پنلِ فهرستِ پرش: ۳۲ چیپ در ۳ گروهِ جزوه — نشانِ توپُر =
               موضوعِ باز، یک نگاه، کلِ نقشهٔ درسنامه؛ کلیک = پرشِ محلی + بستن */}
           {jumpOpen && (

@@ -117,6 +117,7 @@ export function buildPhonemeDrillSession(
       options,
       answer: options.indexOf(correct),
       speak: kind === "example" ? undefined : p.example, // r230: نمونه شنیدنی است، نماد هرگز
+      faOptions: kind === "fa", // r406 — مالکیتِ جهت به موتور
     });
   }
   // size = شمارِ واقعیِ پرسشها — گونهٔ بیپیشنهاد جلسه را کوتاه میکند، نه واژگون

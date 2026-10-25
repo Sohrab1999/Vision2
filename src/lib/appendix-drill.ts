@@ -47,8 +47,19 @@ export type AbbrevDrillKind = "fa" | "full" | "sym";
  *  واژههای نمونه (واک→انگلیسی) / شنیدنِ واک (واژهها→واک) */
 export type PhonemeDrillKind = "fa" | "example" | "symbol";
 
-/** اتحادِ گونههای هر چهار دریل — نما فقط با fa/base/speak تصمیم میگیرد */
-export type DrillQuestionKind = DrillKind | WordDrillKind | AbbrevDrillKind | PhonemeDrillKind;
+/** r406 — گونههای دریلِ مثالهای درسنامهٔ جامع (بانکِ پنجم، نخستین بانکِ
+ *  بیرون از چهار بانکِ جدولی) — ترجمه (مثال→فارسی) / جملهٔ انگلیسی
+ *  (فارسی→مثال) / تشخیصِ موضوع (مثال→عنوانِ درسنامه) */
+export type BgExampleDrillKind = "fa" | "ex" | "topic";
+
+/** اتحادِ گونههای هر پنج دریل — نما با faOptions/speak تصمیم میگیرد؛
+ *  r406: جهتِ گزینهها هم دیگر از رویِ kind حدس زده نمیشود */
+export type DrillQuestionKind =
+  | DrillKind
+  | WordDrillKind
+  | AbbrevDrillKind
+  | PhonemeDrillKind
+  | BgExampleDrillKind;
 
 export const DRILL_KINDS: DrillKind[] = ["past", "pp", "base", "fa"];
 
@@ -70,6 +81,11 @@ export interface DrillQuestion {
    *  تصمیم است (فعل: همهٔ گونهها جز base؛ واژه: لنگرِ انگلیسیِ خانواده) —
    *  نما دیگر از رویِ kind حدس نمیزند. */
   speak?: string | undefined;
+  /** r406 — جهتِ گزینهها نزدِ موتورِ بانک: true یعنی گزینهها فارسیاند
+   *  (RTL، بی en-text) و false یعنی انگلیسی (LTR، en-text) — تکمیلِ درسِ
+   *  مالکیتِ r403: نما از رویِ kind حدس نمیزد؛ گونههایِ fa/topicِ بانکِ
+   *  درسنامه هر دو فارسیاند و این را فقط خودِ موتور میداند. */
+  faOptions: boolean;
 }
 
 export interface DrillSession {
@@ -127,6 +143,7 @@ export function buildDrillSession(
       options,
       answer: options.indexOf(correct),
       speak: kind === "base" ? undefined : v.base, // چیپِ TTS — همه گونهها جز base
+      faOptions: kind === "fa", // r406 — مالکیتِ جهت به موتور
     };
   });
   return { questions, size: n };

@@ -109,6 +109,7 @@ export function buildAbbrevDrillSession(
       options,
       answer: options.indexOf(correct),
       speak: kind === "sym" ? a.full : undefined, // درسِ r231: فقط شکلِ کامل روخوانی میشود
+      faOptions: kind === "fa", // r406 — مالکیتِ جهت به موتور
     });
   }
   // size = شمارِ واقعیِ پرسشها — گونهٔ بیپیشنهاد جلسه را کوتاه میکند، نه واژگون
