@@ -69,3 +69,10 @@ tool-results/
 mini-services/challenge-service/.receipt-secret
 mini-services/challenge-service/.ticket-secret
 client-errors.log
+
+# r400 — the cron auto-committer shipped the standalone BUILD OUTPUT into git
+# (3,172 files, ~100MB pack) including booklet-extract raw texts that the
+# download/ + jozvat-extract/ rules above exist to keep out. Build output,
+# logs and copyrighted extracts never belong in git — tracked copy retired;
+# history rewrite is forbidden (divergence adjudication pending).
+/.standalone/
