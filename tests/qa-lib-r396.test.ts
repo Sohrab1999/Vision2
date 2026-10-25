@@ -38,6 +38,8 @@ const FOURTH_CONSUMER = "scripts/qa-r399-bom-witness.sh";
 // r400 — پنجمین مصرفکننده (شاهدِ زندهٔ دریلِ ضمیمه)
 const FIFTH_CONSUMER = "scripts/qa-r400-appendix-drill.sh";
 
+const SIXTH_CONSUMER = "scripts/qa-r401-drill-fa-replay.sh"; // r401 — معنی + مرور
+
 const LIB_FUNCS = [
   "qa_shot()",
   "qa_rec()",
@@ -132,7 +134,7 @@ describe("r396 — انجمادِ تاریخی (نمونهبرداری)", () => 
     }
   });
 
-  it("هر اسکریپتِ نو به کتابخانه وابسته است — سرشماریِ مصرفکننده (r400: پنجمین مصرفکننده)", () => {
+  it("هر اسکریپتِ نو به کتابخانه وابسته است — سرشماریِ مصرفکننده (r401: ششمین مصرفکننده)", () => {
     const hits = execSync(`rg -l 'scripts/qa-lib.sh' scripts/ || true`)
       .toString()
       .trim()
@@ -141,6 +143,6 @@ describe("r396 — انجمادِ تاریخی (نمونهبرداری)", () => 
       .sort();
     // سرشماری، تلهٔ ضدِ دستنویسی است: اسکریپتِ نو یا source میکند
     // (و باید همینجا به ثبت برسد) یا دستنویسِ helper میسازد (و همینجا خودش را میدهد).
-    expect(hits).toEqual([FIRST_CONSUMER, SECOND_CONSUMER, THIRD_CONSUMER, FOURTH_CONSUMER, FIFTH_CONSUMER].sort());
+    expect(hits).toEqual([FIRST_CONSUMER, SECOND_CONSUMER, THIRD_CONSUMER, FOURTH_CONSUMER, FIFTH_CONSUMER, SIXTH_CONSUMER].sort());
   });
 });

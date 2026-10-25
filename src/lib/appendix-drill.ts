@@ -21,12 +21,22 @@
 //    درصدِ خارجِ ۰..۱۰۰ ناممکن؛ بی‌پاسخ = نادرستِ صادقانه.
 // ------------------------------------------------------------------
 
+// r401 — «معنی + مرورِ اشتباهها»:
+//  · گونهٔ چهارمِ پرسش (fa): «معنیِ X کدام است؟» — گزینهها معنیهایِ
+//    فارسیِ خودِ بانکاند (همان ستونِ fa)؛ انگلیسیِ فعل با چیپِ TTS
+//    همراهیِ سؤال را میکند (ایدئومِ چیپِ r400 برایِ گونههایِ non-base).
+//  · buildDrillReplay: بانکِ خطایِ موضعیِ جلسه — فقط سؤالهایِ نادرست/
+//    بیپاسخِ همان جلسه، به همان ترتیب و با همان گزینهها (مرورِ صادق:
+//    نه بُرخوردنِ دوباره، نه ساختنِ پرسشِ نو). هیچ نوشتنی به استورِ
+//    یادگیری — بانکِ خطایِ ماندگار پسِ طراحیِ SyncField (حکمِ r400).
+// ------------------------------------------------------------------
+
 import type { IrregularVerb } from "@/data/appendix";
 import { percent } from "@/lib/domain/percent";
 
-export type DrillKind = "past" | "pp" | "base";
+export type DrillKind = "past" | "pp" | "base" | "fa";
 
-export const DRILL_KINDS: DrillKind[] = ["past", "pp", "base"];
+export const DRILL_KINDS: DrillKind[] = ["past", "pp", "base", "fa"];
 
 /** اندازهٔ پیشفرضِ جلسه — یک تمرینِ کوتاهِ دهتایی */
 export const DRILL_SIZE = 10;
@@ -53,12 +63,14 @@ export interface DrillSession {
 export function drillForm(v: IrregularVerb, kind: DrillKind): string {
   if (kind === "past") return v.past;
   if (kind === "pp") return v.pp;
+  if (kind === "fa") return v.fa;
   return v.base;
 }
 
 function promptFor(v: IrregularVerb, kind: DrillKind): string {
   if (kind === "past") return `گذشتهٔ سادهٔ «${v.base}» — «${v.fa}» — کدام است؟`;
   if (kind === "pp") return `شکل سوم (p.p.) «${v.base}» — «${v.fa}» — کدام است؟`;
+  if (kind === "fa") return `معنیِ «${v.base}» کدام است؟`;
   return `شکلِ «${v.past}» متعلق به کدام فعل است؟`;
 }
 
@@ -98,6 +110,20 @@ export function buildDrillSession(
     };
   });
   return { questions, size: n };
+}
+
+/**
+ * بانکِ خطایِ موضعیِ جلسه (r401): جلسهٔ «مرورِ اشتباهها» — فقط سؤالهایِ
+ * نادرست یا بیپاسخِ همین جلسه، به همان ترتیب و با همان گزینهها. خالص:
+ * ورودی دستنخورده، خروجیِ تازه. جلسهٔ بیاشتباه → جلسهٔ تهیِ صادقانه
+ * (نما دکمهٔ مرور را اصلاً بالا نمیآورد — اینجا هم قرارداد آینه است).
+ */
+export function buildDrillReplay(
+  questions: readonly DrillQuestion[],
+  answers: readonly (number | null)[],
+): DrillSession {
+  const wrong = questions.filter((q, i) => answers[i] !== q.answer);
+  return { questions: [...wrong], size: wrong.length };
 }
 
 export interface DrillScore {

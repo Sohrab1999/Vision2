@@ -2,6 +2,11 @@
 
 // ---------------------------------------------------------------------
 // r400 — «تمرین افعال بی‌قاعده» — نمایِ دریل داخلِ زیرتبِ verbs ضمیمه.
+// r401 — «معنی + مرورِ اشتباهها»: گونهٔ fa گزینههایِ فارسی دارد (رندرِ
+//    RTL بدونِ en-text — ایدئومِ برعکسِ ستونِ انگلیسی)؛ پسِ نتیجه،
+//    «مرورِ اشتباهها» فقط سؤالهایِ نادرست/بیپاسخِ همین جلسه را دوباره
+//    میپرسد (بانکِ خطایِ موضعی — هیچ نوشتنی به استورِ یادگیری)؛
+//    سرصفحهٔ مرور صادق است: «نتیجهٔ مرور»، نه «نتیجهٔ تمرین».
 //
 // جریان: معرفی → پرسش‌ها (بازخوردِ درجا، بی تایمر — کاربر سرعته) →
 // نتیجهٔ صادق (درصد از مالکِ r388 + بازخوانیِ سؤالبهسؤال: بیپاسخ =
@@ -21,10 +26,11 @@
 // ---------------------------------------------------------------------
 
 import { useMemo, useState } from "react";
-import { ArrowLeft, Check, GraduationCap, RotateCcw, Volume2, X } from "lucide-react";
+import { ArrowLeft, Check, GraduationCap, Repeat, RotateCcw, Volume2, X } from "lucide-react";
 import type { IrregularVerb } from "@/data/appendix";
 import {
   buildDrillSession,
+  buildDrillReplay,
   scoreDrill,
   DRILL_SIZE,
   type DrillSession,
@@ -46,6 +52,8 @@ export default function AppendixDrillView({
   const [idx, setIdx] = useState(0);
   const [answers, setAnswers] = useState<(number | null)[]>([]);
   const [picked, setPicked] = useState<number | null>(null);
+  // r401 — نتیجهٔ فعلی مالِ جلسهٔ مرور است؟ (سرصفحهٔ صادق: «نتیجهٔ مرور»)
+  const [isReplay, setIsReplay] = useState(false);
 
   const score = useMemo(
     () => (session ? scoreDrill(session.questions, answers) : null),
@@ -59,6 +67,21 @@ export default function AppendixDrillView({
     setAnswers(Array<number | null>(s.size).fill(null));
     setIdx(0);
     setPicked(null);
+    setIsReplay(false); // جلسهٔ تازهٔ کامل — نه مرور
+    setPhase("run");
+  };
+
+  // r401 — مرورِ اشتباهها: همان سؤالهایِ نادرست/بیپاسخ، همان ترتیب،
+  // همان گزینهها؛ پاسخها صفر میشوند و پرچمِ مرور روشن (سرصفحهٔ صادق).
+  const replay = () => {
+    if (!session) return;
+    const r = buildDrillReplay(session.questions, answers);
+    if (r.questions.length === 0) return; // نمیتواند رخ دهد — دکمه فقط با اشتباه بالا میآید
+    setSession(r);
+    setAnswers(Array<number | null>(r.size).fill(null));
+    setIdx(0);
+    setPicked(null);
+    setIsReplay(true);
     setPhase("run");
   };
 
@@ -92,7 +115,8 @@ export default function AppendixDrillView({
         </h2>
         <p className="mx-auto mt-2 max-w-md text-[12.5px] leading-6 text-stone-600">
           {faNum(DRILL_SIZE)} پرسش از فهرستِ {faNum(verbs.length)} فعلی ضمیمه: گذشتهٔ ساده، شکل
-          سوم (p.p.) و شکلِ ساده. گزینه‌ها همگی از خودِ بانکِ افعال میآیند — نه ساختهٔ ماشینی.
+          سوم (p.p.)، شکلِ ساده و معنیِ فارسی. گزینه‌ها همگی از خودِ بانکِ افعال میآیند — نه
+          ساختهٔ ماشینی؛ و اگر چیزی اشتباه بماند، همان‌ها دوباره پرسیده میشوند.
         </p>
         <div className="mt-4 flex items-center justify-center gap-2">
           <button
@@ -120,9 +144,13 @@ export default function AppendixDrillView({
 
   // -------------------------------------------------------------- نتیجه
   if (phase === "done" && score) {
+    const wrongCount = score.total - score.correct;
     return (
       <section className="rounded-2xl border border-stone-200 bg-white p-5">
-        <h2 className="text-center text-[15px] font-black text-stone-800">نتیجهٔ تمرین</h2>
+        {/* سرصفحهٔ صادق (r401): نتیجهٔ مرور جای نتیجهٔ تمرین را نمیگیرد */}
+        <h2 className="text-center text-[15px] font-black text-stone-800">
+          {isReplay ? "نتیجهٔ مرور" : "نتیجهٔ تمرین"}
+        </h2>
         <p className="mt-2 text-center">
           <span className="text-[26px] font-black text-violet-700" aria-label={`نمرهٔ ${percentFa(score.percentValue)}`}>
             {percentFa(score.percentValue)}
@@ -159,15 +187,25 @@ export default function AppendixDrillView({
                 </span>
                 <span className="mt-1 block pr-5 text-stone-600">
                   {qq.kind === "base" ? "فعل: " : "پاسخ: "}
-                  <span dir="ltr" className="en-text font-black text-stone-800">
-                    {qq.options[qq.answer]}
-                  </span>
+                  {qq.kind === "fa" ? (
+                    <span className="font-black text-stone-800">{qq.options[qq.answer]}</span>
+                  ) : (
+                    <span dir="ltr" className="en-text font-black text-stone-800">
+                      {qq.options[qq.answer]}
+                    </span>
+                  )}
                   {!ok && (
                     <>
                       {" · "}پاسخِ تو:{" "}
-                      <span dir="ltr" className="en-text font-bold text-rose-700">
-                        {a == null ? "بی‌پاسخ" : qq.options[a]}
-                      </span>
+                      {qq.kind === "fa" ? (
+                        <span className="font-bold text-rose-700">
+                          {a == null ? "بی‌پاسخ" : qq.options[a]}
+                        </span>
+                      ) : (
+                        <span dir="ltr" className="en-text font-bold text-rose-700">
+                          {a == null ? "بی‌پاسخ" : qq.options[a]}
+                        </span>
+                      )}
                     </>
                   )}
                 </span>
@@ -175,7 +213,17 @@ export default function AppendixDrillView({
             );
           })}
         </ul>
-        <div className="mt-4 flex items-center justify-center gap-2">
+        <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
+          {wrongCount > 0 && (
+            <button
+              onClick={replay}
+              aria-label="مرور اشتباههای تمرین"
+              className="inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-rose-300 bg-rose-50 px-4 text-[12.5px] font-black text-rose-700 transition-colors hover:bg-rose-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-300 active:scale-[0.96]"
+            >
+              <Repeat size={15} aria-hidden />
+              مرور اشتباهها ({faNum(wrongCount)})
+            </button>
+          )}
           <button
             onClick={start}
             aria-label="تمرین دوباره"
@@ -238,6 +286,9 @@ export default function AppendixDrillView({
         {q.options.map((opt, i) => {
           const isCorrect = i === q.answer;
           const isPicked = i === picked;
+          // r401 — گونهٔ fa: گزینهها فارسیاند (RTL، بی en-text)؛
+          // بقیهٔ گونهها انگلیسی (LTR، en-text) — ایدئومِ برعکسِ ستون.
+          const isFa = q.kind === "fa";
           const cls = !answered
             ? "border-stone-300 bg-white text-stone-700 hover:border-violet-300 hover:bg-violet-50"
             : isCorrect
@@ -251,11 +302,15 @@ export default function AppendixDrillView({
               onClick={() => answer(i)}
               disabled={answered}
               aria-label={`گزینه ${faNum(i + 1)}: ${opt}${answered && isCorrect ? " — پاسخ درست" : ""}`}
-              className={`flex min-h-11 items-center justify-between rounded-xl border px-3 text-left text-[13px] font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-200 active:scale-[0.96] disabled:cursor-default ${cls}`}
+              className={`flex min-h-11 items-center justify-between rounded-xl border px-3 ${isFa ? "text-right" : "text-left"} text-[13px] font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-200 active:scale-[0.96] disabled:cursor-default ${cls}`}
             >
-              <span dir="ltr" className="en-text">
-                {opt}
-              </span>
+              {isFa ? (
+                <span>{opt}</span>
+              ) : (
+                <span dir="ltr" className="en-text">
+                  {opt}
+                </span>
+              )}
               {answered && isCorrect && <Check size={15} aria-hidden className="shrink-0 text-emerald-600" />}
               {answered && isPicked && !isCorrect && <X size={15} aria-hidden className="shrink-0 text-rose-600" />}
             </button>
