@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { Search, CheckCircle2, Circle, Layers, X, Star, Users, ChevronDown, ExternalLink, BookOpenText } from "lucide-react";
+import { Search, CheckCircle2, Circle, Layers, X, Star, Users, ChevronDown, ExternalLink, BookOpenText, GraduationCap } from "lucide-react";
 import type { LessonData } from "@/lib/study-types";
 import { useStudy, wordKey, starToggleAria } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -17,6 +17,39 @@ import { lessons } from "@/data";
 import { WORD_FAMILY_LESSON_LINKS, wordFamilyTableId } from "@/data/word-families";
 import Flashcards from "./flashcards";
 import WordFamilyTableCard from "./word-family-table-card";
+// r407 — ششمین بانک روی نمایِ مشترکِ r403 — نخستین بانکِ ساکن در خودِ درس:
+// تبِ واژگان صاحبِ تمرین میشود؛ ورود فقط با کلیک (قراردادِ r234/r403..r406 —
+// هیچ دیپلینکی دریل را بالا نمیآورد) و هیچ نوشتنی به استورِ یادگیری نیست.
+import AppendixDrillView, { type DrillViewSpec } from "./appendix-drill-view";
+import {
+  buildLessonVocabDrillSession,
+  lessonVocabDrillPlan,
+  LESSON_VOCAB_KIND_LABEL,
+  type LessonVocabDrillPlan,
+} from "@/lib/appendix-lesson-vocab-drill";
+import { DRILL_SIZE } from "@/lib/appendix-drill";
+
+/** r407 — specِ دریل واژگانِ درس — معرفی از برنامهٔ قطعیِ موتور (گونهها و
+ *  اندازهٔ واقعیِ همان درس؛ درسِ کم-نقش وعدهٔ برساخته نمیدهد — صداقتِ r404) */
+function lessonVocabDrillSpec(lesson: LessonData, plan: LessonVocabDrillPlan): DrillViewSpec {
+  const kindsFa = plan.kinds.map((k) => LESSON_VOCAB_KIND_LABEL[k]).join("، ");
+  return {
+    id: "lesson-vocab",
+    title: `تمرین واژگانِ «${lesson.titleFa}»`,
+    intro: (
+      <>
+        {faNum(plan.size)} پرسش از {faNum(plan.bank)} واژهٔ «{lesson.titleFa}»: {kindsFa}.
+        گزینه‌ها همگی از واژه‌های خودِ درس میآیند — نه ساختهٔ ماشینی؛ و اگر چیزی
+        اشتباه بماند، همان‌ها دوباره پرسیده میشوند.
+      </>
+    ),
+    startAria: "شروع جلسهٔ تمرین واژگان درس",
+    exitLabel: "واژگان درس",
+    exitAria: "بازگشت به واژگان درس",
+    exitResultAria: "بازگشت به واژگان درس از نتیجه",
+    cancelAria: "انصراف از تمرین واژگان",
+  };
+}
 
 type Filter = "all" | "known" | "unknown";
 
@@ -30,6 +63,8 @@ export default function VocabTab({
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState<Filter>("all");
   const [flashMode, setFlashMode] = useState(startSmart);
+  // r407 — حالتِ تمرین واژگان؛ فقط با کلیکِ کاربر روشن میشود
+  const [drillMode, setDrillMode] = useState(false);
   const known = useStudy((s) => s.known);
   const toggleKnown = useStudy((s) => s.toggleKnown);
   const toggleStarred = useStudy((s) => s.toggleStarred);
@@ -57,6 +92,10 @@ export default function VocabTab({
   // مشترک دیکشنری/WOTD/فلش‌کارت (تسک‌های ۲۰۳/۲۰۴)؛ یک‌بار روی همهٔ درس‌ها
   const pairIndex = useMemo(() => buildSynAntIndex(lessons), []);
 
+  // r407 — برنامهٔ قطعیِ دریل (بی rng): اندازهٔ واقعی + گونههایِ زندهٔ همین درس؛
+  // دکمهٔ ورود و معرفی هر دو از همین تکمنبع میخوانند
+  const drillPlan = useMemo(() => lessonVocabDrillPlan(lesson.vocabulary, DRILL_SIZE), [lesson]);
+
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return lesson.vocabulary.filter((w) => {
@@ -66,6 +105,18 @@ export default function VocabTab({
       return filter === "known" ? isKnown : !isKnown;
     });
   }, [lesson, query, filter, known, mounted]);
+
+  // r407 — دریل واژگان کلِ بدنهٔ تب را میگیرد (ایدئومِ r400..r406:
+  // جست‌وجو و کارت‌ها میروند، خروجِ سالم برمیگرداند) — بعد از همهٔ هوکها
+  if (drillMode) {
+    return (
+      <AppendixDrillView
+        spec={lessonVocabDrillSpec(lesson, drillPlan)}
+        buildSession={() => buildLessonVocabDrillSession(lesson.vocabulary, DRILL_SIZE)}
+        onExit={() => setDrillMode(false)}
+      />
+    );
+  }
 
   if (flashMode) {
     return <Flashcards lesson={lesson} onExit={() => setFlashMode(false)} startSmart={startSmart} />;
@@ -114,6 +165,20 @@ export default function VocabTab({
           <Layers size={16} />
           حالت فلش‌کارت
         </button>
+        {/* r407 — دکمهٔ ورودِ دریل (ایدئومِ r239/r403..r406): بنفشِ خانوادهٔ
+            تمرین؛ برنامهٔ قطعیِ موتور عنوانِ صادق را میدهد؛ بیبانک، بی دکمه */}
+        {drillPlan.size > 0 && (
+          <button
+            type="button"
+            onClick={() => setDrillMode(true)}
+            aria-label="شروع تمرین واژگان درس"
+            title={`${faNum(drillPlan.size)} پرسش از ${faNum(drillPlan.bank)} واژهٔ این درس`}
+            className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-violet-600 px-4 py-2.5 text-sm font-bold text-white shadow-sm transition-[background-color,color,border-color,transform] hover:bg-violet-500 active:scale-[0.96] dark:bg-violet-500 dark:hover:bg-violet-400"
+          >
+            <GraduationCap size={16} />
+            تمرین واژه‌ها
+          </button>
+        )}
       </div>
 
       {/* filters */}

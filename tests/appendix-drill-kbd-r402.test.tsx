@@ -157,11 +157,11 @@ describe("appendix-drill kbd r402 — پاسخ با کیبورد", () => {
 describe("appendix-drill kbd r402 — ثبتِ صادق در راهنمای سراسری", () => {
   beforeEach(() => cleanup());
 
-  it("راهنما گروهِ «تمرین‌های ضمیمه (فعل، واژه، نشانه، تلفظ و درسنامه)» را با هر دو ردیف دارد (r406: هر پنج بانک)", () => {
+  it("راهنما گروهِ «تمرین‌های چهارگزینه‌ای (فعل، واژه، نشانه، تلفظ، درسنامه و واژگان درس)» را با هر دو ردیف دارد (r407: هر شش بانک)", () => {
     render(<ShortcutGuide />);
     // راهنما با رویدادِ زندهٔ هدر/فوتر باز میشود (همان قراردادِ open-shortcuts)
     fireEvent(window, new CustomEvent("open-shortcuts"));
-    expect(screen.getByText("تمرین‌های ضمیمه (فعل، واژه، نشانه، تلفظ و درسنامه)")).toBeTruthy();
+    expect(screen.getByText("تمرین‌های چهارگزینه‌ای (فعل، واژه، نشانه، تلفظ، درسنامه و واژگان درس)")).toBeTruthy();
     expect(screen.getByText("انتخاب گزینه (ارقام فارسی و لاتین، هر چیدمان)")).toBeTruthy();
     expect(screen.getByText("پرسش بعدی — فقط پس از پاسخ")).toBeTruthy();
   });

@@ -197,11 +197,11 @@ describe("appendix-bg-example-drill-view r406 — جریانِ یک جلسه", (
     } else {
       expect(opts[1].getAttribute("aria-label")).not.toContain("— پاسخ درست");
     }
-    expect(opts.every((o) => o.disabled)).toBe(true);
+    expect(opts.every((o) => (o as HTMLButtonElement).disabled)).toBe(true);
     expect(
       screen
         .getAllByRole("button")
-        .some((x) => ["سؤال بعدی", "دیدن نتیجهٔ تمرین"].includes(x.getAttribute("aria-label") || "") && !x.disabled),
+        .some((x) => ["سؤال بعدی", "دیدن نتیجهٔ تمرین"].includes(x.getAttribute("aria-label") || "") && !(x as HTMLButtonElement).disabled),
     ).toBe(true);
   });
 });

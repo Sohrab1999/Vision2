@@ -31,7 +31,13 @@
 //    یادگیری — بانکِ خطایِ ماندگار پسِ طراحیِ SyncField (حکمِ r400).
 // ------------------------------------------------------------------
 
+// r400 — «تمرین افعال بی‌قاعده» — موتورِ خالصِ دریلِ ضمیمه.
+// r407 — «دریل واژگان درس» (بانکِ ششم) به اتحادِ بالا پیوست —
+//   گونهها در appendix-lesson-vocab-drill تعریف و از آنجا وارد میشوند
+//   (تک-نامیِ نوعها — دو-نامِ r385 ممنوع).
+
 import type { IrregularVerb } from "@/data/appendix";
+import type { LessonVocabDrillKind } from "./appendix-lesson-vocab-drill";
 import { percent } from "@/lib/domain/percent";
 
 export type DrillKind = "past" | "pp" | "base" | "fa";
@@ -52,14 +58,16 @@ export type PhonemeDrillKind = "fa" | "example" | "symbol";
  *  (فارسی→مثال) / تشخیصِ موضوع (مثال→عنوانِ درسنامه) */
 export type BgExampleDrillKind = "fa" | "ex" | "topic";
 
-/** اتحادِ گونههای هر پنج دریل — نما با faOptions/speak تصمیم میگیرد؛
- *  r406: جهتِ گزینهها هم دیگر از رویِ kind حدس زده نمیشود */
+/** اتحادِ گونههای هر شش دریل — نما با faOptions/speak تصمیم میگیرد؛
+ *  r406: جهتِ گزینهها هم دیگر از رویِ kind حدس زده نمیشود؛
+ *  r407: واژگانِ درس (fa/en/pos) — ششمین بانک پیوست */
 export type DrillQuestionKind =
   | DrillKind
   | WordDrillKind
   | AbbrevDrillKind
   | PhonemeDrillKind
-  | BgExampleDrillKind;
+  | BgExampleDrillKind
+  | LessonVocabDrillKind;
 
 export const DRILL_KINDS: DrillKind[] = ["past", "pp", "base", "fa"];
 

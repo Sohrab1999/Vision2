@@ -55,8 +55,9 @@ import { isTypingTarget, readDigit, useKeydown } from "@/hooks/use-keyboard";
 import SpeakButton from "../shared/speak-button";
 
 export interface DrillViewSpec {
-  /** شناسه — فقط برایِ ثبت و تست (r406: بانکِ پنجمِ درسنامهٔ جامع پیوست) */
-  id: "verbs" | "words" | "abbrev" | "phonemes" | "bg-examples";
+  /** شناسه — فقط برایِ ثبت و تست (r406: بانکِ پنجم؛ r407: ششمین بانکِ
+   *  واژگانِ درس — نخستین ساکنِ بیرون از ضمیمه و درسنامه) */
+  id: "verbs" | "words" | "abbrev" | "phonemes" | "bg-examples" | "lesson-vocab";
   /** سرصفحهٔ معرفی + عنوانِ نتیجهٔ تازه */
   title: string;
   /** پاراگرافِ معرفی — کامل از والد (شمارشِ بانک همانجاست) */
