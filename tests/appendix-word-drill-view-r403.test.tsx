@@ -98,6 +98,8 @@ describe("appendix-word-drill-view r403 — جریانِ یک جلسهٔ واژ�
     expect(screen.getByText(/سؤال ۲ از/)).toBeTruthy();
   });
 
+  // r412 — دو mount + بیست کلیک رویِ سنگینترین نمایِ اپ؛ همان آیینِ
+  // تایم‌اوتِ سنگینها (r233/r234/r235) — رانشِ بارِ ماشین نباید قرمزِ دروغ بدهد
   it("جلسهٔ کامل: نتیجهٔ صادق + بازخوانی؛ انصرافِ واژه از میانهٔ جلسه بیرون میبرد", () => {
     startWordDrill();
     fireEvent.click(screen.getByRole("button", { name: "انصراف از تمرین واژه" }));
@@ -118,5 +120,5 @@ describe("appendix-word-drill-view r403 — جریانِ یک جلسهٔ واژ�
     expect(screen.getByLabelText("بازخوانی سؤال‌های تمرین").children.length).toBe(10);
     fireEvent.click(screen.getByRole("button", { name: "بازگشت به جدول اجزای کلام از نتیجه" }));
     expect(screen.getByText(/خانوادهٔ واژه‌ها از خودِ جزوه‌ها/)).toBeTruthy();
-  });
+  }, 20000);
 });

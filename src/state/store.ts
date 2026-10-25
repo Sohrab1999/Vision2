@@ -1,6 +1,6 @@
 "use client";
 
-// گام ۸ §12 — استور مرکزی: ترکیب ۱۲ اسلایس + لایهٔ persist schema-محور.
+// گام ۸ §12 — استور مرکزی: ترکیب ۱۴ اسلایس + لایهٔ persist schema-محور.
 // قرارداد عمومی (StudyState) و نام storage کلید (vision2-study-v1) دست‌نخورده
 // ماند — ۳۷ مصرف‌کننده فقط از این فایل useStudy می‌گیرند و از هیچ تغییر داخلی
 // خبردار نمی‌شوند. افزودن میدان تازه = یک اسلایس/سطر در persist/schema + یک
@@ -11,6 +11,7 @@ import { persist, createJSONStorage } from "zustand/middleware";
 import { pickPersisted, rehydrateMerge } from "@/lib/persist/schema";
 import { createActivitySlice } from "./slices/activity";
 import { createArcadeSlice } from "./slices/arcade";
+import { createDrillSlice } from "./slices/drill";
 import { createFreezeSlice } from "./slices/freeze";
 import { createIdentitySlice } from "./slices/identity";
 import { createKonkurSlice } from "./slices/konkur";
@@ -38,6 +39,7 @@ export const useStudy = create<StudyStore>()(
       ...createActivitySlice(...a),
       ...createFreezeSlice(...a),
       ...createArcadeSlice(...a),
+      ...createDrillSlice(...a),
       ...createStarredSlice(...a),
       ...createLibrarySlice(...a),
     }),

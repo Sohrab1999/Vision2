@@ -25,6 +25,7 @@
 import type { QuizResult } from "@/lib/study-types";
 import { percent } from "@/lib/domain/percent";
 import { sanitizeDuelHistory, mergeDuelHistory, type DuelRecord } from "@/lib/duel-history";
+import { sanitizeDrillStats, mergeDrillStats, type DrillStatMap } from "@/lib/drill-stats";
 import { DEFAULT_SETTINGS, type StudySettings } from "@/state/types";
 import type {
   DayHistoryMap,
@@ -88,6 +89,8 @@ export interface SyncData {
   konkurWrong?: Record<string, boolean>;
   /** «واژه‌های من» — starred word keys; legacy payloads may omit them */
   starredWords?: string[];
+  /** r412 «پیشرفتِ تمرینها» — per-bank drill mastery; legacy payloads may omit them */
+  drillStats?: DrillStatMap;
   /** Phase-0 «اعتماد» — identity moves as a pair, only to
    *  identity-less devices (special-cased in mergeAll). */
   userId?: string;
@@ -461,6 +464,9 @@ export const SYNC_FIELDS: SyncFieldMap = {
   libraryDone: { sanitize: sanitizeLibraryDone, merge: mergeLibraryDone },
   // starred word keys — union keeps both devices' stars, cap 2000 (newest survive)
   starredWords: { sanitize: stringList(2000), merge: unionCapped(2000) },
+  // r412 «دریلها واردِ استور میشوند» — per-bank mastery; cloud merge sums the
+  // real work of both devices (best percent + newest day win)
+  drillStats: { sanitize: sanitizeDrillStats, merge: mergeDrillStats },
   userId: { sanitize: sanitizeUserId },
   userSecret: { sanitize: sanitizeUserSecret },
 };

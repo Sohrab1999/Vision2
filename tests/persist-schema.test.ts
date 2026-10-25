@@ -57,6 +57,8 @@ const CANONICAL_SYNC_KEYS = [
   // Task 290 «کتاب‌خانهٔ داستان‌ها» — story completion records (best-score merge)
   "libraryDone",
   "starredWords",
+  // r412 «دریلها واردِ استور میشوند» — per-bank drill mastery (max-merge)
+  "drillStats",
   "userId",
   "userSecret",
 ] as const;
@@ -122,6 +124,7 @@ describe("sanitizeAll — defaults and idempotence", () => {
     expect(d.wordMistakes).toEqual({});
     expect(d.konkurSeen).toEqual({});
     expect(d.starredWords).toEqual([]);
+    expect(d.drillStats).toEqual({});
     expect(d.userId).toBeUndefined();
     expect(d.userSecret).toBeUndefined();
   });
@@ -146,6 +149,7 @@ describe("sanitizeAll — defaults and idempotence", () => {
       wordMistakes: { "1:ability": -5, "2:word": 3.9 },
       konkurSeen: { "x-21": true, "x-26": false, "x-34": 1 },
       starredWords: [42, "1:ability", null, "2:zone"],
+      drillStats: { verbs: { sessions: 2, correct: 15, total: 20, bestPercent: 150, lastDay: "nope" }, "BAD KEY": { sessions: 1, total: 4 } },
       userId: "abc",
       userSecret: "not-hex-at-all",
     };
@@ -167,6 +171,9 @@ describe("sanitizeAll — defaults and idempotence", () => {
     expect(once.wordMistakes?.["2:word"]).toBe(4);
     expect(once.konkurSeen).toEqual({ "x-21": true });
     expect(once.starredWords).toEqual(["1:ability", "2:zone"]); // non-strings dropped, order kept
+    expect(once.drillStats).toEqual({
+      verbs: { sessions: 2, correct: 15, total: 20, bestPercent: 100, lastDay: "" },
+    }); // بیقرارداد افتاد؛ clampها نشستند
     expect(once.userId).toBeUndefined();
     expect(once.userSecret).toBeUndefined();
   });
@@ -207,6 +214,8 @@ describe("backup ↔ restore ↔ cloud-merge round-trip", () => {
       // Task 290 — story completion record travels like the other domains
       libraryDone: { "s1-1": { score: 6, total: 6, day: "2026-10-09" } },
       starredWords: ["1:ability", "2:zone"],
+      // r412 — drill mastery travels like every other domain
+      drillStats: { verbs: { sessions: 3, correct: 24, total: 30, bestPercent: 90, lastDay: "2026-10-09" } },
       userId: "learner-12345",
       userSecret: "ab".repeat(24),
     });
@@ -256,6 +265,20 @@ describe("backup ↔ restore ↔ cloud-merge round-trip", () => {
     const remote = { ...trusted(), starredWords: ["2:zone", "3:paint"] };
     const merged = mergeAll(local, remote);
     expect(merged.starredWords).toEqual(["1:ability", "2:zone", "3:paint"]);
+  });
+
+  it("drill stats: max-merge keeps the busier device honest and stays round-trip stable", () => {
+    // two devices — the busier one wins per counter, the better percent and
+    // the newer day survive (sum would break merge(a, cloud(a)) === a)
+    const local = { ...trusted(), drillStats: { verbs: { sessions: 5, correct: 40, total: 50, bestPercent: 70, lastDay: "2026-10-20" } } };
+    const remote = { ...trusted(), drillStats: { verbs: { sessions: 2, correct: 16, total: 20, bestPercent: 90, lastDay: "2026-10-24" } } };
+    const merged = mergeAll(local, remote);
+    expect(merged.drillStats).toEqual({
+      verbs: { sessions: 5, correct: 40, total: 50, bestPercent: 90, lastDay: "2026-10-24" },
+    });
+    // a bank only the remote device practiced is not lost
+    const remoteOnly = { ...trusted(), drillStats: { phonemes: { sessions: 1, correct: 7, total: 10, bestPercent: 70, lastDay: "2026-10-24" } } };
+    expect(mergeAll(trusted(), remoteOnly).drillStats!.phonemes).toBeDefined();
   });
 
   it("merge output covers every synced field (no silently dropped domain)", () => {

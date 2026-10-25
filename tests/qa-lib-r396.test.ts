@@ -60,6 +60,8 @@ const FIFTEENTH_CONSUMER = "scripts/qa-r410-listen-tts-kbd.sh"; // r410 — T د
 
 const SIXTEENTH_CONSUMER = "scripts/qa-r411-flash-digit-tts.sh"; // r411 — گاردِ ارقامِ فلش‌کارت + T در تلفظ/واژهٔ روز
 
+const SEVENTEENTH_CONSUMER = "scripts/qa-r412-drill-stats.sh"; // r412 — دریلها واردِ استور میشوند (ماندگاری + چپها)
+
 const LIB_FUNCS = [
   "qa_shot()",
   "qa_rec()",
@@ -154,7 +156,7 @@ describe("r396 — انجمادِ تاریخی (نمونهبرداری)", () => 
     }
   });
 
-  it("هر اسکریپتِ نو به کتابخانه وابسته است — سرشماریِ مصرفکننده (r411: شانزدهمین مصرفکننده)", () => {
+  it("هر اسکریپتِ نو به کتابخانه وابسته است — سرشماریِ مصرفکننده (r412: هفدهمین مصرفکننده)", () => {
     const hits = execSync(`rg -l 'scripts/qa-lib.sh' scripts/ || true`)
       .toString()
       .trim()
@@ -163,6 +165,28 @@ describe("r396 — انجمادِ تاریخی (نمونهبرداری)", () => 
       .sort();
     // سرشماری، تلهٔ ضدِ دستنویسی است: اسکریپتِ نو یا source میکند
     // (و باید همینجا به ثبت برسد) یا دستنویسِ helper میسازد (و همینجا خودش را میدهد).
-    expect(hits).toEqual([FIRST_CONSUMER, SECOND_CONSUMER, THIRD_CONSUMER, FOURTH_CONSUMER, FIFTH_CONSUMER, SIXTH_CONSUMER, SEVENTH_CONSUMER, EIGHTH_CONSUMER, NINTH_CONSUMER, TENTH_CONSUMER, ELEVENTH_CONSUMER, TWELFTH_CONSUMER, THIRTEENTH_CONSUMER, FOURTEENTH_CONSUMER, FIFTEENTH_CONSUMER, SIXTEENTH_CONSUMER].sort());
+    expect(hits).toEqual([FIRST_CONSUMER, SECOND_CONSUMER, THIRD_CONSUMER, FOURTH_CONSUMER, FIFTH_CONSUMER, SIXTH_CONSUMER, SEVENTH_CONSUMER, EIGHTH_CONSUMER, NINTH_CONSUMER, TENTH_CONSUMER, ELEVENTH_CONSUMER, TWELFTH_CONSUMER, THIRTEENTH_CONSUMER, FOURTEENTH_CONSUMER, FIFTEENTH_CONSUMER, SIXTEENTH_CONSUMER, SEVENTEENTH_CONSUMER].sort());
+  });
+});
+
+describe("r412 — هفدهمین مصرفکننده", () => {
+  it("qa-r412 کتابخانه را source میکند و هیچ دستنویسیِ مالک ندارد", () => {
+    const s = p(SEVENTEENTH_CONSUMER);
+    expect(s).toContain('source /home/z/my-project/scripts/qa-lib.sh');
+    expect(s).not.toMatch(/^qa_wait_home\(\)/m);
+    expect(s).not.toMatch(/^qa_shot\(\)/m);
+    expect(s).not.toMatch(/^qa_ensure_alive\(\)/m);
+  });
+
+  it("bash -n بر مصرفکننده میگذرد", () => {
+    expect(() => execSync(`bash -n ${SEVENTEENTH_CONSUMER}`)).not.toThrow();
+  });
+
+  it("سناریوی راند: جلسهٔ کامل → رکورد در معرفی + چیپِ میزبان → ماندگاری پسِ reload", () => {
+    const s = p(SEVENTEENTH_CONSUMER);
+    expect(s).toContain("شروع تمرین افعال بی‌قاعده");
+    expect(s).toContain("پیشرفت این تمرین"); // معرفی + چیپِ میزبان
+    expect(s).toContain("localStorage"); // شاهدِ ماندگاریِ رکورد
+    expect(s).toContain("location.reload");
   });
 });

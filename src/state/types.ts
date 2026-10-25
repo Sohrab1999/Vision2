@@ -6,6 +6,7 @@
 import type { QuizResult } from "@/lib/study-types";
 import type { ActivitySlice } from "./slices/activity";
 import type { ArcadeSlice } from "./slices/arcade";
+import type { DrillSlice } from "./slices/drill";
 import type { FreezeSlice } from "./slices/freeze";
 import type { IdentitySlice } from "./slices/identity";
 import type { KonkurSlice } from "./slices/konkur";
@@ -112,11 +113,12 @@ export interface SrsItem {
 export type FlashIntent = "none" | "smart";
 
 /**
- * قرارداد کامل استور — تلاقی ۱۲ اسلایس. اسم و شکل همهٔ اعضا دقیقاً مثل
+ * قرارداد کامل استور — تلاقی ۱۴ اسلایس (r412: DrillSlice — پیشرفتِ بانکهایِ تمرین). اسم و شکل همهٔ اعضا دقیقاً مثل
  * StudyState تاریخی است (گام ۸: سازگاری API برای ۳۷ مصرف‌کننده).
  */
 export type StudyState = ActivitySlice &
   ArcadeSlice &
+  DrillSlice &
   FreezeSlice &
   IdentitySlice &
   KonkurSlice &

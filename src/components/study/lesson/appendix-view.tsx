@@ -10,7 +10,7 @@ import {
   wordFamilyTableId,
 } from "@/data/word-families";
 import { useStudy } from "@/lib/study-store";
-import { faNum } from "@/lib/study-theme";
+import { faNum, percentFa } from "@/lib/study-theme";
 import { wordFamilyUsageCensus } from "@/lib/word-usage";
 import { writeAppendixResume, type AppendixScope } from "@/lib/bg-reading";
 import BookletGrammarView from "./booklet-grammar-view";
@@ -25,6 +25,22 @@ import AbbreviationsTable from "./abbreviations-table";
 import WordFamilyTableCard from "./word-family-table-card";
 import AppendixResumePill from "./appendix-resume-pill";
 type SubTab = "verbs" | "phonetics" | "pos" | "abbrev" | "grammar";
+
+// r412 — چیپِ پیشرفتِ ماندگارِ هر بانکِ تمرین، کنارِ دکمهٔ «تمرین»؛
+// بی‌رکورد هیچ چیزی رندر نمیشود (قراردادِ صادقِ r234/r236). رکورد و
+// سیاستِ سفرش نزدِ lib/drill-stats + ردیفِ drillStatsِ جدولِ SyncField است.
+function DrillStatChip({ bankId }: { bankId: string }) {
+  const stat = useStudy((s) => s.drillStats[bankId]);
+  if (!stat) return null;
+  return (
+    <span
+      className="inline-flex items-center rounded-full bg-violet-50 px-2.5 py-1 text-[11px] font-black text-violet-700"
+      aria-label={`پیشرفت این تمرین: ${faNum(stat.sessions)} جلسهٔ کامل، بهترین ${percentFa(stat.bestPercent)}`}
+    >
+      {faNum(stat.sessions)} جلسه · بهترین {percentFa(stat.bestPercent)}
+    </span>
+  );
+}
 
 const subTabs: { key: SubTab; label: string; icon: React.ElementType }[] = [
   { key: "grammar", label: "درسنامهٔ جامع", icon: BookOpenCheck },
@@ -307,7 +323,8 @@ export default function AppendixView({
           />
         ) : (
           <>
-            <div className="mb-2 flex items-center justify-end">
+            <div className="mb-2 flex items-center justify-end gap-2">
+              <DrillStatChip bankId="verbs" />
               <button
                 onClick={() => setVerbDrill(true)}
                 aria-label="شروع تمرین افعال بی‌قاعده"
@@ -340,7 +357,8 @@ export default function AppendixView({
           />
         ) : (
           <>
-            <div className="mb-2 flex items-center justify-end">
+            <div className="mb-2 flex items-center justify-end gap-2">
+              <DrillStatChip bankId="phonemes" />
               <button
                 onClick={() => setPhonemeDrill(true)}
                 aria-label="شروع تمرین جدول تلفظ"
@@ -415,11 +433,12 @@ export default function AppendixView({
                 </span>
                 {/* r403 — دکمهٔ ورود به تمرین: همان ایدئومِ دکمهٔ verbs (راند ۲۳۹)؛
                     جدول پابرجا — دریل فقط با کلیک، دیپلینک هرگز */}
+                <DrillStatChip bankId="words" />
                 <button
                   onClick={() => setWordDrill(true)}
                   aria-label="شروع تمرین خانوادهٔ واژه‌ها"
                   title="ده پرسش از جدول‌های جزوه — معنی، صفت، قید، فعل و اسم"
-                  className="ms-auto inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-violet-200 bg-violet-50 px-3 text-[12px] font-black text-violet-700 transition-colors hover:bg-violet-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-200 active:scale-[0.96]"
+                  className="inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-violet-200 bg-violet-50 px-3 text-[12px] font-black text-violet-700 transition-colors hover:bg-violet-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-200 active:scale-[0.96]"
                 >
                   <GraduationCap size={15} aria-hidden />
                   تمرین
@@ -597,7 +616,8 @@ export default function AppendixView({
           />
         ) : (
           <>
-            <div className="mb-2 flex items-center justify-end">
+            <div className="mb-2 flex items-center justify-end gap-2">
+              <DrillStatChip bankId="abbrev" />
               <button
                 onClick={() => setAbbrevDrill(true)}
                 aria-label="شروع تمرین نشانه‌های اختصاری"

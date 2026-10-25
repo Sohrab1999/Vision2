@@ -33,6 +33,12 @@
 //    درسِ quizContext به دریل تعمیم یافت: جلسهٔ در حالِ پاسخ به همان
 //    شکنندگیِ جلسهٔ آزمون است. کلیدِ T فقط وقتی زنده است که پرسش
 //    شنیدنی دارد (speak) — گونهٔ بیچیپ T را نادیده میگیرد.
+// r412 — «دریلها واردِ استور میشوند»: پایانِ جلسهٔ کامل (نه مرورِ
+//    اشتباهها — زیرِجلسهٔ همان سؤالهاست) یک‌بار trackDrillResult صدا
+//    میزند — رکوردِ بانک {sessions, correct, total, bestPercent, lastDay}
+//    در جدولِ SyncField سفر میکند و جلسهٔ کامل، یک فعالیتِ آزمونگونه
+//    (زنجیره/هدف) است. میدانِ معرفی، پیشرفتِ ماندگارِ همان بانک را
+//    صادقانه نشان میدهد — بی‌رکورد، هیچ ادعایی رندر نمیشود.
 //
 // جریان: معرفی → پرسش‌ها (بازخوردِ درجا، بی تایمر — کاربر سرعته) →
 // نتیجهٔ صادق (درصد از مالکِ r388 + بازخوانیِ سؤالبهسؤال: بیپاسخ =
@@ -47,8 +53,9 @@
 //  · خطا/درست: خانوادهٔ rose/emerald — همان ایدئومِ practice.
 //  · TTS روی واژهٔ انگلیسیِ پرسش (ایدئومِ EnSpeakCellِ جدولِ r229) —
 //    فقط فعلِ هدف، نه گزینه‌ها (تمرکزِ شنیداری رویِ خودِ فعل).
-//  · هیچ چیز به استورِ یادگیری نمینویسد — جلسه از خودِ نما زنده است
-//    (ماندگاری/بانک خطا: نامزدِ راندهای بعد، نه این راند).
+//  · r412 — نوشتنیِ واحد به استور: فقط trackDrillResult در لحظهٔ
+//    پایانِ جلسهٔ کامل (r400 «هیچ نوشتنی» پسِ آمادگیِ SyncField منقضی شد —
+//    رکورد و سیاستِ ادغامش نزدِ lib/drill-stats + ردیفِ drillStats است).
 // ---------------------------------------------------------------------
 
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -60,6 +67,7 @@ import {
   type DrillSession,
 } from "@/lib/appendix-drill";
 import { setDrillActive } from "@/lib/drill-active";
+import { useStudy } from "@/lib/study-store";
 import { faNum, percentFa } from "@/lib/study-theme";
 import { isTypingTarget, readDigit, useKeydown } from "@/hooks/use-keyboard";
 import SpeakButton from "../shared/speak-button";
@@ -108,6 +116,9 @@ export default function AppendixDrillView({
   const [isReplay, setIsReplay] = useState(false);
   // r409 — دسترسیِ امریِ کیبورد به دکمهٔ چیپِ پرسشِ فعلی (میانبرِ T)
   const speakBtnRef = useRef<HTMLButtonElement | null>(null);
+  // r412 — نوشتنیِ واحد به استور + پیشرفتِ ماندگارِ این بانک (معرفی)
+  const trackDrillResult = useStudy((s) => s.trackDrillResult);
+  const bankStat = useStudy((s) => s.drillStats[spec.id]);
 
   // r409 — پرچمِ «جلسه در جریان است» نزدِ راهنمای سراسری: فقط در فازِ run
   // (معرفی هنوز جلسهای ندارد و نتیجه فقطخواندنی است — حروفِ ناوبری در
@@ -161,6 +172,11 @@ export default function AppendixDrillView({
   const next = () => {
     if (!session) return;
     if (idx + 1 >= session.size) {
+      // r412 — جلسهٔ کامل فقط یک‌بار ثبت میشود؛ مرورِ اشتباهها (r401)
+      // زیرِجلسهٔ همان سؤالهاست و هرگز دوبارهشماری نمیشود.
+      if (!isReplay && score) {
+        trackDrillResult(spec.id, score.correct, score.total);
+      }
       setPhase("done");
       return;
     }
@@ -211,6 +227,16 @@ export default function AppendixDrillView({
           {spec.title}
         </h2>
         <p className="mx-auto mt-2 max-w-md text-[12.5px] leading-6 text-stone-600">{spec.intro}</p>
+        {/* r412 — پیشرفتِ ماندگارِ این بانک؛ بی‌رکورد هیچ ادعایی رندر نمیشود */}
+        {bankStat && (
+          <p
+            className="mx-auto mt-3 inline-flex items-center gap-1.5 rounded-full bg-violet-50 px-3 py-1 text-[11.5px] font-black text-violet-700"
+            aria-label={`پیشرفت این تمرین: ${faNum(bankStat.sessions)} جلسهٔ کامل، بهترین ${percentFa(bankStat.bestPercent)}`}
+          >
+            <GraduationCap size={13} aria-hidden />
+            {faNum(bankStat.sessions)} جلسهٔ کامل · بهترین {percentFa(bankStat.bestPercent)}
+          </p>
+        )}
         <div className="mt-4 flex items-center justify-center gap-2">
           <button
             onClick={start}
