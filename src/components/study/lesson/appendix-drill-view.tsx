@@ -24,6 +24,15 @@
 //    سختسازی شد (max-w-full + break-words) تا در باریکترین عرضِ موبایل
 //    هم بشکند و بیرون نزند — برایِ چیپهایِ کوتاهِ بانکهایِ پیشین هیچ
 //    تغییرِ بصریای رخ نمیدهد.
+// r409 — «میانبرِ T و خاموشیِ حروفِ سراسری»: کلیدِ T روخوانیِ هدفِ پرسش
+//    است — همان دکمهٔ چیپ با ref امری کلیک میشود (استِ روخوانی/توقف و
+//    fail-toast همه نزدِ SpeakButton میماند — یک مالک) و نشانگرِ kbdِ
+//    «T» کنارِ چیپ میآید (ایدئومِ نشانگرِ رقمِ r402). و تا جلسه در
+//    جریان است، پرچمِ drill-active (استورِ خارجیِ lib/drill-active) روشن
+//    میماند تا راهنمای سراسری حروفِ ناوبری و ارقامِ تبِ درس را خاموش کند —
+//    درسِ quizContext به دریل تعمیم یافت: جلسهٔ در حالِ پاسخ به همان
+//    شکنندگیِ جلسهٔ آزمون است. کلیدِ T فقط وقتی زنده است که پرسش
+//    شنیدنی دارد (speak) — گونهٔ بیچیپ T را نادیده میگیرد.
 //
 // جریان: معرفی → پرسش‌ها (بازخوردِ درجا، بی تایمر — کاربر سرعته) →
 // نتیجهٔ صادق (درصد از مالکِ r388 + بازخوانیِ سؤالبهسؤال: بیپاسخ =
@@ -42,7 +51,7 @@
 //    (ماندگاری/بانک خطا: نامزدِ راندهای بعد، نه این راند).
 // ---------------------------------------------------------------------
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ArrowLeft, Check, GraduationCap, Repeat, RotateCcw, Volume2, X } from "lucide-react";
 import type { ReactNode } from "react";
 import {
@@ -50,6 +59,7 @@ import {
   scoreDrill,
   type DrillSession,
 } from "@/lib/appendix-drill";
+import { setDrillActive } from "@/lib/drill-active";
 import { faNum, percentFa } from "@/lib/study-theme";
 import { isTypingTarget, readDigit, useKeydown } from "@/hooks/use-keyboard";
 import SpeakButton from "../shared/speak-button";
@@ -96,6 +106,17 @@ export default function AppendixDrillView({
   const [picked, setPicked] = useState<number | null>(null);
   // r401 — نتیجهٔ فعلی مالِ جلسهٔ مرور است؟ (سرصفحهٔ صادق: «نتیجهٔ مرور»)
   const [isReplay, setIsReplay] = useState(false);
+  // r409 — دسترسیِ امریِ کیبورد به دکمهٔ چیپِ پرسشِ فعلی (میانبرِ T)
+  const speakBtnRef = useRef<HTMLButtonElement | null>(null);
+
+  // r409 — پرچمِ «جلسه در جریان است» نزدِ راهنمای سراسری: فقط در فازِ run
+  // (معرفی هنوز جلسهای ندارد و نتیجه فقطخواندنی است — حروفِ ناوبری در
+  // آن دو فاز آزاد میمانند)؛ پاکسازیِ unmount هم خاموش میکند (رفتن
+  // با ناوبریِ خودِ میزبان نباید پرچم را روشن جا بگذارد).
+  useEffect(() => {
+    setDrillActive(phase === "run");
+    return () => setDrillActive(false);
+  }, [phase]);
 
   const score = useMemo(
     () => (session ? scoreDrill(session.questions, answers) : null),
@@ -149,12 +170,24 @@ export default function AppendixDrillView({
 
   // r402 — کیبوردِ دریل: فقط در فازِ run زنده است؛ رقمِ ۱-۴ (هر چیدمان)
   // گزینه انتخاب میکند و Enter/← پسِ پاسخ پیش میرود — عینِ ایدئومِ کوئیز.
-  // حروفِ ناوبریِ سراسری دستنخوردهاند (این شنونده فقط رقم/Enter/← میخواند).
+  // r409 — کلیدِ T روخوانیِ هدفِ پرسش است: اگر پرسش شنیدنی دارد، همان
+  // دکمهٔ چیپ کلیک میشود (کلیکِ دوم همان «توقفِ» خودِ چیپ است)؛ گونهٔ
+  // بیچیپ (speak ندارد) T را نادیده میگیرد — قراردادِ r230: پاسخ هرگز
+  // شنیدنیِ پرسش نیست، پس چیپِ نداشتن یعنی هیچ شنیدنیِ مالکیتی نیست.
+  // حروفِ ناوبریِ سراسری حینِ run با پرچمِ drill-active خاموشاند
+  // (راهنمای سراسری مصرفکنندهٔ همان پرچم است) — اینجا فقط T و رقم/Enter/←.
   useKeydown((e) => {
     if (phase !== "run" || !session) return;
     if (isTypingTarget(e)) return;
     const q = session.questions[idx];
     if (!q) return;
+    if (e.code === "KeyT") {
+      if (q.speak && speakBtnRef.current) {
+        e.preventDefault();
+        speakBtnRef.current.click(); // استِ روخوانی/توقف نزدِ چیپ میماند
+      }
+      return; // T در هر حال مالِ دریل است — به پوسته نشت نکند
+    }
     const num = readDigit(e);
     if (num !== null && num >= 1 && num <= q.options.length) {
       if (picked === null) {
@@ -339,7 +372,16 @@ export default function AppendixDrillView({
         {q.speak && (
           <span className="inline-flex max-w-full items-center gap-1" dir="ltr">
             <span className="en-text min-w-0 break-words text-violet-700">{q.speak}</span>
-            <SpeakButton text={q.speak} size="sm" />
+            {/* r409 — میانبرِ T: همین دکمه با ref امری کلیک میشود؛ نشانگرِ
+                kbdِ حرف، ایدئومِ نشانگرِ رقمِ r402 (aria-hidden — روایتِ
+                کیبورد در aria-labelهایِ خودِ نما هست) */}
+            <SpeakButton ref={speakBtnRef} text={q.speak} size="sm" />
+            <span
+              aria-hidden
+              className="inline-flex h-5 min-w-[20px] shrink-0 items-center justify-center rounded-md border border-emerald-200 bg-emerald-50 px-1 font-mono text-[10.5px] font-bold text-emerald-700 shadow-[0_1px_0_0_#d1fae5]"
+            >
+              T
+            </span>
           </span>
         )}
         <Volume2 size={13} aria-hidden className="sr-only" />

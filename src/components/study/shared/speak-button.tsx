@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type Ref } from "react";
 import { Volume2, Loader2, Square } from "lucide-react";
 import { speak, speakFailToast } from "@/lib/speak";
 
@@ -13,6 +13,10 @@ interface SpeakButtonProps {
   /** راند ۲۳۴ — کنشِ اختیاریِ هم‌زمانِ شروعِ روخوانی؛ جدولِ افعال با آن
    * «آخرین فعلِ شنیده‌شده» را ثبت می‌کند (سوختِ «ادامهٔ مطالعه»). */
   onSpeak?: () => void;
+  /** راند ۴۰۹ — دسترسیِ امریِ کیبوردِ دریل: میانبرِ T همان دکمه را
+   * کلیک میکند (استِ روخوانی/توقف و fail-toast همه نزدِ همین مالک میماند).
+   * React 19 — ref بهعنوانِ prop؛ همهٔ مصرفکنندگانِ دیگر بیاثر (اختیاری). */
+  ref?: Ref<HTMLButtonElement>;
 }
 
 export default function SpeakButton({
@@ -22,6 +26,7 @@ export default function SpeakButton({
   className = "",
   label,
   onSpeak,
+  ref: btnRef,
 }: SpeakButtonProps) {
   const [state, setState] = useState<"idle" | "loading" | "playing">("idle");
   const stopRef = useRef<(() => void) | null>(null);
@@ -70,6 +75,7 @@ export default function SpeakButton({
   return (
     <button
       type="button"
+      ref={btnRef}
       onClick={handle}
       title="روخوانی با هوش مصنوعی"
       aria-label="روخوانی متن انگلیسی"

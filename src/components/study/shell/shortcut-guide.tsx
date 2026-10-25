@@ -15,6 +15,13 @@ import { RESUME_DOOR_COVERAGE } from "@/lib/resume-door-coverage";
 import { RETURN_CLUSTER_DOORS, RETURN_HOME_OPEN_LABEL } from "@/lib/return-cluster-doors";
 import { faNum, RESUME_FOCUS_RING } from "@/lib/study-theme";
 import { isTypingTarget, useKeydown } from "@/hooks/use-keyboard";
+// r409 — پرچمِ «دریل در جریان است» — تعمیمِ quizContext به دریلهایِ
+// خانوادهٔ نما؛ مالکِ نوشتن AppendixDrillView (فازِ run) است
+import {
+  subscribeDrillActive,
+  drillActiveSnapshot,
+  drillActiveServerSnapshot,
+} from "@/lib/drill-active";
 // r381 — پرشِ داشبورد از کارتِ راهنما: عینِ قراردادِ پالتِ r372 — کتابخانهٔ
 // دامنه مالکِ پرش و پرچم است؛ و گیتِ پیشرفت هم از موتورِ تکمنبعِ همان‌جا
 import { requestSrsSpotlight, focusSrsDashboard, hasProgressOf } from "@/lib/srs-due";
@@ -81,14 +88,16 @@ const GROUPS: { title: string; icon: React.ElementType; rows: Row[] }[] = [
     ],
   },
   {
-    // r402..r408 — گروهِ تمرینهای چهارگزینه‌ای: همان ایدئومِ کوئیز برایِ هر شش بانک
+    // r402..r409 — گروهِ تمرینهای چهارگزینه‌ای: همان ایدئومِ کوئیز برایِ هر شش بانک
     // (فعلِ r400، واژهِ r403، نشانهٔ r404، تلفظِ r405، مثالهایِ درسنامهٔ r406 و
     // واژگانِ r407 — که r408 مقیاسِ سراسریِ دیکشنریاش هم آمد) — ثبتِ صادق در راهنما
+    // r409 — میانبرِ T: روخوانیِ هدفِ پرسش وقتی پرسش شنیدنی دارد (دکمهٔ چیپ)
     title: "تمرین‌های چهارگزینه‌ای (فعل، واژه، نشانه، تلفظ، درسنامه و واژگانِ درس و دیکشنری)",
     icon: GraduationCap,
     rows: [
       { keys: ["1", "…", "4"], desc: "انتخاب گزینه (ارقام فارسی و لاتین، هر چیدمان)" },
       { keys: ["Enter", "←"], desc: "پرسش بعدی — فقط پس از پاسخ" },
+      { keys: ["T"], desc: "روخوانیِ هدفِ پرسش — وقتی پرسش شنیدنی دارد" },
     ],
   },
 ];
@@ -137,6 +146,15 @@ export default function ShortcutGuide() {
   const libraryDone = useStudy((s) => s.libraryDone) ?? {};
   const hasProgress = hasProgressOf(known, results, srsMap, libraryDone);
   const { theme, setTheme } = useTheme();
+  // r409 — پرچمِ «دریل در جریان است»: تا جلسهٔ دریل پاسخ میخورد، حروفِ
+  // ناوبری و ارقامِ تبِ درس خاموش میمانند (جلسهٔ در حالِ پاسخ به همان
+  // شکنندگیِ جلسهٔ آزمون است — درسِ quizContext) و کلیدِ T هم مالِ دریل
+  // است (روخوانیِ هدف)، نه پوسته (شب/روز). بی هزینه: snapshotِ boolean.
+  const drillActive = useSyncExternalStore(
+    subscribeDrillActive,
+    drillActiveSnapshot,
+    drillActiveServerSnapshot,
+  );
   // راند ۲۴۳ — درِ هدر فقط وقتی «هست» که رکوردی باشد و رویِ خودِ ضمیمه
   // نباشیم (قراردادِ صداقتِ r236: بی‌رکورد هیچ کنشِ ساختگی). همان ایدئومِ
   // storeِ خارجیِ دکمهٔ هدر — هیدریشنِ صادقانه با snapshotِ سرورِ null.
@@ -230,6 +248,11 @@ export default function ShortcutGuide() {
   // so they can't wipe an in-progress session (quiz uses 1-4 itself)
   const quizContext =
     view.type === "exam" || view.type === "rush" || view.type === "duel" || view.type === "konkur" || (view.type === "lesson" && lessonTab === "tests");
+  // r409 — دریلِ در حالِ اجرا در همان خانوادهٔ quizContext است: حروفِ
+  // ناوبری (H/D/E/A/C/V/G/M/T) و ارقامِ تبِ درس وسطِ جلسه نباید جلسه را
+  // ببرند یا تب را عوض کنند. کلیدِ «؟» (بالایِ گارد) پابرجا — باز کردنِ
+  // راهنما جلسه را نمیبُرد.
+  const drillContext = drillActive;
 
   // global shortcuts + «؟» toggle (layout-independent: matches e.code)
   useKeydown((e) => {
@@ -241,7 +264,7 @@ export default function ShortcutGuide() {
       setOpen((v) => !v);
       return;
     }
-    if (open || quizContext) return; // dialog handles its own Escape
+    if (open || quizContext || drillContext) return; // dialog handles its own Escape
     const code = e.code;
     if (code === "KeyH") setView({ type: "home" });
     else if (code === "KeyD") setView({ type: "dictionary" });
