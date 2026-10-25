@@ -26,6 +26,11 @@ import type { QuizResult } from "@/lib/study-types";
 import { percent } from "@/lib/domain/percent";
 import { sanitizeDuelHistory, mergeDuelHistory, type DuelRecord } from "@/lib/duel-history";
 import { sanitizeDrillStats, mergeDrillStats, type DrillStatMap } from "@/lib/drill-stats";
+import {
+  sanitizeDrillMistakes,
+  mergeDrillMistakes,
+  type DrillMistakeMap,
+} from "@/lib/drill-mistakes";
 import { DEFAULT_SETTINGS, type StudySettings } from "@/state/types";
 import type {
   DayHistoryMap,
@@ -91,6 +96,9 @@ export interface SyncData {
   starredWords?: string[];
   /** r412 «پیشرفتِ تمرینها» — per-bank drill mastery; legacy payloads may omit them */
   drillStats?: DrillStatMap;
+  /** r413 «بانکِ خطایِ ماندگارِ دریلها» — per-bank risk map keyed by the
+   *  question base (bank+base); legacy payloads may omit them */
+  drillMistakes?: DrillMistakeMap;
   /** Phase-0 «اعتماد» — identity moves as a pair, only to
    *  identity-less devices (special-cased in mergeAll). */
   userId?: string;
@@ -464,9 +472,12 @@ export const SYNC_FIELDS: SyncFieldMap = {
   libraryDone: { sanitize: sanitizeLibraryDone, merge: mergeLibraryDone },
   // starred word keys — union keeps both devices' stars, cap 2000 (newest survive)
   starredWords: { sanitize: stringList(2000), merge: unionCapped(2000) },
-  // r412 «دریلها واردِ استور میشوند» — per-bank mastery; cloud merge sums the
-  // real work of both devices (best percent + newest day win)
+  // r412 «دریلها واردِ استور میشوند» — per-bank mastery; cloud merge takes
+  // the max of every counter (best percent + newest day win)
   drillStats: { sanitize: sanitizeDrillStats, merge: mergeDrillStats },
+  // r413 «بانکِ خطایِ ماندگار» — risk map (max of wrong/lastDay; rows are
+  // never removed, so max-merge stays resurrection-proof — wordMistakes idiom)
+  drillMistakes: { sanitize: sanitizeDrillMistakes, merge: mergeDrillMistakes },
   userId: { sanitize: sanitizeUserId },
   userSecret: { sanitize: sanitizeUserSecret },
 };

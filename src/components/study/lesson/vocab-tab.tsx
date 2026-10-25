@@ -17,9 +17,11 @@ import { lessons } from "@/data";
 import { WORD_FAMILY_LESSON_LINKS, wordFamilyTableId } from "@/data/word-families";
 import Flashcards from "./flashcards";
 import WordFamilyTableCard from "./word-family-table-card";
+import DrillStatChip from "./drill-stat-chip"; // r413 — چیپِ مشترکِ پیشرفتِ تمرین کنارِ دکمهٔ ورود
 // r407 — ششمین بانک روی نمایِ مشترکِ r403 — نخستین بانکِ ساکن در خودِ درس:
 // تبِ واژگان صاحبِ تمرین میشود؛ ورود فقط با کلیک (قراردادِ r234/r403..r406 —
-// هیچ دیپلینکی دریل را بالا نمیآورد) و هیچ نوشتنی به استورِ یادگیری نیست.
+// هیچ دیپلینکی دریل را بالا نمیآورد)؛ نوشتنیِ جلسه (رکوردِ r412 و بانکِ
+// خطایِ r413) فقط نزدِ نمایِ مشترک است — بلدم/ستارهٔ کارتها دستنخورده.
 import AppendixDrillView, { type DrillViewSpec } from "./appendix-drill-view";
 import {
   buildLessonVocabDrillSession,
@@ -179,6 +181,9 @@ export default function VocabTab({
             تمرین واژه‌ها
           </button>
         )}
+        {/* r413 — پیشرفتِ ماندگارِ بانکِ واژگانِ درس کنارِ دکمهٔ ورود؛
+            بی‌رکورد هیچ (قراردادِ صادقِ چیپِ مشترکِ r412) */}
+        <DrillStatChip bankId="lesson-vocab" />
       </div>
 
       {/* filters */}

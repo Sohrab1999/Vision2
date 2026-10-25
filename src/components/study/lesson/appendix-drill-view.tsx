@@ -39,6 +39,12 @@
 //    در جدولِ SyncField سفر میکند و جلسهٔ کامل، یک فعالیتِ آزمونگونه
 //    (زنجیره/هدف) است. میدانِ معرفی، پیشرفتِ ماندگارِ همان بانک را
 //    صادقانه نشان میدهد — بی‌رکورد، هیچ ادعایی رندر نمیشود.
+// r413 — «بانکِ خطایِ ماندگار»: پایانِ همان جلسهٔ کامل، پایههایِ
+//    نادرست/بیپاسخ را هم به trackDrillMistakes میسپارد (هر رخدادِ نادرست
+//    یک واحد — کلیدِ بانک+base نزدِ lib/drill-mistakes)؛ معرفی، چیپِ
+//    رزگونِ «N موردِ خطای ثبتشده» را فقط با رکورد بالا میآورد — ردیفها
+//    هرگز حذف نمیشوند (ادغامِ بیشترین با حذف سازگار نیست)، پس چیپ
+//    «ثبتشده» میگوید و هیچ ادعایِ «حلشده»ای ندارد.
 //
 // جریان: معرفی → پرسش‌ها (بازخوردِ درجا، بی تایمر — کاربر سرعته) →
 // نتیجهٔ صادق (درصد از مالکِ r388 + بازخوانیِ سؤالبهسؤال: بیپاسخ =
@@ -53,9 +59,11 @@
 //  · خطا/درست: خانوادهٔ rose/emerald — همان ایدئومِ practice.
 //  · TTS روی واژهٔ انگلیسیِ پرسش (ایدئومِ EnSpeakCellِ جدولِ r229) —
 //    فقط فعلِ هدف، نه گزینه‌ها (تمرکزِ شنیداری رویِ خودِ فعل).
-//  · r412 — نوشتنیِ واحد به استور: فقط trackDrillResult در لحظهٔ
-//    پایانِ جلسهٔ کامل (r400 «هیچ نوشتنی» پسِ آمادگیِ SyncField منقضی شد —
-//    رکورد و سیاستِ ادغامش نزدِ lib/drill-stats + ردیفِ drillStats است).
+//  · r412 — نوشتنی به استور: trackDrillResult در لحظهٔ پایانِ جلسهٔ کامل
+//    (r400 «هیچ نوشتنی» پسِ آمادگیِ SyncField منقضی شد — رکورد و سیاستِ
+//    ادغامش نزدِ lib/drill-stats + ردیفِ drillStats است)؛ r413 — نوشتنیِ
+//    دومِ همان لحظه: trackDrillMistakes (بانکِ خطا — lib/drill-mistakes +
+//    ردیفِ drillMistakes). مرورِ اشتباهها هرگز به هیچ‌کدام عبور نمیکند.
 // ---------------------------------------------------------------------
 
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -117,8 +125,13 @@ export default function AppendixDrillView({
   // r409 — دسترسیِ امریِ کیبورد به دکمهٔ چیپِ پرسشِ فعلی (میانبرِ T)
   const speakBtnRef = useRef<HTMLButtonElement | null>(null);
   // r412 — نوشتنیِ واحد به استور + پیشرفتِ ماندگارِ این بانک (معرفی)
+  // r413 — بانکِ خطایِ ماندگار: ثبتِ پایههایِ نادرست + چیپِ صادقِ معرفی
   const trackDrillResult = useStudy((s) => s.trackDrillResult);
+  const trackDrillMistakes = useStudy((s) => s.trackDrillMistakes);
   const bankStat = useStudy((s) => s.drillStats[spec.id]);
+  const mistakeCount = useStudy((s) =>
+    s.drillMistakes[spec.id] ? Object.keys(s.drillMistakes[spec.id]!).length : 0,
+  );
 
   // r409 — پرچمِ «جلسه در جریان است» نزدِ راهنمای سراسری: فقط در فازِ run
   // (معرفی هنوز جلسهای ندارد و نتیجه فقطخواندنی است — حروفِ ناوبری در
@@ -174,8 +187,16 @@ export default function AppendixDrillView({
     if (idx + 1 >= session.size) {
       // r412 — جلسهٔ کامل فقط یک‌بار ثبت میشود؛ مرورِ اشتباهها (r401)
       // زیرِجلسهٔ همان سؤالهاست و هرگز دوبارهشماری نمیشود.
+      // r413 — پایههایِ نادرست/بیپاسخِ همان جلسه (به ترتیبِ پرسشها،
+      // هر رخداد یک واحد — dedup نزدِ موتور نیست، سیاستِ شمارشِ صادق
+      // است) به بانکِ خطایِ ماندگار میرود؛ مرورِ زیرجلسه از این در عبور
+      // نمیکند (گاردِ isReplay) — حکمِ r401 پابرجا.
       if (!isReplay && score) {
         trackDrillResult(spec.id, score.correct, score.total);
+        const wrongBases = session.questions
+          .filter((qq, i) => answers[i] !== qq.answer)
+          .map((qq) => qq.base);
+        if (wrongBases.length > 0) trackDrillMistakes(spec.id, wrongBases);
       }
       setPhase("done");
       return;
@@ -235,6 +256,18 @@ export default function AppendixDrillView({
           >
             <GraduationCap size={13} aria-hidden />
             {faNum(bankStat.sessions)} جلسهٔ کامل · بهترین {percentFa(bankStat.bestPercent)}
+          </p>
+        )}
+        {/* r413 — بانکِ خطایِ ماندگار: چیپِ رزگون فقط با رکورد — «ثبتشده»
+            میگوید (ردیفها هرگز حذف نمیشوند — حکمِ max-merge) و هیچ ادعای
+            «باز/حلشده»ای ندارد؛ خانوادهٔ رزگِ خطا (ایدئومِ practice) */}
+        {mistakeCount > 0 && (
+          <p
+            className="mx-auto mt-2 inline-flex items-center gap-1.5 rounded-full bg-rose-50 px-3 py-1 text-[11.5px] font-black text-rose-700"
+            aria-label={`بانک خطاهای این تمرین: ${faNum(mistakeCount)} مورد ثبتشده`}
+          >
+            <X size={13} aria-hidden />
+            {faNum(mistakeCount)} موردِ خطای ثبتشده
           </p>
         )}
         <div className="mt-4 flex items-center justify-center gap-2">

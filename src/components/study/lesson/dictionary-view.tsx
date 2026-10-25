@@ -19,11 +19,12 @@ import { buildPairsDrillQuiz, SYN_QUIZ_CAP } from "@/lib/syn-ant-quiz";
 import type { QuizQuestion } from "@/lib/study-types";
 import SpeakButton from "../shared/speak-button";
 import QuizEngine from "../quiz/quiz-engine";
+import DrillStatChip from "./drill-stat-chip"; // r413 — چیپِ مشترکِ پیشرفتِ تمرین کنارِ دکمهٔ ورود
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { fileFailToast } from "@/lib/file-download";
 // r408 — مقیاسِ سراسریِ بانکِ واژگانِ r407: دیکشنری صاحبِ تمرینِ کلِ ۴۰۳۲ واژه
 // میشود — همان موتور، همان کیبورد، همان مرورِ موضعی؛ ورود فقط با کلیک و
-// هیچ نوشتنی به استورِ یادگیری (حکمِ r400..r407).
+// نوشتنیِ جلسه (رکوردِ r412 و بانکِ خطایِ r413) فقط نزدِ نمایِ مشترک است.
 import AppendixDrillView, { type DrillViewSpec } from "./appendix-drill-view";
 import {
   buildLessonVocabDrillSession,
@@ -374,6 +375,8 @@ export default function DictionaryView() {
               تمرین واژه‌ها
             </button>
           )}
+          {/* r413 — پیشرفتِ ماندگارِ بانکِ دیکشنری کنارِ دکمهٔ ورود؛ بی‌رکورد هیچ */}
+          <DrillStatChip bankId="dict-vocab" />
         </div>
         <div className="relative mb-3">
           <Search size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-500" />

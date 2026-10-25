@@ -30,6 +30,7 @@ import {
 } from "lucide-react";
 import SpeakButton from "@/components/study/shared/speak-button";
 import AppendixDrillView, { type DrillViewSpec } from "./appendix-drill-view"; // r406 — بانکِ پنجمِ نمایِ مشترک
+import DrillStatChip from "./drill-stat-chip"; // r413 — چیپِ مشترکِ پیشرفتِ تمرین کنارِ دکمهٔ ورود
 import { buildBgExampleDrillSession } from "@/lib/appendix-bg-example-drill";
 import { DRILL_SIZE } from "@/lib/appendix-drill";
 import {
@@ -346,6 +347,8 @@ export default function BookletGrammarView({
             <GraduationCap size={13} />
             تمرین مثال‌ها
           </button>
+          {/* r413 — پیشرفتِ ماندگارِ بانکِ درسنامه کنارِ دکمهٔ ورود؛ بی‌رکورد هیچ */}
+          <DrillStatChip bankId="bg-examples" />
         </div>
           {/* راند ۲۲۸ — پنلِ فهرستِ پرش: ۳۲ چیپ در ۳ گروهِ جزوه — نشانِ توپُر =
               موضوعِ باز، یک نگاه، کلِ نقشهٔ درسنامه؛ کلیک = پرشِ محلی + بستن */}

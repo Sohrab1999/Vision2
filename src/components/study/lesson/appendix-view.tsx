@@ -24,23 +24,8 @@ import PhoneticsTable from "./phonetics-table";
 import AbbreviationsTable from "./abbreviations-table";
 import WordFamilyTableCard from "./word-family-table-card";
 import AppendixResumePill from "./appendix-resume-pill";
+import DrillStatChip from "./drill-stat-chip"; // r413 — چیپِ مشترک (از همین فایل کوچید؛ سه میزبانِ دیگر هم مصرف میکنند)
 type SubTab = "verbs" | "phonetics" | "pos" | "abbrev" | "grammar";
-
-// r412 — چیپِ پیشرفتِ ماندگارِ هر بانکِ تمرین، کنارِ دکمهٔ «تمرین»؛
-// بی‌رکورد هیچ چیزی رندر نمیشود (قراردادِ صادقِ r234/r236). رکورد و
-// سیاستِ سفرش نزدِ lib/drill-stats + ردیفِ drillStatsِ جدولِ SyncField است.
-function DrillStatChip({ bankId }: { bankId: string }) {
-  const stat = useStudy((s) => s.drillStats[bankId]);
-  if (!stat) return null;
-  return (
-    <span
-      className="inline-flex items-center rounded-full bg-violet-50 px-2.5 py-1 text-[11px] font-black text-violet-700"
-      aria-label={`پیشرفت این تمرین: ${faNum(stat.sessions)} جلسهٔ کامل، بهترین ${percentFa(stat.bestPercent)}`}
-    >
-      {faNum(stat.sessions)} جلسه · بهترین {percentFa(stat.bestPercent)}
-    </span>
-  );
-}
 
 const subTabs: { key: SubTab; label: string; icon: React.ElementType }[] = [
   { key: "grammar", label: "درسنامهٔ جامع", icon: BookOpenCheck },

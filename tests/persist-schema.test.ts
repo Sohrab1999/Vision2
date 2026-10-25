@@ -20,6 +20,7 @@ import {
 } from "@/lib/persist/schema";
 import { parseBackup, BACKUP_VERSION } from "@/lib/backup";
 import type { SyncData } from "@/lib/persist/schema";
+import { mergeDrillMistakes } from "@/lib/drill-mistakes";
 import { useStudy } from "@/lib/study-store";
 
 /** the agreed persisted-field roster, in canonical order */
@@ -59,6 +60,8 @@ const CANONICAL_SYNC_KEYS = [
   "starredWords",
   // r412 «دریلها واردِ استور میشوند» — per-bank drill mastery (max-merge)
   "drillStats",
+  // r413 «بانکِ خطایِ ماندگارِ دریلها» — per-bank risk map (max-merge)
+  "drillMistakes",
   "userId",
   "userSecret",
 ] as const;
@@ -125,6 +128,7 @@ describe("sanitizeAll — defaults and idempotence", () => {
     expect(d.konkurSeen).toEqual({});
     expect(d.starredWords).toEqual([]);
     expect(d.drillStats).toEqual({});
+    expect(d.drillMistakes).toEqual({});
     expect(d.userId).toBeUndefined();
     expect(d.userSecret).toBeUndefined();
   });
@@ -150,6 +154,7 @@ describe("sanitizeAll — defaults and idempotence", () => {
       konkurSeen: { "x-21": true, "x-26": false, "x-34": 1 },
       starredWords: [42, "1:ability", null, "2:zone"],
       drillStats: { verbs: { sessions: 2, correct: 15, total: 20, bestPercent: 150, lastDay: "nope" }, "BAD KEY": { sessions: 1, total: 4 } },
+      drillMistakes: { verbs: { go: { wrong: 99_999_999, lastDay: 7 }, "": { wrong: 2 } }, "BAD KEY": { go: { wrong: 1 } } },
       userId: "abc",
       userSecret: "not-hex-at-all",
     };
@@ -174,6 +179,9 @@ describe("sanitizeAll — defaults and idempotence", () => {
     expect(once.drillStats).toEqual({
       verbs: { sessions: 2, correct: 15, total: 20, bestPercent: 100, lastDay: "" },
     }); // بیقرارداد افتاد؛ clampها نشستند
+    expect(once.drillMistakes).toEqual({
+      verbs: { go: { wrong: 9999, lastDay: "" } },
+    }); // سقفِ wrong نشست، روزِ بیقرارداد تهی شد؛ پایهٔ تهی و بانکِ بیقرارداد افتادند
     expect(once.userId).toBeUndefined();
     expect(once.userSecret).toBeUndefined();
   });
@@ -216,6 +224,8 @@ describe("backup ↔ restore ↔ cloud-merge round-trip", () => {
       starredWords: ["1:ability", "2:zone"],
       // r412 — drill mastery travels like every other domain
       drillStats: { verbs: { sessions: 3, correct: 24, total: 30, bestPercent: 90, lastDay: "2026-10-09" } },
+      // r413 — the drill mistake bank travels like every other domain
+      drillMistakes: { verbs: { go: { wrong: 2, lastDay: "2026-10-09" } } },
       userId: "learner-12345",
       userSecret: "ab".repeat(24),
     });
@@ -279,6 +289,22 @@ describe("backup ↔ restore ↔ cloud-merge round-trip", () => {
     // a bank only the remote device practiced is not lost
     const remoteOnly = { ...trusted(), drillStats: { phonemes: { sessions: 1, correct: 7, total: 10, bestPercent: 70, lastDay: "2026-10-24" } } };
     expect(mergeAll(trusted(), remoteOnly).drillStats!.phonemes).toBeDefined();
+  });
+
+  it("drill mistakes: risk rows are never removed — max-merge keeps both devices' wrongs and stays round-trip stable", () => {
+    // two devices — the bigger wrong count and the newer day win; rows are
+    // never deleted (a local removal would resurrect from the cloud), so
+    // max is the only merge policy that honors merge(a, cloud(a)) === a
+    const local = { ...trusted(), drillMistakes: { verbs: { go: { wrong: 3, lastDay: "2026-10-20" } } } };
+    const remote = { ...trusted(), drillMistakes: { verbs: { go: { wrong: 1, lastDay: "2026-10-24" }, come: { wrong: 2, lastDay: "2026-10-23" } } } };
+    const merged = mergeAll(local, remote);
+    expect(merged.drillMistakes).toEqual({
+      verbs: { go: { wrong: 3, lastDay: "2026-10-24" }, come: { wrong: 2, lastDay: "2026-10-23" } },
+    });
+    // a base only the remote device missed is not lost (come survives)
+    // and the merged map honors the hard R-1 round-trip
+    const roundTrip = JSON.parse(JSON.stringify(merged.drillMistakes));
+    expect(mergeDrillMistakes(merged.drillMistakes, roundTrip)).toEqual(merged.drillMistakes);
   });
 
   it("merge output covers every synced field (no silently dropped domain)", () => {
