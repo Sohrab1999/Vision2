@@ -33,11 +33,13 @@
 //      را بکشد). رسیدن با لنگر ثبت نمی‌کند — فقط می‌رسد.
 // ---------------------------------------------------------------------
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Search, Volume2, X } from "lucide-react";
 import { vowelPhonemes, consonantPhonemes, type Phoneme } from "@/data/appendix";
 import { faNum } from "@/lib/study-theme";
 import { writeAppendixResume } from "@/lib/bg-reading";
+import { setListenSurface } from "@/lib/listen-surface";
+import { isTypingTarget, useKeydown } from "@/hooks/use-keyboard";
 import SpeakButton from "../shared/speak-button";
 
 type PhonemeGroup = "صدادار" | "بی‌صدا";
@@ -81,13 +83,28 @@ function PhonemeCard({
   meta,
   pulsing,
   onSpeak,
+  chipKey,
+  registerChip,
 }: {
   p: Phoneme;
   meta: (typeof GROUP_META)[PhonemeGroup];
   pulsing?: boolean;
   onSpeak?: () => void;
+  /** r411 — ثبتِ دکمهٔ چیپ در دفترِ والد تا میانبرِ T بتواند «آخرین واکِ
+   *  شنیده» را از مسیرِ خودِ چیپ کلیک کند (ایدئومِ جدولِ افعالِ r410). */
+  chipKey?: string;
+  registerChip?: (key: string, el: HTMLButtonElement | null) => void;
 }) {
   const faName = p.fa.replace(/\s*\/\s*$/, "");
+  // r411 — درسِ تستِ r410: refِ inline در هر رندر تابعِ تازهای میسازد و
+  // دفترِ چیپها را میشوید؛ refِ پایدار (useCallback رویِ ورودیهایِ پایدار)
+  // فقط با خروجِ واقعیِ چیپ از DOM جدا میشود.
+  const chipRef = useCallback(
+    (el: HTMLButtonElement | null) => {
+      if (chipKey && registerChip) registerChip(chipKey, el);
+    },
+    [chipKey, registerChip],
+  );
   return (
     <div
       id={`ph-${p.symbol}`}
@@ -103,7 +120,12 @@ function PhonemeCard({
       <div className="text-[12px] text-stone-500">{faName}</div>
       <div className={`en-text mt-1.5 flex items-center gap-1.5 text-[12.5px] font-semibold ${meta.example}`} dir="ltr">
         <span className="min-w-0 break-words">{p.example}</span>
-        <SpeakButton text={p.example} size="sm" onSpeak={onSpeak} />
+        <SpeakButton
+          text={p.example}
+          size="sm"
+          onSpeak={onSpeak}
+          ref={chipKey && registerChip ? chipRef : undefined}
+        />
       </div>
     </div>
   );
@@ -152,6 +174,58 @@ export default function PhoneticsTable({
       hint: p.example,
     });
   };
+
+  // ---------------------------------------------------------------------
+  // r411 — میانبرِ T در جدولِ تلفظ: «دوبارهشنیدنِ آخرین واکِ شنیده» —
+  // عینِ ایدئومِ جدولِ افعالِ r410:
+  //  · دفترِ چیپها: chipKey (نشانهٔ واک) ← دکمه؛ ref-callbackهایِ پایدار
+  //    دفتر را همیشه تازه نگه میدارند (جست‌وجو/فیلتر سطرها را جابه‌جا
+  //    میکنند) و خروجِ چیپِ «آخرین شنیده» از DOM هدف را صادقانه تهی میکند.
+  //  · lastHeard فقط با «شروعِ روخوانی» ثبت میشود (onSpeak پیش از هر
+  //    تلاشِ شبکه) — کلیکِ توقفِ چیپِ در حالِ پخش، آخرین شنیده را عوض نمیکند.
+  //  · T = کلیکِ امریِ همان چیپ: playing توقف، idle دوبارهخوانی — استِ
+  //    روخوانی نزدِ مالکِ چیپ (درسِ r409). T هیچ ناوبریای نمیکند.
+  //  · بی‌شنیده: T اینجا ساکت است و پرچمِ سطحِ شنیدار خاموش — T همان
+  //    شب/روزِ پوسته میماند (صداقتِ r236: بی‌هدف، هیچ).
+  //  · نشانهٔ IPA روخوانی نمیشود (تصمیمِ صداقتِ r230) — چیپ، «واژهٔ
+  //    نمونهٔ» واک را میخواند و همین هدفِ T است.
+  // ---------------------------------------------------------------------
+  const chipRefs = useRef(new Map<string, HTMLButtonElement>());
+  const [lastHeardKey, setLastHeardKey] = useState<string | null>(null);
+
+  // پایدار (useCallback []) — ناپایداریِ این تابع یعنی detach/reattachِ
+  // همهٔ چیپها در هر رندر (همان درسِ refِ inlineِ r410)
+  const registerChip = useCallback((key: string, el: HTMLButtonElement | null) => {
+    if (el) {
+      chipRefs.current.set(key, el);
+    } else {
+      chipRefs.current.delete(key);
+      // چیپِ «آخرین شنیده» از DOM رفت (جست‌وجو/فیلتر گروه) — هدفِ T تهی؛
+      // T به پوسته برمی‌گردد (پرچم در effectِ زیر خاموش میشود)
+      setLastHeardKey((k) => (k === key ? null : k));
+    }
+  }, []);
+
+  const markHeard = useCallback((key: string) => setLastHeardKey(key), []);
+
+  // پرچمِ سطحِ شنیدار — فقط با «آخرین شنیدهٔ» زنده روشن؛ خروجِ جدول همیشه خاموش
+  useEffect(() => {
+    setListenSurface(lastHeardKey !== null);
+  }, [lastHeardKey]);
+  useEffect(() => {
+    return () => {
+      setListenSurface(false);
+    };
+  }, []);
+
+  useKeydown((e) => {
+    if (isTypingTarget(e)) return;
+    if (e.code === "KeyT") {
+      if (!lastHeardKey) return; // بی‌شنیده — T مالِ پوسته است (شب/روز)
+      e.preventDefault();
+      chipRefs.current.get(lastHeardKey)?.click();
+    }
+  });
 
   // لنگرِ عمیقِ کارتِ واک (راند ۲۳۵ — الگویِ focusBaseِ r234): اسکرولِ محلی
   // به کارت + پالسِ زمردیِ کوتاه؛ رسیدن ثبت نمی‌کند (نقطهٔ نوشتنِ این لایه
@@ -207,6 +281,19 @@ export default function PhoneticsTable({
               className="rounded-full bg-emerald-100 px-2.5 py-1 text-[11px] font-black text-emerald-700"
             >
               {faNum(visibleCount)} نتیجه
+            </span>
+          )}
+          {/* r411 — راهنمایِ صادقِ T: فقط وقتی «آخرین شنیده»ای زنده است؛
+              بی‌شنیده هیچ — همان صداقتِ r236 و ایدئومِ جدولِ افعالِ r410 */}
+          {lastHeardKey && (
+            <span
+              data-testid="phonetics-t-hint"
+              className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-bold text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300"
+            >
+              <kbd className="rounded-md border border-emerald-200 bg-white px-1.5 py-0.5 font-mono text-[10px] font-bold text-emerald-700 shadow-sm dark:border-emerald-500/40 dark:bg-emerald-500/10 dark:text-emerald-300" dir="ltr">
+                T
+              </kbd>
+              دوبارهشنیدنِ آخرین واک
             </span>
           )}
         </div>
@@ -311,7 +398,12 @@ export default function PhoneticsTable({
                     p={p}
                     meta={meta}
                     pulsing={pulseSymbol === p.symbol}
-                    onSpeak={() => recordPhonemeResume(p)}
+                    onSpeak={() => {
+                      recordPhonemeResume(p);
+                      markHeard(p.symbol); // r411 — شروعِ روخوانی = ثبتِ «آخرین شنیده»
+                    }}
+                    chipKey={p.symbol}
+                    registerChip={registerChip}
                   />
                 ))}
               </div>

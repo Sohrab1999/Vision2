@@ -5,7 +5,7 @@
 // Same word for everyone on the same day; changes at midnight.
 // ------------------------------------------------------------------
 
-import { useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { CalendarDays, BookOpen, Sparkles } from "lucide-react";
 import { lessons } from "@/data";
@@ -18,6 +18,8 @@ import WordUsageDialog from "./word-usage-dialog";
 import BookletUsageChip, { useBookletUsageTarget } from "./booklet-usage-chip";
 import PairSpeakChips from "./pair-speak-chips";
 import { speakFailToast } from "@/lib/speak";
+import { setListenSurface } from "@/lib/listen-surface";
+import { isTypingTarget, useKeydown } from "@/hooks/use-keyboard";
 import SpeakButton from "../shared/speak-button";
 
 // راند ۲۰۵: نقشهٔ عددِ اصلیِ محلی حذف شد — «درس هفتم» و بقیه از کمکیِ مشترکِ
@@ -50,6 +52,48 @@ export default function WordOfDay() {
   // dictionary uses — task 203), tap a chip to hear the counterpart
   const pairIndex = useMemo(() => buildSynAntIndex(lessons), []);
   const pairs = mounted ? synAntPairsFor(pairIndex, pick.en) : [];
+
+  // ---------------------------------------------------------------------
+  // r411 — میانبرِ T رویِ کارتِ واژهٔ روز: «دوبارهشنیدنِ واژهٔ روز» —
+  // ایدئومِ «آخرین شنیده» (جدولِ افعالِ r410) رویِ تک‌هدف:
+  //  · هدفِ T فقط چیپِ اصلیِ کارت است (خودِ واژهٔ روز) — چیپهایِ جفت
+  //    (PairSpeakChips — مالکِ یکتایِ r390) و چیپِ «در جزوه» هدفِ T
+  //    نمیشوند؛ سطحِ شنیدارِ این کارت یک هدف دارد، نه چند هدف.
+  //  · lastHeard فقط با «شروعِ روخوانی» ثبت میشود (onSpeak پیش از هر
+  //    تلاشِ شبکه) — بی‌شنیده، T همان شب/روزِ پوسته میماند (صداقتِ r236
+  //    و جراحیِ r410: کارتِ خانه ناوبر نیست و T را پیش از نخستین شنیده
+  //    نمیرباید). حافظه، stateِ خودِ کارت است — با خروج از خانه می‌پرد
+  //    و T دوباره به پوسته برمی‌گردد (عینِ چرخهٔ عمرِ جدولها).
+  //  · T = کلیکِ امریِ همان چیپ: playing توقف، idle دوبارهخوانی — استِ
+  //    روخوانی نزدِ مالکِ چیپ (درسِ r409). T هیچ چیزی ثبت نمیکند،
+  //    «بلدم» را نمیزند و ناوبری نمیکند — فقط شنیدار.
+  //  · پرچمِ سطحِ شنیدار در خانه اثری بر گاردِ ارقامِ r411 ندارد (خانه
+  //    رقمی ندارد) — فقط T را از پوسته میگیرد، تا وقتی کارت زنده است.
+  // ---------------------------------------------------------------------
+  const wotdChipRef = useRef<HTMLButtonElement | null>(null);
+  const registerWotdChip = useCallback((el: HTMLButtonElement | null) => {
+    wotdChipRef.current = el;
+  }, []);
+  const [heardWotd, setHeardWotd] = useState(false);
+  const markHeard = useCallback(() => setHeardWotd(true), []);
+
+  useEffect(() => {
+    setListenSurface(heardWotd);
+  }, [heardWotd]);
+  useEffect(() => {
+    return () => {
+      setListenSurface(false);
+    };
+  }, []);
+
+  useKeydown((e) => {
+    if (isTypingTarget(e)) return;
+    if (e.code === "KeyT") {
+      if (!heardWotd) return; // بی‌شنیده — T مالِ پوسته است (شب/روز)
+      e.preventDefault();
+      wotdChipRef.current?.click();
+    }
+  });
 
   return (
     <motion.section
@@ -119,7 +163,21 @@ export default function WordOfDay() {
 
         {/* actions */}
         <div className="flex flex-wrap items-center gap-2">
-          <SpeakButton text={pick.en} size="md" />
+          <span className="inline-flex items-center gap-1.5">
+            <SpeakButton text={pick.en} size="md" onSpeak={markHeard} ref={registerWotdChip} />
+            {/* r411 — راهنمایِ صادقِ T: فقط با شنیدهٔ زنده؛ بی‌شنیده هیچ */}
+            {heardWotd && (
+              <span
+                data-testid="wotd-t-hint"
+                className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-bold text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300"
+              >
+                <kbd className="rounded-md border border-emerald-200 bg-white px-1.5 py-0.5 font-mono text-[10px] font-bold text-emerald-700 shadow-sm dark:border-emerald-500/40 dark:bg-emerald-500/10 dark:text-emerald-300" dir="ltr">
+                  T
+                </kbd>
+                دوبارهشنیدنِ واژهٔ روز
+              </span>
+            )}
+          </span>
           <button
             onClick={() => toggleKnown(pick.key)}
             className={`inline-flex items-center gap-1.5 rounded-xl border px-3 py-2 text-[12px] font-bold transition-[background-color,color,border-color,box-shadow,transform] active:scale-[0.96] ${
