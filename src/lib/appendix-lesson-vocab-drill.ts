@@ -67,19 +67,28 @@ export const LESSON_VOCAB_KIND_LABEL: Record<LessonVocabDrillKind, string> = {
 const POS_OPTION_FLOOR = 4;
 
 /** واجدانهایِ هر گونه — قطعی (بی rng): واجدبودن به شانس وابسته نیست.
- *  هم build و هم برنامهٔ قطعیِ معرفی از همین تکمنبع میخوانند. */
+ *  هم build و هم برنامهٔ قطعیِ معرفی از همین تکمنبع میخوانند.
+ *  r408 — درسِ مقیاسِ سراسری: همان en در درسهایِ مختلف میتواند posهایِ
+ *  متفاوت داشته باشد — نقشِ مبهم هم مثلِ ترجمهٔ مبهم (r406) پرسیدنی نیست:
+ *  گونهٔ pos فقط از enهایی میآید که در کلِ بانک به یک برچسبِ نقش میرسند. */
 function computeEligible(
   bank: readonly VocabWord[],
 ): Map<LessonVocabDrillKind, VocabWord[]> {
   // یکتاییِ دوسویه — یکبارِ پیشمحاسبه (خالص: هیچ جهشی در داده):
-  // en→مجموعهٔ ترجمهها / fa→مجموعهٔ واژهها (دقیقاً نقشهٔ r406)
+  // en→مجموعهٔ ترجمهها / fa→مجموعهٔ واژهها (دقیقاً نقشهٔ r406) و
+  // en→مجموعهٔ نقشها (r408 — تعمیمِ سومِ درسِ لنگرِ بی‌ابهام)
   const enFas = new Map<string, Set<string>>();
   const faEns = new Map<string, Set<string>>();
+  const enPoss = new Map<string, Set<string>>();
   for (const w of bank) {
     if (!enFas.has(w.en)) enFas.set(w.en, new Set());
     enFas.get(w.en)!.add(w.fa);
     if (!faEns.has(w.fa)) faEns.set(w.fa, new Set());
     faEns.get(w.fa)!.add(w.en);
+    if (w.pos) {
+      if (!enPoss.has(w.en)) enPoss.set(w.en, new Set());
+      enPoss.get(w.en)!.add(w.pos);
+    }
   }
 
   // ستونِ برچسبهایِ نقشِ همین درس — از مالکِ یکتا (posLabel)؛ کدِ
@@ -95,7 +104,12 @@ function computeEligible(
   eligible.set(
     "pos",
     posLabelSet.size >= POS_OPTION_FLOOR
-      ? bank.filter((w) => w.pos && enFas.get(w.en)!.size === 1)
+      ? bank.filter(
+          (w) =>
+            w.pos &&
+            enFas.get(w.en)!.size === 1 &&
+            enPoss.get(w.en)!.size === 1,
+        )
       : [],
   );
   return eligible;
@@ -129,6 +143,20 @@ export function lessonVocabDrillPlan(
   return { size: live, kinds, bank: bank.length };
 }
 
+/** r408 — تختکردنِ صادقِ همهٔ درسها به یک بانکِ سراسری — مقیاسِ دیکشنریِ
+ *  بانکِ واژگان: کلِ ۴۰۳۲ واژه با ترتیبِ خودِ داده (درس به درس). تکمنبعِ
+ *  تختکردن — نما، تست و شاهد از همین میخوانند (الگویِ flattenBgExamplesِ r406).
+ *  ساختارِ ورودی عمداً حداقلی است — هر چیزِ صاحبِ vocabulary میآید. */
+export function flattenLessonVocab(
+  lessons: readonly { vocabulary: readonly VocabWord[] }[],
+): VocabWord[] {
+  const bank: VocabWord[] = [];
+  for (const l of lessons) {
+    for (const w of l.vocabulary) bank.push(w);
+  }
+  return bank;
+}
+
 export function buildLessonVocabDrillSession(
   vocab: readonly VocabWord[],
   size: number = DRILL_SIZE,
@@ -146,17 +174,17 @@ export function buildLessonVocabDrillSession(
   );
   posLabelSet.delete("");
 
-  const used = new Set<VocabWord>();
+  const used = new Set<string>(); // کلیدِ جفتیِ en|fa — r408: در بانکِ سراسری جفتِ واحد با اشیایِ متعدد میآید
   const questions: DrillQuestion[] = [];
   for (let i = 0; i < n; i++) {
     const kind = LESSON_VOCAB_DRILL_KINDS[i % LESSON_VOCAB_DRILL_KINDS.length];
     // ترجیحِ واژهٔ بیکاربرد؛ استخرِ تهیشده اجازهٔ بازاستفاده میدهد
     const pool = eligible.get(kind)!;
-    const fresh = pool.filter((w) => !used.has(w));
+    const fresh = pool.filter((w) => !used.has(`${w.en}\u0000${w.fa}`));
     const pickable = fresh.length > 0 ? fresh : pool;
     if (pickable.length === 0) continue; // جلسهٔ کوتاهترِ صادق — نه واژگونی
     const w = shuffled(pickable, rng)[0];
-    used.add(w);
+    used.add(`${w.en}\u0000${w.fa}`);
     // (سدِ تکرار و ترجیحِ بیکاربرد: قراردادِ r403 — بازاستفاده فقط در تهشدن)
 
     if (kind === "fa") {

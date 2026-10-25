@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Search, X, BookMarked, BookOpenText, CheckCircle2, CircleDashed, AlarmClock, SearchX, Download, Star, ArrowLeftRight, Shuffle, BarChart3, ChevronDown, TrendingUp, Percent, EyeOff } from "lucide-react";
+import { Search, X, BookMarked, BookOpenText, CheckCircle2, CircleDashed, AlarmClock, SearchX, Download, Star, ArrowLeftRight, Shuffle, BarChart3, ChevronDown, TrendingUp, Percent, EyeOff, GraduationCap } from "lucide-react";
 import { lessons } from "@/data";
 import { useStudy, wordKey, starToggleAria } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
@@ -21,6 +21,38 @@ import SpeakButton from "../shared/speak-button";
 import QuizEngine from "../quiz/quiz-engine";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { fileFailToast } from "@/lib/file-download";
+// r408 — مقیاسِ سراسریِ بانکِ واژگانِ r407: دیکشنری صاحبِ تمرینِ کلِ ۴۰۳۲ واژه
+// میشود — همان موتور، همان کیبورد، همان مرورِ موضعی؛ ورود فقط با کلیک و
+// هیچ نوشتنی به استورِ یادگیری (حکمِ r400..r407).
+import AppendixDrillView, { type DrillViewSpec } from "./appendix-drill-view";
+import {
+  buildLessonVocabDrillSession,
+  lessonVocabDrillPlan,
+  LESSON_VOCAB_KIND_LABEL,
+  type LessonVocabDrillPlan,
+} from "@/lib/appendix-lesson-vocab-drill";
+import { DRILL_SIZE } from "@/lib/appendix-drill";
+
+/** r408 — specِ دریلِ دیکشنری — معرفی از برنامهٔ قطعیِ موتور رویِ کلِ بانک */
+function dictionaryVocabDrillSpec(plan: LessonVocabDrillPlan): DrillViewSpec {
+  const kindsFa = plan.kinds.map((k) => LESSON_VOCAB_KIND_LABEL[k]).join("، ");
+  return {
+    id: "dict-vocab",
+    title: "تمرین واژگانِ دیکشنری",
+    intro: (
+      <>
+        {faNum(plan.size)} پرسش از {faNum(plan.bank)} واژهٔ همهٔ درس‌ها: {kindsFa}.
+        گزینه‌ها همگی از واژه‌های خودِ کتاب میآیند — نه ساختهٔ ماشینی؛ و اگر چیزی
+        اشتباه بماند، همان‌ها دوباره پرسیده میشوند.
+      </>
+    ),
+    startAria: "شروع جلسهٔ تمرین دیکشنری",
+    exitLabel: "دیکشنری",
+    exitAria: "بازگشت به دیکشنری",
+    exitResultAria: "بازگشت به دیکشنری از نتیجه",
+    cancelAria: "انصراف از تمرین دیکشنری",
+  };
+}
 
 // state filter values — «paired» (r205): فقط واژه‌های جفت‌دارِ جزوه؛
 // «usage» (r253): فقط واژه‌های کاربرددار در متنِ مکالمه/ریدینگِ جزوه؛
@@ -36,6 +68,8 @@ export default function DictionaryView() {
   const [query, setQuery] = useState("");
   const [lessonFilter, setLessonFilter] = useState<number | null>(null);
   const [stateFilter, setStateFilter] = useState<StateFilter>("all");
+  // r408 — حالتِ تمرینِ واژگانِ دیکشنری؛ فقط با کلیکِ کاربر روشن میشود
+  const [drillMode, setDrillMode] = useState(false);
   const known = useStudy((s) => s.known);
   const srs = useStudy((s) => s.srs);
   const toggleKnown = useStudy((s) => s.toggleKnown);
@@ -61,6 +95,10 @@ export default function DictionaryView() {
       ),
     []
   );
+
+  // r408 — برنامهٔ قطعیِ دریل (بی rng) رویِ همان بانکی که دیکشنری نشان میدهد؛
+  // دکمهٔ ورود و معرفی هر دو از همین تکمنبع میخوانند
+  const drillPlan = useMemo(() => lessonVocabDrillPlan(allWords, DRILL_SIZE), [allWords]);
 
   // count of words due for SRS review right now
   const dueCount = useMemo(() => {
@@ -265,6 +303,18 @@ export default function DictionaryView() {
     },
   ];
 
+  // r408 — دریلِ واژگانِ دیکشنری کلِ بدنهٔ نما را میگیرد (ایدئومِ r400..r407:
+  // سرصفحه و کارت‌ها میروند، خروجِ سالم برمیگرداند) — بعد از همهٔ هوکها
+  if (drillMode) {
+    return (
+      <AppendixDrillView
+        spec={dictionaryVocabDrillSpec(drillPlan)}
+        buildSession={() => buildLessonVocabDrillSession(allWords, DRILL_SIZE)}
+        onExit={() => setDrillMode(false)}
+      />
+    );
+  }
+
   return (
     <div className="space-y-4">
       <div className="rounded-2xl border c-card p-5 shadow-sm">
@@ -310,6 +360,20 @@ export default function DictionaryView() {
             <Download size={14} />
             خروجی Anki ({faNum(ankiCount)} کارت)
           </button>
+          {/* r408 — دکمهٔ ورودِ دریل (ایدئومِ r239/r403..r407): بنفشِ خانوادهٔ تمرین؛
+              برنامهٔ قطعیِ موتور عنوانِ صادق را میدهد؛ بیبانک، بی دکمه */}
+          {drillPlan.size > 0 && (
+            <button
+              type="button"
+              onClick={() => setDrillMode(true)}
+              aria-label="شروع تمرین واژگان دیکشنری"
+              title={`${faNum(drillPlan.size)} پرسش از ${faNum(drillPlan.bank)} واژهٔ کتاب`}
+              className="inline-flex items-center gap-1.5 rounded-xl bg-violet-600 px-3 py-2 text-[12px] font-bold text-white shadow-sm transition-[background-color,color,border-color,transform] hover:bg-violet-500 active:scale-[0.96] dark:bg-violet-500 dark:hover:bg-violet-400"
+            >
+              <GraduationCap size={14} />
+              تمرین واژه‌ها
+            </button>
+          )}
         </div>
         <div className="relative mb-3">
           <Search size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-500" />
