@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
-import { Keyboard, BookMarked, ClipboardCheck, Sun, Moon, History, ChevronLeft, MousePointerClick, MapPin, House, CalendarClock } from "lucide-react";
+import { Keyboard, BookMarked, ClipboardCheck, Sun, Moon, History, ChevronLeft, MousePointerClick, MapPin, House, CalendarClock, GraduationCap } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useStudy, type LessonTab } from "@/lib/study-store";
@@ -78,6 +78,15 @@ const GROUPS: { title: string; icon: React.ElementType; rows: Row[] }[] = [
     rows: [
       { keys: ["1", "…", "4"], desc: "انتخاب گزینه" },
       { keys: ["Enter", "←"], desc: "سؤال بعدی" },
+    ],
+  },
+  {
+    // r402 — گروهِ دریلِ ضمیمه: همان ایدئومِ کوئیز، ثبتِ صادق در راهنما
+    title: "تمرین افعال بی‌قاعده (ضمیمه)",
+    icon: GraduationCap,
+    rows: [
+      { keys: ["1", "…", "4"], desc: "انتخاب گزینه (ارقام فارسی و لاتین، هر چیدمان)" },
+      { keys: ["Enter", "←"], desc: "پرسش بعدی — فقط پس از پاسخ" },
     ],
   },
 ];

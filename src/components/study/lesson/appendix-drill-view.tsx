@@ -7,6 +7,11 @@
 //    «مرورِ اشتباهها» فقط سؤالهایِ نادرست/بیپاسخِ همین جلسه را دوباره
 //    میپرسد (بانکِ خطایِ موضعی — هیچ نوشتنی به استورِ یادگیری)؛
 //    سرصفحهٔ مرور صادق است: «نتیجهٔ مرور»، نه «نتیجهٔ تمرین».
+// r402 — «کیبوردِ دریل»: ۱-۴ (هر چیدمان: کدِ فیزیکی/ارقامِ فارسی/لاتین)
+//    گزینه را انتخاب میکند، Enter/← پسِ پاسخ پیش میرود — عینِ ایدئومِ
+//    کوئیز از کیتِ همگانیِ §10 R-6 (useKeydown + readDigit +
+//    isTypingTarget)؛ و هر گزینه نشانگرِ kbdِ رقمِ خودش را دارد
+//    (aria-hidden — شماره در aria-label هست؛ راهنمای سراسری هم ثبت شد).
 //
 // جریان: معرفی → پرسش‌ها (بازخوردِ درجا، بی تایمر — کاربر سرعته) →
 // نتیجهٔ صادق (درصد از مالکِ r388 + بازخوانیِ سؤالبهسؤال: بیپاسخ =
@@ -36,6 +41,7 @@ import {
   type DrillSession,
 } from "@/lib/appendix-drill";
 import { faNum, percentFa } from "@/lib/study-theme";
+import { isTypingTarget, readDigit, useKeydown } from "@/hooks/use-keyboard";
 import SpeakButton from "../shared/speak-button";
 
 type Phase = "intro" | "run" | "done";
@@ -104,6 +110,28 @@ export default function AppendixDrillView({
     setIdx(idx + 1);
     setPicked(null);
   };
+
+  // r402 — کیبوردِ دریل: فقط در فازِ run زنده است؛ رقمِ ۱-۴ (هر چیدمان)
+  // گزینه انتخاب میکند و Enter/← پسِ پاسخ پیش میرود — عینِ ایدئومِ کوئیز.
+  // حروفِ ناوبریِ سراسری دستنخوردهاند (این شنونده فقط رقم/Enter/← میخواند).
+  useKeydown((e) => {
+    if (phase !== "run" || !session) return;
+    if (isTypingTarget(e)) return;
+    const q = session.questions[idx];
+    if (!q) return;
+    const num = readDigit(e);
+    if (num !== null && num >= 1 && num <= q.options.length) {
+      if (picked === null) {
+        e.preventDefault();
+        answer(num - 1);
+      }
+      return; // پسِ پاسخ، رقمها هیچ — هر سؤال یک انتخاب
+    }
+    if ((e.key === "Enter" || e.key === "ArrowLeft") && picked !== null) {
+      e.preventDefault();
+      next();
+    }
+  }, phase === "run");
 
   // ------------------------------------------------------------- معرفی
   if (phase === "intro" || !session) {
@@ -304,13 +332,24 @@ export default function AppendixDrillView({
               aria-label={`گزینه ${faNum(i + 1)}: ${opt}${answered && isCorrect ? " — پاسخ درست" : ""}`}
               className={`flex min-h-11 items-center justify-between rounded-xl border px-3 ${isFa ? "text-right" : "text-left"} text-[13px] font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-200 active:scale-[0.96] disabled:cursor-default ${cls}`}
             >
-              {isFa ? (
-                <span>{opt}</span>
-              ) : (
-                <span dir="ltr" className="en-text">
-                  {opt}
+              {/* r402 — نشانگرِ kbdِ رقمِ گزینه: قراردادِ بصریِ Kbdِ راهنما،
+                  aria-hidden (شماره در aria-label هست)؛ در حالتِ پاسخخورده
+                  هم میماند — قراردادِ حالت را نشانگرِ درست/نادرست میدهد */}
+              <span className="flex min-w-0 items-center gap-2">
+                <span
+                  aria-hidden
+                  className="inline-flex h-5 min-w-[20px] shrink-0 items-center justify-center rounded-md border border-stone-200 bg-stone-50 px-1 font-mono text-[10.5px] font-bold text-stone-500 shadow-[0_1px_0_0_#e7e5e4]"
+                >
+                  {faNum(i + 1)}
                 </span>
-              )}
+                {isFa ? (
+                  <span>{opt}</span>
+                ) : (
+                  <span dir="ltr" className="en-text">
+                    {opt}
+                  </span>
+                )}
+              </span>
               {answered && isCorrect && <Check size={15} aria-hidden className="shrink-0 text-emerald-600" />}
               {answered && isPicked && !isCorrect && <X size={15} aria-hidden className="shrink-0 text-rose-600" />}
             </button>
