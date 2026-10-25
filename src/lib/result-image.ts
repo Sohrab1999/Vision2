@@ -10,6 +10,30 @@ import { faNum } from "./study-theme";
 import { BADGES, DUEL_BADGE_IDS, type BadgeTier } from "./achievements";
 import type { DuelLedgerStats } from "./duel-history";
 import { uiColors } from "./ui-colors";
+import { toast } from "@/hooks/use-toast";
+
+// r397 — the image-build failure pair gets ONE name. Since r342 the
+// failure toast (title «خطا در ساخت تصویر» + description «لطفاً دوباره
+// تلاش کن.» + 3000ms) was byte-identical across FIVE download gates
+// (quiz-result / weekly-report / official-report / duel-setup /
+// duel-done) and held equal only by source locks — the exact situation
+// r394 cured for the TTS family (speakFailToast). Borrowing is a
+// choice, not a side effect — documented no-verdicts (the r386 lesson):
+//  · the two duel rush views keep their compact bare dialect
+//    («دانلود تصویر ناموفق بود», no description — in-battle views);
+//  · all seven success toasts stay per-context dialects (each gate
+//    celebrates in its own words).
+// Fires no analytics on the failure path (the r344 rule): the *_image
+// events belong to the gates themselves, gated on the real build
+// (ok / blob — the r287/288 contract; official's download gate healed
+// in r397 from a pre-build fire to the gated form).
+export function imageFailToast(): void {
+  toast({
+    title: "خطا در ساخت تصویر",
+    description: "لطفاً دوباره تلاش کن.",
+    duration: 3000,
+  });
+}
 
 export interface ResultImageOpts {
   title: string;

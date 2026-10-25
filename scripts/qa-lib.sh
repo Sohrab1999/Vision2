@@ -89,6 +89,9 @@ qa_to_light(){ agent-browser eval "(()=>{document.documentElement.classList.remo
 qa_toast_identity(){ agent-browser eval "(()=>{const lis=[...document.querySelectorAll('ol li')].filter((el)=>el.className.includes('pointer-events-auto')&&el.getBoundingClientRect().height>0);const l=lis[0];if(!l)return 'NO-LIVE';const cs=getComputedStyle(l);return JSON.stringify({live:true,bg:cs.backgroundColor,ink:cs.color});})()" 2>&1 | tee -a "$OUT"; echo | tee -a "$OUT"; }
 
 # اتمیک: کلیک + نظرسنجیِ توستِ موردانتظار (HIT) تا ~۹ثانیه
+# درسِ r397 (نخستین مصرفکنندهٔ بیرونی): selector باید «با نقلقولِ JS» بیاید —
+#   بدنه، $1 را بعد از `const sel=` درج میکند؛ یعنی فراخوانیِ درست:
+#   qa_click_toast_q "'[aria-label=\"…\"]'" 0 'نیل'
 qa_click_toast_q(){ agent-browser eval "(()=>{
   const sel=$1; const idx=$2||0;
   const b=[...document.querySelectorAll(sel)][idx];

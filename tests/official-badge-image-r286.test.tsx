@@ -27,6 +27,9 @@ vi.mock("@/lib/result-image", async (importOriginal) => {
 
 vi.mock("@/hooks/use-toast", () => ({
   useToast: () => ({ toast: toastSpy }),
+  // r397 — the failure branch borrows imageFailToast, which calls the named
+  // `toast` export directly — the mock must carry it too.
+  toast: toastSpy,
 }));
 
 vi.mock("@/lib/analytics", () => ({ trackEvent: vi.fn() }));

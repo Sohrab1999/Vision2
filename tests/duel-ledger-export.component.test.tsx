@@ -17,7 +17,8 @@ import { cleanup, render, screen, fireEvent, waitFor } from "@testing-library/re
 import { DUEL_PACES, DEFAULT_PACE_MS } from "@/lib/duel-pace";
 
 const { ledgerImage, trackSpy } = vi.hoisted(() => ({ ledgerImage: vi.fn(), trackSpy: vi.fn() }));
-vi.mock("@/lib/result-image", () => ({
+vi.mock("@/lib/result-image", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@/lib/result-image")>()),
   downloadDuelLedgerImage: (...args: unknown[]) => ledgerImage(...args),
 }));
 vi.mock("@/lib/analytics", () => ({

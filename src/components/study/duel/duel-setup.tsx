@@ -12,7 +12,7 @@ import { useToast } from "@/hooks/use-toast";
 import { trackEvent } from "@/lib/analytics";
 import { buildEvalInput, unlockedBadgeIds, duelFamilyBadges, BADGES, DUEL_BADGE_IDS, TIER_STYLE } from "@/lib/achievements";
 import { BADGE_ICONS } from "@/components/study/practice/badges";
-import { downloadDuelLedgerImage, buildDuelLedgerBlob } from "@/lib/result-image";
+import { downloadDuelLedgerImage, buildDuelLedgerBlob, imageFailToast } from "@/lib/result-image";
 import { canShareImageFiles, blobToFile, shareImageFile, type ShareOutcome } from "@/lib/share-card";
 import {
   duelWinStreak,
@@ -163,11 +163,13 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
     // r288 — رویدادِ کارتِ کارنامه فقط وقتی کارت واقعاً ساخته شد
     // (قراردادِ official_image/duel_image)
     if (ok) trackEvent("duel_ledger_image");
-    toast(
-      ok
-        ? { title: "🖼 عکسِ کارنامهٔ نبردها ذخیره شد", description: "حالا می‌توانی آن را برای دوستانت بفرستی.", duration: 3000 }
-        : { title: "خطا در ساخت تصویر", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
-    );
+    // r397 — the failure pair borrows the named owner (imageFailToast);
+    // the success toast stays this gate's own dialect.
+    if (ok) {
+      toast({ title: "🖼 عکسِ کارنامهٔ نبردها ذخیره شد", description: "حالا می‌توانی آن را برای دوستانت بفرستی.", duration: 3000 });
+    } else {
+      imageFailToast();
+    }
   };
 
   // Task 102 — هم‌رسانیِ بومیِ همان کارت (Web Share L2): فقط با پشتیبانیِ واقعی

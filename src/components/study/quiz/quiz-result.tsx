@@ -13,7 +13,7 @@ import { useStudy, starToggleAria } from "@/lib/study-store";
 import { starrableWord, type StarrableWord } from "@/lib/starred-from-quiz";
 import { percent as percentOf } from "@/lib/domain/percent";
 import { faNum } from "@/lib/study-theme";
-import { downloadResultImage } from "@/lib/result-image";
+import { downloadResultImage, imageFailToast } from "@/lib/result-image";
 import { useToast } from "@/hooks/use-toast";
 import { gradeFor } from "@/lib/domain/grade";
 import ExplainBox from "../shared/explain-box";
@@ -171,11 +171,13 @@ export default function QuizResult({
       gradeLabel: certificate ? gradeLabel : undefined,
     });
     setImgBusy(false);
-    toast(
-      ok
-        ? { title: "🖼 تصویر نتیجه ذخیره شد", description: "حالا می‌توانی آن را در هر کجا به اشتراک بگذاری.", duration: 3000 }
-        : { title: "خطا در ساخت تصویر", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
-    );
+    // r397 — the failure pair borrows the named owner (imageFailToast);
+    // the success toast stays this gate's own dialect.
+    if (ok) {
+      toast({ title: "🖼 تصویر نتیجه ذخیره شد", description: "حالا می‌توانی آن را در هر کجا به اشتراک بگذاری.", duration: 3000 });
+    } else {
+      imageFailToast();
+    }
   };
 
   const shareResult = async () => {

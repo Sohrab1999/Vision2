@@ -59,19 +59,23 @@ const retryScript = readFileSync(
 );
 
 describe("canvas failure path r342 — «خطا در ساخت تصویر» سرانجام زیده شد", () => {
-  it("شش درگاهِ دانلود، شش توستِ صادقانه — هیچ درگاهی ساکت نمیماند", () => {
-    // گواهیِ پایانترم + کارتِ نبرد + رسمی + هفتگی + دفترچه (خطا) + جریانهایِ دوگانهٔ هفتگی (ساختِ فایل)
-    expect((quizResultSrc.match(/خطا در ساخت تصویر/g) || []).length).toBe(1);
-    expect((duelDoneSrc.match(/خطا در ساخت تصویر/g) || []).length).toBe(1);
+  it("شش درگاهِ دانلود، شش توستِ صادقانه — هیچ درگاهی ساکت نمیماند (r397: جفتِ شکست مالکِ نامدار دارد)", () => {
+    // r397 — جفتِ شکست فقط در مالک (result-image.ts) زنده است؛ پنج درگاه
+    // وامگیرندهٔ imageFailToast‌اند و دو نمایِ برقآسا دیالوگِ برهنهایِ خودشان
+    // را نگه میدارند — همهٔ شش، صادق میمانند؛ هیچ دری ساکت نمیماند.
+    const resultImageSrc = readFileSync(join(process.cwd(), "src/lib/result-image.ts"), "utf8");
+    expect(resultImageSrc).toContain('title: "خطا در ساخت تصویر"');
     for (const f of [
+      "src/components/study/quiz/quiz-result.tsx",
       "src/components/study/reports/official-report.tsx",
       "src/components/study/reports/weekly-report.tsx",
       "src/components/study/duel/duel-setup.tsx",
     ]) {
       const src = readFileSync(join(process.cwd(), f), "utf8");
-      expect(src).toContain("خطا در ساخت تصویر");
+      expect(src, f).toContain("imageFailToast()");
     }
-    // جریانهایِ برقآسا: عنوانِ خودشان را دارند — صادقانه به همان اندازه
+    expect(duelDoneSrc).toContain("imageFailToast()");
+    // جریانهایِ برقآسا: عنوانِ خودشان را دارند — صادقانه به همان اندازه (سندِ «نخیر»)
     for (const f of [
       "src/components/study/duel/rush-view.tsx",
       "src/components/study/duel/spell-rush-view.tsx",
@@ -101,10 +105,11 @@ describe("canvas failure path r342 — «خطا در ساخت تصویر» سر�
 });
 
 describe("duel-done share matrix r342 — چهار سرنوشت، هر چهار زنده", () => {
-  it("سه توستِ صادقانهٔ نمایِ done در سورس قفلاند", () => {
+  it("سه توستِ صادقانهٔ نمایِ done در سورس قفلاند (r397: شاخهٔ شکست، وامگیرِ مالک است)", () => {
     expect(duelDoneSrc).toContain("📨 نبرد هم‌رسانی شد");
     expect(duelDoneSrc).toContain("هم‌رسانی ممکن نشد");
-    expect(duelDoneSrc).toContain("خطا در ساخت تصویر");
+    // r397 — جفتِ شکست دیگر درونفایلی نیست؛ وامگیریِ imageFailToast
+    expect(duelDoneSrc).toContain("imageFailToast()");
   });
 
   it("دروازهٔ صادقِ r102 — دکمهٔ هم‌رسانی فقط زیرِ canShareImageFiles رندر میشود (زنده: حذفِ استاب ⇒ ناپدیدِ دکمه)", () => {

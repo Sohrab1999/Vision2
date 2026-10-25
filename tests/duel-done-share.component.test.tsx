@@ -12,7 +12,8 @@ import "@testing-library/jest-dom/vitest";
 import { cleanup, render, screen, fireEvent, waitFor } from "@testing-library/react";
 
 const doneImage = vi.fn();
-vi.mock("@/lib/result-image", () => ({
+vi.mock("@/lib/result-image", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@/lib/result-image")>()),
   downloadDuelDoneImage: (...args: unknown[]) => doneImage(...args),
 }));
 

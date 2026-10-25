@@ -18,7 +18,8 @@ const { toastSpy, buildBlob, doneImage } = vi.hoisted(() => ({
   doneImage: vi.fn(),
 }));
 
-vi.mock("@/lib/result-image", () => ({
+vi.mock("@/lib/result-image", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@/lib/result-image")>()),
   downloadDuelDoneImage: (...args: unknown[]) => doneImage(...args),
   buildDuelDoneBlob: (...args: unknown[]) => buildBlob(...args),
 }));

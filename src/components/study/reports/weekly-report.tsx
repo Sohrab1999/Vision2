@@ -20,7 +20,7 @@ import { buildCoverageMap } from "@/lib/coverage-map";
 import { LESSONS_META } from "@/data/lesson-meta";
 import { computeWeeklyDigest, faWeekday, faDayLabel, DUEL_QUICK_WEEK, type Delta, type QuickWeekProfile } from "@/lib/weekly-digest";
 import { freezeDayMark, freezeLedgerMeta } from "@/lib/freeze-badge";
-import { downloadWeeklyImage, buildWeeklyBlob, type WeeklyImageOpts } from "@/lib/result-image";
+import { downloadWeeklyImage, buildWeeklyBlob, type WeeklyImageOpts, imageFailToast } from "@/lib/result-image";
 import { blobToFile, shareImageFile, type ShareOutcome } from "@/lib/share-card";
 import { trackEvent } from "@/lib/analytics";
 import { downloadProgressCsv, downloadWeeklyTrendCsv, downloadMonthCsv } from "@/lib/progress-csv";
@@ -270,11 +270,13 @@ export default function WeeklyReportSection() {
     setImgBusy(true);
     const ok = await downloadWeeklyImage(weeklyImageOpts());
     setImgBusy(false);
-    toast(
-      ok
-        ? { title: "🖼 عکسِ هفته‌نامه ذخیره شد", description: "کارتِ هفتگیت آمادهٔ فرستادن است.", duration: 3000 }
-        : { title: "خطا در ساخت تصویر", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
-    );
+    // r397 — the failure pair borrows the named owner (imageFailToast);
+    // the success toast stays this gate's own dialect.
+    if (ok) {
+      toast({ title: "🖼 عکسِ هفته‌نامه ذخیره شد", description: "کارتِ هفتگیت آمادهٔ فرستادن است.", duration: 3000 });
+    } else {
+      imageFailToast();
+    }
   };
 
   // r306 — هم‌رسانیِ بومیِ کارتِ هفته‌نامه با قراردادِ share-card (r102):

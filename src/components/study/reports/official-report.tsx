@@ -49,7 +49,7 @@ import { buildPairsCoverage } from "@/lib/pairs-coverage";
 import { lessons } from "@/data";
 import { useToast } from "@/hooks/use-toast";
 import { trackEvent } from "@/lib/analytics";
-import { downloadOfficialImage, buildOfficialBlob, type OfficialImageOpts } from "@/lib/result-image";
+import { downloadOfficialImage, buildOfficialBlob, type OfficialImageOpts, imageFailToast } from "@/lib/result-image";
 import { blobToFile, shareImageFile, type ShareOutcome } from "@/lib/share-card"; // r307 — هم‌رسانیِ بومیِ کارتِ رسمی
 
 // ------------------------------------------------------------------
@@ -258,15 +258,21 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
   const saveOfficialImage = async () => {
     if (imgBusy) return;
     setImgBusy(true);
-    trackEvent("official_image");
     // r307 — ورودیِ مشترکِ دو دروازه (دانلود/هم‌رسانی) — officialImageOpts()
     const ok = await downloadOfficialImage(officialImageOpts());
     setImgBusy(false);
-    toast(
-      ok
-        ? { title: "📸 عکسِ کارنامه ذخیره شد", description: "کارتِ رسمیت آمادهٔ فرستادن است.", duration: 3000 }
-        : { title: "خطا در ساخت تصویر", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
-    );
+    // r397 — the family contract (r287/288) healed on this gate: the event
+    // fires only when the card is actually BUILT. The pre-build fire (born
+    // task 286, before the contract was refined by the duel family) counted
+    // failures — the share gate has always been gated (if (blob)).
+    if (ok) trackEvent("official_image");
+    // r397 — the failure pair borrows the named owner (imageFailToast);
+    // the success toast stays this gate's own dialect.
+    if (ok) {
+      toast({ title: "📸 عکسِ کارنامه ذخیره شد", description: "کارتِ رسمیت آمادهٔ فرستادن است.", duration: 3000 });
+    } else {
+      imageFailToast();
+    }
   };
 
   // r307 — هم‌رسانیِ بومیِ کارتِ رسمی: الگویِ r306ِ هفته‌نامه — دو دروازهٔ یک ارزیابی

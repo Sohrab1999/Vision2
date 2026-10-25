@@ -238,6 +238,10 @@ export default function RushView() {
   const accuracy = useMemo(() => percent(correct, answered), [answered, correct]);
 
   const saveImage = async () => {
+    // r397 — the estate-standard belt-and-braces re-entrancy guard (all five
+    // sibling gates carry it alongside disabled={imgBusy}); this view was the
+    // hole — a flush-window double click could run two builds concurrently.
+    if (imgBusy) return;
     setImgBusy(true);
     const ok = await downloadResultImage({
       title: "چالش برق‌آسا — ۶۰ ثانیه",

@@ -8,7 +8,7 @@ import { decomposeDuelScore, duelHeadToHead, duelWinStreak } from "@/lib/duel-hi
 import { useStudy } from "@/lib/study-store";
 import { BADGES, buildEvalInput, unlockedBadgeIds } from "@/lib/achievements";
 import { duelThinkStats } from "@/lib/duel-think";
-import { downloadDuelDoneImage, buildDuelDoneBlob } from "@/lib/result-image";
+import { downloadDuelDoneImage, buildDuelDoneBlob, imageFailToast } from "@/lib/result-image";
 import { canShareImageFiles, blobToFile, shareImageFile, type ShareOutcome } from "@/lib/share-card";
 import { useToast } from "@/hooks/use-toast";
 import { trackEvent } from "@/lib/analytics";
@@ -124,11 +124,13 @@ export default function DuelDone({ endData, mySid, myFinishAt, oppConnected, rem
     setImgBusy(false);
     // r287 — رویدادِ کارتِ نبرد فقط وقتی کارت واقعاً ساخته شد (قراردادِ official_image)
     if (ok) trackEvent("duel_image");
-    toast(
-      ok
-        ? { title: "🖼 عکسِ این نبرد ذخیره شد", description: "حالا می‌توانی نتیجه‌ات را برای دوستانت بفرستی.", duration: 3000 }
-        : { title: "خطا در ساخت تصویر", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
-    );
+    // r397 — the failure pair borrows the named owner (imageFailToast);
+    // the success toast stays this gate's own dialect.
+    if (ok) {
+      toast({ title: "🖼 عکسِ این نبرد ذخیره شد", description: "حالا می‌توانی نتیجه‌ات را برای دوستانت بفرستی.", duration: 3000 });
+    } else {
+      imageFailToast();
+    }
   };
 
   // Task 102 — هم‌رسانیِ بومیِ همان کارت: داده‌ها از همان EndPayloadِ صادق؛

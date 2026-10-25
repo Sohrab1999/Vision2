@@ -24,7 +24,8 @@ const { toastSpy, canShareSpy, shareSpy, buildBlob, doneImage, trackSpy } = vi.h
   trackSpy: vi.fn(),
 }));
 
-vi.mock("@/lib/result-image", () => ({
+vi.mock("@/lib/result-image", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@/lib/result-image")>()),
   downloadDuelDoneImage: (...args: unknown[]) => doneImage(...args),
   buildDuelDoneBlob: (...args: unknown[]) => buildBlob(...args),
 }));
@@ -40,6 +41,9 @@ vi.mock("@/lib/share-card", async (importOriginal) => {
 
 vi.mock("@/hooks/use-toast", () => ({
   useToast: () => ({ toast: toastSpy }),
+  // r397 — the failure branch borrows the real imageFailToast owner, which
+  // calls the named `toast` export directly — the mock must carry it too.
+  toast: toastSpy,
 }));
 
 vi.mock("@/lib/analytics", () => ({

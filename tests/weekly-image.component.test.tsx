@@ -17,12 +17,16 @@ const { toastSpy, weeklyImage } = vi.hoisted(() => ({
   weeklyImage: vi.fn(),
 }));
 
-vi.mock("@/lib/result-image", () => ({
+vi.mock("@/lib/result-image", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@/lib/result-image")>()),
   downloadWeeklyImage: (...args: unknown[]) => weeklyImage(...args),
 }));
 
 vi.mock("@/hooks/use-toast", () => ({
   useToast: () => ({ toast: toastSpy }),
+  // r397 — the failure branch borrows the real imageFailToast owner, which
+  // calls the named `toast` export directly — the mock must carry it too.
+  toast: toastSpy,
 }));
 
 import { render as rtlRender } from "@testing-library/react";

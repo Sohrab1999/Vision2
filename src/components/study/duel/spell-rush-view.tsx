@@ -293,6 +293,10 @@ export default function SpellRushView({ onExit }: { onExit?: () => void }) {
   const fullAccuracy = percent(Math.round(correct + 0.5 * hintCorrect), answered);
 
   const saveImage = async () => {
+    // r397 — the estate-standard belt-and-braces re-entrancy guard (all five
+    // sibling gates carry it alongside disabled={imgBusy}); this view was the
+    // hole — a flush-window double click could run two builds concurrently.
+    if (imgBusy) return;
     setImgBusy(true);
     const ok = await downloadResultImage({
       title: "دیکتهٔ برق‌آسا — ۶۰ ثانیه",

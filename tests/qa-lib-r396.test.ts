@@ -29,6 +29,8 @@ const p = (f: string) => readFileSync(join(process.cwd(), f), "utf8");
 
 const LIB = "scripts/qa-lib.sh";
 const FIRST_CONSUMER = "scripts/qa-r396-playall-healthy.sh";
+// r397 — دومین مصرفکننده (الگویِ پیشرو — هر راندِ نو source میکند)
+const SECOND_CONSUMER = "scripts/qa-r397-image-toast.sh";
 
 const LIB_FUNCS = [
   "qa_shot()",
@@ -124,12 +126,15 @@ describe("r396 — انجمادِ تاریخی (نمونهبرداری)", () => 
     }
   });
 
-  it("فقط r396 به کتابخانه وابسته است — سرشماریِ مصرفکننده", () => {
+  it("هر اسکریپتِ نو به کتابخانه وابسته است — سرشماریِ مصرفکننده (r397: دومین مصرفکننده)", () => {
     const hits = execSync(`rg -l 'scripts/qa-lib.sh' scripts/ || true`)
       .toString()
       .trim()
       .split("\n")
-      .filter(Boolean);
-    expect(hits).toEqual([FIRST_CONSUMER]);
+      .filter(Boolean)
+      .sort();
+    // r397 — سرشماری، تلهٔ ضدِ دستنویسی است: اسکریپتِ نو یا source میکند
+    // (و باید همینجا به ثبت برسد) یا دستنویسِ helper میسازد (و همینجا خودش را میدهد).
+    expect(hits).toEqual([FIRST_CONSUMER, SECOND_CONSUMER].sort());
   });
 });
