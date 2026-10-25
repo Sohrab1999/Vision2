@@ -15,6 +15,7 @@
 // ------------------------------------------------------------------
 
 import type { CoverageMapResult } from "./coverage-map";
+import { downloadCsvFile } from "./file-download";
 
 export const CSV_BOM = "\uFEFF";
 
@@ -54,20 +55,6 @@ export function buildCoverageCsv(coverage: CoverageMapResult): string {
 }
 
 export function downloadCoverageCsv(coverage: CoverageMapResult, today: string): boolean {
-  if (typeof document === "undefined") return false; // SSR guard
-  try {
-    const csv = CSV_BOM + buildCoverageCsv(coverage);
-    const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `vision2-coverage-${today}.csv`;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-    return true;
-  } catch {
-    return false;
-  }
+  // r398 — the byte-identical tail borrows the shared painter.
+  return downloadCsvFile(() => CSV_BOM + buildCoverageCsv(coverage), `vision2-coverage-${today}.csv`);
 }

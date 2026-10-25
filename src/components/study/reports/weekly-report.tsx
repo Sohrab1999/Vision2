@@ -24,6 +24,7 @@ import { downloadWeeklyImage, buildWeeklyBlob, type WeeklyImageOpts, imageFailTo
 import { blobToFile, shareImageFile, type ShareOutcome } from "@/lib/share-card";
 import { trackEvent } from "@/lib/analytics";
 import { downloadProgressCsv, downloadWeeklyTrendCsv, downloadMonthCsv } from "@/lib/progress-csv";
+import { fileFailToast } from "@/lib/file-download";
 import { storiesReadSince } from "@/lib/library-progress";
 import { storyStreak } from "@/lib/library-streak";
 import { monthReads } from "@/lib/library-month";
@@ -145,29 +146,35 @@ export default function WeeklyReportSection() {
   // (daysAgoKey(0)) — آزمون‌ها با روزِ لنگر قفل‌اند.
   const saveCsv = () => {
     const ok = downloadProgressCsv(dayHistory, daysAgoKey(0));
-    toast(
-      ok
-        ? { title: "📊 جدول CSV ذخیره شد", description: `${faNum(35)} روزِ فعالیت با ستونهایِ هفت‌روزه — آمادهٔ اکسل.`, duration: 3000 }
-        : { title: "خطا در ساخت فایل", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
-    );
+    if (ok) {
+      toast({ title: "📊 جدول CSV ذخیره شد", description: `${faNum(35)} روزِ فعالیت با ستونهایِ هفت‌روزه — آمادهٔ اکسل.`, duration: 3000 });
+    } else {
+      // r398 — the failure pair borrows the named owner (fileFailToast);
+      // the success toast stays this gate's own dialect.
+      fileFailToast();
+    }
   };
   const saveTrendCsv = () => {
     const ok = downloadWeeklyTrendCsv({ dayHistory, history, goalMetDays }, daysAgoKey(0));
-    toast(
-      ok
-        ? { title: "📈 روندِ ۴هفته‌ای ذخیره شد", description: "هر هفته یک سطر — برای گزارش معلم مناسب است.", duration: 3000 }
-        : { title: "خطا در ساخت فایل", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
-    );
+    if (ok) {
+      toast({ title: "📈 روندِ ۴هفته‌ای ذخیره شد", description: "هر هفته یک سطر — برای گزارش معلم مناسب است.", duration: 3000 });
+    } else {
+      // r398 — the failure pair borrows the named owner (fileFailToast);
+      // the success toast stays this gate's own dialect.
+      fileFailToast();
+    }
   };
   // r305 — ماه‌نامهٔ خواندن: برشِ ۳۰روزهٔ داستان‌ها از همان monthReads — CSVِ معلم‌نگر؛
   // r313 — toast هم زبانِ ۶ستونیِ r312 را میگوید (هم‌زبانِ برچسبِ دکمه)
   const saveMonthCsv = () => {
     const ok = downloadMonthCsv(dayHistory, daysAgoKey(0));
-    toast(
-      ok
-        ? { title: "🗓 ماه‌نامهٔ خواندن ذخیره شد", description: "۳۰ سطرِ روزانه با جمعِ فزاینده و ستونهایِ هفت‌روزه — آمادهٔ اکسل.", duration: 3000 }
-        : { title: "خطا در ساخت فایل", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
-    );
+    if (ok) {
+      toast({ title: "🗓 ماه‌نامهٔ خواندن ذخیره شد", description: "۳۰ سطرِ روزانه با جمعِ فزاینده و ستونهایِ هفت‌روزه — آمادهٔ اکسل.", duration: 3000 });
+    } else {
+      // r398 — the failure pair borrows the named owner (fileFailToast);
+      // the success toast stays this gate's own dialect.
+      fileFailToast();
+    }
   };
 
   const digest = useMemo(

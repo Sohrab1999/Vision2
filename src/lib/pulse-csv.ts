@@ -13,6 +13,7 @@
 // ------------------------------------------------------------------
 
 import { EVENT_LABELS_FA, type EventName } from "./analytics-events";
+import { downloadCsvFile } from "./file-download";
 
 export const CSV_BOM = "\uFEFF";
 
@@ -42,20 +43,6 @@ export function buildPulseCsv(rows: PulseLedgerRow[]): string {
 }
 
 export function downloadPulseCsv(rows: PulseLedgerRow[], today: string): boolean {
-  if (typeof document === "undefined") return false; // SSR guard
-  try {
-    const csv = CSV_BOM + buildPulseCsv(rows);
-    const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `vision2-pulse-${today}.csv`;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-    return true;
-  } catch {
-    return false;
-  }
+  // r398 — the byte-identical tail borrows the shared painter.
+  return downloadCsvFile(() => CSV_BOM + buildPulseCsv(rows), `vision2-pulse-${today}.csv`);
 }

@@ -25,6 +25,7 @@
 // ------------------------------------------------------------------
 
 import { CSV_BOM, csvSafe } from "./teacher-csv";
+import { downloadCsvFile } from "./file-download";
 import { activeWeekMeta, activeWeekRows } from "./active-week";
 import { teacherSkillLabel } from "./teacher-skill-label";
 import type { LearnerDetail, LearnerSkillRow } from "./teacher-report";
@@ -207,20 +208,7 @@ export function buildLearnerCardCsv(d: LearnerDetail): string {
 }
 
 export function downloadLearnerCardCsv(detail: LearnerDetail, today: string): boolean {
-  if (typeof document === "undefined") return false; // SSR guard
-  try {
-    const csv = CSV_BOM + buildLearnerCardCsv(detail);
-    const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = learnerFileName(detail.name, today);
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-    return true;
-  } catch {
-    return false;
-  }
+  // r398 — the byte-identical tail borrows the shared painter
+  // (learnerFileName dialect for the filename stays this module's own).
+  return downloadCsvFile(() => CSV_BOM + buildLearnerCardCsv(detail), learnerFileName(detail.name, today));
 }

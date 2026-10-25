@@ -20,6 +20,7 @@ import type { QuizQuestion } from "@/lib/study-types";
 import SpeakButton from "../shared/speak-button";
 import QuizEngine from "../quiz/quiz-engine";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { fileFailToast } from "@/lib/file-download";
 
 // state filter values — «paired» (r205): فقط واژه‌های جفت‌دارِ جزوه؛
 // «usage» (r253): فقط واژه‌های کاربرددار در متنِ مکالمه/ریدینگِ جزوه؛
@@ -291,8 +292,9 @@ export default function DictionaryView() {
               const count = downloadAnkiTsv();
               if (count === null) {
                 // r344 — آخرین عضوِ بیسنگِ خانوادهٔ دانلود دیگر ساکت نمیماند؛
-                // همزبانِ چهار CSV («خطا در ساخت فایل») و بدونِ trackEventِ دروغین.
-                toast({ title: "خطا در ساخت فایل", description: "لطفاً دوباره تلاش کن.", duration: 3000 });
+                // r398 — همزبانِ خانواده از مالکِ نامدار (fileFailToast) میسوزد،
+                // بدونِ trackEventِ دروغین.
+                fileFailToast();
                 return;
               }
               trackEvent("anki_export");

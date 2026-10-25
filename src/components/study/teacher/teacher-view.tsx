@@ -24,6 +24,7 @@ import { downloadClassCsv, activeIn24h } from "@/lib/teacher-csv"; // r378 — �
 import { downloadClassLedgerCsv, LEDGER_RATE_WINDOW_MAX, LEDGER_RATE_WAITS } from "@/lib/teacher-class-ledger";
 import TeacherDetailDialog, { learnerDot } from "./teacher-detail";
 import { useToast } from "@/hooks/use-toast";
+import { fileFailToast } from "@/lib/file-download";
 
 const CODE_KEY = "vision2-teacher-code";
 
@@ -173,11 +174,13 @@ export default function TeacherView() {
     if (!report || csvBusy) return;
     trackEvent("teacher_csv");
     const ok = downloadClassCsv(report.roster, new Date().toISOString().slice(0, 10));
-    toast(
-      ok
-        ? { title: "🎓 روزنامهٔ کلاس ذخیره شد", description: "هر سطر = یک یادگیرنده — آمادهٔ فیلتر در اکسل.", duration: 3000 }
-        : { title: "خطا در ساخت فایل", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
-    );
+    if (ok) {
+      toast({ title: "🎓 روزنامهٔ کلاس ذخیره شد", description: "هر سطر = یک یادگیرنده — آمادهٔ فیلتر در اکسل.", duration: 3000 });
+    } else {
+      // r398 — the failure pair borrows the named owner (fileFailToast);
+      // the success toast stays this gate's own dialect.
+      fileFailToast();
+    }
   };
 
   // ---------------- r357 — «دفترِ کلاسِ کامل» ----------------
@@ -251,11 +254,13 @@ export default function TeacherView() {
         { generatedAt: report.generatedAt, byDay: report.summary.byDay, roster: report.roster, details },
         new Date().toISOString().slice(0, 10)
       );
-      toast(
-        ok
-          ? { title: "🎓 دفترِ کاملِ کلاس ذخیره شد", description: `${faNum(details.length)} کارنامه در ادامهٔ روزنامهٔ کلاس — آرشیوِ یکپارچه.`, duration: 3000 }
-          : { title: "خطا در ساخت فایل", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
-      );
+      if (ok) {
+      toast({ title: "🎓 دفترِ کاملِ کلاس ذخیره شد", description: `${faNum(details.length)} کارنامه در ادامهٔ روزنامهٔ کلاس — آرشیوِ یکپارچه.`, duration: 3000 });
+    } else {
+      // r398 — the failure pair borrows the named owner (fileFailToast);
+      // the success toast stays this gate's own dialect.
+      fileFailToast();
+    }
     } catch {
       // [r373] املا یکدست شد: «کارنامه‌ها»/«نمی‌شود» با نیمفاصله — هم‌ریج با شاخهٔ ۴۲۹ (خطِ ۱۵۸)
       toast({ title: "خواندنِ کارنامه‌ها ناتمام ماند", description: "دفترِ نصفه ساخته نمی‌شود — اتصال را بررسی کن و دوباره تلاش کن.", duration: 3500 });

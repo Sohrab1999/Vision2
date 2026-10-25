@@ -89,11 +89,12 @@ describe("share honesty r343 — خانوادهٔ CSV و پایِ بومی", () 
     expect(names[1]).toBe(`vision2-coverage-${T}.csv`);
   });
 
-  it("درمانِ دوپایهٔ coverage: نبودِ پوشش زودبرمیگردد و شکستِ ساخت همزبانِ خانواده میشود", () => {
+  it("درمانِ دوپایهٔ coverage: نبودِ پوشش زودبرمیگردد و شکستِ ساخت همزبانِ خانواده میشود (r398: وامگیرِ مالک)", () => {
     const guardAt = officialSrc.indexOf("if (!coverage)");
     const callAt = officialSrc.indexOf("downloadCoverageCsv(coverage");
     const readyAt = officialSrc.indexOf("گزارش پوشش هنوز آماده نیست");
-    const failAt = officialSrc.indexOf('title: "خطا در ساخت فایل"');
+    // r398 — جفتِ شکست دیگر درونفایلی نیست؛ وامگیریِ fileFailToast
+    const failAt = officialSrc.indexOf("fileFailToast()");
     expect(guardAt).toBeGreaterThan(-1);
     expect(callAt).toBeGreaterThan(guardAt);
     expect(failAt).toBeGreaterThan(callAt);
@@ -104,12 +105,13 @@ describe("share honesty r343 — خانوادهٔ CSV و پایِ بومی", () 
     expect(officialSrc.slice(callAt)).not.toContain("اول کمی تمرین کن");
   });
 
-  it("سه CSVِ هفته‌نامه زبانِ خانواده را نگه میدارند: شکست = «خطا در ساخت فایل»", () => {
+  it("سه CSVِ هفته‌نامه زبانِ خانواده را نگه میدارند (r398: هر سه وامگیرِ fileFailToast)", () => {
     for (const success of ["جدول CSV ذخیره شد", "روندِ ۴هفته‌ای ذخیره شد", "ماه‌نامهٔ خواندن ذخیره شد"]) {
       expect(weeklySrc).toContain(success);
     }
-    const hits = weeklySrc.match(/خطا در ساخت فایل/g) ?? [];
-    expect(hits.length).toBeGreaterThanOrEqual(3);
+    // r398 — هر سه شاخهٔ شکست مالک را صدا میزنند؛ گویشهایِ موفقیت پابرجا
+    const borrows = weeklySrc.match(/fileFailToast\(\)/g) ?? [];
+    expect(borrows.length).toBe(3);
   });
 
   it("پایِ بومیِ shareResult: مجموعهٔ سکوتِ مشروع دقیقاً {AbortError} است — NotAllowedError به کلیپبورد میافتد", () => {

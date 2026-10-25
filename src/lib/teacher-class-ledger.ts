@@ -23,6 +23,7 @@
 // ------------------------------------------------------------------
 
 import { CSV_BOM, buildClassCsv } from "./teacher-csv";
+import { downloadCsvFile } from "./file-download";
 import { buildLearnerCardCsv } from "./teacher-learner-csv";
 import { activeWeekMeta, activeWeekRows } from "./active-week";
 import type { RosterRow, LearnerDetail } from "./teacher-report";
@@ -97,20 +98,6 @@ export function buildClassLedgerCsv(input: ClassLedgerInput): string {
 }
 
 export function downloadClassLedgerCsv(input: ClassLedgerInput, today: string): boolean {
-  if (typeof document === "undefined") return false; // SSR guard
-  try {
-    const csv = CSV_BOM + buildClassLedgerCsv(input);
-    const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `vision2-class-ledger-${today}.csv`;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-    return true;
-  } catch {
-    return false;
-  }
+  // r398 — the byte-identical tail borrows the shared painter.
+  return downloadCsvFile(() => CSV_BOM + buildClassLedgerCsv(input), `vision2-class-ledger-${today}.csv`);
 }

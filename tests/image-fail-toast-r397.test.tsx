@@ -172,13 +172,15 @@ describe("r397 — قفلهایِ منبعِ مالک", () => {
     expect(hits).toEqual(["src/lib/result-image.ts"]);
   });
 
-  it("سندِ ثبتِ r398 — سرشماریِ خانوادهٔ برادرِ CSV: ۹ سایتِ بایتمسانِ «خطا در ساخت فایل»", () => {
-    // کشفِ پروبِ آغازینِ r397: توصیهٔ «لطفاً دوباره تلاش کن.» میانِ دو خانواده
-    // مشترک است، اما عنوانِ «فایل» خانوادهٔ مستقلی است با ۹ سایتِ بایتبهبایت
-    // یکی — هفت دروازهٔ CSV در شش پرونده. حکم و مالکش، نامزدِ ثبتشدهٔ راندِ
-    // بعد است (الگویِ همین راند برای تصویر) — این قفل فقط دادهٔ امروز را میخکوب
-    // میکند تا پیش از راندِ مالک، سرشماری سرخورد نکند.
-    const FILE_FAMILY: ReadonlyArray<readonly [string, number]> = [
+  it("r398 landed — the CSV sibling family's owner: 9 gates borrow fileFailToast, the pair lives ONLY in the owner", () => {
+    // The r397-registered candidate migrated this round (r398): the failure
+    // pair «خطا در ساخت فایل» now lives only in lib/file-download.ts; the
+    // nine gates borrow the named owner. This test is the census tripwire,
+    // upgraded from pinning hand-copies to pinning the borrows.
+    const ownerSrc = p("src/lib/file-download.ts");
+    expect(ownerSrc).toContain('title: "خطا در ساخت فایل"');
+    expect(ownerSrc).toContain("لطفاً دوباره تلاش کن.");
+    const BORROWERS: ReadonlyArray<readonly [string, number]> = [
       ["src/components/study/reports/weekly-report.tsx", 3],
       ["src/components/study/reports/official-report.tsx", 1],
       ["src/components/study/lesson/dictionary-view.tsx", 1],
@@ -186,16 +188,14 @@ describe("r397 — قفلهایِ منبعِ مالک", () => {
       ["src/components/study/teacher/teacher-detail.tsx", 1],
       ["src/components/study/teacher/teacher-view.tsx", 2],
     ];
-    for (const [f, n] of FILE_FAMILY) {
-      const count = (p(f).match(/title: "خطا در ساخت فایل", description: "لطفاً دوباره تلاش کن\.", duration: 3000/g) ?? []).length;
+    for (const [f, n] of BORROWERS) {
+      const count = (p(f).match(/fileFailToast\(\)/g) ?? []).length;
       expect(count, f).toBe(n);
+      expect(p(f), f).not.toContain('title: "خطا در ساخت فایل"');
     }
-    // و در کل src هیچ سایتِ دیگری از این شکل وجود ندارد
-    const all = execSync(
-      `rg -c 'title: "خطا در ساخت فایل", description: "لطفاً دوباره تلاش کن\\.", duration: 3000' src/ || true`
-    ).toString().trim().split("\n").filter(Boolean);
-    const total = all.reduce((s, line) => s + Number(line.split(":").pop()), 0);
-    expect(total).toBe(9);
+    // و در کل src هیچ سایتِ دیگری از این عنوان وجود ندارد
+    const all = execSync(`rg -l 'title: "خطا در ساخت فایل"' src/ || true`).toString().trim().split("\n").filter(Boolean);
+    expect(all).toEqual(["src/lib/file-download.ts"]);
   });
 
   it("پنج وامگیرنده مالک را صدا میزنند و وامگیری از مسیرِ باریلِ درست است", () => {

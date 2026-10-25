@@ -232,7 +232,9 @@ describe("رجیستری و سیمکشیِ r351", () => {
     expect(src).toContain('fetch("/api/event?days=30"'); // دفترِ سی‌روزه
     expect(src).toContain("دانلود دفترِ سی‌روزهٔ رویدادها (CSV)");
     expect(src).toContain("دفترِ سی‌روزهٔ نبض ذخیره شد"); // پایِ سبزِ ساخت
-    expect(src).toContain("خطا در ساخت فایل"); // شکستِ ساخت
+    // r398 — شکستِ ساخت از مالکِ نامدار (fileFailToast) میسوزد؛ جفتِ دستی منقرض
+    expect(src).toContain("fileFailToast()");
+    expect(src).not.toContain("خطا در ساخت فایل");
     expect(src).toContain("دفترِ رویدادها خوانده نشد"); // شکستِ خواندن — دو پا
     expect(src).toContain("downloadPulseCsv");
     // دکمهٔ دانلود هم‌idiomِ دکمهٔ تازهسازی است (hoverِ همعنصرِ مستندِ r350)

@@ -19,6 +19,7 @@ import { trackEvent } from "@/lib/analytics";
 import { lastActiveFa, type LearnerDetail } from "@/lib/teacher-report";
 import { teacherSkillLabel } from "@/lib/teacher-skill-label"; // r375 — تکمنبعِ برچسبِ مهارت (نسخهٔ دوقلو بازنشسته شد)
 import { downloadLearnerCardCsv, weakestSkillMeta } from "@/lib/teacher-learner-csv";
+import { fileFailToast } from "@/lib/file-download";
 
 const DOT_COLORS: Record<string, string> = {
   emerald: "bg-emerald-500",
@@ -106,11 +107,13 @@ export default function TeacherDetailDialog({
     if (!detail || csvBusy) return;
     trackEvent("teacher_learner_csv");
     const ok = downloadLearnerCardCsv(detail, new Date().toISOString().slice(0, 10));
-    toast(
-      ok
-        ? { title: `🎓 کارنامهٔ ${detail.name} ذخیره شد`, description: "روندِ چهارده روز، پوششِ درسها و شکستِ مهارتها — آمادهٔ چاپ.", duration: 3000 }
-        : { title: "خطا در ساخت فایل", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
-    );
+    if (ok) {
+      toast({ title: `🎓 کارنامهٔ ${detail.name} ذخیره شد`, description: "روندِ چهارده روز، پوششِ درسها و شکستِ مهارتها — آمادهٔ چاپ.", duration: 3000 });
+    } else {
+      // r398 — the failure pair borrows the named owner (fileFailToast);
+      // the success toast stays this gate's own dialect.
+      fileFailToast();
+    }
   };
 
   // r377 — [باگِ نهفتهٔ r353 که خروجیِ تستِ suite را سرخ میکرد]: detail

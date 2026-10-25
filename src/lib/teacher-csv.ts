@@ -12,6 +12,7 @@
 
 import { teacherSkillLabel } from "./teacher-skill-label"; // r377 — تکمنبعِ برچسبِ مهارت (نشتِ خامِ ر352 که ر375 از دید برد)
 import type { RosterRow } from "./teacher-report";
+import { downloadCsvFile } from "./file-download";
 
 export const CSV_BOM = "\uFEFF";
 
@@ -71,20 +72,6 @@ export function buildClassCsv(roster: RosterRow[], now: number = Date.now()): st
 }
 
 export function downloadClassCsv(roster: RosterRow[], today: string): boolean {
-  if (typeof document === "undefined") return false; // SSR guard
-  try {
-    const csv = CSV_BOM + buildClassCsv(roster);
-    const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `vision2-class-${today}.csv`;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-    return true;
-  } catch {
-    return false;
-  }
+  // r398 — the byte-identical tail borrows the shared painter.
+  return downloadCsvFile(() => CSV_BOM + buildClassCsv(roster), `vision2-class-${today}.csv`);
 }

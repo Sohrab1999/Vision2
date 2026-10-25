@@ -45,6 +45,7 @@ import { monthVitalsOf, avgPercentOf } from "@/lib/report-vitals";
 import { buildCoverageMap, COVERAGE_SKILLS } from "@/lib/coverage-map";
 import { COVERAGE_SKILL_SHORT, heatSummary } from "@/lib/coverage-heat";
 import { downloadCoverageCsv, coverageStatus } from "@/lib/coverage-csv";
+import { fileFailToast } from "@/lib/file-download";
 import { buildPairsCoverage } from "@/lib/pairs-coverage";
 import { lessons } from "@/data";
 import { useToast } from "@/hooks/use-toast";
@@ -227,11 +228,13 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
       return;
     }
     const ok = downloadCoverageCsv(coverage, daysAgoKey(0));
-    toast(
-      ok
-        ? { title: "🧭 CSV پوشش ذخیره شد", description: "هر سطر = یک مهارتِ یک درس — آمادهٔ فیلتر در اکسل.", duration: 3000 }
-        : { title: "خطا در ساخت فایل", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
-    );
+    if (ok) {
+      toast({ title: "🧭 CSV پوشش ذخیره شد", description: "هر سطر = یک مهارتِ یک درس — آمادهٔ فیلتر در اکسل.", duration: 3000 });
+    } else {
+      // r398 — the failure pair borrows the named owner (fileFailToast);
+      // the success toast stays this gate's own dialect.
+      fileFailToast();
+    }
   };
 
   // r286 — عکسِ کارنامهٔ رسمی: هندلر بعد از memoهایِ وابسته (unlockedBadges/avgPercent)

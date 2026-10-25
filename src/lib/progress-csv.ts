@@ -21,6 +21,7 @@ import {
   type DigestInput,
 } from "./weekly-digest";
 import { monthReads } from "./library-month";
+import { downloadCsvFile } from "./file-download";
 import type { DayHistoryMap } from "./study-store";
 
 export const CSV_BOM = "\uFEFF";
@@ -91,22 +92,9 @@ export function downloadProgressCsv(
   today: string,
   days: number = PROGRESS_CSV_DAYS
 ): boolean {
-  if (typeof document === "undefined") return false; // SSR guard
-  try {
-    const csv = CSV_BOM + buildProgressCsv(history, today, days);
-    const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `vision2-progress-${today}.csv`;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-    return true;
-  } catch {
-    return false;
-  }
+  // r398 — the byte-identical tail borrows the shared painter
+  // (downloadCsvFile — the builder runs inside its guard).
+  return downloadCsvFile(() => CSV_BOM + buildProgressCsv(history, today, days), `vision2-progress-${today}.csv`);
 }
 
 // ---------------- ۱۷۸ — روندِ ۴هفته‌ایِ معلم‌نگر ----------------
@@ -190,22 +178,8 @@ export function downloadWeeklyTrendCsv(
   today: string,
   weeks: number = WEEKLY_TREND_WEEKS
 ): boolean {
-  if (typeof document === "undefined") return false; // SSR guard
-  try {
-    const csv = CSV_BOM + buildWeeklyTrendCsv(input, today, weeks);
-    const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `vision2-weekly-${today}.csv`;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-    return true;
-  } catch {
-    return false;
-  }
+  // r398 — the byte-identical tail borrows the shared painter.
+  return downloadCsvFile(() => CSV_BOM + buildWeeklyTrendCsv(input, today, weeks), `vision2-weekly-${today}.csv`);
 }
 
 // ---------------- r305 — ماه‌نامهٔ خواندن (CSVِ معلم‌نگر) ----------------
@@ -261,20 +235,6 @@ export function buildMonthCsv(history: DayHistoryMap, today: string): string {
 }
 
 export function downloadMonthCsv(history: DayHistoryMap, today: string): boolean {
-  if (typeof document === "undefined") return false; // SSR guard
-  try {
-    const csv = CSV_BOM + buildMonthCsv(history, today);
-    const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `vision2-month-reading-${today}.csv`;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-    return true;
-  } catch {
-    return false;
-  }
+  // r398 — the byte-identical tail borrows the shared painter.
+  return downloadCsvFile(() => CSV_BOM + buildMonthCsv(history, today), `vision2-month-reading-${today}.csv`);
 }

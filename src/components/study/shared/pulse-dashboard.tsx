@@ -27,6 +27,7 @@ import { trackEvent } from "@/lib/analytics";
 import { EVENT_CATEGORIES, EVENT_CATEGORY_ORDER } from "@/lib/analytics-events";
 import { budgetPercent, budgetTone } from "@/lib/budget-tone";
 import { downloadPulseCsv, type PulseLedgerRow } from "@/lib/pulse-csv";
+import { fileFailToast } from "@/lib/file-download";
 
 interface PulseEvent {
   name: string;
@@ -183,11 +184,13 @@ export default function PulseDashboard({ open, onOpenChange }: { open: boolean; 
       if (!res.ok) throw new Error("ledger http " + res.status);
       const data = (await res.json()) as { series?: PulseLedgerRow[] };
       const ok = downloadPulseCsv(data.series ?? [], new Date().toISOString().slice(0, 10));
-      toast(
-        ok
-          ? { title: "📊 دفترِ سی‌روزهٔ نبض ذخیره شد", description: "هر سطر = یک روز × یک رویداد — آمادهٔ فیلتر در اکسل.", duration: 3000 }
-          : { title: "خطا در ساخت فایل", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
-      );
+      if (ok) {
+      toast({ title: "📊 دفترِ سی‌روزهٔ نبض ذخیره شد", description: "هر سطر = یک روز × یک رویداد — آمادهٔ فیلتر در اکسل.", duration: 3000 });
+    } else {
+      // r398 — the failure pair borrows the named owner (fileFailToast);
+      // the success toast stays this gate's own dialect.
+      fileFailToast();
+    }
     } catch {
       toast({ title: "دفترِ رویدادها خوانده نشد", description: "اتصال را بررسی کن و دوباره تلاش کن.", duration: 3000 });
     } finally {

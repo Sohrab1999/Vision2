@@ -138,17 +138,17 @@ describe("output honesty r344 — خانوادهٔ Anki و پشتیبان", () =
     }
   });
 
-  it("قراردادِ درگاهِ Anki: گاردِ null پیشِ trackEvent و توستِ همزبانِ خانواده", () => {
+  it("قراردادِ درگاهِ Anki: گاردِ null پیشِ trackEvent و توستِ همزبانِ خانواده (r398: وامگیرِ مالک)", () => {
     // گاردِ دوپایه در درگاه — قبل از هر رویدادی
     expect(portSrc).toContain("count === null");
-    // توستِ شکست: همزبانِ چهار CSV
-    expect(portSrc).toContain('title: "خطا در ساخت فایل"');
-    expect(portSrc).toContain("لطفاً دوباره تلاش کن.");
+    // r398 — توستِ شکست از مالکِ نامدار (fileFailToast) میسوزد؛ جفتِ دستی منقرض
+    expect(portSrc).toContain("fileFailToast()");
+    expect(portSrc).not.toContain('title: "خطا در ساخت فایل"');
     // ترتیبِ درونِ onClick: گارد → توستِ خانواده → returnِ زودبرگشت → trackEvent
     const start = portSrc.indexOf("const count = downloadAnkiTsv();");
     const block = portSrc.slice(start, start + 900);
     const g = block.indexOf("count === null");
-    const fam = block.indexOf("خطا در ساخت فایل");
+    const fam = block.indexOf("fileFailToast()");
     const ret = block.indexOf("return;");
     const trk = block.indexOf('trackEvent("anki_export")');
     expect(g).toBeGreaterThan(-1);
