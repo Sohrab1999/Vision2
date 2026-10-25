@@ -39,8 +39,12 @@ export type DrillKind = "past" | "pp" | "base" | "fa";
 /** گونههای دریلِ خانوادهٔ واژه (r403) — معنی + چهار جزء کلام */
 export type WordDrillKind = "fa" | "adjective" | "adverb" | "verb" | "noun";
 
-/** اتحادِ گونههای هر دو دریل — نما فقط با fa/base/speak تصمیم میگیرد */
-export type DrillQuestionKind = DrillKind | WordDrillKind;
+/** r404 — گونههای دریلِ نشانه‌های اختصاری (سومین بانکِ ضمیمه) —
+ *  معنی (نماد→فارسی) / شکلِ کامل (نماد→انگلیسی) / نمادِ معکوس (انگلیسی→نماد) */
+export type AbbrevDrillKind = "fa" | "full" | "sym";
+
+/** اتحادِ گونههای هر سه دریل — نما فقط با fa/base/speak تصمیم میگیرد */
+export type DrillQuestionKind = DrillKind | WordDrillKind | AbbrevDrillKind;
 
 export const DRILL_KINDS: DrillKind[] = ["past", "pp", "base", "fa"];
 

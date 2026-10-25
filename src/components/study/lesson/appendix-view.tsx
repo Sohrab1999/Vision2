@@ -15,9 +15,10 @@ import { wordFamilyUsageCensus } from "@/lib/word-usage";
 import { writeAppendixResume, type AppendixScope } from "@/lib/bg-reading";
 import BookletGrammarView from "./booklet-grammar-view";
 import IrregularVerbsTable from "./irregular-verbs-table";
-import AppendixDrillView, { type DrillViewSpec } from "./appendix-drill-view"; // r400 — تمرینِ ضمیمه؛ r403 — نمایِ مشترکِ دو بانک
+import AppendixDrillView, { type DrillViewSpec } from "./appendix-drill-view"; // r400 — تمرینِ ضمیمه؛ r403 — نمایِ مشترکِ دو بانک؛ r404 — بانکِ سوم
 import { buildDrillSession, DRILL_SIZE } from "@/lib/appendix-drill";
 import { buildWordDrillSession } from "@/lib/appendix-word-drill";
+import { buildAbbrevDrillSession } from "@/lib/appendix-abbrev-drill"; // r404
 import PhoneticsTable from "./phonetics-table";
 import AbbreviationsTable from "./abbreviations-table";
 import WordFamilyTableCard from "./word-family-table-card";
@@ -66,6 +67,25 @@ const WORD_DRILL_SPEC: DrillViewSpec = {
   exitAria: "بازگشت به جدول اجزای کلام",
   exitResultAria: "بازگشت به جدول اجزای کلام از نتیجه",
   cancelAria: "انصراف از تمرین واژه",
+};
+
+// r404 — specِ بانکِ سوم: نشانه‌های اختصاری — معنی/شکلِ کامل/نمادِ معکوس؛
+// aria-labelهای فعل و واژه قفلِ تستِ r400..r403اند — عینِ همان رشتهها.
+const ABBREV_DRILL_SPEC: DrillViewSpec = {
+  id: "abbrev",
+  title: "تمرین نشانه‌های اختصاری",
+  intro: (
+    <>
+      {faNum(DRILL_SIZE)} پرسش از {faNum(abbreviations.length)} نشانهٔ ضمیمه: معنی، شکلِ کامل و
+      نشانهٔ معکوس. گزینه‌ها همگی از خودِ بانکِ نشانهها میآیند — نه ساختهٔ ماشینی؛ و اگر چیزی
+      اشتباه بماند، همان‌ها دوباره پرسیده میشوند.
+    </>
+  ),
+  startAria: "شروع جلسهٔ تمرین نشانه",
+  exitLabel: "کارت‌های نشانه",
+  exitAria: "بازگشت به کارت‌های نشانه",
+  exitResultAria: "بازگشت به کارت‌های نشانه از نتیجه",
+  cancelAria: "انصراف از تمرین نشانه",
 };
 
 export default function AppendixView({
@@ -132,6 +152,8 @@ export default function AppendixView({
   const [verbDrill, setVerbDrill] = useState(false);
   // r403 — همان قرارداد برایِ زیرتبِ pos: فقط با کلیک؛ دیپلینکِ posTable همیشه جدول
   const [wordDrill, setWordDrill] = useState(false);
+  // r404 — و بانکِ سوم: زیرتبِ abbrev؛ فقط با کلیک — دیپلینکِ abbrevSym همیشه جدول
+  const [abbrevDrill, setAbbrevDrill] = useState(false);
   // لنگرِ عمیقِ کارتِ واکِ «جدول تلفظ» (راند ۲۳۵) — یک‌بارِ مصرفِ همان الگو
   const [focusPhonemeId, setFocusPhonemeId] = useState<string | undefined>(
     () => (validPhoneme ? phonemeId : undefined),
@@ -518,13 +540,35 @@ export default function AppendixView({
       {/* راند ۲۳۱ — نشانه‌های اختصاری هم به کامپوننتِ خودش مهاجرت کردند
           (الگویِ استخراجِ r230) و جست‌وجوی دوزبانه + روخوانیِ شکلِ کامل
           گرفتند.
-          راند ۲۳۵ — لنگرِ عمیقِ کارتِ نشانه + نقطهٔ نوشتنِ TTS. */}
-      {tab === "abbrev" && (
-        <AbbreviationsTable
-          focusSym={focusAbbrevSym}
-          onFocusDone={() => setFocusAbbrevSym(undefined)}
-        />
-      )}
+          راند ۲۳۵ — لنگرِ عمیقِ کارتِ نشانه + نقطهٔ نوشتنِ TTS.
+          r404 — تمرینِ نشانه‌ها با همان نمایِ مشترکِ هر سه بانک؛ فقط با
+          کلیکِ کاربر (قراردادِ r234/r400/r403) — دیپلینکِ abbrevSym همیشه جدول */}
+      {tab === "abbrev" &&
+        (abbrevDrill ? (
+          <AppendixDrillView
+            spec={ABBREV_DRILL_SPEC}
+            buildSession={() => buildAbbrevDrillSession(abbreviations, DRILL_SIZE)}
+            onExit={() => setAbbrevDrill(false)}
+          />
+        ) : (
+          <>
+            <div className="mb-2 flex items-center justify-end">
+              <button
+                onClick={() => setAbbrevDrill(true)}
+                aria-label="شروع تمرین نشانه‌های اختصاری"
+                title="ده پرسش از ضمیمه — معنی، شکل کامل و نشانهٔ معکوس"
+                className="inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-violet-200 bg-violet-50 px-3 text-[12px] font-black text-violet-700 transition-colors hover:bg-violet-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-200 active:scale-[0.96]"
+              >
+                <GraduationCap size={15} aria-hidden />
+                تمرین
+              </button>
+            </div>
+            <AbbreviationsTable
+              focusSym={focusAbbrevSym}
+              onFocusDone={() => setFocusAbbrevSym(undefined)}
+            />
+          </>
+        ))}
     </div>
   );
 }

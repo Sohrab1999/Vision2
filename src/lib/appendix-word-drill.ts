@@ -105,6 +105,9 @@ export function buildWordDrillSession(
     const pool = eligible.get(kind)!;
     const fresh = pool.filter((f) => !used.has(f));
     const pickable = fresh.length > 0 ? fresh : pool;
+    // r404 — درسِ همکلاسِ دریلِ نشانهها: بانکِ غیروخالی ولی همهتهیِ یک گونه
+    // نباید واژگون کند — گونهٔ بیپیشنهاد پرسیدنی نیست؛ جلسهٔ کوتاهترِ صادق
+    if (pickable.length === 0) continue;
     const f = shuffled(pickable, rng)[0];
     used.add(f);
 
@@ -127,5 +130,6 @@ export function buildWordDrillSession(
       speak: anchor || undefined,
     });
   }
-  return { questions, size: n };
+  // r404 — size = شمارِ واقعیِ پرسشها (گونهٔ بیپیشنهاد جلسه را کوتاه میکند)
+  return { questions, size: questions.length };
 }
