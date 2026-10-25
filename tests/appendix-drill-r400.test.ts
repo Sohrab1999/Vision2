@@ -20,6 +20,7 @@ import {
   drillForm,
   DRILL_KINDS,
   DRILL_SIZE,
+  type DrillKind,
 } from "@/lib/appendix-drill";
 
 /** PRNG قطعی برای تست (mulberry32) */
@@ -72,8 +73,8 @@ describe("appendix-drill r400 — جلسهٔ پرسش", () => {
       expect(q.answer).toBeGreaterThanOrEqual(0);
       expect(q.answer).toBeLessThan(q.options.length);
       const verb = irregularVerbs.find((v) => v.base === q.base)!;
-      expect(q.options[q.answer]).toBe(drillForm(verb, q.kind)); // پاسخ = دادهٔ خودِ فعل
-      const legal = new Set(irregularVerbs.map((v) => drillForm(v, q.kind)));
+      expect(q.options[q.answer]).toBe(drillForm(verb, q.kind as DrillKind)); // پاسخ = دادهٔ خودِ فعل
+      const legal = new Set(irregularVerbs.map((v) => drillForm(v, q.kind as DrillKind)));
       for (const opt of q.options) expect(legal.has(opt)).toBe(true); // هیچ گزینهٔ ساختهشده
     }
   });

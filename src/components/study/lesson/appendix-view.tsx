@@ -15,12 +15,13 @@ import { wordFamilyUsageCensus } from "@/lib/word-usage";
 import { writeAppendixResume, type AppendixScope } from "@/lib/bg-reading";
 import BookletGrammarView from "./booklet-grammar-view";
 import IrregularVerbsTable from "./irregular-verbs-table";
-import AppendixDrillView from "./appendix-drill-view"; // r400 — تمرینِ افعال بیقاعده
+import AppendixDrillView, { type DrillViewSpec } from "./appendix-drill-view"; // r400 — تمرینِ ضمیمه؛ r403 — نمایِ مشترکِ دو بانک
+import { buildDrillSession, DRILL_SIZE } from "@/lib/appendix-drill";
+import { buildWordDrillSession } from "@/lib/appendix-word-drill";
 import PhoneticsTable from "./phonetics-table";
 import AbbreviationsTable from "./abbreviations-table";
 import WordFamilyTableCard from "./word-family-table-card";
 import AppendixResumePill from "./appendix-resume-pill";
-
 type SubTab = "verbs" | "phonetics" | "pos" | "abbrev" | "grammar";
 
 const subTabs: { key: SubTab; label: string; icon: React.ElementType }[] = [
@@ -30,6 +31,42 @@ const subTabs: { key: SubTab; label: string; icon: React.ElementType }[] = [
   { key: "pos", label: "اجزای کلام", icon: BookA },
   { key: "abbrev", label: "نشانه‌های اختصاری", icon: Table2 },
 ];
+
+// r403 — دو specِ نمایِ مشترکِ دریل: هر بانک متنِ صادقِ خودش را دارد؛
+// aria-labelهای فعل قفلِ تستِ r400..r402اند — عینِ همان رشتهها.
+const VERB_DRILL_SPEC: DrillViewSpec = {
+  id: "verbs",
+  title: "تمرین افعال بی‌قاعده",
+  intro: (
+    <>
+      {faNum(DRILL_SIZE)} پرسش از فهرستِ {faNum(irregularVerbs.length)} فعلی ضمیمه: گذشتهٔ ساده،
+      شکل سوم (p.p.)، شکلِ ساده و معنیِ فارسی. گزینه‌ها همگی از خودِ بانکِ افعال میآیند — نه
+      ساختهٔ ماشینی؛ و اگر چیزی اشتباه بماند، همان‌ها دوباره پرسیده میشوند.
+    </>
+  ),
+  startAria: "شروع جلسهٔ تمرین فعل",
+  exitLabel: "جدول افعال",
+  exitAria: "بازگشت به جدول افعال",
+  exitResultAria: "بازگشت به جدول افعال از نتیجه",
+  cancelAria: "انصراف از تمرین",
+};
+
+const WORD_DRILL_SPEC: DrillViewSpec = {
+  id: "words",
+  title: "تمرین خانوادهٔ واژه‌ها",
+  intro: (
+    <>
+      {faNum(DRILL_SIZE)} پرسش از {faNum(WORD_FAMILY_TOTAL)} خانوادهٔ واژهٔ جدول‌های جزوه: معنی،
+      صفت، قید، فعل و اسم. گزینه‌ها همگی از خودِ جدولها میآیند — نه ساختهٔ ماشینی؛ خانه‌هایِ خالیِ
+      جزوه پرسیده نمیشوند؛ و اگر چیزی اشتباه بماند، همان‌ها دوباره پرسیده میشوند.
+    </>
+  ),
+  startAria: "شروع جلسهٔ تمرین واژه",
+  exitLabel: "جدول اجزای کلام",
+  exitAria: "بازگشت به جدول اجزای کلام",
+  exitResultAria: "بازگشت به جدول اجزای کلام از نتیجه",
+  cancelAria: "انصراف از تمرین واژه",
+};
 
 export default function AppendixView({
   topicId,
@@ -93,6 +130,8 @@ export default function AppendixView({
   // r400 — حالتِ تمرینِ زیرتبِ verbs؛ فقط با کلیکِ کاربر روشن میشود
   // (لنگرِ عمیقِ r234 همیشه جدول را میآورد — drill هرگز رویِ دیپلینک بالا نمیآید)
   const [verbDrill, setVerbDrill] = useState(false);
+  // r403 — همان قرارداد برایِ زیرتبِ pos: فقط با کلیک؛ دیپلینکِ posTable همیشه جدول
+  const [wordDrill, setWordDrill] = useState(false);
   // لنگرِ عمیقِ کارتِ واکِ «جدول تلفظ» (راند ۲۳۵) — یک‌بارِ مصرفِ همان الگو
   const [focusPhonemeId, setFocusPhonemeId] = useState<string | undefined>(
     () => (validPhoneme ? phonemeId : undefined),
@@ -216,7 +255,11 @@ export default function AppendixView({
           راند ۲۳۴ — لنگرِ عمیقِ سطرِ فعل + ثبتِ «آخرین فعلِ شنیده‌شده». */}
       {tab === "verbs" &&
         (verbDrill ? (
-          <AppendixDrillView verbs={irregularVerbs} onExit={() => setVerbDrill(false)} />
+          <AppendixDrillView
+            spec={VERB_DRILL_SPEC}
+            buildSession={() => buildDrillSession(irregularVerbs, DRILL_SIZE)}
+            onExit={() => setVerbDrill(false)}
+          />
         ) : (
           <>
             <div className="mb-2 flex items-center justify-end">
@@ -248,7 +291,17 @@ export default function AppendixView({
         />
       )}
 
-      {tab === "pos" && (() => {
+      {/* r403 — زیرتبِ pos: تمرینِ خانوادهٔ واژه با همان نمایِ مشترک؛
+          فقط با کلیکِ کاربر (قراردادِ r234/r400) — دیپلینکِ posTable همیشه جدول */}
+      {tab === "pos" &&
+        (wordDrill ? (
+          <AppendixDrillView
+            spec={WORD_DRILL_SPEC}
+            buildSession={() => buildWordDrillSession(WORD_FAMILY_TABLES, DRILL_SIZE)}
+            onExit={() => setWordDrill(false)}
+          />
+        ) : (
+          (() => {
         const gradeCounts = { همه: WORD_FAMILY_TOTAL, دهم: 0, یازدهم: 0, دوازدهم: 0 } as Record<string, number>;
         for (const t of WORD_FAMILY_TABLES) gradeCounts[t.grade] += t.families.length;
         const tables = posGrade === "همه" ? WORD_FAMILY_TABLES : WORD_FAMILY_TABLES.filter((t) => t.grade === posGrade);
@@ -293,6 +346,17 @@ export default function AppendixView({
                 <span className="rounded-full bg-violet-100 px-2.5 py-1 text-[11.5px] font-black text-violet-700">
                   {faNum(WORD_FAMILY_TOTAL)} خانواده · {faNum(WORD_FAMILY_TABLES.length)} جدول
                 </span>
+                {/* r403 — دکمهٔ ورود به تمرین: همان ایدئومِ دکمهٔ verbs (راند ۲۳۹)؛
+                    جدول پابرجا — دریل فقط با کلیک، دیپلینک هرگز */}
+                <button
+                  onClick={() => setWordDrill(true)}
+                  aria-label="شروع تمرین خانوادهٔ واژه‌ها"
+                  title="ده پرسش از جدول‌های جزوه — معنی، صفت، قید، فعل و اسم"
+                  className="ms-auto inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-violet-200 bg-violet-50 px-3 text-[12px] font-black text-violet-700 transition-colors hover:bg-violet-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-200 active:scale-[0.96]"
+                >
+                  <GraduationCap size={15} aria-hidden />
+                  تمرین
+                </button>
               </div>
               <p className="text-[13px] leading-7 text-stone-500">
                 از خودِ جزوه‌ها: «مهم‌ترین اجزای کلماتیِ (Parts of Speech) کنکور به ترتیبِ درس آمده‌اند که در افزایشِ دایرهٔ واژگان
@@ -448,7 +512,8 @@ export default function AppendixView({
             })}
           </div>
         );
-      })()}
+      })()
+        ))}
 
       {/* راند ۲۳۱ — نشانه‌های اختصاری هم به کامپوننتِ خودش مهاجرت کردند
           (الگویِ استخراجِ r230) و جست‌وجوی دوزبانه + روخوانیِ شکلِ کامل

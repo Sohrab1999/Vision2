@@ -36,6 +36,12 @@ import { percent } from "@/lib/domain/percent";
 
 export type DrillKind = "past" | "pp" | "base" | "fa";
 
+/** گونههای دریلِ خانوادهٔ واژه (r403) — معنی + چهار جزء کلام */
+export type WordDrillKind = "fa" | "adjective" | "adverb" | "verb" | "noun";
+
+/** اتحادِ گونههای هر دو دریل — نما فقط با fa/base/speak تصمیم میگیرد */
+export type DrillQuestionKind = DrillKind | WordDrillKind;
+
 export const DRILL_KINDS: DrillKind[] = ["past", "pp", "base", "fa"];
 
 /** اندازهٔ پیشفرضِ جلسه — یک تمرینِ کوتاهِ دهتایی */
@@ -45,13 +51,17 @@ export interface DrillQuestion {
   /** شناسهٔ فعلِ هدف (شکلِ ساده) — صادق برای بازخوانیِ نتیجه */
   base: string;
   fa: string;
-  kind: DrillKind;
+  kind: DrillQuestionKind;
   /** متنِ پرسشِ فارسی — از دادهٔ خودِ فعل، بی دستسازی */
   prompt: string;
   /** گزینه‌ها: پاسخِ درست + حواس‌پرتیها؛ ارزشها دوبهدو متمایز */
   options: string[];
   /** اندیسِ گزینهٔ درست */
   answer: number;
+  /** چیپِ روخوانی (r403): اگر هست، چیپِ انگلیسی + TTS — موتورِ هر بانک مالکِ
+   *  تصمیم است (فعل: همهٔ گونهها جز base؛ واژه: لنگرِ انگلیسیِ خانواده) —
+   *  نما دیگر از رویِ kind حدس نمیزند. */
+  speak?: string | undefined;
 }
 
 export interface DrillSession {
@@ -74,8 +84,9 @@ function promptFor(v: IrregularVerb, kind: DrillKind): string {
   return `شکلِ «${v.past}» متعلق به کدام فعل است؟`;
 }
 
-/** Fisher–Yates رویِ یک کپی — آرایهٔ ورودی دستنخورده (خالص) */
-function shuffled<T>(arr: readonly T[], rng: () => number): T[] {
+/** Fisher–Yates رویِ یک کپی — آرایهٔ ورودی دستنخورده (خالص) — مالکِ
+ *  بُر خوردنِ دریلها؛ موتورِ خانوادهٔ واژه (r403) همین را مصرف میکند. */
+export function shuffled<T>(arr: readonly T[], rng: () => number): T[] {
   const out = [...arr];
   for (let i = out.length - 1; i > 0; i--) {
     const j = Math.floor(rng() * (i + 1));
@@ -107,6 +118,7 @@ export function buildDrillSession(
       prompt: promptFor(v, kind),
       options,
       answer: options.indexOf(correct),
+      speak: kind === "base" ? undefined : v.base, // چیپِ TTS — همه گونهها جز base
     };
   });
   return { questions, size: n };

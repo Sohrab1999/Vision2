@@ -21,6 +21,7 @@ import {
   DRILL_KINDS,
   DRILL_SIZE,
   type DrillQuestion,
+  type DrillKind,
 } from "@/lib/appendix-drill";
 
 function mulberry32(seed: number): () => number {
@@ -73,10 +74,10 @@ describe("appendix-drill r401 — گونهٔ معنی (fa)", () => {
     const s = buildDrillSession(irregularVerbs, irregularVerbs.length, mulberry32(9));
     for (const q of s.questions) {
       const verb = irregularVerbs.find((v) => v.base === q.base)!;
-      const legal = new Set(irregularVerbs.map((v) => drillForm(v, q.kind)));
+      const legal = new Set(irregularVerbs.map((v) => drillForm(v, q.kind as DrillKind)));
       expect(q.options.length).toBeGreaterThanOrEqual(2);
       expect(new Set(q.options).size).toBe(q.options.length);
-      expect(q.options[q.answer]).toBe(drillForm(verb, q.kind));
+      expect(q.options[q.answer]).toBe(drillForm(verb, q.kind as DrillKind));
       for (const opt of q.options) expect(legal.has(opt)).toBe(true);
     }
   });

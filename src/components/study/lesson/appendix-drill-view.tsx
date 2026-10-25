@@ -12,6 +12,11 @@
 //    کوئیز از کیتِ همگانیِ §10 R-6 (useKeydown + readDigit +
 //    isTypingTarget)؛ و هر گزینه نشانگرِ kbdِ رقمِ خودش را دارد
 //    (aria-hidden — شماره در aria-label هست؛ راهنمای سراسری هم ثبت شد).
+// r403 — «نمایِ مشترکِ دو بانک»: این نما دیگر فعل-محور نیست — spec
+//    (عنوان/معرفی/برچسبها) و buildSession از والد میآید (فعل: موتورِ r400؛
+//    خانوادهٔ واژه: موتورِ r403). چیپِ روخوانی از فیلدِ speakِ خودِ پرسش
+//    میآید — موتورِ هر بانک مالکِ تصمیم است، نما حدس نمیزند؛ رندرِ fa
+//    (RTL فارسی) و بقیه (LTR انگلیسی) رویِ همان قراردادِ r401 پابرجاست.
 //
 // جریان: معرفی → پرسش‌ها (بازخوردِ درجا، بی تایمر — کاربر سرعته) →
 // نتیجهٔ صادق (درصد از مالکِ r388 + بازخوانیِ سؤالبهسؤال: بیپاسخ =
@@ -32,25 +37,41 @@
 
 import { useMemo, useState } from "react";
 import { ArrowLeft, Check, GraduationCap, Repeat, RotateCcw, Volume2, X } from "lucide-react";
-import type { IrregularVerb } from "@/data/appendix";
+import type { ReactNode } from "react";
 import {
-  buildDrillSession,
   buildDrillReplay,
   scoreDrill,
-  DRILL_SIZE,
   type DrillSession,
 } from "@/lib/appendix-drill";
 import { faNum, percentFa } from "@/lib/study-theme";
 import { isTypingTarget, readDigit, useKeydown } from "@/hooks/use-keyboard";
 import SpeakButton from "../shared/speak-button";
 
+export interface DrillViewSpec {
+  /** شناسه — فقط برایِ ثبت و تست */
+  id: "verbs" | "words";
+  /** سرصفحهٔ معرفی + عنوانِ نتیجهٔ تازه */
+  title: string;
+  /** پاراگرافِ معرفی — کامل از والد (شمارشِ بانک همانجاست) */
+  intro: ReactNode;
+  /** برچسبها — aria-labelها قفلِ تستند؛ هر بانک متنِ صادقِ خودش را دارد */
+  startAria: string;
+  exitLabel: string;
+  exitAria: string;
+  exitResultAria: string;
+  cancelAria: string;
+}
+
 type Phase = "intro" | "run" | "done";
 
 export default function AppendixDrillView({
-  verbs,
+  spec,
+  buildSession,
   onExit,
 }: {
-  verbs: readonly IrregularVerb[];
+  spec: DrillViewSpec;
+  /** سازندهٔ جلسه — مالکیت با موتورِ همان بانک (r400 فعل / r403 واژه) */
+  buildSession: () => DrillSession | null;
   onExit: () => void;
 }) {
   const [phase, setPhase] = useState<Phase>("intro");
@@ -67,8 +88,8 @@ export default function AppendixDrillView({
   );
 
   const start = () => {
-    const s = buildDrillSession(verbs, DRILL_SIZE);
-    if (s.questions.length === 0) return; // بانکِ تهی: بیسروصدا به جدول برگرد (نمیتواند رخ دهد — ۸۷ فعل)
+    const s = buildSession();
+    if (!s || s.questions.length === 0) return; // بانکِ تهی: بیسروصدا به جدول برگرد (هر دو بانک پرند)
     setSession(s);
     setAnswers(Array<number | null>(s.size).fill(null));
     setIdx(0);
@@ -139,17 +160,13 @@ export default function AppendixDrillView({
       <section className="rounded-2xl border border-stone-200 bg-white p-5 text-center">
         <h2 className="flex items-center justify-center gap-2 text-[15px] font-black text-stone-800">
           <GraduationCap size={18} aria-hidden className="text-violet-700" />
-          تمرین افعال بی‌قاعده
+          {spec.title}
         </h2>
-        <p className="mx-auto mt-2 max-w-md text-[12.5px] leading-6 text-stone-600">
-          {faNum(DRILL_SIZE)} پرسش از فهرستِ {faNum(verbs.length)} فعلی ضمیمه: گذشتهٔ ساده، شکل
-          سوم (p.p.)، شکلِ ساده و معنیِ فارسی. گزینه‌ها همگی از خودِ بانکِ افعال میآیند — نه
-          ساختهٔ ماشینی؛ و اگر چیزی اشتباه بماند، همان‌ها دوباره پرسیده میشوند.
-        </p>
+        <p className="mx-auto mt-2 max-w-md text-[12.5px] leading-6 text-stone-600">{spec.intro}</p>
         <div className="mt-4 flex items-center justify-center gap-2">
           <button
             onClick={start}
-            aria-label="شروع جلسهٔ تمرین فعل"
+            aria-label={spec.startAria}
             className="inline-flex min-h-11 items-center gap-1.5 rounded-xl bg-violet-700 px-5 text-[13px] font-black text-white shadow-sm transition-colors hover:bg-violet-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-300 active:scale-[0.96]"
           >
             <GraduationCap size={16} aria-hidden />
@@ -157,11 +174,11 @@ export default function AppendixDrillView({
           </button>
           <button
             onClick={onExit}
-            aria-label="بازگشت به جدول افعال"
+            aria-label={spec.exitAria}
             className="inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-stone-300 bg-white px-4 text-[12.5px] font-bold text-stone-600 transition-colors hover:bg-stone-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-300 active:scale-[0.96]"
           >
             <ArrowLeft size={15} aria-hidden />
-            جدول افعال
+            {spec.exitLabel}
           </button>
         </div>
       </section>
@@ -206,9 +223,9 @@ export default function AppendixDrillView({
                   )}
                   <span className="font-bold text-stone-700">
                     {qq.prompt}
-                    {qq.kind !== "base" && (
+                    {qq.speak && (
                       <span className="mr-1 inline-flex items-center gap-1 align-middle" dir="ltr">
-                        <SpeakButton text={qq.base} size="sm" />
+                        <SpeakButton text={qq.speak} size="sm" />
                       </span>
                     )}
                   </span>
@@ -262,11 +279,11 @@ export default function AppendixDrillView({
           </button>
           <button
             onClick={onExit}
-            aria-label="بازگشت به جدول افعال از نتیجه"
+            aria-label={spec.exitResultAria}
             className="inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-stone-300 bg-white px-4 text-[12.5px] font-bold text-stone-600 transition-colors hover:bg-stone-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-300 active:scale-[0.96]"
           >
             <ArrowLeft size={15} aria-hidden />
-            جدول افعال
+            {spec.exitLabel}
           </button>
         </div>
       </section>
@@ -283,7 +300,7 @@ export default function AppendixDrillView({
         </p>
         <button
           onClick={onExit}
-          aria-label="انصراف از تمرین"
+          aria-label={spec.cancelAria}
           className="inline-flex min-h-11 items-center gap-1 rounded-lg px-2 text-[11.5px] font-bold text-stone-500 transition-colors hover:bg-stone-100 hover:text-stone-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-300 active:scale-[0.96]"
         >
           <ArrowLeft size={14} aria-hidden />
@@ -300,10 +317,10 @@ export default function AppendixDrillView({
       </div>
 
       <h3 className="mt-4 flex flex-wrap items-center gap-1.5 text-[14px] font-black leading-7 text-stone-800">
-        {q.kind !== "base" && (
+        {q.speak && (
           <span className="inline-flex items-center gap-1" dir="ltr">
-            <span className="en-text text-violet-700">{q.base}</span>
-            <SpeakButton text={q.base} size="sm" />
+            <span className="en-text text-violet-700">{q.speak}</span>
+            <SpeakButton text={q.speak} size="sm" />
           </span>
         )}
         <Volume2 size={13} aria-hidden className="sr-only" />

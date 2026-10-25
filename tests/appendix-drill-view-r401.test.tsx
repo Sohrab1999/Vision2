@@ -15,6 +15,18 @@ import { describe, it, expect, beforeEach } from "vitest";
 import { render, screen, fireEvent, cleanup } from "@testing-library/react";
 import AppendixView from "@/components/study/lesson/appendix-view";
 import AppendixDrillView from "@/components/study/lesson/appendix-drill-view";
+import { buildDrillSession, DRILL_SIZE } from "@/lib/appendix-drill";
+
+const VERB_SPEC = {
+  id: "verbs" as const,
+  title: "تمرین افعال بی‌قاعده",
+  intro: null,
+  startAria: "شروع جلسهٔ تمرین فعل",
+  exitLabel: "جدول افعال",
+  exitAria: "بازگشت به جدول افعال",
+  exitResultAria: "بازگشت به جدول افعال از نتیجه",
+  cancelAria: "انصراف از تمرین",
+};
 import { irregularVerbs } from "@/data/appendix";
 
 const openVerbsTab = () => {
@@ -46,7 +58,13 @@ describe("appendix-drill-view r401 — گونهٔ معنی", () => {
 
   it("پرسشِ fa: چیپِ فعل + TTS، پرامپتِ معنی-محور، گزینهها متنِ فارسیِ بانک", () => {
     // مستقیم رویِ نما، با جلسهٔ درشت تا fa تضمین شود (چرخشِ ۴گونه)
-    render(<AppendixDrillView verbs={irregularVerbs} onExit={() => {}} />);
+    render(
+      <AppendixDrillView
+        spec={VERB_SPEC}
+        buildSession={() => buildDrillSession(irregularVerbs, DRILL_SIZE)}
+        onExit={() => {}}
+      />,
+    );
     fireEvent.click(screen.getByRole("button", { name: "شروع جلسهٔ تمرین فعل" }));
     // به اندیسِ ۳ میرویم (چهارمین پرسش = fa در چرخشِ past/pp/base/fa)
     for (let i = 0; i < 3; i++) {

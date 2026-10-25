@@ -19,11 +19,30 @@ import AppendixDrillView from "@/components/study/lesson/appendix-drill-view";
 import ShortcutGuide from "@/components/study/shell/shortcut-guide";
 import { readDigit, isTypingTarget } from "@/hooks/use-keyboard";
 import { irregularVerbs } from "@/data/appendix";
+import { buildDrillSession, DRILL_SIZE } from "@/lib/appendix-drill";
 
 const noop = () => {};
 
+// specِ فعل — عینِ VERB_DRILL_SPECِ appendix-view (رشتههایِ قفل)
+const VERB_SPEC = {
+  id: "verbs" as const,
+  title: "تمرین افعال بی‌قاعده",
+  intro: null,
+  startAria: "شروع جلسهٔ تمرین فعل",
+  exitLabel: "جدول افعال",
+  exitAria: "بازگشت به جدول افعال",
+  exitResultAria: "بازگشت به جدول افعال از نتیجه",
+  cancelAria: "انصراف از تمرین",
+};
+
 const startDrill = () => {
-  render(<AppendixDrillView verbs={irregularVerbs} onExit={noop} />);
+  render(
+    <AppendixDrillView
+      spec={VERB_SPEC}
+      buildSession={() => buildDrillSession(irregularVerbs, DRILL_SIZE)}
+      onExit={noop}
+    />,
+  );
   fireEvent.click(screen.getByRole("button", { name: "شروع جلسهٔ تمرین فعل" }));
 };
 
@@ -138,11 +157,11 @@ describe("appendix-drill kbd r402 — پاسخ با کیبورد", () => {
 describe("appendix-drill kbd r402 — ثبتِ صادق در راهنمای سراسری", () => {
   beforeEach(() => cleanup());
 
-  it("راهنما گروهِ «تمرین افعال بی‌قاعده (ضمیمه)» را با هر دو ردیف دارد", () => {
+  it("راهنما گروهِ «تمرین‌های ضمیمه (فعل و واژه)» را با هر دو ردیف دارد (r403: هر دو بانک)", () => {
     render(<ShortcutGuide />);
     // راهنما با رویدادِ زندهٔ هدر/فوتر باز میشود (همان قراردادِ open-shortcuts)
     fireEvent(window, new CustomEvent("open-shortcuts"));
-    expect(screen.getByText("تمرین افعال بی‌قاعده (ضمیمه)")).toBeTruthy();
+    expect(screen.getByText("تمرین‌های ضمیمه (فعل و واژه)")).toBeTruthy();
     expect(screen.getByText("انتخاب گزینه (ارقام فارسی و لاتین، هر چیدمان)")).toBeTruthy();
     expect(screen.getByText("پرسش بعدی — فقط پس از پاسخ")).toBeTruthy();
   });
