@@ -17,7 +17,7 @@ import { speak, stopSpeaking, type SpeakStop } from "@/lib/speak";
 import { useStudy } from "@/lib/study-store";
 import type { ResolvedStar } from "@/lib/my-words-resolve";
 import { STORY_MIN_WORDS, STORY_MAX_WORDS, storySegments, type StoryWord } from "@/lib/story-forge";
-import { downloadStoryCardImage, buildStoryCardBlob } from "@/lib/result-image";
+import { downloadStoryCardImage, buildStoryCardBlob , imageFailToast } from "@/lib/result-image";
 import { canShareImageFiles, blobToFile, shareImageFile, type ShareOutcome } from "@/lib/share-card";
 import { useToast } from "@/hooks/use-toast";
 
@@ -65,11 +65,13 @@ export default function MyWordsStory({ stars }: { stars: ResolvedStar[] }) {
       source: state.source,
     });
     setImgBusy(false);
-    toast(
-      ok
-        ? { title: "📖 کارتِ داستان ذخیره شد", description: "داستانت با واژه‌های برجسته حالا یک عکسِ قابلِ فرستادن است.", duration: 3000 }
-        : { title: "خطا در ساخت تصویر", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
-    );
+    if (ok) {
+      toast(
+        { title: "📖 کارتِ داستان ذخیره شد", description: "داستانت با واژه‌های برجسته حالا یک عکسِ قابلِ فرستادن است.", duration: 3000 }
+      );
+    } else {
+      imageFailToast(); // r397 — نامِ واحدِ جفتِ شکستِ تصویر (سرشماریِ مالک)
+    }
   };
 
   const shareCard = async () => {

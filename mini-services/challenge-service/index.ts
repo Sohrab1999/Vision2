@@ -26,6 +26,7 @@ import { clampPaceMs, STALL_EXTRA_MS } from "../../src/lib/duel-pace";
 import { clientIpOf, createJoinThrottle, entryThrottleError } from "../../src/lib/join-throttle";
 import { loadOrCreateTicketSecret, verifyTicket } from "../../src/lib/duel-ticket-server";
 import { createTicketVault, ticketRejectMessage } from "../../src/lib/duel-ticket";
+import { createEntryTicketGuard, createQuestionPicker, createRoomCodeMaker } from "./wiring";
 import { BASE_POINTS, speedBonus } from "./scoring";
 
 // Task 104 — رازِ رسید نسبت به «ریشهٔ پروژه» حل می‌شود نه cwdِ launch.
@@ -73,15 +74,9 @@ setInterval(() => TICKET_VAULT.sweep(), 60_000).unref();
  * را نسوزاند. خروجی همیشه پرچمِ ticketError دارد تا کلاینت بداند
  * گرفتاریِ خودِ بلیت است (نه اتاق/گلوگاه) و یک‌بارِ تازه ضرب کند.
  */
-function entryTicketGuard(raw: unknown): { error: string; ticketError: true } | null {
-  const ticket = (raw as { ticket?: unknown } | null)?.ticket;
-  const verdict = verifyTicket(ticket, TICKET_SECRET);
-  if (!verdict.ok) return { error: ticketRejectMessage(verdict.reason), ticketError: true };
-  if (!TICKET_VAULT.consume(verdict.n)) {
-    return { error: ticketRejectMessage("replayed"), ticketError: true };
-  }
-  return null;
-}
+// Task 146 — منطقِ گیت به کارخانهٔ wiring.ts رفت (هرمتیکِ تزریقی)؛
+// اینجا فقط سیم با راز/گنبدِ واقعی — رفتار زنده بایتبهبایت همان است.
+const entryTicketGuard = createEntryTicketGuard({ secret: TICKET_SECRET, vault: TICKET_VAULT });
 
 // ----------------------------- تنظیمات مسابقه -----------------------------
 const PORT = 3003;
@@ -95,7 +90,6 @@ const COUNTDOWN_MS = 5_000; // شمارش معکوس پس از کامل شدن �
 const REMATCH_COUNTDOWN_MS = 3_000;
 const FORFEIT_GRACE_MS = 12_000; // مهلت بعد از قطع‌شدن حریف وسط مسابقه
 const ROOM_TTL_MS = 30 * 60_000; // اتاق‌های خالی جمع‌شونده
-const CODE_ALPHABET = "ABCDEFGHJKMNPQRSTUVWXYZ23456789"; // بدون حروف مبهم
 
 // ----------------------------- بانک سؤال -----------------------------
 const BANK: QuizQuestion[] = [...lesson1.quizzes, ...lesson2.quizzes, ...lesson3.quizzes, ...examBank];
@@ -110,18 +104,10 @@ function shuffle<T>(arr: T[]): T[] {
   return a;
 }
 
-/** یک سؤال مسابقه: id + جایگشت گزینه‌ها + کلید واقعی (فقط سمت سرور) */
-function pickDuelQuestion() {
-  const q = BANK[Math.floor(Math.random() * BANK.length)];
-  const perm = shuffle([0, 1, 2, 3]);
-  return { id: q.id, perm, answerReal: perm.indexOf(q.answer) };
-}
-
-function makeRoomCode(): string {
-  let code = "";
-  for (let i = 0; i < 5; i++) code += CODE_ALPHABET[Math.floor(Math.random() * CODE_ALPHABET.length)];
-  return code;
-}
+// Task 146 — انتخابِ سؤال و تاسِ کدِ اتاق هم کارخانه‌هایِ wiring.ts با
+// تاسِ پیشفرض (Math.random) — رفتارِ زنده عینِ سیمِ قدیم.
+const pickDuelQuestion = createQuestionPicker({ bank: BANK, rng: Math.random });
+const makeRoomCode = createRoomCodeMaker({ rng: Math.random });
 
 // ----------------------------- مدل اتاق -----------------------------
 interface PlayerState {

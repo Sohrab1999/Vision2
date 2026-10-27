@@ -22,7 +22,7 @@ import type { TeacherReview } from "@/lib/exam-teacher";
 import { hasWeekVerdict, type WeekTeacherStats } from "@/lib/week-teacher";
 import { weekGoalMeta } from "@/lib/week-goal";
 import { useStudy } from "@/lib/study-store";
-import { downloadWeekCardImage, buildWeekCardBlob } from "@/lib/result-image";
+import { downloadWeekCardImage, buildWeekCardBlob , imageFailToast } from "@/lib/result-image";
 import { canShareImageFiles, blobToFile, shareImageFile, type ShareOutcome } from "@/lib/share-card";
 import { useToast } from "@/hooks/use-toast";
 
@@ -57,11 +57,13 @@ export default function WeekTeacher({ stats }: { stats: WeekTeacherStats }) {
       source: state.source,
     });
     setImgBusy(false);
-    toast(
-      ok
-        ? { title: "🗓 کارتِ معلمِ هفته ذخیره شد", description: "داوریِ این هفته حالا یک عکسِ قابلِ فرستادن است.", duration: 3000 }
-        : { title: "خطا در ساخت تصویر", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
-    );
+    if (ok) {
+      toast(
+        { title: "🗓 کارتِ معلمِ هفته ذخیره شد", description: "داوریِ این هفته حالا یک عکسِ قابلِ فرستادن است.", duration: 3000 }
+      );
+    } else {
+      imageFailToast(); // r397 — نامِ واحدِ جفتِ شکستِ تصویر (سرشماریِ مالک)
+    }
   };
 
   const shareCard = async () => {

@@ -15,7 +15,7 @@ import { trackEvent } from "@/lib/analytics";
 import type { TeacherReview } from "@/lib/exam-teacher";
 import { percent as percentOf } from "@/lib/domain/percent";
 import { faNum } from "@/lib/study-theme";
-import { downloadTeacherCardImage, buildTeacherCardBlob } from "@/lib/result-image";
+import { downloadTeacherCardImage, buildTeacherCardBlob , imageFailToast } from "@/lib/result-image";
 import { canShareImageFiles, blobToFile, shareImageFile, type ShareOutcome } from "@/lib/share-card";
 import { useToast } from "@/hooks/use-toast";
 
@@ -62,11 +62,13 @@ export default function QuizTeacher({
       source: state.source,
     });
     setImgBusy(false);
-    toast(
-      ok
-        ? { title: "🖼 کارتِ معلم ذخیره شد", description: "داوریِ همین جلسه حالا یک عکسِ قابلِ فرستادن است.", duration: 3000 }
-        : { title: "خطا در ساخت تصویر", description: "لطفاً دوباره تلاش کن.", duration: 3000 }
-    );
+    if (ok) {
+      toast(
+        { title: "🖼 کارتِ معلم ذخیره شد", description: "داوریِ همین جلسه حالا یک عکسِ قابلِ فرستادن است.", duration: 3000 }
+      );
+    } else {
+      imageFailToast(); // r397 — نامِ واحدِ جفتِ شکستِ تصویر (سرشماریِ مالک)
+    }
   };
 
   const shareCard = async () => {

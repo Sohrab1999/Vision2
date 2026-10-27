@@ -20,7 +20,7 @@
 // (جفت‌ها آستانه‌نشدنی‌اند — درسِ r264) — یک لهجه برایِ نامِ فایل و توست.
 // ------------------------------------------------------------------
 
-import { CSV_BOM } from "./file-download"; // r399 — BOM تکخانه (مالک)؛ مسیرِ کهنهٔ coverage-csv منقرض
+import { CSV_BOM, downloadCsvFile } from "./file-download"; // r399+398 — تکخانه (مالک)
 
 const NL = "\r\n";
 
@@ -71,19 +71,6 @@ export function buildPairsCsv(rows: PairsExportRow[]): string {
 
 /** ساخت + دانلودِ CSV جدولِ جفت‌ها — SSR-guard و try-guard، هم‌الگویِ lens */
 export function downloadPairsCsv(rows: PairsExportRow[], scope: string): boolean {
-  if (typeof document === "undefined") return false;
-  try {
-    const blob = new Blob([CSV_BOM + buildPairsCsv(rows)], { type: "text/csv;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `vision2-pairs-${scope}.csv`;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-    return true;
-  } catch {
-    return false;
-  }
+  // r398 — دُمِ دانلود در مالکِ یکخانه (file-download)؛ سازنده درونِ گارد میدود
+  return downloadCsvFile(() => CSV_BOM + buildPairsCsv(rows), `vision2-pairs-${scope}.csv`);
 }

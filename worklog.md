@@ -2,6 +2,30 @@
 
 ---
 
+## راند r456 — «تعمیرِ پس از فاجعهٔ ریست + کلیدِ کاربر + شاهدِ «بستنِ توست در لمس»» — شصتیکمین مصرفکنندهٔ qa-lib؛ نخستین push موفقِ تاریخِ پروژه
+
+**تاریخ:** 2026-10-27 (پیامِ مستقیمِ کاربر — نه تیکِ کرون) · **پایهٔ پیش:** r455، ۵۸۶ فایلِ تستِ نجات‌یافته
+
+### راستیآزماییِ آغاز — کشفِ فاجعهٔ ریست
+- **کاربر کلیدِ گیت‌هاب را خودش فرستاد** (`github_pat_…`) و پرسید «چرا برنامه باز نمیشه؟» — سرورِ ۳۰۰۰ پایین بود (curl=۰۰۰؛ پروسهٔ dev یتیم) و `.next/standalone` هم نبود.
+- **کشف:** محیط ریست شده بود — reflog از r413 (3d14cb0) مستقیم به RESCUE (70a6147) می‌پرد؛ کامیت‌های r414..r455 در object store هم نیستند؛ RESCUE فقط «محتوایِ بقایافته» را نجات داده و cron-commit (58ddcd6) رویش نشسته. نتیجه: درختِ ناهمگن — اجزای نسل r455 روی پایه‌های r413 و داده‌های نسل موازی (۲۷۰۸ سؤالِ درس).
+- stashِ «r456-fix-redo» (toast.tsx/toaster.tsx) و شاهد/قفل‌های r456 (اسکریپت ۲۰KB + قفل‌ها + censusِ شصتیکم) سالم مانده بودند — راند از دلِ همان ادامه یافت.
+- **لحظهٔ تاریخی — نخستین push موفق:** کلید در `~/.git-credentials` (۰۶۰۰) نشست؛ `git ls-remote` جواب داد (پایانِ ۱۱۲+ ابطالِ ادعایِ «کلید نصب است» — این‌بار کلیدِ واقعیِ کاربر، نه ادعا)؛ pushهای `main` ردِ non-fast-forward واقعی شدند (واگراییِ db255b8 — force همچنان بیِ داوریِ کاربر ممنوع) و **`main:main-local` موفق شد — نخستین صعودِ تاریخ** (شاخهٔ امنِ تمامِ ۴۱۴ کامیتِ محلی روی GitHub).
+
+### کارِ راند — دو جبهه: بازسازی + تعمیرِ r456
+- **بازسازی (۱۲۸ خطای tsc → صفر):** ۲۵ پکیج npm (radix خانواده + recharts@2 + react-day-picker@10 + …) بازنصب شد؛ resizable به APIِ v4 (Group/Separator) و calendar به `month_grid` وفق یافت. unionهای گم‌شده برگشتند: `jozve/book/search` در View، `livewords/gramdrill` + `word/kind/accepted` در QuizQuestion، `stories` در DayStat، **۵ رویداد** (streak_badge/week_chip/my_words_story_start/exam_review_start/week_review_start) در رجیستری (+rosterِ r101). موتورها بازگشتند: `usedWordRank` (رتبهٔ رقابتی، کشِ ماژولی)، `wrapCanvasLines/storyCardWords/wrapStoryWords` (قراردادِ Task 118/120 — measureِ سطركاندید)، خانوادهٔ سه کارتِ PNG (teacher/week/story با هایلایتِ کهربایی)، `weekCardPercent/weekCardMotto`، prefillِ رشتهای (LIBSEARCH_Q_KEY)، `optionLetter/buildExplainPrompt` + شاخصِ bundled با examBankG10 (۸۶۲ کنکوری؛ jozve فقط سمتِ سرور)، `letters` تا i، سنتینلِ -۱ در reviewSchema، دنبالهٔ CSV به مالک (downloadCsvFile — r398)، وامگیریِ imageFailToast/speakFailToast (r397/394) و حذفِ orphanِ listen-view. **نبرد:** Task 131 کامل شد — `resolveDuelName` + nameDraft/setNameDraft در ماشین سوکت + فیلدِ لابی (maxLength=24، placeholderِ پروفایل، پانوشتِ صادق) + relayهای هر دو duel-view؛ Task 146 — سیمِ سه کارخانهٔ wiring در index.ts (گیتِ بلیت/انتخابِ سؤال/تاسِ کد) و مرگِ تعریف‌های محلی. censusهایِ کهنه به حقیقتِ زنده قفل شدند (رویداد ۶۰، شاخصِ ۳۹۳۰/۱۰۱۵۲).
+- **هستهٔ r456 — شاهدِ دو فاز (پروتکلِ تکمتغیر بازسازی شد):** HEAD خودش تعمیر را داشت (cron-commit!) — نسخهٔ کهنه دستی ساخته شد (برهنه از hover:none/aria) → بیلد کهنه → `PHASE=pre` → بیلد نو → `PHASE=post`. **pre (۹ گواهی):** CLOSE-INVISIBLE-ON-TOUCH-OK (opacity=0 زنده)، A11Y-NO-NAME-OK، TAP-REACHES-BUT-UNSEEN-OK، CLOSE-CLICK-WORKS-OK، SWIPE-DISMISS/CANCEL-OK (۱۲۰/۳۰)، ESC-LADDER-3-OK، ESC-KILLS-OLDEST-ONLY-OK، STICKY-REF-SWALLOW-WITNESSED-OK. **post (۶ گواهی):** CLOSE-VISIBLE-ON-TOUCH-OK، A11Y-NAME-OK، HOVER-NONE-RULE-SHIPPED-OK، CLOSE-CLICK/SWIPE-INTACT-POST-OK، ESC-KILLS-OLDEST-POST-OK. تعمیر: `[@media(hover:none)]:opacity-100` + `aria-label="بستن"` — دسکتاپِ هاوردار دستنخورده. حکمِ Escape در toaster.tsx ثبت شد (هر فشار = کهنترین؛ quirkِ PRESSES-NEEDED:2).
+- قفل‌ها: r456 toast-close-touch (۴) + censusِ شصتیکم — همه سبز. سرویسِ ۳۰۰۳ با سیمِ نو ری‌بوت شد (۲۰۰).
+
+### گیتهای نهایی و دفترِ صادق
+- tsc=۰ (همه‌درخت)، lint=۰، buildِ تولیدی سبز + بوت (۲۰۰ — یازدهمین اثباتِ قاعدهٔ r435). سوئیت: **۵۸۶ فایل — ۵۲۳ سبز / ۶۳ مرد**؛ ۶۳ باقیمانده = آرتیفکتِ ناهمگنیِ نجات (صفِ r457): ① بلوکِ «عدسیِ کاربرد در جزوه» (r253-r266 — چیپهایِ خط/پاراگراف، رتبه، لنزِ CSV؛ ~۲۵ فایل — اجزایِ کهنه‌تر از قفلها) ② منفردِ r356-r398 (~۲۰) ③ قراردادهای سبک (arcade/contrast/css-hygiene؛ ~۸). DB CLEAN-OK (attempts=۰). pushهای ۱۸۲/۱۸۳ (main) ردِ واقعی؛ main-local و r456-pack صعود کردند.
+
+### Stage Summary
+- r456 = راندِ شفا: از ریستِ تمام به درختی با tsc/lint صفر، نخستین push موفقِ تاریخ، خانوادهٔ توست با «بستنِ لمسیِ نامدار» و حکمِ Escape، نبرد با نامِ نمایشی و سیمِ کارخانه‌ای — و یک صفِ تعمیرِ صادقانه برای r457.
+- پیشنهادهای r457: ① احیای بلوکِ «عدسیِ کاربرد در جزوه» (چیپهایِ r253-r266 در lesson-view/WOTD/booklet/dictionary + ستونِ سطحِ لنز) ② مهاجرتِ قراردادهای سبک (۱۶ گرادیانِ بنفش→فوشیا به توکنهای arcade؛ text-stone-400های ۳۹گانه) ③ منفردِ r356-r398 ④ داوریِ دوخطیِ واگرایی توسطِ کاربر (remote main = db255b8 — حالا با کلید، force هم ممکن است اما فقط با حکمِ صریح).
+
+---
+
 ## راند r456 — «بازسازیِ «بستنِ توست در لمس» از دلِ ریستِ محیط + آشتیِ دوب-نسلی» — شصتیکمین مصرفکنندهٔ qa-lib؛ نخستین تأییدِ کلیدِ گیت پس از ۱۱۹ ابطال و نخستین پوشِ موفقِ تاریخِ پروژه
 
 **تاریخ:** 2026-10-27 (tick ۱۲:۰۷، trace cron-agent-loop-202610271207) · **کامیتها:** 427f574 (بازسازیِ تعمیر از stashِ یتیم) + کامیتِ lanes (جداسازیِ explain + بهداشت + رانر) · **پایهٔ پیش:** 58ddcd6 (کامیتِ cron بر رویِ RESCUE) — تاریخچهٔ کامیتهای r449..r455 (1c9e7a4..8f80cb7) در شیءهای گیت **گم شدهاند**؛ تنها حاملِ محتوایِ r414..r455 کامیتِ RESCUE (70a6147) است.

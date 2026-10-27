@@ -19,7 +19,7 @@
 // رویِ دامنهٔ باریک‌شده — countِ برگشتی صادقانه است (هم‌نام‌ها یکی می‌شوند).
 // ------------------------------------------------------------------
 
-import { CSV_BOM } from "./file-download"; // r399 — BOM تکخانه (مالک)؛ مسیرِ کهنهٔ coverage-csv منقرض
+import { CSV_BOM, downloadCsvFile } from "./file-download"; // r399+398 — تکخانه (مالک)
 import { buildAnkiTsv } from "./anki-export";
 import { faNum } from "./study-theme";
 import type { VocabWord } from "./study-types";
@@ -111,21 +111,8 @@ export function lensDomainLabel(lessonFilter: number | null, minUsed: number): s
 
 /** ساخت + دانلودِ CSV دامنه — SSR-guard و try-guard، هم‌الگویِ coverage */
 export function downloadLensCsv(rows: LensExportRow[], scope: string): boolean {
-  if (typeof document === "undefined") return false;
-  try {
-    const blob = new Blob([CSV_BOM + buildLensCsv(rows)], { type: "text/csv;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `vision2-used-${scope}.csv`;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-    return true;
-  } catch {
-    return false;
-  }
+  // r398 — دُمِ دانلود در مالکِ یکخانه (file-download)
+  return downloadCsvFile(() => CSV_BOM + buildLensCsv(rows), `vision2-used-${scope}.csv`);
 }
 
 /**
@@ -139,15 +126,8 @@ export function downloadLensAnki(
   if (typeof document === "undefined") return 0;
   const { tsv, count } = buildAnkiTsv(rows);
   try {
-    const blob = new Blob([tsv], { type: "text/tab-separated-values;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `vision2-used-${scope}-anki.txt`;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    // r398 — دُمِ دانلود در مالک است؛ TSVِ لنز هم از همان نقاش میگذرد
+    downloadCsvFile(() => tsv, `vision2-used-${scope}-anki.txt`);
     return count;
   } catch {
     return 0;
