@@ -61,6 +61,11 @@ export const EVENT_NAMES = [
   "teacher_learner_csv", // per-learner report-card CSV exported from the detail dialog (r354)
   "teacher_class_csv", // full class-ledger CSV — roster + every learner card stitched (r357)
   "tts_spoken", // server-side: real paid TTS synthesis (cache miss) in /api/tts (r358)
+  "streak_badge", // tapped the streak flame badge in the header (the non-ice twin of freeze_badge)
+  "week_chip", // tapped the week chip in the header → opens the weekly digest (open-report door)
+  "my_words_story_start", // started forging a story from starred words (my-words story forge)
+  "exam_review_start", // started the exam teacher's AI review (quiz-teacher ask)
+  "week_review_start", // started the week teacher's AI review (week-teacher ask)
 ] as const;
 
 export type EventName = (typeof EVENT_NAMES)[number];
@@ -122,6 +127,11 @@ export const EVENT_LABELS_FA: Record<EventName, string> = {
   teacher_learner_csv: "خروجی CSV کارنامهٔ یادگیرنده",
   teacher_class_csv: "خروجی دفترِ کاملِ کلاس",
   tts_spoken: "روخوانیِ تازه",
+  streak_badge: "پیگیری زنجیره از هدر",
+  week_chip: "بازکردن هفته‌نامه از هدر",
+  my_words_story_start: "شروع داستانِ واژه‌های من",
+  exam_review_start: "شروع مرورِ هوشمندِ آزمون",
+  week_review_start: "شروع مرورِ هوشمندِ هفته",
 };
 
 // ------------------------------------------------------------------
@@ -173,6 +183,11 @@ export const EVENT_CATEGORIES: Record<EventName, string> = {
   // r358 — روخوانی هم سرویسِ پولیِ هوش مصنوعی است (همخانوادهٔ توضیحِ هوشمند)؛
   // نوارِ بودجهٔ TTS در نبض از همین کلیدِ تکحقیقت خانواده را میخواند
   tts_spoken: "هوش مصنوعی",
+  exam_review_start: "هوش مصنوعی",
+  week_review_start: "هوش مصنوعی",
+  streak_badge: "نشست و ناوبری",
+  week_chip: "نشست و ناوبری",
+  my_words_story_start: "یادگیری و تمرین",
   print_report: "خروجی و هم‌رسانی",
   coverage_csv: "خروجی و هم‌رسانی",
   official_image: "خروجی و هم‌رسانی",

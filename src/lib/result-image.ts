@@ -9,6 +9,9 @@
 import { faNum } from "./study-theme";
 import { BADGES, DUEL_BADGE_IDS, type BadgeTier } from "./achievements";
 import type { DuelLedgerStats } from "./duel-history";
+import type { TeacherReview } from "./exam-teacher";
+import type { WeekTeacherStats } from "./week-teacher";
+import { storySegments, type StoryWord } from "./story-forge";
 import { uiColors } from "./ui-colors";
 import { toast } from "@/hooks/use-toast";
 
@@ -1644,4 +1647,456 @@ async function officialCanvas(opts: OfficialImageOpts): Promise<HTMLCanvasElemen
   } catch {
     return null;
   }
+}
+
+// ==================================================================
+// Task 118/120 — خانوادهٔ «کارتِ داوری/داستان» + قراردادهایِ خالصِ
+// شکستنِ سطر. دو تابعِ خالص (wrapCanvasLines / wrapStoryWords) با
+// measureِ تزریقی deterministic‌اند (تست = طولِ رشته) و بومِ واقعی
+// measureText را تزریق میکند. هیچ console/throw — ورودیِ خراب صادقانه
+// تهی برمی‌گردد.
+// ==================================================================
+
+/**
+ * Task 118 — شکستنِ حریصِ سطر برایِ متنِ فارسی/لاتینِ بوم:
+ *  ① پرکردنِ حریص با measureِ تزریقی (فاصلهٔ پیوند = ۱ واحد)
+ *  ② سقفِ maxLines؛ سطرِ آخرِ نگهشده در صورتِ افتِ واقعی با «…» بسته میشود
+ *  ③ واژهٔ پهن‌تر از کلِ سطر حرفبهحرف بریده میشود
+ *  ④ جایِ دقیق هیچ «…» قلابی نمی‌گیرد
+ *  ⑤ ورودیِ تهی/بودجهٔ منفی → آرایهٔ تهیِ صادق
+ */
+export function wrapCanvasLines(
+  text: string,
+  maxW: number,
+  measure: (s: string) => number,
+  maxLines: number
+): string[] {
+  if (typeof text !== "string" || text.trim() === "" || !(maxW > 0) || !(maxLines > 0)) return [];
+  const words = text.split(/\s+/).filter(Boolean);
+  const atomic: string[] = [];
+  for (const w of words) {
+    if (measure(w) <= maxW) {
+      atomic.push(w);
+      continue;
+    }
+    for (let i = 0; i < w.length; i += maxW) atomic.push(w.slice(i, i + maxW));
+  }
+  const lines: string[][] = [];
+  let cur: string[] = [];
+  for (const w of atomic) {
+    if (cur.length === 0) {
+      cur = [w];
+      continue;
+    }
+    // قراردادِ Task 118: measure همیشه «سطرِ کاندید» را میبیند — نه
+    // حسابِ عرضیِ تفکیکی (تستِ تماسِ measure همین را قفل میکند)
+    const cand = [...cur, w].join(" ");
+    if (measure(cand) <= maxW) {
+      cur.push(w);
+    } else {
+      lines.push(cur);
+      cur = [w];
+    }
+  }
+  if (cur.length > 0) lines.push(cur);
+  if (lines.length <= maxLines) return lines.map((l) => l.join(" "));
+  const kept = lines.slice(0, maxLines).map((l) => l.join(" "));
+  kept[maxLines - 1] = kept[maxLines - 1] + "…";
+  return kept;
+}
+
+/** توکنِ داستان — متن + پرچمِ برجسته (canvas twin of <mark>) */
+export interface StoryCardWord {
+  text: string;
+  hit: boolean;
+}
+
+/**
+ * Task 120 — واژه‌سازیِ داستان از قطعه‌هایِ segmenter: هر توکن پرچمِ
+ * قطعهٔ خودش را به ارث میبرد (تطبیقِ بی‌حساسیتِ حروف، علائمِ سنجاقشده
+ * همیشه ساده میمانند)؛ ورودیِ آشغال صادقانه تهی.
+ */
+export function storyCardWords(
+  segments: { text?: unknown; hit?: unknown }[] | null | undefined
+): StoryCardWord[] {
+  if (!Array.isArray(segments)) return [];
+  const out: StoryCardWord[] = [];
+  for (const seg of segments) {
+    if (!seg || typeof seg.text !== "string") continue;
+    const raw = seg.text;
+    if (raw.trim() === "") continue;
+    const hitWord = typeof seg.hit === "string" ? seg.hit.toLowerCase() : null;
+    for (const tok of raw.split(/\s+/).filter(Boolean)) {
+      const clean = tok.toLowerCase().replace(/^[^a-z0-9]+|[^a-z0-9]+$/g, "");
+      out.push({ text: tok, hit: hitWord != null && clean !== "" && clean === hitWord });
+    }
+  }
+  return out;
+}
+
+/**
+ * Task 120 — شکستنِ حریصِ توکن‌دارِ داستان (نسبت به wrapCanvasLines
+ * تفاوتِ دوگانه دارد: سطرها آرایهٔ توکن میمانند تا هایلایتِ واژهای
+ * ممکن شود و «…» ندارد — افتِ واقعی فقط با dropped صادق میگوید).
+ */
+export function wrapStoryWords(
+  words: StoryCardWord[] | null | undefined,
+  maxW: number,
+  measure: (s: string) => number,
+  maxLines: number
+): { lines: StoryCardWord[][]; dropped: boolean } {
+  if (!Array.isArray(words) || words.length === 0) return { lines: [], dropped: false };
+  if (!(maxW > 0) || !(maxLines > 0)) return { lines: [], dropped: true };
+  const atomic: StoryCardWord[] = [];
+  for (const w of words) {
+    if (!w || typeof w.text !== "string") continue;
+    if (measure(w.text) <= maxW) {
+      atomic.push({ text: w.text, hit: !!w.hit });
+      continue;
+    }
+    for (let i = 0; i < w.text.length; i += maxW) {
+      atomic.push({ text: w.text.slice(i, i + maxW), hit: !!w.hit });
+    }
+  }
+  const lines: StoryCardWord[][] = [];
+  let cur: StoryCardWord[] = [];
+  for (const w of atomic) {
+    if (cur.length === 0) {
+      cur = [w];
+      continue;
+    }
+    // همان قراردادِ measure-سطركاندیدِ Task 118 (خانوادهٔ واحد)
+    const cand = [...cur, w].map((t) => t.text).join(" ");
+    if (measure(cand) <= maxW) {
+      cur.push(w);
+    } else {
+      lines.push(cur);
+      cur = [w];
+    }
+  }
+  if (cur.length > 0) lines.push(cur);
+  const dropped = lines.length > maxLines;
+  return { lines: lines.slice(0, maxLines), dropped };
+}
+
+// ------------------------------------------------------------------
+// گزینه‌هایِ سه کارت — قراردادِ مصرف‌کننده‌ها (my-words-story /
+// quiz-teacher / week-teacher) بایت‌بهبایت همان اشیاء را میفرستند.
+// ------------------------------------------------------------------
+
+export interface TeacherCardOpts {
+  review: TeacherReview;
+  correct: number;
+  total: number;
+  percent: number;
+  userName?: string;
+  source?: string;
+}
+
+export interface WeekCardOpts {
+  review: TeacherReview;
+  stats: WeekTeacherStats;
+  userName?: string;
+  source?: string;
+}
+
+export interface StoryCardOpts {
+  story: string;
+  summary: string;
+  words: StoryWord[];
+  userName?: string;
+  source?: string;
+}
+
+/** برچسبِ صادقِ منبعِ داوری روی بوم — آینهٔ چیپِ DOM */
+function sourceLabel(source?: string): string {
+  return source === "ai" ? "داوریِ هوش مصنوعی" : "داوریِ قاعده‌محور";
+}
+
+/** سرلوحهٔ مشترک سه کارت — پوسته + عنوان + نام یادگیرنده (ایدئومِ weekly) */
+async function reviewCardShell(
+  title: string,
+  userName: string | undefined,
+  h: number
+): Promise<{ ctx: CanvasRenderingContext2D; family: string; W: number } | null> {
+  if (typeof document !== "undefined" && document.fonts?.ready) {
+    await document.fonts.ready;
+  }
+  if (typeof document === "undefined") return null;
+  const family =
+    typeof document !== "undefined"
+      ? getComputedStyle(document.body).fontFamily || "sans-serif"
+      : "sans-serif";
+  const canvas = document.createElement("canvas");
+  canvas.width = 1080;
+  canvas.height = h;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return null;
+  const W = 1080;
+  studyShell(ctx, W, h, family, false);
+  ctx.direction = "rtl";
+  ctx.textBaseline = "middle";
+  ctx.textAlign = "right";
+  ctx.fillStyle = uiColors.stone[900];
+  ctx.font = `800 34px ${family}`;
+  ctx.fillText(title, W - 90, 192);
+  if (userName) {
+    ctx.fillStyle = uiColors.stone[900];
+    ctx.font = `800 32px ${family}`;
+    ctx.fillText(truncate(ctx, userName, 280), W - 90, 275);
+    ctx.fillStyle = uiColors.stone[400];
+    ctx.font = `700 18px ${family}`;
+    ctx.fillText("یادگیرندهٔ وب‌کتاب", W - 90, 310);
+  } else {
+    ctx.fillStyle = uiColors.stone[400];
+    ctx.font = `700 20px ${family}`;
+    ctx.fillText("یادگیرندهٔ وب‌کتاب", W - 90, 275);
+  }
+  return { ctx, family, W };
+}
+
+/** پانویسِ مشترک — منبعِ داوری + تاریخِ فارسی + برند */
+function reviewCardFooter(
+  ctx: CanvasRenderingContext2D,
+  family: string,
+  W: number,
+  H: number,
+  source?: string
+): void {
+  ctx.direction = "rtl";
+  ctx.textAlign = "right";
+  ctx.fillStyle = uiColors.stone[400];
+  ctx.font = `700 17px ${family}`;
+  ctx.fillText(`${sourceLabel(source)} · ${faDate()}`, W - 90, H - 60);
+  ctx.textAlign = "left";
+  ctx.fillText("وب‌کتاب ویژن ۲", 90, H - 60);
+}
+
+/** سه بلوکِ داوری (مقدمه/نقطهٔ قوت/پندها) — هرکدام تا ۳ سطرِ صادق */
+function drawReviewBlocks(
+  ctx: CanvasRenderingContext2D,
+  family: string,
+  W: number,
+  review: TeacherReview,
+  top: number
+): void {
+  const blocks: { label: string; text: string; color: string }[] = [
+    { label: "مقدمه", text: review.intro, color: uiColors.stone[800] },
+    { label: "نقطهٔ قوت", text: review.strength, color: uiColors.emerald[700] },
+    { label: "پندها", text: review.advice, color: uiColors.amber[700] },
+  ];
+  ctx.direction = "rtl";
+  ctx.textAlign = "right";
+  let y = top;
+  for (const b of blocks) {
+    ctx.fillStyle = uiColors.stone[400];
+    ctx.font = `700 19px ${family}`;
+    ctx.fillText(b.label, W - 90, y);
+    y += 40;
+    ctx.fillStyle = b.color;
+    ctx.font = `700 24px ${family}`;
+    const lines = wrapCanvasLines(b.text, W - 200, (s) => ctx.measureText(s).width, 3);
+    for (const line of lines) {
+      ctx.fillText(line, W - 110, y);
+      y += 38;
+    }
+    y += 26;
+  }
+}
+
+/** بومِ کارتِ نظرِ معلم (یک جلسه) — Task 118 */
+async function teacherCardCanvas(opts: TeacherCardOpts): Promise<HTMLCanvasElement | null> {
+  const shell = await reviewCardShell("نظرِ معلم", opts.userName, 820);
+  if (!shell) return null;
+  const { ctx, family, W } = shell;
+  // حلقهٔ درصد — ایدئومِ weekly (درصدِ همین جلسه)
+  const cx = W - 90 - 105;
+  const cy = 455;
+  const r = 105;
+  ctx.lineWidth = 20;
+  ctx.lineCap = "round";
+  ctx.strokeStyle = uiColors.stone[100];
+  ctx.beginPath();
+  ctx.arc(cx, cy, r, 0, Math.PI * 2);
+  ctx.stroke();
+  const pct = Math.max(0, Math.min(100, opts.percent)) / 100;
+  const ring = ctx.createLinearGradient(cx - r, cy - r, cx + r, cy + r);
+  ring.addColorStop(0, uiColors.emerald[500]);
+  ring.addColorStop(1, uiColors.teal[600]);
+  ctx.strokeStyle = ring;
+  ctx.beginPath();
+  ctx.arc(cx, cy, r, Math.PI / 2, Math.PI / 2 + Math.PI * 2 * pct);
+  ctx.stroke();
+  ctx.direction = "rtl";
+  ctx.textAlign = "center";
+  ctx.fillStyle = uiColors.stone[900];
+  ctx.font = `900 52px ${family}`;
+  ctx.fillText(`${faNum(Math.round(opts.percent))}٪`, cx, cy - 10);
+  ctx.fillStyle = uiColors.stone[500];
+  ctx.font = `700 21px ${family}`;
+  ctx.fillText(`${faNum(opts.correct)} از ${faNum(opts.total)} درست`, cx, cy + 38);
+  drawReviewBlocks(ctx, family, W, opts.review, 520);
+  reviewCardFooter(ctx, family, W, 820, opts.source);
+  return ctx.canvas;
+}
+
+export async function downloadTeacherCardImage(opts: TeacherCardOpts): Promise<boolean> {
+  try {
+    const c = await teacherCardCanvas(opts);
+    if (!c) return false;
+    return await downloadCanvasBlob(c, "vision2-teacher.png");
+  } catch {
+    return false;
+  }
+}
+
+export async function buildTeacherCardBlob(opts: TeacherCardOpts): Promise<Blob | null> {
+  try {
+    const c = await teacherCardCanvas(opts);
+    if (!c) return null;
+    return await canvasToBlob(c);
+  } catch {
+    return null;
+  }
+}
+
+/** بومِ کارتِ معلمِ هفته — داوریِ هفته + خطِ آمارِ صادق (Task 119) */
+async function weekCardCanvas(opts: WeekCardOpts): Promise<HTMLCanvasElement | null> {
+  const shell = await reviewCardShell("داوریِ معلمِ هفته", opts.userName, 840);
+  if (!shell) return null;
+  const { ctx, family, W } = shell;
+  const s = opts.stats;
+  ctx.direction = "rtl";
+  ctx.textAlign = "right";
+  ctx.fillStyle = uiColors.stone[800];
+  ctx.font = `800 26px ${family}`;
+  const trend =
+    s.activities >= s.prevActivities
+      ? "رو به رشد"
+      : "آرام‌تر از هفتهٔ پیش";
+  const line = `${faNum(s.activities)} فعالیت این هفته · ${faNum(s.activeDays)} روز فعال · هدف ${faNum(s.goalDays)} از ۷ · ${trend}`;
+  const statLines = wrapCanvasLines(line, W - 200, (x) => ctx.measureText(x).width, 2);
+  let y = 420;
+  for (const l of statLines) {
+    ctx.fillText(l, W - 110, y);
+    y += 42;
+  }
+  drawReviewBlocks(ctx, family, W, opts.review, Math.max(y + 14, 520));
+  reviewCardFooter(ctx, family, W, 840, opts.source);
+  return ctx.canvas;
+}
+
+export async function downloadWeekCardImage(opts: WeekCardOpts): Promise<boolean> {
+  try {
+    const c = await weekCardCanvas(opts);
+    if (!c) return false;
+    return await downloadCanvasBlob(c, "vision2-week-teacher.png");
+  } catch {
+    return false;
+  }
+}
+
+export async function buildWeekCardBlob(opts: WeekCardOpts): Promise<Blob | null> {
+  try {
+    const c = await weekCardCanvas(opts);
+    if (!c) return null;
+    return await canvasToBlob(c);
+  } catch {
+    return null;
+  }
+}
+
+/** بومِ کارتِ داستان — متنِ انگلیسی با هایلایتِ کهرباییِ واژه‌هایِ نشان (Task 120) */
+async function storyCardCanvas(opts: StoryCardOpts): Promise<HTMLCanvasElement | null> {
+  const shell = await reviewCardShell("داستانِ واژه‌های من", opts.userName, 900);
+  if (!shell) return null;
+  const { ctx, family, W } = shell;
+  const tokens = storyCardWords(
+    storySegments(opts.story, Array.isArray(opts.words) ? opts.words : [])
+  );
+  const hitCount = tokens.filter((t) => t.hit).length;
+  const measure = (s: string) => ctx.measureText(s).width;
+  const bodyW = W - 180;
+  const maxBody = Math.max(1, bodyW);
+  const { lines } = wrapStoryWords(tokens, maxBody, measure, 12);
+  ctx.direction = "ltr";
+  ctx.textAlign = "left";
+  ctx.textBaseline = "middle";
+  ctx.font = `700 26px ${family}`;
+  const spaceW = measure(" ");
+  let y = 400;
+  for (const line of lines) {
+    let x = 90;
+    for (const tok of line) {
+      const tw = measure(tok.text);
+      if (tok.hit) {
+        ctx.fillStyle = uiColors.amber[100];
+        roundRect(ctx, x - 4, y - 17, tw + 8, 34, 6);
+        ctx.fill();
+        ctx.fillStyle = uiColors.amber[800];
+      } else {
+        ctx.fillStyle = uiColors.stone[800];
+      }
+      ctx.fillText(tok.text, x, y);
+      x += tw + spaceW;
+    }
+    y += 42;
+  }
+  // خلاصهٔ فارسیِ داستان — RTL
+  ctx.direction = "rtl";
+  ctx.textAlign = "right";
+  ctx.fillStyle = uiColors.stone[500];
+  ctx.font = `700 22px ${family}`;
+  let sy = y + 22;
+  const sumLines = wrapCanvasLines(opts.summary, bodyW, measure, 3);
+  for (const l of sumLines) {
+    ctx.fillText(l, W - 90, sy);
+    sy += 34;
+  }
+  if (hitCount > 0) {
+    ctx.fillStyle = uiColors.amber[700];
+    ctx.font = `900 22px ${family}`;
+    ctx.fillText(`${faNum(hitCount)} واژهٔ برجستهٔ تو`, W - 90, sy + 22);
+  }
+  reviewCardFooter(ctx, family, W, 900, opts.source);
+  return ctx.canvas;
+}
+
+export async function downloadStoryCardImage(opts: StoryCardOpts): Promise<boolean> {
+  try {
+    const c = await storyCardCanvas(opts);
+    if (!c) return false;
+    return await downloadCanvasBlob(c, "vision2-story.png");
+  } catch {
+    return false;
+  }
+}
+
+export async function buildStoryCardBlob(opts: StoryCardOpts): Promise<Blob | null> {
+  try {
+    const c = await storyCardCanvas(opts);
+    if (!c) return null;
+    return await canvasToBlob(c);
+  } catch {
+    return null;
+  }
+}
+
+// ------------------------------------------------------------------
+// Task 121 — کمک‌هایِ خالصِ کارتِ معلمِ هفته: حلقهٔ درصد و شعارِ پایانی.
+// تکمالکِ ریاضی اینجا نیست — week-goal.ts (Task 128) همان را آینه میکند
+// و قفلِ توافقِ شبکه‌ای دو工件 را نگه میدارد.
+// ------------------------------------------------------------------
+
+/** درصدِ صادقِ حلقهٔ هدف: clamp(0..7) → گرد → n/7؛ نامعتبر → ۰ */
+export function weekCardPercent(goalDays: number): number {
+  const d = Number.isFinite(goalDays) ? Math.max(0, Math.min(7, Math.round(goalDays))) : 0;
+  return Math.round((d / 7) * 100);
+}
+
+/** شعارِ پایانیِ کارت — هیچ تحسینِ قلابی: هفتهٔ پر → فعال → ادامه بده */
+export function weekCardMotto(goalDays: number, activeDays: number): string {
+  if (weekCardPercent(goalDays) >= 71) return "FULL WEEK ★";
+  if (Number.isFinite(activeDays) && activeDays >= 3) return "STRONG WEEK";
+  return "KEEP GOING!";
 }

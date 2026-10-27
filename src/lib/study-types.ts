@@ -40,7 +40,13 @@ export interface GrammarSection {
   html: string;
 }
 
-export type QuizCategory = "vocab" | "vocab-konkuri" | "grammar" | "synant";
+export type QuizCategory =
+  | "vocab"
+  | "vocab-konkuri"
+  | "grammar"
+  | "synant"
+  | "livewords" // پیکره‌ای — جایِ استفادهٔ واقعیِ واژه در مکالمه/ریدینگ (r269)
+  | "gramdrill"; // دریلِ گرامری از درسنامهٔ جامع (r269)
 
 export interface QuizQuestion {
   id: string;
@@ -50,6 +56,12 @@ export interface QuizQuestion {
   answer: number; // index 0..3
   translation?: string;
   note?: string;
+  /** r269 — واژهٔ اصلیِ سؤال رویِ خودِ سؤال (کارتِ نتیجه ترکیبِ سطحِ راند را میسازد) */
+  word?: string;
+  /** پاسخِ تایپی — وقتی حاضر است گزینه‌ها صرفاً نشان‌اند (r400) */
+  kind?: "typed";
+  /** پذیرش‌هایِ نرمالیزه‌نشدهٔ تایپ آزاد (r400) */
+  accepted?: string[];
 }
 
 // راند ۱۹۴: قفسهٔ کامل سه پایه — orange/indigo/fuchsia از جزوه‌های دهم

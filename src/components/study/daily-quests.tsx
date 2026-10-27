@@ -89,7 +89,7 @@ export default function DailyQuests() {
   };
 
   const today = todayStr();
-  const stat: DayStat = mounted && dayStat.day === today ? dayStat : { day: today, reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0 };
+  const stat: DayStat = mounted && dayStat.day === today ? dayStat : { day: today, reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 };
   const title = allDone
     ? "اهداف امروز کامل شد!"
     : doneCount === 0

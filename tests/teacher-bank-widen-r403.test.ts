@@ -89,8 +89,8 @@ describe("r403 — jozve bank widening (explain + teacher)", () => {
     }
   });
 
-  it("widened index = bundled 1674 (r405: +862 konkur) + jozve 6222, no id collision", () => {
-    expect(wideQuestionIndex().size).toBe(1674 + 6222);
+  it("widened index = bundled live truth (r456: 2708 lessons + 360 exam + 862 konkur) + jozve 6222, no id collision", () => {
+    expect(wideQuestionIndex().size).toBe(2708 + 360 + 862 + 6222);
   });
 
   it("GUARD — explain-source stays client-safe (no fs, no jozve-bank import)", () => {

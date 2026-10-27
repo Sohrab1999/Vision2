@@ -30,7 +30,7 @@
 //     صادقانهٔ r271 در حالتِ پیش‌فرض).
 // ------------------------------------------------------------------
 
-import { CSV_BOM } from "./coverage-csv";
+import { CSV_BOM } from "./file-download"; // r399 — BOM تکخانه (مالک)؛ مسیرِ کهنهٔ coverage-csv منقرض
 
 const NL = "\r\n";
 

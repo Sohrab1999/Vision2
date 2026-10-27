@@ -2,6 +2,7 @@
 // word-book list (my-words.tsx) and the review-quiz launcher (my-words-review.tsx)
 
 import { lessons } from "@/data";
+import type { LessonColor } from "@/lib/study-types";
 
 export interface ResolvedStar {
   key: string;
@@ -9,7 +10,8 @@ export interface ResolvedStar {
   en: string;
   fa: string;
   pos?: string;
-  color: "emerald" | "amber" | "rose";
+  /** رنگِ خانوادهٔ درسِ مالک — کاملِ LessonColor (r431+ قفسهٔ دوازده‌خانواده‌ای) */
+  color: LessonColor;
   titleFa: string;
 }
 

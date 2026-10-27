@@ -35,6 +35,7 @@ export const lessons: LessonData[] = [
   lesson12,
 ];
 export { examBank };
+export { examBankG10 } from "./exam-g10"; // r273 — بانک کنکوری پایهٔ دهم
 export * from "./appendix";
 
 export const totalVocabulary = lessons.reduce((s, l) => s + l.vocabulary.length, 0);

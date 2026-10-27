@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
-import { Sparkles, Swords, Users, Timer, Zap, Wifi, WifiOff, Loader2, Target, ShieldCheck, History, Flame, Percent, Search, X, ChevronDown, ChevronUp, ImageDown, Share2, Medal, Lock } from "lucide-react";
+import { Sparkles, Swords, Users, Timer, Zap, Wifi, WifiOff, Loader2, Target, ShieldCheck, History, Flame, Percent, Search, X, ChevronDown, ChevronUp, ImageDown, Share2, Medal, Lock, UserRound } from "lucide-react";
 import { useStudy } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { faNum, avatarClasses, secFa } from "@/lib/study-theme";
@@ -34,13 +34,16 @@ import { paceSecondsLabel, type DuelPace } from "@/lib/duel-pace";
 
 // فاز SETUP — قهرمان نبرد: آمار بردها، ساخت اتاق و پیوستن با کد
 
-export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJoinInput, joinBusy, createBusy, paceChoices, chosenPace, choosePace }: {
+export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJoinInput, joinBusy, nameDraft, setNameDraft, createBusy, paceChoices, chosenPace, choosePace }: {
   conn: Conn;
   createRoom: () => void;
   joinRoom: () => void;
   joinInput: string;
   setJoinInput: (v: string) => void;
   joinBusy: boolean;
+  /** Task 131 «نامِ نمایشیِ نبرد» — فیلدِ کنترلشدهٔ لابی (فقطِ نمایشی) */
+  nameDraft: string;
+  setNameDraft: (v: string) => void;
   /** Task 112 «بلیتِ ورود» — حینِ ضربِ بلیت/انتظارِ داور مشغول */
   createBusy: boolean;
   /** Task 107 — سه ریتمِ بستهٔ duel-pace؛ سرعتِ هر سؤال را سازندهٔ اتاق برمی‌گزیند */
@@ -317,6 +320,30 @@ export default function DuelSetup({ conn, createRoom, joinRoom, joinInput, setJo
               {createBusy ? <Loader2 size={18} className="animate-spin" /> : <Swords size={18} />}
               {createBusy ? "در حالِ گرفتنِ بلیت…" : "ساخت اتاق نبرد"}
             </button>
+          </div>
+
+          {/* Task 131 «نامِ نمایشیِ نبرد» — خوداظهارِ فقطِ نمایشی؛
+          resolve در لحظهٔ ورود با resolveDuelName انجام میشود (use-duel-socket) */}
+          <div className="mx-auto max-w-md rounded-2xl border border-white/25 bg-black/25 p-4 backdrop-blur-sm">
+            <label
+              htmlFor="duel-name-draft"
+              className="mb-2 flex items-center justify-center gap-2 text-[13px] font-black"
+            >
+              <UserRound size={15} />
+              نام نمایشی در این نبرد
+            </label>
+            <input
+              id="duel-name-draft"
+              value={nameDraft}
+              onChange={(e) => setNameDraft(e.target.value.slice(0, 24))}
+              maxLength={24}
+              placeholder={`پیش‌فرض: ${userName.trim() || "یادگیرنده"}`}
+              aria-label="نام نمایشی در این نبرد"
+              className="duel-input w-full rounded-xl border-2 border-white/30 bg-white/90 px-3 py-2.5 text-center text-[15px] font-black text-stone-800 outline-none placeholder:text-stone-500 focus:border-white focus-visible:ring-2 focus-visible:ring-white/80"
+            />
+            <p className="mt-2 text-center text-[11px] font-bold leading-5 text-white/85">
+              فقط برای همین نبرد نشان داده می‌شود — پروفایل تغییر نمی‌کند.
+            </p>
           </div>
 
           {/* پیوستن با کد */}

@@ -19,11 +19,12 @@ const perfect = (day: string): DayStat => ({
   quizzes: 3,
   dictation: 1,
   rush: 1,
+  stories: 0, // Task 299 — شش‌گانه شد؛ این تست‌ها زنجیرهٔ پنج‌گانه را قفل میکنند
 });
 /** روزِ چهار‌پنجم — هرگز نباید عضوِ زنجیره شود */
 const fourOfFive = (day: string): DayStat => ({ ...perfect(day), rush: 0 });
 /** روزِ سبک — فقط کمی مرور */
-const light = (day: string): DayStat => ({ day, reviews: 3, words: 0, quizzes: 0, dictation: 0, rush: 0 });
+const light = (day: string): DayStat => ({ day, reviews: 3, words: 0, quizzes: 0, dictation: 0, rush: 0, stories: 0 });
 
 /** کلیدِ روزِ نسبی — همان فرمتِ local YYYY-MM-DD (آینهٔ todayStr) */
 function dayAt(today: string, offset: number): string {
@@ -119,6 +120,7 @@ describe("دفترِ زنجیرهٔ مأموریت‌ها — questStreakMeta (T
     const garbage: DayHistoryMap = {
       [dayAt(TODAY, 0)]: {
         day: dayAt(TODAY, 0),
+        stories: 0,
         reviews: Number.NaN,
         words: undefined as unknown as number,
         quizzes: -3,

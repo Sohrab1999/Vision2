@@ -22,7 +22,7 @@ import DailyQuests from "@/components/study/practice/daily-quests";
 vi.mock("@/hooks/use-toast", () => ({ useToast: () => ({ toast: vi.fn() }) }));
 
 /** روزِ کاملِ پنج‌گانه — هر پنج هدف برآورده */
-const perfect = (day: string) => ({ day, reviews: 10, words: 5, quizzes: 3, dictation: 1, rush: 1 });
+const perfect = (day: string) => ({ day, reviews: 10, words: 5, quizzes: 3, dictation: 1, rush: 1, stories: 0 });
 /** روزِ چهار‌پنجم */
 const fourOfFive = (day: string) => ({ ...perfect(day), rush: 0 });
 
@@ -33,7 +33,7 @@ describe("چیپ زنجیرهٔ مأموریت‌ها — کامپوننت (Task
     useStudy.setState({
       srs: {},
       view: { type: "home" },
-      dayStat: { day: todayStr(), reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0 },
+      dayStat: { day: todayStr(), reviews: 0, quizzes: 0, words: 0, dictation: 0, rush: 0, stories: 0 },
       dayHistory: {},
     });
   });

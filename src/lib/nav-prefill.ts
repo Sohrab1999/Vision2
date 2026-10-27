@@ -85,3 +85,46 @@ export function clearFlagPrefill(key: string): void {
     /* نادیده */
   }
 }
+
+// ------------------------------------------------------------------
+// prefillِ رشته‌ای — جست‌وجوی کتابخانهٔ جزوه‌ها: پالت/کتاب پرسشِ جست‌وجو را
+// به نمای جست‌وجو می‌دهند (LIBSEARCH_Q_KEY). هم‌قراردادِ Count/Boolean:
+// initializer غیرمخرب useState می‌خواند، نما در نخستین اثر مصرفِ
+// یک‌بارمصرف میکند (خواندن سپس پاک‌کردن — بدونِ setState).
+// ------------------------------------------------------------------
+
+/** کلیدِ prefillِ پرسشِ جست‌وجوی جزوه — تکخانه (هم پالت هم نما همین را می‌خوانند) */
+export const LIBSEARCH_Q_KEY = "vision2-prefill-libsearch-q";
+
+/** خواندن رشته از کلید prefill؛ نبود/تهی → null (node-safe) */
+export function readStringPrefill(key: string): string | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = window.sessionStorage.getItem(key);
+    if (raw === null) return null;
+    const v = raw.trim();
+    return v === "" ? null : v;
+  } catch {
+    return null;
+  }
+}
+
+/** نوشتن رشته در کلید prefill (پالت/کتاب، هنگام اجرای فرمان) */
+export function writeStringPrefill(key: string, v: string): void {
+  if (typeof window === "undefined") return;
+  try {
+    window.sessionStorage.setItem(key, v);
+  } catch {
+    /* حالت خصوصی مرورگر — نادیده */
+  }
+}
+
+/** پاک‌کردن prefillِ رشتهای پس از مصرف (نما، در اولین اثر — بدونِ setState) */
+export function clearStringPrefill(key: string): void {
+  if (typeof window === "undefined") return;
+  try {
+    window.sessionStorage.removeItem(key);
+  } catch {
+    /* نادیده */
+  }
+}

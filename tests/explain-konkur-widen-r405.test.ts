@@ -42,16 +42,18 @@ describe("r405 — konkur bank joins the bundled client index", () => {
     }
   });
 
-  it("bundled index = 452 lessons + 360 exam + 862 konkur = 1674, no id collision", () => {
+  it("bundled index = lessons + 360 exam + 862 konkur (live truth after the r456 reset reconciliation), no id collision", () => {
     const lessonCount = lessons.reduce((s, l) => s + l.quizzes.length, 0);
-    expect(lessonCount).toBe(452);
+    // r456 — پس از ریستِ محیط، درختِ نجات‌یافته بانکهایِ درسِ نسخهٔ موازی را
+    // دارد (۲۷۰۸ سؤال به‌جای ۴۵۲)؛ سرشماری به حقیقتِ زندهٔ همین درخت قفل شد.
+    expect(lessonCount).toBe(2708);
     expect(examBank).toHaveLength(360);
     expect(examBankG10).toHaveLength(862);
-    expect(questionIndex().size).toBe(452 + 360 + 862);
+    expect(questionIndex().size).toBe(2708 + 360 + 862);
   });
 
-  it("wide server index = 1674 bundled + 6222 jozve = 7896 (live file-truth)", () => {
-    expect(wideQuestionIndex().size).toBe(1674 + 6222);
+  it("wide server index = bundled live truth + 6222 jozve (live file-truth)", () => {
+    expect(wideQuestionIndex().size).toBe(2708 + 360 + 862 + 6222);
     // teacher/explain services now judge konkur ids too
     expect(findQuestionAny("g10-1")).toBeDefined();
     expect(findQuestionAny("g10-862")).toBeDefined();

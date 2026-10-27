@@ -55,6 +55,14 @@ const p = new PrismaClient();
         // task 190: the dictation-tab QA path (tile + streak bar probes) leaves
         // dictation_done completions and the freeze_badge grant behind
         "dictation_done", "freeze_badge",
+        // r456: the streak-flame twin of freeze_badge (the header chip's own
+        // tap analytics) — same QA-only construction as its ice sibling
+        "streak_badge",
+        // r456: the week chip opens the weekly digest via the open-report door
+        "week_chip",
+        // r456: the my-words story forge + the two AI-teacher review gates
+        // (exam/week) — funnel openers fired by scripted asks in QA sessions
+        "my_words_story_start", "exam_review_start", "week_review_start",
         // task 283: the qa-fresh-session --play mode completes a REAL 60s rush
         // hand end-to-end — every scripted play leaves one rush_done aggregate
         "rush_done",

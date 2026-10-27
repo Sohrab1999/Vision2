@@ -34,6 +34,7 @@ const day = (n: number, c: Partial<{ reviews: number; quizzes: number; words: nu
   words: 0,
   dictation: 0,
   rush: 0,
+  stories: 0,
   ...c,
 });
 

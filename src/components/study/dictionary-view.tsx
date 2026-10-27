@@ -119,6 +119,14 @@ export default function DictionaryView() {
             onClick={() => {
               const count = downloadAnkiTsv();
               trackEvent("anki_export");
+              if (count == null) {
+                toast({
+                  title: "🃏 چیزی برای صادرات نبود",
+                  description: "هنوز واژه‌ای نشان نکرده‌ای — اول از درس‌ها واژه نشان کن.",
+                  duration: 6000,
+                });
+                return;
+              }
               toast({
                 title: "🃏 خروجی Anki آماده شد",
                 description: `${faNum(count)} کارت در فایل vision2-anki.txt — در Anki از File ▸ Import واردش کن.`,

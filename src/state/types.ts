@@ -54,7 +54,10 @@ export type View =
   | { type: "grammar" } // متروی گرامر — Task 39
   | { type: "my-words" } // واژه‌های نشان‌شده — واژه‌نامهٔ شخصی
   | { type: "library" } // Task 290 — کتاب‌خانهٔ داستان‌های L.A. Hill
-  | { type: "teacher" }; // r352 — پنلِ معلم (فهرستِ کلاس، گیتِ کد)
+  | { type: "teacher" } // r352 — پنلِ معلم (فهرستِ کلاس، گیتِ کد)
+  | { type: "jozve"; grade: number; chapterId?: string } // کتابخانهٔ جزوه‌ها — deep-linkِ «جزوهٔ همین درس» از کتاب/جست‌وجو (grade اجباری، فصلِ آغازین اختیاری)
+  | { type: "book"; grade: number; bank?: number } // نمای کتابِ پایه (اندیسِ بانکِ اختیاری — practice-target)
+  | { type: "search"; grade: number }; // جست‌وجوی کتابخانهٔ جزوه‌ها
 
 export type LessonTab = "vocab" | "conversation" | "reading" | "grammar" | "writing" | "dictation" | "tests" | "synant" | "booklet";
 

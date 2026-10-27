@@ -261,3 +261,51 @@ export function highlightParts(en: string, word: string): UsageHighlightPart[] {
   if (last < en.length) parts.push({ text: en.slice(last), hit: false });
   return parts;
 }
+
+// ------------------------------------------------------------------
+// رتبهٔ پرکاربردیِ تک‌واژه (r259) — «رتبهٔ N از M» برای واژه‌هایِ
+// کاربرددار؛ هم‌شمارها هم‌رتبه (رقابتی — ۱،۱،۳…)، بی‌کاربرد → null.
+// شاخصِ یکبار-ساختهٔ ماژول-سطح: شمارش از خودِ findWordUsages (تکحقیقتِ
+// تطبیق — wordFormRegex) می‌آید و پس از نخستین فراخوان کش می‌ماند.
+// ------------------------------------------------------------------
+
+export interface UsedWordRank {
+  /** ۱ = پرکاربردترین؛ هم‌شمارها هم‌رتبه (رقابتی) */
+  rank: number;
+  /** شمارِ واژه‌هایِ کاربرددارِ مبنایِ رتبه‌بندی */
+  total: number;
+  /** شمارِ جای‌هایِ استفادهٔ خودِ واژه */
+  count: number;
+}
+
+let usedRankIndex: Map<string, UsedWordRank> | null = null;
+
+export function usedWordRank(en: string): UsedWordRank | null {
+  const key = typeof en === "string" ? en.trim().toLowerCase() : "";
+  if (key === "") return null;
+  if (!usedRankIndex) {
+    const best = new Map<string, number>();
+    for (const l of lessons) {
+      for (const w of l.vocabulary) {
+        const k = w.en.trim().toLowerCase();
+        if (k === "") continue;
+        const c = findWordUsages(w.en).length;
+        if (c <= 0) continue;
+        best.set(k, Math.max(best.get(k) ?? 0, c));
+      }
+    }
+    const sorted = [...best.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+    const idx = new Map<string, UsedWordRank>();
+    let prevCount = -1;
+    let rank = 0;
+    sorted.forEach(([k, count], i) => {
+      if (count !== prevCount) {
+        rank = i + 1;
+        prevCount = count;
+      }
+      idx.set(k, { rank, total: sorted.length, count });
+    });
+    usedRankIndex = idx;
+  }
+  return usedRankIndex.get(key) ?? null;
+}

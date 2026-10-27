@@ -19,7 +19,7 @@
 // رویِ دامنهٔ باریک‌شده — countِ برگشتی صادقانه است (هم‌نام‌ها یکی می‌شوند).
 // ------------------------------------------------------------------
 
-import { CSV_BOM } from "./coverage-csv";
+import { CSV_BOM } from "./file-download"; // r399 — BOM تکخانه (مالک)؛ مسیرِ کهنهٔ coverage-csv منقرض
 import { buildAnkiTsv } from "./anki-export";
 import { faNum } from "./study-theme";
 import type { VocabWord } from "./study-types";

@@ -9,7 +9,7 @@ import { useCountdown } from "@/hooks/use-countdown";
 import { useToast } from "@/hooks/use-toast";
 import { trackEvent } from "@/lib/analytics";
 import { mintDuelTicket, sendStats } from "@/lib/identity";
-import { duelDisplayName } from "@/lib/duel-receipt";
+import { duelDisplayName, resolveDuelName } from "@/lib/duel-receipt";
 import { buildDuelRecord } from "@/lib/duel-history";
 import {
   buildDuelBank,
@@ -75,6 +75,9 @@ export interface DuelMachine {
   joinInput: string;
   setJoinInput: (v: string) => void;
   joinBusy: boolean;
+  /** Task 131 «نامِ نمایشیِ نبرد» — پیش‌نویسِ فیلدِ لابی (فقطِ نمایشی) */
+  nameDraft: string;
+  setNameDraft: (v: string) => void;
   /** Task 112 — ساختِ اتاق حینِ ضربِ بلیت/انتظارِ ack داور مشغول است */
   createBusy: boolean;
   /** Task 107 — ریتمِ برگزیدهٔ لابی (فقط در فازِ setup قابلِ تغییر) */
@@ -120,6 +123,8 @@ export function useDuelSocket(): DuelMachine {
   const [mySid, setMySid] = useState<string | null>(null);
   const [joinInput, setJoinInput] = useState("");
   const [joinBusy, setJoinBusy] = useState(false);
+  // Task 131 «نامِ نمایشیِ نبرد» — پیش‌نویسِ فقطِ نمایشی؛ resolve در لحظهٔ ورود
+  const [nameDraft, setNameDraft] = useState("");
   // Task 112 «بلیتِ ورود» — create هم حالا دو-گامی است (ضربِ بلیت → emit)
   const [createBusy, setCreateBusy] = useState(false);
   // Task 107 «ریتمِ نبرد» — دو عددِ جداشده، دو نقشِ جداشده:
@@ -152,6 +157,8 @@ export function useDuelSocket(): DuelMachine {
 
   // refs برای استفادهٔ امن داخل callbackهای سوکت (همگام‌سازی پس از commit)
   const phaseRef = useRef(phase);
+  // Task 131 — نامِ resolveشدهٔ همین نبرد؛ ورود و رسیدِ آمار همان را ادعا میکنند
+  const myDuelNameRef = useRef<string>("");
   const qiRef = useRef(qi);
   const feedbackRef = useRef(feedback);
   useEffect(() => {
@@ -218,7 +225,7 @@ export function useDuelSocket(): DuelMachine {
           score: mine.score,
           outcome,
           receipt: end.receipt,
-          duelName: duelDisplayName(useStudy.getState().userName),
+          duelName: myDuelNameRef.current || duelDisplayName(useStudy.getState().userName),
         }).catch(() => {});
       } catch {
         /* ignore */
@@ -367,10 +374,12 @@ export function useDuelSocket(): DuelMachine {
     if (!s || conn !== "online") return;
     setCreateBusy(true);
     const store = useStudy.getState();
+    const duelName = resolveDuelName(nameDraft, store.userName);
+    myDuelNameRef.current = duelName;
     emitEntryWithTicket(
       s,
       "duel:create",
-      { name: store.userName || "یادگیرنده", color: store.avatarColor, perQMs: chosenPace },
+      { name: duelName, color: store.avatarColor, perQMs: chosenPace },
       (res: EntryAck & { code?: string; state?: { players: PublicPlayer[] } }) => {
         setCreateBusy(false);
         if (!res.ok) {
@@ -384,7 +393,7 @@ export function useDuelSocket(): DuelMachine {
       },
       toast
     );
-  }, [conn, toast, chosenPace, createBusy]);
+  }, [conn, toast, chosenPace, createBusy, nameDraft]);
 
   const joinRoom = useCallback(() => {
     const s = socketRef.current;
@@ -396,10 +405,12 @@ export function useDuelSocket(): DuelMachine {
     }
     setJoinBusy(true);
     const store = useStudy.getState();
+    const duelName = resolveDuelName(nameDraft, store.userName);
+    myDuelNameRef.current = duelName;
     emitEntryWithTicket(
       s,
       "duel:join",
-      { code, name: store.userName || "یادگیرنده", color: store.avatarColor },
+      { code, name: duelName, color: store.avatarColor },
       (res: EntryAck) => {
         setJoinBusy(false);
         if (!res.ok) {
@@ -412,7 +423,7 @@ export function useDuelSocket(): DuelMachine {
       },
       toast
     );
-  }, [conn, joinInput, toast, joinBusy]);
+  }, [conn, joinInput, toast, joinBusy, nameDraft]);
 
   const leaveRoom = useCallback(() => {
     const s = socketRef.current;
@@ -506,6 +517,8 @@ export function useDuelSocket(): DuelMachine {
     joinInput,
     setJoinInput,
     joinBusy,
+    nameDraft,
+    setNameDraft,
     createBusy,
     chosenPace,
     paceChoices: DUEL_PACES,

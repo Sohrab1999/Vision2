@@ -147,3 +147,15 @@ export function judgeReceiptShape(
   }
   return { ok: false, reason: "outcome_mismatch" };
 }
+
+/**
+ * Task 131 «نامِ نمایشیِ نبرد» — الگویِ نهاییِ نام از دو ورودی:
+ * پیش‌نویسِ فیلدِ لابی (اگر واقعی باشد) بر نامِ پروفایل مقدم است؛
+ * هر دو از trim/slice(24)/فالبکِ duelDisplayName میگذرند (پاریتیِ
+ * readProfile سرویس ۳۰۰۳). ورودیِ غیرِ رشته هرگز throw نمیکند.
+ */
+export function resolveDuelName(draft: unknown, profile: unknown): string {
+  const d = typeof draft === "string" ? draft.trim() : "";
+  const p = typeof profile === "string" ? profile.trim() : "";
+  return duelDisplayName(d || p);
+}

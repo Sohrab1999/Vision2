@@ -28,9 +28,9 @@ const d = (n: number) => daysAgoKey(n);
 function seedActiveWeek() {
   useStudy.setState({
     dayHistory: {
-      [d(0)]: { day: d(0), reviews: 5, quizzes: 1, words: 0, dictation: 0, rush: 0 },
-      [d(1)]: { day: d(1), reviews: 3, quizzes: 0, words: 2, dictation: 0, rush: 0 },
-      [d(3)]: { day: d(3), reviews: 2, quizzes: 1, words: 0, dictation: 1, rush: 1 },
+      [d(0)]: { day: d(0), reviews: 5, quizzes: 1, words: 0, dictation: 0, rush: 0, stories: 0 },
+      [d(1)]: { day: d(1), reviews: 3, quizzes: 0, words: 2, dictation: 0, rush: 0, stories: 0 },
+      [d(3)]: { day: d(3), reviews: 2, quizzes: 1, words: 0, dictation: 1, rush: 1, stories: 0 },
     },
     history: {},
     goalMetDays: [d(0), d(1)],
