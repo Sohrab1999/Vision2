@@ -9,12 +9,14 @@ import {
   Ear,
   Zap,
   BookOpen,
+  Flame,
   Target,
   Trophy,
   Check,
   ChevronLeft,
 } from "lucide-react";
 import { useStudy, firstLessonWithDue, todayStr, liveTodayStat, type DayStat } from "@/lib/study-store";
+import { questStreakMeta } from "@/lib/quest-streak"; // Task 140 — دفترِ زنجیره (چیپِ سرصفحه)
 import { percent } from "@/lib/domain/percent";
 import { questProgress } from "@/lib/daily-quests";
 import { libraryProgress } from "@/lib/library-progress";
@@ -42,6 +44,7 @@ export default function DailyQuests() {
   const mounted = useMounted();
   const { toast } = useToast();
   const dayStat = useStudy((s) => s.dayStat);
+  const dayHistory = useStudy((s) => s.dayHistory);
   const srs = useStudy((s) => s.srs);
   const openLesson = useStudy((s) => s.openLesson);
   const openLessonTab = useStudy((s) => s.openLessonTab);
@@ -53,6 +56,9 @@ export default function DailyQuests() {
   const quests = useMemo(() => questProgress(dayStat), [dayStat]);
   const doneCount = quests.filter((q) => q.done).length;
   const allDone = doneCount === quests.length;
+  // Task 299 — نوارِ پاداش و چیپِ زنجیره قراردادِ پنج‌گانهٔ هستهای را نگه میدارند؛
+  // داستانِ کتابخانه شش‌گانه را کامل میکند ولی نوار را زودتر نمیآورد.
+  const coreAllDone = quests.filter((q) => q.def.id !== "story").every((q) => q.done);
   const overallPct = percent(doneCount, quests.length);
 
   // celebrate when the sixth quest completes *live in this session*
@@ -107,6 +113,9 @@ export default function DailyQuests() {
   // r384 — گاردِ «زندهٔ امروز» تکمنبع شد: liveTodayStat از موتورِ روز
   // (لیترالِ inlineِ صفرِ دستی مرده — دوقلویِ بایتبهبایت با goal-chip)
   const stat: DayStat = liveTodayStat(mounted, dayStat, today);
+  // Task 140 — دفترِ زنجیره: چیپ فقط از streak>=۲ (honest absence)؛
+  // قراردادِ پنج‌گانه در خودِ موتور (Task 299: داستان عضوِ زنجیره نیست)
+  const streakMeta = questStreakMeta(dayHistory, today);
   const title = allDone
     ? "اهداف امروز کامل شد!"
     : doneCount === 0
@@ -133,6 +142,16 @@ export default function DailyQuests() {
               <span className={`rounded-full px-2 py-0.5 text-[10px] font-black ${allDone ? "bg-emerald-700 text-white" : "bg-emerald-100 text-emerald-800"}`}>
                 {faNum(doneCount)} از {faNum(quests.length)}
               </span>
+              {streakMeta.label && (
+                <span
+                  className="quest-streak-chip inline-flex items-center gap-1 rounded-full bg-amber-100 px-2 py-0.5 text-[10px] font-black text-amber-800"
+                  title={streakMeta.title}
+                  aria-label={streakMeta.title}
+                >
+                  <Flame size={11} aria-hidden />
+                  {streakMeta.label}
+                </span>
+              )}
             </div>
             <p className="mt-0.5 text-[11.5px] font-bold text-stone-500">{title}</p>
           </div>
@@ -207,7 +226,7 @@ export default function DailyQuests() {
       </ul>
 
       {/* all-done reward band */}
-      {allDone && (
+      {coreAllDone && (
         <motion.div
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: "auto" }}
@@ -216,7 +235,9 @@ export default function DailyQuests() {
           <div className="reward-shimmer absolute inset-0" aria-hidden />
           <p className="relative flex items-center justify-center gap-2 text-[12.5px] font-black text-white">
             <Trophy size={15} />
-            پاداش روزانه گرفتی — {faNum(stat.reviews + stat.quizzes + stat.words + stat.stories)} فعالیت امروز ثبت شد. زنجیره‌ات امن است!
+            {streakMeta.streak >= 2
+              ? `پاداش روزانه گرفتی — ${faNum(stat.reviews + stat.quizzes + stat.words + stat.stories)} فعالیت امروز ثبت شد. زنجیرهٔ مأموریت‌ها به ${faNum(streakMeta.streak)} روز رسید!`
+              : `پاداش روزانه گرفتی — ${faNum(stat.reviews + stat.quizzes + stat.words + stat.stories)} فعالیت امروز ثبت شد. زنجیره‌ات امن است!`}
           </p>
         </motion.div>
       )}

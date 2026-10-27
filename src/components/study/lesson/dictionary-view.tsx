@@ -164,6 +164,14 @@ export default function DictionaryView({ focusWord }: { focusWord?: string }) {
     () => allWords.reduce((n, w) => n + (usageSet.has(w.en.trim().toLowerCase()) ? 1 : 0), 0),
     [allWords, usageSet]
   );
+  // r254 ③ — شمارندهٔ per-lesson روی چیپهایِ درس — فقط با لنزِ فعال؛
+  // همان سیمِ usageSet (شمارشِ کارت‌محورِ خودسازگار — عنوانِ ①)
+  const usedPerLesson = useMemo(() => {
+    const m = new Map<number, number>();
+    for (const w of allWords)
+      if (usageSet.has(w.en.trim().toLowerCase())) m.set(w.lessonId, (m.get(w.lessonId) ?? 0) + 1);
+    return m;
+  }, [allWords, usageSet]);
 
   // «دریلِ جفت‌ها» (راند ۲۰۷) — از لنزِ جفت‌دار مستقیم به آزمونِ استانداردِ خانه:
   // با فیلترِ درس فقط همان درس، بی‌فیلتر همهٔ درس‌ها؛ نتیجه زیرِ «0:synant»
@@ -463,6 +471,8 @@ export default function DictionaryView({ focusWord }: { focusWord?: string }) {
           </button>
           {lessons.map((l) => {
             const t = themeOf(l.color);
+            const usedInLesson = usedPerLesson.get(l.id) ?? 0;
+            const usageOn = stateFilter === "usage";
             return (
               <button
                 key={l.id}
@@ -470,8 +480,14 @@ export default function DictionaryView({ focusWord }: { focusWord?: string }) {
                 className={`rounded-full px-3 py-1.5 text-[12px] font-bold transition-colors ${
                   lessonFilter === l.id ? `${t.bg} text-white` : "bg-stone-100 text-stone-600 hover:bg-stone-200"
                 }`}
+                title={
+                  usageOn
+                    ? `${faNum(usedInLesson)} از ${faNum(l.vocabulary.length)} واژهٔ این درس در مکالمه‌ها و ریدینگ‌های جزوه آمده‌اند`
+                    : undefined
+                }
               >
                 درس {faNum(l.id)}: {l.titleFa}
+                {usageOn ? ` · ${faNum(usedInLesson)}` : ""}
               </button>
             );
           })}
@@ -482,6 +498,7 @@ export default function DictionaryView({ focusWord }: { focusWord?: string }) {
             <button
               key={c.id}
               onClick={() => setStateFilter(c.id)}
+              data-testid={c.id === "usage" ? "usage-stat" : undefined}
               className={`dict-state-chip inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[11.5px] font-bold transition-[background-color,color,border-color,box-shadow] ${
                 stateFilter === c.id
                   ? `${c.cls} text-white shadow-sm`
@@ -729,7 +746,9 @@ export default function DictionaryView({ focusWord }: { focusWord?: string }) {
           <p className="text-[11.5px] font-bold text-stone-500">
             {stateFilter === "due"
               ? "الان واژهٔ سررسیدی نداری — همه‌چیز سر موعد است!"
-              : "فیلتر وضعیت یا جستجو را تغییر بده"}
+              : stateFilter === "usage"
+                ? "واژه‌های کاربرددار در مکالمه/ریدینگِ جزوه زندگی می‌کنند — این جستجو هیچ کارتِ در-متنِ‌ای را نمیگیرد"
+                : "فیلتر وضعیت یا جستجو را تغییر بده"}
           </p>
           {stateFilter !== "all" && (
             <button

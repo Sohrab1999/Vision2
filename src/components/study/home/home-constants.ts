@@ -144,6 +144,10 @@ export const feedLabel: Record<string, string> = {
   "spell-rush": "املا برق‌آسا",
   review: "مرور سریع",
   "my-words": "مرور نشان‌شده‌ها",
+  // r269 — دو دستهٔ پیکره‌ایِ دریلِ زنده (زبانِ پنجمِ سطح)؛ برگشت با
+  // آشتیِ دو-نسلی r457 — کلیدِ خامِ انگلیسی روی فید ممنوع (r280).
+  livewords: "دریل واژه‌های زنده",
+  gramdrill: "دریل گرامر",
 };
 
 export interface RecentAttempt {

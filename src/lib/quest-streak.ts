@@ -24,6 +24,18 @@ import { faNum } from "./study-theme";
 import { QUESTS, completedQuestCount } from "./daily-quests";
 import type { DayHistoryMap } from "@/state/types";
 
+// Task 299 — شش‌گانه شدنِ تختهٔ روزانه («داستان کتابخانه») قراردادِ زنجیره
+// را عوض نمیکند: چیپِ زنجیره و دفترِ هفته رویِ پنج مأموریتِ هستهای
+// میچرخند (همان «هر پنج مأموریت» که نوارِ پاداش میشناسد) — داستانِ
+// کتابخانه عضوِ زنجیره نیست و در دفترِ هفته هم شمرده نمیشود.
+const CORE_QUESTS = QUESTS.filter((q) => q.id !== "story");
+
+/** چند مأموریتِ هستهای در این روز برآورده شده (زنجیره و دفترِ هفته همین را میخوانند) */
+function coreCompletedCount(d: DayHistoryMap[string] | undefined): number {
+  const stat = d;
+  return CORE_QUESTS.reduce((n, q) => n + (stat && q.value(stat) >= q.target ? 1 : 0), 0);
+}
+
 export interface QuestStreakMeta {
   /** روزهای پیاپیِ پنج‌گانهٔ کامل، تا امروز یا دیروز */
   streak: number;
@@ -48,7 +60,7 @@ export function questStreakMeta(
 ): QuestStreakMeta {
   const book: DayHistoryMap = dayHistory ?? {};
   const day5 = (offset: number): boolean =>
-    completedQuestCount(book[daysAgoKeyFrom(today, offset)]) === QUESTS.length;
+    coreCompletedCount(book[daysAgoKeyFrom(today, offset)]) === CORE_QUESTS.length;
 
   // ---- زنجیره: از امروز (یا دیروز) رو به گذشته ----
   let streak = 0;
@@ -65,9 +77,9 @@ export function questStreakMeta(
   let weekDone = 0;
   let weekPerfect = 0;
   for (let off = 0; off < 7; off++) {
-    const n = completedQuestCount(book[daysAgoKeyFrom(today, off)]);
+    const n = coreCompletedCount(book[daysAgoKeyFrom(today, off)]);
     weekDone += n;
-    if (n === QUESTS.length) weekPerfect++;
+    if (n === CORE_QUESTS.length) weekPerfect++;
   }
 
   const label =
