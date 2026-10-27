@@ -43,7 +43,9 @@ export default function StreakBadge() {
   );
 
   const open = () => {
-    trackEvent(meta?.ice ? "freeze_badge" : "streak_badge");
+    // r457 — بازگشت به قراردادِ r455: تنها ضربهٔ یخ‌دار رویداد میزند؛
+    // شعلهٔ لخت فقط ناوبری است (رجیستریِ ۵۵تاییِ تأییدشده — بدونِ streak_badge)
+    if (meta?.ice) trackEvent("freeze_badge");
     goHome();
   };
 

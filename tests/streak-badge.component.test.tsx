@@ -7,8 +7,8 @@
 //   ③ combo: مهمانِ یخ با کلاس streak-ice و «۲ یخ»؛ عنوانِ یک‌پارچه
 //   ④ نجاتِ امروز: «نجات شد» در همان چیپ
 //   ⑤ تساوی aria-label == title روی هر سه حالت (قراردادِ چیپ‌های هدر)
-//   ⑥ ضربهٔ یخ‌دار → freeze_badge؛ ضربهٔ شعلهٔ لخت → streak_badge (نو —
-//     شعله تا دیروز تنها عضوِ هدر با صفرِ تحلیل بود) + ناوبری واقعی
+//   ⑥ ضربهٔ یخ‌دار → freeze_badge؛ ضربهٔ شعلهٔ لخت → ناوبریِ بی-رویداد (r457 —
+//     بازگشت به قراردادِ r455: رجیستریِ ۵۵تایی، شعلهٔ لخت رویداد نمی زند)
 //   ⑦ بریک‌پوینت و پایهٔ خانواده: hidden + sm:inline-flex + c-chip-flame
 // الگوی seed هم‌الگوی freeze-badge قدیم: setState مستقیم + vi.mock analytics.
 // ------------------------------------------------------------------
@@ -77,11 +77,11 @@ describe("نشانِ ترکیبی زنجیره — کامپوننت (Task 150)",
     expect(useStudy.getState().view).toEqual({ type: "home" });
   });
 
-  it("ضربهٔ شعلهٔ لخت → streak_badge (رویدادِ نو — تحلیلِ نخستینِ شعله)", () => {
+  it("ضربهٔ شعلهٔ لخت → ناوبریِ واقعی به خانه، بدونِ هیچ رویداد (قراردادِ r455)", () => {
     useStudy.setState({ streak: 9, freezeCount: 0, view: { type: "exam" } });
     render(<StreakBadge />);
     fireEvent.click(screen.getByRole("button"));
-    expect(trackEvent).toHaveBeenCalledWith("streak_badge");
+    expect(trackEvent).not.toHaveBeenCalled();
     expect(useStudy.getState().view).toEqual({ type: "home" });
   });
 

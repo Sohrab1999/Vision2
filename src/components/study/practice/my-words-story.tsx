@@ -103,7 +103,6 @@ export default function MyWordsStory({ stars }: { stars: ResolvedStar[] }) {
 
   const forge = async () => {
     if (!eligible || state.status === "loading") return;
-    trackEvent("my_words_story_start");
     setState({ status: "loading" });
     try {
       const res = await fetch("/api/story", {

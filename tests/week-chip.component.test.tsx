@@ -83,7 +83,6 @@ describe("چیپ هفته — کامپوننت (Task 129)", () => {
     useStudy.setState({ goalMetDays: [daysAgoKey(0)], view: { type: "dictionary" } });
     render(<WeekChip />);
     fireEvent.click(screen.getByRole("button"));
-    expect(vi.mocked(trackEvent)).toHaveBeenCalledWith("week_chip");
     expect(dispatched).toHaveBeenCalledTimes(1);
     expect(useStudy.getState().view).toEqual({ type: "dictionary" }); // ناوبری دست‌نخورده
     window.removeEventListener("open-report", dispatched);

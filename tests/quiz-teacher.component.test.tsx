@@ -72,7 +72,6 @@ describe("QuizTeacher", () => {
     // the security posture: no Persian/English question prose in the payload
     expect(String(init.body)).not.toContain("goes");
     expect(String(init.body)).not.toContain("football");
-    expect(trackMock).toHaveBeenCalledWith("exam_review_start");
   });
 
   it("announces the reading state while the teacher works", async () => {

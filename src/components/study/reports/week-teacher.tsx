@@ -17,7 +17,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { GraduationCap, Loader2, Sparkles, RotateCcw, ImageDown, Share2 } from "lucide-react";
-import { trackEvent } from "@/lib/analytics";
 import type { TeacherReview } from "@/lib/exam-teacher";
 import { hasWeekVerdict, type WeekTeacherStats } from "@/lib/week-teacher";
 import { weekGoalMeta } from "@/lib/week-goal";
@@ -97,7 +96,6 @@ export default function WeekTeacher({ stats }: { stats: WeekTeacherStats }) {
 
   const ask = async () => {
     if (state.status === "loading") return;
-    trackEvent("week_review_start");
     setState({ status: "loading" });
     try {
       const res = await fetch("/api/week-review", {

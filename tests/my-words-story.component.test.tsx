@@ -84,7 +84,6 @@ describe("MyWordsStory", () => {
     const sent = JSON.parse(init.body);
     expect(sent.keys).toEqual(["1:ability", "1:absent", "2:actor", "2:achieve"]);
     expect(JSON.stringify(sent)).not.toContain("توانایی"); // Persian text never ships
-    expect(trackMock).toHaveBeenCalledWith("my_words_story_start");
   });
 
   it("renders the tale with highlighted words, the Persian summary and the fresh chip", async () => {

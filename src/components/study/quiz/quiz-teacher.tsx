@@ -11,7 +11,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { GraduationCap, Loader2, Sparkles, RotateCcw, ImageDown, Share2 } from "lucide-react";
-import { trackEvent } from "@/lib/analytics";
 import type { TeacherReview } from "@/lib/exam-teacher";
 import { percent as percentOf } from "@/lib/domain/percent";
 import { faNum } from "@/lib/study-theme";
@@ -101,7 +100,6 @@ export default function QuizTeacher({
 
   const ask = async () => {
     if (state.status === "loading" || ids.length === 0) return;
-    trackEvent("exam_review_start");
     setState({ status: "loading" });
     try {
       const res = await fetch("/api/exam-review", {

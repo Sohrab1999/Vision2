@@ -109,7 +109,6 @@ describe("WeekTeacher", () => {
     expect(String(init.body)).not.toContain("dayHistory");
     expect(String(init.body)).not.toContain("history");
     expect(String(init.body)).not.toContain("T00:00:00");
-    expect(trackMock).toHaveBeenCalledWith("week_review_start");
   });
 
   it("renders the three sections with the fresh chip on a new generation", async () => {

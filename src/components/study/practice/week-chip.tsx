@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { useStudy, daysAgoKey } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { weekGoalMeta, weekWindowGoalDays } from "@/lib/week-goal";
-import { trackEvent } from "@/lib/analytics";
 
 // ------------------------------------------------------------------
 // Task 129 «چیپِ هفته در هدر» — مینی‌حلقهٔ هدفِ هفتگی، همسایهٔ چیپِ
@@ -55,7 +54,6 @@ export default function WeekChip() {
   const meta = useMemo(() => weekGoalMeta(goalDays, "این هفته"), [goalDays]);
 
   const open = () => {
-    trackEvent("week_chip");
     window.dispatchEvent(new CustomEvent("open-report"));
   };
 
