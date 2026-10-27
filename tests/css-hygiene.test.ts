@@ -675,7 +675,8 @@ describe("globals.css translucent veil layer (Step 9 tranche 4 phase 4 — Task 
     // r313: weekly-report +۱ پنجم — باندِ «ستونهایِ خروجیهایِ اکسل» (هم‌باندِ دستورِ رنگ‌ها)
     // r422: weekly-report +۲ — نوارِ «هفتهٔ پیشِ رو» (ظرفِ هفتخانهای + سطرِ آرامِ هفتهٔ دور)
     // r432: weekly-report +۱ — ظرفِ «سررسیدهایِ امروز به تفکیک بانک» (زیرِ نوار، هم‌باندِ c-veil-60)
-    expect(total).toBe(26);
+    // r457: weekly-report +۱ — سطرِ «حلقهٔ هدفِ هفتگی» (GoalRingRow — بازسازیِ Task 128/134؛ هم‌باندِ ردیفهایِ گزارش)
+    expect(total).toBe(27);
   });
 });
 
