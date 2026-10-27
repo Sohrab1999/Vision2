@@ -19,6 +19,7 @@ import { useBadgeCensus } from "@/hooks/use-badge-census";
 import { buildCoverageMap } from "@/lib/coverage-map";
 import { LESSONS_META } from "@/data/lesson-meta";
 import { computeWeeklyDigest, faWeekday, faDayLabel, DUEL_QUICK_WEEK, type Delta, type QuickWeekProfile } from "@/lib/weekly-digest";
+import { weekGoalMeta, weekWindowGoalDays } from "@/lib/week-goal"; // Task 128/134 — حلقهٔ زندهٔ هدف (r457 بازسازی)
 import { freezeDayMark, freezeLedgerMeta } from "@/lib/freeze-badge";
 import { downloadWeeklyImage, buildWeeklyBlob, downloadWeekCalendarImage, buildWeekCalendarBlob, type WeeklyImageOpts, type WeekCalendarImageOpts, imageFailToast } from "@/lib/result-image";
 import { blobToFile, shareImageFile, type ShareOutcome } from "@/lib/share-card";
@@ -726,6 +727,12 @@ export default function WeeklyReportSection({ onLeaveReport }: { onLeaveReport?:
         </div>
       </div>
 
+      {/* Task 128/134 — حلقهٔ زندهٔ هدفِ هفتگی (r457 بازسازی): role=img با
+          aria==title، مرکزِ درصدِ همان weekGoalMeta، arc فقط با pct>0 (نقطهٔ
+          کاذب ممنوع)، برچسبِ هم‌زبانِ PNG/A4 زیرِ sm پنهان، مهرِ زمردیِ
+          تیک‌دار فقطِ ۷/۷ و نقطههایِ روزانهٔ هفتگانه کنارِ حلقه */}
+      <GoalRingRow goalMetDays={goalMetDays} todayKey={daysAgoKey(0)} />
+
       {/* r313 — برچسبِ ستونهایِ خروجیهایِ اکسل همان‌جای دکمهها: معلمِ اکسلخوان
           پیش از دانلود میداند هر فایل چند ستون و چه ستونهای تازهای دارد
           (r311: تفاوت با هفتهٔ پیش در روند / r312: دو ستونِ هفت‌روزه در ماه‌نامه / r314: دو ستونِ هفت‌روزه در جدولِ ۳۵روزه)؛
@@ -1369,6 +1376,98 @@ export default function WeeklyReportSection({ onLeaveReport }: { onLeaveReport?:
           {streak > 0 ? " زنجیره‌ات همین حالا روشن است!" : ""}
         </p>
       )}
+    </div>
+  );
+}
+
+// ------------------------------------------------------------------
+// Task 128/134 — حلقهٔ زندهٔ هدفِ هفتگی (r457 بازسازی از قفلهایِ
+// weekly-goal-ring): role=img با تساویِ aria==title، مرکزِ درصدیِ
+// همان weekGoalMeta، arcِ pathLength=100 فقط با pct>0 (نقطهٔ کاذب
+// ممنوع — صفرِ واقعی trackِ محض است)، برچسبِ هم‌زبانِ PNG/A4 زیرِ
+// sm پنهان (بودجهٔ موبایل)، مهرِ زمردیِ تیک‌دارِ ۱۳۲ فقطِ ۷/۷ و
+// نقطههایِ هدفِ روزانه (۷تا) در گروهِ dir=ltr کنارِ حلقه.
+// ------------------------------------------------------------------
+function GoalRingRow({ goalMetDays, todayKey }: { goalMetDays: readonly string[]; todayKey: string }) {
+  const goalDays = weekWindowGoalDays(goalMetDays, todayKey);
+  const weekGoal = weekGoalMeta(goalDays);
+  const goalSet = new Set(goalMetDays);
+  const days = [6, 5, 4, 3, 2, 1, 0];
+  return (
+    <div
+      className="goal-ring-row mb-3 flex items-center gap-3 rounded-lg c-veil-60 px-2.5 py-2"
+      title={weekGoal.title}
+      aria-label={weekGoal.title}
+    >
+      <div
+        role="img"
+        aria-label={weekGoal.title}
+        title={weekGoal.title}
+        className="relative flex h-14 w-14 shrink-0 items-center justify-center"
+      >
+        <svg viewBox="0 0 40 40" className="h-14 w-14 -rotate-90" aria-hidden>
+          <circle cx="20" cy="20" r="16" fill="none" stroke="var(--color-stone-200)" strokeWidth="5" />
+          {weekGoal.pct > 0 && (
+            <circle
+              cx="20"
+              cy="20"
+              r="16"
+              fill="none"
+              stroke="url(#week-goal-arc)"
+              strokeWidth="5"
+              strokeLinecap="round"
+              pathLength={100}
+              strokeDasharray={`${weekGoal.pct} ${100 - weekGoal.pct}`}
+            />
+          )}
+          <defs>
+            <linearGradient id="week-goal-arc" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="#10b981" />
+              <stop offset="100%" stopColor="#0d9488" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <span
+          className={`absolute inset-0 flex items-center justify-center text-[12px] font-black ${
+            weekGoal.done ? "text-emerald-700" : "text-stone-800"
+          }`}
+        >
+          {faNum(weekGoal.pct)}٪
+        </span>
+        {weekGoal.badge && (
+          <span
+            aria-hidden
+            className="absolute -bottom-1 left-1/2 inline-flex h-5 w-5 -translate-x-1/2 items-center justify-center rounded-full bg-emerald-600 text-white shadow-sm"
+          >
+            <svg
+              viewBox="0 0 12 12"
+              className="h-3 w-3"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M2.5 6.2 5 8.7 9.5 3.8" />
+            </svg>
+          </span>
+        )}
+      </div>
+      <div className="min-w-0 flex-1">
+        <div dir="ltr" className="flex items-center gap-1.5">
+          {days.map((d) => {
+            const k = daysAgoKey(d);
+            return (
+              <span
+                key={k}
+                title={`${faWeekday(k)} — ${goalSet.has(k) ? "هدفِ روزانه کامل شد" : "هدفِ روزانه کامل نشده"}`}
+                className={`h-2 w-2 rounded-full ${goalSet.has(k) ? "bg-emerald-500" : "bg-stone-300"}`}
+              />
+            );
+          })}
+        </div>
+        <span className="mt-1 hidden text-[11px] font-bold text-stone-500 sm:inline">{weekGoal.label}</span>
+      </div>
     </div>
   );
 }

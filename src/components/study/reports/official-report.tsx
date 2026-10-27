@@ -34,6 +34,7 @@ import {
 } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { storyStreak } from "@/lib/library-streak"; // r303 — استریکِ کتابخوانی (قراردادِ r301)
+import { weekGoalMeta, weekWindowGoalDays } from "@/lib/week-goal"; // Task 138 — پنجمین لایهٔ نشانِ ۱۳۲ (r457 بازسازی)
 import { monthReads } from "@/lib/library-month"; // r306 — ماه‌نامه روی کارتِ رسمی (قراردادِ r304)
 import { useEscape } from "@/hooks/use-keyboard";
 import { faNum } from "@/lib/study-theme";
@@ -128,6 +129,11 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
   const dayHistoryRaw = useStudy((s) => s.dayHistory);
   const dayHistory = useMemo(() => dayHistoryRaw ?? {}, [dayHistoryRaw]);
   const readStreak = useMemo(() => storyStreak(dayHistory, daysAgoKey(0)), [dayHistory]);
+  // Task 138 — هدفِ هفتگیِ کاغذ A4: پنجمین لایهٔ مصرفیِ نشانِ ۱۳۲ — عدد و
+  // برچسب و نشان از تکمنبعِ weekGoalMeta (r457 بازسازی از قفلِ نگهبان)
+  const goalMetDays = useStudy((s) => s.goalMetDays);
+  const weekStats = useMemo(() => ({ goalDays: weekWindowGoalDays(goalMetDays, daysAgoKey(0)) }), [goalMetDays]);
+  const weekGoal = useMemo(() => weekGoalMeta(weekStats?.goalDays ?? 0), [weekStats]);
   // r306 — ماه‌نامهٔ خواندن برایِ کارتِ PNGِ رسمی: همان قراردادِ خالصِ monthReads
   // که نوارِ هفته‌نامه و CSV میخوانند — ششمین مصرفِ یک منبع
   const monthReadsMemo = useMemo(() => monthReads(dayHistory, daysAgoKey(0)), [dayHistory]);
@@ -425,6 +431,17 @@ export default function OfficialReport({ open, onClose }: { open: boolean; onClo
               <h2 className="mt-1.5 text-xl font-black">گزارش پیشرفت درسی</h2>
               <p className="mt-0.5 text-[11.5px] font-bold opacity-95">
                 کارنامهٔ رسمی دانش‌آموز برای معلم و والدین
+              </p>
+              <p className="mt-1 text-[11.5px] font-black opacity-95">
+                هدفِ هفته: {weekGoal.fraction} ({weekGoal.label} کامل)
+                {weekGoal.badge && (
+                  <span className="or-goal-seal mr-1 inline-flex items-center gap-1 rounded-full px-2 py-0.5 align-middle text-[9px] font-black">
+                    <svg viewBox="0 0 12 12" className="h-2.5 w-2.5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                      <path d="M2.5 6.2 5 8.7 9.5 3.8" />
+                    </svg>
+                    {weekGoal.badge}
+                    </span>
+                )}
               </p>
             </div>
             <div className="flex shrink-0 flex-col items-center gap-2">

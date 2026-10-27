@@ -199,7 +199,7 @@ describe("قفلِ منبعِ r383 — مرزِ خانوادهها", () => {
   it("رجیستری ۵۶ نشان؛ رشدِ ثبتشده و صفرِ رشدِ بهداشت (رجیستری ۵۳ با r423)", () => {
     expect(BADGES.length).toBe(56);
     // r423 — کارتِ تصویریِ تقویمِ هفته رویدادِ خودش را گرفت (خانوادهٔ weekly_image)
-    expect(EVENT_NAMES.length).toBe(60); // r456 +۵ — دوقلویِ شعلهٔ زنجیره + چیپِ هفته + آغازِ داستان + دو گیتِ مرورِ هوشمندِ معلم — بعد از ۵۵ِ r424/r425
+    expect(EVENT_NAMES.length).toBe(55); // r424 +۱ — هم‌رسانیِ بومیِ همان کارت (دوقلویِ r306)؛ r425 +۱ — پرشِ خانهٔ امروزِ نوارِ هفته
     expect(HOOK_SRC).not.toContain("trackEvent");
     expect(HOOK_SRC).not.toContain("transition-all");
     expect(HOOK_SRC).not.toContain("stone-400");

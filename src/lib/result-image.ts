@@ -7,6 +7,7 @@
 // ------------------------------------------------------------------
 
 import { faNum } from "./study-theme";
+import { weekGoalMeta, WEEK_GOAL_DAYS } from "./week-goal"; // Task 134/136 — قراردادِ حلقهٔ هدف (r457 بازسازی)
 import { BADGES, DUEL_BADGE_IDS, type BadgeTier } from "./achievements";
 import type { DuelLedgerStats } from "./duel-history";
 import type { TeacherReview } from "./exam-teacher";
@@ -1121,6 +1122,8 @@ async function weeklyCanvas(opts: WeeklyImageOpts): Promise<HTMLCanvasElement | 
     const W = 1080;
     const H = 920;
     studyShell(ctx, W, H, family, false);
+    // Task 134 — حلقه/درصد/برچسب/نشان از قراردادِ weekGoalMeta — ریاضیِ محلیِ clampنشده ممنوع
+    const meta = weekGoalMeta(opts.goalDays);
 
     // ---------- title ----------
     ctx.direction = "rtl";
@@ -1142,7 +1145,7 @@ async function weeklyCanvas(opts: WeeklyImageOpts): Promise<HTMLCanvasElement | 
     ctx.beginPath();
     ctx.arc(cx, cy, r, 0, Math.PI * 2);
     ctx.stroke();
-    const pct = Math.max(0, Math.min(7, opts.goalDays)) / 7;
+    const pct = meta.pct / 100;
     const ring = ctx.createLinearGradient(cx - r, cy - r, cx + r, cy + r);
     ring.addColorStop(0, uiColors.emerald[500]);
     ring.addColorStop(1, uiColors.teal[600]);
@@ -1160,7 +1163,12 @@ async function weeklyCanvas(opts: WeeklyImageOpts): Promise<HTMLCanvasElement | 
     ctx.fillText(`${faNum(Math.round(pct * 100))}٪`, cx, cy - 10);
     ctx.fillStyle = uiColors.stone[500];
     ctx.font = `700 21px ${family}`;
-    ctx.fillText(`${faNum(opts.goalDays)} از ${faNum(7)} روزِ هدف`, cx, cy + 38);
+    ctx.fillText(meta.label, cx, cy + 38);
+    if (meta.badge) {
+      ctx.fillStyle = "#059669"; // emerald-600 — همان توکنِ نشانِ UI
+      ctx.font = `900 24px ${family}`;
+      ctx.fillText(meta.badge, cx, cy + 70);
+    }
 
     // ---------- learner + streak ----------
     if (opts.userName) {
@@ -1966,6 +1974,8 @@ async function weekCardCanvas(opts: WeekCardOpts): Promise<HTMLCanvasElement | n
   if (!shell) return null;
   const { ctx, family, W } = shell;
   const s = opts.stats;
+  // Task 136 — چهارمین لایهٔ مصرفیِ badgeِ ۱۳۲: درصد/برچسب از weekGoalMeta
+  const meta = weekGoalMeta(opts.stats.goalDays);
   ctx.direction = "rtl";
   ctx.textAlign = "right";
   ctx.fillStyle = uiColors.stone[800];
@@ -1974,12 +1984,19 @@ async function weekCardCanvas(opts: WeekCardOpts): Promise<HTMLCanvasElement | n
     s.activities >= s.prevActivities
       ? "رو به رشد"
       : "آرام‌تر از هفتهٔ پیش";
-  const line = `${faNum(s.activities)} فعالیت این هفته · ${faNum(s.activeDays)} روز فعال · هدف ${faNum(s.goalDays)} از ۷ · ${trend}`;
+  const line = `${faNum(s.activities)} فعالیت این هفته · ${faNum(s.activeDays)} روز فعال · هدفِ ${faNum(WEEK_GOAL_DAYS - meta.remaining)} از ۷ روز · ${trend}`;
   const statLines = wrapCanvasLines(line, W - 200, (x) => ctx.measureText(x).width, 2);
   let y = 420;
   for (const l of statLines) {
     ctx.fillText(l, W - 110, y);
     y += 42;
+  }
+  if (meta.badge) {
+    ctx.fillStyle = "#059669"; // emerald-600 — همان توکنِ نشانِ UI
+    ctx.font = `900 24px ${family}`;
+    const cx = W - 110;
+    const cy = y + 4;
+    ctx.fillText(meta.badge, cx, cy + 70);
   }
   drawReviewBlocks(ctx, family, W, opts.review, Math.max(y + 14, 520));
   reviewCardFooter(ctx, family, W, 840, opts.source);

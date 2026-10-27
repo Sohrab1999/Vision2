@@ -248,7 +248,7 @@ describe("قلابِ هشدار — توستِ اختصاصیِ هر سرویس"
 
   it("⑪ رجیستریِ رشدِ ثبتشده — هشدار رویدادِ تحلیلی ندارد (۵۴ با r424)", async () => {
     const reg = await import("@/lib/analytics-events");
-    expect(reg.EVENT_NAMES).toHaveLength(60); // r456 +۵ — دوقلویِ شعلهٔ زنجیره + چیپِ هفته + آغازِ داستان + دو گیتِ مرورِ هوشمندِ معلم — بعد از ۵۵ِ r424/r425
+    expect(reg.EVENT_NAMES).toHaveLength(55); // r424 +۱ — هم‌رسانیِ بومیِ همان کارت (دوقلویِ r306)؛ r425 +۱ — پرشِ خانهٔ امروزِ نوارِ هفته
     expect(reg.isEventName("budget_near")).toBe(false);
   });
 });
