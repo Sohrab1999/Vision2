@@ -25,7 +25,8 @@ const { toastSpy, canShareSpy, shareSpy, buildBlob, cardImage, fetchMock } = vi.
   fetchMock: vi.fn(),
 }));
 
-vi.mock("@/lib/result-image", () => ({
+vi.mock("@/lib/result-image", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@/lib/result-image")>()),
   downloadTeacherCardImage: (...args: unknown[]) => cardImage(...args),
   buildTeacherCardBlob: (...args: unknown[]) => buildBlob(...args),
 }));
@@ -40,6 +41,7 @@ vi.mock("@/lib/share-card", async (importOriginal) => {
 });
 
 vi.mock("@/hooks/use-toast", () => ({
+  toast: (...args: unknown[]) => toastSpy(...args),
   useToast: () => ({ toast: toastSpy }),
 }));
 
