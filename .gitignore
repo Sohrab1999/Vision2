@@ -15,6 +15,7 @@ node_modules
 
 # next.js
 /.next/
+/.next-prod169/
 /out/
 
 # local QA witnesses + copyrighted booklet extracts — never ship to the repo

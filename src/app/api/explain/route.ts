@@ -4,6 +4,7 @@ import { ApiError } from "@/lib/api/errors";
 import { BODY_CAPS, explainSchema } from "@/lib/api/validate";
 import { rateLimit } from "@/lib/rate-limit";
 import { findQuestion, categoryFa } from "@/lib/explain-source";
+import { loadJozveQuestions } from "@/lib/jozve-bank"; // r456 — فقط سمتِ سرور (node:fs)؛ از نمودارِ کلاینت خارج شد
 import { trackEventServer } from "@/lib/analytics-server";
 import { bumpExplainMeter, explainMonthUsage } from "@/lib/explain-meter";
 
@@ -98,7 +99,9 @@ export const POST = withApi(
     const id = parsed.id;
 
     // 1) resolve the question server-side — unknown ids are rejected
-    const q = findQuestion(id);
+    // r456 — jozve fallback: بانکهایِ جزوه‌ای (node:fs) فقط اینجا خوانده
+    // میشوند؛ explain-source از r456 خالص است (نمودارِ کلاینت بیِ fs).
+    const q = findQuestion(id) ?? loadJozveQuestions().find((j) => j.id === id) ?? null;
     if (!q) {
       throw ApiError.notFound("سؤالی با این شناسه در بانک وب‌کتاب نیست.");
     }

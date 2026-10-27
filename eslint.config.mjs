@@ -49,7 +49,13 @@ const eslintConfig = [...nextCoreWebVitals, ...nextTypescript, {
   // mid-r399 — the cron auto-committer then shipped 3,172 of its files into
   // git (retired in r400's hygiene commit). Its compiled .js files must never
   // be linted; the app runtime runs from .next/standalone, not this copy.
-  ignores: ["node_modules/**", ".next/**", ".standalone/**", "out/**", "build/**", "next-env.d.ts", "examples/**", "skills", "scripts/**"]
+  // r456 — .next-prod169/ repeats the r399 pattern verbatim: the cron
+  // auto-committer shipped a stale prod-build mirror into git after the
+  // environment reset, and its compiled chunks imported 55 lint errors
+  // (no-empty-object-type / no-require-imports / no-this-alias — all in
+  // build output, zero in src/tests). Retired from tracking in the same
+  // breath; the build script never reads it.
+  ignores: ["node_modules/**", ".next/**", ".next-prod169/**", ".standalone/**", "out/**", "build/**", "next-env.d.ts", "examples/**", "skills", "scripts/**"]
 }];
 
 export default eslintConfig;
