@@ -216,8 +216,10 @@ export default function ReportCard({ open, onClose }: { open: boolean; onClose: 
                 </div>
               </div>
 
-              {/* Task-37 — هفته‌نامهٔ پیشرفت: week-over-week digest */}
-              <WeeklyReportSection />
+              {/* Task-37 — هفته‌نامهٔ پیشرفت: week-over-week digest
+                  r425 — پرشِ خانهٔ امروزِ نوارِ هفته: onLeaveReport کارنامه
+                  را میبندد تا مقصدِ پرش (میزبانِ تمرین) زیرِ دیالوگ پنهان نماند */}
+              <WeeklyReportSection onLeaveReport={onClose} />
 
               {/* monthly band */}
               {monthBuckets.length > 0 && (

@@ -35,7 +35,7 @@ const read = (p: string) => readFileSync(join(process.cwd(), p), "utf8");
 describe("tts_spoken — the 52nd registry event", () => {
   it("در رجیستری است: برچسبِ «روخوانیِ تازه» و خانوادهٔ خودِ explain_generated (تکحقیقتِ هر دو سو)", async () => {
     const reg = await import("@/lib/analytics-events");
-    expect(reg.EVENT_NAMES).toHaveLength(52);
+    expect(reg.EVENT_NAMES).toHaveLength(55); // r423 +۱ — کارتِ تصویریِ تقویمِ هفته؛ r424 +۱ — هم‌رسانیِ بومیِ همان کارت؛ r425 +۱ — پرشِ خانهٔ امروزِ نوارِ هفته
     expect(reg.EVENT_NAMES).toContain("tts_spoken");
     expect(reg.EVENT_LABELS_FA.tts_spoken).toBe("روخوانیِ تازه");
     // نوارِ TTS خانواده را از همین کلید میخواند — هر دو سرویسِ پولیِ هوش مصنوعی همخانوادهاند

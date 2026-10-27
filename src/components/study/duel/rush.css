@@ -1,0 +1,95 @@
+/* rush challenge view — extracted from the r12 band of src/app/globals.css
+   (§8.3 per-feature extraction, wave 1 — task 133). Always loaded via the
+   src/app/features.css manifest; cascade-isolation proven by the wave-1 scan
+   (no equal-specificity competition outside the band; the !important gradient
+   overrides and the print band win regardless of order). Primary owner:
+   duel/rush-view.tsx (spell-rush-view shares the arcade shells). */
+
+/* ---- rush: low-time pulse on the countdown ring ---- */
+@keyframes rush-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.07); }
+}
+.rush-time-low { animation: rush-pulse 0.9s ease-in-out infinite; }
+
+/* ---- rush hero / banner ---- */
+.rush-hero-bolt, .rush-banner-bolt { pointer-events: none; }
+.rush-start { letter-spacing: 0.2px; }
+
+/* ---------------- rush dark ---------------- */
+.dark .rush-banner {
+  background-image: linear-gradient(to left, rgb(67 38 20 / 0.55), rgb(60 34 16 / 0.5), rgb(66 28 24 / 0.45));
+  border-color: rgb(154 52 18 / 0.5);
+}
+/* r87 retarget: the two hero chips (rush-view + spell-rush-view) migrated onto
+   c-veil-70 — the deviating 0.85 painter follows the class, byte-identical. */
+/* r88 retarget: the /80 hero/banner surfaces (instruction rows ×2 + record
+   chip) migrated onto c-veil-80 — the deviating 0.85 painter follows the
+   class, byte-identical. */
+.dark .rush-banner .c-veil-80,.dark .rush-hero .c-veil-80,.dark .rush-hero .c-veil-70 { background-color: rgb(41 37 36 / 0.85); }
+.dark .rush-banner .border-amber-200 { border-color: rgb(180 130 20 / 0.5); }
+/* wave 7 (task 145): the r84 !important gradient joins its owner. The wave-1
+   stops below (rgb 69 40 16 / …) were masked DEAD by the same-selector
+   globals override (non-important background-image loses to !important);
+   the live border-color that rule carried stays in the merged rule —
+   one painter per head, the latent cross-file duplicate retires. */
+.dark .rush-hero {
+  background-image: linear-gradient(to bottom left, rgba(69, 48, 12, 0.5), rgba(88, 44, 14, 0.4), rgba(24, 21, 18, 0.92)) !important;
+  border-color: rgb(154 52 18 / 0.5);
+}
+.dark .rush-hero .border-orange-100 { border-color: rgb(124 58 8 / 0.55); }
+.dark .rush-hero .bg-orange-100,.dark .rush-board .bg-orange-100\/80 { background-color: rgb(69 40 8 / 0.65); }
+.dark .rush-hero kbd {
+  background-color: #292524;
+  border-color: #44403c;
+  color: #d6d3d1;
+}
+.dark .rush-hud { background-color: #1c1917; border-color: rgb(154 52 18 / 0.45); }
+.dark .rush-hud .stroke-stone-100 { stroke: #292524; }
+/* wave 7 (task 145): same merge for the done banner — the r84 !important
+   gradient replaces the masked wave-1 stops; the live border-color stays. */
+.dark .rush-done {
+  background-image: linear-gradient(to bottom, rgba(88, 44, 14, 0.45), rgba(69, 48, 12, 0.4)) !important;
+  border-color: rgb(154 52 18 / 0.5);
+}
+.dark .rush-done .border-stone-200 { border-color: #44403c; }
+.dark .rush-done .border-stone-300 { border-color: #57534e; }
+/* tranche-4 phase 8: the emerald/rose/amber washes retired onto c-wash-*
+   (same values, painted by the class now); the panel ink (text-amber-700
+   #fcd34d) retired onto c-ink-amber (phase 9); the sky-50 accuracy/hint
+   pills retired onto c-wash-sky in phase 10 (task 130) — the family slot
+   r125 declined exists now that the last plain deviant joined. */
+
+/* rush play card */
+.dark [data-rush-option] { color-scheme: dark; }
+.dark .rush-card { background-color: #1c1917; }
+.dark .rush-card.border-orange-200 { border-color: rgb(154 52 18 / 0.5); }
+.dark .rush-card .border-stone-200 { border-color: #44403c; }
+.dark .rush-card .bg-stone-100 { background-color: #37312b; }
+/* r114: card washes converge onto the family token bases — the /50 hover and
+   rose /70 scoped variants (drifted bases AND non-monotone alphas) retire to
+   the canonical band rules above */
+.dark .rush-card .bg-orange-50 { background-color: rgba(88, 44, 14, 0.45); }
+
+/* ---------------- rush class board dark ---------------- */
+.dark .rush-board { background-color: #1c1917; border-color: rgb(154 52 18 / 0.5); }
+.dark .rush-board > div:first-child {
+  background-image: linear-gradient(to left, rgba(69, 40, 8, 0.55), rgba(58, 36, 12, 0.3), transparent);
+  border-color: rgb(124 58 8 / 0.55);
+}
+.dark .rush-board .bg-orange-500 { background-color: #c2410c; }
+.dark .rush-board-podium { background-image: linear-gradient(to bottom, rgba(69, 40, 8, 0.3), transparent); }
+/* wave 7 (task 145): the r84 board strip/hint gradients join the family —
+   verbatim from globals (these heads had exactly one painter, no merge). */
+.dark .rush-board-strip { background-image: linear-gradient(to left, rgba(88, 44, 14, 0.4), rgba(69, 48, 12, 0.3), transparent) !important; }
+.dark .rush-board-hint { background-image: linear-gradient(to left, rgba(88, 44, 14, 0.3), transparent) !important; }
+.dark .rush-board .border-stone-100 { border-color: rgb(63 55 49 / 0.8); }
+.dark .rush-board-me { background-color: rgb(69 40 8 / 0.4) !important; }
+.dark .rush-board .border-t { border-color: rgb(124 58 8 / 0.45); }
+.dark .rush-board .border-t {
+  background-image: linear-gradient(to left, rgb(69 40 8 / 0.5), transparent);
+}
+.dark .rush-board li { border-color: rgb(67 43 16 / 0.5); }
+.dark .rush-board .bg-orange-50 { background-color: rgba(88, 44, 14, 0.4); }
+.dark .rush-board .border-orange-100 { border-color: rgb(124 58 8 / 0.55); }
+/* the panel ink rule retired onto c-ink-amber (tranche 4 phase 9, task 127) */

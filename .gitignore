@@ -76,3 +76,6 @@ client-errors.log
 # logs and copyrighted extracts never belong in git — tracked copy retired;
 # history rewrite is forbidden (divergence adjudication pending).
 /.standalone/
+
+# vitest scratch output (r426 — the cron auto-commit swept it in)
+.vitest/

@@ -356,7 +356,7 @@ describe("قفلهایِ ساختاریِ r356", () => {
     // GETِ شمارندهها passive است — مثل برجِ مراقبت، رجیستری را شلوغ نمیکند
     // [پینِ بهروزشده با اعلانِ r357]: teacher_class_csv پنجاهویکم شد
     // [پینِ بهروزشده با اعلانِ r358]: tts_spoken (روخوانیِ تازه) پنجاهودوم شد
-    expect(EVENT_NAMES).toHaveLength(52);
+    expect(EVENT_NAMES).toHaveLength(55); // r423 +۱ — کارتِ تصویریِ تقویمِ هفته؛ r424 +۱ — هم‌رسانیِ بومیِ همان کارت؛ r425 +۱ — پرشِ خانهٔ امروزِ نوارِ هفته
     expect(EVENT_NAMES).not.toContain("journey_counts");
   });
 });

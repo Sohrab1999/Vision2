@@ -37,7 +37,7 @@ const tabs: { key: LessonTab; label: string; icon: React.ElementType }[] = [
 /** تبِ «جزوه» فقط برای درس‌های جزوه‌دار (۱۰-۱۲ در راند ۲۰۹) */
 const bookletTab = { key: "booklet" as LessonTab, label: "جزوه", icon: BookMarked };
 
-export default function LessonView({ id }: { id: number }) {
+export default function LessonView({ id, focusWord }: { id: number; focusWord?: string }) {
   const lesson = findLesson(id);
   const goHome = useStudy((s) => s.goHome);
   const tab = useStudy((s) => s.lessonTab);
@@ -45,6 +45,15 @@ export default function LessonView({ id }: { id: number }) {
   const known = useStudy((s) => s.known);
   const flashIntent = useStudy((s) => s.flashIntent);
   const flashNonce = useStudy((s) => s.flashNonce);
+  const setView = useStudy((s) => s.setView);
+  // r427 — لنگرِ عمیقِ کارتِ واژه (الگویِ یک‌بارِ مصرفِ r221/r234): فقط مسیرِ
+  // پرشِ خانهٔ امروز focusWord را در view میگذارد (openLessonTab با پارامترِ
+  // سوم)؛ واژهٔ نامعتبر ساکتِ صادق میماند — تب باز، بدونِ اسکرولِ برساخته (r236).
+  // پسِ نخستین تلاشِ اسکرول (موفق یا ناکام) لنگر از view پاک میشود تا پرشِ
+  // دوبارهٔ همان واژه هم دوباره کار کند — بهبودِ آگاهانه بر الگویِ ضمیمه
+  // که لنگر را در view نگه میدارد.
+  const validFocusWord =
+    !!focusWord && !!lesson && lesson.vocabulary.some((w) => w.en === focusWord);
 
   // r361 — «ادامهٔ خواندن» برایِ درسها: هر ورود/تعویضِ تب، محلِ آخرین
   // مطالعه را تازه میکند — رکورد در localStorage است نه استور (بدونِ
@@ -144,6 +153,10 @@ export default function LessonView({ id }: { id: number }) {
             key={`vocab-${flashNonce}`}
             lesson={lesson}
             startSmart={flashIntent === "smart"}
+            focusWord={validFocusWord ? focusWord : undefined}
+            onFocusDone={() => {
+              setView({ type: "lesson", id }); // لنگرِ مصرفشده از view پاک میشود — پرشِ دوبارهٔ همان واژه هم کار میکند (r427)
+            }}
           />
         )}
         {tab === "conversation" && <ConversationTab lesson={lesson} />}

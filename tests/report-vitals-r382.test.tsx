@@ -155,7 +155,7 @@ describe("قفلِ منبعِ r382 — تکمنبعیِ موتور و سرشما
   });
 
   it("استخراج صفر رویدادِ تحلیلیِ نو و صفرِ رشدِ بهداشت (رجیستری ۵۲)", () => {
-    expect(EVENT_NAMES.length).toBe(52);
+    expect(EVENT_NAMES.length).toBe(55); // r423 +۱ — کارتِ تصویریِ تقویمِ هفته؛ r424 +۱ — هم‌رسانیِ بومیِ همان کارت (دوقلویِ r306)؛ r425 +۱ — پرشِ خانهٔ امروزِ نوارِ هفته
     for (const src of [ENGINE_SRC, HOOK_SRC]) {
       expect(src).not.toContain("trackEvent");
       expect(src).not.toContain("transition-all");

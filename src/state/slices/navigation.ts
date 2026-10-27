@@ -16,13 +16,22 @@ export interface NavigationSlice {
 
   goHome: () => void;
   openLesson: (id: number, flashIntent?: FlashIntent) => void;
-  openLessonTab: (id: number, tab: LessonTab) => void;
+  /** r427 — پارامترِ سومِ اختیاری: لنگرِ عمیقِ کارتِ واژه در تبِ واژگان (فقط
+   *  مسیرِ پرشِ خانهٔ امروز آن را میگذارد)؛ فراخوانیِ بیِ آن هر focusWordِ
+   *  کهنهای از view پاک میکند — رفتارِ دو-آرگومِنتیِ کهنه دستنخورده. */
+  openLessonTab: (id: number, tab: LessonTab, focusWord?: string) => void;
   /** رفت‌وبرگشتِ درسنامه ↔ ضمیمه (راند ۲۲۱): ضمیمه را با لنگرِ موضوعِ
-   * «درسنامهٔ جامع» باز می‌کند — کارتِ همان موضوع باز و در دیدِ اسکرول می‌شود. */
-  openAppendixTopic: (topicId: string) => void;
+   * «درسنامهٔ جامع» باز می‌کند — کارتِ همان موضوع باز و در دیدِ اسکرول می‌شود.
+   * r431 — پارامترِ دومِ اختیاری: عمقِ سطریِ مثال (خودِ جملهٔ انگلیسی — فقط
+   * مسیرِ پرشِ خانهٔ امروز آن را میگذارد)؛ فراخوانیِ تک‌آرگومنتیِ کهنه هر
+   * bgExampleEnِ کهنهای از view پاک میکند — رفتارِ سابق دستنخورده. */
+  openAppendixTopic: (topicId: string, bgExampleEn?: string) => void;
   /** رفت‌وبرگشتِ «اجزای کلماتی» (راند ۲۲۴): ضمیمه را با لنگرِ جدولِ
-   * خانوادهٔ واژه‌ها باز می‌کند — مستقیم روی زیرتبِ pos و در دیدِ اسکرول. */
-  openAppendixPosTable: (tableId: string) => void;
+   * خانوادهٔ واژه‌ها باز می‌کند — مستقیم روی زیرتبِ pos و در دیدِ اسکرول.
+   * r428 — پارامترِ دومِ اختیاری: عمقِ سطری (خودِ واژهٔ خانواده — فقط مسیرِ
+   * پرشِ خانهٔ امروز آن را میگذارد)؛ فراخوانیِ تک‌آرگومنتیِ کهنه هر
+   * posRowWordِ کهنهای از view پاک میکند — رفتارِ سابق دستنخورده. */
+  openAppendixPosTable: (tableId: string, rowWord?: string) => void;
   /** رفت‌وبرگشتِ «افعال بی‌قاعده» (راند ۲۳۴): ضمیمه را با لنگرِ سطرِ فعل
    * باز می‌کند — مستقیم روی زیرتبِ verbs، سطر در دید با پالسِ زمردی. */
   openAppendixVerb: (base: string) => void;
@@ -32,6 +41,10 @@ export interface NavigationSlice {
   /** رفت‌وبرگشتِ «نشانه‌های اختصاری» (راند ۲۳۵): ضمیمه را با لنگرِ کارتِ
    * نشانه باز می‌کند — مستقیم روی زیرتبِ abbrev، کارت در دید با پالسِ زمردی. */
   openAppendixAbbrev: (sym: string) => void;
+  /** r430 — رفتن به دیکشنری با لنگرِ کارتِ واژه (الگویِ openLessonTabِ r427):
+   * فقط مسیرِ پرشِ خانهٔ امروز آن را میگذارد؛ خودِ نما عدسیِ جست‌وجو را بذر
+   * میزند و پسِ نخستین تلاشِ اسکرول لنگر را از view پاک میکند. */
+  openDictionaryWord: (en: string) => void;
   setView: (v: View) => void;
   setLessonTab: (t: LessonTab) => void;
   consumeFlashIntent: () => void;
@@ -59,17 +72,33 @@ export const createNavigationSlice: StateCreator<StudyStore, [], [], NavigationS
         lessonTab: flashIntent === "smart" ? "vocab" : s.lessonTab,
       };
     }),
-  openLessonTab: (id, tab) => set({ view: { type: "lesson", id }, lessonTab: tab }),
-  openAppendixTopic: (topicId) =>
-    set({ view: { type: "appendix", topicId }, flashIntent: "none" }),
-  openAppendixPosTable: (posTableId) =>
-    set({ view: { type: "appendix", posTableId }, flashIntent: "none" }),
+  openLessonTab: (id, tab, focusWord?) =>
+    set({
+      view: focusWord ? { type: "lesson", id, focusWord } : { type: "lesson", id },
+      lessonTab: tab,
+    }),
+  openAppendixTopic: (topicId, bgExampleEn?) =>
+    set({
+      view: bgExampleEn
+        ? { type: "appendix", topicId, bgExampleEn }
+        : { type: "appendix", topicId },
+      flashIntent: "none",
+    }),
+  openAppendixPosTable: (posTableId, posRowWord?) =>
+    set({
+      view: posRowWord
+        ? { type: "appendix", posTableId, posRowWord }
+        : { type: "appendix", posTableId },
+      flashIntent: "none",
+    }),
   openAppendixVerb: (verbBase) =>
     set({ view: { type: "appendix", verbBase }, flashIntent: "none" }),
   openAppendixPhoneme: (phonemeId) =>
     set({ view: { type: "appendix", phonemeId }, flashIntent: "none" }),
   openAppendixAbbrev: (abbrevSym) =>
     set({ view: { type: "appendix", abbrevSym }, flashIntent: "none" }),
+  openDictionaryWord: (focusWord) =>
+    set({ view: { type: "dictionary", focusWord }, flashIntent: "none" }), // r430
   setView: (v) => set({ view: v, flashIntent: "none" }),
   setLessonTab: (t) => set({ lessonTab: t }),
   consumeFlashIntent: () => set({ flashIntent: "none" }),

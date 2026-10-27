@@ -185,7 +185,7 @@ describe("دو مسیرِ رسیدن — r372 ④", () => {
     expect(Element.prototype.scrollIntoView).not.toHaveBeenCalled();
     // پرش، کنشِ یادگیری نیست — هیچ رویدادِ تحلیلی
     expect(trackEvent).not.toHaveBeenCalled();
-    expect(EVENT_NAMES.length).toBe(52);
+    expect(EVENT_NAMES.length).toBe(55); // r423 +۱ — کارتِ تصویریِ تقویمِ هفته؛ r424 +۱ — هم‌رسانیِ بومیِ همان کارت (دوقلویِ r306)؛ r425 +۱ — پرشِ خانهٔ امروزِ نوارِ هفته
   });
 
   it("⑦ رویِ خودِ خانه: پرشِ زنده بعد از ۲۶۰ms تحویلِ فوکوس — اسکرول + فوکوس + پالس؛ مرگِ پالس در ۱۶۰۰ms", () => {

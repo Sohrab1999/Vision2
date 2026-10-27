@@ -188,6 +188,7 @@ describe("قفلهایِ ساختاری — r370", () => {
     expect(src).toContain("srsLevelFa(st.level)");
     expect(src).not.toContain("از ۶");
     expect(src).not.toContain("transition-all");
-    expect(EVENT_NAMES.length).toBe(52);
+    // r423 — کارتِ تصویریِ تقویمِ هفته رویدادِ خودش را گرفت (خانوادهٔ weekly_image) — ۵۳
+    expect(EVENT_NAMES.length).toBe(55); // r424 +۱ — هم‌رسانیِ بومیِ همان کارت (دوقلویِ r306)؛ r425 +۱ — پرشِ خانهٔ امروزِ نوارِ هفته
   });
 });

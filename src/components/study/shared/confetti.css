@@ -1,0 +1,12 @@
+/* confetti burst — extracted from the r12 band of src/app/globals.css
+   (§8.3 per-feature extraction, wave 1 — task 133). Always loaded via the
+   src/app/features.css manifest; cascade-isolation proven by the wave-1 scan
+   (scripts/css-band-isolation-scan.cjs + selector-level greps). */
+
+/* ---- confetti burst (rush new record) ---- */
+@keyframes confetti-fall {
+  0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateY(240px) rotate(540deg); opacity: 0; }
+}
+.confetti-piece { animation: confetti-fall 1.8s ease-in forwards; }

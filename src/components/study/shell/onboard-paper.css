@@ -1,0 +1,6 @@
+/* onboarding paper card — dark painter (§8.3 wave 15, task 161)
+   Owner: shell/onboarding.tsx (line 114 — the only .onboard-paper consumer).
+   The light gradient is the element's own utility (from-emerald-50 via-white
+   to-white); dark repaints through this migrated !important painter —
+   position-independent (features.css loads right after globals.css). */
+.dark .onboard-paper { background-image: linear-gradient(to left, rgba(6, 55, 40, 0.4), rgba(24, 21, 18, 0.92), rgba(24, 21, 18, 0.92)) !important; }

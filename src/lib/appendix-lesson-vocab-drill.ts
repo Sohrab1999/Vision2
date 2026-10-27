@@ -44,6 +44,9 @@
 import type { VocabWord } from "@/lib/study-types";
 import { posLabel } from "@/lib/study-theme";
 import {
+  pickDueFirst,
+  pickDueOnly,
+  DRILL_DUE_QUOTA,
   shuffled,
   DRILL_SIZE,
   type DrillQuestion,
@@ -162,36 +165,68 @@ export function buildLessonVocabDrillSession(
   vocab: readonly VocabWord[],
   size: number = DRILL_SIZE,
   rng: () => number = Math.random,
+  /** r414 — پایههایِ سررسید به ترتیبِ اولویت — سهمیه نزدِ همین موتور اعمال میشود
+   *  (r408: دیکشنری هم از همین موتور است — سررسیدِ بانکِ dict-vocab همینجاست) */
+  due?: readonly string[],
+  /** r415 — «تمرینِ سررسیدها»: جلسهٔ فقط از سررسیدهایِ حاضر در بانک
+   *  (پایهٔ پرسشِ واژه، خودِ واژهٔ انگلیسی است)؛ یکتاییِ دوسویه و کفِ برچسبِ
+   *  نقش از بانکِ کامل محاسبه میشود — گونهها با کوچکیِ سررسیدها نمیمیرند */
+  dueOnly?: boolean,
 ): DrillSession {
   // بانکِ صادق: خانهٔ تهیِ جزوه (بی en یا بی fa) پرسیدنی نیست
-  const bank = vocab.filter((w) => w.en !== "" && w.fa !== "");
-  if (bank.length === 0) return { questions: [], size: 0 };
-  const n = Math.min(Math.max(1, Math.floor(size)), bank.length);
-  const eligible = computeEligible(bank);
+  const fullBank = vocab.filter((w) => w.en !== "" && w.fa !== "");
+  if (fullBank.length === 0) return { questions: [], size: 0 };
+  // r414 — صفِ سررسیدِ مشترکِ جلسه: سهمیه در ورود، ترتیبِ اولویت در مصرف؛
+  // r415 — در حالتِ فقطسررسید صف بیسهمیه است
+  const dueSet = dueOnly && due ? new Set(due) : null;
+  const dueQueue = dueSet ? [...(due ?? [])] : (due ?? []).slice(0, DRILL_DUE_QUOTA);
+  // r415 — یکتاییِ دوسویه و ستونِ برچسبهایِ نقش از بانکِ کامل — واجدگانِ
+  // گونه ویژگیِ بانکاند نه ویژگیِ زیرمجموعهٔ سررسید (گونهٔ بیپیشنهاد نمیمیرد)
+  const eligibleFull = computeEligible(fullBank);
+  const eligible = new Map<LessonVocabDrillKind, VocabWord[]>();
+  for (const kind of LESSON_VOCAB_DRILL_KINDS) {
+    const list = eligibleFull.get(kind)!;
+    eligible.set(kind, dueSet ? list.filter((w) => dueSet.has(w.en)) : list);
+  }
+  // r415 — طولِ جلسهٔ فقطسررسید = شمارِ متمایزِ enهایِ سررسیدِ پرسیدنی —
+  // یک ردیفِ سررسید یک پرسش میگیرد (جفتهایِ متعددِ یک en over-drill نمیزنند)
+  const duePresent = dueSet
+    ? new Set(
+        LESSON_VOCAB_DRILL_KINDS.flatMap((k) => eligible.get(k)!.map((w) => w.en)),
+      ).size
+    : fullBank.length;
+  const n = Math.min(Math.max(1, Math.floor(size)), duePresent);
 
   // ستونِ برچسبهایِ نقش — گزینههایِ گونهٔ pos از همین میآیند
   const posLabelSet = new Set(
-    bank.filter((w) => w.pos).map((w) => posLabel[w.pos as string] ?? ""),
+    fullBank.filter((w) => w.pos).map((w) => posLabel[w.pos as string] ?? ""),
   );
   posLabelSet.delete("");
 
   const used = new Set<string>(); // کلیدِ جفتیِ en|fa — r408: در بانکِ سراسری جفتِ واحد با اشیایِ متعدد میآید
   const questions: DrillQuestion[] = [];
-  for (let i = 0; i < n; i++) {
+  // r415 — چرخشِ بازگشتی فقط در حالتِ فقطسررسید (مسیرِ عادی بدونِ تغییر)
+  for (let i = 0; i < n * (dueSet ? LESSON_VOCAB_DRILL_KINDS.length : 1) && questions.length < n; i++) {
     const kind = LESSON_VOCAB_DRILL_KINDS[i % LESSON_VOCAB_DRILL_KINDS.length];
     // ترجیحِ واژهٔ بیکاربرد؛ استخرِ تهیشده اجازهٔ بازاستفاده میدهد
     const pool = eligible.get(kind)!;
     const fresh = pool.filter((w) => !used.has(`${w.en}\u0000${w.fa}`));
     const pickable = fresh.length > 0 ? fresh : pool;
     if (pickable.length === 0) continue; // جلسهٔ کوتاهترِ صادق — نه واژگونی
-    const w = shuffled(pickable, rng)[0];
+    // r414 — سررسید-نخست: پایهٔ پرسشِ واژه، خودِ واژهٔ انگلیسی است — مالِ همین موتور
+    // r415 — در حالتِ فقطسررسید گزینش سخت است
+    const w = dueSet
+      ? pickDueOnly(pickable, (x) => x.en, dueQueue)
+      : pickDueFirst(pickable, (x) => x.en, dueQueue, rng);
+    if (!w) continue;
     used.add(`${w.en}\u0000${w.fa}`);
     // (سدِ تکرار و ترجیحِ بیکاربرد: قراردادِ r403 — بازاستفاده فقط در تهشدن)
 
     if (kind === "fa") {
       // معنی: پرسش = واژهٔ انگلیسی (چیپِ شنیدنی)؛ گزینهها فارسیِ خودِ درس (RTL)
+      // r415 — ستونِ بدل همیشه از بانکِ کامل (همچگالیِ جلسهٔ عادی)
       const correct = w.fa;
-      const column = Array.from(new Set(bank.map((x) => x.fa))).filter((v) => v !== correct);
+      const column = Array.from(new Set(fullBank.map((x) => x.fa))).filter((v) => v !== correct);
       const distractors = shuffled(column, rng).slice(0, 3);
       const options = shuffled([correct, ...distractors], rng);
       questions.push({
@@ -208,7 +243,7 @@ export function buildLessonVocabDrillSession(
       // واژه: پرسش = معنیِ فارسی؛ گزینهها واژههایِ انگلیسیِ خودِ درس (LTR) —
       // بیچیپ: شنیدنیِ پرسش هرگز پاسخ نیست (خودِ گزینهها پاسخاند)
       const correct = w.en;
-      const column = Array.from(new Set(bank.map((x) => x.en))).filter((v) => v !== correct);
+      const column = Array.from(new Set(fullBank.map((x) => x.en))).filter((v) => v !== correct);
       const distractors = shuffled(column, rng).slice(0, 3);
       const options = shuffled([correct, ...distractors], rng);
       questions.push({

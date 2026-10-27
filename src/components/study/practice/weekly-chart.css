@@ -1,0 +1,16 @@
+/* Task 135 — §8.3 wave 2: the 30-day heatmap cells, light + the dark
+   emerald ramp + the 480px media gap, verbatim from globals.css (owner:
+   weekly-chart.tsx). The amber/ring utility retunes around it stay. */
+
+/* ---------------- 30-day heatmap ---------------- */
+.heat-cell {
+  min-height: 22px;
+}
+@media (max-width: 480px) {
+  .heatmap-grid { gap: 0.3rem; }
+}
+
+.dark .heat-cell.bg-emerald-200 { background-color: #14532d; }
+.dark .heat-cell.bg-emerald-400 { background-color: #15803d; }
+.dark .heat-cell.bg-emerald-600 { background-color: #16a34a; }
+.dark .heat-cell.bg-emerald-800 { background-color: #22c55e; }

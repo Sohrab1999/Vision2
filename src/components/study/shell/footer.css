@@ -1,0 +1,13 @@
+/* Task 135 — §8.3 wave 2: the footer band gradient, light + dark twin,
+   verbatim from globals.css (owner: shell/footer.tsx). The dark twin keeps
+   its cascade position AFTER the light rule inside this file — no other
+   .footer-band rule competes anywhere (isolation scan). */
+
+/* ---------------- footer band ---------------- */
+.footer-band {
+  background-image: linear-gradient(to bottom, rgb(255 255 255 / 0.9), rgb(247 246 242 / 0.95));
+}
+
+.dark .footer-band {
+  background-image: linear-gradient(to bottom, rgb(28 25 23 / 0.92), rgb(12 10 9 / 0.96));
+}

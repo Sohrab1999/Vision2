@@ -1,0 +1,90 @@
+/* Per-feature stylesheets — §8.3 extraction (wave 1: task 133, wave 2: task
+   135, wave 3: task 137, wave 4: task 139, wave 5: task 141, wave 6: task 143,
+   wave 7: task 145, wave 8: task 147, wave 9: task 149 — eighteen files;
+   task 150 added practice/streak-badge.css beside the combined streak badge —
+   born extracted, not migrated (only the ice-guest ink duo);
+   waves 6/7/8 appended to existing files, no new file — wave 7 moved the four
+   rush dark gradients into duel/rush.css and merged the masked wave-1
+   hero/done stops there; wave 8 moved the dd-* outcome gradients into
+   duel/duel-dark.css and retired the masked attribute-rule stops there;
+   wave 9 created lesson/dictionary-view.css beside its owner — the first new
+   file since wave 5 — for the dict-state-chip dark trio; wave 10 created
+   home/home-bookshelf.css beside its owner — the bookshelf family is
+   single-source now (two theme-free spine rules + two dark shelf gradients);
+   wave 11 appended the SRS state donut to the existing practice/
+   srs-panel.css (the r14 band's last resident — the band frame retired);
+   wave 12 split the home band dark painters: the stat band's into a NEW
+   home/stat-band.css beside home-feed.tsx, the quote band's appended to
+   the wave-2 home/quote-band.css; wave 13 created practice/
+   my-words-dark.css beside the my-words family — one view family, one
+   file (the duel-dark.css precedent), hero + cards/dictation pair +
+   story card; wave 14 split the three remaining single-consumer
+   launcher painters of the hero block each beside its owner (three
+   mutually exclusive views, one file each): practice/smart-hero.css,
+   exam/konkur-hero.css, exam/exam-dict-cta.css; wave 15 dissolved the
+   task-64 sweep band — its four remaining tinted gradient painters each
+   beside its single owner in four feature areas: home/listen-hero.css,
+   duel/name-cta.css, shell/onboard-paper.css, lesson/dict-setup.css;
+   wave 16 moved the Flashcard 3D flip family beside its single owner
+   (lesson/flashcards.css) and the appendix table's scroll rule beside
+   its owner (lesson/appendix-view.css).
+   Each file lives BESIDE its owning component and is imported here so the
+   rules are ALWAYS part of the initial CSS — the same guarantee globals.css
+   had before the extraction (lazy views keep zero first-paint risk), and the
+   rules sit at cascade end exactly where the wave-1 isolation scan proved
+   safety (no equal-specificity competition outside the moved band; print band
+   wins via !important; @utility definitions lose to unlayered author rules).
+   Extraction protocol: verbatim rule move + one manifest line + the
+   css-hygiene guard (tests/css-hygiene.test.ts, "per-feature CSS extraction"). */
+
+@import "../components/study/shared/confetti.css";
+@import "../components/study/duel/rush.css";
+@import "../components/study/duel/spell-input.css";
+@import "../components/study/duel/duel-dark.css";
+@import "../components/study/practice/srs-panel.css";
+@import "../components/study/practice/skill-panel.css";
+@import "../components/study/reports/report-card.css";
+@import "../components/study/reports/official-report.css";
+@import "../components/study/shared/streak-flame.css";
+@import "../components/study/shell/footer.css";
+@import "../components/study/home/quote-band.css";
+@import "../components/study/home/home-hero.css";
+@import "../components/study/practice/badges.css";
+@import "../components/study/quiz/quiz-result.css";
+@import "../components/study/practice/weekly-chart.css";
+@import "../components/study/lesson/word-of-day.css";
+/* wave 9 (task 149): the dictionary state-filter chips (dark trio) */
+@import "../components/study/lesson/dictionary-view.css";
+/* wave 5 (task 141): the daily-quests family (reward shimmer + dark tuning) */
+@import "../components/study/practice/daily-quests.css";
+/* task 150: the combined streak badge — the ice guest's sky ink duo */
+@import "../components/study/practice/streak-badge.css";
+/* wave 10 (task 151): the bookshelf family — spine hover + dark shelf gradients */
+@import "../components/study/home/home-bookshelf.css";
+/* wave 12 (task 155): the home band dark painters — stat-band is a new
+   file beside home-feed.tsx; quote-band's painter joined the wave-2 file */
+@import "../components/study/home/stat-band.css";
+/* wave 13 (task 157): the my-words dark launcher family — one view
+   family, one file (the duel-dark.css precedent) */
+@import "../components/study/practice/my-words-dark.css";
+/* wave 14 (task 159): the three remaining single-consumer launcher
+   painters each beside its owner — three mutually exclusive views */
+@import "../components/study/practice/smart-hero.css";
+@import "../components/study/exam/konkur-hero.css";
+@import "../components/study/exam/exam-dict-cta.css";
+/* wave 15 (task 161): the task-64 sweep band dissolved — four single-
+   consumer painters, four feature areas (home/duel/shell/lesson) */
+@import "../components/study/home/listen-hero.css";
+@import "../components/study/duel/name-cta.css";
+@import "../components/study/shell/onboard-paper.css";
+@import "../components/study/lesson/dict-setup.css";
+/* wave 16 (task 163): flip family + appendix scroll — two lesson owners */
+@import "../components/study/lesson/flashcards.css";
+@import "../components/study/lesson/appendix-view.css";
+/* wave 17 (task 164): the grammar metro family — map + 90s lesson
+   flow co-render in grammar-view; one view family, one file
+   (the wave-13 precedent); the biggest single extraction so far */
+@import "../components/study/grammar/grammar-metro.css";
+/* r415: the bank-flash deep-link highlight — beside its owner
+   (books/book-view.tsx); the wave-N one-family-one-file idiom */
+@import "../components/study/books/book-view.css";

@@ -175,7 +175,7 @@ describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
     }
   });
 
-  it("keeps the selector budget honest (tranche-3b part 2 ceiling 500, re-based 505 r89, 510 r196, 513 r198, 514 r325, 520 r328, 521 r329, 522 r330, 529 r334, 541 r335, 543 r338)", () => {
+  it("keeps the selector budget honest (tranche-3b part 2 ceiling 500, re-based 505 r89, 510 r196, 513 r198, 514 r325, 520 r328, 521 r329, 522 r330, 529 r334, 541 r335, 543 r338, 546 r425, 547 r428)", () => {
     // soft ceiling: the file may not regrow past the consolidation floor. History:
     // 535 pre-kernel → 519 pre-part-2 → 500 (roadmap §12 goal). r89 re-based to
     // 505 for phase 6: the LAST veil family (c-stone) entered with net +4 lines
@@ -240,8 +240,26 @@ describe("globals.css tinted-ink token kernel (Step 9 tranche-3b)", () => {
     // skill-panel rose, spell-buttons sky, glesson lime/indigo) — the block's
     // net growth is ONE selector line (the sky border, bg via .dark .bg-white).
     // Re-based 543 → 544 for that single line.
+    // r425: the week-strip today-jump cell + the report-paper gate pair's
+    // dark hover kernels — two scoped rules beside the report-foot band.
+    // The global emerald-100 kernel stays FORBIDDEN (r334/r338 lessons), and
+    // hover:text-teal-600 stays light-scale outside this paper (deliberate,
+    // many panels) — so the wash entered scoped, net +2 → 546.
+    // r428: the family-row pulse's SCOPED dark kernel (.dark tr.wf-row-pulse,
+    // ONE selector line). The utility dark:bg-emerald-900/30 was LIVE-PROVEN
+    // losing to the global .dark .bg-white remap (r334/r338 lesson re-proven
+    // in this round's arbitration: bg read rgb(28,25,23)) — so the night
+    // kernel entered scoped beside today-jump, net +1 → 547.
+    // r430: ZERO growth — the srs-panel spotlight ring was LIVE-CAUGHT dead
+    // in BOTH themes, but the fix stayed in the component: .shadow-sm moved
+    // into the non-spotlit ternary branch (the replace-don't-add contract).
+    // Compiled-CSS probe: .shadow-sm sits ~1.1k chars AFTER the arbitrary
+    // shadow utility and steals the shared --tw-shadow variable; and the
+    // unlayered .dark .shadow-sm remap (line 513) hooked the same class.
+    // With shadow-sm out of the spotlit state, layered utilities own the
+    // ring in both themes — no globals kernel needed.
     const sel = lines.filter((l) => /^\s*\.[a-z]/.test(l) && !l.includes("→")).length;
-    expect(sel).toBeLessThanOrEqual(544); // r349: +1 compass-card border — all else consolidated into existing kernel lines
+    expect(sel).toBeLessThanOrEqual(547); // r425: +2 hover kernels; r428: +1 (wf-row-pulse); r430: +0 (replace-don't-add fix in component) — documented growth
     expect(sel, "budget headroom tracked — re-base with documented rationale only").toBeGreaterThanOrEqual(490);
   });
 });
@@ -655,7 +673,9 @@ describe("globals.css translucent veil layer (Step 9 tranche 4 phase 4 — Task 
     // r284: weekly-report +۱ سوم — نوارِ «نشان‌های من» (هم‌باندِ c-veil-60، زیرِ گامِ بعدی)
     // r297: weekly-report +۱ چهارم — نوارِ «کتاب‌خانهٔ داستان‌ها» (زیرِ نشان‌ها، هم‌باندِ c-veil-60)
     // r313: weekly-report +۱ پنجم — باندِ «ستونهایِ خروجیهایِ اکسل» (هم‌باندِ دستورِ رنگ‌ها)
-    expect(total).toBe(23);
+    // r422: weekly-report +۲ — نوارِ «هفتهٔ پیشِ رو» (ظرفِ هفتخانهای + سطرِ آرامِ هفتهٔ دور)
+    // r432: weekly-report +۱ — ظرفِ «سررسیدهایِ امروز به تفکیک بانک» (زیرِ نوار، هم‌باندِ c-veil-60)
+    expect(total).toBe(26);
   });
 });
 

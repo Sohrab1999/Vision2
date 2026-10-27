@@ -74,6 +74,59 @@ export const DRILL_KINDS: DrillKind[] = ["past", "pp", "base", "fa"];
 /** اندازهٔ پیشفرضِ جلسه — یک تمرینِ کوتاهِ دهتایی */
 export const DRILL_SIZE = 10;
 
+/**
+ * r414 — سهمیهٔ سررسید در هر جلسه: بیشترینِ چهار پرسش از پایههایِ سررسیدِ
+ * بانک (به ترتیبِ اولویتِ drillDueBases)؛ بقیهٔ جلسه بُرِ عادی — مرورِ
+ * موازنهشده، نه جلسهٔ همهسررسید.
+ */
+export const DRILL_DUE_QUOTA = 4;
+
+/**
+ * r414 — گزینشِ «سررسید-نخست» برایِ موتورهایِ پرسشبهپرسش: نخستین عضوِ
+ * صفِ سررسید که در استخرِ پرسیدنیِ همین پرسش حاضر است (به ترتیبِ اولویتِ
+ * صف)، وگرنه بُرِ عادی. صف، صفِ مشترکِ جلسهاست (سررسیدِ مصرفشده بیرون
+ * میآید) و سازندهٔ صف سهمیه را رویش اعمال کرده. با صفِ تهی، رفتار و
+ * مصرفِ rng بایت‌به‌بایت همانِ پیش است — قفلهایِ r400..r413 پابرجا.
+ * baseOf مالِ هر موتور است (درسِ مالکیتِ r403 — نما/کیت حدس نمیزند).
+ */
+export function pickDueFirst<T>(
+  pickable: readonly T[],
+  baseOf: (t: T) => string,
+  dueQueue: string[],
+  rng: () => number,
+): T {
+  for (let i = 0; i < dueQueue.length; i++) {
+    const hit = pickable.find((t) => baseOf(t) === dueQueue[i]);
+    if (hit) {
+      dueQueue.splice(i, 1);
+      return hit;
+    }
+  }
+  return shuffled(pickable, rng)[0];
+}
+
+/**
+ * r415 — گزینشِ فقطسررسیدِ سخت: نخستین عضوِ صفِ سررسید حاضر در استخرِ
+ * همین پرسش — وگرنه هیچ (پرسشِ این اندیس رد میشود؛ چرخشِ بازگشتیِ جلسهٔ
+ * فقطسررسید گونهٔ بعدی را میآورد). برخلافِ pickDueFirst بُرِ عادی ندارد —
+ * پرسشِ فقطسررسید هرگز از بیرونِ صفِ سررسید نمیآید و rng مصرف نمیکند.
+ * یک ردیفِ سررسید (یک base) یک پرسش میگیرد — نه چند پرسش برساخته.
+ */
+export function pickDueOnly<T>(
+  pickable: readonly T[],
+  baseOf: (t: T) => string,
+  dueQueue: string[],
+): T | undefined {
+  for (let i = 0; i < dueQueue.length; i++) {
+    const hit = pickable.find((t) => baseOf(t) === dueQueue[i]);
+    if (hit) {
+      dueQueue.splice(i, 1);
+      return hit;
+    }
+  }
+  return undefined;
+}
+
 export interface DrillQuestion {
   /** شناسهٔ فعلِ هدف (شکلِ ساده) — صادق برای بازخوانیِ نتیجه */
   base: string;
@@ -131,13 +184,40 @@ export function buildDrillSession(
   verbs: readonly IrregularVerb[],
   size: number = DRILL_SIZE,
   rng: () => number = Math.random,
+  /** r414 — پایههایِ سررسید به ترتیبِ اولویت — سهمیه نزدِ همین موتور اعمال میشود */
+  due?: readonly string[],
+  /** r415 — «تمرینِ سررسیدها»: جلسهٔ ساختهشده فقط از پایههایِ سررسیدِ حاضر
+   *  در بانک (صفِ سررسید بیسهمیه، به ترتیبِ اولویت). استخرِ بدلها همان
+   *  بانکِ کامل میماند — کیفیتِ گزینه مستقل از کوچکیِ مجموعهٔ سررسید. */
+  dueOnly?: boolean,
 ): DrillSession {
   if (verbs.length === 0) return { questions: [], size: 0 };
-  const n = Math.min(Math.max(1, Math.floor(size)), verbs.length);
-  const picked = shuffled(verbs, rng).slice(0, n);
+  // r415 — جهانِ برگشتنی در حالتِ فقطسررسید به پایههایِ سررسیدِ حاضر در بانک
+  // محدود میشود (سررسیدِ کهنه/بیصاحب صادقانه میافتد)؛ مسیرِ عادی همان verbs است
+  const dueSet = dueOnly && due ? new Set(due) : null;
+  const universe = dueSet ? verbs.filter((v) => dueSet.has(v.base)) : verbs;
+  if (universe.length === 0) return { questions: [], size: 0 };
+  const n = Math.min(Math.max(1, Math.floor(size)), universe.length);
+  // r414 — سررسیدها در سهمیهٔ خود به سرِ جلسه میآیند (مرور نخست، بعد تازهها)؛
+  // r415 — در حالتِ فقطسررسید سهمیه جایش را سقفِ خودِ جلسه میگیرد؛
+  // با dueِ غایب/تهی: shuffled(rest) با همان ترتیب و مصرفِ rngِ shuffled(verbs) — رفتارِ r400 بایت‌به‌بایت
+  const duePicked: IrregularVerb[] = [];
+  const remaining = new Map(universe.map((v) => [v.base, v]));
+  for (const base of due ?? []) {
+    if (duePicked.length >= (dueSet ? n : DRILL_DUE_QUOTA)) break;
+    const hit = remaining.get(base);
+    if (hit) {
+      duePicked.push(hit);
+      remaining.delete(base);
+    }
+  }
+  const rest = universe.filter((v) => remaining.has(v.base));
+  const picked = [...duePicked, ...shuffled(rest, rng)].slice(0, n);
   const questions = picked.map((v, i): DrillQuestion => {
     const kind = DRILL_KINDS[i % DRILL_KINDS.length];
     const correct = drillForm(v, kind);
+    // استخرِ بدل همیشه از بانکِ کامل — r415: در جلسهٔ فقطسررسید هم گزینهها
+    // همچگالیِ جلسهٔ عادی دارند (دو سررسید = دو گزینه نمیشود)
     const pool = Array.from(new Set(verbs.map((x) => drillForm(x, kind)))).filter(
       (val) => val !== correct,
     );

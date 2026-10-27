@@ -1,0 +1,11 @@
+r350: extract the grade-10 combined four-lesson 100-item grammar-and-writing test (pp172-176, printed table key p300) into tests-g10.json as bank 97 — 100 MCQs, the 31st group on the grade-10 card
+
+- «۱۰۰ تست گرامر و نگارش درس ۱ تا ۴ - پایه دهم» (sately: motavasset/konkuri per its own header — the family cover says «متوسط و استاندارد», the test header's own «متوسط» و «کنکوری» governs), first combined Lesson 1-4 test of the Grammar Tests — Vision One family
+- printed key is a 10x10 table on p300 — full 100-letter grid recovered in one pass via multi-pattern regex (100/100, no dupes/gaps/divergence vs semantic pre-fill)
+- items carry NO printed translation (questions pp172-176 have zero «ترجمه تست» columns — honest absence, bank 97 items omit translation, mirroring r334)
+- layer-noise arbitrations by render (900-1200dpi crops): Q14 stray «a» line dropped, Q93 «a(» open-paren option letter, Q96 trailing «B»/«D» on options a/c are layer noise — clean print confirmed
+- print-verbatim quirks kept: Q28 «by his own's», Q34 «Do you like Swimming?», Q42 period-ended stem, Q44 «My Father a good manager.», Q49 «tomorrow. but», Q64 «Marry»/«NO,», Q97 «since 1363», Q88 exact option orders (key b = correct adjective order), Q99 triple blank; two «Which sentence is grammatically WRONG?» items (Q81/Q96) with underlined WRONG
+- dash census: 150 runs (7-23 long) across 100 stems, zero cross-line splits — layer verbatim
+- register GRADE_TESTS group 31 «تستهای متوسط و استاندارد درس ۱ تا ۴» (card now 97 buttons / 31 groups); source.gram14 receipt with 11 printQuirks
+- guard jozve-tests-g10-l14-r350 (6 checks: receipt, bank shape with Latin purity + translation=undefined, 100-letter key lock, verbatim stems, layer-noise arbitrations, file shape 97 banks / 1346 items) + surgery on 43 previous guards (1246→1346 across 26 files, 96→97 across 14 files, r326/r338 full vector +1 member, r346/r347/r349 relative slices re-anchored +1)
+- gates 2239/2239 in 190 files (+6 checks, +1 file); QA E2E: card shows 97 buttons / 31 groups, bank 97 driven 100/100 to CHAMPION (zero MISS/DESYNC, 100% result screen), mobile 390px no overflow, console clean, dev.log zero 5xx, DB CLEAN-OK baseline (attempts=0, app_open=2)

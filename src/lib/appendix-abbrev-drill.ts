@@ -26,6 +26,9 @@
 
 import type { Abbreviation } from "@/data/appendix";
 import {
+  pickDueFirst,
+  pickDueOnly,
+  DRILL_DUE_QUOTA,
   shuffled,
   DRILL_SIZE,
   type DrillQuestion,
@@ -63,9 +66,17 @@ export function buildAbbrevDrillSession(
   bank: readonly Abbreviation[],
   size: number = DRILL_SIZE,
   rng: () => number = Math.random,
+  /** r414 — پایههایِ سررسید به ترتیبِ اولویت — سهمیه نزدِ همین موتور اعمال میشود */
+  due?: readonly string[],
+  /** r415 — «تمرینِ سررسیدها»: جلسهٔ فقط از سررسیدهایِ حاضر در بانک؛
+   *  واجدگان از بانکِ کامل محاسبه و به سررسیدها فیلتر میشود — استخرِ بدل تمامبانک میماند */
+  dueOnly?: boolean,
 ): DrillSession {
   if (bank.length === 0) return { questions: [], size: 0 };
-  const n = Math.min(Math.max(1, Math.floor(size)), bank.length);
+  // r414 — صفِ سررسیدِ مشترکِ جلسه: سهمیه در ورود، ترتیبِ اولویت در مصرف؛
+  // r415 — در حالتِ فقطسررسید صف بیسهمیه است (کلِ سررسیدها پیشِ دستاند)
+  const dueSet = dueOnly && due ? new Set(due) : null;
+  const dueQueue = dueSet ? [...(due ?? [])] : (due ?? []).slice(0, DRILL_DUE_QUOTA);
 
   // نشانههایِ واجدِ هر گونه — یکبارِ پیشمحاسبه (خالص: هیچ جهشی در داده)؛
   // هر گونه هم به سلولِ پاسخ و هم به سلولِ لنگرِ پرسش نیاز دارد
@@ -73,18 +84,24 @@ export function buildAbbrevDrillSession(
   // قراردادِ صداقتِ صفرِ صادقانهٔ r222).
   const eligible = new Map<AbbrevDrillKind, Abbreviation[]>();
   for (const kind of ABBREV_DRILL_KINDS) {
-    eligible.set(
-      kind,
-      bank.filter((a) => {
-        if (cellOf(a, kind) === "") return false;
-        return kind === "sym" ? a.full !== "" : a.sym !== "";
-      }),
-    );
+    // r415 — واجدگان همیشه از بانکِ کامل؛ در حالتِ فقطسررسید فقط به سررسیدهایِ
+    // همان گونه فیلتر میشود (پایهٔ پرسشِ نشانه، خودِ نماد است)
+    const full = bank.filter((a) => {
+      if (cellOf(a, kind) === "") return false;
+      return kind === "sym" ? a.full !== "" : a.sym !== "";
+    });
+    eligible.set(kind, dueSet ? full.filter((a) => dueSet.has(a.sym)) : full);
   }
+  // r415 — طولِ جلسهٔ فقطسررسید = شمارِ متمایزِ سررسیدهایِ پرسیدنی — یک ردیف یک پرسش
+  const duePresent = dueSet
+    ? new Set(ABBREV_DRILL_KINDS.flatMap((k) => eligible.get(k)!.map((a) => a.sym))).size
+    : bank.length;
+  const n = Math.min(Math.max(1, Math.floor(size)), duePresent);
 
   const used = new Set<Abbreviation>();
   const questions: DrillQuestion[] = [];
-  for (let i = 0; i < n; i++) {
+  // r415 — چرخشِ بازگشتی فقط در حالتِ فقطسررسید (مسیرِ عادی بدونِ تغییر)
+  for (let i = 0; i < n * (dueSet ? ABBREV_DRILL_KINDS.length : 1) && questions.length < n; i++) {
     const kind = ABBREV_DRILL_KINDS[i % ABBREV_DRILL_KINDS.length];
     // ترجیحِ نشانهٔ بیکاربرد؛ استخرِ تهیشده اجازهٔ بازاستفاده میدهد
     const pool = eligible.get(kind)!;
@@ -93,7 +110,12 @@ export function buildAbbrevDrillSession(
     // درسِ قفلِ راند: بانکِ غیروخالی ولی همهتهیِ یک گونه نباید واژگون کند —
     // گونهٔ بیپیشنهاد پرسیدنی نیست؛ جلسهٔ کوتاهترِ صادق (حکمِ r222)
     if (pickable.length === 0) continue;
-    const a = shuffled(pickable, rng)[0];
+    // r414 — سررسید-نخست: پایهٔ پرسشِ نشانه، خودِ نماد است — مالِ همین موتور
+    // r415 — در حالتِ فقطسررسید گزینش سخت است
+    const a = dueSet
+      ? pickDueOnly(pickable, (x) => x.sym, dueQueue)
+      : pickDueFirst(pickable, (x) => x.sym, dueQueue, rng);
+    if (!a) continue;
     used.add(a);
 
     const correct = cellOf(a, kind);

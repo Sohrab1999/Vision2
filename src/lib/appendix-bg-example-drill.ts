@@ -44,6 +44,9 @@
 
 import type { BgTopic } from "@/data/booklet-grammar";
 import {
+  pickDueFirst,
+  pickDueOnly,
+  DRILL_DUE_QUOTA,
   shuffled,
   DRILL_SIZE,
   type DrillQuestion,
@@ -94,10 +97,19 @@ export function buildBgExampleDrillSession(
   topics: readonly BgTopic[],
   size: number = DRILL_SIZE,
   rng: () => number = Math.random,
+  /** r414 — پایههایِ سررسید به ترتیبِ اولویت — سهمیه نزدِ همین موتور اعمال میشود */
+  due?: readonly string[],
+  /** r415 — «تمرینِ سررسیدها»: جلسهٔ فقط از سررسیدهایِ حاضر در بانک؛
+   *  پایهٔ پرسش در گونهٔ topic همان topicId است و در بقیه جملهٔ انگلیسی
+   *  (قراردادِ baseِ خودِ پرسشها) — فیلترِ هر گونه با پایهٔ همان گونه */
+  dueOnly?: boolean,
 ): DrillSession {
   const bank = flattenBgExamples(topics);
   if (bank.length === 0) return { questions: [], size: 0 };
-  const n = Math.min(Math.max(1, Math.floor(size)), bank.length);
+  // r414 — صفِ سررسیدِ مشترکِ جلسه: سهمیه در ورود، ترتیبِ اولویت در مصرف؛
+  // r415 — در حالتِ فقطسررسید صف بیسهمیه است
+  const dueSet = dueOnly && due ? new Set(due) : null;
+  const dueQueue = dueSet ? [...(due ?? [])] : (due ?? []).slice(0, DRILL_DUE_QUOTA);
 
   // یکتاییِ دوسویه — یکبارِ پیشمحاسبه (خالص: هیچ جهشی در داده).
   // en→مجموعهٔ ترجمهها / fa→مجموعهٔ enها / شمارشِ متنِ en.
@@ -114,30 +126,61 @@ export function buildBgExampleDrillSession(
 
   // واجدانهایِ هر گونه — گونهٔ بیپیشنهاد جلسه را کوتاه میکند، نه واژگون
   // (درسِ r404)؛ سلولِ تهیِ جزوه پرسیدنی نیست (همان صداقتِ بانکهایِ پیشین).
+  // r415 — یکتاییِ دوسویه از بانکِ کامل محاسبه؛ در حالتِ فقطسررسید هر گونه
+  // فقط به مثالهایی فیلتر میشود که پایهٔ پرسشِ همان گونهشان سررسید است
+  const dueBaseOf = (it: BgExampleItem, kind: BgExampleDrillKind) =>
+    kind === "topic" ? it.topicId : it.en;
   const eligible = new Map<BgExampleDrillKind, BgExampleItem[]>();
-  eligible.set(
-    "fa",
-    bank.filter((it) => it.en !== "" && it.fa !== "" && enFas.get(it.en)!.size === 1),
-  );
-  eligible.set(
-    "ex",
-    bank.filter((it) => it.en !== "" && it.fa !== "" && faEns.get(it.fa)!.size === 1),
-  );
-  eligible.set(
-    "topic",
-    bank.filter((it) => it.en !== "" && it.topicTitle !== "" && enCount.get(it.en) === 1),
-  );
+  const fullEligible = new Map<BgExampleDrillKind, BgExampleItem[]>([
+    [
+      "fa",
+      bank.filter((it) => it.en !== "" && it.fa !== "" && enFas.get(it.en)!.size === 1),
+    ],
+    [
+      "ex",
+      bank.filter((it) => it.en !== "" && it.fa !== "" && faEns.get(it.fa)!.size === 1),
+    ],
+    [
+      "topic",
+      bank.filter((it) => it.en !== "" && it.topicTitle !== "" && enCount.get(it.en) === 1),
+    ],
+  ]);
+  for (const kind of BG_EXAMPLE_DRILL_KINDS) {
+    const list = fullEligible.get(kind)!;
+    eligible.set(kind, dueSet ? list.filter((it) => dueSet.has(dueBaseOf(it, kind))) : list);
+  }
+  // r415 — طولِ جلسهٔ فقطسررسید = شمارِ متمایزِ پایههایِ سررسیدِ پرسیدنی —
+  // یک ردیفِ سررسید یک پرسش میگیرد (مثالهایِ متعددِ یک موضوع over-drill نمیزنند)
+  const duePresent = dueSet
+    ? new Set(
+        BG_EXAMPLE_DRILL_KINDS.flatMap((k) => eligible.get(k)!.map((it) => dueBaseOf(it, k))),
+      ).size
+    : bank.length;
+  const n = Math.min(Math.max(1, Math.floor(size)), duePresent);
 
   const used = new Set<BgExampleItem>();
   const questions: DrillQuestion[] = [];
-  for (let i = 0; i < n; i++) {
+  // r415 — چرخشِ بازگشتی فقط در حالتِ فقطسررسید (سررسیدِ فقطموضوع هم پرسیده
+  // میشود — مسیرِ عادی بدونِ تغییر)
+  for (let i = 0; i < n * (dueSet ? BG_EXAMPLE_DRILL_KINDS.length : 1) && questions.length < n; i++) {
     const kind = BG_EXAMPLE_DRILL_KINDS[i % BG_EXAMPLE_DRILL_KINDS.length];
     // ترجیحِ مثالِ بیکاربرد؛ استخرِ تهیشده اجازهٔ بازاستفاده میدهد
     const pool = eligible.get(kind)!;
     const fresh = pool.filter((it) => !used.has(it));
     const pickable = fresh.length > 0 ? fresh : pool;
     if (pickable.length === 0) continue; // جلسهٔ کوتاهترِ صادق
-    const it = shuffled(pickable, rng)[0];
+    // r414 — سررسید-نخست: پایهٔ پرسشِ مثال در گونهٔ topic همان topicId است
+    // و در بقیه جملهٔ انگلیسی — مالِ همین موتور (قراردادِ baseِ خودِ پرسشها)
+    // r415 — در حالتِ فقطسررسید گزینش سخت است
+    const it = dueSet
+      ? pickDueOnly(pickable, (x) => (kind === "topic" ? x.topicId : x.en), dueQueue)
+      : pickDueFirst(
+          pickable,
+          (x) => (kind === "topic" ? x.topicId : x.en),
+          dueQueue,
+          rng,
+        );
+    if (!it) continue;
     used.add(it);
 
     if (kind === "fa") {

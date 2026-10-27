@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Search, CheckCircle2, Circle, Layers, X, Star, Users, ChevronDown, ExternalLink, BookOpenText, GraduationCap } from "lucide-react";
 import type { LessonData } from "@/lib/study-types";
@@ -14,6 +14,7 @@ import BookletUsageChip, { useBookletUsageTarget } from "./booklet-usage-chip";
 import PairSpeakChips from "./pair-speak-chips";
 import { speakFailToast } from "@/lib/speak";
 import { lessons } from "@/data";
+import { drillLabelFor } from "@/lib/drill-label-atlas"; // r420 — اطلسِ برچسب (مالکِ یگانه)
 import { WORD_FAMILY_LESSON_LINKS, wordFamilyTableId } from "@/data/word-families";
 import Flashcards from "./flashcards";
 import WordFamilyTableCard from "./word-family-table-card";
@@ -23,6 +24,7 @@ import DrillStatChip from "./drill-stat-chip"; // r413 — چیپِ مشترکِ
 // هیچ دیپلینکی دریل را بالا نمیآورد)؛ نوشتنیِ جلسه (رکوردِ r412 و بانکِ
 // خطایِ r413) فقط نزدِ نمایِ مشترک است — بلدم/ستارهٔ کارتها دستنخورده.
 import AppendixDrillView, { type DrillViewSpec } from "./appendix-drill-view";
+import useDrillDueBases from "./use-drill-due"; // r414 — سررسیدهایِ SRSِ بانکِ واژگانِ درس
 import {
   buildLessonVocabDrillSession,
   lessonVocabDrillPlan,
@@ -58,15 +60,22 @@ type Filter = "all" | "known" | "unknown";
 export default function VocabTab({
   lesson,
   startSmart = false,
+  focusWord,
+  onFocusDone,
 }: {
   lesson: LessonData;
   startSmart?: boolean;
+  /** r427 — لنگرِ عمیقِ کارتِ واژه (از LessonView؛ الگویِ سطرِ فعلِ r234) */
+  focusWord?: string;
+  onFocusDone?: () => void;
 }) {
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState<Filter>("all");
   const [flashMode, setFlashMode] = useState(startSmart);
   // r407 — حالتِ تمرین واژگان؛ فقط با کلیکِ کاربر روشن میشود
   const [drillMode, setDrillMode] = useState(false);
+  // r414 — سررسیدهایِ SRSِ بانکِ واژگانِ این درس — فهرستِ اولویتدار برایِ سهمیهٔ موتور
+  const lessonVocabDue = useDrillDueBases("lesson-vocab");
   const known = useStudy((s) => s.known);
   const toggleKnown = useStudy((s) => s.toggleKnown);
   const toggleStarred = useStudy((s) => s.toggleStarred);
@@ -82,6 +91,40 @@ export default function VocabTab({
   useEffect(() => {
     if (startSmart) consumeFlashIntent();
   }, [startSmart, consumeFlashIntent]);
+
+  // r427 — لنگرِ عمیقِ کارتِ واژه (الگویِ سطرِ فعلِ r234): اسکرولِ محلی به کارت
+  // واژه + پالسِ زمردیِ ۱٫۶ثانیهای؛ رسیدن با لنگر هم «دیدن» است. واژهای که
+  // فیلترِ جستوجو پنهانش کرده ساکت میماند — بیِ اسکرولِ برساخته (r236).
+  const [pulseWord, setPulseWord] = useState<string | null>(null);
+  const pulseTimerRef = useRef<number | null>(null);
+  useEffect(() => {
+    if (!focusWord) return;
+    const raf = requestAnimationFrame(() => {
+      document
+        .getElementById(`vocab-row-${focusWord.replace(/\s+/g, "-")}`)
+        ?.scrollIntoView?.({ behavior: "smooth", block: "center" });
+      onFocusDone?.();
+      setPulseWord(focusWord);
+      // پالسِ ۱٫۶ثانیهای — عمداً بیرونِ پاکسازیِ effect: پاکشدنِ لنگر
+      // (onFocusDone ← رندرِ دوباره ← cleanup) نباید تایمرِ تازهراهافتاده
+      // را بکشد؛ پرشِ دوباره تایمرِ قبلی را پیشِ راهاندازیِ تازه پاک میکند
+      // (همان ایدئومِ r234).
+      if (pulseTimerRef.current !== null) window.clearTimeout(pulseTimerRef.current);
+      pulseTimerRef.current = window.setTimeout(() => {
+        pulseTimerRef.current = null;
+        setPulseWord(null);
+      }, 1600);
+    });
+    return () => cancelAnimationFrame(raf);
+    // وابستهها کاملاند — فقط لنگر؛ onFocusDone در هر رندرِ والد نوساز است
+  }, [focusWord]);
+  // خاموشیِ پالس هنگامِ پیادهشدن از تب — فقط unmount؛ با راهاندازیِ مجددِ پالس تداخلی ندارد
+  useEffect(
+    () => () => {
+      if (pulseTimerRef.current !== null) window.clearTimeout(pulseTimerRef.current);
+    },
+    [],
+  );
 
   const t = themeOf(lesson.color);
 
@@ -114,7 +157,12 @@ export default function VocabTab({
     return (
       <AppendixDrillView
         spec={lessonVocabDrillSpec(lesson, drillPlan)}
-        buildSession={() => buildLessonVocabDrillSession(lesson.vocabulary, DRILL_SIZE)}
+        buildSession={() => buildLessonVocabDrillSession(lesson.vocabulary, DRILL_SIZE, Math.random, lessonVocabDue)}
+        buildMistakeSession={() =>
+          buildLessonVocabDrillSession(lesson.vocabulary, DRILL_SIZE, Math.random, lessonVocabDue, true)
+        } // r415 — تمرینِ سررسیدها
+        // r418 — تقویمِ مرور: معنیِ واژه از بانکِ همان درس (مالکیتِ r403)
+        calendarLabel={drillLabelFor("lesson-vocab")} // r418/r420 — برچسب از اطلس (همهٔ درسها — بهبودِ آگاهانهِ r420)
         onExit={() => setDrillMode(false)}
       />
     );
@@ -218,6 +266,7 @@ export default function VocabTab({
           return (
             <motion.div
               key={w.en}
+              id={`vocab-row-${w.en.replace(/\s+/g, "-")}`}
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: Math.min(i * 0.012, 0.3) }}
@@ -237,9 +286,13 @@ export default function VocabTab({
                 }
               }}
               className={`group flex items-start justify-between gap-2 rounded-xl border p-3 text-right transition-[background-color,color,border-color,box-shadow,transform] active:scale-[0.96] ${
-                isKnown
-                  ? `${t.border} ${t.bgSoft}`
-                  : "border-stone-200 bg-white hover:border-stone-300 hover:shadow-sm"
+                // r427 — پالسِ زمردیِ لنگرِ پرش — همان هستهٔ سطرِ فعلِ r234
+                // (زمردیِ روشن + حلقهٔ درونی؛ در شب emerald-900/30)
+                pulseWord === w.en
+                  ? "border-emerald-200 bg-emerald-50 shadow-[inset_0_0_0_2px] shadow-emerald-300 dark:border-emerald-800 dark:bg-emerald-900/30 dark:shadow-emerald-700"
+                  : isKnown
+                    ? `${t.border} ${t.bgSoft}`
+                    : "border-stone-200 bg-white hover:border-stone-300 hover:shadow-sm"
               }`}
               title={isKnown ? "علامت‌زده به عنوان بلد" : "کلیک: بلدم"}
             >

@@ -155,7 +155,14 @@ describe("appendix-deeplink-r221 — لنگرِ عمیق در BookletGrammarView
 });
 
 describe("appendix-deeplink-r221 — دکمهٔ ↗ و چیپِ «درسِ مرتبط»", () => {
-  beforeEach(cleanup);
+  beforeEach(() => {
+    cleanup();
+    // r431 — بازشدنِ پرشی حالا ماندگار است (writeBgOpen در اثرِ لنگر —
+    // ماندگاریِ navigateToTopicِ r226)؛ لنگرِ تستِ قبلیِ همین فایل در
+    // localStorage میماند و کلیکِ toggleِ تستِ چیپ را وارونه میکند —
+    // هر تستِ UI صفحهٔ پاک میگیرد.
+    window.localStorage.clear();
+  });
 
   it("دکمهٔ ↗ (درس → ضمیمه): aria-label با عنوانِ موضوع و کلیکِ مستقل از toggle", () => {
     const onOpenInAppendix = vi.fn();

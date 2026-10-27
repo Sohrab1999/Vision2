@@ -1,0 +1,12 @@
+r351: extract part 1 (Q1-120) of the grade-10 combined four-lesson 360-item vocabulary test (pp178-183, printed one-page table key p301) into tests-g10.json as bank 98 — the 32nd group on the grade-10 card
+
+- «۳۶۰ تست واژگان درس ۱ تا ۴ - پایه دهم» — the largest test in the jozve: 360 continuously numbered MCQs over pp178-194 with NO internal sections; split into three 120-item banks (120×3); this round extracts Q1-120
+- printed key is a single-page 10x36 table on p301 — full 360-pair grid recovered in one pass via multi-pattern regex (360/360 unique, no gaps, zero divergence vs semantic pre-fill — family record, r350 had 100)
+- items carry NO printed translation (questions pp178-194 have zero «ترجمه تست» columns — honest absence, bank 98 items omit translation)
+- round discovery: the print itself switches option format from «a. b. c. d.» to «a) b) c) d)» between Q39 and Q40 (render 1100dpi: Q38/Q39 dotted, Q40+ parenthesized) — parser handles both via a[.)] pattern; only option TEXT is stored
+- Q24 layer runs [7,10,3,1] = ONE dashed line in render 1200dpi → merged to 21 unified dashes with attached period (r349-Q2 merge rule)
+- print typo kept: Q40 option c «planed» (intended planned; distractor — key is a «hurt»)
+- CLOSED the long-open r283/r320 tags regression: the printed «عبارات الحاق ص۴۴» key grid lives at the END of the grade-12 jozve's p187 (locator clarified); app data matches 20/20 AGREE (render-verified) + the adjacent r284 «معلوم و مجهول بخش دوم» grid 40/40 AGREE — source.tagsR283Regression receipt with closedRound=r351
+- register GRADE_TESTS group 32 «۳۶۰ تست واژگان درس ۱ تا ۴» (card now 98 buttons / 32 groups); source.vocab360a receipt with 7 printQuirks
+- guard jozve-tests-g10-v360a-r351 (5 checks: receipts incl. closed regression, bank shape with Latin purity + translation=undefined, 120-letter key lock, verbatim quirks + dash census 124 runs/2315 dashes, file shape 98 banks / 1466 items) + surgery on 49 previous guards (1346→1466 across 27 files, 97→98 across 15 files, r326/r338 full vector +1 member, r346/r347/r349/r350 relative slices re-anchored +1)
+- gates 2244/2244 in 191 files (+5 checks, +1 file); QA E2E: card shows 98 buttons / 32 groups, bank 98 driven 120/120 to CHAMPION (zero MISS/DESYNC, 100% result screen), desktop 1440 + mobile 390px no overflow, console clean, dev.log zero 5xx, DB CLEAN-OK baseline (attempts=0)

@@ -233,13 +233,15 @@ export default function StudyApp() {
               transition={{ duration: 0.28, ease: "easeOut" }}
             >
               {view.type === "home" && <HomeView />}
-              {view.type === "lesson" && <LessonView id={view.id} />}
-              {view.type === "dictionary" && <DictionaryView />}
+              {view.type === "lesson" && <LessonView id={view.id} focusWord={view.focusWord} />}
+              {view.type === "dictionary" && <DictionaryView focusWord={view.focusWord} />}
               {view.type === "exam" && <ExamView />}
               {view.type === "appendix" && (
                 <AppendixView
                   topicId={view.topicId}
+                  bgExampleEn={view.bgExampleEn} // r431 — عمقِ سطریِ مثال (سیمِ میزبان — زنده witnessed)
                   posTableId={view.posTableId}
+                  posRowWord={view.posRowWord}
                   verbBase={view.verbBase}
                   phonemeId={view.phonemeId}
                   abbrevSym={view.abbrevSym}

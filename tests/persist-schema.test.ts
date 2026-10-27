@@ -180,7 +180,7 @@ describe("sanitizeAll — defaults and idempotence", () => {
       verbs: { sessions: 2, correct: 15, total: 20, bestPercent: 100, lastDay: "" },
     }); // بیقرارداد افتاد؛ clampها نشستند
     expect(once.drillMistakes).toEqual({
-      verbs: { go: { wrong: 9999, lastDay: "" } },
+      verbs: { go: { wrong: 9999, ok: 0, lastDay: "", lastOkDay: "" } },
     }); // سقفِ wrong نشست، روزِ بیقرارداد تهی شد؛ پایهٔ تهی و بانکِ بیقرارداد افتادند
     expect(once.userId).toBeUndefined();
     expect(once.userSecret).toBeUndefined();
@@ -225,7 +225,7 @@ describe("backup ↔ restore ↔ cloud-merge round-trip", () => {
       // r412 — drill mastery travels like every other domain
       drillStats: { verbs: { sessions: 3, correct: 24, total: 30, bestPercent: 90, lastDay: "2026-10-09" } },
       // r413 — the drill mistake bank travels like every other domain
-      drillMistakes: { verbs: { go: { wrong: 2, lastDay: "2026-10-09" } } },
+      drillMistakes: { verbs: { go: { wrong: 2, ok: 1, lastDay: "2026-10-09", lastOkDay: "2026-10-10" } } },
       userId: "learner-12345",
       userSecret: "ab".repeat(24),
     });
@@ -295,11 +295,11 @@ describe("backup ↔ restore ↔ cloud-merge round-trip", () => {
     // two devices — the bigger wrong count and the newer day win; rows are
     // never deleted (a local removal would resurrect from the cloud), so
     // max is the only merge policy that honors merge(a, cloud(a)) === a
-    const local = { ...trusted(), drillMistakes: { verbs: { go: { wrong: 3, lastDay: "2026-10-20" } } } };
-    const remote = { ...trusted(), drillMistakes: { verbs: { go: { wrong: 1, lastDay: "2026-10-24" }, come: { wrong: 2, lastDay: "2026-10-23" } } } };
+    const local = { ...trusted(), drillMistakes: { verbs: { go: { wrong: 3, ok: 0, lastDay: "2026-10-20", lastOkDay: "" } } } };
+    const remote = { ...trusted(), drillMistakes: { verbs: { go: { wrong: 1, ok: 2, lastDay: "2026-10-24", lastOkDay: "2026-10-25" }, come: { wrong: 2, ok: 0, lastDay: "2026-10-23", lastOkDay: "" } } } };
     const merged = mergeAll(local, remote);
     expect(merged.drillMistakes).toEqual({
-      verbs: { go: { wrong: 3, lastDay: "2026-10-24" }, come: { wrong: 2, lastDay: "2026-10-23" } },
+      verbs: { go: { wrong: 3, ok: 2, lastDay: "2026-10-24", lastOkDay: "2026-10-25" }, come: { wrong: 2, ok: 0, lastDay: "2026-10-23", lastOkDay: "" } },
     });
     // a base only the remote device missed is not lost (come survives)
     // and the merged map honors the hard R-1 round-trip

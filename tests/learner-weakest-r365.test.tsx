@@ -257,7 +257,7 @@ describe("TeacherDetailDialog — چیپِ ضعیفترین", () => {
 // ---------------------------------------------------------------
 describe("رجیستریِ r365", () => {
   it("⑫ رجیستریِ ۵۲ دستنخورده — ضعیفترین مهارت رویدادِ تحلیلی ندارد", () => {
-    expect(EVENT_NAMES).toHaveLength(52);
+    expect(EVENT_NAMES).toHaveLength(55); // r423 +۱ — کارتِ تصویریِ تقویمِ هفته؛ r424 +۱ — هم‌رسانیِ بومیِ همان کارت؛ r425 +۱ — پرشِ خانهٔ امروزِ نوارِ هفته
     expect(EVENT_NAMES).not.toContain("weakest_skill");
     expect(Object.keys(EVENT_CATEGORIES).length).toBe(EVENT_NAMES.length);
   });

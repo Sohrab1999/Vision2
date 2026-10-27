@@ -44,7 +44,16 @@
 // حالتِ پرشدهٔ فعال (bg-amber-100 — ریمپِ تاریکِ kernel موجود)؛ در بسترِ
 // بی‌لنز (آکاردئونِ درس) همان spanِ اطلاعاتیِ r258 می‌ماند — الگویِ
 // relatedLesson/onOpenLesson: میزبان تصمیم می‌گیرد کنش چیپ چیست.
-import { useMemo, useState } from "react";
+// راند ۴۲۸ — لنگرِ سطریِ «خانوادهٔ واژه‌ها» (الگویِ سطرِ فعلِ r234 / کارتِ
+// واژهٔ r427): propِ اختیاریِ focusRowWord (خودِ واژهٔ خانواده) سطرِ حاویِ
+// آن را با پالسِ زمردیِ همخانواده (bg-emerald-50 + حلقهٔ درونیِ
+// shadow-emerald-300؛ شب: کرنلِ اسکوپشدهٔ wf-row-pulse در globals —
+// ریمپِ سراسریِ .dark .bg-white بر utilityِ شب غلبه میکند؛ درسِ
+// r334/r338 که داوریِ همین راند زنده ثابت کرد) نشانه میرود و جدولِ
+// بیِ آن واژه ساکتِ صادق میماند (گاردِ عضویت روی دادهٔ خودِ جدول —
+// r236). شاخصِ سطرها شناسهٔ پایدارِ DOMِ سطرِ میزبان است
+// (wf-row-<tid>-<idx>) که اسکرولِ عمیقِ ضمیمه به آن تکیه میکند.
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { WordFamilyTable } from "@/data/word-families";
 import { wordFamilyTableId } from "@/data/word-families";
 import { faNum } from "@/lib/study-theme";
@@ -113,6 +122,7 @@ export default function WordFamilyTableCard({
   tableTotal,
   onToggleUnusedLens,
   unusedLensOn,
+  focusRowWord,
 }: {
   table: WordFamilyTable;
   /** درسِ مرتبط از WF_TABLE_ID_TO_LESSON — نبودش = بی‌چیپ («درس چهارمِ دهم»
@@ -140,6 +150,10 @@ export default function WordFamilyTableCard({
   onToggleUnusedLens?: () => void;
   /** وضعیتِ فعلیِ لنزِ معکوس در میزبان — aria-pressed و حالتِ پرشدهٔ فعال. */
   unusedLensOn?: boolean;
+  /** r428 — لنگرِ سطری: خودِ واژهٔ خانواده (سلولِ انگلیسیِ واقعی)؛ سطرِ
+   *  حاویِ آن پالسِ زمردیِ ۱٫۶ثانیهای میگیرد. بیِ واژه یا واژهٔ بیگانه:
+   *  هیچ — نه اسکرولِ برساخته، نه کلاسِ برساخته (r236). */
+  focusRowWord?: string;
 }) {
   // راند ۲۵۵ — هدفِ دیالوگِ مشترکِ «کاربرد در جزوه» برایِ همین جدول
   const [usage, setUsage] = useState<WordUsageTarget | null>(null);
@@ -149,6 +163,40 @@ export default function WordFamilyTableCard({
   const usedIdx = useMemo(() => new Set(census.usedFamilyIdx), [census]);
   // راند ۲۵۹ — نیمهٔ پنهانِ سرشماری؛ هم در spanِ r258 و هم در دکمهٔ نو
   const unusedFamilies = census.totalFamilies - census.usedFamilies;
+  // r428 — پالسِ سطری (همان ایدئومِ timerِ بیرونِ cleanupِ r234/r427):
+  // کپیِ prop به استیتِ درونی تا پاکشدنِ لنگرِ میزبان پالسِ تازهراهافتاده
+  // را نکشد؛ پرشِ دوباره تایمرِ قبلی را پیشِ راهاندازیِ تازه پاک میکند.
+  const pulseIdx = useMemo(() => {
+    if (!focusRowWord) return -1;
+    return table.families.findIndex((f) =>
+      [f.noun, f.verb, f.adjective, f.adverb].includes(focusRowWord),
+    );
+  }, [focusRowWord, table]);
+  const [pulseRowIdx, setPulseRowIdx] = useState<number>(-1);
+  const pulseTimerRef = useRef<number | null>(null);
+  useEffect(() => {
+    if (pulseIdx < 0) return;
+    // پالس درونِ rAF (ایدئومِ r234/r427 — setStateِ همگام در effect ممنوع):
+    // پاکشدنِ لنگرِ میزبان (prop ← undefined ← cleanup) نباید تایمرِ
+    // تازهراهافتاده را بکشد؛ پرشِ دوباره تایمرِ قبلی را پیشِ راهاندازیِ
+    // تازه پاک میکند.
+    const raf = requestAnimationFrame(() => {
+      setPulseRowIdx(pulseIdx);
+      if (pulseTimerRef.current !== null) window.clearTimeout(pulseTimerRef.current);
+      pulseTimerRef.current = window.setTimeout(() => {
+        pulseTimerRef.current = null;
+        setPulseRowIdx(-1);
+      }, 1600);
+    });
+    return () => cancelAnimationFrame(raf);
+  }, [pulseIdx]);
+  // خاموشیِ پالس هنگامِ پیادهشدن از جدول — فقط unmount
+  useEffect(
+    () => () => {
+      if (pulseTimerRef.current !== null) window.clearTimeout(pulseTimerRef.current);
+    },
+    [],
+  );
   return (
     // لنگرِ اسکرولِ عمیق (r224) — scroll-mt برای فاصلهٔ هدرِ چسبان
     <div id={`wf-table-${wordFamilyTableId(table)}`} className="scroll-mt-24 overflow-hidden rounded-2xl border c-card shadow-sm">
@@ -255,8 +303,26 @@ export default function WordFamilyTableCard({
               const isUsed = usedIdx.has(fi);
               if (usedOnly && !isUsed) return null; // لنزِ کاربرددارها (r256)
               if (unusedOnly && isUsed) return null; // لنزِ معکوس (r257)
+              const isPulseRow = pulseRowIdx === fi; // r428 — پالسِ زمردیِ سطری
               return (
-              <tr key={`${table.vision}-${table.lesson}-${fi}`} className={fi % 2 === 0 ? "bg-white" : "bg-stone-50"}>
+              <tr
+                key={`${table.vision}-${table.lesson}-${fi}`}
+                id={`wf-row-${wordFamilyTableId(table)}-${fi}`}
+                className={`${
+                  // r431 — قراردادِ «جایگزین، نه اضافه» رویِ زبرا: سطرِ پالس‌دار
+                  // هرگز bg-white/bg-stone-50 را همزمان حمل نمیکند — در CSSِ
+                  // کامپایلشده هر دو Utilityِ زبرا **پسِ** bg-emerald-50 میآیند
+                  // (همان لایه، همان ویژگی) و با هم-سطحیِ خاصیت، زبرا برنده
+                  // میشد — پالسِ روشنِ زمردی زیرِ زبرا دفن بود (تلهٔ r430 این
+                  // بار برایِ bg؛ شاهدِ ایستایِ ترتیبِ کامپایل).
+                  isPulseRow
+                    // روشن: هستهٔ زمردیِ r234؛ شب: wf-row-pulseِ اسکوپشدهٔ globals
+                    ? "bg-emerald-50 shadow-[inset_0_0_0_2px] shadow-emerald-300 wf-row-pulse transition-[background-color,box-shadow]"
+                    : fi % 2 === 0
+                      ? "bg-white"
+                      : "bg-stone-50"
+                }`}
+              >
                 <td className="px-3 py-2 text-[12.5px] font-semibold text-stone-700">
                   {f.fa || <span className="font-normal text-stone-300">—</span>}
                 </td>

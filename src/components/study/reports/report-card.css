@@ -1,0 +1,71 @@
+/* report card dialog (کارنامه) — extracted from the r12 band of
+   src/app/globals.css (§8.3 per-feature extraction, wave 1 — task 133).
+   Always loaded via the src/app/features.css manifest; cascade-isolation
+   proven by the wave-1 scan. Owner: reports/report-card.tsx (weekly-report
+   renders INSIDE .report-paper, so these cover it too). The PRINT band
+   (body.print-report … !important) stays in globals.css and wins regardless
+   of order. */
+
+/* ---------------- report card dialog dark ---------------- */
+.dark .report-dialog { background-color: #1c1917; border-color: #44403c; }
+.dark .report-paper { background-color: #1c1917; }
+.dark .report-band {
+  background-image: linear-gradient(to left, #065f46, #047857, #0d9488);
+}
+.dark .report-week,.dark .report-digest { background-color: rgb(28 25 23 / 0.7); border-color: #44403c; }
+.dark .report-week .bg-stone-200 { background-color: #44403c; }
+/* Task-37 «هفته‌نامه» — digest band mirrors the weekly band tuning;
+   r87 retarget: the four digest strips migrated onto c-veil-60/70 — the
+   deviating stone-800/0.6 painter follows the classes, byte-identical. */
+.dark .report-digest .c-veil-60,
+.dark .report-digest .c-veil-70 { background-color: rgb(41 37 36 / 0.6); }
+.dark .report-digest .border-stone-200 { border-color: #44403c; }
+/* r90 retarget: the report day dot migrated onto c-track-60 — painter byte-identical */
+.dark .report-digest .c-track-60 { background-color: rgb(68 64 60 / 0.6); }
+.dark .report-digest .bg-stone-300 { background-color: #57534e; }
+.dark .report-digest .bg-emerald-200\/60 { background-color: rgb(6 78 59 / 0.5); }
+.dark .report-digest .border-emerald-600 { border-color: #10b981; }
+.dark .report-digest .border-stone-300 { border-color: #57534e; }
+.dark .report-track { background-color: #292524; }
+.dark .report-best li { background-color: #292524; border-color: #44403c; }
+.dark .report-paper .bg-orange-50 { background-color: rgba(88, 44, 14, 0.45); }
+.dark .report-foot {
+  background-color: rgba(6, 55, 40, 0.35);
+  border-color: rgb(6 95 70 / 0.6);
+}
+.dark .report-foot .text-emerald-800 { color: #a7f3d0; }
+
+/* ---------------- monthly report band (§8.3 wave 3 — task 137) ----------------
+   Verbatim from the r14 band of globals.css — owner: reports/report-card.tsx
+   (the monthly block renders inside the report dialog). */
+/* monthly report band */
+.dark .report-month { background-color: rgb(28 25 23 / 0.6); border-color: #37312b; }
+.dark .report-month .text-stone-700 { color: #d6d3cf; }
+.dark .report-month .text-stone-400 { color: #716b63; }
+/* the «جمع کل» teal chip retired onto c-wash-teal-deep (tranche 4 phase 10,
+   task 130) — 0.6, one step DEEPER than the panel grade (0.5): it sits on
+   the month block's own translucent surface. */
+.dark .report-month [class*="bg-stone-200"] { background-color: rgb(55 49 43 / 0.7); }
+
+/* ---------------- report print button (dark) ---------------- */
+/* §8.3 wave 6 (task 143): the last single-owner report residue in globals
+   moved verbatim beside its owner. Emerald-border button tuned for the dark
+   dialog: stone-900 surface + emerald-800 border (0.6) + emerald-300 ink;
+   hover one step lighter (emerald-950 at 0.6). The body.print-report print
+   band stays in globals.css per the wave-1 protocol (print wins wherever
+   it lives). */
+.dark .report-print-btn { background-color: #1c1917; border-color: rgb(4 120 87 / 0.6); color: #6ee7b7; }
+.dark .report-print-btn:hover { background-color: rgb(6 44 34 / 0.6); }
+
+/* ---------------- clickable coverage rows (r414) ----------------
+   ردیف‌های «پوشش شش جزوه» اکنون دکمه‌اند: پرش به همان جزوه در کتابخانه.
+   Light mode via tailwind (hover:bg-stone-50 / active:bg-stone-100) on the
+   button itself; these dark painters follow the house idiom (manual .dark
+   painters in this file — tailwind dark: variants are not used in reports/
+   tsx). Specificity (0,3,1) wins over the tailwind hover utility (0,2,0),
+   same byte-order guarantee as every painter above. The chevron retunes
+   from stone-300 (light) to stone-600-grade ink so it stays quiet on the
+   dark paper until hover reveals it. */
+.dark .report-books button:hover { background-color: rgb(41 37 36 / 0.55); }
+.dark .report-books button:active { background-color: rgb(41 37 36 / 0.75); }
+.dark .report-books button .report-chev { color: #57534e; }

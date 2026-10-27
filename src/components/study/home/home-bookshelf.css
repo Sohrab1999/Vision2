@@ -1,0 +1,24 @@
+/* §8.3 wave 10 (task 151) — the bookshelf family, verbatim from globals.css
+   (owner: home-bookshelf.tsx — the ONLY consumer of all four rules:
+   two theme-free spine rules + two dark shelf gradients).
+   The .dark .shelf-* background-image rules carry !important because the
+   spines strip/edge elements always carry a light utility gradient
+   (bg-gradient-to-b from-stone-*) — in dark mode this painter overrides it.
+   !important is position-free; features.css loads right after globals.css
+   (wave-1 isolation scan: no equal-specificity competition). */
+
+/* ---------------- book spine hover (theme-free) ---------------- */
+.book-spine {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.book-spine:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 32px -12px rgb(0 0 0 / 0.25);
+}
+
+/* ---------------- dark shelf gradients ----------------
+   the light utility gradients (from-stone-100/to-stone-50 on the strip,
+   from-stone-300/to-stone-400 on the edge) stay on the elements — dark
+   repaints them through these !important painters, exactly as globals did */
+.dark .shelf-strip { background-image: linear-gradient(to bottom, #1c1917, #0f0d0c) !important; }
+.dark .shelf-edge { background-image: linear-gradient(to bottom, #3d372f, #26221d) !important; }

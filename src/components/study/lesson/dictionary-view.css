@@ -1,0 +1,20 @@
+/* Dictionary view (دیکشنری واژگان) — dark-mode family — extracted from
+   src/app/globals.css (§8.3 per-feature extraction, wave 9 — task 149):
+   the three "dictionary state filter chips" rules, verbatim.
+   Owner: src/components/study/lesson/dictionary-view.tsx — the only
+   dict-state-chip consumer in the codebase (the chips render the
+   state-filter row; the count badge inside an inactive chip is the
+   [class*="bg-stone-200"] descendant target).
+   Always loaded via the src/app/features.css manifest (lazy view keeps
+   zero first-paint risk); cascade isolation by construction — no
+   equal-specificity competitor for these heads outside the band.
+   The .dark .dict-state-chip.bg-stone-100 ink member STAYS in globals
+   (~line 604): it belongs to the cross-family text-stone-600 canonical
+   group (nine families, §8.3) — not to this family alone.
+   Print band wins via !important; @utility defs lose to unlayered author
+   rules regardless of position. */
+
+/* ============ Dictionary — state filter chips (dark) ============ */
+.dark .dict-state-chip.bg-stone-100:hover { background-color: #37312b; }
+.dark .dict-state-chip [class*="bg-stone-200"] { background-color: rgb(60 55 49 / 0.95); color: #a8a29e; }
+.dark .dict-state-chip.bg-stone-700 { background-color: #57534e; }

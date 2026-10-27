@@ -145,7 +145,7 @@ describe("appendix-drill-view r413 — بانکِ خطایِ ماندگار", ()
   it("معرفی: بی‌رکورد هیچ ادعایی؛ با رکورد چیپِ رزگونِ «N موردِ خطای ثبتشده»", () => {
     useStudy.setState({
       drillMistakes: {
-        verbs: { go: { wrong: 2, lastDay: "2026-10-25" }, come: { wrong: 1, lastDay: "2026-10-24" } },
+        verbs: { go: { wrong: 2, ok: 0, lastDay: "2026-10-25", lastOkDay: "" }, come: { wrong: 1, ok: 0, lastDay: "2026-10-24", lastOkDay: "" } },
       },
     });
     render(<AppendixView />);
@@ -172,7 +172,7 @@ describe("appendix-drill-view r413 — بانکِ خطایِ ماندگار", ()
 
   it("چیپِ خطا مالِ بانکِ خودش است — بانکِ دیگر چیپِ این را نمیگیرد", () => {
     useStudy.setState({
-      drillMistakes: { phonemes: { "æ": { wrong: 1, lastDay: "2026-10-25" } } },
+      drillMistakes: { phonemes: { "æ": { wrong: 1, ok: 0, lastDay: "2026-10-25", lastOkDay: "" } } },
     });
     render(<AppendixView />);
     openVerbsTab();

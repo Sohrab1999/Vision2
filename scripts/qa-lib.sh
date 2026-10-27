@@ -66,6 +66,14 @@ qa_seed_guard(){ local R; R=$(agent-browser eval "(()=>{const t=document.body.in
   echo "-- [seed-guard] $R" | tee -a "$OUT"; [ "$R" = "SEED-OK" ]
 }
 
+# r440 — گاردِ موبایل (ارتقای درسِ r439 به مالکِ کتابخانه — بدونِ کپیِ موازی):
+# زیرِ ۴۲۰px هدر نامِ یادگیرنده را از متنِ صفحه پنهان میکند
+# (header-resume-button: hidden … min-[420px]:inline) — پس نام از RAWِ خودِ
+# حالت (state.userName) میآید، نه از متنِ پنهانشده. شبکهٔ خانه هم زنده باشد.
+qa_seed_guard_mobile(){ local R; R=$(agent-browser eval "(()=>{const raw=JSON.parse(localStorage.getItem('vision2-study-v1')||'{}');const nm=(raw.state&&raw.state.userName)||'';const hasGrid=!!document.querySelector('[aria-label=\"ابزارهای یادگیری\"]');return (nm==='آرش-قهرمان'&&hasGrid)?'SEED-OK-MOBILE':'SEED-MISS-MOBILE:'+JSON.stringify({nameOK:nm==='آرش-قهرمان',hasGrid});})()" 2>/dev/null | tr -d '"')
+  echo "-- [seed-guard-mobile] $R" | tee -a "$OUT"; [[ "$R" == SEED-OK-MOBILE ]]
+}
+
 qa_ensure_alive(){
   local R; R=$(agent-browser eval "(()=>JSON.stringify({len:(document.body.innerText||'').length}))()" 2>/dev/null)
   echo "$R" | rg -q '"len"' && return 0

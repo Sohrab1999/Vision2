@@ -252,7 +252,7 @@ describe("اجرا — پرشِ همان‌جایی که کارت میپرد —
 
 describe("قفلهایِ ساختاری — r368 ④", () => {
   it("⑪ رجیستریِ رویدادها ۵۲ میماند + پالت از تک‌منبع تغذیه میشود نه فهرستِ دستی", () => {
-    expect(EVENT_NAMES.length).toBe(52);
+    expect(EVENT_NAMES.length).toBe(55); // r423 +۱ — کارتِ تصویریِ تقویمِ هفته؛ r424 +۱ — هم‌رسانیِ بومیِ همان کارت (دوقلویِ r306)؛ r425 +۱ — پرشِ خانهٔ امروزِ نوارِ هفته
     const src = readFileSync(join(process.cwd(), "src/components/study/shell/command-palette.tsx"), "utf8");
     expect(src).toContain("RETURN_CLUSTER_DOORS.filter");
     expect(src).toContain('group: "درهای خانه"');

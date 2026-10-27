@@ -10,7 +10,7 @@
 
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { Sparkles, TrendingDown, TrendingUp, Minus, CalendarHeart, Check, Compass, Snowflake, Swords, Timer, ImageDown, Share2, Loader2, CalendarClock, CalendarDays, Gauge, FileDown, BarChart3, Award, BookMarked, Flame } from "lucide-react";
+import { Sparkles, TrendingDown, TrendingUp, Minus, CalendarHeart, Check, Compass, Snowflake, Swords, Timer, ImageDown, Share2, Loader2, CalendarClock, CalendarDays, CalendarRange, Gauge, FileDown, BarChart3, Award, BookMarked, Flame, ListChecks } from "lucide-react";
 import { useStudy, daysAgoKey } from "@/lib/study-store";
 import { faNum, secFa, percentFa } from "@/lib/study-theme";
 import { percentFromRate } from "@/lib/domain/percent"; // r388 — نرخ→درصد از مالک؛ هم آستانه و هم نرخِ زنده یک قدم
@@ -20,16 +20,29 @@ import { buildCoverageMap } from "@/lib/coverage-map";
 import { LESSONS_META } from "@/data/lesson-meta";
 import { computeWeeklyDigest, faWeekday, faDayLabel, DUEL_QUICK_WEEK, type Delta, type QuickWeekProfile } from "@/lib/weekly-digest";
 import { freezeDayMark, freezeLedgerMeta } from "@/lib/freeze-badge";
-import { downloadWeeklyImage, buildWeeklyBlob, type WeeklyImageOpts, imageFailToast } from "@/lib/result-image";
+import { downloadWeeklyImage, buildWeeklyBlob, downloadWeekCalendarImage, buildWeekCalendarBlob, type WeeklyImageOpts, type WeekCalendarImageOpts, imageFailToast } from "@/lib/result-image";
 import { blobToFile, shareImageFile, type ShareOutcome } from "@/lib/share-card";
 import { trackEvent } from "@/lib/analytics";
 import { downloadProgressCsv, downloadWeeklyTrendCsv, downloadMonthCsv } from "@/lib/progress-csv";
 import { fileFailToast } from "@/lib/file-download";
+import { buildDrillCalendarAllRows, buildDrillWeekAgendaFromRows, buildDrillWeekCalendarCells, downloadDrillCalendarAllCsv, downloadDrillWeekAgendaCsv, DRILL_WEEK_WINDOW, type DrillWeekAgenda, type DrillWeekAgendaRow } from "@/lib/drill-calendar-csv"; // r420/r421/r422/r423 — تقویمِ همهٔ بانکها + برشِ هفتهٔ پیشِ رو + خانههایِ مشترکِ نوار/کارت (CSV و نوار و PNG)؛ r433 — پنجرهٔ هفته برایِ ترکیبِ بانکیِ خانههایِ آینده
+import { DRILL_BANK_ORDER, drillBankTitle, drillLabelFor, drillJumpAnchorFor } from "@/lib/drill-label-atlas"; // r420 — اطلسِ برچسب/عنوان/ترتیب؛ r425 — لنگرِ پرشِ خانهٔ امروز
 import { storiesReadSince } from "@/lib/library-progress";
 import { storyStreak } from "@/lib/library-streak";
 import { monthReads } from "@/lib/library-month";
 import { storyById, HILL_TOTAL_STORIES } from "@/data/hill-stories";
 import { useToast } from "@/hooks/use-toast";
+
+/**
+ * r422 — زبانِ «نزدیکترین بازگشتِ پس از هفته» — همان گویشِ چیپِ آسمانیِ
+ * r417 (فاصلهٔ ۱ = «فردا»، بقیه = «X روزِ دیگر»)؛ هفتهٔ تهیِ بدونِ دنباله
+ * (نمی‌افتد — itemCount=۰ یعنی همهٔ ردیفها دورترند) عقب‌افتِ صادق دارد.
+ */
+const nearestAfterWeekLabel = (agenda: DrillWeekAgenda): string => {
+  const tail = agenda.rows.find((r) => r.kind === "afterWeek");
+  if (!tail || tail.kind !== "afterWeek") return "—";
+  return tail.nearestDaysUntil === 1 ? "فردا" : `${faNum(tail.nearestDaysUntil)} روزِ دیگر`;
+};
 
 const DELTA_META: { field: Delta["field"]; label: string; cls: string }[] = [
   // r329 — مقیاسِ -۶۰۰ رویِ ظرفِ نقابِ کاشیها زیرِ ۴٫۵ می‌ماند (کهربایِ ۳٫۱۷ ·
@@ -111,7 +124,84 @@ function findNextStep(
   return null;
 }
 
-export default function WeeklyReportSection() {
+// r433 — زبانِ نشانگرِ خانهٔ آیندهٔ نوار (پیشنهادِ ②ِ r432): کشفپذیریِ
+// بیِ شلوغیِ بصری — فقط title/aria، هیچ رنگ یا رندرِ نو. روزِ تکبانکیِ
+// آینده نامِ رسمیِ بانک را از اطلس میگوید (داده از همان memoِ هفته —
+// تکمنبع، صفر شمارشِ موازی؛ شمارِ خانه همچنان از dayTotalِ weekCells
+// میآید)، روزِ چندبانکی گویشِ «در M بانک»ِ r425 را — و بانکِ ناشناس
+// (عنوانِ تهیِ اطلس) هیچ تمرینی وعده نمیدهد (r236 — نه کلیدِ خام،
+// نه نامِ برساخته). روزِ بیبازگشت همان سکوتِ r422 را میماند.
+const futureCellTitle = (label: string, count: number, bankIds: readonly string[]): string => {
+  if (count <= 0) return `${label} — بیِ بازگشت`;
+  if (bankIds.length === 1) {
+    const t = drillBankTitle(bankIds[0]);
+    if (t) return `${label} — ${faNum(count)} موردِ بازگشت — تمرینِ ${t}`;
+  }
+  if (bankIds.length > 1) {
+    return `${label} — ${faNum(count)} موردِ بازگشت در ${faNum(bankIds.length)} بانک`;
+  }
+  return `${label} — ${faNum(count)} موردِ بازگشت`;
+};
+
+/**
+ * r434 — نامِ نزدیکترینِ «پس از هفته» (پیشنهادِ ①ِ r433): عینِ خانوادهٔ
+ * گویشِ r433 — تکبانکِ شناخته نامِ رسمی میگوید («تمرینِ X»)، روزِ
+ * چندبانکیِ نزدیک «در M بانک» میگوید (r425) و بانکِ ناشناس شمارِ صادق
+ * بیِ نامِ برساخته (r236 — نه کلیدِ خام نه نامِ ساختگی). داده از سطرِ
+ * afterWeekِ خودِ agenda میآید (تکمن-source — همین memoِ هفته؛ شمارِ
+ * کلِ دنباله همچنان مالِ afterCount)؛ عنوانِ بانک از اطلسِ میزبان.
+ * کارتِ PNG (r423) دستنخورده میماند: afterLabelِ آن همچنان فقط «کی»
+ * را میگوید — برچسبِ بانکِ کارت حکمِ معلقِ ③ است (REQUIRES-JUDGEMENT).
+ */
+const nearestAfterWeekName = (tail: Extract<DrillWeekAgendaRow, { kind: "afterWeek" }>): string => {
+  if (tail.nearestBankIds.length === 1) {
+    const t = drillBankTitle(tail.nearestBankIds[0]);
+    if (t) return `تمرینِ ${t}`;
+  }
+  if (tail.nearestBankIds.length > 1) {
+    return `${faNum(tail.nearestCount)} مورد در ${faNum(tail.nearestBankIds.length)} بانک`;
+  }
+  return `${faNum(tail.nearestCount)} مورد`;
+};
+
+/**
+ * r436 — جملهٔ نامِ نزدیکترینِ پس از هفته — تکمن-sourceِ گویشِ مشترکِ
+ * toastِ دانلودِ تقویمِ هفته (r435) و ariaِ دکمهٔ دانلودِ هفته (پیشنهادِ
+ * ②ِ r435 — داوریِ ارزش: تنها دروازهٔ خروجیِ هفته که دنبالهٔ پس از هفته
+ * را در aria گفت نمی‌کرد؛ کاربرِ صفحه‌خوان فقط شمارِ درونِ پنجره را
+ * میشنید در حالی که پروندهای که میگیرد سطرِ دنباله دارد): عینِ
+ * خانوادهٔ r433/r434 — تکبانکِ شناخته «تمرینِ X»، چندبانکِ همروز «N مورد
+ * در M بانک» (r425)، بانکِ ناشناس شمارِ صادقِ بیِ کلیدِ خام (r236).
+ * پیشوندِ قفلشدهٔ r421 («دانلود تقویم هفتهٔ پیشِ رو CSV — N ردیفِ این
+ * هفته») دستنخورده میماند — جمله فقط ضمیمه میشود و بیِ دنباله هیچ
+ * جمله‌ای نیست (وعدهٔ بیپشتوانه ممنوع، r236).
+ */
+const afterWeekNaming = (
+  agenda: DrillWeekAgenda,
+  tail: Extract<DrillWeekAgendaRow, { kind: "afterWeek" }>,
+): string => `نزدیکترین بازگشت پس از هفته: ${nearestAfterWeekName(tail)}، ${nearestAfterWeekLabel(agenda)}`;
+
+/**
+ * r435 — گویشِ نام در toastِ دانلودِ تقویمِ هفته (پیشنهادِ ②ِ r434):
+ * توستِ لحظهٔ دانلود روایتگرِ همان هفتهای است که ذخیره میشود — و از
+ * r434 نما (دنباله و نوارِ آرام) «چه» را هم میگوید؛ toast هم به همان
+ * خانوادهٔ گویش میپیوندد تا لحظهٔ خروج از نما، نامِ نزدیکترین بازگشتِ
+ * پس از هفته گم نشود. از r436 جمله از afterWeekNaming می‌خورد —
+ * تکمن-source با ariaِ دکمه. هفتهٔ تمام و کمال (بیِ دنباله) بیِ جمله
+ * میماند — وعدهٔ بیپشتوانه ممنوع (r236). جمله گذراست (۳ ثانیه) — هیچ
+ * سطرِ همیشگیِ نما اضافه نمیشود؛ خودِ پرونده هم دستنخورده میماند
+ * (قراردادِ سطریِ r421).
+ */
+const weekToastDescription = (
+  agenda: DrillWeekAgenda,
+  tail: Extract<DrillWeekAgendaRow, { kind: "afterWeek" }> | null,
+): string => {
+  const base = `${faNum(agenda.itemCount)} ردیف در ${faNum(agenda.dayCount)} روزِ پیشِ رو — آمادهٔ اکسل.`;
+  if (!tail) return base;
+  return `${base} ${afterWeekNaming(agenda, tail)}.`;
+};
+
+export default function WeeklyReportSection({ onLeaveReport }: { onLeaveReport?: () => void } = {}) {
   const dayHistory = useStudy((s) => s.dayHistory);
   const history = useStudy((s) => s.history);
   const results = useStudy((s) => s.results);
@@ -140,6 +230,9 @@ export default function WeeklyReportSection() {
   // قلابِ خانواده (use-badge-census) کوچید؛ سیگنالهایِ فقطسرشماری اینجا
   // دیگر سلکت نمی‌شوند — منبعِ یگانه، هیچ ارزیابیِ موازی‌ای.
   const [imgBusy, setImgBusy] = useState(false);
+  // r424 — کمربندِ هم‌رسانیِ جفتِ تقویمِ هفته (الگویِ shareBusyِ r306):
+  // یک شیتِ سیستم در هر لحظه؛ کمربندِ بوم (imgBusy) هم اثر میکند.
+  const [weekCalShareBusy, setWeekCalShareBusy] = useState(false);
   const { toast } = useToast();
 
   // تسک ۱۷۸ — خروجی‌های CSV (بازسازیِ ۱۶۹ + روندِ تازه): هم‌روزِ دایجست
@@ -175,6 +268,229 @@ export default function WeeklyReportSection() {
       // the success toast stays this gate's own dialect.
       fileFailToast();
     }
+  };
+
+  // r420 — تقویمِ همهٔ بانکها (پیشنهادِ ②ِ r418): یک فایل برایِ همهٔ ردیفهایِ
+  // زندهٔ SRS، بلوکهایِ بانکی به ترتیبِ رسمیِ اطلس؛ برچسبها از اطلس (مالکِ
+  // یگانهٔ r403). دکمه فقط با ردیفِ زنده بالا میآید (r236 — تقویمِ تهی
+  // ادعایِ بیپشتوانه است — عینِ r418)؛ روزِ لنگر همانِ همکارانِ خودِ این
+  // نوار (daysAgoKey(0)) است.
+  const drillMistakes = useStudy((s) => s.drillMistakes);
+  const calendarAllRows = useMemo(
+    () =>
+      buildDrillCalendarAllRows(drillMistakes, daysAgoKey(0), {
+        labelFor: drillLabelFor,
+        titleFor: drillBankTitle,
+        order: DRILL_BANK_ORDER,
+      }),
+    [drillMistakes],
+  );
+  const saveAllCalendarCsv = () => {
+    if (calendarAllRows.length === 0) return; // دکمهٔ بیردیف رخ نمیدهد — گاردِ صادق
+    const ok = downloadDrillCalendarAllCsv(calendarAllRows, daysAgoKey(0));
+    if (ok) {
+      const banks = new Set(calendarAllRows.map((r) => r.bankId)).size;
+      toast({
+        title: "🗓 تقویمِ همهٔ تمرینها ذخیره شد",
+        description: `${faNum(calendarAllRows.length)} ردیفِ زنده از ${faNum(banks)} بانک با روزِ بازگشت — آمادهٔ اکسل.`,
+        duration: 3000,
+      });
+    } else {
+      // r398 — جفتِ شکست نامدار؛ موفقیتِ اینجا گویشِ خودش را دارد
+      fileFailToast();
+    }
+  };
+
+  // r421 — تقویمِ هفتهٔ پیشِ رو (پیشنهادِ ③ِ r418): برشِ ۷روزهٔ همان
+  // اطلس — ورودیاش سطرهایِ آمادهٔ r420 است (تکمنبع، دو بار عبور از
+  // بانکها نه). دکمه فقط با ردیفِ درونِ پنجره بالا میآید (r236) —
+  // هفتهای که فقط «پس از هفته» دارد، وعدهٔ بیپشتوانه است.
+  const weekAgenda = useMemo(
+    () => buildDrillWeekAgendaFromRows(calendarAllRows),
+    [calendarAllRows],
+  );
+  // r423 — هفت خانهٔ مشترک: نوارِ نما (r422) و کارتِ PNG هر دو از همین
+  // memo میخوانند — تکمنبعِ buildDrillWeekCalendarCells، صفر شمارشِ موازی
+  const weekCells = useMemo(
+    () => buildDrillWeekCalendarCells(weekAgenda, (k) => daysAgoKey(-k)),
+    [weekAgenda],
+  );
+  // r434 — سطرِ دنبالهٔ «پس از هفته» از همین memo (تکمن-source): نامِ
+  // نزدیکترین در titleِ دنباله و نوارِ آرامِ هفتهٔ خالی میگوید — شمارِ
+  // کلِ دنباله همچنان مالِ afterCountِ خودِ agenda است.
+  const afterWeekTail = useMemo(
+    () =>
+      weekAgenda.rows.find(
+        (r): r is Extract<DrillWeekAgendaRow, { kind: "afterWeek" }> => r.kind === "afterWeek",
+      ) ?? null,
+    [weekAgenda],
+  );
+  // r425 — مقصدِ خانهٔ امروز (پیشنهادِ ②ِ r422): از همین memoِ هفته
+  // میخواند (سطرهایِ item با daysUntil=۰ = سررسیدهایِ امروز — تکمنبع،
+  // صفر شمارشِ موازی). خانهٔ امروز فقط با «مقصدِ یگانه» دکمه میشود:
+  // یک بانکِ امروز + لنگرِ حلشده از اطلس؛ امروزِ چندبانکی ساکتِ صادق
+  // میماند با گویشِ خودش («در M بانک — هر بانک در میزبانِ خودش») و
+  // بانکِ ناشناس/پایهٔ حلنشده هم هیچ مقصدی وعده نمیشود (r236).
+  const todayTarget = useMemo(() => {
+    const items = weekAgenda.rows
+      .filter((r): r is Extract<DrillWeekAgendaRow, { kind: "item" }> => r.kind === "item" && r.item.daysUntil === 0)
+      .map((r) => r.item);
+    if (items.length === 0) return null;
+    const bankIds = [...new Set(items.map((r) => r.bankId))];
+    if (bankIds.length !== 1) {
+      return { kind: "multi" as const, count: items.length, banks: bankIds.length };
+    }
+    const bankId = bankIds[0];
+    const anchor = drillJumpAnchorFor(bankId, items[0].base);
+    if (!anchor) return null; // بانکِ ناشناس/پایهٔ حلنشده — ساکتِ صادق
+    return { kind: "jump" as const, count: items.length, bankId, title: drillBankTitle(bankId), anchor };
+  }, [weekAgenda]);
+  // r432 — سررسیدهایِ امروز به تفکیک بانک — حکمِ معلقِ ناوبریِ چندبانکی (از r425):
+  // خانهٔ امروزِ نوار فقط برایِ تکبانک دکمه دارد و روزِ چندبانکی ساکتِ صادق
+  // میماند (r236) — یادگیرنده هیچ پرشی نداشت. فهرستِ زیرِ نوار همان حکم را
+  // به شکلِ فهرست میبندد: هر بانک یک سطر با پرشِ خودش. فقط در روزِ چندبانکی
+  // بالا میآید (تکبانک را خودِ خانهٔ نوار میپوشاند — صفر افزونگی) و ترتیبش
+  // ترتیبِ رسمیِ بلوکهایِ r420 است (از همین memoِ تکمنبع — صفر شمارشِ موازی).
+  // بانکِ بیلنگر سطرِ شمارِ بدونِ پرش میگیرد — هیچ مقصدِ بیپشتوانهای وعده نمیشود (r236).
+  // r433 — ترکیبِ بانکیِ خانههایِ آینده (k≥۱ — امروز گویشِ خودش را دارد:
+  // r425 تکبانک/چندبانکیِ خودش): از همین memoِ weekAgenda (تکمنبع) فقط
+  // «چه بانکهایی» میآید نه شمار — شمارِ خانه مالِ weekCells میماند.
+  const futureCellMeta = useMemo(() => {
+    const byDay = new Map<number, string[]>();
+    for (const r of weekAgenda.rows) {
+      if (r.kind !== "item" || r.item.daysUntil < 1 || r.item.daysUntil > DRILL_WEEK_WINDOW) continue;
+      const arr = byDay.get(r.item.daysUntil);
+      if (arr) {
+        if (!arr.includes(r.item.bankId)) arr.push(r.item.bankId);
+      } else {
+        byDay.set(r.item.daysUntil, [r.item.bankId]);
+      }
+    }
+    return byDay;
+  }, [weekAgenda]);
+  const todayBankRows = useMemo(() => {
+    const items = weekAgenda.rows
+      .filter((r): r is Extract<DrillWeekAgendaRow, { kind: "item" }> => r.kind === "item" && r.item.daysUntil === 0)
+      .map((r) => r.item);
+    const byBank = new Map<string, typeof items>();
+    for (const it of items) {
+      const arr = byBank.get(it.bankId) ?? [];
+      arr.push(it);
+      byBank.set(it.bankId, arr);
+    }
+    if (byBank.size < 2) return []; // تکبانک — خانهٔ نوار خودش پرش دارد
+    return [...byBank.entries()].map(([bankId, its]) => ({
+      bankId,
+      title: drillBankTitle(bankId),
+      count: its.length,
+      anchor: drillJumpAnchorFor(bankId, its[0].base),
+    }));
+  }, [weekAgenda]);
+  // r425 — پرشِ خودِ خانه: همان پریمیتیوهایِ ناوبریِ موجود (r234/r235/r221/r224/r361
+  // — هیچ پریمیتیوِ نو) + رویدادِ drill_due_jump (خانوادهٔ srs_due_pill/discovery_jump
+  // — پرشهایِ واقعی ثبت میشوند) + بستنِ کارنامه با onLeaveReport (پرش زیرِ دیالوگ
+  // دیده میشود، نه پشتِ آن). «پرش ≠ نوشتن» — هیچ جلسهای خودکار شروع نمیشود؛
+  // یادگیرنده پشتِ درِ میزبان میایستد و خودش تمرین را میزند.
+  const openAppendixVerb = useStudy((s) => s.openAppendixVerb);
+  const openAppendixPhoneme = useStudy((s) => s.openAppendixPhoneme);
+  const openAppendixPosTable = useStudy((s) => s.openAppendixPosTable);
+  const openAppendixAbbrev = useStudy((s) => s.openAppendixAbbrev);
+  const openAppendixTopic = useStudy((s) => s.openAppendixTopic);
+  const openLessonTab = useStudy((s) => s.openLessonTab);
+  const openDictionaryWord = useStudy((s) => s.openDictionaryWord); // r430 — عمقِ سطریِ دیکشنری
+  // r432 — بدنهٔ پرش یکسان برایِ خانهٔ امروز و سطرهایِ فهرستِ بانکها —
+  // تکمالکِ نگاشتِ لنگر→ناوبری؛ هیچ پریمیتیوِ نو (r234/r235/r221/r224/r361).
+  const doJump = (a: NonNullable<ReturnType<typeof drillJumpAnchorFor>>) => {
+    if (a.kind === "verbBase") openAppendixVerb(a.id);
+    else if (a.kind === "phonemeId") openAppendixPhoneme(a.id);
+    else if (a.kind === "posTableId") openAppendixPosTable(a.id, a.word); // r428 — عمقِ سطری: سطرِ خانواده در دید با پالس
+    else if (a.kind === "abbrevSym") openAppendixAbbrev(a.id);
+    else if (a.kind === "topicId") openAppendixTopic(a.id, a.en); // r431 — عمقِ سطریِ مثال (بیِ en: فرودِ موضوعیِ صادق)
+    else if (a.kind === "lessonTab") openLessonTab(a.lessonId, "vocab", a.wordEn); // r427 — عمقِ سطری: کارتِ واژه در دید با پالس
+    else if (a.kind === "dictWord") openDictionaryWord(a.en); // r430 — عمقِ سطری: کارتِ واژه در دیکشنری با عدسی و پالس
+    trackEvent("drill_due_jump");
+    onLeaveReport?.();
+  };
+  const jumpTodayDue = () => {
+    if (!todayTarget || todayTarget.kind !== "jump") return; // گاردِ r236 — دکمهٔ بیرخداد رخ نمیدهد
+    doJump(todayTarget.anchor);
+  };
+  const jumpBankDue = (bankId: string) => {
+    const row = todayBankRows.find((r) => r.bankId === bankId);
+    if (!row || !row.anchor) return; // گاردِ r236 — سطرِ بیپرش رخ نمیدهد
+    doJump(row.anchor);
+  };
+  const saveWeekAgendaCsv = () => {
+    if (weekAgenda.itemCount === 0) return; // دکمهٔ بیپنجره رخ نمیدهد — گاردِ صادق
+    const ok = downloadDrillWeekAgendaCsv(weekAgenda, daysAgoKey(0));
+    if (ok) {
+      toast({
+        title: "🗓 تقویمِ هفتهٔ پیشِ رو ذخیره شد",
+        // r435 — گویشِ نام در توست: نزدیکترینِ پس از هفته هم نام میگوید
+        // (خانوادهٔ r433/r434؛ بیِ دنباله = بیِ جمله — r236)
+        description: weekToastDescription(weekAgenda, afterWeekTail),
+        duration: 3000,
+      });
+    } else {
+      // r398 — جفتِ شکست نامدار؛ موفقیتِ اینجا گویشِ خودش را دارد
+      fileFailToast();
+    }
+  };
+
+  // r423 — کارتِ تصویریِ تقویمِ هفته (پیشنهادِ ①ِ r421/r422): همان هفت
+  // خانهٔ نوارِ r422 رویِ کاغذِ همرسانی — خانوادهٔ عکسِ r297. گاردِ r236:
+  // دکمه فقط با ردیفِ درونِ پنجره بالا میآید (درونِ خودِ نوار). شکست
+  // وامگیرِ نامدارِ r397 است؛ موفقیتِ اینجا گویشِ خودش را دارد و
+  // رویدادش gated بر ok (قراردادِ r287/288 — هیچ رویدادی بیگیت نیست).
+  const weekCalendarImageOpts = (): WeekCalendarImageOpts => ({
+    cells: weekCells.map((c) => ({
+      label: c.label,
+      count: c.count,
+      family: c.k === 0 ? ("today" as const) : ("future" as const),
+    })),
+    itemCount: weekAgenda.itemCount,
+    dayCount: weekAgenda.dayCount,
+    afterCount: weekAgenda.afterCount,
+    afterLabel: weekAgenda.afterCount > 0 ? nearestAfterWeekLabel(weekAgenda) : undefined,
+  });
+  const saveWeekCalendarImage = async () => {
+    if (imgBusy) return; // کمربندوبندِ خانواده — یک کارِ بوم در هر لحظه
+    setImgBusy(true);
+    const ok = await downloadWeekCalendarImage(weekCalendarImageOpts());
+    setImgBusy(false);
+    if (ok) {
+      trackEvent("week_calendar_image");
+      toast({ title: "🖼 عکسِ تقویمِ هفته ذخیره شد", description: "هفت خانهٔ پیشِ رو آمادهٔ فرستادن است.", duration: 3000 });
+    } else {
+      imageFailToast();
+    }
+  };
+
+  // r424 — هم‌رسانیِ بومیِ همان کارت — دوقلویِ r306 (هفته‌نامه) برایِ جفتِ
+  // تقویمِ هفته: دانلود و هم‌رسانی دو دروازهٔ یک ارزیابی‌اند. فقط با
+  // canShare({files}) واقعی؛ لغوِ کاربر خطا نیست (ساکت)؛ پشتیبانی‌نشدن
+  // پیامِ صادقانهٔ «ذخیره کن و خودت بفرست» دارد. رویداد gated بر blob —
+  // قراردادِ r306: blobِ ساختهشده رویدادش را دارد، نتیجهٔ شیت جدا است.
+  const shareWeekCalendarImage = async () => {
+    if (weekCalShareBusy || imgBusy) return;
+    setWeekCalShareBusy(true);
+    const blob = await buildWeekCalendarBlob(weekCalendarImageOpts());
+    let outcome: ShareOutcome = "failed";
+    if (blob) {
+      trackEvent("week_calendar_share");
+      outcome = await shareImageFile({
+        file: blobToFile(blob, "vision2-review-week.png"),
+        title: "تقویمِ هفتهٔ پیشِ رو — وب‌کتاب ویژن ۲",
+        text: `تقویمِ مرورِ هفتهٔ پیشِ رو: ${faNum(weekAgenda.itemCount)} موردِ بازگشت در ${faNum(weekAgenda.dayCount)} روز`,
+      });
+    }
+    setWeekCalShareBusy(false);
+    if (outcome === "shared") {
+      toast({ title: "📨 تقویمِ هفته هم‌رسانی شد", description: "کارت با شیتِ خودِ سیستم فرستاده شد.", duration: 3000 });
+    } else if (outcome === "failed") {
+      toast({ title: "هم‌رسانی ممکن نشد", description: "می‌توانی عکس را ذخیره کنی و خودت بفرستی.", duration: 3000 });
+    }
+    // cancelled — کاربر لغو کرد؛ خطا نیست، ساکت (قراردادِ share-card)
   };
 
   const digest = useMemo(
@@ -377,6 +693,36 @@ export default function WeeklyReportSection() {
           >
             <CalendarDays size={15} aria-hidden />
           </button>
+          {/* r420 — تقویمِ همهٔ بانکها: یک فایل برایِ همهٔ ردیفهایِ زندهٔ SRSِ
+              هفت بانک (بلوکهایِ بانکی به ترتیبِ رسمی، گویشِ دهستونی —
+              دوقلوی ۹ستونیِ r418)؛ فقط با ردیفِ زنده (r236 — عینِ r418) */}
+          {calendarAllRows.length > 0 && (
+            <button
+              onClick={saveAllCalendarCsv}
+              aria-label={`دانلود تقویم مرور همهٔ تمرین‌ها CSV — ${faNum(calendarAllRows.length)} ردیفِ زنده`}
+              title="تقویمِ مرور همهٔ تمرینها — سررسیدها و دورهٔ نفسِ همهٔ بانکها در یک فایل، به ترتیبِ بانک و روزِ بازگشت"
+              className="rounded-lg p-1.5 text-stone-500 transition-colors hover:bg-stone-100 hover:text-teal-600"
+            >
+              <CalendarClock size={15} aria-hidden />
+            </button>
+          )}
+          {/* r421 — تقویمِ هفتهٔ پیشِ رو: برشِ ۷روزهٔ همان اطلس با جمعِ روزانه
+              (هر روز یک سطرِ «جمعِ روز»؛ دورترها یک سطرِ «پس از هفته»)؛
+              فقط با ردیفِ درونِ پنجره (r236) — گویشِ دهستونیِ خودِ r420 */}
+          {weekAgenda.itemCount > 0 && (
+            <button
+              onClick={saveWeekAgendaCsv}
+              /* r436 — ariaِ دکمه (پیشنهادِ ②ِ r435): پس از شمارِ درونِ
+                 پنجره (قفلِ r421 دستنخورده)، دنبالهٔ پس از هفته هم نام
+                 میگوید — عینِ گویشِ toastِ r435 از هِلپرِ مشترکِ
+                 afterWeekNaming؛ بیِ دنباله، aria دقیقاً همان r421 است. */
+              aria-label={`دانلود تقویم هفتهٔ پیشِ رو CSV — ${faNum(weekAgenda.itemCount)} ردیفِ این هفته${afterWeekTail ? `؛ ${afterWeekNaming(weekAgenda, afterWeekTail)}` : ""}`}
+              title="تقویمِ هفتهٔ پیشِ رو — از سررسیدِ امروز تا ۶ روزِ دیگر، روزبهروز با جمعِ روزانه؛ ردیفهایِ دورتر یک سطرِ پس از هفته دارند"
+              className="rounded-lg p-1.5 text-stone-500 transition-colors hover:bg-stone-100 hover:text-teal-600"
+            >
+              <CalendarRange size={15} aria-hidden />
+            </button>
+          )}
         </div>
       </div>
 
@@ -420,6 +766,162 @@ export default function WeeklyReportSection() {
           return <DeltaChip key={m.field} d={d} label={m.label} cls={m.cls} />;
         })}
       </div>
+
+      {/* r422 — نوارِ هفتهٔ پیشِ رو: روایتِ تقویمِ r421 در خودِ نما — هفت خانهٔ
+          روز از همان memoِ weekAgenda (تکمنبع، صفر شمارشِ موازی). امروزِ
+          دارایِ سررسید با خانوادهٔ زمردی (دعوتِ کنش — عینِ r414) و
+          بازگشتهایِ دورتر آسمانی (خبرِ برنامهای — عینِ r417)؛ خانهٔ
+          بیبازگشت ساکتِ صادق است (خطِ تیره، بیعدد — r236). هفتهٔ تماماً
+          دور (سررسیدی نیست، همهٔ ردیفها دورترند) یک سطرِ آرامِ صادق است
+          نه هفت خانهٔ تهی — «این هفته چیزی برنمیگردد» خودش خبرِ برنامهای
+          است، نه وعده. */}
+      {calendarAllRows.length > 0 && weekAgenda.itemCount > 0 && (
+        <div
+          className="week-strip mb-3 flex items-center gap-1 rounded-lg c-veil-60 px-2 py-2"
+          title={`هفتهٔ پیشِ رو — ${faNum(weekAgenda.itemCount)} موردِ بازگشت در ${faNum(weekAgenda.dayCount)} روز؛ خانهٔ بیعدد یعنی آن روز چیزی برنمیگردد، خانهٔ امروز با سررسیدِ تکبانک پرش به تمرین دارد، خانهٔ آیندهٔ تکبانک نامِ تمرینش را در نشانگر میگوید و دنبالهٔ پس از هفته نامِ نزدیکترین بازگشت را میگوید`}
+          aria-label={`هفتهٔ پیشِ رو — ${faNum(weekAgenda.itemCount)} موردِ بازگشت در ${faNum(weekAgenda.dayCount)} روز`}
+        >
+          {weekCells.map((c) =>
+            /* r425 — خانهٔ امروز با مقصدِ یگانه = دکمهٔ پرش (خانوادهٔ زمردیِ
+               r414 — دعوتِ کنش؛ hover یک گامِ صادق عمیقتر، دارک با کرنلِ
+               اسکوپشده — ممنوعِ سراسریِ emerald-100 رعایت شد). بقیهٔ
+               خانهها همان خانههایِ ساکتِ r422 میمانند؛ امروزِ چندبانکی
+               ساکتِ صادق با گویشِ خودش و امروزِ بی مقصد بیوعده.
+               r433 — خانهٔ آیندهٔ دارایِ بازگشت در نشانگرش نام میگوید:
+               تکبانک = نامِ رسمیِ تمرین، چندبانک = «در M بانک» — هر دو
+               فقط title/aria (کشفپذیریِ بیِ شلوغیِ بصری؛ r236 برایِ بانکِ
+               ناشناس). خانهٔ امروز و خانهٔ بیبازگشت دستنخوردهاند. */
+            c.k === 0 && todayTarget?.kind === "jump" ? (
+              <button
+                key={c.k}
+                onClick={jumpTodayDue}
+                title={`امروز — ${faNum(c.count)} موردِ بازگشت — پرش به تمرینِ ${todayTarget.title}`}
+                aria-label={`امروز — ${faNum(c.count)} موردِ بازگشت — پرش به تمرینِ ${todayTarget.title}`}
+                className="today-jump flex min-w-0 flex-1 cursor-pointer flex-col items-center gap-0.5 rounded-lg bg-emerald-50 py-1.5 text-emerald-700 transition-colors hover:bg-emerald-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300"
+              >
+                <span className="text-[8.5px] font-bold leading-none">{c.label}</span>
+                <span className="text-[13px] font-extrabold leading-none">{faNum(c.count)}</span>
+              </button>
+            ) : (
+              <div
+                key={c.k}
+                title={
+                  c.k === 0 && todayTarget?.kind === "multi"
+                    ? `امروز — ${faNum(c.count)} موردِ بازگشت در ${faNum(todayTarget.banks)} بانک — هر بانک در میزبانِ خودش تمرین میشود`
+                    : c.k >= 1
+                      ? futureCellTitle(c.label, c.count, futureCellMeta.get(c.k) ?? [])
+                      : `${c.label} — ${c.count > 0 ? `${faNum(c.count)} موردِ بازگشت` : "بیِ بازگشت"}`
+                }
+                aria-label={
+                  c.k >= 1 && c.count > 0
+                    ? futureCellTitle(c.label, c.count, futureCellMeta.get(c.k) ?? [])
+                    : undefined
+                }
+                className={`flex min-w-0 flex-1 flex-col items-center gap-0.5 rounded-lg py-1.5 ${
+                  c.count > 0
+                    ? c.k === 0
+                      ? "bg-emerald-50 text-emerald-700"
+                      : "bg-sky-50 text-sky-700"
+                    : "text-stone-300"
+                }`}
+              >
+                <span className="text-[8.5px] font-bold leading-none">{c.label}</span>
+                <span className="text-[13px] font-extrabold leading-none">
+                  {c.count > 0 ? faNum(c.count) : "—"}
+                </span>
+              </div>
+            ),
+          )}
+          {/* r422/r434 — دنبالهٔ پس از هفته: متنِ دیدنی همان «+N پس از هفته»
+              میماند (صفر شلوغیِ نو) و title حالا نامِ نزدیکترین را هم
+              میگوید — عینِ خانوادهٔ گویشِ r433 (تکبانک/چندبانک/ناشناس). */}
+          {weekAgenda.afterCount > 0 && afterWeekTail && (
+            <span
+              className="shrink-0 whitespace-nowrap px-1 text-[9px] font-bold text-stone-500"
+              title={`پس از این هفته ${faNum(weekAgenda.afterCount)} موردِ دیگر در راه است — نزدیکترین بازگشتِ ${nearestAfterWeekLabel(weekAgenda)}: ${nearestAfterWeekName(afterWeekTail)}`}
+            >
+              +{faNum(weekAgenda.afterCount)} پس از هفته
+            </span>
+          )}
+          {/* r423 — دکمهٔ کارتِ تصویری، درونِ خودِ نوار: نوارِ ساکن، پرترهاش
+              خودش میشود (کلیک ← PNGِ همرسانیِ هفت خانه). گاردِ r236 ارثی
+              است — دکمه فقط درونِ نوارِ زندهٔ همین بالا میآید. */}
+          <button
+            onClick={saveWeekCalendarImage}
+            aria-label={`ذخیرهٔ تصویرِ تقویمِ هفته — ${faNum(weekAgenda.itemCount)} موردِ بازگشت در ${faNum(weekAgenda.dayCount)} روز`}
+            title="تصویرِ تقویمِ هفتهٔ پیشِ رو — همان هفت خانه به‌صورتِ کارتِ PNGِ همرسانی"
+            className="shrink-0 rounded-lg p-1 text-stone-500 transition-colors hover:bg-stone-100 hover:text-teal-600"
+          >
+            <ImageDown size={12} aria-hidden />
+          </button>
+          {/* r424 — هم‌رسانیِ بومیِ همان کارت: دو دروازهٔ یک ارزیابی (r306 الگو)؛
+              دکمه هم‌خانوادهٔ دروازهٔ دانلود، درونِ خودِ نوار — بیِ شلوغیِ تولبار. */}
+          <button
+            onClick={shareWeekCalendarImage}
+            disabled={weekCalShareBusy || imgBusy}
+            aria-label={`هم‌رسانی تصویرِ تقویمِ هفته — ${faNum(weekAgenda.itemCount)} موردِ بازگشت در ${faNum(weekAgenda.dayCount)} روز`}
+            title="هم‌رسانیِ کارتِ تقویمِ هفته با شیتِ خودِ سیستم"
+            className="shrink-0 rounded-lg p-1 text-stone-500 transition-colors hover:bg-stone-100 hover:text-teal-600 disabled:opacity-50"
+          >
+            {weekCalShareBusy ? <Loader2 size={12} className="animate-spin" aria-hidden /> : <Share2 size={12} aria-hidden />}
+          </button>
+        </div>
+      )}
+      {/* r422/r434 — نوارِ آرامِ هفتهٔ خالی: «کِی» و حالا «چه» — نامِ
+          نزدیکترین بازگشت هم گفته میشود (عینِ خانوادهٔ r433؛ بانکِ
+          ناشناس شمارِ صادق، r236). aria همان زبانِ متن است. */}
+      {calendarAllRows.length > 0 && weekAgenda.itemCount === 0 && afterWeekTail && (
+        <div
+          className="week-strip-quiet mb-3 rounded-lg c-veil-60 px-2.5 py-2 text-center text-[10px] font-bold text-stone-500"
+          title="هفتهٔ پیشِ رو — همهٔ ردیفهایِ زنده پس از این هفته برمیگردند"
+          aria-label={`هفتهٔ پیشِ رو — این هفته چیزی برنمیگردد؛ نزدیکترین بازگشت ${nearestAfterWeekName(afterWeekTail)}، ${nearestAfterWeekLabel(weekAgenda)}`}
+        >
+          این هفته آرام است — نزدیکترین بازگشت: {nearestAfterWeekName(afterWeekTail)}، {nearestAfterWeekLabel(weekAgenda)}
+        </div>
+      )}
+
+      {/* r432 — سررسیدهایِ امروز به تفکیک بانک: حکمِ معلقِ ناوبریِ چندبانکیِ
+          r425 به شکلِ فهرست بسته شد — روزِ چندبانکی که خانهٔ امروزِ نوار ساکتِ
+          صادق میماند، اینجا سطربهسطر پرش میگیرد. فقط در روزِ چندبانکی بالا
+          میآید (تکبانک = خودِ خانهٔ نوار؛ صفر افزونگی)؛ بانکِ بیلنگر سطرِ
+          شمارِ بیوعده میگیرد (r236). کلاسهایِ hover همخانوادهٔ دروازههای
+          تولبارِ همین کاغذند — کرنلِ شبِ موجودِ report-paper خودکار میپوشاند. */}
+      {todayBankRows.length > 0 && (
+        <div
+          className="today-banks mb-3 rounded-lg c-veil-60 px-2.5 py-2"
+          title={`سررسیدهایِ امروز به تفکیک بانک — ${faNum(todayBankRows.reduce((n, r) => n + r.count, 0))} مورد در ${faNum(todayBankRows.length)} بانک؛ بانکِ دارایِ مقصد پرش به تمرین دارد`}
+          aria-label={`سررسیدهایِ امروز به تفکیک بانک — ${faNum(todayBankRows.reduce((n, r) => n + r.count, 0))} مورد در ${faNum(todayBankRows.length)} بانک`}
+        >
+          <div className="mb-1 flex items-center gap-1.5 text-[10.5px] font-extrabold text-stone-600">
+            <ListChecks size={12} className="text-emerald-600" aria-hidden />
+            امروز به تفکیک بانک
+          </div>
+          {todayBankRows.map((r) =>
+            r.anchor ? (
+              <button
+                key={r.bankId}
+                onClick={() => jumpBankDue(r.bankId)}
+                title={`پرش به تمرینِ ${r.title} — ${faNum(r.count)} موردِ سررسید؛ «پرش ≠ نوشتن» — جلسه باز نمیشود`}
+                aria-label={`پرش به تمرینِ ${r.title} — ${faNum(r.count)} مورد`}
+                className="today-bank-jump flex w-full cursor-pointer items-center justify-between gap-2 rounded-md px-2 py-1 text-[11px] font-bold text-stone-600 transition-colors hover:bg-stone-100 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300"
+              >
+                <span className="min-w-0 truncate text-right">{r.title}</span>
+                <span className="shrink-0 text-emerald-700">{faNum(r.count)}</span>
+              </button>
+            ) : (
+              <div
+                key={r.bankId}
+                title={`${r.title} — ${faNum(r.count)} موردِ سررسید — میزبانِ پرش ندارد؛ در میزبانِ خودش تمرین میشود`}
+                aria-label={`${r.title} — ${faNum(r.count)} مورد — میزبانِ پرش ندارد`}
+                className="flex w-full items-center justify-between gap-2 rounded-md px-2 py-1 text-[11px] font-bold text-stone-500" // r172 — متنِ کم‌رنگِ ممنوع؛ خانوادهٔ stone-500 (درسِ r423)
+              >
+                <span className="min-w-0 truncate text-right">{r.title}</span>
+                <span>{faNum(r.count)}</span>
+              </div>
+            ),
+          )}
+        </div>
+      )}
 
       {/* Task 186 — گامِ بعدی: پیشنهادِ کانونیِ صادق در یک نگاه، بالایِ دایجست؛
           هم‌خانوادهٔ ردیف‌های نیمه‌شفافِ همین گزارش و چیپِ سبزِ هدف (c-chip-goal) —

@@ -14,7 +14,11 @@
 
 import type { StateCreator } from "zustand";
 import { recordDrillResult, type DrillStatMap } from "@/lib/drill-stats";
-import { recordDrillMistakes, type DrillMistakeMap } from "@/lib/drill-mistakes";
+import {
+  recordDrillMistakes,
+  recordDrillCorrects,
+  type DrillMistakeMap,
+} from "@/lib/drill-mistakes";
 import { activityPatch } from "../effects";
 import { todayStr } from "../day-engine";
 import type { StudyStore } from "../types";
@@ -29,6 +33,9 @@ export interface DrillSlice {
   /** r413 — پایانِ جلسهٔ کامل: پایههایِ نادرست/بیپاسخ به بانکِ خطا میرود
    *  (مرورِ اشتباهها زیرِجلسه است و هرگز عبور نمیکند — گاردِ نما) */
   trackDrillMistakes: (bankId: string, bases: readonly string[]) => void;
+  /** r414 — نیمهٔ دیگرِ حلقه: پاسخِ درستِ پایهٔ خطادار ok را بالا میبرد
+   *  (فقط ردیفِ موجود — بانکِ خطا از پاسخِ درست ردیف نمیسازد) */
+  trackDrillCorrects: (bankId: string, bases: readonly string[]) => void;
 }
 
 export const createDrillSlice: StateCreator<StudyStore, [], [], DrillSlice> = (set) => ({
@@ -50,6 +57,13 @@ export const createDrillSlice: StateCreator<StudyStore, [], [], DrillSlice> = (s
     set((s) => {
       const next = recordDrillMistakes(s.drillMistakes, bankId, bases, todayStr());
       if (next === s.drillMistakes) return s; // هیچ رخدادِ واقعی — هیچ (گاردِ صادق)
+      return { drillMistakes: next };
+    });
+  },
+  trackDrillCorrects: (bankId, bases) => {
+    set((s) => {
+      const next = recordDrillCorrects(s.drillMistakes, bankId, bases, todayStr());
+      if (next === s.drillMistakes) return s; // هیچ ردیفِ موجودی تغییر نکرد — هیچ
       return { drillMistakes: next };
     });
   },

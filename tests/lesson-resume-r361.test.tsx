@@ -116,7 +116,7 @@ describe("lesson-resume — رکوردِ بیرونِ استور", () => {
     const card = read("src/components/study/home/home-lesson-resume.tsx");
     expect(card).not.toContain("writeLessonResume");
     const reg = await import("@/lib/analytics-events");
-    expect(reg.EVENT_NAMES).toHaveLength(52);
+    expect(reg.EVENT_NAMES).toHaveLength(55); // r423 +۱ — کارتِ تصویریِ تقویمِ هفته؛ r424 +۱ — هم‌رسانیِ بومیِ همان کارت؛ r425 +۱ — پرشِ خانهٔ امروزِ نوارِ هفته
   });
 });
 

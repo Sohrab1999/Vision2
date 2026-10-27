@@ -105,13 +105,13 @@ describe("share honesty r343 — خانوادهٔ CSV و پایِ بومی", () 
     expect(officialSrc.slice(callAt)).not.toContain("اول کمی تمرین کن");
   });
 
-  it("سه CSVِ هفته‌نامه زبانِ خانواده را نگه میدارند (r398: هر سه وامگیرِ fileFailToast)", () => {
-    for (const success of ["جدول CSV ذخیره شد", "روندِ ۴هفته‌ای ذخیره شد", "ماه‌نامهٔ خواندن ذخیره شد"]) {
+  it("پنج CSVِ هفته‌نامه زبانِ خانواده را نگه میدارند (r398: همه وامگیرِ fileFailToast — r421 پنجمین را آورد)", () => {
+    for (const success of ["جدول CSV ذخیره شد", "روندِ ۴هفته‌ای ذخیره شد", "ماه‌نامهٔ خواندن ذخیره شد", "تقویمِ همهٔ تمرینها ذخیره شد", "تقویمِ هفتهٔ پیشِ رو ذخیره شد"]) {
       expect(weeklySrc).toContain(success);
     }
-    // r398 — هر سه شاخهٔ شکست مالک را صدا میزنند؛ گویشهایِ موفقیت پابرجا
+    // r398 — هر شاخهٔ شکست مالک را صدا میزند؛ گویشهایِ موفقیت پابرجا
     const borrows = weeklySrc.match(/fileFailToast\(\)/g) ?? [];
-    expect(borrows.length).toBe(3);
+    expect(borrows.length).toBe(5);
   });
 
   it("پایِ بومیِ shareResult: مجموعهٔ سکوتِ مشروع دقیقاً {AbortError} است — NotAllowedError به کلیپبورد میافتد", () => {

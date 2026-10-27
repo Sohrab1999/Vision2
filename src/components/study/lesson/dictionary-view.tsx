@@ -1,8 +1,9 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Search, X, BookMarked, BookOpenText, CheckCircle2, CircleDashed, AlarmClock, SearchX, Download, Star, ArrowLeftRight, Shuffle, BarChart3, ChevronDown, TrendingUp, Percent, EyeOff, GraduationCap } from "lucide-react";
 import { lessons } from "@/data";
+import { drillLabelFor } from "@/lib/drill-label-atlas"; // r420 — اطلسِ برچسب (مالکِ یگانه)
 import { useStudy, wordKey, starToggleAria } from "@/lib/study-store";
 import { useMounted } from "@/lib/use-mounted";
 import { posLabel, themeOf, faNum } from "@/lib/study-theme";
@@ -26,6 +27,7 @@ import { fileFailToast } from "@/lib/file-download";
 // میشود — همان موتور، همان کیبورد، همان مرورِ موضعی؛ ورود فقط با کلیک و
 // نوشتنیِ جلسه (رکوردِ r412 و بانکِ خطایِ r413) فقط نزدِ نمایِ مشترک است.
 import AppendixDrillView, { type DrillViewSpec } from "./appendix-drill-view";
+import useDrillDueBases from "./use-drill-due"; // r414 — سررسیدهایِ SRSِ بانکِ دیکشنری
 import {
   buildLessonVocabDrillSession,
   lessonVocabDrillPlan,
@@ -65,8 +67,7 @@ type StateFilter = "all" | "known" | "unknown" | "due" | "paired" | "usage" | "u
 // هرگز رشتهٔ ثابت — همیشه از تقسیمِ لایهٔ داده
 const pctFa = (ratio: number) => faNum((Math.round(ratio * 1000) / 10).toFixed(1)).replace(".", "٫");
 
-export default function DictionaryView() {
-  const [query, setQuery] = useState("");
+export default function DictionaryView({ focusWord }: { focusWord?: string }) {
   const [lessonFilter, setLessonFilter] = useState<number | null>(null);
   const [stateFilter, setStateFilter] = useState<StateFilter>("all");
   // r408 — حالتِ تمرینِ واژگانِ دیکشنری؛ فقط با کلیکِ کاربر روشن میشود
@@ -97,9 +98,23 @@ export default function DictionaryView() {
     []
   );
 
+  // r430 — «عدسیِ پرش»: لنگرِ معتبرِ پرشِ خانهٔ امروز خودش جست‌وجو را بذر
+  // میزند (الگویِ راندهایِ فیلترِ برنامهایِ r263) تا کارتِ واژه فارغ از
+  // سقفِ ۳۰۰تاییِ رندر از نخستین قاب در DOM باشد — واژههایِ درسِ سوم از
+  // اندیسِ ۴۳۸ میآیند و بیِ عدسی هرگز رندر نمیشدند (وعدهٔ بیپشتوانه — r236).
+  // جعبهٔ جست‌وجو خودش روایت میکند چرا فهرست باریک است؛ پاککردنش دستِ
+  // یادگیرنده است. واژهٔ بیگانه عدسی نمیگیرد — سکوتِ صادق (r236/r427).
+  const [query, setQuery] = useState(() =>
+    focusWord && allWords.some((w) => w.en === focusWord) ? focusWord : ""
+  );
+
   // r408 — برنامهٔ قطعیِ دریل (بی rng) رویِ همان بانکی که دیکشنری نشان میدهد؛
   // دکمهٔ ورود و معرفی هر دو از همین تکمنبع میخوانند
   const drillPlan = useMemo(() => lessonVocabDrillPlan(allWords, DRILL_SIZE), [allWords]);
+
+  // r414 — سررسیدهایِ SRSِ بانکِ دریلِ دیکشنری (بانکِ خطایِ r413 — جدایِ
+  // SRSِ واژهٔ خودِ دیکشنری که بالاتر است) — فهرستِ اولویتدار برایِ سهمیهٔ موتور
+  const dictVocabDue = useDrillDueBases("dict-vocab");
 
   // count of words due for SRS review right now
   const dueCount = useMemo(() => {
@@ -260,6 +275,42 @@ export default function DictionaryView() {
     });
   }, [allWords, query, lessonFilter, stateFilter, known, srs, pairIndex, pairedSet, usageSet]);
 
+  // r430 — لنگرِ عمیقِ کارتِ واژهٔ دیکشنری (الگویِ کارتِ واژهٔ r427): اسکرولِ
+  // محلی به نخستین کارتِ همسان + پالسِ زمردیِ ۱٫۶ثانیهای + مصرفِ لنگر از view
+  // (پرشِ دوبارهٔ همان واژه هم پالسِ تازه میزند — ایدئومِ r427). همسانهایِ
+  // چنددرسی همه پالس میگیرند — بانکِ دیکشنری با en کلید میخورد و رونوشتهایِ
+  // چنددرسیِ یک واژه همه همان واژهاند. تایمرِ پالس عمداً بیرونِ پاکسازیِ
+  // effect (آموزشِ r234). واژهٔ بیگانه سکوتِ صادق میماند — هیچ پالسی،
+  // هیچ پاکسازیِ نابرآمده (عینِ قفلِ r427).
+  const validFocus = !!focusWord && allWords.some((w) => w.en === focusWord);
+  const [pulseWord, setPulseWord] = useState<string | null>(null);
+  const pulseTimerRef = useRef<number | null>(null);
+  useEffect(() => {
+    if (!focusWord || !validFocus) return; // بیِ لنگر یا واژهٔ بیگانه — هیچ (r236)
+    const raf = requestAnimationFrame(() => {
+      const el = Array.from(document.querySelectorAll<HTMLElement>("[data-dict-word]")).find(
+        (n) => n.getAttribute("data-dict-word") === focusWord,
+      );
+      el?.scrollIntoView?.({ behavior: "smooth", block: "center" });
+      setView({ type: "dictionary" }); // لنگرِ مصرفشده از view پاک میشود — پرشِ دوباره زنده میماند (r427)
+      setPulseWord(focusWord);
+      if (pulseTimerRef.current !== null) window.clearTimeout(pulseTimerRef.current);
+      pulseTimerRef.current = window.setTimeout(() => {
+        pulseTimerRef.current = null;
+        setPulseWord(null);
+      }, 1600);
+    });
+    return () => cancelAnimationFrame(raf);
+    // وابستهها کاملاند — فقط لنگر و گاردِ آن؛ setView از zustand پایدار است
+  }, [focusWord, validFocus]);
+  // خاموشیِ پالس هنگامِ پیادهشدن از نما — فقط unmount (ایدئومِ r427)
+  useEffect(
+    () => () => {
+      if (pulseTimerRef.current !== null) window.clearTimeout(pulseTimerRef.current);
+    },
+    [],
+  );
+
   const stateChips: { id: StateFilter; label: string; icon?: React.ElementType; cls: string; count: number }[] = [
     {
       id: "all",
@@ -310,7 +361,12 @@ export default function DictionaryView() {
     return (
       <AppendixDrillView
         spec={dictionaryVocabDrillSpec(drillPlan)}
-        buildSession={() => buildLessonVocabDrillSession(allWords, DRILL_SIZE)}
+        buildSession={() => buildLessonVocabDrillSession(allWords, DRILL_SIZE, Math.random, dictVocabDue)}
+        buildMistakeSession={() =>
+          buildLessonVocabDrillSession(allWords, DRILL_SIZE, Math.random, dictVocabDue, true)
+        } // r415 — تمرینِ سررسیدها
+        // r418 — تقویمِ مرور: معنیِ واژه از بانکِ سراسریِ دیکشنری (مالکیتِ r403)
+        calendarLabel={drillLabelFor("dict-vocab")} // r418/r420 — برچسب از اطلس (بانکِ سراسریِ دیکشنری)
         onExit={() => setDrillMode(false)}
       />
     );
@@ -694,7 +750,12 @@ export default function DictionaryView() {
           return (
             <div
               key={`${w.lessonId}-${w.en}`}
-              className="flex items-start justify-between gap-2 rounded-xl border c-card p-3 transition-shadow hover:shadow-sm"
+              data-dict-word={w.en}
+              className={`flex items-start justify-between gap-2 rounded-xl border p-3 scroll-mt-24 transition-[border-color,background-color,box-shadow] ${
+                pulseWord === w.en
+                  ? "bg-emerald-50 border-emerald-200 shadow-[inset_0_0_0_2px] shadow-emerald-300 dark:bg-emerald-900/30 dark:border-emerald-700 dark:shadow-emerald-700"
+                  : "c-card hover:shadow-sm"
+              }`}
             >
               <div className="min-w-0">
                 <div className="flex flex-wrap items-baseline gap-1.5">

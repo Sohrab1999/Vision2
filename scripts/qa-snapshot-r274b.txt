@@ -1,0 +1,4321 @@
+- banner
+  - button "رفتن به صفحهٔ اصلی" [ref=e7262]
+    - StaticText "ویژن ۲ "
+    - StaticText "Vision Two"
+    - StaticText "وبکتاب تعاملی زبان هفتم تا دوازدهم"
+  - button "۰ از ۱۰ فعالیت — ۱۰ فعالیت تا امنشدن زنجیره" [ref=e7263]
+    - StaticText "۰ از ۱۰"
+  - button "حالت شب" [ref=e7264]
+  - button "تنظیمات" [expanded=false, ref=e7265]
+  - button "فرمانیاب — جستوجوی همهجا" [ref=e7266]
+  - button "راهنمای میانبرهای کیبورد" [ref=e7267]
+  - button "پروفایل من" [expanded=false, ref=e7268]
+  - navigation "ناوبری اصلی" [ref=e7269]
+    - button "خانه" [ref=e7281]
+      - StaticText "خانه"
+    - button "دیکشنری" [ref=e7282]
+      - StaticText "دیکشنری"
+    - button "آزمون جامع" [ref=e7283]
+      - StaticText "آزمون جامع"
+    - button "ضمیمه" [ref=e7284]
+      - StaticText "ضمیمه"
+- main
+  - heading "دیکشنری واژگان" [level=1, ref=e7431]
+  - paragraph
+    - StaticText "جستجو در ۴۰۳۲ واژهٔ همهٔ درسها — با تلفظ صوتی؛ جفتهای مترادف/متضاد جزوه هم جستجو میشوند"
+  - generic
+    - StaticText "۱۹۱۵ از ۴۰۳۲ واژه در متنِ جزوه آمدهاند"
+  - button "رفتن به واژههای من" [ref=e7432]
+    - StaticText "واژههای من"
+  - button "صادرات 2637 واژه به صورت فایل Anki" [ref=e7433]
+    - StaticText "خروجی Anki (۲۶۳۷ کارت)"
+  - textbox "مثلاً: language یا زبان..." [ref=e7453]
+  - button "همهٔ درسها" [ref=e7434]
+  - button "درس ۱: فهمیدن مردم· ۱۳۳" [ref=e7435]
+    - StaticText "درس ۱: فهمیدن مردم· ۱۳۳"
+  - button "درس ۲: یک شیوهٔ زندگی سالم· ۱۱۹" [ref=e7436]
+    - StaticText "درس ۲: یک شیوهٔ زندگی سالم· ۱۱۹"
+  - button "درس ۳: هنر و فرهنگ· ۱۱۳" [ref=e7437]
+    - StaticText "درس ۳: هنر و فرهنگ· ۱۱۳"
+  - button "درس ۴: حس قدردانی· ۱۰۵" [ref=e7438]
+    - StaticText "درس ۴: حس قدردانی· ۱۰۵"
+  - button "درس ۵: نگاه به آینده· ۱۱۹" [ref=e7439]
+    - StaticText "درس ۵: نگاه به آینده· ۱۱۹"
+  - button "درس ۶: انرژی تجدیدپذیر· ۹۵" [ref=e7440]
+    - StaticText "درس ۶: انرژی تجدیدپذیر· ۹۵"
+  - button "درس ۷: حفاظت از طبیعت· ۷۳" [ref=e7441]
+    - StaticText "درس ۷: حفاظت از طبیعت· ۷۳"
+  - button "درس ۸: شگفتیهای آفرینش· ۸۷" [ref=e7442]
+    - StaticText "درس ۸: شگفتیهای آفرینش· ۸۷"
+  - button "درس ۹: ارزش دانش· ۱۲۲" [ref=e7443]
+    - StaticText "درس ۹: ارزش دانش· ۱۲۲"
+  - button "درس ۱۰: سلام، انگلیسی!· ۴۹۰" [ref=e7444]
+    - StaticText "درس ۱۰: سلام، انگلیسی!· ۴۹۰"
+  - button "درس ۱۱: دنیای من· ۲۲۴" [ref=e7445]
+    - StaticText "درس ۱۱: دنیای من· ۲۲۴"
+  - button "درس ۱۲: آدمها و رسانه· ۲۳۵" [ref=e7446]
+    - StaticText "درس ۱۲: آدمها و رسانه· ۲۳۵"
+  - StaticText "وضعیت یادگیری:"
+  - button "همه ۴۰۳۲" [ref=e7447]
+    - StaticText "همه"
+    - StaticText "۴۰۳۲"
+  - button "بلدم ۰" [ref=e7448]
+    - StaticText "بلدم"
+    - StaticText "۰"
+  - button "بلد نیستم ۴۰۳۲" [ref=e7449]
+    - StaticText "بلد نیستم"
+    - StaticText "۴۰۳۲"
+  - button "سررسید مرور ۰" [ref=e7450]
+    - StaticText "سررسید مرور"
+    - StaticText "۰"
+  - button "جفتدار ۸۹۹" [ref=e7451]
+    - StaticText "جفتدار"
+    - StaticText "۸۹۹"
+  - button "کاربرددار ۱۹۱۵" [ref=e7452]
+    - StaticText "کاربرددار"
+    - StaticText "۱۹۱۵"
+  - paragraph
+    - StaticText "دریل واژههای زنده"
+  - paragraph
+    - StaticText "جای خالیِ جملههای واقعیِ جزوه با واژگانِ همهٔ درسها — از ۱۱۱۳ نامزد، تا ۸ سؤال، پرکاربردترها اول"
+  - button "شروع دریل واژههای زنده — از ۱۱۱۳ نامزد" [ref=e8714]
+    - StaticText "شروع دریل"
+  - paragraph
+    - StaticText "۱۹۱۵ واژه یافت شد"
+  - button "مرتبسازی بر پایهٔ بیشترین کاربرد در جزوه" [ref=e8715]
+    - StaticText "بیشترین کاربرد"
+  - StaticText "حداقل کاربرد:"
+  - button "حداقل ۵ کاربرد — ۵۳۶ واژه" [ref=e8716]
+    - StaticText "۵+"
+    - StaticText "· "
+    - StaticText "۵۳۶"
+  - button "حداقل ۱۰ کاربرد — ۲۶۳ واژه" [ref=e8717]
+    - StaticText "۱۰+"
+    - StaticText "· "
+    - StaticText "۲۶۳"
+  - button "حداقل ۲۰ کاربرد — ۷۹ واژه" [ref=e8718]
+    - StaticText "۲۰+"
+    - StaticText "· "
+    - StaticText "۷۹"
+  - paragraph
+    - StaticText "مقایسهٔ درسها — چند واژهٔ هر درس در متنِ جزوه آمدهاند:"
+  - group "حالتِ مقایسهٔ درسها"
+    - button "کاربرد در جزوه" [ref=e8731]
+    - button "جفتهای مترادف/متضاد" [ref=e8732]
+  - StaticText "درس "
+  - StaticText "۱"
+  - StaticText ": "
+  - StaticText "فهمیدن مردم"
+  - StaticText "۱۳۳"
+  - StaticText " واژه · "
+  - StaticText "۶۵"
+  - StaticText "٪"
+  - StaticText "درس "
+  - StaticText "۲"
+  - StaticText ": "
+  - StaticText "یک شیوهٔ زندگی سالم"
+  - StaticText "۱۱۹"
+  - StaticText " واژه · "
+  - StaticText "۵۱"
+  - StaticText "٪"
+  - StaticText "درس "
+  - StaticText "۳"
+  - StaticText ": "
+  - StaticText "هنر و فرهنگ"
+  - StaticText "۱۱۳"
+  - StaticText " واژه · "
+  - StaticText "۵۶"
+  - StaticText "٪"
+  - StaticText "درس "
+  - StaticText "۴"
+  - StaticText ": "
+  - StaticText "حس قدردانی"
+  - StaticText "۱۰۵"
+  - StaticText " واژه · "
+  - StaticText "۳۱"
+  - StaticText "٪"
+  - StaticText "درس "
+  - StaticText "۵"
+  - StaticText ": "
+  - StaticText "نگاه به آینده"
+  - StaticText "۱۱۹"
+  - StaticText " واژه · "
+  - StaticText "۳۹"
+  - StaticText "٪"
+  - StaticText "درس "
+  - StaticText "۶"
+  - StaticText ": "
+  - StaticText "انرژی تجدیدپذیر"
+  - StaticText "۹۵"
+  - StaticText " واژه · "
+  - StaticText "۳۹"
+  - StaticText "٪"
+  - StaticText "درس "
+  - StaticText "۷"
+  - StaticText ": "
+  - StaticText "حفاظت از طبیعت"
+  - StaticText "۷۳"
+  - StaticText " واژه · "
+  - StaticText "۷۰"
+  - StaticText "٪"
+  - StaticText "درس "
+  - StaticText "۸"
+  - StaticText ": "
+  - StaticText "شگفتیهای آفرینش"
+  - StaticText "۸۷"
+  - StaticText " واژه · "
+  - StaticText "۵۱"
+  - StaticText "٪"
+  - StaticText "درس "
+  - StaticText "۹"
+  - StaticText ": "
+  - StaticText "ارزش دانش"
+  - StaticText "۱۲۲"
+  - StaticText " واژه · "
+  - StaticText "۵۳"
+  - StaticText "٪"
+  - StaticText "درس "
+  - StaticText "۱۰"
+  - StaticText ": "
+  - StaticText "سلام، انگلیسی!"
+  - StaticText "۴۹۰"
+  - StaticText " واژه · "
+  - StaticText "۵۰"
+  - StaticText "٪"
+  - StaticText "درس "
+  - StaticText "۱۱"
+  - StaticText ": "
+  - StaticText "دنیای من"
+  - StaticText "۲۲۴"
+  - StaticText " واژه · "
+  - StaticText "۴۹"
+  - StaticText "٪"
+  - StaticText "درس "
+  - StaticText "۱۲"
+  - StaticText ": "
+  - StaticText "آدمها و رسانه"
+  - StaticText "۲۳۵"
+  - StaticText " واژه · "
+  - StaticText "۴۲"
+  - StaticText "٪"
+  - StaticText "پرکاربردهای جزوه:"
+  - button "کاربرد of در جزوه — ۹۱ مورد" [ref=e8719]
+    - StaticText "of"
+  - button "کاربرد you در جزوه — ۸۰ مورد" [ref=e8720]
+    - StaticText "you"
+  - button "کاربرد it در جزوه — ۷۳ مورد" [ref=e8721]
+    - StaticText "it"
+  - button "کاربرد are در جزوه — ۷۳ مورد" [ref=e8722]
+    - StaticText "are"
+  - button "کاربرد that در جزوه — ۷۰ مورد" [ref=e8723]
+    - StaticText "that"
+  - button "کاربرد for در جزوه — ۵۵ مورد" [ref=e8724]
+    - StaticText "for"
+  - button "کاربرد our در جزوه — ۵۰ مورد" [ref=e8725]
+    - StaticText "our"
+  - button "کاربرد we در جزوه — ۴۹ مورد" [ref=e8726]
+    - StaticText "we"
+  - button "کاربرد can در جزوه — ۴۸ مورد" [ref=e8727]
+    - StaticText "can"
+  - button "کاربرد people در جزوه — ۴۸ مورد" [ref=e8728]
+    - StaticText "people"
+  - StaticText "خروجی این دامنه:"
+  - button "خروجی CSV ۱۹۱۵ واژهٔ این دامنه" [ref=e8729]
+    - StaticText "CSV · ۱۹۱۵"
+  - button "خروجی Anki ۱۹۱۵ واژهٔ این دامنه" [ref=e8730]
+    - StaticText "Anki"
+  - generic
+    - StaticText "ability"
+    - StaticText "اسم"
+    - button "افزودن ability به واژههای من" [ref=e7454]
+    - StaticText "توانایی، لیاقت، شایستگی"
+    - button "متضادِ ability: disability — روخوانی" [ref=e7455]
+      - StaticText "disability"
+    - button "کاربرد ability در جزوه — ۱ مورد" [ref=e7456]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7457]
+    - button "بلدم" [ref=e7458]
+    - StaticText "absolutely"
+    - StaticText "قید"
+    - button "افزودن absolutely به واژههای من" [ref=e7459]
+    - StaticText "قطعاً، کاملاً"
+    - button "مترادفِ absolutely: surely — روخوانی" [ref=e7460]
+      - StaticText "surely"
+    - button "کاربرد absolutely در جزوه — ۲ مورد" [ref=e7461]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7462]
+    - button "بلدم" [ref=e7463]
+    - StaticText "access"
+    - StaticText "اسم"
+    - button "افزودن access به واژههای من" [ref=e7464]
+    - StaticText "دسترسی، دستیابی"
+    - button "کاربرد access در جزوه — ۱ مورد" [ref=e7465]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7466]
+    - button "بلدم" [ref=e7467]
+    - StaticText "across"
+    - StaticText "قید"
+    - button "افزودن across به واژههای من" [ref=e7468]
+    - StaticText "از عرض، در امتداد"
+    - button "کاربرد across در جزوه — ۲ مورد" [ref=e7469]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7470]
+    - button "بلدم" [ref=e7471]
+    - StaticText "action"
+    - StaticText "اسم"
+    - button "افزودن action به واژههای من" [ref=e7472]
+    - StaticText "اقدام، عمل، کار"
+    - button "کاربرد action در جزوه — ۳ مورد" [ref=e7473]
+      - StaticText "در جزوه · ۳"
+    - generic
+      - StaticText "رتبهٔ ۶۹۳ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7474]
+    - button "بلدم" [ref=e7475]
+    - StaticText "afraid"
+    - StaticText "صفت"
+    - button "افزودن afraid به واژههای من" [ref=e7483]
+    - StaticText "ترسیده، نگران"
+    - button "کاربرد afraid در جزوه — ۲ مورد" [ref=e7484]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7485]
+    - button "بلدم" [ref=e7486]
+    - StaticText "age"
+    - StaticText "اسم"
+    - button "افزودن age به واژههای من" [ref=e7487]
+    - StaticText "سن، عمر، عصر، دوره"
+    - button "کاربرد age در جزوه — ۱ مورد" [ref=e7488]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7489]
+    - button "بلدم" [ref=e7490]
+    - StaticText "always"
+    - StaticText "قید"
+    - button "افزودن always به واژههای من" [ref=e7491]
+    - StaticText "همیشه"
+    - button "متضادِ always: never — روخوانی" [ref=e7492]
+      - StaticText "never"
+    - button "کاربرد always در جزوه — ۶ مورد" [ref=e7493]
+      - StaticText "در جزوه · ۶"
+    - generic
+      - StaticText "رتبهٔ ۳۹۵ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7494]
+    - button "بلدم" [ref=e7495]
+    - StaticText "amazing"
+    - StaticText "صفت"
+    - button "افزودن amazing به واژههای من" [ref=e7496]
+    - StaticText "شگفتانگیز، حیرتبرانگیز"
+    - button "مترادفِ amazing: astonishing — روخوانی" [ref=e7497]
+      - StaticText "astonishing"
+    - button "مترادفِ amazing: wonderful — روخوانی" [ref=e7498]
+      - StaticText "wonderful"
+    - button "متضادِ amazing: ordinary — روخوانی" [ref=e7499]
+      - StaticText "ordinary"
+    - button "کاربرد amazing در جزوه — ۶ مورد" [ref=e7500]
+      - StaticText "در جزوه · ۶"
+    - generic
+      - StaticText "رتبهٔ ۳۹۵ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7501]
+    - button "بلدم" [ref=e7502]
+    - StaticText "amount"
+    - StaticText "اسم"
+    - button "افزودن amount به واژههای من" [ref=e7503]
+    - StaticText "مقدار، میزان"
+    - button "مترادفِ amount: quantity — روخوانی" [ref=e7504]
+      - StaticText "quantity"
+    - button "کاربرد amount در جزوه — ۲ مورد" [ref=e7505]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7506]
+    - button "بلدم" [ref=e7507]
+    - StaticText "appear"
+    - StaticText "فعل"
+    - button "افزودن appear به واژههای من" [ref=e7508]
+    - StaticText "آشکار شدن، به نظر رسیدن"
+    - button "متضادِ appear: disappear — روخوانی" [ref=e7509]
+      - StaticText "disappear"
+    - button "متضادِ appear: disappear — روخوانی" [ref=e7510]
+      - StaticText "disappear"
+    - button "متضادِ appear: disappear — روخوانی" [ref=e7511]
+      - StaticText "disappear"
+    - StaticText "+"
+    - StaticText "۱"
+    - button "کاربرد appear در جزوه — ۲ مورد" [ref=e7512]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7513]
+    - button "بلدم" [ref=e7514]
+    - StaticText "beginner"
+    - StaticText "اسم"
+    - button "افزودن beginner به واژههای من" [ref=e7531]
+    - StaticText "مبتدی، تازهکار"
+    - button "کاربرد beginner در جزوه — ۱ مورد" [ref=e7532]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7533]
+    - button "بلدم" [ref=e7534]
+    - StaticText "beginning"
+    - StaticText "اسم"
+    - button "افزودن beginning به واژههای من" [ref=e7535]
+    - StaticText "شروع، آغاز، ابتدا"
+    - button "کاربرد beginning در جزوه — ۱ مورد" [ref=e7536]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7537]
+    - button "بلدم" [ref=e7538]
+    - StaticText "belief"
+    - StaticText "اسم"
+    - button "افزودن belief به واژههای من" [ref=e7539]
+    - StaticText "اعتقاد، باور، ایمان"
+    - button "کاربرد belief در جزوه — ۳ مورد" [ref=e7540]
+      - StaticText "در جزوه · ۳"
+    - generic
+      - StaticText "رتبهٔ ۶۹۳ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7541]
+    - button "بلدم" [ref=e7542]
+    - StaticText "belong"
+    - StaticText "فعل"
+    - button "افزودن belong به واژههای من" [ref=e7543]
+    - StaticText "تعلق داشتن، متعلق بودن به"
+    - button "کاربرد belong در جزوه — ۱ مورد" [ref=e7544]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7545]
+    - button "بلدم" [ref=e7546]
+    - StaticText "besides"
+    - StaticText "حرف اضافه"
+    - button "افزودن besides به واژههای من" [ref=e7547]
+    - StaticText "به غیر از، علاوه بر"
+    - button "مترادفِ besides: in addition to — روخوانی" [ref=e7548]
+      - StaticText "in addition to"
+    - button "کاربرد besides در جزوه — ۲ مورد" [ref=e7549]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7550]
+    - button "بلدم" [ref=e7551]
+    - StaticText "borrow"
+    - StaticText "فعل"
+    - button "افزودن borrow به واژههای من" [ref=e7555]
+    - StaticText "قرض گرفتن"
+    - button "متضادِ borrow: lend — روخوانی" [ref=e7556]
+      - StaticText "lend"
+    - button "کاربرد borrow در جزوه — ۱ مورد" [ref=e7557]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7558]
+    - button "بلدم" [ref=e7559]
+    - StaticText "bottle"
+    - StaticText "اسم"
+    - button "افزودن bottle به واژههای من" [ref=e7560]
+    - StaticText "بطری"
+    - button "کاربرد bottle در جزوه — ۳ مورد" [ref=e7561]
+      - StaticText "در جزوه · ۳"
+    - generic
+      - StaticText "رتبهٔ ۶۹۳ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7562]
+    - button "بلدم" [ref=e7563]
+    - StaticText "call"
+    - StaticText "فعل"
+    - button "افزودن call به واژههای من" [ref=e7564]
+    - StaticText "نامیدن، صدا زدن، تماس گرفتن"
+    - button "کاربرد call در جزوه — ۹ مورد" [ref=e7565]
+      - StaticText "در جزوه · ۹"
+    - generic
+      - StaticText "رتبهٔ ۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7566]
+    - button "بلدم" [ref=e7567]
+    - StaticText "century"
+    - StaticText "اسم"
+    - button "افزودن century به واژههای من" [ref=e7574]
+    - StaticText "قرن"
+    - button "کاربرد century در جزوه — ۲ مورد" [ref=e7575]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7576]
+    - button "بلدم" [ref=e7577]
+    - StaticText "certainly"
+    - StaticText "قید"
+    - button "افزودن certainly به واژههای من" [ref=e7578]
+    - StaticText "قطعاً، مسلماً"
+    - button "مترادفِ certainly: definitely — روخوانی" [ref=e7579]
+      - StaticText "definitely"
+    - button "کاربرد certainly در جزوه — ۱ مورد" [ref=e7580]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7581]
+    - button "بلدم" [ref=e7582]
+    - StaticText "choose"
+    - StaticText "فعل"
+    - button "افزودن choose به واژههای من" [ref=e7583]
+    - StaticText "انتخاب کردن"
+    - button "کاربرد choose در جزوه — ۲ مورد" [ref=e7584]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7585]
+    - button "بلدم" [ref=e7586]
+    - StaticText "communicate"
+    - StaticText "فعل"
+    - button "افزودن communicate به واژههای من" [ref=e7587]
+    - StaticText "ارتباط برقرار کردن"
+    - button "کاربرد communicate در جزوه — ۳ مورد" [ref=e7588]
+      - StaticText "در جزوه · ۳"
+    - generic
+      - StaticText "رتبهٔ ۶۹۳ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7589]
+    - button "بلدم" [ref=e7590]
+    - StaticText "communication"
+    - StaticText "اسم"
+    - button "افزودن communication به واژههای من" [ref=e7594]
+    - StaticText "ارتباط"
+    - button "کاربرد communication در جزوه — ۳ مورد" [ref=e7595]
+      - StaticText "در جزوه · ۳"
+    - generic
+      - StaticText "رتبهٔ ۶۹۳ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7596]
+    - button "بلدم" [ref=e7597]
+    - StaticText "complete"
+    - StaticText "فعل"
+    - button "افزودن complete به واژههای من" [ref=e7598]
+    - StaticText "کامل کردن، تکمیل کردن"
+    - button "مترادفِ complete: perfect — روخوانی" [ref=e7599]
+      - StaticText "perfect"
+    - button "متضادِ complete: incomplete — روخوانی" [ref=e7600]
+      - StaticText "incomplete"
+    - button "کاربرد complete در جزوه — ۱ مورد" [ref=e7601]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7602]
+    - button "بلدم" [ref=e7603]
+    - StaticText "completely"
+    - StaticText "قید"
+    - button "افزودن completely به واژههای من" [ref=e7604]
+    - StaticText "کاملاً، به طور کامل"
+    - button "مترادفِ completely: fully — روخوانی" [ref=e7605]
+      - StaticText "fully"
+    - button "کاربرد completely در جزوه — ۲ مورد" [ref=e7606]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7607]
+    - button "بلدم" [ref=e7608]
+    - StaticText "confident"
+    - StaticText "صفت"
+    - button "افزودن confident به واژههای من" [ref=e7609]
+    - StaticText "مطمئن"
+    - button "کاربرد confident در جزوه — ۱ مورد" [ref=e7610]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7611]
+    - button "بلدم" [ref=e7612]
+    - StaticText "consider"
+    - StaticText "فعل"
+    - button "افزودن consider به واژههای من" [ref=e7613]
+    - StaticText "بررسی کردن، در نظر گرفتن"
+    - button "کاربرد consider در جزوه — ۱ مورد" [ref=e7614]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7615]
+    - button "بلدم" [ref=e7616]
+    - StaticText "continent"
+    - StaticText "اسم"
+    - button "افزودن continent به واژههای من" [ref=e7617]
+    - StaticText "قاره"
+    - button "کاربرد continent در جزوه — ۲ مورد" [ref=e7618]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7619]
+    - button "بلدم" [ref=e7620]
+    - StaticText "create"
+    - StaticText "فعل"
+    - button "افزودن create به واژههای من" [ref=e7621]
+    - StaticText "ایجاد کردن، خلق کردن"
+    - button "مترادفِ create: invent — روخوانی" [ref=e7622]
+      - StaticText "invent"
+    - button "کاربرد create در جزوه — ۴ مورد" [ref=e7623]
+      - StaticText "در جزوه · ۴"
+    - generic
+      - StaticText "رتبهٔ ۵۳۷ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7624]
+    - button "بلدم" [ref=e7625]
+    - StaticText "cultural"
+    - StaticText "صفت"
+    - button "افزودن cultural به واژههای من" [ref=e7626]
+    - StaticText "فرهنگی"
+    - button "کاربرد cultural در جزوه — ۱ مورد" [ref=e7627]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7628]
+    - button "بلدم" [ref=e7629]
+    - StaticText "culture"
+    - StaticText "اسم"
+    - button "افزودن culture به واژههای من" [ref=e7630]
+    - StaticText "فرهنگ"
+    - button "کاربرد culture در جزوه — ۱۴ مورد" [ref=e7631]
+      - StaticText "در جزوه · ۱۴"
+    - generic
+      - StaticText "رتبهٔ ۱۳۹ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7632]
+    - button "بلدم" [ref=e7633]
+    - StaticText "danger"
+    - StaticText "اسم"
+    - button "افزودن danger به واژههای من" [ref=e7634]
+    - StaticText "خطر"
+    - button "مترادفِ danger: risk — روخوانی" [ref=e7635]
+      - StaticText "risk"
+    - button "کاربرد danger در جزوه — ۱ مورد" [ref=e7636]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7637]
+    - button "بلدم" [ref=e7638]
+    - StaticText "despite"
+    - StaticText "حرف اضافه"
+    - button "افزودن despite به واژههای من" [ref=e7645]
+    - StaticText "علیرغم، با وجود، با اینکه"
+    - button "مترادفِ despite: in spite of — روخوانی" [ref=e7646]
+      - StaticText "in spite of"
+    - button "کاربرد despite در جزوه — ۱ مورد" [ref=e7647]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7648]
+    - button "بلدم" [ref=e7649]
+    - StaticText "destroy"
+    - StaticText "فعل"
+    - button "افزودن destroy به واژههای من" [ref=e7650]
+    - StaticText "تخریب کردن، نابود کردن"
+    - button "مترادفِ destroy: ruin — روخوانی" [ref=e7651]
+      - StaticText "ruin"
+    - button "متضادِ destroy: build — روخوانی" [ref=e7652]
+      - StaticText "build"
+    - button "متضادِ destroy: protect — روخوانی" [ref=e7653]
+      - StaticText "protect"
+    - button "کاربرد destroy در جزوه — ۲ مورد" [ref=e7654]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7655]
+    - button "بلدم" [ref=e7656]
+    - StaticText "develop"
+    - StaticText "فعل"
+    - button "افزودن develop به واژههای من" [ref=e7657]
+    - StaticText "توسعه دادن، گسترش دادن"
+    - button "مترادفِ develop: improve — روخوانی" [ref=e7658]
+      - StaticText "improve"
+    - button "کاربرد develop در جزوه — ۱ مورد" [ref=e7659]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7660]
+    - button "بلدم" [ref=e7661]
+    - StaticText "dictionary"
+    - StaticText "اسم"
+    - button "افزودن dictionary به واژههای من" [ref=e7668]
+    - StaticText "فرهنگ لغت"
+    - button "کاربرد dictionary در جزوه — ۲ مورد" [ref=e7669]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7670]
+    - button "بلدم" [ref=e7671]
+    - StaticText "difference"
+    - StaticText "اسم"
+    - button "افزودن difference به واژههای من" [ref=e7675]
+    - StaticText "تفاوت، اختلاف"
+    - button "کاربرد difference در جزوه — ۱ مورد" [ref=e7676]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7677]
+    - button "بلدم" [ref=e7678]
+    - StaticText "disappear"
+    - StaticText "فعل"
+    - button "افزودن disappear به واژههای من" [ref=e7679]
+    - StaticText "ناپدید شدن"
+    - button "مترادفِ disappear: vanish — روخوانی" [ref=e7680]
+      - StaticText "vanish"
+    - button "متضادِ disappear: appear — روخوانی" [ref=e7681]
+      - StaticText "appear"
+    - button "متضادِ disappear: appear — روخوانی" [ref=e7682]
+      - StaticText "appear"
+    - StaticText "+"
+    - StaticText "۱"
+    - button "کاربرد disappear در جزوه — ۲ مورد" [ref=e7683]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7684]
+    - button "بلدم" [ref=e7685]
+    - StaticText "early"
+    - StaticText "صفت"
+    - button "افزودن early به واژههای من" [ref=e7686]
+    - StaticText "زود، اولیه"
+    - button "مترادفِ early: soon — روخوانی" [ref=e7687]
+      - StaticText "soon"
+    - button "کاربرد early در جزوه — ۱ مورد" [ref=e7688]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7689]
+    - button "بلدم" [ref=e7690]
+    - StaticText "endangered"
+    - StaticText "صفت"
+    - button "افزودن endangered به واژههای من" [ref=e7691]
+    - StaticText "در معرض خطر"
+    - button "کاربرد endangered در جزوه — ۱ مورد" [ref=e7692]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7693]
+    - button "بلدم" [ref=e7694]
+    - StaticText "enjoy"
+    - StaticText "فعل"
+    - button "افزودن enjoy به واژههای من" [ref=e7695]
+    - StaticText "لذت بردن"
+    - button "کاربرد enjoy در جزوه — ۴ مورد" [ref=e7696]
+      - StaticText "در جزوه · ۴"
+    - generic
+      - StaticText "رتبهٔ ۵۳۷ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7697]
+    - button "بلدم" [ref=e7698]
+    - StaticText "escape"
+    - StaticText "فعل"
+    - button "افزودن escape به واژههای من" [ref=e7699]
+    - StaticText "فرار کردن"
+    - button "مترادفِ escape: flee — روخوانی" [ref=e7700]
+      - StaticText "flee"
+    - button "کاربرد escape در جزوه — ۲ مورد" [ref=e7701]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7702]
+    - button "بلدم" [ref=e7703]
+    - StaticText "exchange"
+    - StaticText "فعل"
+    - button "افزودن exchange به واژههای من" [ref=e7704]
+    - StaticText "مبادله کردن، عوض کردن"
+    - button "کاربرد exchange در جزوه — ۱ مورد" [ref=e7705]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7706]
+    - button "بلدم" [ref=e7707]
+    - StaticText "exercise"
+    - StaticText "اسم"
+    - button "افزودن exercise به واژههای من" [ref=e7708]
+    - StaticText "تمرین، ورزش"
+    - button "کاربرد exercise در جزوه — ۴ مورد" [ref=e7709]
+      - StaticText "در جزوه · ۴"
+    - generic
+      - StaticText "رتبهٔ ۵۳۷ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7710]
+    - button "بلدم" [ref=e7711]
+    - StaticText "exist"
+    - StaticText "فعل"
+    - button "افزودن exist به واژههای من" [ref=e7715]
+    - StaticText "وجود داشتن، موجود بودن"
+    - button "متضادِ exist: die — روخوانی" [ref=e7716]
+      - StaticText "die"
+    - button "کاربرد exist در جزوه — ۳ مورد" [ref=e7717]
+      - StaticText "در جزوه · ۳"
+    - generic
+      - StaticText "رتبهٔ ۶۹۳ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7718]
+    - button "بلدم" [ref=e7719]
+    - StaticText "experience"
+    - StaticText "اسم"
+    - button "افزودن experience به واژههای من" [ref=e7720]
+    - StaticText "تجربه - تجربه کردن"
+    - button "کاربرد experience در جزوه — ۳ مورد" [ref=e7721]
+      - StaticText "در جزوه · ۳"
+    - generic
+      - StaticText "رتبهٔ ۶۹۳ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7722]
+    - button "بلدم" [ref=e7723]
+    - StaticText "fall down"
+    - StaticText "فعل دوکلمهای"
+    - button "افزودن fall down به واژههای من" [ref=e7724]
+    - StaticText "افتادن، سقوط کردن"
+    - button "کاربرد fall down در جزوه — ۱ مورد" [ref=e7725]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7726]
+    - button "بلدم" [ref=e7727]
+    - StaticText "favorite"
+    - StaticText "صفت"
+    - button "افزودن favorite به واژههای من" [ref=e7731]
+    - StaticText "مطلوب، مورد علاقه"
+    - button "کاربرد favorite در جزوه — ۴ مورد" [ref=e7732]
+      - StaticText "در جزوه · ۴"
+    - generic
+      - StaticText "رتبهٔ ۵۳۷ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7733]
+    - button "بلدم" [ref=e7734]
+    - StaticText "feeling"
+    - StaticText "اسم"
+    - button "افزودن feeling به واژههای من" [ref=e7735]
+    - StaticText "احساس"
+    - button "کاربرد feeling در جزوه — ۵ مورد" [ref=e7736]
+      - StaticText "در جزوه · ۵"
+    - generic
+      - StaticText "رتبهٔ ۴۷۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7737]
+    - button "بلدم" [ref=e7738]
+    - StaticText "finally"
+    - StaticText "قید"
+    - button "افزودن finally به واژههای من" [ref=e7739]
+    - StaticText "در نهایت، سرانجام"
+    - button "کاربرد finally در جزوه — ۱ مورد" [ref=e7740]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7741]
+    - button "بلدم" [ref=e7742]
+    - StaticText "fluently"
+    - StaticText "قید"
+    - button "افزودن fluently به واژههای من" [ref=e7746]
+    - StaticText "به طور روان"
+    - button "کاربرد fluently در جزوه — ۱ مورد" [ref=e7747]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7748]
+    - button "بلدم" [ref=e7749]
+    - StaticText "form"
+    - StaticText "فعل"
+    - button "افزودن form به واژههای من" [ref=e7753]
+    - StaticText "شکل دادن، فرم دادن"
+    - button "مترادفِ form: make up — روخوانی" [ref=e7754]
+      - StaticText "make up"
+    - button "کاربرد form در جزوه — ۱ مورد" [ref=e7755]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7756]
+    - button "بلدم" [ref=e7757]
+    - StaticText "grade"
+    - StaticText "اسم"
+    - button "افزودن grade به واژههای من" [ref=e7770]
+    - StaticText "نمره، درجه، کلاس"
+    - button "کاربرد grade در جزوه — ۶ مورد" [ref=e7771]
+      - StaticText "در جزوه · ۶"
+    - generic
+      - StaticText "رتبهٔ ۳۹۵ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7772]
+    - button "بلدم" [ref=e7773]
+    - StaticText "greatly"
+    - StaticText "قید"
+    - button "افزودن greatly به واژههای من" [ref=e7774]
+    - StaticText "زیاد، به طور عمده"
+    - button "مترادفِ greatly: largely — روخوانی" [ref=e7775]
+      - StaticText "largely"
+    - button "مترادفِ greatly: mostly — روخوانی" [ref=e7776]
+      - StaticText "mostly"
+    - button "کاربرد greatly در جزوه — ۱ مورد" [ref=e7777]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7778]
+    - button "بلدم" [ref=e7779]
+    - StaticText "happen"
+    - StaticText "فعل"
+    - button "افزودن happen به واژههای من" [ref=e7780]
+    - StaticText "اتفاق افتادن، روی دادن"
+    - button "کاربرد happen در جزوه — ۲ مورد" [ref=e7781]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7782]
+    - button "بلدم" [ref=e7783]
+    - StaticText "honest"
+    - StaticText "صفت"
+    - button "افزودن honest به واژههای من" [ref=e7790]
+    - StaticText "درستکار، صادق، راستگو"
+    - button "مترادفِ honest: sincere — روخوانی" [ref=e7791]
+      - StaticText "sincere"
+    - button "متضادِ honest: dishonest — روخوانی" [ref=e7792]
+      - StaticText "dishonest"
+    - button "کاربرد honest در جزوه — ۱ مورد" [ref=e7793]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7794]
+    - button "بلدم" [ref=e7795]
+    - StaticText "host"
+    - StaticText "اسم"
+    - button "افزودن host به واژههای من" [ref=e7799]
+    - StaticText "میزبان، مهمانداری کردن"
+    - button "متضادِ host: guest — روخوانی" [ref=e7800]
+      - StaticText "guest"
+    - button "متضادِ host: guest — روخوانی" [ref=e7801]
+      - StaticText "guest"
+    - button "کاربرد host در جزوه — ۲ مورد" [ref=e7802]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7803]
+    - button "بلدم" [ref=e7804]
+    - StaticText "imagine"
+    - StaticText "فعل"
+    - button "افزودن imagine به واژههای من" [ref=e7805]
+    - StaticText "تصور کردن"
+    - button "مترادفِ imagine: think of — روخوانی" [ref=e7806]
+      - StaticText "think of"
+    - button "کاربرد imagine در جزوه — ۴ مورد" [ref=e7807]
+      - StaticText "در جزوه · ۴"
+    - generic
+      - StaticText "رتبهٔ ۵۳۷ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7808]
+    - button "بلدم" [ref=e7809]
+    - StaticText "impossible"
+    - StaticText "صفت"
+    - button "افزودن impossible به واژههای من" [ref=e7810]
+    - StaticText "غیرممکن"
+    - button "متضادِ impossible: possible — روخوانی" [ref=e7811]
+      - StaticText "possible"
+    - button "متضادِ impossible: possible — روخوانی" [ref=e7812]
+      - StaticText "possible"
+    - button "کاربرد impossible در جزوه — ۳ مورد" [ref=e7813]
+      - StaticText "در جزوه · ۳"
+    - generic
+      - StaticText "رتبهٔ ۶۹۳ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7814]
+    - button "بلدم" [ref=e7815]
+    - StaticText "increase"
+    - StaticText "فعل"
+    - button "افزودن increase به واژههای من" [ref=e7816]
+    - StaticText "افزایش دادن، افزایش یافتن"
+    - button "مترادفِ increase: enhance — روخوانی" [ref=e7817]
+      - StaticText "enhance"
+    - button "مترادفِ increase: rise — روخوانی" [ref=e7818]
+      - StaticText "rise"
+    - button "متضادِ increase: decrease — روخوانی" [ref=e7819]
+      - StaticText "decrease"
+    - StaticText "+"
+    - StaticText "۳"
+    - button "کاربرد increase در جزوه — ۲ مورد" [ref=e7820]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7821]
+    - button "بلدم" [ref=e7822]
+    - StaticText "institute"
+    - StaticText "اسم"
+    - button "افزودن institute به واژههای من" [ref=e7823]
+    - StaticText "مؤسسه"
+    - button "کاربرد institute در جزوه — ۱ مورد" [ref=e7824]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7825]
+    - button "بلدم" [ref=e7826]
+    - StaticText "interest"
+    - StaticText "اسم"
+    - button "افزودن interest به واژههای من" [ref=e7830]
+    - StaticText "علاقه - علاقهمند کردن - سود"
+    - button "کاربرد interest در جزوه — ۶ مورد" [ref=e7831]
+      - StaticText "در جزوه · ۶"
+    - generic
+      - StaticText "رتبهٔ ۳۹۵ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7832]
+    - button "بلدم" [ref=e7833]
+    - StaticText "interview"
+    - StaticText "فعل"
+    - button "افزودن interview به واژههای من" [ref=e7834]
+    - StaticText "مصاحبه کردن، مصاحبه"
+    - button "کاربرد interview در جزوه — ۱ مورد" [ref=e7835]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7836]
+    - button "بلدم" [ref=e7837]
+    - StaticText "invite"
+    - StaticText "فعل"
+    - button "افزودن invite به واژههای من" [ref=e7838]
+    - StaticText "دعوت کردن، مهمان کردن"
+    - button "مترادفِ invite: ask over — روخوانی" [ref=e7839]
+      - StaticText "ask over"
+    - button "کاربرد invite در جزوه — ۲ مورد" [ref=e7840]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7841]
+    - button "بلدم" [ref=e7842]
+    - StaticText "knowledge"
+    - StaticText "اسم"
+    - button "افزودن knowledge به واژههای من" [ref=e7843]
+    - StaticText "دانش، علم، بصیرت"
+    - button "مترادفِ knowledge: science — روخوانی" [ref=e7844]
+      - StaticText "science"
+    - button "مترادفِ knowledge: understanding — روخوانی" [ref=e7845]
+      - StaticText "understanding"
+    - button "متضادِ knowledge: ignorance — روخوانی" [ref=e7846]
+      - StaticText "ignorance"
+    - button "کاربرد knowledge در جزوه — ۸ مورد" [ref=e7847]
+      - StaticText "در جزوه · ۸"
+    - generic
+      - StaticText "رتبهٔ ۲۹۷ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7848]
+    - button "بلدم" [ref=e7849]
+    - StaticText "label"
+    - StaticText "اسم"
+    - button "افزودن label به واژههای من" [ref=e7850]
+    - StaticText "نشان، برچسب، برچسب زدن"
+    - button "کاربرد label در جزوه — ۱ مورد" [ref=e7851]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7852]
+    - button "بلدم" [ref=e7853]
+    - StaticText "language"
+    - StaticText "اسم"
+    - button "افزودن language به واژههای من" [ref=e7854]
+    - StaticText "زبان"
+    - button "کاربرد language در جزوه — ۲۱ مورد" [ref=e7855]
+      - StaticText "در جزوه · ۲۱"
+    - generic
+      - StaticText "رتبهٔ ۶۱ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7856]
+    - button "بلدم" [ref=e7857]
+    - StaticText "laugh"
+    - StaticText "فعل"
+    - button "افزودن laugh به واژههای من" [ref=e7862]
+    - StaticText "خنده - خندیدن"
+    - button "کاربرد laugh در جزوه — ۱ مورد" [ref=e7863]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7864]
+    - button "بلدم" [ref=e7865]
+    - StaticText "less"
+    - StaticText "قید"
+    - button "افزودن less به واژههای من" [ref=e7866]
+    - StaticText "کمتر"
+    - button "کاربرد less در جزوه — ۲ مورد" [ref=e7867]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7868]
+    - button "بلدم" [ref=e7869]
+    - StaticText "lose"
+    - StaticText "فعل"
+    - button "افزودن lose به واژههای من" [ref=e7876]
+    - StaticText "از دست دادن، گم کردن، باختن"
+    - button "متضادِ lose: gain — روخوانی" [ref=e7877]
+      - StaticText "gain"
+    - button "متضادِ lose: win — روخوانی" [ref=e7878]
+      - StaticText "win"
+    - button "کاربرد lose در جزوه — ۲ مورد" [ref=e7879]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7880]
+    - button "بلدم" [ref=e7881]
+    - StaticText "make up"
+    - StaticText "فعل دوکلمهای"
+    - button "افزودن make up به واژههای من" [ref=e7890]
+    - StaticText "تشکیل دادن - جبران کردن - آرایش"
+    - button "مترادفِ make up: form — روخوانی" [ref=e7891]
+      - StaticText "form"
+    - button "کاربرد make up در جزوه — ۱ مورد" [ref=e7892]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7893]
+    - button "بلدم" [ref=e7894]
+    - StaticText "matter"
+    - StaticText "اسم"
+    - button "افزودن matter به واژههای من" [ref=e7901]
+    - StaticText "مسئله، مشکل"
+    - button "کاربرد matter در جزوه — ۲ مورد" [ref=e7902]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7903]
+    - button "بلدم" [ref=e7904]
+    - StaticText "mean"
+    - StaticText "فعل"
+    - button "افزودن mean به واژههای من" [ref=e7905]
+    - StaticText "معنی دادن، منظور داشتن"
+    - button "کاربرد mean در جزوه — ۴ مورد" [ref=e7906]
+      - StaticText "در جزوه · ۴"
+    - generic
+      - StaticText "رتبهٔ ۵۳۷ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7907]
+    - button "بلدم" [ref=e7908]
+    - StaticText "measure"
+    - StaticText "فعل"
+    - button "افزودن measure به واژههای من" [ref=e7912]
+    - StaticText "اندازهگیری کردن"
+    - button "کاربرد measure در جزوه — ۱ مورد" [ref=e7913]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7914]
+    - button "بلدم" [ref=e7915]
+    - StaticText "meet"
+    - StaticText "فعل"
+    - button "افزودن meet به واژههای من" [ref=e7916]
+    - StaticText "برآورده کردن، ملاقات کردن"
+    - button "کاربرد meet در جزوه — ۵ مورد" [ref=e7917]
+      - StaticText "در جزوه · ۵"
+    - generic
+      - StaticText "رتبهٔ ۴۷۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7918]
+    - button "بلدم" [ref=e7919]
+    - StaticText "mind"
+    - StaticText "اسم"
+    - button "افزودن mind به واژههای من" [ref=e7927]
+    - StaticText "ذهن"
+    - button "کاربرد mind در جزوه — ۵ مورد" [ref=e7928]
+      - StaticText "در جزوه · ۵"
+    - generic
+      - StaticText "رتبهٔ ۴۷۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7929]
+    - button "بلدم" [ref=e7930]
+    - StaticText "mother tongue"
+    - StaticText "اسم"
+    - button "افزودن mother tongue به واژههای من" [ref=e7931]
+    - StaticText "زبان مادری"
+    - button "کاربرد mother tongue در جزوه — ۲ مورد" [ref=e7932]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7933]
+    - button "بلدم" [ref=e7934]
+    - StaticText "nation"
+    - StaticText "اسم"
+    - button "افزودن nation به واژههای من" [ref=e7935]
+    - StaticText "ملت، مردم یک کشور"
+    - button "کاربرد nation در جزوه — ۳ مورد" [ref=e7936]
+      - StaticText "در جزوه · ۳"
+    - generic
+      - StaticText "رتبهٔ ۶۹۳ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7937]
+    - button "بلدم" [ref=e7938]
+    - StaticText "native"
+    - StaticText "صفت"
+    - button "افزودن native به واژههای من" [ref=e7939]
+    - StaticText "بومی، مادری، محلی"
+    - button "کاربرد native در جزوه — ۲ مورد" [ref=e7940]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7941]
+    - button "بلدم" [ref=e7942]
+    - StaticText "nearly"
+    - StaticText "قید"
+    - button "افزودن nearly به واژههای من" [ref=e7943]
+    - StaticText "تقریباً، تا حدودی"
+    - button "مترادفِ nearly: about — روخوانی" [ref=e7944]
+      - StaticText "about"
+    - button "کاربرد nearly در جزوه — ۱ مورد" [ref=e7945]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7946]
+    - button "بلدم" [ref=e7947]
+    - StaticText "never"
+    - StaticText "قید"
+    - button "افزودن never به واژههای من" [ref=e7951]
+    - StaticText "هرگز"
+    - button "متضادِ never: always — روخوانی" [ref=e7952]
+      - StaticText "always"
+    - button "متضادِ never: every day — روخوانی" [ref=e7953]
+      - StaticText "every day"
+    - button "کاربرد never در جزوه — ۱۷ مورد" [ref=e7954]
+      - StaticText "در جزوه · ۱۷"
+    - generic
+      - StaticText "رتبهٔ ۹۹ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7955]
+    - button "بلدم" [ref=e7956]
+    - StaticText "notebook"
+    - StaticText "اسم"
+    - button "افزودن notebook به واژههای من" [ref=e7957]
+    - StaticText "دفترچه یادداشت"
+    - button "کاربرد notebook در جزوه — ۱ مورد" [ref=e7958]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7959]
+    - button "بلدم" [ref=e7960]
+    - StaticText "notice"
+    - StaticText "فعل"
+    - button "افزودن notice به واژههای من" [ref=e7961]
+    - StaticText "توجه - متوجه شدن"
+    - button "مترادفِ notice: attend — روخوانی" [ref=e7962]
+      - StaticText "attend"
+    - button "کاربرد notice در جزوه — ۳ مورد" [ref=e7963]
+      - StaticText "در جزوه · ۳"
+    - generic
+      - StaticText "رتبهٔ ۶۹۳ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7964]
+    - button "بلدم" [ref=e7965]
+    - StaticText "number"
+    - StaticText "اسم"
+    - button "افزودن number به واژههای من" [ref=e7969]
+    - StaticText "عدد، رقم، شماره"
+    - button "کاربرد number در جزوه — ۱ مورد" [ref=e7970]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7971]
+    - button "بلدم" [ref=e7972]
+    - StaticText "often"
+    - StaticText "قید"
+    - button "افزودن often به واژههای من" [ref=e7976]
+    - StaticText "اغلب"
+    - button "کاربرد often در جزوه — ۳ مورد" [ref=e7977]
+      - StaticText "در جزوه · ۳"
+    - generic
+      - StaticText "رتبهٔ ۶۹۳ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e7978]
+    - button "بلدم" [ref=e7979]
+    - StaticText "physical"
+    - StaticText "صفت"
+    - button "افزودن physical به واژههای من" [ref=e7999]
+    - StaticText "جسمی، بدنی"
+    - button "متضادِ physical: mental — روخوانی" [ref=e8000]
+      - StaticText "mental"
+    - button "کاربرد physical در جزوه — ۲ مورد" [ref=e8001]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8002]
+    - button "بلدم" [ref=e8003]
+    - StaticText "popular"
+    - StaticText "صفت"
+    - button "افزودن popular به واژههای من" [ref=e8007]
+    - StaticText "محبوب، پرطرفدار"
+    - button "کاربرد popular در جزوه — ۱ مورد" [ref=e8008]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8009]
+    - button "بلدم" [ref=e8010]
+    - StaticText "power"
+    - StaticText "اسم"
+    - button "افزودن power به واژههای من" [ref=e8011]
+    - StaticText "قدرت، توان، نیروی برق"
+    - button "کاربرد power در جزوه — ۶ مورد" [ref=e8012]
+      - StaticText "در جزوه · ۶"
+    - generic
+      - StaticText "رتبهٔ ۳۹۵ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8013]
+    - button "بلدم" [ref=e8014]
+    - StaticText "price"
+    - StaticText "اسم"
+    - button "افزودن price به واژههای من" [ref=e8018]
+    - StaticText "قیمت، نرخ، بها، ارزش"
+    - button "مترادفِ price: cost — روخوانی" [ref=e8019]
+      - StaticText "cost"
+    - button "کاربرد price در جزوه — ۳ مورد" [ref=e8020]
+      - StaticText "در جزوه · ۳"
+    - generic
+      - StaticText "رتبهٔ ۶۹۳ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8021]
+    - button "بلدم" [ref=e8022]
+    - StaticText "percent"
+    - StaticText "اسم"
+    - button "افزودن percent به واژههای من" [ref=e8023]
+    - StaticText "درصد"
+    - button "کاربرد percent در جزوه — ۳ مورد" [ref=e8024]
+      - StaticText "در جزوه · ۳"
+    - generic
+      - StaticText "رتبهٔ ۶۹۳ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8025]
+    - button "بلدم" [ref=e8026]
+    - StaticText "project"
+    - StaticText "اسم"
+    - button "افزودن project به واژههای من" [ref=e8031]
+    - StaticText "پروژه، طرح، برنامه"
+    - button "مترادفِ project: scheme — روخوانی" [ref=e8032]
+      - StaticText "scheme"
+    - button "کاربرد project در جزوه — ۵ مورد" [ref=e8033]
+      - StaticText "در جزوه · ۵"
+    - generic
+      - StaticText "رتبهٔ ۴۷۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8034]
+    - button "بلدم" [ref=e8035]
+    - StaticText "protect"
+    - StaticText "فعل"
+    - button "افزودن protect به واژههای من" [ref=e8042]
+    - StaticText "حمایت کردن، محافظت کردن"
+    - button "مترادفِ protect: defend — روخوانی" [ref=e8043]
+      - StaticText "defend"
+    - button "مترادفِ protect: guard — روخوانی" [ref=e8044]
+      - StaticText "guard"
+    - button "متضادِ protect: destroy — روخوانی" [ref=e8045]
+      - StaticText "destroy"
+    - button "کاربرد protect در جزوه — ۸ مورد" [ref=e8046]
+      - StaticText "در جزوه · ۸"
+    - generic
+      - StaticText "رتبهٔ ۲۹۷ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8047]
+    - button "بلدم" [ref=e8048]
+    - StaticText "quiet"
+    - StaticText "صفت"
+    - button "افزودن quiet به واژههای من" [ref=e8052]
+    - StaticText "ساکت، آرام، بیصدا"
+    - button "مترادفِ quiet: calm — روخوانی" [ref=e8053]
+      - StaticText "calm"
+    - button "مترادفِ quiet: silent — روخوانی" [ref=e8054]
+      - StaticText "silent"
+    - button "مترادفِ quiet: silent — روخوانی" [ref=e8055]
+      - StaticText "silent"
+    - StaticText "+"
+    - StaticText "۲"
+    - button "کاربرد quiet در جزوه — ۲ مورد" [ref=e8056]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8057]
+    - button "بلدم" [ref=e8058]
+    - StaticText "range"
+    - StaticText "اسم"
+    - button "افزودن range به واژههای من" [ref=e8064]
+    - StaticText "محدوده، دامنه - متغیر بودن، در نوسان بودن"
+    - button "مترادفِ range: scope — روخوانی" [ref=e8065]
+      - StaticText "scope"
+    - button "مترادفِ range: vary — روخوانی" [ref=e8066]
+      - StaticText "vary"
+    - button "کاربرد range در جزوه — ۲ مورد" [ref=e8067]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8068]
+    - button "بلدم" [ref=e8069]
+    - StaticText "remember"
+    - StaticText "فعل"
+    - button "افزودن remember به واژههای من" [ref=e8077]
+    - StaticText "به خاطر آوردن، به خاطر داشتن"
+    - button "مترادفِ remember: recall — روخوانی" [ref=e8078]
+      - StaticText "recall"
+    - button "مترادفِ remember: recall — روخوانی" [ref=e8079]
+      - StaticText "recall"
+    - button "متضادِ remember: forget — روخوانی" [ref=e8080]
+      - StaticText "forget"
+    - StaticText "+"
+    - StaticText "۵"
+    - button "کاربرد remember در جزوه — ۴ مورد" [ref=e8081]
+      - StaticText "در جزوه · ۴"
+    - generic
+      - StaticText "رتبهٔ ۵۳۷ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8082]
+    - button "بلدم" [ref=e8083]
+    - StaticText "repeat"
+    - StaticText "فعل"
+    - button "افزودن repeat به واژههای من" [ref=e8084]
+    - StaticText "تکرار کردن"
+    - button "کاربرد repeat در جزوه — ۱ مورد" [ref=e8085]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8086]
+    - button "بلدم" [ref=e8087]
+    - StaticText "respect"
+    - StaticText "فعل"
+    - button "افزودن respect به واژههای من" [ref=e8088]
+    - StaticText "احترام گذاشتن"
+    - button "مترادفِ respect: admire — روخوانی" [ref=e8089]
+      - StaticText "admire"
+    - button "کاربرد respect در جزوه — ۶ مورد" [ref=e8090]
+      - StaticText "در جزوه · ۶"
+    - generic
+      - StaticText "رتبهٔ ۳۹۵ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8091]
+    - button "بلدم" [ref=e8092]
+    - StaticText "save"
+    - StaticText "فعل"
+    - button "افزودن save به واژههای من" [ref=e8093]
+    - StaticText "ذخیره کردن، پسانداز کردن، رهائی کردن"
+    - button "متضادِ save: waste — روخوانی" [ref=e8094]
+      - StaticText "waste"
+    - button "کاربرد save در جزوه — ۶ مورد" [ref=e8095]
+      - StaticText "در جزوه · ۶"
+    - generic
+      - StaticText "رتبهٔ ۳۹۵ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8096]
+    - button "بلدم" [ref=e8097]
+    - StaticText "simple"
+    - StaticText "صفت"
+    - button "افزودن simple به واژههای من" [ref=e8114]
+    - StaticText "ساده، آسان"
+    - button "متضادِ simple: complicated — روخوانی" [ref=e8115]
+      - StaticText "complicated"
+    - button "متضادِ simple: difficult — روخوانی" [ref=e8116]
+      - StaticText "difficult"
+    - button "کاربرد simple در جزوه — ۸ مورد" [ref=e8117]
+      - StaticText "در جزوه · ۸"
+    - generic
+      - StaticText "رتبهٔ ۲۹۷ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8118]
+    - button "بلدم" [ref=e8119]
+    - StaticText "simply"
+    - StaticText "قید"
+    - button "افزودن simply به واژههای من" [ref=e8120]
+    - StaticText "به سادگی، به راحتی"
+    - button "کاربرد simply در جزوه — ۲ مورد" [ref=e8121]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8122]
+    - button "بلدم" [ref=e8123]
+    - StaticText "skill"
+    - StaticText "اسم"
+    - button "افزودن skill به واژههای من" [ref=e8124]
+    - StaticText "مهارت، استادی، هنرمندی"
+    - button "کاربرد skill در جزوه — ۴ مورد" [ref=e8125]
+      - StaticText "در جزوه · ۴"
+    - generic
+      - StaticText "رتبهٔ ۵۳۷ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8126]
+    - button "بلدم" [ref=e8127]
+    - StaticText "smart"
+    - StaticText "صفت"
+    - button "افزودن smart به واژههای من" [ref=e8132]
+    - StaticText "باهوش، زرنگ"
+    - button "مترادفِ smart: bright — روخوانی" [ref=e8133]
+      - StaticText "bright"
+    - button "مترادفِ smart: clever — روخوانی" [ref=e8134]
+      - StaticText "clever"
+    - button "مترادفِ smart: clever — روخوانی" [ref=e8135]
+      - StaticText "clever"
+    - StaticText "+"
+    - StaticText "۱"
+    - button "کاربرد smart در جزوه — ۳ مورد" [ref=e8136]
+      - StaticText "در جزوه · ۳"
+    - generic
+      - StaticText "رتبهٔ ۶۹۳ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8137]
+    - button "بلدم" [ref=e8138]
+    - StaticText "society"
+    - StaticText "اسم"
+    - button "افزودن society به واژههای من" [ref=e8139]
+    - StaticText "جامعه، اجتماع"
+    - button "کاربرد society در جزوه — ۶ مورد" [ref=e8140]
+      - StaticText "در جزوه · ۶"
+    - generic
+      - StaticText "رتبهٔ ۳۹۵ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8141]
+    - button "بلدم" [ref=e8142]
+    - StaticText "sometimes"
+    - StaticText "قید"
+    - button "افزودن sometimes به واژههای من" [ref=e8143]
+    - StaticText "گاهگاهی، بعضی اوقات"
+    - button "کاربرد sometimes در جزوه — ۱ مورد" [ref=e8144]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8145]
+    - button "بلدم" [ref=e8146]
+    - StaticText "space"
+    - StaticText "اسم"
+    - button "افزودن space به واژههای من" [ref=e8147]
+    - StaticText "فضا، فاصله"
+    - button "کاربرد space در جزوه — ۲ مورد" [ref=e8148]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8149]
+    - button "بلدم" [ref=e8150]
+    - StaticText "speaker"
+    - StaticText "اسم"
+    - button "افزودن speaker به واژههای من" [ref=e8151]
+    - StaticText "متکلم، گوینده"
+    - button "کاربرد speaker در جزوه — ۴ مورد" [ref=e8152]
+      - StaticText "در جزوه · ۴"
+    - generic
+      - StaticText "رتبهٔ ۵۳۷ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8153]
+    - button "بلدم" [ref=e8154]
+    - StaticText "step"
+    - StaticText "اسم"
+    - button "افزودن step به واژههای من" [ref=e8159]
+    - StaticText "مرحله، قدم، گام"
+    - button "مترادفِ step: stage — روخوانی" [ref=e8160]
+      - StaticText "stage"
+    - button "کاربرد step در جزوه — ۲ مورد" [ref=e8161]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8162]
+    - button "بلدم" [ref=e8163]
+    - StaticText "stress"
+    - StaticText "اسم"
+    - button "افزودن stress به واژههای من" [ref=e8171]
+    - StaticText "تأکید، استرس"
+    - button "مترادفِ stress: pressure — روخوانی" [ref=e8172]
+      - StaticText "pressure"
+    - button "مترادفِ stress: tension — روخوانی" [ref=e8173]
+      - StaticText "tension"
+    - button "کاربرد stress در جزوه — ۱ مورد" [ref=e8174]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8175]
+    - button "بلدم" [ref=e8176]
+    - StaticText "strong"
+    - StaticText "صفت"
+    - button "افزودن strong به واژههای من" [ref=e8177]
+    - StaticText "قوی، قدرتمند"
+    - button "مترادفِ strong: powerful — روخوانی" [ref=e8178]
+      - StaticText "powerful"
+    - button "متضادِ strong: weak — روخوانی" [ref=e8179]
+      - StaticText "weak"
+    - button "کاربرد strong در جزوه — ۱ مورد" [ref=e8180]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8181]
+    - button "بلدم" [ref=e8182]
+    - StaticText "suggest"
+    - StaticText "فعل"
+    - button "افزودن suggest به واژههای من" [ref=e8186]
+    - StaticText "پیشنهاد دادن - اشاره کردن بر"
+    - button "کاربرد suggest در جزوه — ۱ مورد" [ref=e8187]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8188]
+    - button "بلدم" [ref=e8189]
+    - StaticText "surf"
+    - StaticText "فعل"
+    - button "افزودن surf به واژههای من" [ref=e8194]
+    - StaticText "گشتن در (اینترنت) - موجسواری کردن"
+    - button "کاربرد surf در جزوه — ۲ مورد" [ref=e8195]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8196]
+    - button "بلدم" [ref=e8197]
+    - StaticText "surprising"
+    - StaticText "صفت"
+    - button "افزودن surprising به واژههای من" [ref=e8198]
+    - StaticText "تعجبآور، شگفتانگیز"
+    - button "کاربرد surprising در جزوه — ۲ مورد" [ref=e8199]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8200]
+    - button "بلدم" [ref=e8201]
+    - StaticText "system"
+    - StaticText "اسم"
+    - button "افزودن system به واژههای من" [ref=e8209]
+    - StaticText "سیستم - منظومه، سلسله"
+    - button "کاربرد system در جزوه — ۳ مورد" [ref=e8210]
+      - StaticText "در جزوه · ۳"
+    - generic
+      - StaticText "رتبهٔ ۶۹۳ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8211]
+    - button "بلدم" [ref=e8212]
+    - StaticText "take"
+    - StaticText "فعل"
+    - button "افزودن take به واژههای من" [ref=e8213]
+    - StaticText "گرفتن - برداشتن - بردن"
+    - button "کاربرد take در جزوه — ۱۲ مورد" [ref=e8214]
+      - StaticText "در جزوه · ۱۲"
+    - generic
+      - StaticText "رتبهٔ ۱۹۱ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8215]
+    - button "بلدم" [ref=e8216]
+    - StaticText "therefore"
+    - StaticText "قید"
+    - button "افزودن therefore به واژههای من" [ref=e8217]
+    - StaticText "بنابراین، از این رو - سپس"
+    - button "کاربرد therefore در جزوه — ۲ مورد" [ref=e8218]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8219]
+    - button "بلدم" [ref=e8220]
+    - StaticText "through"
+    - StaticText "حرف اضافه"
+    - button "افزودن through به واژههای من" [ref=e8221]
+    - StaticText "از طریق، از میان، از وسط"
+    - button "کاربرد through در جزوه — ۱ مورد" [ref=e8222]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8223]
+    - button "بلدم" [ref=e8224]
+    - StaticText "tiny"
+    - StaticText "صفت"
+    - button "افزودن tiny به واژههای من" [ref=e8225]
+    - StaticText "کوچک، ریز"
+    - button "مترادفِ tiny: small — روخوانی" [ref=e8226]
+      - StaticText "small"
+    - button "متضادِ tiny: huge — روخوانی" [ref=e8227]
+      - StaticText "huge"
+    - button "کاربرد tiny در جزوه — ۱ مورد" [ref=e8228]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8229]
+    - button "بلدم" [ref=e8230]
+    - StaticText "tongue"
+    - StaticText "اسم"
+    - button "افزودن tongue به واژههای من" [ref=e8231]
+    - StaticText "زبان - بر زبان آوردن"
+    - button "کاربرد tongue در جزوه — ۲ مورد" [ref=e8232]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8233]
+    - button "بلدم" [ref=e8234]
+    - StaticText "translator"
+    - StaticText "اسم"
+    - button "افزودن translator به واژههای من" [ref=e8238]
+    - StaticText "مترجم"
+    - button "کاربرد translator در جزوه — ۱ مورد" [ref=e8239]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8240]
+    - button "بلدم" [ref=e8241]
+    - StaticText "turn off"
+    - StaticText "فعل دوکلمهای"
+    - button "افزودن turn off به واژههای من" [ref=e8242]
+    - StaticText "خاموش کردن (وسیله)"
+    - button "متضادِ turn off: turn on — روخوانی" [ref=e8243]
+      - StaticText "turn on"
+    - button "کاربرد turn off در جزوه — ۲ مورد" [ref=e8244]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8245]
+    - button "بلدم" [ref=e8246]
+    - StaticText "type"
+    - StaticText "اسم"
+    - button "افزودن type به واژههای من" [ref=e8250]
+    - StaticText "نوع - تایپ کردن"
+    - button "کاربرد type در جزوه — ۲ مورد" [ref=e8251]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8252]
+    - button "بلدم" [ref=e8253]
+    - StaticText "under"
+    - StaticText "حرف اضافه"
+    - button "افزودن under به واژههای من" [ref=e8254]
+    - StaticText "زیر"
+    - button "کاربرد under در جزوه — ۴ مورد" [ref=e8255]
+      - StaticText "در جزوه · ۴"
+    - generic
+      - StaticText "رتبهٔ ۵۳۷ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8256]
+    - button "بلدم" [ref=e8257]
+    - StaticText "understand"
+    - StaticText "فعل"
+    - button "افزودن understand به واژههای من" [ref=e8261]
+    - StaticText "فهمیدن، متوجه شدن، درک کردن"
+    - button "متضادِ understand: misunderstand — روخوانی" [ref=e8262]
+      - StaticText "misunderstand"
+    - button "کاربرد understand در جزوه — ۶ مورد" [ref=e8263]
+      - StaticText "در جزوه · ۶"
+    - generic
+      - StaticText "رتبهٔ ۳۹۵ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8264]
+    - button "بلدم" [ref=e8265]
+    - StaticText "unfortunately"
+    - StaticText "قید"
+    - button "افزودن unfortunately به واژههای من" [ref=e8266]
+    - StaticText "متأسفانه"
+    - button "کاربرد unfortunately در جزوه — ۱ مورد" [ref=e8267]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8268]
+    - button "بلدم" [ref=e8269]
+    - StaticText "usually"
+    - StaticText "قید"
+    - button "افزودن usually به واژههای من" [ref=e8270]
+    - StaticText "معمولاً"
+    - button "مترادفِ usually: normally — روخوانی" [ref=e8271]
+      - StaticText "normally"
+    - button "کاربرد usually در جزوه — ۸ مورد" [ref=e8272]
+      - StaticText "در جزوه · ۸"
+    - generic
+      - StaticText "رتبهٔ ۲۹۷ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8273]
+    - button "بلدم" [ref=e8274]
+    - StaticText "valuable"
+    - StaticText "صفت"
+    - button "افزودن valuable به واژههای من" [ref=e8275]
+    - StaticText "باارزش، گرانبها"
+    - button "مترادفِ valuable: precious — روخوانی" [ref=e8276]
+      - StaticText "precious"
+    - button "مترادفِ valuable: profitable — روخوانی" [ref=e8277]
+      - StaticText "profitable"
+    - button "مترادفِ valuable: worthwhile — روخوانی" [ref=e8278]
+      - StaticText "worthwhile"
+    - button "کاربرد valuable در جزوه — ۲ مورد" [ref=e8279]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8280]
+    - button "بلدم" [ref=e8281]
+    - StaticText "value"
+    - StaticText "اسم"
+    - button "افزودن value به واژههای من" [ref=e8282]
+    - StaticText "ارزش، بها - ارزش قائل شدن، ارزشگذاری کردن"
+    - button "مترادفِ value: appreciate — روخوانی" [ref=e8283]
+      - StaticText "appreciate"
+    - button "مترادفِ value: worth — روخوانی" [ref=e8284]
+      - StaticText "worth"
+    - button "کاربرد value در جزوه — ۴ مورد" [ref=e8285]
+      - StaticText "در جزوه · ۴"
+    - generic
+      - StaticText "رتبهٔ ۵۳۷ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8286]
+    - button "بلدم" [ref=e8287]
+    - StaticText "vary"
+    - StaticText "فعل"
+    - button "افزودن vary به واژههای من" [ref=e8288]
+    - StaticText "فرق داشتن، متفاوت بودن"
+    - button "مترادفِ vary: range — روخوانی" [ref=e8289]
+      - StaticText "range"
+    - button "کاربرد vary در جزوه — ۱ مورد" [ref=e8290]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8291]
+    - button "بلدم" [ref=e8292]
+    - StaticText "visit"
+    - StaticText "فعل"
+    - button "افزودن visit به واژههای من" [ref=e8293]
+    - StaticText "دیدن، ملاقات کردن"
+    - button "مترادفِ visit: see — روخوانی" [ref=e8294]
+      - StaticText "see"
+    - button "کاربرد visit در جزوه — ۸ مورد" [ref=e8295]
+      - StaticText "در جزوه · ۸"
+    - generic
+      - StaticText "رتبهٔ ۲۹۷ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8296]
+    - button "بلدم" [ref=e8297]
+    - StaticText "way"
+    - StaticText "اسم"
+    - button "افزودن way به واژههای من" [ref=e8298]
+    - StaticText "روش، راه، شیوه، طریقه"
+    - button "مترادفِ way: manner — روخوانی" [ref=e8299]
+      - StaticText "manner"
+    - button "کاربرد way در جزوه — ۱۴ مورد" [ref=e8300]
+      - StaticText "در جزوه · ۱۴"
+    - generic
+      - StaticText "رتبهٔ ۱۳۹ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8301]
+    - button "بلدم" [ref=e8302]
+    - StaticText "wish"
+    - StaticText "اسم"
+    - button "افزودن wish به واژههای من" [ref=e8303]
+    - StaticText "آرزو - خواهش - آرزو داشتن"
+    - button "مترادفِ wish: hope — روخوانی" [ref=e8304]
+      - StaticText "hope"
+    - button "کاربرد wish در جزوه — ۱ مورد" [ref=e8305]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8306]
+    - button "بلدم" [ref=e8307]
+    - StaticText "written"
+    - StaticText "صفت"
+    - button "افزودن written به واژههای من" [ref=e8308]
+    - StaticText "کتبی، نوشتاری"
+    - button "متضادِ written: orally — روخوانی" [ref=e8309]
+      - StaticText "orally"
+    - button "کاربرد written در جزوه — ۴ مورد" [ref=e8310]
+      - StaticText "در جزوه · ۴"
+    - generic
+      - StaticText "رتبهٔ ۵۳۷ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۱"
+    - button "روخوانی متن انگلیسی" [ref=e8311]
+    - button "بلدم" [ref=e8312]
+    - StaticText "a bit"
+    - StaticText "عبارت"
+    - button "افزودن a bit به واژههای من" [ref=e8316]
+    - StaticText "یهخورده، کمی، ذرهای"
+    - button "مترادفِ a bit: a little — روخوانی" [ref=e8317]
+      - StaticText "a little"
+    - button "مترادفِ a bit: a little — روخوانی" [ref=e8318]
+      - StaticText "a little"
+    - button "کاربرد a bit در جزوه — ۱ مورد" [ref=e8319]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8320]
+    - button "بلدم" [ref=e8321]
+    - StaticText "addict"
+    - StaticText "اسم"
+    - button "افزودن addict به واژههای من" [ref=e8328]
+    - StaticText "معتاد"
+    - button "کاربرد addict در جزوه — ۲ مورد" [ref=e8329]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8330]
+    - button "بلدم" [ref=e8331]
+    - StaticText "addiction"
+    - StaticText "اسم"
+    - button "افزودن addiction به واژههای من" [ref=e8335]
+    - StaticText "اعتیاد"
+    - button "کاربرد addiction در جزوه — ۳ مورد" [ref=e8336]
+      - StaticText "در جزوه · ۳"
+    - generic
+      - StaticText "رتبهٔ ۶۹۳ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8337]
+    - button "بلدم" [ref=e8338]
+    - StaticText "all right"
+    - StaticText "عبارت"
+    - button "افزودن all right به واژههای من" [ref=e8339]
+    - StaticText "درسته، بسیار خوب"
+    - button "کاربرد all right در جزوه — ۱ مورد" [ref=e8340]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8341]
+    - button "بلدم" [ref=e8342]
+    - StaticText "attention"
+    - StaticText "اسم"
+    - button "افزودن attention به واژههای من" [ref=e8355]
+    - StaticText "توجه"
+    - button "کاربرد attention در جزوه — ۱ مورد" [ref=e8356]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8357]
+    - button "بلدم" [ref=e8358]
+    - StaticText "avoid"
+    - StaticText "فعل"
+    - button "افزودن avoid به واژههای من" [ref=e8359]
+    - StaticText "خودداری کردن - اجتناب کردن"
+    - button "مترادفِ avoid: forbid — روخوانی" [ref=e8360]
+      - StaticText "forbid"
+    - button "کاربرد avoid در جزوه — ۱ مورد" [ref=e8361]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8362]
+    - button "بلدم" [ref=e8363]
+    - StaticText "balanced"
+    - StaticText "صفت"
+    - button "افزودن balanced به واژههای من" [ref=e8364]
+    - StaticText "متوازن - متعادل"
+    - button "متضادِ balanced: unbalanced — روخوانی" [ref=e8365]
+      - StaticText "unbalanced"
+    - button "کاربرد balanced در جزوه — ۲ مورد" [ref=e8366]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8367]
+    - button "بلدم" [ref=e8368]
+    - StaticText "bear"
+    - StaticText "فعل"
+    - button "افزودن bear به واژههای من" [ref=e8369]
+    - StaticText "تحمل کردن - به دنیا آوردن - خرس"
+    - button "کاربرد bear در جزوه — ۱ مورد" [ref=e8370]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8371]
+    - button "بلدم" [ref=e8372]
+    - StaticText "behave"
+    - StaticText "فعل"
+    - button "افزودن behave به واژههای من" [ref=e8373]
+    - StaticText "رفتار کردن"
+    - button "کاربرد behave در جزوه — ۱ مورد" [ref=e8374]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8375]
+    - button "بلدم" [ref=e8376]
+    - StaticText "behavior"
+    - StaticText "اسم"
+    - button "افزودن behavior به واژههای من" [ref=e8377]
+    - StaticText "رفتار"
+    - button "کاربرد behavior در جزوه — ۲ مورد" [ref=e8378]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8379]
+    - button "بلدم" [ref=e8380]
+    - StaticText "blood pressure"
+    - StaticText "اسم"
+    - button "افزودن blood pressure به واژههای من" [ref=e8381]
+    - StaticText "فشار خون"
+    - button "کاربرد blood pressure در جزوه — ۲ مورد" [ref=e8382]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8383]
+    - button "بلدم" [ref=e8384]
+    - StaticText "business"
+    - StaticText "اسم"
+    - button "افزودن business به واژههای من" [ref=e8388]
+    - StaticText "تجارت - حرفه - کار"
+    - button "مترادفِ business: trade — روخوانی" [ref=e8389]
+      - StaticText "trade"
+    - button "کاربرد business در جزوه — ۱ مورد" [ref=e8390]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8391]
+    - button "بلدم" [ref=e8392]
+    - StaticText "calm"
+    - StaticText "صفت"
+    - button "افزودن calm به واژههای من" [ref=e8396]
+    - StaticText "آرام، خونسرد"
+    - button "مترادفِ calm: peaceful — روخوانی" [ref=e8397]
+      - StaticText "peaceful"
+    - button "مترادفِ calm: quiet — روخوانی" [ref=e8398]
+      - StaticText "quiet"
+    - button "متضادِ calm: nervous — روخوانی" [ref=e8399]
+      - StaticText "nervous"
+    - button "کاربرد calm در جزوه — ۲ مورد" [ref=e8400]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8401]
+    - button "بلدم" [ref=e8402]
+    - StaticText "certain"
+    - StaticText "صفت"
+    - button "افزودن certain به واژههای من" [ref=e8410]
+    - StaticText "مطمئن - مشخص"
+    - button "مترادفِ certain: special — روخوانی" [ref=e8411]
+      - StaticText "special"
+    - button "مترادفِ certain: sure — روخوانی" [ref=e8412]
+      - StaticText "sure"
+    - button "متضادِ certain: uncertain — روخوانی" [ref=e8413]
+      - StaticText "uncertain"
+    - button "کاربرد certain در جزوه — ۱ مورد" [ref=e8414]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8415]
+    - button "بلدم" [ref=e8416]
+    - StaticText "climb"
+    - StaticText "فعل"
+    - button "افزودن climb به واژههای من" [ref=e8423]
+    - StaticText "بالا رفتن، صعود کردن"
+    - button "کاربرد climb در جزوه — ۱ مورد" [ref=e8424]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8425]
+    - button "بلدم" [ref=e8426]
+    - StaticText "common"
+    - StaticText "صفت"
+    - button "افزودن common به واژههای من" [ref=e8430]
+    - StaticText "عادی، رایج، متداول"
+    - button "مترادفِ common: ordinary — روخوانی" [ref=e8431]
+      - StaticText "ordinary"
+    - button "متضادِ common: unique — روخوانی" [ref=e8432]
+      - StaticText "unique"
+    - button "کاربرد common در جزوه — ۱ مورد" [ref=e8433]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8434]
+    - button "بلدم" [ref=e8435]
+    - StaticText "conditions"
+    - StaticText "اسم"
+    - button "افزودن conditions به واژههای من" [ref=e8436]
+    - StaticText "شرایط"
+    - button "کاربرد conditions در جزوه — ۱ مورد" [ref=e8437]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8438]
+    - button "بلدم" [ref=e8439]
+    - StaticText "cook"
+    - StaticText "فعل"
+    - button "افزودن cook به واژههای من" [ref=e8446]
+    - StaticText "آشپزی - پختن"
+    - button "کاربرد cook در جزوه — ۳ مورد" [ref=e8447]
+      - StaticText "در جزوه · ۳"
+    - generic
+      - StaticText "رتبهٔ ۶۹۳ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8448]
+    - button "بلدم" [ref=e8449]
+    - StaticText "couch potato"
+    - StaticText "اسم"
+    - button "افزودن couch potato به واژههای من" [ref=e8450]
+    - StaticText "معتاد تلویزیون"
+    - button "کاربرد couch potato در جزوه — ۱ مورد" [ref=e8451]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8452]
+    - button "بلدم" [ref=e8453]
+    - StaticText "cure"
+    - StaticText "فعل"
+    - button "افزودن cure به واژههای من" [ref=e8454]
+    - StaticText "معالجه کردن، درمان کردن"
+    - button "مترادفِ cure: heal — روخوانی" [ref=e8455]
+      - StaticText "heal"
+    - button "مترادفِ cure: remedy — روخوانی" [ref=e8456]
+      - StaticText "remedy"
+    - button "کاربرد cure در جزوه — ۳ مورد" [ref=e8457]
+      - StaticText "در جزوه · ۳"
+    - generic
+      - StaticText "رتبهٔ ۶۹۳ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8458]
+    - button "بلدم" [ref=e8459]
+    - StaticText "death"
+    - StaticText "اسم"
+    - button "افزودن death به واژههای من" [ref=e8471]
+    - StaticText "مرگ"
+    - button "متضادِ death: birth — روخوانی" [ref=e8472]
+      - StaticText "birth"
+    - button "کاربرد death در جزوه — ۱ مورد" [ref=e8473]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8474]
+    - button "بلدم" [ref=e8475]
+    - StaticText "depressed"
+    - StaticText "صفت"
+    - button "افزودن depressed به واژههای من" [ref=e8484]
+    - StaticText "افسرده، غمگین"
+    - button "مترادفِ depressed: sad — روخوانی" [ref=e8485]
+      - StaticText "sad"
+    - button "متضادِ depressed: glad — روخوانی" [ref=e8486]
+      - StaticText "glad"
+    - button "کاربرد depressed در جزوه — ۲ مورد" [ref=e8487]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8488]
+    - button "بلدم" [ref=e8489]
+    - StaticText "diet"
+    - StaticText "اسم"
+    - button "افزودن diet به واژههای من" [ref=e8500]
+    - StaticText "رژیم غذایی"
+    - button "مترادفِ diet: nutrition plan — روخوانی" [ref=e8501]
+      - StaticText "nutrition plan"
+    - button "کاربرد diet در جزوه — ۱ مورد" [ref=e8502]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8503]
+    - button "بلدم" [ref=e8504]
+    - StaticText "education"
+    - StaticText "اسم"
+    - button "افزودن education به واژههای من" [ref=e8530]
+    - StaticText "تحصیلات، آموزش"
+    - button "کاربرد education در جزوه — ۱ مورد" [ref=e8531]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8532]
+    - button "بلدم" [ref=e8533]
+    - StaticText "effect"
+    - StaticText "اسم"
+    - button "افزودن effect به واژههای من" [ref=e8538]
+    - StaticText "اثر، نتیجه"
+    - button "مترادفِ effect: impact — روخوانی" [ref=e8539]
+      - StaticText "impact"
+    - button "مترادفِ effect: influence — روخوانی" [ref=e8540]
+      - StaticText "influence"
+    - button "کاربرد effect در جزوه — ۱ مورد" [ref=e8541]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8542]
+    - button "بلدم" [ref=e8543]
+    - StaticText "effective"
+    - StaticText "صفت"
+    - button "افزودن effective به واژههای من" [ref=e8544]
+    - StaticText "مؤثر"
+    - button "مترادفِ effective: efficient — روخوانی" [ref=e8545]
+      - StaticText "efficient"
+    - button "کاربرد effective در جزوه — ۱ مورد" [ref=e8546]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8547]
+    - button "بلدم" [ref=e8548]
+    - StaticText "emotion"
+    - StaticText "اسم"
+    - button "افزودن emotion به واژههای من" [ref=e8553]
+    - StaticText "احساس"
+    - button "کاربرد emotion در جزوه — ۱ مورد" [ref=e8554]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8555]
+    - button "بلدم" [ref=e8556]
+    - StaticText "emotional"
+    - StaticText "صفت"
+    - button "افزودن emotional به واژههای من" [ref=e8557]
+    - StaticText "احساسی، عاطفی"
+    - button "کاربرد emotional در جزوه — ۲ مورد" [ref=e8558]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8559]
+    - button "بلدم" [ref=e8560]
+    - StaticText "enable"
+    - StaticText "فعل"
+    - button "افزودن enable به واژههای من" [ref=e8561]
+    - StaticText "قادر ساختن"
+    - button "کاربرد enable در جزوه — ۱ مورد" [ref=e8562]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8563]
+    - button "بلدم" [ref=e8564]
+    - StaticText "even"
+    - StaticText "قید"
+    - button "افزودن even به واژههای من" [ref=e8565]
+    - StaticText "حتی"
+    - button "مترادفِ even: still — روخوانی" [ref=e8566]
+      - StaticText "still"
+    - button "کاربرد even در جزوه — ۹ مورد" [ref=e8567]
+      - StaticText "در جزوه · ۹"
+    - generic
+      - StaticText "رتبهٔ ۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8568]
+    - button "بلدم" [ref=e8569]
+    - StaticText "event"
+    - StaticText "اسم"
+    - button "افزودن event به واژههای من" [ref=e8570]
+    - StaticText "رویداد، حادثه، رخداد"
+    - button "مترادفِ event: happening — روخوانی" [ref=e8571]
+      - StaticText "happening"
+    - button "مترادفِ event: occasion — روخوانی" [ref=e8572]
+      - StaticText "occasion"
+    - button "کاربرد event در جزوه — ۱ مورد" [ref=e8573]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8574]
+    - button "بلدم" [ref=e8575]
+    - StaticText "ever"
+    - StaticText "قید"
+    - button "افزودن ever به واژههای من" [ref=e8576]
+    - StaticText "تا به حال - هرگز"
+    - button "کاربرد ever در جزوه — ۵ مورد" [ref=e8577]
+      - StaticText "در جزوه · ۵"
+    - generic
+      - StaticText "رتبهٔ ۴۷۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8578]
+    - button "بلدم" [ref=e8579]
+    - StaticText "excellent"
+    - StaticText "صفت"
+    - button "افزودن excellent به واژههای من" [ref=e8580]
+    - StaticText "عالی، عالیمقشر"
+    - button "مترادفِ excellent: fantastic — روخوانی" [ref=e8581]
+      - StaticText "fantastic"
+    - button "کاربرد excellent در جزوه — ۳ مورد" [ref=e8582]
+      - StaticText "در جزوه · ۳"
+    - generic
+      - StaticText "رتبهٔ ۶۹۳ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8583]
+    - button "بلدم" [ref=e8584]
+    - StaticText "fat"
+    - StaticText "صفت"
+    - button "افزودن fat به واژههای من" [ref=e8593]
+    - StaticText "چاق - چربی"
+    - button "کاربرد fat در جزوه — ۳ مورد" [ref=e8594]
+      - StaticText "در جزوه · ۳"
+    - generic
+      - StaticText "رتبهٔ ۶۹۳ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8595]
+    - button "بلدم" [ref=e8596]
+    - StaticText "gain"
+    - StaticText "فعل"
+    - button "افزودن gain به واژههای من" [ref=e8625]
+    - StaticText "به دست آوردن، کسب کردن"
+    - button "مترادفِ gain: get — روخوانی" [ref=e8626]
+      - StaticText "get"
+    - button "متضادِ gain: lose — روخوانی" [ref=e8627]
+      - StaticText "lose"
+    - button "کاربرد gain در جزوه — ۲ مورد" [ref=e8628]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8629]
+    - button "بلدم" [ref=e8630]
+    - StaticText "general"
+    - StaticText "صفت"
+    - button "افزودن general به واژههای من" [ref=e8631]
+    - StaticText "معمول، عادی"
+    - button "مترادفِ general: normal — روخوانی" [ref=e8632]
+      - StaticText "normal"
+    - button "مترادفِ general: normal — روخوانی" [ref=e8633]
+      - StaticText "normal"
+    - button "کاربرد general در جزوه — ۱ مورد" [ref=e8634]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8635]
+    - button "بلدم" [ref=e8636]
+    - StaticText "get up"
+    - StaticText "فعل دوکلمهای"
+    - button "افزودن get up به واژههای من" [ref=e8643]
+    - StaticText "از خواب بلند شدن"
+    - button "کاربرد get up در جزوه — ۱ مورد" [ref=e8644]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8645]
+    - button "بلدم" [ref=e8646]
+    - StaticText "goal"
+    - StaticText "اسم"
+    - button "افزودن goal به واژههای من" [ref=e8651]
+    - StaticText "هدف، مقصد، منظور"
+    - button "مترادفِ goal: aim — روخوانی" [ref=e8652]
+      - StaticText "aim"
+    - button "مترادفِ goal: aim — روخوانی" [ref=e8653]
+      - StaticText "aim"
+    - button "مترادفِ goal: aim = purpose — روخوانی" [ref=e8654]
+      - StaticText "aim = purpose"
+    - button "کاربرد goal در جزوه — ۲ مورد" [ref=e8655]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8656]
+    - button "بلدم" [ref=e8657]
+    - StaticText "grow up"
+    - StaticText "فعل دوکلمهای"
+    - button "افزودن grow up به واژههای من" [ref=e8667]
+    - StaticText "رشد کردن، بالغ شدن"
+    - button "مترادفِ grow up: get older — روخوانی" [ref=e8668]
+      - StaticText "get older"
+    - button "کاربرد grow up در جزوه — ۱ مورد" [ref=e8669]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8670]
+    - button "بلدم" [ref=e8671]
+    - StaticText "guess"
+    - StaticText "فعل"
+    - button "افزودن guess به واژههای من" [ref=e8672]
+    - StaticText "حدس - حدس زدن"
+    - button "کاربرد guess در جزوه — ۱ مورد" [ref=e8673]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8674]
+    - button "بلدم" [ref=e8675]
+    - StaticText "guest"
+    - StaticText "اسم"
+    - button "افزودن guest به واژههای من" [ref=e8676]
+    - StaticText "مهمان"
+    - button "متضادِ guest: host — روخوانی" [ref=e8677]
+      - StaticText "host"
+    - button "متضادِ guest: host — روخوانی" [ref=e8678]
+      - StaticText "host"
+    - button "کاربرد guest در جزوه — ۲ مورد" [ref=e8679]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8680]
+    - button "بلدم" [ref=e8681]
+    - StaticText "habit"
+    - StaticText "اسم"
+    - button "افزودن habit به واژههای من" [ref=e8682]
+    - StaticText "عادت"
+    - button "مترادفِ habit: custom — روخوانی" [ref=e8683]
+      - StaticText "custom"
+    - button "کاربرد habit در جزوه — ۳ مورد" [ref=e8684]
+      - StaticText "در جزوه · ۳"
+    - generic
+      - StaticText "رتبهٔ ۶۹۳ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8685]
+    - button "بلدم" [ref=e8686]
+    - StaticText "hang out"
+    - StaticText "فعل دوکلمهای"
+    - button "افزودن hang out به واژههای من" [ref=e8687]
+    - StaticText "وقت گذراندن (در یک مکان)"
+    - button "کاربرد hang out در جزوه — ۱ مورد" [ref=e8688]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8689]
+    - button "بلدم" [ref=e8690]
+    - StaticText "happen"
+    - StaticText "فعل"
+    - button "افزودن happen به واژههای من" [ref=e8691]
+    - StaticText "اتفاق افتادن"
+    - button "کاربرد happen در جزوه — ۲ مورد" [ref=e8692]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8693]
+    - button "بلدم" [ref=e8694]
+    - StaticText "harm"
+    - StaticText "اسم"
+    - button "افزودن harm به واژههای من" [ref=e8699]
+    - StaticText "ضرر"
+    - button "مترادفِ harm: damage — روخوانی" [ref=e8700]
+      - StaticText "damage"
+    - button "کاربرد harm در جزوه — ۱ مورد" [ref=e8701]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8702]
+    - button "بلدم" [ref=e8703]
+    - StaticText "harmful"
+    - StaticText "صفت"
+    - button "افزودن harmful به واژههای من" [ref=e8704]
+    - StaticText "مضر"
+    - button "مترادفِ harmful: destructive — روخوانی" [ref=e8705]
+      - StaticText "destructive"
+    - button "مترادفِ harmful: destructive — روخوانی" [ref=e8706]
+      - StaticText "destructive"
+    - button "متضادِ harmful: useful — روخوانی" [ref=e8707]
+      - StaticText "useful"
+    - button "کاربرد harmful در جزوه — ۲ مورد" [ref=e8708]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8709]
+    - button "بلدم" [ref=e8710]
+    - StaticText "health"
+    - StaticText "اسم"
+    - button "افزودن health به واژههای من" [ref=e8733]
+    - StaticText "سلامتی، تندرستی"
+    - button "کاربرد health در جزوه — ۷ مورد" [ref=e8734]
+      - StaticText "در جزوه · ۷"
+    - generic
+      - StaticText "رتبهٔ ۳۴۳ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8735]
+    - button "بلدم" [ref=e8736]
+    - StaticText "healthy"
+    - StaticText "صفت"
+    - button "افزودن healthy به واژههای من" [ref=e8737]
+    - StaticText "سالم، تندرست - مفید (خوراکی)"
+    - button "مترادفِ healthy: fit — روخوانی" [ref=e8738]
+      - StaticText "fit"
+    - button "متضادِ healthy: sick — روخوانی" [ref=e8739]
+      - StaticText "sick"
+    - button "کاربرد healthy در جزوه — ۴ مورد" [ref=e8740]
+      - StaticText "در جزوه · ۴"
+    - generic
+      - StaticText "رتبهٔ ۵۳۷ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8741]
+    - button "بلدم" [ref=e8742]
+    - StaticText "heart attack"
+    - StaticText "اسم"
+    - button "افزودن heart attack به واژههای من" [ref=e8743]
+    - StaticText "سکتهٔ قلبی"
+    - button "کاربرد heart attack در جزوه — ۱ مورد" [ref=e8744]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8745]
+    - button "بلدم" [ref=e8746]
+    - StaticText "heartbeat"
+    - StaticText "اسم"
+    - button "افزودن heartbeat به واژههای من" [ref=e8747]
+    - StaticText "ضربان قلب"
+    - button "کاربرد heartbeat در جزوه — ۱ مورد" [ref=e8748]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8749]
+    - button "بلدم" [ref=e8750]
+    - StaticText "history"
+    - StaticText "اسم"
+    - button "افزودن history به واژههای من" [ref=e8751]
+    - StaticText "تاریخ، تاریخچه"
+    - button "مترادفِ history: past events — روخوانی" [ref=e8752]
+      - StaticText "past events"
+    - button "کاربرد history در جزوه — ۶ مورد" [ref=e8753]
+      - StaticText "در جزوه · ۶"
+    - generic
+      - StaticText "رتبهٔ ۳۹۵ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8754]
+    - button "بلدم" [ref=e8755]
+    - StaticText "however"
+    - StaticText "قید"
+    - button "افزودن however به واژههای من" [ref=e8756]
+    - StaticText "اما، در هر صورت"
+    - button "کاربرد however در جزوه — ۵ مورد" [ref=e8757]
+      - StaticText "در جزوه · ۵"
+    - generic
+      - StaticText "رتبهٔ ۴۷۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8758]
+    - button "بلدم" [ref=e8759]
+    - StaticText "hurt"
+    - StaticText "فعل"
+    - button "افزودن hurt به واژههای من" [ref=e8760]
+    - StaticText "صدمه زدن، آسیب رساندن"
+    - button "کاربرد hurt در جزوه — ۲ مورد" [ref=e8761]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8762]
+    - button "بلدم" [ref=e8763]
+    - StaticText "idea"
+    - StaticText "اسم"
+    - button "افزودن idea به واژههای من" [ref=e8764]
+    - StaticText "ایده، نظر، عقیده"
+    - button "کاربرد idea در جزوه — ۲ مورد" [ref=e8765]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8766]
+    - button "بلدم" [ref=e8767]
+    - StaticText "illness"
+    - StaticText "اسم"
+    - button "افزودن illness به واژههای من" [ref=e8768]
+    - StaticText "بیماری"
+    - button "مترادفِ illness: disease — روخوانی" [ref=e8769]
+      - StaticText "disease"
+    - button "مترادفِ illness: sickness — روخوانی" [ref=e8770]
+      - StaticText "sickness"
+    - button "متضادِ illness: wellness — روخوانی" [ref=e8771]
+      - StaticText "wellness"
+    - button "کاربرد illness در جزوه — ۱ مورد" [ref=e8772]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8773]
+    - button "بلدم" [ref=e8774]
+    - StaticText "improve"
+    - StaticText "فعل"
+    - button "افزودن improve به واژههای من" [ref=e8775]
+    - StaticText "بهبود بخشیدن، بهبود یافتن"
+    - button "مترادفِ improve: develop — روخوانی" [ref=e8776]
+      - StaticText "develop"
+    - button "متضادِ improve: worsen — روخوانی" [ref=e8777]
+      - StaticText "worsen"
+    - button "کاربرد improve در جزوه — ۳ مورد" [ref=e8778]
+      - StaticText "در جزوه · ۳"
+    - generic
+      - StaticText "رتبهٔ ۶۹۳ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8779]
+    - button "بلدم" [ref=e8780]
+    - StaticText "include"
+    - StaticText "فعل"
+    - button "افزودن include به واژههای من" [ref=e8781]
+    - StaticText "شامل بودن، در بر داشتن"
+    - button "کاربرد include در جزوه — ۲ مورد" [ref=e8782]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8783]
+    - button "بلدم" [ref=e8784]
+    - StaticText "increase"
+    - StaticText "فعل"
+    - button "افزودن increase به واژههای من" [ref=e8785]
+    - StaticText "افزایش دادن، افزایش یافتن"
+    - button "مترادفِ increase: enhance — روخوانی" [ref=e8786]
+      - StaticText "enhance"
+    - button "مترادفِ increase: rise — روخوانی" [ref=e8787]
+      - StaticText "rise"
+    - button "متضادِ increase: decrease — روخوانی" [ref=e8788]
+      - StaticText "decrease"
+    - StaticText "+"
+    - StaticText "۳"
+    - button "کاربرد increase در جزوه — ۲ مورد" [ref=e8789]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8790]
+    - button "بلدم" [ref=e8791]
+    - StaticText "invention"
+    - StaticText "اسم"
+    - button "افزودن invention به واژههای من" [ref=e8792]
+    - StaticText "اختراع"
+    - button "کاربرد invention در جزوه — ۱ مورد" [ref=e8793]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8794]
+    - button "بلدم" [ref=e8795]
+    - StaticText "junk food"
+    - StaticText "اسم"
+    - button "افزودن junk food به واژههای من" [ref=e8796]
+    - StaticText "غذای ناسالم، هلههوله"
+    - button "کاربرد junk food در جزوه — ۱ مورد" [ref=e8797]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8798]
+    - button "بلدم" [ref=e8799]
+    - StaticText "laugh"
+    - StaticText "فعل"
+    - button "افزودن laugh به واژههای من" [ref=e8800]
+    - StaticText "خندیدن"
+    - button "کاربرد laugh در جزوه — ۱ مورد" [ref=e8801]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8802]
+    - button "بلدم" [ref=e8803]
+    - StaticText "lazy"
+    - StaticText "صفت"
+    - button "افزودن lazy به واژههای من" [ref=e8804]
+    - StaticText "تنبل"
+    - button "مترادفِ lazy: idle — روخوانی" [ref=e8805]
+      - StaticText "idle"
+    - button "متضادِ lazy: hard-working — روخوانی" [ref=e8806]
+      - StaticText "hard-working"
+    - button "متضادِ lazy: hardworking — روخوانی" [ref=e8807]
+      - StaticText "hardworking"
+    - button "کاربرد lazy در جزوه — ۱ مورد" [ref=e8808]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8809]
+    - button "بلدم" [ref=e8810]
+    - StaticText "leave"
+    - StaticText "فعل"
+    - button "افزودن leave به واژههای من" [ref=e8811]
+    - StaticText "ترک کردن، جاگذاشتن - قرار دادن"
+    - button "مترادفِ leave: quit — روخوانی" [ref=e8812]
+      - StaticText "quit"
+    - button "متضادِ leave: arrive — روخوانی" [ref=e8813]
+      - StaticText "arrive"
+    - button "متضادِ leave: arrive — روخوانی" [ref=e8814]
+      - StaticText "arrive"
+    - button "کاربرد leave در جزوه — ۵ مورد" [ref=e8815]
+      - StaticText "در جزوه · ۵"
+    - generic
+      - StaticText "رتبهٔ ۴۷۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8816]
+    - button "بلدم" [ref=e8817]
+    - StaticText "lifestyle"
+    - StaticText "اسم"
+    - button "افزودن lifestyle به واژههای من" [ref=e8818]
+    - StaticText "شیوه زندگی"
+    - button "کاربرد lifestyle در جزوه — ۷ مورد" [ref=e8819]
+      - StaticText "در جزوه · ۷"
+    - generic
+      - StaticText "رتبهٔ ۳۴۳ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8820]
+    - button "بلدم" [ref=e8821]
+    - StaticText "limit"
+    - StaticText "فعل"
+    - button "افزودن limit به واژههای من" [ref=e8822]
+    - StaticText "محدود کردن، محدودیت"
+    - button "مترادفِ limit: restrict — روخوانی" [ref=e8823]
+      - StaticText "restrict"
+    - button "کاربرد limit در جزوه — ۲ مورد" [ref=e8824]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8825]
+    - button "بلدم" [ref=e8826]
+    - StaticText "make up"
+    - StaticText "فعل دوکلمهای"
+    - button "افزودن make up به واژههای من" [ref=e8827]
+    - StaticText "تشکیل دادن - جبران کردن - آرایش"
+    - button "مترادفِ make up: form — روخوانی" [ref=e8828]
+      - StaticText "form"
+    - button "کاربرد make up در جزوه — ۱ مورد" [ref=e8829]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8830]
+    - button "بلدم" [ref=e8831]
+    - StaticText "measure"
+    - StaticText "فعل"
+    - button "افزودن measure به واژههای من" [ref=e8832]
+    - StaticText "اندازهگیری کردن"
+    - button "کاربرد measure در جزوه — ۱ مورد" [ref=e8833]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8834]
+    - button "بلدم" [ref=e8835]
+    - StaticText "medical"
+    - StaticText "صفت"
+    - button "افزودن medical به واژههای من" [ref=e8836]
+    - StaticText "پزشکی"
+    - button "کاربرد medical در جزوه — ۲ مورد" [ref=e8837]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8838]
+    - button "بلدم" [ref=e8839]
+    - StaticText "medicine"
+    - StaticText "اسم"
+    - button "افزودن medicine به واژههای من" [ref=e8840]
+    - StaticText "دوا، دارو - پزشکی"
+    - button "مترادفِ medicine: drug — روخوانی" [ref=e8841]
+      - StaticText "drug"
+    - button "کاربرد medicine در جزوه — ۱ مورد" [ref=e8842]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8843]
+    - button "بلدم" [ref=e8844]
+    - StaticText "member"
+    - StaticText "اسم"
+    - button "افزودن member به واژههای من" [ref=e8845]
+    - StaticText "عضو"
+    - button "کاربرد member در جزوه — ۲ مورد" [ref=e8846]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8847]
+    - button "بلدم" [ref=e8848]
+    - StaticText "miracle"
+    - StaticText "اسم"
+    - button "افزودن miracle به واژههای من" [ref=e8849]
+    - StaticText "معجزه"
+    - button "مترادفِ miracle: wonder — روخوانی" [ref=e8850]
+      - StaticText "wonder"
+    - button "کاربرد miracle در جزوه — ۱ مورد" [ref=e8851]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8852]
+    - button "بلدم" [ref=e8853]
+    - StaticText "natural"
+    - StaticText "صفت"
+    - button "افزودن natural به واژههای من" [ref=e8854]
+    - StaticText "طبیعی"
+    - button "متضادِ natural: artificial — روخوانی" [ref=e8855]
+      - StaticText "artificial"
+    - button "کاربرد natural در جزوه — ۵ مورد" [ref=e8856]
+      - StaticText "در جزوه · ۵"
+    - generic
+      - StaticText "رتبهٔ ۴۷۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8857]
+    - button "بلدم" [ref=e8858]
+    - StaticText "necessary"
+    - StaticText "صفت"
+    - button "افزودن necessary به واژههای من" [ref=e8859]
+    - StaticText "لازم، ضروری"
+    - button "کاربرد necessary در جزوه — ۱ مورد" [ref=e8860]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8861]
+    - button "بلدم" [ref=e8862]
+    - StaticText "noise"
+    - StaticText "اسم"
+    - button "افزودن noise به واژههای من" [ref=e8863]
+    - StaticText "سر و صدا، شلوغی"
+    - button "مترادفِ noise: sound — روخوانی" [ref=e8864]
+      - StaticText "sound"
+    - button "کاربرد noise در جزوه — ۱ مورد" [ref=e8865]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8866]
+    - button "بلدم" [ref=e8867]
+    - StaticText "nope"
+    - StaticText "قید"
+    - button "افزودن nope به واژههای من" [ref=e8868]
+    - StaticText "نه!، نخیر!"
+    - button "کاربرد nope در جزوه — ۱ مورد" [ref=e8869]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8870]
+    - button "بلدم" [ref=e8871]
+    - StaticText "paper"
+    - StaticText "اسم"
+    - button "افزودن paper به واژههای من" [ref=e8872]
+    - StaticText "کاغذ - روزنامه"
+    - button "کاربرد paper در جزوه — ۵ مورد" [ref=e8873]
+      - StaticText "در جزوه · ۵"
+    - generic
+      - StaticText "رتبهٔ ۴۷۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8874]
+    - button "بلدم" [ref=e8875]
+    - StaticText "part"
+    - StaticText "اسم"
+    - button "افزودن part به واژههای من" [ref=e8876]
+    - StaticText "قسمت، بخش"
+    - button "مترادفِ part: portion — روخوانی" [ref=e8877]
+      - StaticText "portion"
+    - button "کاربرد part در جزوه — ۷ مورد" [ref=e8878]
+      - StaticText "در جزوه · ۷"
+    - generic
+      - StaticText "رتبهٔ ۳۴۳ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8879]
+    - button "بلدم" [ref=e8880]
+    - StaticText "patient"
+    - StaticText "اسم"
+    - button "افزودن patient به واژههای من" [ref=e8881]
+    - StaticText "بیمار - صبور"
+    - button "متضادِ patient: impatient — روخوانی" [ref=e8882]
+      - StaticText "impatient"
+    - button "متضادِ patient: impatient — روخوانی" [ref=e8883]
+      - StaticText "impatient"
+    - button "کاربرد patient در جزوه — ۲ مورد" [ref=e8884]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8885]
+    - button "بلدم" [ref=e8886]
+    - StaticText "perfect"
+    - StaticText "صفت"
+    - button "افزودن perfect به واژههای من" [ref=e8887]
+    - StaticText "عالی، کامل، تمام"
+    - button "مترادفِ perfect: complete — روخوانی" [ref=e8888]
+      - StaticText "complete"
+    - button "کاربرد perfect در جزوه — ۲ مورد" [ref=e8889]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8890]
+    - button "بلدم" [ref=e8891]
+    - StaticText "plan"
+    - StaticText "اسم"
+    - button "افزودن plan به واژههای من" [ref=e8892]
+    - StaticText "طرح، نقشه، برنامه"
+    - button "مترادفِ plan: program — روخوانی" [ref=e8893]
+      - StaticText "program"
+    - button "مترادفِ plan: strategy — روخوانی" [ref=e8894]
+      - StaticText "strategy"
+    - button "کاربرد plan در جزوه — ۸ مورد" [ref=e8895]
+      - StaticText "در جزوه · ۸"
+    - generic
+      - StaticText "رتبهٔ ۲۹۷ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8896]
+    - button "بلدم" [ref=e8897]
+    - StaticText "plane"
+    - StaticText "اسم"
+    - button "افزودن plane به واژههای من" [ref=e8898]
+    - StaticText "هواپیما"
+    - button "کاربرد plane در جزوه — ۱ مورد" [ref=e8899]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8900]
+    - button "بلدم" [ref=e8901]
+    - StaticText "plant"
+    - StaticText "اسم"
+    - button "افزودن plant به واژههای من" [ref=e8902]
+    - StaticText "گیاه - کاشتن"
+    - button "کاربرد plant در جزوه — ۷ مورد" [ref=e8903]
+      - StaticText "در جزوه · ۷"
+    - generic
+      - StaticText "رتبهٔ ۳۴۳ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8904]
+    - button "بلدم" [ref=e8905]
+    - StaticText "positive"
+    - StaticText "صفت"
+    - button "افزودن positive به واژههای من" [ref=e8906]
+    - StaticText "مثبت"
+    - button "مترادفِ positive: constructive — روخوانی" [ref=e8907]
+      - StaticText "constructive"
+    - button "متضادِ positive: negative — روخوانی" [ref=e8908]
+      - StaticText "negative"
+    - button "کاربرد positive در جزوه — ۱ مورد" [ref=e8909]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8910]
+    - button "بلدم" [ref=e8911]
+    - StaticText "possible"
+    - StaticText "صفت"
+    - button "افزودن possible به واژههای من" [ref=e8912]
+    - StaticText "ممکن، احتمال"
+    - button "متضادِ possible: impossible — روخوانی" [ref=e8913]
+      - StaticText "impossible"
+    - button "متضادِ possible: impossible — روخوانی" [ref=e8914]
+      - StaticText "impossible"
+    - button "کاربرد possible در جزوه — ۱ مورد" [ref=e8915]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8916]
+    - button "بلدم" [ref=e8917]
+    - StaticText "pray"
+    - StaticText "فعل"
+    - button "افزودن pray به واژههای من" [ref=e8918]
+    - StaticText "نماز - عبادت، دعا"
+    - button "کاربرد pray در جزوه — ۱ مورد" [ref=e8919]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8920]
+    - button "بلدم" [ref=e8921]
+    - StaticText "predict"
+    - StaticText "فعل"
+    - button "افزودن predict به واژههای من" [ref=e8922]
+    - StaticText "پیشبینی کردن"
+    - button "مترادفِ predict: forecast — روخوانی" [ref=e8923]
+      - StaticText "forecast"
+    - button "کاربرد predict در جزوه — ۲ مورد" [ref=e8924]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8925]
+    - button "بلدم" [ref=e8926]
+    - StaticText "prefer"
+    - StaticText "فعل"
+    - button "افزودن prefer به واژههای من" [ref=e8927]
+    - StaticText "ترجیح دادن"
+    - button "کاربرد prefer در جزوه — ۲ مورد" [ref=e8928]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8929]
+    - button "بلدم" [ref=e8930]
+    - StaticText "pressure"
+    - StaticText "اسم"
+    - button "افزودن pressure به واژههای من" [ref=e8931]
+    - StaticText "فشار"
+    - button "مترادفِ pressure: stress — روخوانی" [ref=e8932]
+      - StaticText "stress"
+    - button "کاربرد pressure در جزوه — ۲ مورد" [ref=e8933]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8934]
+    - button "بلدم" [ref=e8935]
+    - StaticText "prevent"
+    - StaticText "فعل"
+    - button "افزودن prevent به واژههای من" [ref=e8936]
+    - StaticText "جلوگیری کردن، خودداری کردن"
+    - button "مترادفِ prevent: stop — روخوانی" [ref=e8937]
+      - StaticText "stop"
+    - button "متضادِ prevent: let — روخوانی" [ref=e8938]
+      - StaticText "let"
+    - button "کاربرد prevent در جزوه — ۱ مورد" [ref=e8939]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8940]
+    - button "بلدم" [ref=e8941]
+    - StaticText "produce"
+    - StaticText "فعل"
+    - button "افزودن produce به واژههای من" [ref=e8942]
+    - StaticText "تولید کردن"
+    - button "مترادفِ produce: generate — روخوانی" [ref=e8943]
+      - StaticText "generate"
+    - button "مترادفِ produce: make — روخوانی" [ref=e8944]
+      - StaticText "make"
+    - button "مترادفِ produce: make — روخوانی" [ref=e8945]
+      - StaticText "make"
+    - button "کاربرد produce در جزوه — ۸ مورد" [ref=e8946]
+      - StaticText "در جزوه · ۸"
+    - generic
+      - StaticText "رتبهٔ ۲۹۷ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8947]
+    - button "بلدم" [ref=e8948]
+    - StaticText "quickly"
+    - StaticText "قید"
+    - button "افزودن quickly به واژههای من" [ref=e8949]
+    - StaticText "به سرعت"
+    - button "مترادفِ quickly: fast — روخوانی" [ref=e8950]
+      - StaticText "fast"
+    - button "متضادِ quickly: slowly — روخوانی" [ref=e8951]
+      - StaticText "slowly"
+    - button "کاربرد quickly در جزوه — ۲ مورد" [ref=e8952]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8953]
+    - button "بلدم" [ref=e8954]
+    - StaticText "rarely"
+    - StaticText "قید"
+    - button "افزودن rarely به واژههای من" [ref=e8955]
+    - StaticText "به ندرت"
+    - button "مترادفِ rarely: seldom — روخوانی" [ref=e8956]
+      - StaticText "seldom"
+    - button "کاربرد rarely در جزوه — ۱ مورد" [ref=e8957]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8958]
+    - button "بلدم" [ref=e8959]
+    - StaticText "reality"
+    - StaticText "اسم"
+    - button "افزودن reality به واژههای من" [ref=e8960]
+    - StaticText "واقعیت"
+    - button "مترادفِ reality: truth — روخوانی" [ref=e8961]
+      - StaticText "truth"
+    - button "مترادفِ reality: truth — روخوانی" [ref=e8962]
+      - StaticText "truth"
+    - button "کاربرد reality در جزوه — ۱ مورد" [ref=e8963]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8964]
+    - button "بلدم" [ref=e8965]
+    - StaticText "recent"
+    - StaticText "صفت"
+    - button "افزودن recent به واژههای من" [ref=e8966]
+    - StaticText "اخیری، تازه"
+    - button "مترادفِ recent: new — روخوانی" [ref=e8967]
+      - StaticText "new"
+    - button "کاربرد recent در جزوه — ۱ مورد" [ref=e8968]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8969]
+    - button "بلدم" [ref=e8970]
+    - StaticText "relationship"
+    - StaticText "اسم"
+    - button "افزودن relationship به واژههای من" [ref=e8971]
+    - StaticText "رابطه"
+    - button "کاربرد relationship در جزوه — ۲ مورد" [ref=e8972]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8973]
+    - button "بلدم" [ref=e8974]
+    - StaticText "retired"
+    - StaticText "صفت"
+    - button "افزودن retired به واژههای من" [ref=e8975]
+    - StaticText "بازنشسته"
+    - button "کاربرد retired در جزوه — ۱ مورد" [ref=e8976]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8977]
+    - button "بلدم" [ref=e8978]
+    - StaticText "risk"
+    - StaticText "فعل"
+    - button "افزودن risk به واژههای من" [ref=e8979]
+    - StaticText "خطر کردن، ریسک کردن"
+    - button "مترادفِ risk: danger — روخوانی" [ref=e8980]
+      - StaticText "danger"
+    - button "متضادِ risk: safety — روخوانی" [ref=e8981]
+      - StaticText "safety"
+    - button "کاربرد risk در جزوه — ۲ مورد" [ref=e8982]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8983]
+    - button "بلدم" [ref=e8984]
+    - StaticText "sadly"
+    - StaticText "قید"
+    - button "افزودن sadly به واژههای من" [ref=e8985]
+    - StaticText "متأسفانه، با ناراحتی"
+    - button "متضادِ sadly: fortunately — روخوانی" [ref=e8986]
+      - StaticText "fortunately"
+    - button "کاربرد sadly در جزوه — ۱ مورد" [ref=e8987]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8988]
+    - button "بلدم" [ref=e8989]
+    - StaticText "secret"
+    - StaticText "اسم"
+    - button "افزودن secret به واژههای من" [ref=e8990]
+    - StaticText "راز، رمز"
+    - button "مترادفِ secret: mystery — روخوانی" [ref=e8991]
+      - StaticText "mystery"
+    - button "کاربرد secret در جزوه — ۲ مورد" [ref=e8992]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8993]
+    - button "بلدم" [ref=e8994]
+    - StaticText "serious"
+    - StaticText "صفت"
+    - button "افزودن serious به واژههای من" [ref=e8995]
+    - StaticText "جدی، عبوس، اخمو"
+    - button "مترادفِ serious: severe — روخوانی" [ref=e8996]
+      - StaticText "severe"
+    - button "کاربرد serious در جزوه — ۲ مورد" [ref=e8997]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e8998]
+    - button "بلدم" [ref=e8999]
+    - StaticText "serving"
+    - StaticText "اسم"
+    - button "افزودن serving به واژههای من" [ref=e9000]
+    - StaticText "پرس (غذا)"
+    - button "کاربرد serving در جزوه — ۱ مورد" [ref=e9001]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e9002]
+    - button "بلدم" [ref=e9003]
+    - StaticText "smartphone"
+    - StaticText "اسم"
+    - button "افزودن smartphone به واژههای من" [ref=e9004]
+    - StaticText "تلفن هوشمند"
+    - button "کاربرد smartphone در جزوه — ۲ مورد" [ref=e9005]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e9006]
+    - button "بلدم" [ref=e9007]
+    - StaticText "smoker"
+    - StaticText "اسم"
+    - button "افزودن smoker به واژههای من" [ref=e9008]
+    - StaticText "سیگاری"
+    - button "کاربرد smoker در جزوه — ۱ مورد" [ref=e9009]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e9010]
+    - button "بلدم" [ref=e9011]
+    - StaticText "social"
+    - StaticText "صفت"
+    - button "افزودن social به واژههای من" [ref=e9012]
+    - StaticText "اجتماعی"
+    - button "کاربرد social در جزوه — ۲ مورد" [ref=e9013]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e9014]
+    - button "بلدم" [ref=e9015]
+    - StaticText "socialize"
+    - StaticText "فعل"
+    - button "افزودن socialize به واژههای من" [ref=e9016]
+    - StaticText "معاشرت کردن - اجتماعی کردن"
+    - button "کاربرد socialize در جزوه — ۱ مورد" [ref=e9017]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e9018]
+    - button "بلدم" [ref=e9019]
+    - StaticText "special"
+    - StaticText "صفت"
+    - button "افزودن special به واژههای من" [ref=e9020]
+    - StaticText "ویژه، خاص، سفارشی"
+    - button "مترادفِ special: certain — روخوانی" [ref=e9021]
+      - StaticText "certain"
+    - button "مترادفِ special: particular — روخوانی" [ref=e9022]
+      - StaticText "particular"
+    - button "کاربرد special در جزوه — ۶ مورد" [ref=e9023]
+      - StaticText "در جزوه · ۶"
+    - generic
+      - StaticText "رتبهٔ ۳۹۵ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e9024]
+    - button "بلدم" [ref=e9025]
+    - StaticText "specialist"
+    - StaticText "اسم"
+    - button "افزودن specialist به واژههای من" [ref=e9026]
+    - StaticText "متخصص، کارشناس"
+    - button "کاربرد specialist در جزوه — ۱ مورد" [ref=e9027]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e9028]
+    - button "بلدم" [ref=e9029]
+    - StaticText "step"
+    - StaticText "اسم"
+    - button "افزودن step به واژههای من" [ref=e9030]
+    - StaticText "مرحله، قدم"
+    - button "مترادفِ step: stage — روخوانی" [ref=e9031]
+      - StaticText "stage"
+    - button "کاربرد step در جزوه — ۲ مورد" [ref=e9032]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e9033]
+    - button "بلدم" [ref=e9034]
+    - StaticText "stress"
+    - StaticText "اسم"
+    - button "افزودن stress به واژههای من" [ref=e9035]
+    - StaticText "استرس"
+    - button "مترادفِ stress: pressure — روخوانی" [ref=e9036]
+      - StaticText "pressure"
+    - button "مترادفِ stress: tension — روخوانی" [ref=e9037]
+      - StaticText "tension"
+    - button "کاربرد stress در جزوه — ۱ مورد" [ref=e9038]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e9039]
+    - button "بلدم" [ref=e9040]
+    - StaticText "take"
+    - StaticText "فعل"
+    - button "افزودن take به واژههای من" [ref=e9041]
+    - StaticText "بر داشتن، بردن"
+    - button "کاربرد take در جزوه — ۱۲ مورد" [ref=e9042]
+      - StaticText "در جزوه · ۱۲"
+    - generic
+      - StaticText "رتبهٔ ۱۹۱ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e9043]
+    - button "بلدم" [ref=e9044]
+    - StaticText "take part in"
+    - StaticText "فعل دوکلمهای"
+    - button "افزودن take part in به واژههای من" [ref=e9045]
+    - StaticText "شرکت کردن در"
+    - button "مترادفِ take part in: attend — روخوانی" [ref=e9046]
+      - StaticText "attend"
+    - button "کاربرد take part in در جزوه — ۱ مورد" [ref=e9047]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e9048]
+    - button "بلدم" [ref=e9049]
+    - StaticText "thought"
+    - StaticText "اسم"
+    - button "افزودن thought به واژههای من" [ref=e9050]
+    - StaticText "فکر، تفکر"
+    - button "کاربرد thought در جزوه — ۳ مورد" [ref=e9051]
+      - StaticText "در جزوه · ۳"
+    - generic
+      - StaticText "رتبهٔ ۶۹۳ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e9052]
+    - button "بلدم" [ref=e9053]
+    - StaticText "unfortunately"
+    - StaticText "قید"
+    - button "افزودن unfortunately به واژههای من" [ref=e9054]
+    - StaticText "متأسفانه، بدبختانه"
+    - button "کاربرد unfortunately در جزوه — ۱ مورد" [ref=e9055]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e9056]
+    - button "بلدم" [ref=e9057]
+    - StaticText "vacuum cleaner"
+    - StaticText "اسم"
+    - button "افزودن vacuum cleaner به واژههای من" [ref=e9058]
+    - StaticText "جارو برقی"
+    - button "کاربرد vacuum cleaner در جزوه — ۱ مورد" [ref=e9059]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e9060]
+    - button "بلدم" [ref=e9061]
+    - StaticText "wake up"
+    - StaticText "فعل دوکلمهای"
+    - button "افزودن wake up به واژههای من" [ref=e9062]
+    - StaticText "از خواب برخاستن"
+    - button "کاربرد wake up در جزوه — ۱ مورد" [ref=e9063]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e9064]
+    - button "بلدم" [ref=e9065]
+    - StaticText "weight"
+    - StaticText "اسم"
+    - button "افزودن weight به واژههای من" [ref=e9066]
+    - StaticText "وزن"
+    - button "کاربرد weight در جزوه — ۳ مورد" [ref=e9067]
+      - StaticText "در جزوه · ۳"
+    - generic
+      - StaticText "رتبهٔ ۶۹۳ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e9068]
+    - button "بلدم" [ref=e9069]
+    - StaticText "worth"
+    - StaticText "اسم"
+    - button "افزودن worth به واژههای من" [ref=e9070]
+    - StaticText "ارزش، بها، قیمت - قیمت داشتن"
+    - button "مترادفِ worth: value — روخوانی" [ref=e9071]
+      - StaticText "value"
+    - button "کاربرد worth در جزوه — ۱ مورد" [ref=e9072]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e9073]
+    - button "بلدم" [ref=e9074]
+    - StaticText "blood"
+    - button "افزودن blood به واژههای من" [ref=e9075]
+    - StaticText "خون"
+    - button "کاربرد blood در جزوه — ۲ مورد" [ref=e9076]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e9077]
+    - button "بلدم" [ref=e9078]
+    - StaticText "disease"
+    - button "افزودن disease به واژههای من" [ref=e9079]
+    - StaticText "بیماری، مرض"
+    - button "مترادفِ disease: illness — روخوانی" [ref=e9080]
+      - StaticText "illness"
+    - button "کاربرد disease در جزوه — ۴ مورد" [ref=e9081]
+      - StaticText "در جزوه · ۴"
+    - generic
+      - StaticText "رتبهٔ ۵۳۷ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۲"
+    - button "روخوانی متن انگلیسی" [ref=e9082]
+    - button "بلدم" [ref=e9083]
+    - StaticText "accept"
+    - StaticText "فعل"
+    - button "افزودن accept به واژههای من" [ref=e9084]
+    - StaticText "قبول کردن، پذیرفتن"
+    - button "متضادِ accept: refuse — روخوانی" [ref=e9085]
+      - StaticText "refuse"
+    - button "متضادِ accept: reject — روخوانی" [ref=e9086]
+      - StaticText "reject"
+    - button "کاربرد accept در جزوه — ۲ مورد" [ref=e9087]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9088]
+    - button "بلدم" [ref=e9089]
+    - StaticText "according to"
+    - StaticText "عبارت"
+    - button "افزودن according to به واژههای من" [ref=e9090]
+    - StaticText "بر طبق، بر اساس"
+    - button "مترادفِ according to: based on — روخوانی" [ref=e9091]
+      - StaticText "based on"
+    - button "کاربرد according to در جزوه — ۱ مورد" [ref=e9092]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9093]
+    - button "بلدم" [ref=e9094]
+    - StaticText "achieve"
+    - StaticText "فعل"
+    - button "افزودن achieve به واژههای من" [ref=e9095]
+    - StaticText "به دست آوردن"
+    - button "کاربرد achieve در جزوه — ۱ مورد" [ref=e9096]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9097]
+    - button "بلدم" [ref=e9098]
+    - StaticText "actually"
+    - StaticText "قید"
+    - button "افزودن actually به واژههای من" [ref=e9099]
+    - StaticText "واقعاً"
+    - button "مترادفِ actually: in fact — روخوانی" [ref=e9100]
+      - StaticText "in fact"
+    - button "مترادفِ actually: really — روخوانی" [ref=e9101]
+      - StaticText "really"
+    - button "کاربرد actually در جزوه — ۳ مورد" [ref=e9102]
+      - StaticText "در جزوه · ۳"
+    - generic
+      - StaticText "رتبهٔ ۶۹۳ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9103]
+    - button "بلدم" [ref=e9104]
+    - StaticText "advice"
+    - StaticText "اسم"
+    - button "افزودن advice به واژههای من" [ref=e9105]
+    - StaticText "نصیحت، پند"
+    - button "کاربرد advice در جزوه — ۱ مورد" [ref=e9106]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9107]
+    - button "بلدم" [ref=e9108]
+    - StaticText "agree"
+    - StaticText "فعل"
+    - button "افزودن agree به واژههای من" [ref=e9109]
+    - StaticText "موافقت کردن - همرأی بودن"
+    - button "متضادِ agree: disagree — روخوانی" [ref=e9110]
+      - StaticText "disagree"
+    - button "کاربرد agree در جزوه — ۱ مورد" [ref=e9111]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9112]
+    - button "بلدم" [ref=e9113]
+    - StaticText "appreciate"
+    - StaticText "فعل"
+    - button "افزودن appreciate به واژههای من" [ref=e9114]
+    - StaticText "ارج نهادن، قدر... دانستن"
+    - button "مترادفِ appreciate: value — روخوانی" [ref=e9115]
+      - StaticText "value"
+    - button "کاربرد appreciate در جزوه — ۳ مورد" [ref=e9116]
+      - StaticText "در جزوه · ۳"
+    - generic
+      - StaticText "رتبهٔ ۶۹۳ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9117]
+    - button "بلدم" [ref=e9118]
+    - StaticText "art"
+    - StaticText "اسم"
+    - button "افزودن art به واژههای من" [ref=e9119]
+    - StaticText "هنر - فن - صنعت"
+    - button "کاربرد art در جزوه — ۶ مورد" [ref=e9120]
+      - StaticText "در جزوه · ۶"
+    - generic
+      - StaticText "رتبهٔ ۳۹۵ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9121]
+    - button "بلدم" [ref=e9122]
+    - StaticText "artifact"
+    - StaticText "اسم"
+    - button "افزودن artifact به واژههای من" [ref=e9123]
+    - StaticText "(شیء) دستساز، محصول مصنوعی"
+    - button "کاربرد artifact در جزوه — ۱ مورد" [ref=e9124]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9125]
+    - button "بلدم" [ref=e9126]
+    - StaticText "artistic"
+    - StaticText "صفت"
+    - button "افزودن artistic به واژههای من" [ref=e9127]
+    - StaticText "هنرمندانه، هنری"
+    - button "کاربرد artistic در جزوه — ۱ مورد" [ref=e9128]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9129]
+    - button "بلدم" [ref=e9130]
+    - StaticText "artwork"
+    - StaticText "اسم"
+    - button "افزودن artwork به واژههای من" [ref=e9131]
+    - StaticText "کار هنری"
+    - button "کاربرد artwork در جزوه — ۱ مورد" [ref=e9132]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9133]
+    - button "بلدم" [ref=e9134]
+    - StaticText "attitude"
+    - StaticText "اسم"
+    - button "افزودن attitude به واژههای من" [ref=e9135]
+    - StaticText "نگرش، گرایش - طرز برخورد"
+    - button "کاربرد attitude در جزوه — ۱ مورد" [ref=e9136]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9137]
+    - button "بلدم" [ref=e9138]
+    - StaticText "beauty"
+    - StaticText "اسم"
+    - button "افزودن beauty به واژههای من" [ref=e9139]
+    - StaticText "زیبایی"
+    - button "کاربرد beauty در جزوه — ۳ مورد" [ref=e9140]
+      - StaticText "در جزوه · ۳"
+    - generic
+      - StaticText "رتبهٔ ۶۹۳ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9141]
+    - button "بلدم" [ref=e9142]
+    - StaticText "be able to"
+    - StaticText "عبارت"
+    - button "افزودن be able to به واژههای من" [ref=e9143]
+    - StaticText "قادر بودن، توانستن"
+    - button "کاربرد be able to در جزوه — ۱ مورد" [ref=e9144]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9145]
+    - button "بلدم" [ref=e9146]
+    - StaticText "blow"
+    - StaticText "فعل"
+    - button "افزودن blow به واژههای من" [ref=e9147]
+    - StaticText "وزیدن - دمیدن - ضرب"
+    - button "کاربرد blow در جزوه — ۱ مورد" [ref=e9148]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9149]
+    - button "بلدم" [ref=e9150]
+    - StaticText "booklet"
+    - StaticText "اسم"
+    - button "افزودن booklet به واژههای من" [ref=e9151]
+    - StaticText "دفترچه، کتابچه"
+    - button "کاربرد booklet در جزوه — ۱ مورد" [ref=e9152]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9153]
+    - button "بلدم" [ref=e9154]
+    - StaticText "bow"
+    - StaticText "فعل"
+    - button "افزودن bow به واژههای من" [ref=e9155]
+    - StaticText "تعظیم کردن"
+    - button "کاربرد bow در جزوه — ۵ مورد" [ref=e9156]
+      - StaticText "در جزوه · ۵"
+    - generic
+      - StaticText "رتبهٔ ۴۷۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9157]
+    - button "بلدم" [ref=e9158]
+    - StaticText "brain"
+    - StaticText "اسم"
+    - button "افزودن brain به واژههای من" [ref=e9159]
+    - StaticText "مغز، مخ - هوش، ذکاوت"
+    - button "کاربرد brain در جزوه — ۲ مورد" [ref=e9160]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9161]
+    - button "بلدم" [ref=e9162]
+    - StaticText "calligraphy"
+    - StaticText "اسم"
+    - button "افزودن calligraphy به واژههای من" [ref=e9163]
+    - StaticText "خوشنویسی"
+    - button "کاربرد calligraphy در جزوه — ۱ مورد" [ref=e9164]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9165]
+    - button "بلدم" [ref=e9166]
+    - StaticText "carpet"
+    - StaticText "اسم"
+    - button "افزودن carpet به واژههای من" [ref=e9167]
+    - StaticText "فرش"
+    - button "کاربرد carpet در جزوه — ۴ مورد" [ref=e9168]
+      - StaticText "در جزوه · ۴"
+    - generic
+      - StaticText "رتبهٔ ۵۳۷ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9169]
+    - button "بلدم" [ref=e9170]
+    - StaticText "charity"
+    - StaticText "اسم"
+    - button "افزودن charity به واژههای من" [ref=e9171]
+    - StaticText "خیریه، نیکوکاری، صدقه، خیرات"
+    - button "کاربرد charity در جزوه — ۱ مورد" [ref=e9172]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9173]
+    - button "بلدم" [ref=e9174]
+    - StaticText "cheap"
+    - StaticText "صفت"
+    - button "افزودن cheap به واژههای من" [ref=e9175]
+    - StaticText "ارزان"
+    - button "مترادفِ cheap: inexpensive — روخوانی" [ref=e9176]
+      - StaticText "inexpensive"
+    - button "مترادفِ cheap: inexpensive — روخوانی" [ref=e9177]
+      - StaticText "inexpensive"
+    - button "متضادِ cheap: costly — روخوانی" [ref=e9178]
+      - StaticText "costly"
+    - StaticText "+"
+    - StaticText "۱"
+    - button "کاربرد cheap در جزوه — ۱ مورد" [ref=e9179]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9180]
+    - button "بلدم" [ref=e9181]
+    - StaticText "choice"
+    - StaticText "اسم"
+    - button "افزودن choice به واژههای من" [ref=e9182]
+    - StaticText "انتخاب"
+    - button "کاربرد choice در جزوه — ۲ مورد" [ref=e9183]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9184]
+    - button "بلدم" [ref=e9185]
+    - StaticText "clothing"
+    - StaticText "اسم"
+    - button "افزودن clothing به واژههای من" [ref=e9186]
+    - StaticText "پوشاک"
+    - button "کاربرد clothing در جزوه — ۱ مورد" [ref=e9187]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9188]
+    - button "بلدم" [ref=e9189]
+    - StaticText "collection"
+    - StaticText "اسم"
+    - button "افزودن collection به واژههای من" [ref=e9190]
+    - StaticText "مجموعه، کلکسیون"
+    - button "مترادفِ collection: set — روخوانی" [ref=e9191]
+      - StaticText "set"
+    - button "کاربرد collection در جزوه — ۱ مورد" [ref=e9192]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9193]
+    - button "بلدم" [ref=e9194]
+    - StaticText "combination"
+    - StaticText "اسم"
+    - button "افزودن combination به واژههای من" [ref=e9195]
+    - StaticText "ترکیب"
+    - button "کاربرد combination در جزوه — ۱ مورد" [ref=e9196]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9197]
+    - button "بلدم" [ref=e9198]
+    - StaticText "craftswomen"
+    - StaticText "اسم"
+    - button "افزودن craftswomen به واژههای من" [ref=e9199]
+    - StaticText "صنعتگر (زن)، هنرمند"
+    - button "کاربرد craftswomen در جزوه — ۱ مورد" [ref=e9200]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9201]
+    - button "بلدم" [ref=e9202]
+    - StaticText "create"
+    - StaticText "فعل"
+    - button "افزودن create به واژههای من" [ref=e9203]
+    - StaticText "خلق کردن، به وجود آوردن"
+    - button "مترادفِ create: invent — روخوانی" [ref=e9204]
+      - StaticText "invent"
+    - button "کاربرد create در جزوه — ۴ مورد" [ref=e9205]
+      - StaticText "در جزوه · ۴"
+    - generic
+      - StaticText "رتبهٔ ۵۳۷ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9206]
+    - button "بلدم" [ref=e9207]
+    - StaticText "creative"
+    - StaticText "صفت"
+    - button "افزودن creative به واژههای من" [ref=e9208]
+    - StaticText "ابتکاری، خلاقانه"
+    - button "مترادفِ creative: inventive — روخوانی" [ref=e9209]
+      - StaticText "inventive"
+    - button "کاربرد creative در جزوه — ۳ مورد" [ref=e9210]
+      - StaticText "در جزوه · ۳"
+    - generic
+      - StaticText "رتبهٔ ۶۹۳ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9211]
+    - button "بلدم" [ref=e9212]
+    - StaticText "custom"
+    - StaticText "اسم"
+    - button "افزودن custom به واژههای من" [ref=e9213]
+    - StaticText "رسم، آیین"
+    - button "مترادفِ custom: habit — روخوانی" [ref=e9214]
+      - StaticText "habit"
+    - button "مترادفِ custom: tradition — روخوانی" [ref=e9215]
+      - StaticText "tradition"
+    - button "مترادفِ custom: tradition — روخوانی" [ref=e9216]
+      - StaticText "tradition"
+    - button "کاربرد custom در جزوه — ۶ مورد" [ref=e9217]
+      - StaticText "در جزوه · ۶"
+    - generic
+      - StaticText "رتبهٔ ۳۹۵ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9218]
+    - button "بلدم" [ref=e9219]
+    - StaticText "decide"
+    - StaticText "فعل"
+    - button "افزودن decide به واژههای من" [ref=e9220]
+    - StaticText "تصمیم گرفتن"
+    - button "کاربرد decide در جزوه — ۲ مورد" [ref=e9221]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9222]
+    - button "بلدم" [ref=e9223]
+    - StaticText "decorative"
+    - StaticText "صفت"
+    - button "افزودن decorative به واژههای من" [ref=e9224]
+    - StaticText "تزئینی، دکوری"
+    - button "کاربرد decorative در جزوه — ۱ مورد" [ref=e9225]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9226]
+    - button "بلدم" [ref=e9227]
+    - StaticText "decrease"
+    - StaticText "فعل"
+    - button "افزودن decrease به واژههای من" [ref=e9228]
+    - StaticText "کاهش یافتن، کاهش دادن"
+    - button "مترادفِ decrease: reduce — روخوانی" [ref=e9229]
+      - StaticText "reduce"
+    - button "مترادفِ decrease: reduce — روخوانی" [ref=e9230]
+      - StaticText "reduce"
+    - button "متضادِ decrease: increase — روخوانی" [ref=e9231]
+      - StaticText "increase"
+    - StaticText "+"
+    - StaticText "۲"
+    - button "کاربرد decrease در جزوه — ۴ مورد" [ref=e9232]
+      - StaticText "در جزوه · ۴"
+    - generic
+      - StaticText "رتبهٔ ۵۳۷ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9233]
+    - button "بلدم" [ref=e9234]
+    - StaticText "depressed"
+    - StaticText "صفت"
+    - button "افزودن depressed به واژههای من" [ref=e9235]
+    - StaticText "افسرده، غمگین"
+    - button "مترادفِ depressed: sad — روخوانی" [ref=e9236]
+      - StaticText "sad"
+    - button "متضادِ depressed: glad — روخوانی" [ref=e9237]
+      - StaticText "glad"
+    - button "کاربرد depressed در جزوه — ۲ مورد" [ref=e9238]
+      - StaticText "در جزوه · ۲"
+    - generic
+      - StaticText "رتبهٔ ۹۱۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9239]
+    - button "بلدم" [ref=e9240]
+    - StaticText "discount"
+    - StaticText "اسم"
+    - button "افزودن discount به واژههای من" [ref=e9241]
+    - StaticText "تخفیف"
+    - button "کاربرد discount در جزوه — ۱ مورد" [ref=e9242]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9243]
+    - button "بلدم" [ref=e9244]
+    - StaticText "diversity"
+    - StaticText "اسم"
+    - button "افزودن diversity به واژههای من" [ref=e9245]
+    - StaticText "تنوع، گوناگونی"
+    - button "مترادفِ diversity: variety — روخوانی" [ref=e9246]
+      - StaticText "variety"
+    - button "کاربرد diversity در جزوه — ۱ مورد" [ref=e9247]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9248]
+    - button "بلدم" [ref=e9249]
+    - StaticText "economy"
+    - StaticText "اسم"
+    - button "افزودن economy به واژههای من" [ref=e9250]
+    - StaticText "اقتصاد"
+    - button "کاربرد economy در جزوه — ۱ مورد" [ref=e9251]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9252]
+    - button "بلدم" [ref=e9253]
+    - StaticText "especially"
+    - StaticText "قید"
+    - button "افزودن especially به واژههای من" [ref=e9254]
+    - StaticText "به ویژه، مخصوصاً"
+    - button "کاربرد especially در جزوه — ۱ مورد" [ref=e9255]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9256]
+    - button "بلدم" [ref=e9257]
+    - StaticText "face"
+    - StaticText "فعل"
+    - button "افزودن face به واژههای من" [ref=e9258]
+    - StaticText "مواجه شدن، روبرو شدن - صورت، چهره"
+    - button "کاربرد face در جزوه — ۱ مورد" [ref=e9259]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9260]
+    - button "بلدم" [ref=e9261]
+    - StaticText "fall"
+    - StaticText "فعل"
+    - button "افزودن fall به واژههای من" [ref=e9262]
+    - StaticText "پایین - افتادن، سقوط کردن"
+    - button "متضادِ fall: rise — روخوانی" [ref=e9263]
+      - StaticText "rise"
+    - button "کاربرد fall در جزوه — ۱ مورد" [ref=e9264]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9265]
+    - button "بلدم" [ref=e9266]
+    - StaticText "finish"
+    - StaticText "فعل"
+    - button "افزودن finish به واژههای من" [ref=e9267]
+    - StaticText "پایان یافتن، پایان دادن"
+    - button "متضادِ finish: begin — روخوانی" [ref=e9268]
+      - StaticText "begin"
+    - button "متضادِ finish: start — روخوانی" [ref=e9269]
+      - StaticText "start"
+    - button "کاربرد finish در جزوه — ۳ مورد" [ref=e9270]
+      - StaticText "در جزوه · ۳"
+    - generic
+      - StaticText "رتبهٔ ۶۹۳ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9271]
+    - button "بلدم" [ref=e9272]
+    - StaticText "forget"
+    - StaticText "فعل"
+    - button "افزودن forget به واژههای من" [ref=e9273]
+    - StaticText "فراموش کردن"
+    - button "متضادِ forget: remember — روخوانی" [ref=e9274]
+      - StaticText "remember"
+    - button "متضادِ forget: remember — روخوانی" [ref=e9275]
+      - StaticText "remember"
+    - button "متضادِ forget: remember — روخوانی" [ref=e9276]
+      - StaticText "remember"
+    - StaticText "+"
+    - StaticText "۳"
+    - button "کاربرد forget در جزوه — ۳ مورد" [ref=e9277]
+      - StaticText "در جزوه · ۳"
+    - generic
+      - StaticText "رتبهٔ ۶۹۳ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9278]
+    - button "بلدم" [ref=e9279]
+    - StaticText "get back"
+    - StaticText "فعل دوکلمهای"
+    - button "افزودن get back به واژههای من" [ref=e9280]
+    - StaticText "برگشتن"
+    - button "کاربرد get back در جزوه — ۱ مورد" [ref=e9281]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9282]
+    - button "بلدم" [ref=e9283]
+    - StaticText "glad"
+    - StaticText "صفت"
+    - button "افزودن glad به واژههای من" [ref=e9284]
+    - StaticText "خوشحال، شاد"
+    - button "مترادفِ glad: cheerful — روخوانی" [ref=e9285]
+      - StaticText "cheerful"
+    - button "مترادفِ glad: happy — روخوانی" [ref=e9286]
+      - StaticText "happy"
+    - button "مترادفِ glad: happy — روخوانی" [ref=e9287]
+      - StaticText "happy"
+    - StaticText "+"
+    - StaticText "۲"
+    - button "کاربرد glad در جزوه — ۱ مورد" [ref=e9288]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9289]
+    - button "بلدم" [ref=e9290]
+    - StaticText "greeting"
+    - StaticText "اسم"
+    - button "افزودن greeting به واژههای من" [ref=e9291]
+    - StaticText "سلام و احوالپرسی"
+    - button "کاربرد greeting در جزوه — ۴ مورد" [ref=e9292]
+      - StaticText "در جزوه · ۴"
+    - generic
+      - StaticText "رتبهٔ ۵۳۷ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9293]
+    - button "بلدم" [ref=e9294]
+    - StaticText "handicrafts"
+    - StaticText "اسم"
+    - button "افزودن handicrafts به واژههای من" [ref=e9295]
+    - StaticText "صنایع دستی"
+    - button "مترادفِ handicrafts: handmade products — روخوانی" [ref=e9296]
+      - StaticText "handmade products"
+    - button "کاربرد handicrafts در جزوه — ۴ مورد" [ref=e9297]
+      - StaticText "در جزوه · ۴"
+    - generic
+      - StaticText "رتبهٔ ۵۳۷ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9298]
+    - button "بلدم" [ref=e9299]
+    - StaticText "hand-made"
+    - StaticText "صفت"
+    - button "افزودن hand-made به واژههای من" [ref=e9300]
+    - StaticText "دستی، دستساز"
+    - button "کاربرد hand-made در جزوه — ۱ مورد" [ref=e9301]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9302]
+    - button "بلدم" [ref=e9303]
+    - StaticText "handshake"
+    - StaticText "اسم"
+    - button "افزودن handshake به واژههای من" [ref=e9304]
+    - StaticText "دستدادن"
+    - button "کاربرد handshake در جزوه — ۱ مورد" [ref=e9305]
+      - StaticText "در جزوه · ۱"
+    - generic
+      - StaticText "رتبهٔ ۱۲۶۴ از ۱۹۱۵"
+    - generic
+      - StaticText "درس ۳"
+    - button "روخوانی متن انگلیسی" [ref=e9306]
+    - button "بلدم" [ref=e9307]
+- contentinfo
+  - paragraph
+    - StaticText "وبکتاب تعاملی «Vision Two» — زبان انگلیسی هفتم تا دوازدهم"
+  - paragraph
+    - StaticText "بر اساس جزوههای جامعِ درس زبان انگلیسی دبیرستان · روخوانی هوش مصنوعی · پیشرفت شما روی همین دستگاه ذخیره میشود"
+  - button "میانبرها ؟" [ref=e7280]
+    - StaticText "میانبرها"
+    - StaticText "؟"
+  - StaticText "پشتیبان خودکار"
+  - StaticText "۱۲"
+  - StaticText " درس · "
+  - StaticText "۴۰۳۲"
+  - StaticText " واژه · "
+  - StaticText "۳۰۶۸"
+  - StaticText "+ تست"
+- status
+- alert
+- region "Notifications (F8)" [ref=e7261]
+  - list
+- button "Open Next.js Dev Tools" [expanded=false, ref=e7430]
+  - image
+- alert

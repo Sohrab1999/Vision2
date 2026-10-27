@@ -45,6 +45,13 @@
 //    رزگونِ «N موردِ خطای ثبتشده» را فقط با رکورد بالا میآورد — ردیفها
 //    هرگز حذف نمیشوند (ادغامِ بیشترین با حذف سازگار نیست)، پس چیپ
 //    «ثبتشده» میگوید و هیچ ادعایِ «حلشده»ای ندارد.
+// r414 — «SRSِ دریل»: حلقه بسته شد — پاسخِ درستِ پایهٔ خطادار به
+//    trackDrillCorrects میرود (فقط ردیفِ موجود ok میگیرد؛ بانکِ خطا از
+//    پاسخِ درست ردیف نمیسازد) و تسلط = ok ≥ wrong ردیف را از مجموعهٔ
+//    سررسیدها بیرون میبرد. معرفی چیپِ زمردیِ «N موردِ سررسید» را فقط با
+//    عددِ بزرگتر از صفر بالا میآورد (r236) — و میزبان، همین فهرستِ
+//    اولویتدار را به موتورِ جلسه میدهد تا جلسه با سهمیهٔ سررسید شروع
+//    شود (مرورِ موازنهشده — DRILL_DUE_QUOTA نزدِ هر موتور).
 //
 // جریان: معرفی → پرسش‌ها (بازخوردِ درجا، بی تایمر — کاربر سرعته) →
 // نتیجهٔ صادق (درصد از مالکِ r388 + بازخوانیِ سؤالبهسؤال: بیپاسخ =
@@ -64,10 +71,21 @@
 //    ادغامش نزدِ lib/drill-stats + ردیفِ drillStats است)؛ r413 — نوشتنیِ
 //    دومِ همان لحظه: trackDrillMistakes (بانکِ خطا — lib/drill-mistakes +
 //    ردیفِ drillMistakes). مرورِ اشتباهها هرگز به هیچ‌کدام عبور نمیکند.
+//  · r415 — «تمرینِ سررسیدها»: دکمهٔ دومِ معرفی — جلسهای که فقط از
+//    پایههایِ سررسیدِ SRS ساخته میشود (سازنده نزدِ میزبان، از موتورِ
+//    همان بانک با dueOnly). دکمه فقط با dueCount > 0 بالا میآید (r236)،
+//    زمردِ خانوادهٔ چیپِ سررسیدِ r414 است (دعوتِ به مرور، نه هشدار) و
+//    جلسهاش کاملِ خودش است: ثبتِ نتیجه/خطا/حق مثلِ هر جلسهٔ کامل —
+//    پاسخِ درستِ سررسید ok میگیرد و از مجموعهٔ سررسید بیرون میرود.
+//  · r417 — «شفافیتِ ریتم»: چیپِ آسمانیِ «N مورد در دورهٔ نفس —
+//    نزدیک‌ترین بازگشت: فردا/X روزِ دیگر» — صفرِ صادقِ زمردی حالا
+//    توضیح هم دارد: ردیفِ درنفس از صف غایب ولی از دید نه. آسمان =
+//    خانوادهٔ خبریِ برنامهای (نه خطای رزگون، نه دعوتِ زمردی)؛
+//    دارک با توکنِ کرنلِ sky-50/700 خودکار سرویس میشود.
 // ---------------------------------------------------------------------
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ArrowLeft, Check, GraduationCap, Repeat, RotateCcw, Volume2, X } from "lucide-react";
+import { ArrowLeft, Check, Clock, Download, GraduationCap, RefreshCw, Repeat, RotateCcw, Volume2, X } from "lucide-react";
 import type { ReactNode } from "react";
 import {
   buildDrillReplay,
@@ -75,8 +93,16 @@ import {
   type DrillSession,
 } from "@/lib/appendix-drill";
 import { setDrillActive } from "@/lib/drill-active";
+import { countDrillDue, drillGraceSummary } from "@/lib/drill-mistakes"; // r414/r417 — چیپها از مالکِ سیاست
+import {
+  buildDrillCalendarRows,
+  downloadDrillCalendarCsv,
+} from "@/lib/drill-calendar-csv"; // r418 — تقویمِ مرور از مالکِ سازنده
+import { fileFailToast } from "@/lib/file-download"; // r398 — جفتِ شکستِ نامدار
 import { useStudy } from "@/lib/study-store";
+import { todayStr } from "@/state/day-engine"; // r414 — کلیدِ ISOِ امروز نزدِ مالکِ روز
 import { faNum, percentFa } from "@/lib/study-theme";
+import { useToast } from "@/hooks/use-toast";
 import { isTypingTarget, readDigit, useKeydown } from "@/hooks/use-keyboard";
 import SpeakButton from "../shared/speak-button";
 
@@ -108,11 +134,19 @@ type Phase = "intro" | "run" | "done";
 export default function AppendixDrillView({
   spec,
   buildSession,
+  buildMistakeSession,
+  calendarLabel,
   onExit,
 }: {
   spec: DrillViewSpec;
   /** سازندهٔ جلسه — مالکیت با موتورِ همان بانک (r400 فعل / r403 واژه) */
   buildSession: () => DrillSession | null;
+  /** r415 — سازندهٔ جلسهٔ فقطسررسید (تمرینِ سررسیدها) — غایب = دکمه بالا
+   *  نمیآید (میزبانهایِ پیش از r415 سالم میمانند) */
+  buildMistakeSession?: () => DrillSession | null;
+  /** r418 — مالکِ برچسبِ پایه (معنیِ فعل/واژه/واک/نشانه) — غایب = دکمهٔ
+   *  تقویم بالا نمیآید (سازگاریِ پسرو، عینِ r415)؛ حلنشده = خانهٔ تهیِ صادق */
+  calendarLabel?: (base: string) => string;
   onExit: () => void;
 }) {
   const [phase, setPhase] = useState<Phase>("intro");
@@ -124,14 +158,43 @@ export default function AppendixDrillView({
   const [isReplay, setIsReplay] = useState(false);
   // r409 — دسترسیِ امریِ کیبورد به دکمهٔ چیپِ پرسشِ فعلی (میانبرِ T)
   const speakBtnRef = useRef<HTMLButtonElement | null>(null);
-  // r412 — نوشتنیِ واحد به استور + پیشرفتِ ماندگارِ این بانک (معرفی)
+  // r412 — نوشتنی به استور + پیشرفتِ ماندگارِ این بانک (معرفی)
   // r413 — بانکِ خطایِ ماندگار: ثبتِ پایههایِ نادرست + چیپِ صادقِ معرفی
+  // r414 — نیمهٔ دیگرِ حلقه: okها + چیپِ سررسید (مشمارهشده از همان بانک)
   const trackDrillResult = useStudy((s) => s.trackDrillResult);
   const trackDrillMistakes = useStudy((s) => s.trackDrillMistakes);
+  const trackDrillCorrects = useStudy((s) => s.trackDrillCorrects);
   const bankStat = useStudy((s) => s.drillStats[spec.id]);
+  const mistakeBank = useStudy((s) => s.drillMistakes[spec.id]);
   const mistakeCount = useStudy((s) =>
     s.drillMistakes[spec.id] ? Object.keys(s.drillMistakes[spec.id]!).length : 0,
   );
+  const dueCount = useMemo(() => countDrillDue(mistakeBank, todayStr()), [mistakeBank]);
+  // r417 — شفافیتِ ریتم: ردیفهایِ درنفس + نزدیکترین بازگشت (چیپِ آسمانی)
+  const grace = useMemo(() => drillGraceSummary(mistakeBank, todayStr()), [mistakeBank]);
+  // r418 — تقویمِ مرور: سطرهایِ زندهٔ بانک (سررسید + درنفس) با معنیِ میزبان؛
+  // دکمه فقط با سازندهٔ برچسب و حداقل یک ردیفِ زنده بالا میآید (r236 —
+  // عینِ r415: تقویمِ تهی ادعایِ بیپشتوانه است).
+  const { toast } = useToast();
+  const calendarRows = useMemo(
+    () => (calendarLabel ? buildDrillCalendarRows(mistakeBank, todayStr(), calendarLabel) : []),
+    [mistakeBank, calendarLabel],
+  );
+  const calendarReady = !!calendarLabel && calendarRows.length > 0;
+  const exportCalendar = () => {
+    if (!calendarRows.length) return; // دکمهٔ بیردیف رخ نمیدهد — گاردِ صادق
+    const ok = downloadDrillCalendarCsv(calendarRows, todayStr());
+    if (ok) {
+      toast({
+        title: "🗓 تقویم مرور ذخیره شد",
+        description: `${faNum(calendarRows.length)} ردیفِ زنده با روزِ بازگشت — آمادهٔ اکسل.`,
+        duration: 3000,
+      });
+    } else {
+      // r398 — جفتِ شکست نامدار است؛ موفقیتِ اینجا گویشِ خودش را دارد
+      fileFailToast();
+    }
+  };
 
   // r409 — پرچمِ «جلسه در جریان است» نزدِ راهنمای سراسری: فقط در فازِ run
   // (معرفی هنوز جلسهای ندارد و نتیجه فقطخواندنی است — حروفِ ناوبری در
@@ -147,15 +210,29 @@ export default function AppendixDrillView({
     [session, answers],
   );
 
-  const start = () => {
-    const s = buildSession();
-    if (!s || s.questions.length === 0) return; // بانکِ تهی: بیسروصدا به جدول برگرد (هر دو بانک پرند)
+  /** r415 — مونتاژِ مشترکِ هر جلسهٔ تازه: بانکِ تهی بیسروصدا رد میشود */
+  const begin = (s: DrillSession | null): boolean => {
+    if (!s || s.questions.length === 0) return false;
     setSession(s);
     setAnswers(Array<number | null>(s.size).fill(null));
     setIdx(0);
     setPicked(null);
-    setIsReplay(false); // جلسهٔ تازهٔ کامل — نه مرور
     setPhase("run");
+    return true;
+  };
+
+  const start = () => {
+    if (!begin(buildSession())) return; // بانکِ تهی: بیسروصدا به جدول برگرد (هر دو بانک پرند)
+    setIsReplay(false); // جلسهٔ تازهٔ کامل — نه مرور
+  };
+
+  // r415 — تمرینِ سررسیدها: جلسهای که فقط از پایههایِ سررسید ساخته میشود.
+  // جلسهٔ کاملِ خودش است — نه مرورِ r401: ثبتِ نتیجه/خطا/حق مثلِ هر جلسه
+  // کامل انجام میشود (isReplay=false) و پاسخِ درستِ سررسید ok میگیرد.
+  const startMistakes = () => {
+    if (!buildMistakeSession) return;
+    if (!begin(buildMistakeSession())) return;
+    setIsReplay(false);
   };
 
   // r401 — مرورِ اشتباهها: همان سؤالهایِ نادرست/بیپاسخ، همان ترتیب،
@@ -190,13 +267,24 @@ export default function AppendixDrillView({
       // r413 — پایههایِ نادرست/بیپاسخِ همان جلسه (به ترتیبِ پرسشها،
       // هر رخداد یک واحد — dedup نزدِ موتور نیست، سیاستِ شمارشِ صادق
       // است) به بانکِ خطایِ ماندگار میرود؛ مرورِ زیرجلسه از این در عبور
-      // نمیکند (گاردِ isReplay) — حکمِ r401 پابرجا.
+      // نمیکند (گاردِ isReplay) — حکمِ r401 پابرجاست.
+      // r414 — پاسخهایِ درستِ پایههایِ خطادارِ همین جلسه ok میگیرند
+      // (فقط ردیفِ موجود — بانک از پاسخِ درست ردیف نمیسازد) و تسلط
+      // ردیف را از سررسیدها بیرون میبرد؛ مرورِ زیرجلسه از این هم عبور نمیکند.
       if (!isReplay && score) {
         trackDrillResult(spec.id, score.correct, score.total);
-        const wrongBases = session.questions
-          .filter((qq, i) => answers[i] !== qq.answer)
-          .map((qq) => qq.base);
+        const bankNow = useStudy.getState().drillMistakes[spec.id];
+        const wrongBases: string[] = [];
+        const okBases: string[] = [];
+        session.questions.forEach((qq, i) => {
+          if (answers[i] === qq.answer) {
+            if (bankNow && bankNow[qq.base]) okBases.push(qq.base);
+          } else {
+            wrongBases.push(qq.base);
+          }
+        });
         if (wrongBases.length > 0) trackDrillMistakes(spec.id, wrongBases);
+        if (okBases.length > 0) trackDrillCorrects(spec.id, okBases);
       }
       setPhase("done");
       return;
@@ -270,7 +358,32 @@ export default function AppendixDrillView({
             {faNum(mistakeCount)} موردِ خطای ثبتشده
           </p>
         )}
-        <div className="mt-4 flex items-center justify-center gap-2">
+        {/* r414 — سررسیدهایِ SRS: چیپِ زمردی فقط با عددِ بزرگتر از صفر —
+            مسلطدهندهها (ok ≥ wrong) صادقانه شمرده نمیشوند؛ زمردِ خانوادهٔ
+            کنشِ مثبت (فلش‌کارت/خروجی) — دعوت به مرور، نه هشدارِ خطا */}
+        {dueCount > 0 && (
+          <p
+            className="mx-auto mt-2 inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-1 text-[11.5px] font-black text-emerald-700"
+            aria-label={`سررسیدهای مرور این تمرین: ${faNum(dueCount)} مورد`}
+          >
+            <RefreshCw size={13} aria-hidden />
+            {faNum(dueCount)} موردِ سررسید — در جلسهٔ بعد پیشِ دست
+          </p>
+        )}
+        {/* r417 — شفافیتِ ریتم: ردیفِ درنفس از چیپِ زمردی غایب است — اینجا
+            خودش صحبت میکند: چند ردیف نفس میکشد و نزدیکترین کی برمیگردد.
+            فقط با عددِ بزرگتر از صفر (r236)؛ آسمان = خانوادهٔ خبریِ برنامهای —
+            نه هشدارِ خطا (رزگون) و نه دعوتِ کنش (زمردی)؛ «فردا» برایِ فاصلهٔ ۱ */}
+        {grace.count > 0 && grace.nearestDays !== null && (
+          <p
+            className="mx-auto mt-2 inline-flex items-center gap-1.5 rounded-full bg-sky-50 px-3 py-1 text-[11.5px] font-black text-sky-700"
+            aria-label={`دورهٔ نفس این تمرین: ${faNum(grace.count)} مورد در استراحت، نزدیکترین بازگشت ${faNum(grace.nearestDays)} روز دیگر`}
+          >
+            <Clock size={13} aria-hidden />
+            {faNum(grace.count)} مورد در دورهٔ نفس — نزدیکترین بازگشت: {grace.nearestDays === 1 ? "فردا" : `${faNum(grace.nearestDays)} روزِ دیگر`}
+          </p>
+        )}
+        <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
           <button
             onClick={start}
             aria-label={spec.startAria}
@@ -279,6 +392,33 @@ export default function AppendixDrillView({
             <GraduationCap size={16} aria-hidden />
             شروع تمرین
           </button>
+          {/* r415 — تمرینِ سررسیدها: فقط با سررسیدِ بزرگتر از صفر (r236) و
+              سازندهٔ حاضر؛ زمردِ همخانوادهٔ چیپِ r414 — ایدئومِ دکمهٔ نرمِ
+              مرورِ r401 (border-300/bg-50/hover-100) با خانوادهٔ زمرد */}
+          {buildMistakeSession && dueCount > 0 && (
+            <button
+              onClick={startMistakes}
+              aria-label={`شروع جلسهٔ تمرین فقط از سررسیدهای این تمرین: ${faNum(dueCount)} مورد`}
+              className="inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-emerald-300 bg-emerald-50 px-4 text-[12.5px] font-black text-emerald-700 transition-colors hover:bg-emerald-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 active:scale-[0.96]"
+            >
+              <RefreshCw size={15} aria-hidden />
+              تمرینِ سررسیدها ({faNum(dueCount)})
+            </button>
+          )}
+          {/* r418 — خروجیِ تقویمِ مرور: فقط با مالکِ برچسب و ردیفِ زندهٔ
+              بزرگتر از صفر (r236)؛ خانوادهٔ سنگیِ ابزارِ خروجی (ایدئومِ
+              دکمهٔ نرمِ مرورِ r401 با خانوادهٔ خنثی — خبرِ برنامهای، نه کنش
+              و نه هشدار)؛ aria زبانِ سطرها را میگوید: سررسید + درنفس */}
+          {calendarReady && (
+            <button
+              onClick={exportCalendar}
+              aria-label={`دانلود تقویم مرور این تمرین: ${faNum(dueCount)} سررسید و ${faNum(grace.count)} مورد در دورهٔ نفس`}
+              className="inline-flex min-h-11 items-center gap-1.5 rounded-xl border border-stone-300 bg-white px-4 text-[12.5px] font-black text-stone-600 transition-colors hover:bg-stone-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-300 active:scale-[0.96]"
+            >
+              <Download size={15} aria-hidden />
+              تقویمِ مرور (CSV)
+            </button>
+          )}
           <button
             onClick={onExit}
             aria-label={spec.exitAria}

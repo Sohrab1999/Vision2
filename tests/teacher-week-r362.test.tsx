@@ -245,7 +245,7 @@ describe("TeacherView — هفتهٔ فعال در نوار و دفتر", () => 
 // ---------------------------------------------------------------
 describe("رجیستریِ r362", () => {
   it("⑫ هفتهٔ فعال رویدادِ تحلیلی ندارد — رجیستریِ ۵۲ دستنخورده", () => {
-    expect(EVENT_NAMES).toHaveLength(52);
+    expect(EVENT_NAMES).toHaveLength(55); // r423 +۱ — کارتِ تصویریِ تقویمِ هفته؛ r424 +۱ — هم‌رسانیِ بومیِ همان کارت؛ r425 +۱ — پرشِ خانهٔ امروزِ نوارِ هفته
     expect(EVENT_NAMES).not.toContain("active_week");
     expect(EVENT_NAMES).toContain("teacher_class_csv"); // تنها رویدادِ خانوادهٔ دفتر — همان ۵۱امِ r357
     expect(Object.keys(EVENT_CATEGORIES).length).toBe(EVENT_NAMES.length);

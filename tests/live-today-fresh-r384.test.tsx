@@ -18,7 +18,7 @@
 //   • پسرعموهایِ state/کتابخانه قراردادِ خودشان: effects.ts و
 //     achievements.ts دستنخورده (قفلِ دامنهدار)
 //   • duel-setup/duel-done چهاردهسیگنالیِ خودشان (گویشِ evalStreak)
-//   • رجیستری ۵۶ نشان؛ صفرِ رویدادِ تحلیلیِ نو (رجیستری ۵۲)
+//   • رجیستری ۵۶ نشان؛ صفرِ رویدادِ تحلیلیِ نو (رجیستری ۵۳)
 // ------------------------------------------------------------------
 
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
@@ -180,9 +180,9 @@ describe("حکمِ r384 — حلقهٔ هدر ۱۹سیگنالی شد؛ «تاز
     }
   });
 
-  it("رجیستری ۵۶ نشان؛ صفرِ رویدادِ نو و صفرِ رشدِ بهداشت (رجیستری ۵۲)", () => {
+  it("رجیستری ۵۶ نشان؛ صفرِ رویدادِ نو و صفرِ رشدِ بهداشت (رجیستری ۵۳)", () => {
     expect(BADGES.length).toBe(56);
-    expect(EVENT_NAMES.length).toBe(52);
+    expect(EVENT_NAMES.length).toBe(55); // r423 +۱ — کارتِ تصویریِ تقویمِ هفته؛ r424 +۱ — هم‌رسانیِ بومیِ همان کارت (دوقلویِ r306)؛ r425 +۱ — پرشِ خانهٔ امروزِ نوارِ هفته
     for (const src of [ENGINE_SRC, FRESH_SRC]) {
       expect(src).not.toContain("trackEvent");
       expect(src).not.toContain("transition-all");

@@ -114,7 +114,8 @@ describe("source locks — r381", () => {
     expect(GUIDE_SRC).toContain("بی‌پیشرفت داشبوردی نیست که به آن پرید");
     expect(GUIDE_SRC).not.toContain("transition-all");
     expect(GUIDE_SRC).not.toContain("text-stone-400");
-    expect(EVENT_NAMES).toHaveLength(52); // رجیستری دستنخورده — پرشِ ناوبری رویداد نیست
+    // r423 +۱ — کارتِ تصویریِ تقویمِ هفته (خانوادهٔ weekly_image)
+    expect(EVENT_NAMES).toHaveLength(55); // r425 — پرشِ خانهٔ امروز (drill_due_jump) عضوِ نوِ ناوبری شد؛ r424 — هم‌رسانیِ بومیِ کارتِ تقویم
     expect(EVENT_NAMES.some((n) => n.includes("guide"))).toBe(false);
     expect(ENGINE_SRC).not.toContain("guide_srs");
   });

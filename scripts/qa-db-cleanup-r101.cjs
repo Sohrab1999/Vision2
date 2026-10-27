@@ -37,6 +37,17 @@ const p = new PrismaClient();
         // task 185: the my-words flashcards QA path (dictionary star -> deck
         // -> flip) leaves these funnel rows behind — all QA-only by construction
         "my_words_open", "my_words_flashcards_start", "star_word",
+        // r445: the my-words dictation launcher QA — one live launcher click
+        // per round fires the funnel opener (my_words_dictation_start); the
+        // round itself rides quiz_done/dictation_done + one lesson-0 attempt
+        // (all already covered above/by the attempts window). QA-only by the
+        // same loopback construction
+        "my_words_dictation_start",
+        // r446: the my-words review (quiz) launcher QA — same construction as
+        // its dictation sibling above: one live launcher click fires the
+        // funnel opener (my_words_review_start); the round rides quiz_done +
+        // one lesson-0 my-words attempt (covered above). QA-only
+        "my_words_review_start",
         // task 189: the result-card painter QA completes a real 10-question exam
         "exam_done", "quiz_done",
         // task 200: the exam dictation CTA QA click fires the funnel opener
@@ -124,6 +135,20 @@ const p = new PrismaClient();
     }
     const gone = await p.quizAttempt.deleteMany({ where: { createdAt: { gte: since } } });
     if (gone.count > 0) console.log("QA-window attempts removed:", gone.count);
+    // r445: the my-words dictation QA is the first round to drive the signed
+    // identity pipeline (sendStats -> /api/stats) from a fresh boot — each QA
+    // boot registers one learnerProfile (default display name, no profile row
+    // pre-exists in this loopback env). QA-only by the same loopback
+    // construction: drop window profiles that no longer own any attempt
+    // (profiles owning attempts outside the window would stay untouched).
+    const winProfiles = await p.learnerProfile.findMany({ where: { createdAt: { gte: since } }, select: { userId: true, name: true } });
+    for (const prof of winProfiles) {
+      const owns = await p.quizAttempt.count({ where: { userId: prof.userId } });
+      if (owns === 0) {
+        await p.learnerProfile.delete({ where: { userId: prof.userId } });
+        console.log("QA-window profile removed:", prof.userId, prof.name);
+      }
+    }
     console.log("CLEAN-OK");
   }
   await p.$disconnect();

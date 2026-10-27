@@ -29,6 +29,9 @@
 
 import type { Phoneme } from "@/data/appendix";
 import {
+  pickDueFirst,
+  pickDueOnly,
+  DRILL_DUE_QUOTA,
   shuffled,
   DRILL_SIZE,
   type DrillQuestion,
@@ -66,9 +69,17 @@ export function buildPhonemeDrillSession(
   bank: readonly Phoneme[],
   size: number = DRILL_SIZE,
   rng: () => number = Math.random,
+  /** r414 — پایههایِ سررسید به ترتیبِ اولویت — سهمیه نزدِ همین موتور اعمال میشود */
+  due?: readonly string[],
+  /** r415 — «تمرینِ سررسیدها»: جلسهٔ فقط از سررسیدهایِ حاضر در بانک؛
+   *  واجدگان از بانکِ کامل محاسبه و به سررسیدها فیلتر میشود — استخرِ بدل تمامبانک میماند */
+  dueOnly?: boolean,
 ): DrillSession {
   if (bank.length === 0) return { questions: [], size: 0 };
-  const n = Math.min(Math.max(1, Math.floor(size)), bank.length);
+  // r414 — صفِ سررسیدِ مشترکِ جلسه: سهمیه در ورود، ترتیبِ اولویت در مصرف؛
+  // r415 — در حالتِ فقطسررسید صف بیسهمیه است (کلِ سررسیدها پیشِ دستاند)
+  const dueSet = dueOnly && due ? new Set(due) : null;
+  const dueQueue = dueSet ? [...(due ?? [])] : (due ?? []).slice(0, DRILL_DUE_QUOTA);
 
   // واکهایِ واجدِ هر گونه — یکبارِ پیشمحاسبه (خالص: هیچ جهشی در داده).
   // گونهٔ symbol شرطِ اضافه دارد: نمونهٔ لنگر باید در ستونِ نمونه یکتا
@@ -77,23 +88,29 @@ export function buildPhonemeDrillSession(
   for (const p of bank) exampleCount.set(p.example, (exampleCount.get(p.example) ?? 0) + 1);
   const eligible = new Map<PhonemeDrillKind, Phoneme[]>();
   for (const kind of PHONEME_DRILL_KINDS) {
-    eligible.set(
-      kind,
-      bank.filter((p) => {
-        if (cellOf(p, kind) === "") return false; // پاسخِ تهی پرسیدنی نیست
-        // لنگرِ پرسش هم باید پر باشد: fa/example لنگرش symbol است، symbol لنگرش example —
-        // (درسِ قفلِ راند: نمونهٔ تهی با شمارشِ یکتا از فیلتر میگذشت و پرامپتِ ««»» میزد)
-        if (kind === "symbol") {
-          return p.example !== "" && p.symbol !== "" && exampleCount.get(p.example) === 1;
-        }
-        return p.symbol !== "";
-      }),
-    );
+    // r415 — واجدگان همیشه از بانکِ کامل؛ در حالتِ فقطسررسید فقط به
+    // سررسیدهایِ همان گونه فیلتر میشود (پایهٔ پرسشِ واک، خودِ نماد است)
+    const full = bank.filter((p) => {
+      if (cellOf(p, kind) === "") return false; // پاسخِ تهی پرسیدنی نیست
+      // لنگرِ پرسش هم باید پر باشد: fa/example لنگرش symbol است، symbol لنگرش example —
+      // (درسِ قفلِ راند: نمونهٔ تهی با شمارشِ یکتا از فیلتر میگذشت و پرامپتِ ««»» میزد)
+      if (kind === "symbol") {
+        return p.example !== "" && p.symbol !== "" && exampleCount.get(p.example) === 1;
+      }
+      return p.symbol !== "";
+    });
+    eligible.set(kind, dueSet ? full.filter((p) => dueSet.has(p.symbol)) : full);
   }
+  // r415 — طولِ جلسهٔ فقطسررسید = شمارِ متمایزِ سررسیدهایِ پرسیدنی — یک ردیف یک پرسش
+  const duePresent = dueSet
+    ? new Set(PHONEME_DRILL_KINDS.flatMap((k) => eligible.get(k)!.map((p) => p.symbol))).size
+    : bank.length;
+  const n = Math.min(Math.max(1, Math.floor(size)), duePresent);
 
   const used = new Set<Phoneme>();
   const questions: DrillQuestion[] = [];
-  for (let i = 0; i < n; i++) {
+  // r415 — چرخشِ بازگشتی فقط در حالتِ فقطسررسید (مسیرِ عادی بدونِ تغییر)
+  for (let i = 0; i < n * (dueSet ? PHONEME_DRILL_KINDS.length : 1) && questions.length < n; i++) {
     const kind = PHONEME_DRILL_KINDS[i % PHONEME_DRILL_KINDS.length];
     // ترجیحِ واکِ بیکاربرد؛ استخرِ تهیشده اجازهٔ بازاستفاده میدهد؛
     // گونهٔ بیپیشنهاد پرسیدنی نیست — جلسهٔ کوتاهترِ صادق (درسِ r404)
@@ -101,7 +118,12 @@ export function buildPhonemeDrillSession(
     const fresh = pool.filter((p) => !used.has(p));
     const pickable = fresh.length > 0 ? fresh : pool;
     if (pickable.length === 0) continue;
-    const p = shuffled(pickable, rng)[0];
+    // r414 — سررسید-نخست: پایهٔ پرسشِ واک، خودِ نمادِ واک است — مالِ همین موتور
+    // r415 — در حالتِ فقطسررسید گزینش سخت است
+    const p = dueSet
+      ? pickDueOnly(pickable, (x) => x.symbol, dueQueue)
+      : pickDueFirst(pickable, (x) => x.symbol, dueQueue, rng);
+    if (!p) continue;
     used.add(p);
 
     const correct = cellOf(p, kind);

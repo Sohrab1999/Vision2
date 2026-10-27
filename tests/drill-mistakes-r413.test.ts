@@ -28,9 +28,11 @@ import {
 } from "@/lib/drill-mistakes";
 import { DRILL_BANK_KEY_RE } from "@/lib/drill-stats";
 
-const entry = (over: { wrong?: number; lastDay?: string } = {}) => ({
+const entry = (over: { wrong?: number; ok?: number; lastDay?: string; lastOkDay?: string } = {}) => ({
   wrong: 2,
+  ok: 0,
   lastDay: "2026-10-25",
+  lastOkDay: "",
   ...over,
 });
 
@@ -73,14 +75,14 @@ describe("drill-mistakes r413 — sanitize", () => {
     const out = sanitizeDrillMistakes({
       verbs: { go: entry({ wrong: DRILL_MISTAKE_WRONG_CAP + 100, lastDay: "nope" }), come: entry({ wrong: 0 }) },
     });
-    expect(out.verbs!.go).toEqual({ wrong: DRILL_MISTAKE_WRONG_CAP, lastDay: "" });
+    expect(out.verbs!.go).toEqual({ wrong: DRILL_MISTAKE_WRONG_CAP, ok: 0, lastDay: "", lastOkDay: "" });
     expect(out.verbs!.come).toBeUndefined();
   });
 
   it(`سقفِ ${DRILL_MISTAKE_BANK_CAP} بانک و ${DRILL_MISTAKE_BASE_CAP} پایه — نخستینهایِ درج میمانند`, () => {
     const flood: DrillMistakeMap = {};
     for (let i = 0; i < DRILL_MISTAKE_BANK_CAP + 4; i++) {
-      const bank: Record<string, { wrong: number; lastDay: string }> = {};
+      const bank: Record<string, ReturnType<typeof entry>> = {};
       for (let j = 0; j < DRILL_MISTAKE_BASE_CAP + 5; j++) {
         bank[`base-${String(j).padStart(4, "0")}`] = entry();
       }
@@ -123,7 +125,8 @@ describe("drill-mistakes r413 — merge (بیشترینِ هر شمارنده �
       phonemes: { "æ": entry() },
     };
     const m = mergeDrillMistakes(l, r);
-    expect(m.verbs!.go).toEqual({ wrong: 3, lastDay: "2026-10-24" }); // بیشترینِ هر دو
+    // r414 — entry() حالا ok/lastOkDay هم دارد؛ maxِ هر چهار فیلد
+    expect(m.verbs!.go).toEqual({ ...entry(), wrong: 3, lastDay: "2026-10-24" }); // بیشترینِ هر دو
     expect(m.verbs!.come).toEqual(entry()); // پایهٔ تازهٔ ریموت میآید
     expect(m.phonemes!["æ"]).toEqual(entry());
   });
@@ -147,21 +150,21 @@ describe("drill-mistakes r413 — record (مسیرِ نوشتنِ محلی)", ()
   it("نخستین رخداد: wrong=1 + روز — و رخدادِ دومِ همان پایه جمع میشود", () => {
     let m: DrillMistakeMap = {};
     m = recordDrillMistakes(m, "verbs", ["go"], "2026-10-25");
-    expect(m.verbs!.go).toEqual({ wrong: 1, lastDay: "2026-10-25" });
+    expect(m.verbs!.go).toEqual({ wrong: 1, ok: 0, lastDay: "2026-10-25", lastOkDay: "" });
     m = recordDrillMistakes(m, "verbs", ["go"], "2026-10-26");
-    expect(m.verbs!.go).toEqual({ wrong: 2, lastDay: "2026-10-26" });
+    expect(m.verbs!.go).toEqual({ wrong: 2, ok: 0, lastDay: "2026-10-26", lastOkDay: "" });
   });
 
   it("هر رخداد یک واحد — بدونِ dedup (دو پرسشِ نادرست رویِ یک پایه = ۲+)", () => {
     const m = recordDrillMistakes({}, "verbs", ["go", "go", "come"], "2026-10-25");
-    expect(m.verbs!.go).toEqual({ wrong: 2, lastDay: "2026-10-25" });
-    expect(m.verbs!.come).toEqual({ wrong: 1, lastDay: "2026-10-25" });
+    expect(m.verbs!.go).toEqual({ wrong: 2, ok: 0, lastDay: "2026-10-25", lastOkDay: "" });
+    expect(m.verbs!.come).toEqual({ wrong: 1, ok: 0, lastDay: "2026-10-25", lastOkDay: "" });
   });
 
   it("روزِ کهنه‌تر، wrong را جمع میکند ولی lastDay را عقب نمیبَرد", () => {
     const base: DrillMistakeMap = { verbs: { go: entry({ wrong: 5, lastDay: "2026-10-25" }) } };
     const out = recordDrillMistakes(base, "verbs", ["go"], "2026-10-01");
-    expect(out.verbs!.go).toEqual({ wrong: 6, lastDay: "2026-10-25" });
+    expect(out.verbs!.go).toEqual({ wrong: 6, ok: 0, lastDay: "2026-10-25", lastOkDay: "" });
   });
 
   it("گاردهایِ صادق: ورودیِ نامعتبر همان مرجعِ نقشه — بی نوشتن", () => {
@@ -194,7 +197,7 @@ describe("drill-mistakes r413 — record (مسیرِ نوشتنِ محلی)", ()
     expect(capped).toBe(bank); // پایهٔ ۴۰۱ام — همان مرجع
     // ولی پایههایِ موجودِ بانکِ پر هنوز جمع میشوند (سقف فقط پذیرشِ تازهست)
     const grown = recordDrillMistakes(bank, "verbs", ["base-0000"], "2026-10-26");
-    expect(grown.verbs!["base-0000"]).toEqual({ wrong: 2, lastDay: "2026-10-26" });
+    expect(grown.verbs!["base-0000"]).toEqual({ wrong: 2, ok: 0, lastDay: "2026-10-26", lastOkDay: "" });
   });
 });
 

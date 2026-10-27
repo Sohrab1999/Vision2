@@ -21,15 +21,30 @@ import type { StarredSlice } from "./slices/starred";
 
 export type View =
   | { type: "home" }
-  | { type: "lesson"; id: number }
-  | { type: "dictionary" }
+  | { type: "lesson"; id: number; focusWord?: string }
+  | { type: "dictionary"; focusWord?: string }
   | { type: "exam" }
-  | { type: "appendix"; topicId?: string; posTableId?: string; verbBase?: string; phonemeId?: string; abbrevSym?: string }
+  | { type: "appendix"; topicId?: string; bgExampleEn?: string; posTableId?: string; posRowWord?: string; verbBase?: string; phonemeId?: string; abbrevSym?: string }
 // topicId — لنگرِ عمیقِ موضوعِ «درسنامهٔ جامع» (راند ۲۲۱)
+// bgExampleEn — r431 عمقِ سطریِ همان مسیر: خودِ جملهٔ مثال (از اطلسِ پرشِ
+// خانهٔ امروز) — سطرِ مثالِ حاویِ آن در موضوعِ لنگرخورده با پالسِ زمردیِ
+// همخانوادهٔ r234/r427/r428 باز میشود؛ گاردِ عضویت در AppendixView است
+// (جملهٔ بیگانه با مثالهایِ موضوع = سکوتِ صادق — r236)؛ پسِ نخستین تلاشِ
+// اسکرول از لنگرِ محلیِ نما پاک میشود تا پرشِ دوباره پالسِ تازه بزند
 // posTableId — لنگرِ عمیقِ جدولِ «اجزای کلماتی» (راند ۲۲۴، بازشدن روی زیرتبِ pos)
+// posRowWord — r428 عمقِ سطریِ همان جدول: خودِ واژهٔ خانواده (سلولِ انگلیسیِ
+// واقعی) — سطرِ حاویِ آن در دید با پالسِ زمردیِ همخانوادهٔ r234/r427 باز
+// میشود؛ فقط مسیرِ پرشِ خانهٔ امروز آن را میگذارد و گاردِ عضویت در
+// AppendixView است (واژهٔ بیگانه با جدول = سکوتِ صادق — r236)
 // verbBase — لنگرِ عمیقِ سطرِ فعلِ بی‌قاعده (راند ۲۳۴، بازشدن روی زیرتبِ verbs)
 // phonemeId — لنگرِ عمیقِ کارتِ واکِ «جدول تلفظ» (راند ۲۳۵، زیرتبِ phonetics)
 // abbrevSym — لنگرِ عمیقِ کارتِ نشانهٔ «نشانه‌های اختصاری» (راند ۲۳۵، زیرتبِ abbrev)
+// focusWord (دیکشنری) — لنگرِ عمیقِ کارتِ واژهٔ دیکشنری (راند ۴۳۰ — الگویِ
+// راند ۴۲۷): فقط مسیرِ پرشِ خانهٔ امروز آن را میگذارد؛ خودِ نما پسِ نخستین
+// تلاشِ اسکرول از view پاکش میکند و عدسیِ جست‌وجو را بذر میزند تا کارت
+// فارغ از سقفِ ۳۰۰تایی از نخستین رندر در DOM باشد
+// focusWord (درس) — لنگرِ عمیقِ کارتِ واژه در تبِ واژگانِ درس (راند ۴۲۷ — فقط مسیرِ
+// پرشِ خانهٔ امروز آن را میگذارد؛ پسِ نخستین تلاشِ اسکرول از view پاک میشود)
   | { type: "rush" }
   | { type: "duel" }
   | { type: "listen" }

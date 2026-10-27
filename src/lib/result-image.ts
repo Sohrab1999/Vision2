@@ -1335,6 +1335,125 @@ async function weeklyCanvas(opts: WeeklyImageOpts): Promise<HTMLCanvasElement | 
   }
 }
 
+// ---------------- کارتِ تقویمِ هفتهٔ پیشِ رو (r423 — عکسِ نوارِ r422) ----------------
+// پیشنهادِ ①ِ r421/r422: روایتِ هفت خانهٔ پیشِ رو رویِ کاغذِ همرسانی —
+// خانوادهٔ عکسِ r297 (پوستهٔ سبزِ studyShell) با زبانِ بصریِ نوارِ r422:
+// امروزِ زمردی (دعوتِ کنش — r414)، آیندهٔ آسمانی (خبرِ برنامهای — r417)،
+// روزهایِ بیبازگشتِ ساکتِ صادق (r236). خانهها از تکمنبعِ
+// buildDrillWeekCalendarCells میآیند — بوم هیچ شمارشی ندارد؛ اینجا
+// فقط رنگ میگیرد.
+
+export interface WeekCalendarCell {
+  label: string;
+  count: number;
+  family: "today" | "future";
+}
+
+export interface WeekCalendarImageOpts {
+  /** هفت خانهٔ k=۰..۶ — خروجیِ buildDrillWeekCalendarCells در نما */
+  cells: WeekCalendarCell[];
+  itemCount: number;
+  dayCount: number;
+  afterCount: number;
+  /** نزدیکترین بازگشتِ پسِ هفته («فردا» / «X روزِ دیگر») — گویشِ r417 */
+  afterLabel?: string;
+}
+
+async function weekCalendarCanvas(opts: WeekCalendarImageOpts): Promise<HTMLCanvasElement | null> {
+  try {
+    if (typeof document !== "undefined" && document.fonts?.ready) {
+      await document.fonts.ready;
+    }
+    if (typeof document === "undefined") return null;
+    const family = getComputedStyle(document.body).fontFamily || "sans-serif";
+    const W = 1080;
+    const H = 520;
+    const canvas = document.createElement("canvas");
+    canvas.width = W;
+    canvas.height = H;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return null;
+    studyShell(ctx, W, H, family, false);
+
+    ctx.direction = "rtl";
+    ctx.textBaseline = "middle";
+    ctx.textAlign = "right";
+
+    // ---------- title + subtitle ----------
+    ctx.fillStyle = uiColors.stone[900];
+    ctx.font = `800 34px ${family}`;
+    ctx.fillText("تقویمِ هفتهٔ پیشِ رو", W - 90, 188);
+    ctx.fillStyle = uiColors.emerald[700];
+    ctx.font = `900 22px ${family}`;
+    ctx.fillText(
+      `${faNum(opts.itemCount)} موردِ بازگشت در ${faNum(opts.dayCount)} روز`,
+      W - 90,
+      228
+    );
+
+    // ---------- seven day cells — RTL: امروز راستترین (عینِ نوارِ نما) ----------
+    const margin = 90;
+    const gap = 12;
+    const cellW = (W - margin * 2 - gap * 6) / 7;
+    const cellH = 150;
+    const y0 = 274;
+    const cells = opts.cells.slice(0, 7);
+    cells.forEach((c, i) => {
+      const x = W - margin - cellW - i * (cellW + gap);
+      const live = c.count > 0;
+      const today = c.family === "today";
+      // رنگ از خانوادهٔ نوار: زمردیِ r414 / آسمانیِ r417 / سکوتِ سنگیِ r236
+      const bg = live ? (today ? uiColors.emerald[50] : uiColors.sky[50]) : null;
+      const ink = live ? (today ? uiColors.emerald[700] : uiColors.sky[700]) : uiColors.stone[300];
+      if (bg) {
+        ctx.fillStyle = bg;
+        roundRect(ctx, x, y0, cellW, cellH, 16);
+        ctx.fill();
+      }
+      ctx.fillStyle = ink;
+      ctx.textAlign = "center";
+      ctx.font = `700 17px ${family}`;
+      ctx.fillText(c.label, x + cellW / 2, y0 + 34);
+      ctx.font = `900 44px ${family}`;
+      ctx.fillText(live ? faNum(c.count) : "—", x + cellW / 2, y0 + 92);
+      ctx.textAlign = "right";
+    });
+
+    // ---------- دنبالهٔ پس از هفته — همان گویشِ نوار + نزدیکترینِ r417 ----------
+    const tailY = y0 + cellH + 44;
+    ctx.fillStyle = uiColors.stone[500];
+    ctx.font = `700 18px ${family}`;
+    const tail = opts.afterCount > 0 ? `+${faNum(opts.afterCount)} پس از هفته` : "";
+    const tailSuffix =
+      opts.afterCount > 0 && opts.afterLabel ? ` — نزدیکترین بازگشت: ${opts.afterLabel}` : "";
+    if (tail) ctx.fillText(tail + tailSuffix, W - 90, tailY);
+
+    // ---------- امضایِ پایینِ کارت ----------
+    ctx.fillStyle = uiColors.stone[400];
+    ctx.font = `700 16px ${family}`;
+    ctx.fillText("برنامهٔ مرورِ فاصلهدار — وب‌کتاب «ویژن ۲»", W - 90, H - 64);
+
+    return ctx.canvas;
+  } catch {
+    return null;
+  }
+}
+
+export async function downloadWeekCalendarImage(opts: WeekCalendarImageOpts): Promise<boolean> {
+  const c = await weekCalendarCanvas(opts);
+  if (!c) return false;
+  return downloadCanvasBlob(c, "vision2-review-week.png");
+}
+
+/** r424 — همان کارت به‌صورت blob برایِ هم‌رسانیِ بومی — الگویِ buildWeeklyBlobِ
+ * r306/buildOfficialBlobِ r307: دانلود و هم‌رسانی دو دروازهٔ یک ارزیابی‌اند؛
+ * اینجا بدونِ دانلود — بومِ r423، صفر رنگِ تازه، صفر SRSِ تازه. */
+export async function buildWeekCalendarBlob(opts: WeekCalendarImageOpts): Promise<Blob | null> {
+  const c = await weekCalendarCanvas(opts);
+  if (!c) return null;
+  return canvasToBlob(c);
+}
+
 // ---------------- کارتِ کارنامهٔ رسمی (r286 — عکسِ هم‌رسانیِ «کلِ مسیر») ----------------
 // داستانِ کاغذ (چاپ/PDF) مالِ مودالِ رسمی است؛ این کارت همان داستان را سبک
 // میبرد: KPIهایِ همان کارنامه + نوارِ نشانها (drawBadgeBandِ مشترک) —

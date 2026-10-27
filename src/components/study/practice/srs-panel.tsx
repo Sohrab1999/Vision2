@@ -202,12 +202,17 @@ export default function SrsPanel() {
       // + فوکوسِ برنامه‌ای (tabIndex=-1 فقط برایِ فوکوسِ دستوری) — بدونِ
       // outline-none: پالس، نشانهٔ کانونیِ خودش است و قراردادِ Task 177
       // پابرجا (کلاسِ جهانیِ :focus-visible برایِ پرشِ کیبوردی میماند).
-      // پالس: حلقهٔ درونیِ ۲px زمردی — تیره با سایهٔ صریحِ خودش؛
+      // پالس: حلقهٔ درونیِ ۲px زمردی — «جایگزین، نه اضافه» (قراردادِ سرشماریِ
+      // r429/r430): shadow-sm از رشتهٔ پایه به شاخهٔ بی‌پالس رفت — پنلِ پالس‌دار
+      // هرگز shadow-sm را همزمان حمل نمیکند؛ وگرنه --tw-shadowِ مشترک را
+      // میدزدید (کامپایل: .shadow-sm پسِ shadow-[inset…] میآید و برنده میشود —
+      // حلقه در روشن مرده بود، زنده witnessed) و ریمپِ سراسریِ شبِ
+      // .dark .shadow-sm هم قلابش را مییافت. تیره با سایهٔ صریحِ خودش؛
       // مرزِ پنل دستِ نگارندهٔ تیرهٔ کرنل است (صفرِ وصلهٔ تیره).
-      className={`srs-panel overflow-hidden rounded-2xl border border-teal-200 bg-gradient-to-l from-teal-50/80 to-emerald-50/60 shadow-sm transition-[box-shadow] duration-300 scroll-mt-24 ${
+      className={`srs-panel overflow-hidden rounded-2xl border border-teal-200 bg-gradient-to-l from-teal-50/80 to-emerald-50/60 transition-[box-shadow] duration-300 scroll-mt-24 ${
         spotlit
           ? "shadow-[inset_0_0_0_2px] shadow-emerald-300 dark:shadow-emerald-600"
-          : ""
+          : "shadow-sm"
       }`}
     >
       <div className="h-1.5 w-full bg-gradient-to-l from-teal-500 via-emerald-500 to-lime-400" />

@@ -17,6 +17,8 @@ import BookletGrammarView from "./booklet-grammar-view";
 import IrregularVerbsTable from "./irregular-verbs-table";
 import AppendixDrillView, { type DrillViewSpec } from "./appendix-drill-view"; // r400 — تمرینِ ضمیمه؛ r403/r404 — بانکهایِ مشترک؛ r405 — بانکِ چهارم
 import { buildDrillSession, DRILL_SIZE } from "@/lib/appendix-drill";
+import { drillLabelFor } from "@/lib/drill-label-atlas"; // r420 — اطلسِ برچسبِ پایه (مالکِ یگانه — r403 از لامبداهایِ درونخطی کوچید)
+import { BOOKLET_GRAMMAR_TOPICS } from "@/data/booklet-grammar"; // r431 — گاردِ عضویتِ لنگرِ مثال روی دادهٔ خودِ موضوع
 import { buildWordDrillSession } from "@/lib/appendix-word-drill";
 import { buildAbbrevDrillSession } from "@/lib/appendix-abbrev-drill"; // r404
 import { buildPhonemeDrillSession } from "@/lib/appendix-phoneme-drill"; // r405
@@ -25,6 +27,7 @@ import AbbreviationsTable from "./abbreviations-table";
 import WordFamilyTableCard from "./word-family-table-card";
 import AppendixResumePill from "./appendix-resume-pill";
 import DrillStatChip from "./drill-stat-chip"; // r413 — چیپِ مشترک (از همین فایل کوچید؛ سه میزبانِ دیگر هم مصرف میکنند)
+import useDrillDueBases from "./use-drill-due"; // r414 — سررسیدهایِ SRS هر بانک برایِ موتورِ جلسه
 type SubTab = "verbs" | "phonetics" | "pos" | "abbrev" | "grammar";
 
 const subTabs: { key: SubTab; label: string; icon: React.ElementType }[] = [
@@ -110,15 +113,37 @@ const PHONEME_DRILL_SPEC: DrillViewSpec = {
   cancelAria: "انصراف از تمرین تلفظ",
 };
 
+// r428 — شاخصِ سطرِ حاویِ واژه در جدولِ لنگرخورده (دادهٔ منجمدِ مالک؛
+// -1 = واژهٔ بیگانه با این جدول — همان گاردِ عضویتِ صادقِ r236)
+const rowWordIdx = (tableId: string, word: string): number => {
+  const t = WORD_FAMILY_TABLES.find((tb) => wordFamilyTableId(tb) === tableId);
+  return t
+    ? t.families.findIndex((f) => [f.noun, f.verb, f.adjective, f.adverb].includes(word))
+    : -1;
+};
+
 export default function AppendixView({
   topicId,
+  bgExampleEn,
   posTableId,
+  posRowWord,
   verbBase,
   phonemeId,
   abbrevSym,
 }: {
   topicId?: string;
+  /** r431 — عمقِ سطریِ لنگرِ موضوع (الگویِ سطرِ فعلِ r234/سطرِ خانوادهٔ r428):
+   *  خودِ جملهٔ مثال — سطرِ مثال در موضوعِ لنگرخورده در دید با پالسِ زمردی
+   *  باز میشود. گاردِ عضویت: جمله‌ای که در مثالهایِ «همین» موضوع نباشد
+   *  ساکتِ صادق میماند (r236) — نه اسکرولِ برساخته، نه پالسِ بیپشتوانه. */
+  bgExampleEn?: string;
   posTableId?: string;
+  /** r428 — عمقِ سطریِ لنگرِ pos (الگویِ سطرِ فعلِ r234 / کارتِ واژهٔ r427):
+   *  خودِ واژهٔ خانواده (سلولِ انگلیسیِ واقعی) — سطرِ حاویِ آن در جدولِ
+   *  لنگرخورده در دید با پالسِ زمردی باز میشود. گاردِ عضویت: واژهای که
+   *  در خانوادههایِ «همین» جدول نباشد ساکتِ صادق میماند (r236) —
+   *  نه اسکرولِ برساخته، نه پالسِ بیپشتوانه. */
+  posRowWord?: string;
   verbBase?: string;
   phonemeId?: string;
   abbrevSym?: string;
@@ -161,9 +186,24 @@ export default function AppendixView({
   // پس از نخستین تلاشِ اسکرول (موفق یا شناسهٔ نامعتبر) onFocusDone را صدا
   // می‌زند و لنگر پاک می‌شود؛ جابه‌جاییِ بعدیِ بینِ زیرتاب‌ها دوباره پرش نمی‌کند.
   const [focusTopicId, setFocusTopicId] = useState<string | undefined>(topicId);
+  // r431 — لنگرِ عمیقِ سطرِ مثال — یک‌بارِ مصرفِ همان الگو؛ گاردِ عضویت روی
+  // دادهٔ خودِ موضوع: جملهٔ بیگانه با مثالهایِ موضوعِ لنگرخورده = undefinedِ
+  // صادق (سکوتِ r236 — موضوع باز میشود، بیِ اسکرول و پالسِ برساخته).
+  const [focusExampleEn, setFocusExampleEn] = useState<string | undefined>(() => {
+    if (!topicId || !bgExampleEn) return undefined;
+    const topic = BOOKLET_GRAMMAR_TOPICS.find((t) => t.id === topicId);
+    return topic?.examples?.some((ex) => ex.en === bgExampleEn) ? bgExampleEn : undefined;
+  });
   // لنگرِ عمیقِ جدولِ خانوادهٔ واژه‌ها (راند ۲۲۴) — یک‌بارِ مصرفِ همان الگو
   const [focusPosTableId, setFocusPosTableId] = useState<string | undefined>(
     () => (validPos ? posTableId : undefined),
+  );
+  // r428 — لنگرِ عمیقِ سطرِ خانواده — یک‌بارِ مصرفِ همان الگو؛ گاردِ عضویت
+  // روی دادهٔ منجمدِ خودِ جدول (واژهٔ بیگانه با جدول = undefinedِ صادق)
+  const [focusPosRowWord, setFocusPosRowWord] = useState<string | undefined>(() =>
+    validPos && posTableId && posRowWord && rowWordIdx(posTableId, posRowWord) >= 0
+      ? posRowWord
+      : undefined,
   );
   // لنگرِ عمیقِ سطرِ فعلِ بی‌قاعده (راند ۲۳۴) — یک‌بارِ مصرفِ همان الگو
   const [focusVerbBase, setFocusVerbBase] = useState<string | undefined>(
@@ -178,6 +218,11 @@ export default function AppendixView({
   const [abbrevDrill, setAbbrevDrill] = useState(false);
   // r405 — و بانکِ چهارم: زیرتبِ phonetics؛ فقط با کلیک — دیپلینکِ phonemeId همیشه جدول
   const [phonemeDrill, setPhonemeDrill] = useState(false);
+  // r414 — سررسیدهایِ SRSِ چهار بانکِ ضمیمه — فهرستِ اولویتدار برایِ سهمیهٔ موتور
+  const verbsDue = useDrillDueBases("verbs");
+  const phonemesDue = useDrillDueBases("phonemes");
+  const wordsDue = useDrillDueBases("words");
+  const abbrevDue = useDrillDueBases("abbrev");
   // لنگرِ عمیقِ کارتِ واکِ «جدول تلفظ» (راند ۲۳۵) — یک‌بارِ مصرفِ همان الگو
   const [focusPhonemeId, setFocusPhonemeId] = useState<string | undefined>(
     () => (validPhoneme ? phonemeId : undefined),
@@ -204,17 +249,24 @@ export default function AppendixView({
   // (فراخوانِ اختیاری) و پس از نخستین تلاش لنگر پاک می‌شود.
   // راند ۲۳۴ — رسیدن با لنگرِ عمیق هم «دیدن» است؛ نشانگر ثبت می‌شود
   // (مثلِ درسنامهٔ جامع در r233).
+  // r428 — با لنگرِ سطری، سطرِ خانواده مقصدِ اسکرول است نه سرِ جدول
+  // (block: center — الگویِ کارتِ واژهٔ r427)؛ سطرِ پنهانِ لنز یا واژهٔ
+  // بیگانه = بازگشتِ صادق به خودِ جدول.
   useEffect(() => {
     if (!focusPosTableId) return;
     const raf = requestAnimationFrame(() => {
       recordPosResume(focusPosTableId);
-      document
-        .getElementById(`wf-table-${focusPosTableId}`)
-        ?.scrollIntoView?.({ behavior: "smooth", block: "start" });
+      const rowIdx = focusPosRowWord ? rowWordIdx(focusPosTableId, focusPosRowWord) : -1;
+      const rowEl = rowIdx >= 0 ? document.getElementById(`wf-row-${focusPosTableId}-${rowIdx}`) : null;
+      (rowEl ?? document.getElementById(`wf-table-${focusPosTableId}`))?.scrollIntoView?.({
+        behavior: "smooth",
+        block: rowEl ? "center" : "start",
+      });
       setFocusPosTableId(undefined);
+      setFocusPosRowWord(undefined);
     });
     return () => cancelAnimationFrame(raf);
-  }, [focusPosTableId, recordPosResume]);
+  }, [focusPosTableId, focusPosRowWord, recordPosResume]);
 
   const openLessonTab = useStudy((s) => s.openLessonTab);
 
@@ -292,6 +344,8 @@ export default function AppendixView({
         <BookletGrammarView
           focusTopicId={focusTopicId}
           onFocusDone={() => setFocusTopicId(undefined)}
+          focusExampleEn={focusExampleEn} // r431 — عمقِ سطریِ مثال
+          onExampleFocusDone={() => setFocusExampleEn(undefined)}
         />
       )}
 
@@ -303,7 +357,12 @@ export default function AppendixView({
         (verbDrill ? (
           <AppendixDrillView
             spec={VERB_DRILL_SPEC}
-            buildSession={() => buildDrillSession(irregularVerbs, DRILL_SIZE)}
+            buildSession={() => buildDrillSession(irregularVerbs, DRILL_SIZE, Math.random, verbsDue)}
+            buildMistakeSession={() =>
+              buildDrillSession(irregularVerbs, DRILL_SIZE, Math.random, verbsDue, true)
+            } // r415 — تمرینِ سررسیدها
+            // r418 — تقویمِ مرور: معنیِ هر پایه نزدِ میزبانِ بانک است (r403)
+            calendarLabel={drillLabelFor("verbs")} // r418/r420 — برچسب از اطلس
             onExit={() => setVerbDrill(false)}
           />
         ) : (
@@ -337,7 +396,11 @@ export default function AppendixView({
         (phonemeDrill ? (
           <AppendixDrillView
             spec={PHONEME_DRILL_SPEC}
-            buildSession={() => buildPhonemeDrillSession(PHONEME_BANK, DRILL_SIZE)}
+            buildSession={() => buildPhonemeDrillSession(PHONEME_BANK, DRILL_SIZE, Math.random, phonemesDue)}
+            buildMistakeSession={() =>
+              buildPhonemeDrillSession(PHONEME_BANK, DRILL_SIZE, Math.random, phonemesDue, true)
+            } // r415
+            calendarLabel={drillLabelFor("phonemes")} // r418/r420 — برچسب از اطلس
             onExit={() => setPhonemeDrill(false)}
           />
         ) : (
@@ -367,7 +430,13 @@ export default function AppendixView({
         (wordDrill ? (
           <AppendixDrillView
             spec={WORD_DRILL_SPEC}
-            buildSession={() => buildWordDrillSession(WORD_FAMILY_TABLES, DRILL_SIZE)}
+            buildSession={() => buildWordDrillSession(WORD_FAMILY_TABLES, DRILL_SIZE, Math.random, wordsDue)}
+            buildMistakeSession={() =>
+              buildWordDrillSession(WORD_FAMILY_TABLES, DRILL_SIZE, Math.random, wordsDue, true)
+            } // r415
+            // r418 — پایهٔ واژه همیشه یکی از خانههایِ خانواده است (لنگر یا
+            // خانهٔ هدف) — معنیِ خانوادهٔ میزبان، برچسبِ صادقِ همان پایه
+            calendarLabel={drillLabelFor("words")} // r418/r420 — برچسب از اطلس (پایه همیشه یکی از خانههایِ خانواده)
             onExit={() => setWordDrill(false)}
           />
         ) : (
@@ -561,6 +630,11 @@ export default function AppendixView({
                   table={t}
                   usedOnly={posLens === "used"}
                   unusedOnly={posLens === "unused"}
+                  // r428 — لنگرِ سطری به همهٔ کارتها میرسد؛ کارتِ بیِ آن واژه
+                  // ساکتِ صادق میماند (گاردِ عضویت درونِ کارت، روی دادهٔ خودش)
+                  focusRowWord={
+                    focusPosRowWord && tid === focusPosTableId ? focusPosRowWord : undefined
+                  }
                   relatedLesson={lesson}
                   onOpenLesson={lesson !== undefined ? () => openLessonTab(lesson, "vocab") : undefined}
                   onToggleUnusedLens={() => setPosLens((v) => (v === "unused" ? "all" : "unused"))}
@@ -596,7 +670,11 @@ export default function AppendixView({
         (abbrevDrill ? (
           <AppendixDrillView
             spec={ABBREV_DRILL_SPEC}
-            buildSession={() => buildAbbrevDrillSession(abbreviations, DRILL_SIZE)}
+            buildSession={() => buildAbbrevDrillSession(abbreviations, DRILL_SIZE, Math.random, abbrevDue)}
+            buildMistakeSession={() =>
+              buildAbbrevDrillSession(abbreviations, DRILL_SIZE, Math.random, abbrevDue, true)
+            } // r415
+            calendarLabel={drillLabelFor("abbrev")} // r418/r420 — برچسب از اطلس
             onExit={() => setAbbrevDrill(false)}
           />
         ) : (

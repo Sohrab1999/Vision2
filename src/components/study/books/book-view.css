@@ -1,0 +1,48 @@
+/* book view (کتابخانهٔ درس‌به‌درس) — owner: books/book-view.tsx.
+   r415 — deep-linkِ «ادامه از بانک M» از کارنامه: وقتی بانکِ مقصد
+   بی‌درس است (تشریحی/نهایی‌ها)، book-view گروهِ «بخش‌های آزمونِ دیگر»
+   را باز می‌کند، روی دکمهٔ خودِ بانک اسکرول می‌کند و این فلشِ زمردی
+   دوثانیه‌ای را اضافه می‌کند (classList.add/remove — خارجِ رندرِ React
+   تا با detailsِ باز/بسته‌شوندهٔ کاربر نجنگد). درس‌دارها همان مسیرِ
+   آکاردئون + تبِ تست‌ها را می‌روند و فلش نمی‌گیرند. */
+
+@keyframes bank-flash-pulse {
+  0%,
+  100% {
+    background-color: transparent;
+    box-shadow: 0 0 0 0 rgb(16 185 129 / 0);
+  }
+  25% {
+    background-color: rgb(209 250 229);
+    box-shadow: 0 0 0 3px rgb(16 185 129 / 0.35);
+  }
+  60% {
+    background-color: rgb(209 250 229 / 0.55);
+    box-shadow: 0 0 0 2px rgb(16 185 129 / 0.22);
+  }
+}
+
+.bank-flash {
+  animation: bank-flash-pulse 2.2s ease-out 1;
+  border-radius: 0.75rem; /* هم‌گردیِ دکمه‌ها — فلش بیرونِ گوشه‌ها نزند */
+}
+
+.dark .bank-flash {
+  animation-name: bank-flash-pulse-dark;
+}
+
+@keyframes bank-flash-pulse-dark {
+  0%,
+  100% {
+    background-color: transparent;
+    box-shadow: 0 0 0 0 rgb(52 211 153 / 0);
+  }
+  25% {
+    background-color: rgb(6 78 59 / 0.6);
+    box-shadow: 0 0 0 3px rgb(52 211 153 / 0.35);
+  }
+  60% {
+    background-color: rgb(6 78 59 / 0.35);
+    box-shadow: 0 0 0 2px rgb(52 211 153 / 0.2);
+  }
+}

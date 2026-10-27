@@ -143,7 +143,7 @@ describe("SrsPanel — ریاضیاتِ صادقِ سررسید — r369", () =>
 
 describe("قفلهایِ ساختاری — r369", () => {
   it("⑥ رجیستریِ رویدادها ۵۲ میماند + بی‌transition-all در هر دو سطح", () => {
-    expect(EVENT_NAMES.length).toBe(52);
+    expect(EVENT_NAMES.length).toBe(55); // r423 +۱ — کارتِ تصویریِ تقویمِ هفته؛ r424 +۱ — هم‌رسانیِ بومیِ همان کارت (دوقلویِ r306)؛ r425 +۱ — پرشِ خانهٔ امروزِ نوارِ هفته
     for (const f of ["src/components/study/practice/danger-words.tsx", "src/components/study/practice/srs-panel.tsx"]) {
       const src = readFileSync(f, "utf8");
       expect(src).not.toContain("transition-all");

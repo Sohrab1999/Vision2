@@ -8,7 +8,20 @@ import type {
   ToastProps,
 } from "@/components/ui/toast"
 
-const TOAST_LIMIT = 1
+/**
+ * r454 — «ریشهٔ دومِ توستِ آلوده» — TOAST_LIMIT از ۱ به ۳:
+ * شکارِ زندهٔ همین راند (LOG با MutationObserver، بازتولید ۶/۶) نشان داد
+ * توستِ نتیجهٔ دیکته رندر میشود اما ۳۷ms بعد با توستِ «✓ وعده برقرار شد»
+ * (r279 — celebrateFirstVisible: پاسخِ موفقِ اولین sendStatsِ نامدارِ روز)
+ * جایگزین میشود — ADD_TOAST با LIMIT=1 چیدمان را به [تازهترین] برش
+ * میزند و توستِ قبلی را ساکت بیرون میپراند. کلاسِ باگ عمومی است: هر دو
+ * توستِ نزدیک-همزمان (نتیجهٔ آزمون + جشنِ وعده، پشتیبان + خطا، ...) دوم
+ * اول را میبلعد. LIMIT=3 اجازهٔ پشتهٔ تا سه توستِ زنده را میدهد (viewport
+ * با flex-col-reverse و max-h-screen پشته را میچیند) — توستِ نتیجهٔ
+ * یادگیرنده هرگز قربانیِ توستِ متا نمیشود. ریشهٔ اول (churnِ اشتراکِ
+ * [state]-وابسته) قبلاً در r453 با useSyncExternalStore بسته شد.
+ */
+const TOAST_LIMIT = 3
 const TOAST_REMOVE_DELAY = 1000000
 
 type ToasterToast = ToastProps & {
@@ -171,18 +184,32 @@ function toast({ ...props }: Toast) {
   }
 }
 
-function useToast() {
-  const [state, setState] = React.useState<State>(memoryState)
-
-  React.useEffect(() => {
-    listeners.push(setState)
-    return () => {
-      const index = listeners.indexOf(setState)
-      if (index > -1) {
-        listeners.splice(index, 1)
-      }
+/**
+ * r453 — «حفرهٔ اشتراکِ useToast» — اشتراکِ [state]-وابسته کلاسیکِ shadcn:
+ * با هر تغییرِ state، cleanup خودش را از listeners جدا و دوباره وصل میکند —
+ * و dispatchی که در همان پنجرهٔ effects برسد (مثلاً از تایمرِ auto-advanceِ
+ * دیکته) هرگز به Toaster نمیرسد و توست رندر نمیشود — بازتولیدِ زندهٔ ۴/۴ در
+ * راندِ r453 (۰ تایمرِ پیشین: ۴/۴ رندر؛ ۷+ تایمرِ پیشین: ۴/۴ غیب).
+ * راه‌حلِ قراردادی: useSyncExternalStore — مشترک یک‌بار وصل میشود و هرگز
+ * churn نمیکند (همان الگویِ Task 4 در کل اپ). getSnapshot هویتِ پایدار
+ * memoryState را برمیگرداند؛ dispatch همیشه شیءِ نو میسازد.
+ */
+function subscribe(listener: () => void) {
+  listeners.push(listener)
+  return () => {
+    const index = listeners.indexOf(listener)
+    if (index > -1) {
+      listeners.splice(index, 1)
     }
-  }, [state])
+  }
+}
+
+function getSnapshot(): State {
+  return memoryState
+}
+
+function useToast() {
+  const state = React.useSyncExternalStore(subscribe, getSnapshot, getSnapshot)
 
   return {
     ...state,

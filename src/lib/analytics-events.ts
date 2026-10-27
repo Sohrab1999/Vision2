@@ -49,6 +49,9 @@ export const EVENT_NAMES = [
   "duel_ledger_image", // duel ledger career-card PNG — download or native share (r288)
   "library_story_done", // a hill-story finished in the library (r290)
   "weekly_image", // weekly digest share-card PNG — download or native share (r306)
+  "week_calendar_image", // week-ahead review-calendar share-card PNG — the r422 strip as a card (r423)
+  "week_calendar_share", // native share of the same week-calendar card — the r306 twin gate (r424)
+  "drill_due_jump", // jumped from the week-strip today cell to the due bank's drill host (r425)
   "discovery_jump", // jumped from the home discovery-journey card to an untried world (r349)
   "pulse_open", // opened the full pulse dashboard from settings (r350)
   "pulse_csv", // 30-day event-ledger CSV exported from the pulse dashboard (r351)
@@ -107,6 +110,9 @@ export const EVENT_LABELS_FA: Record<EventName, string> = {
   duel_ledger_image: "عکسِ کارنامهٔ نبردها",
   library_story_done: "پایانِ داستانِ کتاب‌خانه",
   weekly_image: "عکسِ هفته‌نامهٔ پیشرفت",
+  week_calendar_image: "عکسِ تقویمِ هفتهٔ پیشِ رو",
+  week_calendar_share: "هم‌رسانیِ تقویمِ هفتهٔ پیشِ رو",
+  drill_due_jump: "پرش به تمرینِ سررسیدها",
   discovery_jump: "پرش از سفرِ کشف",
   pulse_open: "بازکردنِ نبضِ کامل",
   pulse_csv: "خروجی CSV دفترِ نبض",
@@ -173,6 +179,9 @@ export const EVENT_CATEGORIES: Record<EventName, string> = {
   duel_image: "خروجی و هم‌رسانی",
   duel_ledger_image: "خروجی و هم‌رسانی",
   weekly_image: "خروجی و هم‌رسانی",
+  week_calendar_image: "خروجی و هم‌رسانی",
+  week_calendar_share: "خروجی و هم‌رسانی",
+  drill_due_jump: "نشست و ناوبری",
   anki_export: "خروجی و هم‌رسانی",
   backup_export: "خروجی و هم‌رسانی",
   sync_link: "همگام‌سازی و نصب",

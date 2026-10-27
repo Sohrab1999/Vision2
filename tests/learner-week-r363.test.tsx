@@ -266,7 +266,7 @@ describe("TeacherDetailDialog — مجموعِ دو هفته کنارِ عنوا
 // ---------------------------------------------------------------
 describe("رجیستریِ r363", () => {
   it("⑪ رجیستریِ ۵۲ دستنخورده — سطرِ کارنامه خواندنی است نه گزارششدنی", () => {
-    expect(EVENT_NAMES).toHaveLength(52);
+    expect(EVENT_NAMES).toHaveLength(55); // r423 +۱ — کارتِ تصویریِ تقویمِ هفته؛ r424 +۱ — هم‌رسانیِ بومیِ همان کارت؛ r425 +۱ — پرشِ خانهٔ امروزِ نوارِ هفته
     expect(EVENT_NAMES).not.toContain("active_week");
     expect(EVENT_NAMES).toContain("teacher_learner_csv"); // رویدادِ دانلودِ r354 — تنها رویدادِ این سطح
     expect(Object.keys(EVENT_CATEGORIES).length).toBe(EVENT_NAMES.length);

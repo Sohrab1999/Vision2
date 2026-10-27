@@ -50,7 +50,7 @@ const SIX_TAIL_MODULES = [
 ] as const;
 
 const NINE_GATES: ReadonlyArray<readonly [string, number]> = [
-  ["src/components/study/reports/weekly-report.tsx", 3],
+  ["src/components/study/reports/weekly-report.tsx", 5], // r421 — پنجمین دروازهٔ هفته‌نامه: تقویمِ هفتهٔ پیشِ رو
   ["src/components/study/reports/official-report.tsx", 1],
   ["src/components/study/lesson/dictionary-view.tsx", 1],
   ["src/components/study/shared/pulse-dashboard.tsx", 1],
@@ -62,6 +62,8 @@ const SUCCESS_DIALECTS: ReadonlyArray<readonly [string, string]> = [
   ["src/components/study/reports/weekly-report.tsx", "📊 جدول CSV ذخیره شد"],
   ["src/components/study/reports/weekly-report.tsx", "📈 روندِ ۴هفته‌ای ذخیره شد"],
   ["src/components/study/reports/weekly-report.tsx", "🗓 ماه‌نامهٔ خواندن ذخیره شد"],
+  ["src/components/study/reports/weekly-report.tsx", "🗓 تقویمِ همهٔ تمرینها ذخیره شد"], // r420 — چهارمین دروازهٔ هفته‌نامه
+  ["src/components/study/reports/weekly-report.tsx", "🗓 تقویمِ هفتهٔ پیشِ رو ذخیره شد"], // r421 — پنجمین دروازهٔ هفته‌نامه
   ["src/components/study/reports/official-report.tsx", "🧭 CSV پوشش ذخیره شد"],
   ["src/components/study/shared/pulse-dashboard.tsx", "📊 دفترِ سی‌روزهٔ نبض ذخیره شد"],
   ["src/components/study/teacher/teacher-view.tsx", "🎓 روزنامهٔ کلاس ذخیره شد"],

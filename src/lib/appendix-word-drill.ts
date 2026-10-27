@@ -24,6 +24,9 @@
 
 import type { WordFamily, WordFamilyTable } from "@/data/word-families";
 import {
+  pickDueFirst,
+  pickDueOnly,
+  DRILL_DUE_QUOTA,
   shuffled,
   DRILL_SIZE,
   type DrillQuestion,
@@ -79,27 +82,48 @@ export function buildWordDrillSession(
   tables: readonly WordFamilyTable[],
   size: number = DRILL_SIZE,
   rng: () => number = Math.random,
+  /** r414 — پایههایِ سررسید به ترتیبِ اولویت — سهمیه نزدِ همین موتور اعمال میشود */
+  due?: readonly string[],
+  /** r415 — «تمرینِ سررسیدها»: جلسهٔ فقط از سررسیدهایِ حاضر در بانک؛
+   *  پایهٔ پرسشِ خانواده در هر گونه لنگر یا خانهٔ هدف است (مالکیتِ r403) —
+   *  فیلترِ سررسید هم با همین نگاشتِ وابستهبهگونه انجام میشود */
+  dueOnly?: boolean,
 ): DrillSession {
   const families = tables.flatMap((t) => t.families);
   if (families.length === 0) return { questions: [], size: 0 };
-  const n = Math.min(Math.max(1, Math.floor(size)), families.length);
+  // r414 — صفِ سررسیدِ مشترکِ جلسه: سهمیه در ورود، ترتیبِ اولویت در مصرف؛
+  // r415 — در حالتِ فقطسررسید صف بیسهمیه است
+  const dueSet = dueOnly && due ? new Set(due) : null;
+  const dueQueue = dueSet ? [...(due ?? [])] : (due ?? []).slice(0, DRILL_DUE_QUOTA);
+  // r415 — طولِ جلسهٔ فقطسررسید بعد از واجدگان محاسبه میشود: شمارِ متمایزِ
+  // پایههایِ سررسیدِ واقعاً پرسیدنی — یک ردیفِ سررسید یک پرسش میگیرد
+  const dueBaseOf = (f: WordFamily, kind: WordDrillKind) => anchorOf(f, kind) || cellOf(f, kind);
 
   // خانوادههایِ واجدِ هر گونه — یکبارِ پیشمحاسبه (خالص: هیچ جهشی در داده)؛
   // گونهٔ fa هم به لنگرِ انگلیسی نیاز دارد (پرامپت «معنیِ «»» ناممکن است)
   const eligible = new Map<WordDrillKind, WordFamily[]>();
   for (const kind of WORD_DRILL_KINDS) {
-    eligible.set(
-      kind,
-      families.filter((f) => {
-        if (f.fa === "" || anchorOf(f, kind) === "") return false;
-        return kind === "fa" ? true : cellOf(f, kind) !== "";
-      }),
-    );
+    // r415 — واجدگان همیشه از بانکِ کامل؛ در حالتِ فقطسررسید فقط به خانوادههایی
+    // که پایهٔ پرسشِ همین گونهشان سررسید است فیلتر میشود
+    const full = families.filter((f) => {
+      if (f.fa === "" || anchorOf(f, kind) === "") return false;
+      return kind === "fa" ? true : cellOf(f, kind) !== "";
+    });
+    eligible.set(kind, dueSet ? full.filter((f) => dueSet.has(dueBaseOf(f, kind))) : full);
   }
+  // r415 — طولِ جلسهٔ فقطسررسید = شمارِ متمایزِ پایههایِ سررسیدِ پرسیدنی
+  const duePresent = dueSet
+    ? new Set(
+        WORD_DRILL_KINDS.flatMap((k) => eligible.get(k)!.map((f) => dueBaseOf(f, k))),
+      ).size
+    : families.length;
+  const n = Math.min(Math.max(1, Math.floor(size)), duePresent);
 
   const used = new Set<WordFamily>();
   const questions: DrillQuestion[] = [];
-  for (let i = 0; i < n; i++) {
+  // r415 — در حالتِ فقطسررسید چرخشِ گونهها تا پرشدنِ جلسه بازمیگردد (سررسیدِ
+  // واجدِ گونههایِ دیرترِ چرخش هم پرسیده میشود)؛ مسیرِ عادی بدونِ تغییر
+  for (let i = 0; i < n * (dueSet ? WORD_DRILL_KINDS.length : 1) && questions.length < n; i++) {
     const kind = WORD_DRILL_KINDS[i % WORD_DRILL_KINDS.length];
     // ترجیحِ خانوادهٔ بیکاربرد؛ استخرِ تهیشده اجازهٔ بازاستفاده میدهد
     const pool = eligible.get(kind)!;
@@ -108,7 +132,12 @@ export function buildWordDrillSession(
     // r404 — درسِ همکلاسِ دریلِ نشانهها: بانکِ غیروخالی ولی همهتهیِ یک گونه
     // نباید واژگون کند — گونهٔ بیپیشنهاد پرسیدنی نیست؛ جلسهٔ کوتاهترِ صادق
     if (pickable.length === 0) continue;
-    const f = shuffled(pickable, rng)[0];
+    // r414 — سررسید-نخست: پایهٔ پرسشِ خانواده در این گونه، لنگر یا خانهٔ هدف است — مالِ همین موتور
+    // r415 — در حالتِ فقطسررسید گزینش سخت است: بی عضوِ صف، پرسشِ این اندیس رد میشود
+    const f = dueSet
+      ? pickDueOnly(pickable, (x) => anchorOf(x, kind) || cellOf(x, kind), dueQueue)
+      : pickDueFirst(pickable, (x) => anchorOf(x, kind) || cellOf(x, kind), dueQueue, rng);
+    if (!f) continue;
     used.add(f);
 
     const correct = cellOf(f, kind);

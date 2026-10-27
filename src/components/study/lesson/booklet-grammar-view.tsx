@@ -8,7 +8,7 @@
 // آزمونکِ خودِ جزوه (تودوزنیِ محلی — هیچ نوشتنی در استورِ یادگیری نیست).
 // ---------------------------------------------------------------------
 
-import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import {
   Blocks,
   BookOpenCheck,
@@ -30,8 +30,10 @@ import {
 } from "lucide-react";
 import SpeakButton from "@/components/study/shared/speak-button";
 import AppendixDrillView, { type DrillViewSpec } from "./appendix-drill-view"; // r406 — بانکِ پنجمِ نمایِ مشترک
+import useDrillDueBases from "./use-drill-due"; // r414 — سررسیدهایِ SRSِ بانکِ درسنامه
 import DrillStatChip from "./drill-stat-chip"; // r413 — چیپِ مشترکِ پیشرفتِ تمرین کنارِ دکمهٔ ورود
 import { buildBgExampleDrillSession } from "@/lib/appendix-bg-example-drill";
+import { drillLabelFor } from "@/lib/drill-label-atlas"; // r420 — اطلسِ برچسب (مالکِ یگانه)
 import { DRILL_SIZE } from "@/lib/appendix-drill";
 import {
   BG_TOPIC_TO_LESSON,
@@ -187,12 +189,21 @@ function TopicTables({ topic }: { topic: BgTopic }) {
 export default function BookletGrammarView({
   focusTopicId,
   onFocusDone,
+  focusExampleEn,
+  onExampleFocusDone,
 }: {
   /** لنگرِ عمیق (راند ۲۲۱) — موضوعی که باید باز و در دید باشد (از ضمیمه با
    * openAppendixTopic می‌آید)؛ نامعتبر باشد نادیده گرفته می‌شود. */
   focusTopicId?: string;
   /** یک‌بارِ مصرف — پس از نخستین تلاشِ اسکرول صدا زده می‌شود تا والد لنگر را پاک کند. */
   onFocusDone?: () => void;
+  /** r431 — عمقِ سطریِ مثال (الگویِ سطرِ فعلِ r234/سطرِ خانوادهٔ r428): خودِ
+   * جملهٔ مثال — سطرش در موضوعِ لنگرخورده با پالسِ زمردی در دید باز میشود؛
+   * جملهٔ بیگانه با مثالهایِ موضوع ساکتِ صادق میماند (r236). */
+  focusExampleEn?: string;
+  /** r431 — یک‌بارِ مصرفِ لنگرِ مثال — پسِ نخستین تلاشِ اسکرول (موفق یا
+   * ناکام) تا پرشِ دوبارهٔ همان جمله پالسِ تازه بزند (ایدئومِ r427). */
+  onExampleFocusDone?: () => void;
 }) {
   const openLessonTab = useStudy((s) => s.openLessonTab);
   const validFocus =
@@ -219,6 +230,10 @@ export default function BookletGrammarView({
       // راند ۲۳۳ — رسیدن با لنگرِ عمیق هم «دیدن» است؛ نشانگر ثبت می‌شود
       const topic = BOOKLET_GRAMMAR_TOPICS.find((t) => t.id === focusTopicId);
       if (topic) writeBgLastTopic(topic);
+      // r431 — بازشدنِ پرشی ماندگار میشود (عینِ navigateToTopicِ r226):
+      // پیشتر پسِ مصرفِ لنگر، آکاردئون میخوابید و فرودِ عمیق محو بود؛
+      // سطرِ مثالِ پالس‌دار (r431) هم به همین ماندگاری تکیه دارد.
+      writeBgOpen(new Set(open).add(focusTopicId));
       document
         .getElementById(`bg-topic-${focusTopicId}`)
         ?.scrollIntoView?.({ behavior: "smooth", block: "start" });
@@ -227,6 +242,50 @@ export default function BookletGrammarView({
     return () => cancelAnimationFrame(raf);
     // عمداً فقط به لنگر وابسته است — onFocusDone/validFocus در هر رندرِ والد نوسازند
   }, [focusTopicId, validFocus, onFocusDone]);
+
+  // r431 — لنگرِ عمیقِ سطرِ مثال (الگویِ کارتِ واژهٔ r427): اسکرولِ محلی به
+  // سطرِ مثال + پالسِ زمردیِ ۱٫۶ثانیهای؛ گاردِ عضویتِ نهایی اینجاست — جملهٔ
+  // بیگانه با مثالهایِ موضوعِ لنگرخورده ساکتِ صادق میماند (r236). پالس در
+  // stateِ محلی زندگی میکند تا مصرفِ لنگرِ موضوع آن را نکُشد؛ پرشِ دوبارهٔ
+  // همان جمله هم پالسِ تازه میزند (لنگر پسِ نخستین تلاشِ اسکرول مصرف میشود).
+  const [pulseExample, setPulseExample] = useState<{ topicId: string; en: string } | null>(null);
+  const pulseTimerRef = useRef<number | null>(null);
+  useEffect(() => {
+    if (!validFocus || !focusTopicId || !focusExampleEn) return;
+    const topic = BOOKLET_GRAMMAR_TOPICS.find((t) => t.id === focusTopicId);
+    const idx = topic?.examples?.findIndex((ex) => ex.en === focusExampleEn) ?? -1;
+    if (!topic || idx < 0) {
+      onExampleFocusDone?.();
+      return;
+    }
+    // r431 — پالس/اسکرول/مصرف در «یک تایمرِ مستقلِ بدونِ cleanup». درسِ
+    // diagnosedِ این راند: بازشدنِ ماندگارِ موضوع (writeBgOpen در rAFِ اثرِ
+    // موضوع) یک رندرِ همگامِ useSyncExternalStore میسازد که rAFِ همین اثر
+    // را «پیشِ آتش» لغو کرد و پالس هرگز روشن نمیشد (شاهدِ زنده: dbg کامل،
+    // rafFired هرگز). تایمرِ مستقل از هر رندر جان میبرد؛ سطر از نخستین
+    // رندر در DOM است (بخشِ پرشی باز است) و re-runِ بعدیِ اثر با گاردِ
+    // لنگرِ خالی مسیرِ دومی نمیگذارد — ایدئومِ یکبارِ مصرفِ r427 با جانِ تازه.
+    window.setTimeout(() => {
+      setPulseExample({ topicId: topic.id, en: focusExampleEn });
+      if (pulseTimerRef.current !== null) window.clearTimeout(pulseTimerRef.current);
+      pulseTimerRef.current = window.setTimeout(() => {
+        pulseTimerRef.current = null;
+        setPulseExample(null);
+      }, 1600);
+      document
+        .getElementById(`bg-ex-${topic.id}-${idx}`)
+        ?.scrollIntoView?.({ behavior: "smooth", block: "center" });
+      onExampleFocusDone?.();
+    }, 0);
+    // عمداً فقط به لنگرها وابسته است — onExampleFocusDone در هر رندرِ والد نوساز است
+  }, [focusTopicId, focusExampleEn, validFocus]);
+  // خاموشیِ پالس هنگامِ پیادهشدن از زیرتاب — فقط unmount؛ با راهاندازیِ مجددِ پالس تداخلی ندارد
+  useEffect(
+    () => () => {
+      if (pulseTimerRef.current !== null) window.clearTimeout(pulseTimerRef.current);
+    },
+    [],
+  );
 
   // toggle روی مجموعهٔ ادغام‌شده کار می‌کند — بستنِ موضوعِ متمرکزِ لنگر هم
   // درست کار می‌کند و نتیجه یک‌جا ذخیره می‌شود (راند ۲۳۱).
@@ -275,6 +334,14 @@ export default function BookletGrammarView({
   // همان قراردادِ r234/r403/r404/r405).
   const [exampleDrill, setExampleDrill] = useState(false);
 
+  // r414 — سررسیدهایِ SRSِ بانکِ مثالهایِ درسنامه — فهرستِ اولویتدار برایِ سهمیهٔ موتور
+  const bgExamplesDue = useDrillDueBases("bg-examples");
+
+  // r418 — مالکِ برچسبِ پایه (r403): جملهٔ انگلیسی → ترجمهٔ خودِ مثال؛
+  // موضوعِ (گونهٔ topic) → عنوانِ موضوع؛ حلنشده = تهیِ صادق.
+  // r420 — این جست‌وجو به اطلسِ برچسب کوچید (مالکِ یگانه — همان
+  // تختکنندهٔ خودِ موتور، همان نقشهٔ یکبارساخته؛ دو-نامِ r385 ممنوع)
+
   // گروه‌بندی بر اساس جزوهٔ مبدأ — راند ۲۱۵ (شماره‌گذاریِ سراسری = جایگاه در آرایه)
   const groups = SOURCE_ORDER.map((src) => ({
     src,
@@ -287,7 +354,11 @@ export default function BookletGrammarView({
     return (
       <AppendixDrillView
         spec={BG_EXAMPLE_DRILL_SPEC}
-        buildSession={() => buildBgExampleDrillSession(BOOKLET_GRAMMAR_TOPICS, DRILL_SIZE)}
+        buildSession={() => buildBgExampleDrillSession(BOOKLET_GRAMMAR_TOPICS, DRILL_SIZE, Math.random, bgExamplesDue)}
+        buildMistakeSession={() =>
+          buildBgExampleDrillSession(BOOKLET_GRAMMAR_TOPICS, DRILL_SIZE, Math.random, bgExamplesDue, true)
+        } // r415 — تمرینِ سررسیدها
+        calendarLabel={drillLabelFor("bg-examples")} // r418/r420 — برچسب از اطلس
         onExit={() => setExampleDrill(false)}
       />
     );
@@ -453,6 +524,7 @@ export default function BookletGrammarView({
                 }
                 onNavigateTopic={navigateToTopic}
                 totalCount={BOOKLET_GRAMMAR_TOPICS.length}
+                pulseExampleEn={pulseExample?.topicId === topic.id ? pulseExample.en : undefined} // r431 — پالسِ سطرِ مثال فقط به موضوعِ خودش میرسد
               />
             );
           })}
@@ -481,6 +553,7 @@ export function TopicCard({
   nextTopic,
   onNavigateTopic,
   totalCount,
+  pulseExampleEn,
 }: {
   topic: BgTopic;
   index: number;
@@ -495,6 +568,9 @@ export function TopicCard({
   nextTopic?: { id: string; title: string };
   onNavigateTopic?: (id: string) => void;
   totalCount?: number;
+  /** r431 — جملهٔ پالس‌دارِ این موضوع (فقط از BookletGrammarView با موضوعِ
+   * خودِ پالس میآید)؛ undefined = هیچ سطری پالس ندارد. */
+  pulseExampleEn?: string;
 }) {
   return (
     // لنگرِ اسکرولِ عمیق (r221) — scroll-mt برای فاصلهٔ هدرِ چسبان
@@ -617,7 +693,17 @@ export function TopicCard({
                 {topic.examples.map((ex, ei) => (
                   <li
                     key={ei}
-                    className="flex items-start justify-between gap-2 rounded-lg bg-stone-50 px-3 py-2 dark:bg-stone-800/70"
+                    id={`bg-ex-${topic.id}-${ei}`}
+                    data-bg-example={ex.en}
+                    className={`${
+                      // r431 — پالسِ زمردیِ سطرِ مثال (هستهٔ r234؛ قراردادِ
+                      // «جایگزین، نه اضافه»: bg-stone-50 و dark:bg-stone-800/70
+                      // در شاخهٔ بی‌پالس میمانند تا هیچ همسایهای دزدِ متغیر
+                      // یا دزدِ bg نباشد) — شب: dark:shadow-emerald-700.
+                      pulseExampleEn === ex.en
+                        ? "flex items-start justify-between gap-2 rounded-lg bg-emerald-50 px-3 py-2 shadow-[inset_0_0_0_2px] shadow-emerald-300 dark:bg-emerald-900/30 dark:shadow-emerald-700 transition-[background-color,box-shadow]"
+                        : "flex items-start justify-between gap-2 rounded-lg bg-stone-50 px-3 py-2 dark:bg-stone-800/70"
+                    }`}
                   >
                     <div className="min-w-0">
                       <p className="text-[13px] font-bold leading-7 text-slate-800 dark:text-slate-200" dir="ltr">

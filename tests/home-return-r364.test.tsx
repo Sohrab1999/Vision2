@@ -201,7 +201,7 @@ describe("r364 — قفلهایِ ساختاریِ خوشهٔ بازگشت", () 
   });
 
   it("⑬ رجیستریِ رویدادها ۵۲ میماند — هیچ رویدادِ نو برایِ پرشِ کارتها", () => {
-    expect(EVENT_NAMES.length).toBe(52);
+    expect(EVENT_NAMES.length).toBe(55); // r423 +۱ — کارتِ تصویریِ تقویمِ هفته؛ r424 +۱ — هم‌رسانیِ بومیِ همان کارت (دوقلویِ r306)؛ r425 +۱ — پرشِ خانهٔ امروزِ نوارِ هفته
     expect(EVENT_NAMES).not.toContain("konkur_resume_jump");
     expect(EVENT_NAMES).not.toContain("duel_resume_jump");
   });

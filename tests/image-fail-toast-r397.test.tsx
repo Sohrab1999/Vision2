@@ -39,13 +39,8 @@ const p = (f: string) => readFileSync(join(process.cwd(), f), "utf8");
 const TITLE = "خطا در ساخت تصویر";
 const DESC = "لطفاً دوباره تلاش کن.";
 
-const FIVE_BORROWERS = [
-  "src/components/study/quiz/quiz-result.tsx",
-  "src/components/study/reports/weekly-report.tsx",
-  "src/components/study/reports/official-report.tsx",
-  "src/components/study/duel/duel-setup.tsx",
-  "src/components/study/duel/duel-done.tsx",
-] as const;
+// r423 — سرشماریِ وامگیرندها با شمارِ هر پرونده به داخلِ قفلِ رفتارِ
+// زیر رفت (BORROWER_COUNTS) — weekly-report اکنون دو دروازه دارد.
 
 const TWO_RUSH_NO_VERDICTS = [
   "src/components/study/duel/rush-view.tsx",
@@ -55,6 +50,8 @@ const TWO_RUSH_NO_VERDICTS = [
 const SUCCESS_DIALECTS: ReadonlyArray<readonly [string, string]> = [
   ["src/components/study/quiz/quiz-result.tsx", "🖼 تصویر نتیجه ذخیره شد"],
   ["src/components/study/reports/weekly-report.tsx", "🖼 عکسِ هفته‌نامه ذخیره شد"],
+  // r423 — همان نما دروازهٔ دومِ همخانواده را گرفت: کارتِ تقویمِ هفتهٔ پیشِ رو
+  ["src/components/study/reports/weekly-report.tsx", "🖼 عکسِ تقویمِ هفته ذخیره شد"],
   ["src/components/study/reports/official-report.tsx", "📸 عکسِ کارنامه ذخیره شد"],
   ["src/components/study/duel/duel-setup.tsx", "🖼 عکسِ کارنامهٔ نبردها ذخیره شد"],
   ["src/components/study/duel/duel-done.tsx", "🖼 عکسِ این نبرد ذخیره شد"],
@@ -181,7 +178,7 @@ describe("r397 — قفلهایِ منبعِ مالک", () => {
     expect(ownerSrc).toContain('title: "خطا در ساخت فایل"');
     expect(ownerSrc).toContain("لطفاً دوباره تلاش کن.");
     const BORROWERS: ReadonlyArray<readonly [string, number]> = [
-      ["src/components/study/reports/weekly-report.tsx", 3],
+      ["src/components/study/reports/weekly-report.tsx", 5], // r421 — پنجمین دروازه: تقویمِ هفتهٔ پیشِ رو
       ["src/components/study/reports/official-report.tsx", 1],
       ["src/components/study/lesson/dictionary-view.tsx", 1],
       ["src/components/study/shared/pulse-dashboard.tsx", 1],
@@ -198,11 +195,20 @@ describe("r397 — قفلهایِ منبعِ مالک", () => {
     expect(all).toEqual(["src/lib/file-download.ts"]);
   });
 
-  it("پنج وامگیرنده مالک را صدا میزنند و وامگیری از مسیرِ باریلِ درست است", () => {
-    for (const f of FIVE_BORROWERS) {
+  it("وامگیرندها مالک را صدا میزنند و وامگیری از مسیرِ باریلِ درست است", () => {
+    // r423 — weekly-report حالا دو دروازهٔ همخانواده دارد (هفته‌نامه +
+    // تقویمِ هفته) — هر دو نامدارِ مالک را میخوانند؛ شمارِ هر پرونده قفل است
+    const BORROWER_COUNTS: ReadonlyArray<readonly [string, number]> = [
+      ["src/components/study/quiz/quiz-result.tsx", 1],
+      ["src/components/study/reports/weekly-report.tsx", 2],
+      ["src/components/study/reports/official-report.tsx", 1],
+      ["src/components/study/duel/duel-setup.tsx", 1],
+      ["src/components/study/duel/duel-done.tsx", 1],
+    ];
+    for (const [f, expected] of BORROWER_COUNTS) {
       const src = p(f);
       const calls = src.match(/imageFailToast\(\)/g) ?? [];
-      expect(calls.length, f).toBe(1);
+      expect(calls.length, f).toBe(expected);
       expect(src, f).toContain('imageFailToast } from "@/lib/result-image"');
       // شاخهٔ شکست، مالک را صدا میزند (الگویِ if/else — نه توستِ دستی)
       expect(src, f).toMatch(/else \{\s*imageFailToast\(\);/);

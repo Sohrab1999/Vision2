@@ -1,0 +1,8 @@
+/* smart-practice hero — dark painter (§8.3 wave 14, task 159)
+   Owner: practice/smart-practice-view.tsx (line 124 — the only .smart-hero
+   consumer; rendered for view.type "smart", mutually exclusive with the
+   exam/konkur views). The light gradient is the element's own utility
+   (bg-gradient-to-l from-violet-50 to-white); dark repaints through this
+   migrated !important painter — position-independent (features.css loads
+   right after globals.css). */
+.dark .smart-hero { background-image: linear-gradient(to left, rgba(76, 29, 149, 0.45), rgba(24, 21, 18, 0.9)) !important; }
