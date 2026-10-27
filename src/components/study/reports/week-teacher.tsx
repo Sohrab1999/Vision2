@@ -131,10 +131,10 @@ export default function WeekTeacher({ stats }: { stats: WeekTeacherStats }) {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       aria-label="معلمِ هفته"
-      className="week-teacher mt-1 overflow-hidden rounded-xl border border-violet-200 bg-gradient-to-l from-violet-50/90 to-white"
+      className="week-teacher mt-1 overflow-hidden rounded-xl border border-violet-200 bg-gradient-to-l from-arcade-tint/90 to-white"
     >
       <div className="flex flex-wrap items-center gap-2.5 p-3">
-        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-600 text-white shadow-md shadow-violet-900/20">
+        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-arcade-from-soft to-arcade-to text-white shadow-md shadow-violet-900/20">
           <GraduationCap size={17} />
         </span>
         <div className="min-w-0 flex-1">
@@ -146,7 +146,7 @@ export default function WeekTeacher({ stats }: { stats: WeekTeacherStats }) {
         <button
           onClick={ask}
           disabled={state.status === "loading"}
-          className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-l from-violet-500 to-fuchsia-600 px-3.5 py-2 text-[12px] font-black text-white shadow-md shadow-violet-500/25 transition-[opacity,transform] hover:opacity-95 active:scale-95 disabled:cursor-not-allowed disabled:opacity-70"
+          className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-l from-arcade-from-soft to-arcade-to px-3.5 py-2 text-[12px] font-black text-white shadow-md shadow-violet-500/25 transition-[opacity,transform] hover:opacity-95 active:scale-95 disabled:cursor-not-allowed disabled:opacity-70"
           aria-label="نظر معلم را برای این هفته بخواه"
         >
           {state.status === "loading" ? (

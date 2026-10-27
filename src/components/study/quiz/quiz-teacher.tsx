@@ -135,10 +135,10 @@ export default function QuizTeacher({
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       aria-label="معلمِ کارنامه"
-      className="quiz-teacher overflow-hidden rounded-2xl border border-violet-200 bg-gradient-to-l from-violet-50/90 to-white shadow-sm"
+      className="quiz-teacher overflow-hidden rounded-2xl border border-violet-200 bg-gradient-to-l from-arcade-tint/90 to-white shadow-sm"
     >
       <div className="flex flex-wrap items-center gap-3 p-4">
-        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-600 text-white shadow-md shadow-violet-900/20">
+        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-arcade-from-soft to-arcade-to text-white shadow-md shadow-violet-900/20">
           <GraduationCap size={19} />
         </span>
         <div className="min-w-0 flex-1">
@@ -150,7 +150,7 @@ export default function QuizTeacher({
         <button
           onClick={ask}
           disabled={state.status === "loading"}
-          className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-l from-violet-500 to-fuchsia-600 px-4 py-2.5 text-[13px] font-black text-white shadow-md shadow-violet-500/25 transition-[opacity,transform] hover:opacity-95 active:scale-95 disabled:cursor-not-allowed disabled:opacity-70"
+          className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-l from-arcade-from-soft to-arcade-to px-4 py-2.5 text-[13px] font-black text-white shadow-md shadow-violet-500/25 transition-[opacity,transform] hover:opacity-95 active:scale-95 disabled:cursor-not-allowed disabled:opacity-70"
           aria-label="نظرِ معلم را برای این جلسه بخواه"
         >
           {state.status === "loading" ? (
