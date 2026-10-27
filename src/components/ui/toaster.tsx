@@ -30,6 +30,16 @@ function ToastAnnouncer({ id, title, description }: { id: string; title?: ReactN
   return null
 }
 
+// r456 — حکمِ Escape (بازداوریِ زندهٔ درسِ r455 — شاهدِ همین راند،
+// نردبانِ ۳→۲→۱→۰): Escape پشته را «یکجا» نمیکشد؛ useEscapeKeydownِ
+// رادیکس یک capture-listener در document است (بیِ نیازِ فوکوس) و فقط
+// «بالاترین لایه» پاسخ میدهد — و چون Setِ لایهها به ترتیبِ commit
+// (DOMِ تازهترین-اول) پر میشود، بالاترین لایه = «کهنترینِ» زنده است؛
+// پس هر فشار دقیقاً «یک» توستِ کهنترین را میبرد (مسیرِ per-root با
+// فوکوسِ درونِ توست، هدفِ خودش را جداگانه میبندد). quirkِ ثبتشده:
+// مسیرِ bubble، isFocusedToastEscapeKeyDownRefِ سطح-provider را TRUE
+// رها میکند و «فشارِ بعدی» بلعیده میشود (فقط ریست) — زنده داوری شد
+// (PRESSES-NEEDED:2) و در tests/toast-close-touch-r456.test.tsx قفل است.
 export function Toaster() {
   const { toasts } = useToast()
 

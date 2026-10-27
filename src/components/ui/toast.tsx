@@ -74,6 +74,15 @@ const ToastAction = React.forwardRef<
 ))
 ToastAction.displayName = ToastPrimitives.Action.displayName
 
+// r456 — «بستنِ توست در لمس» — شاهدِ زنده (scripts/qa-r456-toast-close-touch.sh
+// — شصتیکمین مصرفکنندهٔ qa-lib، ۳۹۰×۸۴۴) عیب را ثبت کرد: opacity-0 +
+// group-hover-تنها یعنی در دستگاهِ لمسی (hover وجود ندارد) دکمهٔ بستن
+// «نامرئی» است — پروبِ زنده: opacity="0"، aria=null، اما hit-test
+// elementFromPoint همان دکمه (TAP-REACHES-BUT-UNSEEN)؛ گوشِ سوایپِ رادیکس
+// (راست، آستانهٔ ۵۰px) تنها راهِ بستن بود. تعمیر: [@media(hover:none)]:opacity-100
+// — در محیطِ لمسی/هدلسِ بی-هاور دکمه همیشه پیدا است؛ رفتارِ دسکتاپِ
+// هاوردار (opacity-0 تا hover) دستنخورده. بهعلاوه aria-label="بستن" —
+// دکمهٔ آیکونی پیشتر «بی نامِ دسترسپذیر» بود (A11Y-NO-NAME زنده).
 const ToastClose = React.forwardRef<
   React.ElementRef<typeof ToastPrimitives.Close>,
   React.ComponentPropsWithoutRef<typeof ToastPrimitives.Close>
@@ -81,9 +90,10 @@ const ToastClose = React.forwardRef<
   <ToastPrimitives.Close
     ref={ref}
     className={cn(
-      "absolute right-1 top-1 rounded-md p-1 text-foreground/50 opacity-0 transition-opacity hover:text-foreground focus:opacity-100 focus:outline-none focus:ring-1 group-hover:opacity-100 group-[.destructive]:text-red-300 group-[.destructive]:hover:text-red-50 group-[.destructive]:focus:ring-red-400 group-[.destructive]:focus:ring-offset-red-600",
+      "absolute right-1 top-1 rounded-md p-1 text-foreground/50 opacity-0 transition-opacity hover:text-foreground focus:opacity-100 focus:outline-none focus:ring-1 group-hover:opacity-100 [@media(hover:none)]:opacity-100 group-[.destructive]:text-red-300 group-[.destructive]:hover:text-red-50 group-[.destructive]:focus:ring-red-400 group-[.destructive]:focus:ring-offset-red-600",
       className
     )}
+    aria-label="بستن"
     toast-close=""
     {...props}
   >
