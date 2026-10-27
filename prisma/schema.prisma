@@ -1,5 +1,11 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+// Prisma schema — RECONSTRUCTED in r456 after the environment reset
+// restored an ancient (pre-r250) schema file. Every model below was
+// rebuilt from its usage sites in src/ (routes/lib) and the route-level
+// test contracts; the seven pre-existing models keep their historical
+// comments and columns verbatim, renamed to the camelCase convention the
+// whole codebase uses (db.learnerProfile / db.quizAttempt / ...).
+// The three AI caches (reviewCache / storyCache / weekReviewCache) are
+// the store-once-serve-forever tables of Tasks 116/117/119.
 
 generator client {
   provider = "prisma-client-js"
@@ -10,7 +16,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model QuizAttempt {
+model quizAttempt {
   id        String   @id @default(cuid())
   userId    String
   lesson    Int
@@ -37,7 +43,7 @@ model QuizAttempt {
   @@index([createdAt])
 }
 
-model LearnerProfile {
+model learnerProfile {
   userId    String   @id
   name      String
   color     String   @default("emerald")
@@ -53,7 +59,7 @@ model LearnerProfile {
 // F3 «کد یادگیرنده» — cloud sync of learner progress across devices.
 // The 8-char code acts as a lightweight credential (no auth); lookups
 // are rate-limited on the API layer against brute force.
-model LearnerSync {
+model learnerSync {
   code      String   @id
   userId    String
   data      String // JSON snapshot (same shape as BackupPayload.data)
@@ -66,16 +72,48 @@ model LearnerSync {
 // F8 «چرا غلط شد؟» — server-side cache of AI explanations, keyed by
 // question id. Every learner asking about the same question gets the
 // exact same controlled answer (one generation, many reads).
-model ExplainCache {
+model explainCache {
   key         String   @id
   explanation String
   source      String   @default("ai") // "ai" | "fallback"
   createdAt   DateTime @default(now())
 }
 
+// Task 116 «داستانِ واژه‌ها» — server-side cache of AI stories, keyed by
+// the fingerprint of the (sorted) word-key set. One generation, many reads.
+model storyCache {
+  key       String   @id
+  story     String
+  summary   String
+  source    String   @default("ai") // "ai" | "fallback"
+  createdAt DateTime @default(now())
+}
+
+// Task 117 «معلمِ کارنامه» — server-side cache of AI session reviews,
+// keyed by the session fingerprint (ids + answers are order-insensitive).
+model reviewCache {
+  key      String   @id
+  intro    String
+  strength String
+  advice   String
+  source   String   @default("ai") // "ai" | "fallback"
+  createdAt DateTime @default(now())
+}
+
+// Task 119 «معلمِ هفته» — server-side cache of AI weekly verdicts, keyed
+// by the week fingerprint. Same store-once economy as its two siblings.
+model weekReviewCache {
+  key      String   @id
+  intro    String
+  strength String
+  advice   String
+  source   String   @default("ai") // "ai" | "fallback"
+  createdAt DateTime @default(now())
+}
+
 // F10 lightweight product analytics — no PII, no user identifiers.
 // Only aggregate counters per UTC day per whitelisted event name.
-model EventDay {
+model eventDay {
   id    String @id @default(cuid())
   day   String // YYYY-MM-DD (UTC)
   name  String
@@ -90,19 +128,16 @@ model EventDay {
 // month-to-date sum gates POST /api/tts with an honest 429 and feeds
 // GET /api/tts/usage (the settings budget row). Metering is a cost guard,
 // not correctness: every meter failure fails OPEN (TTS stays available).
-model TtsMeter {
+model ttsMeter {
   day   String @id // YYYY-MM-DD (UTC)
   chars Int    @default(0)
 }
 
 // r348 «سقفِ ماهانهٔ توضیحِ هوشمند» — per-UTC-day generation meter for the
-// paid AI explain endpoint (same cost family as TtsMeter). Only REAL ai
+// paid AI explain endpoint (same cost family as ttsMeter). Only REAL ai
 // generations increment (+1 each); cached reads and SDK-down fallback text
-// are free and unmetered. The month-to-date sum gates POST /api/explain
-// with an honest 429 (code 'explain_quota') and feeds GET /api/explain/usage
-// (the settings budget row). Fails OPEN exactly like its sibling: a broken
-// meter never takes the explanation away from a learner.
-model ExplainMeter {
+// are free and unmetered. Fails OPEN exactly like its sibling.
+model explainMeter {
   day  String @id // YYYY-MM-DD (UTC)
   gens Int    @default(0)
 }

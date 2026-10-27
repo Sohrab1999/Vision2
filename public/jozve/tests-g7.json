@@ -1,0 +1,1746 @@
+{
+ "grade": 7,
+ "title": "جزوه دکتر حسن لطفی — پایه هفتم",
+ "lessons": [
+  {
+   "lesson": 1,
+   "title": "امتحانی درس اول — شکل کوچک و بزرگ حروف (س۱، ص۵۰)",
+   "level": "دوگزینه‌ای",
+   "count": 11,
+   "questions": [
+    {
+     "id": "g7-l1-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "A → -------",
+     "options": [
+      "a",
+      "A"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l1-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "b → -------",
+     "options": [
+      "b",
+      "B"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g7-l1-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "K → -------",
+     "options": [
+      "k",
+      "K"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l1-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "q → -------",
+     "options": [
+      "q",
+      "Q"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g7-l1-5",
+     "n": 5,
+     "category": "vocab",
+     "question": "R → -------",
+     "options": [
+      "r",
+      "R"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l1-6",
+     "n": 6,
+     "category": "vocab",
+     "question": "m → -------",
+     "options": [
+      "m",
+      "M"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g7-l1-7",
+     "n": 7,
+     "category": "vocab",
+     "question": "X → -------",
+     "options": [
+      "x",
+      "X"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l1-8",
+     "n": 8,
+     "category": "vocab",
+     "question": "o → -------",
+     "options": [
+      "o",
+      "O"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g7-l1-9",
+     "n": 9,
+     "category": "vocab",
+     "question": "D → -------",
+     "options": [
+      "d",
+      "D"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l1-10",
+     "n": 10,
+     "category": "vocab",
+     "question": "v → -------",
+     "options": [
+      "v",
+      "V"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g7-l1-11",
+     "n": 11,
+     "category": "vocab",
+     "question": "G → -------",
+     "options": [
+      "g",
+      "G"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 2,
+   "title": "امتحانی درس اول — کلمهٔ ناهماهنگ (س۳، ص۵۰)",
+   "level": "چهارگزینه‌ای",
+   "count": 1,
+   "questions": [
+    {
+     "id": "g7-l2-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "green – blue – black – book",
+     "options": [
+      "green",
+      "blue",
+      "black",
+      "book"
+     ],
+     "answer": 3
+    }
+   ]
+  },
+  {
+   "lesson": 3,
+   "title": "امتحانی درس دوم — نام‌سازی از حروفِ داده‌شده (س۲، ص۵۶)",
+   "level": "سه‌گزینه‌ای",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g7-l3-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "a n a h m → ?",
+     "options": [
+      "Mahsa",
+      "Mahin",
+      "Mahan"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g7-l3-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "a b a r k → ?",
+     "options": [
+      "Arash",
+      "Armin",
+      "Akbar"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g7-l3-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "n a o m → ?",
+     "options": [
+      "Mina",
+      "Mona",
+      "Amin"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 4,
+   "title": "امتحانی درس دوم — وصل‌کردنیِ پایانِ جمله (س۵، ص۵۶)",
+   "level": "شش‌گزینه‌ای",
+   "count": 5,
+   "questions": [
+    {
+     "id": "g7-l4-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "My name is ……. . ( ------- )",
+     "options": [
+      "morning.",
+      "Thanks.",
+      "is Majidi.",
+      "your name?",
+      "Hello.",
+      "Ali Karimi."
+     ],
+     "answer": 5
+    },
+    {
+     "id": "g7-l4-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "What's ……… . ( ------- )",
+     "options": [
+      "morning.",
+      "Thanks.",
+      "is Majidi.",
+      "your name?",
+      "Hello.",
+      "Ali Karimi."
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g7-l4-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "Fine, …… ( ------- )",
+     "options": [
+      "morning.",
+      "Thanks.",
+      "is Majidi.",
+      "your name?",
+      "Hello.",
+      "Ali Karimi."
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g7-l4-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "Good ……. . ( ------- )",
+     "options": [
+      "morning.",
+      "Thanks.",
+      "is Majidi.",
+      "your name?",
+      "Hello.",
+      "Ali Karimi."
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l4-5",
+     "n": 5,
+     "category": "vocab",
+     "question": "My last name ……. . ( ------- )",
+     "options": [
+      "morning.",
+      "Thanks.",
+      "is Majidi.",
+      "your name?",
+      "Hello.",
+      "Ali Karimi."
+     ],
+     "answer": 2
+    }
+   ]
+  },
+  {
+   "lesson": 5,
+   "title": "امتحانی درس سوم — تکمیل اعداد با en/ten (س۱، ص۶۵)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g7-l5-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "Sev……….",
+     "options": [
+      "Seven",
+      "Eleven",
+      "Nineteen",
+      "Sixteen"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l5-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "Elev……….",
+     "options": [
+      "Seven",
+      "Nineteen",
+      "Sixteen",
+      "Eleven"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g7-l5-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "Nine……….",
+     "options": [
+      "Eleven",
+      "Sixteen",
+      "Nineteen",
+      "Seven"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g7-l5-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "Six………...",
+     "options": [
+      "Seven",
+      "Sixteen",
+      "Eleven",
+      "Nineteen"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 6,
+   "title": "امتحانی درس سوم — عدد به حروف (س۲، ص۶۵)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g7-l6-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "10 → -------",
+     "options": [
+      "Ten",
+      "Five",
+      "Twenty",
+      "Forty-one"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l6-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "5 → -------",
+     "options": [
+      "Ten",
+      "Twenty",
+      "Forty-one",
+      "Five"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g7-l6-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "20 → -------",
+     "options": [
+      "Ten",
+      "Forty-one",
+      "Twenty",
+      "Five"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g7-l6-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "41 → -------",
+     "options": [
+      "Twenty",
+      "Forty-one",
+      "Ten",
+      "Five"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 7,
+   "title": "امتحانی درس سوم — پاسخ از ستون راست (س۳، ص۶۵)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g7-l7-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "What is your first name? ( ------- )",
+     "options": [
+      "I am 13 years old.",
+      "my name is saro.",
+      "it is in Bahman.",
+      "my last name is lotfi."
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g7-l7-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "What is your last name? ( ------- )",
+     "options": [
+      "I am 13 years old.",
+      "my name is saro.",
+      "it is in Bahman.",
+      "my last name is lotfi."
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g7-l7-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "Hoe old are you? ( ------- )",
+     "options": [
+      "I am 13 years old.",
+      "my name is saro.",
+      "it is in Bahman.",
+      "my last name is lotfi."
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l7-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "What is your birthday? ( ------- )",
+     "options": [
+      "I am 13 years old.",
+      "my name is saro.",
+      "it is in Bahman.",
+      "my last name is lotfi."
+     ],
+     "answer": 2
+    }
+   ]
+  },
+  {
+   "lesson": 8,
+   "title": "امتحانی درس سوم — جمعه به انگلیسی (س۶، ص۶۵)",
+   "level": "سه‌گزینه‌ای",
+   "count": 1,
+   "questions": [
+    {
+     "id": "g7-l8-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "جمعه به انگلیسی چه می شود؟ ( ------- )",
+     "options": [
+      "Friday",
+      "Saturday",
+      "Tuesday"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 9,
+   "title": "امتحانی درس چهارم — تکمیل جمله با بانک واژه (س۲، ص۷۵)",
+   "level": "هفت‌گزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g7-l9-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "She is ( ------- ) Ahmadi.",
+     "options": [
+      "Mechanic",
+      "birthday",
+      "Mrs",
+      "florist",
+      "housewife",
+      "Bahman",
+      "meet"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g7-l9-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "Happy ( ------- ) to you.",
+     "options": [
+      "Mechanic",
+      "birthday",
+      "Mrs",
+      "florist",
+      "housewife",
+      "Bahman",
+      "meet"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g7-l9-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "Day ( ------- ), Esfand.",
+     "options": [
+      "Mechanic",
+      "birthday",
+      "Mrs",
+      "florist",
+      "housewife",
+      "Bahman",
+      "meet"
+     ],
+     "answer": 5
+    },
+    {
+     "id": "g7-l9-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "Nice to ( ------- ) you.",
+     "options": [
+      "Mechanic",
+      "birthday",
+      "Mrs",
+      "florist",
+      "housewife",
+      "Bahman",
+      "meet"
+     ],
+     "answer": 6
+    }
+   ]
+  },
+  {
+   "lesson": 10,
+   "title": "امتحانی درس چهارم — مذکر و مونث (س۳، ص۷۵)",
+   "level": "دوگزینه‌ای",
+   "count": 7,
+   "questions": [
+    {
+     "id": "g7-l10-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Father → -------",
+     "options": [
+      "He",
+      "She"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l10-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "mother → -------",
+     "options": [
+      "He",
+      "She"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g7-l10-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "sister → -------",
+     "options": [
+      "He",
+      "She"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g7-l10-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "brother → -------",
+     "options": [
+      "He",
+      "She"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l10-5",
+     "n": 5,
+     "category": "grammar",
+     "question": "grandfather → -------",
+     "options": [
+      "He",
+      "She"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l10-6",
+     "n": 6,
+     "category": "grammar",
+     "question": "grangmoter → -------",
+     "options": [
+      "He",
+      "She"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g7-l10-7",
+     "n": 7,
+     "category": "grammar",
+     "question": "uncle → -------",
+     "options": [
+      "He",
+      "She"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 11,
+   "title": "امتحانی درس پنجم — پاسخ از ستون B (س۱، ص۸۴)",
+   "level": "پنج‌گزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g7-l11-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "1. How are you today? (-------)",
+     "options": [
+      "Great, thanks",
+      "She is my teacher, Mrs Amini.",
+      "He is sixteen years old.",
+      "It's in Farvardin.",
+      "He is a worker."
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l11-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "2. What is his Job? (-------)",
+     "options": [
+      "She is my teacher, Mrs Amini.",
+      "It's in Farvardin.",
+      "Great, thanks",
+      "He is a worker.",
+      "He is sixteen years old."
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g7-l11-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "3. Who is that woman? (-------)",
+     "options": [
+      "He is sixteen years old.",
+      "Great, thanks",
+      "She is my teacher, Mrs Amini.",
+      "He is a worker.",
+      "It's in Farvardin."
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g7-l11-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "4. How old isyour uncle? (-------)",
+     "options": [
+      "It's in Farvardin.",
+      "He is sixteen years old.",
+      "Great, thanks",
+      "He is a worker.",
+      "She is my teacher, Mrs Amini."
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 12,
+   "title": "امتحانی درس پنجم — کامل‌کردن فرم (س۲، ص۸۴)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g7-l12-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "First name: -------",
+     "options": [
+      "Reza",
+      "Pakzad",
+      "Azar",
+      "waiter"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l12-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "Last name: -------",
+     "options": [
+      "Reza",
+      "Azar",
+      "waiter",
+      "Pakzad"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g7-l12-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "Month of birth: -------",
+     "options": [
+      "Pakzad",
+      "Reza",
+      "Azar",
+      "waiter"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g7-l12-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "Job: -------",
+     "options": [
+      "Pakzad",
+      "waiter",
+      "Reza",
+      "Azar"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 13,
+   "title": "امتحانی درس پنجم — رنگ‌ها به انگلیسی (س۴، ص۸۴)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g7-l13-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "زرد به انگلیسی: -------",
+     "options": [
+      "yellow",
+      "blue",
+      "black",
+      "brown"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l13-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "آبی به انگلیسی: -------",
+     "options": [
+      "yellow",
+      "black",
+      "brown",
+      "blue"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g7-l13-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "سیاه به انگلیسی: -------",
+     "options": [
+      "blue",
+      "brown",
+      "black",
+      "yellow"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g7-l13-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "قهوه ای به انگلیسی: -------",
+     "options": [
+      "blue",
+      "brown",
+      "yellow",
+      "black"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 14,
+   "title": "امتحانی درس پنجم — پوشاک به انگلیسی (س۵، ص۸۴)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g7-l14-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "کفش به انگلیسی: -------",
+     "options": [
+      "shoes",
+      "chador",
+      "suit",
+      "scarf"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l14-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "چادر به انگلیسی: -------",
+     "options": [
+      "shoes",
+      "suit",
+      "scarf",
+      "chador"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g7-l14-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "کت و شلوار به انگلیسی: -------",
+     "options": [
+      "chador",
+      "scarf",
+      "suit",
+      "shoes"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g7-l14-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "روسری به انگلیسی: -------",
+     "options": [
+      "chador",
+      "scarf",
+      "shoes",
+      "suit"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 15,
+   "title": "امتحانی درس ششم — کامل‌کردن با بانک واژه (س۱، ص۹۰)",
+   "level": "هشت‌گزینه‌ای",
+   "count": 6,
+   "questions": [
+    {
+     "id": "g7-l15-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "I am in the -------",
+     "options": [
+      "where",
+      "bedroom",
+      "reading",
+      "she's",
+      "washing",
+      "what",
+      "doing",
+      "watching"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g7-l15-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "What are you -------?",
+     "options": [
+      "where",
+      "bedroom",
+      "doing",
+      "reading",
+      "she's",
+      "washing",
+      "what",
+      "watching"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g7-l15-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "------- Is he?",
+     "options": [
+      "bedroom",
+      "reading",
+      "she's",
+      "where",
+      "washing",
+      "what",
+      "doing",
+      "watching"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g7-l15-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "------- in the living room.",
+     "options": [
+      "where",
+      "bedroom",
+      "reading",
+      "washing",
+      "she's",
+      "what",
+      "doing",
+      "watching"
+     ],
+     "answer": 4
+    },
+    {
+     "id": "g7-l15-5",
+     "n": 5,
+     "category": "vocab",
+     "question": "------- is he doing.",
+     "options": [
+      "where",
+      "bedroom",
+      "reading",
+      "she's",
+      "washing",
+      "what",
+      "doing",
+      "watching"
+     ],
+     "answer": 5
+    },
+    {
+     "id": "g7-l15-6",
+     "n": 6,
+     "category": "vocab",
+     "question": "she is ------- TV.",
+     "options": [
+      "where",
+      "bedroom",
+      "reading",
+      "she's",
+      "washing",
+      "what",
+      "doing",
+      "watching"
+     ],
+     "answer": 7
+    }
+   ]
+  },
+  {
+   "lesson": 16,
+   "title": "امتحانی درس هفتم — تکمیل با بانک واژه (س۱، ص۹۷)",
+   "level": "پنج‌گزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g7-l16-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "What ------- are you going? (نمونهٔ پاسخِ چاپی: at 4:40 pm)",
+     "options": [
+      "address",
+      "live",
+      "time",
+      "phone number",
+      "e-mail address"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g7-l16-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "What is your -------? (نمونهٔ پاسخِ چاپی: 545-7845)",
+     "options": [
+      "phone number",
+      "address",
+      "live",
+      "time",
+      "e-mail address"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l16-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "And your -------. (نمونهٔ پاسخِ چاپی: hasanlotfi1392@gmail.come)",
+     "options": [
+      "address",
+      "live",
+      "phone number",
+      "e-mail address",
+      "time"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g7-l16-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "Where do you -------? (نمونهٔ پاسخِ چاپی: 32 mahan street)",
+     "options": [
+      "address",
+      "live",
+      "phone number",
+      "time",
+      "e-mail address"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 17,
+   "title": "امتحانی درس هفتم — کامل‌کردن حروف (س۲، ص۹۷)",
+   "level": "چهارگزینه‌ای",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g7-l17-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "-------ffice",
+     "options": [
+      "a",
+      "o",
+      "e",
+      "u"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g7-l17-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "m-------bile",
+     "options": [
+      "a",
+      "e",
+      "o",
+      "i"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g7-l17-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "str------- ------- t",
+     "options": [
+      "a",
+      "o",
+      "i",
+      "e"
+     ],
+     "answer": 3
+    }
+   ]
+  },
+  {
+   "lesson": 18,
+   "title": "امتحانی درس هفتم — کلمهٔ ناهماهنگ (س۳، ص۹۷)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g7-l18-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "Garden – bedroom – reading – living room",
+     "options": [
+      "Garden",
+      "bedroom",
+      "reading",
+      "living room"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g7-l18-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "Stair – studing – working – reading",
+     "options": [
+      "Stair",
+      "studing",
+      "working",
+      "reading"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l18-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "Friend – teacher – classmate – notebook",
+     "options": [
+      "Friend",
+      "teacher",
+      "classmate",
+      "notebook"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g7-l18-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "Visit – hungry – fix – cook",
+     "options": [
+      "Visit",
+      "hungry",
+      "fix",
+      "cook"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 19,
+   "title": "امتحانی درس هشتم — پاسخ از ستون راست (س۳، ص۱۰۳)",
+   "level": "پنج‌گزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g7-l19-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "I feel hungry -------",
+     "options": [
+      "how about some cake.",
+      "tea",
+      "that is my favorite",
+      "lets have something to drink",
+      "rice and kebab"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l19-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "What is your favorite drink?-------",
+     "options": [
+      "that is my favorite",
+      "how about some cake.",
+      "tea",
+      "lets have something to drink",
+      "rice and kebab"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g7-l19-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "I am thirsty. -------",
+     "options": [
+      "tea",
+      "that is my favorite",
+      "how about some cake.",
+      "rice and kebab",
+      "lets have something to drink"
+     ],
+     "answer": 4
+    },
+    {
+     "id": "g7-l19-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "What is your favorite food?-------",
+     "options": [
+      "tea",
+      "rice and kebab",
+      "that is my favorite",
+      "how about some cake.",
+      "lets have something to drink"
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 20,
+   "title": "امتحانی درس هشتم — کلمهٔ ناهماهنگ (س۴، ص۱۰۳)",
+   "level": "چهارگزینه‌ای",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g7-l20-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "favorite – carrot – quince – jelly",
+     "options": [
+      "favorite",
+      "carrot",
+      "quince",
+      "jelly"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g7-l20-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "Kebab – fish – cocount – spaghetti",
+     "options": [
+      "Kebab",
+      "fish",
+      "cocount",
+      "spaghetti"
+     ],
+     "answer": 1
+    }
+   ]
+  }
+ ],
+ "source": {
+  "g7exam1": {
+   "extractedRound": "r370",
+   "section": "نمونه سؤالات امتحانی درس اول پایه هفتم",
+   "examPages": "pdf-p50 (فوترِ خودِ اسکن: ۵۰) — خانوادهٔ یک‌صفحه‌ای؛ ص۵۱ جدولِ واژگانِ درس اول است و پایینِ آن سربرگِ «واژگان و نکات دستوری درس دوم» — مرزِ پایینیِ خانواده",
+   "keyPages": "هیچ پاسخنامهٔ چاپی در جزوهٔ هفتم نیست (کل جزوه پاسخنامه ندارد — جست‌وجوی کلِ لایه: صفر hit «پاسخنامه»)؛ کلیدها استنتاجیِ مستندند",
+   "sectionsTotal": 5,
+   "sectionsExtracted": 2,
+   "sectionsSkipped": 3,
+   "items": 12,
+   "bankCounts": [
+    11,
+    1
+   ],
+   "keyPolicy": "کلیدِ استنتاجیِ ساختاری: س۱ = تبدیلِ کوچک/بزرگِ خودِ حرفِ چاپی (خوداعتبارسنجی — الگوی r357/r364 س۶/س۱۱)؛ س۳ = odd-one-outِ موضوعی (رنگ در برابرِ اشیاء)",
+   "engineNote": "س۱ عمداً MCQ دوگزینه‌ای شد نه تایپی: موتورِ پاسخِ تایپی case-insensitive است (src/lib/typed-answer.ts → normalizeTypedAnswer با toLowerCase) و تبدیلِ کوچک/بزرگ را سنجش‌ناپذیر می‌کند؛ در MCQ انتخابِ کلیکیِ اندیس‌محور است و تفاوتِ a/A دقیق دیده می‌شود. گزینهٔ دومِ هر آیتم = خودِ حرفِ چاپی (تلهٔ «همان‌حرفی‌نوشتن»)؛ چینشِ یک‌درمیان (فرد: هدف اول/جواب 0، زوج: حرفِ چاپی اول/جواب 1) تا الگوی «جوابِ همیشه‌اول» حدس‌زدنی نباشد",
+   "derivedKeys": {
+    "S1": [
+     "A → a (تبدیلِ حرفِ چاپی به شکلِ دیگر)",
+     "b → B (تبدیلِ حرفِ چاپی به شکلِ دیگر)",
+     "K → k (تبدیلِ حرفِ چاپی به شکلِ دیگر)",
+     "q → Q (تبدیلِ حرفِ چاپی به شکلِ دیگر)",
+     "R → r (تبدیلِ حرفِ چاپی به شکلِ دیگر)",
+     "m → M (تبدیلِ حرفِ چاپی به شکلِ دیگر)",
+     "X → x (تبدیلِ حرفِ چاپی به شکلِ دیگر)",
+     "o → O (تبدیلِ حرفِ چاپی به شکلِ دیگر)",
+     "D → d (تبدیلِ حرفِ چاپی به شکلِ دیگر)",
+     "v → V (تبدیلِ حرفِ چاپی به شکلِ دیگر)",
+     "G → g (تبدیلِ حرفِ چاپی به شکلِ دیگر)"
+    ],
+    "S3": [
+     "book = تنها غیرِ رنگ میانِ green/blue/black — سه رنگ از واژگانِ خودِ درس اول"
+    ]
+   },
+   "skippedSections": [
+    "س۲ تصویری: «واژه انگلیسی کدام یک از تصاویر زیر با حرف B شروع می شود» — چهار تصویر (کتاب/کیف/وایت‌برد/پاک‌کن) و چندپاسخِ چاپی هم هست (book/bag/blackboard هر سه با B آغاز می‌شوند) — الگوی r364-369",
+    "س۴ تولیدِ آزاد: «مشخصات خود را بصورت صحیح در جای خالی به انگلیسی بنویسید» (First name/last name) — بی‌کلیدِ چاپی",
+    "س۵ تصویری: کامل‌کردن با (Mr. - Miss) با دو عکس (پسر/دخترِ محجبه)"
+   ],
+   "printQuirks": [
+    "خانوادهٔ امتحانیِ g7 یک‌صفحه‌ای است (در برابرِ ۳-صفحه‌ای‌های g9) — امتحانِ درسِ الفباست",
+    "ساقه‌های س۱ در لایهٔ متنی verbatim است (p50:028: «A……     b……    K……    q……   R……    m……    X……    o……   D……    v……    G……») و با رندرِ ۱۵۰dpi راستی‌آزمایی شد"
+   ]
+  },
+  "g7exam2": {
+   "extractedRound": "r370",
+   "section": "نمونه سؤالات امتحانی درس دوم پایه هفتم",
+   "examPages": "pdf-p56 (فوترِ خودِ اسکن: ۵۶) — خانوادهٔ یک‌صفحه‌ای؛ ص۵۷ جدولِ واژگانِ درس دوم است (مرز)",
+   "keyPages": "هیچ پاسخنامهٔ چاپی در جزوهٔ هفتم نیست؛ کلیدها استنتاجیِ مستندند",
+   "sectionsTotal": 5,
+   "sectionsExtracted": 2,
+   "sectionsSkipped": 3,
+   "items": 8,
+   "bankCounts": [
+    3,
+    5
+   ],
+   "wordBank": [
+    "morning.",
+    "Thanks.",
+    "is Majidi.",
+    "your name?",
+    "Hello.",
+    "Ali Karimi."
+   ],
+   "extraWords": [
+    "Hello."
+   ],
+   "keyPolicy": "کلیدِ استنتاجیِ ساختاری/مکالمه‌محور: س۲ = تنها نامی که دقیقاً از حروفِ چیپ‌های چاپی ساخته می‌شود (آنالیزِ چندمجموعه‌ای)؛ س۵ = تکمیلِ جفتِ ساقه/پایان با انسجامِ مکالمه‌ایِ درسِ معرفی و احوال‌پرسی",
+   "derivedKeys": {
+    "S2": [
+     "(a n a h m) → Mahan: m,a,h,a,n — Mahsa حرفِ s اضافه دارد و Mahin حرفِ i",
+     "(a b a r k) → Akbar: a,k,b,a,r — Arash حرفِ s/h دارد و Armin حرفِ i/m/n",
+     "(n a o m) → Mona: m,o,n,a — Mina و Amin حرفِ i دارند که در چیپ‌ها نیست"
+    ],
+    "S5": [
+     "My name is → Ali Karimi. (تنها «نامِ کامل»؛ is Majidi ساختارِ نامِ خانوادگی دارد)",
+     "What's → your name? (تنها دنباله‌ای که پرسشِ «اسمت چیه؟» می‌سازد)",
+     "Fine, → Thanks. (پاسخِ احوال‌پرسیِ درس)",
+     "Good → morning. (تنها بخشِ روز)",
+     "My last name → is Majidi. (فعلِ is + نامِ خانوادگی)"
+    ]
+   },
+   "skippedSections": [
+    "س۱ علامت‌گذاریِ دایره/زیرخطِ نام/نام‌خانوادگی (Kamali/Mobina/Mahsa/Mohammadi/Majidi/Ayda/Hani/Saro) — تبدیلِ MCQ نیازمندِ گزینهٔ غیرچاپی یا نخستینِ گزینهٔ فارسیِ کارت است؛ مستثنی + فرصتِ مستقلِ ثبت‌شده",
+    "س۳ تصویری-وابسته: ص/غ با چهار تصویر (classroom/teacher/eraser/backpack) — ساقه‌های چاپی‌اند (it is a classroom/She is a teacher/It is an eraser/It is a backpack) ولی کلید در تصویر است نه در ساقه",
+    "س۴ تصویری-وابسته: کامل‌کردن با she/he با دو عکس (Mina/معلمِ پای تخته)",
+    "س۲ردیفِ ۴ حذفِ آیتمی: چیپ‌های چاپی «a n a h m» (کپیِ ردیفِ ۱) هیچ‌یک از Akbar/Kobra/Kasra را نمی‌سازد — نقصِ چاپ (الگویِ بی‌اعتباریِ r366 س۷ق۷)"
+   ],
+   "printQuirks": [
+    "چیپ‌های ردیفِ ۴ = کپیِ ردیفِ ۱ (a n a h m) — نقصِ چاپ",
+    "ستونِ چپ ۵ ساقه و ستونِ راست ۶ پاسخ — «Hello.» اضافیِ چاپی است؛ در گارد never-key قفل شد",
+    "ستون‌های س۵ فقط در رندرند (لایهٔ متنیِ ص۵۶ سکشنِ ۵ را ندارد) — خوانده از رندرِ ۱۵۰/۲۲۰dpi",
+    "What's با آپاستروفِ راست‌سادهٔ چاپ (') — verbatim"
+   ]
+  },
+  "g7familyMap": {
+   "extractedRound": "r370",
+   "note": "نقشهٔ ۸ خانوادهٔ «نمونه سؤالات امتحانی» جزوهٔ هفتم — از جست‌وجوی لایه؛ سربرگ‌های دوخطی (مثل «درس\ndوم») با جست‌وجوی دوسطری یافت شدند؛ همهٔ ۸ خانواده استخراج شد (r370-r373)",
+   "families": [
+    {
+     "lesson": "درس اول",
+     "pdfPage": 50,
+     "round": "r370",
+     "status": "استخراج شد — ۲ بانک/۱۲ آیتم از ۵ سکشن"
+    },
+    {
+     "lesson": "درس دوم",
+     "pdfPage": 56,
+     "round": "r370",
+     "status": "استخراج شد — ۲ بانک/۸ آیتم از ۵ سکشن"
+    },
+    {
+     "lesson": "درس سوم",
+     "pdfPage": 65,
+     "round": "r371",
+     "status": "استخراج شد — ۴ بانک/۱۳ آیتم از ۶ سکشن (س۴ و س۵ِ تصویری مستثنی)"
+    },
+    {
+     "lesson": "درس چهارم",
+     "pdfPage": 74,
+     "round": "r371",
+     "status": "استخراج شد — ۲ بانک/۱۱ آیتم از ۷ سکشنِ دوصفحه‌ای (۵ سکشنِ تصویری/تولیدی مستثنی)"
+    },
+    {
+     "lesson": "درس پنجم",
+     "pdfPage": 84,
+     "round": "r372",
+     "status": "استخراج شد — ۴ بانک/۱۶ آیتم از ۵ سکشن (س۳ تصویری مستثنی)"
+    },
+    {
+     "lesson": "درس ششم",
+     "pdfPage": 90,
+     "round": "r372",
+     "status": "استخراج شد — ۱ بانک/۶ آیتم از ۳ سکشن (س۲ تصویری-تولیدی و س۳ تصویری-کلید مستثنی؛ b-B حذفِ آیتمیِ نقصِ چاپ)"
+    },
+    {
+     "lesson": "درس هفتم",
+     "pdfPage": 97,
+     "round": "r373",
+     "status": "استخراج شد — ۳ بانک/۱۱ آیتم از ۴ سکشن (س۴ تصویری-کلید: ساعتِ ۹:۱۵ مستثنی)"
+    },
+    {
+     "lesson": "درس هشتم",
+     "pdfPage": 103,
+     "round": "r373",
+     "status": "استخراج شد — ۲ بانک/۶ آیتم از ۵ سکشن (۳ سکشنِ تصویری مستثنی) — پایانِ خانواده‌های g7 (۸/۸)"
+    }
+   ],
+   "g8Note": "جزوهٔ هشتم هم ۷ خانواده دارد (pdf-p18/27/35/41/50/60/72) — کارتِ تستِ هشتم پس از g7؛ همتایانِ کامل‌اند، نه غایب (پاسخِ پروبِ r369)"
+  },
+  "g7exam3": {
+   "extractedRound": "r371",
+   "section": "نمونه سؤالات امتحانی درس سوم پایه هفتم",
+   "examPages": "pdf-p65 (فوترِ خودِ اسکن: ۶۵) — خانوادهٔ یک‌صفحه‌ای؛ ص۶۶ جدولِ واژگانِ درس سوم است (مرزِ پایانی)",
+   "keyPages": "هیچ پاسخنامهٔ چاپی در جزوهٔ هفتم نیست؛ کلیدها استنتاجیِ مستندند",
+   "sectionsTotal": 6,
+   "sectionsExtracted": 4,
+   "sectionsSkipped": 2,
+   "items": 13,
+   "bankCounts": [
+    4,
+    4,
+    4,
+    1
+   ],
+   "keyPolicy": "کلیدِ استنتاجیِ ساختاری: س۱/س۲ = ستونِ مشترکِ مشتقِ چاپی (پاسخِ هر آیتم از ساقهٔ چاپی + دستورِ «en/ten» یا «اعداد به حروف»، حواس‌پرت‌ها = پاسخ‌های دیگرِ همان سکشن — الگویِ ستونِ مشترکِ r370-بانک۴)؛ س۳ = جورِ یک‌به‌یکِ سؤال/پاسخ از ستونِ چاپیِ a-d (my name is saro فقط به first name می‌نشیند و…)؛ س۶ = کلیدِ ترجمه‌ایِ یکتا (جمعه = Friday — الگویِ کلیدِ عینیِ r369)",
+   "engineNote": "س۱/س۲ عمداً MCQ شدند نه تایپی: قراردادِ r363 (بدونِ آیتمِ تایپی در g7 — موتورِ تایپ case-insensitive است) و افزون بر آن، افزودنِ حرفِ «ten» به «Nine» از نظرِ املایی «Nineteen» می‌شود نه «Nineten» — MCQ با گزینه‌های کلمهٔ کامل این ابهامِ چاپی را منحل می‌کند. چینشِ گزینه‌های س۱/س۲ per-item است (کلیدها 0,3,2,1) تا الگویِ «جوابِ قطرِ اصلی» حدس‌زدنی نباشد",
+   "derivedKeys": {
+    "S1": [
+     "Sev………. → Seven (دستورِ چاپ: با en یا ten)",
+     "Elev………. → Eleven (دستورِ چاپ: با en یا ten)",
+     "Nine………. → Nineteen (املایِ چاپِ «ten» ابهام دارد؛ MCQ کلمهٔ کامل را می‌سنجد)",
+     "Six………... → Sixteen (دستورِ چاپ: با en یا ten)"
+    ],
+    "S2": [
+     "10 → Ten",
+     "5 → Five",
+     "20 → Twenty",
+     "41 → Forty-one (با خطِ پیوند)"
+    ],
+    "S3": [
+     "What is your first name? → my name is saro. (تنها «نامِ کوچک»)",
+     "What is your last name? → my last name is lotfi. (تنها «نامِ خانوادگی»)",
+     "Hoe old are you? → I am 13 years old. (تنها «سن»)",
+     "What is your birthday? → it is in Bahman. (تنها «ماه»)"
+    ],
+    "S6": [
+     "جمعه → Friday؛ حواس‌پرت‌ها Saturday/Tuesday از روزهایِ چاپیِ س۴"
+    ]
+   },
+   "skippedSections": [
+    "س۴ «جاهای خالی را با کلمات مناسب پر کنید»: Saturday … Monday, Tuesday / One, two, three, …, five, …, seven — کلیدها (Sunday/four) در هیچ‌جایِ خانواده چاپی نیستند و «six» هم فقط در س۱ هست؛ تبدیلِ MCQ نیازمندِ کلیدِ غیرچاپی — تولیدِ توالی (الگویِ r370-س۴)",
+    "سکشنِ بی‌شمارهٔ چاپی (میانِ ۴ و ۶) «با توجه به تصاویر پاسخ ها را کامل کنید»: How old is your sister? She is … (کیکِ ۶-شمعه) / When's her birthday? It's in … (تقویمِ آذر) — کلید در تصویر است نه ساقه؛ QuizQuestion فیلدِ تصویر ندارد و پاسخ‌دهنده تصویر را نمی‌بیند (الگویِ مستثنیِ r370) — شمارشِ شمع‌ها/خوانشِ تقویم در رسید ثبت شد (۶ شمع؛ آذر)",
+    "شماره‌گذاریِ چاپ: سکشنِ پنجم در چاپ بی‌شماره است (۱/۲/۳/۴ سپس ۶) — به‌عنوانِ س۵ شمرده شد"
+   ],
+   "printQuirks": [
+    "ساقهٔ «Hoe old are you?» — غلطِ تایپیِ چاپ (How → Hoe) — verbatim حفظ شد",
+    "پاسخ‌های ستونِ س۳ lowercase چاپ‌اند (my name is saro. / my last name is lotfi.) — verbatim؛ «c)it» فاصلهٔ چاپی ندارد (پیشوندِ حرفِ گزینه در UI است، متنِ گزینه از it آغاز می‌شود)",
+    "ساقه‌های س۱ از خودِ لایهٔ متنی استخراج شدند (p65: خطِ Sev/Elev/Nine/Six) نه بازنویسیِ دستی — اسکریپت، توکن‌ها را از لایه می‌خواند و اظهار می‌کند",
+    "نقطه‌چینِ ساقه‌ها با نویسهٔ … چاپ است — verbatim",
+    "س۶: نخستین ساقهٔ فارسیِ کارتِ هفتم (عینِ خطِ چاپ) — گاردِ خلوصِ لاتینِ r370 به بانک‌های ۱-۴ scope شد"
+   ]
+  },
+  "g7exam4": {
+   "extractedRound": "r371",
+   "section": "نمونه سؤالات امتحانی درس چهارم پایه هفتم (دو صفحه)",
+   "examPages": "pdf-p74 (سربرگ + ۳ سکشنِ تصویری) + pdf-p75 (ادامه با ۴ سکشن)؛ ص۷۶ جدولِ واژگان (مرزِ پایانی)",
+   "keyPages": "هیچ پاسخنامهٔ چاپی در جزوهٔ هفتم نیست؛ کلیدها استنتاجیِ مستندند",
+   "sectionsTotal": 7,
+   "sectionsExtracted": 2,
+   "sectionsSkipped": 5,
+   "items": 11,
+   "bankCounts": [
+    4,
+    7
+   ],
+   "wordBank": [
+    "Mechanic",
+    "birthday",
+    "Mrs",
+    "florist",
+    "housewife",
+    "Bahman",
+    "meet"
+   ],
+   "extraWords": [
+    "Mechanic",
+    "florist",
+    "housewife"
+   ],
+   "keyPolicy": "کلیدِ استنتاجیِ ساختاری: ص۷۵-س۲ = تکمیلِ یکتایِ جمله (Happy … to you فقط birthday؛ Nice to … you فقط meet؛ Day …, Esfand = توالیِ ماه‌های دی/بهمن/اسفند — Day = دی از جدولِ ص۶۴؛ She is … Ahmadi فقط Mrs)؛ ص۷۵-س۳ = مذکر/مونثِ واژگانِ خانواده (دانشِ واژگانیِ عینی)",
+   "engineNote": "هفت‌گزینه‌ایِ بانکِ ۹ نخستینِ کارتِ هفتم است (همتایِ r367 در کارتِ نهم)؛ ستونِ مشترکِ چاپی با ۳ هرگز-کلیدِ مستند (Mechanic/florist/housewife) — گارد قفل می‌کند. بانکِ ۱۰ دوگزینه‌ایِ ثابتِ [He, She] است با ترتیبِ چاپ (He پیش از She در سربرگِ گروه‌ها)",
+   "derivedKeys": {
+    "P75-S2": [
+     "She is … Ahmadi. → Mrs (لقبِ رسمیِ پیش از نامِ خانوادگی)",
+     "Happy … to you. → birthday (فقط birthday تبریک می‌سازد)",
+     "Day …, Esfand. → Bahman (دی، بهمن، اسفند — توالیِ ماه‌ها)",
+     "Nice to … you. → meet (اصطلاحِ آشناسازیِ درس)"
+    ],
+    "P75-S3": [
+     "Father → He (مذکر)",
+     "mother → She (مونث)",
+     "sister → She (مونث)",
+     "brother → He (مذکر)",
+     "grandfather → He (مذکر)",
+     "grangmoter → She (مونث — غلطِ تایپیِ چاپ برایِ grandmother)",
+     "uncle → He (مذکر)"
+    ]
+   },
+   "skippedSections": [
+    "ص۷۴-س۱ «با توجه به تصاویر مشخص کنید هر وسیله مربوط به چه شغلی می باشد. یک شغل اضافی است» — بانکِ چاپی Painter/Dentist/Florist/Pilot/farmer ولی ساقه‌ها تصویرند (هواپیما/سطل‌وموِ نقاشی/تراکتور/یونیتِ دندان‌پزشکی) — کلید در تصویر است نه ساقه (الگویِ r370)؛ تحلیلِ رندر: ۴ تصویر → Pilot/Painter/farmer/Dentist و Florist اضافی است (ثبت‌شده برایِ آینده)",
+    "ص۷۴-س۲ «هرجمله را با نوشتن نام صحیح کنار تصاویر کامل کنید» — نام‌ها چاپی‌اند (Mina/Mr. Amini/Mr. Karimi/Mr. Akbari/Mrs. Amani) ولی کلید از نوارِ تصویر می‌آید (راننده در خودرو = Karimi و…) — تصویری-کلید",
+    "ص۷۴-س۳ «با توجه به تصاویر جمله های صحیح را با ✓ و جملات غلط را با ✗ مشخص کنید» — شش ساقهٔ چاپی (My first name is Ali/Hello, Mrs Amini/This is my son/Mina is thirteen years old/He is a boy/My brother is a driver) ولی درستی از تصویر سنجیده می‌شود — تصویری-کلید",
+    "ص۷۵-س۱ «کلمات را به تصاویر وصل کنید» — Football/bus/father/nurse/dentist/sister به تصاویر — تصویری-کلید",
+    "ص۷۵-س۴ «شغل های زیر را به فارسی و انگلیسی بنویسید» (Teacher/pilot/آشپز/کارگر) — کلیدِ فارسی چاپی نیست — تولید (فقط cook در ص۷۴-س۲ چاپی است؛ ناهمگون)",
+    "ص۷۵-س۲ س۳ حذفِ آیتمی: «My uncle is a …» دوکلیدیِ معنایی (mechanic/florist هر دو مجاز؛ چاپ «یک اضافی» گزینش‌گر نیست)",
+    "ص۷۵-س۲ س۵ حذفِ آیتمی: «My moter is a …» دوکلیدیِ معنایی (housewife/florist هر دو مجاز — با حذفِ س۳ قیدِ «یک اضافی» دیگر مفید نیست)؛ غلطِ تایپیِ چاپ «moter» در ساقهٔ حذف‌شده ثبت شد"
+   ],
+   "printQuirks": [
+    "بانکِ ص۷۵-س۲ با خط‌های مختلطِ چاپ: (Mechanic – birthday - Mrs – florist – housewife – Bahman – meet) — ترتیبِ چاپ حفظ شد",
+    "«grangmoter» غلطِ تایپیِ چاپ برایِ grandmother — verbatim در ساقه (بانکِ ۱۰)",
+    "«My moter is a …» غلطِ تایپیِ چاپ برایِ My mother — در ساقهٔ حذف‌شده (ثبت)",
+    "«Day …, Esfand.» جملهٔ ناقصِ چاپ است (الگویِ «ماهِ …، اسفند») — Day = دی از جدولِ تبدیلِ ماهِ ص۶۴",
+    "سکشن‌های ص۷۴ دوصفحه‌ای نیستند؛ خانوادهٔ چهارم تنها خانوادهٔ دومصفحه‌ایِ g7 تا اینجای جزوه است (ص۷۴+ص۷۵)"
+   ]
+  },
+  "g7exam5": {
+   "extractedRound": "r372",
+   "section": "نمونه سؤالات امتحانی درس پنجم پایه هفتم",
+   "examPages": "pdf-p84 (فوترِ خودِ اسکن: ۸۴) — خانوادهٔ یک‌صفحه‌ای با ۵ سکشن؛ ص۸۵ جدولِ واژگان/تمرین (مرزِ پایانی)",
+   "keyPages": "هیچ پاسخنامهٔ چاپی در جزوهٔ هفتم نیست؛ کلیدها استنتاجیِ مستند — لنگرِ واژگانی از جدولِ درس پنجمِ خودِ جزوه (ص۷۶-۷۷)",
+   "sectionsTotal": 5,
+   "sectionsExtracted": 4,
+   "sectionsSkipped": 1,
+   "items": 16,
+   "bankCounts": [
+    4,
+    4,
+    4,
+    4
+   ],
+   "columnA": [
+    "1.How are you today?",
+    "2. What is his Job?",
+    "3.Who is that woman?",
+    "4.How old isyour uncle?"
+   ],
+   "columnB": [
+    "She is my teacher, Mrs Amini.",
+    "He is sixteen years old.",
+    "Great, thanks",
+    "It's in Farvardin.",
+    "He is a worker."
+   ],
+   "extraAnswer": "It's in Farvardin. (اضافیِ چاپیِ ستون B — هرگز-کلید؛ گارد)",
+   "derivedKeys": {
+    "S1": [
+     "How are you today? → Great, thanks (تنها پاسخِ احوال‌پرسی)",
+     "What is his Job? → He is a worker. (تنها پاسخِ شغلی)",
+     "Who is that woman? → She is my teacher, Mrs Amini. (تنها معرفیِ زن)",
+     "How old isyour uncle? → He is sixteen years old. (تنها پاسخِ سن)"
+    ],
+    "S2": [
+     "First name → Reza (My name is Reza Pakzad)",
+     "Last name → Pakzad (نامِ خانوادگیِ چاپی)",
+     "Month of birth → Azar (My birthday is in Azar)",
+     "Job → waiter (I am a waiter)"
+    ],
+    "S4": [
+     "زرد → yellow*",
+     "آبی → blue*",
+     "سیاه → black*",
+     "قهوه ای → brown* — هر چهار کلید در جدولِ ص۷۶ چاپی‌اند"
+    ],
+    "S5": [
+     "کفش → shoes* (ص۷۷ — جمعِ چاپ)",
+     "چادر → chador* (ص۷۷)",
+     "کت و شلوار → suit* (ص۷۶ «یکدست لباس»؛ همتایِ ص۸۱ «three-piece suit | کت و …»)",
+     "روسری → scarf* (ص۷۷)"
+    ]
+   },
+   "skippedSections": [
+    "س۳ «هر کلمه را زیر تصویر مربوط به خود بنویسید. (یک کلمه اضافی است)» — بانکِ چاپی Backpack-Thirteen-Engineer-Thirty-Nurse؛ رندر: ۴ تصویر (معمارِ کلاه‌زرد با نقشه → Engineer / پرستار → Nurse / تابلوی عددِ ۱۳ → Thirteen / کوله‌پشتی → Backpack) و اضافی = Thirty — کلید از تصویر است نه ساقه؛ QuizQuestion فیلدِ تصویر ندارد و پاسخ‌دهنده تصویر را نمی‌بیند (الگویِ r370/r371)"
+   ],
+   "printQuirks": [
+    "ساقهٔ «4.How old isyour uncle?» — غلطِ فاصله‌گذاریِ چاپ (is your → isyour) — verbatim؛ اسکریپت آن را از لایه می‌خواند و اظهار می‌کند",
+    "پرانتزِ بلنکِ ساقه‌های س۱ با نقطه‌چینِ چاپ (……..) — در ساقهٔ MCQ به (-------) نرمال شد (الگویِ r371)",
+    "«Great, thanks» بدونِ نقطهٔ چاپی — verbatim؛ سه پاسخِ دیگرِ ستون B نقطه‌دار",
+    "«قهوه ای» با فاصلهٔ کامل چاپ (نه نیم‌فاصله) — verbatim در ساقه",
+    "ساقه‌های س۱/س۲ از خودِ لایهٔ متنی ص۸۴ استخراج شدند (پیمانِ assert در اسکریپت و گارد) نه بازنویسیِ دستی",
+    "بانک‌های ۱۳/۱۴ ساقهٔ فارسی دارند — دستورِ چاپیِ سکشن («رنگ های زیر را به انگلیسی بنویسید» / «کلمات زیر را به انگلیسی بنویسید») در رسید حفظ شد؛ خلوصِ لاتینِ گارد به بانک‌های ۱۱/۱۲/۱۵ scope می‌شود",
+    "«کت و شلوار → suit»: trousers* در ص۷۶ تنها «شلوار» است پس معادلِ یکدستِ کت‌وشلوار حذف می‌شود؛ suit* = «یکدست لباس،جامه» + ص۸۱ «three-piece suit | کت و …» — استنتاجِ دوشاخه‌ایِ مستند"
+   ]
+  },
+  "g7exam6": {
+   "extractedRound": "r372",
+   "section": "نمونه سؤالات امتحانی درس ششم پایه هفتم",
+   "examPages": "pdf-p90 (فوترِ خودِ اسکن: ۹۰) — خانوادهٔ یک‌صفحه‌ای با ۳ سکشن؛ ص۹۱ تمرین (مرزِ پایانی)",
+   "keyPages": "هیچ پاسخنامهٔ چاپی در جزوهٔ هفتم نیست؛ کلیدها استنتاجیِ مستند",
+   "sectionsTotal": 3,
+   "sectionsExtracted": 1,
+   "sectionsSkipped": 2,
+   "items": 6,
+   "bankCounts": [
+    6
+   ],
+   "wordBank": [
+    "where",
+    "bedroom",
+    "reading",
+    "she's",
+    "washing",
+    "what",
+    "doing",
+    "watching"
+   ],
+   "wordBankSource": "کادرِ بنفشِ بالای سکشن — فقط در رندر؛ لایهٔ ص۹۰ این کادر را ندارد (الگویِ r370-بانک۴)",
+   "keyPolicy": "کلیدِ گرامری/معناییِ یکتا: I am in the … فقط مکانِ (bedroom)؛ What are you …? فعلِ استمراریِ پرسشی (doing)؛ … Is he? پرسش‌واژهٔ مکان (where — پرسشِ What در d مصرف شده و she's به‌سؤال نمی‌نشیند)؛ … in the living room. ضمیرِ سوم‌شخصِ مونث (she's — بقیهٔ ستون B آن‌جا I am است)؛ … is he doing. پرسش‌واژهٔ What (where در c مصرف شده)؛ she is … TV. فعلِ مشاهده (watching)",
+   "engineNote": "هشت‌گزینه‌ایِ دومِ کارتِ هفتم (همتایِ r371-بانک۹)؛ گزینه‌های هر آیتم = کلِ بانکِ ۸ واژه‌ایِ چاپی به چینشِ چرخشیِ per-item (کلیدها [1,2,3,4,5,7])؛ شکلِ گزینه‌ها عینِ کادرِ چاپی (lowercase حتی در جایگاهِ آغازین جمله — چاپ‌وفادار به بانک)",
+   "derivedKeys": {
+    "S1": [
+     "I am in the … → bedroom",
+     "What are you …? → doing",
+     "… Is he? → where",
+     "… in the living room. → she's",
+     "… is he doing. → what",
+     "she is … TV. → watching"
+    ]
+   },
+   "skippedSections": [
+    "س۱ ب-B حذفِ آیتمی: «I am … the bank.» هیچ واژه‌ای از بانک نمی‌پذیرد — washing/reading هر دو بی‌معنا و prepositionِ گم‌شده (at/near) در بانک نیست — نقصِ چاپ (الگویِ r370-ردیف۴/r371-دوکلیدی)؛ شش بلنکِ کلیددار در برابرِ هشت واژه = دو اضافی (reading/washing) و دستورِ چاپی تعدادِ اضافی نگفته",
+    "س۲ «با توجه به تصاویر به سوالات زیر پاسخ دهید؟» — سه تصویر (فوتبال‌بازی/خوردنِ صبحانه/تعمیرِ ماشین) با ساقه‌های چاپی (What are they doing? / What is she doing? / what is he doing?) ولی پاسخِ آزادِ توصیفی از تصویر — تصویری-تولیدی",
+    "س۳ «با توجه به تصاویر کلمه مناسب را انتخاب کنید» — سه گروهِ چهارگزینه‌ایِ چاپی (clock/television/computer/radio؛ clock/table/comb/computer؛ newspaper/television/mirror/comb) ولی کلید از تصویر است (کامپیوتر→computer / میز→table / روزنامه→newspaper) — تصویری-کلید (الگویِ r371-p74)"
+   ],
+   "printQuirks": [
+    "«------- Is he?» با Is بزرگِ چاپی در میانه — verbatim؛ «------- is he doing.» با نقطهٔ چاپیِ پایانی (سؤالِ بی‌علامت) — verbatim",
+    "«she is … TV.» با s کوچکِ چاپی — verbatim؛ بلنکِ چسبیده به TV با قاعدهٔ نرمالِ اسکریپت جدا شد",
+    "«she's» با آپاستروفِ چاپی (she’s در کادرِ رندر) — در گزینه‌ها به شکلِ آپاستروفِ مستقیم (') نرمال شد (هم‌خوان با لایهٔ JSON و موتور)",
+    "ساقه‌های شش‌گانه از لایهٔ ص۹۰ استخراج و با assert اظهار شدند؛ حروفِ a)/B) پیشوندِ ستون‌اند و در ساقه نمی‌آیند"
+   ]
+  },
+  "g7exam7": {
+   "extractedRound": "r373",
+   "section": "نمونه سؤالات امتحانی درس هفتم پایه هفتم",
+   "examPages": "pdf-p97 (تک‌صفحه‌ای) — ص۹۸ جدولِ واژگانِ درس هشتم است و مرزِ پایینیِ خانواده",
+   "keyPages": "هیچ پاسخنامهٔ چاپی نیست — کلیدِ س۱ از بانکِ آبی + ستونِ نمونه‌پاسخِ چاپی؛ س۲ از یکتاییِ فرگمنت؛ س۳ از معناشناسیِ دسته‌ای",
+   "sectionsTotal": 4,
+   "sectionsExtracted": 3,
+   "sectionsSkipped": 1,
+   "items": 11,
+   "bankCounts": [
+    4,
+    3,
+    4
+   ],
+   "wordBank": [
+    "address",
+    "live",
+    "phone number",
+    "time",
+    "e-mail address"
+   ],
+   "wordBankSource": "کادرِ آبیِ رندر-فقطِ ص۹۷-top (۳۰۰dpi) — لایه ندارد (الگویِ r370-بانک۴/r372-بانک۱۵)؛ ستونِ چاپیِ a-d ستونِ نمونه‌پاسخ است نه گزینه",
+   "keyPolicy": "س۱: ردیف‌های ۲/۳ بدونِ ستونِ نمونه‌پاسخ دوکلیدی‌اند (phone number/e-mail address/address هر سه گرامری‌اند) — برچسبِ «(نمونهٔ پاسخِ چاپی: …)» با محتوای verbatimِ ستون به ساقه چسبید و یکتایی را چاپ‌لنگر کرد؛ ردیفِ ۴ با گرامرِ فعل هم یکتاست (تنها فعلِ بانک = live)؛ س۲: واژه از فرگمنت یکتاست (office/mobile/street) و تصویر فقط تزئین است — کلیدِ حروفی o/o/e (هر دو بلنکِ street یک e)؛ س۳: کلیدِ دسته‌ای (جای‌ها vs کنش / کنش vs غیرِ کنش / انسان‌ها vs شیء / فعل‌ها vs صفت)",
+   "engineNote": "سکشنِ حروف MCQ چهارگزینه‌ای است نه تایپی (قراردادِ r363 — موتورِ تایپ case-insensitive است و پاسخِ تک‌حرفی ارزشِ تایپ ندارد)؛ گزینه‌های س۲ = حروفِ مزاحم",
+   "derivedKeys": {
+    "S1": [
+     "time",
+     "phone number",
+     "e-mail address",
+     "live"
+    ],
+    "S2": [
+     "o",
+     "o",
+     "e"
+    ],
+    "S3": [
+     "reading",
+     "Stair",
+     "notebook",
+     "hungry"
+    ]
+   },
+   "skippedSections": [
+    "ص۹۷-س۴ «با توجه به تصویر داده شده… (اعداد را بصورت حروف بنویسید)» — ساعتِ تصویر ۹:۱۵ (ساعت‌شمار روی ۹، دقیقه‌شمار روی ۳ — رندرِ ۳۰۰dpi ص۹۷-bottom) → «It's quarter past nine.»؛ تصویری-کلید — بدونِ تصویر بی‌پاسخ (الگویِ r371-س۵/r372)"
+   ],
+   "printQuirks": [
+    "«What ……………are you going?» — بلنکِ چسبیده به are در چاپ؛ norm به «------- are» تبدیل کرد (قراردادِ فاصله‌دارِ بانک‌های g7)",
+    "«Where do you ……………...?» — سه‌نقطهٔ پس از بلنک در چاپ verbatim ماند («-------...?»)",
+    "«str…… ……t» — دو بلنکِ جدا با tِ پایانی در چاپ (رندرِ ۳۰۰dpi: str…… …… t)؛ هر دو بلنک e می‌گیرند — گزینه‌ها تک‌حرفی‌اند نه جفت",
+    "تیترِ خانواده دوبخطی است («نمونه سواالت امتحانی درس\nهفتم») — جست‌وجوی دوسطری (پروبِ r373)"
+   ]
+  },
+  "g7exam8": {
+   "extractedRound": "r373",
+   "section": "نمونه سؤالات امتحانی درس هشتم پایه هفتم",
+   "examPages": "pdf-p103 (تک‌صفحه‌ای) — ص۱۰۴ پایانِ جزوه است (۴ خط)؛ خانوادهٔ آخرِ g7",
+   "keyPages": "هیچ پاسخنامهٔ چاپی نیست — جز علامتِ سرگردانِ «b.» س۴ (کلیدِ اعلامیِ خودِ چاپ برای ردیفِ دوم)؛ بقیه استنتاجی",
+   "sectionsTotal": 5,
+   "sectionsExtracted": 2,
+   "sectionsSkipped": 3,
+   "items": 6,
+   "bankCounts": [
+    4,
+    2
+   ],
+   "wordBank": [
+    "tea",
+    "that is my favorite",
+    "how about some cake.",
+    "lets have something to drink",
+    "rice and kebab"
+   ],
+   "wordBankSource": "ستونِ چاپیِ a-e س۳ ص۱۰۳ (لایه) — اضافیِ چاپی = b «that is my favorite»",
+   "keyPolicy": "س۳: هر ساقه دقیقاً یک پاسخِ دستوری/معنایی دارد (گرسنه→پیشنهادِ غذا / تشنه→پیشنهادِ نوشیدنی / favorite drink→tea / favorite food→rice and kebab)؛ س۴-ردیف۱: favorite تنها صفت است؛ س۴-ردیف۲: fish تنها جاندار + علامتِ «b.» چاپ؛ اضافیِ هر دو ستون مشترکِ پنج‌گزینه‌ای/چهارگزینه‌ای است",
+   "engineNote": "ساقه‌ها نقطه‌چینِ انتهاییِ چاپ را verbatim دارند («favorite drink?-------»)؛ گزینه‌ها verbatimِ ستون (شاملِ نقطهٔ پایانیِ «how about some cake.» و «lets» بدونِ آپاستروف)",
+   "derivedKeys": {
+    "S3": [
+     "how about some cake.",
+     "tea",
+     "lets have something to drink",
+     "rice and kebab"
+    ],
+    "S4": [
+     "favorite",
+     "fish"
+    ]
+   },
+   "skippedSections": [
+    "ص۱۰۳-س۱ «با توجه به تصاویر داده شده به سواالت زیر پاسخ دهید؟» — تصویرِ مرغِ بریان → «Rice and chicken.» و تصویرِ آب‌نارنج → «Orange juice.» (رندرِ ۳۰۰dpi ص۱۰۳-top)؛ تصویری-کلید و بدونِ تصویرِ یکتا نیست («Rice and -------» با saladِ جدولِ ص۹۸ هم سازگار است)",
+    "ص۱۰۳-س۲ «نام مربوط به هر تصویر را زیر آن بنویسید» — چهار تصویرِ [خرما/موز/گوجه/بستنی] + بانکِ زردِ چاپیِ [Potato - banana - dates - ice cream - tomato] (اضافی = Potato)؛ بانکِ زرد در لایه هست ولی خارجِ موقعیت (انتهای لایهٔ ص۱۰۳ — کوئیرکِ استخراج)؛ تطبیقِ واژه‌به‌تصویر بدونِ تصویر بی‌معناست — تصویری-کلید",
+    "ص۱۰۳-س۵ «……… به انگلیسی چه می شود؟» — تصویرِ تخم‌مرغ (سه تخم‌مرغ در رندرِ ص۱۰۳-bottom) → egg (لنگرِ جدولِ ص۹۸: egg*)؛ تصویری-کلید — الگویِ ساقه‌فارسیِ r371-س۶ ولی با تصویر به‌جای واژهٔ فارسی"
+   ],
+   "printQuirks": [
+    "«cocount» غلطِ تایپیِ چاپ برای coconut — verbatim (الگویِ grangmoter/studing)",
+    "«lets have something to drink» بدونِ آپاستروفِ چاپ — verbatim",
+    "علامتِ «b.» سرگردانِ زیرِ ردیفِ دومِ س۴ = کلیدِ اعلامیِ خودِ جزوه (fish) — نخستین کلیدِ چاپیِ کارتِ هفتم",
+    "«What is your favorite food?.........» در لایه دوخطی شکسته بود («What is your favorite / food?…») — بازجوش شد"
+   ]
+  }
+ }
+}

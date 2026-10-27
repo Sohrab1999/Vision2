@@ -1,0 +1,5424 @@
+{
+ "grade": 9,
+ "title": "جزوه دکتر حسن لطفی — پایه نهم",
+ "lessons": [
+  {
+   "lesson": 1,
+   "title": "تست گرامری (ص۲۸) — there is/are",
+   "level": "چهارگزینه‌ای و تایپی",
+   "count": 7,
+   "questions": [
+    {
+     "id": "g9-l1-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "February normally has twenty-eight days, but every four years…............ twenty-nine.",
+     "options": [
+      "There is",
+      "it is",
+      "it has",
+      "there are"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g9-l1-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "The sun, the moon, and earth have magnetic fields, and ……………. Evidence that the stellar galaxy has fields that extend through vast regions of space.",
+     "options": [
+      "There are",
+      "is",
+      "are",
+      "there is"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g9-l1-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "……………. Fish in the Dead Sea because of the high salt content of the water.",
+     "options": [
+      "it is not",
+      "there are not",
+      "there doesn’t",
+      "they are not"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g9-l1-4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "There ------- a whiteboard on the wall.",
+     "options": [
+      "is",
+      "are"
+     ],
+     "answer": 0,
+     "accepted": [
+      "is"
+     ],
+     "placeholder": "is or are…"
+    },
+    {
+     "id": "g9-l1-5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "There ------- 8 chairs in the classroom.",
+     "options": [
+      "is",
+      "are"
+     ],
+     "answer": 1,
+     "accepted": [
+      "are"
+     ],
+     "placeholder": "is or are…"
+    },
+    {
+     "id": "g9-l1-6",
+     "n": 6,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "There ------- a computer on the desk.",
+     "options": [
+      "is",
+      "are"
+     ],
+     "answer": 0,
+     "accepted": [
+      "is"
+     ],
+     "placeholder": "is or are…"
+    },
+    {
+     "id": "g9-l1-7",
+     "n": 7,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "There ------- two windows in the room.",
+     "options": [
+      "is",
+      "are"
+     ],
+     "answer": 1,
+     "accepted": [
+      "are"
+     ],
+     "placeholder": "is or are…"
+    }
+   ]
+  },
+  {
+   "lesson": 2,
+   "title": "تست واژگان ۵۰تایی (ص۹۸-۱۰۱)",
+   "level": "چهارگزینه‌ای",
+   "count": 50,
+   "questions": [
+    {
+     "id": "g9-l2-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "Our class ………... at 8:00 and finished at 10:00 yesterday.",
+     "options": [
+      "began",
+      "set",
+      "raised",
+      "held"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g9-l2-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "“The money you have to pay to use a particular road, bridge etc”",
+     "options": [
+      "baggage claim",
+      "toll",
+      "boarding",
+      "voyage"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g9-l2-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "His feet were ……………… from standing so long.",
+     "options": [
+      "falling",
+      "aching",
+      "holding",
+      "turning"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g9-l2-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "The man in front of the taxi……...…... me with a knife.",
+     "options": [
+      "attacked",
+      "called",
+      "hired",
+      "raised"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g9-l2-5",
+     "n": 5,
+     "category": "vocab",
+     "question": "The teacher wanted the students to write their names in………...…….",
+     "options": [
+      "churches",
+      "bruises",
+      "anthems",
+      "capitals"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g9-l2-6",
+     "n": 6,
+     "category": "vocab",
+     "question": "Iranians have the fajr film ……………. each year.",
+     "options": [
+      "culture",
+      "martyr",
+      "festival",
+      "reclaim"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g9-l2-7",
+     "n": 7,
+     "category": "vocab",
+     "question": "They believe that they should ………………. their website weekly.",
+     "options": [
+      "interview",
+      "participate",
+      "updates",
+      "download"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g9-l2-8",
+     "n": 8,
+     "category": "vocab",
+     "question": "The ……….…. in our city are open to the public.",
+     "options": [
+      "parades",
+      "palaces",
+      "plows",
+      "plasters"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g9-l2-9",
+     "n": 9,
+     "category": "vocab",
+     "question": "We all try to keep our apartment clean, so its ususlly ………………...",
+     "options": [
+      "neat",
+      "relevant",
+      "generous",
+      "military"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g9-l2-10",
+     "n": 10,
+     "category": "vocab",
+     "question": "I don’t know what his ...........…. in the project was.",
+     "options": [
+      "role",
+      "media",
+      "interview",
+      "charity"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g9-l2-11",
+     "n": 11,
+     "category": "vocab",
+     "question": "“Show your child how to use a simple ………to take the temperature of the water.”",
+     "options": [
+      "reservation",
+      "thermometer",
+      "tractor",
+      "fireworks"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g9-l2-12",
+     "n": 12,
+     "category": "vocab",
+     "question": "Some people from our country ……………for health reasons.",
+     "options": [
+      "feel",
+      "fast",
+      "fill",
+      "find"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g9-l2-13",
+     "n": 13,
+     "category": "vocab",
+     "question": "The doctor asked the sick woman to lie down on her………...…. .",
+     "options": [
+      "skin",
+      "hair",
+      "teeth",
+      "stomach"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g9-l2-14",
+     "n": 14,
+     "category": "vocab",
+     "question": "“To fill a battery with electricity so that it can work again.”",
+     "options": [
+      "recharge",
+      "celebrate",
+      "board",
+      "stick <<<PAGE 99>>>"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g9-l2-15",
+     "n": 15,
+     "category": "vocab",
+     "question": "Iran is a country, but ………………is a continent.",
+     "options": [
+      "American",
+      "Asia",
+      "England",
+      "European"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g9-l2-16",
+     "n": 16,
+     "category": "vocab",
+     "question": "Ted says he has a(n) ………………. with the new manager.",
+     "options": [
+      "passport",
+      "environment",
+      "culture",
+      "interview"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g9-l2-17",
+     "n": 17,
+     "category": "vocab",
+     "question": "Our teacher always ……………a book from the Internet every week.",
+     "options": [
+      "installs",
+      "download",
+      "upload",
+      "brings"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g9-l2-18",
+     "n": 18,
+     "category": "vocab",
+     "question": "My cousin …………….me a map of how to get there.",
+     "options": [
+      "taught",
+      "wrote",
+      "drew",
+      "held"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g9-l2-19",
+     "n": 19,
+     "category": "vocab",
+     "question": "His blue eyes shine in the …………...",
+     "options": [
+      "spotlights",
+      "shrines",
+      "newsstands",
+      "timetabels"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g9-l2-20",
+     "n": 20,
+     "category": "vocab",
+     "question": "We are going to …………. those who lost their lives in the great war.",
+     "options": [
+      "set",
+      "save",
+      "commemorate",
+      "twist"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g9-l2-21",
+     "n": 21,
+     "category": "vocab",
+     "question": "Arent you going to do……………………work for the Red Crescent? I think you have free time for that, son.",
+     "options": [
+      "voluntary",
+      "military",
+      "pleasant",
+      "relevant"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g9-l2-22",
+     "n": 22,
+     "category": "vocab",
+     "question": "The Smith are …………. English, but they live in France.",
+     "options": [
+      "orally",
+      "originally",
+      "internationally",
+      "nearly"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g9-l2-23",
+     "n": 23,
+     "category": "vocab",
+     "question": "The meeting is on the fifth, and we are hopping everyone will…………...",
+     "options": [
+      "attend",
+      "attack",
+      "browse",
+      "hold"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g9-l2-24",
+     "n": 24,
+     "category": "vocab",
+     "question": "Because of his ……………throat, my grandfather went to the doctor at 2 a.m.",
+     "options": [
+      "pain",
+      "ache",
+      "bloody",
+      "sore"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g9-l2-25",
+     "n": 25,
+     "category": "vocab",
+     "question": "It took several months for his ……………….to healthy.",
+     "options": [
+      "members",
+      "events",
+      "wounds",
+      "arms"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g9-l2-26",
+     "n": 26,
+     "category": "vocab",
+     "question": "The children ………………. their prayers and got into bed.",
+     "options": [
+      "told",
+      "said",
+      "read",
+      "gave"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g9-l2-27",
+     "n": 27,
+     "category": "vocab",
+     "question": "I don’t want to ……………... the voyage alone.",
+     "options": [
+      "build",
+      "make",
+      "get",
+      "go"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g9-l2-28",
+     "n": 28,
+     "category": "vocab",
+     "question": "Someone …………...posters all over the walls.",
+     "options": [
+      "drew",
+      "climbed",
+      "stuck",
+      "booked <<<PAGE 100>>>"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g9-l2-29",
+     "n": 29,
+     "category": "vocab",
+     "question": "After the accident, the nurse tried to give the injured first…………...",
+     "options": [
+      "aid",
+      "help",
+      "both 1&2",
+      "need"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g9-l2-30",
+     "n": 30,
+     "category": "vocab",
+     "question": "When we arrived at the station, the driver asked us to get ……. the train",
+     "options": [
+      "back",
+      "up",
+      "off",
+      "to"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g9-l2-31",
+     "n": 31,
+     "category": "vocab",
+     "question": "Minas father want to meet the tall dark man with a ………...on his left hand.",
+     "options": [
+      "blood",
+      "shrine",
+      "turn",
+      "scare"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g9-l2-32",
+     "n": 32,
+     "category": "vocab",
+     "question": "My uncle ……...enough to buy a small house for his family.",
+     "options": [
+      "gave",
+      "took",
+      "learned",
+      "saved"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g9-l2-33",
+     "n": 33,
+     "category": "vocab",
+     "question": "Do you know what the …….” pick up the oil” means?",
+     "options": [
+      "word",
+      "phrase",
+      "letter",
+      "sentence"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g9-l2-34",
+     "n": 34,
+     "category": "vocab",
+     "question": "How can a person stop running …………….very fast?",
+     "options": [
+      "nose",
+      "mouth",
+      "eye",
+      "ear"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g9-l2-35",
+     "n": 35,
+     "category": "vocab",
+     "question": "The word “sore” NOT go with……………",
+     "options": [
+      "eye",
+      "knee",
+      "throat",
+      "head"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g9-l2-36",
+     "n": 36,
+     "category": "vocab",
+     "question": "I opened the ……. on which there was a(n) …………, pulled out the letter and read it.",
+     "options": [
+      "stamp / envelope",
+      "stamp / interview",
+      "envelope / stamp",
+      "envelope / interview"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g9-l2-37",
+     "n": 37,
+     "category": "vocab",
+     "question": "His son, who was usually quit and shy, was very ……………. that morning.",
+     "options": [
+      "favorite",
+      "pleseant",
+      "military",
+      "talkative"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g9-l2-38",
+     "n": 38,
+     "category": "vocab",
+     "question": "my friends……………boating on the lake every other day.",
+     "options": [
+      "go",
+      "come",
+      "do",
+      "play"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g9-l2-39",
+     "n": 39,
+     "category": "vocab",
+     "question": "Alice s father had been very …………...to her when she was a child.",
+     "options": [
+      "cruel",
+      "correct",
+      "voulantry",
+      "talkative"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g9-l2-40",
+     "n": 40,
+     "category": "vocab",
+     "question": "Make a left ……………...at the station.",
+     "options": [
+      "scar",
+      "turn",
+      "hand",
+      "leg"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g9-l2-41",
+     "n": 41,
+     "category": "vocab",
+     "question": "The receptionist says places are fully …………. for the Summer Camp.",
+     "options": [
+      "acted",
+      "booked",
+      "got off",
+      "filled out"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g9-l2-42",
+     "n": 42,
+     "category": "vocab",
+     "question": "I was still sitting; he was standing, his arms ………. behind his back.",
+     "options": [
+      "hurt",
+      "stuck",
+      "twisted",
+      "turned <<<PAGE 101>>>"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g9-l2-43",
+     "n": 43,
+     "category": "vocab",
+     "question": "Let your child help with meals by choosing foods, ..........…food and………the table.",
+     "options": [
+      "preparing / setting",
+      "setting / preparing",
+      "preparing / sitting",
+      "eating / sitting at"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g9-l2-44",
+     "n": 44,
+     "category": "vocab",
+     "question": "Which word does NOT go with “bleeding”?",
+     "options": [
+      "severe",
+      "heavy",
+      "both1&2",
+      "generouse"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g9-l2-45",
+     "n": 45,
+     "category": "vocab",
+     "question": "How much would you like to ………out? B: I want to ………. $20.",
+     "options": [
+      "take / fill out",
+      "boring / withdraw",
+      "bring / fill out",
+      "take / withdraw"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g9-l2-46",
+     "n": 46,
+     "category": "vocab",
+     "question": "This time I was back for a ceremony of ………………...",
+     "options": [
+      "pronounciation",
+      "commemoration",
+      "reservation",
+      "connection"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g9-l2-47",
+     "n": 47,
+     "category": "vocab",
+     "question": "Penicillin was a(n)……………in medicine.",
+     "options": [
+      "information",
+      "attention",
+      "celebration",
+      "reveloution"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g9-l2-48",
+     "n": 48,
+     "category": "vocab",
+     "question": "The old farmers know how to …………...the land.",
+     "options": [
+      "plow",
+      "plant",
+      "grow",
+      "raise"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g9-l2-49",
+     "n": 49,
+     "category": "vocab",
+     "question": "The good news is that we ……………. all the ……………information.",
+     "options": [
+      "got / kind",
+      "reported / cruel",
+      "made / holy",
+      "received /relevant"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g9-l2-50",
+     "n": 50,
+     "category": "vocab",
+     "question": "The baby was crawling around on its …………………. .",
+     "options": [
+      "hands and knee",
+      "hands and finger",
+      "stomach and nose",
+      "feet and leg"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "lesson": 3,
+   "title": "تمرین مکالمه درس اول (ص۱۷) — صحبت کردن در مورد شخصیت",
+   "level": "تمرین مکالمه — تایپی",
+   "count": 11,
+   "questions": [
+    {
+     "id": "g9-l3-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Are you hard-working?",
+     "options": [
+      "Yes, I am.",
+      "Yes, he is."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Yes, I am.",
+      "Yes I am."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا تو سخت کوش هستی؟ بله، من هستم"
+    },
+    {
+     "id": "g9-l3-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Is he clever?",
+     "options": [
+      "Yes, he is.",
+      "No, she isn’t."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Yes, he is.",
+      "Yes he is."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا او باهوش هست؟ بله، او هست"
+    },
+    {
+     "id": "g9-l3-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Is Zahra talkative?",
+     "options": [
+      "No, she isn’t.",
+      "Yes, they are."
+     ],
+     "answer": 0,
+     "accepted": [
+      "No, she isn’t.",
+      "No she isn’t.",
+      "No, she is not.",
+      "No she is not."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا زهرا پرحرف است؟ نه، او نیست"
+    },
+    {
+     "id": "g9-l3-4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Are they neat?",
+     "options": [
+      "Yes, they are.",
+      "No, they’re not."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Yes, they are.",
+      "Yes they are."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا آنها مرتب هستند؟ بله، آنها هستند"
+    },
+    {
+     "id": "g9-l3-5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Are they upset?",
+     "options": [
+      "No, they’re not.",
+      "He’s very funny."
+     ],
+     "answer": 0,
+     "accepted": [
+      "No, they’re not.",
+      "No they’re not.",
+      "No, they are not.",
+      "No they are not."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا آنها غمگین هستند؟ نه آنها نیستند"
+    },
+    {
+     "id": "g9-l3-6",
+     "n": 6,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What’s your friend like?",
+     "options": [
+      "He’s very funny.",
+      "She’s very kind and patient."
+     ],
+     "answer": 0,
+     "accepted": [
+      "He’s very funny.",
+      "He is very funny."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "دوست تو چطور آدمی هست؟ او خیلی بامزه هست"
+    },
+    {
+     "id": "g9-l3-7",
+     "n": 7,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What’s your mother like?",
+     "options": [
+      "She’s very kind and patient.",
+      "He is quiet."
+     ],
+     "answer": 0,
+     "accepted": [
+      "She’s very kind and patient.",
+      "She is very kind and patient."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "مادرت چطوریه؟ او خیلی مهربان و صبور هست."
+    },
+    {
+     "id": "g9-l3-8",
+     "n": 8,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What’s he like?",
+     "options": [
+      "He is quiet.",
+      "She is clever."
+     ],
+     "answer": 0,
+     "accepted": [
+      "He is quiet."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "او چگونه هست؟ او (پسر) خیلی آرام هست."
+    },
+    {
+     "id": "g9-l3-9",
+     "n": 9,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What’s she like?",
+     "options": [
+      "She is clever.",
+      "I’m a bit serious."
+     ],
+     "answer": 0,
+     "accepted": [
+      "She is clever."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "او (دختر) چگونه است؟ او باهوش است."
+    },
+    {
+     "id": "g9-l3-10",
+     "n": 10,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What are you like?",
+     "options": [
+      "I’m a bit serious.",
+      "They are very kind."
+     ],
+     "answer": 0,
+     "accepted": [
+      "I’m a bit serious.",
+      "I am a bit serious."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "تو چگونه هستی؟ من کمی جدی هستم."
+    },
+    {
+     "id": "g9-l3-11",
+     "n": 11,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What are they like?",
+     "options": [
+      "They are very kind.",
+      "Yes, I am."
+     ],
+     "answer": 0,
+     "accepted": [
+      "They are very kind."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آنها چگونه هستند؟ آنها خیلی مهربان هستند."
+    }
+   ]
+  },
+  {
+   "lesson": 4,
+   "title": "تمرین مکالمه درس دوم (ص۳۱) — صحبت کردن در مورد سفر",
+   "level": "تمرین مکالمه — تایپی",
+   "count": 9,
+   "questions": [
+    {
+     "id": "g9-l4-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Are you visiting Tehran?",
+     "options": [
+      "Yes, I am.",
+      "No, they aren’t."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Yes, I am.",
+      "Yes I am."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا تو در حال بازدید از تهران هستی؟ بله، من هستم"
+    },
+    {
+     "id": "g9-l4-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Are they traveling around the world?",
+     "options": [
+      "No, they aren’t.",
+      "Yes, he is."
+     ],
+     "answer": 0,
+     "accepted": [
+      "No, they aren’t.",
+      "No they aren’t.",
+      "No, they are not.",
+      "No they are not."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا آنها در حال سفر دور دنیا هستند؟ نه، آنها نیستند"
+    },
+    {
+     "id": "g9-l4-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Is Paul booking a room?",
+     "options": [
+      "Yes, he is.",
+      "No, she’s reading the guide book."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Yes, he is.",
+      "Yes he is."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا پاول در حال رزرو اتاق است؟ بله، او هست"
+    },
+    {
+     "id": "g9-l4-4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Is Kate checking the map?",
+     "options": [
+      "No, she’s reading the guide book.",
+      "Sara."
+     ],
+     "answer": 0,
+     "accepted": [
+      "No, she’s reading the guide book.",
+      "No she’s reading the guide book.",
+      "No, she is reading the guide book.",
+      "No she is reading the guide book."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا کیت در حال چک کردن نقشه است؟ نه، او در حال مطالعه کتاب راهنما است"
+    },
+    {
+     "id": "g9-l4-5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Who is speaking English now?",
+     "options": [
+      "Sara.",
+      "He is buying a ticket."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Sara."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "چه کسی در حال انگلیسی صحبت کردن است؟ سارا"
+    },
+    {
+     "id": "g9-l4-6",
+     "n": 6,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What is he doing?",
+     "options": [
+      "He is buying a ticket.",
+      "He’s going to Mehrabad Airport."
+     ],
+     "answer": 0,
+     "accepted": [
+      "He is buying a ticket."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "او در حال انجام چه کاری است؟ او در حال خرید بلیط است."
+    },
+    {
+     "id": "g9-l4-7",
+     "n": 7,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Where is Ali going?",
+     "options": [
+      "He’s going to Mehrabad Airport.",
+      "I’m filling out the reservation form."
+     ],
+     "answer": 0,
+     "accepted": [
+      "He’s going to Mehrabad Airport.",
+      "He is going to Mehrabad Airport."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "علی در حال رفتن به کجاست؟ او در حال رفتن به فرودگاه مهر آباد هست ."
+    },
+    {
+     "id": "g9-l4-8",
+     "n": 8,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What are you doing?",
+     "options": [
+      "I’m filling out the reservation form.",
+      "They are traveling by train."
+     ],
+     "answer": 0,
+     "accepted": [
+      "I’m filling out the reservation form.",
+      "I am filling out the reservation form."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "تو در حال انجام چه کاری هستی؟ من در حال پر کردن فرم رزرو هستم ."
+    },
+    {
+     "id": "g9-l4-9",
+     "n": 9,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "How are they traveling?",
+     "options": [
+      "They are traveling by train.",
+      "Yes, I am."
+     ],
+     "answer": 0,
+     "accepted": [
+      "They are traveling by train."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آنها چطور سفر میکنند؟ آنها در حال سفر با قطار هستند."
+    }
+   ]
+  },
+  {
+   "lesson": 5,
+   "title": "تمرین مکالمه درس سوم (ص۵۱) — صحبت کردن در مورد جشن ها و مراسمات",
+   "level": "تمرین مکالمه — تایپی",
+   "count": 8,
+   "questions": [
+    {
+     "id": "g9-l5-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Do you buy new clothes for the New Year?",
+     "options": [
+      "Yes, I do.",
+      "No, we don’t"
+     ],
+     "answer": 0,
+     "accepted": [
+      "Yes, I do.",
+      "Yes I do."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا برای این نوروز لباس جدید میخری ؟ بله.میخرم"
+    },
+    {
+     "id": "g9-l5-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Do you and your cousins set the Haft Seen table?",
+     "options": [
+      "No, we don’t",
+      "Yes, they usually color them"
+     ],
+     "answer": 0,
+     "accepted": [
+      "No, we don’t",
+      "No we don’t",
+      "No, we do not",
+      "No we do not"
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا تو و عمو زاده هایت سفره هفت سین را می چینید؟ نه ، ما نمی چینیم"
+    },
+    {
+     "id": "g9-l5-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Do young children color the eggs?",
+     "options": [
+      "Yes, they usually color them",
+      "Yes, they don’t buy goldfish"
+     ],
+     "answer": 0,
+     "accepted": [
+      "Yes, they usually color them",
+      "Yes they usually color them"
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا بچه های کوچک تخم مرغ ها را رنگ میکنند؟ بله، آنها معموال آنها را رنگ می کنند ."
+    },
+    {
+     "id": "g9-l5-4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Do Chinese people buy gold fish for the New Year?",
+     "options": [
+      "Yes, they don’t buy goldfish",
+      "Yes, he does."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Yes, they don’t buy goldfish",
+      "Yes they don’t buy goldfish",
+      "Yes, they do not buy goldfish",
+      "Yes they do not buy goldfish",
+      "No, they don’t buy goldfish",
+      "No, they do not buy goldfish"
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا افراد چینی برای نوروز ماهی قرمز میخرند؟ نه، آنها ماهی قرمز نمیخرند"
+    },
+    {
+     "id": "g9-l5-5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Does he recite the Holy Quran at the turn of the year?",
+     "options": [
+      "Yes, he does.",
+      "No, he doesn’t."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Yes, he does.",
+      "Yes he does."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "ایا او در تحویل سال قران را قراءت میکند؟ بله او قرائت میکند ."
+    },
+    {
+     "id": "g9-l5-6",
+     "n": 6,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Does your father give you New Year gifts?",
+     "options": [
+      "No, he doesn’t.",
+      "Yes, she has many friends."
+     ],
+     "answer": 0,
+     "accepted": [
+      "No, he doesn’t.",
+      "No he doesn’t.",
+      "No, he does not.",
+      "No he does not."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا پدر تو به تو کادوی عید می دهد؟ نه ، او نمی دهد ."
+    },
+    {
+     "id": "g9-l5-7",
+     "n": 7,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Does she have many friends?",
+     "options": [
+      "Yes, she has many friends.",
+      "No, she doesn’t make a special food."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Yes, she has many friends.",
+      "Yes she has many friends."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا او دوستان زیادی دارد؟ بله او دوستان زیادی دارد"
+    },
+    {
+     "id": "g9-l5-8",
+     "n": 8,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Does your mom make a special food for Norooz?",
+     "options": [
+      "No, she doesn’t make a special food.",
+      "Yes, I do."
+     ],
+     "answer": 0,
+     "accepted": [
+      "No, she doesn’t make a special food.",
+      "No she doesn’t make a special food.",
+      "No, she does not make a special food.",
+      "No she does not make a special food."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا مادر تو برای نوروز غذای خاصی درست می کند؟ نه او غذای خاصی درست نمی کند ."
+    }
+   ]
+  },
+  {
+   "lesson": 6,
+   "title": "تمرین مکالمه درس چهارم (ص۶۵) — صحبت کردن در مورد خدمات",
+   "level": "تمرین مکالمه — تایپی",
+   "count": 10,
+   "questions": [
+    {
+     "id": "g9-l6-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What is her job?",
+     "options": [
+      "She’s an employee.",
+      "It’s over there."
+     ],
+     "answer": 0,
+     "accepted": [
+      "She’s an employee.",
+      "She is an employee."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "شغل او چیست؟ او کارمند است."
+    },
+    {
+     "id": "g9-l6-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Where is the post office?",
+     "options": [
+      "It’s over there.",
+      "He is a postman."
+     ],
+     "answer": 0,
+     "accepted": [
+      "It’s over there.",
+      "It is over there."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "اداره پست کجاست؟ آن جا است."
+    },
+    {
+     "id": "g9-l6-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Who’s that man?",
+     "options": [
+      "He is a postman.",
+      "It’s at 9:30."
+     ],
+     "answer": 0,
+     "accepted": [
+      "He is a postman."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آن مرد کیست؟ او پستچی است."
+    },
+    {
+     "id": "g9-l6-4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "When is the break?",
+     "options": [
+      "It’s at 9:30.",
+      "It opens at 8 in the morning."
+     ],
+     "answer": 0,
+     "accepted": [
+      "It’s at 9:30.",
+      "It is at 9:30."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "زنگ تفریح چه موقع است؟ ساعت نه و نیم ."
+    },
+    {
+     "id": "g9-l6-5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What time does it open?",
+     "options": [
+      "It opens at 8 in the morning.",
+      "They work from Saturday to Wednesday."
+     ],
+     "answer": 0,
+     "accepted": [
+      "It opens at 8 in the morning."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "چه ساعتی باز میکند؟ ساعت ۸ صبح باز میکند."
+    },
+    {
+     "id": "g9-l6-6",
+     "n": 6,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "When do they work?",
+     "options": [
+      "They work from Saturday to Wednesday.",
+      "The police help them."
+     ],
+     "answer": 0,
+     "accepted": [
+      "They work from Saturday to Wednesday."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آنها چه زمانی کار میکنند؟ آنها از شنبه تا چهارشنبه کار میکنند."
+    },
+    {
+     "id": "g9-l6-7",
+     "n": 7,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Who helps lost children?",
+     "options": [
+      "The police help them.",
+      "She buys them from a post office."
+     ],
+     "answer": 0,
+     "accepted": [
+      "The police help them."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "چه کسی به کودکان گم شده کمک میکند؟ پلیس به آنها کمک میکند ."
+    },
+    {
+     "id": "g9-l6-8",
+     "n": 8,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Where does she buy stamps?",
+     "options": [
+      "She buys them from a post office.",
+      "Because it’s fast and cheap."
+     ],
+     "answer": 0,
+     "accepted": [
+      "She buys them from a post office."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "او از کجا تمبر میخرد؟ از اداره پست آنها را میخرد ."
+    },
+    {
+     "id": "g9-l6-9",
+     "n": 9,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Why does he go to work by bus?",
+     "options": [
+      "Because it’s fast and cheap.",
+      "I take a bus."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Because it’s fast and cheap.",
+      "Because it is fast and cheap."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "چرا با اتوبوس به سر کار می رود؟ چون سریع و ارزان است."
+    },
+    {
+     "id": "g9-l6-10",
+     "n": 10,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "How do you come to school?",
+     "options": [
+      "I take a bus.",
+      "She’s an employee."
+     ],
+     "answer": 0,
+     "accepted": [
+      "I take a bus."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "شما چه طور به مدرسه می آیید؟ من اتوبوس سوار می شوم ."
+    }
+   ]
+  },
+  {
+   "lesson": 7,
+   "title": "تمرین مکالمه درس پنجم (ص۸۳) — صحبت کردن در مورد رسانه",
+   "level": "تمرین مکالمه — تایپی",
+   "count": 9,
+   "questions": [
+    {
+     "id": "g9-l7-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Did the girls listen to the radio?",
+     "options": [
+      "Yes, they did.",
+      "No, she didn’t."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Yes, they did.",
+      "Yes they did."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا آن دخترها به رادیو گوش دادند؟ بله گوش دادند"
+    },
+    {
+     "id": "g9-l7-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Did Mina surf the Internet?",
+     "options": [
+      "No, she didn’t.",
+      "Yes, we watched it."
+     ],
+     "answer": 0,
+     "accepted": [
+      "No, she didn’t.",
+      "No she didn’t.",
+      "No, she did not.",
+      "No she did not."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا مینا در اینترنت جست و جو کرد؟ نه جستجو نکرد"
+    },
+    {
+     "id": "g9-l7-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Did you watch the cartoon?",
+     "options": [
+      "Yes, we watched it.",
+      "No, he worked with his mobile."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Yes, we watched it.",
+      "Yes we watched it."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا شما کارتون تماشا کردید؟ بله ما تماشا کردیم"
+    },
+    {
+     "id": "g9-l7-4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Did Amir work with his computer?",
+     "options": [
+      "No, he worked with his mobile.",
+      "My sister."
+     ],
+     "answer": 0,
+     "accepted": [
+      "No, he worked with his mobile.",
+      "No he worked with his mobile."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا امیر با کامپیوترش کار کرد؟ نه او با موبایلش کار کرد"
+    },
+    {
+     "id": "g9-l7-5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Who watched the movie last night?",
+     "options": [
+      "My sister.",
+      "I attended Fajr International Film Festival."
+     ],
+     "answer": 0,
+     "accepted": [
+      "My sister."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "شب گذشته چه کسی فیلم تماشا کرد؟ خواهر من"
+    },
+    {
+     "id": "g9-l7-6",
+     "n": 6,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What did you do last week?",
+     "options": [
+      "I attended Fajr International Film Festival.",
+      "He received an email."
+     ],
+     "answer": 0,
+     "accepted": [
+      "I attended Fajr International Film Festival."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "هفته گذشته چه کاری انجام دادی؟ من در جشنواره بین المللی فیلم فجر شرکت کردم"
+    },
+    {
+     "id": "g9-l7-7",
+     "n": 7,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "What did Ali receive?",
+     "options": [
+      "He received an email.",
+      "They downloaded it yesterday."
+     ],
+     "answer": 0,
+     "accepted": [
+      "He received an email."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "علی چه چیزی دریافت کرد؟ او یک ایمیل دریافت کرد ."
+    },
+    {
+     "id": "g9-l7-8",
+     "n": 8,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "When did they download the book?",
+     "options": [
+      "They downloaded it yesterday.",
+      "She connected to the Internet at school."
+     ],
+     "answer": 0,
+     "accepted": [
+      "They downloaded it yesterday."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آنها چه زمانی کتاب را دانلود کردند؟ آنها دیروز آن را دانلود کردند"
+    },
+    {
+     "id": "g9-l7-9",
+     "n": 9,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Where did she connect to the Internet?",
+     "options": [
+      "She connected to the Internet at school.",
+      "Yes, they did."
+     ],
+     "answer": 0,
+     "accepted": [
+      "She connected to the Internet at school."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "او کجا به اینترنت متصل شد؟ او در مدرسه به اینترنت متصل شد"
+    }
+   ]
+  },
+  {
+   "lesson": 8,
+   "title": "تمرین مکالمه درس ششم (ص۹۶) — صحبت کردن در مورد سالمتی و آسیب ها",
+   "level": "تمرین مکالمه — تایپی",
+   "count": 8,
+   "questions": [
+    {
+     "id": "g9-l8-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Did Mina have an accident?",
+     "options": [
+      "Yes, she did.",
+      "No, he didn’t."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Yes, she did.",
+      "Yes she did."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا مینا تصادف کرد؟ بله تصادف کرد ."
+    },
+    {
+     "id": "g9-l8-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Did Ali cut his finger?",
+     "options": [
+      "No, he didn’t.",
+      "Yes, I broke my leg."
+     ],
+     "answer": 0,
+     "accepted": [
+      "No, he didn’t.",
+      "No he didn’t.",
+      "No, he did not.",
+      "No he did not."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا علی انگشت خود را برید؟ نه نبرید ."
+    },
+    {
+     "id": "g9-l8-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Did you break your leg?",
+     "options": [
+      "Yes, I broke my leg.",
+      "No, I didn’t hurt my back."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Yes, I broke my leg.",
+      "Yes I broke my leg."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا پای شما شکست؟ بله پای من شکست."
+    },
+    {
+     "id": "g9-l8-4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Did you hurt your back?",
+     "options": [
+      "No, I didn’t hurt my back.",
+      "Reza."
+     ],
+     "answer": 0,
+     "accepted": [
+      "No, I didn’t hurt my back.",
+      "No I didn’t hurt my back.",
+      "No, I did not hurt my back.",
+      "No I did not hurt my back."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "آیا پشت شما آسیب دید؟ نه پشت من آسیب دید."
+    },
+    {
+     "id": "g9-l8-5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Who had an accident?",
+     "options": [
+      "Reza.",
+      "She broke her leg in the park."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Reza."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "چه کسی تصادف کرد؟ رضا"
+    },
+    {
+     "id": "g9-l8-6",
+     "n": 6,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Where did she break her leg?",
+     "options": [
+      "She broke her leg in the park.",
+      "He hit his head on the door."
+     ],
+     "answer": 0,
+     "accepted": [
+      "She broke her leg in the park."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "پای او کجا شکست؟ او پایش را در پارک شکست."
+    },
+    {
+     "id": "g9-l8-7",
+     "n": 7,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "How did Amir hurt his head?",
+     "options": [
+      "He hit his head on the door.",
+      "Because they drove fast."
+     ],
+     "answer": 0,
+     "accepted": [
+      "He hit his head on the door."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "سر امیر چطور آسیب دید؟ سرش به در خورد ."
+    },
+    {
+     "id": "g9-l8-8",
+     "n": 8,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Why did they have an accident?",
+     "options": [
+      "Because they drove fast.",
+      "Yes, she did."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Because they drove fast."
+     ],
+     "placeholder": "answer in English…",
+     "translation": "چرا آنها تصادف کردند؟ چون که با سرعت رانندگی کردند."
+    }
+   ]
+  },
+  {
+   "lesson": 9,
+   "title": "امتحانی درس اول — متضاد کلمات (س۲، ص۳۱)",
+   "level": "تمرین تایپی",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g9-l9-1",
+     "n": 1,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "Kind: -------",
+     "options": [
+      "cruel",
+      "hard working"
+     ],
+     "answer": 0,
+     "accepted": [
+      "cruel"
+     ],
+     "placeholder": "the opposite word…"
+    },
+    {
+     "id": "g9-l9-2",
+     "n": 2,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "lazy: -------",
+     "options": [
+      "hard working",
+      "upset"
+     ],
+     "answer": 0,
+     "accepted": [
+      "hard working",
+      "hardworking",
+      "hard-working"
+     ],
+     "placeholder": "the opposite word…"
+    },
+    {
+     "id": "g9-l9-3",
+     "n": 3,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "Happy: -------",
+     "options": [
+      "upset",
+      "quiet"
+     ],
+     "answer": 0,
+     "accepted": [
+      "upset",
+      "sad"
+     ],
+     "placeholder": "the opposite word…"
+    },
+    {
+     "id": "g9-l9-4",
+     "n": 4,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "Talkative: -------",
+     "options": [
+      "quiet",
+      "cruel"
+     ],
+     "answer": 0,
+     "accepted": [
+      "quiet"
+     ],
+     "placeholder": "the opposite word…"
+    }
+   ]
+  },
+  {
+   "lesson": 10,
+   "title": "امتحانی درس اول — سوالی و منفی (س۴، ص۳۱)",
+   "level": "تمرین تایپی",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g9-l10-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Mina is hard working. (سوالی : -------)",
+     "options": [
+      "Is Mina hard working?",
+      "Mina is not hard working."
+     ],
+     "answer": 0,
+     "accepted": [
+      "Is Mina hard working?"
+     ],
+     "placeholder": "rewrite as a question…"
+    },
+    {
+     "id": "g9-l10-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Mina is hard working. (منفی: -------)",
+     "options": [
+      "Mina is not hard working.",
+      "Is Mina hard working?"
+     ],
+     "answer": 0,
+     "accepted": [
+      "Mina is not hard working.",
+      "Mina isn’t hard working."
+     ],
+     "placeholder": "rewrite as a negative…"
+    }
+   ]
+  },
+  {
+   "lesson": 11,
+   "title": "امتحانی درس اول — there is/there are (س۶، ص۳۲)",
+   "level": "تمرین تایپی",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g9-l11-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "------- some pens on the deask.",
+     "options": [
+      "There is",
+      "There are"
+     ],
+     "answer": 1,
+     "accepted": [
+      "There are"
+     ],
+     "placeholder": "there is / there are…"
+    },
+    {
+     "id": "g9-l11-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "------- a computer in the library.",
+     "options": [
+      "There is",
+      "There are"
+     ],
+     "answer": 0,
+     "accepted": [
+      "There is"
+     ],
+     "placeholder": "there is / there are…"
+    },
+    {
+     "id": "g9-l11-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "------- an eraser in here.",
+     "options": [
+      "There is",
+      "There are"
+     ],
+     "answer": 0,
+     "accepted": [
+      "There is"
+     ],
+     "placeholder": "there is / there are…"
+    },
+    {
+     "id": "g9-l11-4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "------- four students in the class.",
+     "options": [
+      "There is",
+      "There are"
+     ],
+     "answer": 1,
+     "accepted": [
+      "There are"
+     ],
+     "placeholder": "there is / there are…"
+    }
+   ]
+  },
+  {
+   "lesson": 12,
+   "title": "امتحانی درس اول — گزینه صحیح (س۷، ص۳۲)",
+   "level": "چهارگزینه‌ای",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g9-l12-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "My sister is ------- she is not quiet.",
+     "options": [
+      "neat",
+      "talkative",
+      "kind",
+      "pleasant"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g9-l12-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "Sina is ------- Everybody likes him.",
+     "options": [
+      "lazy",
+      "cruel",
+      "serious",
+      "kind"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g9-l12-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "There is ------- apple in my bag.",
+     "options": [
+      "a",
+      "some",
+      "an",
+      "6"
+     ],
+     "answer": 2
+    }
+   ]
+  },
+  {
+   "lesson": 13,
+   "title": "امتحانی درس اول — کلمه ناهماهنگ (س۹، ص۳۲)",
+   "level": "چهارگزینه‌ای",
+   "count": 7,
+   "questions": [
+    {
+     "id": "g9-l13-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "serious – help – quiet – neat",
+     "options": [
+      "serious",
+      "help",
+      "quiet",
+      "neat"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g9-l13-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "rude – polite – angry – selfish",
+     "options": [
+      "rude",
+      "polite",
+      "angry",
+      "selfish"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g9-l13-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "kind – cruel – patient – helpful",
+     "options": [
+      "kind",
+      "cruel",
+      "patient",
+      "helpful"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "g9-l13-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "selfish – generous – shy – person",
+     "options": [
+      "selfish",
+      "generous",
+      "shy",
+      "person"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g9-l13-5",
+     "n": 5,
+     "category": "vocab",
+     "question": "office – library- company – homework",
+     "options": [
+      "office",
+      "library",
+      "company",
+      "homework"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "g9-l13-6",
+     "n": 6,
+     "category": "vocab",
+     "question": "nervous – hardworking – careful – brave",
+     "options": [
+      "nervous",
+      "hardworking",
+      "careful",
+      "brave"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g9-l13-7",
+     "n": 7,
+     "category": "vocab",
+     "question": "hardworking – clever – careless – careful",
+     "options": [
+      "hardworking",
+      "clever",
+      "careless",
+      "careful"
+     ],
+     "answer": 2
+    }
+   ]
+  },
+  {
+   "lesson": 14,
+   "title": "امتحانی درس اول — am/is/are (س۱۱، ص۳۳)",
+   "level": "تمرین تایپی",
+   "count": 5,
+   "questions": [
+    {
+     "id": "g9-l14-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "They ------- neat.",
+     "options": [
+      "am",
+      "is",
+      "are"
+     ],
+     "answer": 2,
+     "accepted": [
+      "are"
+     ],
+     "placeholder": "am, is or are…"
+    },
+    {
+     "id": "g9-l14-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "My brother ------- helpful.",
+     "options": [
+      "am",
+      "is",
+      "are"
+     ],
+     "answer": 1,
+     "accepted": [
+      "is"
+     ],
+     "placeholder": "am, is or are…"
+    },
+    {
+     "id": "g9-l14-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "I ------- not cruel.",
+     "options": [
+      "am",
+      "is",
+      "are"
+     ],
+     "answer": 0,
+     "accepted": [
+      "am"
+     ],
+     "placeholder": "am, is or are…"
+    },
+    {
+     "id": "g9-l14-4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "We ------- clever.",
+     "options": [
+      "am",
+      "is",
+      "are"
+     ],
+     "answer": 2,
+     "accepted": [
+      "are"
+     ],
+     "placeholder": "am, is or are…"
+    },
+    {
+     "id": "g9-l14-5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "------- Zahra careless?",
+     "options": [
+      "am",
+      "is",
+      "are"
+     ],
+     "answer": 1,
+     "accepted": [
+      "Is"
+     ],
+     "placeholder": "am, is or are…"
+    }
+   ]
+  },
+  {
+   "lesson": 15,
+   "title": "امتحانی درس اول — مکالمهٔ وصل‌شدنی (س۱۴، ص۳۳)",
+   "level": "چهارگزینه‌ای (پنج‌گزینه‌ای چاپی)",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g9-l15-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Are you angry? ( ------- )",
+     "options": [
+      "Yes, he is.",
+      "She is a careful girl.",
+      "I`m brave.",
+      "No, she isn`t.",
+      "No, we are not."
+     ],
+     "answer": 4
+    },
+    {
+     "id": "g9-l15-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "Is your uncle careful? ( ------- )",
+     "options": [
+      "Yes, he is.",
+      "She is a careful girl.",
+      "I`m brave.",
+      "No, she isn`t.",
+      "No, we are not."
+     ],
+     "answer": 0
+    },
+    {
+     "id": "g9-l15-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "What are you like? ( ------- )",
+     "options": [
+      "Yes, he is.",
+      "She is a careful girl.",
+      "I`m brave.",
+      "No, she isn`t.",
+      "No, we are not."
+     ],
+     "answer": 2
+    },
+    {
+     "id": "g9-l15-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "What is your sister like? ( ------- )",
+     "options": [
+      "Yes, he is.",
+      "She is a careful girl.",
+      "I`m brave.",
+      "No, she isn`t.",
+      "No, we are not."
+     ],
+     "answer": 1
+    }
+   ]
+  },
+  {
+   "lesson": 16,
+   "title": "امتحانی درس دوم — بانک واژهٔ مکالمهٔ هتل (س۲، ص۴۷)",
+   "level": "تمرین تایپی (بانک واژه)",
+   "count": 8,
+   "questions": [
+    {
+     "id": "g9-l16-1",
+     "n": 1,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "A: Welcome to our hotel, how can I ------- you?",
+     "options": [
+      "help",
+      "staying"
+     ],
+     "answer": 0,
+     "accepted": [
+      "help"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ درس verbatim: «how can I help you?» (لایه ۲۳۸۶)"
+    },
+    {
+     "id": "g9-l16-2",
+     "n": 2,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "B: I have a ------- here.",
+     "options": [
+      "reservation",
+      "book"
+     ],
+     "answer": 0,
+     "accepted": [
+      "reservation"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ درس verbatim: «I have a reservation here.» (لایه ۲۳۸۹) — واژهٔ اضافیِ چاپی «book» همان تلهٔ ردیف است"
+    },
+    {
+     "id": "g9-l16-3",
+     "n": 3,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "A: Are you ------- for 5 days?",
+     "options": [
+      "staying",
+      "standing"
+     ],
+     "answer": 0,
+     "accepted": [
+      "staying"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ درس: «Are you staying here for two nights?» (لایه ۲۳۹۱) — جفتِ آواییِ staying/standing تلهٔ چاپی"
+    },
+    {
+     "id": "g9-l16-4",
+     "n": 4,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "B: No, we are ------- Isfahan for 3 nights.",
+     "options": [
+      "visiting",
+      "staying"
+     ],
+     "answer": 0,
+     "accepted": [
+      "visiting"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ درس: «my wife and I are visiting Tehran» (لایه ۲۳۹۳) — visiting متعدی؛ staying حرفِ اضافه می‌خواهد"
+    },
+    {
+     "id": "g9-l16-5",
+     "n": 5,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "A: Where is your -------?",
+     "options": [
+      "wife",
+      "key"
+     ],
+     "answer": 0,
+     "accepted": [
+      "wife"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ درس: «my wife and I» (لایه ۲۳۹۳) + پاسخِ B «she’s …» → شخص"
+    },
+    {
+     "id": "g9-l16-6",
+     "n": 6,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "B: she’s ------- by the table.",
+     "options": [
+      "standing",
+      "visiting"
+     ],
+     "answer": 0,
+     "accepted": [
+      "standing"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ درس verbatim-موازی: «She’s standing over there, by the gift shop.» (لایه ۲۴۱۱)"
+    },
+    {
+     "id": "g9-l16-7",
+     "n": 7,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "A: This is your -------",
+     "options": [
+      "key",
+      "book"
+     ],
+     "answer": 0,
+     "accepted": [
+      "key"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ درس verbatim: «This is your key.» (لایه ۲۴۱۶)"
+    },
+    {
+     "id": "g9-l16-8",
+     "n": 8,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "Hope you ------- your stay in Isfahan.",
+     "options": [
+      "enjoy",
+      "visiting"
+     ],
+     "answer": 0,
+     "accepted": [
+      "enjoy"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ درس verbatim: «Hope you enjoy your stay in Tehran.» (لایه ۲۴۱۶)"
+    }
+   ]
+  },
+  {
+   "lesson": 17,
+   "title": "امتحانی درس دوم — فعلِ مناسب حال استمراری (س۳، ص۴۷)",
+   "level": "تمرین تایپی",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g9-l17-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "He ------- the reservation form.",
+     "options": [
+      "is filling out",
+      "fill out"
+     ],
+     "answer": 0,
+     "accepted": [
+      "is filling out",
+      "is filling"
+     ],
+     "placeholder": "present continuous…",
+     "keyWhy": "عبارتِ خودِ درس: «fill out a form*» (لایه ۲۳۶۱)؛ توافقِ He→is"
+    },
+    {
+     "id": "g9-l17-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "I ------- the time table.",
+     "options": [
+      "am checking",
+      "check"
+     ],
+     "answer": 0,
+     "accepted": [
+      "am checking"
+     ],
+     "placeholder": "present continuous…",
+     "keyWhy": "عبارتِ خودِ درس: «check the timetable*» (لایه ۲۳۷۳)؛ توافقِ I→am"
+    }
+   ]
+  },
+  {
+   "lesson": 18,
+   "title": "امتحانی درس دوم — وصل‌کردنیِ پرسش/پاسخ (س۴، ص۴۸)",
+   "level": "چهارگزینه‌ای (پنج‌گزینه‌ای چاپی)",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g9-l18-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Is Kate reading a guide book? ( ------- )",
+     "options": [
+      "Paul.",
+      "No, he is working with the computer.",
+      "Yes, she is.",
+      "He’s checking the map.",
+      "No, they are boarding the plane."
+     ],
+     "answer": 2,
+     "keyWhy": "Kate→she + بله/خیر؛ فقط c با she آغاز به «Yes» می‌کند"
+    },
+    {
+     "id": "g9-l18-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "What is he doing? ( ------- )",
+     "options": [
+      "Paul.",
+      "No, he is working with the computer.",
+      "Yes, she is.",
+      "He’s checking the map.",
+      "No, they are boarding the plane."
+     ],
+     "answer": 3,
+     "keyWhy": "پرسشِ What پاسخِ بله/خیر (b آغازشده با «No,») نمی‌گیرد → d"
+    },
+    {
+     "id": "g9-l18-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "Are they taking an express train? ( ------- )",
+     "options": [
+      "Paul.",
+      "No, he is working with the computer.",
+      "Yes, she is.",
+      "He’s checking the map.",
+      "No, they are boarding the plane."
+     ],
+     "answer": 4,
+     "keyWhy": "they + بله/خیرِ منفی → e («No, they are boarding…»)"
+    },
+    {
+     "id": "g9-l18-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "Who is speaking to the teacher now? ( ------- )",
+     "options": [
+      "Paul.",
+      "No, he is working with the computer.",
+      "Yes, she is.",
+      "He’s checking the map.",
+      "No, they are boarding the plane."
+     ],
+     "answer": 0,
+     "keyWhy": "پرسشِ Who → تنها نامِ شخص: a) Paul."
+    }
+   ]
+  },
+  {
+   "lesson": 19,
+   "title": "امتحانی درس دوم — کلمهٔ ناهماهنگ (س۵، ص۴۸)",
+   "level": "چهارگزینه‌ای",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g9-l19-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "shopkeeper – tourist – check in – teacher",
+     "options": [
+      "shopkeeper",
+      "tourist",
+      "check in",
+      "teacher"
+     ],
+     "answer": 2,
+     "keyWhy": "check in فعلیتِ پذیرش است نه شخص؛ سه واژهٔ دیگر هر سه شخص/شغل‌اند"
+    },
+    {
+     "id": "g9-l19-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "the wheels of the car – the shirt of the Jack – the legs of the chair – the door of the class",
+     "options": [
+      "the wheels of the car",
+      "the shirt of the Jack",
+      "the legs of the chair",
+      "the door of the class"
+     ],
+     "answer": 1,
+     "keyWhy": "«the shirt of the Jack» of-ساخت با نامِ شخص — سه موردِ دیگر of-ساختِ شیء با شیء"
+    }
+   ]
+  },
+  {
+   "lesson": 20,
+   "title": "امتحانی درس دوم — شکلِ فشرده/سوالی/منفی (س۶، ص۴۸)",
+   "level": "تمرین تایپی",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g9-l20-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "They are speaking Arabic. (Contracted form: -------)",
+     "options": [
+      "They’re speaking Arabic",
+      "They are speaking Arabic"
+     ],
+     "answer": 0,
+     "accepted": [
+      "They’re speaking Arabic"
+     ],
+     "placeholder": "contracted form…",
+     "keyWhy": "تنها فشرده‌سازیِ ممکن: They are→They’re"
+    },
+    {
+     "id": "g9-l20-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "They are speaking Arabic. (Question: -------)",
+     "options": [
+      "Are they speaking Arabic?",
+      "They are speaking Arabic"
+     ],
+     "answer": 0,
+     "accepted": [
+      "Are they speaking Arabic?"
+     ],
+     "placeholder": "yes/no question…",
+     "keyWhy": "وارونگیِ سوالیِ بله/خیری یکتاست: Are they…?"
+    },
+    {
+     "id": "g9-l20-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "They are speaking Arabic. (Negative: -------)",
+     "options": [
+      "They are not speaking Arabic.",
+      "They are speaking Arabic"
+     ],
+     "answer": 0,
+     "accepted": [
+      "They are not speaking Arabic.",
+      "They aren’t speaking Arabic.",
+      "They’re not speaking Arabic."
+     ],
+     "placeholder": "negative form…",
+     "keyWhy": "منفی‌سازیِ یکتا؛ سه شکلِ روادار (are not/aren’t/’re not) در accepted"
+    }
+   ]
+  },
+  {
+   "lesson": 21,
+   "title": "امتحانی درس دوم — مرتب‌کردن جملات (س۷، ص۴۸)",
+   "level": "تمرین تایپی",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g9-l21-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "am, into, going, gift, I, the, shop.",
+     "options": [
+      "I am going into the gift shop.",
+      "am, into, going, gift, I, the, shop"
+     ],
+     "answer": 0,
+     "accepted": [
+      "I am going into the gift shop."
+     ],
+     "placeholder": "write the sentence…",
+     "keyWhy": "تنها یک چینشِ دستوریِ ممکن از هشت/هفت/پنج واژه"
+    },
+    {
+     "id": "g9-l21-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "is, for, in, Mashhad, a, searching, Mohammad, hotel?",
+     "options": [
+      "Is Mohammad searching for a hotel in Mashhad?",
+      "is, for, in, Mashhad, a, searching, Mohammad, hotel"
+     ],
+     "answer": 0,
+     "accepted": [
+      "Is Mohammad searching for a hotel in Mashhad?"
+     ],
+     "placeholder": "write the sentence…",
+     "keyWhy": "تنها یک چینشِ دستوریِ ممکن از هشت/هفت/پنج واژه"
+    },
+    {
+     "id": "g9-l21-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "it, country, is, beautiful, a?",
+     "options": [
+      "Is it a beautiful country?",
+      "it, country, is, beautiful, a"
+     ],
+     "answer": 0,
+     "accepted": [
+      "Is it a beautiful country?"
+     ],
+     "placeholder": "write the sentence…",
+     "keyWhy": "تنها یک چینشِ دستوریِ ممکن از هشت/هفت/پنج واژه"
+    }
+   ]
+  },
+  {
+   "lesson": 22,
+   "title": "امتحانی درس دوم — گزینهٔ صحیح (س۸، ص۴۹)",
+   "level": "چهارگزینه‌ای",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g9-l22-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "He ------- a ticket.",
+     "options": [
+      "buy",
+      "is buy",
+      "buying",
+      "is buying"
+     ],
+     "answer": 3,
+     "keyWhy": "کلیدِ ساختاری: تنها «is buying» هم فعلِ استمراریِ کامل دارد هم توافقِ He"
+    },
+    {
+     "id": "g9-l22-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "That man ------- the passport.",
+     "options": [
+      "is praying",
+      "is checking",
+      "is playing",
+      "is landing"
+     ],
+     "answer": 1,
+     "keyWhy": "هم‌نشینیِ عبارتِ خودِ درس: «check the passport*» (لایه ۲۳۶۹)"
+    }
+   ]
+  },
+  {
+   "lesson": 23,
+   "title": "امتحانی درس سوم — سوالی و منفی (س۲، ص۶۲)",
+   "level": "تمرین تایپی",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g9-l23-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "The cat drinks its milk. (Question: -------)",
+     "options": [
+      "Does the cat drink its milk?",
+      "The cat drinks its milk"
+     ],
+     "answer": 0,
+     "accepted": [
+      "Does the cat drink its milk?"
+     ],
+     "placeholder": "yes/no question…",
+     "keyWhy": "توافقِ Does + مفردِ سوم‌شخص (the cat)؛ وارونگیِ بله/خیریِ یکتا — داربست: جملهٔ سادهٔ خودِ ساقه"
+    },
+    {
+     "id": "g9-l23-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "The cat drinks its milk. (Negative: -------)",
+     "options": [
+      "The cat doesn’t drink its milk.",
+      "The cat drinks its milk"
+     ],
+     "answer": 0,
+     "accepted": [
+      "The cat doesn’t drink its milk.",
+      "The cat does not drink its milk."
+     ],
+     "placeholder": "negative form…",
+     "keyWhy": "منفی‌سازیِ یکتا: doesn’t + شکلِ سادهٔ drink؛ دو شکلِ روادار (doesn’t/does not) در accepted"
+    },
+    {
+     "id": "g9-l23-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "They listen to their teacher. (Question: -------)",
+     "options": [
+      "Do they listen to their teacher?",
+      "They listen to their teacher"
+     ],
+     "answer": 0,
+     "accepted": [
+      "Do they listen to their teacher?"
+     ],
+     "placeholder": "yes/no question…",
+     "keyWhy": "توافقِ Do + جمع (they)؛ وارونگیِ بله/خیریِ یکتا"
+    },
+    {
+     "id": "g9-l23-4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "They listen to their teacher. (Negative: -------)",
+     "options": [
+      "They don’t listen to their teacher.",
+      "They listen to their teacher"
+     ],
+     "answer": 0,
+     "accepted": [
+      "They don’t listen to their teacher.",
+      "They do not listen to their teacher."
+     ],
+     "placeholder": "negative form…",
+     "keyWhy": "منفی‌سازیِ یکتا: don’t + شکلِ سادهٔ listen؛ دو شکلِ روادار در accepted"
+    }
+   ]
+  },
+  {
+   "lesson": 24,
+   "title": "امتحانی درس سوم — فعلِ مناسب (س۳، ص۶۲)",
+   "level": "تمرین تایپی (دوگزینه‌ایِ چاپی)",
+   "count": 6,
+   "questions": [
+    {
+     "id": "g9-l24-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "(Do/Does) you come to work by bus?",
+     "options": [
+      "Do",
+      "Does"
+     ],
+     "answer": 0,
+     "accepted": [
+      "Do"
+     ],
+     "placeholder": "choose and type…",
+     "keyWhy": "توافقِ you → Do (پرسشِ بله/خیریِ حالِ ساده)"
+    },
+    {
+     "id": "g9-l24-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "I (watch/watches) TV on Fridays.",
+     "options": [
+      "watch",
+      "watches"
+     ],
+     "answer": 0,
+     "accepted": [
+      "watch"
+     ],
+     "placeholder": "choose and type…",
+     "keyWhy": "توافقِ I → شکلِ سادهٔ فعل"
+    },
+    {
+     "id": "g9-l24-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Mr. Smith (work/works) for a company.",
+     "options": [
+      "works",
+      "work"
+     ],
+     "answer": 0,
+     "accepted": [
+      "works"
+     ],
+     "placeholder": "choose and type…",
+     "keyWhy": "Mr. Smith → سوم‌شخصِ مفرد"
+    },
+    {
+     "id": "g9-l24-4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Many people (eat/eats) lunch in this restaurant.",
+     "options": [
+      "eat",
+      "eats"
+     ],
+     "answer": 0,
+     "accepted": [
+      "eat"
+     ],
+     "placeholder": "choose and type…",
+     "keyWhy": "people → جمع"
+    },
+    {
+     "id": "g9-l24-5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "My parents (don't stay/doesn't stay) home on Nature Day.",
+     "options": [
+      "don't stay",
+      "doesn't stay"
+     ],
+     "answer": 0,
+     "accepted": [
+      "don't stay"
+     ],
+     "placeholder": "choose and type…",
+     "keyWhy": "parents → جمع؛ منفیِ حالِ ساده"
+    },
+    {
+     "id": "g9-l24-6",
+     "n": 6,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "(Do/Does) Helen read poems of Khayyam?",
+     "options": [
+      "Does",
+      "Do"
+     ],
+     "answer": 0,
+     "accepted": [
+      "Does"
+     ],
+     "placeholder": "choose and type…",
+     "keyWhy": "Helen → سوم‌شخصِ مفرد در پرسش"
+    }
+   ]
+  },
+  {
+   "lesson": 25,
+   "title": "امتحانی درس سوم — متنِ کامل‌کردنیِ رهین (س۴، ص۶۲)",
+   "level": "تمرین تایپی (متنِ کامل‌کردنی)",
+   "count": 6,
+   "questions": [
+    {
+     "id": "g9-l25-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "We ------- (go – goes – going) to my grandfather's house on Fridays.",
+     "options": [
+      "go",
+      "goes"
+     ],
+     "answer": 0,
+     "accepted": [
+      "go"
+     ],
+     "placeholder": "the correct word…",
+     "keyWhy": "توافقِ We → go؛ goes با جمعِ ناسازگار"
+    },
+    {
+     "id": "g9-l25-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "He usually gives ------- (we – us) gifts.",
+     "options": [
+      "us",
+      "we"
+     ],
+     "answer": 0,
+     "accepted": [
+      "us"
+     ],
+     "placeholder": "the correct word…",
+     "keyWhy": "مفعولِ فعلِ gives → ضمیرِ مفعولیِ us (نه فاعلیِ we)"
+    },
+    {
+     "id": "g9-l25-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "My grandmother ------- (cooks – cooking – cook) a special food for family.",
+     "options": [
+      "cooks",
+      "cook"
+     ],
+     "answer": 0,
+     "accepted": [
+      "cooks"
+     ],
+     "placeholder": "the correct word…",
+     "keyWhy": "grandmother → سوم‌شخصِ مفرد"
+    },
+    {
+     "id": "g9-l25-4",
+     "n": 4,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "My aunts ------- (makes – make – making) a big a cake.",
+     "options": [
+      "make",
+      "makes"
+     ],
+     "answer": 0,
+     "accepted": [
+      "make"
+     ],
+     "placeholder": "the correct word…",
+     "keyWhy": "aunts → جمع — چاپ‌غلطِ «a big a cake» verbatim در ساقه"
+    },
+    {
+     "id": "g9-l25-5",
+     "n": 5,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "the boys ------- (sets – set) the table",
+     "options": [
+      "set",
+      "sets"
+     ],
+     "answer": 0,
+     "accepted": [
+      "set"
+     ],
+     "placeholder": "the correct word…",
+     "keyWhy": "boys → جمع — آغازِ lowercaseِ چاپی verbatim (بعد از نقطه)"
+    },
+    {
+     "id": "g9-l25-6",
+     "n": 6,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "the girls ------- (clear – clears) the table.",
+     "options": [
+      "clear",
+      "clears"
+     ],
+     "answer": 0,
+     "accepted": [
+      "clear"
+     ],
+     "placeholder": "the correct word…",
+     "keyWhy": "girls → جمع — «and» رابطِ سطرِ چاپی در آیتمِ مستقل حذف شد"
+    }
+   ]
+  },
+  {
+   "lesson": 26,
+   "title": "امتحانی درس سوم — شکلِ صحیحِ فعل (س۴ِ دومِ چاپی، ص۶۲)",
+   "level": "تمرین تایپی",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g9-l26-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Mr. Ahmadi goes to work by bus. He ------- his car. (not drive)",
+     "options": [
+      "doesn’t drive",
+      "not drive"
+     ],
+     "answer": 0,
+     "accepted": [
+      "doesn’t drive",
+      "does not drive"
+     ],
+     "placeholder": "the correct form…",
+     "keyWhy": "سوم‌شخصِ مفرد + منفیِ حالِ ساده: doesn’t + drive — کنتراستِ با «goes to work by bus»؛ داربست: عینِ پرانتزِ چاپی (not drive)"
+    },
+    {
+     "id": "g9-l26-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "Sahar doesn’t water the garden. She ------- the flowers. (water)",
+     "options": [
+      "waters",
+      "water"
+     ],
+     "answer": 0,
+     "accepted": [
+      "waters"
+     ],
+     "placeholder": "the correct form…",
+     "keyWhy": "سوم‌شخصِ مفرد (She) → waters — کنتراستِ با جملهٔ منفیِ قبل"
+    }
+   ]
+  },
+  {
+   "lesson": 27,
+   "title": "امتحانی درس سوم — بانک واژهٔ نوروز (س۵، ص۶۳)",
+   "level": "تمرین تایپی (بانک واژه)",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g9-l27-1",
+     "n": 1,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "My grandmother cooks the new year -------.",
+     "options": [
+      "meal",
+      "sing"
+     ],
+     "answer": 0,
+     "accepted": [
+      "meal"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "cooks the new year meal — meal تنها اسمِ سازگار؛ sing فعل است (واژهٔ اضافیِ بانک)"
+    },
+    {
+     "id": "g9-l27-2",
+     "n": 2,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "We visit our ------- in Norooz.",
+     "options": [
+      "relatives",
+      "meal"
+     ],
+     "answer": 0,
+     "accepted": [
+      "relatives"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ خودِ درس verbatim: «We normally visit our relatives in Norooz.» (ص۵۲)"
+    },
+    {
+     "id": "g9-l27-3",
+     "n": 3,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "Tom ------- special clothes on festivals.",
+     "options": [
+      "wears",
+      "swim"
+     ],
+     "answer": 0,
+     "accepted": [
+      "wears"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "سوم‌شخصِ مفرد (Tom) → wears؛ عبارتِ درس «Wear special clothes» (بانکِ س۱)"
+    },
+    {
+     "id": "g9-l27-4",
+     "n": 4,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "They ------- in the river in the summer.",
+     "options": [
+      "swim",
+      "wears"
+     ],
+     "answer": 0,
+     "accepted": [
+      "swim"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "They → جمع؛ هم‌نشینیِ «in the river» → swim"
+    }
+   ]
+  },
+  {
+   "lesson": 28,
+   "title": "امتحانی درس سوم — گزینهٔ صحیح (س۷، ص۶۳)",
+   "level": "چهارگزینه‌ای",
+   "count": 6,
+   "questions": [
+    {
+     "id": "g9-l28-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Every year, Iranians ------- a ceremony.",
+     "options": [
+      "sing",
+      "gets",
+      "hold",
+      "wear"
+     ],
+     "answer": 2,
+     "keyWhy": "عبارتِ خودِ درس: «hold a ceremony*» (ص۵۲ — photo dictionary)؛ gets با جمعِ Iranians ناسازگار"
+    },
+    {
+     "id": "g9-l28-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "Nowruz Celebration is very important in Iranian -------.",
+     "options": [
+      "parade",
+      "holiday",
+      "revolution",
+      "culture"
+     ],
+     "answer": 3,
+     "keyWhy": "عبارتِ خودِ درس: «Islamic-Iranian culture*» (ص۵۲)؛ سه گزینهٔ دیگر با «important in Iranian» هم‌نشینیِ معنایی ندارند"
+    },
+    {
+     "id": "g9-l28-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "Ali has many story books. I'm interested in ------- books.",
+     "options": [
+      "her",
+      "Ali",
+      "their",
+      "his"
+     ],
+     "answer": 3,
+     "keyWhy": "Ali مذکر است → his؛ her/their ناسازگار و Ali خودِ اسم است نه ضمیرِ ملکی"
+    },
+    {
+     "id": "g9-l28-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "This cat is white and black ------- legs are black.",
+     "options": [
+      "her",
+      "his",
+      "it",
+      "its"
+     ],
+     "answer": 3,
+     "keyWhy": "ملکیِ it برای جانور: its — it ضمیرِ فاعلی است و در جایِ ملکی نمی‌نشیند"
+    },
+    {
+     "id": "g9-l28-5",
+     "n": 5,
+     "category": "grammar",
+     "question": "A: -------? B: Yes, he makes good foods.",
+     "options": [
+      "Does Samaneh make lunch?",
+      "Does your uncle make lunch?",
+      "Does your aunt bake a cake?",
+      "Does she bake a cake?"
+     ],
+     "answer": 1,
+     "keyWhy": "پاسخِ «Yes, he …» فقط با فاعلِ مذکر سازگار است: uncle — Samaneh/aunt/she هر سه مؤنث‌اند"
+    },
+    {
+     "id": "g9-l28-6",
+     "n": 6,
+     "category": "grammar",
+     "question": "Which sentence is correct?",
+     "options": [
+      "Does your uncle exchanges money?",
+      "Is your father packing for a trip?",
+      "Do her aunt buys tickets?",
+      "She don't like selfish persons."
+     ],
+     "answer": 1,
+     "keyWhy": "تنها b دستوریِ سالم است — a: Does…exchanges (باید exchange باشد)، c: Do her aunt buys (دو خطا)، d: She don’t (باید doesn’t)"
+    }
+   ]
+  },
+  {
+   "lesson": 29,
+   "title": "امتحانی درس چهارم — دیکتهٔ ناقص (س۵، ص۷۴)",
+   "level": "تمرین تایپی (دیکتهٔ ناقص)",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g9-l29-1",
+     "n": 1,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "R_charge the e t_cket",
+     "options": [
+      "Recharge the e-ticket",
+      "information desk"
+     ],
+     "answer": 0,
+     "accepted": [
+      "Recharge the e-ticket",
+      "Recharge the e ticket"
+     ],
+     "placeholder": "complete the words…",
+     "keyWhy": "عبارتِ خودِ درس: «recharge your E-ticket*» (ص۶۶) + Recharge* (ص۶۵)؛ «e t_cket» شکستِ چاپیِ «e-ticket»"
+    },
+    {
+     "id": "g9-l29-2",
+     "n": 2,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "inform_tion desk",
+     "options": [
+      "information desk",
+      "help charity"
+     ],
+     "answer": 0,
+     "accepted": [
+      "information desk"
+     ],
+     "placeholder": "complete the words…",
+     "keyWhy": "عبارتِ خودِ درس: «ask the information desk*» (ص۶۶) + Information* (ص۶۵)"
+    },
+    {
+     "id": "g9-l29-3",
+     "n": 3,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "help ch_rity",
+     "options": [
+      "help charity",
+      "Recharge the e-ticket"
+     ],
+     "answer": 0,
+     "accepted": [
+      "help charity"
+     ],
+     "placeholder": "complete the words…",
+     "keyWhy": "عبارتِ خودِ درس: «help charity*» (ص۶۶) + Charity* (ص۶۵)"
+    }
+   ]
+  },
+  {
+   "lesson": 30,
+   "title": "امتحانی درس چهارم — مرتب‌کردن جملات (س۶، ص۷۴)",
+   "level": "تمرین تایپی (مرتب‌کردن)",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g9-l30-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "work / every / voluntary / do / we / weekend",
+     "options": [
+      "We do voluntary work every weekend.",
+      "work / every / voluntary / do / we / weekend"
+     ],
+     "answer": 0,
+     "accepted": [
+      "We do voluntary work every weekend."
+     ],
+     "placeholder": "write the sentence…",
+     "keyWhy": "تنها یک چینشِ دستوریِ ممکن از شش واژه — داربست: ردیفِ به‌هم‌ریختهٔ چاپی (خانوادهٔ r365)"
+    },
+    {
+     "id": "g9-l30-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "always / clean / keep / they / city / the",
+     "options": [
+      "They always keep the city clean.",
+      "always / clean / keep / they / city / the"
+     ],
+     "answer": 0,
+     "accepted": [
+      "They always keep the city clean."
+     ],
+     "placeholder": "write the sentence…",
+     "keyWhy": "تنها یک چینشِ دستوریِ ممکن از شش واژه — داربست: ردیفِ به‌هم‌ریختهٔ چاپی (خانوادهٔ r365)"
+    }
+   ]
+  },
+  {
+   "lesson": 31,
+   "title": "امتحانی درس چهارم — بانک واژهٔ پرسش‌واژه‌ها (س۷، ص۷۴)",
+   "level": "تمرین تایپی (بانک واژه)",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g9-l31-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "A: ------- does take bus? B: because it's cheap.",
+     "options": [
+      "Why",
+      "How"
+     ],
+     "answer": 0,
+     "accepted": [
+      "Why"
+     ],
+     "placeholder": "question word…",
+     "keyWhy": "پاسخِ B با «because» آغاز می‌شود → علت‌خواهی: Why"
+    },
+    {
+     "id": "g9-l31-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "A: ------- makes a cake for us? B: My sister.",
+     "options": [
+      "Who",
+      "When"
+     ],
+     "answer": 0,
+     "accepted": [
+      "Who"
+     ],
+     "placeholder": "question word…",
+     "keyWhy": "پاسخِ B نامِ شخص است → شخص‌خواهی: Who"
+    },
+    {
+     "id": "g9-l31-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "A: ------- do you live? B: I live in Paveh.",
+     "options": [
+      "Where",
+      "When"
+     ],
+     "answer": 0,
+     "accepted": [
+      "Where"
+     ],
+     "placeholder": "question word…",
+     "keyWhy": "پاسخِ B مکان است → مکان‌خواهی: Where"
+    }
+   ]
+  },
+  {
+   "lesson": 32,
+   "title": "امتحانی درس چهارم — بازنویسی با قیدِ تکرار (س۸، ص۷۴)",
+   "level": "تمرین تایپی (بازنویسی)",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g9-l32-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "They come late. (never)",
+     "options": [
+      "They never come late.",
+      "They come late."
+     ],
+     "answer": 0,
+     "accepted": [
+      "They never come late."
+     ],
+     "placeholder": "rewrite the sentence…",
+     "keyWhy": "قیدِ تکرار در جملهٔ مثبت پیش از فعلِ اصلی می‌نشیند: They never come late. — داربست: جملهٔ سادهٔ خودِ ساقه"
+    },
+    {
+     "id": "g9-l32-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "She studies hard. (always)",
+     "options": [
+      "She always studies hard.",
+      "She studies hard."
+     ],
+     "answer": 0,
+     "accepted": [
+      "She always studies hard."
+     ],
+     "placeholder": "rewrite the sentence…",
+     "keyWhy": "قیدِ تکرار پیش از فعلِ اصلی: She always studies hard. — داربست: جملهٔ سادهٔ خودِ ساقه"
+    }
+   ]
+  },
+  {
+   "lesson": 33,
+   "title": "امتحانی درس چهارم — جواب صحیح (س۹، ص۷۵)",
+   "level": "چهارگزینه‌ای",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g9-l33-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "A: Excuse me, I want to donate blood, where should I go?\nB: I don’t know. You can -------",
+     "options": [
+      "save people’ lives",
+      "ask information desk",
+      "call the emergency",
+      "keep the city clean"
+     ],
+     "answer": 1,
+     "keyWhy": "عبارتِ خودِ درس: «ask the information desk*» (ص۶۶) — پاسخِ «where should I go» با پرسیدن از میزِ اطلاعات سازگار است"
+    },
+    {
+     "id": "g9-l33-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "A: I want to -------\nB: ok, fill out this form. How much money do you have?",
+     "options": [
+      "send an email",
+      "hire a taxi",
+      "recharge my E-ticket",
+      "open an account"
+     ],
+     "answer": 3,
+     "keyWhy": "عبارتِ خودِ درس: «open an account*» (ص۶۶) — فرمِ بانکی و «How much money» فقط با افتتاحِ حساب سازگار است"
+    },
+    {
+     "id": "g9-l33-3",
+     "n": 3,
+     "category": "vocab",
+     "question": "A: I need money\nB: you can -------",
+     "options": [
+      "open an account",
+      "call the emergency",
+      "take out money from an ATM",
+      "recharge your E-ticket"
+     ],
+     "answer": 2,
+     "keyWhy": "عبارتِ خودِ درس: «take out money from an ATM*» (ص۶۶) — «I need money» → برداشتِ پولِ نقد از خودپرداز"
+    },
+    {
+     "id": "g9-l33-4",
+     "n": 4,
+     "category": "vocab",
+     "question": "My uncle is very generous. He always -------",
+     "options": [
+      "buy ticket",
+      "help charity",
+      "keep the city clean",
+      "hire a taxi"
+     ],
+     "answer": 1,
+     "keyWhy": "عبارتِ خودِ درس: «help charity*» (ص۶۶) — generous (بخشنده) → کمک به خیریه"
+    }
+   ]
+  },
+  {
+   "lesson": 34,
+   "title": "امتحانی درس چهارم — وصل‌کردنیِ ستون‌ها (س۱۰، ص۷۵)",
+   "level": "چهارگزینه‌ای (هفت‌گزینه‌ایِ چاپی)",
+   "count": 6,
+   "questions": [
+    {
+     "id": "g9-l34-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Who's that man? ( ------- )",
+     "options": [
+      "He works on shifts",
+      "He is Mr. Amaini",
+      "At a fire station.",
+      "Yes, there’s one over there.",
+      "He is fire fighter.",
+      "from a post office",
+      "He puts out fire and saves people’s lives"
+     ],
+     "answer": 1,
+     "keyWhy": "پرسشِ Who → تنها نامِ شخص: b) He is Mr. Amaini (الگوی س۴ِ r365/س۱۴ِ r364)"
+    },
+    {
+     "id": "g9-l34-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "What s his job? ( ------- )",
+     "options": [
+      "He works on shifts",
+      "He is Mr. Amaini",
+      "At a fire station.",
+      "Yes, there’s one over there.",
+      "He is fire fighter.",
+      "from a post office",
+      "He puts out fire and saves people’s lives"
+     ],
+     "answer": 4,
+     "keyWhy": "پرسشِ be («What is his job?») → پاسخِ be-ساختار: e) He is fire fighter. — سؤال و جواب آینهٔ ساختاری‌اند"
+    },
+    {
+     "id": "g9-l34-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "What does he do? ( ------- )",
+     "options": [
+      "He works on shifts",
+      "He is Mr. Amaini",
+      "At a fire station.",
+      "Yes, there’s one over there.",
+      "He is fire fighter.",
+      "from a post office",
+      "He puts out fire and saves people’s lives"
+     ],
+     "answer": 6,
+     "keyWhy": "پرسشِ do → پاسخِ فعل‌محور: g) He puts out fire and saves people’s lives — آینه‌سازیِ do"
+    },
+    {
+     "id": "g9-l34-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "Where does he work? ( ------- )",
+     "options": [
+      "He works on shifts",
+      "He is Mr. Amaini",
+      "At a fire station.",
+      "Yes, there’s one over there.",
+      "He is fire fighter.",
+      "from a post office",
+      "He puts out fire and saves people’s lives"
+     ],
+     "answer": 2,
+     "keyWhy": "پرسشِ Where → مکان: c) At a fire station. (+ واژهٔ درس «Fire station*» ص۶۵)"
+    },
+    {
+     "id": "g9-l34-5",
+     "n": 5,
+     "category": "grammar",
+     "question": "When does he work? ( ------- )",
+     "options": [
+      "He works on shifts",
+      "He is Mr. Amaini",
+      "At a fire station.",
+      "Yes, there’s one over there.",
+      "He is fire fighter.",
+      "from a post office",
+      "He puts out fire and saves people’s lives"
+     ],
+     "answer": 0,
+     "keyWhy": "پرسشِ When → با حذفِ متقاطع تنها پاسخِ زمان‌نما: a) He works on shifts (f مکان/منبع است نه زمان)"
+    },
+    {
+     "id": "g9-l34-6",
+     "n": 6,
+     "category": "grammar",
+     "question": "Is there a fire station near here ( ------- )",
+     "options": [
+      "He works on shifts",
+      "He is Mr. Amaini",
+      "At a fire station.",
+      "Yes, there’s one over there.",
+      "He is fire fighter.",
+      "from a post office",
+      "He puts out fire and saves people’s lives"
+     ],
+     "answer": 3,
+     "keyWhy": "پرسشِ there → d) Yes, there’s one over there. — توافقِ there؛ علامتِ پرسشِ چاپی در ق۶ نیست (verbatim)"
+    }
+   ]
+  },
+  {
+   "lesson": 35,
+   "title": "امتحانی درس چهارم — تکمیل با معلومات (س۱۱، ص۷۵)",
+   "level": "تمرین تایپی (تکمیلِ حرف‌به‌حرف)",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g9-l35-1",
+     "n": 1,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "You can t_ _ _ _ _ _ money from that ATM.",
+     "options": [
+      "take out",
+      "hire"
+     ],
+     "answer": 0,
+     "accepted": [
+      "take out"
+     ],
+     "placeholder": "complete the word…",
+     "keyWhy": "عبارتِ خودِ درس: «take out money from an ATM*» (ص۶۶) و گزینهٔ c س۹؛ t + ۶ خانه = takeout (هفت حرف)"
+    },
+    {
+     "id": "g9-l35-2",
+     "n": 2,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "The post office is just r_ _ _ _ the corner.",
+     "options": [
+      "round",
+      "take out"
+     ],
+     "answer": 0,
+     "accepted": [
+      "round"
+     ],
+     "placeholder": "complete the word…",
+     "keyWhy": "مکالمهٔ خودِ درس verbatim: «It’s just round the corner.» (ص۶۶، Pedram)؛ r + ۴ خانه = round"
+    },
+    {
+     "id": "g9-l35-3",
+     "n": 3,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "They h _ _ _ a taxi to school every day.",
+     "options": [
+      "hire",
+      "round"
+     ],
+     "answer": 0,
+     "accepted": [
+      "hire"
+     ],
+     "placeholder": "complete the word…",
+     "keyWhy": "عبارتِ خودِ درس: «hire a taxi*» (ص۶۶)؛ h + ۳ خانه = hire"
+    },
+    {
+     "id": "g9-l35-4",
+     "n": 4,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "The fire fighter works in a f _ _ _ _ _ _ _ _ _.",
+     "options": [
+      "fire station",
+      "hire"
+     ],
+     "answer": 0,
+     "accepted": [
+      "fire station",
+      "firestation"
+     ],
+     "placeholder": "complete the word…",
+     "keyWhy": "واژهٔ درس «Fire station*» (ص۶۵) + پاسخِ c س۱۰ («At a fire station.») + متنِ س۴ همان صفحه («There is a fire station in my city.»)؛ خانه‌های چاپی یکی کم‌تر از حروفِ fire station — کوئیرکِ مستند"
+    }
+   ]
+  },
+  {
+   "lesson": 36,
+   "title": "امتحانی درس پنجم — بانک واژهٔ مکالمهٔ جشنوارهٔ فجر (س۲، ص۸۵)",
+   "level": "تمرین تایپی (بانک واژه)",
+   "count": 10,
+   "questions": [
+    {
+     "id": "g9-l36-1",
+     "n": 1,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "A: Did you enjoy your -------?",
+     "options": [
+      "weekend",
+      "watched"
+     ],
+     "answer": 0,
+     "accepted": [
+      "weekend"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ verbatim درس: «Mina: Did you enjoy your weekend?» (لایه p78:032)"
+    },
+    {
+     "id": "g9-l36-2",
+     "n": 2,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "B: Yes, it was -------.",
+     "options": [
+      "wonderful",
+      "interested"
+     ],
+     "answer": 0,
+     "accepted": [
+      "wonderful"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ verbatim: «Mahsa: Yes, it was wonderful! …» (لایه p78:035) + Wonderful* (p77:096)"
+    },
+    {
+     "id": "g9-l36-3",
+     "n": 3,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "A: What ------- you do?",
+     "options": [
+      "did",
+      "didn’t"
+     ],
+     "answer": 0,
+     "accepted": [
+      "did"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "ساختاری: did-پرسشِ گذشته + شکلِ سادهٔ فعل؛ همتای تمرینِ درس: «What did you do last week?» (لایه p80:017)"
+    },
+    {
+     "id": "g9-l36-4",
+     "n": 4,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "B: I ------- Fajr International Film Festival.",
+     "options": [
+      "attended",
+      "watched"
+     ],
+     "answer": 0,
+     "accepted": [
+      "attended"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ verbatim: «I attended Fajr International Film Festival.» (لایه p78:035) + Attend* (p77:034)"
+    },
+    {
+     "id": "g9-l36-5",
+     "n": 5,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "A: I’m also ------- in its movies.",
+     "options": [
+      "interested",
+      "wonderful"
+     ],
+     "answer": 0,
+     "accepted": [
+      "interested"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ verbatim: «I am also interested in its events and movies.» (لایه p78:043)؛ ساختارِ interested in"
+    },
+    {
+     "id": "g9-l36-6",
+     "n": 6,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "B: Did you ------- the reports on TV last night?",
+     "options": [
+      "watch",
+      "watched"
+     ],
+     "answer": 0,
+     "accepted": [
+      "watch"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ verbatim: «did you watch the reports on TV last night?» (لایه p78:051)؛ Did + شکلِ سادهٔ فعل — «watched» اضافیِ چاپیِ بانک"
+    },
+    {
+     "id": "g9-l36-7",
+     "n": 7,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "A: No, I -------. I like to read about them.",
+     "options": [
+      "didn’t",
+      "did"
+     ],
+     "answer": 0,
+     "accepted": [
+      "didn’t",
+      "did not"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "پاسخِ کوتاهِ منفیِ did-پرسش: «No, I didn’t.» — الگوی تمرینِ درس: «No, she didn’t.» (لایه p79:050)؛ درسِ خودش «Yes, I did» دارد ولی ساقهٔ چاپیِ «No» حاکم است؛ بازشدنِ مخفف روادار"
+    },
+    {
+     "id": "g9-l36-8",
+     "n": 8,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "B: You can ------- its website.",
+     "options": [
+      "surf",
+      "text"
+     ],
+     "answer": 0,
+     "accepted": [
+      "surf"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ verbatim: «you can surf its website if you like» (لایه p79:005)؛ سطرِ B چهارم دو بلنک دارد — نیمهٔ نخست"
+    },
+    {
+     "id": "g9-l36-9",
+     "n": 9,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "I can give you the website -------.",
+     "options": [
+      "address",
+      "text"
+     ],
+     "answer": 0,
+     "accepted": [
+      "address"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ verbatim: «Could you please give me the website address?» (لایه p79:015) — نیمهٔ دومِ همان سطر"
+    },
+    {
+     "id": "g9-l36-10",
+     "n": 10,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "A: Thanks a lot. You can ------- It.",
+     "options": [
+      "text",
+      "surf"
+     ],
+     "answer": 0,
+     "accepted": [
+      "text"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ verbatim: «I just texted it.» (لایه p79:021) + text a message* (p78:013)؛ حرفِ بزرگِ چاپیِ «It» verbatim"
+    }
+   ]
+  },
+  {
+   "lesson": 37,
+   "title": "امتحانی درس پنجم — وصل‌کردنیِ پرسش/پاسخ (س۳، ص۸۵)",
+   "level": "چهارگزینه‌ای (پنج‌گزینه‌ایِ چاپی)",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g9-l37-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Who watch the cartoon yesterday? ( ------- )",
+     "options": [
+      "No, he worked with his mobile.",
+      "They downloaded it last week.",
+      "He searched the Internet.",
+      "My brother.",
+      "She connected at school."
+     ],
+     "answer": 3,
+     "keyWhy": "پرسشِ Who → تنها پاسخِ شخصی: «My brother.» (a منفیِ did-پرسش، b زمانی، c مکانیِ بی‌پرسشِ مکانی، e مکانی)؛ «Who watch» افتادِ -edِ چاپ است — verbatim"
+    },
+    {
+     "id": "g9-l37-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "Did your father work with the computer? ( ------- )",
+     "options": [
+      "No, he worked with his mobile.",
+      "They downloaded it last week.",
+      "He searched the Internet.",
+      "My brother.",
+      "She connected at school."
+     ],
+     "answer": 0,
+     "keyWhy": "did-پرسشِ بله/نه → پاسخِ منفیِ علت‌دار: a) — جفتِ verbatimِ تمرینِ درس: «Did Amir work with his computer? → No, he worked with his mobile.» (لایه p79:068/064)"
+    },
+    {
+     "id": "g9-l37-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "Where did Zahra connect to the Internet? ( ------- )",
+     "options": [
+      "No, he worked with his mobile.",
+      "They downloaded it last week.",
+      "He searched the Internet.",
+      "My brother.",
+      "She connected at school."
+     ],
+     "answer": 4,
+     "keyWhy": "پرسشِ Where → مکان: e) — تمرینِ درس: «Where did she connect to the Internet? → She connected to the Internet at school.» (لایه p80:052/044)"
+    },
+    {
+     "id": "g9-l37-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "When did they download the book from the Internet? ( ------- )",
+     "options": [
+      "No, he worked with his mobile.",
+      "They downloaded it last week.",
+      "He searched the Internet.",
+      "My brother.",
+      "She connected at school."
+     ],
+     "answer": 1,
+     "keyWhy": "پرسشِ When → زمان: b) — تمرینِ درس همان جفت با «yesterday»: «When did they download the book? → They downloaded it yesterday.» (لایه p80:039/033)"
+    }
+   ]
+  },
+  {
+   "lesson": 38,
+   "title": "امتحانی درس پنجم — کلمهٔ ناهماهنگ (س۴، ص۸۶)",
+   "level": "چهارگزینه‌ای",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g9-l38-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "amazing – wonderful – fantastic – cinema",
+     "options": [
+      "amazing",
+      "wonderful",
+      "fantastic",
+      "cinema"
+     ],
+     "answer": 3,
+     "keyWhy": "سه صفتِ ستایشی، همگی واژهٔ درس: Amazing* (p77:026)/Wonderful* (p77:096)/Fantastic* (p77:090)؛ cinema مکان است نه صفت"
+    },
+    {
+     "id": "g9-l38-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "Internet – connect – fruit – download",
+     "options": [
+      "Internet",
+      "connect",
+      "fruit",
+      "download"
+     ],
+     "answer": 2,
+     "keyWhy": "سه واژهٔ خانوادهٔ رسانه/فناوری (Connect* p77:066/Download* p77:082 و اینترنت)؛ fruit خوراکی است نه رسانه"
+    }
+   ]
+  },
+  {
+   "lesson": 39,
+   "title": "امتحانی درس پنجم — مرتب‌کردن جملات (س۵، ص۸۶)",
+   "level": "تمرین تایپی (مرتب‌کردن)",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g9-l39-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "are, things, many, there, interesting, there.",
+     "options": [
+      "There are many interesting things there.",
+      "are, things, many, there, interesting, there."
+     ],
+     "answer": 0,
+     "accepted": [
+      "There are many interesting things there."
+     ],
+     "placeholder": "write the sentence…",
+     "keyWhy": "مکالمهٔ verbatim درس: «There are many interesting things there.» (لایه p79:005-006) — تنها چینشِ دستوریِ شش واژه"
+    },
+    {
+     "id": "g9-l39-2",
+     "n": 2,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "not, watch, show, we, a, quiz, did, yesterday.",
+     "options": [
+      "We did not watch a quiz show yesterday.",
+      "not, watch, show, we, a, quiz, did, yesterday."
+     ],
+     "answer": 0,
+     "accepted": [
+      "We did not watch a quiz show yesterday.",
+      "Yesterday we did not watch a quiz show."
+     ],
+     "placeholder": "write the sentence…",
+     "keyWhy": "عبارتِ photo dictionary: «watch a quiz show*» (لایه p78:019)؛ دو جایگاهِ قیدِ زمانِ پایان/آغاز هر دو دستوری‌اند — هر دو شکل accepted"
+    },
+    {
+     "id": "g9-l39-3",
+     "n": 3,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "can, match, on, tonight, you, watch, TV, football.",
+     "options": [
+      "You can watch a football match on TV tonight.",
+      "can, match, on, tonight, you, watch, TV, football."
+     ],
+     "answer": 0,
+     "accepted": [
+      "You can watch a football match on TV tonight.",
+      "You can watch football match on TV tonight."
+     ],
+     "placeholder": "write the sentence…",
+     "keyWhy": "چینشِ یکتا؛ بانکِ چاپی حرفِ تعریفِ «a» را ندارد (چاپ‌خطای مستند) — شکلِ مقصود با «a» و شکلِ سخت‌گیرانهٔ واژه‌به‌واژه هر دو روادار؛ «football» در واژگانِ چاپیِ درس نیست (فقط Match* لایه p77:040)"
+    }
+   ]
+  },
+  {
+   "lesson": 40,
+   "title": "امتحانی درس پنجم — گزینهٔ صحیح (س۷، ص۸۶)",
+   "level": "چهارگزینه‌ای",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g9-l40-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "They ------- happy last summer.",
+     "options": [
+      "was not",
+      "didn’t",
+      "were",
+      "didn’t were"
+     ],
+     "answer": 2,
+     "keyWhy": "جمع + مسندِ صفتِ گذشته → «They were happy»؛ «was not» مفرد است و «didn’t were» ساختارِ ناممکن (did + شکلِ سادهٔ فعل)"
+    },
+    {
+     "id": "g9-l40-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "A: ------- did Amir install? B: He installed a computer dictionary.",
+     "options": [
+      "Where",
+      "What",
+      "When",
+      "Who"
+     ],
+     "answer": 1,
+     "keyWhy": "پاسخِ B شیءِ نصب‌شده را نام می‌برد → شیءخواهی: What؛ عبارتِ photo dictionary: «install a computer dictionary*» (لایه p78:016)"
+    },
+    {
+     "id": "g9-l40-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "She ------- upset yesterday.",
+     "options": [
+      "am",
+      "am not",
+      "wasn’t",
+      "were"
+     ],
+     "answer": 2,
+     "keyWhy": "سوم‌شخص + «yesterday» → wasn’t؛ «were» جمع است و «am» حالِ اول‌شخص — ساختاری"
+    }
+   ]
+  },
+  {
+   "lesson": 41,
+   "title": "امتحانی درس پنجم — کامل با کلماتِ پرانتز (س۸، ص۸۶)",
+   "level": "چهارگزینه‌ای (سه‌گزینه‌ایِ چاپی)",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g9-l41-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "You are really nice this month. But you ------- nice last month.",
+     "options": [
+      "aren’t",
+      "were",
+      "weren’t"
+     ],
+     "answer": 2,
+     "keyWhy": "تقابلِ «this month / last month» با «But» → منفیِ گذشته: weren’t؛ «were» مثبتِ ناسازگار و «aren’t» حال است"
+    },
+    {
+     "id": "g9-l41-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "My favorite player ------- a TV program 2 days ago.",
+     "options": [
+      "Attend",
+      "attended",
+      "attends"
+     ],
+     "answer": 1,
+     "keyWhy": "قیدِ گذشتهٔ «2 days ago» → attended؛ عبارتِ photo dictionary: «attend a TV program*» (لایه p78:008) و مکالمه: «I attended Fajr International Film Festival.»"
+    }
+   ]
+  },
+  {
+   "lesson": 42,
+   "title": "امتحانی درس پنجم — درک مطلب: درست/غلط (س۱۱، ص۸۷)",
+   "level": "چهارگزینه‌ای (درست/غلط)",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g9-l42-1",
+     "n": 1,
+     "category": "vocab",
+     "question": "a) Something happened to her TV last Saturday. ( ------- )",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "keyWhy": "متنِ verbatim: «Last weekend, something happened to my TV.» (لایه p87:012) — Saturday نیست، weekend است → False"
+    },
+    {
+     "id": "g9-l42-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "b) Her grandfather came to her home. ( ------- )",
+     "options": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "keyWhy": "متنِ verbatim: «I called my grandmother. She came to our home.» (لایه p87:013-014) — مادربزرگ آمد نه پدربزرگ → False"
+    }
+   ]
+  },
+  {
+   "lesson": 43,
+   "title": "امتحانی درس پنجم — پاسخ به سؤالِ متن (س۱۱، ص۸۷)",
+   "level": "تمرین تایپی (درک مطلب)",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g9-l43-1",
+     "n": 1,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "Was Parisa happy at first?",
+     "options": [
+      "No, she wasn’t.",
+      "Yes, she was."
+     ],
+     "answer": 0,
+     "accepted": [
+      "No, she wasn’t.",
+      "No she wasn’t.",
+      "No, she was not.",
+      "No she was not."
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "متنِ verbatim: «At first, I wasn’t happy.» (لایه p87:013) — تبدیلِ ضمیرِ I→she؛ چهار شکلِ accepted (ویرگول × انقباض)"
+    },
+    {
+     "id": "g9-l43-2",
+     "n": 2,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "What did she do?",
+     "options": [
+      "She cleaned her room and called her grandmother.",
+      "She watched TV all day."
+     ],
+     "answer": 0,
+     "accepted": [
+      "She cleaned her room and called her grandmother.",
+      "She cleaned her room and she called her grandmother.",
+      "She called her grandmother and cleaned her room."
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "متنِ verbatim: «But then I cleaned my room and I called my grandmother.» (لایه p87:013-014) — تبدیلِ ضمیرِ I→she؛ حذف/نگه‌داشتنِ ضمیرِ دوم و ترتیبِ دو کنش روادار"
+    }
+   ]
+  },
+  {
+   "lesson": 44,
+   "title": "امتحانی درس پنجم — دیکتهٔ ناقص (دنبالهٔ بی‌شمارهٔ س۱۱، ص۸۷)",
+   "level": "تمرین تایپی (دیکتهٔ ناقص)",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g9-l44-1",
+     "n": 1,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "_nterview someb_dy",
+     "options": [
+      "interview somebody",
+      "attend a TV program"
+     ],
+     "answer": 0,
+     "accepted": [
+      "interview somebody"
+     ],
+     "placeholder": "complete the words…",
+     "keyWhy": "عبارتِ photo dictionary درس: «interview somebody*» (لایه p78:020) + Interview* (p77:020)؛ عبارتِ ناقص از رندرِ p87 خوانده شد (در لایه نیست — کوئیرکِ ۸)"
+    },
+    {
+     "id": "g9-l44-2",
+     "n": 2,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "Upd_te a blog",
+     "options": [
+      "update a blog",
+      "text a message"
+     ],
+     "answer": 0,
+     "accepted": [
+      "update a blog"
+     ],
+     "placeholder": "complete the words…",
+     "keyWhy": "عبارتِ photo dictionary درس: «update a blog*» (لایه p78:015) + Blog* (p77:042)؛ عبارتِ ناقص از رندرِ p87"
+    },
+    {
+     "id": "g9-l44-3",
+     "n": 3,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "use technol_gy",
+     "options": [
+      "use technology",
+      "watch a quiz show"
+     ],
+     "answer": 0,
+     "accepted": [
+      "use technology"
+     ],
+     "placeholder": "complete the words…",
+     "keyWhy": "کامل‌شدنیِ یکتا: technol_gy → technology؛ هم‌ارزِ مفهومیِ «use IT*» (لایه p78:017) — «technology» در لایه فقط در ضمیمهٔ تلفظِ ch (لایه p105) هست؛ لنگرِ واژگانیِ ضعیف‌تر از دو آیتمِ دیگر — مستند"
+    }
+   ]
+  },
+  {
+   "lesson": 45,
+   "title": "امتحانی درس ششم — بانک واژهٔ مکالمهٔ سلامتی و آسیب (س۲، ص۹۵)",
+   "level": "تمرین تایپی (بانک واژه)",
+   "count": 8,
+   "questions": [
+    {
+     "id": "g9-l45-1",
+     "n": 1,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "A: ------- you like school trips?",
+     "options": [
+      "do",
+      "did"
+     ],
+     "answer": 0,
+     "accepted": [
+      "do"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ verbatim درس: «I don’t like school trips.» (لایه p90:042) + Trip* (p89:082)؛ عادتِ حال («like») → Do + شکلِ ساده؛ «did» تلهٔ زمانِ گذشته است"
+    },
+    {
+     "id": "g9-l45-2",
+     "n": 2,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "B: No, I don’t. Last winter I fell and ------- my leg.",
+     "options": [
+      "broke",
+      "stayed"
+     ],
+     "answer": 0,
+     "accepted": [
+      "broke"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ درس: «Last summer I fell and broke my leg.» (لایه p90:042-043 — امتحان قیدِ زمان را winter کرده) + photo dictionary: «He broke his leg*» (p90:008) و Fall*/Break* (p89)؛ «stayed my leg» بی‌معنا"
+    },
+    {
+     "id": "g9-l45-3",
+     "n": 3,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "A: really? I ------- my ankle last summer.",
+     "options": [
+      "twisted",
+      "stayed"
+     ],
+     "answer": 0,
+     "accepted": [
+      "twisted"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ درس: «I twisted my ankle last winter.» (لایه p90:051 — امتحان قیدِ زمان را summer کرده) + Twist*/Ankle* (p89:086/033)؛ «stayed my ankle» بی‌معنا"
+    },
+    {
+     "id": "g9-l45-4",
+     "n": 4,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "A: Yes, I ------- home for 10 days.",
+     "options": [
+      "stayed",
+      "stay"
+     ],
+     "answer": 0,
+     "accepted": [
+      "stayed"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ درس: «I stayed home for two weeks!» (لایه p90:051-052 — امتحان: 10 days)؛ گذشته با «for 10 days» → stayed؛ «stay» واژهٔ اضافیِ چاپی است و در ساقهٔ خودِ امتحان هم هست («Did you stay home?» — p95:022)"
+    },
+    {
+     "id": "g9-l45-5",
+     "n": 5,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "B: But after that, I ------- in Helal-e-Ahmar first aid classes.",
+     "options": [
+      "participated",
+      "twisted"
+     ],
+     "answer": 0,
+     "accepted": [
+      "participated"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ verbatim درس: «Yeah…, but after that, I participated in Helal-e-Ahmar first aid classes.» (لایه p91:005) + First aid* (p89:088)؛ «twisted in … classes» بی‌معنا"
+    },
+    {
+     "id": "g9-l45-6",
+     "n": 6,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "A: I like that. Did you ------- how to take care of yourself?",
+     "options": [
+      "learn",
+      "stayed"
+     ],
+     "answer": 0,
+     "accepted": [
+      "learn"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ درس: «I learned how to take care of myself.» (لایه p91:006) + Take care of* (p89:078)؛ Did + شکلِ سادهٔ فعل → learn نه stayed"
+    },
+    {
+     "id": "g9-l45-7",
+     "n": 7,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "B: Yes, I -------.",
+     "options": [
+      "did",
+      "do"
+     ],
+     "answer": 0,
+     "accepted": [
+      "did"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "پاسخِ کوتاهِ did-پرسش: پرسشِ پیشینِ خودِ امتحان «Did you … how to take care of yourself?» است؛ الگوی تمرینِ ۱ درس: «Did Mina have an accident? → Yes, she did.» (لایه p91:039/035)"
+    },
+    {
+     "id": "g9-l45-8",
+     "n": 8,
+     "category": "vocab",
+     "kind": "typed",
+     "question": "I can give you some ------- if you like.",
+     "options": [
+      "advice",
+      "do"
+     ],
+     "answer": 0,
+     "accepted": [
+      "advice"
+     ],
+     "placeholder": "answer in English…",
+     "keyWhy": "مکالمهٔ درس: «Can you give me some advice?» (لایه p91:016) + Advice* (p89:026)؛ «some» + اسم → advice؛ «some do» بی‌معنا"
+    }
+   ]
+  },
+  {
+   "lesson": 46,
+   "title": "امتحانی درس ششم — کلمهٔ ناهماهنگ (س۳، ص۹۵)",
+   "level": "چهارگزینه‌ای",
+   "count": 2,
+   "questions": [
+    {
+     "id": "g9-l46-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "her – my – them – him",
+     "options": [
+      "her",
+      "my",
+      "them",
+      "him"
+     ],
+     "answer": 1,
+     "keyWhy": "گرامرِ خودِ درس: ضمایر مفعولی (Object Pronouns، لایه p94) — her/them/him هر سه ضمیرِ مفعولی‌اند؛ my فقط صفتِ ملکی است و هرگز نقشِ مفعولی ندارد"
+    },
+    {
+     "id": "g9-l46-2",
+     "n": 2,
+     "category": "vocab",
+     "question": "cut – hurt – break – health",
+     "options": [
+      "cut",
+      "hurt",
+      "break",
+      "health"
+     ],
+     "answer": 3,
+     "keyWhy": "سه فعلِ آسیبِ درس: Cut* (p89:065)/Hurt* (p89:032)/Break* (p89:044)؛ health اسمِ وضعیتِ سلامتی است نه فعلِ آسیب (health* p89:095)"
+    }
+   ]
+  },
+  {
+   "lesson": 47,
+   "title": "امتحانی درس ششم — مرتب‌کردن جملات (س۴، ص۹۵)",
+   "level": "تمرین تایپی (مرتب‌کردن)",
+   "count": 1,
+   "questions": [
+    {
+     "id": "g9-l47-1",
+     "n": 1,
+     "category": "grammar",
+     "kind": "typed",
+     "question": "saw, the, in, him, they, park.",
+     "options": [
+      "They saw him in the park.",
+      "saw, the, in, him, they, park."
+     ],
+     "answer": 0,
+     "accepted": [
+      "They saw him in the park.",
+      "In the park they saw him.",
+      "In the park, they saw him."
+     ],
+     "placeholder": "write the sentence…",
+     "keyWhy": "چینشِ یکتای شش واژه؛ جایگاهِ آغازینِ قیدِ مکان روادار است (الگوی acceptedِ r368)؛ verbs: saw از خودِ ردیفِ چاپی — هیچ واژه‌ای اضافی نیست"
+    }
+   ]
+  },
+  {
+   "lesson": 48,
+   "title": "امتحانی درس ششم — وصل‌کردنیِ پرسش/پاسخ (س۵، ص۹۶)",
+   "level": "چهارگزینه‌ای (پنج‌گزینه‌ایِ چاپی)",
+   "count": 4,
+   "questions": [
+    {
+     "id": "g9-l48-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "Where did she hurt her back? ( ------- )",
+     "options": [
+      "I took care of my father last year.",
+      "She hit it in the park.",
+      "Yes, she did.",
+      "Because they drove fast.",
+      "My sister."
+     ],
+     "answer": 1,
+     "keyWhy": "پرسشِ Where → مکان: b) «She hit it in the park.» («it» = back؛ Hit* p89:024)؛ همتای تمرینِ ۲ درس: «Where did she break her leg? → She broke her leg in the park.» (لایه p92:021/019)"
+    },
+    {
+     "id": "g9-l48-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "Why did they have an accident? ( ------- )",
+     "options": [
+      "I took care of my father last year.",
+      "She hit it in the park.",
+      "Yes, she did.",
+      "Because they drove fast.",
+      "My sister."
+     ],
+     "answer": 3,
+     "keyWhy": "پرسشِ Why → علت: d) «Because they drove fast.» — جفتِ verbatimِ تمرینِ ۲ درس (لایه p92:034/029) + Accident* (p89:022)"
+    },
+    {
+     "id": "g9-l48-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "Who cut her finger? ( ------- )",
+     "options": [
+      "I took care of my father last year.",
+      "She hit it in the park.",
+      "Yes, she did.",
+      "Because they drove fast.",
+      "My sister."
+     ],
+     "answer": 4,
+     "keyWhy": "پرسشِ Who → تنها پاسخِ شخصی: e) «My sister.»؛ همتای تمرینِ ۲ درس: «Who had an accident? → Reza.» (لایه p92:014/012)؛ Cut* (p89:065) + photo dictionary: «She cut her finger*» (p90:013)"
+    },
+    {
+     "id": "g9-l48-4",
+     "n": 4,
+     "category": "grammar",
+     "question": "When did you take care of your father? ( ------- )",
+     "options": [
+      "I took care of my father last year.",
+      "She hit it in the park.",
+      "Yes, she did.",
+      "Because they drove fast.",
+      "My sister."
+     ],
+     "answer": 0,
+     "keyWhy": "پرسشِ When → زمان: a) «I took care of my father last year.»؛ Take care of* (p89:078) + photo dictionary: «She takes care of her child*» (p90:017)"
+    }
+   ]
+  },
+  {
+   "lesson": 49,
+   "title": "امتحانی درس ششم — کامل با کلماتِ پرانتز (س۶، ص۹۶)",
+   "level": "چهارگزینه‌ای (سه‌گزینه‌ایِ چاپی)",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g9-l49-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "We went to the party, because they invited -------.",
+     "options": [
+      "them",
+      "us",
+      "our"
+     ],
+     "answer": 1,
+     "keyWhy": "گرامرِ درس: ضمایر مفعولی (p94) بعد از invite + انسجامِ گفتاریِ «We went …» → they invited us؛ «our» صفتِ ملکی است و «them» با فاعلِ «they» ناسازگار (بازتابِ همان شخص)؛ Invite* (p89:038)"
+    },
+    {
+     "id": "g9-l49-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "A: ------- did he burn his hand? B: He burnt his hand last Monday.",
+     "options": [
+      "When",
+      "Where",
+      "How"
+     ],
+     "answer": 0,
+     "keyWhy": "پاسخِ B زمانی است («last Monday») → When؛ Burn* (p89:052) + photo dictionary: «She burned her hand.*» (p90:011)؛ چاپ هم «burn» و هم «burnt» (بریتانیایی) در همین آیتم دارد — واریانسِ املاییِ مستند"
+    },
+    {
+     "id": "g9-l49-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "A: Why did you hurt your knee? B: ------- I fell.",
+     "options": [
+      "hurry up",
+      "yeah",
+      "because"
+     ],
+     "answer": 2,
+     "keyWhy": "پرسشِ Why → پاسخِ علت با because (الگوی تمرینِ ۲ درس: «Why did they have an accident? → Because they drove fast.» لایه p92)؛ photo dictionary: «I hurt my knee*» (p90:021)؛ Hurry up* واژهٔ درس است اما پاسخِ علت نیست"
+    }
+   ]
+  },
+  {
+   "lesson": 50,
+   "title": "امتحانی درس ششم — گزینهٔ صحیح (س۷، ص۹۶)",
+   "level": "چهارگزینه‌ای",
+   "count": 3,
+   "questions": [
+    {
+     "id": "g9-l50-1",
+     "n": 1,
+     "category": "grammar",
+     "question": "A: Did you read the books? B: Yes, I enjoyed ------- very much.",
+     "options": [
+      "them",
+      "us",
+      "its",
+      "it"
+     ],
+     "answer": 0,
+     "keyWhy": "«the books» جمع است → ضمیرِ مفعولیِ جمعِ them (گرامرِ درس: Object Pronouns p94)؛ it/its مفردند و us اول‌شخصِ جمع با books ناسازگار"
+    },
+    {
+     "id": "g9-l50-2",
+     "n": 2,
+     "category": "grammar",
+     "question": "A: Did she ------- a scar? B: Yes, she had a scar on her face.",
+     "options": [
+      "has",
+      "had",
+      "have",
+      "her"
+     ],
+     "answer": 2,
+     "keyWhy": "Did + شکلِ سادهٔ فعل → have؛ photo dictionary: «He has a scar*» (p90:014) + Scar* (p89:071)؛ پاسخِ B «had» را در گذشته تأیید می‌کند"
+    },
+    {
+     "id": "g9-l50-3",
+     "n": 3,
+     "category": "grammar",
+     "question": "He ------- his coat yesterday.",
+     "options": [
+      "finded",
+      "founded",
+      "found",
+      "did found"
+     ],
+     "answer": 2,
+     "keyWhy": "گذشتهٔ سادهٔ بی‌قاعدهٔ find → found (Find p89:080 + قیدِ گذشتهٔ «yesterday»)؛ «finded» شکلِ ناموجود، «founded» به‌معنای تأسیس‌کردن است و «did found» ساختارِ ناممکن (did + شکلِ ساده)"
+    }
+   ]
+  }
+ ],
+ "source": {
+  "g9tests": {
+   "extractedRound": "r362",
+   "families": 2,
+   "examPages": "گرامری 28؛ واژگان 98-101",
+   "keyPages": "گرامری: ستارهٔ دنبالهٔ گزینه در خودِ ص۲۸؛ واژگان: 101 («N-x» تک‌ستونه)",
+   "sections": 2,
+   "items": 57,
+   "orphanStems": 3,
+   "printQuirkCount": 12,
+   "printQuirks": [
+    "لوکاتورِ ناهم‌خوان: سربرگِ کلیدِ ص۱۰۱ «پاسخنامه تست های واژگان هفتم تا نهم» است ولی فهرستِ زیرش دقیقاً ۵۰ مدخلِ همین آزمونِ نهم را می‌دهد (۱-a … ۵۰-a) — سربرگ، سریِ سه‌پایهٔ نویسنده را نام می‌برد نه محتوای صفحه",
+    "سربرگِ بیضیِ زردِ «تست گرامری» در رندر بالای ص۲۸ است ولی لایهٔ متنی آن را در انتهای صفحه می‌دهد (ترتیبِ لایه)",
+    "کلیدِ MCQهای «تست گرامری» ستارهٔ دنبالهٔ گزینه است («d) there are*») — فقط سه سؤالِ نخست ستاره دارند؛ سه MCQِ آخرِ ص۲۸ بی‌کلیدِ چاپی‌اند → ساقه‌های یتیمِ مستند در orphanStems (قراردادِ r358: ساقه وارد بانک نمی‌شود و کلید ساخته نمی‌شود)",
+    "چهار آیتمِ تایپیِ is/are: کلید از خودِ دستورِ چاپی («درجاهای خالی فعل مناسب is یا are قرار دهید») و توافقِ there is/are با مفرد/جمع به‌طورِ ساختاری یکتاست (الگوی خوداعتبارسنجیِ r357) — is/are/is/are",
+    "بلنکِ چاپیِ آیتم‌های تایپی کادرِ خالی (فرم) است؛ در ساقه با رانِ تیره بازنمایی شده",
+    "شکستِ کلمهٔ hyphen‌دارِ چاپی در MCQ1 ص۲۸: «twenty-»/«nine.» — پیوسته و بدونِ فاصله بازسازی شد",
+    "scrambleِ دستورِ تایپی در لایه: «.قرار دهید» با نقطهٔ سرگردان + شکستِ «is / are» بین دو خط",
+    "تایپوهای چاپیِ verbatim در واژگان: ususlly (ق۹)، timetabels (ق۱۹)، hopping (ق۲۳)، pleseant و quit (ق۳۷)، voulantry (ق۳۹)، reveloution (ق۴۷)، generouse (ق۴۴)، scare (ق۳۱) + آپاستروف‌های جاافتاده (Arent ق۲۱، Minas ق۳۱، Alice s ق۳۹، The Smith ق۲۲)",
+    "شماره‌گذاریِ بدونِ فاصله در واژگان: «5.The»، «15.Iran»، «16.Ted»، «17.Our»",
+    "گزینه‌های چندجای‌خالیِ اسلش‌دار verbatim: ق۳۶/۴۳/۴۵/۴۹ («envelope / stamp»، «preparing / setting»، «take / withdraw»، «received /relevant») + «c)envelope» بدونِ فاصله (ق۳۶) و «both 1&2» (ق۲۹) در برابرِ «both1&2» (ق۴۴)",
+    "MCQهای «تست گرامری» شمارهٔ چاپی ندارند (بولتِ o) — شماره‌گذاریِ ۱-۷ به ترتیبِ چاپ توسط برنامه؛ حرفِ گزینهٔ نخستِ MCQ1 بزرگِ چاپی است («A) There is»)",
+    "سربرگِ هر صفحه: «دکت ر حسن لطفی» — تجزیهٔ «دکتر» با فاصله در لایه"
+   ],
+   "orphanStemList": [
+    {
+     "question": "He is an …………………. Student.",
+     "options": [
+      "Rude",
+      "brave",
+      "quit",
+      "angry"
+     ],
+     "note": "بی‌کلیدِ چاپی — از بانک مستثنی"
+    },
+    {
+     "question": "…………….. are not in the classroom.",
+     "options": [
+      "A student",
+      "a student",
+      "students",
+      "students."
+     ],
+     "note": "بی‌کلیدِ چاپی — از بانک مستثنی"
+    },
+    {
+     "question": "There ………………. A picture in the classroom.",
+     "options": [
+      "are",
+      "is",
+      "are many",
+      "many"
+     ],
+     "note": "بی‌کلیدِ چاپی — از بانک مستثنی"
+    }
+   ]
+  },
+  "g9tamarin": {
+   "extractedRound": "r363",
+   "families": 6,
+   "sections": 11,
+   "items": 55,
+   "bankCounts": [
+    11,
+    9,
+    8,
+    10,
+    9,
+    8
+   ],
+   "examPages": "تمرین‌ها ص۱۷/۳۱/۵۱/۶۵/۸۳/۹۶ (برچسبِ چاپیِ خودِ سربرگ‌ها؛ «۳۱» با ارقامِ آمیختهٔ ۳1)",
+   "keySource": "پرسش و پاسخ هر دو چاپیِ درون‌صفحه (جفتِ دیالوگ) — بی‌پاسخنامهٔ جدا؛ کلید = پاسخِ چاپیِ همان صفحه + واریانت‌های روادار (بی‌ویرگول/بازشدنِ مخفف)",
+   "printErrata": [
+    "تمرین۱ درس سوم ق۴: «Yes, they don’t buy goldfish» در برابرِ ترجمهٔ چاپیِ «نه، آنها ماهی قرمز نمیخرند» — شکلِ چاپی verbatim اولِ accepted، شکل‌های «No, …» روادار"
+   ],
+   "printQuirkCount": 14,
+   "printQuirks": [
+    "ساختارِ لایه در این جزوه: هر آیتم = [بلوکِ پاسخ EN][پاسخ FA][بلوکِ سؤال EN][سؤال FA] — پاسخ در لایه پیش از سؤال می‌آید (ترتیبِ استخراج، نه ترتیبِ بصری چاپ)",
+    "جفتِ ۱ تمرین۱ درس اول: شکستِ RTL — قطعهٔ «م ؟» جدا از «بله، من هست»؛ بازسازیِ «هستم» با فهرستِ FIXUPS (لنگر: مقدارِ پارس‌شده)",
+    "ترجمهٔ پاسخِ جفت‌های ۲-۵ تمرین۱ درس اول با «؟» سرگردانِ چاپی پایان می‌یابد (۴ مورد) — در فیلدِ ترجمه پاک‌سازی و اینجا مستند شد",
+    "«بله، او هس ت» (تمرین۱ درس دوم جفت ۳) — فاصلهٔ درون‌کلمه‌ایِ لایه؛ بازسازیِ «هست» با FIXUPS",
+    "چاپ‌خطای محتوایی (printErrata): تمرین۱ درس سوم ق۴ — پاسخِ EN با «Yes,» آغاز می‌شود («Yes, they don’t buy goldfish») ولی ترجمهٔ چاپیِ FA با «نه» و منطقِ جمله منفی است؛ شکلِ چاپی verbatim اولِ accepted و شکل‌های اصلاح‌شده («No, …») در accepted به‌عنوانِ واریانتِ روادار",
+    "«No, we don’t» و «Yes, they usually color them» (تمرین۱ درس سوم ق۲/ق۳) بدونِ نقطهٔ پایانیِ چاپی — verbatim؛ نرمال‌سازِ موتور نقطهٔ پایانی را بی‌اثر می‌کند",
+    "«بله.میخرم» (تمرین۱ درس سوم جفت ۱) — نقطه به‌جای ویرگول و بدونِ فاصله در چاپ — verbatim در ترجمه",
+    "لایه «معموال» = چاپ «معمول» (تجزیهٔ لِگاتورِ لا در استخراجِ متن) — ترجمه با شکلِ چاپیِ خوانا",
+    "سربرگِ «تمرین1» درس چهارم دو بار در لایه می‌آید (دو بلوکِ ۴+۶ جفتیِ یک سکشنِ چاپی) — بانک ۶ با ادغامِ هر دو بلوک ساخته شد",
+    "سربرگِ درس ششم «تم رین1» با فاصله و «صفحه۳1» درس دوم با ارقامِ آمیختهٔ فارسی/لاتین — scrambleهای سربرگ",
+    "عنوانِ چاپیِ درس ششم «صحبت کردن در مورد سالمتی و آسیب ها» — «سالمتی» غلطِ چاپیِ «سلامتی» (در عنوانِ بانک verbatim نگه داشته شد)",
+    "سطرهای نقطه‌چینِ فرمِ پاسخِ آزاد در تمرین۲ درس دوم/تمرین۱ درس سوم/تمرین۱ و ۲ درس ششم — فضای خالیِ چاپ‌اند و استخراج نمی‌شوند",
+    "قطعه‌های شکستهٔ Q-FA (مثل «آیا آنها در حال سفر دور دنیا»+«هستند؟») و A-EN (مثل «Yes, she has many»+«friends.») با فاصله بازپیوسته شدند — خودکار با قفلِ شمارشِ هر سکشن",
+    "دو جفتِ پایانیِ تمرین۲ درس اول پس از سربرگِ صفحهٔ بعد در لایه می‌آیند (شکستِ صفحهٔ چاپ) — در همان بانک ادامه یافتند"
+   ],
+   "acceptedVariantsPolicy": "accepted[0] عینِ پاسخِ چاپی است؛ واریانت‌های بعدی فقط رواداریِ تایپ‌اند (بی‌ویرگولِ Yes/No، بازشدنِ مخفف، شکل‌های اصلاح‌شدهٔ چاپ‌خطا) — کلیدِ چاپی هرگز جابه‌جا نمی‌شود",
+   "distractorPolicy": "options=[پاسخِ چاپی، پاسخِ آیتمِ بعدیِ همان بانک] — اسکافولدِ غلطِ درون‌بانکی؛ برای آیتم تایپی هرگز رندر نمی‌شود (کارنامه متنِ خامِ تایپ‌شده را نشان می‌دهد) و فقط نقشِ اندیسِ نادرست را دارد",
+   "examMap": {
+    "note": "نقشهٔ «سؤالات امتحانی» هر شش درس برای راندهای بعدی — شماره‌ها صفحهٔ PDF؛ سکشن‌های تصویری/آهنگی استخراج‌ناپذیر؛ هیچ پاسخنامهٔ چاپی در جزوه برای این خانواده وجود ندارد (تنها پاسخنامهٔ جزوه: کلید واژگان ص۱۰۱ — r362)",
+    "lesson1": "pdf-p31-33 — ۱۵ سکشن؛ تصویری: ۱/۳/۱۲؛ آهنگی: ۱۰ (افتان/خیزان)؛ تولیدِ آزاد: ۵/۱۵",
+    "lesson2": "pdf-p47+ — سربرگِ «سواالت امتحانی درس دوم»",
+    "lesson3": "pdf-p61+ — سربرگِ «سواالت امتحانی درس سوم»",
+    "lesson4": "pdf-p73+ — سربرگِ «سواالت امتحانی درس چهارم»",
+    "lesson5": "pdf-p85+ — سربرگِ «سواالت امتحانی درس پنجم»",
+    "lesson6": "pdf-p95+ — سربرگِ «سواالت امتحانی درس ششم»"
+   },
+   "typedSingleOptionFix": {
+    "bug": "typedAnswerIndex برای ورودیِ ناهم‌سان با accepted و options، (answer+1) % options.length را برمی‌گرداند — با options.length=1 این همیشه خودِ answer است: هر ورودیِ غلطی «درست» امتیاز می‌گرفت",
+    "scope": "۴۳ آیتمِ تایپیِ تک‌گزینه‌ای: tests-g9 (۴: g9-l1-4..7)، tests-g10 (۳۵: l89-1..16، l91-3..13، l92-1..2، l94-1..6)، tests-g11 (۴: l90-1، l99-1، l105-3، l108-1)",
+    "fix": "افزودنِ اسکافولدِ غلطِ خانواده‌محور به options — g9: جفتِ ساختاری [is، are] با answer=اندیسِ کلید؛ l89/l91: شکلِ خالیِ چاپیِ خودِ سؤال (فام__لی__ر / رانِ dash)؛ l92/l90: جفتِ برعکسِ اسلش‌دار؛ l94: چرخشِ at/in/on؛ l99: سطرِ به‌هم‌ریختهٔ چاپ؛ l105: جملهٔ ناهمدیسی؛ l108: «do»",
+    "guard": "tests/jozve-tests-g9-tamarin-r363.test.ts — هیچ آیتمِ تایپی در هیچ tests-gN.json نباید options.length<2 داشته باشد"
+   }
+  },
+  "g9exam1": {
+   "extractedRound": "r364",
+   "section": "سؤالات امتحانی درس اول پایه نهم",
+   "examPages": "ص۳۱-۳۳ (برچسبِ فوترِ خودِ اسکن در این بازه با شمارهٔ PDF برابر است)",
+   "keyPages": "هیچ پاسخنامهٔ چاپی در جزوه برای این خانواده نیست (تنها پاسخنامهٔ جزوه: کلید واژگان ص۱۰۱ — r362)؛ کلیدها استنتاجیِ مستندند",
+   "sectionsTotal": 15,
+   "sectionsExtracted": 7,
+   "sectionsSkipped": 8,
+   "items": 29,
+   "bankCounts": [
+    4,
+    2,
+    4,
+    3,
+    7,
+    5,
+    4
+   ],
+   "keyPolicy": "کلیدِ استنتاجیِ لغت‌نامه‌محور/ساختاری: هر کلید یا از توافقِ نحویِ خودِ ساقه (س۶/س۱۱) یا از واژنامهٔ بیست‌وهفت‌واژه‌ایِ خودِ درس اول (س۲/س۷/س۹) یا از توافقِ ضمیر و نوعِ پرسش (س۱۴) یکتا می‌شود — الگوی خوداعتبارسنجیِ r357؛ هیچ کلیدی از خارجِ متنِ درس نیامده",
+   "derivedKeys": {
+    "S7": [
+     "ق۱ «she is not quiet» → talkative (متضادِ مستقیمِ Quiet در واژنامه)",
+     "ق۲ «Everybody likes him» → kind (تنها گزینهٔ مثبتِ سازگار)",
+     "ق۳ «There is … apple» → an (an+واکه؛ a/some/6 ناسازگار)"
+    ],
+    "S9": [
+     "ق۱ help = فعل میانِ چهار صفت",
+     "ق۲ angry = حالتِ گذرا میانِ ویژگی‌های شخصیتی (موضوعِ واحدِ درس: Personality)",
+     "ق۳ cruel = تنها منفی میانِ سه مثبت",
+     "ق۴ person = اسم میانِ چهار صفت",
+     "ق۵ homework = غیرِ مکان",
+     "ق۶ nervous = حالتِ گذرا (همان استدلالِ ق۲)",
+     "ق۷ careless = تنها منفی"
+    ],
+    "S14": [
+     "ق۱ «Are you angry?» → e «No, we are not.» (تنها پاسخِ you/we؛ بقیه he/she یا خودتوصیفی)",
+     "ق۲ «Is your uncle careful?» → a «Yes, he is.» (he=uncle)",
+     "ق۳ «What are you like?» → c «I`m brave.» (تنها خودتوصیفیِ I-form)",
+     "ق۴ «What is your sister like?» → b «She is a careful girl.» (Wh نیازمندِ توصیف؛ d پاسخِ بله/خیر است)"
+    ]
+   },
+   "skippedSections": [
+    "س۱: صفتِ مناسب برای هر تصویر — تصویری؛ بانکِ (Cruel–careless–rude–brave) بدونِ تصویر کلیدپذیر نیست",
+    "س۳ و س۱۲: تطبیقِ جمله با تصویر — تصویری (جمله‌ها در لایه موجودند ولی بدونِ تصویر بی‌کلیدند)",
+    "س۵ و س۱۵: تولیدِ آزاد («پاسخ کامل دهید» / «متن را کامل کنید») — بی‌کلیدِ یکتا",
+    "س۸: دیالوگِ بانک‌واژه‌ای — جای‌خالی‌های ۴/۵ دو تفسیرِ سازگار دارند (selfish/patient) — ابهامِ دوکلیدی؛ به قراردادِ r358 وارد بانک نمی‌شود",
+    "س۱۰: افتان و خیزان — آهنگی؛ در قالبِ تعاملیِ متنیِ فعلی سنجش‌پذیر نیست"
+   ],
+   "printQuirkCount": 11,
+   "printQuirks": [
+    "چیدمانِ دوستونیِ RTL در س۲/س۶/س۱۱ (دو آیتم در یک سطرِ چاپ) — با لنگرِ شماره‌ها بازچینی شد (قرارداد r361)",
+    "چاپ‌غلطِ «deask» (س۶ ق۱ به‌جای desk) — verbatim در ساقه",
+    "جداکنندهٔ سومِ س۹-۵ به‌صورتِ خطِ تیرهٔ چسبیده چاپ شده («library-») — با الگوی «- » جدا شد؛ چهار واژه: office/library/company/homework",
+    "آپاستروفِ وارونهٔ چاپیِ س۱۴ («I`m brave.» / «No, she isn`t.» با backtick) — verbatim؛ نرمال‌سازِ موتور backtick را به آپاستروفِ راست یکسان می‌کند",
+    "«d –No» و «e –No» بدونِ فاصله پس از خطِ تیره — در متنِ گزینه اثری ندارد",
+    "رهروهای نقطه‌چینِ اطرافِ بلنک‌ها (با نقطه‌های مجاورِ خودشان) در یک رانِ تیرهٔ «-------» فروپاشیدند؛ فاصلهٔ پس از ران درج شد (بازسازیِ خوانا)",
+    "سه‌گونه‌چاپیِ یک واژه در خودِ جزوه: «Hard working» (واژنامه) / «a hard-working worker» (مثالِ درس) / «hardworking» (س۹-۷) — هر سه شکل در acceptedِ متضادِ lazy",
+    "ساقه‌های س۴ برچسب‌های چاپیِ «سوالی :/منفی:» را حفظ کرده‌اند — متنِ مختلطِ فارسی-لاتین، عینِ چاپ",
+    "شماره‌های چاپیِ آیتم‌ها به فیلدِ n منتقل شدند و از ساقه حذف شدند (قرارداد r362)",
+    "دستورِ چندخطیِ س۶ در لایه به‌هم‌ریخته است («جاهای خالی را باthere is/وthere are/.کامل کنید») — لنگرگیریِ ساقه‌ها با «1)»",
+    "گزینه‌های س۱۴ در سطرِ خودِ سؤال‌ها چاپ شده‌اند (a با ق۱ … d با ق۴) و «e» تنها — پنج گزینه برای هر چهار سؤال"
+   ],
+   "lessonLexicon": {
+    "Kind": "مهربان",
+    "Lazy": "تنبل",
+    "Angry": "عصبانی",
+    "Neat": "مرتب",
+    "Big": "بزرگ",
+    "Nervous": "مضطرب",
+    "Brave": "شجاع",
+    "Patient": "صبور",
+    "Careful": "بادقت",
+    "Careless": "بی‌دقت",
+    "Clever": "باهوش",
+    "Pleasant": "دلپذیر",
+    "Cruel": "بی‌رحم",
+    "Polite": "مودب",
+    "Quiet": "ساکت",
+    "Rude": "بی‌ادب",
+    "Friendly": "صمیمی",
+    "Selfish": "خودخواه",
+    "Funny": "بامزه",
+    "Serious": "جدی",
+    "Generous": "بخشنده",
+    "Happy": "خوشحال",
+    "Shy": "خجالتی",
+    "Hard working": "سخت‌کوش",
+    "Talkative": "پرحرف",
+    "Helpful": "مفید",
+    "Upset": "ناراحت"
+   },
+   "typedNote": "بانک‌های تایپیِ س۲/س۱۰ اسکافولدِ غلطِ درون‌بانکی دارند (پاسخِ آیتمِ دیگرِ همان بانک) — قفلِ «تک‌گزینه‌ایِ ممنوع» r363؛ س۶/س۱۱ گزینه‌های ساختاریِ خودِ دستورِ چاپ‌اند (There is/There are و am/is/are)"
+  },
+  "g9exam2": {
+   "extractedRound": "r365",
+   "section": "سؤالات امتحانی درس دوم پایه نهم",
+   "examPages": "ص۴۷-۵۰ (برچسبِ فوترِ خودِ اسکن در این بازه با شمارهٔ PDF برابر است)",
+   "keyPages": "هیچ پاسخنامهٔ چاپی در جزوه برای این خانواده نیست (تنها پاسخنامهٔ جزوه: کلید واژگان ص۱۰۱ — r362)؛ کلیدها استنتاجیِ مستندند",
+   "sectionsTotal": 11,
+   "sectionsExtracted": 7,
+   "sectionsSkipped": 4,
+   "items": 24,
+   "bankCounts": [
+    8,
+    2,
+    4,
+    2,
+    3,
+    3,
+    2
+   ],
+   "wordBank": [
+    "Standing",
+    "book",
+    "reservation",
+    "enjoy",
+    "visiting",
+    "help",
+    "wife",
+    "staying",
+    "key"
+   ],
+   "extraWord": "book",
+   "keyPolicy": "کلیدِ استنتاجیِ مکالمه/عبارت‌محور: هر کلید یا با جملهٔ موازیِ verbatim مکالمهٔ خودِ درس دوم (لایه ۲۳۸۶-۲۴۱۶) یا با عبارتِ photo dictionary خودِ درس («fill out a form*»/«check the timetable*»/«check the passport*») یا با توافقِ ضمیر/نوعِ پرسش/ساختارِ نحویِ خودِ ساقه یکتا می‌شود — الگوی g9exam1/r357؛ هیچ کلیدی از خارجِ متنِ درس نیامده",
+   "derivedKeys": {
+    "S2": [
+     "مکالمهٔ درس verbatim: «how can I help you?» (لایه ۲۳۸۶)",
+     "مکالمهٔ درس verbatim: «I have a reservation here.» (لایه ۲۳۸۹) — واژهٔ اضافیِ چاپی «book» همان تلهٔ ردیف است",
+     "مکالمهٔ درس: «Are you staying here for two nights?» (لایه ۲۳۹۱) — جفتِ آواییِ staying/standing تلهٔ چاپی",
+     "مکالمهٔ درس: «my wife and I are visiting Tehran» (لایه ۲۳۹۳) — visiting متعدی؛ staying حرفِ اضافه می‌خواهد",
+     "مکالمهٔ درس: «my wife and I» (لایه ۲۳۹۳) + پاسخِ B «she’s …» → شخص",
+     "مکالمهٔ درس verbatim-موازی: «She’s standing over there, by the gift shop.» (لایه ۲۴۱۱)",
+     "مکالمهٔ درس verbatim: «This is your key.» (لایه ۲۴۱۶)",
+     "مکالمهٔ درس verbatim: «Hope you enjoy your stay in Tehran.» (لایه ۲۴۱۶)"
+    ],
+    "S3": [
+     "عبارتِ خودِ درس: «fill out a form*» (لایه ۲۳۶۱)؛ توافقِ He→is",
+     "عبارتِ خودِ درس: «check the timetable*» (لایه ۲۳۷۳)؛ توافقِ I→am"
+    ],
+    "S4": [
+     "Kate→she + بله/خیر؛ فقط c با she آغاز به «Yes» می‌کند",
+     "پرسشِ What پاسخِ بله/خیر (b آغازشده با «No,») نمی‌گیرد → d",
+     "they + بله/خیرِ منفی → e («No, they are boarding…»)",
+     "پرسشِ Who → تنها نامِ شخص: a) Paul."
+    ],
+    "S5": [
+     "check in فعلیتِ پذیرش است نه شخص؛ سه واژهٔ دیگر هر سه شخص/شغل‌اند",
+     "«the shirt of the Jack» of-ساخت با نامِ شخص — سه موردِ دیگر of-ساختِ شیء با شیء"
+    ],
+    "S6": [
+     "تنها فشرده‌سازیِ ممکن: They are→They’re",
+     "وارونگیِ سوالیِ بله/خیری یکتاست: Are they…?",
+     "منفی‌سازیِ یکتا؛ سه شکلِ روادار (are not/aren’t/’re not) در accepted"
+    ],
+    "S7": [
+     "تنها یک چینشِ دستوریِ ممکن از هشت/هفت/پنج واژه",
+     "تنها یک چینشِ دستوریِ ممکن از هشت/هفت/پنج واژه",
+     "تنها یک چینشِ دستوریِ ممکن از هشت/هفت/پنج واژه"
+    ],
+    "S8": [
+     "کلیدِ ساختاری: تنها «is buying» هم فعلِ استمراریِ کامل دارد هم توافقِ He",
+     "هم‌نشینیِ عبارتِ خودِ درس: «check the passport*» (لایه ۲۳۶۹)"
+    ]
+   },
+   "skippedSections": [
+    "س۱: تکمیلِ جملات با زمان حال استمراری «با توجه به تصاویر» — تصویری؛ بی‌تصویر کلیدپذیر نیست",
+    "س۶ سطرهای ۲/۳ (سوال‌سازیِ Where/How و What/Who): ابهامِ دوکلیدیِ مکانیکی — «What are Jack and Paul doing/opening?» هر دو روادارند؛ Where/How هم جابه‌جاییِ قیدِ جای/شیوه را خنثی نمی‌کند — قراردادِ r358",
+    "س۹: «در متن زیر چهار غلط وجود دارد» — دو غلطِ چهارگانه نایکتا: «my friend are» هم با «my friend is» هم با «my friends are» درست می‌شود؛ «looking at the room of the window» بدونِ متنِ مرجعِ درس، اصلاحِ یگانه ندارد — دوکلیدی",
+    "س۱۰: ترجمهٔ فارسیِ ده عبارت — کادرِ خالیِ بی‌کلیدِ چاپی؛ ترکیبِ فارسیِ عبارتِ مرکب چندپذیرش است (تبدیل کردن پول/تبدیل پول…) و نخستین بانکِ پاسخ‌فارسی نیازمندِ تصمیمِ زیرساختیِ جداگانه است (نرمال‌سازیِ نیم‌فاصله/RTL/گاردِ خلوص) — فرصتِ مستقلِ آینده؛ پنج عبارتِ لنگردارِ verbatim (take off→بلندشدن هواپیما، Land→فرود آمدن، Check in→پذیرش شدن و…) در واژنامهٔ درس ثبت شد",
+    "س۱۱: نوشتنِ اصطلاح زیر هر تصویر — تصویری"
+   ],
+   "printQuirkCount": 11,
+   "printQuirks": [
+    "گلیفِ لام-الِ لایه: «جمالت»→جملات، «سواالت»→سوالات، «اصالح»→اصلاح، «اطالع»→اطلاع — در ساقه‌ها verbatim حفظ نمی‌شود چون خطِ گلیف است نه متنِ سؤال (عنوان‌های بانک بازسازیِ خوانا — الگوی r362)",
+    "سربرگ‌های شماره‌دار سطرِ جدا با ارقامِ آمیخته: «2)» لاتین، «۳)» فارسی، «4»/«5»/«6»/«7»/«9»/«10»/«11» لاتینِ بدونِ پرانتز، «۸» فارسی — ترتیبِ لایه با ترتیبِ چاپ یکی است",
+    "س۲ دوستونیِ چاپی: نیمهٔ A و B یک سطر با فاصله‌های بزرگ در لایه پیوسته‌اند (COLSPLIT ۴+ فاصله)؛ «B) Thank you» پرانتز به‌جای دونقطه — پایانِ سطرِ چهارم",
+    "س۲: هر دو جای خالیِ سطرِ چهارم از گفتارِ A است («This is your key. Hope you enjoy your stay.») و «B) Thank you» پاسخِ B — در بانک، دو آیتمِ مستقل با پیشوندِ A",
+    "س۳: «2)I» بی‌فاصله در برابرِ «1) He» با فاصله — ناهمگونیِ شماره‌گذاریِ چاپی",
+    "س۵: ردیفِ دوم بین دو سطر شکسته (a/b سطر بالا، c/d سطر پایین) — بازچینی شد",
+    "س۷: سطرِ ق۲ شکسته — کلمات در یک سطر، نقطه‌چین در سطر بعد",
+    "«Express train*» در واژنامهٔ درس «قطار سریع اسیر» — افتادِ «السیر» در لایه",
+    "آپاستروفِ خمیدهٔ چاپی verbatim: she’s/He’s/I’m/It’s/scarf’s",
+    "س۸ ق۱: جفتِ «a) buy / b) is buy» — گزینهٔ شکستهٔ فعلِ استمراری",
+    "س۹: سربرگ «چهار غلط» — شمارشِ چاپیِ خودِ جزوه؛ دو غلطِ نایکتا (سقوطِ سکشن)"
+   ],
+   "lessonLexicon": {
+    "help": "کمک کردن — مکالمهٔ درس: «چطور میتوانم کمکتون کنم؟»",
+    "reservation": "رزرو — واژنامهٔ درس (Reservation*)",
+    "staying": "ماندن — مکالمهٔ درس: «آیا دو شب اینجا میمانید؟»",
+    "visiting": "دیدن کردن از — مکالمهٔ درس: «سه روز از تهران دیدن کنیم»",
+    "wife": "همسر — مکالمهٔ درس: «من و همسرم»",
+    "standing": "ایستادن — واژنامهٔ درس (Stand) + مکالمه: «آنجا ایستاده است»",
+    "key": "کلید — واژنامهٔ درس (Key*)",
+    "enjoy": "لذت بردن — واژنامهٔ درس (Enjoy*)",
+    "book": "رزرو کردن (فعل) — واژنامهٔ درس (Book* = رزرو کردن) — واژهٔ اضافیِ بانک",
+    "fill out a form": "پر کردن فرم — photo dictionary درس («fill out a form*»)",
+    "check the timetable": "بررسی کردن جدول زمانی — photo dictionary («check the timetable*»؛ Timetable* = جدول زمانی)",
+    "check the passport": "بررسی کردن گذرنامه — photo dictionary («check the passport*»؛ مکالمه: «گذرنامه اش را بررسی کنم»)",
+    "Express train": "قطار سریع‌السیر — واژنامهٔ درس (با افتادِ «السیر» در لایه)",
+    "Guide book": "کتاب راهنما — واژنامهٔ درس",
+    "Tourist": "گردشگر — واژنامهٔ درس",
+    "Board": "سوارشدن — واژنامهٔ درس («boarding the plane» س۴)",
+    "Take off": "بلندشدن هواپیما — واژنامهٔ درس (لنگرِ س۱۰ِ مستثنی)",
+    "Land": "فرود آمدن — واژنامهٔ درس (لنگرِ س۱۰ِ مستثنی)",
+    "Check in": "پذیرش شدن — واژنامهٔ درس (لنگرِ س۱۰ِ مستثنی)",
+    "Fill out": "پر کردن — واژنامهٔ درس"
+   },
+   "typedNote": "همهٔ ۱۶ آیتمِ تایپیِ تازه دو گزینه‌ای‌اند (کلید + داربستِ غلط) — قفلِ سراسریِ r363 (ممنوعیتِ تایپیِ تک‌گزینه‌ای) حفظ شد؛ داربست‌ها خانواده‌محور: چرخشِ واژهٔ بانک (س۲)، شکلِ سادهٔ فعل (س۳)، جملهٔ ساده (س۶)، ردیفِ به‌هم‌ریختهٔ چاپی (س۷)"
+  },
+  "g9exam3": {
+   "extractedRound": "r366",
+   "section": "سؤالات امتحانی درس سوم پایه نهم",
+   "examPages": "ص۶۱-۶۳ (برچسبِ فوترِ خودِ اسکن در این بازه با شمارهٔ PDF برابر است)؛ ص۶۴ تقریباً خالی (فقط سربرگ/فوتر) و درس چهارم از ص۶۵ با واژگانِ «خدمات» شروع می‌شود",
+   "keyPages": "هیچ پاسخنامهٔ چاپی در جزوه برای این خانواده نیست (تنها پاسخنامهٔ جزوه: کلید واژگان ص۱۰۱ — r362)؛ کلیدها استنتاجیِ مستندند",
+   "sectionsTotal": 8,
+   "sectionsExtracted": 6,
+   "sectionsSkipped": 2,
+   "items": 28,
+   "bankCounts": [
+    4,
+    6,
+    6,
+    2,
+    4,
+    6
+   ],
+   "wordBank": [
+    "relatives",
+    "swim",
+    "meal",
+    "sing",
+    "wears"
+   ],
+   "extraWord": "sing",
+   "keyPolicy": "کلیدِ استنتاجیِ ساختاری/عبارت‌محور: هر کلید یا با عبارتِ photo dictionary خودِ درس سوم («hold a ceremony*»/«Islamic-Iranian culture*» ص۵۲) یا با مکالمهٔ verbatim درس («We normally visit our relatives in Norooz.») یا با توافقِ نهاد و فعل/منطقِ ضمیرِ ملکی/توافقِ پاسخ و فاعلِ خودِ ساقه یکتا می‌شود — الگوی g9exam1/g9exam2؛ هیچ کلیدی از خارجِ متنِ درس نیامده",
+   "derivedKeys": {
+    "S2": [
+     "توافقِ Does + مفردِ سوم‌شخص (the cat)؛ وارونگیِ بله/خیریِ یکتا — داربست: جملهٔ سادهٔ خودِ ساقه",
+     "منفی‌سازیِ یکتا: doesn’t + شکلِ سادهٔ drink؛ دو شکلِ روادار (doesn’t/does not) در accepted",
+     "توافقِ Do + جمع (they)؛ وارونگیِ بله/خیریِ یکتا",
+     "منفی‌سازیِ یکتا: don’t + شکلِ سادهٔ listen؛ دو شکلِ روادار در accepted"
+    ],
+    "S3": [
+     "توافقِ you → Do (پرسشِ بله/خیریِ حالِ ساده)",
+     "توافقِ I → شکلِ سادهٔ فعل",
+     "Mr. Smith → سوم‌شخصِ مفرد",
+     "people → جمع",
+     "parents → جمع؛ منفیِ حالِ ساده",
+     "Helen → سوم‌شخصِ مفرد در پرسش"
+    ],
+    "S4": [
+     "توافقِ We → go؛ goes با جمعِ ناسازگار",
+     "مفعولِ فعلِ gives → ضمیرِ مفعولیِ us (نه فاعلیِ we)",
+     "grandmother → سوم‌شخصِ مفرد",
+     "aunts → جمع — چاپ‌غلطِ «a big a cake» verbatim در ساقه",
+     "boys → جمع — آغازِ lowercaseِ چاپی verbatim (بعد از نقطه)",
+     "girls → جمع — «and» رابطِ سطرِ چاپی در آیتمِ مستقل حذف شد"
+    ],
+    "S4b": [
+     "سوم‌شخصِ مفرد + منفیِ حالِ ساده: doesn’t + drive — کنتراستِ با «goes to work by bus»؛ داربست: عینِ پرانتزِ چاپی (not drive)",
+     "سوم‌شخصِ مفرد (She) → waters — کنتراستِ با جملهٔ منفیِ قبل"
+    ],
+    "S5": [
+     "cooks the new year meal — meal تنها اسمِ سازگار؛ sing فعل است (واژهٔ اضافیِ بانک)",
+     "مکالمهٔ خودِ درس verbatim: «We normally visit our relatives in Norooz.» (ص۵۲)",
+     "سوم‌شخصِ مفرد (Tom) → wears؛ عبارتِ درس «Wear special clothes» (بانکِ س۱)",
+     "They → جمع؛ هم‌نشینیِ «in the river» → swim"
+    ],
+    "S7": [
+     "عبارتِ خودِ درس: «hold a ceremony*» (ص۵۲ — photo dictionary)؛ gets با جمعِ Iranians ناسازگار",
+     "عبارتِ خودِ درس: «Islamic-Iranian culture*» (ص۵۲)؛ سه گزینهٔ دیگر با «important in Iranian» هم‌نشینیِ معنایی ندارند",
+     "Ali مذکر است → his؛ her/their ناسازگار و Ali خودِ اسم است نه ضمیرِ ملکی",
+     "ملکیِ it برای جانور: its — it ضمیرِ فاعلی است و در جایِ ملکی نمی‌نشیند",
+     "پاسخِ «Yes, he …» فقط با فاعلِ مذکر سازگار است: uncle — Samaneh/aunt/she هر سه مؤنث‌اند",
+     "تنها b دستوریِ سالم است — a: Does…exchanges (باید exchange باشد)، c: Do her aunt buys (دو خطا)، d: She don’t (باید doesn’t)"
+    ]
+   },
+   "skippedSections": [
+    "س۱ (ص۶۱): عبارتِ مناسبِ هر تصویر — تصویری؛ ۸ تصویر/۹ عبارت و واژهٔ اضافیِ چاپ از رویِ تصویرها «Sing the national anthem» است، ولی سکشنِ تطبیقِ تصویر طبقِ قراردادِ r365 مستثنی ماند؛ بانکِ ۹ عبارتیِ خودِ درس در lessonLexicon قفل شد",
+    "س۶ (ص۶۳): افتان یا خیزان — آهنگی؛ در قالبِ تعاملیِ متنیِ فعلی سنجش‌پذیر نیست (الگوی س۱۰ِ r364)",
+    "س۷ق۳: «Fitr-Eid is at the end of Ramadan. It's a …» — ابهامِ دوکلیدی: religious festival و religious ceremony هر دو جملهٔ سالم‌اند و Festival*/Ceremony* هر دو واژهٔ خودِ درس‌اند (ص۵۱)؛ «Eid» در متنِ درس نیست تا لنگرِ یگانه بدهد — قراردادِ r358",
+    "س۷ق۷: «Each year Fajr Film Festival … in Iran» — هیچ گزینهٔ چاپی جملهٔ معتبر نمی‌سازد: مجهولِ «is held» در گزینه‌ها غایب است و celebrates/holds/puts بی‌مفعولِ مناسب و is holding ناقص‌اند — بی‌کلیدِ قابلِ استنتاج (فقط خواندنِ درس چهارم «attended Fajr International Film Festival» ص۷۸ فعلِ مناسب نمی‌سازد)"
+   ],
+   "printQuirkCount": 13,
+   "printQuirks": [
+    "گلیفِ لام-الِ لایه: «جمالت»→جملات، «سواالت»→سوالات، «اصالح»→اصلاح — عنوان‌های بانک بازسازیِ خوانا (الگوی r362/r365)",
+    "شماره‌گذاریِ چاپیِ معیوب: «4)» دوبار سربرگ شده (متنِ رهین و شکلِ صحیح، هر دو ص۶۲) و سپس «5)»/«6»/«7» در ص۶۳ می‌آید — هشت بلوک با هفت شمارهٔ یکتا؛ در عنوان‌های بانک شمارهٔ چاپی حفظ شد",
+    "سربرگِ س۲ در لایه معکوس: «2» سطرِ جدا + «.)جمالت داده شده…» (شکستِ RTL)؛ س۳ با رقمِ فارسیِ «۳)» و س۴/س۶/س۷ با رقمِ لاتینِ سطرِ جدا",
+    "بانکِ واژهٔ س۵ در لایه: «relatives- swim-meal-sing-wears)» + پرانتزِ سرگردانِ سطرِ بعد — جداکنندهٔ خطِ تیرهٔ بی‌فاصله؛ پنج واژه بازچینی شد",
+    "متنِ رهین: «a big a cake» چاپ‌غلطِ verbatim در ساقه؛ «is generous man» (افتادِ a) در لایه هست ولی خارج از ساقه‌هاست",
+    "دو جای خالی در یک سطرِ چاپی: «gives … / grandmother …» و «the boys … / the girls …» — هر کدام دو آیتمِ مستقل شدند؛ «and» رابطِ سطر در آیتمِ girls حذف شد",
+    "«8-Clear the table» در بانکِ س۱: خطِ تیره به‌جای نقطه — سکشنِ تصویریِ مستثنی",
+    "ق۴ِ س۷: گزینهٔ a چاپِ «a her» — ادغامِ حرفِ گزینه با واژه (نقطهٔ میانیِ افتاده)؛ در گزینه‌ها «her» بازسازی شد",
+    "ق۸ِ س۷: گزینه‌های a/c در یک سطر و b/d در سطرِ بعد (چیدمانِ دوستونی) — بازچینی به ترتیبِ a/b/c/d",
+    "نقطه‌چین‌های درون‌سطریِ پاسخِ س۳ («…………………..» پس از هر ساقه) — فرمِ خالیِ چاپ؛ از ساقه‌ها حذف شد",
+    "دو رسم‌الخط در خودِ جزوه: «Nowruz» (س۷ق۲) در برابرِ «Norooz» (متنِ درس و س۵) — هر دو verbatim",
+    "برچسب‌های چاپیِ فارسیِ «سوالی/منفی» در س۲ زیرِ بلنک‌هاست — در ساقه‌ها هم‌ارزِ انگلیسیِ (Question:/Negative:) به الگوی bank20ِ r365 به‌کار رفت تا خانواده خلوصِ لاتین بماند",
+    "آپاستروف‌های آمیخته در یک صفحه: «doesn’t» خمیده (شکلِ صحیح ص۶۲) و «don't» راست (ساقه‌های س۳) — verbatim؛ نرمال‌سازِ موتور هر دو را یکسان می‌کند"
+   ],
+   "lessonLexicon": {
+    "hold a ceremony": "برگزاریِ مراسم — photo dictionary درس («hold a ceremony*» ص۵۲) — لنگرِ س۷ق۱",
+    "Islamic-Iranian culture": "فرهنگِ اسلامی-ایرانی — photo dictionary درس («Islamic-Iranian culture*» ص۵۲) — لنگرِ س۷ق۲",
+    "visit our relatives": "دیدنِ بستگان — مکالمهٔ درس verbatim: «We normally visit our relatives in Norooz.» (ص۵۲) — لنگرِ س۵ق۲",
+    "watch military parade": "تماشای رژهٔ نظامی — photo dictionary درس («watch military parade*» ص۵۲)",
+    "watch fireworks": "تماشای آتش‌بازی — photo dictionary درس («watch fireworks*» ص۵۲)",
+    "sing the national anthem": "خواندنِ سرودِ ملی — photo dictionary درس (ص۵۲) — واژهٔ اضافیِ چاپِ س۱",
+    "commemorate martyrs": "بزرگداشتِ شهیدان — photo dictionary درس («commemorate NE martyrs*» ص۵۲؛ «NE» خرابیِ لایه)",
+    "celebrate a religious holiday": "جشن گرفتنِ عیدِ مذهبی — photo dictionary درس (ص۵۲)",
+    "Ceremony": "مراسم — واژهٔ درس (ص۵۱) — مبنای داوریِ دوکلیدیِ س۷ق۳",
+    "Festival": "جشن — واژهٔ درس (ص۵۱) — مبنای داوریِ دوکلیدیِ س۷ق۳",
+    "Culture": "فرهنگ — واژهٔ درس (ص۵۱)",
+    "meal": "غذا — بانکِ واژهٔ س۵",
+    "swim": "شنا کردن — بانکِ واژهٔ س۵",
+    "sing": "خواندن (آهنگ) — واژهٔ اضافیِ بانکِ س۵ (داربستِ ق۱)",
+    "wears": "می‌پوشد — بانکِ واژهٔ س۵",
+    "relatives": "بستگان — بانکِ واژهٔ س۵/مکالمهٔ درس"
+   },
+   "typedNote": "همهٔ ۲۲ آیتمِ تایپیِ تازه دو گزینه‌ای‌اند (کلید + داربستِ غلط) — قفلِ سراسریِ r363 (ممنوعیتِ تایپیِ تک‌گزینه‌ای) حفظ شد؛ داربست‌ها خانواده‌محور: جملهٔ سادهٔ خودِ ساقه (س۲)، گزینهٔ دیگرِ جفتِ چاپی (س۳/س۴)، عینِ پرانتزِ چاپی (س۴ب)، چرخشِ واژهٔ بانک (س۵)"
+  },
+  "g9exam4": {
+   "extractedRound": "r367",
+   "section": "سؤالات امتحانی درس چهارم پایه نهم",
+   "examPages": "ص۷۳-۷۵ (برچسبِ فوترِ خودِ اسکن با شمارهٔ PDF برابر)؛ ص۷۶ تقریباً خالی و درس پنجم از ص۷۷ با واژگانِ «رسانه» شروع می‌شود",
+   "keyPages": "هیچ پاسخنامهٔ چاپی در جزوه برای این خانواده نیست (تنها پاسخنامهٔ جزوه: کلید واژگان ص۱۰۱ — r362)؛ کلیدها استنتاجیِ مستندند",
+   "sectionsTotal": 11,
+   "sectionsExtracted": 7,
+   "sectionsSkipped": 4,
+   "items": 24,
+   "bankCounts": [
+    3,
+    2,
+    3,
+    2,
+    4,
+    6,
+    4
+   ],
+   "wordBank": [
+    "Where",
+    "How",
+    "When",
+    "Who",
+    "Why"
+   ],
+   "extraWords": [
+    "How",
+    "When"
+   ],
+   "keyPolicy": "کلیدِ استنتاجیِ عبارت‌محور/ساختاری: هر کلید یا با photo dictionary خودِ درس چهارم («open an account*»/«take out money from an ATM*»/«ask the information desk*»/«help charity*»/«hire a taxi*»/«recharge your E-ticket*» ص۶۶، «Fire station*» ص۶۵) یا با مکالمهٔ verbatim درس («It’s just round the corner.» ص۶۶) یا با نوعِ پاسخِ B (س۷) یا آینه‌سازیِ ساختاریِ پرسش/پاسخ (س۱۰) یا جایگاهِ قیدِ تکرار (س۸) یکتا می‌شود — الگوی g9exam1/2/3؛ هیچ کلیدی از خارجِ متنِ درس نیامده",
+   "derivedKeys": {
+    "S5": [
+     "عبارتِ خودِ درس: «recharge your E-ticket*» (ص۶۶) + Recharge* (ص۶۵)؛ «e t_cket» شکستِ چاپیِ «e-ticket»",
+     "عبارتِ خودِ درس: «ask the information desk*» (ص۶۶) + Information* (ص۶۵)",
+     "عبارتِ خودِ درس: «help charity*» (ص۶۶) + Charity* (ص۶۵)"
+    ],
+    "S6": [
+     "تنها یک چینشِ دستوریِ ممکن از شش واژه — داربست: ردیفِ به‌هم‌ریختهٔ چاپی (خانوادهٔ r365)",
+     "تنها یک چینشِ دستوریِ ممکن از شش واژه — داربست: ردیفِ به‌هم‌ریختهٔ چاپی (خانوادهٔ r365)"
+    ],
+    "S7": [
+     "پاسخِ B با «because» آغاز می‌شود → علت‌خواهی: Why",
+     "پاسخِ B نامِ شخص است → شخص‌خواهی: Who",
+     "پاسخِ B مکان است → مکان‌خواهی: Where"
+    ],
+    "S8": [
+     "قیدِ تکرار در جملهٔ مثبت پیش از فعلِ اصلی می‌نشیند: They never come late. — داربست: جملهٔ سادهٔ خودِ ساقه",
+     "قیدِ تکرار پیش از فعلِ اصلی: She always studies hard. — داربست: جملهٔ سادهٔ خودِ ساقه"
+    ],
+    "S9": [
+     "عبارتِ خودِ درس: «ask the information desk*» (ص۶۶) — پاسخِ «where should I go» با پرسیدن از میزِ اطلاعات سازگار است",
+     "عبارتِ خودِ درس: «open an account*» (ص۶۶) — فرمِ بانکی و «How much money» فقط با افتتاحِ حساب سازگار است",
+     "عبارتِ خودِ درس: «take out money from an ATM*» (ص۶۶) — «I need money» → برداشتِ پولِ نقد از خودپرداز",
+     "عبارتِ خودِ درس: «help charity*» (ص۶۶) — generous (بخشنده) → کمک به خیریه"
+    ],
+    "S10": [
+     "پرسشِ Who → تنها نامِ شخص: b) He is Mr. Amaini (الگوی س۴ِ r365/س۱۴ِ r364)",
+     "پرسشِ be («What is his job?») → پاسخِ be-ساختار: e) He is fire fighter. — سؤال و جواب آینهٔ ساختاری‌اند",
+     "پرسشِ do → پاسخِ فعل‌محور: g) He puts out fire and saves people’s lives — آینه‌سازیِ do",
+     "پرسشِ Where → مکان: c) At a fire station. (+ واژهٔ درس «Fire station*» ص۶۵)",
+     "پرسشِ When → با حذفِ متقاطع تنها پاسخِ زمان‌نما: a) He works on shifts (f مکان/منبع است نه زمان)",
+     "پرسشِ there → d) Yes, there’s one over there. — توافقِ there؛ علامتِ پرسشِ چاپی در ق۶ نیست (verbatim)"
+    ],
+    "S11": [
+     "عبارتِ خودِ درس: «take out money from an ATM*» (ص۶۶) و گزینهٔ c س۹؛ t + ۶ خانه = takeout (هفت حرف)",
+     "مکالمهٔ خودِ درس verbatim: «It’s just round the corner.» (ص۶۶، Pedram)؛ r + ۴ خانه = round",
+     "عبارتِ خودِ درس: «hire a taxi*» (ص۶۶)؛ h + ۳ خانه = hire",
+     "واژهٔ درس «Fire station*» (ص۶۵) + پاسخِ c س۱۰ («At a fire station.») + متنِ س۴ همان صفحه («There is a fire station in my city.»)؛ خانه‌های چاپی یکی کم‌تر از حروفِ fire station — کوئیرکِ مستند"
+    ]
+   },
+   "skippedSections": [
+    "س۱ (ص۷۳): «با توجه به تصاویر پاسخ صحیح را انتخاب کنید» — تصویری؛ گزینه‌های سه ستون (a-d ×۳) چاپی‌اند ولی انتخاب با تصویر است — الگوی س۱ِ r365/r366",
+    "س۲ (ص۷۳): «با توجه به هر تصویر درستی یا نادرستی عبارات زیر را مشخص کنید» — تصویری (Take out money / Send an email / donate the blood)",
+    "س۳ (ص۷۳): افتان و خیزان با فلشِ رو به بالا/پایین — آهنگی؛ الگوی س۶ِ r366/س۱۰ِ r364",
+    "س۴ (ص۷۴): «در متن زیر چهار اشتباه گرامری وجود دارد» — سه خطای یکتا: Its→It's، They job→Their job، They always helping→They always help؛ خطای چهارمِ نایکتا: «to be ready in emergency events» هم با for هم در دو شمارهٔ دیگر قابلِ تصحیح است و شمارشِ چهارگانه تکمیل نمی‌شود — سقوطِ الگوی س۹ِ r365 (قراردادِ r358)"
+   ],
+   "printQuirkCount": 13,
+   "printQuirks": [
+    "گلیفِ لام-الِ لایه: «جمالت»→جملات، «باال»→بالا، «رو به باال و یا پایین تن» (س۳) — عنوان‌های بانک بازسازیِ خوانا (الگوی r362/r365)",
+    "شماره‌گذاریِ چاپیِ سالم: ۱-۱۱ پیوسته و یکتا (برخلافِ درس سوم با «۴» تکراری)؛ ارقامِ آمیخته: «۱)»/«۳)»/«۸» فارسی و بقیه لاتین",
+    "س۱: سه ستونِ MCQِ تصویری در یک سطرِ لایه (a-d ×۳ با COLSPLIT ۴+ فاصله)؛ سکشنِ مستثنی",
+    "س۵: «R_charge the e t_cket» — شکستِ «e-ticket» با فاصله در چاپ/لایه؛ عبارتِ کامل‌شده از photo dictionary درس بازسازی شد",
+    "س۷: دستورِ چاپی «یک کلمه اضافی است» ولی بانک ۵ واژه برای ۳ جای خالی دارد — دو اضافی (How/When)؛ کوئیرکِ شمارشی مستند",
+    "س۷ق۱: «does take bus» — افتادِ فاعل در چاپ (verbatim در ساقه)؛ کلید با پاسخِ B (because) یکتا می‌ماند",
+    "س۷ بانک: «(Where – How – When – Who –- Why)» — خطِ تیرهٔ دوبلِ چاپی؛ پنج واژه بازچینی شد",
+    "س۹: «save people' lives» — آپاستروفِ بی‌s چاپی (در برابرِ people’s درست در گزینهٔ g س۱۰)؛ «buy ticket» بی‌حرفِ تعریف — هر دو verbatim",
+    "س۹: گزینه‌های a/c در ستونِ چپ و b/d در ستونِ راست (دوستونی) — بازچینی به ترتیبِ a/b/c/d",
+    "س۱۰: «What s his job?» — افتادِ آپاستروفِ چاپی (verbatim)؛ ق۶ «Is there a fire station near here» بی‌علامتِ پرسش؛ گزینهٔ f با حرفِ کوچکِ آغازین و بی‌نقطه",
+    "س۱۰: ۷ گزینه برای ۶ سطر — f) from a post office اضافیِ چاپ؛ هفت گزینه در موتور (letters تا g) بومی پشتیبانی می‌شود",
+    "س۱۱ق۴: خانه‌های چاپی یکی کم‌تر از حروفِ «fire station» (f + ۹ در برابرِ ۱۰ حرفِ باقی‌مانده) — همان افتادِ خانه‌های «Express train» (r365)؛ کلید از لنگرهای سه‌گانه (واژنامه/س۱۰ق۴/متنِ س۴) یکتاست",
+    "آپاستروف‌های آمیخته: «It's cheap» راست (س۷) و «there’s/people’s/don’t» خمیده (س۹/س۱۰) — verbatim؛ نرمال‌سازِ موتور یکسان می‌کند"
+   ],
+   "lessonLexicon": {
+    "open an account": "حساب بازکردن — photo dictionary درس («open an account*» ص۶۶) — لنگرِ س۹ق۲",
+    "take out money from an ATM": "برداشتِ پول از خودپرداز — photo dictionary درس (ص۶۶) — لنگرِ س۹ق۳/س۱۱ق۱",
+    "ask the information desk": "پرسیدن از میزِ اطلاعات — photo dictionary درس (ص۶۶) — لنگرِ س۹ق۱/س۵ق۲",
+    "help charity": "کمک به خیریه — photo dictionary درس (ص۶۶) — لنگرِ س۹ق۴/س۵ق۳",
+    "donate blood": "اهدای خون — photo dictionary درس («donate blood*» ص۶۶) + Donate* (ص۶۵)",
+    "hire a taxi": "تاکسی گرفتن — photo dictionary درس (ص۶۶) — لنگرِ س۱۱ق۳",
+    "recharge your E-ticket": "شارژکردنِ بلیتِ الکترونیکی — photo dictionary درس (ص۶۶) + Recharge* (ص۶۵) — لنگرِ س۵ق۱",
+    "Fire station": "آتش‌نشانی — واژهٔ درس (ص۶۵) — لنگرِ س۱۱ق۴",
+    "round the corner": "دورِ گوشهٔ خیابان — مکالمهٔ درس verbatim: «It’s just round the corner.» (ص۶۶، Pedram) — لنگرِ س۱۱ق۲",
+    "Charity": "خیریه — واژهٔ درس (ص۶۵)",
+    "Information": "اطلاعات — واژهٔ درس (ص۶۵)",
+    "Recharge": "شارژکردن — واژهٔ درس (ص۶۵)",
+    "voluntary work": "کارِ داوطلبانه — س۶ (عبارتِ مرتب‌کردنیِ چاپی)",
+    "keep the city clean": "شهر را تمیز نگه‌داشتن — گزینهٔ س۹/س۶ (عبارتِ چاپی)"
+   },
+   "typedNote": "همهٔ ۱۴ آیتمِ تایپیِ تازه دو گزینه‌ای‌اند (کلید + داربستِ غلط) — قفلِ سراسریِ r363 (ممنوعیتِ تایپیِ تک‌گزینه‌ای) حفظ شد؛ داربست‌ها خانواده‌محور: چرخشِ عبارت‌های هم‌بانک (س۵/س۷/س۱۱)، ردیفِ به‌هم‌ریختهٔ چاپی (س۶)، جملهٔ سادهٔ خودِ ساقه (س۸)"
+  },
+  "g9exam5": {
+   "extractedRound": "r368",
+   "section": "سؤالات امتحانی درس پنجم پایه نهم",
+   "examPages": "pdf-p85-87 (برچسبِ فوتر: ۸۵/۸۶/۸۷)؛ p88 جلدِ «Lesson 6 — Health and Injuries» است و خانواده همان‌جا بسته می‌شود؛ درس ششم از pdf-p89 با واژگانِ «سلامتی و آسیب‌ها»",
+   "keyPages": "هیچ پاسخنامهٔ چاپی در جزوه برای این خانواده نیست (تنها پاسخنامهٔ جزوه: کلید واژگان ص۱۰۱ — r362)؛ کلیدها استنتاجیِ مستندند",
+   "sectionsTotal": 11,
+   "sectionsExtracted": 7,
+   "sectionsSkipped": 4,
+   "items": 31,
+   "bankCounts": [
+    10,
+    4,
+    2,
+    3,
+    3,
+    2,
+    2,
+    2,
+    3
+   ],
+   "wordBank": [
+    "watched",
+    "wonderful",
+    "did",
+    "weekend",
+    "text",
+    "interested",
+    "watch",
+    "didn’t",
+    "surf",
+    "attended",
+    "address"
+   ],
+   "extraWords": [
+    "watched"
+   ],
+   "keyPolicy": "کلیدِ استنتاجیِ مکالمه‌محور: این خانواده بازآراییِ خودِ مکالمه/تمرین‌های درس پنجم است — س۲ ده بلنکش نه‌به‌نه در مکالمهٔ verbatim درس (لایه p78-79) لنگر دارد؛ س۳ دو جفتش verbatimِ تمرین‌های درس (لایه p79-80) و دو جفتش با نوعِ پرسش‌واژه (Who→شخص، When→زمان) یکتاست؛ س۵ق۱ جملهٔ verbatim مکالمه است؛ س۷/س۸ ساختاری (توافقِ be/did + قیدِ زمان + نوعِ پاسخ)؛ دیکته از photo dictionary درس (لایه p78) — دو آیتمِ «use technology» و «football match» لنگرِ واژگانیِ ضعیف‌تر دارند و در keyWhy مستندند؛ هیچ کلیدی از خارجِ متنِ جزوه نیامده",
+   "derivedKeys": {
+    "S2": [
+     "مکالمهٔ verbatim درس: «Mina: Did you enjoy your weekend?» (لایه p78:032)",
+     "مکالمهٔ verbatim: «Mahsa: Yes, it was wonderful! …» (لایه p78:035) + Wonderful* (p77:096)",
+     "ساختاری: did-پرسشِ گذشته + شکلِ سادهٔ فعل؛ همتای تمرینِ درس: «What did you do last week?» (لایه p80:017)",
+     "مکالمهٔ verbatim: «I attended Fajr International Film Festival.» (لایه p78:035) + Attend* (p77:034)",
+     "مکالمهٔ verbatim: «I am also interested in its events and movies.» (لایه p78:043)؛ ساختارِ interested in",
+     "مکالمهٔ verbatim: «did you watch the reports on TV last night?» (لایه p78:051)؛ Did + شکلِ سادهٔ فعل — «watched» اضافیِ چاپیِ بانک",
+     "پاسخِ کوتاهِ منفیِ did-پرسش: «No, I didn’t.» — الگوی تمرینِ درس: «No, she didn’t.» (لایه p79:050)؛ درسِ خودش «Yes, I did» دارد ولی ساقهٔ چاپیِ «No» حاکم است؛ بازشدنِ مخفف روادار",
+     "مکالمهٔ verbatim: «you can surf its website if you like» (لایه p79:005)؛ سطرِ B چهارم دو بلنک دارد — نیمهٔ نخست",
+     "مکالمهٔ verbatim: «Could you please give me the website address?» (لایه p79:015) — نیمهٔ دومِ همان سطر",
+     "مکالمهٔ verbatim: «I just texted it.» (لایه p79:021) + text a message* (p78:013)؛ حرفِ بزرگِ چاپیِ «It» verbatim"
+    ],
+    "S3": [
+     "پرسشِ Who → تنها پاسخِ شخصی: «My brother.» (a منفیِ did-پرسش، b زمانی، c مکانیِ بی‌پرسشِ مکانی، e مکانی)؛ «Who watch» افتادِ -edِ چاپ است — verbatim",
+     "did-پرسشِ بله/نه → پاسخِ منفیِ علت‌دار: a) — جفتِ verbatimِ تمرینِ درس: «Did Amir work with his computer? → No, he worked with his mobile.» (لایه p79:068/064)",
+     "پرسشِ Where → مکان: e) — تمرینِ درس: «Where did she connect to the Internet? → She connected to the Internet at school.» (لایه p80:052/044)",
+     "پرسشِ When → زمان: b) — تمرینِ درس همان جفت با «yesterday»: «When did they download the book? → They downloaded it yesterday.» (لایه p80:039/033)"
+    ],
+    "S4": [
+     "سه صفتِ ستایشی، همگی واژهٔ درس: Amazing* (p77:026)/Wonderful* (p77:096)/Fantastic* (p77:090)؛ cinema مکان است نه صفت",
+     "سه واژهٔ خانوادهٔ رسانه/فناوری (Connect* p77:066/Download* p77:082 و اینترنت)؛ fruit خوراکی است نه رسانه"
+    ],
+    "S5": [
+     "مکالمهٔ verbatim درس: «There are many interesting things there.» (لایه p79:005-006) — تنها چینشِ دستوریِ شش واژه",
+     "عبارتِ photo dictionary: «watch a quiz show*» (لایه p78:019)؛ دو جایگاهِ قیدِ زمانِ پایان/آغاز هر دو دستوری‌اند — هر دو شکل accepted",
+     "چینشِ یکتا؛ بانکِ چاپی حرفِ تعریفِ «a» را ندارد (چاپ‌خطای مستند) — شکلِ مقصود با «a» و شکلِ سخت‌گیرانهٔ واژه‌به‌واژه هر دو روادار؛ «football» در واژگانِ چاپیِ درس نیست (فقط Match* لایه p77:040)"
+    ],
+    "S7": [
+     "جمع + مسندِ صفتِ گذشته → «They were happy»؛ «was not» مفرد است و «didn’t were» ساختارِ ناممکن (did + شکلِ سادهٔ فعل)",
+     "پاسخِ B شیءِ نصب‌شده را نام می‌برد → شیءخواهی: What؛ عبارتِ photo dictionary: «install a computer dictionary*» (لایه p78:016)",
+     "سوم‌شخص + «yesterday» → wasn’t؛ «were» جمع است و «am» حالِ اول‌شخص — ساختاری"
+    ],
+    "S8": [
+     "تقابلِ «this month / last month» با «But» → منفیِ گذشته: weren’t؛ «were» مثبتِ ناسازگار و «aren’t» حال است",
+     "قیدِ گذشتهٔ «2 days ago» → attended؛ عبارتِ photo dictionary: «attend a TV program*» (لایه p78:008) و مکالمه: «I attended Fajr International Film Festival.»"
+    ],
+    "S11-TF": [
+     "متنِ verbatim: «Last weekend, something happened to my TV.» (لایه p87:012) — Saturday نیست، weekend است → False",
+     "متنِ verbatim: «I called my grandmother. She came to our home.» (لایه p87:013-014) — مادربزرگ آمد نه پدربزرگ → False"
+    ],
+    "S11-QA": [
+     "متنِ verbatim: «At first, I wasn’t happy.» (لایه p87:013) — تبدیلِ ضمیرِ I→she؛ چهار شکلِ accepted (ویرگول × انقباض)",
+     "متنِ verbatim: «But then I cleaned my room and I called my grandmother.» (لایه p87:013-014) — تبدیلِ ضمیرِ I→she؛ حذف/نگه‌داشتنِ ضمیرِ دوم و ترتیبِ دو کنش روادار"
+    ],
+    "SDictation": [
+     "عبارتِ photo dictionary درس: «interview somebody*» (لایه p78:020) + Interview* (p77:020)؛ عبارتِ ناقص از رندرِ p87 خوانده شد (در لایه نیست — کوئیرکِ ۸)",
+     "عبارتِ photo dictionary درس: «update a blog*» (لایه p78:015) + Blog* (p77:042)؛ عبارتِ ناقص از رندرِ p87",
+     "کامل‌شدنیِ یکتا: technol_gy → technology؛ هم‌ارزِ مفهومیِ «use IT*» (لایه p78:017) — «technology» در لایه فقط در ضمیمهٔ تلفظِ ch (لایه p105) هست؛ لنگرِ واژگانیِ ضعیف‌تر از دو آیتمِ دیگر — مستند"
+    ]
+   },
+   "skippedSections": [
+    "س۱ (ص۸۵): «با توجه به تصاویر جاهای خالی را با عبارات مناسب پر کنید» — تصویری (میکروفون/ابرِ UPDATE/موبایل) — الگوی س۱ِ r364/r365/r366",
+    "س۶ (ص۸۶): «افتان یا خیزان جملات زیر را مشخص کنید» — آهنگی (That's brilliant. / What a beautiful flower.) — الگوی س۶ِ r366/س۳ِ r367",
+    "س۹ (ص۸۶): «به سوالات زیر پاسخ کامل دهید» — تولیدِ آزاد با پاسخِ شخصی (Did you receive an email yesterday? / What did you do last week?) — الگوی س۵/س۱۵ِ r364",
+    "س۱۰ (ص۸۷): «شماره هر عبارت را زیر تصویر مربوط به آن بنویسید» — تصویری (text a message/see a war movie/look at the newsstand/attend a TV program/interview somebody)"
+   ],
+   "printQuirkCount": 8,
+   "printQuirks": [
+    "شماره‌گذاریِ آمیختهٔ چاپی: ارقامِ فارسیِ «۳» و «۸» در میانِ ارقامِ لاتینِ سکشن‌ها (1/2/۳/4/5/6/7/۸/9)/10/11) — برخلافِ درس چهارم، پیوستِ و یکتاست",
+    "دنبالهٔ «دیکته کلمات ناقص زیر را کامل کنید» پس از س۱۱ بی‌شمارهٔ چاپی است — س۱۲ در چاپ وجود ندارد؛ به‌عنوان بانکِ ۴۴ استخراج شد",
+    "س۲ق۱۰: حرفِ بزرگِ چاپیِ «It» («You can ……. It.») — verbatim در ساقه",
+    "س۳ق۱: «Who watch the cartoon yesterday?» — افتادِ -edِ چاپ (در برابرِ تمرینِ درس: «Who watched the movie last night؟» لایه p80:008) — verbatim",
+    "س۵ق۳: بانکِ واژهٔ چاپی حرفِ تعریفِ «a» ندارد — جملهٔ مقصود «You can watch a football match on TV tonight.»؛ هر دو شکل accepted",
+    "س۲: سطرِ چهارمِ B دو بلنک دارد («You can ……. its website. I can give you the website ………….») — به دو آیتمِ ۸/۹ شکسته شد",
+    "س۱۱: هر دو گزارهٔ درست/غلط False است (a: «last Saturday»↔متنِ «Last weekend»؛ b: grandfather↔متنِ grandmother) — کوئیرکِ دوبلِ False مستند",
+    "لایهٔ p88 خالی است ولی رندرش جلدِ «Lesson 6» است؛ عبارت‌های دیکتهٔ انتهای p87 در لایه نمی‌آیند (در تصویرِ نشسته‌اند) و از رندر خوانده شدند — assertionِ غیبت در اسکریپت ثبت است"
+   ],
+   "lessonLexicon": {
+    "text a message": "پیام دادن — photo dictionary درس (لایه p78:013) + Message* (p77:048) — لنگرِ س۲ق۱۰",
+    "attend a TV program": "شرکت‌کردن در برنامهٔ تلویزیونی — photo dictionary (p78:008) + Attend* (p77:034) — لنگرِ س۸ق۲/دیکته",
+    "interview somebody": "مصاحبه‌کردن — photo dictionary (p78:020) + Interview* (p77:020) — لنگرِ دیکتهٔ ۱",
+    "update a blog": "به‌روزرسانیِ وبلاگ — photo dictionary (p78:015) + Blog* (p77:042) — لنگرِ دیکتهٔ ۲",
+    "watch a quiz show": "تماشای مسابقهٔ تلویزیونی — photo dictionary (p78:019) + Quiz show* (p77:072) — لنگرِ س۵ق۲",
+    "look at the newsstand": "نگاه‌کردن به دکهٔ روزنامه — photo dictionary (p78:014) + Newsstand* (p77:056)",
+    "see a war movie": "دیدنِ فیلم جنگی — photo dictionary (p78:011)",
+    "connect to the internet": "وصل‌شدن به اینترنت — photo dictionary (p78:012) + Connect* (p77:066) — لنگرِ س۳ق۳/س۴ق۲",
+    "download something from the internet": "دانلودکردن از اینترنت — photo dictionary (p78:021) + Download* (p77:082) — لنگرِ س۳ق۴",
+    "install a computer dictionary": "نصبِ دیکشنریِ رایانه‌ای — photo dictionary (p78:016) + Install* (p77:098) — لنگرِ س۷ق۲",
+    "use IT": "استفاده از فناوریِ اطلاعات — photo dictionary (p78:017) — هم‌ارزِ مفهومیِ دیکتهٔ ۳",
+    "receive an e-mail": "دریافتِ ایمیل — photo dictionary (p78:009)",
+    "participate in an online course": "شرکت‌کردن در دورهٔ برخط — photo dictionary (p78:007)",
+    "change the TV channels": "عوض‌کردن کانال‌های تلویزیون — photo dictionary (p78:010)",
+    "surf the website": "جست‌وجوی وبسایت — مکالمهٔ درس verbatim: «you can surf its website if you like» (p79:005) — لنگرِ س۲ق۸",
+    "website address": "نشانیِ وبسایت — مکالمهٔ درس: «Could you please give me the website address?» (p79:015) — لنگرِ س۲ق۹",
+    "Amazing / Wonderful / Fantastic": "سه صفتِ ستایشیِ درس (p77:026/096/090) — لنگرِ س۴ق۱",
+    "Did you enjoy your weekend?": "مکالمهٔ درس verbatim (Mina، p78:032) — لنگرِ س۲ق۱",
+    "Yes, it was wonderful! I attended Fajr International Film Festival.": "مکالمهٔ درس verbatim (Mahsa، p78:035) — لنگرِ س۲ق۲/ق۴",
+    "Did Amir work with his computer? → No, he worked with his mobile.": "تمرینِ ۱ درس verbatim (p79:068/064) — لنگرِ س۳ق۲",
+    "Where did she connect to the Internet? → She connected to the Internet at school.": "تمرینِ ۲ درس verbatim (p80:052/044) — لنگرِ س۳ق۳",
+    "When did they download the book? → They downloaded it yesterday.": "تمرینِ ۲ درس verbatim (p80:039/033) — لنگرِ س۳ق۴",
+    "readingText": "متنِ Parisa (p87:012-015): Hello. My name is Parisa. Last weekend, something happened to my TV. It didn’t work. At first, I wasn’t happy. But then I cleaned my room and I called my grandmother. She came to our home. She showed me how to play an old game. It was really fun and I enjoyed it. All day I was busy."
+   },
+   "typedNote": "هر ۱۸ آیتمِ تایپیِ تازه (س۲:۱۰، س۵:۳، س۱۱QA:۲، دیکته:۳) داربستِ اندیسِ نادرست دارند — قفلِ سراسریِ r363 (ممنوعیتِ تایپیِ تک‌گزینه‌ای) حفظ شد؛ داربست‌ها خانواده‌محور: چرخشِ واژه‌های هم‌بانکِ چاپی (س۲)، ردیفِ به‌هم‌ریختهٔ چاپی (س۵)، پاسخِ نادرستِ ناهم‌سو (س۱۱QA) و عبارت‌های هم‌خانوادهٔ photo dictionary (دیکته)"
+  },
+  "g9exam6": {
+   "extractedRound": "r369",
+   "section": "سؤالات امتحانی درس ششم پایه نهم",
+   "examPages": "pdf-p95-97 (برچسبِ فوتر: ۹۵/۹۶/۹۷)؛ p98 «تست واژگان» است — خانوادهٔ جدا که r362 استخراجش کرده و مرزِ پایینیِ خانواده‌های امتحانیِ کارتِ نهم؛ با این راند کارتِ نهم شش‌درسِ امتحانی کامل شد",
+   "keyPages": "هیچ پاسخنامهٔ چاپی در جزوه برای این خانواده نیست (تنها پاسخنامهٔ جزوه: کلید واژگان ص۱۰۱ — r362)؛ کلیدها استنتاجیِ مستندند",
+   "sectionsTotal": 10,
+   "sectionsExtracted": 6,
+   "sectionsSkipped": 4,
+   "items": 21,
+   "bankCounts": [
+    8,
+    2,
+    1,
+    4,
+    3,
+    3
+   ],
+   "wordBank": [
+    "broke",
+    "did",
+    "stay",
+    "twisted",
+    "participated",
+    "advice",
+    "do",
+    "learn",
+    "stayed"
+   ],
+   "extraWords": [
+    "stay"
+   ],
+   "keyPolicy": "کلیدِ استنتاجیِ مکالمه‌محور: این خانواده هم بازآراییِ خودِ مکالمه/تمرین‌های درس ششم است — هشت بلنکِ س۲ در مکالمهٔ verbatim درس (لایه p90-91) لنگر دارند (با تبادلِ چاپیِ قیدهای زمان: امتحان «Last winter I fell» ↔ درس «Last summer I fell» و بالعکس برای ankle)؛ س۵ دو جفتش verbatimِ تمرینِ ۲ درس (لایه p92: Why→Because و همتای Where) و دو جفتش با نوعِ پرسش‌واژه (Who→شخص، When→زمان) یکتاست؛ گزینهٔ اضافیِ س۵ («Yes, she did.») خودِ تمرینِ ۱ درس است (p91:035)؛ س۳ از گرامرِ خودِ درس (ضمایر مفعولی p94) و خانوادهٔ فعل‌های آسیب (p89)؛ س۶/س۷ ساختاری + photo dictionary (p90)؛ هیچ کلیدی از خارجِ متنِ جزوه نیامده",
+   "derivedKeys": {
+    "S2": [
+     "مکالمهٔ verbatim درس: «I don’t like school trips.» (لایه p90:042) + Trip* (p89:082)؛ عادتِ حال («like») → Do + شکلِ ساده؛ «did» تلهٔ زمانِ گذشته است",
+     "مکالمهٔ درس: «Last summer I fell and broke my leg.» (لایه p90:042-043 — امتحان قیدِ زمان را winter کرده) + photo dictionary: «He broke his leg*» (p90:008) و Fall*/Break* (p89)؛ «stayed my leg» بی‌معنا",
+     "مکالمهٔ درس: «I twisted my ankle last winter.» (لایه p90:051 — امتحان قیدِ زمان را summer کرده) + Twist*/Ankle* (p89:086/033)؛ «stayed my ankle» بی‌معنا",
+     "مکالمهٔ درس: «I stayed home for two weeks!» (لایه p90:051-052 — امتحان: 10 days)؛ گذشته با «for 10 days» → stayed؛ «stay» واژهٔ اضافیِ چاپی است و در ساقهٔ خودِ امتحان هم هست («Did you stay home?» — p95:022)",
+     "مکالمهٔ verbatim درس: «Yeah…, but after that, I participated in Helal-e-Ahmar first aid classes.» (لایه p91:005) + First aid* (p89:088)؛ «twisted in … classes» بی‌معنا",
+     "مکالمهٔ درس: «I learned how to take care of myself.» (لایه p91:006) + Take care of* (p89:078)؛ Did + شکلِ سادهٔ فعل → learn نه stayed",
+     "پاسخِ کوتاهِ did-پرسش: پرسشِ پیشینِ خودِ امتحان «Did you … how to take care of yourself?» است؛ الگوی تمرینِ ۱ درس: «Did Mina have an accident? → Yes, she did.» (لایه p91:039/035)",
+     "مکالمهٔ درس: «Can you give me some advice?» (لایه p91:016) + Advice* (p89:026)؛ «some» + اسم → advice؛ «some do» بی‌معنا"
+    ],
+    "S3": [
+     "گرامرِ خودِ درس: ضمایر مفعولی (Object Pronouns، لایه p94) — her/them/him هر سه ضمیرِ مفعولی‌اند؛ my فقط صفتِ ملکی است و هرگز نقشِ مفعولی ندارد",
+     "سه فعلِ آسیبِ درس: Cut* (p89:065)/Hurt* (p89:032)/Break* (p89:044)؛ health اسمِ وضعیتِ سلامتی است نه فعلِ آسیب (health* p89:095)"
+    ],
+    "S4": [
+     "چینشِ یکتای شش واژه؛ جایگاهِ آغازینِ قیدِ مکان روادار است (الگوی acceptedِ r368)؛ verbs: saw از خودِ ردیفِ چاپی — هیچ واژه‌ای اضافی نیست"
+    ],
+    "S5": [
+     "پرسشِ Where → مکان: b) «She hit it in the park.» («it» = back؛ Hit* p89:024)؛ همتای تمرینِ ۲ درس: «Where did she break her leg? → She broke her leg in the park.» (لایه p92:021/019)",
+     "پرسشِ Why → علت: d) «Because they drove fast.» — جفتِ verbatimِ تمرینِ ۲ درس (لایه p92:034/029) + Accident* (p89:022)",
+     "پرسشِ Who → تنها پاسخِ شخصی: e) «My sister.»؛ همتای تمرینِ ۲ درس: «Who had an accident? → Reza.» (لایه p92:014/012)؛ Cut* (p89:065) + photo dictionary: «She cut her finger*» (p90:013)",
+     "پرسشِ When → زمان: a) «I took care of my father last year.»؛ Take care of* (p89:078) + photo dictionary: «She takes care of her child*» (p90:017)"
+    ],
+    "S6": [
+     "گرامرِ درس: ضمایر مفعولی (p94) بعد از invite + انسجامِ گفتاریِ «We went …» → they invited us؛ «our» صفتِ ملکی است و «them» با فاعلِ «they» ناسازگار (بازتابِ همان شخص)؛ Invite* (p89:038)",
+     "پاسخِ B زمانی است («last Monday») → When؛ Burn* (p89:052) + photo dictionary: «She burned her hand.*» (p90:011)؛ چاپ هم «burn» و هم «burnt» (بریتانیایی) در همین آیتم دارد — واریانسِ املاییِ مستند",
+     "پرسشِ Why → پاسخِ علت با because (الگوی تمرینِ ۲ درس: «Why did they have an accident? → Because they drove fast.» لایه p92)؛ photo dictionary: «I hurt my knee*» (p90:021)؛ Hurry up* واژهٔ درس است اما پاسخِ علت نیست"
+    ],
+    "S7": [
+     "«the books» جمع است → ضمیرِ مفعولیِ جمعِ them (گرامرِ درس: Object Pronouns p94)؛ it/its مفردند و us اول‌شخصِ جمع با books ناسازگار",
+     "Did + شکلِ سادهٔ فعل → have؛ photo dictionary: «He has a scar*» (p90:014) + Scar* (p89:071)؛ پاسخِ B «had» را در گذشته تأیید می‌کند",
+     "گذشتهٔ سادهٔ بی‌قاعدهٔ find → found (Find p89:080 + قیدِ گذشتهٔ «yesterday»)؛ «finded» شکلِ ناموجود، «founded» به‌معنای تأسیس‌کردن است و «did found» ساختارِ ناممکن (did + شکلِ ساده)"
+    ]
+   },
+   "skippedSections": [
+    "س۱ (ص۹۵): «با توجه به تصاویر جملات زیر را کامل کنید» — تصویری (انگشتِ خون‌ریزی‌کننده/تصادفِ دو ماشین/کبودیِ دست) با لنگرهای photo dictionary («It is bleeding*»/«He had a car crash*»/«He has some bruises*» p90) — الگوی س۱ِ r364-368",
+    "س۴ق۱ (ص۹۵): «learnt, last, English, summer, I. year.» — دوکلیدی: «I learnt English last year.» با «summer» اضافی و «I learnt English last summer.» با «year» اضافی هر دو دستوری‌اند و دستورِ چاپی «کلمهٔ اضافی» هم نمی‌گوید — الگوی دو-کلیدِ r358/r365/r366",
+    "س۸ (ص۹۶): «با استفاده از فلش افتان و خیزان جملات زیر را مشخص کنید» — آهنگی با آیکنِ فلشِ تصویری در رندر (Do you have your lunch at school? / Please hurry up! / Hamid cut his finger.) — الگوی س۶ِ r366-368",
+    "س۹ (ص۹۷): «با توجه به تصاویر به سوالات پاسخ دهید» — تصویری با دستورِ دوگانهٔ چاپی «کوتاه/کامل» (Did she take care of the baby? / Did you break your leg? / When did Mr. Hamidi get up? با ساعتِ ۶:۳۰ / How did Amir hurt his head?) — الگوی س۱۰ِ r368",
+    "س۱۰ (ص۹۷): «با توجه به تصاویر گزینه صحیح را انتخاب کنید» — تصویری (His hand is … (bleeding) / It … a lot (hurts) / We attended in Helal-e-Ahmar … classes (first aid) / He has some … on his face (scars))"
+   ],
+   "printQuirkCount": 10,
+   "printQuirks": [
+    "شماره‌گذاریِ آمیختهٔ چاپی: ارقامِ لاتینِ 1-7 سپس «۸» فارسی (لایه p96:032) سپس 9/10 لاتین — الگوی exam-5",
+    "تبادلِ قیدهای زمانِ س۲ نسبت به درس: امتحان «Last winter I fell and broke my leg» دارد و مکالمهٔ درس «Last summer I fell and broke my leg» (p90:042)؛ متقابلاً امتحان «my ankle last summer» و درس «I twisted my ankle last winter» (p90:051) — لنگرها هم‌جمله‌اند نه هم-قید",
+    "واژهٔ اضافیِ س۲ («stay») در خودِ ساقهٔ چاپی هم می‌آید («Did you stay home?» p95:022) — اضافیِ خود-فاش‌شونده؛ با این حال کلیدِ هیچ بلنکی نیست و در گارد قفل شد",
+    "س۲: سطرِ آخرِ B دو بلنک دارد («Yes, I ……. I can give you some ………… if you like.») — به دو آیتمِ ۷/۸ شکسته شد (الگوی r368)",
+    "س۴ق۱: شش واژه با دو چینشِ دستوریِ مستقل و دو اضافیِ متفاوت — دوکلیدی → مستثنی با دلیل (بندِ مستثنی‌ها)",
+    "س۴ق۱: نقطهٔ سرگردانِ چاپی پس از «I» («learnt, last, English, summer, I. year.»)",
+    "س۶ق۲: چاپ هم «burn» (در پرسش) و هم «burnt» (بریتانیایی — در پاسخِ B) در یک آیتم دارد — واریانسِ املاییِ چاپی",
+    "س۵: جدولِ چاپی پاسخ‌ها را در ستونِ راست با حروفِ a-e و پرسش‌ها را در ستونِ چپ با پرانتزِ حرف می‌دهد؛ لایه ترتیبِ پرسش/جواب را درهم می‌دهد — ترتیبِ منطقی بازسازی و با رندر راستی‌آزمایی شد",
+    "س۹: دستورِ چاپی برای هر تصویر دو پاسخ می‌خواهد («کوتاه:» و «کامل:») — خودِ ساختارِ دوپاسخی هم تصویری و مستثنی است",
+    "س۲: «really?» با حرفِ کوچکِ چاپی پس از A (بازآراییِ نقش‌ها نسبت به درس: «That’s too bad» که در درس از Ehsan است در امتحان در سطرِ B می‌آید) — verbatimِ چاپ حفظ شد"
+   ],
+   "lessonLexicon": {
+    "Heart attack / Accident / Hit / Advice / Hurry up / Hurt / Ankle / Injury / Back / Invite / Bleed / Knee / Break / Lake / Bruise / Leg / Burn / Cast / Cut / Put / Scar / Stick / Fall / Take care of / Find / Trip / Finger / Twist / First aid / Wound / Head / yard / health": "واژگان کاملِ «سلامتی و آسیب‌ها» (لایه p89:020-095) — سنگ‌بنای لنگرهای س۲/س۳/س۵/س۶/س۷",
+    "It hurts a lot / He broke his leg / It is bleeding / He had a car crash / She burned her hand / He has a black eye / She cut her finger / He has a scar / She had a heart attack / He has his leg in a cast / She takes care of her child / He has some bruises / Stick put a plaster on the wound / He hit his head on the door / I hurt my knee": "photo dictionary کاملِ درس (لایه p90:007-021) — لنگرهای س۱ (مستثنی) تا س۷",
+    "conversation": "مکالمهٔ درس ششم (لایه p90:034-p91:022): Reza «We plan to go to the lake.» → Ehsan «I don’t think so. I don’t like school trips. Last summer I fell and broke my leg.» → Reza «It sometimes happens. I twisted my ankle last winter. I stayed home for two weeks!» → Reza «Yeah…, but after that, I participated in Helal-e-Ahmar first aid classes. I learned how to take care of myself.» → Ehsan «I like that. Can you give me some advice?» — سنگ‌بنای س۲",
+    "tamarin1": "تمرینِ ۱ درس (p91): Did Mina have an accident? → Yes, she did. / Did Ali cut his finger? → No, he didn’t. / Did you break your leg? → Yes, I broke my leg. / Did you hurt your back? → No, I didn’t hurt my back. — الگوی پاسخِ کوتاهِ س۲ق۷ + گزینهٔ اضافیِ س۵",
+    "tamarin2": "تمرینِ ۲ درس (p92): Who had an accident? → Reza. / Where did she break her leg? → She broke her leg in the park. / How did Amir hurt his head? → He hit his head on the door. / Why did they have an accident? → Because they drove fast. — سنگ‌بنای س۵",
+    "grammar": "گرامرِ درس: ضمایر مفعولی (Object Pronouns، p94) — me/you/him/her/it/us/them — سنگ‌بنای س۳ق۱/س۶ق۱/س۷ق۱"
+   },
+   "typedNote": "هر ۹ آیتمِ تایپیِ تازه (س۲:۸، س۴:۱) داربستِ اندیسِ نادرست از خودِ بانکِ چاپی دارند — قفلِ سراسریِ r363 (ممنوعیتِ تایپیِ تک‌گزینه‌ای) حفظ شد؛ داربست‌های س۲ خانواده‌محور با تلهٔ صرفی/زمانی (do/did، stayed/stay، learn/stayed) و داربستِ س۴ ردیفِ به‌هم‌ریختهٔ چاپی است؛ واژهٔ اضافیِ چاپیِ «stay» هرگز کلید/داربست نیست (assertion در اسکریپت)"
+  }
+ }
+}

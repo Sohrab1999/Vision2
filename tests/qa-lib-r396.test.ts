@@ -125,6 +125,7 @@ const FIFTYSEVENTH_CONSUMER = "scripts/qa-r452-exam-dict-mobile.sh"; // r452 —
 const FIFTYEIGHTH_CONSUMER = "scripts/qa-r453-dict-scope-switch.sh"; // r453 — شاهدِ موبایلِ «سوییچِ دامنهٔ دیکته» — قراردادِ remountِ key={dictScope}: نیمدورِ بانکی رها میشود، count به ۱۰ ریست، چیپِ فعالِ صورتیِ پایهٔ هفتم، راندِ واقعیِ ۸واژه‌ای + attemptِ یکتای dict-g7 و هیچِ attemptِ سایه؛ + سگِ نگهبانِ سرور (مرگِ بیصدا ۵/۵)
 const FIFTYNINTH_CONSUMER = "scripts/qa-r454-toast-root2.sh"; // r454 — شکارِ «ریشهٔ دومِ توستِ آلوده» — بایسِکتِ زندهٔ dispatch→render در دو بازو (آلوده/تازه) با fiber-probe (خواندنِ toasts از hooksِ Toaster) + MutationObserver (ثبتِ +LI/-LI) + ناحیهٔ announcer؛ اثباتِ قاتلِ ۳۷ms: توستِ «وعده برقرار شد» (r279) توستِ نتیجهٔ دیکته را با LIMIT=1 بیرون میپراند
 const SIXTIETH_CONSUMER = "scripts/qa-r455-toast-stack-mobile.sh"; // r455 — شاهدِ موبایلِ پشتهٔ توستها — سه جریانِ راستینِ پشتهشده در ۳۹۰×۸۴۴ (Anki + پشتیبانِ پروفایل + راستکلیکِ رزومهٔ هدر) + سرریزِ زندهٔ چهارم (COUِ تزریقی → fileFailToast) + زوجِ رقابتیِ r454 در دو حالت؛ اثباتِ عیبِ gap=0 (توستهای چسبیده) و تعمیرِ gap-3
+const SIXTYFIRST_CONSUMER = "scripts/qa-r456-toast-close-touch.sh"; // r456 — شاهدِ موبایلِ «بستنِ توست» در لمس + بازداوریِ Escape — opacity=0 + aria=null زنده (TAP-REACHES-BUT-UNSEEN)، گوشِ سوایپِ رادیکس (۱۲۰/۳۰، آستانهٔ ۵۰)، کلیکِ نابینا، نردبانِ Escape (۳→۲→۱→۰ — هر فشار = کهنترین)، quirkِ فلگِ چسبان (PRESSES-NEEDED:2)؛ تعمیرِ hover:none + aria-label
 
 const LIB_FUNCS = [
   "qa_shot()",
@@ -230,7 +231,7 @@ describe("r396 — انجمادِ تاریخی (نمونهبرداری)", () => 
       .sort();
     // سرشماری، تلهٔ ضدِ دستنویسی است: اسکریپتِ نو یا source میکند
     // (و باید همینجا به ثبت برسد) یا دستنویسِ helper میسازد (و همینجا خودش را میدهد).
-    expect(hits).toEqual([FIRST_CONSUMER, SECOND_CONSUMER, THIRD_CONSUMER, FOURTH_CONSUMER, FIFTH_CONSUMER, SIXTH_CONSUMER, SEVENTH_CONSUMER, EIGHTH_CONSUMER, NINTH_CONSUMER, TENTH_CONSUMER, ELEVENTH_CONSUMER, TWELFTH_CONSUMER, THIRTEENTH_CONSUMER, FOURTEENTH_CONSUMER, FIFTEENTH_CONSUMER, SIXTEENTH_CONSUMER, SEVENTEENTH_CONSUMER, EIGHTEENTH_CONSUMER, NINETEENTH_CONSUMER, TWENTIETH_CONSUMER, TWENTYFIRST_CONSUMER, TWENTYSECOND_CONSUMER, TWENTYTHIRD_CONSUMER, TWENTYFOURTH_CONSUMER, TWENTYFIFTH_CONSUMER, TWENTYSIXTH_CONSUMER, TWENTYSEVENTH_CONSUMER, TWENTYEIGHTH_CONSUMER, TWENTYNINTH_CONSUMER, THIRTIETH_CONSUMER, THIRTYFIRST_CONSUMER, THIRTYSECOND_CONSUMER, THIRTYTHIRD_CONSUMER, THIRTYFOURTH_CONSUMER, THIRTYFIFTH_CONSUMER, THIRTSIXTH_CONSUMER, THIRTYSEVENTH_CONSUMER, THIRTYEIGHTH_CONSUMER, THIRTYNINTH_CONSUMER, FORTIETH_CONSUMER, FORTYFIRST_CONSUMER, FORTYSECOND_CONSUMER, FORTYTHIRD_CONSUMER, FORTYFOURTH_CONSUMER, FORTYFIFTH_CONSUMER, FORTYSIXTH_CONSUMER, FORTYSEVENTH_CONSUMER, FORTYEIGHTH_CONSUMER, FORTYNINTH_CONSUMER, FIFTIETH_CONSUMER, FIFTYFIRST_CONSUMER, FIFTYSECOND_CONSUMER, FIFTYTHIRD_CONSUMER, FIFTYFOURTH_CONSUMER, FIFTYFIFTH_CONSUMER, FIFTYSIXTH_CONSUMER, FIFTYSEVENTH_CONSUMER, FIFTYEIGHTH_CONSUMER, FIFTYNINTH_CONSUMER, SIXTIETH_CONSUMER].sort());
+    expect(hits).toEqual([FIRST_CONSUMER, SECOND_CONSUMER, THIRD_CONSUMER, FOURTH_CONSUMER, FIFTH_CONSUMER, SIXTH_CONSUMER, SEVENTH_CONSUMER, EIGHTH_CONSUMER, NINTH_CONSUMER, TENTH_CONSUMER, ELEVENTH_CONSUMER, TWELFTH_CONSUMER, THIRTEENTH_CONSUMER, FOURTEENTH_CONSUMER, FIFTEENTH_CONSUMER, SIXTEENTH_CONSUMER, SEVENTEENTH_CONSUMER, EIGHTEENTH_CONSUMER, NINETEENTH_CONSUMER, TWENTIETH_CONSUMER, TWENTYFIRST_CONSUMER, TWENTYSECOND_CONSUMER, TWENTYTHIRD_CONSUMER, TWENTYFOURTH_CONSUMER, TWENTYFIFTH_CONSUMER, TWENTYSIXTH_CONSUMER, TWENTYSEVENTH_CONSUMER, TWENTYEIGHTH_CONSUMER, TWENTYNINTH_CONSUMER, THIRTIETH_CONSUMER, THIRTYFIRST_CONSUMER, THIRTYSECOND_CONSUMER, THIRTYTHIRD_CONSUMER, THIRTYFOURTH_CONSUMER, THIRTYFIFTH_CONSUMER, THIRTSIXTH_CONSUMER, THIRTYSEVENTH_CONSUMER, THIRTYEIGHTH_CONSUMER, THIRTYNINTH_CONSUMER, FORTIETH_CONSUMER, FORTYFIRST_CONSUMER, FORTYSECOND_CONSUMER, FORTYTHIRD_CONSUMER, FORTYFOURTH_CONSUMER, FORTYFIFTH_CONSUMER, FORTYSIXTH_CONSUMER, FORTYSEVENTH_CONSUMER, FORTYEIGHTH_CONSUMER, FORTYNINTH_CONSUMER, FIFTIETH_CONSUMER, FIFTYFIRST_CONSUMER, FIFTYSECOND_CONSUMER, FIFTYTHIRD_CONSUMER, FIFTYFOURTH_CONSUMER, FIFTYFIFTH_CONSUMER, FIFTYSIXTH_CONSUMER, FIFTYSEVENTH_CONSUMER, FIFTYEIGHTH_CONSUMER, FIFTYNINTH_CONSUMER, SIXTIETH_CONSUMER, SIXTYFIRST_CONSUMER].sort());
   });
 });
 
@@ -1833,5 +1834,56 @@ describe("r455 — شصتمین مصرفکننده (شاهدِ موبایلِ پ
     expect(log).toContain('"rowGap":"12px"'); // تعمیرِ gap-3 زنده
     const ui = readFileSync("src/components/ui/toast.tsx", "utf8");
     expect(ui).toContain("gap-3"); // تعمیرِ محصولِ همین راند
+  });
+});
+
+describe("r456 — شصتیکمین مصرفکننده (شاهدِ «بستنِ توست» در لمس + بازداوریِ Escape)", () => {
+  it("منبع مصرفکننده حاضر است و qa-lib را source میکند", () => {
+    const s = p(SIXTYFIRST_CONSUMER);
+    expect(s).toContain("source /home/z/my-project/scripts/qa-lib.sh");
+    expect(s).toContain("qa_wait_home");
+  });
+
+  it("bash -n بر مصرفکننده میگذرد", () => {
+    expect(() => execSync(`bash -n ${SIXTYFIRST_CONSUMER}`)).not.toThrow();
+  });
+
+  it("سناریو: دو فاز pre/post تکمتغیر + سوایپ + نردبانِ Escape + تعمیرِ hover:none", () => {
+    const s = p(SIXTYFIRST_CONSUMER);
+    expect(s).toContain("390 844"); // موبایل
+    expect(s).toContain("PHASE"); // دو فازِ pre/post — اثباتِ تکمتغیرِ پیش/پس
+    expect(s).toContain("r456-toast-close-$PHASE.txt"); // خروجیِ ران — دو فازِ جدا
+    expect(s).toContain("[toast-close]"); // دکمهٔ بستن
+    expect(s).toContain("PointerEvent"); // سوایپِ سینتتیکِ pointer-محور
+    expect(s).toContain("setPointerCapture"); // stubِ لازم برای pointerIdِ جعلی
+    expect(s).toContain("resume_family"); // درسِ Pause — pointermove تایمرها را میخواباند
+    expect(s).toContain("elementFromPoint"); // hit-testِ لمسِ نابینا
+    expect(s).toContain("hover"); // پروبِ (hover: none)
+    expect(s).toContain("ESC-LADDER"); // نردبانِ ۳→۲→۱→۰
+    expect(s).toContain("PRESSES-NEEDED"); // شاهدِ quirkِ فلگِ چسبان
+    expect(s).toContain("cou_fail_on"); // درسِ r344 — پشتهٔ متمایز
+    expect(s).toContain("qa_wait_toasts_clear"); // درسِ r395 — پاکسازیِ صحنه
+    // رانویسِ اثباتیِ همین راند — جفتِ تکمتغیرِ دو فاز (pre رویِ کهنه، post رویِ نو):
+    const preLog = readFileSync("/tmp/r456-toast-close-pre.txt", "utf8");
+    expect(preLog).toContain("CLOSE-INVISIBLE-ON-TOUCH-OK"); // عیبِ زنده (opacity=0)
+    expect(preLog).toContain("A11Y-NO-NAME-OK"); // دکمهٔ بی نام (aria=null)
+    expect(preLog).toContain("TAP-REACHES-BUT-UNSEEN-OK"); // تپِ نابینا
+    expect(preLog).toContain("CLOSE-CLICK-WORKS-OK"); // کلیکِ نابینا کار میکند
+    expect(preLog).toContain("SWIPE-DISMISS-OK"); // گوشِ ۱۲۰px
+    expect(preLog).toContain("SWIPE-CANCEL-OK"); // آستانهٔ ۵۰ (۳۰px نمیمیراند)
+    expect(preLog).toContain("ESC-LADDER-3-OK"); // نردبانِ کامل ۳→۰
+    expect(preLog).toContain("STICKY-REF-SWALLOW-WITNESSED-OK"); // quirkِ زنده
+    expect(preLog).toContain("ESC-KILLS-OLDEST-ONLY-OK"); // قربانی = کهنترین
+    const postLog = readFileSync("/tmp/r456-toast-close-post.txt", "utf8");
+    expect(postLog).toContain("CLOSE-VISIBLE-ON-TOUCH-OK"); // تعمیرِ زنده (opacity=1 + hoverNone)
+    expect(postLog).toContain("A11Y-NAME-OK"); // نامِ دسترسپذیرِ «بستن»
+    expect(postLog).toContain("HOVER-NONE-RULE-SHIPPED-OK"); // قانونِ CSSِ سرویسشده
+    expect(postLog).toContain("CLOSE-CLICK-POST-OK"); // هر دو مسیرِ بستن دستنخورده
+    expect(postLog).toContain("SWIPE-INTACT-POST-OK");
+    expect(postLog).toContain("ESC-KILLS-OLDEST-POST-OK"); // حکمِ Escape پابرجا
+    // تعمیرِ محصولِ همین راند:
+    const ui = readFileSync("src/components/ui/toast.tsx", "utf8");
+    expect(ui).toContain("[@media(hover:none)]:opacity-100"); // لمس میبیند
+    expect(ui).toContain('aria-label="بستن"'); // نامِ دسترسپذیر
   });
 });

@@ -184,6 +184,101 @@ export const clientErrorSchema = z.object({
   path: z.string().max(200, "مسیر نامعتبر است.").optional(),
 });
 
+/** /api/story POST (Task 116) — 4..20 word keys for the story builder */
+export const storySchema = z.object({
+  keys: z
+    .array(
+      z
+        .string({ message: "کلید واژه نامعتبر است." })
+        .trim()
+        .min(1, "کلید واژه نامعتبر است.")
+        .max(60, "کلید واژه نامعتبر است."),
+      { message: "کلید واژه نامعتبر است." },
+    )
+    .min(4, "کلید واژه نامعتبر است.")
+    .max(20, "کلید واژه نامعتبر است."),
+});
+
+/** /api/exam-review POST (Task 117) — question ids + raw chosen indices;
+ *  correctness recomputes server-side, equal lengths enforced */
+export const reviewSchema = z
+  .object({
+    ids: z
+      .array(
+        z
+          .string({ message: "شناسهٔ سؤال نامعتبر است." })
+          .trim()
+          .min(1, "شناسهٔ سؤال نامعتبر است.")
+          .max(60, "شناسهٔ سؤال نامعتبر است."),
+        { message: "شناسهٔ سؤال نامعتبر است." },
+      )
+      .min(1, "شناسهٔ سؤال نامعتبر است.")
+      .max(40, "شناسهٔ سؤال نامعتبر است."),
+    answers: z
+      .array(
+        z
+          .number({ message: "پاسخ نامعتبر است." })
+          .int("پاسخ نامعتبر است.")
+          .nullable(),
+        { message: "پاسخ نامعتبر است." },
+      )
+      .max(40, "پاسخ نامعتبر است."),
+  })
+  .refine((v) => v.ids.length === v.answers.length, {
+    message: "تعداد پاسخ‌ها با سؤال‌ها همخوان نیست.",
+  });
+
+/** /api/jozve-search GET (r410) — text search across the jozve library */
+export const jozveSearchQuerySchema = z.object({
+  q: z
+    .string({ message: "عبارت جست‌وجو نامعتبر است." })
+    .trim()
+    .min(2, "عبارت جست‌وجو نامعتبر است.")
+    .max(80, "عبارت جست‌وجو نامعتبر است."),
+  grade: z.coerce
+    .number({ message: "پایه نامعتبر است." })
+    .int("پایه نامعتبر است.")
+    .min(7, "پایه نامعتبر است.")
+    .max(12, "پایه نامعتبر است.")
+    .optional(),
+  kind: z.enum(["text", "question"], { message: "نوع نتیجه نامعتبر است." }).optional(),
+  limit: z.coerce
+    .number({ message: "سقف نتیجه نامعتبر است." })
+    .int("سقف نتیجه نامعتبر است.")
+    .min(1, "سقف نتیجه نامعتبر است.")
+    .max(60, "سقف نتیجه نامعتبر است.")
+    .default(30),
+});
+
+/** /api/week-review POST (Task 119) — the honest week ledger; the two
+ *  consistency refines keep the client honest: the activity sum must add
+ *  up and duel wins can never exceed the ledger's duels (null = no ledger) */
+export const weekReviewSchema = z
+  .object({
+    activities: z.number({ message: "شکل هفتهٔ ارسالی نامعتبر است." }).int("شکل هفتهٔ ارسالی نامعتبر است.").min(0, "شکل هفتهٔ ارسالی نامعتبر است.").max(5000, "شکل هفتهٔ ارسالی نامعتبر است."),
+    reviews: z.number({ message: "شکل هفتهٔ ارسالی نامعتبر است." }).int("شکل هفتهٔ ارسالی نامعتبر است.").min(0, "شکل هفتهٔ ارسالی نامعتبر است.").max(5000, "شکل هفتهٔ ارسالی نامعتبر است."),
+    quizzes: z.number({ message: "شکل هفتهٔ ارسالی نامعتبر است." }).int("شکل هفتهٔ ارسالی نامعتبر است.").min(0, "شکل هفتهٔ ارسالی نامعتبر است.").max(5000, "شکل هفتهٔ ارسالی نامعتبر است."),
+    words: z.number({ message: "شکل هفتهٔ ارسالی نامعتبر است." }).int("شکل هفتهٔ ارسالی نامعتبر است.").min(0, "شکل هفتهٔ ارسالی نامعتبر است.").max(5000, "شکل هفتهٔ ارسالی نامعتبر است."),
+    dictation: z.number({ message: "شکل هفتهٔ ارسالی نامعتبر است." }).int("شکل هفتهٔ ارسالی نامعتبر است.").min(0, "شکل هفتهٔ ارسالی نامعتبر است.").max(5000, "شکل هفتهٔ ارسالی نامعتبر است."),
+    rush: z.number({ message: "شکل هفتهٔ ارسالی نامعتبر است." }).int("شکل هفتهٔ ارسالی نامعتبر است.").min(0, "شکل هفتهٔ ارسالی نامعتبر است.").max(5000, "شکل هفتهٔ ارسالی نامعتبر است."),
+    activeDays: z.number({ message: "شکل هفتهٔ ارسالی نامعتبر است." }).int("شکل هفتهٔ ارسالی نامعتبر است.").min(0, "شکل هفتهٔ ارسالی نامعتبر است.").max(7, "شکل هفتهٔ ارسالی نامعتبر است."),
+    goalDays: z.number({ message: "شکل هفتهٔ ارسالی نامعتبر است." }).int("شکل هفتهٔ ارسالی نامعتبر است.").min(0, "شکل هفتهٔ ارسالی نامعتبر است.").max(7, "شکل هفتهٔ ارسالی نامعتبر است."),
+    prevActivities: z.number({ message: "شکل هفتهٔ ارسالی نامعتبر است." }).int("شکل هفتهٔ ارسالی نامعتبر است.").min(0, "شکل هفتهٔ ارسالی نامعتبر است.").max(5000, "شکل هفتهٔ ارسالی نامعتبر است."),
+    bestDay: z.number({ message: "شکل هفتهٔ ارسالی نامعتبر است." }).int("شکل هفتهٔ ارسالی نامعتبر است.").min(0, "شکل هفتهٔ ارسالی نامعتبر است.").max(5000, "شکل هفتهٔ ارسالی نامعتبر است.").nullable(),
+    duels: z.number({ message: "شکل هفتهٔ ارسالی نامعتبر است." }).int("شکل هفتهٔ ارسالی نامعتبر است.").min(0, "شکل هفتهٔ ارسالی نامعتبر است.").max(5000, "شکل هفتهٔ ارسالی نامعتبر است.").nullable(),
+    duelWins: z.number({ message: "شکل هفتهٔ ارسالی نامعتبر است." }).int("شکل هفتهٔ ارسالی نامعتبر است.").min(0, "شکل هفتهٔ ارسالی نامعتبر است.").max(5000, "شکل هفتهٔ ارسالی نامعتبر است."),
+    duelBest: z.number({ message: "شکل هفتهٔ ارسالی نامعتبر است." }).int("شکل هفتهٔ ارسالی نامعتبر است.").min(0, "شکل هفتهٔ ارسالی نامعتبر است.").max(100000, "شکل هفتهٔ ارسالی نامعتبر است."),
+    thinkAvgMs: z.number({ message: "شکل هفتهٔ ارسالی نامعتبر است." }).int("شکل هفتهٔ ارسالی نامعتبر است.").min(0, "شکل هفتهٔ ارسالی نامعتبر است.").max(600000, "شکل هفتهٔ ارسالی نامعتبر است.").nullable(),
+    quickWeek: z.boolean({ message: "شکل هفتهٔ ارسالی نامعتبر است." }),
+    streak: z.number({ message: "شکل هفتهٔ ارسالی نامعتبر است." }).int("شکل هفتهٔ ارسالی نامعتبر است.").min(0, "شکل هفتهٔ ارسالی نامعتبر است.").max(3650, "شکل هفتهٔ ارسالی نامعتبر است."),
+  })
+  .refine((v) => v.activities === v.reviews + v.quizzes + v.words + v.dictation + v.rush, {
+    message: "جمع فعالیت‌های هفته با سطرهای کارنامه هم‌خوان نیست.",
+  })
+  .refine((v) => v.duels === null || v.duelWins <= v.duels, {
+    message: "تعداد برد دوئل با دفتر دوئل‌ها هم‌خوان نیست.",
+  });
+
 /** per-route body caps in bytes (POST only; GET routes need none) */
 export const BODY_CAPS = {
   register: 4 * 1024,
@@ -195,4 +290,7 @@ export const BODY_CAPS = {
   sync: 700 * 1024, // 600 KB snapshot ceiling + envelope slack
   duelTicket: 1 * 1024, // { userId, secret } — tiny
   clientError: 6 * 1024, // bounded breadcrumb — message+stack caps above
+  story: 2 * 1024, // 4..20 word keys
+  examReview: 4 * 1024, // 1..40 id+answer pairs
+  weekReview: 2 * 1024, // the flat week ledger — small ints only
 } as const;

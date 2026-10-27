@@ -1,0 +1,6887 @@
+{
+ "meta": {
+  "grade": 10,
+  "generator": "extract-g10-bank-r273.py",
+  "provenance": "page-parse of booklet tests + printed key letters + r213 curated cross-check",
+  "stats": {
+   "section_no_ref": 12,
+   "agree": 21,
+   "with_key": 404,
+   "curated_no_text_match": 106,
+   "entry_no_question": 33,
+   "section_skipped_low_yield": 40,
+   "questions_without_key": 683
+  },
+  "disagreements": []
+ },
+ "bank": [
+  {
+   "id": "g10-1",
+   "page": 52,
+   "num": 1,
+   "category": "vocab",
+   "stem": "Tom called to say he’s going to be ------------------ minutes late.",
+   "options": [
+    "much",
+    "a few",
+    "anymore",
+    "else"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "تام تماس گرفت که بگوید او چند دقیقه دیگر آنجا خواهد بود.",
+   "note": null
+  },
+  {
+   "id": "g10-2",
+   "page": 52,
+   "num": 2,
+   "category": "vocab",
+   "stem": "It was a bad accident. They’re lucky to be --------------------.",
+   "options": [
+    "dead",
+    "alive",
+    "living",
+    "injured"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "آن یک تصادف بد بود. آن‌ها خوش شانس هستند که زنده هستند.",
+   "note": null
+  },
+  {
+   "id": "g10-3",
+   "page": 52,
+   "num": 3,
+   "category": "vocab",
+   "stem": "It's ------------------- how often you see drivers using mobile phones.",
+   "options": [
+    "boring",
+    "common",
+    "amazing",
+    "important"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": "شگفت انگیر ن است که چند وقت یکبار شما رانندگاتیز نمی بینید که از موبایل استفاده می‌کنند.",
+   "note": null
+  },
+  {
+   "id": "g10-4",
+   "page": 52,
+   "num": 4,
+   "category": "vocab",
+   "stem": "The government should develop an education system which is more -- - - ------- to the needs of the students.",
+   "options": [
+    "common",
+    "especial",
+    "important",
+    "appropriate"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-5",
+   "page": 52,
+   "num": 5,
+   "category": "vocab",
+   "stem": "The ------------------ cost of making a movie has increased by 25 percent.",
+   "options": [
+    "above",
+    "beginning",
+    "hope",
+    "average"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": "متوسط هزینه فیلم سازی تا25 %.افزایش یافته است.",
+   "note": null
+  },
+  {
+   "id": "g10-6",
+   "page": 52,
+   "num": 6,
+   "category": "vocab",
+   "stem": "The TV play was ------------------- real-life events of poor people in our society.",
+   "options": [
+    "instead of",
+    "based on",
+    "interested in",
+    "asked for"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "نمایش تلویزیون‌ها براساس رخدادهای زندگی واقیع فقرا در جامعه مان بود.",
+   "note": null
+  },
+  {
+   "id": "g10-7",
+   "page": 52,
+   "num": 7,
+   "category": "vocab",
+   "stem": "His writing style is now --------------------- and out of date and many people didn’t enjoy it.",
+   "options": [
+    "boring",
+    "hopeful",
+    "interesting",
+    "especial"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "سبک نوشتاری او الان کسل کننده و منسوخ است و بسیاری از مردم از آن لذت نم برند.",
+   "note": null
+  },
+  {
+   "id": "g10-8",
+   "page": 52,
+   "num": 8,
+   "category": "vocab",
+   "stem": "We need to work together to achieve our --------------------- goal.",
+   "options": [
+    "common",
+    "completed",
+    "natural",
+    "protected"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "ما برای رسیدن به هدف مشی ک مان نیاز است که با همدیگر کار کنیم.",
+   "note": null
+  },
+  {
+   "id": "g10-9",
+   "page": 52,
+   "num": 9,
+   "category": "vocab",
+   "stem": "Her health is very good if you --------------------- her age.",
+   "options": [
+    "consider",
+    "identify",
+    "order",
+    "save"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "با در نظر گرفی ن سنش، سالمنر او خیلی خوب است.",
+   "note": null
+  },
+  {
+   "id": "g10-10",
+   "page": 52,
+   "num": 10,
+   "category": "vocab",
+   "stem": "If we continue to ------------------- the countryside, many more animals will die out in the near future.",
+   "options": [
+    "protect",
+    "destroy",
+    "build",
+    "take care of"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "اگر ما به نابودی مناطق روستات ادامه بدهیم حیوانات خیلی زیادی در آینده نزدیک منقرض خواهند شد.",
+   "note": null
+  },
+  {
+   "id": "g10-11",
+   "page": 52,
+   "num": 11,
+   "category": "vocab",
+   "stem": "The --------------------- of new jobs for unemployed people is hard for most countries nowadays.",
+   "options": [
+    "destroying",
+    "creation",
+    "dividing",
+    "decreasing"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "امروزه ایجاد شغلهای جدید برای افراد بیکار، برای بیشیر کشورها سخت است.",
+   "note": null
+  },
+  {
+   "id": "g10-12",
+   "page": 52,
+   "num": 12,
+   "category": "vocab",
+   "stem": "Write your full name in the --------------------- space at the bottom of the from.",
+   "options": [
+    "column",
+    "blank",
+    "next",
+    "right"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "اسم کاملت را در فضای خایل در پایت ز صفحه بنویس.",
+   "note": null
+  },
+  {
+   "id": "g10-13",
+   "page": 52,
+   "num": 13,
+   "category": "vocab",
+   "stem": "The wild population of koalas is in danger of . --------------------",
+   "options": [
+    "identifying",
+    "cutting down",
+    "destroying",
+    "dying out"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": "در معرض ی جمعیت کواالی وحش انقراض است.",
+   "note": null
+  },
+  {
+   "id": "g10-14",
+   "page": 52,
+   "num": 14,
+   "category": "vocab",
+   "stem": "Here, the river --------------------- three channels and we must take channel one for fishing.",
+   "options": [
+    "divides in to",
+    "dies out",
+    "odds out",
+    "takes care of"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-15",
+   "page": 52,
+   "num": 15,
+   "category": "vocab",
+   "stem": "After a week at sea, it was good to feel the flat --------------------- under our feet again.",
+   "options": [
+    "earth",
+    "desert",
+    "forest",
+    "lake"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "بعد از یک هفته در دریا، احساس اینکه زمیر ن مسطح دوباره زیر پایمان هست خوب بود.",
+   "note": null
+  },
+  {
+   "id": "g10-16",
+   "page": 52,
+   "num": 16,
+   "category": "vocab",
+   "stem": "The lizards are classed as an --------------------- species.",
+   "options": [
+    "common",
+    "endangered",
+    "injured",
+    "natural"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "مارمولکها به عنوان گونه های)در معرض خطر (انقراض طبقه بندی شده اند.",
+   "note": null
+  },
+  {
+   "id": "g10-17",
+   "page": 52,
+   "num": 17,
+   "category": "vocab",
+   "stem": "I never liked long walks, --------------------- in winter days.",
+   "options": [
+    "hopefully",
+    "especially",
+    "amazingly",
+    "wonderfully"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "من هرگز پیاده روی های طوالتز را بویژه در ایام زمستان دوست ندارم.",
+   "note": null
+  },
+  {
+   "id": "g10-18",
+   "page": 52,
+   "num": 18,
+   "category": "vocab",
+   "stem": "A TV set has an average --------------------- of 60 years.",
+   "options": [
+    "lifespan",
+    "living",
+    "life",
+    "graph"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "یک دستگاه تلویزیون متوسط طول عمر شصت ساله دارد.",
+   "note": null
+  },
+  {
+   "id": "g10-19",
+   "page": 52,
+   "num": 19,
+   "category": "vocab",
+   "stem": "It’s so necessary for us to increase our --------------------- about birth control.",
+   "options": [
+    "lifespan",
+    "expression",
+    "knowledge",
+    "chart"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": "برای ما خیلی ضروری است که دانش مان را درباره کنترل تولد افزایش دهیم.",
+   "note": null
+  },
+  {
+   "id": "g10-20",
+   "page": 52,
+   "num": 20,
+   "category": "vocab",
+   "stem": "Helen didn’t study, she decided to become a pilot art ----------------------.",
+   "options": [
+    "finally",
+    "at first",
+    "instead",
+    "for example"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": "هلن نخواست هیز بخواند در عوض او تصمیم گرفت خلبان شود.",
+   "note": null
+  },
+  {
+   "id": "g10-21",
+   "page": 53,
+   "num": 21,
+   "category": "vocab",
+   "stem": "The last week terrible car accident left him seriously ---------------------.",
+   "options": [
+    "endangered",
+    "injured",
+    "died out",
+    "saved"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "تصادف ماشت ز وحشتناک هفته گذشته، او را به طور جدی مجروح کرد.",
+   "note": null
+  },
+  {
+   "id": "g10-22",
+   "page": 53,
+   "num": 22,
+   "category": "vocab",
+   "stem": "Our teacher is really worried that your absences in the classes are ---------------------.",
+   "options": [
+    "decreasing",
+    "increasing",
+    "completing",
+    "protecting"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "معلم مان خیلی نگران است چونکه غیبت هایت در کالس ها در حال افزایش است.",
+   "note": null
+  },
+  {
+   "id": "g10-23",
+   "page": 53,
+   "num": 23,
+   "category": "vocab",
+   "stem": "The --------------------- body is a very complicated machine and is one of wonders of creation.",
+   "options": [
+    "tiger",
+    "elephant",
+    "animal",
+    "human"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": "بدن انسان یک دستگاه خیلی پیچیده است و یک از عجایب خلقت است.",
+   "note": null
+  },
+  {
+   "id": "g10-24",
+   "page": 53,
+   "num": 24,
+   "category": "vocab",
+   "stem": "The English exam was hard, but he’s still --------------------- he’ll get a good score.",
+   "options": [
+    "hunting",
+    "hoping",
+    "building",
+    "taking"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "امتحان انگلیش سخت بود، اما او هنوز امیدوار است نمره خوت بگی د.",
+   "note": null
+  },
+  {
+   "id": "g10-25",
+   "page": 53,
+   "num": 25,
+   "category": "vocab",
+   "stem": "We had better --------------------- what they have to say about that important project .",
+   "options": [
+    "complete",
+    "lose",
+    "hear",
+    "order"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": "ما بهیر بود می‌ شنیدیم آنچه که آن‌ها مجبور بودند در مورد آن پروژه مهم بگویند.",
+   "note": null
+  },
+  {
+   "id": "g10-26",
+   "page": 53,
+   "num": 26,
+   "category": "vocab",
+   "stem": "We’ve been able to save this land from development and keep it for --------------------- generations.",
+   "options": [
+    "past",
+    "future",
+    "present",
+    "injury"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "ما قادر بوده ایم( این رسزمت ز را از توسعه نجات بدهیم جلوی توسعه آنرا بگی می‌ ) و آنرا برای نسل های آینده نگه داریم.",
+   "note": null
+  },
+  {
+   "id": "g10-27",
+   "page": 53,
+   "num": 27,
+   "category": "vocab",
+   "stem": "Many countries, --------------------- Mexico and Japan, have a lot of earthquakes every year.",
+   "options": [
+    "for example",
+    "instead",
+    "yet",
+    "finally"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "،بسیاری از کشورها به عنوان مثال مکزیک و ژاپن زلزله های زیادی دارند.",
+   "note": null
+  },
+  {
+   "id": "g10-28",
+   "page": 53,
+   "num": 28,
+   "category": "vocab",
+   "stem": "It is a large area of land covered with flowers, trees, bushes, etc. and its trees grow close together is called ---------------------.",
+   "options": [
+    "plain",
+    "forest",
+    "gulf",
+    "ocean"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-29",
+   "page": 53,
+   "num": 30,
+   "category": "vocab",
+   "stem": "Is there a particular --------------------- of book he enjoys?",
+   "options": [
+    "type",
+    "point",
+    "rule",
+    "way"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "نوع خاض از کتاب وجود دارد که او از آن لذت بی د؟",
+   "note": null
+  },
+  {
+   "id": "g10-30",
+   "page": 53,
+   "num": 31,
+   "category": "vocab",
+   "stem": "I don’t want to see you --------------------- because you behaved badly toward me.",
+   "options": [
+    "next",
+    "else",
+    "till",
+    "anymore"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-31",
+   "page": 53,
+   "num": 32,
+   "category": "vocab",
+   "stem": "It is important to separate learning English --------------------- from learning it by reading books.",
+   "options": [
+    "irregularly",
+    "orally",
+    "especially",
+    "naturally"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-32",
+   "page": 53,
+   "num": 33,
+   "category": "vocab",
+   "stem": "The organization depended heavily on --------------------- help.",
+   "options": [
+    "natural",
+    "voluntary",
+    "regular",
+    "simple"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "سازمان به شدت متک به کمک داوطلبانه بود.",
+   "note": null
+  },
+  {
+   "id": "g10-33",
+   "page": 53,
+   "num": 34,
+   "category": "vocab",
+   "stem": "Fax machines were a --------------------- invention at that time.",
+   "options": [
+    "wonderful",
+    "simple",
+    "natural",
+    "common"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-34",
+   "page": 53,
+   "num": 35,
+   "category": "vocab",
+   "stem": "They lived in a ten-story --------------------- in the town center.",
+   "options": [
+    "tower",
+    "place",
+    "plain",
+    "pattern"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "آن‌ها در یک برج ده طبقه در مرکز شهر زندگی می‌ کردند.",
+   "note": null
+  },
+  {
+   "id": "g10-35",
+   "page": 53,
+   "num": 36,
+   "category": "vocab",
+   "stem": "He is fourteen, old enough to --------------------- himself.",
+   "options": [
+    "pay attention to",
+    "take care of",
+    "divide into",
+    "based on"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "او چهارده سالش است، به اندازه کافز بزرگ هست که از خودش مراقبت کند.",
+   "note": null
+  },
+  {
+   "id": "g10-36",
+   "page": 53,
+   "num": 37,
+   "category": "vocab",
+   "stem": "A --------------------- is a large wild animal that has yellow and black lines on its body .",
+   "options": [
+    "elephant",
+    "tiger",
+    "fish",
+    "dolphin"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "بی بزرگ است که خطوط سیاه و زرد روی بدنش دارد ی حیوان وحش.",
+   "note": null
+  },
+  {
+   "id": "g10-37",
+   "page": 53,
+   "num": 38,
+   "category": "vocab",
+   "stem": "How can he fit everything in to his busy ---------------------?",
+   "options": [
+    "schedule",
+    "strategy",
+    "weight",
+    "pattern"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "چطور او می‌ تواند همه چی ز را در برنامه شلوغش بگنجاند.",
+   "note": null
+  },
+  {
+   "id": "g10-38",
+   "page": 53,
+   "num": 39,
+   "category": "vocab",
+   "stem": "Joe is an expert in military ---------------------.",
+   "options": [
+    "world",
+    "rule",
+    "strategy",
+    "type"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": "جو یک متخصص در اسی اتژی نظایم است.",
+   "note": null
+  },
+  {
+   "id": "g10-39",
+   "page": 53,
+   "num": 40,
+   "category": "vocab",
+   "stem": "His conditions was critical, but the doctors were able to --------------------- him.",
+   "options": [
+    "visit",
+    "protect",
+    "save",
+    "consider"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": "رسی ایطش بحراتز بود، اما دکتر ها قادر بودند او را نجات دهند\" : Note.",
+   "note": null
+  },
+  {
+   "id": "g10-40",
+   "page": 54,
+   "num": 1,
+   "category": "vocab",
+   "stem": "The accident seemed to have completely ---------------------- his confidence.",
+   "options": [
+    "built",
+    "destroyed",
+    "stayed",
+    "considered"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-41",
+   "page": 54,
+   "num": 2,
+   "category": "vocab",
+   "stem": "----------------------, we’ll be able to rearrange the dates of our holiday.",
+   "options": [
+    "Hopefully",
+    "Usually",
+    "Really",
+    "Angrily"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \" اگر بشود، ما می‌ توانیم دوباره تاریخ های تعطیالتمان را بچینیم.\" 1 )اگر بشود، با امیدواری 2 ) معموال3 ) واقعا4) با عصبانیت."
+  },
+  {
+   "id": "g10-42",
+   "page": 54,
+   "num": 3,
+   "category": "vocab",
+   "stem": "He picked up a piece of ---------------------- and wrote the answer on the blackboard .",
+   "options": [
+    "pattern",
+    "air",
+    "chalk",
+    "graph"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \" یک تکه گچ برداشت و جواب را روی تخته نوشت. \" 1 ) الگو2 ) هوا3 ) گچ4) نمودار."
+  },
+  {
+   "id": "g10-43",
+   "page": 54,
+   "num": 4,
+   "category": "vocab",
+   "stem": "The vaccines such as “COViran Barekat” are known to prevent a COVID infection from resulting in - --------------------- illness or death.",
+   "options": [
+    "singular",
+    "simple",
+    "serious",
+    "special"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": "واکسنهاب مثل \"کوایران برکت\" شناخته شده اند که از آلودگی کروناب که منجر به ن مرییص جدی یا مرگ میشود، جلوگیر ی کنند.\" 1 ) مفرد2 ) ساده3 ) جدی 4) خاص.",
+   "note": null
+  },
+  {
+   "id": "g10-44",
+   "page": 54,
+   "num": 5,
+   "category": "vocab",
+   "stem": "Since retiring from the company, she has done ---------------------- work for a charity.",
+   "options": [
+    "natural",
+    "voluntary",
+    "plural",
+    "recent"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \" از وقت از رسی کت بازنشسته شده، کارهای داوطلبانه برای خیر یه کرده است. \" 1 ) طبییع2 )داوطلبانه 3 ) جمع4 ) اخی."
+  },
+  {
+   "id": "g10-45",
+   "page": 54,
+   "num": 6,
+   "category": "vocab",
+   "stem": "The -------------- will be closed and go under if a generous donor isn’t found within the next few months.",
+   "options": [
+    "charity",
+    "plant",
+    "world",
+    "weather"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-46",
+   "page": 54,
+   "num": 7,
+   "category": "vocab",
+   "stem": "At the end of the lecture, I’d like all the students to --------------------- small discussion groups.",
+   "options": [
+    "put out",
+    "divide into",
+    "check out",
+    "take off"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \" در پایان سخین ابن، دوست دارم دانش آموزان به گروه های مکالمه کوچک تقسیم بشوند.\" 1 )) خاموش کردن (آتش2 )تقسیم شدن به 3 ) تسویه حساب کردن4) پرواز کردن هواپیما."
+  },
+  {
+   "id": "g10-47",
+   "page": 54,
+   "num": 8,
+   "category": "vocab",
+   "stem": "If everything goes according to --------------------, work will be complete in December.",
+   "options": [
+    "phrase",
+    "schedule",
+    "forest",
+    "intonation"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-48",
+   "page": 54,
+   "num": 9,
+   "category": "vocab",
+   "stem": "All you have to do to win is ---------------------- the words here to find four names of birds.",
+   "options": [
+    "considering",
+    "unscrambling",
+    "cleaning",
+    "beginning"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-49",
+   "page": 54,
+   "num": 10,
+   "category": "vocab",
+   "stem": "We’re not doing enough to ---------------------- the environment from pollution.",
+   "options": [
+    "protect",
+    "break",
+    "donate",
+    "interview"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \" ما به اندازه کاقن تالش نیم کنیم که محیط زیست را از آ لودگی حفظ کنیم.\" 1 )محافظت کردن 2 ) شکستر ز 3 ) اهدا کردن4) مصاحبه کردن."
+  },
+  {
+   "id": "g10-50",
+   "page": 54,
+   "num": 11,
+   "category": "vocab",
+   "stem": "The working life of most vehicles can be increased if they are serviced ----------------------.",
+   "options": [
+    "recently",
+    "carelessly",
+    "originally",
+    "regularly"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-51",
+   "page": 54,
+   "num": 12,
+   "category": "vocab",
+   "stem": "Even the smallest baby can ---------------------- its mother by her voice.",
+   "options": [
+    "imagine",
+    "decrease",
+    "identify",
+    "save"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \"حت کوچک ترین بچه ها میتوانند که مادرشان را از صدایش تشخیص بدهند.\" 1 ) فرض کردن 2 ) کاهش دادن3 )تشخیص دادن 4) نجات دادن."
+  },
+  {
+   "id": "g10-52",
+   "page": 54,
+   "num": 13,
+   "category": "vocab",
+   "stem": "I didn’t feel that this was an ---------------------- time to mention the subject of money.",
+   "options": [
+    "different",
+    "appropriate",
+    "excellent",
+    "generous"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \" اینطور فکر کردم که زمان مناست برای اشاره کردن به موضوع پول نبود.\" 1 ) متفاوت2 ) مناسب 3 ) عایل4) بخشنده."
+  },
+  {
+   "id": "g10-53",
+   "page": 54,
+   "num": 14,
+   "category": "vocab",
+   "stem": "---------------------- animals and plants need to be kept secure from poachers.",
+   "options": [
+    "International",
+    "Endangered",
+    "possible",
+    "cultural"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \" حیوانات و گیاهان در معرض خطر انقراض نیاز دارند که در مقابل شکارچیان حفاظت شوند. \" 1 ) بت ز الملیل2 )در معرض خطر (انقراض ) 3 ) ممکن4 ) فرهنکی."
+  },
+  {
+   "id": "g10-54",
+   "page": 54,
+   "num": 15,
+   "category": "vocab",
+   "stem": "-----------------------, the construction will be finished before school reopens in September. The students will feel great about this.",
+   "options": [
+    "Naturally",
+    "Hopefully",
+    "Carefully",
+    "Hardly"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \" اگر بشود، کار ساخت و ساز قبل از این که مدارس دوباره در سپتامی باز بشوند تمام خواهد شد. دانش آ موزان خیلی احساس خوب در این باره خواهند داشت.\" 1 ) به طور طبییع2 ) اگر بشود، انشاهلل 3 ) به طور بادقت4 )به سخنر، به ندرت."
+  },
+  {
+   "id": "g10-55",
+   "page": 54,
+   "num": 16,
+   "category": "vocab",
+   "stem": "What a ----------------------- sight it was to see so many beautiful boats on the lake at the same time.",
+   "options": [
+    "simple",
+    "irregular",
+    "religious",
+    "wonderful"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \" دیدن قایق های زیبای زیادی روی دریاچه به طور همزمان چه صحنه فوق العاده ای بود.\" 1 ) ساده 2 ) ت قاعده3 ) مذهن4 )فوق العاده، عایل."
+  },
+  {
+   "id": "g10-56",
+   "page": 54,
+   "num": 17,
+   "category": "vocab",
+   "stem": "The management was forced to ----------------------- salaries for many of the workers.",
+   "options": [
+    "introduce",
+    "sneeze",
+    "increase",
+    "suggest"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \" مدیریت مجبور شد که حقوق ها را برای کارگران زیادی افزایش دهد.\" 1 ) معرفز کردن2 ) عطسه کردن3 )افزایش دادن 4) پیشنهاد کردن."
+  },
+  {
+   "id": "g10-57",
+   "page": 54,
+   "num": 18,
+   "category": "vocab",
+   "stem": "It is important to separate learning English --------------------- from learning English by reading books.",
+   "options": [
+    "slowly",
+    "orally",
+    "averagely",
+    "quickly"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \"مهم است که یاد گرفی ن انگلیسی به طور شفایه را از یادگیر ی انگلیسی به وسیله خواندند کتاب را از هم جدا کنیم\" 1 ) به ارایم2 )به طور شفایه 3 ) به طور متوسط4) به رسعت."
+  },
+  {
+   "id": "g10-58",
+   "page": 54,
+   "num": 19,
+   "category": "vocab",
+   "stem": "The role of scientists is to observe and ------------------------- the world, not to try to control it.",
+   "options": [
+    "describe",
+    "leave",
+    "decide",
+    "account"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-59",
+   "page": 55,
+   "num": 20,
+   "category": "vocab",
+   "stem": "The leader ---------------------- them that they should leave the country immediately.",
+   "options": [
+    "interested",
+    "advised",
+    "hired",
+    "attended"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \" رهی به آن ها توصیه کرد که به رسعت کشور را ترک کنند.\" 1 ) علاقه مند کردن2 )توصیه کردن 3 ) استخدام کردن4) حضور پیدا کردن."
+  },
+  {
+   "id": "g10-60",
+   "page": 55,
+   "num": 21,
+   "category": "vocab",
+   "stem": "There was an ---------------------- article about vegetarianism in the newspaper yesterday.",
+   "options": [
+    "plural",
+    "selfish",
+    "interesting",
+    "polite"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \" یک مقاله جالب درباره گیاه خواری در روزنامه دیروز بود. \" 1 ) جمع2 ) خودخواه 3 )جالب 4 ) با ادب."
+  },
+  {
+   "id": "g10-61",
+   "page": 55,
+   "num": 22,
+   "category": "vocab",
+   "stem": "In the past eight years, the elephant --------------------- in Africa has been halved.",
+   "options": [
+    "population",
+    "facilities",
+    "attention",
+    "wonders"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \"،در هشت سال گذشته جمعیت فیل ها در آفریقا نصف شده است.\" 1 )جمعیت 2 ) امکانات3 ) توجه4) عجایب."
+  },
+  {
+   "id": "g10-62",
+   "page": 55,
+   "num": 23,
+   "category": "vocab",
+   "stem": "While I was in the crowd, I had to ---------------------- my voice to make myself heard over the noise.",
+   "options": [
+    "divide",
+    "keep",
+    "put",
+    "raise"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-63",
+   "page": 55,
+   "num": 24,
+   "category": "vocab",
+   "stem": "A self-protecting system will defend itself from ----------------------- damages and external attacks.",
+   "options": [
+    "hopeful",
+    "oral",
+    "accidental",
+    "important"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \" یک سیستم دفاع از خود از خودش در برابر صدمات تصادقن و حمالت بیر وبن دفاع می‌ کند. \" 1 ) امیدوار2 ) زباتز3 ) تصادقن 4) مهم."
+  },
+  {
+   "id": "g10-64",
+   "page": 55,
+   "num": 25,
+   "category": "vocab",
+   "stem": "A: “So how was the party last night?” B: “Oh, it was -------------------, - we had a fantastic time!”",
+   "options": [
+    "brilliant",
+    "common",
+    "painful",
+    "different"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : :الف \" مهمابن د یشب چطور بود؟\" :ب\" اوه عایل!بود، خیلی خوش گذشت \" 1 )عایل،خیلی خوب 2 ) رایج3 ) دردناک4) متفاوت."
+  },
+  {
+   "id": "g10-65",
+   "page": 55,
+   "num": 26,
+   "category": "vocab",
+   "stem": "After world war, many countries --------------------- to have a great army to protect themselves.",
+   "options": [
+    "guessed",
+    "decided",
+    "left",
+    "completed"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-66",
+   "page": 55,
+   "num": 27,
+   "category": "vocab",
+   "stem": "The people at the table behind us were --------------------- someone’s birthday.",
+   "options": [
+    "suggesting",
+    "hoping",
+    "celebrating",
+    "destroying"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-67",
+   "page": 55,
+   "num": 28,
+   "category": "vocab",
+   "stem": "A dangerous amount of radioactivity was released into the --------------------- last month.",
+   "options": [
+    "environment",
+    "point",
+    "mirror",
+    "history"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "مقدار خطرنایک رادیواکتیو ماه پیش در محیط زیست رها شد.\" 1 )محیط زیست 2 ) نکته3 ) آیینه 4 ) تاری خ.",
+   "note": null
+  },
+  {
+   "id": "g10-68",
+   "page": 55,
+   "num": 29,
+   "category": "vocab",
+   "stem": "A leg injury is stopping him from active -------------------- in the sport matches.",
+   "options": [
+    "description",
+    "information",
+    "participation",
+    "location"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-69",
+   "page": 55,
+   "num": 30,
+   "category": "vocab",
+   "stem": "Each room has books, toys, and games that are -------------------- to that specific age group.",
+   "options": [
+    "suitable",
+    "actual",
+    "interested",
+    "possible"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \" هر اتاق یک رسی کتاب، اسباب بازی و بازی دارد که مناسب آن سن خاص هستند.\" 1 )مناسب 2 ) واقیع3 ) علاقه مند4) ممکن."
+  },
+  {
+   "id": "g10-70",
+   "page": 55,
+   "num": 31,
+   "category": "vocab",
+   "stem": "We are planning a dinner to celebrate the 50th ------------------- of the founding of the company.",
+   "options": [
+    "charity",
+    "account",
+    "anniversary",
+    "personality"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-71",
+   "page": 55,
+   "num": 32,
+   "category": "vocab",
+   "stem": "He repeated his country’s desire and interest for --------------- relations with all neighboring countries.",
+   "options": [
+    "friendly",
+    "selfish",
+    "voluntary",
+    "religious"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \" او میل و علاقه کشورش را برای روابط دوستانه با تمام کشور های همسایه را بازگو کرد.\" 1 )دوستانه 2 ) خودخواه 3 ) داوطلبانه4 ) مذهن."
+  },
+  {
+   "id": "g10-72",
+   "page": 55,
+   "num": 33,
+   "category": "vocab",
+   "stem": "Australia has its own -------------------------, which is very different from that of Britain.",
+   "options": [
+    "information",
+    "conversation",
+    "culture",
+    "course"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \" اسی الیا فرهنگ خود را دارد، که خیلی متفاوت از فرهنگ بریتانیا است.\" 1 ) اطالعات 2 ) مکالمه 3 )فرهنگ 4) دوره."
+  },
+  {
+   "id": "g10-73",
+   "page": 55,
+   "num": 34,
+   "category": "vocab",
+   "stem": "Lots of people always say time changes things, but you ----------------- have to change them yourself.",
+   "options": [
+    "carefully",
+    "politely",
+    "actually",
+    "hardly"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \" خیلی از مردم همیشه میگویند که زمان اوضاع را عوض میکند، اما خود شما در واقع باید آن ها عوض کنید. \" 1 ) به طور با دقت2 ) با ادبانه 3 )در واقع 4 ) به سخنر."
+  },
+  {
+   "id": "g10-74",
+   "page": 55,
+   "num": 35,
+   "category": "vocab",
+   "stem": "I went to several libraries to gather information about a book about ----------------------- animals.",
+   "options": [
+    "careful",
+    "endangered",
+    "serious",
+    "wonderful"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \" به چندین کتابخانه رفتم تا اطالعاب درباره یک کتاب درباره حیوانات در معرض خطر انقراض جمع کنم.\" 1 ) با دقت2 ) در معرض خطر انقراض 3 ) جدی4) عایل."
+  },
+  {
+   "id": "g10-75",
+   "page": 55,
+   "num": 36,
+   "category": "vocab",
+   "stem": "The ---------------------- in the number of bicycles and cars might give rise to another new set of environmental problems.",
+   "options": [
+    "military",
+    "information",
+    "injury",
+    "decrease"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-76",
+   "page": 55,
+   "num": 37,
+   "category": "vocab",
+   "stem": "Parents of young children often become depressed, and this is -------------------- true of single parents.",
+   "options": [
+    "especially",
+    "naturally",
+    "really",
+    "internationally"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-77",
+   "page": 55,
+   "num": 38,
+   "category": "vocab",
+   "stem": "If you compare house prices in the two towns, it’s quite ------------------------- how different they are.",
+   "options": [
+    "pleasant",
+    "possible",
+    "serious",
+    "amazing"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-78",
+   "page": 55,
+   "num": 39,
+   "category": "vocab",
+   "stem": "------------------- is to do something to show that you remember and respect someone important or an important event in the past.",
+   "options": [
+    "injures",
+    "commemorates",
+    "unscrambles",
+    "identifies"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \" بزرگداشت یعتن انجام دادن کاری برای اینکه شما، شخص مهم و یا رویداد مهیم در گذشته را به یاد بیاورید یا احی امتان را نشاد دهید.\" 1 ) صدمه زدن 2 )بزرگداشت، گرایم داشی ن 3 ) مرتب کردن 4) تشخیص دادن."
+  },
+  {
+   "id": "g10-79",
+   "page": 55,
+   "num": 40,
+   "category": "vocab",
+   "stem": "The average human --------------- in the developed countries has increased over the last hundred years.",
+   "options": [
+    "lifespan",
+    "schedule",
+    "nature",
+    "interest"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \" طول عمر متوسط انسان در کشورهای توسعه یافته در صد سال گذسته افزایش یافته است. \" 1 ) طول عمر 2 ) برنامه3 ) طبیعت4 ) علاقه : Note."
+  },
+  {
+   "id": "g10-80",
+   "page": 66,
+   "num": 2,
+   "category": "grammar",
+   "stem": "Other students are going ------------------- their friends’ reports and learn many things about nature and sea animals.",
+   "options": [
+    "read",
+    "to read",
+    "will read",
+    "reading"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-81",
+   "page": 66,
+   "num": 3,
+   "category": "grammar",
+   "stem": "Our neighbor has a big family. He has four ----------, --------- boy and three girls. --------- boy is 7 years old and their girls are 3, 16 and 20.",
+   "options": [
+    "children / a / A",
+    "children / a / The",
+    "child / the / A",
+    "child / the / The"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-82",
+   "page": 66,
+   "num": 4,
+   "category": "grammar",
+   "stem": "Mr. Rahimi’s little daughter broke his expensive laptop. He --------------------- a new one next month.",
+   "options": [
+    "be going to buy",
+    "bought",
+    "will buying",
+    "is going to buy"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-83",
+   "page": 66,
+   "num": 5,
+   "category": "grammar",
+   "stem": "Armin and Alireza have ---------- Italian class together. ------------- teacher is ----------- Mr. Del Piero.",
+   "options": [
+    "a / Their / the",
+    "a / His / -",
+    "an / Their / -",
+    "an / His / the"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-84",
+   "page": 66,
+   "num": 6,
+   "category": "grammar",
+   "stem": "A: My classmates and I don’t know how to answer these difficult math questions. B: They’re really easy. Don’t worry my dear students. I --------------------- you these questions again.",
+   "options": [
+    "am going to teach",
+    "will teach",
+    "am teaching",
+    "taught"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-85",
+   "page": 66,
+   "num": 7,
+   "category": "grammar",
+   "stem": "------------- shops aren’t very expensive, because they’re not in the center of ------------- town.",
+   "options": [
+    "That / the",
+    "This / a",
+    "These / a",
+    "These / the"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-86",
+   "page": 66,
+   "num": 8,
+   "category": "grammar",
+   "stem": "Next Saturday, my cousin ----------------- to Tehran for 2 days to visit Milad Tower and Azadi Square.",
+   "options": [
+    "is going to travel",
+    "will travel",
+    "traveled",
+    "travel"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-87",
+   "page": 66,
+   "num": 9,
+   "category": "grammar",
+   "stem": "My parents have decided to have a great birthday party for me. They --------------------- my best friends next Wednesday.",
+   "options": [
+    "invite",
+    "will invite",
+    "are going to invite",
+    "have invited"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-88",
+   "page": 66,
+   "num": 10,
+   "category": "grammar",
+   "stem": "A: Why did they buy a lot of paint last week? B: Because they --------------------- all the classes of our school soon.",
+   "options": [
+    "paint",
+    "painted",
+    "will paint",
+    "are going to paint"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-89",
+   "page": 66,
+   "num": 11,
+   "category": "grammar",
+   "stem": "A: The windows of your house are really dirty. B: Yes, I know. I -------------------- and clean -------------------- with my sister next Friday.",
+   "options": [
+    "’m going to wash / them",
+    "’ll wash / it",
+    "’ll wash / them",
+    "’m going to wash / it"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-90",
+   "page": 66,
+   "num": 12,
+   "category": "grammar",
+   "stem": "Our mother has bought some rice, meat from the supermarket. So, she ----------------------- a delicious food tomorrow night.",
+   "options": [
+    "cook",
+    "cooked",
+    "will cook",
+    "is going to cook"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-91",
+   "page": 66,
+   "num": 13,
+   "category": "grammar",
+   "stem": "Most of the professors who are going ------------ us English at university are from ------------ Mexico and ---------- USA.",
+   "options": [
+    "teach / a / the",
+    "to teach / - / the",
+    "to teach / - / an",
+    "teach / the / an"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-92",
+   "page": 66,
+   "num": 14,
+   "category": "grammar",
+   "stem": "When you come to our house Sunday night, I --------------------- you my big new toy train.",
+   "options": [
+    "am going to show",
+    "will show",
+    "show",
+    "showed"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-93",
+   "page": 67,
+   "num": 15,
+   "category": "grammar",
+   "stem": "The hard-working zookeepers in our city’s zoo ----------------- the endangered animals more seriously.",
+   "options": [
+    "will protects",
+    "are going to protect",
+    "protecting",
+    "to protect"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-94",
+   "page": 67,
+   "num": 16,
+   "category": "grammar",
+   "stem": "A: I don’t have any pens and pencils in my school bag today. B: Really? Well, I --------------- you some.",
+   "options": [
+    "am going to lend",
+    "am lending",
+    "will lend",
+    "lent"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-95",
+   "page": 67,
+   "num": 17,
+   "category": "grammar",
+   "stem": "A: Did you send your homework for the teacher? B: Oh, I completely forgot, I ------------------- it after dinner.",
+   "options": [
+    "will send",
+    "am going to send",
+    "send",
+    "sent"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "با توجه به معنی و وجود after dinner جمله در\"زمان آینده ساده\" می باشد (گزینه هایcوd حذف می شوند). چنانچه قبل از تستی مربوط به زمان آینده کلمه forgot (گذشتهforget) آمده باشد جواب فقط will خواهد بود چون برنامه ریزی قبلی ندارد و آنی تصمیم می گیرد :ترجمه تست \" الف- آیا تکلیفت را برای معلم ارسال کردی؟ ب - اوه.. کامأل فراموش کردم بعد از شام آن را رسال خواهم کرد\"."
+  },
+  {
+   "id": "g10-96",
+   "page": 67,
+   "num": 18,
+   "category": "grammar",
+   "stem": "Raman helped his friend, Arshan to solve his math problems. He -------------------- him do his homework next Thursday.",
+   "options": [
+    "will help",
+    "helps",
+    "is going to help",
+    "be going to help"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-97",
+   "page": 87,
+   "num": 1,
+   "category": "vocab",
+   "stem": "We heard voices when we drew ----------------- the village.",
+   "options": [
+    "far",
+    "near",
+    "real",
+    "above"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "وقتی که ما به نزدیک روستا آمدیم، صداهایی را شنیدیم.",
+   "note": null
+  },
+  {
+   "id": "g10-98",
+   "page": 87,
+   "num": 2,
+   "category": "vocab",
+   "stem": "The first ----------------- of rain fell down on the ground yesterday and we enjoyed a lot.",
+   "options": [
+    "drops",
+    "pumps",
+    "liquids",
+    "signs"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "دیروز اولین قطرات باران روی زمین افتاد و ما هم خیلی لذت بردیم.",
+   "note": null
+  },
+  {
+   "id": "g10-99",
+   "page": 87,
+   "num": 5,
+   "category": "vocab",
+   "stem": "An extremely small living thing which you can't see with your eyes and can cause diseases is called ------------.",
+   "options": [
+    "plasma",
+    "cell",
+    "body",
+    "microbe"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": "یک موجود زنده خیلی کوچک که با چشمانتان نمی توانید ببینید و می تواند بیماری هایی را بوجود آورد میکروب نامیده می شود.",
+   "note": null
+  },
+  {
+   "id": "g10-100",
+   "page": 87,
+   "num": 6,
+   "category": "vocab",
+   "stem": "Crying is seen as a ----------------- of weakness among some people in bad situations.",
+   "options": [
+    "system",
+    "sign",
+    "power",
+    "ring"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "گریه کردن به عنوان یک نشانه ضعف میان بعضی افراد در وضعیت های بد دیده می شود.",
+   "note": null
+  },
+  {
+   "id": "g10-101",
+   "page": 87,
+   "num": 7,
+   "category": "vocab",
+   "stem": "A planet that is the closest to the sun in the solar system and sometimes visible with eyes after sunset is --------.",
+   "options": [
+    "Mercury",
+    "earth",
+    "orbit",
+    "telescope"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-102",
+   "page": 87,
+   "num": 8,
+   "category": "vocab",
+   "stem": "This machine will ----------------- water from the basement if there is a heavy rain.",
+   "options": [
+    "carry",
+    "pump",
+    "collect",
+    "clear"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "اگر باران سنگین ببارد این دستگاه آب را از زیر زمین پمپاژ می کند.",
+   "note": null
+  },
+  {
+   "id": "g10-103",
+   "page": 87,
+   "num": 9,
+   "category": "vocab",
+   "stem": "When you have a cold or the flu, you should drink plenty of -----------------.",
+   "options": [
+    "liquids",
+    "drops",
+    "plasma",
+    "pepper"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "وقتی که شما سرما می خورید یا آنفوالنزا دارید، بهتر است مایعات زیادی بنوشید.",
+   "note": null
+  },
+  {
+   "id": "g10-104",
+   "page": 87,
+   "num": 15,
+   "category": "vocab",
+   "stem": "What is the ----------------- and the most terrible possible thing that can happen?",
+   "options": [
+    "best",
+    "worst",
+    "most",
+    "least"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "بدترین و وحشتناک ترین چیز ممکن که می تواند اتفاق بیافتد، چیست؟",
+   "note": null
+  },
+  {
+   "id": "g10-105",
+   "page": 87,
+   "num": 16,
+   "category": "vocab",
+   "stem": "Details on the moon’s surface can only be seen through a ----------------- .",
+   "options": [
+    "microscope",
+    "telescope",
+    "camera",
+    "lens"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "جزئی ِاتِسطح کره ماه ی، فقط از طریق یک تلسکوپ می تواند دیده شود.",
+   "note": null
+  },
+  {
+   "id": "g10-106",
+   "page": 87,
+   "num": 17,
+   "category": "vocab",
+   "stem": "A smallest part of a living thing that can exist independently is called -----------------.",
+   "options": [
+    "virus",
+    "microbe",
+    "cell",
+    "bacteria"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": "کوچکترین قسمت یک موجود زنده که می تواند به طور مستقل وجود داشته باشد، سلول نامیده می شود.",
+   "note": null
+  },
+  {
+   "id": "g10-107",
+   "page": 87,
+   "num": 18,
+   "category": "vocab",
+   "stem": "There are more air planes ----------------- more people than ever before.",
+   "options": [
+    "collecting",
+    "carrying",
+    "completing",
+    "comparing"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "هواپیماهای زیادی وجود دارند که افراد بیشتری را نسبت به قبل، حمل می کنند.",
+   "note": null
+  },
+  {
+   "id": "g10-108",
+   "page": 87,
+   "num": 19,
+   "category": "vocab",
+   "stem": "It will be ----------------- to see what happens when he gets a bit older.",
+   "options": [
+    "interesting",
+    "healthy",
+    "near",
+    "powerful"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "زمانیکه او کمی پیرتر می شود، دیدن آنچه رخ می دهد، )(برایش جالب خواهد بود.",
+   "note": null
+  },
+  {
+   "id": "g10-109",
+   "page": 88,
+   "num": 24,
+   "category": "vocab",
+   "stem": "It’s better to make a phone call to ----------------- that you’re writing to the right person.",
+   "options": [
+    "check",
+    "locate",
+    "break",
+    "compare"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "ِبهتر است یک تماس تلفنی برقرار شود که برریس شود )(که ایاِشما برای شخص درستی )(نامه نوشته اید.",
+   "note": null
+  },
+  {
+   "id": "g10-110",
+   "page": 88,
+   "num": 25,
+   "category": "vocab",
+   "stem": "How does life in Britain ----------------- with life in the United States?",
+   "options": [
+    "defend",
+    "describe",
+    "compare",
+    "pair"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": "ِچطور زندگی در بریتانیا با ایاالت متحده مقایسه می شود؟",
+   "note": null
+  },
+  {
+   "id": "g10-111",
+   "page": 88,
+   "num": 26,
+   "category": "vocab",
+   "stem": "Another approach for solving the problem is ----------------- in chapter 3 of the book.",
+   "options": [
+    "compared",
+    "contrasted",
+    "completed",
+    "described"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": "ِروش ِدیگر برای حل مسأله، در بخش سوم کتاب توصیف شده است.",
+   "note": null
+  },
+  {
+   "id": "g10-112",
+   "page": 88,
+   "num": 27,
+   "category": "vocab",
+   "stem": "The drug is effective against a range of -----------------.",
+   "options": [
+    "bacteria",
+    "cell",
+    "plasma",
+    "body"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-113",
+   "page": 88,
+   "num": 28,
+   "category": "vocab",
+   "stem": "Police found tiny drops of ----------------- in the apartment and finally identified killer.",
+   "options": [
+    "paint",
+    "blood",
+    "water",
+    "cell"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "ِپلیس قطرات کوچکی از خون را در آپارتمان پیدا کرد ه و سرانجام قاتل را شناسایی کرد دند.",
+   "note": null
+  },
+  {
+   "id": "g10-114",
+   "page": 88,
+   "num": 29,
+   "category": "vocab",
+   "stem": "My grandfather died after suffering a severe heart ----------------- two years ago.",
+   "options": [
+    "attack",
+    "cross",
+    "body",
+    "element"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "ِپدربزرگم دو سال پیش، بعد از رنج بردن از یک حمله ِقلبی شدید، فوت کرد.",
+   "note": null
+  },
+  {
+   "id": "g10-115",
+   "page": 88,
+   "num": 33,
+   "category": "vocab",
+   "stem": "Try to add doing some regular ----------------- into your daily routine.",
+   "options": [
+    "experiment",
+    "research",
+    "exercise",
+    "health"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": "تالش کن( تا انجام ) چند تمرین منظم به کارهای(مرتب ) روزانه ات را اضافه کنی.",
+   "note": null
+  },
+  {
+   "id": "g10-116",
+   "page": 88,
+   "num": 34,
+   "category": "vocab",
+   "stem": "Among our family members my younger sister was the only one who travelled -----------------.",
+   "options": [
+    "abroad",
+    "near",
+    "distance",
+    "upward"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "ِدر میان اعضای خانواده ما، خواه ِر کوچکترم تنها کسی بود که به خارج از کشور مسافرت کرد.",
+   "note": null
+  },
+  {
+   "id": "g10-117",
+   "page": 88,
+   "num": 35,
+   "category": "vocab",
+   "stem": "It’s a mistake to think of Florida only ----------------- its tourist attractions.",
+   "options": [
+    "based",
+    "in terms of",
+    "by mean of",
+    "jumped out of"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "اشتباه است که به فلوریدا فقط بر حسب جاذبه های توریستی فکر کنیم.",
+   "note": null
+  },
+  {
+   "id": "g10-118",
+   "page": 88,
+   "num": 36,
+   "category": "vocab",
+   "stem": "Religion was an ----------------- which divided that country into two group.",
+   "options": [
+    "element",
+    "ring",
+    "system",
+    "gift"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "مذهب)عنرصی (عامیل بود که کشور را به دو گروه تقسیم کرد.",
+   "note": null
+  },
+  {
+   "id": "g10-119",
+   "page": 88,
+   "num": 37,
+   "category": "vocab",
+   "stem": "She gathered ----------------- for her novel by reading newspapers from 1990s.",
+   "options": [
+    "elements",
+    "hints",
+    "keys",
+    "material"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": "ِاو با خواندن روزنامه ها، از دهه1990 مطالت ُرا برای ر مانش جمع آوری کرد.",
+   "note": null
+  },
+  {
+   "id": "g10-120",
+   "page": 88,
+   "num": 38,
+   "category": "vocab",
+   "stem": "Such companies must change if they are to compete in the----------------- world.",
+   "options": [
+    "modern",
+    "ancient",
+    "nation",
+    "living"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "اگر قرار است چنین شرکت هایی در دنیای مدرن رقابت کنند، می بایستی تغییر کنند.",
+   "note": null
+  },
+  {
+   "id": "g10-121",
+   "page": 88,
+   "num": 39,
+   "category": "vocab",
+   "stem": "Let me tell you some helpful ----------------- on looking after house plants.",
+   "options": [
+    "elements",
+    "hints",
+    "materials",
+    "gifts"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "بگذار برای شما چند نکته ِمفید در مورد مراقبت کردن از گیاهان خانگی را بگویم.",
+   "note": null
+  },
+  {
+   "id": "g10-122",
+   "page": 89,
+   "num": 1,
+   "category": "vocab",
+   "stem": "If you listen ------------------------- to this great music, you can hear a flute in the background.",
+   "options": [
+    "really",
+    "carefully",
+    "regularly",
+    "slowly"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \" اگر به این موسیف عایل با دقت گوش بدهید، می‌ توانید صدای فلوت را در موسیف زمینه بشنوید.\" 1 ) واقعا 2 ) با دقت 3 ) به طور منظم 4) به آرایم."
+  },
+  {
+   "id": "g10-123",
+   "page": 89,
+   "num": 2,
+   "category": "vocab",
+   "stem": "The children were vaccinated against the major childhood -------------------------.",
+   "options": [
+    "area",
+    "disease",
+    "energy",
+    "gift"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \" کودکان در برابر بیماری های عمده ی دوران کودگ واکسینه شدند\" 1 ) منطقه 2 )بیماری 3 ) انرژی 4) هدیه."
+  },
+  {
+   "id": "g10-124",
+   "page": 89,
+   "num": 3,
+   "category": "vocab",
+   "stem": "“This is your captain speaking. We ------------------------ to be landing at London airport in an hour’s time”. the pilot said.",
+   "options": [
+    "happen",
+    "expect",
+    "follow",
+    "exercise"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \" خلبان گفت: کاپیتان شما صحبت می‌ کند. ما انتظار داریم که در حدود یک ساعت آینده در فرودگاه لندن فرود بیاییم.\" 1 ) اتفاق افتادن2 ) انتظار داشی ن3 ) دنبال کردن 4) تمرین کردن."
+  },
+  {
+   "id": "g10-125",
+   "page": 89,
+   "num": 4,
+   "category": "vocab",
+   "stem": "That’s ------------------------- - I’m sure I put my glasses in my bag, but they’re not there.",
+   "options": [
+    "fresh",
+    "simple",
+    "serious",
+    "strange"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": "عجیبه مطمیی ن هستم که عینکم را در کیفم گذاشتم، اما آنجا نیستند.\" 1 ) تازه 2 ) ساده 3 ) جدی 4 )عجیب.",
+   "note": null
+  },
+  {
+   "id": "g10-126",
+   "page": 89,
+   "num": 5,
+   "category": "vocab",
+   "stem": "It’s a difficult ------------------------- and I don't know what to do to solve my problem.",
+   "options": [
+    "situation",
+    "half",
+    "liquid",
+    "land"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \"موقعیت سخت است و نیم دانم برای این که مشکلم را حل بکنم، چیکار کنم.\" 1 )موقعیت 2 ) نیمه 3 ) مایع 4) خشگ، فرود آمدن."
+  },
+  {
+   "id": "g10-127",
+   "page": 89,
+   "num": 6,
+   "category": "vocab",
+   "stem": "I was looking for a birthday present for my mother but I didn't find anything -------------------------.",
+   "options": [
+    "brave",
+    "fatty",
+    "suitable",
+    "extra"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \"دنبال یک هدیه روز تولد برای مادر می‌ گشتم، اما چیر ن مناست پیدا نکردم.\" 1 ) شجاع، شجاعانه 2 ) پرچرب 3 ) مناسب 4) اضافه."
+  },
+  {
+   "id": "g10-128",
+   "page": 89,
+   "num": 7,
+   "category": "vocab",
+   "stem": "Her latest project is a film that is ------------------------- the life of a 19th-century music hall star.",
+   "options": [
+    "based on",
+    "divided into",
+    "cut down",
+    "looked after"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \" آخرین پروژه او فیلیم است که بر اساس زندگی یک ستاره ی موسیف قرن نوزدهم است. \" 1 ) پایه گذاری کردن )(اینجا معتن بر اساس میدهد 2 ) تقسیم شدن به 3) بریدن، قطع کردن 4 ) مراقبت کرد، پرستاری کردن."
+  },
+  {
+   "id": "g10-129",
+   "page": 89,
+   "num": 8,
+   "category": "vocab",
+   "stem": "A good knife is probably one of the most ------------------------- things you can have in a kitchen.",
+   "options": [
+    "useful",
+    "dark",
+    "amazing",
+    "interesting"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-130",
+   "page": 89,
+   "num": 9,
+   "category": "vocab",
+   "stem": "The picture quality is bad because the TV signal isn’t ------------------------- enough.",
+   "options": [
+    "suitable",
+    "golden",
+    "powerful",
+    "polite"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \" کیفیت تصویر بد است زیرا سیگنال تلویزیون به اندازه کاقن قوی نیست. \" 1 ) مناسب2 ) طالب 3 ) قوی 4 ) با ادب."
+  },
+  {
+   "id": "g10-131",
+   "page": 89,
+   "num": 10,
+   "category": "vocab",
+   "stem": "The research project has been ------------------------- changes in the local population.",
+   "options": [
+    "drawing",
+    "rising",
+    "donating",
+    "observing"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \" پروژه تحقیق در حال مشاهده (رصد) کردن تغییر ات جمعیت محیل بوده است. \" 1 ) کشیدن 2 ) باالرفی ن3 ) اهدا کردن 4 )مشاهده کردن."
+  },
+  {
+   "id": "g10-132",
+   "page": 89,
+   "num": 11,
+   "category": "vocab",
+   "stem": "I had a ------------------------- headache, but I went to the concert.",
+   "options": [
+    "energetic",
+    "careless",
+    "terrible",
+    "irregular"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-133",
+   "page": 89,
+   "num": 12,
+   "category": "vocab",
+   "stem": "I can give you ------------------------- pain-killing drugs if these aren’t enough.",
+   "options": [
+    "stronger",
+    "kinder",
+    "farther",
+    "larger"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-134",
+   "page": 89,
+   "num": 13,
+   "category": "vocab",
+   "stem": "Working in that factory was hard for those months, but it was a good ------------------------- for him.",
+   "options": [
+    "experience",
+    "information",
+    "material",
+    "situation"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \"کار کردن در آن کارخانه، برای\" آن\" ماه ها سخت بود، اما تجربه خوب برایش بود\" 1 )تجربه 2 ) اطالعات3 ) محتویات4) وضعیت."
+  },
+  {
+   "id": "g10-135",
+   "page": 89,
+   "num": 14,
+   "category": "vocab",
+   "stem": "You should ------------------------- parking the car a few more times before you take the driver's test.",
+   "options": [
+    "happen",
+    "endanger",
+    "spell",
+    "practice"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-136",
+   "page": 89,
+   "num": 15,
+   "category": "vocab",
+   "stem": "With all the -------- of modern technology, why has no one come up with a way to have a time travel?",
+   "options": [
+    "rings",
+    "gifts",
+    "wonders",
+    "marks"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \" با تمام شگفت های تکنولوژی مدرن، چرا هیچکس ایده ای برای سفر در زمان نداشته است؟\" 1 ) حلقه2 ) هدیه 3 ) شگفت 4 ) عالمت."
+  },
+  {
+   "id": "g10-137",
+   "page": 89,
+   "num": 16,
+   "category": "vocab",
+   "stem": "The Vatican has agreed to ------------------ $80 000 in emergency aid to countries affected by the war.",
+   "options": [
+    "order",
+    "donate",
+    "expect",
+    "pump"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \"واتیکان قبول کرده است که 80 هزار دالر برای کمک اضطراری به کشورهاب که درگیر جنگ شده اند، اهدا کند. \" 1 ) سفارش دادن 2 ) اهدا کردن 3 ) انتظار داشی ن 4 ) پمپاژ کردن."
+  },
+  {
+   "id": "g10-138",
+   "page": 89,
+   "num": 17,
+   "category": "vocab",
+   "stem": "The president was asked how he could ------------------------- a policy that increased unemployment.",
+   "options": [
+    "defend",
+    "sneeze",
+    "increase",
+    "observe"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-139",
+   "page": 89,
+   "num": 18,
+   "category": "vocab",
+   "stem": "She told me every single ------------------------- of what they did to her in hospital.",
+   "options": [
+    "organ",
+    "rock",
+    "detail",
+    "metal"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \" او تمام جزییات آنچه را که آن ها با او در بیمارستان کردند، به من گفت\" 1 ) ارگان، عضو 2 ) سنگ 3 )جزییات 4 ) فلز."
+  },
+  {
+   "id": "g10-140",
+   "page": 89,
+   "num": 19,
+   "category": "vocab",
+   "stem": "Paul helped his elderly neighbor by ------------------------- snow from yard of her house.",
+   "options": [
+    "clearing",
+    "following",
+    "exercising",
+    "donating"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-141",
+   "page": 90,
+   "num": 20,
+   "category": "vocab",
+   "stem": "There were little ------------------------- of paint on the kitchen floor and we had to remove them.",
+   "options": [
+    "interests",
+    "golds",
+    "signs",
+    "drops"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \"قطرات کوچک رنگی در کف آشی نخانه بود و ما مجبور بودیم که پاکشان کنیم.\" 1 ) علاقه، سود 2 ) طال 3 ) نشانه 4 ) قطره."
+  },
+  {
+   "id": "g10-142",
+   "page": 90,
+   "num": 21,
+   "category": "vocab",
+   "stem": "That was a/an ------------------------- he hadn’t heard before, and wondered what it meant.",
+   "options": [
+    "relative",
+    "hope",
+    "expression",
+    "graph"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \" آن یک عبارب بود که قبال نشنیده بود و در شگفت بود که معتن آن چه می‌ شد. \" 1 ) فامیل و خویشاوند2 ) امید 3 )عبارت، اصطالح4) نمودار."
+  },
+  {
+   "id": "g10-143",
+   "page": 90,
+   "num": 22,
+   "category": "vocab",
+   "stem": "He’s dropped several ------------------------- to the boss that he’ll quit if he doesn’t get a promotion.",
+   "options": [
+    "hints",
+    "drops",
+    "marks",
+    "arrows"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-144",
+   "page": 90,
+   "num": 23,
+   "category": "vocab",
+   "stem": "We try to do what is best for our customers ------------------------- the quality of our products.",
+   "options": [
+    "on our own",
+    "instead of",
+    "in terms of",
+    "in fact"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \" ما سیع میکنیم که آن چه را که بهی ین است از لحاظ کیفیت محصوالت مان، برای مشی ی هایمان انجام بدهیم. \" 1 ) به تنهاب، خودمان 2 ) به جای 3 ) از لحاظ 4) در واقع."
+  },
+  {
+   "id": "g10-145",
+   "page": 90,
+   "num": 24,
+   "category": "vocab",
+   "stem": "Prices of products are governed by the cost of the ----------------, as well as by the cost of production.",
+   "options": [
+    "health",
+    "materials",
+    "expressions",
+    "wonders"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-146",
+   "page": 90,
+   "num": 25,
+   "category": "vocab",
+   "stem": "He’s not interested in -------------------------. All he cares about is making money.",
+   "options": [
+    "quality",
+    "pepper",
+    "gift",
+    "element"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : :الف \" او به کیفیت علاقه مند نیست. تمام چیر نی که او برایش مهم است، پول در آوردن است\" 1 )کیفیت 2 ) فلفل 3 ) هدیه 4) عنرص."
+  },
+  {
+   "id": "g10-147",
+   "page": 90,
+   "num": 26,
+   "category": "vocab",
+   "stem": "Having a second income is an important ------------------------- for most home buyers.",
+   "options": [
+    "abroad",
+    "area",
+    "element",
+    "form"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-148",
+   "page": 90,
+   "num": 27,
+   "category": "vocab",
+   "stem": "I didn’t ------------------------- want any more dessert, but Julia forced it on me.",
+   "options": [
+    "importantly",
+    "angrily",
+    "carefully",
+    "actually"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": "من در واقع دیگه درسی نیم خواستم، اما جولیا مجبورم کرد \" 1 ) به طور مهم2 ) با عصبانیت 3 ) به طور با دقت 4 )در واقع.",
+   "note": null
+  },
+  {
+   "id": "g10-149",
+   "page": 90,
+   "num": 28,
+   "category": "vocab",
+   "stem": "I didn’t think his comments were very ------------------------- at that time.",
+   "options": [
+    "appropriate",
+    "expensive",
+    "beautiful",
+    "famous"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "فکر می‌ کردم که نظراتش خیلی مناسب آن زمان نبودند\" 1 )مناسب 2 ) گران 3 ) زیبا 4) معروف.",
+   "note": null
+  },
+  {
+   "id": "g10-150",
+   "page": 90,
+   "num": 29,
+   "category": "vocab",
+   "stem": "The drug works more quickly if it is injected directly into the blood -------------------------.",
+   "options": [
+    "fact",
+    "stream",
+    "land",
+    "location"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \" اگر ][آن دارو مستقیم أ به جریان خون تزریق شود،رسیع تر عمل می‌ کند. \" 1 ) حقیقت2 )جریان 3 ) خشگ 4) موقعیت، محل، مکان."
+  },
+  {
+   "id": "g10-151",
+   "page": 90,
+   "num": 30,
+   "category": "vocab",
+   "stem": "It was a ------------------------- decision to quit her job and start her own business.",
+   "options": [
+    "clear",
+    "actual",
+    "expensive",
+    "brave"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \" یک تصمیم شجاعانه بود که از کارش انرصاف بدهد و کسب و کار خودش را راه بندازد.\" 1 ) شفاف2 ) واقیع 3 ) گران 4 )شجاع، شجاعانه."
+  },
+  {
+   "id": "g10-152",
+   "page": 90,
+   "num": 31,
+   "category": "vocab",
+   "stem": "She went into a ------------------------- coma after taking an overdose of sleeping pills.",
+   "options": [
+    "common",
+    "extra",
+    "plastic",
+    "deep"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-153",
+   "page": 90,
+   "num": 32,
+   "category": "vocab",
+   "stem": "As a parent we should try to ----------------- a stable home environment for our children to grow up in.",
+   "options": [
+    "describe",
+    "observe",
+    "create",
+    "train"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": "به عنوان والدین، ما باید تالش کنیم تا یک محیط پایدار خانگی برای فرزندانمان بسازیم تا در آن رشد کنند.\" 1 ) توصیف کردن2 ) رصد کردن3 ) ساخی ن 4) تربیت کردن.",
+   "note": null
+  },
+  {
+   "id": "g10-154",
+   "page": 90,
+   "num": 33,
+   "category": "vocab",
+   "stem": "I can recommend the chicken in our special sauce for your lunch. it's really -------------------------!",
+   "options": [
+    "delicious",
+    "serious",
+    "cultural",
+    "strong"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-155",
+   "page": 90,
+   "num": 34,
+   "category": "vocab",
+   "stem": "Many things make it ------------------------- for women to reach the top in US business.",
+   "options": [
+    "sick",
+    "difficult",
+    "wonderful",
+    "healthy"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-156",
+   "page": 90,
+   "num": 35,
+   "category": "vocab",
+   "stem": "The word “flight” has two ------------------------- meanings: a plane journey, and the act of escaping.",
+   "options": [
+    "different",
+    "endangered",
+    "dangerous",
+    "energetic"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-157",
+   "page": 90,
+   "num": 36,
+   "category": "vocab",
+   "stem": "The life of humans has lots of different things to -----------------------; such as job, college major, etc.",
+   "options": [
+    "spell",
+    "clear",
+    "choose",
+    "decrease"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-158",
+   "page": 90,
+   "num": 37,
+   "category": "vocab",
+   "stem": "We need someone who has ----- in marketing and teaching, and I think Alex is just the man for the job.",
+   "options": [
+    "experience",
+    "insect",
+    "example",
+    "form"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه :\" ما به کیس نیاز داریم که در امر بازاریاب و معلیم تجربه دارد، و فکر کنم آ لکس تنها فرد برای این کار است \" 1 ) تجربه 2 ) حسی ه 3 ) مثال 4 ) شکل، حالت."
+  },
+  {
+   "id": "g10-159",
+   "page": 90,
+   "num": 38,
+   "category": "vocab",
+   "stem": "His parents won’t let him play ice hockey because they think it’s too -------------------------.",
+   "options": [
+    "pleasant",
+    "possible",
+    "important",
+    "dangerous"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \" والدین او به او اجازه ی بازی کردن هایک روی یخ را نخواهند داد چون فکر میکنند که خیلی خطرناک است \" 1 ) خوشایند و لذت بخش 2 ) ممکن3 ) مهم 4 )خطرناک."
+  },
+  {
+   "id": "g10-160",
+   "page": 90,
+   "num": 39,
+   "category": "vocab",
+   "stem": "It’s important to ------------------------- your skin from the harmful effects of the sun.",
+   "options": [
+    "injure",
+    "protect",
+    "unscramble",
+    "identify"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \" این مهم است که از پوستتان در برابر ن خورشید تاثیر ات مرص محافظت کنید.\" 1 ) صدمه زدن 2 )مراقبت کردن 3 ) مرتب کردن 4) تشخیص دادن."
+  },
+  {
+   "id": "g10-161",
+   "page": 90,
+   "num": 40,
+   "category": "vocab",
+   "stem": "During the 1980s, the amount of ozone in the stratosphere above Europe ------------------ by about 8%.",
+   "options": [
+    "decreased",
+    "attacked",
+    "happened",
+    "observe"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترجمه : \" در طول 1980، مقدار ازون در اسی اتوسفر باالی اروپا حدود أ 8. درصد کاهش پیدا کرد \" 1 ) طول عمر2 ) برنامه3 ) طبیعت 4 ) علاقه : Note."
+  },
+  {
+   "id": "g10-162",
+   "page": 99,
+   "num": 1,
+   "category": "grammar",
+   "stem": "Her handwriting is not as --------------------- as my handwriting.",
+   "options": [
+    "worse",
+    "the worst",
+    "the best",
+    "bad"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-163",
+   "page": 99,
+   "num": 2,
+   "category": "grammar",
+   "stem": "His car was very cheap. I expected is to be --------------------- than my car.",
+   "options": [
+    "the most expensive",
+    "more expensive",
+    "expensive",
+    "as expensive as"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-164",
+   "page": 99,
+   "num": 3,
+   "category": "grammar",
+   "stem": "It’s a very good room. It is --------------------- room in this hotel.",
+   "options": [
+    "the worst",
+    "the best",
+    "better",
+    "worst"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-165",
+   "page": 99,
+   "num": 4,
+   "category": "grammar",
+   "stem": "It’s a terrible hospital. It’s --------------------- hospital in the city.",
+   "options": [
+    "the worst",
+    "the best",
+    "better",
+    "worse"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-166",
+   "page": 99,
+   "num": 5,
+   "category": "grammar",
+   "stem": "Don’t worry. The exam was very difficult. Your mark isn’t so bad. It could be ---------------- than this.",
+   "options": [
+    "better",
+    "worse",
+    "well",
+    "the best"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-167",
+   "page": 99,
+   "num": 6,
+   "category": "grammar",
+   "stem": "It’s a very delicious food. It’s ----------------- food in the restaurant.",
+   "options": [
+    "better",
+    "the best",
+    "the worst",
+    "worse"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-168",
+   "page": 99,
+   "num": 7,
+   "category": "grammar",
+   "stem": "Our hotel was ----------------- than all the others in the town.",
+   "options": [
+    "the cheapest",
+    "as cheap as",
+    "cheaper",
+    "cheap"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "بعد از جای خالیthan آمده پس به صفت برتری نیاز داریم ترجمه تست : \"هتل ما از همه هتل های دیگر شهر ارزان تر است \"."
+  },
+  {
+   "id": "g10-169",
+   "page": 99,
+   "num": 8,
+   "category": "grammar",
+   "stem": "It was a terrible experience. It was ----------------- experience of my life.",
+   "options": [
+    "the worst",
+    "the best",
+    "better",
+    "worse"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-170",
+   "page": 99,
+   "num": 9,
+   "category": "grammar",
+   "stem": "The red car is -------------------- than the black car.",
+   "options": [
+    "expensive",
+    "more expensive",
+    "as expensive as",
+    "the most expensive"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-171",
+   "page": 99,
+   "num": 10,
+   "category": "grammar",
+   "stem": "The man is 70 kilos. The woman is 67 kilos. The man is ------------------- the woman.",
+   "options": [
+    "the heaviest",
+    "as heavy as",
+    "heavier than",
+    "heavier"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-172",
+   "page": 99,
+   "num": 11,
+   "category": "grammar",
+   "stem": "Robert does not write well. He has ------------------ handwriting in our class.",
+   "options": [
+    "bad",
+    "worse",
+    "the worst",
+    "as bad as"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "برای مقایسه یک اسم با گروهی از اسامی به صفت عالی نیاز داریم. ترجمه تست : \"رابرت به خوب نیم نویسد. او بدترین دستخط کالس را دارد."
+  },
+  {
+   "id": "g10-173",
+   "page": 99,
+   "num": 12,
+   "category": "grammar",
+   "stem": "My brother has a --------------- cat.",
+   "options": [
+    "pretty big brown Asian",
+    "pretty big Asian brown",
+    "big pretty brown Asian",
+    "big brown pretty Asian"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-174",
+   "page": 99,
+   "num": 13,
+   "category": "grammar",
+   "stem": "There’s a ----------------- box in our house.",
+   "options": [
+    "small nice metal black",
+    "small nice black metal",
+    "nice black small metal",
+    "nice small black metal"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-175",
+   "page": 99,
+   "num": 15,
+   "category": "grammar",
+   "stem": "My friend never lets his little brother drive his ----------------- car.",
+   "options": [
+    "old expensive big",
+    "big old expensive",
+    "big expensive old",
+    "expensive big old"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-176",
+   "page": 99,
+   "num": 16,
+   "category": "grammar",
+   "stem": "Which sport is --------------------- dangerous of all the sports in the Olympics?",
+   "options": [
+    "least",
+    "more",
+    "the most",
+    "many"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "برای مقایسه یک اسم با گروهی از اسامی به صفت عالی نیاز داریم. ترجمه تست : \" کدام ورزش به نسبت همه ورزش های دیگر المپیک خطرناکی ین است\"؟"
+  },
+  {
+   "id": "g10-177",
+   "page": 100,
+   "num": 17,
+   "category": "grammar",
+   "stem": "Did the tall young woman look in that ----------------- dress?",
+   "options": [
+    "long green silk",
+    "green long silk",
+    "silk long green",
+    "long silk green"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-178",
+   "page": 100,
+   "num": 18,
+   "category": "grammar",
+   "stem": "That --------------- bicycle is ----------------- expensive than this motorcycle.",
+   "options": [
+    "German nice / most",
+    "nice German / most",
+    "German nice / more",
+    "nice German / more"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "جای خالی اول: بر طبق رمز \"\" جم رساک گزینهa,c اشتباه هستند. جای خالی دوم: با توجه به وجودthan بعد از جای خالی به صفت برتری نیاز داریم ترجمه تست : \"آن دوچرخه آلمابن قشنگ از آن موتور سیکلت گران تر است \"."
+  },
+  {
+   "id": "g10-179",
+   "page": 100,
+   "num": 19,
+   "category": "grammar",
+   "stem": "There are many cheap things in the shop, but the cake is ---------------- thing of all.",
+   "options": [
+    "cheap",
+    "cheaper than",
+    "cheaper",
+    "the cheapest"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "برای مقایسه یک اسم با گروهی از اسامی به صفت عالی نیاز داریم. ترجمه تست : \"وسایل ارزان زیادی در این مغازه وجود دارد اما کیک ارزانی ین آن‌هاست \"."
+  },
+  {
+   "id": "g10-180",
+   "page": 100,
+   "num": 20,
+   "category": "grammar",
+   "stem": "I had ------------------ time than I needed to finish that work.",
+   "options": [
+    "little",
+    "less",
+    "the least",
+    "many"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-181",
+   "page": 101,
+   "num": 4,
+   "category": "grammar",
+   "stem": "The ----------------- house at the end of the street is one they have been living in for over thirty years.",
+   "options": [
+    "wooden nice big German",
+    "nice big wooden German       )نظام قدیم - 98 انسابن خارج(",
+    "big nice German wooden",
+    "nice big German wooden"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-182",
+   "page": 101,
+   "num": 5,
+   "category": "grammar",
+   "stem": "I am sorry to say so, but ----------------- of all is that they have grown used to this pattern of behavior.",
+   "options": [
+    "things worst",
+    "worse things       )98 انسابن(",
+    "the worst thing",
+    "the worst of things"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-183",
+   "page": 102,
+   "num": 26,
+   "category": "grammar",
+   "stem": "Mohsen is a very ------------------ boy. He is ----------------- as Ahmad now.",
+   "options": [
+    "tall / taller",
+    "the tallest / tall",
+    "tall / as tall",
+    "taller / as tall"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-184",
+   "page": 102,
+   "num": 27,
+   "category": "grammar",
+   "stem": "This bike is ------------------ than yours. In my opinion it’s ------------------ bike in the world.",
+   "options": [
+    "more expensive / most expensive",
+    "expensiver / expensivest",
+    "more expensive / the most expensive",
+    "expensiver / the most expensive"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-185",
+   "page": 102,
+   "num": 28,
+   "category": "grammar",
+   "stem": "She is going to buy a / an ------------------- car tomorrow.",
+   "options": [
+    "nice American long",
+    "American long nice",
+    "long nice American",
+    "nice long American"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترتیب صفات\" (رجوع به توضیحات تست شماره 8) :ترجمه \" او قصد دارد فردا یک ماشیر ن خوب دراز آمریکاب بخرد."
+  },
+  {
+   "id": "g10-186",
+   "page": 103,
+   "num": 29,
+   "category": "grammar",
+   "stem": "Europe is not --------------------- Asia. Actually, Asia is ----------------- continent in the world.",
+   "options": [
+    "as big as / biggest",
+    "big / the biggest",
+    "bigger than / the biggest",
+    "the biggest / the biggest"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-187",
+   "page": 103,
+   "num": 30,
+   "category": "grammar",
+   "stem": "Cheetahs are ------------------- animals on the earth. They can go very quickly to hunt their prey.",
+   "options": [
+    "the fastest",
+    "the most fast",
+    "fast",
+    "as fast as"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-188",
+   "page": 103,
+   "num": 31,
+   "category": "grammar",
+   "stem": "She gave her ------------------ watch to her daughter. It was her late grandmother’s present.",
+   "options": [
+    "wonderful golden old",
+    "old wonderful golden",
+    "golden old wonderful",
+    "wonderful old golden"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترتیب صفات\" (رجوع به توضیحات تست شماره 8) :ترجمه \" او ساعت قدییم طالب شگفت انگیر نش را به دخی ش داد. آن ساعت هدیه مادربزرگ مرحومش بود."
+  },
+  {
+   "id": "g10-189",
+   "page": 103,
+   "num": 32,
+   "category": "grammar",
+   "stem": "In our class Jack has ------------------- handwriting. It’s not readable.",
+   "options": [
+    "the best",
+    "the worst",
+    "better",
+    "worse"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-190",
+   "page": 103,
+   "num": 33,
+   "category": "grammar",
+   "stem": "Those ----------------- men are going to come back their home next month.",
+   "options": [
+    "tall young generous Italian",
+    "generous tall young Italian",
+    "young generous Italian tall",
+    "generous young tall Italian"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ترتیب صفات\" (رجوع به توضیحات تست شماره 8) :ترجمه \" آن مردان سخاوتمند قدبلند جوان ایتالیاب قصد دارند ماه بعد به خانه(کشور) خود بازگردند."
+  },
+  {
+   "id": "g10-191",
+   "page": 103,
+   "num": 34,
+   "category": "grammar",
+   "stem": "A sportsperson is often -------------------- than an ordinary person who doesn’t do a lot of exercise.",
+   "options": [
+    "as healthy as",
+    "the healthiest",
+    "healthier",
+    "very healthier"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-192",
+   "page": 103,
+   "num": 35,
+   "category": "grammar",
+   "stem": "The summer of this year was -------------------. It was even ------------------ the last summer.",
+   "options": [
+    "hot / hotter than",
+    "hot / the hottest",
+    "the hottest / hot",
+    "hot / the hotter than"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-193",
+   "page": 103,
+   "num": 36,
+   "category": "grammar",
+   "stem": "Domestic trips are ------------ international trips, so you don’t need much money to travel to Mashhad.",
+   "options": [
+    "as cheap as",
+    "cheaper than",
+    "the cheapest",
+    "more cheap than"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-194",
+   "page": 103,
+   "num": 37,
+   "category": "grammar",
+   "stem": "Nima is getting fatter and fatter. He has recently become ---------------------- student in the class.",
+   "options": [
+    "the fattest",
+    "fatter than",
+    "as fat as",
+    "fattest"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-195",
+   "page": 103,
+   "num": 38,
+   "category": "grammar",
+   "stem": "We can go Hamid’s home in two hours. It is not very ------------------- from here.",
+   "options": [
+    "as far as",
+    "the farthest",
+    "far",
+    "farther than"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-196",
+   "page": 103,
+   "num": 39,
+   "category": "grammar",
+   "stem": "Jupiter is ---------------------- planet of all. It means it’s --------------- every planet in the solar system.",
+   "options": [
+    "the biggest / bigger than",
+    "as big as / bigger than",
+    "the biggest / as big as",
+    "the biggest / big"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-197",
+   "page": 103,
+   "num": 41,
+   "category": "grammar",
+   "stem": "I believe this problem is ---------------------- one of our lesson. It’s even ---- ------------------ than those the teacher asked.",
+   "options": [
+    "the hardest / as difficult as",
+    "harder than / the most difficult",
+    "the hardest / more difficult",
+    "as hard as / more difficult"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-198",
+   "page": 104,
+   "num": 45,
+   "category": "grammar",
+   "stem": "Mohammad Ali was one of --------- ----- boxers. He was stronger -------------- most of his competitors.",
+   "options": [
+    "powerfulest / than",
+    "the most powerful / than",
+    "powerfulest / as",
+    "the most powerful / from"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-199",
+   "page": 123,
+   "num": 1,
+   "category": "vocab",
+   "stem": "Jack arrived home while his father was watching his ------------------- film at the living room.",
+   "options": [
+    "interested",
+    "famous",
+    "favorite",
+    "energetic"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-200",
+   "page": 123,
+   "num": 2,
+   "category": "vocab",
+   "stem": "We’re planning to travel to Russian by ------------------- this summer. I like flying.",
+   "options": [
+    "airplane",
+    "boat",
+    "ship",
+    "train"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-201",
+   "page": 123,
+   "num": 3,
+   "category": "vocab",
+   "stem": "I’m reading a book which is about ----------------- Iranian great scientists such as Avecina and Razi.",
+   "options": [
+    "favorite",
+    "famous",
+    "energetic",
+    "possible"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "ِمن درحال ِخواندن کتاب ی هستم که در مورد دانشمندان بزرگ ایرانی مشهور مانند ابوعلی سینا و رازی هست.",
+   "note": null
+  },
+  {
+   "id": "g10-202",
+   "page": 123,
+   "num": 4,
+   "category": "vocab",
+   "stem": "That novel was so ------------------- that I learned a lot of interesting things from it.",
+   "options": [
+    "useful",
+    "natural",
+    "famous",
+    "energetic"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "آُن ر مان چنان مفید ِبود که من چیزهای جالب زیادی از آن یاد گرفتم.",
+   "note": null
+  },
+  {
+   "id": "g10-203",
+   "page": 123,
+   "num": 5,
+   "category": "vocab",
+   "stem": "She studies ------------------- at Tehran university. She likes to be a doctor.",
+   "options": [
+    "invention",
+    "novels",
+    "research",
+    "medicine"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": "ا و در ِدانشگاه تهران پزشگ می خواند. او دوست دارد، دکتر بشود.",
+   "note": null
+  },
+  {
+   "id": "g10-204",
+   "page": 123,
+   "num": 6,
+   "category": "vocab",
+   "stem": "A: “Who came to the school -------------------, you or your friend?” B: “I came first.”",
+   "options": [
+    "later",
+    "sooner",
+    "at last",
+    "finally"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-205",
+   "page": 123,
+   "num": 7,
+   "category": "vocab",
+   "stem": "My brother is really -------------------. He's always exercising.",
+   "options": [
+    "successful",
+    "useful",
+    "famous",
+    "energetic"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": "ب رادرم خیلی پر انرژی است. او همیشه ورزش می کند.",
+   "note": null
+  },
+  {
+   "id": "g10-206",
+   "page": 123,
+   "num": 8,
+   "category": "vocab",
+   "stem": "They do ------------------- in the laboratory on blood cells.",
+   "options": [
+    "knowledge",
+    "experiment",
+    "science",
+    "success"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "آ نها در آزمایشگاه روی سلولهای خونی آزمایش انجام می دهند.",
+   "note": null
+  },
+  {
+   "id": "g10-207",
+   "page": 123,
+   "num": 9,
+   "category": "vocab",
+   "stem": "Hard-work and love of God bring ------------------- for everyone.",
+   "options": [
+    "success",
+    "belief",
+    "pain",
+    "failure"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "پ شتکار و توکل بر خدا برای همه موفقیت می آورد.",
+   "note": null
+  },
+  {
+   "id": "g10-208",
+   "page": 123,
+   "num": 11,
+   "category": "vocab",
+   "stem": "My teacher is so helpful. He helps me in ------------------- physics problems.",
+   "options": [
+    "developing",
+    "solving",
+    "growing",
+    "building"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-209",
+   "page": 123,
+   "num": 12,
+   "category": "vocab",
+   "stem": "My father reads some ------------------- of Hafez on Yalda night every year.",
+   "options": [
+    "poets",
+    "poems",
+    "translations",
+    "researches"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "پ درم هر سال چند شعر حافظ را در شب یلدا می خواند.",
+   "note": null
+  },
+  {
+   "id": "g10-210",
+   "page": 123,
+   "num": 13,
+   "category": "vocab",
+   "stem": "My uncle’s ------------------- is in Behesht Zahra and I sometimes go there.",
+   "options": [
+    "cradle",
+    "grave",
+    "death",
+    "belief"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-211",
+   "page": 123,
+   "num": 14,
+   "category": "vocab",
+   "stem": "He ------------------- his work sadly and went out at once.",
+   "options": [
+    "gave up",
+    "felt",
+    "went out",
+    "solved"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "ا و کارش را با ناراحتی ترک کرد و فور أ بیرون رفت.",
+   "note": null
+  },
+  {
+   "id": "g10-212",
+   "page": 123,
+   "num": 15,
+   "category": "vocab",
+   "stem": "A ------------------- is a someone who spends a lot of time thinking about ideas and important problems.",
+   "options": [
+    "thinker",
+    "farmer",
+    "translator",
+    "reader"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-213",
+   "page": 123,
+   "num": 16,
+   "category": "vocab",
+   "stem": "Many people try hard to find ------------------- about the world.",
+   "options": [
+    "novels",
+    "facts",
+    "problems",
+    "cradles"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "ب سیاری از مردم سخت تالش می کنند که حقایف در مورد جهان را پیدا کنند.",
+   "note": null
+  },
+  {
+   "id": "g10-214",
+   "page": 123,
+   "num": 17,
+   "category": "vocab",
+   "stem": "I never give up doing research. “Give up” is the synonym of -------------------.",
+   "options": [
+    "develop",
+    "quit",
+    "invent",
+    "solve"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "م ن هرگز تحقیق کردن را رها نمی کنم.\" رها کردن\" مترادف ترک کردند است.",
+   "note": null
+  },
+  {
+   "id": "g10-215",
+   "page": 123,
+   "num": 18,
+   "category": "vocab",
+   "stem": "He finally ------------------- much money from his great invention.",
+   "options": [
+    "lost",
+    "gained",
+    "found",
+    "solved"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "اِو سرانجام پول زیادی از اختراع بزرگش بدست آورد.",
+   "note": null
+  },
+  {
+   "id": "g10-216",
+   "page": 123,
+   "num": 19,
+   "category": "vocab",
+   "stem": "My younger sister is interested in medicine and helping -------------------.",
+   "options": [
+    "patients",
+    "nurses",
+    "speakers",
+    "writers"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "خِواهر کوچکترم به پزشکی و کمک به بیماران علاقه مند است.",
+   "note": null
+  },
+  {
+   "id": "g10-217",
+   "page": 123,
+   "num": 20,
+   "category": "vocab",
+   "stem": "The ------------------- of science is clear for everyone. It makes our lives get better.",
+   "options": [
+    "value",
+    "pain",
+    "light",
+    "belief"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "رزش ا علم برای همه واضح است. آن (علم) باعث می شود زندگی مان بهتر شود.",
+   "note": null
+  },
+  {
+   "id": "g10-218",
+   "page": 124,
+   "num": 21,
+   "category": "vocab",
+   "stem": "“------------------- knowledge from cradle to the grave.” The Holy Prophet (PBHU) said.",
+   "options": [
+    "Give up",
+    "Seek",
+    "Solve",
+    "Use"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "پ:یامبر اکرم (درود خدا بر او باد) اینچنین فرمود \" زگهواره تا گور دانش بجوی.",
+   "note": null
+  },
+  {
+   "id": "g10-219",
+   "page": 124,
+   "num": 22,
+   "category": "vocab",
+   "stem": "It’s a fact that children usually ------------------- rapidly and everyone likes it.",
+   "options": [
+    "look after",
+    "grow up",
+    "put aside",
+    "take off"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "این حقیقت ی است که بچه ها معموأل به سرعت رشد می‌ کنند و همه این.(حقیقت) را دوست دارند.",
+   "note": null
+  },
+  {
+   "id": "g10-220",
+   "page": 124,
+   "num": 24,
+   "category": "vocab",
+   "stem": "Sadly, John lost one of his eyes in Charshanbeh Souri last year. \"Sadly\" means -------------------.",
+   "options": [
+    "unsuccessfully",
+    "unfortunately",
+    "fortunately",
+    "rapidly"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-221",
+   "page": 124,
+   "num": 25,
+   "category": "vocab",
+   "stem": "My friend didn’t ------------------- at school for three months last year because of his sickness.",
+   "options": [
+    "quit",
+    "solve",
+    "attend",
+    "invent"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": "دِوستم پارسال به خاطر ِبیماریش به مدت سه ماه در مدرسه حضور نیافت.",
+   "note": null
+  },
+  {
+   "id": "g10-222",
+   "page": 124,
+   "num": 26,
+   "category": "vocab",
+   "stem": "Hard-work is the ------------------- to everyone’s success in the world.",
+   "options": [
+    "key",
+    "aim",
+    "pain",
+    "gain"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "پ شتکار کلید ِموفقیت همه در جهان است.",
+   "note": null
+  },
+  {
+   "id": "g10-223",
+   "page": 124,
+   "num": 27,
+   "category": "vocab",
+   "stem": "Corona Virus is ------------------- the world rapidly and a lot of people are getting sick.",
+   "options": [
+    "putting side",
+    "getting around",
+    "going up",
+    "filling in"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "وِیروس کرونا به سرعت در جهان در حال گسی ش است و افراد زیادی مریض می شوند.",
+   "note": null
+  },
+  {
+   "id": "g10-224",
+   "page": 124,
+   "num": 28,
+   "category": "vocab",
+   "stem": "Reading and ------------------- the Holy Quran is really important and necessary for us in any age.",
+   "options": [
+    "publishing",
+    "reciting",
+    "speaking",
+    "writing"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "خ واندن و تالوت قرآن کریم برای ما در هر سنی خیلی مهم و ضروری است.",
+   "note": null
+  },
+  {
+   "id": "g10-225",
+   "page": 124,
+   "num": 29,
+   "category": "vocab",
+   "stem": "Some great writers ------------------- their books every year.",
+   "options": [
+    "solve",
+    "publish",
+    "give up",
+    "develop"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "بع ضی از نویسندگان بزرگ، هر سال کتابهایشان را منتسی می‌ کنند.",
+   "note": null
+  },
+  {
+   "id": "g10-226",
+   "page": 124,
+   "num": 30,
+   "category": "vocab",
+   "stem": "By learning a new language we can ------------------- some books into that language.",
+   "options": [
+    "write",
+    "publish",
+    "translate",
+    "attend"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": "بِا یادگیری یک زبان جدید ما می توانیم بعضی کتابها را به آن زبان ترجمه کنیم.",
+   "note": null
+  },
+  {
+   "id": "g10-227",
+   "page": 124,
+   "num": 31,
+   "category": "vocab",
+   "stem": "The firefighters always ------------------- of their car rapidly for putting out the fire.",
+   "options": [
+    "jump out",
+    "put aside",
+    "fill out",
+    "grow up"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "آ تشِنشانان برای خاموش کردن آتش، همیشه به سرعت از ماشین هایشان بیر ون می‌ پرند.",
+   "note": null
+  },
+  {
+   "id": "g10-228",
+   "page": 124,
+   "num": 32,
+   "category": "vocab",
+   "stem": "For my backache, I must take some -------------------.",
+   "options": [
+    "experiments",
+    "medicine",
+    "researches",
+    "inventions"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "من ب رای کمر دردم باید مقداری دارو بخورم.",
+   "note": null
+  },
+  {
+   "id": "g10-229",
+   "page": 124,
+   "num": 33,
+   "category": "vocab",
+   "stem": "The key to students’ success is having ------------------- in themselves.",
+   "options": [
+    "research",
+    "experiment",
+    "belief",
+    "invention"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": "کِلید موفقیت دانش آموزان، داشتن اعتقاد به خودشان است.",
+   "note": null
+  },
+  {
+   "id": "g10-230",
+   "page": 124,
+   "num": 34,
+   "category": "vocab",
+   "stem": "My grandfather ------------------- in 1397 because of his illness.",
+   "options": [
+    "developed",
+    "grew up",
+    "passed away",
+    "attended"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": "پ در بزرگم در سال1397 به علت بیماری اش به رحمت خدا رفت.",
+   "note": null
+  },
+  {
+   "id": "g10-231",
+   "page": 124,
+   "num": 35,
+   "category": "vocab",
+   "stem": "With a ------------------- heart I have some problems in running.",
+   "options": [
+    "powerful",
+    "weak",
+    "heavy",
+    "healthy"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-232",
+   "page": 124,
+   "num": 36,
+   "category": "vocab",
+   "stem": "The little baby sleeping in the ------------------- is so pretty.",
+   "options": [
+    "grave",
+    "cradle",
+    "shelf",
+    "table"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "اِین بچه کوچک که در گهواره خوابیده، خیلی زیباست.",
+   "note": null
+  },
+  {
+   "id": "g10-233",
+   "page": 124,
+   "num": 37,
+   "category": "vocab",
+   "stem": "While I was sleeping in my bedroom at 11 last night, ------- I heard a loud noise and woke up rapidly.",
+   "options": [
+    "daily",
+    "slowly",
+    "suddenly",
+    "recently"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": "دیشب هنگام یکه ساعت11 در اتاق خوابم خواب یده،بودم ناگهان یک صدای بلندی شنیدم و به سرعت بیدار شدم.",
+   "note": null
+  },
+  {
+   "id": "g10-234",
+   "page": 124,
+   "num": 38,
+   "category": "vocab",
+   "stem": "As an English teacher I have great ------------------- in teaching English.",
+   "options": [
+    "fact",
+    "drop",
+    "interest",
+    "size"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-235",
+   "page": 124,
+   "num": 39,
+   "category": "vocab",
+   "stem": "He doesn’t have any ------------------- about space. He is going to learn some things about it soon.",
+   "options": [
+    "knowledge",
+    "belief",
+    "creation",
+    "sign"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "او هیچ ی دانیس در مورد فضا ندارد. او می خواهد بزودی چیزهایی در مورد آن را یاد بگیرد.",
+   "note": null
+  },
+  {
+   "id": "g10-236",
+   "page": 124,
+   "num": 40,
+   "category": "vocab",
+   "stem": "Our country needs to ------------------- a new kind of energy for the future.",
+   "options": [
+    "develop",
+    "answer",
+    "solve",
+    "believe"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "ک شورمان به توسعه ِنوع جدیدی از انرژی برای آینده نیاز دارد \" Note:",
+   "note": null
+  },
+  {
+   "id": "g10-237",
+   "page": 134,
+   "num": 1,
+   "category": "grammar",
+   "stem": "While I ------------------ yesterday, my brother called.",
+   "options": [
+    "will study",
+    "was studying",
+    "studied",
+    "am studying"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "( چنانچه یک عملی در گذشته در حال انجام گرفتن بوده\"گذشته استمراری\" ( ) و عمل دیگر در خالل آن روی دهد\"گذشته ساده)\" از ساختار روبرو :استفاده میکنیم گذشته ساده, گذشته استمراری While ترجمه تست : \" دیروز در حایل که مشغول مطالعه کردن بودم، برادرم زنگ زد \"."
+  },
+  {
+   "id": "g10-238",
+   "page": 134,
+   "num": 2,
+   "category": "grammar",
+   "stem": "When I ------------------ my hand, the teacher was talking.",
+   "options": [
+    "to rise",
+    "was raising",
+    "raised",
+    "am going to rise"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "( چنانچه عملی در زمان گذشته\"گذشته ساده)\" ( عملی دیگر که در حال انجام گرفتن بوده است\" گذشته استمراری\" ) را قطع کند، از :ساختار زیر استفاده میکنیم گذشته استمراری,گذشته ساده When ترجمه تست : \" زمانیکه دستم را باال بردم، معلم در حال صحبت کردن بود\"."
+  },
+  {
+   "id": "g10-239",
+   "page": 134,
+   "num": 3,
+   "category": "grammar",
+   "stem": "A tree fell on my father’s car while he ------------------ home yesterday.",
+   "options": [
+    "is going to drive",
+    "was driving",
+    "drives",
+    "drove"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "رجوع به توضیحات سؤال1 : گذشته استمراریwhile گذشته ساده \" :ترجمه درخت بر روی ماشیر ن پدرم افتاد، درحایل که به سمت مین نل در حال رانندگی کردن بود \"."
+  },
+  {
+   "id": "g10-240",
+   "page": 134,
+   "num": 4,
+   "category": "grammar",
+   "stem": "We were having dinner at the restaurant when we ------------------ an old friend.",
+   "options": [
+    "saw",
+    "to see",
+    "were seeing",
+    "will see"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-241",
+   "page": 134,
+   "num": 5,
+   "category": "grammar",
+   "stem": "My little sister ate some chocolate while she ------------------ to school yesterday.",
+   "options": [
+    "is walking",
+    "was walking",
+    "walked",
+    "walks"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "رجوع به توضیحات سؤال1 : گذشته استمراریwhile گذشته ساده ترجمه تست : \"دیروز خواهر کوچیکم مقداری شکالت خورد در حایل که پیاده به مدرسه میر فت\"."
+  },
+  {
+   "id": "g10-242",
+   "page": 134,
+   "num": 6,
+   "category": "grammar",
+   "stem": "When Mr. Saeedi ------------------ on the radio in his car, he was driving home.",
+   "options": [
+    "turns",
+    "turned",
+    "was turning",
+    "will turn"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "رجوع به توضیحات سؤال2: گذشته استمراری,گذشته ساده when ترجمه تست : \" زمانیکه آقای سعیدی رادیو را در ماشینش روشن کرد، در حال رانندگی کردن به سمت خانه بود \"."
+  },
+  {
+   "id": "g10-243",
+   "page": 134,
+   "num": 7,
+   "category": "grammar",
+   "stem": "While he was swimming in the river, he ------------------ a big black fish.",
+   "options": [
+    "saw",
+    "sees",
+    "was seeing",
+    "is going to see"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "رجوع به توضیحات سؤال1: گذشته ساده, گذشته استمراریWhile ترجمه تست : \" در حالیکه او مشغول شنا کردن در رودخانه بود، یک مایه بزرگ سیایه را دید \"."
+  },
+  {
+   "id": "g10-244",
+   "page": 134,
+   "num": 8,
+   "category": "grammar",
+   "stem": "Narin was watching a movie about Newton when I ------------------ in.",
+   "options": [
+    "to come",
+    "came",
+    "was coming",
+    "am coming"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "رجوع به توضیحات سؤال2 : گذشته ساده when گذشته استمراری ترجمه تست : \" نارین مشغول تماشای یک فیلم سینماب در مورد نیوتن بود زمانیکه من وارد شدم\"."
+  },
+  {
+   "id": "g10-245",
+   "page": 134,
+   "num": 9,
+   "category": "grammar",
+   "stem": "While Zahra was walking along the street, she ---------------------- a noise behind her.",
+   "options": [
+    "was hearing",
+    "will hear",
+    "heard",
+    "hears"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "رجوع به توضیحات سؤال1: گذشته ساده, گذشته استمراری While ترجمه تست : \" در حالیکه زهرا در امتداد خیابان در حال قدم زدن بود، صداب را در پشت رسش شنید\"."
+  },
+  {
+   "id": "g10-246",
+   "page": 134,
+   "num": 10,
+   "category": "grammar",
+   "stem": "Raman ------------------ television at 8 o’clock yesterday when we ------------------.",
+   "options": [
+    "was watching / arrived",
+    "watched / are arriving",
+    "is watching / were arriving",
+    "watches / were arrive"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "رجوع به توضیحات سؤال2 : گذشته ساده when گذشته استمراری ترجمه تست : \" رامان مشغول تماشای تلویزیون بود زمانیکه ما رسیدیم\"."
+  },
+  {
+   "id": "g10-247",
+   "page": 134,
+   "num": 11,
+   "category": "grammar",
+   "stem": "The sun was shining in the sky -------------------- they went out for a walk.",
+   "options": [
+    "as",
+    "while",
+    "when",
+    "so"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "،برای توصیف شرایط و اوضاع در زمان گذشته از زمان گذشته استمراری استفاده میکنیم و عملی که در خالل آن روی میدهد زمان گذشته ساده خواهد بود گذشته ساده when گذشته استمراری ترجمه تست : \" زمانیکه آن‌ها برای پیاده روی به بیر ون رفتند، خورشید در آسمان در حال درخشیدن بود \"."
+  },
+  {
+   "id": "g10-248",
+   "page": 134,
+   "num": 12,
+   "category": "grammar",
+   "stem": "Their father arrived home ------------------ they were arguing loudly.",
+   "options": [
+    "when",
+    "because",
+    "while",
+    "so"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "رجوع به توضیحات سؤال1 : گذشته استمراریwhile گذشته ساده ترجمه تست : \" در حالیکه آن‌ها مشغول جر و بحث کردن بودند، پدرشان به خانه وارد شد \"."
+  },
+  {
+   "id": "g10-249",
+   "page": 134,
+   "num": 13,
+   "category": "grammar",
+   "stem": "Let’s clean all the building ------------------. It’s important to help each other.",
+   "options": [
+    "by myself",
+    "yourselves",
+    "themselves",
+    "ourselves"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "چنانچه جمله ای باlet’s شروع شده باشد، ضمیر تأکیدی آن جملهourselves.خواهد بود ترجمه تست : \" بیا خودمان همه ساختمان را تمیر ن کنیم. مهمه که به همدیگر کمک کنیم \"."
+  },
+  {
+   "id": "g10-250",
+   "page": 134,
+   "num": 14,
+   "category": "grammar",
+   "stem": "Sara and Mina made the house tidy by ------------------.",
+   "options": [
+    "ourselves",
+    "yourselves",
+    "themselves",
+    "herself"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ضمیر تأکیدی برای(Sara and Mina) themselves یعنی\"خودشان\".خواهد بود ترجمه تست : \" سارا و مینا خودشان به تنهاب خانه را مرتب کردند\"."
+  },
+  {
+   "id": "g10-251",
+   "page": 134,
+   "num": 15,
+   "category": "grammar",
+   "stem": "Maryam and I washed all the dishes ------------------ last night.",
+   "options": [
+    "herself",
+    "ourselves",
+    "myself",
+    "themselves"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-252",
+   "page": 134,
+   "num": 16,
+   "category": "grammar",
+   "stem": "Pari’s father is going to repair his car ------------------ next week.",
+   "options": [
+    "herself",
+    "himself",
+    "ourselves",
+    "myself"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ضمیر تأکیدی برای(Pari’s father) himself یعنی\" خودش\" )!!!!خواهد بود. (منظور پدر پری است نه خود پری ترجمه تست : \" پدر پری قصد دارد که خودش هفته آینده ماشینش را تعمیر کند \"."
+  },
+  {
+   "id": "g10-253",
+   "page": 134,
+   "num": 17,
+   "category": "grammar",
+   "stem": "Every morning my little brother washes his face and brushes his teeth by ------------------.",
+   "options": [
+    "yourself",
+    "herself",
+    "myself",
+    "himself"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-254",
+   "page": 134,
+   "num": 18,
+   "category": "grammar",
+   "stem": "If you and your classmates can’t do this exercise by ------------------, ask the teacher for help.",
+   "options": [
+    "yourselves",
+    "himself",
+    "herself",
+    "yourself"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "ضمیر تأکیدی برای) you and your classmates ( yourselves یعنی\"خودتان\" )خواهد بود. ( تو و همکالسیهایت ترجمه تست : \" اگه تو و همکالیس هایت نمیتوانید خودتان به تنهاب این تمرین را انجام دهید از معلم در خواست کمک کنید \"."
+  },
+  {
+   "id": "g10-255",
+   "page": 134,
+   "num": 19,
+   "category": "grammar",
+   "stem": "I really ----------------- some new clothes for next winter.",
+   "options": [
+    "need",
+    "needed",
+    "am needing",
+    "was needing"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-256",
+   "page": 134,
+   "num": 20,
+   "category": "grammar",
+   "stem": "That boy who was standing next to your brother ----------------- very tired.",
+   "options": [
+    "was looking",
+    "looked",
+    "is looking",
+    "looks"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "گزینه های این تست، حالتهای مختلف فعلlook به معنی\"به نظر رسیدن \" میباشد. این فعل، با این معنی،یک فعل حالتی بوده پس حالت استمراری ندارد وing نمیگیرد. (حذف گزینه هایaوc ). گزینهd.در زمان حال بوده و نادرست میباشد ترجمه تست : \" اون پسی که نزدیک برادرت ایستاده بود، به نظر خیلی خسته میر سید\". Note:"
+  },
+  {
+   "id": "g10-257",
+   "page": 138,
+   "num": 1,
+   "category": "grammar",
+   "stem": "While Kimia and her friends ---------------------- football in the yard of the school, it ---------------------- raining.",
+   "options": [
+    "were playing / was starting",
+    "played / started",
+    "were playing / started",
+    "played / was starting"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-258",
+   "page": 138,
+   "num": 2,
+   "category": "grammar",
+   "stem": "When I arrived Soma and Jessica ---------------------- dinner.",
+   "options": [
+    "making",
+    "made",
+    "were making",
+    "was making"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-259",
+   "page": 138,
+   "num": 3,
+   "category": "grammar",
+   "stem": "Yesterday at this time, I ---------------------- to attend an English course but I didn’t.",
+   "options": [
+    "want",
+    "will want",
+    "was wanting",
+    "wanted"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-260",
+   "page": 138,
+   "num": 4,
+   "category": "grammar",
+   "stem": "---------------------- I was studying English, my father ---------------------- TV.",
+   "options": [
+    "While /was watching",
+    "When / watched",
+    "As / watched",
+    "While / were watching"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-261",
+   "page": 138,
+   "num": 5,
+   "category": "grammar",
+   "stem": "---------------------- you cutting the grass when Morteza ---------------------- back?",
+   "options": [
+    "Were / came",
+    "Was / came",
+    "Were / comes",
+    "Was / comes"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-262",
+   "page": 138,
+   "num": 6,
+   "category": "grammar",
+   "stem": "My friend, Hannaneh, ---------------------- two brothers, Ali and Reza. They ---------------------- lunch right now.",
+   "options": [
+    "has / have",
+    "has / are having",
+    "is having / have",
+    "is having / are having"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-263",
+   "page": 138,
+   "num": 8,
+   "category": "grammar",
+   "stem": "Yesterday, a cat with its kitties ---------------------- everywhere to find something to eat.",
+   "options": [
+    "are searching",
+    "is searching",
+    "were searching",
+    "was searching"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-264",
+   "page": 138,
+   "num": 9,
+   "category": "grammar",
+   "stem": "While I ---------------------- a dream the alarm ---------------------- off.",
+   "options": [
+    "was having / went",
+    "had / went",
+    "was having / was going",
+    "had / was going"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-265",
+   "page": 138,
+   "num": 10,
+   "category": "grammar",
+   "stem": "The singer ---------------------- very beautifully ---------------------- suddenly the power went out.",
+   "options": [
+    "sings / while",
+    "was singing / when",
+    "sang / while",
+    "is singing / when"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-266",
+   "page": 138,
+   "num": 11,
+   "category": "grammar",
+   "stem": "Their new friend is very fat. She ---------------------- 120 kilograms.",
+   "options": [
+    "is weighing",
+    "weighs",
+    "weighed",
+    "was weighing"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-267",
+   "page": 138,
+   "num": 12,
+   "category": "grammar",
+   "stem": "I believe that Sam ---------------------- when we ---------------------- him the day before yesterday.",
+   "options": [
+    "was working not / were calling",
+    "was not work / called",
+    "wasn’t working / called",
+    "was not working / were calling"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-268",
+   "page": 138,
+   "num": 13,
+   "category": "grammar",
+   "stem": "We ---------------------- our country and we ---------------------- to stop fighting against our enemies.",
+   "options": [
+    "are loving / aren’t wanting",
+    "are loving / don’t want",
+    "love / aren’t wanting",
+    "love / don’t want"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-269",
+   "page": 138,
+   "num": 14,
+   "category": "grammar",
+   "stem": "I ---------------------- to him and his spouse many times not to go on a trip in this situation, but they wouldn’t listen to me.",
+   "options": [
+    "was talking",
+    "talked",
+    "will talk",
+    "am talking"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-270",
+   "page": 138,
+   "num": 15,
+   "category": "grammar",
+   "stem": "When a speedy car ---------------------- my little brother, he ---------------------- with his friends in the alley.",
+   "options": [
+    "was hitting / played",
+    "was hitting / was playing",
+    "hit / played",
+    "hit / was playing"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-271",
+   "page": 139,
+   "num": 16,
+   "category": "grammar",
+   "stem": "Thank you Fatemeh, I ---------------------- any help .I can do my homework ----------------------.",
+   "options": [
+    "don’t need / on myself",
+    "am not needing / on myself",
+    "don’t need / on my own",
+    "am not needing / on my own"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-272",
+   "page": 139,
+   "num": 17,
+   "category": "grammar",
+   "stem": "Shiva and Shima were able to clean all of the rooms ----------------------.",
+   "options": [
+    "herself",
+    "themselves",
+    "on her own",
+    "with themselves"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-273",
+   "page": 139,
+   "num": 18,
+   "category": "grammar",
+   "stem": "I can take care of ----------------------, so don’t be worried about me.",
+   "options": [
+    "me",
+    "mine",
+    "my",
+    "myself"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-274",
+   "page": 139,
+   "num": 19,
+   "category": "grammar",
+   "stem": "She is always talking to ---------------------- and this makes everybody annoyed.",
+   "options": [
+    "her",
+    "herself",
+    "on her own",
+    "by herself"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "زمانی که فاعل و مفعول جمله ای یکسان باشند حتی بعد از حرف اضافه هم از ضمیر انعکایس استفاده می کنیم ترجمه تست : \".او همیشه با خودش صحبت می‌ کند و این همه را آزرده خاطر می‌ کند."
+  },
+  {
+   "id": "g10-275",
+   "page": 139,
+   "num": 20,
+   "category": "grammar",
+   "stem": "Catherine, you should take the umbrella with ---------------------- because it may rain later.",
+   "options": [
+    "yourself",
+    "you",
+    "yours",
+    "yourselves"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "در این تست فاعل و مفعول جمله ما یکسان نیستند بنابراین نمی توانیم از ضمیر انعکاسی استفاده کنیم و باید از ضمیر مفعویل استفاده بکنیم مراقب باشید که هر زبان را با ساختار خودش فرا بگیرید و مثل زبان فارسی با آن برخورد نکنید. چونکه اگر در اینجا به فارسی جمله را ترجمه می ( کردید قطعا گزینه غلط یعنیa) را می زدید زیرا در فارسی ( خودت ) ترجمه می شود. ترجمه تست : \".کاترین بهی است که چی را با خودت بی ی زیرا ممکن است بعدا باران ببارد."
+  },
+  {
+   "id": "g10-276",
+   "page": 139,
+   "num": 21,
+   "category": "grammar",
+   "stem": "As I---------------------- a jacket for my son, my husband ---------------------- his car in the garage.",
+   "options": [
+    "wove / fixed",
+    "was weaving / was fixing",
+    "wove / was fixing",
+    "was weaving / fixed"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-277",
+   "page": 139,
+   "num": 23,
+   "category": "grammar",
+   "stem": "Each time, she ---------------------- the day of the accident, she ---------------------- very depressed.",
+   "options": [
+    "remembers / looks",
+    "is remembering / is looking",
+    "remembers / is looking",
+    "is remembering / looks"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-278",
+   "page": 139,
+   "num": 24,
+   "category": "grammar",
+   "stem": "Two people ---------------------- loudly in the library yesterday, so we asked them to leave immediately.",
+   "options": [
+    "talked",
+    "were talking",
+    "are talking",
+    "will talk"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "برای اشاره به عملی که زمان دقیق آغاز و اتمام آن معلوم نیست از گذشته استمراری استفاده می کنیم ترجمه تست : \".دیروز دو نفر در کتابخانه داشتند با صدای بلند صحبت می‌ کردند بنابراین ما از آن‌ها خواستیم که فورا کتابخانه را ترک بکنند."
+  },
+  {
+   "id": "g10-279",
+   "page": 139,
+   "num": 25,
+   "category": "grammar",
+   "stem": "I and ---------------------- completed the project two days ago.",
+   "options": [
+    "he",
+    "himself",
+    "he himself",
+    "him ourselves"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-280",
+   "page": 139,
+   "num": 26,
+   "category": "grammar",
+   "stem": "---------------------- what has happened? Jane ---------------------- very happy today.",
+   "options": [
+    "Are you knowing / is appearing",
+    "Do you know / appears",
+    "Are you knowing / appears",
+    "Do you know / is appearing"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-281",
+   "page": 139,
+   "num": 27,
+   "category": "grammar",
+   "stem": "The father ---------------------- baked a cake on his son’s birthday.",
+   "options": [
+    "he",
+    "himself",
+    "on her own",
+    "by him"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-282",
+   "page": 139,
+   "num": 28,
+   "category": "grammar",
+   "stem": "I tried to make ---------------------- understand that there was a problem, but ---------------------- didn’t pay any attention to ----------------------.",
+   "options": [
+    "them / themselves / me",
+    "theirs / they / myself",
+    "them / they / me",
+    "their / them / myself"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-283",
+   "page": 139,
+   "num": 29,
+   "category": "grammar",
+   "stem": "She ---------------------- for a trip when ---------------------- mother went shopping.",
+   "options": [
+    "was packing / herself",
+    "packed / her",
+    "was packing / her",
+    "packed / herself"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-284",
+   "page": 139,
+   "num": 30,
+   "category": "grammar",
+   "stem": "I took my little nephew with ---------------------- to the gym.",
+   "options": [
+    "mine",
+    "me",
+    "myself",
+    "my"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "زمانیکه فاعل و مفعول جمله ای یکسان نباشند ما نمی توانیم از ضمیر انعکایس استفاده بکنیم و باید از ضمیر مفعویل استفاده بکنیم ترجمه تست : \" من برادر زاده کوچکم را با خودم به باشگاه بردم."
+  },
+  {
+   "id": "g10-285",
+   "page": 139,
+   "num": 31,
+   "category": "grammar",
+   "stem": "To be honest, this subject ---------------------- for me a lot and I will try my best to solve it.",
+   "options": [
+    "is mattering",
+    "mattered",
+    "was mattering",
+    "matters"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-286",
+   "page": 139,
+   "num": 32,
+   "category": "grammar",
+   "stem": "He is smelling ----------------------. I think he ---------------------- very bad.",
+   "options": [
+    "him / is smelling",
+    "himself / is smelling",
+    "him / smells",
+    "himself / smells"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-287",
+   "page": 140,
+   "num": 33,
+   "category": "grammar",
+   "stem": "“---------------------- Ali and Roya playing badminton when we ---------------------- toward the park?”",
+   "options": [
+    "Was / were walking",
+    "Were / were walking",
+    "Was / walked",
+    "Were / walked"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-288",
+   "page": 140,
+   "num": 35,
+   "category": "grammar",
+   "stem": "The car you ----------------- to buy next month ----------------- very much, so I don’t think you can afford it.",
+   "options": [
+    "are wanting / is costing",
+    "want / costs",
+    "are wanting / costs",
+    "want / is costing"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-289",
+   "page": 140,
+   "num": 36,
+   "category": "grammar",
+   "stem": "A: “Where is Mina now?” B: “She is very busy and ---------------------- at her desk.”",
+   "options": [
+    "sits",
+    "is sitting",
+    "was sitting",
+    "sat"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-290",
+   "page": 140,
+   "num": 37,
+   "category": "grammar",
+   "stem": "While all of the students -------------------- to each other loudly, the principal ------------------- in to warn them.",
+   "options": [
+    "were talking / came",
+    "talked / came",
+    "were talking / was coming",
+    "talked / was coming"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-291",
+   "page": 140,
+   "num": 38,
+   "category": "grammar",
+   "stem": "They ---------------------- the whole month to prepare ---------------------- for the contest.",
+   "options": [
+    "practiced / them",
+    "practiced / themselves",
+    "were practicing / them",
+    "were practicing / themselves"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "برای عملی که زمان دقیق آغاز و پایانش مشخص نباشد از زمان گذشته استمراری استفاده می کنیم. (رد گزینهa وb ) در جای خالی دوم باید دقت بکنیم که فاعل و مفعول جمله ما یکسان است و باید از ضمیر انعکایس استفاده بکنیم ترجمه تست : \"آن‌ها همه ماه داشتند تمرین می‌ کردند تا خودشان را برای مسابقه آماده بکنند."
+  },
+  {
+   "id": "g10-292",
+   "page": 140,
+   "num": 39,
+   "category": "grammar",
+   "stem": "She ---------------------- to go abroad and visit a foreign country, but she ---------------------- very little money.",
+   "options": [
+    "is wishing / is having",
+    "wishes / has",
+    "is wishing / has",
+    "wishes / is having"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-293",
+   "page": 140,
+   "num": 40,
+   "category": "grammar",
+   "stem": "As soon as he ---------------------- that mistake all of the students ---------------------- at him.",
+   "options": [
+    "was making / was laughing",
+    "made / laughed",
+    "was making / laughed",
+    "made / was laughing"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-294",
+   "page": 140,
+   "num": 41,
+   "category": "grammar",
+   "stem": "Jack and Jorge bought --------------- two beautiful jumpers and they are looking at ------------- in the mirror.",
+   "options": [
+    "themselves/ themselves",
+    "them / them",
+    "themselves / them",
+    "them / themselves"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-295",
+   "page": 140,
+   "num": 42,
+   "category": "grammar",
+   "stem": "She ------------------- for something to buy for ------------------- little sister but she hasn’t found anything yet.",
+   "options": [
+    "is looking / herself",
+    "looks / herself",
+    "is looking/ her",
+    "looks / her"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-296",
+   "page": 151,
+   "num": 1,
+   "category": "vocab",
+   "stem": "He ----------------------- to fly to America for his summer vacations on Wednesday.",
+   "options": [
+    "compares",
+    "leaves",
+    "prepares",
+    "plans"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": "تست \" او قصد دارد برای تعطیالت تابستانی اش در چهارشنبه به آمریکا پرواز کند.",
+   "note": null
+  },
+  {
+   "id": "g10-297",
+   "page": 151,
+   "num": 2,
+   "category": "vocab",
+   "stem": "Egypt ----------------------- are one of the Seven Wonders of the World that are really amazing.",
+   "options": [
+    "agents",
+    "pyramids",
+    "deserts",
+    "cultures"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "تست \"اهرام مصر یکی از هفت عجایب جهان هستند که خیلی حیرت آور هستند.",
+   "note": null
+  },
+  {
+   "id": "g10-298",
+   "page": 151,
+   "num": 3,
+   "category": "vocab",
+   "stem": "The local people were very kind and --------------------, so we enjoyed their behavior so much.",
+   "options": [
+    "amazing",
+    "honest",
+    "hospitable",
+    "ancient"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": "تست \" افراد بومی خیلی مهربان و مهمان نواز بودند بنابراین ما از رفتارشان خیلی لذت بردیم.",
+   "note": null
+  },
+  {
+   "id": "g10-299",
+   "page": 151,
+   "num": 4,
+   "category": "vocab",
+   "stem": "This area of the country is always dry with a lot of sand and no activity. It’s a ------------------.",
+   "options": [
+    "desert",
+    "paradise",
+    "site",
+    "beach"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "تست \"این منطقه از کشور همیشه خشک است با ماسه زیاد و بدون هیچ گونه فعالیتی. آن جا بیابان است.",
+   "note": null
+  },
+  {
+   "id": "g10-300",
+   "page": 151,
+   "num": 5,
+   "category": "vocab",
+   "stem": "In our ------------------, it is rude to ask someone some questions such as their earnings and age.",
+   "options": [
+    "choice",
+    "vacation",
+    "culture",
+    "nation"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": "تست \" در فرهنگ ما، پرسیدن از کسی سؤ االتی مانند درآمد و سن، بی ادب انه است.",
+   "note": null
+  },
+  {
+   "id": "g10-301",
+   "page": 151,
+   "num": 6,
+   "category": "vocab",
+   "stem": "The attack on the embassy made a lot of ----------------------- tensions for some countries.",
+   "options": [
+    "international",
+    "national",
+    "worldwide",
+    "native"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "تست \"حمله به سفارت، تنش های بیر ن الملیل زیادی برای چند کشور بوجود آورد.",
+   "note": null
+  },
+  {
+   "id": "g10-302",
+   "page": 151,
+   "num": 7,
+   "category": "vocab",
+   "stem": "A person or group of people that represent another person or that takes action for other people is ------- of that person or people.",
+   "options": [
+    "tourist",
+    "agent",
+    "traveler",
+    "host"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "تست \"شخص یا گروهی از افراد که شخص دیگر را نمایندگی می کنند یا برای افراد کار می کنند نماینده آن شخص یا افراد است.",
+   "note": null
+  },
+  {
+   "id": "g10-303",
+   "page": 151,
+   "num": 8,
+   "category": "vocab",
+   "stem": "A big home with a large front yard covered with grass near the sea is my idea of true ------------------.",
+   "options": [
+    "desert",
+    "abroad",
+    "embassy",
+    "paradise"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-304",
+   "page": 151,
+   "num": 9,
+   "category": "vocab",
+   "stem": "They believed in their -----------------------, belief, customs and way of doing something that has existed for a long time.",
+   "options": [
+    "destination",
+    "tradition",
+    "suggestion",
+    "entertainment"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "تست \" آن‌ها به سنت،، اعتقاد رسوم و راه شان از انجام چیزی که برای مدت زمان زیادی وجود داشته است، اعتقاد داشتند.",
+   "note": null
+  },
+  {
+   "id": "g10-305",
+   "page": 151,
+   "num": 10,
+   "category": "vocab",
+   "stem": "You must make some important ----------------------- for your future. They are so necessary for your improvement.",
+   "options": [
+    "choices",
+    "suggestions",
+    "traditions",
+    "entertainments"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "تست \"شما باید چند انتخاب مهم برای آینده تان داشته باشید. آن‌ها برای پیشرفت شما خیلی ضروری هستند.",
+   "note": null
+  },
+  {
+   "id": "g10-306",
+   "page": 151,
+   "num": 12,
+   "category": "vocab",
+   "stem": "I think seaside is an ideal ----------------------- for a relaxing weekend.",
+   "options": [
+    "range",
+    "obligation",
+    "possibility",
+    "destination"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": "تست \"من فکر می کنم کنار دریا، یک مقصد ایده ِآل برای استراحت آخر هفته است.",
+   "note": null
+  },
+  {
+   "id": "g10-307",
+   "page": 151,
+   "num": 13,
+   "category": "vocab",
+   "stem": "This old building will be replaced, most ----------------------- by a modern sports center.",
+   "options": [
+    "probably",
+    "patiently",
+    "generously",
+    "especially"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-308",
+   "page": 151,
+   "num": 14,
+   "category": "vocab",
+   "stem": "There will be live ----------------------- all day long such as films, TV performances, etc. that are intended to amuse people.",
+   "options": [
+    "choices",
+    "entertainments",
+    "suggestions",
+    "traditions"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "تست \"رسگریم های زنده ِای در تمام طول روز مانند فیلم ها - اجراهای تلویزیونی که قصد سرگرم کردن مردم دارند، وجود خواهد داشت.",
+   "note": null
+  },
+  {
+   "id": "g10-309",
+   "page": 151,
+   "num": 15,
+   "category": "vocab",
+   "stem": "The ---------------- will continue discussions with the Chinese government about that contract.",
+   "options": [
+    "pilgrim",
+    "embassy",
+    "traveler",
+    "nation"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "تست \"سفارت، بحث هایش را با دولت چین در مورد آن قرارداد، ادامه خواهد داد.",
+   "note": null
+  },
+  {
+   "id": "g10-310",
+   "page": 151,
+   "num": 16,
+   "category": "vocab",
+   "stem": "Unfortunately, his ----------------------- life wasn’t very happy and was full of problems.",
+   "options": [
+    "cultural",
+    "hospitable",
+    "domestic",
+    "agent"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": "تست \" ِمتأسفانه زندگی ( درونی داخیل).اش خیلی شاد نبود و پر از مشکالت بود.",
+   "note": null
+  },
+  {
+   "id": "g10-311",
+   "page": 151,
+   "num": 17,
+   "category": "vocab",
+   "stem": "The committee rejected the ----------------------- that house should be built on this site.",
+   "options": [
+    "suggestion",
+    "agent",
+    "choice",
+    "tradition"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "تست \" کمیته این پیشنهاد که خانه باید در این جا ساخته شود را رد کرد.",
+   "note": null
+  },
+  {
+   "id": "g10-312",
+   "page": 151,
+   "num": 18,
+   "category": "vocab",
+   "stem": "These toys are suitable for children in the pre-school age -----------------------.",
+   "options": [
+    "vacation",
+    "suggestion",
+    "agent",
+    "range"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-313",
+   "page": 151,
+   "num": 19,
+   "category": "vocab",
+   "stem": "Airlines have lost ----------------------- of dollars because of Corona Virus.",
+   "options": [
+    "travels",
+    "thousands",
+    "passengers",
+    "many"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "تست \" خطوط هوایی میلیاردها ِدالر به خاطر ویروس کرونا از دست دادند.",
+   "note": null
+  },
+  {
+   "id": "g10-314",
+   "page": 152,
+   "num": 20,
+   "category": "vocab",
+   "stem": "The child showed them a normal ---------------- of development and a lot of people admired him.",
+   "options": [
+    "element",
+    "fact",
+    "pattern",
+    "means"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": "تست \" بچه الگوی طبیعی پیشرفت را به آن‌ها نشان داد و افراد زیادی او را تحسین کردند.",
+   "note": null
+  },
+  {
+   "id": "g10-315",
+   "page": 152,
+   "num": 21,
+   "category": "vocab",
+   "stem": "Strong family relationship still ----------------------- them together in all of the situations.",
+   "options": [
+    "built",
+    "linked",
+    "defended",
+    "compared"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "تست \"روابط خانوادگی قوی، هنوز آن‌ها را در همه وضعیت ها به هم متصل ساخته است.",
+   "note": null
+  },
+  {
+   "id": "g10-316",
+   "page": 152,
+   "num": 22,
+   "category": "vocab",
+   "stem": "Takhteh-Jamshid in Shiraz is a major ---------------------- for some of people around the world.",
+   "options": [
+    "tourist attention",
+    "tourist attraction",
+    "distance",
+    "obligation"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "تست \" تخت جمشید در شیراز یک جاذبه توریس ت مهم برای بعضی از مردم در سراسر جهان است.",
+   "note": null
+  },
+  {
+   "id": "g10-317",
+   "page": 152,
+   "num": 23,
+   "category": "vocab",
+   "stem": "I have the greatest ---------------- for Jane’s work that is so valuable for society improvement.",
+   "options": [
+    "belief",
+    "honest",
+    "background",
+    "respect"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": "تست \" من برای کار\"جین\" که برای پیشرفت جامعه خیلی ارزشمند است، بیشترین احی ام را قائل هستم.",
+   "note": null
+  },
+  {
+   "id": "g10-318",
+   "page": 152,
+   "num": 24,
+   "category": "vocab",
+   "stem": "We searched a lot but couldn't ----------------------- the source of radio signal.",
+   "options": [
+    "relate",
+    "locate",
+    "check",
+    "create"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "تست \" ِما زیاد جستجو کردیم اما نتوانستیم منبع امواج رادیویی را پیدا کنیم.",
+   "note": null
+  },
+  {
+   "id": "g10-319",
+   "page": 152,
+   "num": 25,
+   "category": "vocab",
+   "stem": "My neighbor makes a trip for religious reasons to holy places. In fact, he is a -------------------.",
+   "options": [
+    "traveler",
+    "agent",
+    "foreigner",
+    "pilgrim"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": "تست \"همسایه ام به دالیل مذهبی به مکآن‌های مقدس مسافرت می کند. در حقیقت او یک زائر است.",
+   "note": null
+  },
+  {
+   "id": "g10-320",
+   "page": 152,
+   "num": 26,
+   "category": "vocab",
+   "stem": "Education levels in English language institutes are strongly ----------------------- to each other.",
+   "options": [
+    "related",
+    "compared",
+    "based",
+    "prepared"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "تست \" سطوح آموزشی در آموزشگاهای زبان خیلی به هم مرتبط هستند.",
+   "note": null
+  },
+  {
+   "id": "g10-321",
+   "page": 152,
+   "num": 27,
+   "category": "vocab",
+   "stem": "Dubai depends highly on ----------------------- for much of its income.",
+   "options": [
+    "embassy",
+    "tourism",
+    "vacation",
+    "tradition"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "تست \" شهر\"ُدِیب\" ِبرای درآمد بیشترش به شدت به گردشگری وابسته است.",
+   "note": null
+  },
+  {
+   "id": "g10-322",
+   "page": 152,
+   "num": 28,
+   "category": "vocab",
+   "stem": "The foreign ------------- complained that he’s been held by the local police without good reason.",
+   "options": [
+    "traveler",
+    "embassy",
+    "host",
+    "tourism"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "تست \" مسافر خارجی شکایت کرد که او بدون هیچ دلیل م ؤ جهی توسط پلیس محلی، بازداشت شده است.",
+   "note": null
+  },
+  {
+   "id": "g10-323",
+   "page": 152,
+   "num": 29,
+   "category": "vocab",
+   "stem": "Parents are under a legal ----------------------- to educate their children well.",
+   "options": [
+    "creation",
+    "possibility",
+    "obligation",
+    "culture"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": "تست \" ِوالدین تحت اجبار قانونی برای آموزش دادن خوب به بچه ها هستند.",
+   "note": null
+  },
+  {
+   "id": "g10-324",
+   "page": 152,
+   "num": 30,
+   "category": "vocab",
+   "stem": "There’s always a ----------------------- that he might go back to London.",
+   "options": [
+    "possibility",
+    "obligation",
+    "vacation",
+    "choice"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "تست \"همیشه یک احتمایل وجود دارد که او ممکن است به لندن برگردد.",
+   "note": null
+  },
+  {
+   "id": "g10-325",
+   "page": 152,
+   "num": 31,
+   "category": "vocab",
+   "stem": "Much homework should not be used as a ---------------- controlling children at home and school.",
+   "options": [
+    "care of",
+    "rather than",
+    "means of",
+    "in terms of"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": "تست \" ِتکالیف زیاد نباید به عنوان وسیله ِکنترل بچه ها در خانه و مدرسه به کار برده شود.",
+   "note": null
+  },
+  {
+   "id": "g10-326",
+   "page": 152,
+   "num": 32,
+   "category": "vocab",
+   "stem": "If you ----------------------- things you compare them to show the differences between them.",
+   "options": [
+    "base on",
+    "count",
+    "contrast",
+    "prepare"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": "تست \" اگر شما چیزها را مقایسه کنید، آن‌ها را برای نشان دادن تفاوت های بین ما شان مقایسه کرده اید.",
+   "note": null
+  },
+  {
+   "id": "g10-327",
+   "page": 152,
+   "num": 33,
+   "category": "vocab",
+   "stem": "Since the weather usually is dusty you should clean the windows ------------------- once a week.",
+   "options": [
+    "at most",
+    "for a while",
+    "so much",
+    "at least"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": "تست \"از آنجایی که آب و هوا معموالً گرد و غبار است، بهتر است پنجره ها را حداقل یکبار در هفته تمیز کنید.",
+   "note": null
+  },
+  {
+   "id": "g10-328",
+   "page": 152,
+   "num": 34,
+   "category": "vocab",
+   "stem": "She was ----------------------- enough to overlook my little mistake.",
+   "options": [
+    "patient",
+    "generous",
+    "honest",
+    "rude"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "تست \" او به اندازه کافی بخشنده است که اشتباه های کوچک من را نادیده بگیرد.",
+   "note": null
+  },
+  {
+   "id": "g10-329",
+   "page": 152,
+   "num": 35,
+   "category": "vocab",
+   "stem": "I was so ----------------------- and warm in my bed. I didn’t want to get up at all",
+   "options": [
+    "comfortable",
+    "hospitable",
+    "cultural",
+    "neat"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "تست \" من در رختخوابم خیلی راحت و گرم بودم. من نخواستم اصالً بلند شوم.",
+   "note": null
+  },
+  {
+   "id": "g10-330",
+   "page": 152,
+   "num": 36,
+   "category": "vocab",
+   "stem": "This area of the country is ----------------------- desert without any farming.",
+   "options": [
+    "probably",
+    "mostly",
+    "nicely",
+    "bravely"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "تست \" این منطقه از کشور بیشی بیابان است بدون هیچ گونه )(زمین کشاورزی.",
+   "note": null
+  },
+  {
+   "id": "g10-331",
+   "page": 152,
+   "num": 37,
+   "category": "vocab",
+   "stem": "I had hoped you would behave in a more responsible ---------------------.",
+   "options": [
+    "manner",
+    "blank",
+    "choice",
+    "activity"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-332",
+   "page": 152,
+   "num": 38,
+   "category": "vocab",
+   "stem": "What does a coach do to ------------------ his team for winning the match?",
+   "options": [
+    "prepare",
+    "ready",
+    "compare",
+    "create"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "تست \" یک مربی برای آماده کردن تیمش برای بردن مسابقه چکار می کند؟",
+   "note": null
+  },
+  {
+   "id": "g10-333",
+   "page": 152,
+   "num": 39,
+   "category": "vocab",
+   "stem": "We never eat --------------------- food because it is a packaged food that has low value for health",
+   "options": [
+    "delicious",
+    "junk",
+    "healthy",
+    "cooked"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": "تست \" ما هرگز غذای هله هوله (ب ارزش) نمی خوریم زیرا غذایی بسته بندی شده است که ارزش کمی برای سالمتی دارد.",
+   "note": null
+  },
+  {
+   "id": "g10-334",
+   "page": 152,
+   "num": 40,
+   "category": "vocab",
+   "stem": "She applied for a three month tourist ------------------- .",
+   "options": [
+    "visa",
+    "ticket",
+    "agent",
+    "attraction"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": "تست \"او تقاضای ویزای تحصیلی سه ماهه کرد \" Note:",
+   "note": null
+  },
+  {
+   "id": "g10-335",
+   "page": 163,
+   "num": 1,
+   "category": "vocab",
+   "stem": "When I was a child I ------- -- ---------- climb the trees easily but now I can’t.",
+   "options": [
+    "might",
+    "should",
+    "can",
+    "could"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "توانایی انجام کار در گذشته را با فعل ناقصcould نشان می دهیم. :ترجمه تست \" وقتیکه بچه بودم میتوانستم به آسانی از درختان باال بروم اما الان نمیتوانم \"."
+  },
+  {
+   "id": "g10-336",
+   "page": 163,
+   "num": 2,
+   "category": "vocab",
+   "stem": "A: “Why isn’t Ali in class?” B: “I don’t know. He ----------------- be sick today.”",
+   "options": [
+    "can",
+    "should",
+    "may",
+    "must"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "وجود جملهI don’t know بیانگر\"احتمال\" است. برای نشان دادن احتمال ازmay.استفاده میکنیم :ترجمه تست \"- چرا عیل در کالس نیست؟- نمیدونم. شاید امروز مریض باشد\"."
+  },
+  {
+   "id": "g10-337",
+   "page": 163,
+   "num": 3,
+   "category": "vocab",
+   "stem": "Don’t touch my school things. When I’m not at home, you ------------------ use my books.",
+   "options": [
+    "should",
+    "could",
+    "might",
+    "can"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-338",
+   "page": 163,
+   "num": 4,
+   "category": "vocab",
+   "stem": "I don’t allow you to leave the class. You ----------------- go out after doing your homework.",
+   "options": [
+    "should",
+    "must",
+    "may",
+    "will"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-339",
+   "page": 163,
+   "num": 5,
+   "category": "vocab",
+   "stem": "A: “I’m going to be late for the bus, what ------------------- I do?” B: “You can take a taxi.”",
+   "options": [
+    "can",
+    "may",
+    "should",
+    "must"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "برای پیشنهاد و توصیه ازshould.استفاده میکنیم :ترجمه تست \" - داره برای اتوبوس دیرم میشه. چکار باید بکنم؟- تو میتوابن تاکیس بگیر ی\"."
+  },
+  {
+   "id": "g10-340",
+   "page": 163,
+   "num": 6,
+   "category": "vocab",
+   "stem": "All foreign passengers --------------------- present their passports at the airport.",
+   "options": [
+    "should",
+    "must",
+    "can",
+    "could"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "برای اجبار شدید و قانون و مقررات ازmust.استفاده میکنیم :ترجمه تست \"همه مسافران خاریح باید پاسپورت هایشان را در فرودگاه ارائه دهند \"."
+  },
+  {
+   "id": "g10-341",
+   "page": 163,
+   "num": 7,
+   "category": "vocab",
+   "stem": "A: “Why isn’t Raman at home?” B: “I’m not sure. He ----------------- be in the library.”",
+   "options": [
+    "can",
+    "must",
+    "may",
+    "should"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "وجود جمله not sure I’m بیانگر\"احتمال\" است. برای نشان دادن احتمال ازmay.استفاده میکنیم :ترجمه تست \" – چرا رامان در خانه نیست؟- مطمیی ن نیستم. شاید در کتابخانه باشد \"."
+  },
+  {
+   "id": "g10-342",
+   "page": 163,
+   "num": 8,
+   "category": "vocab",
+   "stem": "A: “ ----------------- I borrow your pen?” B: “Yes, of course.”",
+   "options": [
+    "Should",
+    "Would",
+    "Must",
+    "Can"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "برای اجازه گرفتن ازcan وmay.استفاده میکنیم :ترجمه تست \"- )میتونم( اجازه دارم خودکارت را قرض بگیر م؟- بله، البته \"."
+  },
+  {
+   "id": "g10-343",
+   "page": 163,
+   "num": 9,
+   "category": "vocab",
+   "stem": "She’s a good writer. She writes interesting novels -----------------.",
+   "options": [
+    "good",
+    "well",
+    "quiet",
+    "worse"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": ".برای نشان دادن حالت و چگونگی انجام فعل جمله از قید حالت استفاده میکنیم که محل آن معموأل بعد از فعل و مفعول جمله میباشد She writes interesting novels well. قید حالت مفعول فعل :ترجمه تست \"او نویسنده خوب است. او رمان های جالت را به خوب مینویسد \"."
+  },
+  {
+   "id": "g10-344",
+   "page": 163,
+   "num": 10,
+   "category": "vocab",
+   "stem": "My brother is a fast driver. He always drives -----------------.",
+   "options": [
+    "fast",
+    "good",
+    "slowly",
+    "polite"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-345",
+   "page": 163,
+   "num": 11,
+   "category": "vocab",
+   "stem": "The teacher didn’t ask an easy question. I answered it -----------------.",
+   "options": [
+    "quick",
+    "good",
+    "easy",
+    "hard"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-346",
+   "page": 163,
+   "num": 12,
+   "category": "vocab",
+   "stem": "Ali spoke with the tourists well. Actually, he answered all their questions -----------------.",
+   "options": [
+    "good",
+    "polite",
+    "politely",
+    "carelessly"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "در جای خالی به قید حالت برای نشان دادن حالت فعل نیاز داریم. (حذف گزینهb وa). با توجه به معنی جمله اول، جواب فقط گزینه c می باشد :ترجمه تست \"عیل با گردشگران به خوب صحبت کرد. در واقع او همه سؤالات آن‌ها را مؤدبانه جواب داد\"."
+  },
+  {
+   "id": "g10-347",
+   "page": 163,
+   "num": 13,
+   "category": "vocab",
+   "stem": "I always go to the park --------------- the sunset to walk and do exercise.",
+   "options": [
+    "in",
+    "at",
+    "to",
+    "on"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-348",
+   "page": 163,
+   "num": 14,
+   "category": "vocab",
+   "stem": "When I was ------------ work yesterday, I had an important phone call.",
+   "options": [
+    "in",
+    "at",
+    "on",
+    "to"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-349",
+   "page": 163,
+   "num": 15,
+   "category": "vocab",
+   "stem": "The children were ---------------- home this morning.",
+   "options": [
+    "to",
+    "in",
+    "at",
+    "on"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-350",
+   "page": 163,
+   "num": 16,
+   "category": "vocab",
+   "stem": "We are going to visit Mazandaran ---------------- Shahrivar 22, 1400.",
+   "options": [
+    "on",
+    "in",
+    "to",
+    "at"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "حرف اضافه مربوط به تاریخ on.است :ترجمه تست \" ما قصد داریم در22 شهریورماه ماه99 از مازندران دیدن کنیم\"."
+  },
+  {
+   "id": "g10-351",
+   "page": 163,
+   "num": 17,
+   "category": "vocab",
+   "stem": "They will visit their cousins -------------- the holiday -------------- spring.",
+   "options": [
+    "on / in",
+    "in / in",
+    "on / at",
+    "at / in"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "حرف اضافه مربوط به تعطییلon و حرف اضافه فصلهاin.میباشد :ترجمه تست \" آن‌ها در تعطیالت در فصل بهار عموزاده های خود را مالقات خواهند کرد \"."
+  },
+  {
+   "id": "g10-352",
+   "page": 163,
+   "num": 18,
+   "category": "vocab",
+   "stem": "Are you going to invite your friends --------------- your birthday -------------- Khordad?",
+   "options": [
+    "in / in",
+    "in / on",
+    "on / in",
+    "at / in"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "حرف اضافه مربوط به روز تولدon و حرف اضافه ماه هاin.میباشد :ترجمه تست \"آیا قصد داری که دوستانت را در روز تولدت در خرداد ماه دعوت کتن؟"
+  },
+  {
+   "id": "g10-353",
+   "page": 163,
+   "num": 19,
+   "category": "vocab",
+   "stem": "I always go to the gym --------------- bus ------------- the afternoon.",
+   "options": [
+    "by / in",
+    "at / in",
+    "at / at",
+    "by / on"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "حرف اضافه رفتن با وسائل نقلیهby و حرف اضافه قسمتهای مختلف روزin.میباشد :ترجمه تست \"من همیشه در بعد از ظهرها با اتوبوس به باشگاه میر وم\"."
+  },
+  {
+   "id": "g10-354",
+   "page": 163,
+   "num": 20,
+   "category": "vocab",
+   "stem": "Next year, we will be -------------- Korea ------------- holiday.",
+   "options": [
+    "in / in",
+    "in / on",
+    "in / at",
+    "at / in"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "حرف اضافه مربوط به کشورهاin و حرف اضافه تعطییل on.میباشد :ترجمه تست \" سال آینده در تعطیالت ما در کشور کره خواهیم بود\". Note:"
+  },
+  {
+   "id": "g10-355",
+   "page": 167,
+   "num": 1,
+   "category": "grammar",
+   "stem": "They have been working on the project all day, they --------------------- very tired.",
+   "options": [
+    "must",
+    "may",
+    "will",
+    "can"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "نکته مهم : یکی دیگر از کاربردهای must )عالوه بر (اجبار و الزام حدس و نتیجه گیر ی منطف و معقوالنه مثبت است که در این کاربرد می توان آن را (البد و یا حتمأ) ترجمه کرد ترجمه تست\" : آن‌ها همه روز مشغول کار کردن بر روی آن پروژه بوده اند، البد که خیلی خسته اند\"."
+  },
+  {
+   "id": "g10-356",
+   "page": 167,
+   "num": 2,
+   "category": "grammar",
+   "stem": "A: “Do you know where Sara is?” B: “I am not sure, she ---------- ---- be in her office.”",
+   "options": [
+    "must",
+    "can",
+    "should",
+    "may"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-357",
+   "page": 167,
+   "num": 3,
+   "category": "grammar",
+   "stem": "You -------------------- exercise a lot, it -------------------- hurt your heart.",
+   "options": [
+    "may not / may",
+    "can’t /must",
+    "shouldn’t / may",
+    "won’t / can"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "از should برای توصیه و نصیحت کردن همراه با اجبار ضعیف استفاده می کنیم همچنین برای بیان امکان و احتمال از may استفاده می کنیم ترجمه تست\" : تو نباید خیلی زیاد ورزش بکتن، ممکن است به قلبت آسیب برساند."
+  },
+  {
+   "id": "g10-358",
+   "page": 167,
+   "num": 4,
+   "category": "grammar",
+   "stem": "The teacher said: “You ------------------- raise your hand and permit when you want to go out.”",
+   "options": [
+    "can",
+    "must",
+    "may",
+    "will"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-359",
+   "page": 167,
+   "num": 5,
+   "category": "grammar",
+   "stem": "She can ---------------------- the holy Quran very well. She has gotten many prizes so far.",
+   "options": [
+    "reciting",
+    "recites",
+    "to recite",
+    "recite"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-360",
+   "page": 167,
+   "num": 6,
+   "category": "grammar",
+   "stem": "Jack, you -------------- be hungry right now, because you had dinner several minutes ago.",
+   "options": [
+    "can’t",
+    "mustn’t",
+    "may not",
+    "shouldn’t"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-361",
+   "page": 167,
+   "num": 7,
+   "category": "grammar",
+   "stem": "A: “--------------------- I use your cell phone to call my father? B: “Yes, sure.”",
+   "options": [
+    "May",
+    "Must",
+    "Do",
+    "Am"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "برای اجازه گرفتن می توان از may.استفاده کرد ترجمه تست\" :الف: امکانش است که از تلفن همراهتون برای زنگ زدن به پدرم استفاده بکنم؟ ب: بله حتم أ \"."
+  },
+  {
+   "id": "g10-362",
+   "page": 167,
+   "num": 8,
+   "category": "grammar",
+   "stem": "She tried a lot to find a tutor for her son, but she ------------------- find anyone.",
+   "options": [
+    "may not",
+    "couldn’t",
+    "mustn’t",
+    "shouldn’t"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-363",
+   "page": 167,
+   "num": 9,
+   "category": "grammar",
+   "stem": "She --------------- speak five languages. Everybody thinks that she will get a grant soon.",
+   "options": [
+    "can",
+    "may",
+    "should",
+    "must"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "برای اشاره به توانایی ها اعم از توانایی های جسمی و روانی ازcan استفاده می کنیم ترجمه تست\" : او قادر است که پنج زبان صحبت بکند. همه فکر می‌ کنند که او به زودی بورسیه می‌ شود."
+  },
+  {
+   "id": "g10-364",
+   "page": 167,
+   "num": 10,
+   "category": "grammar",
+   "stem": "Hamid can --------------------- as fast as a professional runner can.",
+   "options": [
+    "running",
+    "runs",
+    "ran",
+    "run"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "بعد از همه افعال ناقص باید از شکل ساده فعل استفاده بکنیم ترجمه تست\" :حمید می‌ تواند مثل یک دونده حرفه ای رسیع بدود \"."
+  },
+  {
+   "id": "g10-365",
+   "page": 167,
+   "num": 11,
+   "category": "grammar",
+   "stem": "You ------------------- be so worried that your little son has been lost for two days.",
+   "options": [
+    "can",
+    "may",
+    "will",
+    "must"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-366",
+   "page": 167,
+   "num": 12,
+   "category": "grammar",
+   "stem": "As a weatherman I am not completely certain, but it ------------------ snow tomorrow afternoon.",
+   "options": [
+    "should",
+    "might",
+    "must",
+    "can"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-367",
+   "page": 167,
+   "num": 14,
+   "category": "grammar",
+   "stem": "She -------------------- work all day some years ago. He didn’t become tired at all.",
+   "options": [
+    "must",
+    "should",
+    "could",
+    "can"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "از جمله می توان مفهوم تواناب در گذشته را استنباط کرد و باید از could.استفاده بکنیم ترجمه تست\" : او چند سال پیش می‌ توانست همه روز را کار بکند. او اصال خسته نیم شد \"."
+  },
+  {
+   "id": "g10-368",
+   "page": 167,
+   "num": 15,
+   "category": "grammar",
+   "stem": "“Can you ------------------ this to anyone?” B: “Yes. don’t worry, I ------------------- keep it secret.”",
+   "options": [
+    "don’t tell / may",
+    "not tell / will",
+    "don’t tell / must",
+    "not tell / should"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-369",
+   "page": 167,
+   "num": 16,
+   "category": "grammar",
+   "stem": "In this bad economic situation, I think we --------------------- lend them some money.",
+   "options": [
+    "may",
+    "should",
+    "will",
+    "can"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-370",
+   "page": 167,
+   "num": 17,
+   "category": "grammar",
+   "stem": "Samira hasn’t studied for that exam. I believe she -------------------- pass it.",
+   "options": [
+    "won’t",
+    "mustn’t",
+    "may not",
+    "can’t"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-371",
+   "page": 167,
+   "num": 18,
+   "category": "grammar",
+   "stem": "The singer -------------- continue singing because of the event that happened --------------- the concert.",
+   "options": [
+    "can’t / at",
+    "couldn’t / in",
+    "can’t / in",
+    "couldn’t/ at"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "صحبت از عدم توانایی در گذشته است و باید ازcouldn’t استفاده بکنیم. ما برای concert ( باید از حرف اضافهat.) استفاده بکنیم ترجمه تست\" : آن خواننده به دلیل آن اتفاق که در کنست افتاد نتوانست به آهنگ خواندن خود را ادامه بدهد\"."
+  },
+  {
+   "id": "g10-372",
+   "page": 167,
+   "num": 19,
+   "category": "grammar",
+   "stem": "There are a lot of factories ----------------------Tehran. It ------------------- be a clean city.",
+   "options": [
+    "in / must not",
+    "at / can’t",
+    "on / must not",
+    "in / can’t"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-373",
+   "page": 167,
+   "num": 20,
+   "category": "grammar",
+   "stem": "It’s very heavy. It weighs around 200 kilos. Ali --------------------- pick it up.",
+   "options": [
+    "will not",
+    "must not",
+    "cannot",
+    "may not"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "اگر به مفهوم جمله دقت کرده باشید صحبت از عدم توانایی است که باید ازcan’t یا cannot.استفاده بکنیم ترجمه تست\" : این خیلی سنگیر ن است. حدود دویست کیلو وزن دارد عیل نیم تواند آن را بلند بکند."
+  },
+  {
+   "id": "g10-374",
+   "page": 168,
+   "num": 21,
+   "category": "grammar",
+   "stem": "Everybody -------------------- observe the rules of the class. Otherwise, I will punish them.",
+   "options": [
+    "must",
+    "can",
+    "may",
+    "will"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-375",
+   "page": 168,
+   "num": 22,
+   "category": "grammar",
+   "stem": "We stayed ------------- France for three weeks. In my opinion it’s the most beautiful country ----------- Europe.",
+   "options": [
+    "in / on",
+    "at / in",
+    "in / at",
+    "in / in"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-376",
+   "page": 168,
+   "num": 23,
+   "category": "grammar",
+   "stem": "I always go to the gym ---------------------- Saturday and Wednesday.",
+   "options": [
+    "in",
+    "on",
+    "into",
+    "at"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "همیشه قبل از روزهای هفته، از حرف اضافهon استفاده می کنیم ترجمه تست\" : من همیشه شنبه و چهارشنبه به باشگاه می‌ روم \"."
+  },
+  {
+   "id": "g10-377",
+   "page": 168,
+   "num": 24,
+   "category": "grammar",
+   "stem": "We usually have a lot of fun --------------- Norouz. We often go out --------------- Nature Day.",
+   "options": [
+    "at / on",
+    "in / at",
+    "on / in",
+    "in / on"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "برای اشاره به مناسب های خاص (همچون نوروز) از حرف اضافهin استفاده می کنیم. ولی حرف اضافه روزها on می باشد ترجمه تست\" :.در نوروز خیلی به ما خوش می‌ گذرد. ما اغلب روز طبیعت به بیر ون می‌ رویم."
+  },
+  {
+   "id": "g10-378",
+   "page": 168,
+   "num": 25,
+   "category": "grammar",
+   "stem": "-------------------- Friday mornings, I go walking with my brothers.",
+   "options": [
+    "On",
+    "At",
+    "In",
+    "Until"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-379",
+   "page": 168,
+   "num": 26,
+   "category": "grammar",
+   "stem": "A: “My train leaves --------------------10: 30.” \"B: “Oh, it’s late. You --------------- hurry.”",
+   "options": [
+    "at / may",
+    "on / can",
+    "at / must",
+    "in / should"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-380",
+   "page": 168,
+   "num": 27,
+   "category": "grammar",
+   "stem": "I saw him -------------------- the morning. He was preparing himself for the party.",
+   "options": [
+    "in",
+    "at",
+    "on",
+    "by"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "حرف اضافه مناسب برای بخش های اصلی روز ( از جملهmorning ) in می باشد ترجمه تست\" : من او را صبح دیدم. او خودش را برای مهمابن آماده می‌ کرد \"."
+  },
+  {
+   "id": "g10-381",
+   "page": 168,
+   "num": 28,
+   "category": "grammar",
+   "stem": "Every day, they see each other -------------------- the bust station.",
+   "options": [
+    "in",
+    "on",
+    "with",
+    "at"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "حرف اضافه مناسب برای ایستگاه at می باشد ترجمه تست\" : آن‌ها هر روز همدیگر را در ایستگاه اتوبوس می‌ بینند\"."
+  },
+  {
+   "id": "g10-382",
+   "page": 168,
+   "num": 29,
+   "category": "grammar",
+   "stem": "A: “Jane, where is that shop?” B: “It’s exactly -------------------- Saderat Bank.”",
+   "options": [
+    "at",
+    "behind",
+    "in",
+    "on"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "حرفbehind در معنی (پشتِ) با توجه به مفهوم جمله در این تست درست است ترجمه تست\" :الف : جیر ن، آن مغازه کجا است؟ ب: دقیقا پشت بانک صادرات واقع شده است \"."
+  },
+  {
+   "id": "g10-383",
+   "page": 168,
+   "num": 30,
+   "category": "grammar",
+   "stem": "I will leave --------------- 2:30 -------------- the afternoon ----------------- August 29.",
+   "options": [
+    "at / at / on",
+    "at / in / on",
+    "on / in / at",
+    "at / in / in"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-384",
+   "page": 168,
+   "num": 31,
+   "category": "grammar",
+   "stem": "Nowadays, we watch football --------------- TV. There are few spectators ------------- the stadium.",
+   "options": [
+    "on / in",
+    "at/ on",
+    "in / in",
+    "on / on"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "( حرف اضافه مناسب برایTV ) on.است حرف اضافه برای در داخل هر مکان محدود و بسته in.می باشد ترجمه تست\" : این روزها ما فوتبال را در تلویزیون تماشا می‌ کنیم. تماشاچیان خیلی کیم در داخل ورزشگاه هستند."
+  },
+  {
+   "id": "g10-385",
+   "page": 168,
+   "num": 32,
+   "category": "grammar",
+   "stem": "----------------- midnight I was woken up by a strange noise --------------- the street.",
+   "options": [
+    "At / at",
+    "In / in",
+    "At / in",
+    "In / on"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-386",
+   "page": 168,
+   "num": 33,
+   "category": "grammar",
+   "stem": "There is much water --------------- the bottle. There is also a label ------------------ it.",
+   "options": [
+    "in / in",
+    "at / on",
+    "on / on",
+    "in / on"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-387",
+   "page": 168,
+   "num": 34,
+   "category": "grammar",
+   "stem": "-------------- the past man had a lot of difficulties going to far places, but today we ------------ have access to everywhere very easily and -------------.",
+   "options": [
+    "In / could / fastly",
+    "In / can / fast",
+    "At / must / fast",
+    "In / may / fastly"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-388",
+   "page": 168,
+   "num": 35,
+   "category": "grammar",
+   "stem": "It’s said that she studies -------------------, but she can ----------------- pass her exams.",
+   "options": [
+    "hard / hard",
+    "hardly / hardly",
+    "hard / hardly",
+    "hardly / hard"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-389",
+   "page": 168,
+   "num": 36,
+   "category": "grammar",
+   "stem": "Her father forces them not to talk to each other ---------------------- the table.",
+   "options": [
+    "in",
+    "on",
+    "at",
+    "by"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-390",
+   "page": 168,
+   "num": 37,
+   "category": "grammar",
+   "stem": "Jane has been working ----------------- the hospital for 28 years and she will regret --------------- 1405.",
+   "options": [
+    "at / in",
+    "in / in",
+    "at / on",
+    "in / on"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-391",
+   "page": 168,
+   "num": 38,
+   "category": "grammar",
+   "stem": "I believe no one ---------------- count the number of the stars ---------------- the sky.",
+   "options": [
+    "may / in",
+    "can / at",
+    "can / in",
+    "must / at"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-392",
+   "page": 168,
+   "num": 39,
+   "category": "grammar",
+   "stem": "Paris is very -------------------. It attracts a great number of tourists ------------------ every year.",
+   "options": [
+    "beautiful / in",
+    "beautifully / in",
+    "beautiful / -",
+    "beautifully / -"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-393",
+   "page": 168,
+   "num": 40,
+   "category": "grammar",
+   "stem": "She has bought a nice car -------------------. She takes care of it ------------------.",
+   "options": [
+    "lately / well",
+    "lately / goodly",
+    "late / well",
+    "late / goodly"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-394",
+   "page": 169,
+   "num": 41,
+   "category": "grammar",
+   "stem": "He seemed ------------------ because he rode his motorcycle ------------------.",
+   "options": [
+    "angry / quick",
+    "angrily / quickly",
+    "angry / quickly",
+    "angrily / quick"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-395",
+   "page": 169,
+   "num": 44,
+   "category": "grammar",
+   "stem": "Traveling --------------- a plane for the first time, I was a bit anxious, but after a while, I got better.",
+   "options": [
+    "by",
+    "in",
+    "at",
+    "on"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "حرف اضافه مناسب برای وسایل نقلیه بزرگ ( مثلship - train - bus - plane ) ( حرفon ( )می باشد. شکل صحیح گزینهa ) به :این صورت استby plane ترجمه تست : \" \".وقت که برای اولیر ن بار در هواپیما سفر می‌ کردم یکم مضطرب بودم اما بعد از مدب حالم بهی شد."
+  },
+  {
+   "id": "g10-396",
+   "page": 169,
+   "num": 45,
+   "category": "grammar",
+   "stem": "She appears so ---------------- that I think she ----------------- help the charity.",
+   "options": [
+    "generous / may",
+    "generously / should",
+    "generous / could",
+    "generously / must"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-397",
+   "page": 169,
+   "num": 46,
+   "category": "grammar",
+   "stem": "Drive ----------------! with the high speed we are going to have a car crash.",
+   "options": [
+    "slow",
+    "slower",
+    "slowly",
+    "the slowestly"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "کلمهdrive یک فعل غیر ربیط است و در این حالت باید از قید حالت استفاده بکنیم ترجمه تست : \" آرام رانندگی بکن! با این رسعت باال تصادف خواهیم کرد."
+  },
+  {
+   "id": "g10-398",
+   "page": 169,
+   "num": 47,
+   "category": "grammar",
+   "stem": "A: “Sam had all his money stolen ------------------ the holiday.” B: “Oh no, he ---------------- very upset at the same very moment.”",
+   "options": [
+    "in / must",
+    "on / must",
+    "in / can",
+    "on / can"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-399",
+   "page": 169,
+   "num": 48,
+   "category": "grammar",
+   "stem": "Laleh ------------------ look after herself ------------------ because she had a heart attack two days ago.",
+   "options": [
+    "must / more careful",
+    "can / more carefully",
+    "may / more carefully",
+    "should / more carefully"
+   ],
+   "answerIdx": 3,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-400",
+   "page": 169,
+   "num": 49,
+   "category": "grammar",
+   "stem": "Sara is able to reach the top of the mountain ------------------ Navid can.",
+   "options": [
+    "as quick as",
+    "more quickly",
+    "as quickly as",
+    "quicker than"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-401",
+   "page": 169,
+   "num": 50,
+   "category": "grammar",
+   "stem": "We --------------- see some amazing changes ---------------- the future.",
+   "options": [
+    "may / in",
+    "must / at",
+    "can / on",
+    "should / in"
+   ],
+   "answerIdx": 0,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-402",
+   "page": 169,
+   "num": 52,
+   "category": "grammar",
+   "stem": "What are all these pictures ------------------- the wall? Hurry up, you ----------------- take them down one by one. It’s an order.",
+   "options": [
+    "at / must",
+    "in / should",
+    "on / must",
+    "on / can"
+   ],
+   "answerIdx": 2,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": null
+  },
+  {
+   "id": "g10-403",
+   "page": 169,
+   "num": 53,
+   "category": "grammar",
+   "stem": "It’s so cold ----------------- winter that we should wear warm clothes ----------------.",
+   "options": [
+    "at / good",
+    "in / well",
+    "on / well",
+    "in / good"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "حرف اضافه مناسب برای فصل ( ها spring ,summer, fall, winter ) حرفin می باشد. فعلwear غیرربطی است و باید از قید حالت استفاده بکنیم ترجمه تست : \" \".در زمستان آنقدر هوا رسد است که باید به خوب لباس گرم بپوشیم."
+  },
+  {
+   "id": "g10-404",
+   "page": 169,
+   "num": 54,
+   "category": "grammar",
+   "stem": "Would you please talk ---------------------? We ---------------- understand what you are saying.",
+   "options": [
+    "loud / can’t",
+    "loudly / can’t",
+    "loud / mustn’t",
+    "loudly / mustn’t"
+   ],
+   "answerIdx": 1,
+   "answerSource": "booklet-key",
+   "translation": null,
+   "note": "فعل talk غیرربطی است و باید از قید حالت استفاده بکنیم. دقت کنید با توجه به بافت جمله در جای خالی دوم صحبت از نتوانستن و قادر نبودن است و در این حالت ما از can’t.استفاده می کنیم ترجمه تست : \" میشه لطف أ بلند صحبت بکنید؟ \".ما نیم توانیم آچه را که می‌ گویید را متوجه بشویم."
+  }
+ ]
+}
